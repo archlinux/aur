@@ -35,7 +35,7 @@ fi
 #_qmake_args="CONFIG+=debug"
 _pkgname=artriculate
 pkgname=${_pkgname}-git
-pkgver=0.7.0.r6.gcdf44ea
+pkgver=0.7.0.r0.gca84fe4
 pkgrel=1
 pkgdesc='QML box2d application for displaying artwork'
 arch=('any')
@@ -67,14 +67,7 @@ build() {
 }
 
 package() {
-  local sysroot=$($_qmake -query QT_SYSROOT)
-  local symlinkHackPath=$(dirname "${pkgdir}/${sysroot}")
-
   cd ${srcdir}/${_pkgname}
 
   INSTALL_ROOT="$pkgdir" make install
-
-  mkdir -p ${symlinkHackPath}
-  cd ${symlinkHackPath}
-  ln -s / $(basename ${sysroot})
 }
