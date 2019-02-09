@@ -1,0 +1,23 @@
+pkgbase = r-rsamtools
+	pkgdesc = Binary alignment (BAM), FASTA, variant call (BCF), and tabix file import
+	pkgver = 1.34.1
+	pkgrel = 1
+	url = https://bioconductor.org/packages/release/bioc/html/Rsamtools.html
+	arch = x86_64
+	license = Artistic-2.0
+	depends = r
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-biocgenerics
+	depends = r-s4vectors
+	depends = r-biostrings
+	depends = r-iranges
+	depends = r-xvector
+	depends = r-zlibbioc
+	depends = r-bitops
+	depends = r-biocparallel
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rsamtools_1.34.1.tar.gz
+	sha1sums = 67ab848087a1bcbde16506635f7c7c01bd25e47e
+
+pkgname = r-rsamtools
+
