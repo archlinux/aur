@@ -23,7 +23,7 @@
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
-pkgver=18.1rc1pre5
+pkgver=18.1rc1pre6
 _major=18.0
 pkgrel=1
 _codename=Leia
@@ -112,6 +112,7 @@ source=(
   '36-PR15449.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15449.patch'
   '37-PR15450.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15450.patch'
   '38-PR15455.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15455.patch'
+  '39-PR15460.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15460.patch'
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -171,7 +172,8 @@ sha256sums=('ac5d64d59c6f4811b41a869538506e56c342b530fac97ad9dc9715f3d480e633'
             '51302f2e12ad58ca3c06d8f5d635b8614943a09cbf4dfad2ee94e9ce5e50eafe'
             'e293154c3e4698fc7df3a91aac7ce29949d81bd502f0e4ddc8a6e733a6b861ec'
             'ccf2c6886c20cde118514cebd1faf27b432875b5c6ec1f653c0294b03b04c72e'
-            'e5a71dc57afdf7cf00afa4576b56fcc1e9155837665e3575b0ccb289d061a902')
+            'e5a71dc57afdf7cf00afa4576b56fcc1e9155837665e3575b0ccb289d061a902'
+            'eadc8a2df4e1bf9202e059d8caade407bae0282236bf324d46534d66becd6c22')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
@@ -254,7 +256,7 @@ package_kodi-devel() {
     'upower: Display battery level'
   )
   provides=("kodi=${pkgver}")
-  conflicts=('kodi' 'kodi-git' 'kodi-pre-release')
+  conflicts=('kodi')
   replaces=('kodi-pre-release')
 
   _components=(
@@ -281,7 +283,7 @@ package_kodi-devel() {
 package_kodi-devel-eventclients() {
   pkgdesc="Kodi Event Clients"
   provides=("kodi-eventclients=${pkgver}")
-  conflicts=('kodi-eventclients' 'kodi-pre-release-eventclients')
+  conflicts=('kodi-eventclients')
   replaces=('kodi-pre-release-eventclients')
   optdepends=('python2: most eventclients are implemented in python2')
 
@@ -310,7 +312,7 @@ package_kodi-devel-eventclients() {
 package_kodi-devel-tools-texturepacker() {
   pkgdesc="Kodi Texturepacker tool"
   provides=("kodi-tools-texturepacker=${pkgver}")
-  conflicts=('kodi-tools-texturepacker' 'kodi-pre-release-tools-texturepacker')
+  conflicts=('kodi-tools-texturepacker')
   replaces=('kodi-pre-release-tools-texturepacker')
   depends=('libpng' 'giflib' 'libjpeg-turbo' 'lzo')
 
