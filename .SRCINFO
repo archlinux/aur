@@ -1,0 +1,13 @@
+pkgbase = r-latticeextra
+	pkgdesc = Extra Graphical Utilities Based on Lattice
+	pkgver = 0.6.28
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/latticeExtra/index.html
+	arch = x86_64
+	license = GPL3
+	depends = r
+	source = http://cran.r-project.org/src/contrib/latticeExtra_0.6-28.tar.gz
+	md5sums = 771938f25d0983763369b48a1153b26c
+
+pkgname = r-latticeextra
+
