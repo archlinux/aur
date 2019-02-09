@@ -9,8 +9,6 @@ pkgbase = cargo-local-registry
 	license = MIT
 	license = APACHE
 	depends = cargo
-	depends = http-parser
-	depends = curl
 	source = cargo-local-registry-0.1.6.tar.gz::https://github.com/alexcrichton/cargo-local-registry/archive/0.1.6.tar.gz
 	sha512sums = df7e1cef9d6332f3b3380a0a15036463c0821a35b1302b13367d08879b7859d70ec82eaa904d4e94a765fa1694034455dbecb6c0ada35e8e0a9853478ce5d577
 
