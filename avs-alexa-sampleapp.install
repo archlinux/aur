@@ -1,5 +1,5 @@
 post_install() {
-   getent passwd alexa > /dev/null || useradd -d /var/lib/avs-alexa-sampleapp alexa > /dev/null
+   getent passwd alexa > /dev/null || useradd -d /var/lib/avs-alexa-sampleapp -G audio alexa > /dev/null
    getent group alexa > /dev/null || groupadd -r alexa > /dev/null
    chown alexa:alexa -R /var/lib/avs-alexa-sampleapp
 }

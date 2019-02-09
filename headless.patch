@@ -1,0 +1,163 @@
+diff -ux '*.txt' -r SampleApp_org/include/SampleApp/SampleApplication.h SampleApp_patched/include/SampleApp/SampleApplication.h
+--- SampleApp_org/include/SampleApp/SampleApplication.h	2018-12-19 20:13:36.000000000 +0100
++++ SampleApp_patched/include/SampleApp/SampleApplication.h	2019-02-09 13:43:59.973245132 +0100
+@@ -67,7 +67,8 @@
+         std::shared_ptr<alexaClientSDK::sampleApp::ConsoleReader> consoleReader,
+         const std::vector<std::string>& configFiles,
+         const std::string& pathToInputFolder,
+-        const std::string& logLevel = "");
++        const std::string& logLevel = "",
++	bool headless = false);
+ 
+     /**
+      * Runs the application, blocking until the user asks the application to quit or a device reset is triggered.
+@@ -158,7 +159,8 @@
+         std::shared_ptr<alexaClientSDK::sampleApp::ConsoleReader> consoleReader,
+         const std::vector<std::string>& configFiles,
+         const std::string& pathToInputFolder,
+-        const std::string& logLevel);
++        const std::string& logLevel,
++	bool headless);
+ 
+     /**
+      * Create an application media player.
+diff -ux '*.txt' -r SampleApp_org/include/SampleApp/UserInputManager.h SampleApp_patched/include/SampleApp/UserInputManager.h
+--- SampleApp_org/include/SampleApp/UserInputManager.h	2018-12-19 20:13:36.000000000 +0100
++++ SampleApp_patched/include/SampleApp/UserInputManager.h	2019-02-09 13:43:59.973245132 +0100
+@@ -43,7 +43,8 @@
+      */
+     static std::unique_ptr<UserInputManager> create(
+         std::shared_ptr<InteractionManager> interactionManager,
+-        std::shared_ptr<ConsoleReader> consoleReader);
++        std::shared_ptr<ConsoleReader> consoleReader,
++	bool headless);
+ 
+     /**
+      * Processes user input until a quit command or a device reset is triggered.
+@@ -63,7 +64,8 @@
+      */
+     UserInputManager(
+         std::shared_ptr<InteractionManager> interactionManager,
+-        std::shared_ptr<ConsoleReader> consoleReader);
++        std::shared_ptr<ConsoleReader> consoleReader,
++	bool headless);
+ 
+     /**
+      * Reads an input from the console.  This is a blocking call until an input is read from the console or if m_restart
+@@ -127,6 +129,8 @@
+     /// the app.
+     std::atomic_bool m_limitedInteraction;
+ 
++    bool headless;
++
+     /// Flag to indicate that the @c run() should stop and return @c SampleAppReturnCode::RESTART.
+     std::atomic_bool m_restart;
+ };
+diff -ux '*.txt' -r SampleApp_org/src/main.cpp SampleApp_patched/src/main.cpp
+--- SampleApp_org/src/main.cpp	2018-12-19 20:13:36.000000000 +0100
++++ SampleApp_patched/src/main.cpp	2019-02-09 13:43:59.976578511 +0100
+@@ -51,6 +51,7 @@
+     std::vector<std::string> configFiles;
+     std::string pathToKWDInputFolder;
+     std::string logLevel;
++    bool headless = false;
+ 
+     if (usesOptStyleArgs(argc, argv)) {
+         for (int i = 1; i < argc; i++) {
+@@ -73,6 +74,8 @@
+                     return SampleAppReturnCode::ERROR;
+                 }
+                 logLevel = std::string(argv[++i]);
++	    } else if (strcmp(argv[i], "--headless") == 0) {
++		headless = true;
+             } else {
+                 ConsolePrinter::simplePrint(
+                     "USAGE: " + std::string(argv[0]) + " -C <config1.json> -C <config2.json> ... -C <configN.json> " +
+@@ -114,7 +117,7 @@
+     SampleAppReturnCode returnCode = SampleAppReturnCode::OK;
+ 
+     do {
+-        sampleApplication = SampleApplication::create(consoleReader, configFiles, pathToKWDInputFolder, logLevel);
++        sampleApplication = SampleApplication::create(consoleReader, configFiles, pathToKWDInputFolder, logLevel, headless);
+         if (!sampleApplication) {
+             ConsolePrinter::simplePrint("Failed to create to SampleApplication!");
+             return SampleAppReturnCode::ERROR;
+diff -ux '*.txt' -r SampleApp_org/src/SampleApplication.cpp SampleApp_patched/src/SampleApplication.cpp
+--- SampleApp_org/src/SampleApplication.cpp	2018-12-19 20:13:36.000000000 +0100
++++ SampleApp_patched/src/SampleApplication.cpp	2019-02-09 13:43:59.976578511 +0100
+@@ -202,9 +202,10 @@
+     std::shared_ptr<alexaClientSDK::sampleApp::ConsoleReader> consoleReader,
+     const std::vector<std::string>& configFiles,
+     const std::string& pathToInputFolder,
+-    const std::string& logLevel) {
++    const std::string& logLevel,
++    const bool headless) {
+     auto clientApplication = std::unique_ptr<SampleApplication>(new SampleApplication);
+-    if (!clientApplication->initialize(consoleReader, configFiles, pathToInputFolder, logLevel)) {
++    if (!clientApplication->initialize(consoleReader, configFiles, pathToInputFolder, logLevel, headless)) {
+         ACSDK_CRITICAL(LX("Failed to initialize SampleApplication"));
+         return nullptr;
+     }
+@@ -321,7 +322,8 @@
+     std::shared_ptr<alexaClientSDK::sampleApp::ConsoleReader> consoleReader,
+     const std::vector<std::string>& configFiles,
+     const std::string& pathToInputFolder,
+-    const std::string& logLevel) {
++    const std::string& logLevel,
++    bool headless) {
+     /*
+      * Set up the SDK logging system to write to the SampleApp's ConsolePrinter.  Also adjust the logging level
+      * if requested.
+@@ -854,7 +856,7 @@
+ #endif
+ 
+     // Creating the input observer.
+-    m_userInputManager = alexaClientSDK::sampleApp::UserInputManager::create(m_interactionManager, consoleReader);
++    m_userInputManager = alexaClientSDK::sampleApp::UserInputManager::create(m_interactionManager, consoleReader, headless);
+     if (!m_userInputManager) {
+         ACSDK_CRITICAL(LX("Failed to create UserInputManager!"));
+         return false;
+diff -ux '*.txt' -r SampleApp_org/src/UserInputManager.cpp SampleApp_patched/src/UserInputManager.cpp
+--- SampleApp_org/src/UserInputManager.cpp	2018-12-19 20:13:36.000000000 +0100
++++ SampleApp_patched/src/UserInputManager.cpp	2019-02-09 13:43:59.976578511 +0100
+@@ -96,7 +96,8 @@
+ 
+ std::unique_ptr<UserInputManager> UserInputManager::create(
+     std::shared_ptr<InteractionManager> interactionManager,
+-    std::shared_ptr<ConsoleReader> consoleReader) {
++    std::shared_ptr<ConsoleReader> consoleReader,
++    bool headless) {
+     if (!interactionManager) {
+         ACSDK_CRITICAL(LX("Invalid InteractionManager passed to UserInputManager"));
+         return nullptr;
+@@ -107,15 +108,17 @@
+         return nullptr;
+     }
+ 
+-    return std::unique_ptr<UserInputManager>(new UserInputManager(interactionManager, consoleReader));
++    return std::unique_ptr<UserInputManager>(new UserInputManager(interactionManager, consoleReader, headless));
+ }
+ 
+ UserInputManager::UserInputManager(
+     std::shared_ptr<InteractionManager> interactionManager,
+-    std::shared_ptr<ConsoleReader> consoleReader) :
++    std::shared_ptr<ConsoleReader> consoleReader,
++    bool headless) :
+         m_interactionManager{interactionManager},
+         m_consoleReader{consoleReader},
+         m_limitedInteraction{false},
++	headless{headless},
+         m_restart{false} {
+ }
+ 
+@@ -132,6 +135,10 @@
+     bool userTriggeredLogout = false;
+     m_interactionManager->begin();
+     while (true) {
++	if (headless) {
++	        std::this_thread::sleep_for(std::chrono::hours(100));
++	        continue;
++	}
+         char x;
+         if (!readConsoleInput(&x)) {
+             break;
