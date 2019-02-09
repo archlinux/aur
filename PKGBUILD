@@ -39,6 +39,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
+  rm -r "$pkgdir"/usr/lib
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
