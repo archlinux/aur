@@ -6,6 +6,7 @@ pkgbase = r-lambdar
 	arch = x86_64
 	license = GPL3
 	depends = r
+	depends = r-formatr
 	source = http://cran.r-project.org/src/contrib/lambda.r_1.2.3.tar.gz
 	md5sums = 662f16f71a65366e0492d43ad1523db7
 
