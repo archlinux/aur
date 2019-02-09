@@ -1,0 +1,20 @@
+pkgbase = r-scales-fix
+	pkgdesc = Scale Functions for Visualization
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/scales/index.html
+	arch = x86_64
+	license = GPL3
+	depends = r
+	depends = r-labeling
+	depends = r-munsell
+	depends = r-r6
+	depends = r-rcpp
+	depends = r-rcolorbrewer
+	provides = r-scales
+	conflicts = r-scales
+	source = http://cran.r-project.org/src/contrib/scales_1.0.0.tar.gz
+	md5sums = 89eec6d9e176fefb7f26655e1b0aa701
+
+pkgname = r-scales-fix
+
