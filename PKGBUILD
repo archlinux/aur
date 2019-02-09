@@ -1,26 +1,20 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=colorspace
-_cranver=1.3-2
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+# Contributor: Grey Christoforo <first name at last name dot net>
 pkgname=r-colorspace
-pkgver=${_cranver//[:-]/.}
+_cran_name=colorspace
+_pkgver=1.4-0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="Color Space Manipulation"
+pkgdesc="A Toolbox for Manipulating and Assessing Colors and Palettes"
 arch=('x86_64')
-url="https://cran.r-project.org/package=${_cranname}"
-license=('BSD')
-depends=('r' )
+url="http://cran.r-project.org/web/packages/${_cran_name}/index.html"
+license=('GPL3')
+depends=('r')
+source=("http://cran.r-project.org/src/contrib/${_cran_name}_${_pkgver}.tar.gz")
+md5sums=('121120c1686dddd41f7fe4c176565216')
 
-optdepends=('r-kernlab' 'r-mvtnorm' 'r-vcd' 'r-dichromat' 'r-shiny' 'r-shinyjs')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('63000bab81d995ff167df76fb97b2984')
-
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
-}
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
-}
+ mkdir -p $pkgdir/usr/lib/R/library
+ cd $srcdir
 
+ R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_cran_name}
+}
