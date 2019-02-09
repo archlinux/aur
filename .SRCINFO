@@ -1,7 +1,7 @@
 pkgbase = shadow-beta
 	pkgdesc = Shadow launcher
-	pkgver = 0.8.62
-	pkgrel = 4
+	pkgver = 0.9.22
+	pkgrel = 1
 	url = http://shadow.tech
 	install = shadow-beta.install
 	arch = x86_64
@@ -18,7 +18,6 @@ pkgbase = shadow-beta
 	depends = libdrm
 	depends = libnotify
 	depends = libva
-	depends = libva-vdpau-driver-shadow
 	depends = libxtst
 	depends = nss
 	depends = opus
@@ -35,7 +34,7 @@ pkgbase = shadow-beta
 	source = https://macosx.update.blade-group.fr/mpl/linux/beta/bionic/shadow-alpha-bionic.zip
 	source = https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/76fea495eda10a2a7edef93609d176ac141c648e/AppImage/wrapper.pl
 	source = https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/76fea495eda10a2a7edef93609d176ac141c648e/AppImage/report.pl
-	md5sums = bb5adca354d043b10bc5aca0a5afb37a
+	md5sums = 22bb2b72fe91d35fe6fe7311e7da091e
 	md5sums = acc9366ee43a7f4300969009b688bb0c
 	md5sums = 65b5ab84660ceddac9068765243ba432
 
