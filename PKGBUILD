@@ -18,7 +18,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${_plug}"
   echo "$(git describe --long --tags | tr - .)"
-  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
