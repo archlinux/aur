@@ -1,0 +1,18 @@
+pkgbase = python-apispec-webframeworks
+	pkgdesc = Web framework plugins for apispec (formally in apispec.ext).
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/marshmallow-code/apispec-webframeworks
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-apispec-webframeworks-0.3.0.tar.gz::https://github.com/marshmallow-code/apispec-webframeworks/archive/0.3.0.tar.gz
+	sha512sums = e301e7f84522c695044ba0621a78116986e7cedd1299bd8d13410a84ac546bf13c9d798ec53272a70f4c8fa3975a5ba55f59b7ab1a1b1df0a41d8564588068a6
+
+pkgname = python-apispec-webframeworks
+	depends = python
+
+pkgname = python2-apispec-webframeworks
+	depends = python2
+
