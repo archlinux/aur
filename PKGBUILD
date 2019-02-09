@@ -11,7 +11,7 @@
 
 pkgname=strongswan
 pkgver=5.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source IPsec implementation'
 url='https://www.strongswan.org'
 license=('GPL2')
@@ -23,6 +23,7 @@ optdepends=('libnm-glib: for networkmanager support'
             'mariadb: MySQL support'
             'ruby: Ruby support'
             'python: Python support'
+            'resolvconf: Resolveplugin'
             'openldap: LDAP support')
 # TODO: move to package() and use find
 backup=(
@@ -128,6 +129,8 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
+  install -Dm644 "${pkgdir}/etc/dbus-1/system.d/nm-strongswan-service.conf" "${pkgdir}/usr/share/dbus-1/system.d/nm-strongswan-service.conf"
+  rm -v "${pkgdir}/etc/dbus-1/system.d/nm-strongswan-service.conf"
 }
 
 # vim: ts=2 sw=2 et:
