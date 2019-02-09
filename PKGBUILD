@@ -1,7 +1,7 @@
 # Maintainer: metscoin <mets_coin@outlook.com>
 
 pkgname=tuxcoin-qt
-pkgver=1.05
+pkgver=2.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://tuxcoin.io/"

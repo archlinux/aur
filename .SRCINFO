@@ -18,7 +18,7 @@ pkgbase = tuxcoin-qt
 	depends = protobuf
 	depends = libevent
 	conflicts = tuxcoin
-	source = tuxcoin-qt::git+https://github.com/bleach86/tuxcoin-V2.git#tag=v1.05
+	source = tuxcoin-qt::git+https://github.com/bleach86/tuxcoin-V2.git#tag=v2.0
 	source = tuxcoin-qt.desktop
 	sha256sums = SKIP
 	sha256sums = c195ecaffd62aba75adb7a653a85b10164f1a4d37f9dcf016b8c03d3516e1d42
