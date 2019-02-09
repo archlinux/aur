@@ -1,7 +1,7 @@
 pkgbase = ruby-sinatra
 	pkgdesc = Classy web-development dressed in a DSL
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sinatrarb.com/
 	arch = any
 	license = MIT

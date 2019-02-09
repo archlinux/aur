@@ -4,7 +4,7 @@
 _gemname=sinatra
 pkgname=ruby-$_gemname
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Classy web-development dressed in a DSL'
 arch=(any)
 url='http://www.sinatrarb.com/'
@@ -20,7 +20,7 @@ package() {
   # Make sure to use --no-ri --no-rdoc as for some reason, installing the doc
   # take an unexpeted of time. This bug is known:
   # https://github.com/sinatra/sinatra/issues/1082
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem --no-ri --no-rdoc
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem --no-document
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
