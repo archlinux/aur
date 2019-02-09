@@ -5,7 +5,7 @@
 
 pkgbase=gtkhash
 pkgname=(gtkhash gtkhash-nemo gtkhash-nautilus gtkhash-thunar gtkhash-caja)
-pkgver=1.1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A GTK+ utility for computing message digests or checksums"
 arch=('i686' 'x86_64' 'mips64el')
@@ -14,7 +14,7 @@ license=('GPL')
 makedepends=('intltool' 'librsvg' 'nemo' 'libnautilus-extension' 'thunar' 'caja') # ← remove FMs here!
 depends=('dconf' 'nettle' 'gtk3')
 source=("https://github.com/tristanheaven/gtkhash/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('a18c09a6af5b26c79bda81ab8a1835679fefbf2b87f1df4858c42ad45729f6bf')
+sha256sums=('bd870bac6e14babfb6268b617a42e4bcd776559dd80dd62ad9f7cc28b773b8b2')
 
 build() {
   cd gtkhash-$pkgver
@@ -38,7 +38,7 @@ package_gtkhash-nemo() {
 
   make -C gtkhash-$pkgver/src/nautilus DESTDIR="$pkgdir/" install
   # remove other filemanager plugins
-  rm -rf "$pkgdir"/usr/lib/{thunarx-2,nautilus,caja}
+  rm -rf "$pkgdir"/usr/lib/{thunarx-{2,3},nautilus,caja}
 }
 
 package_gtkhash-nautilus() {
@@ -47,7 +47,7 @@ package_gtkhash-nautilus() {
 
   make -C gtkhash-$pkgver/src/nautilus DESTDIR="$pkgdir/" install
   # remove other filemanager plugins
-  rm -rf "$pkgdir"/usr/lib/{thunarx-2,caja,nemo}
+  rm -rf "$pkgdir"/usr/lib/{thunarx-{2,3},caja,nemo}
 }
 
 package_gtkhash-thunar() {
@@ -65,5 +65,5 @@ package_gtkhash-caja() {
 
   make -C gtkhash-$pkgver/src/nautilus DESTDIR="$pkgdir/" install
   # remove other filemanager plugins
-  rm -rf "$pkgdir"/usr/lib/{thunarx-2,nautilus,nemo}
+  rm -rf "$pkgdir"/usr/lib/{thunarx-{2,3},nautilus,nemo}
 }
