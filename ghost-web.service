@@ -1,0 +1,14 @@
+[Unit]
+Description=Ghost systemd service.
+Documentation=https://docs.ghost.org
+
+[Service]
+Type=simple
+WorkingDirectory=/var/lib/ghost-web
+User=ghost
+Environment="NODE_ENV=production"
+ExecStart=/usr/bin/ghost-web run
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,10 @@
+post_install() {
+    chown ghost-web:ghost-web /var/lib/ghost-web
+    su -ls /bin/sh ghost-web -c 'ghost-web install 2.14.0 --no-stack --no-setup --dir /var/lib/ghost-web'
+
+    echo "---"
+    echo "NOTE: the ghost cli tool binary is renamed to \"ghost-web\"."
+    echo "Run \"su -ls /bin/sh ghost-web -c 'cd /var/lib/ghost-web; ghost-web setup --no-setup-systemd --no-setup-linux-user --no-start'\" to complete installation."
+    echo "Start the server with \"systemctl start ghost-web\"."
+    echo "---"
+}

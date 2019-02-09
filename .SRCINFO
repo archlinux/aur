@@ -1,0 +1,21 @@
+pkgbase = ghost-web
+	pkgdesc = Full-featured nodejs blogging platform
+	pkgver = 2.14.0
+	pkgrel = 1
+	url = https://ghost.org/
+	install = ghost-web.install
+	arch = any
+	license = GPL
+	makedepends = npm
+	depends = nodejs-lts-dubnium
+	depends = mysql
+	noextract = ghost-cli-1.9.9.tgz
+	source = https://registry.npmjs.org/ghost-cli/-/ghost-cli-1.9.9.tgz
+	source = ghost-web.service
+	source = ghost-web-sysusers.conf
+	md5sums = 9444181acef44d357af672ef9817899b
+	md5sums = 3ad42d4f2ab2a7d4dd02bc9170de2c8b
+	md5sums = 80dabee626a96ba2403a3bdb4d351d5c
+
+pkgname = ghost-web
+
