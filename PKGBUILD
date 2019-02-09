@@ -2,8 +2,8 @@
 # Contributor: hexchain <i at hexchain.org>
 pkgname=hmcl
 _pkgname=HMCL
-pkgver=3.2.117
-_pkgver=3.2.117
+pkgver=3.2.119
+_pkgver=3.2.119
 pkgrel=1
 pkgdesc="Hello Minecraft! Launcher, a powerful Minecraft launcher."
 arch=(any)
@@ -20,13 +20,13 @@ source=('hmcl-launch-script'
 prepare() {
 #    cd "$srcdir"
     sed "s|@@VERSION@@|1.1|" hmcl.desktop.in > hmcl.desktop
-    unzip -o "HMCL-$_pkgver.jar" assets/img/icon.png
+    unzip -o "$pkgname-$_pkgver.jar" assets/img/icon.png
 }
 
 package() {
 #    cd "$srcdir"
-    install -D -m755 "${srcdir}/hmcl-launch-script" "${pkgdir}/usr/bin/hmcl"
-    install -D -m644 "${srcdir}/HMCL-${_pkgver}.jar" "${pkgdir}/usr/share/hmcl/HMCL.jar"
+    install -D -m755 "${srcdir}/hmcl-launch-script" "${pkgdir}/usr/bin/$pkgname"
+    install -D -m644 "${srcdir}/$pkgname-${_pkgver}.jar" "${pkgdir}/usr/share/$pkgname/HMCL.jar"
     install -D -m644 "${srcdir}/hmcl.desktop" "${pkgdir}/usr/share/applications/hmcl.desktop"
 
     # install icon
@@ -41,4 +41,4 @@ package() {
 }
 sha256sums=('0300218f29af82e9b302a94b37a4c9a92aea26b960bfd1b2e16c0130ac61cfcf'
             '648306b8b67fa9bcb531f065dabec20502ec8717788d1f65cf8e21b55c6c706c'
-            '5ee482d47cb19b9963a5aa57b3598c9cf89484a779e115ec2e247b1b3972644f')
+            '76a8d9545d56336ddafb0686c02e40d57cc16561e40eed9f872b438efb18897d')
