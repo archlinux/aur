@@ -5,7 +5,7 @@ pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=v6.0.gf1bc9a9
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=171785'
 license=('GPL')
 depends=('vapoursynth')
@@ -13,7 +13,7 @@ makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/MonoS/VS-ContinuityFixer.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -23,7 +23,8 @@ pkgver() {
 prepare() {
   cd "${_plug}"
   echo "all:
-	  g++ -o lib${_plug}.so -std=gnu++11 ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS} $(pkg-config --cflags vapoursynth) continuity.cpp -shared -msse2 -mfpmath=sse -Wall -fPIC" > Makefile
+	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o continuity.o continuity.cpp
+	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so continuity.o" > Makefile
 }
 
 build() {
@@ -34,5 +35,6 @@ build() {
 package(){
   cd "${_plug}"
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
+
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
