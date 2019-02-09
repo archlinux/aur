@@ -15,6 +15,9 @@ conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vapoursynth-descale.git")
 sha256sums=('SKIP')
 
+
+_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+
 pkgver() {
   cd "${_plug}"
   echo "$(git describe --long --tags | tr - .)"
@@ -33,6 +36,10 @@ build() {
 
 package(){
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
+
+  install -Dm644 descale/descale.py "${pkgdir}${_site_packages}/${_plug}.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 
   install -Dm644 descale/README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 descale/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
