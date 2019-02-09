@@ -18,7 +18,7 @@
 #   - replace setools 3.3.8 with setools3-libs and install setools then.
 
 pkgname=setools
-pkgver=4.2.0
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="Policy analysis tools for SELinux"
 groups=('selinux')
@@ -32,21 +32,21 @@ makedepends=('cython' 'python-setuptools' 'python-tox')
 checkdepends=('checkpolicy')
 conflicts=("selinux-${pkgname}")
 provides=("selinux-${pkgname}=${pkgver}-${pkgrel}")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SELinuxProject/setools/archive/${pkgver}.tar.gz")
-sha256sums=('6a8893fbaf3bd79154b5e9677ae16cb20c02de8c52c95890a61cecb07daaa700')
+source=("https://github.com/SELinuxProject/setools/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('16cabe918ab5938515e4e3b80f56916a6c30b5eebbff8cbac113d0dc83b818c9')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   python setup.py build_ext
   python setup.py build
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   python setup.py test
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
