@@ -5,9 +5,11 @@ pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=v3.0.g77a20a5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=171555'
-license=('custom:WTFPL' 'LGPL')
+license=('custom:WTFPL'
+         'LGPL'
+         )
 depends=('vapoursynth'
          'libsndfile'
          )
@@ -36,12 +38,14 @@ build() {
   ./configure \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
+
   make
 }
 
 package(){
   cd "${_plug}"
   make DESTDIR="${pkgdir}" install
+
   install -Dm644 readme.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
   install -Dm644 ../COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
