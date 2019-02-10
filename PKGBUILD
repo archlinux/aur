@@ -12,7 +12,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('gtk3' 'lv2' 'lilv' 'suil' 'jack' 'libsndfile' 'libsmf' 'libdazzle' 'breeze-icons'
          'libcyaml' 'portaudio')
-makedepends=('git' 'portaudio-svn')
+makedepends=('git')
 source=("$_pkgname::git+https://git.zrythm.org/zrythm/zrythm.git")
 md5sums=('SKIP')
 

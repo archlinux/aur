@@ -6,7 +6,6 @@ pkgbase = zrythm-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = portaudio-svn
 	depends = gtk3
 	depends = lv2
 	depends = lilv
