@@ -1,4 +1,4 @@
-# Maintainer: Pawel Mosakowski <pawel@mosakowski.net>
+# Maintainer: Pawel Mosakowski <pawel at mosakowski dot net>
 pkgname=appgate-sdp
 conflicts=('appgate-sdp-headless')
 pkgver=4.2.1
