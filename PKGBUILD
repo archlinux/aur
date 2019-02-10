@@ -1,8 +1,8 @@
 # Maintainer: Akrai <drokergeek@gmail.com>
-# Thanks to azurata for his help
+# Thanks to azurata and Skidnik for their jobs
 
 pkgname=systemd-guest-user
-pkgver=20.3a2a22c
+pkgver=1.0
 pkgrel=1
 url='https://github.com/Akrai/systemd-guest-user'
 pkgdesc='A simple systemd configurations for guest user support'
