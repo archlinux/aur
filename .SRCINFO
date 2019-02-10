@@ -15,6 +15,7 @@ pkgbase = liri-power-manager-git
 	depends = qt5-gsettings-git
 	depends = fluid-git
 	depends = libliri-git
+	depends = solid
 	provides = liri-power-manager
 	conflicts = liri-power-manager
 	replaces = liri-power-manager
