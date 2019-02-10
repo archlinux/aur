@@ -1,6 +1,6 @@
 pkgbase = cbmc-bin
 	pkgdesc = Bounded Model Checking for ANSI-C
-	pkgver = 5.10
+	pkgver = 5.11
 	pkgrel = 1
 	url = http://www.cprover.org/cbmc/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = cbmc-bin
 	provides = cbmc
 	conflicts = cbmc
 	conflicts = cbmc-git
-	source = http://www.cprover.org/cbmc/download/cbmc-5-10-linux-64.tgz
-	sha256sums = 19241d74848f0d85fbbec3f217c6dacd1e7100bae31cf48aef2e501a4e120a9f
+	source = http://www.cprover.org/cbmc/download/cbmc-5-11-linux-64.tgz
+	sha256sums = 6be102146cebe21390c78062eedadd3368b93790af2147313ac6f6cc11958ea6
 
 pkgname = cbmc-bin
 

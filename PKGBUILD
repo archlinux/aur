@@ -2,7 +2,7 @@
 # Contributor: Johannes Schlatow <johannes.schlatow@googlemail.com>
 
 pkgname=cbmc-bin
-pkgver=5.10
+pkgver=5.11
 pkgrel=1
 pkgdesc="Bounded Model Checking for ANSI-C"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ provides=('cbmc')
 conflicts=('cbmc' 'cbmc-git')
 # No longer provide official pre-build x32 pkg.
 # Suggest to use cbmc or cbmc-git if you are in x32 platform
-source=("http://www.cprover.org/cbmc/download/cbmc-5-10-linux-64.tgz")
-sha256sums=('19241d74848f0d85fbbec3f217c6dacd1e7100bae31cf48aef2e501a4e120a9f')
+source=("http://www.cprover.org/cbmc/download/cbmc-5-11-linux-64.tgz")
+sha256sums=('6be102146cebe21390c78062eedadd3368b93790af2147313ac6f6cc11958ea6')
 
 package() {
     install -D "${srcdir}/cbmc" "${pkgdir}/usr/bin/cbmc"
