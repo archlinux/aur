@@ -2,7 +2,7 @@
 
 pkgname=('python-loguru')
 pkgver=0.2.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Python logging made (stupidly) simple'
 arch=('any')
 url='https://github.com/Delgan/loguru'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-colorama' 'python-better-exceptions-fork' 'python-ansimarkup')
 makedepends=('python-setuptools')
 source=("https://github.com/Delgan/loguru/archive/master.zip")
-md5sums=('6503d88aa9e298bae092b96f9a49a75b')
+md5sums=('SKIP')
 
 package() {
   cd "loguru-master"
