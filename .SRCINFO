@@ -1,7 +1,7 @@
 pkgbase = kim-api
 	pkgdesc = Online framework for reliable, reproducible and portable molecular simulations
-	pkgver = 2.0.0_beta.3
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://openkim.org
 	install = kim-api.install
 	arch = i686
@@ -9,11 +9,9 @@ pkgbase = kim-api
 	license = CDDL
 	makedepends = gcc-libs
 	depends = bash
-	source = https://s3.openkim.org/kim-api/kim-api-v2-2.0.0-beta.3.txz
-	source = Fix-major-version-variable-name-in-CM.patch
+	source = https://s3.openkim.org/kim-api/kim-api-v2-2.0.0.txz
 	source = Fix-Doxygen-command-error.patch
-	sha512sums = 22ec9661a48753676de3a20990ad712feab9c0ca0519e3c45f98d3a5ad49d3f0b33496968ac3cfe9f2c0d5bf52ea6dbd47c0283f61b35222f5fa7d1e1ccf3ed5
-	sha512sums = a525539af26238560e310aa7ad23eec75fd87b1f2f82280ace8d61630c41b7780cabfdfa561d6d235101126e74e9d50ee4b767f992dd37948defa3ec589df318
+	sha512sums = 709f7ba26e9ab2a6b55636989fb891e64fada4123fc20c55b69a5555a21a00105053abd3826e0a317856a0ec07c79369a68b185a204fe145ca8d94c455afa5b4
 	sha512sums = e2771561f05b49b7ed46b265af6a2c81ad8fbde9e6ab9f2632822764de5802ac0e91973e66d5240136ea7e9a8b82befc312dbbb3bccdb84d8875744851fcb146
 
 pkgname = kim-api
