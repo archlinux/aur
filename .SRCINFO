@@ -1,7 +1,7 @@
 pkgbase = petsc
 	pkgdesc = Portable, extensible toolkit for scientific computation
 	pkgver = 3.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mcs.anl.gov/petsc/
 	install = petsc.install
 	arch = i686
