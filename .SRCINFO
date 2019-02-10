@@ -1,0 +1,13 @@
+pkgbase = auctex-latexmk
+	pkgdesc = latexmk support for auctex
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/tom-tan/auctex-latexmk
+	arch = any
+	license = GPL
+	depends = auctex
+	source = auctex-latexmk-1.0.2.tar.gz::https://github.com/tom-tan/auctex-latexmk/archive/v1.0.2.tar.gz
+	sha256sums = 980c40c5781b2cd2ec15d21c1801547cdc4e18a44dfcb07473f046fefe2f5857
+
+pkgname = auctex-latexmk
+
