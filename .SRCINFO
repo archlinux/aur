@@ -1,0 +1,27 @@
+pkgbase = appgate-sdp-headless
+	pkgdesc = Software Defined Perimeter - headless client. Does not support 2FA.
+	pkgver = 4.2.1
+	pkgrel = 1
+	url = https://www.cyxtera.com/essential-defense/appgate-sdp/support
+	arch = x86_64
+	license = custom
+	depends = glib2>=2.31.8
+	depends = iptables
+	depends = libsecret>=0.18
+	depends = python-dbus
+	depends = zlib>=1.1.4
+	depends = dnsmasq
+	optdepends = bash-completion>=1.18
+	provides = appgate-sdp
+	conflicts = appgate-sdp
+	options = !strip
+	options = !emptydirs
+	backup = etc/appgate.conf
+	backup = etc/dbus-1/system.d/appgate.conf
+	source = https://sdpdownloads.cyxtera.com/AppGate-SDP-4.2/clients/appgate-sdp-headless_4.2.1_amd64.deb
+	source = appgatedriver.service
+	md5sums = dae5932ecc0e8f80efdaf7bae9ea2f70
+	md5sums = b5946b4a978c39467714f58e04726491
+
+pkgname = appgate-sdp-headless
+
