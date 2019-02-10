@@ -3,10 +3,10 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=pulseeffects-git
-pkgver=20190209
+pkgver=4.4.7.r131.g58be1741
 pkgrel=1
 pkgdesc='Audio Effects for Pulseaudio Applications'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/wwmm/pulseeffects'
 license=('GPL3')
 depends=('gtk3' 'gtkmm3' 'glibmm' 'libpulse' 'gstreamer' 'gst-plugins-good' 'gst-plugins-bad'
@@ -21,6 +21,11 @@ source=("git+https://github.com/wwmm/pulseeffects.git")
 conflicts=(pulseeffects)
 provides=(pulseeffects)
 sha512sums=('SKIP')
+
+pkgver() {
+  cd pulseeffects
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   mkdir -p pulseeffects/build
