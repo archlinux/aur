@@ -2,7 +2,7 @@
 
 pkgname=lemonade-git
 pkgver=v1.1.1.r14.gddbd6c1
-pkgrel=2
+pkgrel=3
 pkgdesc="Lemonade is a remote utility tool. (copy, paste and open browser) over TCP."
 url="https://github.com/pocke/lemonade"
 arch=('x86_64' 'i686')
@@ -35,7 +35,8 @@ build() {
 	mkdir -p build
 
 	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
-	go build -ldflags "-s -w" \
+	go build \
+		-ldflags "-s -w -X github.com/lemonade-command/lemonade/lemon.Version=${pkgver}" \
 		-gcflags="all=-trimpath=${GOPATH}/src" \
 		-asmflags="all=-trimpath=${GOPATH}/src" \
 		-o build/lemonade
@@ -44,6 +45,6 @@ build() {
 package() {
 	cd "${srcdir}/go/src/github.com/pocke/lemonade"
 
-	install -Dm755 "./build/lemonade" "${pkgdir}/usr/bin/lemonade"
-	install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm755 "build/lemonade" "${pkgdir}/usr/bin/lemonade"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
