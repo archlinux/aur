@@ -9,8 +9,6 @@ pkgbase = python-lpsolve
 	depends = lpsolve
 	depends = python-numpy
 	source = git+https://github.com/chandu-atina/lp_solve_python_3x.git
-	source = sitedir.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = python-lpsolve

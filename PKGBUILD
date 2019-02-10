@@ -7,12 +7,11 @@ arch=('x86_64')
 url="https://github.com/chandu-atina/lp_solve_python_3x"
 depends=('lpsolve' 'python-numpy')
 makedepends=('python-setuptools')
-source=("git+https://github.com/chandu-atina/lp_solve_python_3x.git" sitedir.patch)
-sha256sums=('SKIP' SKIP)
+source=("git+https://github.com/chandu-atina/lp_solve_python_3x.git")
+sha256sums=('SKIP')
 
 prepare() {
   cd lp_solve_python_3x/extra/Python
-  patch -p4 -i "${srcdir}/sitedir.patch"
 }
 
 build() {
