@@ -1,6 +1,6 @@
 pkgbase = kvirc-git
 	pkgdesc = Qt5 based IRC-Client, compiled with kde5 support - Git Version
-	pkgver = 5.0.0.beta1.r82.g8db61929f
+	pkgver = 5.0.0.r47.g9b35d44fd
 	pkgrel = 1
 	url = http://www.kvirc.net
 	arch = i686
