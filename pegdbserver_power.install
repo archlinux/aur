@@ -1,0 +1,8 @@
+post_install() {
+	udevadm control -R
+}
+
+post_remove() {
+	udevadm control -R
+}
+
