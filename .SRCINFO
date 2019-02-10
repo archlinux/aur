@@ -1,0 +1,14 @@
+pkgbase = python-ansimarkup
+	pkgdesc = Produce colored terminal text with an xml-like markup
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/gvalkov/python-ansimarkup
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/gvalkov/python-ansimarkup/archive/master.zip
+	md5sums = 5b504c291ebbd0e0b93062318faa7f2d
+
+pkgname = python-ansimarkup
+
