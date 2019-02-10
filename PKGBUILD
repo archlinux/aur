@@ -2,10 +2,10 @@
 # Contributor: garion < garion @ mailoo.org >
 
 pkgname=vobsub2srt-git
-pkgver=1.0pre7.9.gd4c34ca
+pkgver=v1.0pre7.11.g0ba6e25
 pkgrel=1
 pkgdesc="Convert IDX/SUB subtitles into SRT text subtitles"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/ruediger/VobSub2SRT'
 license=('GPL')
 depends=('tesseract')
@@ -18,23 +18,25 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd vobsub2srt
-  echo "$(git describe --tags --dirty --always | tr - . | tr -d 'v')"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 prepare() {
   mkdir -p build
+
+  sed 's|-Wno-long-long|& -std=gnu++11|g' -i vobsub2srt/CMakeLists.txt
 }
 
-build(){
+build() {
   cd build
   cmake ../vobsub2srt \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBASH_COMPLETION_PATH=/usr/share/bash-completion/completions
 
   make
 }
 
-package(){
+package() {
   make -C build DESTDIR="${pkgdir}" install
 }
