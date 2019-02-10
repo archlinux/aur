@@ -1,0 +1,29 @@
+pkgbase = gpac-headless
+	pkgdesc = MPEG-4 multimedia framework, headless version for server deployment
+	pkgver = 0.5.2.r3817.g8b9f06546
+	pkgrel = 1
+	epoch = 1
+	url = https://gpac.wp.imt.fr/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = LGPL
+	makedepends = git
+	makedepends = jack
+	makedepends = a52dec
+	makedepends = freetype2
+	makedepends = faad2
+	makedepends = libmad
+	depends = ffmpeg
+	depends = openssl
+	optdepends = jack: for jack support
+	optdepends = a52dec: for A52 support
+	optdepends = faad2: for AAC support
+	optdepends = libmad: for mp3 support
+	provides = gpac
+	conflicts = gpac
+	source = git+https://github.com/gpac/gpac.git
+	sha256sums = SKIP
+
+pkgname = gpac-headless
+
