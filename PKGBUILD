@@ -37,13 +37,17 @@ _skip_qtscript=true
 _skip_qtwebengine=false
 _skip_qtwidgets=true
 _static_build=false
-_build_from_head=false
+_build_from_local_src_tree=false
 _patching=true
 _minimal=true
 _uber_minimal=false
 
 if [[ -z ${startdir} ]]; then
   _building=false;
+fi
+
+if [[ -f build-from-local-src-tree  ]]; then
+  _build_from_local_src_tree=true
 fi
 
 if [[ -f target-host ]]; then
@@ -93,7 +97,7 @@ _pkgverpatch=".1"
 _dev_suffix=""
 pkgrel=1
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
-$_build_from_head && pkgver=6.6.6
+$_build_from_local_src_tree && pkgver=6.6.6
 _pkgver=${pkgver}
 _release_type="development_releases"
 _profiled_gpu_fn=qpi-proprietary.sh
@@ -151,7 +155,7 @@ fi
 
 if [[ -z "${_dev_suffix}" ]]; then _release_type="official_releases"; fi
 
-$_build_from_head && _patching=false && _shadow_build=true
+$_build_from_local_src_tree && _patching=false
 
 # PKGBUILD vars
 
@@ -296,9 +300,12 @@ _core_configure_options=" \
 
 _tar_xz_sha256="caffbd625c7bc10ff8c5c7a27dbc7d84fa4de146975c0e1ffe904b514ccd6da4"
 
-if ! $_build_from_head; then
-  source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.tar.xz")
-  sha256sums=("SKIP" "$_tar_xz_sha256")
+source=("git://github.com/sirspudd/mkspecs.git")
+sha256sums=("SKIP")
+
+if ! $_build_from_local_src_tree; then
+  source+=("${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.tar.xz")
+  sha256sums+=("$_tar_xz_sha256")
 fi
 
 options=('!strip')
@@ -339,7 +346,7 @@ adjust_bin_dir() {
 }
 
 adjust_src_dir() {
-  if $_build_from_head; then
+  if $_build_from_local_src_tree; then
      if [[ -z $_local_qt5_repo ]]; then echo "Need to set a repo dir to build from head"; exit 1; fi
     _srcdir=$_local_qt5_repo
   fi
