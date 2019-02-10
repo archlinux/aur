@@ -5,9 +5,9 @@
 
 pkgname=buildbot
 pkgdesc='The Continuous Integration Framework'
-pkgver=1.8.0
+pkgver=2.0.1
 # `git rev-parse v$pkgver`
-_tag_rev=5b1106e9e2898cff174e7dd4f03dfd80a5c79f16
+_tag_rev=4c358c260bd9a339ce167a28b8dd6d19cd7a413f
 pkgrel=1
 arch=(any)
 url='https://buildbot.net'
@@ -25,6 +25,7 @@ optdepends=(
   'python-lz4: to compress logs using lz4'
   'python-treq: for using HTTP requests as steps'
   'python-txrequests: for using HTTP requests as steps'
+  'python-pyopenssl: to use SSL/TLS in mail or IRC notifiers'
 )
 source=("git+https://github.com/buildbot/buildbot?signed#tag=$_tag_rev")
 sha256sums=('SKIP')
