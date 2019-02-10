@@ -19,5 +19,5 @@ build() {
 package() {
 	cd excalibar/lib
 	make DESTDIR="$pkgdir" install
-	install -D -m644 ../LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/WTFPL"
+	install -D -m644 ../license.md "${pkgdir}/usr/share/licenses/${pkgname}/WTFPL"
 }
