@@ -3,12 +3,12 @@
 
 pkgname=avs-alexa-sampleapp
 pkgver=1.11
-pkgrel=4
+pkgrel=5
 pkgdesc="Alexa sample app originally packaged with the AVS SDK"
 arch=('any')
 url="https://github.com/alexa/avs-device-sdk"
 license=('Apache')
-makedepends=('cmake')
+makedepends=('cmake' 'gcc49')
 depends=('portaudio' 'gstreamer' 'gst-plugins-base-libs' 'avs-device-sdk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alexa/avs-device-sdk/archive/v${pkgver}.tar.gz"
 	"CMakeLists.txt_1"
