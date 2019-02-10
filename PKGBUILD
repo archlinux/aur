@@ -1,7 +1,7 @@
 # Maintainer: Marco von Rosenberg <codingmarco@gmail.com>
 
 pkgname=mlrpt
-pkgver=1.1
+pkgver=1.4
 pkgrel=1
 pkgdesc="Non-interactivr command-line version of glrpt for receiving, decoding and saving LRPT images from the Russian Meteor-M type of weather satellites"
 arch=('x86_64')
