@@ -41,9 +41,9 @@ optdepends=('pikaur: for AUR support'
 provides=('octopi-kde-git')
 conflicts=('octopi-git' 'octopi-kde-git')
 source=('octopi-repoeditor.desktop'
-        "https://code.chakralinux.org/packages/desktop/raw/master/octopi/0001-remove-qtermwidget.patch"
-        "https://gitlab.com/kikadf/patches/raw/master/octopi/0002-add-pikaur-support.patch"
-        "icons::git+https://gitlab.com/kikadf/octopicons.git")
+        '0001-remove-qtermwidget.patch'
+        '0002-add-pikaur-support.patch'
+        'icons::git+https://gitlab.com/kikadf/octopicons.git')
 sha256sums=('131f16745df685430db55e54ede6da66aed9b02ca00d6d873a002b2a3e1c90ef'
             'bdf668ae3bcbac4bf908d96ce4115bac77bf8d4e58796d12fc2cd4e8ee8294e7'
             '18d3ee70f520045035c5d9ede6dc5e6121f0f258fe4eaa743551aaf6bd9b0181'

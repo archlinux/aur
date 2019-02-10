@@ -1,0 +1,479 @@
+diff -Naur a/CHANGELOG b/CHANGELOG
+--- a/CHANGELOG	2018-06-08 21:06:21.000000000 +0200
++++ b/CHANGELOG	2018-06-09 21:59:40.723493519 +0200
+@@ -2,6 +2,7 @@
+   Parser changes: added counter for processed packages.  
+   Group pane now spans all window's height.
+   SysInfo now uses ptpb site and does not block interface.
++  Added Pikaur (AUR tool) support.
+   Added Trizen (AUR tool) support.
+   Added Terminal tab if user compiles project with libqtermwidget5 support.
+   Added Terminal dialog in Notifier (AUR update) if user compiles project with 
+diff -Naur a/src/constants.h b/src/constants.h
+--- a/src/constants.h	2018-06-08 21:06:21.000000000 +0200
++++ b/src/constants.h	2018-06-09 21:58:39.050161089 +0200
+@@ -64,6 +64,8 @@
+ const QString ctn_KEY_YAOURT_NO_CONFIRM_PARAM("Yaourt_No_Confirm_Param");
+ const QString ctn_KEY_TRIZEN_NO_CONFIRM_PARAM("Trizen_No_Confirm_Param");
+ const QString ctn_KEY_TRIZEN_NO_EDIT_PARAM("Trizen_No_Edit_Param");
++const QString ctn_KEY_PIKAUR_NO_CONFIRM_PARAM("Pikaur_No_Confirm_Param");
++const QString ctn_KEY_PIKAUR_NO_EDIT_PARAM("Pikaur_No_Edit_Param");
+ const QString ctn_KEY_SEARCH_OUTDATED_AUR_PACKAGES("Search_Outdated_AUR_Packages");
+ const QString ctn_KEY_BACKEND("Backend");
+ const QString ctn_KEY_CURRENT_TAB_INDEX("Current_Tab_Index");
+@@ -118,6 +120,7 @@
+ const QString ctn_PACAUR_TOOL("pacaur");
+ const QString ctn_YAOURT_TOOL("yaourt");
+ const QString ctn_TRIZEN_TOOL("trizen");
++const QString ctn_PIKAUR_TOOL("pikaur");
+ const QString ctn_NO_AUR_TOOL("DO_NOT_USE_AUR");
+ 
+ const QString ctn_KCP_TOOL("kcp");
+diff -Naur a/src/optionsdialog.cpp b/src/optionsdialog.cpp
+--- a/src/optionsdialog.cpp	2018-06-08 21:06:21.000000000 +0200
++++ b/src/optionsdialog.cpp	2018-06-09 21:58:39.053494422 +0200
+@@ -234,6 +234,7 @@
+   bool pacaurTool=false;
+   bool yaourtTool=false;
+   bool trizenTool=false;
++  bool pikaurTool=false;
+ 
+   if ((UnixCommand::getLinuxDistro() != ectn_KAOS) &&
+     (UnixCommand::getLinuxDistro() != ectn_CHAKRA &&
+@@ -245,9 +246,11 @@
+       yaourtTool=true;
+     if (UnixCommand::hasTheExecutable(ctn_TRIZEN_TOOL))
+       trizenTool=true;
++    if (UnixCommand::hasTheExecutable(ctn_PIKAUR_TOOL))
++      pikaurTool=true;
+   }
+ 
+-  if (!pacaurTool && !yaourtTool && !trizenTool)
++  if (!pacaurTool && !yaourtTool && !trizenTool && !pikaurTool)
+   {
+     removeTabByName("AUR");
+   }
+@@ -270,8 +273,14 @@
+       cbTrizenNoConfirm->setEnabled(false);
+       cbTrizenNoEdit->setEnabled(false);
+     }
++    if (!pikaurTool)
++    {
++      rbPikaur->setEnabled(false);
++      cbPikaurNoConfirm->setEnabled(false);
++      cbPikaurNoEdit->setEnabled(false);
++    }
+ 
+-    if (!pacaurTool && !yaourtTool && !trizenTool)
++    if (!pacaurTool && !yaourtTool && !trizenTool && !pikaurTool)
+     {
+       cbSearchOutdatedAURPackages->setEnabled(false);
+     }
+@@ -282,6 +291,8 @@
+       rbYaourt->setChecked(true);
+     else if (SettingsManager::getAURToolName() == ctn_TRIZEN_TOOL)
+       rbTrizen->setChecked(true);
++    else if (SettingsManager::getAURToolName() == ctn_PIKAUR_TOOL)
++      rbPikaur->setChecked(true);
+     else if (SettingsManager::getAURToolName() == ctn_NO_AUR_TOOL)
+     {
+       rbDoNotUse->setChecked(true);
+@@ -297,11 +308,14 @@
+     connect(rbPacaur, SIGNAL(toggled(bool)), this, SLOT(onPacaurSelected(bool)));
+     connect(rbYaourt, SIGNAL(toggled(bool)), this, SLOT(onYaourtSelected(bool)));
+     connect(rbTrizen, SIGNAL(toggled(bool)), this, SLOT(onTrizenSelected(bool)));
++    connect(rbPikaur, SIGNAL(toggled(bool)), this, SLOT(onPikaurSelected(bool)));
+ 
+     cbPacaurNoConfirm->setChecked(SettingsManager::getPacaurNoConfirmParam());
+     cbPacaurNoEdit->setChecked(SettingsManager::getPacaurNoEditParam());
+     cbTrizenNoConfirm->setChecked(SettingsManager::getTrizenNoConfirmParam());
+     cbTrizenNoEdit->setChecked(SettingsManager::getTrizenNoEditParam());
++    cbPikaurNoConfirm->setChecked(SettingsManager::getPikaurNoConfirmParam());
++    cbPikaurNoEdit->setChecked(SettingsManager::getPikaurNoEditParam());
+     cbYaourtNoConfirm->setChecked(SettingsManager::getYaourtNoConfirmParam());
+     cbSearchOutdatedAURPackages->setChecked(SettingsManager::getSearchOutdatedAURPackages());
+   }    
+@@ -559,6 +573,11 @@
+       SettingsManager::setAURTool(ctn_TRIZEN_TOOL);
+       AURHasChanged = true;
+     }
++    else if (rbPikaur->isChecked() && SettingsManager::getAURToolName() != ctn_PIKAUR_TOOL)
++    {
++      SettingsManager::setAURTool(ctn_PIKAUR_TOOL);
++      AURHasChanged = true;
++    }
+     else if (rbDoNotUse->isChecked() && SettingsManager::getAURToolName() != ctn_NO_AUR_TOOL)
+     {
+       SettingsManager::setAURTool(ctn_NO_AUR_TOOL);
+@@ -590,6 +609,16 @@
+       SettingsManager::setTrizenNoEditParam(cbTrizenNoEdit->isChecked());
+       AURHasChanged = true;
+     }
++    if (cbPikaurNoConfirm->isChecked() != SettingsManager::getPikaurNoConfirmParam())
++    {
++      SettingsManager::setPikaurNoConfirmParam(cbPikaurNoConfirm->isChecked());
++      AURHasChanged = true;
++    }
++    if (cbPikaurNoEdit->isChecked() != SettingsManager::getPikaurNoEditParam())
++    {
++      SettingsManager::setPikaurNoEditParam(cbPikaurNoEdit->isChecked());
++      AURHasChanged = true;
++    }
+ 
+     if (cbSearchOutdatedAURPackages->isChecked() != SettingsManager::getSearchOutdatedAURPackages())
+     {
+@@ -743,6 +772,14 @@
+ {
+   if (checked) cbSearchOutdatedAURPackages->setEnabled(true);
+ }
++
++/*
++ * Whenever user selects the Pikaur tool
++ */
++void OptionsDialog::onPikaurSelected(bool checked)
++{
++  if (checked) cbSearchOutdatedAURPackages->setEnabled(true);
++}
+ 
+ void OptionsDialog::removeTabByName(const QString &tabName)
+ {
+diff -Naur a/src/optionsdialog.h b/src/optionsdialog.h
+--- a/src/optionsdialog.h	2018-06-08 21:06:21.000000000 +0200
++++ b/src/optionsdialog.h	2018-06-09 21:58:39.053494422 +0200
+@@ -80,6 +80,7 @@
+   void onPacaurSelected(bool checked);
+   void onYaourtSelected(bool checked);
+   void onTrizenSelected(bool checked);
++  void onPikaurSelected(bool checked);
+ };
+ 
+ #endif // OptionsDialog_H
+diff -Naur a/src/package.cpp b/src/package.cpp
+--- a/src/package.cpp	2018-06-08 21:06:21.000000000 +0200
++++ b/src/package.cpp	2018-06-09 21:59:55.620159967 +0200
+@@ -356,6 +363,7 @@
+   if (getForeignRepositoryToolName() != ctn_YAOURT_TOOL &&
+       getForeignRepositoryToolName() != ctn_PACAUR_TOOL &&
+       getForeignRepositoryToolName() != ctn_TRIZEN_TOOL &&
++      getForeignRepositoryToolName() != ctn_PIKAUR_TOOL &&
+       getForeignRepositoryToolName() != ctn_KCP_TOOL)
+     return res;
+ 
+@@ -376,6 +384,7 @@
+     {
+       if (getForeignRepositoryToolName() == ctn_YAOURT_TOOL ||
+           getForeignRepositoryToolName() == ctn_TRIZEN_TOOL ||
++          getForeignRepositoryToolName() == ctn_PIKAUR_TOOL ||
+           getForeignRepositoryToolName() == ctn_KCP_TOOL)
+       {
+         QString pkgName;
+@@ -838,14 +847,14 @@
+         else
+           pkgVotes = 0;
+       }
+-      else if (aurTool != ctn_CHASER_TOOL && aurTool != ctn_PACAUR_TOOL && strVotes.count() > 0)
++      else if (aurTool != ctn_CHASER_TOOL && aurTool != ctn_PACAUR_TOOL && aurTool != ctn_PIKAUR_TOOL && strVotes.count() > 0)
+       {
+         if (!strVotes.first().isEmpty())
+           pkgVotes = strVotes.first().replace('(', "").replace(')', "").toInt();
+         else
+           pkgVotes = 0;
+       }
+-      else if (aurTool == ctn_PACAUR_TOOL && strVotes.count() > 0)
++      else if ( (aurTool == ctn_PACAUR_TOOL || aurTool == ctn_PIKAUR_TOOL) && strVotes.count() > 0)
+       {
+         if (!strVotes.first().isEmpty())
+         {
+@@ -856,7 +865,47 @@
+         else pkgVotes = 0;
+       }
+ 
+-      if(packageTuple.indexOf("[installed]") != -1)
++      if (aurTool == ctn_PIKAUR_TOOL)
++      {
++        if(packageTuple.indexOf(" [") != -1)
++        {
++          if (packageTuple.indexOf(": ") != -1)
++          {
++            int i = packageTuple.indexOf(": ");
++            pkgOutVersion = packageTuple.mid(i+2);
++            pkgOutVersion = pkgOutVersion.remove(QRegularExpression("\\].*")).trimmed();
++
++            //Compare actual and new version
++            char const * pkgOutVersion_temp = pkgOutVersion.toStdString().c_str();
++            char const * pkgVersion_temp = pkgVersion.toStdString().c_str();
++            int pkgIsUptodate = alpm_pkg_vercmp(pkgVersion_temp, pkgOutVersion_temp);
++            if (pkgIsUptodate == -1)
++            {
++              //This is an outdated installed package
++              pkgStatus = ectn_FOREIGN_OUTDATED;
++            }
++            else
++            {
++              //This is an installed package
++              pkgStatus = ectn_FOREIGN;
++              pkgOutVersion = "";
++            }
++          }
++          else
++          {
++            //This is an installed package
++            pkgStatus = ectn_FOREIGN;
++            pkgOutVersion = "";
++          }
++        }
++        else
++        {
++          //This is an uninstalled package
++          pkgStatus = ectn_NON_INSTALLED;
++          pkgOutVersion = "";
++        }
++      }
++      else if(packageTuple.indexOf("[installed]") != -1)
+       {
+         //This is an installed package
+         pkgStatus = ectn_FOREIGN;
+@@ -1554,6 +1603,7 @@
+       (getForeignRepositoryToolName() != ctn_YAOURT_TOOL &&
+       getForeignRepositoryToolName() != ctn_PACAUR_TOOL &&
+       getForeignRepositoryToolName() != ctn_TRIZEN_TOOL &&
++      getForeignRepositoryToolName() != ctn_PIKAUR_TOOL &&
+       getForeignRepositoryToolName() != ctn_KCP_TOOL))
+   {
+     return hash;
+@@ -1572,6 +1622,7 @@
+ 
+   if ((getForeignRepositoryToolName() == ctn_YAOURT_TOOL) ||
+       (getForeignRepositoryToolName() == ctn_TRIZEN_TOOL) ||
++      (getForeignRepositoryToolName() == ctn_PIKAUR_TOOL) ||
+       (getForeignRepositoryToolName() == ctn_KCP_TOOL))
+   {
+     foreach (QString line, listOfPkgs)
+diff -Naur a/src/pacmanexec.cpp b/src/pacmanexec.cpp
+--- a/src/pacmanexec.cpp	2018-06-08 21:06:21.000000000 +0200
++++ b/src/pacmanexec.cpp	2018-06-09 22:00:02.213493203 +0200
+@@ -1153,6 +1153,10 @@
+   {
+     m_lastCommandList.append(Package::getForeignRepositoryToolNameParam() + " -Sa " + listOfPackages + ";");
+   }
++  else if (Package::getForeignRepositoryToolName() == ctn_PIKAUR_TOOL)
++  {
++    m_lastCommandList.append(Package::getForeignRepositoryToolNameParam() + " -S --aur " + listOfPackages + ";");
++  }
+ 
+   m_lastCommandList.append("echo -e;");
+   m_lastCommandList.append("read -n 1 -p \"" + StrConstants::getPressAnyKey() + "\"");
+@@ -1176,6 +1180,8 @@
+     m_lastCommandList.append(Package::getForeignRepositoryToolNameParam() + " -S " + listOfPackages + ";");
+   else if (Package::getForeignRepositoryToolName() == ctn_TRIZEN_TOOL)
+     m_lastCommandList.append(Package::getForeignRepositoryToolNameParam() + " -Sa " + listOfPackages + ";");
++  else if (Package::getForeignRepositoryToolName() == ctn_PIKAUR_TOOL)
++    m_lastCommandList.append(Package::getForeignRepositoryToolNameParam() + " -S --aur " + listOfPackages + ";");
+   else if (Package::getForeignRepositoryToolName() == ctn_CHASER_TOOL)
+     m_lastCommandList.append(Package::getForeignRepositoryToolNameParam() + " install " + listOfPackages + ";");
+ 
+@@ -1212,7 +1218,9 @@
+   else
+     m_commandExecuting = ectn_RUN_IN_TERMINAL;
+ 
+-  if (Package::getForeignRepositoryToolName() != ctn_YAOURT_TOOL && Package::getForeignRepositoryToolName() != ctn_PACAUR_TOOL)
++  if (Package::getForeignRepositoryToolName() != ctn_YAOURT_TOOL &&
++      Package::getForeignRepositoryToolName() != ctn_PACAUR_TOOL &&
++      Package::getForeignRepositoryToolName() != ctn_PIKAUR_TOOL)
+     m_unixCommand->runCommandInTerminal(m_lastCommandList);
+   else
+     m_unixCommand->runCommandInTerminalAsNormalUser(m_lastCommandList);
+diff -Naur a/src/settingsmanager.cpp b/src/settingsmanager.cpp
+--- a/src/settingsmanager.cpp	2018-06-08 21:06:21.000000000 +0200
++++ b/src/settingsmanager.cpp	2018-06-09 21:58:39.056827755 +0200
+@@ -294,6 +294,12 @@
+     if (getTrizenNoEditParam()) params += " --noedit ";
+     ret += params;
+   }
++  else if (ret == ctn_PIKAUR_TOOL)
++  {
++    if (getPikaurNoConfirmParam()) params += " --noconfirm ";
++    if (getPikaurNoEditParam()) params += " --noedit ";
++    ret += params;
++  }
+   else if (ret.isEmpty() || !UnixCommand::hasTheExecutable(ret))
+   {
+     if (UnixCommand::hasTheExecutable(ctn_TRIZEN_TOOL))
+@@ -322,6 +328,15 @@
+       p_instance.getSYSsettings()->sync();
+       ret = ctn_PACAUR_TOOL + params;
+     }
++    else if (UnixCommand::hasTheExecutable(ctn_PIKAUR_TOOL))
++    {
++      if (getPikaurNoConfirmParam()) params += " --noconfirm ";
++      if (getPikaurNoEditParam()) params += " --noedit ";
++
++      p_instance.setAURTool(ctn_PIKAUR_TOOL);
++      p_instance.getSYSsettings()->sync();
++      ret = ctn_PIKAUR_TOOL + params;
++    }
+   }
+ 
+   return ret;
+@@ -378,6 +393,24 @@
+   return (p_instance.getSYSsettings()->value( ctn_KEY_TRIZEN_NO_EDIT_PARAM, 0)).toBool();
+ }
+ 
++/*
++ * Tests if Pikaur is using "--noconfirm" parameter
++ */
++bool SettingsManager::getPikaurNoConfirmParam()
++{
++  SettingsManager p_instance;
++  return (p_instance.getSYSsettings()->value( ctn_KEY_PIKAUR_NO_CONFIRM_PARAM, 0)).toBool();
++}
++
++/*
++ * Tests if Pikaur is using "--noedit" parameter
++ */
++bool SettingsManager::getPikaurNoEditParam()
++{
++  SettingsManager p_instance;
++  return (p_instance.getSYSsettings()->value( ctn_KEY_PIKAUR_NO_EDIT_PARAM, 0)).toBool();
++}
++
+ bool SettingsManager::getSearchOutdatedAURPackages()
+ {
+   SettingsManager p_instance;
+@@ -678,6 +711,24 @@
+   instance()->getSYSsettings()->sync();
+ }
+ 
++/*
++ * Sets if Pikaur tool will use "--noconfirm" parameter
++ */
++void SettingsManager::setPikaurNoConfirmParam(bool newValue)
++{
++  instance()->getSYSsettings()->setValue(ctn_KEY_PIKAUR_NO_CONFIRM_PARAM, newValue);
++  instance()->getSYSsettings()->sync();
++}
++
++/*
++ * Sets if Pikaur tool will use "--noedit" parameter
++ */
++void SettingsManager::setPikaurNoEditParam(bool newValue)
++{
++  instance()->getSYSsettings()->setValue(ctn_KEY_PIKAUR_NO_EDIT_PARAM, newValue);
++  instance()->getSYSsettings()->sync();
++}
++
+ void SettingsManager::setSearchOutdatedAURPackages(bool newValue)
+ {
+   instance()->getSYSsettings()->setValue(ctn_KEY_SEARCH_OUTDATED_AUR_PACKAGES, newValue);
+diff -Naur a/src/settingsmanager.h b/src/settingsmanager.h
+--- a/src/settingsmanager.h	2018-06-08 21:06:21.000000000 +0200
++++ b/src/settingsmanager.h	2018-06-09 21:58:39.056827755 +0200
+@@ -78,6 +78,8 @@
+     static bool getYaourtNoConfirmParam();
+     static bool getTrizenNoConfirmParam();
+     static bool getTrizenNoEditParam();
++    static bool getPikaurNoConfirmParam();
++    static bool getPikaurNoEditParam();
+     static bool getSearchOutdatedAURPackages();
+ 
+     static QString readSUToolValue();
+@@ -149,6 +151,8 @@
+     static void setYaourtNoConfirmParam(bool newValue);
+     static void setTrizenNoConfirmParam(bool newValue);
+     static void setTrizenNoEditParam(bool newValue);
++    static void setPikaurNoConfirmParam(bool newValue);
++    static void setPikaurNoEditParam(bool newValue);
+     static void setSearchOutdatedAURPackages(bool newValue);
+     static void setSUTool(const QString& newValue);
+     static void setInstantSearchSelected(bool newValue);
+diff -Naur a/src/unixcommand.cpp b/src/unixcommand.cpp
+--- a/src/unixcommand.cpp	2018-06-08 21:06:21.000000000 +0200
++++ b/src/unixcommand.cpp	2018-06-09 22:00:02.213493203 +0200
+@@ -239,6 +239,7 @@
+   QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+   env.insert("LANG", "C");
+   env.insert("LC_MESSAGES", "C");
++  env.insert("LANGUAGE", "C");
+ 
+   aur.setProcessEnvironment(env);
+ 
+@@ -250,6 +251,8 @@
+       aur.start(Package::getForeignRepositoryToolNameParam() + " --nocolor -Ss " + searchString);
+     else if (Package::getForeignRepositoryToolName() == ctn_TRIZEN_TOOL)
+         aur.start(Package::getForeignRepositoryToolNameParam() + " --nocolors -Ssa " + searchString);
++    else if (Package::getForeignRepositoryToolName() == ctn_PIKAUR_TOOL)
++        aur.start(Package::getForeignRepositoryToolNameParam() + " --color=never -Ss --aur " + searchString);
+     else if (Package::getForeignRepositoryToolName() == ctn_CHASER_TOOL)
+       aur.start(Package::getForeignRepositoryToolNameParam() + " search " + searchString);
+     else
+diff -Naur a/ui/optionsdialog.ui b/ui/optionsdialog.ui
+--- a/ui/optionsdialog.ui	2018-06-08 21:06:21.000000000 +0200
++++ b/ui/optionsdialog.ui	2018-06-09 21:58:39.056827755 +0200
+@@ -224,7 +224,7 @@
+             <property name="geometry">
+              <rect>
+               <x>30</x>
+-              <y>150</y>
++              <y>180</y>
+               <width>571</width>
+               <height>23</height>
+              </rect>
+@@ -280,6 +280,58 @@
+               <width>90</width>
+               <height>22</height>
+              </rect>
++            </property>
++            <property name="font">
++             <font>
++              <pointsize>10</pointsize>
++             </font>
++            </property>
++            <property name="text">
++             <string notr="true">--noedit</string>
++            </property>
++           </widget>
++           <widget class="QRadioButton" name="rbPikaur">
++            <property name="geometry">
++             <rect>
++              <x>10</x>
++              <y>140</y>
++              <width>105</width>
++              <height>22</height>
++             </rect>
++            </property>
++            <property name="accessibleName">
++             <string notr="true"/>
++            </property>
++            <property name="text">
++             <string notr="true">Pikaur</string>
++            </property>
++           </widget>
++           <widget class="QCheckBox" name="cbPikaurNoConfirm">
++            <property name="geometry">
++             <rect>
++              <x>140</x>
++              <y>140</y>
++              <width>101</width>
++              <height>22</height>
++             </rect>
++            </property>
++            <property name="font">
++             <font>
++              <pointsize>10</pointsize>
++             </font>
++            </property>
++            <property name="text">
++             <string notr="true">--noconfirm</string>
++            </property>
++           </widget>
++           <widget class="QCheckBox" name="cbPikaurNoEdit">
++            <property name="geometry">
++             <rect>
++              <x>250</x>
++              <y>140</y>
++              <width>90</width>
++              <height>22</height>
++             </rect>
+             </property>
+             <property name="font">
+              <font>
