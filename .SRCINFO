@@ -1,7 +1,7 @@
 pkgbase = cairo-xml
 	pkgdesc = cairo graphics library with support for xml surfaces enabled
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cairographics.org/
 	arch = x86_64
 	license = LGPL
@@ -22,8 +22,6 @@ pkgbase = cairo-xml
 	depends = pixman
 	depends = glib2
 	depends = lzo
-	provides = cairo
-	conflicts = cairo
 	source = git+https://gitlab.freedesktop.org/cairo/cairo.git#commit=3ad43122b21a3299dd729dc8462d6b8f7f01142d
 	sha1sums = SKIP
 
