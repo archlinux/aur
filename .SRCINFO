@@ -1,6 +1,6 @@
 pkgbase = home-assistant
 	pkgdesc = Open-source home automation platform running on Python 3
-	pkgver = 0.85.1
+	pkgver = 0.87.0
 	pkgrel = 1
 	url = https://home-assistant.io/
 	install = hass.install
@@ -8,12 +8,12 @@ pkgbase = home-assistant
 	license = APACHE
 	makedepends = python-setuptools
 	depends = python
-	depends = python-aiohttp>=3.5.1
+	depends = python-aiohttp>=3.5.4
 	depends = python-aiohttp-cors>=0.5.3
-	depends = python-astral>=1.7.1
+	depends = python-astral>=1.8
 	depends = python-async-timeout>=3.0.1
 	depends = python-attrs>=18.2.0
-	depends = python-bcrypt>=3.1.4
+	depends = python-bcrypt>=3.1.5
 	depends = python-certifi>=2018.04.16
 	depends = python-chardet>=3.0.4
 	depends = python-cryptography>=2.3.1
@@ -25,7 +25,7 @@ pkgbase = home-assistant
 	depends = python-pip>=8.0.3
 	depends = python-pytz>=2018.07
 	depends = python-requests>=2.21.0
-	depends = python-ruamel-yaml>=0.15.81
+	depends = python-ruamel-yaml>=0.15.85
 	depends = python-slugify>=1.2.6
 	depends = python-sqlalchemy>=1.2.11
 	depends = python-vincenty
@@ -37,12 +37,12 @@ pkgbase = home-assistant
 	optdepends = git: install component requirements from github
 	optdepends = net-tools: necessary for nmap discovery
 	replaces = python-home-assistant
-	source = home-assistant-0.85.1.tar.gz::https://github.com/home-assistant/home-assistant/archive/0.85.1.tar.gz
+	source = home-assistant-0.87.0.tar.gz::https://github.com/home-assistant/home-assistant/archive/0.87.0.tar.gz
 	source = home-assistant.service
 	source = home-assistant.sysusers
 	source = home-assistant-tmpfile.conf
 	source = hass.install
-	sha512sums = cb7fb5f5944c696ec1d90523d315144876209650ad605cbbd3e4295ab05bec6aa2320e170b0a66c0db0b2b48f1777e2f4f9c5da03a52b7362fc8b35ed0217478
+	sha512sums = 918b9bf670bf43662e06063145f30c3f709d4f06ca680adac290f821feba9d1c7abade68c6e20e7ec88a453c119a558983607afd3e31c6be01bc4d9b05c8bea4
 	sha512sums = fe96bd3df3ba666fd9f127c466d1dd1dd7314db2e57826a2b319c8a0bfad7aedeac398e748f93c6ecd9c2247ebbae196b8b0e7263b8681e2b7aeab6a8bfeab80
 	sha512sums = 100665ac35370c3ccec65d73521568de21cebf9e46af364124778861c94e338e32ad9abb675d3917f97d351dd7867e3ab2e80c26616330ae7cf0d9dc3f13369b
 	sha512sums = 3e93118c84954f829767dc71ce534c5d02c1c95fc8748714c7a2df28a3a297f59962f8fb7cddf721987eb97d62feabb25acda5d38209e365646ca4a4ef4356e3
