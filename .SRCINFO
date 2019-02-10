@@ -15,6 +15,7 @@ pkgbase = zrythm
 	depends = libdazzle
 	depends = libcyaml
 	depends = breeze-icons
+	depends = portaudio
 	source = https://git.zrythm.org/zrythm/zrythm/-/archive/master/zrythm-master.tar.gz
 	md5sums = SKIP
 
