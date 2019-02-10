@@ -22,7 +22,7 @@ package() {
   install -d "${pkgdir}/usr/share/pixmaps"
   
 #  install -m644 "${srcdir}/usr/share/applications/windows95.desktop" "${pkgdir}/usr/share/applications/windows95.desktop"
-  install -m644 "${srcdir}/usr/share/doc/windows95/copyright" "${pkgdir}/usr/share/doc/windows95/copyright"
+#  install -m644 "${srcdir}/usr/share/doc/windows95/copyright" "${pkgdir}/usr/share/doc/windows95/copyright"
   install -m644 "${srcdir}/usr/share/pixmaps/windows95.png" "${pkgdir}/usr/share/pixmaps/windows95.png"
 #  mv "${srcdir}/usr/share/windows95" "${pkgdir}/usr/share" 
   mv "${srcdir}/usr/bin/windows95" "${pkgdir}/usr/bin/windows95"
