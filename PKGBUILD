@@ -2,7 +2,7 @@
 
 pkgname=('python-loguru')
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Python logging made (stupidly) simple'
 arch=('any')
 url='https://github.com/Delgan/loguru'
