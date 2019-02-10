@@ -23,8 +23,10 @@ depends=(desktop-file-utils
          python-scrypt
          python-websocket-client
          zbar)
-source=("https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz")
-sha256sums=(5adb4f08c822741e51a5b83908851b68f7d1cac0b6c13ccf906b8cd9040c202b)
+source=("https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz"{,.asc})
+validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
+sha256sums=(5adb4f08c822741e51a5b83908851b68f7d1cac0b6c13ccf906b8cd9040c202b
+            SKIP)
 
 prepare() {
   sed -E 's/sh.*(electrum.*)"/\1/' -i Electrum-LTC-$pkgver/electrum-ltc.desktop
