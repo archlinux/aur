@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=libtas-git
-pkgver=1.3.2.r1.861bd6c
+pkgver=1.3.3.r1.5ca20a5
 pkgrel=1
 pkgdesc="Tool-assisted speedrunning utility for Linux-native binaries"
 arch=('x86_64')
