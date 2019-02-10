@@ -2,9 +2,9 @@
 
 _pkgname=youtube-viewer
 pkgname=gtk-youtube-viewer-git
-pkgver=3.5.1
+pkgver=3.5.2
 pkgrel=1
-pkgdesc="A Gtk2 application for searching and streaming videos from YouTube (-git version)."
+pkgdesc="Gtk2 application for searching and streaming videos from YouTube."
 arch=('any')
 url="https://github.com/trizen/${_pkgname}"
 license=('Artistic2.0')
@@ -38,13 +38,24 @@ pkgver() {
     git describe --always | sed -e 's|-|.|g'
 }
 
+build() {
+    cd "$_pkgname"
+    /usr/bin/perl Build.PL --gtk
+}
+
+check(){
+    cd "$_pkgname"
+    ./Build test
+}
+
 package() {
     cd "$_pkgname"
-    /usr/bin/perl Build.PL --destdir "$pkgdir" --installdirs vendor --gtk
-    ./Build
-    ./Build test
-    ./Build install --install_path script=/usr/bin
+    ./Build install --destdir "$pkgdir" --installdirs vendor --install_path script=/usr/bin
+    rm -r "$pkgdir"/usr/lib
 
-    install -Dm 644 "share/gtk-youtube-viewer.desktop" "$pkgdir/usr/share/applications/gtk-youtube-viewer.desktop"
-    install -Dm 644 "share/icons/gtk-youtube-viewer.png" "$pkgdir/usr/share/pixmaps/gtk-youtube-viewer.png"
+    mkdir "$pkgdir"/usr/share/{applications,pixmaps}
+    mv "$pkgdir"/usr/share/perl5/vendor_perl/auto/share/dist/WWW-YoutubeViewer/gtk-youtube-viewer.desktop \
+        "$pkgdir"/usr/share/applications/gtk-youtube-viewer.desktop
+    cp "$pkgdir"/usr/share/perl5/vendor_perl/auto/share/dist/WWW-YoutubeViewer/icons/gtk-youtube-viewer.png \
+        "$pkgdir"/usr/share/pixmaps/gtk-youtube-viewer.png
 }
