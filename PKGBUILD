@@ -1,7 +1,7 @@
 # Maintainer: s3lph <account-arch-aur-gzxkqqna at kernelpanic dot lol>
 
 pkgname=i3lock-s3lph-git
-pkgver=r315.102e742
+pkgver=r317.50d1174
 pkgrel=1
 pkgdesc="An improved screenlocker based upon XCB and PAM (s3lph fork)"
 arch=('i686' 'x86_64')
