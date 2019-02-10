@@ -23,3 +23,5 @@ package() {
   make DESTDIR="${pkgdir}/" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+# vim:set ts=2 sw=2 et:
