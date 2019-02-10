@@ -1,0 +1,27 @@
+pkgbase = i3lock-s3lph-git
+	pkgdesc = An improved screenlocker based upon XCB and PAM (s3lph fork)
+	pkgver = r315.102e742
+	pkgrel = 1
+	url = https://github.com/s3lph/i3lock
+	arch = i686
+	arch = x86_64
+	groups = i3
+	license = MIT
+	makedepends = autoconf
+	makedepends = git
+	makedepends = gzip
+	makedepends = make
+	depends = xcb-util-image
+	depends = xcb-util-xrm
+	depends = libev
+	depends = cairo
+	depends = libxkbcommon-x11
+	depends = pam
+	provides = i3lock
+	conflicts = i3lock
+	backup = etc/pam.d/i3lock
+	source = git://github.com/s3lph/i3lock.git
+	md5sums = SKIP
+
+pkgname = i3lock-s3lph-git
+
