@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ls_extended
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='ls with coloring and icons'
 arch=('x86_64')
 url="https://github.com/Electrux/ls_extended"
@@ -12,7 +12,7 @@ makedepends=('ccp4m')
 optdepends=('nerd-fonts-complete: for icon support')
 depends=('glibc' 'ttf-nerd-fonts-symbols')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Electrux/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('c6af08877e889fe0732f25f7e6f850c7816cf7788fee191bcc80dbf1288b3740')
+sha256sums=('3ea78c2deb89aa5b5047984815c52baa95e68668471c2ea2b1f9e9d46ce380c8')
 
 build() {
     cd "$pkgname-$pkgver"
