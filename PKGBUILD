@@ -14,7 +14,7 @@
 
 pkgname=ffmpeg3.4
 pkgver=3.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://ffmpeg.org'

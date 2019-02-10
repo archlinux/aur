@@ -1,7 +1,7 @@
 pkgbase = ffmpeg3.4
 	pkgdesc = Complete solution to record, convert and stream audio and video
 	pkgver = 3.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ffmpeg.org
 	arch = x86_64
 	arch = i686
