@@ -11,7 +11,7 @@ url='https://github.com/felixrieseberg/windows95'
 license=('MIT')
 depends=('electron')
 source=("https://github.com/felixrieseberg/windows95/releases/download/v$pkgver/windows95-linux-$pkgver.x86_64.rpm")
-sha256sums=('15d498ada7edc3a6f7b60fa3243b7e4ea385221e22a7f148856e27e941134ab3')
+sha256sums=('3a5cb3a84b78518a4370be7e9550f2978a20fcba390619008e3e4ed86c830f68')
 
 package() { 
   install -d "${pkgdir}/usr/bin"
