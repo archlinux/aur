@@ -2,7 +2,8 @@
 
 pkgname=('python-better-exceptions-fork')
 pkgver=0.2.1
-pkgrel=10
+pkgrel=1
+epoch=1
 pkgdesc='Pretty and helpful exceptions, automatically'
 arch=('any')
 url='https://github.com/Delgan/better-exceptions'
@@ -15,6 +16,7 @@ md5sums=('4ee52c1890fe03a96b5ac6ce0e813a9b')
 
 
 package() {
+  ls
   cd better-exceptions-master
   python setup.py install --root="$pkgdir/" --optimize=1
 }
