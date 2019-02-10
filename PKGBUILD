@@ -1,9 +1,9 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander F. RÃ¸dseth <xyproto@archlinux.org>
 
 pkgname=monitor
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
-pkgdesc='Collection of utilities for dealing with monitors and wallpapers'
+pkgdesc='Utilities for handling monitors, resolutions, wallpapers and timed wallpapers'
 arch=(x86_64)
 url='https://github.com/xyproto/monitor'
 license=(MIT)
