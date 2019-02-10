@@ -3,6 +3,7 @@
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 # Contributor: Andrea Repetto <andrea.repetto85@gmail.com>
 # Contributor: Bogdan Szczurek <thebodzio@gmail.com>
+# Contributor: redfish <redfish@galactica.pw>
 
 pkgname=flexget-git
 _pkgname=Flexget
