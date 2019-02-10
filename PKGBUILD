@@ -5,6 +5,7 @@
 # Contributor: Zachary Lund <admin@computerquip.com>
 # Contributor: Jesus Gonzalez <jesusmgh@gmail.com>
 # Contributor: Francisco Pina-Martins <f.pinamartins@gmail.com>
+# Contributor: Alex <antianno52@gmail.com>
 
 pkgname=('roccat-tools-common'
          'roccat-tools-arvo'
@@ -33,7 +34,7 @@ pkgname=('roccat-tools-common'
          'roccat-tools-nyth')
 pkgbase=roccat-tools
 pkgver=5.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
@@ -51,12 +52,13 @@ sha256sums=('a6e21315c06e072fcea79c185518c8d2c8f19ed9681633613f26085319bdfd95'
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
 
-  cmake \
+  cmake . \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUDEVDIR=/usr/lib/udev/rules.d \
     -DWITHOUT_PYTHON=TRUE \
     -DLIBDIR="/usr/lib" \
-    -DWITH_LUA="5.3"
+    -DWITH_LUA="5.3" \
+    -DCMAKE_MODULE_PATH="/usr/share/libgaminggear/cmake/Modules"
   make
 }
 
