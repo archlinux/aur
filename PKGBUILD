@@ -3,8 +3,8 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=pulseeffects-git
-pkgver=4.4.7.r131.g58be1741
-pkgrel=2
+pkgver=4.4.7.r134.g17c1306d
+pkgrel=1
 pkgdesc='Audio Effects for Pulseaudio Applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url='https://github.com/wwmm/pulseeffects'
