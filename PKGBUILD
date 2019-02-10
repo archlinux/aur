@@ -19,6 +19,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
+    git checkout $(git tag|grep -v rc|sort -rh|head -n 1)
     git submodule update --init --recursive
 }
 
