@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=libsha2
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="SHA-2-family hashing library"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=()
 checkdepends=()
 makedepends=()
 source=(libsha2-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(43259e2aa920abdcd8c9d15fd0cf35add27501d41637c2b5a01ab5b16c1d6716)
+sha256sums=(d74520d2fe02d40c675f34bcc691a56c72a5de277c40d7afabc5673abba78ca4)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
