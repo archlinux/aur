@@ -1,31 +1,31 @@
-# Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
+# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
+
 pkgname=python-qt.py
 _pkgname=Qt.py
-pkgver=0.6.9
-pkgrel=1
-pkgdesc="Python compatibility wrapper around all Qt bindings - PySide, PySide2, PyQt4 and PyQt5."
+pkgver=1.2.0.b2
+pkgrel=4
+pkgdesc="Python compatibility wrapper around all Qt bindings"
 arch=('any')
 url="https://github.com/mottosso/Qt.py"
 license=('MIT')
 depends=('python')
-optdepends=(
-  'python-pyqt5: Qt 5 bindings for Python 3'
-  'python-pyqt4: Qt 4 bindings for Python 3'
-  'python-pyside2-git: LGPL Qt 5 bindings for Python 3'
-  'python-pyside: LGPL Qt 4 bindings for Python 3'
-)
+optdepends=('python-pyqt5: Qt 5 bindings'
+	    'pyside2: LGPL Qt 5 bindings')
 makedepends=('python-setuptools')
-source=(https://github.com/mottosso/Qt.py/archive/$pkgver.tar.gz)
-sha256sums=('421db39c390b9f6d5978f1ed9a1c16faf4e569aa93c06a95498cd130ea2cfcc6')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('b4ca3b96bc3773b1affbeb42bc72a53ff21414a3f70a7aeec3faf03883d84380')
 
 build() {
-  cd "$srcdir/${_pkgname}-$pkgver"
+  cd "$srcdir"/$_pkgname-$pkgver
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/${_pkgname}-$pkgver"
-  python setup.py install --root="$pkgdir"
+  cd "$srcdir"/$_pkgname-$pkgver
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  rm "$pkgdir"/usr/LICENSE # Weird
+
+  install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-# vim:set ts=2 sw=2 et:
