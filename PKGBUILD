@@ -8,7 +8,7 @@
 # Contributor: atweiden <archbaum@gmail.com>
 
 pkgname=ansible-git
-pkgver=v2.6.0a1.r1280.gddf3ba01d2
+pkgver=v2.7.0.a1.r3199.g2721ed260e
 pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
