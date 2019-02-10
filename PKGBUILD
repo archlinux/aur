@@ -2,7 +2,7 @@
 
 pkgbase=linux-vfio-lts
 _srcname=linux-4.19
-pkgver=4.19.18
+pkgver=4.19.20
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -24,7 +24,7 @@ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torva
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            'd36fb7380067b9756d7c36cd9149a2084abe815da5adaa3996d48c622d7d2db7'
+            '0c959755f6c7d84b16a28d08c15f15a904031db8845b52d52d1eccddcfa49d07'
             '3d8a9eac86cea6515efdc78e3c2eec5f413f305a2376fa35b161edab94719941'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5'
