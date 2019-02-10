@@ -29,9 +29,9 @@ depends=(
 	python-yaml
 )
 
-_dir="ros_comm-release-release-melodic-rosparam"
+_dir="ros_comm-release-release-melodic-rosparam-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosparam/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('087c948a7f6ee00778ce1f5e736d30b3eada54c4e15040d61cc81d3605266a2b')
+sha256sums=('343802ed53b75408f174d17ef9ff67a20856b3bc126f85941a3f7cd1882657ce')
 
 build() {
 	# Use ROS environment variables.
