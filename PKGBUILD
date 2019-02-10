@@ -2,7 +2,7 @@
 
 pkgname=cryfs-git
 _pkgname=cryfs
-pkgver=0.9.9
+pkgver=0.10.0.r103.g34b5690b
 pkgrel=1
 pkgdesc="CryFS encrypts your files, so you can safely store them anywhere"
 arch=('i686' 'x86_64' 'armv7h')
@@ -24,7 +24,8 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$_pkgname"
 	mkdir cmake && cd cmake
-	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	cmake -DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_BUILD_TYPE=Release ..
 }
 
 build() {

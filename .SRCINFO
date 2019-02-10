@@ -1,6 +1,6 @@
 pkgbase = cryfs-git
 	pkgdesc = CryFS encrypts your files, so you can safely store them anywhere
-	pkgver = 0.9.9
+	pkgver = 0.10.0.r103.g34b5690b
 	pkgrel = 1
 	url = https://www.cryfs.org
 	arch = i686
