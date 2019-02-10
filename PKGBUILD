@@ -14,7 +14,6 @@ depends=('gtkmm3'
          'libsigc++>=2.0'
          'wayland'
          'libdbusmenu-gtk3'
-         'libappindicator-gtk3'
          'libpulse'
          'wlroots-git')
 makedepends=('meson'

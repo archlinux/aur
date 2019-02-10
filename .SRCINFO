@@ -14,7 +14,6 @@ pkgbase = waybar-git
 	depends = libsigc++>=2.0
 	depends = wayland
 	depends = libdbusmenu-gtk3
-	depends = libappindicator-gtk3
 	depends = libpulse
 	depends = wlroots-git
 	optdepends = sway-git: Sway modules support
