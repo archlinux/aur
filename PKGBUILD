@@ -1,6 +1,6 @@
 # Maintainer: murchik <mixturchik@gmail.com>
 pkgname=zhudi
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="Python/GTK3+ GUI to Chinese -English-French-German dictionnaries (CEDICT, CFDICT, HanDeDict, ChE-Dicc…). It also provides pinyin and zhuyin pronunciaton as well as a sentence segmentation utility."
 arch=('any')
