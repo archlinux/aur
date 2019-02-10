@@ -1,6 +1,6 @@
 pkgbase = pyenv-virtualenv
 	pkgdesc = pyenv plugin to manage virtualenv (a.k.a. python-virtualenv)
-	pkgver = 1.1.1
+	pkgver = 1.1.4
 	pkgrel = 2
 	epoch = 1
 	url = https://github.com/pyenv/pyenv-virtualenv
@@ -8,8 +8,8 @@ pkgbase = pyenv-virtualenv
 	license = MIT
 	depends = pyenv
 	depends = bash
-	source = https://github.com/pyenv/pyenv-virtualenv/archive/v1.1.1.tar.gz
-	md5sums = 15e3f36f4b7426cd9e88506a2702040e
+	source = https://github.com/pyenv/pyenv-virtualenv/archive/v1.1.4.tar.gz
+	md5sums = 81629fac496b9bad8dabebe2e90841e5
 
 pkgname = pyenv-virtualenv
 
