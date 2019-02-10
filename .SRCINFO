@@ -1,6 +1,6 @@
 pkgbase = git-cola-git
 	pkgdesc = A powerful GUI for Git
-	pkgver = v3.1.114.g3d8d8cce
+	pkgver = v3.3.2.g31d93217
 	pkgrel = 1
 	url = http://git-cola.github.com/
 	arch = any
