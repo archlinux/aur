@@ -108,11 +108,11 @@ if [ -n "${_piver}" ]; then
 fi
 
 _overwrite_mkspec=true
+_mkspec="linux-rpi${_piver}-g++"
 case ${_piver} in
 1)
   _toolchain_name=armv6-rpi-linux-gnueabihf
   _toolchain="/opt/${_toolchain_name}/bin/${_toolchain_name}-"
-  _mkspec="linux-rpi${_piver}-g++"
   # too problematic for me to care about
   #_float=true
 ;;
@@ -127,7 +127,6 @@ case ${_piver} in
   _toolchain_name=aarch64-rpi3-linux-gnu
   _toolchain="/opt/x-tools/${_toolchain_name}/bin/${_toolchain_name}-"
   _use_mesa=true
-  _mkspec="linux-rpi${_piver}-g++"
   # just for projectmofo!
   #_opengl_variant="desktop"
 ;;
@@ -224,8 +223,6 @@ _arch_specific_configure_options="\
 "
 
 retired_exhaustive_uber_minimal_specific_configure_options="\
-    -no-gbm \
-    -no-kms \
     -no-linuxfb \
 "
 
@@ -309,6 +306,7 @@ if ${_use_mesa}; then
   _profiled_gpu_fn=qpi-mesa.sh
   _additional_configure_flags="$_additional_configure_flags -gbm -kms"
 else
+  _additional_configure_flags="$_additional_configure_flags -no-gbm -no-kms"
   if $_building && ([[ -f ${__eglpkgconfigpath} ]] || [[ -f ${__glespkgconfigpath} ]]); then
     echo "Mesa is about to eat our communal poodle; delete egl.pc and glesv2.pc in your sysroot"
     exit 1
