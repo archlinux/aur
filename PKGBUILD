@@ -1,7 +1,7 @@
 # Maintainer: Markus Richter <mqus at disroot dot org>
 
 pkgname=bitwarden_rs-vault-git
-pkgver=v2.8.0.r3.ga48cc2a7
+pkgver=v2.8.0.r32.g0220f451
 pkgrel=1
 pkgdesc="Integrates the Vault Web-Interface into bitwarden_rs."
 arch=('any')
@@ -16,7 +16,7 @@ source=("git+https://github.com/bitwarden/web.git"
 	"0001-Set-Vault-BaseURL.patch"
 	"${pkgname%-git}.install")
 sha512sums=('SKIP'
-            '743d234780c9fe18e14d933f3315cb3248876b0bfc7932586f9c8b83288c95afd864391866357b87806e24e643370d3f57b2e0c8579bbe6364eece13e71c72e9'
+            '08dabddcba9dc917c40e2a8e1058b2b7b7246e747a1178c7f5774366cef35c689e3058c60c3bd659f6aab3bca737c26d4b63bab19c914f35f8e91dabc388923f'
             '5265612afd40cb757e7d6550ca902f9c02c558e7d03607a181df923374efdf9eff85296c216db7c96d9987eb1fe0834a7eb90de7dcd988c9f7443dc69b9469b1')
 
 pkgver() {

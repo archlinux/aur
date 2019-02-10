@@ -26,7 +26,18 @@ index 90aad7df..95ceff61 100644
          apiService.setUrls({
              base: isDev ? null : window.location.origin,
              api: isDev ? 'http://localhost:4000' : null,
-index 5c114af5..70e7cb12 100644
+index 5560c476..a9b954a8 100644
+--- a/src/app/settings/two-factor-u2f.component.ts
++++ b/src/app/settings/two-factor-u2f.component.ts
+@@ -128,6 +128,7 @@ export class TwoFactorU2fComponent extends TwoFactorBaseComponent implements OnI
+         (window as any).u2f.register(u2fChallenge.appId, [{
+             version: u2fChallenge.version,
+             challenge: u2fChallenge.challenge,
++            attestation: 'direct',
+         }], [], (data: any) => {
+             this.ngZone.run(() => {
+                 this.u2fListening = false;
+index 5c114af5..6839385d 100644
 --- a/src/scss/styles.scss
 +++ b/src/scss/styles.scss
 @@ -1,5 +1,23 @@
