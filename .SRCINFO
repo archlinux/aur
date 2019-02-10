@@ -1,14 +1,14 @@
 pkgbase = python-loguru
 	pkgdesc = Python logging made (stupidly) simple
 	pkgver = 0.2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Delgan/loguru
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	depends = python-colorama
-	depends = python-better-exceptions
+	depends = python-better-exceptions-fork
 	depends = python-ansimarkup
 	source = https://github.com/Delgan/loguru/archive/master.zip
 	md5sums = 6503d88aa9e298bae092b96f9a49a75b
