@@ -7,7 +7,7 @@
 pkgname=flexget
 _pkgname=Flexget
 pkgver=2.18.12
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 
@@ -58,6 +58,7 @@ makedepends=('python-paver'
 
 source=("https://github.com/Flexget/Flexget/archive/${pkgver}.tar.gz"
         'flexget.service'
+        'flexget@.service'
         "http://download.flexget.com/ChangeLog"
         )
 
@@ -97,5 +98,6 @@ package() {
 
 sha256sums=('cc5bba119aa79014e02079b428d44d1c7925e9ad2bc02058e34678bca66e2cc0'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
+            'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
 # vim:set ts=2 sw=2 et:
