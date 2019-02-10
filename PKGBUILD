@@ -2,7 +2,7 @@
 pkgname=hexyl-git
 pkgdesc="A command-line hex viewer"
 pkgrel=1
-pkgver=0.4.0.71
+pkgver=0.4.0.74
 arch=('i686' 'x86_64')
 conflicts=("hexyl")
 provides=("hexyl")
@@ -23,11 +23,14 @@ pkgver() {
 build() {
 	cd "${srcdir}/${pkgname}"
 
-	env CARGO_INCREMENTAL=0 cargo build --release
+	env CARGO_INCREMENTAL=0 CARGO_TARGET_DIR= \
+		cargo build --release
 }
 
 package() {
 	cd "${srcdir}/${pkgname}"
 
-	install -D -m755 "${srcdir}/${pkgname}/target/release/hexyl" "${pkgdir}/usr/bin/hexyl"
+	install -D -m755 "${srcdir}/${pkgname}/release/hexyl" "${pkgdir}/usr/bin/hexyl"
+	install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 LICENSE-APACHE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
