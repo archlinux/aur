@@ -1,7 +1,7 @@
 # Maintainer: Patrik Bachan <patrikbachan at gmail dot com>
 pkgname=serialplot-hg
 _pkgname=serialplot
-pkgver=788+.0fba5e1a3d2e+
+pkgver=794+.9d8cc029351b+
 pkgrel=1
 pkgdesc="Small and simple software for plotting data from serial port in realtime"
 arch=('i686' 'x86_64')
@@ -21,12 +21,8 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  #fix wrong library name in cmake script
-  sed -i -e 's/qwt-qt5/qwt/g' cmake/modules/FindQwt.cmake
   #disable update checking, otherwise app crashes
   sed -i -e 's/if (isChecking()) return/return/g' src/updatechecker.cpp
-  #disable custom floatswap (erase header file contents)
-  echo "" > src/floatswap.h
 }
 
 build() {

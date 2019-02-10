@@ -1,6 +1,6 @@
 pkgbase = serialplot-hg
 	pkgdesc = Small and simple software for plotting data from serial port in realtime
-	pkgver = 788+.0fba5e1a3d2e+
+	pkgver = 794+.9d8cc029351b+
 	pkgrel = 1
 	url = https://bitbucket.org/hyOzd/serialplot
 	arch = i686
