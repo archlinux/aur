@@ -1,0 +1,15 @@
+pkgbase = lua-mtint
+	pkgdesc = Make Lua threads and coroutines interruptible in arbitrary multi-threading scenarios.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/osch/lua-mtint#mtint
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	source = https://github.com/osch/lua-mtint/archive/v0.3.1.tar.gz
+	md5sums = 6a928b6d3d786305822e568198a1b7a6
+
+pkgname = lua-mtint
+
