@@ -1,6 +1,6 @@
 pkgbase = i3lock-s3lph-git
 	pkgdesc = An improved screenlocker based upon XCB and PAM (s3lph fork)
-	pkgver = r315.102e742
+	pkgver = r317.50d1174
 	pkgrel = 1
 	url = https://github.com/s3lph/i3lock
 	arch = i686
