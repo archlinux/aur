@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=vkQuake2
+Path=/opt/vkquake2
+Exec=/opt/vkquake2/quake2
+Icon=vkquake2.png
+Terminal=false
+Categories=Game
