@@ -6,7 +6,7 @@ pkgver=2.0.0
 pkgrel=1
 pkgdesc="X.org mga video driver"
 arch=('x86_64')
-url="https://wiki.freedesktop.org/xorg/"
+url="https://gitlab.freedesktop.org/xorg/driver/xf86-video-mga"
 license=('custom')
 groups=('xorg-drivers' 'xorg')
 depends=('glibc')
@@ -16,7 +16,7 @@ optdepends=('mga-dri: DRI1 support from community repo')
 conflicts=('xorg-server<1.19'
            'X-ABI-VIDEODRV_VERSION<23'
            'X-ABI-VIDEODRV_VERSION>=24')
-source=("git+https://anongit.freedesktop.org/git/xorg/driver/xf86-video-mga")
+source=("git+https://gitlab.freedesktop.org/xorg/driver/xf86-video-mga.git")
 sha256sums=('SKIP')
 
 pkgver() {
