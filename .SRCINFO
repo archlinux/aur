@@ -1,13 +1,10 @@
 pkgbase = gofish-bin
 	pkgdesc = Crossplatform package manager
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gofi.sh/index.html
 	arch = x86_64
 	arch = i686
-	arch = arm
-	arch = armv6h
-	arch = armv7h
 	arch = aarch64
 	license = Apache
 	source_x86_64 = https://gofi.sh/releases/gofish-v0.10.0-linux-amd64.tar.gz

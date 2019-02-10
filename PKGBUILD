@@ -1,9 +1,9 @@
 # Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 pkgname=gofish-bin
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Crossplatform package manager"
-arch=(x86_64 i686 arm armv6h armv7h aarch64)
+arch=(x86_64 i686 aarch64)
 url="https://gofi.sh/index.html"
 license=('Apache')
 source_x86_64=("https://gofi.sh/releases/gofish-v$pkgver-linux-amd64.tar.gz")
