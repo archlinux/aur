@@ -1,7 +1,7 @@
 pkgbase = suru-plus-git
 	pkgdesc = Suru++ 25 – A cyberpunk, elegant, futuristic, modern and Papirus-like third-party icons theme!
-	pkgver = 25.1
-	pkgrel = 1
+	pkgver = 25.1.1
+	pkgrel = 2
 	url = https://github.com/gusbemacbe/suru-plus
 	changelog = CHANGELOG
 	arch = any
