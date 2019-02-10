@@ -1,6 +1,6 @@
 pkgbase = flexget-git
 	pkgdesc = Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more.
-	pkgver = 2.19.6
+	pkgver = 2.19.5
 	pkgrel = 1
 	url = http://flexget.com/
 	arch = any
@@ -44,7 +44,7 @@ pkgbase = flexget-git
 	optdepends = python-boto3: SNS output plugin
 	provides = flexget
 	conflicts = flexget
-	source = git+https://github.com/Flexget/Flexget/#tag=2.19.6
+	source = git+https://github.com/Flexget/Flexget/#tag=2.19.5
 	source = flexget.service
 	source = flexget@.service
 	sha256sums = SKIP
