@@ -120,8 +120,8 @@ case ${_piver} in
   #_toolchain_name=armv7-rpi2-linux-gnueabihf
   _toolchain_name=arm-cortexa9_neon-linux-gnueabihf
   _toolchain="/opt/x-tools/${_toolchain_name}/bin/${_toolchain_name}-"
-  _mkspec="linux-rpi${_piver}-vc4-g++"
-  _use_mesa=true
+  #_mkspec="linux-rpi${_piver}-vc4-g++"
+  #_use_mesa=true
 ;;
 3)
   _toolchain_name=aarch64-rpi3-linux-gnu
