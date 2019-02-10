@@ -1,31 +1,23 @@
-# Maintainer: AUTplayed <fips.hem@gmail.com>
-# Contributor: pavanjadhaw <pavanjadhaw96@gmail.com>
-_pkgname=betterlockscreen
+_pkgname=betterlockscreen-noeffects
+_binname=betterlockscreen
 pkgname=$_pkgname
-pkgver=3.0.1
-pkgrel=3
+pkgbase=$_pkgname
+pkgver=4.0.0
+pkgrel=4
 pkgdesc="A simple lock script for i3lock-color"
 arch=('any')
-url="https://github.com/pavanjadhaw/${_pkgname}"
+url="https://github.com/kantord/${_pkgname}"
 license=('MIT')
 depends=('i3lock-color' 'imagemagick' 'xorg-xrandr' 'xorg-xdpyinfo' 'bc')
 optdepends=('feh: Allows setting wallpaper')
-conflicts=("betterlockscreen-git")
+conflicts=("betterlockscreen-git" "betterlockscreen")
 source=("${url}/archive/${pkgver}.tar.gz")
-md5sums=("1c3a51e82d6ebba819457491b17397f2")
-install=${_pkgname}.install
+md5sums=("3460d5aee160d0a397b04a382bcb8b55")
+install=${_binname}.install
 
 package() {
 	_srcdir="$srcdir/${_pkgname}-${pkgver}"
 	mkdir -p "$pkgdir/usr/bin"
-    cp "$_srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-    if [[ $(pidof systemd) ]]; then
-        _serviceloc="$pkgdir/lib/systemd/system"
-        mkdir -p "$_serviceloc"
-        _servicename="$_pkgname@.service"
-        cp "$_srcdir/$_servicename" "$_serviceloc/$_servicename"
-    fi
-	mkdir -p "$pkgdir/usr/share/doc/$_pkgname/examples"
-	cp "$_srcdir/examples/${_pkgname}rc" "$pkgdir/usr/share/doc/$_pkgname/examples/${_pkgname}rc"
-
+    cp "$_srcdir/$_binname" "$pkgdir/usr/bin/$_binname"
 }
+
