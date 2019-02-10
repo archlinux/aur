@@ -30,7 +30,7 @@ package() {
 	cd excalibar/bar
 	make DESTDIR="$pkgdir" install
 	make cpconfig
-	install -D -m644 ../LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/WTFPL"
+	install -D -m644 ../license.md "${pkgdir}/usr/share/licenses/${pkgname}/WTFPL"
 	cd ../plugins
 	make install
 }
