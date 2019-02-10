@@ -4,9 +4,9 @@
 
 pkgname=pulseeffects-git
 pkgver=4.4.7.r131.g58be1741
-pkgrel=1
+pkgrel=2
 pkgdesc='Audio Effects for Pulseaudio Applications'
-arch=('any')
+arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url='https://github.com/wwmm/pulseeffects'
 license=('GPL3')
 depends=('gtk3' 'gtkmm3' 'glibmm' 'libpulse' 'gstreamer' 'gst-plugins-good' 'gst-plugins-bad'

@@ -1,9 +1,14 @@
 pkgbase = pulseeffects-git
 	pkgdesc = Audio Effects for Pulseaudio Applications
 	pkgver = 4.4.7.r131.g58be1741
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wwmm/pulseeffects
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
 	makedepends = meson
 	makedepends = boost
