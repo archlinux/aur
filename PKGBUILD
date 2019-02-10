@@ -1,15 +1,15 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=ffaudioconverter
-pkgver=0.21
-pkgrel=2
+pkgver=0.22
+pkgrel=1
 pkgdesc="Graphical audio converter"
 arch=('i686' 'x86_64')
 url="https://github.com/Bleuzen/FFaudioConverter/"
-license=('GPL')
+license=('GPL3')
 depends=('qt5-base' 'qt5-tools' 'ffmpeg')
 source=("https://github.com/Bleuzen/FFaudioConverter/releases/download/v$pkgver/FFaudioConverter-$pkgver-src.tar.xz")
-sha256sums=('344314210bd09edccc04903e93f5980cc434e78c603e808d137f237800786ec7')
+sha256sums=('c23581eea156ad04c3960f110c2b8952d1898f9e5f0fcc3be71d097d7d3d3ba2')
 
 build() {
   qmake PREFIX=${pkgdir}/usr FFaudioConverter.pro -spec linux-g++ CONFIG+=release
