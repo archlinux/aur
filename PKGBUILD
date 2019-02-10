@@ -1,7 +1,7 @@
 # Maintainer: surefire@cryptomile.net
 
 pkgname=keeweb
-pkgver=1.7.6
+pkgver=1.7.7
 pkgrel=1
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
@@ -26,7 +26,7 @@ source=(
 
 sha1sums=('SKIP'
           'a55c2ed276c6073b7954452cdc88209633d51ace'
-          'a2ab033d06abfe7616d2615d8edf7931f29efc96'
+          'c925527f25e732d58438ee16b1c93b33be7bf9c4'
           '914afdd9651e71091d4b927cabd25d75786ec7d4')
 
 prepare() {
@@ -67,14 +67,14 @@ build() {
 
 	npx grunt build-web-app build-desktop-app-content
 
-	asar p tmp/desktop/app ../keeweb.asar
+	asar p tmp/desktop/app app.asar
 }
 
 package() {
 	cd "${pkgname}"
 
 	install -Dm0755 ../keeweb.sh "${pkgdir}/usr/bin/keeweb"
-	install -Dm0644 -t "${pkgdir}/usr/lib/keeweb" ../keeweb.asar
+	install -Dm0644 -t "${pkgdir}/usr/lib/keeweb" app.asar
 
 	install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE DEPS-LICENSE
 

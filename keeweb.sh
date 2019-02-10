@@ -1,3 +1,3 @@
 #!/usr/bin/sh
 
-exec electron /usr/lib/keeweb/keeweb.asar --disable-updater "$@"
+exec electron /usr/lib/keeweb/app.asar --disable-updater "$@"
