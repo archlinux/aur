@@ -16,7 +16,6 @@ md5sums=('4ee52c1890fe03a96b5ac6ce0e813a9b')
 
 
 package() {
-  ls
-  cd better-exceptions-master
+  cd better-exceptions-0.2.1.post6
   python setup.py install --root="$pkgdir/" --optimize=1
 }
