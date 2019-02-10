@@ -2,7 +2,7 @@
 # Maintainer: Shang Yuanchun <idealities@gmail.com>
 
 pkgname=systemtap-git
-pkgver=4.0.88.g905865da1
+pkgver=4.0.102.g1832b8f51
 pkgrel=1
 pkgdesc="provides infrastructure to simplify the gathering of information about the running Linux system."
 url="https://sourceware.org/systemtap/"
@@ -15,20 +15,13 @@ provides=(systemtap=4.0)
 conflicts=(systemtap)
 _gitroot=https://sourceware.org/git/systemtap.git
 _gitname=systemtap
-source=("git+$_gitroot"
-        remove-install-exec-hook.patch)
-md5sums=('SKIP'
-         '6db56245ab316134c9a487e16ea52084')
+source=("git+$_gitroot")
+md5sums=('SKIP')
 install=systemtap.install
 
 pkgver() {
   cd "$srcdir/$_gitname"
   git describe | sed 's/release-//;s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/$_gitname"
-  patch -p1 -i "$srcdir"/remove-install-exec-hook.patch
 }
 
 build() {

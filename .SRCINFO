@@ -1,6 +1,6 @@
 pkgbase = systemtap-git
 	pkgdesc = provides infrastructure to simplify the gathering of information about the running Linux system.
-	pkgver = 4.0.88.g905865da1
+	pkgver = 4.0.102.g1832b8f51
 	pkgrel = 1
 	url = https://sourceware.org/systemtap/
 	install = systemtap.install
@@ -22,9 +22,7 @@ pkgbase = systemtap-git
 	provides = systemtap=4.0
 	conflicts = systemtap
 	source = git+https://sourceware.org/git/systemtap.git
-	source = remove-install-exec-hook.patch
 	md5sums = SKIP
-	md5sums = 6db56245ab316134c9a487e16ea52084
 
 pkgname = systemtap-git
 
