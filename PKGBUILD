@@ -3,7 +3,7 @@
 pkgname=mellowplayer
 _pkgname=MellowPlayer
 pkgver=3.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source and cross-platform desktop application that runs web-based music streaming 
          services in its own window and provides integration with your desktop."
 url='https://github.com/ColinDuquesnoy/MellowPlayer'
@@ -25,7 +25,7 @@ prepare() {
 build() {
   cd $srcdir/MellowPlayer-${pkgver}
   export MAKEFLAGS="-j$(nproc)"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
   make 
 }
 
