@@ -13,7 +13,6 @@ source=("https://github.com/Delgan/loguru/archive/master.zip")
 md5sums=('6503d88aa9e298bae092b96f9a49a75b')
 
 package() {
-  
-  cd "$pkgname-master"
+  cd "loguru-master"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
