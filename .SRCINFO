@@ -1,10 +1,11 @@
 pkgbase = ant-nebula-theme-git
 	pkgdesc = Nebula variant of the Ant theme
-	pkgver = 58.8071828
+	pkgver = 59.26abba4
 	pkgrel = 1
 	url = https://github.com/EliverLara/Ant-Nebula
 	arch = any
 	license = GPL
+	makedepends = inkscape
 	optdepends = ttf-roboto: primary font face defined
 	optdepends = ttf-ubuntu-font-family: secondary font face defined
 	optdepends = cantarell-fonts: tertiary font face defined
