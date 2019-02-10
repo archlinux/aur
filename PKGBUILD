@@ -3,7 +3,7 @@
 
 pkgname=minetest-git
 _pkgname=minetest
-pkgver=20190203.809cb9fc0
+pkgver=20190210.ba5a9f2b3
 pkgrel=1
 pkgdesc='Voxel game engine and Infiniminer/Minecraft-inspired game'
 url='http://www.minetest.net/'
@@ -28,7 +28,8 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}"
-	cp -a minetest_game minetest/games
+	rm -fr minetest/games/minetest_game
+	cp -a minetest_game minetest/games/
 }
 
 build() {
