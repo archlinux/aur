@@ -5,7 +5,7 @@
 
 _jqueryver=1.9.1
 pkgname=etherpad-lite
-pkgver=1.7.0
+pkgver=1.7.5
 pkgrel=1
 epoch=1
 pkgdesc="Lightweight fork of etherpad based on javascript"
@@ -21,30 +21,23 @@ optdepends=('sqlite: to use sqlite as databse'
             'libreoffice: advanced import/export of pads'
             'tidy: improve quality of exported pads')
 conflicts=('etherpad-lite-git')
-backup=("etc/${pkgname}/settings.json")
+backup=("etc/${pkgname}/settings.json"
+        "etc/${pkgname}/credentials.json")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ether/${pkgname}/archive/${pkgver}.tar.gz"
         "jquery-${_jqueryver}.js::https://code.jquery.com/jquery-${_jqueryver}.js"
         "${pkgname}-sysusers.conf"
         "${pkgname}-tmpfiles.conf"
         "${pkgname}.service")
-sha512sums=('6acffc4f05efd0d64774ab1908a74878eec7456e74674cfa90efe1cf873290f35c45e070511ac85d06584ec747d81031e341942f7761df4ad3ee64e1f71a21b5'
+sha512sums=('06f36711648e33ce72db2c5906b6701c8f0e5315f5f65b4f8a0497956ddad376cab20e35bd61b447e6a0a87da6f1b53622ab2478909177afa73652b04867aa5d'
             'd62700e7a1ff41f9d6326ca024ba2be1d391bc8fbb2aeae0f427d74837899b230940bf7c2df3d193f5300a68bb3686706d4c31328234b5cda026a1bf52ef9e70'
             '8c9093cc82acb814023b60eecffae7cb697abfa6193a68ca068f010baf3bf1e5f1678bdb862f4af370badbd71deb6a8499f61c8b6115d280477db1b3fd895dfd'
-            '31a411f8a93ec2bbd854545cce80eaf435b75432f876ac81df0a6d4ba2bc8437a7b9196456cb04b0a5c9b29d013be7f35501f0af48de5c2fe261d12adb3a1895'
+            'f1be6d7094ea0dd267fba21c7c64017de6a63974e193720100d49eba07170a078d43f0b76c96e6453b8e9e94cdc24b36fb7ab14218598d65d1455418daf9e447'
             'b0ee72e0ab370992bd0bf5cd980d53e9222950027a0bf4a41c8085aaec8b93442d0359ef684946f61e005026ad6de5da39ab78c4d54589ecef7d27f1d76410dd')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
   # create needed initializing file
   touch src/.ep_initialized
-
-  # create custom js and css from templates
-  cp -v src/static/custom/js.template src/static/custom/index.js
-  cp -v src/static/custom/js.template src/static/custom/pad.js
-  cp -v src/static/custom/js.template src/static/custom/timeslider.js
-  cp -v src/static/custom/css.template src/static/custom/index.css
-  cp -v src/static/custom/css.template src/static/custom/pad.css
-  cp -v src/static/custom/css.template src/static/custom/timeslider.css
 
   # write dirty.db to StateDirectory by default
   sed -i 's/var\/dirty.db/\/var\/lib\/etherpad-lite\/dirty.db/g' \
@@ -77,20 +70,20 @@ package() {
   mv -v node_modules "${pkgdir}/usr/share/${pkgname}/"
 
   # protect configuration directory with restrictive permission
-  install -vdm 750 "${pkgdir}/etc/${pkgname}"
-  install -vdm 750 "${pkgdir}/etc/${pkgname}/custom"
+  install -vdm 755 "${pkgdir}/etc/${pkgname}"
+  install -vdm 755 "${pkgdir}/etc/${pkgname}/no-skin"
 
   # custom js and css templates
-  install -t "${pkgdir}/etc/${pkgname}/custom" \
-    -vDm 644 "src/static/custom/"*.{css,js}
-  rm -rv src/static/custom
+  install -t "${pkgdir}/etc/${pkgname}/no-skin" \
+    -vDm 644 "src/static/skins/no-skin/"*.{css,js}
+  rm -rv src/static/skins/no-skin/
 
   # move sources
   mv -v src/* "${pkgdir}/usr/share/${pkgname}/src/"
 
   # symlink directory for custom css and js
-  ln -vs "/etc/${pkgname}/custom/" \
-    "${pkgdir}/usr/share/${pkgname}/src/static/"
+  ln -vs "/etc/${pkgname}/no-skin/" \
+    "${pkgdir}/usr/share/${pkgname}/src/static/skins/"
 
   # symlink needed files (not yet created)
   ln -vs "/etc/${pkgname}/SESSIONKEY.txt" \
@@ -105,6 +98,10 @@ package() {
   # configuration
   install -vDm 644 settings.json.template \
     "${pkgdir}/etc/${pkgname}/settings.json"
+  # create and symlink an empty credentials file
+  touch "${pkgdir}/etc/${pkgname}/credentials.json"
+  ln -vs "/etc/${pkgname}/credentials.json" \
+    "${pkgdir}/usr/share/${pkgname}/credentials.json"
 
   # systemd service
   install -vDm 644 "${srcdir}/${pkgname}.service" \
