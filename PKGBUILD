@@ -72,7 +72,7 @@ source=("git+https://github.com/Flexget/Flexget/#tag=$pkgver"
 
 sha256sums=('SKIP'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
-            '5fca3a1b6be282c0914754bbfdeef21005d936fba3d2698801bba18369e1321a')
+            'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a')
 
 #pkgver() {
 #  cd Flexget
