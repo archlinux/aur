@@ -1,6 +1,6 @@
 pkgbase = android-emulator-canary
 	pkgdesc = Google Android Emulator (Canary channel)
-	pkgver = 28.1.5
+	pkgver = 28.1.6
 	pkgrel = 1
 	url = https://developer.android.com/studio/releases/emulator.html
 	install = android-emulator-canary.install
@@ -17,12 +17,12 @@ pkgbase = android-emulator-canary
 	depends = zlib
 	provides = android-emulator
 	conflicts = android-emulator
-	source = https://dl.google.com/android/repository/emulator-linux-5277813.zip
+	source = https://dl.google.com/android/repository/emulator-linux-5292251.zip
 	source = https://dl.google.com/android/repository/repository2-1.xml
 	source = android-emulator-canary.sh
 	source = android-emulator-canary.csh
-	sha256sums = d1e64a4268e84e92e1078beff3364727abf6ecf95edede039224d84ccc49d31b
-	sha256sums = 24479859c92dbe6976ab2408eb89d83934d35d7c7e50f969a4798fd07f5fa0cb
+	sha256sums = 3c32d8d4e0fb0ac428951f3d247463e64f2c5ae5f6244cb2933cb28e7e6b04f4
+	sha256sums = 409dad53062e44de3da28f3d1da0542386d3a7b67b63bc4473924219a03efce6
 	sha256sums = 2d7cd6457bc848c369ee215783146da7dce71d7c7f7043f944700f0a7b0d587d
 	sha256sums = 630ea153f52154ac51b3e76357c8a123bea9ed0c910c64b8585775a345834803
 

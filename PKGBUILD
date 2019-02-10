@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034
 
 pkgname=android-emulator-canary
-pkgver=28.1.5
+pkgver=28.1.6
 pkgrel=1
 pkgdesc='Google Android Emulator (Canary channel)'
 arch=('x86_64')
@@ -16,12 +16,12 @@ makedepends=('xmlstarlet')
 provides=('android-emulator')
 conflicts=('android-emulator')
 install="${pkgname}.install"
-source=('https://dl.google.com/android/repository/emulator-linux-5277813.zip'
+source=('https://dl.google.com/android/repository/emulator-linux-5292251.zip'
         'https://dl.google.com/android/repository/repository2-1.xml'
         "${pkgname}.sh"
         "${pkgname}.csh")
-sha256sums=('d1e64a4268e84e92e1078beff3364727abf6ecf95edede039224d84ccc49d31b'
-            '24479859c92dbe6976ab2408eb89d83934d35d7c7e50f969a4798fd07f5fa0cb'
+sha256sums=('3c32d8d4e0fb0ac428951f3d247463e64f2c5ae5f6244cb2933cb28e7e6b04f4'
+            '409dad53062e44de3da28f3d1da0542386d3a7b67b63bc4473924219a03efce6'
             '2d7cd6457bc848c369ee215783146da7dce71d7c7f7043f944700f0a7b0d587d'
             '630ea153f52154ac51b3e76357c8a123bea9ed0c910c64b8585775a345834803')
 
@@ -34,7 +34,6 @@ package() {
   cp -a emulator "${pkgdir}/opt/android-sdk/"
 
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  #xml sel -t -v '/sdk:sdk-repository/license[@id=/sdk:sdk-repository/remotePackage[@path="emulator" and channelRef[@ref="channel-3"] and archives/archive/host-os[.="linux"]]/uses-license/@ref]' repository2-1.xml > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   xml sel -t -v '/sdk:sdk-repository/license[@id="android-sdk-preview-license"]' repository2-1.xml > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Fix broken permissions
