@@ -1,7 +1,7 @@
 # Maintainer: Yingtong Li <archlinux@yingtongli.me>
 pkgname=anyconnect-client
 pkgver=4.5.04029
-pkgrel=1
+pkgrel=2
 pkgdesc="Cisco AnyConnect Secure Mobility Client"
 arch=('x86_64')
 url="https://www.cisco.com/c/en_au/products/security/anyconnect-secure-mobility-client/index.html"
@@ -41,6 +41,7 @@ package() {
 	rm "$pkgdir/opt/cisco/anyconnect/"*.log
 	
 	sed -i "s#$pkgdir##g" "$pkgdir/opt/cisco/vpn/bin/vpndownloader.sh"
+	ln -sf $(basename "$pkgdir/opt/cisco/anyconnect/lib/libaccurl.so.4."*) "$pkgdir/opt/cisco/anyconnect/lib/libaccurl.so.4"
 	
 	rm -r "$pkgdir/etc/init.d"
 	mkdir -p "$pkgdir/usr/lib/systemd/system/"
