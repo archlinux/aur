@@ -1,6 +1,6 @@
 # Maintainer: osch <oliver@luced.de>
 pkgname=moonfltk
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 epoch=
 pkgdesc="Lua bindings for FLTK"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/stetre/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-md5sums=()
+md5sums=('1121d4c1416ff6d883165a4b566af647')
 validpgpkeys=()
 
 prepare() {
@@ -44,4 +44,3 @@ package() {
 	cd "$pkgdir/usr/lib/"
 	ln -sfv lua/5.3/moonfltk.so libmoonfltk.so
 }
-md5sums=('66a76cefde0156591864afccae97be79')
