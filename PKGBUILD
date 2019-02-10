@@ -3,11 +3,12 @@
 pkgname=nordic-polar-theme-git
 _pkgname=Nordic-Polar
 pkgver=15.199adc9
-pkgrel=1
+pkgrel=2
 pkgdesc="A Gtk3.20+ theme created using the awesome Nord color palette."
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
 license=('GPL')
+makedepends=('inkscape')
 optdepends=('ttf-roboto: primary font face defined'
 			'ttf-ubuntu-font-family: secondary font face defined'
 			'cantarell-fonts: tertiary font face defined')
@@ -26,7 +27,7 @@ build() {
 	export THEME_FONT_FACE="${THEME_FONT_FACE:-Roboto}"
 	export THEME_FONT_SIZE="${THEME_FONT_SIZE:-10}"
 
-	msg2 "To customize the font size for gnome-shell, build this package"
+	msg2 "To customize the font and size for gnome-shell, build this package"
 	msg2 "with the variables below set to the desired font family and size"
 	msg2 "- THEME_FONT_FACE (default font family is Roboto)"
 	msg2 "- THEME_FONT_SIZE (default font point size is 10)"
