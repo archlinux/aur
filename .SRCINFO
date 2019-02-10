@@ -1,0 +1,13 @@
+pkgbase = duffle-bin
+	pkgdesc = CNAB installer
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/deislabs/duffle
+	arch = x86_64
+	license = MIT
+	options = !strip
+	source = duffle-0.1.0::https://github.com/deislabs/duffle/releases/download/0.1.0-ralpha.4+dramallamabuie/duffle-linux-amd64
+	sha256sums = 68103b1225335803b460031d5ba16b15adae87aed11bfa73f1372554448d5aaa
+
+pkgname = duffle-bin
+
