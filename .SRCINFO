@@ -1,0 +1,18 @@
+pkgbase = firetools-git
+	pkgdesc = Graphical user interface of Firejail
+	pkgver = 0.9.58.r0.g8dbea1e
+	pkgrel = 1
+	url = https://firejail.wordpress.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = firejail
+	depends = qt5-base
+	provides = firetools
+	conflicts = firetools
+	source = git+https://github.com/netblue30/firetools.git
+	sha256sums = SKIP
+
+pkgname = firetools-git
+
