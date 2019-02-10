@@ -3,7 +3,7 @@
 _pkgname=betterlockscreen
 pkgname=$_pkgname
 pkgver=3.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple lock script for i3lock-color"
 arch=('any')
 url="https://github.com/pavanjadhaw/${_pkgname}"
@@ -20,7 +20,7 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
     cp "$_srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
     if [[ $(pidof systemd) ]]; then
-        _serviceloc="$pkgdir/lib/systemd/system"
+        _serviceloc="$pkgdir/usr/lib/systemd/system"
         mkdir -p "$_serviceloc"
         _servicename="$_pkgname@.service"
         cp "$_srcdir/$_servicename" "$_serviceloc/$_servicename"
