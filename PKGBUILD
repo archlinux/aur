@@ -10,7 +10,7 @@ pkgname="python-numpy-mkl"
 true && pkgname=('python-numpy-mkl' 'python2-numpy-mkl')
 #pkgname=('python-numpy')
 pkgver=1.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python compiled with intel mkl"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -20,15 +20,16 @@ depends=('intel-mkl' 'python' 'python2')
 makedepends=('python-setuptools' 'python2-setuptools' 'intel-compiler-base' 'intel-fortran-compiler' 'cython')
 
 source=(https://github.com/numpy/numpy/archive/v${pkgver}.tar.gz
-	'site64.cfg' 'site32.cfg' 'intelccompiler.py.patch')
+	'site64.cfg' 'site32.cfg' 'intelccompiler.py.patch'
+	'fix_compiler.patch')
 
 sha256sums=('59485e2d172c4c3e27307969ef2c1220b98efcf59cbf373bec41da19f7b69b92'
             '86cd68a695a5e1d76f8e53cda70c888c4ed04349f15c8096d4492e346e7187e1'
             '882f2717deca0fd6a2e2384aac2dc7973c566f9cd2ba46777c3b5ffdffa814df'
-            '0d185daf0f2fcab08778173f54cee86cd88dc3c6703413686ab3742c0097db4e')
+            '0d185daf0f2fcab08778173f54cee86cd88dc3c6703413686ab3742c0097db4e'
+	    '7389feba5dc3db997be652fc8d98d573a936c62c4ef5272c142598636fcea2df')
 
 build() {
-#1.16.1 runs tests slower for some reason
 	#cd "${srcdir}"
 
 	patch ${srcdir}/numpy-${pkgver}/numpy/distutils/intelccompiler.py < ${srcdir}/intelccompiler.py.patch
@@ -119,6 +120,7 @@ package_python2-numpy-mkl() {
 		$(find ${pkgdir} -name '*.py')
 
 	mv "$pkgdir"/usr/bin/f2py{,2}
+	patch ${pkgdir}/usr/lib/python2.7/site-packages/numpy/distutils/ccompiler.py < ${srcdir}/fix_compiler.patch
 }
 
 package_python-numpy-mkl() {
@@ -133,4 +135,5 @@ package_python-numpy-mkl() {
 
 	install -m755 -d "${pkgdir}/usr/share/licenses/python-numpy"
 	install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-numpy/"
+	patch ${pkgdir}/usr/lib/python3.7/site-packages/numpy/distutils/ccompiler.py < ${srcdir}/fix_compiler.patch
 }
