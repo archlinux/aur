@@ -87,10 +87,10 @@ if [ -f "${PASTIX_CONF}" ]; then
 fi
 
 # Add trilinos support
-if [ "${TRILINOS_DIR}" ]; then
-	CONFOPTS="${CONFOPTS} --with-ml-dir=${TRILINOS_DIR}"
+if [ -f "/usr/lib/libml.so" ]; then
+	CONFOPTS="${CONFOPTS} --with-ml=1"
 	# Add boost support (may be useful for trilinos)
-	#CONFOPTS="${CONFOPTS} --with-boost=1"
+	CONFOPTS="${CONFOPTS} --with-boost=1"
 fi
 
 echo "${CONFOPTS}"

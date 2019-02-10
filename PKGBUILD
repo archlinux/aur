@@ -1,9 +1,10 @@
-# Maintainer: Andreas Bilke <abilke at cosy dot sbg dot ac dot at>
+# Maintainer: Martin Diehl  <m dot diehl at mpie dot de>
+# Contributor: Andreas Bilke <abilke at cosy dot sbg dot ac dot at>
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
 pkgver=3.10.3
-pkgrel=1
+pkgrel=2
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -31,7 +32,7 @@ install=petsc.install
 source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver/_/-}.tar.gz
         test_optdepends.sh)
 sha256sums=('cd106babbae091604fee40c258737c84dec048949be779eaef5a745df3dc8de4'
-            'b737cc58ffb581c68072cf978bf4de3eaff8318c7a1e65c174d7ffe802ed427b')
+            '849b029612312ee5baae43507e56aa32a2b2cb7a6cc4a0b432eb7354dec794d7')
 
 _install_dir=/opt/petsc/${_config}
 _petsc_arch="arch-${_config}"
