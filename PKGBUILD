@@ -7,7 +7,7 @@
 
 pkgname=linuxtv-dvb-apps
 pkgver=1505
-pkgrel=1
+pkgrel=2
 _hgrev=3d43b280298c
 pkgdesc='Linux DVB API applications and utilities'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -15,6 +15,7 @@ url='https://www.linuxtv.org'
 license=('GPL')
 depends=('glibc')
 makedepends=('mercurial')
+optdepends=('dtv-scan-tables-git: initial tuning data necessary for scannig utils')
 source=("hg+https://linuxtv.org/hg/dvb-apps/#revision=${_hgrev}"
         'https://gitweb.gentoo.org/repo/gentoo.git/plain/media-tv/linuxtv-dvb-apps/files/linuxtv-dvb-apps-1.1.1.20100223-perl526.patch'
         'https://git.busybox.net/buildroot/plain/package/dvb-apps/0003-handle-static-shared-only-build.patch'
