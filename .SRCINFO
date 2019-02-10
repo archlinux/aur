@@ -1,0 +1,18 @@
+pkgbase = archlinux-repro-git
+	pkgdesc = Tools to reproduce arch linux packages
+	pkgver = r116.a1dc7bd
+	pkgrel = 1
+	url = http://github.com/archlinux/archlinux-repro
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = asciidoc
+	depends = diffoscope
+	depends = curl
+	depends = gnupg
+	depends = git
+	source = git+https://github.com/archlinux/archlinux-repro.git
+	sha256sums = SKIP
+
+pkgname = archlinux-repro-git
+
