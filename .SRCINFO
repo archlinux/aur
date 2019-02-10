@@ -1,5 +1,5 @@
 pkgbase = lua-mtstates
-	pkgdesc = Low-level in-memory message buffers for inter-thread communication for Lua.
+	pkgdesc = This package provides a way to create new Lua states from within Lua for using them in arbitrary threads
 	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/osch/lua-mtstates#mtstates
