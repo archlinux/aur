@@ -31,9 +31,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="ros_comm-release-release-melodic-xmlrpcpp"
+_dir="ros_comm-release-release-melodic-xmlrpcpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/xmlrpcpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5b00e3a18b7fe81a82d9e063a49cfe6b54b03822d536a1f06ed4e51830f5776c')
+sha256sums=('d141854dd4371212f6606bfff6f7a44eb1a0292bbcf64cf29f4fed0c0741bc76')
 
 build() {
 	# Use ROS environment variables.
