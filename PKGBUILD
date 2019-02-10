@@ -10,11 +10,11 @@ _neovim="n"
 
 _name='deoplete-jedi'
 pkgname="${_name}-git"
-pkgver=r332.5b273e7
+pkgver=r333.b953291
 pkgrel=1
 pkgdesc="jedi add-on for deoplete completion plugin for neovim"
 arch=('any')
-url="https://github.com/zchee/deoplete-jedi"
+url="https://github.com/deoplete-plugins/deoplete-jedi"
 license=('MIT')
 groups=()
 depends=('deoplete')
@@ -25,7 +25,7 @@ replaces=()
 backup=()
 options=()
 source=(
-'git+https://github.com/zchee/deoplete-jedi'              # deopletejedi
+'git+https://github.com/deoplete-plugins/deoplete-jedi'              # deopletejedi
 'git+https://github.com/davidhalter/jedi.git'             # jedi
 'git+https://github.com/davidhalter/parso.git'            # parso
 )
