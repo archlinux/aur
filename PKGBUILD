@@ -15,7 +15,7 @@ depends=(
   'gstreamer' 'gtk3' 'python-dbus' 'python-gobject' 'python-mutagen' 'python-cairo' 'python-peewee' 'file' 'gst-plugins-good'
 )
 source=( "https://github.com/geigi/cozy/archive/${pkgver}.tar.gz")
-sha256sums=('d007bc1aa5aa08e1aca06af1b5504323b53be4597ab3998c7abf24efc6673722')
+sha256sums=('af7f70ec2e09bae87d3640d72bdbc19856de964b571d0c803ada52e52fa1e466')
 
 build() {
     cd "cozy-${pkgver}"
