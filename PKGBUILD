@@ -6,7 +6,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=2.18.13
+pkgver=2.19.6
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -55,10 +55,10 @@ optdepends=('python-guppy: for memusage plugin' #AUR#
             )
 makedepends=('python-paver'
              'python-setuptools'
-             'yarn'
-             'bower'
-             'gulp'
              )
+             #'yarn'
+             #'bower'
+             #'gulp'
 
 #checkdepends=('python-vcr')
 
@@ -99,18 +99,13 @@ prepare() {
   sed -i 's/progressbar/progressbar2/' requirements.txt
 }
 
-build() {
-  cd "${_pkgname}"/flexget/ui/v1
-  yarn
-  XDG_CONFIG_HOME="${_srcdir}" bower --config.analytics=false install
-  XDG_CONFIG_HOME="${_srcdir}" gulp
-
-}
-
-#check() {
-#  cd "${_pkgname}"
+# currently broken somewhere in the bower task
+#build() {
+#  cd "${_pkgname}"/flexget/ui/v1
+#  yarn
+#  XDG_CONFIG_HOME="${_srcdir}" bower --config.analytics=false install
+#  XDG_CONFIG_HOME="${_srcdir}" gulp
 #
-#  python2 setup.py test
 #}
 
 package() {
