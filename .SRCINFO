@@ -16,6 +16,7 @@ pkgbase = zrythm-git
 	depends = libdazzle
 	depends = breeze-icons
 	depends = libcyaml
+	depends = portaudio
 	provides = zrythm
 	conflicts = zrythm
 	source = zrythm::git+https://git.zrythm.org/zrythm/zrythm.git
