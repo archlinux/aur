@@ -4,7 +4,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer
-pkgver=2019.126.0
+pkgver=2019.131.0
 pkgrel=1
 
 dotnet_version=2.2
@@ -22,29 +22,19 @@ conflicts=(osu-lazer-git)
 
 source=(
     "osu-$pkgver::git+https://github.com/ppy/osu.git#tag=$pkgver"
-    'git+https://github.com/ppy/osu-resources.git'
+    "CC-BY-NC-4.0"::https://github.com/ppy/osu-resources/raw/master/LICENCE.md
     'osu-launcher'
     'osu-lazer.desktop'
     'osu-lazer.png'
     'x-osu-lazer.xml'
 )
 
-sha256sums=(
-    SKIP
-    SKIP
-    a34d37ed6d35788501985ad3c8f63888849734549113e11f43321917fdfa16bf
-    9935414fdd95c02c7fd2d0d200ce1037dfce95cd7f1d04b25a275ce0902401c6
-    3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5
-    d842b333a014a666012548097ddf80a6f147896ad5460365560ce7f11834297f
-)
-
-prepare()
-{
-    cd "osu-$pkgver"
-    git submodule init
-    git config submodule.osu-resources.url $srcdir/osu-resources
-    git submodule update
-}
+sha256sums=('SKIP'
+            '30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244'
+            'a34d37ed6d35788501985ad3c8f63888849734549113e11f43321917fdfa16bf'
+            '9935414fdd95c02c7fd2d0d200ce1037dfce95cd7f1d04b25a275ce0902401c6'
+            '3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5'
+            'd842b333a014a666012548097ddf80a6f147896ad5460365560ce7f11834297f')
 
 build()
 {
@@ -92,9 +82,9 @@ package()
     install -m644 "LICENCE" "$pkgdir/usr/share/licenses/$pkgname/osu-lazer/MIT"
 
     # osu-resources licence
-    cd "$srcdir/osu-$pkgver/osu-resources/"
+    cd "$srcdir/"
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname/osu-resources/"
-    install -m644 "LICENCE.md" "$pkgdir/usr/share/licenses/$pkgname/osu-resources/CC-BY-NC 4.0"
+    install -m644 "CC-BY-NC-4.0" "$pkgdir/usr/share/licenses/$pkgname/osu-resources/CC-BY-NC 4.0"
 }
 
 # vim: set sw=4 ts=4 et:
