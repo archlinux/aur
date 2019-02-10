@@ -1,24 +1,18 @@
 # Maintainer: Pawel Mosakowski <pawel@mosakowski.net>
 pkgname=appgate-sdp
 conflicts=('appgate-sdp-headless')
-pkgver=4.1.0
-_download_pkgver=4.1.1
-pkgrel=2
+pkgver=4.2.1
+_download_pkgver=4.2
+pkgrel=1
 epoch=
 pkgdesc="Software Defined Perimeter - GUI client"
 arch=('x86_64')
-url="https://www.cyxtera.com/secure-access/appgate-sdp"
+url="https://www.cyxtera.com/essential-defense/appgate-sdp/support"
 license=('custom')
-# dependecies taken from provided Ubuntu package
-# depends=('alsa-lib' 'atk' 'cairo' 'cups' 'dbus' 'dnsmasq' 'expat' 'fontconfig' 'freetype2'
-#         'gcc-libs' 'gconf' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'iptables' 'libappindicator-gtk2'
-#         'libxcomposite' 'libsecret' 'libx11' 'libxcb' 'libxcursor' 'libxdamage' 'libxext'
-#         'libxfixes' 'libxi' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'nodejs' 'nspr' 'nss'
-#         'pango' 'procps-ng' 'python' 'python-dbus' 'python-distutils-extra' 'zlib')
 
 # dependecies calculated by namcap
 depends=('gconf' 'libsecret' 'gtk3' 'python' 'nss' 'libxss' 'nodejs' 'dnsmasq')
-source=("https://sdpdownloads.cyxtera.com/files/download/AppGate-SDP-${_download_pkgver}/clients/${pkgname}_${pkgver}_amd64.deb"
+source=("https://sdpdownloads.cyxtera.com/AppGate-SDP-${_download_pkgver}/clients/${pkgname}_${pkgver}_amd64.deb"
         "appgatedriver.service")
 
 prepare() {
@@ -38,5 +32,5 @@ package() {
     cp -v "$pkgdir/usr/share/doc/appgate/LICENSES.chromium.html.bz2" "$pkgdir/usr/share/licenses/appgate-sdp"
 }
 
-md5sums=('424c3def083993c095e4bad0252cb848'
+md5sums=('7ecef2f9033ed09dec081084446deaee'
          '002644116e20b2d79fdb36b7677ab4cf')
