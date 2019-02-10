@@ -7,7 +7,7 @@
 pkgname=mingw-w64-vulkan-icd-loader
 _pkgname=Vulkan-Loader
 pkgver=1.1.99
-pkgrel=1
+pkgrel=2
 pkgdesc="Vulkan Installable Client Driver (ICD) Loader (mingw-w64)"
 arch=(any)
 url="https://www.khronos.org/vulkan/"
@@ -42,7 +42,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  export LDFLAGS="-static-libgcc -static" # to staticly apply libssp and libwinpthread
+  export LDFLAGS="-static-libgcc -static -Wl,--enable-stdcall-fixup" # -static to staticly apply libssp and libwinpthread
   export CFLAGS="-Wno-unused-function"
   export CXXFLAGS=$CFLAGS
   export CPPFLAGS=$CFLAGS
