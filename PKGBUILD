@@ -2,7 +2,7 @@
 
 pkgname=('python-better-exceptions-fork')
 pkgver=0.2.1
-pkgrel=9
+pkgrel=10
 pkgdesc='Pretty and helpful exceptions, automatically'
 arch=('any')
 url='https://github.com/Delgan/better-exceptions'
