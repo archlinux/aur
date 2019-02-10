@@ -5,10 +5,10 @@ pkgname=('avidemux-core-git'
          'avidemux-qt-git'
          'avidemux-cli-git'
          )
-pkgver=2.7.0.171216.f75d3a20a
+pkgver=2.7.1.190210.ef2af6011
 pkgrel=1
 pkgdesc="A graphical/cli tool to edit video (filter/re-encode/split). (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://www.avidemux.org'
 license=('GPL2')
 makedepends=('git'
@@ -33,7 +33,6 @@ makedepends=('git'
              'libvdpau'
              'libvpx'
              'opencore-amr'
-             'setconf'
              'twolame'
              'xvidcore'
              'x264'
@@ -83,18 +82,17 @@ build() {
   msg2 "Build Core Libs"
   cd "${srcdir}/build_core"
   cmake ../avidemux/avidemux_core \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DFAKEROOT="${srcdir}/fakeroot" \
     -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux"
 
-  make
   make DESTDIR="${srcdir}/fakeroot" install
 
   msg2 "Build Core Plugins"
   cd "${srcdir}/build_core_plugins"
   cmake ../avidemux/avidemux_plugins \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPLUGIN_UI=COMMON \
     -DUSE_EXTERNAL_LIBA52=ON \
@@ -103,24 +101,22 @@ build() {
     -DUSE_EXTERNAL_MP4V2=ON \
     -DFAKEROOT="${srcdir}/fakeroot"
 
-  make
   make DESTDIR="${srcdir}/fakeroot" install
 
   msg2 "Build Qt GUI"
   cd "${srcdir}/build_qt"
   cmake ../avidemux/avidemux/qt4 \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_QT5=ON \
     -DFAKEROOT="${srcdir}/fakeroot"
 
-  make
-  make DESTDIR="${srcdir}/fakeroot" install
+  make -j1 DESTDIR="${srcdir}/fakeroot" install
 
   msg2 "Build Qt GUI Plugins"
   cd ${srcdir}/build_qt_plugins
   cmake ../avidemux/avidemux_plugins \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_QT5=ON \
     -DPLUGIN_UI=QT4 \
@@ -130,23 +126,21 @@ build() {
     -DUSE_EXTERNAL_MP4V2=ON \
     -DFAKEROOT="${srcdir}/fakeroot"
 
-  make
   make DESTDIR="${srcdir}/fakeroot" install
 
   msg2 "Build CLI frontend"
   cd "${srcdir}/build_cli"
   cmake ../avidemux/avidemux/cli \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DFAKEROOT="${srcdir}/fakeroot"
 
-  make
   make DESTDIR="${srcdir}/fakeroot" install
 
   msg2 "Build CLI plugins"
   cd "${srcdir}/build_cli_plugins"
   cmake ../avidemux/avidemux_plugins \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPLUGIN_UI=CLI \
     -DUSE_EXTERNAL_LIBA52=ON \
@@ -155,13 +149,12 @@ build() {
     -DUSE_EXTERNAL_MP4V2=ON \
     -DFAKEROOT="${srcdir}/fakeroot"
 
-  make
   make DESTDIR="${srcdir}/fakeroot" install
 
   msg2 "Build Settings"
   cd "${srcdir}/build_core_plugins_settings"
   cmake ../avidemux/avidemux_plugins \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr  \
     -DPLUGIN_UI=SETTINGS \
     -DUSE_EXTERNAL_LIBA52=ON \
@@ -170,7 +163,6 @@ build() {
     -DUSE_EXTERNAL_MP4V2=ON \
     -DFAKEROOT="${srcdir}/fakeroot"
 
-  make
   make DESTDIR="${srcdir}/fakeroot" install
 }
 
@@ -231,17 +223,13 @@ package_avidemux-qt-git() {
 
   make -C build_qt DESTDIR="${pkgdir}" install
   make -C build_qt_plugins DESTDIR="${pkgdir}" install
-
-  install -Dm644 avidemux/avidemux2.desktop "${pkgdir}/usr/share/applications/avidemux-qt.desktop"
-  setconf "${pkgdir}/usr/share/applications/avidemux-qt.desktop" Name 'Avidemux Qt'
-  setconf "${pkgdir}/usr/share/applications/avidemux-qt.desktop" Exec avidemux3_qt5
-  setconf "${pkgdir}/usr/share/applications/avidemux-qt.desktop" Icon avidemux-qt
-  install -Dm644 avidemux/avidemux_icon.png "${pkgdir}/usr/share/pixmaps/avidemux-qt.png"
 }
 
 package_avidemux-cli-git() {
   pkgdesc="CLI frontend for Avidemux. (GIT version)"
-  depends=("avidemux-core-git>=${pkgver}")
+  depends=("avidemux-core-git>=${pkgver}"
+           'gcc-libs'
+           )
   provides=('avidemux-cli')
   conflicts=('avidemux-cli')
 
