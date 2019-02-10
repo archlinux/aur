@@ -3,10 +3,10 @@ pkgbase = electron-windows95-bin
 	pkgver = 2.0.0
 	pkgrel = 2
 	url = https://github.com/felixrieseberg/windows95
-	arch = x86_64
+	arch = amd64
 	license = MIT
 	depends = electron
-	source = https://github.com/felixrieseberg/windows95/releases/download/v2.0.0/windows95-linux-.deb
+	source = https://github.com/felixrieseberg/windows95/releases/download/v2.0.0/windows95-linux-amd64.deb
 	sha256sums = 7f83e6361d0606db16e77f7d1592e74a6882df53f2d98b74e0b7db3f9714353e
 
 pkgname = electron-windows95-bin
