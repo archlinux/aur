@@ -1,7 +1,7 @@
 # Maintainer: Nissar Chababy <funilrys at outlook dot com>
 # Ex-Maintainer: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-server
-pkgver=2.3.6
+pkgver=2.3.7
 pkgrel=1
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
@@ -12,7 +12,7 @@ depends=('sqlite' 'crypto++' 'curl' 'fuse' 'zlib')
 conflicts=('urbackup-server')
 source=("https://www.urbackup.org/downloads/Server/${pkgver}/urbackup-server-${pkgver}.tar.gz")
 install='urbackup.install'
-sha512sums=('1067052938f988fa6339f1a177c7bf27f9ee627caa2c896ee1ade80702e1868d3cf322714d383a65060b8d9eb6391c085fd5edaa81d99a4fa45e6f966d19d65a')
+sha512sums=('a3072f2f5331ea5dfafe2b78736ff4ee233c5c62be84d94c4bfdd70f21305d3f3a89318bdfd04f6c082e18218f7c38eb8be505c7269a429bf19aab557c53b208')
 
 CFLAGS="-march=native -O2 -pipe -fstack-protector-strong"
 CXXFLAGS="${CFLAGS}"
