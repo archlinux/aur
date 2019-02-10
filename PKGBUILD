@@ -132,7 +132,7 @@ build() {
         --enable-libsnappy \
         --enable-libsoxr \
         --enable-libspeex \
-        --enable-libsrt \
+        --disable-libsrt \
         --enable-libssh \
         --enable-libtensorflow \
         --enable-libtesseract \
