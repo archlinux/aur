@@ -29,3 +29,5 @@ package() {
   install -Dm755 ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
 }
+
+# vim:set ts=2 sw=2 et:
