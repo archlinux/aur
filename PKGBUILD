@@ -1,6 +1,6 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=meshlab-git
-pkgver=42ef8f6.r0.g42ef8f6c
+pkgver=2019.01.29.f6c6675.r0.gf6c6675b
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -48,7 +48,8 @@ md5sums=('SKIP'
 
 pkgver() {
   cd ${srcdir}/${pkgname%-git}
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  local date=$(git log --tags --simplify-by-decoration --pretty=format:"%ai" -1|cut -d' ' -f1|sed 's/-/\./g')
+  git describe --long --tags | sed "s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/^/${date}\./g"
 }
 
 prepare() {
