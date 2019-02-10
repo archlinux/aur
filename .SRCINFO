@@ -1,7 +1,7 @@
 pkgbase = python-better-exceptions-fork
 	pkgdesc = Pretty and helpful exceptions, automatically
 	pkgver = 0.2.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/Delgan/better-exceptions
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = python-better-exceptions-fork
 	source = https://github.com/Delgan/better-exceptions/archive/master.zip
 	source = setup-fork.py
 	md5sums = 29068e4a8f946b390aafae240a0f0470
+	md5sums = f093af63207198b670b7d58fe560687b
 
 pkgname = python-better-exceptions-fork
 
