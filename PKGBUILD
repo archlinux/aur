@@ -2,7 +2,7 @@
 # Contributor: Dave Blair <mail@dave-blair.de>
 
 pkgname=autokey-py3
-pkgver=0.95.5
+pkgver=0.95.6
 pkgrel=1
 pkgdesc="Python 3 port of AutoKey, a desktop automation utility for Linux and X11 with new features."
 url="https://github.com/autokey/autokey"
@@ -20,7 +20,7 @@ conflicts=('autokey' 'autokey-gtk' 'autokey-data')
 license=('GPL3')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/autokey-py3/autokey/archive/v${pkgver}.tar.gz")
-sha256sums=('f96ae3d791a7cfed60fba05816b6e4948a1b68afa6220285ec63d503acfc988c')
+sha256sums=('d02aa25107c652d6eb960be0e7722bcc07d997a41fbf06b29babc0389ce3ee0d')
 
 package() {
     cd "$srcdir/autokey-${pkgver}"
