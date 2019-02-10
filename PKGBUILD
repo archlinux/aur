@@ -385,6 +385,11 @@ if ! $_target_host && $_overwrite_mkspec; then
   cp -r "${srcdir}/mkspecs/${_mkspec}" $_mkspec_dir
 fi
 
+if $_patching; then
+  cd ${_basedir}
+  patch -p1 < ${startdir}/0001-Move-bcm_host-over-to-pkgConfig.patch
+fi
+
   rm -Rf ${_bindir}
   mkdir -p ${_bindir}
   cd ${_bindir}
