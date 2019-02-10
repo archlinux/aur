@@ -45,7 +45,7 @@ prepare() {
 build() {
 	# http://site.icu-project.org/download/61#TOC-Migration-Issues
 	CPPFLAGS+=' -DU_USING_ICU_NAMESPACE=1'
-	CFLAGS+=' -D_FILE_OFFSET_BITS=64'
+	CFLAGS+=' -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE '
 
 	local _phpconfig="--srcdir=../${orig_pkg}-${pkgver} \
 		--config-cache \
@@ -167,7 +167,7 @@ check() {
 }
 
 package() {
-
+        backup=('etc/php/php.ini')
 	cd ${srcdir}/build
 	make -j1 INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
 	install -D -m644 ${srcdir}/${orig_pkg}-${pkgver}/php.ini-production ${pkgdir}/etc/php/php.ini
