@@ -10,3 +10,7 @@
 
 # packages
 *.pkg.tar.xz
+pkg
+
+# source
+src
