@@ -1,6 +1,6 @@
 pkgbase = wg++
 	pkgdesc = WebGrab+Plus is a free multi-site incremental XMLTV EPG grabber.
-	pkgver = 2.1.0_20180620130845
+	pkgver = 2.1.0_20190107123114
 	pkgrel = 1
 	url = http://webgrabplus.com/
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = wg++
 	depends = mono
 	provides = wg++
 	source = http://webgrabplus.com/sites/default/files/download/SW/V2.1.0/WebGrabPlus_V2.1_install.tar.gz
-	source = http://webgrabplus.com/sites/default/files/download/ini/SiteIni.Pack_2018.06.20_130845.zip
+	source = http://webgrabplus.com/sites/default/files/download/ini/SiteIni.Pack_2019.01.07_123114.zip
 	source = wg++
 	md5sums = 837d35bc377c1dc134c26a044bcee479
-	md5sums = 2c1011a222fe7b3211d710b89be06a7f
+	md5sums = e87c0c64461992d0f3157541a74dfd76
 	md5sums = 96ddf77a84554bb457dab4fd63e82ae6
 
 pkgname = wg++

@@ -1,8 +1,8 @@
 # Maintainer: Erikas Rudinskas <erikmnkl@gmail.com>
 
 pkgname=wg++
-pkgver=2.1.0_20180620130845
-_pkgver=2018.06.20_130845
+pkgver=2.1.0_20190107123114
+_pkgver=2019.01.07_123114
 pkgrel=1
 pkgdesc='WebGrab+Plus is a free multi-site incremental XMLTV EPG grabber.'
 arch=('any')
@@ -14,7 +14,7 @@ source=("http://webgrabplus.com/sites/default/files/download/SW/V2.1.0/WebGrabPl
 	"http://webgrabplus.com/sites/default/files/download/ini/SiteIni.Pack_$_pkgver.zip"
         "wg++")  
 md5sums=("837d35bc377c1dc134c26a044bcee479"
-	 "2c1011a222fe7b3211d710b89be06a7f"
+	 "e87c0c64461992d0f3157541a74dfd76"
 	 "96ddf77a84554bb457dab4fd63e82ae6")
 
 package() {
