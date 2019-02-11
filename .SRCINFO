@@ -1,0 +1,16 @@
+pkgbase = jaxb-api
+	pkgdesc = Java Architecture for XML Binding (JAXB) API
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = https://javaee.github.io/jaxb-v2/
+	arch = x86_64
+	arch = i686
+	license = EDL
+	makedepends = java-environment
+	makedepends = maven
+	depends = java-runtime
+	source = https://github.com/eclipse-ee4j/jaxb-api/archive/2.3.2.tar.gz
+	sha256sums = 67e4434633106920b5898eff4e577fcbfb185c7726ef8c8ee18f9f7ed9023c8f
+
+pkgname = jaxb-api
+
