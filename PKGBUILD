@@ -1,37 +1,35 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-pixman
-pkgver=0.36.0
+pkgver=0.38.0
 pkgrel=1
 pkgdesc="The pixel-manipulation library for X and cairo (mingw-w64)"
 arch=(any)
 url="http://xorg.freedesktop.org"
 license=("custom")
-makedepends=(mingw-w64-configure)
+makedepends=(mingw-w64-meson libpng)
 depends=(mingw-w64-gcc)
 options=(staticlibs !strip !buildflags)
 source=("http://xorg.freedesktop.org/releases/individual/lib/pixman-${pkgver}.tar.bz2")
-sha1sums=('10d85590beee287a508a148297808a66d1ce11cd')
+sha1sums=('06587395f4a3538bafc0845ac225ea4c6472e550')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-	cd pixman-$pkgver
   for _arch in ${_architectures}; do
-    unset LDFLAGS
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure \
-			--disable-gtk
-    make
-    popd
+    mkdir -p "${srcdir}/pixman-${pkgver}/build-${_arch}"
+    cd "${srcdir}/pixman-${pkgver}/build-${_arch}"
+    ${_arch}-meson \
+      -D gtk=disabled ..
+    ninja
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/pixman-${pkgver}/build-${_arch}"
-    make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
-    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}/pixman-${pkgver}/build-${_arch}" install
+
+    # see https://github.com/mesonbuild/meson/issues/4138 
+    ${_arch}-gcc-ranlib ${pkgdir}/usr/${_arch}/lib/*.a
   done
 }
 
