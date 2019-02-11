@@ -2,7 +2,7 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=python-slixmpp-git
-pkgver=r2234.74ed50e6
+pkgver=r2240.e53c0fcb
 pkgrel=1
 pkgdesc="An XMPP library written for Python 3.5+ (SleekXMPP asyncio fork)"
 arch=(any)
