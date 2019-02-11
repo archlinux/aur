@@ -2,7 +2,7 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 libname=libblockdev
 pkgname=$libname-lean
-pkgver=2.19
+pkgver=2.20
 pkgrel=1
 pkgdesc="Lean version of libblockdev without any of the plugins"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('LGPL')
 depends=('parted')
 makedepends=('gobject-introspection' 'systemd' 'python')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/storaged-project/libblockdev/archive/$pkgver-1.tar.gz")
-sha512sums=('945671600036c8d923a2af9a2044535c78d6e887c3a02b0f7ce782cf9deff7f962b7a96fd092cd408aa48717665afa1db7b8d3f7b33e572fd2beb13df98f5c7d')
+sha512sums=('SKIP')
 
 prepare() {
   # sed -i 's/-ldmraid //' $pkgname-$pkgver-1/src/lib/Makefile.am
