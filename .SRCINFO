@@ -1,6 +1,6 @@
 pkgbase = python2-requestbuilder
 	pkgdesc = Command line-driven HTTP request builder.
-	pkgver = 0.2.3
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/boto/requestbuilder
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python2-requestbuilder
 	depends = python2
 	depends = python2-six
 	depends = python2-requests
-	source = https://pypi.python.org/packages/source/r/requestbuilder/requestbuilder-0.2.3.tar.gz
-	md5sums = 3d9793e3a3b3dad23a8475e0480581db
+	source = https://pypi.python.org/packages/source/r/requestbuilder/requestbuilder-0.7.1.tar.gz
+	md5sums = 86c6e46491c65d8caa2991eb017a01f7
 
 pkgname = python2-requestbuilder
 

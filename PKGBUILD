@@ -2,7 +2,7 @@
 # Contributors: Tom Tryfonidis <tomtryf@gmail.com>
 
 pkgname=python2-requestbuilder
-pkgver=0.2.3
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Command line-driven HTTP request builder."
 arch=('any')
@@ -11,7 +11,7 @@ license=(ISC)
 depends=('python2' 'python2-six' 'python2-requests')
 makedepends=('python2-setuptools')
 source=(https://pypi.python.org/packages/source/r/requestbuilder/requestbuilder-$pkgver.tar.gz)
-md5sums=('3d9793e3a3b3dad23a8475e0480581db')
+md5sums=('86c6e46491c65d8caa2991eb017a01f7')
 
 build() {
 	cd "$srcdir/requestbuilder-$pkgver"
