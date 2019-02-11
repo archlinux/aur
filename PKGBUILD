@@ -1,7 +1,7 @@
 # Maintainer: cylgom <cylgom-at-protonmail-dot-com>
 
 pkgname=stormdrops-cursor-theme
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc="StormDrops Cursor Theme"
 arch=('any')
@@ -10,7 +10,7 @@ license=('WTFPL')
 depends=('tar')
 source=("https://github.com/cylgom/stormdrops_minimal/raw/master/dist/stormdrops_minimal.tar"
 		"https://github.com/cylgom/stormdrops_minimal/raw/master/dist/stormdrops_minimal_dark.tar")
-md5sums=('4974c9ed7b6bf5a7a8f151482bc37d91' '7454452619b9a8d4fafd3d0733fd7f93')
+md5sums=('e8a49dc66e825590396c1ce280a44bfa' '3fdb5c9a0ae15fbe4d4270f01e41d4a2')
 
 package() {
     install -d $pkgdir/usr/share/icons/stormdrops_minimal
