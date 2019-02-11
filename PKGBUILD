@@ -1,24 +1,18 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=lbench  
 pkgver=3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Linux multithread benchmarking tool"
 url="http://www.kornelix.net/lbench/lbench.html"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gtk3')
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-sha256sums=('0af7fcd77d3c614e7faeece9374e73afeea7f1419f33eb788880774a8e1f9b2b')
-
-prepare() {
-  cd $pkgname
-  sed -i 's+mkdir -p+install -d+' Makefile
-}
+sha256sums=('d25fb3b3941491cc73f403b5e74df8c3db21363aeaa351410f9587297feb1022')
 
 build() {
   cd $pkgname
-  export PREFIX=/usr
-  make CXXFLAGS+=" -Wl,-z,relro,-z,now" 
+  make
 }
 
 package() {
