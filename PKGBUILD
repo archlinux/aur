@@ -24,11 +24,10 @@ pkgver() {
 build() {
   cd "${pkgname}"
 
-  CXXFLAGS='-g -DFLATPAK=$(FLATPAK) -std=c++17 -Wall -pipe' \
-           '-Wno-deprecated-declarations ' \
-	   '-Wno-parentheses -fconcepts -Wno-catch-value -Wno-return-type'
+  make -e FLATPAK=0 CXXFLAGS='-g -DFLATPAK=$(FLATPAK) -std=c++17 -Wall'
 
-  make -e FLATPAK=0 CXXFLAGS=$(CXXFLAGS)
+
+
 }
 
 package() {
