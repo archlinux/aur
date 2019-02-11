@@ -2,7 +2,7 @@
 
 pkgname=omp
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Open-Source Music Player'
 url='https://openmusicplayer.com/'
 arch=(x86_64)
@@ -18,7 +18,13 @@ sha256sums=('SKIP')
 
 build() {
   cd "OMP-$pkgver"
-  make -e FLATPAK=1
+
+  CXXFLAGS='-g -DFLATPAK=$(FLATPAK) -std=c++17 -Wall -pipe'
+  CXXFLAGS+=' -Wno-deprecated-declarations '
+  CXXFLAGS+=' -Wno-parentheses -fconcepts -Wno-catch-value -Wno-return-type'
+
+  make -e FLATPAK=0 CXXFLAGS=$(CXXFLAGS)
+
 }
 
 package() {
