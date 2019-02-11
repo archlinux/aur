@@ -1,0 +1,13 @@
+pkgbase = kongdash-bin
+	pkgdesc = ORY Hydra is a hardened, certified OAuth2 and OpenID Connect server optimized for low-latency, high throughput, and low resource consumption.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://ajaysreedhar.github.io/kongdash
+	arch = x86_64
+	license = MIT
+	provides = kongdash
+	source = https://github.com/ajaysreedhar/kongdash/releases/download/v0.3.0/kongdash-0.3.0-linux-x64.tar.gz
+	sha256sums = d74c68e08109783cb9160daccdc91ead58c60ebbb41a1a6253a55219b0c7e0f0
+
+pkgname = kongdash-bin
+
