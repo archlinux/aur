@@ -1,4 +1,0 @@
-d /var/lib/tidb   0755 tidb tidb
-d /etc/tidb       0755 tidb tidb
-x /var/lib/tidb/*
-x /etc/tidb/*
