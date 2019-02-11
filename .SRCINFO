@@ -1,6 +1,6 @@
 pkgbase = i3-git
 	pkgdesc = An improved dynamic tiling window manager
-	pkgver = 4.16.r82.g02bb2693
+	pkgver = 4.16.r84.ge2d6117b
 	pkgrel = 1
 	url = http://i3wm.org/
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = i3-git
 	makedepends = asciidoc
 	makedepends = docbook-xsl
 	makedepends = pkgconfig
+	makedepends = xmlto
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
 	depends = libev
