@@ -3,12 +3,12 @@ post_install(){
 cat << EOF
 
 =========
-As of PKGREL phing-2.11.0-2, this PKGBUILD downloads the PHAR build of
-phing.
+Phing will be dropping support for manual installation as of version 3.0. This
+package will be deleted when 3.0 (stable) is released.
 
-Stand-alone Phing works well, but the recommended means of using it is
-to install the package on a per-project basis via Composer
-(http://getcomposer.org).
+It is recommended that you migrate your dependencies to
+Composer (http://getcomposer.org) and install Phing from there. See
+https://www.phing.info for migration instructions.
 =========
 
 EOF
@@ -20,12 +20,12 @@ post_upgrade(){
 cat << EOF
 
 =========
-As of PKGREL phing-2.11.0-2, this PKGBUILD downloads the PHAR build of
-phing.
+Phing will be dropping support for manual installation as of version 3.0. This
+package will be deleted when 3.0 (stable) is released.
 
-Stand-alone Phing works well, but the recommended means of using it is
-to install the package on a per-project basis via Composer
-(http://getcomposer.org).
+It is recommended that you migrate your dependencies to
+Composer (http://getcomposer.org) and install Phing from there. See
+https://www.phing.info for migration instructions.
 =========
 
 EOF

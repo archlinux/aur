@@ -2,7 +2,7 @@
 # Source: https://github.com/zancarius/archlinux-pkgbuilds
 
 pkgname=phing
-pkgver=2.16.0
+pkgver=2.16.1
 pkgrel=1
 pkgdesc="PHP project build system based on Apache Ant."
 arch=(any)
@@ -11,12 +11,17 @@ license=(LGPL)
 depends=(php)
 install="${pkgname}.install"
 source=(
-    "http://www.phing.info/get/phing-${pkgver}.phar"
+    "https://github.com/phingofficial/phing/releases/download/${pkgver}/phing-${pkgver}.phar"
+    "https://github.com/phingofficial/phing/releases/download/${pkgver}/phing-${pkgver}.phar.asc"
     phing.install
 )
 sha512sums=(
-    6974b0ea7d482d8fc9b63007c1ac47e7b60f19e23e483950e845279b8fbb97ddc03a99676f9122674df774ff3440b0126b3ae1a24078ff341262d52af4ccf938 # phing.phar
-    26dfb12f0715abf2981d6cef03ee03335b8820b7f9b46392dacfd696b0d3cbdfa300cf760966c3f9f05ba9978fa30a7f1c8cc1c616c8b19292fe4eb69bc6c1c2 # phing.install
+    fc3ec05b6540642f4aa33e219d08b9c850eb0dc3921acf171b5055e07e62d06d934d6cd32e7b5bdfdd6a13a53acd600eaa36f8f19a37bb835919e339abd103af # phing.phar
+    237b2623ff26a09697771cefb68eac162bc8b3fd28d4b67545e5c181bfa4a4f3f03db6387be1638abfcf905c8193dd3948d32a9e3c77748d99231d55ad60f592 # phing.phar.asc
+    bbe10167e144a65eaf4900d23d0cd6f5ffca56f716c158e844349e88ba4ecf7401bcefbfa89f2a53ea1ebe82c5822bb7827921bbf1c01524dc9d47710e255765 # phing.install
+)
+validpgpkeys=(
+    "566E877A27BD4343E956BC9D2420BAE0A3BE25C6"
 )
 
 package() {
