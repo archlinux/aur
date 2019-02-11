@@ -2,7 +2,7 @@
 
 pkgname=vramfs-git
 _pkgname=vramfs
-pkgver=1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="VRAM based file system for Linux"
 arch=('x86_64')
@@ -21,6 +21,6 @@ build() {
 package() {
 	cd "$srcdir/$_pkgname"
 	install -Dm755 bin/vramfs "$pkgdir/usr/bin/vramfs"
-    awk '/The MIT License/,EOF { print substr($0, 5) }' README.md > LICENSE
+	awk '/The MIT License/,EOF { print substr($0, 5) }' README.md > LICENSE
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
