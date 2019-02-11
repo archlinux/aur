@@ -3,13 +3,13 @@
 _pkgbase='dynwg'
 pkgname="${_pkgbase}-git"
 pkgver=r4.9cfacd6
-pkgrel=1
+pkgrel=2
 pkgdesc='A DynDNS watchdog for WireGuard over systemd-networkd'
 arch=('any')
 url="https://github.com/coNQP/${_pkgbase}"
 license=('GPLv3' 'MIT')
-depends=('python' 'wireguard-tools')
-makedepends=('git' 'python')
+depends=('python' 'wireguard-tools' 'iputils')
+makedepends=('git')
 source=("${_pkgbase}::git+${url}.git")
 md5sums=('SKIP')
 pkgdir='pkg'
