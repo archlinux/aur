@@ -1,3 +1,4 @@
+# Maintainer: CareF <CareF.lm@gmail.com>
 # Maintainer: Xavier Peng <png.inside@gmail.com>
 
 pkgname=one-click-bing-wallpaper-git
