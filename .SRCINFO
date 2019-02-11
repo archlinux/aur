@@ -1,4 +1,4 @@
-pkgbase = acceptd
+pkgbase = accepted
 	pkgdesc = A terminal text editor to be ACCEPTED
 	pkgver = 20190211.074029
 	pkgrel = 1
@@ -6,8 +6,8 @@ pkgbase = acceptd
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	source = acceptd::git+https://github.com/hatoo/Accepted
+	source = accepted::git+https://github.com/hatoo/Accepted
 	sha256sums = SKIP
 
-pkgname = acceptd
+pkgname = accepted
 

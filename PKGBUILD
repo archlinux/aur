@@ -1,5 +1,5 @@
 # Maintainer: Attenuation <ouyangjun1999@gmail.com>
-pkgname=acceptd
+pkgname=accepted
 pkgver=20190211.074029
 pkgrel=1
 pkgdesc='A terminal text editor to be ACCEPTED'
