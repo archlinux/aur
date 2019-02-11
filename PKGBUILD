@@ -3,27 +3,25 @@
 # Contributor: Mika Fischer <mika.fischer@zoopnet.de>
 
 pkgname=squeezelite-git
-pkgver=1.9.0.1121.r313.a203cd2
-pkgrel=1
+pkgver=1.9.1.1130.r319.451cad8
+pkgrel=2
 pkgdesc='Lightweight headless squeezebox emulator'
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url='https://github.com/ralph-irving/squeezelite'
 license=(GPL3)
 makedepends=(git)
-depends=(alsa-lib faad2 flac libmad libvorbis mpg123 libsoxr)
+depends=(alsa-lib faad2 flac libmad libvorbis mpg123 libsoxr ffmpeg)
 provides=(squeezelite)
 conflicts=(squeezelite)
 install=squeezelite.install
 source=("git+https://github.com/ralph-irving/squeezelite"
-	'service'
-	'conffile'
-	)
+        'service' 'conffile')
 sha256sums=('SKIP'
             '5b39e9754b6bcf06bcaaecab76ebf7c997966160b48692461d3be5d94ee5f004'
             'f0753a1cbd0194119226587ff9c12257438674d9b8e0179d22f0d5461ad3a70a')
 
 pkgver() {
-  cd "squeezelite"
+  cd "$srcdir/${pkgname/-git/}"
 
   _maj=$(cat squeezelite.h|grep "#define MAJOR_VERSION" | awk '{print $3}' | sed 's/\"//g;s/-/_/g')
   _min=$(cat squeezelite.h|grep "#define MINOR_VERSION" | awk '{print $3}' | sed 's/\"//g;s/-/_/g')
@@ -33,15 +31,15 @@ pkgver() {
 }
 
 build() {
-  cd "squeezelite"
+  cd "$srcdir/${pkgname/-git/}"
 
   export LDFLAGS="${LDFLAGS} -lasound -lpthread -lm -lrt"
-  export OPTS="${OPTS} -DDSD -DRESAMPLE -DVISEXPORT -DLINKALL"
+  export OPTS="${OPTS} -DDSD -DRESAMPLE -DVISEXPORT -DFFMPEG -DLINKALL"
   make
 }
 
 package() {
-  cd "squeezelite"
+  cd "$srcdir/${pkgname/-git/}"
 
   install -m0755 -D squeezelite "${pkgdir}/usr/bin/squeezelite"
   install -Dm644 ../conffile "${pkgdir}/etc/squeezelite.conf.default"

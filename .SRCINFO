@@ -1,7 +1,7 @@
 pkgbase = squeezelite-git
 	pkgdesc = Lightweight headless squeezebox emulator
-	pkgver = 1.9.0.1121.r313.a203cd2
-	pkgrel = 1
+	pkgver = 1.9.1.1130.r319.451cad8
+	pkgrel = 2
 	url = https://github.com/ralph-irving/squeezelite
 	install = squeezelite.install
 	arch = i686
@@ -19,6 +19,7 @@ pkgbase = squeezelite-git
 	depends = libvorbis
 	depends = mpg123
 	depends = libsoxr
+	depends = ffmpeg
 	provides = squeezelite
 	conflicts = squeezelite
 	source = git+https://github.com/ralph-irving/squeezelite
