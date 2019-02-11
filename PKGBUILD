@@ -8,7 +8,7 @@ pkgbase=bind-rl
 pkgname=(bind-rl bind-rl-tools)
 _pkgver=9.13.5
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 url='https://www.isc.org/software/bind/'
 license=('MPL2')
 arch=('x86_64')
@@ -85,7 +85,7 @@ build() {
 
 package_bind-rl() {
   pkgdesc='The ISC DNS Server, with Response Rate Limit (RRL) enabled'
-  provides=('dns-server')
+  provides=('dns-server' "bind=$pkgver")
   depends=('glibc' 'libxml2' 'libcap' 'libseccomp' 'openssl' 'geoip' 'json-c'
            'bind-tools')
   conflicts=('bind')
@@ -125,7 +125,7 @@ package_bind-rl-tools() {
   optdepends=('python: for python scripts')
   conflicts=('dnsutils' 'bind-tools')
   replaces=('dnsutils' 'host' 'bind-tools')
-  provides=("dnsutils=$pkgver")
+  provides=("dnsutils=$pkgver" "bind-tools=$pkgver")
 
   cd "bind-$_pkgver"
   install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
