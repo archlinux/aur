@@ -2,7 +2,7 @@
 
 pkgname=omp-git
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Open-Source Music Player'
 url='https://openmusicplayer.com/'
 arch=(x86_64)
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd "${pkgname}"
-  make -e FLATPAK=1
+  make -e FLATPAK=0
 }
 
 package() {
