@@ -1,13 +1,13 @@
 pkgbase = gitin
 	pkgdesc = commit/branch/workdir explorer for git
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/isacikgoz/gitin
 	arch = x86_64
 	license = MIT
 	depends = openssl
 	source = https://github.com/isacikgoz/gitin/releases/download/v0.1.3/gitin_0.1.3_linux_amd64.tar.gz
-	md5sums = d82720188aefbf79851b903fa4cdaba9
+	sha256sums = cdf3d331e527da7430cc5b5a18e01fef2c343f52deacff8cadfd94854468218f
 
 pkgname = gitin
 
