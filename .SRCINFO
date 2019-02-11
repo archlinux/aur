@@ -1,58 +1,31 @@
 pkgbase = haskell-linear
-	pkgdesc = Linear Algebra
-	pkgver = 1.20.7
+	pkgdesc = Types and combinators for linear algebra on free vector spaces.
+	pkgver = 1.20.8
 	pkgrel = 1
-	url = http://github.com/ekmett/linear
+	url = https://hackage.haskell.org/package/linear
 	arch = i686
 	arch = x86_64
 	license = custom:BSD3
 	makedepends = ghc
 	depends = ghc-libs
-	depends = haskell-adjunctions>=4.0
-	depends = haskell-adjunctions<5
-	depends = haskell-base>=4.5
-	depends = haskell-base<5
-	depends = haskell-base-orphans>=0.5
-	depends = haskell-base-orphans<1
-	depends = haskell-binary>=0.5
-	depends = haskell-binary<0.9
-	depends = haskell-bytes>=0.15
-	depends = haskell-bytes<1
-	depends = haskell-cereal>=0.4.1.1
-	depends = haskell-cereal<0.6
-	depends = haskell-containers>=0.4
-	depends = haskell-containers<0.6
-	depends = haskell-deepseq>=1.1
-	depends = haskell-deepseq<1.5
-	depends = haskell-distributive>=0.2.2
-	depends = haskell-distributive<1
-	depends = haskell-ghc-prim
-	depends = haskell-hashable>=1.1
-	depends = haskell-hashable<1.3
-	depends = haskell-lens>=4.0
-	depends = haskell-lens<5
-	depends = haskell-reflection>=1.3.2
-	depends = haskell-reflection<3
-	depends = haskell-semigroupoids>=5.2.1
-	depends = haskell-semigroupoids<5.3
-	depends = haskell-semigroups>=0.9
-	depends = haskell-semigroups<1
-	depends = haskell-tagged>=0.4.4
-	depends = haskell-tagged<1
-	depends = haskell-template-haskell>=2.7
-	depends = haskell-template-haskell<3.0
-	depends = haskell-transformers>=0.2
-	depends = haskell-transformers<0.6
-	depends = haskell-transformers-compat>=0.4
-	depends = haskell-transformers-compat<1
-	depends = haskell-unordered-containers>=0.2.3
-	depends = haskell-unordered-containers<0.3
-	depends = haskell-vector>=0.10.0
-	depends = haskell-vector<0.13
-	depends = haskell-void>=0.6
-	depends = haskell-void<1
-	source = https://hackage.haskell.org/packages/archive/linear/1.20.7/linear-1.20.7.tar.gz
-	sha512sums = d60e2f5bb3bee1ad71e7756090b91a1268b5f40065300f511bf190629aaa1c6cfc424feb576641517a5ff63d4afaa655bc01326eacf4b304220911486ff9745c
+	depends = haskell-adjunctions
+	depends = haskell-base-orphans
+	depends = haskell-bytes
+	depends = haskell-cereal
+	depends = haskell-distributive
+	depends = haskell-hashable
+	depends = haskell-lens
+	depends = haskell-reflection
+	depends = haskell-semigroupoids
+	depends = haskell-tagged
+	depends = haskell-transformers-compat
+	depends = haskell-unordered-containers
+	depends = haskell-vector
+	depends = haskell-void
+	source = https://hackage.haskell.org/packages/archive/linear/1.20.8/linear-1.20.8.tar.gz
+	source = haskell-linear-semigroups.patch
+	sha512sums = 7ddb8f394e202d1225864a2bbf5d6b81abb70accb59a634deddc672470418896e3df00e1f7e120bae9e249bf7571ca530be1f511224f818e1ba76e077f99cc77
+	sha512sums = 4a4d8451982c97cdff35598bea5d0cd892b23382e59a6bc16fdc346ef71ca2471b34fe8e0ace74ca5f0c385e26ba2b7763bb76e7e89732d09e43e190f2af7453
 
 pkgname = haskell-linear
 
