@@ -4,8 +4,8 @@
 # Contributor: Grey Christoforo <my first name [at] my last name [dot] net>
 
 pkgname=uranium-beta-git
-pkgver=4.0
-pkgrel=2
+pkgver=r7389.2b2ea40b
+pkgrel=1
 pkgdesc="A Python framework for building Desktop applications."
 arch=('any')
 url="https://github.com/Ultimaker/Uranium"
@@ -19,9 +19,14 @@ depends=('arcus-beta-git'
          'python-pyqt5')
 makedepends=('cmake' 'git')
 provides=('uranium')
-conflicts=('uranium' 'uranium-beta')
-source=("git+${url}#branch=${pkgver}")
-sha256sums=('SKIP')
+conflicts=('uranium')
+source=("git+${url}#branch=4.0")
+md5sums=('SKIP')
+
+pkgver(){
+  cd Uranium
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   cd Uranium
