@@ -1,11 +1,12 @@
 pkgbase = rofi-1pass
 	pkgdesc = 1Password.com integration for rofi
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/apetresc/rofi-1pass
 	arch = x86_64
 	license = MIT
 	depends = rofi
+	depends = 1password-cli
 	depends = pinentry
 	depends = jq
 	depends = xclip

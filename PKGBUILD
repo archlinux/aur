@@ -2,12 +2,12 @@
 
 pkgname=rofi-1pass
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="1Password.com integration for rofi"
 arch=('x86_64')
 url="https://github.com/apetresc/rofi-1pass"
 license=('MIT')
-depends=('rofi' 'pinentry' 'jq' 'xclip')
+depends=('rofi' '1password-cli' 'pinentry' 'jq' 'xclip')
 optdepends=('pinentry-rofi')
 source=("${pkgname}::https://github.com/apetresc/rofi-1pass/archive/${pkgver}.tar.gz"
         "rofi-1pass-pinentry.patch")
