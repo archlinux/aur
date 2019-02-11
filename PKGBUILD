@@ -1,4 +1,5 @@
-# Maintainer: Xavier Devlamynck <magicrhesus@ouranos.be>
+# Maintainer: Josef Miegl <josef@miegl.cz>
+# Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 
 pkgname=kamailio
 pkgver=5.1.3
