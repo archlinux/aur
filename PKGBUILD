@@ -12,7 +12,7 @@ _srcname=${pkgbase}
 _kernel_rel=5.1
 _branch=drm-fixes
 _kernelname=${pkgbase#linux}
-pkgver=5.1.811676.dada163c5eab
+pkgver=5.1.812037.d13937116f1e
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/drm/drm'
@@ -26,7 +26,7 @@ source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm#branch=${_branch}"
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            '42402196fedeb92ff2f1c8571511381945ec951edf6b157449d12373f52d0537'
+            '80355b6ce8fcfd33b3b6f642b4863715a217c8e878160757c9b1436d8966b8fa'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
