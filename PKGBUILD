@@ -2,7 +2,7 @@
 
 pkgname=writefreely
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Federated blogging from write.as'
 arch=('x86_64')
 url='https://writefreely.org/'
@@ -10,7 +10,9 @@ license=('AGPL3')
 depends=('glibc')
 makedepends=('go>=1.11'
              'go-bindata'
-             'sqlite')
+             'sqlite'
+             'nodejs-less'
+             'nodejs-less-plugin-clean-css')
 optdepends=('sqlite: For SQLite support',
             'mariadb: For MariaDB support')
 backup=('etc/writefreely/config.ini')
@@ -43,7 +45,10 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}/"
+  cd "${srcdir}/${pkgname}-${pkgver}/less"
+  make all
+
+  cd ../
   GO111MODULE=on make build
 }
 
