@@ -1,4 +1,4 @@
-# Maintainer: Ainola
+# Maintainer: Ainola <ainola@archlinux.org>
 # Contributor: polyzen
 # Contributor: Army
 # Contributor: Dan Serban
@@ -6,30 +6,30 @@
 # Contributor: Thomas Zervogiannis
 
 pkgname=gcalcli
-# We are using an alpha version because the ancient 3.4.0 stable version does
-# not work well with newer libraries:
-# - oauth2client > 1.4.12 renamed 'run' to 'run_flow'
-# - https://github.com/insanum/gcalcli/issues/279
-pkgver=4.0.0a4
+pkgver=4.0.2
 pkgrel=1
 pkgdesc='Google calendar command line interface'
 arch=('any')
 url=https://github.com/insanum/gcalcli
-# https://github.com/insanum/gcalcli/issues/390
-license=('unknown')  # https://github.com/insanum/gcalcli/issues/390
+license=('MIT')
 makedepends=('python-setuptools')
 depends=(
     'python-dateutil'
     'python-google-api-python-client'
     'python-httplib2'
     'python-oauth2client'
+    'python-parsedatetime'
 )
 optdepends=(
     'python-vobject: for ics/vcal importing'
-    'python-parsedatetime: for fuzzy dates/times like "now", "today", etc.'
 )
 source=("gcalcli-$pkgver.tar.gz::https://github.com/insanum/gcalcli/archive/v$pkgver.tar.gz")
-sha256sums=('0f83f4c3ba9d46d34a412ce8f9311cbe1f1598e5425ec363c6390f0ffcbbd42a')
+sha256sums=('d1d2b19dd5e31c5cb68ab2f8e2b52c221b0f80bb753746b5e98bdd3f3087338f')
+
+prepare() {
+    # By default wants to install in /usr/man/man1/
+    sed -i 's;man/man1;share/man/man1;' "gcalcli-$pkgver/setup.py"
+}
 
 build() {
     cd "gcalcli-$pkgver"
@@ -44,5 +44,6 @@ check() {
 package() {
     cd "gcalcli-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -Dm644 docs/* -t "$pkgdir/usr/share/docs/$pkgname"
+    install -Dm644 docs/*.{md,png} -t "$pkgdir/usr/share/docs/$pkgname"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
