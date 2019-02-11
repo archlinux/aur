@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd "${pkgname}"
-  make
+  make -e FLATPAK=1
 }
 
 package() {
