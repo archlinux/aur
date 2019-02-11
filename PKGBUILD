@@ -43,7 +43,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 source=("https://github.com/RetroShare/RetroShare/archive/v${pkgver}.tar.gz")
-sha256sums=('2181b406d3ed6c4ce71d9f9dea45c646d9f91cd7029575a5a14278eb94fe1054')
+sha256sums=('901a1d1f282e04118fbe0e24190355b4a8f355a806cc5448738b1d691b46f5d5')
 
 # Add missing dependencies if needed
 [[ "$_plugin_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
