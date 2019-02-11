@@ -1,23 +1,23 @@
 # Maintainer: Florent Thiéry <fthiery@gmail.com>
 
 pkgname=cockpit-minimal
-pkgver=184
+pkgver=187
 pkgrel=0
 pkgdesc='A systemd web based user interface for Linux servers (minimal setup with system graphs, journalctl, storage, network, user accounts, systemd services and terminal)'
 arch=(i686 x86_64 armv6h armv7h)
 url='http://www.cockpit-project.org/'
 license=(LGPL2.1)
 conflicts=(cockpit-git cockpit)
-depends=(libssh krb5 sshpass accountsservice perl-json perl-locale-po json-glib glib-networking networkmanager)
+depends=(libssh krb5 sshpass accountsservice perl-json perl-locale-po json-glib glib-networking networkmanager packagekit)
 # udisks support disables some features
 #http://cockpit-project.org/guide/latest/feature-storaged.html
 optdepends=('udisks2: disk stats support')
-makedepends=(git intltool python2-pyscss gtk-doc perl-javascript-minifier-xs gobject-introspection networkmanager libgsystem xmlto npm tar packagekit)
+makedepends=(git intltool python2-pyscss gtk-doc perl-javascript-minifier-xs gobject-introspection networkmanager libgsystem xmlto npm tar)
 source=(https://github.com/cockpit-project/cockpit/releases/download/${pkgver}/cockpit-${pkgver}.tar.xz
 	https://github.com/cockpit-project/cockpit/releases/download/${pkgver}/cockpit-cache-${pkgver}.tar.xz)
 noextract=(cockpit-${pkgver}.tar.xz)
-sha1sums=('bab07e01616e4f1f8c41fa11ceef6377d7d1beff'
-          '4d67be534af53d90839b40825528819f25dd8ad1')
+sha1sums=('31b3b1591ada044a5e7530b0b0e8418b66f96712'
+          '097d033816be57c8228209f1f5e46005fef2e4e6')
 
 prepare() {
   cd $srcdir
