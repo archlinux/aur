@@ -101,6 +101,7 @@ prepare() {
         fi
     fi
 
+    echo "v$_latestTaggedVersion built on $(date)" > binary.txt
     cd OneLife
     chmod u+x ./configure
     ./configure 1 
@@ -158,6 +159,8 @@ package() {
     install -Dm644 OneLife/gameSource/us_english_60.txt          "$pkgdir/opt/$instdir/us_english_60.txt"
     install -Dm644 OneLife/gameSource/reverbImpulseResponse.aiff "$pkgdir/opt/$instdir/reverbImpulseResponse.aiff"
     install -Dm644 OneLife/documentation/Readme.txt              "$pkgdir/opt/$instdir/Readme.txt"
+    # OHOL+ Compatibility, mostly
+    install -Dm644 binary.txt                                    "$pkgdir/opt/$instdir/binary.txt"
     install -dm755 "$pkgdir/usr/local/bin/"
     install -m755  $startdir/onelife $pkgdir/opt/$instdir
     ln -s /opt/$instdir/onelife $pkgdir/usr/local/bin/onelife
