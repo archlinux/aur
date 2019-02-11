@@ -4,7 +4,7 @@
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=curaengine-beta-git
-pkgver=4.0
+pkgver=r6631.d9a326d2
 pkgrel=1
 pkgdesc="Engine for processing 3D models into 3D printing instruction for Ultimaker and other GCode based 3D printers."
 arch=('x86_64')
@@ -17,9 +17,15 @@ depends=('arcus-beta-git')
 makedepends=('cmake' 'git')
 checkdepends=('cppunit')
 provides=('curaengine')
-conflicts=('curaengine' 'curaengine-beta')
-source=("git+${url}#branch=${pkgver}")
-sha256sums=('SKIP')
+conflicts=('curaengine')
+source=("git+${url}#branch=4.0")
+md5sums=('SKIP')
+
+pkgver(){
+  cd CuraEngine
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 
 build() {
   cd CuraEngine

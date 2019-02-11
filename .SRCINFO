@@ -1,6 +1,6 @@
 pkgbase = curaengine-beta-git
 	pkgdesc = Engine for processing 3D models into 3D printing instruction for Ultimaker and other GCode based 3D printers.
-	pkgver = 4.0
+	pkgver = r6631.d9a326d2
 	pkgrel = 1
 	url = https://github.com/Ultimaker/CuraEngine
 	arch = x86_64
@@ -11,9 +11,8 @@ pkgbase = curaengine-beta-git
 	depends = arcus-beta-git
 	provides = curaengine
 	conflicts = curaengine
-	conflicts = curaengine-beta
 	source = git+https://github.com/Ultimaker/CuraEngine#branch=4.0
-	sha256sums = SKIP
+	md5sums = SKIP
 
 pkgname = curaengine-beta-git
 
