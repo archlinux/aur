@@ -1,7 +1,7 @@
 # Maintainer: DJ Griffin <thewisenoob@gmail.com>
 
 pkgname=omp-git
-pkgver=0.1.0.2
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Open-Source Music Player'
 url='https://openmusicplayer.com/'
