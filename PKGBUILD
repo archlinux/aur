@@ -1,3 +1,6 @@
+# Maintainer: mathieui <mathieui[at]mathieui.net>
+# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+
 pkgname=python-slixmpp-git
 pkgver=r2234.74ed50e6
 pkgrel=1
