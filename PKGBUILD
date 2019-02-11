@@ -4,7 +4,7 @@
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=arcus-beta-git
-pkgver=4.0
+pkgver=r367.cfb4921
 pkgrel=1
 pkgdesc="Communication library between internal components for Ultimaker software"
 arch=('x86_64')
@@ -13,9 +13,14 @@ license=('LGPL3')
 depends=('python' 'protobuf' 'python-sip')
 makedepends=('cmake' 'git' 'sip')
 provides=('arcus' 'libarcus')
-conflicts=('arcus' 'libarcus' 'arcus-beta')
-source=("git+${url}#branch=${pkgver}")
+conflicts=('arcus' 'libarcus')
+source=("git+${url}#branch=4.0")
 md5sums=('SKIP')
+
+pkgver(){
+  cd libArcus
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd libArcus
