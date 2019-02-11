@@ -1,5 +1,5 @@
 pkgbase = sqlclient
-	pkgdesc = A client for the Music Player Daemon (MPD)
+	pkgdesc = Provides a simple interface to SQL databases for GNUstep applications
 	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/gnustep/libs-sqlclient
