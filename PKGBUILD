@@ -2,13 +2,15 @@
 
 pkgname="mongodb-bin"
 pkgver="4.0.6"
-pkgrel="1"
-pkgdesc="Scalable and flexible document database"
+pkgrel="2"
+pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
 url="https://www.mongodb.com/"
 license=("SSPLv1")
 provides=("mongodb=$pkgver" "mongodb-tools=$pkgver")
 conflicts=("mongodb" "mongodb-tools")
+optdepends=('libpcap: Needed for mongoreplay'
+            'python2: Needed for install_compass')
 source=(
     "https://fastdl.mongodb.org/linux/mongodb-linux-$arch-$pkgver.tgz"
     "mongodb.service"

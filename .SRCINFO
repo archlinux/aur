@@ -1,10 +1,12 @@
 pkgbase = mongodb-bin
-	pkgdesc = Scalable and flexible document database
+	pkgdesc = A high-performance, open source, schema-free document-oriented database
 	pkgver = 4.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mongodb.com/
 	arch = x86_64
 	license = SSPLv1
+	optdepends = libpcap: Needed for mongoreplay
+	optdepends = python2: Needed for install_compass
 	provides = mongodb=4.0.6
 	provides = mongodb-tools=4.0.6
 	conflicts = mongodb
