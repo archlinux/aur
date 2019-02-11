@@ -1,6 +1,6 @@
 pkgbase = libblockdev-lean
 	pkgdesc = Lean version of libblockdev without any of the plugins
-	pkgver = 2.19
+	pkgver = 2.20
 	pkgrel = 1
 	url = https://github.com/storaged-project/libblockdev
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = libblockdev-lean
 	depends = parted
 	provides = libblockdev
 	conflicts = libblockdev
-	source = libblockdev-lean-2.19.tar.gz::https://github.com/storaged-project/libblockdev/archive/2.19-1.tar.gz
-	sha512sums = 945671600036c8d923a2af9a2044535c78d6e887c3a02b0f7ce782cf9deff7f962b7a96fd092cd408aa48717665afa1db7b8d3f7b33e572fd2beb13df98f5c7d
+	source = libblockdev-lean-2.20.tar.gz::https://github.com/storaged-project/libblockdev/archive/2.20-1.tar.gz
+	sha512sums = SKIP
 
 pkgname = libblockdev-lean
 
