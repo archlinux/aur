@@ -2,7 +2,7 @@
 
 pkgname=omp-git
 pkgver=0.1.1
-pkgrel=9
+pkgrel=10
 pkgdesc='Open-Source Music Player'
 url='https://openmusicplayer.com/'
 arch=(x86_64)
@@ -23,8 +23,6 @@ pkgver() {
 
 build() {
   cd "${pkgname}"
-
-  CXXFLAGS='-g -DFLATPAK=$(FLATPAK) -std=c++17 -Wall -pipe -Wno-deprecated-declarations -Wno-parentheses -fconcepts -Wno-catch-value -Wno-return-type'
 
   make -e FLATPAK=0 CXXFLAGS='-g -DFLATPAK=$(FLATPAK) -std=c++17 -Wall -pipe -Wno-deprecated-declarations -Wno-parentheses -fconcepts -Wno-catch-value -Wno-return-type'
 
