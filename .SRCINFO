@@ -1,0 +1,28 @@
+pkgbase = htop-vim-temperature
+	pkgdesc = Interactive process viewer with CPU temperature and vim keybindings patches
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://hisham.hm/htop/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python
+	depends = ncurses
+	depends = libnl
+	depends = lm_sensors
+	optdepends = lsof: show files opened by a process
+	optdepends = strace: attach to a running process
+	provides = htop
+	conflicts = htop
+	options = !emptydirs
+	source = http://hisham.hm/htop/releases/2.2.0/htop-2.2.0.tar.gz
+	source = htop-temperature.patch
+	source = vim-keybindings.patch
+	source = 0001-fix-option-string.patch
+	sha256sums = d9d6826f10ce3887950d709b53ee1d8c1849a70fa38e91d5896ad8cbc6ba3c57
+	sha256sums = a4c9dfbc3c2f7e08904656b53b9c08d19014cf6238fb75f1ed5ecbef2905964c
+	sha256sums = 2a5ca32899e901956068f8a0f4f7532486faba1d1b34103d8f9e588e99037053
+	sha256sums = 343cfd8e01f2d47e54b38f725bb05a9825511b502acdb6803507e5fa4d52bed7
+
+pkgname = htop-vim-temperature
+

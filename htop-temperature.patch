@@ -1,0 +1,261 @@
+diff --git a/CRT.c b/CRT.c
+index 0d51698..4eab74d 100644
+--- a/CRT.c
++++ b/CRT.c
+@@ -78,6 +78,9 @@ typedef enum ColorElements_ {
+    UPTIME,
+    BATTERY,
+    TASKS_RUNNING,
++   TEMPERATURE_COOL,
++   TEMPERATURE_MEDIUM,
++   TEMPERATURE_HOT,
+    SWAP,
+    PROCESS,
+    PROCESS_SHADOW,
+@@ -182,6 +185,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+       [METER_VALUE] = A_BOLD | ColorPair(Cyan,Black),
+       [LED_COLOR] = ColorPair(Green,Black),
+       [TASKS_RUNNING] = A_BOLD | ColorPair(Green,Black),
++      [TEMPERATURE_COOL] = A_DIM | ColorPair(Green,Black),
++      [TEMPERATURE_MEDIUM] = A_NORMAL | ColorPair(Yellow,Black),
++      [TEMPERATURE_HOT] = A_BOLD | ColorPair(Red,Black),
+       [PROCESS] = A_NORMAL,
+       [PROCESS_SHADOW] = A_BOLD | ColorPair(Black,Black),
+       [PROCESS_TAG] = A_BOLD | ColorPair(Yellow,Black),
+@@ -241,6 +247,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+       [METER_VALUE] = A_BOLD,
+       [LED_COLOR] = A_NORMAL,
+       [TASKS_RUNNING] = A_BOLD,
++      [TEMPERATURE_COOL] = A_DIM,
++      [TEMPERATURE_MEDIUM] = A_NORMAL,
++      [TEMPERATURE_HOT] = A_BOLD,
+       [PROCESS] = A_NORMAL,
+       [PROCESS_SHADOW] = A_DIM,
+       [PROCESS_TAG] = A_BOLD,
+@@ -300,6 +309,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+       [METER_VALUE] = ColorPair(Black,White),
+       [LED_COLOR] = ColorPair(Green,White),
+       [TASKS_RUNNING] = ColorPair(Green,White),
++      [TEMPERATURE_COOL] = ColorPair(Green,White),
++      [TEMPERATURE_MEDIUM] = ColorPair(Yellow,White),
++      [TEMPERATURE_HOT] = ColorPair(Red,White),
+       [PROCESS] = ColorPair(Black,White),
+       [PROCESS_SHADOW] = A_BOLD | ColorPair(Black,White),
+       [PROCESS_TAG] = ColorPair(White,Blue),
+@@ -359,6 +371,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+       [METER_VALUE] = ColorPair(Black,Black),
+       [LED_COLOR] = ColorPair(Green,Black),
+       [TASKS_RUNNING] = ColorPair(Green,Black),
++      [TEMPERATURE_COOL] = ColorPair(Green,Black),
++      [TEMPERATURE_MEDIUM] = ColorPair(Yellow,Black),
++      [TEMPERATURE_HOT] = ColorPair(Red,Black),
+       [PROCESS] = ColorPair(Black,Black),
+       [PROCESS_SHADOW] = A_BOLD | ColorPair(Black,Black),
+       [PROCESS_TAG] = ColorPair(White,Blue),
+@@ -418,6 +433,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+       [METER_VALUE] = A_BOLD | ColorPair(Cyan,Blue),
+       [LED_COLOR] = ColorPair(Green,Blue),
+       [TASKS_RUNNING] = A_BOLD | ColorPair(Green,Blue),
++      [TEMPERATURE_COOL] = A_DIM | ColorPair(Green,Blue),
++      [TEMPERATURE_MEDIUM] = A_NORMAL | ColorPair(Yellow,Blue),
++      [TEMPERATURE_HOT] = A_BOLD | ColorPair(Red,Blue),
+       [PROCESS] = ColorPair(White,Blue),
+       [PROCESS_SHADOW] = A_BOLD | ColorPair(Black,Blue),
+       [PROCESS_TAG] = A_BOLD | ColorPair(Yellow,Blue),
+@@ -477,6 +495,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+       [METER_VALUE] = ColorPair(Green,Black),
+       [LED_COLOR] = ColorPair(Green,Black),
+       [TASKS_RUNNING] = A_BOLD | ColorPair(Green,Black),
++      [TEMPERATURE_COOL] = A_DIM | ColorPair(Green,Black),
++      [TEMPERATURE_MEDIUM] = A_NORMAL | ColorPair(Yellow,Black),
++      [TEMPERATURE_HOT] = A_BOLD | ColorPair(Red,Black),
+       [PROCESS] = ColorPair(Cyan,Black),
+       [PROCESS_SHADOW] = A_BOLD | ColorPair(Black,Black),
+       [PROCESS_TAG] = A_BOLD | ColorPair(Yellow,Black),
+diff --git a/CRT.h b/CRT.h
+index fb82413..bda5318 100644
+--- a/CRT.h
++++ b/CRT.h
+@@ -68,6 +68,9 @@ typedef enum ColorElements_ {
+    UPTIME,
+    BATTERY,
+    TASKS_RUNNING,
++   TEMPERATURE_COOL,
++   TEMPERATURE_MEDIUM,
++   TEMPERATURE_HOT,
+    SWAP,
+    PROCESS,
+    PROCESS_SHADOW,
+diff --git a/TemperatureMeter.c b/TemperatureMeter.c
+new file mode 100644
+index 0000000..9ee9185
+--- /dev/null
++++ b/TemperatureMeter.c
+@@ -0,0 +1,100 @@
++/*
++htop - TemperatureMeter.c
++(C) 2013 Ralf Stemmer
++(C) 2014 Blair Bonnett
++Released under the GNU GPL, see the COPYING file
++in the source distribution for its full text.
++*/
++
++#include "TemperatureMeter.h"
++
++#include "ProcessList.h"
++#include "CRT.h"
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <limits.h>
++
++/*{
++#include "Meter.h"
++}*/
++
++int TemperatureMeter_attributes[] = {
++   TEMPERATURE_COOL,
++   TEMPERATURE_MEDIUM,
++   TEMPERATURE_HOT,
++};
++
++static void TemperatureMeter_setValues(Meter* this, char* buffer, int len) {
++   ProcessList* pl = this->pl;
++   this->total = pl->totalTasks;
++   this->values[0] = pl->runningTasks;
++   snprintf(buffer, len, "%d/%d", (int) this->values[0], (int) this->total);
++}
++
++static void TemperatureMeter_display(Object* cast, RichString* out) {
++   FILE *p;
++   p = popen("sensors", "r");
++   if(p == NULL) return 1;
++
++   int textColor   = CRT_colors[METER_TEXT];
++   int coolColor   = CRT_colors[TEMPERATURE_COOL];
++   int mediumColor = CRT_colors[TEMPERATURE_MEDIUM];
++   int hotColor    = CRT_colors[TEMPERATURE_HOT];
++
++   size_t read, len;
++   char *line = NULL;
++   char *entry = NULL;
++   char *tstart = NULL, *tend = NULL;
++   int  temperature;
++   while ((read = getline(&line, &len, p)) != -1) {
++      // contains this line a core-temperature?
++      entry = strstr(line, "Core ");
++      if (entry == NULL) continue;
++
++      // find the begin of the temperature value
++      tstart = strchr(entry, '+'); // no negative temperatures expected :)
++      if (tstart == NULL) continue;
++      tstart++; // jump over the '+'
++
++      // find the end of the temperature. Remember, it can be above 99°C ;)
++      tend = strchr(tstart, '.'); // just the integer
++      if (tend == NULL) continue;
++
++      // convert the string into an integer, this is necessary for further steps
++      temperature = strtol(tstart, &tend, 10);
++      if (temperature == LONG_MAX || temperature == LONG_MIN) continue;
++      if (tstart == tend) continue;
++
++      // choose the color for the temperature
++      int tempColor;
++      if      (temperature < 60)                      tempColor = coolColor;
++      else if (temperature >= 60 && temperature < 70) tempColor = mediumColor;
++      else                                            tempColor = hotColor;
++
++      // output the temperature
++      char buffer[20];
++      sprintf(buffer, "%d", temperature);
++      RichString_append(out, tempColor, buffer);
++      RichString_append(out, textColor, "°C ");
++   }
++
++   free(line);
++   pclose(p);
++}
++
++MeterClass TemperatureMeter_class = {
++   .super = {
++      .extends = Class(Meter),
++      .display = TemperatureMeter_display,
++      .delete = Meter_delete,
++   },
++   .updateValues = TemperatureMeter_setValues,
++   .defaultMode = TEXT_METERMODE,
++   .total = 100.0,
++   .attributes = TemperatureMeter_attributes,
++   .name = "Temperature",
++   .uiName = "Temperature Sensors",
++   .caption = "Temperature: "
++};
+diff --git a/TemperatureMeter.h b/TemperatureMeter.h
+new file mode 100644
+index 0000000..b86ddd8
+--- /dev/null
++++ b/TemperatureMeter.h
+@@ -0,0 +1,19 @@
++/* Do not edit this file. It was automatically generated. */
++
++#ifndef HEADER_TemperatureMeter
++#define HEADER_TemperatureMeter
++/*
++htop - TemperatureMeter.h
++(C) 2013 Ralf Stemmer
++(C) 2014 Blair Bonnett
++Released under the GNU GPL, see the COPYING file
++in the source distribution for its full text.
++*/
++
++#include "Meter.h"
++
++extern int TemperatureMeter_attributes[];
++
++extern MeterClass TemperatureMeter_class;
++
++#endif
+diff --git a/linux/Platform.c b/linux/Platform.c
+index de7bb84..a8e8a6f 100644
+--- a/linux/Platform.c
++++ b/linux/Platform.c
+@@ -22,6 +22,7 @@ in the source distribution for its full text.
+ #include "ClockMeter.h"
+ #include "HostnameMeter.h"
+ #include "LinuxProcess.h"
++#include "TemperatureMeter.h"
+
+ #include <math.h>
+ #include <assert.h>
+@@ -116,6 +117,7 @@ MeterClass* Platform_meterTypes[] = {
+    &MemoryMeter_class,
+    &SwapMeter_class,
+    &TasksMeter_class,
++   &TemperatureMeter_class,
+    &UptimeMeter_class,
+    &BatteryMeter_class,
+    &HostnameMeter_class,
+diff --git a/Makefile.am b/Makefile.am
+index cd5209c..c700e34 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -48,14 +48,15 @@ linux_platform_headers = \
+ 	linux/LinuxProcess.h \
+ 	linux/LinuxProcessList.h \
+ 	linux/LinuxCRT.h \
+-	linux/Battery.h
++	linux/Battery.h \
++	TemperatureMeter.h
+ 
+ all_platform_headers += $(linux_platform_headers)
+ 
+ if HTOP_LINUX
+ AM_CFLAGS += -rdynamic
+ myhtopplatsources = linux/Platform.c linux/IOPriorityPanel.c linux/IOPriority.c \
+-linux/LinuxProcess.c linux/LinuxProcessList.c linux/LinuxCRT.c linux/Battery.c
++linux/LinuxProcess.c linux/LinuxProcessList.c linux/LinuxCRT.c linux/Battery.c TemperatureMeter.c
+ 
+ myhtopplatheaders = $(linux_platform_headers)
+ endif
