@@ -1,0 +1,14 @@
+pkgbase = python-sphinx-sitemap
+	pkgdesc = Sphinx extension to silently generate a sitemap for HTML builds
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/jdillard/sphinx-sitemap
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-sphinx
+	depends = python-six
+	source = sphinx-sitemap-1.0.2.tar.gz::https://github.com/jdillard/sphinx-sitemap/archive/v1.0.2.tar.gz
+	sha512sums = 3bfe3b6d78b6c8240f76d2115cbdf7035b5d5ebaacf7fafa5b23fe47f5f920b24b3cb843fe907ad6aae7116c4e302c0a5646bdcfe5f08e2c222c422850727669
+
+pkgname = python-sphinx-sitemap
