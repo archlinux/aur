@@ -12,7 +12,7 @@ pkgbase = us_da-layout
 	source = install-us_da-layout
 	source = us_da-layout.hook
 	sha256sums = 5f9e7e69a69a0c604640c9dd26ab56331af2027dc0ca42a9695feaa138f1e457
-	sha256sums = 9aa50c86a44ea0c4e2ca9eac34aab914a8f260e754b3e2d4c2b45da15b8c203c
+	sha256sums = 579702a5617a25749d35f89fa71fbcee912a43b37a1d2e0f46109f1d11f2e65a
 	sha256sums = 79a7cb2c8773b6489c5c8fe1b1db5f53b4e08c90ba8a6ad33e2ce66f362d3906
 
 pkgname = us_da-layout
