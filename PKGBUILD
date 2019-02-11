@@ -1,8 +1,8 @@
 # Maintainer: aljazari
-# Maintainer: Fabio Loli <loli_fabio@protonmail.com>
+# Maintainer: Fabio Loli <lolix@disroot.org>
 
 pkgname=green-recorder
-pkgver=3.1
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="A simple yet functional desktop recorder for Linux systems."
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=('gnome-shell: Gnome on Wayland desktop recording.')
 makedepends=('python2-setuptools')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/green-project/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('f157f3992cce04e8fe0e3646cacd6e818d06090d28f09585aa77a0ed64e321b6')
+sha256sums=('833c1c1961cf5636d449c9d86d669041f65b96560fbf39b27b03d316e1c2e7d8')
  
 package() {
   cd "$srcdir/$pkgname-$pkgver"
