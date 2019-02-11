@@ -28,7 +28,9 @@ pkgname = dbus-x11
 	conflicts = libdbus
 	replaces = libdbus
 
-pkgname = dbus-docs
+pkgname = dbus-x11-docs
 	pkgdesc = Freedesktop.org message bus system (with x11 autolaunch) (documentation)
 	depends = 
+	provides = dbus-docs
+	conflicts = dbus-docs
 

@@ -5,7 +5,7 @@
 # Contributor: Link Dupont <link@subpop.net>
 
 pkgbase=dbus-x11
-pkgname=(dbus-x11 dbus-docs)
+pkgname=(dbus-x11 dbus-x11-docs)
 pkgver=1.12.12
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system (with x11 autolaunch)"
@@ -75,8 +75,10 @@ package_dbus-x11() {
   mv "$pkgdir/usr/share/doc" "$srcdir"
 }
 
-package_dbus-docs() {
+package_dbus-x11-docs() {
   pkgdesc+=" (documentation)"
+  provides=(dbus-docs)
+  conflicts=(dbus-docs)
   depends=()
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 dbus/COPYING
