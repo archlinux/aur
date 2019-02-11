@@ -1,13 +1,12 @@
 pkgbase = python-homeassistant-cli
 	pkgdesc = Command-line tool for Home Assistant
-	pkgver = 0.4.4
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/home-assistant/home-assistant-cli
 	arch = any
 	license = Apache
 	depends = python
 	depends = python-requests
-	depends = python-yaml
 	depends = python-netdisco
 	depends = python-click
 	depends = python-click-log
@@ -15,9 +14,12 @@ pkgbase = python-homeassistant-cli
 	depends = python-jsonpath-rw
 	depends = python-jinja
 	depends = python-dateparser
+	depends = python-regex
+	depends = python-ruamel-yaml
+	depends = python-aiohttp
 	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/p/homeassistant-cli/homeassistant-cli-0.4.4.tar.gz
-	sha512sums = b8a9d8ea6f70dbe2a39e27d3284dc6ededb6e3be44f7de66c52ebe1195c95fda175b80df39223d0313462d31969bf7fc22cd159381fb524b2c3d8e3705b7f072
+	source = https://files.pythonhosted.org/packages/source/h/homeassistant-cli/homeassistant-cli-0.5.0.tar.gz
+	sha512sums = 9d07d0e3a7a0fae9d5d7431b18207c2ec6615bf03c6b8c8a600a0d07618ae55cebbbd49456fe702a1300a8327f0a02ee57b528fab60ec4a997f2fb5feb755526
 
 pkgname = python-homeassistant-cli
 
