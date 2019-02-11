@@ -1,22 +1,21 @@
 # Maintainer: KingofToasters <themanhimself at sgregoratto dot me>
 pkgname=onefetch
-pkgver=1.0.5
+pkgver=1.5.1
 pkgrel=1
-makedepends=('cargo')
+pkgdesc="Displays info about software projects"
 url="https://github.com/o2sh/onefetch"
-pkgdesc="Displays information about your project directly on your terminal"
 license=('MIT')
-source=("$url/archive/v$pkgver.tar.gz")
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-sha256sums=('8dfc305981beaf7ada8d4571813cbecde210aef07e7702bd604e21b88ce5c20f')
+makedepends=('cargo')
+source=("$url/archive/v$pkgver.tar.gz")
+sha256sums=('3987f44adc08358ca1944c06bedddea93bf33094ef9e5e7e849a4d75d23ff2d9')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/$pkgname-$pkgver"
   cargo build --release --locked
 }
 
 package() {
-  install -d "$pkgdir/usr/bin" "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/"
-  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
