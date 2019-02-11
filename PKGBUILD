@@ -1,6 +1,6 @@
 #Maintainer: Sam Bazley <sambazley@protonmail.com>
 pkgname=blockbar-git
-pkgver=20190106214116
+pkgver=20190211144316
 pkgrel=1
 pkgdesc="Blocks based status bar for X window managers"
 arch=("i686" "x86_64")
@@ -14,12 +14,6 @@ md5sums=("SKIP")
 pkgver() {
     cd blockbar
     git show -s --format=%ci HEAD | cut -d' ' -f1-2 | sed -r 's/[^0-9]//g'
-}
-
-prepare() {
-    cd "$srcdir/blockbar"
-    git submodule init
-    git submodule update
 }
 
 build() {
