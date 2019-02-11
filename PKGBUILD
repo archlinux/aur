@@ -1,7 +1,7 @@
 # Contributor: stefan husmann <stefan-husmann@t-online.de>
 pkgname=galaxy2
 pkgver=1.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Stellar Simulation"
 url="http://www.kornelix.net/galaxy2/galaxy2.html"
 arch=('i686' 'x86_64')
@@ -13,14 +13,12 @@ options=('!emptydirs')
 
 build() {
   cd $pkgname
-  export PREFIX=/usr
-  sed -i 's+xdg-deskto+#xdg-deskto+' Makefile
-  make LDFLAGS="-lpthread" 
+  make
 }
 
 package() {
   cd $pkgname
   install -d "$pkgdir"/usr/share/icons
-  make DESTDIR=$pkgdir install  
-  rm $pkgdir/usr/share/doc/$pkgname/$pkgname.man
+  make DESTDIR="$pkgdir" install  
+  rm "$pkgdir"/usr/share/doc/$pkgname/$pkgname.man
 }
