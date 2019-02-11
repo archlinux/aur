@@ -1,6 +1,6 @@
 pkgbase = drush
 	pkgdesc = Command line shell and Unix scripting interface for Drupal.
-	pkgver = 8.1.17
+	pkgver = 8.1.18
 	pkgrel = 1
 	url = https://github.com/drush-ops/drush/
 	install = drush.install
@@ -10,9 +10,9 @@ pkgbase = drush
 	makedepends = php-box
 	depends = php
 	source = drush.install
-	source = https://github.com/drush-ops/drush/archive/8.1.17.tar.gz
+	source = https://github.com/drush-ops/drush/archive/8.1.18.tar.gz
 	sha256sums = e800601699e4b1ea0a0057fc91827b31fc8c5070f5014df2777396aabc7680ec
-	sha256sums = 1d97e17db91da160be6af5329e2f96be8e68877b9727e181b86d6c3a5213461c
+	sha256sums = 1afe192987f86c9b8272ee1ecbfa5d1b9b2af3dc5093c40eb4fd2fa5fba11974
 
 pkgname = drush
 
