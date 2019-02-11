@@ -1,0 +1,15 @@
+pkgbase = jaxb-ri
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = https://javaee.github.io/jaxb-v2/
+	arch = x86_64
+	arch = i686
+	license = EDL
+	makedepends = java-environment
+	makedepends = maven
+	depends = java-runtime
+	source = https://github.com/eclipse-ee4j/jaxb-ri/archive/2.3.2-RI.tar.gz
+	sha256sums = b764a455e4e5d86f02cde16e4af77821a79ee9212a87334d22f4c651dff1c4b2
+
+pkgname = jaxb-ri
+
