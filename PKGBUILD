@@ -3,7 +3,7 @@
 #
 pkgname="cameramonitor"
 pkgver="0.3.2"
-pkgrel="5"
+pkgrel="6"
 pkgdesc="A little monitor to check if your Webcam is On."
 url="http://www.infinicode.org/code/cameramonitor/"
 license=('GPL2')
@@ -18,8 +18,8 @@ build() {
 
     ./configure --prefix /usr
 
-    sed -i 's/python3.6/python2.7/g' config.status
-    sed -i 's/"3.6"/"2.7"/g' config.status
+    sed -i 's/python3.7/python2.7/g' config.status
+    sed -i 's/"3.7"/"2.7"/g' config.status
     sed -i 's_bin/python_bin/python2.7_' config.status
     sed -i 's:$(sysconfdir):/usr/share:g' config.status
 
@@ -38,4 +38,4 @@ package() {
     make DESTDIR=${pkgdir} install
 }
 
-# vim:set ts=4 sw=2 ft=sh et:
+# vim:set ts=4 sw=4 ft=sh et:
