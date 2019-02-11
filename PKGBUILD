@@ -3,15 +3,15 @@
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts-ios
-pkgver=2017.4.20f1
+pkgver=2017.4.20f2
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the iOS platform"
 arch=('x86_64')
 url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-lts')
-source=("2017.4.20f1.4.20f1.tar.xz::https://download.unity3d.com/download_unity/20968fa45e51/LinuxEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-2017.4.20f1.tar.xz")
-md5sums=("c51aba77de6e6e511593ae6f9faebce5")
+source=("2017.4.20f2.4.20f2.tar.xz::https://download.unity3d.com/download_unity/413dbd19b6dc/LinuxEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-2017.4.20f2.tar.xz")
+md5sums=("9e9994c019399c5f4d8e38220d9cda14")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
