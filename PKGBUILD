@@ -32,22 +32,11 @@ DLAGENTS=('https::/usr/bin/curl -fLC - --retry 5 --retry-delay 3 -A Mozilla -o %
 
 prepare() {
 # wxgtk < 3.1.0
-    sed -i 's/m_listBoxHistory->GetTopItem()/0/g'		FreeFileSync/Source/ui/main_dlg.cpp
     # Revert to classic config path
     patch --binary -p1 -i revert_xdg_config_path.patch
 
 # Revert change to resources path of portable version
     patch --binary -p1 -i revert_resources_path.patch
-
-# gcc 6.3.1
-    sed -i 's!static_assert!//static_assert!'			zen/scope_guard.h
-
-# warn_static(string)
-    sed -i 's!-O3 -DN!-D"warn_static(arg)= " -O3 -DN!'		FreeFileSync/Source/Makefile
-    sed -i 's!-O3 -DN!-D"warn_static(arg)= " -O3 -DN!'		FreeFileSync/Source/RealTimeSync/Makefile
-
-# install error
-    cp ${srcdir}/Changelog.txt ${srcdir}/FreeFileSync/Build
 
 # edit lines to remove functions that require wxgtk 3.1.x  
     sed -e 's:m_textCtrlOfflineActivationKey->ForceUpper:// &:g' -i 'FreeFileSync/Source/ui/small_dlgs.cpp'
@@ -56,9 +45,6 @@ prepare() {
 # add '-lz' back into LINKFLAGS
     sed -i '/pie/ s/-pthread/-lz -pthread/' FreeFileSync/Source/Makefile
     sed -i '/pie/ s/-pthread/-lz -pthread/' FreeFileSync/Source/RealTimeSync/Makefile
-    
-# file not found error
-	sed -i '/\t"..\/Build\/User Manual.pdf" \\/d' FreeFileSync/Source/Makefile
 
 # inlining of constants not present in libssh2's distributed headers
     sed -i 's/MAX_SFTP_READ_SIZE/30000/g' FreeFileSync/Source/fs/sftp.cpp
@@ -75,7 +61,6 @@ build() {
     echo "compiler g++ $VER $MAC"
 
 ### FFS
-    mkdir -p "${srcdir}/FreeFileSync/Build/Bin"
     cd "${srcdir}/FreeFileSync/Source"
     make EXENAME=FreeFileSync TMP_PATH="${srcdir}/FreeFileSync/tmp_ffs"
 
