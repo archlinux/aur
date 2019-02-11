@@ -1,0 +1,15 @@
+pkgbase = microsoft-python-language-server
+	pkgdesc = Microsoft Language Server for Python
+	pkgver = 2019.1
+	pkgrel = 1
+	url = https://github.com/Microsoft/python-language-server
+	arch = any
+	license = Apache
+	makedepends = dotnet-sdk
+	depends = dotnet-runtime
+	source = microsoft-python-language-server::git+https://github.com/Microsoft/python-language-server#tag=2019.1
+	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
+	sha256sums = SKIP
+
+pkgname = microsoft-python-language-server
+
