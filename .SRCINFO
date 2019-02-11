@@ -1,7 +1,7 @@
 pkgbase = mecab
 	pkgdesc = Yet another part-of-speech and morphological analyzer.
 	pkgver = 0.996
-	pkgrel = 5
+	pkgrel = 6
 	url = https://taku910.github.io/mecab
 	install = mecab.install
 	arch = i686
