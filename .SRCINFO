@@ -1,0 +1,25 @@
+pkgbase = giada-git
+	pkgdesc = A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians
+	pkgver = v0.15.3.r62.gd4068c49
+	pkgrel = 1
+	url = https://www.giadamusic.com/
+	arch = x86_64
+	groups = pro-audio
+	license = GPL3
+	checkdepends = catch2
+	makedepends = gendesk
+	makedepends = imagemagick
+	depends = fltk
+	depends = jansson
+	depends = libpulse
+	depends = libxpm
+	depends = rtmidi
+	conflicts = giada
+	conflicts = giada-vst
+	source = giada-git::git+https://github.com/monocasual/giada.git#branch=record-signal
+	source = git+https://github.com/WeAreROLI/JUCE.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = giada-git
+
