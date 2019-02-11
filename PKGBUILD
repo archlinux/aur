@@ -1,44 +1,42 @@
 # Mantainer: MCMic <come@chilliet.eu>
 
 pkgname=wyrmsun
-pkgver=3.3.1
+pkgver=3.5.4
 pkgrel=1
 pkgdesc="Real-time strategy game based on history, mythology and fiction"
 arch=('i686' 'x86_64')
 url="http://andrettin.github.io/"
 license=('GPL' 'CC-BY-SA')
 depends=('sdl' 'tolua++')
-makedepends=('cmake' 'gendesk')
+makedepends=('cmake')
 source=("wyrmsun-${pkgver}.tar.gz::https://github.com/Andrettin/Wyrmsun/archive/v${pkgver}.tar.gz" 
         "wyrmgus-${pkgver}.tar.gz::https://github.com/Andrettin/Wyrmgus/archive/v${pkgver}.tar.gz"
         "oaml-1.0.tar.gz::https://github.com/marcelofg55/oaml/archive/v1.0.tar.gz")
-md5sums=('efb01aa8b7c68cecb42bda652522bfdf'
-         '75e490a2f8f6de830d7c6c8d19e9603d'
+md5sums=('c8b2b164b32ed4d9d43e86f57e20fb0a'
+         '00d18754666b67aef97c11a01300584d'
 	 '97019b32af9a809d812a457a97ed1344')
 _name='Wyrmsun'
 _categories='Game;StrategyGame'
 
 prepare() {
-  gendesk -n -f ../PKGBUILD
   cp -a ${srcdir}/oaml-1.0/* ${srcdir}/Wyrmgus-${pkgver}/src/oaml/
 }
 
 build() {
   cd ${srcdir}/Wyrmgus-${pkgver}
-  cmake -DENABLE_USEGAMEDIR=OFF
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_USEGAMEDIR=OFF .
+  make
+  cd ${srcdir}/Wyrmsun-${pkgver}
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
 
 package() {
   cd ${srcdir}/
-  mkdir -p ${pkgdir}/usr/share/${pkgname}
   mkdir -p ${pkgdir}/usr/bin/
-  mkdir -p ${pkgdir}/usr/share/icons/hicolor/128x128/apps/
-  echo -e "#!/bin/sh\nexec /usr/bin/wyrmgus -d /usr/share/${pkgname}" > ${pkgdir}/usr/bin/${pkgname} 
-  chmod +x ${pkgdir}/usr/bin/${pkgname}
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -D -m755 ${srcdir}/Wyrmgus-${pkgver}/stratagus ${pkgdir}/usr/bin/wyrmgus
+  cd ${srcdir}/Wyrmgus-${pkgver}
+  make DESTDIR="$pkgdir" install
+  mv ${pkgdir}/usr/games/stratagus ${pkgdir}/usr/bin/wyrmgus
   cd ${srcdir}/Wyrmsun-${pkgver}
-  cp -a graphics maps music scripts sounds translations ${pkgdir}/usr/share/${pkgname}/
-  cp graphics/ui/icons/wyrmsun_icon_128.png ${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png
+  make DESTDIR="$pkgdir" install
 }
