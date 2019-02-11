@@ -2,7 +2,7 @@
 
 _shortname='uutils-coreutils'
 pkgname="${_shortname}-git"
-pkgver=r2639.b8dbefcb
+pkgver=r2675.1dc7d8cb
 pkgrel=1
 pkgdesc="GNU Coreutils rewritten in Rust"
 arch=('x86_64')
