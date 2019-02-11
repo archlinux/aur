@@ -5,7 +5,7 @@
 pkgname=slimlock
 _basename=slim
 pkgver=1.3.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Unholy screen locker (without SLiM)"
 arch=('i686' 'x86_64')
 url="https://github.com/iwamatsu/slim"
@@ -65,7 +65,7 @@ package() {
     "${pkgdir}/usr/share/slim/themes/slim-archlinux-default/preview.png"
   
   # install pam.d config - see https://bugs.archlinux.org/task/48650
-  install -Dm644 "${srcdir}/slimlock.pam" "${pkgdir}/eetc/pam.d/slimlock"
+  install -Dm644 "${srcdir}/slimlock.pam" "${pkgdir}/etc/pam.d/slimlock"
 }
 
 # vim:set ts=2 sw=2 et:
