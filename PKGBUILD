@@ -1,7 +1,7 @@
 pkgname=mingw-w64-python36-bin
-pkgver=3.6.5
+pkgver=3.6.8
 _pybasever=36
-pkgrel=3
+pkgrel=1
 pkgdesc="Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)"
 arch=('any')
 license=('PSF')
@@ -16,10 +16,11 @@ source=("https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-win3
         wine-python.sh bpo-11566.patch)
 noextract=("python-${pkgver}-embed-win32.zip"
            "python-${pkgver}-embed-amd64.zip")
-sha256sums=('f654c055817b5a2c5b050d744833d95d621aeaa507b5c28b4840712821a70891'
-            'dfb476fabd20f617c8a5be58ca3e55844c8310710c6ff0dd25486d1d03c95a28'
-            '53a3e17d77cd15c5230192b6a8c1e031c07cd9f34a2f089a731c6f6bd343d5c6'
-            SKIP SKIP)
+sha256sums=('b4c65c63344c29c716f58c80fb91999f15af0992a142d5ed33cd12d22aa941e0'
+            'efadf25a090c8438b3cbe27574fb36bd40c80e20a03939188a1d5051685495dd'
+            '7f5b1f08b3b0a595387ef6c64c85b1b13b38abef0dd871835ee923262e4f32f0'
+            '86e768f17994ce586d646b4ace95f819943dfe6a0fb1afa40de4188e975d5db8'
+            '5a98c6b2111370a7f9c619be97572d01e2587cc3fe94af154003ba1a3f644891')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
