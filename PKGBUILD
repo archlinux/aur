@@ -2,7 +2,7 @@
 
 pkgname=monitor
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Utilities for handling monitors, resolutions, wallpapers and timed wallpapers'
 arch=(x86_64)
 url='https://github.com/xyproto/monitor'
