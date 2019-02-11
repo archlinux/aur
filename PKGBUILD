@@ -22,9 +22,14 @@ pkgver() {
     echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
+build() {
+    cd slixmpp
+    python setup.py build
+}
+
 package() {
     cd slixmpp
     # make sure UNICODE characters in the README are parsed correctly
     export LC_CTYPE=en_US.utf-8
-    python setup.py install --root="$pkgdir/" --optimize=1
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
