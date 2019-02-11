@@ -2,6 +2,15 @@ Changelog
 =========
 
 
+0.4.0_3_gbf3a490
+------------
+
+New
+~~~
+- CI: Optimized build context for the jobs in the build-image stage.
+  [Bart Verhagen]
+
+
 0.4.0 (2018-12-20)
 ------------------
 
