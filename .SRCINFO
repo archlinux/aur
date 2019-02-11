@@ -1,6 +1,6 @@
 pkgbase = ocrodjvu
 	pkgdesc = ocrodjvu is a wrapper for OCR systems, that allows you to perform OCR on DjVu files.
-	pkgver = 0.10.4
+	pkgver = 0.11
 	pkgrel = 1
 	url = http://jwilk.net/software/ocrodjvu
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = ocrodjvu
 	optdepends = ocrad: OCR system
 	optdepends = gocr: OCR system
 	optdepends = ocropy: OCR system
-	source = https://github.com/jwilk/ocrodjvu/releases/download/0.10.4/ocrodjvu-0.10.4.tar.xz
-	sha256sums = fcd0b2907c1bfba997812613fe96284bd82ec26a008a54b1910fe7b8b29c902b
+	source = https://github.com/jwilk/ocrodjvu/releases/download/0.11/ocrodjvu-0.11.tar.xz
+	sha256sums = c9eef66e0ed9f742b9e386381d92b89b412e07ebd625dc4023884637101e54f0
 
 pkgname = ocrodjvu
 
