@@ -1,6 +1,6 @@
 # Maintainer: Atte Lautanala <atte.lautanala@gmail.com>
 pkgname=phraseapp-client
-pkgver=1.12.4
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="PhraseApp CLI tool"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 source_i686=("phraseapp_linux_386-$pkgver.tar.gz::https://github.com/phrase/phraseapp-client/releases/download/$pkgver/phraseapp_linux_386.tar.gz")
 source_x86_64=("phraseapp_linux_amd64-$pkgver.tar.gz::https://github.com/phrase/phraseapp-client/releases/download/$pkgver/phraseapp_linux_amd64.tar.gz")
 
-sha256sums_i686=('9fb98aa72fd591e920724291a556820b21da6c1a3edfea3f2fa4233a45a51ea5')
-sha256sums_x86_64=('993ecfbabeb4697dcec34ba89a22e581dcee8ee8a4db293d0c07ebc134ccbfaa')
+sha256sums_i686=('a55337ac35fb571ea2a608520ac8d014157fc8e9404774254719d8074db9fb06')
+sha256sums_x86_64=('375422767155c6ccd2aa2a94df6fa8d2caf307fb6176d74ba8e2bed4ce5c70e6')
 
 
 package() {
