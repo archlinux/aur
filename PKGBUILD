@@ -3,7 +3,7 @@
 
 pkgname=ib-tws
 pkgver=974.4l
-pkgrel=1
+pkgrel=2
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
 url="http://interactivebrokers.com/"
@@ -35,14 +35,14 @@ build() {
   chmod +x tws-latest-standalone-linux-x64.sh
   # Assumes no other Install4J packages are in use by user; if so, makepkg from dedicated user account
   majorVer=$(echo "$pkgver" | sed "s/\([0-9]\+\)\..*/\1/")
-  rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts/${majorVer} $HOME/Desktop/Trader\ Workstation\ ${majorVer}.desktop
+  rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts/${majorVer} $HOME/Desktop/Trader\ Workstation\ ${majorVer}.desktop  $HOME/.local/share/applications/Trader\ Workstation\ ${majorVer}.desktop
   ./tws-latest-standalone-linux-x64.sh -q
 
   BUNDLED_JRE_VER=$(ls -1 ${HOME}/.i4j_jres)
   mv ${HOME}/.i4j_jres/${BUNDLED_JRE_VER} ${HOME}/.i4j_jres/jre
   mv ${HOME}/.i4j_jres/jre ${srcdir}/jre
   mv ${HOME}/Jts/${majorVer}/jars/*.jar ${srcdir}
-  rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts/${majorVer} $HOME/Desktop/Trader\ Workstation\ ${majorVer}.desktop
+  rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts/${majorVer} $HOME/Desktop/Trader\ Workstation\ ${majorVer}.desktop  $HOME/.local/share/applications/Trader\ Workstation\ ${majorVer}.desktop
   cd ${srcdir}
 
   # Thanks to http://finance.groups.yahoo.com/group/TWSAPI/files/RPM%20spec%20file/
