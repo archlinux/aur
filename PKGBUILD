@@ -1,4 +1,5 @@
-# Maintainer: David Runge <dave@sleepmap.de>
+# Maintainer: Térence Clastres <t.clastres@gmail.com>
+
 pkgname=giada-git
 pkgver=v0.15.3.r62.gd4068c49
 pkgrel=1
