@@ -1,0 +1,100 @@
+--- configure.orig
++++ configure
+@@ -34202,23 +34202,36 @@ $as_echo "If configure fails try --with-xpm-dir=<DIR>" >&6; }
+     done
+ 
+     if test -z "$FREETYPE2_DIR"; then
+-      as_fn_error $? "freetype-config not found." "$LINENO" 5
++      for i in $PHP_FREETYPE_DIR /usr/local /usr; do
++        if test -f "$i/bin/pkg-config"; then
++          PKGCONFIG_DIR=$i
++          PKGCONFIG_CONFIG="$i/bin/pkg-config"
++          break
++        fi
++      done
++      if test -z "$PKGCONFIG_DIR"; then
++        as_fn_error $? "freetype-config and pkg-config not found." "$LINENO" 5
++      else
++        FREETYPE2_CFLAGS=`$PKGCONFIG_CONFIG --cflags freetype2`
++        FREETYPE2_LIBS=`$PKGCONFIG_CONFIG --libs freetype2`
++      fi
++    else
++      FREETYPE2_CFLAGS=`$FREETYPE2_CONFIG --cflags`
++      FREETYPE2_LIBS=`$FREETYPE2_CONFIG --libs`
+     fi
+ 
+-    FREETYPE2_CFLAGS=`$FREETYPE2_CONFIG --cflags`
+-    FREETYPE2_LIBS=`$FREETYPE2_CONFIG --libs`
+ 
+ 
+-  for ac_i in $FREETYPE2_CFLAGS; do
+-    case $ac_i in
+-    -I*)
+-      ac_ii=`echo $ac_i|cut -c 3-`
++    for ac_i in $FREETYPE2_CFLAGS; do
++      case $ac_i in
++      -I*)
++        ac_ii=`echo $ac_i|cut -c 3-`
+ 
+-  if test "$ac_ii" != "/usr/include"; then
++    if test "$ac_ii" != "/usr/include"; then
+ 
+-  if test -z "$ac_ii" || echo "$ac_ii" | grep '^/' >/dev/null ; then
+-    ai_p=$ac_ii
+-  else
++    if test -z "$ac_ii" || echo "$ac_ii" | grep '^/' >/dev/null ; then
++      ai_p=$ac_ii
++    else
+ 
+     ep_dir=`echo $ac_ii|$SED 's%/*[^/][^/]*/*$%%'`
+ 
+--- configure.orig
++++ configure
+@@ -35890,23 +35890,34 @@ $as_echo "If configure fails try --with-xpm-dir=<DIR>" >&6; }
+     done
+ 
+     if test -z "$FREETYPE2_DIR"; then
+-      as_fn_error $? "freetype-config not found." "$LINENO" 5
++      for i in $PHP_FREETYPE_DIR /usr/local /usr; do
++        if test -f "$i/bin/pkg-config"; then
++          PKGCONFIG_DIR=$i
++          PKGCONFIG_CONFIG="$i/bin/pkg-config"
++          break
++        fi
++      done
++      if test -z "$PKGCONFIG_DIR"; then
++        as_fn_error $? "freetype-config and pkg-config not found." "$LINENO" 5
++      else
++        FREETYPE2_CFLAGS=`$PKGCONFIG_CONFIG --cflags freetype2`
++        FREETYPE2_LIBS=`$PKGCONFIG_CONFIG --libs freetype2`
++      fi
++    else
++      FREETYPE2_CFLAGS=`$FREETYPE2_CONFIG --cflags`
++      FREETYPE2_LIBS=`$FREETYPE2_CONFIG --libs`
+     fi
+ 
+-    FREETYPE2_CFLAGS=`$FREETYPE2_CONFIG --cflags`
+-    FREETYPE2_LIBS=`$FREETYPE2_CONFIG --libs`
++    for ac_i in $FREETYPE2_CFLAGS; do
++      case $ac_i in
++      -I*)
++        ac_ii=`echo $ac_i|cut -c 3-`
+ 
++    if test "$ac_ii" != "/usr/include"; then
+ 
+-  for ac_i in $FREETYPE2_CFLAGS; do
+-    case $ac_i in
+-    -I*)
+-      ac_ii=`echo $ac_i|cut -c 3-`
+-
+-  if test "$ac_ii" != "/usr/include"; then
+-
+-  if test -z "$ac_ii" || echo "$ac_ii" | grep '^/' >/dev/null ; then
+-    ai_p=$ac_ii
+-  else
++    if test -z "$ac_ii" || echo "$ac_ii" | grep '^/' >/dev/null ; then
++      ai_p=$ac_ii
++    else
+ 
+     ep_dir=`echo $ac_ii|$SED 's%/*[^/][^/]*/*$%%'`
+ 

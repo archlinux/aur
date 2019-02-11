@@ -1,358 +1,434 @@
-# Maintainer: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
-# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: William Gathoye <william + aur at gathoye dot be>
+# Maintainer: Maxwell Pray a.k.a. Synthead <synthead at gmail dot com>
+# Contributor: Pierre Schmitz <pierre at archlinux dot de>
+# Credit goes also to the maintainers and contributors of other PHP versions in
+# AUR or official Arch Linux repositories. Specific patches might include code
+# from other open source projects. In that case, credit is attributed in the
+# specific commit.
 
 pkgbase=php71
-_pkgbase=php
-pkgname=("$pkgbase"
-         "$pkgbase-cgi"
-         "$pkgbase-apache"
-         "$pkgbase-fpm"
-         "$pkgbase-embed"
-         "$pkgbase-phpdbg"
-         "$pkgbase-dblib"
-         "$pkgbase-enchant"
-         "$pkgbase-gd"
-         "$pkgbase-imap"
-         "$pkgbase-intl"
-         "$pkgbase-mcrypt"
-         "$pkgbase-odbc"
-         "$pkgbase-pgsql"
-         "$pkgbase-pspell"
-         "$pkgbase-snmp"
-         "$pkgbase-sqlite"
-         "$pkgbase-tidy"
-         "$pkgbase-xsl")
-pkgver=7.1.16
+_pkgbase=${pkgbase%71}
+pkgname=(
+    "${pkgbase}"
+    "${pkgbase}-cgi"
+    "${pkgbase}-apache"
+    "${pkgbase}-fpm"
+    "${pkgbase}-embed"
+    "${pkgbase}-phpdbg"
+    "${pkgbase}-dblib"
+    "${pkgbase}-enchant"
+    "${pkgbase}-gd"
+    "${pkgbase}-imap"
+    "${pkgbase}-intl"
+    "${pkgbase}-mcrypt"
+    "${pkgbase}-odbc"
+    "${pkgbase}-pgsql"
+    "${pkgbase}-pspell"
+    "${pkgbase}-snmp"
+    "${pkgbase}-sqlite"
+    "${pkgbase}-tidy"
+    "${pkgbase}-xsl"
+)
+pkgver=7.1.26
+_pkgver=${pkgbase//php}
 pkgrel=1
-arch=('x86_64')
-license=('PHP')
+pkgdesc='A general-purpose scripting language that is especially suited to web development (old stable 7.0 series)'
+arch=('i686' 'x86_64')
 url='http://www.php.net'
-makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libmcrypt' 'libxslt' 'libzip' 'net-snmp'
-             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre')
-checkdepends=('procps-ng')
-source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
-        'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch' 'enchant-2.patch')
-sha512sums=('98e96f06a4912cfa6926be2f292ce7120ca893c9b779b2efef4120c1df3580fa427cd58f5e4977edb01a0ae3b85660d6ca79b2bd79b6cd830cd77f6c6588b5ea'
-            '65ea5cb38c1fc1874b2a4d08bc52443f9ed5dcc92cf99023a74292c78f9074516296f56c768f7efa8a1f0838feac47b356d3da6fdb1199419bebec3a93204ae6'
-            'fc3d711033c8b7ead910826d7c0d4479b481fa9d84c3147b1d33ef9b1e3d3d073a8d17a7c7f66db30d710be1c9b17d2b5536a74a4f05c4ff88b9339e95dd244a'
-            'ef2724cedec46a6955355fc75406efa2895545f2ebcdfcee06ce6f3c9a20f8348a291ac78ab1e384b703095d317f59504b787f21074f841c45e53a98955af0c1'
-            '209a8b2f9e2e25887c86e126c2761aae329e2bf9456a5de735f3ae264bd2be21e7646cc1954c1417e4c74f8d2d6b0f6081aa74a5af48f6b97484bab0d4e72fcf'
-            '6cad4077ae1401b2b5395518ffb609055c5591710f141b90cc38c77bc16837d2f1bf7a161c4e64a33eb64b4e48bb3c54f88fcf830c30789d33d8e5cfcd3119db'
-            '89993be67988f6db09e1102214a41fdb7223274bc6ca71f1defc5fe9548d832485f7133b8ba82860f04da00c7f655d701c7550460c0172a2a2d31ef3f3f96038')
+license=('PHP')
 
-_optdir=/opt/$pkgbase
+makedepends=(
+    'apache' 'aspell' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libmcrypt' 'libxslt'
+    'libzip' 'net-snmp' 'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc'
+    'curl' 'libtool' 'postfix' 'freetds' 'pcre' 'c-client' 'tidyhtml'
+)
+
+source=(
+    "https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
+    'apache.patch'
+    'apache.conf'
+    'enchant-2.patch'
+    'freetype2.patch'
+    'php-fpm.patch'
+    'php-fpm.tmpfiles'
+    'php.ini.patch'
+    'php-icu-1100-Utilize-the-recommended-way-to-handle-the-icu-namespace.patch'
+    'php-icu-1101-Simplify-namespace-access.patch'
+)
+sha512sums=(
+    '3c80dce2d5dcbf6f253ca4ca4e4ce01fdd3a3d31a6e6045f539fefadc1ea3c391d4d4995600a4ff758ab0361e0ec2244e2eaa6591ecb3e9b8e8a9c44f67a5b32'
+    '63335127162972b311f4fe5b016471e699056894aebe6cde2cb908b4a345e328dca4eefbe5c1466642d5fe9b47f19e6ed48be4ca14663378cc15d1d02c57a23c'
+    'f5e5431993c2e0c1806c4edf392030d0b605f4b3c4cebec036e810ff771b2327983f347221735673506e2c91ce2e18ad37ab7600261b684fe29491206171b4f3'
+    '30cdc281c6e288cf8a0bf58a0ad74ad5b4e8205d2b0b6ab465fad97d810f7bfae4581ad836712998e834d2e90d38cacd22f19bb01e77fc4c9d200d95613fc669'
+    '2d5f3aa71ce7d8da43f0f683f81b06258e3a0d95df4807a8acac91ff89fbe60484ef97856a908bce625b1610d0004767a6a8c622246086afe2f2d464977088b5'
+    'a664b69aea8c21c50c852f918515d9fe1a931d7f88ec77ec86a20810266515745430d89513ee2e0bb301a29f1fc7ab0d2634076830b4da8ea1e47467fb658678'
+    '62d85a59e3dd649caeb04a6b7e3fc94e99a2f03e4357c69697bb187bf1dba205021fe492c5beee7cf2156b3fbd7f447e74a01ed2e7f5fd7b3edc9a77582e89c7'
+    'fde017c6382d687b80d660253cbe5d581ca886fee0d762bf519b245c6e39677194be542ec26c71c81d104422b444a0fdadd92ac1a17e9ea1e6ec34bfb204ca7d'
+    'b6ff1c8575c7564ede17ec8c959141a065a9c4e3cba059a1138b9ecc85f23632d7e5980d65742f7fc1ce404ce613f7abb2f5f7a45039d606c9c590ccf3a2301d'
+    '70c859feff58650ff4a291b1725bce8f290ac6d92cacc4420d3ead5cbbdbcf567cd0ed4d79fdd8b0435cf6833f7b50fff798b2fae274c5fb1bb37a0984a45f9d'
+    '33d40f3ae500cf583519ecfa271e36d727c38ff4ea9547d3d2c4d51c9fadd317ed614a048077ebdb116e3c84c11db95e6455cdfc80d092d217d070c98af56525'
+)
+
+validpgpkeys=(
+    # PGP keys from PHP maintainer (upstream)
+    # src.: https://secure.php.net/downloads.php#gpg-7.1
+    # pub   4096R/7BD5DCD0 2016-05-07
+    #       Key fingerprint = A917 B1EC DA84 AEC2 B568 FED6 F50A BC80 7BD5 DCD0
+    # uid                  Davey Shafik <davey@php.net>
+    #
+    # pub   2048R/31CBD89E 2016-12-08
+    #       Key fingerprint = 5289 95BF EDFB A719 1D46  839E F9BA 0ADA 31CB D89E
+    # uid                  Joe Watkins <krakjoe@php.net>
+    #
+    # pub   4096R/70D12172 2017-04-14 [expires: 2024-04-21]
+    #       Key fingerprint = 1729 F839 38DA 44E2 7BA0  F4D3 DBDB 3974 70D1 2172
+    # uid                  Sara Golemon <pollita@php.net>
+    #
+    # If you trust them, you can import them with
+    # gpg --recv-keys A917B1ECDA84AEC2B568FED6F50ABC807BD5DCD0 528995BFEDFBA7191D46839EF9BA0ADA31CBD89E 1729F83938DA44E27BA0F4D3DBDB397470D12172
+    # Receiving GPG keys might fail with the following error message:
+    # gpg: keyserver receive failed: Connection refused
+    # If this happens, just check your DNS or use another one.
+    'A917B1ECDA84AEC2B568FED6F50ABC807BD5DCD0'
+    '528995BFEDFBA7191D46839EF9BA0ADA31CBD89E'
+    '1729F83938DA44E27BA0F4D3DBDB397470D12172'
+)
 
 prepare() {
-  cd ${srcdir}/${_pkgbase}-${pkgver}
+    cd ${_pkgbase}-${pkgver}
 
-  patch -p0 -i ${srcdir}/apache.patch
-  patch -p0 -i ${srcdir}/php-fpm.patch
-  patch -p0 -i ${srcdir}/php.ini.patch
-  patch -p1 -i ../enchant-2.patch
+    patch -p0 -i ../apache.patch
+    patch -p0 -i ../enchant-2.patch
+    patch -p0 -i ../freetype2.patch
+    patch -p0 -i ../php-fpm.patch
+    patch -p1 -i ../php-icu-1100-Utilize-the-recommended-way-to-handle-the-icu-namespace.patch
+    patch -p1 -i ../php-icu-1101-Simplify-namespace-access.patch
+    patch -p0 -i ../php.ini.patch
 }
 
 build() {
-  local _phpconfig="--srcdir=../${_pkgbase}-${pkgver} \
-    --config-cache \
-    --prefix=${_optdir}/usr \
-    --sbindir=${_optdir}/usr/bin \
-    --sysconfdir=${_optdir}/etc/php \
-    --localstatedir=${_optdir}/var \
-    --with-layout=GNU \
-    --with-config-file-path=${_optdir}/etc/php \
-    --with-config-file-scan-dir=${_optdir}/etc/php/conf.d \
-    --disable-rpath \
-    --mandir=${_optdir}/usr/share/man \
-    --without-pear \
-    "
+    local phpConfig="\
+        --srcdir=../${_pkgbase}-${pkgver} \
+        --config-cache \
+        --prefix=/usr \
+        --sbindir=/usr/bin \
+        --sysconfdir=/etc/${pkgbase} \
+        --localstatedir=/var \
+        --libdir=/usr/lib/${pkgbase} \
+        --datarootdir=/usr/share/${pkgbase} \
+        --datadir=/usr/share/${pkgbase} \
+        --program-suffix=${pkgbase#php} \
+        --with-layout=GNU \
+        --with-config-file-path=/etc/${pkgbase} \
+        --with-config-file-scan-dir=/etc/${pkgbase}/conf.d \
+        --disable-rpath \
+        --without-pear \
+        "
 
-  local _phpextensions="\
-    --enable-bcmath=shared \
-    --enable-calendar=shared \
-    --enable-dba=shared \
-    --enable-exif=shared \
-    --enable-ftp=shared \
-    --enable-gd-native-ttf \
-    --enable-intl=shared \
-    --enable-mbstring \
-    --enable-shmop=shared \
-    --enable-soap=shared \
-    --enable-sockets=shared \
-    --enable-sysvmsg=shared \
-    --enable-sysvsem=shared \
-    --enable-sysvshm=shared \
-    --enable-zip=shared \
-    --with-bz2=shared \
-    --with-curl=shared \
-    --with-db4=/usr \
-    --with-enchant=shared,/usr \
-    --with-freetype-dir=/usr \
-    --with-gd=shared,/usr \
-    --with-gdbm \
-    --with-gettext=shared \
-    --with-gmp=shared \
-    --with-iconv=shared \
-    --with-imap-ssl \
-    --with-imap=shared \
-    --with-kerberos=/usr \
-    --with-ldap=shared \
-    --with-ldap-sasl \
-    --with-libzip \
-    --with-mhash \
-    --with-mysql-sock=/run/mysqld/mysqld.sock \
-    --with-mysqli=shared,mysqlnd \
-    --with-openssl \
-    --with-pcre-regex=/usr \
-    --with-pdo-dblib=shared,/usr \
-    --with-pdo-mysql=shared,mysqlnd \
-    --with-pdo-odbc=shared,unixODBC,/usr \
-    --with-pdo-pgsql=shared \
-    --with-pdo-sqlite=shared,/usr \
-    --with-pgsql=shared \
-    --with-pspell=shared \
-    --with-readline \
-    --with-snmp=shared \
-    --with-mcrypt=shared \
-    --with-sqlite3=shared,/usr \
-    --with-tidy=shared \
-    --with-unixODBC=shared,/usr \
-    --with-xmlrpc=shared \
-    --with-xsl=shared \
-    --with-zlib \
-    --enable-pcntl \
-    "
+    local phpExtensions="\
+        --enable-bcmath=shared \
+        --enable-calendar=shared \
+        --enable-dba=shared \
+        --enable-exif=shared \
+        --enable-ftp=shared \
+        --enable-gd-native-ttf \
+        --enable-intl=shared \
+        --enable-mbstring \
+        --enable-shmop=shared \
+        --enable-soap=shared \
+        --enable-sockets=shared \
+        --enable-sysvmsg=shared \
+        --enable-sysvsem=shared \
+        --enable-sysvshm=shared \
+        --enable-zip=shared \
+        --with-bz2=shared \
+        --with-curl=shared \
+        --with-db4=/usr \
+        --with-enchant=shared,/usr \
+        --with-freetype-dir=/usr \
+        --with-gd=shared,/usr \
+        --with-gdbm \
+        --with-gettext=shared \
+        --with-gmp=shared \
+        --with-iconv=shared \
+        --with-imap-ssl \
+        --with-imap=shared \
+        --with-kerberos=/usr \
+        --with-ldap=shared \
+        --with-ldap-sasl \
+        --with-libzip \
+        --with-mcrypt=shared \
+        --with-mhash \
+        --with-mysql-sock=/run/mysqld/mysqld.sock \
+        --with-mysqli=shared,mysqlnd \
+        --with-openssl \
+        --with-pcre-regex=/usr \
+        --with-pdo-dblib=shared,/usr \
+        --with-pdo-mysql=shared,mysqlnd \
+        --with-pdo-odbc=shared,unixODBC,/usr \
+        --with-pdo-pgsql=shared \
+        --with-pdo-sqlite=shared,/usr \
+        --with-pgsql=shared \
+        --with-pspell=shared \
+        --with-readline \
+        --with-snmp=shared \
+        --with-sqlite3=shared,/usr \
+        --with-tidy=shared \
+        --with-unixODBC=shared,/usr \
+        --with-xmlrpc=shared \
+        --with-xsl=shared \
+        --with-zlib \
+        --enable-pcntl \
+        "
 
-  EXTENSION_DIR=${_optdir}/usr/lib/php/modules
-  export EXTENSION_DIR
+    EXTENSION_DIR=/usr/lib/${pkgbase}/modules
+    export EXTENSION_DIR
 
-  [[ -d ${srcdir}/build ]] && rm -r ${srcdir}/build
+    mkdir build
+    cd build
+    ln -s ../${_pkgbase}-${pkgver}/configure
+    ./configure ${phpConfig} \
+        --enable-cgi \
+        --enable-fpm \
+        --with-fpm-systemd \
+        --with-fpm-acl \
+        --with-fpm-user=http \
+        --with-fpm-group=http \
+        --enable-embed=shared \
+        ${phpExtensions}
+    make
+    cd ../
 
-  mkdir ${srcdir}/build
-  cd ${srcdir}/build
-  ln -s ../${_pkgbase}-${pkgver}/configure
+    # apache
+    # Reuse the previous configure step in order to save time
+    cp -a build build-apache
+    cd build-apache
+    ./configure ${phpConfig} \
+        --with-apxs2 \
+        ${phpExtensions}
+    make
+    cd ../
 
-  # http://site.icu-project.org/download/61#TOC-Migration-Issues
-  CPPFLAGS+=' -DU_USING_ICU_NAMESPACE=1'
-
-  ./configure ${_phpconfig} \
-    --enable-cgi \
-    --enable-fpm \
-    --with-fpm-systemd \
-    --with-fpm-acl \
-    --with-fpm-user=http \
-    --with-fpm-group=http \
-    --enable-embed=shared \
-    ${_phpextensions}
-  make
-
-  # apache
-  # reuse the previous run; this will save us a lot of time
-  [[ -d ${srcdir}/build-apache ]] && rm -r ${srcdir}/build-apache
-  cp -a ${srcdir}/build ${srcdir}/build-apache
-  cd ${srcdir}/build-apache
-  ./configure ${_phpconfig} \
-    --with-apxs2 \
-    ${_phpextensions}
-  make
-
-  # phpdbg
-  [[ -d ${srcdir}/build-phpdbg ]] && rm -r ${srcdir}/build-phpdbg
-  cp -a ${srcdir}/build ${srcdir}/build-phpdbg
-  cd ${srcdir}/build-phpdbg
-  ./configure ${_phpconfig} \
-    --enable-phpdbg \
-    ${_phpextensions}
-  make
+    # phpdbg
+    cp -a build build-phpdbg
+    cd build-phpdbg
+    ./configure ${phpConfig} \
+        --enable-phpdbg \
+        ${phpExtensions}
+    make
 }
 
 check() {
-  cd ${srcdir}/${_pkgbase}-${pkgver}
+    cd ${srcdir}/${_pkgbase}-${pkgver}
 
-  # Check if sendmail was configured correctly (FS#47600)
-  ${srcdir}/build/sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
+    # Check if sendmail was configured correctly (FS#47600)
+    ${srcdir}/build/sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
 
-  export REPORT_EXIT_STATUS=1
-  export NO_INTERACTION=1
-  export SKIP_ONLINE_TESTS=1
-  export SKIP_SLOW_TESTS=1
+    export REPORT_EXIT_STATUS=1
+    export NO_INTERACTION=1
+    export SKIP_ONLINE_TESTS=1
+    export SKIP_SLOW_TESTS=1
 
-  ${srcdir}/build/sapi/cli/php -n run-tests.php -n -P {tests,Zend}
+    ${srcdir}/build/sapi/cli/php -n run-tests.php -n -P {tests,Zend}
 }
 
 package_php71() {
-  pkgdesc='A general-purpose scripting language that is especially suited to web development'
-  provides=("${_pkgbase}=${pkgver}")
-  depends=('libxml2' 'curl' 'libzip' 'pcre')
-  backup=("${_optdir#/}etc/php/php.ini")
+    pkgdesc='A general-purpose scripting language that is especially suited to web development'
+    depends=('libxml2' 'curl' 'libzip' 'pcre')
+    provides=("${_pkgbase}=$pkgver")
+    backup=("etc/${pkgbase}/php.ini")
 
-  cd ${srcdir}/build
-  make -j1 INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
-  install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/php.ini-production ${pkgdir}${_optdir}/etc/php/php.ini
-  install -d -m755 ${pkgdir}${_optdir}/etc/php/conf.d/
+    cd build
+    make -j1 INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
+    install -D -m644 ../${_pkgbase}-${pkgver}/php.ini-production ${pkgdir}/etc/${pkgbase}/php.ini
+    install -d -m755 ${pkgdir}/etc/${pkgbase}/conf.d/
 
-  # remove static modules
-  rm -f ${pkgdir}${_optdir}/usr/lib/php/modules/*.a
-  # remove modules provided by sub packages
-  rm -f ${pkgdir}${_optdir}/usr/lib/php/modules/{enchant,gd,imap,intl,mcrypt,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
-  # remove empty directory
-  rmdir ${pkgdir}${_optdir}/usr/include/php/include
+    # Remove static modules
+    rm -f ${pkgdir}/usr/lib/${pkgbase}/modules/*.a
+
+    # Remove modules provided by sub packages
+    rm -f ${pkgdir}/usr/lib/${pkgbase}/modules/{enchant,gd,imap,intl,mcrypt,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
+
+    # Remove empty directory
+    rmdir ${pkgdir}/usr/include/php/include
+
+    # Move include directory
+    mv ${pkgdir}/usr/include/php ${pkgdir}/usr/include/${pkgbase}
+
+    # Fix phar symlink
+    rm ${pkgdir}/usr/bin/phar
+    ln -sf phar.${pkgbase/php/phar} ${pkgdir}/usr/bin/${pkgbase/php/phar}
+
+    # Rename executables
+    mv ${pkgdir}/usr/bin/phar.{phar,${pkgbase/php/phar}}
+
+    # Rename man pages
+    mv ${pkgdir}/usr/share/man/man1/{phar,${pkgbase/php/phar}}.1
+    mv ${pkgdir}/usr/share/man/man1/phar.{phar,${pkgbase/php/phar}}.1
+
+    # Fix paths in executables
+    sed -i "/^includedir=/c \includedir=/usr/include/${pkgbase}" ${pkgdir}/usr/bin/${pkgbase/php/phpize}
+    sed -i "/^include_dir=/c \include_dir=/usr/include/${pkgbase}" ${pkgdir}/usr/bin/${pkgbase/php/php-config}
+
+    # Make phpize use php-config70
+    sed -i "/^\[  --with-php-config=/c \[  --with-php-config=PATH  Path to php-config [${pkgbase/php/php-config}]], ${pkgbase/php/php-config}, no)" ${pkgdir}/usr/lib/${pkgbase}/build/phpize.m4
 }
 
 package_php71-cgi() {
-  pkgdesc='CGI and FCGI SAPI for PHP'
-  provides=('php-cgi')
-  depends=("$pkgbase")
+    pkgdesc='CGI and FCGI SAPI for PHP'
+    depends=("${pkgbase}")
+    provides=("${_pkgbase}-cgi=$pkgver")
 
-  cd ${srcdir}/build
-  make -j1 INSTALL_ROOT=${pkgdir} install-cgi
+    cd build
+    make INSTALL_ROOT=${pkgdir} install-cgi
 }
 
 package_php71-apache() {
-  pkgdesc='Apache SAPI for PHP'
-  provides=('php-apache')
-  depends=("$pkgbase" 'apache')
-  backup=("${_optdir#/}etc/httpd/conf/extra/php7_module.conf")
+    pkgdesc='Apache SAPI for PHP'
+    depends=("${pkgbase}" 'apache')
+    backup=("etc/httpd/conf/extra/${pkgbase}_module.conf")
 
-  install -D -m755 ${srcdir}/build-apache/libs/libphp7.so ${pkgdir}/usr/lib/httpd/modules/${pkgbase}.so
-  install -D -m644 ${srcdir}/apache.conf ${pkgdir}/etc/httpd/conf/extra/${pkgbase}_module.conf
+    install -D -m755 build-apache/libs/libphp7.so ${pkgdir}/usr/lib/httpd/modules/lib${pkgbase}.so
+    install -D -m644 apache.conf ${pkgdir}/etc/httpd/conf/extra/${pkgbase}_module.conf
 }
 
 package_php71-fpm() {
-  pkgdesc='FastCGI Process Manager for PHP'
-  provides=('php-fpm')
-  depends=("$pkgbase" 'systemd')
-  backup=("${_optdir#/}etc/php/php-fpm.conf" "${_optdir#/}etc/php/php-fpm.d/www.conf")
-  options=('!emptydirs')
+    pkgdesc='FastCGI Process Manager for PHP'
+    depends=("${pkgbase}" 'systemd')
+    backup=("etc/${pkgbase}/php-fpm.conf" "etc/${pkgbase}/php-fpm.d/php-fpm.conf")
+    options=('!emptydirs')
 
-  cd ${srcdir}/build
-  make -j1 INSTALL_ROOT=${pkgdir} install-fpm
-  install -D -m644 sapi/fpm/php-fpm.service ${pkgdir}/usr/lib/systemd/system/php71-fpm.service
-  install -D -m644 ${srcdir}/php-fpm.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/php71-fpm.conf
+    cd build
+    make INSTALL_ROOT=${pkgdir} install-fpm
+    cd ..
+    install -D -m644 build/sapi/fpm/php-fpm.service ${pkgdir}/usr/lib/systemd/system/${pkgbase}-fpm.service
+    install -D -m644 php-fpm.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${pkgbase}-fpm.conf
 }
 
 package_php71-embed() {
-  pkgdesc='Embedded PHP SAPI library'
-  provides=('php-embed')
-  depends=("$pkgbase" 'libsystemd')
-  options=('!emptydirs')
+    pkgdesc='Embedded PHP SAPI library'
+    depends=("${pkgbase}")
+    provides=("${pkgbase}-embed=$pkgver")
+    options=('!emptydirs')
 
-  cd ${srcdir}/build
-  make -j1 INSTALL_ROOT=${pkgdir} PHP_SAPI=embed install-sapi
+    cd build
+    make INSTALL_ROOT=${pkgdir} PHP_SAPI=embed install-sapi
+    mv ${pkgdir}/usr/lib/libphp7.so ${pkgdir}/usr/lib/libphp-${_pkgver}.so
 }
 
 package_php71-phpdbg() {
-  pkgdesc='Interactive PHP debugger'
-  provides=('php-phpdbg')
-  depends=("$pkgbase")
-  options=('!emptydirs')
+    pkgdesc='Interactive PHP debugger'
+    depends=("${pkgbase}")
+    provides=("${pkgbase}-phpdbg=$pkgver")
+    options=('!emptydirs')
 
-  cd ${srcdir}/build-phpdbg
-  make -j1 INSTALL_ROOT=${pkgdir} install-phpdbg
+    cd build-phpdbg
+    make INSTALL_ROOT=${pkgdir} install-phpdbg
 }
 
 package_php71-dblib() {
-  pkgdesc='dblib module for PHP'
-  provides=('php-dblib')
-  depends=("$pkgbase" 'freetds')
+    pkgdesc='dblib module for PHP'
+    depends=("${pkgbase}")
+    provides=("${pkgbase}-dblib=$pkgver")
 
-  install -D -m755 ${srcdir}/build/modules/pdo_dblib.so ${pkgdir}${_optdir}/usr/lib/php/modules/pdo_dblib.so
+    install -D -m755 build/modules/pdo_dblib.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_dblib.so
 }
 
 package_php71-enchant() {
-  pkgdesc='enchant module for PHP'
-  provides=('php-enchant')
-  depends=("$pkgbase" 'enchant')
+    pkgdesc='enchant module for PHP'
+    depends=("${pkgbase}" 'enchant')
+    provides=("${pkgbase}-enchant=$pkgver")
 
-  install -D -m755 ${srcdir}/build/modules/enchant.so ${pkgdir}${_optdir}/usr/lib/php/modules/enchant.so
+    install -D -m755 build/modules/enchant.so ${pkgdir}/usr/lib/${pkgbase}/modules/enchant.so
 }
 
 package_php71-gd() {
-  pkgdesc='gd module for PHP'
-  provides=('php-gd')
-  depends=("$pkgbase" 'gd')
+    pkgdesc='gd module for PHP'
+    depends=("${pkgbase}" 'gd')
+    provides=("${pkgbase}-gd=$pkgver")
 
-  install -D -m755 ${srcdir}/build/modules/gd.so ${pkgdir}${_optdir}/usr/lib/php/modules/gd.so
+    install -D -m755 build/modules/gd.so ${pkgdir}/usr/lib/${pkgbase}/modules/gd.so
 }
 
 package_php71-imap() {
-  pkgdesc='imap module for PHP'
-  provides=('php-imap')
-  depends=("$pkgbase" 'c-client')
+    pkgdesc='imap module for PHP'
+    depends=("${pkgbase}" 'c-client')
+    provides=("${pkgbase}-imap=$pkgver")
 
-  install -D -m755 ${srcdir}/build/modules/imap.so ${pkgdir}${_optdir}/usr/lib/php/modules/imap.so
+    install -D -m755 build/modules/imap.so ${pkgdir}/usr/lib/${pkgbase}/modules/imap.so
 }
 
 package_php71-intl() {
-  pkgdesc='intl module for PHP'
-  provides=('php-intl')
-  depends=("$pkgbase" 'icu')
+    pkgdesc='intl module for PHP'
+    depends=("${pkgbase}" 'icu')
+    provides=("${pkgbase}-intl=$pkgver")
 
-  install -D -m755 ${srcdir}/build/modules/intl.so ${pkgdir}${_optdir}/usr/lib/php/modules/intl.so
+    install -D -m755 build/modules/intl.so ${pkgdir}/usr/lib/${pkgbase}/modules/intl.so
 }
 
 package_php71-mcrypt() {
-  pkgdesc='mcrypt module for PHP'
-  provides=('php-mcrypt')
-  depends=("$pkgbase" 'libmcrypt' 'libtool')
+    pkgdesc='mcrypt module for PHP'
+    depends=("${pkgbase}" 'libmcrypt' 'libltdl')
+    provides=("${pkgbase}-mcrypt=$pkgver")
 
-  install -D -m755 ${srcdir}/build/modules/mcrypt.so ${pkgdir}${_optdir}/usr/lib/php/modules/mcrypt.so
+    install -D -m755 build/modules/mcrypt.so ${pkgdir}/usr/lib/${pkgbase}/modules/mcrypt.so
 }
 
 package_php71-odbc() {
-  pkgdesc='ODBC modules for PHP'
-  provides=('php-odbc')
-  depends=("$pkgbase" 'unixodbc')
+    pkgdesc='ODBC modules for PHP'
+    depends=("${pkgbase}" 'unixodbc')
+    provides=("${pkgbase}-odbc=$pkgver")
 
-  install -D -m755 ${srcdir}/build/modules/odbc.so ${pkgdir}${_optdir}/usr/lib/php/modules/odbc.so
-  install -D -m755 ${srcdir}/build/modules/pdo_odbc.so ${pkgdir}${_optdir}/usr/lib/php/modules/pdo_odbc.so
+    install -D -m755 build/modules/odbc.so ${pkgdir}/usr/lib/${pkgbase}/modules/odbc.so
+    install -D -m755 build/modules/pdo_odbc.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_odbc.so
 }
 
 package_php71-pgsql() {
-  pkgdesc='PostgreSQL modules for PHP'
-  provides=('php-pgsql')
-  depends=("$pkgbase" 'postgresql-libs')
+    pkgdesc='PostgreSQL modules for PHP'
+    depends=("${pkgbase}" 'postgresql-libs')
+    provides=("${pkgbase}-pgsql=$pkgver")
 
-  install -D -m755 ${srcdir}/build/modules/pgsql.so ${pkgdir}${_optdir}/usr/lib/php/modules/pgsql.so
-  install -D -m755 ${srcdir}/build/modules/pdo_pgsql.so ${pkgdir}${_optdir}/usr/lib/php/modules/pdo_pgsql.so
+    install -D -m755 build/modules/pgsql.so ${pkgdir}/usr/lib/${pkgbase}/modules/pgsql.so
+    install -D -m755 build/modules/pdo_pgsql.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_pgsql.so
 }
 
 package_php71-pspell() {
-  pkgdesc='pspell module for PHP'
-  provides=('php-pspell')
-  depends=("$pkgbase" 'aspell')
+    pkgdesc='pspell module for PHP'
+    depends=("${pkgbase}" 'aspell')
+    provides=("${pkgbase}-pspell=$pkgver")
 
-  install -D -m755 ${srcdir}/build/modules/pspell.so ${pkgdir}${_optdir}/usr/lib/php/modules/pspell.so
+    install -D -m755 build/modules/pspell.so ${pkgdir}/usr/lib/${pkgbase}/modules/pspell.so
 }
 
 package_php71-snmp() {
-  pkgdesc='snmp module for PHP'
-  provides=('php-snmp')
-  depends=("$pkgbase" 'net-snmp')
+    pkgdesc='snmp module for PHP'
+    depends=("${pkgbase}" 'net-snmp')
+    provides=("${pkgbase}-snmp=$pkgver")
 
-  install -D -m755 ${srcdir}/build/modules/snmp.so ${pkgdir}${_optdir}/usr/lib/php/modules/snmp.so
+    install -D -m755 build/modules/snmp.so ${pkgdir}/usr/lib/${pkgbase}/modules/snmp.so
 }
 
 package_php71-sqlite() {
-  pkgdesc='sqlite module for PHP'
-  provides=('php-sqlite')
-  depends=("$pkgbase" 'sqlite')
+    pkgdesc='sqlite module for PHP'
+    depends=("${pkgbase}" 'sqlite')
+    provides=("${pkgbase}-sqlite=$pkgver")
 
-  install -D -m755 ${srcdir}/build/modules/sqlite3.so ${pkgdir}${_optdir}/usr/lib/php/modules/sqlite3.so
-  install -D -m755 ${srcdir}/build/modules/pdo_sqlite.so ${pkgdir}${_optdir}/usr/lib/php/modules/pdo_sqlite.so
+    install -D -m755 build/modules/sqlite3.so ${pkgdir}/usr/lib/${pkgbase}/modules/sqlite3.so
+    install -D -m755 build/modules/pdo_sqlite.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_sqlite.so
 }
 
 package_php71-tidy() {
-  pkgdesc='tidy module for PHP'
-  provides=('php-tidy')
-  depends=("$pkgbase" 'tidy')
+    pkgdesc='tidy module for PHP'
+    depends=("${pkgbase}" 'tidyhtml')
+    provides=("${pkgbase}-tidy=$pkgver")
 
-  install -D -m755 ${srcdir}/build/modules/tidy.so ${pkgdir}${_optdir}/usr/lib/php/modules/tidy.so
+    install -D -m755 build/modules/tidy.so ${pkgdir}/usr/lib/${pkgbase}/modules/tidy.so
 }
 
 package_php71-xsl() {
-  pkgdesc='xsl module for PHP'
-  provides=('php-xsl')
-  depends=("$pkgbase" 'libxslt')
+    pkgdesc='xsl module for PHP'
+    depends=("${pkgbase}" 'libxslt')
+    provides=("${pkgbase}-xsl=$pkgver")
 
-  install -D -m755 ${srcdir}/build/modules/xsl.so ${pkgdir}${_optdir}/usr/lib/php/modules/xsl.so
+    install -D -m755 build/modules/xsl.so ${pkgdir}/usr/lib/${pkgbase}/modules/xsl.so
 }

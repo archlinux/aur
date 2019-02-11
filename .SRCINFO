@@ -1,13 +1,13 @@
 pkgbase = php71
-	pkgver = 7.1.16
+	pkgdesc = A general-purpose scripting language that is especially suited to web development (old stable 7.0 series)
+	pkgver = 7.1.26
 	pkgrel = 1
 	url = http://www.php.net
+	arch = i686
 	arch = x86_64
 	license = PHP
-	checkdepends = procps-ng
 	makedepends = apache
 	makedepends = aspell
-	makedepends = c-client
 	makedepends = db
 	makedepends = enchant
 	makedepends = gd
@@ -27,20 +27,33 @@ pkgbase = php71
 	makedepends = postfix
 	makedepends = freetds
 	makedepends = pcre
-	source = https://php.net/distributions/php-7.1.16.tar.xz
+	makedepends = c-client
+	makedepends = tidyhtml
+	source = https://php.net/distributions/php-7.1.26.tar.xz
+	source = https://php.net/distributions/php-7.1.26.tar.xz.asc
 	source = apache.patch
 	source = apache.conf
+	source = enchant-2.patch
+	source = freetype2.patch
 	source = php-fpm.patch
 	source = php-fpm.tmpfiles
 	source = php.ini.patch
-	source = enchant-2.patch
-	sha512sums = 98e96f06a4912cfa6926be2f292ce7120ca893c9b779b2efef4120c1df3580fa427cd58f5e4977edb01a0ae3b85660d6ca79b2bd79b6cd830cd77f6c6588b5ea
-	sha512sums = 65ea5cb38c1fc1874b2a4d08bc52443f9ed5dcc92cf99023a74292c78f9074516296f56c768f7efa8a1f0838feac47b356d3da6fdb1199419bebec3a93204ae6
-	sha512sums = fc3d711033c8b7ead910826d7c0d4479b481fa9d84c3147b1d33ef9b1e3d3d073a8d17a7c7f66db30d710be1c9b17d2b5536a74a4f05c4ff88b9339e95dd244a
-	sha512sums = ef2724cedec46a6955355fc75406efa2895545f2ebcdfcee06ce6f3c9a20f8348a291ac78ab1e384b703095d317f59504b787f21074f841c45e53a98955af0c1
-	sha512sums = 209a8b2f9e2e25887c86e126c2761aae329e2bf9456a5de735f3ae264bd2be21e7646cc1954c1417e4c74f8d2d6b0f6081aa74a5af48f6b97484bab0d4e72fcf
-	sha512sums = 6cad4077ae1401b2b5395518ffb609055c5591710f141b90cc38c77bc16837d2f1bf7a161c4e64a33eb64b4e48bb3c54f88fcf830c30789d33d8e5cfcd3119db
-	sha512sums = 89993be67988f6db09e1102214a41fdb7223274bc6ca71f1defc5fe9548d832485f7133b8ba82860f04da00c7f655d701c7550460c0172a2a2d31ef3f3f96038
+	source = php-icu-1100-Utilize-the-recommended-way-to-handle-the-icu-namespace.patch
+	source = php-icu-1101-Simplify-namespace-access.patch
+	validpgpkeys = A917B1ECDA84AEC2B568FED6F50ABC807BD5DCD0
+	validpgpkeys = 528995BFEDFBA7191D46839EF9BA0ADA31CBD89E
+	validpgpkeys = 1729F83938DA44E27BA0F4D3DBDB397470D12172
+	sha512sums = 3c80dce2d5dcbf6f253ca4ca4e4ce01fdd3a3d31a6e6045f539fefadc1ea3c391d4d4995600a4ff758ab0361e0ec2244e2eaa6591ecb3e9b8e8a9c44f67a5b32
+	sha512sums = 63335127162972b311f4fe5b016471e699056894aebe6cde2cb908b4a345e328dca4eefbe5c1466642d5fe9b47f19e6ed48be4ca14663378cc15d1d02c57a23c
+	sha512sums = f5e5431993c2e0c1806c4edf392030d0b605f4b3c4cebec036e810ff771b2327983f347221735673506e2c91ce2e18ad37ab7600261b684fe29491206171b4f3
+	sha512sums = 30cdc281c6e288cf8a0bf58a0ad74ad5b4e8205d2b0b6ab465fad97d810f7bfae4581ad836712998e834d2e90d38cacd22f19bb01e77fc4c9d200d95613fc669
+	sha512sums = 2d5f3aa71ce7d8da43f0f683f81b06258e3a0d95df4807a8acac91ff89fbe60484ef97856a908bce625b1610d0004767a6a8c622246086afe2f2d464977088b5
+	sha512sums = a664b69aea8c21c50c852f918515d9fe1a931d7f88ec77ec86a20810266515745430d89513ee2e0bb301a29f1fc7ab0d2634076830b4da8ea1e47467fb658678
+	sha512sums = 62d85a59e3dd649caeb04a6b7e3fc94e99a2f03e4357c69697bb187bf1dba205021fe492c5beee7cf2156b3fbd7f447e74a01ed2e7f5fd7b3edc9a77582e89c7
+	sha512sums = fde017c6382d687b80d660253cbe5d581ca886fee0d762bf519b245c6e39677194be542ec26c71c81d104422b444a0fdadd92ac1a17e9ea1e6ec34bfb204ca7d
+	sha512sums = b6ff1c8575c7564ede17ec8c959141a065a9c4e3cba059a1138b9ecc85f23632d7e5980d65742f7fc1ce404ce613f7abb2f5f7a45039d606c9c590ccf3a2301d
+	sha512sums = 70c859feff58650ff4a291b1725bce8f290ac6d92cacc4420d3ead5cbbdbcf567cd0ed4d79fdd8b0435cf6833f7b50fff798b2fae274c5fb1bb37a0984a45f9d
+	sha512sums = 33d40f3ae500cf583519ecfa271e36d727c38ff4ea9547d3d2c4d51c9fadd317ed614a048077ebdb116e3c84c11db95e6455cdfc80d092d217d070c98af56525
 
 pkgname = php71
 	pkgdesc = A general-purpose scripting language that is especially suited to web development
@@ -48,119 +61,115 @@ pkgname = php71
 	depends = curl
 	depends = libzip
 	depends = pcre
-	provides = php=7.1.16
-	backup = opt/php71etc/php/php.ini
+	provides = php=7.1.26
+	backup = etc/php71/php.ini
 
 pkgname = php71-cgi
 	pkgdesc = CGI and FCGI SAPI for PHP
 	depends = php71
-	provides = php-cgi
+	provides = php-cgi=7.1.26
 
 pkgname = php71-apache
 	pkgdesc = Apache SAPI for PHP
 	depends = php71
 	depends = apache
-	provides = php-apache
-	backup = opt/php71etc/httpd/conf/extra/php7_module.conf
+	backup = etc/httpd/conf/extra/php71_module.conf
 
 pkgname = php71-fpm
 	pkgdesc = FastCGI Process Manager for PHP
 	depends = php71
 	depends = systemd
-	provides = php-fpm
 	options = !emptydirs
-	backup = opt/php71etc/php/php-fpm.conf
-	backup = opt/php71etc/php/php-fpm.d/www.conf
+	backup = etc/php71/php-fpm.conf
+	backup = etc/php71/php-fpm.d/php-fpm.conf
 
 pkgname = php71-embed
 	pkgdesc = Embedded PHP SAPI library
 	depends = php71
-	depends = libsystemd
-	provides = php-embed
+	provides = php71-embed=7.1.26
 	options = !emptydirs
 
 pkgname = php71-phpdbg
 	pkgdesc = Interactive PHP debugger
 	depends = php71
-	provides = php-phpdbg
+	provides = php71-phpdbg=7.1.26
 	options = !emptydirs
 
 pkgname = php71-dblib
 	pkgdesc = dblib module for PHP
 	depends = php71
-	depends = freetds
-	provides = php-dblib
+	provides = php71-dblib=7.1.26
 
 pkgname = php71-enchant
 	pkgdesc = enchant module for PHP
 	depends = php71
 	depends = enchant
-	provides = php-enchant
+	provides = php71-enchant=7.1.26
 
 pkgname = php71-gd
 	pkgdesc = gd module for PHP
 	depends = php71
 	depends = gd
-	provides = php-gd
+	provides = php71-gd=7.1.26
 
 pkgname = php71-imap
 	pkgdesc = imap module for PHP
 	depends = php71
 	depends = c-client
-	provides = php-imap
+	provides = php71-imap=7.1.26
 
 pkgname = php71-intl
 	pkgdesc = intl module for PHP
 	depends = php71
 	depends = icu
-	provides = php-intl
+	provides = php71-intl=7.1.26
 
 pkgname = php71-mcrypt
 	pkgdesc = mcrypt module for PHP
 	depends = php71
 	depends = libmcrypt
-	depends = libtool
-	provides = php-mcrypt
+	depends = libltdl
+	provides = php71-mcrypt=7.1.26
 
 pkgname = php71-odbc
 	pkgdesc = ODBC modules for PHP
 	depends = php71
 	depends = unixodbc
-	provides = php-odbc
+	provides = php71-odbc=7.1.26
 
 pkgname = php71-pgsql
 	pkgdesc = PostgreSQL modules for PHP
 	depends = php71
 	depends = postgresql-libs
-	provides = php-pgsql
+	provides = php71-pgsql=7.1.26
 
 pkgname = php71-pspell
 	pkgdesc = pspell module for PHP
 	depends = php71
 	depends = aspell
-	provides = php-pspell
+	provides = php71-pspell=7.1.26
 
 pkgname = php71-snmp
 	pkgdesc = snmp module for PHP
 	depends = php71
 	depends = net-snmp
-	provides = php-snmp
+	provides = php71-snmp=7.1.26
 
 pkgname = php71-sqlite
 	pkgdesc = sqlite module for PHP
 	depends = php71
 	depends = sqlite
-	provides = php-sqlite
+	provides = php71-sqlite=7.1.26
 
 pkgname = php71-tidy
 	pkgdesc = tidy module for PHP
 	depends = php71
-	depends = tidy
-	provides = php-tidy
+	depends = tidyhtml
+	provides = php71-tidy=7.1.26
 
 pkgname = php71-xsl
 	pkgdesc = xsl module for PHP
 	depends = php71
 	depends = libxslt
-	provides = php-xsl
+	provides = php71-xsl=7.1.26
 

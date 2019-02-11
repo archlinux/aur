@@ -1,18 +1,13 @@
 --- php.ini-production.orig
 +++ php.ini-production
-@@ -733,7 +733,7 @@
- 
+@@ -734,5 +734,5 @@
  ; Directory in which the loadable extensions (modules) reside.
  ; http://php.net/extension-dir
 -; extension_dir = "./"
-+extension_dir = "/opt/php71/usr/lib/php/modules/"
++extension_dir = "/usr/lib/php71/modules/"
  ; On windows:
  ; extension_dir = "ext"
- 
-@@ -883,47 +883,44 @@
- ; If you only provide the name of the extension, PHP will look for it in its
- ; default extension directory.
- ;
+@@ -886,41 +886,38 @@
 -; Windows Extensions
 -; Note that many DLL files are located in the extensions/ (PHP 4) ext/ (PHP 5+)
 -; extension folders as well as the separate PECL DLL download (PHP 5+).
@@ -92,6 +87,3 @@
 +;extension=xmlrpc.so
 +;extension=xsl.so
 +extension=zip.so
- 
- ;;;;;;;;;;;;;;;;;;;
- ; Module Settings ;

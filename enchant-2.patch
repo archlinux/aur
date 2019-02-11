@@ -1,5 +1,5 @@
---- php-7.1.13/ext/enchant/config.m4.orig	2018-01-03 02:32:29.000000000 +0000
-+++ php-7.1.13/ext/enchant/config.m4	2018-01-21 22:10:03.788875780 +0000
+--- ext/enchant/config.m4	2018-01-02 09:50:14.000000000 +0100
++++ ext/enchant/config.m4.new	2018-02-01 12:13:28.801708953 +0100
 @@ -14,9 +14,9 @@
  	    ENCHANT_SEARCH_DIRS="/usr/local /usr"
  	fi
@@ -21,8 +21,8 @@
  	PHP_ADD_INCLUDE($ENCHANT_INCDIR)
  	PHP_CHECK_LIBRARY(enchant, enchant_broker_set_param,
  	[
---- php-7.1.13/configure.orig	2018-01-21 22:03:51.494656374 +0000
-+++ php-7.1.13/configure	2018-01-21 22:12:35.932571143 +0000
+--- configure	2018-01-02 09:51:27.000000000 +0100
++++ configure.new	2018-02-01 12:16:17.950382811 +0100
 @@ -29838,9 +29838,9 @@
  	    ENCHANT_SEARCH_DIRS="/usr/local /usr"
  	fi
@@ -44,9 +44,9 @@
      if test -n "$ENCHANT_LIBDIR"; then
  
    if test "$ENCHANT_LIBDIR" != "/usr/$PHP_LIBDIR" && test "$ENCHANT_LIBDIR" != "/usr/lib"; then
---- php-7.2.1/ext/enchant/enchant.c.orig	2018-01-02 22:36:05.000000000 +0000
-+++ php-7.2.1/ext/enchant/enchant.c	2018-01-21 22:34:50.205791491 +0000
-@@ -741,7 +741,7 @@
+--- ext/enchant/enchant.c	2018-01-02 09:50:14.000000000 +0100
++++ ext/enchant/enchant.c.new	2018-02-01 12:19:00.228985343 +0100
+@@ -745,7 +745,7 @@
  			for (i = 0; i < n_sugg; i++) {
  				add_next_index_string(sugg, suggs[i]);
  			}
@@ -55,7 +55,7 @@
  		}
  
  
-@@ -798,7 +798,7 @@
+@@ -802,7 +802,7 @@
  			add_next_index_string(return_value, suggs[i]);
  		}
  
@@ -64,7 +64,7 @@
  	}
  }
  /* }}} */
-@@ -818,7 +818,7 @@
+@@ -822,7 +822,7 @@
  
  	PHP_ENCHANT_GET_DICT;
  
@@ -73,7 +73,7 @@
  }
  /* }}} */
  
-@@ -856,7 +856,7 @@
+@@ -860,7 +860,7 @@
  
  	PHP_ENCHANT_GET_DICT;
  

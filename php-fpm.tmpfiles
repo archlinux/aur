@@ -1,1 +1,1 @@
-d /opt/php71/run/php-fpm 755 root root
+d /run/php70-fpm 755 root root
