@@ -5,7 +5,7 @@
 pkgname=slimlock
 _basename=slim
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Unholy screen locker (without SLiM)"
 arch=('i686' 'x86_64')
 url="https://github.com/iwamatsu/slim"
@@ -19,12 +19,14 @@ source=(${_basename}-${pkgver}.tar.gz::"${url}/archive/v1.3.6.tar.gz"
         'slimlock.install'
         'slim.conf'
         'https://downloads.sourceforge.net/project/slim.berlios/slim-archlinux-simple.tar.gz'
-        'slim-1.3.6-fix-libslim-libraries.patch')
+        'slim-1.3.6-fix-libslim-libraries.patch'
+        'slimlock.pam')
 sha1sums=('9407ea2ee7b2ed649f17a8ddbf1f7b26a7c7b9fb'
           '16c89da06114d71df10ef63aa50745a73ec1852c'
           'e44f369bea03b3f9bbccc18240af51f1bd06e0da'
           '4bc79f730d398f748f8bbd0fbb365bec7ec524e9'
-          'bc77f03262d0bf423210aaf418d2452324b732ec')
+          'bc77f03262d0bf423210aaf418d2452324b732ec'
+          'd08da5a8e82dbba86d62faf48ffa4193dfc0abce')
 
 prepare() {
   mkdir -p ${_basename}-${pkgver}/build
@@ -61,6 +63,9 @@ package() {
     "${pkgdir}/usr/share/slim/themes/slim-archlinux-default/panel.png"
   install -D -m644 preview.png \
     "${pkgdir}/usr/share/slim/themes/slim-archlinux-default/preview.png"
+  
+  # install pam.d config - see https://bugs.archlinux.org/task/48650
+  install -Dm644 "${srcdir}/slimlock.pam" "${pkgdir}/eetc/pam.d/slimlock"
 }
 
 # vim:set ts=2 sw=2 et:
