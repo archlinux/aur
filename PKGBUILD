@@ -1,5 +1,4 @@
 pkgname=python-slixmpp-git
-_pkgbase=slixmpp
 pkgver=r2234.74ed50e6
 pkgrel=1
 pkgdesc="An XMPP library written for Python 3.5+ (SleekXMPP asyncio fork)"
@@ -16,12 +15,12 @@ source=("git://git.poez.io/slixmpp")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgbase"
+    cd slixmpp
     echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd "$srcdir/$_pkgbase"
+    cd slixmpp
     # make sure UNICODE characters in the README are parsed correctly
     export LC_CTYPE=en_US.utf-8
     python setup.py install --root="$pkgdir/" --optimize=1
