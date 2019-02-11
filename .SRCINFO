@@ -1,6 +1,6 @@
 pkgbase = poi
 	pkgdesc = Scalable KanColle browser and tool
-	pkgver = 10.2.0.0.g318a6f70
+	pkgver = 10.2.3.0.gac656509
 	pkgrel = 1
 	url = https://github.com/poooi/poi/
 	arch = any
