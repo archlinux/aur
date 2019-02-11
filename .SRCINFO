@@ -1,7 +1,7 @@
 pkgbase = writefreely-git
 	pkgdesc = Federated blogging from write.as
 	pkgver = v0.8.1_16_g16c856ec2757
-	pkgrel = 1
+	pkgrel = 2
 	url = https://writefreely.org/
 	install = writefreely.install
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = writefreely-git
 	makedepends = go>=1.11
 	makedepends = go-bindata
 	makedepends = sqlite
+	makedepends = nodejs-less
+	makedepends = nodejs-less-plugin-clean-css
 	depends = glibc
 	optdepends = sqlite: For SQLite support,
 	optdepends = mariadb: For MariaDB support
