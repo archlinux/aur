@@ -123,6 +123,7 @@ case ${_piver} in
 2)
   _toolchain_name=armv7-rpi2-linux-gnueabihf
   _toolchain="/opt/${_toolchain_name}/bin/${_toolchain_name}-"
+  # eats shit when linking artriculate with ltcg
   #_toolchain_name=arm-cortexa9_neon-linux-gnueabihf
   #_toolchain="/opt/x-tools/${_toolchain_name}/bin/${_toolchain_name}-"
   #_mkspec="linux-rpi${_piver}-vc4-g++"
@@ -331,6 +332,7 @@ finish() {
 }
 
 adjust_bin_dir() {
+  adjust_src_dir
   if [[ -n ${_srcdir} ]]; then
     _bindir="${_srcdir}"
   else
@@ -369,7 +371,6 @@ build() {
   export PATH=${startdir}:${PATH}
 
   _srcdir="${srcdir}/${_source_package_name}"
-  adjust_src_dir
   adjust_bin_dir
 
   local _basedir="${_srcdir}/qtbase"
