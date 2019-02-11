@@ -1,6 +1,6 @@
-# $Id$
-# Maintainer: Jan de Groot <jgc@archlinux.org>
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Que Quotion <quequotion@bugmenot.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Link Dupont <link@subpop.net>
 
