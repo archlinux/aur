@@ -2,21 +2,21 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=java-commons-collections
-pkgver=4.1
+pkgver=4.3
 pkgrel=1
 pkgdesc='Implementations of common collections'
 arch=('any')
 url='http://commons.apache.org/collections/'
 license=('APACHE')
 depends=(java-runtime)
-makedepends=(apache-ant junit)
+makedepends=(maven)
 source=("http://www.apache.org/dist/commons/collections/source/commons-collections4-${pkgver}-src.tar.gz")
-sha512sums=('c5666f41b68c9fdba3731730595616b16f98579c077cf047f421a46729b5a65476a8707125a2c0b0c6c024ca94df8c2633123bd99e705149fcb1afadcd3bf68b')
+sha512sums=('424171ac178ad2f5d7c2d9cc6bd00ad091e50a82a24da998b6c45d0a91d6c847553298480d10d3c177ebfcfbad23d139a9ba5cd182ae021ae463955b9314d4c4')
 
 build() {
   cd "${srcdir}/commons-collections4-${pkgver}-src"
 
-  ant jar
+  mvn package
 }
 
 package() {
