@@ -1,7 +1,7 @@
 # Maintainer: marazmista <marazmista@gmail.com>
 
 pkgname=radeon-profile-git
-pkgver=20190127.r9.ged1a23f
+pkgver=20190211.r0.g52f3ee3
 pkgrel=1
 pkgdesc="App for display info about radeon card"
 url="http://github.com/marazmista/radeon-profile"
@@ -30,7 +30,7 @@ build() {
 cd "$srcdir/radeon-profile/radeon-profile"
 
 lrelease radeon-profile.pro
-qmake-qt5
+qmake-qt5 QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" CONFIG+=silent
 make
 }
 
