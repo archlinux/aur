@@ -34,7 +34,6 @@ package_bcc() {
 	optdepends=('bcc-tools: Python utilites using the BCC library'
 		'python-bcc: Python 3 bindings for BCC'
 		'python2-bcc: Python 2 bindings for BCC')
-	makedepends=('cmake' 'clang>=3.7.0' 'llvm>=3.7.0' 'flex' 'bison')
 	provides=('bcc' 'libbcc')
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/build"
@@ -70,7 +69,6 @@ package_python-bcc() {
 	depends=('bcc' 'python')
 	optdepends=('python-netaddr2: Network address representation and manipulation'
 		'python-pyroute2: Netlink and Linux network configuration')
-	makedepends=('cmake')
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/build"
 
@@ -92,7 +90,6 @@ package_python2-bcc() {
 	depends=('bcc' 'python2')
 	optdepends=('python2-netaddr2: Network address representation and manipulation'
 		'python2-pyroute2: Netlink and Linux network configuration')
-	makedepends=('cmake')
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/build"
 
