@@ -29,7 +29,5 @@ build() {
 
 package() {
     cd slixmpp
-    # make sure UNICODE characters in the README are parsed correctly
-    export LC_CTYPE=en_US.utf-8
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
