@@ -1,7 +1,7 @@
 pkgname=cairo-ubuntu
 _realpkg=cairo
-pkgver=1.15.12
-pkgrel=4
+pkgver=1.16.0
+pkgrel=2
 pkgdesc="2D graphics library with support for multiple output devices (with ubuntu patches)"
 url="https://cairographics.org/"
 arch=(x86_64)
@@ -10,9 +10,8 @@ license=(LGPL MPL)
 conflicts=("cairo")
 depends=(libpng libxrender libxext fontconfig pixman glib2 lzo)
 makedepends=(librsvg gtk2 poppler-glib libspectre gtk-doc valgrind git)
-_commit=7149686456ec3c481fa1d3dbe76a0dab1e42b519  # tags/1.15.12^0
+_commit=3ad43122b21a3299dd729dc8462d6b8f7f01142d
 source=("cairo::git+https://anongit.freedesktop.org/git/cairo#commit=$_commit"
-        utf-8.diff
         cairo-make-lcdfilter-default.patch
         cairo-respect-fontconfig_pb.patch
         cairo-server-side-gradients.patch
@@ -26,8 +25,6 @@ pkgver() {
 prepare() {
   cd $_realpkg
 
-  # Fix non-UTF-8 sources giving gtk-doc trouble
-  patch -Np1 -i ../utf-8.diff
   patch -Np1 -i ../cairo-respect-fontconfig_pb.patch
   patch -Np1 -i ../cairo-server-side-gradients.patch
   patch -Np1 -i ../cairo-webkit-html5-fix.patch
@@ -69,7 +66,6 @@ package() {
 }
 
 md5sums=('SKIP'
-         '46b1abd8e6ff88107680d907b8c247fc'
          '1ec7560b9f05b5b0a6aca41cfdb8ea93'
          '080eac1ce1b2fa2beb550555d31d29b8'
          '4ffec1c86085da11bf9f56d6bf88fbdf'
