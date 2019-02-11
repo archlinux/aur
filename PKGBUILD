@@ -3,7 +3,7 @@ _pkgbase=${pkgbase%72}
 _realpkg=${pkgbase%}
 pkgname=("${pkgbase}"
          "${_realpkg}-"{cgi,apache,fpm,embed,phpdbg,dblib,enchant,gd,imap,intl,odbc,pgsql,pspell,snmp,sqlite,tidy,xsl}"")
-pkgver=7.2.14
+pkgver=7.2.15
 pkgrel=1
 pkgdesc="php 7.2 compiled as to not conflict with mainline php"
 arch=('i686' 'x86_64')
@@ -343,7 +343,7 @@ package_php72-xsl() {
     install -D -m755 ${srcdir}/build/modules/xsl.so ${pkgdir}/usr/lib/${_realpkg}/modules/xsl.so
 }
 
-md5sums=('a003b586eba4c56f7814eca5f1e76cfb'
+md5sums=('2271549c2dadb4ef8cfe59e838bb0281'
          '13cda50a6a420d04ddc26935ded3164e'
          'b7d69762f7c045b3950d770e04db504c'
          '57342b2632c8a4a829f26e8f9985f3aa'
