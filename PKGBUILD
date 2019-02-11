@@ -6,7 +6,7 @@
 pkgname=ganttproject
 pkgver=2.8.10
 _build=r2364
-pkgrel=1
+pkgrel=2
 pkgdesc="A project scheduling application featuring gantt chart, resource management, calendaring."
 arch=('i686' 'x86_64')
 url="http://www.ganttproject.biz/"
@@ -32,4 +32,4 @@ package() {
 }
 
 md5sums=('aa04f3318403d6d3a0dbb2749f055942'
-         'da9eb5357f872c37e5f921f57501d36f')
+         '48414b17ae6d8c7ddc29d8e2094d86e5')
