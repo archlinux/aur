@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Originally, this script was used to copy the cache directories to .config/onelife
+# However, the cache directories changed, and now would require copying most of the game
+# data to .config/onelife. I (hopefully) temporarily changed the permissons on the 
+# directories the cache files are stored in
+# This script is mainly kept because it stores the settings in a user-writable area
+
+
 if readlink $0 > /dev/null; then
    DIR=$(dirname $(readlink $0))
 else
@@ -10,9 +17,6 @@ if ! [[ -d ~/.config/onelife/settings ]]; then
    mkdir -p ~/.config/onelife/settings >/dev/null || true
 fi
 
-## writeable stuff
-#copy cache directories so we don't have to build from scratch
-cp -rn /opt/onehouronelife/*Cache ~/.config/onelife/
 #copy settings directory
 cp -n /opt/onehouronelife/settings_default/* ~/.config/onelife/settings/
 

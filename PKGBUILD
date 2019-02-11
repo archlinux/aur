@@ -2,7 +2,7 @@
 # Contributor: bobpaul <aurpackage [at] bobpaul 'period' org>
 
 pkgname="onehouronelife-latest"
-pkgver=194.d_0ab301c4.o_89af19a8.m_1f584d6
+pkgver=198.d_05ab09d6.o_63907416.m_8b11922
 pkgrel=1
 epoch=
 pkgdesc="One Hour One Life game by Jason Rohrer. Builds the latest release tagged on github"
@@ -71,7 +71,7 @@ prepare() {
         git checkout -q ${_orev}
     else
         echo Checkout out OneLife_v$latestTaggedVersionA from OneLife repo
-        git checkout -q $latestTaggedVersionA
+        git checkout -q OneLife_v$latestTaggedVersionA
     fi
     _latestTaggedRevs=$(echo "${_latestTaggedRevs}.o_$(git rev-parse --short HEAD)")
     cd ..
@@ -86,7 +86,7 @@ prepare() {
         git checkout -q ${_mrev}
     else
         echo Checkout out OneLife_v$latestTaggedVersion from minorGems repo
-        git checkout -q $latestTaggedVersion
+        git checkout -q OneLife_v$latestTaggedVersion
     fi
     _latestTaggedRevs=$(echo "${_latestTaggedRevs}.m_$(git rev-parse --short HEAD)")
     cd ..
@@ -130,26 +130,26 @@ package() {
     install -Dm644 OneLife/no_copyright.txt                      "$pkgdir/usr/share/licenses/$instdir/LICENSE"
     install -Dm644 dataVersionNumber.txt                         "$pkgdir/usr/share/licenses/$instdir/"
     install -Dm755 OneLife/gameSource/OneLife                    "$pkgdir/opt/$instdir/OneLifeApp"
-    install -dm755 "$pkgdir/opt/$instdir/animations"
-    install -dm755 "$pkgdir/opt/$instdir/categories"
+    install -dm777 "$pkgdir/opt/$instdir/animations"
+    install -dm777 "$pkgdir/opt/$instdir/categories"
     install -dm755 "$pkgdir/opt/$instdir/graphics"
     install -dm755 "$pkgdir/opt/$instdir/ground"
     install -dm755 "$pkgdir/opt/$instdir/languages"
     install -dm755 "$pkgdir/opt/$instdir/music"
-    install -dm755 "$pkgdir/opt/$instdir/objects"
+    install -dm777 "$pkgdir/opt/$instdir/objects"
     install -dm755 "$pkgdir/opt/$instdir/otherSounds"
     install -dm755 "$pkgdir/opt/$instdir/settings_default"
     install -dm755 "$pkgdir/opt/$instdir/sounds"
-    install -dm755 "$pkgdir/opt/$instdir/sprites"
-    install -dm755 "$pkgdir/opt/$instdir/transitions"
-    install -Dm755 animations/*                                  "$pkgdir/opt/$instdir/animations"
-    install -Dm755 categories/*                                  "$pkgdir/opt/$instdir/categories"
+    install -dm777 "$pkgdir/opt/$instdir/sprites"
+    install -dm777 "$pkgdir/opt/$instdir/transitions"
+    install -Dm777 animations/*                                  "$pkgdir/opt/$instdir/animations"
+    install -Dm777 categories/*                                  "$pkgdir/opt/$instdir/categories"
     install -Dm755 ground/*                                      "$pkgdir/opt/$instdir/ground"
     install -Dm755 music/*                                       "$pkgdir/opt/$instdir/music"
-    install -Dm755 objects/*                                     "$pkgdir/opt/$instdir/objects"
+    install -Dm777 objects/*                                     "$pkgdir/opt/$instdir/objects"
     install -Dm755 sounds/*                                      "$pkgdir/opt/$instdir/sounds"
-    install -Dm755 sprites/*                                     "$pkgdir/opt/$instdir/sprites"
-    install -Dm755 transitions/*                                 "$pkgdir/opt/$instdir/transitions"
+    install -Dm777 sprites/*                                     "$pkgdir/opt/$instdir/sprites"
+    install -Dm777 transitions/*                                 "$pkgdir/opt/$instdir/transitions"
     install -Dm755 OneLife/gameSource/graphics/*                 "$pkgdir/opt/$instdir/graphics"
     install -Dm755 OneLife/gameSource/otherSounds/*              "$pkgdir/opt/$instdir/otherSounds"
     install -Dm755 OneLife/gameSource/settings/*                 "$pkgdir/opt/$instdir/settings_default"
@@ -161,4 +161,5 @@ package() {
     install -dm755 "$pkgdir/usr/local/bin/"
     install -m755  $startdir/onelife $pkgdir/opt/$instdir
     ln -s /opt/$instdir/onelife $pkgdir/usr/local/bin/onelife
+
 }
