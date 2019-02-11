@@ -9,7 +9,7 @@ pkgbase = galaxy2
 	depends = gtk3
 	options = !emptydirs
 	source = http://www.kornelix.net/downloads/tarballs/galaxy2-1.3.tar.gz
-	sha256sums = 5f00391a46cbab8f2fc3a374ea397a6b8b0b7695818e834b0cb1b84562f9bfee
+	sha256sums = 1e3692ff978f393fc1a29088fd96a4b50de4624bb35fc475fe9444d3141bda63
 
 pkgname = galaxy2
 

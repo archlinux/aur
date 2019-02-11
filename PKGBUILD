@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('gtk3')
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-sha256sums=('5f00391a46cbab8f2fc3a374ea397a6b8b0b7695818e834b0cb1b84562f9bfee')
+sha256sums=('1e3692ff978f393fc1a29088fd96a4b50de4624bb35fc475fe9444d3141bda63')
 options=('!emptydirs')
 
 build() {
