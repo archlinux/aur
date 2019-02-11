@@ -1,0 +1,17 @@
+pkgbase = dyndnswatch-git
+	pkgdesc = A simple, lightweight DynDNS watchdog
+	pkgver = r21.3b702d4
+	pkgrel = 1
+	url = https://github.com/coNQP/dyndnswatch
+	arch = any
+	license = GPLv3
+	license = MIT
+	makedepends = git
+	makedepends = python
+	depends = python
+	depends = python-docopt
+	source = dyndnswatch::git+https://github.com/coNQP/dyndnswatch.git
+	md5sums = SKIP
+
+pkgname = dyndnswatch-git
+
