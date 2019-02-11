@@ -2,7 +2,7 @@
 
 _pkgname=writefreely
 pkgname=writefreely-git
-pkgver=v0.8.1_0_ge5a00e00f578
+pkgver=v0.8.1_16_g16c856ec2757
 pkgrel=1
 pkgdesc='Federated blogging from write.as'
 arch=('x86_64')
@@ -37,15 +37,6 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
 
   patch -p1 <../64.patch
-
-  rm -rf go.mod
-  go mod init github.com/writeas/writefreely
-
-  # Temporary manual overrides:
-  go get -u github.com/ikeikeikeike/go-sitemap-generator@v1.0.1
-  go get -u github.com/writeas/monday@v0.0.0-20181024143321-54a7dd579219
-  go get -u github.com/writeas/saturday@v1.6.0
-  go mod tidy
 }
 
 build() {

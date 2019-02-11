@@ -1,6 +1,6 @@
 pkgbase = writefreely-git
 	pkgdesc = Federated blogging from write.as
-	pkgver = v0.8.1_0_ge5a00e00f578
+	pkgver = v0.8.1_16_g16c856ec2757
 	pkgrel = 1
 	url = https://writefreely.org/
 	install = writefreely.install
