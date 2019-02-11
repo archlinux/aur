@@ -1,14 +1,14 @@
 pkgbase = python-plac
 	pkgdesc = The smartest command line arguments parser in the world
-	pkgver = 0.9.6
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/micheles/plac
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://pypi.org/packages/source/p/plac/plac-0.9.6.tar.gz
-	sha256sums = ba3f719a018175f0a15a6b04e6cc79c25fd563d348aacd320c3644d2a9baf89b
+	source = https://pypi.org/packages/source/p/plac/plac-1.0.0.tar.gz
+	sha256sums = b03f967f535b3bf5a71b191fa5eb09872a5cfb1e3b377efc4138995e10ba36d7
 
 pkgname = python-plac
 	depends = python-setuptools
