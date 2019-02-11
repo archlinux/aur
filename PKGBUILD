@@ -1,6 +1,6 @@
 # Maintainer: Asger Hautop Drewsen <asgerdrewsen@gmail.com>
 pkgname=us_da-layout
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="US keyboard layout with level 3-4 æøå"
 arch=('any')

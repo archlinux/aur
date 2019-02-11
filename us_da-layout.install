@@ -1,3 +1,5 @@
+set -euo pipefail
+
 cd /usr/share/X11/xkb/rules
 
 post_install() {

@@ -1,4 +1,6 @@
 #!/bin/bash
+set -euo pipefail
+
 cd /usr/share/X11/xkb/rules
 
 if grep us_da evdev.xml > /dev/null; then
