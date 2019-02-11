@@ -2,7 +2,7 @@
 # Contributor: Andrew Panchenko <panchenkoac at gmail>
 
 pkgname=qmmp-plugin-pack-svn
-pkgver=1.1.1.svn.r6521
+pkgver=1.4.0.svn.r8701
 pkgrel=1
 pkgdesc="Qmmp Plugin Pack. (SVN Version)"
 arch=('i686' 'x86_64')
@@ -16,20 +16,26 @@ makedepends=('subversion'
              'libxmp'
              'libsamplerate'
              'taglib'
+             'libavutil.so'
+             'libavcodec.so'
+             'libswscale.so'
+             'libavformat.so'
+             'libswresample.so'
              )
 optdepends=('mpg123: alternative Mpeg-1-2-3 support'
             'taglib: Mpeg-1-2-3 tag support'
             'libxmp: support for chiptune formats (Amiga, Atari, ..)'
             'libsamplerate: Sample Rate Conversion'
+            'ffmpeg: ffmpeg engine support'
             )
 provides=('qmmp-plugin-pack')
 conflicts=('qmmp-plugin-pack')
-source=('qmmp-plugin-pack::svn+svn://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-plugin-pack-1.2')
+source=('qmmp-plugin-pack::svn+svn://svn.code.sf.net/p/qmmp-dev/code/trunk/qmmp-plugin-pack/')
 sha1sums=('SKIP')
 
 pkgver() {
   cd qmmp-plugin-pack
-  echo "$(cat qmmp-plugin-pack.pri | grep QMMP_PLUGIN_PACK_VERSION | cut -d ' ' -f3).svn.r$(svnversion)"
+  echo "$(cat qmmp-plugin-pack.pri | grep -m1 QMMP_PLUGIN_PACK_VERSION | cut -d ' ' -f3).svn.r$(svnversion)"
 }
 
 prepare() {
@@ -41,8 +47,9 @@ build() {
   cmake ../qmmp-plugin-pack \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_DIR=lib \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DUSE_FFAP=ON
+
   make
 }
 
