@@ -3,7 +3,7 @@
 # Contributor: Andrew Panchenko <panchenkoac at gmail>
 
 pkgname=qmmp-svn
-pkgver=1.1.1.svn.r6521
+pkgver=1.4.0.svn.r8701
 pkgrel=1
 pkgdesc="A Qt based audio-player. (SVN Version)"
 arch=('i686' 'x86_64')
@@ -75,12 +75,12 @@ optdepends=('qmmp-plugin-pack-svn: for mpg123, ffap and qtui plugin'
             )
 provides=('qmmp')
 conflicts=('qmmp')
-source=('qmmp::svn+svn://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-1.2')
-sha1sums=('SKIP')
+source=('qmmp::svn+http://svn.code.sf.net/p/qmmp-dev/code/trunk/qmmp/')
+sha256sums=('SKIP')
 
 pkgver() {
   cd qmmp
-  echo "$(cat qmmp.pri | grep QMMP_VERSION | cut -d ' ' -f3).svn.r$(svnversion)"
+  echo "$(cat qmmp.pri | grep -m1 QMMP_VERSION | cut -d ' ' -f3).svn.r$(svnversion)"
 }
 
 prepare() {
@@ -90,9 +90,10 @@ prepare() {
 build() {
   cd build
   cmake ../qmmp \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_DIR=lib
+
   make
 }
 
