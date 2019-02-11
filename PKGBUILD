@@ -112,6 +112,9 @@ prepare() {
 package() {
   cd "${_pkgname}"
 
+  # Cleanup a previous builds if any, since setuptools doesn't do it
+  rm -rf build
+
   # Python setup
   python setup.py install --root="${pkgdir}"/ --prefix=/usr --optimize=1 || return 1
 
