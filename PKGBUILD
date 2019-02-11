@@ -7,7 +7,8 @@ pkgdesc='Utilities for handling monitors, resolutions, wallpapers and timed wall
 arch=(x86_64)
 url='https://github.com/xyproto/monitor'
 license=(MIT)
-makedepends=(git go)
+depends=(wayland libx11)
+makedepends=(git go libxcursor libxmu xbitmaps xorgproto)
 source=("git+$url#tag=$pkgver")
 sha256sums=('SKIP')
 
@@ -21,6 +22,7 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" make -C $pkgname install
+  install -Dm644 $pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
