@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-ping-monitor-applet-git
+	pkgdesc = Ping monitor extension for Gnome-Shell
+	pkgver = 0.0.12.r1.ga9e15be
+	pkgrel = 1
+	url = http://github.com/anybotics/gnome-shell-ping-monitor-applet
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell>=3.3.90
+	depends = libgtop
+	depends = networkmanager
+	provides = gnome-shell-extension-ping-monitor-applet
+	source = gnome-shell-extension-ping-monitor-applet-git::git+http://github.com/anybotics/gnome-shell-ping-monitor-applet
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-ping-monitor-applet-git
+
