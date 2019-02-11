@@ -7,6 +7,7 @@ pkgbase = findwild
 	arch = x86_64
 	license = GPL3
 	depends = gtk3
+	options = !emptydirs
 	source = http://www.kornelix.net/downloads/tarballs/findwild-2.5.tar.gz
 	sha256sums = f46d056f5394c4d1fc45fdf42b426e1abcfdff858b7e1f60dedba69985845933
 
