@@ -4,7 +4,7 @@
 # Contributor: Grey Christoforo <my first name [at] my last name [dot] net>
 
 pkgname=cura-beta-git
-pkgver=4.0
+pkgver=r18273.14c361a29
 pkgrel=1
 _sdkver=6.0.0
 pkgdesc="A software solution for 3D printing aimed at RepRaps and the Ultimaker."
@@ -24,9 +24,14 @@ depends=('curaengine-beta-git'
 optdepends=('python-zeroconf: network printing support')
 makedepends=('cmake' 'git' 'qt5-tools')
 provides=('cura')
-conflicts=('cura' 'cura-beta')
-source=("git+https://github.com/Ultimaker/Cura#branch=${pkgver}")
-sha1sums=('SKIP')
+conflicts=('cura')
+source=("git+https://github.com/Ultimaker/Cura#branch=4.0")
+md5sums=('SKIP')
+
+pkgver(){
+  cd Cura
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 # Build order
 # arcus -> uranium -> curaengine -> libsavitar ->
