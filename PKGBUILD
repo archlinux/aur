@@ -13,7 +13,7 @@ url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(x86_64)
 license=(GPL custom)
 depends=(libsystemd expat)
-makedepends=(systemd xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive graphviz)
+makedepends=(systemd xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive graphviz libx11)
 _commit=d4f8423bbff9b3c5fca2d8009c28d1cff4652788  # tags/dbus-1.12.12^0
 source=("git+https://anongit.freedesktop.org/git/dbus/dbus#commit=$_commit")
 sha256sums=('SKIP')
