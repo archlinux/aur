@@ -3,7 +3,7 @@
 pkgname=cling-nightly-bin
 _pkgname=cling
 pkgver=0.5.20190123
-pkgrel=2
+pkgrel=3
 pkgdesc="Interactive C++ interpreter, built on the top of LLVM and Clang libraries"
 arch=("i686" "x86_64")
 url="https://root.cern.ch/cling"
@@ -23,6 +23,7 @@ sha256sums=(
     "d52e3b51bad24157f7513c2a2c06ab2b11b720e9b3bd0d721a66a91dae7ef2ff"
     "a9105b805411fddb0c7c829b9fecb85d0d200c9b49aaa0c1a510daa7796b72b4"
 )
+options=(!strip)
 
 package() {
     cd "$srcdir"
