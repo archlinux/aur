@@ -1,6 +1,6 @@
 pkgbase = omp
 	pkgdesc = Open-Source Music Player
-	pkgver = 0.1.0.2
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://openmusicplayer.com/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = omp
 	provides = omp
 	conflicts = omp
 	conflicts = omp-git
-	source = omp-0.1.0.2.tar.gz::https://github.com/TheWiseNoob/OMP/archive/0.1.0.2.tar.gz
+	source = omp-0.1.1.tar.gz::https://github.com/TheWiseNoob/OMP/archive/0.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = omp
