@@ -1,6 +1,6 @@
 # Maintainer: Boris Momcilovic <boris.momcilovic@gmail.com>
 pkgname=apache-flume-ng
-pkgver=1.6.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Distributed system for moving large amounts of log data.'
 arch=('any')
@@ -15,7 +15,7 @@ source=("http://www.eu.apache.org/dist//flume/${pkgver}/apache-flume-${pkgver}-b
 	"flume-ng.profile"
 	"flume-ng.service")
 
-md5sums=('defd21ad8d2b6f28cc0a16b96f652099'
+md5sums=('cc17aaa30cbd051eaa2cdbecd73c3bab'
          '4ee8391d354fb58817efb8ed1058405c'
          '9d1e8ab323df2d8dd747f27c51841c1a'
          '06ec3866251641e056534657b3d236e3')
