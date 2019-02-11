@@ -92,7 +92,7 @@ build() {
   cmake ../qmmp \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_DIR=lib
+    -DCMAKE_INSTALL_LIBDIR=lib
 
   make
 }
