@@ -15,7 +15,7 @@ depends=('php')
 makedepends=('composer' 'php-box')
 install=${pkgname}.install
 source=("$pkgname.install"
-        "https://github.com/drush-ops/${pkgname}/archive/$pkgver.tar.gz")
+        "https://github.com/drush-ops/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('e800601699e4b1ea0a0057fc91827b31fc8c5070f5014df2777396aabc7680ec'
             '1afe192987f86c9b8272ee1ecbfa5d1b9b2af3dc5093c40eb4fd2fa5fba11974')
 
