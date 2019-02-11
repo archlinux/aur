@@ -125,11 +125,11 @@ case ${_piver} in
   #_float=true
 ;;
 2)
-  _toolchain_name=armv7-rpi2-linux-gnueabihf
-  _toolchain="/opt/${_toolchain_name}/bin/${_toolchain_name}-"
+  #_toolchain_name=armv7-rpi2-linux-gnueabihf
+  #_toolchain="/opt/${_toolchain_name}/bin/${_toolchain_name}-"
   # eats shit when linking artriculate with ltcg
-  #_toolchain_name=arm-cortexa9_neon-linux-gnueabihf
-  #_toolchain="/opt/x-tools/${_toolchain_name}/bin/${_toolchain_name}-"
+  _toolchain_name=arm-cortexa9_neon-linux-gnueabihf
+  _toolchain="/opt/x-tools/${_toolchain_name}/bin/${_toolchain_name}-"
   #_mkspec="linux-rpi${_piver}-vc4-g++"
   #_use_mesa=true
 ;;

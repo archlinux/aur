@@ -1,0 +1,139 @@
+_piver=2
+_qmakepath=/opt/qt/qt-sdk-raspberry-pi2/bin/qmake
+_sysroot=/mnt/pi2
+_toolchain=/opt/x-tools/arm-cortexa9_neon-linux-gnueabihf/bin/arm-cortexa9_neon-linux-gnueabihf-
+_sdktool="/usr/lib/qtcreator/sdktool"
+_altsdktool="/usr/libexec/qtcreator/sdktool"
+_devicefamily="spuddrpi"
+_devicename="${_devicefamily}${_piver}"
+_familytext="Raspberry Pi"
+_devicetext="${_familytext} ${_piver}"
+
+if [[ -x ${_altsdktool} ]]; then
+    _sdktool=${_altsdktool}
+fi
+
+# ACHTUNG: this used to work without sudo when the Qt Creator dudes let you write to a user directory
+_sdktool="sudo ${_sdktool}"
+
+setup_toolchain() {
+    echo "Registering toolchain with Qt Creator"
+${_sdktool} addTC \
+    --id "${_devicename}-gcc" \
+    --language 1 \
+    --name "${_devicetext} toolchain" \
+    --path ${_toolchain}gcc \
+    --abi arm-linux-generic-elf-64bit \
+    --supportedAbis arm-linux-generic-elf-64bit
+
+${_sdktool} addTC \
+    --id "${_devicename}-g++" \
+    --language 2 \
+    --name "${_devicetext} toolchain" \
+    --path ${_toolchain}g++ \
+    --abi arm-linux-generic-elf-64bit \
+    --supportedAbis arm-linux-generic-elf-64bit
+
+    echo "Registering debugger with Qt Creator"
+${_sdktool} addDebugger \
+    --id "${_devicename}-gdb" \
+    --name "${_devicetext} gdb" \
+    --binary ${_toolchain}gdb \
+    --abis arm-linux-generic-elf-64bit \
+    --engine 1
+}
+
+remove_toolchain() {
+${_sdktool} rmTC \
+    --id "${_devicename}-gcc"
+
+${_sdktool} rmTC \
+    --id "${_devicename}-g++"
+
+${_sdktool} rmDebugger \
+    --id "${_devicename}-gdb"
+}
+
+remove_kit() {
+${_sdktool} rmQt \
+    --id "${_devicename}_qt"
+
+${_sdktool} rmKit \
+    --id "${_devicename}_kit"
+
+${_sdktool} rmDev \
+    --id "${_devicename}_device"
+}
+
+setup_kit() {
+  remove_toolchain
+  remove_kit
+  setup_toolchain
+ 
+    echo "Registering device with Qt Creator"
+${_sdktool} addDev \
+    --id "${_devicename}_device" \
+    --name "${_devicetext}" \
+    --host "qpi${_piver}.local" \
+    --uname "root" \
+    --password "root" \
+    --osType "GenericLinuxOsType" \
+    --type 0 \
+    --sshPort 22 \
+    --freePorts "10000-10100"
+
+    echo "Registering Qt install with Qt Creator"
+${_sdktool} addQt \
+    --id "${_devicename}_qt" \
+    --name "${_devicetext} Qt" \
+    --qmake ${_qmakepath} \
+    --type RemoteLinux.EmbeddedLinuxQt
+
+    echo "Creating Qt Creator Kit"
+${_sdktool} addKit \
+    --id "${_devicename}_kit" \
+    --name "${_devicetext} Kit" \
+    --debugger "${_devicename}_gdb" \
+    --devicetype GenericLinuxOsType \
+    --device "${_devicename}_device" \
+    --sysroot ${_sysroot} \
+    --toolchain "${_devicename}-g++" \
+    --qt "${_devicename}_qt" \
+    --mkspec "devices/linux-rpi${_piver}-g++" 
+}
+
+## arg 1:  the new package version
+pre_install() {
+    echo ""
+}
+
+## arg 1:  the new package version
+post_install() {
+  setup_kit
+}
+#post_install
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+    echo ""
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  setup_kit
+}
+#post_upgrade
+
+## arg 1:  the old package version
+pre_remove() {
+    echo ""
+}
+#pre_remove
+
+## arg 1:  the old package version
+post_remove() {
+  remove_kit
+}
+#post_remove
