@@ -1,7 +1,7 @@
 # Maintainer: Daniel Moch <daniel@danielmoch.com>
 _name=nncli
 pkgname=nncli-git
-pkgver=0.3.1.r12.g81f6c76
+pkgver=0.3.2.r14.g5f0d203
 pkgrel=1
 pkgdesc="NextCloud Notes Command Line Interface"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python'
   'python-requests'
   'python-appdirs'
   'python-click')
-makedepends=('flit' 'git' 'python-pip' 'python-sphinx')
+makedepends=('flit' 'git' 'python-pip' 'python-sphinx' 'python-sphinx-sitemap')
 checkdepends=('python-pytest'
               'python-pytest-cov'
               'python-pytest-mock'
