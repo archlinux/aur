@@ -2,26 +2,26 @@
 
 pkgbase=tinyemu
 pkgname=(tinyemu jslinux)
-pkgver=2018_09_23
-pkgrel=3
+pkgver=2019_02_10
+pkgrel=1
 pkgdesc='RISC-V system emulator'
-arch=('x86_64')
-groups=('risc-v')
+arch=(x86_64)
+groups=(risc-v)
 url='https://bellard.org/tinyemu/'
-license=('MIT')
-makedepends=('gendesk' 'setconf' 'sdl')
-source=('jslinux.sh'
-        "https://bellard.org/tinyemu/$pkgname-${pkgver//_/-}.tar.gz"
+license=(MIT)
+makedepends=(gendesk setconf sdl)
+source=("https://bellard.org/tinyemu/$pkgname-${pkgver//_/-}.tar.gz"
         'https://bellard.org/jslinux/buildroot-riscv64-xwin.cfg'
         'https://bellard.org/jslinux/bbl64-4.15.bin'
-        'http://roboticoverlords.org/risc-v.png')
+        'https://roboticoverlords.org/risc-v.png'
+        jslinux.sh)
 # risc-v.png is drawn by me, in mtPaint. CC0.
 # Link to a better icon is more than welcome! :)
-sha256sums=('f48f00a16613668b795d1c83333b948f75c4eda7e647ab7f509a306e4ac34e2a'
-            '9b58d5521df8356c3be09a520387d3e4adcb510cf8d2fd6bdd971287bd57d734'
-            '7d26b9a028d2c5ab70c8c7422fb02dd34f1185c80185629ef526b5cffa0d5db5'
+sha256sums=('0a2ded13a51bc3d6e69afd29c6a4709b327256ea36e562a5d9fa253cd224fa5b'
+            'f9eee1622553a24cd58a193ae7d0e5db30415e515d8c5e5d7f3f8c31e9627477'
             '81b7dc5671a457d4cdf85690efd5948b228a3f7e7788d0ade57b939f5f450ee1'
-            'e3da1fd27e0a12e7c8be082ec33e36133a4beb171a59f4e6cbfec33f8dd8160c')
+            'e3da1fd27e0a12e7c8be082ec33e36133a4beb171a59f4e6cbfec33f8dd8160c'
+            'f48f00a16613668b795d1c83333b948f75c4eda7e647ab7f509a306e4ac34e2a')
 
 prepare() {
   gendesk -n -f \
