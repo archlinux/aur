@@ -1,8 +1,8 @@
 pkgbase = mitmproxy
 	pkgdesc = SSL-capable man-in-the-middle HTTP proxy
 	pkgver = 4.0.4
-	pkgrel = 2
-	url = https://mitmproxy.org/
+	pkgrel = 3
+	url = https://mitmproxy.org
 	arch = any
 	license = MIT
 	checkdepends = python-asynctest
@@ -36,6 +36,8 @@ pkgbase = mitmproxy
 	conflicts = pathod
 	replaces = pathod
 	source = mitmproxy-4.0.4.tar.gz::https://github.com/mitmproxy/mitmproxy/archive/v4.0.4.tar.gz
+	source = https://github.com/mitmproxy/mitmproxy/commit/70777a1b6ed64af9cafcdef223a8a260ecc96864.patch
 	sha512sums = e08ea8b1c75a95b822c463625509037bbc8a979161cacaa1f0185f98df8d6d7e5400925365dbbe70d18751251b1005824f739a8cd035c0389f7b4aea562adfb3
+	sha512sums = 8e88f36e6ca8e5a245617ecd419dcaf7ee890a88283bd71d6b866e11e9ee51128d643c5c1d764b105d580fe44bc26ad8212ee676e46403d48bebe4c080552e2a
 
 pkgname = mitmproxy
