@@ -1,6 +1,6 @@
 pkgbase = euca2ools
 	pkgdesc = Command-line tools for interacting with Amazon EC2 and S3 API-compatible Web services using the REST/Query API.
-	pkgver = 3.2.2
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = http://www.eucalyptus.com
 	arch = any
@@ -13,11 +13,8 @@ pkgbase = euca2ools
 	depends = python2-requests
 	depends = rsync
 	backup = etc/euca2ools/euca2ools.ini
-	source = http://downloads.eucalyptus.com/software/euca2ools/3.2/source/euca2ools-3.2.2.tar.xz
-	source = http://downloads.eucalyptus.com/software/euca2ools/3.2/source/euca2ools-3.2.2.tar.xz.asc
-	validpgpkeys = 8639B2D211BB930D16A2D654BE264D09C1240596
-	sha256sums = dff1c4cb837b3b723ca782ae52a97a453cfeb1d4e1df938c92abd8532cb2de12
-	sha256sums = SKIP
+	source = euca2ools-3.4.1.tar.gz::https://github.com/eucalyptus/euca2ools/archive/v3.4.1.tar.gz
+	sha256sums = 98adeff07331147da869ffd7574bf69d6e720e28a6d20b608b9b4b646b851b75
 
 pkgname = euca2ools
 

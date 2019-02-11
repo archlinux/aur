@@ -4,7 +4,7 @@
 # Contributor: Andrew Hamilton
 
 pkgname=euca2ools
-pkgver=3.2.2
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Command-line tools for interacting with Amazon EC2 and S3 API-compatible Web services using the REST/Query API."
 arch=(any)
@@ -13,12 +13,8 @@ license=(custom)
 depends=('python2-six' 'python2-lxml' 'python2-progressbar' 'python2-requestbuilder' 'python2-requests' 'rsync')
 makedepends=('python2-setuptools')
 backup=('etc/euca2ools/euca2ools.ini')
-source=(http://downloads.eucalyptus.com/software/euca2ools/3.2/source/$pkgname-$pkgver.tar.xz{,.asc})
-sha256sums=('dff1c4cb837b3b723ca782ae52a97a453cfeb1d4e1df938c92abd8532cb2de12'
-            'SKIP')
-# c1240596: HP Helion Eucalyptus (release key) <euca-security@hp.com>
-# https://www.eucalyptus.com/resources/security/keys
-validpgpkeys=('8639B2D211BB930D16A2D654BE264D09C1240596')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/eucalyptus/euca2ools/archive/v$pkgver.tar.gz")
+sha256sums=('98adeff07331147da869ffd7574bf69d6e720e28a6d20b608b9b4b646b851b75')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
