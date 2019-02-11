@@ -1,8 +1,8 @@
 # Maintainer: vimsucks <dev@vimsucks.com>
 # Thanks to unstartdev https://aur.archlinux.org/packages/brook-systemd/
 pkgname=brook-systemd-client
-pkgver=v20181212
-pkgrel=2
+pkgver=v20190205
+pkgrel=1
 epoch=
 pkgdesc="Install brook(client) with client systemd"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -30,12 +30,12 @@ source_aarch64=("https://github.com/txthinking/brook/releases/download/${pkgver}
 noextract=('brook' 'brook-client.service', 'client-config.sh')
 md5sums=('65e83334eccd0e702ce54d3f08c738e3'
          '6e64f843a57d009d5d888ee970208153')
-md5sums_x86_64=('c728ec28d2c41f585de0df26ea79c669')
-md5sums_i686=('020d61905aa1e71e334a35ee49c84d00')
-md5sums_arm=('97abbf38fc4672c9b59d7b041f57d859')
-md5sums_armv6h=('84ad403af8c09bf1f6ba497c9a7582de')
-md5sums_armv7h=('3300e474d849071cb5ca11a17d114a28')
-md5sums_aarch64=('f35f08c87b3d8a95c309aa3114a8753b')
+md5sums_x86_64=('c0999724f679120c029a5c55d8db240f')
+md5sums_i686=('56df060f40a1775e03fbd59f7c3d38bb')
+md5sums_arm=('2f78ca0448402da780cc8364aa74c931')
+md5sums_armv6h=('44ab2eb253199afe8100e63ec3c61a7e')
+md5sums_armv7h=('8ce9f09074134c5f34372011392c3875')
+md5sums_aarch64=('42c30651462c9d57cdebf719047f57ad')
 backup=(etc/brook/client-config.sh)
 validpgpkeys=()
 
