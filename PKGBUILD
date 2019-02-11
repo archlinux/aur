@@ -1,38 +1,34 @@
+# $Id: PKGBUILD 320127 2018-03-24 09:48:28Z arojas $
 # Maintainer: Ronald van Haren <ronald@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
-pkgbase=digikam
-pkgname=(digikam kipi-plugins)
-_pkgver=5.9.0
+pkgname=digikam
+_pkgver=6.0.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=4
+pkgrel=1
 pkgdesc="An advanced digital photo management application"
 arch=(x86_64)
 license=(GPL)
 url="https://www.digikam.org/"
-makedepends=(extra-cmake-modules libkipi libksane liblqr opencv doxygen lensfun eigen boost kdoctools marble-common
-             kfilemetadata akonadi-contacts qtav threadweaver kcalcore knotifyconfig libmediawiki libkvkontakte glu qt5-xmlpatterns)
-source=("https://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz"
-        kdebug-395875.patch::"https://cgit.kde.org/digikam.git/patch/core?id=486e34a0"
-        digikam-opencv4.patch)
-sha256sums=('660d32eedcfd6fe1a75170a651fab068ae62f7f092ae710771a2f32a1c550d1b'
-            'c63f177950c4a1728699c59cf670fec1353955bdc4a7b4ac6c844aec15871fa8'
-            '621faf691d081239d792616ea40bac7a1cc07c3adf1bc74b4adc9107eacb4232')
+depends=(liblqr lensfun opencv akonadi-contacts knotifyconfig libksane kfilemetadata qtav marble-common threadweaver kcalcore
+         qt5-xmlpatterns libkvkontakte libmediawiki)
+makedepends=(extra-cmake-modules doxygen eigen boost kdoctools)
+optdepends=('hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)')
+source=("https://download.kde.org/stable/$pkgname/$_pkgver/$pkgname-$_pkgver.tar.xz"{,.sig})
+sha256sums=('6e4f0ee52772ea2baef38fc9b96f18ca10f165f0c5bda71d8161a4eded26fb47'
+            'SKIP')
+validpgpkeys=(D1CF2444A7858C5F2FB095B74A77747BC2386E50) # digiKam.org (digiKam project) <digikamdeveloper@gmail.com>
 
 prepare() {
   mkdir -p build
-
-  cd $pkgbase-$pkgver
-  patch -p1 -i ../kdebug-395875.patch   # Fix window state saving on close
-  patch -p1 -i ../digikam-opencv4.patch # fix build with openCV 4
 }
 
 build() {
   cd build
 
-  cmake ../$pkgname-${_pkgver} \
+  cmake ../$pkgname-$_pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF \
@@ -40,40 +36,13 @@ build() {
     -DENABLE_MEDIAPLAYER=ON \
     -DENABLE_AKONADICONTACTSUPPORT=ON \
     -DENABLE_MYSQLSUPPORT=ON \
-    -DENABLE_OPENCV3=ON \
-    -DENABLE_APPSTYLES=ON
+    -DENABLE_APPSTYLES=ON \
+    -DENABLE_QWEBENGINE=ON \
+    -DOpenGL_GL_PREFERENCE=GLVND
   make
 }
 
-package_digikam() {
-  depends=(liblqr libkipi lensfun opencv akonadi-contacts knotifyconfig libksane kfilemetadata
-           qt5-webkit qtav marble-common threadweaver kcalcore)
-  optdepends=('kipi-plugins: export to various online services'
-              'hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)')
-
-  cd build/core
+package() {
+  cd build
   make DESTDIR="$pkgdir" install
-  cd $srcdir/build/doc
-  make DESTDIR="$pkgdir" install
-  cd $srcdir/build/po
-  make DESTDIR="$pkgdir" install
-
-# Provided by kipi-plugins
-  rm "$pkgdir"/usr/share/locale/*/LC_MESSAGES/kipiplugin*.mo
-}
-
-package_kipi-plugins() {
-  pkgdesc="A collection of plugins extending the KDE graphics and image applications as digiKam"
-  depends=(kio libkipi)
-  optdepends=('libmediawiki: MediaWiki Export plugin'
-              'libkvkontakte: VKontakte.ru Exporter plugin'
-              'qt5-xmlpatterns: rajce.net plugin')
-
-  cd build/extra
-  make DESTDIR="$pkgdir" install
-  cd $srcdir/build/po
-  make DESTDIR="$pkgdir" install
-
-# Provided by digikam
-  rm "$pkgdir"/usr/share/locale/*/LC_MESSAGES/digikam.mo
 }
