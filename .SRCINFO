@@ -1,7 +1,7 @@
 pkgbase = one-click-bing-wallpaper-git
 	pkgdesc = A Qt-based program for setting newest Bing Wallpaper, just click the tray icon
-	pkgver = r17.efc3710
-	pkgrel = 2
+	pkgver = r93.7bc9aad
+	pkgrel = 1
 	url = https://github.com/ypingcn/BingWallpaper
 	arch = i686
 	arch = x86_64
