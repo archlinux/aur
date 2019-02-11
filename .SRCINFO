@@ -1,8 +1,8 @@
 pkgbase = redshift-wayland-git
 	pkgdesc = Adjusts the color temperature of your screen (with Wayland patches)
 	pkgver = 1.11.r158.gab3a34c
-	pkgrel = 1
-	url = https://github.com/Lourens-Rich/redshift
+	pkgrel = 2
+	url = https://github.com/jonls/redshift
 	arch = i686
 	arch = x86_64
 	license = GPL3

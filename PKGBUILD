@@ -9,10 +9,10 @@
 
 pkgname=redshift-wayland-git
 pkgver=1.11.r158.gab3a34c
-pkgrel=1
+pkgrel=2
 pkgdesc="Adjusts the color temperature of your screen (with Wayland patches)"
 arch=('i686' 'x86_64')
-url='https://github.com/Lourens-Rich/redshift'
+url='https://github.com/jonls/redshift'
 license=('GPL3')
 provides=('redshift' 'redshift-sway-git')
 conflicts=('redshift' 'redshift-sway-git')
