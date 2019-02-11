@@ -1,0 +1,13 @@
+pkgbase = mce-dev
+	pkgdesc = Headers defining the D-Bus method calls provided by the Mode Control Entity
+	pkgver = 1.8.19
+	pkgrel = 1
+	url = https://github.com/maemo-leste/mce-dev
+	arch = any
+	license = LGPL2.1
+	makedepends = doxygen
+	source = mce-dev-1.8.19.tar.gz::https://github.com/maemo-leste/mce-dev/archive/1.8.19.tar.gz
+	sha512sums = e7eafc081ce1702b8eb42951abea58e98b54bb313e7c742b0502e2d189ed5c71bb72b4ed344537e98c9a9aa6da90bf3cfd5933a302918dd5e18552f32933a9ae
+
+pkgname = mce-dev
+
