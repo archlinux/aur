@@ -2,7 +2,7 @@
 
 pkgname=omp
 pkgver=0.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Open-Source Music Player'
 url='https://openmusicplayer.com/'
 arch=(x86_64)
@@ -23,7 +23,7 @@ build() {
   CXXFLAGS+=' -Wno-deprecated-declarations'
   CXXFLAGS+=' -Wno-parentheses -fconcepts -Wno-catch-value -Wno-return-type'
 
-  make -e FLATPAK=0 CXXFLAGS=$(CXXFLAGS)
+  make CXXFLAGS=$(CXXFLAGS) -e FLATPAK=0 
 
 }
 
