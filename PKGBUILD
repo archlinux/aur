@@ -32,7 +32,8 @@ pkgname=(
     "${pkgbase}-xsl"
 )
 pkgver=7.0.33
-pkgrel=3
+_pkgver=${pkgbase//php}
+pkgrel=4
 pkgdesc='A general-purpose scripting language that is especially suited to web development (old stable 7.0 series)'
 arch=('i686' 'x86_64')
 url='http://www.php.net'
@@ -49,12 +50,12 @@ source=(
     'apache.patch'
     'apache.conf'
     'enchant-2.patch'
+    'freetype2.patch'
     'php-fpm.patch'
     'php-fpm.tmpfiles'
     'php.ini.patch'
     'php-icu-1100-Utilize-the-recommended-way-to-handle-the-icu-namespace.patch'
     'php-icu-1101-Simplify-namespace-access.patch'
-    'freetype2.patch'
 )
 sha512sums=(
     '9298e185702ea801e9243671ecb0b781c2b04181a2f9fd6490bc14897a333a2c0cc88fe27b0c69c6dd0079629a71c330ed1aa337f48cac6cbd624addb8855500'
@@ -62,12 +63,12 @@ sha512sums=(
     'f5e5431993c2e0c1806c4edf392030d0b605f4b3c4cebec036e810ff771b2327983f347221735673506e2c91ce2e18ad37ab7600261b684fe29491206171b4f3'
     '30cdc281c6e288cf8a0bf58a0ad74ad5b4e8205d2b0b6ab465fad97d810f7bfae4581ad836712998e834d2e90d38cacd22f19bb01e77fc4c9d200d95613fc669'
     '2d5f3aa71ce7d8da43f0f683f81b06258e3a0d95df4807a8acac91ff89fbe60484ef97856a908bce625b1610d0004767a6a8c622246086afe2f2d464977088b5'
+    'a664b69aea8c21c50c852f918515d9fe1a931d7f88ec77ec86a20810266515745430d89513ee2e0bb301a29f1fc7ab0d2634076830b4da8ea1e47467fb658678'
     'e567dbe8b348364c0efb2d96492d4747e96f835adc2b3cb0c1563049fe6cabe9b1fde8ba24b690fb5d64339673e3088b2336f8cb5aa2c85e2f9fa50efd665865'
     'fde017c6382d687b80d660253cbe5d581ca886fee0d762bf519b245c6e39677194be542ec26c71c81d104422b444a0fdadd92ac1a17e9ea1e6ec34bfb204ca7d'
     'a98bba8d648853d653946c7a379ef62760282d8856fc1f79f84d66ac3c2082ef62c2fc0ed6a6762b50560ac60168fcdf946536a99131d397e89e906ee855419c'
     '70c859feff58650ff4a291b1725bce8f290ac6d92cacc4420d3ead5cbbdbcf567cd0ed4d79fdd8b0435cf6833f7b50fff798b2fae274c5fb1bb37a0984a45f9d'
     '33d40f3ae500cf583519ecfa271e36d727c38ff4ea9547d3d2c4d51c9fadd317ed614a048077ebdb116e3c84c11db95e6455cdfc80d092d217d070c98af56525'
-    '24e0a8edf6161c5812ab38ae0919b3d0273e07e1bdea01b6b1df205f4043ad49973c7421a4c336814ae0ced8758518445bd66c6a6d82a729a727442730bc0a97'
 )
 
 validpgpkeys=(
@@ -94,12 +95,12 @@ prepare() {
     cd ${_pkgbase}-${pkgver}
 
     patch -p0 -i ../apache.patch
-    patch -p0 -i ../php-fpm.patch
-    patch -p0 -i ../php.ini.patch
     patch -p0 -i ../enchant-2.patch
+    patch -p0 -i ../freetype2.patch
+    patch -p0 -i ../php-fpm.patch
     patch -p1 -i ../php-icu-1100-Utilize-the-recommended-way-to-handle-the-icu-namespace.patch
     patch -p1 -i ../php-icu-1101-Simplify-namespace-access.patch
-    patch -p1 -i ../freetype2.patch
+    patch -p0 -i ../php.ini.patch
 }
 
 build() {
@@ -212,7 +213,6 @@ build() {
         --enable-phpdbg \
         ${phpExtensions}
     make
-    cd ../
 }
 
 check() {
@@ -310,7 +310,7 @@ package_php70-embed() {
 
     cd build
     make INSTALL_ROOT=${pkgdir} PHP_SAPI=embed install-sapi
-    mv ${pkgdir}/usr/lib/libphp7.so ${pkgdir}/usr/lib/libphp-70.so
+    mv ${pkgdir}/usr/lib/libphp7.so ${pkgdir}/usr/lib/libphp-${_pkgver}.so
 }
 
 package_php70-phpdbg() {
