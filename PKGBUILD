@@ -8,21 +8,21 @@
 
 pkgbase='python-scipy-mkl'
 pkgname=('python-scipy-mkl' 'python2-scipy-mkl')
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering."
 arch=('i686' 'x86_64')
 url="http://www.scipy.org/"
 license=('BSD')
 depends=('intel-compiler-base' 'intel-fortran-compiler' 'intel-mkl')
-makedepends=('gcc-fortran' 'python-numpy' 'python2-numpy' 'python-setuptools' 'python2-setuptools' 'intel-compiler-base' 'intel-fortran-compiler' 'intel-mkl')
+makedepends=('python-numpy' 'python2-numpy' 'python-setuptools' 'python2-setuptools')
 checkdepends=('python-pytest' 'python2-pytest')
 source=(
 	"https://github.com/scipy/scipy/releases/download/v${pkgver}/scipy-${pkgver}.tar.gz"
 	"build_python.sh"
 	'fix-utf8.patch'
 )
-sha256sums=('51a2424c8ed80e60bdb9a896806e7adaf24a58253b326fbad10f80a6d06f2214'
+sha256sums=('e085d1babcb419bbe58e2e805ac61924dac4ca45a07c9fa081144739e500aa3c'
             '4970774d5c0b43c48634b01c1eabf7604dc3c98177fb5fed5585dc5be71183b4'
             '8095c3ed80658019f8976ff7e298ac80939b3c2814dfdd372d63c04a285d419e')
 
@@ -43,18 +43,7 @@ prepare() {
 }
 
 build() {
-	# glibc 2.18 compatibility issue
-	# cp /opt/intel/compilers_and_libraries_*/linux/compiler/include/math.h .
-	# sed \
-	# 	-e '173s/.*/#    include "\/usr\/include\/math.h"/' \
-	# 	-e '1218s/!//' \
-	# 	-i math.h
-	# export __INTEL_PRE_CFLAGS="-I$srcdir "
-
 	export LDFLAGS="-Wall -shared"
-	export use_intel_cc=true
-	export use_gcc=false
-
 
 	# build for python3
 	cd scipy-${pkgver}
@@ -65,7 +54,6 @@ build() {
 	cd ../scipy-${pkgver}-py2
 	python2 setup.py config --compiler=intelem --fcompiler=intelem build_clib --compiler=intelem --fcompiler=intelem build_ext --compiler=intelem --fcompiler=intelem
 	#sh build_python.sh python2
-
 }
 
 #check() {
@@ -99,8 +87,7 @@ package_python-scipy-mkl() {
 
 	python3 setup.py config --compiler=intelem --fcompiler=intelem install --prefix=/usr --root="${pkgdir}/" --optimize=1
 
-	install -Dm644 LICENSE.txt \
-		"${pkgdir}/usr/share/licenses/python-scipy/LICENSE"
+	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-scipy/LICENSE"
 }
 
 package_python2-scipy-mkl() {
@@ -114,6 +101,5 @@ package_python2-scipy-mkl() {
 
 	python2 setup.py config --compiler=intelem --fcompiler=intelem install --prefix=/usr --root="${pkgdir}/" --optimize=1
 
-	install -Dm644 LICENSE.txt \
-		"${pkgdir}/usr/share/licenses/python2-scipy/LICENSE"
+	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python2-scipy/LICENSE"
 }
