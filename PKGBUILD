@@ -2,11 +2,11 @@
 
 pkgbase=keystone-git
 pkgname=('keystone-git' 'python-keystone-git' 'python2-keystone-git')
-pkgver=0.9.419.6e33761
+pkgver=0.9.1.r151.gd49b6fa
 pkgrel=1
 pkgdesc='Lightweight multi-platform, multi-architecture assembler framework'
 url='http://www.keystone-engine.org/'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL2')
 makedepends=('git' 'cmake' 'gcc-libs' 'python' 'python2')
 options=('staticlibs' '!emptydirs')
@@ -15,50 +15,49 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgbase}
-  printf "%s.%s.%s" "$(git describe --tags --abbrev=0)" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --always --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd ${pkgbase}
-  mkdir build-shared build-static
-  (cd build-shared
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DBUILD_SHARED_LIBS=ON \
-      -DLLVM_TARGETS_TO_BUILD=all \
-      -G "Unix Makefiles" ..
-  )
-  (cd build-static
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DBUILD_SHARED_LIBS=OFF \
-      -DLLVM_TARGETS_TO_BUILD=all \
-      -G "Unix Makefiles" ..
-  )
-  cp -ra bindings/python{,2}
-  sed -r 's|(python)$|\12|' -i bindings/python2/sample.py
+  mkdir -p build-shared build-static
 }
 
 build() {
   cd ${pkgbase}
-  make -C build-shared
-  make -C build-static
+  (cd build-shared
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INSTALL_LIBDIR=lib \
+      -DCMAKE_INSTALL_RPATH= \
+      -DBUILD_SHARED_LIBS=ON \
+      -G "Unix Makefiles" ..
+    make
+  )
+  (cd build-static
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INSTALL_LIBDIR=lib \
+      -DCMAKE_INSTALL_RPATH= \
+      -DBUILD_SHARED_LIBS=OFF \
+      -G "Unix Makefiles" ..
+    make
+  )
+  (cd bindings
+    python2 const_generator.py python
+    python2 const_generator.py ruby
+  )
   (cd bindings/python
     python setup.py build
-  )
-  (cd bindings/python2
     python2 setup.py build
   )
 }
 
 package_keystone-git() {
   depends=('gcc-libs')
-  provides=('keystone')
+  provides=('keystone' 'libkeystone.so')
   conflicts=('keystone')
   cd ${pkgbase}
-  make -C build-shared DESTDIR="${pkgdir}" install
   make -C build-static DESTDIR="${pkgdir}" install
+  make -C build-shared DESTDIR="${pkgdir}" install
   install -Dm 644 samples/* -t "${pkgdir}/usr/share/doc/${pkgname}/samples"
 }
 
@@ -70,7 +69,7 @@ package_python-keystone-git() {
   cd ${pkgbase}/bindings/python
   python setup.py install --root="${pkgdir}" -O1 --skip-build
   install -Dm 755 sample.py -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 644 LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 LICENSE.TXT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_python2-keystone-git() {
@@ -78,10 +77,11 @@ package_python2-keystone-git() {
   license=('BSD')
   provides=('python2-keystone')
   conflicts=('python2-keystone')
-  cd ${pkgbase}/bindings/python2
+  cd ${pkgbase}/bindings/python
   python2 setup.py install --root="${pkgdir}" -O1 --skip-build
   install -Dm 755 sample.py -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 644 LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 LICENSE.TXT -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  sed 's|python|python2|' -i "${pkgdir}/usr/share/doc/python2-keystone-git/sample.py"
 }
 
 # vim: ts=2 sw=2 et:
