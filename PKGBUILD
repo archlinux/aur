@@ -16,7 +16,7 @@ makedepends=(git meson ninja vala)
 provides=(gamehub)
 conflicts=(gamehub)
 options=(!strip debug)
-source=("git+${url}.git")
+source=("git+${url}.git#branch=dev")
 sha256sums=('SKIP')
 
 pkgver() {

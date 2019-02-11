@@ -27,7 +27,7 @@ pkgbase = gamehub-git
 	conflicts = gamehub
 	options = !strip
 	options = debug
-	source = git+https://github.com/tkashkin/GameHub.git
+	source = git+https://github.com/tkashkin/GameHub.git#branch=dev
 	sha256sums = SKIP
 
 pkgname = gamehub-git
