@@ -1,7 +1,7 @@
 pkgbase = chromium-ozone-wayland-git
 	pkgdesc = Chromium built from the Igalia fork with experimental Wayland support via Ozone
 	pkgver = 74.0.3694.0+39+27f5faa20d
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.chromium.org/Home
 	install = chromium.install
 	arch = x86_64

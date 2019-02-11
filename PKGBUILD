@@ -13,7 +13,7 @@
 
 pkgname=chromium-ozone-wayland-git
 pkgver=74.0.3694.0+39+27f5faa20d
-pkgrel=4
+pkgrel=5
 _launcher_ver=6
 pkgdesc="Chromium built from the Igalia fork with experimental Wayland support via Ozone"
 arch=('x86_64')
@@ -137,6 +137,10 @@ prepare() {
 
   sed -i \
     -e '/"-fsplit-lto-unit"/d' \
+    build/config/compiler/BUILD.gn
+
+  sed -i \
+    -e '/"-fvar-tracking-assignments"/d' \
     build/config/compiler/BUILD.gn
 
   # Force script incompatible with Python 3 to use /usr/bin/python2
