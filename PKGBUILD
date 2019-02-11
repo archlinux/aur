@@ -1,17 +1,17 @@
 # Maintainer: Python Shell <pythonshell@yeah.net>
 
 pkgname=cbmc-git
-pkgver=5.10.r572.gf9a09d876
+pkgver=5.11.r1339.gabbb38942
 pkgrel=1
 pkgdesc="Bounded Model Checking for ANSI-C"
 arch=('i686' 'x86_64')
 url="http://www.cprover.org/cbmc/"
 license=('custom')
 depends=('flex' 'bison')
-makedepends=('git' 'patch' 'make' 'perl-libwww' 'perl-lwp-protocol-https')
+makedepends=('git' 'patch' 'make' 'perl-libwww' 'perl-lwp-protocol-https' 'cmake' 'doxygen')
 provides=('cbmc-git')
 conflicts=('cbmc' 'cbmc-bin')
-source=('cbmc-git::git+https://github.com/diffblue/cbmc.git')
+source=('cbmc-git::git+https://github.com/diffblue/cbmc.git#branch=develop')
 noextract=()
 md5sums=('SKIP')
 
@@ -25,11 +25,12 @@ pkgver() {
 #}
 
 build() {
-    cd "${srcdir}/${pkgname}/src/"
-    make minisat2-download
-    #make libzip-download zlib-download
-    #make libzip-build
-    make
+    cd "${srcdir}/${pkgname}/"
+    #make -C src clean
+    #cmake -H. -Bbuild
+    #cmake --build build
+    make -C src minisat2-download
+    make -C src
 }
 
 package() {
