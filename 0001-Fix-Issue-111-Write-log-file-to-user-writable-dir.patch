@@ -1,0 +1,27 @@
+From 55c6847481487e0f2e7a44706b873608705d47bf Mon Sep 17 00:00:00 2001
+From: Alexander Blinne <alexander.blinne@uni-jena.de>
+Date: Mon, 4 Feb 2019 15:04:56 +0100
+Subject: [PATCH] Fix Issue 111: Write log file to user-writable dir
+
+---
+ extension/textext/__init__.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/extension/textext/__init__.py b/extension/textext/__init__.py
+index 5c26968..65739ae 100644
+--- a/extension/textext/__init__.py
++++ b/extension/textext/__init__.py
+@@ -62,7 +62,9 @@ EXIT_CODE_OK = 0
+ EXIT_CODE_EXPECTED_ERROR = 1
+ EXIT_CODE_UNEXPECTED_ERROR = 60
+ 
+-LOG_LOCATION = os.path.dirname(__file__)  # todo: check destination is writeable
++LOG_LOCATION = os.path.join(defaults.inkscape_extensions_path, "textext")
++if not os.path.isdir(LOG_LOCATION):
++    os.makedirs(LOG_LOCATION)
+ LOG_FILENAME = os.path.join(LOG_LOCATION, "textext.log")  # todo: check destination is writeable
+ 
+ 
+-- 
+2.20.1
+
