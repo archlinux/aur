@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fotoxx-git
-pkgver=20.0.test.2019.01.13
+pkgver=20.0.test.2019.02.08
 pkgrel=1
 pkgdesc="A program for improving image files made with a digital camera, test-version"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
@@ -15,7 +15,6 @@ optdepends=('rawtherapee: for raw image processing'
 	    'hugin: for panorama photos')
 source=("git+https://gitlab.com/${pkgname%-git}/${pkgname%-git}.git#branch=${pkgname%-git}-200")
 sha256sums=('SKIP')
-options=('!makeflags')
 
 pkgver() {
   cd ${pkgname%-git}
