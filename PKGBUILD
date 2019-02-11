@@ -2,11 +2,11 @@
 # Contributor: Sebastien Binet <binet@lblbox>
 
 pkgname=python-virtualenvwrapper
-pkgver=4.8.2
-pkgrel=2
+pkgver=4.8.4
+pkgrel=1
 pkgdesc="Extensions to Ian Bicking's virtualenv tool"
 arch=('any')
-url="https://bitbucket.org/dhellmann/virtualenvwrapper"
+url="https://virtualenvwrapper.readthedocs.io/"
 license=('MIT')
 depends=('python-virtualenv' 'python2-virtualenv' 'python-virtualenv-clone'
          'python-stevedore')
@@ -14,19 +14,16 @@ makedepends=('python-pbr')
 conflicts=('python2-virtualenvwrapper')
 replaces=('python2-virtualenvwrapper')
 source=(https://pypi.org/packages/source/v/virtualenvwrapper/virtualenvwrapper-$pkgver.tar.gz)
-sha256sums=('18d8e4c500c4c4ee794f704e050cf2bbb492537532a4521d1047e7dd1ee4e374')
+sha256sums=('51a1a934e7ed0ff221bdd91bf9d3b604d875afbb3aa2367133503fee168f5bfa')
 
 build() {
   cd "$srcdir/virtualenvwrapper-$pkgver"
-
   python3 setup.py build
 }
 
 package() {
   cd "$srcdir/virtualenvwrapper-$pkgver"
-
   python3 setup.py install --root="$pkgdir" -O1
-
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
