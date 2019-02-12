@@ -1,0 +1,36 @@
+pkgbase = autokey
+	pkgdesc = AutoKey, a desktop automation utility for Linux and X11, updated to run on Python 3
+	pkgver = 0.95.6
+	pkgrel = 1
+	url = https://github.com/autokey/autokey
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = wmctrl
+	depends = hicolor-icon-theme
+	depends = python-dbus
+	depends = python-pyinotify
+	depends = zenity
+	depends = xautomation
+	depends = imagemagick
+	depends = xorg-xwd
+	depends = python-xlib
+	depends = python-six
+	depends = python-gobject
+	depends = gtksourceview3
+	depends = libnotify
+	depends = libappindicator-gtk3
+	depends = gtk-update-icon-cache
+	optdepends = kdialog: for Qt interface
+	optdepends = python-pyqt5: for Qt interface
+	optdepends = python-qscintilla-qt5: for Qt interface
+	optdepends = qt-at-spi: to work with KDE/Qt applications
+	optdepends = python-atspi: for ATSPI in Gtk interface
+	replaces = autokey-py3
+	source = autokey-0.95.6.tar.gz::https://github.com/autokey-py3/autokey/archive/v0.95.6.tar.gz
+	sha256sums = d02aa25107c652d6eb960be0e7722bcc07d997a41fbf06b29babc0389ce3ee0d
+
+pkgname = autokey
+
