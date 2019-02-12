@@ -1,5 +1,5 @@
 pkgname=passff-host
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 epoch=1 # split off from passff addon versioning
 pkgdesc="PassFF native messaging host application for Firefox, Chromium, Chrome, Vivaldi"
@@ -36,5 +36,5 @@ package() {
 }
 
 # makepkg -g >> PKGBUILD
-md5sums=('966c9559208ee500f3a11031b2b81193'
+md5sums=('aeaf17856286c5a6dd81bb46466f5746'
          '2512ca1ab6da1c8fcfdfc4e7dd5a2fe8')

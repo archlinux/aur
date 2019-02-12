@@ -1,6 +1,6 @@
 pkgbase = passff-host
 	pkgdesc = PassFF native messaging host application for Firefox, Chromium, Chrome, Vivaldi
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/passff/passff-host
@@ -8,9 +8,9 @@ pkgbase = passff-host
 	arch = x86_64
 	license = GPL2
 	depends = python
-	source = passff-1.0.2.py::https://github.com/passff/passff-host/releases/download/1.0.2/passff.py
-	source = passff-1.0.2.json::https://github.com/passff/passff-host/releases/download/1.0.2/passff.json
-	md5sums = 966c9559208ee500f3a11031b2b81193
+	source = passff-1.1.0.py::https://github.com/passff/passff-host/releases/download/1.1.0/passff.py
+	source = passff-1.1.0.json::https://github.com/passff/passff-host/releases/download/1.1.0/passff.json
+	md5sums = aeaf17856286c5a6dd81bb46466f5746
 	md5sums = 2512ca1ab6da1c8fcfdfc4e7dd5a2fe8
 
 pkgname = passff-host
