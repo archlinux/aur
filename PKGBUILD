@@ -1,7 +1,7 @@
 # Maintainer: JP Cimalando <jp-dev inbox.ru>
 pkgname=opn2bankeditor-git
 _pkgname=OPN2BankEditor
-pkgver=1.3.beta.r1.g6bad9cc
+pkgver=1.3.beta.r80.g78c2a34
 pkgrel=1
 epoch=
 pkgdesc="A small cross-platform editor of the OPN2 FM banks of different formats"
@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/Wohlstand/OPN2BankEditor"
 license=('GPL3')
 groups=()
-depends=('qt5-base' 'qwt' 'jack' 'libpulse')
-makedepends=()
+depends=('qwt' 'jack' 'libpulse' 'hicolor-icon-theme' 'desktop-file-utils')
+makedepends=('cmake' 'git' 'qt5-tools')
 checkdepends=()
 optdepends=()
 provides=("opn2bankeditor")
