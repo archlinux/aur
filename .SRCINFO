@@ -1,6 +1,6 @@
 pkgbase = bitrot-git
 	pkgdesc = Bitrot audio plugins (LV2, VST2 and LADSPA)
-	pkgver = r8.66828d4
+	pkgver = r7.75abdd1
 	pkgrel = 1
 	url = https://github.com/grejppi/bitrot.git
 	arch = i686

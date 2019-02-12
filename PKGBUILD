@@ -1,7 +1,7 @@
 # Maintainer: Patrick Desaulniers <desaulniers dot patrick at carrefour dot cegepvicto dot ca>
 
 pkgname=bitrot-git
-pkgver=r8.66828d4
+pkgver=r7.75abdd1
 pkgrel=1
 pkgdesc="Bitrot audio plugins (LV2, VST2 and LADSPA)"
 arch=('i686' 'x86_64')
