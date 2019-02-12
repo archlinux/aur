@@ -1,16 +1,15 @@
 pkgbase = idm-console-framework
 	pkgdesc = A Java Management Console framework used for remote server management.
-	pkgver = 1.1.17
-	pkgrel = 3
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = http://directory.fedoraproject.org
 	arch = x86_64
 	license = GPL
 	makedepends = apache-ant
 	makedepends = java-environment
 	depends = ldapjdk
-	depends = jss
-	source = https://fedorapeople.org/groups/389ds//binaries/idm-console-framework-1.1.17.tar.bz2
-	sha256sums = 3438848f3412aaa444836352d785229c51fa7d6723ce9d63c367ce517722c9b7
+	source = https://github.com/dogtagpki/idm-console-framework/archive/v1.2.0.tar.gz
+	sha256sums = b8b43bd48ffaba6acc1e11db821afdeb62f5a42b7ab3667c16ad2a899846a8a6
 
 pkgname = idm-console-framework
 

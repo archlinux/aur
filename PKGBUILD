@@ -1,16 +1,17 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 # Contributor: Yonathan Dossow <ydossow@archlinux.cl>
+
 pkgname=idm-console-framework
-pkgver=1.1.17
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A Java Management Console framework used for remote server management."
 arch=('x86_64')
 url="http://directory.fedoraproject.org"
 license=('GPL')
-depends=('ldapjdk' 'jss')
+depends=('ldapjdk')
 makedepends=('apache-ant' 'java-environment')
-source=("https://fedorapeople.org/groups/389ds//binaries/$pkgname-$pkgver.tar.bz2")
-sha256sums=('3438848f3412aaa444836352d785229c51fa7d6723ce9d63c367ce517722c9b7')
+source=("https://github.com/dogtagpki/idm-console-framework/archive/v${pkgver}.tar.gz")
+sha256sums=('b8b43bd48ffaba6acc1e11db821afdeb62f5a42b7ab3667c16ad2a899846a8a6')
 
 major_version=1.1
 
