@@ -1,5 +1,5 @@
 pkgbase = odr-dabmux-git
-	pkgdesc = OpenDigitalRadio DAB multiplexer
+	pkgdesc = Opendigitalradio DAB multiplexer
 	pkgver = v2.3.1
 	pkgrel = 1
 	url = https://github.com/Opendigitalradio/ODR-DabMux
