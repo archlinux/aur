@@ -1,6 +1,6 @@
 pkgbase = evince-light
 	pkgdesc = GNOME document viewer, built with minimal dependencies by default but configurable.
-	pkgver = 3.31.4
+	pkgver = 3.31.90
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Evince
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = evince-light
 	optdepends = gvfs: bookmark support and session saving
 	provides = evince
 	conflicts = evince
-	source = https://download.gnome.org/sources/evince/3.31/evince-3.31.4.tar.xz
-	sha256sums = 18f1468c1d38ee45cbf5d11fba341b698c3021066e431ae9cc919fa4a0c247ed
+	source = https://download.gnome.org/sources/evince/3.31/evince-3.31.90.tar.xz
+	sha256sums = 40ab989c6ffb3779a9b9404c5e340b5c9dc7cf342e38d1c28f83e284b7da5aff
 
 pkgname = evince-light
 
