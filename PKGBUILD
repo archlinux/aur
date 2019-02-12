@@ -2,6 +2,7 @@
 # Contributor: Carl George < arch at cgtx dot us >
 # Contributor: Eric Engeström <eric at engestrom dot ch>
 # Contributor: Andreas Linz <klingt.net at gmail dot com>
+# Contributor: Akshay S Dinesh <asdofindia at gmail dot com>
 
 _gopkgname='github.com/mholt/caddy'
 
@@ -44,7 +45,7 @@ patch_plugins() {
 
 prepare() {
     export GOPATH="$srcdir/build"
-    rm -rf "$GOPATH/src/$gopkgname"
+    rm -rf "$GOPATH/src/$_gopkgname"
     mkdir --parents `dirname "$GOPATH/src/$_gopkgname"`
     mv -Tv "$srcdir/$pkgname-$pkgver" "$GOPATH/src/$_gopkgname"
 
