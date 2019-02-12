@@ -17,6 +17,7 @@ pkgbase = zrythm-git
 	depends = breeze-icons
 	depends = libcyaml
 	depends = portaudio
+	depends = ffmpeg
 	provides = zrythm
 	conflicts = zrythm
 	source = zrythm::git+https://git.zrythm.org/zrythm/zrythm.git
