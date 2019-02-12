@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libdvdcss-git
-pkgver=1.4.2.0.g7b7c185
+pkgver=1.4.2.2.gf93ae87
 pkgrel=1
 pkgdesc="A portable abstraction library for DVD decryption. (GIT version)"
 arch=('x86_64')
@@ -9,7 +9,9 @@ license=('GPL2')
 url='http://www.videolan.org/libdvdcss'
 depends=('glibc')
 makedepends=('git')
-provides=('libdvdcss' 'libdvdcss.so')
+provides=('libdvdcss'
+          'libdvdcss.so'
+          )
 conflicts=('libdvdcss')
 source=('git+https://code.videolan.org/videolan/libdvdcss.git')
 sha256sums=('SKIP')
@@ -20,17 +22,21 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p build
+
   cd libdvdcss
-  autoreconf -if
+  autoreconf -vif
+
 }
 
 build() {
-  cd libdvdcss
-  ./configure \
+  cd build
+  ../libdvdcss/configure \
     --prefix=/usr
+
   make
 }
 
 package() {
-  make -C libdvdcss DESTDIR="${pkgdir}" install
+  make -C build DESTDIR="${pkgdir}" install
 }
