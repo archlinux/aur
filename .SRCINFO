@@ -1,0 +1,18 @@
+pkgbase = google-drive-ocamlfuse-opam
+	pkgdesc = FUSE-based file system backed by Google Drive, written in OCaml (installed from opam)
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://astrada.github.io/google-drive-ocamlfuse/
+	arch = x86_64
+	license = MIT
+	makedepends = opam
+	depends = glibc
+	depends = zlib
+	depends = curl
+	depends = fuse2
+	depends = sqlite
+	provides = google-drive-ocamlfuse
+	conflicts = google-drive-ocamlfuse
+
+pkgname = google-drive-ocamlfuse-opam
+
