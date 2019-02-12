@@ -19,7 +19,7 @@ sha256sums=('5c48544b4c51547792909ba89fd27432b58bfb26d9d9c3131ab65ec809d8198b'
 
 prepare() {
     cd "$pkgname-$pkgver"
-    dos2unix "$srcdir/$pkgname-$pkgver/extension/textext/__init__.pyg"
+    dos2unix "$srcdir/$pkgname-$pkgver/extension/textext/__init__.py"
     patch -l -p1 < "$srcdir/0001-Fix-Issue-111-Write-log-file-to-user-writable-dir.patch"
 }
 
