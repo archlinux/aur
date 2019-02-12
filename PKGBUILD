@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-core
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="Core DNF Plugins"
 arch=('any')
@@ -16,12 +16,17 @@ backup=('etc/dnf/plugins/copr.conf'
         'etc/dnf/plugins/versionlock.list')
 options=(!emptydirs)
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('8fd60919661038db3d00a0518e501090')
+md5sums=('124dbd61fa504c42fca0f4ab41f30ee7')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	rm -rf build
 	mkdir build
+
+	# sphinx-build-3 does not exist on Arch Linux,
+	# use sphinx-build instead
+	sed -e 's/sphinx-build-3/sphinx-build/' \
+	    -i doc/CMakeLists.txt
 }
 
 build() {
