@@ -1,4 +1,5 @@
 # Maintainer: Michael Herzberg <{firstname}@{firstinitial}{lastname}.de>
+# Contributor: Jan Kohnert <bughunter at jan-kohnert.de>
 # Contributor: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Christian Hesse <mail@eworm.de>
