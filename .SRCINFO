@@ -1,0 +1,13 @@
+pkgbase = apk-decompiler
+	pkgdesc = Small Rust utlity to decompile Android apks
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/robertohuertasm/apk-decompiler
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	source = apk-decompiler-0.2.1.tar.gz::https://github.com/robertohuertasm/apk-decompiler/archive/v0.2.1.tar.gz
+	sha256sums = 817cb2e2566745c5437fd09394bdf2fdafbd46bb4e70e16df610b9f022abc67b
+
+pkgname = apk-decompiler
+
