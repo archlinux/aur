@@ -1,7 +1,7 @@
 # Maintainer: Jean Pierre Cimalando <jp-dev@inbox.ru>
 pkgname=setup-fast-track-ultra-git
 pkgver=r7.657dc38
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Automatic setup of M-Audio Fast Track Ultra for JACK on Linux"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/jpcima/fast-track-ultra"
 license=('Boost')
 groups=()
 depends=('bash')
-makedepends=('make' 'sed')
+makedepends=('git' 'make' 'sed')
 checkdepends=()
 optdepends=()
 provides=('setup-fast-track-ultra')
