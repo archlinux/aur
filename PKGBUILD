@@ -1,7 +1,7 @@
 # Maintainer: JP Cimalando <jp-dev inbox.ru>
 pkgname=libopnmidi-git
 _pkgname=libOPNMIDI
-pkgver=v1.4.0.r5.gc8c4803
+pkgver=v1.4.0.r105.gb5c8ee9
 pkgrel=1
 epoch=
 pkgdesc="A MIDI play library with OPN2 (YM2612) emulator"
@@ -10,7 +10,7 @@ url="https://github.com/Wohlstand/libOPNMIDI"
 license=('LGPL3')
 groups=()
 depends=('sdl2')
-makedepends=()
+makedepends=('git' 'cmake')
 checkdepends=()
 optdepends=()
 provides=('libopnmidi')
