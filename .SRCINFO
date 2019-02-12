@@ -1,15 +1,14 @@
 pkgbase = office-runner
-	pkgdesc = Office game for laptop owners
-	pkgver = 1.0.2
+	pkgdesc = Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
+	pkgver = 1.0.3
 	pkgrel = 1
-	url = https://git.gnome.org/browse/office-runner/
+	url = http://www.hadess.net/search/label/office-runner
 	arch = x86_64
 	arch = i686
-	license = GPL
-	makedepends = intltool
-	depends = gnome-settings-daemon
-	source = https://download.gnome.org/sources/office-runner/1.0/office-runner-1.0.2.tar.xz
-	sha256sums = ea42d84960773bd3ec7bb412df61cbfb617a42f69db09ed337eef91ff94a8a97
+	license = GPL3
+	depends = gnome-common
+	source = https://github.com/GNOME/office-runner/archive/1.0.3.tar.gz
+	md5sums = 3918ad54a17860efa9a7f7174158e644
 
 pkgname = office-runner
 
