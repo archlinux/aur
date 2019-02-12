@@ -1,6 +1,6 @@
 pkgbase = latex-enumitem
 	pkgdesc = Customize the three basic lists (enumerate, itemize and description)
-	pkgver = 3.7
+	pkgver = 3.8
 	pkgrel = 1
 	url = http://www.ctan.org/tex-archive/macros/latex/contrib/enumitem
 	install = latex-enumitem.install
@@ -9,8 +9,8 @@ pkgbase = latex-enumitem
 	depends = texlive-core
 	depends = unzip
 	noextract = enumitem.zip
-	source = http://mirror.ctan.org/macros/latex/contrib/enumitem.zip
-	sha256sums = 1279d5435f0b1295f90135d8414dbdf6f09879039edea20b72feba7c67f5277d
+	source = enumitem-3.8.zip::http://mirror.ctan.org/macros/latex/contrib/enumitem.zip
+	sha256sums = b2358a9013f9d88e95a26a62147b6e3df8b1525e2acac58002ea3b0b9ff58ef2
 
 pkgname = latex-enumitem
 
