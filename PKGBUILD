@@ -19,11 +19,6 @@ build() {
   cargo build --release --locked
 }
 
-check() {
-  cd "${pkgname}-${pkgver}"
-  cargo test --release --locked
-}
-
 package() {
   cd "${pkgname}-${pkgver}"
   install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
