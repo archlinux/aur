@@ -1,7 +1,7 @@
 pkgbase = diesel_cli
 	pkgdesc = CLI for the Diesel crate
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/diesel-rs/diesel/tree/master/diesel_cli
 	arch = i686
 	arch = x86_64
