@@ -1,0 +1,80 @@
+From 0a50f3de2be1ec6456714d4d54ba86236873b820 Mon Sep 17 00:00:00 2001
+From: Joerg Bornemann <joerg.bornemann@qt.io>
+Date: Mon, 11 Feb 2019 15:00:09 +0100
+Subject: [PATCH] Turn bcm_host library into makeSpec source
+
+The makespec provides LIBDIR, INCDIR and LIBS for bcm_host.
+
+Change-Id: I4bc268504dc48edaf2884f1c14b745260fd9112c
+Fixes: QTBUG-73727
+---
+ mkspecs/devices/linux-rasp-pi-g++/qmake.conf  | 4 ++++
+ mkspecs/devices/linux-rasp-pi2-g++/qmake.conf | 5 +++++
+ mkspecs/devices/linux-rasp-pi3-g++/qmake.conf | 4 ++++
+ src/gui/configure.json                        | 3 ++-
+ 4 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/mkspecs/devices/linux-rasp-pi-g++/qmake.conf b/mkspecs/devices/linux-rasp-pi-g++/qmake.conf
+index b72091373d..6ec7817efb 100644
+--- a/mkspecs/devices/linux-rasp-pi-g++/qmake.conf
++++ b/mkspecs/devices/linux-rasp-pi-g++/qmake.conf
+@@ -20,6 +20,10 @@ QMAKE_INCDIR_OPENVG     = $${QMAKE_INCDIR_EGL}
+ QMAKE_LIBS_EGL          = -lEGL -lGLESv2
+ QMAKE_LIBS_OPENVG       = -lEGL -lOpenVG -lGLESv2
+ 
++QMAKE_INCDIR_BCM_HOST   = $$[QT_SYSROOT]/opt/vc/include
++QMAKE_LIBDIR_BCM_HOST   = $$[QT_SYSROOT]/opt/vc/lib
++QMAKE_LIBS_BCM_HOST     = -lbcm_host
++
+ contains(DISTRO, squeeze) {
+     #Debian Squeeze: Legacy everything
+     QMAKE_LIBS_OPENGL_ES2   = -lGLESv2 -lEGL
+diff --git a/mkspecs/devices/linux-rasp-pi2-g++/qmake.conf b/mkspecs/devices/linux-rasp-pi2-g++/qmake.conf
+index ffe8f5739a..3b49f19a5b 100644
+--- a/mkspecs/devices/linux-rasp-pi2-g++/qmake.conf
++++ b/mkspecs/devices/linux-rasp-pi2-g++/qmake.conf
+@@ -16,6 +16,11 @@ QMAKE_INCDIR_OPENVG     = $${QMAKE_INCDIR_EGL}
+ 
+ QMAKE_LIBS_EGL          = -lEGL -lGLESv2
+ QMAKE_LIBS_OPENVG       = -lEGL -lOpenVG -lGLESv2
++
++QMAKE_INCDIR_BCM_HOST   = $$[QT_SYSROOT]/opt/vc/include
++QMAKE_LIBDIR_BCM_HOST   = $$[QT_SYSROOT]/opt/vc/lib
++QMAKE_LIBS_BCM_HOST     = -lbcm_host
++
+ QMAKE_CFLAGS            += -march=armv7-a -marm -mthumb-interwork -mfpu=neon-vfpv4 -mtune=cortex-a7 -mabi=aapcs-linux
+ QMAKE_CXXFLAGS          = $$QMAKE_CFLAGS
+ 
+diff --git a/mkspecs/devices/linux-rasp-pi3-g++/qmake.conf b/mkspecs/devices/linux-rasp-pi3-g++/qmake.conf
+index 2bb70ffb5a..c35a828745 100644
+--- a/mkspecs/devices/linux-rasp-pi3-g++/qmake.conf
++++ b/mkspecs/devices/linux-rasp-pi3-g++/qmake.conf
+@@ -31,6 +31,10 @@ QMAKE_LIBS_OPENGL_ES2   = $${VC_LINK_LINE} -lGLESv2
+ # The official opt vc EGL references GLESv2 symbols: need to link it
+ QMAKE_LIBS_EGL          = $${VC_LINK_LINE} -lEGL -lGLESv2
+ 
++QMAKE_LIBDIR_BCM_HOST   = =$${VC_LIBRARY_PATH}
++QMAKE_INCDIR_BCM_HOST   = $$VC_INCLUDE_PATH
++QMAKE_LIBS_BCM_HOST     = -lbcm_host
++
+ QMAKE_CFLAGS            = -march=armv8-a -mtune=cortex-a53 -mfpu=crypto-neon-fp-armv8
+ QMAKE_CXXFLAGS          = $$QMAKE_CFLAGS
+ 
+diff --git a/src/gui/configure.json b/src/gui/configure.json
+index 70d0817791..3108b691be 100644
+--- a/src/gui/configure.json
++++ b/src/gui/configure.json
+@@ -59,8 +59,9 @@
+         },
+         "bcm_host": {
+             "export": "",
++            "headers": "bcm_host.h",
+             "sources": [
+-                "-lbcm_host"
++                { "type": "makeSpec", "spec": "BCM_HOST" }
+             ]
+         },
+         "dxguid": {
+-- 
+2.20.1
+

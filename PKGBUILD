@@ -395,7 +395,7 @@ fi
 
 if $_patching; then
   cd ${_basedir}
-  patch -p1 < ${startdir}/0001-Move-bcm_host-over-to-pkgConfig.patch
+  patch -p1 < ${startdir}/0001-Turn-bcm_host-library-into-makeSpec-source.patch
 fi
 
   rm -Rf ${_bindir}
