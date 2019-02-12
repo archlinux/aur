@@ -2,14 +2,14 @@
 # Contributor: A Rojas < nqn1976 @ gmail.com >
 
 pkgname=partitionmanager-git
-pkgver=3.3.1.r1318.8c8e8f8
+pkgver=3.80.0.r1398.0e714de
 pkgrel=1
 pkgdesc="A KDE utility that allows you to manage disks, partitions, and file systems. (GIT version)"
 arch=('x86_64')
 url='http://kde.org/applications/system/kdepartitionmanager'
 license=('GPL2')
 depends=('kpmcore'
-         'kde-cli-tools'
+         'kio'
          'hicolor-icon-theme'
          )
 conflicts=('partitionmanager')
