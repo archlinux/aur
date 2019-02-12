@@ -1,13 +1,13 @@
 # Maintainer: Fabian Klötzl <fabian-aur@kloetzl.info>
 pkgname=libmurmurhash
-pkgver=1.2.1
+pkgver=1.3
 pkgrel=1
 pkgdesc="Portable MurmurHash Implementation"
 url="https://github.com/kloetzl/libmurmurhash/"
 license=("custom:publicdomain")
 arch=("i686" "x86_64")
 source=("https://github.com/kloetzl/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('9058f03a1cdd975c2d71a7172a0881a9ec679376eda50d5b1b8b866bc579847e')
+sha256sums=('67e70b977f128666d85ab97e54240620df56845243cd0148a0b9d3470e03dfe1')
 
 check() {
 	cd "${pkgname}-${pkgver}"
