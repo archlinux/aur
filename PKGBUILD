@@ -1,13 +1,14 @@
 pkgname=electrum-ltc
 pkgver=3.3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Litecoin thin client'
 arch=(any)
 url=https://electrum-ltc.org/
 license=(MIT)
 depends=(desktop-file-utils
          libsecp256k1
-         python-aiohttp_socks
+         python-aiohttp
+         python-aiohttp-socks
          python-aiorpcx
          python-btchip
          python-certifi
