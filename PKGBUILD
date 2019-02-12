@@ -10,7 +10,7 @@ arch=('x86_64' 'i686' 'armv7h')
 url="http://gpl.internetconnection.net"
 license=('GPL2')
 sha256sums=('a7f7753b52b1500dc30fd757cdcb4f3b8a9058e11f332b3c4e078ddbe4e451e5')
-source=('http://gpl.internetconnection.net/files/mtftar.tar.gz')
+source=('https://web.archive.org/web/20161130081454/http://gpl.internetconnection.net/files/mtftar.tar.gz')
 
 build() {
     cd $pkgname
