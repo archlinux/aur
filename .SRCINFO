@@ -1,6 +1,6 @@
 pkgbase = medis
 	pkgdesc = Medis is a beautiful, easy-to-use database management application for Redis.
-	pkgver = 0.6.1.39
+	pkgver = 0.7.1.16
 	pkgrel = 1
 	url = https://github.com/luin/medis
 	arch = any
