@@ -1,3 +1,4 @@
+# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=('git-nautilus-icons-git' 'git-nemo-icons-git' 'git-caja-icons-git')
 pkgbase=git-nautilus-icons-git
 _gitname=git_nautilus_icons
