@@ -20,16 +20,12 @@ checkdepends=('python-pytest' 'python2-pytest')
 source=(
 	"https://github.com/scipy/scipy/releases/download/v${pkgver}/scipy-${pkgver}.tar.gz"
 	"build_python.sh"
-	'fix-utf8.patch'
 )
 sha256sums=('e085d1babcb419bbe58e2e805ac61924dac4ca45a07c9fa081144739e500aa3c'
-            '4970774d5c0b43c48634b01c1eabf7604dc3c98177fb5fed5585dc5be71183b4'
-            '8095c3ed80658019f8976ff7e298ac80939b3c2814dfdd372d63c04a285d419e')
+            '4970774d5c0b43c48634b01c1eabf7604dc3c98177fb5fed5585dc5be71183b4')
 
 prepare() {
 	cd scipy-${pkgver}
-	# Fix unicode issues that prevent importing scipy.stats on py2
-	patch -p1 -i ../fix-utf8.patch
 
 	cd ${srcdir}
 	cp -r scipy-${pkgver} scipy-${pkgver}-py2
