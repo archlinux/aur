@@ -1,7 +1,7 @@
 pkgbase = latex-enumitem
 	pkgdesc = Customize the three basic lists (enumerate, itemize and description)
 	pkgver = 3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ctan.org/tex-archive/macros/latex/contrib/enumitem
 	install = latex-enumitem.install
 	arch = any
