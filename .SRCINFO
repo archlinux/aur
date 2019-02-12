@@ -1,0 +1,20 @@
+pkgbase = odr-dabmux-git
+	pkgdesc = OpenDigitalRadio DAB multiplexer
+	pkgver = v2.3.1
+	pkgrel = 1
+	url = https://github.com/Opendigitalradio/ODR-DabMux
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = boost
+	depends = zeromq
+	depends = boost-libs
+	provides = odr-dabmux
+	conflicts = odr-dabmux
+	source = odr-dabmux::git+https://github.com/Opendigitalradio/ODR-DabMux.git
+	md5sums = SKIP
+
+pkgname = odr-dabmux-git
+
