@@ -1,7 +1,7 @@
 # Maintainer: Gustavo alvarez <sl1pkn07@gmail.com>
 
 pkgname=kaudiocreator-git
-pkgver=1.3.r877.60fddf6
+pkgver=1.3.r882.1f945cb
 pkgrel=1
 pkgdesc="A program for ripping and encoding Audio-CDs, encoding files from disk. (GIT version)"
 arch=('x86_64')
@@ -40,8 +40,10 @@ prepare() {
 build() {
   cd build
   cmake ../kaudiocreator \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTING=OFF
+
   make
 }
 
