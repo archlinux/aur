@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-http-parser
 	pkgdesc = Parser for HTTP Request/Response written in C (mingw-w64)
 	pkgver = 2.9.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/nodejs/http-parser
 	arch = any
 	license = MIT

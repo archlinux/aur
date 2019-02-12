@@ -3,7 +3,7 @@
 pkgname=mingw-w64-http-parser
 _pkgname=http-parser
 pkgver=2.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Parser for HTTP Request/Response written in C (mingw-w64)"
 arch=('any')
 license=('MIT')
@@ -22,8 +22,8 @@ prepare() {
 }
 
 build() {
-  CFLAGS="-O2 -pipe -fstack-protector-strong -fno-plt -fexceptions --param=ssp-buffer-size=4 $CFLAGS"
-  CXXFLAGS="-O2 -pipe -fstack-protector-strong -fno-plt -fexceptions --param=ssp-buffer-size=4 $CXXFLAGS"
+  CFLAGS="-O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4 $CFLAGS"
+  CXXFLAGS="-O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4 $CXXFLAGS"
   CPPFLAGS="-D_FORTIFY_SOURCE=2 $CPPFLAGS"
   LDFLAGS="-Wl,-O1,--sort-common,--as-needed $LDFLAGS"
   for _arch in ${_architectures}; do
