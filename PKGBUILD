@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kpmcore-git
-pkgver=3.3.0.r691.df449ac
+pkgver=3.80.0.r962.39a5645
 pkgrel=1
 pkgdesc="Library for managing partitions. Common code for KDE Partition Manager and other projects. (GIT version)"
 arch=('x86_64')
@@ -10,8 +10,9 @@ license=('GPL2')
 depends=('parted'
          'libatasmart'
          'kwidgetsaddons'
-         'kcoreaddons'
          'ki18n'
+         'kauth'
+         'qca'
          )
 conflicts=('kpmcore')
 provides=('kpmcore')
@@ -41,16 +42,18 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-}
 
-build() {
   cd build
   cmake ../kpmcore \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
 
-  make
+}
+
+build() {
+  make -C build
 }
 
 package() {
