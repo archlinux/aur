@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=qtesseract5
-pkgver=2.1a
+pkgver=2.2
 pkgrel=1
 pkgdesc="Convert the SUB/IDX subtiltes to SRT file"
 arch=('any')
@@ -9,8 +9,8 @@ url='https://forum.ubuntu-fr.org/viewtopic.php?pid=21507283'
 license=('GPL3')
 depends=('python-pyqt5'
          'hicolor-icon-theme'
+         'desktop-file-utils'
          'tesseract'
-         'xdg-utils'
          )
 makedepends=('qt5-tools'
              'imagemagick'
@@ -19,9 +19,8 @@ optdepends=('ogmrip')
 source=("https://launchpad.net/~hizo/+archive/ubuntu/mkv-extractor-gui/+files/qtesseract5_${pkgver}.orig.tar.gz"
         'qtesseract5.svgz'
         )
-sha256sums=('542832787795b369e4738b06aa1978b9ddb17de03b693630eacfc4be978b2239'
-            '968b76c98b03234eaa306e2fa689ed7f1a81b02edf4c5717de196c16f449c596'
-            )
+sha256sums=('a682fd6cde87b7c39935eafcefd614a94b5893607d55da892fd91ddea346f2ab'
+            '968b76c98b03234eaa306e2fa689ed7f1a81b02edf4c5717de196c16f449c596')
 
 prepare() {
   sed -e 's|/usr/lib/x86_64-linux-gnu/qt5/bin/lrelease|/usr/bin/lrelease-qt5|g' \
