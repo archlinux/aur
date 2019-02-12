@@ -3,7 +3,7 @@
 
 pkgname=electron-ssr
 pkgver=0.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Shadowsocksr client using electron.'
 arch=('x86_64')
 conflicts=("electron-ssr-git")
@@ -63,7 +63,7 @@ package() {
     cd $srcdir/$pkgname-$pkgver/node_modules
     find * -type f -exec install -Dm644 {} "${pkgdir}/opt/electron-ssr/node_modules/{}" \;
     cd "${pkgdir}/opt/electron-ssr/node_modules"
-    rm -r ./electron
+    [ -e ./electron ] && rm -r ./electron
 
     # Install Other things
     install -Dm644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
