@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-extras
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Extras DNF Plugins"
 arch=('any')
@@ -13,12 +13,17 @@ optdepends=('snapper: for snapper plugin'
 backup=('etc/dnf/plugins/rpmconf.conf'
         'etc/dnf/plugins/torproxy.conf')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('3d3f167264ce25b4361eba4db177d972')
+md5sums=('c7d5c549fdf15d523afcd90663815be4')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	rm -rf build
 	mkdir build
+
+	# sphinx-build-3 does not exist on Arch Linux,
+	# use sphinx-build instead
+	sed -e 's/sphinx-build-3/sphinx-build/' \
+	    -i doc/CMakeLists.txt
 }
 
 build() {
