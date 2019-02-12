@@ -3,14 +3,15 @@
 
 pkgname=(adlplug-git opnplug-git)
 _pkgname=ADLplug
-pkgver=v1.0.0.beta.3.r4.c60fdda
+pkgver=v1.0.0.beta.5.r15.bacf19b
 pkgrel=1
+pkgdesc="FM chip synthesizer"
 arch=('i686' 'x86_64')
 url="https://github.com/jpcima/ADLplug"
 license=('GPL')
 groups=('pro-audio')
-depends=('jack' 'alsa-lib' 'freetype2' 'libxext')
-makedepends=('git')
+depends=('jack' 'freetype2' 'libxext' 'hicolor-icon-theme')
+makedepends=('git' 'cmake' 'libxrandr' 'libxinerama' 'libxcursor')
 source=('git+https://github.com/jpcima/ADLplug.git'
         'git+https://github.com/Wohlstand/libADLMIDI.git'
         'git+https://github.com/Wohlstand/libOPNMIDI.git'
@@ -26,7 +27,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long --exclude nightly --exclude latest | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
