@@ -5,6 +5,7 @@ pkgbase = electron-windows95-bin
 	url = https://github.com/felixrieseberg/windows95
 	arch = x86_64
 	license = MIT
+	makedepends = rpm-org
 	depends = electron
 	source = https://github.com/felixrieseberg/windows95/releases/download/v2.0.0/windows95-linux-2.0.0.x86_64.rpm
 	sha256sums = 3a5cb3a84b78518a4370be7e9550f2978a20fcba390619008e3e4ed86c830f68
