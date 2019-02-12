@@ -1,5 +1,5 @@
 pkgname=electrum-ltc-git
-pkgver=3.3.2.1.git20190107.5d099f8
+pkgver=3.3.3.1.git20190211.947fa82
 pkgrel=1
 pkgdesc='Litecoin thin client'
 arch=(any)
@@ -7,7 +7,8 @@ url=https://electrum-ltc.org/
 license=(MIT)
 depends=(desktop-file-utils
          libsecp256k1
-         python-aiohttp_socks
+         python-aiohttp
+         python-aiohttp-socks
          python-aiorpcx
          python-btchip
          python-certifi
@@ -35,7 +36,6 @@ pkgver() {
 
 build() {
   cd electrum-ltc
-  pyrcc5 icons.qrc >electrum_ltc/gui/qt/icons_rc.py
   protoc --proto_path=electrum_ltc --python_out=electrum_ltc electrum_ltc/paymentrequest.proto
   contrib/make_locale
   ./setup.py build
