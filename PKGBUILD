@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.24.2
+pkgver=1.25.0
 pkgrel=1
 _cqzchannel=release
 _cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
@@ -13,12 +13,12 @@ depends=(gtk3 libxt startup-notification mime-types dbus-glib ffmpeg nss
          ttf-font libpulse sqlite libvpx icu)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake
              inetutils xorg-server-xvfb autoconf2.13 rust clang llvm
-             jack gtk2 python nodejs python2-psutil cbindgen libnotify
+             jack gtk2 python nodejs python2-psutil cbindgen nasm libnotify
              wget pulseaudio)
 optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz")
-sha256sums=('aed6a35f8ae6045a0e4ebef95d54cbdc20a23f2f10fc078cc832a5898918084f')
+sha256sums=('bfd19dc7f23603a4e63d33acbfbe8a60fb039325720dcd0a6422ed96fa93fef2')
 options=(!emptydirs !makeflags)
 
 prepare() {
