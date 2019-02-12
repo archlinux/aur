@@ -3,7 +3,7 @@
 
 pkgname=electron-ssr
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Shadowsocksr client using electron.'
 arch=('x86_64')
 conflicts=("electron-ssr-git")
@@ -40,6 +40,7 @@ prepare() {
     patch -Np1 -i "$srcdir/build.patch"
     patch -Np1 -i "$srcdir/argv.patch"
     patch -Np1 -i "$srcdir/path.patch"
+    sed -i '/\"electron\":/d' package.json
 }
 
 build() {
