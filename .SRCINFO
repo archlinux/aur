@@ -1,0 +1,23 @@
+pkgbase = minitube-bin
+	pkgdesc = A native YouTube client in Qt. Watch YouTube videos without Flash Player. Prebuilt binary with included Google API key.
+	pkgver = 2.9
+	pkgrel = 1
+	url = https://flavio.tordini.org/minitube
+	install = minitube.install
+	arch = x86_64
+	license = GPL3
+	makedepends = archlinux-xdg-menu
+	makedepends = dpkg
+	depends = phonon-qt5
+	depends = qt5-declarative
+	depends = hicolor-icon-theme
+	provides = minitube=2.9
+	provides = minitube-google-api-key
+	conflicts = minitube
+	source = minitube.deb::http://flavio.tordini.org/files/minitube/minitube.deb
+	source = minitube.install
+	sha256sums = b9eaa42bf6a3242fb932c10db89d4d8b103b4fa4dfbcdc9b98e1927e166de26e
+	sha256sums = c7f4dd1ce7968635a0dbc44908a94e817e8ed6ab12d9443866ad28781038a25b
+
+pkgname = minitube-bin
+
