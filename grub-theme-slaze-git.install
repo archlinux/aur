@@ -1,0 +1,16 @@
+read -r -d '' msg << TIPS
+====================================\n
+You should:\n
+1. edit\e[36m /etc/default/grub \e[0m,add (or modify) the line \n \e[1m GRUB_THEME="/boot/grub/themes/StylishDark/theme.txt"\e[0m\e[0m \n
+2. execute \n \e[1m sudo grub-mkconfig -o /boot/grub/grub.cfg \e[0m after installation.\e[0m
+\n------------------------------------\n
+also you can use a gui app -- \e[1m grub-customizer \e[0m for changing grub\n
+====================================
+TIPS
+post_install(){
+    echo -e $msg
+}
+
+post_upgrade(){
+    echo -e $msg
+}
