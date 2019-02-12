@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libbluray-git
-pkgver=1.0.2.9.g8c15fdad
+pkgver=1.0.2.40.g2d18c709
 pkgrel=1
 pkgdesc="Library to access Blu-Ray disks for video playback. (GIT version)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('git'
              'libaacs'
              )
 optdepends=('libaacs: Enable AACS decryption'
-            'java-environment: BD-J library'
+            'java-runtime: BD-J library'
             )
 provides=('libbluray'
           'libbluray.so'
@@ -35,17 +35,20 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p build
+
   export JDK_HOME="/usr/lib/jvm/default"
 
   cd libbluray
   git config submodule.contrib/libudfread.url "${srcdir}/libudfread"
   git submodule update --init
+
   ./bootstrap
 }
 
 build() {
-  cd libbluray
-  ./configure \
+  cd build
+  ../libbluray/configure \
     --prefix=/usr \
     --disable-static
 
@@ -53,5 +56,5 @@ build() {
 }
 
 package() {
-  make -C libbluray DESTDIR="${pkgdir}" install
+  make -C build DESTDIR="${pkgdir}" install
 }
