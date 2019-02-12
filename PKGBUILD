@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-applications-menu-git
-pkgver=2.4.2.r11.eb95a41
+pkgver=2.4.2.r25.ae95dfb
 pkgrel=1
 pkgdesc='The Pantheon Application Menu'
 arch=(x86_64)
@@ -32,8 +32,7 @@ makedepends=(
 )
 provides=(pantheon-applications-menu)
 conflicts=(pantheon-applications-menu)
-#source=(pantheon-applications-menu::git+https://github.com/elementary/applications-menu.git)
-source=(pantheon-applications-menu::git+https://github.com/alucryd/applications-menu.git#branch=meson-plank)
+source=(pantheon-applications-menu::git+https://github.com/elementary/applications-menu.git)
 sha256sums=(SKIP)
 
 pkgver() {
