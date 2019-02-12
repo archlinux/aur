@@ -1,18 +1,17 @@
 pkgbase = pegdbserver_power
 	pkgdesc = GDB server for Power devices using P&E JTAG hardware
-	pkgver = 1.6.9.201706282002
+	pkgver = 1.8.3.201812312131
 	pkgrel = 1
 	install = pegdbserver_power.install
-	arch = i386
 	arch = x86_64
 	license = custom
 	makedepends = unzip
 	depends = libusb-compat
 	options = !strip
-	source = http://www.pemicro.com/eclipse/updates/com.pemicro.debug.gdbjtag.ppc.updatesite/plugins/com.pemicro.debug.gdbjtag.ppc_1.6.9.201706282002.jar
+	source = http://www.pemicro.com/eclipse/updates/com.pemicro.debug.gdbjtag.ppc.updatesite/plugins/com.pemicro.debug.gdbjtag.ppc_1.8.3.201812312131.jar
 	source = license_gdb.pdf
 	source = 55-pemicro.rules
-	sha256sums = d6712889b65fbeee57a546ad9f563379ceb115adb4c07b8048987e11f9193dfd
+	sha256sums = 737eadaf60130f6fd6b2ee220e7e61bad619c389aa6d95b8a363497e8736b55c
 	sha256sums = 6b135ddd5388f6a0dd1d1d9d6c6d7321423f391914312c4a4aafd9d851d10dbc
 	sha256sums = 4b9812f801faedb8a39c7e95bd829efeeb2941b1f4fb3ca774cfbf1ef4fa4081
 
