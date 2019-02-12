@@ -1,0 +1,13 @@
+pkgbase = fusion-icon-autostart
+	pkgdesc = This will autostart fusion-icon with 20 seconds delay after login
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://github.com/ABOhiccups/fusion-icon-autostart
+	arch = any
+	license = Autostart
+	depends = fusion-icon
+	source = https://github.com/ABOhiccups/fusion-icon-autostart/releases/download/v1.00/fusion-icon-autostart-v1.00.tar.gz
+	md5sums = 911ad87cfc03fc35c60717d2606f901e
+
+pkgname = fusion-icon-autostart
+
