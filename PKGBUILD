@@ -1,7 +1,7 @@
 # Maintainer: JP Cimalando <jp-dev inbox.ru>
 pkgname=libadlmidi-git
 _pkgname=libADLMIDI
-pkgver=v1.4.0.1.r2.ga30c014
+pkgver=v1.4.0.1.r99.g4995b83
 pkgrel=1
 epoch=
 pkgdesc="A MIDI play library with OPL3 (YMF262) emulator"
@@ -10,7 +10,7 @@ url="https://github.com/Wohlstand/libADLMIDI"
 license=('LGPL3')
 groups=()
 depends=('sdl2')
-makedepends=()
+makedepends=('git' 'cmake')
 checkdepends=()
 optdepends=()
 provides=('libadlmidi')

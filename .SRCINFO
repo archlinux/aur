@@ -1,10 +1,12 @@
 pkgbase = libadlmidi-git
 	pkgdesc = A MIDI play library with OPL3 (YMF262) emulator
-	pkgver = v1.4.0.1.r2.ga30c014
+	pkgver = v1.4.0.1.r99.g4995b83
 	pkgrel = 1
 	url = https://github.com/Wohlstand/libADLMIDI
 	arch = x86_64
 	license = LGPL3
+	makedepends = git
+	makedepends = cmake
 	depends = sdl2
 	provides = libadlmidi
 	conflicts = libadlmidi
