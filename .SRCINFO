@@ -1,12 +1,12 @@
 pkgbase = gams
 	pkgdesc = The General Algebraic Modeling System (GAMS) is a high-level modeling system for mathematical optimization.
-	pkgver = 25.1.1
+	pkgver = 26.1.0
 	pkgrel = 1
 	url = http://www.gams.com/
 	arch = x86_64
 	license = custom
-	source = https://d37drm4t2jghv5.cloudfront.net/distributions/25.1.1/linux/linux_x64_64_sfx.exe
-	md5sums = 466ea4c0ab7803550d1e7632f878dd00
+	source = https://d37drm4t2jghv5.cloudfront.net/distributions/26.1.0/linux/linux_x64_64_sfx.exe
+	sha256sums = 1eb8d551ce3489cb10e062566f9b3da7e1e98079d75c692540ff41101c7c024c
 
 pkgname = gams
 
