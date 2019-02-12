@@ -1,3 +1,4 @@
+# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=office-runner
 pkgver=1.0.3
 pkgrel=1
