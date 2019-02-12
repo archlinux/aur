@@ -1,8 +1,8 @@
 pkgbase = yad
 	pkgdesc = A fork of zenity - display graphical dialogs from shell scripts or command line
-	pkgver = 0.40.0
-	pkgrel = 2
-	url = http://sourceforge.net/projects/yad-dialog
+	pkgver = 0.41.0
+	pkgrel = 1
+	url = https://github.com/v1cont/yad
 	arch = x86_64
 	arch = i686
 	license = GPL3
@@ -11,8 +11,8 @@ pkgbase = yad
 	makedepends = intltool
 	depends = gtk3
 	depends = webkit2gtk
-	source = http://sourceforge.net/projects/yad-dialog/files/yad-0.40.0.tar.xz
-	sha256sums = c2d0b7d1b6d3a0877299faa00db75d58c974f81fce72d520a3a84e67d1d60ef4
+	source = https://github.com/v1cont/yad/archive/v0.41.0.tar.gz
+	sha512sums = 47befc927f2db19796e34a563b93934081d2f2c666f11d68e5584eef548e046c6d912c0017f933a5ec908537b39b0ea05515f97d589dedc24f9bd2c3a5bb5e3f
 
 pkgname = yad
 
