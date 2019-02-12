@@ -1,6 +1,6 @@
 _pkgname=urxvt-perls
 pkgname=${_pkgname}-git
-pkgver=128.1f4897ccdd9b
+pkgver=128.1f4897c
 pkgrel=1
 pkgdesc="URL and Mouseless text selection for rxvt-unicode"
 arch=('any')
