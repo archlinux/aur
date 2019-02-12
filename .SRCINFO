@@ -1,8 +1,8 @@
 pkgbase = unityhub
 	pkgdesc = The Unity Hub is a standalone application that streamlines the way you find, download, and manage your Unity Projects and installations.
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
-	url = https://forum.unity.com/threads/unity-hub-v-1-4-0-is-now-available.600328/
+	url = https://forum.unity.com/threads/unity-hub-v-1-5-0-is-now-available.627847/
 	arch = x86_64
 	license = custom
 	depends = gtk2
@@ -14,8 +14,8 @@ pkgbase = unityhub
 	depends = zip
 	depends = libxss
 	depends = gconf
-	source = unityhub-1.4.0.AppImage::https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.AppImage
-	md5sums = c403fff1d97879b447d475f2758aa20b
+	source = unityhub-1.5.0.AppImage::https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.AppImage
+	md5sums = d4ac534e0e5209d7e5011f4865162969
 
 pkgname = unityhub
 
