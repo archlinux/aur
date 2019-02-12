@@ -1,0 +1,18 @@
+pkgbase = python-pluginloader
+	pkgdesc = A library to allow an easy way to load plugins
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/magmax/python-pluginloader
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/magmax/python-pluginloader/archive/1.0.0.tar.gz
+	sha256sums = 9cdf4ffc0b7fdfad89ed22da2b54c247e4e0124f4f6ae3bfe9382fc3da2e17b0
+
+pkgname = python-pluginloader
+	depends = python
+
+pkgname = python2-pluginloader
+	depends = python2
+
