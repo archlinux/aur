@@ -7,7 +7,8 @@ pkgdesc="Turn your mobile phone or tablet into a set of wireless mouse and keybo
 arch=("any")
 url="https://remotemouse.net/"
 license=('Unknown')
-depends=("libappindicator-sharp")
+depends=("libappindicator-sharp"
+         "xdotool")
 source=("http://www.remotemouse.net/downloads/RemoteMouse.tar.gz"
         "remotemouse.sh"
         "remotemouse.service")
