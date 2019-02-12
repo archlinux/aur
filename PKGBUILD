@@ -1,7 +1,7 @@
 # Maintainer: kittydoor <kittydoordev@gmail.com >
 pkgname=st-kitty-git
 _pkgname=st
-pkgver=0.8.2.r8.caefeb7
+pkgver=0.8.2.r9.82110b7
 pkgrel=1
 pkgdesc="kitty's build of st - the simple terminal by suckless"
 arch=('i686' 'x86_64')
@@ -9,6 +9,7 @@ url="https://st.suckless.org/"
 license=('MIT')
 depends=('libxft')
 makedepends=('git')
+optdepends=('tmux: basic features (such as scrollback and splits)')
 provides=("st")
 conflicts=("st")
 replaces=()
@@ -31,4 +32,6 @@ package() {
   make DESTDIR="$pkgdir/" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -Dm644 README "${pkgdir}/usr/share/doc/${_pkgname}/README"
+  install -Dm644 st.desktop "${pkgdir}/usr/share/applications/st.desktop"
+  install -Dm644 st-tmux.desktop "${pkgdir}/usr/share/applications/st-tmux.desktop"
 }
