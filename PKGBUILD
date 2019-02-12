@@ -5,7 +5,7 @@
 
 pkgname=cloud-init
 pkgver=18.5
-pkgrel=1
+pkgrel=3
 pkgdesc="The standard for customising cloud instances"
 arch=('any')
 url="https://cloud-init.io"
@@ -14,8 +14,8 @@ depends=('systemd' 'sudo' 'python2-yaml' 'python2-cheetah' 'python2-prettytable'
          'python2-oauth' 'python2-boto' 'python2-configobj'
          'python2-jsonschema' 'python2-jsonpatch' 'python2-jsonpointer' 'net-tools'
          'python2-requests' 'python2-argparse' 'python2-oauthlib'
-         'python2-jinja')
-makedepends=('python2' 'python2-setuptools')
+         'python2-jinja' 'dhclient')
+makedepends=('python2' 'python2-setuptools' 'pkgconf')
 backup=('etc/cloud/cloud.cfg' 'etc/cloud/cloud.cfg.d/05_logging.cfg')
 source=("https://launchpad.net/$pkgname/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz"
         fix-lib.patch
