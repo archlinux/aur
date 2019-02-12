@@ -1,6 +1,6 @@
 pkgbase = sococo
 	pkgdesc = Sococo for Linux
-	pkgver = 6.4.0_20587
+	pkgver = 6.5.0_20772
 	pkgrel = 1
 	url = https://app.sococo.com/a/download
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = sococo
 	depends = gtk2
 	depends = libxss
 	license = custom
-	source_x86_64 = https://s.sococo.com/rs/client/linux64/apt/pool/main/sococo-6.4.0-20587_amd64.deb
-	sha256sums_x86_64 = 1d7bb05a29119671b81592c59784aeae9fccca5fb7e27fd617eb92f6bca92df8
+	source_x86_64 = https://s.sococo.com/rs/client/linux64/apt/pool/main/sococo-6.5.0-20772_amd64.deb
+	sha256sums_x86_64 = 1169282874659b033c04316e492d3302fe965a4d990f1c1dd98fb4d86fcd9e9f
 
 pkgname = sococo
 
