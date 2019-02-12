@@ -8,7 +8,13 @@ Group=kvmd-webterm
 WorkingDirectory=/home/kvmd-webterm
 
 Environment=TERM=xterm-256color
-ExecStart=/usr/bin/gotty --title-format="Pi-KVM Terminal: {{ .hostname }} (GoTTY)" --address=127.0.0.1 --port=8090 --index=/usr/share/kvmd/extras/webterm/index.html --permit-write /bin/bash
+ExecStart=/usr/bin/gotty \
+		--title-format="Pi-KVM Terminal: {{ .hostname }} (GoTTY)" \
+		--address=127.0.0.1 \
+		--port=8090 \
+		--index=/usr/share/kvmd/extras/webterm/index.html \
+		--permit-write \
+	/bin/bash -c 'cat /etc/motd; bash'
 
 [Install]
 WantedBy=multi-user.target

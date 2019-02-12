@@ -14,7 +14,7 @@ makedepends=(go)
 install=$pkgname.install
 source=(
 	$pkgname.install
-	kvmd-webterm.service
+	$pkgname.service
 	terminal.svg
 	nginx.ctx-http.conf
 	nginx.ctx-server.conf
@@ -23,7 +23,7 @@ source=(
 )
 md5sums=(
 	"a8119b6f675ca954c71ecd241745df0c"
-	"1a44d9a469c566b20bcf9b9dafa97fe6"
+	"15669ecf597b9675341a9aa68513dc46"
 	"8310f16f1892706c6ee5d07d51393e00"
 	"dc9e0d328cb2710ef2921737fded3229"
 	"55b8aa8ebfe04146ff0ce8dd8e71c72d"
