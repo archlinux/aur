@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Wasabi
-GenericName=Bitcoin Wallet
-Comment=Privacy focused Bitcoin wallet, that implements trustless coin shuffling with mathematically provable anonymity
-Exec=wasabi-wallet
-Icon=wasabi
-Terminal=false
-Type=Application
-Categories=Utility;Finance;
