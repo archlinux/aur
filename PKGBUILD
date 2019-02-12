@@ -1,11 +1,11 @@
 pkgname=dnf
-pkgver=4.0.10
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Package manager forked from Yum, using libsolv as a dependency resolver"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2' 'GPL')
-depends=('libdnf>=0.24.1' 'libcomps>=0.1.8' 'libmodulemd>=1.4.0'
+depends=('libdnf>=0.25.0' 'libcomps>=0.1.8' 'libmodulemd>=1.4.0'
          'python' 'python-gpgme' 'python-iniparse'
          'rpm-org')
 makedepends=('bash-completion' 'cmake' 'python-sphinx')
@@ -14,13 +14,19 @@ backup=("etc/$pkgname/automatic.conf"
         "etc/$pkgname/$pkgname.conf"
         "etc/$pkgname/protected.d/$pkgname.conf"
         "etc/logrotate.d/$pkgname")
+options=('!emptydirs')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('9a13f1b52d0de425278681b9357998e7')
+md5sums=('7fabd61e766eb81665c7e43023a801fd')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	rm -rf build
 	mkdir build
+
+	# sphinx-build-3 does not exist on Arch Linux,
+	# use sphinx-build instead
+	sed -e 's/sphinx-build-3/sphinx-build/' \
+	    -i doc/CMakeLists.txt
 }
 
 build() {
