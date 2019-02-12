@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libbdplus-git
-pkgver=0.1.2.31.gc7f1e8b
+pkgver=0.1.2.33.g1dea325
 pkgrel=1
 pkgdesc="Open implementation of BD+ protocol. (GIT version)"
 arch=('x86_64')
@@ -22,13 +22,15 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p build
+
   cd libbdplus
-  ./bootstrap
+  autoreconf -vfi
 }
 
 build() {
-  cd libbdplus
-  ./configure \
+  cd build
+  ../libbdplus/configure \
     --prefix=/usr \
     --disable-static
 
@@ -36,5 +38,5 @@ build() {
 }
 
 package() {
-  make -C libbdplus DESTDIR="${pkgdir}" install
+  make -C build DESTDIR="${pkgdir}" install
 }
