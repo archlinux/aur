@@ -1,1 +1,3 @@
-u thanos - "Prometheus Thanos user"
+g thanos 211    -
+u thanos 211 "Prometheus Thanos user"
+m thanos prometheus
