@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-libbluray
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Library to access Blu-Ray disks for video playback (mingw-w64)'
 arch=('any')
@@ -12,13 +12,31 @@ options=(!strip !buildflags !libtool staticlibs)
 makedepends=('mingw-w64-configure' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
 #makedepends=('apache-ant' 'java-environment=8' 'git' 'mingw-w64-configure' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
 #optdepends=('java-runtime=8: BD-J library')
-source=("ftp://ftp.videolan.org/pub/videolan/libbluray/${pkgver}/libbluray-${pkgver}.tar.bz2")
-sha256sums=('6d9e7c4e416f664c330d9fa5a05ad79a3fb39b95adfc3fd6910cbed503b7aeff')
+source=(
+  git+https://code.videolan.org/videolan/libbluray.git#tag=${pkgver}
+  git+https://code.videolan.org/videolan/libudfread.git
+)
+sha256sums=(
+  SKIP
+  SKIP
+)
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd libbluray
+
+  for submodule in contrib/libudfread; do
+    git submodule init ${submodule}
+    git config submodule.${submodule}.url ../${submodule#*/}
+    git submodule update ${submodule}
+  done
+
+  autoreconf -fiv
+}
 
 build() {
   for _arch in ${_architectures}; do
-    mkdir -p ${srcdir}/libbluray-${pkgver}/build-${_arch} && cd ${srcdir}/libbluray-${pkgver}/build-${_arch}
+    mkdir -p ${srcdir}/libbluray/build-${_arch} && cd ${srcdir}/libbluray/build-${_arch}
 
     ${_arch}-configure \
       --disable-bdjava-jar
@@ -28,7 +46,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd ${srcdir}/libbluray-${pkgver}/build-${_arch}
+    cd ${srcdir}/libbluray/build-${_arch}
 
     make DESTDIR="$pkgdir" install
     ${_arch}-strip -s ${pkgdir}/usr/${_arch}/bin/*.exe
