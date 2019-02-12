@@ -2,7 +2,7 @@
 
 pkgname="mongodb-bin"
 pkgver="4.0.6"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
 url="https://www.mongodb.com/"
@@ -10,7 +10,7 @@ license=("SSPLv1")
 provides=("mongodb=$pkgver" "mongodb-tools=$pkgver")
 conflicts=("mongodb" "mongodb-tools")
 optdepends=('libpcap: Needed for mongoreplay'
-            'python2: Needed for install_compass')
+            'mongodb-compass: The MongoDB GUI')
 source=(
     "https://fastdl.mongodb.org/linux/mongodb-linux-$arch-$pkgver.tgz"
     "mongodb.service"
@@ -31,6 +31,7 @@ backup=("etc/mongodb.conf")
 package() {
   mkdir -p "$pkgdir/usr"
   cp -r "$srcdir/mongodb-linux-$arch-$pkgver/bin" "$pkgdir/usr/"
+  rm "$pkgdir/usr/bin/install_compass"
   install -Dm644 "$srcdir/mongodb.conf" "$pkgdir/etc/mongodb.conf"
   install -Dm644 "$srcdir/mongodb.service" "$pkgdir/usr/lib/systemd/system/mongodb.service"
   install -Dm644 "$srcdir/mongodb.sysusers" "$pkgdir/usr/lib/sysusers.d/mongodb.conf"
