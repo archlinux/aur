@@ -2,7 +2,7 @@
 
 pkgname=nmap-parse-output
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Converts/manipulates/extracts data from a Nmap scan output."
 arch=('any')
 url="https://github.com/ernw/nmap-parse-output"
@@ -11,7 +11,7 @@ depends=('bash' 'libxslt')
 optdepends=('bash-completion: Support for bash completion')
 
 source=("$url/archive/v${pkgver}.tar.gz")
-sha512sums=('75071344f3673695c1dd945e13e8613ca94b6d237dc4cacc664577124bc55f07738aa02536ae714a5f29a7e5619b821dc1ef298595bfb17f526d5c136554994a')
+sha512sums=('aa45918a031323ce0df984ef34a235e22befb8b7935a0c3782240313fd0eae9c95dcc923e702e5646c192154291e3551d767b98a18ce1da53c61acf91732ded2')
 
 package() {
   cd $srcdir/nmap-parse-output-$pkgver
