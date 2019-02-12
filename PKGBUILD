@@ -12,8 +12,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone-wayland-git
-pkgver=74.0.3694.0+39+27f5faa20d
-pkgrel=5
+pkgver=74.0.3703.0+24+5c0e21aca5
+pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built from the Igalia fork with experimental Wayland support via Ozone"
 arch=('x86_64')
@@ -41,7 +41,7 @@ source=(chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/ch
 sha256sums=('04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
-            '00c9439fd2216693d909a806f11b2260abd0ded4feca79136870c2c136a78515'
+            'af4271b563a43980a771a9b01039533ea27e09c83f55378089816149e69055e3'
             '2fe35a8eaa6b32285ceaab03235802e9cb3da54b08ef49af0796a4e3c7c3078f'
             '33fe1e269f418b50399cdaa9dd961fad04a927748e5a196915ac51e830a02060')
 
@@ -130,17 +130,13 @@ prepare() {
   # Revert https://chromium-review.googlesource.com/c/chromium/src/+/1356133
   patch -NRp1 -i ../chromium-browser-resource-context.patch
 
-  # Remove compiler flags not supported by our system clang
-  sed -i \
-    -e '/"-Wno-defaulted-function-deleted"/d' \
-    build/config/compiler/BUILD.gn
-
+  # Remove problematic compiler flags
   sed -i \
     -e '/"-fsplit-lto-unit"/d' \
     build/config/compiler/BUILD.gn
 
   sed -i \
-    -e '/"-fvar-tracking-assignments"/d' \
+    -e '/"-fPIC"/d' \
     build/config/compiler/BUILD.gn
 
   # Force script incompatible with Python 3 to use /usr/bin/python2

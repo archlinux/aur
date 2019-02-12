@@ -1,13 +1,13 @@
 diff --git a/ui/gfx/color_utils.cc b/ui/gfx/color_utils.cc
-index c868cd54bac3..0aa130b0e88d 100644
+index 92ba1407d594..49986ac767f8 100644
 --- a/ui/gfx/color_utils.cc
 +++ b/ui/gfx/color_utils.cc
 @@ -431,7 +431,7 @@ SkColor SetDarkestColorForTesting(SkColor color) {
    // GetContrastRatio(kWhiteLuminance, g_luminance_midpoint).  The formula below
    // can be verified by plugging it into how GetContrastRatio() operates.
    g_luminance_midpoint =
--      std::sqrtf((dark_luminance + 0.05f) * (kWhiteLuminance + 0.05f)) - 0.05f;
-+      ::sqrtf((dark_luminance + 0.05f) * (kWhiteLuminance + 0.05f)) - 0.05f;
+-      std::sqrt((dark_luminance + 0.05f) * (kWhiteLuminance + 0.05f)) - 0.05f;
++      ::sqrt((dark_luminance + 0.05f) * (kWhiteLuminance + 0.05f)) - 0.05f;
  
    return previous_darkest_color;
  }
