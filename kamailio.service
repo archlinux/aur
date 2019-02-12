@@ -1,0 +1,18 @@
+[Unit]
+Description=Kamailio - the Open Source SIP Server
+Documentation=man:kamailio(8) https://www.kamailio.org/
+Wants=network-online.target
+After=syslog.target network-online.target
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/kamailio
+PIDFile=/var/run/kamailio.pid
+ExecStart=/usr/bin/kamailio -P /var/run/kamailio.pid
+# /var/run/kamailio in tmpfs
+RuntimeDirectory=kamailio
+RuntimeDirectoryMode=0750Restart=on-failure
+
+
+[Install]
+WantedBy=multi-user.target
