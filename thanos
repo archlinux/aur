@@ -1,6 +1,0 @@
-CLUSTER_ARGS="--cluster.address=0.0.0.0:10900 --cluster.network-type=lan"
-
-# Run sidecar on the Prometheus Query Server
-#THANOS_ARGS="sidecar --tsdb.path=/var/lib/prometheus/data"
-# Run Query on the Grafana Node
-#THANOS_ARGS="query"

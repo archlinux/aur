@@ -4,3 +4,5 @@
 !.SRCINFO
 !thanos
 !thanos.service
+!thanos.sysuser
+!thanos.conf
