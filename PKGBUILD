@@ -6,7 +6,7 @@
 # Contributor : Martin Wimpress <code@flexion.org>
 
 pkgname=syncthing-git
-pkgver=v1.0.1.rc.2.r10.ga371b1539
+pkgver=v1.1.0.rc.1.r2.g225c0dda8
 pkgrel=1
 pkgdesc="Open Source Continuous Replication / Cluster Synchronization Thing"
 url="http://syncthing.net/"
@@ -30,7 +30,7 @@ pkgver() {
 }
 
 build() {
-	export GOPATH="${srcdir}"
+	export GOPATH="${srcdir}/${pkgname}-${pkgver}"
 	cd "${srcdir}"
 	mkdir -p "src/github.com/syncthing"
 	mv "${pkgname}-${pkgver}" "src/github.com/syncthing/${_name}"
