@@ -267,12 +267,6 @@ else
     "
 fi
 
-if $_static_build; then
-    _additional_configure_flags="$_additional_configure_flags \
-        -ltcg \
-    "
-fi
-
 if ! $_static_build && ! $_target_host; then
     _additional_configure_flags="$_additional_configure_flags \
         -hostprefix ${_installprefix} \
@@ -281,6 +275,7 @@ fi
 
 #-journald \
 _core_configure_options=" \
+                 -ltcg \
                  -prefix ${_installprefix} \
                  -opengl ${_opengl_variant} \
                  -no-xcb \
