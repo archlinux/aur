@@ -18,12 +18,13 @@ source=("http://downloads.sourceforge.net/cdemu/$pkgname-$pkgver.tar.bz2")
 sha512sums=('61a1775c874c9c3604ce88758039ef80b262463ae180e791eb545811fa2176e4bf07c4dbcd3be5f17d446fdef92317a0ff64ce8d27f26aeaeee9d8134b6a95ea')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  cmake -DPOST_INSTALL_HOOKS=off -DCMAKE_INSTALL_PREFIX=/usr
-  make
+    mkdir "$srcdir/build"
+    cd "$srcdir/build"
+    cmake -DPOST_INSTALL_HOOKS=off -DCMAKE_INSTALL_PREFIX=/usr ../"$pkgname-$pkgver"
+    make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+    cd "$srcdir/build"
+    make DESTDIR="$pkgdir" install
 }
