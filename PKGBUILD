@@ -10,6 +10,7 @@ arch=(any)
 url="http://pypi.python.org/pypi/guessit"
 license=(LGPL)
 depends=(python python-babelfish python-dateutil python-rebulk)
+makedepends=("python-setuptools")
 conflicts=(${pkgname}-git)
 source=(https://github.com/guessit-io/guessit/archive/${pkgver}.tar.gz)
 sha256sums=('b88757a3b31eea93297de147c3f9f40ceebf3fb3b63a08a5208fd98b6857c112')

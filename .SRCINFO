@@ -5,6 +5,7 @@ pkgbase = python-guessit
 	url = http://pypi.python.org/pypi/guessit
 	arch = any
 	license = LGPL
+	makedepends = python-setuptools
 	depends = python
 	depends = python-babelfish
 	depends = python-dateutil
