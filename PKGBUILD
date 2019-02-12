@@ -1,74 +1,70 @@
 # Maintainer: Ryan Gonzalez <rymg19 at gmail dot com>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>, youngunix <>
 
-_version=4.1
+_version=4.2.1
 pkgname=swift-bin
 pkgver=${_version//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Official binary builds of the Swift programming language."
 arch=('x86_64')
 url="https://swift.org"
 license=('apache')
-depends=('icu55' 'ncurses5-compat-libs' 'libedit' 'python2' 'libutil-linux' 'libbsd' 'clang' 'python2-six' 'libxml2' 'libcurl-compat' 'patchelf')
-makedepends=('qldv')
-conflicts=('lldb' 'swift-language-git')
+depends=('clang' 'icu' 'libbsd' 'libutil-linux' 'libxml2' 'python2')
+makedepends=('patchelf' 'rpmextract')
+conflicts=('swift-language-git')
 options=('!strip')
-validpgpkeys=('5E4DF843FB065D7F7E24FBA2EF5430F071E1B235')
-provides=('swift-language' 'lldb')
+provides=('swift-language')
 replaces=('swift-language-bin')
 source=(
-"https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz"
-"https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz.sig"
+  'https://kojipkgs.fedoraproject.org//packages/swift-lang/4.2.1/0.101.20181030git02a6ca9.fc30/x86_64/swift-lang-4.2.1-0.101.20181030git02a6ca9.fc30.x86_64.rpm'
+  'https://kojipkgs.fedoraproject.org//packages/swift-lang/4.2.1/0.101.20181030git02a6ca9.fc30/x86_64/swift-lang-runtime-4.2.1-0.101.20181030git02a6ca9.fc30.x86_64.rpm'
 )
-sha256sums=('bd11d422d466dc8fc149e52c4a4a94aa56dc5f03520f482fba5cd7e58f15bbc4'
-            'SKIP')
+sha256sums=('9df46cd5601b4318496cfd79056def9af44b706269776f74cc0778fd03842a49'
+            '5ff7fa70ccd47b5cee8f22a2d26bcb2761cfaa392bd687a2a7a142bb7dd407a5')
 
 package() {
-    target="${pkgdir}/usr/lib/swift"
-    mkdir -p "${target}"
+  cp -Ppr "${srcdir}"/{etc,usr} "${pkgdir}"
 
-    # Copy extracted files
-    cp -Ppr "${srcdir}/swift-${_version}-RELEASE"*/usr/* "$target"
-    rm -rf "${target}/local"
+  # Merge ld.so.conf.d files from the two packages
+  cat "${pkgdir}/etc/ld.so.conf.d/swift-lang-runtime.conf" >> \
+    "${pkgdir}/etc/ld.so.conf.d/swift-lang.conf"
+  rm "${pkgdir}/etc/ld.so.conf.d/swift-lang-runtime.conf"
 
-    # Permission fix
-    find "${pkgdir}" -type d -exec chmod 755 {} +
+  # Create the needed aliases for libncurses and libicu
+  for lib in libncurses libpanel libform; do
+    ln -s ../../${lib}w.so "${pkgdir}/usr/lib/swift/linux/${lib}.so.6"
+  done
 
-    # Symlink binaries
-    mkdir -p "${pkgdir}/usr/bin"
-    for file in "${target}/bin/"*; do
-        ln -s ../lib/swift/bin/"`basename "$file"`" "${pkgdir}/usr/bin"
-    done
-    ln -sf "../lib/swift/lib/libsourcekitdInProc.so" "${pkgdir}/usr/lib"
-    chmod +x "${target}/lib/libsourcekitdInProc.so"
+  for lib in libicudata libicui18n libicuuc; do
+    ln -s ../../${lib}.so "${pkgdir}/usr/lib/swift/linux/${lib}.so.62"
+  done
 
-    # Yuck! patching libedit and libcurl SONAMEs
-    find "${target}/bin" -type f -exec sed -i 's/libedit\.so\.2/libedit\.so\.0/g' {} \;
-    find "${target}/lib" -type f -exec sed -i 's/libedit\.so\.2/libedit\.so\.0/g' {} \;
-    sed -i 's/libcurl\.so\.4/libcurl\.so\.3/g' "${target}/lib/swift/linux/libFoundation.so"
+  # Merge libexec and lib
+  # XXX: can't drop yet, moving it from libexec completely kills the REPL for some reason
+  # find "${pkgdir}" -executable -type f -exec sed -i 's|/usr/libexec|/////usr/lib|g' {} \;
+  # mv "${pkgdir}/usr/"{libexec/swift-lldb/*,lib/swift-lldb}
+  # rmdir "${pkgdir}/usr/libexec/swift-lldb"
+  # rmdir "${pkgdir}/usr/libexec"
 
-    # Patch the ld interpreter to avoid version warnings
-    qldv "`qldv -find`" "${target}/lib/ld.so"
-    find "${target}/bin" -type f -not -name liblldb-intel-mpxtable.so -exec patchelf --set-interpreter '/usr/lib/swift/lib/ld.so' {} \;
+  # Make sure swift-lldb files pick up the symlinks from above
+  find "${pkgdir}/usr/lib/swift-lldb" -executable -type f -exec \
+    patchelf --set-rpath '/usr/lib/swift/linux' {} \;
+  # XXX: remove once libexec is dropped
+  find "${pkgdir}/usr/libexec/swift-lldb" -executable -type f -exec \
+    patchelf --set-rpath '/usr/lib/swift/linux' {} \;
+  patchelf --set-rpath '/usr/lib/swift/linux' "${pkgdir}/usr/bin/swift-build-tool"
 
-    # Hack to override Clang and ensure Swift runs patchelf on output files to fix the libcurl version warnings
-    echo '#!/bin/bash' > "${target}/bin/clang++"
-    echo '/usr/bin/clang++ "$@" && patchelf --set-interpreter /usr/lib/swift/lib/ld.so "${@: -1}"' >> "${target}/bin/clang++"
+  # Patch the libicu _62 symbols to _63
+  for path in "${pkgdir}/usr/lib/swift/linux/"{libswiftCore,libFoundation}.so; do
+    sed -i 's/\([Uu][A-Za-z0-9_]*\)_62/\1_63/g' "$path"
+  done
 
-    # Patch the module files
-    sed -i 's|x86_64-linux-gnu/||' "${target}/lib/swift/linux/x86_64/glibc.modulemap"
-    sed -i 's|x86_64-linux-gnu/||' "${target}/lib/swift_static/linux/static-stdlib-args.lnk"
+  # Symlink sourcekit
+  ln -s swift-lldb/libsourcekitdInProc.so "${pkgdir}/usr/lib/libsourcekitdInProc.so"
 
-    # Remove the six.py dumped in python's site packages
-    rm "${target}/lib/python2.7/site-packages/six.py"
-    rm "${target}/lib/python2.7/site-packages/six.pyc"
+  # Rename the LICENSE file directory
+  mv "${pkgdir}/usr/share/licenses/swift-"{lang,bin}
 
-    # Ensure the items have the right permissions..
-    # some tarballs from upstream seem to have the wrong ones
-    find "${target}/bin" -type f -exec chmod a+rx {} \;
-    find "${target}/lib" -type f -exec chmod a+r {} \;
-
-    # Move license
-    install -dm755 ${target}/share/licenses/${pkgname}
-    mv ${target}/share/swift/LICENSE.txt ${target}/share/licenses/${pkgname}
+  # Remove Fedora .build-id stuff
+  rm -rf "${pkgdir}/usr/lib/.build-id"
 }
