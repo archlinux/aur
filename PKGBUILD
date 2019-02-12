@@ -1,17 +1,16 @@
-# Maintainer: Вячеслав Зубик
+# Maintainer: аббаЕбаЛаАаВ абаБаИаК
 pkgname=zvvonlinetv
 _pkgname=ZVVOnlineTV
 pkgfix=fix
-pkgver=3.2.$pkgfix
-_pkgver=3_2
-pkgrel=3.1
+pkgver=3.2
+pkgrel=3
 pkgdesc="TV | IPTV | youtube player"
 arch=('i386' 'x86_64')
 url="https://zvvubuntu.blogspot.com"
 license=('custom')
 depends=('pyqt5-common' 'python-pyqt5' 'mpv' 'qt5-multimedia' 'ffmpeg' 'youtube-dl') 
 
-source=("${pkgname}_${_pkgver}.deb::https://docs.google.com/uc?id=1_FGSxInNkx2KmxVxNFf-ADAF7hANiYUB")
+source=("${pkgname}_${pkgver}.deb::https://docs.google.com/uc?id=1_FGSxInNkx2KmxVxNFf-ADAF7hANiYUB")
 md5sums=('SKIP')
 
 package() {
