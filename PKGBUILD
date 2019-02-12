@@ -1,6 +1,6 @@
 # Maintainer: Jonas Röger <jonas.roeger@gmail.com>
 pkgname=xrootgif
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A simple program to display GIFs as X root, targeting performance"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('custom:MIT')
 depends=('libx11' 'giflib' 'imlib2')
 makedepends=('gcc' 'make')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/VipeOut23/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=(1cfbc1b2c575f1e9695e0aa5a39a5b36b2898d38f1b1af59db4ea0757ec69b084a7c89d7f71b7bab1ffd440044308cad26e6db9132cd408ab8f3a8583906df23)
+sha512sums=(e3f8e961fb1cbfe0f8907b768fbbc9df1854f3e74663f8a8f9fd71fd19fa0a7245b054e375065362aeeabd2806f32c69d1ad79a673aa7492bec8728348f0678a)
 
 build() {
 	local _realname="XRootGIF"
