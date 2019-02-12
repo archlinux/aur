@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libaacs-git
-pkgver=0.9.0.7.g5486058
+pkgver=0.9.0.20.ga31f175
 pkgrel=1
 pkgdesc="Advanced Access Content System. (GIT version)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=('libaacs'
           )
 conflicts=('libaacs')
 source=('git+https://git.videolan.org/git/libaacs.git')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd libaacs
@@ -25,18 +25,20 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p build
+
   cd libaacs
-  ./bootstrap
+  autoreconf -vfi
 }
 
 build() {
-  cd libaacs
-  ./configure \
+  cd build
+  ../libaacs/configure \
     --prefix=/usr
 
   make
 }
 
 package() {
-  make -C libaacs DESTDIR="${pkgdir}" install
+  make -C build DESTDIR="${pkgdir}" install
 }
