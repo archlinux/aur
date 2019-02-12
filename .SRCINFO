@@ -1,15 +1,16 @@
 pkgbase = torsniff
 	pkgdesc = A sniffer for fetching torrents from the BitTorrent network
-	pkgver = 0.0.6
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/fanpei91/torsniff
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	makedepends = git
 	depends = glibc
 	provides = torsniff
-	source = torsniff-0.0.6.tar.gz::https://github.com/fanpei91/torsniff/archive/v0.0.6.tar.gz
-	sha256sums = d6d26c89add787140e8dce23f3326cb9538d2e50158d9a64b694c991d5f3cf89
+	source = torsniff-0.0.9.tar.gz::https://github.com/fanpei91/torsniff/archive/v0.0.9.tar.gz
+	sha256sums = cd9169604b62f8128a5b12cdfd506c05626802952db4dabbd2917e929c65f8ab
 
 pkgname = torsniff
 
