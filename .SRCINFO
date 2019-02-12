@@ -1,0 +1,14 @@
+pkgbase = pastify
+	pkgdesc = A command line pastbin service helper
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ryanmaynard/pastify
+	arch = any
+	license = MIT
+	depends = curl
+	provides = pastify
+	source = pastify-1.0.0.tar.gz::https://github.com/ryanmaynard/pastify/archive/v1.0.0.tar.gz
+	sha256sums = aa17f4a40b68a2943d2a21f07ae888fca21f523a0df0db09c1df7608d5876ae1
+
+pkgname = pastify
+
