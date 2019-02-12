@@ -14,8 +14,8 @@ NoNewPrivileges=true
 ProtectHome=true
 ProtectSystem=strict
 ReadWritePaths=/var/lib/prometheus
-ConfigurationDirectory=/etc/thanos
-StateDirectory=/var/lib/thanos
+ConfigurationDirectory=etc/thanos
+StateDirectory=var/lib/thanos
 
 [Install]
 WantedBy=multi-user.target

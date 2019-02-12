@@ -20,7 +20,7 @@ source_x86_64=("thanos.service"
                "thanos.conf"
                "thanos.sysuser"
                "https://github.com/improbable-eng/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver.linux-amd64.tar.gz")
-sha256sums_x86_64=('a2da1b0fd68488693b4db2d46300d70d6a3233e91195d971c6c470dd337cf08d'
+sha256sums_x86_64=('3bb9ad1cc585cc69ce2177e5d219fb190823b076c7f8414a0ef07da2eea375cd'
                    '97a2a76ded469808b7d086dc02a63a9f45c535831763fc33ebd99528dceb437e'
                    '0d2ee33fa0a91ea2a93c652fdcc8d50f2b69a3598bc6819f14c57239ce3fcc82'
                    'fe1cb7ed940dac645309bbf0ce99c278ded8727a6cab9842bd9f572d205f60a6')
