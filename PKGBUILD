@@ -9,6 +9,7 @@ pkgdesc="An inkscape extension which lets you add LaTeX equations to your drawin
 arch=('any')
 license=('custom:BSD')
 url="https://github.com/textext/textext"
+makedepends=('dos2unix')
 depends=('inkscape' 'texlive-core' 'python2')
 optdepends=('pdf2svg' 'pygtk' 'imagemagick6')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/textext/textext/releases/download/$pkgver/${_pkgname}-Linux-$pkgver.tar.gz"
