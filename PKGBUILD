@@ -7,7 +7,7 @@ pkgdesc="A browser plugin designed for the viewing of premium video content, sta
 pkgver=4.10.1303.0
 _chrome_ver=72.0.3626.81
 _channel=stable
-pkgrel=2
+pkgrel=3
 epoch=1
 arch=('x86_64')
 url='https://www.widevine.com/'
@@ -20,7 +20,7 @@ options=("!strip")
 license=('custom')
 depends=('vivaldi-ffmpeg-codecs' 'glib2')
 conflicts=('chromium-widevine' 'google-chrome')
-sha256sums=('18415ed1eeb7dc54596cda2a22be05866e2017d4c5b22f434bd980788995d870'
+sha256sums=('SKIP'
             '145faa3af49483277c89dfc73cd0d1e2849c065c828a80f3cc7a70a94192da25'
             '3fda44a5b8b222434530f27923568de1fda1eb0caa8621b56a8b2a6a2a2e3d5d')
 
