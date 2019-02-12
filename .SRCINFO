@@ -1,22 +1,22 @@
 pkgbase = bison-git
 	pkgdesc = The GNU general-purpose parser generator
-	pkgver = 3.0.4.r16.gd6445ec1
-	pkgrel = 2
+	pkgver = 3.3.2.r46.gf23b879f
+	pkgrel = 1
 	url = https://www.gnu.org/software/bison/bison.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = gzip
+	makedepends = help2man
 	makedepends = rsync
 	makedepends = tar
+	makedepends = wget
 	depends = glibc
 	provides = bison
 	conflicts = bison
 	source = git+https://git.savannah.gnu.org/git/bison.git
-	source = sun-cc.patch
 	sha256sums = SKIP
-	sha256sums = ecde4c4e21e16d4b2a0bf6fc22ada353cc7e6977af340de967fa35387ce921e1
 
 pkgname = bison-git
 
