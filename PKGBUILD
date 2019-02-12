@@ -2,7 +2,7 @@
 
 pkgname=cemu
 pkgver=1.15.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Wii U emulator (via wine). Includes the Cemuhook plugin and graphic packs"
 arch=(x86_64)
 url="http://cemu.info/"
@@ -37,9 +37,9 @@ options=(!strip)
 build() {
   cd $srcdir/
   cd cemu_$pkgver
-  bsdtar -x -f ../../cemuhook_${_cemuhookver}.zip
+  bsdtar -x -f $srcdir/cemuhook_${_cemuhookver}.zip
   cd graphicPacks
-  bsdtar -x -f ../../../graphicPacks${_graphicpackver}.zip
+  bsdtar -x -f $srcdir/graphicPacks${_graphicpackver}.zip
 }
 package() {
   cd $srcdir
