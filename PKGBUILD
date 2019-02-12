@@ -3,7 +3,7 @@
 
 pkgname=diesel_cli
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for the Diesel crate'
 arch=(i686 x86_64)
 url='https://github.com/diesel-rs/diesel/tree/master/diesel_cli'
@@ -41,4 +41,4 @@ package() {
 	install -Dm644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set ts=2 sw=2 noet:
