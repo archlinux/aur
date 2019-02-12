@@ -162,7 +162,7 @@ cutilsfiles = %w(
   canned_fs_config.cpp
   fs_config.cpp
 )
-libcutils = compile(expand("core/libcutils", cutilsfiles), "-D_GNU_SOURCE -Icore/libcutils/include -Icore/include")
+libcutils = compile(expand("core/libcutils", cutilsfiles), "-D_GNU_SOURCE -Icore/libcutils/include -Icore/include -Icore/base/include")
 
 diagnoseusbfiles = %w(
   diagnose_usb.cpp

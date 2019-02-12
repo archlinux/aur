@@ -4,7 +4,7 @@
 # Contributor: Alucryd <alucryd at gmail dot com>
 
 pkgname=android-tools-git
-pkgver=r44069.be38989da0
+pkgver=r44324.ea57928f00
 pkgrel=1
 pkgdesc='Android platform tools'
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ url='http://tools.android.com/'
 license=(Apache MIT)
 depends=(pcre2 libusb libc++)
 optdepends=('python: for mkbootimg script')
-makedepends=(git clang gtest ruby cmake ninja go)
+makedepends=(git clang ruby cmake ninja)
 conflicts=(android-tools)
 replaces=(android-tools)
 provides=(android-tools)
@@ -44,7 +44,7 @@ sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
-          '277650afb54a713494a7416931b68e1e5cab99bc'
+          'eb845ae03159cd3853e1ebc9a0d40caab6d8111f'
           'abfe045280ec6342e2d3f9d9030138d0c53e4d26'
           'ec473160d7445f97bccabd1c32ac0ae2f77900c1'
           '41608052bff69632d1cc5a6e2efb92cf4ad857e6'
