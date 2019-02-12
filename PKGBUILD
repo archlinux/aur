@@ -17,15 +17,13 @@ sha256sums=('836d5277426a13e4dbc32cf7dcac17229a6548e2ff3becb86203406fd2b849ee'
             '739432241baaafe87c7c6ee44a2b9b33a0abdf1220576ef253b12c4f8c915871')
 
 prepare() {
-    cd "$_pkgname-$pkgver"
-    cp "$srcdir"/CMakeLists.txt .
-    rm -rf build
+    cp "$srcdir"/CMakeLists.txt "$_pkgname-$pkgver"
     mkdir -p build
 }
 
 build() {
-    cd "$_pkgname-$pkgver"/build
-    cmake .. \
+    cd build
+    cmake ../"$_pkgname-$pkgver" \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_LIBDIR=lib \
@@ -33,6 +31,6 @@ build() {
 }
 
 package() {
-    cd "$_pkgname-$pkgver/build"
+    cd build
     make DESTDIR="$pkgdir" install
 }
