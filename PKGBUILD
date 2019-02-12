@@ -1,14 +1,14 @@
 # Maintainer: bkacjios < blackops7799 at gmail dot com >
 
 pkgname=inav-configurator
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Crossplatform configuration tool for the INAV flight control system"
 arch=('i686' 'x86_64')
 url="https://github.com/iNavFlight/inav-configurator"
-source=(https://github.com/iNavFlight/inav-configurator/archive/2.1.1.zip
+source=(https://github.com/iNavFlight/inav-configurator/archive/2.1.2.zip
         inav-configurator.desktop)
-md5sums=('e828f95581a607672b3be950ec401922'
+md5sums=('3e6f47c82471ef6ca977b4f03ebe1f30'
          'SKIP')
 provides=('inav-configurator')
 conflicts=('inav-configurator')
