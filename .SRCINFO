@@ -1,7 +1,7 @@
 pkgbase = airtame-application
 	pkgdesc = Airtame official screen streaming application.
 	pkgver = 3.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.airtame.com
 	arch = x86_64
 	license = Custom

@@ -1,8 +1,9 @@
-# Maintainer: ava1ar <mail(at)ava1ar(dot)me>
+# Maintainer: mads256h <mads256h(at)gmail(dot)com>
+# Contributor: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgname=airtame-application
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Airtame official screen streaming application."
 arch=('x86_64')
 url="http://www.airtame.com"
