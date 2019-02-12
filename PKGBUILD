@@ -2,7 +2,7 @@
 
 pkgname='ivre'
 pkgver=0.9.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Network recon framework'
 arch=('any')
 url='https://ivre.rocks/'
@@ -37,7 +37,7 @@ backup=('etc/httpd/conf/extra/ivre.conf')
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/cea-sec/$pkgname/v$pkgver/pkg/apache/ivre.conf")
 sha256sums=('e0d9df1d61d8483ed266738b70c33366b8860d0cc4a864d04924f91ab8abc4ca'
-            '9c7267b7b2bde354e03a0cf683b56c0ca2410296bdd7424a964fb2b4f14c7ee3')
+            '1befe4daf20ccdf1b1906de244df2de5519843210e95491f3d8fe62ec660848c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
