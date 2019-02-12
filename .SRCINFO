@@ -1,5 +1,5 @@
 pkgbase = odr-dabmod-git
-	pkgdesc = OpenDigitalRadio DAB modulator
+	pkgdesc = Opendigitalradio DAB modulator
 	pkgver = v2.3.0
 	pkgrel = 1
 	url = https://github.com/Opendigitalradio/ODR-DabMod
