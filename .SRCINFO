@@ -16,6 +16,7 @@ pkgbase = zrythm
 	depends = libcyaml
 	depends = breeze-icons
 	depends = portaudio
+	depends = ffmpeg
 	source = https://git.zrythm.org/zrythm/zrythm/-/archive/master/zrythm-master.tar.gz
 	md5sums = SKIP
 
