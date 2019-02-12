@@ -2,7 +2,7 @@
 # Contributor: Dan Vratil <vratil@progdansoft.com>
 
 pkgname=k3b-git
-pkgver=18.07.70.r6307.059d0da2e
+pkgver=19.03.70.r6359.062d30a3e
 pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. (Git version)"
 arch=('x86_64')
@@ -18,7 +18,6 @@ depends=('qt5-webkit'
          'libmpcdec'
          'libsamplerate'
          'libmad'
-         'hicolor-icon-theme'
          )
 makedepends=('git'
              'cmake'
@@ -53,6 +52,7 @@ prepare() {
 build() {
   cd build
   cmake ../k3b \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_LIBEXECDIR=/usr/lib/k3b \
