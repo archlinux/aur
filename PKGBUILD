@@ -10,7 +10,11 @@ url="https://github.com/improbable-eng/thanos"
 license=("Apache")
 depends=()
 makedepends=()
-backup=("etc/conf.d/thanos")
+backup=("etc/thanos/sidecar.conf"
+        "etc/thanos/store.conf"
+        "etc/thanos/query.conf"
+        "etc/thanos/rule.conf"
+        "etc/thanos/compact.conf")
 
 source_x86_64=("thanos.service"
                "thanos.conf"
