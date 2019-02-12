@@ -28,7 +28,6 @@ build() {
       --enable-spell \
       --enable-sourceview
 
-    ./configure --prefix=/usr --enable-icon-browser --enable-html --enable-gio --enable-spell --enable-sourceview
     make
 }
 
