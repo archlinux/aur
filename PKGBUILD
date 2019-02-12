@@ -3,13 +3,14 @@
 
 pkgname=vim-twig-git
 pkgver=20190212
-pkgrel=1
+pkgrel=2
 pkgdesc="Supports Twig templates for vim"
 url="https://github.com/lumiliet/vim-twig"
-source=('git+https://github.com/lumiliet/vim-twig')
 license=('unknow')
 arch=('any')
 depends=('vim')
+source=('git+https://github.com/lumiliet/vim-twig')
+sha512sums=('SKIP')
 
 _gitroot="git://github.com/lumiliet/vim-twig.git"
 _gitname="vim-twig"
