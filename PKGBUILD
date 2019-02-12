@@ -1,4 +1,4 @@
-pkgname=spi-ch341-usb-dkms
+pkgname=spi-ch341-usb
 pkgver=r16.79bbe57
 pkgver() {
 	cd "$srcdir/spi-ch341-usb"
