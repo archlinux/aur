@@ -2,15 +2,16 @@
 # Contributor: scippio <scippio@berounet.cz>
 
 pkgname=vim-twig-git
-pkgver=20151228
-pkgrel=2
+pkgver=20190212
+pkgrel=1
 pkgdesc="Supports Twig templates for vim"
-url="https://github.com/evidens/vim-twig"
+url="https://github.com/lumiliet/vim-twig"
+source=('git+https://github.com/lumiliet/vim-twig')
 license=('unknow')
 arch=('any')
 depends=('vim')
 
-_gitroot="git://github.com/evidens/vim-twig.git"
+_gitroot="git://github.com/lumiliet/vim-twig.git"
 _gitname="vim-twig"
 
 build() {
