@@ -27,7 +27,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd kscd
-#   _ver="$(cat CMakeLists.txt | grep -m3 -e VERSION_MAJOR -e VERSION_MINOR -e VERSION_RELEASE | cut -d '"' -f2 | paste -sd'.')"
+#   _ver="$(cat CMakeLists.txt | grep -m3 -e MAJOR -e MINOR -e RELEASE | cut -d '"' -f2 | paste -sd'.')"
 #   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
   echo "$(git describe --long --tags | tr - .)"
 }
@@ -39,7 +39,7 @@ prepare() {
 build() {
   cd build
   cmake ../kscd \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
