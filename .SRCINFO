@@ -1,6 +1,6 @@
 pkgbase = networkmanager-wireguard-git
 	pkgdesc = NetworkManager VPN plugin for WireGuard - git
-	pkgver = r54.fc454a8
+	pkgver = r80.61646ad
 	pkgrel = 1
 	url = https://github.com/max-moser/network-manager-wireguard/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = networkmanager-wireguard-git
 	makedepends = git
 	makedepends = intltool
 	depends = networkmanager
-	depends = nm-connection-editor
+	depends = libnma
 	depends = WIREGUARD-MODULE
 	depends = wireguard-tools
 	provides = networkmanager-wireguard
