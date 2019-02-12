@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Figma
+Comment=The collaborative interface design tool.
+Icon=/usr/share/pixmaps/figma.png
+Exec=/usr/bin/figma
+Terminal=false
+Categories=Graphics
+
