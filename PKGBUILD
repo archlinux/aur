@@ -1,7 +1,7 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer at live dot de>
 pkgname=superlu_dist
 pkgver=6.1.1
-pkgrel=3
+pkgrel=1
 pkgdesc="Set of subroutines to solve a sparse linear system (MPI parallel version)"
 arch=('x86_64')
 url="http://crd-legacy.lbl.gov/~xiaoye/SuperLU/"
