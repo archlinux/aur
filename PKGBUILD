@@ -6,7 +6,7 @@
 
 pkgname=pytrainer
 pkgver=2.0.0rc1
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to log your sport activities.'
 arch=('any')
 url='https://github.com/pytrainer/pytrainer/wiki'
@@ -22,7 +22,7 @@ source=("$pkgname-${pkgver}.tar.gz::https://github.com/$pkgname/$pkgname/archive
         #pathfix.patch
         )
 md5sums=('1a29bd8749a7ce218e1959e918b60211'
-         'b39a8511bc63e6d65a615d26defbb05f'
+         '87bc8c7037f17f0be158853485ef713f'
          #'c80aa188dce3a5675b15a703873bf3ad'
          )
 
