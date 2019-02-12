@@ -11,9 +11,9 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
 # Can be from either systemd or systemd-stable
-_commit='f02b5472c6f0c41e5dc8dc2c84590866baf937ff'
-pkgver=240.34
-pkgrel=3
+_commit='0430af90ef28a229e51136ad364e1da7e76c8638'
+pkgver=240.95
+pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -80,9 +80,6 @@ sha512sums=('SKIP'
 _backports=(
   # https://github.com/systemd/systemd/issues/11259
   '8ca9e92c742602b8bcd431001e6f5b78c28c184f'
-
-  # https://github.com/systemd/systemd/issues/11314
-  'ee0b9e721a368742ac6fa9c3d9a33e45dc3203a2'
 )
 
 _reverts=(
@@ -180,8 +177,8 @@ package_systemd-selinux() {
   pkgdesc='system and service manager with SELinux support'
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' 'libsystemd-selinux' 'libidn2' 'lz4' 'pam-selinux' 'libelf' 'libseccomp'
-           'util-linux-selinux' 'xz' 'pcre2' 'audit')
+           'libgcrypt' 'libsystemd-selinux' 'libidn2' 'libidn2.so' 'lz4' 'pam-selinux' 'libelf'
+           'libseccomp' 'util-linux-selinux' 'xz' 'pcre2' 'audit')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=('nss-myhostname' 'systemd-tools' 'udev'

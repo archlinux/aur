@@ -1,6 +1,6 @@
 pkgbase = systemd-selinux
-	pkgver = 240.34
-	pkgrel = 3
+	pkgver = 240.95
+	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	groups = selinux
@@ -96,6 +96,7 @@ pkgname = systemd-selinux
 	depends = libgcrypt
 	depends = libsystemd-selinux
 	depends = libidn2
+	depends = libidn2.so
 	depends = lz4
 	depends = pam-selinux
 	depends = libelf
@@ -110,9 +111,9 @@ pkgname = systemd-selinux
 	optdepends = polkit: allow administration as unprivileged user
 	optdepends = curl: machinectl pull-tar and pull-raw
 	provides = nss-myhostname
-	provides = systemd-tools=240.34
-	provides = udev=240.34
-	provides = systemd=240.34-3
+	provides = systemd-tools=240.95
+	provides = udev=240.95
+	provides = systemd=240.95-1
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -141,7 +142,7 @@ pkgname = libsystemd-selinux
 	depends = libselinux
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = libsystemd=240.34-3
+	provides = libsystemd=240.95-1
 	conflicts = libsystemd
 
 pkgname = systemd-resolvconf-selinux
@@ -150,16 +151,16 @@ pkgname = systemd-resolvconf-selinux
 	depends = systemd-selinux
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=240.34-3
+	provides = systemd-resolvconf=240.95-1
 	conflicts = openresolv
-	conflicts = systemd-resolvconf=240.34-3
+	conflicts = systemd-resolvconf=240.95-1
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=240.34-3
-	provides = selinux-systemd-sysvcompat=240.34-3
+	provides = systemd-sysvcompat=240.95-1
+	provides = selinux-systemd-sysvcompat=240.95-1
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
