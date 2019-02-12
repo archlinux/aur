@@ -1,7 +1,7 @@
 pkgbase = watsup
 	pkgdesc = Showing some system status informations
 	pkgver = 4.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.kornelix.com/watsup
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = watsup
 	depends = libappindicator-gtk3
 	options = !emptydirs
 	source = http://www.kornelix.net/downloads/tarballs/watsup-4.4.tar.gz
-	sha256sums = 3a90c1935b3616de18cc3fe2218f348fea099b441c8f14d10028a60dfc9d41c7
+	sha256sums = 77de19a76573ad94a3f32171a92299f241c4b03ec98887f0a56fb547747bf1ed
 
 pkgname = watsup
 
