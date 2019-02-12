@@ -1,7 +1,7 @@
 pkgbase = mspinball-bin
 	pkgdesc = 3D Pinball - Space Cadet
 	pkgver = v1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://archive.org/details/SpaceCadet_Plus95
 	arch = x86_64
 	license = proprietary
