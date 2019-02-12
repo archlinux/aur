@@ -16,11 +16,11 @@ md5sums=('SKIP'
          'F9B462B94D50FB4086D94FD420558B34'
          '05074FDFE9D1FAA78550ED6551CF447B')
 
-pkgver() {
-    # cd "${pkgname}-git"
-    # git describe --tags | sed 's/\(.*\)-.*/\1/' | tr - .
-    echo '0.7.1.16-1'
-}
+#pkgver() {
+#    cd "${pkgname}-git"
+#    git describe --tags | sed 's/\(.*\)-.*/\1/' | tr - .
+#    echo '0.7.1.16-1'
+#}
 
 prepare() {
     cd "${pkgname}-git"
