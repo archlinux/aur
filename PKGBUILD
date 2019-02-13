@@ -1,4 +1,6 @@
-# Maintainer: robertfoster
+# Maintainer: Josef Miegl <josef@miegl.cz>
+# Contributor: robertfoster
+
 pkgbase=rtpengine
 pkgname=('rtpengine' 'rtpengine-dkms')
 pkgver=6.4.1.1
