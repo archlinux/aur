@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var
   make
 }
 
