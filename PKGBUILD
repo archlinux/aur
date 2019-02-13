@@ -1,7 +1,7 @@
 # Maintainer: Rocka <i at Rocka dot me>
 
 pkgname=p3x-onenote
-pkgver=2019.1.18_2
+pkgver=2019.2.8_1
 pkgrel=1
 pkgdesc="Linux Electron Onenote - A Linux compatible version of OneNote"
 arch=('any')
