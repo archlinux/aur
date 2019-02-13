@@ -1,7 +1,7 @@
 # Maintainer: Josef Miegl <josef@miegl.cz>
 
 pkgname=libsmpp34-git
-pkgver=1.13.0.3.g3cf5229
+pkgver=1.13.0.r3.g3cf5229
 pkgrel=1
 pkgdesc="Osmocom version of libsmpp34, an implementation of the SMPP Protocol v3.4"
 url="http://osmocom.org/projects/libsmpp34"
@@ -15,19 +15,23 @@ source=("git+https://git.osmocom.org/${pkgname%-git}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
-  echo $(git describe --always | sed 's/-/./g')
+  cd "${pkgname%-git}"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${pkgname%-git}"
+  autoreconf -f -i
 }
 
 build() {
-  cd "${srcdir}/${pkgname%-git}"
-  autoreconf -i
-  ./configure --prefix=/usr
+  cd "${pkgname%-git}"
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${pkgname%-git}"
   make DESTDIR=${pkgdir} install
 }
 

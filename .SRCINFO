@@ -1,6 +1,6 @@
 pkgbase = libsmpp34-git
 	pkgdesc = Osmocom version of libsmpp34, an implementation of the SMPP Protocol v3.4
-	pkgver = 1.13.0.3.g3cf5229
+	pkgver = 1.13.0.r3.g3cf5229
 	pkgrel = 1
 	url = http://osmocom.org/projects/libsmpp34
 	arch = i686
