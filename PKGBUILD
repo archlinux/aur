@@ -7,14 +7,14 @@
 # Contributor: codyps <archlinux@codyps.com>
 
 pkgname=aircrack-ng-git
-pkgver=20190122.c4c67825
+pkgver=20190211.8562674a
 pkgrel=1
 pkgdesc="WiFi security auditing tools suite"
 url="https://aircrack-ng.org"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL2')
 makedepends=('git' 'python')
-depends=('gcc-libs' 'libnl' 'openssl' 'sqlite' 'iw' 'ethtool' 'net-tools')
+depends=('gcc-libs' 'libnl' 'openssl' 'sqlite' 'hwloc' 'pcre' 'libpcap')
 optdepends=('python: dump-join, airgraph-ng, versuck-ng, airdrop-ng')
 provides=("${pkgname%-git}" 'aircrack-ng-scripts')
 conflicts=("${pkgname%-git}" 'aircrack-ng-scripts')
@@ -23,19 +23,19 @@ source=("git+https://github.com/aircrack-ng/aircrack-ng.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
 build() {
-  cd "${srcdir}/${pkgname%-git}"
-  autoreconf -i
-  ./configure --with-experimental --with-ext-scripts --prefix=/usr --sbindir=/usr/bin
+  cd "${pkgname%-git}"
+  autoreconf -f -i
+  ./configure --with-experimental --with-ext-scripts --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${pkgname%-git}"
   make DESTDIR="${pkgdir}" install
 }
 
