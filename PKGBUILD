@@ -1,10 +1,10 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
 
 pkgname=python-imolecule
-pkgdesc="igraph is a collection of network analysis tools with the emphasis on efficiency, portability and ease of use."
+pkgdesc="View molecules in the IPython notebook"
 pkgver=0.1.13
 pkgrel=1
-url="http://igraph.org/python/"
+url="https://github.com/patrickfuller/imolecule/"
 license=('GPL')
 arch=('any')
 depends=('python') 
