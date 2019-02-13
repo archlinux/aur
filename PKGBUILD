@@ -2,7 +2,7 @@
 
 pkgname=ycmd-git
 _gitname=ycmd
-pkgver=r2177.ed8d17c2
+pkgver=r2227.591338a6
 pkgrel=1
 pkgdesc="A code-completion & code-comprehension server"
 arch=('i686' 'x86_64')
@@ -57,9 +57,9 @@ build() {
 package() {
     local trgtdir=usr/share/ycmd
     mkdir -p "$pkgdir/$trgtdir/third_party"
-   	cp -r "$srcdir/$_gitname/"{ycmd,ycm_core.so,CORE_VERSION,cpp,clang_includes} \
+   	cp -r "$srcdir/$_gitname/"{ycmd,ycm_core.so,CORE_VERSION,cpp} \
 		    "$pkgdir/$trgtdir"
-   	cp -r "$srcdir/$_gitname/third_party/"{bottle,frozendict,jedi_deps,python-future,requests_deps,waitress} \
+   	cp -r "$srcdir/$_gitname/third_party/"{bottle,clang,frozendict,jedi_deps,python-future,requests_deps,waitress} \
 		    "$pkgdir/$trgtdir/third_party"
 	  find "$pkgdir" -name .git -exec rm -fr {} +
    	rm -rf "$pkgdir/$trgtdir/ycmd/tests"

@@ -1,6 +1,6 @@
 pkgbase = ycmd-git
 	pkgdesc = A code-completion & code-comprehension server
-	pkgver = r2177.ed8d17c2
+	pkgver = r2227.591338a6
 	pkgrel = 1
 	url = https://github.com/Valloric/ycmd
 	arch = i686
