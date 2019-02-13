@@ -1,7 +1,7 @@
 
 # Maintainer: Simon Tas <simon.tas.st@gmail.com>
 pkgname="django-templated-email"
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A Django oriented templated / transaction email abstraction"
 arch=('any')
@@ -9,8 +9,8 @@ url="https://pypi.python.org/pypi/$pkgname"
 license=('MIT')
 depends=('python-django')
 provides=('templated_email')
-source=("https://files.pythonhosted.org/packages/78/7f/8b749c363f2ccd6b181dff384f6ae845a0656284ed419a097d98c2a42661/$pkgname-$pkgver.tar.gz")
-md5sums=('a8ced4da201726929be9607a1fd9d00c')
+source=("https://files.pythonhosted.org/packages/62/73/515aa27ad1cc49e77cba33f9d1aa9ca6f0414f2bf9a61ea9df92ecea0677/$pkgname-$pkgver.tar.gz")
+md5sums=('869d60ebc2bb70db66287d32a37325c0')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
