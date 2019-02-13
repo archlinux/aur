@@ -87,7 +87,7 @@ check_wine() {
 		env WINEPREFIX=$WINEPREFIX WINE=$WINEPATH/wine \
 		    $(which winetricks) -q --force $WINETRP >/dev/null
 	    fi
-	    if [ "x$($WINEPATH/wine --version | grep -q 4.0 ;echo $?)" != "x0" ] ;then
+	    if [ "x$($WINEPATH/wine --version | grep -q 4. ;echo $?)" != "x0" ] ;then
 		env WINEPREFIX=$WINEPREFIX WINE=$WINEPATH/wine \
 		    $(which winetricks) -q --force winxp >/dev/null
 	    fi
@@ -98,7 +98,7 @@ check_wine() {
     fi
 }
 
-ELVER="1385477"
+ELVER="1456645"
 QTVER="5.11"
 SHAREDIR=""
 CONFDIR="$HOME/.config/CCP"
