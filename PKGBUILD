@@ -1,4 +1,5 @@
-# Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
+# Maintainer: Josef Miegl <josef@miegl.cz>
+# Contributor: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=osmo-trx-git
 _pkgname=osmo-trx
