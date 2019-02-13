@@ -1,0 +1,12 @@
+diff -ura a/docs/index.rst b/docs/index.rst
+--- a/docs/index.rst	2019-02-13 23:42:16.297754478 +0800
++++ b/docs/index.rst	2019-02-13 23:42:36.481931189 +0800
+@@ -4,7 +4,7 @@
+ 
+ /ˈnesəl/ *(rhymes with "wrestle")*
+ 
+-.. image:: _images/sphx_glr_plot_ellipsoids_001.png
++.. image:: /examples/images/sphx_glr_plot_ellipsoids_001.png
+    :width: 280px
+    :align: right
+    :target: examples/plot_ellipsoids.html
