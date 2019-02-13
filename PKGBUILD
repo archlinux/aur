@@ -1,6 +1,6 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=luxcorerender-git
-pkgver=2.1.beta3.r11.g5154f38f0
+pkgver=2.1.r132.gcff1bdeda
 pkgrel=1
 pkgdesc="LuxCoreRender is a physically correct, unbiased rendering engine."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("git+https://github.com/LuxCoreRender/LuxCore.git"
         "glfw.patch"
         )
 md5sums=('SKIP'
-         '21b963e5f66d2c8c6a50bebcf9f0fe07'
+         '8a339a25a683208a8c089a9b30420950'
          '624f2be4cb431f6a4cfcc968d6263ac2')
 
 pkgver() {
