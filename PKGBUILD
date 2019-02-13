@@ -4,10 +4,10 @@
 
 pkgname=imgseek
 pkgver=0.8.6
-pkgrel=9
+pkgrel=10
 pkgdesc="a photo collection manager and viewer with content-based search and many other features"
 url="http://www.imgseek.net"
-depends=('pyqt3' 'imagemagick' 'python-imaging')
+depends=('pyqt3' 'imagemagick' 'python-imaging' 'python2-sip418')
 arch=('i686' 'x86_64')
 license=('GPL')
 source=("http://downloads.sourceforge.net/sourceforge/imgseek/imgSeek-$pkgver.tar.bz2" 
@@ -27,12 +27,13 @@ prepare() {
 
 build() {
   cd "$_dir"
-  python2 setup.py build
+  PYTHONPATH=/usr/lib/python2.7/site-packages/sip418 python2 setup.py build
 }
 
 package() {
   cd "$_dir"
-  python2 setup.py install --prefix="$pkgdir"/usr
+  PYTHONPATH=/usr/lib/python2.7/site-packages/sip418 python2 setup.py install --prefix="$pkgdir"/usr
   cd "$pkgdir"/usr/lib/python2.7/site-packages/imgSeekLib
   ln -s ImageDB.py ImgDB.py
+  sed -i '1s_.*_#!/usr/bin/env python2\nimport sys\nsys.path.insert(0, "/usr/lib/python2.7/site-packages/sip418")_' "$pkgdir/usr/bin/imgSeek"
 }
