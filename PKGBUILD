@@ -1,31 +1,36 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Fredy García <frealgagu at gmail dot com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Mathias Stearn <mathias@10gen.com>
 # Contributor: Alec Thomas
 
 pkgname=mongodb
-pkgver=4.0.5
+pkgver=4.0.6
 pkgrel=1
-pkgdesc='A high-performance, open source, schema-free document-oriented database'
-arch=('x86_64')
-url='https://www.mongodb.com/'
-license=('AGPL3')
-depends=('pcre' 'snappy' 'openssl' 'libsasl' 'yaml-cpp' 'lsb-release' 'wiredtiger'
-         'libstemmer' 'curl')
-makedepends=('scons' 'readline' 'ncurses' 'libpcap' 'python2-setuptools' 'python2-regex'
-             'python2-cheetah' 'python2-typing' 'python2-requests' 'python2-yaml')
-checkdepends=('python2-pymongo')
-optdepends=('libpcap: needed for mongosniff'
-            'mongodb-tools: mongoimport, mongodump, mongotop, etc')
-backup=('etc/mongodb.conf')
-source=("http://downloads.mongodb.org/src/mongodb-src-r${pkgver}.tar.gz"
-        'mongodb.sysusers' 'mongodb.tmpfiles' 'mongodb.conf' 'mongodb.service')
-sha512sums=('4a544ad40d75583b38a6a97a0a6e4fae7d0d7a740aa1f993adac6855c5f7fae43b4cf6966e58d16ec716e8b93c770a3dc3997c2785597b5e37dfc7aafa516976'
-            '889425b864c58a767aa5865c0ce9817361ad99fec78050fa600f14eaef5a56ce0bc41a03878233e99f4862596a94dafcfebebecd4d57443b742117b873ab813d'
-            'a931c401792f4e7928e4778d91626c1ecc3e97e5728549b170c050de487b2e5234747b0ee2d5acc3d63b798716758c17e30914dcaa9a92ac386db39f8a45a05c'
-            '05dead727d3ea5fe8af1a3c3888693f6b3e2b8cb7f197a5d793352e10d2c524e96c9a5c55ad2e88c1114643a9612ec0b26a2574b48a5260a9b51ec8941461f1c'
-            '177251404b2e818ae2b546fe8b13cb76e348c99e85c7bef22a04b0f07b600fd515a309ede50214f4198594388a6d2b31f46e945b9dae84aabb4dfa13b1123bb9')
+pkgdesc="A high-performance, open source, schema-free document-oriented database"
+arch=("x86_64")
+url="https://www.${pkgname}.com/"
+license=("AGPL3")
+depends=("curl" "libstemmer" "lsb-release" "pcre" "wiredtiger" "yaml-cpp")
+optdepends=("${pkgname}-tools: mongoimport, mongodump, mongotop, etc")
+makedepends=("libpcap" "ncurses" "python2-cheetah" "python2-regex" "python2-requests" "python2-setuptools" "python2-typing" "python2-yaml" "readline" "scons")
+checkdepends=("python2-pymongo")
+backup=("etc/${pkgname}.conf")
+source=(
+  "http://downloads.${pkgname}.org/src/${pkgname}-src-r${pkgver}.tar.gz"
+  "${pkgname}.conf"
+  "${pkgname}.service"
+  "${pkgname}.sysusers"
+  "${pkgname}.tmpfiles"
+)
+sha256sums=(
+  "34165ef42c7199c438e1706fef515cbde012d6a884406d102082d39eab72c235"
+  "8010ce728d657524cd76b5afda7ffbc1cc389642336b12b89cec5df2b09fc0e4"
+  "19f55ab28652b3817e98fc3f15cc2f6f3255a5e1dfd7b0d5a27c9ba22fd2703e"
+  "47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b"
+  "51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac"
+)
 
 _scons_args=(
   --use-system-pcre
@@ -37,27 +42,27 @@ _scons_args=(
   --use-sasl-client
   --ssl
   --disable-warnings-as-errors
-  # --use-system-asio     # https://jira.mongodb.org/browse/SERVER-21839
+  # --use-system-asio     # https://jira.${pkgname}.org/browse/SERVER-21839
   # --use-system-v8       # Doesn't compile
   # --use-system-icu
-  # --use-system-tcmalloc # Disabled as upstream suggests in https://jira.mongodb.org/browse/SERVER-17447?focusedCommentId=841890&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-841890
+  # --use-system-tcmalloc # Disabled as upstream suggests in https://jira.${pkgname}.org/browse/SERVER-17447?focusedCommentId=841890&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-841890
 )
 
 prepare() {
-  cd mongodb-src-r$pkgver
   # Broken tls13 support, removing to fix build
-  sed -i '/counts.tls13/d' src/mongo/util/net/ssl_manager_openssl.cpp
+  sed -i "/counts.tls13/d" "${srcdir}/${pkgname}-src-r${pkgver}/src/mongo/util/net/ssl_manager_openssl.cpp"
 }
 
 build() {
-  cd mongodb-src-r${pkgver}
-  export SCONSFLAGS="$MAKEFLAGS"
+  cd "${srcdir}/${pkgname}-src-r${pkgver}"
 
+  export SCONSFLAGS="$MAKEFLAGS"
   scons core tools "${_scons_args[@]}"
 }
 
 check() {
-  cd mongodb-src-r${pkgver}
+  cd "${srcdir}/${pkgname}-src-r${pkgver}"
+
   export SCONSFLAGS="$MAKEFLAGS"
 
   # Setting LANG to workaround the following test error:
@@ -65,23 +70,23 @@ check() {
 
   # 3.6.0: mlock permission denied
   scons unittests "${_scons_args[@]}"
-  sed -i -e '/oplog_buffer_collection_test/d' build/unittests.txt
-  LANG=en_US.UTF-8 python2 buildscripts/resmoke.py --suites=unittests || warning "Tests failed"
+  sed -i -e "/oplog_buffer_collection_test/d" "${srcdir}/${pkgname}-src-r${pkgver}/build/unittests.txt"
+  LANG="en_US.UTF-8" python2 "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=unittests || warning "Tests failed"
 
   scons dbtest "${_scons_args[@]}"
-  python2 buildscripts/resmoke.py --suites=dbtest
+  python2 "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=dbtest
 
   scons integration_tests "${_scons_args[@]}"
-  python2 buildscripts/resmoke.py --suites=integration_tests_replset,integration_tests_standalone --dbpathPrefix="$srcdir"
+  python2 "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=integration_tests_replset,integration_tests_standalone --dbpathPrefix="${srcdir}"
 }
 
 package() {
-  cd mongodb-src-r${pkgver}
+  cd "${srcdir}/${pkgname}-src-r${pkgver}"
 
-  scons install --prefix="$pkgdir/usr" --nostrip "${_scons_args[@]}"
+  scons install --prefix="${pkgdir}/usr" --nostrip "${_scons_args[@]}"
 
-  install -Dm644 "$srcdir/mongodb.conf" "$pkgdir/etc/mongodb.conf"
-  install -Dm644 "$srcdir/mongodb.service" "$pkgdir/usr/lib/systemd/system/mongodb.service"
-  install -Dm644 "$srcdir/mongodb.sysusers" "$pkgdir/usr/lib/sysusers.d/mongodb.conf"
-  install -Dm644 "$srcdir/mongodb.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/mongodb.conf"
+  install -Dm644 "${srcdir}/${pkgname}.conf" "${pkgdir}/etc/${pkgname}.conf"
+  install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
