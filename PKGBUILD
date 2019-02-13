@@ -4,7 +4,7 @@
 pkgname=ssb-patchwork
 _upstream=patchwork
 pkgver=3.11.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB)"
 arch=('i686' 'x86_64')
 url="https://github.com/ssbc/patchwork"
@@ -27,13 +27,17 @@ sha512sums=(
 
 build() {
     cd "${srcdir}/${_upstream}-${pkgver}"
+    # Electron's version.
+    export npm_config_target=$(electron2 -v)
+    # The architecture of Electron, can be ia32 or x64.
+    export npm_config_arch=x64
+    export npm_config_target_arch=x64
+    # Download headers for Electron.
+    export npm_config_disturl=https://atom.io/download/electron
+    # Tell node-pre-gyp that we are building for Electron.
+    export npm_config_runtime=electron
 
-    npm ci --only=production --ignore-scripts
-    npm rebuild \
-      --runtime=electron \
-      --target=$(electron2 -v) \
-      --abi=$(electron2 --abi) \
-      --disturl=https://atom.io/download/atom-shell
+    npm install --only=production --ignore-scripts
 }
 
 package() {
