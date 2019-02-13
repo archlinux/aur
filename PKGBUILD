@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/ansible/awx"
 license=('Apache-2.0')
 depends=('python2' 'gettext')
+makedepends=('python2-setuptools')
 options=(!emptydirs)
 source=("https://github.com/ansible/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=('a2f47ca91edf0178686a5de7fd4cc784')

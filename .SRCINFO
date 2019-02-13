@@ -5,6 +5,7 @@ pkgbase = awx
 	url = https://github.com/ansible/awx
 	arch = any
 	license = Apache-2.0
+	makedepends = python2-setuptools
 	depends = python2
 	depends = gettext
 	options = !emptydirs
