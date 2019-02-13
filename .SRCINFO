@@ -35,3 +35,40 @@ pkgbase = filebot-git
 
 pkgname = filebot-git
 
+pkgbase = filebot-git
+	pkgdesc = The ultimate TV and Movie Renamer
+	pkgver = 4.8.5.20190207
+	pkgrel = 1
+	url = https://github.com/filebot/filebot
+	install = filebot.install
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7l
+	arch = armv7h
+	license = Commercial
+	makedepends = ant
+	makedepends = ivy
+	makedepends = jdk8-openjdk
+	depends = java-openjfx
+	depends = jre8-openjdk
+	depends = fontconfig
+	depends = chromaprint
+	optdepends = libzen: Required by libmediainfo
+	optdepends = libmediainfo: Read media info such as video codec, resolution or duration
+	optdepends = java-p7zip-binding: Extract archives
+	optdepends = gvfs: Drag-n-Drop from GVFS remote filesystems
+	provides = filebot
+	conflicts = filebot47
+	conflicts = filebot
+	source = filebot::git+https://github.com/filebot/filebot.git
+	source = filebot-arch.sh
+	source = filebot.desktop
+	source = filebot-license.desktop
+	md5sums = SKIP
+	md5sums = a1f708b2a17a1a548f910ea0c53a9f54
+	md5sums = 8cea85b074146c6057913488a1247fd8
+	md5sums = b49cf931217ed3cfbc8be1cf3133d7e0
+
+pkgname = filebot-git
+
