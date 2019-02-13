@@ -9,27 +9,25 @@
 
 _pkgname="pulseaudio"
 pkgname="$_pkgname-git"
-pkgdesc="A featureful, general-purpose sound server"
-pkgver=v8.0.76.gb5e5475
+pkgdesc="A featureful, general-purpose sound server (development version)"
+pkgver=v12.0.259.g334ae350b
 pkgrel=1
 arch=("i686" "x86_64" "armv7h")
 url="http://pulseaudio.org/"
 license=("GPL" "LGPL")
-depends=("rtkit" "libltdl" "speex" "tdb" "systemd" "fftw" "orc" "libsamplerate"
-         "webrtc-audio-processing" "sbc" "libasyncns" "libxtst" "libsm" "libsndfile" "json-c")
-makedepends=("git" "attr" "avahi" "bluez" "gconf" "intltool" "openssl" "bluez-libs")
+depends=(lib{ltdl,soxr,asyncns,cap,xtst,sm,sndfile} "rtkit" "speexdsp" "tdb"
+         "orc" "webrtc-audio-processing" "dbus" "systemd" "avahi" "openssl"
+         "lirc" "jack" bluez{,-libs} "sbc" python-{pyqt5,dbus,sip} "fftw") #json-c
+makedepends=("git" lib{asyncns,cap,xtst,sm,sndfile,tool,soxr} "attr" "rtkit"
+             "speexdsp" "tdb" "systemd" {jack2-,}dbus "avahi" bluez{,-libs}
+             "intltool"  "sbc" "lirc" "openssl" "fftw" "orc" "gtk3"
+             "webrtc-audio-processing" "check" "autoconf-archive") #gconf
 optdepends=("alsa-plugins: ALSA support"
-            "avahi: zeroconf support"
-            "bluez: bluetooth support"
-            "gconf: configuration through gconf"
-            "jack: jack support"
-            "lirc-utils: infra-red support"
-            "openssl: RAOP support"
-            "python-pyqt4: Equalizer GUI (qpaeq)")
+            "pulseaudio-alsa: ALSA configuration (recommended)"
+            "lirc-utils: infra-red support")
 backup=(etc/pulse/{daemon.conf,default.pa,system.pa,client.conf})
-provides=("pulseaudio" "libpulse" "pulseaudio-zeroconf" "pulseaudio-gconf" "pulseaudio-equalizer" "pulseaudio-bluetooth" "pulseaudio-jack" "pulseaudio-xen" "pulseaudio-lirc")
-conflicts=("pulseaudio" "libpulse" "pulseaudio-zeroconf" "pulseaudio-gconf" "pulseaudio-equalizer" "pulseaudio-bluetooth" "pulseaudio-jack" "pulseaudio-xen" "pulseaudio-lirc")
-replaces=("pulseaudio" "libpulse" "pulseaudio-zeroconf" "pulseaudio-gconf" "pulseaudio-equalizer" "pulseaudio-bluetooth" "pulseaudio-jack" "pulseaudio-xen" "pulseaudio-lirc")
+provides=(pulseaudio{,-{zeroconf,lirc,jack,bluetooth,equalizer}} "libpulse") #"pulseaudio-xen" "pulseaudio-gconf"
+conflicts=(pulseaudio{,-{zeroconf,lirc,jack,bluetooth,equalizer}} "libpulse") #"pulseaudio-xen" "pulseaudio-gconf"
 options=(!emptydirs)
 source=("git+https://github.com/pulseaudio/pulseaudio.git")
 sha256sums=("SKIP")
@@ -39,20 +37,29 @@ pkgver() {
     git describe --always | sed "s/-/./g"
 }
 
+prepare() {
+    cd "$srcdir/$_pkgname"
+    NOCONFIGURE=1 ./bootstrap.sh
+}
+
 build() {
     cd "$srcdir/$_pkgname"
 
-    ./autogen.sh --prefix=/usr \
+    ./configure --prefix=/usr \
         --sysconfdir=/etc \
         --libexecdir=/usr/lib \
         --localstatedir=/var \
         --with-udev-rules-dir=/usr/lib/udev/rules.d \
+        --with-pulsedsp-location='/usr/\\$$LIB/pulseaudio' \
         --with-database=tdb \
-        --disable-hal-compat \
         --disable-tcpwrap \
         --disable-bluez4 \
         --disable-rpath \
-        --disable-default-build-tests
+        --disable-default-build-tests \
+        DATADIRNAME=share
+
+    # fight unused direct deps
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
     make
 }
@@ -65,9 +72,25 @@ package() {
     # the last user session (module-systemd-login keeps it alive)
     sed -e "/exit-idle-time/iexit-idle-time=0" -i "$pkgdir/etc/pulse/daemon.conf"
 
+    # Assumes that any volume adjustment is intended by the user, who can control
+    # each app's volume. Misbehaving clients can trigger earsplitting volume
+    # jumps. App volumes can diverge wildly and cause apps without their own
+    # volume control to fall below sink volume; a sink-only volume control will
+    # suddenly be unable to make such an app loud enough.
+    sed -e '/flat-volumes/iflat-volumes = no' \
+        -i "$pkgdir/etc/pulse/daemon.conf"
+
+    # Superseded by socket activation
+    sed -e '/autospawn/iautospawn = no' \
+        -i "$pkgdir/etc/pulse/client.conf"
+
     # Disable cork-request module, can result in e.g. media players unpausing
     # when there"s a Skype call incoming
     sed -e "s|/usr/bin/pactl load-module module-x11-cork-request|#&|" -i "$pkgdir/usr/bin/start-pulseaudio-x11"
+
+    # Required by qpaeq
+    sed -e '/Load several protocols/aload-module module-dbus-protocol' \
+        -i "$pkgdir/etc/pulse/default.pa"
 
     rm "$pkgdir/etc/dbus-1/system.d/pulseaudio-system.conf"
 
