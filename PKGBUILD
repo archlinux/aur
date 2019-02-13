@@ -1,14 +1,14 @@
 # Maintainer: Daurnimator <quae@daurnimator.com>
 
 pkgname=('lua-http' 'lua51-http' 'lua52-http')
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 arch=('any')
 url='https://github.com/daurnimator/lua-http'
 license=('MIT')
 makedepends=('pandoc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/daurnimator/lua-http/archive/v$pkgver.tar.gz")
-md5sums=('ce50b1635ffe60c589651dc2557912b3')
+md5sums=('946ff5fec05c2ff69333b060b8b160c1')
 
 build() {
 	cd "lua-http-$pkgver/doc"
@@ -20,10 +20,12 @@ package_lua-http() {
 	depends=('lua-cqueues'
 	         'lua-luaossl'
 	         'lua-basexx'
+	         'lua-binaryheap'
 	         'lua-lpeg'
 	         'lua-lpeg-patterns'
 	         'lua-fifo')
-	optdepends=('lua-zlib: gzip compression')
+	optdepends=('lua-zlib: gzip compression'
+	            'lua-psl: public suffix list checking')
 
 	cd "lua-http-$pkgver"
 	install -Dm644 http/*.lua -t "$pkgdir/usr/share/lua/5.3/http/"
@@ -39,10 +41,12 @@ package_lua51-http() {
 	         'lua51-cqueues'
 	         'lua51-luaossl'
 	         'lua51-basexx'
+	         'lua51-binaryheap'
 	         'lua51-lpeg'
 	         'lua51-lpeg-patterns'
 	         'lua51-fifo')
-	optdepends=('lua51-zlib: gzip compression')
+	optdepends=('lua51-zlib: gzip compression'
+	            'lua51-psl: public suffix list checking')
 
 	cd "lua-http-$pkgver"
 	install -Dm644 http/*.lua -t "$pkgdir/usr/share/lua/5.1/http/"
@@ -56,10 +60,12 @@ package_lua52-http() {
 	         'lua52-cqueues'
 	         'lua52-luaossl'
 	         'lua52-basexx'
+	         'lua52-binaryheap'
 	         'lua52-lpeg'
 	         'lua52-lpeg-patterns'
 	         'lua52-fifo')
-	optdepends=('lua52-zlib: gzip compression')
+	optdepends=('lua52-zlib: gzip compression'
+	            'lua52-psl: public suffix list checking')
 
 	cd "lua-http-$pkgver"
 	install -Dm644 http/*.lua -t "$pkgdir/usr/share/lua/5.2/http/"

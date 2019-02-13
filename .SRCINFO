@@ -1,22 +1,24 @@
 pkgbase = lua-http
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/daurnimator/lua-http
 	arch = any
 	license = MIT
 	makedepends = pandoc
-	source = lua-http-0.2.tar.gz::https://github.com/daurnimator/lua-http/archive/v0.2.tar.gz
-	md5sums = ce50b1635ffe60c589651dc2557912b3
+	source = lua-http-0.3.tar.gz::https://github.com/daurnimator/lua-http/archive/v0.3.tar.gz
+	md5sums = 946ff5fec05c2ff69333b060b8b160c1
 
 pkgname = lua-http
 	pkgdesc = HTTP Library for Lua 5.3
 	depends = lua-cqueues
 	depends = lua-luaossl
 	depends = lua-basexx
+	depends = lua-binaryheap
 	depends = lua-lpeg
 	depends = lua-lpeg-patterns
 	depends = lua-fifo
 	optdepends = lua-zlib: gzip compression
+	optdepends = lua-psl: public suffix list checking
 
 pkgname = lua51-http
 	pkgdesc = HTTP Library for Lua 5.1
@@ -25,10 +27,12 @@ pkgname = lua51-http
 	depends = lua51-cqueues
 	depends = lua51-luaossl
 	depends = lua51-basexx
+	depends = lua51-binaryheap
 	depends = lua51-lpeg
 	depends = lua51-lpeg-patterns
 	depends = lua51-fifo
 	optdepends = lua51-zlib: gzip compression
+	optdepends = lua51-psl: public suffix list checking
 
 pkgname = lua52-http
 	pkgdesc = HTTP Library for Lua 5.2
@@ -36,8 +40,10 @@ pkgname = lua52-http
 	depends = lua52-cqueues
 	depends = lua52-luaossl
 	depends = lua52-basexx
+	depends = lua52-binaryheap
 	depends = lua52-lpeg
 	depends = lua52-lpeg-patterns
 	depends = lua52-fifo
 	optdepends = lua52-zlib: gzip compression
+	optdepends = lua52-psl: public suffix list checking
 
