@@ -1,14 +1,14 @@
 # Maintainer: Milk Brewster <milk on freenode>
 _pkgname=samplecat
 pkgname=${_pkgname}-git
-pkgver=r488.18c883b
+pkgver=r529.5fdca5a
 pkgrel=1
 pkgdesc="A program for cataloguing and auditioning audio samples."
 arch=(x86_64)
 url="http://ayyi.github.io/samplecat"
 license=('GPL')
 groups=()
-depends=('dbus' 'jack' 'libsndfile' 'sqlite' 'ffmpeg' 'gtk2' 'sdl' 'libass' 'gtkglext' 'fftw')
+depends=('dbus' 'jack' 'libsndfile' 'sqlite' 'ffmpeg' 'gtk2' 'sdl' 'libass' 'gtkglext' 'fftw' 'ladspa' 'python')
 makedepends=('git')
 provides=('samplecat' 'samplecat-git')
 conflicts=('samplecat' 'samplecat-git')

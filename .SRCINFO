@@ -1,6 +1,6 @@
 pkgbase = samplecat-git
 	pkgdesc = A program for cataloguing and auditioning audio samples.
-	pkgver = r488.18c883b
+	pkgver = r529.5fdca5a
 	pkgrel = 1
 	url = http://ayyi.github.io/samplecat
 	arch = x86_64
@@ -16,6 +16,8 @@ pkgbase = samplecat-git
 	depends = libass
 	depends = gtkglext
 	depends = fftw
+	depends = ladspa
+	depends = python
 	provides = samplecat
 	provides = samplecat-git
 	conflicts = samplecat
