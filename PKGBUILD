@@ -1,4 +1,5 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 pkgname=office-runner
 pkgver=1.0.3
 pkgrel=1
