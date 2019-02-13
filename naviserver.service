@@ -3,7 +3,7 @@ Description=Naviserver
 After=network.target
 
 [Service]
-Type=forking
+Type=simple
 Environment="LANG=en_US.UTF-8"
 
 ExecStart=/usr/bin/nsd -f -u nsadmin -g nsadmin -t /etc/naviserver/nsd-config.tcl
