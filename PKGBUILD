@@ -2,18 +2,17 @@
 
 pkgname=specmatch
 pkgver=0.9
-pkgrel=1
-epoch=
+pkgrel=2
 pkgdesc="Can be used to produce your own Impulse Responses and to adapt the sound produced by a Guitarix
 setting to another recorded sound."
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/guitarix/files/specmatch/"
 license=('GPL')
 groups=()
-depends=('guitarix2' 'jack2' 'python2' 'python2-matplotlib' 'pygtk' 'python2-numpy' 'python2-scipy' 'python2-pip' )
+depends=('guitarix2' 'jack' 'python2' 'python2-matplotlib' 'pygtk' 'python2-numpy' 'python2-scipy' 'python2-pip' )
 makedepends=()
 checkdepends=()
-optdepends=( 'qjackctl: GUI for jackd' )
+optdepends=()
 provides=()
 conflicts=()
 replaces=()
