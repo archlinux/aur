@@ -1,13 +1,13 @@
 # Maintainer: Francisco Lopes <francisco@oblita.com>
 pkgname=interception-tools
 pkgver=0.1.1
-pkgrel=5
+pkgrel=6
 pkgdesc='A minimal composable infrastructure on top of libudev and libevdev'
 arch=('x86_64')
 license=('GPL3')
 url='https://gitlab.com/interception/linux/tools'
 depends=('libevdev' 'yaml-cpp')
-makedepends=('boost' 'cmake' 'gcc')
+makedepends=('cmake' 'gcc')
 source=("$pkgname.tar.gz::https://gitlab.com/interception/linux/tools/repository/archive.tar.gz?ref=v${pkgver}"
         'udevmon.service')
 md5sums=('033f4c3e81e4d7865314ad2873e3d158'
