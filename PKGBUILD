@@ -2,7 +2,7 @@
 
 pkgname=chesspp-git
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="a swiss chess algorithm implementation, using an SQLITE database"
 arch=('x86_64' 'i686')
 license=('MIT')
