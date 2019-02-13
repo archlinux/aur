@@ -1,0 +1,18 @@
+pkgbase = python-pudb-git
+	pkgdesc = A full-screen, console-based Python debugger
+	pkgver = v2018.1.r48.g7a5fdf9
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/pudb
+	arch = any
+	license = MIT
+	makedepends = python-urwid
+	makedepends = python-pygments
+	depends = python-urwid
+	depends = python-pygments
+	provides = python-pudb
+	conflicts = python-pudb
+	source = git+https://github.com/inducer/pudb.git
+	md5sums = SKIP
+
+pkgname = python-pudb-git
+
