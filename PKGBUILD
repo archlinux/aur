@@ -11,14 +11,13 @@
 
 pkgname="renoise"
 pkgver="3.1.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A music composition program"
 arch=("i686" "x86_64")
 url="https://www.renoise.com"
 license=("custom:renoise")
 depends=("alsa-lib" "libx11" "gcc-libs")
-optdepends=("jack: For JACK audio support"
-            "jack2: For JACK2 audio support")
+optdepends=("jack: For JACK audio support")
 makedepends=("xdg-utils")
 options=("!strip")
 
