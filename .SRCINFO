@@ -1,5 +1,5 @@
 pkgbase = opencv3-opt
-	pkgdesc = Open Source Computer Vision Library
+	pkgdesc = Open Source Computer Vision Library (Legacy Version & /opt directory version)
 	pkgver = 3.4.5
 	pkgrel = 1
 	url = http://opencv.org/
@@ -40,7 +40,7 @@ pkgname = opencv3-opt
 	options = staticlibs
 
 pkgname = opencv3-opt-samples
-	pkgdesc = Open Source Computer Vision Library (samples)
+	pkgdesc = Open Source Computer Vision Library (Legacy Version & /opt directory version) (samples)
 	depends = opencv3-opt=3.4.5
 	provides = opencv3-samples
 
