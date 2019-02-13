@@ -1,17 +1,17 @@
 # Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
 
-pkgname=d-stdx-allocator
 _pkgname=stdx-allocator
-pkgver=2.77.3
-pkgrel=4
+pkgname=d-$_pkgname
+pkgver=3.0.1
+pkgrel=1
 pkgdesc='Extracted std.experimental.allocator'
 arch=('x86_64')
 url='https://github.com/dlang-community/stdx-allocator'
 license=('Boost')
-depends=('liblphobos')
-makedepends=('meson' 'ldc' 'python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('cf558f19bffe555c4f022ab2090b9ad46086eb1dfe7be02cd9fa7451d1b857a6')
+depends=('liblphobos' 'd-mir-core')
+makedepends=('meson' 'ldc')
+source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('9a2b7c5efeba9b1080580769cf753691ec57361090803376d297cfb878206dfb')
 
 build() {
   mkdir $_pkgname-$pkgver/build
@@ -19,7 +19,7 @@ build() {
 
   export DC=ldc
 
-  arch-meson
+  arch-meson ..
 
   ninja
 }
