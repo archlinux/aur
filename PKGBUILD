@@ -1,5 +1,5 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
-pkgname=('git-nautilus-icons-git' 'git-nemo-icons-git' 'git-caja-icons-git')
+pkgname=('git-nautilus-icons-git' 'git-nautilus-icons-py2-git' 'git-nemo-icons-git' 'git-caja-icons-git')
 pkgbase=git-nautilus-icons-git
 _gitname=git_nautilus_icons
 pkgver=r39.2cef1d6
@@ -16,8 +16,20 @@ pkgver() {
 }
 
 package_git-nautilus-icons-git() {
-	pkgdesc="A Nautilus Python extension to overlay icons on files in git repositories"
+	pkgdesc="A Nautilus Python 3 extension to overlay icons on files in git repositories"
 	depends=('python-gobject' 'python-nautilus')
+	provides=(git-nautilus-icons)
+	
+	cd "$srcdir/$_gitname"
+	install -d $pkgdir/usr/share/{icons,nautilus-python/extensions}
+	cp -r icons/hicolor $pkgdir/usr/share/icons
+	install -Dm644 git-nautilus-icons.py $pkgdir/usr/share/nautilus-python/extensions/git-nautilus-icons.py
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/git-nautilus-icons/LICENSE"
+}
+
+package_git-nautilus-icons-py2-git() {
+	pkgdesc="A Nautilus Python 2 extension to overlay icons on files in git repositories"
+	depends=('python2-gobject' 'python2-nautilus')
 	provides=(git-nautilus-icons)
 	
 	cd "$srcdir/$_gitname"
