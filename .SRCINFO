@@ -1,10 +1,11 @@
 pkgbase = chruby-git
 	pkgdesc = Changes the current Ruby.
-	pkgver = 0.3.9.r31.172685a
+	pkgver = 0.3.9.r53.4c46722
 	pkgrel = 1
 	url = https://github.com/postmodern/chruby
 	arch = any
 	license = MIT
+	makedepends = gnupg
 	makedepends = git
 	depends = bash>=3
 	optdepends = zsh

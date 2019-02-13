@@ -1,13 +1,14 @@
-# Maintainer: Aaron Tinio <aptinio at gmail dot com>
+# Maintainer: Jack Random <jack(at)random(dot)to>
+# previous maintainer: Aaron Tinio <aptinio at gmail dot com>
 pkgname=chruby-git
-pkgver=0.3.9.r31.172685a
+pkgver=0.3.9.r53.4c46722
 pkgrel=1
 pkgdesc="Changes the current Ruby."
 arch=('any')
 url="https://github.com/postmodern/${pkgname%-git}"
 license=('MIT')
 depends=('bash>=3')
-makedepends=('git')
+makedepends=('gnupg' 'git')
 optdepends=('zsh')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
