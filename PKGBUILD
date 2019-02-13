@@ -5,7 +5,7 @@
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-tiles
-pkgver=0.C.2019.02.03
+pkgver=0.C.2019.02.13
 _pkgver=0.C
 pkgrel=1
 pkgdesc="A post-apocalyptic roguelike,tiles only"
