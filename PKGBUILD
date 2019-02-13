@@ -34,7 +34,7 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  ./configure --with-experimental --with-ext-scripts --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  ./configure --with-experimental --with-ext-scripts --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var
   make
 }
 
