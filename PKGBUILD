@@ -27,9 +27,13 @@ pkgver() {
   git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
-build() {
+prepare() {
   cd "${pkgname%-git}"
   autoreconf -f -i
+}
+
+build() {
+  cd "${pkgname%-git}"
   ./configure --with-experimental --with-ext-scripts --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
