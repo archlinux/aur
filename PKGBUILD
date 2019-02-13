@@ -1,14 +1,14 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=yamagi-quake2-xatrix-git
-pkgver=2.05.r1.g99a032c
+pkgver=2.06.r0.g1d6e3f6
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Quake II - Mission Pack 1 ('The Reckoning') for yamagi-quake2 (development version)"
 url="http://www.yamagi.org/quake2/"
 license=('GPL' 'custom')
 depends=('sh' 'yamagi-quake2')
-makedepends=('cmake')
+makedepends=('cmake' 'ninja')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 install=${pkgname%-*}.install
@@ -24,15 +24,12 @@ pkgver() {
   git describe --long --tags | sed 's/^XATRIX_//;s/_/./;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  rm -rf build
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../${pkgname%-*} -DCMAKE_BUILD_TYPE=Release
-  make
+  rm -rf build
+  cmake ${pkgname%-*} -Bbuild \
+    -DCMAKE_BUILD_TYPE=Release \
+    -GNinja
+  cmake --build build
 }
 
 package() {
