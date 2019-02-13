@@ -1,13 +1,13 @@
 # Maintainer: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-iuh-git
-pkgver=0.4.0.1.g04b5b66
+pkgver=0.4.0.r1.g04b5b66
 pkgrel=1
 pkgdesc="Open Source implenentation of a HNB-GW (HomeNodeB-Gateway)"
 url="http://osmocom.org/projects/osmohnbgw"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
-depends=('libosmocore' 'libosmo-netif' 'libosmo-sccp' 'libasn1c' 'lksctp-tools')
+depends=('libosmocore' 'libosmo-netif' 'libosmo-sccp' 'talloc' 'libasn1c' 'lksctp-tools')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -16,19 +16,23 @@ source=("git+https://git.osmocom.org/${pkgname%-git}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
-  echo $(git describe --always | sed 's/-/./g')
+  cd "${pkgname%-git}"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${pkgname%-git}"
+  autoreconf -f -i
 }
 
 build() {
-  cd "${srcdir}/${pkgname%-git}"
-  autoreconf -i
-  ./configure --prefix=/usr --sysconfdir=/etc
+  cd "${pkgname%-git}"
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${pkgname%-git}"
   make DESTDIR=${pkgdir} install
 }
 
