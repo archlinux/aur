@@ -2,31 +2,28 @@
 # Contributors: Frederic Bezies, Ronan Rabouin
 
 pkgname=yamagi-quake2-xatrix
-pkgver=2.05
-pkgrel=2
+pkgver=2.06
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Quake II - Mission Pack 1 ('The Reckoning') for yamagi-quake2"
 url="http://www.yamagi.org/quake2/"
 license=('GPL' 'custom')
 depends=('sh' 'yamagi-quake2')
-makedepends=('cmake')
+makedepends=('cmake' 'ninja')
 install=$pkgname.install
 source=("http://deponie.yamagi.org/quake2/${pkgname#*-}-$pkgver.tar.xz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('5615c87db9d3a45c076db5dd04861090c146ba1b4f40238d79b8755df993a401'
+sha256sums=('b40222eb182f27c261ebab10bb50afcf7cfc9a4d8567e264c034904b3be4c05a'
             '7c60d4bd78a528f5cf08425cfdcb87dacf574d3912c44439e623e35f37fbc972'
             'e65add2561c7dc4a14061e17a24436f768b69968fbc6fa06022acf9e17d80854')
 
-prepare() {
-  rm -rf build
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../${pkgname#*-}-$pkgver -DCMAKE_BUILD_TYPE=Release
-  make
+  rm -rf build
+  cmake ${pkgname#*-}-$pkgver -Bbuild \
+    -DCMAKE_BUILD_TYPE=Release \
+    -GNinja
+  cmake --build build
 }
 
 package() {
