@@ -11,7 +11,7 @@ _pkgbasename=freetype2
 pkgname=lib32-$_pkgbasename-infinality-ultimate
 pkgver=2.9.1
 pkgrel=1
-_patchrel=2017.05.24
+_patchrel=2018.05.01
 pkgdesc="TrueType font rendering library with Infinality patches and custom settings by bohoomil (32-bit, infinality-bundle)."
 arch=(x86_64)
 license=('GPL' 'MIT')
@@ -26,7 +26,7 @@ options=('!libtool')
 source=("https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.gz"{,.sig}
         "https://download-mirror.savannah.gnu.org/releases/freetype/freetype-doc-${pkgver}.tar.gz"{,.sig}
         "https://download-mirror.savannah.gnu.org/releases/freetype/ft2demos-${pkgver}.tar.gz"{,.sig}
-        "https://raw.githubusercontent.com/UnitedRPMs/freetype-freeworld/master/0001-Enable-table-validation-modules.patch"
+#        "https://raw.githubusercontent.com/UnitedRPMs/freetype-freeworld/master/0001-Enable-table-validation-modules.patch"
 #        "0002-Enable-infinality-subpixel-hinting.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-Enable-infinality-subpixel-hinting.patch?h=packages/${pkgbase%-infinality}"
 #        "0003-Enable-long-PCF-family-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Enable-long-PCF-family-names.patch?h=packages/${pkgbase%-infinality}"
 #        "https://aur.archlinux.org/cgit/aur.git/plain/0001-psaux-Correctly-handle-Flex-features-52846.patch?h=lib32-freetype2-v35"
@@ -49,7 +49,6 @@ sha256sums=('ec391504e55498adceb30baceebd147a6e963f636eb617424bcfc47a169898ce'
             'SKIP'
             '3d440aad3481285c7455f1593577e375c9d5792c800bbaba68d46fd75130fab9'
             'SKIP'
-            '515d52643fa47bb96c99792c81d4c05694b4e08494d36c5f81f6d05b61d4f287'
             '7d681ac3002909cee93385c75b191b9fae2a6d052b5b0083e926f1a7c0e724b7'
             'fdd11f231c7ee426d288c989214d22b9714c38d1ee8239d3acc9cc1a4ec1cf5b')
 
@@ -61,7 +60,7 @@ prepare() {
   mv "${srcdir}/ft2demos-${pkgver}" "${srcdir}/${pkgbase%-infinality}-demos"
 
   cd "${srcdir}/${pkgbase%-infinality}"
-  patch -Np1 -i "${srcdir}/0001-Enable-table-validation-modules.patch"
+  #patch -Np1 -i "${srcdir}/0001-Enable-table-validation-modules.patch"
   #patch -Np1 -i "${srcdir}/0002-Enable-infinality-subpixel-hinting.patch"
   patch -Np1 -i "${srcdir}/0003-Enable-long-PCF-family-names.patch"
   patch -Np1 -i "${srcdir}/0002-infinality-2.9.1-2018.05.01.patch"
