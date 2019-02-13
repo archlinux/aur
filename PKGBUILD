@@ -1,14 +1,14 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=yamagi-quake2-rogue-git
-pkgver=2.04.r1.g891e75c
+pkgver=2.05.r0.geaaf6c4
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Quake II - Mission Pack 2 ('Ground Zero') for yamagi-quake2 (development version)"
 url="http://www.yamagi.org/quake2/"
 license=('GPL' 'custom')
 depends=('sh' 'yamagi-quake2')
-makedepends=('cmake')
+makedepends=('cmake' 'ninja')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 install=${pkgname%-*}.install
@@ -24,15 +24,12 @@ pkgver() {
   git describe --long --tags | sed 's/^ROGUE_//;s/_/./;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  rm -rf build
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../${pkgname%-*} -DCMAKE_BUILD_TYPE=Release
-  make
+  rm -rf build
+  cmake ${pkgname%-*} -Bbuild \
+    -DCMAKE_BUILD_TYPE=Release \
+    -GNinja
+  cmake --build build
 }
 
 package() {
