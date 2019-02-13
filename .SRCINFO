@@ -1,0 +1,18 @@
+pkgbase = xgrep
+	pkgdesc = grep-like utility for XML files
+	pkgver = 0.08
+	pkgrel = 1
+	url = http://wohlberg.net/public/software/xml/xgrep/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = makedepend
+	depends = libxml2
+	depends = pcre
+	provides = xgrep
+	conflicts = xgrep
+	source = http://wohlberg.net/public/software/xml/xgrep/xgrep-0.08.tar.gz
+	md5sums = cc71e1a40a40b0cadd0fd85deb9de78b
+
+pkgname = xgrep
+
