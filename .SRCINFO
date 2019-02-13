@@ -10,10 +10,10 @@ pkgbase = mos-bin
 	depends = libusb>=1.0.16
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://launchpadlibrarian.net/403945921/mos_2.10.2+67fae67~xenial0_amd64.deb
-	sha512sums_x86_64 = b4bbadef28768c07bcbda6bb13ffca6459134b4576b1a699eab10cc842b98199a49b660d9a160deba9c04a1ab4a9863d827bc488fa59374a5d1b78b5aa72a197
-	source_i686 = https://launchpadlibrarian.net/403945804/mos_2.10.2+67fae67~xenial0_i386.deb
-	sha512sums_i686 = ea6e07b30c3fe8a6794712ff6f41f81f58dae370f2668131ffe8f06b0bb1d136debf20ea3d69787ab430e7cfa5fecbf6bed460c129d4edacb29780658cbf53ec
+	source_x86_64 = https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_2.11.0+e5d2712~xenial0_amd64.deb
+	sha512sums_x86_64 = 61b79e4d170c18799952d54ae495105f656b9c97ef226800ee08b8def727e8901084b749d200b964850f86f8b3aa1e9ada7c4c770682c22fb26709b2f5764136
+	source_i686 = https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_2.11.0+e5d2712~xenial0_i386.deb
+	sha512sums_i686 = 9d880d2b372c72dcb53caa72544571f52c7cb5097eed52d0c808182f850cdfcda610a185de0f375298a91ec92b07e0a52a1605cd8a4f320a9e77a7cbc11db4cf
 
 pkgname = mos-bin
 
