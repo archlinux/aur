@@ -4,8 +4,8 @@
 
 pkgname=voxatron
 pkgver=0.3.5b
-pkgrel=1
-pkgdesc="Voxatron is an action/adventure game set in a world completely made of tiny cubes that can be blasted to smithereens"
+pkgrel=2
+pkgdesc="fantasy console and collection of games made entirely out of voxels"
 url="http://www.lexaloffle.com/voxatron.php"
 license=('custom: "commercial"')
 groups=('humblevoxatronbundle' 'games')
