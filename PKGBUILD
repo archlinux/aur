@@ -10,7 +10,7 @@
 _pkgname="pulseaudio"
 pkgname="$_pkgname-git"
 pkgdesc="A featureful, general-purpose sound server (development version)"
-pkgver=v12.0.259.g334ae350b
+pkgver=v12.0.260.g7525cc821
 pkgrel=1
 arch=("i686" "x86_64" "armv7h")
 url="http://pulseaudio.org/"
@@ -29,7 +29,7 @@ backup=(etc/pulse/{daemon.conf,default.pa,system.pa,client.conf})
 provides=(pulseaudio{,-{zeroconf,lirc,jack,bluetooth,equalizer}} "libpulse") #"pulseaudio-xen" "pulseaudio-gconf"
 conflicts=(pulseaudio{,-{zeroconf,lirc,jack,bluetooth,equalizer}} "libpulse") #"pulseaudio-xen" "pulseaudio-gconf"
 options=(!emptydirs)
-source=("git+https://github.com/pulseaudio/pulseaudio.git")
+source=("git+git://anongit.freedesktop.org/pulseaudio/pulseaudio")
 sha256sums=("SKIP")
 
 pkgver() {

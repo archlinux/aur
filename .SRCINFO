@@ -1,6 +1,6 @@
 pkgbase = pulseaudio-git
 	pkgdesc = A featureful, general-purpose sound server (development version)
-	pkgver = v12.0.259.g334ae350b
+	pkgver = v12.0.260.g7525cc821
 	pkgrel = 1
 	url = http://pulseaudio.org/
 	arch = i686
@@ -83,7 +83,7 @@ pkgbase = pulseaudio-git
 	backup = etc/pulse/default.pa
 	backup = etc/pulse/system.pa
 	backup = etc/pulse/client.conf
-	source = git+https://github.com/pulseaudio/pulseaudio.git
+	source = git+git://anongit.freedesktop.org/pulseaudio/pulseaudio
 	sha256sums = SKIP
 
 pkgname = pulseaudio-git
