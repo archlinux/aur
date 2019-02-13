@@ -3,12 +3,13 @@ pkgname=office-runner
 pkgver=1.0.3
 pkgrel=1
 pkgdesc="Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="http://www.hadess.net/search/label/office-runner"
 license=('GPL3')
-depends=('gnome-common')
-source=("https://github.com/GNOME/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('3918ad54a17860efa9a7f7174158e644')
+depends=('gtk3')
+makedepends=('gnome-common')
+source=("https://gitlab.gnome.org/GNOME/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('63eaf719c71adc98abbc5c4adb538a196fab783f0417cdfd863c6b4b27334189')
 
 build() {
 	cd $pkgname-$pkgver
