@@ -1,14 +1,14 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-postgresql'
 pkgver=0.7.9.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A distributed privacy aware social network (PostgreSQL)"
 arch=('i686' 'x86_64')
 url="https://diasporafoundation.org"
 license=('AGPL3')
-depends=('ruby2.3' 'ruby2.3-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'postgresql-libs')
+depends=('ruby2.4' 'ruby2.4-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'postgresql-libs')
 optdepends=('jemalloc: lower memory consumption' 'postgresql: Database server')
-makedepends=('nodejs')
+makedepends=('nodejs' )
 conflicts=('diaspora-mysql' 'diaspora-mysql-git' 'diaspora-postgresql-git')
 options=(!strip)
 backup=("etc/webapps/diaspora/diaspora.yml"
@@ -45,9 +45,9 @@ _reset_ruby() {
 }
 
 build() {
-  _bundle=bundle-2.3
-  _ruby=ruby-2.3
-  _rake=rake-2.3
+  _bundle=bundle-2.4
+  _ruby=ruby-2.4
+  _rake=rake-2.4
   _builddir=$srcdir/build
 
   _reset_ruby
@@ -90,8 +90,8 @@ build() {
 }
 
 package() {
-  _bundle=bundle-2.3
-  _ruby=ruby-2.3
+  _bundle=bundle-2.4
+  _ruby=ruby-2.4
   _builddir=$srcdir/build
 
   msg "Copy contents to package directory"
