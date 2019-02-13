@@ -1,33 +1,35 @@
 # Maintainer: Josef Miegl <josef@miegl.cz>
-# Contributor: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=osmo-trx-git
-_pkgname=osmo-trx
 pkgver=1.0.0.5.g158ea5b
 pkgrel=1
-pkgdesc="OpenBTS transceiver retro-fit"
-arch=('any')
-url="https://osmocom.org/projects/osmotrx/wiki/OsmoTRX"
+pkgdesc="GSM Radio Modem based on a fork of the OpenBTS Transceiver program"
+url="https://osmocom.org/projects/osmotrx"
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
-depends=('boost' 'libuhd')
+depends=('libosmocore' 'talloc' 'libusb' 'fftw' 'libuhd' 'limesuite')
+makedepends=('git' 'boost')
 optdepends=('gnuradio: legacy support for USRP1')
-source=("git://git.osmocom.org/${_pkgname}")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+backup=('etc/osmocom/osmo-trx-lms.cfg' 'etc/osmocom/osmo-trx-uhd.cfg')
+source=("git+https://git.osmocom.org/${pkgname%-git}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd "${srcdir}/${pkgname%-git}"
   echo $(git describe --always | sed 's/-/./g')
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname%-git}"
   autoreconf -i
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --sysconfdir=/etc --with-uhd --with-lms
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname%-git}"
   make DESTDIR=${pkgdir} install
 }
 
