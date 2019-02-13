@@ -1,0 +1,20 @@
+pkgbase = rustaman-git
+	pkgdesc = Template based HTTP client
+	pkgver = 0.0.4af1e14
+	pkgrel = 1
+	url = http://support.starleaf.com/downloads
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cargo
+	makedepends = git
+	depends = gtk3
+	depends = gtksourceview3
+	depends = openssl
+	options = !emptydirs
+	options = !strip
+	source = rustaman-git::git+https://github.com/mardiros/rustaman.git
+	sha1sums = SKIP
+
+pkgname = rustaman-git
+
