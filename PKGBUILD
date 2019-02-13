@@ -15,20 +15,27 @@ source=("git+https://github.com/octo/librouteros.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
+prepare() {
+  cd "${pkgname%-git}"
+  autoreconf -f -i
+}
+
 build() {
-  cd "${srcdir}/${pkgname%-git}"
-  autoreconf -i
-  ./configure --prefix=/usr --sbindir=/usr/bin
+  cd "${pkgname%-git}"
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${pkgname%-git}"
   make DESTDIR="${pkgdir}" install
+
+  # License
+  install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
