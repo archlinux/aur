@@ -2,13 +2,14 @@
 
 pkgname=ihu-git
 _pkgname=ihu
-pkgver=r7.3587923
-pkgrel=2
+pkgver=r15.e11cccd
+pkgrel=1
 pkgdesc='I Hear U VoIP application that creates an audio stream between two computers'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/jose1711/ihu"
 license=('GPL-2')
-depends=('qt4' 'speex' 'soundtouch' 'jack2')
+depends=('qt4' 'speex' 'soundtouch' 'jack')
+makedepends=('git')
 provides=('ihu')
 conflicts=('ihu')
 source=("git://github.com/jose1711/ihu.git")
