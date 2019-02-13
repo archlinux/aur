@@ -1,0 +1,22 @@
+diff -aur src.orig/PyQt-x11-gpl-3.18.1/build.py src/PyQt-x11-gpl-3.18.1/build.py
+--- src.orig/PyQt-x11-gpl-3.18.1/build.py	2019-02-13 11:52:42.295669716 +0100
++++ src/PyQt-x11-gpl-3.18.1/build.py	2019-02-13 11:52:57.308916413 +0100
+@@ -42,6 +42,7 @@
+     sys.exit(1)
+ 
+ config = sipconfig.SIPConfig("PyQt 3.18.1")
++config.sip_bin = '/usr/bin/sip418'
+ 
+ 
+ # Initialise the globals.
+diff -aur src.orig/PyQt-x11-gpl-3.18.1/configure.py src/PyQt-x11-gpl-3.18.1/configure.py
+--- src.orig/PyQt-x11-gpl-3.18.1/configure.py	2019-02-13 11:52:42.295669716 +0100
++++ src/PyQt-x11-gpl-3.18.1/configure.py	2019-02-13 11:53:09.368846036 +0100
+@@ -67,6 +67,7 @@
+ 
+ # Get the SIP configuration.
+ sipcfg = sipconfig.Configuration()
++sipcfg.sip_bin = '/usr/bin/sip418'
+ 
+ # Command line options.
+ opt_qtlib = None
