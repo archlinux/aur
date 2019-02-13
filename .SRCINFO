@@ -1,6 +1,6 @@
 pkgbase = p3x-onenote
 	pkgdesc = Linux Electron Onenote - A Linux compatible version of OneNote
-	pkgver = 2019.1.18_2
+	pkgver = 2019.2.8_1
 	pkgrel = 1
 	url = https://www.npmjs.com/package/p3x-onenote
 	arch = any
