@@ -1,6 +1,6 @@
 pkgbase = ubuntu-mate-icon-themes
 	pkgdesc = The official icon themes for Ubuntu MATE
-	pkgver = 18.04.11
+	pkgver = 18.10.1
 	pkgrel = 1
 	url = https://launchpad.net/ubuntu-mate/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = ubuntu-mate-icon-themes
 	license = GPL3
 	optdepends = ubuntu-mate-themes: GTK2, GTK3, Unity and Metacity themes from Ubuntu MATE
 	optdepends = mate-icon-theme: MATE default icon theme
-	source = https://mirrors.edge.kernel.org/ubuntu/pool/universe/u/ubuntu-mate-artwork/ubuntu-mate-icon-themes_18.04.11_all.deb
-	sha512sums = aa81f511be74a5aff856268116f341a196b745933831245bd174113e4c4d90c6a52ff929901eba0ac29f1715184d6167d73057b4416f770be035992fd8ccca3b
+	source = https://mirrors.edge.kernel.org/ubuntu/pool/universe/u/ubuntu-mate-artwork/ubuntu-mate-icon-themes_18.10.1_all.deb
+	sha256sums = 6c200d309da45ab6b3cf2bc747e015b136c751c3a739a0a13f25e27b5393c0e8
 
 pkgname = ubuntu-mate-icon-themes
 
