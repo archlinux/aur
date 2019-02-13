@@ -1,0 +1,46 @@
+pkgbase = opencv3-opt
+	pkgdesc = Open Source Computer Vision Library
+	pkgver = 3.4.5
+	pkgrel = 1
+	url = http://opencv.org/
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = python-numpy
+	makedepends = python-setuptools
+	makedepends = mesa
+	makedepends = eigen
+	makedepends = hdf5
+	makedepends = lapacke
+	makedepends = gtk3
+	makedepends = vtk
+	makedepends = glew
+	depends = intel-tbb
+	depends = openexr
+	depends = gst-plugins-base
+	depends = libdc1394
+	depends = cblas
+	depends = lapack
+	depends = libgphoto2
+	depends = jasper
+	depends = ffmpeg
+	optdepends = opencv-samples: samples
+	optdepends = gtk3: for the HighGUI module
+	optdepends = vtk: for the viz module
+	optdepends = hdf5: support for HDF5 format
+	optdepends = opencl-icd-loader: For coding with OpenCL
+	optdepends = python-numpy: Python interface
+	source = opencv-3.4.5.tar.gz::https://github.com/opencv/opencv/archive/3.4.5.zip
+	source = opencv_contrib-3.4.5.tar.gz::https://github.com/opencv/opencv_contrib/archive/3.4.5.tar.gz
+	sha256sums = 0cc341e3b77cf96ae431ee55b7ba53d41d184cc11506d100711022abfcfe6bb3
+	sha256sums = 8f73d029887c726fed89c69a2b0fcb1d098099fcd81c1070e1af3b452669fbe2
+
+pkgname = opencv3-opt
+	provides = 
+	options = staticlibs
+
+pkgname = opencv3-opt-samples
+	pkgdesc = Open Source Computer Vision Library (samples)
+	depends = opencv3-opt=3.4.5
+	provides = opencv3-samples
+
