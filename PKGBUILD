@@ -24,8 +24,7 @@ pkgver() {
 
 package() {
     cd "${srcdir}/${_pkgbase}"
-    install -Dm 755 dynwg.py "${pkgdir}/usr/bin/dynwg"
+    install -Dm 755 dynwg.py "${pkgdir}/usr/bin/dynwgd"
     install -m 755 -d "${pkgdir}/usr/lib/systemd/system"
     install -m 644 dynwg.service "${pkgdir}/usr/lib/systemd/system"
-    install -m 644 dynwg.timer "${pkgdir}/usr/lib/systemd/system"
 }
