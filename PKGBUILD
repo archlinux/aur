@@ -6,9 +6,9 @@ pkgdesc="A distributed privacy aware social network (development head) (MySQL)"
 arch=('i686' 'x86_64')
 url="https://diasporafoundation.org"
 license=('AGPL3')
-depends=('ruby2.3' 'ruby2.3-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'libmariadbclient')
+depends=('ruby2.4' 'ruby2.4-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'libmariadbclient')
 optdepends=('jemalloc: lower memory consumption' 'mariadb: Database server')
-makedepends=('nodejs')
+makedepends=('nodejs' 'git')
 conflicts=('diaspora-mysql' 'diaspora-postgresql' 'diaspora-postgresql-git')
 options=(!strip)
 backup=("etc/webapps/diaspora/diaspora.yml"
@@ -50,9 +50,9 @@ _reset_ruby() {
 }
 
 build() {
-  _bundle=bundle-2.3
-  _ruby=ruby-2.3
-  _rake=rake-2.3
+  _bundle=bundle-2.4
+  _ruby=ruby-2.4
+  _rake=rake-2.4
   _builddir=$srcdir/build
 
   _reset_ruby
@@ -95,8 +95,8 @@ build() {
 }
 
 package() {
-  _bundle=bundle-2.3
-  _ruby=ruby-2.3
+  _bundle=bundle-2.4
+  _ruby=ruby-2.4
   _builddir=$srcdir/build
 
   msg "Copy contents to package directory"
