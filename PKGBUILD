@@ -8,6 +8,7 @@ url="https://www.fluidkeys.com"
 license=('AGPL3')
 makedepends=('go-pie' 'rsync' 'git' 'dep')
 provides=("fluidkeys=$pkgver")
+conflicts=("fluidkeys")
 source=("git+https://github.com/fluidkeys/fluidkeys.git")
 sha256sums=('SKIP')
 
