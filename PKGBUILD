@@ -1,16 +1,17 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=yamagi-quake2-git
-pkgver=7.01.r1.g815bc34
+pkgver=7.40.r3.g8c60939b
 pkgrel=1
 pkgdesc="Enhanced Quake II engine optimized for modern systems (development version)"
 url="http://www.yamagi.org/quake2/"
 arch=('i686' 'x86_64')
 license=('custom: Info-ZIP' 'GPL2')
-depends=('sdl2' 'libvorbis')
+depends=('sdl2')
 optdepends=('quake2-demo: shareware data files'
-            'openal: alternative audio backend')
-makedepends=('openal' 'mesa' 'cmake')
+            'openal: alternative audio backend'
+            'curl: http download support')
+makedepends=('cmake' 'ninja' 'openal' 'mesa')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 install=${pkgname%-*}.install
@@ -24,15 +25,13 @@ pkgver() {
   git describe --long --tags | sed 's/^QUAKE2_//;s/_/./;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  rm -rf build
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../${pkgname%-*} -DCMAKE_BUILD_TYPE=Release -DSYSTEMWIDE_SUPPORT=ON
-  make
+  rm -rf build
+  cmake ${pkgname%-*} -Bbuild \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DSYSTEMWIDE_SUPPORT=ON \
+    -GNinja
+  cmake --build build
 }
 
 package() {
@@ -54,8 +53,8 @@ package() {
   cd ../${pkgname%-*}
 
   # doc
-  install -Dm644 README.md "$pkgdir"/usr/share/doc/${pkgname%-*}/README.md
-  install -m644 stuff/yq2.cfg "$pkgdir"/usr/share/doc/${pkgname%-*}
+  install -Dm644 stuff/yq2.cfg "$pkgdir"/usr/share/doc/${pkgname%-*}/yq2.cfg
+  install -m644 doc/*.md "$pkgdir"/usr/share/doc/${pkgname%-*}
 
   # desktop entry
   install -Dm644 ../${pkgname%-*}.desktop "$pkgdir"/usr/share/applications/${pkgname%-*}.desktop
