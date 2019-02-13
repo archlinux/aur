@@ -1,0 +1,17 @@
+pkgbase = bloomrpc
+	pkgdesc = GUI Client for GRPC Services
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/fenos/bloomrpc
+	arch = any
+	license = LGPL3
+	makedepends = clang
+	depends = nodejs
+	depends = npm
+	source = bloomrpc::git+https://github.com/uw-labs/bloomrpc.git#tag=v1.2.1
+	source = bloomrpc.desktop
+	sha1sums = SKIP
+	sha1sums = f050f42f2faedfb0df2da3e7afdaef42716a34ff
+
+pkgname = bloomrpc
+

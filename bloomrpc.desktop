@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=BloomRPC
+Comment=GRPC GUI client
+Exec="/opt/BloomRPC/bloomrpc" %U
+Terminal=false
+Type=Application
+Icon=bloomrpc
+Categories=Utility;
