@@ -1,7 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=stf-git
-pkgver=3.4.0+1+gbc6c25bd
+pkgver=3.4.0+12+gcdb607a8
 pkgrel=1
 pkgdesc='Web application for debugging Android devices (git)'
 arch=(i686 x86_64)
