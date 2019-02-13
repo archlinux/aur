@@ -1,7 +1,7 @@
 pkgbase = yamagi-quake2-rogue
 	pkgdesc = Quake II - Mission Pack 2 ('Ground Zero') for yamagi-quake2
-	pkgver = 2.04
-	pkgrel = 3
+	pkgver = 2.05
+	pkgrel = 1
 	url = http://www.yamagi.org/quake2/
 	install = yamagi-quake2-rogue.install
 	arch = i686
@@ -9,12 +9,13 @@ pkgbase = yamagi-quake2-rogue
 	license = GPL
 	license = custom
 	makedepends = cmake
+	makedepends = ninja
 	depends = sh
 	depends = yamagi-quake2
-	source = http://deponie.yamagi.org/quake2/quake2-rogue-2.04.tar.xz
+	source = http://deponie.yamagi.org/quake2/quake2-rogue-2.05.tar.xz
 	source = yamagi-quake2-rogue.sh
 	source = yamagi-quake2-rogue.desktop
-	sha256sums = 87d742f5f80011f5feb164f5cc7eb3f1efe5d3b6782f19b483801a66137ea47b
+	sha256sums = 6a9088b8ae05045f134eef6ecebaea0d14a58a55381deb79d9d46c0af9ae0e29
 	sha256sums = 7d43bd0ca15a6c82560153deea1df1109d0a448b226e316b6b7b5daae256241a
 	sha256sums = e7ee884b1e015743659cf668afa521976de64345872acf8e4c1e6932355c2959
 
