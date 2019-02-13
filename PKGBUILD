@@ -8,7 +8,7 @@ pkgdesc="FUSE-based file system backed by Google Drive, written in OCaml (instal
 arch=('x86_64')
 url='https://astrada.github.io/google-drive-ocamlfuse/'
 license=('MIT')
-depends=('glibc' 'zlib' 'curl' 'fuse2' 'sqlite')
+depends=('curl' 'fuse2' 'sqlite')
 makedepends=('opam')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -18,8 +18,7 @@ options=()
 
 prepare() {
     cd ${srcdir}
-    opam init -a
-    opam update
+    opam init -a --disable-sandboxing && opam update
 }
 
 pkgver() {
@@ -33,10 +32,12 @@ build() {
     eval $(opam env --switch=. --set-switch)
     opam install -y ${_pkgname}.${pkgver}
     cp "_opam/bin/${_pkgname}" "${_pkgname}"
+    cp "_opam/doc/${_pkgname}/LICENSE" "LICENSE"
     opam switch -y remove .
 }
 
 package() {
     install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
