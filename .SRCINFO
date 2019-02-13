@@ -1,6 +1,6 @@
 pkgbase = libvips
 	pkgdesc = A free image processing system
-	pkgver = 8.7.3
+	pkgver = 8.7.4
 	pkgrel = 1
 	url = https://libvips.github.io/libvips/
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = libvips
 	provides = libvips
 	conflicts = libvips-git
 	options = !libtool
-	source = https://github.com/libvips/libvips/releases/download/v8.7.3/vips-8.7.3.tar.gz
-	sha256sums = 03e0ed90d63b4e2d7d60ea5bd97283d0f5b1388c6c363e27ec9d34b624b6f5aa
+	source = https://github.com/libvips/libvips/releases/download/v8.7.4/vips-8.7.4.tar.gz
+	sha256sums = ce7518a8f31b1d29a09b3d7c88e9852a5a2dcb3ee1501524ab477e433383f205
 
 pkgname = libvips
 

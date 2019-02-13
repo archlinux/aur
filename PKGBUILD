@@ -2,7 +2,7 @@
 
 pkgname=libvips
 _pkgname=vips
-pkgver=8.7.3
+pkgver=8.7.4
 pkgrel=1
 pkgdesc="A free image processing system"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ provides=('libvips')
 conflicts=('libvips-git')
 options=('!libtool')
 source=("https://github.com/libvips/libvips/releases/download/v${pkgver}/vips-${pkgver}.tar.gz")
-sha256sums=('03e0ed90d63b4e2d7d60ea5bd97283d0f5b1388c6c363e27ec9d34b624b6f5aa')
+sha256sums=('ce7518a8f31b1d29a09b3d7c88e9852a5a2dcb3ee1501524ab477e433383f205')
 
 build() {
 	cd "$srcdir"/$_pkgname-$pkgver
