@@ -3,26 +3,23 @@
 
 _pkgbase=allegro4
 pkgname=lib32-$_pkgbase
-pkgver=4.4.2
-pkgrel=3
-pkgdesc="Portable library mainly aimed at video game and multimedia programming (legacy version)"
+pkgver=4.4.3
+pkgrel=1
+pkgdesc='Portable library aimed at video game and multimedia programming (legacy version)'
 arch=('x86_64')
-url="http://alleg.sourceforge.net/"
+url='https://liballeg.org/'
 license=('custom')
-depends=('lib32-jack' 'lib32-libxpm' 'lib32-libxxf86vm' 'lib32-libxxf86dga'
-         'lib32-libxcursor' 'lib32-alsa-lib' 'lib32-libogg' 'lib32-glu'
-         "$_pkgbase=$pkgver")
-makedepends=('cmake' 'lib32-libpng' 'lib32-mesa' 'gcc-multilib')
+depends=('lib32-jack' 'lib32-libxcursor' 'lib32-libxpm' 'lib32-libxxf86dga' 'lib32-libxxf86vm'
+         'lib32-libpng' 'lib32-glu' "$_pkgbase=$pkgver")
+makedepends=('cmake' 'lib32-mesa' 'gcc-multilib' 'ninja')
 options=(staticlibs)
-source=("http://downloads.sourceforge.net/alleg/allegro-$pkgver.tar.gz")
-sha256sums=('1b21e7577dbfada02d85ca4510bd22fedaa6ce76fde7f4838c7c1276eb840fdc')
+source=("https://github.com/liballeg/allegro5/releases/download/$pkgver/allegro-$pkgver.tar.gz")
+sha256sums=('1e096e435e49e2dfd924d9c54ed7325caa1b06cecd28c3307146dd0de3d0bcb4')
 
 build() {
   rm -rf build
-  mkdir build
-  cd build
 
-  cmake ../allegro-$pkgver \
+  cmake allegro-$pkgver -Bbuild \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_LIBRARY_PATH=/usr/lib32 \
@@ -32,12 +29,13 @@ build() {
     -DWANT_TESTS=OFF \
     -DLIB_SUFFIX="32" \
     -DCMAKE_C_FLAGS="$CFLAGS -m32" \
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS -m32"
-  make
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -m32" \
+    -GNinja
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir/" ninja -C build install
 
   # remove header files
   rm -rf "$pkgdir"/usr/include
