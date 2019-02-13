@@ -1,6 +1,6 @@
 pkgbase = shadowsocks-libev-git
 	pkgdesc = A lightweight secured socks5 proxy for embedded devices and low end boxes
-	pkgver = 3.2.3.r29
+	pkgver = 3.2.3.r35
 	pkgrel = 1
 	url = https://github.com/shadowsocks/shadowsocks-libev
 	install = shadowsocks-libev-git.install
@@ -19,7 +19,7 @@ pkgbase = shadowsocks-libev-git
 	depends = libbloom
 	provides = shadowsocks-libev
 	conflicts = shadowsocks-libev
-	source = shadowsocks-libev-git-3.2.3.r29::git+https://github.com/shadowsocks/shadowsocks-libev.git
+	source = shadowsocks-libev-git-3.2.3.r35::git+https://github.com/shadowsocks/shadowsocks-libev.git
 	source = shadowsocks-libev@.service
 	source = shadowsocks-libev-server@.service
 	source = shadowsocks-libev-redir@.service
