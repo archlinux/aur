@@ -1,0 +1,21 @@
+pkgbase = throttled
+	pkgdesc = Workaround for Intel throttling issues on Thinkpads in Linux.
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/erpalma/throttled
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python-dbus
+	depends = python-psutil
+	depends = python-gobject
+	provides = lenovo-throttling-fix
+	provides = throttled
+	conflicts = lenovo-throttling-fix-git
+	conflicts = lenovo-throttling-fix
+	backup = etc/lenovo_fix.conf
+	source = throttled-0.5.tar.gz::https://github.com/erpalma/throttled/archive/v0.5.tar.gz
+	sha256sums = 8df2478bad26b0d8be4f6b4a1016bf4fc1b854bc1214955b7e999b7208d4f815
+
+pkgname = throttled
+
