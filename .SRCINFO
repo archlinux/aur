@@ -1,20 +1,21 @@
 pkgbase = moonplayer
 	pkgdesc = A qt font-end for mplayer with the abilities of watching and downloading videos from chinese network
-	pkgver = 2.4.r367
+	pkgver = 2.5
 	pkgrel = 1
 	url = https://github.com/coslyk/moonplayer
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = qt5-base
-	depends = qt5-x11extras
-	depends = qt5-webkit
 	depends = python
-	depends = python2
+	depends = qt5-x11extras
+	depends = qt5-websockets
+	depends = qt5-webengine
 	depends = mpv
 	depends = qtermwidget
-	source = git+https://github.com/coslyk/moonplayer#branch=master
+	provides = moonplayer
+	conflicts = moonplayer
+	source = moonplayer.tar.gz::https://github.com/coslyk/moonplayer/archive/2.5.tar.gz
 	sha1sums = SKIP
 
 pkgname = moonplayer
