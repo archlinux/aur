@@ -1,7 +1,6 @@
-# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
-# Co-Maintainer: Nils Czernia <nils@czserver.de>
+# Maintainer: Josh Hoffer < hoffer.joshua@gmail.com > 
 pkgname=awx
-pkgver=1.0.1
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="AWX provides a web-based user interface, REST API, and task engine built on top of Ansible."
 arch=('any')
@@ -10,7 +9,7 @@ license=('Apache-2.0')
 depends=('python2' 'gettext')
 options=(!emptydirs)
 source=("https://github.com/ansible/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('880787ecd6e31cd899fd17f79e170e0ce13693dae464e0c31ac7c852c2d0509e')
+md5sums=('a2f47ca91edf0178686a5de7fd4cc784')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
