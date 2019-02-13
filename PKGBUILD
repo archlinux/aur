@@ -2,7 +2,7 @@
 # Contributor: Robin Lange <robin dot langenc at gmail dot com>
 pkgname=optimus-manager
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Management utility to handle GPU switching for Optimus laptops."
 arch=('any')
 url="https://github.com/Askannz/optimus-manager"
@@ -35,6 +35,8 @@ package() {
   
   install -Dm644 config/xorg-intel.conf "$pkgdir/etc/optimus-manager/xorg-intel.conf"
   install -Dm644 config/xorg-nvidia.conf "$pkgdir/etc/optimus-manager/xorg-nvidia.conf"
+  
+  install -Dm644 desktop/optimus-manager-systray.desktop "$pkgdir/usr/share/applications/optimus-manager-systray.desktop"
   
   mkdir -p "$pkgdir/var/lib/optimus-manager/"
  
