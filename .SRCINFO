@@ -1,6 +1,6 @@
 pkgbase = linux-drm-misc-next-git
 	pkgdesc = Kernel DRM miscellaneous fixes and cross-tree changes
-	pkgver = 5.1.811269.6649a95d35d8
+	pkgver = 5.1.811295.129716dbc2b6
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm/drm-misc
 	arch = x86_64
