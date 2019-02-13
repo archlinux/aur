@@ -1,7 +1,7 @@
 pkgbase = lib32-freetype2-infinality-ultimate
 	pkgdesc = TrueType font rendering library with Infinality patches and custom settings by bohoomil (32-bit, infinality-bundle).
 	pkgver = 2.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://freetype.sourceforge.net
 	arch = x86_64
 	groups = infinality-bundle-multilib
@@ -25,8 +25,7 @@ pkgbase = lib32-freetype2-infinality-ultimate
 	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-doc-2.9.1.tar.gz.sig
 	source = https://download-mirror.savannah.gnu.org/releases/freetype/ft2demos-2.9.1.tar.gz
 	source = https://download-mirror.savannah.gnu.org/releases/freetype/ft2demos-2.9.1.tar.gz.sig
-	source = https://raw.githubusercontent.com/UnitedRPMs/freetype-freeworld/master/0003-Enable-long-PCF-family-names.patch
-	source = https://raw.githubusercontent.com/pdeljanov/infinality-remix/master/freetype2-infinality-remix/0002-infinality-2.9.1-2018.05.01.patch
+	source = https://aur.archlinux.org/cgit/aur.git/plain/0001-infinality-2.9.1-2018.06.21.patch?h=freetype2-infinality-ultimate
 	validpgpkeys = 58E0C111E39F5408C5D3EC76C1A60EACE707FDA5
 	sha256sums = ec391504e55498adceb30baceebd147a6e963f636eb617424bcfc47a169898ce
 	sha256sums = SKIP
@@ -34,8 +33,7 @@ pkgbase = lib32-freetype2-infinality-ultimate
 	sha256sums = SKIP
 	sha256sums = 3d440aad3481285c7455f1593577e375c9d5792c800bbaba68d46fd75130fab9
 	sha256sums = SKIP
-	sha256sums = 7d681ac3002909cee93385c75b191b9fae2a6d052b5b0083e926f1a7c0e724b7
-	sha256sums = fdd11f231c7ee426d288c989214d22b9714c38d1ee8239d3acc9cc1a4ec1cf5b
+	sha256sums = 40a193e84b12445063c37a82aaed94207a5765cb1fbf594cb948d84c25c36fa3
 
 pkgname = lib32-freetype2-infinality-ultimate
 
