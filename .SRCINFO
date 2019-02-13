@@ -1,6 +1,6 @@
 pkgbase = s
 	pkgdesc = Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow.
-	pkgver = 0.5.13
+	pkgver = 0.5.14
 	pkgrel = 0
 	url = http://github.com/zquestz/s
 	arch = i686
@@ -8,11 +8,11 @@ pkgbase = s
 	license = MIT
 	makedepends = go
 	makedepends = git
-	provides = s=0.5.13
+	provides = s=0.5.14
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/zquestz/s/archive/v0.5.13.tar.gz
-	sha256sums = aac903c372324b1e57b0c61ba28d2c631ed81cb0e04f085661f2b6c0763ec818
+	source = https://github.com/zquestz/s/archive/v0.5.14.tar.gz
+	sha256sums = c32eedf6a4080cbe221c902cf7f63b1668b3927edfc448d963d69ed66c8ec2fb
 
 pkgname = s
 
