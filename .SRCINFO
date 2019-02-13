@@ -1,0 +1,16 @@
+pkgbase = z.lua-git
+	pkgdesc = A command line tool which helps you navigate faster by learning your habits
+	pkgver = 1.4.4.gcf45449
+	pkgrel = 1
+	url = https://github.com/skywind3000/z.lua
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = lua
+	provides = z.lua
+	conflicts = z.lua
+	source = z.lua-git::git+https://github.com/skywind3000/z.lua
+	sha256sums = SKIP
+
+pkgname = z.lua-git
+
