@@ -20,6 +20,7 @@ depends=("alsa-lib" "libx11" "gcc-libs")
 optdepends=("jack: For JACK audio support")
 makedepends=("xdg-utils")
 options=("!strip")
+conflicts=("renoise3-demo")
 
 # This blurb checks if the host machine is x86 or x86_64,
 # then declares the $source arrays accordingly.
