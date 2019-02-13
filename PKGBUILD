@@ -12,7 +12,7 @@ depends=('libao'
          'openal'
          'libpulse'
          'portaudio'
-         'jack2'
+         'jack'
          'libsamplerate'
          )
 source=("https://github.com/Themaister/RSound/archive/v${pkgver}.tar.gz")
