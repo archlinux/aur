@@ -29,7 +29,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cjcliffe/CubicSDR/archi
 sha256sums=('5cb44c110fcbbb70a468b7fa402cf35f84d8901b3dd42d471a90ac3f5db00f4d')
 
 build() {
-  cd "${srcdir}/CubicSDR-${pkgver}"
+  cd "CubicSDR-${pkgver}"
   mkdir -p build
   cd build
 
@@ -50,7 +50,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/CubicSDR-${pkgver}/build"
+  cd "CubicSDR-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
 }
 
