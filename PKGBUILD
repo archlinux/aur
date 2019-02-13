@@ -1,14 +1,14 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=yamagi-quake2-ctf-git
-pkgver=1.05.r1.g6f1b2f1
+pkgver=1.06.r0.gc13036d
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Quake II - Three Wave Capture The Flag for yamagi-quake2 (development version)"
 url="http://www.yamagi.org/quake2/"
 license=('GPL' 'custom')
 depends=('sh' 'yamagi-quake2')
-makedepends=('cmake')
+makedepends=('cmake' 'ninja')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=(${pkgname%-*}::"git+https://github.com/yquake2/ctf.git"
@@ -23,15 +23,12 @@ pkgver() {
   git describe --long --tags | sed 's/^CTF_//;s/_/./;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  rm -rf build
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../${pkgname%-*} -DCMAKE_BUILD_TYPE=Release
-  make
+  rm -rf build
+  cmake ${pkgname%-*} -Bbuild \
+    -DCMAKE_BUILD_TYPE=Release \
+    -GNinja
+  cmake --build build
 }
 
 package() {
