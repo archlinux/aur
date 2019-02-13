@@ -3,7 +3,7 @@
 # Maintaner: Jose Riha <jose1711 gmail com>
 
 pkgname=voxatron
-pkgver=0.3.4
+pkgver=0.3.5b
 pkgrel=1
 pkgdesc="Voxatron is an action/adventure game set in a world completely made of tiny cubes that can be blasted to smithereens"
 url="http://www.lexaloffle.com/voxatron.php"
@@ -52,6 +52,6 @@ package(){
 md5sums_i686=('247a511e2f1572fff538c78d5bb68d4a'
               '184c021b52d3a9c8ac5f49435b4b93e0'
               'bb84f6fcd7cdb18eb417173a6f58e00e')
-md5sums_x86_64=('f7bdba0edf8213cb5c7c9ffe638c5333'
+md5sums_x86_64=('27f61500fc0aa3a00a861121d2674848'
                 '184c021b52d3a9c8ac5f49435b4b93e0'
                 'bb84f6fcd7cdb18eb417173a6f58e00e')
