@@ -3,13 +3,13 @@
 pkgname=ssb-patchwork-git
 _srcname=patchwork
 _aurname=ssb-patchwork
-pkgver=3.10.1.r13.g72852e6b
-pkgrel=3
+pkgver=3.10.1.r301.g9750bc4d
+pkgrel=1
 pkgdesc="A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB)"
 arch=('i686' 'x86_64')
 url="https://github.com/ssbc/patchwork"
 license=('AGPL3')
-depends=('libxtst' 'libxext' 'libxkbfile' 'gconf' 'libsodium' 'libxss' 'gtk2' 'alsa-lib' 'nss' 'electron')
+depends=('libxtst' 'libxext' 'libxkbfile' 'gconf' 'libsodium' 'libxss' 'gtk2' 'alsa-lib' 'nss' 'electron2')
 makedepends=('nodejs' 'npm')
 provides=("ssb-patchwork=${pkgver}")
 conflicts=('ssb-patchwork')
@@ -36,8 +36,19 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_srcname}"
-    npm ci --only=production
-    npm run rebuild
+    # Electron's version.
+    export npm_config_target=$(electron2 -v)
+    # The architecture of Electron, can be ia32 or x64.
+    export npm_config_arch=x64
+    export npm_config_target_arch=x64
+    # Download headers for Electron.
+    export npm_config_disturl=https://atom.io/download/electron
+    # Tell node-pre-gyp that we are building for Electron.
+    export npm_config_runtime=electron
+    # Tell node-pre-gyp to build module from source code.
+    export npm_config_build_from_source=true
+
+    npm install --only=production
 }
 
 package() {
