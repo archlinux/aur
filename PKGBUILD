@@ -4,8 +4,8 @@
 # Contributor: xyproto
 
 pkgname=ags
-pkgver=3.4.3.0
-pkgrel=2
+pkgver=3.4.3.1
+pkgrel=1
 pkgdesc='A development tool that is primarily used to create graphical adventure games'
 arch=('x86_64')
 url='https://github.com/adventuregamestudio/ags'
@@ -14,7 +14,7 @@ depends=('dumb-a4' 'libtheora' 'freetype2')
 makedepends=('wxgtk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adventuregamestudio/ags/archive/v.$pkgver.tar.gz"
         'https://github.com/adventuregamestudio/ags/commit/44d954493bb5f3e95a11a4eddbb62bd6110b1b63.patch')
-sha256sums=('b32917fda6db9478f6a09c12d9cdb19f0586a9cf21b0f7a98e27b5061cec48a3'
+sha256sums=('01479c2e68dcf40f0a5283ee469acf399834c0734b979bc729d8274c9ca0273f'
             '6b7092e5794ae532f79c5c6ad5f5761c217b3ec874da43537152fb8e60b20019')
 
 prepare() {
@@ -24,9 +24,6 @@ prepare() {
     # replaced, just suppress the message.
     sed -i 's/-Wfatal-errors/-Wfatal-errors\ -Wno-deprecated-declarations/' \
         "$pkgname-$pkgver/Engine/Makefile-defs.linux"
-
-    # avoid conflicts with glibc functions with the same names
-    patch -d "$pkgname-$pkgver" -p1 < "$srcdir/44d954493bb5f3e95a11a4eddbb62bd6110b1b63.patch"
 }
 
 build() {
