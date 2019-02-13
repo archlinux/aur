@@ -2,9 +2,9 @@
 
 pkgname=throttled
 pkgver=0.5
-pkgrel=1
-pkgdesc="Workaround for Intel throttling issues on Thinkpads in Linux."
-arch=('i686' 'x86_64')
+pkgrel=2
+pkgdesc="Workaround for Intel throttling issues in Linux."
+arch=('x86_64')
 url="https://github.com/erpalma/throttled"
 license=('MIT')
 depends=('python-dbus' 'python-psutil' 'python-gobject')
