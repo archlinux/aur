@@ -1,15 +1,15 @@
 # Maintainer: Wolfgang Popp mail@wolfgang-popp.de
 pkgname=ytcc
-pkgver=1.7.4
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="The YouTube channel checker"
 arch=('any')
 url="https://github.com/woefe/ytcc"
 license=('GPL3')
-depends=('python' 'python-lxml' 'python-feedparser' 'python-dateutil' 'mpv' 'youtube-dl')
+depends=('python' 'python-lxml' 'python-feedparser' 'python-sqlalchemy' 'mpv' 'youtube-dl')
 makedepends=()
 source=("https://github.com/woefe/ytcc/archive/v${pkgver}.tar.gz")
-sha256sums=('d05767a6e93a311e431af66dc8b6e62344c20d2f669575aab76365b7785a8fc4')
+sha256sums=('ea51c6d28e46ee4cb02a5f94616b3456c7a6d75e5d270099e670e67a7cdfa7af')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
