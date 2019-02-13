@@ -2,7 +2,7 @@
 
 _pkgname=indy
 pkgname=python-${_pkgname}
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Official wrapper for Hyperledger Indy library"
 arch=(i686 x86_64)
@@ -18,4 +18,4 @@ package() {
   python setup.py install -O1 --root="$pkgdir"
 }
 
-md5sums=('f8c7b78b097935691b019f45005bef6c')
+md5sums=('dc2fb99b62708a3524ce29b161f0a59b')
