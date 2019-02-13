@@ -1,7 +1,7 @@
 # Maintainer: Richard Steinmetz <steinmetz.richard@googlemail.com>
 
 pkgname=taskbook-git
-pkgver=0.2.0+2+g8c39e15
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Tasks, boards & notes for the command-line habitat (git)'
 arch=(any)
