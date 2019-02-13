@@ -3,7 +3,7 @@
 pkgname=gajim-plugin-urlimagepreview
 _pkgname=url_image_preview
 pkgver=2.3.33
-pkgrel=2
+pkgrel=3
 pkgdesc="Gajim plugin which displays a preview of links to images"
 arch=(any)
 url="https://dev.gajim.org/gajim/gajim-plugins/wikis/urlimagepreviewplugin"
@@ -15,9 +15,6 @@ sha512sums=('e5a3e5d4d7b4e86ce087f9f85c355b96c7ceca2a3fb00dee5838263211b1b4d28b8
 
 package() {
   cd ${srcdir}/${_pkgname}
-
-  # Remove unnecessary files
-  rm -r CHANGELOG COPYING
 
   # Install the plugin
   install -d ${pkgdir}/usr/lib/python3.7/site-packages/gajim/data/plugins/${_pkgname}
