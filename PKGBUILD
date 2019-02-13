@@ -11,7 +11,7 @@ makedepends=("python-${_pyname}=${pkgver}" 'python-sphinx-gallery' 'python-corne
 source=("https://github.com/kbarbary/nestle/archive/v${pkgver}.tar.gz"
         'correct_image_path.patch')
 md5sums=('64edb99c551804d6847278a39d0ee183'
-         'ad877ac724bb6f66415b7e66f055238d')
+         '36ac4ed83a6fc6181fb9a2db36363fb8')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
