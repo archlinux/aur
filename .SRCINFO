@@ -1,6 +1,6 @@
 pkgbase = libasn1c-git
 	pkgdesc = runtime library of Lev Walkin's asn1c split out as separate library
-	pkgver = 0.9.31.3.g5e00d6f
+	pkgver = 0.9.31.r3.g5e00d6f
 	pkgrel = 1
 	url = http://cgit.osmocom.org/libasn1c
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = libasn1c-git
 	arch = armv7h
 	license = GPL
 	makedepends = git
-	makedepends = talloc
+	depends = talloc
 	provides = libasn1c
 	conflicts = libasn1c
 	source = git+https://git.osmocom.org/libasn1c
