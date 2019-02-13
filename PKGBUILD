@@ -6,7 +6,7 @@ pkgdesc="A MIDI/Audio sequencer with recording and editing capabilities"
 arch=('i686' 'x86_64')
 url="http://muse-sequencer.org/"
 license=('GPL2')
-depends=('qt5-base' 'fluidsynth' 'liblo' 'gtkmm' 'lib32-gtk2' 'gcc-libs-multilib' 'jack2' 'rtaudio')
+depends=('qt5-base' 'fluidsynth' 'liblo' 'gtkmm' 'lib32-gtk2' 'gcc-libs-multilib' 'jack' 'rtaudio')
 makedepends=('cmake' 'gcc' 'ladspa' 'lv2' 'dssi' 'dssi-vst' 'ladish' 'liblo' 'qt5-tools')
 optdepends=(
     'python2: Python scripting'
