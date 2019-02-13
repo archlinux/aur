@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.28.0.403.g59a04562b1
+pkgver=v0.29.0.118.gf2e7e81bda
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=(
          'desktop-file-utils'
          'fribidi'
          'hicolor-icon-theme'
-         'jack2'
+         'jack'
          'lcms2'
          'libarchive'
          'libbluray.so'
@@ -53,6 +53,7 @@ makedepends=(
              'fontconfig'
              'vulkan-headers'
              'wayland-protocols'
+             'ffnvcodec-headers'
              )
 optdepends=(
             'mpv-bash-completion-git: Additional completion definitions for Bash users'
@@ -105,6 +106,8 @@ prepare() {
     '--enable-libmysofa'
     '--enable-libsoxr'
     '--enable-libssh'
+    '--enable-libjack'
+    '--enable-libpulse'
     '--enable-nonfree'
     )
   _mpv_options=(
