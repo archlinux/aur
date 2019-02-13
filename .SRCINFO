@@ -1,6 +1,6 @@
 pkgbase = mu-git
 	pkgdesc = mu and mu4e from git
-	pkgver = 1.0.154.g156c4211
+	pkgver = 1.0.158.g508d3d4a
 	pkgrel = 1
 	url = http://www.djcbsoftware.nl/code/mu
 	arch = i686
@@ -11,7 +11,6 @@ pkgbase = mu-git
 	depends = guile
 	depends = gmime3
 	depends = json-glib
-	depends = sqlite3
 	optdepends = emacs: mu4e support
 	provides = mu
 	conflicts = mu
