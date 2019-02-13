@@ -54,7 +54,7 @@ build() {
 
 package_opencv3-opt() {
   options=(staticlibs)
-  provides=($_pkgbase)
+  provides=(opencv3)
 
   cd build
   make DESTDIR="$pkgdir" install
