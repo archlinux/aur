@@ -1,0 +1,18 @@
+pkgbase = lua-binaryheap
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/Tieske/binaryheap.lua
+	arch = any
+	license = MIT
+	source = lua-binaryheap-0.4.tar.gz::https://github.com/Tieske/binaryheap.lua/archive/version_0v4.tar.gz
+	md5sums = 8dc4ea3df17fc7c586693d6fb6f0a8a3
+
+pkgname = lua-binaryheap
+	pkgdesc = Binary heap implementation for Lua 5.3
+
+pkgname = lua51-binaryheap
+	pkgdesc = Binary heap implementation for Lua 5.1
+
+pkgname = lua52-binaryheap
+	pkgdesc = Binary heap implementation for Lua 5.2
+
