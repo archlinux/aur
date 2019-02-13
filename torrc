@@ -15,7 +15,7 @@
 ## Tor opens a SOCKS proxy on port 9050 by default -- even if you don't
 ## configure one below. Set "SOCKSPort 0" if you plan to run Tor only
 ## as a relay, and not make any local application connections yourself.
-SOCKSPort 127.0.0.1:9050 # Default: Bind to localhost:9050 for local connections.
+SOCKSPort 9050 # Default: Bind to localhost:9050 for local connections.
 #SOCKSPort 192.168.0.1:9100 # Bind to this address:port too.
 
 ## Entry policies to allow/deny SOCKS requests based on IP address.
@@ -98,7 +98,7 @@ DataDirectory /var/lib/tor
 ## outgoing traffic to use.
 ## OutboundBindAddressExit will be used for all exit traffic, while
 ## OutboundBindAddressOR will be used for all OR and Dir connections
-## (DNS connections ignore OutboundBindAddress)
+## (DNS connections ignore OutboundBindAddress).
 ## If you do not wish to differentiate, use OutboundBindAddress to
 ## specify the same address for both in a single line.
 #OutboundBindAddressExit 10.0.0.4
@@ -107,6 +107,7 @@ DataDirectory /var/lib/tor
 ## A handle for your relay, so people don't have to refer to it by key.
 ## Nicknames must be between 1 and 19 characters inclusive, and must
 ## contain only the characters [a-zA-Z0-9].
+## If not set, "Unnamed" will be used.
 #Nickname ididnteditheconfig
 
 ## Define these to limit how much relayed traffic you will allow. Your
@@ -137,6 +138,9 @@ DataDirectory /var/lib/tor
 ## descriptors containing these lines and that Google indexes them, so
 ## spammers might also collect them. You may want to obscure the fact that
 ## it's an email address and/or generate a new address for this purpose.
+##
+## If you are running multiple relays, you MUST set this option.
+##
 #ContactInfo Random Person <nobody AT example dot com>
 ## You might also include your PGP or GPG fingerprint if you have one:
 #ContactInfo 0xFFFFFFFF Random Person <nobody AT example dot com>
@@ -163,6 +167,10 @@ DataDirectory /var/lib/tor
 ## https://www.torproject.org/docs/faq#MultipleRelays
 ## However, you should never include a bridge's fingerprint here, as it would
 ## break its concealability and potentially reveal its IP/TCP address.
+##
+## If you are running multiple relays, you MUST set this option.
+##
+## Note: do not use MyFamily on bridge relays.
 #MyFamily $keyid,$keyid,...
 
 ## Uncomment this if you do *not* want your relay to allow any exit traffic.
@@ -212,6 +220,9 @@ DataDirectory /var/lib/tor
 ## won't be able to block all the bridges. Also, websites won't treat you
 ## differently because they won't know you're running Tor. If you can
 ## be a real relay, please do; but if not, be a bridge!
+##
+## Warning: when running your Tor as a bridge, make sure than MyFamily is
+## NOT configured.
 #BridgeRelay 1
 ## By default, Tor will advertise your bridge to users through various
 ## mechanisms like https://bridges.torproject.org/. If you want to run
@@ -219,40 +230,16 @@ DataDirectory /var/lib/tor
 ## address manually to your friends, uncomment this line:
 #PublishServerDescriptor 0
 
+## If non-zero, try to write to disk less frequently than we would otherwise.
+## This is useful when running on flash memory or other media that support
+## only a limited number of writes.
+AvoidDiskWrites 1
+
 ## Configuration options can be imported from files or folders using the %include
 ## option with the value being a path. If the path is a file, the options from the
 ## file will be parsed as if they were written where the %include option is. If
 ## the path is a folder, all files on that folder will be parsed following lexical
 ## order. Files starting with a dot are ignored. Files on subfolders are ignored.
 ## The %include option can be used recursively.
-#%include /etc/torrc.d/
 #%include /etc/torrc.custom
-
-## BAD NODES - http://xqz3u5drneuzhaeo.onion/users/badtornodes
-## The following list provides information about relays that have been checked
-## for injecting content over HTTP-connections.
-ExcludeNodes $bbefffa108ad16b8e5f0323cf086811c17190bba, $2d5e2ca4b22809379b36028da5b7cb453671e5b6, \
-             $5eb6c2094c4ac42d3fbd1cba25fc3b4196e2ff83, $c813d142c092ac01f2f20970dba7086b8a7e52a3, \
-             $9c8bb2a38d99283c4acefb1ad4f52a23413787d6, $7c18ee0cb68a259ba6ce0001f2f7b8180a875a6d, \
-             $47bbde163dc80f5f5e666698ab4b97900dcff929, $acbacb92581c078cc6e285075cfef467e9ccf76a, \
-             $5d84518804ab4b032531b2647603fe1c5e569c26, $2d9a667f3d44f2a3296800bdd310c3747dc8f465, \
-             $1824cc33499fd55920a804c66bbaa05669d43117, $4205c064e59aaafeadd2ace80d705183c4f2758a, \
-             $14f04a0861b913bfcac1eabac74a1f47bdf41f3a, $1f9803d6ade967718912622ac876feef1088cfaa, \
-             $90804a60f89789d44a16a88596598fbc8f5e177b, $0d4f72f90e50b6f5967c4c7267354b22fa48ea86, \
-             $eda829cba890bbb30fe5be04779d83044126ba67, $c0e236c6e9a6b29efe247dcbc8a1eaaac247770c, \
-             $192fa9d6e9a27024f6e733a6196d33cc8425d1c9, $fe0551589d19dcbeb193fe78a9a003a8a2fc09aa, \
-             $2539ea281de61d5b289f580af52dde9a42cdae36, $6c7c819f808ac125c69e1d981f350dcba44da8b5, \
-             $35bdc6486420efd442c985d8d3c074988bfe544b, $43be706e24143ab6b3b86dbf7cd4fde1e0c4caf1, \
-             $103827708bd078eec737137585eccb5bcea6424b, $8ff73b8fbfbf2ccb52a8e46a515418f97a69c812, \
-             $94cbe5df362142d06de73b102e054442cfe627c9, $f2244a8d5da14359cda1dab70f328e62e74e9837, \
-             $14be6d0789a234bc4c1866b809d8062d22ee38cf, $9e6ee731a0dec6c65bb4bfb8dd2be461b6e58144, \
-             $2cb53ff756483b738e7b0b39ada3453b5259a1f3, $0077b6576a668f861f9f41fdf8da7795c8bb86d5, \
-             $c9be2c39ca4e6f120293c80d2cbe2bc34f3a1f30, $bcc93397b50c1ac75c94452954a5bcda01f47215, \
-             $ee25656d71db9a82c8efd8c4a99ddbec89f24a67, $1caa0aff0a8236fa7f83f392c11b76cf7eeaac60, \
-             $28151be14cb5c22a236163c3e97409d6fd607356, $1b777f2c879c76fc529d1ec63508aad0e1759e79, \
-             $53c4c4e1741ca61ad4f09cc9eae8abe1fd92f08b
-
-## If StrictNodes is set to 1, Tor will treat the ExcludeNodes option as a
-## requirement to follow for all the circuits you generate, even if doing so
-## will break functionality for you.
-#StrictNodes 1
+%include /etc/tor/torrc.d/

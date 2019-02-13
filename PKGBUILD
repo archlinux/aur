@@ -4,6 +4,7 @@
 pkgname=tor-git
 _branch=master
 #_branch=maint-0.3.5
+#_with_rust=1
 pkgver=0.4.0.1.alpha.31346
 pkgrel=1
 pkgdesc="An anonymizing overlay network (development version)"
@@ -16,15 +17,23 @@ optdepends=('torsocks: for torify support')
 conflicts=('tor')
 provides=('tor')
 install='tor.install'
-backup=('etc/tor/torrc')
+backup=('etc/tor/torrc'
+        'etc/tor/torrc.d')
+
+[[ $_with_rust ]] && {
+    makedepends+=('rust')
+    _options="--enable-rust"
+}
 
 source=("git+https://git.torproject.org/tor.git#branch=${_branch}"
         #"git+https://github.com/torproject/tor.git#branch=${_branch}"
-        'torrc'
+        'nodes' 'torrc' 'tor.logrotate'
         'tor.service' 'tor.tmpfiles' 'tor.sysusers')
 
 sha256sums=('SKIP'
-            '413bc43b5c51ff1672b426034598c1d47d5fb94474762cda06668cb28ca9250d'
+            'eb82c6eaef6cd2e9451b4096f4ce23b3ee91fc408cdebd3280698cbe1a3b7ca1'
+            '5e40baff0e6cdc487793453ab06155c2974cc8bb20096db98be641fcceccd328'
+            'd447227fcc2756778a1be143b8975d67b25ea15688cde2291185b3c71d0f6e34'
             '7f98569aefffead72e8712c1ad27de3fc2095575da003691b2513ca54042efbb'
             'ffef89a0eb10614e2350b4271ff83f92caa2301bfb97746b94dc7ab7f21d702b'
             '4282c8a4f1471b3be345b2024491af89f5eeaac071884f2a55988aef94a2054b')
@@ -49,18 +58,24 @@ build() {
     #export CFLAGS='-Wall -g -O2 -pipe -fno-omit-frame-pointer'
     #options=(!strip)
 
-    ./configure \
+    [[ $_with_rust ]] && {
+        git submodule update --init --recursive
+        export TOR_RUST_DEPENDENCIES="$srcdir/tor/src/ext/rust/crates"
+    }
+
+    #_malloc=(tcmalloc|jemalloc)
+
+    ./configure $_options \
         --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-        --enable-systemd --enable-zstd
-        #--with-tcmalloc
-        #--enable-openbsd-malloc
+        --enable-systemd --enable-zstd --with-malloc=${_malloc:-system}
+        #--enable-fragile-hardening
 
     make
 }
 
 check() {
     cd "$srcdir/tor"
-    make test || true
+    make check
 }
 
 package() {
@@ -68,9 +83,11 @@ package() {
     make DESTDIR="$pkgdir" install
 
     rm -f "$pkgdir/etc/tor/tor-tsocks.conf"
-    install -Dm640 "$srcdir/torrc"        "$pkgdir/etc/tor/torrc"
-    install -Dm644 "$srcdir/tor.service"  "$pkgdir/usr/lib/systemd/system/tor.service"
-    install -Dm644 "$srcdir/tor.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/tor.conf"
-    install -Dm644 "$srcdir/tor.sysusers" "$pkgdir/usr/lib/sysusers.d/tor.conf"
-    install -Dm644 LICENSE                "$pkgdir/usr/share/licenses/tor/LICENSE"
+    install -Dm640 "$srcdir/torrc"         "$pkgdir/etc/tor/torrc"
+    install -Dm644 "$srcdir/tor.service"   "$pkgdir/usr/lib/systemd/system/tor.service"
+    install -Dm644 "$srcdir/tor.tmpfiles"  "$pkgdir/usr/lib/tmpfiles.d/tor.conf"
+    install -Dm644 "$srcdir/tor.sysusers"  "$pkgdir/usr/lib/sysusers.d/tor.conf"
+    install -Dm644 "$srcdir/tor.logrotate" "$pkgdir/etc/logrotate.d/tor"
+    install -Dm644 "$srcdir/nodes"         "$pkgdir/etc/tor/torrc.d/nodes"
+    install -Dm644 LICENSE                 "$pkgdir/usr/share/licenses/tor/LICENSE"
 }

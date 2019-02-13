@@ -1,0 +1,289 @@
+## If StrictNodes is set to 1, Tor will treat the ExcludeNodes option as a
+## requirement to follow for all the circuits you generate, even if doing so
+## will break functionality for you.
+StrictNodes 1
+
+## A list of identity fingerprints, country codes, and address patterns of nodes to never use when
+## picking an exit node, that is, a node that delivers traffic for you outside the Tor network.
+## Note that any node listed in ExcludeNodes is automatically considered to be part of this list too.
+## BAD NODES - http://xqz3u5drneuzhaeo.onion/users/badtornodes
+## The following list provides information about relays that have been checked
+## for injecting content over HTTP-connections.
+ExcludeNodes $bbefffa108ad16b8e5f0323cf086811c17190bba, $2d5e2ca4b22809379b36028da5b7cb453671e5b6, \
+             $5eb6c2094c4ac42d3fbd1cba25fc3b4196e2ff83, $c813d142c092ac01f2f20970dba7086b8a7e52a3, \
+             $9c8bb2a38d99283c4acefb1ad4f52a23413787d6, $7c18ee0cb68a259ba6ce0001f2f7b8180a875a6d, \
+             $47bbde163dc80f5f5e666698ab4b97900dcff929, $acbacb92581c078cc6e285075cfef467e9ccf76a, \
+             $5d84518804ab4b032531b2647603fe1c5e569c26, $2d9a667f3d44f2a3296800bdd310c3747dc8f465, \
+             $1824cc33499fd55920a804c66bbaa05669d43117, $4205c064e59aaafeadd2ace80d705183c4f2758a, \
+             $14f04a0861b913bfcac1eabac74a1f47bdf41f3a, $1f9803d6ade967718912622ac876feef1088cfaa, \
+             $90804a60f89789d44a16a88596598fbc8f5e177b, $0d4f72f90e50b6f5967c4c7267354b22fa48ea86, \
+             $eda829cba890bbb30fe5be04779d83044126ba67, $c0e236c6e9a6b29efe247dcbc8a1eaaac247770c, \
+             $192fa9d6e9a27024f6e733a6196d33cc8425d1c9, $fe0551589d19dcbeb193fe78a9a003a8a2fc09aa, \
+             $2539ea281de61d5b289f580af52dde9a42cdae36, $6c7c819f808ac125c69e1d981f350dcba44da8b5, \
+             $35bdc6486420efd442c985d8d3c074988bfe544b, $43be706e24143ab6b3b86dbf7cd4fde1e0c4caf1, \
+             $103827708bd078eec737137585eccb5bcea6424b, $8ff73b8fbfbf2ccb52a8e46a515418f97a69c812, \
+             $94cbe5df362142d06de73b102e054442cfe627c9, $f2244a8d5da14359cda1dab70f328e62e74e9837, \
+             $14be6d0789a234bc4c1866b809d8062d22ee38cf, $9e6ee731a0dec6c65bb4bfb8dd2be461b6e58144, \
+             $2cb53ff756483b738e7b0b39ada3453b5259a1f3, $0077b6576a668f861f9f41fdf8da7795c8bb86d5, \
+             $c9be2c39ca4e6f120293c80d2cbe2bc34f3a1f30, $bcc93397b50c1ac75c94452954a5bcda01f47215, \
+             $ee25656d71db9a82c8efd8c4a99ddbec89f24a67, $1caa0aff0a8236fa7f83f392c11b76cf7eeaac60, \
+             $28151be14cb5c22a236163c3e97409d6fd607356, $1b777f2c879c76fc529d1ec63508aad0e1759e79, \
+             $53c4c4e1741ca61ad4f09cc9eae8abe1fd92f08b
+
+## A list of identity fingerprints and country codes of nodes to use for the first hop in your normal circuits.
+## Normal circuits include all circuits except for direct connections to directory servers.
+## The Bridge option overrides this option; if you have configured bridges and UseBridges is 1, the Bridges
+## are used as your entry nodes.
+#EntryNodes
+
+## A list of identity fingerprints, country codes, and address patterns of nodes to use as exit node---that is
+## a node that delivers traffic for you outside the Tor network.
+#ExitNodes
+
+# Country                               Abbrev
+# ASCENSION ISLAND                      {ac}
+# AFGHANISTAN                           {af}
+# ALAND                                 {ax}
+# ALBANIA                               {al}
+# ALGERIA                               {dz}
+# ANDORRA                               {ad}
+# ANGOLA                                {ao}
+# ANGUILLA                              {ai}
+# ANTARCTICA                            {aq}
+# ANTIGUA AND BARBUDA                   {ag}
+# ARGENTINA REPUBLIC                    {ar}
+# ARMENIA                               {am}
+# ARUBA                                 {aw}
+# AUSTRALIA                             {au}
+# AUSTRIA                               {at}
+# AZERBAIJAN                            {az}
+# BAHAMAS                               {bs}
+# BAHRAIN                               {bh}
+# BANGLADESH                            {bd}
+# BARBADOS                              {bb}
+# BELARUS                               {by}
+# BELGIUM                               {be}
+# BELIZE                                {bz}
+# BENIN                                 {bj}
+# BERMUDA                               {bm}
+# BHUTAN                                {bt}
+# BOLIVIA                               {bo}
+# BOSNIA AND HERZEGOVINA                {ba}
+# BOTSWANA                              {bw}
+# BOUVET ISLAND                         {bv}
+# BRAZIL                                {br}
+# BRITISH INDIAN OCEAN TERR             {io}
+# BRITISH VIRGIN ISLANDS                {vg}
+# BRUNEI DARUSSALAM                     {bn}
+# BULGARIA                              {bg}
+# BURKINA FASO                          {bf}
+# BURUNDI                               {bi}
+# CAMBODIA                              {kh}
+# CAMEROON                              {cm}
+# CANADA                                {ca}
+# CAPE VERDE                            {cv}
+# CAYMAN ISLANDS                        {ky}
+# CENTRAL AFRICAN REPUBLIC              {cf}
+# CHAD                                  {td}
+# CHILE                                 {cl}
+# PEOPLE'S REPUBLIC OF CHINA            {cn}
+# CHRISTMAS ISLANDS                     {cx}
+# COCOS ISLANDS                         {cc}
+# COLOMBIA                              {co}
+# COMORAS                               {km}
+# CONGO                                 {cg}
+# CONGO (DEMOCRATIC REPUBLIC)           {cd}
+# COOK ISLANDS                          {ck}
+# COSTA RICA                            {cr}
+# COTE D IVOIRE                         {ci}
+# CROATIA                               {hr}
+# CUBA                                  {cu}
+# CYPRUS                                {cy}
+# CZECH REPUBLIC                        {cz}
+# DENMARK                               {dk}
+# DJIBOUTI                              {dj}
+# DOMINICA                              {dm}
+# DOMINICAN REPUBLIC                    {do}
+# EAST TIMOR                            {tp}
+# ECUADOR                               {ec}
+# EGYPT                                 {eg}
+# EL SALVADOR                           {sv}
+# EQUATORIAL GUINEA                     {gq}
+# ESTONIA                               {ee}
+# ETHIOPIA                              {et}
+# FALKLAND ISLANDS                      {fk}
+# FAROE ISLANDS                         {fo}
+# FIJI                                  {fj}
+# FINLAND                               {fi}
+# FRANCE                                {fr}
+# FRANCE METROPOLITAN                   {fx}
+# FRENCH GUIANA                         {gf}
+# FRENCH POLYNESIA                      {pf}
+# FRENCH SOUTHERN TERRITORIES           {tf}
+# GABON                                 {ga}
+# GAMBIA                                {gm}
+# GEORGIA                               {ge}
+# GERMANY                               {de}
+# GHANA                                 {gh}
+# GIBRALTER                             {gi}
+# GREECE                                {gr}
+# GREENLAND                             {gl}
+# GRENADA                               {gd}
+# GUADELOUPE                            {gp}
+# GUAM                                  {gu}
+# GUATEMALA                             {gt}
+# GUINEA                                {gn}
+# GUINEA-BISSAU                         {gw}
+# GUYANA                                {gy}
+# HAITI                                 {ht}
+# HEARD &amp; MCDONALD ISLAND           {hm}
+# HONDURAS                              {hn}
+# HONG KONG                             {hk}
+# HUNGARY                               {hu}
+# ICELAND                               {is}
+# INDIA                                 {in}
+# INDONESIA                             {id}
+# IRAN, ISLAMIC REPUBLIC OF             {ir}
+# IRAQ                                  {iq}
+# IRELAND                               {ie}
+# ISLE OF MAN                           {im}
+# ISRAEL                                {il}
+# ITALY                                 {it}
+# JAMAICA                               {jm}
+# JAPAN                                 {jp}
+# JORDAN                                {jo}
+# KAZAKHSTAN                            {kz}
+# KENYA                                 {ke}
+# KIRIBATI                              {ki}
+# KOREA, DEM. PEOPLES REP OF            {kp}
+# KOREA, REPUBLIC OF                    {kr}
+# KUWAIT                                {kw}
+# KYRGYZSTAN                            {kg}
+# LAO PEOPLE'S DEM. REPUBLIC            {la}
+# LATVIA                                {lv}
+# LEBANON                               {lb}
+# LESOTHO                               {ls}
+# LIBERIA                               {lr}
+# LIBYAN ARAB JAMAHIRIYA                {ly}
+# LIECHTENSTEIN                         {li}
+# LITHUANIA                             {lt}
+# LUXEMBOURG                            {lu}
+# MACAO                                 {mo}
+# MACEDONIA                             {mk}
+# MADAGASCAR                            {mg}
+# MALAWI                                {mw}
+# MALAYSIA                              {my}
+# MALDIVES                              {mv}
+# MALI                                  {ml}
+# MALTA                                 {mt}
+# MARSHALL ISLANDS                      {mh}
+# MARTINIQUE                            {mq}
+# MAURITANIA                            {mr}
+# MAURITIUS                             {mu}
+# MAYOTTE                               {yt}
+# MEXICO                                {mx}
+# MICRONESIA                            {fm}
+# MOLDAVA REPUBLIC OF                   {md}
+# MONACO                                {mc}
+# MONGOLIA                              {mn}
+# MONTENEGRO                            {me}
+# MONTSERRAT                            {ms}
+# MOROCCO                               {ma}
+# MOZAMBIQUE                            {mz}
+# MYANMAR                               {mm}
+# NAMIBIA                               {na}
+# NAURU                                 {nr}
+# NEPAL                                 {np}
+# NETHERLANDS ANTILLES                  {an}
+# NETHERLANDS, THE                      {nl}
+# NEW CALEDONIA                         {nc}
+# NEW ZEALAND                           {nz}
+# NICARAGUA                             {ni}
+# NIGER                                 {ne}
+# NIGERIA                               {ng}
+# NIUE                                  {nu}
+# NORFOLK ISLAND                        {nf}
+# NORTHERN MARIANA ISLANDS              {mp}
+# NORWAY                                {no}
+# OMAN                                  {om}
+# PAKISTAN                              {pk}
+# PALAU                                 {pw}
+# PALESTINE                             {ps}
+# PANAMA                                {pa}
+# PAPUA NEW GUINEA                      {pg}
+# PARAGUAY                              {py}
+# PERU                                  {pe}
+# PHILIPPINES (REPUBLIC OF THE)         {ph}
+# PITCAIRN                              {pn}
+# POLAND                                {pl}
+# PORTUGAL                              {pt}
+# PUERTO RICO                           {pr}
+# QATAR                                 {qa}
+# REUNION                               {re}
+# ROMANIA                               {ro}
+# RUSSIAN FEDERATION                    {ru}
+# RWANDA                                {rw}
+# SAMOA                                 {ws}
+# SAN MARINO                            {sm}
+# SAO TOME/PRINCIPE                     {st}
+# SAUDI ARABIA                          {sa}
+# SCOTLAND                              {uk}
+# SENEGAL                               {sn}
+# SERBIA                                {rs}
+# SEYCHELLES                            {sc}
+# SIERRA LEONE                          {sl}
+# SINGAPORE                             {sg}
+# SLOVAKIA                              {sk}
+# SLOVENIA                              {si}
+# SOLOMON ISLANDS                       {sb}
+# SOMALIA                               {so}
+# SOMOA,GILBERT,ELLICE ISLANDS          {as}
+# SOUTH AFRICA                          {za}
+# SOUTH GEORGIA, SOUTH SANDWICH ISLANDS {gs}
+# SOVIET UNION                          {su}
+# SPAIN                                 {es}
+# SRI LANKA                             {lk}
+# ST. HELENA                            {sh}
+# ST. KITTS AND NEVIS                   {kn}
+# ST. LUCIA                             {lc}
+# ST. PIERRE AND MIQUELON               {pm}
+# ST. VINCENT &amp; THE GRENADINES      {vc}
+# SUDAN                                 {sd}
+# SURINAME                              {sr}
+# SVALBARD AND JAN MAYEN                {sj}
+# SWAZILAND                             {sz}
+# SWEDEN                                {se}
+# SWITZERLAND                           {ch}
+# SYRIAN ARAB REPUBLIC                  {sy}
+# TAIWAN                                {tw}
+# TAJIKISTAN                            {tj}
+# TANZANIA, UNITED REPUBLIC OF          {tz}
+# THAILAND                              {th}
+# TOGO                                  {tg}
+# TOKELAU                               {tk}
+# TONGA                                 {to}
+# TRINIDAD AND TOBAGO                   {tt}
+# TUNISIA                               {tn}
+# TURKEY                                {tr}
+# TURKMENISTAN                          {tm}
+# TURKS AND CALCOS ISLANDS              {tc}
+# TUVALU                                {tv}
+# UGANDA                                {ug}
+# UKRAINE                               {ua}
+# UNITED ARAB EMIRATES                  {ae}
+# UNITED KINGDOM (no new registrations) {gb}
+# UNITED KINGDOM                        {uk}
+# UNITED STATES                         {us}
+# UNITED STATES MINOR OUTL.IS.          {um}
+# URUGUAY                               {uy}
+# UZBEKISTAN                            {uz}
+# VANUATU                               {vu}
+# VATICAN CITY STATE                    {va}
+# VENEZUELA                             {ve}
+# VIET NAM                              {vn}
+# VIRGIN ISLANDS (USA)                  {vi}
+# WALLIS AND FUTUNA ISLANDS             {wf}
+# WESTERN SAHARA                        {eh}
+# YEMEN                                 {ye}
+# ZAMBIA                                {zm}
+# ZIMBABWE                              {zw}
