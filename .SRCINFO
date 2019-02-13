@@ -1,13 +1,14 @@
 pkgbase = suru-plus-dark-git
-	pkgdesc = A dark and elegant third-party icons, based on Sam Hewitt's Suru Icons
-	pkgver = r1.1
+	pkgdesc = Suru++ 25 Dark – A full dark cyberpunk third-party icons theme!
+	pkgver = 25.0
 	pkgrel = 1
 	url = https://github.com/gusbemacbe/suru-plus-dark
+	changelog = CHANGELOG
 	arch = any
 	license = GPL3
 	makedepends = git
+	provides = suru-plus-dark
 	conflicts = suru-plus-dark
-	options = !strip
 	source = git+https://github.com/gusbemacbe/suru-plus-dark.git
 	sha256sums = SKIP
 
