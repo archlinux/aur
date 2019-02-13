@@ -20,7 +20,7 @@ package() {
 	# Install files in /opt
 	mkdir -p "$pkgdir/opt/sslyze"
 	cp -a $srcdir/${pkgname}-${pkgver}/. $pkgdir/opt/sslyze
-	pip install $pkgdir/opt/sslyze --target $pkgdir/opt/sslyze/lib
+	/usr/bin/pip install $pkgdir/opt/sslyze --target $pkgdir/opt/sslyze/lib
 
 	# Create an indirect launcher in /usr/bin
 	mkdir -p "$pkgdir/usr/bin"
