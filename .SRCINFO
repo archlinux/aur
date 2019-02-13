@@ -1,6 +1,6 @@
 pkgbase = taskbook
 	pkgdesc = Tasks, boards & notes for the command-line habitat
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/klaussinani/taskbook
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = taskbook
 	makedepends = npm
 	depends = nodejs
 	conflicts = taskbook-git
-	source = https://github.com/klaussinani/taskbook/archive/v0.2.0.tar.gz
-	sha256sums = c8abca6edf1284d0e374ce5e3abec5cb110a472d274c71d3de4ced58022ab893
+	source = https://github.com/klaussinani/taskbook/archive/v0.3.0.tar.gz
+	sha256sums = 931745b06239dc2e7f70b440a869a01e07e124853b56377384364826b663f5fd
 
 pkgname = taskbook
 
