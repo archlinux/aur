@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Zok <tomasz.zok [at] gmail.com>
 pkgname=x3dna
 _pkgver=2.4
-pkgver=${_pkgver}.0_20181218
+pkgver=${_pkgver}.1_20190211
 pkgrel=1
 pkgdesc="3DNA is a versatile, integrated software system for the analysis, rebuilding and visualization of three-dimensional nucleic-acid-containing structures. Please see: http://forum.x3dna.org/site-announcements/download-instructions/"
 arch=('x86_64')
