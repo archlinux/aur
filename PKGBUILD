@@ -1,5 +1,5 @@
 pkgname=fluidkeys
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Fluidkeys helps teams protect themselves with strong encryption.'
 arch=('any')
@@ -7,8 +7,8 @@ url="https://www.fluidkeys.com"
 license=('AGPL3')
 makedepends=('go-pie' 'rsync' 'dep')
 provides=("fluidkeys=$pkgver")
-source=("https://github.com/fluidkeys/fluidkeys/archive/v0.3.1.tar.gz")
-sha256sums=('6432f60ab7450d26f068368dff65f53fbdc44d3167afbb3f9d5b75762b40269d')
+source=("https://github.com/fluidkeys/fluidkeys/archive/v${pkgver}.tar.gz")
+sha256sums=('f3e1697ebb54acef5b11287577d650d377ab673509669afd73062fcb4f4bbeb3')
 
 _gopath="gopath/src/github.com/fluidkeys/fluidkeys"
 
