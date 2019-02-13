@@ -1,12 +1,12 @@
 pkgbase = ruby-install-git
-	pkgdesc = Installs Ruby, JRuby, Rubinius, MagLev or mruby.
-	pkgver = 0.5.0.r61.9e97cc9
+	pkgdesc = Installs Ruby, JRuby, Rubinius, TruffleRuby or mruby.
+	pkgver = 0.7.0.r7.ea2b8bb
 	pkgrel = 1
 	url = https://github.com/postmodern/ruby-install
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = bash
+	depends = bash>=3
 	depends = curl
 	depends = tar
 	depends = bzip2
