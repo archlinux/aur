@@ -1,33 +1,38 @@
 # Maintainer: Josef Miegl <josef@miegl.cz>
 
 pkgname=libosmo-sccp-git
-pkgver=1.0.0.1.g0a93a68
+pkgver=1.0.0.r2.g8d712f0
 pkgrel=1
 pkgdesc="Osmocom SCCP + Sigtran (M3UA, SUA) library"
 url="http://openbsc.osmocom.org/trac/wiki/libosmo-sccp"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
-depends=('libosmocore' 'libosmo-netif' 'lksctp-tools')
+depends=('libosmocore' 'libosmo-netif' 'lksctp-tools' 'talloc')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+backup=('etc/osmocom/osmo-stp.cfg')
 source=("git+https://git.osmocom.org/${pkgname%-git}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
-  echo $(git describe --always | sed 's/-/./g')
+  cd "${pkgname%-git}"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${pkgname%-git}"
+  autoreconf -f -i
 }
 
 build() {
-  cd "${srcdir}/${pkgname%-git}"
-  autoreconf -i
-  ./configure --prefix=/usr
+  cd "${pkgname%-git}"
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${pkgname%-git}"
   make DESTDIR=${pkgdir} install
 }
 
