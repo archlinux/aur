@@ -1,7 +1,7 @@
 pkgbase = kamailio
 	pkgdesc = Rock solid SIP server
 	pkgver = 5.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kamailio.org/
 	arch = i686
 	arch = x86_64
@@ -58,30 +58,37 @@ pkgname = kamailio
 	backup = etc/kamailio/kamailio.cfg
 
 pkgname = kamailio-autheph-modules
+	pkgdesc = Ephemeral authentication module for Kamailio
 	depends = kamailio
 	depends = openssl
 
 pkgname = kamailio-berkeley-modules
+	pkgdesc = Berkeley database module for Kamailio
 	depends = kamailio
 	depends = db
 
 pkgname = kamailio-cnxcc-modules
+	pkgdesc = cnxcc call charging control module for Kamailio
 	depends = kamailio
 	depends = hiredis
 	depends = libevent
 
 pkgname = kamailio-cpl-modules
+	pkgdesc = CPL (Call Processing Language) interpreter for Kamailio
 	depends = kamailio
 	depends = libxml2
 
 pkgname = kamailio-dnssec-modules
+	pkgdesc = DNSSEC module for Kamailio
 	depends = kamailio
 	depends = dnssec-tools
 
 pkgname = kamailio-erlang-modules
+	pkgdesc = Erlang node interaction module for Kamailio
 	depends = kamailio
 
 pkgname = kamailio-extra-modules
+	pkgdesc = gzcompress, ev, uuid, jansson and http_async modules for Kamailio
 	depends = kamailio
 	depends = libevent
 	depends = libev
@@ -89,140 +96,175 @@ pkgname = kamailio-extra-modules
 	depends = curl
 
 pkgname = kamailio-geoip-modules
+	pkgdesc = GeoIP module for Kamailio
 	depends = kamailio
 	depends = geoip
 
 pkgname = kamailio-geoip2-modules
+	pkgdesc = GeoIP2 module for Kamailio
 	depends = kamailio
 	depends = libmaxminddb
 
 pkgname = kamailio-ims-modules
+	pkgdesc = Various Diameter interfaces and modules for Kamailio to run as an IMS core
 	depends = kamailio
 	depends = libmnl
 	depends = libxml2
 
 pkgname = kamailio-json-modules
+	pkgdesc = JSON parser module for Kamailio
 	depends = kamailio
 	depends = libevent
 	depends = json-c
 
 pkgname = kamailio-kazoo-modules
+	pkgdesc = Kazoo application server integration module for Kamailio
 	depends = kamailio
 	depends = libevent
 	depends = json-c
 	depends = librabbitmq-c
 
 pkgname = kamailio-ldap-modules
+	pkgdesc = Ldap and h350 modules for Kamailio
 	depends = kamailio
 	depends = libldap
 
 pkgname = kamailio-lua-modules
+	pkgdesc = Lua extension module for Kamailio
 	depends = kamailio
 	depends = lua
 
 pkgname = kamailio-memcached-modules
+	pkgdesc = memcached module for Kamailio
 	depends = kamailio
 	depends = libmemcached
 
 pkgname = kamailio-mongodb-modules
+	pkgdesc = Mongodb database driver and non-db connector for Kamailio
 	depends = kamailio
 	depends = mongo-c-driver
 	depends = openssl
 	depends = snappy
 
 pkgname = kamailio-mono-modules
+	pkgdesc = Mono extension module for Kamailio
 	depends = kamailio
 	depends = mono
 
 pkgname = kamailio-mysql-modules
+	pkgdesc = MySQL database driver for Kamailio
 	depends = kamailio
 	depends = mariadb-clients
 
 pkgname = kamailio-outbound-modules
+	pkgdesc = SIP outbound extension module for Kamailio
 	depends = kamailio
 	depends = openssl
 
 pkgname = kamailio-perl-modules
+	pkgdesc = Perl modules for Kamailio
 	depends = kamailio
 	depends = perl
 
 pkgname = kamailio-phonenum-modules
+	pkgdesc = libphonenumber module for Kamailio
 	depends = kamailio
 	depends = libphonenumber
 
 pkgname = kamailio-postgres-modules
+	pkgdesc = PostgreSQL database driver for Kamailio
 	depends = kamailio
 	depends = postgresql
 
 pkgname = kamailio-presence-modules
+	pkgdesc = presence modules for Kamailio
 	depends = kamailio
 	depends = libxml2
 	depends = curl
 
 pkgname = kamailio-python-modules
+	pkgdesc = Python2 extension module for Kamailio
 	depends = kamailio
 	depends = python2
 
 pkgname = kamailio-python3-modules
+	pkgdesc = Python3 extension module for Kamailio
 	depends = kamailio
 	depends = python
 
 pkgname = kamailio-rabbitmq-modules
+	pkgdesc = RabbitMQ module for Kamailio
 	depends = kamailio
 	depends = librabbitmq-c
 
 pkgname = kamailio-radius-modules
+	pkgdesc = RADIUS modules for Kamailio
 	depends = kamailio
 	depends = freeradius-client
+	backup = etc/kamailio/dictionary.kamailio
 
 pkgname = kamailio-redis-modules
+	pkgdesc = Redis NOSQL database driver for Kamailio
 	depends = kamailio
 	depends = hiredis
 
 pkgname = kamailio-ruby-modules
+	pkgdesc = Ruby extension module for Kamailio
 	depends = kamailio
 	depends = ruby
 
 pkgname = kamailio-sctp-modules
+	pkgdesc = SCTP SIP transport module for Kamailio
 	depends = kamailio
 	depends = lksctp-tools
 
 pkgname = kamailio-snmpstats-modules
+	pkgdesc = snmpstats module for Kamailio
 	depends = kamailio
 	depends = net-snmp
 
 pkgname = kamailio-sqlite-modules
+	pkgdesc = SQLite database driver for Kamailio
 	depends = kamailio
 	depends = sqlite
 
 pkgname = kamailio-systemd-modules
+	pkgdesc = systemd modules for Kamailio
 	depends = kamailio
 
 pkgname = kamailio-tls-modules
+	pkgdesc = TLS modules for Kamailio
 	depends = kamailio
 	depends = openssl
 	depends = curl
+	backup = etc/kamailio/tls.cfg
 
 pkgname = kamailio-unixodbc-modules
+	pkgdesc = unixODBC database driver for Kamailio
 	depends = kamailio
 	depends = unixodbc
 	depends = libunistring
 
 pkgname = kamailio-utils-modules
+	pkgdesc = Utility modules for Kamailio
 	depends = kamailio
 	depends = libxml2
 	depends = curl
 
 pkgname = kamailio-websocket-modules
+	pkgdesc = WebSocket modules for Kamailio
 	depends = kamailio
 	depends = openssl
 	depends = libunistring
 
 pkgname = kamailio-xml-modules
+	pkgdesc = xml modules for Kamailio
 	depends = kamailio
 	depends = libxml2
+	backup = etc/kamailio/pi_framework.xml
 
 pkgname = kamailio-xmpp-modules
+	pkgdesc = SIP to XMPP IM translator module for Kamailio
 	depends = kamailio
 	depends = expat
 

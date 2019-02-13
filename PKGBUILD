@@ -14,7 +14,7 @@ pkgname=('kamailio' 'kamailio-autheph-modules' 'kamailio-berkeley-modules' 'kama
          'kamailio-systemd-modules' 'kamailio-tls-modules' 'kamailio-unixodbc-modules' 'kamailio-utils-modules'
          'kamailio-websocket-modules' 'kamailio-xml-modules' 'kamailio-xmpp-modules')
 pkgver=5.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Rock solid SIP server"
 url="http://www.kamailio.org/"
 license=('GPL2')
@@ -66,242 +66,284 @@ package_kamailio() {
   depends=('pcre' 'python')
   backup=('etc/kamailio/kamctlrc' 'etc/kamailio/kamailio.cfg')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR="${pkgdir}" install group_include="kstandard"
+  make DESTDIR="${pkgdir}" cfg_prefix="${pkgdir}" install group_include="kstandard"
   install -Dm0644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 }
 
 package_kamailio-autheph-modules() {
+  pkgdesc="Ephemeral authentication module for Kamailio"
   depends=('kamailio' 'openssl')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kautheph"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kautheph"
 }
 
 package_kamailio-berkeley-modules() {
+  pkgdesc="Berkeley database module for Kamailio"
   depends=('kamailio' 'db')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kberkeley"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kberkeley"
 }
 
 package_kamailio-cnxcc-modules() {
+  pkgdesc="cnxcc call charging control module for Kamailio"
   depends=('kamailio' 'hiredis' 'libevent')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kcnxcc"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kcnxcc"
 }
 
 package_kamailio-cpl-modules() {
+  pkgdesc="CPL (Call Processing Language) interpreter for Kamailio"
   depends=('kamailio' 'libxml2')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kcpl"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kcpl"
 }
 
 package_kamailio-dnssec-modules() {
+  pkgdesc="DNSSEC module for Kamailio"
   depends=('kamailio' 'dnssec-tools')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kdnssec"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kdnssec"
 }
 
 package_kamailio-erlang-modules() {
+  pkgdesc="Erlang node interaction module for Kamailio"
   depends=('kamailio')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kerlang"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kerlang"
 }
 
 package_kamailio-extra-modules() {
+  pkgdesc="gzcompress, ev, uuid, jansson and http_async modules for Kamailio"
   depends=('kamailio' 'libevent' 'libev' 'jansson' 'curl')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kgzcompress kev kuuid kjansson khttp_async"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kgzcompress kev kuuid kjansson khttp_async"
 }
 
 package_kamailio-geoip-modules() {
+  pkgdesc="GeoIP module for Kamailio"
   depends=('kamailio' 'geoip')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kgeoip"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kgeoip"
 }
 
 package_kamailio-geoip2-modules() {
+  pkgdesc="GeoIP2 module for Kamailio"
   depends=('kamailio' 'libmaxminddb')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kgeoip2"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kgeoip2"
 }
 
 package_kamailio-ims-modules() {
+  pkgdesc="Various Diameter interfaces and modules for Kamailio to run as an IMS core"
   depends=('kamailio' 'libmnl' 'libxml2')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kims"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kims"
 }
 
 package_kamailio-json-modules() {
+  pkgdesc="JSON parser module for Kamailio"
   depends=('kamailio' 'libevent' 'json-c')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kjson"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kjson"
 }
 
 package_kamailio-kazoo-modules() {
+  pkgdesc="Kazoo application server integration module for Kamailio"
   depends=('kamailio' 'libevent' 'json-c' 'librabbitmq-c')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kkazoo"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kkazoo"
 }
 
 package_kamailio-ldap-modules() {
+  pkgdesc="Ldap and h350 modules for Kamailio"
   depends=('kamailio' 'libldap')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kldap"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kldap"
 }
 
 package_kamailio-lua-modules() {
+  pkgdesc="Lua extension module for Kamailio"
   depends=('kamailio' 'lua')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="klua"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="klua"
 }
 
 package_kamailio-memcached-modules() {
+  pkgdesc="memcached module for Kamailio"
   depends=('kamailio' 'libmemcached')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kmemcached"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kmemcached"
 }
 
 package_kamailio-mongodb-modules() {
+  pkgdesc="Mongodb database driver and non-db connector for Kamailio"
   depends=('kamailio' 'mongo-c-driver' 'openssl' 'snappy')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kmongodb"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kmongodb"
 }
 
 package_kamailio-mono-modules() {
+  pkgdesc="Mono extension module for Kamailio"
   depends=('kamailio' 'mono')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kmono"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kmono"
 }
 
 package_kamailio-mysql-modules() {
+  pkgdesc="MySQL database driver for Kamailio"
   depends=('kamailio' 'mariadb-clients')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kmysql"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kmysql"
 }
 
 package_kamailio-outbound-modules() {
+  pkgdesc="SIP outbound extension module for Kamailio"
   depends=('kamailio' 'openssl')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="koutbound"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="koutbound"
 }
 
 package_kamailio-perl-modules() {
+  pkgdesc="Perl modules for Kamailio"
   depends=('kamailio' 'perl')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kperl"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kperl"
 }
 
 package_kamailio-phonenum-modules() {
+  pkgdesc="libphonenumber module for Kamailio"
   depends=('kamailio' 'libphonenumber')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kphonenum"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kphonenum"
 }
 
 package_kamailio-postgres-modules() {
+  pkgdesc="PostgreSQL database driver for Kamailio"
   depends=('kamailio' 'postgresql')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kpostgres"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kpostgres"
 }
 
 package_kamailio-presence-modules() {
+  pkgdesc="presence modules for Kamailio"
   depends=('kamailio' 'libxml2' 'curl')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kpresence"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kpresence"
 }
 
 package_kamailio-python-modules() {
+  pkgdesc="Python2 extension module for Kamailio"
   depends=('kamailio' 'python2')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kpython"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kpython"
 }
 
 package_kamailio-python3-modules() {
+  pkgdesc="Python3 extension module for Kamailio"
   depends=('kamailio' 'python')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kpython3"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kpython3"
 }
 
 package_kamailio-rabbitmq-modules() {
+  pkgdesc="RabbitMQ module for Kamailio"
   depends=('kamailio' 'librabbitmq-c')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="krabbitmq"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="krabbitmq"
 }
 
 package_kamailio-radius-modules() {
+  pkgdesc="RADIUS modules for Kamailio"
   depends=('kamailio' 'freeradius-client')
+  backup=('etc/kamailio/dictionary.kamailio')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} FREERADIUS=1 install-modules-all group_include="kradius"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" FREERADIUS=1 install-modules-all group_include="kradius"
 }
 
 package_kamailio-redis-modules() {
+  pkgdesc="Redis NOSQL database driver for Kamailio"
   depends=('kamailio' 'hiredis')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kredis"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kredis"
 }
 
 package_kamailio-ruby-modules() {
+  pkgdesc="Ruby extension module for Kamailio"
   depends=('kamailio' 'ruby')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kruby"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kruby"
 }
 
 package_kamailio-sctp-modules() {
+  pkgdesc="SCTP SIP transport module for Kamailio"
   depends=('kamailio' 'lksctp-tools')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="ksctp"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="ksctp"
 }
 
 package_kamailio-snmpstats-modules() {
+  pkgdesc="snmpstats module for Kamailio"
   depends=('kamailio' 'net-snmp')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="ksnmpstats"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="ksnmpstats"
 }
 
 package_kamailio-sqlite-modules() {
+  pkgdesc="SQLite database driver for Kamailio"
   depends=('kamailio' 'sqlite')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="ksqlite"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="ksqlite"
 }
 
 package_kamailio-systemd-modules() {
+  pkgdesc="systemd modules for Kamailio"
   depends=('kamailio')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="ksystemd"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="ksystemd"
 }
 
 package_kamailio-tls-modules() {
+  pkgdesc="TLS modules for Kamailio"
   depends=('kamailio' 'openssl' 'curl')
+  backup=('etc/kamailio/tls.cfg')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="ktls"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="ktls"
 }
 
 package_kamailio-unixodbc-modules() {
+  pkgdesc="unixODBC database driver for Kamailio"
   depends=('kamailio' 'unixodbc' 'libunistring')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kunixodbc"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kunixodbc"
 }
 
 package_kamailio-utils-modules() {
+  pkgdesc="Utility modules for Kamailio"
   depends=('kamailio' 'libxml2' 'curl')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kutils"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kutils"
 }
 
 package_kamailio-websocket-modules() {
+  pkgdesc="WebSocket modules for Kamailio"
   depends=('kamailio' 'openssl' 'libunistring')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kwebsocket"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kwebsocket"
 }
 
 package_kamailio-xml-modules() {
+  pkgdesc="xml modules for Kamailio"
   depends=('kamailio' 'libxml2')
+  backup=('etc/kamailio/pi_framework.xml')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kxml"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kxml"
 }
 
 package_kamailio-xmpp-modules() {
+  pkgdesc="SIP to XMPP IM translator module for Kamailio"
   depends=('kamailio' 'expat')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} install-modules-all group_include="kxmpp"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kxmpp"
 }
 
 # vim:set ts=2 sw=2 et:
