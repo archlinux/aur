@@ -1,0 +1,11 @@
+post_install() {
+    echo 'PDF sets are stored in /usr/share/lhapdf/LHAPDF'
+    echo 'You can download PDF sets with the "lhapdf" command like so:'
+    echo '    $ lhapdf ls'
+    echo '    # sudo lhapdf install CT10'
+}
+
+post_upgrade() {
+    echo 'To update your PDF sets, please run:'
+    echo '    # lhapdf install $(lhapdf list --outdated)'
+}
