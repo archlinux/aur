@@ -4,14 +4,14 @@
 
 pkgname=qgis-git
 _pkgname=qgis
-pkgver=3.5.0_master.r53663.2e20f13279
+pkgver=3.5.0_master.r53666.f95d3235f3
 _pkgver=3.5.0_master
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
 url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('qt5-tools' 'qt5-script' 'qtkeychain' 'qca-qt5' 'qt5-webkit' 'qt5-3d' 'qt5-serialport' 'proj' 'geos' 'sqlite' 'python-gdal' 'python-owslib' 'python-future' 'python-sip-pyqt5' 'python-psycopg2' 'python-yaml' 'python-numpy' 'python-jinja' 'python-pygments' 'qwtpolar' 'expat' 'python-qscintilla-qt5' 'spatialindex' 'gsl' 'libzip' 'sip' 'exiv2' 'qt5-xmlpatterns')
+depends=('qt5-tools' 'qt5-script' 'qtkeychain' 'qca-qt5' 'qt5-webkit' 'qt5-3d' 'qt5-serialport' 'proj' 'geos' 'sqlite' 'python-gdal' 'python-owslib' 'python-future' 'python-sip-pyqt5' 'python-psycopg2' 'python-yaml' 'python-numpy' 'python-jinja' 'python-pygments' 'qwtpolar' 'expat' 'python-qscintilla-qt5' 'spatialindex' 'gsl' 'libzip' 'sip' 'exiv2' 'qt5-xmlpatterns' 'ocl-icd')
 makedepends=('git' 'cmake' 'txt2tags')
 optdepends=('grass: for GRASS providers and plugin (6 or 7)'
 #            'gsl: for georeferencer'

@@ -1,6 +1,6 @@
 pkgbase = qgis-git
 	pkgdesc = Geographic Information System (GIS) that supports vector, raster & database formats - Development master
-	pkgver = 3.5.0_master.r53663.2e20f13279
+	pkgver = 3.5.0_master.r53666.f95d3235f3
 	pkgrel = 1
 	url = http://qgis.org/
 	arch = i686
@@ -37,6 +37,7 @@ pkgbase = qgis-git
 	depends = sip
 	depends = exiv2
 	depends = qt5-xmlpatterns
+	depends = ocl-icd
 	optdepends = grass: for GRASS providers and plugin (6 or 7)
 	optdepends = postgresql: for postgis and SPIT support
 	optdepends = gpsbabel: for gps plugin
