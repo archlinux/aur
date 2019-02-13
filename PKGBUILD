@@ -1,10 +1,17 @@
-# Contributor: skydrome <skydrome@i2pmail.org>
-# Maintainer: skydrome <skydrome@i2pmail.org>
+# Contributor: skydrome <skydrome@protonmail.com>
+# Maintainer:  skydrome <skydrome@protonmail.com>
+
+## For performance testing - https://trac.torproject.org/projects/tor/ticket/11332
+# pacman -S community/perf
+# torrc: DisableDebuggerAttachment 0
+# export CFLAGS='-Wall -g -O2 -pipe -fno-omit-frame-pointer'
+# options=(!strip)
+
+#_branch=maint-0.3.5 # stable
+#_with_rust=1
+#_malloc=jemalloc # tcmalloc
 
 pkgname=tor-git
-_branch=master
-#_branch=maint-0.3.5
-#_with_rust=1
 pkgver=0.4.0.1.alpha.31346
 pkgrel=1
 pkgdesc="An anonymizing overlay network (development version)"
@@ -25,8 +32,7 @@ backup=('etc/tor/torrc'
     _options="--enable-rust"
 }
 
-source=("git+https://git.torproject.org/tor.git#branch=${_branch}"
-        #"git+https://github.com/torproject/tor.git#branch=${_branch}"
+source=("git+https://git.torproject.org/tor.git#branch=${_branch:-master}"
         'nodes' 'torrc' 'tor.logrotate'
         'tor.service' 'tor.tmpfiles' 'tor.sysusers')
 
@@ -52,18 +58,10 @@ prepare() {
 build() {
     cd "$srcdir/tor"
 
-    ## For performance testing - https://trac.torproject.org/projects/tor/ticket/11332
-    #pacman -S community/perf
-    #torrc: DisableDebuggerAttachment 0
-    #export CFLAGS='-Wall -g -O2 -pipe -fno-omit-frame-pointer'
-    #options=(!strip)
-
     [[ $_with_rust ]] && {
         git submodule update --init --recursive
         export TOR_RUST_DEPENDENCIES="$srcdir/tor/src/ext/rust/crates"
     }
-
-    #_malloc=(tcmalloc|jemalloc)
 
     ./configure $_options \
         --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
