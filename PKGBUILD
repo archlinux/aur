@@ -1,18 +1,19 @@
 # Maintainer : E5ten <e5ten.arch@gmail.com>
 
-pkgname=scrap
+pkgname='scrap'
 pkgver=1.1
-pkgrel=5
-url="https://web.archive.org/web/20130524032130/http://www.math.leidenuniv.nl/~mommen/scrap/"
+pkgrel=6
+url="https://web.archive.org/web/20130524032130/http://www.math.leidenuniv.nl/~mommen/${pkgname}/"
 arch=('x86_64')
 pkgdesc="A roguelike game that was written during a period of ten days."
-provides=('scrap')
-source=("scrap.tar.xz")
-md5sums=('0e0e2096988b092541c9c70e9b151482')
+provides=("${pkgname}")
+source=("${pkgname}.tar.xz")
+sha256sums=('0e8bc30cf201b8fcb490c599e2fdd4dcdf04ac2108e2e3f07102d5092bbce1f7')
+
 build() {
 	make
 }
 package() {
-	install -Dm755 $srcdir/scrap $pkgdir/usr/bin/scrap
+	install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
 
