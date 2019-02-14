@@ -5,7 +5,7 @@ pkgbase=gtk-theme-shades-of-gray-git
 _gitname=Shades-of-gray-theme
 pkgname=gtk-theme-shades-of-gray-git
 
-pkgver=1.1.4.r0.ge1cae1a
+pkgver=1.1.5.r0.gcc7fde9
 pkgrel=1
 pkgdesc='A dark GTK-theme (GNOME, Cinnamon, Xfce, Openbox) in 7 color variants (Git-version)'
 arch=('any')
