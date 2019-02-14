@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('GPL')
 provides=('libudev0')
 conflicts=('libudev0')
-depends=('libsystemd')
+depends=('systemd-libs')
 source=(${pkgname}.tar.gz::https://github.com/archlinux/libudev0-shim/archive/v${pkgver}.tar.gz)
 sha512sums=('794810b20be6391cb6af53c2c49705f8bd884dd6eb5d1fd5b659481a01490205cc60e0f1904c020fb0e59e984583762ba6775f977a78b95a40ba82eb93965387')
 
