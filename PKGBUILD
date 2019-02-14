@@ -3,12 +3,13 @@
 pkgname=venom
 _pkgname=Venom
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='a modern Tox client for the Linux desktop'
 url='https://github.com/naxuroqa/venom'
 arch=(x86_64)
 license=('GPL3')
 depends=('libgee' 'toxcore' 'gspell' 'xdg-desktop-portal' 'sqlcipher')
+optdepends=('noto-fonts-emoji: Emoji font support')
 makedepends=('vala' 'meson')
 
 source=("https://github.com/naxuroqa/$_pkgname/archive/$pkgver.tar.gz")

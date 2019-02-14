@@ -1,7 +1,7 @@
 pkgbase = venom
 	pkgdesc = a modern Tox client for the Linux desktop
 	pkgver = 0.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/naxuroqa/venom
 	arch = x86_64
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = venom
 	depends = gspell
 	depends = xdg-desktop-portal
 	depends = sqlcipher
+	optdepends = noto-fonts-emoji: Emoji font support
 	source = https://github.com/naxuroqa/Venom/archive/0.5.4.tar.gz
 	sha512sums = dcf49c2f32832a07a3463a174051cd13dcbafc6e0c016298501920ed7ba837d7c505ca1792181ee2f4f31a98b221b6491979cbb010405684ed1a82510078d9e6
 
