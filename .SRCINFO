@@ -13,13 +13,13 @@ pkgbase = ros-melodic-cv-bridge
 	makedepends = boost
 	makedepends = python
 	makedepends = python-numpy
-	makedepends = opencv
+	makedepends = opencv3-opt
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-rosconsole
 	depends = boost
 	depends = python
 	depends = python-numpy
-	depends = opencv
+	depends = opencv3-opt
 	source = ros-melodic-cv-bridge-1.13.0-0.tar.gz::https://github.com/ros-gbp/vision_opencv-release/archive/release/melodic/cv_bridge/1.13.0-0.tar.gz
 	sha256sums = fb812741718a40399f538eaef7c887b79004afcdbe0271b3258c5c8ee9c55023
 

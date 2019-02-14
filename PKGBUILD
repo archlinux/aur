@@ -23,7 +23,7 @@ makedepends=(
 	boost
 	python
 	python-numpy
-	opencv
+	opencv3-opt
 )
 
 ros_depends=(
@@ -36,7 +36,7 @@ depends=(
 	boost
 	python
 	python-numpy
-	opencv
+	opencv3-opt
 )
 
 _dir="vision_opencv-release-release-melodic-cv_bridge-${pkgver}-${_pkgver_patch}"
