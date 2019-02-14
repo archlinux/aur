@@ -8,7 +8,7 @@ pkgbase = um-git
 	makedepends = git
 	makedepends = ruby-rake
 	depends = ruby
-	depends = ruby-kramdown=1.17.0
+	depends = ruby-kramdown-1
 	conflicts = um
 	options = !emptydirs
 	source = um-git::git+https://github.com/sinclairtarget/um

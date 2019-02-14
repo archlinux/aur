@@ -7,7 +7,7 @@ pkgdesc="utility to create and maintain your own man pages so you can remember h
 arch=("any")
 url="https://github.com/sinclairtarget/um"
 license=("MIT")
-depends=("ruby" "ruby-kramdown=1.17.0")
+depends=("ruby" "ruby-kramdown-1")
 makedepends=("git" "ruby-rake")
 options=(!emptydirs)
 conflicts=("um")
