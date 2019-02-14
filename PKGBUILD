@@ -4,13 +4,14 @@
 _pkgname=vmware-component-extractor
 pkgname=${_pkgname}-git
 pkgver=0.2.b3b995a
-pkgrel=2
+pkgrel=3
 pkgdesc="Extract VMware Tools ISO from component file"
 arch=('i686' 'x86_64')
 license=('custom')
 url='https://github.com/17twenty/VMWare-Component-Extractor'
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
+makedepends=('git')
 source=("${pkgname}::git+https://github.com/17twenty/VMWare-Component-Extractor#branch=master")
 sha256sums=('SKIP')
 
