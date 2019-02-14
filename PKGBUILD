@@ -1,11 +1,11 @@
-# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
 # imported from Arch Strike
 # Original: ArchStrike <team@archstrike.org>
 
 buildarch=1
 
 pkgname=python2-maec
-pkgver=4.1.0.13
+pkgver=4.1.0.14
 pkgrel=1
 pkgdesc="An API for parsing and creating MAEC content."
 url="https://github.com/MAECProject/python-maec"
@@ -14,7 +14,7 @@ makedepends=('python2-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://github.com/MAECProject/python-maec/archive/v${pkgver}.tar.gz")
-sha512sums=('fbfafba65ba5318a4e69e361986c9147efc6aea2e34e62312d022f5c674f366ec417ed4c57b2f4b729b480925d7b46b4be94bbd8c7c10fff6e352b545b043df7')
+sha512sums=('990b83410707778bcd239c831fcaa87d4efc190881d592f03b5000202a6965689703459ada56da39bc66b72b7075bae183ef5b710707ab113c5a6e6b4d883331')
 
 build() {
   cd python-maec-$pkgver
