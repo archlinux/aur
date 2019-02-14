@@ -10,7 +10,6 @@ license=('GPL2')
 arch=('any')
 url="https://www.mailvelope.com"
 depends=("firefox")
-makedepends=("unzip")
 source=("${_pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/${_file}/${_pkgname}-${pkgver}-an+fx.xpi")
 
 noextract=("${_pkgname}-${pkgver}.xpi")
