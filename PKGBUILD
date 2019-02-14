@@ -1,7 +1,8 @@
 # Maintainer: Ingo Sieverdingbeck <aur@sieverdingbeck.com>
 pkgname="brother-dcp7065dn"
 pkgver="3.1.0"
-pkgrel=2
+_pkgver="$pkgver-1"
+pkgrel=3
 pkgdesc="LPR and CUPS driver for the Brother DCP7065DN"
 arch=('i686' 'x86_64')
 url="https://support.brother.com/g/b/downloadlist.aspx?c=de&lang=de&prod=dcp7065dn_all&os=128&flang=English"
@@ -10,8 +11,8 @@ license=('custom:brother commercial license')
 depends=('cups')
 install="$pkgname.install"
 source=(
-	"https://download.brother.com/welcome/dlf101125/brgenml1cupswrapper-$pkgver-$pkgrel.i386.deb"
-	"https://download.brother.com/welcome/dlf101123/brgenml1lpr-$pkgver-$pkgrel.i386.deb"
+	"https://download.brother.com/welcome/dlf101125/brgenml1cupswrapper-$_pkgver.i386.deb"
+	"https://download.brother.com/welcome/dlf101123/brgenml1lpr-$_pkgver.i386.deb"
 	'cupswrapper-license.txt'
 	'lpr-license.txt'
 )
