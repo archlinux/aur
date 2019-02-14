@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
 arch=('x86_64')
 url='https://openvpn.net/index.php/open-source.html'
-depends=('openssl' 'lzo' 'iproute2' 'libsystemd' 'pkcs11-helper')
+depends=('openssl' 'lzo' 'iproute2' 'systemd-libs' 'pkcs11-helper')
 optdepends=('easy-rsa: easy CA and certificate handling'
             'pam: authenticate via PAM')
 makedepends=('systemd')
