@@ -7,7 +7,7 @@ pkgdesc="X.org vmware video driver"
 arch=(x86_64)
 url="https://xorg.freedesktop.org/"
 license=('custom')
-depends=('mesa' 'libsystemd')
+depends=('mesa' 'systemd-libs')
 makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=24.0' 'git')
 conflicts=('xorg-server<1.20' 'X-ABI-VIDEODRV_VERSION<24' 'X-ABI-VIDEODRV_VERSION>=25')
 groups=('xorg-drivers')
