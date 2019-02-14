@@ -1,7 +1,7 @@
 # Maintainer: Immae <ismael.bouya@normalesup.org>
 
 pkgname=patacrep-git
-pkgver=v5.1.2.r17.g30eb8d62
+pkgver=5.1.2.r17.g30eb8d62
 pkgrel=1
 pkgdesc="Engine for LaTeX songbooks"
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed -e 's/\([^-]*-g\)/r\1/;s/-/./g' -e "s/^v//"
 }
 
 build() {
