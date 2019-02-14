@@ -1,7 +1,7 @@
 pkgbase = urfkill-git
 	pkgdesc = Handle rfkill events in userspace
-	pkgver = urfkill.0.5.0.43.g3c7f43e
-	pkgrel = 1
+	pkgver = urfkill.0.5.0.45.gb39a72f
+	pkgrel = 2
 	url = https://github.com/lcp/urfkill
 	arch = x86_64
 	license = GPL2

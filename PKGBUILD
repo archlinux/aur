@@ -2,8 +2,8 @@
 
 _pkgname=urfkill
 pkgname=urfkill-git
-pkgver=urfkill.0.5.0.43.g3c7f43e
-pkgrel=1
+pkgver=urfkill.0.5.0.45.gb39a72f
+pkgrel=2
 pkgdesc="Handle rfkill events in userspace"
 arch=('x86_64')
 url="https://github.com/lcp/urfkill"
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd $_pkgname
   ./autogen.sh
-  ./configure --bindir=/usr/bin --datarootdir=/usr/share --libdir=/usr/lib libexecdir=/usr/lib --localstatedir=/var --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --with-session-tracking=systemd
+  ./configure --bindir=/usr/bin --datarootdir=/usr/share --libdir=/usr/lib libexecdir=/usr/lib --localstatedir=/var --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --with-session-tracking=systemd --enable-strict=no
   make
 }
 
