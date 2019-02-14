@@ -21,9 +21,11 @@ prepare() {
 
 build() {
   cd "${pkgname}"
+  export CXX=clang++
+  export CC=clang
 
   yarn
-  CXX=clang++ CC=clang ./node_modules/.bin/electron-rebuild
+  ./node_modules/.bin/electron-rebuild
   npm --cache "${srcdir}/npm-cache" run package-linux
 }
 
