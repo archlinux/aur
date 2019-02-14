@@ -3,13 +3,13 @@
 pkgbase=python-lib389
 pkgname=('python-lib389' 'python2-lib389')
 pkgver=1.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="389 Directory Server Python library."
 arch=('any')
 url='https://port389.org'
 license=('Apache')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("http://directory.fedoraproject.org/binaries/python-lib389-${pkgver}.tar.bz2")
+source=("https://fedorapeople.org/groups/389ds//binaries/python-lib389-${pkgver}.tar.bz2")
 sha256sums=('6b22fd9277adebd595e30ac614741d21f8df91d4e9e303c3c5fa3044609060bb')
 
 package_python-lib389() {

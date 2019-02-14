@@ -1,13 +1,13 @@
 pkgbase = python-lib389
 	pkgdesc = 389 Directory Server Python library.
 	pkgver = 1.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://port389.org
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = http://directory.fedoraproject.org/binaries/python-lib389-1.0.4.tar.bz2
+	source = https://fedorapeople.org/groups/389ds//binaries/python-lib389-1.0.4.tar.bz2
 	sha256sums = 6b22fd9277adebd595e30ac614741d21f8df91d4e9e303c3c5fa3044609060bb
 
 pkgname = python-lib389
