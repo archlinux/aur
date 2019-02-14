@@ -1,0 +1,26 @@
+pkgbase = cinnamon-control-center-slim
+	pkgdesc = The Control Center for Cinnamon
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://github.com/linuxmint/cinnamon-control-center-slim
+	arch = x86_64
+	license = GPL
+	makedepends = gnome-online-accounts
+	makedepends = intltool
+	makedepends = python
+	depends = cinnamon-settings-daemon
+	depends = cinnamon-menus
+	depends = colord
+	depends = libgnomekbd
+	optdepends = cinnamon-translations: i18n
+	optdepends = gnome-color-manager: for color management tasks
+	optdepends = gnome-online-accounts: for the online accounts module
+	provides = cinnamon-control-center=4.0.1
+	conflicts = cinnamon-control-center
+	replaces = cinnamon-control-center
+	options = !emptydirs
+	source = cinnamon-control-center-4.0.1.tar.gz::https://github.com/linuxmint/cinnamon-control-center-slim/archive/4.0.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = cinnamon-control-center-slim
+
