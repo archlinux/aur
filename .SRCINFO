@@ -1,15 +1,16 @@
 pkgbase = croc-bin
 	pkgdesc = Easily and securely send things from one computer to another.
-	pkgver = 4.1.4
+	pkgver = 4.1.5
 	pkgrel = 1
 	url = https://github.com/schollz/croc
 	arch = x86_64
 	license = MIT
+	optdepends = upx: compress binary
 	provides = croc
 	conflicts = croc
 	conflicts = croc-git
-	source = https://github.com/schollz/croc/releases/download/v4.1.4/croc_4.1.4_linux-64bit.tar.gz
-	sha256sums = 363bba08f75224bca3484270514404cf654539c7003ccbd00afb3c384f30e692
+	source = https://github.com/schollz/croc/releases/download/v4.1.5/croc_4.1.5_linux-64bit.tar.gz
+	sha256sums = f407124497af8ff2b6c438092bced3d6d905006fd3e64d7c695206b10b874796
 
 pkgname = croc-bin
 
