@@ -1,6 +1,6 @@
 # Maintainer: Nikolay Korotkiy <sikmir@gmail.com>
 pkgname=mapsoft
-pkgver=20180722
+pkgver=20190213
 pkgrel=2
 pkgdesc='Programs for working with maps and geodata'
 arch=('i686' 'x86_64')
@@ -11,9 +11,9 @@ makedepends=('boost' 'netpbm' 'perl' 'scons' 'transfig')
 source=("https://github.com/ushakov/${pkgname}/archive/${pkgver}-alt1.tar.gz"
         'mapsoft_mapview.desktop'
         'scons.patch')
-sha256sums=('1dfab671946550c6fe52add9d2c76f342025d3aa628cf70c26553f306ff08737'
+sha256sums=('49f06f337ad71f63edfacfb06a9bb0d536a991853eea7255373071eed001a171'
             'f6b0c49271c21f44e2f007b3096c0d80e662c0dc9ff8b66e60c82402b1826096'
-            '4c39ef1b6ae1b6ff4726a04929270dbf9a86b7c7016040cd855a81951afbfbf4')
+            '5c1430eda36cc13aba489e2467f01b101872e066c19982ba2accd3f230a56e96')
 
 prepare() {
   cd ${pkgname}-${pkgver}-alt1
