@@ -1,8 +1,8 @@
-# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
 # Based on PKGBUILD firefox-extension-httpseverywhere
 
 _plugin_name=trackmenot
-_plugin_version=0.10.3
+_plugin_version=0.10.41
 _file_name=addon-3173-latest.xpi
 pkgdesc="Firefox extension to protect web habits from tracking and profiling"
 license=('cc-by-nc-sa')
@@ -13,9 +13,10 @@ arch=('any')
 url="http://cs.nyu.edu/trackmenot/"
 depends=("firefox")
 #source=("https://addons.mozilla.org/firefox/downloads/latest/trackmenot/${_file_name}")
-source=("https://addons.mozilla.org/firefox/downloads/file/793856/trackmenot-${_plugin_version}-an+fx.xpi")
+source=("https://addons.mozilla.org/firefox/downloads/file/1017009/trackmenot-${_plugin_version}-an+fx.xpi")
+
 noextract=('${_plugin_version}-an+fx.xpi') 
-sha256sums=('bfa7ee310b850eeff66895a02a8f81802c6e00c11898b33a4b518aade74202eb')
+sha256sums=('12975276e5aa69ce6522ab3156fb4cc23162d990e82a9ecd9508671c2544747a')
 
 package() {
   local _extension_id="trackmenot@mrl.nyu.edu"
