@@ -1,7 +1,7 @@
 pkgbase = appleseed-git
 	pkgdesc = physically-based global illumination rendering engine primarily designed for animation and visual effects.
-	pkgver = 1.9.0.beta.r209.g32774c124
-	pkgrel = 2
+	pkgver = 2.0.5.beta.r58.gc476fda38
+	pkgrel = 1
 	url = http://appleseedhq.net
 	arch = i686
 	arch = x86_64

@@ -1,8 +1,8 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=appleseed-git
 #_fragment="#tag=1.7.1-beta"
-pkgver=1.9.0.beta.r209.g32774c124
-pkgrel=2
+pkgver=2.0.5.beta.r58.gc476fda38
+pkgrel=1
 pkgdesc="physically-based global illumination rendering engine primarily designed for animation and visual effects. "
 arch=(i686 x86_64)
 url="http://appleseedhq.net"
@@ -41,8 +41,8 @@ CMAKE_FLAGS=" -DUSE_EXTERNAL_EXR=ON \
               -DWARNINGS_AS_ERRORS=OFF"
 
 pkgver() {
-  cd ${pkgname}
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${srcdir}/${pkgname}
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
