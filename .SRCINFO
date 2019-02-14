@@ -6,7 +6,7 @@ pkgbase = minecraft-server
 	install = minecraft-server.install
 	arch = any
 	license = custom
-	depends = java-runtime-headless=8
+	depends = java-runtime-headless>=8
 	depends = screen
 	depends = sudo
 	depends = bash
