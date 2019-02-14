@@ -1,0 +1,16 @@
+pkgbase = wxparaver
+	pkgdesc = Expressive powerful and flexible trace visualizer for post-mortem trace analysis (from BSC).
+	pkgver = 4.8.1
+	pkgrel = 1
+	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
+	arch = i686
+	arch = x86_64
+	license = LGPLv2.1
+	depends = wxgtk3
+	depends = webkit2gtk
+	depends = boost
+	source = https://ftp.tools.bsc.es/wxparaver/wxparaver-4.8.1-src.tar.bz2
+	sha512sums = 80481fc75b977f85476658e25e9d091530f64f1b04b15d826715fb5e9646c33c14e46ef8d5233f1b57c442895cf96206b8812bded482f58dce76888745cc88e6
+
+pkgname = wxparaver
+
