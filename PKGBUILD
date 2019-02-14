@@ -1,37 +1,40 @@
-# Maintainer: David Parrish <daveparrish@tutanota.com>
+# Mantainer: Daniele Basso <d dot bass05 at pm dot me>
+# Contributor: David Parrish <daveparrish@tutanota.com>
 # Thank you inversechi and eschwartz
-# https://bbs.archlinux.org/viewtopic.php?id=235884
 
-pkgname=lando
-pkgver=3.0.0_rc.1
-_target_version=${pkgver//_/-}
+_pkgname=lando
+pkgname=lando-beta
+_pkgver=3.24.0
+_beta=12
+pkgver=${_pkgver}.b${_beta}
+_target_version=${_pkgver}-beta.${_beta}
 pkgrel=1
 pkgdesc="A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology"
 arch=('x86_64')
-url="https://docs.devwithlando.io"
+url="https://docs.lando.dev"
 license=('GPL')
 depends=('docker' 'docker-compose')
 optdepends=('gcc-libs')
-makedepends=('npm' 'yarn' 'git')
-source=("${pkgname}::git+https://github.com/lando/lando.git#tag=v${_target_version}")
-sha256sums=('SKIP')
-conflicts=("lando-git")
+makedepends=('npm' 'git' 'nodejs')
+source=("${_pkgname}-core::git+https://github.com/lando/core.git#tag=v${_target_version}")
+sha256sums=('ea318069a0f1fb6224b08801322c92c88dbdb1e7560ed598eeaa1291e1a5bf47')
+conflicts=("lando")
 provides=("lando")
 
 # strip breaks executable
 options=(!strip)
 
 build() {
-  cd "${srcdir}/$pkgname" || exit
+  cd "${srcdir}/$_pkgname-core" || exit
 
-  # https://github.com/lando/lando/issues/1309
-  npm install fs-extra@0.18.4
-  npm install
+  npm clean-install --prefer-offline --frozen-lockfile --omit=dev
+  # scripts/fatcore-install.sh
 
-  yarn pkg:cli
+  mkdir -p ./dist/@lando
+  npx @yao-pkg/pkg --config package.json --target node20 --compress GZip --options dns-result-order=ipv4first bin/lando
 }
 
 package() {
-  cd "${srcdir}/$pkgname" || exit
-  install -D -m 755 "dist/cli/lando-linux-x64-v${_target_version}" "${pkgdir}/usr/bin/lando"
+  cd "${srcdir}/$_pkgname-core" || exit
+  install -D -m 755 "dist/@lando/core" "${pkgdir}/usr/bin/lando"
 }
