@@ -1,0 +1,13 @@
+pkgbase = birch-git
+	pkgdesc = An IRC client written in pure bash
+	pkgver = r32.c46909f
+	pkgrel = 1
+	url = https://github.com/dylanaraps/birch
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/dylanaraps/birch.git
+	sha256sums = SKIP
+
+pkgname = birch-git
+
