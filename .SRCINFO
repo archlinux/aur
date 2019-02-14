@@ -1,6 +1,6 @@
 pkgbase = matcha-gtk-theme-git
 	pkgdesc = A flat design theme for GTK3, GTK2, and Gnome-Shell.
-	pkgver = r186.ae19fc6
+	pkgver = r196.47ae8a9
 	pkgrel = 1
 	url = https://vinceliuice.github.io/theme-matcha
 	arch = any
