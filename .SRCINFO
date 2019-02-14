@@ -1,7 +1,7 @@
 pkgbase = venom-git
 	pkgdesc = a modern Tox client for the Linux desktop
 	pkgver = r1188.e2d9fe4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/naxuroqa/venom
 	arch = x86_64
 	license = GPL3
@@ -15,6 +15,7 @@ pkgbase = venom-git
 	depends = gstreamer
 	depends = gst-plugins-base
 	depends = gst-plugins-good
+	optdepends = noto-fonts-emoji: Emoji font support
 	provides = venom
 	conflicts = venom
 	source = venom-git::git+https://github.com/naxuroqa/Venom#branch=develop

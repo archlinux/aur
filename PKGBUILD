@@ -1,13 +1,14 @@
 # Maintainer: naxuroqa <naxuroqa@gmail.com>
 
 pkgname=venom-git
-pkgver=r1188.e2d9fe4
+pkgver=r1190.f5dd584
 pkgrel=1
 pkgdesc='a modern Tox client for the Linux desktop'
 url='https://github.com/naxuroqa/venom'
 arch=(x86_64)
 license=('GPL3')
 depends=('libgee' 'toxcore' 'gspell' 'xdg-desktop-portal' 'sqlcipher' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good')
+optdepends=('noto-fonts-emoji: Emoji font support')
 makedepends=('vala' 'meson')
 provides=('venom')
 conflicts=('venom')
