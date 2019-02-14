@@ -1,0 +1,18 @@
+pkgbase = wayfire
+	pkgdesc = 3D wayland compositor
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://wayfire.org
+	arch = x86_64
+	license = custom:MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols
+	depends = cairo
+	depends = wf-config
+	conflicts = wayfire-git
+	source = https://github.com/WayfireWM/wayfire/releases/download/v0.1/wayfire-0.1.tar.xz
+	sha512sums = 8c1c74f9e5999060060ee78d2a2d341f291664e7212e186dc0272a4de17d1bf3eca2ae1748a7f162011649390605555416e751ee25a0967e5ce64cd502a41e71
+
+pkgname = wayfire
+
