@@ -4,8 +4,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=72.0.3626.96
-pkgrel=3
+pkgver=72.0.3626.109
+pkgrel=1
 _launcher_ver=6
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
@@ -33,7 +33,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium-vaapi-fix-the-VA_CHECK_VERSION.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('b2daf52aac4d9eba0ab9f034db6f2411ad6930dd02544c4b583e3a6e49dcaa3b'
+sha256sums=('574a5400dcd9452bf41481518aa5097c396df6e1eb97c67303638ba967048c2d'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
