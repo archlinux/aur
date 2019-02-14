@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-sundials
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Suite of nonlinear differential/algebraic equation solvers (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('mingw-w64-lapack')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("http://computation.llnl.gov/projects/sundials/download/sundials-${pkgver}.tar.gz")
-sha256sums=('29e409c8620e803990edbda1ebf49e03a38c08b9187b90658d86bddae913aed4')
+sha256sums=('280de1c27b2360170a6f46cb3799b2aee9dff3bddbafc8b08c291a47ab258aa5')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
