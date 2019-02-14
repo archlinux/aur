@@ -1,0 +1,6 @@
+/*.log
+/*.tar
+/*.tar.*
+/src/
+/pkg/
+/wf-shell-git/
