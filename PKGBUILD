@@ -8,7 +8,7 @@ pkgdesc="Handle rfkill events in userspace"
 arch=('x86_64')
 url="https://github.com/lcp/urfkill"
 license=('GPL2')
-depends=('expat>=2.01' 'gobject-introspection>=0.6.7' 'libsystemd>=148' 'polkit>=0.91' 'systemd')
+depends=('expat>=2.01' 'gobject-introspection>=0.6.7' 'systemd-libs>=148' 'polkit>=0.91' 'systemd')
 makedepends=('glibc>=2.20' 'git' 'gtk-doc')
 conflicts=('urfkill')
 provides=('urfkill')

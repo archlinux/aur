@@ -10,7 +10,7 @@ pkgbase = urfkill-git
 	makedepends = gtk-doc
 	depends = expat>=2.01
 	depends = gobject-introspection>=0.6.7
-	depends = libsystemd>=148
+	depends = systemd-libs>=148
 	depends = polkit>=0.91
 	depends = systemd
 	provides = urfkill
