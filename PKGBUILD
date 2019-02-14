@@ -10,7 +10,7 @@ url="http://waon.sourceforge.net/"
 license=('GPL2')
 depends=('fftw' 'libsamplerate' 'libao' 'gtk2')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('fc36842882449274ff90e3f6b55b3daa')
+sha512sums=('1e3c0ee9cb864c6fbfe831ed5b825fd5f20a8969ef3a6906deb88ceeee9bf8e65396f8b333bc84cf201d596467c415dfcbcd3e977a005952bae2d5983a84fa46')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
