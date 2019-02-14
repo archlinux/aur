@@ -1,0 +1,21 @@
+pkgbase = cage-git
+	pkgdesc = A Wayland kiosk
+	pkgver = r83.f0eb115
+	pkgrel = 1
+	url = https://hjdskes.nl/projects/cage
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	makedepends = wayland-protocols
+	depends = wlroots-git
+	depends = wayland
+	depends = libxkbcommon
+	depends = xorg-server-xwayland
+	options = debug
+	options = !strip
+	source = cage::git+https://github.com/Hjdskes/cage.git
+	sha1sums = SKIP
+
+pkgname = cage-git
+
