@@ -2,8 +2,8 @@
 # Contributor: Adrian Holfter <aholfter plus aur at googlemail dot com>
 
 pkgname=tragtor
-pkgver=0.9.2
-pkgrel=4
+pkgver=0.9.3
+pkgrel=1
 pkgdesc="A graphical user interface for ffmpeg" 
 arch=('i686' 'x86_64')
 url="http://mein-neues-blog.de/tragtor-gui-for-FFmpeg/" 
@@ -12,7 +12,7 @@ depends=('python2' 'pygtk>=2.6' 'python2-dbus' 'id3v2' 'ffmpeg')
 
 source=(http://repository.mein-neues-blog.de:9000/archive/${pkgname}-${pkgver}_all.tar.gz)
 
-md5sums=('ae202dd466f0033b611505a53b69c04c')
+md5sums=('bc826c473acb993c62c2cc8447304ad4')
 
 package() {
 	# Patch: Force traGtor to use python2 instead of the new python3
