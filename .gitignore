@@ -1,5 +1,5 @@
 /mongodb-bin-*
-/mongodb-linux-*
+/mongodb-org-*
 /src/
 /pkg/
 pkg/

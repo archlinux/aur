@@ -1,29 +1,30 @@
 pkgbase = mongodb-bin
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
 	pkgver = 4.0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.mongodb.com/
 	arch = x86_64
 	license = SSPLv1
-	optdepends = libpcap: Needed for mongoreplay
-	optdepends = mongodb-compass: The MongoDB GUI
+	optdepends = mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.
 	provides = mongodb=4.0.6
-	provides = mongodb-tools=4.0.6
 	conflicts = mongodb
-	conflicts = mongodb-tools
 	backup = etc/mongodb.conf
-	source = https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.6.tgz
+	source = https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.0/multiverse/binary-amd64/mongodb-org-shell_4.0.6_amd64.deb
+	source = https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.0/multiverse/binary-amd64/mongodb-org-server_4.0.6_amd64.deb
+	source = https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.0/multiverse/binary-amd64/mongodb-org-mongos_4.0.6_amd64.deb
 	source = mongodb.service
 	source = mongodb.conf
 	source = mongodb.sysusers
 	source = mongodb.tmpfiles
 	source = LICENSE
-	md5sums = 1639ef8b9545c3120ac2b7cd7714b995
-	md5sums = 96ab4517b48974ce0e566d9746a75a4f
-	md5sums = 4839fe1d638187ca3226e8267b947318
-	md5sums = ff773b723f7bf217c2a8176e3b143498
-	md5sums = c599936e8858aeba31dc06cc3ff88612
-	md5sums = 3a865f27f11f43ecbe542d9ea387dcf1
+	sha256sums = 0732fadef967ec2a1d3fc96d85c4c631e3b53560fbaa5a9c2e8e8493244d9e1c
+	sha256sums = 298268d803211f87c66f1f16f378de198a8142f4abe34589f2354c775a8bf0b1
+	sha256sums = c7238d4c080fe7a52ae3569572da4e9eb32d35b586b3c3222d957810c9a27f29
+	sha256sums = 19f55ab28652b3817e98fc3f15cc2f6f3255a5e1dfd7b0d5a27c9ba22fd2703e
+	sha256sums = 8010ce728d657524cd76b5afda7ffbc1cc389642336b12b89cec5df2b09fc0e4
+	sha256sums = 47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b
+	sha256sums = 51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac
+	sha256sums = 09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27
 
 pkgname = mongodb-bin
 
