@@ -8,13 +8,13 @@ _PkgName=OpenBLAS
 _pkgname=openblas
 pkgver=0.3.4
 _lapackver=3.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('any')
 url="http://www.openblas.net/"
 license=('BSD')
 depends=('gcc-libs')
-makedepends=('perl')
+makedepends=('perl' 'arm-linux-gnueabihf-gcc')
 provides=('arm-linux-gnueabihf-openblas' "arm-linux-gnueabihf-blas=${_lapackver}" "arm-linux-gnueabihf-lapack=${_lapackver}" "arm-linux-gnueabihf-cblas=${_lapackver}" "arm-linux-gnueabihf-lapacke=${_lapackver}")
 conflicts=()
 options=(!emptydirs !strip)
