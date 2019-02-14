@@ -6,7 +6,7 @@ pkgver=4.0.1
 pkgrel=1
 pkgdesc="The Control Center for Cinnamon"
 arch=('x86_64')
-url="https://github.com/linuxmint/${pkgname}"
+url="https://github.com/linuxmint/${pkgname%-*}"
 license=('GPL')
 provides=("cinnamon-control-center=$pkgver")
 conflicts=('cinnamon-control-center')
@@ -35,7 +35,6 @@ build() {
                 --enable-systemd \
                 --disable-networkmanager \
                 --disable-modemmanager \
-                --disable-onlineaccounts \
                 --disable-documentation
 
     #https://bugzilla.gnome.org/show_bug.cgi?id=656229
