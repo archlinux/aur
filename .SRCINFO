@@ -1,8 +1,8 @@
 pkgbase = xfce4-kbdleds-plugin
 	pkgdesc = Xfce keyboard LEDs panel plugin
 	pkgver = 0.0.6
-	pkgrel = 10
-	url = http://goodies.xfce.org/projects/panel-plugins/xfce4-kbdleds-plugin
+	pkgrel = 11
+	url = https://goodies.xfce.org/projects/panel-plugins/xfce4-kbdleds-plugin
 	install = xfce4-kbdleds-plugin.install
 	arch = i686
 	arch = x86_64
