@@ -1,7 +1,7 @@
 pkgname=fluidkeys
 pkgver=0.4.0
 pkgrel=1
-pkgdesc='Fluidkeys helps teams protect themselves with strong encryption.'
+pkgdesc='Simple PGP for engineering teams'
 arch=('any')
 url="https://www.fluidkeys.com"
 license=('AGPL3')
