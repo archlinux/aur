@@ -1,0 +1,5 @@
+# Ignore packages, build directories
+*.tar.xz
+FiraCode/
+pkg/
+src/

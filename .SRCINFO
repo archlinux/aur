@@ -1,0 +1,20 @@
+pkgbase = otf-fira-code-onum-patch
+	pkgdesc = Fira Code: monospaced font with programming ligatures fork to have ligatures with old-style num activated as well.
+	pkgver = 1.206.r13.gbfe9f38
+	pkgrel = 1
+	url = https://github.com/paradoxxxzero/FiraCode.git
+	install = otf.install
+	arch = any
+	license = custom:OFL
+	makedepends = git
+	depends = fontconfig
+	depends = xorg-font-utils
+	provides = otf-fira-code=1.206
+	conflicts = otf-fira-code
+	source = git+https://github.com/paradoxxxzero/FiraCode.git
+	source = otf.install
+	md5sums = SKIP
+	md5sums = 9b9dbd9712ac6fefe896f704609b659c
+
+pkgname = otf-fira-code-onum-patch
+
