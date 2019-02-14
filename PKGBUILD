@@ -2,28 +2,28 @@
 # Contributor: Rocka <i at Rocka dot me>
 
 pkgname=electron-netease-cloud-music
-pkgver=0.7.10
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="UNOFFICAL client for music.163.com . Powered by Electron, Vue, and Muse-UI."
-arch=('x86_64')
+arch=('any')
 url="https://github.com/Rocket1184/electron-netease-cloud-music"
 license=('GPL3')
-depends=('electron' 'dbus')
-makedepends=('python2' 'imagemagick' 'npm' 'yarn')
+depends=('electron')
+optdepends=('dbus: MPRIS support')
+makedepends=('imagemagick' 'yarn')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Rocket1184/$pkgname/archive/v$pkgver.tar.gz"
         'electron-netease-cloud-music.desktop'
         'electron-netease-cloud-music.sh'
 )
 
-md5sums=('67ab9eb6bd0b8b055e45a42ee87bfa54'
+md5sums=('1e7972ca44b8316527147bea9997320c'
          '7f35c2dbfc5cd0fd63cd0be16cf35f3c'
          '155178854f344b3d56283beb739c8730')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
     YARN_CACHE_FOLDER="$srcdir/yarn_cache" yarn install --ignore-scripts
-    npm_config_devdir="$srcdir/node_gyp_dir" npm rebuild dbus
     yarn dist
 }
 
