@@ -21,7 +21,7 @@ tidy_upx() {
 		find . -type f -perm -u+w 2>/dev/null | while read -r binary ; do
 			if [[ $(file --brief --mime-type "$binary") == application* ]] ; then
 				case "$(file --brief --mime-type "$binary")" in
-					'application/x-executable' | 'application/x-dosexec') # | 'application/x-pie-executable')
+					'application/x-executable' | 'application/x-dosexec')
 						upx "${UPXFLAGS[@]}" "$binary" &>/dev/null ||
 							warning "$(gettext "Could not compress binary : %s")" "${binary/$pkgdir\//}"
 					;;
