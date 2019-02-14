@@ -1,27 +1,22 @@
-# Maintainer: 01189998819991197253 <dev.ben01189998819991197253+aur@gmail.com>
+# Maintainer: Eric Brandwein <brandweineric at gmail dot com>
+# Contributor: 01189998819991197253 <dev.ben01189998819991197253+aur@gmail.com>
 pkgname=clonehero
-pkgver=0.21.6
+pkgver=0.21.7
 pkgrel=1
 pkgdesc="Clone of Guitar Hero and Rockband-style games"
 arch=('x86_64')
-url="https://www.reddit.com/r/CloneHero/"
+url="https://clonehero.net/"
 license=('freeware-proprietary')
 install="$pkgname.install"
-makedepends=('p7zip')
 depends=('gtk2')
-source=("$pkgname-$pkgver.7z::https://github.com/ben01189998819991197253/aur-pkgbuilds/releases/download/$pkgver/$pkgname-$pkgver.7z"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ericbrandwein/clonehero-pkgbuild/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname.install"
         "$pkgname.sh"
         "$pkgname.desktop")
-noextract=("$pkgname-$pkgver.7z")
-sha256sums=('2653adc252a8135cf5f81d692554e88a4dea731dc793c4d1c06ad5c4f3254724'
+sha256sums=('8af40e5715fec803ad8661c12e2445fc62f3d37a76f9b51177e68a04eac9bc2a'
             '01125237ef90f8435523fed5ae09246a76eb562408c50e76597964b5675385cf'
-            '4f16cc3439d1b4004112a9fa5dcfbfbf009cf513fffedf004b6e7e82eb85d33a'
+            'b2da78e057df95c4db0aa1dceefe375979392d387efbde28666e1a80d8d58acd'
             'a97d85930ac4844b3c5e90d4da8faa7a9b5267909d45be59b1fa39abc76df5fe')
-
-prepare() {
-    7z -y x "$pkgname-$pkgver.7z"
-}
 
 package() {
     install -dm755 "$pkgdir/opt/"
@@ -29,7 +24,7 @@ package() {
 
     find "$pkgdir/opt/$pkgname" -type d -exec chmod 755 {} +
     find "$pkgdir/opt/$pkgname" -type f -exec chmod 644 {} +
-    chmod +x "$pkgdir/opt/$pkgname/Clone Hero.x86_64"
+    chmod +x "$pkgdir/opt/$pkgname/clonehero"
 
     # Install script, .desktop launcher with icon
     install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"

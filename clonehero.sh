@@ -16,6 +16,16 @@ pkgname=clonehero
 # game data whenever there's a new version. Unfortunately, this does
 # mean that we have to touch $HOME, and this is an extremely ugly hack.
 
+
+# I am the second maintainer of this package, and I concur;
+# this hack is horrible. I do offer my thanks though to the original
+# maintainer; debugging this must have been a pain in the ass.
+#
+# The Clone Hero devs are probably going
+# to focus on project Note Hitter instead of this game, so I don't
+# expect new releases to be coming soon, meaning that this issue will
+# not be fixed, at least not in the near future.
+
 if [[ ! -d "$HOME/.$pkgname" ]]; then
     mkdir -p "$HOME/.$pkgname"
 fi
@@ -33,11 +43,13 @@ if [[ "/opt/$pkgname/Clone Hero_Data" -nt "$HOME/.$pkgname/Clone Hero_Data" ]]; 
     cp -r "/opt/$pkgname/Clone Hero_Data" "$HOME/.$pkgname/Clone Hero_Data"
 fi
 
-if [[ "/opt/$pkgname/Clone Hero.x86_64" -nt "$HOME/.$pkgname/Clone Hero.x86_64" ]]; then
+if [[ "/opt/$pkgname/clonehero" -nt "$HOME/.$pkgname/clonehero" ]]; then
     echo "Replacing old executable"
-    cp "/opt/$pkgname/Clone Hero.x86_64" "$HOME/.$pkgname/Clone Hero.x86_64"
+    # This was the name of the executable before v0.21.7
+    rm "$HOME/.$pkgname/Clone Hero.x86_64"
+    cp "/opt/$pkgname/clonehero" "$HOME/.$pkgname/clonehero"
 fi
 
 
 cd "$HOME/.$pkgname"
-exec "./Clone Hero.x86_64" "$@"
+exec "./clonehero" "$@"
