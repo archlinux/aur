@@ -2,10 +2,10 @@
 # Maintainer: jason ryan <jasonwryan@gmail.com>
 # Contributor: Caleb Cushing <xenoterracide@gmail.com>
 
-pkgname='perl-uri-find'
-_cpanname='URI-Find'
-pkgver='20140709'
-pkgrel='2'
+pkgname="perl-uri-find"
+_cpanname="URI-Find"
+pkgver="20160806"
+pkgrel="1"
 pkgdesc="Find URIs in plain text"
 arch=('any')
 url='http://metacpan.org/pod/URI::Find'
@@ -13,7 +13,7 @@ license=('PerlArtistic' 'GPL')
 depends=('perl' 'perl-uri>=1.00')
 makedepends=('perl-module-build')
 options=('!emptydirs')
-md5sums=('a32b1b2e6467b92ee1629f0d4da3c24c')
+md5sums=('744411a9fe3865f8f580b1b5fea8c7e5')
 source=("http://cpan.metacpan.org/authors/id/M/MS/MSCHWERN/${_cpanname}-${pkgver}.tar.gz")
 
 build() {
