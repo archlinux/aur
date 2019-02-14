@@ -1,7 +1,7 @@
 pkgbase = venom-git
 	pkgdesc = a modern Tox client for the Linux desktop
-	pkgver = r1188.e2d9fe4
-	pkgrel = 2
+	pkgver = r1190.f5dd584
+	pkgrel = 1
 	url = https://github.com/naxuroqa/venom
 	arch = x86_64
 	license = GPL3
