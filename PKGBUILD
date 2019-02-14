@@ -2,12 +2,12 @@
 pkgname=um
 _gemname=um
 pkgver=4.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="utility to create and maintain your own man pages so you can remember how to do stuff"
 arch=("any")
 url="https://github.com/sinclairtarget/um"
 license=("MIT")
-depends=("ruby" "ruby-kramdown=1.17.0")
+depends=("ruby" "ruby-kramdown-1")
 makedepends=("ruby-rake")
 options=(!emptydirs)
 conflicts=("um-git")
