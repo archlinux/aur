@@ -11,8 +11,8 @@ license=(GPL2)
 depends=('gcc-libs')
 makedepends=('patch')
 source=(https://mp3butcher.github.io/Cal3D/sources/cal3d-$pkgver.tar.gz cal3d-gcc43.diff)
-md5sums=('82ad09c1c28e73bc9596aec47237bfba'
-         'f290fb54f844e044ae80165f083cf58f')
+sha512sums=('4dc4b36b8f18760bfe6f8c80cbd941c14e2ebe596d0cd514fdb1ae4175bf2706e125665272d67ff21d33bb4b34e7be22bad9c00d488c1da21f442550bf3f204f'
+            '8f7694ac240a7cbfc198d8e481ab87901d0256defffb1601f68ef39463bf1471e29e13d147e9a6463113afa0e93f317c2ef99aa19633b4e597e6347c38a64f42')
 build() {
   cd "${pkgname}-$pkgver"
   patch -p0 < ../cal3d-gcc43.diff
