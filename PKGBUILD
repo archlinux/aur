@@ -1,7 +1,5 @@
 # Package Imported from ArchStrike <team@archstrike.org>
-# Maintainer in AUR: GI_Jack <iamjacksemail@hackermail.com>
-
-buildarch=200
+# Maintainer in AUR: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=mutator
 pkgver=0.2.2
