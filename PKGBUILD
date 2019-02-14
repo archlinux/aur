@@ -36,7 +36,7 @@ prepare() {
 
 build() {
     cd "$srcdir/elkhound/build"
-    make 
+    make elkhound
 }
 
 package() {
