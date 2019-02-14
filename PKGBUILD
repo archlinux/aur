@@ -1,23 +1,23 @@
-pkgname=pacaur
-pkgver=4.7.90
+pkgname='pacaur'
+pkgver=4.8.0
 pkgrel=1
-pkgdesc="An AUR helper that minimizes user interaction"
+pkgdesc="An AUR helper that minimizes user interaction (fork)"
 arch=('any')
-url="https://github.com/rmarquis/pacaur"
+url="https://github.com/E5ten/${pkgname}"
 license=('ISC')
-depends=('cower' 'expac' 'sudo' 'git')
+depends=('auracle-git' 'expac' 'sudo' 'git' 'jq')
 makedepends=('perl')
-backup=('etc/xdg/pacaur/config')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rmarquis/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('237a716ddfe3eab43a0f7958be646d09')
+backup=("etc/xdg/${pkgname}/config")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/E5ten/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('4f373ba3a0cbab50ad2bbcec32e311fb9f944c273f7f3eabf944508c3d7a1c7e')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "${pkgname}-${pkgver}"
     make
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    make install DESTDIR=$pkgdir PREFIX=/usr
+    cd "${pkgname}-${pkgver}"
+    make install DESTDIR="${pkgdir}" PREFIX='/usr'
 }
 

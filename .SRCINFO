@@ -1,18 +1,19 @@
 pkgbase = pacaur
-	pkgdesc = An AUR helper that minimizes user interaction
-	pkgver = 4.7.90
+	pkgdesc = An AUR helper that minimizes user interaction (fork)
+	pkgver = 4.8.0
 	pkgrel = 1
-	url = https://github.com/rmarquis/pacaur
+	url = https://github.com/E5ten/pacaur
 	arch = any
 	license = ISC
 	makedepends = perl
-	depends = cower
+	depends = auracle-git
 	depends = expac
 	depends = sudo
 	depends = git
+	depends = jq
 	backup = etc/xdg/pacaur/config
-	source = pacaur-4.7.90.tar.gz::https://github.com/rmarquis/pacaur/archive/4.7.90.tar.gz
-	md5sums = ddb8adbb50889d07de41ca97d34a09d2
+	source = pacaur-4.8.0.tar.gz::https://github.com/E5ten/pacaur/archive/4.8.0.tar.gz
+	sha256sums = 4f373ba3a0cbab50ad2bbcec32e311fb9f944c273f7f3eabf944508c3d7a1c7e
 
 pkgname = pacaur
 
