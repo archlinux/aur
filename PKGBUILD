@@ -1,4 +1,4 @@
-# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
+# Maintainer: Davide Peressoni <davide dot peressoni at outlook dot com>
 
 pkgname=latex-apple-emoji-git
 pkgver=r2.cf0ebeb
