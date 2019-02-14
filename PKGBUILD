@@ -10,7 +10,7 @@ url="https://pypi.python.org/pypi/pgpdump"
 license=('MIT')
 depends=('python')
 options=(!emptydirs)
-source=(" https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('1c4700857bf7ba735b08cfe4101aa3a4f5fd839657af249c17b2697c20829668')
 
 package() {
