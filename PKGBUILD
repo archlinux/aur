@@ -1,4 +1,4 @@
-# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
 pkgname=python2-wappalyzer
 _pypiname=python-Wappalyzer
 pkgver=0.2.2
