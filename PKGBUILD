@@ -1,7 +1,7 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 pkgname=cpp-alsa-volume
 _upstreamname=cppAlsaVolume
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Tray Alsa Volume Changer written using gtkmm"
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ prepare() {
 
 build() {
 	cd "$_upstreamname-$pkgver"
-	cmake -DUSE_PULSE=ON -DUSE_APPINDICATOR=ON -DUSE_SNI=ON -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -DUSE_PULSE=ON -DUSE_APPINDICATOR=ON -DUSE_SNI=OFF -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
 
@@ -25,4 +25,4 @@ package() {
 	cd "$_upstreamname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
-md5sums=('67ae1a6a621f76aa1f6e8a1ff863c9e8')
+sha256sums=('a6a057a49c38348c0e91104e093091a3d535308cf33fac88fd6c80eed895e10b')
