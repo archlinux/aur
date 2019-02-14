@@ -78,7 +78,7 @@ target="/opt/evesetup"
 prefix="/usr"
 key=""
 qtver="5.11"
-elver="1385477"
+elver="1456645"
 
 if [ $(id -u) -ne 0 ] ;then
     printf "\nEVE Online Launcher Setup need root permissions."
