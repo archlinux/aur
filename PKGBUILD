@@ -8,7 +8,7 @@
 _pkgbase=vlc
 pkgname=vlc-nox
 pkgver=3.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (without X support)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua' 'libidn'
          'libarchive' 'freetype2' 'fribidi' 'harfbuzz' 'fontconfig' 'libxml2'
          'gnutls' 'libplacebo' 'aribb24')
 makedepends=('live-media' 'libbluray' 'flac' 'libdc1394' 'libavc1394' 'libcaca'
-             'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'libsystemd'
+             'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'systemd-libs'
              'libmtp' 'libupnp' 'libmicrodns' 'libdvdcss' 'smbclient'
              'vcdimager' 'libssh2' 'mesa' 'protobuf' 'libnfs' 'mpg123'
              'libdvdread' 'libdvdnav' 'libogg' 'libshout' 'libmodplug' 'libvpx'
@@ -41,7 +41,7 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'libgme: Game Music Emu plugin'
             'vcdimager: navigate VCD with libvcdinfo'
             'libmtp: MTP devices discovery'
-            'libsystemd: udev services discovery'
+            'systemd-libs: udev services discovery'
             'smbclient: SMB access plugin'
             'libcdio: audio CD playback'
             'ttf-freefont: subtitle font '
