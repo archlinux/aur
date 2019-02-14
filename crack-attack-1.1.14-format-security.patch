@@ -1,0 +1,21 @@
+diff -up crack-attack-1.1.14/src/gtk-gui/callbacks.cxx~ crack-attack-1.1.14/src/gtk-gui/callbacks.cxx
+--- crack-attack-1.1.14/src/gtk-gui/callbacks.cxx~	2005-05-13 21:55:24.000000000 +0200
++++ crack-attack-1.1.14/src/gtk-gui/callbacks.cxx	2014-06-14 10:24:32.738154080 +0200
+@@ -113,7 +113,7 @@ ca_error_dialog (const char *message)
+                               GTK_DIALOG_DESTROY_WITH_PARENT,
+                               GTK_MESSAGE_ERROR,
+                               GTK_BUTTONS_CLOSE,
+-                              message);
++                              "%s", message);
+     gtk_dialog_run (GTK_DIALOG (dialog));
+     gtk_widget_destroy (dialog);
+ }
+@@ -160,7 +160,7 @@ gboolean networking_output (
+ 	buffer = gtk_text_view_get_buffer(txtOutput);
+ 	gtk_text_buffer_get_end_iter(buffer, &iter);
+ 	g_io_channel_read_line(source, &out, &length, NULL, NULL);
+-	g_print(out);
++	g_print("%s", out);
+ 	gtk_text_buffer_insert(buffer, &iter, out, length);
+ 	g_free(out);
+ 	return true;

@@ -1,0 +1,30 @@
+--- crack-attack-1.1.14/src/gtk-gui/gui_main.cxx~	2005-05-13 21:55:24.000000000 +0200
++++ crack-attack-1.1.14/src/gtk-gui/gui_main.cxx	2014-06-14 10:24:32.738154080 +0200
+@@ -50,6 +50,18 @@
+ int glut_argc;
+ char **glut_argv;
+ 
++/* 
++ * Call this when the window is unexpectedly destroyed to make sure the
++ * hidden gui process doesn't hang around in the background.
++ */
++static void destroy_window(GtkObject *object, gpointer data) {
++#ifdef DEVELOPMENT
++	g_print("\nOh no! We've been nexpectedly destroyed! :(\n");
++#endif
++	gtk_main_quit();
++}
++
++
+ /*
+  * Documentation
+  *   html tables don't work right in explorer
+@@ -76,6 +88,8 @@
+     winCrackAttackSplash = create_winCrackAttackSplash ();
+ 		gui_data_read(winCrackAttackSplash);
+     gtk_widget_show (winCrackAttackSplash);
++		g_signal_connect(GTK_OBJECT(winCrackAttackSplash), "destroy",
++				G_CALLBACK(destroy_window), NULL);
+     gtk_main ();
+ 
+   return 0;

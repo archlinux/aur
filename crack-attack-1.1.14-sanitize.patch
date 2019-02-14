@@ -1,0 +1,44 @@
+--- crack-attack-1.1.14/doc/crack-attack.6~	2006-08-14 17:56:03.000000000 +0200
++++ crack-attack-1.1.14/doc/crack-attack.6	2006-08-14 17:56:03.000000000 +0200
+@@ -1,7 +1,7 @@
+ .TH crack-attack 6   
+ .\" auto-generated from crack-attack.xml by docbook2manxml $Revision: 1.3 $ 
+ .SH NAME
+-crack-attack \- multiplayer OpenGL puzzle game like "Tetris Attack"
++crack-attack \- multiplayer OpenGL puzzle game
+ .SH SYNOPSIS
+ \fBcrack-attack\fR
+ {
+--- crack-attack-1.1.14/doc/index.html~	2006-08-14 17:56:50.000000000 +0200
++++ crack-attack-1.1.14/doc/index.html	2006-08-14 17:56:50.000000000 +0200
+@@ -14,9 +14,6 @@
+ <font size=+3>
+ <br><br>
+ A free OpenGL game for Linux and Windows
+-<font size=+1>
+-<p>based on the Super Nintendo classic
+-<br>Tetris Attack
+ <font size=+0>
+ <p>by Daniel Nelson
+ <p>
+--- crack-attack-1.1.14/doc/crack-attack.xml~	2006-08-14 17:55:21.000000000 +0200
++++ crack-attack-1.1.14/doc/crack-attack.xml	2006-08-14 17:55:21.000000000 +0200
+@@ -41,7 +41,7 @@
+   </refmeta>
+   <refnamediv id="name">
+     <refname>crack-attack</refname>
+-    <refpurpose>multiplayer OpenGL puzzle game like "Tetris Attack"</refpurpose>
++    <refpurpose>multiplayer OpenGL puzzle game</refpurpose>
+   </refnamediv>
+   <refsynopsisdiv id="synopsis">
+     <cmdsynopsis>
+@@ -67,8 +67,7 @@
+   <refsect1 id="description">
+     <title>Description</title>
+     <para>
+-      &package; is roughly based on the Super Nintendo game
+-      "Tetris Attack".  Slowly, your stack of colored blocks grows from the
++      Slowly, your stack of colored blocks grows from the
+       bottom, and you've got to make sure it never reaches the top. If it
+       does, you lose. To eliminate blocks from the stack, line up at least
+       three of one color, horizontally or vertically. Once you do, those
