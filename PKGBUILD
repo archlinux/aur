@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('gtk2>=2.6')
 makedepends=()
 source=(https://github.com/downloads/pn2200/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('acb41e54ee5fbf167413218f209c4e3f')
+sha512sums=('b4651eb6ba87ddb745c46520ccf2d7146d179e69a614d7c6c247b82eaf188b30e955d60e7df59419f63a304a5c5215829d3bea3cc233d2729ff599c523d852e2')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
