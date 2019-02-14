@@ -1,8 +1,11 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Anatol Pomozov <anatol dot pomozov at gmail>
+# Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 
 pkgname=openmpi-gcc6
-pkgver=3.1.3
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc='High performance message passing library (MPI) build with gcc6'
 url='https://www.open-mpi.org'
 arch=('x86_64')
@@ -12,8 +15,8 @@ makedepends=('inetutils' 'valgrind' 'gcc6-fortran')
 optdepends=('gcc6-fortran: fortran support')
 options=('staticlibs')
 source=(https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/${pkgname%-gcc6}-${pkgver}.tar.bz2)
-sha256sums=('8be04307c00f51401d3fb9d837321781ea7c79f2a5a4a2e5d4eaedc874087ab6')
-sha512sums=('700821df676de5f85ce2793298242dcaea73f585f89540e30999792a568f193545a9f9b2bcb3ea22effa3bf14744531c4eb5fc4c84a8d7bbe5e5fdd76ab3a04a')
+sha256sums=('2f0b8a36cfeb7354b45dda3c5425ef8393c9b04115570b615213faaa3f97366b')
+sha512sums=('978097dcbb16df2a616dcbbef9536fed0f7be40914daa8f927882d91bdda9265e54334fc12aeef49b41073d8782321b5611a7e9c71182258a45bca5f640e927b')
 
 build() {
   cd ${pkgname%-gcc6}-${pkgver}
