@@ -1,4 +1,4 @@
-# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 # Welp, it looks like THC as an organization is kaput. It was good enough of
 # VH to keep all their shit on github as the tools will continue to be in use
