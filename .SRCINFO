@@ -1,6 +1,6 @@
 pkgbase = r-dplyr
 	pkgdesc = A fast, consistent tool for working with data frame like objects.
-	pkgver = 0.7.7
+	pkgver = 0.7.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=dplyr
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = r-dplyr
 	depends = r-magrittr>=1.5
 	depends = r-pkgconfig>=2.0.1
 	depends = r-r6>=2.2.2
-	depends = r-rcpp>=0.12.15
-	depends = r-rlang>=0.2.0
-	depends = r-tibble>=1.3.1
+	depends = r-rcpp>=0.12.19
+	depends = r-rlang>=0.3.0
+	depends = r-tibble>=1.4.2
 	depends = r-tidyselect>=0.2.3
 	depends = r-bh>=1.58.0_1
 	depends = r-plogr>=0.1.10
@@ -39,8 +39,8 @@ pkgbase = r-dplyr
 	optdepends = r-rsqlite
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = http://cran.r-project.org/src/contrib/dplyr_0.7.7.tar.gz
-	md5sums = d8f267aa8beee4e1eb96ed3b6ec3e09e
+	source = http://cran.r-project.org/src/contrib/dplyr_0.7.8.tar.gz
+	md5sums = 981a0037c71f6947590e7d578ba80e7a
 
 pkgname = r-dplyr
 
