@@ -10,7 +10,7 @@ conflicts=("elkhound-bin" "elkhound")
 
 url="https://github.com/WeiDUorg/elkhound"
 pkgdesc="Elkhound, née Elsa/Elkhound, as used by WeiDU"
-makedepends=("bison")
+makedepends=("bison" "flex" "ocaml")
 
 license=("custom")
 
@@ -23,18 +23,24 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/elkhound/src"
-    ./configure
+    cd "$srcdir/elkhound/"
+
+    mkdir -p build
+
+    cd build
+    cmake ../src -DCMAKE_BUILD_TYPE=Release \
+        -DEXTRAS=OFF \
+        -DOCAML=OFF \
+        -DBUILD_TESTING=OFF
 }
 
 build() {
-    cd "$srcdir/elkhound/src"
-    make -j1
+    cd "$srcdir/elkhound/build"
+    make 
 }
 
 package() {
-    cd "$srcdir/elkhound/src/elkhound"
-    install -D -m=0755 elkhound "$pkgdir/usr/bin/elkhound"
+    cd "$srcdir/elkhound/build"
+    install -D -m=0755 elkhound/elkhound "$pkgdir/usr/bin/elkhound"
 }
-
 
