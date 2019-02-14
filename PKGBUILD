@@ -1,7 +1,7 @@
 # Maintainer: Crestwave <crest.wave@yahoo.com>
 
 pkgname=fff-git
-pkgver=r509.8de02c8
+pkgver=r520.826e16f
 pkgrel=1
 pkgdesc="A simple file manager written in bash"
 arch=('any')
@@ -14,6 +14,7 @@ optdepends=(
   'xdotool: Image display support for X'
   'fbset: Image display support for the framebuffer'
 )
+provides=('fff')
 conflicts=('fff')
 source=("git+${url}.git")
 sha256sums=('SKIP')
