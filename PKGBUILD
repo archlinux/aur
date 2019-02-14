@@ -2,7 +2,7 @@
 
 _pkgname=zrythm
 pkgname=$_pkgname-git
-pkgver=r232.f5e991f
+pkgver=r238.b2e559f
 pkgrel=1
 pkgdesc="Free GNU/Linux music production system (DAW)"
 arch=('x86_64')
