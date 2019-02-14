@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Thibault Mondary <thibm@free.fr>
 # Contributor: Simone Sclavi 'Ito' <darkhado@gmail.com>
 
