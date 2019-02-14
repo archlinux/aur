@@ -1,6 +1,6 @@
 pkgbase = makepkg-optimize
 	pkgdesc = Supplemental build and packaging optimizations for makepkg
-	pkgver = 5
+	pkgver = 6
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Makepkg-optimize
 	arch = any
