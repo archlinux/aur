@@ -1,14 +1,14 @@
 pkgbase = firefox-developer-edition-firefox-symlink-latest
-	pkgdesc = Adds a 'firefox'-symlink for 'firefox-developer-edition'.
-	pkgver = 66.0b4
+	pkgdesc = Adds a 'firefox'-symlink for 'firefox-developer-edition'. Also symlinks icon- and .desktop-files.
+	pkgver = 66.0b7
 	pkgrel = 1
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
 	depends = firefox-developer-edition
-	provides = firefox-developer-edition-firefox-symlink=66.0b4
-	provides = firefox=66.0b4
+	provides = firefox-developer-edition-firefox-symlink=66.0b7
+	provides = firefox=66.0b7
 	conflicts = firefox-developer-edition-firefox-symlink
 	conflicts = firefox
 

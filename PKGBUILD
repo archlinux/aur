@@ -2,9 +2,9 @@
 
 _pkgname="firefox-developer-edition-firefox-symlink"
 pkgname="${_pkgname}-latest"
-pkgver=66.0b4
+pkgver=66.0b7
 pkgrel=1
-pkgdesc="Adds a 'firefox'-symlink for 'firefox-developer-edition'."
+pkgdesc="Adds a 'firefox'-symlink for 'firefox-developer-edition'. Also symlinks icon- and .desktop-files."
 arch=("any")
 license=(
   'MPL'
@@ -29,7 +29,21 @@ pkgver() {
 }
 
 package() {
-  install -d -m755 "${pkgdir}/usr/bin"
+  install -d -v -m755 "${pkgdir}/usr/bin"
   cd "${pkgdir}/usr/bin"
-  ln -s -T "firefox-developer-edition" "firefox"
+  ln -s -v -T "firefox-developer-edition" "firefox"
+
+  install -d -v -m755 "${pkgdir}/usr/share/applications"
+  cd "${pkgdir}/usr/share/applications"
+  ln -s -v -T "firefox-developer-edition.desktop" "firefox.desktop"
+
+  for _icons_png_hicolor in 16x16 32x32 48x48 64x64 128x128 192x192 384x384; do
+    install -d -v -m755 "${pkgdir}/usr/share/icons/hicolor/${_icons_png_hicolor}/apps"
+    cd "${pkgdir}/usr/share/icons/hicolor/${_icons_png_hicolor}/apps"
+    ln -s -v -T "firefox-developer-edition.png" "firefox.png"
+  done
+
+  install -d -v -m755 "${pkgdir}/usr/share/icons/hicolor/symbolic/apps"
+  cd "${pkgdir}/usr/share/icons/hicolor/symbolic/apps"
+  ln -s -v -T "firefox-developer-edition-symbolic.svg" "firefox-symbolic.svg"
 }
