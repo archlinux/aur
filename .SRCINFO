@@ -1,7 +1,7 @@
 pkgbase = modustoolbox
 	pkgdesc = ModusToolbox simplifies development for IoT designers. IDE for PSoC 6
-	pkgver = 1.0.0.2953
-	pkgrel = 0
+	pkgver = 1.0.0
+	pkgrel = 2953
 	url = https://www.cypress.com/products/modustoolbox-software-environment
 	arch = x86_64
 	license = custom
