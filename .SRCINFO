@@ -1,0 +1,59 @@
+pkgbase = compiz-git
+	pkgdesc = Composite manager for Aiglx and Xgl, with plugins and CCSM (development version)
+	pkgver = 0.9.13.1.r8.g3552c1f09
+	pkgrel = 1
+	url = https://launchpad.net/compiz
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = MIT
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	makedepends = intltool
+	makedepends = cython
+	depends = boost-libs
+	depends = xorg-server
+	depends = fuse2
+	depends = glibmm
+	depends = libwnck3
+	depends = python-gobject
+	depends = python-cairo
+	depends = protobuf
+	depends = metacity
+	depends = glu
+	optdepends = xorg-xprop: grab various window properties for use in window matching rules
+	provides = compiz=0.9.13
+	provides = compiz-core=0.9.13
+	provides = compiz-bcop=0.9.13
+	provides = ccsm=0.9.13
+	provides = compiz-plugins-main=0.9.13
+	provides = compiz-plugins-extra=0.9.13
+	provides = compizconfig-python=0.9.13
+	provides = libcompizconfig=0.9.13
+	conflicts = compiz
+	conflicts = compiz-core
+	conflicts = compiz-gtk
+	conflicts = compiz-bcop
+	conflicts = ccsm
+	conflicts = compiz-fusion-plugins-main
+	conflicts = compiz-fusion-plugins-extra
+	conflicts = compiz-fusion-plugins-experimental
+	conflicts = compizconfig-python
+	conflicts = libcompizconfig
+	conflicts = simple-ccsm
+	replaces = compiz-bzr
+	source = git+https://git.launchpad.net/compiz
+	source = focus-prevention-disable.patch
+	source = gtk-extents.patch
+	source = reverse-unity-config.patch
+	source = screenshot-launch-fix.patch
+	sha256sums = SKIP
+	sha256sums = f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b
+	sha256sums = 16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9
+	sha256sums = fba56d3e5fc8d1b47be2b8eaa6d79f48635daccc26db9b0b88fa281cc50c635e
+	sha256sums = 89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61
+
+pkgname = compiz-git
+
