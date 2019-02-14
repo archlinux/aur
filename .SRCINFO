@@ -1,7 +1,7 @@
 pkgbase = rivendell
 	pkgdesc = Open Source Radio Automation
 	pkgver = 2.19.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rivendellaudio.org/
 	arch = x86_64
 	license = GPL2
@@ -16,7 +16,7 @@ pkgbase = rivendell
 	depends = qt3
 	depends = libsamplerate
 	depends = soundtouch
-	depends = jack2
+	depends = jack
 	depends = alsa-lib
 	depends = flac
 	depends = faad2

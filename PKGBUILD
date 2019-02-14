@@ -2,7 +2,7 @@
 
 pkgname=rivendell
 pkgver=2.19.3
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Open Source Radio Automation"
 
@@ -21,7 +21,7 @@ depends=(
   'qt3'
   'libsamplerate'
   'soundtouch'
-  'jack2'
+  'jack'
   'alsa-lib'
   'flac'
   'faad2'
