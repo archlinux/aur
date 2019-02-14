@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Yass
+Comment=Editor for Ultrastar karaoke songs
+Exec=yass.sh
+Icon=yass.png
+Categories=Editor
