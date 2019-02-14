@@ -1,6 +1,6 @@
 # Maintainer: Mutantoe <mutantoe+aur@mailbox.org>
 pkgname=ytp-git
-pkgver=0.0.0.gb209122
+pkgver=r49.6c3a081
 pkgrel=1
 pkgdesc='Searches and plays Youtube videos'
 arch=('any')
@@ -12,8 +12,8 @@ source=("$pkgname::git+https://gitlab.com/uoou/ytp.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
-  echo 0.0.0.g$(git describe --tags --always | sed 's/^v//;s/-/./g')
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
