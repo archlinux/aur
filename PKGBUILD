@@ -16,7 +16,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=72.0.3595.2
+pkgver=73.0.3683.20
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -29,14 +29,14 @@ depends=(
          'minizip'
          'nss'
          'pciutils'
-         're2'
+#          're2'    # https://crbug.com/931373.
          'snappy'
          'xdg-utils'
-#          'harfbuzz-icu'
+         'harfbuzz-icu'
 #          'protobuf'
 #          'libevent'
 #          'ffmpeg'
-#          'icu'    # https://crbug.com/678661
+#          'icu'    # https://crbug.com/678661.
          'gtk3'
          'openh264'
          'vulkan-icd-loader'
@@ -80,18 +80,16 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         'git+https://github.com/foutrelis/chromium-launcher.git'
         'chromium-dev.svg'
-        # Patch form Gentoo
+        # Patch form Gentoo.
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-compiler-r7.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-webrtc-r0.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-harfbuzz-r0.patch'
-         # Misc Patches
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-widevine-r4.patch'
+         # Misc Patches.
+        'enable-vaapi.patch' #::https://src.fedoraproject.org/cgit/rpms/chromium.git/tree/enable-vaapi.patch'
         'chromium-ffmpeg-clang.patch'
-        'chromium-intel-vaapi_r18.diff.base64::https://chromium-review.googlesource.com/changes/532294/revisions/18/patch?download'
-        # Patch from crbug (chromium bugtracker) or Arch chromium package
-        'chromium_fix_snapselectionstrategy_missing_include.base64::https://chromium-review.googlesource.com/changes/1304418/revisions/2/patch?download'
-        'chromium-widevine-r3.patch'
+        # Patch from crbug (chromium bugtracker) or Arch chromium package.
         'chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
-        'fix_mixup_between_DIP_pixel_coordinates.diff.base64::https://chromium-review.googlesource.com/changes/1083692/revisions/3/patch?download'
+        'chromium_use_sqrt.patch.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1458193/revisions/2/patch?download'
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -100,15 +98,13 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             # Patch form Gentoo
             '7fa727b29032577c70f5655b10a440599c12e53d6f52713e661defc1002cfa3a'
             'bcb2f4588cf5dcf75cde855c7431e94fdcc34bdd68b876a90f65ab9938594562'
-            '1b370d49c43e88acfe7c0b1f9517047e927f3407bd80b4a48bba32c001f80136'
+            '8c6ecc26aab9f4acc911350d9bb1e40f32cad144b6a08c9d7b188e9598d0f2de'
             # Misc Patches
+            'SKIP' #'a72a42f3f8ea5093c792df7d9662e8311a22f7bd0616cd8e2690990d5b247fc1'
             '16741344288d200fadf74546855e00aa204122e744b4811a36155efd5537bd95'
-            '957d777c67756074c8e028d08c1e88e738f881b3a8569e60c5bdd1da6737e305'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
-            '486aa853cf7701aabc91c6b4c46adc50898eede3fc9c439b53515be6dd94758d'
-            '6e6576a11d0511fed7251160e3028fc2405983ff4cf60823e7e49db9e28a748b'
-            'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
-            'd3330d7f7fa256e99488a6c9edce793c9fc1054e3766a66fde74ed2bd8ed496f'
+            '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
+            '780d1b22ff2f6a20f3ce5e652a00dbdcc7e4140cf514b0fac10baf4e171ebd64'
             )
 install=chromium-dev.install
 
@@ -141,18 +137,15 @@ _keeplibs=(
            'courgette/third_party'
            'native_client/src/third_party/dlmalloc'
            'native_client_sdk/src/libraries/third_party/newlib-extras'
-           'net/third_party/http2'
            'net/third_party/mozilla_security_manager'
            'net/third_party/nss'
            'net/third_party/quic'
-           'net/third_party/spdy'
            'net/third_party/uri_template'
-           'third_party/WebKit'
            'third_party/abseil-cpp'
-           'third_party/analytics'
            'third_party/angle'
            'third_party/angle/src/common/third_party/base'
            'third_party/angle/src/common/third_party/smhasher'
+           'third_party/angle/src/common/third_party/xxhash'
            'third_party/angle/src/third_party/compiler'
            'third_party/angle/src/third_party/libXNVCtrl'
            'third_party/angle/src/third_party/trace_event'
@@ -195,7 +188,6 @@ _keeplibs=(
            'third_party/flatbuffers'
            'third_party/flot'
            'third_party/glslang'
-           'third_party/glslang-angle'
            'third_party/google_input_tools'
            'third_party/google_input_tools/third_party/closure_library'
            'third_party/google_input_tools/third_party/closure_library/third_party/closure'
@@ -233,6 +225,7 @@ _keeplibs=(
            'third_party/mesa'
            'third_party/metrics_proto'
            'third_party/modp_b64'
+           'third_party/nasm'
            'third_party/node'
            'third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2'
            'third_party/openmax_dl'
@@ -260,6 +253,7 @@ _keeplibs=(
            'third_party/sfntly'
            'third_party/shaderc'
            'third_party/skia'
+           'third_party/skia/include/third_party/vulkan'
            'third_party/skia/third_party/gif'
            'third_party/skia/third_party/skcms'
            'third_party/skia/third_party/spirv-headers'
@@ -269,7 +263,6 @@ _keeplibs=(
            'third_party/smhasher'
            'third_party/spirv-headers'
            'third_party/SPIRV-Tools'
-           'third_party/spirv-tools-angle'
            'third_party/sqlite'
            'third_party/swiftshader'
            'third_party/swiftshader/third_party/llvm-subzero'
@@ -277,7 +270,6 @@ _keeplibs=(
            'third_party/tcmalloc'
            'third_party/unrar'
            'third_party/usrsctp'
-           'third_party/vulkan-validation-layers'
            'third_party/vulkan'
            'third_party/web-animations-js'
            'third_party/webdriver'
@@ -293,12 +285,13 @@ _keeplibs=(
            'third_party/woff2'
            'third_party/zlib/google'
            'url/third_party/mozilla'
+           'v8/src/third_party/siphash'
            'v8/src/third_party/valgrind'
            'v8/src/third_party/utf8-decoder'
            'v8/third_party/inspector_protocol'
            'v8/third_party/v8'
 
-           # gyp -> gn leftovers
+           # gyp -> gn leftovers.
            'base/third_party/libevent'
            'third_party/adobe'
            'third_party/speech-dispatcher'
@@ -307,13 +300,18 @@ _keeplibs=(
            'third_party/yasm/run_yasm.py'
            )
 
+_keeplibs+=(
+            'third_party/icu' # https://crbug.com/678661.
+            'third_party/re2' # https://crbug.com/931373.
+            )
+
 # Set build flags.
 _flags=(
         "custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
         "host_toolchain=\"//build/toolchain/linux/unbundle:default\""
         'is_debug=false'
         'is_official_build=true'
-#         'enable_widevine=true'
+        'enable_widevine=true'
         'enable_hangout_services_extension=true'
         "ffmpeg_branding=\"ChromeOS\""
         'proprietary_codecs=true'
@@ -322,7 +320,7 @@ _flags=(
         "google_default_client_secret=\"${_google_default_client_secret}\""
         'fieldtrial_testing_like_official_build=true'
         'remove_webcore_debug_symbols=true'
-        'use_gtk3=true'
+        'use_aura=true'
         'use_gio=false'
         'use_gnome_keyring=false'
         'link_pulseaudio=true'
@@ -330,13 +328,14 @@ _flags=(
         'linux_use_bundled_binutils=false'
         'treat_warnings_as_errors=false'
         'enable_nacl=true'
-        'enable_nacl_nonsfi=false' # https://bugs.chromium.org/p/chromium/issues/detail?id=837441
-        'use_custom_libcxx=false'
-        'use_jumbo_build=false' # https://chromium.googlesource.com/chromium/src/+/lkcr/docs/jumbo.md
+        'enable_nacl_nonsfi=false' # https://crbug.com/837441.
+        'use_custom_libcxx=true'  # https://crbug.com/931373.
+        'use_jumbo_build=false' # https://chromium.googlesource.com/chromium/src/+/lkcr/docs/jumbo.md NOTE: gets OOM in my dual xeon (64Gb ram) machine :/
         'enable_vulkan=true'
         'use_vaapi=true'
         'enable_hevc_demuxing=true'
         'enable_ac3_eac3_audio_demuxing=true'
+        'closure_compile=false'
         )
 
 if [ "${_wayland}" = "1" ]; then
@@ -349,36 +348,31 @@ if [ "${_wayland}" = "1" ]; then
 fi
 
 # Set the bundled/external components.
-# TODO: need ported to GN as GYP doing before. see status page: https://crbug.com/551343
+# TODO: need ported to GN as GYP doing before. see status page: https://crbug.com/551343.
 _use_system=(
-#              'ffmpeg'      # I'm not sure why, but all videos stop playbackl if use system ffmpeg
+#              'ffmpeg'       # I'm not sure why, but all videos stop playback if use system ffmpeg.
              'flac'
              'fontconfig'
              'freetype'
              'harfbuzz-ng'
-#              'icu'         # https://crbug.com/678661
+#              'icu'          # https://crbug.com/678661
              'libdrm'
-#              'libevent'    # Get segfaults and other problems https://bugs.gentoo.org/593458
-#              'libjpeg'     # needs bundled by blink
+#              'libevent'     # Get segfaults and other problems https://bugs.gentoo.org/593458.
+#              'libjpeg'      # needs bundled by blink.
              'libpng'
-#              'libvpx'      # Needs update
-#              'libwebp'     # Needs update
+#              'libvpx'       # Needs update.
+#              'libwebp'      # Needs update.
              'libxml'
              'libxslt'
              'openh264'
              'opus'
-             're2'
+#              're2'          # https://crbug.com/931373
              'snappy'
              'yasm'
              'zlib'
              )
 
-# https://crbug.com/678661
-_keeplibs+=(
-            'third_party/icu'
-            )
-
-# Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
+# Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn).
 CFLAGS+=' -Wno-builtin-macro-redefined'
 CXXFLAGS+=' -Wno-builtin-macro-redefined'
 CPPFLAGS+=' -D__DATE__=  -D__TIME__=  -D__TIMESTAMP__='
@@ -388,14 +382,14 @@ if check_option strip y; then
   _flags+=(
            'symbol_level=0'
            )
-  # Mimic exclude_unwind_tables=true
+  # Mimic exclude_unwind_tables=true.
   CFLAGS+=' -fno-unwind-tables -fno-asynchronous-unwind-tables'
   CXXFLAGS+=' -fno-unwind-tables -fno-asynchronous-unwind-tables'
   CPPFLAGS+=' -DNO_UNWIND_TABLES'
 fi
 
 if check_buildoption ccache y; then
-  # Avoid falling back to preprocessor mode when sources contain time macros
+  # Avoid falling back to preprocessor mode when sources contain time macros.
   export CCACHE_CPP2=yes
   export CCACHE_SLOPPINESS=time_macros
 fi
@@ -444,18 +438,17 @@ prepare() {
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-compiler-r7.patch"
   patch -p1 -i "${srcdir}/chromium-webrtc-r0.patch"
-  patch -p1 -i "${srcdir}/chromium-harfbuzz-r0.patch"
 
-  # Misc patches
+  # Misc patches.
 
   # Pats to chromium dev's about why always they forget add/remove missing build rules.
-  # not this time (?)
+  # not this time (?).
 
   # Allow building against system libraries in official builds.
   sed 's|OFFICIAL_BUILD|GOOGLE_CHROME_BUILD|' \
     -i tools/generate_shim_headers/generate_shim_headers.py
 
-  # Force script incompatible with Python 3 to use /usr/bin/python2
+  # Force script incompatible with Python 3 to use /usr/bin/python2.
   sed -i '1s|python$|&2|' \
     -i build/download_nacl_toolchains.py \
     -i build/linux/unbundle/remove_bundled_libraries.py \
@@ -467,30 +460,29 @@ prepare() {
     -i third_party/ffmpeg/chromium/scripts/generate_gn.py
   export PNACLPYTHON=/usr/bin/python2
 
-  # Setup vulkan
+  # Setup vulkan.
   export VULKAN_SDK="/usr"
   sed 's|/x86_64-linux-gnu||' -i gpu/vulkan/BUILD.gn
 
+  # Enable VAAPI.
+  patch -p1 -i "${srcdir}/enable-vaapi.patch"
 
-  # https://chromium-review.googlesource.com/c/chromium/src/+/532294
-  #base64 -d "${srcdir}/chromium-intel-vaapi_r18.diff.base64" | patch -p1 -i -
-
-  # Patch from crbug (chromium bugtracker) or Arch chromium package
+  # Patch from crbug (chromium bugtracker) or Arch chromium package.
 
   # https://crbug.com/819294
-  base64 -d "${srcdir}/chromium_fix_snapselectionstrategy_missing_include.base64" | patch -p1 -i -
+  base64 -d "${srcdir}/chromium_use_sqrt.patch.base64" | patch -p1 -i -
 
   # https://crbug.com/skia/6663#c10
-  patch -p4 -i "${srcdir}/chromium-skia-harmony.patch"
+  patch -p0 -i "${srcdir}/chromium-skia-harmony.patch"
 
   # https://crbug.com/473866
-  patch -p1 -i "${srcdir}/chromium-widevine-r3.patch"
+  patch -p1 -i "${srcdir}/chromium-widevine-r4.patch"
 
   # Setup nodejs dependency.
   mkdir -p third_party/node/linux/node-linux-x64/bin/
   ln -sf /usr/bin/node third_party/node/linux/node-linux-x64/bin/node
 
-  # Setup bundled ffmpe.g
+  # Setup bundled ffmpeg.
   if [ "${_use_bundled_clang}" = "1" ]; then
     # Setup the ffmpeg correct compiler if use bundled clang.
     cat "${srcdir}/chromium-ffmpeg-clang.patch" | sed "s|__CLANG_PATH__|${_clang_path}|g" | patch -p1 -i -
@@ -539,9 +531,9 @@ build() {
   LC_ALL=C gn gen out/Release -v --args="${_flags[*]}" --script-executable=/usr/bin/python2
 
   # Build all.
-  # Work around broken deps
+  # Work around broken deps.
   LC_ALL=C ninja -C out/Release gen/ui/accessibility/ax_enums.mojom{,-shared}.h
-  LC_ALL=C ninja -C out/Release -v chrome chrome_sandbox chromedriver #widevinecdmadapter
+  LC_ALL=C ninja -C out/Release -v chrome chrome_sandbox chromedriver
 }
 
 package() {
@@ -571,7 +563,6 @@ package() {
          'libVkLayer_parameter_validation.so'
          'libVkLayer_threading.so'
          'libVkLayer_unique_objects.so'
-#          'libwidevinecdmadapter.so'
          'swiftshader/libEGL.so'
          'swiftshader/libGLESv2.so'
          )
@@ -583,7 +574,7 @@ package() {
           'natives_blob.bin'
           'snapshot_blob.bin'
           'v8_context_snapshot.bin'
-          'icudtl.dat'
+          'icudtl.dat' # https://crbug.com/678661
           #
           'MEIPreload/manifest.json'
           'MEIPreload/preloaded_data.pb'
@@ -596,7 +587,7 @@ package() {
   _nacl_libs=(
               'nacl_helper'
               'nacl_helper_bootstrap'
-#               'nacl_helper_nonsfi'
+#               'nacl_helper_nonsfi' # https://crbug.com/837441
               'nacl_irt_x86_64.nexe'
               )
   for i in "${_nacl_libs[@]}"; do
