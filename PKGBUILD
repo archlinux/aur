@@ -1,4 +1,4 @@
-# Maintainer: GI Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI Jack <GI_Jack@hackermail.com>
 
 # This is a packaged plugin for i2p. It assumes you are using the packaging of
 # i2p as used with the arch i2p package in AUR. This package is to keep all
