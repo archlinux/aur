@@ -1,6 +1,6 @@
 # Maintainer: Fabio Zanini <fabio.zanini _at_ fastmail.fm>
 pkgname='python-scikit-bio'
-pkgver=0.5.1
+pkgver=0.5.5
 pkgrel=2
 pkgdesc="Python package providing data structures, algorithms, and educational resources for bioinformatics"
 arch=('x86_64')
@@ -15,7 +15,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/biocore/scikit-bio/archive/${pkgver}.tar.gz")
-md5sums=('f5cb304ea29e50851c242f70bf4c8316')
+md5sums=('e8ec41366d9eeda9bce3ec43c2af1159')
 
 package() {
   cd "$srcdir/scikit-bio-$pkgver"
