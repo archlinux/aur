@@ -6,7 +6,7 @@ pkgbase = scrap
 	arch = x86_64
 	provides = scrap
 	source = scrap.tar.xz
-	md5sums = 0e0e2096988b092541c9c70e9b151482
+    sha256sums = 0e8bc30cf201b8fcb490c599e2fdd4dcdf04ac2108e2e3f07102d5092bbce1f7
 
 pkgname = scrap
 
