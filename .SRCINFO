@@ -1,6 +1,6 @@
 pkgbase = wp-desktop
 	pkgdesc = WordPress.com Desktop client
-	pkgver = 3.8.0
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://desktop.wordpress.com/
 	arch = i686
@@ -15,10 +15,10 @@ pkgbase = wp-desktop
 	depends = libxtst
 	depends = nss
 	provides = wp-desktop
-	source_i686 = wp-desktop-linux-i686-3.8.0.tar.gz::https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?ref=getapps
-	sha256sums_i686 = d58218bb26fc38c08230c8305d28fb1adac9f1d73c31f630415cd6c6a7af47b2
-	source_x86_64 = wp-desktop-linux-x64-3.8.0.tar.gz::https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?ref=getapps
-	sha256sums_x86_64 = d58218bb26fc38c08230c8305d28fb1adac9f1d73c31f630415cd6c6a7af47b2
+	source_i686 = wp-desktop-linux-i686-3.9.0.tar.gz::https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?ref=getapps
+	sha256sums_i686 = a09a72e2df1c06fe1b54f9f68a58ad1e6b30ccd095913b45450edfb0d2d5f096
+	source_x86_64 = wp-desktop-linux-x64-3.9.0.tar.gz::https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?ref=getapps
+	sha256sums_x86_64 = a09a72e2df1c06fe1b54f9f68a58ad1e6b30ccd095913b45450edfb0d2d5f096
 
 pkgname = wp-desktop
 
