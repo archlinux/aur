@@ -1,7 +1,7 @@
 pkgbase = arm-linux-gnueabihf-openblas-lapack-openmp
 	pkgdesc = Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)
 	pkgver = 0.3.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.openblas.net/
 	arch = any
 	license = BSD

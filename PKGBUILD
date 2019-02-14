@@ -8,7 +8,7 @@ _PkgName=OpenBLAS
 _pkgname=openblas
 pkgver=0.3.4
 _lapackver=3.8.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('any')
 url="http://www.openblas.net/"
@@ -32,8 +32,7 @@ _config="BINARY=32 CC=arm-linux-gnueabihf-gcc FC=arm-linux-gnueabihf-gfortran HO
 build(){
   cd "${srcdir}/${_PkgName}-${pkgver}"
 
-  make ${_config} CFLAGS="-mtune=generic-armv7-a -I 
-/usr/arm-linux-gnueabihf/include -L /usr/arm-linux-gnueabihf/lib" libs netlib shared
+  make ${_config} CFLAGS="-mtune=generic-armv7-a -I /usr/arm-linux-gnueabihf/include -L /usr/arm-linux-gnueabihf/lib" libs netlib shared
 }
 
 check(){
