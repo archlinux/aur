@@ -1,22 +1,22 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=kicad-rc
-_pkgver="5.0.2"
-pkgver=${_pkgver//-}
+_pkgver="5.1.0-rc1"
+pkgver=${_pkgver/-rc/.}
 pkgrel=1
 pkgdesc="Official KiCad release candidates and dev snapshots"
 arch=('any')
 url="http://kicad-pcb.org/"
 license=('GPL3')
 # glm 0.9.9.3 breaks the build
-depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python' 'glm<=0.9.9.2' 'curl' 'swig' 'wxpython' 'opencascade' 'ngspice>=27' 'kicad-footprints' 'kicad-symbols' 'kicad-packages3d')
+depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python' 'glm' 'curl' 'swig' 'wxpython' 'opencascade' 'ngspice>=27' 'kicad-footprints' 'kicad-symbols' 'kicad-packages3d')
 makedepends=('cmake' 'git' 'zlib' 'mesa' 'boost')
 optdepends=('kicad-symbols' 'kicad-packages3d' 'kicad-footprints' 'kicad-templates')
 conflicts=('kicad' 'kicad-git' 'kicad-scripting-git' 'kicad-bzr')
 provides=('kicad')
 _github_project='kicad-source-mirror'
 source=("https://github.com/KiCad/${_github_project}/archive/${_pkgver}.tar.gz")
-md5sums=('ed5e5835fa485a3b76d2b410dbb71db8')
+md5sums=('8ad977a2cde8d60c793ef4cb04086dc7')
 install=kicad.install
 
 #prepare() {
@@ -36,7 +36,9 @@ build() {
     -DBUILD_GITHUB_PLUGIN=ON \
     -DKICAD_SCRIPTING=ON \
     -DKICAD_SCRIPTING_MODULES=ON \
-    -DKICAD_SCRIPTING_WXPYTHON=OFF \
+    -DKICAD_SCRIPTING_WXPYTHON=ON \
+    -DKICAD_SCRIPTING_WXPYTHON_PHOENIX=ON \
+    -DKICAD_SCRIPTING_PYTHON3=ON \
     -DKICAD_SCRIPTING_ACTION_MENU=ON
 
   make
