@@ -1,6 +1,6 @@
 pkgbase = openob
 	pkgdesc = A GStreamer based app a configurable RTP audio link system
-	pkgver = 4.0.2
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = https://github.com/JamesHarrison/openob
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = openob
 	depends = gst-plugins-bad
 	depends = gst-python
 	depends = gobject-introspection
-	source = https://files.pythonhosted.org/packages/source/O/OpenOB/OpenOB-4.0.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/O/OpenOB/OpenOB-4.0.3.tar.gz
 	source = LICENSE
-	sha256sums = 650609cfd87e54371f5141b5aa6dc4079cbd9386c22de420488509325841bb37
+	sha256sums = 88e38a3322426f55870b6b438a6d3b21dec448c20f4f4a779d562ffe3bf500ba
 	sha256sums = 36cf4ab7947bb6c146c13457bfda770a5ea208d176c3dd3c7820857c559cd523
 
 pkgname = openob
