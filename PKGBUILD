@@ -13,7 +13,7 @@
 
 pkgname=chromium-ozone-wayland-git
 pkgver=74.0.3703.0+24+5c0e21aca5
-pkgrel=1
+pkgrel=2
 _launcher_ver=6
 pkgdesc="Chromium built from the Igalia fork with experimental Wayland support via Ozone"
 arch=('x86_64')
@@ -133,6 +133,10 @@ prepare() {
   # Remove problematic compiler flags
   sed -i \
     -e '/"-fsplit-lto-unit"/d' \
+    build/config/compiler/BUILD.gn
+
+  sed -i \
+    -e '/"-Qunused-arguments"/d' \
     build/config/compiler/BUILD.gn
 
   sed -i \
