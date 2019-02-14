@@ -1,5 +1,4 @@
-# Maintainer: Johannes Pfrang <johannespfrang+arch @ gmail.com>
-# Co-Maintainer: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
+# Maintainer: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
 
 pkgname=teleport
 pkgver=3.1.6
