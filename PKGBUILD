@@ -19,4 +19,5 @@ pkgver() {
 package() {
   cd "$srcdir/birch"
   make DESTDIR="$pkgdir" install
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
 }
