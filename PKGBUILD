@@ -2,7 +2,7 @@
 
 pkgname=openmpi-gcc6
 pkgver=3.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='High performance message passing library (MPI) build with gcc6'
 url='https://www.open-mpi.org'
 arch=('x86_64')
@@ -48,10 +48,10 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   # FS#28583
-#  install -dm 755 "${pkgdir}/usr/lib/pkgconfig"
-#  for i in ompi-c.pc ompi-cxx.pc ompi-f77.pc ompi-f90.pc ompi.pc; do
-#    ln -sf "/usr/lib/${pkgname}/pkgconfig/${i}" "${pkgdir}/usr/lib/pkgconfig/"
-#  done
+  install -dm 755 "${pkgdir}/usr/lib/pkgconfig"
+  for i in ompi-c.pc ompi-cxx.pc ompi-f77.pc ompi-f90.pc ompi.pc; do
+    ln -sf "/usr/lib/${pkgname}/pkgconfig/${i}" "${pkgdir}/usr/lib/pkgconfig/${i%.pc}-gcc6.pc"
+  done
 
   install -dm 755 "${pkgdir}/etc/ld.so.conf.d"
   echo "/usr/lib/${pkgname}" > "${pkgdir}"/etc/ld.so.conf.d/${pkgname}.conf
