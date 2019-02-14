@@ -1,5 +1,5 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
-# Co-maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Co-maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=ttf-aenigma
 pkgver=20080510
