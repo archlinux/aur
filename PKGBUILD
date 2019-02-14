@@ -5,7 +5,7 @@
 pkgbase=opencv3-opt
 pkgname=($pkgbase $pkgbase-samples)
 pkgver=3.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Computer Vision Library (Legacy Version & /opt directory version)"
 arch=(x86_64)
 license=(BSD)
@@ -78,6 +78,7 @@ package_opencv3-opt() {
   rm -rf "$srcdir"/samples
   mv OpenCV/samples "$srcdir"
   mv OpenCV opencv3 # otherwise folder naming is inconsistent
+  ln -sf /opt/opencv3/share/opencv3 OpenCV # fix some compatibility problems
 }
 
 package_opencv3-opt-samples() {
