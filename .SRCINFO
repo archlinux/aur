@@ -1,0 +1,14 @@
+pkgbase = ttf-google
+	pkgdesc = Some of the best fonts from google
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://fonts.google.com/
+	arch = any
+	license = custom:Creative Commons
+	makedepends = curl
+	makedepends = wget
+	source = fonts.txt
+	md5sums = SKIP
+
+pkgname = ttf-google
+
