@@ -1,7 +1,6 @@
-# Maintainer: ArchStrike <team@archstrike.org>
-# Submit to AUR: GI_Jack <iamjacksemail@hackermail.com>
 
-buildarch=220
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
+# Poached from Arch Strike <team@archstrike.org>
 
 pkgname=onionscan-git
 pkgver=20170225.r130
