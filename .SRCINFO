@@ -1,0 +1,17 @@
+pkgbase = latex-apple-emoji-git
+	pkgdesc = Style package for directly including color emojis in LaTeX documents with support of color modifiers
+	pkgver = r2.cf0ebeb
+	pkgrel = 1
+	url = https://github.com/DPDmancul/Apple-Emoji
+	install = latex-apple-emoji-git.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = texlive-core
+	provides = latex-apple-emoji
+	conflicts = latex-apple-emoji
+	source = git://github.com/DPDmancul/Apple-Emoji.git
+	md5sums = SKIP
+
+pkgname = latex-apple-emoji-git
+
