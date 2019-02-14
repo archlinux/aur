@@ -1,15 +1,21 @@
-pre_install() {
+post_install() {
   getent group naemon &> /dev/null || groupadd -r naemon -g 44
   getent passwd naemon &> /dev/null || useradd -r -u 44 -g naemon \
-    -d /var/lib/naemon -s /sbin/nologin -c "Naemon" naemon
-}
+    -d /var/lib/naemon -s /usr/bin/false -c "Naemon" naemon
 
-pre_upgrade() {
-  pre_install
+  chown naemon:naemon /var/lib/naemon
+  chown -R naemon:naemon /etc/naemon
+  /usr/bin/systemd-tmpfiles --create naemon.conf
 }
 
 pre_remove() {
   if [[ -f /run/naemon/naemon.pid ]]; then
     systemctl stop naemon
   fi
+  /usr/bin/systemd-tmpfiles --remove naemon.conf
+
+  userdel naemon &> /dev/null
+  groupdel naemon &> /dev/null
+
+  rm -rf /var/lib/naemon
 }
