@@ -1,0 +1,40 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8d2da7d..fce4e61 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -68,15 +68,24 @@ message(STATUS OGRE_PLUGIN_PATH=${OGRE_PLUGIN_PATH})
+ # or when 2 versions of Ogre are installed.  Using absolute paths ensures that
+ # components that link against Ogre (rviz and any packages depending on rviz)
+ # all find the same Ogre shared library.
++
++unset(OGRE_OV_LIBRARIES_ABS CACHE)
++
+ if(NOT DEFINED OGRE_OV_LIBRARIES_ABS)
+   unset(OGRE_OV_LIBRARIES_ABS_TMP)
+   foreach(_lib ${OGRE_OV_LIBRARIES})
++    if(NOT _lib STREQUAL "OgreMain" AND NOT _lib STREQUAL "OgreOverlay")
++      continue()
++    endif(NOT _lib STREQUAL "OgreMain" AND NOT _lib STREQUAL "OgreOverlay")
++
+     set(OGRE_OV_LIB_TAG "OGRE_OV_RVIZ_LIB_${_lib}")
+
++    unset(${OGRE_OV_LIB_TAG} CACHE)
+     find_library(${OGRE_OV_LIB_TAG}
+             NAMES ${_lib}
+-            HINTS ${OGRE_OV_LIBRARY_DIRS}
+-            PATHS ${OGRE_OV_LIBRARY_DIRS}
++            PATHS "/opt/OGRE-1.9/lib"
++            NO_DEFAULT_PATH
++            REQUIRED
+     )
+
+     set(OGRE_OV_LIBRARIES_ABS_TMP ${OGRE_OV_LIBRARIES_ABS_TMP} ${${OGRE_OV_LIB_TAG}})
+@@ -86,6 +95,8 @@ if(NOT DEFINED OGRE_OV_LIBRARIES_ABS)
+         CACHE FILEPATH "Pathname of library ${_lib}")
+ endif(NOT DEFINED OGRE_OV_LIBRARIES_ABS)
+
++set(OGRE_OV_INCLUDE_DIRS "/opt/OGRE-1.9/include/OGRE" "/opt/OGRE-1.9/include/OGRE/Overlay")
++
+ if(APPLE)
+   FIND_LIBRARY(Cocoa_LIBRARIES Cocoa)
+   set(rviz_ADDITIONAL_LIBRARIES ${Cocoa_LIBRARIES})

@@ -4,10 +4,10 @@ pkgdesc="ROS - 3D visualization tool for ROS."
 url='http://ros.org/wiki/rviz'
 
 pkgname='ros-indigo-rviz'
-pkgver='1.11.14'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD, Creative Commons')
 
 ros_makedepends=(ros-indigo-geometry-msgs
@@ -37,7 +37,7 @@ ros_makedepends=(ros-indigo-geometry-msgs
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   qt4
-  ogre
+  ogre-1.9
   assimp
   eigen3
   tinyxml
@@ -69,7 +69,7 @@ ros_depends=(ros-indigo-geometry-msgs
   ros-indigo-message-filters)
 depends=(${ros_depends[@]}
   qt4
-  ogre
+  ogre-1.9
   assimp
   eigen3
   tinyxml
@@ -86,24 +86,21 @@ depends=(${ros_depends[@]}
 _dir="rviz-release-release-indigo-rviz-${pkgver}-${_pkgver_patch}"
 source=(
   "${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rviz-release/archive/release/indigo/rviz/${pkgver}-${_pkgver_patch}.tar.gz"
-  "gcc.patch"
-  "headers.patch"
+  'use-ogre-1.9.patch'
 )
-sha256sums=(
-  '17f125bd19e7ef1ccfd6674006346bcd626fbbc8c02b16703db03352ff6cc1bd'
-  'b761541381e14c1d85633b866aebe6dc3f56bdc85db777a99bdfaaaadebee2d9'
-  'afdc65a0fdd76c6daaca53e172d9b0735621df07e9a8d7cf9f663ba1d54c03ab'
-)
+sha256sums=('74fdb4f4806aa68afa533c83014315e5790f2279d0b256c7d68164e4ff0de50f'
+            'fa3dbb6e00c70afb65e5a5bda131975039727034d3d2e04b80b0e620b6286907')
+
+prepare() {
+  # Apply patch
+  cd "${srcdir}/${_dir}"
+  patch -p1 -i "${srcdir}/use-ogre-1.9.patch"
+}
 
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/indigo/setup.bash ] && source /opt/ros/indigo/setup.bash
-
-  # Apply patch
-  cd "${srcdir}/${_dir}"
-  patch -p1 -i "${srcdir}"/gcc.patch
-  patch -p1 -i "${srcdir}"/headers.patch
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
