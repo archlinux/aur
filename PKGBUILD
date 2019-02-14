@@ -7,7 +7,7 @@ _basever=2.1.3
 #_relver=-prega
 #pkgver=$_basever.$_relver
 pkgver=$_basever
-pkgrel=1
+pkgrel=2
 pkgname=("${pkgbase}" "${pkgbase}-utils")
 pkgdesc="A distributed NewSQL database compatible with MySQL protocol"
 arch=('x86_64')
@@ -44,7 +44,7 @@ sha256sums=('95f6322f7a5724bde75a5f3d950602e0b0116768e52d9f49691c0fdc88f9b84d'
             '248790d756d15322ed7af13f30525744c472190ac68a26b486c5eed24427abdf')
 
 _package() {
-    provides=("tidb=$_basever" "tikv=$_basever" "tikv-pd=$_basever")
+    provides=("tidb-server=$_basever" "tikv-server=$_basever" "pd-server=$_basever")
     install='tidb.install'
 
     cd "$srcdir"
