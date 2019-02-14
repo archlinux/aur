@@ -1,7 +1,7 @@
 # Maintainer: Immae <ismael.bouya@normalesup.org>
 
 pkgname=patacrep
-pkgver=4.0.0
+pkgver=5.1.2
 pkgrel=1
 pkgdesc="Engine for LaTeX songbooks"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-ply' 'python-jinja' 'python-chardet'
          'python-argparse' 'lilypond')
 makedepends=('python-setuptools')
 source=("https://github.com/patacrep/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('76bcec90e3326ea152d500f35719509268ea5a26996800ea5118c7e924ea726b')
+sha512sums=('1a734e775f3dca4419374fdd9283bd5eed6f8238bac96694e0354cbe4ac6c05f601f5f237a77cda9eed89b95148cbedb108cf810ca5e0fd4e7812408cbdac4f9')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
