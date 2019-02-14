@@ -2,7 +2,7 @@
 # Thanks to azurata and Skidnik for their jobs
 
 pkgname=systemd-guest-user
-pkgver=1.0
+pkgver=33.0
 pkgrel=1
 url='https://github.com/Akrai/systemd-guest-user'
 pkgdesc='A simple systemd configurations for guest user support'
@@ -14,11 +14,11 @@ install=systemd-guest-user.install
 source=("${pkgname}::git+https://github.com/Akrai/$pkgname")
 md5sums=(SKIP)
 
-function pkgver() {
-
-	cd "$pkgname"
-	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
+# function pkgver() {
+# 
+# 	cd "$pkgname"
+# 	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+# }
 
 function package() {
 
