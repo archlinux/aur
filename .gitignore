@@ -3,6 +3,6 @@
 !PKGBUILD
 !.SRCINFO
 !thanos
-!thanos.service
+!*.service
 !thanos.sysuser
-!thanos.conf
+!*.conf

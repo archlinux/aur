@@ -1,0 +1,50 @@
+[Unit]
+Description=Thanos Store node giving access to blocks in a bucket provider.
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=thanos
+Group=thanos
+Restart=on-failure
+EnvironmentFile=-/etc/thanos/store.conf
+ExecStart=/usr/bin/thanos store \
+                          $LOG_LEVEL \
+                          $LOG_FORMAT \
+                          $GCLOUDTRACE_PROJECT \
+                          $GCLOUDTRACE_SAMPLE \
+                          $GRPC_ADDRESS \
+                          $GRPC_ADVERTISE_ADDRESS \
+                          $GRPC_SERVER_TLS_CERT \
+                          $GRPC_SERVER_TLS_KEY \
+                          $GRPC_SERVER_TLS_CLIENT_CA \
+                          $HTTP_ADDRESS \
+                          $CLUSTER_ADDRESS \
+                          $CLUSTER_ADVERTISE_ADDRESS \
+                          $CLUSTER_PEERS \
+                          $CLUSTER_GOSSIP_INTERVAL \
+                          $CLUSTER_PUSHPULL_INTERVAL \
+                          $CLUSTER_REFRESH_INTERVAL \
+                          $CLUSTER_SECRET_KEY \
+                          $CLUSTER_NETWORK_TYPE \
+                          $CLUSTER_DISABLE \
+                          $PROMETHEUS_URL \
+                          $TSDB_PATH \
+                          $RELOADER_CONFIG \
+                          $RELOADER_CONFIG_ENVSUBST_FILE \
+                          $RELOADER_RULE_DIR \
+                          $OBJSTORE_CONFIG_FILE \
+                          $OBJSTORE_CONFIG \
+                          $DATA_DIR \
+                          $INDEX_CACHE \
+                          $CHUNK_POOL_SIZE \
+                          $OBJSTORE_CONFIG_FILE \
+                          $OBJSTORE_CONFIG \
+                          $SYNC_BLOCK_DURATION \
+                          $SYNC_BLOCK_CONCURRENCY
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+
+

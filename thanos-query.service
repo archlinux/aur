@@ -1,0 +1,54 @@
+[Unit]
+Description=Thanos Query node exposing PromQL enabled Query API with data retrieved from multiple store nodes 
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=thanos
+Group=thanos
+Restart=on-failure
+EnvironmentFile=-/etc/thanos/query.conf
+ExecStart=/usr/bin/thanos query \
+                      $LOG_LEVEL \
+                      $LOG_FORMAT \
+                      $GCLOUDTRACE_PROJECT \
+                      $GCLOUDTRACE_SAMPLE \
+                      $GRPC_ADDRESS \
+                      $GRPC_ADVERTISE_ADDRESS \
+                      $GRPC_SERVER_TLS_CERT \
+                      $GRPC_SERVER_TLS_KEY \
+                      $GRPC_SERVER_TLS_CLIENT_CA \
+                      $HTTP_ADDRESS \
+                      $CLUSTER_ADDRESS \
+                      $CLUSTER_ADVERTISE_ADDRESS \
+                      $CLUSTER_PEERS \
+                      $CLUSTER_GOSSIP_INTERVAL \
+                      $CLUSTER_PUSHPULL_INTERVAL \
+                      $CLUSTER_REFRESH_INTERVAL \
+                      $CLUSTER_SECRET_KEY \
+                      $CLUSTER_NETWORK_TYPE \
+                      $CLUSTER_DISABLE \
+                      $HTTP_ADVERTISE_ADDRESS \
+                      $GRPC_CLIENT_TLS_SECURE \
+                      $GRPC_CLIENT_TLS_CERT \
+                      $GRPC_CLIENT_TLS_KEY \
+                      $GRPC_CLIENT_TLS_CA \
+                      $GRPC_CLIENT_SERVER_NAME \
+                      $WEB_ROUTE_PREFIX \
+                      $WEB_EXTERNAL_PREFIX \
+                      $WEB_PREFIX_HEADER \
+                      $QUERY_TIMEOUT \
+                      $QUERY_MAX_CONCURRENT \
+                      $QUERY_REPLICA_LABEL \
+                      $SELECTOR_LABEL \
+                      $STORE \
+                      $STORE_SD_FILES \
+                      $STORE_SD_INTERVAL \
+                      $STORE_SD_DNS_INTERVAL \
+                      $QUERY_AUTO_DOWNSAMPLING \
+                      $QUERY_PARTIAL_RESPONSE
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+

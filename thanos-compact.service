@@ -1,0 +1,30 @@
+[Unit]
+Description=Thanos Compact
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=thanos
+Group=thanos
+Restart=on-failure
+EnvironmentFile=-/etc/thanos/compact.conf
+ExecStart=/usr/bin/thanos comact \
+                          $LOG_LEVEL \
+                          $LOG_FORMAT \
+                          $GCLOUDTRACE_PROJECT \
+                          $GCLOUDTRACE_SAMPLE \
+                          $HTTP_ADDRESS \
+                          $DATA_DIR \
+                          $OBJSTORE_CONFIG_FILE \
+                          $OBJSTORE_CONFIG \
+                          $SYNC_DELAY \
+                          $RETENTION_RESOLUTION_RAW \
+                          $RETENTION_RESOLUTION_5M \
+                          $RETENTION_RESOLUTION \
+                          $WAIT
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+
+

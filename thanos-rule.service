@@ -1,0 +1,55 @@
+[Unit]
+Description=Thanos Ruler evaluating Prometheus rules against given Query nodes, exposing Store API and storing old blocks in bucket
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=thanos
+Group=thanos
+Restart=on-failure
+EnvironmentFile=-/etc/thanos/rule.conf
+ExecStart=/usr/bin/thanos rule \
+                          $LOG_LEVEL \
+                          $LOG_FORMAT \
+                          $GCLOUDTRACE_PROJECT \
+                          $GCLOUDTRACE_SAMPLE \
+                          $GRPC_ADDRESS \
+                          $GRPC_ADVERTISE_ADDRESS \
+                          $GRPC_SERVER_TLS_CERT \
+                          $GRPC_SERVER_TLS_KEY \
+                          $GRPC_SERVER_TLS_CLIENT_CA \
+                          $HTTP_ADDRESS \
+                          $CLUSTER_ADDRESS \
+                          $CLUSTER_ADVERTISE_ADDRESS \
+                          $CLUSTER_PEERS \
+                          $CLUSTER_GOSSIP_INTERVAL \
+                          $CLUSTER_PUSHPULL_INTERVAL \
+                          $CLUSTER_REFRESH_INTERVAL \
+                          $CLUSTER_SECRET_KEY \
+                          $CLUSTER_NETWORK_TYPE \
+                          $CLUSTER_DISABLE \
+                          $LABEL \
+                          $DATA \
+                          $RULE_FILE \
+                          $EVAL_INTERVAL \
+                          $TSDB_BLOCK \
+                          $TSDB_RETENTION \
+                          $ALERTMANAGERS_URL \
+                          $ALERTMANAGERS_SEND \
+                          $ALERT_QUERY_URL \
+                          $ALERT_LABEL_DROP \
+                          $WEB_ROUTE_PREFIX \
+                          $WEB_EXTERNAL_PREFIX \
+                          $WEB_PREFIX_HEADERS \
+                          $OBJSTORE_CONFIG_FILE \
+                          $OBJSTORE_CONFIG \
+                          $QUERY \
+                          $QUERY_SD_FILES \
+                          $QUERY_SD_INTERVAL \
+                          $QUERY_SD_DNS_INTERVAL
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+
+
