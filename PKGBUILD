@@ -1,4 +1,4 @@
-# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
 _pkgname=avalon_framework
 pkgname=python-avalon_framework
 pkgver=1.5.3
