@@ -8,7 +8,7 @@
 # Modifications to Use Git Master Source
 # ======================================
 # Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
-#    * This PKGFILE as closely as possible matches core's binutils 2.31.1-3
+#    * This PKGFILE as closely as possible matches core's binutils 2.31.1-4
 #    * All namcap warnings and errors are identical, other than:
 #       * Warning libraries libopcodes and libbfd are uninstalled dependencies
 #          * This is referencing itself, and the -git version is not installed in a chroot build because binutils is already installed, and it defaults to 'no' for the conflict
@@ -17,13 +17,12 @@
 
 pkgname=binutils-git
 _pkgname=binutils-gdb
-pkgver=2.31.r95795.4de5434b69
+pkgver=2.32.r96649.2988d01ea5
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files (git master developmental version)'
 arch=(x86_64)
 url='http://www.gnu.org/software/binutils/'
 license=(GPL)
-groups=(base-devel)
 depends=(glibc zlib)
 makedepends=(git)
 checkdepends=(dejagnu bc)
