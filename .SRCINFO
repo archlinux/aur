@@ -1,0 +1,16 @@
+pkgbase = mpd_queue_random_album-git
+	pkgdesc = Python program to append mpd queue with random albums.
+	pkgver = 1.0.0.843d9c3
+	pkgrel = 1
+	url = https://github.com/ibeex/mpd_queue_random_album
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-mpd2
+	conflicts = mpdrandom
+	source = git+https://github.com/ibeex/mpd_queue_random_album
+	md5sums = SKIP
+
+pkgname = mpd_queue_random_album-git
+
