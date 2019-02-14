@@ -1,10 +1,11 @@
+# Maintainer: Alexander Phinikarides <alexisph@gmail.com>
 # Contributor: codestation <codestation404 at gmail dot com>
 pkgname=ciso
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PSP Iso Compressor"
 arch=(i686 x86_64)
-url="http://ciso.tenshu.fr"
+url="https://sourceforge.net/projects/ciso/"
 license=('GPL')
 depends=('zlib')
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
