@@ -206,7 +206,6 @@ _keeplibs=(
            'third_party/libaom/source/libaom/third_party/vector'
            'third_party/libaom/source/libaom/third_party/x86inc'
            'third_party/libjingle'
-           'third_party/libjpeg'
            'third_party/libphonenumber'
            'third_party/libsecret'
            'third_party/libsrtp'
@@ -303,6 +302,7 @@ _keeplibs=(
 _keeplibs+=(
             'third_party/icu' # https://crbug.com/678661.
             'third_party/re2' # https://crbug.com/931373.
+            'third_party/libjpeg' # https://crbug.com/908298.
             )
 
 # Set build flags.
@@ -355,10 +355,10 @@ _use_system=(
              'fontconfig'
              'freetype'
              'harfbuzz-ng'
-#              'icu'          # https://crbug.com/678661
+#              'icu'          # https://crbug.com/678661.
              'libdrm'
 #              'libevent'     # Get segfaults and other problems https://bugs.gentoo.org/593458.
-#              'libjpeg'      # needs bundled by blink.
+#              'libjpeg'      # https://crbug.com/908298.
              'libpng'
 #              'libvpx'       # Needs update.
 #              'libwebp'      # Needs update.
@@ -366,7 +366,7 @@ _use_system=(
              'libxslt'
              'openh264'
              'opus'
-#              're2'          # https://crbug.com/931373
+#              're2'          # https://crbug.com/931373.
              'snappy'
              'yasm'
              'zlib'
