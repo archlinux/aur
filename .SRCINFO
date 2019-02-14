@@ -1,14 +1,14 @@
 pkgbase = crack-attack-sounds
-	pkgdesc = Sound effects and music for crack-attack, taken from the Fedora's package
+	pkgdesc = Sound effects and music for crack-attack, taken from Fedora's package
 	pkgver = 1.1.14
-	pkgrel = 4
-	url = https://admin.fedoraproject.org/community/?package=crack-attack#package_maintenance/package_overview
+	pkgrel = 5
+	url = https://apps.fedoraproject.org/packages/crack-attack/
 	arch = any
 	license = GPL
 	license = custom:Crystal Stacker freeware
 	depends = crack-attack
-	source = http://kojipkgs.fedoraproject.org/packages/crack-attack/1.1.14/21.fc18/src/crack-attack-1.1.14-21.fc18.src.rpm
-	md5sums = ac74099929159634a2c58a4a7a59fe73
+	source = https://kojipkgs.fedoraproject.org/packages/crack-attack/1.1.14/40.fc30/src/crack-attack-1.1.14-40.fc30.src.rpm
+	sha256sums = 8af69a1f232cfa977bfcf538caf24be33aec97ad94533cc96353c986cbef08c3
 
 pkgname = crack-attack-sounds
 
