@@ -1,17 +1,16 @@
 pkgbase = file-roller-tmp
-	pkgdesc = The file-roller with an additional patch to put temporary files in /tmp instead of ~/.cache (and thus to reduce the amount of writes to SSDs).
-	pkgver = 3.24.1
+	pkgdesc = Create and modify archives. SSD-friendly version (stores temporary files in /tmp).
+	pkgver = 3.30.1
 	pkgrel = 1
-	arch = i686
+	url = https://wiki.gnome.org/Apps/FileRoller
 	arch = x86_64
-	groups = gnome-extra
+	groups = gnome
 	license = GPL
-	makedepends = intltool
-	makedepends = itstool
-	makedepends = docbook-xsl
-	makedepends = gnome-common
+	makedepends = yelp-tools
 	makedepends = git
 	makedepends = libnautilus-extension
+	makedepends = meson
+	makedepends = appstream-glib
 	depends = gtk3
 	depends = dconf
 	depends = libarchive
@@ -24,12 +23,13 @@ pkgbase = file-roller-tmp
 	optdepends = unrar: better RAR archive support
 	optdepends = unace: ACE archive support
 	optdepends = lrzip: lrzip archive support
-	provides = file-roller
+	provides = file-roller=3.30.1
 	conflicts = file-roller
-	source = git+https://git.gnome.org/browse/file-roller#commit=e6ef6fa43a6d5d6e1509f122a206870adc113563
+	replaces = file-roller
+	source = git+https://gitlab.gnome.org/GNOME/file-roller.git#commit=7962fbaf86db77ec6c0713491920341487be1681
 	source = tmp-as-temp.patch
 	sha256sums = SKIP
-	sha256sums = 753c6ee41772677b115f4178fe6384c21d8aa5d489a6074f659d5305736acf57
+	sha256sums = SKIP
 
 pkgname = file-roller-tmp
 
