@@ -16,9 +16,9 @@ pkgdesc='Open source IPsec implementation'
 url='https://www.strongswan.org'
 license=('GPL2')
 arch=('x86_64')
-makedepends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'libsystemd'
+makedepends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'systemd-libs'
              'systemd' 'pam' 'libnm-glib' 'python' 'ruby' 'mariadb' 'python-setuptools')
-depends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'libsystemd' 'pam')
+depends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'systemd-libs' 'pam')
 optdepends=('libnm-glib: for networkmanager support'
             'mariadb: MySQL support'
             'ruby: Ruby support'
