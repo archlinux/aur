@@ -3,9 +3,9 @@
 
 pkgname=avs-device-sdk
 pkgver=1.11
-pkgrel=6
+pkgrel=7
 pkgdesc="SDK for commercial device makers to integrate Alexa directly into connected products"
-arch=('any')
+arch=(x86_64 i686)
 url="https://github.com/alexa/avs-device-sdk"
 license=('Apache')
 makedepends=('cmake' 'gcc49')
