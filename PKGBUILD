@@ -1,10 +1,10 @@
-# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 _pkgname=mailvelope
 pkgname=firefox-extension-${_pkgname}
-pkgver=2.2.2
+pkgver=3.0.2
 pkgrel=1
-_file=956348
+_file=1184296
 pkgdesc="Secure webmail communication based on the OpenPGP standard."
 license=('GPL2')
 arch=('any')
@@ -12,8 +12,9 @@ url="https://www.mailvelope.com"
 depends=("firefox")
 makedepends=("unzip")
 source=("${_pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/${_file}/${_pkgname}-${pkgver}-an+fx.xpi")
+
 noextract=("${_pkgname}-${pkgver}.xpi")
-sha256sums=('124696797e8742a791f05bc14134e85107b66d66c4f090bb4552a56801e55a7b')
+sha256sums=('fa981baa447a335ee86b3d60cb4b5cee569f91b14616e7c57fefd5081c729327')
 
 package() {
   cd "${srcdir}"
