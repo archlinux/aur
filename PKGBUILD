@@ -2,7 +2,7 @@
 
 _gonamespc='github.com/schollz/croc'
 pkgname=croc
-pkgver=4.1.4
+pkgver=4.1.5
 pkgrel=1
 pkgdesc="Easily and securely send things from one computer to another."
 arch=('x86_64')
@@ -10,6 +10,7 @@ url="https://${_gonamespc}"
 license=('MIT')
 #depends=()
 makedepends=('go')
+optdepends=('upx: compress binary')
 provides=('croc')
 conflicts=('croc-bin' 'croc-git')
 #options=()
@@ -28,6 +29,9 @@ prepare() {
 build() {
 	go clean -i -x $_gonamespc
 	go build -x -ldflags "-X main.version=${pkgver}" -gcflags "all=-trimpath=${srcdir}" $_gonamespc
+	if [ $(which upx 2>/dev/null) ]; then
+		echo Compressing ${pkgname} with UPX...
+		upx --best "${srcdir}/${pkgname}"; fi
 }
 
 check() {
@@ -37,4 +41,4 @@ check() {
 package() {
 	install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
-sha512sums=('3d13611f2c61af9f68d46562811bcb7c412df1984666bc32f2889475cb42b3371aec7471bbc07a466eecad4e6cb00ce26053e3af49f35a68777ae4110a88b808')
+sha512sums=('ec78407cf7a03133bd572d910c6121d55a996687cc484b1eb361ae487bbccecdbdb651a3ae649421ba097bd4e07c917aba32150f4cf38dc244a406596a37ba10')
