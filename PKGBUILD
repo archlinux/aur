@@ -22,6 +22,7 @@ depends=('vapoursynth'
 makedepends=('git'
              'boost'
              'gcc7'
+             'meson'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
