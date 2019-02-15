@@ -1,19 +1,19 @@
 pkgbase = msgfplus
 	pkgdesc = MS/MS database search tool
-	pkgver = 2019.02.01
+	pkgver = 2019.02.14
 	pkgrel = 1
 	url = https://github.com/MSGFPlus/msgfplus
 	arch = any
 	license = custom
 	depends = java-environment
-	source = https://github.com/MSGFPlus/msgfplus/releases/download/v2019.02.01/MSGFPlus_v20190201.zip
+	source = https://github.com/MSGFPlus/msgfplus/releases/download/v2019.02.14/MSGFPlus_v20190214.zip
 	source = msgf+
 	source = mzid2tsv
 	source = https://raw.githubusercontent.com/sangtaekim/msgfplus/master/LICENSE.txt
-	md5sums = c19f2a10fc4dc65e5b7f10dfe7526cab
+	md5sums = 83718ee452258c67499bba550ec46656
 	md5sums = c43c6581b373266171c3930c3718eb9c
 	md5sums = c860b9c30b74dae43de2d3933a405ac1
-	md5sums = SKIP
+	md5sums = 88b22e0922010401ea88bcf03e3bb5d2
 
 pkgname = msgfplus
 
