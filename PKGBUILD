@@ -56,8 +56,6 @@ makedepends=(
              'git'
              'hwids'
              'nodejs'
-             'ncurses5-compat-libs'
-             'lld'
              'gn-git'
              )
 optdepends=(
@@ -399,6 +397,7 @@ if [ "${_use_bundled_clang}" = "0" ]; then
            )
   makedepends+=(
                 'clang'
+                'lld'
                 )
 elif [ "${_use_bundled_clang}" = "1" ]; then
   _flags+=(
@@ -502,7 +501,7 @@ prepare() {
   build/download_nacl_toolchains.py --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator sync --extract
 
   msg2 "Download external build components from google"
-  tools/clang/scripts/update.py --without-android
+  tools/clang/scripts/update.py --without-android --without-fuchsia
 
 }
 
@@ -570,8 +569,7 @@ package() {
           'natives_blob.bin'
           'snapshot_blob.bin'
           'v8_context_snapshot.bin'
-          'icudtl.dat' # https://crbug.com/678661
-          #
+          'icudtl.dat' # https://crbug.com/678661.
           'MEIPreload/manifest.json'
           'MEIPreload/preloaded_data.pb'
           )
@@ -583,7 +581,7 @@ package() {
   _nacl_libs=(
               'nacl_helper'
               'nacl_helper_bootstrap'
-#               'nacl_helper_nonsfi' # https://crbug.com/837441
+#               'nacl_helper_nonsfi' # https://crbug.com/837441.
               'nacl_irt_x86_64.nexe'
               )
   for i in "${_nacl_libs[@]}"; do
