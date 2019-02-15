@@ -1,7 +1,7 @@
 pkgbase = basys-3-abacus-git
 	pkgdesc = Basys 3 Abacus Demo
 	pkgver = v2018.2.3.r0.bee091f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://reference.digilentinc.com/learn/programmable-logic/tutorials/basys-3-abacus/start
 	arch = any
 	license = unknown

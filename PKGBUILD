@@ -2,7 +2,7 @@
 # Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 pkgname="basys-3-abacus-git"
 pkgver=v2018.2.3.r0.bee091f
-pkgrel=1
+pkgrel=2
 pkgdesc="Basys 3 Abacus Demo"
 arch=('any')
 url="https://reference.digilentinc.com/learn/programmable-logic/tutorials/basys-3-abacus/start"
@@ -25,6 +25,6 @@ fi
 }
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	mkdir -p "$pkgdir/usr/share/Digilent/${pkgname%-git}"
-	cp -r * "$pkgdir/usr/share/Digilent/${pkgname%-git}"
+	mkdir -p "$pkgdir/usr/share/digilent/${pkgname%-git}"
+	cp -r * "$pkgdir/usr/share/digilent/${pkgname%-git}"
 }
