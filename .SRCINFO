@@ -1,0 +1,18 @@
+pkgbase = rust-keylock-ui
+	pkgdesc = Password manager with goals to be Secure, Simple to use, Portable and Extensible
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://rust-keylock.github.io/
+	arch = x86_64
+	license = GPL
+	makedepends = rust
+	makedepends = maven
+	depends = java-runtime>=8
+	depends = openssl
+	depends = libxfixes
+	depends = libxrender
+	source = https://github.com/rust-keylock/rust-keylock-ui/archive/v0.8.1.tar.gz
+	sha512sums = c0c7d6bf6839e3495a4baa14aedacf3d9532c4243f14bb2e3133dabce86b0dea84031a819d6939eedc896e0c55c6e51c380f733b263521fa58fcfda8446912a2
+
+pkgname = rust-keylock-ui
+
