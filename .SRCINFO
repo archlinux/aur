@@ -1,6 +1,6 @@
 pkgbase = idos-timetable-data-zsr-europe+sk-2019-latest
 	pkgdesc = 2018/2019 Timetable data for the offline railway and other public transport timetable search engines by CHAPS: European and Slovak train data, provided by Inprop (Slovakia).
-	pkgver = 2019_2_6
+	pkgver = 2019_2_14
 	pkgrel = 1
 	epoch = 1
 	url = http://www.inprop.sk/download.aspx
@@ -16,16 +16,16 @@ pkgbase = idos-timetable-data-zsr-europe+sk-2019-latest
 	optdepends = idos-timetable-maps-trains-europe: For displaying routes.
 	optdepends = idos-timetable-maps-trains-cz: For displaying routes (Czech republic only).
 	optdepends = idos-timetable-maps-trains-sk: For displaying routes (Slovakia only).
-	provides = idos-timetable-data-zsr-europe+sk-2019=2019_2_6
-	provides = idos-timetable-data=2019_2_6
-	provides = idos-timetable-data-trains=2019_2_6
-	provides = idos-timetable-data-trains-sk=2019_2_6
-	provides = idos-timetable-data-trains-sk-2019=2019_2_6
-	provides = idos-timetable-data-trains-europe=2019_2_6
-	provides = idos-timetable-data-trains-europe-2019=2019_2_6
+	provides = idos-timetable-data-zsr-europe+sk-2019=2019_2_14
+	provides = idos-timetable-data=2019_2_14
+	provides = idos-timetable-data-trains=2019_2_14
+	provides = idos-timetable-data-trains-sk=2019_2_14
+	provides = idos-timetable-data-trains-sk-2019=2019_2_14
+	provides = idos-timetable-data-trains-europe=2019_2_14
+	provides = idos-timetable-data-trains-europe-2019=2019_2_14
 	conflicts = idos-timetable-data-zsr-europe+sk-2019
 	replaces = idos-timetable-data-zsr-europe+sk-latest
-	replaces = idos-timetable-data-zsr-europe+sk-2019<=2019_2_6
+	replaces = idos-timetable-data-zsr-europe+sk-2019<=2019_2_14
 	source = vlak19e_sk.exe::http://www.inprop.sk/Data/Vlak19E_Sk.exe
 	source = license-dummy.txt
 	sha256sums = SKIP
