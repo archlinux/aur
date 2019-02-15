@@ -1,7 +1,7 @@
 pkgbase = gcsf
 	pkgdesc = a FUSE file system based on Google Drive (Written by Rust)
-	pkgver = 0.1.24
-	pkgrel = 2
+	pkgver = 0.1.25
+	pkgrel = 1
 	url = https://github.com/harababurel/gcsf
 	install = gcsf.install
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = gcsf
 	optdepends = ranger: A simple, vim-like file manager
 	provides = gcsf
 	conflicts = gcsf
-	source = gcsf-0.1.24.tar.gz::https://github.com/harababurel/gcsf/archive/0.1.24.tar.gz
+	source = gcsf-0.1.25.tar.gz::https://github.com/harababurel/gcsf/archive/0.1.25.tar.gz
 	source = gcsf.install
-	sha256sums = db407f2422bb6734346eb54d2ffad4758b85de7ef6b395e976714506855c7fa2
+	sha256sums = 10d2d612da4e6738d10744dd4e22acdf7a94cf492c71e079e6cf52112f761187
 	sha256sums = 379c996c9cf50bfffdd381d1f9f99695b1af5bab17b0ccd14006999d6e0351c1
 
 pkgname = gcsf
