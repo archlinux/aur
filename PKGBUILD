@@ -2,12 +2,12 @@
 # Maintainer: Felix Morgner <felix.morgner@gmail.com>
 
 pkgname=cevelop
-pkgver=1.10.1
-_srctimestamp=201809130538
+pkgver=1.11.1
+_srctimestamp=201902151304
 pkgrel=1
 pkgdesc="The C++ IDE for professional developers"
 license=('custom')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.cevelop.com'
 makedepends=(gendesk libarchive)
 depends=('java-environment>=8' unzip "glibc>2.14" python)
@@ -18,7 +18,6 @@ source=(cevelop.sh
         LICENSE
         https://github.com/Cevelop/cevelop.github.io/raw/master/img/logo-square-{16,32,48,256}.png
         https://github.com/Cevelop/cevelop.github.io/raw/master/img/logo-square.svg)
-source_i686=(https://www.cevelop.com/cevelop/downloads/cevelop-${pkgver}-${_srctimestamp}-linux.gtk.x86.tar.gz)
 source_x86_64=(https://www.cevelop.com/cevelop/downloads/cevelop-${pkgver}-${_srctimestamp}-linux.gtk.x86_64.tar.gz)
 sha256sums=('65b469797c38ca09bc16bcb940138091def2d30079fa09028b8756c1040c5c85'
             '578aea66235898a6f6d25420f5251b4df0e2a08be4302d9ab2a9e7e54359cb1b'
@@ -27,8 +26,7 @@ sha256sums=('65b469797c38ca09bc16bcb940138091def2d30079fa09028b8756c1040c5c85'
             '98ab055ecde507b6603743ab40db3dfdb6d6b3b24cb5fff244982ae641d865a0'
             'd99f2f3b58aef682fcab7d1cedf20fc4fc44152c6b964af49212a9e7f4d35def'
             'ebd2b54d0487de845093cabda98d5e0977f436fc10d40f15d2cb1598084222e4')
-sha256sums_i686=('3d4ddeb210fca89606f5064ad49e71186de439431064c3459f0cd4cf94ac8cd9')
-sha256sums_x86_64=('24d43ce53cec3cebdd01d516af06ab624bfd451522f62ad645245ee977234d2b')
+sha256sums_x86_64=('ff4eb8f736c6f429779885084067477d8b09ac5a7ae49295b94895478abfc858')
 
 prepare() {
   gendesk -n --pkgname "$pkgname" \
