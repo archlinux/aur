@@ -1,0 +1,16 @@
+pkgbase = netcoredbg
+	pkgdesc = Adds communication between KDE and your smartphone
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/Samsung/netcoredbg
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = dotnet-host
+	depends = dotnet-runtime
+	depends = dotnet-sdk
+	source = https://github.com/Samsung/netcoredbg/archive/latest.tar.gz
+	sha256sums = SKIP
+
+pkgname = netcoredbg
+
