@@ -3,7 +3,7 @@
 pkgname='perl-dist-zilla-plugin-run'
 _module='Dist-Zilla-Plugin-Run'
 _author='E/ET/ETHER'
-pkgver='0.047'
+pkgver='0.048'
 pkgrel='1'
 pkgdesc='Run external commands and code at specific phases of Dist::Zilla.'
 arch=('any')
@@ -13,7 +13,7 @@ options=('!emptydirs' 'purge')
 depends=('perl-dist-zilla')
 makedepends=('perl-module-build-tiny')
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_module-$pkgver.tar.gz")
-sha256sums=('11fff9b13bc415b407c75aaeed92f3ccbd78c4c8e7b05fa99e94c77aaca3b4be')
+sha256sums=('ff1f80a8834753395f6398aec990fdd0ed0ecf9b19bae273ae5d6eeb609642b0')
 
 build() {
    (
