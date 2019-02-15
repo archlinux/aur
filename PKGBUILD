@@ -112,27 +112,16 @@ prepare() {
         patch -Np1 -i "$srcdir/clearlinux/${i}"
         done
 
+    ### Patch source to unlock additional gcc CPU optimizations
+        # https://github.com/graysky2/kernel_gcc_patch
+        if [ "${_enable_gcc_more_v}" = "y" ]; then
+        msg2 "Enabling additional gcc CPU optimizations..."
+        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
+        fi
+
     ### Setting config
         msg2 "Setting config..."
         cp -Tf $srcdir/clearlinux/config ./.config
-        make olddefconfig
-
-    ### Copying i915 firmware and intel-ucode
-        msg2 "Copying i915 firmware and intel-ucode..."
-        cp -a /usr/lib/firmware/i915 firmware/
-        cp -a ${srcdir}/intel-ucode firmware/
-        cp  ${srcdir}/intel-ucode-with-caveats/06* firmware/intel-ucode/
-        rm -f firmware/intel-ucode/0f*
-
-    ### Prepared version
-        make -s kernelrelease > ../version
-        msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
-
-    ### Set ACPI_REV_OVERRIDE_POSSIBLE to prevent optimus lockup
-        if [ "${_rev_override}" = "y" ]; then
-        msg2 "Enabling ACPI Rev Override Possible..."
-        sed -i "s|# CONFIG_ACPI_REV_OVERRIDE_POSSIBLE is not set|CONFIG_ACPI_REV_OVERRIDE_POSSIBLE=y|g" ./.config
-        fi
 
     ### Bluez package on arch needs this module for bluetooth to work
         # https://bugs.archlinux.org/task/55880
@@ -146,12 +135,24 @@ CONFIG_MODULE_COMPRESS=y\
 # CONFIG_MODULE_COMPRESS_GZIP is not set\
 CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
 
-    ### Patch source to unlock additional gcc CPU optimizations
-        # https://github.com/graysky2/kernel_gcc_patch
-        if [ "${_enable_gcc_more_v}" = "y" ]; then
-        msg2 "Enabling additional gcc CPU optimizations..."
-        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
+    ### Set ACPI_REV_OVERRIDE_POSSIBLE to prevent optimus lockup
+        if [ "${_rev_override}" = "y" ]; then
+        msg2 "Enabling ACPI Rev Override Possible..."
+        sed -i "s|# CONFIG_ACPI_REV_OVERRIDE_POSSIBLE is not set|CONFIG_ACPI_REV_OVERRIDE_POSSIBLE=y|g" ./.config
         fi
+
+        make olddefconfig
+
+    ### Copying i915 firmware and intel-ucode
+        msg2 "Copying i915 firmware and intel-ucode..."
+        cp -a /usr/lib/firmware/i915 firmware/
+        cp -a ${srcdir}/intel-ucode firmware/
+        cp  ${srcdir}/intel-ucode-with-caveats/06* firmware/intel-ucode/
+        rm -f firmware/intel-ucode/0f*
+
+    ### Prepared version
+        make -s kernelrelease > ../version
+        msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
 
     ### Get kernel version
         if [ "${_enable_gcc_more_v}" = "y" ] || [ -n "${_subarch}" ]; then
