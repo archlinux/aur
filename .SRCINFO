@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-joy-listener
 	pkgdesc = ROS - Translates joy msgs.
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/joy_listener
 	arch = any
 	license = BSD
