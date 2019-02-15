@@ -3,7 +3,7 @@
 #
 pkgname=gn-git
 pkgdesc='Meta-build system which generates Ninja build files'
-pkgver=r1525.5519dc2f
+pkgver=r1531.1ab6fa2c
 pkgrel=1
 license=('BSD')
 arch=('x86_64' 'i686')
@@ -28,7 +28,11 @@ prepare () {
 
 build () {
 	cd gn
-	CC=cc CXX=c++ AR=ar python2 build/gen.py --use-lto --no-strip
+	CC=cc CXX=c++ AR=ar \
+	CFLAGS="${CFLAGS} -pthread" \
+	CXXFLAGS="${CXXFLAGS} -pthread" \
+	LDFLAGS="${LDFLAGS} -pthread" \
+		python2 build/gen.py --use-lto --no-strip
 	ninja -C out
 }
 
