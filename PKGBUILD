@@ -1,6 +1,6 @@
 # Maintainer: Bogdan Sinitsyn <bogdan.sinitsyn@gmail.com>
 pkgname=simple-viewer-gl-git
-pkgver=v3.05.r3.g4bab22c
+pkgver=3.05.r3.g4bab22c
 pkgrel=1
 pkgdesc='Simple and tiny image viewer based on OpenGL'
 arch=('i686' 'x86_64')
@@ -42,7 +42,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
 
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {

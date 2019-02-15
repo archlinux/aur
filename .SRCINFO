@@ -1,6 +1,6 @@
 pkgbase = simple-viewer-gl-git
 	pkgdesc = Simple and tiny image viewer based on OpenGL
-	pkgver = v2.92.r40.g58d2a35
+	pkgver = 3.05.r3.g4bab22c
 	pkgrel = 1
 	url = https://bitbucket.org/andreyu/simple-viewer-gl
 	arch = i686
