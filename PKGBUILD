@@ -7,13 +7,13 @@
 
 _pkgname=thg
 pkgname=tortoisehg-hg
-pkgver=4.8rc0.18658
+pkgver=4.8.2.18704
 pkgrel=1
 pkgdesc="Mercurial GUI front end"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/tortoisehg/thg"
 license=('GPL2')
-depends=('python2' 'mercurial>=4.8' 'mercurial<4.9' 'python2-pyqt5' 'python2-qscintilla-qt5')
+depends=('python2' 'mercurial>=4.8' 'mercurial<4.10' 'python2-pyqt5' 'python2-qscintilla-qt5')
 optdepends=('python2-iniparse: ini file support'
             'python2-pygments: syntax highlighting'
             'python2-nautilus: Python binding for Nautilus components')
