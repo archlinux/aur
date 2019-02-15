@@ -1,14 +1,14 @@
 pkgbase = firefox-tab-flip-for-tree-style-tab
 	pkgdesc = Clicking active tab activates the last active one in Tree Style Tab
-	pkgver = 1.1.0
+	pkgver = 1.2.0.1
 	pkgrel = 1
 	url = https://framagit.org/ariasuni/tst-tabflip
 	arch = any
 	groups = firefox-addons
 	license = GPL3
-	noextract = onglet_revers_pour_tree_style_tab-1.1.0-fx.xpi
-	source = https://addons.cdn.mozilla.net/user-media/addons/936209/onglet_revers_pour_tree_style_tab-1.1.0-fx.xpi
-	sha256sums = bbeecbfc77616beae7bd9f2b1998397ff522ad98a2cfff83da474aeee927d762
+	noextract = onglet_revers_pour_tree_style_tab-1.2.0.1-fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/936209/onglet_revers_pour_tree_style_tab-1.2.0.1-fx.xpi
+	sha256sums = 4e3151012657d3c8e53e9ae0cf89a841f7d204bf1d8f47f806b52512edbd2909
 
 pkgname = firefox-tab-flip-for-tree-style-tab
 
