@@ -2,7 +2,7 @@
 # Submitter: Steffen L. Norgren (incongruous) <steffen[at]norgren[dot]ca>
 
 pkgname=luv-icon-theme-git
-pkgver=0.4.r131.g4259332
+pkgver=0.4.9.12.r2.gc2b0d15
 pkgrel=1
 pkgdesc="The spiritual successor to Flattr, a flat but complex icon theme for freedesktop environments."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('librsvg')
 makedepends=('git')
 provides=("flattr-icon-theme=${pkgver}" "luv-icon-theme=${pkgver}")
 conflicts=('flattr-icon-theme' 'luv-icon-theme')
-source=("${pkgname}"::'git+https://github.com/NitruxSA/luv-icon-theme.git')
+source=("${pkgname}"::'git+https://github.com/Nitrux/luv-icon-theme.git')
 sha512sums=('SKIP')
 
 pkgver() {
