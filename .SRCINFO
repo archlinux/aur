@@ -1,7 +1,7 @@
 pkgbase = basys-3-gpio-git
 	pkgdesc = Basys 3 General Input/Output Demo
 	pkgver = v2018.2.3.r0.7d5c241
-	pkgrel = 1
+	pkgrel = 2
 	url = https://reference.digilentinc.com/learn/programmable-logic/tutorials/basys-3-general-io/start
 	arch = any
 	license = unknown
