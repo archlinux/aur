@@ -1,0 +1,19 @@
+--- a/CMakeLists.txt	2019-02-15 00:25:07.209537217 +0100
++++ b/CMakeLists.txt	2019-02-15 00:27:29.216998985 +0100
+@@ -30,14 +30,8 @@
+ 	RELVER "2.2.1" )
+ 
+ subdirs(
+-	source/iked
+-	source/ikec
+-	source/libike
+-	source/libip
+-	source/libidb
+-	source/libith
+-	source/liblog
+-	source/libpfk )
++	source/qikea
++	source/qikec )
+ 
+ set(
+ 	SEARCH_INC
