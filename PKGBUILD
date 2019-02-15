@@ -1,10 +1,11 @@
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Tom K <tom@archlinux.org>
+# Contributor: kaptoxic <kaptoxic at yahoo dot com>
 
 pkgname=linuxdcpp
 pkgver=1.1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="A Gtk+ Direct Connect client based on DC++."
 url="https://launchpad.net/linuxdcpp/"
 license=('GPL')
