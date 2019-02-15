@@ -3,7 +3,7 @@
 # Gregory Petrosyan <gregory.mkv at gmail.com>
 
 pkgname=connman-gtk
-pkgver=v1.1.1
+pkgver=1.1.1
 pkgrel=2
 pkgdesc="Tray menu and GUI for ConnMan"
 arch=('x86_64')
