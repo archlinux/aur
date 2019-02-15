@@ -1,4 +1,5 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
+# Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
@@ -11,7 +12,7 @@ pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
 url="https://www.${pkgname}.com/"
-license=("AGPL3")
+license=("custom:SSPL")
 depends=("curl" "libstemmer" "lsb-release" "pcre" "wiredtiger" "yaml-cpp")
 optdepends=("${pkgname}-tools: mongoimport, mongodump, mongotop, etc")
 makedepends=("libpcap" "ncurses" "python2-cheetah" "python2-regex" "python2-requests" "python2-setuptools" "python2-typing" "python2-yaml" "readline" "scons")
@@ -89,4 +90,5 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  install -Dm644 LICENSE-Community.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-Community.txt"
 }
