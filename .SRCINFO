@@ -1,9 +1,8 @@
 pkgbase = emacs-f
 	pkgdesc = Modern API for working with files and directories in Emacs
 	pkgver = 0.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rejeep/f.el
-	install = emacs-f.install
 	arch = any
 	license = GPL3
 	depends = emacs
