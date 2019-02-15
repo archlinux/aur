@@ -1,7 +1,7 @@
 pkgbase = 389-admin-console
 	pkgdesc = The Admin Server componenet of the 389 Directory Server console for install from the Admin Server..
 	pkgver = 1.1.12
-	pkgrel = 2
+	pkgrel = 3
 	url = http://port389.org
 	arch = any
 	license = GPL

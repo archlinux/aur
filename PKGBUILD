@@ -3,7 +3,7 @@
 pkgname=389-admin-console
 pkgver=1.1.12
 _majorver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The Admin Server componenet of the 389 Directory Server console for install from the Admin Server.."
 arch=('any')
 url="http://port389.org"
