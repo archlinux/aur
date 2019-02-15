@@ -8,13 +8,13 @@
 _pkgname=go-filecoin
 pkgname=$_pkgname-git
 pkgver=0.0.1.r23.g271a6812
-pkgrel=1
+pkgrel=2
 pkgdesc='A decentralized storage network, full node implementation in Go'
 _organization='filecoin-project'
 url="https://github.com/$_organization/$_pkgname"
 arch=('x86_64')
 license=('MIT' 'Apache-2.0')
-makedepends=('git' 'go>=1.11.2' 'rust>=1.31.0' 'pkgconf')
+makedepends=('git' 'go>=1.11.2' 'rust>=1.31.0' 'pkgconf' 'jq')
 optdepends=()
 provides=("$_pkgname")
 conflicts=("$_pkgname")
