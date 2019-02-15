@@ -22,7 +22,7 @@ build() {
   CC=clang CXX=clang++ \
   cmake ../netcoredbg-$pkgver \
     -DDOTNET_DIR=/opt/dotnet \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_PREFIX=/usr/bin \
     -DBUILD_TESTING=OFF \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib
