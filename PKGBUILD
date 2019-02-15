@@ -1,7 +1,7 @@
 
 # Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 pkgname="digilent-xdc-git"
-pkgver=r33.01e6bf6
+pkgver=r36.ad3ecaf
 pkgrel=1
 pkgdesc="A collection of Master XDC board constraints files for Digilent FPGA and Zynq boards"
 arch=('any')
@@ -25,6 +25,6 @@ fi
 }
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	mkdir -p "$pkgdir/usr/share/Digilent/${pkgname%-git}"
-	cp -r * "$pkgdir/usr/share/Digilent/${pkgname%-git}"
+	mkdir -p "$pkgdir/usr/share/digilent/${pkgname%-git}"
+	cp -r * "$pkgdir/usr/share/digilent/${pkgname%-git}"
 }

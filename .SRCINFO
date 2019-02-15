@@ -1,6 +1,6 @@
 pkgbase = digilent-xdc-git
 	pkgdesc = A collection of Master XDC board constraints files for Digilent FPGA and Zynq boards
-	pkgver = r33.01e6bf6
+	pkgver = r36.ad3ecaf
 	pkgrel = 1
 	url = https://reference.digilentinc.com/learn/software/tutorials/vivado-xdc-file
 	arch = any
