@@ -1,7 +1,7 @@
 #Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
 pkgver=1.4.8
-pkgrel=1
+pkgrel=2
 PN="pcloud"
 pkgname=pcloud-drive
 pkgdesc="pCloud drive. Electron edition."
