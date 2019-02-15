@@ -1,6 +1,6 @@
 pkgbase = intellij-jdk
 	pkgdesc = OpenJDK Java 8 development kit with some fixes and enhancements by JetBrains
-	pkgver = 8u202b1483.24
+	pkgver = 8u202b1514.2
 	pkgrel = 1
 	url = https://bintray.com/jetbrains/intellij-jdk
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = intellij-jdk
 	provides = java-runtime-openjdk=8
 	provides = java-runtime-headless-jre=8
 	provides = java-environment-openjdk=8
-	source = https://dl.bintray.com/jetbrains/intellij-jdk/jbrsdk-8u202-linux-x64-b1483.24.tar.gz
-	sha256sums = 309ba25c0975093a79f7095461b1004bd02eecaabc01a0aeb6e155645931ae06
+	source = https://dl.bintray.com/jetbrains/intellij-jdk/jbrsdk-8u202-linux-x64-b1514.2.tar.gz
+	sha256sums = df56f917335cea3801f218f31788641445d67ff867ecf273a5a5e10da185ada0
 
 pkgname = intellij-jdk
 
