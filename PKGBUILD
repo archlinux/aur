@@ -6,13 +6,13 @@
 
 pkgname=lutris-git
 _pkgname=lutris
-pkgver=0.5.0.1.r2.g0b361ebb
+pkgver=0.5.0.1.r29.geb897040
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
 url='https://lutris.net/'
 license=('GPL3')
-depends=('python-gobject' 'python-yaml' 'python-evdev' 'gtk3' 'glib2' 'psmisc' 'cabextract' 'unrar' 'unzip' 'p7zip' 'curl' 'xorg-xrandr' 'gnome-desktop' 'python-requests' 'python-pillow')
+depends=('python-gobject' 'python-yaml' 'python-evdev' 'gtk3' 'glib2' 'psmisc' 'cabextract' 'unzip' 'p7zip' 'curl' 'xorg-xrandr' 'gnome-desktop' 'python-requests' 'python-pillow')
 makedepends=('git' 'python-setuptools')
 checkdepends=('xorg-server-xvfb' 'xterm' 'python-nose-cover3' 'wine' 'webkit2gtk')
 optdepends=(
@@ -20,6 +20,7 @@ optdepends=(
   'wine-staging: Run windows games - Staging patches'
   'python-evdev: Detecting connected joypads.'
   'python-pyinotify: Enhanced Steam integration.'
+  'gamemode: Allows games to request a temporary set of optimisations.'
   )
 provides=('lutris')
 conflicts=('lutris')
