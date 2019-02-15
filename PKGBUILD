@@ -2,7 +2,7 @@
 _author=HMBRAND
 _perlmod=DBD-CSV
 pkgname=perl-dbd-csv
-pkgver=0.48
+pkgver=0.54
 pkgrel=1
 pkgdesc="DBI driver for CSV files"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('perl>=5.10.0'
 )
 options=(!emptydirs)
 source=(http://cpan.perl.org/modules/by-authors/id/H/HM/$_author/$_perlmod-$pkgver.tgz)
-md5sums=('11391a868171dfe493f0a907d8c33596')
+md5sums=('dc91dbf5e8b4aaa07cb583a4a82a4656')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
