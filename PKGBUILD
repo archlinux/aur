@@ -1,6 +1,6 @@
 # Maintainer: Matthias Baur  <aur@matthiasbaur.me>
 pkgname=noson-app
-pkgver=3.10.0.r0.ga522d02
+pkgver=3.10.2.r0.gdc5abec
 pkgrel=1
 pkgdesc="The essential to control music from your SONOS devices on Linux platforms"
 arch=('x86_64' 'armv7h')
@@ -9,7 +9,7 @@ license=('GPL3')
 groups=('base-devel')
 depends=('cmake' 'qt5-base' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-svg')
 makedepends=('cmake' 'git')
-source=("git+git://github.com/janbar/noson-app.git#tag=3.10.0")
+source=("git+git://github.com/janbar/noson-app.git#tag=3.10.2")
 sha1sums=('SKIP')
 
 pkgver() {
