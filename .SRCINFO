@@ -1,13 +1,17 @@
 pkgbase = wispr
 	pkgdesc = Simple command-line tool to authenticate against a WISPr server
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wichert/wispr
 	arch = any
 	license = custom
 	depends = python
 	source = https://github.com/wichert/wispr/archive/release/1.0.tar.gz
+	source = python3.patch
+	source = timeout.patch
 	sha256sums = ba9994abee90d51c9d65fbb61241694a610a0198c5c4a833f8d7bf9c346ebd41
+	sha256sums = 7f14a07b35f7625b90163352ef943d225ef4ba01a5aa172e67174157e1b4b2cf
+	sha256sums = 0cc5f11d022ff3c560f71ce7c7269dd55a50a31ba1ee9c230e0405801b777eb5
 
 pkgname = wispr
 

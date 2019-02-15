@@ -1,0 +1,93 @@
+diff -Naur wispr-release-1.0/changes.rst wisprpy3/changes.rst
+--- wispr-release-1.0/changes.rst	1970-01-01 01:00:00.000000000 +0100
++++ wisprpy3/changes.rst	2019-02-15 06:22:13.418704328 +0100
+@@ -0,0 +1,13 @@
++Changelog
++=========
++
++1.1 - Unreleased
++--------------------
++
++- Support Python 3 as well.
++
++
++1.0 - 28 August 2015
++--------------------
++
++- First release.
+diff -Naur wispr-release-1.0/setup.py wisprpy3/setup.py
+--- wispr-release-1.0/setup.py	2015-08-28 18:53:47.000000000 +0200
++++ wisprpy3/setup.py	2019-02-15 06:21:10.990237827 +0100
+@@ -1,7 +1,7 @@
+ from setuptools import find_packages
+ from setuptools import setup
+ 
+-version = '1.0'
++version = '1.1'
+ 
+ setup(
+         version=version,
+@@ -15,6 +15,11 @@
+             'License :: OSI Approved :: BSD License',
+             'Operating System :: OS Independent',
+             'Intended Audience :: End Users/Desktop',
++          'Programming Language :: Python :: 2',
++          'Programming Language :: Python :: 2.7',
++          'Programming Language :: Python :: 3',
++          'Programming Language :: Python :: 3.4',
++          'Programming Language :: Python :: 3.5',
+         ],
+         author='Wichert Akkerman',
+         author_email='wichert@wiggy.net',
+diff -Naur wispr-release-1.0/src/wispr/__init__.py wisprpy3/src/wispr/__init__.py
+--- wispr-release-1.0/src/wispr/__init__.py	2015-08-28 18:53:47.000000000 +0200
++++ wisprpy3/src/wispr/__init__.py	2019-02-15 06:22:13.418704328 +0100
+@@ -6,7 +6,10 @@
+ import sys
+ import time
+ import xml.sax.saxutils
+-import urlparse
++try:
++    import urlparse
++except ImportError:
++    import urllib.parse as urlparse
+ import requests
+ 
+ 
+@@ -32,7 +35,7 @@
+ def parse_wispr(r):
+     m = re.search(
+             r'<WISPAccessGatewayParam.*?>\s*<(.*?)>(.*)</\1>\s*</WISPAccessGatewayParam>',
+-            r.content, re.I|re.S)
++            r.text, re.I|re.S)
+     data = {}
+     if m is None:
+         return data
+@@ -122,11 +125,11 @@
+ def detect():
+     r = requests.get('http://www.google.com', allow_redirects=False, verify=False)
+     while r.status_code in [302, 304]:
+-        if 'WISPAccessGatewayParam' in r.content:
++        if 'WISPAccessGatewayParam' in r.text:
+             break
+         else:
+             r = requests.get(r.headers['Location'], allow_redirects=False, verify=False)
+-    if 'WISPAccessGatewayParam' not in r.content:
++    if 'WISPAccessGatewayParam' not in r.text:
+         if 'google' in urlparse.urlparse(r.url).hostname:
+             print('Already online, no WISPr detection possible')
+         else:
+@@ -145,11 +148,11 @@
+ def wispr_login(username, password):
+     r = requests.get('http://www.google.com', allow_redirects=False, verify=False)
+     while r.status_code in [302, 304]:
+-        if 'WISPAccessGatewayParam' in r.content:
++        if 'WISPAccessGatewayParam' in r.text:
+             break
+         else:
+             r = requests.get(r.headers['Location'], allow_redirects=False, verify=False)
+-    if 'WISPAccessGatewayParam' in r.content:
++    if 'WISPAccessGatewayParam' in r.text:
+         return do_wispr_login(r, username, password)
+     host = urlparse.urlparse(r.url).hostname
+     if 'google' in host:

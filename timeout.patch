@@ -1,0 +1,72 @@
+diff -Naur wisprpep8/changes.rst wisprtimeout/changes.rst
+--- wisprpep8/changes.rst	2019-02-15 06:27:03.836857275 +0100
++++ wisprtimeout/changes.rst	2019-02-15 06:25:46.474801521 +0100
+@@ -6,6 +6,8 @@
+ 
+ - Support Python 3 as well.
+ 
++- Set a timeout during initial requests.
++
+ 
+ 1.0 - 28 August 2015
+ --------------------
+diff -Naur wisprpep8/src/wispr/__init__.py wisprtimeout/src/wispr/__init__.py
+--- wisprpep8/src/wispr/__init__.py	2019-02-15 06:27:03.836857275 +0100
++++ wisprtimeout/src/wispr/__init__.py	2019-02-15 06:25:46.474801521 +0100
+@@ -12,6 +12,7 @@
+     import urllib.parse as urlparse
+ import requests
+ 
++TIMEOUT = 5
+ 
+ MSG_REDIRECT = '100'
+ MSG_PROXY = '110'
+@@ -123,12 +124,17 @@
+ 
+ 
+ def detect():
+-    r = requests.get('http://www.google.com', allow_redirects=False, verify=False)
++    try:
++        r = requests.get('http://www.google.com', allow_redirects=False, verify=False, timeout=TIMEOUT)
++    except requests.exceptions.ConnectionError as e:
++        print('Error testing for network. Perhaps you are not connected to a network?',
++                file=sys.stderr)
++        return False
+     while r.status_code in [302, 304]:
+         if 'WISPAccessGatewayParam' in r.text:
+             break
+         else:
+-            r = requests.get(r.headers['Location'], allow_redirects=False, verify=False)
++            r = requests.get(r.headers['Location'], allow_redirects=False, verify=False, timeout=TIMEOUT)
+     if 'WISPAccessGatewayParam' not in r.text:
+         if 'google' in urlparse.urlparse(r.url).hostname:
+             print('Already online, no WISPr detection possible')
+@@ -146,12 +152,17 @@
+ 
+ 
+ def wispr_login(username, password):
+-    r = requests.get('http://www.google.com', allow_redirects=False, verify=False)
++    try:
++        r = requests.get('http://www.google.com', allow_redirects=False, verify=False, timeout=TIMEOUT)
++    except requests.exceptions.ConnectionError as e:
++        print('Error testing for network. Perhaps you are not connected to a network?',
++                file=sys.stderr)
++        return False
+     while r.status_code in [302, 304]:
+         if 'WISPAccessGatewayParam' in r.text:
+             break
+         else:
+-            r = requests.get(r.headers['Location'], allow_redirects=False, verify=False)
++            r = requests.get(r.headers['Location'], allow_redirects=False, verify=False, timeout=TIMEOUT)
+     if 'WISPAccessGatewayParam' in r.text:
+         return do_wispr_login(r, username, password)
+     host = urlparse.urlparse(r.url).hostname
+@@ -212,7 +223,7 @@
+         else:
+             return wispr_login(options.username, options.password)
+     except requests.exceptions.ConnectionError as e:
+-        print('Error connecting to server: %s' % e)
++        print('Error connecting to server: %s' % e, file=sys.stderr)
+     except KeyboardInterrupt:
+         print('Aborting')
+         return False
