@@ -4,7 +4,7 @@
 _pkgbasename=sdl_image
 pkgname=lib32-$_pkgbasename
 pkgver=1.2.12
-pkgrel=5
+pkgrel=6
 pkgdesc="A simple library to load images of various formats as SDL surfaces (32-bit)"
 url="https://www.libsdl.org/projects/SDL_image/"
 arch=(x86_64)
@@ -25,7 +25,8 @@ build() {
 package() {
   cd SDL_image-$pkgver
   make DESTDIR="$pkgdir" install
-  rm -rf $pkgdir/usr/include
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 COPYING
+  rm -rf "$pkgdir/usr/include"
 }
 
-# vim:set sw=2 et:
+# vim: sw=2:ts=2 et:
