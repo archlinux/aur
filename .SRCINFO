@@ -1,0 +1,14 @@
+pkgbase = pack-cli
+	pkgdesc = CLI for building apps using Cloud Native Buildpacks
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://buildpacks.io/
+	arch = x86_64
+	license = Apache
+	makedepends = go-pie
+	depends = docker
+	source = pack-0.0.9::https://github.com/buildpack/pack/archive/v0.0.9.tar.gz
+	sha256sums = b25028e738ef14cb1df108b8cf12a2302a4a2ec9d88c03c3ccf0638a8fef1994
+
+pkgname = pack-cli
+
