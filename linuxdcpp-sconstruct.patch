@@ -1,0 +1,23 @@
+diff -ura --color linuxdcpp-1.1.0/SConstruct linuxdcpp-1.1.0-patched/SConstruct
+--- linuxdcpp-1.1.0/SConstruct	2011-04-17 14:57:09.000000000 -0300
++++ linuxdcpp-1.1.0-patched/SConstruct	2019-02-14 11:02:27.916181107 -0200
+@@ -18,8 +18,8 @@
+ BUILD_LOCALE_PATH = BUILD_PATH + 'locale/'
+ 
+ BUILD_FLAGS = {
+-	'common'  : ['-I#', '-D_GNU_SOURCE', '-D_LARGEFILE_SOURCE', '-D_FILE_OFFSET_BITS=64', '-D_REENTRANT'],
+-	'debug'   : ['-g', '-ggdb', '-Wall', '-D_DEBUG'], 
++	'common'  : ['-I#', '-D_GNU_SOURCE', '-D_LARGEFILE_SOURCE', '-D_FILE_OFFSET_BITS=64', '-D_REENTRANT', '-std=gnu++98', '-L/usr/lib/openssl-1.0', '-I/usr/include/openssl-1.0'],
++	'debug'   : ['-g', '-ggdb', '-Wall', '-D_DEBUG'],
+ 	'release' : ['-O3', '-fomit-frame-pointer', '-DNDEBUG']
+ }
+ 
+@@ -208,7 +208,7 @@
+ 		print '\tNote: You might have the lib but not the headers'
+ 		Exit(1)
+ 
+-	
++
+ 	if not conf.CheckCXXHeader('boost/version.hpp', '<>'):
+ 		print '\tboost not found.'
+ 		print '\tNote: You might have the lib but not the headers'
