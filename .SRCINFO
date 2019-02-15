@@ -1,6 +1,6 @@
 pkgbase = vivado-library-git
 	pkgdesc = free-to-use IP cores and interface definitions compatible with Xilinx Vivado IP Catalog
-	pkgver = v2018.2.1.r4.7ec155b
+	pkgver = v2018.2.1.r6.fd36d3e
 	pkgrel = 1
 	url = https://reference.digilentinc.com/vivado:library
 	arch = any
