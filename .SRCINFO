@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-plasma-pstate
 	pkgdesc = Intel P-state and CPUFreq Manager Widget
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/jsalatas/plasma-pstate
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = plasma5-applets-plasma-pstate
 	depends = plasma-workspace
 	optdepends = libsmbios: Dell's Thermal Management Feature
 	optdepends = x86_energy_perf_policy: If your processor doesn't support EPP (ie older generations without HWP)
-	source = https://github.com/jsalatas/plasma-pstate/archive/1.0.3.tar.gz
-	sha256sums = f73feea9b35c20a25f581d6fab9647fab26937f3a9fd43457406ec1660bd7b9f
+	source = https://github.com/jsalatas/plasma-pstate/archive/1.0.4.tar.gz
+	sha256sums = e7b3a14fb89e4122241a381b59c8da23433050371040ce9218fcda6aa5b1a4f2
 
 pkgname = plasma5-applets-plasma-pstate
 
