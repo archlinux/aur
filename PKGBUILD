@@ -1,6 +1,6 @@
 # Maintainer: Bogdan Sinitsyn <bogdan.sinitsyn@gmail.com>
 pkgname=simple-viewer-gl-git
-pkgver=v2.92.r40.g58d2a35
+pkgver=v3.05.r3.g4bab22c
 pkgrel=1
 pkgdesc='Simple and tiny image viewer based on OpenGL'
 arch=('i686' 'x86_64')
@@ -58,7 +58,7 @@ package() {
   install -m 755 -d "$pkgdir/usr/share/applications/"
   install -m 644 sviewgl.desktop "$pkgdir/usr/share/applications/"
   install -m 755 -d "$pkgdir/usr/share/icons/"
-  install -m 644 src/Icon-1024.png "$pkgdir/usr/share/icons/sviewgl.png"
+  install -m 644 res/Icon-1024.png "$pkgdir/usr/share/icons/sviewgl.png"
 }
 
 # vim:set ts=2 sw=2 et:
