@@ -1,0 +1,16 @@
+pkgbase = vpr
+	pkgdesc = Packing, Placement, Routing & Timing Analysis
+	pkgver = 7.0
+	pkgrel = 1
+	url = https://verilogtorouting.org
+	arch = x86_64
+	license = MIT
+	makedepends = sed
+	depends = ctags
+	provides = vtr
+	conflicts = vtr
+	source = http://www.eecg.utoronto.ca/vtr/vtr_release_7.0_full.tar.gz
+	md5sums = SKIP
+
+pkgname = vpr
+
