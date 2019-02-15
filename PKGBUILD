@@ -1,10 +1,11 @@
-# Maintainer: sballert <sballert@posteo.de>
+# Contributor: sballert <sballert@posteo.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 _gituser="rejeep"
 _gitrepo="f.el"
 
 pkgname=emacs-f-git
-pkgver=r342.de6d4d4
+pkgver=0.20.0.2.g8191672
 pkgrel=1
 pkgdesc="Modern API for working with files and directories in Emacs"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -19,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  git describe --tags|tr - .|cut -c2-
 }
 
 build() {
@@ -29,6 +30,6 @@ build() {
 
 package() {
   cd "$_gitrepo"
-  install -d  "$pkgdir"/usr/share/emacs/site-lisp/f/
-  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/f/
+  install -d  "$pkgdir"/usr/share/emacs/site-lisp
+  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp
 }
