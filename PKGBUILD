@@ -1,7 +1,7 @@
 # Maintainer: Miroslav Koškár <http://mkoskar.com/>
 
 pkgname='spring-boot-cli'
-pkgver=2.1.1
+pkgver=2.1.2
 _pkgver="$pkgver.RELEASE"
 pkgrel=1
 pkgdesc='Spring Boot CLI'
@@ -11,7 +11,7 @@ arch=(any)
 depends=(bash 'java-environment>=8')
 
 source=("https://repo.spring.io/release/org/springframework/boot/spring-boot-cli/$_pkgver/spring-boot-cli-$_pkgver-bin.tar.gz")
-sha256sums=(03f43eaa6914a727b9cac9509190ba19f6aade7191321233f34ea219b9a25944)
+sha256sums=(ef5b91f24dc8aadab1dc1d764ddf7c845596bc9a117af73b559090d6b7bc061a)
 
 package() {
     cd "spring-$_pkgver"
