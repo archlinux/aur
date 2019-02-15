@@ -8,7 +8,7 @@
 _pkgname=go-filecoin
 pkgname=$_pkgname-git
 pkgver=0.0.1.r23.g271a6812
-pkgrel=2
+pkgrel=3
 pkgdesc='A decentralized storage network, full node implementation in Go'
 _organization='filecoin-project'
 url="https://github.com/$_organization/$_pkgname"
@@ -32,7 +32,6 @@ pkgver() {
 prepare() {
   # Get all the submodules as well
   cd "${srcdir}/${_pkgname}"
-  git submodule update --init --recursive
 
   # Set up go build environment
   local targetorg="${srcdir}/src/github.com/${_organization}"
