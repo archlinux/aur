@@ -3,7 +3,7 @@
 
 pkgname=breezemite-yakuake-git
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Yakuake recompiled with Brezemite themes"
 arch=('x86_64')
 url="https://github.com/matijaskala/breezemite-yakuake"
