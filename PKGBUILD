@@ -1,8 +1,8 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=opencorsairlink-testing
-pkgver=0+183+eb3b373
-_commit=eb3b3738eed86a9934d6687af00838cb269bd93e
+pkgver=0+187+3c0374c
+_commit=3c0374c25676210bc5cfb9f53a600d721a8824b3
 pkgrel=1
 pkgdesc="Utility for controlling the Corsair H100i and variants (testing branch)"
 arch=(i686 x86_64)
