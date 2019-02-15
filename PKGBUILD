@@ -7,7 +7,7 @@ pkgname='ros-melodic-cv-bridge'
 pkgver='1.13.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=0
 license=('BSD')
 
 ros_makedepends=(
