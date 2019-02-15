@@ -1,14 +1,15 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=monitor
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
-pkgdesc='Utilities for handling monitors, resolutions, wallpapers and timed wallpapers'
+pkgdesc='Tools for handling resolutions, wallpapers and timed wallpapers'
 arch=(x86_64)
 url='https://github.com/xyproto/monitor'
 license=(MIT)
 depends=(wayland libx11)
 makedepends=(git go libxcursor libxmu xbitmaps xorgproto)
+optdepends=('feh: for setting the wallpaper for some window managers for X')
 source=("git+$url#tag=$pkgver")
 sha256sums=('SKIP')
 
