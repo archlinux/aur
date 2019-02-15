@@ -7,7 +7,9 @@ arch=('x86_64')
 url="https://github.com/ammen99/wayfire"
 license=('MIT')
 depends=('wlroots-git' 'cairo' 'glm' 'libjpeg' 'gtk3' 'wf-config-git')
-makedepends=('git' 'meson' 'ninja' 'wayland-protocols' )
+makedepends=('git' 'meson' 'ninja' 'wayland-protocols')
+optdepends=('wf-shell-git: GTK3-based panel for the Wayfire compositor'
+            'wf-sound-control-git: Small utility for the Wayfire compositor to control sound volume')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
