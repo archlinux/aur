@@ -1,4 +1,18 @@
 
+uuu_1.2.68 / 2019-01-31
+=======================
+
+  * Fixed random stop at linux environment
+
+uuu_1.2.66 / 2019-01-25
+=======================
+
+  * fixed crash when DONE cmd is not last one
+  * fixed #79 all data is zero when file transfer from target to windows PC
+  * fix -b qspi failure
+  * FB added set_active command
+  * Avoid add addition space when convert cmd arg
+
 uuu_1.2.61 / 2019-01-16
 =======================
 
