@@ -1,17 +1,14 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 
 pkgname=python2-requests-git
-pkgver=v2.8.1.59.g40ce366
+pkgver=v2.21.0.16.gc9309e4c
 pkgrel=1
 _libname=${pkgname/python2-/}
 pkgdesc="Python HTTP for Humans."
 url="http://python-requests.org"
 conflicts=('python2-requests')
-makedepends=('git' 'python2-distribute')
-optdepends=('python2-certifi: SSL support'
-            'python2-grequests: asynchronous requests with gevent'
-            'python2-simplejson')
-depends=('python2' 'python2-pyopenssl' 'python2-ndg-httpsclient' 'python2-pyasn1')
+makedepends=('git' 'python2-distribute' 'python2-chardet' 'python2-idna' 'python2-urllib3' 'python2-certifi' 'python2-pyopenssl' 'python2-cryptography')
+depends=('python2' 'python2-chardet' 'python2-idna' 'python2-urllib3' 'python2-certifi' 'python2-pyopenssl' 'python2-cryptography')
 provides=('python2-requests')
 license=('custom: ISC')
 arch=('any')
@@ -20,7 +17,7 @@ source=('requests::git+https://github.com/kennethreitz/requests.git'
          certs.patch
 )
 sha256sums=('SKIP'
-            'db84c6224f77bbf55c49bd69db71a98b3798f1d3275d7079861e1fbade8cc03f')
+            '7e4d8c39b47c338630583d88d9da9c1a91891e6339f61ad5567f3cffe5128d24')
 
 pkgver() {
   cd "$srcdir"/requests

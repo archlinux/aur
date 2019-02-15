@@ -1,19 +1,12 @@
---- requests/certs.py.orig	2015-12-04 16:16:33.773055294 +0100
-+++ requests/certs.py	2015-12-04 16:20:30.106729891 +0100
-@@ -11,7 +11,6 @@
- environment, you can change the definition of where() to return a separately
- packaged CA bundle.
+diff -Naur requests.orig/certs.py requests/certs.py
+--- requests.orig/certs.py	2019-02-15 13:43:26.819151260 +0100
++++ requests/certs.py	2019-02-15 13:45:10.316052919 +0100
+@@ -14,5 +14,8 @@
  """
--import os.path
+ from certifi import where
  
- try:
-     from certifi import where
-@@ -19,7 +18,7 @@
-     def where():
-         """Return the preferred certificate bundle."""
-         # vendored bundle inside Requests
--        return os.path.join(os.path.dirname(__file__), 'cacert.pem')
-+        return "/etc/ssl/certs/ca-certificates.crt"
- 
++def where():
++    return "/etc/ssl/certs/ca-certificates.crt"
++
  if __name__ == '__main__':
      print(where())
