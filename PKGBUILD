@@ -1,11 +1,11 @@
 # Maintainer: Vitrum <wqdxosty1yhj@bk.ru>
 
 pkgname=keyman
-pkgver=11.0.105
+pkgver=11.0.107
 pkgrel=1
 pkgdesc="IBus engine supporting over 1,000 layouts (former KMFL)"
 arch=('i686' 'x86_64')
-url="https://keyman.com/"
+url="https://keyman.com/linux/"
 license=('GPL')
 depends=('ibus')
 makedepends=('meson' 'help2man')
@@ -13,7 +13,7 @@ optdepends=('keyman-onboard: on-screen keyboard')
 replaces=('kmflcomp' 'libkmfl' 'ibus-kmfl')
 conflicts=('kmflcomp' 'libkmfl' 'ibus-kmfl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/keymanapp/keyman/archive/linux-release-beta-$pkgver.tar.gz")
-sha256sums=('f402030686c9d6b124c47637447fd80f54c13f3eee9c34ade754ea675216dd2b')
+sha256sums=('ef62fb309de0840a452dbd7c78764e95d44ac4602acaaaa2d7daf3ce22663d87')
 
 prepare() {
     _basedir="$srcdir/keyman-linux-release-beta-$pkgver/linux"
