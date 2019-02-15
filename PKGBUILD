@@ -15,7 +15,7 @@ pkgver=1.15.0.659
 _pkgsum=9311f93fd
 pkgrel=1
 pkgdesc='Plex Media Server (PlexPass version)'
-arch=('x86_64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url='https://plex.tv/'
 license=('custom')
 options=('!emptydirs')
@@ -30,7 +30,8 @@ source=('plexmediaserver.conf.d'
         'plex.tmpfiles'
         'terms.txt')
 
-#source_armv7h=("https://downloads.plex.tv/plex-media-server-new/${pkgver}-${_pkgsum}/PlexMediaServer-${pkgver}-${_pkgsum}-arm7.spk")
+source_aarch64=("https://downloads.plex.tv/plex-media-server-new/${pkgver}-${_pkgsum}/debian/plexmediaserver_${pkgver}-${_pkgsum}_arm64.deb")
+source_armv7h=("https://downloads.plex.tv/plex-media-server-new/${pkgver}-${_pkgsum}/debian/plexmediaserver_${pkgver}-${_pkgsum}_armhf.deb")
 source_x86_64=("https://downloads.plex.tv/plex-media-server-new/${pkgver}-${_pkgsum}/redhat/plexmediaserver-${pkgver}-${_pkgsum}.x86_64.rpm")
 
 sha256sums=('398ba7958598609453f5289b3d5f2389d2756158b340cf28e83c39d9ed60280b'
@@ -39,12 +40,12 @@ sha256sums=('398ba7958598609453f5289b3d5f2389d2756158b340cf28e83c39d9ed60280b'
             'e3c278315bf325d9bddbedbbdb5680791acdc72ce3d4972935ef27b491518ce5'
             '7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a')
 sha256sums_x86_64=('995b87fc2e4ff3bc3e17602cf52da321534a054431d3671b59f11f6e3ad12456')
-#sha256sums_armv7h=('8855d535384327111d4d5f4d14a85324e5ff17e7d5b31e0008b846e3f1567aa5')
+sha256sums_armv7h=('af3c2ecd5bda34340f16447b61b9056512f5c5b7f6de39d6ffdfb80bc441744f')
+sha256sums_aarch64=('2f1f4d55c7b9e9dcfed8afc4a386e12f2dda957ef72d286dee8bc4f8dea9f955')
 
 prepare() {
-  if [[ $CARCH = arm* ]]; then
-    mkdir -p usr/lib/plexmediaserver
-    bsdtar -xf package.tgz -C usr/lib/plexmediaserver/
+  if [[ $CARCH = armv7h ]] || [[ $CARCH = aarch64 ]]; then
+    bsdtar -xf data.tar.xz
   fi
 }
 
