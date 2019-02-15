@@ -1,31 +1,27 @@
-# Maintainer: American_Jesus <american.jesus.pt AT gmail DOT com>
+# Based on the files created for Arch Linux by:
+# American_Jesus <american.jesus.pt AT gmail DOT com>
+# Gregory Petrosyan <gregory.mkv at gmail.com>
+
 pkgname=connman-gtk
-pkgver=1.1.1
-pkgrel=1
-pkgdesc="GTK GUI for ConnMan"
-arch=('i686' 'x86_64')
+pkgver=v1.1.1
+pkgrel=2
+pkgdesc="Tray menu and GUI for ConnMan"
+arch=('x86_64')
 url="https://github.com/jgke/connman-gtk"
-license=('GPL')
+license=('GPL2')
 depends=('glib2' 'gtk3')
-makedepends=('intltool' 'git' 'openconnect')
-optdepends=('openconnect: for AnyConnect VPNs')
-install=$pkgname.install
-source=("git+https://github.com/jgke/connman-gtk.git#tag=v${pkgver}")
+makedepends=('intltool' 'git' 'meson' 'openconnect')
+optdepends=('openconnect: Easier authentication to AnyConnect VPNs')
+_commit=b72c6ab3bb19c07325c8e659902b046daa23c506
+source=("git+https://github.com/jgke/connman-gtk.git#commit=$_commit")
 sha256sums=('SKIP')
 
 build() {
-  cd "${srcdir}/$pkgname"
-  ./autogen.sh
-  ./configure \
-    --bindir=/usr/bin \
-    --datarootdir=/usr/share \
-    --mandir=/usr/share/man \
-    --with-openconnect=dynamic
-  make
+  mkdir build
+  meson --prefix /usr --buildtype=plain -Duse_openconnect=dynamic "${srcdir}/${pkgname}" build
+  ninja -C build
 }
 
 package() {
-  cd "${srcdir}/$pkgname"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
-
