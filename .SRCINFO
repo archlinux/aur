@@ -1,0 +1,14 @@
+pkgbase = firefox-extension-video-download-helper-companion-app-bin
+	pkgdesc = Companion app for Video DownloadHelper.
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://www.downloadhelper.net/install-coapp
+	arch = x86_64
+	license = GPL2
+	depends = sdl2
+	provides = firefox-extension-video-download-helper-companion-app
+	source = https://github.com/mi-g/vdhcoapp/releases/download/v1.2.4/net.downloadhelper.coapp-1.2.4-1_amd64.deb
+	sha256sums = 36306d53b5258cb1a588ddec73851208398c8d3f5d8c6389d45a9cbb0493e383
+
+pkgname = firefox-extension-video-download-helper-companion-app-bin
+

@@ -1,0 +1,7 @@
+/pkg/
+/src/
+/*.tar.gz
+/*.xz
+/*.zst
+/*.swp
+/*.deb
