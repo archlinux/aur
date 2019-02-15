@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=sonic-pi
 pkgver=3.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="The Live Coding Music Synth for Everyone"
 arch=('x86_64')
 url="https://sonic-pi.net/"
