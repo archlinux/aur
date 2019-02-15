@@ -1,56 +1,36 @@
-# Maintainer: Jack Allnutt <jack@allnutt.eu>
+# Maintainer: Jingbei Li <i@jingbei.li>
+# Contributor: Jack Allnutt <jack@allnutt.eu>
 pkgname=kiwiirc
-pkgver=0.9.4
+pkgver=1.1.0.r2044.g4c979963
 pkgrel=1
 pkgdesc="A hand-crafted web-based IRC client that you can enjoy"
 arch=('any')
 url="https://kiwiirc.com/"
-license=('AGPL3')
-depends=('nodejs>=4.0.0', 'npm')
-makedepends=('git')
-options=('emptydirs' '!strip')
+license=('APACHE')
+makedepends=('git' 'yarn')
 install='kiwiirc.install'
-backup=('etc/kiwiirc/config.js')
-source=(https://github.com/prawnsalad/KiwiIRC/archive/v$pkgver.tar.gz
-    'kiwi.patch'
-    'kiwiirc.service'
-    'kiwiirc.conf.sysusers'
-    'kiwiirc.conf.tmpfiles')
-md5sums=('1a06e33088ca6ed89f857f7687470761'
-         '14a75cab7c10f2dd17856ab5a99d3bfc'
-         'bcb28ddb7f0bcc3be830b8045969eb2c'
-         '593da856bcf9036bc51380b74d9df394'
-         '803080337de27be8921edd76f15c763c')
+source=(git+https://github.com/kiwiirc/kiwiirc)
+md5sums=('SKIP')
+
+pkgver () {
+    cd "${pkgname}"
+    (
+        set -o pipefail
+        git describe --long 2>/dev/null | sed -e 's/\([^-]*-g\)/r\1/;s/-/./g' -e 's/^v//'||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
+}
 
 build() {
-    cp kiwiirc.service "$srcdir/KiwiIRC-$pkgver/"
-    cp kiwiirc.conf.sysusers "$srcdir/KiwiIRC-$pkgver/"
-    cp kiwiirc.conf.tmpfiles "$srcdir/KiwiIRC-$pkgver/"
-    cd "$srcdir/KiwiIRC-$pkgver"
-    git apply --whitespace=fix ../kiwi.patch
-    npm -q install
-    npm -q dedupe
+    cd "$srcdir/$pkgname"
+    yarn install
+    yarn run build
 }
 
 package() {
-    cd "$srcdir"
-    install -D -m644 KiwiIRC-$pkgver/config.example.js $pkgdir/etc/kiwiirc/config.js
-    install -D -m755 KiwiIRC-$pkgver/kiwi $pkgdir/usr/bin/kiwi
-    install -D -m644 KiwiIRC-$pkgver/kiwiirc.service $pkgdir/usr/lib/systemd/system/kiwiirc.service
-    install -D -m644 KiwiIRC-$pkgver/man/kiwiirc.1 $pkgdir/usr/share/man/man1/kiwi.1
-    install -D -m644 KiwiIRC-$pkgver/package.json $pkgdir/usr/share/kiwiirc/package.json
-    install -D -m644 KiwiIRC-$pkgver/README.md $pkgdir/usr/share/kiwiirc/README.md
-    install -D -m644 KiwiIRC-$pkgver/kiwiirc.conf.sysusers $pkgdir/usr/lib/sysusers.d/kiwiirc.conf
-    install -D -m644 KiwiIRC-$pkgver/kiwiirc.conf.tmpfiles $pkgdir/usr/lib/tmpfiles.d/kiwiirc.conf
+    cd "$srcdir/$pkgname"
 
-    install -d -m755 $pkgdir/usr/lib/kiwiirc/server_modules
-    install -d -m755 $pkgdir/var/lib/kiwiirc
-    install -d -m644 $pkgdir/var/log/kiwiirc
-    install -d -m755 $pkgdir/usr/share/kiwiirc/server
-    install -d -m755 $pkgdir/usr/share/kiwiirc/node_modules
-
-    cp -dr --preserve=mode KiwiIRC-$pkgver/client/* $pkgdir/var/lib/kiwiirc
-    cp -dr --preserve=mode KiwiIRC-$pkgver/node_modules $pkgdir/usr/share/kiwiirc/
-    cp -dr --preserve=mode KiwiIRC-$pkgver/server $pkgdir/usr/share/kiwiirc
-    cp -dr --preserve=mode KiwiIRC-$pkgver/server_modules $pkgdir/usr/lib/kiwiirc
+    mkdir -p $pkgdir/usr/share/webapps/
+    cp -r dist $pkgdir/usr/share/webapps/kiwiirc
+    sed 's/welcome/personal/' -i $pkgdir/usr/share/webapps/kiwiirc/static/config.json
 }
