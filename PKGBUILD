@@ -1,7 +1,7 @@
 # Maintainer: Johannes Loher <johannes dor loher at fg4f dot de>
 
 pkgname='dfix'
-pkgver=0.3.2
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='Tool for automatically upgrading D source code'
 arch=('i686' 'x86_64')
