@@ -3,7 +3,7 @@
 _appname=baton
 pkgname=${_appname}-bin
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI / TUI to remotely manage Spotify playback"
 provides=("${_appname}")
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
   "${pkgname}-${pkgver}::https://github.com/joshuathompson/${_appname}/releases/download/${pkgver}/${_appname}-${pkgver}-linux-amd64"
   "LICENSE::https://raw.githubusercontent.com/joshuathompson/${_appname}/master/LICENSE"
 )
-sha256sums=('5ead3a74b087cdbd3b35d8916c1165fdbce88f7087e455f996732e6fb0bf9156'
+sha256sums=('01578bba3536678c4a08f76dbe5c8f3e92fa8dff4d678f561ec5278ec7915154'
             'a6106dc2efa5ca23da297495bf6011e32e0015aa240537f487a0b9ddb0b39a93')
 options=(!strip)
 
