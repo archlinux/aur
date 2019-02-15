@@ -3,14 +3,14 @@
 pkgname=389-ds-console
 pkgver=1.2.16
 _majorver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Directory Services componenet of the 389 Directory Server console for install from the Admin Server."
 arch=('any')
 url="http://port389.org"
 license=('GPL')
 depends=('389-admin')
 makedepends=('java-environment')
-source=("http://directory.fedoraproject.org/sources/${pkgname}-${pkgver}.tar.bz2")
+source=("https://fedorapeople.org/groups/389ds/binaries/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('ee7267b1700d0f42a8f71a6f80fb02bd6c7065578201669a3838f21b514b0f7b')
 
 build() {
