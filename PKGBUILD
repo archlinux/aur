@@ -1,7 +1,6 @@
-# Maintainer: Bogdan Sinitsyn <bogdan.sinitsyn@gmail.com>
+# Maintainer: Bogdan Sinitsyn <f1u77y@yandex.ru>
 pkgname=simple-viewer-gl
-pkgver=2.9.2
-_git_tag=v2.92
+pkgver=3.05
 pkgrel=1
 pkgdesc='Simple and tiny image viewer based on OpenGL'
 arch=('i686' 'x86_64')
@@ -26,7 +25,6 @@ depends=(
   openexr
 )
 makedepends=(
-  git
   cmake
 )
 optdepends=(
@@ -36,13 +34,8 @@ optdepends=(
 conflicts=(
   "${pkgname}-git"
 )
-source=("$pkgname::git+https://bitbucket.org/andreyu/simple-viewer-gl.git")
+source=("$pkgname::https://bitbucket.org/andreyu/simple-viewer-gl/get/v$pkgver.tar.gz")
 md5sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/$pkgname"
-  git checkout $_git_tag
-}
 
 build() {
   cd "$srcdir/$pkgname"
@@ -57,7 +50,7 @@ package() {
   install -m 755 -d "$pkgdir/usr/share/applications/"
   install -m 644 sviewgl.desktop "$pkgdir/usr/share/applications/"
   install -m 755 -d "$pkgdir/usr/share/icons/"
-  install -m 644 sviewgl.png "$pkgdir/usr/share/icons/"
+  install -m 644 res/Icon-1024.png "$pkgdir/usr/share/icons/"
 }
 
 # vim:set ts=2 sw=2 et:
