@@ -5,7 +5,7 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.21.99.60512.g8fa3f39e31
+pkgver=1.21.99.61045.g0bf8b1ab1a
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -73,10 +73,9 @@ build() {
     -Dwl=true \
     -Dnetwork-backend=connman \
     -Devas-loaders-disabler= \
-    -Dmono=false \
+    -Dbindings= \
     -Dbuild-examples=false \
     -Dbuild-tests=false \
-    -Dcxx=false \
     -Decore-imf-loaders-disabler= \
     . build
 
