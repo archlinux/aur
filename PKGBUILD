@@ -2,7 +2,7 @@
 
 pkgname=mspgcc-ti
 pkgver=6.1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU toolchain (as, gcc, g++, ld, gdb) for the TI MSP430 processor"
 arch=('i686' 'x86_64')
 url="http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/latest/index_FDS.html"
@@ -36,6 +36,8 @@ package() {
   else
     ${srcdir}/$_installer --mode unattended --prefix $pkgdir$_install_dir
   fi
+  msg "Fixing directory permissions..."
+  find $pkgdir$_install_dir -type d -exec chmod a+x {} \;
   mkdir -p $pkgdir$_install_dir/msp430-elf/lib
   msg "Moving linker scripts to their place..."
   mv $pkgdir$_install_dir/include/*.ld $pkgdir$_install_dir/msp430-elf/lib
