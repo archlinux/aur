@@ -1,4 +1,5 @@
 *.tar.*
 datamaps-*
+parse-gpx
 pkg
 src
