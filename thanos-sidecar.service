@@ -4,8 +4,8 @@ Requires=network-online.target
 After=network-online.target
 
 [Service]
-User=thanos
-Group=thanos
+User=prometheus
+Group=prometheus
 Restart=on-failure
 EnvironmentFile=-/etc/thanos/sidecar.conf
 ExecStart=/usr/bin/thanos sidecar \

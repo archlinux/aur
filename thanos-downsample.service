@@ -1,0 +1,23 @@
+[Unit]
+Description=Thanos Downsample continuously downsamples blocks in an object store bucket.
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=thanos
+Group=thanos
+Restart=on-failure
+EnvironmentFile=-/etc/thanos/downsample.conf
+ExecStart=/usr/bin/thanos downsample \
+                          $LOG_LEVEL \
+                          $LOG_FORMAT \
+                          $GCLOUDTRACE_PROJECT \
+                          $GCLOUDTRACE_SAMPLE \
+                          $DATA_DIR \
+                          $OBJSTORE_CONFIG_FILE \
+                          $OBJSTORE_CONFIG
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+
