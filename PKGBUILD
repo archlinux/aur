@@ -1,10 +1,9 @@
-# $Id$
 # Maintainer of regular package: Antonio Rojas <arojas@archlinux.org>
 # Version with debug build of plasmoidviewer: Martchus <martchus@gmx.net>
 
 pkgname=plasmoidviewer-debug
 _pkgname=plasma-sdk
-pkgver=5.13.2
+pkgver=5.15.0
 pkgrel=1
 pkgdesc='Debug build of plasmoidviewer allowing to debug QML code'
 arch=(x86_64)
@@ -16,7 +15,7 @@ options=(!strip)
 groups=(plasma)
 source=("https://download.kde.org/stable/plasma/$pkgver/${_pkgname}-$pkgver.tar.xz" # {,.sig}
         '0001-Enable-QML-debugging.patch')
-sha256sums=('63c326ef853beec6043bd1e7e02d1588dc081bb7450489db7c37ec23864537fc'
+sha256sums=('a8a514775ded362b4b15190eb451bc0ef7b2564630f6937daf871a92311eb812'
             '1c612d2cb08e9435e265120a2f94b13a62833344abea7eb2dd7c03a93ba6ed56')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
