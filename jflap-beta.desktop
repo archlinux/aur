@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=JFLAP
+Name=JFLAP Beta
 Comment=JFLAP is software for experimenting with formal languages topics including nondeterministic finite automata, nondeterministic pushdown automata, multi-tape Turing machines, several types of grammars, parsing, and L-systems.
-Exec=jflap
+Exec=jflap-beta
 Icon=swyter-jflap-icon
 Terminal=false
 Categories=Education;Science;ComputerScience
