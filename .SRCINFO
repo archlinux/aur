@@ -1,6 +1,6 @@
 pkgbase = ffaudioconverter
 	pkgdesc = Graphical audio converter
-	pkgver = 0.22
+	pkgver = 0.23
 	pkgrel = 1
 	url = https://github.com/Bleuzen/FFaudioConverter/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = ffaudioconverter
 	depends = qt5-base
 	depends = qt5-tools
 	depends = ffmpeg
-	source = https://github.com/Bleuzen/FFaudioConverter/releases/download/v0.22/FFaudioConverter-0.22-src.tar.xz
-	sha256sums = c23581eea156ad04c3960f110c2b8952d1898f9e5f0fcc3be71d097d7d3d3ba2
+	source = https://github.com/Bleuzen/FFaudioConverter/releases/download/v0.23/FFaudioConverter-0.23-src.tar.xz
+	sha256sums = 2824c13136b9a178b6e5552607cae528b4e223bf0ac7ebc3462f06dc87ef0606
 
 pkgname = ffaudioconverter
 
