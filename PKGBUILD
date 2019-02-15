@@ -1,4 +1,5 @@
 # Maintainer: Timur Sattarov <tim.helloworld@gmail.com>
+# Contributor: Benjamin Robin <dev@benjarobin.fr>
 # Contributor: Taylor Hedberg <t@tmh.cc>
 # Contributor: Pablo Lluch <pablo.lluch@gmail.com>
 
