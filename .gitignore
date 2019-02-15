@@ -1,0 +1,6 @@
+/pkg/
+/src/
+/*.xz
+/*.xz.sig
+/*.pkg.*
+/youtube-dl.patch
