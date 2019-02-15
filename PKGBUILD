@@ -91,4 +91,7 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
   install -Dm644 LICENSE-Community.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-Community.txt"
+
+  # This script won't run on Arch. If needed, see AUR package mongodb-compass.
+  rm "${pkgdir}/usr/bin/install_compass"
 }
