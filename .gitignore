@@ -1,0 +1,6 @@
+/*.log
+/*.tar
+/*.tar.*
+/pkg/
+/src/
+/wf-sound-control-git/

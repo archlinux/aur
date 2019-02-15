@@ -1,0 +1,19 @@
+pkgbase = wf-sound-control-git
+	pkgdesc = Small utility for the Wayfire compositor to control sound volume
+	pkgver = r8.21fb8fd
+	pkgrel = 1
+	url = https://wayfire.org
+	arch = x86_64
+	license = custom:MIT
+	makedepends = wayland-protocols
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	depends = gtkmm3
+	provides = wf-sound-control-git
+	conflicts = wf-sound-control
+	source = wf-sound-control-git::git+https://github.com/WayfireWM/wf-sound-control
+	sha512sums = SKIP
+
+pkgname = wf-sound-control-git
+
