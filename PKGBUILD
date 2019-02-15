@@ -2,7 +2,7 @@
 # Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 pkgname="digilent-vivado-scripts-git"
 pkgver=r58.fd7ce6b
-pkgrel=1
+pkgrel=2
 pkgdesc="Tcl/python3 scripts to convert between git repos and Vivado/Xilinx SDK projects"
 arch=('any')
 url="https://github.com/Digilent/digilent-vivado-scripts"
@@ -25,6 +25,6 @@ fi
 }
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	mkdir -p "$pkgdir/usr/share/Digilent/${pkgname%-git}"
-	cp -r * "$pkgdir/usr/share/Digilent/${pkgname%-git}"
+	mkdir -p "$pkgdir/usr/share/digilent/${pkgname%-git}"
+	cp -r * "$pkgdir/usr/share/digilent/${pkgname%-git}"
 }

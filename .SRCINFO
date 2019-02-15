@@ -1,7 +1,7 @@
 pkgbase = digilent-vivado-scripts-git
 	pkgdesc = Tcl/python3 scripts to convert between git repos and Vivado/Xilinx SDK projects
 	pkgver = r58.fd7ce6b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Digilent/digilent-vivado-scripts
 	arch = any
 	license = unknown
