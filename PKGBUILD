@@ -67,10 +67,10 @@ _rev_override="n"
 _major=4.20
 _minor=10
 _srcname=linux-${_major}
-_clr=${_major}.8-696
+_clr=${_major}.8-697
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -122,11 +122,6 @@ prepare() {
     ### Setting config
         msg2 "Setting config..."
         cp -Tf $srcdir/clearlinux/config ./.config
-
-    ### Bluez package on arch needs this module for bluetooth to work
-        # https://bugs.archlinux.org/task/55880
-        msg2 "Enabling crypto_user module..."
-        sed -i "s|# CONFIG_CRYPTO_USER is not set|CONFIG_CRYPTO_USER=m|g" ./.config
 
     ### Compress modules
         msg2 "Enabling XZ compressed modules..."
