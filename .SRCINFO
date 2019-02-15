@@ -1,25 +1,23 @@
 pkgbase = runelite-launcher
 	pkgdesc = Open source Old School RuneScape client. (Launcher with auto-update)
-	pkgver = 1.6.1
-	pkgrel = 2
-	url = https://runelite.net/
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/runelite/launcher
 	arch = any
 	license = BSD
+	makedepends = maven
+	makedepends = imagemagick
 	depends = java-runtime>=8
 	depends = bash
 	depends = ttf-font
 	optdepends = gvfs: enable links
 	noextract = runelite.jar
-	source = Runelite-1.6.1.jar::https://github.com/runelite/launcher/releases/download/1.6.1/RuneLite.jar
-	source = https://raw.githubusercontent.com/runelite/launcher/1.6.1/LICENSE
+	source = https://github.com/runelite/launcher/archive/1.6.2.tar.gz
 	source = runelite-launcher
 	source = runelite-launcher.desktop
-	source = runelite.png
-	sha512sums = 8e58296f15020a46c21f40220841e92c5945d4a3f46b49c95831446cd82e2cd6671434c553f460ba78e553fa8d2ffca59142d70636d21160b4228fa0a898c0d9
-	sha512sums = abf65fd1cf907dcc0a17c84335a38a8740c5ee992dc1c7fdba7e7755595e3136a87de52758a38d7b9f97ecbe39b778a6878c857406882198c0e1569389613086
+	sha512sums = c5d089b5e2d278c4536b474b47069f6dfc513c2bff12d7c3f6ea27b706902f5a31112e00b1fa36a3bcd43e7d77a867bc3a31f43a4e0490e2ad1a1e105ece19a6
 	sha512sums = c1743cc010e8207ed6c2304e083b700281cffd97a952fcc67c538b2fd99750bba06f2c7776d19f433d26f4ece5ade5dcd4dd3f3d1a53a4ea1edfde3bec6eb4a5
 	sha512sums = db548f7e675a1aabc8a97d40dc3f8f59f14fe55826e80faf95df1c957b6ae0cc40514998141a0e7fb5eb456a53a1fd298ea31cb97b6584487147ada7190668b7
-	sha512sums = fe73d666eec61a8ac0059a56a417d3a22ccdc0d09eb567a613469af513318f4284ee70079a4d18d74cd3423c4d75ce5bb0a3c6df9f9f4532f8d5833ffe4a34ce
 
 pkgname = runelite-launcher
 
