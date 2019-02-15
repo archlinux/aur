@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-wiimote
 	pkgdesc = ROS - The wiimote package allows ROS nodes to communicate with a Nintendo Wiimote and its related peripherals, including the Nunchuk, Motion Plus, and (experimentally) the Classic.
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/wiki/wiimote
 	arch = any
 	license = GPL
@@ -18,7 +18,7 @@ pkgbase = ros-melodic-wiimote
 	makedepends = ros-melodic-sensor-msgs
 	makedepends = ros-melodic-rospy
 	makedepends = cwiid
-	makedepends = python2-numpy
+	makedepends = python-numpy
 	depends = ros-melodic-genmsg
 	depends = ros-melodic-std-msgs
 	depends = ros-melodic-roscpp
@@ -28,7 +28,7 @@ pkgbase = ros-melodic-wiimote
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-rospy
 	depends = cwiid
-	depends = python2-numpy
+	depends = python-numpy
 	source = ros-melodic-wiimote-1.12.0-0.tar.gz::https://github.com/ros-gbp/joystick_drivers-release/archive/release/melodic/wiimote/1.12.0-0.tar.gz
 	sha256sums = 89cc9d0267879d69c478f2d1fafb2462142c7d462c87c9458345b76063654be8
 
