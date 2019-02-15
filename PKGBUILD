@@ -6,7 +6,7 @@
 
 pkgname=brltty-minimal
 pkgver=5.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Braille display driver for Linux/Unix"
 arch=(x86_64)
 url="http://brltty.com"
@@ -37,9 +37,7 @@ build() {
 		--disable-lisp-bindings \
 		--disable-polkit \
 		--disable-standalone-programs \
-		--disable-fm-support \
 		--disable-speech-support \
-		--disable-midi-support \
 		--disable-api
 
 	make
