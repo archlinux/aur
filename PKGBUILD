@@ -2,7 +2,7 @@
 # Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 pkgname="vivado-boards-git"
 pkgver=r117.1066a74
-pkgrel=1
+pkgrel=2
 pkgdesc="Vivado Board Files for Digilent Boards"
 arch=('any')
 url="https://reference.digilentinc.com/reference/software/vivado/board-files"
@@ -25,6 +25,6 @@ fi
 }
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	mkdir -p "$pkgdir/usr/share/Digilent/${pkgname%-git}"
-	cp -r * "$pkgdir/usr/share/Digilent/${pkgname%-git}"
+	mkdir -p "$pkgdir/usr/share/digilent/${pkgname%-git}"
+	cp -r * "$pkgdir/usr/share/digilent/${pkgname%-git}"
 }

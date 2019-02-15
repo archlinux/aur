@@ -1,7 +1,7 @@
 pkgbase = vivado-boards-git
 	pkgdesc = Vivado Board Files for Digilent Boards
 	pkgver = r117.1066a74
-	pkgrel = 1
+	pkgrel = 2
 	url = https://reference.digilentinc.com/reference/software/vivado/board-files
 	arch = any
 	license = unknown
