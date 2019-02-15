@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.25.0
+pkgver=1.25.1
 pkgrel=1
 _cqzchannel=release
 _cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
@@ -18,7 +18,7 @@ makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake
 optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz")
-sha256sums=('bfd19dc7f23603a4e63d33acbfbe8a60fb039325720dcd0a6422ed96fa93fef2')
+sha256sums=('24e72a77bab705cf6b8f16a6ef17c6d229d6cea2c9eac8aef7a7dbae3b450c43')
 options=(!emptydirs !makeflags)
 
 prepare() {
