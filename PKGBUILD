@@ -4,8 +4,8 @@
 
 pkgname=spideroak-one
 _PkgName=SpiderOakONE
-pkgver=7.3.0
-pkgrel=2
+pkgver=7.5.0
+pkgrel=1
 pkgdesc="Secure file backup, sync and sharing client. This provides the client for SpiderOakONE."
 arch=('x86_64')
 url="https://spideroak.com/"
@@ -19,7 +19,7 @@ options=('!strip')
 install=${pkgname}.install
 source=("SpiderOakONE_${pkgver}_${pkgrel}_amd64.deb::https://spideroak.com/release/spideroak/deb_x64"
 	'terms.txt')
-sha256sums=('f857288b34e29ed1c81adc5b1b9ca9cfb97ef4f0bea708f19f891c6e2d91913f'
+sha256sums=('5d526e4c27124a8b37285e7ee7ca4feec61439ffcfe291d9bd14509a0d784ca2'
 	    'ee0d1c8c41e95ba2a11de4fe5cf0d89e2b237afc86dc411f58f3b388db8198e9')
 
 package() {
