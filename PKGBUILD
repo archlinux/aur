@@ -10,7 +10,7 @@ url="http://port389.org"
 license=('GPL')
 depends=('389-console')
 makedepends=('apache-ant')
-source=("http://directory.fedoraproject.org/sources/${pkgname}-${pkgver}.tar.bz2")
+source=("https://fedorapeople.org/groups/389ds/binaries/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('9eea595bc74b0f704a2f9621258c7d96f6850fddf764af7c221f7a65f5335237')
 
 build() {
