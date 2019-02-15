@@ -1,0 +1,16 @@
+pkgbase = php-parallel-git
+	pkgdesc = A succinct parallel concurrency API for PHP7
+	pkgver = r55.a4bf7ab
+	pkgrel = 1
+	url = https://github.com/krakjoe/uopz
+	arch = i686
+	arch = x86_64
+	license = PHP
+	makedepends = git
+	depends = php-zts
+	backup = etc/php/conf.d/parallel.ini
+	source = git://github.com/krakjoe/parallel.git#branch=develop
+	md5sums = SKIP
+
+pkgname = php-parallel-git
+
