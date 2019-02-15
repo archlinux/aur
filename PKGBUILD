@@ -46,7 +46,7 @@ _scons_args=(
   # --use-system-asio     # https://jira.${pkgname}.org/browse/SERVER-21839
   # --use-system-v8       # Doesn't compile
   # --use-system-icu
-  # --use-system-tcmalloc # Disabled as upstream suggests in https://jira.${pkgname}.org/browse/SERVER-17447?focusedCommentId=841890&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-841890
+  --use-system-tcmalloc   # in gperftools
 )
 
 prepare() {
