@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=4.0.0b1.r858.g8a616b1f9
+pkgver=4.0.0b1.r1972.gd579bb5de
 pkgrel=1
 arch=('any')
 url="https://www.spyder-ide.org/"
@@ -38,10 +38,15 @@ build() {
 package_spyder-git() {
   pkgdesc="The Scientific Python Development Environment (Python 2 version)"
   # Note: 'ipython2-notebook' nor 'jupyter'/'jupyter-nbconvert' contain a Python 2 version of Nbconvert
-  # 'icu'
-  depends=('python2-chardet'
+  #'icu'
+  #TODO 'python2-qdarkstyle'
+  depends=('python2-atomicwrites'
+           'python2-chardet'
            'python2-jedi'
+           'python2-keyring'
            'python2-language-server'
+           'python2-paramiko'
+           'python2-pexpect'
            'python2-pickleshare'
            'python2-psutil'
            'python2-pycodestyle'
@@ -82,11 +87,15 @@ package_spyder-git() {
 
 package_spyder3-git() {
   pkgdesc="The Scientific Python Development Environment (Python 3 version)"
-  # 'icu'
+  #'icu'
   depends=('jupyter-nbconvert'
+           'python-atomicwrites'
            'python-chardet'
            'python-jedi'
+           'python-keyring'
            'python-language-server'
+           'python-paramiko'
+           'python-pexpect'
            'python-pickleshare'
            'python-psutil'
            'python-pycodestyle'
@@ -95,6 +104,7 @@ package_spyder3-git() {
            'python-pylint'
            'python-pyqt5'
            'python-pyzmq'
+           'python-qdarkstyle'
            'python-qtawesome'
            'python-qtconsole'
            'python-rope'
