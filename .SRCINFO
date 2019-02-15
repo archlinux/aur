@@ -1,7 +1,7 @@
 pkgbase = quassel-core-lighter-git
 	pkgdesc = Qt-based distributed IRC client (core only) - minimal dependencies
-	pkgver = 0.14.pre.r110.g7c0eb011
-	pkgrel = 2
+	pkgver = 0.14.pre.r130.g01d67be2
+	pkgrel = 1
 	url = https://quassel-irc.org
 	arch = i686
 	arch = x86_64

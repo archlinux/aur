@@ -1,7 +1,7 @@
 # Maintainer: Chris Lane <aur at chrislane dot com>
 pkgname=quassel-core-lighter-git
-pkgver=0.14.pre.r110.g7c0eb011
-pkgrel=2
+pkgver=0.14.pre.r130.g01d67be2
+pkgrel=1
 pkgdesc="Qt-based distributed IRC client (core only) - minimal dependencies"
 url='https://quassel-irc.org'
 license=('GPL')
