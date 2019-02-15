@@ -1,14 +1,14 @@
 # Maintainer: steamport <steamport@protonmail.com>
 pkgname=dockbarx-splice-theme-git
-pkgver=1
-pkgrel=0
+pkgver=r2.2e4ba34
+pkgrel=1
 pkgdesc="The Splice theme for DockbarX, by phenomenos"
 arch=("any")
 url="https://github.com/phenomenos/Splice"
 license=()
 groups=()
-depends=()
-makedepends=('dockbarx')
+depends=('dockbarx')
+makedepends=()
 provides=()
 conflicts=()
 replaces=()
