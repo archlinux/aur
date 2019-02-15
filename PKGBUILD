@@ -33,9 +33,9 @@ pkgdesc='A linux-ck kernel module that enables calls to ACPI methods through /pr
 url='https://github.com/mkottman/acpi_call'
 arch=('x86_64')
 license=('GPL')
-depends=("linux-${pkgname#acpi_call-}>=4.18" "linux-${pkgname#acpi_call-}<4.19")
+depends=("linux-${pkgname#acpi_call-}>=4.18" "linux-${pkgname#acpi_call-}<5.0")
 makedepends=("linux-${pkgname#acpi_call-}-headers>=4.18"
-             "linux-${pkgname#acpi_call-}-headers<4.19")
+             "linux-${pkgname#acpi_call-}-headers<5.0")
 provides=('acpi_call')
 _extramodules=extramodules-${pkgname#acpi_call-}
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mkottman/acpi_call/archive/v${pkgver}.tar.gz")

@@ -6,9 +6,9 @@ pkgbase = acpi_call-ck
 	arch = x86_64
 	license = GPL
 	makedepends = linux-ck-headers>=4.18
-	makedepends = linux-ck-headers<4.19
+	makedepends = linux-ck-headers<5.0
 	depends = linux-ck>=4.18
-	depends = linux-ck<4.19
+	depends = linux-ck<5.0
 	provides = acpi_call
 	source = acpi_call-ck-1.1.0.tar.gz::https://github.com/mkottman/acpi_call/archive/v1.1.0.tar.gz
 	sha256sums = d0d14b42944282724fca76f57d598eed794ef97448f387d1c489d85ad813f2f0
