@@ -1,15 +1,13 @@
 # Maintainer: Spider.007 <aur@spider007.net>
 pkgname=graylog
-replaces=(graylog2-server graylog-web-interface)
-conflicts=(${replaces[*]})
-pkgver=2.5.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Graylog is an open source syslog implementation that stores your logs in ElasticSearch and MongoDB"
 arch=('any')
 url="https://www.graylog.org/"
 license=(GPL)
 depends=('java-runtime-headless=8')
-optdepends=('elasticsearch5' mongodb)
+optdepends=('elasticsearch' mongodb)
 install=graylog.install
 backup=(
 	etc/graylog/server/server.conf
@@ -19,7 +17,7 @@ source=(
 	graylog-tmpfiles.conf
 	graylog.service
 )
-sha256sums=('6bda2ceb39ff06c27c865dfc102125dcf4a7fa7ec796ef8e908de86c8634fad8'
+sha256sums=('33a431f14730713174b30c16f2ca0751a6e65d230fe4e2425d1e77f249118cc9'
             '4d3c0bb83c7a02a5a902670b060d045068f5201728194a4473b2c2ba99bbd43d'
             'f9f3d3bd670d7889eb6053b016d365f37eaa9b736c9076ae101b3efeab7f428f')
 
@@ -29,14 +27,6 @@ package() {
 	install -d var/lib/graylog/spool
 	install -d var/lib/graylog/data/journal
 	chown nobody: -R var/lib/graylog/
-
-	for f in "$srcdir/$pkgname-${pkgver/_/-}"/data/contentpacks/*; do
-		install -Dm 644 $f usr/lib/graylog/data/contentpacks/${f##*/}
-	done
-
-	for f in "$srcdir/$pkgname-${pkgver/_/-}"/plugin/*; do
-		install -Dm 644 $f usr/lib/graylog/plugin/${f##*/}
-	done
 
 	for f in sigar.jar libsigar-{amd64,x86}-linux.so; do
 		install -Dm 644 "$srcdir/$pkgname-${pkgver/_/-}/lib/sigar/$f" usr/lib/graylog/lib/sigar/${f##*/}
