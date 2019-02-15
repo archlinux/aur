@@ -16,7 +16,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=73.0.3683.20
+pkgver=74.0.3702.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -32,7 +32,6 @@ depends=(
 #          're2'    # https://crbug.com/931373.
          'snappy'
          'xdg-utils'
-         'harfbuzz-icu'
 #          'protobuf'
 #          'libevent'
 #          'ffmpeg'
@@ -89,7 +88,6 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'chromium-ffmpeg-clang.patch'
         # Patch from crbug (chromium bugtracker) or Arch chromium package.
         'chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
-        'chromium_use_sqrt.patch.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1458193/revisions/2/patch?download'
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -104,7 +102,6 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             '16741344288d200fadf74546855e00aa204122e744b4811a36155efd5537bd95'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
-            '780d1b22ff2f6a20f3ce5e652a00dbdcc7e4140cf514b0fac10baf4e171ebd64'
             )
 install=chromium-dev.install
 
@@ -181,8 +178,10 @@ _keeplibs=(
            'third_party/crashpad/crashpad/third_party/zlib'
            'third_party/crc32c'
            'third_party/cros_system_api'
+           'third_party/dav1d'
            'third_party/devscripts'
            'third_party/dom_distiller_js'
+           'third_party/emoji-segmenter'
            'third_party/ffmpeg'
            'third_party/fips181'
            'third_party/flatbuffers'
@@ -469,13 +468,10 @@ prepare() {
 
   # Patch from crbug (chromium bugtracker) or Arch chromium package.
 
-  # https://crbug.com/819294
-  base64 -d "${srcdir}/chromium_use_sqrt.patch.base64" | patch -p1 -i -
-
-  # https://crbug.com/skia/6663#c10
+  # https://crbug.com/skia/6663#c10.
   patch -p0 -i "${srcdir}/chromium-skia-harmony.patch"
 
-  # https://crbug.com/473866
+  # https://crbug.com/473866.
   patch -p1 -i "${srcdir}/chromium-widevine-r4.patch"
 
   # Setup nodejs dependency.
