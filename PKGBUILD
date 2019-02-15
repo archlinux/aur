@@ -9,7 +9,7 @@ url='https://github.com/solus-project/brisk-menu'
 license=('GPL2')
 groups=('mate')
 depends=('mate-panel' 'libnotify')
-makedepends=('gnome-common' 'meson')
+makedepends=('gnome-common' 'gettext' 'itstool' 'vala>=0.36' 'meson' 'ninja' )
 source=("https://github.com/solus-project/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.xz")
 md5sums=('7230dba13a9ddb15cc5d6d7e16ac6e16')
 
@@ -32,4 +32,3 @@ package() {
 
 	DESTDIR="${pkgdir}" ninja install
 }
-
