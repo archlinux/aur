@@ -1,15 +1,15 @@
 pkgbase = baton-bin
 	pkgdesc = CLI / TUI to remotely manage Spotify playback
-	pkgver = 0.1.5
-	pkgrel = 2
+	pkgver = 0.1.6
+	pkgrel = 1
 	url = https://github.com/joshuathompson/baton
 	arch = x86_64
 	license = MIT
 	provides = baton
 	options = !strip
-	source = baton-bin-0.1.5::https://github.com/joshuathompson/baton/releases/download/0.1.5/baton-0.1.5-linux-amd64
+	source = baton-bin-0.1.6::https://github.com/joshuathompson/baton/releases/download/0.1.6/baton-0.1.6-linux-amd64
 	source = LICENSE::https://raw.githubusercontent.com/joshuathompson/baton/master/LICENSE
-	sha256sums = 01578bba3536678c4a08f76dbe5c8f3e92fa8dff4d678f561ec5278ec7915154
+	sha256sums = 1faae1f5bd34b1381ecd6863cfab1f9d06aff195443d8b28c6ef173c1cbeb286
 	sha256sums = a6106dc2efa5ca23da297495bf6011e32e0015aa240537f487a0b9ddb0b39a93
 
 pkgname = baton-bin
