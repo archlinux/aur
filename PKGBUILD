@@ -1,6 +1,6 @@
 # Maintainer: agilob <archlinux@agilob.net>
 pkgname=tutanota-desktop-linux
-pkgver=3.47.3
+pkgver=3.47.4
 pkgrel=1
 pkgdesc='Official Tutanota email client'
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=(!strip)
 _appimage="tutanota-desktop-linux.AppImage"
 source=("https://mail.tutanota.com/desktop/tutanota-desktop-linux.AppImage")
 noextract=("${_appimage}")
-sha512sums=('7fc1d848c227718fd4796c153f606e49e3970eb1aedce61624d5dd2198a7ae832088c1225916ca42e6c86b448a0bcf273a58cdb3dd9f9a8bf4d86b5dfcf9b3e4')
+sha512sums=('SKIP')
 
 # extracting icons doesnt work now, this is here for future purposes
 # prepare() {
