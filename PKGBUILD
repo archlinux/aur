@@ -1,7 +1,7 @@
 # Maintainer: weearc <q19981121@163.com>
 pkgname=motrix
 _pkgname=Motrix
-pkgver=git20190126
+pkgver=git20190211
 pkgrel=1
 epoch=
 pkgdesc="elegent downloading tool frontend for aria2c,using vue(with personal patches)"
@@ -11,8 +11,7 @@ license=('MIT')
 groups=()
 depends=('bash')
 makedepends=('npm'
-	     'git'
-	     'aria2')
+	     'git')
 checkdepends=()
 optdepends=()
 provides=()
@@ -23,11 +22,9 @@ options=()
 install=
 changelog=
 source=("Motrix.desktop"
-	"aria2.conf"
-	"package.json")
+	"aria2.conf")
 noextract=()
 md5sums=('SKIP'
-	'SKIP'
 	'SKIP')
 validpgpkeys=()
 
@@ -36,7 +33,11 @@ prepare() {
 	npm config set registry 'https://registry.npm.taobao.org'
 	export ELECTRON_MIRROR='https://npm.taobao.org/mirrors/electron/'
 	export SASS_BINARY_SITE='https://npm.taobao.org/mirrors/node-sass'
-	rm $_pkgname/package.json && mv ${srcdir}/package.json $_pkgname/.
+	sed -i '/"dmg"/,/"linux"/{//!d}' $_pkgname/package.json
+	sed -i '/"dmg"/d' $_pkgname/package.json
+	sed -i '/"deb"/d' $_pkgname/package.json
+	sed -i '/"snap"/d' $_pkgname/package.json
+	sed -i 's/"AppImage"/"dir"/g' $_pkgname/package.json
 	
 }
 
