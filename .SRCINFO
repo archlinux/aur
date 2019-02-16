@@ -1,6 +1,6 @@
 pkgbase = exodus-eden
 	pkgdesc = An unsupported, advanced version of Exodus
-	pkgver = 19.2.2
+	pkgver = 19.2.15
 	pkgrel = 1
 	epoch = 1
 	url = https://exodus.io/eden
@@ -11,10 +11,10 @@ pkgbase = exodus-eden
 	depends = nss
 	depends = libxss
 	depends = glibc>=2.28-4
-	source = https://exodusbin.azureedge.net/releases/eden/exodus-eden-linux-x64-19.2.2.zip
+	source = https://exodusbin.azureedge.net/releases/eden/exodus-eden-linux-x64-19.2.15.zip
 	source = https://marceloneil.com/exodus-icons/eden-icons.zip
 	source = exodus-eden.desktop
-	sha256sums = 599f729f84bbf63bcb781c489b54f189f077e19b1681d362a444f64aea4c7e04
+	sha256sums = 4a1c1fabc19a1de9112db93e5d1231acee568b7e41a147d122b024247bd3f8d3
 	sha256sums = 531447b0b49a27a4169fcd2639fa793135acf2776b05f52f36557b384bace7cb
 	sha256sums = 820c6de206ffdd5882f26a8b7d5a2720d0b2df6f9fe62d31aa3a9aaefb9b6322
 
