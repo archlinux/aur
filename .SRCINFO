@@ -1,14 +1,14 @@
 pkgbase = zfs-linux-rc
-	pkgver = 0.8.0_rc3_4.20.7.arch1.1
+	pkgver = 0.8.0_rc3_4.20.8.arch1.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-headers=4.20.7.arch1-1
+	makedepends = linux-headers=4.20.8.arch1-1
 	makedepends = python
 	depends = kmod
 	depends = zfs-utils-rc=0.8.0_rc3
-	depends = linux=4.20.7.arch1-1
+	depends = linux=4.20.8.arch1-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.8.0-rc3/zfs-0.8.0-rc3.tar.gz
 	source = upstream-4f981f6-additional-fixes-for-current_kernel_time-in-4.20.patch
 	sha256sums = 5c344d6ff876d4c5286d83745700127054858cea379d31741fe96589ac40baff
