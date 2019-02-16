@@ -3,15 +3,15 @@
 
 _pkgname=exaile
 pkgname=${_pkgname}-git
-pkgver=4.0.0+rc3+0+gfc964810
+pkgver=4.0.0+rc3+79+gac165d73
 pkgrel=1
 pkgdesc="music player for gnome, similar to KDEs amarok"
 arch=('x86_64' 'i686')
 url="http://www.exaile.org"
 license=('GPL')
-depends=('gtk3' 'gstreamer' 'mutagen' 'python2-dbus'
-         'python2-gobject' 'python2-cairo' 'udisks2' 'librsvg' 'gst-plugins-good')
-makedepends=('git' 'help2man')
+depends=('gtk3' 'python2-mutagen' 'python2-dbus' 'python2-gobject' 
+         'python2-cairo' 'udisks2' 'librsvg' 'gst-plugins-good')
+makedepends=('git')
 optdepends=('python2-feedparser: podcasts plugin'
             'webkit2gtk: wikipedia plugin'
             'python2-lxml: LyricsMania plugin'
@@ -22,7 +22,12 @@ optdepends=('python2-feedparser: podcasts plugin'
             'streamripper: Streamripper plugin'
             'gnome-screensaver: Pause on screensaver plugin'
             'mate-screensaver: Pause on screensaver plugin'
-            'cinnamon-screensaver: Pause on screensaver plugin')
+            'cinnamon-screensaver: Pause on screensaver plugin'
+            'python2-musicbrainzngs: Musicbrainz cover search plugin'
+            'ipythoon2: Ipython console plugin'
+            'python2-pylast: Last.fm loved tracks plugin'
+            'gst-plugins-bad: Additional audio codecs'
+            'gst-plugins-ugly: Additional audio codecs')
 
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
