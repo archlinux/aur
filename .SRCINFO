@@ -1,0 +1,23 @@
+pkgbase = rtl8192cu-fixes-git
+	pkgdesc = This is a repackaging of Realtek's own 8192CU USB WiFi driver for Ubuntu 13.10 and later. This packages fixes the issues with the Dlink 131 wifi usb stick revison B
+	pkgver = r81.756f2ec
+	pkgrel = 1
+	url = https://github.com/pvaret/rtl8192cu-fixes
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = dkms
+	conflicts = 8192cu
+	conflicts = rt8192cu
+	conflicts = dkms-8192cu
+	replaces = rtl8192cu-fixe
+	options = !strip
+	source = rtl8192cu-fixes-git::git+https://github.com/pvaret/rtl8192cu-fixes.git
+	source = dkms.conf
+	source = blacklist-native-rtl8192.conf
+	sha256sums = SKIP
+	sha256sums = a7248049e140aff9f84263f5b520b43086dbf4187270677877d6752d94af6b50
+	sha256sums = 68ade9eaf1018b73cb3a6acd68f42ac3714c654527dc63ea664b9664ea5332ea
+
+pkgname = rtl8192cu-fixes-git
+
