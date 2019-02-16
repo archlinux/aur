@@ -1,0 +1,13 @@
+pkgbase = firefox-color
+	pkgdesc = Theming experiment for Firefox Quantum and beyond
+	pkgver = 2.1.0
+	pkgrel = 0
+	url = https://github.com/mozilla/FirefoxColor
+	arch = any
+	license = Mozilla Public License version 2.0
+	noextract = firefox_color-2.1.0-fx.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/1112089/firefox_color-2.1.0-fx.xpi
+	sha256sums = dacba8f16eed45107c45c04bb9067863ac6bd1b3bd1ac9f9cb0c3f5b52119333
+
+pkgname = firefox-color
+
