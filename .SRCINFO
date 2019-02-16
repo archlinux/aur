@@ -1,0 +1,17 @@
+pkgbase = groff-dejavu
+	pkgdesc = Generates required files to use DejaVu fonts in groff.
+	pkgver = 0
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	makedepends = fontforge
+	depends = groff
+	depends = ttf-dejavu
+	provides = groff-dejavu
+	source = build
+	source = groff-dejavu.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = groff-dejavu
+

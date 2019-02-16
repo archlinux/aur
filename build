@@ -1,0 +1,91 @@
+#!/bin/bash
+output=font
+
+ttf=$(find /usr/share/fonts/TTF/ -name "DejaVu*")
+if  [ -z "$ttf" ]; then
+    echo "Make sure ttf-dejavu is installed"
+    exit -1
+fi
+
+if ! type fontforge >/dev/null; then
+    echo "Make sure 'fontforge' is installed"
+    exit -1;
+fi
+
+textmap=(/usr/share/groff/*/font/devpdf/map/textmap)
+if ! type afmtodit >/dev/null || ! [ -e "$textmap" ]; then
+    echo "Make sure 'groff' is installed"
+    exit -1;
+fi
+
+if ! [ -d "$output" ]; then
+    mkdir $output
+    mkdir $output/devps
+    mkdir $output/devpdf
+fi
+
+for name in $ttf; do
+    base_name=$(basename $name .ttf)
+    if ! fontforge 2>/dev/null -lang=ff -c "Open(\"$name\");Generate(\"$output/$base_name.pfa\");"; then
+        echo "Can't generate post-scipt font and afm description for $base_name"
+        echo -1
+    fi
+
+    if [[ "$base_name" =~ -BoldOblique$ ]]; then
+        font_name=${base_name/-BoldOblique/BI}
+    elif [[ "$base_name" =~ -ExtraLight$ ]]; then
+        font_name=${base_name/-ExtraLight/II}
+    elif [[ "$base_name" =~ -BoldItalic$ ]]; then
+        font_name=${base_name/-BoldItalic/BI}
+    elif [[ "$base_name" =~ -Bold$ ]]; then
+        font_name=${base_name/-Bold/B}
+    elif [[ "$base_name" =~ -Oblique$ ]]; then
+        font_name=${base_name/-Oblique/I}
+    elif [[ "$base_name" =~ -Italic$ ]]; then
+        font_name=${base_name/-Italic/I}
+    elif [[ "$base_name" =~ - ]]; then
+        echo "Can't gues font name  from '$base_name'"
+        exit -1;
+    else
+        font_name=${base_name}R
+    fi
+
+    if [[ "$font_name" =~ DejaVuSansMono ]]; then
+        font_name=${font_name/DejaVuSansMono/DeVuSaMo}
+    elif [[ "$font_name" =~ DejaVuSansCondensed ]]; then
+        font_name=${font_name/DejaVuSansCondensed/DeVuSaCo}
+    elif [[ "$font_name" =~ DejaVuSerifCondensed ]]; then
+        font_name=${font_name/DejaVuSerifCondensed/DeVuSeCo}
+    elif [[ "$font_name" =~ DejaVuSans ]]; then
+        font_name=${font_name/DejaVuSans/DeVuSa}
+    elif [[ "$font_name" =~ DejaVuSerif ]]; then
+        font_name=${font_name/DejaVuSerif/DeVuSe}
+    elif [[ "$font_name" =~ DejaVuMathTeXGyre ]]; then
+        font_name=${font_name/DejaVuMathTeXGyre/DeVuTex}
+    fi
+
+    echo $font_name
+
+    if ! afmtodit $output/$base_name.afm $textmap $font_name 2>/dev/null; then
+        echo "Can't generate groff font descritpion for $base_name"
+        echo -1
+    fi
+
+    internalname=`awk '/^internalname/{print $2;}' $font_name`
+
+    if ! grep "\b$internalname\t" "$output/devpdf/download" &>/dev/null; then
+        echo -e "\t$internalname\t../$base_name.pfa" >> $output/devpdf/download
+    else
+        echo "Font with name '$internalname' already present in '$output/devpdf/download'"
+    fi
+
+    if ! grep "\b$internalname\t" $output/devps/download &>/dev/null; then
+       echo -e "\t$internalname\t../$base_name.pfa" >> $output/devps/download
+    else
+        echo "Font with name '$internalname' already present in '$output/devps/download'"
+    fi
+
+    rm $output/$base_name.afm
+    cp $font_name $output/devps/
+    mv $font_name $output/devpdf/
+done
