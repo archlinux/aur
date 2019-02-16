@@ -2,14 +2,14 @@
 #Contributor: matthiaskrgr <matthias · krueger _strange_curved_character_ famsike · de>
 
 pkgname=widelands-bzr
-pkgver=r8507
+pkgver=19.r8984
 pkgrel=1
 pkgdesc="A realtime strategy game with emphasis on economy and transport - development version"
 arch=(i686 x86_64)
 license=('GPL2')
 depends=('glew' 'sdl2_image' 'boost-libs' 'sdl2_mixer' 'sdl2_ttf')
 makedepends=('bzr' 'cmake' 'python'  'boost')
-provides=('widelands')
+provides=("widelands=$pkgver")
 conflicts=('widelands' 'widelands-data')
 url="http://wl.widelands.org"
 changelog=changelog
@@ -59,5 +59,10 @@ package() {
 }
 
 pkgver() {
-  	printf "r%s" "$(bzr revno "http://bazaar.launchpad.net/~widelands-dev/widelands/trunk" -q)"
+	cd "${srcdir}/${pkgname}"
+
+	_build="$(sed -ne "s/.*<release .* version=\"Build \([0-9]\+\)\"\/>/\1/p" debian/widelands.appdata.xml | sort -rn | head -n 1)"
+	_rev="$(bzr revno -q)"
+
+	printf "%s.r%s" "${_build}" "${_rev}"
 }

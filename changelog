@@ -1,3 +1,6 @@
+Version 19.r8984-1
+	* Change pkgver format to contain last release/build number.
+
 Version r8507-1
 	* Add -DOPTION_ASAN=OFF cmake option
 
