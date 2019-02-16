@@ -1,6 +1,6 @@
 pkgbase = bspwm-git
 	pkgdesc = A tiling window manager based on binary space partitioning
-	pkgver = 0.9.2.r45.g96f337b
+	pkgver = 0.9.6.r1.g8cac004
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/baskerville/bspwm
