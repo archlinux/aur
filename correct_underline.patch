@@ -1,0 +1,11 @@
+--- a/docs/signals.rst	2018-12-14 01:55:12.000000000 +0800
++++ b/docs/signals.rst	2019-02-17 00:56:50.461908330 +0800
+@@ -101,7 +101,7 @@
+ 
+ 
+ timeout parameter
+-----------------
++-----------------
+ 
+ The ``timeout`` parameter specifies how long ``waitSignal`` should wait for a
+ signal to arrive. If the timeout is ``None``, there won't be any timeout, i.e.
