@@ -1,10 +1,11 @@
-# Maintainer: sballert <sballert@posteo.de>
+# Contributor: sballert <sballert@posteo.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 _gituser="emacs-lsp"
 _gitrepo="lsp-ui"
 
 pkgname=emacs-lsp-ui-git
-pkgver=r261.d292641
+pkgver=6.0.1.g6cf16cc
 pkgrel=1
 pkgdesc="UI modules for lsp-mode"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -19,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  git describe --tags | tr - .
 }
 
 build() {
@@ -29,6 +30,6 @@ build() {
 
 package() {
   cd "$_gitrepo"
-  install -d  "$pkgdir"/usr/share/emacs/site-lisp/${_gitrepo}/
-  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/${_gitrepo}/
+  install -d  "$pkgdir"/usr/share/emacs/site-lisp/
+  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/
 }
