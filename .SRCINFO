@@ -1,0 +1,17 @@
+pkgbase = emacs-lsp-ui
+	pkgdesc = UI modules for lsp-mode
+	pkgver = 6.0
+	pkgrel = 1
+	url = https://github.com/emacs-lsp/lsp-ui
+	arch = any
+	license = GPL3
+	depends = emacs
+	depends = emacs-dash
+	depends = flycheck
+	depends = emacs-lsp-mode
+	depends = emacs-markdown-mode
+	source = emacs-lsp-ui-6.0.tar.gz::https://github.com/emacs-lsp/lsp-ui/archive/6.0.tar.gz
+	md5sums = e012126a85af1312da0166fe4338d8d1
+
+pkgname = emacs-lsp-ui
+
