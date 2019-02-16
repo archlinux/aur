@@ -1,7 +1,7 @@
 # Maintainer: Will Vauclain <willvauclain.dev at gmail dot com>
 pkgname=gebaar
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A Super Simple WM Independent Touchpad Gesture Daemon for libinput.'
 arch=('x86_64')
 url="https://github.com/Coffee2CodeNL/gebaar-libinput"
@@ -29,8 +29,8 @@ build() {
 
 package() {
   cd $srcdir/gebaar-libinput/build
-  sudo make DESTDIR="$pkgdir" install/strip
+  make DESTDIR="$pkgdir" install/strip
   cd ..
-  sudo install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  sudo install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
