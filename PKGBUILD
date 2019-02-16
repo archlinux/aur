@@ -2,7 +2,8 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=libksysguard
+_pkgname=libksysguard
+pkgname=libksysguard-light
 pkgver=5.15.0
 pkgrel=1
 pkgdesc='Libraries for ksysguard without the big dependency on qt5-webengine'
@@ -12,7 +13,10 @@ license=(LGPL)
 depends=(libxres kio)
 makedepends=(extra-cmake-modules kdoctools plasma-framework)
 groups=(plasma)
-source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
+conflicts=(libksysguard)
+replaces=(libksysguard)
+provides=(libksysguard)
+source=("https://download.kde.org/stable/plasma/$pkgver/_$pkgname-$pkgver.tar.xz"{,.sig})
 sha256sums=('ad0073c7db05830837a473a8e5914fcb18646d6e2607b16e4e0063f1ecfa13ab'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell <jr@jriddell.org>
@@ -26,7 +30,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../$pkgname-$pkgver \
+  cmake ../$_pkgname-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF

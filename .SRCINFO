@@ -1,4 +1,4 @@
-pkgbase = libksysguard
+pkgbase = libksysguard-light
 	pkgdesc = Libraries for ksysguard without the big dependency on qt5-webengine
 	pkgver = 5.15.0
 	pkgrel = 1
@@ -11,8 +11,11 @@ pkgbase = libksysguard
 	makedepends = plasma-framework
 	depends = libxres
 	depends = kio
-	source = https://download.kde.org/stable/plasma/5.15.0/libksysguard-5.15.0.tar.xz
-	source = https://download.kde.org/stable/plasma/5.15.0/libksysguard-5.15.0.tar.xz.sig
+	provides = libksysguard
+	conflicts = libksysguard
+	replaces = libksysguard
+	source = https://download.kde.org/stable/plasma/5.15.0/_libksysguard-light-5.15.0.tar.xz
+	source = https://download.kde.org/stable/plasma/5.15.0/_libksysguard-light-5.15.0.tar.xz.sig
 	validpgpkeys = 2D1D5B0588357787DE9EE225EC94D18F7F05997E
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
@@ -20,5 +23,5 @@ pkgbase = libksysguard
 	sha256sums = ad0073c7db05830837a473a8e5914fcb18646d6e2607b16e4e0063f1ecfa13ab
 	sha256sums = SKIP
 
-pkgname = libksysguard
+pkgname = libksysguard-light
 
