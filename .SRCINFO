@@ -1,0 +1,13 @@
+pkgbase = emacs-lsp-mode
+	pkgdesc = Emacs client/library for the Language Server Protocol
+	pkgver = 6.0
+	pkgrel = 1
+	url = https://github.com/emacs-lsp/lsp-mode
+	arch = any
+	license = GPL3
+	depends = emacs
+	source = emacs-lsp-mode-6.0.tar.gz::https://github.com/emacs-lsp/lsp-mode/archive/6.0.tar.gz
+	sha256sums = 586e08d61b75c9008ba7bdb38b08e0536d3c6d98ba93f4fe6839109d8cf94842
+
+pkgname = emacs-lsp-mode
+
