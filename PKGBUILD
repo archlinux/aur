@@ -10,21 +10,25 @@
 # this PKGBUILD file is in the public domain.
 
 pkgname=nimf
-pkgver=2019.01.23	# This strictly follows AC_INIT field in configure.ac
+pkgver=2019.02.15	# This strictly follows AC_INIT field in configure.ac
 pkgrel=1
 pkgdesc="Nimf is an input method framework."
 arch=('any')
 url="https://gitlab.com/nimf-i18n/nimf"
 license=('LGPL3')
+
+# Reference: https://gitlab.com/nimf-i18n/nimf/blob/master/archlinux/PKGBUILD
 makedepends=('binutils' 'autoconf' 'automake' 'gcc' 'make' 'glib2' 'intltool'
              'gtk3' 'gtk2' 'qt4' 'qt5-base' 'libappindicator-gtk3' 'librsvg'
              'noto-fonts-cjk' 'libhangul' 'anthy' 'librime' 'libxkbcommon'
-             'wayland' 'libxklavier')
+             'wayland' 'libxklavier' 'm17n-lib')
 depends=('glib2' 'gtk3' 'gtk2' 'qt4' 'qt5-base' 'libappindicator-gtk3'
-         'libhangul' 'anthy' 'librime' 'libxkbcommon' 'wayland' 'libxklavier')
+         'libhangul' 'anthy' 'librime' 'libxkbcommon' 'wayland' 'libxklavier'
+	 'm17n-lib')
 optdepends=('brise: Rime schema repository'
             'noto-fonts-cjk: Google Noto CJK fonts')
-source=("nimf-master::git+https://gitlab.com/nimf-i18n/nimf#commit=078b769d7007d189ce6f348f8f9270895b15e055")
+
+source=("nimf-master::git+https://gitlab.com/nimf-i18n/nimf#commit=ea47e41a91ea57227202ced70186d21b0edff103")
 md5sums=('SKIP')
 
 build() {
