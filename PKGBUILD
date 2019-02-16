@@ -63,7 +63,7 @@ _localmodcfg=
 pkgbase=linux-ck
 _srcver=4.20.10-arch1
 pkgver=${_srcver%-*}
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -81,6 +81,7 @@ source=(
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/4.0/4.20/4.20-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  0002-unfuck-ck1-for-kvm-intel-symbol.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -94,7 +95,8 @@ sha256sums=('53de6be9adfb8899f0a15855f1aef62b8b5a3c5c575196ec8a640a5b8c1c3cf8'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '4bd614333fcbe509118b5362889f76d241e1d33e1ee691bd24fd82384ce7f2de'
-            '059123200c60ef468ac17bf05a75f37ca69ad34bd21af94644f478c873c3579a')
+            '059123200c60ef468ac17bf05a75f37ca69ad34bd21af94644f478c873c3579a'
+            '3e8c7d3015bb593e8a861be0b2b9f1de74fcb25e00c6e3eacee3165c6bec6f64')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
