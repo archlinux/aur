@@ -1,0 +1,13 @@
+pkgbase = altogether
+	pkgdesc = A CLI tool to synchronize configuration files between Alfred and Albert
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/announce/altogether
+	arch = x86_64
+	license = APACHE
+	depends = glibc>=2.28
+	source = https://github.com/announce/altogether/releases/download/v0.1.2/linux-amd64.tar.gz
+	sha256sums = b01cd2704f2c86336c70c99105de9752d00e9545af76b0aa4654e33bceafa087
+
+pkgname = altogether
+
