@@ -1,34 +1,38 @@
+# Maintainer: avisy <994931954@qq.com>
 # Maintainer: visitant0226 <visitant0226@gmail.com>
 # Maintainer: super13 <fangguikai@163.com>
 pkgname=listen1
-pkgver=1.8.0
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="One for all free music in China"
 arch=('x86_64')
+makedepends=('p7zip')
 url="https://listen1.github.io/listen1/"
 license=('MIT')
-depends=()
-source=("https://github.com/listen1/listen1_desktop/releases/download/v${pkgver}/Listen1_${pkgver}_linuxx64.tar.gz")
-md5sums=('9abe90afa87b253bba9904b35635caa8')
+_filename='Listen1_2.1.2_linux_x86_64.AppImage'
+noextract=("$_filename")
+options=('!strip')
+source=("https://github.com/listen1/listen1_desktop/releases/download/v${pkgver}/Listen1_${pkgver}_linux_x86_64.AppImage" 
+"https://raw.githubusercontent.com/listen1/listen1/master/listen1/res/icon.png")
+sha256sums=('7cbbb75566c3e6105a1622d53bf33943d53a22cedcb30c3c4895e29b731728e1'
+'6cabb778a29488ab33bb320b63e40a59f680707b475e58f5ffe7d72cf9788834')
+
+
+prepare() {
+    cd "${srcdir}"
+    mv "$_filename" "listen1.AppImage"
+    mv "icon.png" "listen1.png"
+    7z x "${srcdir}/listen1.AppImage" listen1.desktop
+    sed -i 's/AppRun/\/opt\/appimages\/listen1.AppImage/' listen1.desktop
+    mkdir -p usr/share/pixmaps usr/share/applications opt/appimages
+    cp listen1.png usr/share/pixmaps
+    mv listen1.desktop usr/share/applications
+    cp listen1.AppImage opt/appimages/
+}
 
 package() {
-	mkdir -p "${pkgdir}/usr/bin/"
-	mkdir -p "${pkgdir}/opt/"
-    mkdir -p "${pkgdir}/usr/share/pixmaps"
-    mkdir -p "${pkgdir}/usr/share/applications/"
-	touch "${pkgdir}/usr/share/applications/listen1.desktop"
-	
-	cp -r "${srcdir}/Listen1_${pkgver}_linuxx64" "${pkgdir}/opt/${pkgname}"
-	ln -s "/opt/${pkgname}/listen1" "${pkgdir}/usr/bin/listen1"
-	echo "[Desktop Entry]
-Encoding=UTF-8
-Name=listen1
-Comment=One for all free music in China
-Exec=/usr/bin/listen1
-Icon=listen1.png
-Terminal=false
-Type=Application
-Categories=Application;music" \
-        >> "${pkgdir}/usr/share/applications/listen1.desktop"
-    cp "${srcdir}/Listen1_${pkgver}_linuxx64/resources/app/resources/logo.png" "${pkgdir}/usr/share/pixmaps/listen1.png"
+    cd "${srcdir}"
+    cp -rp usr "${pkgdir}/usr"
+    cp -rp opt "${pkgdir}/opt"
+    chmod +x "${pkgdir}/opt/appimages/listen1.AppImage"
 }
