@@ -1,23 +1,20 @@
 pkgbase = lifeograph
 	pkgdesc = off-line and private journal and note taking application
-	pkgver = 1.4.2
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://launchpad.net/lifeograph
 	install = lifeograph.install
 	arch = i686
 	arch = x86_64
-	license = GNU GPL v3
-	makedepends = cmake
-	makedepends = intltool
+	license = GPL3
+	makedepends = meson
 	depends = gtkmm3
 	depends = enchant
 	depends = libgcrypt
 	provides = lifeograph
 	conflicts = lifeograph
-	options = !emptydirs
-	options = !makeflags
-	source = https://launchpad.net/lifeograph/trunk/1.4.2/+download/lifeograph-1.4.2.tar.bz2
-	sha256sums = c7ff8930fb2c3935435ad3ecc513587ace9b14dac157b3d5cbaef8729393f7b0
+	source = https://launchpad.net/lifeograph/trunk/1.5.1/+download/lifeograph-1.5.1.1.tar.bz2
+	sha256sums = 0d0384c9baa36a5016197e8dfa4ec12b0bd392dfd485f07158ddb3d7db2f2c82
 
 pkgname = lifeograph
 
