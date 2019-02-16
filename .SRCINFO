@@ -1,20 +1,16 @@
 pkgbase = pam_geoip
 	pkgdesc = A Pluggable Authentication Module (PAM) for GeoIP based access
-	pkgver = 1.1
+	pkgver = 2.1.0
 	pkgrel = 1
-	url = http://ankh-morp.org/code/pam_geoip/
+	url = https://github.com/amishmm/pam_geoip
 	arch = i686
 	arch = x86_64
-	license = GPL
 	license = LGPL
-	depends = geoip
-	depends = geoip-database
-	depends = geoip-database-extra
+	depends = geoip2-database
+	depends = libmaxminddb
 	backup = etc/security/geoip.conf
-	source = http://download.ankh-morp.org/pam_geoip/pam_geoip-1.1.tar.gz
-	source = geoip.diff
-	md5sums = 072709760bbb4557d1cc166072bca5da
-	md5sums = 9de2649ce73f2296a73cc4ecb614c555
+	source = pam_geoip-2.1.0.tar.gz::https://github.com/amishmm/pam_geoip/archive/v2.1.0.tar.gz
+	md5sums = 59be569d6cfc3c9c65fc3b4205557d26
 
 pkgname = pam_geoip
 
