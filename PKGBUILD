@@ -49,11 +49,6 @@ _scons_args=(
   --use-system-tcmalloc   # in gperftools
 )
 
-prepare() {
-  # Broken tls13 support, removing to fix build
-  sed -i "/counts.tls13/d" "${srcdir}/${pkgname}-src-r${pkgver}/src/mongo/util/net/ssl_manager_openssl.cpp"
-}
-
 build() {
   cd "${srcdir}/${pkgname}-src-r${pkgver}"
 
