@@ -2,10 +2,10 @@
 # Contributor: b.klettbach@gmail.com
 
 pkgname=multimc5
-pkgver=0.6.2
-pkgrel=2
-__pkgver_libnbtplusplus=multimc-0.5.0
-__pkgver_quazip=multimc-2
+pkgver=0.6.4
+pkgrel=1
+__pkgver_libnbtplusplus=multimc-0.6.1
+__pkgver_quazip=multimc-3
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="http://multimc.org/"
@@ -19,13 +19,11 @@ optdepends=('mcedit: Allows editing of minecraft worlds')
 source=("https://github.com/MultiMC/MultiMC5/archive/${pkgver}.tar.gz"
         "https://github.com/MultiMC/libnbtplusplus/archive/${__pkgver_libnbtplusplus}.tar.gz"
         "https://github.com/MultiMC/quazip/archive/${__pkgver_quazip}.tar.gz"
-        "multimc-fix-build-with-qt-511.patch"
         "quazip-fix-build-with-qt-511.patch"
 )
-sha512sums=('e70e7e02b8e92f7f6edf8f6d84aae1049af0def9018e3c91839838d9f156dc99a784a62f65c449b493694c997444d490517a6413fad1aefa9753a99c585f2d7f'
-            '333aa110a399a5061aba306912b6e9af18f824920a778afeb6b5714d91af64cb6135e2801a6271a38896a36db733308cbfade79830ca08bfca8a9d79fef69e68'
-            'de5169e46018b61f9d1221e537785c19e62d7de57e9726f65668ee5c265b4db8464cc6f8ac48bd28c0166b186fff31115c11e05451259437f3358e3b2c5fc57f'
-            '7c40028655a327503565a3384dc163c0061718a0ec73feb306dcfe298c02573764ae98ae1390e7eab4ef374ceb63f7ecde6c86f6f0f17591b07ae4a27147466f'
+sha512sums=('83e4008e6b16d60d5d32d1cec71b0c20abdefac017c44ae0c3343e4af6980fbc89be0f39b1050895ae3dec7af88f71ba94cdda9c77537fcb4158ea484a62ac5f'
+            '81a1640a069d88df7ba0abf72089aecbe1e9d791c88acaaa7e70c8f0bcd0512cf8698178342657e363524ce8488dd072368a0aa8cc091a24912d6f8b6b0f4f2d'
+            '2e9074203c67bc7ad98621c551047e5367f06e54cacfecc755a5bf2c9f99266eab42ad972f86ae28ed7e1507f6d27d8d2680a87ce9fd5b1e93a18bcb627ec3f0'
             'ca7a350bdeecf65dbca7de8d6912c935c6ba603edcddcd4ffe71d8997e50e4046335dde6d1d7c629d35025073d18be4d112a960d43a8801de979687bc26e46d4')
 prepare() {
   cd "${srcdir}/MultiMC5-${pkgver}"
@@ -36,9 +34,6 @@ prepare() {
     "libraries/libnbtplusplus"
   cp --recursive "${srcdir}/quazip-${__pkgver_quazip}/" \
     "libraries/quazip"
-
-  # https://github.com/MultiMC/MultiMC5/pull/2304
-  patch -p1 < "${srcdir}/multimc-fix-build-with-qt-511.patch"
 
   cd "libraries/quazip"
   # https://github.com/MultiMC/quazip/pull/1
