@@ -1,0 +1,36 @@
+pkgbase = futurerestore-s0uthwest-git
+	pkgdesc = iOS upgrade and downgrade tool utilizing SHSH blobs - s0uthwest's fork - git version
+	pkgver = r231.546c759
+	pkgrel = 1
+	url = https://github.com/s0uthwest/futurerestore
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = libplist
+	depends = libzip
+	depends = libimobiledevice
+	depends = libfragmentzip
+	depends = libirecovery
+	depends = libusbmuxd
+	depends = curl
+	depends = openssl
+	depends = zlib
+	depends = lzfse
+	provides = futurerestore
+	provides = futurerestore-s0uthwest
+	conflicts = futurerestore
+	source = git+https://github.com/s0uthwest/futurerestore.git
+	source = git+https://github.com/s0uthwest/img4tool.git
+	source = git+https://github.com/s0uthwest/tsschecker.git
+	source = git+https://github.com/s0uthwest/idevicerestore.git
+	source = git+https://github.com/tihmstar/jssy.git
+	source = check_for_pthreads.patch
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = a9594bdc7fe465fe6e63cef1f9e6300fd79c37800431c718ebf37b4786f0ee3ecc76a61b9dd654200f2be059d87922baccddc475527c5b56491e99d9aa38f609
+
+pkgname = futurerestore-s0uthwest-git
+
