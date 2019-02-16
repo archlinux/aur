@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=akira-git
-pkgver=r166.144fd19
+pkgver=r167.443668c
 pkgrel=1
 pkgdesc="Native Linux App for UI and UX Design built in Vala and Gtk"
 arch=(x86_64)
@@ -18,26 +18,19 @@ source=("git+https://github.com/Alecaddd/Akira.git")
 sha256sums=(SKIP)
 
 pkgver() {
-  cd Akira
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir build
+    cd Akira
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  meson --prefix=/usr --buildtype=release ../Akira
-  ninja
+    arch-meson Akira build
+    ninja -C build
 }
 
 #check() {
-#  cd build
-#  ninja test
+#    ninja -C build test
 #}
 
 package() {
-  cd build
-  DESTDIR="$pkgdir" ninja install
+    DESTDIR="${pkgdir}" ninja -C build install
 }
