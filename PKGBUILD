@@ -2,7 +2,7 @@
 
 pkgname=yass-karaoke
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="editor for creating, finetuning, organizing and printing Ultrastar karaoke songs"
 arch=('i686' 'x86_64')
 url="http://yass-along.com/"
@@ -23,6 +23,6 @@ package() {
   install -Dm644 "${srcdir}/yass.desktop" $pkgdir/usr/share/applications/yass.desktop
   install -Dm644 "$srcdir/yass/resources/icons/yass-icon.png" "${pkgdir}/usr/share/pixmaps/yass.png"
   (echo "#!/bin/bash
-  java -jar \"/usr/share/java/yass-${pkgver}.jar\" \"$@\"" ; )  > "${pkgdir}/usr/bin/yass.sh"
+  java -jar \"/usr/share/java/yass-${pkgver}.jar\" \"\$@\"" ; )  > "${pkgdir}/usr/bin/yass.sh"
   chmod 755 "${pkgdir}/usr/bin/yass.sh"
 }
