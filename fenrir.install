@@ -1,0 +1,14 @@
+_alert()
+{
+fold -s << EOF
+!!!! ATTENTION !!!!
+the speech-dispatcher driver was reworked. the language and voice was swapped.
+this needs some reconfiguration in your settings.conf
+what you have as speech language= needs now to be set to voice=
+!!!! ATTENTION !!!!
+EOF
+}
+
+post_upgrade() {
+	_alert
+}
