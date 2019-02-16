@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# Allow packaging info and other metadata
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!disable-c6-systemd.install
+
+# Allow source files
+!disable-c6.service

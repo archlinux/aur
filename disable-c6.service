@@ -1,0 +1,12 @@
+[Unit]
+Description=Ryzen Disable C6
+DefaultDependencies=no
+After=sysinit.target local-fs.target suspend.target hibernate.target
+Before=basic.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/zenstates.py --c6-disable
+
+[Install]
+WantedBy=basic.target suspend.target hibernate.target
