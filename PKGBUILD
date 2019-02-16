@@ -1,8 +1,8 @@
 # Maintainer Fabien Dubosson <fabien.dubosson@gmail.com>
 
 pkgname="vstax"
-_year="2017"
-pkgver="${_year}.1.0.17"
+_year="2018"
+pkgver="${_year}.1.0.2"
 pkgrel="1"
 pkgdesc="Software to fill the tax forms of the canton of Valais, Switzerland"
 url="http://www.vs.ch/vstax"
@@ -15,15 +15,15 @@ changelog="ChangeLog"
 [ "${CARCH}" = "x86_64" ] && _CARCH='amd64'
 source=("https://sftp.vs.ch/${pkgname}/${_year}/${pkgname}${_year}_${_CARCH}.deb"
         'archlinux.patch')
-sha256sums=('cb5e0dbda0aa167e4d9a93819914a65581632557ebadb531e327db9aba7c6675'
-            '1b11130669a9be63c68067b356b979ed57f9ee04fd523aa6c411d9333c90a7ee')
-[ "${CARCH}" = "x86_64" ] && sha256sums[0]='4c2276e2a0aef5c184f6804c15d3d1336b429b115ab29888769908e75af41baf'
+sha256sums=('aa43c003f758f932b15ef1c4ae657cffc8d73c3280126d0edb48ff7f48a12f31'
+            'fbbc58a513cf9ddb2bdb83c60ab4614fb143cd4ba0cabfe41066b3350766d76e')
+[ "${CARCH}" = "x86_64" ] && sha256sums[0]='b239f2b8936e57fe18fa6ca251b00ff201a29323847c86aee17d7bd327d2de21'
 
 prepare() {
     cd "${srcdir}/"
 
     # Extract the data contained in the `deb` file
-    tar -xzf data.tar.gz
+    tar -xf data.tar.xz
 
     # Patch for archlinux
     patch -p2 < archlinux.patch

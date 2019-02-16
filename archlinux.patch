@@ -1,33 +1,33 @@
-Index: vstax/src/usr/share/vstax2017/vstax2017.sh
+Index: vstax/src/usr/share/vstax2018/vstax2018.sh
 ===================================================================
---- vstax.orig/src/usr/share/vstax2017/vstax2017.sh
-+++ vstax/src/usr/share/vstax2017/vstax2017.sh
+--- vstax.orig/src/usr/share/vstax2018/vstax2018.sh
++++ vstax/src/usr/share/vstax2018/vstax2018.sh
 @@ -1,3 +1,4 @@
  #!/bin/sh
--cd /usr/share/vstax2017
--./jre/bin/java -Xmx400m -Xms400m  -jar jfw-launcher-5.0.31-obf.jar "$1"
-+cd /usr/share/java/vstax2017
+-cd /usr/share/vstax2018
+-./jre/bin/java -Xmx400m -Xms400m  -jar jfw-launcher-6.0.1-obf.jar "$1"
++cd /usr/share/java/vstax2018
 +export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
-+java -Xmx400m -Xms400m  -jar jfw-launcher-5.0.31-obf.jar "$1"
-Index: vstax/src/usr/share/applications/vstax2017.desktop
++java -Xmx400m -Xms400m  -jar jfw-launcher-6.0.1-obf.jar "$1"
+Index: vstax/src/usr/share/applications/vstax2018.desktop
 ===================================================================
---- vstax.orig/src/usr/share/applications/vstax2017.desktop
-+++ vstax/src/usr/share/applications/vstax2017.desktop
-@@ -1,11 +1,11 @@
+--- vstax.orig/src/usr/share/applications/vstax2018.desktop
++++ vstax/src/usr/share/applications/vstax2018.desktop
+@@ -1,15 +1,15 @@
  [Desktop Entry]
  Version=1.0
  Terminal=false
--Icon=/usr/share/vstax2017/vstax2017.png
-+Icon=/usr/share/java/vstax2017/vstax2017.png
+-Icon=/usr/share/vstax2018/vstax2018.png
++Icon=/usr/share/java/vstax2018/vstax2018.png
  Type=Application
  StartupNotify=false
  Categories=Office;
--Exec=/usr/share/vstax2017/vstax2017.sh %U
-+Exec=/usr/bin/vstax2017 %U
- MimeType=application/vstax2017;
- Name=VSTax 2017
- GenericName=VSTax 2017
- GenericName[en]=VSTax 2017
- GenericName[de]=VSTax 2017
- GenericName[fr]=VSTax 2017
- GenericName[it]=VSTax 2017
+-Exec=/usr/share/vstax2018/vstax2018.sh %U
++Exec=/usr/bin/vstax2018 %U
+ MimeType=application/vstax2018;
+ Name=VSTax 2018
+ GenericName=VSTax 2018
+ GenericName[en]=VSTax 2018
+ GenericName[de]=VSTax 2018
+ GenericName[fr]=VSTax 2018
+ GenericName[it]=VSTax 2018
