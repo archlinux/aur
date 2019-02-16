@@ -6,7 +6,7 @@
 
 pkgname=compiz
 pkgver=0.9.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
@@ -22,12 +22,14 @@ source=("https://launchpad.net/${pkgname}/${pkgver:0:6}/${pkgver}/+download/${pk
         "focus-prevention-disable.patch"
         "gtk-extents.patch"
         "reverse-unity-config.patch"
-        "screenshot-launch-fix.patch")
+        "screenshot-launch-fix.patch"
+        "no-compile-gschemas.patch")
 sha256sums=('52cd6a90ffe987bd0415fda23c34e1f3284aa34c4d8b4eefb160fbf4d1f33a2c'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
             'fba56d3e5fc8d1b47be2b8eaa6d79f48635daccc26db9b0b88fa281cc50c635e'
-            '89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61')
+            '89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61'
+            '4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -47,6 +49,9 @@ prepare() {
 
   # Fix application launching for the screenshot plugin
   patch -p1 -i "${srcdir}/screenshot-launch-fix.patch"
+
+  # Don't try to compile gschemas during make install
+  patch -p1 -i "${srcdir}/no-compile-gschemas.patch"
 }
 
 build() {

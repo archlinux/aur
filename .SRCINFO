@@ -1,7 +1,7 @@
 pkgbase = compiz
 	pkgdesc = Composite manager for Aiglx and Xgl, with plugins and CCSM
 	pkgver = 0.9.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/compiz
 	arch = i686
 	arch = x86_64
@@ -45,11 +45,13 @@ pkgbase = compiz
 	source = gtk-extents.patch
 	source = reverse-unity-config.patch
 	source = screenshot-launch-fix.patch
+	source = no-compile-gschemas.patch
 	sha256sums = 52cd6a90ffe987bd0415fda23c34e1f3284aa34c4d8b4eefb160fbf4d1f33a2c
 	sha256sums = f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b
 	sha256sums = 16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9
 	sha256sums = fba56d3e5fc8d1b47be2b8eaa6d79f48635daccc26db9b0b88fa281cc50c635e
 	sha256sums = 89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61
+	sha256sums = 4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a
 
 pkgname = compiz
 
