@@ -7,8 +7,8 @@
 
 _pkgname=go-filecoin
 pkgname=$_pkgname-git
-pkgver=0.0.1.r23.g271a6812
-pkgrel=3
+pkgver=0.0.1.r25.g7a875edf
+pkgrel=1
 pkgdesc='A decentralized storage network, full node implementation in Go'
 _organization='filecoin-project'
 url="https://github.com/$_organization/$_pkgname"
