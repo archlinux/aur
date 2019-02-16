@@ -44,7 +44,6 @@ _scons_args=(
   --ssl
   --disable-warnings-as-errors
   # --use-system-asio     # https://jira.${pkgname}.org/browse/SERVER-21839
-  # --use-system-v8       # Doesn't compile
   # --use-system-icu
   --use-system-tcmalloc   # in gperftools
 )
