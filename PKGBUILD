@@ -4,14 +4,14 @@ _python=python
 _name=gdb-tools
 
 pkgname=$_python-${_name}
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="Various tools to improve the gdb experience"
 depends=('python')
 makedepends=('python-setuptools')
 arch=('any')
-source=("https://pypi.python.org/packages/a7/ee/8b621bb3e56ef01828712cb857a23a8d8fa20c0c09a18aa0487e3a234bb6/gdb-tools-1.1.tar.gz")
-md5sums=('7d31327e5c389506171f6ebadf3b9e5f')
+source=("https://files.pythonhosted.org/packages/9f/db/91ea58f475bdcf56493c9510cb453ed2f4868bf42618cebc9ba5a6ab4e41/gdb-tools-1.2.tar.gz")
+md5sums=('42782b47e2c317dcdde724925dfc09fa')
 url="https://github.com/vuvova/gdb-tools"
 license=('GPL2')
 
