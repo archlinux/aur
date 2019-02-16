@@ -1,5 +1,5 @@
 post_install() {	
-	# systemctl preset precached precached-prime-caches
+	systemctl preset precached precached-prime-caches
 }
 
 pre_remove() {
