@@ -2,7 +2,7 @@
 
 pkgname=elementary-code
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Code editor designed for elementary OS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/elementary/code"
@@ -32,7 +32,7 @@ source=("https://github.com/elementary/code/archive/${pkgver}.tar.gz")
 sha256sums=('a504957d7eb1a9925dbb9c73dbb3053484100191c0b919f2dd02c3b3bed42d80')
 
 build() {
-    arch-meson code-${pkgver} build -Db_pie=false
+    arch-meson code-${pkgver} build
     ninja -C build
 }
 
