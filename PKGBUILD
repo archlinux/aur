@@ -3,8 +3,8 @@
 # Derived from official Chromium and Inox PKGBUILDS and ungoogled-chromium buildkit
 
 pkgname=ungoogled-chromium
-pkgver=71.0.3578.98
-pkgrel=2
+pkgver=72.0.3626.96
+pkgrel=1
 _launcher_ver=6
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency"
 arch=('x86_64')
@@ -26,12 +26,10 @@ provides=('chromium')
 conflicts=('chromium')
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        https://github.com/Eloston/ungoogled-chromium/archive/$pkgver-$pkgrel.tar.gz
-        chromium-harfbuzz-2.0.patch)
-sha256sums=('1c56a9e30825774c83d568d194e9585625c6e90f81ee0ef09760fcedc86b9d45'
+        https://github.com/Eloston/ungoogled-chromium/archive/$pkgver-$pkgrel.tar.gz)
+sha256sums=('b2daf52aac4d9eba0ab9f034db6f2411ad6930dd02544c4b583e3a6e49dcaa3b'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '1b6b7a9ef38e3325d409b539cce22ad112b2e3f2ca4947b7d224d1ce917b4e9a'
-            'bad4d4a3065f1432d5f9189e29c6bf1d7fe1d365b6c7c4ff51b294569b20e962')
+            '797ac0ec341324e31296d75ecaefc6dd112c702f44de25c46f523e3bd26fdb00')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -67,8 +65,6 @@ prepare() {
   local _config_bundle="$srcdir/$pkgname-$pkgver-$pkgrel/config_bundles/archlinux"
 
   cd "$srcdir/chromium-$pkgver"
-
-  patch -Np1 -i ../chromium-harfbuzz-2.0.patch
 
   msg2 'Pruning binaries'
   python "$_buildkit_cli" prune -b "$_config_bundle" ./
