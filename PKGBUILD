@@ -9,8 +9,8 @@
 #  - remove makedepends on ffnvcodec-headers, remove --enable-nvenc, --enable-nvdec
 #  - remove depends on aom, remove --enable-libaom
 
-pkgname=ffmpeg-ubuntu
-pkgbase=ffmpeg-ubuntu
+pkgname=ffmpeg-ubuntu-bionic
+pkgbase=ffmpeg-ubuntu-bionic
 pkgver=4.1
 pkgrel=2
 epoch=1

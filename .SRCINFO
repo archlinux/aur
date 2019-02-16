@@ -1,4 +1,4 @@
-pkgbase = ffmpeg-ubuntu
+pkgbase = ffmpeg-ubuntu-bionic
 	pkgdesc = Complete solution to record, convert and stream audio and video ubuntu version
 	pkgver = 4.1
 	pkgrel = 2
@@ -77,5 +77,5 @@ pkgbase = ffmpeg-ubuntu
 	sha256sums = SKIP
 	sha256sums = shatdirtet5r
 
-pkgname = ffmpeg-ubuntu
+pkgname = ffmpeg-ubuntu-bionic
 
