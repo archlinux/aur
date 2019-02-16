@@ -2,8 +2,8 @@
 pkgname=motrix
 _pkgname=Motrix
 pkgver=git20190211
-_pkgver=1.1.3
-pkgrel=2
+_pkgver=1.1.1
+pkgrel=5
 epoch=
 pkgdesc="elegent downloading tool frontend for aria2c,using vue(with personal patches)"
 arch=("x86_64")
@@ -25,11 +25,11 @@ install=
 changelog=
 source=("Motrix.desktop"
 	"aria2.conf"
-	"Motrix.tar.gz"::"https://github.com/agalwood/Motrix/archive/v1.1.3.tar.gz")
+	"Motrix.tar.gz"::"https://github.com/agalwood/Motrix/archive/v$_pkgver.tar.gz")
 noextract=()
 md5sums=('SKIP'
 	'SKIP'
-	'91bd4a7eee2842e62c7d658a611b1f11')
+	'SKIP')
 validpgpkeys=()
 
 prepare() {
