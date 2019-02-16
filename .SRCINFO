@@ -1,0 +1,22 @@
+pkgbase = torrents.csv-git
+	pkgdesc = Torrents.csv is a self hostable, open source torrent search site and database
+	pkgver = 0.r176.24cf3d0
+	pkgrel = 1
+	url = https://gitlab.com/dessalines/torrents.csv
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = npm
+	makedepends = nodejs
+	depends = rust
+	depends = yarn
+	depends = sqlite
+	depends = jq
+	depends = ripgrep
+	provides = torrents.csv
+	options = !strip
+	source = git+https://gitlab.com/dessalines/torrents.csv.git
+	sha256sums = SKIP
+
+pkgname = torrents.csv-git
+
