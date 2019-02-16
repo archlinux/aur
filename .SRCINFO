@@ -9,6 +9,7 @@ pkgbase = desktopfolder
 	makedepends = meson
 	makedepends = ninja
 	makedepends = vala
+	makedepends = intltool
 	depends = libwnck3
 	depends = gtksourceview3
 	source = https://github.com/spheras/desktopfolder/releases/download/v.1.1.0/desktopfolder-1.1.0.tar.xz
