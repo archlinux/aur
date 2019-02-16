@@ -5,7 +5,7 @@
 pkgname=unigine-tropics
 _pkgname=Unigine_Tropics
 pkgver=1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Demonstration and benchmarking of the Unigine 3D engine"
 arch=('i686' 'x86_64')
 url="http://unigine.com/"
@@ -16,7 +16,7 @@ md5sums=('73729f5ccde2bcf991ecff10feb6dbdf'
   depends=('libstdc++5' 'libxrandr' 'libgl' 'openal' 'libxinerama')
 [ `uname -m` = 'x86_64' ] &&
   depends=('lib32-libstdc++5' 'lib32-libxrandr' 'lib32-libgl' 'lib32-openal' 'lib32-libxinerama')
-source=(http://download.fileplanet.com/ftp1/052010/${_pkgname}-${pkgver}.run
+source=(http://m12-assets.unigine.com/d/${_pkgname}-${pkgver}.run
         LICENSE)
 build() {
   cd "${srcdir}"
