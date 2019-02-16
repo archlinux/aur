@@ -11,8 +11,8 @@ pkgbase = neroaac
 	conflicts = neroaacdec
 	conflicts = neroaacenc
 	conflicts = neroaactag
-	source = https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/Multimedia/x86_64/nero-aac-1.5.1-3.26.x86_64.rpm
-	sha256sums = 4222e2e934138dd879f759a1f37633ac2fa82f5849b9d98213debab69b1b5509
+	source = https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/Multimedia/x86_64/nero-aac-1.5.1-3.27.x86_64.rpm
+	sha256sums = e87e54572761950691e5c94d44dd69e338f54b191716f19eac559f15a6b7271f
 	depends_x86_64 = lib32-gcc-libs
 
 pkgname = neroaac
