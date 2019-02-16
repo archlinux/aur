@@ -1,16 +1,16 @@
 pkgbase = zfs-linux-git
-	pkgver = 2019.02.08.r4946.gd8d418ff0_4.20.7.arch1.1
+	pkgver = 2019.02.15.r4957.gf545b6ae0_4.20.8.arch1.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-headers=4.20.7.arch1-1
+	makedepends = linux-headers=4.20.8.arch1-1
 	makedepends = git
 	makedepends = python
 	depends = kmod
-	depends = zfs-utils-git=2019.02.08.r4946.gd8d418ff0
-	depends = linux=4.20.7.arch1-1
-	source = git+https://github.com/zfsonlinux/zfs.git#commit=d8d418ff0cc90776182534bce10b01e9487b63e4
+	depends = zfs-utils-git=2019.02.15.r4957.gf545b6ae0
+	depends = linux=4.20.8.arch1-1
+	source = git+https://github.com/zfsonlinux/zfs.git#commit=f545b6ae00ef77df710ddace328d13e8c5c265bf
 	source = upstream-4f981f6-additional-fixes-for-current_kernel_time-in-4.20.patch
 	sha256sums = SKIP
 	sha256sums = 6f27c3dae57c424e06aec31df6c1e1a821e547aa4e933f2f9b894b5e6762b52d
