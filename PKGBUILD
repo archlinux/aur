@@ -78,7 +78,7 @@ check() {
 package() {
   cd "${srcdir}/${pkgname}-src-r${pkgver}"
 
-  scons install --prefix="${pkgdir}/usr" --nostrip "${_scons_args[@]}"
+  scons install --prefix="${pkgdir}/usr" "${_scons_args[@]}"
 
   install -Dm644 "${srcdir}/${pkgname}.conf" "${pkgdir}/etc/${pkgname}.conf"
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
