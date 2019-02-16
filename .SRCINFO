@@ -1,0 +1,14 @@
+pkgbase = rmapi
+	pkgdesc = Access reMarkable tablet files through the Cloud API
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/juruen/rmapi
+	arch = x86_64
+	license = GPL3
+	makedepends = go-pie
+	depends = glibc
+	source = https://github.com/juruen/rmapi/archive/v0.0.4.tar.gz
+	sha256sums = b3e57462a2158d828f37d5b5f0020d22f60d6212a2d70930ecf8d1593ac05277
+
+pkgname = rmapi
+
