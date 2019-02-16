@@ -1,14 +1,14 @@
-# Maintainer: Dan Johansen <strit83 at gmail dot com>
+# Maintainer: Dan Johansen <strit at manjaro dot org>
 
 pkgname=gpu-viewer
 _pkgname=GPU-Viewer
 pkgver=1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A frontend to glxinfo and vulkaninfo."
 arch=('i686' 'x86_64')
 url="https://github.com/arunsivaramanneo/GPU-Viewer/"
 license=('GPL3')
-depends=('gtk3' 'python' 'python-gobject' 'vulkan-tools' 'clinfo')
+depends=('gtk3' 'python' 'python-gobject' 'vulkan-tools' 'clinfo' 'mesa-demos')
 optdepends=('nvidia: Vulkan nvidia driver'
             'mesa'
             'vulkan-radeon: Vulkan AMD drivers'
