@@ -1,7 +1,7 @@
 pkgbase = simple-viewer-gl
 	pkgdesc = Simple and tiny image viewer based on OpenGL
 	pkgver = 3.05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/andreyu/simple-viewer-gl
 	arch = i686
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = simple-viewer-gl
 	depends = imlib2
 	depends = openexr
 	conflicts = simple-viewer-gl-git
-	source = simple-viewer-gl::https://bitbucket.org/andreyu/simple-viewer-gl/get/v3.05.tar.gz
+	source = https://bitbucket.org/andreyu/simple-viewer-gl/get/v3.05.tar.gz
 	md5sums = SKIP
 
 pkgname = simple-viewer-gl

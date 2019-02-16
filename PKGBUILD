@@ -1,7 +1,8 @@
 # Maintainer: Bogdan Sinitsyn <f1u77y@yandex.ru>
 pkgname=simple-viewer-gl
 pkgver=3.05
-pkgrel=1
+_pkgfilename="v$pkgver.tar.gz"
+pkgrel=2
 pkgdesc='Simple and tiny image viewer based on OpenGL'
 arch=('i686' 'x86_64')
 url='https://bitbucket.org/andreyu/simple-viewer-gl'
@@ -34,8 +35,13 @@ optdepends=(
 conflicts=(
   "${pkgname}-git"
 )
-source=("$pkgname::https://bitbucket.org/andreyu/simple-viewer-gl/get/v$pkgver.tar.gz")
+source=("https://bitbucket.org/andreyu/simple-viewer-gl/get/$_pkgfilename")
 md5sums=('SKIP')
+
+prepare() {
+  cd "$srcdir"
+  mv *"$pkgname"* "$pkgname"
+}
 
 build() {
   cd "$srcdir/$pkgname"
