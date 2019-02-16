@@ -1,0 +1,21 @@
+pkgbase = resvg-qt
+	pkgdesc = SVG rendering library and CLI (Linked against Qt)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/RazrFalcon/resvg
+	arch = i686
+	arch = x86_64
+	license = MPL2
+	makedepends = cargo
+	makedepends = qt5-tools
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = gdk-pixbuf2
+	depends = qt5-base
+	provides = resvg
+	conflicts = resvg
+	source = resvg-qt-0.5.0.tar.gz::https://github.com/RazrFalcon/resvg/archive/v0.5.0.tar.gz
+	sha256sums = f9d0dc31de9b6f516c0c5350f22142ab8af6a2d957a729494bb403cff32ba611
+
+pkgname = resvg-qt
+
