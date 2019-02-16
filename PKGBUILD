@@ -1,4 +1,5 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
+
 pkgname=bmz-cursor-theme-git
 pkgver=r3.a2eb059
 pkgrel=1
