@@ -1,7 +1,7 @@
 # Maintainer: X3n0m0rph59 <x3n0m0rph59@gmail.com>
 pkgname=precached
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.6.0
+pkgrel=0
 pkgdesc="A Linux process monitor and pre-caching daemon"
 arch=('i686' 'x86_64')
 url="https://x3n0m0rph59.gitlab.io/precached/"
@@ -17,7 +17,7 @@ backup=()
 options=()
 install=${pkgname}.install
 changelog=
-source=('precached::git+https://gitlab.com/X3n0m0rph59/precached.git/#branch=v1.5')
+source=('precached::git+https://gitlab.com/X3n0m0rph59/precached.git/#branch=v1.6')
 noextract=()
 md5sums=('SKIP')
 
@@ -37,6 +37,8 @@ package() {
   mkdir -p "$pkgdir/usr/share/doc/precached/examples"
   mkdir -p "$pkgdir/usr/lib/systemd/system/"
   mkdir -p "$pkgdir/usr/lib/systemd/user/"
+  mkdir -p "$pkgdir/usr/lib/systemd/system-preset/"
+  mkdir -p "$pkgdir/usr/lib/systemd/user-preset/"
   mkdir -p "$pkgdir/etc/dbus-1/system.d/"
   mkdir -p "$pkgdir/usr/share/man/man8/"
   mkdir -p "$pkgdir/usr/share/man/man5/"
@@ -64,6 +66,8 @@ package() {
   install -m 644 "support/systemd/precached-trigger.service" "$pkgdir/usr/lib/systemd/user/"
   install -m 644 "support/systemd/precached-prime-caches.service" "$pkgdir/usr/lib/systemd/system/"
   install -m 644 "support/systemd/precached-prime-caches.timer" "$pkgdir/usr/lib/systemd/system/"
+  install -m 644 "support/systemd/precached.preset" "$pkgdir/usr/lib/systemd/system-preset/50-precached.preset"
+  install -m 644 "support/systemd/precached-user.preset" "$pkgdir/usr/lib/systemd/user-preset/50-precached.preset"
   install -m 644 "support/dbus/org.precached.precached1.conf" "$pkgdir/etc/dbus-1/system.d/"
   
   install -m 644 "support/man/precachedtop.1" "$pkgdir/usr/share/man/man1/"
