@@ -1,14 +1,14 @@
 pkgbase = ruby-rmagick
 	pkgdesc = RMagick is an interface between the Ruby programming language and the ImageMagick image processing library
-	pkgver = 2.16.0
-	pkgrel = 5
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = https://github.com/rmagick/rmagick
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = libmagick6
-	source = https://rubygems.org/downloads/rmagick-2.16.0.gem
-	sha256sums = 06d3c969889d31065127e90a612904c575785293420f6d044a8b4dda58093d55
+	source = https://rubygems.org/downloads/rmagick-3.0.0.gem
+	sha256sums = d8575587b5a0ac3cd9d0509540aef35b8cf1065633ae0c7184f1a24675d54f07
 
 pkgname = ruby-rmagick
 
