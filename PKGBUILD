@@ -33,6 +33,12 @@ build() {
   cmake --build .
 }
 
+check() {
+  cd ${_pkgname}-${pkgver}/build
+
+  cmake --build . --target test
+}
+
 package() {
   cd ${_pkgname}-${pkgver}/build
 
