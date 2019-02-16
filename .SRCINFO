@@ -75,7 +75,7 @@ pkgbase = ffmpeg-ubuntu-bionic
 	replaces = ffmpeg
 	source = http://archive.ubuntu.com/ubuntu/pool/universe/f/ffmpeg/ffmpeg_3.4.4.orig.tar.xz
 	sha256sums = SKIP
-	sha256sums = shatdirtet5r
+	sha256sums = 761cff48ef7834f8bb97556690af6be833a626b2f809376ca755b18dee6f9cbc
 
 pkgname = ffmpeg-ubuntu-bionic
 
