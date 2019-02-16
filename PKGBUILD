@@ -1,5 +1,5 @@
-# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
-# Maintainer: sballert <sballert@posteo.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: sballert <sballert@posteo.de>
 
 _gituser="magnars"
 _gitrepo="dash.el"
