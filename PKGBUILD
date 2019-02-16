@@ -1,6 +1,6 @@
 #Maintainer: Martin Friedrich <npanic@acid.wtf>
 #Contributor: Martin Friedrich <npanic@acid.wtf>
-pkgname=kunst
+pkgname=kunst-git
 _pkgname=kunst
 pkgver=20190215
 pkgrel=1
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('sxiv' 'imagemagick' 'bash' 'ffmpeg' 'mpc')
 makedepends=('git')
 provides=($_pkgname)
-source=("git+https://github.com/networkpanic/kunst.git")
+source=("git+https://github.com/sdushantha/kunst.git")
 md5sums=('SKIP')
 
 pkgver()
