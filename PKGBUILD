@@ -2,7 +2,7 @@
 # Contributor: Haskellfant <moritz.kiefer@purelyfunctional.org
 
 pkgname=zam-plugins-git
-pkgver=3.10.r43.g2639251
+pkgver=3.10.r55.gf2d73e5
 pkgrel=1
 pkgdesc="Collection of LV2/LADSPA/VST audio plugins for high quality processing."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/zamaudio/zam-plugins"
 license=('GPL2')
 provides=(${pkgname%-*})
 conflicts=(${pkgname%-*} 'zamplugins')
-depends=('jack2' 'libglvnd' 'fftw' 'libsamplerate')
+depends=('jack' 'libglvnd' 'fftw' 'libsamplerate')
 makedepends=('git' 'pkg-config' 'libx11' 'libgl' 'liblo' 'jack' 'ladspa')
 source=("${pkgname%-*}"::'git+https://github.com/zamaudio/zam-plugins.git'
         'git+https://github.com/DISTRHO/DPF.git')
