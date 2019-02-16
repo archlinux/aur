@@ -1,6 +1,6 @@
 pkgbase = mesen-git
 	pkgdesc = A cross-platform NES/Famicom emulator
-	pkgver = 0.9.7.r243.g435c067d
+	pkgver = 0.9.7.r252.g278ca034
 	pkgrel = 1
 	arch = x86_64
 	license = GPL3
