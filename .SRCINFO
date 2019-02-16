@@ -1,0 +1,14 @@
+pkgbase = irc-slack-git
+	pkgdesc = IRC-to-Slack gateway
+	pkgver = 20190206
+	pkgrel = 1
+	url = https://github.com/insomniacslk/irc-slack
+	arch = any
+	license = BSD
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/insomniacslk/irc-slack.git
+	sha256sums = SKIP
+
+pkgname = irc-slack-git
+
