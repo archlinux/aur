@@ -1,0 +1,11 @@
+pre_install() {
+    useradd -s /bin/nologin -m -d /var/lib/teleirc teleirc
+}
+
+post_install() {
+    chown -R teleirc:teleirc /var/lib/teleirc
+}
+
+post_remove() {
+    userdel teleirc
+}
