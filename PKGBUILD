@@ -7,7 +7,7 @@
 pkgname=pure-pcre
 _pkgname=pure
 pkgver=0.68
-pkgrel=2
+pkgrel=3
 pkgdesc="Pure is a modern-style functional programming language based on term rewriting (variant with Perl regex support)."
 arch=("i686" "x86_64")
 license=('GPL3' 'LGPL3')
