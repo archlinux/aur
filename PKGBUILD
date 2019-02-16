@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=monitor
-pkgver=4.1.1
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='Tools for handling resolutions, wallpapers and timed wallpapers'
 arch=(x86_64)
