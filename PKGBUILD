@@ -8,7 +8,7 @@
 # Based on community/morituri and aur/morituri-git PKGBUILDs
 
 pkgname=whipper-git
-pkgver=0.7.1.r0.gd25b995
+pkgver=0.7.3.r2.g752b485
 pkgrel=1
 pkgdesc='A Unix CD ripper aiming for accuracy over speed -- forked from morituri'
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
     'flac'                          # for reading flac files
     'libcdio-paranoia'              # for the actual ripping
     'libsndfile'                    # for reading wav files
-    'mutagen'                       # for metadata handling
+    'python2-mutagen'               # for metadata handling
     'python2-musicbrainzngs'        # for metadata lookup
     'python2-gobject'
     'python2-pycdio'                # for storing drive identification in config file

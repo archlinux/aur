@@ -1,6 +1,6 @@
 pkgbase = whipper-git
 	pkgdesc = A Unix CD ripper aiming for accuracy over speed -- forked from morituri
-	pkgver = 0.7.1.r0.gd25b995
+	pkgver = 0.7.3.r2.g752b485
 	pkgrel = 1
 	url = https://github.com/whipper-team/whipper
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = whipper-git
 	depends = flac
 	depends = libcdio-paranoia
 	depends = libsndfile
-	depends = mutagen
+	depends = python2-mutagen
 	depends = python2-musicbrainzngs
 	depends = python2-gobject
 	depends = python2-pycdio
