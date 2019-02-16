@@ -1,6 +1,0 @@
-diff -Nur original/VERSION modified/VERSION
---- original/VERSION	2016-11-11 16:20:40.000000000 +0000
-+++ modified/VERSION	2017-12-10 18:59:54.699598593 +0000
-@@ -1 +1 @@
--0.9.13.0
-+0.9.13.1

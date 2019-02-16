@@ -5,31 +5,29 @@
 # Contributor: Nathan Hulse <nat.hulse@gmail.com>
 
 pkgname=compiz
-pkgver=0.9.13.1
-pkgrel=5
+pkgver=0.9.14.0
+pkgrel=1
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
 license=('GPL' 'LGPL' 'MIT')
-depends=('boost-libs' 'xorg-server' 'fuse2' 'glibmm' 'libwnck3' 'pygtk' 'pyrex' 'protobuf' 'metacity' 'glu')
+depends=('boost-libs' 'xorg-server' 'fuse2' 'glibmm' 'libwnck3' 'python-gobject' 'python-cairo' 'protobuf' 'metacity' 'glu')
 makedepends=('boost' 'cmake' 'intltool')
 optdepends=(
   'xorg-xprop: grab various window properties for use in window matching rules'
 )
 conflicts=('compiz-core' 'compiz-gtk' 'compiz-bcop' 'ccsm' 'compiz-fusion-plugins-main' 'compiz-fusion-plugins-extra' 'compiz-fusion-plugins-experimental' 'compizconfig-python' 'libcompizconfig' 'simple-ccsm')
 provides=("compiz-core=${pkgver}" "compiz-bcop=${pkgver}" "ccsm=${pkgver}" "compiz-plugins-main=${pkgver}" "compiz-plugins-extra=${pkgver}" "compizconfig-python=${pkgver}" "libcompizconfig=${pkgver}")
-source=("https://launchpad.net/${pkgname}/${pkgver:0:6}/${pkgver}/+download/${pkgname}-${pkgver}.tar.bz2"
+source=("https://launchpad.net/${pkgname}/${pkgver:0:6}/${pkgver}/+download/${pkgname}-${pkgver}.tar.xz"
         "focus-prevention-disable.patch"
         "gtk-extents.patch"
         "reverse-unity-config.patch"
-        "screenshot-launch-fix.patch"
-        "version.patch")
-sha256sums=('9854802ba2a072a497552a55cc03cce1e947ff68ed3755b484c218f688222cbf'
+        "screenshot-launch-fix.patch")
+sha256sums=('52cd6a90ffe987bd0415fda23c34e1f3284aa34c4d8b4eefb160fbf4d1f33a2c'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
-            '97778fde6eff779e10a03f5c03f26ffdda8bdb89091956fee19ce84d7d8c9ef9'
-            '89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61'
-            '9df571e0f7332aeec6eaea35451439270e9516f1275aa8a639dc1fad9ccc3452')
+            'fba56d3e5fc8d1b47be2b8eaa6d79f48635daccc26db9b0b88fa281cc50c635e'
+            '89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -44,24 +42,15 @@ prepare() {
   # Set focus prevention level to off which means that new windows will always get focus
   patch -p1 -i "${srcdir}/focus-prevention-disable.patch"
 
-  # Use Python 2
-  find -type f \( -name 'CMakeLists.txt' -or -name '*.cmake' \) -exec sed -e 's/COMMAND python/COMMAND python2/g' -i {} \;
-  find compizconfig/ccsm -type f -exec sed -e 's|^#!.*python|#!/usr/bin/env python2|g' -i {} \;
-
   # Fix incorrect extents for GTK+ tooltips, csd etc
   patch -p1 -i "${srcdir}/gtk-extents.patch"
 
   # Fix application launching for the screenshot plugin
   patch -p1 -i "${srcdir}/screenshot-launch-fix.patch"
-
-  # Fix version number, should be 0.9.13.1
-  patch -p1 -i "${srcdir}/version.patch"
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
-
-  export PYTHON="/usr/bin/python2"
 
   mkdir build; cd build
 

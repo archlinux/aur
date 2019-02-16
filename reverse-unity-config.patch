@@ -1,6 +1,6 @@
 diff -Nur original/compizconfig/integration/gnome/gsettings/org.compiz.integrated.gschema.xml modified/compizconfig/integration/gnome/gsettings/org.compiz.integrated.gschema.xml
---- original/compizconfig/integration/gnome/gsettings/org.compiz.integrated.gschema.xml	2016-07-01 12:39:57.000000000 +0100
-+++ modified/compizconfig/integration/gnome/gsettings/org.compiz.integrated.gschema.xml	2016-10-15 09:18:20.339453526 +0100
+--- original/compizconfig/integration/gnome/gsettings/org.compiz.integrated.gschema.xml	2018-08-06 18:15:54.363059834 +0100
++++ modified/compizconfig/integration/gnome/gsettings/org.compiz.integrated.gschema.xml	2018-08-06 18:16:43.161981494 +0100
 @@ -10,9 +10,6 @@
  	<key type="s" name="command-screenshot">
  	    <default>"gnome-screenshot"</default>
@@ -22,8 +22,8 @@ diff -Nur original/compizconfig/integration/gnome/gsettings/org.compiz.integrate
  	    <default>""</default>
  	</key>
 diff -Nur original/metadata/core.xml.in modified/metadata/core.xml.in
---- original/metadata/core.xml.in	2016-07-01 12:39:57.000000000 +0100
-+++ modified/metadata/core.xml.in	2016-10-15 09:18:20.339453526 +0100
+--- original/metadata/core.xml.in	2018-08-06 18:15:54.383049834 +0100
++++ modified/metadata/core.xml.in	2018-08-06 18:16:43.165313161 +0100
 @@ -144,7 +144,7 @@
  			<option name="focus_prevention_match" type="match">
  			<_short>Focus Prevention Windows</_short>
@@ -87,8 +87,8 @@ diff -Nur original/metadata/core.xml.in modified/metadata/core.xml.in
  			<max>32</max>
  			</option>
 diff -Nur original/plugins/animation/animation.xml.in modified/plugins/animation/animation.xml.in
---- original/plugins/animation/animation.xml.in	2016-07-01 12:39:57.000000000 +0100
-+++ modified/plugins/animation/animation.xml.in	2016-10-15 09:18:20.339453526 +0100
+--- original/plugins/animation/animation.xml.in	2018-08-06 18:15:54.403039834 +0100
++++ modified/plugins/animation/animation.xml.in	2018-08-06 18:16:43.171976494 +0100
 @@ -36,7 +36,7 @@
  	    <extensible/>
  	    <sort start="2"/>
@@ -228,8 +228,8 @@ diff -Nur original/plugins/animation/animation.xml.in modified/plugins/animation
  	    <max>1</max>
  	    <precision>0.01</precision>
 diff -Nur original/plugins/commands/commands.xml.in modified/plugins/commands/commands.xml.in
---- original/plugins/commands/commands.xml.in	2016-07-01 12:39:57.000000000 +0100
-+++ modified/plugins/commands/commands.xml.in	2016-10-15 09:18:20.339453526 +0100
+--- original/plugins/commands/commands.xml.in	2018-08-06 18:15:54.413034833 +0100
++++ modified/plugins/commands/commands.xml.in	2018-08-06 18:16:43.175308160 +0100
 @@ -117,7 +117,7 @@
  		<option name="command20" type="string">
  		    <_short>Command line 20</_short>
@@ -248,8 +248,8 @@ diff -Nur original/plugins/commands/commands.xml.in modified/plugins/commands/co
  	    </group>
  	    <group>
 diff -Nur original/plugins/decor/decor.xml.in modified/plugins/decor/decor.xml.in
---- original/plugins/decor/decor.xml.in	2016-07-01 12:39:57.000000000 +0100
-+++ modified/plugins/decor/decor.xml.in	2016-10-15 09:18:20.339453526 +0100
+--- original/plugins/decor/decor.xml.in	2018-08-06 18:15:54.453014834 +0100
++++ modified/plugins/decor/decor.xml.in	2018-08-06 18:21:54.379628141 +0100
 @@ -31,7 +31,7 @@
  		<option name="active_shadow_opacity" type="float">
  		    <_short>Shadow Opacity</_short>
@@ -281,14 +281,14 @@ diff -Nur original/plugins/decor/decor.xml.in modified/plugins/decor/decor.xml.i
  	    <option name="command" type="string">
  		<_short>Command</_short>
  		<_long>Decorator command line that is executed if no decorator is already running.</_long>
--		<default>/usr/bin/gtk-window-decorator</default>
+-		<default>gtk-window-decorator</default>
 +		<default>exec \"${COMPIZ_BIN_PATH}compiz-decorator\"</default>
  	    </option>
  	    <option name="mipmap" type="bool">
  		<_short>Mipmap</_short>
 diff -Nur original/plugins/expo/expo.xml.in modified/plugins/expo/expo.xml.in
---- original/plugins/expo/expo.xml.in	2016-07-01 12:39:57.000000000 +0100
-+++ modified/plugins/expo/expo.xml.in	2016-10-15 09:18:20.339453526 +0100
+--- original/plugins/expo/expo.xml.in	2018-08-06 18:15:54.453014834 +0100
++++ modified/plugins/expo/expo.xml.in	2018-08-06 18:16:43.178639827 +0100
 @@ -17,7 +17,6 @@
  		<plugin>wobbly</plugin>
  		<plugin>animation</plugin>
@@ -323,7 +323,7 @@ diff -Nur original/plugins/expo/expo.xml.in modified/plugins/expo/expo.xml.in
  		    <min>0.1</min>
  		    <max>5.0</max>
  		    <precision>0.1</precision>
-@@ -142,12 +142,12 @@
+@@ -146,12 +146,12 @@
  		<option name="x_offset" type="int">
  		    <_short>X Offset</_short>
  		    <_long>Horizontal offset (in pixels).</_long>
@@ -338,7 +338,7 @@ diff -Nur original/plugins/expo/expo.xml.in modified/plugins/expo/expo.xml.in
  		</option>
  		<option name="y_bottom_offset" type="int">
  		    <_short>Y Bottom Offset</_short>
-@@ -166,7 +166,7 @@
+@@ -170,7 +170,7 @@
  		<option name="vp_distance" type="float">
  		    <_short>Viewport Distance</_short>
  		    <_long>The distance between viewports in Expo mode.</_long>
@@ -347,7 +347,7 @@ diff -Nur original/plugins/expo/expo.xml.in modified/plugins/expo/expo.xml.in
  		    <min>0.0</min>
  		    <max>1.0</max>
  		    <precision>0.01</precision>
-@@ -194,7 +194,7 @@
+@@ -198,7 +198,7 @@
  		    <_long>How the Expo wall should be displayed, if multiple output devices are used.</_long>
  		    <min>0</min>
  		    <max>1</max>
@@ -356,7 +356,7 @@ diff -Nur original/plugins/expo/expo.xml.in modified/plugins/expo/expo.xml.in
  		    <desc>
  			<value>0</value>
  			<_name>One big wall</_name>
-@@ -209,7 +209,7 @@
+@@ -213,7 +213,7 @@
  		    <option name="vp_brightness" type="float">
  			<_short>Brightness</_short>
  			<_long>The brightness of unfocused viewports (in percent).</_long>
@@ -365,7 +365,7 @@ diff -Nur original/plugins/expo/expo.xml.in modified/plugins/expo/expo.xml.in
  			<min>0.0</min>
  			<max>100.0</max>
  			<precision>0.1</precision>
-@@ -229,7 +229,7 @@
+@@ -233,7 +233,7 @@
  			    <red>0xfbfb</red>
  			    <green>0x8b8b</green>
  			    <blue>0x0</blue>
@@ -374,7 +374,7 @@ diff -Nur original/plugins/expo/expo.xml.in modified/plugins/expo/expo.xml.in
  			</default>
  		    </option>
  		</subgroup>
-@@ -238,7 +238,7 @@
+@@ -242,7 +242,7 @@
  		    <option name="reflection" type="bool">
  			<_short>Reflection</_short>
  			<_long>Render a realtime reflection of the viewports on the ground.</_long>
@@ -384,8 +384,8 @@ diff -Nur original/plugins/expo/expo.xml.in modified/plugins/expo/expo.xml.in
  		    <option name="ground_color1" type="color">
  			<_short>Ground Color (near)</_short>
 diff -Nur original/plugins/ezoom/ezoom.xml.in modified/plugins/ezoom/ezoom.xml.in
---- original/plugins/ezoom/ezoom.xml.in	2016-07-01 12:39:57.000000000 +0100
-+++ modified/plugins/ezoom/ezoom.xml.in	2016-10-15 09:18:20.342786836 +0100
+--- original/plugins/ezoom/ezoom.xml.in	2018-08-06 18:15:54.453014834 +0100
++++ modified/plugins/ezoom/ezoom.xml.in	2018-08-06 18:16:43.191966494 +0100
 @@ -30,7 +30,7 @@
  		<option type="button" name="zoom_in_button">
  		    <_short>Zoom In Button</_short>
@@ -413,7 +413,7 @@ diff -Nur original/plugins/ezoom/ezoom.xml.in modified/plugins/ezoom/ezoom.xml.i
  		</option>
  		<option name="zoom_box_outline_color" type="color">
  			<_short>Zoom Box Outline Color</_short>
-@@ -162,7 +162,7 @@
+@@ -346,7 +346,7 @@
  		    <option type="key" name="fit_to_window_key">
  			<_short>Fit zoomed area to window</_short>
  			<_long>Zooms in/out so the focused window is zoomed to the maximum while still being fully visible.</_long>
@@ -423,8 +423,8 @@ diff -Nur original/plugins/ezoom/ezoom.xml.in modified/plugins/ezoom/ezoom.xml.i
  		</subgroup>
  	    </group>
 diff -Nur original/plugins/fade/fade.xml.in modified/plugins/fade/fade.xml.in
---- original/plugins/fade/fade.xml.in	2016-07-01 12:39:57.000000000 +0100
-+++ modified/plugins/fade/fade.xml.in	2016-10-15 09:18:20.342786836 +0100
+--- original/plugins/fade/fade.xml.in	2018-08-06 18:15:54.453014834 +0100
++++ modified/plugins/fade/fade.xml.in	2018-08-06 18:16:43.191966494 +0100
 @@ -10,7 +10,6 @@
  	    </requirement>
  	    <relation type="after">
@@ -443,9 +443,9 @@ diff -Nur original/plugins/fade/fade.xml.in modified/plugins/fade/fade.xml.in
  	    <option name="visual_bell" type="bell">
  		<_short>Visual Bell</_short>
 diff -Nur original/plugins/gnomecompat/gnomecompat.xml.in modified/plugins/gnomecompat/gnomecompat.xml.in
---- original/plugins/gnomecompat/gnomecompat.xml.in	2016-07-01 12:39:57.000000000 +0100
-+++ modified/plugins/gnomecompat/gnomecompat.xml.in	2016-10-15 09:18:20.342786836 +0100
-@@ -54,7 +54,6 @@
+--- original/plugins/gnomecompat/gnomecompat.xml.in	2018-08-06 18:15:54.463009833 +0100
++++ modified/plugins/gnomecompat/gnomecompat.xml.in	2018-08-06 18:16:43.195298161 +0100
+@@ -57,7 +57,6 @@
  		<option name="run_command_terminal_key" type="key">
  		    <_short>Open a terminal</_short>
  		    <_long>Open a terminal</_long>
@@ -454,8 +454,8 @@ diff -Nur original/plugins/gnomecompat/gnomecompat.xml.in modified/plugins/gnome
  	    </group>
  	</options>
 diff -Nur original/plugins/grid/grid.xml.in modified/plugins/grid/grid.xml.in
---- original/plugins/grid/grid.xml.in	2016-07-01 12:39:57.000000000 +0100
-+++ modified/plugins/grid/grid.xml.in	2016-10-15 09:18:20.342786836 +0100
+--- original/plugins/grid/grid.xml.in	2018-08-06 18:15:54.463009833 +0100
++++ modified/plugins/grid/grid.xml.in	2018-08-06 18:16:43.198629827 +0100
 @@ -68,12 +68,12 @@
  		<option name="put_maximize_key" type="key">
  		    <_short>Maximize Key</_short>
@@ -472,16 +472,18 @@ diff -Nur original/plugins/grid/grid.xml.in modified/plugins/grid/grid.xml.in
  		<option name="left_maximize" type="key">
  		    <_short>Left Maximize</_short>
 diff -Nur original/plugins/resize/resize.xml.in modified/plugins/resize/resize.xml.in
---- original/plugins/resize/resize.xml.in	2016-07-01 12:39:57.000000000 +0100
-+++ modified/plugins/resize/resize.xml.in	2016-10-15 09:18:20.342786836 +0100
-@@ -56,15 +56,15 @@
+--- original/plugins/resize/resize.xml.in	2018-08-06 18:15:54.522979833 +0100
++++ modified/plugins/resize/resize.xml.in	2018-08-06 18:16:43.201961494 +0100
+@@ -56,7 +56,7 @@
  	    <option name="maximize_vertically" type="bool">
  	        <short>Maximize Vertically if screen edge hit</short>
  	        <long>Maximizes the window vertically if the top or bottom screen edge is hit while resizing</long>
 -	        <default>true</default>
 +	        <default>false</default>
  	    </option>
- 	    <option name="border_color" type="color">
+ 	    <option name="increase_border_contrast" type="bool">
+ 		<_short>Use a double-border in 'Rectangle' and 'Outline' modes</_short>
+@@ -72,9 +72,9 @@
  		<_short>Border Color</_short>
  		<_long>Border color used for outline and rectangle resize modes</_long>
  		<default>
@@ -494,7 +496,7 @@ diff -Nur original/plugins/resize/resize.xml.in modified/plugins/resize/resize.x
  		    <alpha>0x9f9f</alpha>
  		</default>
  	    </option>
-@@ -72,10 +72,10 @@
+@@ -82,10 +82,10 @@
  		<_short>Fill Color</_short>
  		<_long>Fill color used for rectangle resize mode</_long>
  		<default>
@@ -508,10 +510,10 @@ diff -Nur original/plugins/resize/resize.xml.in modified/plugins/resize/resize.x
 +		    <alpha>0x4f4f</alpha>
  		</default>
  	    </option>
- 	    <subgroup>
+ 	    <option name="disable_blend" type="bool">
 diff -Nur original/plugins/scale/scale.xml.in modified/plugins/scale/scale.xml.in
---- original/plugins/scale/scale.xml.in	2016-07-01 12:39:57.000000000 +0100
-+++ modified/plugins/scale/scale.xml.in	2016-10-15 09:18:20.342786836 +0100
+--- original/plugins/scale/scale.xml.in	2018-08-06 18:15:54.522979833 +0100
++++ modified/plugins/scale/scale.xml.in	2018-08-06 18:16:43.201961494 +0100
 @@ -21,7 +21,7 @@
  			<option name="spacing" type="int">
  				<_short>Spacing</_short>
@@ -566,7 +568,7 @@ diff -Nur original/plugins/scale/scale.xml.in modified/plugins/scale/scale.xml.i
  				<desc>
  					<value>0</value>
  					<_name>On current output device</_name>
-@@ -145,7 +145,7 @@
+@@ -150,7 +150,7 @@
  			<option name="key_bindings_toggle" type="bool">
  			    <_short>Key Bindings Toggle Scale Mode</_short>
  			    <_long>Key bindings toggle scale mode instead of enabling it when pressed and disabling it when released.</_long>
@@ -575,7 +577,7 @@ diff -Nur original/plugins/scale/scale.xml.in modified/plugins/scale/scale.xml.i
  			</option>
  			<option name="button_bindings_toggle" type="bool">
  			    <_short>Button Bindings Toggle Scale Mode</_short>
-@@ -155,12 +155,15 @@
+@@ -160,12 +160,15 @@
  			<option name="initiate_edge" type="edge">
  				<_short>Initiate Window Picker</_short>
  				<_long>Layout and start transforming windows</_long>
@@ -592,7 +594,7 @@ diff -Nur original/plugins/scale/scale.xml.in modified/plugins/scale/scale.xml.i
  			</option>
  			<option name="initiate_button" type="button">
  				<_short>Initiate Window Picker</_short>
-@@ -178,7 +181,6 @@
+@@ -183,7 +186,6 @@
  			<option name="initiate_all_key" type="key">
  				<_short>Initiate Window Picker For All Windows</_short>
  				<_long>Layout and start transforming all windows</_long>
@@ -601,8 +603,8 @@ diff -Nur original/plugins/scale/scale.xml.in modified/plugins/scale/scale.xml.i
  			<option name="initiate_group_edge" type="edge">
  				<_short>Initiate Window Picker For Window Group</_short>
 diff -Nur original/plugins/staticswitcher/staticswitcher.xml.in modified/plugins/staticswitcher/staticswitcher.xml.in
---- original/plugins/staticswitcher/staticswitcher.xml.in	2016-07-01 12:39:57.000000000 +0100
-+++ modified/plugins/staticswitcher/staticswitcher.xml.in	2016-10-15 09:18:20.342786836 +0100
+--- original/plugins/staticswitcher/staticswitcher.xml.in	2018-08-06 18:15:54.542969833 +0100
++++ modified/plugins/staticswitcher/staticswitcher.xml.in	2018-08-06 18:16:43.205293160 +0100
 @@ -11,6 +11,7 @@
  	    <relation type="after">
  		<plugin>composite</plugin>
@@ -680,8 +682,8 @@ diff -Nur original/plugins/staticswitcher/staticswitcher.xml.in modified/plugins
  			    <value>0</value>
  			    <_name>None</_name>
 diff -Nur original/plugins/vpswitch/vpswitch.xml.in modified/plugins/vpswitch/vpswitch.xml.in
---- original/plugins/vpswitch/vpswitch.xml.in	2016-07-01 12:39:57.000000000 +0100
-+++ modified/plugins/vpswitch/vpswitch.xml.in	2016-10-15 09:18:20.342786836 +0100
+--- original/plugins/vpswitch/vpswitch.xml.in	2018-08-06 18:15:54.552964834 +0100
++++ modified/plugins/vpswitch/vpswitch.xml.in	2018-08-06 18:16:43.208624827 +0100
 @@ -95,11 +95,13 @@
  				<option name="next_button" type="button">
  					<_short>Move Next</_short>
@@ -697,8 +699,8 @@ diff -Nur original/plugins/vpswitch/vpswitch.xml.in modified/plugins/vpswitch/vp
  				</option>
  				<option name="initiate_button" type="button">
 diff -Nur original/plugins/wall/wall.xml.in modified/plugins/wall/wall.xml.in
---- original/plugins/wall/wall.xml.in	2016-07-01 12:39:57.000000000 +0100
-+++ modified/plugins/wall/wall.xml.in	2016-10-15 09:18:20.346120144 +0100
+--- original/plugins/wall/wall.xml.in	2018-08-06 18:15:54.552964834 +0100
++++ modified/plugins/wall/wall.xml.in	2018-08-06 18:16:43.211956494 +0100
 @@ -30,12 +30,12 @@
  				<option name="miniscreen" type="bool">
  					<_short>Show Live Viewport Previews</_short>
@@ -856,8 +858,8 @@ diff -Nur original/plugins/wall/wall.xml.in modified/plugins/wall/wall.xml.in
  				<option name="edgeflip_dnd" type="bool">
  					<_short>Edge Flip DnD</_short>
 diff -Nur original/tests/system/xorg-gtest/tests/compiz_xorg_gtest_ewmh.cpp modified/tests/system/xorg-gtest/tests/compiz_xorg_gtest_ewmh.cpp
---- original/tests/system/xorg-gtest/tests/compiz_xorg_gtest_ewmh.cpp	2016-07-01 12:39:57.000000000 +0100
-+++ modified/tests/system/xorg-gtest/tests/compiz_xorg_gtest_ewmh.cpp	2016-10-15 09:18:20.346120144 +0100
+--- original/tests/system/xorg-gtest/tests/compiz_xorg_gtest_ewmh.cpp	2018-08-06 18:15:54.632924833 +0100
++++ modified/tests/system/xorg-gtest/tests/compiz_xorg_gtest_ewmh.cpp	2018-08-06 18:16:43.211956494 +0100
 @@ -46,7 +46,7 @@
  
  namespace
