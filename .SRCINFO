@@ -1,0 +1,14 @@
+pkgbase = emacs-ht
+	pkgdesc = The missing Emacs hash table library.
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/Wilfred/ht.el
+	arch = any
+	license = GPL3
+	makedepends = cask
+	depends = emacs-dash
+	source = emacs-ht-2.2.tar.gz::https://github.com/Wilfred/ht.el/archive/2.2.tar.gz
+	sha256sums = ee4fd96f9e873a603265aa53a84d56bc88af0bb77b10bc1a7f4dc0dcde11513b
+
+pkgname = emacs-ht
+
