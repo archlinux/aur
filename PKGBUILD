@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=4.20.7-arch1
+_srcver=4.20.10-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -86,7 +86,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('540d7d3afe5e0f1a8c5b6a1716dd9824c3ac49842d21d2b2413619d6e6f96d47'
+sha256sums=('53de6be9adfb8899f0a15855f1aef62b8b5a3c5c575196ec8a640a5b8c1c3cf8'
             'SKIP'
             '4ff10c16fa729f808e812e3ff53ef8087ab9c220c84d860676d3bfb5c1c63c5d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -94,7 +94,7 @@ sha256sums=('540d7d3afe5e0f1a8c5b6a1716dd9824c3ac49842d21d2b2413619d6e6f96d47'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '4bd614333fcbe509118b5362889f76d241e1d33e1ee691bd24fd82384ce7f2de'
-            '560c8c06cb7833ab24743b818f831add8a7b6ed65181f30417e7b75f107441ef')
+            '059123200c60ef468ac17bf05a75f37ca69ad34bd21af94644f478c873c3579a')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
