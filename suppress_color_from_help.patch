@@ -1,0 +1,31 @@
+--- errmsg.c	2019-02-16 18:24:54.410110160 +0800
++++ errmsg.c	2019-02-16 18:22:39.476943887 +0800
+@@ -166,8 +166,8 @@
+ 
+ 			SetConsoleTextAttribute(hConsole, screenBufferInfo.wAttributes);
+ 		#else
+-			printf(FGRN("%s"), MsgGetEx(MSG_UASM));
+-			printf(FCYN("%s\n"), MsgGetEx(MSG_UASM2));
++			printf("%s", MsgGetEx(MSG_UASM));
++			printf("%s\n", MsgGetEx(MSG_UASM2));
+ 		#endif	
+ 
+         return( 4 ); /* return number of lines printed */
+@@ -200,7 +200,7 @@
+ 	#else	
+ 		for (p = usage2; *p != '\n'; ) {
+ 			const char *p2 = p + strlen(p) + 1;
+-			printf(FYEL("%-20s %s\n"), p, p2);
++			printf("%-20s %s\n", p, p2);
+ 			p = p2 + strlen(p2) + 1;
+ 		}
+ 	#endif
+@@ -217,7 +217,7 @@
+ 	#else
+ 		for (p = usage; *p != '\n'; ) {
+ 			const char *p2 = p + strlen(p) + 1;
+-			printf(FWHT("%-20s %s\n"), p, p2);
++			printf("%-20s %s\n", p, p2);
+ 			p = p2 + strlen(p2) + 1;
+ 		}
+ 	#endif

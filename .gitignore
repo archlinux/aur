@@ -1,0 +1,6 @@
+*
+
+!suppress_color_from_help.patch
+!PKGBUILD
+!.SRCINFO
+!.gitignore
