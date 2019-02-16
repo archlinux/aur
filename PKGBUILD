@@ -2,13 +2,13 @@
 pkgname='disable-c6-systemd'
 pkgdesc='A systemd service to disable the C6 state for Ryzen CPUs'
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('MIT')
 url='https://github.com/jfredrickson/disable-c6'
 depends=('zenstates-git')
 source=('disable-c6.service')
-md5sums=('1469c232bd5fbe9cbfb62f8a6238c584')
+md5sums=('d75b5b334bf8acb0e710874f918b5df6')
 install=${pkgname}.install
 
 package() {
