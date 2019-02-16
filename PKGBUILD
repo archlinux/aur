@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_gitrepo}"
-  git describe --tags| tr - .
+  git describe --tags | tr - .
 }
 
 build() {
