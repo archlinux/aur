@@ -1,7 +1,7 @@
 # Maintainer: Jeff Fredrickson <jeff.fredrickson@gmail.com>
 pkgname='disable-c6-systemd'
 pkgdesc='A systemd service to disable the C6 state for Ryzen CPUs'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 arch=('any')
 license=('MIT')

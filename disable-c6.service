@@ -6,7 +6,7 @@ Before=basic.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/zenstates.py --c6-disable
+ExecStart=/usr/bin/zenstates --c6-disable
 
 [Install]
 WantedBy=basic.target suspend.target hibernate.target
