@@ -37,7 +37,6 @@ provides=(
 conflicts=('ffmpeg-debian' 'ffmpeg')
 replaces=('ffmpeg-debian' 'ffmpeg')
 source=("http://archive.ubuntu.com/ubuntu/pool/universe/f/ffmpeg/ffmpeg_3.4.4.orig.tar.xz")
-sha256sums=('SKIP' '386f7601e865df6bddde05bb6927119b5a853f0b92e2e9834f59c125a17d3fc6')
 
 build() {
   cd ffmpeg-3.4.4
