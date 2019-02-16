@@ -1,7 +1,7 @@
 pkgbase = pdfstudio
 	pkgdesc = Review, annotate, and edit PDF Documents
 	pkgver = 18.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.qoppa.com/pdfstudio/
 	install = pdfstudio.install
 	arch = i686
