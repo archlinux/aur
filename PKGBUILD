@@ -1,13 +1,13 @@
 # Maintainer: Timmy Yao <timmy.yao@outlook.com.au>
 pkgname=gplates
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop software for the interactive visualisation of plate-tectonics"
 arch=(x86_64)
 url="https://www.gplates.org/"
 license=('GPL')
-depends=(qt4 qwt-qt4)
-makedepends=(cmake glu glew python2 boost mesa gdal cgal proj)
+depends=(qt4 qwt-qt4 gdal)
+makedepends=(cmake glu glew python2 boost mesa cgal proj)
 source=("https://downloads.sourceforge.net/project/gplates/gplates/2.1/gplates-$pkgver-unixsrc.tar.bz2"
         "no-ansi.patch"
         "icon.png"
