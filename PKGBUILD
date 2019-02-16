@@ -7,7 +7,7 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=mythtv-git
-pkgver=30+fixes.20190201.1c2068c6
+pkgver=30+fixes.20190215.5100ef58
 pkgrel=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
