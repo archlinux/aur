@@ -2,14 +2,16 @@
 pkgname=motrix
 _pkgname=Motrix
 pkgver=git20190211
-pkgrel=1
+_pkgver=1.1.3
+pkgrel=2
 epoch=
 pkgdesc="elegent downloading tool frontend for aria2c,using vue(with personal patches)"
 arch=("x86_64")
 url="https://github.com/agalwood/Motrix"
 license=('MIT')
 groups=()
-depends=('bash')
+depends=('bash'
+	 'tar')
 makedepends=('npm'
 	     'git')
 checkdepends=()
@@ -22,14 +24,18 @@ options=()
 install=
 changelog=
 source=("Motrix.desktop"
-	"aria2.conf")
+	"aria2.conf"
+	"Motrix.tar.gz"::"https://github.com/agalwood/Motrix/archive/v1.1.3.tar.gz")
 noextract=()
 md5sums=('SKIP'
-	'SKIP')
+	'SKIP'
+	'91bd4a7eee2842e62c7d658a611b1f11')
 validpgpkeys=()
 
 prepare() {
-	git clone https://github.com/agalwood/$_pkgname.git
+	tar -xvf $_pkgname.tar.gz
+	rm $_pkgname.tar.gz
+	mv $_pkgname-$_pkgver $_pkgname
 	npm config set registry 'https://registry.npm.taobao.org'
 	export ELECTRON_MIRROR='https://npm.taobao.org/mirrors/electron/'
 	export SASS_BINARY_SITE='https://npm.taobao.org/mirrors/node-sass'
