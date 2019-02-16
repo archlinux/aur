@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.glbinding.org/"
 license=('MIT')
 
-depends=('libgl' 'glfw')
+depends=('glfw' 'libgl' 'mesa')
 makedepends=('cmake' 'git')
 checkdepends=('gmock')
 conflicts=('glbinding')
@@ -29,7 +29,6 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DOPTION_BUILD_TESTS=0 \
-		-DOPTION_BUILD_GPU_TESTS=0 \
 		"../$pkgname"
 
 	make
@@ -40,7 +39,6 @@ check() {
 
 	cmake -Wno-dev \
 		-DOPTION_BUILD_TESTS=1 \
-		-DOPTION_BUILD_GPU_TESTS=1 \
 		"../$pkgname"
 
 	make
@@ -48,11 +46,13 @@ check() {
 }
 
 package() {
-	(cd build && make DESTDIR="$pkgdir" install)
+	export DESTDIR="$pkgdir"
+	make -C build install
 
 	install -D -m644 "$pkgname"/LICENSE "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
 
 	# conflict with mesa-demos
 	mv -v "${pkgdir}/usr/bin/glinfo" "${pkgdir}/usr/bin/glinfo-glb"
+	rm -vr "${pkgdir}/usr/include/KHR"
 }
 
