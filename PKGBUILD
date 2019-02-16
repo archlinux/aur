@@ -3,8 +3,8 @@
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.23.3
-pkgrel=2
+pkgver=2.23.90
+pkgrel=1
 pkgdesc="GTK+ Web content engine library"
 arch=('i686' 'x86_64')
 url="https://webkitgtk.org/"
@@ -21,7 +21,7 @@ provides=(webkit2gtk)
 options=('!emptydirs')
 
 source=(http://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz)
-sha1sums=('8da9ee2d87a1dd6c7f9fbb63f37adec610e66edf')
+sha1sums=('83cc239517f27321705a4d6da2bd3f81d5182295')
 
 prepare() {
   [ -d build ] && rm -rf build
