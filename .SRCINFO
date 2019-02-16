@@ -1,6 +1,6 @@
 pkgbase = python-rpy2-hg
 	pkgdesc = A simple, robust Python interface to the R Programming Language.
-	pkgver = r3678.b523b9d0ce9d
+	pkgver = r3742.186f7948b5ce
 	pkgrel = 1
 	url = https://rpy2.bitbucket.io/
 	arch = i686

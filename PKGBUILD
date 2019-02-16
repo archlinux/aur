@@ -1,6 +1,6 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=python-rpy2-hg
-pkgver=r3678.b523b9d0ce9d
+pkgver=r3742.186f7948b5ce
 pkgrel=1
 pkgdesc="A simple, robust Python interface to the R Programming Language."
 arch=('i686' 'x86_64')
@@ -16,6 +16,11 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   echo "r$(hg identify -n).$(hg identify -i)"
+}
+
+build() {
+  cd "$srcdir/$pkgname"
+  python setup.py build
 }
 
 # fails with: AttributeError: module 'rpy2.situation' has no attribute 'get_rlib_path'
