@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=mruby
-pkgver=1.4.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Lightweight Ruby'
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=(readline)
 makedepends=(git bison ruby)
 options=(staticlibs)
 source=(mruby-$pkgver.zip::https://github.com/mruby/mruby/archive/$pkgver.zip)
-sha1sums=('d1ae922f2d99b8c208d43ff7a867ae3bbab7d108')
+sha1sums=('da5932fa902885bc97edb2dde694a331313d35b1')
 
 build() {
   cd mruby-$pkgver
