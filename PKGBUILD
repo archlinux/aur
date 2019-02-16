@@ -1,6 +1,6 @@
 # Maintainer: Nate Levesque <public@thenaterhood.com>
 pkgname=teleirc
-pkgver=1.1.2
+pkgver=1.2.2
 pkgrel=1
 epoch=
 pkgdesc="NodeJS Telegram to IRC bridge bot"
@@ -23,7 +23,7 @@ install="teleirc.install"
 changelog=
 source=("https://github.com/ritlug/teleirc/archive/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('c9df67622e652ef9627938f5b72ef59e28810438fadae920c74efe188320356c')
+sha256sums=('9ef394510beab9836ef50cdcdfa4f3e75fe763fe9f7abc7bd51027a5cbc1b66d')
 
 prepare() {
         cd $srcdir/$pkgname-$pkgver
@@ -44,8 +44,8 @@ package() {
         cd $srcdir/$pkgname-$pkgver
         cp -r node_modules $pkgdir/var/lib/teleirc/
         cp teleirc.js $pkgdir/var/lib/teleirc/
-        cp config.js.example $pkgdir/var/lib/teleirc/config.js
+        cp env.example $pkgdir/var/lib/teleirc/.env
 
         mkdir -p $pkgdir/usr/lib/systemd/system/
-        cp teleirc.service $pkgdir/usr/lib/systemd/system/
+        cp misc/teleirc.service $pkgdir/usr/lib/systemd/system/
 }
