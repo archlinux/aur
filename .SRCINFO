@@ -1,6 +1,6 @@
 pkgbase = wget2-git
 	pkgdesc = Updated version of popular Wget tool
-	pkgver = 1.99.1.r17.g9b616dbe
+	pkgver = 1.99.1.r174.gcee142cf
 	pkgrel = 1
 	url = http://www.gnu.org/software/wget/wget.html
 	arch = i686
