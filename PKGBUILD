@@ -79,7 +79,6 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'chromium-dev.svg'
         # Patch form Gentoo.
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-compiler-r7.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-webrtc-r0.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-widevine-r4.patch'
          # Misc Patches.
         'enable-vaapi.patch' #::https://src.fedoraproject.org/cgit/rpms/chromium.git/tree/enable-vaapi.patch'
@@ -93,7 +92,6 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
             # Patch form Gentoo
             '7fa727b29032577c70f5655b10a440599c12e53d6f52713e661defc1002cfa3a'
-            'bcb2f4588cf5dcf75cde855c7431e94fdcc34bdd68b876a90f65ab9938594562'
             '8c6ecc26aab9f4acc911350d9bb1e40f32cad144b6a08c9d7b188e9598d0f2de'
             # Misc Patches
             'SKIP' #'a72a42f3f8ea5093c792df7d9662e8311a22f7bd0616cd8e2690990d5b247fc1'
@@ -435,7 +433,6 @@ prepare() {
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-compiler-r7.patch"
-  patch -p1 -i "${srcdir}/chromium-webrtc-r0.patch"
 
   # Misc patches.
 
