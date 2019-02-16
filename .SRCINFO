@@ -1,0 +1,15 @@
+pkgbase = python-certipy
+	pkgdesc = A simple python tool for creating certificate authorities and certificates on the fly
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/LLNL/certipy
+	arch = any
+	license = BSD
+	makedepends = python-pypandoc
+	depends = python
+	depends = python-pyopenssl
+	source = https://files.pythonhosted.org/packages/source/c/certipy/certipy-0.1.2.tar.gz
+	sha256sums = 3461c5ff28eda977185132d4c6d4393989c7dd996ba8c780b07b9b4e679d455a
+
+pkgname = python-certipy
+
