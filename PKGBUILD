@@ -23,8 +23,8 @@
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
-pkgver=18.1rc1pre7
-_major=18.0
+pkgver=18.1rc1
+_major=18.1rc1
 pkgrel=1
 _codename=Leia
 _tag="$_major-$_codename"
@@ -73,54 +73,6 @@ source=(
   'cpuinfo'
   '00-fix.building.with.mariadb.patch::https://github.com/wsnipex/xbmc/commit/cd20c8eb8a0394db1f028b118c4ca9b91b7e746a.patch'
   # closed milestone patches go here
-  # https://github.com/xbmc/xbmc/milestone/121?closed=1
-  '01-PR14924.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/14924.patch'
-  '02-PR15352.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15352.patch'
-  '03-PR15328.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15328.patch'
-  '04-PR15327.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15327.patch'
-  '05-PR15248.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15248.patch'
-  '06-PR15342.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15342.patch'
-  '07-PR15362.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15362.patch'
-  '08-PR15359.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15359.patch'
-  '09-PR15376.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15376.patch'
-  '10-PR15368.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15368.patch'
-  '11-PR15383.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15383.patch'
-  '12-PR15382.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15382.patch'
-  '13-PR15381.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15381.patch'
-  '14-PR15392.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15392.patch'
-  '15-PR15394.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15394.patch'
-  '16-PR15385.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15385.patch'
-  '17-PR15401.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15401.patch'
-  '18-PR15403.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15403.patch'
-  '19-PR15351.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15351.patch'
-  '20-PR15399.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15399.patch'
-  '21-PR15410.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15410.patch'
-  '22-PR15422.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15422.patch'
-  '23-PR15353.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15353.patch'
-  '24-PR15419.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15419.patch'
-  '25-PR15420.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15420.patch'
-  '26-PR15358.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15358.patch'
-  '27-PR15425.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15425.patch'
-  '28-PR15431.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15431.patch'
-  '29-PR15443.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15443.patch'
-  '30-PR15441.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15441.patch'
-  '31-PR15341.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15341.patch'
-  '32-PR15369.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15369.patch'
-  '33-PR15445.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15445.patch'
-  '34-PR15448.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15448.patch'
-  '35-PR15232.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15232.patch'
-  '36-PR15449.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15449.patch'
-  '37-PR15450.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15450.patch'
-  '38-PR15455.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15455.patch'
-  '39-PR15460.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15460.patch'
-  '40-PR15457.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15457.patch'
-  '41-PR15148.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15148.patch'
-  '42-PR15468.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15468.patch'
-  '43-PR15466.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15466.patch'
-  '44-PR15476.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15476.patch'
-  '45-PR15461.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15461.patch'
-  '46-PR15454.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15454.patch'
-  '47-PR15459.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15459.patch'
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -132,7 +84,7 @@ noextract=(
   "fstrcmp-$_fstrcmp_version.tar.gz"
   "flatbuffers-$_flatbuffers_version.tar.gz"
 )
-sha256sums=('ac5d64d59c6f4811b41a869538506e56c342b530fac97ad9dc9715f3d480e633'
+sha256sums=('9045a690547d5fce9df69952f1fda27acaebc9d4a3f2b5b10dbe2600e6cb5eac'
             '9a971662e44353c120f2ccf87655571998956e699a2dd800ec708b8b928a53c8'
             '38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
@@ -142,54 +94,7 @@ sha256sums=('ac5d64d59c6f4811b41a869538506e56c342b530fac97ad9dc9715f3d480e633'
             'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
             '5ca5491e4260cacae30f1a5786d109230db3f3a6e5a0eb45d0d0608293d247e3'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
-            '849daf1d5b081ef6d0e428bbc7d448799fc43a8ac9e79cd7513de0eb5a91b0bb'
-            '4676b603e0c170f2d627e305560622b72dbdee51c0a221058c350841a814dc39'
-            '3dea58570ec1a59c94513e4c468d232f87d9a71787740b2bc631751e13ce17c1'
-            'e27441261d72aaa3f3611638715444b068795d175b0b8c8de8d7612062ca4137'
-            'f8966249bc86234a8445109600c24ad926026f179e5bcf65ab3facdfd6acef09'
-            'c53ba29065ea3a1a2ed1c6de76b4f5a6b089313a20704f67224233ac1de2971a'
-            '4c73812dca6de51ab896d060508608756dd5051cc53c6ca4cce9031fd8747b3a'
-            '50b4a057cc2c1c6a6ada2839eb119d91d42ac14e1bbcb5baf272964412fbc711'
-            '3850804d0380db35d651e964b83cbe4d0e3e1e7b1bd85c2dda955fd3974e0737'
-            'ad3b9acf718875c15a2d8427a9e8b90cf88b2512404e7305bc9b0a36ca2f0b5e'
-            'c9dbeeb0d51e8eaa56981f64ca2c3bc5a58317d613d97eba474d2488fefcb04e'
-            '834b542997a21a9c205330ed1b743ec8c430bee9c01a64c0493347756aff4f25'
-            '65f3f4f297f1f5fcc3b91d5f1bbd232d41497a885f2af5480ec72cac3605b76c'
-            'ba525b840f615815892258f74a85c332c9030e8e95988a5463cbb42d35a38a8e'
-            '090d038f824a2d5571e68ced2377173c371bd2e20996eeb1c2b2d9e5999050d4'
-            'b8ee25888ab3e5efbe2e1997180108ac9f2563eeaabecdc83ff981deed079ef6'
-            '269a0f6df80a045c930f38206dabeb966abe317fd05a3d6d38c02c15ed74d6a9'
-            '6e3c798913b1a1aaaebd1e0e699c72e78366e681f8b56282aeaa0237d8508a22'
-            'a31e0ebdb1b7f4af1f2772d87dc5c1b83be105b20c2cc2d2659de58529f0b207'
-            '026b9fb181bbfab92cd141eebff9458cfe536cf789a748047db0e43685db56c1'
-            'f74d3247ea74d4b1bbc6b7cbe82e56066a7d859be8986e90950250d6178b1361'
-            'e087519deabb93c20409d959542a56156970a0a43fbef05278a0225e07ce31bf'
-            '83ba1ab2afcd45e40987bceb5fb2a7b966cc6d669c6d050f51d3539fe2ec247e'
-            '379dbd50fe2ec514636aa544b519201b01973af4fee2d0ad218ac3605d0cd634'
-            '6aaf1343f41a414ea8e27bfd13bffd37f6e594cf8671f96f754f90fa1dac0cc4'
-            '8a6e0aeb20a74bd9a40bd4a7eb50c64c251c5f5ba625a1e96cc438635fb063aa'
-            'ccd551b83ae0911c33584d97bf4a3f4bc26eaebe228b15f1cbe5994bdc156edf'
-            '652df54be641ed23321f795079a2c91f0a8160f5e369f29d26d6caf0689a9c37'
-            '4b6d023895e34649a47e0e7525d1e0db0c67aeb69f0a13370afe433c3981ccd9'
-            '1476af4a27081c5c576ba54d939e611d209e7d3bb42af3e1712378ba3885e9be'
-            '749e0def2581231a712fb08e90a99fbcaba3f6c11e0a740ff1feba11bfd0ac96'
-            'ab7a092bf3b27720da836009ed5d5a30d99c975b1d89b31ff385b921227a980d'
-            '761663edbed8f18f70e9b48b068e7e7500259783a1d150ad94ed5117bdea145c'
-            '4fd2e32602d4b28611e873eb6c86bd307f8b5ed100f616681dac0431943c5af9'
-            '1be369b4a4eaee12c82f8ce003de4bb17da6b486c9bb7ac7a240e0ff41d225b4'
-            '51302f2e12ad58ca3c06d8f5d635b8614943a09cbf4dfad2ee94e9ce5e50eafe'
-            'e293154c3e4698fc7df3a91aac7ce29949d81bd502f0e4ddc8a6e733a6b861ec'
-            'ccf2c6886c20cde118514cebd1faf27b432875b5c6ec1f653c0294b03b04c72e'
-            'e5a71dc57afdf7cf00afa4576b56fcc1e9155837665e3575b0ccb289d061a902'
-            'eadc8a2df4e1bf9202e059d8caade407bae0282236bf324d46534d66becd6c22'
-            '6a42d19d9a7b701db2308829dd3e147089d5a9c3855a9f6f96176e98889726e2'
-            '01a8cbe46e3e3c9fb42278d4283e27f8f7882e3145b58fd7f8fae104ee8f24ea'
-            '7c1c7e993574d1f9be0cd54ee52de58cbc9e77ba38ada7875d858778b64fbac2'
-            '1ff6181f5fa5bb932c532e82b800c0bd60bfa5dd2a42fdf758b9879e05591be2'
-            'd494c8606e52d37b93aa2230525d26c2faea92e49fff5fd9492ad7d9c63aa1ee'
-            '9743757a932270759d938427be588855a5369cc3c3b9b1e4ee99a371ae961e4a'
-            'd166424a07cad55734e65619ba85332f9af8bd0387e823995f739e10789a2587'
-            '2ee85388c9551cbdd0e094f39f42b8f4fce9bb5f24eadc0ca94a0e5d361df292')
+            '849daf1d5b081ef6d0e428bbc7d448799fc43a8ac9e79cd7513de0eb5a91b0bb')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
