@@ -19,109 +19,69 @@
  * THE SOFTWARE.
  */
 
-#include <gdk/gdk.h>
-#include <gtk/gtk.h>
-#include <X11/Xlib.h>
+#include <X11/Xutil.h>
 
+#include <unistd.h>
 #include <stdio.h>
-#include <string.h>
 
-gboolean short_format = 0;
-gboolean one_shot = 0;
+void main(int argc, char *argv[]) {
 
-GOptionEntry option_entries[] = {
-	{
-		.long_name = "short",
-		.arg = G_OPTION_ARG_NONE,
-		.arg_data = &short_format,
-		.description = "Use #RRGGBB output format",
-	},
-	{
-		.long_name = "one-shot",
-		.arg = G_OPTION_ARG_NONE,
-		.arg_data = &one_shot,
-		.description = "Exit after picking one color",
-	},
-	{}
-};
-
-static void
-printColorAt(GdkDrawable *drawable, gint x, gint y)
-{
-	GdkImage *pixel = gdk_drawable_get_image(drawable, x, y, 1, 1);
-
-	guint32 color = gdk_image_get_pixel(pixel, 0, 0);
-
-	if (short_format) {
-		printf("#%06X\n", color);
-	} else {
-		printf("R: %3d, G: %3d, B: %3d | Hex: #%06X\n",
-			(color >> 0x10) & 0xFF,
-			(color >> 0x08) & 0xFF,
-			(color >> 0x00) & 0xFF,
-			color);
-	}
-	fflush(stdout);
-	gdk_image_destroy(pixel);
-}
-
-static GdkFilterReturn
-region_filter_func(GdkXEvent *xevent, GdkEvent *event, GdkWindow *root)
-{
-	XEvent *_xevent = (XEvent*) xevent;
-	gint x, y;
-
-	if (_xevent->type != ButtonPress)
-		return GDK_FILTER_CONTINUE;
-
-	switch (_xevent->xbutton.button)
-	{
-	case Button1:
-		x = _xevent->xbutton.x_root;
-		y = _xevent->xbutton.y_root;
-
-		/* Print color */
-		printColorAt(GDK_DRAWABLE(root), x, y);
-		if (one_shot) {
-			gtk_main_quit();
-			return GDK_FILTER_REMOVE;
-		} else {
-			return GDK_FILTER_CONTINUE;
+	int opt;
+	int short_format = 0;
+	int one_shot = 0;
+	int quit_on_keypress = 0;
+	while ((opt = getopt(argc, argv, "soq")) != -1) {
+		switch(opt) {
+			case 's':
+				short_format = 1;
+				break;
+			case 'o':
+				one_shot = 1;
+				break;
+			case 'q':
+				quit_on_keypress = 1;
+				break;
+			default:
+				fprintf(stderr, "Unknown flag: %c\n", opt);
+				break;
 		}
-
-	default:
-		gtk_main_quit();
-		return GDK_FILTER_REMOVE;
 	}
 
-	return GDK_FILTER_CONTINUE;
-}
+	Display *display = XOpenDisplay(NULL);
+	Window root = DefaultRootWindow(display);
+	XGrabPointer(display, root, 0,  ButtonPressMask, GrabModeAsync, GrabModeAsync, root, None, CurrentTime);
 
-void main(int argc, char *argv[])
-{
-	GdkWindow *root;
-	GdkCursor *cursor;
+	XWindowAttributes gwa;
+	XGetWindowAttributes(display, root, &gwa);
+	XImage *image = XGetImage(display, root, 0, 0, gwa.width, gwa.height, AllPlanes, ZPixmap);
+	XGrabKeyboard(display, root, 0, GrabModeAsync, GrabModeAsync, CurrentTime);
 
-	gtk_init_with_args(&argc, &argv, NULL, option_entries, NULL, NULL);
-
-	root = gdk_get_default_root_window();
-
-	cursor = gdk_cursor_new(GDK_TCROSS);
-
-	gdk_pointer_grab(root, FALSE, GDK_BUTTON_PRESS_MASK,
-	                 NULL, cursor, GDK_CURRENT_TIME);
-
-	gdk_window_add_filter
-		(root, (GdkFilterFunc) region_filter_func, root);
-
-	gdk_flush();
-
-	gtk_main();
-
-	gdk_window_remove_filter
-		(root, (GdkFilterFunc) region_filter_func, root);
-
-	gdk_pointer_ungrab(GDK_CURRENT_TIME);
-
-	gdk_cursor_destroy(cursor);
+	for(;;) {
+		XEvent e;
+		XNextEvent(display, &e);
+		if (e.type == ButtonPress) {
+			if  (e.xbutton.button == Button1) {
+				unsigned long pixel = XGetPixel(image, e.xbutton.x_root, e.xbutton.y_root);
+				if (short_format) {
+					printf("#%06X\n", pixel);
+				} else {
+					printf("R: %3d, G: %3d, B: %3d | Hex: #%06X\n",
+							(pixel >> 0x10) & 0xFF,
+							(pixel >> 0x08) & 0xFF,
+							(pixel >> 0x00) & 0xFF,
+							pixel);
+				}
+				if (one_shot) {
+					break;
+				}
+			} else  {
+				break;
+			}
+		} else if (e.type == KeyPress && (e.xkey.keycode == 53 || quit_on_keypress)) {
+			break;
+		}
+	}
+	XUngrabPointer(display, CurrentTime);
+	XFree(image);
+	XCloseDisplay(display);
 }
