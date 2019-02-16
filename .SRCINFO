@@ -1,6 +1,6 @@
 pkgbase = emacs-dash-git
 	pkgdesc = A modern list API for Emacs. No cl required
-	pkgver = 2.13.0.92.g6514359
+	pkgver = 2.13.0.95.g26f065f
 	pkgrel = 1
 	url = https://github.com/magnars/dash.el
 	arch = any

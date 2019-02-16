@@ -5,7 +5,7 @@ _gituser="magnars"
 _gitrepo="dash.el"
 
 pkgname=emacs-dash-git
-pkgver=2.13.0.92.g6514359
+pkgver=2.13.0.95.g26f065f
 pkgrel=1
 pkgdesc='A modern list API for Emacs. No cl required'
 arch=('any')
@@ -30,7 +30,7 @@ build() {
 
 package() {
   cd "${_gitrepo}"
-  install -d "$pkgdir"/usr/share/emacs/site-lisp/dash/
-  install -Dm644 dash{,-functional}.{el,elc} "$pkgdir"/usr/share/emacs/site-lisp/dash/
+  install -d "$pkgdir"/usr/share/emacs/site-lisp
+  install -Dm644 dash{,-functional}.{el,elc} "$pkgdir"/usr/share/emacs/site-lisp
   install -Dm644 dash.info "$pkgdir"/usr/share/info/dash.info
 }
