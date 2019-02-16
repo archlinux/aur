@@ -3,7 +3,7 @@
 
 pkgname=naemon
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="System and network monitoring application"
 arch=('i686' 'x86_64')
 url="http://naemon.org"
@@ -70,8 +70,8 @@ package() {
     "$pkgdir"/usr/lib/systemd/system/$pkgname.service
 
   # Move sample config files
-  install -dm755 "$pkgdir"/user/share/doc/naemon
-  mv "$pkgdir"/etc/naemon/conf.d "$pkgdir"/user/share/doc/naemon/
+  install -dm755 "$pkgdir"/usr/share/doc/naemon
+  mv "$pkgdir"/etc/naemon/conf.d "$pkgdir"/usr/share/doc/naemon/
   install -d "$pkgdir"/etc/naemon/conf.d/templates
 
   # Remove non-Arch directories
