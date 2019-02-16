@@ -55,7 +55,7 @@ build() {
 
   CFLAGS+=' -DIDEVICERESTORE_NOMAIN=1 -DIMG4TOOL_NOMAIN=1 -DTSSCHECKER_NOMAIN=1'
   ./autogen.sh --prefix=/usr
-  make V=1
+  make
 }
 
 package() {
