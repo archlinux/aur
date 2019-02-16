@@ -15,6 +15,7 @@ license=(
 # PKGEXT=.pkg.tar
 # source=('uasm::git+https://github.com/Terraspace/UASM.git#branch=v2.47.1')
 source=(
+  # https://travis-ci.org/Terraspace/UASM/branches
   'uasm::git+https://github.com/Terraspace/UASM.git#commit=f36556139c658bb8f970579d6d84497210d10958'
   'suppress_color_from_help.patch'
 )
