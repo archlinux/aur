@@ -4,8 +4,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-dash
-pkgver=2.14.1
-pkgrel=2
+pkgver=2.15.0
+pkgrel=1
 pkgdesc='A modern list API for Emacs'
 arch=('any')
 url="https://github.com/magnars/dash.el"
@@ -13,7 +13,7 @@ license=('GPL')
 makedepends=('emacs')
 depends=('emacs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/magnars/dash.el/archive/$pkgver.tar.gz")
-md5sums=('914932c18d11a4606f43f78d7a327c90')
+sha256sums=('8e0f91346a12882a1c94f57f23d0a827b45e760c6e3cf98d94cb7c5425bdf71f')
 
 build() {
   cd dash.el-"$pkgver"
