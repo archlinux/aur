@@ -1,19 +1,19 @@
 # Maintainer: Mr. Outis <mroutis@protonmail.com>
 pkgname=dvc
-pkgver=0.24.3
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="Open-source version control system for data science projects"
 arch=('any')
 url="https://github.com/iterative/${pkgname}"
 license=('Apache')
 
-makedepends=('git' 'python-setuptools' 'python-pyasn1')
+makedepends=('git' 'python-setuptools')
 
 depends=('python3' 'python-pyaml' 'python-configobj'
          'python-ply' 'python-zc.lockfile' 'python-gitpython'
          'python-requests' 'python-colorama' 'python-future'
          'python-pillow' 'python-wcwidth' 'python-distro'
-         'python-pyfiglet' 'python-networkx')
+         'python-pyfiglet' 'python-networkx' 'python-pyasn1')
 
 optdepends=('python-boto3: support for AWS S3 remote'
             'python-paramiko: support for SSH remote'
@@ -29,7 +29,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         'https://files.pythonhosted.org/packages/source/c/configparser/configparser-3.5.0.tar.gz'
         'https://files.pythonhosted.org/packages/source/a/asciimatics/asciimatics-1.10.0.tar.gz')
 
-sha256sums=('47daf615c274430d1351a3b13fead14e5bace26c700826b6f14f8362b9608cf2'
+sha256sums=('a2d7d6bb7f70f82f801c9273ef8081c577e0969039d00770064e8c72484a3e89'
             '7471db231bd7338bc0035b16edf0dc0c900c82d23060f4b4d0c4304caedda6e4'
             '05c471281c45ae113f6103d1268ec7a4831a2e96aa80de45edc89b11fac4fbec'
             '50c058ce3371a819606ff29e914e6555c4d6c2527bff0cd0ed20af5947703118'
