@@ -1,0 +1,15 @@
+post_install() {
+  cat <<EOF
+You need the Quake 1 data files to play.
+Copy the "id1" directory to /usr/share/games/quake
+EOF
+}
+
+post_upgrade() {
+  if [ "$(vercmp "$1" 20140513-1)" -eq 1 ]; then
+    cat <<EOF
+The Quake data directory has changed to /usr/share/games/quake
+You may need to move or link your current data from /usr/share/quake
+EOF
+  fi
+}

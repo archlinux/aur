@@ -1,0 +1,30 @@
+pkgbase = darkplaces-2017
+	pkgdesc = An advanced Quake 1 game engine (August 29th 2017 build)
+	pkgver = 20170829beta1
+	pkgrel = 2
+	url = http://icculus.org/twilight/darkplaces/
+	install = darkplaces-2017.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xextproto
+	makedepends = xf86dgaproto
+	makedepends = xf86vidmodeproto
+	makedepends = xproto
+	depends = alsa-lib
+	depends = hicolor-icon-theme
+	depends = libjpeg-turbo
+	depends = libxpm
+	depends = libxxf86vm
+	depends = sdl
+	provides = darkplaces
+	conflicts = darkplaces
+	conflicts = darkplaces-git
+	noextract = darkplacesengine20170829beta1.zip
+	source = http://icculus.org/twilight/darkplaces-2017/files/darkplacesengine20170829beta1.zip
+	source = darkplaces.desktop
+	sha256sums = 029a781467c2a5537f897f7b63c5eb502bbcfbd777d45bd34713593f69645e3e
+	sha256sums = 476f513f85da873ce93c89f2078bf9c2ea244e3e13a19c6ab02e818ddf221c37
+
+pkgname = darkplaces-2017
+
