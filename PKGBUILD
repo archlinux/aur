@@ -1,10 +1,11 @@
-# Maintainer: sballert <sballert@posteo.de>
+# Contributor: sballert <sballert@posteo.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 _gituser="emacs-lsp"
 _gitrepo="lsp-mode"
 
 pkgname=emacs-lsp-mode-git
-pkgver=r837.b9f847f
+pkgver=6.0.51.g6dc60e2
 pkgrel=1
 pkgdesc="Emacs client/library for the Language Server Protocol"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -19,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  git describe --tags|tr - .
 }
 
 build() {
