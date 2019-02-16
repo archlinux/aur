@@ -1,13 +1,12 @@
 pkgbase = bum-git
 	pkgdesc = Download and display album art for mpd/mopidy tracks.
 	pkgver = r54.004d795
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dylanaraps/bum
 	arch = any
 	license = Apache License, Version 2.0
 	makedepends = python-setuptools
 	makedepends = git
-	makedepends = python-mpv
 	depends = python
 	depends = python-mpv
 	depends = python-musicbrainzngs
