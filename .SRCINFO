@@ -1,6 +1,6 @@
 pkgbase = kvmd
 	pkgdesc = The main Pi-KVM daemon
-	pkgver = 0.127
+	pkgver = 0.128
 	pkgrel = 1
 	url = https://github.com/pi-kvm/kvmd
 	install = kvmd.install
@@ -20,7 +20,7 @@ pkgbase = kvmd
 	depends = python-dbus
 	depends = python-pygments
 	depends = v4l-utils
-	source = https://github.com/pi-kvm/kvmd/archive/v0.127.tar.gz
+	source = https://github.com/pi-kvm/kvmd/archive/v0.128.tar.gz
 	md5sums = SKIP
 
 pkgname = kvmd
