@@ -1,0 +1,20 @@
+pkgbase = wcm-git
+	pkgdesc = Wayfire Config Manager
+	pkgver = r89.f481ea3
+	pkgrel = 1
+	url = https://wayfire.org
+	arch = x86_64
+	license = custom:MIT
+	makedepends = wayland-protocols
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	depends = wf-config
+	depends = gtkmm3
+	provides = wcm
+	conflicts = wcm
+	source = wcm-git::git+https://github.com/WayfireWM/wcm
+	sha512sums = SKIP
+
+pkgname = wcm-git
+
