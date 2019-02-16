@@ -1,6 +1,6 @@
 pkgbase = libiio
 	pkgdesc = Library for interfacing with IIO devices
-	pkgver = 0.16
+	pkgver = 0.17
 	pkgrel = 1
 	url = https://github.com/analogdevicesinc/libiio
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = libiio
 	depends = libserialport
 	depends = libaio
 	depends = libusb
-	source = libiio-0.16.zip::https://github.com/analogdevicesinc/libiio/archive/v0.16.zip
-	sha1sums = 8a16fb962acac0120f76c1ace9b001d61935e68f
+	source = libiio-0.17.zip::https://github.com/analogdevicesinc/libiio/archive/v0.17.zip
+	sha1sums = 272702fc8caa29b41b53099a0c383413ee76bfde
 
 pkgname = libiio
 

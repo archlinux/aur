@@ -1,7 +1,7 @@
 # For ArchLinux by Joel Porquet
 
 pkgname=libiio
-pkgver=0.16
+pkgver=0.17
 pkgrel=1
 pkgdesc='Library for interfacing with IIO devices'
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ depends=(libxml2 avahi libserialport libaio libusb)
 makedepends=(cmake python)
 url='https://github.com/analogdevicesinc/libiio'
 source=(libiio-$pkgver.zip::https://github.com/analogdevicesinc/libiio/archive/v$pkgver.zip)
-sha1sums=('8a16fb962acac0120f76c1ace9b001d61935e68f')
+sha1sums=('272702fc8caa29b41b53099a0c383413ee76bfde')
 
 build() {
   cd libiio-$pkgver
