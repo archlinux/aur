@@ -14,7 +14,7 @@ conflicts=('darkplaces' 'darkplaces-git')
 provides=('darkplaces')
 makedepends=('xextproto' 'xf86dgaproto' 'xf86vidmodeproto' 'xproto')
 install=$pkgname.install
-source=(http://icculus.org/twilight/$pkgname/files/darkplacesengine$pkgver.zip
+source=(http://icculus.org/twilight/darkplaces/files/darkplacesengine$pkgver.zip
         darkplaces.desktop)
 sha256sums=('029a781467c2a5537f897f7b63c5eb502bbcfbd777d45bd34713593f69645e3e'
             '476f513f85da873ce93c89f2078bf9c2ea244e3e13a19c6ab02e818ddf221c37')
