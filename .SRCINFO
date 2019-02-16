@@ -1,0 +1,12 @@
+pkgbase = gebaar
+	pkgdesc = A Super Simple WM Independent Touchpad Gesture Daemon for libinput.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/Coffee2CodeNL/gebaar-libinput
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = libinput
+
+pkgname = gebaar
+
