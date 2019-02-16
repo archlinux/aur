@@ -2,8 +2,8 @@
 _watch=('https://www.hiawatha-webserver.org/latest' '(\d[\d.]*)')
 
 pkgname=hiawatha-letsencrypt
-pkgver=10.8.3
-pkgrel=2
+pkgver=10.8.4
+pkgrel=1
 pkgdesc="Let's Encrypt script for the Hiawatha webserver"
 url='https://www.hiawatha-webserver.org'
 arch=('any')
@@ -14,7 +14,7 @@ source=("${url}/files/hiawatha-${pkgver}.tar.gz"
         "${pkgname}-renew.service"
         "${pkgname}-renew.timer")
 
-md5sums=('e37ea9419d5a516e5c9b0aa80b7776c4'
+md5sums=('9bacec2a5c1db3e0f13e615f4c1e42df'
          '38c1e11a490e415b22d4e6f61db72f73'
          '72c4e3c54f6b7fe3b157ae33e79bfdef')
 

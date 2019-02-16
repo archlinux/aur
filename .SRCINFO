@@ -1,17 +1,17 @@
 pkgbase = hiawatha-letsencrypt
 	pkgdesc = Let's Encrypt script for the Hiawatha webserver
-	pkgver = 10.8.3
-	pkgrel = 2
+	pkgver = 10.8.4
+	pkgrel = 1
 	url = https://www.hiawatha-webserver.org
 	arch = any
 	license = GPL2
 	depends = php
 	depends = hiawatha
 	backup = etc/letsencrypt/letsencrypt.conf
-	source = https://www.hiawatha-webserver.org/files/hiawatha-10.8.3.tar.gz
+	source = https://www.hiawatha-webserver.org/files/hiawatha-10.8.4.tar.gz
 	source = hiawatha-letsencrypt-renew.service
 	source = hiawatha-letsencrypt-renew.timer
-	md5sums = e37ea9419d5a516e5c9b0aa80b7776c4
+	md5sums = 9bacec2a5c1db3e0f13e615f4c1e42df
 	md5sums = 38c1e11a490e415b22d4e6f61db72f73
 	md5sums = 72c4e3c54f6b7fe3b157ae33e79bfdef
 
