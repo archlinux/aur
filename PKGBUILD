@@ -1,6 +1,7 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
+# Maintainer: Sorah Fukumori <her@sorah.jp>
 pkgname=mitamae
-pkgver=1.5.6
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Configuration management tool embedding mruby"
 arch=('i686' 'x86_64')
@@ -8,7 +9,7 @@ url="https://github.com/k0kubun/mitamae"
 license=('MIT')
 depends=('openssl' 'pacman')
 makedepends=('ruby-rake' 'git')
-_mruby_revision=1.3.0
+_mruby_revision=2.0.0
 source=("https://github.com/k0kubun/${pkgname}/archive/v${pkgver}.tar.gz"
         "mruby-${_mruby_revision}.tar.gz::https://github.com/mruby/mruby/archive/${_mruby_revision}.tar.gz"
         'build_config.rb'
@@ -36,7 +37,6 @@ package() {
   install -m755 mruby/build/host/bin/mitamae-secrets "$pkgdir/usr/bin/"
   install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
-sha512sums=('b55721a7f5b8c8421af49d82a455580ca452d4559d8f56ba7e613707bae1c5227c4eda47f3eb76c657dd91b7925978e3c4277fc38d525e26fb5efd1854d19bff'
-            '13a57306706d2d60693151919ae15bb3621e6e7ed3b5e9c6d3b1c8d44e52b898c1ad394b39946d730ff82a19f5e3b7c2a374f9dcc3b6c6f990581e504f1cb9cb'
-            'b68c111f31d97f4ce4932ab84ac4ad150db0e1046ccfca8a2091e452e43bb23ded0184d2dbf36dd422d4266890d9f89c7ad4f09a1b8b4ca020eb1540949e3ecf')
+sha512sums=('b77d1480ebd6d15522b3d4eaaa5c23378b72e181c834bf7fa6a4ea9628e8bd3bda2d33847a8f83e4e1314b0f5a17d869a7b2dee0cf23a153af637170d32e723b'
+            '8379f76b7a06d280e2a2552eec2975ffa3fe85b99028f6f7c009cd908f95faf3cd36a9975f502a5779559baf3c45a4297da0b6bcc038d213a0fdee851f9d01ea'
+            '8dc2f04d2251e2568d4151e5362497687922560ec383795634a8cec7483858ff23943dcedff25391b95586e67247adbd1936168835df973d218450f68bb55802')
