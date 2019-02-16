@@ -65,7 +65,6 @@ check() {
 
   # 3.6.0: mlock permission denied
   scons unittests "${_scons_args[@]}"
-  sed -i -e "/oplog_buffer_collection_test/d" "${srcdir}/${pkgname}-src-r${pkgver}/build/unittests.txt"
   LANG="en_US.UTF-8" python2 "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=unittests || warning "Tests failed"
 
   scons dbtest "${_scons_args[@]}"
