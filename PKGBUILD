@@ -1,16 +1,16 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=acc
-pkgver=1.56
+pkgver=1.57
 pkgrel=1
 pkgdesc='ACS script compiler for use with ZDoom and/or Hexen'
 arch=('i686' 'x86_64')
 url='https://github.com/rheit/acc'
 license=('custom:EULA')
 depends=('glibc')
-source=("http://zdoom.org/files/utils/acc/acc${pkgver//./}-src.zip"
+source=("http://zdoom.org/files/utils/acc/acc${pkgver//./}src.zip"
         'http://www.doomworld.com/eternity/activision_eula.txt')
-sha256sums=('63aea643b9105cb156fb77f696c8236d9c08317a753d8dee96f29510b0401909'
+sha256sums=('53c4ac1bbdebf0b5303b7b1aa886edfa5a9be58348b905d9074cc0e43472fff7'
             'd1dd96235e883c638e202715039946fac58f2979e1f11cb2bbe2a24eefb5fe9a')
 
 prepare() {
