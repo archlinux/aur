@@ -1,42 +1,38 @@
-# Maintainer: aimileus <me at aimileus dot nl>
+# Maintainer: Lenovsky <lenovsky@pm.me>
+# Contributor: aimileus <me at aimileus dot nl>
+
 pkgname=protonmail-bridge
-_pkgver=1.1.0
-_pkgrel=1
-pkgver="${_pkgver}.${_pkgrel}"
+pkgver=1.1.1
 pkgrel=1
-pkgdesc="Application to use IMAP/SMTP with your paid ProtonMail account"
+pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
-url="https://protonmail.com/bridge/"
-license=('custom' 'MIT')
-depends=(
-  'libsecret'
-  'gnome-keyring'
-  'qt5-svg'
-  'qt5-declarative'
-  'qt5-multimedia'
-  'ttf-dejavu'
+url="https://www.protonmail.com/bridge"
+license=('MIT')
+depends=('hicolor-icon-theme' 'libsecret' 'qt5-multimedia' 'ttf-dejavu')
+optdepends=(
+    'gnome-keyring: supported password manager (password manager is required)'
+    'pass: supported password manager (password manager is required)'
 )
-options=('!strip')
-source=("https://protonmail.com/download/protonmail-bridge_${_pkgver}-${_pkgrel}_amd64.deb")
-sha256sums=('6bfec875e593d1df535df56e045cb795b672491d40301b5f1bcde68980f84950')
+options=('!emptydirs' '!strip')
+source=("https://protonmail.com/download/protonmail-bridge_${pkgver}-${pkgrel}_amd64.deb")
+sha256sums=('5744fb4efadaf30be0511b0cc6ceef53e5562175d0a1c09db81d7b91bef71a91')
 
 prepare() {
-	tar xvJf data.tar.xz
+    tar xf data.tar.xz
 
-	mv usr/share/applications/Desktop-Bridge.desktop \
-		usr/share/applications/protonmail-bridge.desktop
-	sed -i "s|Icon=/usr/share/icons/protonmail/Desktop-Bridge.svg|Icon=protonmail-bridge|" \
-                usr/share/applications/protonmail-bridge.desktop
+    mkdir -p usr/share/icons/hicolor/scalable/apps
+    mv usr/share/icons/protonmail/ProtonMail_Bridge.svg \
+        usr/share/icons/hicolor/scalable/apps/"${pkgname}".svg
 
-	# Don't pollute /usr/share/icons
-	mkdir -p usr/share/icons/hicolor/scalable/apps
-	mv usr/share/icons/protonmail/Desktop-Bridge.svg \
-		usr/share/icons/hicolor/scalable/apps/protonmail-bridge.svg
-        rmdir usr/share/icons/protonmail
+    mv usr/share/applications/ProtonMail_Bridge.desktop \
+        usr/share/applications/"${pkgname}".desktop
+    sed -i "s|Icon=.*|Icon=protonmail-bridge|" \
+        usr/share/applications/"${pkgname}".desktop
 }
 
 package() {
-        cp -r usr/ "$pkgdir"
-	install -Dm644 "$pkgdir"/usr/lib/protonmail/bridge/{eula.txt,LICENSE} \
-		-t "$pkgdir/usr/share/licenses/$pkgname"
+    mv usr/ "${pkgdir}"
+
+    install -D -m644 "${pkgdir}"/usr/lib/protonmail/bridge/{eula.txt,LICENSE} \
+        -t "${pkgdir}"/usr/share/licenses/"${pkgname}"
 }

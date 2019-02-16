@@ -1,20 +1,20 @@
 pkgbase = protonmail-bridge
-	pkgdesc = Application to use IMAP/SMTP with your paid ProtonMail account
-	pkgver = 1.1.0.1
+	pkgdesc = Integrate ProtonMail paid account with any program that supports IMAP and SMTP
+	pkgver = 1.1.1
 	pkgrel = 1
-	url = https://protonmail.com/bridge/
+	url = https://www.protonmail.com/bridge
 	arch = x86_64
-	license = custom
 	license = MIT
+	depends = hicolor-icon-theme
 	depends = libsecret
-	depends = gnome-keyring
-	depends = qt5-svg
-	depends = qt5-declarative
 	depends = qt5-multimedia
 	depends = ttf-dejavu
+	optdepends = gnome-keyring: supported password manager (password manager is required)
+	optdepends = pass: supported password manager (password manager is required)
+	options = !emptydirs
 	options = !strip
-	source = https://protonmail.com/download/protonmail-bridge_1.1.0-1_amd64.deb
-	sha256sums = 6bfec875e593d1df535df56e045cb795b672491d40301b5f1bcde68980f84950
+	source = https://protonmail.com/download/protonmail-bridge_1.1.1-1_amd64.deb
+	sha256sums = 5744fb4efadaf30be0511b0cc6ceef53e5562175d0a1c09db81d7b91bef71a91
 
 pkgname = protonmail-bridge
 
