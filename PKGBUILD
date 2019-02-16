@@ -6,13 +6,13 @@
 pkgname=firefox-appmenu
 _pkgname=firefox
 pkgver=65.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://aur.archlinux.org/packages/firefox-appmenu/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
-         ffmpeg nss ttf-font libpulse sqlite libvpx icu)
+         ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
              python nodejs python2-psutil cbindgen nasm)
@@ -84,15 +84,8 @@ ac_add_options --with-google-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 # System libraries
-ac_add_options --enable-system-ffi
-ac_add_options --enable-system-sqlite
-ac_add_options --with-system-bz2
-ac_add_options --with-system-icu
-ac_add_options --with-system-jpeg
-ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --with-system-zlib
 
 # Features
 ac_add_options --enable-alsa
