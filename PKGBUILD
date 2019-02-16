@@ -2,7 +2,7 @@
 # Owner/Cofntributer: Xinzhao Xu <z2d@jifangcheng.com>
 
 pkgname=annie
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="A fast, simple and clean video downloader written in Go"
@@ -12,7 +12,7 @@ makedepends=('dep')
 depends=('go-pie' 'ffmpeg')
 conflicts=("annie")
 options=('!strip' '!emptydirs')
-source=("annie::git+https://github.com/iawia002/annie#tag=0.9.1")
+source=("annie::git+https://github.com/iawia002/annie#tag=0.9.2")
 
 prepare(){
 	mkdir -p gopath/src/github.com
