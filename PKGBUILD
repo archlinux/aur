@@ -60,12 +60,9 @@ check() {
 
   export SCONSFLAGS="$MAKEFLAGS"
 
-  # Setting LANG to workaround the following test error:
-  # std::exception: locale::facet::_S_create_c_locale name not valid
-
   # 3.6.0: mlock permission denied
   scons unittests "${_scons_args[@]}"
-  LANG="en_US.UTF-8" python2 "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=unittests || warning "Tests failed"
+  python2 "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=unittests || warning "Tests failed"
 
   scons dbtest "${_scons_args[@]}"
   python2 "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=dbtest
