@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=libspng
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="C library for reading and writing PNG format files with a focus on security and ease of use"
 arch=(i686 x86_64 armv6h armv7h)
@@ -12,7 +12,7 @@ makedepends=(meson)
 #checkdepends=(libpng)
 conflicts=(libspng-git)
 source=("https://gitlab.com/randy408/libspng/-/archive/v${pkgver}/libspng-v${pkgver}.tar.gz")
-sha256sums=('ac1b359f645a30f9ce340f58fcf643e19b41db58d71896041fc51d77573194a5')
+sha256sums=('bc0046f7798d30f8aa061b157808b4acdb734f1f81154879f3b98c49136c1516')
 
 build() {
     arch-meson build "libspng-v${pkgver}"
