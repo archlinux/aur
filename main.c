@@ -19,6 +19,7 @@
  * THE SOFTWARE.
  */
 
+#include <X11/cursorfont.h>
 #include <X11/Xutil.h>
 
 #include <unistd.h>
@@ -49,7 +50,9 @@ void main(int argc, char *argv[]) {
 
 	Display *display = XOpenDisplay(NULL);
 	Window root = DefaultRootWindow(display);
-	XGrabPointer(display, root, 0,  ButtonPressMask, GrabModeAsync, GrabModeAsync, root, None, CurrentTime);
+
+	Cursor cursor = XCreateFontCursor(display, 130);
+	XGrabPointer(display, root, 0,  ButtonPressMask, GrabModeAsync, GrabModeAsync, root, cursor, CurrentTime);
 
 	XWindowAttributes gwa;
 	XGetWindowAttributes(display, root, &gwa);
