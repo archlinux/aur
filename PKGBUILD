@@ -24,7 +24,7 @@ prepare() {
   cd "$srcdir"
   bsdtar -xf darkplacesengine$pkgver.zip darkplacesenginesource$pkgver.zip
   bsdtar -xf darkplacesenginesource$pkgver.zip
-  cd "$pkgname"
+  cd "darkplaces"
 
   # Fix a couple options in the Makefile.
   sed -i '1i DP_LINK_TO_LIBJPEG=1' makefile
@@ -32,7 +32,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/darkplaces"
 
   # Make sure Darkplaces is not compiled with -j > 1.
   MAKEFLAGS="${MAKEFLAGS} -j1"
@@ -40,7 +40,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/$pkgname
+  cd $srcdir/darkplaces
   install -d $pkgdir/usr/bin
   install -m755 darkplaces-{dedicated,glx,sdl} $pkgdir/usr/bin
 
