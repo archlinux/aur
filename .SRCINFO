@@ -1,10 +1,11 @@
 pkgbase = ant-dracula-theme-git
 	pkgdesc = Dracula variant of the Ant theme
 	pkgver = 50.ffc0fa2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EliverLara/Ant-Dracula
 	arch = any
 	license = GPL
+	makedepends = inkscape
 	optdepends = ttf-roboto: primary font face defined
 	optdepends = ttf-ubuntu-font-family: secondary font face defined
 	optdepends = cantarell-fonts: tertiary font face defined
