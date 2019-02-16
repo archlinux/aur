@@ -1,7 +1,7 @@
 # Maintainer: Kamil Śliwak <cameel2@gmail.com>
 
 _addon_name=tab_session_manager
-_addon_version=4.5.1
+_addon_version=4.5.2
 _addon_id=859942
 _addon_filename="${_addon_name}-${_addon_version}-fx.xpi"
 _gecko_id="Tab-Session-Manager@sienori"
@@ -16,7 +16,7 @@ license=('MPL2')
 depends=("firefox")
 source=("https://addons.cdn.mozilla.net/user-media/addons/${_addon_id}/${_addon_filename}")
 noextract=("${_addon_filename}")
-sha256sums=('a35e7b7c71d1930cc0fa98176d34836572bbabe60c16b638bc66cbfec81cea7c')
+sha256sums=('d1fc1abd81d7a0068961d337b7dda85d0c79126dab145a7156e92f515b2fe414')
 
 
 package() {
