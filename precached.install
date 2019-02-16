@@ -1,12 +1,5 @@
-post_install() {
-	echo ""  	
-	echo "==> To enable precached on your system, the following commands will need to be run:"  	
-	echo ""  	
-	echo "==> $ sudo systemctl enable --now precached.service"
-	echo "==> $ systemctl --user enable --now precached-trigger.service"
-	echo ""  	
-
-	#systemctl preset-all
+post_install() {	
+	# systemctl preset precached precached-prime-caches
 }
 
 pre_remove() {
