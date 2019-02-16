@@ -1,8 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
-_pkgname=elementary-code
-pkgname=$_pkgname-git
-pkgver=3.0.2.r72.g8a19ff3f
+pkgname=elementary-code-git
+pkgver=3.0.2.r114.ge709b455
 pkgrel=1
 pkgdesc="Code editor designed for elementary OS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -28,19 +27,23 @@ makedepends=(editorconfig-core-c
              meson
              vala
              zeitgeist)
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=(elementary-code)
+conflicts=(elementary-code)
 source=("git+https://github.com/elementary/code.git")
 md5sums=('SKIP')
 
 pkgver() {
     cd code
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    arch-meson code build -Db_pie=false
-    ninja -v -C build
+    arch-meson code build
+    ninja -C build
+}
+
+check() {
+    ninja -C build test
 }
 
 package() {
