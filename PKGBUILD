@@ -1,14 +1,14 @@
 # Maintainer: Philip Jones <philj56@gmail.com>
-pkgname='gbcc-git'
-pkgver=r174.0b4b105
+pkgname=gbcc-git
+pkgver=r178.9cd81ef
 pkgrel=1
 pkgdesc="A Game Boy Color emulator written in C"
-arch=('x86_64')
+arch=("x86_64")
 url="https://github.com/philj56/GBCC"
-license=('GPL')
+license=("MIT")
 groups=()
-depends=('sdl2' 'libpng')
-makedepends=('git')
+depends=("sdl2" "libpng")
+makedepends=("meson" "git" "scdoc")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -17,21 +17,24 @@ options=()
 install=
 source=("${pkgname}::git+${url}")
 noextract=()
-sha512sums=('SKIP')
+sha512sums=("SKIP")
 
 pkgver() {
 	cd "${pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+        cd "${pkgname}"
+        meson --prefix /usr build
+}
+
 build() {
 	cd "${pkgname}"
-        make clean
-	make
+        ninja -C build
 }
 
 package() {
 	cd "${pkgname}"
-        install -Dm755 gbcc "${pkgdir}/usr/bin/gbcc"
-        install -Dm644 tileset.png "${pkgdir}/usr/share/games/gbcc/tileset.png"
+        DESTDIR="$pkgdir/" ninja -C build install
 }

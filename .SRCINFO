@@ -1,6 +1,6 @@
 pkgbase = gbcc-git
 	pkgdesc = A Game Boy Color emulator written in C
-	pkgver = r174.0b4b105
+	pkgver = r178.9cd81ef
 	pkgrel = 1
 	url = https://github.com/philj56/GBCC
 	arch = x86_64
