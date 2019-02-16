@@ -43,6 +43,8 @@ prepare() {
 	sed -i '/"dmg"/d' $_pkgname/package.json
 	sed -i '/"deb"/d' $_pkgname/package.json
 	sed -i '/"snap"/d' $_pkgname/package.json
+	sed -i '/"pacman"/d' $_pkgname/package.json
+	sed -i '/"rpm"/d' $_pkgname/package.json
 	sed -i 's/"AppImage"/"dir"/g' $_pkgname/package.json
 	
 }
