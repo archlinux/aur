@@ -1,6 +1,6 @@
 pkgbase = texinfo-git
 	pkgdesc = GNU documentation system for on-line information and printed output
-	pkgver = r8432.34b30bd643
+	pkgver = 6.6r11.g2ae3ae3e5a
 	pkgrel = 1
 	url = http://www.gnu.org/software/texinfo/
 	arch = i686
@@ -15,7 +15,6 @@ pkgbase = texinfo-git
 	provides = texinfo-js
 	conflicts = texinfo
 	conflicts = texinfo-js
-	options = !makeflags
 	options = libtool
 	source = texinfo-git::git://git.savannah.gnu.org/texinfo.git
 	source = texinfo-install.hook::https://git.archlinux.org/svntogit/packages.git/plain/trunk/texinfo-install.hook?h=packages/texinfo

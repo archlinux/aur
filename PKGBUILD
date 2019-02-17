@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=texinfo-git
-pkgver=r8432.34b30bd643
+pkgver=6.6r11.g2ae3ae3e5a
 pkgrel=1
 pkgdesc="GNU documentation system for on-line information and printed output"
 arch=('i686' 'x86_64')
@@ -18,11 +18,11 @@ source=("$pkgname::git://git.savannah.gnu.org/texinfo.git"
 sha256sums=('SKIP'
             '66ab7eab5ecdd7757081a743f94e6f4d2e783b61db5024344450748bf1bf8eb9'
             '7300f03ac56e32564fb508b0dd07839d2428a422dcf13fd3246863f7ccb1965e')
-options=('!makeflags' 'libtool')
+options=('libtool')
 
 pkgver() {
   cd $pkgname
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git describe --always)
+  git describe --tags | cut -c9- | sed 's+-+r+'|tr - .
 }
 
 build() {
