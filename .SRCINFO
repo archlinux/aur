@@ -1,0 +1,18 @@
+pkgbase = retrosmart-x11-cursors
+	pkgdesc = A retrosmart look collection of cursors for X.
+	pkgver = 1.0b
+	pkgrel = 1
+	url = https://github.com/mdomlop/retrosmart-x11-cursors
+	arch = any
+	license = GPL3
+	optdepends = retrosmart-kvantum-theme: The corresponding theme for Kvantum
+	optdepends = retrosmart-qtcurve-theme: The corresponding theme for QtCurve
+	optdepends = retrosmart-gtk-themes: The corresponding GTK themes
+	optdepends = retrosmart-openbox-themes: The corresponding Openbox themes
+	optdepends = retrosmart-wallpapers: The corresponding backgrounds project
+	optdepends = retrosmart-xfwm4-themes: The corresponding XFwm4 themes
+	source = https://github.com/mdomlop/retrosmart-x11-cursors/archive/1.0b.tar.gz
+	md5sums = 04c42a604e316abd7067237647e537fa
+
+pkgname = retrosmart-x11-cursors
+
