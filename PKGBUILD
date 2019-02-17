@@ -3,7 +3,7 @@
 pkgname=kicad-rc
 _pkgver="5.1.0-rc1"
 pkgver=${_pkgver/-rc/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Official KiCad release candidates and dev snapshots"
 arch=('any')
 url="http://kicad-pcb.org/"
@@ -33,16 +33,16 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DKICAD_USE_OCE=OFF \
     -DKICAD_USE_OCC=ON \
-    -DOCE_DIR=`dirname $(pacman -Ql oce | grep OCEConfig.cmake | awk '{ print $2 }' )` \
     -DBUILD_GITHUB_PLUGIN=ON \
     -DKICAD_SCRIPTING=ON \
     -DKICAD_SCRIPTING_MODULES=ON \
     -DKICAD_SCRIPTING_WXPYTHON=ON \
     -DKICAD_SCRIPTING_WXPYTHON_PHOENIX=ON \
     -DKICAD_SCRIPTING_PYTHON3=ON \
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
     -DKICAD_SCRIPTING_ACTION_MENU=ON
 
-  make
+  CXX=clang++ make
 }
 
 package() {

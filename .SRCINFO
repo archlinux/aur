@@ -1,7 +1,7 @@
 pkgbase = kicad-rc
 	pkgdesc = Official KiCad release candidates and dev snapshots
 	pkgver = 5.1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kicad-pcb.org/
 	install = kicad.install
 	arch = any
