@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=breeze-gtk-git
-pkgver=5.15.80.r313.00e797a
+pkgver=5.15.80.r314.7687c36
 pkgrel=1
 pkgdesc="Breeze widget theme for GTK 2 and 3. (GIT version)"
 arch=('x86_64')
@@ -16,6 +16,7 @@ makedepends=('git'
              'gtk2'
              'gtk3'
              'sassc'
+             'breeze'
              )
 conflicts=('breeze-gtk')
 provides=('breeze-gtk')
