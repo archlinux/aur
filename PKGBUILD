@@ -2,8 +2,8 @@
 # Author: Maxim Devaev <mdevaev@gmail.com>
 
 
-_PLATFORMS="v1-vga v1-hdmi"
-_BOARDS="rpi2 rpi3"
+[ -n "$_PLATFORMS" ] || _PLATFORMS="v1-vga v1-hdmi"
+[ -n "$_BOARDS" ] || _BOARDS="rpi2 rpi3"
 
 
 pkgname=(kvmd)
@@ -13,7 +13,7 @@ for _platform in $_PLATFORMS; do
 	done
 done
 pkgbase=kvmd
-pkgver=0.132
+pkgver=0.133
 pkgrel=1
 pkgdesc="The main Pi-KVM daemon"
 url="https://github.com/pi-kvm/kvmd"
