@@ -2,12 +2,12 @@
 pkgname=sirikali
 _name=SiriKali
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt/C++ GUI front end to cryfs, gocryptfs, securefs and encfs"
 arch=('i686' 'x86_64')
 url="https://mhogomchungu.github.io/sirikali/"
 license=('GPL')
-depends=('qt5-base' 'libpwquality' 'hicolor-icon-theme')
+depends=('qt5-base' 'libpwquality' 'lxqt_wallet' 'hicolor-icon-theme')
 makedepends=('cmake' 'libgcrypt' 'gcc-libs')
 optdepends=('libsecret: support for Gnome libsecret password storage (must recompile)'
             'kwallet: support for KDE wallet storage (must recompile)'
@@ -45,7 +45,7 @@ build() {
   cmake \
     -DCMAKE_BUILD_TYPE=RELEASE \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DINTERNAL_LXQT_WALLET=true \
+    -DINTERNAL_LXQT_WALLET=false \
     -DNOKDESUPPORT=$skipkde \
     -DNOSECRETSUPPORT=$skipsecret \
     -DQT5=true \
