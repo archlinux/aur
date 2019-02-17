@@ -1,14 +1,14 @@
 pkgbase = lua-yue-bin
 	pkgdesc = Lua bindings to Yue: A library for creating native cross-platform GUI apps.
-	pkgver = 0.4.0
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = http://libyue.com/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	depends = webkit2gtk
-	source = https://github.com/yue/yue/releases/download/v0.4.0/lua_yue_lua_5.3_v0.4.0_linux_x64.zip
-	md5sums = b8911506da6041d0e2f6ad80e05e4324
+	source = https://github.com/yue/yue/releases/download/v0.6.2/lua_yue_lua_5.3_v0.6.2_linux_x64.zip
+	md5sums = 93902e9c52085adb31911cc65296ef7d
 
 pkgname = lua-yue-bin
 
