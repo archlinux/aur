@@ -3,7 +3,7 @@ _npmname=node-red
 _npmver=0.19.5
 pkgname=nodejs-${_npmname}
 pkgver=${_npmver}
-pkgrel=1
+pkgrel=2
 pkgdesc="A visual tool for wiring the Internet of Things."
 arch=(any)
 url="https://nodered.org"
@@ -18,5 +18,5 @@ sha256sums=('44545c8f2f76a4cfbfde7e46bdfb94117cba43fee76b2ec5afa0d66d67029e06')
 package() {
   mkdir -p ${pkgdir}/usr/lib/node_modules
   cd ${pkgdir}/usr/lib/node_modules
-  npm install --global --user root --prefix ${pkgdir}/usr/lib/node_modules $_npmname@$_npmver
+  npm install --global --user root --prefix ${pkgdir}/usr $_npmname@$_npmver
 }
