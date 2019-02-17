@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=osquery-git
-pkgver=3.3.1.r1.g5188ce528
-pkgrel=3
+pkgver=3.3.2.r0.g5188ce528
+pkgrel=1
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
 arch=('i686' 'x86_64')
 url="https://osquery.io"
@@ -21,7 +21,7 @@ conflicts=()
 backup=('etc/osquery/osquery.conf')
 options=(!strip !ccache)
 _gitcommit='5188ce5288abe0e323b8e8bd364f452134a62d00'
-#source=("${pkgname}::git+https://github.com/facebook/osquery#branch=master"
+#source=("${pkgname}::git+https://github.com/facebook/osquery"
 source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit}"
 		"osqueryd.conf.d"
 		"osqueryd.service"
@@ -29,7 +29,7 @@ source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit
 sha256sums=('SKIP'
             'ee15a171f114f47a326d236a7d03a07cc3e711016e9a5039638e6137f63e87ec'
             '0c28be3fb234325c3279aa3c02a5b0636db833c06f89ec551b77addb86507ce4'
-            'e4b5fc12f116327482f93ee4cc2132c460ed6f0018fe228dac8d06c5da4f1a98')
+            'c50bbdae9caa1f77c086c87292ed4c38f524f80f66c0c55ab354f0a8104e4001')
 
 pkgver() {
 	cd ${pkgname}
@@ -41,6 +41,7 @@ prepare() {
 	cd "${srcdir}/${pkgname}"
 
 	git reset HEAD --hard
+	git checkout master
 	git submodule update --init --recursive
 
 	patch -F3 -p1 -i "${srcdir}/arch-linux.patch"
@@ -49,10 +50,8 @@ prepare() {
 	find . -type f -name '*deb_package*' -delete
 	find . -type f -name '*rpm_package*' -delete
 
-	export SKIP_TESTS=True SKIP_BENCHMARKS=True SKIP_SMART=True
-
-	#make format_master
-	make format_all
+	make format_master
+	#make format_all
 }
 
 build() {
@@ -69,12 +68,15 @@ build() {
 	export CC="/usr/bin/gcc" CXX="/usr/bin/g++"
 	export SKIP_TESTS=True SKIP_BENCHMARKS=True SKIP_SMART=True
 
+	mkdir -p build
+	cd build
+
 	[[ -z $DEBUG ]] || unset DEBUG
 	cmake -Wno-dev \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_CXX_FLAGS="-I/usr/include/libxml2" \
 		-DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2 \
-		-DCMAKE_VERBOSE_MAKEFILE=ON
+		-DCMAKE_VERBOSE_MAKEFILE=ON ..
 
 	#find . -type f -name link.txt -exec sed -i -re 's/Bstatic -lgflags/Bdynamic -lgflags/g' "{}" \;
 
@@ -82,7 +84,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}/build"
 
 	make DESTDIR="${pkgdir}" install
 

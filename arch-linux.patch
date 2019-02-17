@@ -86,3 +86,14 @@ index c5f644c45..7510a6e38 100644
      -Wextra
      -pedantic
      -Wuseless-cast
+diff --git a/include/osquery/posix/system.h b/include/osquery/posix/system.h
+index 9e16897bc..dc92d439e 100644
+--- a/include/osquery/posix/system.h
++++ b/include/osquery/posix/system.h
+@@ -15,6 +15,7 @@
+ #include <string>
+
+ #include <boost/filesystem/path.hpp>
++#include <boost/core/noncopyable.hpp>
+
+ #include <osquery/core.h>
