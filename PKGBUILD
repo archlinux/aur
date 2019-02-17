@@ -1,7 +1,7 @@
 # Maintainer: Sophie Tauchert <sophie@999eagle.moe>
 
 pkgname=gwe
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A system utility for controlling NVIDIA GPUs"
 arch=('any')
@@ -10,11 +10,11 @@ license=('GPL3')
 depends=('gobject-introspection' 'libdazzle' 'libappindicator3' 'python' 'python-cairo' 'python-gobject' 'python-injector' 'python-matplotlib' 'python-peewee' 'python-py3nvml' 'python-requests' 'python-rx' 'python-xdg')
 makedepends=('meson')
 provides=()
-_xlib_commit='73b66f94d7c359fab4246548f8505750cabb68a4'
+_xlib_commit='52e6cd2a78c32fa7d78dc73795628c78ff7b970b'
 source=("https://gitlab.com/leinardi/gwe/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         "https://github.com/leinardi/python-xlib/archive/${_xlib_commit}.tar.gz")
-sha256sums=('c7c450e3abcc8d33a46dae2cc101c21b2df19b552dcdaf0897f97fb0092c6f6b'
-            'fa70f72b7f075942c50ba3209b4b36b577c21b48a18e9d93f3fba938b169a2a6')
+sha256sums=('26765d0ca812976f47203fb52c94af2626700df480b63b611a0154dad61c59d0'
+            '20f3696205918978c6d3bb214a282606064b52c9c90b781cb5862452a8f4ef42')
 
 prepare() {
 	rmdir "$pkgname-$pkgver/python-xlib"
