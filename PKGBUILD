@@ -32,7 +32,7 @@ prepare() {
 build() {
   cd ${srcdir}
   mkdir -p build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr/ ../${pkgname}
+  cmake -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_INSTALL_PREFIX=/usr/ ../${pkgname}
   make 
 }
 
