@@ -1,6 +1,6 @@
 pkgbase = emacs-anzu-git
 	pkgdesc = Emacs Port of anzu.vim
-	pkgver = r261.e6c56ca
+	pkgver = 0.62r10.ge6c56ca
 	pkgrel = 1
 	url = https://github.com/syohex/emacs-anzu
 	arch = any

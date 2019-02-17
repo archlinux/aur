@@ -1,10 +1,11 @@
 # Maintainer: sballert <sballert@posteo.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 _gituser="syohex"
 _gitrepo="emacs-anzu"
 
 pkgname=emacs-anzu-git
-pkgver=r261.e6c56ca
+pkgver=0.62r10.ge6c56ca
 pkgrel=1
 pkgdesc="Emacs Port of anzu.vim"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -19,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  git describe --tags --long | sed 's+-+r+' | tr - .
 }
 
 build() {
@@ -29,6 +30,6 @@ build() {
 
 package() {
   cd "$_gitrepo"
-  install -d  "$pkgdir"/usr/share/emacs/site-lisp/anzu/
-  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/anzu/
+  install -d  "$pkgdir"/usr/share/emacs/site-lisp
+  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp
 }
