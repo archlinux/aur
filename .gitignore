@@ -1,4 +1,4 @@
 pkg/
 src/
 *.pkg.tar.xz
-*.jar
+*.rpm

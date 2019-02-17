@@ -7,8 +7,8 @@ pkgbase = anyk
 	license = proprietary
 	depends = java-environment>=8
 	provides = abevjava
-	source = https://www.nav.gov.hu/data/cms36637/abevjava_install.jar
-	md5sums = c190ee45c2be04e219751fcd9050b3ed
+	source = https://www.nav.gov.hu/data/cms489944/abevjava_install-2.88-0.1.noarch.rpm
+	md5sums = 6fbbaf9f0c4f60b59d3da6415ae405d6
 
 pkgname = anyk
 
