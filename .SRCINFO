@@ -1,11 +1,12 @@
 pkgbase = cpp-taskflow-git
 	pkgdesc = Fast C++ Parallel Programming with Task Dependencies
-	pkgver = 1
+	pkgver = r650.d1741c3
 	pkgrel = 1
 	url = https://github.com/cpp-taskflow/cpp-taskflow
 	arch = any
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	source = git+https://github.com/cpp-taskflow/cpp-taskflow
 	sha256sums = SKIP
 
