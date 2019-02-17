@@ -1,7 +1,7 @@
 pkgbase = wispr
 	pkgdesc = Simple command-line tool to authenticate against a WISPr server
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wichert/wispr
 	arch = any
 	license = custom

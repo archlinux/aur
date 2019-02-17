@@ -2,7 +2,7 @@
 
 pkgname=wispr
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple command-line tool to authenticate against a WISPr server"
 url="https://github.com/wichert/wispr"
 arch=('any')
@@ -21,8 +21,8 @@ sha256sums=(
 
 prepare() {
     cd "wispr-release-$pkgver"
-    patch -Np1 -i ../../python3.patch
-    patch -Np1 -i ../../timeout.patch
+    patch -Np1 -i "${srcdir}/python3.patch"
+    patch -Np1 -i "${srcdir}/timeout.patch"
 }
 
 build() {
