@@ -1,7 +1,7 @@
 pkgbase = maltego
 	pkgdesc = Maltego information gathering software by Paterva
 	pkgver = 4.1.13.11516
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.paterva.com
 	install = maltego.install
 	arch = i686

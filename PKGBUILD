@@ -5,7 +5,7 @@ pkgdesc='Maltego information gathering software by Paterva'
 license=('Commercial')
 url='https://www.paterva.com'
 pkgver=4.1.13.11516
-pkgrel=1
+pkgrel=2
 package=Maltego.v${pkgver}.deb
 arch=('i686' 'x86_64')
 depends=('java-runtime=8')
@@ -38,6 +38,7 @@ package() {
   ar xf "$package"
   tar xf data.tar.gz -C "$pkgdir"
   # Packagaers left DS_Store files, so we have to remove
-  rm -rf $pkgdir/.DS_Store
+  rm -rf "$pkgdir"/{,usr/{,share/{,maltego/}}}.DS_Store
+  #rm -rf $pkgdir/.DS_Store
 }
 
