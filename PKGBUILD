@@ -1,8 +1,9 @@
-# Maintainer: Malte Rabenseifner <mail@malte-rabenseifner.de>
+# Maintainer: Julian Brost <julian@0x4a42.net>
+# Contributor: Malte Rabenseifner <mail@malte-rabenseifner.de>
 
 pkgname=icingaweb2-git
 _pkgname=icingaweb2
-pkgver=r10335.d4b9b6d
+pkgver=2.6.2.r21.g9571d1059
 pkgrel=1
 pkgdesc="Icinga Web 2 Interface"
 license=('GPL')
@@ -21,7 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
