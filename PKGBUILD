@@ -2,7 +2,7 @@
 
 pkgname=dive-git
 pkgver=v0.6.0.r5.gd4e9bdb
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for exploring each layer in a docker image"
 url="https://github.com/wagoodman/dive"
 arch=('x86_64' 'i686')
@@ -23,12 +23,12 @@ prepare() {
 	cd "${srcdir}/${pkgname}"
 
 	install -m755 -d "${srcdir}/go/src/github.com/wagoodman/"
-	cp -a "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/wagoodman/dive"
+	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/wagoodman/dive"
 
 	cd "${srcdir}/go/src/github.com/wagoodman/dive"
 
 	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
-	go get -v -d
+	go get -v ./...
 }
 
 build() {
