@@ -3,7 +3,7 @@
  
 _basename=graphene
 pkgname="lib32-$_basename"
-pkgver=1.8.2
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="A thin layer of graphic data types (32-bit)"
 url="https://github.com/ebassi/graphene"
@@ -11,17 +11,13 @@ arch=('x86_64')
 license=(MIT)
 depends=('lib32-glib2' 'graphene')
 makedepends=('git' 'lib32-gcc-libs' 'gobject-introspection' 'gtk-doc' 'meson')
-_commit=f98e3c378414eafae8b75792ded7496b09baaad9  # tags/1.8.2^0
+_commit=9a3bde57751a3881d32393ffca8fbf5b9a3a0755  # tags/1.8.4^0
 source=("git+https://github.com/ebassi/graphene#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $_basename
   git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd $_basename
 }
  
 build() {
