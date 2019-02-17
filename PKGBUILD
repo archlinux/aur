@@ -1,19 +1,19 @@
 # Maintainer: Hans-Nikolai Viessmann <hv15 AT hw.ac.uk>
 
 pkgname='xmrig-proxy'
-pkgver=2.8.1
+pkgver=2.12.0
 pkgrel=1
 pkgdesc='Stratum protocol proxy for Monero, Electroneum, Sumokoin and AEON pools; HTTP API disabled, donation percentage is 0.'
 arch=('x86_64')
 url='https://github.com/xmrig/xmrig-proxy'
 depends=('libuv')
-optdepends=('monero: wallet')
 makedepends=('cmake' 'libuv')
+optdepends=('monero: wallet')
 license=('GPL')
 install="${pkgname}.install"
 changelog=CHANGELOG.md
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a0c95924810d77d6f83a230052b01564ffe77909e90b366f076179089e151694')
+sha256sums=('12499d05027ccf9081e764d85debc3153944f54a71abbb0096c1136b71b4bc53')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -24,6 +24,10 @@ prepare() {
   # reset default donate level
   msg2 "Resetting donation level to zero"
   sed -i -e 's/constexpr const int kDefaultDonateLevel = 2;/constexpr const int kDefaultDonateLevel = 0;/g' src/donate.h
+
+  # fix build problem relating to https://github.com/xmrig/xmrig-proxy/issues/295
+  msg2 "Fix CMakeLists.txt"
+  sed -i -e 's/set(EXTRA_LIBS pthread uuid\.a rt dl)/set(EXTRA_LIBS pthread uuid rt dl)/' CMakeLists.txt
 }
 
 build() {

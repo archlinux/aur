@@ -3,7 +3,7 @@ post_install() {
     echo "Example config.json file is located at:"
     echo "  /usr/share/docs/xmrig-proxy/config.json.example"
     echo ""
-    echo "Don't forget to use \`--config' when using xmrig."
+    echo "Don't forget to use \`--config' when using xmrig-proxy."
     echo ""
 }
 
