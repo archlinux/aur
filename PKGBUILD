@@ -1,8 +1,7 @@
 # $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-
 pkgname=nwjs-sdk-bin
-pkgver=0.35.3
+pkgver=0.36.1
 pkgrel=1
 pkgdesc="An app runtime based on Chromium and node.js (SDK version)."
 arch=("x86_64")
@@ -17,7 +16,7 @@ options=(!strip)
 provides=("nwjs" "node-webkit")
 conflicts=("nwjs" "node-webkit")
 source=("${pkgname}-${pkgver}.tar.gz::http://dl.nwjs.io/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-x64.tar.gz")
-sha256sums=('800749baaa9288a3f27ccc31861e192ef40cabbdc6eaeb6bc0558c6c8e488b74')
+sha256sums=('ab9da4aff7863790c553253b6f15722f00561276c86a2ddae8cd441676a2a390')
 
 package() {
   cd "${pkgname%-bin}-v${pkgver}-linux-x64"
