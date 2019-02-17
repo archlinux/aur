@@ -1,0 +1,11 @@
+--- pdfbeads.gemspec
++++ pdfbeads.gemspec
+@@ -27,7 +27,7 @@
+ 
+   s.add_runtime_dependency('nokogiri','~> 1.7')
+   s.add_runtime_dependency('iconv','~> 1.0')
+-  s.add_runtime_dependency('rmagick','~> 2.0')
++  s.add_runtime_dependency('rmagick','>= 2.0')
+ 
+   s.extra_rdoc_files = %w( README COPYING ChangeLog )
+ 
