@@ -1,7 +1,7 @@
 pkgbase = pxlart
 	pkgdesc = A ncurses pixer art creator written in C
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mananapr/pxlart/
 	arch = any
 	license = MIT

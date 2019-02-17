@@ -2,7 +2,7 @@
 
 pkgname=pxlart
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A ncurses pixer art creator written in C"
 arch=('any')
 url="https://github.com/mananapr/pxlart/"
