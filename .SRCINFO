@@ -1,6 +1,6 @@
 pkgbase = compiz-git
 	pkgdesc = Composite manager for Aiglx and Xgl, with plugins and CCSM (development version)
-	pkgver = 0.9.13.1.r8.g3552c1f09
+	pkgver = 0.9.14.0.r0.gb340cc413
 	pkgrel = 1
 	url = https://launchpad.net/compiz
 	arch = i686
@@ -24,14 +24,14 @@ pkgbase = compiz-git
 	depends = metacity
 	depends = glu
 	optdepends = xorg-xprop: grab various window properties for use in window matching rules
-	provides = compiz=0.9.13
-	provides = compiz-core=0.9.13
-	provides = compiz-bcop=0.9.13
-	provides = ccsm=0.9.13
-	provides = compiz-plugins-main=0.9.13
-	provides = compiz-plugins-extra=0.9.13
-	provides = compizconfig-python=0.9.13
-	provides = libcompizconfig=0.9.13
+	provides = compiz=0.9.14
+	provides = compiz-core=0.9.14
+	provides = compiz-bcop=0.9.14
+	provides = ccsm=0.9.14
+	provides = compiz-plugins-main=0.9.14
+	provides = compiz-plugins-extra=0.9.14
+	provides = compizconfig-python=0.9.14
+	provides = libcompizconfig=0.9.14
 	conflicts = compiz
 	conflicts = compiz-core
 	conflicts = compiz-gtk
@@ -49,11 +49,13 @@ pkgbase = compiz-git
 	source = gtk-extents.patch
 	source = reverse-unity-config.patch
 	source = screenshot-launch-fix.patch
+	source = no-compile-gschemas.patch
 	sha256sums = SKIP
 	sha256sums = f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b
 	sha256sums = 16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9
 	sha256sums = fba56d3e5fc8d1b47be2b8eaa6d79f48635daccc26db9b0b88fa281cc50c635e
 	sha256sums = 89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61
+	sha256sums = 4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a
 
 pkgname = compiz-git
 
