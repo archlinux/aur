@@ -1,0 +1,13 @@
+--- pdfbeads.gemspec	2019-02-18 01:52:03.139086891 +0500
++++ pdfbeads.gemspec.2	2019-02-18 01:54:03.796551955 +0500
+@@ -52,8 +52,8 @@
+   s.executables = [ 'pdfbeads' ]
+   s.default_executable = 'pdfbeads'
+   s.files = Dir['lib/**/*.rb'] + Dir['bin/*'] + Dir['doc/*.html'] +
+-            ['README', 'COPYING', 'ChangeLog']
+-  s.extra_rdoc_files = ['README', 'COPYING', 'ChangeLog']
++            ['README', 'LICENSE', 'ChangeLog']
++  s.extra_rdoc_files = ['README', 'LICENSE', 'ChangeLog']
+   s.author = "Alexey Kryukov"
+   s.email = "amkryukov@gmail.com"
+   s.rubyforge_project = 'PDFBeads'

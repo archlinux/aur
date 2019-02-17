@@ -4,48 +4,55 @@
 # Contributor: Jonas Strassel <jo.strassel@gmail.com>
 
 pkgname=pdfbeads
-pkgver=1.1.2.pre.beta
-pkgrel=5
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="A small utility written in Ruby which takes scanned page images and converts them into a single PDF file"
 arch=('any')
-url='https://github.com/boredland/pdfbeads'
+url='https://github.com/ImageProcessing-ElectronicPublications/ruby-pdfbeads'
 license=('GPL')
 
 depends=(
 'ruby'
 'openjpeg2'
 'imagemagick6'
-'ruby-rmagick>=2.0.0'
+'ruby-iconv'
+'ruby-multiio'
 'ruby-rdoc'
+'ruby-rmagick'
 )
 
 optdepends=(
 'jbig2enc: for better JPEG2000 compression'
-'ruby-iconv>=1.0.0'
-'ruby-nokogiri>=1.7.0.0: to create hidden text layer from hOCR files'
-'ruby-hpricot>=0.8.3: to read data from hOCR files'
+'ruby-nokogiri: to create hidden text layer from hOCR files'
+'ruby-hpricot: to read data from hOCR files'
 )
 
-source=("https://github.com/boredland/pdfbeads/releases/download/$pkgver/$pkgname-$pkgver.gem"
-        "req-rmagick.patch"
-        "spec-rmagick.patch")
-noextract=($pkgname-$pkgver.gem)
-sha256sums=('e25dba6e172136f38fa4947a7c017d5f3a2ba5bb548d9e46632e568e7ebf51e9'
-            'b5fc59a954df14551dfd421f919dcdfea975cdf00605c3619bf6f815550168d3'
-            '8d3e81b6781c4d080710cbb2397cec992b0e4ed73e22ee5ce8c18dc3ecd2bc0d')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ImageProcessing-ElectronicPublications/ruby-${pkgname}/archive/${pkgver}.tar.gz"
+        "license.patch")
+sha256sums=('f77d7a33cb9ef5963bc735f7b7bb4ffdadd94291291bb3581a4ec4ece39b9ab3'
+            'b6805425d464ba6da5de764f849ac309fc6805e5215d635da4ec972325c77bbe')
+
+prepare() {
+  cd ruby-${pkgname}-${pkgver}
+  sed 's|git ls-files -z|find -print0|' -i ${pkgname}.gemspec
+  sed 's|~>|>=|g' -i ${pkgname}.gemspec # don't give a fuck about rubys bla bla
+
+  patch -p0 -i ../license.patch
+}
+
+build() {
+  cd ruby-${pkgname}-${pkgver}
+  gem build ${pkgname}.gemspec
+}
 
 package() {
+  cd "${srcdir}/ruby-${pkgname}-${pkgver}"
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/imagemagick6/pkgconfig \
     gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $pkgname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$pkgname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$pkgname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  
-  cd $pkgdir/$_gemdir/gems/$pkgname-$pkgver
-  patch -p0 -i "${srcdir}/req-rmagick.patch"
-
-  cd $pkgdir/$_gemdir/specifications
-  patch -p0 -i "${srcdir}/spec-rmagick.patch"  
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 README ChangeLog doc/pdfbeads.en.html doc/pdfbeads.ru.html -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
