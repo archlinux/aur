@@ -11,7 +11,7 @@ makedepends=('cmake')
 source=("$url/archive/v${pkgver}.tar.gz")
 sha256sums=('479ffd7b1fbeeca98b25cda254158b09adc6733c4c4f955b757580d70f002c5b')
 
-build() {
+prepare() {
     cd "${pkgname}-${pkgver}"
     cmake -H. -Bbuild \
         -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
@@ -21,7 +21,10 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DTF_BUILD_EXAMPLES=OFF
+}
 
+build() {
+    cd "${pkgname}-${pkgver}"
     cmake --build build
 }
 
