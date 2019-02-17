@@ -2,12 +2,12 @@
 
 pkgname=xbanish
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Hide the mouse cursor when typing'
 url='https://github.com/jcs/xbanish'
 arch=('i686' 'x86_64')
 license=('BSD')
-depends=('libxfixes' 'libxi')
+depends=('libxfixes' 'libxi' 'libxt')
 
 source=("https://github.com/jcs/xbanish/archive/v${pkgver}.zip")
 md5sums=('7b6b07a71f28b19087e252db90b5990d')
