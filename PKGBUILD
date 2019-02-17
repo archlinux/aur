@@ -3,14 +3,14 @@
 
 pkgname=ttyqr-git
 pkgver=r5.56f7658
-pkgrel=4
+pkgrel=5
 pkgdesc="Draw QR codes straight into the terminal"
 url="https://github.com/oskar456/ttyqr"
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('GPL3')
 depends=('qrencode')
 makedepends=('git')
-source=("$pkgname::git+${url}.git")
+source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
