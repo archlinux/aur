@@ -3,12 +3,8 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=jellyfin
-pkgver=10.1.0
-# Check at https://github.com/jellyfin/jellyfin/tree/v**PKGVER**/ThirdParty
-_taglib_sharp_commit=60e7588b53868a2b37dd0bc92868b740da2eeded
-# Check at https://github.com/jellyfin/jellyfin/tree/v**PKGVER**/MediaBrowser.WebDashboard
-_jellyfin_web_commit=094c1deae91c51b8bbf8ebb16a55758af110f04d
-pkgrel=3
+pkgver=10.2.0
+pkgrel=1
 pkgdesc='The Free Software Media System'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://github.com/jellyfin/jellyfin'
@@ -16,26 +12,23 @@ license=('GPL2')
 depends=('dotnet-runtime' 'ffmpeg' 'imagemagick' 'sqlite')
 makedepends=('dotnet-sdk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin/archive/v$pkgver.tar.gz"
-        "taglib-sharp-$_taglib_sharp_commit.tar.gz::https://github.com/mono/taglib-sharp/archive/$_taglib_sharp_commit.tar.gz"
-        "jellyfin-web-$_jellyfin_web_commit.tar.gz::https://github.com/jellyfin/jellyfin-web/archive/$_jellyfin_web_commit.tar.gz"
+        "jellyfin-web-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin-web/archive/v$pkgver.tar.gz"
         'jellyfin.conf'
         'jellyfin.service'
         'jellyfin.sysusers'
         'jellyfin.tmpfiles')
 backup=('etc/conf.d/jellyfin')
-sha512sums=('90469a9d29c79edef137ac60a14a396359b40750617f418ee3f8fbc35422a37c4a75143e15b51326d3dcb031de08745c9a45fc1ce5ff1467575afe2f8a747e3b'
-            '4571d2bec9fc9585283103fa6b7e3ed2f369df9fdb429e379904e9f3c63864b534d8179c03675dea62dd16550e2f091ad1b7abb6207c096cf464b2dcfb572224'
-            '2e054ea0df918df098fc03500a5a9b0eb2c2cad94bbf72dbc96464cd724b1c642c21b7cbfa775b160b799406cfc05da31e711116ab881b8ceb2a7ece04885130'
-            '3a4178268be34d6735c0f86d1300158a17d05cdeaca14807db382aa03e91e8901997f273064a8a7e3f0ccfe7e7c83a32cfd4a95c431678477a79ab12b127ba2f'
-            '3ff147dba3625d91d5f3f7e030c473b8d03171cd33693af2e8f3aad852d4914b93bdff678e2c4365a34db94622c3f3bb21c42388abe3c387750fca0dfc5cc372'
+sha512sums=('8484b322fb4a36b484570ec7660007d3ea70fcc4479cf8547f620375d559a4c2bca1134f1ca0ae2a1adaf7c9ae3575c57b26b0207b748a5f33b4fd374d77a057'
+            'd03c060da2ac5e4ea91a741affef6679df44500edaa1d7db2b9e95402228ac4e28b0eba03caf672cdbd8f2d1aeef40b5a61eb5b5c00ce27ed35f4e76758a912d'
+            '2aa97a1a7a8a447171b59be3e93183e09cbbc32c816843cc47c6777b9aec48bd9c1d9d354f166e0b000ad8d2e94e6e4b0559aa52e5c159abbc103ed2c5afa3f0'
+            '99d02080b1b92e731250f39ddd13ceca7129d69d0c05e0939620cbc3f499a9574668c63fa889704a4905560888131e980d7ab1fbcc5837b04d33ce26daa9d42b'
             '6fc2638e6ec4b1ee0240e17815c91107b694e5fde72c1bc7956c83067bbeacb632de899b86837e47a0ec04288131b15c20746373b45e0669c8976069a55d627a'
-            '20ff19a4697a93fccdf0dfeae74ab49d74fbe5dbe242e4f169c4d4af0955750befc9abd276d9f07f685793dd5ef69d7908761ff934ae3b47b3c3108a7de56438')
+            '45a62b62d97b9a83289d4dfde684163b1bcf340c1921fb958e5a701812c61b392901841940c67e5fa5148783277d5b4dc65ba01d3a22e8f855ea62154ad9be33')
 
 prepare() {
   cd $pkgname-$pkgver
 
-  cp -r "$srcdir"/taglib-sharp-$_taglib_sharp_commit/. ThirdParty/taglib-sharp
-  cp -r "$srcdir"/jellyfin-web-$_jellyfin_web_commit/. MediaBrowser.WebDashboard/jellyfin-web
+  cp -r "$srcdir"/jellyfin-web-$pkgver/. MediaBrowser.WebDashboard/jellyfin-web
 }
 
 build(){
