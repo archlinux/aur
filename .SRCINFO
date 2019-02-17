@@ -1,14 +1,14 @@
 pkgbase = goattracker
 	pkgdesc = Crossplatform C64 music tracker. Included in this package are also the tools betaconv ins2snd2 mod2sng sngspli2
-	pkgver = 2.73
+	pkgver = 2.74
 	pkgrel = 1
 	url = http://sourceforge.net/projects/goattracker2/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = sdl
-	source = goattracker-2.73.zip::http://sourceforge.net/projects/goattracker2/files/GoatTracker%202/2.73/GoatTracker_2.73.zip/download
-	md5sums = 4f765c03b8a8103f85585dcb9230ce1f
+	source = goattracker-2.74.zip::http://sourceforge.net/projects/goattracker2/files/GoatTracker%202/2.74/GoatTracker_2.74.zip/download
+	md5sums = 14c4289f8687bf7fb061cc2ec9d41723
 
 pkgname = goattracker
 
