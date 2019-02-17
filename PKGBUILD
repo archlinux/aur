@@ -6,7 +6,7 @@ pkgdesc="Yet another SIP003 plugin for shadowsocks, based on v2ray"
 url="https://github.com/shadowsocks/v2ray-plugin"
 arch=(x86_64)
 license=(MIT)
-makedepends=(go)
+makedepends=(go git)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shadowsocks/$pkgname/archive/v$pkgver.tar.gz")
 
 prepare() {
