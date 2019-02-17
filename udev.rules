@@ -1,0 +1,9 @@
+# https://github.com/raspberrypi/linux/issues/1225
+SUBSYSTEM=="spidev", GROUP="spi", MODE="0660"
+SUBSYSTEM=="bcm2835-gpiomem", GROUP="gpio", MODE="0660"
+SUBSYSTEM=="gpio*", PROGRAM="/bin/sh -c ' \
+	chown -R root:gpio /sys/class/gpio && chmod -R 770 /sys/class/gpio; \
+	chown -R root:gpio /sys/devices/virtual/gpio && chmod -R 770 /sys/devices/virtual/gpio; \
+	chown -R root:gpio /sys$devpath && chmod -R 770 /sys$devpath; \
+	chown root:gpio /dev/gpiomem;
+'"

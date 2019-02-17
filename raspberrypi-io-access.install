@@ -1,0 +1,9 @@
+post_install() {
+	groupmems -g spi -l &>/dev/null || groupadd -r spi
+	groupmems -g gpio -l &>/dev/null || groupadd -r gpio
+}
+
+post_remove() {
+	groupdel spi &>/dev/null
+	groupdel gpio &>/dev/null
+}

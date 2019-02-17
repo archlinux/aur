@@ -1,0 +1,14 @@
+pkgbase = raspberrypi-io-access
+	pkgdesc = Raspberry Pi port access rules and groups
+	pkgver = 0.1
+	pkgrel = 1
+	install = raspberrypi-io-access.install
+	arch = any
+	license = GPL
+	source = raspberrypi-io-access.install
+	source = udev.rules
+	md5sums = c737d24aa94fefc4b93b6fdbf5a5e85b
+	md5sums = 5396ffc35d284c072fa38534840d5d6f
+
+pkgname = raspberrypi-io-access
+
