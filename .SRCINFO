@@ -1,7 +1,7 @@
 pkgbase = igdm
 	pkgdesc = Desktop application for Instagram DMs
 	pkgver = 2.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ifedapoolarewaju/igdm
 	arch = x86_64
 	arch = i686
@@ -14,6 +14,8 @@ pkgbase = igdm
 	conflicts = igdm
 	noextract = IGdm-2.6.1.zip
 	noextract = IGdm-2.6.1-ia32.zip
+	source = igdm.desktop
+	sha256sums = 50d0ac59bacc71f5037fa521be562eaf8d4a6ff9a945d18482f3ce81d9c9da9a
 	source_x86_64 = https://github.com/ifedapoolarewaju/igdm/releases/download/v2.6.1/IGdm-2.6.1.zip
 	sha256sums_x86_64 = 759f6f167c748619449fbd4a8a4bce179fb46fdf476fa604bc45d61eda5236b2
 	source_i686 = https://github.com/ifedapoolarewaju/igdm/releases/download/v2.6.1/IGdm-2.6.1-ia32.zip

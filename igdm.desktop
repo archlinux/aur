@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=IGdm
+Comment=Desktop application for Instagram DMs
+Path=/opt/igdm/
+Exec=igdm
+Icon=igdm
+Categories=Network;Chat
