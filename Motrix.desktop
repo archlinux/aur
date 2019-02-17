@@ -2,7 +2,7 @@
 Name=Motrix
 Comment=download manager
 Keywords=
-Exec=/opt/motrix/motrix
+Exec=/usr/bin/motrix
 TryExec=
 Terminal=false
 Icon=/usr/share/icons/motrix.png

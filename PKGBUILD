@@ -25,9 +25,11 @@ install=
 changelog=
 source=("Motrix.desktop"
 	"aria2.conf"
+	"motrix"
 	"Motrix.tar.gz"::"https://github.com/agalwood/Motrix/archive/v$_pkgver.tar.gz")
 noextract=()
 md5sums=('SKIP'
+	'SKIP'
 	'SKIP'
 	'SKIP')
 validpgpkeys=()
@@ -61,10 +63,11 @@ package() {
 	install -d ${pkgdir}/usr/share/applications
 	mv ${srcdir}/$_pkgname/release/linux-unpacked/ ${pkgdir}/opt/motrix
 	install -Dm644 ${srcdir}/$_pkgname/build/256x256.png ${pkgdir}/usr/share/icons/$pkgname.png
-	echo -e "#!/bin/bash \n /opt/motrix/motrix" >> ${pkgdir}/usr/bin/motrix
-	chmod a+x ${pkgdir}/usr/bin/motrix
+#	echo -e "#!/bin/bash \n /opt/motrix/motrix" >> ${pkgdir}/usr/bin/motrix
+	install -Dm 777 ${srcdir}/motrix ${pkgdir}/usr/bin
+#	chmod a+x ${pkgdir}/usr/bin/motrix
 	install -Dm 644 ${srcdir}/Motrix.desktop ${pkgdir}/usr/share/applications
-#	rm ${pkgdir}/opt/motrix/resources/engine/aria2.conf	
+	rm ${pkgdir}/opt/motrix/resources/engine/aria2.conf	
 	install -Dm 644 ${srcdir}/aria2.conf ${pkgdir}/opt/motrix/resources/engine/aria2.conf
 #	ln -s /usr/bin/aria2c ${pkgdir}/opt/motrix/reources/engine/aria2
 	rm -rf ${srcdir}
