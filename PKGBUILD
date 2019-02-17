@@ -6,7 +6,7 @@
 _pkgbase=freeminer
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-git" "${_pkgbase}-server-git" "${_pkgbase}-common-git")
-pkgver=0.4.14.8.907.ga8e93bb6a
+pkgver=0.4.14.8.909.g69b31a173
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://freeminer.org/'
