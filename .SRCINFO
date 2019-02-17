@@ -1,6 +1,6 @@
 pkgbase = torrents.csv-git
 	pkgdesc = Torrents.csv is a self hostable, open source torrent search site and database
-	pkgver = 0.r176.24cf3d0
+	pkgver = 0.r1.681bb2f
 	pkgrel = 1
 	url = https://gitlab.com/dessalines/torrents.csv
 	arch = any
