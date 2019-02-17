@@ -13,7 +13,7 @@ url="http://www.tcpdump.org/"
 license=('BSD')
 depends=('lib32-glibc' 'lib32-libnl' 'lib32-libusb' 'sh' "${_pkgbasename}")
 makedepends=('flex')
-source=("http://www.tcpdump.org/release/libpcap-${pkgver}.tar.gz"{,.sig})
+source=("https://www.tcpdump.org/release/libpcap-${pkgver}.tar.gz"{,.sig})
 sha256sums=('2edb88808e5913fdaa8e9c1fcaf272e19b2485338742b5074b9fe44d68f37019'
             'SKIP')
 validpgpkeys=(1F166A5742ABB9E0249A8D30E089DEF1D9C15D0D)
