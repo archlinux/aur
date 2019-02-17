@@ -1,20 +1,20 @@
 # Maintainer: Cosku Bas <cosku.bas@gmail.com>
 
 pkgname=trenchbroom
-pkgver=2019.2
+pkgver=2019.3
 pkgrel=1
 pkgdesc="TrenchBroom is a modern cross-platform level editor for Quake-engine based games."
-arch=('i686' 'x86_64')
+arch=("i686" "x86_64")
 url="http://kristianduske.com/trenchbroom"
-license=('GPLv3')
+license=("GPLv3")
 
-makedepends=('git' 'pandoc')
-depends=('freeimage' 'freetype2' 'wxgtk2-tb' 'mesa' 'libgl' 'freeglut' 'libxxf86vm' 'glew' 'glm')
+makedepends=("git" "pandoc")
+depends=("freeimage" "freetype2" "wxgtk2-tb" "mesa" "libgl" "freeglut" "libxxf86vm" "glew" "glm")
 
-source=('git+https://github.com/kduske/TrenchBroom.git#commit=e887c204d1add8f141cf220081599be979cf1a54'
+source=("git+https://github.com/kduske/TrenchBroom.git#tag=v${pkgver}"
 	trenchbroom.desktop)
 sha1sums=(SKIP
-	'34e2e1168624a61358c01cecfad170d435952740')
+	"34e2e1168624a61358c01cecfad170d435952740")
 
 build() {
 	mkdir TrenchBroom/build
