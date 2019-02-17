@@ -1,0 +1,18 @@
+pkgbase = emacs-ag-git
+	pkgdesc = An Emacs frontend to The Silver Searcher (binary name ag)
+	pkgver = 0.47r49.g77b4f50
+	pkgrel = 1
+	url = https://github.com/Wilfred/ag.el
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-dash
+	depends = emacs-s
+	provides = emacs-ag
+	conflicts = emacs-ag
+	source = git+https://github.com/Wilfred/ag.el.git
+	md5sums = SKIP
+
+pkgname = emacs-ag-git
+
