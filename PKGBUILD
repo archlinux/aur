@@ -3,7 +3,7 @@
 
 pkgname='icinga2-git'
 _pkgname=icinga2
-pkgver=r9231.3caf48025
+pkgver=2.10.2.r247.g4238b6118
 pkgrel=1
 pkgdesc="An open source host, service and network monitoring program"
 license=('GPL')
@@ -52,7 +52,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
