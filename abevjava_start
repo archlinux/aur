@@ -1,4 +1,0 @@
-#!/bin/sh
-. ./setenv
-"$JAVA_HOME_ABEV"java $MEMORY_OPTS -jar boot.jar
-"$JAVA_HOME_ABEV"java $MEMORY_OPTS $TUNING_OPTS $RUN_OPTS $XML_OPTS -jar abevjava.jar cfg=cfg.enyk "$1" "$2" "$3"

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=2.88
+Name=ÁNYK
+Comment=Általános Nyomtatványkitöltő Keretprogram
+Path=/usr/share/abevjava
+Exec=abevjava
+Icon=abevjava
+Terminal=false
+Categories=Office
