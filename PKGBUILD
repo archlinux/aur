@@ -9,7 +9,7 @@ url="https://github.com/LIJI32/SameBoy"
 license=(MIT)
 depends=(sdl2)
 # Upstream requires clang, so using gcc might break
-makedepends=(clang rgbds make git)
+makedepends=(clang rgbds-git make git)
 source=(git+ssh://git@github.com/LIJI32/SameBoy.git)
 sha1sums=(SKIP)
 
