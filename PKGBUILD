@@ -82,6 +82,7 @@ source=(
 
   'vmware-hostd-certificates.service'
   'vmware-hostd.service'
+  'vmware-authd.service'
   'vmware-networks-configuration.service'
   'vmware-networks.service'
   'vmware-usbarbitrator.service'
@@ -108,9 +109,10 @@ sha256sums=(
   'ad522a8cbc6103134ce5e677a01b503cd21875cbceb37bd13fd870ebd9ad0e6d'
 
   'f9440479f3ae5ad0a39bba3150276627878bf83d6879444fb327c53a1dbb5a4d'
-  '70301aa4eff4f42d7d39b276445dc7d8f44b8a0e184775e8a9e3055bb9d8590a'
+  '42594b60085d0bbef01ab07b9f8b0d18640001107ce61cc0ddf02d0ab415140f'
+  'e4c2e97acf07c52de570dd4333d67acfb593db719937a563c6075ab773dcce33'
   'e3812b78158672c7d96b6a58877681462f3fbdfe99a948b32c80c755c8682450'
-  'a651de50e91f386057d69d11e2cdf6e020229aae0631f25073ca09fbb878d1db'
+  'c0a5aea785db06921fb350d36d5e0fd9a14f5eee0c835686ec6fea1af8c92245'
   'd7a9fbf39a0345ae2f14f7f389f30b1110f605d187e0c241e99bbb18993c250d'
 
   '05e26d8b21d190ebabb7f693998114d9d5991d9dfb71acb4d990293a65b6b487'
@@ -139,7 +141,7 @@ source+=(
 )
 sha256sums+=(
   '09711e59f708576d2fb09c464ebbb52806cb7f850cb3d5bbeea634fa58fb6c86'
-  'cb9ecff2d9210ea0022d5ac1b2c274dba0ec9b79c031386627f2a668913e1a38'
+  '29e0b0db9c0296ab81eee543803c4bd430e2c69c76e33492910e17280da1c05c'
 )
 
 _fusion_isoimages=(darwin)
@@ -303,6 +305,7 @@ package() {
   for service_file in \
     vmware-hostd-certificates.service \
     vmware-hostd.service \
+    vmware-authd.service \
     vmware-networks-configuration.service \
     vmware-networks.service \
     vmware-usbarbitrator.service
