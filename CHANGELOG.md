@@ -1,3 +1,18 @@
+# v2.11.0
+- [#928](https://github.com/xmrig/xmrig/issues/928) Added support for new algorithm `cryptonight/gpu`, short alias `cn/gpu` (original name `cryptonight-gpu`), for upcoming [Ryo currency](https://ryo-currency.com) fork on February 14.
+
+# v2.10.0
+- [#904](https://github.com/xmrig/xmrig/issues/904) Added new algorithm `cn-pico/trtl` (aliases `cryptonight-turtle`, `cn-trtl`) for upcoming TurtleCoin (TRTL) fork.
+
+# v2.9.4
+- [#913](https://github.com/xmrig/xmrig/issues/913) Fixed Masari (MSR) support (this update required for upcoming fork).
+
+# v2.9.3
+- [#232](https://github.com/xmrig/xmrig-nvidia/pull/232) Fixed `cn/half` compute errors.
+
+# v2.9.1
+- [#899](https://github.com/xmrig/xmrig/issues/899) Added support for new algorithm `cn/half` for Masari and Stellite forks.
+
 # v2.8.4
 - Improved `cn/2` performance especially for old GPUs.
 - Better `cn/2` autoconfig for old GPUs if variant `-1` or `2` selected.
