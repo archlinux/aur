@@ -1,0 +1,16 @@
+pkgbase = gitin-bin
+	pkgdesc = commit/branch/workdir explorer for git
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/isacikgoz/gitin
+	arch = x86_64
+	license = BSD
+	depends = openssl
+	conflicts = gitin
+	source = https://github.com/isacikgoz/gitin/releases/download/v0.1.5/gitin_0.1.5_linux_amd64.tar.gz
+	source = https://raw.githubusercontent.com/isacikgoz/gitin/v0.1.5/LICENSE
+	sha256sums = 3b29e931972d4a104d41ccc49e74e62eb38f4c50c78cc8f660a702626ca372bc
+	sha256sums = SKIP
+
+pkgname = gitin-bin
+
