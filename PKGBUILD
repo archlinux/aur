@@ -5,7 +5,7 @@
 
 pkgname=neovim-fugitive
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Git wrapper so awesome, it should be illegal"
 arch=('any')
 url="https://github.com/tpope/vim-fugitive"
@@ -21,10 +21,10 @@ sha256sums=('e19aee8392674d3cf176e60a40b04db9f4b30f0576def52e1d53bdf0e3105182'
 package() {
   cd "${pkgname#neo}-$pkgver"
 
-  local installpath="$pkgdir/usr/share/nvim/runtime"
-  install -Dm644 doc/fugitive.txt "$installpath/doc/fugitive.txt"
-  install -Dm644 plugin/fugitive.vim "$installpath/plugin/fugitive.vim"
-  install -Dm644 ../license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  local _installpath="$pkgdir/usr/share/nvim/runtime"
+  install -dvm755 "${_installpath}"
+  cp -rvt "${_installpath}" autoload doc plugin ftdetect
+  install -Dvm644 ../license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:

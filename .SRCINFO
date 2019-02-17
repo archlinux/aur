@@ -1,7 +1,7 @@
 pkgbase = neovim-fugitive
 	pkgdesc = A Git wrapper so awesome, it should be illegal
 	pkgver = 2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tpope/vim-fugitive
 	install = nvim-doc.install
 	arch = any
