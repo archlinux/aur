@@ -5,7 +5,7 @@
 
 pkgname=pdfbeads
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A small utility written in Ruby which takes scanned page images and converts them into a single PDF file"
 arch=('any')
 url='https://github.com/ImageProcessing-ElectronicPublications/ruby-pdfbeads'
@@ -34,9 +34,6 @@ sha256sums=('f77d7a33cb9ef5963bc735f7b7bb4ffdadd94291291bb3581a4ec4ece39b9ab3'
 
 prepare() {
   cd ruby-${pkgname}-${pkgver}
-  sed 's|git ls-files -z|find -print0|' -i ${pkgname}.gemspec
-  sed 's|~>|>=|g' -i ${pkgname}.gemspec # don't give a fuck about rubys bla bla
-
   patch -p0 -i ../license.patch
 }
 
