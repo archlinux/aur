@@ -1,0 +1,16 @@
+pkgbase = bruteforce-luks
+	pkgdesc = Try to find the password of a LUKS encrypted volume.
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/glv2/bruteforce-luks
+	arch = x86_64
+	license = GPL3
+	depends = cryptsetup
+	source = bruteforce-luks-1.3.1.tar.gz::https://github.com/glv2/bruteforce-luks/archive/1.3.1.tar.gz
+	source = bruteforce-luks-1.3.1.tar.gz.sig::https://github.com/glv2/bruteforce-luks/releases/download/1.3.1/bruteforce-luks-1.3.1.tar.gz.sig
+	validpgpkeys = 8D7B2F5D0B2576447752AFAF3142FA49A297039D
+	sha256sums = a6008ed1bfd016ef796e1984f156270b1f96be29caea72d8b06bd1d255679b31
+	sha256sums = 2402040a2f756facc7077a09be84686bc186341f1233dfddd208b513d5220219
+
+pkgname = bruteforce-luks
+
