@@ -1,7 +1,7 @@
 pkgbase = ttyqr-git
 	pkgdesc = Draw QR codes straight into the terminal
 	pkgver = r5.56f7658
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/oskar456/ttyqr
 	arch = x86_64
 	arch = armv7h
