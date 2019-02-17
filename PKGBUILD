@@ -5,8 +5,8 @@ _systemd_pkgver=0.9.5
 _service_identity_pkgver=17.0.0
 
 pkgname=pac4cli-git
-pkgver=0.2
-pkgrel=2
+pkgver=0.1.117.g99bc91e
+pkgrel=3
 pkgdesc="Proxy-auto-discovery for command line applications"
 arch=('i686' 'x86_64')
 url="https://github.com/tkluck/pac4cli"
@@ -26,8 +26,7 @@ md5sums=('SKIP' '6ea7f2bf2e93eb7e8e58f75b77885c22' 'f17c9204c7f56365c297ba68e684
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	LATEST_TAG=$(git describe --tags --abbrev=0 --match 'v*' 2>/dev/null)
-	printf "%s" "${LATEST_TAG#*v}"
+	git describe | sed 's/v//; s/-/./g'
 }
 
 build() {
@@ -55,11 +54,5 @@ package() {
 
 	#package pac4cli
 	cd "${srcdir}/${pkgname%-git}"
-	LATEST_TAG=$(git describe --tags --abbrev=0 --match 'v*' 2>/dev/null)	# get latest release tag
-	if [[ "x${LATEST_TAG}" == "x" ]]; then
-		echo "Could not find any releases to build."
-		exit 1;
-	fi
-	git checkout ${LATEST_TAG}										# checkout latest release tag
 	make DESTDIR="${pkgdir}" prefix=/usr install
 }
