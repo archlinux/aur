@@ -1,10 +1,11 @@
-# Maintainer: sballert <sballert@posteo.de>
+# Contributor: sballert <sballert@posteo.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 _gituser="tigersoldier"
 _gitrepo="company-lsp"
 
 pkgname=emacs-company-lsp-git
-pkgver=r48.82c3f1a
+pkgver=2.1.0r0.g4eb6949
 pkgrel=1
 pkgdesc="Company completion backend for lsp-mod"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -19,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  git describe --tags --long | sed 's+-+r+' | tr - .
 }
 
 build() {
