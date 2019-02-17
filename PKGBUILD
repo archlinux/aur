@@ -5,7 +5,7 @@ _gituser="emacs-lsp"
 _gitrepo="lsp-mode"
 
 pkgname=emacs-lsp-mode-git
-pkgver=6.0.50.ge9b95e1
+pkgver=6.0r51.g6dc60e2
 pkgrel=1
 pkgdesc="Emacs client/library for the Language Server Protocol"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  git describe --tags|tr - .
+  git describe --tags | sed 's+-+r+' | tr - .
 }
 
 build() {
