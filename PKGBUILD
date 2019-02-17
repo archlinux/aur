@@ -5,7 +5,6 @@ pkgver=1.1
 pkgrel=1
 pkgdesc='A tool that allow you to make TOR your default gateway and send all internet connections under TOR (as transparent proxy) for increase privacy/anonymity without extra unnecessary code.'
 arch=('any')
-groups=('blackarch' 'blackarch-defensive')
 url='https://gitlab.com/edu4rdshl/tor-router'
 license=('GPL3')
 depends=('tor' 'systemd')
