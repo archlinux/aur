@@ -1,6 +1,6 @@
 # Maintainer: Šarūnas Gliebus <ssharunas at yahoo.co.uk>
 pkgname=boram
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Cross-platform WebM converter"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
 	"git+https://github.com/Kagami/boram.git#tag=v$pkgver"
 )
 md5sums=(
-	'ed269b39bcc5b19caaebb24a61b60e76'
+	'b907fc61a9cd1d7049812576f052515d'
 	'SKIP'
 	'SKIP'
 )
@@ -27,9 +27,6 @@ build() {
 	rm -f ./python
 	ln -s /usr/bin/python2 ./python	 #nacl needs python2 as python
 	export PATH="$(pwd):$PATH"
-
-	#ca-check is incompatable with openssl 1.1.1
-	sed -i '20s/^/  #/' sdk_tools/download.py
 
 	./naclsdk update
 	export NACL_SDK_ROOT="$(pwd)/pepper_49"
