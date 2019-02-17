@@ -1,19 +1,19 @@
 # Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=cpp-taskflow
-pkgver=1.0.3
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="Fast C++ Parallel Programming with Task Dependencies"
+pkgdesc="Modern C++ Parallel Task Programming Library"
 arch=('any')
 url="https://github.com/cpp-taskflow/cpp-taskflow"
 license=('MIT')
 makedepends=('cmake')
-source=("$url/archive/${pkgver}.tar.gz")
-sha256sums=('7852bad9899637daa922ded1be74893cc6ae2c460a40b152b2bfdbf115cdc94b')
+source=("$url/archive/v${pkgver}.tar.gz")
+sha256sums=('479ffd7b1fbeeca98b25cda254158b09adc6733c4c4f955b757580d70f002c5b')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
-    echo "install(FILES taskflow.hpp DESTINATION include)" >> CMakeLists.txt
+    #echo "install(FILES taskflow.hpp DESTINATION include)" >> CMakeLists.txt
 }
 
 build() {
@@ -25,6 +25,7 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
+        -DTF_BUILD_EXAMPLES=OFF
 
     cmake --build build
 }
@@ -38,4 +39,5 @@ package() {
     cd "${pkgname}-${pkgver}"
     cmake --build build -- DESTDIR="${pkgdir}" install
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cp -a example "${pkgdir}/usr/share/${pkgname}/"
 }
