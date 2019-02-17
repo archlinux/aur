@@ -5,12 +5,12 @@ pkgver=1.2.0.r11.g4d4f92b
 pkgrel=1
 pkgdesc='A modern PAGER for viewing logs, get more than most in less time'
 arch=(x86_64)
-url='https://github.com/tigrawap/slit'
+url="https://github.com/tigrawap/slit"
 license=(MIT)
 makedepends=(go dep)
 conflicts=(slit)
 provides=(slit)
-source=("${pkgname}::git+https://github.com/tigrawap/slit.git")
+source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,19 +23,29 @@ prepare() {
 	cd "${srcdir}/${pkgname}"
 
 	install -m755 -d "${srcdir}/go/src/github.com/tigrawap/"
-	cp -a "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/tigrawap/slit"
+	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/tigrawap/slit"
+
+	cd "${srcdir}/go/src/github.com/tigrawap/slit"
+
+	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
+	go get -v ./...
 }
 
 build() {
 	cd "${srcdir}/go/src/github.com/tigrawap/slit"
 
+	mkdir -p build
+
 	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
-	make
+	go build -ldflags "-s -w" \
+		-gcflags="all=-trimpath=${GOPATH}/src" \
+		-asmflags="all=-trimpath=${GOPATH}/src" \
+		-o build/slit ./cmd/slit
 }
 
 package() {
 	cd "${srcdir}/go/src/github.com/tigrawap/slit"
 
-	install -m755 -D bin/slit "${pkgdir}"/usr/bin/slit
-	install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/slit/LICENSE
+	install -Dm755 "./build/slit" "${pkgdir}/usr/bin/slit"
+	install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

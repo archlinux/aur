@@ -9,7 +9,7 @@ pkgbase = slit-git
 	makedepends = dep
 	provides = slit
 	conflicts = slit
-	source = slit-git::git+https://github.com/tigrawap/slit.git
+	source = slit-git::git+https://github.com/tigrawap/slit
 	sha256sums = SKIP
 
 pkgname = slit-git
