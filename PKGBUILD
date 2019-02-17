@@ -6,7 +6,7 @@
 pkgname=lib32-systemd-git
 _pkgname=lib32-systemd
 _pkgbasename=systemd
-pkgver=241.rc2.66
+pkgver=241.78
 pkgrel=1
 pkgdesc='system and service manager (32-bit, git version)'
 arch=('x86_64')
@@ -77,8 +77,8 @@ build() {
     -Dhtml=false
 
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
-    # TODO(dreisner): consider changing this to unified
     -Ddefault-hierarchy=hybrid
+    -Ddefault-locale=C
     -Ddefault-kill-user-processes=false
     -Dfallback-hostname='archlinux'
     -Dntp-servers="${_timeservers[*]}"
