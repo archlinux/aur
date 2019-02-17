@@ -1,7 +1,7 @@
 pkgbase = pac4cli-git
 	pkgdesc = Proxy-auto-discovery for command line applications
-	pkgver = 0.1
-	pkgrel = 1
+	pkgver = 0.1.117.g99bc91e
+	pkgrel = 3
 	url = https://github.com/tkluck/pac4cli
 	install = pac4cli.install
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = pac4cli-git
 	makedepends = python-pyasn1-modules
 	makedepends = python-attrs
 	makedepends = python-idna
+	makedepends = python-setuptools
 	depends = python>=3.6
 	depends = python-twisted
 	depends = python-pyopenssl
@@ -21,17 +22,17 @@ pkgbase = pac4cli-git
 	depends = python-pyasn1
 	depends = python-pyasn1-modules
 	depends = python-attrs
+	depends = python-systemd
 	provides = python-pacparser
+	provides = python-txdbus
 	source = pac4cli::git+https://github.com/tkluck/pac4cli.git
 	source = https://github.com/pacparser/pacparser/archive/1.3.7.tar.gz
-	source = https://github.com/cocagne/txdbus/archive/1.0.14.tar.gz
-	source = https://files.pythonhosted.org/packages/source/s/systemd/systemd-0.9.5.tar.gz
+	source = https://pypi.io/packages/source/t/txdbus/txdbus-1.1.0.tar.gz
 	source = https://files.pythonhosted.org/packages/source/s/service_identity/service_identity-17.0.0.tar.gz
 	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 6ea7f2bf2e93eb7e8e58f75b77885c22
+	md5sums = f17c9204c7f56365c297ba68e6840900
+	md5sums = f509cb41ca2f8420bd8496291136d6cc
 
 pkgname = pac4cli-git
 
