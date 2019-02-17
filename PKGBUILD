@@ -11,7 +11,7 @@ makedepends=('go' 'git' 'dep')
 optdepends=('peco: for zsh functions script')
 options=('!strip' '!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sachaos/todoist/archive/v$pkgver.tar.gz")
-md5sums=('SKIP')
+md5sums=('cfbb5ef29f0493d5aedfec415fa56d80')
 
 prepare() {
  mkdir -p "$srcdir/go/src/github.com/sachaos"
