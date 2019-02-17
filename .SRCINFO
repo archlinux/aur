@@ -1,0 +1,17 @@
+pkgbase = pmd-aral
+	pkgdesc = Print Markdown (pmd) is a simple script that renders markdown in commandline terminals using grip and lynx.
+	pkgver = d0dcba14
+	pkgrel = 1
+	epoch = 0
+	url = https://source.ind.ie/aral/pmd
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	depends = lynx
+	depends = python-grip
+	source = https://source.ind.ie/aral/pmd/-/archive/master/pmd-master.tar.gz
+	sha256sums = ea2b9455f3ec2d8f4ba438685982c115a48e23eecacbc96affa5f81426df02fe
+
+pkgname = pmd-aral
+
