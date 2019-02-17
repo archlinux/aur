@@ -2,7 +2,7 @@
 _pkgname=NordVPN-Connect
 pkgname=gnome-shell-extension-nordvpn-connect-git
 pkgver=r44.505b3c7
-pkgrel=1
+pkgrel=2
 pkgdesc="An unoffical interface for the 'nordvpn connect' command as a gnome-shell extension"
 arch=('any')
 url="https://github.com/AlexPoilrouge/NordVPN-connect"
@@ -12,11 +12,6 @@ makedepends=('git')
 source=(
         "git://github.com/AlexPoilrouge/NordVPN-connect.git"
 )
-
-pkgver() {
-  cd "${srcdir}/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
 	cd NordVPN-connect
