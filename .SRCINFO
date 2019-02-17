@@ -1,6 +1,6 @@
 pkgbase = luxcorerender-git
 	pkgdesc = LuxCoreRender is a physically correct, unbiased rendering engine.
-	pkgver = 2.1.r132.gcff1bdeda
+	pkgver = 2.1.r141.g068f34597
 	pkgrel = 1
 	url = https://www.luxcorerender.org/
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = luxcorerender-git
 	depends = embree
 	depends = glfw-x11
 	depends = gtk3
+	depends = oidn
 	depends = opencl-icd-loader
 	optdepends = opencl-driver: for gpu acceleration
 	optdepends = python-pyside: for pyluxcoretools gui

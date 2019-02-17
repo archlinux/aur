@@ -1,12 +1,12 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=luxcorerender-git
-pkgver=2.1.r132.gcff1bdeda
+pkgver=2.1.r141.g068f34597
 pkgrel=1
 pkgdesc="LuxCoreRender is a physically correct, unbiased rendering engine."
 arch=('x86_64')
 url="https://www.luxcorerender.org/"
 license=('Apache')
-depends=(openimageio boost blosc embree glfw-x11 gtk3 opencl-icd-loader)
+depends=(openimageio boost blosc embree glfw-x11 gtk3 oidn opencl-icd-loader)
 optdepends=("opencl-driver: for gpu acceleration"
             "python-pyside: for pyluxcoretools gui")
 makedepends=(git doxygen cmake python-pyside-tools opencl-headers)
