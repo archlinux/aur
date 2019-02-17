@@ -1,7 +1,7 @@
 # Maintainer: Térence Clastres <t.clastres@gmail.com>
 
 pkgname=giada-git
-pkgver=v0.15.3.r62.gd4068c49
+pkgver=v0.15.3.r71.g3a104597
 pkgrel=1
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('fltk' 'jansson' 'libpulse' 'libxpm' 'rtmidi')
 makedepends=('gendesk' 'imagemagick')
 checkdepends=('catch2')
 conflicts=('giada' 'giada-vst')
-source=("giada-git::git+https://github.com/monocasual/giada.git#branch=record-signal"
+source=("giada-git::git+https://github.com/monocasual/giada.git"
          "git+https://github.com/WeAreROLI/JUCE.git")
 sha512sums=('SKIP'
             'SKIP')
@@ -44,7 +44,7 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  ./configure --prefix=/usr --target=linux --enable-vst --enable-system-catch
+  ./configure --prefix=/usr --target=linux --enable-vst
 
   make
 }
