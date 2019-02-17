@@ -1,5 +1,5 @@
-# Maintainer: Aral Balkan <mail@ar.al>
-# Contributor: koyu <me@koyu.space>
+# Maintainer: koyu <me at koyu dot space>
+# Contributor: Aral Balkan <mail at ar dot al>
 
 pkgname=pmd-aral
 pkgver=d0dcba14
