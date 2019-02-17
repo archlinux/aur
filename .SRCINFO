@@ -1,0 +1,15 @@
+pkgbase = ruby-multiio
+	pkgdesc = MultiIO Ruby lib for outputting to multiple IO sources (e.g. STDOUT, file)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/clintmod/multiio
+	arch = any
+	license = unknown
+	depends = ruby
+	noextract = multiio-0.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/multiio-0.1.0.gem
+	sha256sums = 184bd9c272592904d3c24d19545039cb9ce477d6fa6dc9916754d6eba3935a74
+
+pkgname = ruby-multiio
+
