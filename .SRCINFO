@@ -1,0 +1,15 @@
+pkgbase = irslackd-git
+	pkgdesc = A self-hosted IRC gateway to Slack
+	pkgver = r134.c9b8b20
+	pkgrel = 1
+	url = https://github.com/adsr/irslackd
+	arch = any
+	license = Apache
+	makedepends = npm
+	makedepends = git
+	depends = nodejs
+	source = git+https://github.com/adsr/irslackd.git
+	sha256sums = SKIP
+
+pkgname = irslackd-git
+
