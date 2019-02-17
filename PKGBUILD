@@ -23,8 +23,8 @@
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
-pkgver=18.1rc1
-_major=18.1rc1
+pkgver=18.1
+_major=18.1
 pkgrel=1
 _codename=Leia
 _tag="$_major-$_codename"
@@ -84,7 +84,7 @@ noextract=(
   "fstrcmp-$_fstrcmp_version.tar.gz"
   "flatbuffers-$_flatbuffers_version.tar.gz"
 )
-sha256sums=('9045a690547d5fce9df69952f1fda27acaebc9d4a3f2b5b10dbe2600e6cb5eac'
+sha256sums=('bc1ef0e271d0b6ce2e1be7546ad4f7d330930d7631cc19a9bbc5f75ddc586166'
             '9a971662e44353c120f2ccf87655571998956e699a2dd800ec708b8b928a53c8'
             '38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
