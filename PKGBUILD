@@ -1,32 +1,32 @@
-# Maintainer: LIN Ruohshoei <lin dot ruohshoei plus archlinux at gmail dot com>   
-
+# Maintainer: DDoSolitary <DDoSolitary@gmail.com>
 pkgname=v2ray-plugin
 pkgver=1.0
-pkgrel=1
-pkgdesc='Yet another SIP003 plugin for shadowsocks, based on v2ray'
-arch=('x86_64')
-url='https://github.com/shadowsocks/v2ray-plugin'
-license=('MIT')
-makedepends=('go')
-conflicts=("${pkgname}-git" "${pkgname}-bin")
-source=($pkgname::"git+https://github.com/shadowsocks/$pkgname.git#tag=v$pkgver"
-        "https://raw.githubusercontent.com/shadowsocks/$pkgname/master/LICENSE")
-sha256sums=('SKIP'
-            'd903af2e15f43ddc5782ec20a0f1bdd090974ebea01ab02e0b015b76283ea666')
+pkgrel=2
+pkgdesc="Yet another SIP003 plugin for shadowsocks, based on v2ray"
+url="https://github.com/shadowsocks/v2ray-plugin"
+arch=(x86_64)
+license=(MIT)
+makedepends=(go)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/shadowsocks/$pkgname/archive/v$pkgver.tar.gz")
+builddir="$srcdir/$pkgname-$pkgver"
+
+prepare() {
+	cd "$srcdir"
+	mkdir .gopath
+	export GOPATH="$srcdir/.gopath"
+	cd "$builddir"
+	go get -d -v
+}
 
 build() {
-  export GOPATH="$srcdir"/gopath
-  cd $srcdir/$pkgname
-  go get -u -v github.com/shadowsocks/$pkgname
-  go build -v \
-    -gcflags "all=-trimpath=$PWD" \
-    -asmflags "all=-trimpath=$PWD" \
-    -ldflags "-extldflags $LDFLAGS" \
-    -o $pkgname .
+	cd "$builddir"
+	go build -o v2ray-plugin -v
 }
+
 package() {
-  cd $srcdir/$pkgname
-  install -Dm755 $pkgname  ${pkgdir}/usr/bin/$pkgname
-  install -Dm644 LICENSE -t ${pkgdir}/usr/share/licenses/$pkgname/
-  echo "README FILE: https://github.com/shadowsocks/v2ray-plugin/blob/master/README.md"
+	cd "$builddir"
+	install -Dm755 v2ray-plugin "$pkgdir/usr/bin/v2ray-plugin"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
 }
+
+sha512sums=("0202bf7c0624ed323fd90647f2e3042528c3ce7b2b100c2f9bfe9a50042569fdb96ceca178473acc39c52a3dc0ff4c067ee567ddfc537877cbb27593bab43611  v2ray-plugin-1.0.tar.gz")
