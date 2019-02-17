@@ -1,0 +1,12 @@
+pkgbase = soundfont-fatboy
+	pkgdesc = A free GM/GS SoundFont for classic video game MIDI, emulation, and general usage.
+	pkgver = 0.785
+	pkgrel = 1
+	url = https://fatboy.site/
+	arch = any
+	license = unknown
+	source = https://dl.fatboy.site/FatBoy-latest.7z
+	md5sums = SKIP
+
+pkgname = soundfont-fatboy
+
