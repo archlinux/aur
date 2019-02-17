@@ -13,7 +13,7 @@ for _platform in $_PLATFORMS; do
 	done
 done
 pkgbase=kvmd
-pkgver=0.134
+pkgver=0.135
 pkgrel=1
 pkgdesc="The main Pi-KVM daemon"
 url="https://github.com/pi-kvm/kvmd"
@@ -98,7 +98,7 @@ for _platform in $_PLATFORMS; do
 
 			mkdir -p \"\$pkgdir/etc/\"{kvmd,sysctl.d,udev/rules.d,modules-load.d}
 
-			_cfgdir=\"/usr/share/kvmd/configs.default/os\"
+			_cfgdir=\"/usr/share/kvmd/configs.default\"
 
 			ln -sf \"\$_cfgdir/os/sysctl.conf\" \"\$pkgdir/etc/sysctl.d/99-pikvm.conf\"
 			ln -sf \"\$_cfgdir/os/udev/$_platform-$_board.rules\" \"\$pkgdir/etc/udev/rules.d/99-pikvm.rules\"
