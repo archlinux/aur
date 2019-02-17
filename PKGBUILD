@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/kewlfft/${pkgname}"
 license=('LGPL3')
 depends=('fping')
+optdepends=('networkmanager')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('5fcd2733020e546e21d0a29a70046352c7844717e5fa8c84a1540f37f621b564')
 
