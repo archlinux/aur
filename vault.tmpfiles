@@ -1,0 +1,2 @@
+d /var/lib/vault   0755 vault vault
+x /var/lib/vault/*

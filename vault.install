@@ -1,13 +1,6 @@
 # vim: ft=sh ts=4 sw=4 et
 
 post_install () {
-    getent passwd vault > /dev/null || useradd \
-        -s /bin/nologin -c 'Vault daemon' -d /var/lib/vault -M -r -U vault
-    if [[ ! -d /var/lib/vault ]] ; then
-        mkdir /var/lib/vault
-        chown vault:vault /var/lib/vault
-    fi
-
     cat <<EOF
 
 The default configuration stores data in files under "/var/lib/vault",

@@ -6,3 +6,5 @@
 !vault.hcl
 !vault.install
 !vault.service
+!vault.sysusers
+!vault.tmpfiles
