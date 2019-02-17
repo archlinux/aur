@@ -1,7 +1,7 @@
 pkgbase = hiawatha-letsencrypt
 	pkgdesc = Let's Encrypt script for the Hiawatha webserver
 	pkgver = 10.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hiawatha-webserver.org
 	arch = any
 	license = GPL2
