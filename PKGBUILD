@@ -33,11 +33,12 @@ backup=('etc/tor/torrc'
 }
 
 source=("git+https://git.torproject.org/tor.git#branch=${_branch:-master}"
-        'nodes' 'torrc' 'tor.logrotate'
+        'nodes' 'transparent_proxy' 'torrc' 'tor.logrotate'
         'tor.service' 'tor.tmpfiles' 'tor.sysusers')
 
 sha256sums=('SKIP'
             'eb82c6eaef6cd2e9451b4096f4ce23b3ee91fc408cdebd3280698cbe1a3b7ca1'
+            '7fbb63e9411eee2176964449a3d6809d16e1120152c6ff201ecea1d1f97f102b'
             '5e40baff0e6cdc487793453ab06155c2974cc8bb20096db98be641fcceccd328'
             'd447227fcc2756778a1be143b8975d67b25ea15688cde2291185b3c71d0f6e34'
             '7f98569aefffead72e8712c1ad27de3fc2095575da003691b2513ca54042efbb'
@@ -87,5 +88,6 @@ package() {
     install -Dm644 "$srcdir/tor.sysusers"  "$pkgdir/usr/lib/sysusers.d/tor.conf"
     install -Dm644 "$srcdir/tor.logrotate" "$pkgdir/etc/logrotate.d/tor"
     install -Dm644 "$srcdir/nodes"         "$pkgdir/etc/tor/torrc.d/nodes"
+    install -Dm644 "$srcdir/transparent_proxy" "$pkgdir/etc/tor/torrc.d/transparent_proxy"
     install -Dm644 LICENSE                 "$pkgdir/usr/share/licenses/tor/LICENSE"
 }

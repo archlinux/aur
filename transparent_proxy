@@ -1,0 +1,21 @@
+## https://trac.torproject.org/projects/tor/wiki/doc/TransparentProxy
+
+#VirtualAddrNetworkIPv4 10.192.0.0/10
+#AutomapHostsOnResolve 1
+
+## TransPort [address:]port|auto [isolation flags]
+##
+## Open this port to listen for transparent proxy connections.
+## Set this to 0 if you don’t want to allow transparent proxy connections.
+## Set the port to "auto" to have Tor pick a port for you. This directive
+## can be specified multiple times to bind to multiple addresses/ports.
+#TransPort 127.0.0.1:9040 IsolateClientAddr IsolateClientProtocol IsolateDestAddr IsolateDestPort
+
+## DNSPort [address:]port|auto [isolation flags]
+##
+## If non-zero, open this port to listen for UDP DNS requests, and
+## resolve them anonymously. This port only handles A, AAAA, and PTR
+## requests---it doesn’t handle arbitrary DNS request types. Set the port
+## to "auto" to have Tor pick a port for you.
+## This directive can be specified multiple times to bind to multiple addresses/ports.
+#DNSPort 127.0.0.1:53
