@@ -11,11 +11,6 @@ makedepends=('cmake')
 source=("$url/archive/v${pkgver}.tar.gz")
 sha256sums=('479ffd7b1fbeeca98b25cda254158b09adc6733c4c4f955b757580d70f002c5b')
 
-prepare() {
-    cd "${pkgname}-${pkgver}"
-    #echo "install(FILES taskflow.hpp DESTINATION include)" >> CMakeLists.txt
-}
-
 build() {
     cd "${pkgname}-${pkgver}"
     cmake -H. -Bbuild \
