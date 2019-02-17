@@ -11,16 +11,13 @@ license=('GPL3')
 depends=('gtk3' 'lv2' 'lilv' 'jack' 'libsndfile' 'libsmf' 'libdazzle'
          'breeze-icons' 'portaudio' 'ffmpeg')
 source=("$_pkgname::https://git.zrythm.org/zrythm/zrythm/-/archive/$pkgver/zrythm-$pkgver.tar.gz"
-        "libcyaml::https://github.com/tlsa/libcyaml/archive/v0.1.0.tar.gz"
-        "suil::https://git.zrythm.org/zrythm/suil/-/archive/master/suil-master.tar.gz")
+        "libcyaml::https://github.com/tlsa/libcyaml/archive/v0.1.0.tar.gz")
 md5sums=('SKIP'
-         'SKIP'
          'SKIP')
 
 prepare() {
 	cd "$srcdir/$_pkgname"
   cp -r $srcdir/libcyaml-0.1.0/* ./ext/libcyaml/
-  cp -r $srcdir/suil-master/* ./ext/suil/
 }
 
 build() {
