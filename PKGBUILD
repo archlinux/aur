@@ -25,7 +25,7 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	install -Dm755 v2ray-plugin "$pkgdir/usr/bin/v2ray-plugin"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 sha512sums=(0202bf7c0624ed323fd90647f2e3042528c3ce7b2b100c2f9bfe9a50042569fdb96ceca178473acc39c52a3dc0ff4c067ee567ddfc537877cbb27593bab43611)
