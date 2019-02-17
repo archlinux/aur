@@ -5,7 +5,7 @@
 
 pkgname=pdfbeads
 pkgver=1.1.2.pre.beta
-pkgrel=4
+pkgrel=5
 pkgdesc="A small utility written in Ruby which takes scanned page images and converts them into a single PDF file"
 arch=('any')
 url='https://github.com/boredland/pdfbeads'
@@ -16,6 +16,7 @@ depends=(
 'openjpeg2'
 'imagemagick6'
 'ruby-rmagick>=2.0.0'
+'ruby-rdoc'
 )
 
 optdepends=(
@@ -36,7 +37,7 @@ sha256sums=('e25dba6e172136f38fa4947a7c017d5f3a2ba5bb548d9e46632e568e7ebf51e9'
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/imagemagick6/pkgconfig \
-    gem install --ignore-dependencies --no-user-install --no-document -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $pkgname-$pkgver.gem
+    gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $pkgname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$pkgname-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/$pkgname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   
