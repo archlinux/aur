@@ -6,7 +6,7 @@
 
 pkgname=compiz-git
 pkgver=0.9.14.0.r0.gb340cc413
-pkgrel=1
+pkgrel=2
 _gitname=compiz
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM (development version)"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ source=("git+https://git.launchpad.net/${_gitname}"
 sha256sums=('SKIP'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
-            'fba56d3e5fc8d1b47be2b8eaa6d79f48635daccc26db9b0b88fa281cc50c635e'
+            '6ec9c04540ca1649c687d9ab2c8311caea7075831e2cffe719ec7958c9ebab7b'
             '89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61'
             '4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a')
 
@@ -43,10 +43,6 @@ prepare() {
 
   # Reverse Unity specific configuration patches
   patch -p1 -i "${srcdir}/reverse-unity-config.patch"
-
-  # Fix decorator start command
-  # This MUST be run AFTER reverse-unity-config.patch. Otherwise it has no effect at all
-  sed -i 's/exec \\"${COMPIZ_BIN_PATH}compiz-decorator\\"/exec \/usr\/bin\/compiz-decorator/g' plugins/decor/decor.xml.in
 
   # Set focus prevention level to off which means that new windows will always get focus
   patch -p1 -i "${srcdir}/focus-prevention-disable.patch"
@@ -104,8 +100,5 @@ package() {
 
   # Install licenses
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 "${srcdir}/${_gitname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 "${srcdir}/${_gitname}/COPYING.GPL" "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 "${srcdir}/${_gitname}/COPYING.LGPL" "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 "${srcdir}/${_gitname}/COPYING.MIT" "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 "${srcdir}/${_gitname}"/{COPYING,COPYING.GPL,COPYING.LGPL,COPYING.MIT} "${pkgdir}/usr/share/licenses/${pkgname}"
 }
