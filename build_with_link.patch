@@ -1,0 +1,7 @@
+--- a/mkdocs.yml	2019-01-23 14:16:14.000000000 +0800
++++ b/mkdocs.yml	2019-02-17 17:36:31.185730253 +0800
+@@ -94,3 +94,4 @@
+   - extra-83f68d2c59.css
+ extra_javascript:
+   - extra-0b9b22dd13.js
++use_directory_urls: false
