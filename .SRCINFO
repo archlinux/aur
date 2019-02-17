@@ -1,0 +1,15 @@
+pkgbase = pxlart
+	pkgdesc = A ncurses pixer art creator written in C
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/mananapr/pxlart/
+	arch = any
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	depends = ncurses
+	source = pxlart-1.0.tar.gz::https://github.com/mananapr/pxlart/archive/v1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = pxlart
+
