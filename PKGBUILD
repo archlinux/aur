@@ -1,3 +1,5 @@
+# Maintainer: JunYoung Gwak <i@jgwak.com>
+
 _gitname=irc-slack
 pkgname=${_gitname}-git
 pkgver=20190206
