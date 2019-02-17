@@ -2,7 +2,7 @@
 
 pkgname=mcos-mjv-nordic-theme
 pkgver=2.3~r
-pkgrel=1
+pkgrel=2
 pkgdesc="It's GTK2,GTK3,XFCE4 Theme Mac OS Nordic"
 arch=('any')
 url="https://github.com/basigur/mcos-mjv-nordic-theme"
@@ -26,11 +26,11 @@ pkgver() {
 package(){
     cd "${srcdir}/${pkgname}"
     install -d "${pkgdir}/usr/share/themes"
-    install -d "${pkgdir}/usr/share/doc"
-    install -d "${pkgdir}/usr/share/licenses"
+    install -d "${pkgdir}/usr/share/doc/$pkgname"
+    install -d "${pkgdir}/usr/share/licenses/$pkgname"
 
-    cp "${srcdir}"/"${pkgname}"/doc/{'READ ME','COPYING'} "${pkgdir}"/usr/share/doc/
-    cp "${srcdir}"/"${pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/LICENSE
+    cp "${srcdir}"/"${pkgname}"/doc/{'READ ME','COPYING'} "${pkgdir}"/usr/share/doc/$pkgname/
+    cp "${srcdir}"/"${pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
     cp -r 'McOS-MJV-Dark-Nordic' 'McOS-MJV-Nordic' "${pkgdir}"/usr/share/themes/
 
 }
