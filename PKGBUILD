@@ -8,7 +8,7 @@ pkgver=1.0.3.r0.ga2a4116
 pkgrel=1
 arch=("any")
 
-url="www.github.com/awersching/wedder"
+url="https://github.com/awersching/wedder"
 source=("git+https://github.com/awersching/wedder.git")
 license=("MIT")
 
