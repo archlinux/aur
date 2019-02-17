@@ -1,7 +1,7 @@
 pkgbase = emacs-company-lsp-git
 	pkgdesc = Company completion backend for lsp-mod
 	pkgver = 2.1.0r0.g4eb6949
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tigersoldier/company-lsp
 	arch = any
 	license = GPL3

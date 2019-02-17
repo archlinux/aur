@@ -6,7 +6,7 @@ _gitrepo="company-lsp"
 
 pkgname=emacs-company-lsp-git
 pkgver=2.1.0r0.g4eb6949
-pkgrel=1
+pkgrel=2
 pkgdesc="Company completion backend for lsp-mod"
 url="https://github.com/${_gituser}/${_gitrepo}"
 arch=('any')
@@ -30,6 +30,6 @@ build() {
 
 package() {
   cd "$_gitrepo"
-  install -d  "$pkgdir"/usr/share/emacs/site-lisp/${_gitrepo}/
-  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/${_gitrepo}/
+  install -d "$pkgdir"/usr/share/emacs/site-lisp/
+  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/
 }
