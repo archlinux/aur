@@ -1,0 +1,16 @@
+pkgbase = opennic-up-git
+	pkgdesc = OpenNIC auto DNS updater
+	pkgver = 0.93.r0.g167db7d
+	pkgrel = 1
+	url = https://github.com/kewlfft/opennic-up
+	arch = any
+	license = LGPL3
+	makedepends = git
+	depends = fping
+	depends = ldns
+	optdepends = networkmanager
+	source = git+https://github.com/kewlfft/opennic-up.git
+	sha256sums = SKIP
+
+pkgname = opennic-up-git
+
