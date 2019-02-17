@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=wxmaxima-git
-pkgver=r6002.45d450e13
+pkgver=19.02.0r31.gc6f587769
 pkgrel=1
 pkgdesc="A document based interface for the computer algebra system Maxima."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ options=('!makeflags')
 
 pkgver() {
   cd "$srcdir/wxmaxima"
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --tags --long | cut -c9- | sed 's+-+r+' |tr - .
 }
 
 build() {
