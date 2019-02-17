@@ -1,9 +1,10 @@
-# Maintainer: sballert <sballert@posteo.de>
+# Contributor: sballert <sballert@posteo.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-swiper-git
-pkgver=r1938.02537c9
+pkgver=0.11.0r35.g22fca55
 pkgrel=1
-pkgdesc="Ivy - a generic completion frontend for Emacs, Swiper - isearch with an overview, and more. Oh, man!"
+pkgdesc="Ivy - a generic completion frontend for Emacs, Swiper - isearch with an overview, and more."
 url="https://github.com/abo-abo/swiper"
 arch=('any')
 license=('GPL3')
@@ -11,22 +12,21 @@ depends=('emacs')
 makedepends=('git')
 provides=('emacs-swiper')
 conflicts=('emacs-swiper')
-source=("git+https://github.com/abo-abo/swiper.git")
+source=("emacs-swiper::git+https://github.com/abo-abo/swiper.git")
 sha256sums=('SKIP')
-_gitname="swiper"
 
 pkgver() {
-  cd "$_gitname"
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  cd "${pkgname%-git}"
+  git describe --tags | sed 's+-+r+' | tr - .
 }
 
 build() {
-  cd "$_gitname"
+  cd "${pkgname%-git}"
   make clean test compile
 }
 
 package() {
-  cd "$_gitname"
-  install -d "${pkgdir}/usr/share/emacs/site-lisp/swiper"
-  install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/swiper/"
+  cd "${pkgname%-git}"
+  install -d "$pkgdir"/usr/share/emacs/site-lisp
+  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp
 }
