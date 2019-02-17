@@ -1,8 +1,7 @@
 pkgbase = netcap-git
 	pkgdesc = A framework for secure and scalable network traffic analysis
 	pkgver = v0.3.9.r8.g11bd1ba
-	pkgrel = 1
-	epoch = 1
+	pkgrel = 2
 	url = https://github.com/dreadl0ck/netcap
 	arch = x86_64
 	license = GPL3
