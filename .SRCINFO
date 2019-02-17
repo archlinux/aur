@@ -1,0 +1,18 @@
+pkgbase = getpocket-desktop
+	pkgdesc = Pocket packaged as a desktop application
+	pkgver = 7.0.12.0
+	pkgrel = 1
+	url = https://getpocket.com/about
+	arch = x86_64
+	license = unknown
+	makedepends = nodejs-nativefier
+	depends = alsa-lib
+	depends = gconf
+	depends = gtk2
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	provides = getpocket
+
+pkgname = getpocket-desktop
+
