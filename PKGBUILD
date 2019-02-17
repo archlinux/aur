@@ -15,7 +15,8 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${pkgname%-git}"
-    printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.g%s" "$(git rev-list --count HEAD)" \
+        "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -32,6 +33,8 @@ build() {
 package() {
     cd "${pkgname%-git}/LZ4"
     make DESTDIR="${pkgdir}/" install
-    install -D -m755 "${srcdir}/hdf5_env.sh"  "${pkgdir}/etc/profile.d/hdf5_env.sh"
-    install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m755 "${srcdir}/hdf5_env.sh" \
+        "${pkgdir}/etc/profile.d/hdf5_env.sh"
+    install -D -m644 "COPYING" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
