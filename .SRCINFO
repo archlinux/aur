@@ -8,6 +8,7 @@ pkgbase = oidn
 	makedepends = git
 	makedepends = cmake
 	depends = intel-tbb
+	depends = python
 	source = oidn::git+https://github.com/OpenImageDenoise/oidn.git#tag=v0.8.1
 	source = git+https://github.com/OpenImageDenoise/mkl-dnn.git
 	source = git+https://github.com/OpenImageDenoise/oidn-weights.git

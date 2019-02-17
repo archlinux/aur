@@ -7,7 +7,7 @@ pkgdesc="Intel(R) Open Image Denoise library"
 arch=('x86_64')
 url="http://www.openimagedenoise.org/"
 license=('Apache')
-depends=(intel-tbb)
+depends=(intel-tbb python)
 makedepends=(git cmake)
 source=("${pkgname}::git+https://github.com/OpenImageDenoise/oidn.git${_fragment}"
         "git+https://github.com/OpenImageDenoise/mkl-dnn.git"
