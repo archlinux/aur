@@ -8,23 +8,22 @@ arch=(x86_64)
 license=(MIT)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shadowsocks/$pkgname/archive/v$pkgver.tar.gz")
-builddir="$srcdir/$pkgname-$pkgver"
 
 prepare() {
 	cd "$srcdir"
 	mkdir .gopath
 	export GOPATH="$srcdir/.gopath"
-	cd "$builddir"
+	cd "$srcdir/$pkgname-$pkgver"
 	go get -d -v
 }
 
 build() {
-	cd "$builddir"
+	cd "$srcdir/$pkgname-$pkgver"
 	go build -o v2ray-plugin -v
 }
 
 package() {
-	cd "$builddir"
+	cd "$srcdir/$pkgname-$pkgver"
 	install -Dm755 v2ray-plugin "$pkgdir/usr/bin/v2ray-plugin"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
 }
