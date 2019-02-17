@@ -16,12 +16,13 @@ build() {
   emacs -Q -batch \
 	-L . \
 	-L /usr/share/emacs/site-lisp/auctex \
-	-L /usr/share/emacs/site-lisp/ -f batch-byte-compile "$pkgname".el
+	-L /usr/share/emacs/site-lisp/ \
+	-f batch-byte-compile "$pkgname".el
 }
 
 package() {
   cd $pkgname-$pkgver
   install -d "$pkgdir"/usr/share/emacs/site-lisp/
-  install -Dm644 $pkgname.{el,elc} \
+  install -Dm644 $pkgname.el{,c} \
 	  "$pkgdir"/usr/share/emacs/site-lisp
 }
