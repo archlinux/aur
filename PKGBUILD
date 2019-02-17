@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=clair-git
-pkgver=v2.0.0.r267.gaa868294
+pkgver=v2.0.0.r280.gcafe0976
 pkgrel=1
 pkgdesc="Vulnerability Static Analysis for Containers"
 arch=(x86_64)
@@ -24,14 +24,18 @@ prepare() {
 	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/coreos/clair"
 
 	cd "${srcdir}/go/src/github.com/coreos/clair"
-	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" go get -v -d
+
+	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
+	go get -v ./...
 }
 
 build() {
 	cd "${srcdir}/go/src/github.com/coreos/clair"
 
 	mkdir -p build
-	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" go build \
+
+	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
+	go build \
 		-ldflags "-s -w -X github.com/coreos/clair/pkg/version.Version=${pkgver}" \
 		-gcflags="all=-trimpath=${GOPATH}/src" \
 		-asmflags="all=-trimpath=${GOPATH}/src" \
