@@ -1,0 +1,48 @@
+From d1c43cc5d9a9722addbd20db6599a4c568963f24 Mon Sep 17 00:00:00 2001
+From: 0x9fff00 <0x9fff00+git@protonmail.ch>
+Date: Sun, 17 Feb 2019 14:58:52 +0100
+Subject: [PATCH 2/2] Revert "img4: fix ubuntu compiling"
+
+This reverts commit 07a40245037b4d255e2142bb49d29c91336a317f.
+
+This caused the restore to get stuck at "Waiting for device...".
+---
+ src/img4.c | 4 +---
+ src/img4.h | 2 +-
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/src/img4.c b/src/img4.c
+index 8ca5baa..db33f15 100644
+--- a/src/img4.c
++++ b/src/img4.c
+@@ -123,8 +123,7 @@ static const unsigned char *asn1_find_element(unsigned int index, unsigned char
+ 	}
+ 
+ 	// find the element we are searching
+-    int i = 0;
+-	while (i <= index, i++) {
++	for (int i = 0; i <= index; i++) {
+ 		off += asn1_get_element(&data[off], &el_type, &el_size);
+ 		if (i == index)
+ 			break;
+@@ -174,7 +173,6 @@ int img4_stitch_component(const char* component_name, const unsigned char* compo
+ 
+ 	// create element header for the "IMG4" magic
+ 	asn1_create_element_header(ASN1_IA5_STRING, IMG4_MAGIC_SIZE, &magic_header, &magic_header_size);
+-    
+ 	// create element header for the blob (ApImg4Ticket)
+ 	asn1_create_element_header(ASN1_CONTEXT_SPECIFIC|ASN1_CONSTRUCTED, blob_size, &blob_header, &blob_header_size);
+ 
+diff --git a/src/img4.h b/src/img4.h
+index 005ead3..b83f1ca 100644
+--- a/src/img4.h
++++ b/src/img4.h
+@@ -32,4 +32,4 @@ int img4_stitch_component(const char* component_name, const unsigned char* compo
+ }
+ #endif
+ 
+-#endif /* idevicerestore_img4_h */
++#endif
+-- 
+2.20.1
+

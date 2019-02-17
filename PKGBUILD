@@ -2,7 +2,7 @@
 pkgname=futurerestore-s0uthwest-git
 _pkgname=futurerestore
 pkgver=r231.546c759
-pkgrel=1
+pkgrel=2
 pkgdesc="iOS upgrade and downgrade tool utilizing SHSH blobs - s0uthwest's fork - git version"
 arch=('x86_64')
 url="https://github.com/s0uthwest/futurerestore"
@@ -16,13 +16,15 @@ source=('git+https://github.com/s0uthwest/futurerestore.git'
         'git+https://github.com/s0uthwest/tsschecker.git'
         'git+https://github.com/s0uthwest/idevicerestore.git'
         'git+https://github.com/tihmstar/jssy.git'
-        'check_for_pthreads.patch')
+        'idevicerestore-0001-configure.ac-check-for-pthreads.patch'
+        'idevicerestore-0002-Revert-img4-fix-ubuntu-compiling.patch')
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'a9594bdc7fe465fe6e63cef1f9e6300fd79c37800431c718ebf37b4786f0ee3ecc76a61b9dd654200f2be059d87922baccddc475527c5b56491e99d9aa38f609')
+            '99635fba451f1bfa0864cb4b2ccee76c49413c66ec08a975cdb4432d564cbc4824be96999fe5adbec9cf90b41f5ba00e71fd45088e173e66af75d5722ad7e587'
+            'f840c0897da1b11e5f43b09d784b57757f8de68edf021f5a9230ccbf392acabe1b1e574a4156d7cef86976c3f38ca04b9ad2d52f72c08c94e4105720780edd0d')
 
 pkgver() {
   cd "$_pkgname"
@@ -40,7 +42,9 @@ prepare() {
   git submodule update
 
   cd external/idevicerestore
-  patch -Np1 -i "$srcdir/check_for_pthreads.patch"
+  for p in "$srcdir"/idevicerestore-*.patch; do
+    patch -Np1 -i "$p"
+  done
   cd ../..
 
   cd external/tsschecker
