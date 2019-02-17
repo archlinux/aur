@@ -10,8 +10,8 @@ url="https://git.zrythm.org/zrythm/zrythm"
 license=('GPL3')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-depends=('gtk3' 'lv2' 'lilv' 'suil' 'jack' 'libsndfile' 'libsmf' 'libdazzle' 'breeze-icons'
-         'libcyaml' 'portaudio' 'ffmpeg')
+depends=('gtk3' 'lv2' 'lilv' 'jack' 'libsndfile' 'libsmf' 'libdazzle' 'breeze-icons'
+         'portaudio' 'ffmpeg')
 makedepends=('git')
 source=("$_pkgname::git+https://git.zrythm.org/zrythm/zrythm.git"
         "git+https://github.com/tlsa/libcyaml.git"
