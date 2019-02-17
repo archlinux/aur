@@ -1,6 +1,6 @@
 pkgbase = tor-browser-ja
 	pkgdesc = Tor Browser Bundle: Anonymous browsing using firefox and tor
-	pkgver = 8.0.4
+	pkgver = 8.0.6
 	pkgrel = 1
 	url = https://www.torproject.org/projects/torbrowser.html.en
 	install = tor-browser-ja.install
@@ -36,13 +36,13 @@ pkgbase = tor-browser-ja
 	sha256sums = 3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7
 	sha256sums = 17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b
 	sha256sums = 89ed1cda6611abcbfdafef9aec78ada146643455d6675b22b72319ae286ea67e
-	source_x86_64 = https://dist.torproject.org/torbrowser/8.0.4/tor-browser-linux64-8.0.4_ja.tar.xz
-	source_x86_64 = https://dist.torproject.org/torbrowser/8.0.4/tor-browser-linux64-8.0.4_ja.tar.xz.asc
-	sha256sums_x86_64 = fca16675b7090fc988c7134116cce59e5fd84244fc5cbd1e484f550be61edf26
+	source_x86_64 = https://dist.torproject.org/torbrowser/8.0.6/tor-browser-linux64-8.0.6_ja.tar.xz
+	source_x86_64 = https://dist.torproject.org/torbrowser/8.0.6/tor-browser-linux64-8.0.6_ja.tar.xz.asc
+	sha256sums_x86_64 = b7259f1f6f1bc89356caf365eaf22aac855d1acca4516ce66ef8277179eabbdd
 	sha256sums_x86_64 = SKIP
-	source_i686 = https://dist.torproject.org/torbrowser/8.0.4/tor-browser-linux32-8.0.4_ja.tar.xz
-	source_i686 = https://dist.torproject.org/torbrowser/8.0.4/tor-browser-linux32-8.0.4_ja.tar.xz.asc
-	sha256sums_i686 = 72220f1c624288d1508dc4601676520aeec29b0668f477e585057d8ba66df6b7
+	source_i686 = https://dist.torproject.org/torbrowser/8.0.6/tor-browser-linux32-8.0.6_ja.tar.xz
+	source_i686 = https://dist.torproject.org/torbrowser/8.0.6/tor-browser-linux32-8.0.6_ja.tar.xz.asc
+	sha256sums_i686 = ac659d65b6a921aaa62e6c791531921e75273147e5e0fde2f7247429559c7ffb
 	sha256sums_i686 = SKIP
 
 pkgname = tor-browser-ja
