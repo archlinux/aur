@@ -1,6 +1,6 @@
 # Package maintainer: Leonid B <leonid dot bloch at esrf dot fr>
 pkgname=hdf5-lz4-filter-git
-pkgver=r106.g863db28
+pkgver=r149.gcabe5fd
 pkgrel=1
 pkgdesc="LZ4 filter for the HDF5 data format"
 arch=('i686' 'x86_64')
@@ -21,20 +21,20 @@ pkgver() {
 
 prepare() {
     cd "${pkgname%-git}"
-    git rm -rf BLOSC BZIP2 docs
+    git rm -r docs
 }
 
 build() {
-    cd "${pkgname%-git}/LZ4"
-    ./configure --prefix=/usr --with-hdf5=/usr --with-lz4lib=/usr
+    cd "${pkgname%-git}"
+    cmake . -DENABLE_LZ4_PLUGIN=yes -DCMAKE_INSTALL_PREFIX=/usr
     make
 }
 
 package() {
-    cd "${pkgname%-git}/LZ4"
+    cd "${pkgname%-git}"
     make DESTDIR="${pkgdir}/" install
     install -D -m755 "${srcdir}/hdf5_env.sh" \
         "${pkgdir}/etc/profile.d/hdf5_env.sh"
-    install -D -m644 "COPYING" \
+    install -D -m644 "LZ4/COPYING" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
