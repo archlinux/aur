@@ -2,7 +2,7 @@
 
 _pkgname=zrythm
 pkgname=$_pkgname-git
-pkgver=r252.3b11bc9
+pkgver=r254.aeaabd0
 pkgrel=1
 pkgdesc="Free GNU/Linux music production system (DAW)"
 arch=('x86_64')
@@ -14,10 +14,8 @@ depends=('gtk3' 'lv2' 'lilv' 'jack' 'libsndfile' 'libsmf' 'libdazzle' 'breeze-ic
          'portaudio' 'ffmpeg')
 makedepends=('git')
 source=("$_pkgname::git+https://git.zrythm.org/zrythm/zrythm.git"
-        "git+https://github.com/tlsa/libcyaml.git"
-        "git+https://git.zrythm.org/zrythm/suil.git")
+        "git+https://github.com/tlsa/libcyaml.git")
 md5sums=('SKIP'
-         'SKIP'
          'SKIP')
 
 pkgver () {
@@ -29,7 +27,6 @@ prepare() {
   cd "$srcdir/$_pkgname"
   git submodule init
   git config submodule."ext/libcyaml".url "$srcdir/libcyaml"
-  git config submodule."ext/suil".url "$srcdir/suil"
   git submodule update
 }
 
