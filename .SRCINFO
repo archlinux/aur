@@ -1,9 +1,8 @@
 pkgbase = kvmd
 	pkgdesc = The main Pi-KVM daemon
-	pkgver = 0.128
+	pkgver = 0.129
 	pkgrel = 1
 	url = https://github.com/pi-kvm/kvmd
-	install = kvmd.install
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
@@ -20,8 +19,18 @@ pkgbase = kvmd
 	depends = python-dbus
 	depends = python-pygments
 	depends = v4l-utils
-	source = https://github.com/pi-kvm/kvmd/archive/v0.128.tar.gz
+	depends = nginx
+	source = https://github.com/pi-kvm/kvmd/archive/v0.129.tar.gz
 	md5sums = SKIP
 
 pkgname = kvmd
+	install = kvmd.install
+
+pkgname = kvmd-platform-v1-vga-rpi2
+
+pkgname = kvmd-platform-v1-vga-rpi3
+
+pkgname = kvmd-platform-v1-hdmi-rpi2
+
+pkgname = kvmd-platform-v1-hdmi-rpi3
 
