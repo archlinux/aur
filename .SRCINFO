@@ -1,12 +1,12 @@
 pkgbase = openbsd-manpages
 	pkgdesc = The OpenBSD manual pages.
 	pkgver = 6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://man.openbsd.org/
 	arch = x86_64
 	license = BSD
-	source = https://ftp.openbsd.org/pub/OpenBSD/6.4/amd64/man64.tgz
-	source = https://ftp.openbsd.org/pub/OpenBSD/6.4/amd64/xshare64.tgz
+	source = https://cdn.openbsd.org/pub/OpenBSD/6.4/amd64/man64.tgz
+	source = https://cdn.openbsd.org/pub/OpenBSD/6.4/amd64/xshare64.tgz
 	sha256sums = 103c9d441b33fbb3b56ada9a0db8c443e51137a914ef953ff4c592c7c867208a
 	sha256sums = ef377b4810dcb110b138b94f3df8b6640b399eabd7678a76009eb85acb633ca0
 
