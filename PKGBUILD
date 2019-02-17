@@ -1,7 +1,7 @@
 # Maintainer: klardotsh <josh@klar.sh>
 
 pkgname=tuijam
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 _pkgcommit='46bea82a23f1628d2cba13a8c12df6484dcacf71'
 pkgdesc=" A fancy TUI client for Google Play Music"
@@ -11,6 +11,7 @@ license=('MIT')
 depends=(
 	'python'
 	'python-gmusicapi-git'
+	'python-google-api-python-client'
 	'python-urwid'
 	'python-pyaml'
 	'python-mpv'
