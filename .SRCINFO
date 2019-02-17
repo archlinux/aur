@@ -1,5 +1,5 @@
 pkgbase = cpp-taskflow-git
-	pkgdesc = Fast C++ Parallel Programming with Task Dependencies
+	pkgdesc = Modern C++ Parallel Task Programming Library
 	pkgver = r650.d1741c3
 	pkgrel = 1
 	url = https://github.com/cpp-taskflow/cpp-taskflow
