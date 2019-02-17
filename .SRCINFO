@@ -1,0 +1,13 @@
+pkgbase = clojure-lsp-bin
+	pkgdesc = Language Server (LSP) for Clojure
+	pkgver = 20181120T050154
+	pkgrel = 1
+	url = https://github.com/snoe/clojure-lsp
+	arch = x86_64
+	license = MIT
+	depends = clojure
+	source = https://github.com/snoe/clojure-lsp/releases/download/release-20181120T050154/clojure-lsp
+	sha256sums = db4825bffb13a9077c1c445e655c70925ddea7958b6aff5db5354fce9df27b46
+
+pkgname = clojure-lsp-bin
+
