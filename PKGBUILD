@@ -1,6 +1,6 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=pam_geoip
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='A Pluggable Authentication Module (PAM) for GeoIP based access'
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/amishmm/pam_geoip"
 license=('LGPL')
 depends=('geoip2-database' 'libmaxminddb')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/amishmm/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('59be569d6cfc3c9c65fc3b4205557d26')
+md5sums=('33667872f8fa6080011e762c165f5421')
 backup=('etc/security/geoip.conf')
 
 build() {
