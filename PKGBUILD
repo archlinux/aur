@@ -24,7 +24,7 @@ optdepends=('python2-feedparser: podcasts plugin'
             'mate-screensaver: Pause on screensaver plugin'
             'cinnamon-screensaver: Pause on screensaver plugin'
             'python2-musicbrainzngs: Musicbrainz cover search plugin'
-            'ipythoon2: Ipython console plugin'
+            'ipython2: Ipython console plugin'
             'python2-pylast: Last.fm loved tracks plugin'
             'gst-plugins-bad: Additional audio codecs'
             'gst-plugins-ugly: Additional audio codecs')
