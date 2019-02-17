@@ -1,0 +1,17 @@
+pkgbase = emacs-ht-git
+	pkgdesc = The missing Emacs hash table library.
+	pkgver = 2.2r6.g8ec3eb9
+	pkgrel = 1
+	url = https://github.com/Wilfred/ht.el
+	arch = any
+	license = GPL3
+	makedepends = cask
+	makedepends = git
+	depends = emacs-dash
+	provides = emacs-ht
+	conflicts = emacs-ht
+	source = git+https://github.com/Wilfred/ht.el
+	sha256sums = SKIP
+
+pkgname = emacs-ht-git
+
