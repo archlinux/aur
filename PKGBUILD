@@ -4,7 +4,7 @@ _gitver="0"
 _gitbranch="master"
 
 pkgname="torrents.csv-git"
-pkgver=0.r176.24cf3d0
+pkgver=0.r1.681bb2f
 pkgrel=1
 pkgdesc="Torrents.csv is a self hostable, open source torrent search site and database"
 arch=(any)
@@ -38,7 +38,7 @@ prepare() {
 }
 
 build() {
-:
+	sed -i '7 a cd /opt/torrents.csv/scripts' torrents.csv/scripts/webserver.sh
 }
 
 package() {
