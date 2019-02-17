@@ -1,0 +1,17 @@
+pkgbase = clustergit-git
+	pkgdesc = run git commands on multiple git clones
+	pkgver = r135.0d94db9
+	pkgrel = 1
+	url = https://github.com/mnagel/clustergit
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python
+	depends = git
+	provides = clustergit
+	conflicts = clustergit
+	source = clustergit::git+https://github.com/mnagel/clustergit
+	md5sums = SKIP
+
+pkgname = clustergit-git
+
