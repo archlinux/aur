@@ -1,0 +1,15 @@
+pkgbase = ippusbxd
+	pkgdesc = IPP-over-USB driver
+	pkgver = 1.33
+	pkgrel = 1
+	url = https://github.com/tillkamppeter/ippusbxd
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = avahi
+	depends = libusb
+	source = git+https://github.com/OpenPrinting/ippusbxd#commit=8782a5cf9a99c876e197d0f26151ba45c6de68f1
+	sha256sums = SKIP
+
+pkgname = ippusbxd
+
