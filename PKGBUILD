@@ -10,7 +10,7 @@ license=('MIT')
 depends=('ncurses')
 makedepends=('gcc' 'make')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mananapr/pxlart/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('e9ae056758f929184384e1ba0c6223c23e4037468bc6b58d37b15f77cd97b074')
 
 build(){
   cd "pxlart-${pkgver}"

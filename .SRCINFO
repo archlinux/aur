@@ -9,7 +9,7 @@ pkgbase = pxlart
 	makedepends = make
 	depends = ncurses
 	source = pxlart-1.0.tar.gz::https://github.com/mananapr/pxlart/archive/v1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = e9ae056758f929184384e1ba0c6223c23e4037468bc6b58d37b15f77cd97b074
 
 pkgname = pxlart
 
