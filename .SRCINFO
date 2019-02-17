@@ -1,0 +1,20 @@
+pkgbase = mosaic-ck
+	pkgdesc = One of the first graphical web browsers (unsupported port)
+	pkgver = 2.7ck11
+	pkgrel = 1
+	url = http://www.floodgap.com/retrotech/machten/mosaic/
+	arch = x86_64
+	license = custom
+	depends = openmotif
+	depends = libjpeg
+	depends = libpng
+	depends = libxmu
+	depends = libxpm
+	depends = zlib
+	provides = mosaic
+	conflicts = ncsa-mosaic-git
+	source = http://www.floodgap.com/retrotech/machten/mosaic/mosaic27ck11-src.zip
+	md5sums = 85fd21914c1e0f3488c134a83dedb6bf
+
+pkgname = mosaic-ck
+
