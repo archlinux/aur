@@ -1,0 +1,28 @@
+pkgbase = rxvt-unicode-improve-font-rendering
+	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt) with improved font rendering
+	pkgver = 9.22
+	pkgrel = 1
+	url = http://software.schmorp.de/pkg/rxvt-unicode.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxft
+	depends = perl
+	depends = startup-notification
+	depends = rxvt-unicode-terminfo
+	optdepends = gtk2-perl: to use the urxvt-tabbed
+	provides = rxvt-unicode
+	conflicts = rxvt-unicode
+	source = http://dist.schmorp.de/rxvt-unicode/rxvt-unicode-9.22.tar.bz2
+	source = urxvt.desktop
+	source = urxvtc.desktop
+	source = urxvt-tabbed.desktop
+	source = https://gist.githubusercontent.com/emonkak/28bbc5474697695321452b6d9bf1d0bd/raw/a888c37ae10376598e663cf989132648f89219c0/rxvt-unicode-9.22-improve-font-endering.patch
+	sha1sums = e575b869782fbfed955f84f48b204ec888d91ba1
+	sha1sums = b5a4507f85ebb7bac589db2e07d9bc40106720d9
+	sha1sums = 62c4ffecfce6967def394dd4d418b68652372ea2
+	sha1sums = cd204d608d114d39c80331efe0af0231ad6b7e18
+	sha1sums = e3d9f5575d048cf6ff7724f3e3051d48bfa22946
+
+pkgname = rxvt-unicode-improve-font-rendering
+
