@@ -1,54 +1,53 @@
-# Maintainer: Po-An,Yang(Antonio) <yanganto@gmail.com> 
-pkgname=giseditor
+# Maintainer: Po-An,Yang(Antonio) <yanganto@gmail.com>
+# Co-Maintainer: Nikolay Korotkiy <sikmir@gmail.com>
+_orgname=dayanuyim
+
+_pkgname=GisEditor
+pkgname=${_pkgname,,}
 pkgver=0.27
-pkgrel=1
-epoch=
-pkgdesc="A gis editor for .gpx .gdb and download maps source"
+pkgrel=2
+pkgdesc='A gis editor for .gpx .gdb and download maps source'
 arch=('any')
-url="https://github.com/dayanuyim/GisEditor"
+url='https://github.com/dayanuyim/GisEditor'
 license=()
-groups=()
 depends=('gpsbabel' 'python-pmw' 'python-pillow' 'python-numpy' 'python-cycler' 'python-matplotlib' 'python-olefile' 'python-pyparsing' 'python-dateutil' 'python-pytz' 'python-six' 'python-certifi' 'ttf-droid' 'python-image' 'python-timezonefinder')
-makedepends=()
-checkdepends=()
 optdepends=('ttf-arphic-ukai' )
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=(
-    "https://github.com/dayanuyim/GisEditor/archive/v0.27.tar.gz"
-    "giseditor.sh"
-)
-noextract=()
-md5sums=(
-    "17c94da35f3990097e7e9609e41b1f0f"
-    "f1896415d3e9488a9b3ff3545ae3911f"
-)
-validpgpkeys=()
+provides=("${pkgname}=${pkgver}")
+conflicts=(${pkgname}-git)
+source=("https://github.com/${_orgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('c5ae9f85b6c668dbe2a493353cd274df5117a06adaa9fbd88eb3cfcaaeb41ad9')
+
+prepare() {
+  cd ${_pkgname}-${pkgver}
+
+  cat << EOF > $pkgname
+#!/bin/sh
+python /opt/$pkgname/main.py
+EOF
+}
+
 package() {
-    install -d ${pkgdir}/opt
-	mkdir -p $pkgdir/opt/giseditor
-	cp -R $srcdir/GisEditor-$pkgver/conf $pkgdir/opt/giseditor
-	chmod -R a+x $pkgdir/opt/giseditor/conf
-	cp -R $srcdir/GisEditor-$pkgver/data $pkgdir/opt/giseditor
-	cp -R $srcdir/GisEditor-$pkgver/doc $pkgdir/opt/giseditor
-	cp -R $srcdir/GisEditor-$pkgver/icon $pkgdir/opt/giseditor
-	cp -R $srcdir/GisEditor-$pkgver/mapcache $pkgdir/opt/giseditor
-	chmod -R a+w $pkgdir/opt/giseditor/mapcache
-	cp -R $srcdir/GisEditor-$pkgver/script $pkgdir/opt/giseditor
-	cp -R $srcdir/GisEditor-$pkgver/src $pkgdir/opt/giseditor
-	cp -R $srcdir/GisEditor-$pkgver/main.py $pkgdir/opt/giseditor
-	chmod +x $pkgdir/opt/giseditor/main.py 
+  cd ${_pkgname}-${pkgver}
 
+  install -dm755 $pkgdir/opt/$pkgname/conf
+  install -dm755 $pkgdir/opt/$pkgname/data
+  install -dm755 $pkgdir/opt/$pkgname/doc/pic
+  install -dm755 $pkgdir/opt/$pkgname/icon
+  install -dm755 $pkgdir/opt/$pkgname/mapcache/Bakcup
+  install -dm755 $pkgdir/opt/$pkgname/script
+  install -dm755 $pkgdir/opt/$pkgname/src
 
-    install -d "$pkgdir"/usr/bin
-    install -D -m755 "./giseditor.sh" "${pkgdir}/usr/bin/giseditor"
+  install -Dm644 conf/*.conf $pkgdir/opt/$pkgname/conf
+  install -Dm644 data/* $pkgdir/opt/$pkgname/data
+  install -Dm644 doc/pic/* $pkgdir/opt/$pkgname/doc/pic
+  install -Dm644 icon/* $pkgdir/opt/$pkgname/icon
+  install -Dm644 mapcache/*.xml $pkgdir/opt/$pkgname/mapcache
+  install -Dm644 mapcache/Bakcup/*.xml $pkgdir/opt/$pkgname/mapcache/Bakcup
+  install -Dm644 script/*.py $pkgdir/opt/$pkgname/script
+  install -Dm644 src/*.py $pkgdir/opt/$pkgname/src
+  install -Dm644 main.py $pkgdir/opt/$pkgname/main.py
 
-    install -D -m644 $srcdir/GisEditor-$pkgver/install/linux/giseditor.desktop "${pkgdir}/usr/share/applications/GisEditor.desktop"
-
-	# TODO: update mime type gpx, gdb"
+  install -Dm755 $pkgname ${pkgdir}/usr/bin/$pkgname
+  install -Dm644 data/giseditor.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+  install -Dm644 install/linux/giseditor.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
