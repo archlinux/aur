@@ -1,7 +1,7 @@
 # Maintainer: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
 
 pkgname=bcachefs-tools-git
-pkgver=420
+pkgver=421
 pkgrel=1
 pkgdesc="bcachefs filesystem utilities"
 url="https://evilpiepirate.org/git/bcachefs-tools.git/"
