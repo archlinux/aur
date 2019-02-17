@@ -1,7 +1,7 @@
 pkgbase = rambox
 	pkgdesc = Free and Open Source messaging and emailing app that combines common web applications into one.
 	pkgver = 0.5.17
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rambox.pro/
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = rambox
 	source = https://github.com/saenzramiro/rambox/releases/download/0.5.17/Rambox-0.5.17-x64.tar.gz
 	source = rambox.desktop
 	source = rambox.js
-	sha256sums = b1e2807631f0e1e47ee528e85b2eea86a27445be511fe13bae6afae3f9a0d55b
+	sha256sums = 7759ae13ac15252200a0211d145d16dc69a3be83813033ea779b9573fdebac9e
 	sha256sums = e1167d03c28107f77a1c1ed530d2a47651d4b24994b2e10a9cebf7adeb90e207
 	sha256sums = 61ad70a929c402e24c79b8868208310f9b3c4d7801db2b791af38293231ee524
 	sha256sums = 3b5ed6f04eea66f239b5ae56ea1ff9e47de156cd38bb54ebc46541daba6091b6
