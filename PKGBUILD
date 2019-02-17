@@ -5,9 +5,9 @@
 
 pkgbase=systemd-git
 _pkgbase=systemd
-pkgname=('systemd-git' 'libsystemd-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
+pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc="systemd (git version)"
-pkgver=241.rc2.66
+pkgver=241.78
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -121,8 +121,8 @@ package_systemd-git() {
   pkgdesc="system and service manager (git version)"
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' 'libsystemd' 'libidn2' 'lz4' 'pam' 'libelf' 'libseccomp'
-           'util-linux' 'xz' 'pcre2' 'audit')
+           'libgcrypt' 'systemd-libs' 'libidn2' 'libidn2.so' 'lz4' 'pam' 'libelf'
+           'libseccomp' 'util-linux' 'xz' 'pcre2' 'audit')
   provides=("${_pkgbase}=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
   replaces=("${_pkgbase}" 'nss-myhostname' 'systemd-tools' 'udev')
   conflicts=("${_pkgbase}" 'nss-myhostname' 'systemd-tools' 'udev')
@@ -153,9 +153,9 @@ package_systemd-git() {
   # we'll create this on installation
   rmdir "$pkgdir"/var/log/journal/remote
 
-  # runtime libraries shipped with libsystemd
-  install -d -m0755 libsystemd
-  mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* libsystemd
+  # runtime libraries shipped with systemd-libs
+  install -d -m0755 systemd-libs
+  mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* systemd-libs
 
   # manpages shipped with systemd-sysvcompat
   rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8
@@ -203,25 +203,25 @@ package_systemd-git() {
   install -D -m0644 systemd-user.pam "$pkgdir"/etc/pam.d/systemd-user
 }
 
-package_libsystemd-git() {
-  pkgdesc="systemd client libraries (git version)"
+package_systemd-libs-git() {
+  pkgdesc='systemd client libraries (git version)'
   depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz')
-  license=('GPL2')
-  provides=('libsystemd' 'libsystemd.so' 'libudev.so')
-  replaces=('libsystemd')
-  conflicts=('libsystemd')
+  license=('LGPL2.1')
+  provides=('systemd-libs' 'libsystemd' 'libsystemd.so' 'libudev.so')
+  conflicts=('systemd-libs' 'libsystemd')
+  replaces=('systemd-libs' 'libsystemd')
 
   install -d -m0755 "$pkgdir"/usr
-  mv libsystemd "$pkgdir"/usr/lib
+  mv systemd-libs "$pkgdir"/usr/lib
 }
 
 package_systemd-resolvconf-git() {
-  pkgdesc='systemd resolvconf replacement (git version)'
-  license=('GPL2')
-  depends=("${pkgbase}")
+  pkgdesc='systemd resolvconf replacement (for use with systemd-resolved, git version)'
+  license=('LGPL2.1')
+  depends=('systemd-git')
   provides=('systemd-resolvconf' 'openresolv' 'resolvconf')
-  replaces=('systemd-resolvconf')
   conflicts=('systemd-resolvconf' 'openresolv')
+  replaces=('systemd-resolvconf')
 
   install -d -m0755 "$pkgdir"/usr/bin
   ln -s resolvectl "$pkgdir"/usr/bin/resolvconf
@@ -234,10 +234,10 @@ package_systemd-resolvconf-git() {
 package_systemd-sysvcompat-git() {
   pkgdesc='sysvinit compat for systemd (git version)'
   license=('GPL2')
+  depends=('systemd-git')
   provides=('systemd-sysvcompat')
-  replaces=('systemd-sysvcompat')
   conflicts=('systemd-sysvcompat' 'sysvinit')
-  depends=("${pkgbase}")
+  replaces=('systemd-sysvcompat')  
 
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
     build/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8
