@@ -20,14 +20,12 @@ checkdepends=("python2-pymongo")
 backup=("etc/${pkgname}.conf")
 source=(
   "http://downloads.${pkgname}.org/src/${pkgname}-src-r${pkgver}.tar.gz"
-  "${pkgname}.conf"
   "${pkgname}.service"
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
 )
 sha256sums=(
   "34165ef42c7199c438e1706fef515cbde012d6a884406d102082d39eab72c235"
-  "8010ce728d657524cd76b5afda7ffbc1cc389642336b12b89cec5df2b09fc0e4"
   "19f55ab28652b3817e98fc3f15cc2f6f3255a5e1dfd7b0d5a27c9ba22fd2703e"
   "47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b"
   "51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac"
@@ -47,6 +45,13 @@ _scons_args=(
   # --use-system-icu
   --use-system-tcmalloc   # in gperftools
 )
+
+prepare() {
+  cd "${srcdir}/${pkgname}-src-r${pkgver}"
+
+  # Keep historical Arch dbPath
+  sed -i 's|dbPath: /var/lib/mongo|dbPath: /var/lib/mongodb|' rpm/mongod.conf
+}
 
 build() {
   cd "${srcdir}/${pkgname}-src-r${pkgver}"
@@ -76,7 +81,9 @@ package() {
 
   scons install --prefix="${pkgdir}/usr" "${_scons_args[@]}"
 
-  install -Dm644 "${srcdir}/${pkgname}.conf" "${pkgdir}/etc/${pkgname}.conf"
+  # Keep historical Arch conf file name
+  install -Dm644 "rpm/mongod.conf" "${pkgdir}/etc/${pkgname}.conf"
+
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
