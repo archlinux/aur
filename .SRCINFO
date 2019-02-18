@@ -1,0 +1,23 @@
+pkgbase = eql5-git
+	pkgdesc = Embedded Qt Lisp (Qt5 binding embedded in ECL, embeddable in Qt)
+	pkgver = r254.dbb1c60
+	pkgrel = 1
+	url = https://gitlab.com/eql/EQL5
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = qt5-tools
+	depends = ecl
+	depends = qt5-base
+	depends = qt5-tools
+	depends = qt5-multimedia
+	depends = qt5-quickcontrols
+	depends = qt5-svg
+	depends = qt5-webengine
+	provides = eql5
+	conflicts = eql5
+	source = git+https://gitlab.com/eql/EQL5
+	sha256sums = SKIP
+
+pkgname = eql5-git
+
