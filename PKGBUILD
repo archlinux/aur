@@ -2,7 +2,7 @@
 # Maintainer: Zack Baldwin <zack@zackb.com>
 
 pkgname=ombi
-pkgver=3.0.4119
+pkgver=3.0.4248
 pkgrel=1
 pkgdesc="Simple automated way for users to request new content for Plex"
 arch=('x86_64' 'i686' 'armv7h')
@@ -25,7 +25,6 @@ source=("${pkgname}.service"
         "${pkgname}.tmpfiles")
 
 source_x86_64=("${pkgname}-x86_64-${pkgver}.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v${pkgver}/linux.tar.gz")
-source_i686=("${pkgname}-i686-${pkgver}.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v${pkgver}/linux.tar.gz")
 source_armv7h=("${pkgname}-armv7h-${pkgver}.tar.gz::https://github.com/tidusjar/Ombi/releases/download/v${pkgver}/linux-arm.tar.gz")
 
 noextract=("${pkgname}-x86_64-${pkgver}.tar.gz"
@@ -35,9 +34,8 @@ noextract=("${pkgname}-x86_64-${pkgver}.tar.gz"
 sha256sums=('d5893f6b665a0646054343a051e462a49569d51de224b45d3d2542b6c4e3d168'
             '6efc381990e1113737686d4f61795095fa8edbc176daa877fd755f1ddb3a40fa'
             '49fc5edca9d88fc9d6e9f0f4a6d707b072f32daa097305f0bf905dfff342f44a')
-sha256sums_x86_64=('960340d431a8dafbe35bcb79d337d3262a570833e9cc9e366c50ea0f539865f5')
-sha256sums_i686=('960340d431a8dafbe35bcb79d337d3262a570833e9cc9e366c50ea0f539865f5')
-sha256sums_armv7h=('7310ef5037656e93105c68294ece40b1cb262e55b6e2d7b13b9fda9d503ec551')
+sha256sums_x86_64=('80bf050b84afc03b958c3025158110adde87b157659e7e5a4ab7552553624819')
+sha256sums_armv7h=('da3e276b33ac86d5ec8e83f693697627c30678514efc09262485a5582422b4c2')
 
 prepare() {
   # The source is packaged w/o a sub directory, so create our own and 
