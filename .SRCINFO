@@ -1,7 +1,7 @@
 pkgbase = taskbook
 	pkgdesc = Tasks, boards & notes for the command-line habitat
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/klaussinani/taskbook
 	arch = any
 	license = MIT
