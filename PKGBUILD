@@ -1,6 +1,7 @@
 # Maintainer: Enno Lohmeier
 pkgname=systemdjournal2gelf
-pkgver=0.r33.33fb757
+binname=SystemdJournal2Gelf
+pkgver=0.r39.8b37b7b
 pkgrel=1
 pkgdesc="Export entries from systemds' journal and send them to a graylog server using gelf"
 arch=('any')
@@ -33,7 +34,7 @@ package()
   install -Dm644 $pkgname.service "$pkgdir/etc/systemd/system/$pkgname.service"
 
   cd "$pkgname"
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$binname" "$pkgdir/usr/bin/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
