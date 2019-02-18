@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=debhelper-sphinx
-pkgver=1.8.3
+pkgver=1.8.4
 _debpkgrel=1
 pkgrel=1
 pkgdesc="debhelper scripts for sphinx docs: sphinxdoc.pm"
@@ -9,7 +9,7 @@ arch=("any")
 url="https://packages.debian.org/sid/all/sphinx-common"
 license=('BSD')
 source=("https://deb.debian.org/debian/pool/main/s/sphinx/sphinx-common_${pkgver}-${_debpkgrel}_all.deb")
-sha512sums=('51a620e0a04251847bfd8cecd74e337fad9461c3c767986652c12fa9ad428520f61a85100b6704c0cb8fafa38bbf680c3b9df203b3c053f3390a52969dffdf06')
+sha512sums=('85a978585b63c651bc9cd3efc3458e45882ce45fc1e664a96777fd2d6494d9f473c599a5882d669f10b99338badc4a567cf3a9b3d0102330285a04c31df2fc61')
 
 prepare() {
   cd "$srcdir"
