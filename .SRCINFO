@@ -1,7 +1,7 @@
 pkgbase = wire-desktop-beta
 	pkgdesc = End-to-end encrypted messenger with file sharing, voice calls and video conferences
-	pkgver = 3.5.2881
-	pkgrel = 3
+	pkgver = 3.6.2885
+	pkgrel = 1
 	url = https://wire.com/
 	arch = x86_64
 	license = GPL3
@@ -12,11 +12,10 @@ pkgbase = wire-desktop-beta
 	makedepends = yarn
 	depends = electron
 	depends = xdg-utils
-	optdepends = hunspell-en_US: for English spellcheck support
 	optdepends = emoji-font: colorful emoji
-	source = wire-desktop-beta-3.5.2881.tar.gz::https://github.com/wireapp/wire-desktop/archive/linux/3.5.2881.tar.gz
+	source = 3.6.2885.tar.gz::https://github.com/wireapp/wire-desktop/archive/linux/3.6.2885.tar.gz
 	source = wire-desktop-beta.desktop
-	sha256sums = 4216cd9c3a2c4920aec2f3c967181b04bfafdb1b47e526a8e823911cce704da1
+	sha256sums = 524db450d41a2dc677b8450cdf4e13dcc753280b2f6565ed5e23e6f59c14bed4
 	sha256sums = 79505a8ae908a26f74af3d72c24cb09815dc5688eca26ee4bbf57362a865d7c5
 
 pkgname = wire-desktop-beta
