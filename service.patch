@@ -1,0 +1,21 @@
+diff --git a/Source/Auxiliary/ExampleConfig/Pcap_DNSProxy.service b/Source/Auxiliary/ExampleConfig/Pcap_DNSProxy.service
+index 4cd0da5..6e237b4 100644
+--- a/Source/Auxiliary/ExampleConfig/Pcap_DNSProxy.service
++++ b/Source/Auxiliary/ExampleConfig/Pcap_DNSProxy.service
+@@ -23,13 +23,14 @@ Description=Pcap_DNSProxy, a local DNS server based on WinPcap and LibPcap
+ Wants=network-online.target
+ 
+ [Service]
+-ExecStart=
++ExecStart=/usr/bin/Pcap_DNSProxy --log-file stdout --config-path /etc/pcap-dnsproxy
+ GuessMainPID=yes
+ LimitNOFILE=10240
+ Restart=on-failure
+ RestartSec=15s
+ Type=forking
+-WorkingDirectory=
++WorkingDirectory=/usr/bin
++User=root
+ 
+ [Install]
+ WantedBy=multi-user.target

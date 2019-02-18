@@ -1,0 +1,18 @@
+diff --git a/Source/Auxiliary/Scripts/CMake_Build.sh b/Source/Auxiliary/Scripts/CMake_Build.sh
+old mode 100644
+new mode 100755
+index 71d993b..a3262c3
+--- a/Source/Auxiliary/Scripts/CMake_Build.sh
++++ b/Source/Auxiliary/Scripts/CMake_Build.sh
+@@ -49,8 +49,10 @@ if (echo "$*" | grep -iq -e "--enable-static"); then
+ 	CMakeShell="${CMakeShell}-DSTATIC_LIB=ON "
+ fi
+ CMakeShell="${CMakeShell}../Pcap_DNSProxy"
++echo ${CMakeShell}
++echo $MAKEFLAGS
+ ${CMakeShell}
+-make -j ${ThreadNum}
++make
+ cd ..
+ 
+ # Cleanup
