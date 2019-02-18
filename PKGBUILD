@@ -3,12 +3,12 @@
 pkgname=jackmix-git
 _pkgname=jackmix
 pkgver=r323.bc11af8
-pkgrel=1
+pkgrel=2
 pkgdesc="Matrix-mixer for JACK"
 arch=('i686' 'x86_64')
 url="https://github.com/kampfschlaefer/jackmix"
 license=('GPL2')
-depends=('qt5-base' 'jack2' 'ladish')
+depends=('qt5-base' 'jack' 'ladish')
 makedepends=('gendesk')
 conflicts=('jackmix')
 source=("${_pkgname}"::'git+https://github.com/kampfschlaefer/jackmix.git#branch=qt5')
