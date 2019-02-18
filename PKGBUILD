@@ -1,8 +1,8 @@
 # Maintainer: redfish <redfish at galactica dot pw>
 
 pkgname='zeronet'
-pkgver=0.6.4
-pkgrel=2
+pkgver=0.6.5
+pkgrel=1
 arch=('any')
 url="https://zeronet.io/"
 depends=('python2'
@@ -33,6 +33,6 @@ package() {
    install -D -m644 "$srcdir/$_pkgarchive/LICENSE" "$pkgdir/usr/share/licenses/$_pkgarchive/LICENSE"
 }
 
-sha256sums=('e37a2acb1313d4e170bab2e7b469288916630cb1d4717aec0e2a188f92721f57'
+sha256sums=('28ca440099323ac307c6ed0afbaf607e4c1c47948917c0c97126a2ec6a293f51'
             'ea735e82dbb10a2c1fda7abfeb2f38c2429044d8254f9e2396c50cecb6f778f8'
             '8e8df96340cb342b6262ac498292749e01ce5f713b03d5e31384b1f289d9ca62')
