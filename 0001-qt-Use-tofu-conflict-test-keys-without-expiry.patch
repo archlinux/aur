@@ -1,0 +1,100 @@
+From 66376f3e206a1aa791d712fb8577bb3490268f60 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Wed, 9 Jan 2019 08:25:21 +0100
+Subject: qt: Use tofu conflict test keys without expiry
+
+* lang/qt/tests/t-tofuinfo.cpp: Use new test keys without
+expiry.
+
+--
+The old keys expired on 2019-01-06.
+
+GnuPG-Bug-Id: T3815
+---
+ lang/qt/tests/t-tofuinfo.cpp | 58 +++++++++++++++++++++++---------------------
+ 1 file changed, 30 insertions(+), 28 deletions(-)
+
+diff --git a/lang/qt/tests/t-tofuinfo.cpp b/lang/qt/tests/t-tofuinfo.cpp
+index b7161028..2d881069 100644
+--- a/lang/qt/tests/t-tofuinfo.cpp
++++ b/lang/qt/tests/t-tofuinfo.cpp
+@@ -69,46 +69,48 @@ static const char testMsg1[] =
+ 
+ static const char conflictKey1[] = "-----BEGIN PGP PUBLIC KEY BLOCK-----\n"
+ "\n"
+-"mDMEWG+w/hYJKwYBBAHaRw8BAQdAiq1oStvDYg8ZfFs5DgisYJo8dJxD+C/AA21O\n"
+-"K/aif0O0GXRvZnVfY29uZmxpY3RAZXhhbXBsZS5jb22IlgQTFggAPhYhBHoJBLaV\n"
+-"DamYAgoa1L5BwMOl/x88BQJYb7D+AhsDBQkDwmcABQsJCAcCBhUICQoLAgQWAgMB\n"
+-"Ah4BAheAAAoJEL5BwMOl/x88GvwA/0SxkbLyAcshGm2PRrPsFQsSVAfwaSYFVmS2\n"
+-"cMVIw1PfAQDclRH1Z4MpufK07ju4qI33o4s0UFpVRBuSxt7A4P2ZD7g4BFhvsP4S\n"
+-"CisGAQQBl1UBBQEBB0AmVrgaDNJ7K2BSalsRo2EkRJjHGqnp5bBB0tapnF81CQMB\n"
+-"CAeIeAQYFggAIBYhBHoJBLaVDamYAgoa1L5BwMOl/x88BQJYb7D+AhsMAAoJEL5B\n"
+-"wMOl/x88OR0BAMq4/vmJUORRTmzjHcv/DDrQB030DSq666rlckGIKTShAPoDXM9N\n"
+-"0gZK+YzvrinSKZXHmn0aSwmC1/hyPybJPEljBw==\n"
+-"=p2Oj\n"
++"mDMEXDWgpxYJKwYBBAHaRw8BAQdAguVu4qkx8iw4eU+TQ4vvcKG7IdcZvbMhw3Zc\n"
++"npGf0+u0GXRvZnVfY29uZmxpY3RAZXhhbXBsZS5jb22IkAQTFggAOBYhBO6ovNDG\n"
++"nLzbR1TlMJYJ0fjlWbUrBQJcNaCnAhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheA\n"
++"AAoJEJYJ0fjlWbUrLaMBALegwkv2+sEcmKZqxt8JscYvFiEuycv2+rKHaZA0eDoN\n"
++"AP97W4XrJb5x49J5jDDdeko8k00uGqiiuAXJo27/i/phA7g4BFw1oKcSCisGAQQB\n"
++"l1UBBQEBB0Crhw24E2lPBhd/y+ZFotQ/2TrYqkUQqGPmff8ofLziNgMBCAeIeAQY\n"
++"FggAIBYhBO6ovNDGnLzbR1TlMJYJ0fjlWbUrBQJcNaCnAhsMAAoJEJYJ0fjlWbUr\n"
++"/K8BAJWsa+tOZsJw7w5fz6O0We6Xx4Rt17jHf563G6wMcz9+AQDRsedJ7w4zYzS9\n"
++"MFiJQ5aN0NDHMRtDFWAgCunVnJ3OBw==\n"
++"=fZa5\n"
+ "-----END PGP PUBLIC KEY BLOCK-----\n";
+ 
+ static const char conflictKey2[] = "-----BEGIN PGP PUBLIC KEY BLOCK-----\n"
+ "\n"
+-"mDMEWG+xShYJKwYBBAHaRw8BAQdA567gPEPJRpqKnZjlFJMRNUqruRviYMyygfF6\n"
+-"6Ok+ygu0GXRvZnVfY29uZmxpY3RAZXhhbXBsZS5jb22IlgQTFggAPhYhBJ5kRh7E\n"
+-"I98w8kgUcmkAfYFvqqHsBQJYb7FKAhsDBQkDwmcABQsJCAcCBhUICQoLAgQWAgMB\n"
+-"Ah4BAheAAAoJEGkAfYFvqqHsYR0BAOz8JjYB4VvGkt6noLS3F5TLfsedGwQkBCw5\n"
+-"znw/vGZsAQD9DSX+ekwdrN56mNO8ISt5uVS7B1ZQtouNBF+nzcwbDbg4BFhvsUoS\n"
+-"CisGAQQBl1UBBQEBB0BFupW8+Xc1ikab8TJqANjQhvFVh6uLsgcK4g9lZgbGXAMB\n"
+-"CAeIeAQYFggAIBYhBJ5kRh7EI98w8kgUcmkAfYFvqqHsBQJYb7FKAhsMAAoJEGkA\n"
+-"fYFvqqHs15ABALdN3uiV/07cJ3RkNb3WPcijGsto+lECDS11dKEwTMFeAQDx+V36\n"
+-"ocbYC/xEuwi3w45oNqGieazzcD/GBbt8OBk3BA==\n"
+-"=45IR\n"
++"mDMEXDWgixYJKwYBBAHaRw8BAQdAMWOhumYspcvEOTuesOSN4rvnJVOj/6qOWFTu\n"
++"x+wPRra0GXRvZnVfY29uZmxpY3RAZXhhbXBsZS5jb22IkAQTFggAOBYhBA64G88Q\n"
++"NPXztj8ID/FhC7tiGbeRBQJcNaCLAhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheA\n"
++"AAoJEPFhC7tiGbeRUt4A/2hf4Zgz+TYyfeH/4/ZtyL1JuZggqR1s5UopEx2Aiw10\n"
++"AP405KiTd31TJQN8Ru+7bskPu0/mzLZMNkRvBNEdc5kbDLg4BFw1oIsSCisGAQQB\n"
++"l1UBBQEBB0B5NtSrx7wDDKgwUe5Rxz0vRkaWLtyE0KbfE77oPy5DGAMBCAeIeAQY\n"
++"FggAIBYhBA64G88QNPXztj8ID/FhC7tiGbeRBQJcNaCLAhsMAAoJEPFhC7tiGbeR\n"
++"km0BAP8TQwraipqb1pJlLsEgDXeM5Jocz4fuePD78BsOBtORAP9gpCyKXdyJYGlA\n"
++"qjmG356yG6pCK9aPckTZ9IViPiHWCw==\n"
++"=tn3Q\n"
+ "-----END PGP PUBLIC KEY BLOCK-----\n";
+ 
+ static const char conflictMsg1[] = "-----BEGIN PGP MESSAGE-----\n"
+ "\n"
+-"owGbwMvMwCG2z/HA4aX/5W0YT3MlMUTkb2xPSizi6ihlYRDjYJAVU2Sp4mTZNpV3\n"
+-"5QwmLqkrMLWsTCCFDFycAjCR1vcMf4U0Qrs6qzqfHJ9puGOFduLN2nVmhsumxjBE\n"
+-"mdw4lr1ehIWR4QdLuNBpe86PGx1PtNXfVAzm/hu+vfjCp5BVNjPTM9L0eAA=\n"
+-"=MfBD\n"
++"owGbwMvMwCE2jfPij6eRW7UZTwsnMcSYLnT0Ki0uUXD3C1XILFHk6ihlYRDjYJAV\n"
++"U2R5t2LPhWNz9tx2D3lqANPEygTSwcDFKQAT+RjG8M9of873hQrMpinBVwKYv+rq\n"
++"XGmYW+ZcZJ+133KDq+itzlxGhg3L2X/6Khj+2Hd+He+KnXtunF2wNWxl7849e/Sy\n"
++"v6tc+8MBAA==\n"
++"=fZLe\n"
+ "-----END PGP MESSAGE-----\n";
+ 
+ static const char conflictMsg2[] = "-----BEGIN PGP MESSAGE-----\n"
+ "\n"
+-"owGbwMvMwCGWyVDbmL9q4RvG01xJDBH5GyvS8vO5OkpZGMQ4GGTFFFnmpbjJHVG+\n"
+-"b/DJQ6QIppaVCaSQgYtTACaySZHhr/SOPrdFJ89KrcwKY5i1XnflXYf2PK76SafK\n"
+-"tkxXuXzvJAvDX4kCybuqFk3HXCexz2+IrnZ+5X5EqOnuo3ens2cte+uzlhMA\n"
+-"=BIAi\n"
++"owGbwMvMwCH2MZF7d5Lk9omMp4WTGGJMFwZ4lRaXKLj7hSpklihydZSyMIhxMMiK\n"
++"KbLw7ZA+L2Dy9fM2ew5+mCZWJpAOBi5OAZhIUhIjw7bV+xS+cR0quqhmcY2Dl3WW\n"
++"8Ufr+rRNufOPyIdoO6nEXGH47/B+E1+oxS6e5f5n7MJ3aHBO+s345sipGV/4f665\n"
++"9mmiGjsA\n"
++"=8oJA\n"
+ "-----END PGP MESSAGE-----\n";
+ 
+ class TofuInfoTest: public QGpgMETest
+-- 
+cgit v1.2.1-16-g7d87
+
