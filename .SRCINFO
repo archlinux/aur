@@ -1,6 +1,6 @@
 pkgbase = systemdjournal2gelf
 	pkgdesc = Export entries from systemds' journal and send them to a graylog server using gelf
-	pkgver = 0.r33.33fb757
+	pkgver = 0.r39.8b37b7b
 	pkgrel = 1
 	url = https://github.com/parse-nl/systemdjournal2gelf
 	arch = any
