@@ -1,4 +1,4 @@
-From afec9cf5f3d6135e086111a1d0471db3a4fcf717 Mon Sep 17 00:00:00 2001
+From 15b6154f7d637f961bc8e9d348605df79a490641 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 9 Aug 2016 15:02:53 +0100
 Subject: [PATCH 3/4] Apply subpixel rendering in Cairo Backend
@@ -135,7 +135,7 @@ index e29898a9..314925a8 100644
    if (cairo_font_face_set_user_data (l->font_face,
  				     &_ft_cairo_key,
 diff --git a/poppler/CairoOutputDev.cc b/poppler/CairoOutputDev.cc
-index 02a6f262..b20ca280 100644
+index d2769a22..f1bb39fc 100644
 --- a/poppler/CairoOutputDev.cc
 +++ b/poppler/CairoOutputDev.cc
 @@ -205,6 +205,13 @@ void CairoOutputDev::setCairo(cairo_t *cairo)
