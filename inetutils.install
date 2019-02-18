@@ -2,6 +2,7 @@ post_install() {
   setcap cap_net_bind_service=+ep 'usr/bin/rcp'    2>/dev/null || chmod +s 'usr/bin/rcp'
   setcap cap_net_bind_service=+ep 'usr/bin/rlogin' 2>/dev/null || chmod +s 'usr/bin/rlogin'
   setcap cap_net_bind_service=+ep 'usr/bin/rsh'    2>/dev/null || chmod +s 'usr/bin/rsh'
+  cp -p /etc/pam.d/telnetd /etc/pam.d/other
 }
 
 post_upgrade() {
