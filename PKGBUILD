@@ -2,7 +2,7 @@
 # Contributor: Valentin Huélamo (birdtray.desktop)
 
 pkgname=birdtray
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Run Thunderbird with a system tray icon."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=(qt5-x11extras sqlite3)
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/${pkgver}.tar.gz"
         birdtray.desktop)
-sha1sums=('187b38bbc88e54ce701fe49218298b5172a5c053'
+sha1sums=('245bff4ad70d6ca4a10e97121bfe2ba1aefd8c3f'
           'f3398822d8cf6671f06b5e065b623083294d6f11')
 
 build() {
