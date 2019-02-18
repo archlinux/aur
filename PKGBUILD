@@ -9,7 +9,6 @@ arch=('x86_64')
 makedepends=('go-pie' )
 sha256sums=('fd0954936fef9f4848ef37debb25b26479495df0a8d46582e1e307cb29cdafc1')
 source=(
-    #https://github.com/bronze1man/yaml2json/releases/download/v${pkgver}/yaml2json_linux_amd64
     https://github.com/bronze1man/yaml2json/archive/v${pkgver}.tar.gz
 )
 
