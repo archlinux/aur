@@ -1,6 +1,6 @@
 # Maintainer: Jacek Wozniak <mech@themech.net>
 pkgname=k81x-fkeys
-pkgver=0.2_2
+pkgver=0.2_3
 pkgrel=1
 epoch=
 pkgdesc="Logitech K810/K811 keyboard Configurator for changing the behavior of F-keys."
