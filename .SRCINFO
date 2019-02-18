@@ -1,0 +1,15 @@
+pkgbase = feem
+	pkgdesc = Share Files OFFLINE! No Cloud. No Servers. No Limits.
+	pkgver = 4.3.0
+	pkgrel = 0
+	url = https://www.feem.io/
+	arch = x86_64
+	license = custom
+	depends = qt5-webkit
+	depends = hicolor-icon-theme
+	optdepends = gstreamer: multimedia support
+	source = https://f000.backblazeb2.com/file/feemdownloads/Feem_v4.3.0_For_Linux.AppImage
+	sha256sums = 69d243207bf482f94c16ae22ba10060221b2b74332141d9edc080397b75d68e8
+
+pkgname = feem
+
