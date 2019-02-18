@@ -4,13 +4,14 @@ pkgname=papirus-folders-nordic
 _pkgname=papirus-icon-theme
 pkgver=r
 _pkgver=20190203
-pkgrel=1
+pkgrel=2
 pkgdesc="Papirus icon theme"
 arch=('any')
 url="https://github.com/basigur/papirus-folders"
 license=("LGPL3")
+provides=('papirus-icon-theme' 'papirus-folders-nordic')
 conflicts=('papirus-icon-theme')
-replaces=('papirus-folders-nordic')
+replaces=('papirus-folders-nordic' 'papirus-icon-theme')
 depends=('gtk-update-icon-cache')
 source=("$_pkgname-$_pkgver.tar.gz::https://github.com/PapirusDevelopmentTeam/$_pkgname/archive/$_pkgver.tar.gz"
 	"papirus-folders::git+https://github.com/basigur/papirus-folders")
