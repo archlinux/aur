@@ -2,7 +2,7 @@
 # Contributor: Giampaolo Mancini <giampaolo@trampolineup.com>
 
 pkgname=python-gpiozero
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='A simple interface to GPIO devices with Raspberry Pi'
 arch=('any')
@@ -12,9 +12,9 @@ optdepends=(
     'python-spidev: for SPI access'
     'python-rpi.gpio: for Raspberry Pi GPIO pin access via RPi.GPIO library'
 )
-depends=('python-setuptools')
+depends=('python-colorzero' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/RPi-Distro/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d2d7ef04487ac5271c0ff565877ce7a5c376fc05d01bff183c98aa00635af099')
+sha256sums=('179a773e838a3f091d8585f919ab7e702abb777d7d7a7e6df1bf48cae53083a0')
 
 
 build() {
@@ -25,7 +25,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
-  install -Dm644 LICENCE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:

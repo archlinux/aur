@@ -1,15 +1,16 @@
 pkgbase = python-gpiozero
 	pkgdesc = A simple interface to GPIO devices with Raspberry Pi
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/RPi-Distro/python-gpiozero
 	arch = any
 	license = BSD
+	depends = python-colorzero
 	depends = python-setuptools
 	optdepends = python-spidev: for SPI access
 	optdepends = python-rpi.gpio: for Raspberry Pi GPIO pin access via RPi.GPIO library
-	source = python-gpiozero-1.4.1.tar.gz::https://github.com/RPi-Distro/python-gpiozero/archive/v1.4.1.tar.gz
-	sha256sums = d2d7ef04487ac5271c0ff565877ce7a5c376fc05d01bff183c98aa00635af099
+	source = python-gpiozero-1.5.0.tar.gz::https://github.com/RPi-Distro/python-gpiozero/archive/v1.5.0.tar.gz
+	sha256sums = 179a773e838a3f091d8585f919ab7e702abb777d7d7a7e6df1bf48cae53083a0
 
 pkgname = python-gpiozero
 
