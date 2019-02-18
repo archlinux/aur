@@ -1,11 +1,12 @@
 pkgbase = budgie-brightness-control-applet
 	pkgdesc = Brightness control applet for budgie desktop
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ilgarmehmetali/budgie-brightness-control-applet
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = fakeroot
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = ninja
