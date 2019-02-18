@@ -8,7 +8,7 @@ pkgbase = wireframesketcher
 	depends = gtk3
 	depends = webkit2gtk
 	source_x86_64 = http://cdn.wireframesketcher.com/studio/dist/WireframeSketcher-6.0.0_amd64.deb
-	sha512sums_x86_64 = c6187b5412487bdb24bb4cf4e1f34c3205384facc62b37f80ff224890b7c94aad63fae2d968ac177671dd57df92813e87489bbc04cd77582b8e5677783aed7f0
+	sha512sums_x86_64 = 82e1be36756548d3a337d32b8294863c9dd3c77608f1e9c962fbb9dd1d6bca0dae1bd7c27ed4b2929d1ec238925c0ce59b2f72ca65ccb3750e32f941b6acfefb
 
 pkgname = wireframesketcher
 
