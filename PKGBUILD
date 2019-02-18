@@ -28,7 +28,7 @@ fi
 
 pkgname=android-${_android_arch}-qt5
 pkgver=5.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt 5 for Android"
 arch=('x86_64')
 url='https://www.qt.io'
@@ -41,7 +41,7 @@ makedepends=('libgl'
              'gperf'
              'libxslt'
              'fontconfig')
-depends=('java-runtime-headless>=7'
+depends=('jre-openjdk-headless'
          'apache-ant'
          'android-ndk>=r18.b'
          "android-platform-$ANDROID_MINIMUM_PLATFORM"
