@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-git
-pkgver=0.92+devel.r3569.ge1eae41f45
+pkgver=1.0+devel.r4061.g0783403c25
 pkgrel=1
 epoch=1
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
@@ -17,7 +17,7 @@ optdepends=('python2-numpy: some extensions'
             'uniconvertor: reading/writing to some proprietary formats'
 	    'ruby: for simplepath extension'
 	    'imagemagick6: for some file conversions')
-makedepends=('cmake' 'boost' 'intltool' 'git' 'gettext' 'pango' 'python' 'fontconfig')
+makedepends=('cmake' 'boost' 'intltool' 'git' 'gettext' 'pango' 'python' 'python2' 'fontconfig')
 provides=('inkscape')
 conflicts=('inkscape')
 options=('!libtool' '!buildflags')
