@@ -1,0 +1,13 @@
+pkgbase = yaml2json
+	pkgdesc = Transform yaml string to json string without the type infomation.
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/bronze1man/yaml2json
+	arch = x86_64
+	license = MIT
+	makedepends = go-pie
+	source = https://github.com/bronze1man/yaml2json/archive/v1.3.tar.gz
+	sha256sums = fd0954936fef9f4848ef37debb25b26479495df0a8d46582e1e307cb29cdafc1
+
+pkgname = yaml2json
+
