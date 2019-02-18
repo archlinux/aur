@@ -1,0 +1,7 @@
+pkg
+src
+colorzero-*.tar.gz
+python-colorzero-*.pkg.tar.xz
+python2-colorzero-*.pkg.tar.xz
+python-colorzero-*.src.tar.gz
+.AURINFO
