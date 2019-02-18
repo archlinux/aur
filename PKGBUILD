@@ -7,7 +7,7 @@
 
 pkgname=wxformbuilder-git
 _gitname=wxFormBuilder
-pkgver=3.7.0.rbe6b828
+pkgver=3.9.0.r48f2f0f
 pkgrel=1
 pkgdesc="Designer, GUI builder, and RAD tool For wxWidgets"
 arch=('i686' 'x86_64')
