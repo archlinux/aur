@@ -1,0 +1,8 @@
+/*.asc
+/*.log
+/*.tar
+/*.tar.*
+/*.zip
+/pkg/
+/src/
+/slant-git/

@@ -1,0 +1,25 @@
+pkgbase = slant-git
+	pkgdesc = Minimal open source system monitor for remote UNIX machines
+	pkgver = 0.0.17.r10.gc3d1f0b
+	pkgrel = 1
+	url = https://kristaps.bsd.lv/slant
+	arch = x86_64
+	license = custom:ISC
+	makedepends = kwebapp
+	makedepends = kcgi
+	makedepends = ksql
+	makedepends = git
+	depends = zlib
+	depends = sh
+	source = slant-git::git+https://github.com/kristapsdz/slant/
+	source = http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.8.3.tar.gz
+	source = http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.8.3.tar.gz.asc
+	source = https://www.sqlite.org/2019/sqlite-amalgamation-3270100.zip
+	validpgpkeys = A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5
+	sha512sums = SKIP
+	sha512sums = 3967e08b3dc2277bf77057ea1f11148df7f96a2203cd21cf841902f2a1ec11320384a001d01fa58154d35612f7981bf89d5b1a60a2387713d5657677f76cc682
+	sha512sums = SKIP
+	sha512sums = 9e9ace498bfb89631d3798e43d3da372d204b869948ecd77fbf18a7eee2b364cdbc6d20fc0482457506a5301bb492fec3af9bf87d4d9f047e08181b7e74aeb68
+
+pkgname = slant-git
+
