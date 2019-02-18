@@ -38,7 +38,8 @@ pkgver() {
 
 build() {
 	cd ${pkgname}
-	./gradlew build 
+	./gradlew build
+	./gradlew linuxPackage
 	cd ..
 }
 
