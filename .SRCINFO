@@ -1,7 +1,7 @@
 pkgbase = qweborf-git
 	pkgdesc = Minimal HTTP server to share your files - Qt frontend
 	pkgver = 0.15
-	pkgrel = 6
+	pkgrel = 7
 	url = https://ltworf.github.io/weborf/
 	arch = any
 	license = GPL3
