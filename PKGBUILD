@@ -2,7 +2,7 @@
 
 _npmname=clean-css
 pkgname=nodejs-$_npmname
-pkgver=4.1.11
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="A fast, efficient, and well tested CSS minifier for node.js."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('7c00a726fad4e59d383af5f665b993e0ee9917bfb702c488e28db80901e37052')
+sha256sums=('60b2c9d633fd0843d6eef91fce82b81258d762b0d1bec6ccea7edb275c0ba32f')
 
 package() {
   npm install \
