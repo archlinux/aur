@@ -1,7 +1,7 @@
 # Maintainer: Jozef Riha <jose1711 at gmail dot com>
 
 pkgname=florb-git
-pkgver=r153.ee3e10f
+pkgver=r154.43b0ed8
 pkgrel=1
 pkgdesc="simple FLTK powered map viewer and GPX editor"
 url="http://florb.shugaa.de/"
@@ -10,11 +10,13 @@ license=('MIT')
 
 depends=('fltk' 'yaml-cpp' 'libxpm' 'curl' 'tinyxml2' 'boost-libs')
 optdepends=('gpsbabel')
-makedepends=('omake' 'gendesk')
-md5sums=('SKIP')
+makedepends=('omake' 'gendesk' 'git')
+md5sums=('SKIP'
+         '949001a25d72c44013f9c708c138690d')
 
 
-source=("${pkgname}"::'git://github.com/shugaa/florb.git')
+source=("${pkgname}"::'git://github.com/shugaa/florb.git'
+        gpsdclient.patch)
 
 pkgver() {
   cd "$srcdir/${pkgname}"
@@ -24,6 +26,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/${pkgname}/src"
   sed -i '/^#include/s%Fl/%FL/%' dlg_ui_ex.cpp dlg_settings_ex.cpp
+  patch -p0 -i "${srcdir}/gpsdclient.patch"
 }
 
 build() {

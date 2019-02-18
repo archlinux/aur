@@ -1,0 +1,13 @@
+--- gpsdclient.cpp.orig	2019-02-18 15:13:38.796622614 +0100
++++ gpsdclient.cpp	2019-02-18 15:12:54.250282414 +0100
+@@ -181,7 +181,9 @@
+         }
+ 
+         // Read data
+-        if (gps_read(&m_gpsdata) == -1) {
++	char *m_message;
++	int m_message_len;
++        if (gps_read(&m_gpsdata, m_message, m_message_len) == -1) {
+             // Error
+             break;
+         }
