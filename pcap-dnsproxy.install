@@ -1,3 +1,0 @@
-pre_remove() {
-  rm -f /etc/pcap-dnsproxy/Error.log
-}

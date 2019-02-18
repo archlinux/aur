@@ -26,16 +26,13 @@ backup=(
   "etc/${pkgname%-git}/Routing.txt"
   "etc/${pkgname%-git}/WhiteList.txt"
 )
-install="${pkgname%-git}.install"
 source=(
   "${pkgname%-git}::git+git://github.com/chengr28/Pcap_DNSProxy.git"
-  "${pkgname%-git}.install"
   "make.patch"
   "service.patch"
 )
 md5sums=(
   'SKIP'
-  'e990e642a0aac24c8f2d68d60b65b314'
   '7d59b750c7375bb77bcb2b6fae326e3b'
   'abe842d6182ec4be0cc5130433146129'
 )
