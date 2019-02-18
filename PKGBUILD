@@ -11,7 +11,7 @@ depends=(nodejs)
 makedepends=(npm)
 conflicts=(taskbook-git)
 source=($url/archive/v$pkgver.tar.gz)
-sha256sums=(931745b06239dc2e7f70b440a869a01e07e124853b56377384364826b663f5fd)
+sha256sums=(3fec28982f9e5d0391e20d49917634512045e325ed7af4311f6ccdb0fcfb80e5)
 
 build() {
   cd taskbook-$pkgver
