@@ -3,8 +3,8 @@
 
 pkgname=wire-desktop-git
 _name=${pkgname%-git}
-pkgver=3.5.2881.r45.g48cdf84b
-pkgrel=2
+pkgver=3.6.2885.r21.gf880ee4a
+pkgrel=1
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('x86_64')
 url='https://wire.com/'
@@ -25,11 +25,6 @@ pkgver() {
 }
 
 prepare() {
-    # Ensure we compile native extensions against system electron version
-    local electronver="$(sed 's/^[^0-9]*//' /usr/lib/electron/version)"
-    msg2 "Compiling against system electron version: $electronver"
-    sed -i 's/"electron": ".*"/"electron": "'"$electronver"'"/' "${_name}/package.json"
-
     # Remove "node-addressbook" dependency as it's only for macOS
     sed -i '/node-addressbook/d' "${_name}/electron/package.json"
 
@@ -63,5 +58,3 @@ package() {
         install -Dm644 "${_name}/resources/icons/${res}.png" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/${_name}.png"
     done
 }
-
-# vim:set ts=4 sw=4 et:
