@@ -3,8 +3,8 @@
 
 pkgname=feem
 pkgver=4.3.0
-pkgrel=0
-pkgdesc="Share Files OFFLINE! No Cloud. No Servers. No Limits."
+pkgrel=1
+pkgdesc="Share Files in LAN. OFFLINE! No Cloud. No Servers. No Limits."
 arch=("x86_64")
 url="https://www.feem.io/"
 license=('custom')
