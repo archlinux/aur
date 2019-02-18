@@ -1,4 +1,4 @@
-# Maintainer: VanLaser <gabi_laser at yahoo com>
+# Maintainer: VanLaser <gabi_laser at yahoo dot com>
 
 pkgname='eql5-git'
 pkgver='r254.dbb1c60'
@@ -6,7 +6,6 @@ pkgrel=1
 pkgdesc='Embedded Qt Lisp (Qt5 binding embedded in ECL, embeddable in Qt)'
 arch=('x86_64')
 url='https://gitlab.com/eql/EQL5'
-# TODO: also install license file
 license=('MIT')
 depends=('ecl'
          'qt5-base'
@@ -37,7 +36,7 @@ build() {
         cd EQL5/src/
         ecl -shell make.lisp
         qmake eql5.pro
-        make -j8
+        make
 	sed -i 's/\/usr\/local\/include/\/usr\/include/' *.pro
 }
 
