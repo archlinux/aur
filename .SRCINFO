@@ -1,26 +1,21 @@
 pkgbase = weborf-git
-	pkgver = 0.13+102+g5bc736e
+	pkgdesc = Minimal HTTP server to share your files.
+	pkgver = 0.15.r21.gb0dc718
 	pkgrel = 1
 	url = https://ltworf.github.io/weborf/
 	arch = i686
 	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
 	license = GPL3
-	makedepends = python-pyqt5
-	source = git+https://github.com/ltworf/weborf.git
-	sha512sums = SKIP
+	makedepends = pacman>=5.1
+	makedepends = git
+	makedepends = sudo
+	makedepends = findutils
+	conflicts = weborf
+	source = git+https://github.com/ltworf/weborf.git#branch=master
+	md5sums = SKIP
 
 pkgname = weborf-git
-	pkgdesc = A lightweight web server designed for rapidly sharing files over HTTP (git snapshot)
-	depends = file
-	provides = weborf
-	conflicts = weborf
-
-pkgname = qweborf-git
-	pkgdesc = A lightweight web server designed for rapidly sharing files over HTTP - Qt frontend (git snapshot)
-	arch = any
-	depends = python
-	depends = python-pyqt5
-	depends = weborf-git
-	provides = qweborf
-	conflicts = qweborf
 
