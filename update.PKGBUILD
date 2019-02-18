@@ -21,3 +21,7 @@ echo "##generate PKGBUILD" >&2
 cp -v --backup=numbered PKGBUILD.in PKGBUILD
 for key in ${!dep_versions[*]};do sed -i "s/@${key}@/${dep_versions[${key}]}/" PKGBUILD;done >&2
 echo "##finish generating PKGBUILD"
+
+echo "##generate .SRCINFO" >&2
+makepkg --printsrcinfo > .SRCINFO
+echo "##finish updating package" >&2
