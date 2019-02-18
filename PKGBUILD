@@ -7,7 +7,7 @@ arch=("any")
 url="http://ironpython.net"
 license=("Apache")
 depends=('mono>=5.18')
-makedepends=('git' 'msbuild-stable')
+makedepends=('git' 'msbuild-stable' 'dos2unix')
 options=('!strip' 'emptydirs' 'libtool')
 source=($pkgname::git+https://github.com/IronLanguages/ironpython2.git
         package.patch)
