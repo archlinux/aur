@@ -1,15 +1,15 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=zcash
-pkgver=2.0.2
-_commit=8e2ca4d94e2f1bc0835d3d888a969fe2e83e7ece
-pkgrel=2
+pkgver=2.0.3
+_commit=647c155dc7357f73fd85cb956109c6db676583b7
+pkgrel=1
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://z.cash/'
 license=('MIT')
 depends=('boost-libs' 'libevent' 'qpid-proton' 'zeromq')
-makedepends=('boost' 'cargo' 'cmake' 'git' 'gmock' 'python' 'wget')
+makedepends=('boost' 'cmake' 'git' 'gmock' 'python' 'rust' 'wget')
 checkdepends=('python2-pyblake2' 'python2-pyzmq' 'python2-qpid-proton')
 source=("git+https://github.com/zcash/zcash.git#commit=${_commit}"
         'libsnark-no-gtest.patch'
@@ -92,6 +92,11 @@ build() {
 
 check() {
     cd ${pkgname}
+
+    # Tests require python2
+    mkdir "${srcdir}/python"
+    ln -s /usr/bin/python2 "${srcdir}/python/python"
+    export PATH="${srcdir}/python:${PATH}"
 
     ./zcutil/fetch-params.sh --testnet
     # ./qa/zcash/full_test_suite.py
