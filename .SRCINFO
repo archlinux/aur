@@ -1,6 +1,6 @@
 pkgbase = linux-drm-fixes-git
 	pkgdesc = DRM kernel graphics driver development tree
-	pkgver = 5.1.812043.cd4c5a487410
+	pkgver = 5.1.812273.a3b22b9f11d9
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm/drm
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = linux-drm-fixes-git
 	source = 90-linux.hook
 	source = linux.preset
 	sha256sums = SKIP
-	sha256sums = 80355b6ce8fcfd33b3b6f642b4863715a217c8e878160757c9b1436d8966b8fa
+	sha256sums = 501b05c5c46f86b7b2ea6cfbe2721aab336a5f62fadab6ecac2519e6375b92ed
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
