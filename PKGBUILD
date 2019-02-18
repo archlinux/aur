@@ -5,7 +5,7 @@ pkgrel=0
 pkgdesc="An Dynamic DNS Client for spdyn.de"
 arch=('any')
 url="https://gitlab.com/CANOXNET/spdynu"
-license=('GPLv2')
+license=('GPL2')
 #depends=('')
 makedepends=('gcc')
 source=(git+https://gitlab.com/CANOXNET/spdynu)
@@ -17,8 +17,8 @@ package() {
   cd "${srcdir}/tmp"
   wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynUpdater.c
   gcc spdynUpdater.c -o spdynu
+  sudo chmod u+x spdynu
   sudo cp -r spdynu /usr/bin/spdynu
-  sudo chmod u+x /usr/spdynu
   wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.conf
   wget https://gitlab.com/CANOXNET/spdynu/raw/master/aur/spdynu.service
   wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.timer
