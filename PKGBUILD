@@ -23,7 +23,7 @@
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
-pkgver=18.2rc1pre1
+pkgver=18.2rc1pre2
 _major=18.1
 pkgrel=1
 _codename=Leia
@@ -75,6 +75,13 @@ source=(
   # closed milestone patches go here | https://github.com/xbmc/xbmc/milestones
   '01-PR15483.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15483.patch'
   '02-PR15521.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15521.patch'
+  '03-PR15535.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15535.patch'
+  '04-PR15434.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15434.patch'
+  '05-PR15479.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15479.patch'
+  '06-PR15489.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15489.patch'
+  '07-PR15480.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15480.patch'
+  '08-PR15516.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15516.patch'
+
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -98,7 +105,13 @@ sha256sums=('bc1ef0e271d0b6ce2e1be7546ad4f7d330930d7631cc19a9bbc5f75ddc586166'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
             '849daf1d5b081ef6d0e428bbc7d448799fc43a8ac9e79cd7513de0eb5a91b0bb'
             '60c44e53614754578ffe6450d6b1fdb7cebd36f832aeca821a03c922d3e016ad'
-            '01d667ac126a48c936fd93926c83588807372ebebb5e32c8305b91b1ff00e6f0')
+            '01d667ac126a48c936fd93926c83588807372ebebb5e32c8305b91b1ff00e6f0'
+            '87071bad4fcfa3d8286fe78d01893788c6701d0f520bcbd1a72038da7de4dbc3'
+            '1e3140f71720a61a8d1f511424800f0a9a15fa44487c9be0d3e4a5b21db74187'
+            '4ae349a7f327874b50a246ce0d30f9f6682e82e49365e38f692b1be8e22f11f8'
+            '7102e4043838335879bed7213fdbbbc8206aefb26a4ef6847fd465b25a48ff3b'
+            'f97223899b2d0b553c8a2a2c53abfa9283716e778ebe8ed10286ba2c4256ede3'
+            'dce042e46078ea8eed548851018224594342981bdd7eaf357980c34bf72be5e5')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
@@ -120,9 +133,11 @@ prepare() {
     # only patch subset of patches that begin with 0-9
     [[ $src == [0-9]*.patch ]] || continue
     msg2 "Applying patch $src..."
-    # patch -Np1 < "../$src"
-    # patch will fail if binary diffs are present so use git apply
-    git apply --verbose -p1 < "../$src"
+    # patch will fail if binary diffs are present so use git apply first and only
+    # if it fails try patch
+    if ! git apply --verbose -p1 < "../$src"; then
+      patch -Np1 < "../$src"
+    fi
   done
 }
 
