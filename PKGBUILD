@@ -3,7 +3,7 @@
 
 pkgname=wire-desktop
 pkgver=3.6.2885
-pkgrel=1
+pkgrel=2
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('x86_64')
 url='https://wire.com/'
@@ -17,6 +17,9 @@ sha256sums=('524db450d41a2dc677b8450cdf4e13dcc753280b2f6565ed5e23e6f59c14bed4'
             'cc9056cecff2aa49a9ce9c8376d57ec8c7c2cb8174f7966b5cdccbeb2e3751ea')
 
 prepare() {
+    # Remove "node-addressbook" dependency as it's only for macOS
+    sed -i '/node-addressbook/d' "${_name}/electron/package.json"
+
     # Create launcher script
     cat << EOF > "${pkgname}"
 #!/bin/sh
