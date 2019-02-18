@@ -4,26 +4,26 @@
 # Contributor: kotyz <kotyz.king@gmail.com>
 
 pkgname=tkimg
-_pkgname=Img-Source
-pkgver=1.4.7
+_pkgname=Img
+pkgver=1.4.8
 pkgrel=1
-pkgdesc="This package enhances Tk, adding support for many other Image formats: BMP, XBM, XPM, GIF, PNG, JPEG, TIFF and postscript."
-url="http://tkimg.sourceforge.net"
+pkgdesc='Provides the handling of several image formats beyond the standard formats in Tk'
+url='https://wiki.tcl-lang.org/page/Img'
 arch=('x86_64')
 license=('custom')
 depends=('zlib' 'libjpeg' 'libpng' 'libtiff' 'tcl' 'tk' 'tcllib')
-source=(http://downloads.sourceforge.net/${pkgname}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('5e513e0913e1f36f6802abf60cf9b8bfd6810bcc4b5a27c340e53bb4d12ab2ee')
+source=("http://downloads.sourceforge.net/${pkgname}/${_pkgname}-Source-${pkgver}.tar.gz")
+sha256sums=('3d9cd329c4f2640970558ce268724af1fb8cb4016466727c07ed502ec9425c81')
 
 build() {
-  cd ${_pkgname}-${pkgver}
+  cd "${_pkgname}-${pkgver}"
 
   ./configure --prefix=/usr --enable-64bit --enable-threads
   make all
 }
 
 package() {
-  cd ${_pkgname}-${pkgver}
+  cd "${_pkgname}-${pkgver}"
 
   make INSTALL_ROOT="${pkgdir}" install
   install -Dm644 license.terms "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
