@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tpm2-tss-engine-git
-pkgver=r47.e008159
+pkgver=r56.9b0c7d1
 pkgrel=1
 pkgdesc='OpenSSL engine for Trusted Platform Module 2.0 devices'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 source=("git+$url.git"
         'tpm2-tss-engine-git_check.sh')
 sha512sums=('SKIP'
-            'e6c9f852ec508d78817a091b2a63fe82457ee952d86e1b5325c75bf7c80a8fa42fd99d217e4ec55a5825e92faf29ff95b88f2e436530a94ad288f629a8f355a7')
+            '77d0d1789376e76b1f357edea59e5cd0953cfcf33c35069da6c4092c43e028dfb1e1593e3c85456e590f9da8252701519a06a5eb94adf8501cf4e5f21cc92cf1')
 
 pkgver() {
 	cd "${pkgname%-git}"
@@ -23,13 +23,16 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname%-git}"
-	sed --in-place 's|@CODE_COVERAGE_RULES@|include $(top_srcdir)/aminclude_static.am|' Makefile.am
+
+	# Workaround for https://github.com/tpm2-software/tpm2-tss-engine/issues/79
+	sed --in-place 's/#ifdef TSS22/#if 0/' src/tpm2-tss-engine-common.c
+
 	autoreconf --install --force
 }
 
 build() {
 	cd "${pkgname%-git}"
-	./configure --prefix=/usr --sysconfdir=/etc --enable-tctienvvar
+	./configure --prefix=/usr --enable-tctienvvar
 	make
 }
 
@@ -41,5 +44,5 @@ check() {
 package() {
 	cd "${pkgname%-git}"
 	make DESTDIR="$pkgdir" install
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
