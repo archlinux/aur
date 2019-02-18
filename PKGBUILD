@@ -3,7 +3,7 @@
 
 pkgname=cournal
 pkgver=r207.23392b8
-pkgrel=1
+pkgrel=2
 pkgdesc='A collaborative note taking and journal application using a stylus.'
 arch=('any')
 license=('GPL3')

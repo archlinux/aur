@@ -1,7 +1,7 @@
 pkgbase = cournal
 	pkgdesc = A collaborative note taking and journal application using a stylus.
 	pkgver = r207.23392b8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flyser/cournal
 	arch = any
 	license = GPL3
