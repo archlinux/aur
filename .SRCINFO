@@ -1,9 +1,8 @@
 pkgbase = webkit2gtk-unstable
 	pkgdesc = GTK+ Web content engine library
 	pkgver = 2.23.90
-	pkgrel = 1
+	pkgrel = 2
 	url = https://webkitgtk.org/
-	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = gtk2
@@ -25,6 +24,7 @@ pkgbase = webkit2gtk-unstable
 	depends = libnotify
 	depends = hyphen
 	depends = woff2
+	depends = openjpeg2
 	optdepends = gtk2: Netscape plugin support
 	optdepends = gst-plugins-base: free media decoding
 	optdepends = gst-plugins-good: media decoding
@@ -32,8 +32,12 @@ pkgbase = webkit2gtk-unstable
 	provides = webkit2gtk
 	conflicts = webkit2gtk
 	options = !emptydirs
-	source = http://webkitgtk.org/releases/webkitgtk-2.23.90.tar.xz
-	sha1sums = 83cc239517f27321705a4d6da2bd3f81d5182295
+	source = https://webkitgtk.org/releases/webkitgtk-2.23.90.tar.xz
+	source = https://webkitgtk.org/releases/webkitgtk-2.23.90.tar.xz.asc
+	validpgpkeys = D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3
+	validpgpkeys = 5AA3BC334FD7E3369E7C77B291C559DBE4C9123B
+	sha256sums = 841bd9ac7b3b5765d6d618b9e87bc75efa6fe4b987b85abaa1da28a31d8c06c8
+	sha256sums = SKIP
 
 pkgname = webkit2gtk-unstable
 
