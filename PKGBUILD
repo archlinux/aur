@@ -2,7 +2,7 @@
 # Contributor: Sean Anderson <seanga2@gamil.com>
 pkgname=proton-git
 _pkgname=proton
-pkgver=6.1
+pkgver=6.47
 pkgrel=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 arch=('x86_64')
