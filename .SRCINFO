@@ -1,24 +1,17 @@
 pkgbase = weborf
-	pkgver = 0.14
+	pkgdesc = Minimal HTTP server to share your files
+	pkgver = 0.15
 	pkgrel = 1
 	url = https://ltworf.github.io/weborf/
 	arch = i686
 	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
 	license = GPL3
-	makedepends = python-pyqt5
-	source = https://github.com/ltworf/weborf/releases/download/0.14/weborf_0.14.orig.tar.gz
-	source = https://github.com/ltworf/weborf/releases/download/0.14/weborf_0.14.orig.tar.gz.asc
-	sha256sums = 921f12537f685c067571dc6252e2ccc09a9068239b37f565f50b1eeccb901359
-	sha256sums = SKIP
+	makedepends = findutils
+	source = https://github.com/ltworf/weborf/releases/download/0.15/weborf_0.15.orig.tar.gz
+	sha256sums = c77388253f7513fcabd74900cd8cd28623478c6ced6cd3b06994c4eb3f60e9a3
 
 pkgname = weborf
-	pkgdesc = A lightweight web server designed for rapidly sharing files over HTTP
-	depends = file
-
-pkgname = qweborf
-	pkgdesc = A lightweight web server designed for rapidly sharing files over HTTP - Qt frontend
-	arch = any
-	depends = python
-	depends = python-pyqt5
-	depends = weborf
 
