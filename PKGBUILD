@@ -5,7 +5,7 @@
 pkgbase=opencv3-opt
 pkgname=($pkgbase $pkgbase-samples)
 pkgver=3.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source Computer Vision Library (Legacy Version & /opt directory version)"
 arch=(x86_64)
 license=(BSD)
@@ -66,6 +66,9 @@ package_opencv3-opt() {
   cd "$pkgdir"/usr/lib/pkgconfig
   ln -s /opt/opencv3/lib/pkgconfig/opencv.pc opencv3.pc
   ln -s /opt/opencv3/lib/pkgconfig/opencv.pc opencv3-opt.pc
+
+  mkdir -p "$pkgdir"/etc/ld.so.conf.d
+  echo /opt/opencv3/lib > "$pkgdir"/etc/ld.so.conf.d/opencv3-opt.conf
 
   # install python bindings
   # cd python_loader
