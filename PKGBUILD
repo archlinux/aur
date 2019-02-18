@@ -3,7 +3,7 @@
 
 name=cloudcompare
 pkgname=${name}-git
-pkgver=2.10.1.r33.gf84d3cd4
+pkgver=2.10.1.r69.ga98751c4
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git"
         "constexpr.patch"
         )
 md5sums=('SKIP'
-         '46bbc5406f18045433ad2bead593294c')
+         'c1ea23f8a38cf1326196bb42de07e020')
 
 prepare() {
   cd ${srcdir}/${name}
