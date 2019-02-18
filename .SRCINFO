@@ -1,0 +1,34 @@
+pkgbase = linux-firmware-surface
+	pkgdesc = Firmware files for Microsoft Surface devices, from https://github.com/jakeday/linux-surface/
+	pkgver = 20190216.9f6f687dd
+	pkgrel = 1
+	url = https://github.com/jakeday/linux-surface/
+	arch = any
+	license = custom
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/jakeday/linux-surface.git
+	md5sums = SKIP
+
+pkgname = linux-firmware-surface-pro-3
+
+pkgname = linux-firmware-surface-pro-4
+
+pkgname = linux-firmware-surface-pro-2017
+
+pkgname = linux-firmware-surface-pro-6
+
+pkgname = linux-firmware-surface-studio
+
+pkgname = linux-firmware-surface-laptop
+
+pkgname = linux-firmware-surface-laptop-2
+
+pkgname = linux-firmware-surface-book
+
+pkgname = linux-firmware-surface-book-2
+
+pkgname = linux-firmware-surface-book-2-1793
+
+pkgname = linux-firmware-surface-go
+
