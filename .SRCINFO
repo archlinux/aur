@@ -1,0 +1,16 @@
+pkgbase = ros-melodic-libuvc-ros
+	pkgdesc = ROS - libuvc_ros metapackage.
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = http://ros.org/wiki/libuvc_ros
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-libuvc-camera
+	source = ros-melodic-libuvc-ros-0.0.10-0.tar.gz::https://github.com/ros-drivers-gbp/libuvc_ros-release/archive/release/melodic/libuvc_ros/0.0.10-0.tar.gz
+	sha256sums = 1a1bd0ae98c89cc82d4cb2baf2eb7b1e0216a466c1049490648b074aba53955c
+
+pkgname = ros-melodic-libuvc-ros
+
