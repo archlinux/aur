@@ -1,7 +1,7 @@
 # Maintainer: PastLeo <chgu82837@gmail.com>
 pkgname=fix-bt-a2dp
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Workaround fixing no A2DP when BT headphone reconnects automatically (after being paired)"
 arch=('any')
 url="https://github.com/pastleo/fix-bt-a2dp"
@@ -14,7 +14,7 @@ source=(
   'fix-bt-a2dp.udev-rules'
 )
 md5sums=(
-  'f63057d641cb3c2e005653acdd6a4af9'
+  'f762db18584951f49296c1231a46d9ec'
   '24aa8ecab3f87b3cd6f8a318d314b27d'
   '53997fa84224bae44cdd1c4b5f88550f'
 )
