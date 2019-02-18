@@ -1,5 +1,5 @@
 pkgbase = gimp-develop-git
-	pkgdesc = GNU Image Manipulation Program
+	pkgdesc = GNU Image Manipulation Program (non-conflicting git version)
 	pkgver = 2.99.1.r1398.f7ac033777
 	pkgrel = 1
 	epoch = 1
