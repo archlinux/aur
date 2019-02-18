@@ -1,0 +1,30 @@
+pkgbase = nblood-git
+	pkgdesc = Blood port based on EDuke32 (git version)
+	pkgver = 1.0+0+gc78d2a8
+	pkgrel = 1
+	url = http://nukeykt.retrohost.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom:BUILD
+	makedepends = git
+	makedepends = imagemagick
+	depends = flac
+	depends = glu
+	depends = gtk2
+	depends = libgl
+	depends = libogg
+	depends = libvorbis
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = timidity++
+	provides = nblood
+	conflicts = nblood
+	source = NBlood::git+https://github.com/nukeykt/NBlood.git
+	source = nblood.desktop
+	sha256sums = SKIP
+	sha256sums = 58807697e95e071a6354f87e8e2fdae9f32af0e08dad1a510a0089845df42184
+	makedepends_i686 = nasm
+
+pkgname = nblood-git
+

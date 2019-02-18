@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=NBlood
+GenericName=Blood port based on EDuke32
+Icon=nblood
+Exec=nblood %F
+Terminal=false
+Categories=Game;ActionGame;
