@@ -8,21 +8,21 @@
 # Contributor:  Gordin <9ordin @t gmail.com>
 
 pkgname=nautilus-dropbox
-pkgver=2018.11.08
+pkgver=2019.01.31
 pkgrel=1
 pkgdesc="Dropbox for Linux - Nautilus extension"
 arch=('i686' 'x86_64')
 url="https://www.dropbox.com/"
 license=('custom:CC-BY-ND-3' 'GPL')
 depends=('libnotify' 'nautilus' 'dropbox' 'hicolor-icon-theme')
-makedepends=('python2-docutils' 'python2' 'pygtk')
+makedepends=('python-docutils' 'python' 'pygtk')
 options=('!libtool' '!emptydirs')
 source=("https://linux.dropbox.com/packages/$pkgname-$pkgver.tar.bz2")
-md5sums=('b8927805655308893c5a8b666b3b8726')
+md5sums=('61a53264bf92b3b96f6a28cd616c68d6')
 
 build() {
     cd "$pkgname-$pkgver"
-    sed -i "s/python/python2/" configure dropbox.in Makefile.in rst2man.py
+    # sed -i "s/python/python2/" configure dropbox.in Makefile.in rst2man.py
     ./configure --prefix=/usr --sysconfdir=/etc
     make
 }

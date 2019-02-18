@@ -1,14 +1,14 @@
 pkgbase = nautilus-dropbox
 	pkgdesc = Dropbox for Linux - Nautilus extension
-	pkgver = 2018.11.08
+	pkgver = 2019.01.31
 	pkgrel = 1
 	url = https://www.dropbox.com/
 	arch = i686
 	arch = x86_64
 	license = custom:CC-BY-ND-3
 	license = GPL
-	makedepends = python2-docutils
-	makedepends = python2
+	makedepends = python-docutils
+	makedepends = python
 	makedepends = pygtk
 	depends = libnotify
 	depends = nautilus
@@ -16,8 +16,8 @@ pkgbase = nautilus-dropbox
 	depends = hicolor-icon-theme
 	options = !libtool
 	options = !emptydirs
-	source = https://linux.dropbox.com/packages/nautilus-dropbox-2018.11.08.tar.bz2
-	md5sums = b8927805655308893c5a8b666b3b8726
+	source = https://linux.dropbox.com/packages/nautilus-dropbox-2019.01.31.tar.bz2
+	md5sums = 61a53264bf92b3b96f6a28cd616c68d6
 
 pkgname = nautilus-dropbox
 
