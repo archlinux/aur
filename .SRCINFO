@@ -1,7 +1,7 @@
 pkgbase = weborf-git
 	pkgdesc = Minimal HTTP server to share your files.
-	pkgver = 0.15.r21.gb0dc718
-	pkgrel = 1
+	pkgver = 0.15
+	pkgrel = 3
 	url = https://ltworf.github.io/weborf/
 	arch = i686
 	arch = x86_64

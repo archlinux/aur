@@ -2,8 +2,8 @@
 
 pkgname=weborf-git
 _pkgname="weborf"
-pkgver=0.15.r21.gb0dc718
-pkgrel=1
+pkgver=0.15
+pkgrel=3
 pkgdesc="Minimal HTTP server to share your files."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://ltworf.github.io/weborf/'
