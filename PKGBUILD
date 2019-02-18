@@ -1,34 +1,34 @@
-# Contributor: Francois Boulogne <fboulogne at april dot org>
+# Maintainer: JP-Ellis <josh@jpellis.me>
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python-bibtexparser
-_pkgname=bibtexparser
-pkgver=1.0.1
+_name=${pkgname#python-}
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Bibtex parser in Python"
 arch=('any')
-url="https://bibtexparser.readthedocs.org/"
+url="https://pypi.org/project/bibtexparser/"
 license=('LGPL3')
-depends=('python')
+depends=('python' 'python-pyparsing')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
-source=(https://pypi.python.org/packages/35/71/209bae42db6cc230ffd126dbda7ec057dd69a084acb4ddcd9ab4544c4506/bibtexparser-1.0.1.tar.gz)
-sha256sums=('cc41cdd8332c2bf44b97daf1f135f4f267c3b744c33976655cd270b66f964c0a')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('df8966ea752db6d74657a69b9d684a61aa33457ad6d9d50e41c50ef7f374907f')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "${srcdir}/${_name}-${pkgver}"
   python setup.py build
+  touch Changelog.rst
 }
 
 check() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "${srcdir}/${_name}-${pkgver}"
   nosetests3
 }
 
-
-package(){
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+package() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
 # vim:ts=2:sw=2:et:
