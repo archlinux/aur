@@ -1,32 +1,30 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: Clarke <mrlusberg@gmail.com>
+# Contributor: FadeMind <fademind@gmail.com>
 # Contributor: Boyan Ding <stu_dby@126.com>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
-_pkgname=bbswitch
-_extramodules=extramodules-4.10-mainline
-
-pkgname=bbswitch-mainline
+pkgbase=bbswitch
+pkgname=(bbswitch-mainline)
 pkgver=0.8
-pkgrel=11
-pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus laptops for linux-mainline"
-arch=('i686' 'x86_64')
-url="https://github.com/Bumblebee-Project/${_pkgname}"
+pkgrel=1
+pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus laptops"
+arch=('x86_64')
+url="http://github.com/Bumblebee-Project/bbswitch"
 license=('GPL')
-depends=('linux-mainline>=4.10rc1' 'linux-mainline<4.11')
-makedepends=('linux-mainline-headers>=4.10rc1' 'linux-mainline-headers<4.11')
-provides=(${_pkgname})
-install=${pkgname}.install
-source=("v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('76cabd3f734fb4fe6ebfe3ec9814138d0d6f47d47238521ecbd6a986b60d1477')
+depends=('linux-mainline>=5.0rc1-1')
+makedepends=('linux-mainline-headers>=5.0rc1-1')
+_extramodules=extramodules-mainline
+source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/Bumblebee-Project/bbswitch/archive/v${pkgver}.tar.gz")
+md5sums=('5b116b31ace3604ddf9d1fc1f4bc5807')
 
 build() {
-    _kernver=$(cat /usr/lib/modules/${_extramodules}/version)
-
-    cd ${_pkgname}-${pkgver}
-    make KDIR=/lib/modules/${_kernver}/build
+  cd ${pkgbase}-${pkgver}
+  _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+  make KDIR=/lib/modules/${_kernver}/build
 }
 
-package() {
-    install -Dm644 "${_pkgname}-${pkgver}/${_pkgname}.ko" "${pkgdir}/usr/lib/modules/${_extramodules}/${_pkgname}.ko"
-    gzip "${pkgdir}/usr/lib/modules/${_extramodules}/${_pkgname}.ko"
-    sed -i -e "s/EXTRAMODULES=.*/EXTRAMODULES=${_extramodules}/g" ${startdir}/*.install
+package_bbswitch-mainline() {
+  cd ${pkgbase}-${pkgver}
+  install -Dt "${pkgdir}/usr/lib/modules/${_extramodules}" -m644 *.ko
+  find "${pkgdir}" -name '*.ko' -exec xz {} +
 }
