@@ -2,9 +2,9 @@
 # Contributor wenLiangcan <boxeed at gmail dot com>
 
 pkgname=keeweb-git
-pkgver=1.7.4+21+g8cc80db
+pkgver=1.7.7+0+g4ca2eb4c
 pkgrel=1
-pkgdesc="Desktop password manager compatible with KeePass databases. (develop branch)"
+pkgdesc="Desktop password manager compatible with KeePass databases. (master branch)"
 arch=('any')
 url="https://github.com/keeweb/keeweb"
 license=('MIT')
@@ -12,14 +12,15 @@ depends=('electron')
 makedepends=(
 	'asar'
 	'git'
-	'libsass'
+	'libsass>=3.5.5'
+	'nodejs>=8.15.0'
 	'npm'
 )
 optdepends=('xdotool: for auto-type')
 conflicts=('keeweb' 'keeweb-desktop')
 provides=('keeweb' 'keeweb-desktop')
 source=(
-	"${pkgname}::git+https://github.com/keeweb/keeweb.git#branch=develop"
+	"${pkgname}::git+https://github.com/keeweb/keeweb.git#branch=master"
 	'hide-menubar.patch'
 	'keeweb.sh'
 	'package.json.patch.js'
@@ -27,7 +28,7 @@ source=(
 
 sha1sums=('SKIP'
           'a55c2ed276c6073b7954452cdc88209633d51ace'
-          'a2ab033d06abfe7616d2615d8edf7931f29efc96'
+          'c925527f25e732d58438ee16b1c93b33be7bf9c4'
           '914afdd9651e71091d4b927cabd25d75786ec7d4')
 
 pkgver() {
@@ -55,6 +56,10 @@ prepare() {
 	sed -i \
 		-e '/Exec=/ c \Exec=keeweb %u' \
 	package/deb/usr/share/applications/keeweb.desktop
+
+	sed -i \
+		-e 's/: "[^@]*@github:/: "github:/' \
+	package-lock.json
 }
 
 build() {
@@ -69,14 +74,14 @@ build() {
 
 	npx grunt build-web-app build-desktop-app-content
 
-	asar p tmp/desktop/app ../keeweb.asar
+	asar p tmp/desktop/app tmp/app.asar
 }
 
 package() {
 	cd "${pkgname}"
 
 	install -Dm0755 ../keeweb.sh "${pkgdir}/usr/bin/keeweb"
-	install -Dm0644 -t "${pkgdir}/usr/lib/keeweb" ../keeweb.asar
+	install -Dm0644 -t "${pkgdir}/usr/lib/keeweb" tmp/app.asar
 
 	install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE DEPS-LICENSE
 
