@@ -17,7 +17,7 @@ sha256sums=('0315efce450e2ac22aa9dd36e134d2d2a9a51acf6e870b7679bf9092c9742dc9')
 
 package() {
   _extid="no-title-bar@franglais125.gmail.com"
-  cd "$_gitname"
+  cd "$_gitname-9"
   make _build
   install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
   install -d "$pkgdir/usr/share/gnome-shell/extensions"
