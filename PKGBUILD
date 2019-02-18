@@ -3,8 +3,8 @@
 # Contributor: Tucos <baspape@gmail.com>
 
 pkgname=panda3d-python2
-pkgver=1.10.0
-pkgrel=2
+pkgver=1.10.1
+pkgrel=0
 pkgdesc="A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
 arch=('i686' 'x86_64')
@@ -81,5 +81,5 @@ package() {
   install -D -m644 "$srcdir/panda3d-$pkgver/doc/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 }
-md5sums=('9eb28f8b98e909aed201014991255df8'
+md5sums=('a8e438d4a13ac8c81b80d288326617b3'
          '057269173f3c1987953302519bc744fa')
