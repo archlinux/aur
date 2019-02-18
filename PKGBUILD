@@ -3,14 +3,14 @@
 # based on https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/sip
 
 pkgname=('python-sip-pyqt4')
-pkgver=4.19.13
+pkgver=4.19.14
 pkgrel=1
 arch=('x86_64')
 url='http://www.riverbankcomputing.com/software/sip/intro'
 license=('custom:"sip"')
 makedepends=('python')
-source=("http://sourceforge.net/projects/pyqt/files/sip/sip-$pkgver/sip-$pkgver.tar.gz")
-sha256sums=('e353a7056599bf5fbd5d3ff9842a6ab2ea3cf4e0304a0f925ec5862907c0d15e')
+source=("https://www.riverbankcomputing.com/static/Downloads/sip/sip-$pkgver.tar.gz")
+sha256sums=('0ef3765dbcc3b8131f83e60239f49508f82205b33cae5408c405e2e2f2d0af87')
 
 prepare() {
   mkdir -p build-pyqt4
