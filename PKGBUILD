@@ -1,7 +1,7 @@
 # Maintainer: Oirio Joshi <joshirio@protonmail.com>
 # Author: Vladimir Yakovlev <desktop-app@protonmail.ch>
 pkgname=email-securely-app-bin
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Unofficial desktop app for several E2E encrypted email providers"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('email-app-securely')
 provides=('email-app-securely')
 install="${pkgname}.install"
 source=("https://github.com/vladimiry/email-securely-app/releases/download/v${pkgver}/email-securely-app-${pkgver}-linux-x64.pacman" 'LICENSE')
-md5sums=('698eac31f313625628884fff2216bd00'
+md5sums=('540e71a616c975f57f0ef615422c5f62'
          'fc680045f40b19ce3c3e771aeb08bbd3')
 
 package() {
