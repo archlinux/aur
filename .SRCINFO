@@ -1,0 +1,21 @@
+pkgbase = python2-klein
+	pkgdesc = A web micro-framework built on werkzeug and twisted.web
+	pkgver = 17.10.0
+	pkgrel = 3
+	url = https://github.com/twisted/klein
+	arch = any
+	license = MIT
+	checkdepends = python2-mock
+	checkdepends = python2-pytest
+	makedepends = python2-setuptools
+	makedepends = python2-incremental
+	depends = python2
+	depends = python2-incremental
+	depends = python2-six
+	depends = python2-twisted
+	depends = python2-werkzeug
+	source = python2-klein-17.10.0.tar.gz::https://github.com/twisted/klein/archive/release-17.10.0.tar.gz
+	sha512sums = 611379159d8c06e2e6a63301d6745084f636669043a4acc15334e4ac4b745581a49d83383786e7ddb549b35f6941c9ccd5be35a27372998a6962cb8271eab8dc
+
+pkgname = python2-klein
+
