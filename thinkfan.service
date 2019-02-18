@@ -5,9 +5,10 @@ After=lm_sensors.service
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/thinkfan
-PIDFile=/var/run/thinkfan.pid
-ExecReload=/usr/bin/kill -HUP $MAINPID
+ExecStart=/usr/bin/thinkfan $THINKFAN_ARGS
+PIDFile=/run/thinkfan.pid
+ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
+Also=thinkfan-wakeup.service
