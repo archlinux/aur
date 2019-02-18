@@ -3,7 +3,7 @@
 
 pkgname=("python2-androguard" python-androguard)
 pkgbase=python2-androguard
-pkgver=3.3.4
+pkgver=3.3.5
 pkgrel=1
 pkgdesc="Python framework for Android application analysis."
 arch=("any")
@@ -11,7 +11,7 @@ url="https://github.com/androguard/androguard/"
 license=("Apache")
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/androguard/androguard/archive/v${pkgver}.tar.gz")
-md5sums=('9373658c5ffb990105e32abefe74c745')
+md5sums=('903bd3b46cdd677757227edbd652a455')
 
 package_python2-androguard() {
     depends=("python2" "python2-setuptools")
