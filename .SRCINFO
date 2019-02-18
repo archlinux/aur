@@ -1,6 +1,6 @@
 pkgbase = knightos-kcc
 	pkgdesc = A C compiler for z80 systems
-	pkgver = 3.8.2
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/KnightOS/kcc
 	arch = i386
@@ -10,8 +10,8 @@ pkgbase = knightos-kcc
 	makedepends = asciidoc
 	depends = scas
 	depends = boost
-	source = https://github.com/KnightOS/kcc/archive/3.8.2.tar.gz
-	sha1sums = 06868d12488b48d73cdf8bb4bde7e891aa9b3a48
+	source = https://github.com/KnightOS/kcc/archive/4.0.0.tar.gz
+	sha1sums = 6f3460eee2af9dba6fea3f7273668a5798ce6aac
 
 pkgname = knightos-kcc
 
