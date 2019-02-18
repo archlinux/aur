@@ -1,0 +1,40 @@
+From 25bd64dbf3171a662182502da6f6f3a27e80b10f Mon Sep 17 00:00:00 2001
+From: 0x9fff00 <0x9fff00+git@protonmail.ch>
+Date: Mon, 18 Feb 2019 19:16:59 +0100
+Subject: [PATCH 2/2] Revert "img4: fix compiling for linux"
+
+This reverts commit 264c4361474782274c7e28cd0d0134c3c4ff7065.
+
+This caused the restore to get stuck at "Waiting for device...".
+---
+ src/img4.c | 3 +--
+ src/img4.h | 2 +-
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/src/img4.c b/src/img4.c
+index c3195d7..db33f15 100644
+--- a/src/img4.c
++++ b/src/img4.c
+@@ -123,8 +123,7 @@ static const unsigned char *asn1_find_element(unsigned int index, unsigned char
+ 	}
+ 
+ 	// find the element we are searching
+-    int i = 0;
+-    while (i <= index, i++) {
++	for (int i = 0; i <= index; i++) {
+ 		off += asn1_get_element(&data[off], &el_type, &el_size);
+ 		if (i == index)
+ 			break;
+diff --git a/src/img4.h b/src/img4.h
+index 005ead3..b83f1ca 100644
+--- a/src/img4.h
++++ b/src/img4.h
+@@ -32,4 +32,4 @@ int img4_stitch_component(const char* component_name, const unsigned char* compo
+ }
+ #endif
+ 
+-#endif /* idevicerestore_img4_h */
++#endif
+-- 
+2.20.1
+

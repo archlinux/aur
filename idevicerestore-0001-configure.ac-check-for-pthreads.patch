@@ -1,4 +1,4 @@
-From f79c08e7b63b96cc8328729b7f87e94133de65ab Mon Sep 17 00:00:00 2001
+From 9481d9fcf04203477dca4d503524c042fe63ab0e Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx100@gmail.com>
 Date: Fri, 25 Sep 2015 23:37:27 +0300
 Subject: [PATCH 1/2] configure.ac: check for pthreads
@@ -9,7 +9,7 @@ Fixes building at least on Arch.
  1 file changed, 1 insertion(+)
 
 diff --git a/configure.ac b/configure.ac
-index d189087..55aea17 100644
+index 8f20317..df7ac04 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -19,6 +19,7 @@ AM_PROG_CC_C_O
