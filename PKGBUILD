@@ -3,12 +3,13 @@
 pkgname=gpx2png-git
 _pkgname=gpx2png
 pkgver=r16.cca8b29
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl script that turns GPX file(s) into image with a background map"
 arch=('any')
 url="https://wiki.openstreetmap.org/wiki/Gpx2png"
 license=('GPL3')
 depends=('perl-libwww' 'imagemagick')
+makedepends=('git')
 conflicts=('gpx2png')
 source=("${_pkgname}"::'git+https://github.com/joubu/gpx2png.git')
 md5sums=('SKIP')
