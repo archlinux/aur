@@ -1,7 +1,7 @@
 # Maintainer: Jacek Wozniak <mech@themech.net>
 pkgname=k81x-fkeys
 pkgver=0.2_3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Logitech K810/K811 keyboard Configurator for changing the behavior of F-keys."
 arch=('i686' 'x86_64')
@@ -15,7 +15,8 @@ optdepends=()
 provides=()
 conflicts=()
 replaces=()
-backup=("etc/udev/rules.d/00-k81x.rules")
+#temporarily commented out to fix the broken config
+#backup=("etc/udev/rules.d/00-k81x.rules")
 options=('!buildflags' '!makeflags')
 install=
 changelog=

@@ -1,7 +1,7 @@
 pkgbase = k81x-fkeys
 	pkgdesc = Logitech K810/K811 keyboard Configurator for changing the behavior of F-keys.
 	pkgver = 0.2_3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/themech/k810_k811_fkeys/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = k81x-fkeys
 	depends = libsystemd
 	options = !buildflags
 	options = !makeflags
-	backup = etc/udev/rules.d/00-k81x.rules
 	source = https://github.com/themech/k810_k811_fkeys/archive/v0.2-3.tar.gz
 	source = https://github.com/themech/k810_k811_fkeys/releases/download/v0.2-3/v0.2-3.tar.gz.asc
 	validpgpkeys = 95BAF0A4346D4C0B6FDDA1767FBFBFD17A45CAE7
