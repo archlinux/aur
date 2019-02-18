@@ -3,7 +3,7 @@
 
 pkgname=onlyoffice-documentserver
 pkgver=5.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
@@ -22,7 +22,8 @@ source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-Documen
 	"server_makefile.patch"
 	"onlyoffice-fileconverter.service"
 	"onlyoffice-spellchecker.service"
-	"onlyoffice-docservice.service")
+	"onlyoffice-docservice.service"
+	"onlyoffice-documentserver.hook")
 sha512sums=('4141831ebfeaed173c7b2d914b22d8b0583b67692d65a809a2976aead3651bcc14214946413f47f48036d94df411d6435af4e3b959d56ba961825128dac070b1'
             '801cd2a02baf49a75feda7156c8e030996fa38c4d2e4c1e285069faea29897b8a3437f5950346b2947fb196bdfa69f839a4ae67e498efce5f916968d328f8880'
             '17e887ff81855c1cd41117c8d98bf2dc33d7de5792a15094ec825e9f35ed0f61038988bee7346fb74f3362bef72471e4f280eb5a9aba6585b208025fa8ffddb6'
@@ -34,7 +35,8 @@ sha512sums=('4141831ebfeaed173c7b2d914b22d8b0583b67692d65a809a2976aead3651bcc142
             '3ae4fbfdb4b639ce51a25af8a754f081c3f7c1041207199e4d450ccf0301dcdcebaf072a9b1efb3be5f0c45959c88bfeea447e032f313c9c291c15fce3979ac6'
             '5c691e07eccd51f543de92cc7f7fd5a5aac77fa2a6cf786f439a4ea43abc7606180aa5a9dd3762200091a4b3a479860881f94aefd0297d8e7ed955bf25c37417'
             '428e5c3326da53ee993871ab56c3b35c40fea5d5513950bee2a87b158f25cc0ebe76d690e4fa17bceb8583dde2f164fcf0a71a60652da1c67171d215f2528e6a'
-            '6f53f9eec783dc00497e2ce495ce92dc1d78824e108ecdd914806fca4948e1748383125e0322a444bf9f8e158eacee06247b4966beb172522e3d176a8bc093a9')
+            '6f53f9eec783dc00497e2ce495ce92dc1d78824e108ecdd914806fca4948e1748383125e0322a444bf9f8e158eacee06247b4966beb172522e3d176a8bc093a9'
+            '707da287c3db6907fcdbf91cfe2ef057c77033713a1b4299a89a684b37fe3c74644e2c0b1fcec2afcd81c6511bb02ac3221d56c8caadb5d0c711d1842f78e780')
 install="onlyoffice-documentserver.install"
 backup=('etc/webapps/onlyoffice/documentserver/production-linux.json'
 	'etc/webapps/onlyoffice/documentserver/default.json')
@@ -102,4 +104,5 @@ package() {
   install -Dm644 "${srcdir}/onlyoffice-docservice.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-docservice.service"
   install -Dm644 "${srcdir}/onlyoffice-fileconverter.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-fileconverter.service"
   install -Dm644 "${srcdir}/onlyoffice-spellchecker.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-spellchecker.service"
+  install -D "${srcdir}/onlyoffice-documentserver.hook" "${pkgdir}/usr/share/onlyofice-documentserver/onlyoffice-documentserver.hook"
 }

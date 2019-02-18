@@ -1,0 +1,12 @@
+# Restart Onlyoffice Documentserver services after package upgrade
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = onlyoffice-documentserver
+
+[Action]
+Description = Restarting Onlyoffice Documentserver services
+When = PostTransaction
+Exec = /usr/bin/systemctl restart onlyoffice-docservice onlyoffice-fileconverter onlyoffice-spellchecker
