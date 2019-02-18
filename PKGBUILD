@@ -15,7 +15,7 @@ backup=()
 install=
 source=("https://github.com/Geballin/TTK-Theme-chooser/archive/1.1.tar.gz")
 
-md5sums=('17c185f5d068656fc6ec4d979ad1aea0')
+md5sums=('c33ee08175e32ba39ff04382952e0487')
 
 build() {
   tar xzf ${pkgver}.tar.gz
