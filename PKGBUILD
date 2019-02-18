@@ -5,13 +5,13 @@
 # Contributor: Sven Pfleiderer <pfleidi@roothausen.de>
 
 pkgname=newsboat-git
-pkgver=r2.12.r143.gb791ff16
+pkgver=r2.14.1.r8.gf03cd8d8
 pkgrel=1
 pkgdesc="An RSS/Atom feed reader for text terminals"
 arch=('x86_64')
 url="https://newsboat.org/"
 license=('custom: MIT')
-depends=('curl' 'json-c' 'libxml2' 'sqlite' 'stfl')
+depends=('curl' 'json-c' 'libxml2' 'sqlite' 'stfl' 'rust')
 makedepends=('swig' 'gettext' 'asciidoc')
 provides=('newsboat')
 conflicts=('newsboat')

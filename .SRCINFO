@@ -13,6 +13,7 @@ pkgbase = newsboat-git
 	depends = libxml2
 	depends = sqlite
 	depends = stfl
+	depends = rust
 	provides = newsboat
 	conflicts = newsboat
 	replaces = newsbeuter
