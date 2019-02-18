@@ -2,7 +2,7 @@
 # Co-Maintainer: jswenson
 # Packager: Chris Knepper <chris82thekid at gmail dot com>
 pkgname=android-messages-desktop
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('electron' 'libnotify' 'libappindicator-gtk2' 'libappindicator-gtk3' 'libappindicator-sharp')
 source=("https://github.com/chrisknepper/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.pacman"
 		"https://raw.githubusercontent.com/chrisknepper/$pkgname/master/LICENSE")
-md5sums=('1ad9bb2618892dfe06aed83499c47678'
+md5sums=('f735db7778c6f49a24e6faf75867ca29'
          '6208044708b2cdf3675699733984b473')
 
 package() {
