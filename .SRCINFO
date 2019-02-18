@@ -12,6 +12,7 @@ pkgbase = cournal
 	depends = poppler-glib
 	depends = gobject-introspection
 	depends = python-gobject
+	depends = python-cairo
 	depends = python-zope-interface
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
