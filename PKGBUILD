@@ -3,7 +3,7 @@
 pkgname=qweborf-git
 _pkgname="weborf"
 pkgver=0.15
-pkgrel=4
+pkgrel=6
 pkgdesc="Minimal HTTP server to share your files - Qt frontend"
 arch=(any)
 url='https://ltworf.github.io/weborf/'
@@ -19,15 +19,17 @@ pkgver() {
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+
 build() {
 	cd "$srcdir/$_pkgname"
-	pyuic5 qweborf/main.ui > qweborf/main.py
-	python qweborf.setup.py build
+	#autoreconf -f -i
+	pyuic5 qweborf/qweborf/main.ui > qweborf/main.py
+	python qweborf/setup.py build
 }
 
 package() {
 	cd "$srcdir/$_pkgname"
-	python qweborf.setup.py install --root="$pkgdir"
-	install -Dm 0755 qweborf/qweborf "$pkgdir/usr/bin/qweborf"
-	install -Dm 0755 qweborf/qweborf.desktop "$pkgdir/usr/share/applications/qweborf.desktop"
+	python build/lib/qweborf/setup.py install --root="$pkgdir"
+	install -Dm 0755 qwebrof/qweborf/qweborf "$pkgdir/usr/bin/qweborf"
+	#install -Dm 0755 qwebrof/qweborf/qweborf.desktop "$pkgdir/usr/share/applications/qweborf.desktop"
 }
