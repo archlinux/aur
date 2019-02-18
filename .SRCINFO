@@ -1,6 +1,6 @@
 pkgbase = pac4cli-git
 	pkgdesc = Proxy-auto-discovery for command line applications
-	pkgver = 0.1.117.g99bc91e
+	pkgver = 0.2.38.g38c80d2
 	pkgrel = 3
 	url = https://github.com/tkluck/pac4cli
 	install = pac4cli.install
