@@ -1,13 +1,13 @@
 pkgbase = xcursor-bmz
 	pkgdesc = Mouse cursor for X11 desktop. Inspiration was drawn from various sources, including DMZ and Breeze, but design manages to be quite unique.
-	pkgver = 1.8
-	pkgrel = 4
+	pkgver = 1.9
+	pkgrel = 1
 	url = https://www.gnome-look.org/p/1158321/
 	arch = any
 	license = GPL
 	depends = libxcursor
-	source = xcursor-bmz-1.8.tar.gz::https://dl.opendesktop.org/api/files/downloadfile/id/1515839449/s/a675e087d052035a42a635f2284d8461/t/1517897552/BMZ.tar.gz
-	sha256sums = fb0054106c5c80df446f6bf440fec4c2140030e5fa64676ccb042f700e0cafb6
+	source = xcursor-bmz-1.9.tar.gz::https://dl.opendesktop.org/api/files/downloadfile/id/1542022326/s/e1be18b995741e7971be7da9dd9802d1a69facaa06f96b62d96a459eb59ef55cda95ec92ece3c4abd51241f7d2fe559bb2ad8a4738cb7330b8a5f15276ac5474/t/1550473242/BMZ-20181112113039.tar.gz
+	sha256sums = 3da74926a5aa3c591d769a68670a95fc1f74c6693514df7759cad4af78e78015
 
 pkgname = xcursor-bmz
 
