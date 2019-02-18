@@ -11,6 +11,7 @@ pkgbase = lifeograph
 	depends = gtkmm3
 	depends = enchant
 	depends = libgcrypt
+	depends = xdg-utils
 	provides = lifeograph
 	conflicts = lifeograph
 	source = https://launchpad.net/lifeograph/trunk/1.5.1/+download/lifeograph-1.5.1.1.tar.bz2
