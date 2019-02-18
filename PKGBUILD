@@ -2,7 +2,7 @@
 pkgname=('python-sentry_sdk' 'python2-sentry_sdk')
 pkgbase=python-sentry_sdk
 _pkgname=sentry-sdk
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="The new Python SDK for Sentry.io"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/getsentry/sentry-python/master/LICENSE")
-md5sums=('81f79aa6b6c9de491e8c8f9dc3994ffd'
+md5sums=('3a5bd3a5d9bd1305d26a702b38134140'
          '0c79f8d3c91fc847350efd28bfe0a341')
 
 package_python-sentry_sdk() {
@@ -20,7 +20,7 @@ package_python-sentry_sdk() {
 	
 	cd "$_pkgname-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_python2-sentry_sdk() {
@@ -29,5 +29,5 @@ package_python2-sentry_sdk() {
 	
 	cd "$_pkgname-$pkgver"
 	python2 setup.py install --root="$pkgdir/" --optimize=1
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
