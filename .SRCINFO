@@ -1,6 +1,6 @@
 pkgbase = gromacs
 	pkgdesc = A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.
-	pkgver = 2019
+	pkgver = 2019.1
 	pkgrel = 1
 	url = http://www.gromacs.org/
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = gromacs
 	optdepends = opencl-mesa: OpenCL support for AMD GPU
 	optdepends = opencl-nvidia: OpenCL support for Nvidia GPU
 	options = !libtool
-	source = http://ftp.gromacs.org/pub/gromacs/gromacs-2019.tar.gz
-	sha1sums = 89155f31489be22593b98d403113d5eb5881a792
+	source = http://ftp.gromacs.org/pub/gromacs/gromacs-2019.1.tar.gz
+	sha1sums = f9abf82ecbe67b8dfe66874b828c4da2bb780376
 
 pkgname = gromacs
 
