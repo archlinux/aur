@@ -6,7 +6,7 @@ pkgbase = jaxb-api
 	arch = x86_64
 	arch = i686
 	license = EDL
-	makedepends = java-environment
+	makedepends = java-environment>=11
 	makedepends = maven
 	depends = java-runtime
 	source = https://github.com/eclipse-ee4j/jaxb-api/archive/2.3.2.tar.gz

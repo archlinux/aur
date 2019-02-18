@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 url="https://javaee.github.io/jaxb-v2/"
 license=(EDL)
 depends=('java-runtime')
-makedepends=('java-environment' 'maven')
+makedepends=('java-environment>=11' 'maven')
 source=("https://github.com/eclipse-ee4j/jaxb-api/archive/${pkgver}.tar.gz")
 sha256sums=('67e4434633106920b5898eff4e577fcbfb185c7726ef8c8ee18f9f7ed9023c8f')
 _M2_REPO=$(mktemp -d)
