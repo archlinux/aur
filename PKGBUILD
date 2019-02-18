@@ -2,14 +2,12 @@
 
 pkgname=tastyworks
 pkgver=0.27.0
-pkgrel=3
+pkgrel=4
 pkgdesc="One of the fastest, most reliable, and most secure trading platforms in the world."
 arch=('x86_64')
 url="https://tastyworks.com/technology.html"
 license=('Other')
-depends=('java-runtime'  'lib32-glibc'      'lib32-gcc-libs'
-         'lib32-libx11'  'lib32-libxext'    'lib32-libxi'  
-         'lib32-libxtst' 'lib32-libxrender' 'lib32-alsa-lib')
+depends=('java-runtime')
 source=("https://download.tastyworks.com/desktop/$pkgver/$pkgname-$pkgver.rpm"
         "tastyworks.png")
 sha256sums=('1e512ea67dc99f0a1108764c960a47e1f4e97ff51c7a62a386843611c22d1965'
@@ -18,6 +16,13 @@ sha256sums=('1e512ea67dc99f0a1108764c960a47e1f4e97ff51c7a62a386843611c22d1965'
 # I'm not sure that the all the lib32 stuff is actually needed. The application seemed to be working
 # fine without it but the "official" install requested those packages. I'll leave them there for
 # now but need to contact tastyworks team for clarification and do some more research.
+
+# I'm removing this list of dependencies because it's clutter and I didn't notice any benefit for
+# having them included. I'll leave it here in a comment in case they're necessary to someone.
+
+# 'lib32-glibc'   'lib32-gcc-libs'
+# 'lib32-libx11'  'lib32-libxext'    'lib32-libxi'
+# 'lib32-libxtst' 'lib32-libxrender' 'lib32-alsa-lib'
 
 package() {
 
