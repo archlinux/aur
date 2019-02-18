@@ -3,10 +3,10 @@
 
 pkgname=smloadr
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A streaming music downloader"
 arch=('x86_64')
-url="https://git.teknik.io/SMLoadrDev/SMLoadr"
+url="https://git.fuwafuwa.moe/SMLoadrDev/SMLoadr"
 license=('unknown')
 makedepends=('npm')
 depends=('nodejs')
@@ -23,6 +23,6 @@ package() {
   install -d "${pkgdir}/usr/lib"
   install -d "${pkgdir}/usr/bin"
   cp -r "${srcdir}/${pkgname}" "${pkgdir}/usr/lib/"
-  echo -e "#!/usr/bin/bash\nnode /usr/lib/smloadr/SMLoadr.js" > "${pkgdir}/usr/bin/smloadr"
+  echo -e '#!/usr/bin/bash\nnode /usr/lib/smloadr/SMLoadr.js "$@"' > "${pkgdir}/usr/bin/smloadr"
   chmod +x "${pkgdir}/usr/bin/smloadr"
 }
