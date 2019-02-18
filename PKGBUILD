@@ -11,7 +11,7 @@ url='https://github.com/darealshinji/delaycut'
 license=(GPL3)
 depends=('qt5-base')
 provides=('delaycut')
-source=(https://github.com/darealshinji/delaycut/archive/v${pkgver}.tar.gz)
+source=("${pkgname}-${pkgver}::https://github.com/darealshinji/delaycut/archive/v${pkgver}.tar.gz")
 sha256sums=('3e215c906efc9680a7254b250f9c2fbd9f3f0a5f8b56481f2268b30c03c715e4')
 
 build() {
