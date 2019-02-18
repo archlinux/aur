@@ -2,7 +2,7 @@
 
 pkgname=exodus-eden
 pkgver=19.2.15
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An unsupported, advanced version of Exodus"
 arch=('x86_64')
@@ -10,10 +10,10 @@ url="https://exodus.io/eden"
 license=('custom:"Copyright © 2018 Exodus"')
 depends=('gconf' 'gtk2' 'nss' 'libxss' 'glibc>=2.28-4')
 source=("https://exodusbin.azureedge.net/releases/eden/exodus-eden-linux-x64-${pkgver//_/-}.zip"
-	"https://marceloneil.com/exodus-icons/eden-icons.zip"
+	"${pkgname}.svg"
 	"${pkgname}.desktop")
 sha256sums=('4a1c1fabc19a1de9112db93e5d1231acee568b7e41a147d122b024247bd3f8d3'
-            '531447b0b49a27a4169fcd2639fa793135acf2776b05f52f36557b384bace7cb'
+            '231eacce811bdbbf5ffbee3c677ed53df7ed41024af49c757d2f866159180031'
             '820c6de206ffdd5882f26a8b7d5a2720d0b2df6f9fe62d31aa3a9aaefb9b6322')
 
 package() {
@@ -27,10 +27,9 @@ package() {
   # Launcher
   install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 
-  #Icons
-  for i in 16x16 32x32 128x128 256x256 512x512; do
-    install -Dm644 $srcdir/eden-icons/icon_$i.png \
-		   $pkgdir/usr/share/icons/hicolor/$i/apps/$pkgname.png
-  done
+  # Icons
+  install -Dm644 $srcdir/$pkgname.svg \
+                 $pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg
+
   chmod -R ugo+rX $pkgdir/opt
 }
