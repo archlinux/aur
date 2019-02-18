@@ -2,7 +2,7 @@
 
 pkgname=cockpit-minimal
 pkgver=187
-pkgrel=0
+pkgrel=1
 pkgdesc='A systemd web based user interface for Linux servers (minimal setup with system graphs, journalctl, storage, network, user accounts, systemd services and terminal)'
 arch=(i686 x86_64 armv6h armv7h)
 url='http://www.cockpit-project.org/'
@@ -13,11 +13,15 @@ depends=(libssh krb5 sshpass accountsservice perl-json perl-locale-po json-glib 
 #http://cockpit-project.org/guide/latest/feature-storaged.html
 optdepends=('udisks2: disk stats support')
 makedepends=(git intltool python2-pyscss gtk-doc perl-javascript-minifier-xs gobject-introspection networkmanager libgsystem xmlto npm tar)
-source=(https://github.com/cockpit-project/cockpit/releases/download/${pkgver}/cockpit-${pkgver}.tar.xz
-	https://github.com/cockpit-project/cockpit/releases/download/${pkgver}/cockpit-cache-${pkgver}.tar.xz)
+source=(
+    https://github.com/cockpit-project/cockpit/releases/download/${pkgver}/cockpit-${pkgver}.tar.xz
+	https://github.com/cockpit-project/cockpit/releases/download/${pkgver}/cockpit-cache-${pkgver}.tar.xz
+    cockpit-pam
+)
 noextract=(cockpit-${pkgver}.tar.xz)
 sha1sums=('31b3b1591ada044a5e7530b0b0e8418b66f96712'
-          '097d033816be57c8228209f1f5e46005fef2e4e6')
+          '097d033816be57c8228209f1f5e46005fef2e4e6'
+          '69b899b034e981cf217c2f8d61264caa2015c0e6')
 
 prepare() {
   cd $srcdir
@@ -36,6 +40,10 @@ package() {
   cd cockpit-${pkgver}
   make DESTDIR="$pkgdir" install
   cd $pkgdir
+
+  mkdir -p etc/pam.d
+  cp ../../cockpit-pam etc/pam.d/cockpit
+
   rm usr/lib/firewalld/services/cockpit.xml  # owned by firewalld
   for d in docker kubernetes tuned kdump selinux ovirt pcp playground realmd sosreport subscriptions; do
       rm -r usr/share/cockpit/$d;

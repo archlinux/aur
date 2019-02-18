@@ -1,7 +1,7 @@
 pkgbase = cockpit-minimal
 	pkgdesc = A systemd web based user interface for Linux servers (minimal setup with system graphs, journalctl, storage, network, user accounts, systemd services and terminal)
 	pkgver = 187
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.cockpit-project.org/
 	arch = i686
 	arch = x86_64
@@ -35,8 +35,10 @@ pkgbase = cockpit-minimal
 	noextract = cockpit-187.tar.xz
 	source = https://github.com/cockpit-project/cockpit/releases/download/187/cockpit-187.tar.xz
 	source = https://github.com/cockpit-project/cockpit/releases/download/187/cockpit-cache-187.tar.xz
+	source = cockpit-pam
 	sha1sums = 31b3b1591ada044a5e7530b0b0e8418b66f96712
 	sha1sums = 097d033816be57c8228209f1f5e46005fef2e4e6
+	sha1sums = 69b899b034e981cf217c2f8d61264caa2015c0e6
 
 pkgname = cockpit-minimal
 
