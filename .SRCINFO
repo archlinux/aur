@@ -1,6 +1,6 @@
 pkgbase = direwolf-git
 	pkgdesc = Software modem/TNC and APRS encoder/decoder
-	pkgver = 1.5.beta4.r8.gda0a33e
+	pkgver = 1.5.beta4.r39.gbfa7f4a
 	pkgrel = 1
 	url = https://github.com/wb2osz/direwolf
 	arch = i686
@@ -17,17 +17,14 @@ pkgbase = direwolf-git
 	conflicts = direwolf
 	source = git+https://github.com/wb2osz/direwolf.git#branch=dev
 	source = 0001-Makefile.patch
-	source = 0002-Fix-build-error-with-latest-gpsd.patch
 	source = direwolf.service
 	source = direwolf-kiss.service
 	sha1sums = SKIP
 	sha1sums = 8fd025e2df746a4c776c482f04ce93791aad01f6
-	sha1sums = 7100a8a99a2e934e16372c70b18b86453a6266ad
 	sha1sums = 66366c7a4e8d3768013f9036f2681a86d4b8ad88
 	sha1sums = eea3a3fb334645cd8a1e2604dc6c6b024148722a
 	sha256sums = SKIP
 	sha256sums = d3f93a6cabe348d410c630f612dd49373f9932f747588dfd915283f3167e2a48
-	sha256sums = eee5554700a2aaded8f4cc9bd0a635d7697280267db9b319ca727c32b07ce5a4
 	sha256sums = a1efe2bb96470bc52faa747708b195a685dc454f3d9c91f6bf4d39ab94d3608a
 	sha256sums = 2a2e4acc769a20afebdfdcd21640fd17b0c4217ceb7ecb3378f9ee5c45fadc68
 
