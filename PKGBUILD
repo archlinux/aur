@@ -13,7 +13,7 @@ pkgver=8.2.0
 _mpfrver=4.0.1
 _mpcver=1.1.0
 _gmpver=6.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNU Compiler Collection. Bootstrap for toolchain building (${_target})"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
@@ -27,10 +27,12 @@ source=("http://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
         "http://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz"
         "http://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz.sig"
         "http://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz"
-        "http://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz.sig")
+        "http://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz.sig"
+	"isl_includes.patch")
 
         
-sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
+sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
+	395891a9c064908a3d08b312f59dc7244f8a36134de30abad81a707541c173e3)
 validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06
               07F3DBBECC1A39605078094D980C197698C3739D
               AD17A21EF8AED8F1CC02DBD9F7D5C9BF765C61E3
@@ -38,6 +40,7 @@ validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06
 
 prepare() {
   cd ${srcdir}/gcc-${pkgver}
+  patch -p1 < ${srcdir}/isl_includes.patch
 
   # symlinks for in-tree build
   ln -s ../mpfr-${_mpfrver}

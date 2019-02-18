@@ -1,7 +1,7 @@
 pkgbase = m68k-elf-gcc-bootstrap
 	pkgdesc = The GNU Compiler Collection. Bootstrap for toolchain building (m68k-elf)
 	pkgver = 8.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = m68k-elf-gcc-bootstrap
 	source = http://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz.sig
 	source = http://ftp.gnu.org/gnu/gmp/gmp-6.1.2.tar.xz
 	source = http://ftp.gnu.org/gnu/gmp/gmp-6.1.2.tar.xz.sig
+	source = isl_includes.patch
 	validpgpkeys = 33C235A34C46AA3FFB293709A328C3A2C3C45C06
 	validpgpkeys = 07F3DBBECC1A39605078094D980C197698C3739D
 	validpgpkeys = AD17A21EF8AED8F1CC02DBD9F7D5C9BF765C61E3
@@ -34,6 +35,7 @@ pkgbase = m68k-elf-gcc-bootstrap
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 395891a9c064908a3d08b312f59dc7244f8a36134de30abad81a707541c173e3
 
 pkgname = m68k-elf-gcc-bootstrap
 
