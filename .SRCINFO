@@ -1,7 +1,7 @@
 pkgbase = gromacs-2016-complete
 	pkgdesc = A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.
-	pkgver = 2016.5
-	pkgrel = 2
+	pkgver = 2016.6
+	pkgrel = 1
 	url = http://www.gromacs.org/
 	arch = i686
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = gromacs-2016-complete
 	optdepends = opencl-mesa: OpenCL support for AMD GPU
 	optdepends = opencl-nvidia: OpenCL support for Nvidia GPU
 	options = !libtool
-	source = http://ftp.gromacs.org/pub/gromacs/gromacs-2016.5.tar.gz
+	source = http://ftp.gromacs.org/pub/gromacs/gromacs-2016.6.tar.gz
 	source = GMXRC.bash.cmakein.patch
-	sha1sums = 8c24c9c52213502e927c13d69cdc4296415a4136
+	sha1sums = 1a9643eea0f147f47c28b7cb9a2662b5585fe41d
 	sha1sums = 014b2cbfa13db9b495c88f653805c330747117dc
 
 pkgname = gromacs-2016-complete
