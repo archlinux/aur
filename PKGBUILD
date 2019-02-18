@@ -2,7 +2,7 @@
 _pkgname=golangci-lint
 pkgname=${_pkgname}-bin
 pkgdesc="Linters Runner for Go. 5x faster than gometalinter. (Binary)"
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 arch=('x86_64' 'i686')
 url=https://github.com/golangci/golangci-lint
@@ -13,8 +13,8 @@ conflicts=('golangci-lint' 'golangci-lint-git')
 _source=${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux
 source_x86_64=(${_source}-amd64.tar.gz)
 source_i686=(${_source}-386.tar.gz)
-sha512sums_x86_64=('2356d58512f7a024987b2005a4ccf73dd2c11d5f07bfb41d4f6b6f738a69fe0cbad2cfb058be759e823d95210929f1924921c3ff4f84873edeb7490c2553ae60')
-sha512sums_i686=('5be3b1c070664bf251453c6af656777c46bbb46331722686e99aa0c8d7c776919d8f79029895cce298373231c04f4ad4c780be5f31b1bac2ccd0b5e56c644a6f')
+sha512sums_x86_64=('43375be5dc3400c2b889bf68b903e626f67c1a32da1f9aec80173c9bad94bec4cda45db14cadeeccb1c8a312eb5749219cdf053fdf6fe5c3ecb44997cdb666d7')
+sha512sums_i686=('90f1a28c542d99cdbbd9835e827f4636012d1f52082659a4ed12d2d4ca5699d550e0f79a0def533ba69818e61783c08bc317bf01cc71300604ac88b9c4824422')
 
 if [[ $CARCH == "i686" ]]; then
     _dirname=${_pkgname}-${pkgver}-linux-386
