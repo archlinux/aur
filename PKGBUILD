@@ -120,7 +120,9 @@ pkgname='cndrvcups-lb-bin'
 # http://gdlp01.c-wss.com/gds/8/0100002708/17/linux-UFRII-drv-v340-uken.tar.gz
 #pkgver='3.50'; _commonver='3.90'; _dl='0/0100009240/01'; _co='uk' # http://gdlp01.c-wss.com/gds/0/0100009240/01/linux-UFRII-drv-v350-uken.tar.gz c00324177a6f77f0a6deb4ecc6bee8150607dd4029bad3dfc1a521f84f811e7f
 #pkgver='3.50'; _commonver='3.90'; _dl='8/0100007658/05'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100007658/05/linux-UFRII-drv-v350-uken.tar.gz c00324177a6f77f0a6deb4ecc6bee8150607dd4029bad3dfc1a521f84f811e7f
-pkgver='3.60'; _commonver='4.00'; _dl='0/0100009240/02'; _co='uk' # http://gdlp01.c-wss.com/gds/0/0100009240/02/linux-UFRII-drv-v360-uken.tar.gz a5bf2c2d53049ad64acf2ed8b6dc954ff261c4b996ce1cc81471e5baaf5e40cd
+#pkgver='3.60'; _commonver='4.00'; _dl='0/0100009240/02'; _co='uk' # http://gdlp01.c-wss.com/gds/0/0100009240/02/linux-UFRII-drv-v360-uken.tar.gz a5bf2c2d53049ad64acf2ed8b6dc954ff261c4b996ce1cc81471e5baaf5e40cd
+#pkgver='3.60'; _commonver='4.00'; _dl='0/0100009240/02'; _co='uk' # http://gdlp01.c-wss.com/gds/0/0100009240/02/linux-UFRII-drv-v360-uken.tar.gz a5bf2c2d53049ad64acf2ed8b6dc954ff261c4b996ce1cc81471e5baaf5e40cd
+pkgver='3.70'; _commonver='4.10'; _dl='8/0100007658/08'; _co='uk' # http://gdlp01.c-wss.com/gds/8/0100007658/08/linux-UFRII-drv-v370-uken-05.tar.gz
 
 _pkgver="${pkgver}"
 pkgrel='1'
@@ -170,7 +172,7 @@ else
   _srcdir=("linux-UFRII-drv-v${_pkgverV//./}-${_co}en")
 fi
 unset _pkgverV
-source=("http://gdlp01.c-wss.com/gds/${_dl}/${_srcdir}.tar.gz")
+source=("http://gdlp01.c-wss.com/gds/${_dl}/${_srcdir}-05.tar.gz")
 unset _dl
 if [ "${_inst_mix}" -ne 0 ]; then
   _pkgverA='3.20'
@@ -191,7 +193,8 @@ if [ "${_inst_lb}" -ne 0 ] && [ "${_opt_debug_cnpkmoduleufr2}" -ne 0 ]; then
     'https://archive.archlinux.org/packages/l/lib32-glibc/lib32-glibc-2.23-5-x86_64.pkg.tar.xz'
   )
 fi
-sha256sums=('a5bf2c2d53049ad64acf2ed8b6dc954ff261c4b996ce1cc81471e5baaf5e40cd')
+md5sums=('7818b516c98bbcb38505b2ad50e69599')
+sha256sums=('e05d758f12b45582dcd8cd17ee0b23e1b8a363a3e412f530494b6f9dfda64410')
 #PKGEXT='.tar.gz'
 
 package() {
