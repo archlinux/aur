@@ -2,8 +2,8 @@
 # Contributor: Spyhawk
 
 pkgname=libsolv-git
-pkgver=0.7.3.2.g6ba90b5a
-pkgrel=2
+pkgver=0.7.3.10.gf9a8953a
+pkgrel=1
 pkgdesc="A new approach to package dependency solving"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/libsolv"
