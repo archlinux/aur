@@ -4,7 +4,7 @@ _pkgname=wedder
 pkgname="${_pkgname}-git"
 pkgdesc="Current weather info for status bars like polybar"
 
-pkgver=1.0.3.r0.ga2a4116
+pkgver=1.0.4.r1.g8e94f62
 pkgrel=1
 arch=("any")
 
@@ -13,6 +13,7 @@ source=("git+https://github.com/awersching/wedder.git")
 license=("MIT")
 
 makedepends=("git" "rust")
+conflicts=("wedder")
 md5sums=("SKIP")
 
 pkgver() {
