@@ -1,0 +1,17 @@
+pkgbase = ros-melodic-libuvc
+	pkgdesc = ROS - USB Video Class driver library.
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = libusb
+	depends = ros-melodic-catkin
+	depends = libusb
+	source = ros-melodic-libuvc-0.0.6-0.tar.gz::https://github.com/ktossell/libuvc-release/archive/release/melodic/libuvc/0.0.6-0.tar.gz
+	sha256sums = 06a553e6d043735a10fff606d5f71a20661fc9b6be392b69a06c35b8aca8d3f6
+
+pkgname = ros-melodic-libuvc
+
