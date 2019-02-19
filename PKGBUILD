@@ -5,7 +5,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer-git
-pkgver=2019.131.0_43_g7ec0b4ba7
+pkgver=2019.216.0_30_g805805020
 pkgrel=1
 pkgdesc='Freeware rhythm video game - lazer development version'
 arch=('x86_64')
@@ -85,7 +85,7 @@ package() {
 	install -m644 "$srcdir/osu/LICENCE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 
 	# Copy binaries
-	cd "$srcdir/osu/osu.Desktop/bin/Release/netcoreapp2.2"
+	cd "$srcdir/osu/osu.Desktop/bin/Release/netcoreapp2.1"
 	mkdir -p "$pkgdir/usr/lib/${pkgname%-git}"
 	for file in *.dll *.json *.pdb *.so; do
 		install -m755 "$file" "$pkgdir/usr/lib/${pkgname%-git}/$file"
