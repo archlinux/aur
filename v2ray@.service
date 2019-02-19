@@ -1,0 +1,14 @@
+[Unit]
+Description=V2Ray Service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+#PIDFile=/var/run/v2ray-%i.pid
+Environment=V2RAY_LOCATION_ASSET=/etc/v2ray
+ExecStart=/usr/bin/v2ray -config /etc/v2ray/%i.json
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
