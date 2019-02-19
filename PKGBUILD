@@ -60,7 +60,8 @@ build() {
     -DWEBVIEW_PROVIDER="${_webview_provider}" \
     -DJS_PROVIDER="${_js_provider}" \
     -DSYSTEMD_SUPPORT=ON \
-    $additional_args
+    $additional_args \
+    .
   make
 }
 
