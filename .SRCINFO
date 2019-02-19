@@ -8,6 +8,7 @@ pkgbase = vale
 	license = MIT
 	makedepends = go-pie
 	makedepends = go-bindata
+	makedepends = rsync
 	source = https://github.com/errata-ai/vale/archive/v1.3.2.zip
 	sha256sums = b143c227cdbd502afef612216ede2ba5fd8158ff45e43b99a8a0f77da851a20e
 
