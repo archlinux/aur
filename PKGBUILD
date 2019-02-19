@@ -2,13 +2,13 @@
 _name=pdf-diff
 pkgname="${_name}-git"
 pkgver=0.9.0.r55.f3a8e48
-pkgrel=1
+pkgrel=2
 pkgdesc="Finds differences between two PDF documents"
 arch=('any')
 url="https://github.com/JoshData/pdf-diff/"
 license=('custom:CC0')
 groups=()
-depends=('python-lxml' 'python-diff-match-patch' 'poppler')
+depends=('python-lxml' 'python-diff-match-patch-cpp' 'poppler')
 makedepends=('git' 'python-setuptools')
 provides=("${_name}")
 conflicts=("${_name}")
@@ -26,7 +26,6 @@ md5sums=('SKIP'
 prepare() {
     cd "$srcdir/${_name}"
     gzip < "$srcdir/${_name}.1" > "$srcdir/${_name}.1.gz"
-    sed -re 's/diff_match_patch_python/diff-match-patch/g' -i setup.py
     python setup.py egg_info
 }
 

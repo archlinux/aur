@@ -1,14 +1,14 @@
 pkgbase = pdf-diff-git
 	pkgdesc = Finds differences between two PDF documents
 	pkgver = 0.9.0.r55.f3a8e48
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JoshData/pdf-diff/
 	arch = any
 	license = custom:CC0
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-lxml
-	depends = python-diff-match-patch
+	depends = python-diff-match-patch-cpp
 	depends = poppler
 	provides = pdf-diff
 	conflicts = pdf-diff
