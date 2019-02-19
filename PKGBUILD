@@ -1,3 +1,4 @@
+# Maintainer: Víctor González <mrvikxd@gmail.com>
 pkgname=fltrdr
 pkgver=0.1.0
 pkgrel=1
