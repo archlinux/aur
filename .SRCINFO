@@ -1,0 +1,16 @@
+pkgbase = jitterentropy-git
+	pkgdesc = Jitter RNG daemon
+	pkgver = 1.0.8.r4.gad4d636
+	pkgrel = 1
+	url = http://www.chronox.de/jent.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = GPL
+	makedepends = git
+	depends = glibc
+	source = git+https://github.com/smuellerDD/jitterentropy-rngd.git
+	sha256sums = SKIP
+
+pkgname = jitterentropy-git
+
