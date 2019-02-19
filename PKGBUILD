@@ -2,8 +2,8 @@
 
 pkgname=gromacs-2016-complete-charmm36
 pkgver=201811
-_gromacs_ver=2016.5
-pkgrel=2
+_gromacs_ver=2016.6
+pkgrel=3
 pkgdesc='CHARMM36 force field in GROMACS format.'
 url='http://mackerell.umaryland.edu/charmm_ff.shtml#gromacs'
 license=("GPL")

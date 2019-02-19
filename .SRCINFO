@@ -1,11 +1,11 @@
 pkgbase = gromacs-2016-complete-charmm36
 	pkgdesc = CHARMM36 force field in GROMACS format.
 	pkgver = 201811
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mackerell.umaryland.edu/charmm_ff.shtml#gromacs
 	arch = any
 	license = GPL
-	depends = gromacs-2016-complete=2016.5
+	depends = gromacs-2016-complete=2016.6
 	source = http://mackerell.umaryland.edu/download.php?filename=CHARMM_ff_params_files/charmm36-nov2018.ff.tgz
 	sha1sums = b953246b458cc6f4ed5bf5ebb761adf5807f6356
 
