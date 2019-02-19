@@ -1,7 +1,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=appleseed
-pkgrel=3
-pkgver=1.9.0
+pkgrel=1
+pkgver=2.0.0
 _pkgver=${pkgver}-beta
 pkgdesc="physically-based global illumination rendering engine primarily designed for animation and visual effects. "
 arch=(x86_64)
@@ -13,11 +13,9 @@ depends=(python2 qt4 'seexpr>=2.11' boost openexr opencolorio openimageio opensh
 makedepends=(cmake)
 options=()
 source=("https://github.com/${pkgname}hq/${pkgname}/archive/${_pkgver}.tar.gz"
-        gcc8.patch
         dir.patch
         )
-md5sums=('2843aaf4f4b69088ac6466808b329b27'
-         '6e6b997cbfe06e0d74cdc3f74de12324'
+md5sums=('25030249df1403daf7b38359b2edf593'
          '3da34be53a016d68ff8abfebaed1dd4e')
 
 CMAKE_FLAGS="-DUSE_EXTERNAL_EXR=ON \
@@ -45,7 +43,6 @@ prepare() {
   grep -q avx /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_AVX=ON"
   grep -q avx2 /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_AVX2=ON"
   grep -q sse4_2 /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_SSE42=ON"
-  patch -Np1 -i ../gcc8.patch
   patch -Np1 -i ../dir.patch
 }
 build() {

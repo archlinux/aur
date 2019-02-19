@@ -1,7 +1,7 @@
 pkgbase = appleseed
 	pkgdesc = physically-based global illumination rendering engine primarily designed for animation and visual effects.
-	pkgver = 1.9.0
-	pkgrel = 3
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = http://appleseedhq.net
 	arch = x86_64
 	license = MIT
@@ -18,11 +18,9 @@ pkgbase = appleseed
 	depends = zlib
 	provides = appleseed
 	conflicts = appleseed-git
-	source = https://github.com/appleseedhq/appleseed/archive/1.9.0-beta.tar.gz
-	source = gcc8.patch
+	source = https://github.com/appleseedhq/appleseed/archive/2.0.0-beta.tar.gz
 	source = dir.patch
-	md5sums = 2843aaf4f4b69088ac6466808b329b27
-	md5sums = 6e6b997cbfe06e0d74cdc3f74de12324
+	md5sums = 25030249df1403daf7b38359b2edf593
 	md5sums = 3da34be53a016d68ff8abfebaed1dd4e
 
 pkgname = appleseed
