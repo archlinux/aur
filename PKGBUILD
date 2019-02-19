@@ -4,7 +4,7 @@
 pkgname=gmusicbrowser-rhfork-git
 pkgver=1.1.15.r66.g1519425
 pkgrel=1
-pkgdesc="An open-source jukebox for large collections of mp3/ogg/flac files, written in perl. RomanHargrave fork."
+pkgdesc="An open-source jukebox for large collections of mp3/ogg/opus/flac files, written in perl. RomanHargrave fork."
 arch=('i686' 'x86_64')
 url="http://gmusicbrowser.org/"
 license=('GPL3')
