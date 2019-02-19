@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 
 pkgname=molotov
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Streaming access to French (only) TV channels."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('p7zip')
 options=('!strip')
 source=("Molotov-${pkgver}.AppImage::http://desktop-auto-upgrade.molotov.tv/linux/${pkgver}/$pkgname.AppImage"
         'molotov')
-sha256sums=('36c3d7466c6fe2ce3b10d4e73091bd1cd9810b0c91331efb4d7ae0427267f9fa'
+sha256sums=('deb2ada28961a1cf7fafe1d33e0b04f22f99cd301ae5296e603df88dc91ff62d'
             '3a2d0c45ec2a964b229ee44a729d5d86319d573296ca44c8a33e171ce23a3b47')
 
 prepare() {
@@ -23,9 +23,8 @@ prepare() {
 
 build() {
     cd $srcdir
-    sed -i "s/Exec=AppRun/Exec=$pkgname/" squashfs-root/molotov.desktop
-    sed -i "s/Categories=AudioVideo/Categories=Video;Player;AudioVideo;/" squashfs-root/molotov.desktop
-
+    sed -i "s/^Exec=AppRun$/Exec=$pkgname/" squashfs-root/molotov.desktop
+    sed -i "s/^Categories=AudioVideo/Categories=Video;Player;AudioVideo/" squashfs-root/molotov.desktop
     sed -i "s/MOLOTOV_VERSION/${pkgver}/g" molotov
 }
 
@@ -37,10 +36,11 @@ package() {
     # TODO find a decent license
     #install -d -m755 $pkgdir/usr/share/licenses/$pkgname
 
-    # Only one icon left :/
-    install -d -m755 $pkgdir/usr/share/icons/hicolor/256x256/apps
-    icon_dir=squashfs-root/usr/share/icons/hicolor/0x0
-    install -D -m644 $icon_dir/apps/molotov.png $pkgdir/usr/share/icons/hicolor/256x256/apps/molotov.png
+    hicolor="squashfs-root/usr/share/icons/hicolor"
+    for size in $(ls -1 $hicolor); do
+        install -d -m755 $pkgdir/usr/share/icons/hicolor/$size/apps
+        install -D -m644 $hicolor/$size/apps/molotov.png $pkgdir/usr/share/icons/hicolor/$size/apps/molotov.png
+    done
 
     install -D -m644 squashfs-root/molotov.desktop $pkgdir/usr/share/applications/appimagekit-molotov.desktop
     install -D -m755 molotov $pkgdir/usr/bin/molotov
