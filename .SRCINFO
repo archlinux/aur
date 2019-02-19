@@ -1,0 +1,13 @@
+pkgbase = fltrdr
+	pkgdesc = A TUI text reader for the terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/octobanana/fltrdr
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	source = fltrdr-0.1.0.tar.gz::https://github.com/octobanana/fltrdr/archive/0.1.0.tar.gz
+	sha256sums = b29011f687a141cae482983a4f9230861731fed035298e967c004398fa770505
+
+pkgname = fltrdr
+
