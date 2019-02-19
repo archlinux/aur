@@ -4,7 +4,7 @@ _pkgsrcname=cider
 _pkgmaintainer=clojure-emacs
 _pkgdestdirname=cider
 _versionprefix=v
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="The Clojure Interactive Development Environment that Rocks for Emacs"
 pkgname=emacs-${_pkgdestdirname}
@@ -13,7 +13,7 @@ url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('GPL3')
 depends=('emacs' 'emacs-clojure-mode' 'emacs-pkg-info' 'emacs-queue' 'emacs-spinner' 'emacs-sesman' 'emacs-seq')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('02c244c20d37f1ac6326a1e0e61f2ef4ae0fdf038d75caaa8e21b2428f4c0781')
+sha256sums=('9337d141972e494d5057e848caa899906b9fa09f302fab0dc5f9e13f731272c3')
 install=${pkgname}.install
 
 build() {
