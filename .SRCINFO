@@ -21,7 +21,7 @@ pkgbase = whipper-git
 	depends = sox
 	provides = whipper
 	conflicts = whipper
-	source = git+https://github.com/whipper-team/whipper.git
+	source = git+https://github.com/whipper-team/whipper.git#branch=develop
 	md5sums = SKIP
 
 pkgname = whipper-git

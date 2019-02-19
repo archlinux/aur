@@ -36,7 +36,7 @@ checkdepends=(
     )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+${url}.git")
+source=("git+${url}.git#branch=develop")
 md5sums=('SKIP')
 
 pkgver() {
