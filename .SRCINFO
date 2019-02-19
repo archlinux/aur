@@ -1,6 +1,6 @@
 pkgbase = pac4cli-git
 	pkgdesc = Proxy-auto-discovery for command line applications
-	pkgver = 0.2.38.g38c80d2
+	pkgver = v0.2.40.gc7a0623
 	pkgrel = 3
 	url = https://github.com/tkluck/pac4cli
 	install = pac4cli.install
@@ -29,10 +29,12 @@ pkgbase = pac4cli-git
 	source = https://github.com/pacparser/pacparser/archive/1.3.7.tar.gz
 	source = https://pypi.io/packages/source/t/txdbus/txdbus-1.1.0.tar.gz
 	source = https://files.pythonhosted.org/packages/source/s/service_identity/service_identity-17.0.0.tar.gz
+	source = https://github.com/barseghyanartur/tld/archive/0.9.2.tar.gz
 	md5sums = SKIP
 	md5sums = 6ea7f2bf2e93eb7e8e58f75b77885c22
 	md5sums = f17c9204c7f56365c297ba68e6840900
 	md5sums = f509cb41ca2f8420bd8496291136d6cc
+	md5sums = SKIP
 
 pkgname = pac4cli-git
 
