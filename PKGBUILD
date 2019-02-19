@@ -1,6 +1,6 @@
-# Maintainer: Konstantin Gizdov < arch at kge dot pw >
+# Maintainer: Gautham Velchuru <gvelchuru@gmail.com>
 pkgname=vale
-pkgver=1.2.6
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A customizable, syntax-aware linter for prose."
 arch=('i686' 'x86_64')
