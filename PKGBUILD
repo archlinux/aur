@@ -12,17 +12,17 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/isacikgoz/$pkgname/archive/
 md5sums=('b4e920f4a3c75e3ee7772ce5c55426c2')
 
 prepare() {
-	export GOPATH="${srcdir}/go"
-	mkdir -p "${GOPATH}/src"
+	export GOPATH="$srcdir/go"
+	mkdir -p "$GOPATH/src"
 
-	if [[ ! -e "${GOPATH}/src/${pkgname}-${pkgver}" ]]; then
-		ln -s "${srcdir}/${pkgname}-${pkgver}" "${GOPATH}/src/${pkgname}-${pkgver}"
+	if [[ ! -e "$GOPATH/src/$pkgname-$pkgver" ]]; then
+		ln -s "$srcdir/$pkgname-$pkgver" "$GOPATH/src/$pkgname-$pkgver"
 	fi
 }
 
 build() {
 	export GOPATH="$srcdir/go"
-	cd "${GOPATH}/src/$pkgname-$pkgver"
+	cd "$GOPATH/src/$pkgname-$pkgver"
 	go get
 	go build
 }
