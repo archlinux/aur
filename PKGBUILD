@@ -1,47 +1,28 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
-pkgbase=python-nose-exclude
-pkgname=("python-nose-exclude" "python2-nose-exclude")
+pkgname=python-nose-exclude
 pkgver=0.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Exclude specific directories from nosetests runs"
 arch=('any')
 url="https://github.com/kgrandis/nose-exclude"
 license=('LGPL')
-makedepends=('python-setuptools' 'python2-setuptools' 'python-nose' 'python2-nose' 'git')
-source=("git+https://github.com/kgrandis/nose-exclude.git#tag=$pkgver")
-sha512sums=('SKIP')
-
-prepare() {
-  cp -a nose-exclude{,-py2}
-}
+depends=('python-nose')
+makedepends=('python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/kgrandis/nose-exclude/archive/$pkgver.tar.gz")
+sha512sums=('0d8a21687831c825524c0cbb2da5b2195482558e2d2b0088944ccdf2d74787353f350ebbece8c4ce80f576426767ecb670afccbaf9f850e8476e1d2260bcc381')
 
 build() {
-  cd "$srcdir"/nose-exclude
+  cd nose-exclude-$pkgver
   python setup.py build
-
-  cd "$srcdir"/nose-exclude-py2
-  python2 setup.py build
 }
 
 check() {
-  cd "$srcdir"/nose-exclude
+  cd nose-exclude-$pkgver
   python setup.py test
-
-  cd "$srcdir"/nose-exclude-py2
-  python2 setup.py test
 }
 
-package_python-nose-exclude() {
-  depends=('python-nose')
-
-  cd nose-exclude
+package() {
+  cd nose-exclude-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
-}
-
-package_python2-nose-exclude() {
-  depends=('python2-nose')
-
-  cd nose-exclude-py2
-  python2 setup.py install --root="$pkgdir" --optimize=1
 }
