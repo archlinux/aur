@@ -1,0 +1,12 @@
+post_install() {
+echo '>>> НЕ гарантируется работа на i686!'
+echo '>>> В случае проблем просьба откатится на предыдущую версию для этого делаем:'
+echo '>>> git clone https://aur.archlinux.org/rto-proxy-bin.git'
+echo '>>> cd rto-proxy-bin'
+echo '>>> git checout a0ec866bb09448e97ec8f9d45f6c1b272748b905'
+echo '>>> #makepkg -si'
+}
+
+post_upgrade() {
+  post_install
+}
