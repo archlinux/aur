@@ -1,13 +1,13 @@
 pkgbase = modpoll-bin
 	pkgdesc = A command line based Modbus master simulator and test utility.
-	pkgver = 3.4
+	pkgver = 3.6
 	pkgrel = 1
 	url = https://www.modbusdriver.com/modpoll.html
 	arch = x86_64
 	license = custom
 	provides = modpoll
-	source = https://www.modbusdriver.com/downloads/modpoll.3.4.zip
-	sha256sums = 9150318a70d90510f87f53a338dc814af401e27e97c9617d22d024c668c88822
+	source = https://www.modbusdriver.com/downloads/modpoll.3.6.tgz
+	sha256sums = 9742d87f30a7ab59a391b9afd15d3257efcf6118679bd15bbeee2ecf8d6bb642
 
 pkgname = modpoll-bin
 
