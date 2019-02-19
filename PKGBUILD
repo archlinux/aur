@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Rouleau <jonathan@rouleau.io>
 
 pkgname=cmdline
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="Generates a kernel cmdline string from /etc/cmdline and /etc/cmdline.d/"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/jrouleau/cmdline"
 license=('MIT')
 depends=('bash' 'coreutils' 'sed')
 source=("https://github.com/jrouleau/cmdline/archive/v${pkgver}.tar.gz")
-sha256sums=('8e0268a6896c766a66a840bc16a1c18a26cb3cdc8bc27b552daa1ec59dade827')
+sha256sums=('e8982ff7fbc3ff56d84a8649b8ca6e36c4e03dad307b1b4bdecfb6f7bf2586b2')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/"
