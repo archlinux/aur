@@ -25,6 +25,7 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   make PREFIX="/usr"
+  make update-assets
 }
 
 package() {
