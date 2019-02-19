@@ -2,14 +2,14 @@
 
 pkgname=keepass-plugin-hibpofflinecheck
 _pluginname=HIBPOfflineCheck
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Keepass plugin that performs offline checks against the haveibeenpwned passwords file"
 depends=('keepass')
 arch=('any')
 url="https://github.com/mihaifm/HIBPOfflineCheck"
 source=("${_pluginname}-${pkgver}.tar.gz::https://github.com/mihaifm/${_pluginname}/archive/${pkgver}.tar.gz")
-sha256sums=('d2d6c096a41be685717768d84e1232f80a0cc2f0207d023f851145fbbd796e94')
+sha256sums=('08d4f82c4445affcdfd935870f56756e6fe02fb5d609ef25882ec65ce12dc567')
 
 prepare() {
   cd "${srcdir}/${_pluginname}-${pkgver}"
