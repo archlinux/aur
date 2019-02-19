@@ -14,6 +14,7 @@ pkgbase = vokoscreen
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
 	depends = pulseaudio
+	depends = zbar
 	optdepends = gst-plugins-ugly: for x264 video codec
 	source = vokoscreen-2.9.5-beta.tar.gz::https://github.com/vkohaupt/vokoscreenNG/archive/2.9.5-beta.tar.gz
 	source = install.pri

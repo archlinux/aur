@@ -1,10 +1,11 @@
-# Maintainer: Alfredo Ramos <alfredo dot ramos at yandex dot com>
+# Maintainer: Ivan Fonseca <ivanfon@riseup.net>
+# Contributor: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 # Contributor: Giacomo <giacomogiorgianni at gmail dot com>
 
 pkgname=vokoscreen
 _pkgver=2.9.5-beta
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy to use screencast creator'
 arch=('i686' 'x86_64')
 url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
@@ -13,6 +14,7 @@ license=('GPL2')
 depends=(
 	'qt5-x11extras' 'qt5-multimedia' 'qt-gstreamer'
 	'gst-plugins-good' 'gst-plugins-bad' 'pulseaudio'
+        'zbar'
 )
 makedepends=('qt5-tools' 'libxrandr')
 optdepends=('gst-plugins-ugly: for x264 video codec')
