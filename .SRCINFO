@@ -1,6 +1,6 @@
 pkgbase = postgresql-94-upgrade
 	pkgdesc = PostgreSQL build for migrating between major versions with pg_upgrade
-	pkgver = 9.4.20
+	pkgver = 9.4.21
 	pkgrel = 1
 	url = http://www.postgresql.org/
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = postgresql-94-upgrade
 	provides = postgresql-94-upgrade=9.4
 	conflicts = postgresql-old-upgrade
 	conflicts = postgresql-lts-old-upgrade
-	source = http://ftp.postgresql.org/pub/source/v9.4.20/postgresql-9.4.20.tar.bz2
-	sha256sums = eeb1d8ddb2854c9e4d8b5cbd65665260c0ae8cbcb911003f24c2d82ccb97f87f
+	source = http://ftp.postgresql.org/pub/source/v9.4.21/postgresql-9.4.21.tar.bz2
+	sha256sums = 0049b4d239a00654e792997aff32a0be7a6bdd922b5ca97f1a06797cd4d06006
 
 pkgname = postgresql-94-upgrade
 
