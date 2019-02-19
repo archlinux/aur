@@ -10,7 +10,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-fa-patched
 pkgver=20190219
-pkgrel=1
+pkgrel=2
 pkgdesc='A unicode enabled rxvt-clone terminal emulator (urxvt) - Patched to enable FontAwesome support + wcwidth'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -25,7 +25,7 @@ source=('urxvt.desktop'
         'urxvt-tabbed.desktop'
         'FontAwesome.patch'
         'line-spacing-fix.patch'
-	'wcwidthcallback.patch')
+        'wcwidthcallback.patch')
 sha1sums=('b5a4507f85ebb7bac589db2e07d9bc40106720d9'
           '62c4ffecfce6967def394dd4d418b68652372ea2'
           'cd204d608d114d39c80331efe0af0231ad6b7e18'
