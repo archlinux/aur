@@ -7,7 +7,7 @@ pkgbase = python-apprise
 	license = GPL3
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://github.com/caronc/apprise/archive/v0.7.3.tar.gz
+	source = python-apprise-0.7.3.tar.gz::https://github.com/caronc/apprise/archive/v0.7.3.tar.gz
 	sha256sums = 6d3bc2b571dfa85c3d9cf3001bf1edfeda0b0f708ddcb57b539e017f49cb9e83
 
 pkgname = python-apprise

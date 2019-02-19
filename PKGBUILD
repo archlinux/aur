@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/caronc/apprise"
 license=('GPL3')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://github.com/caronc/apprise/archive/v$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/caronc/apprise/archive/v${pkgver}.tar.gz")
 sha256sums=('6d3bc2b571dfa85c3d9cf3001bf1edfeda0b0f708ddcb57b539e017f49cb9e83')
 
 prepare() {
