@@ -1,19 +1,18 @@
 pkgbase = jupyter_nbextensions_configurator
 	pkgdesc = Jupyter serverextension providing configuration interfaces for nbextensions
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/jupyter-contrib/jupyter_nbextensions_configurator
 	arch = any
 	license = BSD
-	makedepends = python-pip
 	depends = python
 	depends = jupyter
 	depends = jupyter-notebook
 	depends = jupyter-nbconvert
 	depends = python-tornado
 	depends = python-yaml
-	source = https://files.pythonhosted.org/packages/py2.py3/j/jupyter_nbextensions_configurator/jupyter_nbextensions_configurator-0.4.0-py2.py3-none-any.whl
-	sha256sums = e2cea15dde24c9090104cf3ebedd6bcd354004cbea5e858b3776372ad50b7d46
+	source = https://files.pythonhosted.org/packages/source/j/jupyter_nbextensions_configurator/jupyter_nbextensions_configurator-0.4.1.tar.gz
+	sha256sums = e5e86b5d9d898e1ffb30ebb08e4ad8696999f798fef3ff3262d7b999076e4e83
 
 pkgname = jupyter_nbextensions_configurator
 
