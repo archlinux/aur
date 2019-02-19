@@ -1,6 +1,6 @@
 # Maintainer: Jonathan la Cour <jon@lacour.me>
 pkgname=git-secrets
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Prevents you from committing secrets and credentials into git repositories"
 arch=('any')
