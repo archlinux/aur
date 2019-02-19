@@ -2,7 +2,7 @@
 
 _realname=CPU-X
 pkgname=cpu-x-git
-pkgver=3.2.4.r0.g66f6ce0
+pkgver=3.2.4.r55.g2c44e34
 pkgrel=1
 pkgdesc="A Free software that gathers information on CPU, motherboard and more"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ prepare() {
 build() {
 	cd "$_realname/build"
 	msg2 "Run 'cmake'..."
-	cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/usr ..
+	cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/cpu-x ..
 
 	msg2 "Run 'make'..."
 	make
