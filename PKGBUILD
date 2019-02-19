@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-mpfr'
-pkgver='4.06'
+pkgver='4.09'
 pkgrel='1'
 pkgdesc="Math::MPFR - perl interface to the MPFR (floating point) library."
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('perl' 'gmp>=6.1.1' 'mpfr>=3.1.4.p1')
 makedepends=('perl' 'gmp>=6.1.1' 'mpfr>=3.1.4.p1')
 url='https://metacpan.org/release/Math-MPFR'
 source=("https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-MPFR-$pkgver.tar.gz")
-md5sums=('ee9d8fae16c484f4802002db79fcde6a')
-sha512sums=('b1e55e462fc75e2998c010f1f11a400afb1edcc9983e1ec9803b8792e29e6155508a0595ed696dd383cec8d1bf2c3dc20947fa8de2f23f005f42d9f2c49f7b36')
+md5sums=('0f8153cb9f342bc368ed7373528f1c4d')
+sha512sums=('311b76bca1d95fc76b7e3d33f050a1ec010bc2af8942103f595e916fe3037bb58729d1418da3f238dfa1f5b9c44bc72710d60904cdd90192fa4b87be28915e02')
 _distdir="Math-MPFR-$pkgver"
 
 build() {
@@ -39,12 +39,5 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
