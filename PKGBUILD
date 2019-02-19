@@ -1,8 +1,8 @@
 # Maintainer: Manan Singh <mananapr@gmail.com>
 
 pkgname=pxlart
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="A ncurses pixer art creator written in C"
 arch=('any')
 url="https://github.com/mananapr/pxlart/"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('ncurses')
 makedepends=('gcc' 'make')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mananapr/pxlart/archive/v${pkgver}.tar.gz")
-sha256sums=('e9ae056758f929184384e1ba0c6223c23e4037468bc6b58d37b15f77cd97b074')
+sha256sums=('76072d0724dbb4351cb4be1e1d92d87c79d51696e10871da275faa09c7175a4f')
 
 build(){
   cd "pxlart-${pkgver}"
