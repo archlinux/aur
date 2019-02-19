@@ -1,0 +1,15 @@
+--- ankama-launcher.desktop	2019-02-19 09:17:19.000000000 +0100
++++ ankama-launcher.desktop	2019-02-19 11:26:53.684331614 +0100
+@@ -1,10 +1,10 @@
+ [Desktop Entry]
+ Name=Ankama Launcher
+ Comment=Ankama portal and game launcher
+-Exec=AppRun
++Exec=/opt/appimages/ankama-launcher.AppImage
+ Terminal=false
+ Type=Application
+-Icon=zaap
++Icon=ankama-launcher
+ StartupWMClass=Ankama Launcher
+ X-AppImage-Version=2.8.20
+ Categories=Game;
