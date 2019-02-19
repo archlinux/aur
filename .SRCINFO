@@ -1,12 +1,13 @@
 pkgbase = godownloader-git
 	pkgdesc = Download Go binaries as fast and easily as possible.
 	pkgver = r265.de35133
-	pkgrel = 1
+	pkgrel = 2
 	url = https://install.goreleaser.com/
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = git
+	makedepends = go
 	provides = godownloader
 	conflicts = godownloader
 	conflicts = godownloader-git

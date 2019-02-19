@@ -3,7 +3,7 @@
 pkgname='godownloader-git'
 _pkgname="${pkgname%-git}"
 pkgver=r265.de35133
-pkgrel=1
+pkgrel=2
 pkgdesc='Download Go binaries as fast and easily as possible.'
 url='https://install.goreleaser.com/'
 arch=('x86_64' 'i686')
@@ -16,8 +16,8 @@ _goreleaserpath=github.com/goreleaser
 _godownloaderpath="${_goreleaserpath}/godownloader"
 
 depends=()
-makedepends=('git')
-# makedepends=('git' 'go')
+# makedepends=('git')
+makedepends=('git' 'go')
 
 source=("git+${_url}.git")
 sha512sums=('SKIP')
