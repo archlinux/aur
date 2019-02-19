@@ -18,7 +18,7 @@ sha256sums=('c695b21327510840b37fe474dde698628a1215b5b7e66591d2393c628f528302')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr"
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" .
   make ${_name}_apidoc
 }
 
