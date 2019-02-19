@@ -8,20 +8,20 @@
 _localepurge=
 
 pkgname=sigil-git
-pkgver=0.9.10.r40.g95c7c4de
-pkgrel=2
+pkgver=0.9.12.r1.g01362557
+pkgrel=1
 pkgdesc="A WYSIWYG ebook editor"
 arch=('i686' 'x86_64')
 url="https://github.com/Sigil-Ebook/Sigil"
 license=('GPL3')
-depends=('qt5-webkit' 'hunspell' 'minizip' 'python-lxml' 'python-six')
+depends=('hunspell' 'minizip' 'python-css-parser' 'python-lxml' 'python-six'
+         'qt5-webkit' 'qt5-xmlpatterns')
 makedepends=('git' 'qt5-tools' 'qt5-svg' 'cmake')
 optdepends=('hunspell-en: for English dictionary support'
             'hyphen-en: for English hyphenation support in plugins'
             'python-html5lib: recommended for plugins'
             'python-chardet: recommended for plugins'
             'python-cssselect: recommended for plugins'
-            'python-cssutils: recommended for plugins'
             'python-pillow: recommended for plugins'
             'python-regex: recommended for plugins'
             'python-pyqt5: recommended for plugins'
@@ -33,6 +33,10 @@ sha256sums=('SKIP')
 
 prepare() {
     cd "${srcdir}/${pkgname%-git}"
+
+    # devendor css_parser as it's a direct copy of the external package;
+    # upstream maintains both and plans to switch soon
+    rm -r src/Resource_Files/plugin_launchers/python/css_parser/
 
     if [[ "${_localepurge}" != "" ]]; then
         for trans in src/Resource_Files/ts/*; do
