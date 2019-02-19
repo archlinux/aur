@@ -3,10 +3,10 @@
 _pkgname=pyroute2
 pkgname=python2-${_pkgname}
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A pure Python netlink and Linux network configuration library. (Python2 version)"
 arch=(any)
-url="http://docs.pyroute2.org/"
+url="https://docs.pyroute2.org/"
 license=('GPL2')
 depends=('python2')
 makedepends=('python2-setuptools')
