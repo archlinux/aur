@@ -1,7 +1,7 @@
 # Maintainer: Tharre <tharre3@gmail.com>
 
 pkgname=grokmirror
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Framework to smartly mirror git repositories'
 url='https://git.kernel.org/pub/scm/utils/grokmirror/grokmirror.git'
