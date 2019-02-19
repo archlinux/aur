@@ -1,7 +1,7 @@
 pkgbase = calculix
 	pkgdesc = CalculiX: 3D finite element solver and post-processor (executables)
 	pkgver = 2.15
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.calculix.de/
 	arch = i686
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = calculix
 	source = calculix_2.15_archlinux.patch
 	sha256sums = bc7dba721935af51b60c1b5aa1529a420476fc6432a7bec5254f8dfabaeb8a34
 	sha256sums = ee17e477aeae944c35853a663ac245c33b405c3750308c5d77e5ee9a4e609dd5
-	sha256sums = ce589e777249181e3c15bba6a42ec22ca305ef4e1cfba478d86ae6c775f1712b
+	sha256sums = 86f65e111811939e0dff9cdc2b17d0d1720e34100ae099845f0deaf4761fcb98
 	sha256sums = 7cd1b478aab2886b2a2eb590a165f25d6ddade1076ebbe0d3d5f8c4acc120a22
 
 pkgname = calculix
