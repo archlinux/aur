@@ -9,10 +9,10 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgbase=systemd-selinux
-pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
+pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
 # Can be from either systemd or systemd-stable
-_commit='0430af90ef28a229e51136ad364e1da7e76c8638'
-pkgver=240.95
+_commit='e62a7fea757f259eb330da5b6d3ab4ede46400a2'
+pkgver=241.0
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -78,8 +78,6 @@ sha512sums=('SKIP'
             '209b01b044877cc986757fa4009a92ea98f480306c2530075d153203c3cd2b3afccab6aacc1453dee8857991e04270572f1700310705d7a0f4d5bed27fab8c67')
 
 _backports=(
-  # https://github.com/systemd/systemd/issues/11259
-  '8ca9e92c742602b8bcd431001e6f5b78c28c184f'
 )
 
 _reverts=(
@@ -132,6 +130,8 @@ build() {
   )
 
   local _meson_options=(
+    -Dversion-tag="${pkgver}-${pkgrel}-arch"
+
     -Daudit=true
     -Dgnu-efi=true
     -Dima=false
@@ -177,7 +177,7 @@ package_systemd-selinux() {
   pkgdesc='system and service manager with SELinux support'
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' 'libsystemd-selinux' 'libidn2' 'libidn2.so' 'lz4' 'pam-selinux' 'libelf'
+           'libgcrypt' 'systemd-libs-selinux' 'libidn2' 'libidn2.so' 'lz4' 'pam-selinux' 'libelf'
            'libseccomp' 'util-linux-selinux' 'xz' 'pcre2' 'audit')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
@@ -210,9 +210,9 @@ package_systemd-selinux() {
   # we'll create this on installation
   rmdir "$pkgdir"/var/log/journal/remote
 
-  # runtime libraries shipped with libsystemd
-  install -d -m0755 libsystemd
-  mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* libsystemd
+  # runtime libraries shipped with systemd-libs
+  install -d -m0755 systemd-libs
+  mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* systemd-libs
 
   # manpages shipped with systemd-sysvcompat
   rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8
@@ -260,16 +260,18 @@ package_systemd-selinux() {
   install -D -m0644 systemd-user.pam "$pkgdir"/etc/pam.d/systemd-user
 }
 
-package_libsystemd-selinux() {
+package_systemd-libs-selinux() {
   pkgdesc='systemd client libraries with SELinux support'
   depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz' 'libselinux')
   license=('LGPL2.1')
-  provides=('libsystemd.so' 'libudev.so'
+  provides=('libsystemd' 'libsystemd.so' 'libudev.so'
+            'libsystemd-selinux'
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=("${pkgname/-selinux}")
+  replaces=('libsystemd-selinux')
 
   install -d -m0755 "$pkgdir"/usr
-  mv libsystemd "$pkgdir"/usr/lib
+  mv systemd-libs "$pkgdir"/usr/lib
 }
 
 package_systemd-resolvconf-selinux() {

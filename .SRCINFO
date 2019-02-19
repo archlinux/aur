@@ -1,5 +1,5 @@
 pkgbase = systemd-selinux
-	pkgver = 240.95
+	pkgver = 241.0
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -36,8 +36,8 @@ pkgbase = systemd-selinux
 	makedepends = bash-completion
 	makedepends = libselinux
 	options = strip
-	source = git+https://github.com/systemd/systemd-stable#tag=v240?signed
-	source = git+https://github.com/systemd/systemd#tag=v240?signed
+	source = git+https://github.com/systemd/systemd-stable#tag=v241?signed
+	source = git+https://github.com/systemd/systemd#tag=v241?signed
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
@@ -94,7 +94,7 @@ pkgname = systemd-selinux
 	depends = hwids
 	depends = libcap
 	depends = libgcrypt
-	depends = libsystemd-selinux
+	depends = systemd-libs-selinux
 	depends = libidn2
 	depends = libidn2.so
 	depends = lz4
@@ -111,9 +111,9 @@ pkgname = systemd-selinux
 	optdepends = polkit: allow administration as unprivileged user
 	optdepends = curl: machinectl pull-tar and pull-raw
 	provides = nss-myhostname
-	provides = systemd-tools=240.95
-	provides = udev=240.95
-	provides = systemd=240.95-1
+	provides = systemd-tools=241.0
+	provides = udev=241.0
+	provides = systemd=241.0-1
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -131,7 +131,7 @@ pkgname = systemd-selinux
 	backup = etc/systemd/user.conf
 	backup = etc/udev/udev.conf
 
-pkgname = libsystemd-selinux
+pkgname = systemd-libs-selinux
 	pkgdesc = systemd client libraries with SELinux support
 	license = LGPL2.1
 	depends = glibc
@@ -140,10 +140,13 @@ pkgname = libsystemd-selinux
 	depends = lz4
 	depends = xz
 	depends = libselinux
+	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = libsystemd=240.95-1
-	conflicts = libsystemd
+	provides = libsystemd-selinux
+	provides = systemd-libs=241.0-1
+	conflicts = systemd-libs
+	replaces = libsystemd-selinux
 
 pkgname = systemd-resolvconf-selinux
 	pkgdesc = systemd resolvconf replacement with SELinux support (for use with systemd-resolved)
@@ -151,16 +154,16 @@ pkgname = systemd-resolvconf-selinux
 	depends = systemd-selinux
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=240.95-1
+	provides = systemd-resolvconf=241.0-1
 	conflicts = openresolv
-	conflicts = systemd-resolvconf=240.95-1
+	conflicts = systemd-resolvconf=241.0-1
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=240.95-1
-	provides = selinux-systemd-sysvcompat=240.95-1
+	provides = systemd-sysvcompat=241.0-1
+	provides = selinux-systemd-sysvcompat=241.0-1
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
