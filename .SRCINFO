@@ -1,7 +1,7 @@
 pkgbase = python-apprise
 	pkgdesc = Push Notifications that work with just about every platform
 	pkgver = 0.7.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/caronc/apprise
 	arch = any
 	license = GPL3
