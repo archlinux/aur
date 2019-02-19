@@ -1,0 +1,37 @@
+# listen: Addr and port to listen (required)
+#   If it has "SERVER_STARTER:" prefix, fd passed by https://github.com/lestrrat/go-server-starter will be used
+# e.g.
+#   127.0.0.1:8080
+#   SERVER_STARTER:0.0.0.0:8080
+#   SERVER_STARTER:/path/to/socket
+listen: "0.0.0.0:9099"
+
+# enable TLS (optional)
+#tls:
+#  certfile: "/path/to/cert.crt"
+#  keyfile: "/path/to/keyfile.key"
+
+## access_log (optional)
+#access_log:
+#  format: "ltsv"
+#  path: "./access.log" # optional (default: os.Stdout)
+#  fields: ["time", "time_nsec", "status", "size", "reqtime_nsec", "backend", "path", "query", "method"]
+#
+## error_log (optional)
+#error_log:
+#  path: "./error.log" # default: os.Stderr
+
+# exporters: The path of exporter_proxy and the URL of the destination exporter
+exporters:
+  node_exporter:
+    path: "/node_exporter/metrics"
+    url: "http://127.0.0.1:9100/metrics"
+  #mysqld_exporter:
+  #  path: "/mysqld_exporter/metrics"
+  #  url: "http://127.0.0.1:9104/metrics"
+
+
+# shutdown_timeout: timeout for shutting down HTTP server (optional)
+#   On SIGTERM, exporter_proxy will try to shut down the server gracefully.
+#   If shutdown_timeout is over, the server will be shutted down forcibly.
+shutdown_timeout: 10s

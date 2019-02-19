@@ -1,0 +1,14 @@
+[Unit]
+Description=Prometheus Exporter Proxy
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+Group=nogroup
+Restart=on-failure
+ExecStart=/usr/bin/prometheus-exporter-proxy -config /etc/prometheus-exporter-proxy/config.yml
+
+[Install]
+WantedBy=multi-user.target
+
