@@ -1,18 +1,18 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
 pkgbase="percolator-git"
 pkgname=('percolator-git' 'percolator-converters-git' 'elude-git')
-pkgver=3.02
+pkgver=3.02.01.r8.gf97ae1d
 pkgrel=1
 pkgdesc="Software for postprocessing of shotgun proteomics data + format converters + Elude tool"
 url="http://percolator.ms/"
 license=('Apache')
-depends=('xerces-c' 'sqlite')
+depends=('xerces-c' 'sqlite' 'libtirpc-compat' 'boost')
 arch=('x86_64')
-makedepends=('git' 'xsd' 'cmake' 'boost' 'zlib')
+makedepends=('git' 'xsd' 'cmake' 'zlib')
 source=('source::git+https://github.com/percolator/percolator'
         'percolator.patch')
 md5sums=('SKIP'
-         '4e1432640f09fa3dc2f3d9894ec380f4')
+         '53c592a9db82da8474907a617ea688fb')
 
 pkgver() {
     cd "${srcdir}/source"
@@ -34,19 +34,31 @@ build() {
     echo "------------------------"
     echo "Building percolator ..."
     echo "------------------------"
-    cmake -DTARGET_ARCH=amd64 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DXML_SUPPORT=ON "${srcdir}/source"
+    echo "Running cmake for percolator ..."
+    echo "................................"
+    cmake -DTARGET_ARCH=x86_64 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DXML_SUPPORT=ON "${srcdir}/source"
+    echo "Running make for percolator ..."
+    echo "..............................."
     make
     echo "------------------------"
     echo "Building converters ..."
     echo "------------------------"
     cd "../${pkgname[1]%-git}"
-    cmake -DTARGET_ARCH=amd64 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release "${srcdir}/source/src/converters"
+    echo "Running cmake for percolator-converters ..."
+    echo "..........................................."
+    cmake -DTARGET_ARCH=x86_64 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release "${srcdir}/source/src/converters"
+    echo "Running make for percolator-converters ..."
+    echo ".........................................."
     make
     echo "------------------------"
     echo "Building Elude ..."
     echo "------------------------"
     cd "../${pkgname[2]%-git}"
-    cmake -DTARGET_ARCH=amd64 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release "${srcdir}/source/src/elude_tool"
+    echo "Running cmake for elude ..."
+    echo "..........................."
+    cmake -DTARGET_ARCH=x86_64 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release "${srcdir}/source/src/elude_tool"
+    echo "Running make for elude ..."
+    echo ".........................."
     make
 }
 

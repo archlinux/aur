@@ -11,3 +11,14 @@ index 5b4e084..d11970b 100755
    PATHS
      $ENV{XSDDIR}/bin
      /usr/local/bin
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 09aa167..80f6105 100755
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -161,4 +161,5 @@ ENDIF(CRUX)
+ ###############################################################################
+ 
+ add_subdirectory(qvality)
+-
++include_directories(/usr/include/rpc)
++target_link_libraries(percolator tirpc)
