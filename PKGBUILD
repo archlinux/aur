@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: s3lph <account-arch-aur-gzxkqqna@kernelpanic.lol>
 _name=pdf-diff
 pkgname="${_name}-git"
 pkgver=0.9.0.r55.f3a8e48
