@@ -1,11 +1,11 @@
 # Maintainer: jaelpark@outlook.com
 pkgname=chamfer-git
 _pkgname=chamfer
-pkgver=r146
+pkgver=r160
 pkgrel=1
-pkgdesc="Compositing tiling window manager"
-arch=("i686" "x86_64")
-license=("GPL")
+pkgdesc="A tiling X11 window manager with Vulkan compositor."
+arch=("x86_64")
+license=("BSD")
 depends=(
 	'xcb-util-keysyms' 'xcb-util-wm' 'vulkan-icd-loader' 'glm' 'boost' 'python' 'python-xlib' 'python-psutil'
 )
