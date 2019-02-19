@@ -1,0 +1,66 @@
+.TH pdf-diff 1
+
+.SH NAME
+pdf-diff \- Finds differences between two PDF documents
+
+.SH SYNOPSIS
+.B pdf-diff
+[\fB\-h\fR]
+[\fB\-c\fR]
+[\fB\-s\fR \fIFIRST\fR,\fISECOND\fR]
+[\fB\-f\fR \fIFORMAT\fR]
+[\fB\-t\fR \fIMARGIN\fR]
+[\fB\-b\fR \fIMARGIN\fR]
+[\fB\-r\fR \fIWIDTH\fR]
+.IR file1
+.IR file2
+
+.SH DESCRIPTION
+Finds differences in the text sections of two PDF documents and renders them into an image file,
+which is printed on stdout.
+
+.SH OPTIONS
+.TP
+.BR \-h ", " \-\-help
+Show a help message and exit.
+.TP
+.BR \-c ", " \-\-changes
+Read change description from standard input, ignoring files.
+.TP
+.BR \-s ", " \-\-style =\fIFIRST\fR,\fISECOND\fR
+How to mark the differences in the first and second file. Supported values are:
+\fIbox\fR, \fIstrike\fR, \fIunderline\fR.
+Default is \fIstrike\fR,\fIunderline\fR.
+.TP
+.BR \-f ", " \-\-format =\fIFORMAT\fR
+.Nm
+Output format in which to render. Currently supported:
+\fIpng\fR, \fIgif\fR, \fIjpeg\fR, \fIppm\fR, \fItiff\fR.
+Default is \fIpng\fR.
+.TP
+.BR \-t ", "\-\-top-margin =\fIMARGIN\fR
+top margin (ignored area) end in percent of page height (default: 0.0).
+.TP
+.BR \-b ", " \-\-bottom-margin =\fIMARGIN\fR
+bottom margin (ignored area) begin in percent of page height (default: 100.0).
+.TP
+.BR \-r ", " \-\-result-width =\fIWIDTH\fR
+width of the result image in pixels (default: 900).
+
+.SH EXAMPLE
+.TP
+$ \fBpdf-diff\fR \fB\-s\fR \fIbox\fR,\fIbox\fR \fB\-f\fR \fIpng\fR \fIversion1.pdf\fR \fIversion2.pdf\fR > \fIdiff.png\fR
+Calculates the textual differences between \fIversion1.pdf\fR and \fIversion2.pdf\fR and renders
+the differences in boxes into a PNG image, which is redirected to \fIdiff.png\fR.
+
+.SH BUGS
+Development of
+.B pdf-diff
+happens at https://github.com/JoshData/pdf-diff. Please file upstream bugs there.
+
+.SH SEE ALSO
+.I https://github.com/JoshData/pdf-diff
+
+.SH COPYRIGHT
+.B pdf-diff
+is released under the terms of Creative Commons 0 (CC0) 1.0 Universal.
