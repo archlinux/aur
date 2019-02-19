@@ -1,7 +1,7 @@
 pkgbase = postgresql-9.6
 	pkgdesc = A powerful, open source object-relational database system
-	pkgver = 9.6.11
-	pkgrel = 2
+	pkgver = 9.6.12
+	pkgrel = 1
 	url = http://www.postgresql.org/
 	install = postgresql.install
 	arch = i686
@@ -14,26 +14,28 @@ pkgbase = postgresql-9.6
 	depends = krb5
 	depends = openssl>=1.0.0
 	depends = readline>=6.0
+	depends = pam
+	depends = zlib
 	optdepends = python2: for PL/Python support
 	optdepends = perl: for PL/Perl support
 	optdepends = tcl: for PL/Tcl support
 	optdepends = postgresql-old-upgrade: upgrade from previous major version using pg_upgrade
-	provides = postgresql=9.6.11
-	provides = postgresql-libs=9.6.11
-	provides = postgresql-client=9.6.11
-	provides = postgresql-docs=9.6.11
+	provides = postgresql=9.6.12
+	provides = postgresql-libs=9.6.12
+	provides = postgresql-client=9.6.12
+	provides = postgresql-docs=9.6.12
 	conflicts = postgresql
 	conflicts = postgresql-libs
 	conflicts = postgresql-testing
 	conflicts = postgresql-client
 	conflicts = postgresql-docs
-	source = https://ftp.postgresql.org/pub/source/v9.6.11/postgresql-9.6.11.tar.bz2
+	source = https://ftp.postgresql.org/pub/source/v9.6.12/postgresql-9.6.12.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql.pam
 	source = postgresql.logrotate
 	source = postgresql.service
 	source = postgresql-check-db-dir
-	sha256sums = 38250adc69a1e8613fb926c894cda1d01031391a03648894b9a6e13ff354a530
+	sha256sums = 2e8c8446ba94767bda8a26cf5a2152bf0ae68a86aaebf894132a763084579d84
 	sha256sums = 8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
 	sha256sums = 6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e

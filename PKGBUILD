@@ -6,15 +6,15 @@
 # Contributor: Ariel Popper <a@arielp.com>
 
 pkgname=postgresql-9.6
-pkgver=9.6.11
-pkgrel=2
+pkgver=9.6.12
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.postgresql.org/"
 pkgdesc="A powerful, open source object-relational database system"
 license=('custom:PostgreSQL')
 conflicts=('postgresql' 'postgresql-libs' 'postgresql-testing' 'postgresql-client' 'postgresql-docs')
 provides=("postgresql=$pkgver" "postgresql-libs=$pkgver" "postgresql-client=$pkgver" "postgresql-docs=$pkgver")
-depends=('libxml2' 'krb5' 'openssl>=1.0.0' 'readline>=6.0')
+depends=('libxml2' 'krb5' 'openssl>=1.0.0' 'readline>=6.0' 'pam' 'zlib')
 makedepends=('python2' 'perl' 'tcl>=8.6.0')
 optdepends=('python2: for PL/Python support'
             'perl: for PL/Perl support'
@@ -27,7 +27,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql.logrotate
         postgresql.service
         postgresql-check-db-dir)
-sha256sums=('38250adc69a1e8613fb926c894cda1d01031391a03648894b9a6e13ff354a530'
+sha256sums=('2e8c8446ba94767bda8a26cf5a2152bf0ae68a86aaebf894132a763084579d84'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
