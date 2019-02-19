@@ -1,7 +1,7 @@
 # Maintainer: DDoSolitary <DDoSolitary@gmail.com>
 pkgname=v2ray-plugin
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="Yet another SIP003 plugin for shadowsocks, based on v2ray"
 url="https://github.com/shadowsocks/v2ray-plugin"
 arch=(x86_64)
@@ -28,4 +28,4 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha512sums=(0202bf7c0624ed323fd90647f2e3042528c3ce7b2b100c2f9bfe9a50042569fdb96ceca178473acc39c52a3dc0ff4c067ee567ddfc537877cbb27593bab43611)
+sha512sums=(3b6529fed628370f8db2e9f9016a9e31712c8275f347478a3d6578a00929b7f27000bcfa8e3eea7eba0e00c94b79df0d7fb40d26ab86c90016250a1dedd4d9c6)
