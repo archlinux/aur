@@ -1,12 +1,13 @@
 [Desktop Entry]
-Type=Application
-Version=1.1
 Name=Wire (beta)
-GenericName=Secure messenger
-Comment=Secure messenger for everyone
-Exec=wire-desktop-beta
-Icon=wire-desktop-beta
+Comment=The most secure collaboration platform.
+Exec=wire-desktop-beta %U
 Terminal=false
-Categories=Network;InstantMessaging;Chat;VideoConference
-Keywords=chat;encrypt;e2e;messenger;videocall
+Type=Application
+Icon=wire-desktop-beta
 StartupWMClass=Wire
+Categories=Network;
+GenericName=Secure messenger
+Keywords=chat;encrypt;e2e;messenger;videocall
+MimeType=x-scheme-handler/wire
+Version=1.1
