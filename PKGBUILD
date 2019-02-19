@@ -1,6 +1,7 @@
 # Maintainer therojam <archlinux@therojam.xyz>
 
 pkgname=yubikey-full-disk-encryption-git
+_pkgname=yubikey-full-disk-encryption
 pkgver=r82.a2843e1
 pkgrel=1
 pkgdesc='Use YubiKey to unlock a LUKS partition'
@@ -20,5 +21,5 @@ pkgver() {
 
 package() {
 	  cd "${pkgname}"
-	    make DESTDIR="${pkgdir}" instal
+	    make DESTDIR="${pkgdir}" install
     }
