@@ -1,7 +1,7 @@
 # Maintainer: Xaver Hellauer <software@hellauer.bayern>
 # Contributor: Stephen Lester <stephen@lester.codes>
 pkgname=wire-desktop-bin
-pkgver=3.5.2881
+pkgver=3.6.2885
 pkgrel=1
 pkgdesc='Modern communication, full privacy.'
 arch=('i686' 'x86_64')
