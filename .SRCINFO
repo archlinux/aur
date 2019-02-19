@@ -1,6 +1,6 @@
 pkgbase = wire-desktop-bin
 	pkgdesc = Modern communication, full privacy.
-	pkgver = 3.5.2881
+	pkgver = 3.6.2885
 	pkgrel = 1
 	url = https://wire.com/
 	arch = i686
@@ -14,10 +14,10 @@ pkgbase = wire-desktop-bin
 	depends = nss
 	conflicts = wire-desktop
 	options = !strip
-	source_i686 = https://wire-app.wire.com/linux/debian/pool/main/wire_3.5.2881_i386.deb
-	sha256sums_i686 = 2dd49e94e80f6c58fd615933544b6f6cff6615f7c125a8f68cbafaa89932b268
-	source_x86_64 = https://wire-app.wire.com/linux/debian/pool/main/wire_3.5.2881_amd64.deb
-	sha256sums_x86_64 = 719881099b5384b1c0f493f57fc45494991b3733cbbfe060954768de898e519f
+	source_i686 = https://wire-app.wire.com/linux/debian/pool/main/Wire-3.6.2885_i386.deb
+	sha256sums_i686 = 2851b3c19e94dc276e119bd336fbff453b2088a6507eb28e6c24fd64b67c42d2
+	source_x86_64 = https://wire-app.wire.com/linux/debian/pool/main/Wire-3.6.2885_amd64.deb
+	sha256sums_x86_64 = 3bedda4d8fb640c0f3a0f65a89258dfe788dc0e3d686db7ebe6a6ce4af4388b6
 
 pkgname = wire-desktop-bin
 

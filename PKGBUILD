@@ -9,11 +9,10 @@ url='https://wire.com/'
 license=('GPL3')
 conflicts=('wire-desktop')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
-# https://wire-app.wire.com/linux/debian/pool/main/wire_2.15.2751_amd64.deb
-source_i686=("https://wire-app.wire.com/linux/debian/pool/main/wire_${pkgver}_i386.deb")
-source_x86_64=("https://wire-app.wire.com/linux/debian/pool/main/wire_${pkgver}_amd64.deb")
-sha256sums_i686=('2dd49e94e80f6c58fd615933544b6f6cff6615f7c125a8f68cbafaa89932b268')
-sha256sums_x86_64=('719881099b5384b1c0f493f57fc45494991b3733cbbfe060954768de898e519f')
+source_i686=("https://wire-app.wire.com/linux/debian/pool/main/Wire-${pkgver}_i386.deb")
+source_x86_64=("https://wire-app.wire.com/linux/debian/pool/main/Wire-${pkgver}_amd64.deb")
+sha256sums_i686=('2851b3c19e94dc276e119bd336fbff453b2088a6507eb28e6c24fd64b67c42d2')
+sha256sums_x86_64=('3bedda4d8fb640c0f3a0f65a89258dfe788dc0e3d686db7ebe6a6ce4af4388b6')
 options=(!strip)
 
 package() {
@@ -27,7 +26,7 @@ package() {
   fi
 
   cd "$srcdir"
-  deb_package="wire_${pkgver}_${deb_arch}.deb"
+  deb_package="Wire-${pkgver}_${deb_arch}.deb"
   ar xf "$deb_package"
   tar xf data.tar.xz -C "$pkgdir"
 
