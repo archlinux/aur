@@ -3,7 +3,7 @@
 _gemname=asciidoctor-pdf
 pkgname=asciidoctor-pdf
 pkgver=1.5.0.alpha.16
-pkgrel=1
+pkgrel=2
 pkgdesc='translate asciidoctor directly to pdf'
 arch=(any)
 url='https://asciidoctor.org/'
