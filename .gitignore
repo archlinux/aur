@@ -1,0 +1,9 @@
+pkg/
+src/
+*.deb
+*.pkg.tar*
+*.log
+*.sig
+spotify-Release
+spotify-x86_64-Packages
+*.gnupg/*
