@@ -1,5 +1,5 @@
 pkgname=paper-icon-theme-git
-pkgver=800.7860fba8
+pkgver=805.8c7bf8d2
 pkgrel=1
 pkgdesc="Paper is an icon theme for GTK based desktops and fits perfectly the paper-gtk-theme"
 arch=(any)
@@ -16,17 +16,12 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-prepare() {
+build() {
     cd "${pkgname}"
     meson build --prefix=/usr
 }
 
-build() {
-    cd "${pkgname}/build"
-    ninja
-}
-
 package() {
-    cd "${pkgname}/build"
-    DESTDIR="$pkgdir" ninja install
+    cd "${pkgname}"
+    DESTDIR="$pkgdir" ninja -C "build" install
 }
