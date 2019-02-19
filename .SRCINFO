@@ -1,5 +1,5 @@
 pkgbase = hmcl-git
-	pkgdesc = A powered Minecraft launcher that supports a lot of features.
+	pkgdesc = A Minecraft Launcher which is multi-functional, cross-platform and popular
 	pkgver = 3.0
 	pkgrel = 1
 	url = https://github.com/huanghongxun/HMCL
