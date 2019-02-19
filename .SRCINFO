@@ -1,0 +1,16 @@
+pkgbase = termpub
+	pkgdesc = Epubreader for the terminal
+	pkgver = 1.03
+	pkgrel = 1
+	url = https://github.com/mdom/termpub
+	arch = x86_64
+	license = GPL
+	depends = perl
+	depends = perl-mojolicious
+	depends = perl-curses
+	depends = perl-archive-zip
+	source = https://github.com/mdom/termpub/archive/v1.03.tar.gz
+	md5sums = e766ddd1c3993e6dc850e56d695c2505
+
+pkgname = termpub
+
