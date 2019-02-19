@@ -9,7 +9,7 @@ license=('custom:boost')
 depends=('boost>=1.54' 'zeromq>=4.0')
 makedepends=('git' 'cmake>=2.8' 'boost>=1.54' 'zeromq>=4.0')
 
-_gitroot='git@github.com:zeromq/azmq.git'
+_gitroot='https://github.com/zeromq/azmq.git'
 _gitname=master
 
 prepare() {
