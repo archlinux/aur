@@ -5,34 +5,31 @@
 pkgname=emulationstation-git
 _gitname=EmulationStation
 pkgrel=1
-pkgver=1034.99c1ddb
+epoch=1
+pkgver=2.4.1.r392.gb7bec0eb
 pkgdesc="A graphical front-end for emulators with controller navigation. Developed for the Raspbery Pi, but runs on most Linux systems."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/RetroPie/EmulationStation"
 license=('MIT')
-makedepends=('git' 'boost' 'freetype2' 'eigen' 'cmake' 'mesa' 'libsm')
-depends=('alsa-lib' 'sdl2' 'boost-libs' 'freeimage' 'ttf-dejavu' 'glu' 'vlc')
+makedepends=('git' 'boost' 'freetype2' 'eigen' 'cmake' 'mesa' 'libsm' 'rapidjson')
+depends=('alsa-lib' 'sdl2' 'boost-libs' 'freeimage' 'ttf-dejavu' 'glu' 'vlc' 'libcec')
 if [ "$CARCH" = "armv6h" ]; then
 depends+=('raspberrypi-firmware')
 else
 depends+=('libgl')
 fi
-source=('git://github.com/RetroPie/EmulationStation.git'
-        'git://github.com/zeux/pugixml.git')
-md5sums=('SKIP'
-         'SKIP')
+source=('git://github.com/RetroPie/EmulationStation.git')
+md5sums=('SKIP')
 provides=('emulationstation')
 
 pkgver() {
   cd $srcdir/$_gitname
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"  
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
 	cd "$srcdir/$_gitname"
-	git submodule init
-	git config submodule.external/pugixml.url $srcdir/pugixml
-	git submodule update
+	git submodule update --init
 }
 
 build() {
