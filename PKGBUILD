@@ -1,11 +1,12 @@
-# Maintainer: Alex Whitt <alex.joseph.whitt@gmail.com>
+# Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 _pkgsrcname=cider
 _pkgmaintainer=clojure-emacs
 _pkgdestdirname=cider
 _versionprefix=v
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Clojure Interactive Development Environment that Rocks for Emacs"
 pkgname=emacs-${_pkgdestdirname}
 arch=('any')
@@ -17,12 +18,12 @@ sha256sums=('9337d141972e494d5057e848caa899906b9fa09f302fab0dc5f9e13f731272c3')
 install=${pkgname}.install
 
 build() {
-  cd "${srcdir}/${_pkgsrcname}-${pkgver}"
+  cd ${_pkgsrcname}-${pkgver}
   emacs -q --no-splash -batch -L . -f batch-byte-compile *.el
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrcname}-${pkgver}"
-  mkdir -p "${pkgdir}/usr/share/emacs/site-lisp/${_pkgdestdirname}/"
-  install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/${_pkgdestdirname}/"
+  cd ${_pkgsrcname}-${pkgver}
+  install -d "$pkgdir"/usr/share/emacs/site-lisp/
+  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp
 }

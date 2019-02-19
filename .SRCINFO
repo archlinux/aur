@@ -1,7 +1,7 @@
 pkgbase = emacs-cider
 	pkgdesc = The Clojure Interactive Development Environment that Rocks for Emacs
 	pkgver = 0.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clojure-emacs/cider
 	install = emacs-cider.install
 	arch = any
