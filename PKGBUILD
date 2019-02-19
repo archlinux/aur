@@ -2,13 +2,13 @@
 pkgname=nemo-deja-dup-git
 _gitname=nemo-actions
 pkgver=r2.f99427f
-pkgrel=3
+pkgrel=4
 pkgdesc="Déjà Dup Actions for Nemo File Manager"
 arch=('any')
-url="https://github.com/erickj/nemo-actions"
+url="https://github.com/erickj/$_gitname"
 license=('GPL')
-optdepends=('nemo' 'deja-dup')
-source=('git+https://github.com/erickj/nemo-actions.git')
+depends=('nemo' 'deja-dup')
+source=("git+https://github.com/erickj/$_gitname.git")
 md5sums=('SKIP')
 
 pkgver() {
