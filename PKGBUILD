@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rng-tools-git
-pkgver=6.3.1.r21.g4023c8f
-pkgrel=2
+pkgver=6.7.r0.g7435d12
+pkgrel=1
 pkgdesc="Random number generator daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/nhorman/rng-tools"
 license=('GPL3')
-depends=('glibc' 'libgcrypt' 'curl' 'libxml2' 'sysfsutils')
+depends=('glibc' 'libgcrypt' 'curl' 'jitterentropy' 'libp11' 'libxml2' 'sysfsutils')
 makedepends=('git')
 provides=('rng-tools')
 conflicts=('rng-tools')
