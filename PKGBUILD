@@ -8,7 +8,7 @@ url="https://github.com/errata-ai/vale"
 license=('MIT')
 makedepends=('go-pie' 'go-bindata')
 source=("${url}/archive/v${pkgver}.zip")
-sha256sums=('08e50a266121d1a05f2bbb10496625f0c99b468797b8b8277386ea494ebf8892')
+sha256sums=('b143c227cdbd502afef612216ede2ba5fd8158ff45e43b99a8a0f77da851a20e')
 
 build() {
     cd "${srcdir}"
