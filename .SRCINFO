@@ -1,0 +1,20 @@
+pkgbase = linux-surface-jakeday-bin
+	pkgdesc = Kernel release for Microsoft Surface devices from https://github.com/jakeday/linux-surface/. Copied binary from jakedays release.
+	pkgver = 4.19.23
+	pkgrel = 1
+	url = https://github.com/jakeday/linux-surface/
+	arch = any
+	license = custom
+	makedepends = git
+	options = !strip
+	source = https://github.com/jakeday/linux-surface/releases/download/4.19.23-1/linux-image-4.19.23-surface-linux-surface_4.19.23-surface-linux-surface-57_amd64.deb
+	source = linux.preset
+	source = 60-linux.hook
+	source = 90-linux.hook
+	md5sums = 39b6af3356593e2cda54c0fdb85eafdb
+	md5sums = a329f9581060d555dc7358483de9760a
+	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
+	md5sums = b448c99f0ea9aaee9b13784958a98fd0
+
+pkgname = linux-surface-jakeday-bin
+
