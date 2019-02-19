@@ -1,6 +1,6 @@
 # Maintainer: DDoSolitary <DDoSolitary@gmail.com>
 pkgname=v2ray-plugin
-pkgver=1.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Yet another SIP003 plugin for shadowsocks, based on v2ray"
 url="https://github.com/shadowsocks/v2ray-plugin"
