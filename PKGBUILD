@@ -1,12 +1,12 @@
 # Maintainer: Emmanuel Gil Peyrot <emmanuel.peyrot@collabora.com>
 
-_pkgname='git-phab'
-pkgname='git-phab-git'
-pkgver=r186.937fb36
+_pkgname=git-phab
+pkgname=git-phab-git
+pkgver=r187.6877964
 pkgrel=1
-pkgdesc='Git subcommand to integrate with phabricator'
+pkgdesc="Git subcommand to integrate with phabricator"
 arch=('any')
-url='https://phabricator.freedesktop.org/project/profile/60/'
+url='https://pypi.org/project/git-phab/'
 license=('GPL2')
 depends=('python-gitpython' 'python-phabricator' 'python-argcomplete' 'python-appdirs')
 provides=("$_pkgname")

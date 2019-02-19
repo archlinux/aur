@@ -1,8 +1,8 @@
 pkgbase = git-phab-git
 	pkgdesc = Git subcommand to integrate with phabricator
-	pkgver = r186.937fb36
+	pkgver = r187.6877964
 	pkgrel = 1
-	url = https://phabricator.freedesktop.org/project/profile/60/
+	url = https://pypi.org/project/git-phab/
 	arch = any
 	license = GPL2
 	makedepends = git
