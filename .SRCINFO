@@ -1,7 +1,7 @@
 pkgbase = concourse-fly-bin
 	pkgdesc = A command line interface that runs a build in a container with ATC.
-	pkgver = 4.2.2
-	pkgrel = 2
+	pkgver = 4.2.3
+	pkgrel = 1
 	url = https://concourse-ci.org/fly.html
 	arch = x86_64
 	license = Apache
@@ -9,8 +9,8 @@ pkgbase = concourse-fly-bin
 	conflicts = concourse-fly
 	conflicts = concourse-fly-git
 	replaces = concourse-fly
-	source = concourse-fly-bin-4.2.2::https://github.com/concourse/concourse/releases/download/v4.2.2/fly_linux_amd64
-	sha512sums = 79941e71b91765ff05b59d3405d51f9d8f1591194724c84fd6a85d752eda74b46a4869daa0378bd7844bcb876801d70754a874e86f491e93e59c4b9a99c6f930
+	source = concourse-fly-bin-4.2.3::https://github.com/concourse/concourse/releases/download/v4.2.3/fly_linux_amd64
+	sha512sums = 190adeefe0a18be8b7f7d09b107a369cace7e170705a566ca5226dc43d1ccfe29c7979ee382aa5dde03be67360f2ea33f4e04cb2ca5b9e241dcba3d6f63cd3e2
 
 pkgname = concourse-fly-bin
 
