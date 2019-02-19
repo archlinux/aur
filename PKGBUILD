@@ -1,44 +1,51 @@
-# Maintainer: George Ornbo <george@shapeshed.com>
+# Maintainer: Andrea Corsini <andrea.corsini@outlook.com>
 
 pkgname=st-solarized-dark
-appname='st'
-provides=('st')
-conflicts=('st')
-pkgver=0.7
-pkgrel=3
-pkgdesc='A simple virtual terminal emulator for X. Patched for solarized dark and Inconsolata font.'
+_pkgname=st
+pkgver=0.8.2
+pkgrel=1
+pkgdesc="Simple terminal implementation for X with dark solarized color scheme"
 arch=('i686' 'x86_64')
+url="https://st.suckless.org/"
 license=('MIT')
-depends=('libxext' 'libxft')
-makedepends=('ncurses')
-url="http://st.suckless.org"
-source=(http://dl.suckless.org/st/$appname-$pkgver.tar.gz
-        http://st.suckless.org/patches/solarized/st-no_bold_colors-$pkgver.diff
-        http://st.suckless.org/patches/solarized/st-solarized-dark-$pkgver.diff)
+depends=('libxft')
+makedepends=('git' 'libxext' 'ncurses')
 
-sha256sums=('f7870d906ccc988926eef2cc98950a99cc78725b685e934c422c03c1234e6000'
-        '2e8cdbeaaa79ed067ffcfdcf4c5f09fb5c8c984906cde97226d4dd219dda39dc'
-        '4782f52c4147a352579586c1b066f9fd1da934e580cbd3b78943f058394d9883')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+# include config.h and any patches you want to have applied here
+source=("https://dl.suckless.org/$_pkgname/$_pkgname-$pkgver.tar.gz"
+        "https://st.suckless.org/patches/solarized/st-no_bold_colors-20170623-b331da5.diff"
+        "https://st.suckless.org/patches/solarized/st-solarized-dark-20180411-041912a.diff")
+
+sha256sums=('aeb74e10aa11ed364e1bcc635a81a523119093e63befd2f231f8b0705b15bf35'
+            '71e1211189d9e11da93ee49388379c5f8469fcd3e1f48bb4d791ddaf161f5845'
+            'b2d5e88a2616eafb82b2fefb63eecb0f9d71f839349ef40f9f69c1953444f88c')
 
 prepare() {
-  cd "$srcdir/$appname-$pkgver"
-  patch -i "$srcdir/st-no_bold_colors-$pkgver.diff"
-  patch -i "$srcdir/st-solarized-dark-$pkgver.diff"
-  cp config.def.h config.h
-  sed -i 's/Liberation Mono:pixelsize=12:antialias=true:autohint=true/Inconsolata:pixelsize=20:antialias=true:autohint=true/' config.h 
+    local file                
+	cd "$_pkgname-$pkgver"
+    for file in "${source[@]}"; do
+		if [[ "$file" == "config.h" ]]; then
+			# add config.h if present in source array
+			# Note: this supersedes the above sed to config.def.h
+			cp "$srcdir/$file" .
+		elif [[ "$file" == *.diff || "$file" == *.patch ]]; then
+			# add all patches present in source array
+            patch -Np1 <"$srcdir/$(basename ${file})"
+		fi
+	done
 }
 
 build() {
-  cd "$srcdir/$appname-$pkgver"
-  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+	cd "$_pkgname-$pkgver"
+	make
 }
 
 package() {
-  cd "$srcdir/$appname-$pkgver"
-  # Avoid conflict with ncurses package
-  # rm "$pkgdir/usr/share/terminfo/s/st"
-  # rm "$pkgdir/usr/share/terminfo/s/st-256color"
-  make PREFIX=/usr DESTDIR="$pkgdir" TERMINFO="$pkgdir/usr/share/terminfo" install
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
+	cd "$_pkgname-$pkgver"
+	make PREFIX=/usr DESTDIR="$pkgdir/" install
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
