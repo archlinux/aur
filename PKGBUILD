@@ -1,6 +1,6 @@
 # Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
 pkgname=virtualbox-ext-oracle-5
-pkgver=5.2.22
+pkgver=5.2.26
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Extension Pack 5.x'
 arch=(any)
@@ -11,7 +11,7 @@ conflicts=(virtualbox-ext-oracle virtualbox-ext-oracle-5.0)
 install=virtualbox-ext-oracle.install
 source=("http://download.virtualbox.org/virtualbox/$pkgver/Oracle_VM_VirtualBox_Extension_Pack-$pkgver.vbox-extpack")
 noextract=("Oracle_VM_VirtualBox_Extension_Pack-$pkgver.vbox-extpack")
-sha256sums=('779250666551b2f5426e86c2d21ceb0209b46174536971611025f753535131ef')
+sha256sums=('4b7caa9b722840d49f154c3e5efb6463b1b7129f09973a25813dfdbccd9debb7')
 
 prepare() {
 	# shrink uneeded cpuarch
