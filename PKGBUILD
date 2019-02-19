@@ -7,7 +7,7 @@ pkgname='ros-melodic-libuvc'
 pkgver='0.0.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=()
@@ -53,7 +53,7 @@ build() {
         -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
         -DPYTHON_BASENAME=.cpython3.7m \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
-  mak
+  make
 }
 
 package() {

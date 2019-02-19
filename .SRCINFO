@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-libuvc
 	pkgdesc = ROS - USB Video Class driver library.
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/
 	arch = any
 	license = BSD
