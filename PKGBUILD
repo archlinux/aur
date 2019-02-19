@@ -22,10 +22,9 @@ pkgver() {
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
-build() {  
-  cores=`nproc`
+build() {
   cd "$srcdir/$pkgname"
-  make -j "$cores" PREFIX="/usr"
+  make PREFIX="/usr"
 }
 
 package() {
