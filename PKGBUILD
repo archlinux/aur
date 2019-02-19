@@ -17,7 +17,7 @@ provides=('dnsmasq')
 install=$pkgname.install
 backup=('etc/pihole/pihole-FTL.conf' 'etc/pihole/pihole-FTL.db')
 source=("https://github.com/pi-hole/FTL/archive/v$pkgver.tar.gz"
-         "https://raw.github.com/max72bra/pi-hole-ftl-archlinux-customization/master/arch-ftl-$pkgver.patch"
+         "https://raw.githubusercontent.com/max72bra/pi-hole-ftl-archlinux-customization/master/arch-ftl-$pkgver.patch"
          "$pkgname.tmpfile"
          "$pkgname.service"
          "$pkgname.db"
