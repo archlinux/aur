@@ -1,51 +1,35 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
-pkgbase=python-args
-pkgname=('python-args' 'python2-args')
-pkgver=0.1.0.20121116
-_commit=36c727bea812945023968a5bd7b0bdece9ca8666
-pkgrel=3
+pkgname=python-args
+pkgver=0.1.0.20170708
+_commit=9460f1a35eb3055e9e4de1f0a6932e0883c72d65
+pkgrel=1
 pkgdesc="Command Arguments for Humans"
 arch=('any')
 license=('BSD')
-url="https://github.com/kennethreitz/args"
-makedepends=('python-setuptools' 'python2-setuptools' 'git')
-checkdepends=('python-nose' 'python2-nose')
-source=("git+https://github.com/kennethreitz/args.git#commit=$_commit")
-sha512sums=('SKIP')
+url="https://github.com/kenneth-reitz/args"
+depends=('python')
+makedepends=('python-setuptools')
+checkdepends=('python-nose')
+source=("$pkgname-$_commit.tar.gz::https://github.com/kenneth-reitz/args/archive/$_commit.tar.gz")
+sha512sums=('acbb38e442fcc731a41d4ed5f63d33cfe7bc5cab730f99d5f9de3e9739ea4370df58798267df9c29892d93a3e2e5f4e21c54a1550c38bfc49abfc84a1e1cc438')
 
 prepare() {
-  cp -a args{,-py2}
+  mv args-{$_commit,$pkgver}
 }
 
 build() {
-  cd "$srcdir/args"
+  cd args-$pkgver
   python setup.py build
-
-  cd "$srcdir/args-py2"
-  python2 setup.py build
 }
 
 check() {
-  cd "$srcdir/args"
+  cd args-$pkgver
   nosetests3
-
-  cd "$srcdir/args-py2"
-  nosetests2
 }
 
-package_python-args() {
-  depends=('python')
-
-  cd args
-  python setup.py install --root="${pkgdir}" --optimize=1
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_python2-args() {
-  depends=('python2')
-
-  cd args-py2
-  python2 setup.py install --root="${pkgdir}" --optimize=1
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+package() {
+  cd args-$pkgver
+  python setup.py install --root="$pkgdir" --optimize=1
+  install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
