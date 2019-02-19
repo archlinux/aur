@@ -1,13 +1,13 @@
 pkgbase = diagslave-bin
 	pkgdesc = A command line based Modbus master simulator and test utility.
-	pkgver = 2.12
+	pkgver = 3.1
 	pkgrel = 1
 	url = https://www.modbusdriver.com/diagslave.html
 	arch = x86_64
 	license = custom
 	provides = diagslave
-	source = https://www.modbusdriver.com/downloads/diagslave.2.12.zip
-	sha256sums = 5db0d69676e96b4f49fd37716639fd6506ed3779108fcc3a86d4225f70e82b95
+	source = https://www.modbusdriver.com/downloads/diagslave.tgz
+	sha256sums = 5448bf4d70a5598a2e283a44aab44ba2fb30d94103cda8205c637eef0c202cb0
 
 pkgname = diagslave-bin
 
