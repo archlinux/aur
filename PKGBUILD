@@ -30,6 +30,7 @@ depends=(
     )
 makedepends=(
     'git'
+    'python2-setuptools-scm'        # for VCS(/SCM) versioning
     )
 checkdepends=(
     'python2-twisted'
