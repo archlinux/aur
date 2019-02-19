@@ -1,5 +1,5 @@
 pkgbase = linux-aarch64-raspberrypi-4.14
-	pkgver = 4.14.97
+	pkgver = 4.14.98
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = aarch64
@@ -17,7 +17,7 @@ pkgbase = linux-aarch64-raspberrypi-4.14
 	makedepends = git
 	makedepends = dtc
 	options = !strip
-	source = git+https://github.com/raspberrypi/linux.git#commit=28c5c6ab2a4a8ae0a4dffae2237da2e56cd943c9
+	source = git+https://github.com/raspberrypi/linux.git#commit=877656cd145497db7c09a7de06ea85db98bd72a3
 	source = add-nexmon.patch
 	source = config
 	source = config.txt
@@ -29,7 +29,7 @@ pkgbase = linux-aarch64-raspberrypi-4.14
 	source = 99-linux.hook
 	md5sums = SKIP
 	md5sums = 7462ced7cee9e33aa7925ea63771f0ad
-	md5sums = a5cc658f5b8115cc1bae8a9586899c55
+	md5sums = 4a15ee05656193d4bcc2ef9d1c08a56b
 	md5sums = c724d9c086060a17a2170c7d98dae908
 	md5sums = 6f4a4da9a6dec38507ff6e3a536f834a
 	md5sums = f80e2bf1fda4ff65606afea2939cc4a5

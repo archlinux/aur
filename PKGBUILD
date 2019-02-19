@@ -8,14 +8,14 @@ pkgname=linux-aarch64-raspberrypi-4.14
 _srcname=linux
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=4.14.97
+pkgver=4.14.98
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'aarch64-linux-gnu-binutils' 'aarch64-linux-gnu-gdb' 'aarch64-linux-gnu-gcc' 'aarch64-linux-gnu-glibc' 'aarch64-linux-gnu-linux-api-headers' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc')
 options=('!strip')
-source=("git+https://github.com/raspberrypi/linux.git#commit=28c5c6ab2a4a8ae0a4dffae2237da2e56cd943c9"
+source=("git+https://github.com/raspberrypi/linux.git#commit=877656cd145497db7c09a7de06ea85db98bd72a3"
         'add-nexmon.patch'
         'config'
 	'config.txt'
@@ -27,7 +27,7 @@ source=("git+https://github.com/raspberrypi/linux.git#commit=28c5c6ab2a4a8ae0a4d
         '99-linux.hook')
 md5sums=('SKIP'
          '7462ced7cee9e33aa7925ea63771f0ad'
-         'a5cc658f5b8115cc1bae8a9586899c55'
+         '4a15ee05656193d4bcc2ef9d1c08a56b'
          'c724d9c086060a17a2170c7d98dae908'
          '6f4a4da9a6dec38507ff6e3a536f834a'
          'f80e2bf1fda4ff65606afea2939cc4a5'
