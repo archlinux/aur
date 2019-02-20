@@ -1,6 +1,6 @@
 pkgbase = youtube-viewer-git
 	pkgdesc = A command line utility for searching and streaming videos from YouTube.
-	pkgver = 3.5.2
+	pkgver = 3.5.3
 	pkgrel = 1
 	url = https://github.com/trizen/youtube-viewer
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = youtube-viewer-git
 	depends = perl-lwp-protocol-https
 	depends = perl-libwww
 	optdepends = perl-json-xs: faster JSON to HASH conversion
-	optdepends = perl-lwp-useragent-cached: cache support
+	optdepends = perl-lwp-useragent-cached: local cache support
 	optdepends = perl-unicode-linebreak: for printing results in a fixed-width format (-W)
 	optdepends = perl-term-readline-gnu: for better STDIN support (+history)
 	optdepends = youtube-dl: for playing videos with encrypted signatures
