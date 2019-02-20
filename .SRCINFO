@@ -1,6 +1,6 @@
 pkgbase = cppurses
 	pkgdesc = C++14 Terminal User Interface framework with NCurses.
-	pkgver = 0.1.2
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/a-n-t-h-o-n-y/CPPurses
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = cppurses
 	makedepends = ncurses
 	makedepends = cmake
 	makedepends = git
-	source = https://github.com/a-n-t-h-o-n-y/CPPurses/archive/v0.1.2.tar.gz
-	sha256sums = 5e4e4bcd1f6fcfce6795dde7aee3a4aa9a9191aa85bd0cdb601d095bff5acc1e
+	source = https://github.com/a-n-t-h-o-n-y/CPPurses/archive/v0.2.1.tar.gz
+	sha256sums = d80a6d67d3302081ebaf9c8e26a8d9a19de9e8a904eed232fa3c8e7a02c75006
 
 pkgname = cppurses
 
