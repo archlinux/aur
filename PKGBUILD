@@ -1,11 +1,11 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=amule-daemon
-pkgver=r10998
-pkgrel=3
+pkgver=r11004
+pkgrel=1
 pkgdesc='An eMule-like client for the eD2k and Kademlia p2p networks. (Only Daemon, CLI tools and Webserver)'
 url='http://www.amule.org'
-arch=('i686' 'x86_64' 'armv7h')
+arch=('x86_64' 'armv7h')
 license=('GPL')
 depends=('wxbase-light'
          'crypto++'
@@ -23,7 +23,7 @@ source=("http://amule.sourceforge.net/tarballs/aMule-SVN-${pkgver}.tar.bz2"
         'amule.sysuser'
         'amule.tmpfiles'
         )
-sha256sums=('51cb110dfe64fd2c45ecad908a73bf1ca0c6a3827a07d40604f0ac229121e2a9'
+sha256sums=('0b3c148f0e3b2be114b8b525973cdfbef942bc9268d59e2e7da044a78c9afdc1'
             '835a1058ba926e4c0cfcfbd9ac2266abd057753fdf85f7bb9da7e217432e7e56'
             '52824abdd4724db7c8c4bfc05779849c06de04b4795b3d77c98de1baa3a0babc'
             'f50c46605d3ae977913f4dcf0c7405e0bdc84322d1fc877ae851706f0e1ae5fd'
@@ -52,7 +52,7 @@ build() {
     --enable-upnp \
     --enable-webserver \
     --enable-mmap \
-    --with-boost=/usr/include \
+    --with-boost \
     --with-toolkit=base \
     --with-wx-config=/usr/bin/wx-config-base
 
