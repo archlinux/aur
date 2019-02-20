@@ -1,0 +1,18 @@
+pkgbase = brother-mfc-l3770cdw
+	pkgdesc = LPR and CUPS drivers for the Brother MFC-L3770CDW
+	pkgver = 1.0.2
+	pkgrel = 0
+	url = http://support.brother.com/g/s/id/linux/en/index.html
+	install = brother-mfc-l3770cdw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	license = GPL
+	makedepends = perl
+	makedepends = tar
+	depends = cups
+	source = https://download.brother.com/welcome/dlf103935/mfcl3770cdwpdrv-1.0.2-0.i386.deb
+	md5sums = ec927721bea8a717940a76d09d546e95
+
+pkgname = brother-mfc-l3770cdw
+
