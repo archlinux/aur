@@ -1,0 +1,53 @@
+From f4d9505e7cd49e7a8b38da2bfd88f6637e6c57cd Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Thu, 17 Jan 2019 16:00:37 -0700
+Subject: [PATCH 3/5] Linux_5.0: Use super_block flags instead of Mount flags
+ when filling sb
+
+In Kernel commit e262e32d6bde0f77fb0c95d977482fc872c51996
+the mount flags (MS_) were moved from uapi/linux/fs.h to
+uapi/linux/mount.h. This caused a compile failure in
+src/afs/LINUX/osi_vfsops.c
+
+The Linux documentation in uapi/linux/mount.h indicates that the MS_
+(mount) flags should only be used when calling sys_mount and filesystems
+should use the SB_ (super_block) equivalent.
+
+src/afs/LINUX/osi_vfsops.c utilized the mount flag MS_NOATIME while
+filling the super_block.  Changed to use SB_NOATIME (which has the same
+numeric value as MS_NOATIME) if available.
+
+Reviewed-on: https://gerrit.openafs.org/13432
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 3969bbca6017eb0ce6e1c3099b135f210403f661)
+
+Change-Id: I66f7b758c0258ea2c0d93da030fa97b3db49bd6c
+Reviewed-on: https://gerrit.openafs.org/13440
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+---
+ src/afs/LINUX/osi_vfsops.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/afs/LINUX/osi_vfsops.c b/src/afs/LINUX/osi_vfsops.c
+index f87d137b3..8bbb5f225 100644
+--- a/src/afs/LINUX/osi_vfsops.c
++++ b/src/afs/LINUX/osi_vfsops.c
+@@ -104,7 +104,11 @@ afs_fill_super(struct super_block *sb, void *data, int silent)
+    __module_get(THIS_MODULE);
+ 
+     afs_globalVFS = sb;
++#if defined(SB_NOATIME)
++    sb->s_flags |= SB_NOATIME;
++#else
+     sb->s_flags |= MS_NOATIME;
++#endif
+     sb->s_blocksize = 1024;
+     sb->s_blocksize_bits = 10;
+     sb->s_magic = AFS_VFSMAGIC;
+-- 
+2.20.1
+
