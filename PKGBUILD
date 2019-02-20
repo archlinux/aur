@@ -5,7 +5,7 @@
 # Upstream: https://github.com/lightningnetwork/lnd
 
 pkgname=('lnd-git')
-pkgver=0.5.1.beta.263.g552a9b71
+pkgver=0.5.1.beta.756.g2bf22617
 pkgrel=1
 pkgdesc='The Lightning Network Daemon, for secure off-chain bitcoin transactions.'
 arch=('x86_64')
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed 's/^v//;s/-/./g'
+  git describe | sed 's/^v//;s/-/./g'
 }
 
 build() {
