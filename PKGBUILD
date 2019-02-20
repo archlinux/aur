@@ -2,8 +2,8 @@
 
 pkgbase=infnoise
 pkgname=(infnoise libinfnoise infnoise-tools)
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="Infinite Noise TRNG"
 arch=('x86_64')
 url="https://github.com/waywardgeek/infnoise"
@@ -12,7 +12,7 @@ depends=('libftdi-compat')
 source=("https://13-37.org/files/${pkgbase}-${pkgver}.tar.gz"
         "https://13-37.org/files/${pkgbase}-${pkgver}.tar.gz.sig"
         "https://github.com/13-37-org/${pkgbase}/raw/${pkgver}/LICENSE")
-sha512sums=('1853655e5a90c844764f920230c194cd2b84f9ad97cb8c53262f6d078d8bc4874cd86e9cd48ddfc66fc556d3d089c36b16374d76d094fe0d004bb9f6984ec6b4'
+sha512sums=('794328ef02c98a3d0a1fc1fab49eeef9474f5cfab9d0a760c6d456ffaae91a24ece5157bebdead7b18091d9827e4359be66b473e11fa3259bf91203ab93eac30'
             'SKIP'
             '3e20c74803825a27f7d4208f711d5b5f48bbdcd9487b59e0922fcbfd3b17f3f37440ae3bc024e3183401e4918765e59de8a5896f5a8be8236e4b769c65443cbb')
 validpgpkeys=('71AE099B262DC0B493E6EE71975DC25C4E730A3C')
