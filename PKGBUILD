@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tpm2-tss-engine-git
-pkgver=r56.9b0c7d1
+pkgver=r57.933d5d3
 pkgrel=1
 pkgdesc='OpenSSL engine for Trusted Platform Module 2.0 devices'
 arch=('x86_64')
@@ -23,10 +23,6 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname%-git}"
-
-	# Workaround for https://github.com/tpm2-software/tpm2-tss-engine/issues/79
-	sed --in-place 's/#ifdef TSS22/#if 0/' src/tpm2-tss-engine-common.c
-
 	autoreconf --install --force
 }
 

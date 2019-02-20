@@ -1,6 +1,6 @@
 pkgbase = tpm2-tss-engine-git
 	pkgdesc = OpenSSL engine for Trusted Platform Module 2.0 devices
-	pkgver = r56.9b0c7d1
+	pkgver = r57.933d5d3
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-tss-engine
 	arch = x86_64
