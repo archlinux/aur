@@ -20,16 +20,12 @@ checkdepends=("python2-pymongo")
 backup=("etc/${pkgname}.conf")
 source=(
   "http://downloads.${pkgname}.org/src/${pkgname}-src-r${pkgver}.tar.gz"
-  "${pkgname}.service"
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
 )
-sha256sums=(
-  "34165ef42c7199c438e1706fef515cbde012d6a884406d102082d39eab72c235"
-  "19f55ab28652b3817e98fc3f15cc2f6f3255a5e1dfd7b0d5a27c9ba22fd2703e"
-  "47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b"
-  "51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac"
-)
+sha256sums=('34165ef42c7199c438e1706fef515cbde012d6a884406d102082d39eab72c235'
+            '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
+            'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39')
 
 _scons_args=(
   --use-system-pcre
@@ -51,6 +47,17 @@ prepare() {
 
   # Keep historical Arch dbPath
   sed -i 's|dbPath: /var/lib/mongo|dbPath: /var/lib/mongodb|' rpm/mongod.conf
+
+  # Keep historical Arch conf file name
+  sed -i 's|-f /etc/mongod.conf|-f /etc/mongodb.conf|' rpm/mongod.service
+
+  # Keep historical Arch user name (no need for separate daemon group name)
+  sed -i 's/User=mongod/User=mongodb/' rpm/mongod.service
+  sed -i 's/Group=mongod/Group=mongodb/' rpm/mongod.service
+  sed -i 's/chown mongod:mongod/chown mongodb:mongodb/' rpm/mongod.service
+
+  # Remove sysconfig file, used by upstream's init.d script not used on Arch
+  sed -i '/EnvironmentFile=-\/etc\/sysconfig\/mongod/d' rpm/mongod.service
 }
 
 build() {
@@ -84,7 +91,9 @@ package() {
   # Keep historical Arch conf file name
   install -Dm644 "rpm/mongod.conf" "${pkgdir}/etc/${pkgname}.conf"
 
-  install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  # Keep historical Arch service name
+  install -Dm644 "rpm/mongod.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+
   install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
   install -Dm644 LICENSE-Community.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-Community.txt"
