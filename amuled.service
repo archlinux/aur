@@ -5,6 +5,7 @@ After=network.target
 [Service]
 User=amule
 ExecStart=/usr/bin/amuled
+NoNewPrivileges=true
 
 [Install]
 WantedBy=multi-user.target
