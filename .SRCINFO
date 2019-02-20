@@ -1,7 +1,7 @@
 pkgbase = openafs-modules
 	pkgdesc = Kernel module for OpenAFS
 	pkgver = 1.8.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.openafs.org
 	install = openafs-modules.install
 	arch = i686
@@ -17,9 +17,15 @@ pkgbase = openafs-modules
 	source = http://openafs.org/dl/openafs/1.8.2/openafs-1.8.2-src.tar.bz2
 	source = 0001-Linux-4.20-current_kernel_time-is-gone.patch
 	source = 0002-Linux-4.20-do_settimeofday-is-gone.patch
+	source = 0003-Linux_5.0-Use-super_block-flags-instead-of-Mount-fla.patch
+	source = 0004-Linux_5.0-replace-do_gettimeofday-with-ktime_get_rea.patch
+	source = 0005-Linux_5.0-replaced-current_kernel_time-with-ktime_ge.patch
 	sha256sums = 25fd3e4261a72a2cbdd40367e5f981895d80c32aaf309a5842aecc739dd3138e
-	sha256sums = af5f65915c33a13311280ca5f1d52e49d954341d2b5d8939fc0ccb6a15663388
-	sha256sums = a4036be334ce54a4eb4a777621983e6535144d4c81d717e2045bb9040cf3ae8b
+	sha256sums = d0ec82bfc844e3fc1f342b607e7107bd8a51d746cbffc075779fc09cc85751ef
+	sha256sums = 793ea07fc906f9fad730c66c742dead5e4323d2cdb58265d7dc592748998b9eb
+	sha256sums = 8a7ad04bf819f47775ac8ba3533ff34b9e4d6758806310ec734ded9e598bb0b0
+	sha256sums = f5788728380f1038a71452488c9bfea6ee14a4ce7fd6f5b4d14095f70d9c718d
+	sha256sums = db6e99d72a4eeb74497e2123c55b1354a25532b7cb7aa45646ed7a28a83cb181
 
 pkgname = openafs-modules
 

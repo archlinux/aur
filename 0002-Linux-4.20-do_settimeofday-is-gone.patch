@@ -1,7 +1,7 @@
-From fae55fbc736dc33e70e3eb2086993b4d3c37bd3f Mon Sep 17 00:00:00 2001
+From 058bc3ef711a421da41d05420d75b7b68b1c9cce Mon Sep 17 00:00:00 2001
 From: Mark Vitale <mvitale@sinenomine.net>
 Date: Thu, 15 Nov 2018 15:31:37 -0500
-Subject: [PATCH 2/2] Linux 4.20: do_settimeofday is gone
+Subject: [PATCH 2/5] Linux 4.20: do_settimeofday is gone
 
 With Linux commit 976516404ff3fab2a8caa8bd6f5efc1437fed0b8 'y2038:
 remove unused time interfaces', do_settimeofday() is gone.
@@ -23,6 +23,10 @@ Tested-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit aa80f892ec39e2984818090a6bb2047430836ee2)
 
 Change-Id: I7f5ee9c21bc87cd261d87126bc3848d941ff5409
+Reviewed-on: https://gerrit.openafs.org/13406
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
 ---
  src/afs/LINUX/osi_misc.c       | 12 ------------
  src/afs/LINUX/osi_prototypes.h |  1 -

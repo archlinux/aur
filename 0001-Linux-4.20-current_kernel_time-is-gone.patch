@@ -1,7 +1,7 @@
-From d2f3f96ad737c2c49c64fcf954dc96b63722c108 Mon Sep 17 00:00:00 2001
+From 66a566c4810f995ed7207a928d5d4e8e8a741327 Mon Sep 17 00:00:00 2001
 From: Mark Vitale <mvitale@sinenomine.net>
 Date: Tue, 13 Nov 2018 11:20:09 -0500
-Subject: [PATCH 1/2] Linux 4.20: current_kernel_time is gone
+Subject: [PATCH 1/5] Linux 4.20: current_kernel_time is gone
 
 With Linux commit 976516404ff3fab2a8caa8bd6f5efc1437fed0b8 'y2038:
 remove unused time interfaces' (4.20-rc1), current_kernel_time() has
@@ -26,6 +26,10 @@ Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit 3c454b39d04f4886536267c211171dae30dc0344)
 
 Change-Id: I3f00cf4bd3a1ffb7c90e3920113964d74c6df403
+Reviewed-on: https://gerrit.openafs.org/13405
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
 ---
  src/afs/LINUX/osi_machdep.h | 9 ++++++++-
  src/cf/linux-kernel-func.m4 | 4 ++++
