@@ -1,18 +1,21 @@
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Michael Kanis <mkanis@gmx.de>
 
 pkgname=libchamplain
-pkgver=0.12.16
+pkgver=0.12.17
 pkgrel=1
 pkgdesc="A map widget"
 url="https://wiki.gnome.org/Projects/libchamplain"
 license=(LGPL)
 arch=(x86_64)
 depends=(clutter-gtk libsoup cairo sqlite)
-makedepends=(gobject-introspection gtk-doc vala gnome-common git)
-_commit=daea081ce4a67d0c221de5f389130355fe37e73e  # tags/LIBCHAMPLAIN_0_12_16^0
-source=("git+https://git.gnome.org/browse/libchamplain#commit=$_commit")
-sha256sums=('SKIP')
+makedepends=(gobject-introspection gtk-doc vala meson git)
+_commit=5d2f7f938471d9455aa08bd6bb1f0a244984713c  # tags/LIBCHAMPLAIN_0_12_17^0
+source=("git+https://gitlab.gnome.org/GNOME/libchamplain.git#commit=$_commit"
+        build.diff)
+sha256sums=('SKIP'
+            '1146f8cc78e5ab7986a9f047ff6b7a5e4ba60552907498a6097bb78bdacfec4d')
 
 pkgver() {
   cd $pkgname
@@ -21,21 +24,18 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  NOCONFIGURE=1 ./autogen.sh
+  patch -Np1 -i ../build.diff
 }
 
 build() {
-  cd $pkgname
-  ./configure --prefix=/usr --disable-static --disable-debug \
-    --enable-vala --enable-gtk-doc
+  arch-meson $pkgname build -D gtk_doc=true
+  ninja -C build
+}
 
-  # https://bugzilla.gnome.org/show_bug.cgi?id=655517
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-  make
+check() {
+  meson test -C build
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 }

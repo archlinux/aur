@@ -1,0 +1,477 @@
+diff --git i/champlain-gtk/meson.build w/champlain-gtk/meson.build
+index 8137bc7..241f592 100644
+--- i/champlain-gtk/meson.build
++++ w/champlain-gtk/meson.build
+@@ -1,148 +1,149 @@
++libchamplain_gtk_name = package_gtk_string.strip('lib')
++
+ libchamplain_gtk_public_h = [
+   'champlain-gtk.h',
+   'gtk-champlain-embed.h',
+ ]
+ 
+ libchamplain_gtk_sources = [
+   'gtk-champlain-embed.c',
+ ]
+ 
++libchamplain_gtk_requires = [
++  gtk_dep,
++  clutter_gtk_dep,
++  libchamplain_sha,
++]
++
+ libchamplain_gtk_deps = [
+   glib_dep,
+   gobject_dep,
+   gtk_dep,
+   clutter_gtk_dep,
+   libchamplain_dep,
+ ]
+ 
+ libchamplain_gtk_srcdir = include_directories('.')
+ 
+ libchamplain_gtk_c_args = [
+   '-DHAVE_CONFIG_H',
+   '-DCHAMPLAIN_GTK_COMPILATION',
+-  '-DG_LOG_DOMAIN="@0@"'.format(package_gtk_name),
++  '-DG_LOG_DOMAIN="libchamplain-gtk"',
+ ]
+ 
+ libchamplain_gtk_link_args = [
+ ]
+ 
++libchamplain_gtk_includedir = join_paths(
++  includedir,
++  package_gtk_string,
++  'champlain-gtk',
++)
++
+ libchamplain_gtk_marshals = gnome.genmarshal(
+   'champlain-gtk-marshal',
+   sources: 'champlain-gtk-marshal.list',
+   prefix: '_champlain_gtk_marshal',
+   install_header: true,
+-  install_dir: join_paths(
+-    pkgincludedir,
+-    'champlain-gtk',
+-  )
++  install_dir: libchamplain_gtk_includedir,
+ )
+ 
+ libchamplain_gtk_enums = gnome.mkenums(
+   'champlain-gtk-enum-types',
+   sources: libchamplain_gtk_public_h,
+   h_template: 'champlain-gtk-enum-types.h.in',
+   c_template: 'champlain-gtk-enum-types.c.in',
+   install_header: true,
+-  install_dir: join_paths(
+-    pkgincludedir,
+-    'champlain-gtk',
+-  )
++  install_dir: libchamplain_gtk_includedir,
+ )
+ 
+ libchamplain_gtk_marshals_h = libchamplain_gtk_marshals.get(1)
+ libchamplain_gtk_enums_h = libchamplain_gtk_enums.get(1)
+ 
+ libchamplain_gtk_sources += [
+   libchamplain_gtk_marshals,
+   libchamplain_gtk_enums,
+ ]
+ 
+ install_headers(
+   libchamplain_gtk_public_h,
+-  install_dir: join_paths(
+-    pkgincludedir,
+-    'champlain-gtk',
+-  )
++  install_dir: libchamplain_gtk_includedir,
+ )
+ 
+ libchamplain_gtk_sha = library(
+-  package_gtk_string,
++  libchamplain_gtk_name,
+   libchamplain_gtk_sources,
+   version: lib_version,
+   include_directories: rootdir,
+   dependencies: libchamplain_gtk_deps,
+   c_args: libchamplain_gtk_c_args,
+   link_args: libchamplain_gtk_link_args,
+   install: true,
+-  install_dir: libdir,
+ )
+ 
+ libchamplain_gtk_dep_sources = [
+   libchamplain_gtk_enums_h,
+   libchamplain_gtk_marshals_h,
+ ]
+ 
+ if generate_gir
+   libchamplain_gtk_gir_includes = [
+     'GObject-2.0',
+     'Clutter-1.0',
+     'Gtk-3.0',
+     libchamplain_gir.get(0),
+   ]
+ 
+   libchamplain_gtk_gir = gnome.generate_gir(
+     libchamplain_gtk_sha,
+     sources: libchamplain_gtk_sources + libchamplain_gtk_public_h,
+     nsversion: api_version,
+     namespace: 'GtkChamplain',
+     symbol_prefix: 'gtk_champlain',
+     identifier_prefix: 'GtkChamplain',
+     header: 'champlain-gtk/champlain-gtk.h',
+-    export_packages: [package_gtk_string],
++    export_packages: [libchamplain_gtk_name],
+     includes: ['Clutter-1.0', 'Gtk-3.0', libchamplain_gir.get(0)],
+     link_with: libchamplain_gtk_sha,
+     install: true,
+-    install_dir_gir: girdir,
+-    install_dir_typelib: typelibdir,
+     extra_args: [
+       '-DCHAMPLAIN_GTK_COMPILATION',
+     ]
+   )
+ 
+   libchamplain_gtk_dep_sources += [
+     libchamplain_gtk_gir,
+   ]
+ 
+   if generate_vapi
+     libchamplain_gtk_vapi_packages = [
+       'clutter-gtk-1.0',
+       'cogl-pango-1.0',
+       'gtk+-3.0',
+       'atk',
+       'pangocairo',
+       libchamplain_vapi,
+     ]
+ 
+     libchamplain_gtk_vapi = gnome.generate_vapi(
+-      package_gtk_string,
++      libchamplain_gtk_name,
+       sources: libchamplain_gtk_gir.get(0),
+       packages: libchamplain_gtk_vapi_packages,
+       install: true,
+-      install_dir: vapidir,
+     )
+   endif
+ endif
+ 
+ libchamplain_gtk_dep = declare_dependency(
+   link_with: libchamplain_gtk_sha,
+   include_directories: rootdir,
+   dependencies: libchamplain_gtk_deps,
+   sources: libchamplain_gtk_dep_sources,
+ )
+ 
+ libchamplain_gtk_pc = pkg.generate(
+   libchamplain_gtk_sha,
+   description: 'Gtk+ Widget wrapper for libchamplain',
+-  subdirs: package_string,
+-  install_dir: pkgconfigdir,
++  subdirs: package_gtk_string,
++  requires: libchamplain_gtk_requires,
+ )
+diff --git i/champlain/meson.build w/champlain/meson.build
+index b31f2d0..093d76d 100644
+--- i/champlain/meson.build
++++ w/champlain/meson.build
+@@ -1,3 +1,5 @@
++libchamplain_name = package_string.strip('lib')
++
+ libchamplain_public_h = [
+   'champlain-adjustment.h',
+   'champlain-bounding-box.h',
+@@ -85,118 +87,107 @@ if build_with_memphis
+   ]
+ endif
+ 
+-libchamplain_deps = [
+-  libm_dep,
++libchamplain_requires = [
+   glib_dep,
+   gobject_dep,
+-  gio_dep,
+   clutter_dep,
++]
++
++libchamplain_deps = libchamplain_requires + [
++  libm_dep,
++  gio_dep,
+   cairo_dep,
+   sqlite_dep,
+   libsoup_dep,
+ ]
+ 
+ if build_with_memphis
+   libchamplain_deps += memphis_dep
+ endif
+ 
+ libchamplain_srcdir = include_directories('.')
+ 
+ libchamplain_c_args = [
+   '-DHAVE_CONFIG_H',
+   '-DCHAMPLAIN_COMPILATION',
+-  '-DG_LOG_DOMAIN="@0@"'.format(package_name),
++  '-DG_LOG_DOMAIN="libchamplain"',
+ ]
+ 
+ libchamplain_link_args = [
+ ]
+ 
++libchamplain_includedir = join_paths(
++  includedir,
++  package_string,
++  'champlain',
++)
++
+ features_h = configuration_data()
+ if build_with_memphis
+   features_h.set('CHAMPLAIN_HAS_MEMPHIS', '1')
+ endif
+ 
+ libchamplain_features_h = configure_file(
+   output: 'champlain-features.h',
+   configuration: features_h,
+-  install: true,
+-  install_dir: join_paths(
+-    pkgincludedir,
+-    'champlain',
+-  )
+ )
+ 
+ version_h = configuration_data()
+ version_h.set('CHAMPLAIN_MAJOR_VERSION', version_major)
+ version_h.set('CHAMPLAIN_MINOR_VERSION', version_minor)
+ version_h.set('CHAMPLAIN_MICRO_VERSION', version_micro)
+ version_h.set('CHAMPLAIN_VERSION', version)
+ 
+ libchamplain_version_h = configure_file(
+   input: 'champlain-version.h.in',
+   output: 'champlain-version.h',
+   configuration: version_h,
+-  install: true,
+-  install_dir: join_paths(
+-    pkgincludedir,
+-    'champlain',
+-  )
+ )
+ 
+ libchamplain_public_h += [
+   libchamplain_features_h,
+   libchamplain_version_h,
+ ]
+ 
+ libchamplain_marshals = gnome.genmarshal(
+   'champlain-marshal',
+   sources: 'champlain-marshal.list',
+   prefix: '_champlain_marshal',
+   install_header: true,
+-  install_dir: join_paths(
+-    pkgincludedir,
+-    'champlain',
+-  )
++  install_dir: libchamplain_includedir,
+ )
+ 
+ libchamplain_enums = gnome.mkenums(
+   'champlain-enum-types',
+   sources: libchamplain_public_h,
+   h_template: 'champlain-enum-types.h.in',
+   c_template: 'champlain-enum-types.c.in',
+   install_header: true,
+-  install_dir: join_paths(
+-    pkgincludedir,
+-    'champlain',
+-  )
++  install_dir: libchamplain_includedir,
+ )
+ 
+ libchamplain_marshals_h = libchamplain_marshals.get(1)
+ libchamplain_enums_h = libchamplain_enums.get(1)
+ 
+ libchamplain_sources += [
+   libchamplain_marshals,
+   libchamplain_enums,
+ ]
+ 
+ install_headers(
+   libchamplain_public_h,
+-  install_dir: join_paths(
+-    pkgincludedir,
+-    'champlain',
+-  )
++  install_dir: libchamplain_includedir,
+ )
+ 
+ libchamplain_sha = library(
+-  package_string,
++  libchamplain_name,
+   libchamplain_sources,
+   version: lib_version,
+   include_directories: rootdir,
+   dependencies: libchamplain_deps,
+   c_args: libchamplain_c_args,
+   link_args: libchamplain_link_args,
+   install: true,
+-  install_dir: libdir,
+ )
+ 
+ libchamplain_dep_sources = [
+@@ -224,50 +215,46 @@ if generate_gir
+     symbol_prefix: 'champlain',
+     identifier_prefix: 'Champlain',
+     header: 'champlain/champlain.h',
+-    export_packages: [package_string],
++    export_packages: [libchamplain_name],
+     includes: libchamplain_gir_includes,
+     link_with: libchamplain_sha,
+     install: true,
+-    install_dir_gir: girdir,
+-    install_dir_typelib: typelibdir,
+     extra_args: [
+       '-DCHAMPLAIN_COMPILATION',
+     ]
+   )
+ 
+   libchamplain_dep_sources += [
+     libchamplain_gir,
+   ]
+ 
+   if generate_vapi
+     libchamplain_vapi_packages = [
+       'clutter-1.0',
+       'cogl-pango-1.0',
+       'atk',
+       'pangocairo',
+     ]
+ 
+     libchamplain_vapi = gnome.generate_vapi(
+-      package_string,
++      libchamplain_name,
+       sources: libchamplain_gir.get(0),
+       packages: libchamplain_vapi_packages,
+       install: true,
+-      install_dir: vapidir,
+     )
+   endif
+ endif
+ 
+ libchamplain_dep = declare_dependency(
+   link_with: libchamplain_sha,
+   include_directories: rootdir,
+   dependencies: libchamplain_deps,
+   sources: libchamplain_dep_sources,
+ )
+ 
+ libchamplain_pc = pkg.generate(
+   libchamplain_sha,
+-  name: package_string,
+   description: 'Map View for Clutter',
+   subdirs: package_string,
+-  install_dir: pkgconfigdir,
++  requires: libchamplain_requires,
+ )
+diff --git i/configure.ac w/configure.ac
+index 445aec8..24f42bd 100644
+--- i/configure.ac
++++ w/configure.ac
+@@ -36,7 +36,7 @@ AM_PROG_CC_C_O
+ # - If binary compatibility has been broken (eg removed or changed interfaces)
+ #   change to C+1:0:0
+ # - If the interface is the same as the previous version, change to C:R+1:A
+-LIBRARY_VERSION=11:7:11
++LIBRARY_VERSION=11:0:11
+ CHAMPLAIN_API_VERSION=champlain_api_version
+ CHAMPLAIN_API_VERSION_NORM=champlain_major_version[_]champlain_minor_api_version
+ CHAMPLAIN_MAJOR_VERSION=champlain_major_version
+diff --git i/docs/reference/meson.build w/docs/reference/meson.build
+index 299dc74..0bc6418 100644
+--- i/docs/reference/meson.build
++++ w/docs/reference/meson.build
+@@ -10,6 +10,8 @@ clutter_docpath = join_paths(clutter_prefix, 'share', 'gtk-doc', 'html', 'clutte
+ gtk_prefix = gtk_dep.get_pkgconfig_variable('prefix')
+ gtk_docpath = join_paths(gtk_prefix, 'share', 'gtk-doc', 'html', 'gtk3')
+ 
++gtkdocdir = join_paths(datadir, 'gtk-doc')
++
+ libchamplain_reference_ignored_h = [
+   'champlain-gtk-enum-types.h',
+   'champlain-gtk-marshal.h',
+@@ -62,19 +64,14 @@ libchamplain_reference_fixxref_args = [
+ ]
+ 
+ gnome.gtkdoc(
+-  package_name,
++  package_string,
+   main_xml: 'champlain-docs.xml',
+   mode: 'xml',
+   gobject_typesfile: files('champlain.types'),
+   src_dir: [libchamplain_srcdir, libchamplain_gtk_srcdir],
+   dependencies: [libchamplain_dep, libchamplain_gtk_dep],
+   scan_args: libchamplain_reference_scan_args,
+   mkdb_args: libchamplain_reference_mkdb_args,
+   fixxref_args: libchamplain_reference_fixxref_args,
+   install: true,
+-  install_dir: join_paths(
+-    gtkdocdir,
+-    'html',
+-    package_string,
+-  )
+ )
+diff --git i/meson.build w/meson.build
+index d4ec164..8b957c4 100644
+--- i/meson.build
++++ w/meson.build
+@@ -24,38 +24,28 @@ else
+   api_version = '.'.join([version_major, version_minor])
+ endif
+ 
+-# Before making a release, the LT_VERSION string should be modified.
+-# The string is of the form C.R.A.
++# Before making a release, the library_version string should be modified.
++# The string is of the form C:R:A.
+ # - If interfaces have been changed or added, but binary compatibility has
+-#   been preserved, change to C+1.0.A+1
++#   been preserved, change to C+1:0:A+1
+ # - If binary compatibility has been broken (eg removed or changed interfaces)
+-#   change to C+1.0.0
+-# - If the interface is the same as the previous version, change to C.R+1.A
+-lib_version = '11.7.11'
++#   change to C+1:0:0
++# - If the interface is the same as the previous version, change to C:R+1:A
++library_version = '11:0:11'
+ 
+-package_name = meson.project_name().strip('lib')
+-package_string = '@0@-@1@'.format(package_name, api_version)
+-package_gtk_name = '@0@-gtk'.format(package_name)
+-package_gtk_string = '@0@-@1@'.format(package_gtk_name, api_version)
++lv_arr = library_version.split(':')
++lib_version = '@0@.@1@.@2@'.format(lv_arr[0].to_int() - lv_arr[2].to_int(), lv_arr[2], lv_arr[1])
++
++package_string = '@0@-@1@'.format(meson.project_name(), api_version)
++package_gtk_string = '@0@-gtk-@1@'.format(meson.project_name(), api_version)
+ 
+ # Paths
+ rootdir = include_directories('.')
+ 
+-srcdir = meson.current_source_dir()
+-builddir = meson.current_build_dir()
+-
+ prefix = get_option('prefix')
+-
+ includedir = join_paths(prefix, get_option('includedir'))
+ libdir = join_paths(prefix, get_option('libdir'))
+ datadir = join_paths(prefix, get_option('datadir'))
+-pkgincludedir = join_paths(includedir, package_string)
+-typelibdir = join_paths(libdir, 'girepository-1.0')
+-pkgconfigdir = join_paths(libdir, 'pkgconfig')
+-
+-girdir = join_paths(datadir, 'gir-1.0')
+-gtkdocdir = join_paths(datadir, 'gtk-doc')
+-vapidir = join_paths(datadir, 'vala', 'vapi')
+ 
+ # Dependencies
+ cc = meson.get_compiler('c')
