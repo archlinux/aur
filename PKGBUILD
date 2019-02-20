@@ -1,7 +1,7 @@
 # Maintainer: HER0_01 <aconrad103 at gmail.com>
 
 pkgname=snis-git
-pkgver=4387.48016482
+pkgver=4395.54beeee0
 pkgrel=1
 pkgdesc="Space Nerds in Space open source spaceship bridge simulator."
 arch=('i686' 'x86_64')

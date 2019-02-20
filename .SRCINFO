@@ -1,6 +1,6 @@
 pkgbase = snis-git
 	pkgdesc = Space Nerds in Space open source spaceship bridge simulator.
-	pkgver = 4387.48016482
+	pkgver = 4395.54beeee0
 	pkgrel = 1
 	url = http://smcameron.github.io/space-nerds-in-space/
 	arch = i686
