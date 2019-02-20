@@ -1,9 +1,10 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: James An <james@jamesan.ca>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=sejda-desktop
 pkgver=5.2.7
-pkgrel=1
+pkgrel=2
 license=('custom:EULA')
 pkgdesc='PDF editor'
 arch=('x86_64')
@@ -15,10 +16,15 @@ options=(!strip)
 package() {
   bsdtar -xf data.tar.xz -C "${pkgdir}"
   install -d "${pkgdir}/usr/bin"
-  ln -s /opt/sejda-desktop/sejda-desktop "${pkgdir}/usr/bin/sejda-desktop"
+  ln -s "${pkgdir}/opt/sejda-desktop/sejda-desktop" "${pkgdir}/usr/bin/sejda-desktop"
 
   # fix permissions
   find "${pkgdir}" -type d -exec chmod 755 {} \;
+  find "${pkgdir}" -type f -exec chmod 644 {} \;
+  chmod 755 "${pkgdir}"/opt/sejda-desktop/resources/vendor/desktop-launcher/bin/desktop-launcher
+  chmod 755 "${pkgdir}"/opt/sejda-desktop/resources/vendor/java/bin/java
+  chmod 755 "${pkgdir}"/opt/sejda-desktop/sejda-desktop
+  chmod 755 "${pkgdir}"/usr/bin/sejda-desktop
 
   # symlink licenses
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -26,5 +32,3 @@ package() {
     ln -s /opt/sejda-desktop/${_i} "${pkgdir}/usr/share/licenses/${pkgname}/${_i}"
   done
 }
-
-
