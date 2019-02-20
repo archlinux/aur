@@ -2,7 +2,7 @@
 
 pkgname=bdfresize
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A command to scale fonts in Bitmap Distribution Format"
 arch=('i686' 'x86_64')

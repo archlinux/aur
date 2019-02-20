@@ -1,7 +1,7 @@
 pkgbase = bdfresize
 	pkgdesc = A command to scale fonts in Bitmap Distribution Format
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ntwk/bdfresize
 	arch = i686
 	arch = x86_64
