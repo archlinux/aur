@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-systemd-tool
 	pkgdesc = Provisioning tool for systemd in initramfs (systemd-tool)
-	pkgver = 16
+	pkgver = 17
 	pkgrel = 1
 	url = https://github.com/random-archer/mkinitcpio-systemd-tool
 	arch = any
@@ -10,6 +10,9 @@ pkgbase = mkinitcpio-systemd-tool
 	depends = systemd
 	optdepends = cryptsetup: required by initrd-cryptsetup.service
 	optdepends = dropbear: required by initrd-dropbear.service
+	optdepends = busybox: required by initrd-tinysshd.service
+	optdepends = tinyssh: required by initrd-tinysshd.service
+	optdepends = tinyssh-convert: required by initrd-tinysshd.service
 	optdepends = mc: required by initrd-debug-progs.service
 	conflicts = mkinitcpio-dropbear
 	conflicts = mkinitcpio-tinyssh

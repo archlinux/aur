@@ -2,7 +2,7 @@
 
 pkgdesc='Provisioning tool for systemd in initramfs (systemd-tool)'
 pkgname=mkinitcpio-systemd-tool
-pkgver=16
+pkgver=17
 pkgrel=1
 url="https://github.com/random-archer/$pkgname"
 source=("git+${url}.git")
@@ -11,9 +11,12 @@ depends=(
     'systemd'
 )
 optdepends=(
-    'cryptsetup: required by initrd-cryptsetup.service' 
-    'dropbear:   required by initrd-dropbear.service' 
-    'mc:         required by initrd-debug-progs.service' 
+    'cryptsetup:      required by initrd-cryptsetup.service' 
+    'dropbear:        required by initrd-dropbear.service' 
+    'busybox:         required by initrd-tinysshd.service' 
+    'tinyssh:         required by initrd-tinysshd.service' 
+    'tinyssh-convert: required by initrd-tinysshd.service' 
+    'mc:              required by initrd-debug-progs.service' 
 )
 makedepends=(
     'git'
