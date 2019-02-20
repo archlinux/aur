@@ -1,0 +1,18 @@
+pkgbase = ethereal-git
+	pkgdesc = UCI-compliant chess engine. It uses the traditional alpha-beta framework in addition to a variety of pruning, reduction, extension, and other improvements.
+	pkgver = 1128
+	pkgrel = 1
+	url = https://github.com/AndyGrant/Ethereal
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	optdepends = xboard
+	optdepends = scid_vs_pc
+	provides = ethereal
+	conflicts = ethereal
+	source = ethereal::git+https://github.com/AndyGrant/Ethereal
+	md5sums = SKIP
+
+pkgname = ethereal-git
+
