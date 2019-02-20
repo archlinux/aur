@@ -1,8 +1,8 @@
-# Maintainer: dax <dev@dax.moe>
+# Maintainer: Joshua Brikman <jbrikman@gmail.com>
 pkgname=minesviiper-git
 pkgver=r110.04f8849
 pkgrel=1
-pkgdesc="solitaire, klondlike, & spider in the terminal"
+pkgdesc="minesweeper clone with mouse and VT220 support"
 arch=('x86_64')
 url="https://gir.st/mines.htm"
 license=('GPL')
