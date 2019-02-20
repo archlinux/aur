@@ -1,8 +1,8 @@
 # Maintainer: Willem Mulder <14mRh4X0r@gmail.com>
 _pkgname=passff
 pkgname=firefox-passff-git
-pkgver=1.2.r5.5536113
-pkgrel=2
+pkgver=1.6.3.r0.a2cea40
+pkgrel=1
 pkgdesc="zx2c4 pass manager addon for firefox"
 arch=(any)
 url="https://github.com/passff/passff"
@@ -23,14 +23,14 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/${_pkgname}/src"
+    cd "$srcdir/${_pkgname}"
     make VERSION=testing
 }
 
 package() {
-    cd "$srcdir/${_pkgname}/src"
+    cd "$srcdir/${_pkgname}"
 
-    local ext_id="$(jq -r '.applications.gecko.id' manifest.json)"
-    install -Dm644 "../bin/testing/${_pkgname}.xpi" \
+    local ext_id="$(jq -r '.applications.gecko.id' src/manifest.json)"
+    install -Dm644 "bin/testing/${_pkgname}.xpi" \
         "${pkgdir}/usr/lib/firefox/browser/extensions/${ext_id}.xpi"
 }
