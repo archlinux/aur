@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=vkd3d-git
-pkgver=1.1.218.g3b1af3c
+pkgver=1.1.286.g7082214
 pkgrel=1
 pkgdesc="D3D12 to Vulkan translation library. (GIT version)"
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=('spirv-tools'
 makedepends=('spirv-headers'
              'vulkan-headers'
              'xcb-proto'
+             'wine'
             )
 conflicts=('vkd3d')
 provides=('vkd3d')
@@ -32,12 +33,13 @@ prepare() {
 build() {
   cd vkd3d
 
-  ./autogen.sh
+  WIDL= ./autogen.sh
 
   cd ../build
   ../vkd3d/configure \
     --prefix=/usr \
-    --with-spirv-tools
+    --with-spirv-tools \
+    --enable-tests=no
 
   make
 }
