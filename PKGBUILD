@@ -6,8 +6,8 @@
 
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
-pkgver=4.1
-pkgrel=3
+pkgver=4.1.1
+pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -134,7 +134,6 @@ build() {
 #    --enable-libaom \ ## Not available under 32bit
 #    --enable-libssh \  ## not available under 32bit
 #    --enable-libvidstab \ ## not available under 32bit
-#    --enable-libx265 \ ## libx265 is not properly detected under 32bit arch
 
   make
 }
