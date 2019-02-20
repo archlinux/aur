@@ -1,1 +1,1 @@
-qt5-mvvmcore qt5-declarative qt5-quickcontrols2 qt5-graphicaleffects
+qt5-mvvmcore qt5-declarative=v qt5-quickcontrols2=v qt5-graphicaleffects=v
