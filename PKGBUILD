@@ -13,7 +13,7 @@ makedepends=('git' 'systemd')
 license=('custom')
 validpgpkeys=('F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7'  # OpenVPN - Security Mailing List <security@openvpn.net>
               'B62E6A2B4E56570B7BDC6BE01D829EFECA562812') # Gert Doering <gert@v6.de>
-source=("git+git://github.com/OpenVPN/openvpn.git#tag=v${pkgver}?signed")
+source=("git+https://github.com/OpenVPN/openvpn.git#tag=v${pkgver}?signed")
 sha256sums=('SKIP')
 
 prepare() {
