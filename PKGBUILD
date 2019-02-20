@@ -2,7 +2,7 @@
 # Maintainer: David C. Rankin <drankinatty @ gmail.com>
 
 pkgname=gtkwrite
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="GTKwrite Text Editor with Syntax Highlight written in C, GTK+2 & GtkSourceView2"
 url="https://github.com/drankinatty/${pkgname}"
@@ -13,7 +13,7 @@ options=('!emptydirs')
 depends=('gtk-engines' 'gtksourceview2')
 makedepends=('glib2' 'gtk2' 'gtksourceview2')
 source=("https://github.com/drankinatty/${pkgname}/archive/v${pkgver}.tar.gz")
-sha1sums=('dbfa0fe3914064b5c09195bff497e0bdafee5225')
+sha1sums=('aaabee0e99964e24fe92c289d669b91044be3cc4')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -26,7 +26,7 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    
+
     install -d -m755 ${pkgdir}/usr/bin
     install -m755 bin/${pkgname} ${pkgdir}/usr/bin
 
@@ -39,4 +39,10 @@ package() {
     install -d -m755 "${pkgdir}/usr/share/gtksourceview-2.0/styles"
     install -m644 styles/gtkwrite.xml "${pkgdir}/usr/share/gtksourceview-2.0/styles"
     install -m644 styles/gtkwrite_light.xml "${pkgdir}/usr/share/gtksourceview-2.0/styles"
+
+    install -d -m755 "${pkgdir}/usr/share/gtksourceview-2.0/language-specs"
+    install -m644 language-specs/apache.lang "${pkgdir}/usr/share/gtksourceview-2.0/language-specs"
+    install -m644 language-specs/asm-intel.lang "${pkgdir}/usr/share/gtksourceview-2.0/language-specs"
+    install -m644 language-specs/gnuplot.lang "${pkgdir}/usr/share/gtksourceview-2.0/language-specs"
+    install -m644 language-specs/xorg.conf.lang "${pkgdir}/usr/share/gtksourceview-2.0/language-specs"
 }
