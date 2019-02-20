@@ -33,7 +33,7 @@ prepare() {
 build() {
   cd vkd3d
 
-  WIDL= ./autogen.sh
+  ./autogen.sh
 
   cd ../build
   ../vkd3d/configure \
