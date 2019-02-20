@@ -1,0 +1,15 @@
+pkgbase = s6-portable-utils
+	pkgdesc = Tiny portable generic utilities
+	pkgver = 2.2.1.2
+	pkgrel = 1
+	url = http://www.skarnet.org/software/s6-portable-utils
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = skalibs
+	makedepends = glibc
+	source = http://www.skarnet.org/software/s6-portable-utils/s6-portable-utils-2.2.1.2.tar.gz
+	sha256sums = 30a23761c77ba2a523100b4ab645796df4d5665f4ab4347d68cfbb7cc03fc745
+
+pkgname = s6-portable-utils
+
