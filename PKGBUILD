@@ -2,7 +2,7 @@
 
 pkgname=quilter
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Focus on your writing for any kind of story, even longer ones."
 arch=(any)
 url="https://github.com/lainsce/quilter"
@@ -18,7 +18,7 @@ sha256sums=('646b78ffa90b1e944ffc7f1b49fffe6ebb8927270699896b105fdc4b91fcb0ce')
 build () {
   cd $srcdir/$pkgname-$pkgver
   meson build && cd build
-  meson configure -Dprefix=${pkgdir}/usr
+  meson configure -Dprefix=/usr
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = quilter
 	pkgdesc = Focus on your writing for any kind of story, even longer ones.
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lainsce/quilter
 	install = quilter.install
 	arch = any
