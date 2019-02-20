@@ -1,0 +1,124 @@
+From 432edfd6a690db744667ed72e1333c709e6d84e6 Mon Sep 17 00:00:00 2001
+From: Calin Culianu <calin.culianu@gmail.com>
+Date: Thu, 14 Feb 2019 02:38:55 +0200
+Subject: [PATCH] [Qt] Fix #1157 -- Qt 5.12 also exports Decimal
+
+So we had to rename decimal.Decimal to PyDecimal where we use it.
+
+The other alternative was to not import PyQt5.QtCore.* ... but... it's
+super convenient to have access to all of Qt.  So, instead we import
+decimal.Decimal as PyDecimal
+---
+ RELEASE-NOTES         | 1 +
+ gui/qt/amountedit.py  | 8 ++++----
+ gui/qt/main_window.py | 6 +++---
+ gui/qt/paytoedit.py   | 4 ++--
+ 4 files changed, 10 insertions(+), 9 deletions(-)
+
+# Don't patch release notes
+# diff --git a/RELEASE-NOTES b/RELEASE-NOTES
+# index 23658a42..e2707ea3 100644
+# --- a/RELEASE-NOTES
+# +++ b/RELEASE-NOTES
+# @@ -269,3 +269,4 @@ and there is no warning message.
+#  * Android fixes (mhsmith)
+#  * Various internal bugfixes and code refactoring (cculianu, ecdsa, SomberNight)
+#  * servers.json updated (torusJKL)
+# +* Fixed a compatibility issue with Qt 5.12 (SomberNight, cculianu)
+
+diff --git a/gui/qt/amountedit.py b/gui/qt/amountedit.py
+index 97b53428..fdb647cd 100644
+--- a/gui/qt/amountedit.py
++++ b/gui/qt/amountedit.py
+@@ -4,7 +4,7 @@ from PyQt5.QtCore import *
+ from PyQt5.QtGui import *
+ from PyQt5.QtWidgets import (QLineEdit, QStyle, QStyleOptionFrame)
+ 
+-from decimal import Decimal
++from decimal import Decimal as PyDecimal  # Qt 5.12 also exports Decimal
+ from electroncash.util import format_satoshis_plain
+ 
+ 
+@@ -65,7 +65,7 @@ class AmountEdit(MyLineEdit):
+ 
+     def get_amount(self):
+         try:
+-            return (int if self.is_int else Decimal)(str(self.text()))
++            return (int if self.is_int else PyDecimal)(str(self.text()))
+         except:
+             return None
+ 
+@@ -89,7 +89,7 @@ class BTCAmountEdit(AmountEdit):
+ 
+     def get_amount(self):
+         try:
+-            x = Decimal(str(self.text()))
++            x = PyDecimal(str(self.text()))
+         except:
+             return None
+         p = pow(10, self.decimal_point())
+@@ -112,7 +112,7 @@ class BTCSatsByteEdit(BTCAmountEdit):
+         return 'sats' + '/B'
+     def get_amount(self):
+         try:
+-            x = float(Decimal(str(self.text())))
++            x = float(PyDecimal(str(self.text())))
+         except:
+             return None
+         return x if x > 0.0 else None    
+diff --git a/gui/qt/main_window.py b/gui/qt/main_window.py
+index e07739a1..f6fac935 100644
+--- a/gui/qt/main_window.py
++++ b/gui/qt/main_window.py
+@@ -28,7 +28,7 @@ import os, json, traceback
+ import shutil
+ import webbrowser
+ import csv
+-from decimal import Decimal
++from decimal import Decimal as PyDecimal  # Qt 5.12 also exports Decimal
+ import base64
+ from functools import partial
+ 
+@@ -695,7 +695,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
+             else:
+                 if edit is fiat_e:
+                     btc_e.follows = True
+-                    btc_e.setAmount(int(amount / Decimal(rate) * COIN))
++                    btc_e.setAmount(int(amount / PyDecimal(rate) * COIN))
+                     btc_e.setStyleSheet(ColorScheme.BLUE.as_stylesheet())
+                     btc_e.follows = False
+                     if fee_e:
+@@ -703,7 +703,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
+                 else:
+                     fiat_e.follows = True
+                     fiat_e.setText(self.fx.ccy_amount_str(
+-                        amount * Decimal(rate) / COIN, False))
++                        amount * PyDecimal(rate) / COIN, False))
+                     fiat_e.setStyleSheet(ColorScheme.BLUE.as_stylesheet())
+                     fiat_e.follows = False
+ 
+diff --git a/gui/qt/paytoedit.py b/gui/qt/paytoedit.py
+index 261fcd26..ecc0d2e4 100644
+--- a/gui/qt/paytoedit.py
++++ b/gui/qt/paytoedit.py
+@@ -29,7 +29,7 @@ from PyQt5.QtWidgets import QCompleter, QPlainTextEdit
+ from .qrtextedit import ScanQRTextEdit
+ 
+ import re
+-from decimal import Decimal
++from decimal import Decimal as PyDecimal  # Qt 5.12 also exports Decimal
+ from electroncash import bitcoin
+ from electroncash.address import Address, ScriptOutput
+ from electroncash import networks
+@@ -97,7 +97,7 @@ class PayToEdit(ScanQRTextEdit):
+         if x.strip() == '!':
+             return '!'
+         p = pow(10, self.amount_edit.decimal_point())
+-        return int(p * Decimal(x.strip()))
++        return int(p * PyDecimal(x.strip()))
+ 
+     def check_text(self):
+         self.errors = []
+-- 
+2.20.1
+
