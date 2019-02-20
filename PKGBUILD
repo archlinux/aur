@@ -6,7 +6,7 @@
 
 pkgname=compiz
 pkgver=0.9.14.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
@@ -23,13 +23,15 @@ source=("https://launchpad.net/${pkgname}/${pkgver:0:6}/${pkgver}/+download/${pk
         "gtk-extents.patch"
         "reverse-unity-config.patch"
         "screenshot-launch-fix.patch"
-        "no-compile-gschemas.patch")
+        "no-compile-gschemas.patch"
+        "ccsm-unicode-fix.patch")
 sha256sums=('52cd6a90ffe987bd0415fda23c34e1f3284aa34c4d8b4eefb160fbf4d1f33a2c'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
             '6ec9c04540ca1649c687d9ab2c8311caea7075831e2cffe719ec7958c9ebab7b'
             '89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61'
-            '4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a')
+            '4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a'
+            '78ab98cb0904cab84d57028f3c07defc5e3596dcd8c0f691bcb57a85f9e0c06e')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -48,6 +50,9 @@ prepare() {
 
   # Don't try to compile gschemas during make install
   patch -p1 -i "${srcdir}/no-compile-gschemas.patch"
+
+  # Fix unicode related ccsm crashes #1816629
+  patch -p1 -i "${srcdir}/ccsm-unicode-fix.patch"
 }
 
 build() {
