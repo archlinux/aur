@@ -8,6 +8,7 @@ pkgbase = gemini
 	makedepends = cmake
 	makedepends = python-setuptools
 	depends = mpv
+	depends = youtube-dl
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-quickcontrols
