@@ -1,6 +1,6 @@
 pkgbase = nemu-git
 	pkgdesc = ncurses interface for QEMU
-	pkgver = 2.0.0
+	pkgver = 2.2.0r1.g0ee41db
 	pkgrel = 1
 	url = https://bitbucket.org/PascalRD/nemu
 	arch = i686
