@@ -1,6 +1,6 @@
 pkgbase = play.it
 	pkgdesc = Easy way to install games on Linux
-	pkgver = 2.10.4
+	pkgver = 2.11.1
 	pkgrel = 2
 	url = https://wiki.dotslashplay.it
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = play.it
 	optdepends = icoutils
 	optdepends = innoextract
 	optdepends = unzip
-	source = play.it-2.10.4.tar.gz::https://framagit.org/vv221/play.it/-/archive/2.10.4/play.it-2.10.4.tar.gz
-	sha1sums = c60b9dd5f06580244f6d39e855d892f5860ce3a8
+	source = play.it-2.11.1.tar.gz::https://framagit.org/vv221/play.it/-/archive/2.11.1/play.it-2.11.1.tar.gz
+	sha1sums = b765d773dfc72d0e15b6d451cb6698241d7e1928
 
 pkgname = play.it
 
