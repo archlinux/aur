@@ -2,7 +2,7 @@
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Pablo Lezaeta <(prflr 88) (arro'a) (gmail) (puntocom)>
 pkgname=shim-efi-git
-pkgver=15.r54.6245dc5
+pkgver=15.r53.cd20ce4
 pkgrel=1
 pkgdesc='UEFI shim loader'
 arch=('x86_64')
@@ -13,12 +13,6 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")
 sha512sums=('SKIP')
-
-prepare() {
-	cd shim
-	# Fix build failure due to missing closing brace
-	git pull origin pull/166/merge
-}
 
 pkgver() {
 	cd shim
