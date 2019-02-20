@@ -1,12 +1,12 @@
 pkgbase = sencha-cmd-6
 	pkgdesc = Sencha Cmd provides a collection of powerful, time-saving features that work together and in conjunction with the Sencha Ext JS and Sencha Touch frameworks
 	pkgver = 6.7.0.37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sencha.com/products/extjs/cmd-download/
 	arch = i686
 	arch = x86_64
 	license = custom: commercial
-	depends = java-runtime
+	depends = java-runtime<=8
 	depends = ttf-font
 	depends = fontconfig
 	provides = sencha-cmd

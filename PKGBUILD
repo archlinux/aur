@@ -3,12 +3,12 @@
 
 pkgname=sencha-cmd-6
 pkgver=6.7.0.37
-pkgrel=1
+pkgrel=2
 pkgdesc='Sencha Cmd provides a collection of powerful, time-saving features that work together and in conjunction with the Sencha Ext JS and Sencha Touch frameworks'
 url='https://www.sencha.com/products/extjs/cmd-download/'
 arch=(i686 x86_64)
 license=('custom: commercial')
-depends=(java-runtime ttf-font fontconfig)
+depends=('java-runtime<=8' ttf-font fontconfig)
 provides=(sencha-cmd)
 conflicts=(sencha-cmd sencha-cmd-5)
 source_i686=("http://cdn.sencha.com/cmd/$pkgver/no-jre/SenchaCmd-$pkgver-linux-i386.sh.zip")
