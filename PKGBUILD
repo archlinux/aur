@@ -6,7 +6,7 @@
 
 pkgname=chromium-ozone
 pkgver=72.0.3626.81
-pkgrel=1
+pkgrel=2
 _launcher_ver=6
 _release_sha=36f8ce7e1dc05b379a1de75320ebd5d50bdc2fab
 _igalia_sha=da646d2b8e02640cc488bf470b0a9177cd262422
@@ -25,7 +25,6 @@ optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
-replaces=('chromium-vaapi' 'chromium-vaapi-bin')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz

@@ -1,7 +1,7 @@
 pkgbase = chromium-ozone
 	pkgdesc = Chromium built with patches for wayland support via Ozone
 	pkgver = 72.0.3626.81
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	install = chromium.install
 	arch = x86_64
@@ -54,8 +54,6 @@ pkgbase = chromium-ozone
 	optdepends = kwallet: for storing passwords in KWallet
 	provides = chromium
 	conflicts = chromium
-	replaces = chromium-vaapi
-	replaces = chromium-vaapi-bin
 	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-72.0.3626.81.tar.xz
 	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
 	source = chromium-drirc-disable-10bpc-color-configs.conf
