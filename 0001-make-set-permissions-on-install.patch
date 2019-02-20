@@ -1,17 +1,17 @@
-From e1b48af819eb81435253e1f20e29e947f2f1a504 Mon Sep 17 00:00:00 2001
-From: Cody Schafer <cody@berkshiregrey.com>
-Date: Tue, 18 Sep 2018 11:04:56 -0400
-Subject: [PATCH] make: set permisions
+From 75a425bc62c4994a5d94fde9bf2f80d8b25ef032 Mon Sep 17 00:00:00 2001
+From: Cody Schafer <dev@codyps.com>
+Date: Wed, 20 Feb 2019 12:59:24 -0500
+Subject: [PATCH] make: set permissions on install
 
 ---
  Makefile | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index a7bd9a0..8a13868 100644
+index c0fdac9..a8b7a1f 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -110,12 +110,12 @@ RM ?=		rm
+@@ -120,12 +120,12 @@ RM ?=		rm
  
  install: ${BUILD}/lib${PROJECT}.a ${BUILD}/lib${PROJECT}.pc
  	${INSTALL} -d ${DESTDIR}${PREFIX}/lib/
@@ -22,12 +22,12 @@ index a7bd9a0..8a13868 100644
 -	${INSTALL} -c ${INC}/${PROJECT}_types.h ${DESTDIR}${PREFIX}/include/
 +	${INSTALL} -m644 -c ${INC}/${PROJECT}.h ${DESTDIR}${PREFIX}/include/
 +	${INSTALL} -m644 -c ${INC}/${PROJECT}_types.h ${DESTDIR}${PREFIX}/include/
- 	${INSTALL} -d ${DESTDIR}${PREFIX}/share/pkgconfig/
--	${INSTALL} -c ${BUILD}/lib${PROJECT}.pc ${DESTDIR}${PREFIX}/share/pkgconfig/
-+	${INSTALL} -m644 -c ${BUILD}/lib${PROJECT}.pc ${DESTDIR}${PREFIX}/share/pkgconfig/
+ 	${INSTALL} -d ${DESTDIR}${PKGCONFIG_DST}
+-	${INSTALL} -c ${BUILD}/lib${PROJECT}.pc ${DESTDIR}${PKGCONFIG_DST}/
++	${INSTALL} -m644 -c ${BUILD}/lib${PROJECT}.pc ${DESTDIR}${PKGCONFIG_DST}/
  
  uninstall:
  	${RM} ${DESTDIR}${PREFIX}/lib/lib${PROJECT}.a
 -- 
-2.19.0
+2.20.1
 

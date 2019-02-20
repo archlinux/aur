@@ -1,4 +1,5 @@
 *.tar.*
+*.tar
 pkg/
 src/
 theft-git/
