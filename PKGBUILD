@@ -2,7 +2,7 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=duply
-_mainver=2.1
+_mainver=2.2
 #pkgver=$_mainver.0
 pkgver=$_mainver
 pkgrel=1
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('duplicity')
 makedepends=('txt2man')
 source=( "http://downloads.sourceforge.net/project/ftplicity/duply%20%28simple%20duplicity%29/${_mainver}.x/${pkgname}_${pkgver}.tgz")
-md5sums=('84b41caf54f891d2b8df048bb7ad95e0')
+md5sums=('1ea50f06e51f389c1f4075c2dbaecbc5')
 
 prepare() {
   cd "${srcdir}/${pkgname}_${pkgver}"
