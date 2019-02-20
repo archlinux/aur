@@ -1,6 +1,6 @@
 pkgbase = powershell
 	pkgdesc = A cross-platform automation and configuration tool/framework (latest release)
-	pkgver = 6.1.2
+	pkgver = 6.1.3
 	pkgrel = 1
 	url = https://github.com/PowerShell/PowerShell
 	install = powershell.install
@@ -11,7 +11,7 @@ pkgbase = powershell
 	makedepends = dotnet-sdk>=2.0
 	depends = icu
 	depends = openssl-1.0
-	source = powershell::git+https://github.com/PowerShell/PowerShell.git#tag=v6.1.2
+	source = powershell::git+https://github.com/PowerShell/PowerShell.git#tag=v6.1.3
 	source = googletest::git+https://github.com/google/googletest.git
 	source = build.sh
 	md5sums = SKIP
