@@ -1,0 +1,13 @@
+pkgbase = icewm-themes-new
+	pkgdesc = icewm themes
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.opendesktop.org/u/ren-cs/
+	arch = any
+	license = GPL
+	depends = icewm
+	source = http://altlinuxclub.ru/arhiv/icewm-themes-new_1.0.tar.gz
+	md5sums = daba215a881ec7f3ada975e89906f289
+
+pkgname = icewm-themes-new
+
