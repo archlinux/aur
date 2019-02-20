@@ -1,0 +1,15 @@
+pkgbase = solvitaire-git
+	pkgdesc = solitaire, klondlike, & spider in the terminal
+	pkgver = r125.680da21
+	pkgrel = 1
+	url = https://gir.st/sol.htm
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = solvitaire
+	conflicts = solvitaire
+	source = git+https://github.com/girst/solvitaire
+	md5sums = SKIP
+
+pkgname = solvitaire-git
+
