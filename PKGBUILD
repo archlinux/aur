@@ -1,6 +1,6 @@
-# Maintainer: dr4Ke <dr4ke at dr4ke dot net>
+# Maintainer: PAPPY <pappy _AT_ a s c e l i o n _DOT_ com>
 pkgname=cura-resources-fabtotum-git
-pkgver=r28.eceb1f9
+pkgver=r31.7f76349
 pkgrel=1
 pkgdesc="FabTotum resources for Cura 2.x"
 arch=('any')
@@ -8,11 +8,8 @@ url="https://github.com/FABtotum/FAB_Configs"
 license=('unknown')
 depends=('cura')
 makedepends=('git')
-source=('git+https://github.com/PaoloP74/FAB_Configs.git#branch=Cura_2.7')
+source=('git+https://github.com/PaoloP74/FAB_Configs.git')
 md5sums=('SKIP')
-
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
 
 pkgver() {
 	cd "$srcdir/FAB_Configs"
@@ -21,7 +18,7 @@ pkgver() {
 
 package() {
 	cd "$srcdir/FAB_Configs"
-	cd "Cura2.x_configs_FABtotum/Cura 2.7/resources"
+	cd "`echo Cura*/Cura2.x*`"
 	mkdir -p "${pkgdir}/usr/share/cura/resources/"
 	cp -rp . "${pkgdir}/usr/share/cura/resources/"
 }
