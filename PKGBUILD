@@ -1,15 +1,17 @@
-# Maintainer: Louis des Landes <aur@psykar.com>
+# Maintainer: Eduard Wirch <wirch.eduard@gmail.com>
+# Contributor: Louis des Landes <aur@psykar.com>
+
 pkgname=deepgit
-pkgver=3.0.3
+pkgver=3.2
 pkgrel=1
 pkgdesc="A tool to investigate the history of source code."
 arch=('any')
 url="http://www.syntevo.com/deepgit/"
 license=('custom')
 depends=(
-    'java-runtime'
+    'java-environment>=8'
     'hicolor-icon-theme'
-    'bash'
+    'desktop-file-utils'
 )
 
 source=(
@@ -18,15 +20,14 @@ source=(
     "deepgit.desktop"
 )
 sha1sums=(
-    9dae5f919708d926e40db7377973b29fcdd77966
-    5e59abc4997dbdfc110df414129950164a01cab1
+    6d7865feb079ecc8715643a66eeb7feb2a897945
+    23a92ccca3e7e452538cc7a9739c86a71dea474c
     8ab2e36b3cb2e6f7b5af70a4ddbe2e9d307d3988
 )
 
 package() {
     cd $srcdir
     # Copy ./lib to /usr/share/java/$pkgname/
-    # Just be under a folder named lib, or it crashes
     install -m 644 -Dt "$pkgdir/usr/share/java/$pkgname/lib/" $srcdir/$pkgname/lib/*
 
     # Add executable to /usr/bin
