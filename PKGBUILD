@@ -1,34 +1,24 @@
-# Maintainer: Carl George < carl at george dot computer >
+# Maintainer: wenbushi <wenbushi@gmail.com>
+# Contributor: Carl George <carl at george dot computer>
 
-_name="pdir2"
-
-pkgname=("python-$_name" "python2-$_name")
-pkgver=0.2.1
+pkgbase=('python-pdir2')
+pkgname=('python-pdir2')
+_module='pdir2'
+pkgver='0.3.1.post2'
 pkgrel=1
-pkgdesc="Pretty dir printing with joy"
-arch=("any")
-url="https://github.com/laike9m/$_name"
-license=("MIT")
-makedepends=("python-setuptools" "python2-setuptools")
-source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('baaf07033f71efddb1d1d8f63c4b3a3e66415ed91fb4f8895e746c0cc5c89238')
+pkgdesc="Pretty dir() printing with joy"
+url="https://github.com/laike9m/pdir2"
+depends=('python>=3.5')
+makedepends=('python-pip')
+provides=("${pkgname}=${pkgver}")
+license=('MIT')
+arch=('any')
+_wheel="${_module}-${pkgver}-py2.py3-none-${arch}.whl"
+source=("https://files.pythonhosted.org/packages/e8/11/f3d2b3fbceceb3c5f8401cfcbcee3b3f2d16d79a9333bde5996a083d5b04/$_wheel")
+noextract=("$_wheel")
+sha256sums=('71761d0fe879de2c91fc36ecdb9a7f20d059deee7d94d0f10c2dea2cca1c1929')
 
-build() {
-    cd "$_name-$pkgver"
-    python setup.py build
-    python2 setup.py build
-}
 
-package_python-pdir2() {
-    depends=("python")
-    cd "$_name-$pkgver"
-    python setup.py install --skip-build --root="$pkgdir" --optimize=1
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-}
-
-package_python2-pdir2() {
-    depends=("python2" "python2-enum34")
-    cd "$_name-$pkgver"
-    python2 setup.py install --skip-build --root="$pkgdir" --optimize=1
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+package() {
+	  PIP_CONFIG_FILE=/dev/null pip install --compile --no-deps --ignore-installed --root="${pkgdir}" $_wheel
 }
