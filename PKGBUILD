@@ -1,7 +1,12 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
+# This is an ENGLISH ONLY build of the cliqz browser.
+# - To build the official deutsch version, read this PKGBUILD and
+#   uncomment related lines in build and package function.
+# - To build any other l10n version, please refer to my own custom
+#   french pkgbuild here: https://git.deparis.io/pkgbuilds/tree/cliqz_work/PKGBUILD?id=17ec1716c90dd08
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.25.1
+pkgver=1.25.2
 pkgrel=1
 _cqzchannel=release
 _cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
@@ -18,7 +23,7 @@ makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake
 optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz")
-sha256sums=('24e72a77bab705cf6b8f16a6ef17c6d229d6cea2c9eac8aef7a7dbae3b450c43')
+sha256sums=('f66c3c8dd4b35725367db2a9c3cacce066e281cbe143a3790b991fe565286a3a')
 options=(!emptydirs !makeflags)
 
 prepare() {
@@ -106,8 +111,9 @@ build() {
   export CQZ_VERSION=$pkgver
   export CQZ_BUILD_ID="$_cqzbuildid"
 
-  # Uncomment the following line to have a german build
-  # export CQZ_BUILD_DE_LOCALIZATION=1
+  # Uncomment the following line to have a deutsch build
+  # Also, change the target object name bellow
+  #export CQZ_BUILD_DE_LOCALIZATION=1
 
   export MOZ_NOSPAM=1
   # LTO needs more open files
@@ -122,8 +128,13 @@ package() {
   ln -s "/usr/lib/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   cd "$srcdir"
+  # Uncomment the two following lines and comment the en-US ones if you
+  # want to build a deutsch version of cliqz.
+  #mv "${_pkgname}-$pkgver/obj/dist/$pkgname-$pkgver.de.linux-x86_64.tar.bz2" .
+  #tar xjf "$pkgname-$pkgver.de.linux-x86_64.tar.bz2"
   mv "${_pkgname}-$pkgver/obj/dist/$pkgname-$pkgver.en-US.linux-x86_64.tar.bz2" .
   tar xjf "$pkgname-$pkgver.en-US.linux-x86_64.tar.bz2"
+
   cp -R "$pkgname" "$pkgdir/usr/lib/"
 
   cd "${_pkgname}-$pkgver"
