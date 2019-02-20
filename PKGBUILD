@@ -2,16 +2,16 @@
 
 pkgname=python-cursor
 _name=${pkgname#python-}
-pkgver=1.2.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Python package to hide or show the terminal cursor"
 arch=('any')
 url="https://github.com/GijsTimmers/${_name}"
-license=('custom')
+license=('GPL3')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz" "LICENSE")
-sha256sums=('8ee9fe5b925e1001f6ae6c017e93682583d2b4d1ef7130a26cfcdf1651c0032c' '6c5881f3e2d6df1e317c8a73eed89041cc089da8c8124cec25c4b5fd500e5fc7')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('7e728934f555a84a1c8b0850b66efcb580d092acc927b7d15dd43eb27dd4c4c5')
 
 build() {
 	cd "$_name-$pkgver"
@@ -19,7 +19,6 @@ build() {
 }
 
 package() {
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	cd "$_name-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
