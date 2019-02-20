@@ -94,6 +94,11 @@ package() {
   # Keep historical Arch service name
   install -Dm644 "rpm/mongod.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
+  # Install manpages
+  install -Dm644 "debian/mongo.1" "${pkgdir}/usr/share/man/man1/mongo.1"
+  install -Dm644 "debian/mongod.1" "${pkgdir}/usr/share/man/man1/mongod.1"
+  install -Dm644 "debian/mongos.1" "${pkgdir}/usr/share/man/man1/mongos.1"
+
   install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
   install -Dm644 LICENSE-Community.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-Community.txt"
