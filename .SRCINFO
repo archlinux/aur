@@ -1,7 +1,7 @@
 pkgbase = i-nex
 	pkgdesc = System information tool like hardinfo, sysinfo
 	pkgver = 7.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://i-nex.linux.pl/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = i-nex
 	depends = gambas3-gb-qt5
 	depends = gambas3-gb-desktop-x11
 	depends = python2
-	depends = libcpuid-git
+	depends = libcpuid
 	depends = lsb-release
 	depends = curl
 	depends = pastebinit

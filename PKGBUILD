@@ -3,7 +3,7 @@
 
 pkgname=i-nex
 pkgver=7.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="System information tool like hardinfo, sysinfo"
 arch=('i686' 'x86_64')
 url="http://i-nex.linux.pl/"
@@ -15,7 +15,7 @@ depends=('gambas3-runtime'
          'gambas3-gb-qt5'
          'gambas3-gb-desktop-x11'
          'python2'
-         'libcpuid-git'
+         'libcpuid'
          'lsb-release'
          'curl'
          'pastebinit'
