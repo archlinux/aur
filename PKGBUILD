@@ -1,6 +1,6 @@
 # Maintainer: Alexandr Boiko <4le34n at gmail dot com>
 pkgname=accel-ppp-git
-pkgver=r1598.99fc79f
+pkgver=r1606.10ede23
 pkgrel=1
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
@@ -89,5 +89,5 @@ md5sums=('SKIP'
          '312fd63b9688a05b71a6b33ddd3a9f4b'
          '2cc98daa5fbd5b1163e5613e49fc9ef4'
          '4e0d4fc5975ea8794ea286e8fbfa56cd'
-         '7e58716f1249f924ce218bd348d4c03a'
+         '7a811dac07996ad6eadee95ef319f98e'
          'c203b966d62f3b04bf413f7b46af4212')
