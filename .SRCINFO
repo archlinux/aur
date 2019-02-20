@@ -1,6 +1,6 @@
 pkgbase = getgarfield
 	pkgdesc = Java application that downloads all Garfield comic strips
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = http://eomanis.mooo.com/permshare/getgarfield/index.xhtml
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = getgarfield
 	makedepends = java-environment>=8
 	depends = java-runtime-headless>=8
 	depends = bash
-	source = http://eomanis.mooo.com/permshare/getgarfield/getgarfield-0.1.2.tar.gz
-	sha384sums = bc2de10986b2dc6a2f303583b791d3b1d05971961e10fdd5efb6b25a3dfc84be6723d271754e2b67fed50f2088ff297c
+	source = http://eomanis.mooo.com/permshare/getgarfield/getgarfield-0.1.3.tar.gz
+	sha384sums = 02c766398513f3a1cd02dbcba348bbe5d1ec2535e91f2dc790d92cdb0ffd7f4b579daba45cac453839c926cbfe090e73
 
 pkgname = getgarfield
 

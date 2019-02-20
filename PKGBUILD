@@ -1,7 +1,7 @@
 # Maintainer: eomanis at web dot de
 
 pkgname='getgarfield'
-pkgverUpstream="0.1.2"
+pkgverUpstream="0.1.3"
 pkgver="${pkgverUpstream//-/.}"
 pkgrel=1
 pkgdesc="Java application that downloads all Garfield comic strips"
@@ -11,30 +11,34 @@ license=('GPL3')
 depends=('java-runtime-headless>=8' 'bash')
 makedepends=('java-environment>=8')
 source=("http://eomanis.mooo.com/permshare/getgarfield/getgarfield-${pkgverUpstream}.tar.gz")
-sha384sums=('bc2de10986b2dc6a2f303583b791d3b1d05971961e10fdd5efb6b25a3dfc84be6723d271754e2b67fed50f2088ff297c')
+sha384sums=('02c766398513f3a1cd02dbcba348bbe5d1ec2535e91f2dc790d92cdb0ffd7f4b579daba45cac453839c926cbfe090e73')
 
 build() {
     local IFS=$'\n'
     
-    # Create a clean bin directory representing the contents of the .jar
+    # Create a clean jar directory representing the contents of the .jar
     # file that is being built
-    rm -rf bin
-    mkdir -p bin
-    # Compile the sources to .class files into bin
+    rm -rf jar
+    mkdir -p jar
+    # Compile the sources to .class files into jar
     echo "Compiling java sources" >&2
-    javac -classpath "" -d bin -encoding UTF-8 -source 8 \
+    javac -classpath "" -d jar -encoding UTF-8 -source 8 \
         $(find "${pkgname}-${pkgverUpstream}/src" -type f -name '*.java' -print)
-    # Add the other resources to bin, such as the web site templates
-    echo "Copying required resources" >&2
-    cp --verbose --recursive --target-directory bin/getgarfield \
-        "${pkgname}-${pkgverUpstream}/src/getgarfield/templates" 1>&2
-    # TODO Add COPYING
-    # TODO Add README
+    # Add the other resources to jar, such as the web site templates
+    echo "Copying required resources, sources and info files" >&2
+    cp --verbose --recursive --target-directory jar \
+        "${pkgname}-${pkgverUpstream}/src/getgarfield" \
+        "${pkgname}-${pkgverUpstream}/COPYING" \
+        "${pkgname}-${pkgverUpstream}/README" \
+        1>&2
     
     # Create a versioned runnable .jar file containing the contents of
-    # the bin directory and having the program correct entry point
+    # the jar directory and having the program correct entry point
     echo "Creating GetGarfield-${pkgver}.jar" >&2
-    jar ce getgarfield.GetGarfield -C bin getgarfield \
+    jar ce getgarfield.GetGarfield \
+        -C jar getgarfield \
+        -C jar COPYING \
+        -C jar README \
         > "GetGarfield-${pkgver}.jar"
     
     # Create a bash launcher
