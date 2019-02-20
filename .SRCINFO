@@ -1,7 +1,7 @@
 pkgbase = peertube
 	pkgdesc = Federated (ActivityPub) video streaming platform using P2P (BitTorrent) directly in the web browser with WebTorrent and Angular.
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://joinpeertube.org/
 	install = peertube.install
 	arch = x86_64

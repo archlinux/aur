@@ -2,7 +2,7 @@
 pkgname=peertube
 pkgver=1.2.1
 _pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Federated (ActivityPub) video streaming platform using P2P (BitTorrent) directly in the web browser with WebTorrent and Angular."
 arch=("x86_64")
 depends=("nodejs-lts-carbon" "ffmpeg" "postgresql" "openssl" "redis" "npm")
@@ -42,7 +42,7 @@ package() {
 	cp -a "$pkgname-v$_pkgver/support/doc" "$pkgdir/usr/share/doc/$pkgname"
 
 	install -Dm644 "$pkgname-v$_pkgver/support/systemd/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-	sed -i "s@redis-server@redis@;s@/var/www/$pkgname/config@/etc/$pkgname@;s@/var/www/$pkgname/$pkgname-latest@/usr/share/webapps/$pkgname@g" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+	sed -i "s@redis-server@redis@;s@/var/www/$pkgname/config@/etc/$pkgname@;s@/var/www/$pkgname/$pkgname-latest@/usr/share/webapps/$pkgname@;s@ProtectSystem=full@ProtectSystem=true@" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 	install -Dm644 "$pkgname-v$_pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	rm -rf "$pkgname-v$_pkgver"/{config,*.md,LICENSE}
