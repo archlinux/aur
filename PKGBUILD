@@ -1,7 +1,7 @@
 # Maintainer: pullmoll
 pkgname=ems-collector-git
-pkgver=r300.20dbf38
-pkgrel=6
+pkgver=r303.61d591f
+pkgrel=1
 pkgdesc="Buderus EMS heating control data collection daemon"
 arch=(x86_64)
 url="https://github.com/maniac103/ems-collector"
@@ -15,14 +15,11 @@ replaces=()
 backup=()
 options=()
 install=
-source=('mqtt-topic-fix.diff' 'mqtt-compilation-fix-for-asio.diff' 'boost-1.69.0-compilation-fix.diff' 'ems-collector.conf.sample' 'ems-collector.service')
+source=('ems-collector.conf.sample' 'ems-collector.service')
 noextract=()
-md5sums=('fb19990d31dc019ef7c90a68706cdacf'
-         '9366b3490583dc6915f687f7118fc31c'
-         '3cebf9af4152f43377056effeea9999e'
-         '2456a8bfe6034a2434945a2ae05808ad'
-         'ac3dea26402c63bfcafd7ba7184e8cc9')
-
+md5sums=('2456a8bfe6034a2434945a2ae05808ad'
+         'c88131e93dc31fd44b520d85847aff7a')
+         
 _gitroot=https://github.com/maniac103/ems-collector.git
 _gitname=ems-collector
 _gitroot_mqtt=https://github.com/redboltz/mqtt_client_cpp
@@ -64,23 +61,14 @@ build() {
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build/collector"
 
-  # Patch for MQTT compilation fix with boost-libs=1.64.0, mqtt_cpp=1.07 #20 <https://github.com/maniac103/ems-collector/issues/20>
-  patch -i $srcdir/mqtt-compilation-fix-for-asio.diff
-
-  # Patch for removing leading slash in topic
-  patch -i $srcdir/mqtt-topic-fix.diff
-
-  # Patch for boost-1.69.0 compilation
-  patch -i $srcdir/boost-1.69.0-compilation-fix.diff
-
   # Enable MySQL
 #  sed -i 's/# SRCS += Database.cpp/SRCS += Database.cpp/g' Makefile
 #  sed -i 's/# CFLAGS += -DHAVE_MYSQL -I\/usr\/include\/mysql/CFLAGS += -DHAVE_MYSQL -I\/usr\/include\/mysql/g' Makefile
 #  sed -i 's/# LIBS += -lmysqlpp/LIBS += -lmysqlpp/g' Makefile
 
   # Enable MQTT
-  sed -i 's/# CFLAGS += -I..\/..\/mqtt_client_cpp\/include -DMQTT_NO_TLS -DHAVE_MQTT/CFLAGS += -I..\/..\/mqtt_client_cpp\/include -DMQTT_NO_TLS -DHAVE_MQTT/g' Makefile
-  sed -i 's/# SRCS += MqttAdapter.cpp/SRCS += MqttAdapter.cpp/g' Makefile
+  sed -i 's/#CFLAGS += -I..\/..\/mqtt_client_cpp\/include -DMQTT_NO_TLS -DHAVE_MQTT -std=c++14/CFLAGS += -I..\/..\/mqtt_client_cpp\/include -DMQTT_NO_TLS -DHAVE_MQTT -std=c++14/g' Makefile
+  sed -i 's/#SRCS += MqttAdapter.cpp/SRCS += MqttAdapter.cpp/g' Makefile
 
   # Enable raw read/write commands
   sed -i 's/# CFLAGS += -DHAVE_RAW_READWRITE_COMMAND/CFLAGS += -DHAVE_RAW_READWRITE_COMMAND/g' Makefile

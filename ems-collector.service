@@ -7,5 +7,5 @@ After=syslog.target network.target mysqld.service mqttwarn.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/collectord --foreground --pid-file /var/run/collectord.pid -d all tcp:192.168.2.3:7950  -C 7777 -D 7778 -r 180 --mqtt-broker localhost:1883
+ExecStart=/usr/bin/collectord --foreground --pid-file /var/run/collectord.pid -d all tcp:192.168.2.3:7950  -C 7777 -D 7778 -r 180 --mqtt-broker localhost:1883 --mqtt-prefix=ems
 Restart=always
