@@ -1,4 +1,4 @@
-# Maintainer: Michael Mansell <michael.mansell@gmail.com>
+# Maintainer: Ray Powell <ray+archlinux@xphoniexx.net>
 # Contributor: Joe Davison <joedavison.davison@gmail.com>
 
 pkgname=wxlauncher
@@ -22,9 +22,9 @@ license=(GPL2)
 # change below if you want to modify the resources intall directory.  The default installs it along side fs2_open resources.
 resourcesdir=/opt/fs2_open/wxlauncher
 
-depends=('wxpython' 'python' 'python-markdown' 'openal' 'sdl2')
+depends=('wxpython' 'python' 'python-markdown' 'openal' 'sdl2' 'wxgtk2')
 optdepends=('fs2_open')
-makedepends=(cmake)
+makedepends=('cmake' 'python-setuptools')
 
 #prepare() {
 #}
