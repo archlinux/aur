@@ -1,0 +1,17 @@
+common() {
+   echo '   * /etc/tmux.conf
+   * ~/.tmux.conf
+
+"run-shell /usr/share/tmux-resurrect-git/resurrect.tmux"'
+}
+
+
+post_install() {
+   echo 'To use tmux-resurrect, add this to the BOTTOM of either your:'
+   common
+}
+
+post_remove() {
+   echo "Don't forget to remove from either your:"
+   common
+}
