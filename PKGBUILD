@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lib32-vkd3d-git
-pkgver=1.1.218.g3b1af3c
+pkgver=1.1.286.g7082214
 pkgrel=1
 pkgdesc="D3D12 to Vulkan translation library. 32-bits (GIT version)"
 arch=('x86_64')
@@ -15,6 +15,7 @@ depends=('vkd3d'
 makedepends=('spirv-headers'
              'vulkan-headers'
              'xcb-proto'
+             'wine'
              )
 conflicts=('lib32-vkd3d')
 provides=('lib32-vkd3d')
@@ -42,7 +43,8 @@ build() {
   ../vkd3d/configure \
     --prefix=/usr \
     --libdir=/usr/lib32 \
-    --with-spirv-tools
+    --with-spirv-tools \
+    --enable-tests=no
 
   make
 }
