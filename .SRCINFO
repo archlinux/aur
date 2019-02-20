@@ -1,0 +1,15 @@
+pkgbase = minesviiper-git
+	pkgdesc = solitaire, klondlike, & spider in the terminal
+	pkgver = r110.04f8849
+	pkgrel = 1
+	url = https://gir.st/mines.htm
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = minesviiper
+	conflicts = minesviiper
+	source = git+https://github.com/girst/minesviiper
+	md5sums = SKIP
+
+pkgname = minesviiper-git
+
