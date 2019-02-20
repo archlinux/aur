@@ -1,0 +1,25 @@
+pkgbase = thelounge-git
+	pkgdesc = Modern self-hosted web IRC client
+	pkgver = v3.0.1.r240.g0a1d67bf
+	pkgrel = 1
+	url = https://thelounge.chat/
+	arch = any
+	license = MIT
+	makedepends = yarn
+	makedepends = git
+	depends = nodejs
+	conflicts = thelounge
+	backup = etc/thelounge/config.js
+	source = git+https://github.com/thelounge/thelounge.git
+	source = system.service
+	source = user.service
+	source = sysusers.d
+	source = tmpfiles.d
+	sha256sums = SKIP
+	sha256sums = c92210f6ac8f01c1cd01b6b26793094cd2feea583ed21fab3564d6bcafdc7a20
+	sha256sums = c609f3309f54bd6285e99ff29ca2464828bec7bbbca67243ee688bd2d605dbf0
+	sha256sums = 30fab63b8a4ffcfdda4c5b8d7c66822a323c4f1de6ca62b77fe9500f4befc0a5
+	sha256sums = df4f110f8457a6727b5d3d1fead19d01d754f92563952699c3ef413c72366446
+
+pkgname = thelounge-git
+
