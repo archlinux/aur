@@ -36,13 +36,13 @@ source_x86_64=("thanos-sidecar.service"
                "https://github.com/improbable-eng/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver.linux-amd64.tar.gz")
 
 sha256sums_x86_64=('c5d8fe78aae3e3c5e32790e5a4e8f1ff4d4ac8e608926bf735a7e22a23a4531a'
-                   'b48a1cdd78c56e010655a015bd89a06ae8b8ba9043aba7a518a9254a735b8f5d'
+                   'f00e6a4c7ff5cc7c8ea94773e716e4ac622941bfb2a5cb30efbf872c45e1bf83'
                    'f14e3dab682a4e2777ed4c02da1d2be677327f166588767047aa10e853f7d928'
                    '0e8b5a5be042c6bdb1f279bd835720007d13ea7624592aab0703fc1b8c871b75'
                    '03b829963a127cd8d65cd3da331a36cd8309517baad46aaed411ac16adb7f3f7'
                    '542f8cba235ac7a1d33b8a36eba4a39e152b0777a507b81edc0fe4c68b9357c8'
                    '2bcd2bdb25490982ef5ce6886836ece58f591c3bd4505655cb8babb374a5052b'
-                   '5213e5e7187acddb5c2199782fdd0ca85aad93c221162c020c1cea1607b12a0c'
+                   '8548f862efbb0feb93522839d840a56d005ef78f1bce7332ff7ba013fade4431'
                    '29b5dc83449240ecd9554cead75196e4e4843da3b2ce62db66c9bac04c847027'
                    'f9eca0f9a2751255af2a1f3b992cd8a168851a296e0466c7c4a47ec804f46f74'
                    '572baa54d9191e7a26865efde62b9170cea41fdc5c94131ae2089b4b3961d3ab'
