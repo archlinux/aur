@@ -6,17 +6,17 @@
 # Mantainer: Lorenzo Ferrillo <lorenzofer at live dot it>
 _pkgname=zbar
 pkgname=lib32-zbar
-pkgver=0.20
-pkgrel=2
+pkgver=0.21
+pkgrel=1
 pkgdesc="Application and library for reading bar codes from various sources. 32bit libraries only version"
 arch=('x86_64')
 url="https://github.com/procxx/zbar"
 license=('LGPL')
 depends=('zbar')
 makedepends=('lib32-imagemagick' 'lib32-libxv' 'lib32-python2' 'lib32-gtk2' 'pygtk' 'lib32-v4l-utils' 'xmlto')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/procxx/zbar/archive/$pkgver.tar.gz"
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/mchehab/zbar/archive/$pkgver.tar.gz"
         imagemagick7.patch)
-sha512sums=('b013dc5f72f910e8e0dc73de1705684f76e5cb5b2026d48d3e149d3e8b46afdf273d06f32738c588c272218e95b5cd39d3c0b8be4eb9be17553504a13b11c144'
+sha512sums=('148fbcdc3fc01c54087f92f746c92bd21ec37a7e0c27b0f48862f0ff0490d9a4b0954cf9cbc10a536d3bf559e13c8cb2670c1c9e6832ca70841107f3c5bb0210'
             '43987414a6432b9e7da329f5a416f389d29bfc3417a6edc65a46b2677ade7dbb8c150df90c8b42464a6cb17c4732509fb8d3672387dafe9fd17a5def78a5ef63')
 
 prepare() {
@@ -50,6 +50,7 @@ package() {
   rm -Rf "$pkgdir"/usr/lib32/*.a \
 	"$pkgdir"/usr/include/ \
         "$pkgdir"/usr/bin \
-	"$pkgdir"/usr/share
+	"$pkgdir"/usr/share \
+	"$pkgdir"/etc
 	
 }
