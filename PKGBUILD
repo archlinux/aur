@@ -1,8 +1,8 @@
 # Maintainer: Romain Porte <microjoe@microjoe.org>
 
 pkgname=cmaptools
-pkgver=v6.02
-_pkgdate=08-11-16
+pkgver=v6.03.01
+_pkgdate=02-07-19
 pkgrel=1
 pkgdesc="The IHMC Cmap Tools for concept maps"
 arch=('x86_64')
@@ -16,7 +16,8 @@ source=(http://cmapdownload.ihmc.us/installs/CmapTools/Linux/Linux64CmapTools_$p
 	icon.png
 	cmaptools.desktop
 	cmaptools)
-md5sums=('622c89d77c3a57dbe9a1a9a7a06e6dce'
+
+md5sums=('5e7c9557f37bb3510d2fe0d168d1e847'
 	'a6aa32dfa1a7a5bc5e6dc585e197e002'
 	'c37998dc8a4703de169283d49a49c40d'
 	'23f9a626c04321284930d6a79b2cf5b1'
