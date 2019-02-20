@@ -1,6 +1,6 @@
 pkgbase = quilter
 	pkgdesc = Focus on your writing for any kind of story, even longer ones.
-	pkgver = 1.6.8
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/lainsce/quilter
 	install = quilter.install
@@ -16,8 +16,8 @@ pkgbase = quilter
 	depends = discount
 	depends = webkit2gtk
 	depends = gtkspell3
-	source = https://github.com/lainsce/quilter/archive/1.6.8.zip
-	sha256sums = 4615fb0bfe6a2801a749ad14b73eea1920235c9a957a520ab2c304e7779b6a98
+	source = https://github.com/lainsce/quilter/archive/1.7.0.zip
+	sha256sums = 646b78ffa90b1e944ffc7f1b49fffe6ebb8927270699896b105fdc4b91fcb0ce
 
 pkgname = quilter
 
