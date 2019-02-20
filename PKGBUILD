@@ -1,7 +1,7 @@
 # Maintainer: Felix Fung <fylixeoi@gmail.com>
 
 pkgname=timescaledb
-pkgver=1.1.1
+pkgver=1.2.1
 pkgrel=0
 pkgdesc="An open-source time-series database optimized for fast ingest and complex queries."
 arch=('i686' 'x86_64')
