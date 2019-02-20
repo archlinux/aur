@@ -3,7 +3,7 @@
 _pkgname=thanos
 pkgname=prometheus-$_pkgname
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Highly available Prometheus setup with long term storage capabilities. (binary, not built from source)"
 arch=("x86_64")
 url="https://github.com/improbable-eng/thanos"

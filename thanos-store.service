@@ -28,13 +28,6 @@ ExecStart=/usr/bin/thanos store \
                           $CLUSTER_SECRET_KEY \
                           $CLUSTER_NETWORK_TYPE \
                           $CLUSTER_DISABLE \
-                          $PROMETHEUS_URL \
-                          $TSDB_PATH \
-                          $RELOADER_CONFIG \
-                          $RELOADER_CONFIG_ENVSUBST_FILE \
-                          $RELOADER_RULE_DIR \
-                          $OBJSTORE_CONFIG_FILE \
-                          $OBJSTORE_CONFIG \
                           $DATA_DIR \
                           $INDEX_CACHE \
                           $CHUNK_POOL_SIZE \
