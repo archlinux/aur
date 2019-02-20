@@ -1,5 +1,5 @@
 pkgbase = netcoredbg
-	pkgdesc = Adds communication between KDE and your smartphone
+	pkgdesc = Debugger for .NET Core runtime
 	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/Samsung/netcoredbg
