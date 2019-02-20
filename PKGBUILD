@@ -3,30 +3,26 @@
 
 pkgname=linux-thermaltake-rgb
 pkgdesc="Python usb daemon and controller for thermaltake rgb watercooling devices"
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 arch=('any')
 license=('GPL2')
-depends=('python' 'python-yaml' 'python-gobject' 'python-dbus' 'python-psutil' 'python-pyusb')
-makedepends=('python-setuptools' 'python-nose')
+depends=('python' 'python-yaml' 'python-gobject' 'python-psutil' 'python-pyusb')
+makedepends=('python-setuptools' 'python-nose' 'tar')
 url="https://github.com/chestm007/linux_thermaltake_riing"
-source=("git+https://github.com/chestm007/linux_thermaltake_riing/#tag=$pkgver")
+source=("https://github.com/chestm007/linux_thermaltake_riing/archive/${pkgver}.tar.gz")
 md5sums=('SKIP')
-
-#pkgver() {
-#  cd linux_thermaltake_riing
-#  git describe --tags | cut -d '-' -f 1
-#}
+backup=('etc/linux_thermaltake_rgb/config.yml')
 
 build() {
-  cd "$srcdir/linux_thermaltake_riing"
+  cd "$srcdir/linux_thermaltake_riing-${pkgver}"
   sed -i "s/PROJECTVERSION/$pkgver/g" setup.py
   
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/linux_thermaltake_riing"
+  cd "$srcdir/linux_thermaltake_riing-${pkgver}"
   
   sed -i "s/PROJECTVERSION/$pkgver/g" setup.py
   python setup.py install --prefix=/usr --root="$pkgdir"
