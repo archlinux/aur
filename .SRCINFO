@@ -1,13 +1,13 @@
 pkgbase = zettlr-bin
 	pkgdesc = A markdown editor for writing academic texts and taking notes
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://www.zettlr.com
 	arch = x86_64
 	license = GPL
 	provides = zettlr
-	source = zettlr-bin-1.0.0.rpm::https://github.com/Zettlr/Zettlr/releases/download/v1.0.0/Zettlr-linux-x64-1.0.0.rpm
-	md5sums = c619c7b842a25e8756073489c0edb31e
+	source = zettlr-bin-1.1.0.rpm::https://github.com/Zettlr/Zettlr/releases/download/v1.1.0/Zettlr-linux-x64-1.1.0.rpm
+	md5sums = c143fbe111132d4851bbabd82a8acb38
 
 pkgname = zettlr-bin
 
