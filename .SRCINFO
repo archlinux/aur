@@ -1,0 +1,18 @@
+pkgbase = gogololcat-git
+	pkgdesc = golang implementation of lolcat
+	pkgver = 3.236b66e
+	pkgrel = 1
+	url = https://github.com/vbatts/gogololcat/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	provides = gogololcat
+	provides = gogololcat-bin
+	conflicts = gogololcat
+	conflicts = gogololcat-bin
+	source = gogololcat-git::git+https://github.com/vbatts/gogololcat/
+	sha256sums = SKIP
+
+pkgname = gogololcat-git
+
