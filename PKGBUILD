@@ -12,6 +12,7 @@ arch=('x86_64')
 url="http://www.soulseekqt.net/news/"
 license=('CUSTOM')
 depends=('fontconfig' 'libxext' 'libxrender' 'qt5-multimedia')
+makedepends=('gcc')
 source=("https://www.dropbox.com/s/0vi87eef3ooh7iy/SoulseekQt-${_pkgver}-64bit.tgz"
 	selinux-mock.c
 	soulseekqt.sh

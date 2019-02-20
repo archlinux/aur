@@ -5,6 +5,7 @@ pkgbase = soulseekqt
 	url = http://www.soulseekqt.net/news/
 	arch = x86_64
 	license = CUSTOM
+	makedepends = gcc
 	depends = fontconfig
 	depends = libxext
 	depends = libxrender
