@@ -1,0 +1,21 @@
+pkgbase = dnspodc-git
+	pkgdesc = IPv6 DNSPOD client written in C++17
+	pkgver = r18.28ae3c91
+	pkgrel = 1
+	url = https://github.com/microcai/dnspodc
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = cmake>=3.0.0
+	makedepends = boost
+	depends = boost-libs
+	depends = openssl
+	provides = dnspodc
+	conflicts = dnspodc
+	source = git+https://github.com/microcai/dnspodc
+	sha512sums = SKIP
+
+pkgname = dnspodc-git
+
