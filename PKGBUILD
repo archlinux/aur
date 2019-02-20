@@ -32,5 +32,6 @@ package() {
   cd "$srcdir/$pkgname"
   mkdir "$pkgdir/usr"
   make PREFIX="/usr" DESTDIR="$pkgdir" install
+  make PREFIX="/usr" DESTDIR="$pkgdir" install-assets
   rm "$pkgdir/usr/share/applications/mimeinfo.cache"
 }
