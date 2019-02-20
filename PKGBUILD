@@ -3,23 +3,21 @@
 _name=slade
 pkgname=${_name}
 pkgver=3.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
 license=('GPL')
 depends=('bzip2'
          'curl'
-         'fluidsynth'
+         'fluidsynth>=2.0'
          'freeimage'
          'ftgl'
          'glew>=2.1'
-         'glew<2.2'
          'glu'
          'gtk3'
          'libgl'
          'sfml>=2.5'
-         'sfml<2.6'
          'webkit2gtk'
          'wxgtk3>=3.0'
          'zlib')
