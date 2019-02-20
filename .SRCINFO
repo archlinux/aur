@@ -1,0 +1,17 @@
+pkgbase = parselcli
+	pkgdesc = CLI interpreter for xpath and css selectors
+	pkgver = 0.26
+	pkgrel = 1
+	url = https://github.com/Granitosaurus/parsel-cli
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-requests-cache
+	depends = python-prompt_toolkit>=2
+	source = https://github.com/Granitosaurus/parsel-cli/archive/0.26.tar.gz
+	md5sums = ff045dc9fa721edb83f6898fba752520
+
+pkgname = parselcli
+
