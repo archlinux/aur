@@ -6,9 +6,9 @@ pkgrel=1
 epoch=
 pkgdesc="A command to scale fonts in Bitmap Distribution Format"
 arch=('i686' 'x86_64')
-url="http://openlab.ring.gr.jp/efont"
+url="https://github.com/ntwk/bdfresize"
 license=('GPL')
-source=("$url/dist/tools/$pkgname/$pkgname-$pkgver.tar.gz"
+source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         "010_ftbfs-gcc4.patch"
         "020_minus-sign.patch")
 sha256sums=('440cfc0620a0237e46352c14a0774caa3f3059759b0a20defefc94e8490897a6'
