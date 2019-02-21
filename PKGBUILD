@@ -72,9 +72,23 @@ check() {
 
   export SCONSFLAGS="$MAKEFLAGS"
 
-  # 3.6.0: mlock permission denied
   scons unittests "${_scons_args[@]}"
-  python2 "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=unittests || warning "Tests failed"
+
+  # These use mlock(), which will fail under systemd-nspawn (using devtools)
+  # See https://jira.mongodb.org/browse/SERVER-32773
+  # "systemd-detect-virt" outputs "systemd-nspawn" as root, but "none" as builduser
+  if [[ -f /chrootbuild ]]; then
+    sed -i "/build\/opt\/mongo\/base\/secure_allocator_test/d" build/unittests.txt
+    sed -i "/build\/opt\/mongo\/crypto\/mechanism_scram_test/d" build/unittests.txt
+    sed -i "/build\/opt\/mongo\/db\/auth\/authorization_manager_test/d" build/unittests.txt
+    sed -i "/build\/opt\/mongo\/db\/auth\/authorization_session_test/d" build/unittests.txt
+    sed -i "/build\/opt\/mongo\/db\/auth\/sasl_mechanism_registry_test/d" build/unittests.txt
+    sed -i "/build\/opt\/mongo\/db\/auth\/sasl_scram_test/d" build/unittests.txt
+    sed -i "/build\/opt\/mongo\/db\/auth\/user_document_parser_test/d" build/unittests.txt
+    sed -i "/build\/opt\/mongo\/db\/logical_session_id_test/d" build/unittests.txt
+  fi
+
+  python2 "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=unittests
 
   scons dbtest "${_scons_args[@]}"
   python2 "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=dbtest
