@@ -6,3 +6,4 @@ archlinux-linux
 *.pkg
 *.sign
 *.sig
+tags
