@@ -10,7 +10,7 @@ pkgbase = ohsnap
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
 	source = http://sourceforge.net/projects/osnapfont/files/ohsnap-1.8.0.tar.gz
-	md5sums = aeb3d8e1f9634900036f886a14b3b03a
+	sha256sums = 081729e01699a867b9ad792e63a17d2ab333a6073833a6a8f3f27f32fc27185f
 
 pkgname = ohsnap
 
