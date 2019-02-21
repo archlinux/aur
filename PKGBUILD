@@ -1,13 +1,6 @@
 # Contributor: skydrome <skydrome@protonmail.com>
 # Maintainer:  skydrome <skydrome@protonmail.com>
 
-## For performance testing - https://trac.torproject.org/projects/tor/ticket/11332
-# pacman -S community/perf
-# torrc: DisableDebuggerAttachment 0
-# export CFLAGS='-Wall -g -O2 -pipe -fno-omit-frame-pointer'
-# options=(!strip)
-
-
 #_branch=maint-0.3.5 # stable
 #_with_rust=1
 #_malloc=jemalloc # tcmalloc
@@ -28,37 +21,38 @@ install='tor.install'
 backup=('etc/tor/torrc'
         'etc/tor/torrc.d')
 
+[[ $_malloc = 'jemalloc' ]] && depends+=('jemalloc')
+[[ $_malloc = 'tcmalloc' ]] && depends+=('gperftools')
 [[ $_with_rust ]] && {
     makedepends+=('rust')
     _options="--enable-rust"
 }
 
 source=("git+https://git.torproject.org/tor.git#branch=${_branch:-master}"
-        'nodes' 'transparent_proxy' 'torrc' 'tor.logrotate'
-        'tor.service' 'tor.tmpfiles' 'tor.sysusers')
-
+        'torrc' 'nodes' 'transparent_proxy'
+        'tor.logrotate' 'tor.service' 'tor.tmpfiles' 'tor.sysusers')
 sha256sums=('SKIP'
+            '5e40baff0e6cdc487793453ab06155c2974cc8bb20096db98be641fcceccd328'
             'eb82c6eaef6cd2e9451b4096f4ce23b3ee91fc408cdebd3280698cbe1a3b7ca1'
             '7fbb63e9411eee2176964449a3d6809d16e1120152c6ff201ecea1d1f97f102b'
-            '5e40baff0e6cdc487793453ab06155c2974cc8bb20096db98be641fcceccd328'
             'd447227fcc2756778a1be143b8975d67b25ea15688cde2291185b3c71d0f6e34'
             '7f98569aefffead72e8712c1ad27de3fc2095575da003691b2513ca54042efbb'
             'ffef89a0eb10614e2350b4271ff83f92caa2301bfb97746b94dc7ab7f21d702b'
             '4282c8a4f1471b3be345b2024491af89f5eeaac071884f2a55988aef94a2054b')
 
 pkgver () {
-    cd "$srcdir/tor"
-    echo "$(grep AC_INIT configure.ac \
-        | sed 's/.*\[\(.*\)\].*/\1/;s/-/./g;s/.dev//').$(git rev-list --count origin/${_branch:-master})"
+    cd tor
+    git describe --long --tags origin/${_branch:-master} \
+        |sed -e 's/[tor\|dev].//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-     cd "$srcdir/tor"
+     cd tor
     ./autogen.sh
 }
 
 build() {
-    cd "$srcdir/tor"
+    cd tor
 
     [[ $_with_rust ]] && {
         git submodule update --init --recursive
@@ -67,19 +61,18 @@ build() {
 
     ./configure $_options \
         --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-        --enable-systemd --enable-zstd --with-malloc=${_malloc:-system}
-        #--enable-fragile-hardening
-
+        --enable-systemd --enable-zstd --enable-pic \
+        --with-malloc=${_malloc:-system}
     make
 }
 
 check() {
-    cd "$srcdir/tor"
+    cd tor
     make check
 }
 
 package() {
-    cd "$srcdir/tor"
+    cd tor
     make DESTDIR="$pkgdir" install
 
     rm -f "$pkgdir/etc/tor/tor-tsocks.conf"
