@@ -1,0 +1,17 @@
+pkgbase = tuxclocker-git
+	pkgdesc = Qt5 GPU overclocking GUI utility. Git version.
+	pkgver = r42.1593f5b
+	pkgrel = 1
+	url = https://github.com/Lurkki14/tuxclocker
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-base
+	depends = nvidia-settings
+	depends = nvidia-utils
+	conflicts = tuxclocker
+	source = git+https://github.com/Lurkki14/tuxclocker.git
+	md5sums = SKIP
+
+pkgname = tuxclocker-git
+
