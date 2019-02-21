@@ -1,6 +1,6 @@
 pkgbase = tpm2-abrmd-git
 	pkgdesc = Trusted Platform Module 2.0 Access Broker and Resource Management Daemon
-	pkgver = 2.1.0rc1.r2.a93cc0b
+	pkgver = 2.1.0.r1.642ca16
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-abrmd
 	arch = x86_64

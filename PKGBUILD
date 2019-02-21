@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 # Contributor: hexchain <i at hexchain.org>
 pkgname=tpm2-abrmd-git
-pkgver=2.1.0rc1.r2.a93cc0b
+pkgver=2.1.0.r1.642ca16
 pkgrel=1
 pkgdesc='Trusted Platform Module 2.0 Access Broker and Resource Management Daemon'
 arch=('x86_64')
@@ -23,7 +23,6 @@ pkgver() {
 
 prepare () {
 	cd "${pkgname%-git}"
-	sed --in-place 's|@CODE_COVERAGE_RULES@|include $(top_srcdir)/aminclude_static.am|' Makefile.am
 	./bootstrap
 }
 
@@ -46,5 +45,5 @@ package() {
 	cd "${pkgname%-git}"
 	make DESTDIR="$pkgdir" install
 	rm -r "$pkgdir/usr/lib/systemd/system-preset"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
