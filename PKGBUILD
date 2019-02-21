@@ -19,6 +19,7 @@ prepare() {
     cd "${srcdir}/wrapper_${pkgver}_src"
     
     _ver=$(java -version 2>&1 |awk -F '"' '/version/{print $2}')
+    msg "Detected Java $_ver"
     if [[ "$_ver" =~ ^1[0-2]\. ]]; then
         _target=10
         patch -Np0 -i "$srcdir/java10.patch"
