@@ -1,7 +1,7 @@
 pkgbase = python-catboost-gpu-git
 	pkgdesc = CatBoost is an open-source gradient boosting on decision trees library with categorical features support out of the box.
-	pkgver = 0.2
-	pkgrel = 2
+	pkgver = r5141.a8f5a19bc
+	pkgrel = 1
 	epoch = 0
 	url = https://catboost.yandex
 	arch = i686
@@ -11,7 +11,9 @@ pkgbase = python-catboost-gpu-git
 	depends = python-numpy
 	depends = cuda
 	source = catboost::git+https://github.com/catboost/catboost.git
+	source = cuda10deprecation.patch
 	md5sums = SKIP
+	md5sums = 44fc5e88fd55a6d19d45fa61cdca6b70
 
 pkgname = python-catboost-gpu-git
 
