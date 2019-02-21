@@ -1,0 +1,17 @@
+pkgbase = animwall-git
+	pkgdesc = An orchestrator using xwinwrap and mpv to launch animated/gif desktop wallpapers
+	pkgver = r1.2a35c5a
+	pkgrel = 1
+	url = https://github.com/pyamsoft/animwall
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = xwinwrap
+	depends = mpv
+	provides = animwall
+	conflicts = animwall
+	source = animwall::git+https://github.com/pyamsoft/animwall#branch=master
+	sha256sums = SKIP
+
+pkgname = animwall-git
+
