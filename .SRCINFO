@@ -1,6 +1,6 @@
 pkgbase = electron-cash-cashshuffle-git
 	pkgdesc = Lightweight Bitcoin Cash wallet with CashShuffle
-	pkgver = 3.3.5.dev.3.r404.g4cd698fb
+	pkgver = git
 	pkgrel = 1
 	url = http://www.cashshuffle.com/
 	arch = any
