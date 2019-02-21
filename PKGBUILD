@@ -1,18 +1,18 @@
 pkgname='pacaur-git'
 _pkgname="${pkgname/-git}"
 pkgver=4.7.90.26.gb75157f
-pkgrel=1
+pkgrel=2
 pkgdesc='An AUR helper that minimizes user interaction'
 arch=('any')
 url="https://github.com/E5ten/${_pkgname}"
 license=('ISC')
-depends=('auracle-git' 'expac' 'sudo' 'git')
+depends=('auracle-git' 'expac' 'sudo' 'git' 'jq')
 makedepends=('perl')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 backup=("etc/xdg/${_pkgname}/config")
 source=("git+https://github.com/E5ten/${_pkgname}.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
