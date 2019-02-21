@@ -3,16 +3,26 @@
 
 _pkgbasename=libcap
 pkgname=lib32-$_pkgbasename
-pkgver=2.25
-pkgrel=2
+pkgver=2.26
+pkgrel=1
 pkgdesc="POSIX 1003.1e capabilities (32-bit)"
 arch=(x86_64)
 url="http://www.kernel.org/pub/linux/libs/security/linux-privs/"
 license=('GPL2')
 depends=('lib32-attr' $_pkgbasename)
 makedepends=('gcc-multilib' 'linux-api-headers')
-source=(https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-${pkgver}.tar.xz)
-md5sums=('6666b839e5d46c2ad33fc8aa2ceb5f77')
+validpgpkeys=('38A644698C69787344E954CE29EE848AE2CCF3F4') # Andrew G. Morgan <morgan@kernel.org>
+source=(https://kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-$pkgver.tar.{xz,sign})
+md5sums=('968ac4d42a1a71754313527be2ab5df3'
+         'SKIP')
+
+prepare() {
+  cd "${srcdir}/${_pkgbasename}-${pkgver}"
+
+  # use our buildflags
+  sed -i "s/CFLAGS :=/CFLAGS += \$(CPPFLAGS) /" Make.Rules
+  sed -i "s/LDFLAGS :=/LDFLAGS +=/" Make.Rules
+}
 
 build() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
