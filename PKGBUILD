@@ -1,16 +1,16 @@
 # Maintainer: Pierre-Alain TORET <pierre-alain.toret@protonmail.com>
 pkgname=commento
-pkgver=1.5.0
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="A privacy-focused and bloat-free Disqus alternative"
 arch=("x86_64")
 makedepends=("go" "npm" "dep" "yarn")
 url="https://commento.io/"
 license=("MIT")
-source=("https://gitlab.com/commento/commento/-/archive/v1.5.0/commento-v1.5.0.tar.gz"
+source=("https://gitlab.com/commento/commento/-/archive/v$pkgver/commento-v$pkgver.tar.gz"
         "commento.sysusers")
 
-sha256sums=('c9af6d58a24c0960be33a23c283e1048e4a67e89417f578222e7c9ffe465051e'
+sha256sums=('28728b24c6b5c19dce492cc751f48193129ec1160472abcdaac599719362fa61'
             'ea958a8d23c2a0a10165662a938a085fae475fcedc768617c9b60511a1f71370')
 
 prepare() {
