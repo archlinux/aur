@@ -8,7 +8,7 @@ pkgdesc='A terminal based graphical activity monitor inspired by gtop and vtop'
 arch=(x86_64)
 url='https://github.com/cjbassi/gotop'
 license=(AGPL3)
-makedepends=("go>=1.11.0" "git")
+makedepends=("go" "git")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${pkgname}::git+https://github.com/cjbassi/gotop")
