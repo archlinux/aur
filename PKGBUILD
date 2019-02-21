@@ -2,7 +2,8 @@
 
 _pkgname='audible-activator'
 pkgname="${_pkgname}-git"
-pkgver=0.2.rg2e97c84
+epoch=1
+pkgver=0.2+r3.20181128.2e97c84
 pkgrel=1
 pkgdesc="A script to retrieve your activation data (activation_bytes) from Audible servers. Use it to play your aax or aax+ files downloaded from amazon audible. Needs chrome or chromium."
 url='http://github.com/inAudible-NG/audible-activator'
@@ -62,8 +63,9 @@ pkgver() {
   cd "${srcdir}/${_pkgname}"
   
   _ver="$(./audible-activator.py --version | awk '{print $2}')"
-  
-  _rev="$(git ls-remote | head -n1 | head -c7)"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -n 1 --format=tformat:%ci | awk '{print $1}' | tr -d '-')"
+  _hash="$(git rev-parse --short HEAD)"
   
   if [ -z "${_ver}" ]; then
     echo "$0: Error: Could not determine version." >&2
@@ -72,14 +74,24 @@ pkgver() {
   fi
   
   if [ -z "${_rev}" ]; then
-    echo "$0: Error: Could not determine SVN revision." >&2
+    echo "$0: Error: Could not determine git commit count." >&2
     false
     return 1
-  else
-    _rev="g${_rev}"
   fi
   
-  echo "${_ver}.r${_rev}"
+  if [ -z "${_hash}" ]; then
+    echo "$0: Error: Could not determine latest git commit hash." >&2
+    false
+    return 1
+  fi
+  
+  if [ -z "${_date}" ]; then
+    echo "$0: Error: Could not determine latest git commit date." >&2
+    false
+    return 1
+  fi
+  
+  echo "${_ver}+r${_rev}.${_date}.${_hash}"
 }
 
 package() {

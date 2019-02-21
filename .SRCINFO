@@ -1,7 +1,8 @@
 pkgbase = audible-activator-git
 	pkgdesc = A script to retrieve your activation data (activation_bytes) from Audible servers. Use it to play your aax or aax+ files downloaded from amazon audible. Needs chrome or chromium.
-	pkgver = 0.2.rg2e97c84
+	pkgver = 0.2+r3.20181128.2e97c84
 	pkgrel = 1
+	epoch = 1
 	url = http://github.com/inAudible-NG/audible-activator
 	arch = any
 	license = GPL3
@@ -10,9 +11,9 @@ pkgbase = audible-activator-git
 	depends = python2-selenium
 	depends = python2-urllib3
 	depends = chromium
-	provides = audible-activator=0.2.rg2e97c84
+	provides = audible-activator=0.2+r3.20181128.2e97c84
 	conflicts = audible-activator
-	replaces = audible-activator<=0.2.rg2e97c84
+	replaces = audible-activator<=0.2+r3.20181128.2e97c84
 	source = audible-activator::git+https://github.com/inAudible-NG/audible-activator
 	source = audible-activator.chromedriverpath.patch
 	source = audible-activator.sh
