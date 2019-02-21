@@ -3,7 +3,7 @@
 _pkgname=hacksaw
 pkgname=${_pkgname}-git
 pkgver=r52.d5254c2
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to select screen regions"
 arch=('x86_64')
 url="https://github.com/neXromancers/${_pkgname}"
@@ -25,7 +25,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  install -Dm755 target/release/${_pkgname} ${pkgdir}/usr/bin/${pkgname}
+  install -Dm755 target/release/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
 }
 
 # vim:set ts=2 sw=2 et:
