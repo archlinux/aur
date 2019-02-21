@@ -2,14 +2,14 @@
 # Contributor: Philipp A. <flying-sheep@web.de>
 # Contributor: theSander <aur@sandervanbalen.be>
 pkgname=rambox-os-git
-pkgver=r1027.b02a615
+pkgver=r1028.da3e283
 pkgrel=1
 pkgdesc="Free and Open Source messaging and emailing app that combines common web applications into one."
 arch=(i686 x86_64)
 url="https://github.com/TheGoddessInari/rambox"
 license=('GPL3')
 depends=(electron)
-makedepends=('jre8-openjdk' 'git' 'desktop-file-utils' 'ruby' 'npm' 'sencha-cmd-6')
+makedepends=('java-runtime=8' 'git' 'desktop-file-utils' 'ruby' 'npm' 'sencha-cmd-6')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "rambox" "rambox-bin")
 replaces=()
@@ -35,9 +35,21 @@ prepare() {
 }
 
 build() {
+  # get jdk 8
+  if [ ! -z "$(archlinux-java get | grep 8)" ]; then
+    _JDK="$(archlinux-java get)"
+  else
+    _JDK=$(archlinux-java status \
+      | grep java | grep 8 \
+      | sed -e 's/^[[:space:]]*//' | cut -d "/" -f1 \
+      | head -n1)
+  fi
+
+  # build
 	cd "$srcdir/${pkgname%-git}"
 	npm install
-	env PATH="/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH" npm run repack:linux64
+  # build with a jdk 8
+	env PATH="/usr/lib/jvm/$_JDK/jre/bin/:$PATH" npm run repack:linux64
 }
 
 package() {
