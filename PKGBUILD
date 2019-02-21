@@ -2,7 +2,7 @@
 pkgname=mojave-ct-icon-theme
 _upstream_version=0.9.7
 pkgver="v$_upstream_version"
-pkgrel=1
+pkgrel=2
 pkgdesc="macOs Mojave icon pack by zayronxio"
 url="https://github.com/zayronxio/Mojave-CT"
 license=("GPL3")
