@@ -1,8 +1,8 @@
 pkgbase = r-iranges
-	pkgdesc = S4 generic functions needed by many Bioconductor packages.
+	pkgdesc = Infrastructure for manipulating intervals on sequences
 	pkgver = 2.16.0
 	pkgrel = 1
-	url = https://bioconductor.org/packages/release/bioc/html/BiocGenerics.html
+	url = https://bioconductor.org/packages/release/bioc/html/IRanges.html
 	arch = x86_64
 	license = Artistic-2.0
 	depends = r
