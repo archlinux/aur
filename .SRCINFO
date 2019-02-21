@@ -1,19 +1,19 @@
 pkgbase = pacaur-git
 	pkgdesc = An AUR helper that minimizes user interaction
-	pkgver = 4.7.90
+	pkgver = 4.7.90.26.gb75157f
 	pkgrel = 1
-	url = https://github.com/rmarquis/pacaur
+	url = https://github.com/E5ten/pacaur
 	arch = any
 	license = ISC
 	makedepends = perl
-	depends = cower
+	depends = auracle-git
 	depends = expac
 	depends = sudo
 	depends = git
 	provides = pacaur
 	conflicts = pacaur
 	backup = etc/xdg/pacaur/config
-	source = git://github.com/rmarquis/pacaur.git
+	source = git+https://github.com/E5ten/pacaur.git
 	md5sums = SKIP
 
 pkgname = pacaur-git
