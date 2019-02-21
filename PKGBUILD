@@ -1,51 +1,52 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-spectral-cube
-pkgname=('python-spectral-cube' 'python2-spectral-cube' 'python-spectral-cube-doc')
-pkgver=0.4.3
+_pyname=${pkgbase#python-}
+pkgname=("python-${_pyname}" "python2-${_pyname}" "python-${_pyname}-doc")
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Library for reading and analyzing astrophysical spectral data cubes"
 arch=('i686' 'x86_64')
-url="http://spectral-cube.readthedocs.io/en/latest/"
+url="http://spectral-cube.readthedocs.io/"
 license=('BSD')
-makedepends=('cython' 'cython2' 'python-astropy-helpers>=3.1' 'python2-astropy-helpers' 'python-radio_beam' 'python-sphinx' 'python-sphinx-astropy')
-#checkdepends=('python-pytest-astropy' 'python2-pytest' 'python-radio_beam' 'python2-radio_beam')
-source=("https://files.pythonhosted.org/packages/source/s/spectral-cube/spectral-cube-${pkgver}.tar.gz")
-md5sums=('717815d68f42a9d76ba61d27931712e1')
+makedepends=('python-setuptools' 'python2-setuptools' 'python-astropy-helpers>=3.1' 'python2-astropy-helpers' 'python-radio_beam' 'python-sphinx-astropy')
+checkdepends=('python-pytest-astropy' 'python-bottleneck')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+md5sums=('ba7a7a29b0ecb45d949ab3bbab60f3fe')
 
 prepare() {
-    cd ${srcdir}/spectral-cube-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
     sed -i -e '/auto_use/s/True/False/' setup.cfg
 
-    cp -a ${srcdir}/spectral-cube-${pkgver}{,-py2}
+    cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
 }
 
 build() {
     msg "Building Python2"
-    cd ${srcdir}/spectral-cube-${pkgver}-py2
+    cd ${srcdir}/${_pyname}-${pkgver}-py2
     python2 setup.py build --use-system-libraries --offline
 
     msg "Building Python3"
-    cd ${srcdir}/spectral-cube-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
     python setup.py build --use-system-libraries --offline
 
     msg "Building Docs"
     python setup.py build_docs
 }
 
-#check() {
-#    cd ${srcdir}/spectral-cube-${pkgver}
-#    python setup.py test
-#
-#    cd ${srcdir}/spectral-cube-${pkgver}-py2
-#    python2 setup.py test
-#}
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+    python setup.py test
+
+#   cd ${srcdir}/${_pyname}-${pkgver}-py2
+#   python2 setup.py test
+}
 
 package_python2-spectral-cube() {
     depends=('python2>=2.7' 'python2-numpy>=1.8' 'python2-astropy>=1.0' 'python2-radio_beam')
     optdepends=('python2-bottleneck: Speeds up median and percentile operations on cubes with missing data'
                 'python-spectral-cube-doc: Documentation for Radio Beam'
                 'python-pytest-astropy: For testing')
-    cd ${srcdir}/spectral-cube-${pkgver}-py2
+    cd ${srcdir}/${_pyname}-${pkgver}-py2
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
@@ -56,7 +57,7 @@ package_python-spectral-cube() {
     depends=('python' 'python-numpy>=1.8' 'python-astropy>=1.0' 'python-radio_beam')
     optdepends=('python-bottleneck: Speeds up median and percentile operations on cubes with missing data'
                 'python-spectral-cube-doc: Documentation for Radio Beam')
-    cd ${srcdir}/spectral-cube-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
@@ -65,7 +66,7 @@ package_python-spectral-cube() {
 
 package_python-spectral-cube-doc() {
     pkgdesc="Documentation for Python Radio Beam module"
-    cd ${srcdir}/spectral-cube-${pkgver}/docs/_build
+    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
