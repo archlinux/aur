@@ -1,6 +1,6 @@
 pkgbase = plasma-theme-helium-git
 	pkgdesc = A translucent theme for Plasma 5
-	pkgver = 8.7.1
+	pkgver = 9.0.1
 	pkgrel = 1
 	url = https://github.com/mcder3/Helium-Plasma-Theme
 	arch = any

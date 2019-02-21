@@ -1,7 +1,7 @@
 # Maintainer: dundee81 <daniel.winiarski.dw@gmail.com>
 
 pkgname=('plasma-theme-helium-git')
-pkgver=8.7.1
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="A translucent theme for Plasma 5"
 arch=('any')
