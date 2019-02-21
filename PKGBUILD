@@ -2,14 +2,14 @@
 
 pkgname=rgbds
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Rednex GameBoy Development System"
 arch=('i686' 'x86_64')
 url="https://github.com/rednex/rgbds/"
 license=('MIT')
 depends=('libpng')
 source=("https://github.com/rednex/rgbds/releases/download/v$pkgver/rgbds-$pkgver.tar.gz")
-sha1sums=('82935f733aadf04c1f00594b70779ab4f7b6430a')
+sha1sums=('d57ca6b48ff405b2790ec7d3c2790718dd1630f1')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
