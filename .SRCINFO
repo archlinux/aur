@@ -1,7 +1,7 @@
 pkgbase = linvst-stable
 	pkgdesc = Bridge that allows Windows vst's to be used as Linux vst's in Linux vst capable DAW's
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/osxmidi/LinVst
 	install = linvst-stable.install
 	arch = x86_64

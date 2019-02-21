@@ -1,6 +1,6 @@
 pkgname=linvst-stable
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 provides=('linvst')
 conflicts=('linvst')
 pkgdesc="Bridge that allows Windows vst's to be used as Linux vst's in Linux vst capable DAW's"
