@@ -1,6 +1,6 @@
 # Maintainer: lambdadroid <lambdadroid@gmail.com>
 pkgname=me176c-factory
-pkgver=r2.ba03602
+pkgver=r3.c56789c
 pkgrel=1
 pkgdesc="Factory information loader for ASUS MeMO Pad 7 (ME176C/CX)"
 arch=(x86_64)
@@ -9,9 +9,9 @@ url="https://github.com/me176c-dev/$_repo"
 license=('MIT')
 makedepends=(meson)
 optdepends=('bluez-utils: to set Bluetooth MAC address on boot')
-_revision=ba036028458d7b14658554680fb7108fb3d77349
+_revision=c56789c7fa5ee9411320a50b21c8b3d98c8de3ac
 source=("$url/archive/$_revision.tar.gz")
-sha256sums=('72716e4e9c697e82d80016cd5b5914b7ff140ed2da536a53e601d47f760d804f')
+sha256sums=('094d55e5fdf1c624abe32ce9e929c220a1580b530cb0d4e1649ed556d4f927c1')
 
 build() {
     arch-meson "$_repo-$_revision/factory" build
