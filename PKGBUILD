@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-abc-qt
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin ABC with bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt"
 arch=('i686' 'x86_64')
 url="https://bitcoinabc.org"
@@ -67,7 +67,7 @@ package() {
   install -Dm644 contrib/debian/bitcoin-qt.desktop \
     "$pkgdir"/usr/share/applications/bitcoin.desktop
   install -Dm644 share/pixmaps/bitcoin-abc128.png \
-    "$pkgdir"/usr/share/pixmaps/bitcoin128.png
+    "$pkgdir"/usr/share/pixmaps/bitcoin-abc128.png
 
   msg2 'Installing license...'
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname}"
