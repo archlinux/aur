@@ -4,14 +4,14 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=lastpass-cli-git
-pkgver=1.2.2.r4.g8d086f6
+pkgver=1.3.1.r8.gb2095ad
 pkgrel=1
 pkgdesc="LastPass command line interface tool (git version)"
 arch=('i686' 'x86_64')
 url="https://lastpass.com/"
 license=('GPL2')
 depends=('openssl' 'curl' 'libxml2')
-makedepends=('asciidoc' 'git' 'cmake')
+makedepends=('git' 'asciidoc' 'cmake' 'bash-completion')
 optdepends=('xclip: clipboard support'
             'pinentry: securely read passwords')
 provides=("${pkgname%-git}")
@@ -42,4 +42,7 @@ check() {
 package() {
     cd "${srcdir}/${pkgname%-git}/build"
     make DESTDIR="${pkgdir}/" install install-doc
+
+    install -Dm0644 ../contrib/lpass_zsh_completion "${pkgdir}"/usr/share/zsh/site-functions/_lpass
+    install -Dm0644 ../contrib/completions-lpass.fish "${pkgdir}"/usr/share/fish/completions/lpass.fish
 }
