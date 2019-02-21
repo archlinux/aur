@@ -1,19 +1,18 @@
 # Maintainer: Moritz Schoenherr <moritz.schoenherr[at]gmail[dot]com>
 pkgname=crawl
-pkgver=0.22.1
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Crawl stonesoup, curses version"
 url="http://crawl.develz.org/"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('lua51' 'sqlite' 'zlib')
+depends=('lua51' 'sqlite' 'zlib' 'python-pyaml')
 makedepends=('git')
 conflicts=()
 replaces=()
 backup=()
 source=("https://github.com/crawl/$pkgname/archive/$pkgver.tar.gz")
-
-md5sums=('d73637467a621b5cbf7eecbc065c054f')
+md5sums=('dbbb6101f5892a66050c7386c3eb5e2a')
 
 prepare() {
 

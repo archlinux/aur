@@ -1,6 +1,6 @@
 pkgbase = crawl
 	pkgdesc = Crawl stonesoup, curses version
-	pkgver = 0.22.1
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = http://crawl.develz.org/
 	arch = i686
@@ -10,8 +10,9 @@ pkgbase = crawl
 	depends = lua51
 	depends = sqlite
 	depends = zlib
-	source = https://github.com/crawl/crawl/archive/0.22.1.tar.gz
-	md5sums = d73637467a621b5cbf7eecbc065c054f
+	depends = python-pyaml
+	source = https://github.com/crawl/crawl/archive/0.23.0.tar.gz
+	md5sums = dbbb6101f5892a66050c7386c3eb5e2a
 
 pkgname = crawl
 
