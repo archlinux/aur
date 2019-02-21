@@ -21,13 +21,13 @@ build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	make -f Makefile-embed-6432 DESTDIR="${pkgdir}" all
 	cd "convert"
-	sh makegtk3
-	sh makegtk3tree
+	bash makegtk3
+	bash makegtk3tree
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	make -f Makefile-embed-6432 DESTDIR="${pkgdir}" VST_DIR="${pkgdir}/usr/share/${_pkgname}"  install
+	make -f Makefile-embed-6432 DESTDIR="${pkgdir}" VST_DIR="${pkgdir}/usr/share/linvst"  install
 	install -m 755 "convert/linvstconvert" "${pkgdir}/usr/bin/"
 	install -m 755 "convert/linvstconverttree" "${pkgdir}/usr/bin/"
 }
