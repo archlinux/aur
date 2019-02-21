@@ -1,7 +1,7 @@
 # Maintainer: Ashymad <czilukim@o2.pl>
 pkgname=sfk
 _version=1.9.4
-_revision=0
+_revision=2
 pkgver=${_version}.${_revision}
 pkgrel=1
 pkgdesc="Swiss File Knife - A Command Line Tools Collection"
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('gcc-libs')
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/${pkgver}/sfk-${_version}.tar.gz")
-sha256sums=('61b9f35d5fd6e17271d2e6101e312770dbfb2f5f2d4f223cc30b1f29ef497f9e')
+sha256sums=('103b0877ad84787a73d551c241258b1119aef229cbb56c130795a3760d516f00')
 
 prepare() {
 	cd "$pkgname-$_version"
