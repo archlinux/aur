@@ -35,7 +35,7 @@ pkgver() {
 
 build() {
 	cd "${pkgname}"
-	./autogen.sh
+	./autogen.sh --prefix=/usr --libexecdir=/usr/lib/ibus
 	./configure --prefix=/usr --libexecdir=/usr/lib/ibus
 	make
 }
@@ -47,6 +47,12 @@ build() {
 
 package() {
 	cd "${pkgname}"
+	#remove local schema if it exists because it may conflict with /usr/share/glib-2.0/schemas/org.freedesktop.ibus.engine.typing-booster.gschema.xml
+	SCHEMA="/usr/local/share/glib-2.0/schemas/org.freedesktop.ibus.engine.typing-booster.gschema.xml"
+	if [ -f $SCHEMA ]
+	then
+		rm $SCHEMA
+	fi
+	#install
 	make DESTDIR="$pkgdir/" install
-	glib-compile-schemas /usr/share/glib-2.0/schemas/
 }
