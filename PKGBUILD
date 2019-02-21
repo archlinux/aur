@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://pyspeckit.readthedocs.io/"
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-astropy' 'python-astropy-helpers>=3.1' 'python2-astropy-helpers' 'python-sphinx-astropy')
-#checkdepends=('python-pytest-astropy' 'python2-pytest' 'python2-astropy' 'python2-spectral-cube' 'python-spectral-cube')
+checkdepends=('tk' 'python-pytest-astropy' 'python-spectral-cube')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'correct_doc_examples.patch')
 md5sums=('e276915c2865e0e64dc132a3b9cb0b23'
@@ -36,15 +36,15 @@ build() {
     python setup.py build_docs
 }
 
-#check() {
-#    msg "Checking Python3"
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#    python setup.py test
-#
-#    msg "Checking Python2"
-#    cd ${srcdir}/${_pyname}-${pkgver}-py2
-#    python2 setup.py test
-#}
+check() {
+#   msg "Checking Python3"
+    cd ${srcdir}/${_pyname}-${pkgver}
+    python setup.py test
+
+#   msg "Checking Python2"
+#   cd ${srcdir}/${_pyname}-${pkgver}-py2
+#   python2 setup.py test
+}
 
 package_python2-pyspeckit() {
     depends=('python2-numpy>=1.4' 'python2-astropy>=1.0' 'python2-matplotlib>=1.4')
@@ -52,7 +52,7 @@ package_python2-pyspeckit() {
                 'python2-atpy'
                 'python2-spectral-cube'
                 'python2-lmfit'
-                'python-pyspeckit-doc: Documentation for PySpeckit'
+                'python-pyspeckit-doc: Documentation for PySpecKit'
                 'python2-pytest: For testing')
     cd ${srcdir}/${_pyname}-${pkgver}-py2
 
@@ -70,8 +70,7 @@ package_python-pyspeckit() {
                 'python-atpy'
                 'python-spectral-cube'
                 'python-lmfit'
-                'python-pyspeckit-doc: Documentation for PySpeckit'
-                'python-pytest: For testing')
+                'python-pyspeckit-doc: Documentation for PySpecKit')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" licenses/*
@@ -80,7 +79,7 @@ package_python-pyspeckit() {
 }
 
 package_python-pyspeckit-doc() {
-    pkgdesc="Documentation for Python PySpeckit module"
+    pkgdesc="Documentation for Python PySpecKit module"
     cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
