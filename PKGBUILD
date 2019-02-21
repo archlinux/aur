@@ -4,7 +4,7 @@
 # Contributor: skunk
 
 pkgname=ultrastardx-git
-pkgver=r868.a9bc06bd
+pkgver=r895.6ee72582
 pkgrel=1
 pkgdesc='Free and open source karaoke game. (GIT)'
 arch=('i686' 'x86_64')
@@ -21,12 +21,9 @@ optdepends=('ultrastar-creator: Qt program to generate USDX songs'
 provides=('ultrastardx')
 conflicts=('ultrastardx')
 groups=('usdx')
-source=("git://github.com/UltraStar-Deluxe/USDX.git"
-        "ultrastardx.sh"
-)
+source=("git://github.com/UltraStar-Deluxe/USDX.git")
 
-sha256sums=('SKIP'
-            '031df0e2201f5a568a31c8f500a6a31a4bdebd2c6ca26ca7e38839d30ca199f3')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/USDX"
@@ -43,7 +40,7 @@ build() {
   cd "${srcdir}/USDX"
   ./configure --prefix=/usr --enable-debug
   make LDFLAGS="-O1 --sort-common --as-needed -z relro"
-  gendesk -f -n --pkgname ultrastardx --name "UltraStar Deluxe" --exec "ultrastardx.sh" --pkgdesc "Karaoke game" --categories 'Games'
+  gendesk -f -n --pkgname ultrastardx --name "UltraStar Deluxe" --exec "ultrastardx" --pkgdesc "Karaoke game" --categories 'Games'
 }
 
 package() {
@@ -51,6 +48,5 @@ package() {
   touch COPYING.txt
   make DESTDIR="$pkgdir/" install
   install -Dm644 "ultrastardx.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm755 "${srcdir}/ultrastardx.sh" "${pkgdir}/usr/bin/ultrastardx.sh"
   install -Dm644 "${srcdir}/USDX/game/resources/icons/ultrastardx-icon.png" "${pkgdir}/usr/share/pixmaps/ultrastardx.png"
 }
