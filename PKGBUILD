@@ -24,5 +24,5 @@ package() {
   bsdtar -xv -C "${pkgdir}" -f "${srcdir}/data.tar.xz"
 
   mkdir -p ${pkgdir}/usr/bin/
-  ln -s /opt/Simplenote/${pkgname%-electron-bin} ${pkgdir}/usr/bin/${pkgname%-electron-bin}
+  ln -s /opt/Simplenote/${pkgname%-electron-bin} ${pkgdir}/usr/bin
 }
