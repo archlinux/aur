@@ -2,12 +2,12 @@
 
 pkgname=tuxclocker
 pkgver=0.1.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Qt5 GPU overclocking GUI utility."
 arch=('x86_64')
 url="https://github.com/Lurkki14/tuxclocker"
 license=('GPL3')
-makedepends=('qt5-base' 'make')
+makedepends=('qt5-base')
 depends=('nvidia-settings' 'nvidia-utils')
 conflicts=('tuxclocker-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
