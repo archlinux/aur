@@ -1,0 +1,18 @@
+pkgbase = home-assistant-cli
+	pkgdesc = Work with a local or a remote Home Assistant instance directly from the command-line.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/home-assistant/home-assistant-cli
+	arch = any
+	license = Apache
+	checkdepends = python
+	makedepends = python-setuptools
+	depends = python-tabulate
+	depends = python-idna
+	depends = python-jsonpath-rw
+	depends = python-click-log
+	source = https://github.com/home-assistant/home-assistant-cli/archive/0.6.0.tar.gz
+	sha256sums = 7713b54b3545ba5805b264bd770c5ab8f263dd4fcc7ae1ee47b788f5026ea9b1
+
+pkgname = home-assistant-cli
+
