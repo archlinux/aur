@@ -9,6 +9,7 @@ pkgbase = pi-hole-standalone
 	depends = pi-hole-ftl
 	depends = net-tools
 	depends = iproute2
+	depends = bind-tools
 	conflicts = pi-hole-server
 	backup = etc/pihole/whitelist.txt
 	backup = etc/pihole/blacklist.txt
