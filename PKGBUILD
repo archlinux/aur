@@ -1,19 +1,19 @@
 # Maintainer: Julian Thonhauser <julthon@gmail.com>
-pkgname=macos-sierra-ct-icon-theme
-_upstream_version=0.9.6.4
+pkgname=mojave-ct-icon-theme
+_upstream_version=0.9.7
 pkgver="v$_upstream_version"
 pkgrel=1
-pkgdesc="macOs Sierra icon pack by zayronxio"
-url="https://github.com/zayronxio/Macos-sierra-CT"
+pkgdesc="macOs Mojave icon pack by zayronxio"
+url="https://github.com/zayronxio/Mojave-CT"
 license=("GPL3")
 arch=(any)
 depends=()
-source=("$pkgname-$pkgver.zip::https://github.com/zayronxio/Macos-sierra-CT/archive/$pkgver.zip")
-sha512sums=('663e382d924ddb099ecac1d52ae2b5105438c89b1930955e09cb59a65ab21a9e44d727f8b20cbda978f94fc39d23acd1e03c42c1a982462e094ab87cffbc2bad')
+source=("$pkgname-$pkgver.zip::https://github.com/zayronxio/Mojave-CT/archive/$pkgver.zip")
+sha512sums=('85b75ea878ffb9802c25b7e0ac5e9cc089c56c0c79deb8ad395a6aae9572d380a47c84580ccd8af9172486bc1a691b58328ede670de87c593967b5a596ba082d')
 
 package() {
   _instdir="$pkgdir/usr/share/icons"
   mkdir -p "$_instdir"
-  cp -dpr --no-preserve=ownership "$srcdir/Macos-sierra-CT-$_upstream_version" "$_instdir/macos-sierra-ct"
+  cp -dpr --no-preserve=ownership "$srcdir/Mojave-CT-$_upstream_version" "$_instdir/mojave-ct"
 }
 
