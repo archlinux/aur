@@ -20,6 +20,7 @@
 #                        OR IN /etc/dnsmasq.conf                              #
 ###############################################################################
 
+listen-address=127.0.0.1
 addn-hosts=/etc/pihole/gravity.list
 addn-hosts=/etc/pihole/local.list
 addn-hosts=/etc/pihole/black.list
