@@ -5,7 +5,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=git-extras-git
-pkgver=4.6.0.r1.g2590998
+pkgver=4.7.0.r3.g5b0a9d2
 pkgrel=1
 pkgdesc="GIT utilities -- repo summary, repl, changelog population, author commit percentages and more"
 arch=('any')
