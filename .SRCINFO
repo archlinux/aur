@@ -1,7 +1,7 @@
 pkgbase = linux-me176c
-	pkgver = 4.19.20
-	pkgrel = 0
-	url = https://github.com/me176c-dev/me176c-archlinux
+	pkgver = 4.19.24
+	pkgrel = 1
+	url = https://github.com/me176c-dev/linux-me176c
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -13,7 +13,7 @@ pkgbase = linux-me176c
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = archlinux-linux::git+https://github.com/me176c-dev/me176c-kernel.git#branch=arch-4.19
+	source = archlinux-linux::git+https://github.com/me176c-dev/linux-me176c.git#tag=4.19.24
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -36,6 +36,7 @@ pkgname = linux-me176c
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = me176c-acpi: for full functionality (touchscreen, battery/charging, ...)
 	optdepends = me176c-firmware: WiFi/Bluetooth firmware
+	optdepends = me176c-factory: to set WiFi/Bluetooth factory MAC address
 	backup = etc/mkinitcpio.d/linux-me176c.preset
 
 pkgname = linux-me176c-headers

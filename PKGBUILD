@@ -2,17 +2,17 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-me176c         # Build kernel with a different name
-pkgver=4.19.20
-pkgrel=0
+pkgver=4.19.24
+pkgrel=1
 arch=(x86_64)
-url="https://github.com/me176c-dev/me176c-archlinux"
+url="https://github.com/me176c-dev/linux-me176c"
 license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
 _srcname=archlinux-linux
 source=(
-  "$_srcname::git+https://github.com/me176c-dev/me176c-kernel.git#branch=arch-4.19"
-  #"$_srcname::git+https://github.com/me176c-dev/me176c-kernel.git#tag=arch-$pkgver-$pkgrel"
+  #"$_srcname::git+https://github.com/me176c-dev/linux-me176c.git#branch=4.19"
+  "$_srcname::git+https://github.com/me176c-dev/linux-me176c.git#tag=$pkgver"
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -67,7 +67,8 @@ _package() {
   depends=(coreutils linux-firmware kmod mkinitcpio)
   optdepends=('crda: to set the correct wireless channels of your country'
     'me176c-acpi: for full functionality (touchscreen, battery/charging, ...)'
-    'me176c-firmware: WiFi/Bluetooth firmware')
+    'me176c-firmware: WiFi/Bluetooth firmware'
+    'me176c-factory: to set WiFi/Bluetooth factory MAC address')
   backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=linux.install
 
