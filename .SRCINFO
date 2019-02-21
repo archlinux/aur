@@ -1,6 +1,6 @@
 pkgbase = fancontrol-gui-git
 	pkgdesc = GUI for the fancontrol script and systemd service
-	pkgver = v0.5.r48.g25c1a50
+	pkgver = v0.6.r0.g06e4467
 	pkgrel = 1
 	url = https://github.com/Maldela/Fancontrol-GUI
 	arch = i686
