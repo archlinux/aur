@@ -7,12 +7,14 @@
 # Contributor: Alec Thomas
 
 pkgname=mongodb
+# #.<odd number>.# releases are unstable development/testing
 pkgver=4.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
 url="https://www.${pkgname}.com/"
 license=("custom:SSPL")
+# lsb-release::/etc/lsb-release required by src/mongo/util/processinfo_linux.cpp::getLinuxDistro()
 depends=("curl" "libstemmer" "lsb-release" "pcre" "wiredtiger>=3.1.0.20190207" "yaml-cpp")
 optdepends=("${pkgname}-tools: mongoimport, mongodump, mongotop, etc")
 makedepends=("libpcap" "ncurses" "python2-cheetah" "python2-regex" "python2-requests" "python2-setuptools" "python2-typing" "python2-yaml" "readline" "scons")
@@ -37,9 +39,13 @@ _scons_args=(
   --use-sasl-client
   --ssl
   --disable-warnings-as-errors
-  # --use-system-asio     # https://jira.${pkgname}.org/browse/SERVER-21839
-  # --use-system-icu
+  # --use-system-asio     # https://jira.mongodb.org/browse/SERVER-21839 marked as fixed, but still doesn't compile.  Mongodb uses custom patches.
+  # --use-system-icu      # Doesn't compile
   --use-system-tcmalloc   # in gperftools
+  # --use-system-boost    # Doesn't compile
+  # --use-system-valgrind # Compiles, but namcap says not used
+  # --use-system-sqlite   #   "
+  # --use-system-mongo-c  # Doesn't compile
 )
 
 prepare() {
