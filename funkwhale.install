@@ -1,0 +1,10 @@
+post_install() {
+  echo "Follow instructions on the upstream page or on the Arch Wiki for setting up the Funkwhale server:"
+  echo "https://wiki.archlinux.org/index.php/Funkwhale"
+}
+
+post_upgrade() {
+  echo "Follow instructions on the upstream page or on the Arch Wiki for updating"
+  echo "If updating from v0.17, the default ip has been changed to 127.0.0.1 and the env file has been moved to /srv/funkwhale/config/env"
+}
+

@@ -1,0 +1,21 @@
+[Unit]
+Description=Funkwhale celery worker
+After=redis.service postgresql.service
+PartOf=funkwhale.service
+
+[Service]
+User=funkwhale
+# adapt this depending on the path of your funkwhale installation
+EnvironmentFile=/srv/funkwhale/config/env
+# Celery workers handle background tasks (such file imports or federation
+# messaging). The more processes a worker gets, the more tasks
+# can be processed in parallel. However, more processes also means
+# a bigger memory footprint.
+# By default, a worker will span a number of process equal to your number
+# of CPUs. You can adjust this, by explicitly setting the --concurrency
+# flag:
+#   celery -A funkwhale_api.taskapp worker -l INFO --concurrency=4
+ExecStart=/usr/bin/celery -A funkwhale_api.taskapp worker -l INFO --workdir=/usr/share/webapps/funkwhale/api
+
+[Install]
+WantedBy=multi-user.target

@@ -1,8 +1,8 @@
 # Maintainer: getzze <getzze at gmail dot com>
 
 pkgname=funkwhale
-pkgver=0.17
-pkgrel=2
+pkgver=0.18
+pkgrel=1
 pkgdesc="A self-hosted, modern free and open-source music server, heavily inspired by Grooveshark."
 arch=(any)
 url="https://funkwhale.audio/"
@@ -10,12 +10,11 @@ license=(GPL3)
 optdepends=('apache: to use the Apache web server'
             'certbot-apache: for the server to be accessible from outside'
             'nginx: to use nginx web server')
-depends=('ffmpeg' 'libjpeg' 'postgresql' 'python' 'youtube-dl'
+depends=('ffmpeg' 'libjpeg' 'postgresql' 'python'
         'ipython'
         'mod_xsendfile'
         'python-django>=2'
         'python-django-environ'
-        'python-whitenoise'
         'python-pillow'
         'python-django-allauth'
         'python-psycopg2'
@@ -25,10 +24,8 @@ depends=('ffmpeg' 'libjpeg' 'postgresql' 'python' 'youtube-dl'
         'python-celery'
         'python-django-cors-headers'
         'python-musicbrainzngs'
-        'python-django-rest-framework'
+        'python-django-rest-framework>=3.9'
         'python-django-rest-framework-jwt'
-        'python-oauth2client'
-        'python-google-api-python-client'
         'python-pendulum'
         'python-persisting-theory'
         'python-django-versatile-imagefield'
@@ -40,7 +37,6 @@ depends=('ffmpeg' 'libjpeg' 'postgresql' 'python' 'youtube-dl'
         'python-django-taggit'
         'python-pymemoize'
         'python-django-dynamic-preferences'
-        'python-pyacoustid'
         'python-raven'
         'python-magic-git'
         'python-ffmpeg'
@@ -53,6 +49,7 @@ depends=('ffmpeg' 'libjpeg' 'postgresql' 'python' 'youtube-dl'
         'python-ldap'
         'python-django-auth-ldap'
         'python-service-identity'
+        'python-pydub'
 )
 makedepends=(git)
 _source_api="https://code.eliotberriot.com/funkwhale/funkwhale/builds/artifacts/${pkgver}/download?job="
@@ -61,32 +58,25 @@ source=("${pkgname}-${pkgver}-api.zip::${_source_api}build_api"
         "${pkgname}-${pkgver}-front.zip::${_source_api}build_front"
         "${_source_env}funkwhale_proxy.conf"
         "${_source_env}nginx.template"
-        "${_source_env}funkwhale-beat.service"
-        "${_source_env}funkwhale-worker.service"
-        "${_source_env}funkwhale-server.service"
+        "funkwhale-beat.service"
+        "funkwhale-worker.service"
+        "funkwhale-server.service"
         "apache-funkwhale.conf"
         "env-template"
         "funkwhale.service"
 )
-sha256sums=('8211b9ff86cde6557ff8b3904ffeb7380e18e47b7b4b76c91f30986d284911a3'
-            '3578e1c60da578681c4e60a94dde1e18511f2455814c980b24748c87ffb8b4a2'
+sha256sums=('bd39230b27e22d1a41cd058979f67cc1727b5ea845ce32b29e8de99bf6d364f3'
+            '20faddbf6a74722826eb889df4ebd4fc18810ff80d3741608b1d86d17e4f408a'
             '2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2'
-            '0d022981f24c9ed8306751d905e85a2fa086c124d7284cc765a3a83814e6efd8'
-            'b30fd8f119a53a424c9372a3fdcaad3175f33f242b498b0348c697942573588d'
-            '976ddd2f409efa367e8f53d96092007d0886a473507294a3092a96e885b5e59a'
-            'b2ff1a2911883416b3a8c35a3e579d493c0bcf4039604020a206c6e8b5fc0ba7'
-            '26f91e1b22d7c46a6e26c25889babb8d5e77f7a4aec06bd61833cf953fd48f4a'
-            '90c9a2b1ef1ac58589eda10c09a9af8141813aa6b661251eb571a1f757bea8c5'
-            '2aa5991083ef375b3440e0e0cff6e7de622137bcac1fb852d62f481aa8a5700d')
+            'ee571b8a30b968849fcf5c7b2588f298a3046609fe9792dd0b59024899dfea3a'
+            'a964a7802252d20a3319e2131c27ec307ad4f454921c2db31971c080150d7c9b'
+            '0e6d7c96b7c1ec63794214decb1f2e7dd112a22b02e55555cf98c2a573014af6'
+            '4a28ddf6a6ba8ec28c10a164f82e3d5e5904d6dfe68ae8852428a589cee210c5'
+            'dcc7a76ff136db29a830f9228a88b2ab64639d44ef2d8db363315fe5828efec9'
+            'c2ee8160e2f4f87a2d4fe46136ffb8ea14422dc599db3eca4341e48db26d72ad'
+            '01104122e3df765735b1062aa15e7a73c7949f2d9b7332c0e02e02db66345349')
+install=${pkgname}.install
 
-prepare() {
-  cd "$srcdir"
-  
-  sed -i 's#WorkingDirectory=/srv/funkwhale/api#WorkingDirectory=/usr/share/webapps/funkwhale/api#' funkwhale-*.service
-  sed -i 's#EnvironmentFile=/srv/funkwhale/config/.env#EnvironmentFile=/etc/webapps/funkwhale/config/.env#' funkwhale-*.service
-  sed -i 's#ExecStart=/srv/funkwhale/virtualenv/bin/#ExecStart=/usr/bin/#' funkwhale-*.service
-  sed -i 's#PartOf=funkwhale.target#PartOf=funkwhale.service#' funkwhale-*.service
-}
 
 build() {
   cd "$srcdir"
@@ -97,10 +87,10 @@ package() {
   cd "$srcdir"
 
   # install project
-  install -d "$pkgdir"/usr/share/webapps/${pkgname}
+  install -dm0755 -o root "$pkgdir"/usr/share/webapps/${pkgname}
   cp -R api "$pkgdir"/usr/share/webapps/${pkgname}/.
   cp -R front "$pkgdir"/usr/share/webapps/${pkgname}/.
-  chown -R funkwhale:funkwhale "$pkgdir"/usr/share/webapps/${pkgname}
+  chmod 755 -R "$pkgdir"/usr/share/webapps/${pkgname}/api/
 
   install -d "$pkgdir"/etc/webapps/${pkgname}/config
   install -Dm644 funkwhale_proxy.conf "$pkgdir"/etc/webapps/${pkgname}/.
@@ -113,7 +103,7 @@ package() {
   install -Dm644 funkwhale-worker.service "$pkgdir/usr/lib/systemd/system/funkwhale-worker.service"
   install -Dm644 funkwhale-server.service "$pkgdir/usr/lib/systemd/system/funkwhale-server.service"
 
-  echo 'u funkwhale - "Funkwhale music server" /srv/funkwhale' |
+  echo -e 'u funkwhale - "Funkwhale music server" /srv/funkwhale\nm funkwhale http' |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   echo 'd /srv/funkwhale 0775 funkwhale funkwhale' |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"

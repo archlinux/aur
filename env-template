@@ -88,7 +88,7 @@ STATIC_ROOT=/srv/funkwhale/data/static
 # Update it to match the domain that will be used to reach your funkwhale
 # instance
 # Example: DJANGO_ALLOWED_HOSTS=funkwhale.yourdomain.com
-DJANGO_ALLOWED_HOSTS=127.0.0.2,funkwhale.local
+DJANGO_ALLOWED_HOSTS=127.0.0.1,funkwhale.local
 
 # which settings module should django use?
 # You don't have to touch this unless you really know what you're doing
@@ -138,4 +138,4 @@ MUSIC_DIRECTORY_SERVE_PATH=/srv/funkwhale/data/music
 FUNKWHALE_FRONTEND_PATH=/usr/share/webapps/funkwhale/front/dist
 
 # Nginx related configuration
-NGINX_MAX_BODY_SIZE=30M
+NGINX_MAX_BODY_SIZE=100M

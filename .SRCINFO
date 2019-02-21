@@ -1,8 +1,9 @@
 pkgbase = funkwhale
 	pkgdesc = A self-hosted, modern free and open-source music server, heavily inspired by Grooveshark.
-	pkgver = 0.17
-	pkgrel = 2
+	pkgver = 0.18
+	pkgrel = 1
 	url = https://funkwhale.audio/
+	install = funkwhale.install
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -10,12 +11,10 @@ pkgbase = funkwhale
 	depends = libjpeg
 	depends = postgresql
 	depends = python
-	depends = youtube-dl
 	depends = ipython
 	depends = mod_xsendfile
 	depends = python-django>=2
 	depends = python-django-environ
-	depends = python-whitenoise
 	depends = python-pillow
 	depends = python-django-allauth
 	depends = python-psycopg2
@@ -25,10 +24,8 @@ pkgbase = funkwhale
 	depends = python-celery
 	depends = python-django-cors-headers
 	depends = python-musicbrainzngs
-	depends = python-django-rest-framework
+	depends = python-django-rest-framework>=3.9
 	depends = python-django-rest-framework-jwt
-	depends = python-oauth2client
-	depends = python-google-api-python-client
 	depends = python-pendulum
 	depends = python-persisting-theory
 	depends = python-django-versatile-imagefield
@@ -40,7 +37,6 @@ pkgbase = funkwhale
 	depends = python-django-taggit
 	depends = python-pymemoize
 	depends = python-django-dynamic-preferences
-	depends = python-pyacoustid
 	depends = python-raven
 	depends = python-magic-git
 	depends = python-ffmpeg
@@ -53,29 +49,30 @@ pkgbase = funkwhale
 	depends = python-ldap
 	depends = python-django-auth-ldap
 	depends = python-service-identity
+	depends = python-pydub
 	optdepends = apache: to use the Apache web server
 	optdepends = certbot-apache: for the server to be accessible from outside
 	optdepends = nginx: to use nginx web server
-	source = funkwhale-0.17-api.zip::https://code.eliotberriot.com/funkwhale/funkwhale/builds/artifacts/0.17/download?job=build_api
-	source = funkwhale-0.17-front.zip::https://code.eliotberriot.com/funkwhale/funkwhale/builds/artifacts/0.17/download?job=build_front
-	source = https://code.eliotberriot.com/funkwhale/funkwhale/raw/0.17/deploy/funkwhale_proxy.conf
-	source = https://code.eliotberriot.com/funkwhale/funkwhale/raw/0.17/deploy/nginx.template
-	source = https://code.eliotberriot.com/funkwhale/funkwhale/raw/0.17/deploy/funkwhale-beat.service
-	source = https://code.eliotberriot.com/funkwhale/funkwhale/raw/0.17/deploy/funkwhale-worker.service
-	source = https://code.eliotberriot.com/funkwhale/funkwhale/raw/0.17/deploy/funkwhale-server.service
+	source = funkwhale-0.18-api.zip::https://code.eliotberriot.com/funkwhale/funkwhale/builds/artifacts/0.18/download?job=build_api
+	source = funkwhale-0.18-front.zip::https://code.eliotberriot.com/funkwhale/funkwhale/builds/artifacts/0.18/download?job=build_front
+	source = https://code.eliotberriot.com/funkwhale/funkwhale/raw/0.18/deploy/funkwhale_proxy.conf
+	source = https://code.eliotberriot.com/funkwhale/funkwhale/raw/0.18/deploy/nginx.template
+	source = funkwhale-beat.service
+	source = funkwhale-worker.service
+	source = funkwhale-server.service
 	source = apache-funkwhale.conf
 	source = env-template
 	source = funkwhale.service
-	sha256sums = 8211b9ff86cde6557ff8b3904ffeb7380e18e47b7b4b76c91f30986d284911a3
-	sha256sums = 3578e1c60da578681c4e60a94dde1e18511f2455814c980b24748c87ffb8b4a2
+	sha256sums = bd39230b27e22d1a41cd058979f67cc1727b5ea845ce32b29e8de99bf6d364f3
+	sha256sums = 20faddbf6a74722826eb889df4ebd4fc18810ff80d3741608b1d86d17e4f408a
 	sha256sums = 2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2
-	sha256sums = 0d022981f24c9ed8306751d905e85a2fa086c124d7284cc765a3a83814e6efd8
-	sha256sums = b30fd8f119a53a424c9372a3fdcaad3175f33f242b498b0348c697942573588d
-	sha256sums = 976ddd2f409efa367e8f53d96092007d0886a473507294a3092a96e885b5e59a
-	sha256sums = b2ff1a2911883416b3a8c35a3e579d493c0bcf4039604020a206c6e8b5fc0ba7
-	sha256sums = 26f91e1b22d7c46a6e26c25889babb8d5e77f7a4aec06bd61833cf953fd48f4a
-	sha256sums = 90c9a2b1ef1ac58589eda10c09a9af8141813aa6b661251eb571a1f757bea8c5
-	sha256sums = 2aa5991083ef375b3440e0e0cff6e7de622137bcac1fb852d62f481aa8a5700d
+	sha256sums = ee571b8a30b968849fcf5c7b2588f298a3046609fe9792dd0b59024899dfea3a
+	sha256sums = a964a7802252d20a3319e2131c27ec307ad4f454921c2db31971c080150d7c9b
+	sha256sums = 0e6d7c96b7c1ec63794214decb1f2e7dd112a22b02e55555cf98c2a573014af6
+	sha256sums = 4a28ddf6a6ba8ec28c10a164f82e3d5e5904d6dfe68ae8852428a589cee210c5
+	sha256sums = dcc7a76ff136db29a830f9228a88b2ab64639d44ef2d8db363315fe5828efec9
+	sha256sums = c2ee8160e2f4f87a2d4fe46136ffb8ea14422dc599db3eca4341e48db26d72ad
+	sha256sums = 01104122e3df765735b1062aa15e7a73c7949f2d9b7332c0e02e02db66345349
 
 pkgname = funkwhale
 

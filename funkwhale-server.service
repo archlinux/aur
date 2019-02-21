@@ -1,0 +1,14 @@
+[Unit]
+Description=Funkwhale application server
+After=redis.service postgresql.service
+PartOf=funkwhale.service
+
+[Service]
+User=funkwhale
+# adapt this depending on the path of your funkwhale installation
+WorkingDirectory=/usr/share/webapps/funkwhale/api
+EnvironmentFile=/srv/funkwhale/config/env
+ExecStart=/usr/bin/daphne -b ${FUNKWHALE_API_IP} -p ${FUNKWHALE_API_PORT} config.asgi:application --proxy-headers
+
+[Install]
+WantedBy=multi-user.target
