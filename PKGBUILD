@@ -1,5 +1,5 @@
-# Maintainer: Samuel Walladge <samuel at swalladge dot id dot au>
 # Maintainer: Kewl <kewl@alto.eu.org>
+# Maintainer: Samuel Walladge <samuel at swalladge dot id dot au>
 
 pkgname=simplenote-electron-bin
 pkgver=1.5.0
@@ -8,7 +8,7 @@ pkgdesc="The simplest way to keep notes"
 arch=('x86_64')
 url="https://github.com/Automattic/simplenote-electron"
 license=('GPL2')
-depends=('alsa-lib' 'nss' 'libxtst' 'gtk3' 'libxss')
+depends=('nss' 'gtk3' 'libxss')
 provides=('simplenote')
 source=("${url}/releases/download/v${pkgver}/Simplenote-linux-${pkgver}-amd64.deb")
 sha256sums=('4e577a0a0cf1a87cc0cf4a115b4d065835469d1262887cf76ee50b20d809d243')
