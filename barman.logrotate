@@ -1,0 +1,5 @@
+/var/log/barman/barman.log {
+    missingok
+    notifempty
+    create 0600 barman barman
+}
