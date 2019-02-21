@@ -1,50 +1,53 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-radio_beam
-pkgname=('python-radio_beam' 'python2-radio_beam' 'python-radio_beam-doc')
-pkgver=0.2
+_pyname=${pkgbase#python-}
+pkgname=("python-${_pyname}" "python2-${_pyname}" "python-${_pyname}-doc")
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A tool for manipulating and utilizing two dimensional gaussian beams within the astropy framework"
 arch=('i686' 'x86_64')
-url="https://github.com/radio-astro-tools/radio-beam"
+url="https://radio-beam.readthedocs.io/"
 license=('BSD')
-makedepends=('cython' 'cython2' 'python-astropy' 'python-astropy-helpers>=3.1' 'python2-astropy-helpers' 'python-sphinx' 'python-sphinx-astropy')
-#checkdepends=('python-pytest-astropy' 'python2-pytest' 'python2-astropy')
-source=("https://files.pythonhosted.org/packages/source/r/radio_beam/radio_beam-${pkgver}.tar.gz")
-md5sums=('8b8f9bf2e476f4c13c529be4fa626e89')
+makedepends=('python-setuptools' 'python2-setuptools' 'python-astropy' 'python-astropy-helpers>=3.1' 'python2-astropy-helpers' 'python-sphinx-astropy')
+checkdepends=('python-pytest-astropy' 'python2-pytest32' 'python2-astropy')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+md5sums=('268a38a8196a824bb69c815cdd35fe3a')
 
 prepare() {
-    cd ${srcdir}/radio_beam-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
     sed -i -e '/auto_use/s/True/False/' setup.cfg
 
-    cp -a ${srcdir}/radio_beam-${pkgver}{,-py2}
+    cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
 }
 
 build() {
     msg "Building Python2"
-    cd ${srcdir}/radio_beam-${pkgver}-py2
+    cd ${srcdir}/${_pyname}-${pkgver}-py2
     python2 setup.py build --use-system-libraries --offline
 
     msg "Building Python3"
-    cd ${srcdir}/radio_beam-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
     python setup.py build --use-system-libraries --offline
 
     msg "Building Docs"
     python setup.py build_docs
 }
 
-#check() {
-#    cd ${srcdir}/radio_beam-${pkgver}
-#    python setup.py test
-#
-#    cd ${srcdir}/radio_beam-${pkgver}-py2
-#    python2 setup.py test
-#}
+check() {
+    msg "Checking Python3"
+    cd ${srcdir}/${_pyname}-${pkgver}
+    python setup.py test
+
+    msg "Checking Python2"
+    cd ${srcdir}/${_pyname}-${pkgver}-py2
+    python2 setup.py test
+}
 
 package_python2-radio_beam() {
     depends=('python2' 'python2-astropy')
     optdepends=('python2-pytest: For testing'
                 'python-radio_beam-doc: Documentation for Radio Beam')
-    cd ${srcdir}/radio_beam-${pkgver}-py2
+    cd ${srcdir}/${_pyname}-${pkgver}-py2
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
@@ -55,7 +58,7 @@ package_python-radio_beam() {
     depends=('python' 'python-astropy')
     optdepends=('python-pytest-astropy: For testing'
                 'python-radio_beam-doc: Documentation for Radio Beam')
-    cd ${srcdir}/radio_beam-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
@@ -64,7 +67,7 @@ package_python-radio_beam() {
 
 package_python-radio_beam-doc() {
     pkgdesc="Documentation for Python Radio Beam module"
-    cd ${srcdir}/radio_beam-${pkgver}/docs/_build
+    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
