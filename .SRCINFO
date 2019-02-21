@@ -1,0 +1,21 @@
+pkgbase = ibus-typing-booster-git
+	pkgdesc = A completion input method for faster typing, git version.
+	pkgver = 2.5.3.r0.g00b015e
+	pkgrel = 1
+	url = https://mike-fabian.github.io/ibus-typing-booster/
+	arch = any
+	license = GNU3
+	makedepends = git
+	depends = ibus
+	depends = m17n-lib
+	depends = python-dbus
+	depends = python-gobject
+	depends = sqlite
+	optdepends = python-pyenchant
+	provides = ibus-typing-booster-git
+	conflicts = ibus-typing-booster
+	source = ibus-typing-booster-git::git+https://github.com/mike-fabian/ibus-typing-booster.git
+	sha256sums = SKIP
+
+pkgname = ibus-typing-booster-git
+
