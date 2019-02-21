@@ -1,0 +1,16 @@
+pkgbase = xwinwrap-git
+	pkgdesc = Fork of XwinWrap from ujjwal96 on GitHub
+	pkgver = r5.ec32e9b
+	pkgrel = 1
+	url = https://github.com/ujjwal96/xwinwrap
+	arch = any
+	license = Other/Open Source
+	makedepends = git
+	depends = git
+	provides = xwinwrap
+	conflicts = xwinwrap
+	source = xwinwrap::git+https://github.com/ujjwal96/xwinwrap#branch=master
+	sha256sums = SKIP
+
+pkgname = xwinwrap-git
+
