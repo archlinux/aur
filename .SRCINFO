@@ -1,6 +1,6 @@
 pkgbase = tpm2-tools-git
 	pkgdesc = Trusted Platform Module 2.0 tools based on tpm2-tss
-	pkgver = 3.0.2.r868.c191fd28
+	pkgver = 3.0.2.r882.7305ac48
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-tools
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = tpm2-tools-git
 	makedepends = autoconf-archive
 	makedepends = pandoc
 	depends = curl
+	depends = openssl
 	depends = tpm2-tss
 	optdepends = tpm2-abrmd: user space resource manager
 	provides = tpm2-tools
