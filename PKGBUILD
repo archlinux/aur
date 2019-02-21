@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=clair-git
-pkgver=v2.0.0.r280.gcafe0976
+pkgver=v2.0.0.r293.g73bc2bc3
 pkgrel=1
 pkgdesc="Vulnerability Static Analysis for Containers"
 arch=(x86_64)
@@ -39,7 +39,7 @@ build() {
 		-ldflags "-s -w -X github.com/coreos/clair/pkg/version.Version=${pkgver}" \
 		-gcflags="all=-trimpath=${GOPATH}/src" \
 		-asmflags="all=-trimpath=${GOPATH}/src" \
-		-o build/clair ./cmd/clair
+		-o build/clair -v ./cmd/clair
 }
 
 package() {
