@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=weasis %U
+Name=Weasis
+GenericName=Weasis DICOM viewer
+Icon=weasis
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Science
