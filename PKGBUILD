@@ -12,14 +12,14 @@ NATIVE_OPTIMIZATIONS=n
 
 pkgname=powder-toy
 #pkgver=${_sver}.${_mver}
-pkgver=93.3
+pkgver=94.0
 _sver=${pkgver/.*/}
 _mver=${pkgver/*./}
 _build=340
 pkgrel=3
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat!"
 arch=(i686 x86_64)
-depends=('sdl' 'lua52' 'fftw' 'bzip2' 'zlib')
+depends=('sdl2' 'lua52' 'fftw' 'bzip2' 'zlib')
 makedepends=('python2' 'scons')
 url="http://powdertoy.co.uk/"
 license=('GPL3')
@@ -71,6 +71,6 @@ package() {
   install -Dm 644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
 
-md5sums=('16c5751f9b9c7a6283f423365fe73b1a'
+md5sums=('56a0a8485d20549ed5291b1d04c665af'
          '8901d334c53c04738cbd3518c80fa37c'
          'bb40bf9c2fa3982e2872b5d32de3b006')
