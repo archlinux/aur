@@ -1,18 +1,19 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=akira-git
-pkgver=r167.443668c
+pkgver=r212.7bb31e7
 pkgrel=1
 pkgdesc="Native Linux App for UI and UX Design built in Vala and Gtk"
 arch=(x86_64)
 url="https://github.com/Alecaddd/Akira"
 license=(GPL3)
-depends=(granite)
-makedepends=(granite
+depends=(goocanvas granite)
+makedepends=(goocanvas
+             granite
              gtksourceview3
              meson
              vala)
-#checkdepends=(vala-lint-git)
+#checkdepends=(vala-lint)
 provides=(akira)
 source=("git+https://github.com/Alecaddd/Akira.git")
 sha256sums=(SKIP)
