@@ -26,7 +26,7 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 md5sums=('deebe32fd4867b289687689e0f377d72'
          '6c24887dccda882c5779ff577e2e4db7'
          '91a3f21bb0a7d429cce2b8d7551e99da'
-         '87b9dff72ed2b7481f317ce345d272da'
+         '50d29442a7b185f0d05bc2ed72f875be'
          '047f13d4ac97877f724f87b002aaee63'
          'd42a864f88299998f8233c0bc0dd093d'
          '7821b6dfe380955073701e5acd1587a2'
