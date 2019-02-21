@@ -3,7 +3,7 @@
 _pkgname=thanos
 pkgname=prometheus-$_pkgname
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Highly available Prometheus setup with long term storage capabilities. (binary, not built from source)"
 arch=("x86_64")
 url="https://github.com/improbable-eng/thanos"
@@ -39,7 +39,7 @@ sha256sums_x86_64=('c5d8fe78aae3e3c5e32790e5a4e8f1ff4d4ac8e608926bf735a7e22a23a4
                    'f00e6a4c7ff5cc7c8ea94773e716e4ac622941bfb2a5cb30efbf872c45e1bf83'
                    'f14e3dab682a4e2777ed4c02da1d2be677327f166588767047aa10e853f7d928'
                    '0e8b5a5be042c6bdb1f279bd835720007d13ea7624592aab0703fc1b8c871b75'
-                   '03b829963a127cd8d65cd3da331a36cd8309517baad46aaed411ac16adb7f3f7'
+                   '281903878ba4e8e24981d362fdcfb6b2420db8eb76697401899893f617ee55c2'
                    '542f8cba235ac7a1d33b8a36eba4a39e152b0777a507b81edc0fe4c68b9357c8'
                    '2bcd2bdb25490982ef5ce6886836ece58f591c3bd4505655cb8babb374a5052b'
                    '8548f862efbb0feb93522839d840a56d005ef78f1bce7332ff7ba013fade4431'
@@ -70,6 +70,7 @@ package() {
     install -d -m0755 -o212 -g212 "${pkgdir}/var/lib/thanos/compact/"
     install -d -m0755 -o212 -g212 "${pkgdir}/var/lib/thanos/rule/"
     install -d -m0755 -o212 -g212 "${pkgdir}/var/lib/thanos/downsample/"
+    install -d -m0755 -o212 -g212 "${pkgdir}/var/lib/thanos/store/"
 
 
     # Install thanos config

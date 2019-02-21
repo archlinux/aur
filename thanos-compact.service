@@ -8,7 +8,7 @@ User=thanos
 Group=thanos
 Restart=on-failure
 EnvironmentFile=-/etc/thanos/compact.conf
-ExecStart=/usr/bin/thanos comact \
+ExecStart=/usr/bin/thanos compact \
                           $LOG_LEVEL \
                           $LOG_FORMAT \
                           $GCLOUDTRACE_PROJECT \
