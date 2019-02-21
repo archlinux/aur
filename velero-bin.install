@@ -1,0 +1,4 @@
+post_upgrade() {
+  echo ">>> For instructions on how to upgrade from ark to velero see:"
+  echo ">>> https://heptio.github.io/velero/v0.11.0/migrating-to-velero"
+}
