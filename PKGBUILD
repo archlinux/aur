@@ -2,7 +2,7 @@
 # Maintainer: Benjamin Asbach <archlinux-aur.${pkgname}@impl.it>
 
 pkgname=jenkins-lts
-pkgver=2.150.2
+pkgver=2.150.3
 pkgrel=1
 pkgdesc='Extendable continuous integration server (lts)'
 arch=('any')
@@ -22,7 +22,7 @@ source=("jenkins-${pkgver}.war::http://mirrors.jenkins.io/war-stable/${pkgver}/j
         'jenkins.tmpfiles'
         'jenkins.sysusers'
         'LICENSE')
-sha512sums=('38e960b895dee3917146f49888ec23cfdc115354327de3ae63a4003641dd80d1d2565e8256dd47fa966c1b5515f1f90eac466ec007cf6d820958ce43147eb4a6'
+sha512sums=('b2a5bf51b09b9df9bec13f09f911c76c1bb0c2edc91f0933caf6f71e4c296e5f53ad54711aa6632b5f3e3dcb1f335594517a0c086e23fad8892fb6a3e77dd978'
             '3a8421cef3953d899c150609f959cf5d5dd6d08d079a5e0f48bfece4f3c80491722b9e90ef841fddb87401c226b8338297c5c4e83e55a33ef8d6e387de3048d0'
             'a336b006d3711abb75b49a2e12c09ee61cf3275a2cdbbd3676480e2f6ca8ba0fb4b9c08f3f9da193252c4fca827e9a1d5eaad847d0a889445693427ae1571fe7'
             'a845a7147be54affc586dfce9a188ec24c92e673e88dec0b62da386d2e597de6ecda103429008562abd897f179a52c37cf2188ebc65b8c636efd07d707e18f90'
