@@ -1,6 +1,6 @@
 pkgbase = pycharm-eap
 	pkgdesc = Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition.
-	pkgver = 2019.1.191.5532.45
+	pkgver = 2019.1.191.5701.26
 	pkgrel = 1
 	url = https://www.jetbrains.com/pycharm/nextversion/
 	arch = any
@@ -27,9 +27,9 @@ pkgbase = pycharm-eap
 	provides = pycharm
 	provides = pycharm-professional
 	options = !strip
-	source = https://download.jetbrains.com/python/pycharm-professional-191.5532.45.tar.gz
+	source = https://download.jetbrains.com/python/pycharm-professional-191.5701.26.tar.gz
 	source = pycharm-eap.desktop
-	sha256sums = 5e13fb4872efd60df5c452d3f307a1fa2da39c896b10f4ef4f2aa9ab7147bc64
+	sha256sums = 814a903e0110103523f9310cf708507ac2dcc48767c14ecdfd003ae4f640e09e
 	sha256sums = aa9573c177f5d4d3092b9dff2aef5b4c7d25ff9c2b044be222a0512dff759731
 
 pkgname = pycharm-eap
