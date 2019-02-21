@@ -1,10 +1,10 @@
 # Maintainer: Arthur Poulet (arthur.poulet@sceptique.eu)
 pkgname=transfer-more
-pkgver=v0.5.0.r1.40b636d
+pkgver=v0.5.1.r0.f9a54de
 pkgrel=1
 pkgdesc="Fast and lite file upload server (transfer.sh clone)"
 arch=('any')
-url="https://github.com/Nephos/transfer_more"
+url="https://git.sceptique.eu/Sceptique/transfer_more"
 license=('GPLv3')
 groups=()
 depends=()
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('transfer_more::git+https://github.com/Nephos/transfer_more')
+source=('transfer_more::git+https://git.sceptique.eu/Sceptique/transfer_more')
 #source=('transfer_more.tar.gz::http://localhost/transfer_more_pkg/transfer_more.tar.xz')
 noextract=()
 md5sums=('SKIP')

@@ -1,13 +1,13 @@
 pkgbase = transfer-more
 	pkgdesc = Fast and lite file upload server (transfer.sh clone)
-	pkgver = v0.5.0.r1.40b636d
+	pkgver = v0.5.1.r0.f9a54de
 	pkgrel = 1
-	url = https://github.com/Nephos/transfer_more
+	url = https://git.sceptique.eu/Sceptique/transfer_more
 	arch = any
 	license = GPLv3
 	makedepends = crystal
 	makedepends = shards
-	source = transfer_more::git+https://github.com/Nephos/transfer_more
+	source = transfer_more::git+https://git.sceptique.eu/transfer_more
 	md5sums = SKIP
 
 pkgname = transfer-more
