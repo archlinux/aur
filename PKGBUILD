@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=claws-mail-git
-pkgver=3.17.2.r1.g8f5e5040e
+pkgver=3.17.3.r103.g33f351e45
 pkgrel=1
 pkgdesc='A GTK+ based e-mail client - git checkout'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gtk2' 'gnutls' 'startup-notification' 'enchant' 'gpgme' 'libetpan' 'co
 	'libsm' 'dbus-glib' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('git' 'spamassassin' 'bogofilter' 'valgrind'
 	# dependencies for plugins
-	'libgdata' 'libnotify' 'libcanberra' 'poppler-glib' 'pygtk' 'dillo'
+	'libgdata' 'libnotify' 'libcanberra' 'poppler-glib' 'pygtk' 'dillo' 'gumbo-parser'
 	# deps to build the docs
 	'docbook-utils' 'texlive-core' 'texlive-formatsextra')
 optdepends=('python2:           needed for some tools and python plugin'
@@ -28,7 +28,8 @@ optdepends=('python2:           needed for some tools and python plugin'
 	'libgdata:          for gdata plugin'
 	'poppler-glib:      for pdf viewer plugin'
 	'ghostscript:       for pdf viewer plugin'
-	'dillo:             for html viewer plugin')
+	'gumbo-parser:      for litehtml_viewer plugin'
+	'dillo:             for dillo html viewer plugin')
 replaces=('sylpheed-claws' 'claws-mail-extra-plugins')
 conflicts=('claws-mail-extra-plugins' 'claws-mail')
 provides=('claws' 'claws-mail')
@@ -82,6 +83,7 @@ build() {
 		--enable-enchant \
 		--enable-gnutls \
 		--enable-ldap \
+		--enable-litehtml_viewer-plugin \
 		--enable-pgpmime-plugin \
 		--enable-silent-rules \
 		--enable-spamassassin-plugin
