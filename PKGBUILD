@@ -40,8 +40,9 @@ package() {
 
   install -Dm755 "ludo" "$pkgdir/usr/bin/ludo"
   install -Dm755 "assets/icon.svg" "$pkgdir/usr/share/pixmaps/ludo.svg"
-  install -dm644 "$pkgdir/usr/share/ludo"
+  install -dm755 "$pkgdir/usr/share/ludo"
   cp -R "assets/" "$pkgdir/usr/share/ludo/assets"
   cp -R "cores/" "$pkgdir/usr/share/ludo/cores"
   cp -R "database/" "$pkgdir/usr/share/ludo/database"
+  chmod -R 0755 "$pkgdir/usr/share/ludo"
 }
