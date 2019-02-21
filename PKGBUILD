@@ -7,6 +7,7 @@
 # export CFLAGS='-Wall -g -O2 -pipe -fno-omit-frame-pointer'
 # options=(!strip)
 
+
 #_branch=maint-0.3.5 # stable
 #_with_rust=1
 #_malloc=jemalloc # tcmalloc
@@ -48,7 +49,7 @@ sha256sums=('SKIP'
 pkgver () {
     cd "$srcdir/tor"
     echo "$(grep AC_INIT configure.ac \
-        | sed 's/.*\[\(.*\)\].*/\1/;s/-/./g;s/.dev//').$(git rev-list --count origin/$_branch)"
+        | sed 's/.*\[\(.*\)\].*/\1/;s/-/./g;s/.dev//').$(git rev-list --count origin/${_branch:-master})"
 }
 
 prepare() {
