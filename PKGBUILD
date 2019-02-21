@@ -1,23 +1,16 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
 pkgname=gnome-shell-extension-audio-output-switcher-git
-pkgver=r21.5def796
-pkgrel=3
+pkgver=r27.89e6e29
+pkgrel=1
 pkgdesc="Adds a switch for choosing audio output to the system menu."
 arch=('i686' 'x86_64')
-url="https://github.com/anduchs/audio-output-switcher"
+url="https://github.com/adaxi/audio-output-switcher"
 license=('unknown')
 depends=('gnome-shell')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/anduchs/audio-output-switcher#branch=ports2"
-        "gnome-shell-version.patch")
-sha256sums=('SKIP'
-            'eb90f357bf6af150c19cae6d899a2506e3b429b430f335b66e475baf45829e83')
-
-prepare() {
-  cd "$pkgname"
-  patch -p0 -i "$srcdir/gnome-shell-version.patch"
-}
+source=("$pkgname::git+https://github.com/adaxi/audio-output-switcher")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
@@ -32,4 +25,8 @@ package() {
     "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/metadata.json"
   install -m644 "extension.js" \
     "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/extension.js"
+  install -m644 "utils.js" \
+    "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/utils.js"
+  install -Dm644 "schemas/org.gnome.shell.extensions.audio-output-switcher.gschema.xml" \
+    "${pkgdir}/usr/share/glib-2.0/schemas/org.gnome.shell.extensions.audio-output-switcher.gschema.xml"
 }
