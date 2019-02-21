@@ -1,13 +1,12 @@
 pkgbase = blpapi_cpp
-	pkgdesc = The Bloomberg API (BLPAPI) is a C++ library to comsume Bloomberg data.
-	pkgver = 3.10.7.1
+	pkgdesc = Bloomberg API C++ SDK (BLPAPI).
+	pkgver = 3.12.3.1
 	pkgrel = 1
 	url = http://www.bloomberglabs.com/
-	arch = i686
 	arch = x86_64
 	license = custom
-	source = https://bloomberg.bintray.com/BLPAPI-Experimental-Generic/blpapi_cpp_3.10.7.1-linux.tar.gz
-	sha256sums = 667cdc70cbad56759c0f2293f75e7d873a90130cd689fcdeee9c422beb03d2dc
+	source = https://bloomberg.bintray.com/BLPAPI-Experimental-Generic/blpapi_cpp_3.12.3.1-linux.tar.gz
+	sha256sums = 3faf881921912de18eec687f47b976d8d924eb77ba0cfcd565b5330ab99a8765
 
 pkgname = blpapi_cpp
 
