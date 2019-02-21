@@ -64,7 +64,7 @@ build() {
   cd "${srcdir}/${pkgname}-src-r${pkgver}"
 
   export SCONSFLAGS="$MAKEFLAGS"
-  scons core tools "${_scons_args[@]}"
+  scons core "${_scons_args[@]}"
 }
 
 check() {
