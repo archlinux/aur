@@ -11,11 +11,11 @@ pkgbase = coredns
 	provides = coredns
 	conflicts = coredns-bin
 	source = coredns-1.3.1.tar.gz::https://github.com/coredns/coredns/archive/v1.3.1.tar.gz
-	source = https://raw.githubusercontent.com/coredns/deployment/39c9f7ed7640f86fa0fb6ba06a88e9afa830b306/systemd/coredns.service
-	source = https://raw.githubusercontent.com/coredns/deployment/39c9f7ed7640f86fa0fb6ba06a88e9afa830b306/systemd/coredns-sysusers.conf
+	source = coredns.service
+	source = coredns-sysusers.conf
 	sha256sums = b471e26c40140fdb05039b36cb8fb804b03ceb329d48a592cbca9ad6550c8143
-	sha256sums = 947b4838af48212ecd8e565155c97ca61ff7d408d0b8622499925b6e232656c4
-	sha256sums = 178c632fd855a5a35ae69e13ab554d5abad696cf75d23c6b6b37f0ace3b4b0f2
+	sha256sums = 030cd8e938c293c11a9acdb09b138f98b37874772072336792ec4bf0d9eff9b1
+	sha256sums = 536d03f8b20b0d2d6e8f96edd7e4e4dd7f6fef39ab0e952522d8725f3cc186b7
 
 pkgname = coredns
 

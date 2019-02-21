@@ -11,12 +11,12 @@ url="https://github.com/coredns/coredns"
 license=('Apache')
 provides=('coredns')
 source=(coredns-${pkgver}.tar.gz::https://github.com/coredns/${pkgname}/archive/v${pkgver}.tar.gz
-https://raw.githubusercontent.com/coredns/deployment/39c9f7ed7640f86fa0fb6ba06a88e9afa830b306/systemd/coredns.service
-https://raw.githubusercontent.com/coredns/deployment/39c9f7ed7640f86fa0fb6ba06a88e9afa830b306/systemd/coredns-sysusers.conf)
+coredns.service
+coredns-sysusers.conf)
 
 sha256sums=('b471e26c40140fdb05039b36cb8fb804b03ceb329d48a592cbca9ad6550c8143'
-'947b4838af48212ecd8e565155c97ca61ff7d408d0b8622499925b6e232656c4'
-'178c632fd855a5a35ae69e13ab554d5abad696cf75d23c6b6b37f0ace3b4b0f2')
+'030cd8e938c293c11a9acdb09b138f98b37874772072336792ec4bf0d9eff9b1'
+'536d03f8b20b0d2d6e8f96edd7e4e4dd7f6fef39ab0e952522d8725f3cc186b7')
 
 prepare() {
   export GOPATH="$srcdir/build"
