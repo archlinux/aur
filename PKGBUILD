@@ -1,7 +1,7 @@
 # Maintainer: Matthias Lisin <ml@visu.li>
 pkgname=kube-prompt-git
 pkgrel=1
-pkgver=1.0.5.r21.g584bef9
+pkgver=1.0.6.r0.g298f692
 pkgdesc='An interactive kubernetes client featuring auto-complete using go-prompt.'
 arch=(any)
 url='https://github.com/c-bata/kube-prompt'
