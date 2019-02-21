@@ -5,15 +5,15 @@
 
 pkgname=gsettings-desktop-schemas-dev
 _realpkgname=gsettings-desktop-schemas
-pkgver=3.31.90
-pkgrel=2
+pkgver=3.31.91
+pkgrel=1
 pkgdesc="Shared GSettings schemas for the desktop"
 arch=(x86_64)
 url="https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas"
 license=('GPL')
 depends=(glib2 intltool)
 optdepends=(
-  'adobe-source-code-pro-fonts: monospace font, no fallback by default'
+  'adobe-source-code-pro-fonts: default monospace font'
 )
 makedepends=(git meson gobject-introspection)
 
