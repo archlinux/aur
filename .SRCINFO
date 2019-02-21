@@ -1,0 +1,33 @@
+pkgbase = nutty
+	pkgdesc = A network utility for linux. Monitor the devices on your network and check bandwidth and speed details.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/babluboy/nutty
+	install = nutty.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = vala
+	makedepends = meson
+	depends = gtk3
+	depends = granite
+	depends = sqlite
+	depends = libxml2
+	depends = libnotify
+	depends = libgee
+	depends = net-tools
+	depends = nethogs
+	depends = nmap
+	depends = traceroute
+	depends = vnstat
+	depends = curl
+	depends = wireless_tools
+	depends = iproute2
+	depends = pciutils
+	provides = nutty
+	conflicts = nutty-git
+	source = https://github.com/babluboy/nutty/archive/1.1.1.tar.gz
+	sha256sums = b6c9ef1966d1c60480943313f20cd66ee1b5d23ac8d6578f457fb99f0898d9ba
+
+pkgname = nutty
+
