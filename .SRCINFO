@@ -6,7 +6,6 @@ pkgbase = xwinwrap-git
 	arch = any
 	license = Other/Open Source
 	makedepends = git
-	depends = git
 	provides = xwinwrap
 	conflicts = xwinwrap
 	source = xwinwrap::git+https://github.com/ujjwal96/xwinwrap#branch=master
