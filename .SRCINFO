@@ -1,7 +1,7 @@
 pkgbase = freefilesync-bin
 	pkgdesc = Folder comparison and synchronization
 	pkgver = 10.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.freefilesync.org/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = freefilesync-bin
 	provides = freefilesync
 	conflicts = freefilesync
 	options = !strip
-	source = freefilesync-bin-10.9.tar.gz::https://freefilesync.org/download_redirect.php?file=FreeFileSync_10.9_Linux.tar.gz
+	source = freefilesync-bin-10.9.tar.gz::https://freefilesync.org/download/FreeFileSync_10.9_Linux.tar.gz
 	source = FreeFileSync.desktop
 	source = FreeFileSync.png
 	source = RealTimeSync.desktop

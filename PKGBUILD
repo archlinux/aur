@@ -3,7 +3,7 @@
 pkgname=freefilesync-bin
 _pkgname=freefilesync
 pkgver=10.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Folder comparison and synchronization"
 arch=("i686" "x86_64")
 url="https://www.freefilesync.org/"
@@ -12,7 +12,7 @@ provides=("freefilesync")
 conflicts=("freefilesync")
 depends=(gtk2 lib32-fontconfig lib32-libx11 libxxf86vm lib32-libsm)
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://freefilesync.org/download_redirect.php?file=FreeFileSync_${pkgver}_Linux.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::https://freefilesync.org/download/FreeFileSync_${pkgver}_Linux.tar.gz"
     FreeFileSync.desktop
     FreeFileSync.png
     RealTimeSync.desktop
@@ -26,7 +26,8 @@ sha256sums=(
     "23c68af45d34f41fdb76886067b71af4dd3fe14f2dd60f73193b2052dc333bf6"
 )
 options=(!strip)
-DLAGENTS=("https::/usr/bin/curl -fLC - --retry 5 --retry-delay 3 -A Mozilla -o %o %u")
+DLAGENTS=("https::/usr/bin/curl -fLC - --retry 5 --retry-delay 3 \
+    -A Mozilla -e 'https://freefilesync.org/download.php;auto' -o %o %u")
 
 package() {
     _pkg=FreeFileSync
