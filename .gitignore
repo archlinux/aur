@@ -1,2 +1,4 @@
 catboost/
 src/
+pkg
+*.tar.xz
