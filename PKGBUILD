@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-catboost-gpu-git
 pkgver=0.12.2
-pkgrel=2
+pkgrel=3
 epoch=0
 pkgdesc="CatBoost is an open-source gradient boosting on decision trees library with categorical features support out of the box."
 arch=('i686' 'x86_64')
@@ -37,6 +37,7 @@ build() {
 
     cd "$srcdir/catboost/catboost/python-package/catboost"
     ../../../ya make -r \
+        -DNO_DEBUGINFO \
         -DUSE_ARCADIA_PYTHON=no \
         -DOS_SDK=local \
         -DPYTHON_CONFIG=python3-config \
