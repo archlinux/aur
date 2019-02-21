@@ -1,0 +1,15 @@
+pkgbase = hacksaw-git
+	pkgdesc = Utility to select screen regions
+	pkgver = r52.d5254c2
+	pkgrel = 1
+	url = https://github.com/neXromancers/hacksaw
+	arch = x86_64
+	license = MPL2
+	makedepends = cargo
+	depends = gcc-libs
+	depends = libxcb
+	source = git+https://github.com/neXromancers/hacksaw.git
+	md5sums = SKIP
+
+pkgname = hacksaw-git
+
