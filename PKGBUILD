@@ -2,7 +2,7 @@
 pkgname=me176c-firmware
 pkgver=12.10.1.36
 pkgrel=4
-pkgdesc="Additional firmware files for the ASUS MeMO Pad 7 (ME176C/CX)"
+pkgdesc="Additional firmware files for ASUS MeMO Pad 7 (ME176C[X])"
 arch=(x86_64)
 url="https://github.com/me176c-dev/archlinux-me176c"
 license=('unknown')
