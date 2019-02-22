@@ -6,7 +6,7 @@
 pkgbase=bitbake
 pkgname=('bitbake' 'bitbake-vim')
 pkgver=1.40.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Build tool executing tasks and managing metadata.'
 arch=('any')
 url='https://www.openembedded.org/wiki/Main_Page'
@@ -16,15 +16,15 @@ source=("https://github.com/openembedded/bitbake/archive/${pkgver}.tar.gz")
 md5sums=('902bb4b71bb85fe55cdcf24bf21a7214')
 
 check() {
-    cd ${pkgbase}/bin
-    PYTHONPATH="${srcdir}/${pkgbase}/lib:${srcdir}/${pkgbase}/lib/bb" python ./bitbake-selftest
+    cd ${pkgbase}-${pkgver}/bin
+    PYTHONPATH="${srcdir}/${pkgbase}-${pkgver}/lib" python ./bitbake-selftest
 }
 
 package_bitbake() {
     depends=('python' 'python-django18' 'python-beautifulsoup4' 'python-codegen' 'python-pyinotify' 'python-progressbar')
     install=bitbake.install
 
-    cd ${pkgbase}
+    cd ${pkgbase}-${pkgver}
 
     install -d "${pkgdir}/usr/bin"
     install bin/bitbake* "${pkgdir}/usr/bin"
@@ -38,7 +38,7 @@ package_bitbake() {
 }
 
 package_bitbake-vim() {
-    cd ${pkgbase}
+    cd ${pkgbase}-${pkgver}
 
     install -d "${pkgdir}/usr/share"
     cp -Ra contrib/vim "${pkgdir}/usr/share"
