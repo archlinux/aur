@@ -1,0 +1,14 @@
+pkgbase = jsonfmt
+	pkgdesc = Like gofmt, but for JSON files.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/caarlos0/jsonfmt
+	arch = x86_64
+	license = LGPL
+	makedepends = go
+	depends = git
+	source = git+https://github.com/caarlos0/jsonfmt#tag=v0.2.1
+	sha512sums = SKIP
+
+pkgname = jsonfmt
+
