@@ -2,7 +2,7 @@
 pkgname=me176c-acpi
 pkgver=r22.9c25272
 pkgrel=1
-pkgdesc="Patched ACPI DSDT table for ASUS MeMO Pad 7 (ME176C/X)"
+pkgdesc="Patched ACPI DSDT table for ASUS MeMO Pad 7 (ME176C[X])"
 arch=(any)
 url="https://github.com/me176c-dev/$pkgname"
 license=('unknown')
