@@ -1,5 +1,5 @@
 pkgbase = sescript-git
-	pkgdesc = scheme-like s-expression language that translates to ecmascript/javascript
+	pkgdesc = compiles scheme-like s-expressions to ecmascript/javascript
 	pkgver = 45
 	pkgrel = 1
 	url = http://sph.mn

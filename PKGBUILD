@@ -1,7 +1,7 @@
 pkgname=sescript-git
 pkgver=45
 pkgrel=1
-pkgdesc="scheme-like s-expression language that translates to ecmascript/javascript"
+pkgdesc="compiles scheme-like s-expressions to ecmascript/javascript"
 arch=(any)
 license=(gpl3+)
 makedepends=(git)
