@@ -25,7 +25,7 @@ pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
 pkgver=18.2rc1pre5
 _major=18.1
-pkgrel=2
+pkgrel=3
 _codename=Leia
 _tag="$_major-$_codename"
 # Found on their respective github release pages. One can check them against
@@ -158,6 +158,8 @@ prepare() {
       patch -Np1 < "../$src"
     fi
   done
+
+  rm -rf .git
 }
 
 build() {
