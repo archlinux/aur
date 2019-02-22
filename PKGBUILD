@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem++-git
-pkgver=4.0r20190201
+pkgver=4.0r20190222
 epoch=1
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method from git'
@@ -25,7 +25,6 @@ pkgver() {
 prepare() {
   cd FreeFem
   autoreconf -fi 
-  perl download/getall -a
   ./configure CXXFLAGS=" --std=c++11" \
 	      --prefix=/usr \
 	      --sysconfdir=/etc \
