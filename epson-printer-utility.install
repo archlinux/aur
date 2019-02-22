@@ -9,5 +9,8 @@ pre_remove() {
 }
 
 post_upgrade() {
-	[[ $(systemctl is-active $SERVICE) ]] && systemctl restart $SERVICE
+	if systemctl is-active $SERVICE; then
+		systemctl daemon-reload
+		systemctl restart $SERVICE
+	fi
 }

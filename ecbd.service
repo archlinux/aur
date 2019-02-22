@@ -3,7 +3,7 @@ Description=Epson Printer Utility Daemon
 
 [Service]
 Type=forking
-ExecStart=/usr/lib/epson-backend/ecbd
+ExecStart=/opt/epson-printer-utility/lib/epson-backend/ecbd
 Restart=on-failure
 
 [Install]

@@ -8,14 +8,14 @@ pkgbase = epson-printer-utility
 	license = LGPL
 	license = custom:Epson Licence Agreement
 	depends = qt4
-	depends = ld-lsb>=3
+	depends = ld-lsb=3
 	options = !strip
 	source = https://download3.ebz.epson.net/dsc/f/03/00/09/02/33/71b2905a4cdf07374e83281333a767b24b57bc2d/epson-printer-utility_1.0.2-1lsb3.2_amd64.deb
 	source = ecbd.service
 	source = epson-printer-utility.install
 	sha256sums = ecfe72484087bb1af5eb7ce83410f4efe96530f670a151ffeb9bad7b5b230650
-	sha256sums = 6b377d0e9a5b80b5b4eab0eafe6b06eb0c968ce25e61f3b8ebb86687113604b9
-	sha256sums = 14abcc9698bcf380adb56075bf97c014ec32af66140bf225a9a0976df0137913
+	sha256sums = 8cc99a3e68b3367f4a78c05b93fdbbdcded13302fac72daf20b5a0ec9c6c9d55
+	sha256sums = a44c620094a8f807bd7c1286e772ca3de6f8983517d83f1ecd684d2632051f94
 
 pkgname = epson-printer-utility
 
