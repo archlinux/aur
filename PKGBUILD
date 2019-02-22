@@ -2,7 +2,7 @@
 pkgname=me176c-factory
 pkgver=r2.c56789c
 pkgrel=1
-pkgdesc="Factory information loader for ASUS MeMO Pad 7 (ME176C/CX)"
+pkgdesc="Factory information loader for ASUS MeMO Pad 7 (ME176C[X])"
 arch=(x86_64)
 _repo=linux-me176c
 url="https://github.com/me176c-dev/$_repo"

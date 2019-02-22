@@ -1,5 +1,5 @@
 pkgbase = me176c-factory
-	pkgdesc = Factory information loader for ASUS MeMO Pad 7 (ME176C/CX)
+	pkgdesc = Factory information loader for ASUS MeMO Pad 7 (ME176C[X])
 	pkgver = r2.c56789c
 	pkgrel = 1
 	url = https://github.com/me176c-dev/linux-me176c
