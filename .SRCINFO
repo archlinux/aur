@@ -1,7 +1,7 @@
 pkgbase = qmmp-plugin-pack
 	pkgdesc = Qmmp Plugin Pack
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qmmp.ylsoftware.com
 	arch = i686
 	arch = x86_64

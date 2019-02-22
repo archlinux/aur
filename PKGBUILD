@@ -3,7 +3,7 @@
 
 pkgname=qmmp-plugin-pack
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Qmmp Plugin Pack"
 arch=('i686' 'x86_64')
 url="http://qmmp.ylsoftware.com"
@@ -14,12 +14,13 @@ source=(http://qmmp.ylsoftware.com/files/plugins/${pkgname}-${pkgver}.tar.bz2)
 sha1sums=('e844fe7cdc041728244c0a207159291b1f4c0a16')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DLIB_DIR=/usr/lib -DCMAKE_BUILD_TYPE=RELEASE -DUSE_FFAP:BOOL=TRUE
-	make
+    mkdir _build
+    cd _build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_BUILD_TYPE=RELEASE -DUSE_FFAP:BOOL=TRUE "${srcdir}/${pkgname}-${pkgver}"
+    make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd _build
 	make DESTDIR="${pkgdir}" install
 }
