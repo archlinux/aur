@@ -1,0 +1,20 @@
+--- a/README.rst	2019-02-22 12:38:47.000000000 +0800
++++ b/README.rst	2019-02-22 14:08:11.909861996 +0800
+@@ -110,6 +110,8 @@
+ Disjoint Polygons
+ ^^^^^^^^^^^^^^^^^
+ 
++.. currentmodule:: spherical_geometry.polygon
++
+ If a polygon is the result of the intersection of polygons, it may be
+ disjoint. Disjoint polygons are represented as a list of spherical
+ polygons. The library handles the details of this internally. However,
+@@ -170,7 +172,7 @@
+     `~SphericalPolygon.multi_intersection`: Return a new polygon that
+     is the intersection of two or more polygons.
+ 
+-  - `~SphericalPolygon.overlap`: Determine how much a given polygon
++  - `~SingleSphericalPolygon.overlap`: Determine how much a given polygon
+     overlaps another.
+ 
+   - `~SphericalPolygon.to_radec`: Convert (*x*, *y*, *z*) points in the

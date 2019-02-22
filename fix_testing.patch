@@ -1,0 +1,21 @@
+--- a/setup.cfg	2019-02-22 14:36:03.933684666 +0800
++++ b/setup.cfg	2019-02-22 14:36:33.284391606 +0800
+@@ -7,7 +7,7 @@
+ upload-dir = docs/_build/html
+ show-response = 1
+ 
+-[pytest]
++[tool:pytest]
+ minversion = 2.2
+ norecursedirs = .git build docs/_build
+ 
+--- a/spherical_geometry/polygon.py	2019-02-22 13:24:12.000000000 +0800
++++ b/spherical_geometry/polygon.py	2019-02-22 14:37:08.668576535 +0800
+@@ -270,6 +270,7 @@
+         -------
+         polygon : `SingleSphericalPolygon` object
+         """
++        import astropy
+         from astropy import wcs as pywcs
+         from astropy.io import fits
+ 
