@@ -1,11 +1,11 @@
 # Maintainer: Kresimir Pripuzic <kpripuzic@gmail.com>
-# https://aur.archlinux.org/packages/file-roller-tmp/
+# Contributor: Andrey Vetrov <vetrov@mail.ru>
 
 pkgname=file-roller-tmp
-pkgver=3.30.1
+pkgver=3.31.91
 pkgrel=1
 pkgdesc="Create and modify archives. SSD-friendly version (stores temporary files in /tmp)."
-url="https://wiki.gnome.org/Apps/FileRoller"
+url="https://gitlab.gnome.org/GNOME/file-roller"
 arch=(x86_64)
 license=(GPL)
 provides=("file-roller=$pkgver")
@@ -18,7 +18,7 @@ optdepends=('p7zip: 7z, arj, exe and encrypted zip files support'
             'unace: ACE archive support'
             'lrzip: lrzip archive support')
 groups=(gnome)
-_commit=7962fbaf86db77ec6c0713491920341487be1681  # tags/3.30.1^0
+_commit=b6cd80770326131e72d4900a8dede3ff7a57a147  # tags/3.31.91^0
 source=("git+https://gitlab.gnome.org/GNOME/file-roller.git#commit=$_commit"
         'tmp-as-temp.patch')
 sha256sums=('SKIP' 'SKIP')
