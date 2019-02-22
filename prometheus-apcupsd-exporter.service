@@ -1,0 +1,9 @@
+[Unit]
+Description=Prometheus exporter that exposes metrics from apcupsd's NIS
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/prometheus-apcupsd-exporter
+
+[Install]
+WantedBy=multi-user.target
