@@ -1,23 +1,24 @@
-pkgname=sescript-git
-pkgver=45
+pkgname=sph-web-publish-git
+pkgver=30
 pkgrel=1
-pkgdesc="scheme-like s-expression language that translates to ecmascript/javascript"
+pkgdesc="static site generator"
 arch=(any)
 license=(gpl3+)
 makedepends=(git)
-depends=(guile sph-lib)
-provides=(sescript)
-conflicts=(sescript)
-source=("git://git.sph.mn/sescript")
+depends=(guile guile-commonmark sph-lib)
+optdepends=(rsync graphicsmagick)
+provides=(sph-web-publish)
+conflicts=(sph-web-publish)
+source=("git://git.sph.mn/sph-web-publish")
 url="http://sph.mn"
 md5sums=(SKIP)
 
 pkgver() {
-  cd $pkgname
+  cd sph-web-publish
   git rev-list --count HEAD
 }
 
 package() {
-  cd $pkgname
-  ./exe/install --prefix="${pkgdir}"
+  cd sph-web-publish
+  ./exe/install "${pkgdir}"
 }

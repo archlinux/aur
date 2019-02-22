@@ -1,17 +1,20 @@
-pkgbase = sescript-git
-	pkgdesc = scheme-like s-expression language that translates to ecmascript/javascript
-	pkgver = 45
+pkgbase = sph-web-publish-git
+	pkgdesc = static site generator
+	pkgver = 30
 	pkgrel = 1
 	url = http://sph.mn
 	arch = any
 	license = gpl3+
 	makedepends = git
 	depends = guile
+	depends = guile-commonmark
 	depends = sph-lib
-	provides = sescript
-	conflicts = sescript
-	source = git://git.sph.mn/sescript
+	optdepends = rsync
+	optdepends = graphicsmagick
+	provides = sph-web-publish
+	conflicts = sph-web-publish
+	source = git://git.sph.mn/sph-web-publish
 	md5sums = SKIP
 
-pkgname = sescript-git
+pkgname = sph-web-publish-git
 
