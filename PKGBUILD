@@ -53,7 +53,7 @@ package() {
   ln -s "/var/cache/webapps/$_pkgbase/cache" "$pkgdir/usr/share/webapps/$_pkgbase"
   ln -s "/var/cache/webapps/$_pkgbase/users" "$pkgdir/usr/share/webapps/$_pkgbase"
 
-  cp -r app database lib locales src themes vendor \
+  cp -r app database lib locales src theme vendor \
     "$pkgdir/usr/share/webapps/$_pkgbase"
   install -Dm644 VERSION CHANGELOG.md INSTALL.md README.md index.php \
     linker.php phinx.php "$pkgdir/usr/share/webapps/$_pkgbase"
