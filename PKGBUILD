@@ -11,12 +11,12 @@ _autofirewall=y
 ### END BUILD OPTIONS
 
 pkgname=nomachine
-pkgver=6.4.6
-_pkgrel_i686=1
-_pkgrel_x86_64=1
-_pkgrel_armv6h=11
-_pkgrel_armv7h=8
-_pkgrel_armv8h=8
+pkgver=6.5.6
+_pkgrel_i686=8
+_pkgrel_x86_64=9
+_pkgrel_armv6h=7
+_pkgrel_armv7h=7
+_pkgrel_armv8h=7
 pkgrel=1
 pkgdesc="Remote desktop application"
 groups=('network')
@@ -27,16 +27,16 @@ options=('!strip')
 conflicts=('nxmanager' 'nxwebplayer' 'nxserver' 'nxnode' 'nxclient')
 depends=('bash' 'openssh')
 optdepends=('xorg-xauth: allows logging into a headless machine')
-sha512sums_x86_64=('5055bdd3ae348debec931a2675df5b042fa5e33fdf09719fa2230fd0f60059277cfedc849cdc9a820db1b8723f6c939ffdd0017799d8e607ba2796ba0883b3a0')
-sha512sums_i686=('7d6e6dd72eeb9390e3f03b4409b750db0ab84c90fb140349ce2e7af0628b1af5537780af86ba1bc1e1dbc5abe2de77293a664f763a93ea961b9e4a5b01a68190')
-sha512sums_armv6h=('3248825ed31f4d78ea7736e30cb2a26f5ec0aff609eb8bf1741f018621e74d2df7a6a98ce11865bd6b420fbd7c2a841ccb6c58a8cbf82975a5b0b8cbc05d6b23')
-sha512sums_armv7h=('708e0f4839a58d61de5104db2c3fd63026dd69417ae1a362eaf181aad5e307e4ff8c189167f1a62bb698d26ed86aa2fcc4c1447c9c0785c11a85dfe81041d2be')
-sha512sums_armv8h=('e1d237696986b66153241043a291a6e63ab83c4e103fdf10869a25aa627e6c2f725ca49cce35a4d9358033b27b626c29ea3eb03028eeec03a2f5457650940a6e')
-source_x86_64=("http://download.nomachine.com/download/6.4/Linux/${pkgname}_${pkgver}_${_pkgrel_x86_64}_x86_64.tar.gz")
-source_i686=("http://download.nomachine.com/download/6.4/Linux/${pkgname}_${pkgver}_${_pkgrel_i686}_i686.tar.gz")
-source_armv6h=("http://download.nomachine.com/download/6.4/Raspberry/${pkgname}_${pkgver}_${_pkgrel_armv6h}_armv6hl.tar.gz")
-source_armv7h=("http://download.nomachine.com/download/6.4/Raspberry/${pkgname}_${pkgver}_${_pkgrel_armv7h}_armv7hl.tar.gz")
-source_armv8h=("http://download.nomachine.com/download/6.4/Raspberry/${pkgname}_${pkgver}_${_pkgrel_armv8h}_aarch64.tar.gz")
+sha512sums_x86_64=('a1501525af317b98c28b6e409111886e47cb49d78c9f8619d5a67a73930acd447d09c254a5ff7f4dff0e3cde0448467be82194c60cc1140d37f63ca67225bec7')
+sha512sums_i686=('c5e8adc729a678043715ef2c944066d3cf8a2c87c9a1665823c66e51a3d94e65d94a1e06b6134e29bdbbfeeba989e73d3ef986a05ccbcb666a64eba2efa5a9f3')
+sha512sums_armv6h=('b0f9d4e7e5b3537971bdd6864f10f43a95eb9a68736663341dc55004bdc5a31f0634b82ac58257dafd491ad2c49000f8c8cb9772546eca23da6e98eb6f002776')
+sha512sums_armv7h=('37d30acfbef704286a7cbed3c1a2dd68c10b292aa8f1328d24536f58723ae33bbbc9ee08af609ba5c11fb896388a8277eb44153f32aa252ee5013274e416edb0')
+sha512sums_armv8h=('ee1eac84c213d1dc36b7bc1621410de96359d32570d3a3cc0abbffee189261dfb243557aea856fdc5a75933588d6a1afaead3c32822dcc1d3cae93f81b145f8c')
+source_x86_64=("http://download.nomachine.com/download/6.5/Linux/${pkgname}_${pkgver}_${_pkgrel_x86_64}_x86_64.tar.gz")
+source_i686=("http://download.nomachine.com/download/6.5/Linux/${pkgname}_${pkgver}_${_pkgrel_i686}_i686.tar.gz")
+source_armv6h=("http://download.nomachine.com/download/6.5/Raspberry/${pkgname}_${pkgver}_${_pkgrel_armv6h}_armv6hl.tar.gz")
+source_armv7h=("http://download.nomachine.com/download/6.5/Raspberry/${pkgname}_${pkgver}_${_pkgrel_armv7h}_armv7hl.tar.gz")
+source_armv8h=("http://download.nomachine.com/download/6.5/Raspberry/${pkgname}_${pkgver}_${_pkgrel_armv8h}_aarch64.tar.gz")
 install=nomachine.install
 
 prepare()
