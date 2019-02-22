@@ -2,7 +2,7 @@
 # Maintainer: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-2018-complete
-pkgver=2018.5
+pkgver=2018.6
 pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
@@ -18,7 +18,7 @@ makedepends=('cmake' 'libxml2' 'hwloc' 'gcc7')
 options=('!libtool')
 source=(http://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz
         GMXRC.bash.cmakein.patch)
-sha1sums=('73005252c712908e6c858cb31bc5d9835627c0e8'
+sha1sums=('2d47ff8fa96e8efd7a9cfae2776af7cd587ee92f'
           '014b2cbfa13db9b495c88f653805c330747117dc')
 
 #With gcc7 currently there are less errors in the tests
