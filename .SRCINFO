@@ -1,10 +1,10 @@
 pkgbase = lesspassgo
 	pkgver = 2018.05.09
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tuxlinuxien/lesspassgo
 	arch = any
 	license = MIT
-	makedepends = go
+	makedepends = go-pie
 	source = https://github.com/tuxlinuxien/lesspassgo/archive/9d4f658de1d17d2d92b22de6f6e93dd3295aa299.tar.gz
 	source = lesspassgo-server.conf
 	source = lesspassgo-server.service

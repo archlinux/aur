@@ -4,11 +4,11 @@ _commit='9d4f658de1d17d2d92b22de6f6e93dd3295aa299'
 pkgbase=lesspassgo
 pkgname=('lesspassgo' 'lesspassgo-server')
 pkgver=2018.05.09
-pkgrel=3
+pkgrel=4
 arch=('any')
 url='https://github.com/tuxlinuxien/lesspassgo'
 license=('MIT')
-makedepends=('go')
+makedepends=('go-pie')
 source=("https://github.com/tuxlinuxien/${pkgname}/archive/${_commit}.tar.gz"
         "lesspassgo-server.conf"
         "lesspassgo-server.service"
@@ -23,7 +23,7 @@ build() {
   mkdir -p "${srcdir}/src/github.com/tuxlinuxien"
   ln -fsT "${srcdir}/${pkgname}-${_commit}" "${srcdir}/src/github.com/tuxlinuxien/${pkgname}"
   cd "${srcdir}/src/github.com/tuxlinuxien/${pkgname}"
-  go get -v ./...
+  go get -v -gcflags "all=-trimpath=${GOPATH}/src" -asmflags "all=-trimpath=${GOPATH}/src" ./...
 }
 
 package_lesspassgo() {
