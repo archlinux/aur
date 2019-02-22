@@ -2,18 +2,18 @@
 # Maintainer: Dmitry Bilunov <kmeaw@yandex-team.ru>
 
 pkgname=clickhouse
-pkgver=19.1.6
+pkgver=19.3.5
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('i686' 'x86_64')
 url='https://clickhouse.yandex/'
 license=('Apache')
-depends=('ncurses' 'readline' 'unixodbc' 'termcap' 'double-conversion' 'capnproto' 're2' 'gtest' 'gsasl' 'libxml2' 'llvm')
+depends=('ncurses' 'readline' 'unixodbc' 'termcap' 'double-conversion' 'capnproto' 're2' 'gtest' 'gsasl' 'libxml2' 'llvm' 'brotli' 'lld')
 makedepends=('cmake' 'patchelf')
 source=(https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz
         https://github.com/google/cctz/archive/4f9776a.tar.gz
         https://github.com/edenhill/librdkafka/archive/363dcad.tar.gz
-        https://github.com/mfontanini/cppkafka/archive/5204655.tar.gz
+        https://github.com/mfontanini/cppkafka/archive/860c90e.tar.gz
         https://github.com/lz4/lz4/archive/c10863b.tar.gz
         https://github.com/facebook/zstd/archive/2555975.tar.gz
         https://github.com/Dead2/zlib-ng/archive/9173b89.tar.gz
@@ -26,10 +26,10 @@ source=(https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz
         https://github.com/MariaDB/mariadb-connector-c/archive/d85d0e9.tar.gz
         https://github.com/ClickHouse-Extras/protobuf/archive/1273537.tar.gz
         libunwind.patch)
-md5sums=('8e7c688c46d3366f022171c47df98006'
+md5sums=('098f1ed46be576c5b08011edfc2976ee'
          '5323f7ba2565a84a80a93edde95eb4fe'
          '858f1e9d37c064a1e5ce99f24ed9cf95'
-         '42da4b9aab6cfa7cef00a5889c745ed1'
+         '40d91626049ab15bf3bbe75fa00bf52d'
          '7b92f0554687e6a8949adc5c10aeff78'
          'aaa86ec9f379ef587cc53f7b96bcc0e7'
          '8a7abcc6998e461605ecb2988ff93dfc'
@@ -53,7 +53,7 @@ prepare() {
   rm -rf contrib/{cctz,librdkafka,cppkafka,lz4,zstd,zlib-ng,poco,boost,ssl,base64,libhdfs3,mariadb-connector-c,jemalloc,protobuf}/*
   mv ../cctz-4f9776a*/* contrib/cctz/
   mv ../librdkafka-363dcad*/* contrib/librdkafka/
-  mv ../cppkafka-5204655*/* contrib/cppkafka/
+  mv ../cppkafka-860c90e*/* contrib/cppkafka/
   mv ../lz4-c10863b*/* contrib/lz4/
   mv ../zstd-2555975*/* contrib/zstd/
   mv ../zlib-ng-9173b89*/* contrib/zlib-ng/
@@ -72,7 +72,7 @@ prepare() {
 
 build() {
   cd ClickHouse-$pkgver-stable
-  cmake -D CMAKE_BUILD_TYPE:STRING=Release -D USE_STATIC_LIBRARIES:BOOL=False -D ENABLE_TESTS:BOOL=False -D UNBUNDLED:BOOL=False -D USE_INTERNAL_DOUBLE_CONVERSION_LIBRARY:BOOL=False -D USE_INTERNAL_CAPNP_LIBRARY:BOOL=False -D USE_INTERNAL_POCO_LIBRARY:BOOL=True -D POCO_STATIC:BOOL=True -D USE_INTERNAL_RE2_LIBRARY:BOOL=False -D USE_INTERNAL_LIBGSASL_LIBRARY:BOOL=False -D USE_INTERNAL_GTEST_LIBRARY:BOOL=False -D USE_INTERNAL_LIBXML2_LIBRARY:BOOL=False -D USE_INTERNAL_LLVM_LIBRARY:BOOL=False -D NO_WERROR=1 .
+  cmake -D CMAKE_BUILD_TYPE:STRING=Release -D USE_STATIC_LIBRARIES:BOOL=False -D ENABLE_TESTS:BOOL=False -D UNBUNDLED:BOOL=False -D USE_INTERNAL_DOUBLE_CONVERSION_LIBRARY:BOOL=False -D USE_INTERNAL_CAPNP_LIBRARY:BOOL=False -D USE_INTERNAL_POCO_LIBRARY:BOOL=True -D POCO_STATIC:BOOL=True -D USE_INTERNAL_RE2_LIBRARY:BOOL=False -D USE_INTERNAL_LIBGSASL_LIBRARY:BOOL=False -D USE_INTERNAL_GTEST_LIBRARY:BOOL=False -D USE_INTERNAL_LIBXML2_LIBRARY:BOOL=False -D USE_INTERNAL_LLVM_LIBRARY:BOOL=False -D USE_INTERNAL_BROTLI_LIBRARY:BOOL=False -D NO_WERROR=1 -D DOUBLE_CONVERSION_ROOT_DIR=/usr .
   cmake --build . --target clickhouse
 }
 
@@ -89,6 +89,7 @@ package() {
   cp dbms/programs/client/clickhouse-client.xml $pkgdir/etc/clickhouse-client/config.xml
   cp dbms/libclickhouse.so.$pkgver $pkgdir/usr/lib/libclickhouse.so.$pkgver
   cp contrib/zlib-ng/libz.so.1 $pkgdir/usr/lib/libz-ng.so.1
+  patchelf --remove-rpath $pkgdir/usr/lib/libclickhouse.so.$pkgver
   sed -e 's:/opt/clickhouse:/var/lib/clickhouse:g' -i $pkgdir/etc/clickhouse-server/config.xml
   sed -e '/listen_host/s%::<%::1<%' -i $pkgdir/etc/clickhouse-server/config.xml
   cp debian/clickhouse-server.service $pkgdir/usr/lib/systemd/system
