@@ -6,3 +6,7 @@
 src
 *~
 pkg
+*.jpg
+*.png
+hmcl_icon
+*.git*
