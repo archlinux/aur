@@ -4,11 +4,11 @@
 # Contributor: Pierre Choffet <peuc@wanadoo.fr>
 _pkgname=ring-kde
 pkgname=$_pkgname-git
-pkgver=3.0.0.r0.gdcc542a2
+pkgver=3.1.0.r78.gd348e06a
 pkgrel=1
-pkgdesc="The KDE client for the Ring communication framework (www.ring.cx)"
+pkgdesc="The KDE client for the Ring communication framework"
 arch=('x86_64')
-url="https://ring.cx/"
+url="https://jami.net/"
 license=('GPL')
 groups=('ring')
 depends=('libringqt' 'knotifyconfig' 'kdeclarative' 'kirigami2')
@@ -26,9 +26,6 @@ pkgver() {
 
 prepare() {
 	mkdir -p build
-	# fix missing tray icon
-	sed -i 's/setIconByPixmap(.*);/setIconByName("ring-kde");/' \
-		"$_pkgname"/src/widgets/systray.cpp
 }
 
 build() {
