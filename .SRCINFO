@@ -1,10 +1,11 @@
 pkgbase = iota-trinity-wallet
 	pkgdesc = The IOTA Trinity Wallet
 	pkgver = 0.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://trinity.iota.org/
 	arch = x86_64
 	license = Apache
+	depends = libsecret
 	provides = iota-trinity-wallet
 	options = !strip
 	source = iota-trinity-wallet.desktop
