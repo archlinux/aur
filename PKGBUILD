@@ -1,14 +1,14 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tpm2-totp-git
-pkgver=r9.72cb0a4
+pkgver=0.1.0.rc0.r0.44fcb68
 pkgrel=1
 pkgdesc='Attest the trustworthiness of a device against a human using time-based one-time passwords'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-totp'
 license=('BSD')
 depends=('qrencode' 'tpm2-tss')
-makedepends=('git' 'autoconf-archive' 'oath-toolkit' 'pandoc')
-checkdepends=('ibm-sw-tpm2' 'psmisc' 'tpm2-tools-git')
+makedepends=('git' 'autoconf-archive' 'pandoc')
+checkdepends=('ibm-sw-tpm2' 'oath-toolkit' 'psmisc' 'tpm2-tools-git')
 optdepends=('mkinitcpio: hook to display the TOTP during boot')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -22,7 +22,7 @@ BUILDENV+=('!check') # see warning below before enabling tests
 
 pkgver() {
 	cd "${pkgname%-git}"
-	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf '%s' "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
@@ -32,7 +32,8 @@ prepare() {
 
 build() {
 	cd "${pkgname%-git}"
-	./configure --prefix=/usr
+	(( CHECKFUNC )) && _opts=('--enable-integration')
+	./configure --prefix=/usr "${_opts[@]}"
 	make
 }
 
