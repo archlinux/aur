@@ -1,7 +1,7 @@
 pkgbase = python-theano
 	pkgdesc = Definition and optimized evaluation of mathematical expressions on Numpy arrays.
-	pkgver = 1.0.2
-	pkgrel = 3
+	pkgver = 1.0.4
+	pkgrel = 1
 	url = http://www.deeplearning.net/software/theano/
 	arch = any
 	license = BSD
@@ -26,8 +26,8 @@ pkgbase = python-theano
 	optdepends = python2-pygpu-git
 	optdepends = python2-pydot
 	optdepends = python2-mpi4py
-	source = https://pypi.python.org/packages/99/dd/e43e3da5dd52f1468def552ed3e752bfd6958369478cc906ff07b21af92e/Theano-1.0.2.tar.gz
-	sha256sums = 6768e003d328a17011e6fca9126fbb8a6ffd3bb13cb21c450f3e724cca29abde
+	source = https://pypi.python.org/packages/7d/c4/6341148ad458b6cd8361b774d7ee6895c38eab88f05331f22304c484ed5d/Theano-1.0.4.tar.gz
+	sha256sums = 35c9bbef56b61ffa299265a42a4e8f8cb5a07b2997dabaef0f8830b397086913
 
 pkgname = python-theano
 	depends = python-numpy
