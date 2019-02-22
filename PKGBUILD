@@ -19,7 +19,8 @@ conflicts=('tor')
 provides=('tor')
 install='tor.install'
 backup=('etc/tor/torrc'
-        'etc/tor/torrc.d')
+        'etc/tor/torrc.d/nodes'
+        'etc/tor/torrc.d/transparent_proxy')
 
 [[ $_malloc = 'jemalloc' ]] && depends+=('jemalloc')
 [[ $_malloc = 'tcmalloc' ]] && depends+=('gperftools')
