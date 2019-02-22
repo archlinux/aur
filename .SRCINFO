@@ -1,6 +1,6 @@
 pkgbase = zenity-git
 	pkgdesc = Display graphical dialog boxes from shell scripts. Webkit-free version.
-	pkgver = 3.30.0.r10.g3fe41e2
+	pkgver = 3.30.0.r11.ga0ef05b
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/zenity
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = zenity-git
 	makedepends = itstool
 	makedepends = yelp-tools
 	depends = libnotify
-	provides = zenity=3.30.0.r10.g3fe41e2
+	provides = zenity=3.30.0.r11.ga0ef05b
 	conflicts = zenity
 	replaces = zenity
 	source = git+https://gitlab.gnome.org/GNOME/zenity.git

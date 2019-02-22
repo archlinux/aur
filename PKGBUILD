@@ -7,7 +7,7 @@
 # https://bugs.archlinux.org/task/50548
 
 pkgname=zenity-git
-pkgver=3.30.0.r10.g3fe41e2
+pkgver=3.30.0.r11.ga0ef05b
 pkgrel=1
 pkgdesc="Display graphical dialog boxes from shell scripts. Webkit-free version."
 url="https://gitlab.gnome.org/GNOME/zenity"
@@ -23,6 +23,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-*}
+# git describe --long --tags | sed 's/^ZENITY_//;s/_/./g;s/\([^-]*-g\)/r\1/;s/-/./g'
   git describe --long --tags | sed 's/^ZENITY_//;s/_/./g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
