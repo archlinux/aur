@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-full-git
 _srcname=ffmpeg
-pkgver=4.2.r92924.g5faa1b8b5a
+pkgver=4.2.r93217.ga899b3b3c5
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=(
     # official repositories:
         'glibc' 'alsa-lib' 'jack' 'libpng'
         'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libass' 'aom'
-        'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394'
+        'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'dav1d' 'libdc1394'
         'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm'
         'libiec61883' 'lensfun' 'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus'
         'pulseaudio' 'librsvg' 'rubberband' 'rtmpdump' 'snappy' 'libsoxr'
@@ -22,9 +22,9 @@ depends=(
         'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth' 'libxv' 'libx11'
         'libxext' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'codec2' 'dav1d' 'davs2' 'flite1-patched' 'libilbc'
-        'libklvanc-git' 'kvazaar' 'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc'
-        'xavs' 'xavs2' 'ndi-sdk' 'libmysofa-git' 'rockchip-mpp'
+        'chromaprint-fftw' 'codec2' 'davs2' 'flite1-patched' 'libilbc' 'libklvanc-git'
+        'kvazaar' 'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2'
+        'ndi-sdk' 'libmysofa-git' 'rockchip-mpp'
 )
 depends_x86_64=(
     # official repositories:
@@ -72,7 +72,7 @@ build() {
     if [ "$CARCH" = 'x86_64' ] 
     then
         local _libvmaf='--enable-libvmaf'
-        local _cudasdk='--enable-cuda-sdk'
+        local _cudasdk='--disable-cuda-sdk'
         local _libmfx='--enable-libmfx'
         local _libnpp='--enable-libnpp'
         
