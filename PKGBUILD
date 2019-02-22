@@ -2,7 +2,7 @@
 
 pkgbase=gallium-nine
 pkgname=('gallium-nine' 'lib32-gallium-nine')
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Gallium Nine Standalone"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/iXit/wine-nine-standalone"
 license=('LGPL2')
 makedepends=('git' 'wine' 'mesa' 'meson')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('9eb687b68da875cb36298f7487c9f720c119b8be023577580e8829c241dedfb86ef516b3ef96c2fddd1412a05873c349390bd6e3ddc801bb20530c61f165cda6')
+sha512sums=('80fedca58523fbf318109d2d3d5420e97d26ebf5b89b9f1965165c7a33c9dab9c62a65f14b75569b5126c549f5df91beef372d54e94dc90c608932eeb6a59829')
 
 build() {
     cd ${srcdir}/wine-nine-standalone-${pkgver}
@@ -63,7 +63,7 @@ package_gallium-nine() {
     _package_gallium-nine 64
 
     mkdir -p "$pkgdir/usr/bin"
-    install -Dm 0755 "tools/nine-install.sh" "${pkgdir}/usr/bin/" 
+    install -Dm 0755 "tools/nine-install.sh" "${pkgdir}/usr/bin/nine-install" 
 
 }
 
