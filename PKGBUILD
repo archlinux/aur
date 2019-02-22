@@ -1,44 +1,47 @@
-# Maintainer: skydrome <skydrome@i2pmail.org>
-# Contributor: skydrome <skydrome@i2pmail.org>
+# Contributor: skydrome <skydrome@protonmail.com>
+# Maintainer:  skydrome <skydrome@protonmail.com>
 
 pkgname=torsocks-git
-pkgver=2.3.0
+pkgver=2.3.0.1
 pkgrel=1
 pkgdesc='Torsocks allows you to use most socks-friendly applications in a safe way with Tor.'
 url='https://gitweb.torproject.org/torsocks.git'
 license=('GPL2')
 arch=('i686' 'x86_64')
-depends=('tor')
-conflicts=('torsocks' 'tsocks')
+depends=('libnsl')
+conflicts=('torsocks')
 provides=('torsocks')
-install='torsocks.install'
-options=(!strip)
-
+backup=('etc/tor/torsocks.conf')
 source=("git+https://git.torproject.org/torsocks.git#branch=master")
 md5sums=('SKIP')
 
-pkgver () {
-    cd "$srcdir/torsocks"
+pkgver() {
+    cd torsocks
     git describe |sed 's/^v//;s/-/./g'
 }
 
 prepare() {
-    cd "$srcdir/torsocks"
+    cd torsocks
     ./autogen.sh
 }
 
 build() {
-    cd "$srcdir/torsocks"
+    cd torsocks
     ./configure \
         --prefix=/usr \
-        --sysconfdir=/etc \
-        --datadir=/usr/share/torsocks \
-        --docdir=/usr/share/torsocks
+        --sysconfdir=/etc
     make
 }
 
+check() {
+    cd torsocks
+    make check
+}
+
 package() {
-    cd "$srcdir/torsocks"
+    cd torsocks
     make DESTDIR="$pkgdir" install
-    install -Dm644 "gpl-2.0.txt"  "$pkgdir/usr/share/licenses/torsocks/LICENSE"
+    install -Dm644 extras/torsocks-bash_completion "$pkgdir/usr/share/bash-completion/completions/torsocks"
+    install -Dm644 extras/torsocks-zsh_completion  "$pkgdir/usr/share/zsh/site-functions/_torsocks"
+    install -Dm644 gpl-2.0.txt "$pkgdir/usr/share/licenses/torsocks/LICENSE"
 }
