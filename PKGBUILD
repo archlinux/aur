@@ -3,7 +3,7 @@
 pkgname='electron-cash-cashshuffle-git'
 pkgdesc='Lightweight Bitcoin Cash wallet with CashShuffle'
 pkgver=git
-pkgrel=1
+pkgrel=2
 url='http://www.cashshuffle.com/'
 arch=('any')
 license=('MIT')
@@ -55,8 +55,6 @@ pkgver() {
 build() {
   cd "${pkgname}"
 
-  # Compile the icons file for Qt:
-  pyrcc5 icons.qrc -o gui/qt/icons_rc.py
   # Compile the protobuf description file:
   protoc --proto_path=lib/ --python_out=lib/ lib/paymentrequest.proto
   # Create translations (optional):
@@ -68,7 +66,7 @@ build() {
 check() {
   cd "${pkgname}"
 
-  #tox -e py37
+  tox -e py37
 }
 
 package() {

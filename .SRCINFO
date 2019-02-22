@@ -1,7 +1,7 @@
 pkgbase = electron-cash-cashshuffle-git
 	pkgdesc = Lightweight Bitcoin Cash wallet with CashShuffle
 	pkgver = git
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cashshuffle.com/
 	arch = any
 	license = MIT
