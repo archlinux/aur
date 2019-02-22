@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=60.5.1
+pkgver=60.5.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
@@ -23,7 +23,7 @@ conflicts=(firefox)
 options=(!emptydirs !makeflags !strip)
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         firefox.desktop firefox-symbolic.svg)
-sha256sums=('3f01ff52a174bc554934dd85f8703b2817789ceb749abe09f00bef9cf70b71f5'
+sha256sums=('b95585982225a5246b663298de2fed275179d9299c46790468c49b6eee08cea4'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
