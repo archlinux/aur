@@ -1,7 +1,7 @@
 pkgname=sph-db-git
 pkgver=128
 pkgrel=1
-pkgdesc=""
+pkgdesc="minimal nosql database for records and relations"
 arch=(any)
 license=(gpl3+)
 makedepends=(git gcc)

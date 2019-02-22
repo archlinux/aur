@@ -1,4 +1,5 @@
 pkgbase = sph-db-git
+	pkgdesc = minimal nosql database for records and relations
 	pkgver = 128
 	pkgrel = 1
 	url = http://sph.mn
