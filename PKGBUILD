@@ -1,6 +1,7 @@
 pkgname=anbox-image-gapps
 pkgver=2018.07.19
-pkgrel=1
+_gappsver=20190222
+pkgrel=2
 pkgdesc="Android image for running in Anbox, with Opengapps and houdini"
 arch=('x86_64')
 url="https://anbox.io"
@@ -10,16 +11,16 @@ makedepends=('lzip' 'squashfs-tools' 'unzip')
 # anbox image
 source=("http://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img")
 # opengapps
-source+=("https://github.com/opengapps/x86_64/releases/download/20190203/open_gapps-x86_64-7.1-mini-20190203.zip")
+source+=("https://github.com/opengapps/x86_64/releases/download/${_gappsver}/open_gapps-x86_64-7.1-mini-${_gappsver}.zip")
 # houdini
 source+=("http://dl.android-x86.org/houdini/7_y/houdini.sfs")
 # libhoudini
 source+=("https://github.com/Rprop/libhoudini/raw/master/4.0.8.45720/system/lib/libhoudini.so")
 
 sha256sums=('6b04cd33d157814deaf92dccf8a23da4dc00b05ca6ce982a03830381896a8cca'
-	'a54a439e5ec5a8238b32b20ac49518b359631dfca08e08946f3790b5b39ce0ec'
-	'56fd08c448840578386a71819c07139122f0af39f011059ce728ea0f3c60b665'
-	'2d15d126e46ea933a92fcc6dd30ad2c93d063af322fc1ba84aaa4f3e75d84e68')
+            '64e80d0ad68a4c969f567c5c20d48e548143ec6269318bcaf264d5d83b15b3d2'
+            '56fd08c448840578386a71819c07139122f0af39f011059ce728ea0f3c60b665'
+            '2d15d126e46ea933a92fcc6dd30ad2c93d063af322fc1ba84aaa4f3e75d84e68')
 noextract=('android_amd64.img'
 	'open_gapps-x86_64-7.1-mini-20190203.zip'
 	'houdini.sfs'
@@ -35,7 +36,7 @@ package () {
 	unsquashfs android_amd64.img
 
 	# install opengapps
-	unzip -d opengapps ./open_gapps-x86_64-7.1-mini-20190203.zip
+	unzip -d opengapps ./open_gapps-x86_64-7.1-mini-${_gappsver}.zip
 
 	cd ./opengapps/Core/
 	for filename in *.tar.lz
