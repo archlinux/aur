@@ -63,7 +63,7 @@ _major=4.20
 pkgver=4.20.11
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -88,6 +88,8 @@ source=(# mainline kernel patches
         "${_lucjanpath}/${_bfq_sq_mq_path}/${_bfq_sq_mq_patch}"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
         "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
+        "${_lucjanpath}/arch-patches-v2/0001-net-crypto-set-sk-to-NULL-when-af_alg_release.patch"
+        "${_lucjanpath}/arch-patches-v2/0002-exec-Fix-mem-leak-in-kernel_read_file.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -105,6 +107,8 @@ sha256sums=('dcd95c41f45c8ee90e249887f4aa8657b9a4c5d0fcef69ba17e75b5304d7411f'
             '0998de1fd20f531f4f147e42af78137ee44c549dcfc9b6027ca91b5c791af11e'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             'f7cc42c0ea00aec3debc72a62a1f29f9a267bcba3decb5becb47da5d4741ac79'
+            '182a21ba7992f275b40a0afcb82c3f27cc10d98f2ff68d9d48a4d88c2a1a9147'
+            '76d5658b98eb1baaf38fda662ec53ef02bf1e4935c39bdfe62937e329c0f64a6'
             'cdd585dc4e6ad714ca9761aa8b4c1d965ae952e74d057a884ef509190e9f5a8a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
