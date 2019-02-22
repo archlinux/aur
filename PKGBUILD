@@ -11,6 +11,7 @@ license=('GPL')
 depends=('fftw' 'openmpi')
 optdepends=('kim-api: support for OpenKIM potentials')
 conflicts=('lammps')
+provides=('lammps')
 source=(http://lammps.sandia.gov/tars/${_pkgname}-${pkgver}.tar.gz)
 sha512sums=('9c0155f09da140cc2d2f5c887a52a13b494719a8180bdbcb650165ccbec0d84524d66276347279902afb8023c159a1127b1a4defa29d271200cd155a54f7f6c8')
 build() {
