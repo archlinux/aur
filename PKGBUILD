@@ -18,9 +18,9 @@ conflicts=("${pkgname}" 'brave-bin' 'brave-dev-bin')
 source=("$pkgname-$pkgver.zip::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-v${pkgver}-linux-x64.zip"
         "$pkgname-$pkgver.deb::https://github.com/brave/brave-browser/releases/download/v$pkgver/brave-browser-beta_${pkgver}_amd64.deb"
         "LICENSE::https://raw.githubusercontent.com/brave/brave-browser/master/LICENSE"
-        "$pkgname.sh::https://raw.githubusercontent.com/whezzel/$pkgname/master/$pkgname.sh"
-        "$pkgname.desktop::https://raw.githubusercontent.com/whezzel/$pkgname/master/$pkgname.desktop"
-        "braveAbout.png::https://raw.githubusercontent.com/whezzel/$pkgname/master/braveAbout.png")
+        "$pkgname.sh"
+        "$pkgname.desktop"
+        "braveAbout.png")
 options=(!strip)
 sha512sums=('21cb28d47e76ffc5f4bb0248acc2950c74efed87e834e55d5e7321e1c21beb0226eef9c1806319a5a718a6b2896df69fbf9014979e6b1bbd41d5246a512f5912'
             '6b0ba6897e4f82045d6d726d1d9bf822974d4759e7d7b5f6ef67692071dbf32410592146e536312a676e037cadf68ea6bdbd4d94d04f7d40ad120014666c84dd'

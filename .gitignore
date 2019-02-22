@@ -2,3 +2,6 @@
 !.SRCINFO
 !.gitignore
 !PKGBUILD
+!brave-beta-bin.sh
+!brave-beta-bin.desktop
+!braveAbout.png
