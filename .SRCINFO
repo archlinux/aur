@@ -1,20 +1,20 @@
 pkgbase = tracktion-waveform
 	pkgdesc = Audio and MIDI Workstation (DAW)
-	pkgver = 9.3.2
-	pkgrel = 2
+	pkgver = 10.0.24
+	pkgrel = 1
 	url = https://www.tracktion.com/
 	arch = x86_64
 	license = custom
 	depends = alsa-lib
-	depends = libcurl-compat
+	depends = curl
 	depends = freetype2
 	depends = libglvnd
 	optdepends = jack: A low-latency audio server
 	optdepends = ladspa-plugins: A set of ladspa plugins
 	conflicts = waveform-bundle
-	conflicts = tracktion-waveform-beta
-	source = https://cdn.tracktion.com/file/tracktiondownload/waveform/932/Waveform-installer-64bit-linux-9.3.2.deb
-	md5sums = 98b466c2b8132d01b1698a3dfa4b7fe8
+	conflicts = tracktion-waveform
+	source = https://cdn.tracktion.com/file/tracktiondownload/waveform/10024/waveform_64bit_v10.0.24.deb
+	md5sums = fb1ac8536183761fddd8b05b84febce5
 
 pkgname = tracktion-waveform
 
