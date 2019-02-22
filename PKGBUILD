@@ -2,7 +2,7 @@
 _npmname=commitizen
 pkgname=nodejs-commitizen
 pkgver=3.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Git plugin to help you write consistent commit messages"
 arch=(any)
 url="https://github.com/commitizen/cz-cli"
@@ -25,4 +25,5 @@ package() {
     jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
     mv "$tmppackage" "$pkgjson"
     chmod 644 "$pkgjson"
+    chmod u=rwX,go=rX -R "$pkgdir/usr/lib/node_modules/$_npmname/"
 }

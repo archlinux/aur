@@ -1,7 +1,7 @@
 pkgbase = nodejs-commitizen
 	pkgdesc = Git plugin to help you write consistent commit messages
 	pkgver = 3.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/commitizen/cz-cli
 	arch = any
 	license = MIT
