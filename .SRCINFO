@@ -1,0 +1,20 @@
+pkgbase = swaylock-blur-multimonitor-git
+	pkgdesc = A script that runs swaylock and sets the image to a blurred screenshot of the desktop.
+	pkgver = r1.0d10fea
+	pkgrel = 1
+	url = https://github.com/sjoerdtimmer/swaylock-blur-multimonitor
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = swaylock
+	depends = imagemagick
+	depends = grim
+	depends = python3
+	depends = i3ipc-python
+	provides = swaylock-blur-multimonitor
+	conflicts = swaylock-blur-multimonitor
+	source = git+https://github.com/sjoerdtimmer/swaylock-blur-multimonitor
+	md5sums = SKIP
+
+pkgname = swaylock-blur-multimonitor-git
+
