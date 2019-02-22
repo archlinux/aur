@@ -2,7 +2,7 @@
 
 pkgname=epson-printer-utility
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='This is a Printer Utility program for Epson. Using this software, you can check ink levels, view error and other status... on EPSON Printers.'
 arch=('x86_64')
 url='http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX'
@@ -35,8 +35,9 @@ package() {
 	cp -dr --no-preserve=ownership,mode $srcdir/data/opt/epson-printer-utility/{lib,resource} $pkgdir/opt/epson-printer-utility
 	install -Dm 755 $srcdir/data/opt/$pkgname/bin/$pkgname $pkgdir/opt/$pkgname/bin/$pkgname
 	
-	mkdir -p $pkgdir/usr/lib/
-	cp -dr --no-preserve=ownership,mode $srcdir/data/usr/lib/cups $pkgdir/usr/lib/
+	#mkdir -p $pkgdir/usr/lib/
+	#cp -dr --no-preserve=ownership,mode $srcdir/data/usr/lib/cups $pkgdir/usr/lib/
+	
 	install -Dm 755 $srcdir/data/usr/lib/epson-backend/ecbd $pkgdir/opt/$pkgname/lib/epson-backend/ecbd
 	
 	mkdir -p $pkgdir/usr/bin

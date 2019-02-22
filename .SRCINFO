@@ -1,7 +1,7 @@
 pkgbase = epson-printer-utility
 	pkgdesc = This is a Printer Utility program for Epson. Using this software, you can check ink levels, view error and other status... on EPSON Printers.
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	install = epson-printer-utility.install
 	arch = x86_64
