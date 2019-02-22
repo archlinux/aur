@@ -1,0 +1,7 @@
+#!/bin/bash
+post_install() {
+    echo ""
+    echo "vivado-wrapper: executable is installed as 'vivadow'."
+    echo "You may read /opt/vivado-wrapper/example and /opt/vivado-wrapper/README.md to learn its usage."
+    echo ""
+}
