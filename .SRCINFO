@@ -1,6 +1,6 @@
 pkgbase = vue-cli
 	pkgdesc = Standard tooling for Vue.js development
-	pkgver = 3.4.0
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = https://cli.vuejs.org
 	arch = i686
