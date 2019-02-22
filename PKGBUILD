@@ -5,7 +5,7 @@ _name=kazoo
 pkgbase="python-${_name}"
 pkgname=("python-${_name}" "python2-${_name}")
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='kazoo implements a higher level API to Apache Zookeeper for Python clients.'
 arch=('any')
 url="https://github.com/python-zk/kazoo"
@@ -16,13 +16,13 @@ sha1sums=('SKIP')
 
 package_python2-kazoo() {
 	depends=('python2' 'python2-objgraph')
-	cd "${srcdir}/${_name}"
+	cd "${srcdir}/${_name}-${pkgver}"
 	python2 setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python-kazoo() {
 	depends=('python' 'python-objgraph')
-	cd "${srcdir}/${_name}"
+	cd "${srcdir}/${_name}-${pkgver}"
 	python setup.py install --root="${pkgdir}" --optimize=1
 }
 
