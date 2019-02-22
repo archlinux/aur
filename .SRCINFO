@@ -6,7 +6,7 @@ pkgbase = im2a
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = libmagick
+	depends = imagemagick
 	source = https://github.com/tzvetkoff//im2a/archive/v0.6.0.tar.gz
 	md5sums = a58101f3e14485ac687b0de1602c56fa
 
