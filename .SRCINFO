@@ -1,0 +1,15 @@
+pkgbase = breeze-legacy-git
+	pkgdesc = A semi-transparent theme based on default Breeze Light and MacBreeze-Shadowless.
+	pkgver = r6.d660c4c
+	pkgrel = 1
+	url = https://github.com/iikira/BaiduPCS-Go
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = breeze-legacy
+	conflicts = breeze-legacy
+	source = breeze-legacy-git::git+https://gitlab.com/vmorenomarin/Legacy_breeze.git
+	sha256sums = SKIP
+
+pkgname = breeze-legacy-git
+
