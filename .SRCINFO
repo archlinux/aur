@@ -1,0 +1,19 @@
+pkgbase = i8086emu-git
+	pkgdesc = cross-platform emulator for the Intel 8086 microprocessor
+	pkgver = 0.9.2.r35.g1143f09
+	pkgrel = 1
+	url = https://sourceforge.net/projects/i8086emu/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = nasm
+	makedepends = cmake
+	depends = gtk2
+	depends = beep
+	provides = i8086emu
+	conflicts = i8086emu
+	source = i8086emu::git+https://git.code.sf.net/p/i8086emu/git
+	md5sums = SKIP
+
+pkgname = i8086emu-git
+
