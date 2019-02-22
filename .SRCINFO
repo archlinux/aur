@@ -1,8 +1,8 @@
 pkgbase = ring-kde-git
-	pkgdesc = The KDE client for the Ring communication framework (www.ring.cx)
-	pkgver = 3.0.0.r0.gdcc542a2
+	pkgdesc = The KDE client for the Ring communication framework
+	pkgver = 3.1.0.r78.gd348e06a
 	pkgrel = 1
-	url = https://ring.cx/
+	url = https://jami.net/
 	changelog = ChangeLog
 	arch = x86_64
 	groups = ring
