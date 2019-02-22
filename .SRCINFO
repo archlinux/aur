@@ -1,18 +1,18 @@
 pkgbase = tiny-media-manager-bin
 	pkgdesc = A multi-OS media managment tool
-	pkgver = 2.9.15
+	pkgver = 2.9.16
 	pkgrel = 1
 	url = http://www.tinymediamanager.org
 	arch = any
 	license = Apache-2.0
 	depends = libmediainfo
 	depends = java-runtime<=11
-	noextract = tmm_2.9.15_69b6104_linux.tar.gz
-	source = https://release.tinymediamanager.org/dist/tmm_2.9.15_69b6104_linux.tar.gz
+	noextract = tmm_2.9.16_42413ce_linux.tar.gz
+	source = http://release.tinymediamanager.org/v2/dist/tmm_2.9.16_42413ce_linux.tar.gz
 	source = tinyMediaManager.desktop
 	source = tinymediamanager
 	source = tinymediamanager-cli
-	md5sums = f0f77c5734d45c184ed87ac134fb08c3
+	md5sums = 528abac3ad4f5f32b01b27478de8d227
 	md5sums = 010f5308884b7293bb398b2a63079883
 	md5sums = c382f9ba03915a1f70f5aaea8699cfe5
 	md5sums = 677bed3f438e84ecd948c9f6faa37194
