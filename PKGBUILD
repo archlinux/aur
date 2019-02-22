@@ -2,7 +2,7 @@
 # Contributor: Alex Zappa <reatlat@gmail.com>
 
 pkgname=wavebox-bin-beta
-pkgver=4.7.10
+pkgver=4.7.11
 pkgrel=1
 pkgdesc="The next generation of web-desktop communication"
 #arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ source_x86_64=("${_repourl}/releases/download/v${pkgver}/Wavebox_${pkgver//./_}_
 source_i686=("${_repourl}/releases/download/v${pkgver}/Wavebox_${pkgver//./_}_linux_ia32.tar.gz")
 
 sha512sums=('c0859fb30dc9dab6f2584568f7f1012fb5f0b35488b4b7d0fb8034469796a290a6b6c6de9c0bc5d22d3566f444e14fbae593fdef7f725e51b89217a9f62cd407')
-sha512sums_x86_64=('c5d5f0ac45164c0d2a5a1627dd211821df51754ae656a1511f9e24257f48b73126e4a0fb4cb006483fb764e9d22712ccce9fccde130550c8c15c307d68a85464')
+sha512sums_x86_64=('187ebcc51edb66c962859a7ae062cca2fdd89ea2d8d598517fc9fc1320356831b9fbdbd91c81a271de253b185aa024e03a52c13989513056e2d9b1b8e37ef357')
 sha512sums_i686=('')
 
 package() {
