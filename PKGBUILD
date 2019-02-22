@@ -3,7 +3,7 @@
 pkgname=freefem++-git
 pkgver=4.0r20190222
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc='A PDE oriented language using the finite element method from git'
 arch=('x86_64')
 url="https://freefem.org/index.html"
@@ -48,7 +48,6 @@ check() {
 package() {
   cd FreeFem
   make -d DESTDIR="$pkgdir" install||true
-  install -Dm644 examples++/freefem++.pref "$pkgdir"/etc/freefem++.pref
   find "$pkgdir"/usr/lib/ff++/ -name "*.h" -exec chmod o+r {} \;
   # remove unneeded files
   rm -f "$pkgdir"/usr/share/freefem++/${_pkgver}/INSTALL*
