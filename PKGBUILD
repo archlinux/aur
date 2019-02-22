@@ -14,6 +14,8 @@ url="http://github.com/Bumblebee-Project/bbswitch"
 license=('GPL')
 depends=('linux-mainline>=5.0rc1-1')
 makedepends=('linux-mainline-headers>=5.0rc1-1')
+optdepends=('bumblebee')
+conflicts=('bbswitch')
 _extramodules=extramodules-mainline
 source=("${pkgorigin}-${pkgver}.tar.gz::https://github.com/Bumblebee-Project/bbswitch/archive/v${pkgver}.tar.gz")
 md5sums=('5b116b31ace3604ddf9d1fc1f4bc5807')
