@@ -1,13 +1,13 @@
 pkgbase = nvidia-sdk
 	pkgdesc = NVIDIA Video Codec SDK (NVDECODE and NVENCODE APIs) (needs registration at upstream URL and manual download)
-	pkgver = 8.2.16
+	pkgver = 9.0.20
 	pkgrel = 1
 	url = https://developer.nvidia.com/nvidia-video-codec-sdk/
 	arch = any
 	license = custom
 	makedepends = poppler
-	source = local://Video_Codec_SDK_8.2.16.zip
-	sha256sums = 06dbc3a5a350d76ff4b2118b919759ef1cc50f35ff229fad4922b5eeec31b47d
+	source = local://Video_Codec_SDK_9.0.20.zip
+	sha256sums = 3583d974c4a844e21be17c4d112addbd6f078b837d51337b907cec1cd005b02f
 
 pkgname = nvidia-sdk
 
