@@ -2,8 +2,8 @@
 
 pkgname=mutter-dev
 _pkgname=mutter
-pkgver=3.31.90
-pkgrel=2
+pkgver=3.31.91
+pkgrel=1
 pkgdesc="A window manager for GNOME."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)

@@ -1,7 +1,7 @@
 pkgbase = mutter-dev
 	pkgdesc = A window manager for GNOME.
-	pkgver = 3.31.90
-	pkgrel = 2
+	pkgver = 3.31.91
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	groups = gnome
@@ -26,7 +26,7 @@ pkgbase = mutter-dev
 	depends = pipewire
 	provides = mutter
 	conflicts = mutter
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#tag=3.31.90
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#tag=3.31.91
 	sha256sums = SKIP
 
 pkgname = mutter-dev
