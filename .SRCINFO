@@ -1,16 +1,16 @@
 pkgbase = pingo
 	pkgdesc = An experimental, fast Web PNG/JPG optimizer with visually lossless or lossy compression (uses wine)
-	pkgver = 0.98.55
+	pkgver = 0.98.56
 	pkgrel = 1
 	url = https://css-ig.net/pingo
 	arch = x86_64
 	license = unknown
 	depends = wine
-	noextract = pingo-0.98.55.zip
+	noextract = pingo-0.98.56.zip
 	options = !strip
-	source = pingo-0.98.55.zip::https://css-ig.net/downloads/zip/pingo.zip
+	source = pingo-0.98.56.zip::https://css-ig.net/downloads/zip/pingo.zip
 	source = git+https://github.com/dbermond/shellutils.git
-	sha256sums = b472ecfcb8c26b72840c964fb46c528390d46710fe9bfb381ebc96d568059b7a
+	sha256sums = 1a668cd79d5fbd2e51bef099ccf5e85727f35bd08df202dfc2e65dd94e2a4f42
 	sha256sums = SKIP
 
 pkgname = pingo
