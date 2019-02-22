@@ -1,9 +1,10 @@
 # Maintainer: goetzc
+# Maintainer: Kim Scarborough <sluggo@unknown.nu>
 pkgname=cantata-git
-pkgver=2.3.2.r13.gd932126e1
+pkgver=2.3.3.r35.g4c1b8fd49
 pkgrel=1
 pkgdesc="Qt5 graphical client for Music Player Daemon (MPD) - git version."
-arch=(i686 x86_64)
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://github.com/cdrummond/cantata"
 license=(GPL3)
 depends=(qt5-svg qt5-multimedia libmtp libmusicbrainz5 mpg123 taglib-extras media-player-info libcdio-paranoia udisks2)

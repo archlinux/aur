@@ -1,10 +1,12 @@
 pkgbase = cantata-git
 	pkgdesc = Qt5 graphical client for Music Player Daemon (MPD) - git version.
-	pkgver = 2.3.2.r13.gd932126e1
+	pkgver = 2.3.3.r35.g4c1b8fd49
 	pkgrel = 1
 	url = https://github.com/cdrummond/cantata
 	arch = i686
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
