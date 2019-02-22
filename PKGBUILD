@@ -1,16 +1,16 @@
 # Maintainer: axionl <axionl@aosc.io>
 pkgname=breeze-legacy-git
 pkgver=r6.d660c4c
-pkgrel=1
+pkgrel=2
 pkgdesc="A semi-transparent theme based on default Breeze Light and MacBreeze-Shadowless."
 arch=('any')
 makedepends=('git')
 conflicts=("breeze-legacy")
 provides=("breeze-legacy")
-url="https://github.com/iikira/BaiduPCS-Go"
+url="https://gitlab.com/vmorenomarin/Legacy_breeze"
 license=("GPL3")
 
-source=("$pkgname::git+https://gitlab.com/vmorenomarin/Legacy_breeze.git")
+source=("${pkgname}::git+${url}.git")
 
 sha256sums=('SKIP')
 
