@@ -6,7 +6,7 @@ pkgdesc="An image to ASCII converter, made for 256-color terminals."
 arch=('i686' 'x86_64')
 url="https://github.com/tzvetkoff/"
 license=('custom')
-depends=('libmagick')
+depends=('imagemagick')
 source=($url/$pkgname/archive/v$pkgver.tar.gz)
 
 build() {
