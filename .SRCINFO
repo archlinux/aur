@@ -1,6 +1,6 @@
 pkgbase = v2ray-bin
 	pkgdesc = A platform for building proxies to bypass network restrictions
-	pkgver = 4.16.3
+	pkgver = 4.17.0
 	pkgrel = 1
 	url = https://github.com/v2ray/v2ray-core
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = v2ray-bin
 	provides = v2ctl
 	conflicts = v2ray
 	conflicts = v2ray-git
-	source = v2ray-bin-v4.16.3.zip::https://github.com/v2ray/v2ray-core/releases/download/v4.16.3/v2ray-linux-64.zip
+	source = v2ray-bin-v4.17.0.zip::https://github.com/v2ray/v2ray-core/releases/download/v4.17.0/v2ray-linux-64.zip
 	source = LICENSE::https://raw.githubusercontent.com/v2ray/v2ray-core/master/LICENSE
 	source = v2ray@.service
-	md5sums = 336142d56943d5581cbed2c081216126
+	md5sums = 485d4d2e932f24bf9bfa131b9f421e08
 	md5sums = 73b7b166bcb50fb34597b04079c926d9
 	md5sums = 72815aad469563187d9ba088020b7726
 

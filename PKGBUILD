@@ -1,6 +1,6 @@
 # Maintainer: Kiri <kiri_so@gmail.com>
 pkgname=v2ray-bin
-pkgver=4.16.3
+pkgver=4.17.0
 pkgrel=1
 pkgdesc="A platform for building proxies to bypass network restrictions"
 arch=('x86_64')
@@ -12,7 +12,7 @@ install=
 source=("${pkgname}-v${pkgver}.zip::https://github.com/v2ray/v2ray-core/releases/download/v${pkgver}/v2ray-linux-64.zip"
 "LICENSE::https://raw.githubusercontent.com/v2ray/v2ray-core/master/LICENSE"
 "v2ray@.service")
-md5sums=('336142d56943d5581cbed2c081216126'
+md5sums=('485d4d2e932f24bf9bfa131b9f421e08'
          '73b7b166bcb50fb34597b04079c926d9'
          '72815aad469563187d9ba088020b7726')
 
