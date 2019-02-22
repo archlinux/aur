@@ -1,0 +1,13 @@
+pkgbase = shmenu-git
+	pkgdesc = Dynamic menu for the terminal written in pure bash
+	pkgver = r47.b6a494f
+	pkgrel = 1
+	url = https://github.com/Crestwave/shmenu
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/Crestwave/shmenu.git
+	sha256sums = SKIP
+
+pkgname = shmenu-git
+
