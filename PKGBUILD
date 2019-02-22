@@ -3,7 +3,7 @@
 _pkgname=browserpass
 pkgname=$_pkgname-bin
 pkgver=2.0.21
-pkgrel=2
+pkgrel=1
 pkgdesc="Chrome & Firefox browser extension for pass, a UNIX password manager"
 arch=('x86_64')
 url="https://github.com/dannyvankooten/browserpass"
