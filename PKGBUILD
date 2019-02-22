@@ -2,7 +2,7 @@
 # Contributor: Ryan Thomas <ryant0000@gmail.com.
 
 pkgname='xmrig-donateless'
-pkgver='2.10.0'
+pkgver='2.13.0'
 pkgrel='1'
 pkgdesc='High Perf CryptoNote CPU Miner-No Donate Version'
 arch=('x86_64' 'armv7h' 'aarch64')
