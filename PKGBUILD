@@ -1,6 +1,6 @@
 # Maintainer: lambdadroid <lambdadroid@gmail.com>
 pkgname=me176c-factory
-pkgver=r3.c56789c
+pkgver=r2.c56789c
 pkgrel=1
 pkgdesc="Factory information loader for ASUS MeMO Pad 7 (ME176C/CX)"
 arch=(x86_64)
