@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=Epson Printer Utility
+Type=Application
+Categories=Application;Printing;
+Exec=epson-printer-utility
+Terminal=false
+Icon=/opt/epson-printer-utility/resource/Images/AppIcon.png

@@ -13,9 +13,11 @@ pkgbase = epson-printer-utility
 	source = https://download3.ebz.epson.net/dsc/f/03/00/09/02/33/71b2905a4cdf07374e83281333a767b24b57bc2d/epson-printer-utility_1.0.2-1lsb3.2_amd64.deb
 	source = ecbd.service
 	source = epson-printer-utility.install
+	source = epson-printer-utility.desktop
 	sha256sums = ecfe72484087bb1af5eb7ce83410f4efe96530f670a151ffeb9bad7b5b230650
 	sha256sums = 8cc99a3e68b3367f4a78c05b93fdbbdcded13302fac72daf20b5a0ec9c6c9d55
-	sha256sums = a44c620094a8f807bd7c1286e772ca3de6f8983517d83f1ecd684d2632051f94
+	sha256sums = c35c69fd16534c8e5b382e5918d921cf9a82d96b522833d50b652035f11eaa7c
+	sha256sums = 9ec18291dfc6b886be438883a0b8e5d3f4eb7dfc570bc4b8c9dbe5dfc1d33e9f
 
 pkgname = epson-printer-utility
 

@@ -5,11 +5,11 @@ post_install() {
 }
 
 pre_remove() {
-	[[ $(systemctl is-enabled $SERVICE) ]] && systemctl disable --now $SERVICE
+	[[ $(systemctl is-enabled $SERVICE 1>/dev/null) ]] && systemctl disable --now $SERVICE
 }
 
 post_upgrade() {
-	if systemctl is-active $SERVICE; then
+	if systemctl is-active $SERVICE 1>/dev/null; then
 		systemctl daemon-reload
 		systemctl restart $SERVICE
 	fi
