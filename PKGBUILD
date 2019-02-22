@@ -25,7 +25,7 @@ pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
 pkgver=18.2rc1pre5
 _major=18.1
-pkgrel=1
+pkgrel=2
 _codename=Leia
 _tag="$_major-$_codename"
 # Found on their respective github release pages. One can check them against
@@ -141,6 +141,9 @@ prepare() {
     local _replace="exec_program(cat ARGS \"/build/$pkgname/src/cpuinfo\" OUTPUT_VARIABLE CPUINFO)"
     sed -i s"|$_find|$_replace|" cmake/modules/FindSSE.cmake
   fi
+
+  # needed for `git apply` ... if you know how to avoid this let me know
+  git init
 
   local src
   for src in "${source[@]}"; do
