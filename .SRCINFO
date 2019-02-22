@@ -6,7 +6,7 @@ pkgbase = sph-scheme-mode-git
 	arch = any
 	license = gpl3
 	depends = emacs
-	source = http://files.sph.mn/s/computer/sph-scheme-mode.el
+	source = https://raw.githubusercontent.com/sph-mn/sph-other/master/emacs/mode/sph-scheme-mode.el
 	md5sums = 21b3640ee3cb68190dd652c145a5f99c
 
 pkgname = sph-scheme-mode-git
