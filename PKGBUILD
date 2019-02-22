@@ -1,23 +1,22 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=poliastro
 pkgname=python-${_pyname}-doc
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Documentation for Python poliastro module"
 arch=('i686' 'x86_64')
 url="http://docs.poliastro.space/"
 license=('MIT')
 makedepends=("python-${_pyname}=${pkgver}" 'pandoc' 'python-pandas' 'python-retrying' 'python-beautifulsoup4' 'python-plotly' 'python-nbsphinx' 'python-numba')
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+source=("https://github.com/poliastro/poliastro/archive/v${pkgver}.tar.gz"
         'nbsphinx_errors.patch')
-md5sums=('365466f0072800998cbbd44cc724c696'
+md5sums=('ac93b375ad9e92ba60ec419231717179'
          '275e900feea65f14512bcc7fe2cd555a')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     patch -Np1 -i "${srcdir}/nbsphinx_errors.patch"
-
 }
 
 build() {
