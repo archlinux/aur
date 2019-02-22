@@ -6,7 +6,7 @@
 #_malloc=jemalloc # tcmalloc
 
 pkgname=tor-git
-pkgver=0.4.1.0.alpha.r86.g9ac8c8543
+pkgver=0.4.1.0.alpha.r86.g9ac8c85
 pkgrel=1
 pkgdesc="An anonymizing overlay network (development version)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -42,7 +42,7 @@ sha256sums=('SKIP'
 
 pkgver () {
     cd tor
-    git describe --long --tags origin/${_branch:-master} \
+    git describe --long --tags --abbrev=7 origin/${_branch:-master} \
         |sed -e 's/[tor\|dev].//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
