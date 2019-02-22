@@ -1,0 +1,13 @@
+pkgbase = colortool-git
+	pkgdesc = Tool for modifying colors
+	pkgver = 20190222000420
+	pkgrel = 1
+	url = https://gitlab.com/sambazley/colortool
+	arch = i686
+	arch = x86_64
+	license = ZLIB
+	source = git+https://gitlab.com/sambazley/colortool.git
+	md5sums = SKIP
+
+pkgname = colortool-git
+
