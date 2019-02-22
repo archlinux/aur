@@ -1,14 +1,14 @@
 pkgbase = python-django-constance
 	pkgdesc = Dynamic Django settings
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/jazzband/django-constance
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://github.com/jazzband/django-constance/archive/2.3.0.tar.gz
-	sha256sums = 2a2eab901cf8d1c40032759b5764504e44c0f84c70c3b014639263a6cbc31063
+	source = https://github.com/jazzband/django-constance/archive/2.3.1.tar.gz
+	sha256sums = 76ae5f98a35e94509c8cc69e02bc7dbe53899b28851d97a24655c0909f65a44f
 
 pkgname = python2-django-constance
 	depends = python2-django
