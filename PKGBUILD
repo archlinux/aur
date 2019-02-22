@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-mrboom-git
-pkgver=288.e506282
+pkgver=292.7f18b80
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="Mr.Boom is a 8 players Bomberman clone for RetroArch/Libretro"
@@ -9,7 +9,7 @@ url="https://github.com/libretro/mrboom-libretro"
 license=('MIT')
 groups=('libretro')
 depends=('zlib' 'glibc' 'libretro-core-info')
-makedepends=('git' 'python2' 'sdl2_mixer')
+makedepends=('git' 'python2')
 
 _libname=mrboom_libretro
 _gitname=mrboom-libretro
