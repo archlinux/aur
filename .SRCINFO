@@ -1,7 +1,7 @@
 pkgbase = perl-text-multimarkdown
 	pkgdesc = Convert MultiMarkdown syntax to (X)HTML.
 	pkgver = 1.000035
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Text-MultiMarkdown
 	arch = any
 	license = BSD
