@@ -1,8 +1,8 @@
 pkgbase = me176c-battery
-	pkgdesc = Battery configuration files for the ASUS MeMO Pad 7 (ME176C/CX)
+	pkgdesc = Battery configuration files for the ASUS MeMO Pad 7 (ME176C[X])
 	pkgver = 2
 	pkgrel = 2
-	url = https://github.com/me176c-dev/me176c-archlinux
+	url = https://github.com/me176c-dev/archlinux-me176c
 	arch = any
 	license = MIT
 	depends = systemd
