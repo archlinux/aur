@@ -2,7 +2,7 @@
 
 pkgbase=python-pyrsistent
 pkgname=('python-pyrsistent' 'python2-pyrsistent')
-pkgver=0.14.10
+pkgver=0.14.11
 pkgrel=1
 pkgdesc="Persistent/Functional/Immutable data structures"
 arch=('x86_64')
@@ -11,15 +11,11 @@ url="https://github.com/tobgu/pyrsistent"
 makedepends=('python-setuptools' 'python2-setuptools')
 checkdepends=('python-pytest-runner' 'python2-pytest-runner' 'python-hypothesis' 'python2-hypothesis')
 source=("https://pypi.io/packages/source/p/pyrsistent/pyrsistent-$pkgver.tar.gz"
-        LICENCE.mit
-        hypothesis-4.patch)
-sha512sums=('7a02c01321b6b0e4b2397a1322588539e54f189c574f05450794961c5078f04a70c7975f67885fedf2254a5e7da8f9aaaf55493667d5ec2a4af1147db48e8e34'
-            '036bd5cc2a62b004576ecc50a84dc7d187d8108f52cb886f7e32bed324327af2dc132100e1c8f1dd2ce35b774f74898020f04a315e5137319deda18a449e791a'
-            '0c06dc8bee3fda86b6e733f7782d3337dc35bc6cfe4603e8ecd2958aad6127461fe8e821693e80c044df08683a29b7ab1a1ee412b4903fdd5f296f83a95685ce')
+        LICENCE.mit)
+sha512sums=('c9dbf01a96d93eb7608f37febe2a51cb243fcee4d1dfc8821e74b576969ee7ca7097af85373b3eb58804715a2f4ab10ed92b42b1169580ad3e4ba9fb4739d3bb'
+            '036bd5cc2a62b004576ecc50a84dc7d187d8108f52cb886f7e32bed324327af2dc132100e1c8f1dd2ce35b774f74898020f04a315e5137319deda18a449e791a')
 
 prepare() {
-  patch -d pyrsistent-$pkgver -p1 -i ../hypothesis-4.patch
-  sed -i 's/< *4/<6/' pyrsistent-$pkgver/setup.py
   cp -a pyrsistent-$pkgver{,-py2}
 }
 
