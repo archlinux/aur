@@ -18,7 +18,7 @@ source=("xmrig.service"
 	"${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('1c4fa2898b1252507e885c4bfa2d8d5b20bce2069cb5f703bb084066d560a770'
             'd8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6'
-            '72aa168aaa0c21ce50abbf05149280d857420bcdab29c6ac32e9340afdc10392')
+            '1df97d90463023581039f7ae83efaf5e366dafc46280932bb8b8fabce917f3c3')
 prepare() {
   cd "xmrig-${pkgver}"
   mkdir build
