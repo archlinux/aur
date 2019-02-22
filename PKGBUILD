@@ -1,6 +1,6 @@
 # Maintainer: AlessioDP <me@alessiodp.com>
 pkgname=kpmenu
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Dmenu/rofi interface for KeePass databases"
 arch=("x86_64")
@@ -13,7 +13,7 @@ optdepends=(
 	'rofi: rofi support')
 provides=("kpmenu")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AlessioDP/kpmenu/archive/v$pkgver.tar.gz")
-sha256sums=('9b1c594487afe2ef37e218f2f2c176c165bee459791cbd6b407c298275d2a670')
+sha256sums=('8d469d1715f473060bdd9dccf63079d979d0df9b647b41124527b4c2ed4a7020')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
