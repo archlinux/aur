@@ -37,7 +37,7 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="rqt_multiplot_plugin-release-release-kinetic-rqt_multiplot-${pkgver}-${_pkgver_patch}"
+_dir="rqt_multiplot_plugin-release-release-kinetic-rqt_multiplot"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/anybotics/rqt_multiplot_plugin-release/archive/release/kinetic/rqt_multiplot/${pkgver}-${_pkgver_patch}.tar.gz")
 sha256sums=('b1dfb84033dec21d9553417ad4b1c3faf9eeb4294a6f00551eb2e79d9109158f')
 
