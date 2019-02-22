@@ -1,5 +1,5 @@
 pkgname=sph-pack-git
-pkgver=26
+pkgver=42
 pkgrel=1
 pkgdesc="free software file packaging solution. compounding/compression/encryption with tar/xz/gz/scrypt"
 arch=(any)
@@ -9,16 +9,16 @@ provides=(sph-pack)
 depends=(sph-lib tar xz)
 optdepends=(scrypt)
 conflicts=(sph-pack)
-source=("$pkgname::git://git.sph.mn/sph-pack#branch=stable")
+source=("git://git.sph.mn/sph-pack")
 url="http://sph.mn"
 md5sums=(SKIP)
 
 pkgver() {
-  cd $pkgname
+  cd sph-pack
   git rev-list --count HEAD
 }
 
 package() {
-  cd $pkgname
+  cd sph-pack
   ./exe/install --prefix="$pkgdir"
 }
