@@ -2,7 +2,7 @@
 # Contributor: Ian Denhardt <ian@zenhack.net>
 
 pkgname=keyringer
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Encrypted and distributed secret sharing software"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gnupg' 'git')
 source=("https://keyringer.pw/releases/${pkgname}-${pkgver}.tar.bz2"
         "https://keyringer.pw/releases/${pkgname}-${pkgver}.tar.bz2.asc")
-sha256sums=('8a4a5da7cee57732fd9d7056499c0020a262f6becdd39716db811722e70b7ab5'
+sha256sums=('45dc05f76fb08797d380ff2841a74ceec61936cfae2219d05b96b7733e349f83'
             'SKIP')
 validpgpkeys=("4FA73DE89ADE75998AC24E97B8C1D523FE7AAA84")
 
