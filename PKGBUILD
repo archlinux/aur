@@ -1,7 +1,7 @@
 # Maintainer: Anton Batenev <antonbatenev@yandex.ru>
 
 pkgname=elfexec
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc='Utility to execute ELF binary directly from stdin pipe'
 arch=('i686' 'x86_64')
