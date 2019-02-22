@@ -1,0 +1,16 @@
+pkgbase = logmaster-git
+	pkgdesc = Log viewer for linux with large file support, kubernetes support and highlighting
+	pkgver = 130.ae03a4d
+	pkgrel = 1
+	url = http://github.com/jonathanballs/logmaster
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = ldc
+	makedepends = dub
+	provides = logmaster
+	source = git+https://github.com/jonathanballs/logmaster
+	sha512sums = SKIP
+
+pkgname = logmaster-git
+
