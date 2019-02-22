@@ -1,6 +1,6 @@
 pkgname=flexnet
-pkgver=11.14.1.0
-pkgrel=4
+pkgver=11.15.0.0
+pkgrel=1
 arch=('x86_64')
 url='https://developer.arm.com/products/software-development-tools/license-management/downloads'
 license=('custom')
@@ -8,9 +8,9 @@ options=('emptydirs')
 pkgdesc="FlexNet Publisher: license manager"
 depends=('ld-lsb')
 # download file and uncomment
-source=(#"BX002-PT-00007-r11p14-01rel0.tgz"
+source=(#"BX002-PT-00007-r11p15-00rel0.tgz"
 	"lmgrd.service")
-sha256sums=('809c5917525d5eee7392eb9adb3a4ceaf1d0bbe36d7174a90d92df4fa1f53167'
+sha256sums=('4060024b9618deb0746c56f2ab6618250fa63a6cb7ac52eedff4c028500b0d39'
             '95d263029a7d0d454cb58d395843dd1dc8415fb44d5bc3f5f5d0708223acaab7')
 
 package() {
