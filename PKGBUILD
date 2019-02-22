@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-catboost-gpu-git
 pkgver=0.12.2
-pkgrel=3
+pkgrel=5
 epoch=0
 pkgdesc="CatBoost is an open-source gradient boosting on decision trees library with categorical features support out of the box."
 arch=('i686' 'x86_64')
@@ -17,23 +17,18 @@ replaces=()
 backup=()
 options=()
 
-source=('catboost::git+https://github.com/catboost/catboost.git'
-        'cuda10deprecation.patch')
-md5sums=('SKIP'
-         '44fc5e88fd55a6d19d45fa61cdca6b70')
+source=('catboost::git+https://github.com/catboost/catboost.git')
+md5sums=('SKIP')
 
 validpgpkeys=()
 
 pkgver() {
     cd "$srcdir/catboost"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "$(git describe | sed -E 's/^v([0-9]+.[0-9]+.[0-9]+).*$/\1/')"
 }
 
 build() {
     export YA_CACHE_DIR=/tmp/.ya
-
-    cd "$srcdir/catboost"
-    git apply "$srcdir/cuda10deprecation.patch"
 
     cd "$srcdir/catboost/catboost/python-package/catboost"
     ../../../ya make -r \
