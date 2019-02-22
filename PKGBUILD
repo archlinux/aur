@@ -2,7 +2,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=lazygit-git
-pkgver=0.5.r25.b9ecb82
+pkgver=0.6.r4.e09f390
 pkgrel=1
 pkgdesc='A simple terminal UI for git commands'
 arch=('x86_64')
