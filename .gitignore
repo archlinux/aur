@@ -1,0 +1,5 @@
+src
+pkg
+*.xz
+kernel-alive
+updateSRCINFO.sh

@@ -1,0 +1,15 @@
+pkgbase = kernel-alive-git
+	pkgdesc = port of Manjaro kernel-alive, keep previous kernel modules until next reboot.
+	pkgver = r30.3182821
+	pkgrel = 1
+	url = https://gitlab.manjaro.org/ste74/kernel-alive
+	install = kernel-alive.install
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = rsync>=2.0.0
+	source = kernel-alive::git+https://gitlab.manjaro.org/ste74/kernel-alive#branch=master
+	sha256sums = SKIP
+
+pkgname = kernel-alive-git
+
