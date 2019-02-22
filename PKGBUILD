@@ -12,7 +12,6 @@ depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-openmpi' 'gsl' 'openmpi' 'o
 makedepends=('git' 'texlive-core')
 provides=("freefem++=3.61")
 conflicts=('freefem++')
-backup=('etc/freefem++.pref')
 source=('FreeFem::git+https://github.com/FreeFem/FreeFem-sources.git#branch=develop')
 md5sums=('SKIP')
 options=('!makeflags')

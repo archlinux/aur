@@ -22,7 +22,6 @@ pkgbase = freefem++-git
 	provides = freefem++=3.61
 	conflicts = freefem++
 	options = !makeflags
-	backup = etc/freefem++.pref
 	source = FreeFem::git+https://github.com/FreeFem/FreeFem-sources.git#branch=develop
 	md5sums = SKIP
 
