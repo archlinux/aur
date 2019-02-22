@@ -3,7 +3,7 @@
 pkgname=surfn-mint-y-icons-git
 _pkgname=surfn-mint-y-icons
 pkgver=357.1ce9f028
-pkgrel=1
+pkgrel=2
 pkgdesc="New icons from LinuxMint 18 inspired by the Moka icon set with Surfn as main icon set"
 arch=('any')
 url="https://github.com/linuxmint/mint-y-icons"
