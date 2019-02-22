@@ -1,6 +1,6 @@
 # Maintainer: Timur Kiyivinski <timur@linux.com>
 # CoMaintainer: Kenneth Cremeans <kcrem@hfhosting.us>
-# Release Code Name: Clarke
+# Release Code Name: Darwin
 
 pkgname=lbry-app-bin
 pkgver=0.29.1
