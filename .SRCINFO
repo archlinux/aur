@@ -1,0 +1,15 @@
+pkgbase = sardi-mono-mint-y-icons-git
+	pkgdesc = New icons from LinuxMint 18 inspired by the Moka icon set with sardi-mono as main icon set
+	pkgver = 357.1ce9f028
+	pkgrel = 1
+	url = https://github.com/linuxmint/mint-y-icons
+	arch = any
+	license = GPL3
+	depends = sardi-icons
+	provides = sardi-mono-mint-y-icons
+	conflicts = sardi-mono-mint-y-icons
+	source = sardi-mono-mint-y-icons::git+https://github.com/linuxmint/mint-y-icons.git
+	sha256sums = SKIP
+
+pkgname = sardi-mono-mint-y-icons-git
+
