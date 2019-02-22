@@ -8,7 +8,7 @@ pkgrel=4
 arch=('any')
 url='https://github.com/tuxlinuxien/lesspassgo'
 license=('MIT')
-makedepends=('go-pie')
+makedepends=('go')
 source=("https://github.com/tuxlinuxien/${pkgname}/archive/${_commit}.tar.gz"
         "lesspassgo-server.conf"
         "lesspassgo-server.service"
