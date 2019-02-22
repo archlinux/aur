@@ -1,6 +1,6 @@
 pkgbase = jadx-bin
 	pkgdesc = Command line and GUI tools to produce Java source code from Android Dex and APK files
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/skylot/jadx
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = jadx-bin
 	depends = bash
 	provides = jadx
 	conflicts = jadx
-	source = https://github.com/skylot/jadx/releases/download/v0.8.0/jadx-0.8.0.zip
-	sha256sums = dd02d0dc44a2beb6de5203297875c835332d44bf294db417c20e7bdb267f0c0f
+	source = https://github.com/skylot/jadx/releases/download/v0.9.0/jadx-0.9.0.zip
+	sha256sums = d2f49df069df8bffc20651b182c5eaa483a7d12abc00b2099bfd836fdd2bd103
 
 pkgname = jadx-bin
 

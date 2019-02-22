@@ -3,7 +3,7 @@
 pkgname=jadx-bin
 _pkgname=jadx
 _pkgguiname=jadx-gui
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Command line and GUI tools to produce Java source code from Android Dex and APK files"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('unzip' 'gendesk')
 provides=('jadx')
 conflicts=('jadx')
 source=(https://github.com/skylot/jadx/releases/download/v$pkgver/jadx-$pkgver.zip)
-sha256sums=('dd02d0dc44a2beb6de5203297875c835332d44bf294db417c20e7bdb267f0c0f')
+sha256sums=('d2f49df069df8bffc20651b182c5eaa483a7d12abc00b2099bfd836fdd2bd103')
 
 prepare() {
     gendesk -f -n \
@@ -29,6 +29,9 @@ package() {
     cd "${srcdir}"
     install -Dm 755 bin/{jadx,jadx-gui} -t "${pkgdir}/usr/share/java/${_pkgname}/bin"
     install -Dm 644 lib/* -t "${pkgdir}/usr/share/java/${_pkgname}/lib"
+    unzip -p "$srcdir/lib/jadx-gui-$pkgver.jar" \
+             "logos/jadx-logo.png" > "$pkgname.png"
+    install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgguiname.png"
 
     install -d "${pkgdir}/usr/bin"
     ln -s /usr/share/java/${_pkgname}/bin/jadx "${pkgdir}/usr/bin/jadx"
