@@ -2,9 +2,9 @@
 
 pkgname=praat-bin
 _debpkg=praat
-_debver=1
+_debver=2
 pkgver=6.0.47
-pkgrel=1
+pkgrel=2
 pkgdesc="Doing Phonetics by computer (speech analysis)"
 url="http://www.praat.org/"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ optdepends=('ttf-sil-fonts')
 conflicts=('praat' 'praat-git')
 source_i686=(http://http.us.debian.org/debian/pool/main/p/${_debpkg}/${_debpkg}_${pkgver}-${_debver}_i386.deb)
 source_x86_64=(http://http.us.debian.org/debian/pool/main/p/${_debpkg}/${_debpkg}_${pkgver}-${_debver}_amd64.deb)
-sha256sums_i686=('a223623e302b51b8beb6d73ae77a0b67349f334543b06d284a6de4783da6f629')
-sha256sums_x86_64=('4e8b27d73a6c729b10b95c7edf1cdcd81735f6aec170d49c4914fd547bc13b5e')
+sha256sums_i686=('1aa0c5d49cc07eace47f4a07e11ebf7b52a0fb99bccd5593df8c1233cea1da95')
+sha256sums_x86_64=('031cda4512a7e17dec578147870be457459123377a1d143fe6550933b2d42cd7')
 
 prepare() {
   bsdtar -xf data.tar.xz
