@@ -1,22 +1,22 @@
 pkgname=sph-sc-git
-pkgver=51
+pkgver=157
 pkgrel=1
-pkgdesc='scheme-like s-expression language that translates to c'
+pkgdesc="compiles scheme-like s-expressions to c"
 arch=(any)
 license=(gpl3)
 makedepends=(git)
 depends=(guile sph-lib)
 provides=(sph-sc)
-source=("$pkgname::git://git.sph.mn/sph-sc#branch=stable")
-url="http://sph.mn/content/3d3"
+source=("git://git.sph.mn/sph-sc")
+url="http://sph.mn"
 md5sums=(SKIP)
 
 pkgver() {
-  cd $pkgname
+  cd sph-sc
   git rev-list --count HEAD
 }
 
 package() {
-  cd $pkgname
+  cd sph-sc
   ./exe/install --prefix="${pkgdir}"
 }
