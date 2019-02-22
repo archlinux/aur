@@ -1,14 +1,14 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tpm2-tss-engine-git
-pkgver=r57.933d5d3
+pkgver=1.0.0.rc0.r0.cef2c43
 pkgrel=1
 pkgdesc='OpenSSL engine for Trusted Platform Module 2.0 devices'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-tss-engine'
 license=('BSD')
 depends=('openssl' 'tpm2-tss')
-makedepends=('git' 'autoconf-archive' 'cmocka' 'pandoc')
-checkdepends=('expect' 'ibm-sw-tpm2' 'tpm2-tools-git')
+makedepends=('git' 'autoconf-archive' 'pandoc')
+checkdepends=('cmocka' 'expect' 'ibm-sw-tpm2' 'tpm2-tools-git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git"
@@ -18,7 +18,7 @@ sha512sums=('SKIP'
 
 pkgver() {
 	cd "${pkgname%-git}"
-	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf '%s' "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
@@ -28,7 +28,8 @@ prepare() {
 
 build() {
 	cd "${pkgname%-git}"
-	./configure --prefix=/usr --enable-tctienvvar
+	(( CHECKFUNC )) && _opts=('--enable-unit' '--enable-integration')
+	./configure --prefix=/usr --enable-tctienvvar "${_opts[@]}"
 	make
 }
 
