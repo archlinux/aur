@@ -1,14 +1,14 @@
 pkgname=sescript-git
 pkgver=45
 pkgrel=1
-pkgdesc='scheme-like s-expression language that translates to ecmascript/javascript'
+pkgdesc="scheme-like s-expression language that translates to ecmascript/javascript"
 arch=(any)
 license=(gpl3+)
 makedepends=(git)
 depends=(guile sph-lib)
 provides=(sescript)
 conflicts=(sescript)
-source=("$pkgname::git://git.sph.mn/sescript#branch=stable")
+source=("git://git.sph.mn/sescript")
 url="http://sph.mn"
 md5sums=(SKIP)
 
