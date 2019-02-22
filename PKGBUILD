@@ -2,7 +2,7 @@
 # Contributor: Mikołaj Chwalisz <chwalisz at tkn.tu-berlin dot de>
 pkgname=uniflash
 pkgver=4.6.0.2176
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Flash Programmer for Texas Instruments devices. Provides a single interface for programming Flash memory and executing Flash based operations on supported targets."
 arch=('i686' 'x86_64')
 url="http://processors.wiki.ti.com/index.php/Category:CCS_UniFlash"
@@ -10,7 +10,7 @@ license=('custom:TECHNOLOGY SOFTWARE PUBLICLY AVAILABLE by Texas Instruments Inc
 depends=(
 	'libudev0-shim'
 	'libusb-compat')
-optsdepends=(
+optdepends=(
 	'python2: The SimpleLink CC31xx/CC32xx families require Python2.7'
 )
 source=(${pkgname}_sl.$pkgver.run::http://software-dl.ti.com/ccs/esd/uniflash/${pkgname}_sl.$pkgver.run
