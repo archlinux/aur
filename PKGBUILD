@@ -1,8 +1,8 @@
 # Maintainer: Colin Arnott <colin@urandom.co.uk>
 
 pkgname=ruby-json
-pkgver=2.1.0
-pkgrel=6
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="This is a JSON implementation as a Ruby extension in C"
 arch=('x86_64')
 url='http://json-jruby.rubyforge.org/'
@@ -12,7 +12,7 @@ makedepends=('ruby-rdoc')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/${pkgname#ruby-}-$pkgver.gem)
 noextract=(${pkgname#ruby-}-$pkgver.gem)
-sha512sums=('bffbe462e952bca321d4325ecb9c5e9f61e51cad13758581ecfaa6a038bac4e30dc7db50bd897086a5592f6fc437d0e0909f91e279aaf4dd71cf127100c3550b')
+sha512sums=('855d5cbeb6e62a7deb009ad454944430c0370cc98c53a1126d8ca3cac4b11a191bfb2ded84a957d4caa0f59cc9b6308e320a58569bddba8d6984078ea34703f2<Paste>')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
