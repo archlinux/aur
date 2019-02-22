@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Ludo is a work in progress libretro frontend written in go."
 arch=('x86_64' 'armv7h')
 url="https://github.com/libretro/ludo"
-license=('MIT')
+license=('GPL3')
 depends=(
   'glfw'
   'openal'
