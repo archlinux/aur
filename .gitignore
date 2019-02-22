@@ -1,0 +1,4 @@
+pkg/
+src/
+wine-nine-standalone/
+*.tar*

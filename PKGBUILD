@@ -3,7 +3,7 @@
 
 pkgbase=gallium-nine-git
 pkgname=('gallium-nine-git' 'lib32-gallium-nine-git')
-pkgver=0.r167.4380a4c
+pkgver=0.r272.966fc5c
 pkgrel=1
 pkgdesc="Gallium Nine Standalone (Git Version)"
 arch=('x86_64')
@@ -69,7 +69,7 @@ package_gallium-nine-git() {
     _package_gallium-nine-git 64
 
     mkdir -p "$pkgdir/usr/bin"
-    install -Dm 0755 "tools/nine-install.sh" "${pkgdir}/usr/bin/" 
+    install -Dm 0755 "tools/nine-install.sh" "${pkgdir}/usr/bin/nine-install" 
 
 }
 
