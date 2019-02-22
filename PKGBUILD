@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=gnome-shell-extension-miniview-git
-pkgver=30.2131edf
+pkgver=31.529d84d
 pkgrel=1
 pkgdesc="GNOME Shell plugin that shows a preview window overlay"
 arch=('any')
