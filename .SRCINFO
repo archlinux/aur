@@ -1,0 +1,20 @@
+pkgbase = python-kazoo
+	pkgdesc = kazoo implements a higher level API to Apache Zookeeper for Python clients.
+	pkgver = 2.6.1
+	pkgrel = 1
+	url = https://github.com/python-zk/kazoo
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/01/d6/77d8067b56ef78326b8cbc85d896e29cb9ceae996a24d752e1cb93011b85/kazoo-2.6.1.tar.gz
+	sha1sums = SKIP
+
+pkgname = python-kazoo
+	depends = python
+	depends = python-objgraph
+
+pkgname = python2-kazoo
+	depends = python2
+	depends = python2-objgraph
+
