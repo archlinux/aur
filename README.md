@@ -21,7 +21,7 @@ launch searching by WPS. There is a text processor (wps), spredsheet
 
 It's truly more faster than LibreOffice and works really well with
 MicroSoft formats, .docx, .xls and .ppt. May you need install
-additional fonts like [tff-wps-fonts] and [ttf-ms-fonts] available at AUR.
+additional fonts like [ttf-wps-fonts] and [ttf-ms-fonts] available at AUR.
 
 **BUT BE CAREFUL! THERE IS NO SUPPORT FOR OPENDOCUMENT FORMATS!**
 
