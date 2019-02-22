@@ -14,7 +14,7 @@ url="http://www.torproject.org"
 license=('BSD')
 depends=('openssl' 'libevent' 'libseccomp' 'zstd')
 makedepends=('asciidoc')
-optdepends=('torsocks: for torify support')
+optdepends=('torsocks: allow transparent SOCKS proxying')
 conflicts=('tor')
 provides=('tor')
 install='tor.install'
@@ -77,18 +77,15 @@ package() {
     make DESTDIR="$pkgdir" install
 
     rm -f "$pkgdir/etc/tor/tor-tsocks.conf"
-
+    rm -f "$pkgdir/usr/bin/torify"
     install -dm750 "$pkgdir/etc/tor"
     install -dm750 "$pkgdir/etc/tor/torrc.d"
-
     install -Dm640 "$srcdir/torrc"             "$pkgdir/etc/tor/torrc"
     install -Dm640 "$srcdir/nodes"             "$pkgdir/etc/tor/torrc.d/nodes"
     install -Dm640 "$srcdir/transparent_proxy" "$pkgdir/etc/tor/torrc.d/transparent_proxy"
-
     install -Dm644 "$srcdir/tor.logrotate" "$pkgdir/etc/logrotate.d/tor"
     install -Dm644 "$srcdir/tor.service"   "$pkgdir/usr/lib/systemd/system/tor.service"
     install -Dm644 "$srcdir/tor.tmpfiles"  "$pkgdir/usr/lib/tmpfiles.d/tor.conf"
     install -Dm644 "$srcdir/tor.sysusers"  "$pkgdir/usr/lib/sysusers.d/tor.conf"
-
     install -Dm644 LICENSE                 "$pkgdir/usr/share/licenses/tor/LICENSE"
 }
