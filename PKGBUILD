@@ -2,7 +2,7 @@
 # Contributor: xpt <user.xpt@gmail.com>
 _pkgname=lammps
 pkgname=${_pkgname}-beta
-pkgver=8Feb19
+pkgver=20190208
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator."
 url="http://lammps.sandia.gov/"
