@@ -1,3 +1,17 @@
 SUBSYSTEM=="input", GROUP="input", MODE="0660"
-SUBSYSTEM=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="ff01", TAG+="uaccess"
-SUBSYSTEM=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2402", TAG+="uaccess"
+
+# Wooting One
+SUBSYSTEM=="usb*", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="ff01", TAG+="uaccess"
+SUBSYSTEM=="hid*", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="ff01", TAG+="uaccess"
+
+# Wooting One update mode
+SUBSYSTEM=="usb*", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2402", TAG+="uaccess"
+SUBSYSTEM=="hid*", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2402", TAG+="uaccess"
+
+# Wooting Two
+SUBSYSTEM=="usb*", ATTRS{idVendor}=="02eb", ATTRS{idProduct}=="ff02", TAG+="uaccess"
+SUBSYSTEM=="hid*", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="ff02", TAG+="uaccess"
+
+# Wooting Two update mode
+SUBSYSTEM=="usb*", ATTRS{idVendor}=="02eb", ATTRS{idProduct}=="2403", TAG+="uaccess"
+SUBSYSTEM=="hid*", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2403", TAG+="uaccess"

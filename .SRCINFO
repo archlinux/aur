@@ -1,7 +1,7 @@
 pkgbase = wootility-appimage
 	pkgdesc = Utility for configuring Wooting keyboards (binary AppImage version)
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wooting.io/wootility
 	arch = x86_64
 	license = unknown
@@ -13,7 +13,7 @@ pkgbase = wootility-appimage
 	source = https://s3.eu-west-2.amazonaws.com/wooting-update/wootility-linux-latest/wootility-3.0.2-x86_64.AppImage
 	source = 70-wooting.rules
 	sha512sums = e0f41a7b1c0cf93fed2f017589452870f532541d351cf3568d44fc271b9ccec2741c397198c602c50c27a5b228dfd858bf42d9e38f544e4a0c45a0f845f4f213
-	sha512sums = 3eddcccc40a6ddc924777ced27e757f966889bf789b312ec87c7ba76e69362f14231a5559b86259eb641e5cf1d14333c23fb344a3d278870ba6843fc5dff6579
+	sha512sums = d150e8825cc2254997745fd7a61afd65b05415d694d02d580197b4e3497e64da6261d4fb919a670917379ca1c813416478c2660fe4044e5138a69087ea31ce8d
 
 pkgname = wootility-appimage
 
