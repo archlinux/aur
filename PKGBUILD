@@ -2,8 +2,9 @@
 # Contributor: xpt <user.xpt@gmail.com>
 _pkgname=lammps
 pkgname=${_pkgname}-beta
+_pkgver=8Feb19
 pkgver=20190208
-pkgrel=1
+pkgrel=2
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator."
 url="http://lammps.sandia.gov/"
 arch=('x86_64')
@@ -12,10 +13,10 @@ depends=('fftw' 'openmpi')
 optdepends=('kim-api: support for OpenKIM potentials')
 conflicts=('lammps')
 provides=('lammps')
-source=(http://lammps.sandia.gov/tars/${_pkgname}-${pkgver}.tar.gz)
+source=(http://lammps.sandia.gov/tars/${_pkgname}-${_pkgver}.tar.gz)
 sha512sums=('9c0155f09da140cc2d2f5c887a52a13b494719a8180bdbcb650165ccbec0d84524d66276347279902afb8023c159a1127b1a4defa29d271200cd155a54f7f6c8')
 build() {
-  cd ${_pkgname}-${pkgver}
+  cd ${_pkgname}-${_pkgver}
   mkdir -p build; cd build
   cmake ../cmake \
         -DCMAKE_INSTALL_PREFIX="/usr" \
@@ -28,6 +29,6 @@ build() {
 }
 
 package() {
-  cd ${_pkgname}-${pkgver}/build
+  cd ${_pkgname}-${_pkgver}/build
   make DESTDIR="$pkgdir" install
 }

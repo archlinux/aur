@@ -1,7 +1,7 @@
 pkgbase = lammps-beta
 	pkgdesc = Large-scale Atomic/Molecular Massively Parallel Simulator.
 	pkgver = 20190208
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lammps.sandia.gov/
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = lammps-beta
 	optdepends = kim-api: support for OpenKIM potentials
 	provides = lammps
 	conflicts = lammps
-	source = http://lammps.sandia.gov/tars/lammps-20190208.tar.gz
+	source = http://lammps.sandia.gov/tars/lammps-8Feb19.tar.gz
 	sha512sums = 9c0155f09da140cc2d2f5c887a52a13b494719a8180bdbcb650165ccbec0d84524d66276347279902afb8023c159a1127b1a4defa29d271200cd155a54f7f6c8
 
 pkgname = lammps-beta
