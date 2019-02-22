@@ -1,5 +1,5 @@
 pkgbase = lammps-git
-	pkgdesc = versatile package to perform molecular dynamics
+	pkgdesc = Large-scale Atomic/Molecular Massively Parallel Simulator.
 	pkgver = r13672.f7cbdcf99
 	pkgrel = 1
 	url = http://lammps.sandia.gov/
@@ -10,6 +10,7 @@ pkgbase = lammps-git
 	optdepends = cuda: Nvidia GPU support
 	optdepends = fftw: fast Fourier transform
 	optdepends = vmd: visualization and molfile support
+	optdepends = kim-api: support for OpenKIM potentials
 	provides = lammps
 	conflicts = lammps
 	source = git://github.com/lammps/lammps.git
