@@ -1,0 +1,13 @@
+SERVICE=ecbd.service
+
+post_install() {
+	systemctl enable --now $SERVICE
+}
+
+pre_remove() {
+	[[ $(systemctl is-enabled $SERVICE) ]] && systemctl disable --now $SERVICE
+}
+
+post_upgrade() {
+	[[ $(systemctl is-active $SERVICE) ]] && systemctl restart $SERVICE
+}

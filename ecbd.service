@@ -1,0 +1,10 @@
+[Unit]
+Description=Epson Printer Utility Daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/lib/epson-backend/ecbd
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
