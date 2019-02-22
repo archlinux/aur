@@ -1,0 +1,12 @@
+pkgbase = python-standardebooks
+	pkgdesc = The toolset used to produce Standard Ebooks epub ebooks.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://standardebooks.org
+	arch = any
+	license = GPLv3
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-standardebooks
+
