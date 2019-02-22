@@ -1,32 +1,30 @@
-From f4d9c0c1b22a122df1393b47d485a0f4416ad8bc Mon Sep 17 00:00:00 2001
+From 54e2fd21f8daa2f61c44d764ea19f31e03390b1d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 20:51:19 +0100
-Subject: [PATCH 11/33] Fix linking against static freetype2
+Subject: [PATCH 11/34] Fix linking against static freetype2
 
 ---
- src/gui/configure.json | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+ src/gui/configure.json | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/src/gui/configure.json b/src/gui/configure.json
-index dbb6f708b0..a7ffa0f113 100644
+index 9124e3e77e..f3628f415d 100644
 --- a/src/gui/configure.json
 +++ b/src/gui/configure.json
-@@ -163,9 +163,12 @@
-                 ]
+@@ -237,8 +237,11 @@
              },
+             "headers": "ft2build.h",
              "sources": [
 -                { "type": "pkgConfig", "args": "freetype2" },
 -                { "type": "freetype", "libs": "-lfreetype", "condition": "!config.wasm" },
--                { "type": "freetype", "libs": "-s USE_FREETYPE=1", "condition": "config.wasm" }
 +                { "type": "pkgConfig", "args": "--static --libs freetype2", "condition": "!features.shared" },
 +                { "type": "pkgConfig", "args": "--libs freetype2", "condition": "features.shared" },
 +                { "libs": "-lfreetype -lharfbuzz -lfreetype -lglib-2.0 -lintl -lws2_32 -lole32 -lwinmm -lshlwapi -lpcre -lintl -lpcre -lintl -liconv -lgraphite2 -lbz2", "condition": "!features.shared && !config.wasm" },
 +                { "libs": "-Wl,-Bdynamic -lfreetype -Wl,-Bstatic", "condition": "!features.shared && !config.wasm" },
 +                { "libs": "-lfreetype", "condition": "features.shared && !config.wasm" },
-+                { "type": "freetype", "libs": "-s USE_FREETYPE=1", "condition": "features.shared && config.wasm" }
-             ]
-         },
-         "fontconfig": {
+                 { "libs": "-s USE_FREETYPE=1", "condition": "config.wasm" }
+             ],
+             "use": [
 -- 
-2.19.2
+2.20.1
 

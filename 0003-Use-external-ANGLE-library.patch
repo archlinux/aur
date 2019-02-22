@@ -1,7 +1,7 @@
-From dcfdcfea110398d0ce98c184b975f59354d4528b Mon Sep 17 00:00:00 2001
+From 0be0cdb753a85725e603a02ada330cc9fd2c161e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:41:38 +0200
-Subject: [PATCH 03/33] Use external ANGLE library
+Subject: [PATCH 03/34] Use external ANGLE library
 
 ---
  src/gui/Qt5GuiConfigExtras.cmake.in       | 4 ++--
@@ -66,7 +66,7 @@ index 8b2349ff2f..f5e43c6adc 100644
  HEADERS += qgl.h \
             qgl_p.h \
 diff --git a/src/plugins/platforms/windows/windows.pri b/src/plugins/platforms/windows/windows.pri
-index db06a6a2a3..25c00ed17b 100644
+index 7004d7e854..a0b0bd81db 100644
 --- a/src/plugins/platforms/windows/windows.pri
 +++ b/src/plugins/platforms/windows/windows.pri
 @@ -4,6 +4,7 @@ LIBS += -lole32 -luser32 -lwinspool -limm32 -lwinmm -loleaut32
@@ -93,5 +93,5 @@ index 1c76a2e46f..6a5f046b34 100644
          SUBDIRS += src_3rdparty_libpng
          src_3rdparty_freetype.depends += src_3rdparty_libpng
 -- 
-2.19.2
+2.20.1
 

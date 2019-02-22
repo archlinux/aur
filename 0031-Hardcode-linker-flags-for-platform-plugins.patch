@@ -1,7 +1,7 @@
-From b8d30f6d8f98db183a28e60e684f33ed094b326c Mon Sep 17 00:00:00 2001
+From fe25b3abe19208154631b6315587fce9bacc4991 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 23:42:30 +0100
-Subject: [PATCH 31/33] Hardcode linker flags for platform plugins
+Subject: [PATCH 31/34] Hardcode linker flags for platform plugins
 
 Otherwise incorrect order of libs leads to errors
 when building libqminimal.dll, libqoffscreen.dll
@@ -14,7 +14,7 @@ and libqwindows.dll
  4 files changed, 73 insertions(+), 18 deletions(-)
 
 diff --git a/src/plugins/platforms/direct2d/direct2d.pro b/src/plugins/platforms/direct2d/direct2d.pro
-index 3bfd02bdc8..4732f89920 100644
+index 9764272632..7310958323 100644
 --- a/src/plugins/platforms/direct2d/direct2d.pro
 +++ b/src/plugins/platforms/direct2d/direct2d.pro
 @@ -1,12 +1,32 @@
@@ -53,8 +53,8 @@ index 3bfd02bdc8..4732f89920 100644
 +LIBS += -lQt5WindowsUIAutomationSupport
 +INCLUDEPATH += $$QT_SOURCE_TREE/include/Qt5WindowsUIAutomationSupport/$${QT_VERSION}
  
- LIBS += -ldwmapi -ld2d1 -ld3d11 -ldwrite -lversion -lgdi32
- 
+ LIBS += -ldwmapi -lversion -lgdi32
+ QMAKE_USE_PRIVATE += dwrite_1 d2d1_1 d3d11_1 dxgi1_2
 diff --git a/src/plugins/platforms/minimal/minimal.pro b/src/plugins/platforms/minimal/minimal.pro
 index a1a2da547b..7ef91b574d 100644
 --- a/src/plugins/platforms/minimal/minimal.pro
@@ -149,5 +149,5 @@ index 174bc7b609..e66488e364 100644
  include(windows.pri)
  
 -- 
-2.19.2
+2.20.1
 

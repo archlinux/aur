@@ -1,7 +1,7 @@
-From 916b6a82bc084162432f9ed36934940892679ebd Mon Sep 17 00:00:00 2001
+From 2ac45582566cb492858de99cf06cabf2fa575e30 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 18:30:51 +0100
-Subject: [PATCH 01/33] Adjust win32-g++ profile for cross compilation with
+Subject: [PATCH 01/34] Adjust win32-g++ profile for cross compilation with
  mingw-w64
 
 Adding a new, separate mkspec instead of patching the existing one
@@ -13,13 +13,13 @@ Also see the following issues:
 * https://github.com/Martchus/PKGBUILDs/issues/59
 * https://github.com/Martchus/PKGBUILDs/issues/60
 ---
- mkspecs/common/g++-win32.conf      | 53 ++++++++++++++++++++----------
+ mkspecs/common/g++-win32.conf      | 52 ++++++++++++++++++++----------
  mkspecs/win32-clang-g++/qmake.conf |  4 +--
  mkspecs/win32-g++/qmake.conf       |  4 +--
- 3 files changed, 40 insertions(+), 21 deletions(-)
+ 3 files changed, 39 insertions(+), 21 deletions(-)
 
 diff --git a/mkspecs/common/g++-win32.conf b/mkspecs/common/g++-win32.conf
-index f0df324b64..48d1c49d44 100644
+index f0df324b64..07e2b6a88e 100644
 --- a/mkspecs/common/g++-win32.conf
 +++ b/mkspecs/common/g++-win32.conf
 @@ -8,18 +8,24 @@
@@ -58,11 +58,9 @@ index f0df324b64..48d1c49d44 100644
  
  QMAKE_INCDIR            =
  
-@@ -42,41 +49,53 @@ QMAKE_RUN_CC_IMP        = $(CC) -c $(CFLAGS) $(INCPATH) -o $@ $<
- QMAKE_RUN_CXX           = $(CXX) -c $(CXXFLAGS) $(INCPATH) -o $obj $src
+@@ -43,40 +50,51 @@ QMAKE_RUN_CXX           = $(CXX) -c $(CXXFLAGS) $(INCPATH) -o $obj $src
  QMAKE_RUN_CXX_IMP       = $(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
  
-+QMAKE_LFLAGS            = -g
  QMAKE_LFLAGS_EXCEPTIONS_ON = -mthreads
 -QMAKE_LFLAGS_RELEASE    = -Wl,-s
 +QMAKE_LFLAGS_RELEASE    =
@@ -127,7 +125,7 @@ index f0df324b64..48d1c49d44 100644
 -include(angle.conf)
 -include(windows-vulkan.conf)
 diff --git a/mkspecs/win32-clang-g++/qmake.conf b/mkspecs/win32-clang-g++/qmake.conf
-index 4630ec4602..4981a28736 100644
+index 4630ec4602..3f9fdc72b1 100644
 --- a/mkspecs/win32-clang-g++/qmake.conf
 +++ b/mkspecs/win32-clang-g++/qmake.conf
 @@ -14,11 +14,11 @@ include(../common/g++-win32.conf)
@@ -135,17 +133,17 @@ index 4630ec4602..4981a28736 100644
  
  QMAKE_CC                = $${CROSS_COMPILE}clang
 -QMAKE_CFLAGS           +=
-+QMAKE_CFLAGS           += -g -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4 -fno-keep-inline-dllexport $${CROSS_COMPILE_CFLAGS}
++QMAKE_CFLAGS           += $${CROSS_COMPILE_CFLAGS}
  QMAKE_CFLAGS_WARN_ON   += -Wextra -Wno-ignored-attributes
  
  QMAKE_CXX               = $${CROSS_COMPILE}clang++
 -QMAKE_CXXFLAGS         +=
-+QMAKE_CXXFLAGS         += $${QMAKE_CFLAGS}
++QMAKE_CXXFLAGS         += $${CROSS_COMPILE_CXXFLAGS}
  QMAKE_CXXFLAGS_WARN_ON  = $$QMAKE_CFLAGS_WARN_ON
  
  QMAKE_LINK              = $${CROSS_COMPILE}clang++
 diff --git a/mkspecs/win32-g++/qmake.conf b/mkspecs/win32-g++/qmake.conf
-index ed131c6823..b77d86cd6b 100644
+index ed131c6823..b8e08df0be 100644
 --- a/mkspecs/win32-g++/qmake.conf
 +++ b/mkspecs/win32-g++/qmake.conf
 @@ -12,11 +12,11 @@ include(../common/g++-win32.conf)
@@ -153,15 +151,15 @@ index ed131c6823..b77d86cd6b 100644
  
  QMAKE_CC                = $${CROSS_COMPILE}gcc
 -QMAKE_CFLAGS           += -fno-keep-inline-dllexport
-+QMAKE_CFLAGS           += -g -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4 -fno-keep-inline-dllexport $${CROSS_COMPILE_CFLAGS}
++QMAKE_CFLAGS           += $${CROSS_COMPILE_CFLAGS}
  QMAKE_CFLAGS_WARN_ON   += -Wextra
  
  QMAKE_CXX               = $${CROSS_COMPILE}g++
 -QMAKE_CXXFLAGS         += -fno-keep-inline-dllexport
-+QMAKE_CXXFLAGS         += $${QMAKE_CFLAGS}
++QMAKE_CXXFLAGS         += $${CROSS_COMPILE_CXXFLAGS}
  QMAKE_CXXFLAGS_WARN_ON  = $$QMAKE_CFLAGS_WARN_ON
  
  QMAKE_LINK              = $${CROSS_COMPILE}g++
 -- 
-2.19.2
+2.20.1
 

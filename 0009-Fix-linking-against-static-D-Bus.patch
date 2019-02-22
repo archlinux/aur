@@ -1,7 +1,7 @@
-From 3acf388e10fd40909af87cfdba35768f2be26be6 Mon Sep 17 00:00:00 2001
+From 5c645a6510d3ac66a845b695c5e30c76944f22a0 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 19:36:25 +0100
-Subject: [PATCH 09/33] Fix linking against static D-Bus
+Subject: [PATCH 09/34] Fix linking against static D-Bus
 
 ---
  configure.json             | 9 +++++++--
@@ -9,17 +9,18 @@ Subject: [PATCH 09/33] Fix linking against static D-Bus
  2 files changed, 11 insertions(+), 2 deletions(-)
 
 diff --git a/configure.json b/configure.json
-index 522bd34e9b..17446b6c21 100644
+index 9fce6d039e..c673f9a5fc 100644
 --- a/configure.json
 +++ b/configure.json
-@@ -170,17 +170,22 @@
+@@ -169,18 +169,23 @@
+         "dbus": {
              "label": "D-Bus >= 1.2",
              "test": {
-                 "include": "dbus/dbus.h",
 -                "main": "(void) dbus_bus_get_private(DBUS_BUS_SYSTEM, (DBusError *)NULL);"
 +                "main": "(void) dbus_bus_get_private(DBUS_BUS_SYSTEM, (DBusError *)NULL);",
 +                "qmake": "static: DEFINES += DBUS_STATIC_BUILD"
              },
+             "headers": "dbus/dbus.h",
              "sources": [
                  { "type": "pkgConfig", "args": "dbus-1 >= 1.2" },
 +                {
@@ -53,5 +54,5 @@ index 7cce0d71aa..4d3d774d45 100644
  #  include <dbus/dbus.h>
  #else
 -- 
-2.19.2
+2.20.1
 

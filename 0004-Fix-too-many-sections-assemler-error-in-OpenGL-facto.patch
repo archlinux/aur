@@ -1,7 +1,7 @@
-From 42ab8012488408bfb6ab77fb056b27f3400d40ce Mon Sep 17 00:00:00 2001
+From 987045e209769c2b4f8f48046167b5ef9106dd70 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:48:51 +0200
-Subject: [PATCH 04/33] Fix too many sections assemler error in OpenGL factory
+Subject: [PATCH 04/34] Fix too many sections assemler error in OpenGL factory
 
 On x86_64 qopenglversionfunctionsfactory.o exceeds the
 limit of 32768 sections.
@@ -25,5 +25,5 @@ index 24758afdeb..aa04b4a672 100644
      HEADERS += opengl/qopengl.h \
                 opengl/qopengl_p.h \
 -- 
-2.19.2
+2.20.1
 
