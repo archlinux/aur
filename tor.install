@@ -10,7 +10,7 @@ post_upgrade() {
   systemd-sysusers tor.conf
   systemd-tmpfiles --create tor.conf
   chown -R tor:tor /etc/tor
-  chmod 750 /etc/tor
+  chmod 755 /etc/tor
 }
 
 pre_remove() {

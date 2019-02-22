@@ -78,7 +78,7 @@ package() {
 
     rm -f "$pkgdir/etc/tor/tor-tsocks.conf"
     rm -f "$pkgdir/usr/bin/torify"
-    install -dm750 "$pkgdir/etc/tor"
+    install -dm755 "$pkgdir/etc/tor"
     install -dm750 "$pkgdir/etc/tor/torrc.d"
     install -Dm640 "$srcdir/torrc"             "$pkgdir/etc/tor/torrc"
     install -Dm640 "$srcdir/nodes"             "$pkgdir/etc/tor/torrc.d/nodes"
