@@ -1,6 +1,6 @@
 pkgbase = tracktion-waveform
 	pkgdesc = Audio and MIDI Workstation (DAW)
-	pkgver = 10.0.24
+	pkgver = 10.0.26
 	pkgrel = 1
 	url = https://www.tracktion.com/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = tracktion-waveform
 	optdepends = jack: A low-latency audio server
 	optdepends = ladspa-plugins: A set of ladspa plugins
 	conflicts = waveform-bundle
-	conflicts = tracktion-waveform
-	source = https://cdn.tracktion.com/file/tracktiondownload/waveform/10024/waveform_64bit_v10.0.24.deb
-	md5sums = fb1ac8536183761fddd8b05b84febce5
+	conflicts = tracktion-waveform-beta
+	source = https://cdn.tracktion.com/file/tracktiondownload/waveform/10026/waveform_64bit_v10.0.26.deb
+	md5sums = 0164697a3d359fdf0e3070f3c2389396
 
 pkgname = tracktion-waveform
 
