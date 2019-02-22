@@ -6,7 +6,7 @@
 
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'nvidia-egl-wayland-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
-pkgver=418.30
+pkgver=418.43
 pkgrel=1
 pkgdesc='NVIDIA driver utilities and libraries (beta version)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'nvidia-drm-outputclass.conf'
         'nvidia-utils-beta.sysusers')
-sha256sums=('da5ff351869694561bdf53260f8212dde76e885333d8967e7d633084e032cf1f'
+sha256sums=('55cb410c5337f46a48636c2bd5ecb42bf1f4367059394e374b16a8f067de3187'
             '089d6dc247c9091b320c418b0d91ae6adda65e170934d178cdd4e9bd0785b182'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167')
 
