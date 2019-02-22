@@ -1,14 +1,14 @@
 pkgbase = thermald-me176c
 	pkgdesc = Thermal daemon configuration files for ASUS MeMO Pad 7 (ME176C[X])
-	pkgver = r1.e166b7d
+	pkgver = r2.c4dd389
 	pkgrel = 1
 	url = https://github.com/me176c-dev/linux-me176c
 	arch = any
 	license = MIT
 	depends = thermald
 	options = !strip
-	source = https://github.com/me176c-dev/linux-me176c/archive/e166b7dcad1ce895938ff1965ecd8cbc0e86c7fc.tar.gz
-	sha256sums = 7d261409de5bbd388402aa12dc2c676228fa806fb1d0d565d4d778144fe82549
+	source = https://github.com/me176c-dev/linux-me176c/archive/c4dd3897686c33f3c8ac46344a26ec6e1683d3e2.tar.gz
+	sha256sums = 95b8430db1959068a84f42650e8ac312253e7fabede64441522feb1781fafd7b
 
 pkgname = thermald-me176c
 
