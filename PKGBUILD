@@ -7,7 +7,7 @@ pkgname='ros-kinetic-variant-msgs'
 pkgver='0.1.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('GNU Lesser General Public License (LGPL)')
 
 ros_makedepends=(ros-kinetic-message-generation
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="variant-release-release-kinetic-variant_msgs-${pkgver}-${_pkgver_patch}"
+_dir="variant-release-release-kinetic-variant_msgs"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/anybotics/variant-release/archive/release/kinetic/variant_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
 sha256sums=('6e80091e0e2c9702969b3da0a988fad394dfe1401d68b2e3870a16336285445f')
 
