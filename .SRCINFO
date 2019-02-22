@@ -1,5 +1,5 @@
 pkgbase = handbrake-fdkaac
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://handbrake.fr/
 	arch = x86_64
@@ -29,8 +29,8 @@ pkgbase = handbrake-fdkaac
 	makedepends = jansson
 	makedepends = librsvg
 	makedepends = libgudev
-	source = https://download.handbrake.fr/releases/1.2.0/HandBrake-1.2.0-source.tar.bz2
-	sha256sums = 113b398a50147d48c8777e6ff2c4de6825af5f1079b3822e41bf0eacec9c940d
+	source = https://download.handbrake.fr/releases/1.2.1/HandBrake-1.2.1-source.tar.bz2
+	sha256sums = 00316eec7bb29b88b8dd11b14581c99c35fd7a315f5bc8cc7f1eb144b2fa783d
 
 pkgname = handbrake-fdkaac
 	pkgdesc = Multithreaded video transcoder
