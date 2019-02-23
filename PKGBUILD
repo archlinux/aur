@@ -2,19 +2,20 @@
 
 pkgname=swaylock-blur-git
 _pkgname=${pkgname%-git}
-pkgver=r3.cb1df3d
-pkgrel=2
-pkgdesc="A script that runs swaylock and sets the image to a blurred screenshot of the desktop"
+pkgver=r6.2011a78
+pkgrel=1
+pkgdesc="A small Rust program that runs swaylock and sets the image to a blurred screenshot of the desktop"
 arch=("any")
 url="https://github.com/cjbassi/swaylock-blur"
 license=("MIT")
-depends=("swaylock" "imagemagick" "grim" "jq")
-makedepends=("git")
+depends=("swaylock" "imagemagick" "grim" "sway")
+makedepends=("git" "cargo")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("git+${url}")
 md5sums=("SKIP")
 
+# https://wiki.archlinux.org/index.php/VCS_package_guidelines
 pkgver() {
   cd "${_pkgname}"
   ( set -o pipefail
@@ -23,7 +24,20 @@ pkgver() {
   )
 }
 
+# https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=loop
+build() {
+  cd "${_pkgname}"
+  if command -v rustup > /dev/null 2>&1; then
+    RUSTFLAGS="-C target-cpu=native" rustup run stable \
+      cargo build --release
+  elif rustc --version | grep -q nightly; then
+    RUSTFLAGS="-C target-cpu=native" \
+      cargo build --release
+  else
+    cargo build --release
+  fi
+}
+
 package() {
-    mkdir -p ${pkgdir}/usr/bin/
-    install ${srcdir}/${_pkgname}/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
+  install -Dm755 "${srcdir}/${_pkgname}/target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
