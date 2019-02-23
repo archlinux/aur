@@ -1,4 +1,4 @@
-From 3096ba94fa87b22664baa91e71a55ce698bb8aed Mon Sep 17 00:00:00 2001
+From e4817043e07f7414acdb25aa0d0689cb30a5fc2b Mon Sep 17 00:00:00 2001
 From: YueHaibing <yuehaibing@huawei.com>
 Date: Tue, 19 Feb 2019 10:10:38 +0800
 Subject: [PATCH 2/3] exec: Fix mem leak in kernel_read_file
