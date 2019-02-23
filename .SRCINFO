@@ -1,0 +1,22 @@
+pkgbase = jupyter-nodejs-babel-git
+	pkgdesc = A node.js kernel for jupyter/ipython with latest babel
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/notablemind/jupyter-nodejs
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = nodejs
+	depends = jupyter
+	depends = npm
+	provides = jupyter-nodejs-babel
+	conflicts = jupyter-nodejs-babel
+	options = debug
+	options = !strip
+	source = install.patch
+	source = jupyter-nodejs-babel::git+https://github.com/notablemind/jupyter-nodejs.git
+	sha256sums = 1cc912a860d06f40699a7af38034475ff1835b27acb149efbad85840d6d52a12
+	sha256sums = SKIP
+
+pkgname = jupyter-nodejs-babel-git
+

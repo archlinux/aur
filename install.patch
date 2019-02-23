@@ -1,0 +1,115 @@
+diff -Naur jupyter-nodejs-babel.1/config.js jupyter-nodejs-babel/config.js
+--- jupyter-nodejs-babel.1/config.js	2019-02-23 13:13:41.205839465 -0500
++++ jupyter-nodejs-babel/config.js	2019-02-23 13:52:01.238226270 -0500
+@@ -4,7 +4,6 @@
+     // clojurescript: require('./ext/clojurescript'),
+     clojure: require('./build/ext/clojure'),
+     clojurescript: require('./build/ext/clojurescript'),
+-    coffee: require('./build/ext/coffee'),
+-    babel: require('./build/ext/babel')
++    coffee: require('./build/ext/coffee')
+   }
+ }
+diff -Naur jupyter-nodejs-babel.1/ext/babel.js jupyter-nodejs-babel/ext/babel.js
+--- jupyter-nodejs-babel.1/ext/babel.js	2019-02-23 13:13:41.205839465 -0500
++++ jupyter-nodejs-babel/ext/babel.js	1969-12-31 19:00:00.000000000 -0500
+@@ -1,31 +0,0 @@
+-
+-export default function (ctx, args, done) {
+-  let babel
+-  try {
+-    babel = require('babel')
+-  } catch (err) {
+-    return done(new Error('The package `babel` was not found. Please install'))
+-  }
+-  done(null, {
+-    block: {
+-      babel: {
+-        transform(ctx, args, code, out, done) {
+-          const opts = { optional: ["runtime"] }
+-          if (args && args.indexOf('experimental') !== -1) {
+-            opts.stage = 0
+-          }
+-          try {
+-            code = babel.transform(code, opts).code
+-          } catch (err) {
+-            return done(err)
+-          }
+-          // slice off the "use strict"
+-          code = code.split('\n').slice(1).join('\n')
+-          console.log('Babel->', code)
+-          done(null, code)
+-        }
+-      },
+-    },
+-  })
+-}
+-
+diff -Naur jupyter-nodejs-babel.1/install.js jupyter-nodejs-babel/install.js
+--- jupyter-nodejs-babel.1/install.js	2019-02-23 13:28:21.121425182 -0500
++++ jupyter-nodejs-babel/install.js	2019-02-23 13:52:13.631659893 -0500
+@@ -1,20 +1,24 @@
+-
+ var fs = require('fs')
+ var path = require('path')
+ var mkdirp = require('mkdirp')
+ 
+-var installPath = path.join(process.env.HOME, '.ipython/kernels/nodejs')
+-if (process.argv.length >= 3) {
+-  installPath = process.argv[2]
+-}
+-
+-console.log('install', installPath)
+-var fullPath = path.resolve(installPath)
++var INSTALL_PATH = path.resolve(
++  process.env.INSTALL_PATH || path.join(process.env.HOME, '.ipython/kernels/nodejs-babel')
++)
++var RUNTIME_PATH = path.resolve(
++  process.env.RUNTIME_PATH || path.join(path.resolve(__dirname))
++)
+ 
+-mkdirp(fullPath, function() {
+-  fs.writeFileSync(path.join(fullPath, 'kernel.json'), JSON.stringify({
+-    argv: ['node', path.join(path.resolve(__dirname), 'build', 'run.js'), '{connection_file}'],
+-    display_name: 'NodeJS',
++mkdirp(INSTALL_PATH, function () {
++  fs.writeFileSync(path.join(INSTALL_PATH, 'kernel.json'), JSON.stringify({
++    env: { NODE_PATH: path.join(RUNTIME_PATH, 'node_modules') },
++    argv: [
++      'node',
++      path.join(RUNTIME_PATH, 'node_modules/@babel/node/bin', 'babel-node.js'),
++      path.join(RUNTIME_PATH, 'build', 'run.js'),
++      '{connection_file}'
++    ],
++    display_name: 'NodeJS Babel',
+     language: 'javascript',
+   }, null, 2))
+ });
+diff -Naur jupyter-nodejs-babel.1/package.json jupyter-nodejs-babel/package.json
+--- jupyter-nodejs-babel.1/package.json	2019-02-23 13:13:41.215839529 -0500
++++ jupyter-nodejs-babel/package.json	2019-02-23 13:52:01.238226270 -0500
+@@ -26,9 +26,11 @@
+   "prepublish": "make",
+   "license": "ISC",
+   "dependencies": {
++    "@babel/cli": "^7.2.3",
++    "@babel/core": "^7.3.3",
++    "@babel/node": "^7.2.2",
++    "@babel/preset-env": "^7.3.1",
+     "async": "^0.9.0",
+-    "babel": "^5.1.11",
+-    "babel-runtime": "^6.23.0",
+     "bencode": "^0.7.0",
+     "coffee-script": "^1.9.2",
+     "mkdirp": "^0.5.1",
+@@ -37,5 +39,10 @@
+   },
+   "devDependencies": {
+     "mkdirp": "^0.5.0"
++  },
++  "babel": {
++    "presets": [
++      "@babel/preset-env"
++    ]
+   }
+ }
