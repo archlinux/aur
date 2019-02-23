@@ -61,9 +61,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=4.20.11-arch1
+_srcver=4.20.12-arch1
 pkgver=${_srcver%-*}
-pkgrel=2
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -87,7 +87,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('dcd95c41f45c8ee90e249887f4aa8657b9a4c5d0fcef69ba17e75b5304d7411f'
+sha256sums=('1cf544308195250805e0731c716691bea4c1ed29e03e6f9ae5be6dc16785a504'
             'SKIP'
             '4ff10c16fa729f808e812e3ff53ef8087ab9c220c84d860676d3bfb5c1c63c5d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -95,7 +95,7 @@ sha256sums=('dcd95c41f45c8ee90e249887f4aa8657b9a4c5d0fcef69ba17e75b5304d7411f'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '4bd614333fcbe509118b5362889f76d241e1d33e1ee691bd24fd82384ce7f2de'
-            '059123200c60ef468ac17bf05a75f37ca69ad34bd21af94644f478c873c3579a'
+            'b6eea702f203632f12fa9edd4a38781d66498c20b1baedb23722537930b9a863'
             '3e8c7d3015bb593e8a861be0b2b9f1de74fcb25e00c6e3eacee3165c6bec6f64')
 
 _kernelname=${pkgbase#linux}
@@ -237,11 +237,9 @@ _package-headers() {
   provides=("linux-ck-headers=${pkgver}" "linux-headers=${pkgver}")
   #groups=('ck-generic')
 
- local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
- cd linux-${pkgver}
-
-
+  cd linux-${pkgver}
 
   msg2 "Installing build files..."
   install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
