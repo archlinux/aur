@@ -1,8 +1,8 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 pkgname=beatslash-lv2
-pkgver=1.0.5
-pkgrel=2
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="A set of plugins for live beat repeating and beat slicing"
 arch=('x86_64')
 url="https://objectivewave.wordpress.com/beatslash-lv2"
@@ -10,8 +10,8 @@ license=('GPL3')
 groups=('lv2-plugins' 'pro-audio')
 depends=('gtkmm')
 makedepends=('lv2' 'lvtk' 'python2')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/blablack/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('089cd3329cef4e91f2e0b0c9cf09c524c2ce81571c35d93b92d88a69f0abecec3b5014116e4b88c960fb437bda17d539874ab3c9b95d04ca1df61a5fad575e69')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/blablack/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('d20262946479cbbec1e48dd72a89be46f88d2f48fe55ba5d35535dcdcd1226d52cf57f335dd3aeb3f794590848bbd48e98eb0bf692840f3bd5e600ae93ca8614')
 
 build() {
   cd "$pkgname-$pkgver"
