@@ -2,14 +2,14 @@
 pkgname=zelda-olb-fr
 _name=zelda-olb
 pkgver=3.6
-pkgrel=5
+pkgrel=6
 arch=('i686' 'x86_64')
 pkgdesc="Zelda: Oni Link Begins is the sequel of Zelda: Return of the Hylian (french version)"
 url="http://www.zeldaroth.fr/"
 license=('Unknown')
 depends=('sdl_gfx' 'sdl_mixer' 'sdl_image' 'xdg-utils' 'hicolor-icon-theme' 'timidity++')
 makedepends=(imagemagick)
-optdepends=('timidity-freepats: soundfont for timidity to be able to have music in game'
+optdepends=('freepats-legacy: soundfont for timidity to be able to have music in game'
   'soundfont-fluid: another soundfont for timidity to be able to have music in game if you prefer')
 install=${_name}.install
 changelog=ChangeLog
