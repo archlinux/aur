@@ -1,8 +1,8 @@
 pkgbase = leela-zero-git
 	pkgdesc = Go engine with no human-provided knowledge, modeled after the AlphaGo Zero paper. (next branch)
 	pkgver = 766
-	pkgrel = 4
-	url = https://github.com/gcp/leela-zero
+	pkgrel = 5
+	url = https://github.com/leela-zero/leela-zero
 	install = leela-zero-git.install
 	arch = x86_64
 	license = GPLv3
@@ -18,7 +18,7 @@ pkgbase = leela-zero-git
 	depends = qt5-base
 	provides = leela-zero
 	conflicts = leela-zero
-	source = leela-zero::git+https://github.com/gcp/leela-zero#branch=next
+	source = leela-zero::git+https://github.com/leela-zero/leela-zero#branch=next
 	source = git+https://github.com/google/googletest.git
 	source = git+https://github.com/eigenteam/eigen-git-mirror
 	source = weights.txt.gz::http://zero.sjeng.org/best-network
