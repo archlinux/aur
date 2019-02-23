@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=xash3d-git
-pkgver=r339.1b37211
+pkgver=r351.142a38f
 pkgrel=1
 pkgdesc="A custom Gold Source engine rewritten from scratch"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('lib32-freetype2' 'lib32-fontconfig' 'lib32-sdl2' 'lib32-vgui' 'xash3d-
 makedepends=('make' 'binutils' 'cmake')
 makedepends=('gcc-multilib' 'lib32-gcc-libs')
 backup=('etc/conf.d/xash3d')
-source=("$pkgname::git://github.com/M0Rf30/xash3d-fwgs#commit=1b372115a54b4467fab666f2a9d8f197b12d1c7b"
+source=("$pkgname::git+https://github.com/M0Rf30/xash3d-fwgs"
 	${pkgname%%-git}
 	${pkgname%%-git}.conf.d
 	${pkgname%%-git}.dedicated
@@ -26,7 +26,7 @@ pkgver() {
 
 prepare() {
 	cd $srcdir/$pkgname
-	git submodule init && git submodule update
+	git submodule update --init --recursive
 }
 
 package() {
@@ -35,7 +35,7 @@ package() {
 		--dedicated \
 		--build-type=release \
 		--vgui https://github.com/FWGS/vgui-dev \
-		--enable-stbtt
+	--enable-stbtt
 	./waf --dedicated build
 	./waf --destdir="$pkgdir" --dedicated install
 
@@ -44,7 +44,7 @@ package() {
 	./waf configure --prefix=/usr \
 		--build-type=release \
 		--vgui https://github.com/FWGS/vgui-dev \
-		--enable-stbtt
+	--enable-stbtt
 	./waf build
 	./waf --destdir="$pkgdir" install
 	mv $pkgdir/usr/lib $pkgdir/usr/lib32
