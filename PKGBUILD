@@ -50,7 +50,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20190206.r0.g1a82ba1c69e3
+pkgver=20190222.r0.g94a47529a645
 _srcname=linux-next
 pkgrel=1
 arch=('x86_64')
@@ -76,7 +76,7 @@ _kernelname=${pkgbase#linux}
 
 pkgver() {
   cd "${_srcname}"
-  git describe --long --tags |  sed -E 's/next.//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
+  git describe --long --tags |  sed 's/next.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
