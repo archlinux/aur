@@ -1,13 +1,13 @@
 # Maintainer: Varakh <varakh[at]varakh[dot]de>
 pkgname=brother-mfc-j430w
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="LPR and CUPS driver for the Brother MFC-J430W"
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 license=('unknown')
 install='brother-mfc-j430w.install'
 arch=('any')
-source=("https://downloads.schaeferdiek.eu/Linux/AUR/${pkgname}-${pkgver}-${pkgrel}.tar.gz")
+source=("https://downloads.varakh.de/Linux/AUR/${pkgname}-${pkgver}-${pkgrel}.tar.gz")
 md5sums=('adcf866f27c2fa13f81286874f7f8204')
 
 # server doesn't like the curl header
