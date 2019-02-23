@@ -3,8 +3,8 @@
 # Contrubutor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-390xx-ck
-pkgver=390.87
-pkgrel=20
+pkgver=390.116
+pkgrel=1
 _extramodules=extramodules-ck
 _pkgdesc="NVIDIA drivers for linux-ck, 390xx legacy branch."
 pkgdesc="$_pkgdesc"
@@ -18,12 +18,10 @@ conflicts=('nvidia-340xx-ck' 'nvidia-ck')
 license=('custom')
 options=('!strip')
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-kernel-4.16.patch kernel-4.19.patch unfuck.patch kernel-4.20.patch)
-sha256sums=('c7c07151e17f610af11f7870560d96c3a3ee9bb91ba1bb82fcc7b5d473d40b66'
+kernel-4.16.patch unfuck.patch)
+sha256sums=('de85a2eea39ca16e25645b345259b01fbe858b833286b7e6785afa273009ef6f'
             '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385'
-            'e425320bd3712cc789035d5936412724b0b410f50463980c0a48715fd3f8c431'
-            'fa726a12083bd7415d4f827652caf66030224c8e69925aa9f650766e58790080'
-            'deb45f7636dfebe938dffe566df9e9a5deeb47ccaf0bfe16a2884579b2524075')
+            'fa726a12083bd7415d4f827652caf66030224c8e69925aa9f650766e58790080')
 
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
@@ -34,12 +32,6 @@ prepare() {
     # Restore phys_to_dma support (still needed for 396.18)
     # https://bugs.archlinux.org/task/58074
     patch -Np1 -i ../kernel-4.16.patch
-
-    # Ad-hoc patch
-    patch -Np1 -i ../kernel-4.19.patch
-
-    # struct ipmi_user
-    patch -Np1 -i ../kernel-4.20.patch
 
     # https://bugs.archlinux.org/task/59199
     patch -Np1 -i ../unfuck.patch
