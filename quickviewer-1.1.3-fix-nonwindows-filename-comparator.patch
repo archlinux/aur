@@ -1,0 +1,11 @@
+--- quickviewer/QuickViewer/src/models/volumemanager.cpp.orig	2019-02-22 03:48:52.047947231 -0800
++++ quickviewer/QuickViewer/src/models/volumemanager.cpp	2019-02-22 04:50:15.231151952 -0800
+@@ -71,7 +71,7 @@ static bool fileNameDescendingLessThan(c
+ 
+ static bool fileNameDescendingLessThan(const QvImageMetadata& m1, const QvImageMetadata& m2)
+ {
+-    return s1 > s2;
++    return m1.filename().localeAwareCompare(m2.filename()) > 0;
+ }
+ 
+ #endif

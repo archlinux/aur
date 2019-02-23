@@ -1,0 +1,26 @@
+--- quickviewer/fileloader/fileloader.pro.orig	2019-02-23 05:29:22.150589475 -0800
++++ quickviewer/fileloader/fileloader.pro	2019-02-23 05:30:24.377255206 -0800
+@@ -16,7 +16,7 @@
+ 
+ *g++* {
+     win32: CONFIG += staticlib
+-    QMAKE_LFLAGS += -Wl,-rpath,../lib
++    #QMAKE_LFLAGS += -Wl,-rpath,../lib
+     QMAKE_CXXFLAGS += -std=c++11
+     DEFINES += NTDDI_VERSION=NTDDI_VISTA
+ }
+@@ -54,11 +54,13 @@
+ INCLUDEPATH += ../Qt7z/Qt7z
+ LIBS += -lQt7z
+ 
+-unix {
++linux {
+ #    SOURCES += $$PWD/fileloaderziparchive.cpp
+ #    HEADERS += $$PWD/fileloaderziparchive.h
+ #    DEFINES += QUAZIP_STATIC
+ #    INCLUDEPATH += $$PWD/../quazip/quazip/quazip $$PWD/../zlib/zlib
+ #    LIBS += -lquazip -lzlib
++    target.path = /usr/lib
++    INSTALLS += target
+ }
+ 

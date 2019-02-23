@@ -1,0 +1,44 @@
+--- quickviewer/QuickViewer/QuickViewer.pro.orig	2019-02-23 03:43:51.157350083 -0800
++++ quickviewer/QuickViewer/QuickViewer.pro	2019-02-23 03:45:55.597348307 -0800
+@@ -424,22 +424,21 @@
+ 
+ # not portable, install into /usr/local/bin
+ linux : !CONFIG(debug, debug|release) : !contains(DEFINES, QV_PORTABLE) {
+-    APPDIR = QuickViewer-$${VERSION}-$${TARGET_ARCH}.AppDir
+-    APPIMAGE = QuickViewer-$${VERSION}-$${TARGET_ARCH}.AppImage
+-    MY_DEFAULT_INSTALL = ../../$${APPDIR}
++    target.path = $${QV_BIN_PATH}
+ 
+-    install_target.files = $${DESTDIR}/QuickViewer
+-    install_target.path = $${QV_BIN_PATH}
+-
+-    install_libs.files = $${DESTDIR}/../lib/libfileloader.so.1 $${DESTDIR}/../lib/lib7z.so
+-    install_libs.path = $${QV_LIB_PATH}
++    install_desktop.files = $${PWD}/QuickViewer.desktop
++    install_desktop.path = $${QV_SHARED_PATH}/applications
+ 
++    install_mainicon.files = $${PWD}/../docs/quickviewer.png
++    install_mainicon.path = $${QV_SHARED_PATH}/icons/hicolor/512x512/apps
+ 
++    install_deploy_files.files = $${PWD}/../README.md
+     install_deploy_files.path = $${QV_SHARED_PATH}/QuickViewer
+-    install_deploy_files.files = $${PWD}/../README.md $${PWD}/../LICENSE
+-    install_deploy_files.depends = install_install_target install_install_libs
+ 
+-    install_translations.path = $$[QT_INSTALL_TRANSLATIONS]
++    install_license.files = $${PWD}/../LICENSE
++    install_license.path = $${QV_SHARED_PATH}/licenses/quickviewer
++
++    install_translations.path = $${QV_SHARED_PATH}/QuickViewer/translations
+     install_translations.files = \
+         $${PWD}/translations/languages.ini \
+         $${PWD}/translations/quickviewer_ja.qm \
+@@ -462,7 +461,7 @@
+         ../AssociateFilesWithQuickViewer/icons/qv_tiff.ico \
+         ../AssociateFilesWithQuickViewer/icons/qv_webp.ico \
+ 
+-    INSTALLS += install_target install_libs install_deploy_files install_translations install_assoc_icons
++    INSTALLS += target install_desktop install_mainicon install_deploy_files install_license install_translations install_assoc_icons
+ }
+ 
+ macos : !CONFIG(debug, debug|release) {

@@ -1,0 +1,13 @@
+--- quickviewer/QuickViewer/QuickViewer.desktop.orig	2019-02-23 03:51:38.724009967 -0800
++++ quickviewer/QuickViewer/QuickViewer.desktop	2019-02-23 04:49:20.480625309 -0800
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+ Name=QuickViewer
+ Comment=A image viewer application for folders/archives, it can show images very fast
+-Keywords=viewer;commic;manga;opengl;
+-Exec=usr/bin/QuickViewer %F
++Keywords=viewer;comics;manga;opengl;
++Exec=/usr/bin/QuickViewer %F
+ Icon=quickviewer
+ Terminal=false
+ Type=Application

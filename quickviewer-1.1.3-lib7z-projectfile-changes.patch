@@ -1,0 +1,10 @@
+--- quickviewer/Qt7z/lib7z/lib7z.pro.orig	2019-02-23 03:30:46.104028146 -0800
++++ quickviewer/Qt7z/lib7z/lib7z.pro	2019-02-23 03:40:24.020686431 -0800
+@@ -281,3 +281,7 @@
+ 
+ macx: LIBS += -framework CoreFoundation
+ 
++linux {
++    target.path = /usr/lib
++    INSTALLS += target
++}
