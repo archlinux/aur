@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://pydl.readthedocs.io/"
 license=('BSD')
 makedepends=('python-setuptools' 'python-setuptools' 'python-astropy' 'python-astropy-helpers' 'python2-astropy-helpers' 'python-sphinx-astropy')
-checkdepends=('python-pytest-astropy' 'python2-pytest32' 'python2-astropy')
+checkdepends=('python-pytest-astropy' 'python2-pytest32' 'python2-matplotlib' 'python2-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('0bf0921aef8f5acbf192ac5c49f0d46c')
 
