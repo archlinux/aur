@@ -2,14 +2,14 @@
 pkgname=zelda-3t-fr
 _name=zelda-3t
 pkgver=1.8
-pkgrel=5
+pkgrel=6
 arch=('i686' 'x86_64')
 pkgdesc="Zelda: Time To Triumph (french version)"
 url="http://www.zeldaroth.fr/"
 license=('Unknown')
 depends=('sdl_gfx' 'sdl_mixer' 'sdl_image' 'xdg-utils' 'hicolor-icon-theme' 'timidity++')
 makedepends=(imagemagick)
-optdepends=('timidity-freepats: soundfont for timidity to be able to have music in game'
+optdepends=('freepats-legacy: soundfont for timidity to be able to have music in game'
   'soundfont-fluid: another soundfont for timidity to be able to have music in game if you prefer')
 install=${_name}.install
 changelog=ChangeLog

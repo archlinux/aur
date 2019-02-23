@@ -1,3 +1,7 @@
+2019-02-23
+	* 1.8-6
+	optional dependency timidity-freepats to freepats-legacy
+
 2017-06-05
 	* 1.8-5 :
 	Fixed preprocessor options (SDL.h not found)
