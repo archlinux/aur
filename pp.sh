@@ -45,7 +45,7 @@ for pkgNameAndVersion in "${packageList[@]}"; do
 		fi
 	done
 	
-	aria2c -c $downloadList -d "pacmanCahceDir" &> /dev/null &
+	aria2c -c $downloadList -d "$pacmanCahceDir" &> /dev/null &
 	
 	running=$(jobs |wc -l)
 	echo ">>> $(date +%T) | Downloading $pkgName, $running/$maxParallelDownload download"
