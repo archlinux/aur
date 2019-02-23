@@ -6,8 +6,8 @@
 
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=3.3.5
-pkgrel=2
+pkgver=3.3.6
+pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -46,15 +46,8 @@ optdepends=(
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver/.0}.tar.gz"
-        "0001-Qt-Fix-1157-Qt-5.12-also-exports-Decimal.patch")
-sha256sums=('aa0500a133d93cb24612297b83c7227ee9a66028b2b4e92ea134c69fd9a81623'
-            '51b7c35e209501002ee585b02c84be2d5daba7a962c86a1b21cca9dd48d4bde7')
-prepare() {
-  cd "Electron-Cash-${pkgver/.0}"
-
-  patch -Np1 -i "${srcdir}/0001-Qt-Fix-1157-Qt-5.12-also-exports-Decimal.patch"
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver/.0}.tar.gz")
+sha256sums=('470dc7c200045ffade3bc45aa2ba0042fad0c23b9dfac6a52b7dcb6466c4870f')
 
 build() {
   cd "Electron-Cash-${pkgver/.0}"
@@ -82,6 +75,5 @@ package() {
 
   python setup.py install --root="${pkgdir}" --optimize=1
 }
-
 
 # vim: ts=2 sw=2 et:
