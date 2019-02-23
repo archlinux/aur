@@ -1,0 +1,1 @@
+/home/egorcod/go/src/github.com/malyutinegor/funcd/build/PKGBUILD

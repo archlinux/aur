@@ -1,0 +1,16 @@
+pkgbase = funcd-git
+	pkgdesc = Daemon for functional keys (works without X11)
+	pkgver = r18.7b21009
+	pkgrel = 1
+	url = https://github.com/malyutinegor/funcd
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	depends = alsa-utils
+	depends = xorg-xinput
+	source = funcd::git+https://github.com/malyutinegor/funcd.git
+	sha256sums = SKIP
+
+pkgname = funcd-git
+
