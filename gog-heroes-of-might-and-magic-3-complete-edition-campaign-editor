@@ -1,10 +1,19 @@
 #!/bin/bash
 unset WINEPREFIX
 export WINEPREFIX="$HOME"/.local/share/gog-heroes-of-might-and-magic-3-complete-edition 
+SOURCE=/opt/gog/heroes-of-might-and-magic-3-complete-edition
+DATA_DIR="${WINEPREFIX}/HoMM3-data"
+UNIONFS_MNT="${WINEPREFIX}/drive_c/GOG Games/HoMM 3 Complete"
 if [ ! -d "$WINEPREFIX" ]
 then
   mkdir -p "$WINEPREFIX"
   wineboot -i
-  regedit /usr/share/gog-heroes-of-might-and-magic-3-complete-edition/local_machine.reg
 fi
-wine /opt/gog/heroes-of-might-and-magic-3-complete-edition/h3ccmped.exe "$@"
+if ! mountpoint "${UNIONFS_MNT}"
+then
+  unionfs -o cow,allow_other,relaxed_permissions,use_ino,suid,dev,nonempty ${DATA_DIR}=RW:${SOURCE}=RO "${UNIONFS_MNT}"
+fi
+cd "${UNIONFS_MNT}"
+wine h3ccmped.exe "$@"
+cd ..
+fusermount -u "${UNIONFS_MNT}"

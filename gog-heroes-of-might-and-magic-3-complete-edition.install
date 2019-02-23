@@ -1,4 +1,4 @@
 post_install() {
-    echo "Make sure to add user to the \"games\" group with"
-    echo "    # gpasswd -a USER games"
+    echo "Make sure to set 'user_allow_other' in /etc/fuse.conf"
+    echo "    # echo user_allow_other >> /etc/fuse.conf"
 }

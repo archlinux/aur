@@ -1,6 +1,6 @@
 pkgname=gog-heroes-of-might-and-magic-3-complete-edition
 pkgver=4.0.25024
-pkgrel=1
+pkgrel=2
 _gamename=${pkgname#gog-}
 _gamename=${_gamename//-/_}
 _gamehdpatchname="HoMM3%20HD%20Latest.exe"
@@ -27,11 +27,11 @@ sha256sums=('76af0bfa9ddb1889ff0fe516599f21e3f2a696dd5baaf74333b5b58cc425a0e1'
             'ab14524f06cb213ee0b1e5bcd5d9089da9e66057794430347d32a60a86a945fd'
             'de064d9bc819403dc5990fd70d81c88d63d708ba5b4e02015cc616e77338c478'
             '4dc5f7d1bd44405dae2969ec093ef6ce680aec889024b68350023feb4a12ee1b'
-            'bb1cec5ef9de917ae69bb04d661d843986b038a277871557387cd66c7292604d'
-            '2165809683969955bca129f1960efa5111aaa703ac891df29b809f4ce5b30eaa'
-            '5265ae79418a0c376d2f98cc52c5fc2ed34af802080e00c229754efe9f8e91d6'
-            '6c6d7f19bcca181ee5c1c51c9f15e8d12d95e1feabcd676d1a41fc377f050d37')
-depends=(wine)
+            '4cbc70b50d94497294f6208dc91e0c3a8da2d494b0d1e02d0929ffc3924e4569'
+            '1c780da9550edf46168b44dca34b68a8159e3083f8960b5443721bfad3d87a06'
+            '14927c0c59520861fd8a00d05f4b9fbcc70a71ff669add852ba0f5c670f8556a'
+            '493ef7009c2f4d103ed5b283fcc5dd900ff13cfb1d494052227bf7760fe0f7c7')
+depends=(wine unionfs-fuse util-linux)
 makedepends=(icoutils)
 
 # Register lgogdownloader as a download agent
@@ -76,16 +76,6 @@ package() {
   # Remove unneeded files
   rm -rf ${pkgdir}/opt/gog/${pkgname#gog-}/unins*
   rm -rf ${pkgdir}/opt/gog/${pkgname#gog-}/*.lnk
-  # Give group write access to Data (to enable h3mmaped.exe)
-  chown :games ${pkgdir}/opt/gog/${pkgname#gog-}/Data/*
-  chmod g+w ${pkgdir}/opt/gog/${pkgname#gog-}/Data/*
-  # Give group write access to HD3 launcher config
-  #for conf in _HD3_Data/HD3_Launcher.ini _HD3_Data/Settings/sod.ini
-  #do
-  #  touch ${pkgdir}/opt/gog/${_pkgname#gog-}/${conf}
-  #  chown :games ${pkgdir}/opt/gog/${_pkgname#gog-}/${conf}
-  #  chmod g+w ${pkgdir}/opt/gog/${_pkgname#gog-}/${conf}
-  #done
   
   # Install .desktop file and icons
   install -Dm644 "${srcdir}/${pkgname}.desktop"                  ${pkgdir}/usr/share/applications/${pkgname}.desktop
