@@ -1,7 +1,7 @@
 pkgbase = python2-vmaf
 	pkgdesc = Perceptual video quality assessment algorithm based on multi-method fusion (python2 implementation)
-	pkgver = 1.3.9
-	pkgrel = 3
+	pkgver = 1.3.13
+	pkgrel = 1
 	url = https://github.com/netflix/vmaf/
 	arch = any
 	license = APACHE
@@ -15,10 +15,9 @@ pkgbase = python2-vmaf
 	depends = python2-scikit-learn
 	depends = python2-h5py
 	depends = python2-scikit-image
-	source = vmaf-1.3.9.tar.gz::https://github.com/Netflix/vmaf/archive/v1.3.9.tar.gz
-	source = vmaf-submodule-sureal::git+https://github.com/Netflix/sureal.git#commit=4d0fee6e83047da53ff1776a883579bfe101e8ea
-	sha256sums = c9e4fc850f66cf959a36c9603cef26c4298eec20d6c26f9482a355c5753c092d
-	sha256sums = SKIP
+	depends = python2-sureal
+	source = vmaf-1.3.13.tar.gz::https://github.com/Netflix/vmaf/archive/v1.3.13.tar.gz
+	sha256sums = 926ed538c7d7ae3a36064b87a34094a9d2bee20f7e51a64f8bb275f6c44a8ae3
 
 pkgname = python2-vmaf
 
