@@ -2,8 +2,8 @@
 
 pkgname=mstflint-inband
 _pkgname=mstflint
-pkgver=4.11.0.2
-_pkgver=4.11.0-2
+pkgver=4.11.0.3
+_pkgver=4.11.0-3
 pkgrel=1
 pkgdesc='OpenFabrics Alliance firmware burning application for Mellanox HCA/NIC cards (with inband support)'
 arch=('x86_64' 'i686')
