@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Sublime Text 3 URL Handler
+Comment=Handle URL Scheme subl://
+Icon=sublime_text
+NoDisplay=true
+Categories=TextEditor;Utility;
+Exec=sub3-url-handler %u
+Terminal=false
+MimeType=x-scheme-handler/txmt;x-scheme-handler/subl;
+X-Desktop-File-Install-Version=0.21
