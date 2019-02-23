@@ -2,7 +2,7 @@
 # Contributor: Denis Demidov <dennis.demidov@gmail.com>
 pkgname=hpx
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose C++ runtime system for parallel and distributed applications of any scale"
 arch=("any")
 url="http://stellar-group.org/libraries/hpx"
@@ -23,6 +23,7 @@ build() {
     cd build
     cmake .. \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DHPX_WITH_EXAMPLES=OFF \
         -DHPX_WITH_TESTS=OFF
     make -j1

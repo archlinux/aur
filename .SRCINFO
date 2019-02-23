@@ -1,7 +1,7 @@
 pkgbase = hpx
 	pkgdesc = A general purpose C++ runtime system for parallel and distributed applications of any scale
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://stellar-group.org/libraries/hpx
 	arch = any
 	license = boost
