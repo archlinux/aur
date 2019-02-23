@@ -3,7 +3,7 @@
 pkgname=undefined-medium-fonts
 _pkgname=undefined-medium
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Package for undefined-medium-fonts. Includes ttf, otf, and webfonts.'
 arch=('any')
 url='https://undefined-medium.com/'
@@ -15,5 +15,5 @@ package()
 {
     install -dm0775 "${pkgdir}"/usr/share/{fonts,licenses}/${_pkgname}
     install -Dm0644 "${srcdir}"/${_pkgname}-${pkgver}/fonts/{ttf,otf,webfonts}/* "${pkgdir}"/usr/share/fonts/${_pkgname}/
-    install -Dm0644 "${srcdir}/"${_pkgname}-${pkgver}/OFL.txt "${pkgdir}"/usr/share/licenses/${_pkgname}/LICENSE
+    install -Dm0644 "${srcdir}"/${_pkgname}-${pkgver}/OFL.txt "${pkgdir}"/usr/share/licenses/${_pkgname}/LICENSE
 }

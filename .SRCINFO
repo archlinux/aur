@@ -1,7 +1,7 @@
 pkgbase = undefined-medium-fonts
 	pkgdesc = Package for undefined-medium-fonts. Includes ttf, otf, and webfonts.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://undefined-medium.com/
 	arch = any
 	license = custom:SIL
