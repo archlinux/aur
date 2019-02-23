@@ -3,11 +3,12 @@
 pkgname=swaylock-blur-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A small Rust program that runs swaylock and sets the image to a blurred screenshot of the desktop"
 arch=("x86_64")
 url="https://github.com/cjbassi/gotop"
 license=("MIT")
+depends=("swaylock" "imagemagick" "grim" "sway")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("https://github.com/cjbassi/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
