@@ -1,50 +1,53 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-pydl
-pkgname=('python-pydl' 'python2-pydl' 'python-pydl-doc')
-pkgver=0.6.0
+_pyname=${pkgbase#python-}
+pkgname=("python-${_pyname}" "python2-${_pyname}" "python-${_pyname}-doc")
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Python replacements for functions that are part of the IDL built-in library or part of astronomical IDL libraries"
 arch=('i686' 'x86_64')
-url="http://pydl.readthedocs.io/en/latest/"
+url="http://pydl.readthedocs.io/"
 license=('BSD')
-makedepends=('cython' 'cython2' 'python-astropy' 'python-astropy-helpers' 'python2-astropy-helpers' 'python-sphinx' 'python-sphinx-astropy')
-#checkdepends=('python-pytest-astropy' 'python2-pytest' 'python2-astropy')
-source=("https://files.pythonhosted.org/packages/source/p/pydl/pydl-${pkgver}.tar.gz")
-md5sums=('4c024738a89e4229bfa4ce2beb3f4f14')
+makedepends=('python-setuptools' 'python-setuptools' 'python-astropy' 'python-astropy-helpers' 'python2-astropy-helpers' 'python-sphinx-astropy')
+checkdepends=('python-pytest-astropy' 'python2-pytest32' 'python2-astropy')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+md5sums=('0bf0921aef8f5acbf192ac5c49f0d46c')
 
 prepare() {
-    cd ${srcdir}/pydl-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
     sed -i -e '/auto_use/s/True/False/' setup.cfg
 
-    cp -a ${srcdir}/pydl-${pkgver}{,-py2}
+    cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
 }
 
 build() {
     msg "Building Python2"
-    cd ${srcdir}/pydl-${pkgver}-py2
+    cd ${srcdir}/${_pyname}-${pkgver}-py2
     python2 setup.py build --use-system-libraries --offline
 
     msg "Building Python3"
-    cd ${srcdir}/pydl-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
     python setup.py build --use-system-libraries --offline
 
     msg "Building Docs"
     python setup.py build_docs
 }
 
-#check() {
-#    cd ${srcdir}/pydl-${pkgver}
-#    python setup.py test
-#
-#    cd ${srcdir}/pydl-${pkgver}-py2
-#    python2 setup.py test
-#}
+check() {
+    msg "Checking Python3"
+    cd ${srcdir}/${_pyname}-${pkgver}
+    python setup.py test
+
+    msg "Checking Python2"
+    cd ${srcdir}/${_pyname}-${pkgver}-py2
+    python2 setup.py test
+}
 
 package_python2-pydl() {
     depends=('python2' 'python2-astropy' 'python2-matplotlib')
     optdepends=('python2-pytest: For testing'
                 'python-pydl-doc: Documentation for PyDL')
-    cd ${srcdir}/pydl-${pkgver}-py2
+    cd ${srcdir}/${_pyname}-${pkgver}
 
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" licenses/*
@@ -59,7 +62,7 @@ package_python-pydl() {
     depends=('python' 'python-astropy' 'python-matplotlib')
     optdepends=('python-pytest-astropy: For testing'
                 'python-pydl-doc: Documentation for PyDL')
-    cd ${srcdir}/pydl-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
 
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" licenses/*
@@ -69,7 +72,7 @@ package_python-pydl() {
 
 package_python-pydl-doc() {
     pkgdesc="Documentation for PyDL"
-    cd ${srcdir}/pydl-${pkgver}/docs/_build
+    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
