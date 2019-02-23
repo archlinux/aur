@@ -1,6 +1,6 @@
 pkgbase = conky-lua-archers
 	pkgdesc = A free, light-weight system monitor for X with lua enabled for Arch based distros
-	pkgver = 1.11.2
+	pkgver = 1.11.3
 	pkgrel = 1
 	url = https://github.com/brndnmtthws/conky
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = conky-lua-archers
 	depends = lua51
 	depends = tolua++
 	depends = wireless_tools
-	provides = conky=1.11.2
+	provides = conky=1.11.3
 	conflicts = conky
 	conflicts = conky-lua
 	conflicts = conky-lua-arch
@@ -38,8 +38,8 @@ pkgbase = conky-lua-archers
 	options = strip
 	options = !debug
 	options = !emptydirs
-	source = https://github.com/brndnmtthws/conky/archive/v1.11.2.tar.gz
-	sha256sums = 1acf9dae9ce1a762309ab6b600a0464c2e054420d416b515ff39658430a0e819
+	source = https://github.com/brndnmtthws/conky/archive/v1.11.3.tar.gz
+	sha256sums = 0140e749537d4d05bf33fbac436e54756faa26021e16f2bca418e9eeea724eb4
 
 pkgname = conky-lua-archers
 
