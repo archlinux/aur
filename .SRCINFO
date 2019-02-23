@@ -1,0 +1,18 @@
+pkgbase = python-txsni
+	pkgdesc = Simple support for running a TLS server with Twisted
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/glyph/txsni
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/glyph/txsni/archive/v0.1.9.tar.gz
+	md5sums = c647172765bc4f932b79d53268b8b124
+
+pkgname = python-txsni
+	depends = python
+
+pkgname = python2-txsni
+	depends = python2
+
