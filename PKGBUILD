@@ -12,9 +12,8 @@ source=("git+https://github.com/ericniebler/range-v3.git")
 conflicts=('range-v3-git' 'range-v3')
 md5sums=('SKIP')
 
-
 pkgver() {
-    cd range-v3
+    cd "${srcdir}/range-v3"
     git checkout v1.0-beta >/dev/null 2>&1
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
