@@ -1,6 +1,6 @@
 pkgbase = deepin-dock-plugin-arch-update
 	pkgdesc = A plugin for deepin dock, Arch Linux update indicator
-	pkgver = 2.2.1
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/CareF/deepin-dock-plugin-arch-update
 	install = deepin-dock-plugin-arch-update.install
@@ -10,8 +10,8 @@ pkgbase = deepin-dock-plugin-arch-update
 	makedepends = dtkcore
 	depends = deepin-dock
 	depends = pacman-contrib
-	source = deepin-dock-plugin-arch-update-2.2.1.tar.gz::https://github.com/CareF/deepin-dock-plugin-arch-update/archive/v2.2.1.tar.gz
-	md5sums = 672436448b9a2c8533cecc86ac372b4d
+	source = deepin-dock-plugin-arch-update-2.3.tar.gz::https://github.com/CareF/deepin-dock-plugin-arch-update/archive/v2.3.tar.gz
+	md5sums = e90d54a91e536afe04390c53a5dd3277
 
 pkgname = deepin-dock-plugin-arch-update
 
