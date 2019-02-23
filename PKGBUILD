@@ -11,7 +11,7 @@ depends=('lib32-freetype2' 'lib32-fontconfig' 'lib32-sdl2' 'lib32-vgui' 'xash3d-
 makedepends=('make' 'binutils' 'cmake')
 makedepends=('gcc-multilib' 'lib32-gcc-libs')
 backup=('etc/conf.d/xash3d')
-source=("$pkgname::git+https://github.com/M0Rf30/xash3d-fwgs"
+source=("$pkgname::git+https://github.com/FWGS/xash3d-fwgs"
 	${pkgname%%-git}
 	${pkgname%%-git}.conf.d
 	${pkgname%%-git}.dedicated
