@@ -2,7 +2,7 @@
 
 pkgname=lglaf
 pkgver=20180317
-pkgrel=1
+pkgrel=2
 pkgdesc="LGLAF.py is a utility for communication with LG devices in Download Mode. This allows you to execute arbitrary shell commands on a LG phone as root."
 arch=(i686 x86_64)
 url="https://github.com/Lekensteyn/lglaf"
@@ -27,6 +27,6 @@ package() {
 	mkdir -p "${pkgdir}"/etc/udev/rules.d/
 	install -Dm644 "${srcdir}"/lglaf-master/rules.d/42-usb-lglaf.rules "${pkgdir}"/etc/udev/rules.d/
 	mkdir -p "${pkgdir}"/usr/bin/
-	echo -e '#!/bin/bash\npython2.7 /opt/lglaf/lglaf.py' > "${pkgdir}"/usr/bin/lglaf
+	echo -e '#!/bin/bash\ncd /opt/lglaf\npython2.7 /opt/lglaf/lglaf.py' > "${pkgdir}"/usr/bin/lglaf
 	chmod +x "${pkgdir}"/usr/bin/lglaf
 }
