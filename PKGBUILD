@@ -1,7 +1,7 @@
 # Maintainer: nblock <nblock [/at\] archlinux DOT us>
 
 pkgname=ssl-cert-check
-pkgver=3.30
+pkgver=4.10
 pkgrel=1
 pkgdesc="Checks if digital certificates in X.509 format have expired."
 arch=('any')
@@ -10,8 +10,8 @@ license=('GPL')
 depends=('openssl')
 source=("https://raw.githubusercontent.com/Matty9191/$pkgname/master/$pkgname")
 noextract=("$pkgname")
-md5sums=('9a725131928b731e38ab895e3cbc1395')
-sha256sums=('3f9d859aed60bc6702f45fd98fd0a8421008af3f309f82dffd58c96ff942b4e4')
+md5sums=('564c104e5c68e41642ebcebb7c819fe6')
+sha256sums=('3e5a9b16047ed9c1b15c90cc8c27f9607b0724c333d46499a3fd9e470beef0b4')
 
 package() {
   mkdir -p ${pkgdir}/usr/bin
