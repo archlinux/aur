@@ -1,8 +1,7 @@
 pkgbase = spotify
 	pkgdesc = A proprietary music streaming service
 	pkgver = 1.0.98.78
-	pkgrel = 1
-	epoch = 1
+	pkgrel = 2
 	url = https://www.spotify.com
 	arch = x86_64
 	license = custom
