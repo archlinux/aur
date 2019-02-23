@@ -18,10 +18,9 @@ conflicts=('nvidia-340xx-ck' 'nvidia-ck')
 license=('custom')
 options=('!strip')
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-kernel-4.16.patch unfuck.patch)
+kernel-4.16.patch)
 sha256sums=('de85a2eea39ca16e25645b345259b01fbe858b833286b7e6785afa273009ef6f'
-            '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385'
-            'fa726a12083bd7415d4f827652caf66030224c8e69925aa9f650766e58790080')
+            '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
 
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
@@ -32,9 +31,6 @@ prepare() {
     # Restore phys_to_dma support (still needed for 396.18)
     # https://bugs.archlinux.org/task/58074
     patch -Np1 -i ../kernel-4.16.patch
-
-    # https://bugs.archlinux.org/task/59199
-    patch -Np1 -i ../unfuck.patch
 }
 
 build() {
