@@ -8,4 +8,12 @@ if [ ! -d "$XASH3D_BASEDIR" ]; then
 	exit 1
 fi
 
-$DEFAULT_LIBPATH/xash3d/xash "$@"
+if [ ! -f "$XASH3D_BASEDIR/valve/dlls/hl.so" ]; then
+	if [ $(uname -m) != "x86_64" ]; then
+		DEFAULT_LIBPATH=/usr/lib
+	fi
+	ln -sr $DEFAULT_LIBPATH/valve/dlls/hl.so "$XASH3D_BASEDIR"/valve/dlls/hl.so
+	ln -sr $DEFAULT_LIBPATH/valve/cl_dlls/client.so "$XASH3D_BASEDIR"/valve/cl_dlls/client.so
+fi
+
+$DEFAULT_LIBPATH/xash3d/xash3d -dedicated "$@"

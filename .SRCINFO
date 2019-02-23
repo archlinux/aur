@@ -1,6 +1,6 @@
 pkgbase = xash3d-git
 	pkgdesc = A custom Gold Source engine rewritten from scratch
-	pkgver = r351.142a38f
+	pkgver = r354.faee030
 	pkgrel = 1
 	url = http://xash.su/
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = xash3d-git
 	md5sums = SKIP
 	md5sums = 6993fbd2059d81c5a23bf1a3ff6b24b1
 	md5sums = 7a92aaf374c141f8cc947fbd3fb0d5ca
-	md5sums = 427087f57aab9c8944bc604849e3900e
+	md5sums = b1da0a6ee8887a6aa5298f4df86e9916
 	md5sums = 60d714544048b0383a7e79cfaed96d78
 	md5sums = 409462da6be03f004e84452cfcb93d6b
 
