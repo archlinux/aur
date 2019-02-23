@@ -1,0 +1,33 @@
+pkgbase = python-sureal
+	pkgdesc = Subjective quality scores recovery from noisy measurements
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/Netflix/sureal/
+	arch = any
+	license = APACHE
+	makedepends = git
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python-numpy
+	makedepends = python2
+	makedepends = python2-setuptools
+	makedepends = python2-numpy
+	source = git+https://github.com/Netflix/sureal.git#commit=1088c684e5ebbb8d0bb4c8916d441c3637d5f1a6?signed
+	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
+	sha256sums = SKIP
+
+pkgname = python-sureal
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = python-pandas
+
+pkgname = python2-sureal
+	pkgdesc = Subjective quality scores recovery from noisy measurements (python2)
+	depends = python2
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = python2-matplotlib
+	depends = python2-pandas
+
