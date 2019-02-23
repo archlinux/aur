@@ -8,8 +8,7 @@ arch=('x86_64')
 url='http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX'
 license=('LGPL' 'custom:Epson Licence Agreement')
 options=('!strip')
-depends=('qt4'
-         'ld-lsb=3')
+depends=('qt4' 'ld-lsb=3')
 install=$pkgname.install
 source=("https://download3.ebz.epson.net/dsc/f/03/00/09/02/33/71b2905a4cdf07374e83281333a767b24b57bc2d/${pkgname}_${pkgver}-1lsb3.2_amd64.deb"
   'ecbd.service'
@@ -31,8 +30,8 @@ prepare() {
 }
 
 package() {
-	mkdir -p $pkgdir/{opt/$pkgname,usr}
-	cp -dr --no-preserve=ownership,mode $srcdir/data/opt/epson-printer-utility/{lib,resource} $pkgdir/opt/epson-printer-utility
+	mkdir -p $pkgdir/opt/$pkgname
+	cp -dr --no-preserve=ownership,mode $srcdir/data/opt/$pkgname/{lib,resource} $pkgdir/opt/$pkgname
 	install -Dm 755 $srcdir/data/opt/$pkgname/bin/$pkgname $pkgdir/opt/$pkgname/bin/$pkgname
 	
 	#mkdir -p $pkgdir/usr/lib/
