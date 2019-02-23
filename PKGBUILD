@@ -2,12 +2,11 @@
 
 pkgname=papirus-folders-nordic
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Icons themes papirus color folder nordic."
 arch=('any')
 url="https://github.com/basigur/papirus-folders"
 license=("LGPL3")
-provides=('papirus-icon-theme' 'papirus-folders-nordic')
 conflicts=()
 replaces=('papirus-folders-nordic' 'papirus-icon-theme')
 depends=('gtk-update-icon-cache' 'papirus-icon-theme')
