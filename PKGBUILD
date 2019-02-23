@@ -3,13 +3,13 @@
 _pkgbase=libomxil-bellagio
 pkgname=lib32-$_pkgbase
 pkgver=0.9.3
-pkgrel=4
+pkgrel=5
 pkgdesc="An opensource implementation of the OpenMAX Integration Layer API"
 arch=('x86_64')
 url="http://omxil.sourceforge.net"
 license=('LGPL')
 depends=("lib32-glibc" "$_pkgbase")
-makedepends=("gcc-multilib")
+makedepends=("lib32-gcc-libs")
 source=("http://downloads.sourceforge.net/project/omxil/omxil/Bellagio%200.9.3/${_pkgbase}-${pkgver}.tar.gz"
         fedora-fixes.patch)
 md5sums=('a1de827fdb75c02c84e55f740ca27cb8'
@@ -30,7 +30,7 @@ build() {
 
   ./configure --prefix=/usr --disable-static --libdir=/usr/lib32
 
-  make -j
+  make
 }
 
 package() {
