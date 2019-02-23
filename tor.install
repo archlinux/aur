@@ -12,7 +12,3 @@ post_upgrade() {
   chown -R tor:tor /etc/tor
   chmod 755 /etc/tor
 }
-
-pre_remove() {
-  echo
-}
