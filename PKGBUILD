@@ -7,7 +7,7 @@ pkgdesc='This is a Printer Utility program for Epson. Using this software, you c
 arch=('x86_64')
 url='http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX'
 license=('LGPL' 'custom:Epson Licence Agreement')
-options=('!strip')
+options=('strip')
 depends=('qt4' 'ld-lsb=3')
 install=$pkgname.install
 source=("https://download3.ebz.epson.net/dsc/f/03/00/09/02/33/71b2905a4cdf07374e83281333a767b24b57bc2d/${pkgname}_${pkgver}-1lsb3.2_amd64.deb"

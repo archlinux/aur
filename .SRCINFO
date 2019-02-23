@@ -9,7 +9,7 @@ pkgbase = epson-printer-utility
 	license = custom:Epson Licence Agreement
 	depends = qt4
 	depends = ld-lsb=3
-	options = !strip
+	options = strip
 	source = https://download3.ebz.epson.net/dsc/f/03/00/09/02/33/71b2905a4cdf07374e83281333a767b24b57bc2d/epson-printer-utility_1.0.2-1lsb3.2_amd64.deb
 	source = ecbd.service
 	source = epson-printer-utility.install
