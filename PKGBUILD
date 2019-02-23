@@ -6,7 +6,7 @@
 
 _pkgbase=mpd
 pkgname=${_pkgbase}-youtube-dl
-pkgver=0.21.4
+pkgver=0.21.5
 pkgrel=1
 pkgdesc='mpd fork with youtube support'
 url='https://github.com/MusicPlayerDaemon/MPD/pull/223'
@@ -34,7 +34,7 @@ prepare() {
 	cd "${srcdir}/${_pkgbase}-${pkgver}"
 	rm -fr build
 	install -d build
-    patch -Np1 < "${srcdir}/youtube-dl.patch"
+	patch -Np1 < "${srcdir}/youtube-dl.patch"
 }
 
 build() {
@@ -42,10 +42,10 @@ build() {
 	_opts=('-Ddocumentation=true'
 	       '-Dchromaprint=disabled' # appears not to be used for anything
 	       '-Dsidplay=disabled' # unclear why but disabled in the past
-	       '-Dlibwrap=disabled' # twentieth century's over
 	       '-Dadplug=disabled' # not in an official repo
 	       '-Dsndio=disabled' # interferes with detection of alsa devices
 	       '-Dshine=disabled' # not in an official repo
+	       '-Dtremor=disabled' # not in an official repo
 	)
 	arch-meson .. ${_opts[@]}
 	ninja
@@ -69,9 +69,9 @@ package() {
 }
 
 # makepkg -g >> PKGBUILD
-sha256sums=('247112eabf1b818a4052db7f0f5917ab00831ebc60a1ec3bf1154da4dc16a5c7'
+sha256sums=('2ea9f0eb3a7bdae5d705adf4e8ec45ef38b5b9ddf133f32b8926dd4e205b0ef9'
             'SKIP'
             '2faa85c12449a5b3ca422ff1c1fa06d057c7e262a74bfa6298c914a92d6f2e7a'
             '0b74c6e5db08daab3091dc15a6b0c75210ba2f9e98fa074f6cfd605a461056b6'
             'f40f68205834ca53cea3372e930bfe6c2f9ecc9df3b1605df2fec63a658b2e03'
-            'SKIP')
+            'e92383b3441115d614389008a707c6a6e62cb82649447cc752928e546b7672f6')
