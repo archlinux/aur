@@ -1,4 +1,3 @@
-# Maintainer: Bin Jin <bjin@ctrl-d.org>
 
 pkgname=shaderc-git
 pkgver=r540.94f21e8.glslang_r3151
