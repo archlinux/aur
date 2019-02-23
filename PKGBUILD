@@ -4,7 +4,7 @@
 
 pkgname=nvidia-390xx-ck
 pkgver=390.87
-pkgrel=19
+pkgrel=20
 _extramodules=extramodules-ck
 _pkgdesc="NVIDIA drivers for linux-ck, 390xx legacy branch."
 pkgdesc="$_pkgdesc"
