@@ -3,8 +3,8 @@
 
 pkgname=ffmpeg-full
 _srcname=ffmpeg
-pkgver=4.1
-pkgrel=4
+pkgver=4.1.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='https://www.ffmpeg.org/'
@@ -49,7 +49,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         'LICENSE')
-sha256sums=('a38ec4d026efb58506a99ad5cd23d5a9793b4bf415f2c4c2e9c1bb444acd1994'
+sha256sums=('373749824dfd334d84e55dff406729edfd1606575ee44dd485d97d45ea4d2d86'
             'SKIP'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
