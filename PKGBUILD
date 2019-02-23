@@ -2,7 +2,7 @@
 
 _pkgname=truecraft
 pkgname=truecraft-git
-pkgver=r799.9a61e73
+pkgver=r818.cd0ed36
 pkgrel=1
 epoch=1
 pkgdesc="A completely clean-room implementation of Minecraft beta 1.7.3 (circa September 2011)."
