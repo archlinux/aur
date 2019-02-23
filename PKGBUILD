@@ -5,7 +5,7 @@
 
 _pkgname=procps-ng
 pkgname=procps-ng-static
-pkgver=3.3.11
+pkgver=3.3.15
 pkgrel=1
 pkgdesc='Static lib for procps'
 url='http://gitorious.org/procps'
@@ -15,7 +15,7 @@ groups=('base')
 makedepends=('ncurses' 'systemd')
 
 source=("http://downloads.sourceforge.net/project/${_pkgname}/Production/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('e9493169a2d2adc0bc045538707310c8e877b385e4e296143b62607d2bb044ed')
+sha256sums=('10bd744ffcb3de2d591d2f6acf1a54a7ba070fdcc432a855931a5057149f0465')
 options=('!libtool' 'staticlibs')
 
 groups=('base')
@@ -42,8 +42,8 @@ build() {
                 --bindir=/usr/bin \
                 --sbindir=/usr/bin \
                 --enable-watch8bit \
-                --enable-static \
-                --with-systemd
+                --enable-static
+                # --with-systemd
 
         make
 }
