@@ -1,13 +1,13 @@
 pkgbase = lib32-libgcrypt15-git
 	pkgdesc = General purpose cryptographic library based on the code from GnuPG. Latest commit from 1.5 branch - API version 11 (32bit).
 	pkgver = 1.5.6.r1.g7104edfc
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnupg.org
 	arch = x86_64
 	license = GPL2
 	makedepends = automake
 	makedepends = fig2dev
-	makedepends = gcc-multilib
+	makedepends = lib32-gcc-libs
 	makedepends = ghostscript
 	makedepends = git
 	depends = lib32-glibc

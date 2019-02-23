@@ -7,7 +7,7 @@ _pkgbase=libgcrypt15-git
 
 pkgname=lib32-$_pkgbase
 pkgver=1.5.6.r1.g7104edfc
-pkgrel=1
+pkgrel=2
 pkgdesc="General purpose cryptographic library based on the code from GnuPG. Latest commit from 1.5 branch - API version 11 (32bit)."
 arch=('x86_64')
 url="http://www.gnupg.org"
@@ -16,7 +16,7 @@ depends=('lib32-glibc'
          'lib32-libgpg-error')
 makedepends=('automake'
              'fig2dev'
-             'gcc-multilib'
+             'lib32-gcc-libs'
              'ghostscript'
              'git')
 provides=("lib32-libgcrypt=${pkgver}"
