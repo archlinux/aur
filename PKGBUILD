@@ -8,7 +8,7 @@
 # https://www.kernel.org/category/releases.html
 # 4.19 Greg Kroah-Hartman 2018-10-22 2020-12
 _LLL_VER=4.19
-_LLL_SUBVER=20
+_LLL_SUBVER=25
 
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU can actually run slower with NUMA enabled.
@@ -68,7 +68,7 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '0c959755f6c7d84b16a28d08c15f15a904031db8845b52d52d1eccddcfa49d07'
+            '4f6f3466394966fbff4e32ca3c33ccb07e008157c9288762d44722ae3ccf41ac'
             '77863d16a08e1b3c726b6c965f1bb7c672bd7317776810121062b73f9ea26780'
             '58b81803f8f81d18bef9fe3c5101851ca770ca103da114b8d1460ed74d920efa'
             'ec617b1718e6cadfad02c75aca9c4b0e6b6f944bc1a93b7e4d82c847c04b5653'
