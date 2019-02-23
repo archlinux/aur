@@ -1,0 +1,14 @@
+post_install() {
+  cat << _EOF
+
+==> Author: 浣衣尘(http://tieba.baidu.com/p/3757812932)
+==> Installation:
+==> Edit /etc/default/grub: GRUB_THEME="/boot/grub/themes/Vimix/theme.txt"
+==> Update grub:# grub-mkconfig -o /boot/grub/grub.cfg
+
+_EOF
+}
+
+post_upgrade() {
+  post_install $1
+}
