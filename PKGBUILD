@@ -17,8 +17,8 @@ sha256sums=('a2a27e65904688da3e84f5745d3a71371a6ecba43675d8d824c3774e879281c9'
 prepare() {
     cd "wrapper_${pkgver}_src"
 
-    _ver=$(java -version 2>&1 |awk -F '"' '/version/{print $2}')
-    msg "Detected Java $_ver"
+    _ver=$(javac -version 2>&1 |awk '{print $2}')
+    #msg "Detected Java $_ver"
     [[ "$_ver" =~ ^1[0-2]\. ]] &&
         patch -Np0 -i "$srcdir/java10.patch"
 
@@ -34,7 +34,7 @@ build() {
     export ANT_OPTS="-Dfile.encoding=UTF-8"
     export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/default}"
 
-    [[ "$(java -version 2>&1 |awk -F '"' '/version/{print $2}')" =~ ^1[0-2]\. ]] &&
+    [[ "$(javac -version 2>&1 |awk '{print $2}')" =~ ^1[0-2]\. ]] &&
                                           _target=10  || _target=7
     [[ "$CARCH" = @(x86_64|aarch64) ]] && _bits=64    || _bits=32
     [[ "$CARCH" = arm*              ]] && _arch=armhf || _arch=x86
