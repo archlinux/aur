@@ -2,7 +2,7 @@
 pkgname=zelda-roth-fr
 _name=zelda-roth
 pkgver=6.11
-pkgrel=5
+pkgrel=6
 pkgdesc="Zelda: Return of the Hylian (french version)"
 arch=('i686' 'x86_64')
 url="http://www.zeldaroth.fr/"

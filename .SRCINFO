@@ -1,7 +1,7 @@
 pkgbase = zelda-roth-fr
 	pkgdesc = Zelda: Return of the Hylian (french version)
 	pkgver = 6.11
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.zeldaroth.fr/
 	install = zelda-roth.install
 	changelog = ChangeLog
