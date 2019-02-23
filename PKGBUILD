@@ -1,7 +1,8 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=python2-vmaf-git
-pkgver=1.3.9.r0.g1b1d75d
+_srcname=vmaf
+pkgver=1.3.13.r29.ga0e7289
 pkgrel=1
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion (python2 implementation, git version)'
 arch=('any')
@@ -12,65 +13,47 @@ depends=(
         'python2' 'python2-numpy' 'python2-scipy' 'python2-matplotlib'
         'python2-pandas' 'python2-scikit-learn' 'python2-h5py'
     # AUR:
-        'python2-scikit-image'
+        'python2-scikit-image' 'python2-sureal'
 )
 makedepends=('git' 'python2-setuptools')
 provides=('python2-vmaf')
 conflicts=('python2-vmaf')
-source=('vmaf-git'::'git+https://github.com/Netflix/vmaf.git'
-        'vmaf-submodule-sureal'::'git+https://github.com/Netflix/sureal.git#branch=master')
-sha256sums=('SKIP'
-            'SKIP')
-
-prepare() {
-    cd vmaf-git
-    
-    git submodule init
-    git config --local submodule.sureal.url "${srcdir}/vmaf-submodule-sureal"
-    git submodule update
-}
+source=('git+https://github.com/Netflix/vmaf.git')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd vmaf-git
+    cd "${_srcname}"
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    msg2 'Building for Python2...'
-    cd vmaf-git/python
+    cd "${_srcname}/python"
     python2 setup.py build
 }
 
 # waiting for upstream to finish python3 support
 # https://github.com/Netflix/vmaf/issues/128
-# https://github.com/Netflix/vmaf/blob/a0a4deeb7cd7b6e5cdd7c40398e6ce3c1498a0d8/resource/doc/VMAF_Python_library.md
+# https://github.com/Netflix/vmaf/blob/fbb9d3ecda8cc2bd80ecbdd63f877825216045be/resource/doc/VMAF_Python_library.md
 
 package() {
-    cd vmaf-git/python
+    cd "${_srcname}/python"
     
-    python2 setup.py install --root="$pkgdir" --optimize='1'
+    local _script
+    
+    python2 setup.py install --root="$pkgdir" --skip-build --optimize='1'
     
     # vmaf python2 executables
     cd script
-    local _executables=($(find . -type f -executable))
-    for _script in ${_executables[@]}
+    while read -rd '' _script
     do
         install -D -m755 "$_script" -t "${pkgdir}/usr/bin"
-    done
-    
-    # sureal python2 executable
-    cd "${srcdir}/vmaf-git/sureal/python/script"
-    install -D -m755 run_subj.py -t "${pkgdir}/usr/bin"
-    
-    # sureal python2 modules
-    cd "${srcdir}/vmaf-git/sureal/python/src"
-    cp -af sureal "${pkgdir}/usr/lib/python2.7/site-packages"
+    done < <(find . -maxdepth 1 -type f -executable -print0)
     
     # fix shebang on python2 scripts
-    for _script in "$pkgdir"/usr/bin/*
+    while read -rd '' _script
     do
         sed -i '1s/python$/python2/' "$_script"
-    done
+    done < <(find "${pkgdir}/usr/bin" -maxdepth 1 -mindepth 1 -type f -print0)
 }
