@@ -14,9 +14,9 @@ md5sums=('SKIP')
 
 
 pkgver() {
-  cd range-v3
-  git checkout v1.0-beta
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd range-v3
+    git checkout v1.0-beta >/dev/null 2>&1
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
