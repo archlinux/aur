@@ -1,12 +1,14 @@
 pkgbase = jupyterhub-git
 	pkgdesc = Multi-user server for Jupyter notebooks
-	pkgver = 0.9.2.r397.gfec3d959
+	pkgver = 0.9.2.r416.gca677572
 	pkgrel = 1
 	url = http://jupyter.org/
 	arch = any
 	license = BSD
 	makedepends = bower
 	makedepends = npm
+	depends = python-prometheus_client
+	depends = python-entrypoints
 	depends = python-async_generator
 	depends = python-oauthlib2
 	depends = python-certipy
