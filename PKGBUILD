@@ -1,6 +1,6 @@
 pkgname=gog-heroes-of-might-and-magic-3-complete-edition
-pkgver=4.0.10665
-pkgrel=2
+pkgver=4.0.25024
+pkgrel=1
 _gamename=${pkgname#gog-}
 _gamename=${_gamename//-/_}
 _gamehdpatchname="HoMM3%20HD%20Latest.exe"
@@ -12,12 +12,14 @@ license=("custom")
 groups=("games")
 
 source=("setup_homm3_complete_${pkgver}.exe::gogdownloader://${_gamename}/en1installer0"
+        "setup_homm3_complete_${pkgver}-1.bin::gogdownloader://${_gamename}/en1installer1"
         #"http://h3hota.com/HD/HoMM3%20HD%20Latest.exe"
         "${pkgname}"
         "${pkgname}-campaign-editor"
         "${pkgname}-map-editor"
         "${pkgname}.install")
-sha256sums=('36ec54b5c8b5612f71ca1066c372dc33efbb39485efffe91dea55b73b6e6335b'
+sha256sums=('76af0bfa9ddb1889ff0fe516599f21e3f2a696dd5baaf74333b5b58cc425a0e1'
+            'a7b6d9f13bc6924d515eaa39430b290b80fd4253b2d1c40e9d936c4d242a466f'
 #            'SKIP'
             'bb1cec5ef9de917ae69bb04d661d843986b038a277871557387cd66c7292604d'
             '2165809683969955bca129f1960efa5111aaa703ac891df29b809f4ce5b30eaa'
@@ -82,8 +84,8 @@ package() {
   done
   for res in 16 32 48 64
   do
-    install -Dm644 ${srcdir}/tmp/local/icons/hicolor/${res}x${res}/apps/E15D_h3maped.0.png ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${pkgname}-map-editor.png
-    install -Dm644 ${srcdir}/tmp/local/icons/hicolor/${res}x${res}/apps/BE0A_h3ccmped.0.png ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${pkgname}-campaign-editor.png
+    install -Dm644 ${srcdir}/tmp/local/icons/hicolor/${res}x${res}/apps/FE0B_h3maped.0.png ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${pkgname}-map-editor.png
+    install -Dm644 ${srcdir}/tmp/local/icons/hicolor/${res}x${res}/apps/8095_h3ccmped.0.png ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${pkgname}-campaign-editor.png
   done
   # Edit out wine jumbled entries from .desktop file
   for file in ${pkgname} ${pkgname}-map-editor ${pkgname}-campaign-editor
