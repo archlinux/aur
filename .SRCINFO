@@ -1,0 +1,22 @@
+pkgbase = emacs-cider-git
+	pkgdesc = The Clojure Interactive Development Environment that Rocks for Emacs
+	pkgver = 0.21.0r11.g62134b4f
+	pkgrel = 1
+	url = https://github.com/clojure-emacs/cider
+	install = emacs-cider.install
+	arch = any
+	license = GPL3
+	depends = emacs
+	depends = emacs-clojure-mode
+	depends = emacs-pkg-info
+	depends = emacs-queue
+	depends = emacs-spinner
+	depends = emacs-sesman
+	depends = emacs-seq
+	provides = emacs-cider
+	conflicts = emacs-cider
+	source = git+https://github.com/clojure-emacs/cider.git
+	sha256sums = SKIP
+
+pkgname = emacs-cider-git
+
