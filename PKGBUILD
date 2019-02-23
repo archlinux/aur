@@ -2,7 +2,7 @@
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 _pkgname=isrcsubmit
 pkgname=$_pkgname-git
-pkgver=2.0.1.r6.g0feb421
+pkgver=2.1.0.r2.ga9efcbd
 pkgver(){
   cd "$srcdir/$pkgname"
   git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -36,7 +36,7 @@ check() {
 
 package() {
   cd "$srcdir/$pkgname"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   install -d "$pkgdir/usr/share/doc/$_pkgname"
   install -m644 -t "$pkgdir/usr/share/doc/$_pkgname" AUTHORS CHANGES.* COPYING README.*
 }
