@@ -1,18 +1,17 @@
 pkgbase = lib32-openjpeg2
 	pkgdesc = An open source JPEG 2000 codec, version 2.3.0
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openjpeg.org
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
-	makedepends = gcc-multilib
+	makedepends = lib32-gcc-libs
+	makedepends = lib32-libpng
+	makedepends = lib32-libtiff
+	makedepends = lib32-lcms2
 	depends = openjpeg2
-	depends = lib32-glibc
-	depends = lib32-libpng
 	depends = lib32-zlib
-	depends = lib32-libtiff
-	depends = lib32-lcms2
 	source = https://github.com/uclouvain/openjpeg/archive/v2.3.0.tar.gz
 	md5sums = 6a1f8aaa1fe55d2088e3a9c942e0f698
 
