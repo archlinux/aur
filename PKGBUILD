@@ -8,7 +8,7 @@ url="https://github.com/lestofante/PacmanParallelizer"
 license=('GPL3')
 depends=('aria2' 'pacman-contrib')
 source=("pp.sh")
-md5sums=('5670471a6fbddec18d3a562f11969c0c')
+md5sums=('8e58bf0fd5702cf10a35917a43752b2b')
 
 build() {
 	cd "$srcdir"
