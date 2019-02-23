@@ -1,0 +1,18 @@
+pkgbase = python-eliot
+	pkgdesc = Logging that tells you why it happened
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://eliot.readthedocs.io
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/itamarst/eliot/archive/1.6.0.tar.gz
+	md5sums = 8355b7f9440ab78191a05ca2ed8efbc3
+
+pkgname = python-eliot
+	depends = python
+
+pkgname = python2-eliot
+	depends = python2
+
