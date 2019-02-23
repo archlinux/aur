@@ -1,0 +1,20 @@
+pkgbase = organizer-git
+	pkgdesc = Python GTK app to organize your files
+	pkgver = 0.103.r0.gea2bb49
+	pkgrel = 1
+	url = https://gitlab.gnome.org/aviwad/organizer
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = python
+	depends = gtk3
+	depends = libhandy
+	depends = python-gobject
+	provides = organizer
+	conflicts = organizer
+	source = git+https://gitlab.gnome.org/aviwad/organizer.git
+	sha256sums = SKIP
+
+pkgname = organizer-git
+
