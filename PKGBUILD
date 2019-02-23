@@ -1,7 +1,7 @@
 
 pkgbase=bind-stable
 pkgname=(bind-stable bind-stable-tools)
-_pkgver=9.12.3-P1
+_pkgver=9.12.3-P4
 pkgver=${_pkgver//-/.}
 pkgrel=6
 url='https://www.isc.org/software/bind/'
@@ -11,10 +11,7 @@ options=('!emptydirs')
 makedepends=('libcap' 'libxml2' 'zlib' 'krb5' 'e2fsprogs' 'openssl' 'readline'
   'libidn2' 'geoip' 'dnssec-anchors' 'python' 'json-c' 'python-ply' 'lmdb'
   'zlib' 'icu' 'xz')
-validpgpkeys=('2B48A38AE1CF9886435F89EE45AC7857189CDBC5'
-              'ADBE9446286C794905F1E0756FA6EBC9911A4C02' #ISC, Inc)
-              'BE0E9748B718253A28BB89FFF1B11BF05CF02E57' #Internet Systems Consortium, Inc.
-              )
+validpgpkeys=('AE3FAC796711EC59FC007AA474BB6B9A4CBB3D38')
 source=("https://ftp.isc.org/isc/bind9/${_pkgver}/bind-${_pkgver}.tar.gz"{,.asc}
         'tmpfiles.conf'
         'sysusers.conf'
@@ -25,7 +22,7 @@ source=("https://ftp.isc.org/isc/bind9/${_pkgver}/bind-${_pkgver}.tar.gz"{,.asc}
         '127.0.0.zone'
         'empty.zone'
         )
-sha1sums=('1bc1ff64051d467fa27b2a8266c5ea3e495609c7'
+sha1sums=('883c1513e0c97887db2c57625b1c6ad5f15f8078'
           'SKIP'
           'c5a2bcd9b0f009ae71f3a03fbdbe012196962a11'
           '9537f4835a1f736788d0733c7996a10db2d4eee4'
