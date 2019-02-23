@@ -6,7 +6,7 @@ pkgdesc="Unofficial electron-based desktop client for Google Chat"
 arch=('x86_64' 'i686')
 url="https://github.com/robyf/google-chat-linux"
 license=('WTFPL')
-depends=('electron>=1.8.4',electron<=3.1.3-1)
+depends=('electron>=1.8.4' 'electron=<3.1.3-1')
 makedepends=('nodejs' 'npm')
 
 [[ $CARCH == 'x86_64' ]] && _arch='x64' || _arch='ia32'
