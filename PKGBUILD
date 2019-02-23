@@ -9,14 +9,13 @@
 ## -- Build options -- ##
 #########################
 
-_use_bundled_clang=1     # Use bundled clang compiler (downloaded binaries from google).
 _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't work at this moment
 
 ##############################################
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=74.0.3702.0
+pkgver=74.0.3710.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -29,7 +28,7 @@ depends=(
          'minizip'
          'nss'
          'pciutils'
-#          're2'    # https://crbug.com/931373.
+         're2'
          'snappy'
          'xdg-utils'
 #          'protobuf'
@@ -78,26 +77,26 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'git+https://github.com/foutrelis/chromium-launcher.git'
         'chromium-dev.svg'
         # Patch form Gentoo.
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-compiler-r7.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-widevine-r4.patch'
          # Misc Patches.
         'enable-vaapi.patch' #::https://src.fedoraproject.org/cgit/rpms/chromium.git/tree/enable-vaapi.patch'
         'chromium-ffmpeg-clang.patch'
         # Patch from crbug (chromium bugtracker) or Arch chromium package.
         'chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
+        'fix_nullptr_t.patch.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1481585/revisions/1/patch?download'
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             'SKIP'
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
             # Patch form Gentoo
-            '7fa727b29032577c70f5655b10a440599c12e53d6f52713e661defc1002cfa3a'
             '8c6ecc26aab9f4acc911350d9bb1e40f32cad144b6a08c9d7b188e9598d0f2de'
             # Misc Patches
-            'SKIP' #'a72a42f3f8ea5093c792df7d9662e8311a22f7bd0616cd8e2690990d5b247fc1'
+            'd218e4df5c5da97672bcc7ff5bc6ab00d06aa8748aab8bc360265ca8032fe675'
             '16741344288d200fadf74546855e00aa204122e744b4811a36155efd5537bd95'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
+            'fc19b056c7a806b000c5e1a825747da65340e28320cf08b43230994dcc16ac2f'
             )
 install=chromium-dev.install
 
@@ -224,18 +223,17 @@ _keeplibs=(
            'third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2'
            'third_party/openmax_dl'
            'third_party/ots'
-           'third_party/perfetto'
            'third_party/pdfium'
            'third_party/pdfium/third_party/agg23'
            'third_party/pdfium/third_party/base'
            'third_party/pdfium/third_party/bigint'
-           'third_party/pdfium/third_party/eu-strip'
            'third_party/pdfium/third_party/freetype'
            'third_party/pdfium/third_party/lcms'
            'third_party/pdfium/third_party/libopenjpeg20'
            'third_party/pdfium/third_party/libpng16'
            'third_party/pdfium/third_party/libtiff'
            'third_party/pdfium/third_party/skia_shared'
+           'third_party/perfetto'
            'third_party/ply'
            'third_party/polymer'
            'third_party/protobuf'
@@ -250,10 +248,7 @@ _keeplibs=(
            'third_party/skia/include/third_party/vulkan'
            'third_party/skia/third_party/gif'
            'third_party/skia/third_party/skcms'
-           'third_party/skia/third_party/spirv-headers'
-           'third_party/skia/third_party/spirv-tools'
            'third_party/skia/third_party/vulkan'
-           'third_party/skia/third_party/vulkanmemoryallocator'
            'third_party/smhasher'
            'third_party/spirv-headers'
            'third_party/SPIRV-Tools'
@@ -296,7 +291,6 @@ _keeplibs=(
 
 _keeplibs+=(
             'third_party/icu' # https://crbug.com/678661.
-            'third_party/re2' # https://crbug.com/931373.
             'third_party/libjpeg' # https://crbug.com/908298.
             )
 
@@ -323,14 +317,17 @@ _flags=(
         'linux_use_bundled_binutils=false'
         'treat_warnings_as_errors=false'
         'enable_nacl=true'
-        'enable_nacl_nonsfi=false' # https://crbug.com/837441.
-        'use_custom_libcxx=true'  # https://crbug.com/931373.
+        'enable_nacl_nonsfi=true'
+        'use_custom_libcxx=false'
         'use_jumbo_build=false' # https://chromium.googlesource.com/chromium/src/+/lkcr/docs/jumbo.md NOTE: gets OOM in my dual xeon (64Gb ram) machine :/
-        'enable_vulkan=true'
         'use_vaapi=true'
         'enable_hevc_demuxing=true'
         'enable_ac3_eac3_audio_demuxing=true'
+        'enable_mpeg_h_audio_demuxing=true'
+        'enable_dolby_vision_demuxing=true'
+        'enable_mse_mpeg2ts_stream_parser=true'
         'closure_compile=false'
+        'clang_use_chrome_plugins=true'
         )
 
 if [ "${_wayland}" = "1" ]; then
@@ -361,7 +358,7 @@ _use_system=(
              'libxslt'
              'openh264'
              'opus'
-#              're2'          # https://crbug.com/931373.
+             're2'
              'snappy'
              'yasm'
              'zlib'
@@ -389,24 +386,11 @@ if check_buildoption ccache y; then
   export CCACHE_SLOPPINESS=time_macros
 fi
 
-if [ "${_use_bundled_clang}" = "0" ]; then
-  _flags+=(
-           'clang_use_chrome_plugins=false'
-           )
-  makedepends+=(
-                'clang'
-                'lld'
-                )
-elif [ "${_use_bundled_clang}" = "1" ]; then
-  _flags+=(
-           'clang_use_chrome_plugins=true'
-           )
-
-  if [ ! -f "${BUILDDIR}/PKGBUILD" ]; then
-    _builddir="/${pkgname}"
-  fi
-  _clang_path="${BUILDDIR}${_builddir}/src/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin/"
+if [ ! -f "${BUILDDIR}/PKGBUILD" ]; then
+  _builddir="/${pkgname}"
 fi
+
+_clang_path="${BUILDDIR}${_builddir}/src/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin/"
 
 export CC="${_clang_path}clang"
 export CXX="${_clang_path}clang++"
@@ -419,9 +403,15 @@ prepare() {
   cd "${srcdir}/chromium-${pkgver}"
 
   # Use chromium-dev as branch name.
-  sed -e 's|filename = "chromium-browser"|filename = "chromium-dev"|' \
-      -e 's|confdir = "chromium|&-dev|' \
+  sed -e '0,/output_name = "chrome"/s/= "chrome"/= "chromium-dev"/' \
+      -e 's|root_out_dir/chrome"|root_out_dir/chromium-dev"|g' \
       -i chrome/BUILD.gn
+  sed -e 's|"chromium-browser"|"chromium-dev"|g' \
+      -i media/audio/pulse/pulse_util.cc
+  sed -e 's|chromium-browser|chromium-dev|g' \
+      -e 's|Chromium|Chromium-dev|g' \
+      -i chrome/browser/shell_integration_linux.cc \
+      -i chrome/browser/ui/libgtkui/gtk_util.cc
   sed -e 's|config_dir.Append("chromium|&-dev|' \
       -i chrome/common/chrome_paths_linux.cc
   sed -e 's|/etc/chromium|&-dev|' \
@@ -429,19 +419,27 @@ prepare() {
       -i chrome/common/chrome_paths.cc
   sed -e 's|/etc/chromium|&-dev|' \
       -i components/policy/tools/template_writers/writer_configuration.py
+  sed -e 's|chrome-sandbox|chrome_sandbox|g'\
+      -i sandbox/linux/suid/client/setuid_sandbox_host.cc
 
   msg2 "Patching the sources"
-  # Patch sources from Gentoo.
-  patch -p1 -i "${srcdir}/chromium-compiler-r7.patch"
 
   # Misc patches.
 
   # Pats to chromium dev's about why always they forget add/remove missing build rules.
-  # not this time (?).
+  # Not this time (?).
+
 
   # Allow building against system libraries in official builds.
   sed 's|OFFICIAL_BUILD|GOOGLE_CHROME_BUILD|' \
     -i tools/generate_shim_headers/generate_shim_headers.py
+
+  # https://crbug.com/893950.
+  sed -e 's/\<xmlMalloc\>/malloc/' \
+    -e 's/\<xmlFree\>/free/' \
+    -i third_party/blink/renderer/core/xml/*.cc \
+    -i third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
+    -i third_party/libxml/chromium/libxml_utils.cc
 
   # Force script incompatible with Python 3 to use /usr/bin/python2.
   sed -i '1s|python$|&2|' \
@@ -449,15 +447,11 @@ prepare() {
     -i build/linux/unbundle/remove_bundled_libraries.py \
     -i build/linux/unbundle/replace_gn_files.py \
     -i tools/clang/scripts/update.py \
-    -i tools/gn/bootstrap/bootstrap.py \
-    -i third_party/dom_distiller_js/protoc_plugins/*.py \
+    -i third_party/dom_distiller_js/protoc_plugins/json_values_converter.py \
+    -i third_party/dom_distiller_js/protoc_plugins/json_values_converter_tests.py \
     -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py \
     -i third_party/ffmpeg/chromium/scripts/generate_gn.py
   export PNACLPYTHON=/usr/bin/python2
-
-  # Setup vulkan.
-  export VULKAN_SDK="/usr"
-  sed 's|/x86_64-linux-gnu||' -i gpu/vulkan/BUILD.gn
 
   # Enable VAAPI.
   patch -p1 -i "${srcdir}/enable-vaapi.patch"
@@ -470,15 +464,17 @@ prepare() {
   # https://crbug.com/473866.
   patch -p1 -i "${srcdir}/chromium-widevine-r4.patch"
 
+  # https://crbug.com/898281
+  base64 -d "${srcdir}/fix_nullptr_t.patch.base64" | patch -p1 -i -
+
   # Setup nodejs dependency.
   mkdir -p third_party/node/linux/node-linux-x64/bin/
   ln -sf /usr/bin/node third_party/node/linux/node-linux-x64/bin/node
 
   # Setup bundled ffmpeg.
-  if [ "${_use_bundled_clang}" = "1" ]; then
-    # Setup the ffmpeg correct compiler if use bundled clang.
-    cat "${srcdir}/chromium-ffmpeg-clang.patch" | sed "s|__CLANG_PATH__|${_clang_path}|g" | patch -p1 -i -
-  fi
+  # Setup the ffmpeg correct compiler if use bundled clang.
+  cat "${srcdir}/chromium-ffmpeg-clang.patch" | sed "s|__CLANG_PATH__|${_clang_path}|g" | patch -p1 -i -
+
   # use system opus in bundled ffmpeg.
   sed -e "s|I' + os.path.join(CHROMIUM_ROOT_DIR,|I' + os.path.join\(|g" \
       -e 's|third_party/opus/src/include|/usr/include/opus|g' \
@@ -499,7 +495,6 @@ prepare() {
 
   msg2 "Download external build components from google"
   tools/clang/scripts/update.py --without-android --without-fuchsia
-
 }
 
 build() {
@@ -529,6 +524,8 @@ build() {
 }
 
 package() {
+  options=('!strip')
+
   # Install launcher.
   make -C chromium-launcher \
     PREFIX=/usr \
@@ -540,9 +537,23 @@ package() {
   pushd "chromium-${pkgver}/out/Release" &> /dev/null
 
   # Install binaries.
-  install -Dm755 chrome "${pkgdir}/usr/lib/chromium-dev/chromium-dev"
-  install -Dm4755 chrome_sandbox "${pkgdir}/usr/lib/chromium-dev/chrome-sandbox"
-  install -Dm755 chromedriver "${pkgdir}/usr/lib/chromium-dev/chromedriver"
+  _bin=(
+        'chromium-dev'
+        'chrome_sandbox'
+        'chromedriver'
+        )
+  for i in "${_bin[@]}"; do
+    case "$i" in
+      chrome_sandbox)
+        install -Dm4755 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
+        ;;
+      *)
+        install -Dm755 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
+        ;;
+    esac
+  strip $STRIP_BINARIES "${pkgdir}/usr/lib/chromium-dev/${i}"
+  done
+
   ln -sf /usr/lib/chromium-dev/chromedriver "${pkgdir}/usr/bin/chromedriver-dev"
 
   # Install libs.
@@ -560,6 +571,7 @@ package() {
          )
   for i in "${_libs[@]}"; do
     install -Dm755 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
+    strip $STRIP_SHARED "${pkgdir}/usr/lib/chromium-dev/${i}"
   done
 
   _blobs=(
@@ -578,11 +590,18 @@ package() {
   _nacl_libs=(
               'nacl_helper'
               'nacl_helper_bootstrap'
-#               'nacl_helper_nonsfi' # https://crbug.com/837441.
+              'nacl_helper_nonsfi'
               'nacl_irt_x86_64.nexe'
               )
   for i in "${_nacl_libs[@]}"; do
     install -Dm755 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
+    case "$i" in
+      nacl_irt_x86_64.nexe)
+        ;;
+      *)
+        strip $STRIP_BINARIES "${pkgdir}/usr/lib/chromium-dev/${i}"
+        ;;
+    esac
   done
 
   # Install Resources.

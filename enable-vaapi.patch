@@ -45,7 +45,7 @@ index db54ccb61..f32075fb8 100644
      {"v8-cache-options", flag_descriptions::kV8CacheOptionsName,
       flag_descriptions::kV8CacheOptionsDescription, kOsAll,
       MULTI_VALUE_TYPE(kV8CacheOptionsChoices)},
-@@ -4371,12 +4371,14 @@ const FeatureEntry kFeatureEntries[] = {
+@@ -4371,11 +4371,11 @@ const FeatureEntry kFeatureEntries[] = {
                                      "AutofillDropdownLayout")},
  #endif  // OS_ANDROID
  
@@ -56,12 +56,9 @@ index db54ccb61..f32075fb8 100644
 -     flag_descriptions::kVaapiJpegImageDecodeAccelerationDescription, kOsCrOS,
 +     flag_descriptions::kVaapiJpegImageDecodeAccelerationDescription, kOsCrOS | kOsLinux,
       FEATURE_VALUE_TYPE(features::kVaapiJpegImageDecodeAcceleration)},
-+#endif
+ #endif
  
-+#if defined(OS_CHROMEOS)
-     {"enable-home-launcher-gestures",
-      flag_descriptions::kEnableHomeLauncherGesturesName,
-      flag_descriptions::kEnableHomeLauncherGesturesDescription, kOsCrOS,
+ #if defined(OS_WIN)
 diff --git a/chrome/browser/flag_descriptions.cc b/chrome/browser/flag_descriptions.cc
 index 6cc51bbfb..3c4babe3d 100644
 --- a/chrome/browser/flag_descriptions.cc
