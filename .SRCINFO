@@ -1,7 +1,7 @@
 pkgbase = i8086emu-git
 	pkgdesc = cross-platform emulator for the Intel 8086 microprocessor
 	pkgver = 0.9.2.r35.g1143f09
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/i8086emu/
 	arch = x86_64
 	license = GPL2

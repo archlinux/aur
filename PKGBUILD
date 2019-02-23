@@ -1,7 +1,7 @@
 # Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 pkgname=i8086emu-git
 pkgver=0.9.2.r35.g1143f09
-pkgrel=1
+pkgrel=2
 pkgdesc="cross-platform emulator for the Intel 8086 microprocessor"
 arch=('x86_64')
 url="https://sourceforge.net/projects/i8086emu/"
@@ -19,44 +19,33 @@ pkgver() {
   git describe --long --tags| sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$srcdir/${pkgname%-git}/${pkgname%-git}/"
-  rm -v \
-    install-sh \
-    mkinstalldirs
-}
-
 build() {
   cd "$srcdir/${pkgname%-git}/${pkgname%-git}/"
 
-  # unset CFLAGS
-  # ./configure \
-  #   --prefix="/usr" \
-  #   --bindir="/usr/bin" \
-  #   --datadir="/usr/share" \
-  #   --sysconfdir="/etc" \
-  #   --localstatedir="/var" \
-  #   --libdir="/usr/lib" \
-  #   --infodir="/usr/share/info" \
-  #   --mandir="/usr/share/man" \
-  mkdir build
-  cd build
+  # i8086text
+ ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --infodir=/usr/share/doc \
+    usegtk=0
+  make CFLAGS="-fPIC $CFLAGS" 
+
+  # i8086gui
+  mkdir cmake_build_gui
+  cd cmake_build_gui
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ ..
-  time make
+  make
 }
 
 package() {
 
-  cd "$srcdir/${pkgname%-git}/${pkgname%-git}"
-  install -dm755 "$pkgdir/usr/share/doc/${pkgname%-git}"
-  install -Dm644 docs/* README "$pkgdir/usr/share/doc/${pkgname%-git}/"
+  # i8086text
+  cd "$srcdir/${pkgname%-git}/${pkgname%-git}/"
+  make DESTDIR="$pkgdir" install
 
-  cd "$srcdir/${pkgname%-git}/${pkgname%-git}/build"
-
-  install -dm755 "$pkgdir/usr/bin"
-  install -Dm755 bin/* "$pkgdir/usr/bin/"
-
-  install -dm755 "$pkgdir/usr/lib"
-  install -Dm644 lib/* "$pkgdir/usr/lib"
+  # i8086gui
+  install -Dm755 \
+    "$srcdir/${pkgname%-git}/${pkgname%-git}/cmake_build_gui/bin/i8086gui" \
+    "$pkgdir/usr/bin/"
 
 }
