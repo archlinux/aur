@@ -1,7 +1,7 @@
 # Maintainer: alienzj <alienchuj@gmail.com>
 
 pkgname=range-v3-v1-beta
-pkgver=v0.4.0.r334.g039b2e59
+pkgver=0.4.0.r334.g039b2e59
 pkgrel=1
 pkgdesc="Experimental range library for C++11/14/17"
 arch=('any')
