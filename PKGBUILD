@@ -2,7 +2,7 @@
 pkgname=thermald-me176c
 pkgver=r2.c4dd389
 pkgrel=1
-pkgdesc="Thermal daemon configuration files for ASUS MeMO Pad 7 (ME176C[X])"
+pkgdesc="Thermal daemon configuration files for ASUS MeMO Pad 7 (ME176C(X))"
 arch=(any)
 _repo=linux-me176c
 url="https://github.com/me176c-dev/$_repo"
