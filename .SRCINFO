@@ -1,6 +1,6 @@
 pkgbase = shaderc-git
 	pkgdesc = A collection of tools, libraries and tests for shader compilation
-	pkgver = r507.eb743ec.glslang_r2989
+	pkgver = r540.94f21e8.glslang_r3151
 	pkgrel = 1
 	url = https://github.com/google/shaderc
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = shaderc-git
 	provides = libshaderc_shared.so
 	conflicts = shaderc
 	source = shaderc::git+https://github.com/google/shaderc.git
-	source = glslang::git+https://github.com/google/glslang.git
+	source = glslang::git+https://github.com/KhronosGroup/glslang.git
 	source = spirv-tools::git+https://github.com/KhronosGroup/SPIRV-Tools.git
 	source = spirv-headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	sha256sums = SKIP

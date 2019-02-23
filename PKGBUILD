@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@ctrl-d.org>
 
 pkgname=shaderc-git
-pkgver=r507.eb743ec.glslang_r2989
+pkgver=r540.94f21e8.glslang_r3151
 pkgrel=1
 pkgdesc="A collection of tools, libraries and tests for shader compilation"
 url="https://github.com/google/shaderc"
@@ -14,7 +14,7 @@ conflicts=("shaderc")
 provides=("shaderc" "glslc" "libshaderc_shared.so")
 
 source=("shaderc::git+https://github.com/google/shaderc.git"
-        "glslang::git+https://github.com/google/glslang.git"
+        "glslang::git+https://github.com/KhronosGroup/glslang.git"
         "spirv-tools::git+https://github.com/KhronosGroup/SPIRV-Tools.git"
         "spirv-headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git")
 
@@ -44,6 +44,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
+    -DSHADERC_ENABLE_SPVC=off \
     -DSHADERC_SKIP_TESTS=on \
     -DSKIP_GLSLANG_INSTALL=on \
     -DSKIP_SPIRV_TOOLS_INSTALL=on \
