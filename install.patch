@@ -1,0 +1,33 @@
+diff -Naur jupyter-nodejs.1/install.js jupyter-nodejs/install.js
+--- jupyter-nodejs.1/install.js	2019-02-23 12:32:30.554572264 -0500
++++ jupyter-nodejs/install.js	2019-02-23 12:32:36.247936418 -0500
+@@ -1,19 +1,18 @@
+-
+ var fs = require('fs')
+ var path = require('path')
+ var mkdirp = require('mkdirp')
+ 
+-var installPath = path.join(process.env.HOME, '.ipython/kernels/nodejs')
+-if (process.argv.length >= 3) {
+-  installPath = process.argv[2]
+-}
+-
+-console.log('install', installPath)
+-var fullPath = path.resolve(installPath)
++var INSTALL_PATH = path.resolve(
++  process.env.INSTALL_PATH || path.join(process.env.HOME, '.ipython/kernels/nodejs')
++)
++var RUNTIME_PATH = path.resolve(
++  process.env.RUNTIME_PATH || path.join(path.resolve(__dirname))
++)
+ 
+-mkdirp(fullPath, function() {
+-  fs.writeFileSync(path.join(fullPath, 'kernel.json'), JSON.stringify({
+-    argv: ['node', path.join(path.resolve(__dirname), 'build', 'run.js'), '{connection_file}'],
++mkdirp(INSTALL_PATH, function () {
++  fs.writeFileSync(path.join(INSTALL_PATH, 'kernel.json'), JSON.stringify({
++    env: { NODE_PATH: path.join(RUNTIME_PATH, 'node_modules') },
++    argv: ['node', path.join(RUNTIME_PATH, 'build', 'run.js'), '{connection_file}'],
+     display_name: 'NodeJS',
+     language: 'javascript',
+   }, null, 2))

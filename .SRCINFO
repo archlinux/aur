@@ -1,0 +1,22 @@
+pkgbase = jupyter-nodejs-git
+	pkgdesc = A node.js kernel for jupyter/ipython
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/notablemind/jupyter-nodejs
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = nodejs
+	depends = jupyter
+	depends = nodejs
+	provides = jupyter-nodejs
+	conflicts = jupyter-nodejs
+	options = debug
+	options = !strip
+	source = install.patch
+	source = jupyter-nodejs::git+https://github.com/notablemind/jupyter-nodejs.git
+	sha256sums = 2e62a325d4abd0a54c979f5592a9bb3debd966abaea85531946cbdccdd87283c
+	sha256sums = SKIP
+
+pkgname = jupyter-nodejs-git
+
