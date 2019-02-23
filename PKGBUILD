@@ -4,7 +4,7 @@
 
 pkgbase=linux-vfio-selinux
 _srcname=linux-4.20
-pkgver=4.20.3
+pkgver=4.20.11
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -28,7 +28,7 @@ validpgpkeys=(
 )
 sha256sums=('ad0823183522e743972382df0aa08fb5ae3077f662b125f1e599b0b2aaa12438'
             'SKIP'
-            'b0ad35e03bb580923bcae60b7041e3e52f1cc42dfd702b1c843a32f8ef851a6c'
+            '35157d905f8d488af632f29a7b0a120cb377d7a7c011cd4e66c6428346d9c5b2'
             'f13691fa3ea0f6c61435232f640c1c7381e1e12208c2548f507bb91af190838a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5'
