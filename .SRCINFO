@@ -1,6 +1,6 @@
 pkgbase = linux-drm-intel-next-queued-git
 	pkgdesc = Linux with patches for Intel graphics
-	pkgver = 5.1.810882.58106b7d816e
+	pkgver = 5.1.813474.d0aa694b9239
 	pkgrel = 1
 	url = https://drm.pages.freedesktop.org/maintainer-tools/drm-intel.html
 	arch = x86_64
