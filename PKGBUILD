@@ -3,7 +3,7 @@
 pkgname=rocketchat-desktop
 pkgver=2.15.0
 _srcname="Rocket.Chat.Electron-$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
 arch=('i686' 'x86_64')
 url="https://github.com/RocketChat/Rocket.Chat.Electron"
@@ -40,8 +40,7 @@ prepare() {
 
 build() {
     cd "$_srcname"
-    #yarn install --non-interactive --pure-lockfile --cache-folder "$srcdir/yarn-cache"
-    yarn upgrade electron@^3.1.4 --non-interactive --cache-folder "$srcdir/yarn-cache"
+    yarn upgrade "electron@$(sed 's/^v//' </usr/lib/electron/version)" --non-interactive --cache-folder "$srcdir/yarn-cache"
     yarn build --env=production "$_releasename"
 }
 
