@@ -1,4 +1,5 @@
 post_install() {
-    echo "Please add to '/usr/lib/python3.6/site-packages/bb' to PYTHONPATH shell variable in order for bitbake to work."
-    echo "example: echo export PYTHONPATH=/usr/lib/python3.6/site-packages/bb >> ~/.bash_profile"
+    _pythonver=3.7
+    echo "Please add to '/usr/lib/python${_pythonver}/site-packages/bb' to PYTHONPATH shell variable in order for bitbake to work."
+    echo "example: echo export PYTHONPATH=/usr/lib/python${_pythonver}/site-packages/bb >> ~/.bash_profile"
 }

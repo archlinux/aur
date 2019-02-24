@@ -3,3 +3,5 @@ src
 bitbake/*
 *.tar.xz
 *.tar.gz
+__pycache__
+pyshtables.py

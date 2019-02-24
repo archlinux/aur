@@ -6,12 +6,13 @@
 pkgbase=bitbake
 pkgname=('bitbake' 'bitbake-vim')
 pkgver=1.40.0
-pkgrel=2
+pkgrel=3
+_pythonver=3.7
 pkgdesc='Build tool executing tasks and managing metadata.'
 arch=('any')
 url='https://www.openembedded.org/wiki/Main_Page'
 license=('GPL2')
-makedepends=('git' 'python' 'python-django18' 'python-beautifulsoup4' 'python-codegen' 'python-pyinotify' 'python-progressbar')
+makedepends=('git')
 source=("https://github.com/openembedded/bitbake/archive/${pkgver}.tar.gz")
 md5sums=('902bb4b71bb85fe55cdcf24bf21a7214')
 
@@ -29,9 +30,9 @@ package_bitbake() {
     install -d "${pkgdir}/usr/bin"
     install bin/bitbake* "${pkgdir}/usr/bin"
 
-    install -d "${pkgdir}/usr/lib/python3.6/site-packages"
-    cp -Ra lib/bb "${pkgdir}/usr/lib/python3.6/site-packages"
-    cp -Ra lib/prserv "${pkgdir}/usr/lib/python3.6/site-packages"
+    install -d "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
+    cp -Ra lib/bb "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
+    cp -Ra lib/prserv "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
 
     install -d "${pkgdir}/usr/share/man/man1"
     install doc/bitbake.1 "${pkgdir}/usr/share/man/man1"
