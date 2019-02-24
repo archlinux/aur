@@ -13,7 +13,7 @@
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
 _srcbasever=4.20-gnu
-_srcver=4.20.10-gnu
+_srcver=4.20.11-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -23,7 +23,7 @@ _srcname=linux-${_srcbasever%-*}
 _archpkgver=${_srcver%-*}
 pkgver=${_srcver//-/_}
 pkgrel=1
-rcnrel=armv7-x6
+rcnrel=armv7-x7
 arch=(i686 x86_64 armv7h)
 url="https://linux-libre.fsfla.org/"
 license=(GPL2)
@@ -37,28 +37,30 @@ source=(
   "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm"{,.sig}
   "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm"{,.sig}
   # the main kernel config files
-  'config.i686' 'config.x86_64' 'config.armv7h'
+  config.i686 config.x86_64 config.armv7h
   # pacman hooks for depmod and initramfs regeneration
-  '60-linux.hook' '90-linux.hook'
+  60-linux.hook 90-linux.hook
   # standard config files for mkinitcpio ramdisk
-  'linux.preset'
+  linux.preset
   # files for signing Chromebooks kernels
-  'kernel.its' 'kernel.keyblock' 'kernel_data_key.vbprivk'
+  kernel.its kernel.keyblock kernel_data_key.vbprivk
   # armv7h patches
   "https://repo.parabola.nu/other/rcn-libre/patches/${_srcver%-*}/rcn-libre-${_srcver%-*}-$rcnrel.patch"{,.sig}
-  '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
-  '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
-  '0003-SMILE-Plug-device-tree-file.patch'
-  '0004-fix-mvsdio-eMMC-timing.patch'
-  '0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
-  '0006-set-default-cubietruck-led-triggers.patch'
-  '0007-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch'
-  '0008-ARM-dove-enable-ethernet-on-D3Plug.patch'
-  '0009-media-s5p-mfc-fix-incorrect-bus-assignment-in-virtua.patch'
+  0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch
+  0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch
+  0003-SMILE-Plug-device-tree-file.patch
+  0004-fix-mvsdio-eMMC-timing.patch
+  0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
+  0006-set-default-cubietruck-led-triggers.patch
+  0007-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch
+  0008-ARM-dove-enable-ethernet-on-D3Plug.patch
+  0009-media-s5p-mfc-fix-incorrect-bus-assignment-in-virtua.patch
   # other patches
-  '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
-  '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
-  '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
+  0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch
+  0002-fix-Atmel-maXTouch-touchscreen-support.patch
+  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  0002-net-crypto-set-sk-to-NULL-when-af_alg_release.patch
+  0003-exec-Fix-mem-leak-in-kernel_read_file.patch
 )
 validpgpkeys=(
   '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
@@ -66,7 +68,7 @@ validpgpkeys=(
 )
 sha512sums=('a4a0a25fd490c051deb32ff84ba51e8807bfc8db1ad46c22c7807e9be2e5db5e1c22c211e47fca2509d5d75d64626fb28e9bbc8ccadc565f27fe9c8e47e12dc4'
             'SKIP'
-            '93cbaa78de8c2f4375965e3ec5192e53eb835df2a83156f051fe01e27d0af6258912478aef5f4a864306d4e557dead2a1d038f5415ea11505fcbb57416f502dc'
+            '3cb387665734be799f3c833939f0938e17216f08aff5113a85a845dcf382d997f3574e8ea30c0fb6d5e85295106a347324c3b50858939d4568b6fa25c40a05ff'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -74,16 +76,16 @@ sha512sums=('a4a0a25fd490c051deb32ff84ba51e8807bfc8db1ad46c22c7807e9be2e5db5e1c2
             'SKIP'
             '7a3716bfe3b9f546da309c7492f3e08f8f506813afeb1c737a474c83313d5c313cf4582b65215c2cfce3b74d9d1021c96e8badafe8f6e5b01fe28d2b5c61ae78'
             'SKIP'
-            'c3a1aebd55b703ea4b592b558d29edb7bfe49f6fdee23f6d5e322404f45d6e963675cf0eae0c4aa340daf5910b2f26256f6c62b4acd133bb84a9841ea9289235'
-            'eecb68c2548f046c77066cd94c3624f6cf4734794822cf00d32d19c531311217acb533873126a0871f6f1b5dbb211e23437a387c0371a77e7f7f8b6642f801fd'
-            'e5e47da752a6bed9755338dea784acb52ac081c7679c2567073b228272318e849c86832755f53a94d12908e1683dc4d898972fccfa3f17c6a8a60320d7178a43'
+            'ad7f1ec6f403801f2a7afc26189cecebabda227e1276fc7ed7aef58bf54e6190820ee3b9b52eb54a019573a864303f544d757b4b9e442a272930f933132ac0a9'
+            'f1afd642775273e0cdc6485eab54dfd18b69a543a17aec800ff8524381cdc1185f4908dfc9b494f9130a09333c46c887c78523ad242643b868ff31223a5eccff'
+            '9c34ec064a4763f238fd9721beeb3021d138ea038bd583f65eed49f49b524e2a04190e5653a8607e8613e82000cb76a8b18855ad00f644f603e39261ffb990d3'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             '167bc73c6c1c63931806238905dc44c7d87c5a5c0f6293159f2133dfe717fb44081018d810675716d1605ec7dff5e8333b87b19e09e2de21d0448e447437873b'
             'bb6718984a7357c9b00c37e4788480e5b8b75018c172ecc1441bc3fc5d2d42444eb5d8c7f9d2e3a7d6fed6d03acb565e3c0559486e494c40a7fe6bd0570c9ede'
             '143dea30c6da00e504c99984a98a0eb2411f558fcdd9dfa7f607d6c14e9e7dffff9cb00121d9317044b07e3e210808286598c785ee854084b993ec9cb14d8232'
-            'cf61447790bba8d3cffc95c2b415d673c4cb5907fd3e0fd40f85644fcad0d568fc8c7b8c1391ae2b23696da65f037d966538a5cfe2f770e5d6a71a2193f62bbb'
+            '82375afd5217b8d86a3d0da646af31330bf6bb91531e9b2462a96efb64a618e64696c4710a6bc220e9bf626dcd5c1015b6fd9b8b9c229c67a47cf58ee7aa4dd6'
             'SKIP'
             'a1d15484cc68e1ce6919ecde2172d458641bcbb4fca467d3ecb3daa576f26173574c782c89120dab4c6e0d7277aa72695ea5197db47c9ff6964cdd62991bdaeb'
             '5cc794a821e68b089a09a0083c4971d9c11a057f2cc06c39b7e0c6ba9838cd2e0f2a299a1525725f2b8e462a200e108be97c5b9015d520978e5c61fa932add12'
@@ -96,7 +98,9 @@ sha512sums=('a4a0a25fd490c051deb32ff84ba51e8807bfc8db1ad46c22c7807e9be2e5db5e1c2
             '1834eff6ff158ae05d059e8e20d33a950ec0c4dc5fb60fd215f9e7202e9efb14231f3d5e312e826e097dff131fb399e6a9d4e8d4069a1ccf6e2966364f453c0d'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '9d24dff68a11aee6b5f1b6b003b27603a8c431e76c3cb638e852cd8c0ccd2a298b1116bbad0dc816e9de7d987dcf329a5d250673067ec125760eee543f65eed5')
+            'bac4951f03f9ec3882f1afbb3a35a5980d9e8a321056cc00294f91f0e496922a82f2403f8e99950c053866837bd7382e18cda936d9eca58bc408f6903453c89c'
+            '67710358e51ffd30aaf64351e6c3542bdfa9e4e3db43ee38fca8b15357d71be3cd18db0180d196c8b2d44781ce2625e5b709d496dea0723d0616ebdfb048028a'
+            'e81e85b98f126a1e298d54a289659e648582070db617194a8ed13796535341f3a052e3103ee87c4d9bd797103429b883ae2e761cb6f4b61b15f0c0fea017ff95')
 
 _kernelname=${pkgbase#linux-libre}
 _replacesarchkernel=("${_replacesarchkernel[@]/\%/${_kernelname}}")
@@ -141,6 +145,8 @@ prepare() {
 
   # Arch's linux patches
   patch -p1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  patch -p1 -i ../0002-net-crypto-set-sk-to-NULL-when-af_alg_release.patch
+  patch -p1 -i ../0003-exec-Fix-mem-leak-in-kernel_read_file.patch
 
   # maintain the TTY over USB disconnects
   # http://www.coreboot.org/EHCI_Gadget_Debug

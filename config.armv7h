@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm 4.20.10-gnu Kernel Configuration
+# Linux/arm 4.20.11-gnu Kernel Configuration
 #
 
 #
@@ -7045,7 +7045,7 @@ CONFIG_UIO_AEC=m
 CONFIG_UIO_SERCOS3=m
 CONFIG_UIO_PCI_GENERIC=m
 CONFIG_UIO_NETX=m
-# CONFIG_UIO_PRUSS is not set
+CONFIG_UIO_PRUSS=m
 CONFIG_UIO_MF624=m
 # CONFIG_VFIO is not set
 # CONFIG_VIRT_DRIVERS is not set
@@ -7419,7 +7419,6 @@ CONFIG_SOC_TEGRA_PMC=y
 CONFIG_SOC_TI=y
 # CONFIG_KEYSTONE_NAVIGATOR_QMSS is not set
 # CONFIG_KEYSTONE_NAVIGATOR_DMA is not set
-CONFIG_TI_PRUSS=m
 
 #
 # Xilinx SoC drivers
