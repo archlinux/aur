@@ -7,21 +7,17 @@
 #  printf "'SKIP'%.0s\n" {1..43}
 pkgname=ossia-score-git
 pkgver=r7242.1cb1b909e
-pkgrel=1
+pkgrel=2
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts (git master)"
 arch=('x86_64')
 url="https://ossia.io"
 license=('GPLv3')
-groups=()
-depends=('boost' 'qt5-base' 'qt5-imageformats' 'qt5-svg' 'qt5-websockets' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-multimedia' 'qt5-declarative' 'ffmpeg' 'portaudio' 'jack2')
+depends=('boost' 'qt5-base' 'qt5-imageformats' 'qt5-svg' 'qt5-websockets' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-multimedia' 'qt5-declarative' 'ffmpeg' 'portaudio' 'jack')
 makedepends=('git' 'cmake' 'qt5-tools')
 optdepends=('faust' 'lilv' 'suil' 'sdl2')
 provides=('ossia-score-git')
 conflicts=('ossia-score')
 replaces=('i-score')
-backup=()
-options=()
-install=
 source=('git+https://github.com/OSSIA/score.git'
 "git+https://github.com/OSSIA/libossia"
 "git+https://github.com/avilleret/CicmWrapper.git"
@@ -111,7 +107,6 @@ sha256sums=(
 'SKIP'
 'SKIP'
 )
-noextract=()
 
 _gitname=score
 
