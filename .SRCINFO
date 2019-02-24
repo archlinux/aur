@@ -9,7 +9,6 @@ pkgbase = google-chat-linux-git
 	makedepends = nodejs
 	makedepends = npm
 	depends = electron>=1.8.4
-	depends = electron<=3.1.3-1
 	source = google-chat-linux::git+https://github.com/robyf/google-chat-linux#branch=master
 	source = google-chat-linux.desktop
 	source = google-chat-linux.sh
