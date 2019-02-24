@@ -1,0 +1,16 @@
+pkgbase = memutils-git
+	pkgdesc = utilities for watching and modifying the memory of running processes
+	pkgver = r49.g8447865
+	pkgrel = 1
+	url = https://git.cloudef.pw/memutils.git
+	arch = x86_64
+	license = zlib
+	makedepends = git
+	depends = glibc
+	provides = memutils
+	conflicts = memutils
+	source = git+https://git.cloudef.pw/memutils.git
+	sha256sums = SKIP
+
+pkgname = memutils-git
+
