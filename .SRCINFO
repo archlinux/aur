@@ -4,6 +4,7 @@ pkgbase = me176c-battery
 	pkgrel = 2
 	url = https://github.com/me176c-dev/archlinux-me176c
 	arch = any
+	groups = me176c
 	license = MIT
 	depends = systemd
 	depends = me176c-firmware
