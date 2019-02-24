@@ -12,6 +12,7 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs' 'purge')
 depends=('perl-dist-zilla')
 makedepends=('perl-module-build-tiny')
+checkdepends=('perl-test-deep' 'perl-test-file-sharedir')
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_module-$pkgver.tar.gz")
 sha256sums=('ff1f80a8834753395f6398aec990fdd0ed0ecf9b19bae273ae5d6eeb609642b0')
 
