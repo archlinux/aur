@@ -1,0 +1,139 @@
+Description: Allow passing in an argument to specify alternative programming language to xgettext. (LP: #1675865)
+Author: Larry Price
+Origin: http://bazaar.launchpad.net/~cmake-extras/cmake-extras/trunk/revision/74
+
+#=== modified file 'debian/tests/intltool'
+#--- a/debian/tests/intltool	2017-02-22 19:36:22 +0000
+#+++ b/debian/tests/intltool	2017-03-28 17:52:48 +0000
+#@@ -28,7 +28,7 @@
+#   make install
+# )
+# 
+#-# Check the translatable strings have been extracted from the .ini and .cpp files
+#+# Check the translatable strings have been extracted from the source files
+# check_potfile() {
+#   # Print using a similar format to glib-test
+#   echo -n "/potfile/$1: "
+#@@ -48,11 +48,16 @@
+#   fi
+# }
+# 
+#+# From the C source
+# check_potfile 'msgid "FooApp"'
+# check_potfile 'msgid "FooApp is really great"'
+# check_potfile 'msgid "Hello FooApp!"'
+# check_potfile 'msgid "this translation should be ignored"' 1
+# 
+#+# From the python
+#+check_potfile 'msgid "Python apps can be translated, too"'
+#+check_potfile 'msgid "Regardless of single- or double-quotes"'
+#+
+# # From the schema file
+# check_potfile "Just a test"
+# check_potfile "No really, it's just a test."
+#
+=== modified file 'examples/intltool-demo/CMakeLists.txt'
+--- a/examples/intltool-demo/CMakeLists.txt	2017-02-15 21:53:15 +0000
++++ b/examples/intltool-demo/CMakeLists.txt	2017-03-28 17:52:48 +0000
+@@ -21,3 +21,4 @@
+ 
+ add_subdirectory(po)
+ add_subdirectory(src)
++add_subdirectory(python)
+
+=== modified file 'examples/intltool-demo/po/CMakeLists.txt'
+--- a/examples/intltool-demo/po/CMakeLists.txt	2017-02-22 19:59:32 +0000
++++ b/examples/intltool-demo/po/CMakeLists.txt	2017-03-28 17:52:48 +0000
+@@ -4,8 +4,9 @@
+     POTFILES_TEMPLATE "POTFILES.in.in"
+     GETTEXT_PACKAGE ${GETTEXT_PACKAGE}
+     COPYRIGHT_HOLDER "Foocorp Ltd."
+-    FILE_GLOBS "${CMAKE_SOURCE_DIR}/*.gschema.xml.in"
++    FILE_GLOBS "${CMAKE_SOURCE_DIR}/*.gschema.xml.in;${CMAKE_SOURCE_DIR}/python/*.py"
+     FILTER ".*test.*"
++    LANGUAGE "python"
+ )
+ 
+ intltool_install_translations(
+
+=== modified file 'examples/intltool-demo/po/en_AU.po'
+--- a/examples/intltool-demo/po/en_AU.po	2017-02-15 21:53:15 +0000
++++ b/examples/intltool-demo/po/en_AU.po	2017-03-28 17:52:48 +0000
+@@ -38,3 +38,11 @@
+ #: ../translated.gschema.xml.in.h:2
+ msgid "No really, it's just a test."
+ msgstr "G'day mate, it's a test!"
++
++#: ../python/other_language_translations.py:7
++msgid "Python apps can be translated, too"
++msgstr "Crikey, watch the snake!"
++
++#: ../python/other_language_translations.py:8
++msgid "Regardless of single- or double-quotes"
++msgstr "This, that, or the other"
+
+=== added directory 'examples/intltool-demo/python'
+=== added file 'examples/intltool-demo/python/CMakeLists.txt'
+--- a/examples/intltool-demo/python/CMakeLists.txt	1970-01-01 00:00:00 +0000
++++ b/examples/intltool-demo/python/CMakeLists.txt	2017-03-28 17:52:48 +0000
+@@ -0,0 +1,2 @@
++install(PROGRAMS other_language_translations.py
++        DESTINATION usr/bin)
+
+=== added file 'examples/intltool-demo/python/other_language_translations.py'
+--- a/examples/intltool-demo/python/other_language_translations.py	1970-01-01 00:00:00 +0000
++++ b/examples/intltool-demo/python/other_language_translations.py	2017-03-28 17:52:48 +0000
+@@ -0,0 +1,8 @@
++#!/usr/bin/env python
++
++import gettext
++gettext.textdomain('libertine')
++_ = gettext.gettext
++
++print(_('Python apps can be translated, too'))
++print(_("Regardless of single- or double-quotes"))
+
+=== modified file 'src/Intltool/IntltoolConfig.cmake'
+--- a/src/Intltool/IntltoolConfig.cmake	2017-02-28 17:46:57 +0000
++++ b/src/Intltool/IntltoolConfig.cmake	2017-03-28 17:52:48 +0000
+@@ -136,8 +136,15 @@
+     set(${OUTPUT} "${_tmp}" PARENT_SCOPE)
+ endfunction()
+ 
+-macro(_WRITE_INTLTOOL_MAKEFILE_IN ARG_PO_DIRECTORY ARG_KEYWORDS ARG_COPYRIGHT_HOLDER)
+-    set(_KEYWORDS "XGETTEXT_KEYWORDS=--c++")
++macro(_WRITE_INTLTOOL_MAKEFILE_IN ARG_PO_DIRECTORY ARG_KEYWORDS
++                                  ARG_COPYRIGHT_HOLDER ARG_LANGUAGE)
++    set(_KEYWORDS "XGETTEXT_KEYWORDS=")
++    if(NOT "${ARG_LANGUAGE}" STREQUAL "")
++        set(_KEYWORDS "${_KEYWORDS}--language ${ARG_LANGUAGE} ")
++    else()
++        set(_KEYWORDS "${_KEYWORDS}--c++")
++    endif()
++
+     if(NOT "${ARG_COPYRIGHT_HOLDER}" STREQUAL "")
+         set(_KEYWORDS "${_KEYWORDS} --copyright-holder='${ARG_COPYRIGHT_HOLDER}'")
+     endif()
+@@ -190,7 +197,7 @@
+ 
+ function(INTLTOOL_UPDATE_POTFILE)
+     set(_options ALL UBUNTU_SDK_DEFAULTS)
+-    set(_oneValueArgs COPYRIGHT_HOLDER GETTEXT_PACKAGE OUTPUT_FILE PO_DIRECTORY POTFILES_TEMPLATE)
++    set(_oneValueArgs COPYRIGHT_HOLDER GETTEXT_PACKAGE OUTPUT_FILE PO_DIRECTORY POTFILES_TEMPLATE LANGUAGE)
+     set(_multiValueArgs KEYWORDS FILE_GLOBS FILTER)
+ 
+     cmake_parse_arguments(_ARG "${_options}" "${_oneValueArgs}" "${_multiValueArgs}" ${ARGN})
+@@ -215,10 +222,10 @@
+     endif()
+ 
+     if(_ARG_KEYWORDS)
+-        _write_intltool_makefile_in(${_PO_DIRECTORY} _ARG_KEYWORDS "${_ARG_COPYRIGHT_HOLDER}")
++        _write_intltool_makefile_in(${_PO_DIRECTORY} _ARG_KEYWORDS "${_ARG_COPYRIGHT_HOLDER}" "${_ARG_LANGUAGE}")
+     elseif(_ARG_UBUNTU_SDK_DEFAULTS)
+         set(_UBUNTU_SDK_DEFAULT_KEYWORDS "tr" "tr:1,2" "dtr:2" "dtr:2,3" "N_")
+-        _write_intltool_makefile_in(${_PO_DIRECTORY} _UBUNTU_SDK_DEFAULT_KEYWORDS "${_ARG_COPYRIGHT_HOLDER}")
++        _write_intltool_makefile_in(${_PO_DIRECTORY} _UBUNTU_SDK_DEFAULT_KEYWORDS "${_ARG_COPYRIGHT_HOLDER}" "${_ARG_LANGUAGE}")
+     endif()
+     
+     set(_FILE_GLOBS
+

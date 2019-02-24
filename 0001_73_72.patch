@@ -1,0 +1,101 @@
+Description: Drop deprecated modules now that no-one is using them any more, fixing bug (LP: #1563573).
+Author: Pete Woods
+Origin: http://bazaar.launchpad.net/~cmake-extras/cmake-extras/trunk/revision/73
+
+=== modified file 'CMakeLists.txt'
+--- a/CMakeLists.txt	2016-11-30 05:50:48 +0000
++++ b/CMakeLists.txt	2017-04-03 15:04:13 +0000
+@@ -10,11 +10,3 @@
+   USE_SOURCE_PERMISSIONS
+ )
+ 
+-# Modules installed directly to CMAKE_ROOT
+-# TODO: migrate these to the above tree, since installing to
+-#       CMAKE_ROOT is frowned upon.
+-install(
+-  DIRECTORY "modules/"
+-  DESTINATION "${CMAKE_ROOT}/Modules/"
+-  USE_SOURCE_PERMISSIONS
+-)
+
+#=== modified file 'debian/changelog'
+#--- a/debian/changelog	2017-03-10 12:38:01 +0000
+#+++ b/debian/changelog	2017-04-03 15:04:13 +0000
+#@@ -1,3 +1,11 @@
+#+cmake-extras (1.4-0ubuntu1) UNRELEASED; urgency=medium
+#+
+#+  [ Pete Woods ]
+#+  * Drop deprecated modules now that no-one is using them any more,
+#+    fixing bug (LP: #1563573).
+#+
+#+ -- Pete <pete.woods@canonical.com>  Mon, 03 Apr 2017 16:01:33 +0100
+#+
+# cmake-extras (1.3+17.04.20170310-0ubuntu1) zesty; urgency=medium
+# 
+#   [ Pete ]
+#
+#=== modified file 'debian/control'
+#--- a/debian/control	2016-12-01 07:23:24 +0000
+#+++ b/debian/control	2017-04-03 15:04:13 +0000
+#@@ -15,7 +15,6 @@
+# Architecture: all
+# Multi-Arch: foreign
+# Depends: ${misc:Depends},
+#-         cmake (>= ${cmake:Version}),
+#-         cmake (<< ${cmake:nextMajor}),
+#+         cmake (>= 3.1),
+# Description: Extra CMake utility modules.
+#  Modules for coverage testing, building gtest, doxygen documentation, and more.
+#
+#=== modified file 'debian/rules'
+#--- a/debian/rules	2016-11-23 06:20:41 +0000
+#+++ b/debian/rules	2017-04-03 15:04:13 +0000
+#@@ -1,9 +1,4 @@
+# #!/usr/bin/make -f
+# %:
+#-	dh $@ --fail-missing
+#-
+#-CMAKE_VERSION=$(shell dpkg-query --show --showformat='$${version}' cmake | cut -f1,2 -d.)
+#-
+#-override_dh_gencontrol:
+#-	dh_gencontrol -- \
+#-		-Vcmake:Version=$(CMAKE_VERSION) -Vcmake:nextMajor=$(CMAKE_VERSION).z
+#+	dh $@ --fail-missing --parallel
+#+
+#
+=== removed directory 'modules'
+=== removed file 'modules/EnableCoverageReport.cmake'
+--- a/modules/EnableCoverageReport.cmake	2016-12-08 09:57:20 +0000
++++ b/modules/EnableCoverageReport.cmake	1970-01-01 00:00:00 +0000
+@@ -1,2 +0,0 @@
+-message(DEPRECATION "include(EnableCoverageReport) is deprecated.  Use find_package(CoverageReport) instead")
+-find_package(CoverageReport)
+
+=== removed file 'modules/FormatCode.cmake'
+--- a/modules/FormatCode.cmake	2016-12-07 15:30:09 +0000
++++ b/modules/FormatCode.cmake	1970-01-01 00:00:00 +0000
+@@ -1,2 +0,0 @@
+-message(DEPRECATION "include(FormatCode) is deprecated. Use find_package(FormatCode) instead")
+-find_package(FormatCode)
+
+=== removed file 'modules/QmlPlugins.cmake'
+--- a/modules/QmlPlugins.cmake	2016-12-07 15:30:09 +0000
++++ b/modules/QmlPlugins.cmake	1970-01-01 00:00:00 +0000
+@@ -1,2 +0,0 @@
+-message(DEPRECATION "include(QmlPlugins) is deprecated. Use find_package(QmlPlugins) instead")
+-find_package(QmlPlugins)
+
+=== removed file 'modules/UseDoxygen.cmake'
+--- a/modules/UseDoxygen.cmake	2016-12-07 15:30:09 +0000
++++ b/modules/UseDoxygen.cmake	1970-01-01 00:00:00 +0000
+@@ -1,2 +0,0 @@
+-message(DEPRECATION "include(UseDoxygen) is deprecated. Use find_package(DoxygenBuilder) instead")
+-find_package(DoxygenBuilder)
+
+=== removed file 'modules/UseGSettings.cmake'
+--- a/modules/UseGSettings.cmake	2016-12-07 15:30:09 +0000
++++ b/modules/UseGSettings.cmake	1970-01-01 00:00:00 +0000
+@@ -1,2 +0,0 @@
+-message(DEPRECATION "include(UseGSettings) is deprecated. Use find_package(GSettings) instead")
+-find_package(GSettings)
+

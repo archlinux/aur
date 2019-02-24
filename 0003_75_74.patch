@@ -1,0 +1,45 @@
+Description: Intltool filtering should filter out files that match any regex.
+Author: Pete Woods
+Origin: http://bazaar.launchpad.net/~cmake-extras/cmake-extras/trunk/revision/75
+
+=== modified file 'examples/intltool-demo/po/CMakeLists.txt'
+--- a/examples/intltool-demo/po/CMakeLists.txt	2017-03-28 17:52:48 +0000
++++ b/examples/intltool-demo/po/CMakeLists.txt	2017-04-03 15:30:39 +0000
+@@ -5,7 +5,7 @@
+     GETTEXT_PACKAGE ${GETTEXT_PACKAGE}
+     COPYRIGHT_HOLDER "Foocorp Ltd."
+     FILE_GLOBS "${CMAKE_SOURCE_DIR}/*.gschema.xml.in;${CMAKE_SOURCE_DIR}/python/*.py"
+-    FILTER ".*test.*"
++    FILTER ".*test.*;.*filtered"
+     LANGUAGE "python"
+ )
+ 
+@@ -13,4 +13,3 @@
+     ALL
+     GETTEXT_PACKAGE ${GETTEXT_PACKAGE}
+ )
+-
+
+=== modified file 'src/Intltool/IntltoolConfig.cmake'
+--- a/src/Intltool/IntltoolConfig.cmake	2017-03-28 17:52:48 +0000
++++ b/src/Intltool/IntltoolConfig.cmake	2017-04-03 15:30:39 +0000
+@@ -180,12 +180,16 @@
+     if(_ARG_EXPRESSIONS)
+         set(_TMP "")
+         foreach(_ITEM ${${INPUT}})
++            unset(_MATCHED)
+             foreach(_REGEX ${_ARG_EXPRESSIONS})
+                 if("${_ITEM}" MATCHES "${_REGEX}")
+-                else()
+-                    list(APPEND _TMP "${_ITEM}")
++                  set(_MATCHED ON)
++                  break()
+                 endif()
+             endforeach()
++            if(NOT _MATCHED)
++              list(APPEND _TMP "${_ITEM}")
++            endif()
+         endforeach()
+         set(${OUTPUT} "${_TMP}" PARENT_SCOPE)
+         unset(_TMP)
+
