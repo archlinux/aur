@@ -1,8 +1,9 @@
 # Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer:  kageru <kageru[at]encode[dot]moe>
 
 _plug=kagefunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r7.cfabb13
+pkgver=r33.25e01b1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -10,6 +11,7 @@ url='https://github.com/Irrational-Encoding-Wizardry/kagefunc'
 license=('GPL')
 depends=('vapoursynth-plugin-mvsfunc-git'
          'vapoursynth-plugin-fvsfunc-git'
+         'vapoursynth-plugin-retinex-git'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
