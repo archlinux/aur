@@ -1,14 +1,14 @@
 pkgbase = vsce
 	pkgdesc = Visual Studio Code extension manager
-	pkgver = 1.57.0
+	pkgver = 1.57.1
 	pkgrel = 1
 	url = https://github.com/Microsoft/vscode-vsce
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	source = https://registry.npmjs.org/vsce/-/vsce-1.57.0.tgz
-	sha256sums = 14924b515dee129e9dd110ee4a59a77a213e48d4d2d281210ad28bd8ac6b3f6e
+	source = https://registry.npmjs.org/vsce/-/vsce-1.57.1.tgz
+	sha256sums = 815fca5d91211cace1fdd500f01d8d0256615d6c1104207dea7db5fda2ac2e56
 
 pkgname = vsce
 
