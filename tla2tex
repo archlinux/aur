@@ -1,2 +1,2 @@
 #!/bin/sh
-java -classpath /usr/share/java/tla-tools tla2tex.TLA $@
+exec java -classpath /usr/share/java/tla2tools.jar tla2tex.TLA "$@"

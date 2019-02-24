@@ -1,32 +1,32 @@
-# Maintainer: Antoine Lubineau <antoine@lubignon.info>
+# Maintainer: David Barri <japgolly@gmail.com>
 
 pkgname=tla-tools
-pkgver=2.1.5
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="Tools for the TLA+2 language (SANY, TLC, PlusCal translator and TLATeX)"
 arch=('any')
 url="http://research.microsoft.com/en-us/um/people/lamport/tla/tools.html"
-license=('custom:MSR-EULA')
+license=('MIT')
 depends=('java-runtime')
 options=(!strip)
 source=(
-  'http://ftp.research.microsoft.com/downloads/41b4a0aa-5fad-4118-916a-45ed9fd48bf0/tla.zip'
-  'pcal2tla'
-  'sany'
+  "https://github.com/tlaplus/tlaplus/releases/download/v$pkgver/tla2tools.jar"
+  'pcal'
+  'tla2sany'
   'tla2tex'
   'tlc'
 )
-sha256sums=('83de9d8459d65b91a951350144560525342fb18bcd9491a4258c64a34146eef1'
-            '6b807b8d022564cb1e1a2407915bcbcb8914775f8216653c98730cbf35ff7da8'
-            '67001aa90cd3000e8ae00cdd064d594531d44b76f0c6141be6d3f0e85944008a'
-            '9b5152e04f56ae8fe307609fd2509ea200d0b699da58a2cb9a779f7bde1c358d'
-            '65959359b44562da7263e449bbeae33ede3a0a647f6044a01a0babf10ca0bd19')
+noextract=('tla2tools.jar')
+sha256sums=('1626add371f8e198ea23f86d16d0c72166978456baaa61f1afec901283b92595'
+            '81989cdc3072b9ea3c3120cee7d3f8578fc1dc4933ac2a60cd1982227a9d24cc'
+            'c4c083ebedb2ef69a34bfbc4da4bf9b2a2df7b2d5c5053f71e2a9eeec7147b2f'
+            '574eb88e87d6c115b8269e350903ded2cebb9c721353c20b92206cc76934fbc6'
+            '400c89b5ebc69ea0bc7440415d057ec6d734fd4b884b514beecf61686bf702ed')
 
 package() {
-  mkdir -p "$pkgdir/usr/share/java" "$pkgdir/usr/bin" "$pkgdir/usr/share/licenses/$pkgname"
-  cp -a "$srcdir/tla" "$pkgdir/usr/share/java/$pkgname"
-  install -D -m 0755 {pcal2tla,sany,tla2tex,tlc} "$pkgdir/usr/bin"
-  install -D -m 0644 "$srcdir/tla/License.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  mkdir -p "$pkgdir/usr/share/java" "$pkgdir/usr/bin"
+  cp -a tla2tools.jar "$pkgdir/usr/share/java"
+  cp -a {pcal,tla2sany,tla2tex,tlc} "$pkgdir/usr/bin"
 }
 
 # vim:set ts=2 sw=2 et:

@@ -1,2 +1,2 @@
 #!/bin/sh
-java -classpath /usr/share/java/tla-tools tlc2.TLC $@
+exec java -classpath /usr/share/java/tla2tools.jar tlc2.TLC "$@"
