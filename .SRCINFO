@@ -4,7 +4,7 @@ pkgbase = python-slixmpp-omemo-git
 	pkgrel = 1
 	url = https://lab.louiz.org/poezio/slixmpp-omemo
 	arch = any
-	license = MIT
+	license = GPL3
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python>=3.5

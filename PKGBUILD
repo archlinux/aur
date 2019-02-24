@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="An XMPP library written for Python 3.4 (SleekXMPP asyncio fork)"
 arch=(any)
 url="https://lab.louiz.org/poezio/slixmpp-omemo"
-license=('MIT')
+license=('GPL3')
 depends=(
   'python>=3.5'
   'python-slixmpp'
