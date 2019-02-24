@@ -1,0 +1,19 @@
+pkgbase = prometheus-unbound-exporter-git
+	pkgdesc = A Prometheus exporter for Unbound
+	pkgver = 0.1.r20.gb7e842d
+	pkgrel = 1
+	url = https://github.com/kumina/unbound_exporter
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = go-pie
+	makedepends = git
+	provides = prometheus-unbound-exporter
+	conflicts = prometheus-unbound-exporter
+	source = git+https://github.com/kumina/unbound_exporter
+	source = prometheus-unbound-exporter.service
+	sha512sums = SKIP
+	sha512sums = 91fa15bc38ab490b0327e1ff88d1a48611441105e9472f6739d4dacb458850cdf7e38d82f92b7ae897782e2c0e59c431f2933593c9dc61112a4945892676a4d7
+
+pkgname = prometheus-unbound-exporter-git
+

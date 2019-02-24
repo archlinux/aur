@@ -1,0 +1,20 @@
+[Unit]
+Description=Prometheus Unbound Exporter
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=1s
+ExecStart=/usr/bin/prometheus-unbound-exporter \
+  -unbound.ca /etc/unbound/unbound_server.pem \
+  -unbound.cert /etc/unbound/unbound_control.pem \
+  -unbound.key /etc/unbound/unbound_control.key \
+  -unbound.host localhost:8953
+NoNewPrivileges=true
+ProtectHome=true
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target
