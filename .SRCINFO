@@ -1,0 +1,18 @@
+pkgbase = sdbusplus
+	pkgdesc = C++ bindings for systemd dbus APIs
+	pkgver = r298.3a3bb9e
+	pkgrel = 1
+	url = https://github.com/openbmc/sdbusplus
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = systemd-libs
+	depends = python-mako
+	depends = python-inflection
+	depends = python-yaml
+	source = sdbusplus::git+https://github.com/openbmc/sdbusplus.git#commit=3a3bb9e932b2306dafd33ddd2eb31d61ff89b3fb
+	sha256sums = SKIP
+
+pkgname = sdbusplus
+
