@@ -1,12 +1,14 @@
 pkgbase = gnome-shell-extension-desktop-icons
 	pkgdesc = Add icons to the desktop
-	pkgver = r237.d886ac7
+	pkgver = r369.c0d5866
 	pkgrel = 1
 	url = https://extensions.gnome.org/extension/1465/desktop-icons/
 	arch = x86_64
 	arch = i686
 	license = GPL3
 	makedepends = git
+	makedepends = meson
+	makedepends = glib2
 	depends = gnome-shell
 	options = !strip
 	source = git+https://gitlab.gnome.org/World/ShellExtensions/desktop-icons.git
