@@ -1,17 +1,16 @@
 # Maintainer: Kars Wang <jaklsy AT gmail.com>
 
-nameservers=(114.114.114.114 114.114.115.115)
+nameservers=(223.5.5.5 223.6.6.6)
 
 
 _pkgname=accelerated-domains-china-list
 pkgname=$_pkgname-git
-pkgver=r1.666a96a.r33418.252343a
+pkgver=r2.f513e25.r60374.448a97509
 pkgrel=1
 pkgdesc="convert dnsmasq-china-list to dnsmasq, unbound and bind format, with multiple nameservers support"
 arch=('any')
 url="https://github.com/JaHIY/accelerated-doamins-china-list"
 license=('')
-depends=('')
 makedepends=('git' 'php')
 source=("git+https://github.com/felixonmars/dnsmasq-china-list.git"
         "git+https://github.com/JaHIY/$_pkgname.git")
