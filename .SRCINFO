@@ -1,22 +1,23 @@
 pkgbase = tla-tools
 	pkgdesc = Tools for the TLA+2 language (SANY, TLC, PlusCal translator and TLATeX)
-	pkgver = 2.1.5
+	pkgver = 1.5.7
 	pkgrel = 1
 	url = http://research.microsoft.com/en-us/um/people/lamport/tla/tools.html
 	arch = any
-	license = custom:MSR-EULA
+	license = MIT
 	depends = java-runtime
+	noextract = tla2tools.jar
 	options = !strip
-	source = http://ftp.research.microsoft.com/downloads/41b4a0aa-5fad-4118-916a-45ed9fd48bf0/tla.zip
-	source = pcal2tla
-	source = sany
+	source = https://github.com/tlaplus/tlaplus/releases/download/v1.5.7/tla2tools.jar
+	source = pcal
+	source = tla2sany
 	source = tla2tex
 	source = tlc
-	sha256sums = 83de9d8459d65b91a951350144560525342fb18bcd9491a4258c64a34146eef1
-	sha256sums = 6b807b8d022564cb1e1a2407915bcbcb8914775f8216653c98730cbf35ff7da8
-	sha256sums = 67001aa90cd3000e8ae00cdd064d594531d44b76f0c6141be6d3f0e85944008a
-	sha256sums = 9b5152e04f56ae8fe307609fd2509ea200d0b699da58a2cb9a779f7bde1c358d
-	sha256sums = 65959359b44562da7263e449bbeae33ede3a0a647f6044a01a0babf10ca0bd19
+	sha256sums = 1626add371f8e198ea23f86d16d0c72166978456baaa61f1afec901283b92595
+	sha256sums = 81989cdc3072b9ea3c3120cee7d3f8578fc1dc4933ac2a60cd1982227a9d24cc
+	sha256sums = c4c083ebedb2ef69a34bfbc4da4bf9b2a2df7b2d5c5053f71e2a9eeec7147b2f
+	sha256sums = 574eb88e87d6c115b8269e350903ded2cebb9c721353c20b92206cc76934fbc6
+	sha256sums = 400c89b5ebc69ea0bc7440415d057ec6d734fd4b884b514beecf61686bf702ed
 
 pkgname = tla-tools
 
