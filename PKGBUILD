@@ -2,7 +2,7 @@
 
 _pkgname="emacs-w3m"
 pkgname="${_pkgname}-git"
-pkgver=cvs2git.r70.g0c956f82
+pkgver=r70.g0c956f82
 pkgrel=1
 pkgdesc="w3m browser for Emacs (cvs)"
 arch=('any')
@@ -17,7 +17,7 @@ conflicts=('emacs-w3m')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g'
+  git describe --long --tags | sed 's/^cvs2git-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
