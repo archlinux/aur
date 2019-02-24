@@ -1,6 +1,6 @@
 pkgbase = yad
 	pkgdesc = A fork of zenity - display graphical dialogs from shell scripts or command line
-	pkgver = 0.41.0
+	pkgver = 0.42.0
 	pkgrel = 1
 	url = https://github.com/v1cont/yad
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = yad
 	makedepends = intltool
 	depends = gtk3
 	depends = webkit2gtk
-	source = https://github.com/v1cont/yad/archive/v0.41.0.tar.gz
-	sha512sums = 47befc927f2db19796e34a563b93934081d2f2c666f11d68e5584eef548e046c6d912c0017f933a5ec908537b39b0ea05515f97d589dedc24f9bd2c3a5bb5e3f
+	source = https://github.com/v1cont/yad/archive/v0.42.0.tar.gz
+	sha512sums = 700b11f449b63ec1bc8fecf0d2df3ed18bc7078472de0f3ee034c28e3e096eb61559529cc094c76fc8a9959bbb3e5f159d621ad9739d857b0d9b8d7ff386deaa
 
 pkgname = yad
 
