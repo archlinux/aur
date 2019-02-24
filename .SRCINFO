@@ -1,6 +1,6 @@
 pkgbase = linux-bfq-mq
-	pkgver = 4.20.11
-	pkgrel = 2
+	pkgver = 4.20.12
+	pkgrel = 1
 	url = https://github.com/Algodev-github/bfq-mq/
 	arch = x86_64
 	license = GPL2
@@ -11,13 +11,12 @@ pkgbase = linux-bfq-mq
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.20.11.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.20.11.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.20.12.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.20.12.tar.sign
 	source = https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.20/bfq-sq-mq/4.20-bfq-sq-mq-v9r1-2K190204-rc1.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.20/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.20/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.20/arch-patches-v2/0001-net-crypto-set-sk-to-NULL-when-af_alg_release.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.20/arch-patches-v2/0002-exec-Fix-mem-leak-in-kernel_read_file.patch
 	source = config
 	source = 60-linux.hook
@@ -25,13 +24,12 @@ pkgbase = linux-bfq-mq
 	source = 99-linux.hook
 	source = linux.preset
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = dcd95c41f45c8ee90e249887f4aa8657b9a4c5d0fcef69ba17e75b5304d7411f
+	sha256sums = 1cf544308195250805e0731c716691bea4c1ed29e03e6f9ae5be6dc16785a504
 	sha256sums = SKIP
 	sha256sums = 9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178
 	sha256sums = 0998de1fd20f531f4f147e42af78137ee44c549dcfc9b6027ca91b5c791af11e
 	sha256sums = eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531
 	sha256sums = f7cc42c0ea00aec3debc72a62a1f29f9a267bcba3decb5becb47da5d4741ac79
-	sha256sums = 182a21ba7992f275b40a0afcb82c3f27cc10d98f2ff68d9d48a4d88c2a1a9147
 	sha256sums = 76d5658b98eb1baaf38fda662ec53ef02bf1e4935c39bdfe62937e329c0f64a6
 	sha256sums = cdd585dc4e6ad714ca9761aa8b4c1d965ae952e74d057a884ef509190e9f5a8a
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
@@ -48,19 +46,19 @@ pkgname = linux-bfq-mq
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-bfq-mq=4.20.11
-	provides = linux=4.20.11
+	provides = linux-bfq-mq=4.20.12
+	provides = linux=4.20.12
 	backup = etc/mkinitcpio.d/linux-bfq-mq.preset
 
 pkgname = linux-bfq-mq-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.20.11
-	provides = linux-bfq-mq-headers=4.20.11
-	provides = linux-headers=4.20.11
+	depends = linux-bfq-mq=4.20.12
+	provides = linux-bfq-mq-headers=4.20.12
+	provides = linux-headers=4.20.12
 
 pkgname = linux-bfq-mq-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.20.11
-	provides = linux-bfq-mq-docs=4.20.11
-	provides = linux-docs=4.20.11
+	depends = linux-bfq-mq=4.20.12
+	provides = linux-bfq-mq-docs=4.20.12
+	provides = linux-docs=4.20.12
 
