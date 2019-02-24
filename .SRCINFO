@@ -1,0 +1,18 @@
+pkgbase = kwalletcli-git
+	pkgdesc = Command-Line Interface for the KDE Wallet
+	pkgver = 0
+	pkgrel = 1
+	url = https://www.mirbsd.org/kwalletcli.htm
+	arch = i686
+	arch = x86_64
+	license = custom:MirOS
+	license = LGPL3
+	makedepends = gcc
+	makedepends = make
+	depends = kwallet
+	depends = mksh
+	source = kwalletcli-git::git://github.com/MirBSD/kwalletcli
+	sha512sums = SKIP
+
+pkgname = kwalletcli-git
+
