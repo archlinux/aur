@@ -1,8 +1,9 @@
-# Maintainer: vorpalblade77@gmail.com
+# Maintainer: xiretza <xiretza+aur@gmail.com>
+# Contributor: vorpalblade77@gmail.com
 # Contributor: b.klettbach@gmail.com
 
 pkgname=multimc5
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 __pkgver_libnbtplusplus=multimc-0.6.1
 __pkgver_quazip=multimc-3
@@ -13,7 +14,7 @@ license=('Apache')
 depends=('zlib' 'libgl' 'qt5-base' 'qt5-x11extras' 'java-runtime' 'qt5-svg' 'xorg-xrandr')
 provides=('multimc')
 conflicts=('multimc')
-makedepends=('cmake' 'java-environment>=8' 'java-environment<10')
+makedepends=('cmake' 'java-environment')
 optdepends=('mcedit: Allows editing of minecraft worlds')
 
 source=("https://github.com/MultiMC/MultiMC5/archive/${pkgver}.tar.gz"
@@ -21,7 +22,7 @@ source=("https://github.com/MultiMC/MultiMC5/archive/${pkgver}.tar.gz"
         "https://github.com/MultiMC/quazip/archive/${__pkgver_quazip}.tar.gz"
         "quazip-fix-build-with-qt-511.patch"
 )
-sha512sums=('83e4008e6b16d60d5d32d1cec71b0c20abdefac017c44ae0c3343e4af6980fbc89be0f39b1050895ae3dec7af88f71ba94cdda9c77537fcb4158ea484a62ac5f'
+sha512sums=('472c676223c180e176e1430d880cc7449118c7af501bb5354286158151b513b0b510c9c5ba1f4cf5e49ea46863b582dbf8ade84e1ec6b7716b297cbec9582082'
             '81a1640a069d88df7ba0abf72089aecbe1e9d791c88acaaa7e70c8f0bcd0512cf8698178342657e363524ce8488dd072368a0aa8cc091a24912d6f8b6b0f4f2d'
             '2e9074203c67bc7ad98621c551047e5367f06e54cacfecc755a5bf2c9f99266eab42ad972f86ae28ed7e1507f6d27d8d2680a87ce9fd5b1e93a18bcb627ec3f0'
             'ca7a350bdeecf65dbca7de8d6912c935c6ba603edcddcd4ffe71d8997e50e4046335dde6d1d7c629d35025073d18be4d112a960d43a8801de979687bc26e46d4')
