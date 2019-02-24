@@ -1,7 +1,7 @@
 # Maintainer: Sophie Tauchert <sophie@999eagle.moe>
 
 pkgname=gwe
-pkgver=0.12.1
+pkgver=0.12.3
 pkgrel=1
 pkgdesc="A system utility for controlling NVIDIA GPUs"
 arch=('any')
@@ -13,7 +13,7 @@ provides=()
 _xlib_commit='52e6cd2a78c32fa7d78dc73795628c78ff7b970b'
 source=("https://gitlab.com/leinardi/gwe/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         "https://github.com/leinardi/python-xlib/archive/${_xlib_commit}.tar.gz")
-sha256sums=('296ef04df60e16dadc1aacfb646e4e1b29f1c923826545f2cc5fddff78a60df4'
+sha256sums=('b3fe6d1caacd9b74c65cab71452aa74aa84d075979877cf67b817f2fe5f2ffb3'
             '20f3696205918978c6d3bb214a282606064b52c9c90b781cb5862452a8f4ef42')
 
 prepare() {
