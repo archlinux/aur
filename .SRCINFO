@@ -8,7 +8,7 @@ pkgbase = nautilus-mediainfo
 	depends = python-mediainfodll
 	depends = python-nautilus
 	source = nautilus-mediainfo-0.2.tar.gz::https://github.com/linux-man/nautilus-mediainfo/archive/v0.2-python3.tar.gz
-	md5sums = a4286dcd0e11f8f5cbb4bab11605bd0c
+	sha256sums = bcaf2e33f66159d23b2e2b3f08e69658e06eaccc4cc000fe6b91c4c8a4df9c9e
 
 pkgname = nautilus-mediainfo
 

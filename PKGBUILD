@@ -10,7 +10,7 @@ url="https://github.com/linux-man/nautilus-mediainfo"
 license=('GPL3')
 depends=('python-mediainfodll' 'python-nautilus')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${_pkgver}.tar.gz")
-md5sums=('a4286dcd0e11f8f5cbb4bab11605bd0c')
+sha256sums=('bcaf2e33f66159d23b2e2b3f08e69658e06eaccc4cc000fe6b91c4c8a4df9c9e')
 
 package() {
 	cd "${pkgname}-${_pkgver}"
