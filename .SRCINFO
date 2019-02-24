@@ -4,6 +4,7 @@ pkgbase = me176c-factory
 	pkgrel = 1
 	url = https://github.com/me176c-dev/linux-me176c
 	arch = x86_64
+	groups = me176c
 	license = MIT
 	makedepends = meson
 	optdepends = bluez-utils: to set Bluetooth MAC address on boot

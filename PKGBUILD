@@ -7,6 +7,7 @@ arch=(x86_64)
 _repo=linux-me176c
 url="https://github.com/me176c-dev/$_repo"
 license=('MIT')
+groups=(me176c)
 makedepends=(meson)
 optdepends=('bluez-utils: to set Bluetooth MAC address on boot')
 _revision=c56789c7fa5ee9411320a50b21c8b3d98c8de3ac
