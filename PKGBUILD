@@ -1,6 +1,6 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=ams-lv2
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A port of the internal modules found in Alsa Modular Synth"
 arch=('x86_64')
@@ -8,17 +8,17 @@ url="https://github.com/blablack/ams-lv2"
 license=('GPL2')
 groups=('lv2-plugins' 'pro-audio')
 depends=('fftw' 'gtkmm')
-makedepends=('lv2' 'lvtk' 'python2')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/blablack/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('216435bfc8620f7138791243dee60c27f7e3a38b972dcaba4150a47e1d8d53cec807246ace658b5136b45c43fd7e533df49f8b9bce8d40dc9d148121b9388886')
+makedepends=('lv2' 'lvtk' 'python')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/blablack/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('6c1c6f3179a851f67e162d225a761c38678159d9f178d9bfa3991b84b84ea557f5a44882ea710626204f158c40ae18f0e87f24faec0a0bd6aa64e18eeb81c45f')
 
 build() {
   cd "$pkgname-$pkgver"
-  python2 waf configure --prefix=/usr
-  python2 waf
+  python waf configure --prefix=/usr
+  python waf
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  python2 waf install --destdir="$pkgdir/"
+  python waf install --destdir="$pkgdir/"
 }
