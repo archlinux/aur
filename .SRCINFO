@@ -1,0 +1,16 @@
+pkgbase = eta-git
+	pkgdesc = Tool for monitoring ETA and progress of an arbitrary process
+	pkgver = r14.d91d294
+	pkgrel = 1
+	url = https://github.com/aioobe/eta
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fish>=2.3.0
+	depends = curl
+	depends = git
+	source = eta::git+https://github.com/aioobe/eta.git
+	sha512sums = SKIP
+
+pkgname = eta-git
+
