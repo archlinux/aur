@@ -12,8 +12,8 @@ pkgbase = android-messages-desktop
 	depends = libappindicator-sharp
 	source = https://github.com/chrisknepper/android-messages-desktop/releases/download/v0.9.0/android-messages-desktop-0.9.0.pacman
 	source = https://raw.githubusercontent.com/chrisknepper/android-messages-desktop/master/LICENSE
-	md5sums = f735db7778c6f49a24e6faf75867ca29
-	md5sums = 6208044708b2cdf3675699733984b473
+	sha256sums = 18300a7db40e7990a777333a9589bbbd8e2fc2d1eab64e92c6e5a45c53699fd5
+	sha256sums = 3a0332a1a4cbd1db232d73b032c3450c978e48759a3dbcfeddfb874e93bc0b3c
 
 pkgname = android-messages-desktop
 
