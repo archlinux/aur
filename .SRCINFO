@@ -9,7 +9,7 @@ pkgbase = python-userspacefs
 	makedepends = python-setuptools
 	depends = python-fusepyng
 	source = python-userspacefs-1.0.13.tar.gz::https://github.com/rianhunter/userspacefs/archive/v1.0.13.tar.gz
-	md5sums = 6e809fd77c5cc8d5c24b9567ab1ce63f
+	sha256sums = 3caf25cbfff1329887b5f0cef7ae478e7f01d1c0c94a6bc2af4fd6eaaead648a
 
 pkgname = python-userspacefs
 
