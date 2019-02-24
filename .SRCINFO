@@ -10,8 +10,8 @@ pkgbase = python-sentry_sdk
 	makedepends = python2-setuptools
 	source = python-sentry_sdk-0.7.3.tar.gz::https://github.com/getsentry/sentry-python/releases/download/0.7.3/sentry-sdk-0.7.3.tar.gz
 	source = https://raw.githubusercontent.com/getsentry/sentry-python/master/LICENSE
-	md5sums = 3a5bd3a5d9bd1305d26a702b38134140
-	md5sums = 0c79f8d3c91fc847350efd28bfe0a341
+	sha256sums = 6f4e264d0ad6267c40e20431a6a50f815515805ffe8eb9815340adf931279523
+	sha256sums = 59404d4c854e579097d41bfccd5006afde9d6d70e646cf55074cdbfead5ecf1c
 
 pkgname = python-sentry_sdk
 	depends = python-urllib3
