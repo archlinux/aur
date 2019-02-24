@@ -5,8 +5,8 @@
 
 pkgname=dfhack
 pkgver=0.44.12
-_pkgver=$pkgver-r1
-pkgrel=3
+_pkgver=$pkgver-r2
+pkgrel=4
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it"
 arch=('x86_64' 'i686')
 url="https://dfhack.readthedocs.io/en/stable/"
