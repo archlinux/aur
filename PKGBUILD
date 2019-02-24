@@ -5,8 +5,8 @@
 
 _name=kickthemout
 pkgname=${_name}-git
-pkgver=0.1.r151.g0f32988
-pkgrel=2
+pkgver=0.1.r153.g9238b1b
+pkgrel=1
 pkgdesc="Kick devices off your network by performing an ARP Spoof attack."
 arch=('any')
 url="https://github.com/k4m4/${_name}"
@@ -25,7 +25,7 @@ prepare() {
     sed -i "1 s|$|2|" scan.py kickthemout.py spoof.py
     touch kickthemout
     echo #!/bin/sh >> kickthemout
-    echo 'python2 "/usr/share/kickthemout/kickthemout.py" "$@"' >> kickthemout
+    echo 'python "/usr/share/kickthemout/kickthemout.py" "$@"' >> kickthemout
     
 }
 

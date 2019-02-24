@@ -1,7 +1,7 @@
 pkgbase = kickthemout-git
 	pkgdesc = Kick devices off your network by performing an ARP Spoof attack.
-	pkgver = 0.1.r151.g0f32988
-	pkgrel = 2
+	pkgver = 0.1.r153.g9238b1b
+	pkgrel = 1
 	url = https://github.com/k4m4/kickthemout
 	arch = any
 	license = MIT
