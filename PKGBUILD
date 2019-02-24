@@ -2,24 +2,19 @@
 pkgname=ossia-score
 pkgver=2.1.3
 release_tag=v2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts"
 arch=('x86_64')
-url="http://ossia.io"
+url="https://ossia.io"
 license=('GPLv3')
-groups=()
-depends=('boost' 'qt5-base' 'qt5-imageformats' 'qt5-svg' 'qt5-websockets' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-multimedia' 'qt5-declarative' 'ffmpeg' 'portaudio' 'jack2')
+depends=('boost' 'qt5-base' 'qt5-imageformats' 'qt5-svg' 'qt5-websockets' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-multimedia' 'qt5-declarative' 'ffmpeg' 'portaudio' 'jack')
 makedepends=('git' 'cmake' 'qt5-tools')
 optdepends=('faust' 'lilv' 'suil' 'sdl2')
 provides=("$pkgname=$pkgver")
 conflicts=('ossia-score-git')
 replaces=('i-score')
-backup=()
-options=()
-install=
 source=("https://github.com/OSSIA/score/releases/download/v${pkgver}/Score-v${pkgver}-src.tar.xz")
 sha512sums=("cfb1038ba84e45ad0d94a3c0600eec1747490640115d95120d48fa763ad40949201d6b3b83c00fbb256d75136203620669a0124736d61e0a7f40b17a61114c44")
-
 
 build() {
   cd "$srcdir"
