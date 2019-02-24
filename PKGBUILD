@@ -5,7 +5,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=brltty-minimal
-pkgver=5.6
+pkgver=6.0
 pkgrel=4
 pkgdesc="Braille display driver for Linux/Unix"
 arch=(x86_64)
@@ -18,8 +18,8 @@ backup=(etc/brltty.conf)
 options=('!emptydirs')
 source=(http://brltty.com/archive/brltty-$pkgver.tar.xz
 	brltty.service)
-sha512sums=('c5df33bc51f3bafb56e4627290a801937bc57b6e2de5765c04e45c4ef1229ab864f2756916500ca4ca43b79354d7a9d3d4bfb588aa9fc494ea570eab25a389c0'
-	'5da854db7612b7fcc1f1a8da0825e19509158041ceedbefc7649d220fd94a17c11044985abfc435b65a8b795c19dd2d16ff05f59641e57805f710b76570a5af4')
+sha512sums=('07344fa902ad169967ca39d19b09dfea24e698011031dd63dce3eb997a4cb86622ee9427b216976b3ef60e5cbabb710a621621447c6bfa2313748fc1a1cf4b06'
+            '5da854db7612b7fcc1f1a8da0825e19509158041ceedbefc7649d220fd94a17c11044985abfc435b65a8b795c19dd2d16ff05f59641e57805f710b76570a5af4')
 
 build() {
 	cd "${srcdir}/brltty-${pkgver}"
