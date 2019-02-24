@@ -1,0 +1,19 @@
+## When set, Tor will fetch descriptors for each bridge listed in the Bridge
+## config lines, and use these relays as both entry guards and directory guards.
+#UseBridges 1
+
+## When set (along with UseBridges), Tor will try to fetch bridge descriptors
+## from the configured bridge authorities when feasible. It will fall back to
+## a direct request if the authority responds with a 404.
+#UpdateBridgesFromAuthority 1
+
+## ClientTransportPlugin transport exec path-to-binary [options]
+#ClientTransportPlugin obfs4 exec /usr/bin/obfs4proxy -enableLogging -logLevel WARN
+#ClientTransportPlugin meek exec /usr/bin/meek-client --log /var/lib/tor/pt_state/meek-client.log
+
+## Bridge [transport] IP:ORPort [fingerprint]
+## https://gitweb.torproject.org/builders/tor-browser-bundle.git/plain/Bundle-Data/PTConfigs/bridge_prefs.js
+#Bridge obfs4 154.35.22.10:15937 8FB9F4319E89E5C6223052AA525A192AFBC85D55 cert=GGGS1TX4R81m3r0HBl79wKy1OtPPNR2CZUIrHjkRg65Vc2VR8fOyo64f9kmT1UAFG7j0HQ iat-mode=0
+#Bridge obfs4 192.99.11.54:443 7B126FAB960E5AC6A629C729434FF84FB5074EC2 cert=VW5f8+IBUWpPFxF+rsiVy2wXkyTQG7vEd+rHeN2jV5LIDNu8wMNEOqZXPwHdwMVEBdqXEw iat-mode=0
+#Bridge meek 0.0.2.0:2 B9E7141C594AF25699E0079C1F0146F409495296 url=https://d2cly7j4zqgua7.cloudfront.net/ front=a0.awsstatic.com
+#Bridge meek 0.0.2.0:3 97700DFE9F483596DDA6264C4D7DF7641E1E39CE url=https://meek.azureedge.net/ front=ajax.aspnetcdn.com

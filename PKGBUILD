@@ -14,12 +14,15 @@ url="http://www.torproject.org"
 license=('BSD')
 depends=('openssl' 'libevent' 'libseccomp' 'zstd')
 makedepends=('asciidoc')
-optdepends=('torsocks: allow transparent SOCKS proxying')
+optdepends=('torsocks: allow transparent SOCKS proxying'
+            'obfs4proxy: obfuscating pluggable transport proxy'
+            'meek: obfuscating pluggable transport proxy')
 conflicts=('tor')
 provides=('tor')
 install='tor.install'
 backup=('etc/tor/torrc'
         'etc/tor/torrc.d/nodes'
+        'etc/tor/torrc.d/bridge'
         'etc/tor/torrc.d/transparent_proxy')
 
 [[ $_malloc = 'jemalloc' ]] && depends+=('jemalloc')
@@ -30,7 +33,7 @@ backup=('etc/tor/torrc'
 }
 
 source=("git+https://git.torproject.org/tor.git#branch=${_branch:-master}"
-        'torrc' 'nodes' 'transparent_proxy'
+        'torrc' 'nodes' 'bridge' 'transparent_proxy'
         'tor.logrotate' 'tor.service' 'tor.tmpfiles' 'tor.sysusers')
 sha256sums=('SKIP'
             '5e40baff0e6cdc487793453ab06155c2974cc8bb20096db98be641fcceccd328'
@@ -82,6 +85,7 @@ package() {
     install -dm750 "$pkgdir/etc/tor/torrc.d"
     install -Dm640 "$srcdir/torrc"             "$pkgdir/etc/tor/torrc"
     install -Dm640 "$srcdir/nodes"             "$pkgdir/etc/tor/torrc.d/nodes"
+    install -Dm640 "$srcdir/bridge"            "$pkgdir/etc/tor/torrc.d/bridge"
     install -Dm640 "$srcdir/transparent_proxy" "$pkgdir/etc/tor/torrc.d/transparent_proxy"
     install -Dm644 "$srcdir/tor.logrotate" "$pkgdir/etc/logrotate.d/tor"
     install -Dm644 "$srcdir/tor.service"   "$pkgdir/usr/lib/systemd/system/tor.service"
