@@ -6,7 +6,7 @@
 # Contributor: Ben <ben@benmazer.net>
 
 pkgname=mpd-light
-pkgver=0.21.4
+pkgver=0.21.5
 _majorver=0.21
 pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi, smbclient and zziplib support.'
@@ -14,7 +14,7 @@ url='https://www.musicpd.org/'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('audiofile' 'libmad' 'curl' 'faad2' 'sqlite' 'libmms' 'libid3tag' 'libmpdclient'
-         'icu' 'libupnp' 'libnfs' 'libsamplerate' 'libsoxr' 'libgme')
+         'icu' 'libupnp' 'libvorbis' 'libnfs' 'libsamplerate' 'libsoxr' 'libgme')
 makedepends=('boost' 'meson' 'python-sphinx')
 provides=("mpd=$pkgver")
 conflicts=('mpd')
@@ -22,7 +22,7 @@ replaces=('mpd')
 source=("https://www.musicpd.org/download/mpd/${_majorver}/mpd-${pkgver}.tar.xz"
         'mpd.tmpfile'
         'mpd.conf')
-sha256sums=('247112eabf1b818a4052db7f0f5917ab00831ebc60a1ec3bf1154da4dc16a5c7'
+sha256sums=('2ea9f0eb3a7bdae5d705adf4e8ec45ef38b5b9ddf133f32b8926dd4e205b0ef9'
             'c1683ba35774c85e16c70e89f7e2ed1c09619512b1a273daabbd5e34d40439bd'
             'e213c108cd0e076b5cc07091707ef75d74d9ac8c779d0c0128cd0aa69617f8a0')
 backup=('etc/mpd.conf')
@@ -39,7 +39,6 @@ build() {
 	_opts=('-Ddocumentation=true'
 	       '-Dchromaprint=disabled' # appears not to be used for anything
 	       '-Dsidplay=disabled' # unclear why but disabled in the past
-	       '-Dlibwrap=disabled' # twentieth century's over
 	       '-Dadplug=disabled' # not in an official repo
 	       '-Dsndio=disabled' # interferes with detection of alsa devices
 	       '-Dshine=disabled' # not in an official repo
