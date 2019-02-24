@@ -7,7 +7,7 @@ pkgname='ros-kinetic-rqt-multiplot'
 pkgver='0.0.10'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('GNU Lesser General Public License (LGPL)')
 
 ros_makedepends=(ros-kinetic-variant-topic-tools
@@ -37,9 +37,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="rqt_multiplot_plugin-release-release-kinetic-rqt_multiplot"
+_dir="rqt_multiplot_plugin-release-release-kinetic-rqt_multiplot-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/anybotics/rqt_multiplot_plugin-release/archive/release/kinetic/rqt_multiplot/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b1dfb84033dec21d9553417ad4b1c3faf9eeb4294a6f00551eb2e79d9109158f')
+sha256sums=('8609de1db057f16d19ba9097a5022e0551f29f20b4e185a154e5fa2b09c3de0e')
 
 build() {
   # Use ROS environment variables
