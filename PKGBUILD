@@ -9,19 +9,21 @@ arch=('x86_64')
 url="http://cmap.ihmc.us/"
 license=('unknown')
 depends=('java-environment')
-makedepends=('the_silver_searcher' 'unzip' 'inetutils')
+makedepends=('the_silver_searcher')
 
 source=(http://cmapdownload.ihmc.us/installs/CmapTools/Linux/Linux64CmapTools_$pkgver\_$_pkgdate.bin
 	installer.properties
 	icon.png
 	cmaptools.desktop
-	cmaptools)
+	cmaptools
+	)
 
 md5sums=('5e7c9557f37bb3510d2fe0d168d1e847'
 	'a6aa32dfa1a7a5bc5e6dc585e197e002'
 	'c37998dc8a4703de169283d49a49c40d'
 	'23f9a626c04321284930d6a79b2cf5b1'
-	'acda9def3e84dd87066530ba187bcd1d')
+	'acda9def3e84dd87066530ba187bcd1d'
+	)
 
 
 package() {
