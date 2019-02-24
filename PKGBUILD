@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-coin-or-cgl
-pkgver=0.59.10
+pkgver=0.60.0
 pkgrel=1
 pkgdesc="COIN-OR Cut Generation Library (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('mingw-w64-coin-or-clp')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.coin-or.org/download/source/Cgl/Cgl-${pkgver}.tgz")
-sha256sums=('30b4d514c415df89bd8800b3eab4b989aa536a7c04e661fdfdebda0b686351b0')
+sha256sums=('8bcae16a80321cde02774367336760fbb06049cf09235a3b275ca11dbd751385')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
