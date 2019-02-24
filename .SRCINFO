@@ -8,7 +8,7 @@ pkgbase = nemo-mediainfo-tab
 	depends = python-mediainfodll
 	depends = nemo-python
 	source = nemo-mediainfo-tab-0.3-python3.tar.gz::https://github.com/linux-man/nemo-mediainfo-tab/archive/v0.3-python3.tar.gz
-	md5sums = 6723405faaed04aec1c930fc74fcf099
+	sha256sums = 6723405faaed04aec1c930fc74fcf099
 
 pkgname = nemo-mediainfo-tab
 

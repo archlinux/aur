@@ -10,7 +10,7 @@ url="https://github.com/linux-man/$pkgname"
 license=('GPL3')
 depends=('python-mediainfodll' 'nemo-python')
 source=("$pkgname-$_pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz")
-md5sums=('6723405faaed04aec1c930fc74fcf099')
+sha256sums=('6723405faaed04aec1c930fc74fcf099')
 
 package() {
     cd "${pkgname}-${_pkgver}"
