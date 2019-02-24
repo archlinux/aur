@@ -1,6 +1,6 @@
 pkgbase = logmaster-git
 	pkgdesc = Log viewer for linux with large file support, kubernetes support and highlighting
-	pkgver = 130.ae03a4d
+	pkgver = 135.a21907d-1
 	pkgrel = 1
 	url = http://github.com/jonathanballs/logmaster
 	arch = x86_64

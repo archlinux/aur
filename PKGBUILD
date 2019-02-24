@@ -22,12 +22,11 @@ pkgver() {
 
 prepare() {
   cd ${_pkgname}
-  dub build --compiler=ldc
 }
 
 build() {
   cd ${_pkgname}
-  dub build --compiler=ldc
+  dub build --compiler=ldc --target=release
 }
 
 package() {
