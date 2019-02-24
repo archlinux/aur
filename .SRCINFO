@@ -1,7 +1,7 @@
 pkgbase = i2p-bin
 	pkgdesc = A distributed anonymous network (pre-compiled binary)
 	pkgver = 0.9.38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://geti2p.net
 	install = i2p.install
 	arch = any

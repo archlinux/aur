@@ -3,7 +3,7 @@
 
 pkgname=i2p-bin
 pkgver=0.9.38
-pkgrel=1
+pkgrel=2
 pkgdesc="A distributed anonymous network (pre-compiled binary)"
 url="https://geti2p.net"
 license=('GPL2')
@@ -35,31 +35,36 @@ validpgpkeys=('2D3D2D03910C6504C1210C65EE60C0C8EE7256A8')
 
 package() {
     source /etc/profile.d/jre.sh
-
     echo "INSTALL_PATH=${pkgdir}/opt/i2p" >install.properties
     java -jar i2pinstall_${pkgver}.jar -options install.properties
 
-    install -dm755 "$pkgdir/usr/lib/tmpfiles.d"
-    install -dm755 "$pkgdir/usr/bin"
-    install -dm750 "$pkgdir/opt/i2p"
+    cd "$pkgdir"
 
-    install -Dm644 "$srcdir/router.config"        "$pkgdir/opt/i2p/router.config"
-    install -Dm755 "$srcdir/i2prouter.sh"         "$pkgdir/opt/i2p/i2prouter"
-    install -Dm644 "$srcdir/i2prouter.service"    "$pkgdir/usr/lib/systemd/system/i2prouter.service"
-    install -Dm644 "$pkgdir/opt/i2p/man/eepget.1" "$pkgdir/usr/share/man/man1/eepget.1"
-    install -Dm644 "$pkgdir/opt/i2p/LICENSE.txt"  "$pkgdir/usr/share/licenses/i2p/LICENSE"
-    cp "$srcdir/wrapper.config"                   "$pkgdir/opt/i2p"
-    mv "$pkgdir"/opt/i2p/licenses/*               "$pkgdir/usr/share/licenses/i2p/"
+    install -dm755 "usr/bin"
+    install -dm750 "opt/i2p"
 
-    ln -s /opt/i2p/{eepget,i2prouter} "$pkgdir/usr/bin/"
-    chmod 755 "$pkgdir/opt/i2p"
-    chmod -x "$pkgdir"/opt/i2p/*.config
+    install -Dm644 "$srcdir/router.config"     "opt/i2p/router.config"
+    install -Dm644 "$srcdir/wrapper.config"    "opt/i2p/wrapper.config"
+    install -Dm755 "$srcdir/i2prouter.sh"      "opt/i2p/i2prouter"
+    install -Dm644 "$srcdir/i2prouter.service" "usr/lib/systemd/system/i2prouter.service"
+    install -Dm644 "opt/i2p/man/eepget.1"      "usr/share/man/man1/eepget.1"
+    install -Dm644 "opt/i2p/LICENSE.txt"       "usr/share/licenses/i2p/LICENSE"
+    mv opt/i2p/licenses/*                      "usr/share/licenses/i2p/"
 
-    echo 'd /run/i2p 0700 i2p i2p -'    >"$pkgdir/usr/lib/tmpfiles.d/i2prouter.conf"
+    ln -s /opt/i2p/{eepget,i2prouter} "usr/bin/"
 
-    sed -i "$pkgdir"/opt/i2p/eepget \
+    chmod  -x opt/i2p/*.config
+    chmod 755 opt/i2p
+    chown  -R 985:985 opt/i2p
+
+    echo 'u i2p 985 "I2P Router" /opt/i2p /bin/sh' |
+    install -Dm644 /dev/stdin "usr/lib/sysusers.d/i2p.conf"
+    echo 'd /run/i2p 0700 i2p i2p' |
+    install -Dm644 /dev/stdin "usr/lib/tmpfiles.d/i2p.conf"
+
+    sed -i opt/i2p/eepget \
         -e "s:$pkgdir/opt/i2p:/opt/i2p:g"
-    sed -i "$pkgdir"/opt/i2p/clients.config \
+    sed -i opt/i2p/clients.config \
         -e "s:clientApp.4.startOnLoad=.*:clientApp.4.startOnLoad=false:"
-    rm -rf "$pkgdir"/opt/i2p/{Uninstaller,.installationinformation,INSTALL-headless.txt,LICENSE.txt,runplain.sh,licenses,man,i2psvc,lib/*wrapper*,scripts/home.i2p.i2prouter}
+    rm -rf opt/i2p/{Uninstaller,.installationinformation,INSTALL-headless.txt,LICENSE.txt,runplain.sh,licenses,man,i2psvc,lib/*wrapper*,scripts/home.i2p.i2prouter}
 }
