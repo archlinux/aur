@@ -1,7 +1,7 @@
 # Maintainer: Pawel Dzieciolowski <dzieciolowski dot pawel at gmail dot com>
 
 pkgname=kscript
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc='Enhanced scripting support for Kotlin on *nix-based systems'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/holgerbrandl/kscript'
 license=('MIT')
 depends=('kotlin')
 source=("${pkgname}-${pkgver}.bin.zip::https://github.com/holgerbrandl/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-bin.zip")
-sha256sums=('f132034bbb7a756be72ca21a3677552560f43bffdaf0e3e2ce052477a799bb0d')
+sha256sums=('bf5c095dc3321b597c787f281ac690d51928da88d29ee29bff48ed5233d1840a')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}/bin"
