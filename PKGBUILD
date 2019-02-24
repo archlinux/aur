@@ -3,14 +3,14 @@
 _gemname=erubis
 pkgname=ruby-$_gemname
 pkgver=2.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast, secure, and very extensible implementation of eRuby."
 arch=(any)
 url="http://www.kuwata-lab.com/erubis/"
 license=('MIT')
 depends=(ruby)
 makedepends=(ruby-rdoc)
-source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
+source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=($_gemname-$pkgver.gem)
 sha256sums=('63653f5174a7997f6f1d6f465fbe1494dcc4bdab1fb8e635f6216989fb1148ba')
 
@@ -18,8 +18,7 @@ package() {
   cd "$srcdir"
   local _gemdir="$(ruby -rrubygems -e'puts Gem.default_dir')"
 
-  gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" \
-    "$_gemname-$pkgver.gem"
+  gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" "$_gemname-$pkgver.gem"
 }
 
 # vim:set ts=2 sw=2 et:

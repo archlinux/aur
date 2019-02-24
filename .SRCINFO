@@ -1,14 +1,14 @@
 pkgbase = ruby-erubis
 	pkgdesc = A fast, secure, and very extensible implementation of eRuby.
 	pkgver = 2.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.kuwata-lab.com/erubis/
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
 	depends = ruby
 	noextract = erubis-2.7.0.gem
-	source = http://gems.rubyforge.org/gems/erubis-2.7.0.gem
+	source = https://rubygems.org/downloads/erubis-2.7.0.gem
 	sha256sums = 63653f5174a7997f6f1d6f465fbe1494dcc4bdab1fb8e635f6216989fb1148ba
 
 pkgname = ruby-erubis
