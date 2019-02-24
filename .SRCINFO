@@ -1,7 +1,7 @@
 pkgbase = funcd-git
 	pkgdesc = Daemon for functional keys (works without X11)
 	pkgver = r22.ae55f2a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/malyutinegor/funcd
 	arch = x86_64
 	arch = i686
