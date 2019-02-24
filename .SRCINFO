@@ -1,5 +1,5 @@
 pkgbase = linux-gc
-	pkgver = 4.20.6
+	pkgver = 4.20.12
 	pkgrel = 1
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
@@ -13,24 +13,24 @@ pkgbase = linux-gc
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = linux-4.20.6-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-4.20.6-arch1.tar.gz
+	source = linux-4.20.12-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-4.20.12-arch1.tar.gz
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
 	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
-	source = v4.20_pds099l.patch::https://gitlab.com/alfredchen/PDS-mq/raw/master/4.20/v4.20_pds099l.patch
+	source = v4.20_pds099m.patch::https://gitlab.com/alfredchen/PDS-mq/raw/master/4.20/v4.20_pds099m.patch
 	source = uksm-4.20.patch::https://raw.githubusercontent.com/dolohow/uksm/master/v4.x/uksm-4.20.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
-	sha256sums = 7a747ab1b17766cf629385f4e5a86af6a2a242571b2a0de1eb3b914bb9e08240
+	sha256sums = f4a9e3b9cc549f14d823465782008a174c0afc21579b1660aa25fdbb9dca98fb
 	sha256sums = 1fcff3bbc1beadcfb03a26bc8447b28615c391e824215bef1f2b64231bc9266b
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
-	sha256sums = ebed7ad91b3bcc5f9807b97addaef7dbbcf40cca1ab8d325257af47096505a6f
+	sha256sums = 2fc5f7e8551e5a8f53673d7a372cedc15c9d884e9e29b6f338d3d2f25924d485
 	sha256sums = 2da4d705fe5be8ac9b5af68c48ddb5b925f2f756cb84c4c66ad05279676503a1
 
 pkgname = linux-gc
@@ -41,12 +41,12 @@ pkgname = linux-gc
 	depends = kmod
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-gc=4.20.6
+	provides = linux-gc=4.20.12
 	backup = etc/mkinitcpio.d/linux-gc.preset
 
 pkgname = linux-gc-headers
 	pkgdesc = Header files and scripts for building modules for Linux-gc kernel and UKSM patchset
 	depends = linux-gc
-	provides = linux-gc-headers=4.20.6
-	provides = linux-headers=4.20.6
+	provides = linux-gc-headers=4.20.12
+	provides = linux-headers=4.20.12
 
