@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-coin-or-vol
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="COIN-OR Volume Algorithm (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('mingw-w64-coin-or-osi')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.coin-or.org/download/source/Vol/Vol-${pkgver}.tgz")
-sha256sums=('8b015a01ec44957a30d920e91853984570438ec533d89085f02091a3c6286314')
+sha256sums=('dbcd822cb42c596990444c9db8b65e77ec71f98c8550e1212f9e8c1a7cba6930')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
