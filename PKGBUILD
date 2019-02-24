@@ -3,12 +3,12 @@
 _pkgname=eta
 pkgname=${_pkgname}-git
 pkgver=r14.d91d294
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for monitoring ETA and progress of an arbitrary process"
 arch=("any")
 url="https://github.com/aioobe/eta"
 license=("GPL3")
-depends=("")
+depends=()
 makedepends=("git" "gcc")
 source=(
     "${_pkgname}::git+https://github.com/aioobe/eta.git"
