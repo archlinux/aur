@@ -29,6 +29,7 @@ pkgbase = linux-me176c
 pkgname = linux-me176c
 	pkgdesc = Linux kernel fork for ASUS MeMO Pad 7 (ME176C(X))
 	install = linux.install
+	groups = me176c
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod

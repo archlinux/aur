@@ -64,6 +64,7 @@ build() {
 _package() {
   pkgdesc="Linux kernel fork for ASUS MeMO Pad 7 (ME176C(X))"
   [[ $pkgbase = linux ]] && groups=(base)
+  groups=(me176c)
   depends=(coreutils linux-firmware kmod mkinitcpio)
   optdepends=('crda: to set the correct wireless channels of your country'
     'me176c-acpi: for full functionality (touchscreen, battery/charging, ...)'
