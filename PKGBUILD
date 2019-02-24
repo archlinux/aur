@@ -23,7 +23,7 @@
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
-pkgver=18.2rc1pre6
+pkgver=18.2rc1pre19
 _major=18.1
 pkgrel=1
 _codename=Leia
@@ -70,27 +70,27 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/crossguid-$_crossguid_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
-  'cpuinfo'
-  '00-fix.building.with.mariadb.patch::https://github.com/wsnipex/xbmc/commit/cd20c8eb8a0394db1f028b118c4ca9b91b7e746a.patch'
-  # closed milestone patches go here | https://github.com/xbmc/xbmc/milestones
-  # https://github.com/xbmc/xbmc/issues?q=is%3Aclosed+milestone%3A%22Leia+18.2-rc1%22+sort%3Aupdated-desc
-  '01-PR15483.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15483.patch'
-  '02-PR15521.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15521.patch'
-  '03-PR15535.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15535.patch'
-  '04-PR15434.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15434.patch'
-  '05-PR15479.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15479.patch'
-  '06-PR15489.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15489.patch'
-  '07-PR15480.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15480.patch'
-  '08-PR15556.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15556.patch'
-  '09-PR15516.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15516.patch'
-  '10-PR15553.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15553.patch'
-  '11-PR15499.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15499.patch'
-  '12-PR15195.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15195.patch'
-  '13-PR15543.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15543.patch'
-  '14-PR15557.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15557.patch'
-  '15-PR15574.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15574.patch'
-  '16-PR15477.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15477.patch'
-  '17-PR15586.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15586.patch'
+  cpuinfo
+  00-fix.building.with.mariadb.patch::https://github.com/wsnipex/xbmc/commit/cd20c8eb8a0394db1f028b118c4ca9b91b7e746a.patch
+  01-PR15483.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15483.patch
+  02-PR15521.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15521.patch
+  03-PR15535.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15535.patch
+  04-PR15434.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15434.patch
+  05-PR15479.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15479.patch
+  06-PR15489.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15489.patch
+  07-PR15480.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15480.patch
+  08-PR15556.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15556.patch
+  09-PR15516.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15516.patch
+  10-PR15553.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15553.patch
+  11-PR15499.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15499.patch
+  12-PR15195.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15195.patch
+  13-PR15543.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15543.patch
+  14-PR15557.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15557.patch
+  15-PR15574.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15574.patch
+  16-PR15477.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15477.patch
+  17-PR15586.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15586.patch
+  18-PR15580.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15580.patch
+  19-PR15595.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15595.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -129,7 +129,9 @@ sha256sums=('bc1ef0e271d0b6ce2e1be7546ad4f7d330930d7631cc19a9bbc5f75ddc586166'
             '363dd4e1b62e4259d91b1a71211b3ff30ab981485adaaf4145e826a5a162ec64'
             '2f1805b3d4bfba0779d3ec51277ab8ba1983be1c354645a32c4b6ea4dc384a8e'
             '3b598d34ad5f9806349835f57d86324dab10cdd151443ed6391605cbcdda950e'
-            'a4b3cc936b198b8b8cf77559604193e4f71a9c6d6c40e121bdc62209c16d4f9b')
+            'a4b3cc936b198b8b8cf77559604193e4f71a9c6d6c40e121bdc62209c16d4f9b'
+            '7d3e63968eb5a8054a3f170e17fec1a18b91c1b76d88298f404c41244c2234da'
+            '7f34ee5bf18a5fcc43ed729976a6d858f2c719373d4ad5ad621eae185686196a')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
