@@ -1,8 +1,8 @@
 # Maintainer: basigur
 
 pkgname=mcos-mjv-nordic-theme
-pkgver=2.3~r
-pkgrel=2
+pkgver=2.3~r8.b217a0c
+pkgrel=1
 pkgdesc="It's GTK2,GTK3,XFCE4 Theme Mac OS Nordic"
 arch=('any')
 url="https://github.com/basigur/mcos-mjv-nordic-theme"
