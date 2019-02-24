@@ -9,20 +9,19 @@
 # Do the same with audacious-plugins-git. Then run Audacious by "audacious --qt".
 
 pkgname=audacious-git
-pkgver=2015.10.10
+pkgver=2019.02.24
 pkgrel=1
 pkgdesc="Lightweight, advanced audio player focused on audio quality"
 arch=('i686' 'x86_64')
-url="http://audacious-media-player.org/"
+url="https://audacious-media-player.org/"
 license=('BSD')
-depends=('gtk2' 'libsm' 'gnome-icon-theme' 'desktop-file-utils')
-       # 'qt5-base' 'libxkbcommon-x11')
+depends=('gtk2' 'libsm' 'gnome-icon-theme' 'desktop-file-utils') # 'qt5-base')
 makedepends=('python2' 'git') # for gdbus-codegen
 optdepends=('unzip: zipped skins support')
 provides=('audacious')
 conflicts=('audacious')
 install=$pkgname.install
-source=('git://github.com/audacious-media-player/audacious.git') # #branch=gtk3')
+source=('git://github.com/audacious-media-player/audacious.git')
 sha256sums=('SKIP')
 
 pkgver() {
