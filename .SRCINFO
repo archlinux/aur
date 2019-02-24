@@ -1,0 +1,20 @@
+pkgbase = telepathy-brain-im-git
+	pkgdesc = Telepathy IM client
+	pkgver = r13.bc31484
+	pkgrel = 1
+	url = https://telepathy.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = telepathy-qt
+	provides = telepathy-brain-im
+	conflicts = telepathy-brain-im
+	source = git+https://github.com/TelepathyIM/brain-im
+	md5sums = SKIP
+
+pkgname = telepathy-brain-im-git
+
