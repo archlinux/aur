@@ -6,7 +6,7 @@ pkgbase = python-browsercookie
 	arch = any
 	license = LGPL
 	makedepends = python-setuptools
-	depends = python-pycrypto
+	depends = python-pycryptodome
 	depends = python-keyring
 	depends = python-lz4
 	provides = python-browsercookie=0.7.5
@@ -14,7 +14,7 @@ pkgbase = python-browsercookie
 	sha256sums = 25bebd5ae2143b510c0c466fb29bc40d3604f35132061684b17ee43f7c46754f
 
 pkgname = python-browsercookie
-	depends = python-pycrypto
+	depends = python-pycryptodome
 	depends = python-keyring
 	depends = python-lz4
 
