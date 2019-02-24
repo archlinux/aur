@@ -4,11 +4,9 @@ pkgbase = eta-git
 	pkgrel = 1
 	url = https://github.com/aioobe/eta
 	arch = any
-	license = MIT
+	license = GPL3
 	makedepends = git
-	depends = fish>=2.3.0
-	depends = curl
-	depends = git
+	makedepends = gcc
 	source = eta::git+https://github.com/aioobe/eta.git
 	sha512sums = SKIP
 

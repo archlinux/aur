@@ -7,9 +7,9 @@ pkgrel=1
 pkgdesc="Tool for monitoring ETA and progress of an arbitrary process"
 arch=("any")
 url="https://github.com/aioobe/eta"
-license=("MIT")
-depends=("fish>=2.3.0" "curl" "git")
-makedepends=("git")
+license=("GPL3")
+depends=("")
+makedepends=("git" "gcc")
 source=(
     "${_pkgname}::git+https://github.com/aioobe/eta.git"
 )
