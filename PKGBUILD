@@ -3,7 +3,7 @@
 _pkgname=stdx-allocator
 pkgname=d-$_pkgname
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Extracted std.experimental.allocator'
 arch=('x86_64')
 url='https://github.com/dlang-community/stdx-allocator'
