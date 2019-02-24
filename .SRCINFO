@@ -1,6 +1,6 @@
 pkgbase = aircrack-ng-git
 	pkgdesc = WiFi security auditing tools suite
-	pkgver = 20190211.8562674a
+	pkgver = 20190223.8d5bd358
 	pkgrel = 1
 	url = https://aircrack-ng.org
 	arch = i686
@@ -17,6 +17,9 @@ pkgbase = aircrack-ng-git
 	depends = hwloc
 	depends = pcre
 	depends = libpcap
+	depends = iw
+	depends = net-tools
+	depends = ethtool
 	optdepends = python: dump-join, airgraph-ng, versuck-ng, airdrop-ng
 	provides = aircrack-ng
 	provides = aircrack-ng-scripts

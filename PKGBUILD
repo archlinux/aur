@@ -7,14 +7,14 @@
 # Contributor: codyps <archlinux@codyps.com>
 
 pkgname=aircrack-ng-git
-pkgver=20190211.8562674a
+pkgver=20190223.8d5bd358
 pkgrel=1
 pkgdesc="WiFi security auditing tools suite"
 url="https://aircrack-ng.org"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL2')
 makedepends=('git' 'python')
-depends=('gcc-libs' 'libnl' 'openssl' 'sqlite' 'hwloc' 'pcre' 'libpcap')
+depends=('gcc-libs' 'libnl' 'openssl' 'sqlite' 'hwloc' 'pcre' 'libpcap' 'iw' 'net-tools' 'ethtool')
 optdepends=('python: dump-join, airgraph-ng, versuck-ng, airdrop-ng')
 provides=("${pkgname%-git}" 'aircrack-ng-scripts')
 conflicts=("${pkgname%-git}" 'aircrack-ng-scripts')
@@ -36,6 +36,11 @@ build() {
   cd "${pkgname%-git}"
   ./configure --with-experimental --with-ext-scripts --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var
   make
+}
+
+check() {
+  cd "${pkgname%-git}"
+  make check
 }
 
 package() {
