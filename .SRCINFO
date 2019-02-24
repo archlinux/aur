@@ -1,7 +1,7 @@
 pkgbase = tesseract-game
 	pkgdesc = Smooth FPS with map editing, instagib, DM and CTF
 	pkgver = 1
-	pkgrel = 8
+	pkgrel = 9
 	url = http://tesseract.gg/
 	arch = x86_64
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = tesseract-game
 	depends = sdl2_mixer
 	depends = libpng
 	depends = zlib
-	source = tesseract::svn://svn.tuxfamily.org/svnroot/tesseract/main#revision=2184
+	source = tesseract::svn://svn.tuxfamily.org/svnroot/tesseract/main#revision=2187
 	source = tesseract.sh
 	sha256sums = SKIP
 	sha256sums = 34a03fb87b3f3e1f16d1744d42f566a36e67cbdeaee1876281857b341002566b
