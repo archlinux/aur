@@ -1,7 +1,7 @@
 pkgbase = qimgv-git
 	pkgdesc = Simple image viewer written in qt. Supports webm playback.
-	pkgver = v0.7.3.r1.g18d7cbb
-	pkgrel = 2
+	pkgver = v0.7.3.r2.g7e7af06
+	pkgrel = 1
 	url = https://github.com/easymodo/qimgv
 	arch = i686
 	arch = x86_64
