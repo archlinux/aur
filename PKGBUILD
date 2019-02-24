@@ -52,7 +52,7 @@ package() {
     mv opt/i2p/licenses/*                      "usr/share/licenses/i2p/"
 
     ln -s /opt/i2p/{eepget,i2prouter} "usr/bin/"
-    chmod +x "$pkgdir"/opt/i2p/{eepget,i2prouter}
+    chmod +x opt/i2p/{eepget,i2prouter}
 
     chmod  -x opt/i2p/*.config
     chmod 755 opt/i2p
