@@ -11,7 +11,7 @@ license=('LGPL2.1')
 depends=(
   'v8-3.14'
   'libevent'
-  'sqlite3'
+  'sqlite'
   're2'
   'libyaml'
   'zlib'
