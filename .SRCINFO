@@ -1,6 +1,6 @@
 pkgbase = qt5-matrixclient-git
 	pkgdesc = A Qt5 library to write cross-platfrom clients for Matrix.
-	pkgver = r1286.02872ea
+	pkgver = r1288.293b547
 	pkgrel = 1
 	url = https://matrix.org/docs/projects/sdk/libqmatrixclient.html
 	arch = i686
@@ -10,7 +10,6 @@ pkgbase = qt5-matrixclient-git
 	license = LGPLv2.1
 	makedepends = cmake
 	makedepends = git
-	makedepends = sed
 	depends = qt5-base
 	provides = libqmatrixclient
 	conflicts = libqmatrixclient

@@ -2,14 +2,14 @@
 
 _gitname=libqmatrixclient
 pkgname=qt5-matrixclient-git
-pkgver=r1286.02872ea
+pkgver=r1288.293b547
 pkgrel=1
 pkgdesc="A Qt5 library to write cross-platfrom clients for Matrix."
 arch=(i686 x86_64 armv7 aarch64)
 url="https://matrix.org/docs/projects/sdk/libqmatrixclient.html"
 license=(LGPLv2.1)
 depends=(qt5-base)
-makedepends=(cmake git sed)
+makedepends=(cmake git)
 provides=(libqmatrixclient)
 conflicts=(libqmatrixclient)
 source=("git+https://github.com/QMatrixClient/$_gitname")
@@ -26,12 +26,12 @@ prepare() {
 
 build() {
   cd build
-  sed -i 's/add_library(QMatrixClient \$/add_library(QMatrixClient SHARED \$/g' ../$_gitname/CMakeLists.txt
   cmake "../$_gitname" \
     -DCMAKE_INSTALL_INCLUDEDIR=include/$_gitname \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=ON
   make
 }
 
