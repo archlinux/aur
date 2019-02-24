@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-coin-or-coinutils
-pkgver=2.10.14
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="COIN-OR collection of utility classes (mingw-w64)"
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=(mingw-w64-configure)
 options=('!buildflags' '!strip' 'staticlibs')
 groups=(coin-or)
 source=("https://www.coin-or.org/download/source/CoinUtils/CoinUtils-$pkgver.tgz")
-sha256sums=('85a99b70b0271c0409c2b10299529ffa1623b176ee0ba1567c46d7fc17371628')
+sha256sums=('621505d5e71ebb01f4f0568479ab1bd90e552caf890b68c479f26e89f4be5d9a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -32,5 +32,7 @@ package() {
     PKG_CONFIG_PATH_CUSTOM="$pkgdir"/usr/${_arch}/lib/pkgconfig/ \
     make DESTDIR="$pkgdir" install
     rm -r "$pkgdir"/usr/${_arch}/share
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
   done
 }

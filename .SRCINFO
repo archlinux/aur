@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-coin-or-coinutils
 	pkgdesc = COIN-OR collection of utility classes (mingw-w64)
-	pkgver = 2.10.14
+	pkgver = 2.11.0
 	pkgrel = 1
 	url = https://projects.coin-or.org/CoinUtils
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = mingw-w64-coin-or-coinutils
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://www.coin-or.org/download/source/CoinUtils/CoinUtils-2.10.14.tgz
-	sha256sums = 85a99b70b0271c0409c2b10299529ffa1623b176ee0ba1567c46d7fc17371628
+	source = https://www.coin-or.org/download/source/CoinUtils/CoinUtils-2.11.0.tgz
+	sha256sums = 621505d5e71ebb01f4f0568479ab1bd90e552caf890b68c479f26e89f4be5d9a
 
 pkgname = mingw-w64-coin-or-coinutils
 
