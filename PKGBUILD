@@ -8,7 +8,7 @@ url="https://github.com/maateen/battery-monitor"
 license=('GPL3')
 depends=('acpi' 'python' 'python-gobject' 'libnotify' 'libappindicator-gtk3')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/maateen/battery-monitor/archive/v$pkgver.tar.gz")
-md5sums=('69169d19f98c71c6e76919651133f729')
+sha256sums=('e086efa3d9bdfc521a57510c637c6bf772587b04b60119485d880864a3918b1f')
 
 package() {
 	cd "$pkgname-$pkgver"
