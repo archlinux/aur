@@ -41,17 +41,18 @@ package() {
     cd "$pkgdir"
 
     install -dm755 "usr/bin"
-    install -dm750 "opt/i2p"
+    install -dm755 "opt/i2p"
 
     install -Dm644 "$srcdir/router.config"     "opt/i2p/router.config"
     install -Dm644 "$srcdir/wrapper.config"    "opt/i2p/wrapper.config"
-    install -Dm755 "$srcdir/i2prouter.sh"      "opt/i2p/i2prouter"
+    install -Dm644 "$srcdir/i2prouter.sh"      "opt/i2p/i2prouter"
     install -Dm644 "$srcdir/i2prouter.service" "usr/lib/systemd/system/i2prouter.service"
     install -Dm644 "opt/i2p/man/eepget.1"      "usr/share/man/man1/eepget.1"
     install -Dm644 "opt/i2p/LICENSE.txt"       "usr/share/licenses/i2p/LICENSE"
     mv opt/i2p/licenses/*                      "usr/share/licenses/i2p/"
 
     ln -s /opt/i2p/{eepget,i2prouter} "usr/bin/"
+    chmod +x "$pkgdir"/opt/i2p/{eepget,i2prouter}
 
     chmod  -x opt/i2p/*.config
     chmod 755 opt/i2p

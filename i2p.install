@@ -3,13 +3,13 @@ post_install() {
   echo "==> I2P Router settings can be adjusted at"
   echo "==> http://127.0.0.1:7657/config.jsp"
   echo "==> "
-  post_upgrade
 }
+
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
     if (( $(vercmp $2 0.9.39) < 0 )); then
-    [[ $(id -g i2p) != '985' ]] && {
+    [[ $(id -g i2p) = '985' ]] || {
         echo -n ">>> Updating i2p user..."
         groupmod --gid 985 i2p
         usermod  --uid 985 -s /bin/sh i2p
