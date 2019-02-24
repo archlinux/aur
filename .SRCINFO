@@ -8,7 +8,7 @@ pkgbase = caja-mediainfo-tab
 	depends = python2-mediainfodll
 	depends = python2-caja
 	source = caja-mediainfo-tab-0.2.tar.gz::https://github.com/linux-man/caja-mediainfo-tab/archive/v0.2.tar.gz
-	md5sums = 974d6325685c626b82b2e2768bedc37a
+	sha256sums = 2f583ac80988040bfb6c843fbc0af5fd9237a145c36d0db5b076eaa6af2dc5c8
 
 pkgname = caja-mediainfo-tab
 
