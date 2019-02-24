@@ -1,6 +1,6 @@
 pkgbase = sigil-git
 	pkgdesc = A WYSIWYG ebook editor
-	pkgver = 0.9.12.r1.g01362557
+	pkgver = 0.9.12.r5.g61d2703a
 	pkgrel = 1
 	url = https://github.com/Sigil-Ebook/Sigil
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = sigil-git
 	makedepends = cmake
 	depends = hunspell
 	depends = minizip
+	depends = mathjax
 	depends = python-css-parser
 	depends = python-lxml
 	depends = python-six
