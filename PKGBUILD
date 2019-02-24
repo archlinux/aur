@@ -407,9 +407,9 @@ prepare() {
       -e 's|root_out_dir/chrome"|root_out_dir/chromium-dev"|g' \
       -i chrome/BUILD.gn
   sed -e 's|"chromium-browser"|"chromium-dev"|g' \
+      -e 's|Chromium|Chromium-dev|g' \
       -i media/audio/pulse/pulse_util.cc
   sed -e 's|chromium-browser|chromium-dev|g' \
-      -e 's|Chromium|Chromium-dev|g' \
       -i chrome/browser/shell_integration_linux.cc \
       -i chrome/browser/ui/libgtkui/gtk_util.cc
   sed -e 's|config_dir.Append("chromium|&-dev|' \
