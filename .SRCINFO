@@ -1,20 +1,20 @@
 pkgbase = ssr-osc-git
 	pkgdesc = A tool for real-time spatial audio reproduction (with OSC interface)
-	pkgver = 0.4.2.r489.g2c9ec30
+	pkgver = 0.4.2.r498.g31dd677
 	pkgrel = 1
 	url = https://github.com/dvzrv/ssr
 	arch = x86_64
 	license = GPL3
+	makedepends = asio
 	makedepends = gendesk
 	makedepends = git
 	makedepends = help2man
 	makedepends = qt5-tools
-	depends = asio
 	depends = ecasound
 	depends = fftw
 	depends = glu
 	depends = qt5-base
-	provides = ssr
+	provides = ssr=0.4.2.r498.g31dd677
 	conflicts = ssr
 	source = git+https://github.com/dvzrv/ssr#branch=networking-with-osc
 	sha512sums = SKIP
