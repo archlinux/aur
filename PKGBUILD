@@ -1,14 +1,14 @@
 # Maintainer: Matthias Lisin <ml@visu.li>
 # Contributor: sum01 <sum01@protonmail.com>
 pkgname=rocketchat-desktop
-pkgver=2.14.7
+pkgver=2.15.0
 _srcname="Rocket.Chat.Electron-$pkgver"
-pkgrel=2
+pkgrel=1
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
 arch=('i686' 'x86_64')
 url="https://github.com/RocketChat/Rocket.Chat.Electron"
 license=('MIT')
-depends=('electron2')
+depends=('electron')
 makedepends=('nodejs' 'node-gyp' 'python2' 'yarn')
 optdepends=('hunspell-en_US: spell checking')
 conflicts=('rocketchat-client-bin')
@@ -17,14 +17,12 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/RocketChat/Rocket.Chat.Elec
         fix-linux-target.patch
         fix-gulp-release.patch
         fix-dictionaries.patch
-        fix-notification-timeout.patch
         rocketchat-desktop.desktop)
-sha512sums=('383fd17ce50fd7aaba6e48627343ed4e3b570485c378507a364989758cd88c5db1c0e3ad3a1a409d1c6478370d211fb27bb142c053685601f24d31e5d5b0c2e8'
-            '2b39f5728c7d7aff2f59a568c1e3c63816c72d1055743e7bb233aafe6370524e835d58995097480deaed864ac22aea54b5c450689eb18bee0bed0bc733810792'
+sha512sums=('91e342d7a50108894cc7fab6c362eaed32ee6bf47e5930622a319679e6904cdd84d86117f8799a0582b6ee4dd89e34133c988e1bd835c423d36f7afa94fe464e'
+            '1f0f7197012421ff42d2936f73e697e35eef8c57fb9fed59ee022f9d170d6496407f89e426526fba8451fe304b3a8de1724d1cd14bd85d781bbf6aa9ca078d7d'
             '31e0b1d7d9a5fefa4ad4d186df2b3eb8849d7dee9dd3fa14fff6741006ef31191575a23ba62a86f53cf9fc692d138db6a380e2ad860077bc3d854c5a9083b716'
-            '796a2a56a1facc2519d65955bb39d78733c13b5993c4b03cd2af11b83aa9c6132c0fbf9e7160146c6c87bc91cb04c4e66932fe891449d031c787284b5ce9d72a'
-            'ed0bc8884ea3c7ca50ae8f6aef415aecfac89f958939c1ccb6c86480a7210ead0df2fe0548e465fc1dd559436bae9db779d408e8a754e986cc8a976cd6590878'
-            '3d7c614b88cfb7ecbbcafa729e1d41357747ae8d9e39e6eeef9a118be82b0839875f117dbef91c3a2e64c6a276a2bf82678872d8fd3b76a2952b665cd4b1a147'
+            'f8b32ae188366a1cfb7bdb7b1859f545dbf583a7ab3b2d793500688c85aae27b3df1ec926dd91795e47669535fa68ed762fdf0600384304ced16f6370dc0a67c'
+            '60bd46cc0a708f83462f076b09e6afa9eb1caabcaf54f171d224e7059871dc960dbe6be8246a4b7eec889af7230a3534c3ba78e0b1be2b0705f00eb36550452b'
             'd87664b9bdf30eac3011393d094962e0d568a94b5eaf4c8e5f17529442dcba905cea7341527066102a97a07a981acd6ce045b8737eb78a7d81a2a2d05023fe26')
 if [[ $CARCH == "i686" ]]; then
     _releasename="release:linux-ia32"
@@ -42,7 +40,8 @@ prepare() {
 
 build() {
     cd "$_srcname"
-    yarn install --non-interactive --pure-lockfile --cache-folder "$srcdir/yarn-cache"
+    #yarn install --non-interactive --pure-lockfile --cache-folder "$srcdir/yarn-cache"
+    yarn upgrade electron@^3.1.4 --non-interactive --cache-folder "$srcdir/yarn-cache"
     yarn build --env=production "$_releasename"
 }
 

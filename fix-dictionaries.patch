@@ -1,20 +1,12 @@
-diff -ura package.orig/src/public/lib/SpellCheck.js package.new/src/public/lib/SpellCheck.js
---- package.orig/src/public/lib/SpellCheck.js	2018-12-31 23:10:21.364014246 +0100
-+++ package.new/src/public/lib/SpellCheck.js	2018-12-31 23:21:27.153584606 +0100
-@@ -156,12 +156,10 @@
- 		if (this.availableDictionaries.length === 0) {
- 			this.multiLanguage = false;
- 			// Dictionaries path is correct for build
--			this.dictionariesPath = path.join(
--				app.getAppPath(),
--				app.getAppPath().endsWith('app.asar') ? '..' : '.',
--				'dictionaries'
--			);
--			this.getDictionariesFromInstallDirectory();
-+			if (fs.existsSync('/usr/share/hunspell')) {
-+				this.dictionariesPath = '/usr/share/hunspell';
-+				this.getDictionariesFromInstallDirectory();
-+			}
- 		} else {
- 			this.multiLanguage = process.platform !== 'win32';
- 			this.availableDictionaries = this.availableDictionaries.map((dict) => dict.replace('-', '_'));
+diff -ura package.orig/src/preload/spellchecking.js package.new/src/preload/spellchecking.js
+--- package.orig/src/preload/spellchecking.js	2019-02-24 19:52:13.168606313 +0100
++++ package.new/src/preload/spellchecking.js	2019-02-24 19:52:55.662351780 +0100
+@@ -21,7 +21,7 @@
+ 	async loadDictionaries() {
+ 		const embeddedDictionaries = spellchecker.getAvailableDictionaries();
+ 
+-		const directory = jetpack.cwd(app.getAppPath(), app.getAppPath().endsWith('app.asar') ? '..' : '.', 'dictionaries');
++		const directory = jetpack.cwd('/usr/share/hunspell');
+ 		const installedDictionaries = (await directory.findAsync({ matching: '*.{aff,dic}' }))
+ 			.map((fileName) => path.basename(fileName, path.extname(fileName)));
+ 
