@@ -2,7 +2,7 @@
 
 pkgname=arcanist
 pkgver=2018.51
-_commit=97ddb9d5a1be282d6002a875a759266bb97b653f
+_commit=b4a302683b1aefbbb2ab9d1aaaf418b551b84b28
 pkgrel=1
 pkgdesc='The command line interface for Phabricator'
 arch=('any')
