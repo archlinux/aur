@@ -11,7 +11,7 @@ license=('MIT')
 depends=()
 makedepends=('git' 'clang')
 provides=('janet')
-conflicts=('janet-lang')
+conflicts=('janet-lang-git')
 source=("https://github.com/janet-lang/janet/archive/${pkgver}.tar.gz"
         "0001-fix-man-path.patch")
 sha256sums=('9e9cedcf4ab354929c6e4244a962784a51906107cd3ad762106661e1975fbe00'
