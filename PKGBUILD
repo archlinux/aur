@@ -9,14 +9,15 @@ license=('unknown')
 makedepends=(acpica)
 options=('!strip')
 _revision=9c25272d67965b7bbc03283e333822f02a8f9a9a
-source=("git+https://github.com/me176c-dev/me176c-acpi.git#commit=$_revision")
-sha256sums=('SKIP')
+source=("$url/archive/$_revision.tar.gz")
+sha256sums=('27472e956aef89c0fdd9b1edfb79e6eb1ab28b76bcc13d86a2ea6aa7dd83a5ae')
 
 build() {
-    iasl "$pkgname"/dsdt.dsl
+    local dir="$pkgname-$_revision"
+    iasl "$dir"/dsdt.dsl
 
     mkdir -p kernel/firmware/acpi
-    cp "$pkgname"/dsdt.aml kernel/firmware/acpi/dsdt.aml
+    cp "$dir"/dsdt.aml kernel/firmware/acpi/dsdt.aml
     echo kernel/firmware/acpi/dsdt.aml | bsdcpio -o -H newc -R 0:0 -O acpi.img
 }
 
