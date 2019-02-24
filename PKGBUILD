@@ -2,7 +2,7 @@
 pkgname=ludo
 pkgver=0.4.2
 pkgrel=1
-pkgdesc="Ludo is a work in progress libretro frontend written in go."
+pkgdesc="Ludo is a minimalist frontend for emulators"
 arch=('x86_64' 'armv7h')
 url="https://github.com/libretro/ludo"
 license=('GPL3')
