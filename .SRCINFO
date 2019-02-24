@@ -10,7 +10,7 @@ pkgbase = nvidia-xrun-git
 	depends = xorg-xinit
 	depends = xorg-xrandr
 	depends = nvidia
-	depends = mesa-libgl
+	depends = mesa
 	provides = nvidia-xrun=0.3.40.gb8bd592
 	provides = nvidia-xrun-git=0.3.40.gb8bd592
 	conflicts = nvidia-xrun
