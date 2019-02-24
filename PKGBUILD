@@ -27,7 +27,7 @@ makedepends=('python-pbr'
              'python-timezonefinder'
              'python-requests-cache')
 source=("https://github.com/pozar87/apts/archive/v$pkgver.tar.gz")
-md5sums=('9625dac2533c47a3446e41b1e75be079')
+md5sums=('c01f11396bd43a3c15c0cce68c4cd51d')
 
 build() {
     cd "$_name-$pkgver"
