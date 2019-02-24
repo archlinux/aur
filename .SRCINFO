@@ -1,13 +1,13 @@
 pkgbase = ccrypt
 	pkgdesc = A command-line utility for encrypting and decrypting files and streams
-	pkgver = 1.10
-	pkgrel = 2
+	pkgver = 1.11
+	pkgrel = 1
 	url = http://ccrypt.sourceforge.net
 	arch = x86_64
 	license = GPL2
 	depends = glibc
-	source = http://downloads.sourceforge.net/ccrypt/ccrypt-1.10.tar.gz
-	sha1sums = 95d4e524abb146946fe6af9d53ed0e5e294b34e2
+	source = http://downloads.sourceforge.net/ccrypt/ccrypt-1.11.tar.gz
+	sha1sums = 6d20a4db9ef7caeea6ce432f3cffadf10172e420
 
 pkgname = ccrypt
 

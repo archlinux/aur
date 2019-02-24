@@ -1,30 +1,28 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
+# Maintainer: Pierre Neidhardt <ambrevar@gmail.com>
+# Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
-# Maintainer: Thorsten Töpper <atsutane-tu@freethoughts.de>
 
 pkgname=ccrypt
-pkgver=1.10
-pkgrel=2
+pkgver=1.11
+pkgrel=1
 pkgdesc='A command-line utility for encrypting and decrypting files and streams'
 arch=('x86_64')
 url="http://ccrypt.sourceforge.net"
 license=('GPL2')
 depends=('glibc')
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('95d4e524abb146946fe6af9d53ed0e5e294b34e2')
+source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
+sha1sums=('6d20a4db9ef7caeea6ce432f3cffadf10172e420')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	./configure --prefix=/usr --mandir=/usr/share/man
-	make
+  cd $pkgname-$pkgver
+  ./configure --prefix=/usr --mandir=/usr/share/man
+  make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+  cd $pkgname-$pkgver
 
-	make DESTDIR="${pkgdir}/" install
+  make DESTDIR="$pkgdir" install
 }
-
-# vim:set ts=2 sw=2 et:
