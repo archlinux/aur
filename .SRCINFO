@@ -1,7 +1,7 @@
 pkgbase = bossa-git
 	pkgdesc = Flash programming utility for Atmel's SAM family of flash-based ARM microcontrollers
 	pkgver = 1.9.1.r2.g3279031
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shumatech/BOSSA
 	arch = i686
 	arch = x86_64
