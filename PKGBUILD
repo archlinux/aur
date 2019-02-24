@@ -5,7 +5,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer-git
-pkgver=2019.216.0_30_g805805020
+pkgver=2019.216.0_167_g89a05c086
 pkgrel=1
 pkgdesc='Freeware rhythm video game - lazer development version'
 arch=('x86_64')
@@ -15,6 +15,7 @@ makedepends=('mono'
              'git')
 depends=('dotnet-sdk'
          'ffmpeg'
+         'libbass'
          'libgl'
          'shared-mime-info')
 optdepends=()
@@ -22,7 +23,7 @@ options=()
 provides=('osu-lazer')
 conflicts=('osu-lazer')
 source=('git+https://github.com/ppy/osu.git'
-        'git+https://github.com/ppy/osu-resources'
+        'git+https://github.com/ppy/osu-resources.git'
         'osu-launcher'
         'osu-lazer.desktop'
         'osu-lazer.png'
@@ -83,9 +84,10 @@ package() {
 	# Copy license file
 	mkdir -p "$pkgdir/usr/share/licenses/${pkgname%-git}"
 	install -m644 "$srcdir/osu/LICENCE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
+	ln -s LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENCE"
 
 	# Copy binaries
-	cd "$srcdir/osu/osu.Desktop/bin/Release/netcoreapp2.1"
+	cd "$srcdir/osu/osu.Desktop/bin/Release/netcoreapp2.2"
 	mkdir -p "$pkgdir/usr/lib/${pkgname%-git}"
 	for file in *.dll *.json *.pdb *.so; do
 		install -m755 "$file" "$pkgdir/usr/lib/${pkgname%-git}/$file"
