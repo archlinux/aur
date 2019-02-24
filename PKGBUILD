@@ -1,4 +1,4 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Dominik Kummer <admin@arkades.org>
 
 pkgname=konqueror-git
 pkgver=r14067.4ab571e
