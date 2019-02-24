@@ -1,18 +1,18 @@
 pkgbase = audacious-plugins-git
 	pkgdesc = Plugins for Audacious
-	pkgver = 2015.10.10
+	pkgver = 2019.02.24
 	pkgrel = 1
-	url = http://audacious-media-player.org/
+	url = https://audacious-media-player.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	license = GPL
-	makedepends = audacious-git>=2015.10.10
+	makedepends = audacious-git>=2019.02.24
 	makedepends = glib2
 	makedepends = python2
 	makedepends = alsa-lib
 	makedepends = pulseaudio
-	makedepends = jack2
+	makedepends = jack
 	makedepends = lame
 	makedepends = libvorbis
 	makedepends = flac

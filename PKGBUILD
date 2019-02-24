@@ -6,18 +6,18 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=audacious-plugins-git
-pkgver=2015.10.10
+pkgver=2019.02.24
 pkgrel=1
 pkgdesc="Plugins for Audacious"
 arch=('i686' 'x86_64')
-url="http://audacious-media-player.org/"
+url="https://audacious-media-player.org/"
 license=('BSD' 'GPL')
 provides=('audacious-plugins')
 conflicts=('audacious-plugins')
 
 makedepends=("audacious-git>=$pkgver"
              'glib2' 'python2' # for gdbus-codegen
-             'alsa-lib' 'pulseaudio' 'jack2' 'lame' 'libvorbis' 'flac' 'mpg123'
+             'alsa-lib' 'pulseaudio' 'jack' 'lame' 'libvorbis' 'flac' 'mpg123'
              'faad2' 'ffmpeg' 'libmodplug' 'fluidsynth' 'libcdio-paranoia'
              'libsidplayfp' 'wavpack' 'dbus-glib' 'libnotify' 'lirc' 'curl'
              'libmtp' 'neon' 'libmms' 'libcue' 'git') # 'libbs2b')
@@ -49,7 +49,7 @@ optdepends=('alsa-lib: Advanced Linux Sound Arch. output'
             'libmms: libmms-based mms transport'
             'libcue: CUE playlist format')
 
-source=('git://github.com/audacious-media-player/audacious-plugins.git') # #branch=gtk3')
+source=('git://github.com/audacious-media-player/audacious-plugins.git')
 sha256sums=('SKIP')
 
 pkgver() {
