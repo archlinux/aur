@@ -25,8 +25,11 @@ sha256sums=('1626add371f8e198ea23f86d16d0c72166978456baaa61f1afec901283b92595'
 
 package() {
   mkdir -p "$pkgdir/usr/share/java" "$pkgdir/usr/bin"
-  cp -a tla2tools.jar "$pkgdir/usr/share/java"
-  cp -a {pcal,tla2sany,tla2tex,tlc} "$pkgdir/usr/bin"
+  install -m644 tla2tools.jar "$pkgdir/usr/share/java"
+  install -m755 pcal          "$pkgdir/usr/bin"
+  install -m755 tla2sany      "$pkgdir/usr/bin"
+  install -m755 tla2tex       "$pkgdir/usr/bin"
+  install -m755 tlc           "$pkgdir/usr/bin"
 }
 
 # vim:set ts=2 sw=2 et:
