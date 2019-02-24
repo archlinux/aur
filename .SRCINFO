@@ -1,14 +1,15 @@
 pkgbase = python2-django-picklefield
 	pkgdesc = A pickled object field for Django
-	pkgver = 1.0.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/gintas/django-picklefield
 	arch = any
 	license = MIT
 	makedepends = python2-setuptools
+	makedepends = git
 	depends = python2-django
-	source = django-picklefield-1.0.0.tar.gz::https://github.com/gintas/django-picklefield/archive/v1.0.0.tar.gz
-	sha256sums = e5735c69ed5013ccf22b9189e562a250b8f1ed7eaf974e7235cce1ddd595bf35
+	source = git+https://github.com/gintas/django-picklefield.git#tag=v2.0.0
+	sha256sums = SKIP
 
 pkgname = python2-django-picklefield
 
