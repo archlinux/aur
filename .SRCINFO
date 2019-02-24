@@ -7,9 +7,9 @@ pkgbase = aptik-gtk
 	arch = x86_64
 	license = GPL3
 	makedepends = vala
-	makedepends = vte3
 	depends = aptik
 	depends = gtk3
+	depends = vte3
 	source = aptik-gtk-18.8.tgz::https://github.com/teejee2008/aptik-gtk/archive/v18.8.tar.gz
 	sha256sums = 1b5a0fc547ceafdc7bbf5005fa9b43b8fdac2ecb060bf004560f75b5ea84ff70
 
