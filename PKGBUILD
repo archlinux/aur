@@ -3,7 +3,7 @@ pkgbase=python-spherical_geometry
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
 pkgver=1.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Python based tools for spherical geometry"
 arch=('i686' 'x86_64')
 url="http://www.stsci.edu/resources/software_hardware/stsci_python"
@@ -14,7 +14,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
         'fix_doc_warning.patch'
         'fix_testing.patch')
 md5sums=('6c82d0d4b6510efd4b67318125d9d9b5'
-         'a758662c8183e7769432aa1ad3691d49'
+         '4cffeb20c8e88870eae7188104308a35'
          'e56ff23d07fe3ac32553b9f86b0433b8')
 
 prepare() {

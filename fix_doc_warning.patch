@@ -1,14 +1,22 @@
 --- a/README.rst	2019-02-22 12:38:47.000000000 +0800
-+++ b/README.rst	2019-02-22 14:08:11.909861996 +0800
-@@ -110,6 +110,8 @@
- Disjoint Polygons
- ^^^^^^^^^^^^^^^^^
++++ b/README.rst	2019-02-24 15:06:53.785650230 +0800
+@@ -93,12 +93,14 @@
+ What is the orientation?
+ ^^^^^^^^^^^^^^^^^^^^^^^^
  
 +.. currentmodule:: spherical_geometry.polygon
 +
- If a polygon is the result of the intersection of polygons, it may be
- disjoint. Disjoint polygons are represented as a list of spherical
- polygons. The library handles the details of this internally. However,
+ The correctness of several of the algorithms using polygons depends on
+ a consistent orientation of the points defining it. That is, the points
+ should have a clockwise order. When creating a new spherical polygon,
+ the order of the points defining a polygon will be reversed if they are
+-not in clockwise order. The method `SphericalPolygon.is_clockwise`is
+-used to est if the points are in clockwise order. It takes two
++not in clockwise order. The method `SphericalPolygon.is_clockwise` is
++used to test if the points are in clockwise order. It takes two
+ successive sides and computes the normal vector to the sides. If the
+ normal vector points inward towards the center of the sphere, the two
+ sides are counter clockwise. If the normal vector points outward, the
 @@ -170,7 +172,7 @@
      `~SphericalPolygon.multi_intersection`: Return a new polygon that
      is the intersection of two or more polygons.
