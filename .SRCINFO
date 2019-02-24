@@ -18,8 +18,8 @@ pkgbase = dbxfs
 	replaces = python-dbxfs
 	source = dbxfs-1.0.43.tar.gz::https://github.com/rianhunter/dbxfs/archive/v1.0.43.tar.gz
 	source = dbxfs.patch
-	md5sums = 80f0b23bafba3428f30f670560d32bae
-	md5sums = 3bf993bef07b19ff2bafec3eeb4ff72a
+	sha256sums = 80f0b23bafba3428f30f670560d32bae
+	sha256sums = 3bf993bef07b19ff2bafec3eeb4ff72a
 
 pkgname = dbxfs
 
