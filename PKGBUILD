@@ -1,11 +1,11 @@
-# Maintainer: skydrome <skydrome@i2pmail.org>
-# Contributor: skydrome <skydrome@i2pmail.org>
+# Contributor: skydrome <skydrome@protonmail.com>
+# Maintainer:  skydrome <skydrome@protonmail.com>
 
 pkgname=i2p-bin
 pkgver=0.9.38
 pkgrel=1
 pkgdesc="A distributed anonymous network (pre-compiled binary)"
-url="http://www.i2p2.de"
+url="https://geti2p.net"
 license=('GPL2')
 arch=('any')
 depends=('java-runtime>=7' 'java-service-wrapper')
@@ -15,6 +15,7 @@ provides=('i2p')
 backup=('opt/i2p/wrapper.config')
 install='i2p.install'
 noextract=("i2pinstall_${pkgver}.jar")
+options=(!strip)
 
 #_url="https://download.i2p2.de/releases/${pkgver}"
 _url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
@@ -33,7 +34,6 @@ sha256sums=('9e73dbdfb8cefce7dbe876842144b49b39f555590cdd2955e772298294d33b37'
 validpgpkeys=('2D3D2D03910C6504C1210C65EE60C0C8EE7256A8')
 
 package() {
-    cd "$srcdir"
     source /etc/profile.d/jre.sh
 
     echo "INSTALL_PATH=${pkgdir}/opt/i2p" >install.properties
@@ -62,5 +62,4 @@ package() {
     sed -i "$pkgdir"/opt/i2p/clients.config \
         -e "s:clientApp.4.startOnLoad=.*:clientApp.4.startOnLoad=false:"
     rm -rf "$pkgdir"/opt/i2p/{Uninstaller,.installationinformation,INSTALL-headless.txt,LICENSE.txt,runplain.sh,licenses,man,i2psvc,lib/*wrapper*,scripts/home.i2p.i2prouter}
-
 }
