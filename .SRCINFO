@@ -1,11 +1,15 @@
 pkgbase = perl-log-dispatchouli
-	pkgdesc = a simple wrapper around Log::Dispatch
-	pkgver = 2.012
+	pkgdesc = A simple wrapper around Log::Dispatch.
+	pkgver = 2.016
 	pkgrel = 1
 	url = https://metacpan.org/release/Log-Dispatchouli
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	checkdepends = perl-eval-closure
+	checkdepends = perl-namespace-autoclean
+	checkdepends = perl-params-validationcompiler
+	checkdepends = perl-specio
 	checkdepends = perl-test-deep
 	checkdepends = perl-test-fatal
 	depends = perl-log-dispatch
@@ -16,9 +20,8 @@ pkgbase = perl-log-dispatchouli
 	depends = perl-sub-exporter-globexporter>=0.002
 	depends = perl-try-tiny>=0.04
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Log-Dispatchouli-2.012.tar.gz
-	md5sums = 080d1b18d49b6f55ed2e367bdece7f01
-	sha512sums = b8871a07e8f95c8ba205ee9582d158e3a1e56206f3407db9c2e23a6d7889770603e837f9ad1ac3419da0df90f35605d12872954eab12dc1564c12dd0c375b0ea
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Log-Dispatchouli-2.016.tar.gz
+	sha256sums = 7f2a1a1854fd1e4ed02883bc21f5395f4244a266b661276b438d1bdd50bdacf7
 
 pkgname = perl-log-dispatchouli
 
