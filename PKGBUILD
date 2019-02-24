@@ -11,6 +11,7 @@ url="https://metacpan.org/release/$_module"
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs' 'purge')
 depends=('perl-dist-zilla')
+checkdepends=('perl-test-deep')
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_module-$pkgver.tar.gz")
 sha256sums=('c00753d7c4319eb7eae93deef418303a0f7a8b658151e9dd97ab2198683cf340')
 

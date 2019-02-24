@@ -6,6 +6,7 @@ pkgbase = perl-dist-zilla-plugins-cjm
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	checkdepends = perl-test-deep
 	depends = perl-dist-zilla
 	options = !emptydirs
 	options = purge
