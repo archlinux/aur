@@ -1,5 +1,5 @@
 pkgname=coin-or-bcp
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Parallel framework for implementing branch, cut, and price algorithms for solving mixed integer programs"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ groups=('coin-or')
 depends=('coin-or-vol')
 makedepends=()
 source=("http://www.coin-or.org/download/source/Bcp/Bcp-$pkgver.tgz")
-sha256sums=('5e7a2871033f9d5e8dda69b5fc19ff37853f24f4bdd42fb0b97f904e3a7c856e')
+sha256sums=('8b490ad35c28a79806f84dacbdc36d602ce0a3a4e32c3575f99495c6e6b4906e')
 
 build() {
   cd "$srcdir/Bcp-$pkgver"
