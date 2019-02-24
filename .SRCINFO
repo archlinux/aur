@@ -1,0 +1,18 @@
+pkgbase = brother-mfc-l3710cw
+	pkgdesc = LPR and CUPS drivers for the Brother MFC-L3710CW
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = http://support.brother.com/g/s/id/linux/en/index.html
+	install = brother-mfc-l3710cw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	license = GPL
+	makedepends = perl
+	makedepends = tar
+	depends = cups
+	source = https://download.brother.com/welcome/dlf103930/mfcl3710cwpdrv-1.0.2-0.i386.deb
+	md5sums = 3c9df04884b75b7116adb3a0a7916c80
+
+pkgname = brother-mfc-l3710cw
+
