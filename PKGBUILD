@@ -2,7 +2,7 @@
 #Contributor: Charles E. Vejnar
 pkgname=meme
 pkgver=5.0.4
-pkgrel=2
+pkgrel=3
 _minor=
 pkgdesc="The MEME suite provides tools for discovering and using protein and DNA sequence motifs"
 arch=("i686" "x86_64")
@@ -42,6 +42,12 @@ package() {
   done
   rmdir "${pkgdir}/usr/lib/meme-${pkgver}${_minor}/perl"
 
+  # Rename Python
+  for fname in $(ls -1 "${pkgdir}/usr/lib/meme-${pkgver}${_minor}/python"); do
+    if [[ $fname = meme-* ]]; then
+      mv "${pkgdir}/usr/lib/meme-${pkgver}${_minor}/python/${fname}" "${pkgdir}/usr/lib/meme-${pkgver}${_minor}/python/${fname#meme-}"
+    fi
+  done
 
   sed -i -e "s/\(PROG => \)/\1'meme-'./g" "${pkgdir}/usr/bin/meme-meme-chip"
 
