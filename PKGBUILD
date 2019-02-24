@@ -9,7 +9,7 @@ license=('BSD')
 depends=('openssl')
 makedepends=('go' 'git' 'libgit2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/isacikgoz/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('b4e920f4a3c75e3ee7772ce5c55426c2')
+sha256sums=('b4e920f4a3c75e3ee7772ce5c55426c2')
 
 prepare() {
 	export GOPATH="$srcdir/go"
