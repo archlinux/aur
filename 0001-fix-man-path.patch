@@ -1,0 +1,13 @@
+37c37
+< JANET_PATH?=/usr/local/lib/janet
+---
+> JANET_PATH?=$(PREFIX)/lib/janet
+201,203c201,202
+< 	cp janet.1 /usr/local/share/man/man1/
+< 	mandb
+< 	$(LDCONFIG)
+---
+> 	mkdir -p $(PREFIX)/share/man/man1/
+> 	cp janet.1 $(PREFIX)/share/man/man1/
+213a213
+>  
