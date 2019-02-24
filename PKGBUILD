@@ -1,5 +1,5 @@
 pkgname=mingw-w64-coin-or-bonmin
-pkgver=1.8.6
+pkgver=1.8.7
 pkgrel=1
 pkgdesc="Experimental open-source C++ code for solving general MINLP problems (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-coin-or-cbc' 'mingw-w64-coin-or-ipopt' 'mingw-w64-coin-or-bc
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=("https://www.coin-or.org/download/source/Bonmin/Bonmin-$pkgver.tgz")
-sha256sums=('7aa132403cd2a15f55f779df51e1f14a7272ed8de22ece0c40403b23819c2b71')
+sha256sums=('3e5bcb57f2a7995ce4fd9c76c033050e487ea375ecf0e277dabc22159c8cfb31')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
