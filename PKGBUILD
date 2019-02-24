@@ -1,7 +1,7 @@
 #Mainteiner: Jesse Jaara <gmail.com: jesse.jaara>
 
 pkgname=postgresql-jdbc
-pkgver=42.2.1
+pkgver=42.2.5
 pkgrel=1
 pkgdesc="The official JDBC driver for PostgreSQL. Contains JDBC 4.0, 4.1 & 4.2 drivers."
 arch=('any')
@@ -13,9 +13,9 @@ source=(LICENSE
         postgresql-jdbc-${pkgver}.jdbc41.jar::http://jdbc.postgresql.org/download/postgresql-${pkgver}.jre7.jar
         postgresql-jdbc-${pkgver}.jdbc42.jar::http://jdbc.postgresql.org/download/postgresql-${pkgver}.jar)
 md5sums=('da7e6f8b26deefe7c03b391454732a0d'
-         '069be4cce0728bac70dc466884e2619f'
-         'f26f66d7f4efd6633fd18c862aa1eeb8'
-         'cb4974fcafb4fe9845d431f37e0f11ed')
+         '545747eb94a47813ab32dfdd35f6eed0'
+         '688261fa9f057ad24393beeb5e27bcbd'
+         '47d66d83f9894ebbb18df20d9ad2e5d3')
 
 noextract=(postgresql-jdbc-${pkgver}.jdbc4.jar
            postgresql-jdbc-${pkgver}.jdbc41.jar
