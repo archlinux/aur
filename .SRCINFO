@@ -9,9 +9,9 @@ pkgbase = python-fusepyng
 	makedepends = python-setuptools
 	depends = python
 	source = python-fusepyng-1.0.7.tar.gz::https://github.com/rianhunter/fusepyng/archive/v1.0.7.tar.gz
-	source = LICENSE
-	md5sums = 78cb2589907ce07b5ec0246098787f99
-	md5sums = 62985e35bb52b272658f467939306759
+	source = https://raw.githubusercontent.com/rianhunter/fusepyng/fusepyng/LICENSE
+	sha256sums = e22b3643867cb1d4caa30d2bdbddbd67ac608f42438fa8307e119f101c3992e8
+	sha256sums = e61e6b2171e77a5da5a6b8bdb1e588dd0c660fd2ac64342cded4ab53cf3d4140
 
 pkgname = python-fusepyng
 
