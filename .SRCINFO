@@ -1,6 +1,6 @@
 pkgbase = libphutil
 	pkgdesc = A collection of PHP utility classes
-	pkgver = 2019.05
+	pkgver = 2019.8
 	pkgrel = 1
 	url = https://www.phacility.com/phabricator/
 	arch = any
