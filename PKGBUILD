@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=27.0.50.r135166
+pkgver=27.0.50.r135401
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -23,6 +23,11 @@ pkgver() {
   printf "%s.r%s" "$(echo $_mainver)" "$(git rev-list --count HEAD)"
 }
 
+prepare() {
+  cd emacs/doc/lispref
+  sed -i '4475s+defun+deffn+' text.texi
+}
+  
 build() {
   cd emacs
   [[ -x configure ]] || ( ./autogen.sh git && ./autogen.sh autoconf )
