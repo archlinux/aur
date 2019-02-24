@@ -2,7 +2,7 @@
 # Python package author: Standard Ebooks <standardebooks@googlegroups.com>
 # Maintainer: Tassos Natsakis <7712382@eipieq.com>
 pkgname=python-standardebooks
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="The toolset used to produce Standard Ebooks epub ebooks."
 arch=(any)
@@ -10,7 +10,7 @@ url="https://standardebooks.org"
 license=(GPLv3)
 makedepends=("python" "python-pip")
 build() {
-  pip install --no-deps --target="standardebooks" standardebooks==1.0.1
+  pip install --no-deps --target="standardebooks" standardebooks==1.0.2
 }
 package() {
   sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
