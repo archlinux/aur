@@ -4,7 +4,7 @@ _pkgname=python-omemo
 _pkgname2=python2-omemo
 pkgbase=python-omemo-syndace-git
 pkgname=("python-omemo-syndace-git" "python2-omemo-syndace-git")
-pkgver=r47.0e48589
+pkgver=r78.c4e85ac
 pkgrel=1
 pkgdesc="An open python implementation of the OMEMO Multi-End Message and Object Encryption protocol"
 url="https://github.com/Syndace/${_pkgname}"
@@ -26,8 +26,8 @@ package_python-omemo-syndace-git() {
              'python-doubleratchet-git'
              'python-x3dh-git'
              'python-protobuf')
-    provides=("${_pkgname}")
-    conflicts=("${_pkgname}")
+    provides=("python-omemo-syndace")
+    conflicts=("python-omemo-syndace")
 
     cd ${_pkgname}
     python3 setup.py install --root="${pkgdir}" --optimize=1
@@ -40,8 +40,8 @@ package_python2-omemo-syndace-git() {
              'python2-doubleratchet-git'
              'python2-x3dh-git'
              'python2-protobuf')
-    provides=("${_pkgname2}")
-    conflicts=("${_pkgname2}")
+    provides=("python2-omemo-syndace")
+    conflicts=("python2-omemo-syndace")
 
     cd ${_pkgname}
     python2 setup.py install --root="${pkgdir}" --optimize=1
