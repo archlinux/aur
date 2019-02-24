@@ -6,6 +6,7 @@ pkgdesc="Patched ACPI DSDT table for ASUS MeMO Pad 7 (ME176C(X))"
 arch=(any)
 url="https://github.com/me176c-dev/$pkgname"
 license=('unknown')
+groups=(me176c)
 makedepends=(acpica)
 options=('!strip')
 _revision=9c25272d67965b7bbc03283e333822f02a8f9a9a

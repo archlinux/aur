@@ -4,6 +4,7 @@ pkgbase = me176c-acpi
 	pkgrel = 1
 	url = https://github.com/me176c-dev/me176c-acpi
 	arch = any
+	groups = me176c
 	license = unknown
 	makedepends = acpica
 	options = !strip
