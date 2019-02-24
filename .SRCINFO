@@ -1,6 +1,6 @@
-pkgbase = xboxdrv-git
-	pkgdesc = An XBox/XBox 360 gamepad driver - as alternative to the xpad-kernel module - with more configurability, runs in userspace and supports a multitude of controllers
-	pkgver = 0.8.4.r410.g1aebab2
+pkgbase = xboxdrv-cebtenzzre-git
+	pkgdesc = An XBox/XBox 360 gamepad driver - as alternative to the xpad-kernel module - with more configurability, runs in userspace and supports a multitude of controllers (Centenzzre's fork)
+	pkgver = 0.8.8.r40.gc887ab9
 	pkgrel = 1
 	url = https://xboxdrv.gitlab.io/
 	arch = x86_64
@@ -16,14 +16,15 @@ pkgbase = xboxdrv-git
 	depends = libx11
 	depends = dbus-glib
 	depends = libusb
+	depends = python2
 	provides = xboxdrv
 	conflicts = xboxdrv
-	source = xboxdrv-git::git+https://gitlab.com/xboxdrv/xboxdrv.git
+	source = xboxdrv-cebtenzzre-git::git+https://gitlab.com/cebtenzzre/xboxdrv.git#branch=stable
 	source = xboxdrv.service
 	source = xboxdrv.conf
-	md5sums = SKIP
-	md5sums = c44dc13f6d34cd7fc61c87ecd8c3a547
-	md5sums = c73bb9cf8ff763e7c477366472d19813
+	sha256sums = SKIP
+	sha256sums = d631a8c3af7e2b4ef22f1494ded5d7a8029a8dd9756ef8907f909ef6aa0afc2b
+	sha256sums = 68a286300d28bbfc97eb694c6cc413776f0bc16e35de6d1969f13ef1e7d1cac5
 
-pkgname = xboxdrv-git
+pkgname = xboxdrv-cebtenzzre-git
 
