@@ -1,4 +1,5 @@
 /arduino-reset.patch
+/version-option.patch
 /pkg/
 /src/
 /BOSSA/

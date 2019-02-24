@@ -1,7 +1,7 @@
 pkgbase = bossa-git
 	pkgdesc = Flash programming utility for Atmel's SAM family of flash-based ARM microcontrollers
-	pkgver = 1.8.r48.gb176eee
-	pkgrel = 2
+	pkgver = 1.9.1.r2.g3279031
+	pkgrel = 1
 	url = https://github.com/shumatech/BOSSA
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,10 @@ pkgbase = bossa-git
 	conflicts = bossa
 	source = git://github.com/shumatech/BOSSA
 	source = arduino-reset.patch::https://github.com/shumatech/BOSSA/pull/78.patch
+	source = version-option.patch::https://github.com/shumatech/BOSSA/pull/92.patch
 	sha256sums = SKIP
 	sha256sums = da2571b32da6dd7212654efb96aa7f17a80790e695118f8a13847ffca62de294
+	sha256sums = b38f5680f20e456652822714c758184524e41ac27e85716212951f8a6306c807
 
 pkgname = bossa-git
 
