@@ -4,6 +4,7 @@ pkgbase = thermald-me176c
 	pkgrel = 1
 	url = https://github.com/me176c-dev/linux-me176c
 	arch = any
+	groups = me176c
 	license = MIT
 	depends = thermald
 	options = !strip

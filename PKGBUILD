@@ -7,6 +7,7 @@ arch=(any)
 _repo=linux-me176c
 url="https://github.com/me176c-dev/$_repo"
 license=('MIT')
+groups=(me176c)
 depends=('thermald')
 options=('!strip')
 _revision=c4dd3897686c33f3c8ac46344a26ec6e1683d3e2
