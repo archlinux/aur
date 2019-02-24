@@ -4,7 +4,7 @@
 pkgname=shaarli
 _pkgname=shaarli
 _Pkgname=Shaarli
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc='The personal, minimalist, super-fast, database free, bookmarking service - community repo'
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/shaarli/Shaarli"
 license=('ZLIB')
 depends=('php')
 source=("https://github.com/shaarli/Shaarli/releases/download/v${pkgver}/shaarli-v${pkgver}-full.tar.gz")
-sha256sums=('e8e804b5e85283d3f81798bb46b22b2395cc646e6f4411efdbc3477de4d51a41')
+sha256sums=('48a6044ac9fd897a1835545bab09258355f315722d2e9414d837408ea19f92c9')
 
 package() {
   cd "${pkgdir}"
