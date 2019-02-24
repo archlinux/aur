@@ -3,3 +3,4 @@ src/
 *.pkg.tar.xz
 *.exe
 *.udd
+*.bin
