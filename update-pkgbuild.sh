@@ -17,4 +17,4 @@ updpkgsums
 makepkg -s
 makepkg --printsrcinfo > .SRCINFO
 git add .
-git commit -m "Update to latest stable version (${COMMIT})"
+git commit -m "Update to ${VERSION}"
