@@ -14,7 +14,7 @@ source_x86_64=("${_url}/${pkgver}/VESTA-x86_64.tar.bz2")
 source=('VESTA.desktop' 'vesta.install')
 install="vesta.install"
 
-md5sums=('0dc025818c9c723e988e7c3460f1844a'
+md5sums=('fdd7040720e4b58a26caa7db09669acf'
          'caabe467168af9e44cf380af1abfe280')
 md5sums_x86_64=('1d4651e86193f305831aa5db3dcfe789')
 
