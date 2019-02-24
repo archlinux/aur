@@ -4,10 +4,10 @@ pkgname=pnputils-git
 pkgver=0.1.3+56.g81e685a
 pkgrel=1
 pkgdesc="PNP utils"
-arch=('any')
+arch=('i686' 'x86_64')
 url='http://git.debian.org/?p=collab-maint/pnputils.git'
-license=('GPLv2')
-source=('git://git.debian.org/git/collab-maint/pnputils')
+license=('GPL')
+source=('git+https://gitlab.com/swiftgeek/pnputils.git')
 md5sums=('SKIP')
 conflicts=('pnputils')
 provides=("pnputils=${pkgver%+*}")
