@@ -1,7 +1,7 @@
 # Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=arcanist
-pkgver=2018.51
+pkgver=2019.8
 _commit=b4a302683b1aefbbb2ab9d1aaaf418b551b84b28
 pkgrel=1
 pkgdesc='The command line interface for Phabricator'
