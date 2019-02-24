@@ -11,18 +11,16 @@ license=('BSD')
 makedepends=('python-setuptools' 'qd>=2.3.7' 'python-astropy>=3.1' 'python-astropy-helpers>=3.1' 'python-sphinx-astropy')
 checkdepends=('python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-        'fix_doc_warning.patch'
-        'fix_testing.patch')
+        'fix_doc_warning.patch')
 md5sums=('6c82d0d4b6510efd4b67318125d9d9b5'
-         '4cffeb20c8e88870eae7188104308a35'
-         'e56ff23d07fe3ac32553b9f86b0433b8')
+         '4cffeb20c8e88870eae7188104308a35')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
+    sed -i -e '/[pytest]/s/pytest/tool:pytest/' setup.cfg
     sed -i -e '/auto_use/s/True/False/' setup.cfg
     patch -Np1 -i "${srcdir}/fix_doc_warning.patch"
-    patch -Np1 -i "${srcdir}/fix_testing.patch"
 }
 
 build() {
