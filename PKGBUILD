@@ -2,7 +2,7 @@
 
 pkgname=libphutil
 pkgver=2019.05
-_commit=ad73228f423856353373fe92bfdb6b2d797800da
+_commit=813a26a2d09758f3c407a0c99c6761f11f62cb90
 pkgrel=1
 pkgdesc='A collection of PHP utility classes'
 arch=('any')

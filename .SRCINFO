@@ -7,7 +7,7 @@ pkgbase = libphutil
 	license = Apache
 	makedepends = git
 	depends = php
-	source = git://github.com/phacility/libphutil.git#commit=ad73228f423856353373fe92bfdb6b2d797800da
+	source = git://github.com/phacility/libphutil.git#commit=813a26a2d09758f3c407a0c99c6761f11f62cb90
 	sha256sums = SKIP
 
 pkgname = libphutil
