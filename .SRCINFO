@@ -10,7 +10,7 @@ pkgbase = gitin
 	makedepends = libgit2
 	depends = openssl
 	source = gitin-0.1.5.tar.gz::https://github.com/isacikgoz/gitin/archive/v0.1.5.tar.gz
-	sha256sums = b4e920f4a3c75e3ee7772ce5c55426c2
+	sha256sums = 997b2f75487fa1590eeb0191e72e7e70b576e796f8b35ded1846771f445d2d6a
 
 pkgname = gitin
 
