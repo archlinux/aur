@@ -2,15 +2,15 @@
 
 _pkgname=qt5-webkit
 pkgname=$_pkgname-git
-pkgver=v5.5.1.r28.g0be0076
+pkgver=v5.212.0.alpha2.r16.gbeaeeb998
 pkgrel=1
 pkgdesc='Classes for a WebKit2 based implementation and a new QML API'
 arch=('i686' 'x86_64')
 url='https://code.qt.io/cgit/qt/qtwebkit.git'
 license=('GPL3' 'LGPL' 'FDL')
-depends=('qt5-sensors-git' 'qt5-location-git' 'qt5-webchannel-git' 'gst-plugins-base' 'libxslt' 'libxcomposite' 'libwebp')
-optdepends=('gst-plugins-good: Webm codec support')
-makedepends=('git' 'python2')
+depends=('qt5-sensors-git' 'qt5-location-git' 'qt5-webchannel-git' 'gst-plugins-base' 'libxslt' 'libxcomposite')
+optdepends=('gst-plugins-good: Webm codec support' 'libwebp: WebP codec support')
+makedepends=('git' 'python2' 'gperf' 'libwebp' 'pkgconf')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://code.qt.io/qt/qtwebkit.git#branch=dev")

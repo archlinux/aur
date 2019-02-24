@@ -1,6 +1,6 @@
 pkgbase = qt5-webkit-git
 	pkgdesc = Classes for a WebKit2 based implementation and a new QML API
-	pkgver = v5.5.1.r28.g0be0076
+	pkgver = v5.212.0.alpha2.r16.gbeaeeb998
 	pkgrel = 1
 	url = https://code.qt.io/cgit/qt/qtwebkit.git
 	arch = i686
@@ -10,14 +10,17 @@ pkgbase = qt5-webkit-git
 	license = FDL
 	makedepends = git
 	makedepends = python2
+	makedepends = gperf
+	makedepends = libwebp
+	makedepends = pkgconf
 	depends = qt5-sensors-git
 	depends = qt5-location-git
 	depends = qt5-webchannel-git
 	depends = gst-plugins-base
 	depends = libxslt
 	depends = libxcomposite
-	depends = libwebp
 	optdepends = gst-plugins-good: Webm codec support
+	optdepends = libwebp: WebP codec support
 	provides = qt5-webkit
 	conflicts = qt5-webkit
 	source = qt5-webkit::git+https://code.qt.io/qt/qtwebkit.git#branch=dev
