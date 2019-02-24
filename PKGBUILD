@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 _module='osprofiler'
 pkgname=('python-osprofiler' 'python2-osprofiler')
-pkgver='2.5.2'
+pkgver='2.6.0'
 pkgrel='1'
 pkgdesc='Library for cross-project profiling library'
 arch=('any')
@@ -27,7 +27,7 @@ checkdepends=('python-mock' 'python2-mock'
               'python-docutils' 'python2-docutils'
               'bandit')
 source=("https://github.com/openstack/${_module}/archive/${pkgver}.tar.gz")
-sha512sums=('70275d3b7bea335345f4af923af939438d2f3b42890c19618f230e381bfee27dc30f41a3a2fb187682e735732dcb0e13117fdd724c78a1469652d8b9c2978a89')
+sha512sums=('d72256a61ec8f4d486b3d95a318dc653d728172806e97f726194945c042d9a1d9691eb492828d3d599eff59d43bb1f3d22f18868889947387156f3fde4e5bd76')
 
 prepare() {
   # Remove tests for Jaeger client - no package for it available
