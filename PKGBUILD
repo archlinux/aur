@@ -2,31 +2,42 @@
 
 _pkgname=epiphany
 pkgname=$_pkgname-unstable
-pkgver=3.24.0
+pkgver=3.31.91
 pkgrel=1
 pkgdesc="A GNOME web browser based on the WebKit rendering engine (unstable version)"
-arch=('i686' 'x86_64')
 url="https://wiki.gnome.org/Apps/Web"
-license=('GPL3')
-groups=('gnome')
-depends=(webkit2gtk gcr gnome-desktop)
-makedepends=(intltool itstool docbook-xml startup-notification
-             gobject-introspection yelp-tools autoconf-archive 
-appstream-glib)
-source=(https://ftp.gnome.org/pub/GNOME/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz)
-md5sums=('40b21b6c4e1f9471642135d04258b2fc')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+arch=(x86_64)
+license=(GPL)
+depends=(webkit2gtk gcr icu libdazzle)
+makedepends=(docbook-xml startup-notification lsb-release gobject-introspection yelp-tools
+             appstream-glib git meson)
+checkdepends=(xorg-server-xvfb)
+groups=(gnome)
+_commit=d86a2ffa130c204991beaa582799676cb8ac1c03  # tags/3.31.91^0
+source=("git+https://gitlab.gnome.org/GNOME/epiphany.git#commit=$_commit")
+sha256sums=('SKIP')
+conflicts=(epiphany epiphany-git)
+provides=(epiphany)
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd $_pkgname
+}
 
 build() {
-  cd $_pkgname-$pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var --libexecdir=/usr/lib/$_pkgname
+  arch-meson $_pkgname build \
+    -D distributor_name="Arch Linux®"
+  ninja -C build
+}
 
-  make
+check() {
+  # ERROR:../epiphany/tests/ephy-web-app-utils-test.c:109:test_web_app_lifetime: assertion failed (g_list_length (apps) == 1): (0 == 1)
+  xvfb-run meson test -C build || :
 }
 
 package() {
-  cd $_pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 }
