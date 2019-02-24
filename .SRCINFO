@@ -17,8 +17,6 @@ pkgname = python-omemo-syndace
 	depends = python-doubleratchet
 	depends = python-x3dh
 	depends = python-protobuf
-	provides = python-omemo
-	conflicts = python-omemo
 
 pkgname = python2-omemo-syndace
 	depends = python2-pynacl
@@ -27,6 +25,4 @@ pkgname = python2-omemo-syndace
 	depends = python2-doubleratchet
 	depends = python2-x3dh
 	depends = python2-protobuf
-	provides = python2-omemo
-	conflicts = python2-omemo
 
