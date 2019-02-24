@@ -1,0 +1,23 @@
+pkgbase = keyleds-git
+	pkgdesc = Advanced RGB LED driver/controller for G410, G513, G610, G810, G910 and GPro
+	pkgver = r264.4219bcf
+	pkgrel = 1
+	url = https://github.com/spectras/keyleds
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake>=3.0
+	depends = libuv
+	depends = libx11
+	depends = libxi
+	depends = libxml2
+	depends = libyaml
+	depends = luajit
+	depends = systemd
+	conflicts = keyleds
+	backup = etc/keyledsd.conf
+	source = git+https://github.com/spectras/keyleds.git
+	sha256sums = SKIP
+
+pkgname = keyleds-git
+
