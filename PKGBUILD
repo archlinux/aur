@@ -4,7 +4,7 @@
 pkgname=glibd
 _pkgname=GlibD
 pkgver=2.0.2
-pkgrel=1
+pkgrel=3
 pkgdesc='D bindings for the GLib C Utility Library'
 arch=('x86_64')
 url='https://github.com/gtkd-developers/GlibD'
