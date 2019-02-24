@@ -1,5 +1,5 @@
 pkgbase = python-slixmpp-omemo-git
-	pkgdesc = An XMPP library written for Python 3.4 (SleekXMPP asyncio fork)
+	pkgdesc = Slixmpp OMEMO plugin
 	pkgver = r105.a72e81c
 	pkgrel = 1
 	url = https://lab.louiz.org/poezio/slixmpp-omemo
