@@ -3,7 +3,7 @@
 
 pkgname=vna_j
 _realname=vnaJ
-pkgver=3.2.9
+pkgver=3.2.10
 pkgrel=1
 pkgdesc="GUI for various vector network analyzers"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('imagemagick')
 install=vna_j.install
 source=(http://download.dl2sba.com/vnaj/$pkgver/${_realname}.${pkgver}.jar
         vnaJ.sh vnaJ.desktop http://download.dl2sba.com/vnaj/$pkgver/logo.ico)
-md5sums=('049726c16493a59b83c50b06837a2665'
+md5sums=('60abe8dacb680903fd6aa3083226a99b'
          '305963e8e79cbab0741a535207020e2c'
          'e1f40625326a65e5df479f4eae742041'
          '9f3eed2cc9491779155f111d9e3d6bfd')
