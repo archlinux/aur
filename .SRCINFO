@@ -1,6 +1,6 @@
 pkgbase = python-apex-git
 	pkgdesc = A PyTorch Extension: Tools for easy mixed precision and distributed training in Pytorch
-	pkgver = 0.1.r286
+	pkgver = 0.1.r298
 	pkgrel = 1
 	url = https://github.com/NVIDIA/apex
 	arch = any
