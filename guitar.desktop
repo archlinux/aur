@@ -2,5 +2,5 @@
 Type=Application
 Name=Guitar
 Exec=/opt/Guitar/Guitar
-Icon=guitar
+Icon=/opt/Guitar/guitar.svg
 Terminal=false
