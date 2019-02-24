@@ -5,7 +5,10 @@ After=network.target
 [Service]
 Type=simple
 User=nobody
-Group=nogroup
+Group=nobody
+NoNewPrivileges=true
+ProtectHome=true
+ProtectSystem=strict
 Restart=on-failure
 ExecStart=/usr/bin/prometheus-exporter-proxy -config /etc/prometheus-exporter-proxy/config.yml
 
