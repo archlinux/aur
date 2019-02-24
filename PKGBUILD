@@ -12,9 +12,9 @@ provides=('python-privy')
 source=("$pkgname"::'git+https://github.com/ofek/privy.git'
         "https://raw.githubusercontent.com/ofek/privy/master/LICENSE-MIT"
         "https://raw.githubusercontent.com/ofek/privy/master/LICENSE-APACHE")
-md5sums=('SKIP'
-         '388b1e32639feccde602f679e55f1e26'
-         'c095d68fd956360d26e013d3f3739e94')
+sha256sums=('SKIP'
+            'd502748a33db7ade1318e37f0b5f219f478330ed74a673e387756e53fb516715'
+            'cebfb5eab4eff50df87c3c5e7eb11a634d0fa32bb4b6380800f82fae606599ae')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"

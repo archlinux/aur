@@ -12,9 +12,9 @@ pkgbase = python-privy-git
 	source = python-privy-git::git+https://github.com/ofek/privy.git
 	source = https://raw.githubusercontent.com/ofek/privy/master/LICENSE-MIT
 	source = https://raw.githubusercontent.com/ofek/privy/master/LICENSE-APACHE
-	md5sums = SKIP
-	md5sums = 388b1e32639feccde602f679e55f1e26
-	md5sums = c095d68fd956360d26e013d3f3739e94
+	sha256sums = SKIP
+	sha256sums = d502748a33db7ade1318e37f0b5f219f478330ed74a673e387756e53fb516715
+	sha256sums = cebfb5eab4eff50df87c3c5e7eb11a634d0fa32bb4b6380800f82fae606599ae
 
 pkgname = python-privy-git
 
