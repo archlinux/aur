@@ -10,7 +10,7 @@ optdepends=('nemo' 'meld')
 source=("compare-save-for-later.nemo_action"
         "compare-with-saved.nemo_action"
 		"compare.sh")
-md5sums=('49bb1ecff662decfac104e174a85d1be'
+sha256sums=('49bb1ecff662decfac104e174a85d1be'
          '0dfab1f68b43ee69a32d47c6a71aae31'
          'e84d427afe91596729519f83ed1b723e')
 
