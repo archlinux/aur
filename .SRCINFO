@@ -4,6 +4,7 @@ pkgbase = me176c-firmware
 	pkgrel = 4
 	url = https://github.com/me176c-dev/archlinux-me176c
 	arch = x86_64
+	groups = me176c
 	license = unknown
 	makedepends = python
 	makedepends = mkinitcpio

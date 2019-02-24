@@ -6,6 +6,7 @@ pkgdesc="Additional firmware files for ASUS MeMO Pad 7 (ME176C(X))"
 arch=(x86_64)
 url="https://github.com/me176c-dev/archlinux-me176c"
 license=('unknown')
+groups=(me176c)
 makedepends=('python' 'mkinitcpio')
 options=('!strip')
 source=(
