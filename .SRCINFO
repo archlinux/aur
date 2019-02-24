@@ -1,0 +1,34 @@
+pkgbase = intel-mkl-slim
+	pkgdesc = Intel Math Kernel Library (x86_64 shared libraries and headers only)
+	pkgver = 2019.2.187
+	pkgrel = 1
+	url = https://software.intel.com/en-us/mkl
+	install = intel-mkl.install
+	arch = x86_64
+	license = custom:ISSL
+	makedepends = cpio
+	optdepends = intel-tbb: Intel® threading implementation
+	provides = intel-mkl
+	conflicts = intel-mkl
+	replaces = intel-mkl
+	noextract = intel-mkl-common-2019.2-187-2019.2-187.noarch.rpm
+	noextract = intel-mkl-common-c-2019.2-187-2019.2-187.noarch.rpm
+	noextract = intel-mkl-core-rt-2019.2-187-2019.2-187.x86_64.rpm
+	noextract = intel-mkl-gnu-rt-2019.2-187-2019.2-187.x86_64.rpm
+	noextract = intel-mkl-tbb-rt-2019.2-187-2019.2-187.x86_64.rpm
+	noextract = intel-openmp-19.0.2-187-19.0.2-187.x86_64.rpm
+	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/15095/onlinedata/rpm/intel-mkl-common-2019.2-187-2019.2-187.noarch.rpm
+	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/15095/onlinedata/rpm/intel-mkl-common-c-2019.2-187-2019.2-187.noarch.rpm
+	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/15095/onlinedata/rpm/intel-mkl-core-rt-2019.2-187-2019.2-187.x86_64.rpm
+	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/15095/onlinedata/rpm/intel-mkl-gnu-rt-2019.2-187-2019.2-187.x86_64.rpm
+	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/15095/onlinedata/rpm/intel-mkl-tbb-rt-2019.2-187-2019.2-187.x86_64.rpm
+	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/15095/onlinedata/rpm/intel-openmp-19.0.2-187-19.0.2-187.x86_64.rpm
+	sha256sums = c44be9800e2f129ffb0fce018df3457ee78df686bf37c7a6632d59ce5c17f6e6
+	sha256sums = 065153f14d81892681bfd743e162ce545209ed624e8a53a85f402935e676eddc
+	sha256sums = f8a9d89c78a2ea8d698f37fde9532277db054f2c636bfecb2116cc44869494c9
+	sha256sums = 44f30d95905ec7f24d874cd59ad37012d39ba98f9dd858f4424a6eb36cc570c4
+	sha256sums = c477c1dd925678a3826e8163416c16aa5e0069cd633bec0c36282fba0c30694d
+	sha256sums = bc0dc99755cd5b122c394f2614e44b307bd2c595979c0e1b35deef1693d1a144
+
+pkgname = intel-mkl-slim
+
