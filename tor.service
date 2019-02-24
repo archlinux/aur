@@ -5,6 +5,7 @@ After=syslog.target network.target nss-lookup.target
 [Service]
 Type=notify
 NotifyAccess=all
+Group=tor
 ExecStartPre=/usr/bin/tor -f /etc/tor/torrc --verify-config
 ExecStart=/usr/bin/tor -f /etc/tor/torrc
 ExecReload=/bin/kill -HUP ${MAINPID}
@@ -19,11 +20,12 @@ PrivateTmp=yes
 PrivateDevices=yes
 ProtectHome=yes
 ProtectSystem=full
+ProtectKernelTunables=yes
 ReadOnlyDirectories=/
 ReadWriteDirectories=-/var/lib/tor
 ReadWriteDirectories=-/var/log/tor
 NoNewPrivileges=yes
-CapabilityBoundingSet=CAP_SETUID CAP_SETGID CAP_NET_BIND_SERVICE CAP_DAC_READ_SEARCH
+CapabilityBoundingSet=CAP_SETUID CAP_SETGID CAP_NET_BIND_SERVICE
 
 [Install]
 WantedBy=multi-user.target
