@@ -1,7 +1,7 @@
 # Maintainer: Ian Beringer <ian@ianberinger.com>
 
 pkgname=kubectx
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 license=('Apache')
 pkgdesc='Utility to manage and switch between kubectl contexts and Kubernetes namespaces'
@@ -10,7 +10,7 @@ depends=('python')
 arch=('any')
 url='https://github.com/ahmetb/kubectx'
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('95e9b0036bd945948c84e566d750aa178ecd7256fabcdff235f745b6c3d38069')
+sha256sums=('f39eb7bc448f4444f4e3bfd1bb1258187615d51f1c4fa60d826b794b9ca70983')
 provides=('kubectx' 'kubens')
 
 package() {

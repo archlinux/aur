@@ -1,6 +1,6 @@
 pkgbase = kubectx
 	pkgdesc = Utility to manage and switch between kubectl contexts and Kubernetes namespaces
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/ahmetb/kubectx
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = kubectx
 	depends = python
 	provides = kubectx
 	provides = kubens
-	source = https://github.com/ahmetb/kubectx/archive/v0.6.2.tar.gz
-	sha256sums = 95e9b0036bd945948c84e566d750aa178ecd7256fabcdff235f745b6c3d38069
+	source = https://github.com/ahmetb/kubectx/archive/v0.6.3.tar.gz
+	sha256sums = f39eb7bc448f4444f4e3bfd1bb1258187615d51f1c4fa60d826b794b9ca70983
 
 pkgname = kubectx
 
