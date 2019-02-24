@@ -3,7 +3,7 @@
 # Contributor: Peng Zhang <pczhang@gmail.com>
 
 pkgname=alglib
-pkgver=3.14.0
+pkgver=3.15.0
 pkgrel=1
 pkgdesc="A cross-platform numerical analysis and data processing library (third version). Free Version"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('gcc-libs')
 makedepends=('cmake')
 options=('staticlibs')
 source=("http://www.alglib.net/translator/re/alglib-${pkgver}.cpp.gpl.zip")
-sha256sums=('b217ebc6bfcbc4d58c87542fbcb6a27637f7a853a3a7851d9a2e0539e55c1a7e')
+sha256sums=('3b9026cbe0ebca373f9d519f9355be2464df3bce7118d7c5f76a30e282a6ffa7')
 
 prepare() {
     # generate a simple cmake file to build the library since the release
