@@ -1,6 +1,6 @@
 pkgbase = emacs-w3m-git
 	pkgdesc = w3m browser for Emacs (cvs)
-	pkgver = r70.g0c956f82
+	pkgver = r5665.0c956f82
 	pkgrel = 1
 	url = http://emacs-w3m.namazu.org/
 	arch = any
