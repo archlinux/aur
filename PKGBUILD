@@ -1,6 +1,6 @@
 # Maintainer: Peter Roberts <me@peter-r.co.uk>
 pkgname=zoom-parallel
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Parallel command executor with a focus on simplicity and good cross-platform behaviour "
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=('MIT')
 depends=("glibc")
 makedepends=("go-pie")
 source=("https://github.com/pwr22/zoom/archive/v$pkgver.tar.gz")
-sha256sums=("ebca9896023ca15bf460cf0f63d46e4f8887d43faae726b7e4b8b1adfd06cabd")
+sha256sums=("8819f6414919f9c38273398ac02a691e6235ac757bb9c05a739f59971a699e34")
 
 _cmdname=zoom # name of the command - there's a clash so the package name is longer
 
