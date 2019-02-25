@@ -2,7 +2,7 @@
 
 pkgname=wslu
 pkgver=2.0.0rc1
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of utilities for Windows 10 Linux Subsystems"
 arch=('any')
 url='https://github.com/wslutilities/wslu'
@@ -20,10 +20,9 @@ build() {
 package() {
   cd wslu
 
-  mkdir "${pkgdir}"
-  install -Dm 755 out/* "${pkgdir}"/usr/bin
-  install -Dm 555 docs/* "${pkgdir}"/usr/share/man/man1
-  install -Dm 555 src/etc/* "${pkgdir}"/usr/share/wslu
+    install -Dm 755 out/* -t "${pkgdir}"/usr/bin/
+  install -Dm 555 docs/* -t "${pkgdir}"/usr/share/man/man1/
+  install -Dm 555 src/etc/* -t "${pkgdir}"/usr/share/wslu/
   install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/wslu/
 }
 
