@@ -1,7 +1,7 @@
 # Maintainer: jaelpark@outlook.com
 pkgname=chamfer-git
 _pkgname=chamfer
-pkgver=r160
+pkgver=r168
 pkgrel=1
 pkgdesc="A tiling X11 window manager with Vulkan compositor."
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=(
 	'xcb-util-keysyms' 'xcb-util-wm' 'vulkan-icd-loader' 'glm' 'boost' 'python' 'python-xlib' 'python-psutil'
 )
 makedepends=(
-    'git' 'meson' 'ninja' 'vulkan-headers' 'shaderc-git'
+    'git' 'meson' 'ninja' 'vulkan-headers' 'shaderc'
 )
 #optdepends=(
 #	'python-psutil': launch processes'
