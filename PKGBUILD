@@ -1,15 +1,17 @@
-# Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
-pkgname=backblaze-b2
+# Maintainer: Matt Kline <matt[at]bitbashing[d0t]io>
+pkgname=python2-backblaze-b2
 pkgver=1.3.8
 pkgrel=2
-pkgdesc="Backblaze B2 Command Line Client"
+# The Python 3 variants and CLI can be found in the backblaze-b2 AUR package.
+pkgdesc="Backblaze B2 libraries for Python 2"
 url="https://www.backblaze.com/b2/cloud-storage.html"
-depends=('python'
-         'python-arrow>=0.8.0'
-         'python-logfury>=0.1.2'
-         'python-requests>=2.9.1'
-         'python-tqdm>=4.5.0'
-         'python-six>=1.10'
+depends=('python2>=2.7'
+         'python2-arrow>=0.8.0'
+         'python2-logfury>=0.1.2'
+         'python2-requests>=2.9.1'
+         'python2-tqdm>=4.5.0'
+         'python2-six>=1.10'
+         'python2-futures>=3.0.5'
         )
 optdepends=()
 # MIT or Creative Commons: https://www.backblaze.com/using_b2_code.html
@@ -23,17 +25,19 @@ sha512sums=('9c7bac5760693d4b6927db1b040896fd75b8f09072363a60d6201f97f88e2288d5c
 build() {
     cd ${srcdir}/B2_Command_Line_Tool-${pkgver}
     sed -i -e 's:^\(arrow.*\),<0.12.1:\1:' requirements.txt
-    python setup.py build
+    python2 setup.py build
 }
 
 package() {
     cd ${srcdir}/B2_Command_Line_Tool-${pkgver}
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python2 setup.py build
+    python2 setup.py install --root="$pkgdir" --optimize=1
 
     # https://wiki.archlinux.org/index.php/Python_package_guidelines
     rm -rf ${pkgdir}/usr/lib/python*/site-packages/tests/
 
-    # Installed to backblaze-b2 because the Boost pkg installs /usr/bin/b2
-    mv ${pkgdir}/usr/bin/b2 ${pkgdir}/usr/bin/backblaze-b2
+    # Only provide python libraries (e.g., for duplicity).
+    # Let the backblaze-b2 package provide the CLI
+    rm -rv ${pkgdir}/usr/bin
 }
 
