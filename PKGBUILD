@@ -1,8 +1,8 @@
 # Contributor: janezz55
 pkgname=dropbear-socket
 pkgver=201902
-pkgrel=2
-pkgdesc='systemd .socket file for dropbear ssh server'
+pkgrel=3
+pkgdesc='.socket file for the dropbear ssh server (example: systemctl enable dropbear-socket@22.socket)'
 url='https://matt.ucc.asn.au/dropbear/dropbear.html'
 arch=('any')
 license=('custom:Public Domain')
