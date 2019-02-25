@@ -1,0 +1,19 @@
+pkgbase = wslu
+	pkgdesc = A collection of utilities for Windows 10 Linux Subsystems
+	pkgver = 2.0.0rc2
+	pkgrel = 1
+	url = https://github.com/wslutilities/wslu
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	depends = bc
+	depends = imagemagick
+	depends = bash-completion
+	depends = wget
+	depends = unzip
+	source = git+https://github.com/wslutilities/wslu.git#tag=v2.0.0rc2
+	sha256sums = SKIP
+
+pkgname = wslu
+
