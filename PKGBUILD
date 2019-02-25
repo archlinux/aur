@@ -1,7 +1,7 @@
 # Maintainer: Vitrum <wqdxosty1yhj@bk.ru>
 
 pkgname=keyman
-pkgver=11.0.107
+pkgver=11.0.122
 pkgrel=1
 pkgdesc="IBus engine supporting over 1,000 layouts (former KMFL)"
 arch=('i686' 'x86_64')
@@ -12,11 +12,11 @@ makedepends=('meson' 'help2man')
 optdepends=('keyman-onboard: on-screen keyboard')
 replaces=('kmflcomp' 'libkmfl' 'ibus-kmfl')
 conflicts=('kmflcomp' 'libkmfl' 'ibus-kmfl')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/keymanapp/keyman/archive/linux-release-beta-$pkgver.tar.gz")
-sha256sums=('ef62fb309de0840a452dbd7c78764e95d44ac4602acaaaa2d7daf3ce22663d87')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/keymanapp/keyman/archive/linux-release-stable-$pkgver.tar.gz")
+sha256sums=('83c00969d08a1b652a8b0ac824817e6a76c7f5ba70764026c19a785229ae0582')
 
 prepare() {
-    _basedir="$srcdir/keyman-linux-release-beta-$pkgver/linux"
+    _basedir="$srcdir/keyman-linux-release-stable-$pkgver/linux"
 
     cd "$_basedir/ibus-kmfl"
     sed -i 's:${libexecdir}:/usr/lib/ibus:' src/kmfl.xml.in.in
@@ -32,7 +32,7 @@ prepare() {
 }
 
 build() {
-    _basedir="$srcdir/keyman-linux-release-beta-$pkgver/linux"
+    _basedir="$srcdir/keyman-linux-release-stable-$pkgver/linux"
 
     # keyboardprocessor
     cd "$_basedir"
@@ -81,7 +81,7 @@ build() {
 }
 
 package() {
-    _basedir="$srcdir/keyman-linux-release-beta-$pkgver/linux"
+    _basedir="$srcdir/keyman-linux-release-stable-$pkgver/linux"
 
     # keyboardprocessor
     cd "$_basedir"
