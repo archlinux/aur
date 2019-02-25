@@ -7,8 +7,9 @@ pkgbase = madonctl
 	license = MIT
 	makedepends = go
 	makedepends = git
+	makedepends = dep
 	source = madonctl-2.3.1.tar.gz::https://github.com/McKael/madonctl/archive/v2.3.1.tar.gz
-	md5sums = c9c928b98b6d1a1ac27227ace0002edb
+	sha256sums = f97707a4f96b15a8331a0b3725a43c7717bf068bf9e6c5e885a13dd3016d5cf6
 
 pkgname = madonctl
 
