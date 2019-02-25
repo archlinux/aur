@@ -21,7 +21,7 @@ checkdepends=()
 optdepends=('hunspell-YOUR-LANGUAGE' 'xosd')
 provides=('xneur')
 conflicts=('xneur')
-replaces=('xneur')
+replaces=('xneur=0.20.0')
 backup=()
 options=()
 install=
