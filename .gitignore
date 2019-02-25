@@ -1,0 +1,4 @@
+catboost-git*.pkg.tar.xz
+catboost/
+pkg/
+src/
