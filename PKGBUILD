@@ -1,5 +1,5 @@
 pkgname='pacaur'
-pkgver=4.8.2
+pkgver=4.8.3
 pkgrel=1
 pkgdesc='An AUR helper that minimizes user interaction (fork)'
 arch=('any')
@@ -9,15 +9,13 @@ depends=('auracle-git' 'expac' 'sudo' 'git' 'jq')
 makedepends=('perl')
 backup=("etc/xdg/${pkgname}/config")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/E5ten/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('ac95600d35f8472127e2cc02f6fe449560f26e3d12136483053953c206b583a3')
+sha256sums=('02356889527677e8a7b573de307a9890ba559736ab800356692a7e489e2c1242')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    make
+    make -C "${srcdir}/${pkgname}-${pkgver}" --no-print-directory
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}" PREFIX='/usr' install
+    make -C "${srcdir}/${pkgname}-${pkgver}" --no-print-directory DESTDIR="${pkgdir}" PREFIX='/usr' install
 }
 
