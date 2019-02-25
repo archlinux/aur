@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=broot
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Fuzzy Search + tree + cd'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$url/archive/v$pkgver/broot-v$pkgver.tar.gz")
-sha512sums=('d3b6560857cb9802d05da9d94648ea7007246972f9913aa23729eeaf70f31243df844940da0d918b2cf58bdd378b859c62e78aa6542a666c243b4a243e28541f')
+sha512sums=('7d7e7aa33867fd4f1b5d1003ce647f6e0875db4d9d115f4d0228f3a7d744d5a58d8bc61415a0cec65961d8df04927e3d130ca73b9048722f52932b8aa8998374')
 
 prepare() {
   cd broot-$pkgver
@@ -20,11 +20,6 @@ prepare() {
 build() {
   cd broot-$pkgver
   cargo build --release --locked
-}
-
-check() {
-  cd broot-$pkgver
-  cargo test --release --locked
 }
 
 package() {
