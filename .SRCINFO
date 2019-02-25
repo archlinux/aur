@@ -9,7 +9,7 @@ pkgbase = mktiupgrade
 	makedepends = cmake
 	makedepends = asciidoc
 	source = https://github.com/KnightOS/mktiupgrade/archive/1.1.4.tar.gz
-	sha1sums = d0aa9aafdd863a14ace0e1779ac3f5a6fc096ccd
+	sha256sums = 7b02c6eac77e641fdab196fa4f88ee4fb791ae92d1a518767080f92941823bd4
 
 pkgname = mktiupgrade
 
