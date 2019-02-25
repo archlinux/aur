@@ -2,8 +2,8 @@
 # Helpful url: https://ci.appveyor.com/project/Lidarr/lidarr/branch/develop/artifacts
 
 pkgname="lidarr-develop"
-pkgver=0.5.0.640
-_pkghash="8f3i3jx2p5l6830u"
+pkgver=0.5.0.644
+_pkghash="43aq7wf16bx6x59w"
 pkgrel=1
 pkgdesc="Music downloader for usenet and torrents."
 arch=(any)
@@ -28,7 +28,7 @@ source=("https://ci.appveyor.com/api/buildjobs/${_pkghash}/artifacts/Lidarr.deve
         'lidarr.tmpfiles'
         'lidarr.sysusers')
 
-sha512sums=('1df25be9ee3482c5d13242399ef0e2414e0601ee2d8494fde83597e2f0385899f7a8765df39da9a7281bda0ae7c174ad912597dced8d271d048babc5270af463'
+sha512sums=('91fdbb27cdecf891e47d96e316429211c7f0c71ae7212443e0bdfef3b75699ff0b9f970080a0e18cb6cdf2a204a0b8462e416e4fcb75541efc28639ff09e8b5c'
             'e339ad3fe7d7569d65346309ffa69ea5f68001a45ae6e1a494e786fc4711a189f38cd73bb4d9bafdb3e5315a625f1c25301804473830418d8284192cb0c04c84'
             'e40ce79a3e1741e7e06312797e652a85d199bd6d719ef953ea8c3c030756ee44e202956ac9e13cff17fac38312c27398f457f79923a7d0f56bd563a69af6ab63'
             'ffd466960527256d8de1d9887d90d4da87486eff062950c46cbc4fd4af1ef89e7d5c070ef1e649b23a95fbab15651e289fd5bdc6d34649e4a6ecdf2f6da06622')
