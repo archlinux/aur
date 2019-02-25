@@ -3,15 +3,14 @@ pkgbase = knightos-kcc
 	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/KnightOS/kcc
-	arch = i386
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	makedepends = asciidoc
 	depends = scas
 	depends = boost
-	source = https://github.com/KnightOS/kcc/archive/4.0.0.tar.gz
-	sha1sums = 6f3460eee2af9dba6fea3f7273668a5798ce6aac
+	source = knightos-kcc-4.0.0.tar.gz::https://github.com/KnightOS/kcc/archive/4.0.0.tar.gz
+	sha256sums = e67e65cf81ecf3769b86f84694018083994640a478fa53cf05fd3e8b9d108527
 
 pkgname = knightos-kcc
 
