@@ -1,9 +1,9 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer-pro
-_debpkgver=4.0.0b2-2
+_debpkgver=4.0.0-1
 pkgver=4.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Professional high-end audio file converter, recorder and player"
 arch=('x86_64')
 url="https://www.signalyst.com/professional.html"
