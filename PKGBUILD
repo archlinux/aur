@@ -2,7 +2,7 @@
 pkgname=dropbear-socket
 pkgver=201902
 pkgrel=1
-pkgdesc='Socket file for dropbear ssh server'
+pkgdesc='systemd .socket file for dropbear ssh server'
 url='https://matt.ucc.asn.au/dropbear/dropbear.html'
 arch=('any')
 license=('custom:Public Domain')
