@@ -1,6 +1,6 @@
 # Maintainer: Victor A. Santos  <victoraur.santos@gmail.com>
 pkgname=waf-git
-pkgver=r1436.f9f5e85
+pkgver=r2840.57377901
 pkgrel=1
 pkgdesc="General-purpose build system modelled after Scons"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python')
 makedepends=('python' 'perl')
 conflicts=('waf')
 provides=('waf')
-source=("$pkgname::git+https://github.com/waf-project/waf.git")
+source=("$pkgname::git+https://gitlab.com/ita1024/waf.git")
 md5sums=('SKIP')
 
 pkgver() {
