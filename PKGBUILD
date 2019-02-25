@@ -4,13 +4,14 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-beta
-pkgver=4.1.0.9
+pkgver=4.1.0.10
 pkgrel=1
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('any')
 url='http://emby.media'
 license=('custom')
-depends=('dotnet-runtime' 'ffmpeg' 'skia-sharp60' 'sqlite')
+depends=('dotnet-runtime' 'ffmpeg4.0' 'skia-sharp60' 
+'sqlite')
 install='emby-server.install'
 provides=('emby-server')
 conflicts=('emby-server')
@@ -22,7 +23,7 @@ source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgve
         'emby-server.sysusers'
         'emby-server.tmpfiles')
 backup=('etc/conf.d/emby-server')
-sha256sums=('7d6c07eae434c878a3af8d8d861f7230118f5cca1bf62283915c62caa0e97f37'
+sha256sums=('4bb7dd2e020a050534f43fa61ab24228b578f9e64b8502fc35b5f5a3593af08c'
             '1f04c5dff2e1534bff101917a556295d63aae26c233446b252890ad58221e513'
             'e44692b24d69aef8568c6e68088e5a28e42584868a8936abcab9211c236c2a6b'
             'e6676f75bb12ba2b88da130be1272abb0e332f40e9fa043182a865e3d74a38fb'
