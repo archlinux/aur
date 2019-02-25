@@ -2,7 +2,7 @@
 # Build CLI and Python wrapper without GPU support.
 pkgname=catboost-git
 pkgver=0.12.2
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="CatBoost is an open-source gradient boosting on decision trees library with categorical features support out of the box."
 arch=('i686' 'x86_64')

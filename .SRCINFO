@@ -1,15 +1,16 @@
 pkgbase = catboost-git
 	pkgdesc = CatBoost is an open-source gradient boosting on decision trees library with categorical features support out of the box.
 	pkgver = 0.12.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://catboost.yandex
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
-	depends = clang
 	depends = python-six
 	depends = python-numpy
+	optdepends = python-pandas
+	optdepends = python-ipywidgets
 	source = catboost::git+https://github.com/catboost/catboost.git
 	md5sums = SKIP
 
