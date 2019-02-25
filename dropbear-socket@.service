@@ -4,4 +4,3 @@ Description=dropbear SSH service (socket-activated)
 [Service]
 ExecStart=/usr/bin/dropbear -iwgRT 1
 StandardInput=socket
-StandardError=journal
