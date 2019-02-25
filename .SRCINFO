@@ -1,0 +1,20 @@
+pkgbase = python-mutovis-control
+	pkgdesc = Software for collecting electrical characterization data for solar cells
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/mutovis/control-software
+	arch = any
+	license = GPL-3.0
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-pyserial
+	depends = python-h5py
+	depends = python-pyvisa
+	depends = python-pyvisa-py
+	source = https://github.com/mutovis/control-software/archive/v1.0.1.tar.gz
+	sha256sums = 63c34349928535a62b7a1d1fbcd2d24f3b91b3e4a95e79381f0bd9aa1a3a00bd
+
+pkgname = python-mutovis-control
+
