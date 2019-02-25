@@ -7,7 +7,7 @@ pkgver=5.0.0
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
-url="http://libvirt.org/"
+url="https://libvirt.org/"
 license=('LGPL')
 makedepends=('lvm2' 'linux-api-headers' 'dnsmasq' 'lxc' 'libiscsi' 'open-iscsi'
              'perl-xml-xpath' 'libxslt' 'qemu' 'parted' 'python')
