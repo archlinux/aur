@@ -8,6 +8,7 @@ makedepends=("cmake" "asciidoc")
 arch=("i386" "x86_64")
 url='https://github.com/KnightOS/genkfs'
 source=("https://github.com/KnightOS/genkfs/archive/${pkgver}.tar.gz")
+sha256sums=('93690989819ee93dd5130b2761879deaa3d70c706b050bd31eb8d5997cb683e8')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -19,4 +20,3 @@ package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	DESTDIR="$pkgdir/" make install
 }
-md5sums=('2a1875411dfc5790caf45c99b5628fc0')

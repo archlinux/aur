@@ -9,7 +9,7 @@ pkgbase = genkfs
 	makedepends = cmake
 	makedepends = asciidoc
 	source = https://github.com/KnightOS/genkfs/archive/1.2.2.tar.gz
-	md5sums = 2a1875411dfc5790caf45c99b5628fc0
+	sha256sums = 93690989819ee93dd5130b2761879deaa3d70c706b050bd31eb8d5997cb683e8
 
 pkgname = genkfs
 
