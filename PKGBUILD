@@ -26,4 +26,5 @@ build() {
 package() {
 	cd "$_pkgname-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
