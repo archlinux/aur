@@ -7,7 +7,7 @@ pkgdesc='Writes files into ROM images for TI calculators'
 makedepends=("cmake" "asciidoc")
 arch=("x86_64")
 url='https://github.com/KnightOS/mkrom'
-source=("https://github.com/KnightOS/mkrom/archive/${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/KnightOS/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('2c5c2e72f7f9a552c8f43015129e755f3d0a2a4c4152c615fcd7b9ed50ebf3c2')
 
 build() {
