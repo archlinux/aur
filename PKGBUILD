@@ -9,7 +9,7 @@ url="http://github.com/Patreon/patreon-python"
 license=("MIT")
 depends=("python-requests")
 makedepends=("python-setuptools")
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('04ad0360e7acc38a85beafa8d44eeeafd3c31d136488aa4de707526163682ca4')
 
 build() {
