@@ -1,35 +1,31 @@
 Chunk 1:	Change PREFIX and MANPREFIX variables
-Chunk 2:	Append local (C|CXX|LD)FLAGS, change _BSD_SOURCE define
-		to _DEFAULT_SOURCE
-diff -ura sfeed.orig/config.mk sfeed.new/config.mk
---- sfeed.orig/config.mk	2019-01-18 00:18:57.872915214 +1100
-+++ sfeed.new/config.mk	2019-01-18 00:19:40.113859873 +1100
-@@ -1,8 +1,8 @@
+Chunk 2:	Append local (C|CXX|LD)FLAGS, use _DEFALUT SOURCE
+diff -ura sfeed.old/config.mk sfeed.new/config.mk
+--- sfeed.old/config.mk	2019-02-26 10:16:47.944146690 +1100
++++ sfeed.new/config.mk	2019-02-26 10:17:47.225309885 +1100
+@@ -1,9 +1,9 @@
  # customize below to fit your system
  
  # paths
 -PREFIX = /usr/local
 -MANPREFIX = ${PREFIX}/man
+-DOCPREFIX = ${PREFIX}/share/doc/sfeed
 +PREFIX = /usr
 +MANPREFIX = ${PREFIX}/share/man
++DOCPREFIX = ${PREFIX}/share/doc/sfeed-git
  
  # compiler and linker
  CC = cc
-diff -ura sfeed.orig/config.mk sfeed.new/config.mk
---- sfeed.orig/config.mk	2019-01-17 23:01:44.402627527 +1100
-+++ sfeed.new/config.mk	2019-01-17 23:14:29.356401258 +1100
-@@ -14,11 +14,11 @@
- #LDFLAGS =
-
- # optimized
--CFLAGS = -O2 -std=c99
--LDFLAGS = -s
-+CFLAGS  += -O2 -std=c99
-+LDFLAGS += -s
+@@ -11,9 +11,9 @@
+ RANLIB = ranlib
  
- # optimized static
- #CFLAGS = -static -O2 -std=c99
- #LDFLAGS = -static -s
+ # use system flags.
+-SFEED_CFLAGS = ${CFLAGS}
+-SFEED_LDFLAGS = ${LDFLAGS}
+-SFEED_CPPFLAGS = -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -D_BSD_SOURCE
++SFEED_CFLAGS   = ${CFLAGS}
++SFEED_LDFLAGS  = ${LDFLAGS}
++SFEED_CPPFLAGS = ${CPPFLAGS} -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -D_DEFAULT_SOURCE
  
--CPPFLAGS = -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -D_BSD_SOURCE
-+CPPFLAGS += -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -D_DEFAULT_SOURCE
+ # debug
+ #SFEED_CFLAGS = -fstack-protector-all -O0 -g -std=c99 -Wall -Wextra -pedantic \
