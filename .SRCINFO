@@ -1,0 +1,15 @@
+pkgbase = speccy
+	pkgdesc = A handy toolkit for OpenAPI, with a linter to enforce quality rules, documentation rendering, and resolution
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = http://speccy.io/
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=8.4.0
+	noextract = speccy-0.9.0.tgz
+	source = https://registry.npmjs.org/speccy/-/speccy-0.9.0.tgz
+	md5sums = f24cea33a49ee441fdb157bc452521e9
+
+pkgname = speccy
+
