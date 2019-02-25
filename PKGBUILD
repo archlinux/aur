@@ -3,14 +3,14 @@
 
 pkgname='perl-log-dispatch-array'
 pkgver='1.003'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="log events to an array (reference)"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-log-dispatch>=0')
 makedepends=()
-checkdepends=('perl-test-deep>=0')
+checkdepends=('perl-test-deep>=0' 'perl-namespace-autoclean' 'perl-specio' 'perl-eval-closure' 'perl-params-validationcompiler' )
 url='http://search.cpan.org/dist/Log-Dispatch-Array'
 source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Log-Dispatch-Array-1.003.tar.gz')
 md5sums=('e4c6caa0c6907fee5562ab8f9ab49021')
