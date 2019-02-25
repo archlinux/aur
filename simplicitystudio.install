@@ -1,0 +1,6 @@
+
+
+## arg 1:  the old package version
+post_remove() {
+	rm -rf /opt/simplicitystudio
+}

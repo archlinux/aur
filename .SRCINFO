@@ -1,22 +1,25 @@
 pkgbase = simplicitystudio
 	pkgdesc = Design tools, documentation, software and support resources for EFM32™, EFM8™, 8051, Wireless MCUs and Wireless SoCs.
 	pkgver = 4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.silabs.com/products/development-tools/software/simplicity-studio
+	install = simplicitystudio.install
 	arch = x86_64
 	license = unknown
-	depends = lib32-gtk2
-	depends = lib32-libxtst
-	depends = lib32-qt4
 	depends = webkitgtk2
+	depends = gtk2
+	depends = libxtst
+	depends = qt4
+	depends = lib32-glibc
+	optdepends = lib32-qt4: for old tools like battery estimator
 	options = !strip
 	backup = opt/simplicitystudio/studio.ini
 	source = https://www.silabs.com/documents/login/software/SimplicityStudio-v4.tgz
 	source = simplicitystudio.sh
 	source = simplicitystudio.desktop
-	sha256sums = ff58b0a78e9fb63cb12ce784b58c83ea62096981f21187c9b200edc0898216f9
+	sha256sums = f053c5ce8796bbb0707fc8ac37adddae2ca9eb2913b382972d26d56f838b8dad
 	sha256sums = bc844e45b04bd73f684206de38b67be186634b63a850cacd1e6ed374ae9c0579
-	sha256sums = c29c27fa0182b3c38e5be0830d634aca6ed6d88109695226471a5ef40165a622
+	sha256sums = 498146460e23f86f7f0fb5512bc5b2c4f77820d72dc592da8ff5015a5c7cf614
 
 pkgname = simplicitystudio
 
