@@ -1,6 +1,6 @@
 pkgbase = godot-beta-bin
 	pkgdesc = The latest official beta release of the Godot game engine
-	pkgver = 3.1_beta6
+	pkgver = 3.1_beta7
 	pkgrel = 1
 	url = https://godotengine.org
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = godot-beta-bin
 	provides = godot-beta-bin
 	source = godot-beta.desktop
 	sha256sums = 53912a2e312559455045e8e83f6e239a2cbc6f891ebb393f441c772063bb9497
-	source_i686 = https://downloads.tuxfamily.org/godotengine/3.1/beta6/Godot_v3.1-beta6_x11.32.zip
-	sha256sums_i686 = 8a54962c8f6d8510e4f9e20fd350d9d496439f98f52680654b24d89e5941a9dc
-	source_x86_64 = https://downloads.tuxfamily.org/godotengine/3.1/beta6/Godot_v3.1-beta6_x11.64.zip
-	sha256sums_x86_64 = c60042f5e45af82647385ca4277a7acb11d3339a95eb396bcf51daa1e70825ab
+	source_i686 = https://downloads.tuxfamily.org/godotengine/3.1/beta7/Godot_v3.1-beta7_x11.32.zip
+	sha256sums_i686 = 50b5b49382c8d3e2734a4a99e26145b96866baca126f5afcd966cc554bce05da
+	source_x86_64 = https://downloads.tuxfamily.org/godotengine/3.1/beta7/Godot_v3.1-beta7_x11.64.zip
+	sha256sums_x86_64 = 97b7fc154ca991b21b4d6a7d56d82d9fd885e16c1fc04d1f7738672cc2a8421a
 
 pkgname = godot-beta-bin
 
