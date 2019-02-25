@@ -20,6 +20,7 @@ build() {
 package() {
   cd wslu
 
+  makedir "${pkgdir}"
   install -Dm 755 out/* "${pkgdir}"/usr/bin
   install -Dm 555 docs/* "${pkgdir}"/usr/share/man/man1
   install -Dm 555 src/etc/* "${pkgdir}"/usr/share/wslu
