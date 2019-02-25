@@ -2,7 +2,7 @@
 # Maintainer: Swift Geek
 pkgname=bluez-git
 _pkgname=bluez
-pkgver=5.45.r17.gd6c07ecf2
+pkgver=5.50.r295.g9e6da22ed
 pkgrel=1
 epoch=1
 pkgdesc="Libraries and tools for the Bluetooth protocol stack"
@@ -22,7 +22,7 @@ conflicts=($_pkgname
 	   $_pkgname-hcidump
            'obexd-client'
 	   'obexd-server')
-provides=($_pkgname
+provides=($_pkgname=${pkgver%%.r*}
           $_pkgname-utils
 	  $_pkgname-libs
 	  $_pkgname-cups

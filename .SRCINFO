@@ -1,6 +1,6 @@
 pkgbase = bluez-git
 	pkgdesc = Libraries and tools for the Bluetooth protocol stack
-	pkgver = 5.45.r17.gd6c07ecf2
+	pkgver = 5.50.r295.g9e6da22ed
 	pkgrel = 1
 	epoch = 1
 	url = http://www.bluez.org/
@@ -12,7 +12,7 @@ pkgbase = bluez-git
 	depends = libdbus
 	depends = glib2
 	optdepends = cups: CUPS backend
-	provides = bluez
+	provides = bluez=5.50
 	provides = bluez-utils
 	provides = bluez-libs
 	provides = bluez-cups
