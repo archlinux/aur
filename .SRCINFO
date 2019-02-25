@@ -1,0 +1,28 @@
+pkgbase = pass-wl-clipboard
+	pkgdesc = Stores, retrieves, generates, and synchronizes passwords securely (wl-clipboard support)
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = https://www.passwordstore.org/
+	arch = any
+	license = GPL2
+	checkdepends = git
+	depends = xclip
+	depends = bash
+	depends = gnupg
+	depends = tree
+	depends = wl-clipboard
+	optdepends = git: for Git support
+	optdepends = dmenu: for passmenu
+	optdepends = qrencode: for QR code support
+	provides = passmenu
+	provides = pass
+	conflicts = passmenu
+	conflicts = pass
+	replaces = passmenu
+	source = https://git.zx2c4.com/password-store/snapshot/password-store-1.7.3.tar.xz
+	source = clip-Add-support-for-wl-clipboard.patch
+	sha256sums = 2b6c65846ebace9a15a118503dcd31b6440949a30d3b5291dfb5b1615b99a3f4
+	sha256sums = 620ea56e441f7ba424e9eddb4bbbe67b120b7e0cffd42006fff2d28279169311
+
+pkgname = pass-wl-clipboard
+
