@@ -6,7 +6,7 @@
 # Maintainer: Karsten Pufahl <contact <AT> karstenpufahl.de>
 pkgname=stm32cubemx
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="graphical software configuration tool for STM32 microcontrollers that allows generating C initialization code"
 arch=(any)
@@ -42,8 +42,8 @@ package() {
 	cp -r "${srcdir}/." "${pkgdir}/opt/stm32cubemx"
    install -Dm 755 "${srcdir}/stm32cubemx.sh" "${pkgdir}/usr/bin/${pkgname}"
 	#icon and desktop file
-	convert "${srcdir}/help/STM32CubeMX.ico" "${srcdir}/${pkgname}.png"
-	install -Dm 644 "${srcdir}/${pkgname}-6.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	convert "${srcdir}/help/STM32CubeMX.ico[17]" "${srcdir}/${pkgname}.png"
+	install -Dm 644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 	install -Dm 644 "${srcdir}/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 	
 	#license
