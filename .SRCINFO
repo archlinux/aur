@@ -3,10 +3,10 @@ pkgbase = knightos-sdk
 	pkgver = 2.0.9
 	pkgrel = 1
 	url = https://github.com/KnightOS/sdk
-	arch = i386
 	arch = x86_64
 	license = MIT
 	depends = python
+	depends = python-setuptools
 	depends = python-requests
 	depends = python-docopt
 	depends = genkfs
@@ -20,8 +20,8 @@ pkgbase = knightos-sdk
 	depends = scas
 	optdepends = git: version control support
 	optdepends = mercurial: version control support
-	source = https://github.com/KnightOS/sdk/archive/2.0.9.tar.gz
-	sha1sums = 3fe1e0c4c03f0c9b69c11f69161226c3db525c29
+	source = knightos-sdk-2.0.9.tar.gz::https://github.com/KnightOS/sdk/archive/2.0.9.tar.gz
+	sha256sums = 0fd7d1322aa925e06fa595bf52e4a1d04f7661b975d37bb9b78ff481d8ad63bc
 
 pkgname = knightos-sdk
 
