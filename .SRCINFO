@@ -1,0 +1,15 @@
+pkgbase = python-qgrid
+	pkgdesc = An Interactive Grid for Sorting and Filtering DataFrames in Jupyter Notebook
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/quantopian/qgrid
+	arch = any
+	license = Apache
+	depends = jupyter-notebook
+	depends = python-pandas
+	depends = python-ipywidgets
+	source = https://files.pythonhosted.org/packages/source/q/qgrid/qgrid-1.1.1.tar.gz
+	sha256sums = 98cb1184bd53b9cb27ef88d1b8f3f282a328760357281c402d4c53ac277d1c6b
+
+pkgname = python-qgrid
+
