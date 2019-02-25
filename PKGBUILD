@@ -1,7 +1,7 @@
 # Maintainer: David Hill <davidph55@verizon.net>
 
 pkgname=gdcc
-pkgver=0.14.4
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Game Data Compiler Collection"
 arch=('i686' 'x86_64')
