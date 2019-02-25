@@ -7,4 +7,10 @@ post_install() {
 
 post_upgrade() {
   post_install
+  [[ $(id -g tor) = '43' ]] || {
+        echo -n ">>> Updating tor user..."
+        groupmod --gid 43 tor
+        usermod  --uid 43 tor
+        echo " done"
+    }
 }

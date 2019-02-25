@@ -6,7 +6,7 @@
 #_malloc=jemalloc # tcmalloc
 
 pkgname=tor-git
-pkgver=0.4.1.0.alpha.r86.g9ac8c85
+pkgver=0.4.1.0.alpha.r93.g69238ca
 pkgrel=1
 pkgdesc="An anonymizing overlay network (development version)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -82,18 +82,19 @@ package() {
 
     rm -f "$pkgdir/etc/tor/tor-tsocks.conf"
     rm -f "$pkgdir/usr/bin/torify"
+
     install -dm755 "$pkgdir/etc/tor"
     install -dm750 "$pkgdir/etc/tor/torrc.d"
+
     install -Dm640 "$srcdir/torrc"             "$pkgdir/etc/tor/torrc"
     install -Dm640 "$srcdir/nodes"             "$pkgdir/etc/tor/torrc.d/nodes"
     install -Dm640 "$srcdir/bridge"            "$pkgdir/etc/tor/torrc.d/bridge"
     install -Dm640 "$srcdir/transparent_proxy" "$pkgdir/etc/tor/torrc.d/transparent_proxy"
-    install -Dm644 "$srcdir/tor.logrotate" "$pkgdir/etc/logrotate.d/tor"
-    install -Dm644 "$srcdir/tor.service"   "$pkgdir/usr/lib/systemd/system/tor.service"
-    install -Dm644 "$srcdir/tor.tmpfiles"  "$pkgdir/usr/lib/tmpfiles.d/tor.conf"
-    install -Dm644 "$srcdir/tor.sysusers"  "$pkgdir/usr/lib/sysusers.d/tor.conf"
-    install -Dm644 LICENSE                 "$pkgdir/usr/share/licenses/tor/LICENSE"
+    install -Dm644 "$srcdir/tor.logrotate"     "$pkgdir/etc/logrotate.d/tor"
+    install -Dm644 "$srcdir/tor.service"       "$pkgdir/usr/lib/systemd/system/tor.service"
+    install -Dm644 "$srcdir/tor.tmpfiles"      "$pkgdir/usr/lib/tmpfiles.d/tor.conf"
+    install -Dm644 "$srcdir/tor.sysusers"      "$pkgdir/usr/lib/sysusers.d/tor.conf"
+    install -Dm644 LICENSE                     "$pkgdir/usr/share/licenses/tor/LICENSE"
 
     chown -R 43:43 "$pkgdir"/etc/tor
-    chmod 755 "$pkgdir"/etc/tor
 }
