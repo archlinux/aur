@@ -1,7 +1,7 @@
 # Contributor: janezz55
 pkgname=dropbear-socket
 pkgver=201902
-pkgrel=3
+pkgrel=4
 pkgdesc='.socket file for the dropbear ssh server (example: systemctl enable dropbear-socket@22.socket)'
 url='https://matt.ucc.asn.au/dropbear/dropbear.html'
 arch=('any')
@@ -11,7 +11,6 @@ source=(dropbear-socket@.socket dropbear-socket@.service)
 sha512sums=('SKIP' 'SKIP')
 
 package() {
-  # usage: systemctl start dropbear-socket@22.socket
   install -m 755 -d "${pkgdir}/usr/lib/systemd/system"
   install -m 644 -t "${pkgdir}/usr/lib/systemd/system" \
           "${srcdir}/dropbear-socket@.service" \
