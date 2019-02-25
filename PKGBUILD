@@ -20,8 +20,8 @@ makedepends=('python-setuptools')
 replaces=('python-dbxfs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.patch")
-sha256sums=('80f0b23bafba3428f30f670560d32bae'
-         '3bf993bef07b19ff2bafec3eeb4ff72a')
+sha256sums=('9bf6738968c09edb650accb8ff7e6ee9b48d44ac31b95f5fcf0cdc06331cde05'
+            'cc238c6562ec327efeba4f48e4523808338658b2b1f38b1fb6a901ba938c4868')
 
 prepare() {
 	cd $pkgname-$pkgver
