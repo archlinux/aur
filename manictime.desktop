@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=ManicTime
+Comment=ManicTime automatically records your computer usage.
+Icon=manictime
+Categories=Development;Office;Utility
+Exec=mono /opt/manictime/ManicTime.exe
+Terminal=false
