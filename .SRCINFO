@@ -1,4 +1,4 @@
-pkgbase = pkgbase
+pkgbase = loli-base
 	pkgdesc = Loli is a embedded programming language
 	pkgver = 0.8
 	pkgrel = 1
