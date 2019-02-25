@@ -1,7 +1,8 @@
 pkgbase = manictime-bin
 	pkgdesc = ManicTime automatically records your computer usage.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
+	url = https://www.manictime.com/linux/download
 	arch = x86_64
 	license = custom:commercial
 	depends = mono

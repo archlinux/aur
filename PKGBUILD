@@ -4,9 +4,10 @@ pkgname=manictime-bin
 _pkgname=manictime
 pkgver=1.0.1
 _pkgver=1_0_1_0
-pkgrel=1
+pkgrel=2
 pkgdesc='ManicTime automatically records your computer usage.'
 arch=('x86_64')
+url="https://www.manictime.com/linux/download"
 license=('custom:commercial')
 depends=('mono' 'libxss' 'libappindicator-gtk3')
 
