@@ -4,13 +4,13 @@
 # Maintainer: Andre Klitzing <aklitzing () gmail () com>
 # AUR Category: devel
 pkgname=tortoisehg
-pkgver=4.8.1
+pkgver=4.9
 pkgrel=1
 #_pkgchangeset=8cd204ac208a
 pkgdesc="Graphical tools for Mercurial"
 url="https://tortoisehg.bitbucket.io"
 license=("GPL")
-depends=('python2' 'mercurial>=4.7' 'mercurial<4.9' 'python2-qscintilla-qt5' 'python2-iniparse' 'qt5-svg')
+depends=('python2' 'mercurial>=4.8' 'mercurial<4.10' 'python2-qscintilla-qt5' 'python2-iniparse' 'qt5-svg')
 builddepends=(python2)
 arch=('any')
 optdepends=('python2-pygments: syntax highlighting'
@@ -41,4 +41,4 @@ package() {
 	rm -f "${pkgdir}/usr/lib/python2.7/site-packages/hgext3rd/__init__.pyc"
 }
 
-sha256sums=('866d3494278bd085dab41128132f75eaf149936aa6dd3c20450b0d12ebd94783')
+sha256sums=('4c7eb58cf6d7155bb06d4e72e644d30385acf5dc03d71744683641daaa0fca06')
