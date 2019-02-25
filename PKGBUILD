@@ -14,7 +14,7 @@ optdepends=(
 	"git: version control support"
 	"mercurial: version control support"
 )
-arch=("x86_64")
+arch=("any")
 url='https://github.com/KnightOS/sdk'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/KnightOS/$_pkgname/archive/$pkgver.tar.gz")
 sha256sums=('0fd7d1322aa925e06fa595bf52e4a1d04f7661b975d37bb9b78ff481d8ad63bc')
