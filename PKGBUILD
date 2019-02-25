@@ -7,7 +7,7 @@ pkgdesc='Builds and signs OS upgrades for Texas Instruments calculators'
 makedepends=("cmake" "asciidoc")
 arch=("x86_64")
 url='https://github.com/KnightOS/mktiupgrade'
-source=("https://github.com/KnightOS/mktiupgrade/archive/${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/KnightOS/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('7b02c6eac77e641fdab196fa4f88ee4fb791ae92d1a518767080f92941823bd4')
 
 build() {
