@@ -1,23 +1,23 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname="python-asyncio_redis"
-_name=asyncio_redis
-pkgver=0.14.3
+_pkgname=asyncio_redis
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="PEP 3156 implementation of the redis protocol."
 arch=("any")
 url="https://pypi.python.org/pypi/asyncio_redis"
-license=("2 clause BSD")
+license=("BSD-2-Clause")
 depends=("python")
-makedepends=("python-distribute")
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('fae40dc59c7268dfb9a44542cb3f48a885c8f5f7438b13f0dfec1fbd10a82369')
+makedepends=("python-setuptools")
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('067dbc251ab84d6e53ef8b33dbfd8afd62987ab08f72ca922f6870c96be53b54')
 
 build() {
-	cd "${srcdir}/${_name}-${pkgver}"
+	cd "$_pkgname-$pkgver"
 	python ./setup.py build
 }
 
 package() {
-	cd "${srcdir}/${_name}-${pkgver}"
+	cd "$_pkgname-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1
 }
