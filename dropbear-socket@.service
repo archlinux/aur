@@ -2,5 +2,5 @@
 Description=dropbear SSH service (socket-activated)
 
 [Service]
-ExecStart=/usr/bin/dropbear -iwgRT 1
+ExecStart=/usr/bin/dropbear -iwgRT1 -K10
 StandardInput=socket
