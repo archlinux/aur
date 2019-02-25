@@ -1,6 +1,6 @@
 pkgbase = pacaur
 	pkgdesc = An AUR helper that minimizes user interaction (fork)
-	pkgver = 4.8.2
+	pkgver = 4.8.3
 	pkgrel = 1
 	url = https://github.com/E5ten/pacaur
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = pacaur
 	depends = git
 	depends = jq
 	backup = etc/xdg/pacaur/config
-	source = pacaur-4.8.2.tar.gz::https://github.com/E5ten/pacaur/archive/4.8.2.tar.gz
-	sha256sums = ac95600d35f8472127e2cc02f6fe449560f26e3d12136483053953c206b583a3
+	source = pacaur-4.8.3.tar.gz::https://github.com/E5ten/pacaur/archive/4.8.3.tar.gz
+	sha256sums = 02356889527677e8a7b573de307a9890ba559736ab800356692a7e489e2c1242
 
 pkgname = pacaur
 
