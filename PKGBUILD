@@ -20,4 +20,6 @@ build() {
 package() {
 	cd "$srcdir"/build
 	DESTDIR="$pkgdir" ninja install
+	install -Dm644 "$srcdir"/"$pkgname-$pkgver"/LICENSE \
+		"$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
