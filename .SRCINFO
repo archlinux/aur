@@ -1,7 +1,7 @@
 pkgbase = plantuml-ascii-math
 	pkgdesc = Plantuml language extension to allow use AsciiMath or JLaTeXMath notation
 	pkgver = 20171116
-	pkgrel = 1
+	pkgrel = 2
 	url = http://plantuml.com/ascii-math
 	arch = any
 	license = GPL
