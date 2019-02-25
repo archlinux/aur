@@ -1,16 +1,16 @@
 pkgbase = ripcord
 	pkgdesc = Qt-based Discord and Slack client
-	pkgver = 0.3.10
+	pkgver = 0.3.11
 	pkgrel = 1
 	url = https://cancel.fm/ripcord/
 	arch = x86_64
 	license = custom
 	depends = fuse2
 	options = !strip
-	source = https://cancel.fm/dl/Ripcord-0.3.10-x86_64.AppImage
-	source = https://cancel.fm/dl/Ripcord-0.3.10-x86_64.AppImage.asc
+	source = https://cancel.fm/dl/Ripcord-0.3.11-x86_64.AppImage
+	source = https://cancel.fm/dl/Ripcord-0.3.11-x86_64.AppImage.asc
 	validpgpkeys = ABBAD1CB484F53024CF5868B69332F9203F21F5C
-	sha256sums = 6d940a438fcfd96ccf912698bf0b025bd114c3ba1c1d95a56095b8ea2f97fca2
+	sha256sums = bfcc954387827f578af38293a8bdf3583e59e3705170350ab298833d59e2701f
 	sha256sums = SKIP
 
 pkgname = ripcord
