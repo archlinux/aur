@@ -3,12 +3,11 @@ pkgbase = sass
 	pkgver = 1.3.8
 	pkgrel = 2
 	url = https://github.com/KnightOS/sass
-	arch = i386
 	arch = x86_64
 	license = MIT
 	depends = mono
-	source = https://github.com/KnightOS/sass/archive/1.3.8.tar.gz
-	sha1sums = 06687b27aae8e30e19b7aea8d735d7070251bc3b
+	source = sass-1.3.8.tar.gz::https://github.com/KnightOS/sass/archive/1.3.8.tar.gz
+	sha256sums = dd36c15c74f425d855632996afbc124c26a507fd183df42d7dfecd7b4f0221c2
 
 pkgname = sass
 
