@@ -1,4 +1,5 @@
 pkg/
 src/
 windows2usb/
+uefi-ntfs.img
 *.pkg.tar*
