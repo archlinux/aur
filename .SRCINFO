@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-ea-bin
 	pkgdesc = Java OpenJDK 12 Early-Access Build.
-	pkgver = 12b32
+	pkgver = 12b33
 	pkgrel = 1
 	url = http://jdk.java.net/12
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = java-openjdk-ea-bin
 	provides = java-runtime-openjdk=12
 	provides = java-runtime-headless=12
 	provides = java-runtime-headless-openjdk=12
-	source = https://download.java.net/java/GA/jdk12/32/GPL/openjdk-12_linux-x64_bin.tar.gz
-	sha256sums = 4bf3d9f4bbbb8cb9a0d96ceade42df8b2ca85f7853fbcd08274df2b7d2cef074
+	source = https://download.java.net/java/GA/jdk12/33/GPL/openjdk-12_linux-x64_bin.tar.gz
+	sha256sums = b43bc15f4934f6d321170419f2c24451486bc848a2179af5e49d10721438dd56
 
 pkgname = java-openjdk-ea-bin
 
