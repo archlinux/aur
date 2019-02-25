@@ -3,7 +3,6 @@ pkgbase = z80e
 	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/KnightOS/z80e
-	arch = i386
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
@@ -11,7 +10,7 @@ pkgbase = z80e
 	depends = sdl
 	depends = scas
 	source = https://github.com/KnightOS/z80e/archive/0.4.0.tar.gz
-	sha1sums = f8c5eccbf3f0989bbdfdd35f1ab1b4e3d1895e85
+	md5sums = cef93422186f55541be34aee0004bbb8
 
 pkgname = z80e
 

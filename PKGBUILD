@@ -6,20 +6,18 @@ license=('MIT')
 pkgdesc='An emulation library and client programs for z80 calculators'
 depends=("sdl" "scas")
 makedepends=("cmake" "asciidoc")
-arch=("i386" "x86_64")
+arch=("x86_64")
 url='https://github.com/KnightOS/z80e'
 source=("https://github.com/KnightOS/z80e/archive/${pkgver}.tar.gz")
-sha1sums=('f8c5eccbf3f0989bbdfdd35f1ab1b4e3d1895e85')
+md5sums=('cef93422186f55541be34aee0004bbb8')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-
+	cd "${pkgname}-${pkgver}"
 	cmake -Denable-sdl=YES -DCMAKE_INSTALL_PREFIX=/usr .
 	make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-
-	DESTDIR="$pkgdir/" make install
+	cd "${pkgname}-${pkgver}"
+	DESTDIR="$pkgdir" make install
 }
