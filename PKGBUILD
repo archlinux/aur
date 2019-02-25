@@ -14,6 +14,7 @@ depends=('ocl-icd'
 makedepends=('git'
              'opencl-headers'
              'meson'
+             'boost'
              )
 conflicts=("vapoursynth-plugin-${_plug}")
 provides=("vapoursynth-plugin-${_plug}")
