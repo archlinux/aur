@@ -4,10 +4,10 @@
 # Creator Blade <contact@blade-group.com>
 
 # Made with https://github.com/NicolasGuilloux/blade-shadow-beta
-_commit=76fea495eda10a2a7edef93609d176ac141c648e
+_commit=9add3366d25530d51d168608c54b5339b64d2a4e
 pkgname=shadow-beta
 pkgver=0.9.22
-pkgrel=2
+pkgrel=4
 pkgdesc="Shadow launcher"
 arch=('x86_64')
 url="http://shadow.tech"
@@ -16,8 +16,8 @@ depends=('desktop-file-utils' 'freetype2' 'libuv' 'gconf' 'hicolor-icon-theme' '
 provides=(shadow-beta)
 source=('https://macosx.update.blade-group.fr/mpl/linux/beta/bionic/shadow-alpha-bionic.zip' 'https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/'${_commit}'/AppImage/wrapper.pl' 'https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/'${_commit}'/AppImage/report.pl')
 md5sums=('22bb2b72fe91d35fe6fe7311e7da091e'
-         'acc9366ee43a7f4300969009b688bb0c'
-         '65b5ab84660ceddac9068765243ba432')
+         SKIP
+         SKIP)
 install=$pkgname.install
 
 # Build the package
