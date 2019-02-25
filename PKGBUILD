@@ -1,8 +1,8 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 _pkgname=pytest-describe
 pkgname=python-$_pkgname
-pkgver=0.11.1
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="Describe-style plugin for pytest"
 arch=('any')
 url="https://github.com/ropez/pytest-describe"
@@ -11,7 +11,7 @@ depends=('python-pytest')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('bd6be131452b7822c872735ffe53ce3931b3b80cbbad1647c2b482cc9ef3d00e')
+sha256sums=('569bda96401fe512f4f345f33fd23fa4d718639d42afac62bc03254b5f2b3fdf')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"

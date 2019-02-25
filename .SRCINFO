@@ -1,15 +1,15 @@
 pkgbase = python-pytest-describe
 	pkgdesc = Describe-style plugin for pytest
-	pkgver = 0.11.1
-	pkgrel = 2
+	pkgver = 0.12.0
+	pkgrel = 1
 	url = https://github.com/ropez/pytest-describe
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python-pytest
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/p/pytest-describe/pytest-describe-0.11.1.tar.gz
-	sha256sums = bd6be131452b7822c872735ffe53ce3931b3b80cbbad1647c2b482cc9ef3d00e
+	source = https://files.pythonhosted.org/packages/source/p/pytest-describe/pytest-describe-0.12.0.tar.gz
+	sha256sums = 569bda96401fe512f4f345f33fd23fa4d718639d42afac62bc03254b5f2b3fdf
 
 pkgname = python-pytest-describe
 
