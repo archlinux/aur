@@ -5,20 +5,18 @@ pkgrel=1
 license=('MIT')
 pkgdesc="SirCmpwn's assembler and linker"
 makedepends=("cmake" "asciidoc")
-arch=("i386" "x86_64")
+arch=("x86_64")
 url='https://github.com/KnightOS/scas'
-source=("https://github.com/KnightOS/scas/archive/${pkgver}.tar.gz")
-sha1sums=('f35611db2abf3c785a71aa3c04cade72eca13cb9')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/KnightOS/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('ed672209911cdb1f617fdace09d5604347fd4598880d3809eb344ddc1e73e965')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-
+	cd "$pkgname-$pkgver"
 	cmake . -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-
-	DESTDIR="$pkgdir/" make install
+	cd "$pkgname-$pkgver"
+	DESTDIR="$pkgdir" make install
 }
