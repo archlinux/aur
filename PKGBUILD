@@ -8,7 +8,7 @@ depends=("sdl" "scas")
 makedepends=("cmake" "asciidoc")
 arch=("x86_64")
 url='https://github.com/KnightOS/z80e'
-source=("https://github.com/KnightOS/z80e/archive/${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/KnightOS/z80e/archive/$pkgver.tar.gz")
 md5sums=('cef93422186f55541be34aee0004bbb8')
 
 build() {
