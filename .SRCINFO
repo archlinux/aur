@@ -1,6 +1,6 @@
 pkgbase = sdrangel-git
 	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend.
-	pkgver = 4.0.3.r0.2670c17f
+	pkgver = 4.4.5.r2.b8ed5a77
 	pkgrel = 1
 	url = https://github.com/f4exb/sdrangel
 	arch = x86_64
@@ -12,20 +12,26 @@ pkgbase = sdrangel-git
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
+	makedepends = ffmpeg
+	makedepends = airspy
+	makedepends = bladerf
+	makedepends = hackrf
+	makedepends = limesuite
+	makedepends = rtl-sdr
+	makedepends = boost
 	depends = pkg-config
-	depends = boost
 	depends = log4cpp
 	depends = opencv
-	depends = qt5-base>=5.9
-	depends = qt5-tools
-	depends = qt5-multimedia
 	depends = fftw
+	depends = ffmpeg
+	depends = cm256cc
+	depends = dsdcc
+	depends = pulseaudio
 	depends = lz4
 	depends = nanomsg
-	depends = ffmpeg>=3.1
-	depends = cm256cc
-	depends = dsdcc>=1.8.3
-	depends = pulseaudio
+	depends = qt5-base
+	depends = qt5-tools
+	depends = qt5-multimedia
 	optdepends = ffmpeg: DATV demodulator
 	optdepends = libmirisdr4: SDRPlay support
 	optdepends = rtl-sdr: RTLSDR support
@@ -37,7 +43,9 @@ pkgbase = sdrangel-git
 	provides = sdrangel
 	conflicts = sdrangel
 	source = git+https://github.com/f4exb/sdrangel
-	sha256sums = SKIP
+	source = sdrangel-opencv4.patch
+	sha512sums = SKIP
+	sha512sums = 8c516f85862fa4d79acfc3c4dd54a9cbdc0b53745d611651a741f5c1239f0ded2ca62121361ca5ccf62146f457bb598e4b7036f6a1decb64d86cdc51b6ec1203
 
 pkgname = sdrangel-git
 
