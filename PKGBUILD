@@ -1,7 +1,8 @@
 # Maintainer: Sherlock Holo <sherlockya@gmail.com>
 pkgname=camouflage
-_pkgver=0.6.1
-pkgver=v${_pkgver}
+epoch=1
+pkgver=0.6.1
+_pkgver=v${pkgver}
 pkgrel=1
 pkgdesc="a mux+websocket+TLS proxy"
 arch=('x86_64')
@@ -10,7 +11,7 @@ depends=()
 makedepends=('go' 'git')
 url='https://github.com/Sherlock-Holo/camouflage'
 source=(
-	"https://github.com/Sherlock-Holo/camouflage/archive/$pkgver.tar.gz"
+	"https://github.com/Sherlock-Holo/camouflage/archive/$_pkgver.tar.gz"
     "camouflage.install"
 )
 
@@ -28,8 +29,8 @@ build() {
 
 	export GOPATH="$srcdir/go"
 
-    tar -xvf $pkgver.tar.gz
-    cd "$srcdir/$pkgname-$_pkgver"
+    tar -xvf $_pkgver.tar.gz
+    cd "$srcdir/$pkgname-$pkgver"
 
 	msg2 "Downloading dependencies"
     export GO111MODULE=on
@@ -47,12 +48,12 @@ build() {
 
 package() {
     mkdir -p $pkgdir/usr/bin
-	install -D $srcdir/$pkgname-$_pkgver/camouflage $pkgdir/usr/bin/camouflage
+	install -D $srcdir/$pkgname-$pkgver/camouflage $pkgdir/usr/bin/camouflage
 
     mkdir -p $pkgdir/etc/camouflage
-    install -Dm644 $srcdir/$pkgname-$_pkgver/config/example.toml $pkgdir/etc/camouflage/
+    install -Dm644 $srcdir/$pkgname-$pkgver/config/example.toml $pkgdir/etc/camouflage/
 
 	mkdir -p $pkgdir/usr/lib/systemd/system
-    install $srcdir/$pkgname-$_pkgver/systemd/camouflage-{client,server}@.service \
+    install $srcdir/$pkgname-$pkgver/systemd/camouflage-{client,server}@.service \
     -Dm644 $pkgdir/usr/lib/systemd/system/
 }
