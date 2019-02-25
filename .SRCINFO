@@ -1,6 +1,6 @@
 pkgbase = plantuml
 	pkgdesc = Component that allows to quickly write uml diagrams
-	pkgver = 1.2019.0
+	pkgver = 1.2019.1
 	pkgrel = 1
 	url = http://plantuml.com/
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = plantuml
 	makedepends = java-environment=8
 	depends = graphviz
 	optdepends = plantuml-ascii-math
-	source = http://downloads.sourceforge.net/project/plantuml/1.2019.0/plantuml-1.2019.0.tar.gz
+	source = http://downloads.sourceforge.net/project/plantuml/1.2019.1/plantuml-1.2019.1.tar.gz
 	source = plantuml.run
-	sha256sums = 161108a41d7cd10354450e9758929d9226ac238ee231f663e7c0bac1c13b9a57
-	sha256sums = dff39e4d8dd8eedb58c1b0a0cf64ab2c404b713e3a42fa5fdf0b6792ca382ed5
+	sha256sums = 5c4ccdb0c33f64cfee87391cdb5b92f0920312fd6a9e4163dad4401777022288
+	sha256sums = a3fb528f4c719cfd0ff6154c60fd54ce341011d132caf950cc30af4989f6aac8
 
 pkgname = plantuml
 	depends = graphviz
