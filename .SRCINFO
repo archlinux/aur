@@ -1,12 +1,11 @@
 pkgbase = intel-mkl-slim
 	pkgdesc = Intel Math Kernel Library (x86_64 shared libraries and headers only)
 	pkgver = 2019.2.187
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.intel.com/en-us/mkl
 	install = intel-mkl.install
 	arch = x86_64
 	license = custom:ISSL
-	makedepends = cpio
 	optdepends = intel-tbb: Intel® threading implementation
 	provides = intel-mkl
 	conflicts = intel-mkl

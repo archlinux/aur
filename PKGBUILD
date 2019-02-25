@@ -2,13 +2,12 @@
 pkgname=intel-mkl-slim
 pkgver_hyphen=2019.2-187
 pkgver=${pkgver_hyphen/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel Math Kernel Library (x86_64 shared libraries and headers only)"
 arch=(x86_64)
 url="https://software.intel.com/en-us/mkl"
 license=("custom:ISSL")
 depends=()
-makedepends=(cpio)
 optdepends=('intel-tbb: Intel® threading implementation')
 provides=(intel-mkl)
 conflicts=(intel-mkl)
