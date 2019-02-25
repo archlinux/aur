@@ -1,7 +1,7 @@
 # Contributor: janezz55
 pkgname=dropbear-socket
 pkgver=201902
-pkgrel=5
+pkgrel=6
 pkgdesc='.socket file for the dropbear ssh server (example: systemctl enable dropbear-socket@22.socket)'
 url='https://matt.ucc.asn.au/dropbear/dropbear.html'
 arch=('any')
