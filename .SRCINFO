@@ -1,0 +1,21 @@
+pkgbase = brother-mfc-j650dw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J650DW
+	pkgver = 3.0
+	pkgrel = 3
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	install = brother-mfc-j650dw.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = deb2targz
+	makedepends = perl
+	depends = a2ps
+	depends = cups
+	depends = lib32-glibc
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfcj650dwlpr-3.0.0-1.i386.deb
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfcj650dwcupswrapper-3.0.0-1.i386.deb
+	md5sums = 02ed3f39cc5727e935c12b58e7c12276
+	md5sums = 3273138b49ad2218576126cffc43028d
+
+pkgname = brother-mfc-j650dw
+
