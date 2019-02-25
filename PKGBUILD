@@ -3,7 +3,7 @@
 
 pkgname='perl-log-dispatch-array'
 pkgver='1.003'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="log events to an array (reference)"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -18,7 +18,7 @@ sha512sums=('00482172dc41355de5a27f7ae167c1f2c8644c41a2484e4fd5709765ab6a413d15e
 _distdir="Log-Dispatch-Array-1.003"
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
       PERL_AUTOINSTALL=--skipdeps                            \
       PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
@@ -27,14 +27,14 @@ build() {
     cd "$srcdir/$_distdir"
     /usr/bin/perl Makefile.PL
     make
-  )
+  
 }
 
 check() {
   cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
-  )
+  
 }
 
 package() {

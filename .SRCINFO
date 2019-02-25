@@ -1,7 +1,7 @@
 pkgbase = perl-log-dispatch-array
 	pkgdesc = log events to an array (reference)
 	pkgver = 1.003
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/dist/Log-Dispatch-Array
 	arch = any
 	license = PerlArtistic
