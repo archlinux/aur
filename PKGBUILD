@@ -53,16 +53,16 @@ pkgver () {
 
 prepare() {
      cd tor
+
+     [[ $_with_rust ]] &&
+        git submodule update --init --recursive
+
     ./autogen.sh
 }
 
 build() {
     cd tor
-
-    [[ $_with_rust ]] && {
-        git submodule update --init --recursive
-        export TOR_RUST_DEPENDENCIES="$srcdir/tor/src/ext/rust/crates"
-    }
+    export TOR_RUST_DEPENDENCIES="$srcdir/tor/src/ext/rust/crates"
 
     ./configure $_options \
         --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
