@@ -1,14 +1,13 @@
 # Maintainer : Drew DeVault <sir@cmpwn.com>
-
 pkgname=samurai
 pkgver=0.5
 pkgrel=1
 pkgdesc='ninja-compatible build tool written in C'
-arch=('i686' 'x86_64')
+arch=("x86_64")
 url='https://github.com/michaelforney/samurai'
-license=('MIT')
+license=("MIT")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/michaelforney/samurai/archive/$pkgver.tar.gz")
-md5sums=('1ec644e673773fe18857f6c4cc49d568')
+sha256sums=('a00ef21662719c5e4a18481c8e1b572309ddf47e7087bd5db5664f47352cbb40')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -18,4 +17,5 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     make install PREFIX=/usr DESTDIR="$pkgdir"
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 } 
