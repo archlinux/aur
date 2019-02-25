@@ -14,10 +14,10 @@
 #                                                                             #
 ###############################################################################
 
-API=17
+API=18
 
 pkgname=kodi-addon-pvr-vdr-vnsi-git
-pkgver=r495.2a90c2f
+pkgver=r613.9e4d93a
 pkgrel=1
 pkgdesc='VDR VNSI PVR client addon for Kodi'
 arch=('armv7h' 'i686' 'x86_64')
