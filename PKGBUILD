@@ -1,7 +1,7 @@
 # Contributor: janezz55
 pkgname=dropbear-socket
 pkgver=201902
-pkgrel=1
+pkgrel=2
 pkgdesc='systemd .socket file for dropbear ssh server'
 url='https://matt.ucc.asn.au/dropbear/dropbear.html'
 arch=('any')
