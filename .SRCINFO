@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gdcc
 	pkgdesc = Game Data Compiler Collection (mingw-w64)
-	pkgver = 0.14.4
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = http://github.com/DavidPH/GDCC
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mingw-w64-gdcc
 	options = !strip
 	options = !buildflags
 	options = !staticlibs
-	source = mingw-w64-gdcc::git+https://github.com/DavidPH/GDCC.git#tag=v0.14.4
+	source = mingw-w64-gdcc::git+https://github.com/DavidPH/GDCC.git#tag=v0.15.0
 	sha256sums = SKIP
 
 pkgname = mingw-w64-gdcc

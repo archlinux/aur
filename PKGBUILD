@@ -1,7 +1,7 @@
 # Maintainer: David Hill <davidph55@verizon.net>
 
 pkgname=mingw-w64-gdcc
-pkgver=0.14.4
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Game Data Compiler Collection (mingw-w64)"
 arch=(any)
