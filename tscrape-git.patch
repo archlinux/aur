@@ -1,0 +1,31 @@
+Chunk 1:	Change PREFIX variables
+Chunk 2:	Append local (C|CXX|LD)FLAGS
+diff -ura tscrape.old/config.mk tscrape.new/config.mk
+--- tscrape.old/config.mk	2019-02-26 10:25:11.124019917 +1100
++++ tscrape.new/config.mk	2019-02-26 10:26:34.482322212 +1100
+@@ -1,9 +1,9 @@
+ # customize below to fit your system
+ 
+ # paths
+-PREFIX = /usr/local
+-MANPREFIX = ${PREFIX}/man
+-DOCPREFIX = ${PREFIX}/share/doc/tscrape
++PREFIX    = /usr
++MANPREFIX = ${PREFIX}/share/man
++DOCPREFIX = ${PREFIX}/share/doc/tscrape-git
+ 
+ # compiler and linker
+ CC = cc
+@@ -11,9 +11,9 @@
+ RANLIB = ranlib
+ 
+ # use system flags.
+-TSCRAPE_CFLAGS = ${CFLAGS}
+-TSCRAPE_LDFLAGS = ${LDFLAGS}
+-TSCRAPE_CPPFLAGS = -D_DEFAULT_SOURCE
++TSCRAPE_CFLAGS    = ${CFLAGS}
++TSCRAPE_LDFLAGS   = ${LDFLAGS}
++TSCRAPE_CPPFLAGS += -D_DEFAULT_SOURCE
+ 
+ # debug
+ #TSCRAPE_CFLAGS = -fstack-protector-all -O0 -g -std=c99 -Wall -Wextra -pedantic
