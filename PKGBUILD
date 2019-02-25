@@ -11,7 +11,7 @@ depends=(
 	"cairo"
 	"wayland"
 )
-arch=("i686" "x86_64")
+arch=("x86_64")
 url='http://mako-project.org'
 source=("${pkgname%-*}::git+https://github.com/emersion/mako.git")
 sha1sums=('SKIP')
@@ -19,19 +19,17 @@ provides=('mako')
 conflicts=('mako')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
+	cd "$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-
+	cd "$_pkgname"
 	meson --prefix=/usr . build
 	ninja -C build
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-
+	cd "$_pkgname"
 	DESTDIR="$pkgdir/" ninja -C build install
 }
