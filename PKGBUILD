@@ -10,8 +10,10 @@ url="https://radio-beam.readthedocs.io/"
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-astropy' 'python-astropy-helpers>=3.1' 'python2-astropy-helpers' 'python-sphinx-astropy')
 checkdepends=('python-pytest-astropy' 'python2-pytest32' 'python2-astropy')
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('268a38a8196a824bb69c815cdd35fe3a')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+        "python2-${_pyname}.install")
+md5sums=('268a38a8196a824bb69c815cdd35fe3a'
+         'a5d326a896bc49ec788cd48f340c1863')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -38,15 +40,18 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python setup.py test
 
-    msg "Checking Python2"
-    cd ${srcdir}/${_pyname}-${pkgver}-py2
-    python2 setup.py test
+    if [ -z $(pacman -Qsq python2-pytest-cov) ]; then
+        msg "Checking Python2"
+        cd ${srcdir}/${_pyname}-${pkgver}-py2
+        python2 setup.py test
+    fi
 }
 
 package_python2-radio_beam() {
     depends=('python2' 'python2-astropy')
-    optdepends=('python2-pytest: For testing'
+    optdepends=('python2-pytest32: For testing'
                 'python-radio_beam-doc: Documentation for Radio Beam')
+    install=python2-${_pyname}.install
     cd ${srcdir}/${_pyname}-${pkgver}-py2
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
