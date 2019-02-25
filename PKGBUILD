@@ -19,4 +19,5 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	DESTDIR="$pkgdir" make install
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
