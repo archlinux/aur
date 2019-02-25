@@ -1,14 +1,14 @@
 # Maintainer: Frontier (frontier314 at gmail dot com)
 
 pkgname=fbc
-pkgver=1.05
+pkgver=1.06
 pkgrel=1
-_bootver=1.05.0
+_bootver=1.06.0
 pkgdesc="FreeBASIC Compiler (Release version)"
 arch=('i686' 'x86_64')
 url="http://www.freebasic.net"
 license=('GPL2' 'LGPL')
-makedepends=('libffi' 'libtinfo')
+makedepends=('libffi' 'ncurses5-compat-libs')
 provides=('fbc')
 conflicts=('freebasic' 'fbc-git')
 options=(staticlibs)
