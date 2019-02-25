@@ -93,4 +93,7 @@ package() {
     install -Dm644 "$srcdir/tor.tmpfiles"  "$pkgdir/usr/lib/tmpfiles.d/tor.conf"
     install -Dm644 "$srcdir/tor.sysusers"  "$pkgdir/usr/lib/sysusers.d/tor.conf"
     install -Dm644 LICENSE                 "$pkgdir/usr/share/licenses/tor/LICENSE"
+
+    chown -R 43:43 "$pkgdir"/etc/tor
+    chmod 755 "$pkgdir"/etc/tor
 }
