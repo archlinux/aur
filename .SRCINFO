@@ -1,14 +1,15 @@
 pkgbase = rstudio-desktop-git
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
-	pkgver = 1.2.679.r1432
+	pkgver = 1.2.679.r1682
 	pkgrel = 1
 	url = https://www.rstudio.com/products/rstudio/
 	arch = i686
 	arch = x86_64
 	license = AGPL3
 	makedepends = git
-	makedepends = cmake>=2.8
+	makedepends = cmake>=3.1.0
 	makedepends = boost>=1.63
+	makedepends = desktop-file-utils
 	makedepends = jdk8-openjdk
 	makedepends = apache-ant
 	makedepends = unzip
@@ -19,16 +20,10 @@ pkgbase = rstudio-desktop-git
 	makedepends = wget
 	depends = boost-libs>=1.63
 	depends = r>=2.11.1
-	depends = hicolor-icon-theme
-	depends = shared-mime-info
-	depends = pango
 	depends = hunspell-en_US
 	depends = mathjax
 	depends = pandoc
 	depends = clang
-	depends = qt5-base
-	depends = qt5-declarative
-	depends = qt5-location
 	depends = qt5-sensors
 	depends = qt5-svg
 	depends = qt5-webengine
@@ -46,13 +41,9 @@ pkgbase = rstudio-desktop-git
 	source = git+https://github.com/rstudio/rstudio.git
 	source = https://s3.amazonaws.com/rstudio-buildtools/gin-2.1.2.zip
 	source = https://s3.amazonaws.com/rstudio-buildtools/gwt-2.8.1.zip
-	source = https://s3.amazonaws.com/rstudio-buildtools/QtSDK-5.10.1-x86_64.tar.gz
-	source = rstudio.sh
 	sha256sums = SKIP
 	sha256sums = b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a
 	sha256sums = 0b7af89fdadb4ec51cdb400ace94637d6fe9ffa401b168e2c3d372392a00a0a7
-	sha256sums = ae03692654882dea9ea428340731dd13ee1e2c7b3c89744e855d5424f7b941ee
-	sha256sums = 7bfb6c3ab47a52e49b9dce07623b277f7caee4be17031db423fc4b6045fe52f1
 
 pkgname = rstudio-desktop-git
 

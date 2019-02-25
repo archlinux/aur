@@ -3,17 +3,16 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.2.679.r1432
+pkgver=1.2.679.r1682
 _gwtver=2.8.1
 _ginver=2.1.2
-_qtver=5.10.1
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
-depends=('boost-libs>=1.63' 'r>=2.11.1' hicolor-icon-theme shared-mime-info pango hunspell-en_US mathjax pandoc clang qt5-base qt5-declarative qt5-location qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns)
-makedepends=(git 'cmake>=2.8' 'boost>=1.63' jdk8-openjdk apache-ant unzip openssl libcups pam patchelf wget)
+depends=('boost-libs>=1.63' 'r>=2.11.1' hunspell-en_US mathjax pandoc clang qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns)
+makedepends=(git 'cmake>=3.1.0' 'boost>=1.63' desktop-file-utils jdk8-openjdk apache-ant unzip openssl libcups pam patchelf wget)
 optdepends=('git: for git support'
             'subversion: for subversion support'
             'openssh-askpass: for a git ssh access')
@@ -21,14 +20,10 @@ provides=('rstudio-desktop' 'rstudio-desktop-bin' 'rstudio-desktop-preview')
 conflicts=('rstudio-desktop' 'rstudio-desktop-bin' 'rstudio-desktop-preview')
 source=("git+https://github.com/rstudio/rstudio.git"
         "https://s3.amazonaws.com/rstudio-buildtools/gin-${_ginver}.zip"
-        "https://s3.amazonaws.com/rstudio-buildtools/gwt-${_gwtver}.zip"
-        "https://s3.amazonaws.com/rstudio-buildtools/QtSDK-${_qtver}-x86_64.tar.gz"
-        "rstudio.sh")
+        "https://s3.amazonaws.com/rstudio-buildtools/gwt-${_gwtver}.zip")
 sha256sums=('SKIP'
             'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
-            '0b7af89fdadb4ec51cdb400ace94637d6fe9ffa401b168e2c3d372392a00a0a7'
-            'ae03692654882dea9ea428340731dd13ee1e2c7b3c89744e855d5424f7b941ee'
-            '7bfb6c3ab47a52e49b9dce07623b277f7caee4be17031db423fc4b6045fe52f1')
+            '0b7af89fdadb4ec51cdb400ace94637d6fe9ffa401b168e2c3d372392a00a0a7')
 noextract=("gin-${_ginver}.zip")
 
 pkgver() {
@@ -61,13 +56,12 @@ build() {
     rm -rf "${srcdir}/${_gitname}/build"
     mkdir "${srcdir}/${_gitname}/build"
     cd "${srcdir}/${_gitname}/build"
-    export QT_SDK_DIR="${srcdir}/Qt${_qtver}"
     export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:${PATH}
     cmake -DRSTUDIO_TARGET=Desktop \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio \
-          -DQT_QMAKE_EXECUTABLE="${srcdir}/Qt${_qtver}/${_qtver}/gcc_64/bin/qmake" \
-          -DRSTUDIO_BUNDLE_QT=TRUE ..
+          -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake \
+          -DRSTUDIO_BUNDLE_QT=FALSE ..
 }
 
 package() {
@@ -76,8 +70,7 @@ package() {
     make DESTDIR="${pkgdir}" install
     # Install the license
     install -Dm 644 ../COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-    # Install launch script
-    install -Dm 755 "${srcdir}/rstudio.sh" "${pkgdir}/usr/bin/rstudio"
-    # Fix LD_LIBRARY_PATH in .desktop file
-    sed -i 's|/usr/lib/rstudio/bin/rstudio|/usr/bin/rstudio|g' "${pkgdir}/usr/share/applications/rstudio.desktop"
+    # Symlink main binary
+    install -d "${pkgdir}/usr/bin"
+    ln -s "/usr/lib/${_gitname}/bin/${_gitname}" "${pkgdir}/usr/bin/${_gitname}"
 }
