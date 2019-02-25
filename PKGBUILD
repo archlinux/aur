@@ -5,20 +5,19 @@ pkgrel=1
 license=('MIT')
 pkgdesc='Writes files into ROM images for TI calculators'
 makedepends=("cmake" "asciidoc")
-arch=("i386" "x86_64")
+arch=("x86_64")
 url='https://github.com/KnightOS/mkrom'
 source=("https://github.com/KnightOS/mkrom/archive/${pkgver}.tar.gz")
-sha1sums=('fa37edabf09592d745bd396f904a019c5336cfe9')
+sha256sums=('2c5c2e72f7f9a552c8f43015129e755f3d0a2a4c4152c615fcd7b9ed50ebf3c2')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-
+	cd "$pkgname-$pkgver"
 	cmake . -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-
+	cd "$pkgname-$pkgver"
 	DESTDIR="$pkgdir/" make install
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
