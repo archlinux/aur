@@ -30,7 +30,7 @@ _origmodname='rp2'
 
 set -u
 pkgname='comtrol-rocketport-express-infinity'
-pkgver='2.17'
+pkgver='2.18'
 pkgrel='1'
 pkgdesc='kernel module driver for Comtrol RocketPort Express Infinity Rocketmodem serial RS-232 422 485 port'
 arch=('i686' 'x86_64')
@@ -42,7 +42,7 @@ install="${pkgname}-install.sh"
 _verwatch=('http://downloads.comtrol.com/rport_express/drivers/Linux/' '.*>rocketport_infinity_express-linux-\([0-9\.]\+\)\.tar\.gz.*' 'f')
 _srcdir="rocketport_infinity_express-linux-${pkgver}"
 source=("http://downloads.comtrol.com/rport_express/drivers/Linux/rocketport_infinity_express-linux-${pkgver}.tar.gz")
-sha256sums=('b6cb363ccebb2e3e5ca0a3f979b2e27e2c059fd063700d7fdb2aa7027c5a677a'
+sha256sums=('cdf12c6c93740afd842522be4fc055282d6e1d32a92f3b3a0e3bae4fa01c0fe8'
             '2aadc9ba118bd778b2afc1a2f0f006ef5142983a64c8aa522c15d5d78ece6e53')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
