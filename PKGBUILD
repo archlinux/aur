@@ -1,6 +1,6 @@
-_name=lark-parser
 pkgname="python-lark"
-pkgver=0.6.3
+_pkgname=lark-parser
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="A modern parsing library for Python, implementing Earley & LALR(1) and an easy interface"
 url="https://github.com/erezsh/lark"
@@ -8,15 +8,22 @@ arch=("any")
 license=("MIT")
 depends=("python")
 makedepends=("python-setuptools")
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('5548041cfcf2e2b0998b46b5a4087a2ba9871f55ee3c7903204788652bb6e532')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('43d623edae6f16db038d29f8586406002f2bea63c0363dc9acbedac27de7040e')
 
 build() {
-	cd "${srcdir}/${_name}-${pkgver}"
+	cd "${_pkgname}-${pkgver}"
 	python setup.py build
 }
 
+# upstream tests fail due to path resolution errors
+#check() {
+#	cd "${_pkgname}-${pkgver}"
+#	python setup.py test
+#}
+
 package() {
-	cd "${srcdir}/${_name}-${pkgver}"
+	cd "${_pkgname}-${pkgver}"
 	python setup.py install --root="${pkgdir}/" --optimize=1
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
