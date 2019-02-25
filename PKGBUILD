@@ -2,7 +2,7 @@
 pkgname=augur-git
 _gitname=augur-app
 _pkgname=augur
-pkgver=v1.7.1
+pkgver=v1.9.2
 pkgrel=1
 pkgdesc="Augur Desktop Application"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gconf' 'electron')
 conflicts=('augur')
 provides=('augur')
-makedepends=('git' 'npm' 'nvm')
+makedepends=('git' 'npm')
 source=("${_gitname}::git+https://github.com/AugurProject/$_gitname.git"
         "${_pkgname}.desktop")
 sha512sums=('SKIP'
@@ -26,19 +26,8 @@ pkgver() {
 build() {
   cd "$srcdir/$_gitname"
 
-  _npm_prefix=$(npm config get prefix)
-  npm config delete prefix
-
-  # Switch to required node version see https://github.com/AugurProject/augur-app/issues/72
-  source /usr/share/nvm/init-nvm.sh --install
-  nvm install 9 && nvm use 9
- 
   npm install
   npm run make-linux dir --dir
-
-  # Restore config
-  npm config set prefix ${_npm_prefix}
-  nvm unalias default
 }
 
 package(){

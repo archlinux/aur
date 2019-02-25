@@ -1,13 +1,12 @@
 pkgbase = augur-git
 	pkgdesc = Augur Desktop Application
-	pkgver = v1.7.1
+	pkgver = v1.9.2
 	pkgrel = 1
 	url = https://github.com/AugurProject/augur-app
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = npm
-	makedepends = nvm
 	depends = gconf
 	depends = electron
 	provides = augur
