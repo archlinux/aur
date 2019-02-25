@@ -1,13 +1,13 @@
 pkgbase = python2-astropy-helpers
 	pkgdesc = Utilities used for building the Astropy python library for astronomy
-	pkgver = 2.0.8
+	pkgver = 2.0.9
 	pkgrel = 1
 	url = https://github.com/astropy/astropy-helpers
 	arch = any
 	license = BSD
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/a/astropy-helpers/astropy-helpers-2.0.8.tar.gz
-	md5sums = aaeb8aae709ad8377341217c6991f91c
+	source = https://files.pythonhosted.org/packages/source/a/astropy-helpers/astropy-helpers-2.0.9.tar.gz
+	md5sums = 137f672ef749e946203eecad365209e9
 
 pkgname = python2-astropy-helpers
 
