@@ -14,10 +14,10 @@
 #                                                                             #
 ###############################################################################
 
-API=17
+API=18
 
 pkgname=kodi-addon-pvr-hts-git
-pkgver=r612.82ea43f
+pkgver=r795.2b7348a
 pkgrel=1
 pkgdesc='Tvheadend HTSP PVR client addon for Kodi'
 arch=('armv7h' 'i686' 'x86_64')
