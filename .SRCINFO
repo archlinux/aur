@@ -1,0 +1,19 @@
+pkgbase = python-pathpy-git
+	pkgdesc = Analysis of time series data on networks with higher- and multi-order graphical models
+	pkgver = r432.fa06dc5
+	pkgrel = 1
+	url = http://www.pathpy.net
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	provides = python-pathpy
+	conflicts = python-pathpy
+	source = python-pathpy-git::git+https://github.com/uzhdag/pathpy.git
+	md5sums = SKIP
+
+pkgname = python-pathpy-git
+
