@@ -1,0 +1,17 @@
+pkgbase = loli
+	pkgdesc = Loli is a embedded programming language
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://loli-lang.ml/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	provides = loli
+	source = loli-0.8::git+https://github.com/loli-foundation/loli.git#tag=0.8
+	sha256sums = SKIP
+
+pkgname = loli
+
