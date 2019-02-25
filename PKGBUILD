@@ -12,7 +12,7 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.0.0_devel.106254.e4f9a37ace
+pkgver=19.1.0_devel.108563.7c1bf075f30
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
@@ -49,7 +49,7 @@ build () {
        -D sysconfdir=/etc \
        -D platforms=x11,wayland,drm,surfaceless \
        -D dri-drivers=i915,i965,r200,r100,nouveau \
-       -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
+       -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris \
        -D vulkan-drivers=amd,intel \
        -D dri3=true \
        -D egl=true \
