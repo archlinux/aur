@@ -1,20 +1,26 @@
 pkgbase = monero-bin
 	pkgdesc = Monero: the secure, private, untraceable currency - CLI release version (includes daemon, wallet and miner)
-	pkgver = 0.13.0.4
-	pkgrel = 2
+	pkgver = 0.14.0.0
+	pkgrel = 1
 	url = https://getmonero.org/
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	arch = aarch64
 	license = custom:Cryptonote
-	provides = monerod=0.13.0.4
-	provides = monero-blockchain-export=0.13.0.4
-	provides = monero-blockchain-import=0.13.0.4
-	provides = monero-utils-deserialize=0.13.0.4
-	provides = monero-wallet-cli=0.13.0.4
-	provides = monero-wallet-rpc=0.13.0.4
+	provides = monerod=0.14.0.0
+	provides = monero-blockchain-export=0.14.0.0
+	provides = monero-blockchain-import=0.14.0.0
+	provides = monero-utils-deserialize=0.14.0.0
+	provides = monero-wallet-cli=0.14.0.0
+	provides = monero-wallet-rpc=0.14.0.0
 	conflicts = monero
+	conflicts = monerod
+	conflicts = monero-blockchain-export
+	conflicts = monero-blockchain-import
+	conflicts = monero-utils-deserialize
+	conflicts = monero-wallet-cli
+	conflicts = monero-wallet-rpc
 	backup = etc/monerod.conf
 	source = monerod.conf
 	source = monerod.service
@@ -22,14 +28,14 @@ pkgbase = monero-bin
 	sha256sums = 829445fe9acc00681f94f7b9ca6ce39713e377970b0a3d6f88c37991e1aa61b2
 	sha256sums = 0b66160a5448dedd8e84c38ba2243187217b214b1552f504b05de120b671f121
 	sha256sums = 0e24d8f4b8758ff33612a17f3bb72a69497b74b32d12bbe5d647d954fcef59ad
-	source_x86_64 = https://downloads.getmonero.org/cli/monero-linux-x64-v0.13.0.4.tar.bz2
-	sha256sums_x86_64 = 693e1a0210201f65138ace679d1ab1928aca06bb6e679c20d8b4d2d8717e50d6
-	source_i686 = https://downloads.getmonero.org/cli/monero-linux-x86-v0.13.0.4.tar.bz2
-	sha256sums_i686 = 3f02b0de407f944e524afc9d53d7e9ce92bf17ac6e6ef92cd3c22346afc2cb6c
-	source_armv7h = https://downloads.getmonero.org/cli/monero-linux-armv7-v0.13.0.4.tar.bz2
-	sha256sums_armv7h = 65e2ce5d0abf80ed3b4ecef5babc37445dc4f032457811aafa8a221af78f554a
-	source_aarch64 = https://downloads.getmonero.org/cli/monero-linux-armv8-v0.13.0.4.tar.bz2
-	sha256sums_aarch64 = 7158380839f41ef7b25f303d5c01cab0deeec96c26fde5bf4aaac6798d114bb9
+	source_x86_64 = https://downloads.getmonero.org/cli/monero-linux-x64-v0.14.0.0.tar.bz2
+	sha256sums_x86_64 = 1e67163de7a924d65f30da251932ab31fdbccf8042d5e04ef63041709eec7854
+	source_i686 = https://downloads.getmonero.org/cli/monero-linux-x86-v0.14.0.0.tar.bz2
+	sha256sums_i686 = f452f4ab594c8ae7b93bd845dac8d6c0384498736711af2e8fcc8a5b2e628de0
+	source_armv7h = https://downloads.getmonero.org/cli/monero-linux-armv7-v0.14.0.0.tar.bz2
+	sha256sums_armv7h = caa37b27f0cd4dbe8a932cb2fee8c7e0713ce55759a72120310da1d675e61cd0
+	source_aarch64 = https://downloads.getmonero.org/cli/monero-linux-armv8-v0.14.0.0.tar.bz2
+	sha256sums_aarch64 = 331ca2aa42e849ba0e69d2a2c52b9bec63e3f1793ff6c7a6a137cedc1b0d1980
 
 pkgname = monero-bin
 
