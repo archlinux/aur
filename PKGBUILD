@@ -14,10 +14,10 @@
 #                                                                             #
 ###############################################################################
 
-API=17
+API=18
 
 pkgname=kodi-platform-git
-pkgver=r53.c8188d8
+pkgver=r57.e8574b8
 pkgrel=1
 pkgdesc='Kodi platform support library'
 arch=('armv7h' 'i686' 'x86_64')
