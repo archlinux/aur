@@ -8,7 +8,7 @@ pkgbase = genkfs
 	license = MIT
 	makedepends = cmake
 	makedepends = asciidoc
-	source = https://github.com/KnightOS/genkfs/archive/1.2.2.tar.gz
+	source = genkfs-1.2.2.tar.gz::https://github.com/KnightOS/genkfs/archive/1.2.2.tar.gz
 	sha256sums = 93690989819ee93dd5130b2761879deaa3d70c706b050bd31eb8d5997cb683e8
 
 pkgname = genkfs
