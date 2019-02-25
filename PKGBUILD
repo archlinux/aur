@@ -1,21 +1,22 @@
 # Contributor: Florian Klink <flokli at flokli dot de>
-
-_python=python
-_distname=pystache
-pkgname=$_python-$_distname
+pkgname=python-pystache
+_pkgname=pystache
 pkgver=0.5.4
 pkgrel=3
 pkgdesc="The mustache template engine written in python"
-arch=(any)
+arch=("any")
 url="http://github.com/defunkt/pystache"
 license=('MIT')
-depends=('python' 'python-setuptools')
-provides=('python-pystache')
-conflicts=('python-pystache')
-source=( "https://pypi.python.org/packages/source/${_distname:0:1}/$_distname/$_distname-$pkgver.tar.gz")
-md5sums=('485885e67a0f6411d5252e69b20a35ca')
+depends=('python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('f7bbc265fb957b4d6c7c042b336563179444ab313fb93a719759111eabd3b85a')
+
+build() {
+	cd "$_pkgname-$pkgver"
+	python setup.py build
+}
 
 package() {
-  cd "$srcdir/$_distname-$pkgver"
-  $_python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 || exit 1
+	cd "$_pkgname-$pkgver"
+	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
