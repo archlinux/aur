@@ -5,20 +5,19 @@ pkgrel=1
 license=('MIT')
 pkgdesc='Patches jump tables into ROM dumps'
 makedepends=("cmake" "asciidoc")
-arch=("i386" "x86_64")
+arch=("x86_64")
 url='https://github.com/KnightOS/patchrom'
-source=("https://github.com/KnightOS/patchrom/archive/${pkgver}.tar.gz")
-sha1sums=('266747516f98df8b7ec2edcebd7bf5aa35a4df50')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/KnightOS/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('eff3116a838be361b73a5f86671ee0ddf5c4b1be4a89f1e04e04bd2f7d12f835')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-
+	cd "$pkgname-$pkgver"
 	cmake . -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-
+	cd "$pkgname-$pkgver"
 	DESTDIR="$pkgdir/" make install
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
