@@ -43,7 +43,7 @@ sha256sums=('SKIP'
             'd447227fcc2756778a1be143b8975d67b25ea15688cde2291185b3c71d0f6e34'
             'f83ccec32ce30469bebf906a218cd62e5ec475408d3d30df6b34428616c0d217'
             'ffef89a0eb10614e2350b4271ff83f92caa2301bfb97746b94dc7ab7f21d702b'
-            '4282c8a4f1471b3be345b2024491af89f5eeaac071884f2a55988aef94a2054b')
+            '231405d1fbbcc68168248f93edd19ae14b60f66bb4d1c8e46ead1d4cd8e0ae7c')
 
 pkgver () {
     cd tor
