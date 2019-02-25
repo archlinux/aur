@@ -2,13 +2,14 @@
 _pkgname=pegasus-fe
 pkgname=${_pkgname}-git
 pkgver=alpha10.r135.g038307d
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross platform, customizable graphical frontend for launching emulators and managing your game collection."
 arch=('i686' 'x86_64')
 url="http://pegasus-frontend.org/"
 license=('GPL3')
 makedepends=(
     'git'
+    'qt5-tools'
 )
 depends=(
     'qt-gstreamer'
