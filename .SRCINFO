@@ -1,0 +1,24 @@
+pkgbase = vba-rr-git
+	pkgdesc = Visual Boy Advance with lua scripting support.
+	pkgver = 24.4.0.r1.g18e02ad
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/vba-rerecording/vba-rerecording
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = flex
+	makedepends = bison
+	makedepends = zlib
+	depends = lua51
+	depends = lua51-socket
+	depends = git
+	depends = sdl
+	depends = libpng12
+	source = vba-rr::git+https://github.com/vba-rerecording/vba-rerecording.git
+	source = lua51-fix.patch
+	sha256sums = SKIP
+	sha256sums = 05cd9b87ab0e5c8fcf499a96ca9334632e08675af50aa7c947a9e3f8dc3163a2
+
+pkgname = vba-rr-git
+

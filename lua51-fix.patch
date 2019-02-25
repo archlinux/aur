@@ -1,0 +1,15 @@
+--- vba-rr/src/common/lua-engine.cpp	2019-02-25 02:07:49.756548258 -0800
++++ vba-rr/src/common/lua-engine-fix.cpp	2019-02-25 02:12:30.731953443 -0800
+@@ -75,9 +75,9 @@
+ #else
+ extern "C"
+ {
+-#include "lua.h"
+-#include "lauxlib.h"
+-#include "lualib.h"
++#include "lua5.1/lua.h"
++#include "lua5.1/lauxlib.h"
++#include "lua5.1/lualib.h"
+ }
+ #endif
+ #include "vbalua.h"
