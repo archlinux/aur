@@ -5,7 +5,7 @@
 
 pkgname=emacs-pretest
 _pkgname=emacs
-_pkgver=26.1.91
+_pkgver=26.1.92
 __pkgver=${_pkgver/-*}
 pkgver=${_pkgver/-/\~}
 pkgrel=1
@@ -17,7 +17,7 @@ depends=('gpm' 'm17n-lib' 'gtk3' 'libmagick6' 'gnutls')
 provides=('emacs')
 conflicts=('emacs')
 source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig})
-sha512sums=('2c09b8ae0e035d20c8dcebda8ca56167a374c465f7ad8e55f97fc10355cffe709b196efa38474580c5b3584263b676fa5b8d9fa1434d4fc77d7d9cc941260a4b'
+sha512sums=('c01be13055644f00094e096a9ec39dfaa4fc999718931d6003425ef74741ab0ca638a377e2903fbffc32c3e344fde5e93b2657a48600493fc25daa82a34fc4d2'
             'SKIP')
 validpgpkeys=('B29426DEFB07724C3C35E5D36592E9A3A0B0F199' '28D3BED851FDF3AB57FEF93C233587A47C207910')
 
