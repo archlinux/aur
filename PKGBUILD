@@ -24,6 +24,6 @@ build() {
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
     mkdir -p $pkgdir/usr/{bin,lib}
-    install -m 755 loli $pkgdir/usr/bin/
-    install -m 755 libloli.so $pkgdir/usr/lib/
+    install -m 755 ./build/loli $pkgdir/usr/bin/
+    install -m 755 ./build/libloli.so $pkgdir/usr/lib/
 }
