@@ -1,0 +1,44 @@
+Description: Make GMockConfig.cmake work with googletest/1.8.1-1
+Author: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+Comment:
+ Original patch idea from: Shengjing Zhu <zhsj@debian.org>
+Abstract:
+ With googletest/1.8.1-1 and later a dependency of gmock on gmock_main
+ had been introduced. Reflecting this in the GMockConfig.cmake file.
+
+--- a/src/GMock/GMockConfig.cmake
++++ b/src/GMock/GMockConfig.cmake
+@@ -57,8 +57,8 @@
+                           BINARY_DIR "${findgmock_bin_dir}"
+                           BUILD_BYPRODUCTS "${findgmock_gtest_lib}"
+                                            "${findgmock_gtest_main_lib}"
+-                                           "${findgmock_gmock_lib}"
+                                            "${findgmock_gmock_main_lib}"
++                                           "${findgmock_gmock_lib}"
+                           INSTALL_COMMAND ""
+                           CMAKE_ARGS "-DCMAKE_CXX_FLAGS=${findgmock_cxx_flags}")
+ 
+@@ -71,17 +71,17 @@
+ target_include_directories(gtest_main INTERFACE ${GTEST_INCLUDE_DIRS})
+ target_link_libraries(gtest_main INTERFACE ${findgmock_gtest_main_lib} gtest)
+ 
+-add_library(gmock INTERFACE)
+-target_include_directories(gmock INTERFACE ${GMOCK_INCLUDE_DIRS})
+-target_link_libraries(gmock INTERFACE ${findgmock_gmock_lib} gtest)
+-
+ add_library(gmock_main INTERFACE)
+ target_include_directories(gmock_main INTERFACE ${GMOCK_INCLUDE_DIRS})
+-target_link_libraries(gmock_main INTERFACE ${findgmock_gmock_main_lib} gmock)
++target_link_libraries(gmock_main INTERFACE ${findgmock_gmock_main_lib})
++
++add_library(gmock INTERFACE)
++target_include_directories(gmock INTERFACE ${GMOCK_INCLUDE_DIRS})
++target_link_libraries(gmock INTERFACE ${findgmock_gmock_lib} gtest gmock_main)
+ 
+ set(GTEST_LIBRARIES gtest)
+ set(GTEST_MAIN_LIBRARIES gtest_main)
+-set(GMOCK_LIBRARIES gmock gmock_main)
++set(GMOCK_LIBRARIES gmock_main gmock)
+ set(GTEST_BOTH_LIBRARIES ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES})
+ 
+ unset(findgmock_cxx_flags)
