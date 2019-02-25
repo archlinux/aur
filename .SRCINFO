@@ -12,7 +12,6 @@ pkgbase = ocs-store
 	depends = nodejs
 	depends = nss
 	conflicts = ocsstore
-	replaces = ocsstore
 	source = ocs-store-3.5.0.tar.gz::https://git.opendesktop.org/akiraohgaki/ocs-store/-/archive/release-3.5.0/ocs-store-release-3.5.0.tar.gz
 	sha256sums = 084888767c30bb6682bfc8df8c72a8df2207aaff20dd7adc049d70827f71a284
 

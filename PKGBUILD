@@ -9,7 +9,6 @@ license=('GPL3')
 depends=('gconf' 'gtk3' 'libxss' 'nodejs' 'nss')
 makedepends=('npm')
 conflicts=('ocsstore')
-replaces=('ocsstore')
 source=("$pkgname-$pkgver.tar.gz::https://git.opendesktop.org/akiraohgaki/$pkgname/-/archive/release-$pkgver/$pkgname-release-$pkgver.tar.gz")
 sha256sums=('084888767c30bb6682bfc8df8c72a8df2207aaff20dd7adc049d70827f71a284')
 
