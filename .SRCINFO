@@ -7,7 +7,7 @@ pkgbase = python-asif
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/a/asif/asif-0.2.2.tar.gz
+	source = python-asif-0.2.2.tar.gz::https://files.pythonhosted.org/packages/source/a/asif/asif-0.2.2.tar.gz
 	sha256sums = db4eb4cfd45176483631172338e239c65cd60f617bf83189714cb85ff6e716e1
 
 pkgname = python-asif
