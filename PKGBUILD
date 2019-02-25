@@ -8,7 +8,7 @@ arch=("any")
 license=("MIT")
 depends=("python")
 makedepends=("python-setuptools")
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('43d623edae6f16db038d29f8586406002f2bea63c0363dc9acbedac27de7040e')
 
 build() {
