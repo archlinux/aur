@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Gauvrit <guillaume@gauvr.it>
 pkgname=rustaman-git
-pkgver=0.0.4af1e14
+pkgver=0.0.ceaa0bf
 pkgrel=1
 pkgdesc="Template based HTTP client"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ build() {
 pkgver() {
   cd "$pkgname"
   #local tag=$(git tag --sort=-v:refname | grep '^[0-9]' | head -1)
-  local tag="0.0"
+  local tag=""
   local commits_since=$(git rev-list $tag..HEAD --count)
   echo "$tag.r$commits_since.$(git log --pretty=format:'%h' -n 1)"
 }
