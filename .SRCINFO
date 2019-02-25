@@ -1,0 +1,14 @@
+pkgbase = mkinitcpio-authentication
+	pkgdesc = mkinitcpio hook to enable authentication in initramfs
+	pkgver = 0.r1.be53c2b
+	pkgrel = 1
+	url = https://github.com/brandsimon/mkinitcpio-authentication
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = mkinitcpio
+	source = git+https://github.com/brandsimon/mkinitcpio-authentication.git
+	sha256sums = SKIP
+
+pkgname = mkinitcpio-authentication
+
