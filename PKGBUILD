@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=mako-git
 _pkgname=mako
-pkgver=r315.9c4fea7
+pkgver=r375.e3a69aa
 pkgrel=1
 license=('MIT')
 pkgdesc='Lightweight notification daemon for Wayland'
@@ -32,4 +32,5 @@ build() {
 package() {
 	cd "$_pkgname"
 	DESTDIR="$pkgdir/" ninja -C build install
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"${pkgname%-*}"/LICENSE
 }
