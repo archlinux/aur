@@ -1,6 +1,6 @@
 # Maintainer: Stoyan Minaev <stoyan.minaev@gmail.com>
 
-pkgbase="loli-language"
+pkgbase="pkgbase"
 pkgname="loli"
 pkgver="0.8"
 pkgrel="1"
