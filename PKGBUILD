@@ -93,9 +93,9 @@ _opt_masterttypfx='px' # default px (this isn't very useful to users)
 
 set -u
 pkgname='trueport'
-pkgver='6.8.3_1'
-#_dlver="${pkgver//_/-}"
-_dlver='6.8.0-2' # only use this with a version change patch set
+pkgver='6.9.0_1'
+_dlver="${pkgver//_/-}"
+#_dlver='6.8.0-2' # only use this with a version change patch set
 _srcdir="${pkgname}-${_dlver%%-*}"
 pkgrel='1'
 pkgdesc='tty driver for Perle IOLan+ DS TS SDS STS SCS JetStream LanStream LinkStream and 3rd party serial console terminal device servers'
@@ -111,21 +111,19 @@ makedepends=('awk' 'sed' 'diffutils' 'patch')
 backup=(etc/trueport/{config.tp,pktfwdcfg.tp,sslcfg.tp})
 options=('!docs' '!emptydirs' '!strip')
 install="${pkgname}-install.sh"
-_verwatch=('https://www.perle.com/downloads/server_ds1.shtml' '\s\+<a.*trueport-linux-tgz">\([^<]\+\)<.*' 'f')
+_verwatch=('https://www.perle.com/downloads/server_ds_ts.shtml' '\s\+<a.*trueport-linux-tgz">\([^<]\+\)<.*' 'f')
 source=(
   "https://www.perle.com/downloads/drivers/trueport/linux2.6/${pkgname}-${_dlver}.tgz"
   'tty_default_permissions.patch'
-  'trueport-patch-6.8.0-6.8.3-stack-smashing.patch'
+  #'trueport-patch-6.8.0-6.8.5.patch'
   # http://dpdk.org/dev/patchwork/patch/22003/ [dpdk-dev] kni: fix build with kernel 4.11 lib/librte_eal/linuxapp/kni/compat.h lib/librte_eal/linuxapp/kni/kni_dev.h
   # http://dpdk.org/dev/patchwork/patch/22037/
   # http://rglinuxtech.com/?p=1930
   # https://forum.manjaro.org/t/error-with-rtl8812au/24066
-  'trueport-patch-signal_pending-kernel-4-11.patch'
+  #'trueport-patch-signal_pending-kernel-4-11.patch'
 )
-sha256sums=('c03dc972166fb693411cafcc7fb01478022dbc5da19d4db0f505591df819a72e'
-            '28863731fd99e447dc456312ef33e40f93623b56da0d345e45f40e238ca49639'
-            '12e94a054970784e8b75548f8a60eaa1372aeaf92adee911854db1163488c6ad'
-            '76157d41c665f36eddd4063aad05e75c53881b14d6a4218982da14b6aac9836e')
+sha256sums=('299fd7781658f00a072dab48b188a856708b690381d6c1bb85a262222a07543c'
+            '28863731fd99e447dc456312ef33e40f93623b56da0d345e45f40e238ca49639')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -138,9 +136,11 @@ prepare() {
   cd "${_srcdir}"
 
   # diff -pNaru5 'trueport-6.8.0' 'trueport-6.8.3' > 'trueport-patch-6.8.0-6.8.3-stack-smashing.patch'
-  patch -Nup1 < '../trueport-patch-6.8.0-6.8.3-stack-smashing.patch'
+  #patch -Nup1 < '../trueport-patch-6.8.0-6.8.3-stack-smashing.patch'
   # diff -pNau5 ptyx/ptys.c{.orig,} > '../trueport-patch-signal_pending-kernel-4-11.patch'
-  patch -Nup0 < '../trueport-patch-signal_pending-kernel-4-11.patch'
+  #patch -Nup0 < '../trueport-patch-signal_pending-kernel-4-11.patch'
+  # diff -pNaru5 'trueport-6.8.0' 'trueport-6.8.5' > 'trueport-patch-6.8.0-6.8.5.patch'
+  #patch -Nup1 -i '../trueport-patch-6.8.0-6.8.5.patch'
 
   # insert parameters and make install script non interactive.
   sed -e 's:^\(DONE\)=.*$:'"\1='done';SSL='${_opt_SSL}':g" \
