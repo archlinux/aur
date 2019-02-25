@@ -2,7 +2,7 @@
 
 pkgname=gotop-git
 _pkgname=${pkgname%-git}
-pkgver=3.0.0.r1.gc097663
+pkgver=3.0.0.r7.g3a804eb
 pkgrel=1
 pkgdesc='A terminal based graphical activity monitor inspired by gtop and vtop'
 arch=(x86_64)
@@ -21,7 +21,12 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$pkgname"
-	go build
+	go build \
+		-gcflags "all=-trimpath=${PWD}" \
+		-asmflags "all=-trimpath=${PWD}" \
+		-ldflags "-extldflags ${LDFLAGS}" \
+		-mod vendor \
+		.
 }
 
 package() {
