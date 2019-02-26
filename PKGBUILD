@@ -2,7 +2,7 @@
 pkgname=mpd-sidplay
 _pkgname=mpd
 pkgver=0.21.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Flexible, powerful, server-side application for playing music - built with sidplay support"
 url="https://www.musicpd.org/"
 license=("GPL")
@@ -31,12 +31,13 @@ depends=(
     "libshout"
     "libsidplayfp"
     "libsoxr"
-    "libsystemd"
+    "libvorbis"
     "libupnp"
     "mpg123"
     "openal"
     "smbclient"
     "sqlite"
+    "systemd-libs"
     "twolame"
     "wavpack"
     "wildmidi"
@@ -68,10 +69,10 @@ build() {
         "-Ddocumentation=true"
         "-Dchromaprint=disabled"
         "-Dsidplay=enabled"
-        "-Dlibwrap=disabled"
         "-Dadplug=disabled"
         "-Dsndio=disabled"
         "-Dshine=disabled"
+        "-Dtremor=disabled"
     )
     arch-meson .. ${_opts[@]}
     ninja
