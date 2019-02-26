@@ -1,0 +1,14 @@
+pkgbase = swap
+	pkgdesc = A very simple tool to swap two paths atomically using renameat2() on Linux.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/K900/swap
+	arch = x86_64
+	license = BSD
+	makedepends = rust
+	depends = gcc-libs
+	source = swap-0.1.0.tar.gz::https://crates.io/api/v1/crates/swap/0.1.0/download
+	sha512sums = 0a111f0687a7309b3b46b3e0e543a3c168f2cacc3c01252a65af4621f1da88ee0125c0ae7e0d1cf01569349cda10bf7aec1dc61e504db3efd9a25bbc119f9f12
+
+pkgname = swap
+
