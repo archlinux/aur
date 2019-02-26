@@ -37,7 +37,6 @@ build() {
 }
 
 package() {
-  ROOT_HOME=$(echo ~root)
   install -dm0755 $pkgdir/nix/var/nix/db $pkgdir/nix/var/pacman/store $pkgdir/nix/var/nix/gcroots/pacman $pkgdir/usr/bin
   install -dm1775 $pkgdir/nix/store
   install -dm0750 $pkgdir/root
