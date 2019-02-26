@@ -3,17 +3,22 @@ pkgname=athenaeum-git
 _pkgname=athenaeum
 pkgver=0.1
 pkgrel=1
-_pkgrel=1
 pkgdesc="A libre replacement for Steam"
 arch=(any)
 url="https://gitlab.com/librebob/athenaeum"
 license=('GPL-3.0-or-later')
-depends=('flatpak' 'python3' 'pyqt5-common' 'python-pyqt5' 'python-sip-pyqt5' 'python-peewee' 'python-xdg' 'python-dateutil' 'qt5-base' 'qt5-svg' 'qt5-quickcontrols2' 'qt5-declarative' 'sqlite')
+depends=('flatpak' 'python' 'pyqt5-common' 'python-pyqt5' 'python-sip-pyqt5' 'python-peewee' 'python-xdg' 'python-dateutil' 'python-dbus' 'qt5-base' 'qt5-svg' 'qt5-quickcontrols2' 'qt5-declarative' 'sqlite')
 makedepends=('git')
 
 source=("git+https://gitlab.com/librebob/athenaeum.git")
 md5sums=('SKIP')
-_gitname=athenaeum
+
+pkgver() {
+    cd $srcdir/$_pkgname
+    # Git, no tags available
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 
 package() {
   cd $srcdir/$_pkgname
