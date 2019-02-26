@@ -1,0 +1,21 @@
+pkgbase = connectd
+	pkgdesc = Core remote.it connectivity tool for remotely connecting to any device without exposing open ports to hackers.
+	pkgver = 2.2.5
+	pkgrel = 1
+	url = https://www.remote.it
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = BSD-3-Clause
+	source_i686 = https://github.com/remoteit/installer/releases/download/v2.2.5/connectd_2.2.5_x86-etch.tar
+	md5sums_i686 = 155ff94fc5d349b4be29a843a38c53fb
+	source_x86_64 = https://github.com/remoteit/installer/releases/download/v2.2.5/connectd_2.2.5_x86_64-etch.tar
+	md5sums_x86_64 = 416fca581f711a3ca238c1e768841f8b
+	source_armv7h = https://github.com/remoteit/installer/releases/download/v2.2.5/connectd_2.2.5_arm-linaro-pi.tar
+	md5sums_armv7h = b5f951ba7fe0baf64281e0e22e15663b
+	source_aarch64 = https://github.com/remoteit/installer/releases/download/v2.2.5/connectd_2.2.5_aarm64-ubuntu16.04_static.tar
+	md5sums_aarch64 = 1e9748bfef481ca051bf5efc89459a4b
+
+pkgname = connectd
+
