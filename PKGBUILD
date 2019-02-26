@@ -2,7 +2,7 @@
 
 pkgname=nextcloud-app-u2f
 _releasename=twofactor_u2f
-pkgver=2.0.3
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Two factor U2F provider for Nextcloud"
 arch=('any')
@@ -11,12 +11,10 @@ license=('AGPL')
 depends=('nextcloud>=15.0')
 makedepends=()
 options=('!strip')
-source=("${_releasename}-${pkgver}.tar.gz"::"${url}/releases/download/v${pkgver}/${_releasename}.tar.gz"
-        'php-7.3.patch')
+source=("${_releasename}-${pkgver}.tar.gz"::"${url}/releases/download/v${pkgver}/${_releasename}.tar.gz")
 
 build() {
     cd "$srcdir/${_releasename}"
-    patch -p1 -i "$srcdir/php-7.3.patch"
 }
 
 package() {
@@ -24,5 +22,4 @@ package() {
     cp -r --target-directory=$pkgdir/usr/share/webapps/nextcloud/apps/ $srcdir/$_releasename
 }
 
-sha256sums=('f689fef20d233b8154a2fb066dd164ec1420b047f37452339fd022088e9cfe9a'
-            'c436e94fff898040896d40e46abf5091d3f9e0b6e289c19fbb47c80418ba7d79')
+sha256sums=('5288ae3b1b55b7f09e82a1c0ee8efbd849171c9ff44b93131b6c05c13676e421')
