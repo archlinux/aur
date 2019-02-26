@@ -1,6 +1,6 @@
 pkgbase = audacity-git
 	pkgdesc = A program that lets you manipulate digital audio waveforms
-	pkgver = 2.3.0.r472.g012d707a8
+	pkgver = 2.3.0.r483.g1c21e9358
 	pkgrel = 1
 	url = http://www.audacityteam.org/
 	arch = i686
@@ -21,7 +21,6 @@ pkgbase = audacity-git
 	optdepends = audacity-extras: nyquist plugins for audacity
 	provides = audacity
 	conflicts = audacity
-	options = !makeflags
 	source = audacity::git+https://github.com/audacity/audacity.git
 	sha1sums = SKIP
 
