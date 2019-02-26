@@ -1,6 +1,6 @@
 pkgbase = dxvk-bin
-	pkgdesc = A Vulkan-based compatibility layer for Direct3D 10/11 which allows running 3D applications on Linux using Wine (binary files)
-	pkgver = 0.96
+	pkgdesc = A Vulkan-based compatibility layer for Direct3D 10/11 which allows running 3D applications on Linux using Wine (Windows DLL binary files)
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
@@ -9,38 +9,31 @@ pkgbase = dxvk-bin
 	provides = dxvk
 	conflicts = dxvk-git
 	options = !strip
-	source = https://github.com/doitsujin/dxvk/releases/download/v0.96/dxvk-0.96.tar.gz
-	source = setup_dxvk_aur.verb
-	sha256sums = 9d054c1e7a4f59825c651b14d3cfbf0d8c724763f485b3d59c89f1d7194b2206
-	sha256sums = 1a88e01e02ef9bfd9bf43d8dec4e70b425fb25812f597463ee4145705c82a504
+	source = https://github.com/doitsujin/dxvk/releases/download/v1.0/dxvk-1.0.tar.gz
+	sha256sums = 8c8d26544609532201c10e6f5309bf5e913b5ca5b985932928ef9ab238de6dc2
 
 pkgname = dxvk-win64-bin
+	pkgdesc = Dummy package
+	arch = x86_64
+	depends = dxvk-bin
+
+pkgname = dxvk-win32-bin
+	pkgdesc = Dummy package
+	arch = x86_64
+	arch = i686
+	depends = dxvk-bin
+
+pkgname = dxvk-bin
 	arch = x86_64
 	depends = vulkan-icd-loader
 	depends = wine>=3.10
-	depends = winetricks
+	depends = lib32-vulkan-icd-loader
 	provides = dxvk
 	provides = dxvk64
-	conflicts = dxvk-git
-	conflicts = dxvk-bin<0.63-5
-	conflicts = dxvk-win64-git
-	replaces = dxvk-bin<0.63-5
-
-pkgname = dxvk-win32-bin
-	arch = x86_64
-	arch = i686
-	depends = lib32-vulkan-icd-loader
-	depends = wine>=3.10
-	depends = winetricks
-	provides = dxvk
 	provides = dxvk32
-	conflicts = dxvk-git<0.63-5
-	conflicts = dxvk-bin<0.63-5
-	conflicts = dxvk-win32-git
-	replaces = dxvk-bin
-
-pkgname = dxvk-bin
-	pkgdesc = Dummy package to smooth the transition to the split packages
-	depends = dxvk-win32-bin
-	depends = dxvk-win64-bin
+	conflicts = dxvk-git
+	conflicts = dxvk-bin<1.0-1
+	conflicts = dxvk-win64-bin<1.0-1
+	conflicts = dxvk-win32-bin<1.0-1
+	conflicts = dxvk-win64-git
 
