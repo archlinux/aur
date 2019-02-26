@@ -5,8 +5,8 @@
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-4.20
-_stable=4.20.11
-_patchver=4.20.12
+_stable=4.20.12
+_patchver=4.20.13
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -23,21 +23,23 @@ source=(
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  0002-exec-Fix-mem-leak-in-kernel_read_file.patch
   # Arch-Linux-kernel-vx.xx.x-arch1.patch is not needed for rc1
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('3623d1d11b3f0f15c03fcf5bb195d0ae71d17b9bb3a88662e0c7cf9b886b6c4b'
+sha256sums=('dfe5e7fa1cb2e6b344d8f1a388a15f1ea85c4a6eb115090f878341bc598b5006'
             'SKIP'
-            'dcd95c41f45c8ee90e249887f4aa8657b9a4c5d0fcef69ba17e75b5304d7411f'
+            '1cf544308195250805e0731c716691bea4c1ed29e03e6f9ae5be6dc16785a504'
             'SKIP'
             'f863b3e9640161f61e859f22f2d1258c940101de8f007a207c1ede2f71d36206'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'c6a52de5d629fdfaa35553c71e2b020c421f170ef1ca0acfc72fffe7258a6358')
+            '55823bb3ca652d917ba79860d595b479ec20c22a7c6854cbef901d44b4196316'
+            'bbf31b3a6af1db882cb63bd5e5385f174f2345272acaf18f129712a0a726689b')
 
 _kernelname=${pkgbase#linux}
 
