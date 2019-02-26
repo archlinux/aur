@@ -1,14 +1,14 @@
 # Maintainer: bkacjios < blackops7799 at gmail dot com >
 
 pkgname=inav-configurator
-pkgver=2.1.2
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="Crossplatform configuration tool for the INAV flight control system"
 arch=('i686' 'x86_64')
 url="https://github.com/iNavFlight/inav-configurator"
-source=(https://github.com/iNavFlight/inav-configurator/archive/2.1.2.zip
+source=(https://github.com/iNavFlight/inav-configurator/archive/2.1.4.zip
         inav-configurator.desktop)
-md5sums=('3e6f47c82471ef6ca977b4f03ebe1f30'
+md5sums=('e63f947b68d548342ec0be7ad979ae34'
          'SKIP')
 provides=('inav-configurator')
 conflicts=('inav-configurator')
@@ -37,4 +37,6 @@ package() {
 
 	install -d "$pkgdir/usr/bin/"
 	ln -s /opt/inav/inav-configurator/inav-configurator "$pkgdir/usr/bin/inav-configurator"
+
+	echo 'Dont forget to add your user into uucp group "sudo usermod -aG uucp YOUR_USERNAME" for serial access'
 }
