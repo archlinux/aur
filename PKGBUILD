@@ -1,3 +1,5 @@
+# Maintainer: Maximilian Luz <luzmaximilian@gmail.com>
+
 pkgname=libwacom-surface
 pkgver=0.32
 pkgrel=1
