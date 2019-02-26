@@ -1,0 +1,18 @@
+pkgbase = mendeleydesktop-bundled-fcitx
+	pkgdesc = mendeleydesktop fcitx input method support
+	pkgver = 1.19.3
+	pkgrel = 1
+	url = http://yinflying.top/2017/09/727
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = mendeleydesktop-bundled
+	provides = mendeleydesktop-bundled-fcitx
+	conflicts = mendeleydesktop-bundled-fcitx
+	source = https://github.com/yinflying/BlogSource/raw/master/lib-fcitx-plugin/arch-qt5.10.1/libFcitxQt5DBusAddons.so.1.0
+	source = https://github.com/yinflying/BlogSource/raw/master/lib-fcitx-plugin/arch-qt5.10.1/libfcitxplatforminputcontextplugin.so
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = mendeleydesktop-bundled-fcitx
+
