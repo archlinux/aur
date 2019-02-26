@@ -1,0 +1,16 @@
+pkgbase = rofi-json-dict-git
+	pkgdesc = A plugin to use rofi as a dictionary
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/marvinkreis/rofi-json-dict
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = rofi
+	provides = rofi-json-dict
+	replaces = rofi-dict
+	source = git+https://github.com/marvinkreis/rofi-json-dict.git
+	md5sums = SKIP
+
+pkgname = rofi-json-dict-git
+
