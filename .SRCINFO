@@ -1,0 +1,21 @@
+pkgbase = gnvim-git
+	pkgdesc = GUI for neovim, without any web bloat
+	pkgver = r158.b279ea6
+	pkgrel = 1
+	url = https://github.com/vhakulinen/gnvim
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	depends = neovim
+	depends = gtk3
+	depends = webkit2gtk
+	provides = gnvim
+	conflicts = gnvim
+	source = gnvim-git::git+https://github.com/vhakulinen/gnvim.git
+	md5sums = SKIP
+
+pkgname = gnvim-git
+
