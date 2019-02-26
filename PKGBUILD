@@ -12,7 +12,7 @@ arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://xboxdrv.gitlab.io/"
 license=(GPL3)
 depends=(libx11 dbus-glib libusb python2)
-makedepends=(git cmake boost)
+makedepends=(git scons boost)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}::git+https://gitlab.com/cebtenzzre/xboxdrv.git#branch=stable"
