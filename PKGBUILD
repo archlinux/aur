@@ -2,7 +2,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=tslint
-pkgver=5.11.0
+pkgver=5.13.0
 pkgrel=1
 pkgdesc="A Linter for the TypeScript language."
 arch=('any')
@@ -15,6 +15,10 @@ noextract=($pkgname-$pkgver.tgz)
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
+
+  # Non-deterministic race in npm gives 777 permissions to random directories.
+  # See https://github.com/npm/npm/issues/9359 for details.
+  find "${pkgdir}"/usr -type d -exec chmod 755 {} +
 }
 
-sha256sums=('b2016e35464f38722fa8939dcec49a3c54a7550c5aed4f952af7bdd9a3b813c4')
+sha256sums=('d41840d28fce007d29ae01d945da153fa934f7960978e8f98de277b1b648fdb4')
