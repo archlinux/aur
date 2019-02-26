@@ -2,7 +2,7 @@
 
 pkgname=armcl-opencl
 pkgver=18.11
-pkgrel=0
+pkgrel=1
 
 epoch=
 pkgdesc="ARM Computer Vision and Machine Learning Library (x86_64 OpenCL Backend)"
@@ -38,7 +38,8 @@ build() {
   pmu=0 \
   mali=0 \
   validation_tests=0 \
-  benchmark_tests=0
+  benchmark_tests=0 \
+  extra_cxx_flags="-fPIC"
 }
 
 #check() {}

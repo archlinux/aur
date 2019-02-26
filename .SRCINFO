@@ -1,7 +1,7 @@
 pkgbase = armcl-opencl
 	pkgdesc = ARM Computer Vision and Machine Learning Library (x86_64 OpenCL Backend)
 	pkgver = 18.11
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/ARM-software/ComputeLibrary
 	arch = x86_64
 	license = MIT
