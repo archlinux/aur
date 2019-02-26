@@ -1,6 +1,6 @@
 pkgbase = mp-5
-	pkgver = 5.30
-	pkgrel = 2
+	pkgver = 5.31
+	pkgrel = 1
 	url = http://www.triptico.com/software/mp.html
 	arch = x86_64
 	license = GPL
@@ -8,9 +8,9 @@ pkgbase = mp-5
 	makedepends = ncurses
 	makedepends = qt5-base
 	options = !makeflags
-	source = http://triptico.com/download/mp/mp-5.30.tar.gz
+	source = http://triptico.com/download/mp/mp-5.31.tar.gz
 	source = MinimumProfit.desktop
-	md5sums = 244505cfe62023fe4890492f88cf1298
+	md5sums = 91fa68d6391e359b88106629956847c7
 	md5sums = 7eae413ded2d6f69fba8347240b8b875
 
 pkgname = mp-5-gtk
