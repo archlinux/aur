@@ -51,13 +51,13 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=4.19
-_minor=23
-_rtver=14
+_minor=25
+_rtver=16
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -80,7 +80,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
         "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
-        "${_lucjanpath}/arch-patches-v2/0001-net-crypto-set-sk-to-NULL-when-af_alg_release.patch"
         "${_lucjanpath}/arch-patches-v2/0002-exec-Fix-mem-leak-in-kernel_read_file.patch"
         "${_lucjanpath}/aur-patches/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"
          # the main kernel config files
@@ -388,15 +387,14 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('7c0403bd34372d9594149030814d9aac39c5a123b7f3bb2b9f2b50d873942f8cb3a5509d0f11a69507b1228eb042b23bdad3c6c72e28e10cd4363c5912bdf0fc'
+sha512sums=('d7f6cb0980640a772008f3517e260e545d201658d2202834fba82f9abc6d05a2917d45d8ab8885c0282c1064dbd9149adc5df307ba3ea063dbe1a9dde40c8810'
             'SKIP'
-            '52df944930998b38bffa5ca3fbc56263c3fc8de3f36c535247ebf82295f2639d047e2dd19053cfc960e4663380669d7d0c47ec7caa8e827b1dcab29402b6d6ff'
+            'f86a95def90e8c5eca4bd30e67b95d33f193760d6bbe9c643c2a5afb622d8d1803815cd1a0357bfcbe8f51a7ee74ecc81f30949c1bc46c380c8c097975fd6099'
             'SKIP'
             'd2c3d1e8708ab163f9a120376dd8a3e7d23f7545478144e760ebde7bf7388a69bfa3f8af3ccd8ed8ac1840d2c77b1f297a7d802c527b22cf5fdb589d0c0e0d9d'
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
             '560920b4ebf8d7b753f058a41da62d20fde1e4b42a42e73be11461d3fe25b59bc36250a66d9c1c6e3c499426b237427af5ba7586daa7c549d2cf7bb7087932a1'
-            'cbe8d7d9c09498047d56f3b88b99501a70490479a7c54ede16105c9b682f1c0fe109c08a4ad6921f6aa86110043cd51322a5697c838b03d1a8ed4a669ba30b74'
             '3b58b55a475a88ea4773bd28064ec4670c7ded3b028fc337facf78014529fecf413ad1aeaa12424b6f478b237438a31205f8938908cc47f1b612894661626bf0'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
             '17e85ed5227b679884987f3a3ab8420eb5c10d2204d13ddc7f6bfbf4b75345234729b3db4c15e14bad04dd39c83f6979d5638230b84dfe667a363b9c50cf1d97'
