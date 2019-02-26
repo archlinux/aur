@@ -1,5 +1,5 @@
 # Maintainer: Smit S. Patil <smit17av@gmail.com>
-pkgname=shader-minifier-bin
+pkgname=shader-minifire-bin
 pkgver=1.1
 pkgrel=6
 pkgdesc="tool that minifies and obfuscates shader code (GLSL and HLSL)"
