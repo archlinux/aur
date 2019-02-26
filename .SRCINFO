@@ -1,0 +1,17 @@
+pkgbase = mtn-git
+	pkgdesc = Movie Thumbnailer (mtn) saves thumbnails (screenshots) of movie or video files to image files (jpg, png)
+	pkgver = 3.3.1.r0.g20b9e6e
+	pkgrel = 1
+	url = https://gitlab.com/movie_thumbnailer/mtn
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = ffmpeg
+	depends = gd
+	provides = mtn
+	conflicts = mtn
+	source = git+https://gitlab.com/movie_thumbnailer/mtn.git
+	md5sums = SKIP
+
+pkgname = mtn-git
+
