@@ -1,0 +1,29 @@
+# Colored makepkg-like functions
+# Shamelessly ripped off of google-chrome's install file
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+    note "you may want to add a function to your shell rc file (~/.bashrc, ~/.zshrc, ~/.config/fish/config.fish)"
+
+    note "for bash/zsh, add the following: "
+    echo 'function gclone {'
+    echo '  cd `gclone-bin $@`'
+    echo '}'
+
+    note "for fish, add the following: "
+    echo 'function gclone'
+    echo '  cd (gclone-bin $argv)'
+    echo 'end'
+}
+

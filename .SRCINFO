@@ -1,0 +1,20 @@
+pkgbase = gclone
+	pkgdesc = A git-based project helper
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/allonsy/gclone
+	install = gclone.install
+	arch = x86_64
+	license = MIT
+	depends = git
+	source = gclone::https://github.com/allonsy/gclone/releases/download/v0.5.0/gclone-bin-linux-v0.5.0
+	source = https://github.com/allonsy/gclone/releases/download/v0.5.0/gclone.fish
+	source = https://github.com/allonsy/gclone/releases/download/v0.5.0/_gclone
+	source = https://raw.githubusercontent.com/allonsy/gclone/master/LICENSE
+	sha256sums = 1ebc38ff0096cbee81636b226bd73864b89446b00a82ace7f961c69120cf1d53
+	sha256sums = 610dc043b1a44e4037a7f12b3e8667fc95baec4afed4dcf54dfade5822b0016e
+	sha256sums = 37aad94a217fef36960d9e0068cb7075d22e382b8819489c6681433c0a721d40
+	sha256sums = 42b152633a50a3618415203384e4e4e31e3388dffb4fad3fb753019ad31bc73b
+
+pkgname = gclone
+
