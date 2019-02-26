@@ -1,0 +1,15 @@
+pkgbase = shader-minifier-bin
+	pkgdesc = tool that minifies and obfuscates shader code (GLSL and HLSL)
+	pkgver = 1.1
+	pkgrel = 6
+	url = https://github.com/laurentlb/Shader_Minifier
+	arch = any
+	license = Apache
+	depends = mono
+	noextract = shader_minifier.exe
+	options = !strip
+	source = https://github.com/laurentlb/Shader_Minifier/releases/download/1.1.6/shader_minifier.exe
+	md5sums = SKIP
+
+pkgname = shader-minifier-bin
+
