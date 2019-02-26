@@ -3,9 +3,9 @@
 # Contributor: Stephen D. Cofer <stephen.d.cofer@outlook.com>
 
 pkgname=enyo-doom
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
-_commit=5f4200fd0b378aa5a5b71f2d253b9ae52cbbefc8
+_commit=1e03a05799d0cecf708f34347b8c2aa79a42b170
 pkgdesc="A frontend for Doom engines"
 arch=('x86_64')
 url="https://gitlab.com/sdcofer70/enyo-doom"
@@ -14,7 +14,7 @@ depends=('qt5-base')
 makedepends=('cmake')
 optdepends=('chocolate-doom' 'prboom' 'zdoom' 'prboom-plus' 'gzdoom')
 source=("$pkgname-$pkgver.tar.bz2::https://gitlab.com/sdcofer70/enyo-doom/repository/$pkgver/archive.tar.bz2")
-sha256sums=('cfc362ff649ceae032ba881c124f119475789ace029ad4f8e6a1f5fffc5b34d4')
+sha256sums=('1e540bd6259a960af0af2af4b9709900bfe4bb7c37da777224036e65f5c31b4b')
 
 prepare() {
   mkdir -p build
