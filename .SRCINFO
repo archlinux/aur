@@ -1,0 +1,14 @@
+pkgbase = nodejs-csv2json
+	pkgdesc = Stream and CLI to convert CSV to JSON
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/julien-f/csv2json
+	arch = any
+	makedepends = jq
+	makedepends = npm
+	depends = nodejs
+	source = http://registry.npmjs.org/csv2json/-/csv2json-1.4.2.tgz
+	sha1sums = d82bceb4d0d1acd35dd7cb8043386c5a6df5e2dc
+
+pkgname = nodejs-csv2json
+
