@@ -8,7 +8,7 @@ pkgdesc="The modern C++ library for sequence analysis"
 arch=('i686' 'x86_64')
 url="http://www.seqan.de"
 license=('custom')
-depends=('gcc-libs' 'coin-or-lemon' 'range-v3' 'sdsl-lite-v3-git')
+#depends=('gcc-libs' 'coin-or-lemon' 'range-v3' 'sdsl-lite-v3-git')
 optdepends=('bzip2: bzip2 support'
             'zip: zip support'
             'coin-or-lemon: graphs, required for MSA'
