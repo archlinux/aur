@@ -1,14 +1,14 @@
 pkgbase = cmake-extras
 	pkgdesc = Extra CMake utility modules
-	pkgver = 1.3_17.04.20170310_5
-	pkgrel = 2
+	pkgver = 1.3
+	pkgrel = 3
 	url = https://launchpad.net/cmake-extras
 	arch = any
 	license = LGPL3
 	makedepends = cmake
 	depends = cmake>=3.1
 	depends = python
-	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/cmake-extras/1.3+17.04.20170310-5/cmake-extras_1.3+17.04.20170310.orig.tar.gz
+	source = cmake-extras::http://archive.ubuntu.com/ubuntu/pool/universe/c/cmake-extras/cmake-extras_1.3+17.04.20170310.orig.tar.gz
 	source = 0001_73_72.patch
 	source = 0002_74_73.patch
 	source = 0003_75_74.patch
