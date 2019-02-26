@@ -4,16 +4,16 @@
 
 pkgbase=spotifyd
 pkgname=('spotifyd' 'spotifyd-pulseaudio' 'spotifyd-dbus-mpris')
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('GPL3')
 depends=('alsa-lib' 'libogg' 'gcc-libs')
-makedepends=('cargo' 'libpulse')
+makedepends=('cargo' 'libpulse' 'dbus')
 pkgdesc="A spotify playing daemon"
 url="https://github.com/Spotifyd/$pkgbase"
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/Spotifyd/$pkgbase/archive/v$pkgver.tar.gz")
-sha256sums=('05359f6b9e93cd64c3dfada42341dd3b3999f7d695093f5e831164016b945dd3')
+sha256sums=('dfaca1e382b11197e11941388734dddb7dae4ec44ad36aaf78f76b4011102b53')
 
 prepare() {
   cd "$srcdir/spotifyd-$pkgver"
@@ -47,6 +47,7 @@ package_spotifyd-pulseaudio() {
 }
 
 package_spotifyd-dbus-mpris() {
+  depends=(alsa-lib libogg dbus)
   conflicts=(spotifyd)
   pkgdesc="$pkgdesc, with D-Bus MPRIS"
   _package_feature dbus_mpris

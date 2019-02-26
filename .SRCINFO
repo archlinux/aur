@@ -1,6 +1,6 @@
 pkgbase = spotifyd
 	pkgdesc = A spotify playing daemon
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/Spotifyd/spotifyd
 	arch = x86_64
@@ -9,11 +9,12 @@ pkgbase = spotifyd
 	license = GPL3
 	makedepends = cargo
 	makedepends = libpulse
+	makedepends = dbus
 	depends = alsa-lib
 	depends = libogg
 	depends = gcc-libs
-	source = spotifyd-0.2.4.tar.gz::https://github.com/Spotifyd/spotifyd/archive/v0.2.4.tar.gz
-	sha256sums = 05359f6b9e93cd64c3dfada42341dd3b3999f7d695093f5e831164016b945dd3
+	source = spotifyd-0.2.5.tar.gz::https://github.com/Spotifyd/spotifyd/archive/v0.2.5.tar.gz
+	sha256sums = dfaca1e382b11197e11941388734dddb7dae4ec44ad36aaf78f76b4011102b53
 
 pkgname = spotifyd
 
@@ -24,5 +25,8 @@ pkgname = spotifyd-pulseaudio
 
 pkgname = spotifyd-dbus-mpris
 	pkgdesc = A spotify playing daemon, with D-Bus MPRIS
+	depends = alsa-lib
+	depends = libogg
+	depends = dbus
 	conflicts = spotifyd
 
