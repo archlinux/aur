@@ -33,6 +33,6 @@ package() {
     make DESTDIR="$pkgdir" install
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    #${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
   done
 }
