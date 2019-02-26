@@ -1,6 +1,6 @@
 # Maintainer: Daniel Moch <daniel@danielmoch.com>
 pkgname=nncli
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="NextCloud Notes Command Line Interface"
 arch=('any')
@@ -11,16 +11,15 @@ depends=('python'
          'python-requests'
          'python-appdirs'
          'python-click')
-makedepends=('python-pip' 'flit' 'python-sphinx')
+makedepends=('python-pip' 'flit' 'python-sphinx' 'python-sphinx-sitemap')
 checkdepends=('python-pytest'
               'python-pytest-cov'
               'python-pytest-mock'
               'python-pylint'
               'python-mock')
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-        "${pkgname}-${pkgver}.tar.gz.asc::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz.asc")
+source=("https://git.danielmoch.com/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.gz"{,.asc})
 validpgpkeys=('72A97F7072DDCE28058DEF30323C9F1784BDDD43')
-sha256sums=('d8ffc69501401119c4c8c088466a56dd46a85d4724dc05d60e521d3c99ec6d4c'
+sha256sums=('46843aca61a8d25ae7ae73a8667e6c89e6343ae2a7223c760935d2bcb24999c9'
             'SKIP')
 
 build()

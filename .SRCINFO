@@ -1,6 +1,6 @@
 pkgbase = nncli
 	pkgdesc = NextCloud Notes Command Line Interface
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://nncli.org
 	arch = any
@@ -14,15 +14,16 @@ pkgbase = nncli
 	makedepends = python-pip
 	makedepends = flit
 	makedepends = python-sphinx
+	makedepends = python-sphinx-sitemap
 	depends = python
 	depends = python-urwid
 	depends = python-requests
 	depends = python-appdirs
 	depends = python-click
-	source = nncli-0.3.2.tar.gz::https://files.pythonhosted.org/packages/source/n/nncli/nncli-0.3.2.tar.gz
-	source = nncli-0.3.2.tar.gz.asc::https://files.pythonhosted.org/packages/source/n/nncli/nncli-0.3.2.tar.gz.asc
+	source = https://git.danielmoch.com/nncli/snapshot/nncli-0.3.3.tar.gz
+	source = https://git.danielmoch.com/nncli/snapshot/nncli-0.3.3.tar.gz.asc
 	validpgpkeys = 72A97F7072DDCE28058DEF30323C9F1784BDDD43
-	sha256sums = d8ffc69501401119c4c8c088466a56dd46a85d4724dc05d60e521d3c99ec6d4c
+	sha256sums = 46843aca61a8d25ae7ae73a8667e6c89e6343ae2a7223c760935d2bcb24999c9
 	sha256sums = SKIP
 
 pkgname = nncli
