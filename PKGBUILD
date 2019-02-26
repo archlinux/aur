@@ -10,7 +10,7 @@ pkgbase=linux-rt-lts       # Build kernel with a different name
 _pkgver=4.14.93
 _rtpatchver=rt53
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
 license=(GPL2)
@@ -43,7 +43,7 @@ sha256sums=('bb125fb204f7089782e179126121dd0f0aad9f02b7517ce3744982254c221bad'
             'SKIP'
             '75aa8dd708ca5a0137fbf7cddc9cafefe6aac6b8e0638c06c156d412d05af4bc'
             '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06'
-            '1563a6aff2d3e8e751c4260dd8e6d723be7de8e44a5eb4619935449a79699094'
+            '50b5311f7c0a2848b3a280d7ad6c61695f3613cfe7b110c8aaff5bfa3412d1cd'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
