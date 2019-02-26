@@ -5,7 +5,7 @@
 
 _pkgname=libvirt
 pkgname=libvirt-apparmor
-pkgver=4.10.0
+pkgver=5.0.0
 pkgrel=0
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc). Compiled with Audit and AppArmor support."
 arch=('x86_64')
@@ -71,7 +71,7 @@ source=("https://libvirt.org/sources/${_pkgname}-${pkgver}.tar.xz"{,.asc}
         'libvirtd.conf.d'
         'libvirtd-guests.conf.d'
         'libvirt.sysusers.d')
-sha512sums=('a4f97aed6299c7954518ab88738ab781cee0755bfd64094a44468f77f99cac5eb2bc74ecd6aec90177317606ebd073292f5b5d0056054d1d94973fa938589fbd'
+sha512sums=('d93042f49d2550d14577b5257c548d7108462fe1ad69420c128acf094ffd3e80deb744db13d4c3d5fbe5e4c1826d13131be12e3413710711a2d8cba6cb5a9db9'
             'SKIP'
             'fc0e16e045a2c84d168d42c97d9e14ca32ba0d86025135967f4367cf3fa663882eefb6923ebf04676ae763f4f459e5156d7221b36b47c835f9e531c6b6e0cd9d'
             'ef221bae994ad0a15ab5186b7469132896156d82bfdc3ef3456447d5cf1af347401ef33e8665d5b2f76451f5457aee7ea01064d7b9223d6691c90c4456763258'
