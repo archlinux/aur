@@ -7,7 +7,7 @@
 
 
 pkgname=slowmovideo-git
-pkgver=20160624
+pkgver=20190211
 pkgrel=1
 pkgdesc="Video slow motion effect via interpolation"
 arch=('i686' 'x86_64')
@@ -21,10 +21,10 @@ source=('git+https://github.com/slowmoVideo/slowmoVideo.git')
 md5sums=('SKIP')
 install=$pkgname.install
 
-#prepare(){
-#cd ${srcdir}/slowmoVideo
-#patch -p1 -i ../../${pkgname}.patch
-#}
+prepare(){
+cd ${srcdir}/slowmoVideo
+patch -Np1 -i ../../OpenCV4_compile.patch
+}
 
 pkgver() {
   cd "${srcdir}"/slowmoVideo

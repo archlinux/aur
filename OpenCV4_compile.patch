@@ -1,0 +1,38 @@
+diff --git i/src/slowmoVideo/project/flowSourceOpenCV_sV.cpp w/src/slowmoVideo/project/flowSourceOpenCV_sV.cpp
+index ae49feb..57ddcce 100644
+--- i/src/slowmoVideo/project/flowSourceOpenCV_sV.cpp
++++ w/src/slowmoVideo/project/flowSourceOpenCV_sV.cpp
+@@ -260,13 +260,13 @@ void FlowSourceOpenCV_sV::buildFlowOpenCV_CPU(cv::Mat& prevgray, cv::Mat& gray,
+     dumpAlgosParams();
+     cv::Mat_<cv::Point2f> flow;
+     if (algo == 1) { // DualTVL1
+-        cv::Ptr<cv::DenseOpticalFlow> tvl1 = cv::createOptFlow_DualTVL1();
+-        tvl1->set("lambda", lambda);
+-        tvl1->set("tau", tau);
+-        tvl1->set("nscales", nscales);
+-        tvl1->set("warps", warps);
+-        tvl1->set("iterations", iterations);
+-        tvl1->set("epsilon", epsilon);
++        cv::Ptr<cv::superres::DualTVL1OpticalFlow> tvl1 = cv::superres::createOptFlow_DualTVL1();
++        tvl1->setLambda(lambda);
++        tvl1->setTau(tau);
++        tvl1->setScalesNumber(nscales);
++        tvl1->setWarpingsNumber(warps);
++        tvl1->setIterations(iterations);
++        tvl1->setEpsilon(epsilon);
+         tvl1->calc(prevgray, gray, flow);
+     } else { // _FARN_
+         // TODO: check to use prev flow as initial flow ? (flags)
+diff --git i/src/slowmoVideo/project/flowSourceOpenCV_sV.h w/src/slowmoVideo/project/flowSourceOpenCV_sV.h
+index 4f70868..2437769 100644
+--- i/src/slowmoVideo/project/flowSourceOpenCV_sV.h
++++ w/src/slowmoVideo/project/flowSourceOpenCV_sV.h
+@@ -22,6 +22,8 @@ the Free Software Foundation, either version 3 of the License, or
+ #include "opencv2/imgproc/imgproc.hpp"
+ #include "opencv2/highgui/highgui.hpp"
+ #include "opencv2/opencv_modules.hpp"
++#include "opencv2/superres/optical_flow.hpp"
++#include "opencv2/imgcodecs/legacy/constants_c.h"
+ 
+ #if CV_MAJOR_VERSION == 2
+ #include "opencv2/core/gpumat.hpp"
