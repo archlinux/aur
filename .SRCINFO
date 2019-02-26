@@ -1,0 +1,16 @@
+pkgbase = ftx-prog-git
+	pkgver = r54.31cfa4d
+	pkgrel = 1
+	url = https://github.com/richardeoin/ftx-prog
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libftdi
+	depends = libusb
+	provides = ftx-prog
+	conflicts = ftx-prog
+	source = git+https://github.com/richardeoin/ftx-prog.git
+	md5sums = SKIP
+
+pkgname = ftx-prog-git
+

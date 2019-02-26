@@ -1,0 +1,4 @@
+*.pkg.*
+ftx-prog/
+pkg/
+src/
