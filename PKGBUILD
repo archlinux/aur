@@ -3,8 +3,8 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=2.1.12
-pkgrel=2
+pkgver=2.1.13
+pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64')
 url='https://github.com/GNS3/gns3-server'
@@ -26,14 +26,14 @@ install="$pkgname".install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname@.service"
         'fix-requirements.diff')
-sha256sums=('2505fe6189faccfd1b47018916a3a793d72e19ac65e018ba13eb683644da1df4'
+sha256sums=('80d73d1fe7877f89506873835f50b63a32092c498c8667dfa595db00ec110c3c'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f'
-            'f5069b3399eb52e82d251eafb4cac2a4e4e89a449da1a97ad89096dbbed23f6a')
+            '138d1007b1626aa07119367879603d82ded9b5b80c531f26da73a91b08028df0')
 
 prepare() {
     cd "$pkgname-$pkgver"
     find . -type f -print0 | xargs -r0 sed -i -e 's/asyncio.async(/asyncio.ensure_future(/g'
-    patch -p1 -i "$srcdir"/fix-requirements.diff
+    patch -i "$srcdir"/fix-requirements.diff
 }
 
 build() {
