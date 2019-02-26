@@ -10,5 +10,5 @@ pkgbase = plexconnect-current
 	source_x86_64 = https://github.com/iBaa/PlexConnect/archive/V0.6.tar.gz
 	sha256sums_x86_64 = 5f78f7f57edb8ae5b3c16147f8817f9b5e23c3fc7c3c2213477c91ddebd0c9a5
 
-pkgname = plexconnect
+pkgname = plexconnect-current
 
