@@ -1,7 +1,8 @@
-# Maintainer: Nikolaos Bezirgiannis <bezeria@gmail.com>
+# Maintainer: Mort Yao <soi@mort.ninja>
+# Contributor: Nikolaos Bezirgiannis <bezeria@gmail.com>
 pkgname=hol
-pkgver=kananaskis.10
-pkgrel=3
+pkgver=kananaskis.12
+pkgrel=1
 pkgdesc="Interactive proof assistant for higher order logic"
 url='http://hol.sourceforge.net/'
 arch=('i686' 'x86_64')
@@ -10,7 +11,7 @@ source=("http://sourceforge.net/projects/hol/files/hol/${pkgver//./-}/hol-${pkgv
         '0001-fix-holdir.patch'
         '0002-fix-emit.patch'
     )
-md5sums=('aaf565484d62f1b43423897a2e8517ac'
+md5sums=('5b01d43494c7809c029764a95bf06402'
          'd613c3d825d6f382a24533c0136c5b1e'
          '4a01da11b5bfb917a3e5a08ee8bde856')
 depends=('mosml')
@@ -27,8 +28,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver//./-}"
-  mosml < tools/smart-configure.sml 
-  bin/build -nograph
+  mosml < tools/smart-configure.sml
+  bin/build --nograph
 }
 
 package() {
