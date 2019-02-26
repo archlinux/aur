@@ -1,0 +1,17 @@
+pkgbase = rofi-file-browser-extended-git
+	pkgdesc = A plugin to use rofi as a file browser
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/marvinkreis/rofi-file-browser-extended
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = rofi
+	depends = json-c
+	provides = rofi-file-browser-extended
+	replaces = rofi-file_browser-extended
+	source = git+https://github.com/marvinkreis/rofi-file-browser-extended.git
+	md5sums = SKIP
+
+pkgname = rofi-file-browser-extended-git
+
