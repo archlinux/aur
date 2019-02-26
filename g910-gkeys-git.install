@@ -1,0 +1,36 @@
+post_install() {
+    echo ""
+	echo "#########################################################"
+    echo ""
+	echo "You can now enable the service by:"
+    echo ""
+	echo "      # systemctl enable g910-gkeys.service"
+    echo ""
+	echo "And run it with:"
+    echo ""
+	echo "      # systemctl start g910-gkeys.service"
+    echo ""
+	echo "Log file is stored in /var/log/g910-gkeys.log"
+	echo ""
+	echo "#########################################################"
+	echo ""
+}
+
+
+post_upgrade() {
+	echo ""
+	echo "#########################################################"
+    echo ""
+	echo "You can now enable the service by:"
+    echo ""
+	echo "      # systemctl enable g910-gkeys.service"
+    echo ""
+	echo "And run it with:"
+    echo ""
+	echo "      # systemctl start g910-gkeys.service"
+    echo ""
+	echo "Log file is stored in /var/log/g910-gkeys.log"
+	echo ""
+	echo "#########################################################"
+	echo ""
+}
