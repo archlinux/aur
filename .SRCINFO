@@ -1,0 +1,14 @@
+pkgbase = plexconnect
+	pkgdesc = Integration layer between Apple TV and Plex
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/iBaa/PlexConnect
+	arch = x86_64
+	license = MIT
+	depends = python2
+	depends = openssl
+	source_x86_64 = https://github.com/iBaa/PlexConnect/archive/V0.6.tar.gz
+	sha256sums_x86_64 = 5f78f7f57edb8ae5b3c16147f8817f9b5e23c3fc7c3c2213477c91ddebd0c9a5
+
+pkgname = plexconnect
+
