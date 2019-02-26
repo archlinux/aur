@@ -16,6 +16,7 @@ pkgbase = python-mutovis-analysis
 	depends = python-lmfit
 	depends = python-dill
 	depends = python-pyqt5
+	depends = python-uncertanties
 	source = https://github.com/mutovis/analysis-software/archive/v3.0.0.tar.gz
 	sha256sums = 8718dde2567cb52a6503df04ccb09f9cbc168e33a6f936600e956b064cb05684
 
