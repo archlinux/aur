@@ -1,7 +1,7 @@
 # Maintainer: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
 pkgbase=dxvk-git
-pkgname=('dxvk-win64-git' 'dxvk-win32-git' 'dxvk-windows-git')
+pkgname=('dxvk-win64-git' 'dxvk-win32-git' 'dxvk-mingw-git')
 pkgver=1.0.r1.g71186859
 pkgrel=1
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 10/11 which allows running 3D applications on Linux using Wine. Windows DLL version)"
@@ -42,14 +42,14 @@ build() {
 
 package_dxvk-win64-git() {
         pkgdesc="Dummy package"
-        depends=("dxvk-windows-git")
+        depends=("dxvk-mingw-git")
 }
 package_dxvk-win32-git() {
         pkgdesc="Dummy package"
-        depends=("dxvk-windows-git")
+        depends=("dxvk-mingw-git")
 }
 
-package_dxvk-windows-git() {
+package_dxvk-mingw-git() {
         arch=('x86_64')
         conflicts=("dxvk-bin")
         DESTDIR="$pkgdir" ninja -C "build/x32" install

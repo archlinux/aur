@@ -23,13 +23,13 @@ pkgbase = dxvk-git
 
 pkgname = dxvk-win64-git
 	pkgdesc = Dummy package
-	depends = dxvk-windows-git
+	depends = dxvk-mingw-git
 
 pkgname = dxvk-win32-git
 	pkgdesc = Dummy package
-	depends = dxvk-windows-git
+	depends = dxvk-mingw-git
 
-pkgname = dxvk-windows-git
+pkgname = dxvk-mingw-git
 	arch = x86_64
 	conflicts = dxvk-bin
 
