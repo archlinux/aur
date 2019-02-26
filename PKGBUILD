@@ -4,7 +4,7 @@
 arch=('i686' 'x86_64')
 pkgname=aacgain-cvs
 pkgver=20130814
-pkgrel=3
+pkgrel=4
 conflicts=('aacgain')
 provides=('aacgain')
 makedepends=('git')
@@ -14,10 +14,12 @@ url="http://altosdesign.com/aacgain"
 license=('GPL')
 source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mp4v2/mp4v2-1.9.1.tar.bz2
         http://downloads.sourceforge.net/sourceforge/faac/faad2-2.7.tar.bz2
-        git+https://github.com/elfchief/mp3gain)
+        git+https://github.com/elfchief/mp3gain
+        git+https://aur.archlinux.org/aacgain-cvs.git)
 
 sha256sums=('5c381caeab2326fc48cfda0fe202bdb8ba0ae624d9c97ad7680a2b07e2c2e3b4'
             '14561b5d6bc457e825bfd3921ae50a6648f377a9396eaf16d4b057b39a3f63b5'
+            'SKIP'
             'SKIP')
 
 build() {
@@ -34,7 +36,7 @@ build() {
     msg "Building mp4v2..."
     patch -d ../ -p1 <mp4v2.patch
     cd ../mp4v2
-    patch -p0 <../../fix_missing_ptr_deref.patch
+    patch -p0 <$srcdir/aacgain-cvs/fix_missing_ptr_deref.patch
     ./configure
     make libmp4v2.la
 
