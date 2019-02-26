@@ -1,10 +1,10 @@
 pkgbase = tutanota-desktop-linux
 	pkgdesc = Official Tutanota email client
 	pkgver = 3.47.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tutanota.com/blog/posts/desktop-clients/
 	arch = x86_64
-	license = unknown
+	license = GPL3
 	provides = tutanota-desktop-linux
 	conflicts = tutanota-desktop-linux
 	noextract = tutanota-desktop-linux.AppImage
