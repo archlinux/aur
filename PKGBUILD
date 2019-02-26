@@ -3,16 +3,16 @@
 
 _target=m68k-elf
 pkgname=$_target-toolchain
-pkgver=20171221
-pkgrel=2
+pkgver=20190226
+pkgrel=1
 pkgdesc="A complete gcc/binutils/newlib toolchain for $_target"
 depends=('zlib' 'bash' 'libmpc')
 url="http://www.gnu.org"
 conflicts=('m68k-elf-gcc' 'm68k-elf-binutils' 'm68k-elf-newlib')
 arch=('x86_64')
-_gcc=gcc-7.2.0
-_binutils=binutils-2.29.1
-_newlib=newlib-2.5.0.20170922
+_gcc=gcc-8.3.0
+_binutils=binutils-2.32
+_newlib=newlib-3.1.0
 license=('GPL' 'BSD')
 options=('!strip')
 
@@ -20,18 +20,14 @@ source=("http://gnuftp.uib.no/gcc/${_gcc}/${_gcc}.tar.xz"
 	"http://gnuftp.uib.no/binutils/${_binutils}.tar.xz"
 	"ftp://sourceware.org/pub/newlib/${_newlib}.tar.gz")
 
-sha512sums=('f853cd6530b4055d8d8289da74687cb4c6d5f363598d386332d31852b581bac76c3adb7d61889edec3b779f63d8646f0122840f12965ce4a4389ba535dbbb6e1'
-            'd748d22306477d60d921078804d21943248c23fca0707aac9b016a352c01c75ca69e82624ae37fb0bbd03af3b17088a94f60dfe1a86a7ff82e18ece3c24f0fd0'
-            '5f29509c53d2858c0067e2fe33565a8b8e9decfc2761b3616729a274e7747c120a0b82b2c50aae291b182178da274a1540e218d23b86debd56256e17f3651d4b')
-
+sha512sums=('1811337ae3add9680cec64968a2509d085b6dc5b6783fc1e8c295e3e47416196fd1a3ad8dfe7e10be2276b4f62c357659ce2902f239f60a8648548231b4b5802'
+            'd326408f12a03d9a61a9de56584c2af12f81c2e50d2d7e835d51565df8314df01575724afa1e43bd0db45cfc9916b41519b67dfce03232aa4978704492a6994a'
+            'efc4c3ab7153387780d141386bca5d3e20c9d25ae3e6b87cf94c8df9d301ce5926dacdff9bd33aeb9781559d933c3d0ae77f4e5b46120d90792f75dbfde702c7')
 
 prepare() {
 	cd "${srcdir}/${_gcc}"
 	
-	#we use libiberty from binutils. Otherwise the compilation will fail.
-	rm -rf libiberty
-
-	for i in bfd binutils gas ld libiberty opcodes; do ln -sv ../${_binutils}/$i; done
+	for i in bfd binutils gas ld opcodes; do ln -sv ../${_binutils}/$i; done
 	for i in newlib libgloss; do ln -sf ../${_newlib}/$i; done
 
 	# hack! - some configure tests for header files using "$CPP $CPPFLAGS"
@@ -44,7 +40,7 @@ build()
 {
 	cd "${srcdir}/obj"
 	"${srcdir}/${_gcc}/configure" --prefix=/usr --libexecdir=/usr/lib --target=${_target} --enable-languages=c,c++ --disable-libstdcxx-pch \
-	--with-newlib --with-libgloss --with-system-zlib --disable-nls
+	--with-newlib --with-libgloss --with-system-zlib --disable-nls --enable-checking=release
 
 	make
 }
