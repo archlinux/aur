@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=sd
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Intuitive find & replace'
 arch=('i686' 'x86_64')
@@ -9,14 +9,14 @@ license=('MIT')
 depends=()
 conflicts=('sd-git')
 makedepends=('rust' 'cargo' 'git')
-source=("$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('d3d463c36597158cc5a8ac327c1710a73825ae1a960ead707915d98de4dc8732')
+source=("$pkgver.tar.gz::$url/archive/sd-$pkgver.tar.gz")
+sha256sums=('167940e76ce0dd0129832e1cc1302eef9318f9003d27d968fbcba912ce23bb1c')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgname-$pkgver"
   /usr/bin/cargo build --release
 }
 
 package() {
-    install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "$srcdir/$pkgname-$pkgname-$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
