@@ -4,7 +4,7 @@
 # Contributor: TuxSpirit <tuxspirit AT archlinux DOT fr>
 
 pkgname=rar-beta
-pkgver=5.6.b5
+pkgver=5.7.0
 pkgrel=1
 pkgdesc="A command-line port of the rar compression utility (beta version or maybe not)"
 url="http://www.rarlab.com"
@@ -18,7 +18,7 @@ source=('rar.1' 'unrar.1'
         "http://www.rarlab.com/rar/rarlinux-x64-${pkgver}.tar.gz")
 md5sums=('4cffd2771bb4a51e4a68500d799550d8'
          '594b777453751ee331ef241160f31499'
-         '9cff9e8d214a751d6e65547f04202e29')
+         '7eee7ae82f5606ee08a6d3a267504aa2')
 
 # the checksums of the source from rarlab.com are changing
 # almost every day so this will never be correct
