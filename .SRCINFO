@@ -15,7 +15,7 @@ pkgbase = python-mutovis-control
 	depends = python-pyvisa-py
 	depends = python-mpmath
 	source = https://github.com/mutovis/control-software/archive/v1.0.3.tar.gz
-	sha256sums = 3bb0c32c7ed79f672762e1644c69f2ef44c0819a22f3ba9d4a142a5ce10850b4
+	sha256sums = c4a76b13b9dfa4d431fd5d2f229ccea781d5cc472af5c0c2134fbbcaeeab7e95
 
 pkgname = python-mutovis-control
 
