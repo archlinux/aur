@@ -4,7 +4,7 @@
 
 pkgname=octomap
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A probabilistic, flexible, and compact 3D mapping library for robotic systems."
 arch=('i686' 'x86_64')
 url="http://octomap.github.com/"

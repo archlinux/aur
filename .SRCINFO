@@ -1,7 +1,7 @@
 pkgbase = octomap
 	pkgdesc = A probabilistic, flexible, and compact 3D mapping library for robotic systems.
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://octomap.github.com/
 	arch = i686
 	arch = x86_64
