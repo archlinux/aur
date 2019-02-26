@@ -1,7 +1,7 @@
 pkgbase = clickhouse
 	pkgdesc = An open-source column-oriented database management system that allows generating analytical data reports in real time
 	pkgver = 19.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://clickhouse.yandex/
 	install = clickhouse.install
 	arch = i686
@@ -22,6 +22,7 @@ pkgbase = clickhouse
 	depends = llvm
 	depends = brotli
 	depends = lld
+	depends = clang
 	backup = etc/clickhouse-client/config.xml
 	backup = etc/clickhouse-server/config.xml
 	backup = etc/clickhouse-server/users.xml
