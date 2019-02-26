@@ -4,9 +4,9 @@
 
 _target=riscv64-linux-gnu
 pkgname=$_target-gcc
-pkgver=8.2.0
-_islver=0.19
-pkgrel=2
+pkgver=8.3.0
+_islver=0.20
+pkgrel=1
 pkgdesc='Cross compiler for 32-bit and 64-bit RISC-V'
 arch=('x86_64')
 url='https://gcc.gnu.org/'
@@ -16,8 +16,8 @@ depends=("$_target-binutils" "$_target-glibc" 'libmpc')
 options=('!emptydirs' '!strip')
 source=("https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "http://isl.gforge.inria.fr/isl-$_islver.tar.xz")
-sha512sums=('64898a165f67e136d802a92e7633bf1b06c85266027e52127ea025bf5fc2291b5e858288aac0bdba246e6cdf7c6ec88bc8e0e7f3f6f1985f4297710cafde56ed'
-            'eeda0405d38f77a18c6e69128948dc29af7e44ce827e9fb538d3844c6e22db3b4126287ca0937d9bee7b528bbab7aad8d3729db36e74864196f57e81943dade4')
+sha512sums=('1811337ae3add9680cec64968a2509d085b6dc5b6783fc1e8c295e3e47416196fd1a3ad8dfe7e10be2276b4f62c357659ce2902f239f60a8648548231b4b5802'
+            '394bccd22d8e63cb052a60ad8b1a75f4ec43916a9482c66f5167b534b538161179c47919815983b7fbc20dfaa1a590e88b251850aa092bbffc2891635bf30dc4')
 
 if [[ -n "$_snapshot" ]]; then
   _basedir=gcc-$_snapshot
