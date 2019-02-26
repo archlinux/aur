@@ -1,18 +1,19 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r122.bf01129
+pkgver=r123.4dc99dd
 pkgrel=1
 pkgdesc="Guest tools for the Crostini containers on ChromeOS"
 arch=('any')
 license=('custom')
-depends=('openssh' 'xdg-utils' 'xkeyboard-config' 'pulseaudio')
+depends=('openssh' 'xdg-utils' 'xkeyboard-config' 'pulseaudio' 'xxd-standalone')
 install=cros-container-guest-tools.install
 url="https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools"
-source=("git+${url}" 'cros-sftp-conditions.conf' 'cros-garcon-conditions.conf' 'cros-locale.sh')
+source=("git+${url}" 'cros-sftp-conditions.conf' 'cros-garcon-conditions.conf' 'cros-locale.sh' 'cros-garcon.hook')
 sha1sums=('SKIP'
           '0827ce6d673949a995be2d69d4974ddd9bdf16f1'
           'd326cd35dcf150f9f9c8c7d6336425ec08ad2433'
-          '8586cf72dacdcca82022519467065f70fe4a3294')
+          '8586cf72dacdcca82022519467065f70fe4a3294'
+          '9a68893cadf9190e99cadc4c781ba43e45104b1e')
 
 pkgver() {
 	cd ${srcdir}/${_pkgname}
@@ -61,6 +62,9 @@ package() {
 					 ${pkgdir}/usr/lib/systemd/user/cros-garcon.service.d/cros-garcon-conditions.conf
 	ln -sf ../cros-garcon.service \
 		   ${pkgdir}/usr/lib/systemd/user/default.target.wants/cros-garcon.service
+
+	install -m644 -D ${srcdir}/cros-garcon.hook \
+                     ${pkgdir}/usr/share/libalpm/hooks/cros-garcon.hook
 
 	### cros-guest-tools -> not applicable
 
