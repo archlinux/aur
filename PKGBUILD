@@ -1,7 +1,7 @@
 # Maintainer: Peter Roberts <me@peter-r.co.uk>
 pkgname=zoom-parallel
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Parallel command executor with a focus on simplicity and good cross-platform behaviour "
 arch=("x86_64")
 url="https://github.com/pwr22/zoom"
@@ -20,7 +20,7 @@ prepare(){
   ln -rTsf "$_cmdname-$pkgver" "go/src/github.com/pwr22/$_cmdname"
 
   export GOPATH="$srcdir/go"
-  export GOFLAGS="-gcflags=all=-trimpath=$PWD -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-$LDFLAGS"
+  export GOFLAGS="-gcflags=all=-trimpath=$PWD -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=$LDFLAGS"
 
   cd "go/src/github.com/pwr22/$_cmdname" # going through the symlink is necessary to make go get happy
   go get ./...
@@ -30,7 +30,7 @@ build() {
 	cd "$_cmdname-$pkgver"
 
 	export GOPATH="$srcdir/go"
-	export GOFLAGS="-gcflags=all=-trimpath=$PWD -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-$LDFLAGS"
+	export GOFLAGS="-gcflags=all=-trimpath=$PWD -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=$LDFLAGS"
 
     go build -o "$_cmdname"
 }
