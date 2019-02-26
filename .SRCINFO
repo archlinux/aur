@@ -1,13 +1,12 @@
 pkgbase = geary-git
 	pkgdesc = A lightweight email client for the GNOME desktop
-	pkgver = r4113.4d92ed2e
+	pkgver = r4379.384dc179
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Geary
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = gobject-introspection
 	makedepends = itstool
 	makedepends = meson
 	makedepends = vala
