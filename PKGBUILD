@@ -2,7 +2,7 @@
 
 pkgname=python-mutovis-control
 _pkgname=control-software
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Software for collecting electrical characterization data for solar cells"
 arch=('any')
