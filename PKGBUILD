@@ -4,7 +4,7 @@
 # Contributor: Drew DeVault
 
 pkgname=nginx-mainline
-pkgver=1.15.8
+pkgver=1.15.9
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('x86_64')
@@ -27,11 +27,11 @@ source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         service
         logrotate)
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
-md5sums=('49eecc51a45bdcc8cc147f6747ef8a4c'
+md5sums=('00dde20d4d2cc65bdaf8950a5bd3e14b'
          'SKIP'
          'ef491e760e7c1ffec9ca25441a150c83'
          '6a01fb17af86f03707c8ae60f98a2dc2')
-sha512sums=('4509f0a0adf189bbdfa068adb120d0c26e594283b84c75f7df256b46e505aab5adda50b845abbbe07ab36f54c5ebefac4660fa315546856fb5114067e70394d3'
+sha512sums=('24dcd5b9bae966244663ff71a625ca90fbe1b29b5717e88aca96ac0c4772108a234647a8c7456154f34ef34d27ebffdce82ad30d2900f24ef5536af6080a6ba8'
             'SKIP'
             '4f90db6b8b5c13762b96ddff9ca4e846762d46b90be27c7c9d54cec6f7f12fc95585f8455919296edb0255405dd80af8ee86780b805631b72eb74ee59f359715'
             '9232342c0914575ce438c5a8ee7e1c25b0befb457a2934e9cb77d1fe9a103634ea403b57bc0ef0cd6cf72248aee5e5584282cea611bc79198aeac9a65d8df5d7')
