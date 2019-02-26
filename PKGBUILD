@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-fancyindex
 pkgver=0.4.3
-pkgrel=8
+pkgrel=9
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.15.8
+_nginxver=1.15.9
 
 pkgdesc='Fancy indexes module for the Nginx web server'
 arch=('i686' 'x86_64' 'armv7h')
