@@ -1,7 +1,7 @@
 # Maintainer: Miodrag Tokić
 
 pkgname=php-uopz
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc='User Operations for Zend'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=(
     "uopz.ini"
 )
 sha256sums=(
-    'c6a3aa12a941cd4ee574ebeaa01ca5b9fd5b0cde15c34e8d68769f8ec62f2804'
+    'c83f39ea862f6bf2a17fc1145614a67e81e7cf8cded373306fed11e60c69ce9f'
     '43af71e84787144f44859f9cf7a13531aea57c8371db5ec95b871bc0bf9772d8'
 )
 
