@@ -12,7 +12,7 @@ _srcname=${pkgbase}
 _kernel_rel=5.1
 _branch=drm-intel-next-queued
 _kernelname=${pkgbase#linux}
-pkgver=5.1.813474.d0aa694b9239
+pkgver=5.1.813489.69e89032b2a5
 pkgrel=1
 arch=('x86_64')
 url='https://drm.pages.freedesktop.org/maintainer-tools/drm-intel.html'
@@ -26,7 +26,7 @@ source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm-intel#branch=${_branc
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            '84981458bb37b391af446f7d3209a1214f6fae89aca85d5fa25de072ee1dca48'
+            'a37a166fa2850f4b8e7bf28ff7a4a32166f0d11ed01a26b00e5e57d3fb77a0f9'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
