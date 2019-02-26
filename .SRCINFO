@@ -1,6 +1,6 @@
 pkgbase = dxvk-wine-git
 	pkgdesc = A Vulkan-based compatibility layer for Direct3D 10/11 which allows running 3D applications on Linux using Wine. Winelib version
-	pkgver = 0.94.r8.g1750b14
+	pkgver = 1.0.r1.g71186859
 	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
@@ -12,36 +12,23 @@ pkgbase = dxvk-wine-git
 	makedepends = wine
 	depends = vulkan-icd-loader
 	depends = wine>=4.0rc1
-	depends = winetricks
+	depends = lib32-vulkan-icd-loader
 	source = git+https://github.com/doitsujin/dxvk.git
-	source = setup_dxvk_aur.verb
 	sha256sums = SKIP
-	sha256sums = 3be34f7dcfbfd47148b6becafb9fc530606b49c83ddb9ffaf3c71e4f27e56178
 
 pkgname = dxvk-wine64-git
-	arch = x86_64
-	optdepends = dxvk32: 32-bit support
-	provides = dxvk
-	provides = dxvk64
-	conflicts = dxvk-win64-bin
-	conflicts = dxvk-win64-git
-	conflicts = dxvk-bin
+	pkgdesc = Dummy package
+	depends = dxvk-winelib-git
 
 pkgname = dxvk-wine32-git
-	arch = i686
-	arch = x86_64
-	depends = lib32-vulkan-icd-loader
-	depends = wine>=3.14
-	depends = winetricks
-	optdepends = dxvk64: 64-bit support
-	provides = dxvk
-	provides = dxvk32
-	conflicts = dxvk-win32-bin
-	conflicts = dxvk-win32-git
-	conflicts = dxvk-bin
+	pkgdesc = Dummy package
+	depends = dxvk-winelib-git
 
 pkgname = dxvk-git
-	pkgdesc = Dummy package to smooth the transition to the split packages
-	depends = dxvk-wine32-git
-	depends = dxvk-wine64-git
+	pkgdesc = Dummy package
+	depends = dxvk-winelib-git
+
+pkgname = dxvk-winelib-git
+	arch = x86_64
+	conflicts = dxvk-bin
 

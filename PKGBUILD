@@ -1,19 +1,17 @@
 # Maintainer: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
 pkgbase=dxvk-wine-git
-pkgname=('dxvk-wine64-git' 'dxvk-wine32-git' 'dxvk-git')
-pkgver=0.94.r8.g1750b14
+pkgname=('dxvk-wine64-git' 'dxvk-wine32-git' 'dxvk-git' 'dxvk-winelib-git')
+pkgver=1.0.r1.g71186859
 pkgrel=1
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 10/11 which allows running 3D applications on Linux using Wine. Winelib version"
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
 license=('zlib/libpng')
-depends=('vulkan-icd-loader' 'wine>=4.0rc1' 'winetricks')
+depends=('vulkan-icd-loader' 'wine>=4.0rc1' 'lib32-vulkan-icd-loader')
 makedepends=('ninja' 'meson>=0.43' 'glslang' 'git' 'wine')
-source=("git+https://github.com/doitsujin/dxvk.git" 
-    setup_dxvk_aur.verb
-    )
-sha256sums=("SKIP" "3be34f7dcfbfd47148b6becafb9fc530606b49c83ddb9ffaf3c71e4f27e56178")
+source=("git+https://github.com/doitsujin/dxvk.git"  )
+sha256sums=("SKIP")
 
 pkgver() {
     cd dxvk
@@ -40,34 +38,31 @@ build() {
     ninja -C "build/x32"
 }
 
-_package_dxvk() {
-        DESTDIR="$pkgdir" ninja -C "build/x$1" install
-        mkdir -p "$pkgdir/usr/bin"
-        install -Dm 644 setup_dxvk_aur.verb "$pkgdir/usr/share/dxvk/x$1/setup_dxvk_aur.verb"
-        sed "s/SYSTEM64/SYSTEM$1/g" -i "$pkgdir/usr/share/dxvk/x$1/setup_dxvk_aur.verb"
-	echo "#!/bin/sh" > "$pkgdir/usr/bin/setup_dxvk$1"
-	echo "winetricks --force /usr/share/dxvk/x$1/setup_dxvk_aur.verb" >> "$pkgdir/usr/bin/setup_dxvk$1"
-	chmod +x "$pkgdir/usr/bin/setup_dxvk$1"
-}
-
 package_dxvk-wine64-git() {
-        arch=('x86_64')
-        conflicts=("dxvk-win64-bin" "dxvk-win64-git" "dxvk-bin")
-        provides=("dxvk" "dxvk64")
-        optdepends=('dxvk32: 32-bit support')
-        _package_dxvk 64
+        pkgdesc="Dummy package"
+        depends=("dxvk-winelib-git")
 }
 
 package_dxvk-wine32-git() {
-        arch=('i686' 'x86_64')
-        conflicts=("dxvk-win32-bin" "dxvk-win32-git" "dxvk-bin")
-        depends=('lib32-vulkan-icd-loader' 'wine>=3.14' 'winetricks')
-        optdepends=('dxvk64: 64-bit support')
-        provides=("dxvk" "dxvk32")
-        _package_dxvk 32
+        pkgdesc="Dummy package"
+        depends=("dxvk-winelib-git")
 }
 
 package_dxvk-git() {
-    pkgdesc="Dummy package to smooth the transition to the split packages"
-    depends=("dxvk-wine32-git" "dxvk-wine64-git")
+        pkgdesc="Dummy package"
+        depends=("dxvk-winelib-git")
+    }
+
+package_dxvk-winelib-git() {
+        arch=('x86_64')
+        conflicts=("dxvk-bin")
+        DESTDIR="$pkgdir" ninja -C "build/x32" install
+        DESTDIR="$pkgdir" ninja -C "build/x64" install
+        install -Dm 644 dxvk/setup_dxvk.sh "$pkgdir/usr/share/dxvk/setup_dxvk.sh"
+        mkdir -p "$pkgdir/usr/bin"
+	echo "#!/bin/sh" > "$pkgdir/usr/bin/setup_dxvk"
+	echo '/usr/share/dxvk/setup_dxvk.sh $1 --symlink --without-dxgi' >> "$pkgdir/usr/bin/setup_dxvk"
+        chmod +x "$pkgdir/usr/share/dxvk/setup_dxvk.sh"
+	chmod +x "$pkgdir/usr/bin/setup_dxvk"
+        chown -R root:root "$pkgdir/usr/"
 }
