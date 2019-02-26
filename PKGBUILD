@@ -4,7 +4,7 @@
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Contributor: Jochen Schalanda <jochen+aur (at) schalanda.name>
 pkgname=debianutils
-pkgver=4.8.6
+pkgver=4.8.6.1
 pkgrel=1
 pkgdesc="Miscellaneous utilities specific to Debian"
 arch=('i686' 'x86_64')
@@ -13,17 +13,17 @@ license=('GPL')
 depends=('run-parts' 'which')
 source=("http://http.debian.net/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz"
 	"${pkgname}_${pkgver}.tar.xz.sig")
-sha512sums=('5913729cc3c56962e8939b71803258952df0d7204df8090a7504fbefc7f5d1da8e749d606fe23148ea3294909ef172bc1f4f821690169e861729caab70921a2f'
+sha512sums=('158f024311b3de292bd20df966c0f61285c748597101cee61e81883e0032c1e6a4baccb5c231b28f00ce3afc58a4aaedd64a65641351974c37fdb5f4952b0d2a'
             'SKIP')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   ./configure --prefix=/usr --sbindir=/usr/bin
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   make DESTDIR="$pkgdir" install
 
   msg 'Remove files of "which" and "run-parts" package...'
