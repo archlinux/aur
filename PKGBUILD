@@ -1,22 +1,23 @@
-# Maintainer: Luigi Guevara <@killua99>
-# Maintainer: twa022 <twa022 at gmail dot com>
-# Author: Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>
+# Maintainer:  Luigi Guevara <@killua99>
+# Maintainer:  twa022 <twa022 at gmail dot com>
+# Author:      Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>
+# Contributor: tari01
 
 _pkgname=my-weather-indicator
 pkgname=my-weather-indicator-git
-pkgver=r44.e5c76af
-pkgrel=2
+pkgver=r86.b2b70c2
+pkgrel=1
 pkgdesc='A simple indicator for the weather'
-arch=('i686' 'x86_64')
-url='https://launchpad.net/my-weather-indicator'
+arch=('any')
+url='https://github.com/atareao/my-weather-indicator'
 license=('GPL3')
 depends=('libappindicator-gtk3' 'libnotify' 'webkitgtk' 'geocode-glib' 'python-pytz'
          'python-cairo' 'python-lxml' 'python-dateutil' 'osm-gps-map'
          'python-requests-oauthlib' 'geoclue2' 'geoip')
-makedepends=('git' 'python2-distutils-extra' 'python2-polib')
+makedepends=('git' 'python-distutils-extra' 'python-polib')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://git.launchpad.net/my-weather-indicator")
+source=("${_pkgname}::git+https://github.com/atareao/my-weather-indicator")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -31,14 +32,19 @@ prepare() {
   find . -type f -exec \
     sed -i -e 's:/opt/extras.ubuntu.com/my-weather-indicator:/usr:g' \
            -e 's:locale-langpack:locale:g' '{}' \;
+
+  # async is a reserved keyword in python 3.7+
+  cd src
+  mv async.py mywi_async.py
+  sed -i 's:from async import:from mywi_async import:' *py
 }
 
 build() {
   cd "${_pkgname}"
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd "${_pkgname}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
