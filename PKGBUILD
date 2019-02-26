@@ -1,10 +1,12 @@
-# Maintainer: Ian D. Scott <ian@perebruin.com>
+# Maintainer: Andrew Lin <andrewlin16 at gmail dot com>
+# Previous maintainer: Ian D. Scott <ian@perebruin.com>
+
 pkgname=zxtune-git
-pkgver=r3077.r0.g0e3007d
-pkgrel=2
+pkgver=r4380.r0.ga6b90b30d
+pkgrel=3
 pkgdesc="Portable toolkit for ZX-Spectrum music playing"
 arch=('i686' 'x86_64')
-url="http://zxtune.bitbucket.org"
+url="http://zxtune.bitbucket.io"
 license=('GPL3')
 depends=('boost-libs' 'gcc-libs' 'qt4' 'zlib')
 optdepends=(
