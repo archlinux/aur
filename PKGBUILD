@@ -1,9 +1,9 @@
 # Maintainer: Sherlock Holo <sherlockya@gmail.com>
 pkgname=camouflage
 epoch=1
-pkgver=0.6.3
+pkgver=0.6.5
 _pkgver=v${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc="a mux websocket over TLS proxy"
 arch=('x86_64')
 license=('MPL')
@@ -15,7 +15,7 @@ source=(
     "camouflage.install"
 )
 
-md5sums=('39622b5dc1de8c87a33ac4ccb541a1d9'
+md5sums=('786380039ea7ae229bb2cd7f61840bac'
          'd506ec62e984c89ddea0cec157292d42')
 
 backup=(
@@ -29,7 +29,6 @@ build() {
 
 	export GOPATH="$srcdir/go"
 
-    tar -xvf $_pkgver.tar.gz
     cd "$srcdir/$pkgname-$pkgver"
 
 	msg2 "Downloading dependencies"
