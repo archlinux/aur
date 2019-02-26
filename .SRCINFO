@@ -1,6 +1,6 @@
 pkgbase = python-sentry_sdk
 	pkgdesc = The new Python SDK for Sentry.io
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/getsentry/sentry-python
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = python-sentry_sdk
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = python-sentry_sdk-0.7.3.tar.gz::https://github.com/getsentry/sentry-python/releases/download/0.7.3/sentry-sdk-0.7.3.tar.gz
+	source = python-sentry_sdk-0.7.4.tar.gz::https://github.com/getsentry/sentry-python/releases/download/0.7.4/sentry-sdk-0.7.4.tar.gz
 	source = https://raw.githubusercontent.com/getsentry/sentry-python/master/LICENSE
-	sha256sums = 6f4e264d0ad6267c40e20431a6a50f815515805ffe8eb9815340adf931279523
+	sha256sums = 47ba3998599dc7e6fd36b221edb85c85306537c9f6d428eaf7fec868931e98a4
 	sha256sums = 59404d4c854e579097d41bfccd5006afde9d6d70e646cf55074cdbfead5ecf1c
 
 pkgname = python-sentry_sdk
