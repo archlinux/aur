@@ -29,6 +29,7 @@ build() {
     automake --add-missing --copy -Wno-portability
     autoconf
     ./configure --prefix /usr
+    sed -i '698s/inline/static inline/' src/emulate.c
     make
     bzcat gxrom.bz2 > gxrom
     bzcat sxrom.bz2 > sxrom
