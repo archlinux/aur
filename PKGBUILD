@@ -3,7 +3,7 @@
 
 pkgname=conky-lua
 _pkgname=conky
-pkgver=1.11.0
+pkgver=1.11.3
 pkgrel=1
 pkgdesc='Lightweight system monitor for X, with Lua support enabled'
 url='http://github.com/brndnmtthws/conky'
@@ -34,7 +34,7 @@ provides=("conky=$pkgver")
 conflicts=('conky')
 backup=('etc/conky/conky.conf' 'etc/conky/conky_no_x11.conf')
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha1sums=('6c23fff734714cc5ca8907bba0e482e0d21eba02')
+sha1sums=('73b607f5d7235ef4c44912b6c6b082dc1cf314e6')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
