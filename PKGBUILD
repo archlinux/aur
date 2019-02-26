@@ -1,6 +1,6 @@
 # Maintainer: Jesse Quinn <me@jessequinn.info>
 
-pkgname=plexconnect
+pkgname=plexconnect-current
 pkgver=0.6
 pkgrel=1
 pkgdesc="Integration layer between Apple TV and Plex"
