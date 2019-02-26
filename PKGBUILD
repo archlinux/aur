@@ -1,8 +1,8 @@
 # Maintainer: David C. Rankin <drankinatty at gmail dot com>
 
 pkgname=cflow
-pkgver=1.5
-pkgrel=5
+pkgver=1.6
+pkgrel=0
 pkgdesc="GNU cflow - for diagramming C program flow from sources"
 arch=('i686' 'x86_64')
 url="http://ftp.gnu.org/gnu/cflow/cflow-1.5.tar.xz"
@@ -10,7 +10,7 @@ license=('GPL')
 options=('staticlibs' 'libtool' '!emptydirs')
 # install='pkgname.install'
 source=("http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-md5sums=('385c6642fea9445191c92286e3c7094d')
+md5sums=('4c8e02bb8d0b35c965559f0c8d42af84')
 
 build() {
 
