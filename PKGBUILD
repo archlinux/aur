@@ -1,8 +1,7 @@
-# $Id$
 # Maintainer: adament <adament@adament.net>
-
+# Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=hunspell-da
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="Danish hunspell dictionaries"
 arch=('any')
@@ -10,7 +9,7 @@ url="http://www.stavekontrolden.dk/"
 license=('GPL2' 'LGPL2.1' 'MPL')
 optdepends=('hunspell:	the spell checking libraries and apps')
 source=("https://extensions.libreoffice.org/extensions/stavekontrolden-danish-dictionary/${pkgver}/@@download/file/dict-da-${pkgver/./-}.oxt")
-sha256sums=('ecc4cb145d0a14403d5ec39b9fd398307fa66b3d6329b979a39de3edaeac5d15')
+sha256sums=('c08a7c53dcbae49f5ebb3274e673ec983f623f52c9f8d6f471887de7e4a62476')
 
 package() {
   cd "$srcdir"
