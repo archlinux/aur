@@ -2,11 +2,11 @@
 
 pkgname=easyterm
 _gitname=easyterm
-pkgver=r105.35acd0c
+pkgver=r106.aa52d8d
 pkgrel=1
 pkgdesc='Serial Port Terminal Emulator'
 arch=('x86_64' 'i686')
-url='http://sourceforge.net/projects/easyterm/'
+url='https://github.com/marker5a/EasyTerm'
 
 license=('GPLv3')
 depends=()
@@ -16,7 +16,7 @@ provides=(easyterm)
 replaces=(easyterm)
 conflicts=()
 
-source=('easyterm::git+http://git.code.sf.net/p/easyterm/code')
+source=('easyterm::git+https://github.com/marker5a/EasyTerm.git')
 md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_gitname"
