@@ -9,6 +9,7 @@ pkgbase = ecflow
 	license = APACHE
 	makedepends = cmake
 	makedepends = boost
+	depends = qt5-base
 	conflicts = ecflow-ui
 	source = https://software.ecmwf.int/wiki/download/attachments/8650755/ecFlow-4.13.0-Source.tar.gz
 	source = python.patch
