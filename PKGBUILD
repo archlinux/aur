@@ -1,8 +1,8 @@
 # Maintainer: Bernhard Landauer <oberon@manjaro.org>
 
 pkgname=flowblade
-pkgver=1.16
-pkgrel=4
+pkgver=2.0
+pkgrel=1
 pkgdesc="a multitrack non-linear video editor for Linux"
 arch=('any')
 url="https://github.com/jliljebl/$pkgname"
@@ -23,18 +23,8 @@ depends=('dbus-glib'
          'sdl_image'
          'sox'
          'swh-plugins')
-source=("$url/archive/v$pkgver.tar.gz"
-        "ban_qt-producers.patch::$url/commit/495a10c83b7d209bfdb1577efaf718e031ec6f25.patch"
-        'run_from_install.patch')
-sha256sums=('2b33535ca92ed6c179cf804ccc9cd742194742bdddcad0bd8c3387ca7a4327ef'
-            '13b2d73b289e48b44fbad0abf86b3508a98d87a9faba57bf2932e227dc1305fa'
-            'df19be875ec78eb1a109c9206589a09f64208364ce91e5f6a3a0928dd5156b9c')
-
-prepare() {
-  cd $pkgname-$pkgver
-  patch -p1 -i $srcdir/ban_qt-producers.patch
-  patch -p1 -i $srcdir/run_from_install.patch
-}
+source=("$url/archive/v$pkgver.tar.gz")
+sha256sums=('c8f21d76803d9ed44585e6d960b12ba1930661e58ee36456fc424d41e2945b33')
 
 package() {
   cd $pkgname-$pkgver/$pkgname-trunk
