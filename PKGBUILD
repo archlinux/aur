@@ -5,7 +5,7 @@
 
 pkgname=('tlp-pmu')
 _pkgname=tlp
-pkgver=0.9
+pkgver=1.1
 pkgrel=1
 pkgdesc='Advanced Power Management for Linux, with pm-utils support'
 depends=('hdparm' 'iw' 'pciutils' 'rfkill' 'usbutils' 'util-linux' 'pm-utils')
@@ -27,7 +27,7 @@ url='http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html'
 license=('GPL2' 'GPL3')
 source=("https://github.com/linrunner/TLP/archive/${pkgver}.tar.gz"
         'https://github.com/dywisor/tlp-portage/raw/maint/app-laptop/tlp/files/tlp-init.openrc-r2')
-sha256sums=('887b226d443f930398fda5793ac690e1e1ef7dd2187db7be0278359315aa7a76'
+sha256sums=('76e1a091eed1055f7af75f49621be51ed41b1e8f872eeb9506c0749060fd1019'
             'dd2a5bade0e904d685a6a8d0313cda6455820dd3bf634b424dac6ebb7c8334ff')
 
 prepare() {
