@@ -1,0 +1,32 @@
+pkgbase = nix-bin
+	pkgdesc = A purely functional package manager - /nix/store multi-user edition
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://nixos.org/nix
+	install = nix.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = bzip2
+	conflicts = nix
+	options = !strip
+	options = staticlibs
+	options = libtool
+	options = emptydirs
+	backup = etc/nix/nix.conf
+	backup = root/.nix-channels
+	source = nix.install
+	source = nix.tmpfiles
+	source = nix.conf
+	source = nix-channels
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	source_i686 = https://nixos.org/releases/nix/nix-2.2.1/nix-2.2.1-i686-linux.tar.bz2
+	sha256sums_i686 = 223c141b7ce322aacd4003dfc79b969ee813396d2ac586cf44c0e787233b1666
+	source_x86_64 = https://nixos.org/releases/nix/nix-2.2.1/nix-2.2.1-x86_64-linux.tar.bz2
+	sha256sums_x86_64 = e229e28f250cad684c278c9007b07a24eb4ead239280c237ed2245871eca79e0
+
+pkgname = nix-bin
+

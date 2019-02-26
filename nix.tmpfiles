@@ -1,0 +1,11 @@
+d /nix/store 1775 root nixbld
+d /root/.nix-defexpr 0750
+d /nix/var/log/nix/drvs 0755
+d /nix/var/nix/db 0755
+d /nix/var/nix/gcroots 0755
+d /nix/var/nix/profiles 0755
+d /nix/var/nix/temproots 0755
+d /nix/var/nix/userpool 0755
+d /nix/var/nix/gcroots/per-user 1777
+d /nix/var/nix/profiles/per-user 1777
+d /nix/var/nix/profiles/per-user/root 0755
