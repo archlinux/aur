@@ -16,21 +16,21 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/mank319/Go-For-It/archive/$
 sha256sums=('5f1ddba9261d33ee05162985448f72dd361401d8d0dbbefc31c222db249f0a66')
 
 build() {
-  cd "Go-For-It-$pkgver"
+    cd "Go-For-It-$pkgver"
 
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
+    if [[ -d build ]]; then
+        rm -rf build
+    fi
 
-  mkdir build && cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-  make
-  make pot
-  make po
+    mkdir build && cd build
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+    make
+    make pot
+    make po
 }
 
 package() {
-  cd "Go-For-It-$pkgver/build"
+    cd "Go-For-It-$pkgver/build"
 
-  make DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install
 }
