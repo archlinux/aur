@@ -13,6 +13,7 @@ depends=('gcc-libs')
 makedepends=('cmake')
 provides=('octomap')
 conflicts=('octomap-git')
+options=('staticlibs')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/OctoMap/octomap/archive/v${pkgver}.tar.gz")
 sha256sums=('5f81c9a8cbc9526b2e725251cd3a829e5222a28201b394314002146d8b9214dd')
 
