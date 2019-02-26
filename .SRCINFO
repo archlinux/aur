@@ -1,13 +1,15 @@
 pkgbase = binfmt-support
 	pkgdesc = Arbitraty executable file format kernel extension
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.savannah.gnu.org/cgit/binfmt-support.git/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = make
 	makedepends = gcc
+	makedepends = git
+	makedepends = libpipeline
 	depends = autoconf
 	depends = automake
 	source = https://git.savannah.gnu.org/cgit/binfmt-support.git/snapshot/binfmt-support-2.2.0.tar.gz
