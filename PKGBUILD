@@ -3,7 +3,7 @@
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts-windows
-pkgver=2017.4.20f2
+pkgver=2017.4.21f1
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the Windows platform"
 arch=('x86_64')
@@ -11,8 +11,8 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-lts')
 makedepends=('cpio')
-source=("2017.4.20f2.4.20f2.pkg::https://download.unity3d.com/download_unity/413dbd19b6dc/MacEditorTargetInstaller/UnitySetup-Windows-Support-for-Editor-2017.4.20f2.pkg")
-md5sums=("8650ed4804d279ed95ab31308040a44f")
+source=("2017.4.21f1.4.21f1.pkg::https://download.unity3d.com/download_unity/de35fe252486/MacEditorTargetInstaller/UnitySetup-Windows-Support-for-Editor-2017.4.21f1.pkg")
+md5sums=("04f40ad38d29c2d2bdfdf90250fd6316")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
