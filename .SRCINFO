@@ -1,0 +1,13 @@
+pkgbase = sentinl
+	pkgdesc = Siren Platform + Kibana Alert & Report App for Elasticsearch
+	pkgver = 6.6.1
+	pkgrel = 1
+	url = https://github.com/sirensolutions/sentinl
+	arch = any
+	license = Apache
+	depends = kibana=6.6.1
+	source = https://github.com/sirensolutions/sentinl/releases/download/tag-6.6.0-0/sentinl-v6.6.1.zip
+	sha256sums = 9d226cf0c63f290474f723a3e922f2119a3f3ee2af3488b02e6f9954b20b00f8
+
+pkgname = sentinl
+
