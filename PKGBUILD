@@ -3,7 +3,7 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=2.1.13
+pkgver=2.1.14
 pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64')
@@ -26,7 +26,7 @@ install="$pkgname".install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname@.service"
         'fix-requirements.diff')
-sha256sums=('80d73d1fe7877f89506873835f50b63a32092c498c8667dfa595db00ec110c3c'
+sha256sums=('76bb326ad0352f9fcb78adc53cd85c58dc8b7214c3be9cf8b1ea0c5061d1ae91'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f'
             '138d1007b1626aa07119367879603d82ded9b5b80c531f26da73a91b08028df0')
 
