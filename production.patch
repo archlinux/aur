@@ -1,5 +1,5 @@
 diff --git a/src/context.cc b/src/context.cc
-index cecc136b0..df6f43288 100644
+index 7c9f0fb..8d839ab 100644
 --- a/src/context.cc
 +++ b/src/context.cc
 @@ -76,7 +76,7 @@ Context::Context(const std::string app_name, const std::string app_version)
@@ -8,20 +8,21 @@ index cecc136b0..df6f43288 100644
  , sync_interval_seconds_(0)
 -, update_check_disabled_(false)
 +, update_check_disabled_(true)
- , had_something_to_push_(false)
+ , trigger_sync_(false)
+ , trigger_push_(false)
  , quit_(false)
- , ui_updater_(this, &Context::uiUpdaterActivity)
-@@ -90,8 +90,6 @@ Context::Context(const std::string app_name, const std::string app_version)
+@@ -92,9 +92,6 @@ Context::Context(const std::string app_name, const std::string app_version)
          Poco::Net::HTTPSStreamFactory::registerFactory();
      }
  
 -    urls::SetUseStagingAsBackend(
 -        app_version.find("7.0.0") != std::string::npos);
- 
+-
      Poco::ErrorHandler::set(&error_handler_);
      Poco::Net::initializeSSL();
+ 
 diff --git a/src/ui/linux/TogglDesktop/TogglDesktop.pro b/src/ui/linux/TogglDesktop/TogglDesktop.pro
-index bf49aaa41..cc6b6a4ef 100644
+index 4bbf84b..cf44f8e 100644
 --- a/src/ui/linux/TogglDesktop/TogglDesktop.pro
 +++ b/src/ui/linux/TogglDesktop/TogglDesktop.pro
 @@ -8,7 +8,7 @@ VERSION = 7.0.0

@@ -2,5 +2,6 @@
 *.pkg.tar.xz
 *.tar.gz
 *.sig
+.idea
 src/
 pkg/
