@@ -1,13 +1,11 @@
-diff --git a/neo/framework/Licensee.h b/neo/framework/Licensee.h
-index 9cc20fb..fb1c882 100644
---- a/neo/framework/Licensee.h
-+++ b/neo/framework/Licensee.h
-@@ -90,7 +90,7 @@ If you have questions concerning this license or the applicable additional terms
- #define WIN32_CONSOLE_CLASS				"dhewm 3 WinConsole"
+--- a/neo/framework/Licensee.h	2018-12-15 05:49:59.000000000 +0100
++++ b/neo/framework/Licensee.h	2019-02-27 14:11:12.516544799 +0100
+@@ -98,7 +98,7 @@
  
  // Linux info
+ #ifndef LINUX_DEFAULT_PATH // allow overriding it from the build system with -DLINUX_DEFAULT_PATH="/bla/foo/whatever"
 -#define LINUX_DEFAULT_PATH				"/usr/local/games/doom3"
 +#define LINUX_DEFAULT_PATH				"/usr/share/games/doom3"
+ #endif
  
  // CD Key file info
- // goes into BASE_GAMEDIR whatever the fs_game is set to
