@@ -1,19 +1,19 @@
-diff -ru gnupg-2.2.4.origin/configure gnupg-2.2.4/configure
---- gnupg-2.2.4.origin/configure	2017-12-20 09:12:57.000000000 +0100
-+++ gnupg-2.2.4/configure	2018-01-25 17:29:37.739860947 +0100
-@@ -2939,7 +2939,7 @@
+diff -aur old/configure new/configure
+--- old/configure	2019-02-27 14:33:09.773385526 +0100
++++ new/configure	2019-02-27 14:38:40.619816260 +0100
+@@ -2945,7 +2945,7 @@
  
  ac_config_headers="$ac_config_headers config.h"
  
--am__api_version='1.14'
-+am__api_version='1.15'
+-am__api_version='1.15'
++am__api_version='1.14'
  
  # Find a good install program.  We prefer a C program (faster),
  # so one script is as good as another.  But avoid the broken or
-diff -ru gnupg-2.2.4.origin/g10/keygen.c gnupg-2.2.4/g10/keygen.c
---- gnupg-2.2.4.origin/g10/keygen.c	2017-12-13 10:15:01.000000000 +0100
-+++ gnupg-2.2.4/g10/keygen.c	2018-01-25 17:29:37.739860947 +0100
-@@ -1632,7 +1632,7 @@
+diff -aur old/g10/keygen.c new/g10/keygen.c
+--- old/g10/keygen.c	2019-02-27 14:33:09.533386670 +0100
++++ new/g10/keygen.c	2019-02-27 14:38:40.627816221 +0100
+@@ -1639,7 +1639,7 @@
    int err;
    char *keyparms;
    char nbitsstr[35];
@@ -22,13 +22,13 @@ diff -ru gnupg-2.2.4.origin/g10/keygen.c gnupg-2.2.4/g10/keygen.c
  
    log_assert (is_RSA(algo));
  
-@@ -2107,6 +2107,12 @@
+@@ -2114,6 +2114,12 @@
        def=255;
        break;
  
 +    case PUBKEY_ALGO_RSA:
 +      *min = opt.compliance == CO_DE_VS ? 2048 : 1024;
-+      *max = (opt.flags.large_rsa?16384:4096);
++      *max = (opt.flags.large_rsa ? 16384 : 4096);
 +      def = 2048;
 +      break;
 +
