@@ -2,7 +2,7 @@
 
 pkgname=spotrec
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Spotify desktop client recorder for PulseAudio"
 arch=('any')
 url="https://github.com/Bleuzen/SpotRec"
