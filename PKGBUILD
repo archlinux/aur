@@ -2,7 +2,7 @@
 
 pkgname=k3s-git
 pkgver=r1.7d1baa9
-pkgrel=4
+pkgrel=5
 pkgdesc='Lightweight Kubernetes'
 arch=(x86_64)
 url='https://github.com/rancher/k3s'
@@ -23,9 +23,8 @@ build() {
 }
 
 package() {
-  cd $pkgname
-  install -Dm755 dist/artifacts/k3s "$pkgdir/usr/bin/k3s"
-  install -Dm755 dist/artifacts/hyperkube "$pkgdir/usr/bin/hyperkube"
+  install -Dm755 $pkgname/dist/artifacts/k3s "$pkgdir/usr/bin/k3s"
+  install -Dm755 $pkgname/dist/artifacts/hyperkube "$pkgdir/usr/bin/hyperkube"
   install -Dm644 $pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
