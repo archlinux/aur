@@ -5,7 +5,7 @@
 # Contributor: bender02 at gmx dot com
 
 pkgname=asymptote-git
-epoch=1
+epoch=2
 pkgver=2.48git123.g4997b77e
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
