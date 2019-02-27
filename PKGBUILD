@@ -1,15 +1,16 @@
 # Maintainer: Joseph Lansdowne <J49137@gmail.com>
 pkgname=gw2-tools
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc="Collection of small Guild Wars 2 tools"
 arch=(any)
 url=http://ikn.org.uk/gw2-tools
 license=(BSD)
-depends=(curl jshon parallel wget)
-optdepends=('p7zip: gw2-dpsreport: support non-Zip logs, compress before upload')
+depends=(curl jshon parallel)
+optdepends=('p7zip: gw2-dpsreport: support non-Zip logs, compress before upload'
+            'xclip: gw2-dpsreport: copy result to clipboard')
 source=("http://ikn.org.uk/files/desktop/$pkgname/$pkgname-$pkgver.tar.gz")
-sha1sums=('0324fd6f5cc0dde77e1c03933efebe44cc39e85d')
+sha1sums=('9419b981d007ae10779349b013eae1017ca70e0b')
 
 package () {
     cd "$srcdir/$pkgname-$pkgver"
