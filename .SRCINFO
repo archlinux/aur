@@ -1,0 +1,18 @@
+pkgbase = jmonkeyplatform
+	pkgdesc = A complete 3D game development suite written purely in Java.
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = http://jmonkeyengine.org
+	arch = any
+	license = BSD
+	provides = jmonkeyplatform
+	conflicts = jmonkeyplatform
+	source = https://github.com/jMonkeyEngine/sdk/releases/download/v3.2.2-stable-sdk1/jmonkeyplatform.zip
+	source = jmonkeyplatform.desktop
+	source = jmonkeyplatform.png
+	sha512sums = 0d783874e6c12406edd6a09f41edf75fa25113c7738ad3244a8bdc0db17368ed9d25b7debea9d3bcd60e186a37b1490ba528a1ea26325b3bc20c269b57d01c25
+	sha512sums = cfe365bd9eb8339f6f8ba840c92dfd8ce14e035b73311d785492eab941bc519b64da7645b0d2df668052f7287030e63c56bd12be12a3809ce00ebe7318a3692a
+	sha512sums = ff02936a70abab71026ba3cb6411a617dc5cb806ac4c1079d9e3118b48847da292c346ec49ca93393a030332a8062b626f5b2332f0f87384d3c34d2e66911fb8
+
+pkgname = jmonkeyplatform
+

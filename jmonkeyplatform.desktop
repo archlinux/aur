@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=jMonkey Engine SDK
+Comment=A complete 3D game development suite written purely in Java.
+Exec=/opt/jmonkeyplatform/bin/jmonkeyplatform
+Icon=jmonkeyplatform
+Categories=Development;Graphics;IDE;3DGraphics;Java
+Version=1.0
+Type=Application
+Terminal=0
