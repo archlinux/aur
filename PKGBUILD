@@ -1,17 +1,17 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 
 pkgname=libsoundio
-pkgver=1.1.0
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="A C99 library providing cross-platform audio input and output"
 arch=('i686' 'x86_64')
 url='http://www.github.com/andrewrk/libsoundio'
 license=('MIT')
 source=("https://github.com/andrewrk/$pkgname/archive/$pkgver.tar.gz")
 options=('!buildflags')
-depends=('jack2')
+depends=('jack')
 makedepends=('cmake')
-md5sums=('989d1daf6e9f4b629a4f8f5329c8e21c')
+md5sums=('1ff5b669b72af353a910208324d9d6ac')
 
 build() {
     mkdir -p "$pkgname-$pkgver.build"
