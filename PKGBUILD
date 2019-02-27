@@ -4,7 +4,7 @@
 # https://github.com/masterkorp/joplin-pkgbuild
 
 pkgname=joplin
-pkgver=1.0.133
+pkgver=1.0.134
 pkgrel=1
 pkgdesc="Joplin - a note taking and to-do application with synchronization capabilities for Windows, macOS, Linux, Android and iOS."
 arch=("x86_64" "i686")
@@ -18,7 +18,7 @@ source=("${pkgname}.desktop" "joplin-desktop.sh" "joplin.sh"
 sha256sums=('8b51799b01938e771e202ca2127724bec25a9264541d4bb8c94364e40db5ced9'
             '41bfdc95a6ee285eb644d05eb3bded72a83950d4720c3c8058ddd3c605cd625d'
             '5245da6f5f647d49fbe044b747994c9f5a8e98b3c2cd02757dd189426a677276'
-            '7b9055a895d7e631c46f91f45e62e4975fefffa683ce13a46fb395b191192644')
+            '82e6a8c41630c559a9e861f5fad9e6bd48b8c0b9891226dcb1b0df7468bd1993')
 
 build() {
 
