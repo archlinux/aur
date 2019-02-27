@@ -1,23 +1,31 @@
-# Maintainer: Daniel Ruiz de Alegria <daniruizdealegria@gmail.com>
+# Maintainer: Daniel Ruiz de Alegría <daniel@drasite.com>
 
 pkgname="flat-remix-gnome"
-pkgver=20171127
+pkgver=20190116
 pkgrel=1
-pkgdesc="Flat Remix GNOME theme is a pretty simple shell theme inspired on material design."
+pkgdesc="Flat Remix GNOME theme is a pretty simple shell theme inspired on material design following a modern design using \"flat\" colors with high contrasts and sharp borders."
 arch=('any')
-url="https://github.com/daniruiz/Flat-Remix-GNOME-theme/"
+depends=(gnome-shell)
+install=flat-remix-gnome.install
+url="https://drasite.com/flat-remix-gnome"
 license=('CC-BY-SA-4.0')
-source=("${pkgname}::git+https://github.com/daniruiz/Flat-Remix-GNOME-theme.git")
+source=("https://github.com/daniruiz/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
-pkgver() {
-    cd "${pkgname}"
-    git log -1 --format="%cd" --date=short | tr -d '-'
-}
-
 package() {
-    cd "${srcdir}/${pkgname}/"
-    install -dm755 "${pkgdir}/usr/share/themes"
-    cp -a "Flat Remix"* "${pkgdir}/usr/share/themes/"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "${srcdir}/${pkgname}-${pkgver}/"
+	install -dm755 "${pkgdir}/usr/share/themes"
+	cp -a Flat-Remix* "${pkgdir}/usr/share/themes/"
+	install -dm755 "${pkgdir}/usr/share/gnome-shell/theme"
+	for theme in Flat-Remix*
+	do
+		ln -s "/usr/share/themes/${theme}/gnome-shell" "${pkgdir}/usr/share/gnome-shell/theme/${theme}"
+	done
+	install -dm755 "${pkgdir}/usr/share/gnome-shell/modes"
+	cp -a src/modes/* "${pkgdir}/usr/share/gnome-shell/modes/"
+	install -dm755 "${pkgdir}/usr/share/xsessions"
+	cp -a src/sessions/xsessions/* "${pkgdir}/usr/share/xsessions/"
+	install -dm755 "${pkgdir}/usr/share/wayland-sessions"
+	cp -a src/sessions/wayland-sessions/* "${pkgdir}/usr/share/wayland-sessions/"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

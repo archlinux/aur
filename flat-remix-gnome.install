@@ -1,0 +1,9 @@
+
+post_install() {
+	mv -n /usr/share/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell/gnome-shell-theme.gresource.old
+	ln -sf /usr/share/themes/Flat-Remix/gnome-shell-theme.gresource /usr/share/gnome-shell/gnome-shell-theme.gresource
+}
+
+post_remove() {
+	mv /usr/share/gnome-shell/gnome-shell-theme.gresource.old /usr/share/gnome-shell/gnome-shell-theme.gresource
+}
