@@ -2,31 +2,37 @@
 
 pkgname=v8-3.14-bin
 pkgver=3.14.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="v8 3.14 binary package from ubuntu xenial"
 url="https://github.com/v8/v8"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('BSD new')
 depends=()
-makedepends=('git')
+makedepends=()
 conflicts=('v8-3.14')
 provides=('v8-3.14')
 
-source_i686=("http://mirrors.kernel.org/ubuntu/pool/universe/libv/libv8-3.14/libv8-3.14.5_${pkgver}-5ubuntu2_i386.deb")
-source_x86_64=("http://mirrors.kernel.org/ubuntu/pool/universe/libv/libv8-3.14/libv8-3.14.5_${pkgver}-5ubuntu2_amd64.deb")
-md5sums_i686=('e773e65367409dc2a737443e2dbfe954')
-md5sums_x86_64=('3937ddaf045f8c5606b6c505bf0779f8')
+source=("https://mirrors.kernel.org/ubuntu/pool/universe/libv/libv8-3.14/libv8-3.14.5_${pkgver}-5ubuntu2_amd64.deb"
+        "https://mirrors.kernel.org/ubuntu/pool/universe/libv/libv8-3.14/libv8-dev_${pkgver}-5ubuntu2_amd64.deb")
+noextract=("libv8-3.14.5_${pkgver}-5ubuntu2_amd64.deb" "libv8-dev_${pkgver}-5ubuntu2_amd64.deb")
+sha512sums=('18a0ca972b8a3b8ba1171bf763876d2ef2b1577496457b04dfec78efb84992093181a42576cf5ab1c84cabe446ad9726f0713a5355779c865351ecc12b6f2b5b'
+            'e8c2a179b7400a82da762dbe4f166de1dfc2da84afbbf35cd110739852a97ec62558e49f23868854ea85981d54553754ed37b00d50cf702bdd6a29cf5333545c')
+
+prepare() {
+  msg2 "Unpacking libv8-3.14.5_${pkgver}-5ubuntu2_amd64.deb"
+  ar p "libv8-3.14.5_${pkgver}-5ubuntu2_amd64.deb" data.tar.xz | tar Jx
+
+  msg2 "Unpacking libv8-dev_${pkgver}-5ubuntu2_amd64.deb"
+  ar p "libv8-dev_${pkgver}-5ubuntu2_amd64.deb" data.tar.xz | tar Jx
+}
 
 package() {
-  msg2 "Unpacking data.tar.xz (Ubuntu package files)"
-  tar -xf data.tar.xz
-  
-  install -Dm644 ${srcdir}/usr/lib/libv8.so.3.14.5 ${pkgdir}/usr/lib/libv8.so.3.14.5
-  install -Dm644 ${srcdir}/usr/share/doc/libv8-3.14.5/AUTHORS ${pkgdir}/usr/share/doc/libv8-3.14.5/AUTHORS
-  install -Dm644 ${srcdir}/usr/share/doc/libv8-3.14.5/copyright ${pkgdir}/usr/share/doc/libv8-3.14.5/copyright
+  install -Dm644 ${srcdir}/usr/lib/libv8.so.3.14.5                  ${pkgdir}/usr/lib/libv8.so.3.14.5
+  install -Dm644 ${srcdir}/usr/share/doc/libv8-3.14.5/copyright     ${pkgdir}/usr/share/doc/libv8-3.14.5/LICENSE
+  install -Dm644 ${srcdir}/usr/share/doc/libv8-dev/copyright ${pkgdir}/usr/share/doc/libv8-3.14.5-dev/LICENSE
 
-  msg2 "Fixing permissions differences between Ubuntu and Arch"
-  find ${pkgdir} -type d -exec chmod -cR 755 "{}" \;
-  find ${pkgdir}/usr/{lib,share} -type f -exec chmod -cR 644 "{}" \;
+  for file in ${srcdir}/usr/share/doc/libv8-dev/examples/* ${srcdir}/usr/include/*; do
+    install -Dm644  "$file" "${file/$srcdir/$pkgdir}"
+  done
 }
 
