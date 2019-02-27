@@ -2,16 +2,16 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=avs-device-sdk
-pkgver=1.11
-pkgrel=7
+pkgver=1.12
+pkgrel=1
 pkgdesc="SDK for commercial device makers to integrate Alexa directly into connected products"
 arch=(x86_64 i686)
 url="https://github.com/alexa/avs-device-sdk"
 license=('Apache')
-makedepends=('cmake' 'gcc49')
+makedepends=('cmake')
 depends=('portaudio' 'gstreamer' 'gst-plugins-base-libs' 'snowboy' 'cblas')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alexa/avs-device-sdk/archive/v${pkgver}.tar.gz")
-sha512sums=('8ddac6a258c8bc054e4eac3a65da1626294112c88da18e50d7359d980c380b392d0c81f5ac1f5faaceca7d19a72b408708a7f4d247246d5f6f24390b5236b1aa')
+sha512sums=('9ea17eb76bbc6f4d478c33f1c2b4c7b4cd7250a07ea19a4795520e8f359df1fbe39bb18ff7fd97143eb95934eb62d87127c06029890c425c06ab57ab3fb4fe08')
 
 prepare() {
 	sed -i 's/blas/cblas/' "${srcdir}/avs-device-sdk-${pkgver}/KWD/KittAi/src/CMakeLists.txt"
@@ -21,12 +21,6 @@ build() {
 	cd "${srcdir}"
 	mkdir -p build
 	cd build
-	# use older gcc version to avoid bugs
-	export CC="/usr/bin/gcc-4.9"
-	export CXX="/usr/bin/g++-4.9"
-	# removing -fno-plt usually defined in /etc/makepkg.conf
-	export CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe"
-	export CXXFLAGS="-march=x86-64 -mtune=generic -O2 -pipe"
 	cmake "../avs-device-sdk-${pkgver}" \
 		-DCMAKE_INSTALL_PREFIX:PATH=/usr \
 		-DKITTAI_KEY_WORD_DETECTOR=ON \
