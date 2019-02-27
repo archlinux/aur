@@ -47,7 +47,7 @@ sha512sums=('SKIP'
 PKGEXT='.pkg.tar'   
 
 # use pgo?
-_pgo=0
+_pgo=1
            
 pkgver() {
 	cd Waterfox
