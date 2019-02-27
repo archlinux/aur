@@ -2,7 +2,7 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=git-bug-git
-pkgver=0.4.0.r29.gc92da55
+pkgver=0.4.0.r89.g59a4273
 pkgrel=1
 pkgdesc='Distributed bug tracker embedded in Git'
 arch=('x86_64' 'i686')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 _gitbugsrc="gopath/src/${url#*://}"
 
 pkgver(){
-    cd "${srcdir}/${_gitbugsrc}"
+    cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags | sed -r 's/([^-]*-g)/r\1/; s/-/./g'
 }
 
