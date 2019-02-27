@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-lua
 pkgver=0.10.13
-pkgrel=8
+pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.15.8
+_nginxver=1.15.9
 
 pkgdesc='Lua script engine module for mainline nginx'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ validpgpkeys=(
 	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
-sha256sums=('a8bdafbca87eb99813ae4fcac1ad0875bf725ce19eb265d28268c309b2b40787'
+sha256sums=('e4cfba989bba614cd53f3f406ac6da9f05977d6b1296e5d20a299f10c2d7ae43'
             'SKIP'
             'ecea8c3d7f69dd48c6132498ddefb5d83ba9f387fa3d4da14e2abeacdfc8a3ee')
 
