@@ -1,4 +1,4 @@
-pkgbase = esphome
+pkgbase = esphomeyaml
 	pkgdesc = Solution for your ESP8266/ESP32 projects with Home Assistant
 	pkgver = 1.11.1
 	pkgrel = 1

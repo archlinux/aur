@@ -1,5 +1,6 @@
 # Mantainer: S garnica < swhaat at github >
 
+pkgbase=esphomeyaml
 pkgname=esphome
 pkgver=1.11.1
 pkgrel=1
