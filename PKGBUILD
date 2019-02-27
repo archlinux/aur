@@ -6,7 +6,7 @@
 pkgname=soulseekqt
 pkgver=20180130
 _pkgver=2018-1-30
-pkgrel=5
+pkgrel=6
 pkgdesc="A desktop client for the Soulseek peer-to-peer file sharing network"
 arch=('x86_64')
 url="http://www.soulseekqt.net/news/"
@@ -39,5 +39,5 @@ package () {
 
 md5sums=('1d98331893bc9b9d45ba34f6523353ab'
 	'4ed42be654289fc9cd7f4181c363f745'
-	'a95f77dbfe0b714b31866273ff47a206'
+	'81470652eeabc4f8a51443d1c22f079f'
 '2544611108889c2c4c7a9084672f4d32')
