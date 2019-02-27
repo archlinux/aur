@@ -1,6 +1,6 @@
 pkgbase = asymptote-git
 	pkgdesc = A vector graphics language (like metapost)
-	pkgver = 2.48.r6498
+	pkgver = 2.48git123.g4997b77e
 	pkgrel = 1
 	epoch = 1
 	url = http://asymptote.sourceforge.net/
@@ -15,18 +15,20 @@ pkgbase = asymptote-git
 	depends = gc
 	depends = librsvg
 	depends = freeglut
-	depends = glu
+	depends = glew
 	depends = gsl
 	depends = fftw
 	depends = libsigsegv
+	depends = glm
 	optdepends = python-pyqt5: for the xasy GUI
 	optdepends = python-imaging: for the xasy GUI
 	optdepends = tix: for the xasy GUI
 	provides = asymptote
 	conflicts = asymptote
-	options = !makeflags
 	source = git+https://github.com/vectorgraphics/asymptote.git
+	source = remove_include.patch
 	md5sums = SKIP
+	md5sums = 98812663669b14ff122d9d365c5b0359
 
 pkgname = asymptote-git
 

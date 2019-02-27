@@ -6,43 +6,41 @@
 
 pkgname=asymptote-git
 epoch=1
-pkgver=2.48.r6498
+pkgver=2.48git123.g4997b77e
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
 url="http://asymptote.sourceforge.net/"
 license=('LGPL3')
-depends=('gc' 'librsvg' 'freeglut' 'glu' 'gsl' 'fftw' 'libsigsegv')
+depends=('gc' 'librsvg' 'freeglut' 'glew' 'gsl' 'fftw' 'libsigsegv' 'glm')
 makedepends=('git' 'flex' 'ghostscript' 'imagemagick6' 'texlive-plainextra')
 optdepends=('python-pyqt5:      for the xasy GUI'
             'python-imaging:    for the xasy GUI'
             'tix:               for the xasy GUI')
 conflicts=('asymptote')
 provides=('asymptote')
-source=('git+https://github.com/vectorgraphics/asymptote.git')
-md5sums=('SKIP')
-options=('!makeflags')
+source=('git+https://github.com/vectorgraphics/asymptote.git' remove_include.patch)
+md5sums=('SKIP'
+         '98812663669b14ff122d9d365c5b0359')
 
 pkgver() {
   cd ${pkgname%-git}
-  printf %s%s $(git describe --tags|sed s+git+.r+|sed s+-+.+g|cut -dg -f1) $(git rev-list --count HEAD)
+  git describe --tags|sed s+git-+git+|tr - .
 }
 
 prepare() {
-  cd ${pkgname%-git}/GUI
-  sed -i '1s+python3+python+' xasyOptions.py xasyFile.py UndoRedoStack.py
+  cd ${pkgname%-git}/
+  touch prc/config.h
+  patch -Np1 < "$srcdir"/remove_include.patch
 }
-  
+
 build() {
   cd ${pkgname%-git}
   ./autogen.sh
   ./configure --enable-gc=/usr \
     --prefix=/usr \
-    --with-latex=/usr/share/texmf/tex/latex \
-    --with-context=/usr/share/texmf/tex/context \
     --enable-offscreen
-
-  make all
+  make V=1
 }
 
 check() {
@@ -52,10 +50,7 @@ check() {
 
 package() {
   cd ${pkgname%-git}
-  make -j1 DESTDIR="${pkgdir}" install-all
-  sed -i -e 's@env python@env python2@' "$pkgdir"/usr/share/asymptote/GUI/*.py
-  # this dir contains png files that are already embedded in the pdf documentation:
-  rm -rf "$pkgdir"/usr/share/info/asymptote
+  make DESTDIR="${pkgdir}" install-all
 
   # move vim files to correct place
   install -dm755 "$pkgdir"/usr/share/vim/vimfiles/{ftdetect,syntax}

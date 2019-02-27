@@ -1,0 +1,26 @@
+diff --git a/runtime.in b/runtime.in
+index f3b6899c..34384526 100644
+--- a/runtime.in
++++ b/runtime.in
+@@ -138,7 +138,7 @@ using vm::array;
+ using types::function;
+ 
+ #define PRIMITIVE(name,Name,asyName) using types::prim##Name;
+-#include <primitives.h>
++#include "primitives.h"
+ #undef PRIMITIVE
+ 
+ using types::booleanArray;
+diff --git a/runtimebase.in b/runtimebase.in
+index 86237de3..cca8e926 100644
+--- a/runtimebase.in
++++ b/runtimebase.in
+@@ -40,7 +40,7 @@ using types::function;
+ using camp::triple;
+ 
+ #define PRIMITIVE(name,Name,asyName) using types::prim##Name;
+-#include <primitives.h>
++#include "primitives.h"
+ #undef PRIMITIVE
+ 
+ typedef double real;
