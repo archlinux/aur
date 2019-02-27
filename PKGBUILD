@@ -2,7 +2,7 @@
 # Contributor:  Maarten de Vries <maarten@de-vri.es>
 
 pkgname=argdata
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="binary serialisation format inspired by YAML, MessagePack and nvlists"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=()
 makedepends=('cmake')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NuxiNL/argdata/archive/v$pkgver.tar.gz")
-sha512sums=('cae775ee3634cfd93c6f19cec1ae85bd9a1977a2a916a23c48b77207001d3311cbdefdf39e2146ba2f61478ab6480348213683f860696032c313a9728df2b64f')
+sha512sums=('89d7bc75e4c98e4272e6822e0b2c4c84e1adcceaa051f053d63ba46cafa1cdbb0cdeba530ee3d130e942a588d364890321e006f842a6714d81db34df42c3487a')
 
 prepare() {
 	rm -rf "$srcdir/build"
