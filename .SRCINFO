@@ -1,7 +1,7 @@
 pkgbase = spotrec
 	pkgdesc = Spotify desktop client recorder for PulseAudio
 	pkgver = 0.11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bleuzen/SpotRec
 	arch = any
 	license = mit
