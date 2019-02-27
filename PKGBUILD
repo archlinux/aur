@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=keeweb-desktop-bin
-pkgver=1.7.5
+pkgver=1.7.7
 pkgrel=1
 pkgdesc="Free cross-platform password manager compatible with KeePass"
 arch=("x86_64")
@@ -10,7 +10,7 @@ depends=("gconf" "libxss")
 provides=("keeweb-desktop")
 conflicts=("keeweb-desktop" "keeweb" "keeweb-bin" "keeweb-git")
 source=("$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/KeeWeb-$pkgver.linux.x64.deb")
-md5sums=("24a282f8eb3ff4de3067baa1af44c946")
+md5sums=("55e5a0bc565bd808c72697f5cb4c6f10")
 
 prepare() {
   bsdtar xf data.tar.gz
