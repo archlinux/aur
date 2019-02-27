@@ -60,7 +60,7 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
 _major=4.20
-pkgver=4.20.12
+pkgver=4.20.13
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
 pkgrel=1
@@ -100,7 +100,7 @@ source=(# mainline kernel patches
          # standard config files for mkinitcpio ramdisk
         'linux.preset')
 
-sha256sums=('1cf544308195250805e0731c716691bea4c1ed29e03e6f9ae5be6dc16785a504'
+sha256sums=('0e73adb4f0a4e68ae260d5aa644eb9c50e847f204258a5e43ce88dc791eb0ac1'
             'SKIP'
             '9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178'
             '0998de1fd20f531f4f147e42af78137ee44c549dcfc9b6027ca91b5c791af11e'
