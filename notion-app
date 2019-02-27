@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#
+# Launch notion.so
+
+if [[ ! -e "/opt/notion-app" ]]; then
+  echo "Error: /opt/notion not found"
+  exit 1
+fi
+
+pushd "/opt/notion-app/" >/dev/null || exit 1
+electron app.asar
+popd >/dev/null || exit 1
