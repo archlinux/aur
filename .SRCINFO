@@ -1,0 +1,25 @@
+pkgbase = pocl-cuda-git
+	pkgdesc = Portable OpenCL is an open-source implementation of OpenCL which can be easily adapted for new targets (git version)
+	pkgver = v1.2.r156.ga0b083a1
+	pkgrel = 1
+	url = http://portablecl.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = llvm
+	makedepends = ocl-icd
+	depends = clang
+	depends = opencl-icd-loader
+	depends = hwloc
+	depends = libltdl
+	depends = opencl-headers
+	depends = cuda
+	provides = pocl
+	conflicts = pocl
+	source = pocl::git+https://github.com/pocl/pocl.git
+	sha256sums = SKIP
+
+pkgname = pocl-cuda-git
+
