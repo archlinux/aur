@@ -9,7 +9,7 @@
 
 _name=gajimbo
 pkgname="$_name-git"
-pkgver=v1.1.91.1.0.g9ee3249eb
+pkgver=v1.1.92.0.ga6db997db
 pkgrel=1
 pkgdesc="A fork of Gajim with various enhancements, written in Python with GTK+"
 arch=('any')
