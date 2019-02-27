@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <jan at cholasta net>
 
 pkgname=nblood-git
-pkgver=1.0+0+gc78d2a8
+pkgver=1.0+98+gcb90b21
 pkgrel=1
 pkgdesc='Blood port based on EDuke32 (git version)'
 arch=('i686' 'x86_64')
@@ -38,12 +38,13 @@ prepare() {
 build() {
     cd NBlood
     make PACKAGE_REPOSITORY=1 REVFLAG="-DREV=\\\"$(git describe --tags --long)\\\""
-    convert source/blood/rsrc/game.bmp \
-            -gravity center \
-            -crop 200x200+0+0 \
-            -rotate 90 \
-            -resize 192x192 \
-            nblood.png
+    MAGICK_OCL_DEVICE=OFF convert \
+        source/blood/rsrc/game.bmp \
+        -gravity center \
+        -crop 200x200+0+0 \
+        -rotate 90 \
+        -resize 192x192 \
+        nblood.png
 }
 
 package() {
