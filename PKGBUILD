@@ -7,7 +7,7 @@
 # Contributor: William Penton <william@penton.us>
 
 pkgname=gitkraken
-pkgrel=3
+pkgrel=4
 pkgver=4.2.2
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
 url="https://www.gitkraken.com/"
