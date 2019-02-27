@@ -1,7 +1,7 @@
 # Maintainer: Ferdinand B <theferdi265@gmail.com>
 
 pkgname=pyvtlock-git
-pkgver=0.3.0.r1.g5f536da
+pkgver=0.5.0.r0.gb0a7c7c
 pkgrel=1
 pkgdesc="A python-based console locking program (git version)"
 url="https://github.com/Ferdi265/pyvtlock"
