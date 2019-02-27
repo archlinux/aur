@@ -1,14 +1,14 @@
 pkgbase = emacs-evil
 	pkgdesc = An extensible vi layer for Emacs
-	pkgver = 1.2.13
+	pkgver = 1.2.14
 	pkgrel = 1
 	url = https://www.emacswiki.org/emacs/Evil
 	arch = any
 	license = GPLv2
 	depends = emacs
 	depends = emacs-undo-tree
-	source = https://github.com/emacs-evil/evil/archive/1.2.13.tar.gz
-	sha256sums = 1045be9cd46f77113421a07c7ad6d1af629e152b0698cdc981d5305dbbfec3fc
+	source = https://github.com/emacs-evil/evil/archive/1.2.14.tar.gz
+	sha256sums = 28f311c13f00ee9716626cd62d97f838bc21184c2b844d8ad4dfa084932516fb
 
 pkgname = emacs-evil
 
