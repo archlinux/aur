@@ -22,6 +22,7 @@ build() {
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
+  chmod +x $pkgdir/usr/bin/h52csv
 }
 
 # vim:ts=2:sw=2:et:
