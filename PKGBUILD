@@ -15,7 +15,7 @@ _revert=1
 pkgname=mutter-781835-workaround
 _pkgname=mutter
 pkgver=3.30.2+7
-pkgrel=14
+pkgrel=15
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -58,7 +58,7 @@ prepare() {
   # clutter: Deliver events sooner when possible
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/168
   # Disabled as may cause stutter when using mouse with high polling rate
-  # git cherry-pick cd280c30
+  # git cherry-pick b17e1c0c
 
   # clutter: Fix offscreen-effect painting of clones
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/117/commits
@@ -71,15 +71,15 @@ prepare() {
 
   # clutter-actor: Add detail to captured-event signal [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/283
-  git cherry-pick 4a9a0d62
+  git cherry-pick 9ed3a7d1
 
   # clutter-stage-cogl: Reduce output latency and reduce missed frames too [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/281/commits
-  git cherry-pick f5f3c00c^..785212cc
+  git cherry-pick e6e3448c^..5b4f45db
 
   # Consolidate all frame throttling into clutter-stage-cogl [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/363
-  git cherry-pick b6fae4f8^..0f9393d5 -Xtheirs
+  git cherry-pick 20629bd2^..781f68db -Xtheirs
 
   # clutter: Avoid redundant margin changes
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/399
@@ -126,7 +126,7 @@ prepare() {
 
 build() {
   cd $_pkgname
-
+  export CFLAGS="-march=native -Ofast -pipe"
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
       --libexecdir=/usr/lib --disable-static \
       --disable-schemas-compile --enable-compile-warnings=minimum \
