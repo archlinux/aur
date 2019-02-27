@@ -5,11 +5,11 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=72.0.3626.81
-pkgrel=2
+pkgver=72.0.3626.119
+pkgrel=1
 _launcher_ver=6
-_release_sha=36f8ce7e1dc05b379a1de75320ebd5d50bdc2fab
-_igalia_sha=da646d2b8e02640cc488bf470b0a9177cd262422
+_release_sha=e9e63ab0ce7758849cbb7e8f9a62afcb239e05da
+_igalia_sha=ceadbfcbc9178b88485b8fff82da4d4fe5673af8
 pkgdesc="Chromium built with patches for wayland support via Ozone"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -40,7 +40,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-ozone-wayland.patch::https://github.com/mirror/chromium/compare/${_release_sha}...Igalia:${_igalia_sha}.patch
         chromium-algorithm-header.patch::https://github.com/chromium/chromium/commit/6c0254a78043e32441dbc2e6d4893590dd0d1953.patch
         chromium-vaapi-build.patch::https://github.com/Igalia/chromium/commit/cdb2e638d4488936c80a2c1b506eecf95ffbee02.patch)
-sha256sums=('dfe89fe389008e6d2098099948d10774989d2f3e8dca6ace78ea4ec636dd8006'
+sha256sums=('b3953ce18044117d98f0b1b9922aeb93030a7b49b85b140060c6fe3e467a917a'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
@@ -51,7 +51,7 @@ sha256sums=('dfe89fe389008e6d2098099948d10774989d2f3e8dca6ace78ea4ec636dd8006'
             '0bd750255163bfb1bedaf97c1cdb313f42bd9e6e52243c6e68494b6e0ffb84bf'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
-            '9e3c841e325b473301e7024eafa121cbb00421eb1192b3673bbb9037909a74bc'
+            '0c1054d95c3275355becea79790a24fcca60912b904b3efc8a961dd73eed4091'
             '5662e88f7bd1a36848d3ecf166e9a282b7fa3858bd1261d582c97654af0c1348'
             '4ed0ac74fef8b63fa5dfd0de02a02cc4a7667898a90ec5365651645777934c14')
 
@@ -104,10 +104,10 @@ prepare() {
     third_party/libxml/chromium/libxml_utils.cc
 
   # Enable VAAPI on Linux
-  patch -Np1 -i ../chromium-vaapi.patch
-  patch -Np1 -i ../chromium-vaapi-relax-the-version-check-for-VA-API.patch
-  patch -Np1 -i ../chromium-enable-mojo-video-decoders-by-default.patch
-  patch -Np1 -i ../chromium-vaapi-fix-the-VA_CHECK_VERSION.patch
+  # patch -Np1 -i ../chromium-vaapi.patch
+  # patch -Np1 -i ../chromium-vaapi-relax-the-version-check-for-VA-API.patch
+  # patch -Np1 -i ../chromium-enable-mojo-video-decoders-by-default.patch
+  # patch -Np1 -i ../chromium-vaapi-fix-the-VA_CHECK_VERSION.patch
 
   # Load Widevine CDM if available
   patch -Np1 -i ../chromium-widevine.patch
@@ -192,8 +192,10 @@ build() {
     'enable_hangout_services_extension=true'
     'enable_widevine=true'
     'use_ozone=true'
+    'ozone_platform_wayland=true'
     'use_xkbcommon=true'
     'use_system_minigbm=true'
+    'use_system_libdrm=true'
     'use_vaapi=false'
     'use_jumbo_build=true'
     'enable_nacl=false'
