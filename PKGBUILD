@@ -1,6 +1,6 @@
 # Maintainer: Maarten de Vries <maarten@de-vri.es>
 pkgname=dynamixel-sdk
-pkgver=3.4.5
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="SDK for communicating with Dynamixel motors (C and C++ bindings)"
 url="https://github.com/ROBOTIS-GIT/DynamixelSDK"
@@ -8,7 +8,7 @@ arch=(x86_64 i386)
 license=(BSD)
 
 source=("https://github.com/ROBOTIS-GIT/DynamixelSDK/archive/${pkgver}.tar.gz")
-sha512sums=('af546a7b970567cc5dc2966f184d25bd792607a871813708e457d9ce4c3853c6b492bf71a5d51d52b360e99999ba3238b78538543ca0d00f7ffa4dcc657fab06')
+sha512sums=('8593d993b9485aba2516f1bbcc0ef01adde07f6d891451d8854a361a4dee9fee25cbb7ad44efeabae07a446472944d630b36c77e83a8aa7d8a5a22edc90e93d0')
 
 _dir="DynamixelSDK-$pkgver"
 if [[ $CARCH == i386 ]]; then
@@ -22,8 +22,11 @@ else
 fi
 
 build() {
-	make -C "$_cxxdir"
-	make -C "$_cdir"
+	local _cflags="-fPIC -I../../include/dynamixel_sdk $CFLAGS"
+	local _cxxflags="-fPIC -I../../include/dynamixel_sdk $CXXFLAGS"
+	# At the time of writing, the Makefiles use CCFLAGS and CXFLAGS, not CFLAGS and CXXFLAGS...
+	make -C "$_cxxdir" LDFLAGS="-shared $LDFLAGS" CCFLAGS="$_cflags" CXFLAGS="$_cxxflags"
+	make -C "$_cdir"   LDFLAGS="-shared $LDFLAGS" CCFLAGS="$_cflags" CXFLAGS="$_cxxflags"
 }
 
 package() {
