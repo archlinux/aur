@@ -1,0 +1,18 @@
+pkgbase = perl-pod-spell-commonmistakes
+	pkgdesc = Catches common typos in Pod.
+	pkgver = 1.002
+	pkgrel = 1
+	url = https://metacpan.org/release/Pod-Spell-CommonMistakes
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-module-build-tiny
+	depends = perl
+	depends = perl-io-stringy
+	depends = perl-pod-spell
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AP/APOCAL/Pod-Spell-CommonMistakes-1.002.tar.gz
+	sha256sums = 2ba9ea76c049daf892ba2bdd85a07099a33be315876f55ed33a644d575324432
+
+pkgname = perl-pod-spell-commonmistakes
+
