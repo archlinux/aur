@@ -5,7 +5,7 @@
 pkgbase=webstorm
 pkgname=(webstorm webstorm-jre)
 pkgver=2018.3.5
-_pkgver=183.5429.34
+_pkgver=183.5912.23
 pkgrel=1
 pkgdesc='JavaScript IDE and HTML editor.'
 arch=('x86_64' 'i686')
