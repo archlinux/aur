@@ -1,7 +1,7 @@
 pkgbase = pdfbeads
 	pkgdesc = A small utility written in Ruby which takes scanned page images and converts them into a single PDF file
 	pkgver = 1.1.2.pre.beta
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/boredland/pdfbeads
 	arch = any
 	license = GPL
