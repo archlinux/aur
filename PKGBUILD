@@ -2,7 +2,7 @@
 
 pkgname=python-mutovis-analysis
 _pkgname=analysis-software
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Python QT batch curve fitting GUI tool for solar cell IV data files"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL-3.0')
 depends=('python' 'python-numpy' 'python-matplotlib' 'python-scipy' 'python-h5py' 'python-sympy' 'python-mpmath' 'python-lmfit' 'python-dill' 'python-pyqt5' 'python-uncertainties')
 makedepends=('python-setuptools')
 source=("https://github.com/mutovis/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('8718dde2567cb52a6503df04ccb09f9cbc168e33a6f936600e956b064cb05684')
+sha256sums=('986ba2158f45b6a2dc1f0e581ebc777ad4ede1bd749af7cc3570579045e7e70f')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
