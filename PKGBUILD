@@ -2,11 +2,11 @@
 
 pkgname=acestream-proxy-git
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="AceProxy new version capable of providing multiple streams of the same channel over HTTP (git version)"
 arch=("any")
 url="https://github.com/pepsik-kiev/HTTPAceProxy.git"
-license=("MIT")
+license=("custom")
 depends=("acestream-engine" "python-gevent>=1.3.3" "python-psutil>=5.3.0")
 optdepends=('ffmpeg: for stream transcoding and fine tuning yourself')
 provides=("aceproxy")
