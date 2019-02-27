@@ -1,14 +1,14 @@
 # Maintainer: Árni Daugr <arnidg@protonmail.ch>
 pkgname=futhark-git
 pkgver=0.9.1.r32.gc87ac1a7a
-pkgrel=1
+pkgrel=2
 pkgdesc='A data-parallel functional programming language'
 arch=('x86_64')
 url='https://futhark-lang.org/'
 license=('ISC')
 groups=()
 depends=('ncurses5-compat-libs')
-makedepends=('stack') 
+makedepends=('stack' 'python-sphinx') 
 provides=('futhark')
 conflicts=('futhark')
 source=('git+https://github.com/diku-dk/futhark.git')

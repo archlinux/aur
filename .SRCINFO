@@ -1,11 +1,12 @@
 pkgbase = futhark-git
 	pkgdesc = A data-parallel functional programming language
 	pkgver = 0.9.1.r32.gc87ac1a7a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://futhark-lang.org/
 	arch = x86_64
 	license = ISC
 	makedepends = stack
+	makedepends = python-sphinx
 	depends = ncurses5-compat-libs
 	provides = futhark
 	conflicts = futhark
