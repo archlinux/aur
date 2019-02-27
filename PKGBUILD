@@ -1,10 +1,10 @@
 # Maintainer: Shatur <genaloner@gmail.com>
 
-# Use KDE API features (recommended for KDE users)
+# Use KDE API for tray for additional feautures (this also add knotifier dependency, recommended for KDE users).
 KDE=false
 
 pkgname=optimus-manager-qt-git
-pkgver=r18.21b1b58
+pkgver=1.0.0.r0.gad396e2
 pkgrel=1
 pkgdesc="A Qt interface for Optimus Manager that allows to configure and switch GPUs on Optimus laptops using the tray menu"
 arch=('x86_64')
@@ -23,7 +23,7 @@ fi
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 # Clone submodules
