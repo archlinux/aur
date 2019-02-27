@@ -1,7 +1,7 @@
 pkgbase = nlopt
 	pkgdesc = nonlinear optimization library
 	pkgver = 2.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ab-initio.mit.edu/wiki/index.php/NLopt
 	arch = x86_64
 	license = LGPL

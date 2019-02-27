@@ -1,6 +1,6 @@
 pkgname=nlopt
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="nonlinear optimization library"
 arch=('x86_64')
 url="http://ab-initio.mit.edu/wiki/index.php/NLopt"
@@ -18,6 +18,9 @@ prepare () {
 
   # fix guile extension
   curl -L https://github.com/stevengj/nlopt/pull/209.patch | patch -p1
+
+  # fix octave 5.x build
+  curl -L https://github.com/stevengj/nlopt/pull/245.patch | patch -p1
 }
 
 build() {
