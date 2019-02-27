@@ -1,0 +1,18 @@
+pkgbase = pyvtlock-git
+	pkgdesc = A python-based console locking program (git version)
+	pkgver = 0.1.0.r5.ge9599f6
+	pkgrel = 1
+	url = https://github.com/Ferdi265/pyvtlock
+	install = pyvtlock.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = python
+	depends = pam
+	depends = python-pam
+	source = git+ssh://git@github.com/Ferdi265/pyvtlock
+	md5sums = SKIP
+
+pkgname = pyvtlock-git
+

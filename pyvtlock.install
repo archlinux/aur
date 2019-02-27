@@ -1,0 +1,13 @@
+post_install() {
+    echo -n 'Setting up capabilities for capwrap'
+    setcap 'cap_sys_tty_config=ep cap_setgid=ep' '/usr/lib/pyvtlock/capwrap'
+    if [[ $? -eq 0 ]]; then
+        echo ' [DONE]'
+    else
+        echo ' [FAIL]'
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
