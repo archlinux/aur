@@ -2,8 +2,8 @@
 # Contributor:  Maarten de Vries <maarten@de-vri.es>
 
 pkgname=yaml2argdata
-pkgver=0.3
-pkgrel=2
+pkgver=0.4
+pkgrel=1
 pkgdesc="C++ header-only library for converting YAML to Argdata"
 arch=('any')
 url='https://github.com/NuxiNL/yaml2argdata'
@@ -13,7 +13,7 @@ depends=(
 	yaml-cpp
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NuxiNL/yaml2argdata/archive/v$pkgver.tar.gz")
-sha512sums=('62a710a45dc971e48d3475654e32446a1a481689cb8a12bdc4ec0e8970f9f0d965a1c00d3c758eda374dd43a6585a9453274a7e45aa35e8dc4098c01c4f49698')
+sha512sums=('35b7dadbd95ad4acc765b3a237470dd7c47bcbdc323d4f653bf85f0fbad6a95086587371a4e5a4ba3aa15e6ba73b1051df8f9a3c9b4f5479196b687e1335791a')
 
 
 package() {
