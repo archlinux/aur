@@ -2,7 +2,7 @@
 
 pkgname=ueyed
 pkgdesc="IDS uEye camera daemon (USB and ethernet)"
-pkgver=4.90
+pkgver=4.90.06
 pkgrel=1
 arch=(x86_64)
 license=(custom)
@@ -16,7 +16,7 @@ backup=(
 )
 
 source=(
-	"https://en.ids-imaging.com/download-ueye-lin64.html?file=tl_files/downloads/uEye_SDK/driver/uEye-Linux-$pkgver-64.tgz"
+	"https://en.ids-imaging.com/ueye-software-archive.html?file=tl_files/downloads/uEye_SDK/driver/archive/uEye-Linux-$pkgver-64.tgz"
 	"ueyeethd.service"
 	"ueyeusbd.service"
 	"ueyeusb.rules"
@@ -24,7 +24,7 @@ source=(
 	"ueyeusbd.conf"
 )
 
-sha512sums=('5ec8e50af0c06d41f54778b153a4542828d2c9e7406ca149ccd0e43d6f5d709c3f1d4b047ab11f14818b4254f8e0815b044b551d67944293eb96fd3029c6f2df'
+sha512sums=('edc50ff6076ef9b6d6b27b72c2beaf8e7911347461b4c7d316c5c1e29eff2d84a7db5a68b9e09ae2b83582610004a623f4a6ded3f59c45697626e04d96829113'
             '9e4156ecfc687b895ecf5055cd97e748760c675e8478caa46c2d19a49f1e2b31000e85a394198b9ab6da40d3b9ede4ffde4f960fc9f8ba7b1a44cffe69b77dbc'
             '3e5d357f43e68a143b9da9c712043224304e30699618da9d17f0916297c48d4865d7af2a040561f1b13c6bdef7c613bc441549f152ce0669f67001f0d401fb5a'
             'fe1901eb22210e7c3f23171197e9316c2a400d68e62d32b52c3900d1d30c38654c90cf101db483dc140103a1c36c2de28b28e6d8a135564c382b0d3e70d37549'
