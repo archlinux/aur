@@ -61,9 +61,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=4.20.12-arch1
+_srcver=4.20.13-arch1
 pkgver=${_srcver%-*}
-pkgrel=4
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -88,7 +88,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('1cf544308195250805e0731c716691bea4c1ed29e03e6f9ae5be6dc16785a504'
+sha256sums=('0e73adb4f0a4e68ae260d5aa644eb9c50e847f204258a5e43ce88dc791eb0ac1'
             'SKIP'
             '4ff10c16fa729f808e812e3ff53ef8087ab9c220c84d860676d3bfb5c1c63c5d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
