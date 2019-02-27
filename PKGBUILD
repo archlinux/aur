@@ -6,11 +6,9 @@
 # Contributor: Otto Sabart <seberm[at]gmail[dot]com>
 
 pkgname=knot-git
-pkgver=2.8_git  # overriden by hack in package()
+pkgver=2.8.dev.1551283912.4015475b0
 pkgrel=1
 pkgdesc="High-performance authoritative-only DNS server, development build"
-conflicts=('knot')
-# provides=('knot')  # see packaging()
 arch=('x86_64')
 url="https://www.knot-dns.cz/"
 license=('GPL3')
@@ -18,16 +16,17 @@ depends=('libedit' 'gnutls' 'liburcu' 'lmdb'
          'libidn2' 'systemd' 'libcap-ng'
          'fstrm' 'protobuf-c' 'libmaxminddb')
 makedepends=('git' 'automake' 'autoconf' 'make' 'libtool' 'pkg-config')
+provides=("${pkgname%-git}=${pkgver}")
+conflicts=("${pkgname%-git}")
 backup=('etc/knot/knot.conf')
 source=("git+https://gitlab.labs.nic.cz/knot/knot-dns.git")
 sha256sums=('SKIP')
 options=(!strip debug)
 _gitname='knot-dns'
 
-build() {
+pkgver() {
     cd "${_gitname}"
-
-    ./autogen.sh
+    ./autogen.sh &>/dev/null
     ./configure \
         --prefix=/usr \
         --sbindir=/usr/bin \
@@ -40,7 +39,12 @@ build() {
         --enable-dnstap \
         --enable-systemd \
         --enable-reuseport \
-        --disable-silent-rules
+        --disable-silent-rules &>/dev/null
+    grep 'PACKAGE_VERSION' src/config.h | sed 's/.*"\(.*\)"/\1/'
+}
+
+build() {
+    cd "${_gitname}"
 
     make
 }
@@ -64,9 +68,4 @@ package() {
     install -Dm644 distro/common/knot.service -t "${pkgdir}"/usr/lib/systemd/system/
     install -Dm644 distro/arch/knot.tmpfiles.arch "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
     install -Dm644 distro/arch/knot.sysusers "${pkgdir}"/usr/lib/sysusers.d/${pkgname}.conf
-
-    # Pull structured version number from installation, e.g. 2.8.dev.1551174394.44b39298a
-    pkgver="$(PKG_CONFIG_PATH="${pkgdir}"/usr/lib/pkgconfig pkg-config libknot --modversion)"
-    # Add versioned "provides" so dependent packages like Knot Resolver can be installed
-    provides=("knot=${pkgver}")
 }
