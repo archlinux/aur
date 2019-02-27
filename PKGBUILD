@@ -5,14 +5,14 @@
 _pkgname="xournalpp"
 pkgname="${_pkgname}-git"
 
-pkgver=1.0.7.124.gd5f89600
+pkgver=1.0.8.79.g9cbb2e43
 pkgrel=1
 pkgdesc='Xournal++ is a handwriting Notetaking software with PDF annotation support. Supports Pen input like Wacom Tablets.'
 arch=('i686' 'x86_64')
 url="https://github.com/xournalpp/xournalpp"
-license=('GPL-2.0')
+license=('GPL2')
 makedepends=('git' 'cmake' 'gettext')
-depends=('texlive-bin' 'gtk3' 'glib2' 'desktop-file-utils' 'poppler-glib' 'libxml2' 'portaudio' 'libsndfile')
+depends=('texlive-bin' 'gtk3' 'glib2' 'poppler-glib' 'libxml2' 'portaudio' 'libsndfile' 'lua')
 optdepends=('curl: recording support'
             'vlc: recording support'
             'alsa-utils: recording support')
@@ -27,27 +27,22 @@ pkgver() {
 }
 
 prepare() {
-	cd "${srcdir}/${_pkgname}/"
+	mkdir -p "${srcdir}/${_pkgname}/build"
+}
 
-	test -e "${srcdir}/${_pkgname}/build" || mkdir -p "${srcdir}/${_pkgname}/build"
-	cd "${srcdir}/${_pkgname}/build"
-
+build() {
 	if [ -z "$XDG_CONFIG_HOME" ]; then
 		configdir=".config"
 	else
 		configdir="$XDG_CONFIG_HOME"
 	fi
-	cmake -DENABLE_TEX="ON" -DCMAKE_INSTALL_PREFIX="/usr/" -DDEV_CONFIG_DIR="$configdir/xournalpp" ..
-}
-
-build() {
 	cd "${srcdir}/${_pkgname}/build"
+	cmake -DCMAKE_INSTALL_PREFIX="/usr/" -DDEV_CONFIG_DIR="$configdir/xournalpp" ..
 	make
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}/build"
 
-	# sed 's|/usr/local|/usr|g' -i "${srcdir}/${_pkgname}/build/cmake_install.cmake" || true
 	make DESTDIR="${pkgdir}/" install
 }

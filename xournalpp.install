@@ -1,12 +1,7 @@
 post_install() {
-	update-desktop-database -q
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-	update-mime-database usr/share/mime &>/dev/null
 }
 
 post_upgrade() {
-	post_install
-
 	configs=$(find /home/ /root/ -maxdepth 2 -name ".xournalpp" 2> /dev/null)
 	if ! [ -z "$configs" ]; then
 		cat << EOF
@@ -20,5 +15,4 @@ EOF
 }
 
 post_remove() {
-	post_install
 }
