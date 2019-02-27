@@ -1,26 +1,34 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
-pkgname=oblige
-pkgver=7.70
+pkgname=oblige-git
+pkgver=7.70+11+gb4fbd90
 pkgrel=1
 epoch=1
-pkgdesc='A random level maker for games based on the Doom engine'
+pkgdesc='A random level maker for games based on the Doom engine (git version)'
 arch=('i686' 'x86_64')
 url='http://oblige.sourceforge.net/'
 license=('GPL')
 depends=('fltk>=1.3.0' 'hicolor-icon-theme')
-makedepends=('xdg-utils')
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver/./}-source.zip")
-sha256sums=('0d35050a5a3d10c932b44cfcb9d02777012d7ab0b3e2e2ed56bc5b388c068271')
+makedepends=('git' 'xdg-utils')
+provides=('oblige')
+conflicts=('oblige')
+source=('Oblige::git+https://github.com/caligari87/Oblige.git')
+sha256sums=('SKIP')
+
+pkgver() {
+    cd Oblige
+
+    echo "7.70+$(git rev-list --count d1baa94..HEAD)+g$(git rev-parse --short=7 HEAD)"
+}
 
 build() {
-    cd Oblige-${pkgver}-source
+    cd Oblige
 
     make
 }
 
 package() {
-    cd Oblige-${pkgver}-source
+    cd Oblige
 
     mkdir -p "$pkgdir"/usr/bin
     mkdir -p "$pkgdir"/usr/share/applications
