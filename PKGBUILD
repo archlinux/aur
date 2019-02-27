@@ -1,17 +1,18 @@
 # Maintainer: goetzc
 pkgname=spotifywm-git
 pkgver=0.0.r1.91dd553
-pkgrel=1
+pkgrel=2
 pkgdesc='Makes Spotify more friendly to window managers by settings a class name before opening the window.'
 url=https://github.com/dasJ/spotifywm
 arch=(i686 x86_64)
 license=(MIT)
 makedepends=(git)
 depends=(libx11 sh)
+optdepends=(spotify)
 source=('spotifywm::git+https://github.com/dasJ/spotifywm/'
         'spotify.sh')
 md5sums=('SKIP'
-         '8e9bebb59dc39274f0ceb5340272082a')
+         '974b9c6d2b6889dce6277c750cce48da')
 
 pkgver() {
   cd spotifywm
