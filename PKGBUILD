@@ -5,7 +5,7 @@
 
 pkgname=gnuradio-git
 _gitname=gnuradio
-pkgver=3.8tech.preview.229.g121706288
+pkgver=3.8tech.preview.283.g0ab1a75a8
 pkgrel=1
 pkgdesc="General purpose DSP and SDR toolkit, with drivers for usrp and fcd."
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ makedepends=('git' 'boost' 'cmake' 'python-cairo' 'python-yaml' 'python-cheetah'
 optdepends=('python-lxml: Some GRC modules use lxml optionally for improved performance')
 source=("git://github.com/gnuradio/gnuradio.git")
 md5sums=('SKIP')
-conflicts=('gnuradio')
-provides=('gnuradio')
+conflicts=('gnuradio' 'gnuradio-companion')
+provides=('gnuradio' 'gnuradio-companion')
 
 pkgver() {
     cd "$srcdir/$_gitname"
