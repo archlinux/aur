@@ -1,8 +1,8 @@
 pkgbase = acestream-engine
 	pkgdesc = ACE Stream engine
-	pkgver = 3.1.16
-	pkgrel = 8
-	url = http://acestream.org/
+	pkgver = 3.1.35
+	pkgrel = 1
+	url = http://acestream.org
 	install = acestream-engine.install
 	arch = x86_64
 	license = unknown
@@ -15,10 +15,10 @@ pkgbase = acestream-engine
 	depends = python2-typing
 	optdepends = python2-libappindicator: GTK+ gui support
 	source = acestream-engine.service
-	source = acestream-engine-3.1.16::http://dl.acestream.org/linux/acestream_3.1.16_ubuntu_16.04_x86_64.tar.gz
-	source = python2-m2crypto-0.24.0::https://archive.archlinux.org/packages/p/python2-m2crypto/python2-m2crypto-0.24.0-4-x86_64.pkg.tar.xz
+	source = acestream-engine-3.1.35.tar.gz::http://acestream.org/downloads/linux-beta/acestream_3.1.35_ubuntu_18.04_x86_64.tar.gz
+	source = python2-m2crypto-0.24.0.tar.xz::https://archive.archlinux.org/packages/p/python2-m2crypto/python2-m2crypto-0.24.0-4-x86_64.pkg.tar.xz
 	sha256sums = b9863a9dd3ee6d41d18475f5f539107fe81a573f45ca1cb98013441f955f1af0
-	sha256sums = 452bccb8ae8b5ff4497bbb796081dcf3fec2b699ba9ce704107556a3d6ad2ad7
+	sha256sums = c20f427e635238857eb2c2a8402e3d90690c252f7f187d295fbc038f2a2be001
 	sha256sums = 177c22681be64a7533b3303652da8724aa20edcbead87be90765bc5040f4cff5
 
 pkgname = acestream-engine
