@@ -2,7 +2,7 @@
 
 _gitname=telepathy-tank
 pkgname=telepathy-tank-git
-pkgver=r26.4d41a98
+pkgver=r34.9869614
 pkgrel=1
 pkgdesc="Matrix connection operator for the Telepathy framework"
 arch=(i686 x86_64 armv7h aarch64)

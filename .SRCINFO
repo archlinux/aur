@@ -1,6 +1,6 @@
 pkgbase = telepathy-tank-git
 	pkgdesc = Matrix connection operator for the Telepathy framework
-	pkgver = r26.4d41a98
+	pkgver = r34.9869614
 	pkgrel = 1
 	url = https://telepathy.freedesktop.org/
 	arch = i686
