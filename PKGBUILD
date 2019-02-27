@@ -98,6 +98,7 @@ source=(
   24-PR15624.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15624.patch
   25-PR15625.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15625.patch
   26-PR15598.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15598.patch
+  27-PR15630.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15630.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -145,7 +146,8 @@ sha256sums=('bc1ef0e271d0b6ce2e1be7546ad4f7d330930d7631cc19a9bbc5f75ddc586166'
             'b1f5e2a6570ec6e96db701a6bbd3b2fbae8459407a7059c98195769f0ea97ae8'
             'f86019a0b2eda59bef40eca8680a484f2269bf5d8fa50fb62daa8cf2117632b5'
             '6a6081a26618075231ec789eef72a0c9ab98614fba0e862fa04eeb4b4508eecb'
-            'bf4bfae2f885f389e44dab7279c5f6e5bade813376473a196715de93143765a9')
+            'bf4bfae2f885f389e44dab7279c5f6e5bade813376473a196715de93143765a9'
+            '4995149972b4df1007ab7cd2ee29c306d8bc0d06b70c0e5d2afe152e5b7b642f')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
