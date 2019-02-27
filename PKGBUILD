@@ -2,11 +2,11 @@
 
 pkgname=k3s-git
 pkgver=r1.7d1baa9
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight Kubernetes'
 arch=(x86_64)
 url='https://github.com/rancher/k3s'
-license=(MIT)
+license=(APACHE)
 makedepends=(docker git go)
 
 pkgver() {
