@@ -1,0 +1,5 @@
+/oragono-*.pkg.tar.*
+/oragono/
+/oragono-vendor/
+/pkg/
+/src/
