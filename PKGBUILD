@@ -18,16 +18,14 @@ _tools=('bsondump' 'mongostat' 'mongofiles' 'mongoexport' 'mongoimport' 'mongore
 
 prepare() {
   cd "${srcdir}"
-  install -d build/src/github.com/mongodb
+  install -d build/src/github.com/mongodb/bin
   mv "mongo-tools-r${pkgver}" build/src/github.com/mongodb/mongo-tools
-  cd build/src/github.com/mongodb/mongo-tools
-  GOROOT=/usr ./set_goenv.sh
-  export GOPATH="$GOPATH:$srcdir/build"
-  mkdir bin
 }
 
 build() {
   cd "${srcdir}/build/src/github.com/mongodb/mongo-tools"
+  GOROOT=/usr ./set_goenv.sh
+  export GOPATH="$GOPATH:$srcdir/build"
   for tool in "${_tools[@]}"; do
     echo "Building ${tool}..."
     go build -o "bin/${tool}" -tags "ssl sasl" "${tool}/main/${tool}.go"
