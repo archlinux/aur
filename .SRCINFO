@@ -1,0 +1,18 @@
+pkgbase = perl-test-pod-spelling-commonmistakes
+	pkgdesc = Checks Pod for common spelling mistakes.
+	pkgver = 1.001
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-Pod-Spelling-CommonMistakes
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-module-build-tiny
+	depends = perl
+	depends = perl-pod-spell-commonmistakes
+	depends = perl-test-pod>=1.40
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AP/APOCAL/Test-Pod-Spelling-CommonMistakes-1.001.tar.gz
+	sha256sums = 1fdcd2cc6b86edfaf0486b3a107653a3163fcbf2d1924456f648ee323ee99f39
+
+pkgname = perl-test-pod-spelling-commonmistakes
+
