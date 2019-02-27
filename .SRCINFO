@@ -1,6 +1,6 @@
 pkgbase = xboxdrv-cebtenzzre-git
-	pkgdesc = An XBox/XBox 360 gamepad driver - as alternative to the xpad-kernel module - with more configurability, runs in userspace and supports a multitude of controllers (Centenzzre's fork)
 	pkgver = 0.8.8.r40.gc887ab9
+	pkgdesc = An XBox/XBox 360 gamepad driver - as alternative to the xpad-kernel module - with more configurability, runs in userspace and supports a multitude of controllers (Cebtenzzre's fork)
 	pkgrel = 1
 	url = https://xboxdrv.gitlab.io/
 	arch = x86_64
