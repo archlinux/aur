@@ -12,16 +12,16 @@ pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
 url="http://asymptote.sourceforge.net/"
 license=('LGPL3')
-depends=('gc' 'librsvg' 'freeglut' 'glew' 'gsl' 'fftw' 'libsigsegv' 'glm')
-makedepends=('git' 'flex' 'ghostscript' 'imagemagick6' 'texlive-plainextra')
+depends=('gc' 'python' 'freeglut' 'glew' 'gsl' 'fftw' 'libsigsegv')
+makedepends=('git' 'flex' 'ghostscript' 'imagemagick6' 'texlive-plainextra' 'glm')
 optdepends=('python-pyqt5:      for the xasy GUI'
             'python-imaging:    for the xasy GUI'
             'tix:               for the xasy GUI')
 conflicts=('asymptote')
 provides=('asymptote')
 source=('git+https://github.com/vectorgraphics/asymptote.git' remove_include.patch)
-md5sums=('SKIP'
-         '98812663669b14ff122d9d365c5b0359')
+sha256sums=('SKIP'
+            '3f72eab932e4713a58fbfafba8e24df362f23d29cb75db94204c8280246f024e')
 
 pkgver() {
   cd ${pkgname%-git}

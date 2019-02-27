@@ -12,14 +12,14 @@ pkgbase = asymptote-git
 	makedepends = ghostscript
 	makedepends = imagemagick6
 	makedepends = texlive-plainextra
+	makedepends = glm
 	depends = gc
-	depends = librsvg
+	depends = python
 	depends = freeglut
 	depends = glew
 	depends = gsl
 	depends = fftw
 	depends = libsigsegv
-	depends = glm
 	optdepends = python-pyqt5: for the xasy GUI
 	optdepends = python-imaging: for the xasy GUI
 	optdepends = tix: for the xasy GUI
@@ -27,8 +27,8 @@ pkgbase = asymptote-git
 	conflicts = asymptote
 	source = git+https://github.com/vectorgraphics/asymptote.git
 	source = remove_include.patch
-	md5sums = SKIP
-	md5sums = 98812663669b14ff122d9d365c5b0359
+	sha256sums = SKIP
+	sha256sums = 3f72eab932e4713a58fbfafba8e24df362f23d29cb75db94204c8280246f024e
 
 pkgname = asymptote-git
 
