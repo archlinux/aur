@@ -23,7 +23,7 @@
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
-pkgver=18.2rc1pre26
+pkgver=18.2rc1pre27
 _major=18.1
 pkgrel=1
 _codename=Leia
