@@ -20,6 +20,7 @@ pkgbase = xboxdrv-cebtenzzre-git
 	provides = xboxdrv
 	conflicts = xboxdrv
 	source = xboxdrv-cebtenzzre-git::git+https://gitlab.com/cebtenzzre/xboxdrv.git#branch=stable
+	backup = etc/conf.d/xboxdrv
 	source = xboxdrv.service
 	source = xboxdrv.conf
 	sha256sums = SKIP

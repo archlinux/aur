@@ -22,7 +22,7 @@ sha256sums=('SKIP'
             'd631a8c3af7e2b4ef22f1494ded5d7a8029a8dd9756ef8907f909ef6aa0afc2b'
             '68a286300d28bbfc97eb694c6cc413776f0bc16e35de6d1969f13ef1e7d1cac5')
 
-NoUpgrade=etc/conf.d/xboxdrv
+backup=(etc/conf.d/xboxdrv)
 
 pkgver() {
   cd "$pkgname"
