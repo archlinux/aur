@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=AdoptOpenJDK Java 11 Runtime
+Comment=AdoptOpenJDK Java 11 Runtime
+Keywords=java;runtime
+Exec=/usr/lib/jvm/java-11-adoptopenjdk/bin/java -jar
+Terminal=false
+Type=Application
+MimeType=application/x-java-archive;application/java-archive;application/x-jar;
+NoDisplay=true

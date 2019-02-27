@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=AdoptOpenJDK Java 11 Policy Tool
+Comment=AdoptOpenJDK Java 11 Policy Tool
+Keywords=java;security;policytool
+Exec=/usr/lib/jvm/java-11-adoptopenjdk/bin/policytool
+Terminal=false
+Type=Application
+Categories=Settings;
