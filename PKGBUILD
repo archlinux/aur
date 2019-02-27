@@ -1,4 +1,5 @@
-# Maintainer: Johannes Janosovits <johannes@walnutempire.de>
+# Maintainer: Ashok Arora <ashok.maillist@gmail.com>
+# Contributor: Johannes Janosovits <johannes@walnutempire.de>
 # Contributor: Joshua Schüler <joshua.schueler at gmail dotcom>
 # Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
@@ -53,7 +54,7 @@ optdepends=('opencv-samples'
             'eigen2'
             'libcl: For coding with OpenCL'
             'python2-numpy: Python 2.x interface')
-
+provides=("opencv=$pkgver")
 source=("$pkgver.zip::https://codeload.github.com/opencv/opencv/zip/$pkgver")
 sha256sums=('8fbe6005d2266e4a725a5ef7a27365d763ce4ad5a7f38045288a3cad8a18d759')
 
