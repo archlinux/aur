@@ -31,12 +31,13 @@ prepare() {
 build() {
     cd NBlood-${pkgver}
     make PACKAGE_REPOSITORY=1 REVFLAG="-DREV=\\\"v${pkgver}\\\""
-    convert source/blood/rsrc/game.bmp \
-            -gravity center \
-            -crop 200x200+0+0 \
-            -rotate 90 \
-            -resize 192x192 \
-            nblood.png
+    MAGICK_OCL_DEVICE=OFF convert \
+        source/blood/rsrc/game.bmp \
+        -gravity center \
+        -crop 200x200+0+0 \
+        -rotate 90 \
+        -resize 192x192 \
+        nblood.png
 }
 
 package() {
