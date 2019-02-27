@@ -1,8 +1,8 @@
-# Mantainer: S garnica < swhaat at github >
+# Mantainer: sgar < swhaat at github >
 
 pkgbase=esphomeyaml
 pkgname=esphome
-pkgver=1.11.1
+pkgver=1.11.2
 pkgrel=1
 pkgdesc="Solution for your ESP8266/ESP32 projects with Home Assistant"
 url="https://github.com/esphome/ESPHome"
@@ -39,7 +39,7 @@ check() {
 
 ##	 Run tests, takes a while
 #    cp ${pkgname}/__main__.py ${pkgname}.py
-#    python esphomeyaml.py tests/test1.yaml compile
-#    python esphomeyaml.py tests/test2.yaml compile
+#    python esphome.py tests/test1.yaml compile
+#    python esphome.py tests/test2.yaml compile
 }
 
