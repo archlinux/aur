@@ -3,15 +3,14 @@
 
 pkgbase=tensorflow-git
 pkgname=(tensorflow-git tensorflow-cuda-git python-tensorflow-git python-tensorflow-cuda-git)
-pkgver=1.9.0+rc2+1543+gabd645085b
+pkgver=1.13.0+172+gb29d52ce7f
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://tensorflow.org/"
-license=('Apache2')
+license=('APACHE')
 arch=('x86_64')
-makedepends=(git bazel python-numpy gcc7 cuda cudnn python-greenlet python-pip python-wheel python-setuptools)
-optdepends=('cuda: GPU support'
-            'cudnn: GPU support')
+makedepends=(git bazel python-numpy gcc7 cuda cudnn nccl python-greenlet python-pip python-wheel python-setuptools)
+optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("git+https://github.com/tensorflow/tensorflow")
 md5sums=('SKIP')
 
@@ -22,30 +21,35 @@ pkgver() {
 
 prepare() {
   [ -d ${srcdir}/tensorflow-cuda ] && rm -rf ${srcdir}/tensorflow-cuda
-  cp -r ${srcdir}/tensorflow ${srcdir}/tensorflow-cuda
-  # These environment variables influence the behavior of the configure call below.
-  export PYTHON_BIN_PATH=/usr/bin/python
-  export USE_DEFAULT_PYTHON_LIB_PATH=1
-  export CC_OPT_FLAGS="-march=native"
-  export TF_NEED_JEMALLOC=1
-  export TF_NEED_GCP=0
-  export TF_NEED_HDFS=0
-  export TF_ENABLE_XLA=1
-  export TF_NEED_GDR=0
-  export TF_NEED_VERBS=0
-  export TF_NEED_OPENCL=0
-  export TF_NEED_MPI=0
-  export TF_NEED_S3=0
-  export TF_NEED_OPENCL_SYCL=0
-  export TF_NEED_KAFKA=0
-  export TF_NEED_TENSORRT=0
-  export TF_NEED_AWS=0
-  export TF_SET_ANDROID_WORKSPACE=0
-  export TF_DOWNLOAD_CLANG=0
+    cp -r ${srcdir}/tensorflow ${srcdir}/tensorflow-cuda
+# These environment variables influence the behavior of the configure call below.
+    export PYTHON_BIN_PATH=/usr/bin/python
+    export USE_DEFAULT_PYTHON_LIB_PATH=1
+    export TF_NEED_JEMALLOC=1
+    export TF_NEED_KAFKA=0
+    export TF_NEED_OPENCL_SYCL=0
+    export TF_NEED_AWS=0
+    export TF_NEED_GCP=0
+    export TF_NEED_HDFS=0
+    export TF_NEED_S3=0
+    export TF_ENABLE_XLA=1
+    export TF_NEED_GDR=0
+    export TF_NEED_VERBS=0
+    export TF_NEED_OPENCL=0
+    export TF_NEED_MPI=0
+    export TF_NEED_TENSORRT=0
+    export TF_NEED_NGRAPH=0
+    export TF_NEED_IGNITE=0
+    export TF_NEED_ROCM=0
+    export TF_SET_ANDROID_WORKSPACE=0
+    export TF_DOWNLOAD_CLANG=0
+    export TF_NCCL_VERSION=2.3
+    export NCCL_INSTALL_PATH=/usr
+    export CC_OPT_FLAGS="-march=x86-64"
 
-  # make sure the proxy variables are in all caps, otherwise bazel ignores them
-  export HTTP_PROXY=`echo $http_proxy | sed -e 's/\/$//'`
-  export HTTPS_PROXY=`echo $https_proxy | sed -e 's/\/$//'`
+    # make sure the proxy variables are in all caps, otherwise bazel ignores them
+    export HTTP_PROXY=`echo $http_proxy | sed -e 's/\/$//'`
+    export HTTPS_PROXY=`echo $https_proxy | sed -e 's/\/$//'`
 }
 
 build() {
@@ -53,9 +57,13 @@ build() {
   cd ${srcdir}/tensorflow
 
   export TF_NEED_CUDA=0
-
   ./configure
-  bazel build --config=opt --jobs=`nproc` //tensorflow:libtensorflow.so //tensorflow/tools/pip_package:build_pip_package # ${_bazel_09_fix}
+  bazel \
+    build --config=opt \
+      //tensorflow:libtensorflow.so \
+      //tensorflow:libtensorflow_cc.so \
+      //tensorflow:install_headers \
+      //tensorflow/tools/pip_package:build_pip_package
   bazel-bin/tensorflow/tools/pip_package/build_pip_package ${srcdir}/tmp
 
   cd ${srcdir}/tensorflow-cuda
@@ -67,10 +75,14 @@ build() {
   export TF_CUDA_VERSION=$($CUDA_TOOLKIT_PATH/bin/nvcc --version | sed -n 's/^.*release \(.*\),.*/\1/p')
   export CUDNN_INSTALL_PATH=/opt/cuda
   export TF_CUDNN_VERSION=$(sed -n 's/^#define CUDNN_MAJOR\s*\(.*\).*/\1/p' $CUDNN_INSTALL_PATH/include/cudnn.h)
-  export TF_CUDA_COMPUTE_CAPABILITIES=3.0,3.5,5.2,6.1,6.2
-  export TF_NCCL_VERSION=1.3
+  export TF_CUDA_COMPUTE_CAPABILITIES=3.5,3.7,5.0,5.2,5.3,6.0,6.1,6.2,7.0,7.2,7.5
   ./configure
-  bazel build --config=opt --config=cuda --jobs=`nproc` //tensorflow:libtensorflow.so //tensorflow/tools/pip_package:build_pip_package # ${_bazel_09_fix}
+  bazel \
+    build --config=opt --config=opt \
+      //tensorflow:libtensorflow.so \
+      //tensorflow:libtensorflow_cc.so \
+      //tensorflow:install_headers \
+      //tensorflow/tools/pip_package:build_pip_package
   bazel-bin/tensorflow/tools/pip_package/build_pip_package ${srcdir}/tmpcuda
 }
 
