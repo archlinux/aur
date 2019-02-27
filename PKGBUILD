@@ -3,12 +3,12 @@
 
 pkgname=tracer
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Finds outdated running applications in your system'
 arch=('any')
 url='http://tracer-package.com/'
 license=('GPL2')
-depends=('python-beautifulsoup4' 'python-psutil' 'python-lxml' 'python-dbus' 'pyalpm')
+depends=('python-beautifulsoup4' 'python-psutil' 'python-lxml' 'python-dbus' 'python-future' 'pyalpm')
 optdepends=("python-argcomplete: bash completion")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FrostyX/tracer/archive/tracer-$pkgver-1.tar.gz"
         'tracer.hook')

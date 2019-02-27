@@ -1,7 +1,7 @@
 pkgbase = tracer
 	pkgdesc = Finds outdated running applications in your system
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tracer-package.com/
 	arch = any
 	license = GPL2
@@ -9,6 +9,7 @@ pkgbase = tracer
 	depends = python-psutil
 	depends = python-lxml
 	depends = python-dbus
+	depends = python-future
 	depends = pyalpm
 	optdepends = python-argcomplete: bash completion
 	source = tracer-0.7.1.tar.gz::https://github.com/FrostyX/tracer/archive/tracer-0.7.1-1.tar.gz
