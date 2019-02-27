@@ -1,4 +1,5 @@
 post_install() {
+	:
 }
 
 post_upgrade() {
@@ -15,4 +16,5 @@ EOF
 }
 
 post_remove() {
+	:
 }
