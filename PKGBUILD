@@ -2,7 +2,7 @@
 # Contributor: Thomas Nordenmark <t.nordenmark@gmail.com>
 
 pkgname=compton-conf
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc='A graphical configuration tool for Compton X composite manager'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ validpgpkeys=(
 	'7C733BA5F585AAD669E4D23A42C9C8D3AF5EA5E3'
 )
 sha256sums=(
-	'11b7ffca00024fb49906e9fbc9ef4efaf646514778d21a1463d253e152d48bd6'
+	'6cd5c3e00e02eece98f401c394a4b9358d306f4beceac88ce90283265399c886'
 	'SKIP' # GPG signature
 )
 
