@@ -5,8 +5,8 @@
 
 # Maintainer: Karsten Pufahl <contact <AT> karstenpufahl.de>
 pkgname=stm32cubemx
-pkgver=5.0.1
-pkgrel=2
+pkgver=5.1.0
+pkgrel=1
 epoch=
 pkgdesc="graphical software configuration tool for STM32 microcontrollers that allows generating C initialization code"
 arch=(any)
@@ -30,7 +30,7 @@ source=("https://www.st.com/resource/en/library2/stm32cube_mx_v${pkgver//./}.zip
  	"stm32cubemx.desktop"
  	"stm32cubemx.sh")
 noextract=()
-sha512sums=('03fa6a42240786d65c6910458751d221c770a98cb4bca775fd53700958a1ce77823462edacc29b476a91d2f916ee94f6a58ee5fb083080552b0ee396532ca5c6'
+sha512sums=('d6359d5f9e86c9379716f751c78666fe13f4d10c180b28500599b80514f6e676558fda71f1b6f2b43a78d5b4eaf3b156a4c6765452e99cede5ab33b9c6c1e622'
             'ad1897ea5234b712d726b5d3423f05f1c0c5a64e28354afe07dce7451563ae4492366cc252ca379b44793797be20011a66458431fd5453c18a7543ccb8df5397'
             '56bff32e35f8eb09ae4df94e4e885aaf9349c687ce9f4901ddd11c83b69a32b19d99ab8dbd90c6679e86e7213c4d41640e52ab0d80b8fc4640a1bc5df9a3af32'
             '9cc2dcb57e48e7039fb833c410e4638155fd14793c6daa7a00e1d1445162e7e26690c3303b6f052fff643123bc246be345da8624b18ee2805ddde75280512eec')
