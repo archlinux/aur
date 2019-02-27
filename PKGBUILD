@@ -17,13 +17,13 @@ sha256sums=('462a9720ffa13ea9378bc485ecc1a88cbee59534a256627e9ba4ce029ed61b39'
             '12602cea7b5d5b434007b891730a5071c3d2a06ed1cc225932e91d8a5d1f6c20')
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}"
 
 	# patch file
-	sed -i 's/\/usr\/lib\/grub/\/usr\/share\/grub/g' bin/60_grub-imageboot
+	sed -i 's/\/usr\/lib\/grub/\/usr\/share\/grub/g' 60_grub-imageboot
 
-	install -Dm755 bin/60_grub-imageboot ${pkgdir}/etc/grub.d/60_grub-imageboot
-	install -Dm644 etc/grub-imageboot ${pkgdir}/etc/default/grub-imageboot
+	install -Dm755 60_grub-imageboot ${pkgdir}/etc/grub.d/60_grub-imageboot
+	install -Dm644 grub-imageboot ${pkgdir}/etc/default/grub-imageboot
 	install -d ${pkgdir}/boot/images
 }
 
