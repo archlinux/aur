@@ -3,7 +3,7 @@
 
 pkgname=oragono
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern IRC server written in Go."
 arch=('x86_64')
 url="https://github.com/oragono/oragono"
@@ -26,7 +26,6 @@ sha256sums=('SKIP'
 backup=('etc/oragono.conf')
 
 prepare() {
-    export GOPATH=$(pwd)/..
     cd "${srcdir}/$pkgname"
     local _path=$(pwd)
     git submodule init 
@@ -41,6 +40,7 @@ prepare() {
 }
 
 build() {
+    export GOPATH=$(pwd)/..
     cd "${srcdir}/$pkgname"
 
     # flags from https://wiki.archlinux.org/index.php/Go_package_guidelines
@@ -60,6 +60,7 @@ build() {
 }
 
 check() {
+    export GOPATH=$(pwd)/..
     cd "${srcdir}/$pkgname"
 
     go test ./...
