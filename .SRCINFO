@@ -1,0 +1,18 @@
+pkgbase = clatd-git
+	pkgdesc = A 464XLAT CLAT implementation for Linux
+	pkgver = 1.4.r11.g888e30b
+	pkgrel = 1
+	url = https://github.com/toreanderson/clatd
+	arch = any
+	license = MIT
+	depends = tayga
+	depends = perl-net-ip
+	depends = perl-io-socket-inet6
+	depends = perl-net-dns
+	depends = systemd
+	optdepends = NetworkManager: for dispatcher
+	source = git+https://github.com/toreanderson/clatd.git
+	md5sums = SKIP
+
+pkgname = clatd-git
+
