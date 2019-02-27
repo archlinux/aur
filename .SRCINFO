@@ -1,0 +1,14 @@
+pkgbase = python-elementpath
+	pkgdesc = XPath 1.0/2.0 parsers and selectors for ElementTree.
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://pypi.org/project/elementpath
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/e/elementpath/elementpath-1.1.5.tar.gz
+	sha256sums = 94d5496fcbb0046378c1a383ae793f74cfa60a48b8fa9cc397c202b2f7d98c91
+
+pkgname = python-elementpath
+
