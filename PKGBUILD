@@ -19,7 +19,7 @@ build() {
 	python setup.py build
 }
 
-package() {
+package_python-pyfuse3() {
 	cd pyfuse3-$pkgver
 	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
