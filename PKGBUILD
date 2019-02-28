@@ -1,7 +1,7 @@
 # Maintainer: McModder <mcmodder@mcmodder.ru>
 
 pkgname=openttd-git
-pkgver=22812.00c160325
+pkgver=23369.adb50cebc
 pkgrel=1
 pkgdesc='An engine for running Transport Tycoon Deluxe (latest GIT build)'
 arch=('i686' 'x86_64')
@@ -10,7 +10,8 @@ license=('GPL')
 depends=('libpng' 'sdl' 'icu' 'fontconfig' 'lzo' 'hicolor-icon-theme' 'desktop-file-utils' 'xz')
 optdepends=('openttd-opengfx: free graphics'
             'openttd-opensfx: free soundset'
-            'timidity++: for in-game music')
+            'timidity++: for in-game music'
+            'allegro4: allegro support (launch the game with -v allegro)')
 makedepends=('git')
 
 source=("$pkgname::git+https://github.com/OpenTTD/OpenTTD.git")
