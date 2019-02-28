@@ -8,7 +8,7 @@ _PkgName=OpenBLAS
 _pkgname=openblas
 pkgver=0.3.4
 _lapackver=3.8.0
-pkgrel=16
+pkgrel=17
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('any')
 url="http://www.openblas.net/"
@@ -59,7 +59,7 @@ package(){
   # Symlink to provide blas, cblas, lapack and lapacke
   cd "${pkgdir}/usr/aarch64-linux-gnu/lib/"
   # Static lib
-  ln -sf libopenblas.a ${_static_lib_name}
+  ln -sf ${_static_lib_name} libopenblas.a
   # BLAS
   ln -sf libopenblas.so libblas.so
   ln -sf libopenblas.so libblas.so.${_lapackver:0:1}
