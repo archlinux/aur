@@ -1,0 +1,16 @@
+pkgbase = python-profig
+	pkgdesc = A threading library written in python. Help you build threaded app.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/eight04/pyWorker
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/p/profig/profig-0.4.1.tar.gz
+	sha256sums = 74aadcf6252fd0ed9757a1383e24963e1660817f90ffc962c8293349fa6f16b7
+
+pkgname = python-profig
+
+pkgname = python2-profig
+
