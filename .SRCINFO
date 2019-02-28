@@ -1,7 +1,7 @@
 pkgbase = cajarename
 	pkgdesc = Batch renaming extension for Caja
-	pkgver = 18.7.28.25
-	pkgrel = 2
+	pkgver = 18.7.28.26
+	pkgrel = 1
 	url = https://tari.in/www/software/cajarename
 	install = cajarename.install
 	arch = any
@@ -10,7 +10,8 @@ pkgbase = cajarename
 	makedepends = python2-setuptools
 	makedepends = python2-polib
 	depends = caja
-	depends = python-caja
+	depends = python-caja<=1.20.2
+	depends = python2
 	depends = python2-gobject
 	depends = gobject-introspection
 	depends = gtk3

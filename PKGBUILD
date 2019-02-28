@@ -2,13 +2,13 @@
 
 pkgname=cajarename
 _pkgnamealt=caja-rename
-pkgver=18.7.28.25
-pkgrel=2
+pkgver=18.7.28.26
+pkgrel=1
 pkgdesc="Batch renaming extension for Caja"
 arch=('any')
 url="https://tari.in/www/software/cajarename"
 license=('GPL3')
-depends=('caja' 'python-caja' 'python2-gobject' 'gobject-introspection' 'gtk3')
+depends=('caja' 'python-caja<=1.20.2' 'python2' 'python2-gobject' 'gobject-introspection' 'gtk3')
 makedepends=('bzr' 'python2-setuptools' 'python2-polib')
 install=${pkgname}.install
 source=("bzr+lp:/${pkgname}/trunk")
