@@ -2,8 +2,8 @@
 
 pkgname=juno-theme-git
 _pkgname=Juno
-pkgver=10.1f6ff37
-pkgrel=1
+pkgver=r10.1f6ff37
+pkgrel=2
 pkgdesc="GTK themes inspired by epic vscode themes"
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
   	cd "${srcdir}/${_pkgname}"
 
-	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
