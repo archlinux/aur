@@ -1,10 +1,11 @@
 # Maintainer: Anthony VanBerkum <anthonyvbop AT gmail DOT com>
 pkgname=dell-s2830dn-driver
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Driver for Dell printer S2830dn, from Dell"
 url=https://www.dell.com/support/home/us/en/04/drivers/driversdetails?driverid=83ydv
 arch=("any")
+depends=("bash")
 license=("Dell Software License Agreement")
 source=("https://downloads.dell.com/FOLDER03714270M/1/Printer_S2830dn_Driver_Dell_A00_Linux.zip?uid=ca5caedc-3cd6-4795-34a8-4e09bd286c5a&fn=Printer_S2830dn_Driver_Dell_A00_Linux.zip")
 sha256sums=("05d914a868ba9bf86a40bc4995c63ef40758109285995a55c344122f89d157c4")
