@@ -1,13 +1,12 @@
 pkgbase = deezloader-remix-git
 	pkgdesc = Deezloader Remix is an improved version of Deezloader based on the Reborn branch
 	pkgver = 4.1.7.r12.g1f1eca5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://notabug.org/RemixDevs/DeezloaderRemix
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = npm
-	depends = electron
 	source = git+https://notabug.org/RemixDevs/DeezloaderRemix
 	source = DeezloaderRemix.desktop
 	md5sums = SKIP
