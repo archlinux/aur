@@ -1,17 +1,21 @@
 pkgbase = intellij-idea-community-edition-jre
 	pkgdesc = Intellij Idea Community Edition with bundled JRE
-	pkgver = 2018.3.2
+	pkgver = 2018.3.5
 	pkgrel = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
 	license = Apache2
 	depends = giflib
 	depends = libxtst
+	depends = python
+	depends = sh
+	depends = ttf-font
+	depends = libdbusmenu-glib
 	provides = jetbrains-idea-ce
 	conflicts = jetbrains-idea-ce
-	source = https://download.jetbrains.com/idea/ideaIC-2018.3.2.tar.gz
+	source = https://download.jetbrains.com/idea/ideaIC-2018.3.5.tar.gz
 	source = jetbrains-idea-ce.desktop
-	md5sums = 7bf14969ca97b574ecb8eb3844d9816e
+	md5sums = cc013fd4f8608ec8815c60f713b5fe24
 	md5sums = 56d945e72cc22162d5be26af027999dd
 
 pkgname = intellij-idea-community-edition-jre
