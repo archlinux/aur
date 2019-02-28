@@ -1,0 +1,19 @@
+pkgbase = icglue
+	pkgdesc = a Tcl-Library for scripted HDL generation
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://icglue.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	depends = glib2
+	depends = tcl
+	depends = pkg-config
+	optdepends = nagelfar: for vim syntastics functionality
+	source = icglue-2.2.tar.gz::https://github.com/icglue/icglue/archive/v2.2.tar.gz
+	md5sums = 71133d6c7b1a027700465f2a4e4dbf17
+
+pkgname = icglue
+
