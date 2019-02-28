@@ -1,0 +1,11 @@
+--- Makefile.inc.orig	2019-02-28 17:50:52.552812580 +0100
++++ Makefile.inc	2019-02-28 17:51:11.782813067 +0100
+@@ -37,7 +37,7 @@
+ 
+ ifndef SYSTEMD
+ 	ifeq ($(shell systemctl --version > /dev/null 2>&1 && echo 1), 1)
+-		SYSTEMD = $(shell systemctl --version 2> /dev/null |  sed -n 's/systemd \([0-9]*\)/\1/p')
++		SYSTEMD = $(shell systemctl --version 2> /dev/null |  sed -n 's/systemd \([0-9]*\) .*/\1/p')
+ 	endif
+ endif
+ 
