@@ -1,8 +1,8 @@
 # Maintainer: Xunhua Guo <xunhua.guo@gmail.com>
 
 pkgname=mariadb-jdbc
-pkgver=2.3.0
-pkgrel=3
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="The official Java library (Connector/J) to connect to MariaDB and MySQL"
 arch=('any')
 url="https://downloads.mariadb.org/connector-java/"
@@ -11,7 +11,7 @@ depends=('java-runtime')
 provides=('mysql-jdbc')
 source=("https://downloads.mariadb.com/Connectors/java/connector-java-${pkgver}/mariadb-java-client-${pkgver}.jar")
 
-sha256sums=("26fc67b3022a6e85323b76ebb4c26994ec1a6b11ec7344483244c4e50ff79ce0")
+sha256sums=("1b7e3ab5b940df96894bcab56b7750559754ed0ee2b063338707eda33e8c66a5")
 
 package() {
     install -D -m755 \
