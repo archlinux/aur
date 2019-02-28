@@ -7,8 +7,8 @@ pkgbase = python-pyznap
 	license = GPLv3
 	makedepends = python3
 	depends = python
-	source = https://files.pythonhosted.org/packages/37/60/b2a66bf6cabde1f2b342274f776fa0d1937b2ddf7c1b0648832b38aead09/pyznap-0.9.1.tar.gz
-	md5sums = 5e579aa14502beb1a57532ecac6ad6f5
+	source = https://files.pythonhosted.org/packages/source/p/pyznap/pyznap-0.9.1.tar.gz
+	sha256sums = e809275d7bf4aceea0298a49c8c13bd5b8e93fe90e2e9e8723dd23725ce8f13c
 
 pkgname = python-pyznap
 
