@@ -20,7 +20,7 @@ depends=('python'
          'python-pythreadworker')
 
 makedepends=('git')
-
+backup=('usr/lib/sonarrannounced/settings.cfg')
 source=("git+https://github.com/dawtmaytrikx/Announced"
         'sonarrannounced.service'
         'sonarrannounced.sysusers'
