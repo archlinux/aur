@@ -1,11 +1,13 @@
 pkgbase = csvkit
 	pkgdesc = A suite of utilities for converting to and working with CSV.
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://csvkit.readthedocs.org
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-sphinx>=1.2.2
+	makedepends = python-sphinx_rtd_theme>=0.1.6
 	depends = python
 	depends = python-agate>=1.5.5
 	depends = python-agate-dbf>=0.2.0

@@ -2,7 +2,7 @@
 
 pkgname=csvkit
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A suite of utilities for converting to and working with CSV."
 arch=("any")
 url="http://csvkit.readthedocs.org"
@@ -23,13 +23,21 @@ depends=(
 optdepends=(
     'ipython: nicer command-line for csvpy utility'
   )
-makedepends=("python-setuptools")
+makedepends=(
+    'python-setuptools'
+    'python-sphinx>=1.2.2'
+    'python-sphinx_rtd_theme>=0.1.6'
+  )
 source=("https://github.com/wireservice/csvkit/archive/${pkgver}.tar.gz")
 sha256sums=('4ca64988a648c845ad2f02a19d5736c3a2650a44b1dd8952b97b528c7f3e2a97')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
+
+    python setup.py build_sphinx
+    mkdir -p "$pkgdir/usr/share/doc"
+    cp -rv "$srcdir/$pkgname-$pkgver/build/sphinx/html" "$pkgdir/usr/share/doc/$pkgname"
 }
 
 check() {
