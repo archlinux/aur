@@ -2,8 +2,8 @@
 
 pkgname=ant-nebula-theme-git
 _pkgname=Ant-Nebula
-pkgver=59.26abba4
-pkgrel=1
+pkgver=r59.26abba4
+pkgrel=2
 pkgdesc="Nebula variant of the Ant theme"
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
   	cd "${srcdir}/${_pkgname}"
 
-	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
