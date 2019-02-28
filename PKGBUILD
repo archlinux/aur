@@ -2,7 +2,7 @@
 
 pkgname=sonarrannounced-git
 pkgver=r110.57c6c87
-pkgrel=3
+pkgrel=4
 pkgdesc="Manage and download subtitles for Sonarr and Radarr."
 arch=('any')
 url="https://github.com/l3uddz/sonarrAnnounced"
@@ -20,6 +20,7 @@ depends=('python'
          'python-pythreadworker')
 
 makedepends=('git')
+
 source=("git+https://github.com/l3uddz/sonarrAnnounced"
         'sonarrannounced.service'
         'sonarrannounced.sysusers'
@@ -38,14 +39,14 @@ pkgver() {
 package() {
   install -d -m 755 "${pkgdir}/usr/lib/sonarrannounced"
 
-  # Remove .git folder.
-  #rm -rf "${srcdir}/sonarrAnnounced/.git"
-
-  # Remove unneeded systemd service file
+  # Remove unneeded systemd service file.
   rm -rf "${srcdir}/sonarrAnnounced/systemd"
 
-
+  # Copy the guts into place.
   cp -dpr --no-preserve=ownership "${srcdir}/sonarrAnnounced/"* "${pkgdir}/usr/lib/sonarrannounced"
+
+  # Copy the default settings file to the correct name.
+  cp -dp --no-preserve=ownership "${srcdir}/sonarrAnnounced/settings.cfg.default" "${pkgdir}/usr/lib/sonarrannounced/settings.cfg"
 
   install -D -m 644 "${srcdir}/sonarrannounced.service" "${pkgdir}/usr/lib/systemd/system/sonarrannounced.service"
   install -D -m 644 "${srcdir}/sonarrannounced.sysusers" "${pkgdir}/usr/lib/sysusers.d/sonarrannounced.conf"
