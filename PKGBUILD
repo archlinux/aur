@@ -2,7 +2,7 @@
 pkgname=raspberrypi-userland-aarch64-git
 pkgver=r677.e5803f2
 pkgrel=1
-pkgdesc=""
+pkgdesc="aarch64-compatible bits of /opt/vc for Raspberry Pi (vcgencmd, tvservice, etc.)" 
 arch=('aarch64')
 url="https://github.com/raspberrypi/userland"
 license=('custom')
