@@ -1,15 +1,17 @@
 # Maintainer: EHfive <eh5@sokka.cn>
 
 pkgname=pulseaudio-modules-bt-git
-pkgver=r100.6a4121c5
+pkgver=r102.8a58314e
 pkgrel=1
 pkgdesc="PulseAudio Bluetooth modules with SBC, AAC, APTX, APTX-HD, Sony LDAC (A2DP codec) support"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/EHfive/pulseaudio-modules-bt"
 license=('LGPL')
-depends=("pulseaudio>=12.0" "bluez>=5.0" "bluez-libs>=5.0" "sbc" "libfdk-aac")
-makedepends=("cmake>=3.0" "make" "pkg-config" "libavcodec.so>=58-64" "libavutil.so>=56-64" "libtool" "libldac" "git")
-optdepends=("libavcodec.so>=58-64" "libavutil.so>=56-64" "libldac")
+depends=("pulseaudio>=12.0" "bluez" "bluez-libs" "sbc" "libfdk-aac.so")
+makedepends=("cmake>=3.0" "libavcodec.so>=58" "libldac" "git")
+optdepends=("libavcodec.so>=58: aptX Classic, aptX HD support"
+            "libldac: LDAC support"
+            "fdk-aac-free: alternative library for AAC support")
 provides=("pulseaudio-bluetooth")
 conflicts=("pulseaudio-bluetooth")
 
