@@ -24,6 +24,7 @@ pkgbase = wps-office-stable
 	optdepends = curl: An URL retrieval utility and library
 	optdepends = ttf-wps-fonts: Symbol fonts required by wps-office
 	optdepends = ttf-ms-fonts: Microsft Fonts recommended for wps-office
+	provides = wps-office
 	conflicts = kingsoft-office
 	conflicts = wps-office
 	options = !emptydirs

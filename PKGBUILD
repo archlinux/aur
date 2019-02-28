@@ -29,18 +29,10 @@ source_x86_64=("http://kdl.cc.ksosoft.com/wps-community/download/6757/wps-office
 
 
 
-
-
-
-
-PKGEXT=".pkg.tar"
-
 prepare() {
     cd wps-office_${pkgver}_$_archext
 
     sed -i 's|/opt/kingsoft/wps-office|/usr/lib|' wps wpp et
-#   sed -i 's|/office6/${gApp}  ${gOptExt}|/office6/${gApp} -style gtk+ ${gOptExt}|' wps
-#   sed -i 's|/office6/${gApp} ${gOptExt}|/office6/${gApp} -style gtk+ ${gOptExt}|' wpp et
 }
 
 package() {
@@ -61,10 +53,8 @@ package() {
     install -d "${pkgdir}/usr/share/mime"
     cp -r resource/mime/* "${pkgdir}/usr/share/mime"
 
-    #cp -r "$srcdir/usr/share" "${pkgdir}/usr/"
-
     install -d "${pkgdir}/usr/share/fonts/wps-office"
-    #cp -r fonts/* "${pkgdir}/usr/share/fonts/wps-office"
+
 
     install -Dm644 office6/mui/default/EULA.txt "${pkgdir}/usr/share/licenses/$pkgname/EULA.txt"
 }
