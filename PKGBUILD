@@ -3,17 +3,16 @@
 pkgname=proton-git
 _pkgname=proton
 pkgver=7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 arch=('x86_64')
 url="https://github.com/ValveSoftware/Proton/"
 license=('BSD')
 depends=('python2'
-		 'wine')
+	 'wine')
 optdepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-replaces=("${_pkgname}")
 source=("${pkgname}::git+https://github.com/ValveSoftware/Proton.git")
 sha512sums=('SKIP')
 
