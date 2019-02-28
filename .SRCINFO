@@ -1,11 +1,12 @@
 pkgbase = cajarename
 	pkgdesc = Batch renaming extension for Caja
 	pkgver = 18.7.28.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tari.in/www/software/cajarename
 	install = cajarename.install
 	arch = any
 	license = GPL3
+	makedepends = bzr
 	makedepends = python2-setuptools
 	makedepends = python2-polib
 	depends = caja
@@ -15,8 +16,8 @@ pkgbase = cajarename
 	depends = gtk3
 	provides = caja-rename
 	conflicts = caja-rename
-	source = https://launchpad.net/~robert-tari/+archive/ubuntu/main/+sourcefiles/cajarename/18.7.28.25~ubuntu19.04.1/cajarename_18.7.28.25~ubuntu19.04.1.tar.xz
-	sha256sums = 43795299b368220cb93f8b85b5db71e9697e019b8dc3d052e9414e9708e37323
+	source = bzr+lp:/cajarename/trunk
+	md5sums = SKIP
 
 pkgname = cajarename
 
