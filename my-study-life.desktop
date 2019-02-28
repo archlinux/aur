@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=My Study Life
+Comment=A free cross platform planner app for students, teachers and lecturers designed to make your study life easier to manage.
+Exec=my-study-life
+Icon=my-study-life
+Encoding=UTF-8
+StartupWMClass=my-study-life
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Application;Education;
