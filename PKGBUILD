@@ -4,7 +4,7 @@
 _pkgname=agate-dbf
 pkgname=python-$_pkgname
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Adds read support for dbf files to agate"
 arch=('any')
 url="http://agate-dbf.readthedocs.org/"
@@ -31,5 +31,9 @@ package() {
   cp -rv "$srcdir/$_pkgname-$pkgver/build/sphinx/html" "$pkgdir/usr/share/doc/$_pkgname"
 }
 
+check() {
+    cd "$srcdir/$_pkgname-$pkgver"
+    python setup.py test --test-suite=tests
+}
 
 # vim:set ts=2 sw=2 et:

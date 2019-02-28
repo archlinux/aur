@@ -1,7 +1,7 @@
 pkgbase = python-agate-dbf
 	pkgdesc = Adds read support for dbf files to agate
 	pkgver = 0.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://agate-dbf.readthedocs.org/
 	arch = any
 	license = MIT
