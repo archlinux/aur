@@ -3,13 +3,14 @@
 _pkgname="libvolatilestream"
 
 pkgname="$_pkgname-git"
-pkgver=r3.6b564fc
+pkgver=r4.c2812a8
 pkgrel=1
 pkgdesc="volatile stream = stdio FILE* stream as a temporary dynamically allocated (and deallocated) memory buffer"
 arch=('any')
 url="https://github.com/rd235/$_pkgname"
 license=('GPL2')
 provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("git+$url.git")
 md5sums=('SKIP')
 
