@@ -1,6 +1,6 @@
 # Maintainer: Tilman Vatteroth <tilman.vatteroth@udo.edu>
 pkgname=uniprint-git
-pkgver=f86aa96
+pkgver=a0a8eb9
 pkgrel=1
 pkgdesc="A shell script to print on the printers on IRB printers of the TU Dortmund"
 arch=(any)
