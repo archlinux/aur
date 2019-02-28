@@ -4,7 +4,8 @@ After=network.target
 
 [Service]
 Type=forking
-ExecStart=/opt/activemq/bin/linux-x86-64/activemq start
+#ExecStart=/opt/activemq/bin/linux-x86-64/activemq start
+ExecStart=/usr/bin/java -jar /opt/activemq/bin/activemq.jar start
 PIDFile=/run/activemq.pid
 
 [Install]
