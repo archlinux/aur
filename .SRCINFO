@@ -1,7 +1,7 @@
 pkgbase = vuos-git
 	pkgdesc = view based o.s.
 	pkgver = r225.f4fdd44
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/virtualsquare/vuos
 	arch = any
 	groups = view-os
@@ -12,6 +12,7 @@ pkgbase = vuos-git
 	depends = strcase-git
 	depends = libvolatilestream-git
 	depends = vdeplug4-git
+	depends = userbindmount-git
 	provides = vuos
 	conflicts = vuos
 	source = git+https://github.com/virtualsquare/vuos.git
