@@ -1,0 +1,17 @@
+pkgbase = uniprint-git
+	pkgdesc = Prints File on printer printer as user user logging in on host host
+	pkgver = f86aa96
+	pkgrel = 1
+	url = https://github.com/mrdrogdrog/uniprint
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = openssh
+	provides = uniprint
+	conflicts = uniprint
+	source = uniprint-git::git+https://github.com/mrdrogdrog/uniprint.git
+	sha512sums = SKIP
+
+pkgname = uniprint-git
+
