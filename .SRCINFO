@@ -1,5 +1,5 @@
 pkgbase = elasticsearch-ingest-geoip
-	pkgdesc = Ingest processor that extracts information from a user agent
+	pkgdesc = Ingest processor that uses looksup geo data based on ip adresses using the Maxmind geo database
 	pkgver = 6.6.1
 	pkgrel = 1
 	url = https://www.elastic.co/guide/en/elasticsearch/plugins/current/ingest-geoip.html
