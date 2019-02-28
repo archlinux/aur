@@ -4,7 +4,7 @@
 _pkgname=agate
 pkgname=python-$_pkgname
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A data analysis library that is optimized for humans instead of machines"
 arch=('any')
 url="http://agate.readthedocs.org/"
@@ -21,6 +21,8 @@ depends=(
   )
 makedepends=(
     'python-setuptools'
+    'python-sphinx>=1.2.2'
+    'python-sphinx_rtd_theme>=0.1.6'
   )
 source=("https://github.com/wireservice/agate/archive/${pkgver}.tar.gz")
 sha256sums=('0397d3dcc6ae78b8289294b3bca15b2a7328b9015aed8841bc650700fe2a6cad')
@@ -28,6 +30,10 @@ sha256sums=('0397d3dcc6ae78b8289294b3bca15b2a7328b9015aed8841bc650700fe2a6cad')
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
+
+  python setup.py build_sphinx
+  mkdir -p "$pkgdir/usr/share/doc"
+  cp -rv "$srcdir/$_pkgname-$pkgver/build/sphinx/html" "$pkgdir/usr/share/doc/$_pkgname"
 }
 
 # vim:set ts=2 sw=2 et:

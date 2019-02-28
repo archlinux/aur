@@ -1,11 +1,13 @@
 pkgbase = python-agate
 	pkgdesc = A data analysis library that is optimized for humans instead of machines
 	pkgver = 1.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://agate.readthedocs.org/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-sphinx>=1.2.2
+	makedepends = python-sphinx_rtd_theme>=0.1.6
 	depends = python
 	depends = python-babel>=2.0
 	depends = python-slugify>=1.2.1
