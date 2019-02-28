@@ -1,0 +1,20 @@
+pkgbase = gotify-cli
+	pkgdesc = A command line interface for pushing messages to gotify/server.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/gotify/cli
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	makedepends = go-pie
+	makedepends = make
+	provides = gotify-cli
+	conflicts = gotify-cli-git
+	source = https://github.com/gotify/cli/archive/v1.2.0.tar.gz
+	sha256sums = 3b3867b08dc7e3e9c995571e36bc8a64876c7c6b91064e92babed7e4c1fda987
+
+pkgname = gotify-cli
+
