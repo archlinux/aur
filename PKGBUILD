@@ -1,15 +1,15 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
-pkgname='lowdown'
+pkgname=lowdown
 pkgdesc='Markdown translator producing HTML5 and roff documents in the ms and man formats'
-pkgver='0.4.1'
-pkgrel='1'
-license=('custom:BSD')
+pkgver=0.4.2
+pkgrel=1
+license=(custom:BSD)
 url='https://kristaps.bsd.lv/lowdown/'
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 depends=(glibc)
 makedepends=(libdiff)
 source=("${url}/snapshots/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('9d2c026fa319f7b9f5b2c11b67ec5ec97a70a5cf3560c55545e571c929c3a8253014fa219dc9a78e59472a0c94472d218630f214cf03276a3cb7065c5aa54ef6')
+sha512sums=('c9234c4013a12a5d9aeaa52210afd2e1df9ce2aa44ab0e25e8c7d95c08ae601728859e153f99fff2c9eaa50ff2ed374e07c4f39fa2afb0c9560cd3c1a9dde75a')
 
 build () {
 	cd "${pkgname}-${pkgver}"
