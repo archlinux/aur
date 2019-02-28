@@ -7,7 +7,6 @@ pkgbase = libstropt-git
 	license = GPL2
 	provides = libstropt
 	conflicts = libstropt
-	replaces = libstropt
 	source = git+https://github.com/rd235/libstropt.git
 	md5sums = SKIP
 

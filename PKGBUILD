@@ -11,7 +11,6 @@ url="https://github.com/rd235/$_pkgname"
 license=('GPL2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-replaces=("$_pkgname")
 source=("git+$url.git")
 md5sums=('SKIP')
 
