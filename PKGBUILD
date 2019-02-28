@@ -1,3 +1,5 @@
+# Maintainer: Jeff Henson <jeff at henson dot io>
+
 pkgname=origin-client
 pkgdesc="Openshift client"
 pkgver=3.11.0
