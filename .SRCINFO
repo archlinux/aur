@@ -1,6 +1,6 @@
 pkgbase = gemini
 	pkgdesc = Graphical audio player
-	pkgver = 1.13.3
+	pkgver = 1.13.4
 	pkgrel = 1
 	url = https://github.com/blooser/gemini
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = gemini
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = python
-	source = https://github.com/blooser/gemini/archive/v1.13.3.tar.gz
-	md5sums = 6fb6559423ef96cb7adf069024fea128
+	source = https://github.com/blooser/gemini/archive/v1.13.4.tar.gz
+	md5sums = 5422f435894c48e83bc2bdf23fd0fe3f
 
 pkgname = gemini
 
