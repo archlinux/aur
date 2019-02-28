@@ -2,8 +2,8 @@
 # Contributor: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=kubernetes-helm
-pkgver=2.12.3
-pkgrel=2
+pkgver=2.13.0
+pkgrel=1
 pkgdesc="A tool to manage Kubernetes charts"
 arch=('i686' 'x86_64')
 url="https://github.com/helm/helm"
