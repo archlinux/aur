@@ -1,11 +1,11 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=pytype
-pkgver=2019.01.30
+pkgver=2019.02.13
 pkgrel=1
 pkgdesc="Python type inferencer"
 arch=('any')
-url="https://github.com/google/pytype"
+url="https://google.github.io/pytype"
 license=('APACHE')
 provides=('pytype')
 depends=(
@@ -17,6 +17,7 @@ makedepends=(
   'python' 'python-setuptools' 'python-wheel'
   'make' 'gcc' 'cmake'
   'bison>=3.0.2' 'flex>=2.5.35'
+  'fakeroot'
 )
 optdepends=(
   'python2: for target code of Python 2.7 support'
@@ -31,7 +32,7 @@ source=(
   'without-ninja-python-distributions.patch'
 )
 sha256sums=(
-  '59fadc0854c5b253a6f8fe7cbdbfda99a4dcad35f52915ba79435e5f30e12ac0'
+  '6ac7f9daa5916698b21e93e40013b04008152104f08d8e5a29d3a60e7a9b26f4'
   'ebc3b63747875586f17b967ad2dae6d2a404adb5814612200217f39074377f9a'
   '891d732c77eec9fb57727cd99990a25455d6d5859b1fde107a332c5e238cc9e7'
   '6e634f400fcbe30ac6f5f8e476eef8b3cb8ae7d801e01b81bab04826c6d2402e'
