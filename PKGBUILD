@@ -1,4 +1,5 @@
-# Maintainer: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
+# Maintainer:  Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
+# Contributor: Devin Cofer <ranguvar[at]ranguvar[dot]io>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Maxwell Anselm <silverhammermba+aur@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
@@ -7,28 +8,29 @@
 
 pkgname=firefox-hg
 _pkgname=firefox
-pkgver=r445452.d3d642b62488
+pkgver=r510977.4470bbd6ad9d
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
-         ffmpeg nss hunspell-en_US sqlite ttf-font libpulse libvpx icu)
+         ffmpeg nss sqlite ttf-font libpulse libvpx icu)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
-             python nodejs python2-psutil cbindgen)
+             python nodejs python2-psutil cbindgen nasm)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
-            'speech-dispatcher: Text-to-Speech')
+            'speech-dispatcher: Text-to-Speech'
+            'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs !makeflags !strip)
 _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('firefox')
 provides=('firefox')
-source=('mozilla-unified::hg+https://hg.mozilla.org/mozilla-central/'
+source=("hg+$_repo"
         $_pkgname.desktop
-        firefox-symbolic.svg)
+        $_pkgname-symbolic.svg)
 sha256sums=('SKIP'
             '677e1bde4c6b3cff114345c211805c7c43085038ca0505718a11e96432e9811a'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
@@ -51,10 +53,17 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p mozbuild
   cd mozilla-unified
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
+
+  #
+  # If you want to disable LTO/PGO (compile too long, it needs working
+  # xorg-server-xvfb), delete the lines below beginning with
+  # `ac_add_options --enable-lto' and ending with 'export RANLIB=llvm-ranlib`
+  #
 
   cat >.mozconfig <<END
 ac_add_options --enable-application=browser
@@ -64,6 +73,14 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
+
+ac_add_options --enable-lto
+export MOZ_PGO=1
+export CC=clang
+export CXX=clang++
+export AR=llvm-ar
+export NM=llvm-nm
+export RANLIB=llvm-ranlib
 
 # Branding
 ac_add_options --enable-official-branding
@@ -102,12 +119,13 @@ END
 build() {
   cd mozilla-unified
 
-  #export MOZ_PGO=1
-  
   export MOZ_SOURCE_REPO="$_repo"
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
 
+  # LTO/PGO needs more open files
+  ulimit -n 4096
+ 
   ./mach build
   ./mach buildsymbols
 }
@@ -131,9 +149,6 @@ pref("browser.shell.checkDefaultBrowser", false);
 // Don't disable our bundled extensions in the application directory
 pref("extensions.autoDisableScopes", 11);
 pref("extensions.shownSelectionUI", true);
-
-// Opt all of us into e10s, instead of just 50%
-pref("browser.tabs.remote.autostart", true);
 END
 
   _distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
