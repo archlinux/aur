@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=gnome-shell-extension-miniview-git
-pkgver=31.529d84d
-pkgrel=1
+pkgver=r37.a226f36
+pkgrel=2
 pkgdesc="GNOME Shell plugin that shows a preview window overlay"
 arch=('any')
 url="https://github.com/iamlemec/miniview"
@@ -15,13 +15,13 @@ sha256sums=('SKIP')
 pkgver() {
 	cd ${pkgname}
 
-	echo $(git rev-list --count master).$(git rev-parse --short master)
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
 	cd ${pkgname}
 
-    _extid="miniview@thesecretaryofwar.com"
+	_extid="miniview@thesecretaryofwar.com"
 	_extpath="${pkgdir}/usr/share/gnome-shell/extensions/${_extid}"
 
 	install -dm755 "${_extpath}"
