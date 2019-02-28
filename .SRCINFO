@@ -1,11 +1,12 @@
 pkgbase = aarch64-linux-gnu-openblas-lapack-openmp
 	pkgdesc = Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)
 	pkgver = 0.3.4
-	pkgrel = 14
+	pkgrel = 15
 	url = http://www.openblas.net/
 	arch = any
 	license = BSD
 	makedepends = perl
+	makedepends = aarch64-linux-gnu-gcc
 	depends = gcc-libs
 	provides = aarch64-linux-gnu-openblas
 	provides = aarch64-linux-gnu-blas=3.8.0
