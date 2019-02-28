@@ -1,16 +1,16 @@
 # Maintainer: EHfive <eh5@sokka.cn>
 
 pkgname=libldac-git
-pkgver=2.0.2.2.r0.g7edd608
+pkgver=2.0.2.3.r0.gfbffba4
 pkgrel=1
 pkgdesc="AOSP libldac dispatcher "
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/EHfive/ldacBT"
 license=('Apache 2.0')
 depends=()
-makedepends=("cmake>=3.0" "make" "git")
+makedepends=("cmake>=3.0" "git")
 optdepends=()
-provides=("libldac" "ldacBT" "ldacBT_enc.so" "ldacBT_abr.so")
+provides=("libldac" "ldacBT" "libldacBT_enc.so" "libldacBT_abr.so")
 conflicts=("libldac")
 source=("git+https://github.com/EHfive/ldacBT.git"
         "git+https://gitlab.com/eh5/libldac.git")
@@ -24,8 +24,9 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/ldacBT"
-    rm -r libldac
-    ln -sf -T "../libldac" "libldac"
+    git submodule init
+    git config submodule.libldac.url "$srcdir/libldac"
+    git submodule update --recursive
 }
 
 build() {
