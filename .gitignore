@@ -1,0 +1,9 @@
+.*
+*~
+*.log
+*.tar*
+/pkg
+/src
+!.SRCINFO
+!.git*
+!.mailmap
