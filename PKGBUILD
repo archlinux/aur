@@ -1,7 +1,7 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='speculum'
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc='Yet another python mirror list tool'
 arch=('any')
