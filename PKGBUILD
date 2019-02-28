@@ -1,7 +1,7 @@
 pkgbase=pywbem
 pkgname=('python-pywbem'
          'python2-pywbem')
-pkgver=0.12.6
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Python WBEM Client and Provider Interface"
 arch=('any')
@@ -10,7 +10,7 @@ license=('LGPLv2.1+')
 makedepends=('python3' 'python-pip' 'python-yaml' 'python-ply'
              'python2' 'python2-pip' 'python2-yaml' 'python2-ply')
 source=("https://github.com/$pkgbase/$pkgbase/archive/${pkgver}/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('de429cb4a7b9a3937998055fde301c19ae333e4c8e852c77f404c07f113534a4')
+sha256sums=('ae65a33516c36a76bdde73b9e637824080f1ac7eaad84f982d15f4c72245b5c9')
 depends=("python2-m2crypto" "python-six" "python-ply" "python2-six"
          "python2-ply" "python-pyaml" "python2-pyaml" "python2-pbr" "python-pbr")
 
