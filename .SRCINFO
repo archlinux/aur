@@ -1,11 +1,13 @@
 pkgbase = python-agate-sql
 	pkgdesc = Adds SQL read/write support to agate
 	pkgver = 0.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://agate-sql.readthedocs.org/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-sphinx>=1.2.2
+	makedepends = python-sphinx_rtd_theme>=0.1.6
 	depends = python
 	depends = python-agate>=1.5.0
 	depends = python-sqlalchemy>=1.0.8
