@@ -3,28 +3,24 @@
 
 pkgbase='ovirt-guest-agent'
 pkgname=("${pkgbase}")
-pkgver="1.0.15"
-pkgrel='2'
+pkgver="1.0.16"
+pkgrel='1'
 pkgdesc='The oVirt Guest Agent'
 arch=('x86_64')
 url="https://ovirt.org/develop/developer-guide/vdsm/guest-agent"
-makedepends=('pam' 'libtool' 'python2' 'python2-pycodestyle' 'patch' 'autoconf')
-depends=('qemu-guest-agent' 'python2' 'python2-dbus' 'python2-gobject2' 'dbus-glib' 'python2-ethtool' 'usermode')
+makedepends=('python2-pycodestyle' 'autoconf')
+depends=('qemu-guest-agent' 'python2-dbus' 'python2-gobject2' 'dbus-glib' 'python2-ethtool' 'usermode')
 pkgdesc='The oVirt Guest Agent'
 license=('ASL 2.0')
 install="${pkgbase}.install"
 source=("https://github.com/oVirt/${pkgbase}/archive/${pkgver}.tar.gz"
-	"python2-arch.patch"
-	"${pkgbase}-1.0.13_arch_pycodestyle.patch"
 	"39-ovirt-memory-hotplug.rules"
 	"console.apps_diskmapper"
 	"pam.d_diskmapper"
 	"${pkgbase}.tmpfiles"
 	"${pkgbase}.sysusers"
 	"${pkgbase}.service")
-sha256sums=('8c6aecd168f538c7840eba4c6747f079e3422fab3f1ebc21f7c17986a53f74d8'
-            '95c162b584dd137296bcec70d14079d4b93d10d8542a87bd8f1cd6ad01e4b140'
-            'ebe724b39b78a3bc21a998884b188e0efdaa2fc3ea3416fb4e4e273629394e24'
+sha256sums=('299ff836c7dd3515d16e41c0af0d26c5791dedbe3279a7046ac43822a9ffaa36'
             '78994d3cfe8f293aab84692c9d181b2c20caeb47e9854bb9377f2199b45984fb'
             '3575b027e6364d5b0d664cff9f9bc6c27a6a57691f7f188c3cf281663ccc3c0d'
             'f9afb37eb23e77cf59d34f8783d3cacc509ed9400936c3dc95d6db629b3b58a1'
@@ -35,9 +31,6 @@ backup=("etc/${pkgbase}.conf")
 
 prepare() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
-  
-  patch -p1 -i "${srcdir}/${pkgbase}-1.0.13_arch_pycodestyle.patch"
-  patch -p1 -i "${srcdir}/python2-arch.patch"
 
   autoreconf -fvi
   PYTHON=/usr/bin/python2 ./configure \
