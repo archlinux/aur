@@ -1,0 +1,14 @@
+pkgbase = python-pytest-faulthandler
+	pkgdesc = pytest plugin that activates the fault handler module for tests
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/pytest-dev/pytest-faulthandler
+	arch = any
+	license = MIT
+	depends = python-pytest
+	noextract = pytest_faulthandler-1.5.0-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/p/pytest-faulthandler/pytest_faulthandler-1.5.0-py2.py3-none-any.whl
+	sha256sums = 461351d67a8f09cd2aa8b343b50ce58c301c8c206fcbf7483ee17c109d6a5ddb
+
+pkgname = python-pytest-faulthandler
+
