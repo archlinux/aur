@@ -28,8 +28,6 @@ pkgver() {
 
 prepare() {
           cd EQL5/src/
-          sed -i 's:/usr/local/bin:/usr/bin:' *.pro
-	  sed -i 's:/usr/local/lib:/usr/lib:' *.pro
 }
 
 build() {
@@ -37,7 +35,6 @@ build() {
         ecl -shell make.lisp
         qmake eql5.pro
         make
-	sed -i 's:/usr/local/include:/usr/include:' *.pro
 }
 
 package() {
