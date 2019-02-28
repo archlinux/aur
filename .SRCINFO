@@ -1,0 +1,21 @@
+pkgbase = vuos-git
+	pkgdesc = view based o.s.
+	pkgver = r225.f4fdd44
+	pkgrel = 1
+	url = https://github.com/virtualsquare/vuos
+	arch = any
+	groups = view-os
+	license = GPL2
+	depends = purelibc-git
+	depends = s2argv-execs-git
+	depends = libstropt-git
+	depends = strcase-git
+	depends = libvolatilestream-git
+	depends = vdeplug4-git
+	provides = vuos
+	conflicts = vuos
+	source = git+https://github.com/virtualsquare/vuos.git
+	md5sums = SKIP
+
+pkgname = vuos-git
+
