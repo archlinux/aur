@@ -4,7 +4,7 @@
 # Contributor: Jove Yu <yushijun110 [at] gmail.com>
 # Contributor: Ariel AxionL <axionl at aosc dot io>
 
-pkgname=wps-office
+pkgname=wps-office-stable
 pkgver=10.1.0.6757
 #_pkgver=10.1.0.5707~a21
 pkgrel=1
@@ -17,15 +17,22 @@ optdepends=('cups: for printing support'
             'libjpeg-turbo: JPEG image codec support'
             'pango: for complex (right-to-left) text support'
             'curl: An URL retrieval utility and library'
-            'ttf-wps-fonts: Symbol fonts required by wps-office')
-conflicts=('kingsoft-office')
+            'ttf-wps-fonts: Symbol fonts required by wps-office'
+            'ttf-ms-fonts: Microsft Fonts recommended for wps-office')
+conflicts=('kingsoft-office' 'wps-office')
+provides=('wps-office')
 options=('!emptydirs')
 install=${pkgname}.install
 [[ "$CARCH" = "i686" ]] && _archext=x86 || _archext=x86_64
 source_i686=("http://kdl.cc.ksosoft.com/wps-community/download/6757/wps-office_${pkgver}_x86.tar.xz")
 source_x86_64=("http://kdl.cc.ksosoft.com/wps-community/download/6757/wps-office_${pkgver}_x86_64.tar.xz")
-sha1sums_i686=('3c6095380c32252afd7838f295259b14a0bf726e')
-sha1sums_x86_64=('03a781599dfcf001fc3bcf1d49699bd1a44aaceb')
+
+
+
+
+
+
+
 PKGEXT=".pkg.tar"
 
 prepare() {
