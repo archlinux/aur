@@ -1,25 +1,27 @@
 # Maintainer: arkhan <arkhan@disroot.org>
 pkgname=python-ueberzug
 _pkgname=ueberzug
-pkgver=git
+pkgver=18.1.0
 pkgrel=1
 pkgdesc="ueberzug is an python script which aims to replace w3mimgdisplay"
 arch=('any')
 url=""
 license=('GPL')
-depends=("python" "python-xlib")
+depends=("libxext" "python-pillow-simd" "python" "python-xlib" "python-docopt" "python-psutil" "python-attrs")
+makedepends=("python" "python-setuptools")
+conflicts=("python-${_pkgname}-git")
 makedepends=("python")
 url='https://github.com/seebye/ueberzug'
-source=('git+https://github.com/seebye/ueberzug')
-md5sums=('SKIP')
+source=("https://github.com/seebye/$_pkgname/archive/$pkgver.tar.gz")
+md5sums=('aab34db9500ce8bb960c061bf2cdf507')
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --prefix=/usr --root "${pkgdir}" || return 1
 }
 
