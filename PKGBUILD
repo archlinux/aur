@@ -1,3 +1,5 @@
+# Maintainer: Jeff Henson <jeff at henson dot io>
+
 pkgname=protonvpn-cli-git
 pkgver=r158.9072bab
 pkgrel=2
