@@ -27,11 +27,9 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/pulseaudio-modules-bt"
-    rm -r pa libldac
+    rm -r pa
     ln -sf -T "../pulseaudio" "pa"
-    ln -sf -T "../libldac" "libldac"
-    cd "pa"
-    git checkout v`pkg-config libpulse --modversion|sed 's/[^0-9.]*\([0-9.]*\).*/\1/'`
+    git -C pa checkout v`pkg-config libpulse --modversion|sed 's/[^0-9.]*\([0-9.]*\).*/\1/'`
 }
 
 build() {
