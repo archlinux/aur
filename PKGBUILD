@@ -2,7 +2,7 @@
 pkgname=uniprint-git
 pkgver=f86aa96
 pkgrel=1
-pkgdesc="Prints File on printer printer as user user logging in on host host"
+pkgdesc="A shell script to print on the printers on IRB printers of the TU Dortmund"
 arch=(any)
 url="https://github.com/mrdrogdrog/uniprint"
 license=('MIT')

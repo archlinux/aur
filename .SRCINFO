@@ -1,5 +1,5 @@
 pkgbase = uniprint-git
-	pkgdesc = Prints File on printer printer as user user logging in on host host
+	pkgdesc = A shell script to print on the printers on IRB printers of the TU Dortmund
 	pkgver = f86aa96
 	pkgrel = 1
 	url = https://github.com/mrdrogdrog/uniprint
