@@ -2,8 +2,8 @@
 
 pkgname=gnome-shell-extension-mmod-panel-git
 _gitname=mmod-panel
-pkgver=40.40a58cd
-pkgrel=1
+pkgver=r40.40a58cd
+pkgrel=2
 pkgdesc="Create a customizable panel for Gnome 3"
 arch=('any')
 url="https://github.com/RyanGipson/mmod-panel"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd $_gitname
 
-	echo $(git rev-list --count master).$(git rev-parse --short master)
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
