@@ -8,7 +8,7 @@ pkgbase=linux-aarch64-raspberrypi
 _srcname=linux
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for RaspberryPi 3"
-pkgver=4.19.19
+pkgver=4.19.25.g7f26b4456f70
 pkgrel=1
 arch=('aarch64')
 url="https://github.com/raspberrypi/linux"
@@ -20,23 +20,19 @@ source=("git+https://github.com/raspberrypi/linux.git#branch=rpi-4.19.y"
         'linux.preset'
         '99-linux.hook')
 md5sums=('SKIP'
-         '1dd1a24cd129d9d53b77ef217f67557d'
+         '8d69065f716d419a350953ee971b8775'
          '06e904bf795a75f5bc74b8b000780467'
          '1d4477026533efaa0358a40855d50a83')
+
+pkgver() {
+  cd "${srcdir}/${_srcname}"
+  printf "%s.g%s" "$(make kernelversion)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   cd "${srcdir}/${_srcname}"
 
-  # reset to a certain version
-  git reset --hard e9ec52ce5074e21d57effa0b0ea7644d69b13ea5
-
-  # Dirty hack to get rid of the + in kernel version
-  rm -rf .git
-
   cat "${srcdir}/config" > ./.config
-
-  # add pkgrel to extraversion
-  sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -44,6 +40,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_srcname}"
+
+  # Dirty hack to get rid of the + in kernel version
+  mv .git .git_1
+
+  # add pkgrel to extraversion
+  sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile
 
   # get kernel version
   make prepare
