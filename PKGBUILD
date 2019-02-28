@@ -1,11 +1,11 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=sonarrannounced-git
-pkgver=r110.57c6c87
-pkgrel=4
+pkgver=r158.67eef30
+pkgrel=1
 pkgdesc="Manage and download subtitles for Sonarr and Radarr."
 arch=('any')
-url="https://github.com/l3uddz/sonarrAnnounced"
+url="https://github.com/dawtmaytrikx/Announced"
 license=('GPL3')
 depends=('python'
          'python-flask'
@@ -21,7 +21,7 @@ depends=('python'
 
 makedepends=('git')
 
-source=("git+https://github.com/l3uddz/sonarrAnnounced"
+source=("git+https://github.com/dawtmaytrikx/Announced"
         'sonarrannounced.service'
         'sonarrannounced.sysusers'
         'sonarrannounced.tmpfiles')
@@ -32,7 +32,7 @@ sha256sums=('SKIP'
             'a4f91723507f1c356282b26558096994f3d4e2a5d49a012e0441fc4d7ea60aff')
 
 pkgver() {
-  cd "sonarrAnnounced"
+  cd "Announced"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -40,13 +40,13 @@ package() {
   install -d -m 755 "${pkgdir}/usr/lib/sonarrannounced"
 
   # Remove unneeded systemd service file.
-  rm -rf "${srcdir}/sonarrAnnounced/systemd"
+  rm -rf "${srcdir}/Announced/systemd"
 
   # Copy the guts into place.
-  cp -dpr --no-preserve=ownership "${srcdir}/sonarrAnnounced/"* "${pkgdir}/usr/lib/sonarrannounced"
+  cp -dpr --no-preserve=ownership "${srcdir}/Announced/"* "${pkgdir}/usr/lib/sonarrannounced"
 
   # Copy the default settings file to the correct name.
-  cp -dp --no-preserve=ownership "${srcdir}/sonarrAnnounced/settings.cfg.default" "${pkgdir}/usr/lib/sonarrannounced/settings.cfg"
+  cp -dp --no-preserve=ownership "${srcdir}/Announced/settings.cfg.default" "${pkgdir}/usr/lib/sonarrannounced/settings.cfg"
 
   install -D -m 644 "${srcdir}/sonarrannounced.service" "${pkgdir}/usr/lib/systemd/system/sonarrannounced.service"
   install -D -m 644 "${srcdir}/sonarrannounced.sysusers" "${pkgdir}/usr/lib/sysusers.d/sonarrannounced.conf"
