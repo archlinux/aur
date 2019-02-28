@@ -1,17 +1,14 @@
 pkgbase = python-pyzbar
 	pkgdesc = A ctypes-based wrapper around the zbar barcode reader
-	pkgver = 0.1.7
-	pkgrel = 2
-	url = https://github.com/NaturalHistoryMuseum/pyzbar/
-	arch = x86_64
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/NaturalHistoryMuseum/python-pyzbar/
+	arch = any
 	license = MIT
-	makedepends = python-setuptools
 	depends = zbar
-	provides = pyzbar
-	conflicts = pyzbar
-	replaces = pyzbar
-	source = python-pyzbar-0.1.7.tar.gz::https://github.com/NaturalHistoryMuseum/pyzbar/archive/v0.1.7.tar.gz
-	sha512sums = 74b56658db7a8dc2d7a716992c001ec52a2befc9e31c41ecf7e5e1f277d4188963ef79a2433fc4befdd15d2f6e3f47c4f064582b530eef028c55e07e2c88dbbe
+	depends = python-setuptools
+	source = python-pyzbar-0.1.8.tar.gz::https://github.com/NaturalHistoryMuseum/python-pyzbar/archive/v0.1.8.tar.gz
+	sha512sums = e186c7a2f29ec107f66b87a2901e128291747ef7a2159675f3170aef2a3a4b1f4cb4319da830d577c986e20abb3f2935e005361cc98857b0e1b880fb4cf40233
 
 pkgname = python-pyzbar
 

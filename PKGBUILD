@@ -1,29 +1,23 @@
 # Maintainer: Alex Zose <alexander[dot]zosimidis[at]gmail[dot]com>
 
-pkgname=python-pyzbar
-pkgver=0.1.7
-pkgrel=2
+pkgname=('python-pyzbar')
+pkgver=0.1.8
+pkgrel=1
 pkgdesc="A ctypes-based wrapper around the zbar barcode reader"
-arch=('x86_64')
+arch=('any')
 license=('MIT')
-url="https://github.com/NaturalHistoryMuseum/pyzbar/"
-depends=('zbar')
-makedepends=('python-setuptools')
-provides=('pyzbar')
-replaces=('pyzbar')
-conflicts=('pyzbar')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/NaturalHistoryMuseum/${pkgname#*-}/archive/v$pkgver.tar.gz")
-sha512sums=('74b56658db7a8dc2d7a716992c001ec52a2befc9e31c41ecf7e5e1f277d4188963ef79a2433fc4befdd15d2f6e3f47c4f064582b530eef028c55e07e2c88dbbe')
+url="https://github.com/NaturalHistoryMuseum/$pkgname/"
+depends=('zbar' 'python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/NaturalHistoryMuseum/$pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('e186c7a2f29ec107f66b87a2901e128291747ef7a2159675f3170aef2a3a4b1f4cb4319da830d577c986e20abb3f2935e005361cc98857b0e1b880fb4cf40233')
 
 package() {
   mkdir -p $pkgdir/usr/share/doc/$pkgname/
   mkdir -p $pkgdir/usr/share/licenses/$pkgname/
-  cd $srcdir/${pkgname#*-}-$pkgver
+
+  cd $srcdir/$pkgname-$pkgver
   python setup.py install --root=$pkgdir/
-  install -m 644 $srcdir/${pkgname#*-}-$pkgver/bounding_box_and_polygon.png $pkgdir/usr/share/doc/$pkgname
-  install -m 644 $srcdir/${pkgname#*-}-$pkgver/{CHANGELOG,DEVELOPING,README}.md $pkgdir/usr/share/doc/$pkgname/
-  install -m 644 $srcdir/${pkgname#*-}-$pkgver/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/
+  install -m 644 $srcdir/$pkgname-$pkgver/{CHANGELOG,DEVELOPING}.md $pkgdir/usr/share/doc/$pkgname/
+  install -m 644 $srcdir/$pkgname-$pkgver/README.rst $pkgdir/usr/share/doc/$pkgname/
+  install -m 644 $srcdir/$pkgname-$pkgver/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/
 }
-
-# vim:set ts=2 sw=2 et:
-
