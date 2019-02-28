@@ -8,7 +8,7 @@ _PkgName=OpenBLAS
 _pkgname=openblas
 pkgver=0.3.4
 _lapackver=3.8.0
-pkgrel=17
+pkgrel=18
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('any')
 url="http://www.openblas.net/"
@@ -53,7 +53,7 @@ package(){
   install -Dm644 LICENSE "${pkgdir}/usr/arm-linux-gnueabihf/share/licenses/${pkgname}/LICENSE"
 
   # Install static lib
-  _static_lib_name=`ls libopenblas-*.a`
+  _static_lib_name=`ls libopenblas_*.a`
   install -Dm644 ${_static_lib_name} "${pkgdir}/usr/aarch64-linux-gnu/lib/${_static_lib_name}"
 
   # Symlink to provide blas, cblas, lapack and lapacke
