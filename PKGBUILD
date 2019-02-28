@@ -29,6 +29,7 @@ package() {
   cp -r ${srcdir}/squashfs-root "${pkgdir}/opt/"
   mv "${pkgdir}/opt/squashfs-root" "${pkgdir}/opt/carnet" 
   rm -rf "${pkgdir}/opt/carnet/usr/" "${pkgdir}/opt/carnet/carnet.desktop" "${pkgdir}/opt/carnet/AppRun" "${pkgdir}/opt/carnet/carnet.png"
+  chmod 0755 "${pkgdir}/opt/carnet" -R
 
   ln -s /opt/carnet/carnet "${pkgdir}/usr/bin/carnet"
 
@@ -38,7 +39,7 @@ package() {
   install -m755 "${srcdir}/carnet.desktop" "${pkgdir}/usr/share/applications/"
 
   # Install icons
-  chmod 0644 "${srcdir}/squashfs-root/usr/share/icons" -R
+  chmod 0755 "${srcdir}/squashfs-root/usr/share/icons" -R
   cp -dr --no-preserve=ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
   ln -s /usr/share/icons/hicolor/512x512/apps/carnet.png "${pkgdir}/usr/share/pixmaps/carnet.png"
 }
