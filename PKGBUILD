@@ -23,7 +23,7 @@
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
-pkgver=18.2rc1pre27
+pkgver=18.2rc1pre32
 _major=18.1
 pkgrel=1
 _codename=Leia
@@ -87,18 +87,23 @@ source=(
   13-PR15543.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15543.patch
   14-PR15557.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15557.patch
   15-PR15574.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15574.patch
-  16-PR15477.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15477.patch
-  17-PR15586.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15586.patch
-  18-PR15580.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15580.patch
-  19-PR15595.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15595.patch
-  20-PR15600.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15600.patch
-  21-PR15602.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15602.patch
-  22-PR14665.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/14665.patch
-  23-PR15619.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15619.patch
-  24-PR15624.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15624.patch
-  25-PR15625.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15625.patch
-  26-PR15598.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15598.patch
-  27-PR15630.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15630.patch
+  16-PR15586.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15586.patch
+  17-PR15580.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15580.patch
+  18-PR15595.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15595.patch
+  19-PR15600.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15600.patch
+  20-PR15602.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15602.patch
+  21-PR14665.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/14665.patch
+  22-PR15619.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15619.patch
+  23-PR15624.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15624.patch
+  24-PR15625.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15625.patch
+  25-PR15630.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15630.patch
+  26-PR15477.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15477.patch
+  27-PR15598.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15598.patch
+  28-PR14488.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/14488.patch
+  29-PR15582.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15582.patch
+  30-PR15622.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15622.patch
+  31-PR15631.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15631.patch
+  32-PR15636.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15636.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -136,7 +141,6 @@ sha256sums=('bc1ef0e271d0b6ce2e1be7546ad4f7d330930d7631cc19a9bbc5f75ddc586166'
             'aa76b8f616e6a8ce2f6b4bfc776c64c3c4044e6fb56f6e852251aca564588c2d'
             '363dd4e1b62e4259d91b1a71211b3ff30ab981485adaaf4145e826a5a162ec64'
             '2f1805b3d4bfba0779d3ec51277ab8ba1983be1c354645a32c4b6ea4dc384a8e'
-            '3b598d34ad5f9806349835f57d86324dab10cdd151443ed6391605cbcdda950e'
             'a4b3cc936b198b8b8cf77559604193e4f71a9c6d6c40e121bdc62209c16d4f9b'
             '7d3e63968eb5a8054a3f170e17fec1a18b91c1b76d88298f404c41244c2234da'
             '7f34ee5bf18a5fcc43ed729976a6d858f2c719373d4ad5ad621eae185686196a'
@@ -146,8 +150,14 @@ sha256sums=('bc1ef0e271d0b6ce2e1be7546ad4f7d330930d7631cc19a9bbc5f75ddc586166'
             'b1f5e2a6570ec6e96db701a6bbd3b2fbae8459407a7059c98195769f0ea97ae8'
             'f86019a0b2eda59bef40eca8680a484f2269bf5d8fa50fb62daa8cf2117632b5'
             '6a6081a26618075231ec789eef72a0c9ab98614fba0e862fa04eeb4b4508eecb'
+            '4995149972b4df1007ab7cd2ee29c306d8bc0d06b70c0e5d2afe152e5b7b642f'
+            '3b598d34ad5f9806349835f57d86324dab10cdd151443ed6391605cbcdda950e'
             'bf4bfae2f885f389e44dab7279c5f6e5bade813376473a196715de93143765a9'
-            '4995149972b4df1007ab7cd2ee29c306d8bc0d06b70c0e5d2afe152e5b7b642f')
+            '00b5898ea40b3033e854c3d64162eb251545c1db0cf75023903ec5cbe685b711'
+            '2c3954d70fed0ab79013a67a055d2ab99cea6b29c1b9a0381d68b2e15a12a191'
+            '7b579d86b88abd57e2b47dfc94295550cb1df42f28d0e30128526406bd208d70'
+            'b572be223238ce1d7f3f5664ef650938caa677ee46a87d45e30ea5965585b0f1'
+            '25c3945bb5253e8bddfaaca8c2c2edc2990372bd6b3b9143dc439f1e6f2cc375')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
