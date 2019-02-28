@@ -8,12 +8,9 @@ pkgbase = vdens-git
 	groups = view-os
 	license = GPL2
 	makedepends = vdeplug4
-	depends = vde2
-	depends = s2argv-execs
 	depends = vdeplug4
 	provides = vdens
 	conflicts = vdens
-	replaces = vdens
 	source = git+https://github.com/rd235/vdens.git
 	md5sums = SKIP
 

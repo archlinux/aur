@@ -10,30 +10,28 @@ arch=(any)
 url="https://github.com/rd235/$_pkgname"
 license=('GPL2')
 groups=('view-os')
-depends=('vde2' 's2argv-execs' 'vdeplug4')
+depends=('vdeplug4')
 makedepends=('vdeplug4')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-replaces=("$_pkgname")
 install="$_pkgname.install"
-source=("git+https://github.com/rd235/$_pkgname.git")
+source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd "$_pkgname"
-  
+
   autoreconf -if
   ./configure --prefix="/usr"
-  make 
+  make
 }
 
 package() {
   cd "$_pkgname"
-
   make DESTDIR="$pkgdir/" install
 }
