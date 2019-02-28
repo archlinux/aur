@@ -1,23 +1,30 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname="python-patreon"
-_pkgname=patreon
+_pkgname="patreon-python"
 pkgver=0.5.0
 pkgrel=1
 pkgdesc="Python wrapper for the Patreon API"
 arch=("any")
 url="http://github.com/Patreon/patreon-python"
-license=("MIT")
-depends=("python-requests")
+license=("Apache-2.0")
+depends=("python-requests" "python-six")
 makedepends=("python-setuptools")
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('04ad0360e7acc38a85beafa8d44eeeafd3c31d136488aa4de707526163682ca4')
+checkdepends=("python-mock" "python-pytest" "python-pytest-cov")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Patreon/$_pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('2af5cb53610201b8793ee017e42fa9756f97333ede42f4f0aae356ae7f965eec')
 
 build() {
 	cd "$_pkgname-$pkgver"
 	python ./setup.py build
 }
 
+check() {
+	cd "$_pkgname-$pkgver"
+	python ./setup.py test
+}
+
 package() {
 	cd "$_pkgname-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
