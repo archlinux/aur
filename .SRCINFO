@@ -1,0 +1,16 @@
+pkgbase = python-pythreadworker
+	pkgdesc = A threading library written in python. Help you build threaded app.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/eight04/pyWorker
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/p/pythreadworker/pythreadworker-0.9.0.tar.gz
+	sha256sums = 507674fb96d52480106c514f100501aafe2ba2b42f8a04bd27e05687700be84d
+
+pkgname = python-pythreadworker
+
+pkgname = python2-pythreadworker
+
