@@ -2,7 +2,7 @@
 
 pkgname=osquery-git
 pkgver=3.3.2.r0.g5188ce528
-pkgrel=1
+pkgrel=2
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
 arch=('i686' 'x86_64')
 url="https://osquery.io"
@@ -31,11 +31,11 @@ sha256sums=('SKIP'
             '0c28be3fb234325c3279aa3c02a5b0636db833c06f89ec551b77addb86507ce4'
             'c50bbdae9caa1f77c086c87292ed4c38f524f80f66c0c55ab354f0a8104e4001')
 
-pkgver() {
-	cd ${pkgname}
-
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+#pkgver() {
+#	cd ${pkgname}
+#
+#	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+#}
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
@@ -94,12 +94,7 @@ package() {
 	install -dm755 "${pkgdir}/var/osquery/"
 	install -dm755 "${pkgdir}/var/log/osquery/"
 
-	install -Dm644 "${srcdir}/osqueryd.conf.d" \
-		"${pkgdir}/etc/conf.d/osqueryd"
-
-	install -Dm644 "${srcdir}/osqueryd.service" \
-		"${pkgdir}/usr/lib/systemd/system/osqueryd.service"
-
-	install -Dm644 "${pkgdir}/usr/share/osquery/osquery.example.conf" \
-		"${pkgdir}/etc/osquery/osquery.conf"
+	install -Dm644 "${srcdir}/osqueryd.conf.d" "${pkgdir}/etc/conf.d/osqueryd"
+	install -Dm644 "${srcdir}/osqueryd.service" "${pkgdir}/usr/lib/systemd/system/osqueryd.service"
+	install -Dm644 "${pkgdir}/usr/share/osquery/osquery.example.conf" "${pkgdir}/etc/osquery/osquery.conf"
 }
