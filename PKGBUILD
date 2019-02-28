@@ -1,5 +1,5 @@
 pkgname=pycharm-community-eap
-_buildver=191.5701.26
+_buildver=191.5849.23
 _pkgver=2019.1
 _eap=y
 pkgver=$_pkgver.$_buildver
@@ -17,7 +17,7 @@ conflicts=(pycharm-community-edition)
 if [[ $_eap = y ]]; then
     _filever=$_buildver
 else
-    _filever=$_filever
+    _filever=$_pkgver
 fi
 source=("https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz"{,.sha256})
 sha256sums=($(cut -f1 -d' ' "pycharm-community-$_filever.tar.gz.sha256") SKIP)
@@ -56,7 +56,7 @@ package() {
 	fi
 	echo $'-Dawt.useSystemAAFontSettings=on\n-Dswing.aatext=true' >>"$pkgdir/opt/$pkgname/bin/$_vmoptfile.vmoptions"
 
-	mkdir -p "$pkgdir/usr/bin/"
+	mkdir -p "$pkgdir/usr/bin"
 	ln -s "/opt/$pkgname/bin/pycharm.sh" "$pkgdir/usr/bin/pycharm-eap"
 	mkdir -p "$pkgdir/usr/share/pixmaps"
 	ln -s "/opt/$pkgname/bin/pycharm.png" "$pkgdir/usr/share/pixmaps/pycharm.png"
