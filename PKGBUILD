@@ -3,15 +3,15 @@
 # I maintain this on github, feel free to submit a pull request to
 # https://github.com/soker90/paquetes-archinux.git
 pkgname=python-lml
-pkgver=0.0.1
-pkgrel=2
+pkgver=0.0.9
+pkgrel=1
 pkgdesc="Load me later. A lazy loading plugin management system."
 arch=('i686' 'x86_64')
 license=('BSD')
 makedepends=('python-setuptools')
 depends=('python')
-source=("https://pypi.python.org/packages/8c/7c/f6d8f39e3663d6db2b1ceb4c72bbc0b7e18d6b1fb4c66c879a0d973c42aa/lml-0.0.1.tar.gz")
-md5sums=('6c4e9b0cc53c8be5195d696dcc09e6c9')
+source=("https://files.pythonhosted.org/packages/65/f3/3718c8b7b066731e8e60eaf42b1fd0d48d3539a6e7dbbdd4828be13c14ee/lml-0.0.9.tar.gz")
+sha256sums=('ea5ba817b4adc9e9f5c21725cd2475f912933b7e2dfdf0792aed80077154f63f')
 
 build() {
       cd "$srcdir/lml-${pkgver}"
