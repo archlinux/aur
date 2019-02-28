@@ -2,8 +2,8 @@
 
 pkgname=nordic-theme-git
 _pkgname=Nordic
-pkgver=21.c298c31
-pkgrel=1
+pkgver=r21.c298c31
+pkgrel=2
 pkgdesc="Dark Gtk3.20+ theme created using the awesome Nord color pallete."
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
   	cd "${srcdir}/${_pkgname}"
 
-	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

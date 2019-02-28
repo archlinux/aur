@@ -1,7 +1,7 @@
 pkgbase = nordic-theme-git
 	pkgdesc = Dark Gtk3.20+ theme created using the awesome Nord color pallete.
-	pkgver = 21.c298c31
-	pkgrel = 1
+	pkgver = r21.c298c31
+	pkgrel = 2
 	url = https://github.com/EliverLara/Nordic
 	arch = any
 	license = GPL
