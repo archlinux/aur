@@ -1,7 +1,7 @@
 pkgbase = python-agate-excel
 	pkgdesc = Adds read support for Excel files (xls and xlsx) to agate
 	pkgver = 0.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://agate-excel.readthedocs.org/
 	arch = any
 	license = MIT
@@ -13,7 +13,9 @@ pkgbase = python-agate-excel
 	depends = python-xlrd>=0.9.4
 	depends = python-openpyxl>=2.3.0
 	source = https://github.com/wireservice/agate-excel/archive/0.2.2.tar.gz
+	source = openpyxl-min_row.patch
 	sha256sums = 37acbc114c4c60aa37f908d93a9e9b597c3ba0ee42672f36f7a317f8af8fc581
+	sha256sums = 56bba8744905429040cf8c2d4e343f654d0039c051fafff332fc1002e71ce278
 
 pkgname = python-agate-excel
 

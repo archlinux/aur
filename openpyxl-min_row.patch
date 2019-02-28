@@ -1,0 +1,28 @@
+From d1007ec796624be62c44a5e4aded36d5a510d19b Mon Sep 17 00:00:00 2001
+From: Tim Freund <tim@freunds.net>
+Date: Tue, 19 Feb 2019 15:43:29 -0500
+Subject: [PATCH] Update iter_rows row_offset to min_row
+
+This fixes issue #26.  Openpyxl removed row_offset in favor of min_row
+and max_row parameters.  The rows are indexed starting at 1 rather than
+0, so passing min_row=1 will retrieve all rows.
+---
+ agateexcel/table_xlsx.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ mode change 100644 => 100755 agateexcel/table_xlsx.py
+
+diff --git a/agateexcel/table_xlsx.py b/agateexcel/table_xlsx.py
+old mode 100644
+new mode 100755
+index 87619e9..f1e1df8
+--- a/agateexcel/table_xlsx.py
++++ b/agateexcel/table_xlsx.py
+@@ -57,7 +57,7 @@ def from_xlsx(cls, path, sheet=None, skip_lines=0, header=True, read_only=True,
+         column_names = None
+         rows = []
+ 
+-        for i, row in enumerate(sheet.iter_rows(row_offset=skip_lines)):
++        for i, row in enumerate(sheet.iter_rows(min_row=skip_lines+1)):
+             if i == 0 and header:
+                 column_names = [None if c.value is None else six.text_type(c.value) for c in row]
+                 continue
