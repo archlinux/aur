@@ -1,6 +1,6 @@
 pkgbase = xrootgif
 	pkgdesc = A simple program to display GIFs as X root, targeting performance
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/VipeOut23/XRootGIF
 	arch = x86_64
@@ -10,8 +10,10 @@ pkgbase = xrootgif
 	depends = libx11
 	depends = giflib
 	depends = imlib2
-	source = xrootgif-1.3.tar.gz::https://github.com/VipeOut23/xrootgif/archive/1.3.tar.gz
-	sha512sums = 79c29817e250ce58fde4d685c762d8de7ce31f1664ccd2b4cd5f22301073c393e52db4b84d33f026888ee3736d1e2e04393156c0eb37f93f7b1f1803a5761cc7
+	optdepends = libxrandr: Better multi monitor support
+	optdepends = libxinerama: Better multi monitor support
+	source = xrootgif-1.4.tar.gz::https://github.com/VipeOut23/xrootgif/archive/1.4.tar.gz
+	sha512sums = c920e1be101fad711edcbeeb6384fbe1babea8092508969590626ac2848eb145bb4facdbc657f01217a3b09afe2d392dc432223d3b29c0310feb61af9b74e9f6
 
 pkgname = xrootgif
 
