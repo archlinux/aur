@@ -26,6 +26,10 @@ install=${pkgname}.install
 [[ "$CARCH" = "i686" ]] && _archext=x86 || _archext=x86_64
 source_i686=("http://kdl.cc.ksosoft.com/wps-community/download/6757/wps-office_${pkgver}_x86.tar.xz")
 source_x86_64=("http://kdl.cc.ksosoft.com/wps-community/download/6757/wps-office_${pkgver}_x86_64.tar.xz")
+sha512sums_i686=('ba5001f0fd2a605c3688084d34aa293a728ac46d52379cea6db8c5232c4331e60476d5845087002071f89ec9d8bdf7c020222b4aaff780736eaeff5a273f40ee')
+sha512sums_x86_64=('5f9f88cc9795a317267531cb1cd260d86e1613dc5eef34005eaa58dd8ac0715ce3ba1da60ee83c617cb16d759b0da9274963f8a4fb4a86c4890eca0565af9c62')
+
+
 
 
 
