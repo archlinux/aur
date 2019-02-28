@@ -1,0 +1,3 @@
+post_upgrade() {
+  echo ">>> ark has been renamed to velero, please use the package velero-bin going forward"
+}
