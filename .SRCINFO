@@ -1,13 +1,14 @@
 pkgbase = acolor-git
 	pkgdesc = An extensible command colorizer with community scripts
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xPMo/acolor
 	arch = any
 	license = ISC
 	depends = awk
 	depends = bash
 	depends = sed
+	optdepends = expect: unbuffer to fake tty
 	provides = acolor
 	conflicts = acolor
 	source = acolor-git::git+https://github.com/xPMo/acolor
