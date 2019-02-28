@@ -1,19 +1,23 @@
 pkgbase = csvkit
 	pkgdesc = A suite of utilities for converting to and working with CSV.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://csvkit.readthedocs.org
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	depends = python-agate
-	depends = python-agate-dbf
-	depends = python-agate-excel
-	depends = python-agate-sql
+	depends = python-agate>=1.5.5
+	depends = python-agate-dbf>=0.2.0
+	depends = python-agate-excel>=0.2.2
+	depends = python-agate-sql>=0.5.2
+	depends = python-babel
 	depends = python-dateutil
-	depends = python-six
+	depends = python-openpyxl
+	depends = python-six>=1.6.1
 	depends = python-sqlalchemy
+	depends = python-xlrd
+	optdepends = ipython: nicer command-line for csvpy utility
 	source = https://github.com/wireservice/csvkit/archive/1.0.3.tar.gz
 	sha256sums = 4ca64988a648c845ad2f02a19d5736c3a2650a44b1dd8952b97b528c7f3e2a97
 
