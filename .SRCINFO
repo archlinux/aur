@@ -1,7 +1,7 @@
 pkgbase = ttk-theme-chooser
 	pkgdesc = TTK theme chooser is an application to choose and set the default TTK theme
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Geballin/TTK-Theme-chooser
 	arch = x86_64
 	arch = i686
@@ -9,6 +9,8 @@ pkgbase = ttk-theme-chooser
 	makedepends = make
 	depends = tcl
 	depends = tk
+	depends = tcllib
+	optdepends = ttk-themes: A collection of new TTK themes
 	source = https://github.com/Geballin/TTK-Theme-chooser/archive/1.1.tar.gz
 	md5sums = b66f6d777a26a3c29c35c25b0554bcdd
 

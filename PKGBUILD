@@ -1,13 +1,13 @@
 # Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=ttk-theme-chooser
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="TTK theme chooser is an application to choose and set the default TTK theme"
 url="https://github.com/Geballin/TTK-Theme-chooser"
 arch=('x86_64' 'i686')
 license=('GPLv3')
-depends=('tcl' 'tk')
-optdepends=()
+depends=('tcl' 'tk' 'tcllib')
+optdepends=('ttk-themes: A collection of new TTK themes')
 makedepends=(make)
 conflicts=()
 replaces=()
