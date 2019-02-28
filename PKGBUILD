@@ -10,7 +10,7 @@ license=('Apache')
 depends=('postgresql>=9.6.0' 'postgresql-libs>=9.6.0')
 makedepends=('gcc' 'cmake>=3.4' 'git')
 install=${pkgname}.install
-source=("$pkgname-$pkgver::git+https://github.com/timescale/timescaledb.git#tag=1.1.1")
+source=("$pkgname-$pkgver::git+https://github.com/timescale/timescaledb.git#tag=1.2.1")
 md5sums=(SKIP)
 
 build() {
