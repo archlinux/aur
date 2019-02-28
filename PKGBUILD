@@ -2,7 +2,7 @@
 # Maintainer: Alexander Boyko <4le34n at gmail dot com>
 pkgname=activemq
 pkgver=5.15.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Popular and powerful open source messaging and Integration Patterns provider"
 arch=('x86_64')
 url="http://activemq.apache.org"
@@ -39,4 +39,4 @@ package() {
 md5sums=('34953879861620df2680888a1c44b410'
          '0a1b2ac8850b833a5926f393069eee72'
          '86a4b3f9117acb83ba653859b053f966'
-         'de9fbd35fc09dca2a89d6ac151d19dd6')
+         '90d876f8519558572cc8f4e6df8f744d')
