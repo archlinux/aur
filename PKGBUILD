@@ -1,7 +1,7 @@
 # Maintainer: architekton <architekton350@gmail.com>
 
 pkgname=amass
-pkgver=2.9.2
+pkgver=2.9.3
 pkgrel=1
 pkgdesc="In-depth subdomain enumeration written in Go"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/OWASP/Amass"
 license=('Apache')
 makedepends=('go' 'git')
 source=(Amass-$pkgver.tar.gz::https://github.com/OWASP/Amass/archive/${pkgver}.tar.gz)
-sha512sums=('db6632da6929cc013e44c8f8c99450eaea908ab5e91ba970288b74c8378b56af22832fda51d1976d4cd2ff1db87b4a6248e4acdc20b4cb403042ebe6df548c24')
+sha512sums=('66899fcd43e4663d68cfa8ff50061dc828b6419fde65838803e18008b4a7815edaf22e6f70fa9d28a72e45d81e82ee4d1008b81bce9e830a51f0ac366fd77091')
 
 
 prepare() {
@@ -44,6 +44,7 @@ package() {
 
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm755 "${pkgname}.netdomains" "${pkgdir}/usr/bin/${pkgname}.netdomains"
+  install -Dm755 "${pkgname}.tracker" "${pkgdir}/usr/bin/${pkgname}.tracker"
   install -Dm755 "${pkgname}.viz" "${pkgdir}/usr/bin/${pkgname}.viz"
   install -Dm755 "${pkgname}.db" "${pkgdir}/usr/bin/${pkgname}.db"
 
