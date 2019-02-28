@@ -1,7 +1,7 @@
 pkgbase = grammalecte-fr
 	pkgdesc = A grammar checker dedicated to the French language
 	pkgver = 0.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dicollecte.org/grammalecte/index.php
 	arch = any
 	license = GPL3
@@ -9,9 +9,7 @@ pkgbase = grammalecte-fr
 	depends = python
 	options = !emptydirs
 	source = http://www.dicollecte.org/grammalecte/zip/Grammalecte-fr-v0.6.5.zip
-	source = grammalecte.sh
 	sha256sums = 60b998f7a95953781e4a10254a6bc44e7fb6d676d8f94d5c5111b6f786967e85
-	sha256sums = 6ef0043a2008c7f575354145de1617fabd3c4c07d73aee2fb3666431accd69ef
 
 pkgname = grammalecte-fr
 
