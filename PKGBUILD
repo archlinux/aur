@@ -3,16 +3,16 @@
 pkgname=freefilesync-bin
 _pkgname=freefilesync
 pkgver=10.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Folder comparison and synchronization"
 arch=("i686" "x86_64")
-url="https://www.freefilesync.org/"
+url="https://freefilesync.org"
 license=("GPL3")
 provides=("freefilesync")
 conflicts=("freefilesync")
 depends=(gtk2 lib32-fontconfig lib32-libx11 libxxf86vm lib32-libsm)
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://freefilesync.org/download/FreeFileSync_${pkgver}_Linux.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::${url}/download/FreeFileSync_${pkgver}_Linux.tar.gz"
     FreeFileSync.desktop
     FreeFileSync.png
     RealTimeSync.desktop
@@ -26,8 +26,12 @@ sha256sums=(
     "23c68af45d34f41fdb76886067b71af4dd3fe14f2dd60f73193b2052dc333bf6"
 )
 options=(!strip)
-DLAGENTS=("https::/usr/bin/curl -fLC - --retry 5 --retry-delay 3 \
-    -A Mozilla -e 'https://freefilesync.org/download.php;auto' -o %o %u")
+DLAGENTS=("https::/usr/bin/curl -fLC - --retry 5 --retry-delay 3 -A Mozilla -o %o %u")
+
+_auth_request="$(\
+    echo "Authenticating for download ..." >&2; \
+    /usr/bin/curl -fsSL -A Mozilla "$url/cookie/load-consent.php" \
+)"
 
 package() {
     _pkg=FreeFileSync

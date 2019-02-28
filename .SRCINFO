@@ -1,8 +1,8 @@
 pkgbase = freefilesync-bin
 	pkgdesc = Folder comparison and synchronization
 	pkgver = 10.9
-	pkgrel = 3
-	url = https://www.freefilesync.org/
+	pkgrel = 4
+	url = https://freefilesync.org
 	arch = i686
 	arch = x86_64
 	license = GPL3
