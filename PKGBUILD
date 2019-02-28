@@ -2,7 +2,7 @@
 
 pkgname=sonarrannounced-git
 pkgver=r110.57c6c87
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage and download subtitles for Sonarr and Radarr."
 arch=('any')
 url="https://github.com/l3uddz/sonarrAnnounced"
@@ -25,7 +25,7 @@ source=("git+https://github.com/l3uddz/sonarrAnnounced"
         'sonarrannounced.tmpfiles')
 
 sha256sums=('SKIP'
-            'f85d81ecf383b8ab357d7c6898b63c14a13b39a6ccce438a72c08a9bffa8c56b'
+            'b0240129fa590be69c64d79f96abc769c09d8bdedce18d7ad6b6e8f68e6eef0f'
             'ad0f35e5e97f8d9dcb61ff1036e8cd7eed40b41eba4226f4fd882bc194905e53'
             'a4f91723507f1c356282b26558096994f3d4e2a5d49a012e0441fc4d7ea60aff')
 
