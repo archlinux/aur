@@ -1,33 +1,33 @@
 # Maintainer:  JP-Ellis <josh@jpellis.me>
 pkgname=papis
-pkgver=0.7.5
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="Papis is a powerful and highly extensible command-line based document and bibliography manager."
 arch=('any')
 url="https://github.com/papis/papis"
 license=('GPL')
 depends=('python'
-         'python-argcomplete'
+         # 'python-argcomplete'
          'python-arxiv2bib'
          'python-beautifulsoup4'
          'python-bibtexparser'
          'python-chardet'
          'python-click'
-         'python-future'
+         'python-colorama'
          'python-filetype'
          'python-habanero'
          'python-isbnlib'
-         'python-prompt_toolkit>=2.0.0'
+         'python-prompt_toolkit'
          'python-pylibgen'
-         'python-pyparser'
          'python-pyparsing'
+         'python-pygments'
          'python-pyaml'
          'python-slugify'
          'python-requests'
         )
-optdepends=('python-papis-rofi')
+optdepends=('python-papis-rofi: integration with rofi')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('1a2a3f6673741f858d4ba41b64255e2fca33b17c5abb642608dbb4ee117d0ac4')
+sha256sums=('1afc46ef29ce797ccb57ccadc6384a9e5d324bb650189f04dccf3eadad79cf7b')
 noextract=()
 
 build() {
