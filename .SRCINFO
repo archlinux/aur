@@ -1,6 +1,6 @@
 pkgbase = vdeplug4-git
 	pkgdesc = VDE: Virtual Distributed Ethernet. Plug your VM directly to the cloud
-	pkgver = r41.979eec0
+	pkgver = r44.7ebdc73
 	pkgrel = 1
 	url = https://github.com/rd235/vdeplug4
 	arch = any

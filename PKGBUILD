@@ -3,18 +3,18 @@
 _pkgname="vdeplug4"
 
 pkgname="$_pkgname-git"
-pkgver=r41.979eec0
+pkgver=r44.7ebdc73
 pkgrel=1
 pkgdesc="VDE: Virtual Distributed Ethernet. Plug your VM directly to the cloud"
 arch=(any)
 url="https://github.com/rd235/$_pkgname"
 license=('GPL2')
 groups=("view-os")
-makedepends=('s2argv-execs')
 depends=('s2argv-execs')
-replace=('vde2')
+makedepends=('s2argv-execs')
 provides=("$_pkgname" 'vde2')
 conflicts=("$_pkgname" 'vde2')
+replace=('vde2')
 source=("git+$url.git")
 md5sums=('SKIP')
 
