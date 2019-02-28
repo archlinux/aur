@@ -1,0 +1,14 @@
+pkgbase = k3s-bin
+	pkgdesc = Lightweight Kubernetes
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://k3s.io
+	arch = x86_64
+	license = Apache
+	source = k3s-0.1.0::https://github.com/rancher/k3s/releases/download/v0.1.0/k3s
+	source = k3s.service
+	sha256sums = 6af58a878d0c8ed595c63d46884231ec2d66199ca2d06681218d062a5b8a0cbf
+	sha256sums = 859b2fcb894d27afa9f0feeff8067c1a3f71d2105ad7cdfefc6cf00166a2a59f
+
+pkgname = k3s-bin
+
