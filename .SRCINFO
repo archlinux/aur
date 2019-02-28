@@ -1,0 +1,16 @@
+pkgbase = pace-git
+	pkgdesc = A simple pacman.conf editor
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://gitlab.com/softwareperonista/pace
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	depends = gtksourceview4
+	conflicts = pace
+	source = git+https://gitlab.com/softwareperonista/pace.git
+	sha256sums = SKIP
+
+pkgname = pace-git
+
