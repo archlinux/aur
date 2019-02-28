@@ -1,6 +1,6 @@
 pkgbase = aurto
 	pkgdesc = An AUR tool for managing an auto-updating local 'aurto' package repository using aurutils.
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/alexheretic/aurto
 	install = aurto.install
@@ -17,8 +17,8 @@ pkgbase = aurto
 	backup = usr/lib/systemd/system/check-aurto-git-trigger.timer
 	backup = usr/lib/systemd/system/update-aurto.timer
 	backup = etc/aurto/makepkg-chroot.conf
-	source = https://github.com/alexheretic/aurto/archive/v0.8.3.tar.gz
-	sha256sums = 82376ced50560fb47f110ac8d825d7cce900330e6ae5a8940b9bbbe61d1ed994
+	source = https://github.com/alexheretic/aurto/archive/v0.8.4.tar.gz
+	sha256sums = 823d89b7fa444eb5dd8d81668e25fd807c9ea3c7fa25be4e89a3aced8e8f2f01
 
 pkgname = aurto
 
