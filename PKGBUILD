@@ -1,7 +1,8 @@
-# Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=dhewm3-git
-pkgver=1.4.1
+pkgver=1.5.0.r16.17c10d4
 pkgrel=1
 epoch=1
 pkgdesc="Doom 3 engine with native 64-bit support, SDL, and OpenAL"
@@ -13,11 +14,9 @@ makedepends=('cmake' 'git')
 conflicts=('dhewm3')
 provides=('dhewm3')
 source=("git+$url"
-        'dhewm3.desktop'
-        '0001-game_data_location.patch')
+        'dhewm3.desktop')
 sha256sums=('SKIP'
-            '7c9ae892c6cf0453fcd57731689ccedac8f8ce10f33043f7dd5fb66bd73d1287'
-            'dbbb0607a92482a1b753cf9cac97dcc57345b92ee43449c9826f5b23af7624f9')
+            '7c9ae892c6cf0453fcd57731689ccedac8f8ce10f33043f7dd5fb66bd73d1287')
 
 pkgver() {
   cd "${pkgname/-git/}"
@@ -25,22 +24,10 @@ pkgver() {
   printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
-prepare() {
-  cd "${pkgname/-git/}"
-
-  for patch in ../*.patch; do
-    if [ ! -f "$patch" ]; then
-      break;
-    else
-      patch -p1 -i "$patch"
-    fi
-  done
-}
-
 build() {
   cd "${pkgname/-git/}/neo"
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DD3XP=1 -DDEDICATED=1 .
+  CXXFLAGS='-DLINUX_DEFAULT_PATH=\"/usr/share/games/doom3\"' cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DD3XP=1 -DDEDICATED=1 .
   make
 }
 
