@@ -1,6 +1,6 @@
 pkgbase = sonarrannounced-git
 	pkgdesc = Manage and download subtitles for Sonarr and Radarr.
-	pkgver = 0.7.1
+	pkgver = r110.57c6c87
 	pkgrel = 1
 	url = https://github.com/l3uddz/sonarrAnnounced
 	arch = any

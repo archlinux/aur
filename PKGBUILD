@@ -1,7 +1,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=sonarrannounced-git
-pkgver=0.7.1
+pkgver=r110.57c6c87
 pkgrel=1
 pkgdesc="Manage and download subtitles for Sonarr and Radarr."
 arch=('any')
@@ -37,13 +37,14 @@ pkgver() {
 package() {
   install -d -m 755 "${pkgdir}/usr/lib/sonarrannounced"
 
-  # Remove any .gitignore files
-  find "${srcdir}/sonarrannounced-${pkgver}/" -name '.gitignore' -delete
+  # Remove .git folder.
+  #rm -rf "${srcdir}/sonarrAnnounced/.git"
 
-  # Remove the empty data folder from the installation
-  rm -rf "${srcdir}/sonarrannounced-${pkgver}/data"
+  # Remove unneeded systemd service file
+  rm -rf "${srcdir}/sonarrAnnounced/systemd"
 
-  cp -dpr --no-preserve=ownership "${srcdir}/sonarrannounced-${pkgver}/"* "${pkgdir}/usr/lib/sonarrannounced"
+
+  cp -dpr --no-preserve=ownership "${srcdir}/sonarrAnnounced/"* "${pkgdir}/usr/lib/sonarrannounced"
 
   install -D -m 644 "${srcdir}/sonarrannounced.service" "${pkgdir}/usr/lib/systemd/system/sonarrannounced.service"
   install -D -m 644 "${srcdir}/sonarrannounced.sysusers" "${pkgdir}/usr/lib/sysusers.d/sonarrannounced.conf"
