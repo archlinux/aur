@@ -6,7 +6,7 @@
 # Contributor: Thomas Zervogiannis
 
 pkgname=gcalcli
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc='Google calendar command line interface'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
     'python-vobject: for ics/vcal importing'
 )
 source=("gcalcli-$pkgver.tar.gz::https://github.com/insanum/gcalcli/archive/v$pkgver.tar.gz")
-sha256sums=('33c1aa67113bce756fe0f172a2fb7cf94dd6ab1d09c7678f5395ba2a6b50d613')
+sha256sums=('0ad3a3446e1ac1c5228ea3a2705a292b99f6cb3222fae4a12a004f92ce31037f')
 
 prepare() {
     # By default wants to install in /usr/man/man1/
