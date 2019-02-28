@@ -2,8 +2,8 @@
 
 _pkgname=ueberzug
 pkgname=python-${_pkgname}-git
-pkgver=c5fe4bc
-pkgrel=4
+pkgver=18.1.1.c5fe4bc
+pkgrel=1
 pkgdesc="ueberzug is an python script which aims to replace w3mimgdisplay"
 arch=('any')
 url="https://github.com/seebye/${_pkgname}"
