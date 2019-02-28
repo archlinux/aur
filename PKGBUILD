@@ -5,7 +5,7 @@ pkgver=0.7.1
 pkgrel=1
 pkgdesc="Manage and download subtitles for Sonarr and Radarr."
 arch=('any')
-url="https://github.com/morpheus65535/sonarrannounced"
+url="https://github.com/l3uddz/sonarrAnnounced"
 license=('GPL3')
 depends=('python'
          'python-flask'
@@ -26,12 +26,12 @@ source=("git+https://github.com/l3uddz/sonarrAnnounced"
         'sonarrannounced.tmpfiles')
 
 sha256sums=('SKIP'
-            '8841fb9e4ff0da07b71debbcf772ff1d1fc1d74681055de577ca99f5cba93f4e'
-            'd7cd3fa3fc32b4265bd2bf7f1b618c262ae818fa06e72c745e53b7a3803a6616'
+            'f85d81ecf383b8ab357d7c6898b63c14a13b39a6ccce438a72c08a9bffa8c56b'
+            'ad0f35e5e97f8d9dcb61ff1036e8cd7eed40b41eba4226f4fd882bc194905e53'
             'a4f91723507f1c356282b26558096994f3d4e2a5d49a012e0441fc4d7ea60aff')
 
 pkgver() {
-  cd "bazarr"
+  cd "sonarrAnnounced"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 

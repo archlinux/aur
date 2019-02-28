@@ -1,14 +1,14 @@
 [Unit]
-Description=Bazarr Service
-After=network.target
+Description=sonarrAnnounced Service
 
 [Service]
+WorkingDirectory=/opt/sonarrAnnounced
+ExecStart=/usr/bin/python /usr/lib/sonarrAnnounced/bot.py
+Restart=always
+GuessMainPID=no
+Type=simple
 User=sonarrannounced
 Group=sonarrannounced
-Type=simple
-ExecStart=/usr/bin/python2 /usr/lib/sonarrannounced/sonarrannounced.py --no-update --config /var/lib/sonarrannounced
-Restart=always
-TimeoutStopSec=30
 
 [Install]
 WantedBy=multi-user.target
