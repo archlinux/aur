@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=74.0.3710.0
+pkgver=74.0.3717.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -83,7 +83,6 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'chromium-ffmpeg-clang.patch'
         # Patch from crbug (chromium bugtracker) or Arch chromium package.
         'chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
-        'fix_nullptr_t.patch.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1481585/revisions/1/patch?download'
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -96,7 +95,6 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             '16741344288d200fadf74546855e00aa204122e744b4811a36155efd5537bd95'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
-            'fc19b056c7a806b000c5e1a825747da65340e28320cf08b43230994dcc16ac2f'
             )
 install=chromium-dev.install
 
@@ -407,7 +405,7 @@ prepare() {
       -e 's|root_out_dir/chrome"|root_out_dir/chromium-dev"|g' \
       -i chrome/BUILD.gn
   sed -e 's|"chromium-browser"|"chromium-dev"|g' \
-      -e 's|"Chromium"|"Chromium-dev"|g' \
+      -e 's|"Chromium|&-dev|g' \
       -i media/audio/pulse/pulse_util.cc
   sed -e 's|chromium-browser|chromium-dev|g' \
       -i chrome/browser/shell_integration_linux.cc \
@@ -463,9 +461,6 @@ prepare() {
 
   # https://crbug.com/473866.
   patch -p1 -i "${srcdir}/chromium-widevine-r4.patch"
-
-  # https://crbug.com/898281
-  base64 -d "${srcdir}/fix_nullptr_t.patch.base64" | patch -p1 -i -
 
   # Setup nodejs dependency.
   mkdir -p third_party/node/linux/node-linux-x64/bin/
