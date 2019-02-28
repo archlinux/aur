@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=gnome-shell-extension-transparent-window-moving-git
-pkgver=18.1891bce
-pkgrel=1
+pkgver=r18.1891bce
+pkgrel=2
 pkgdesc="Makes the window semi-transparent when moving or resizing."
 arch=('any')
 url="https://github.com/Noobsai/transparent-window-moving"
@@ -13,13 +13,13 @@ source=("${pkgname}::git+https://github.com/Noobsai/transparent-window-moving.gi
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+	cd ${pkgname}
 
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd ${pkgname}
+	cd ${pkgname}
 
-  make EXTENSIONDIR="${pkgdir}/usr/share/gnome-shell/extensions/" install
+	make EXTENSIONDIR="${pkgdir}/usr/share/gnome-shell/extensions/" install
 }
