@@ -2,8 +2,8 @@
 
 pkgname=sweet-theme-git
 _pkgname=Sweet
-pkgver=26.ba7c80c
-pkgrel=1
+pkgver=r26.ba7c80c
+pkgrel=2
 pkgdesc="Light and dark colorful Gtk3.20+ theme"
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
   	cd "${srcdir}/${_pkgname}"
 
-	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
