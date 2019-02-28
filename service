@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=forking
 ExecStart=/opt/activemq/bin/linux-x86-64/activemq start
+PIDFile=/run/activemq.pid
 
 [Install]
 WantedBy=multi-user.target
