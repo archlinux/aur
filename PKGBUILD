@@ -1,12 +1,13 @@
 pkgname=anbox-image-gapps
 pkgver=2018.07.19
-_gappsver=20190222
-pkgrel=2
+_gappsver=20190227
+pkgrel=3
 pkgdesc="Android image for running in Anbox, with Opengapps and houdini"
 arch=('x86_64')
 url="https://anbox.io"
 license=('custom')
 makedepends=('lzip' 'squashfs-tools' 'unzip')
+optdepends=('anbox-bridge: Enable network for anbox.')
 
 # anbox image
 source=("http://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img")
@@ -18,7 +19,7 @@ source+=("http://dl.android-x86.org/houdini/7_y/houdini.sfs")
 source+=("https://github.com/Rprop/libhoudini/raw/master/4.0.8.45720/system/lib/libhoudini.so")
 
 sha256sums=('6b04cd33d157814deaf92dccf8a23da4dc00b05ca6ce982a03830381896a8cca'
-            '64e80d0ad68a4c969f567c5c20d48e548143ec6269318bcaf264d5d83b15b3d2'
+            'f2f6db7d174c5c17293f1e4399d4b0174940bf1e1cdec10b2fd0cb0707f42747'
             '56fd08c448840578386a71819c07139122f0af39f011059ce728ea0f3c60b665'
             '2d15d126e46ea933a92fcc6dd30ad2c93d063af322fc1ba84aaa4f3e75d84e68')
 noextract=('android_amd64.img'
@@ -29,7 +30,7 @@ noextract=('android_amd64.img'
 provides=('anbox-image')
 conflicts=('anbox-image')
 
-package () {
+build () {
 	cd "${srcdir}"
 	
 	# unsquash anbox image
@@ -51,33 +52,23 @@ package () {
 	cp -r ./$(find opengapps -type d -name "Phonesky")					./squashfs-root/system/priv-app/
 	cp -r ./$(find opengapps -type d -name "GoogleServicesFramework")	./squashfs-root/system/priv-app/
 
-	cd ./squashfs-root/system/priv-app/
-	chown -R 100000:100000 Phonesky GoogleLoginService GoogleServicesFramework PrebuiltGmsCore
-
-	cd "${srcdir}"
-
 	# load houdini
 	mkdir -p houdini
 	unsquashfs -f -d ./houdini ./houdini.sfs
 
 	cp -r ./houdini/houdini ./squashfs-root/system/bin/
 	cp -r ./houdini/xstdata ./squashfs-root/system/bin/
-	chown -R 100000:100000 ./squashfs-root/system/bin/{xstdata,houdini}
-
 	cp ./libhoudini.so ./squashfs-root/system/lib/
-	chown -R 100000:100000 ./squashfs-root/system/lib/libhoudini.so
-
+	
 	mkdir -p ./squashfs-root/system/lib/arm
 	cp -r ./houdini/linker	./squashfs-root/system/lib/arm/
 	cp -r ./houdini/*.so 	./squashfs-root/system/lib/arm/
 	cp -r ./houdini/nb		./squashfs-root/system/lib/arm/
-	chown -R 100000:100000 ./squashfs-root/system/lib/arm
 
 	# add houdini parser
 	mkdir -p ./squashfs-root/system/etc/binfmt_misc
 	echo ":arm_dyn:M::\x7f\x45\x4c\x46\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\x28::/system/bin/houdini:" >> ./squashfs-root/system/etc/binfmt_misc/arm_dynp 
 	echo ":arm_exe:M::\x7f\x45\x4c\x46\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x28::/system/bin/houdini:" >> ./squashfs-root/system/etc/binfmt_misc/arm_exe
-	chown -R 100000:100000 ./squashfs-root/system/etc/binfmt_misc
 
 	# add features
 	_C=$(cat <<-END
@@ -113,12 +104,22 @@ package () {
 
     # enable opengles
     echo "ro.opengles.version=131072" >> ./squashfs-root/system/build.prop
+}
 
-    # squash img
+package() {
+	cd "${srcdir}"
+	
+	# set owner
+	chown -R 100000:100000 ./squashfs-root/system/priv-app/{Phonesky,GoogleLoginService,GoogleServicesFramework,PrebuiltGmsCore}
+	chown -R 100000:100000 ./squashfs-root/system/bin/{xstdata,houdini}
+	chown -R 100000:100000 ./squashfs-root/system/lib/{libhoudini.so,arm}
+	chown -R 100000:100000 ./squashfs-root/system/etc/binfmt_misc
+
+    # squash image
     cd "${srcdir}"
     mksquashfs squashfs-root android.img -b 131072 -comp xz -Xbcj x86
-
-	cd "${srcdir}"
+    
+    #install image	
 	install -Dm644 ./android.img "${pkgdir}/"var/lib/anbox/android.img
 }
     
