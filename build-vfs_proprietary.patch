@@ -1,17 +1,17 @@
 diff --git a/libfprint/meson.build b/libfprint/meson.build
-index 8689c9f..9dece5f 100644
+index abd0005..e91e0ec 100644
 --- a/libfprint/meson.build
 +++ b/libfprint/meson.build
-@@ -142,7 +142,7 @@ if aes3k
+@@ -159,7 +159,7 @@ if aes3k
  endif
  
  other_sources = []
 -if imaging_dep.found()
 +if imaging_dep != [] and imaging_dep.found()
-     other_sources += [ 'pixman.c' ]
+     other_sources += [ 'fpi-img-pixman.c' ]
  endif
  
-@@ -163,6 +163,8 @@ libfprint_sources += configure_file(input: 'empty_file',
+@@ -180,6 +180,8 @@ libfprint_sources += configure_file(input: 'empty_file',
                                      ])
  
  deps = [ mathlib_dep, glib_dep, libusb_dep, nss_dep, imaging_dep ]
@@ -21,7 +21,7 @@ index 8689c9f..9dece5f 100644
                      libfprint_sources + drivers_sources + nbis_sources + other_sources,
                      soversion: soversion,
 diff --git a/meson.build b/meson.build
-index c5c691d..2c9d126 100644
+index db5008f..a192fb2 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -46,6 +46,7 @@ mathlib_dep = cc.find_library('m', required: false)
