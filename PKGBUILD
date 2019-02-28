@@ -1,13 +1,13 @@
 # Maintainer: Mikhail Chugunkov <poslegm@gmail.com> 
 pkgname=scalafmt-native
-pkgver=2.0.0.RC4
+pkgver=2.0.0.RC5
 pkgrel=1
 pkgdesc='Code formatter for Scala built with GraalVM (for fast startup)'
 arch=('x86_64')
 url='https://scalameta.org/scalafmt/'
 license=('Apache')
-source=("https://chugunkov.website/files/scalafmt-native-2.0.0.RC4.tar.gz")
-sha256sums=('deefaa75b5363872f1f8da5d2a881db3a8cb05df6692989b450963b79a7b6efd')
+source=("https://chugunkov.website/files/scalafmt-native-2.0.0.RC5.tar.gz")
+sha256sums=('202e1eb85060bccac4aaed237941874023a3aea7c2e11855b0762118eee1c8f8')
 
 package() {
   cd "$pkgname-$pkgver"
