@@ -8,7 +8,7 @@ _PkgName=OpenBLAS
 _pkgname=openblas
 pkgver=0.3.4
 _lapackver=3.8.0
-pkgrel=8
+pkgrel=15
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('any')
 url="http://www.openblas.net/"
@@ -25,6 +25,7 @@ _ncpus=$(eval "cat /proc/cpuinfo | grep MHz | wc -l")
 
 _config="BINARY=32 CC=arm-linux-gnueabihf-gcc FC=arm-linux-gnueabihf-gfortran HOSTCC=gcc TARGET=ARMV7 \
   USE_OPENMP=1 USE_THREAD=1 USE_COMPILER_TLS=0 \
+  NO_STATIC=0 NO_SHARED=0 \
   NO_LAPACK=0 BUILD_LAPACK_DEPRECATED=1 \
   MAKE_NB_JOBS=${_ncpus} \
   PREFIX=/usr/arm-linux-gnueabihf "
