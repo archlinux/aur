@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-bumblebee-status-git
 	pkgdesc = GNOME Shell extension that shows the status of the NVIDIA GPU
-	pkgver = 11.4eed598
-	pkgrel = 1
+	pkgver = r11.4eed598
+	pkgrel = 2
 	url = https://github.com/dsboger/gnome-shell-extension-bumblebee-status
 	arch = any
 	license = GPL3
