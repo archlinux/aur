@@ -25,14 +25,14 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	mkdir -p $pkgdir/etc/fonts/conf.avail
-	mkdir -p $pkgdir/etc/fonts/conf.d
-	cp *.conf $pkgdir/etc/fonts/conf.avail/
+  cd "$srcdir/${pkgname%-git}"
+  mkdir -p $pkgdir/etc/fonts/conf.avail
+  mkdir -p $pkgdir/etc/fonts/conf.d
+  cp *.conf $pkgdir/etc/fonts/conf.avail/
   for file in *.conf; do
     ln -s ../conf.avail/"$(basename $file)" $pkgdir/etc/fonts/conf.d
   done
