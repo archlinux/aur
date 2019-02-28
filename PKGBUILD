@@ -1,7 +1,7 @@
 # Maintainer: kikadf <kikadf.01@gmail.com>
 
 pkgname=clipgrab-kde
-pkgver=3.8.1
+pkgver=3.8.2
 pkgrel=1
 pkgdesc='A video downloader and converter for YouTube, Veoh, DailyMotion, MyVideo, ...'
 arch=(x86_64)
@@ -14,10 +14,10 @@ conflicts=('clipgrab')
 provides=('clipgrab')
 source=(https://download.clipgrab.org/clipgrab-${pkgver}.tar.gz
         clipgrab.desktop
-       https://gitlab.com/kikadf/clipgrab-qt5/raw/master/clipgrab-${pkgver}-kde.patch)
-sha256sums=('e4ab4a1337eeaa1fb06d638afd86414b9bdff5606e1a7a1e396f19cfd017dd3e'
+        https://gitlab.com/kikadf/clipgrab-qt5/raw/master/clipgrab-${pkgver}-kde.patch)
+sha256sums=('ad95bd33cffa776e1456ad8b6e61b03b46035b97b39a1a4b29aedc466bd81136'
             '840910097d8c129ea12c395c4a33f562591e878e521c98fde8a7b3f9403aa23f'
-            'bd53c8b3130eb2a3bc908f7595bd52ef6a15b8bc3cfca89cbdef397404c3c5a5')
+            '7be395e3e034fba8760057b96c4cc6a684d96a1444225246bbc4b787ec8b7e84')
 
 prepare() {
   cd clipgrab-${pkgver}

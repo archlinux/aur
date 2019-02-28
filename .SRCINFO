@@ -1,6 +1,6 @@
 pkgbase = clipgrab-kde
 	pkgdesc = A video downloader and converter for YouTube, Veoh, DailyMotion, MyVideo, ...
-	pkgver = 3.8.1
+	pkgver = 3.8.2
 	pkgrel = 1
 	url = https://clipgrab.org
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = clipgrab-kde
 	optdepends = ffmpeg: for the conversion functionality
 	provides = clipgrab
 	conflicts = clipgrab
-	source = https://download.clipgrab.org/clipgrab-3.8.1.tar.gz
+	source = https://download.clipgrab.org/clipgrab-3.8.2.tar.gz
 	source = clipgrab.desktop
-	source = https://gitlab.com/kikadf/clipgrab-qt5/raw/master/clipgrab-3.8.1-kde.patch
-	sha256sums = e4ab4a1337eeaa1fb06d638afd86414b9bdff5606e1a7a1e396f19cfd017dd3e
+	source = https://gitlab.com/kikadf/clipgrab-qt5/raw/master/clipgrab-3.8.2-kde.patch
+	sha256sums = ad95bd33cffa776e1456ad8b6e61b03b46035b97b39a1a4b29aedc466bd81136
 	sha256sums = 840910097d8c129ea12c395c4a33f562591e878e521c98fde8a7b3f9403aa23f
-	sha256sums = bd53c8b3130eb2a3bc908f7595bd52ef6a15b8bc3cfca89cbdef397404c3c5a5
+	sha256sums = 7be395e3e034fba8760057b96c4cc6a684d96a1444225246bbc4b787ec8b7e84
 
 pkgname = clipgrab-kde
 
