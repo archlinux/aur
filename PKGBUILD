@@ -9,7 +9,7 @@ url="http://github.com/defunkt/pystache"
 license=('MIT')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/defunkt/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('f7bbc265fb957b4d6c7c042b336563179444ab313fb93a719759111eabd3b85a')
+sha256sums=('163f5b8fb45f6be3a5074a53a47e79ef51ec015ee43f3ec34b16be279147c96f')
 
 build() {
 	cd "$_pkgname-$pkgver"
