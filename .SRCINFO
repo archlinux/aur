@@ -1,0 +1,16 @@
+pkgbase = md4c-git
+	pkgdesc = A Markdown parser implementation in C
+	pkgver = release.0.3.0.rc.r6.gcbae179
+	pkgrel = 1
+	url = https://github.com/mity/md4c
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	conflicts = md4c
+	source = git+https://github.com/mity/md4c.git
+	sha256sums = SKIP
+
+pkgname = md4c-git
+
