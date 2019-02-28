@@ -1,0 +1,13 @@
+pkgbase = elasticsearch-ingest-user-agent
+	pkgdesc = Ingest processor that extracts information from a user agent
+	pkgver = 6.6.1
+	pkgrel = 1
+	url = https://www.elastic.co/guide/en/elasticsearch/plugins/current/ingest-user-agent.html
+	arch = any
+	license = Apache
+	depends = elasticsearch=6.6.1
+	source = https://artifacts.elastic.co/downloads/elasticsearch-plugins/ingest-user-agent/ingest-user-agent-6.6.1.zip
+	sha256sums = 3618a2f3dbbd9d9d1702962f50313ef4589b5bcb054d3eabd0636e8cd423f065
+
+pkgname = elasticsearch-ingest-user-agent
+
