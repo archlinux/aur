@@ -2,7 +2,7 @@
 plugin=ingest-geoip
 pkgname=elasticsearch-$plugin
 pkgver=6.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ingest processor that uses looksup geo data based on ip adresses using the Maxmind geo database"
 url="https://www.elastic.co/guide/en/elasticsearch/plugins/current/${plugin}.html"
 arch=('any')
@@ -16,5 +16,8 @@ package() {
 	rm "$plugin-$pkgver.zip"
 	rm LICENSE.txt
 	install -dm 0755 "$pkgdir/usr/share/elasticsearch/plugins/$plugin"
+	install -dm 0755 "$pkgdir/etc/elasticsearch/$plugin"
+	cp -r config/* "$pkgdir/etc/elasticsearch/$plugin"
+	rm -rf config
 	cp -r * "$pkgdir/usr/share/elasticsearch/plugins/$plugin"
 }
