@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=emerald-icon-theme-git
-pkgver=2018.02.02.r17.g0314083
+pkgver=2018.02.02.r18.ge2d3520
 pkgrel=1
 pkgdesc="Fresh and simple personality icon theme"
 arch=('any')
