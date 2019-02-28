@@ -11,7 +11,6 @@ pkgbase = sonarrannounced-git
 	depends = python-flask-httpauth
 	depends = python-pluginbase
 	depends = python-pony
-	depends = python-profile
 	depends = python-pydle
 	depends = python-requests
 	depends = python-tornado
