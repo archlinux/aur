@@ -18,6 +18,7 @@ pkgbase = carnet
 	depends = libnotify
 	depends = libxss
 	depends = libxtst
+	depends = curl
 	source = carnet.desktop
 	source = carnet.install
 	source = carnet.AppImage::https://qn.phie.ovh/binaries/desktop/daily/Carnet-0.12.1-x86_64.AppImage
