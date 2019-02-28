@@ -7,8 +7,8 @@ pkgbase = python-attrdict
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://github.com/bcj/attrdict/archive/v2.0.0.tar.gz
-	sha256sums = e779bdb2824498311fd82068ff62c1ac01c2049a5766230f7ead2a80f4d81ed7
+	source = https://files.pythonhosted.org/packages/source/a/attrdict/attrdict-2.0.0.tar.gz
+	sha256sums = 86aeb6d3809e0344409f8148d7cac9eabce5f0b577c160b5e90d10df3f8d2ad3
 
 pkgname = python-attrdict
 

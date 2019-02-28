@@ -2,6 +2,7 @@
 
 pkgbase=python-attrdict
 pkgname=('python-attrdict' 'python2-attrdict')
+_name=${pkgname#python-}
 pkgver=2.0.0
 pkgrel=1
 pkgdesc="A library that provides mapping objects that allow their elements to be accessed both as keys and as attributes."
@@ -9,8 +10,8 @@ arch=('any')
 url="https://github.com/bcj/attrdict"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://github.com/bcj/attrdict/archive/v$pkgver.tar.gz")
-sha256sums=('e779bdb2824498311fd82068ff62c1ac01c2049a5766230f7ead2a80f4d81ed7')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('86aeb6d3809e0344409f8148d7cac9eabce5f0b577c160b5e90d10df3f8d2ad3')
 
 prepare() {
   cp -a AttrDict-$pkgver{,-py2}
