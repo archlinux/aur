@@ -54,10 +54,10 @@ package(){
 
   # Install static lib
   _static_lib_name=`ls libopenblas_*.a`
-  install -Dm644 ${_static_lib_name} "${pkgdir}/usr/aarch64-linux-gnu/lib/${_static_lib_name}"
+  install -Dm644 ${_static_lib_name} "${pkgdir}/usr/arm-linux-gnueabihf/lib/${_static_lib_name}"
 
   # Symlink to provide blas, cblas, lapack and lapacke
-  cd "${pkgdir}/usr/aarch64-linux-gnu/lib/"
+  cd "${pkgdir}/usr/arm-linux-gnueabihf/lib/"
   # Static lib
   ln -sf ${_static_lib_name} libopenblas.a
   # BLAS
