@@ -1,8 +1,8 @@
 # Maintainer: Amanoel Dawod <amanoel at outlook dot com>
 
 pkgname=konsole-gruvbox
-pkgver=1.00
-pkgrel=3
+pkgver=1.01
+pkgrel=1
 pkgdesc="Konsole dark and light color schemes based on Gruvbox palette"
 arch=("any")
 url="https://github.com/morhetz/gruvbox"
@@ -10,8 +10,8 @@ license=('MIT')
 depends=("konsole")
 source=('GruvboxDark.colorscheme'
         'GruvboxLight.colorscheme')
-sha256sums=('df484157f89006c8adbaf23e3b76d2315db374b8fd97c13c99cd9e309d495cb1'
-            'ec1658920979a45768cfb488a1e5e6c332f7dfe7019342916cd1b993131f4ec6')
+sha256sums=('af89228936f355ab10cdccb4eb1a237f41ff91740310ccc44cac3695eacf8429'
+            '0afe40ca64e2cc5e692f700a3389b5e004903f496709e4ff633c0cc1a23c5c1f')
 
 package() {
     install -Dm644 Gruvbox{Dark,Light}.colorscheme -t "$pkgdir/usr/share/konsole"
