@@ -2,7 +2,7 @@
 
 pkgname=snow-theme-git
 _pkgname=snow
-pkgver=17.ad35149
+pkgver=r17.ad35149
 pkgrel=2
 pkgdesc="Light Gtk theme with some gradients"
 arch=("any")
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
   	cd "${srcdir}/${_pkgname}"
 
-	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
