@@ -6,7 +6,7 @@
 pkgname=lib32-systemd-git
 _pkgname=lib32-systemd
 _pkgbasename=systemd
-pkgver=241.323
+pkgver=241.338
 pkgrel=1
 pkgdesc='system and service manager (32-bit, git version)'
 arch=('x86_64')
@@ -14,7 +14,6 @@ url='https://www.github.com/systemd/systemd'
 license=('GPL2' 'LGPL2.1')
 depends=('lib32-gcc-libs' 'lib32-libcap' 'lib32-libgcrypt' 'lib32-xz' 'systemd')
 provides=("$_pkgname")
-replaces=("$_pkgname")
 conflicts=("$_pkgname")
 makedepends=('gcc-multilib' 'git' 'gperf' 'intltool' 'lib32-acl' 'lib32-bzip2'
              'lib32-curl' 'lib32-dbus' 'lib32-gcc-libs' 'lib32-glib2'
@@ -58,6 +57,8 @@ build() {
   local _meson_options=(
     --libexecdir	/usr/lib32
     --libdir		/usr/lib32
+
+    -Dversion-tag="${pkgver}-${pkgrel}-git"
 
     -Daudit=false
     -Dgnu-efi=false
