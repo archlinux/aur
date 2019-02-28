@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=wxParaver
+Terminal=false
+Exec=wxparaver
+Hidden=false
+Name[en_US.UTF8]=wxParaver.destop
