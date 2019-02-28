@@ -10,7 +10,7 @@ pkgdesc='Carnet is a complete and rich note taking app for Android and Linux wit
 arch=('i386' 'x86_64')
 url='https://github.com/PhieF/CarnetDocumentation'
 license=('GPLv3')
-depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types' 'libappindicator-gtk3' 'gconf' 'libindicator-gtk3' 'libnotify' 'libxss' 'libxtst')
+depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types' 'libappindicator-gtk3' 'gconf' 'libindicator-gtk3' 'libnotify' 'libxss' 'libxtst' 'curl')
 install=carnet.install
 source=('carnet.desktop'
 	'carnet.install'
