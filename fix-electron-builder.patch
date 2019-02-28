@@ -1,0 +1,19 @@
+Only in package.new/: Rocket.Chat.Electron-2.15.0
+diff -ura package.orig/electron-builder.json package.new/electron-builder.json
+--- package.orig/electron-builder.json	2019-02-28 10:01:42.724497392 +0100
++++ package.new/electron-builder.json	2019-02-28 10:01:21.624276060 +0100
+@@ -78,12 +78,10 @@
+     ],
+     "artifactName": "rocketchat-${version}-${arch}.${ext}"
+   },
++  "electronDist": "/usr/lib/electron",
+   "linux": {
+     "target": [
+-      "tar.gz",
+-      "deb",
+-      "rpm",
+-      "snap"
++      "dir"
+     ],
+     "executableName": "rocketchat-desktop",
+     "category": "GNOME;GTK;Network;InstantMessaging",
