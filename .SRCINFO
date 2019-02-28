@@ -1,0 +1,16 @@
+pkgbase = python-caja
+	pkgdesc = Python binding for Caja components
+	pkgver = 1.20.2
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = caja
+	depends = python2-gobject
+	depends = python2
+	source = http://pub.mate-desktop.org/releases/1.20/python-caja-1.20.2.tar.xz
+	sha1sums = 096d13d711090ccf53475af4d5fa7ae6b6badfdf
+
+pkgname = python-caja
+
