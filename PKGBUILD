@@ -2,11 +2,11 @@
 
 pkgname=fdk-aac-free
 pkgver=0.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc='The Third-Party Modified Version of the Fraunhofer FDK AAC Codec Library for Android is software that implements part of the MPEG Advanced Audio Coding ("AAC") encoding and decoding scheme for digital audio.'
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url='https://cgit.freedesktop.org/~wtay/fdk-aac/log/?h=fedora'
-license=(FDK-AAC)
+license=(custom:FDK-AAC)
 makedepends=(git)
 provides=(libfdk-aac libfdk-aac.so)
 conflicts=(libfdk-aac)
