@@ -2,8 +2,8 @@
 
 pkgname=macterial-theme-git
 _pkgname=macterial
-pkgver=26.4311b24
-pkgrel=1
+pkgver=r26.4311b24
+pkgrel=2
 pkgdesc="A mac inspired Gtk+ theme based on Material design"
 arch=("any")
 url="https://github.com/mythio/${_pkgname}"
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 pkgver() {
   	cd "${srcdir}/${_pkgname}"
 
-	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
