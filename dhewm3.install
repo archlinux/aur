@@ -1,0 +1,8 @@
+post_install() {
+  cat <<MSG
+You have to copy the Doom 3 *.pk4 files to /usr/share/dhewm3.
+
+If you have Doom 3: Resurrection of Evil, you may also copy its
+*.pk4 files into the d3xp directory.
+MSG
+}
