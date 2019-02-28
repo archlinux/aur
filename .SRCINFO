@@ -1,0 +1,30 @@
+pkgbase = sonarrannounced-git
+	pkgdesc = Manage and download subtitles for Sonarr and Radarr.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/morpheus65535/sonarrannounced
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-flask
+	depends = python-flask-httpauth
+	depends = python-pluginbase
+	depends = python-pony
+	depends = python-profile
+	depends = python-pydle
+	depends = python-requests
+	depends = python-tornado
+	depends = python-unidecode
+	depends = python-pythreadworker
+	source = git+https://github.com/l3uddz/sonarrAnnounced
+	source = sonarrannounced.service
+	source = sonarrannounced.sysusers
+	source = sonarrannounced.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 8841fb9e4ff0da07b71debbcf772ff1d1fc1d74681055de577ca99f5cba93f4e
+	sha256sums = d7cd3fa3fc32b4265bd2bf7f1b618c262ae818fa06e72c745e53b7a3803a6616
+	sha256sums = a4f91723507f1c356282b26558096994f3d4e2a5d49a012e0441fc4d7ea60aff
+
+pkgname = sonarrannounced-git
+

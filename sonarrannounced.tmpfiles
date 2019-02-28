@@ -1,0 +1,5 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/sonarrannounced 0755 sonarrannounced sonarrannounced
+Z /var/lib/sonarrannounced - sonarrannounced sonarrannounced
+Z /usr/lib/sonarrannounced - sonarrannounced sonarrannounced
+L /var/log/sonarrannounced - - - - /var/lib/sonarrannounced/log
