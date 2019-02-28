@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=flutter-beta
-pkgver=1.1.8
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
@@ -27,7 +27,7 @@ install="${pkgname%-beta}.install"
 source=("${pkgname%-beta}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/beta/linux/${pkgname%-beta}_linux_v${pkgver}-beta.tar.xz"
         "${pkgname%-beta}.sh"
         "${pkgname%-beta}.csh")
-sha256sums=("faf14d93a5e1fb8d0fb44c8855fbdc97844d686001c1257d0aad02e2754cd588"
+sha256sums=("4b4fafef0104d536cc50b8100820378328f7c7410e984ca7cd814743a174edf6"
             "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
             "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f")
 
