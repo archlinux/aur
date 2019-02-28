@@ -1,0 +1,13 @@
+[Desktop Entry]
+Exec=/usr/bin/carnet %U
+GenericName[ru_RU]=Carnet - это полноценное приложение для заметок для Android и Linux с возможностью синхронизации
+GenericName=Carnet is a complete and rich note taking app for Android and Linux with sync capabilities
+Icon=/usr/share/icons/hicolor/512x512/apps/carnet.png
+Name[ru_RU]=Carnet
+Name=Carnet
+StartupNotify=true
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=unique
+StartupWMClass=Carnet
+Categories=Office;

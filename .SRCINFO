@@ -1,0 +1,29 @@
+pkgbase = carnet
+	pkgdesc = Carnet is a complete and rich note taking app for Android and Linux with sync capabilities
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/PhieF/CarnetDocumentation
+	install = carnet.install
+	arch = i386
+	arch = x86_64
+	license = GPLv3
+	depends = dbus-glib
+	depends = gtk3
+	depends = libxt
+	depends = nss
+	depends = mime-types
+	depends = libappindicator-gtk3
+	depends = gconf
+	depends = libindicator-gtk3
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	source = carnet.desktop
+	source = carnet.install
+	source = carnet.AppImage::https://qn.phie.ovh/binaries/desktop/daily/Carnet-0.12.1-x86_64.AppImage
+	sha512sums = 5627f8463af368c1208dc7de81f8c957ea03584fe0bd95a5eaebb258c7c6c7024c7014e2f78dea2a411fad58753b4155c86ffa7e2a94954f143edf5c7f264348
+	sha512sums = f8699c39bb4fc4bd097077f5cee4b1269875711497eb4aa1e5ff695eaf1bf1f9403f7dd5c8e9fe84623b3408059f762d9c51a07754bd86b5017f6b3392fe08b3
+	sha512sums = SKIP
+
+pkgname = carnet
+

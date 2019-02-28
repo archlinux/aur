@@ -1,0 +1,13 @@
+post_install() {
+   update-desktop-database -q
+   xdg-icon-resource forceupdate
+   xdg-desktop-menu forceupdate
+   gtk-update-icon-cache
+}
+
+post_upgrade() {
+   update-desktop-database -q
+   xdg-icon-resource forceupdate
+   xdg-desktop-menu forceupdate
+   gtk-update-icon-cache
+}
