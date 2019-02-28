@@ -1,32 +1,34 @@
-# Submitter: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
-# Maintainer: Andrés J. Díaz <ajdiaz@ajdiaz.me>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Contributor: Andrés J. Díaz <ajdiaz@ajdiaz.me>
 
-_pkgname=olm
 pkgname=libolm
-pkgver=2.3.0
+_pkgname=olm
+pkgver=3.0.0
 pkgrel=1
-pkgdesc='An implementation of a well known cryptographic ratchet in C++'
-arch=('i686' 'x86_64' 'armv7h')
-url="https://matrix.org/git/olm/"
+pkgdesc='An implementation of the Double Ratchet cryptographic ratchet in C++'
+arch=('x86_64' 'i686' 'armv7h')
+url="https://git.matrix.org/git/olm/about/"
 license=('Apache')
 depends=('gcc-libs')
-source=("https://matrix.org/git/$_pkgname/snapshot/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('77d6d3d03c5cb9a866825fee1d684f491d4772835a858cd16e0a8e9f67dfbb8b')
+source=("https://git.matrix.org/git/$_pkgname/snapshot/$_pkgname-$pkgver.tar.bz2")
+sha512sums=('4d83d7222f9fbc238a97156e4d22a6215e922c3e2567751b84243fb5081a9dd20d176fc7f187ccf92139a8fd7f36e851785def7fd448374c971964e4ba674dd6')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
+  # TODO: Switch build process to CMake as recommended by upstream
   make
 }
 
 check() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
   CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
   make test
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  cd "$_pkgname-$pkgver"
+  make DESTDIR="$pkgdir" PREFIX=/usr install
 }
 
 # vim:set ts=2 sts=2 sw=2 et:
