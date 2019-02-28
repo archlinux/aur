@@ -1,19 +1,18 @@
 pkgbase = python-download-npo
 	pkgdesc = Download videos from the Dutch npo.nl site.
 	pkgver = 2.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://arp242.net/code/download-npo
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	depends = hicolor-icon-theme
 	optdepends = tk: Graphical frontend
 	optdepends = libmms: Download older MMS videos
 	optdepends = python-mutagen: Update metada of downloaded files
 	source = https://github.com/Carpetsmoker/download-npo/archive/version-2.9.1.tar.gz
-	source = LICENSE
 	sha256sums = b7a69f55b31750f1f12842cbb4f133442986abba4b3a2533a522d6c5af42bc68
-	sha256sums = 6976e1dd59a0e0fb1b0e32a8a53eb6502485550be941560bcacb78901e5cd096
 
 pkgname = python-download-npo
 
