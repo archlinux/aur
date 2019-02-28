@@ -2,13 +2,13 @@
 
 pkgname=stl-thumb
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc="A fast lightweight thumbnail generator for STL files"
 url='https://github.com/unlimitedbacon/stl-thumb'
 source=(git://github.com/unlimitedbacon/stl-thumb.git)
 depends=('libgl')
-makedepends=("rust")
+makedepends=("rust" "git")
 arch=("i386" "x86_64")
 sha256sums=('SKIP')
 
