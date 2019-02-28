@@ -31,9 +31,9 @@ provides=('firefox')
 source=("hg+$_repo"
         $_pkgname.desktop
         $_pkgname-symbolic.svg)
-sha256sums=('SKIP'
-            '677e1bde4c6b3cff114345c211805c7c43085038ca0505718a11e96432e9811a'
-            '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
+sha512sums=('SKIP'
+            'a690cd649ff0700468ae99372fc1dc52f2dd27fb0cb14d3378c6701f2f05f473866fed1a4266a6574049df891b27d5c9025ed90daa56830532142ca3f2ef7716'
+            'ba7db9a7c95a051bcd84e4c09c802fc55ee3c0d1d06ec1b169b04e414259b75bbe92fe584aee41a1e3f71e71c160df8bedf5393449e5024110ed27dbc0579ea8')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
