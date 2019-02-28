@@ -1,13 +1,13 @@
 pkgbase = aminal-git
 	pkgdesc = Golang terminal emulator from scratch
-	pkgver = r416.0ac4484
+	pkgver = r422.a2f23c7
 	pkgrel = 1
 	url = https://github.com/liamg/aminal
 	arch = x86_64
 	arch = i686
-	license = GPL
+	license = GPL3
 	makedepends = go
-	source = aminal::git+https://github.com/liamg/aminal.git
+	source = aminal-git::git+https://github.com/liamg/aminal
 	sha256sums = SKIP
 
 pkgname = aminal-git
