@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=gogololcat-git
-pkgver=3.236b66e
-pkgrel=1
+pkgver=r3.236b66e
+pkgrel=2
 pkgdesc="golang implementation of lolcat"
 url="https://github.com/vbatts/gogololcat/"
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -27,7 +27,7 @@ prepare() {
 
 	cd "${srcdir}/go/src/github.com/vbatts/gogololcat"
 
-	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
+	export GOPATH="${srcdir}/go"
 	go get -v ./...
 }
 
@@ -36,7 +36,7 @@ build() {
 
 	mkdir -p build
 
-	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
+	export GOPATH="${srcdir}/go"
 	go build -ldflags "-s -w" \
 		-gcflags="all=-trimpath=${GOPATH}/src" \
 		-asmflags="all=-trimpath=${GOPATH}/src" \
