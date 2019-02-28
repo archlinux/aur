@@ -1,0 +1,30 @@
+pkgbase = acestream-engine-stable
+	pkgdesc = P2P utility for efficient data storage and transfer (stable version)
+	pkgver = 3.1.16
+	pkgrel = 1
+	url = http://acestream.org/
+	install = acestream-engine.install
+	arch = x86_64
+	license = custom
+	depends = net-tools
+	depends = openssl-1.0
+	depends = python2-apsw
+	depends = python2-lxml
+	depends = python2-setuptools
+	depends = python2-typing
+	depends = python2-xlib
+	optdepends = python2-libappindicator: GTK2 GUI
+	provides = acestream-engine
+	conflicts = acestream-engine
+	backup = opt/acestream/acestream.conf
+	source = acestream-engine.service
+	source = acestream-engine-stable-3.1.16.tar.gz::http://dl.acestream.org/linux/acestream_3.1.16_ubuntu_16.04_x86_64.tar.gz
+	source = python2-m2crypto-0.24.0.tar.xz::https://archive.archlinux.org/packages/p/python2-m2crypto/python2-m2crypto-0.24.0-4-x86_64.pkg.tar.xz
+	source = LICENSE
+	sha256sums = 9446e4c36c2e92b4253a1c3fea5fa30d366d46295dcd1f1cac4ddfe8f002fcbe
+	sha256sums = 452bccb8ae8b5ff4497bbb796081dcf3fec2b699ba9ce704107556a3d6ad2ad7
+	sha256sums = 177c22681be64a7533b3303652da8724aa20edcbead87be90765bc5040f4cff5
+	sha256sums = SKIP
+
+pkgname = acestream-engine-stable
+
