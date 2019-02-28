@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=ubports-installer
+Comment=UBports Installer
+Exec=ubports-installer
+Terminal=false
+Type=Application
+Icon=ubports-installer

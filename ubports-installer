@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec electron2 /usr/share/ubports-installer/app.asar
