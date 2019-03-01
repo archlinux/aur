@@ -1,13 +1,13 @@
 pkgbase = tmux-xpanes
 	pkgdesc = Create multiple panes with ultimate terminal divider.
-	pkgver = 3.1.1
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/greymd/tmux-xpanes
 	arch = any
 	license = MIT
 	depends = tmux
-	source = https://github.com/greymd/tmux-xpanes/archive/v3.1.1.tar.gz
-	md5sums = 118f5dcb798149b2f1c844987e513887
+	source = https://github.com/greymd/tmux-xpanes/archive/v4.0.0.tar.gz
+	md5sums = 961ab49b0ba460d342d8cac006581b6a
 
 pkgname = tmux-xpanes
 
