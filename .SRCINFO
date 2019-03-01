@@ -1,6 +1,6 @@
 pkgbase = yagostatus-git
 	pkgdesc = Yet Another i3status replacement written in Go.
-	pkgver = 0.2.0.r0.g7cb8559
+	pkgver = v0.4.0.r1.g32dbd57
 	pkgrel = 1
 	url = https://github.com/burik666/yagostatus
 	arch = x86_64
