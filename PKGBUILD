@@ -2,11 +2,11 @@
 
 _plug=minsharp
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r4.1.gce01b8f
+pkgver=r4.2.gf90c5a7
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
-url='http://forum.doom9.org/showthread.php?t=173328'
+arch=('x86_64')
+url='https://forum.doom9.org/showthread.php?t=173328'
 license=('GPL')
 depends=('vapoursynth')
 makedepends=('git')
@@ -21,6 +21,8 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p build
+
   cd "${_plug}"
   rm -fr src/VapourSynth.h src/VSHelper.h
 
@@ -29,14 +31,15 @@ prepare() {
 }
 
 build() {
-  cd "${_plug}/build/unix"
+  cd build
   CXXFLAGS+=" $(pkg-config --cflags vapoursynth)" \
-  ./configure \
+  ../"${_plug}"/build/unix/configure \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
+
   make
 }
 
 package(){
-  make -C "${_plug}/build/unix" DESTDIR="${pkgdir}" install
+  make -C build DESTDIR="${pkgdir}" install
 }
