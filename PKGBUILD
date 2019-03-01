@@ -3,7 +3,7 @@
 
 pkgname=python2-pafy-git
 _pkgname=python2-pafy
-pkgver=v0.3.82r1.g061d9b5
+pkgver=v0.5.4r20.ga23a227
 pkgrel=1
 pkgdesc="Python API for YouTube"
 url='https://pypi.org/project/pafy/'
@@ -12,10 +12,10 @@ license=('GPL3')
 provides=('python2-pafy')
 
 makedepends=('git')
-depends=('python2')
+depends=('python2' 'python2-youtube-dl')
 conflicts=('')
 
-source=("$_pkgname::git+https://github.com/mps-youtube/pafy.git#branch=0.3.x")
+source=("$_pkgname::git+https://github.com/mps-youtube/pafy.git")
 md5sums=('SKIP')
 
 pkgver() {
