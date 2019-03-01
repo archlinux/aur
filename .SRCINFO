@@ -1,0 +1,17 @@
+pkgbase = caja-pdf-tools
+	pkgdesc = A set of tools to work with PDF documents from Caja.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://www.atareao.es/aplicacion/pdf-tools-o-modificar-pdf-en-linux/#
+	arch = any
+	license = GPL3
+	makedepends = python-distutils-extra
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-polib
+	provides = caja-pdf-tools
+	source = caja-pdf-tools-1.1.0.tar.xz::https://launchpad.net/~atareao/+archive/ubuntu/caja-extensions/+sourcefiles/caja-pdf-tools/1.1.0-0extras16.04.1/caja-pdf-tools_1.1.0-0extras16.04.1.tar.xz
+	sha256sums = 4cb2e153bf14546a18fa38c34314b688c5630059e4dc479e7993a46bd948ffbe
+
+pkgname = caja-pdf-tools
+
