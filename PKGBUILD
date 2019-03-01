@@ -1,6 +1,6 @@
 # Maintainer: strahe <u@strahe.com>
 pkgname=nap-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 epoch=
 pkgdesc="A fast reverse proxy client for napyy.com"
