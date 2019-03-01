@@ -3,20 +3,20 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=pacman-static
-pkgver=5.1.2
+pkgver=5.1.3
 _cares_ver=1.15.0
 _nghttp2_ver=1.36.0
 _curlver=7.64.0
-_sslver=1.1.1a
+_sslver=1.1.1b
 _xzver=5.2.4
 _bzipver=1.0.6
 _zstdver=1.3.8
 _libarchive_ver=3.3.3
 _gpgerrorver=1.35
-_libassuanver=2.5.2
+_libassuanver=2.5.3
 _gpgmever=1.12.0
 _gnupgver=2.2.12
-pkgrel=3
+pkgrel=1
 pkgdesc="Statically-compiled pacman (to fix or install systems without libc)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
@@ -58,14 +58,14 @@ source+=("https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-${_gpgmever}.tar.bz2"{,.s
 # libarchive
 source+=("libarchive-${_libarchive_ver}.tar.gz::https://github.com/libarchive/libarchive/archive/v${_libarchive_ver}.tar.gz")
 
-sha512sums=('3c123005587359315ab0c24d50a58d10f365eb92b24840213559cd951c863beaa2e3805bf728975fdae55dc2619e1c2dfeafaef2ee57f3882a30c4d5e8777750'
+sha512sums=('b556b6d01d651a675ce1e153ede776e682ca0eb671cd2be00d7b7c602504dd119291f38ef5c318e675b4ce865db7e1c57e0ebc157510f0fc72e656feb8947e54'
             'SKIP'
             '4e0d5c5cdb4f1b7e5f12790850237f36649af4aa9596033392725972e4e0e5a33bb78bd1aa0735e35e489b523b7e9a236a7b5847dfca69bd7583fcab36c13c76'
             'a1de6c5e7e1a6a13c926aae690e83d5caa51e7313d63da1cf2af6bc757c41d585aad5466bc3ba7b7f7793cb1748fa589f40972b196728851c8b059cfc8c3be50'
             'SKIP'
             'ea0e68f9cbf2eb4f235d8506962dcc7709f769ef3526c0e4c130fdaf7186a1a13b303c6ce919cb9125bbf7c64ddf4f8efb3d9269b906f856e6d7b3def027fb81'
             'SKIP'
-            '1523985ba90f38aa91aa6c2d57652f4e243cb2a095ce6336bf34b39b5a9b5b876804299a6825c758b65990e57948da532cca761aa12b10958c97478d04dd6d34'
+            'b54025fbb4fe264466f3b0d762aad4be45bd23cd48bdb26d901d4c41a40bfd776177e02230995ab181a695435039dbad313f4b9a563239a70807a2e19ecf045d'
             'SKIP'
             '3857c298663728a465b5f95a3ef44547efbfb420d755e9dde7f20aa3905171b400e1c126d8db5c2b916c733bbd0724d8753cad16c9baf7b12dcd225a3ee04a97'
             'e5bf6eb88365d2dbdc774db49261fb9fae0544ed297891fc20f1ed223f4072cb0357cbd98146ac35b6d29410a12b6739bbd111cd57d4a225bef255ed46988578'
@@ -74,7 +74,7 @@ sha512sums=('3c123005587359315ab0c24d50a58d10f365eb92b24840213559cd951c863beaa2e
             '5c1c0a7a998b814a9edc1466f6d321b0d8ffcf927295fd5499137c9075a8823be03d98f61ea5212d1969f8d52b32e940b1cc10d1507d7702424ea2eea0e79a1b'
             '9b1983f18f44f51b89a034c15b27415f710c21ead12dd63821aa489fb4c6d4b649a658ce1d5e1f3424cee483d3243be151b8fe32a24642af4531ded508aa4ac7'
             'SKIP'
-            '1c6f87e3f785a053e6b736eb3554fa704c798c7078307391ca45961e06d9282c659c8e46d230d1f52e67acc2cc12d841f9ec0d5184443f68555d3f0d240865b3'
+            'e7ccb651ea75b07b2e687d48d86d0ab83cba8e2af7f30da2aec794808e13e6ec93f21d607db50d3431f1c23cb3a07a2793b71170e69fa2f5a82cffb81961f617'
             'SKIP'
             'c228b3df28377df882be536ada56dc9c73150048a58e591aa4495f89c854af95820152cd60139840f994c249e9c7df50d8b89eb9d6dc4ce02aa80bbfebcdd014'
             'SKIP'
