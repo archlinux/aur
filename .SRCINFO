@@ -1,8 +1,8 @@
 pkgbase = qt5-apng-plugin
-	pkgdesc = apng image plugin for Qt to support animated PNGs
-	pkgver = 1.1.0
+	pkgdesc = An apng image plugin for Qt to support animated PNGs
+	pkgver = 1.1.1
 	pkgrel = 1
-	url = https://github.com/Skycoder42/qapng
+	url = https://github.com/Skycoder42/QtApng
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -11,10 +11,10 @@ pkgbase = qt5-apng-plugin
 	depends = qt5-base
 	depends = libpng
 	optdepends = repkg: Automatically rebuild the package on dependency updates
-	source = qt5-apng-plugin-1.1.0::git+https://github.com/Skycoder42/qapng.git#tag=1.1.0
+	source = qt5-apng-plugin-1.1.1::git+https://github.com/Skycoder42/QtApng.git#tag=1.1.1
 	source = qt5-apng-plugin.rule
 	sha256sums = SKIP
-	sha256sums = 536886c68918305f12db47b6d0e6fd2ebff8b6ac41ebdab7dc2985a23e739909
+	sha256sums = eaf4fe81c8521aeec2e0eca0a369542f914a8d57234d6edde6da8d5bb9bed505
 
 pkgname = qt5-apng-plugin
 

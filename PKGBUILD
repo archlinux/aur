@@ -1,19 +1,19 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=qt5-apng-plugin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
-pkgdesc="apng image plugin for Qt to support animated PNGs"
+pkgdesc="An apng image plugin for Qt to support animated PNGs"
 arch=('i686' 'x86_64')
-url="https://github.com/Skycoder42/qapng"
+url="https://github.com/Skycoder42/QtApng"
 license=('BSD')
 depends=('qt5-base' 'libpng')
 makedepends=('git' 'qt5-tools')
 optdepends=("repkg: Automatically rebuild the package on dependency updates")
 _pkgfqn=$pkgname-$pkgver
-source=("$_pkgfqn::git+https://github.com/Skycoder42/qapng.git#tag=$pkgver"
+source=("$_pkgfqn::git+https://github.com/Skycoder42/QtApng.git#tag=$pkgver"
 		"$pkgname.rule")
 sha256sums=('SKIP'
-            '536886c68918305f12db47b6d0e6fd2ebff8b6ac41ebdab7dc2985a23e739909')
+            'eaf4fe81c8521aeec2e0eca0a369542f914a8d57234d6edde6da8d5bb9bed505')
 
 prepare() {
   mkdir -p build
@@ -22,8 +22,7 @@ prepare() {
 build() {
   cd build
 
-  qmake "../$_pkgfqn/"
-  make qmake_all
+  qmake "CONFIG+=system_libpng" "../$_pkgfqn/"
   make
 }
 
@@ -32,5 +31,5 @@ package() {
   make INSTALL_ROOT="$pkgdir" install
 
   install -D -m644 "../$_pkgfqn/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -D -m644 "../${pkgname}.rule" "$pkgdir/etc/repkg/rules/${pkgname}.rule"
+  install -D -m644 "../${pkgname}.rule" "$pkgdir/etc/repkg/rules/system/${pkgname}.rule"
 }
