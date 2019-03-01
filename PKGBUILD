@@ -2,10 +2,10 @@
 
 _plug=nnedi3
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v11.0.g737a1f0
+pkgver=v12.0.g8c35822
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=166434'
 license=('GPL2')
 depends=('vapoursynth'
@@ -25,22 +25,24 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p build
+
   cd "${_plug}"
   ./autogen.sh
 }
 
 build() {
-  cd "${_plug}"
-  ./configure \
+  cd build
+  ../"${_plug}"/configure \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
+
   make
 }
 
 package(){
-  cd "${_plug}"
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 readme.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
+  make -C build DESTDIR="${pkgdir}" install
+  install -Dm644 "${_plug}/readme.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 
   rm -fr "${pkgdir}/usr/share/nnedi3"
 }
