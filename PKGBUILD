@@ -46,14 +46,14 @@ DOCS_INFO="NO"    # Generate and install GNU info documentation.
 #######################################################################
 
 pkgname=remacs-git
-pkgver=26.0.60.132231
+pkgver=27.0.50.134612
 pkgrel=1
 pkgdesc="Development branch of REmacs, a fork of GNU Emacs with components rewritten in Rust"
 arch=('i686' 'x86_64')
 url="https://github.com/Wilfred/remacs.git"
 license=('GPL')
 depends=('gpm' 'm17n-lib' 'alsa-lib' 'imagemagick')
-makedepends=('git' 'cargo')
+makedepends=('git' 'cargo' 'clang')
 #######################################################################
 #######################################################################
 if [[ $GTK2 = "YES" ]]; then
