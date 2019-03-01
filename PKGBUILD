@@ -5,7 +5,7 @@ pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r10.1f927c8
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('x86_64')
+arch=('any')
 url='https://forum.doom9.org/showthread.php?t=171546'
 license=('LGPL2.1')
 depends=('vapoursynth')
