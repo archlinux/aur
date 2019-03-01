@@ -5,13 +5,13 @@ pkgname=grub2-theme-vimix-git
 pkgver=20170904
 pkgrel=1
 pkgdesc="Grub2 theme Vimix"
-url="https://github.com/Se7endAY/grub2-theme-vimix"
+url="https://github.com/vinceliuice/grub2-theme-vimix"
 arch=('any')
 license=('GPLv3')
 depends=('grub')
 makedepends=('git')
 install=${pkgname}.install
-source=("${pkgname}"::"git+https://github.com/Se7endAY/grub2-theme-vimix")
+source=("${pkgname}"::"git+https://github.com/vinceliuice/grub2-theme-vimix")
 conflicts=('grub2-theme-vimix')
 md5sums=('SKIP')
 
