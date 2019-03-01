@@ -9,8 +9,8 @@ arch=('any')
 url='https://gist.github.com/4re'
 license=('GPL')
 depends=('vapoursynth'
-         'vapoursynth-plugin-knlmeanscl'
-         'vapoursynth-plugin-fmtconv'
+         'vapoursynth-plugin-knlmeanscl-git'
+         'vapoursynth-plugin-fmtconv-git'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
