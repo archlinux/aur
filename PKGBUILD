@@ -14,7 +14,7 @@ license=('GPL')
 depends=('libdrm' 'pango' 'systemd')
 makedepends=('docbook-xsl')
 optdepends=('ttf-dejavu: For true type font support'
-	    'xf86-video-fbdev: Support graphic drivers that do not work on early startup')
+	    'xf86-video-fbdev: Support special graphic cards on early startup')
 provides=('plymouth')
 conflicts=('plymouth-git' 'plymouth-legacy' 'plymouth-nosystemd')
 backup=('etc/plymouth/plymouthd.conf')
