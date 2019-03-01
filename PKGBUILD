@@ -2,11 +2,11 @@
 
 _plug=mvtools_sf
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r7.0.g1ed1c2a
+pkgver=r9.7.g5dfa875
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
-url='http://forum.doom9.org/showthread.php?t=172525'
+arch=('x86_64')
+url='https://forum.doom9.org/showthread.php?t=172525'
 license=('GPL2')
 depends=('vapoursynth'
          'fftw'
@@ -25,6 +25,8 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p build
+
   cd "${_plug}"
 
   rm -fr src/VapourSynth.h src/VSHelper.h
@@ -33,9 +35,9 @@ prepare() {
 }
 
 build() {
-  cd "${_plug}"
+  cd build
   CXXFLAGS+=" $(pkg-config --cflags vapoursynth)" \
-  ./configure \
+  ../"${_plug}"/configure \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
 
@@ -43,9 +45,9 @@ build() {
 }
 
 package(){
-  cd "${_plug}"
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 src/mvmulti.py "${pkgdir}${_site_packages}/mvmulti.py"
+  make -C build DESTDIR="${pkgdir}" install
+  install -Dm644 "${_plug}/src/mvmulti.py" "${pkgdir}${_site_packages}/mvmulti.py"
+
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/mvmulti.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/mvmulti.py"
 }
