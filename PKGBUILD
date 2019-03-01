@@ -2,9 +2,9 @@
 
 pkgname=casile-git
 pkgdesc="Caleb's SILE publishing toolkit"
-pkgver=0.0.0.r657.g48713a6
+pkgver=0.0.0.r780.g71db16f
 _branch='master'
-pkgrel=2
+pkgrel=1
 arch=(any)
 url='https://github.com/alerque/casile/'
 license=('LGPL3')
