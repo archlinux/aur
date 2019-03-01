@@ -5,12 +5,18 @@
 _pipname=pantable
 pkgname=python-$_pipname
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CSV Tables in Markdown: Pandoc Filter for CSV Tables"
 arch=(any)
 url="https://github.com/ickc/$_pipname"
 license=(GPLv3)
 makedepends=("python" "python-pip")
+depends=("pandoc-include"
+         "python-click"
+         "python-future"
+         "python-panflute"
+         "python-pyyaml"
+         "python-shutilwhich")
 
 build() {
   pip install --no-deps --target="$_pipname" "$_pipname==$pkgver"
