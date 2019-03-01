@@ -1,14 +1,13 @@
 pkgbase = python-zcatalog
 	pkgdesc = Zope's indexing and search solution
-	pkgver = 4.1.1
+	pkgver = 4.3
 	pkgrel = 1
 	url = https://github.com/zopefoundation/Products.ZCatalog
 	arch = any
 	license = ZPL
 	makedepends = python-setuptools
-	depends = python
-	source = python-zcatalog-4.1.1.tar.gz::https://github.com/zopefoundation/Products.ZCatalog/archive/4.1.1.tar.gz
-	sha256sums = e0e50ae723f0cc5e244e6f86908b5e69a88468b9381632beb8924e913fa38970
+	source = python-zcatalog-4.3.tar.gz::https://github.com/zopefoundation/Products.ZCatalog/archive/4.3.tar.gz
+	sha256sums = 3569c6fa3806b29afb05ecf97ac2e82ee458c2774036504534f375302225612b
 
 pkgname = python-zcatalog
 
