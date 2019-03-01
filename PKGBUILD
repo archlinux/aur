@@ -13,7 +13,7 @@ license=(BSD3)
 makedepends=("python" "python-pip")
 depends=("python-click"
          "python-future"
-         "python-pyyaml"
+         "python-yaml"
          "python-shutilwhich")
 
 build() {

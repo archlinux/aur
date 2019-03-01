@@ -9,7 +9,7 @@ pkgbase = python-panflute
 	makedepends = python-pip
 	depends = python-click
 	depends = python-future
-	depends = python-pyyaml
+	depends = python-yaml
 	depends = python-shutilwhich
 
 pkgname = python-panflute
