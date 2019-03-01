@@ -5,8 +5,8 @@ pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r10.1f927c8
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
-url='http://forum.doom9.org/showthread.php?t=171546'
+arch=('x86_64')
+url='https://forum.doom9.org/showthread.php?t=171546'
 license=('LGPL2.1')
 depends=('vapoursynth')
 makedepends=('git')
@@ -27,5 +27,4 @@ package(){
   install -Dm644 "${_plug}/MaskDetail.py" "${pkgdir}${_site_packages}/MaskDetail.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/MaskDetail.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/MaskDetail.py"
-
 }
