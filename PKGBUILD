@@ -6,15 +6,17 @@ pkgname=('holland' 'holland-common' 'holland-lvm' 'holland-mysql'
          'holland-mysqldump' 'holland-mysqllvm' 'holland-pgdump'
          'holland-xtrabackup' 'holland-mariabackup' 'holland-mongodump')
 pkgver=1.1.12
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="http://hollandbackup.org"
 license=('BSD' 'GPL2')
 options=('emptydirs')
 makedepends=('python-setuptools')
-source=("https://github.com/holland-backup/holland/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/holland-backup/holland/archive/v${pkgver}.tar.gz"
+        "${pkgbase}-backup.github.com-${pkgver}.tar.gz::https://github.com/holland-backup/holland-backup.github.com/archive/v${pkgver}.tar.gz"
         "holland.logrotate")
 sha256sums=('ee1b0a319368c6bfccd54f596bb5cfe32bd15c67ee863d600ac33c39e4a287d1'
+            '0b74bfa21316afa94f24abea51acf7b1c94c6b7df113d8a2ecbb489001a2d6c1'
             '6b0240375e5cafe24a4e0c6fd078e42eaff4f5b2030f7fba4202d052d9a54995')
 
 prepare() {
@@ -25,6 +27,9 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
   python setup.py build
+
+  cd "${srcdir}/${pkgbase}-backup.github.com-${pkgver}"
+  make man
 
   cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.lib.common"
   python setup.py build
@@ -57,7 +62,7 @@ build() {
 package_holland() {
   pkgdesc="Pluggable backup framework focusing on databases"
   license=('BSD')
-  depends=('python' 'python-setuptools' 'python-six' 'python-future' 'python-configobj')
+  depends=('python' 'python-setuptools' 'python-six' 'python-future' 'python-configobj' 'python-sphinx')
   backup=('etc/holland/holland.conf'
           'etc/holland/backupsets/default.conf')
 
@@ -80,7 +85,6 @@ package_holland() {
   install -Dm0644 config/holland.conf "${pkgdir}/etc/holland/holland.conf"
   install -Dm0640 config/backupsets/default.conf \
     "${pkgdir}/etc/holland/backupsets/default.conf"
-# install -Dm0644 docs/man/holland.1 "${pkgdir}/usr/share/man/man1/holland.1"
   install -Dm0644 plugins/README \
     "${pkgdir}/usr/share/doc/holland/README.plugins"
   install -Dm0644 config/providers/README \
@@ -92,6 +96,9 @@ package_holland() {
 
   install -Dm0644 "${srcdir}/holland.logrotate" \
     "${pkgdir}/etc/logrotate.d/holland"
+
+  cd "${srcdir}/${pkgbase}-backup.github.com-${pkgver}"
+  install -Dm0644 _build/holland.1 "${pkgdir}/usr/share/man/man1/holland.1"
 }
 
 package_holland-common() {
