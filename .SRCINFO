@@ -7,6 +7,11 @@ pkgbase = python-pandoc-include
 	license = MIT
 	makedepends = python
 	makedepends = python-pip
+	depends = python-click
+	depends = python-future
+	depends = python-panflute
+	depends = python-shutilwhich
+	depends = python-yaml
 
 pkgname = python-pandoc-include
 
