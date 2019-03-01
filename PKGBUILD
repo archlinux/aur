@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://o.tc.ink/ddns-nap/$pkgver/nap_linux_amd64.tar.gz")
 noextract=()
-md5sums=("9657f4ce3fe9c618dcb6be7eb5fd39c9")
+md5sums=("5f60c59532b9e033f759dbbfcda690db")
 validpgpkeys=()
 
 package() {
