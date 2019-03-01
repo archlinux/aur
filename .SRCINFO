@@ -32,7 +32,7 @@ pkgbase = pyside2-git
 
 pkgname = pyside2-common-git
 	pkgdesc = LGPL Qt bindings for Python (Common Files)
-	provides = pyside2-common
+	provides = pyside2-common=5.11.2
 	conflicts = pyside2-common
 
 pkgname = python2-pyside2-git
@@ -54,7 +54,7 @@ pkgname = python2-pyside2-git
 	optdepends = qt5-webengine
 	optdepends = qt5-webkit
 	optdepends = qt5-websockets
-	provides = python2-pyside2
+	provides = python2-pyside2=5.11.2
 	conflicts = python2-pyside2
 
 pkgname = python-pyside2-git
@@ -76,6 +76,6 @@ pkgname = python-pyside2-git
 	optdepends = qt5-webengine
 	optdepends = qt5-webkit
 	optdepends = qt5-websockets
-	provides = python-pyside2
+	provides = python-pyside2=5.11.2
 	conflicts = python-pyside2
 

@@ -1,3 +1,4 @@
+# Maintainer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 # Contributor: Markus Hovorka <m.hovorka@live.de>
 # Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: lilydjwg <lilydjwg@gmail.com>
@@ -52,7 +53,7 @@ build() {
 
 package_pyside2-common-git(){
   pkgdesc="LGPL Qt bindings for Python (Common Files)"
-  provides=("pyside2-common")
+  provides=("pyside2-common=${_upver}")
   conflicts=("pyside2-common")
 
   cd "$srcdir"/$pkgbase/sources/pyside2/build-py3
@@ -69,7 +70,7 @@ package_python-pyside2-git(){
   optdepends=('qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia'
               'qt5-declarative' 'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-datavis3d' 'qt5-3d'
               'qt5-webchannel' 'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
-  provides=("python-pyside2")
+  provides=("python-pyside2=${_upver}")
   conflicts=("python-pyside2")
 
   cd "$srcdir"/$pkgbase/sources/pyside2/build-py3
@@ -87,7 +88,7 @@ package_python2-pyside2-git(){
   optdepends=('qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia'
               'qt5-declarative' 'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-datavis3d' 'qt5-3d'
               'qt5-webchannel' 'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
-  provides=("python2-pyside2")
+  provides=("python2-pyside2=${_upver}")
   conflicts=("python2-pyside2")
 
   cd "$srcdir"/$pkgbase/sources/pyside2/build-py2
