@@ -5,10 +5,10 @@ pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r3.1.g2a0f835
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=174580'
 license=('GPL3')
-depends=('libbluray'
+depends=('libbluray.so'
          'vapoursynth'
          )
 makedepends=('git')
@@ -23,13 +23,15 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p build
+
   cd "${_plug}"
   ./autogen.sh
 }
 
 build() {
-  cd "${_plug}"
-  ./configure \
+  cd build
+  ../"${_plug}"/configure \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
 
@@ -37,7 +39,6 @@ build() {
 }
 
 package(){
-  cd "${_plug}"
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  make -C build DESTDIR="${pkgdir}" install
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
