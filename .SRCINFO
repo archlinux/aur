@@ -7,6 +7,10 @@ pkgbase = python-panflute
 	license = BSD3
 	makedepends = python
 	makedepends = python-pip
+	depends = python-click
+	depends = python-future
+	depends = python-pyyaml
+	depends = python-shutilwhich
 
 pkgname = python-panflute
 
