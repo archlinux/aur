@@ -1,14 +1,15 @@
 pkgbase = gitin
 	pkgdesc = Commit/branch/workdir explorer for git
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/isacikgoz/gitin
 	arch = x86_64
 	license = BSD
+	makedepends = cmake
 	makedepends = go
 	makedepends = git
 	makedepends = libgit2
-	depends = openssl
+	makedepends = openssl
 	source = gitin-0.1.5.tar.gz::https://github.com/isacikgoz/gitin/archive/v0.1.5.tar.gz
 	sha256sums = 997b2f75487fa1590eeb0191e72e7e70b576e796f8b35ded1846771f445d2d6a
 
