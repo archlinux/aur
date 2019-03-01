@@ -1,21 +1,22 @@
 # Previous Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
-# Maintainer: Gonçalo Camelo Neves Pereira <goncalo_pereira@outlook.pt>
+# Previous Maintainer: Gonçalo Camelo Neves Pereira <goncalo_pereira@outlook.pt>
+# Maintainer: midgard <arch dot midgard "at symbol" janmaes "youknowwhat" com>
 pkgname=libdart
-pkgver=6.5.0
-pkgrel=2
+pkgver=6.7.3
+pkgrel=1
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
 url="http://dartsim.github.io"
 license=('BSD')
 depends=('assimp' 'boost' 'eigen>=3' 'fcl' 'flann' 'glut' 'libccd' 'libgl'
-         'urdfdom')
+         'urdfdom' 'octomap')
 optdepends=('bullet: Bullet support'
             'coin-or-ipopt: Ipopt support'
             'nlopt: NLopt support')
 makedepends=('cmake' 'doxygen')
 _name=dart
 source=(https://github.com/dartsim/${_name}/archive/v${pkgver}.tar.gz)
-sha256sums=('b4c7f4d800ae5696e6ada04bd91b299f4a5e4ff9e8e07deeed79c6923747e274')
+sha256sums=('bacee34f6c848f6bf777d2ea0c85d2000f0a831c6f5827d3d6a5b922bc48fcf8')
 
 _buildtype="Release"
 
