@@ -1,16 +1,16 @@
 pkgbase = gopherus
 	pkgdesc = Gopher client
-	pkgver = 1.0c
-	pkgrel = 3
+	pkgver = 1.1
+	pkgrel = 1
 	url = http://gopherus.sourceforge.net
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = BSD
 	depends = ncurses
 	optdepends = sdl2
-	source = http://downloads.sourceforge.net/project/gopherus/v1.0c/gopherus-1.0c.tar.gz
+	source = http://downloads.sourceforge.net/project/gopherus/v1.1/gopherus-1.1.tar.xz
 	source = gopherus.desktop
-	sha256sums = 84f5192659658bb57f6d77609654e74f9e96f7596c0e3ae10e707877d1cebaf4
+	sha256sums = ad69c9ba0d7ca568038bc0cf04e48847b61d39b766a4b937a3230ffcd7727331
 	sha256sums = b01f1fa220cb788edf5c743a35aeff169f62eefee19d5f6dee96274e8c8cfd21
 
 pkgname = gopherus
