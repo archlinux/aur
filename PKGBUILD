@@ -6,7 +6,7 @@ pkgver=v1.2.5.g6fc9be8
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
-url='http://forum.doom9.org/showthread.php?t=171246'
+url='https://forum.doom9.org/showthread.php?t=171246'
 license=('GPL')
 depends=('vapoursynth')
 makedepends=('git')
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd "${_plug}"
-  
+
   ./configure \
     --install="${pkgdir}/usr/lib/vapoursynth" \
     --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
