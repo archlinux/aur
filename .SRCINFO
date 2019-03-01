@@ -1,7 +1,7 @@
 pkgbase = gnvim-git
 	pkgdesc = GUI for neovim, without any web bloat
 	pkgver = r158.b279ea6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vhakulinen/gnvim
 	arch = i686
 	arch = x86_64
