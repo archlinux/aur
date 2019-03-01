@@ -9,7 +9,7 @@ pkgbase = nvtop
 	makedepends = cuda
 	depends = nvidia-utils
 	depends = ncurses
-	source = https://github.com/Syllo/nvtop/archive/0.3.1.tar.gz
+	source = https://github.com/Syllo/nvtop/archive/1.0.0.tar.gz
 	sha256sums = de3d7b6a889f886f3bc28c15c3c34cfb6fcb7cb7ebc9a0cc36c3c77d837029b1
 
 pkgname = nvtop
