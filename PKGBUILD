@@ -2,8 +2,8 @@
 # Contributor: Daniel Landau <daniel.landau@iki.fi>
 
 pkgname=thunderbird-conversations-git
-pkgver=r1814.0cc6d5a
-pkgrel=2
+pkgver=r1824.7495611
+pkgrel=1
 pkgdesc="GMail-like conversation view for Thunderbird"
 arch=('any')
 url="https://github.com/protz/GMail-Conversation-View"
@@ -32,7 +32,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  emid="$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf)"
+  emid="$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' addon/install.rdf)"
 
   install -d -m755 "${pkgdir}/usr/lib/thunderbird/extensions/${emid}"
   cd "${pkgdir}/usr/lib/thunderbird/extensions/${emid}"
