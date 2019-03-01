@@ -1,6 +1,6 @@
 pkgbase = holland
 	pkgver = 1.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hollandbackup.org
 	arch = any
 	license = BSD
@@ -19,6 +19,7 @@ pkgname = holland
 	depends = python-setuptools
 	depends = python-six
 	depends = python-future
+	depends = python-configobj
 	backup = etc/holland/holland.conf
 	backup = etc/holland/backupsets/default.conf
 

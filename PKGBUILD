@@ -6,7 +6,7 @@ pkgname=('holland' 'holland-common' 'holland-lvm' 'holland-mysql'
          'holland-mysqldump' 'holland-mysqllvm' 'holland-pgdump'
          'holland-xtrabackup' 'holland-mariabackup' 'holland-mongodump')
 pkgver=1.1.12
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="http://hollandbackup.org"
 license=('BSD' 'GPL2')
@@ -57,7 +57,7 @@ build() {
 package_holland() {
   pkgdesc="Pluggable backup framework focusing on databases"
   license=('BSD')
-  depends=('python' 'python-setuptools' 'python-six' 'python-future')
+  depends=('python' 'python-setuptools' 'python-six' 'python-future' 'python-configobj')
   backup=('etc/holland/holland.conf'
           'etc/holland/backupsets/default.conf')
 
