@@ -1,4 +1,4 @@
-From e0cff4a2cace32698e9531bbdbd6e5ce59b5756a Mon Sep 17 00:00:00 2001
+From 9240b22420e122770ba06fdcd38c021361384e33 Mon Sep 17 00:00:00 2001
 From: Eli Schwartz <eschwartz@archlinux.org>
 Date: Fri, 28 Sep 2018 05:19:46 +0000
 Subject: [PATCH] Revert "elf: Correct absolute (SHN_ABS) symbol run-time
@@ -18,7 +18,7 @@ This reverts commit e7feec374c635b6a29d65c39ae5e1855528fed39.
  delete mode 100644 elf/tst-absolute-sym.c
 
 diff --git a/elf/Makefile b/elf/Makefile
-index 9cf5cd8dfd..1b144d67e2 100644
+index faec577d1c..62e961d655 100644
 --- a/elf/Makefile
 +++ b/elf/Makefile
 @@ -186,7 +186,7 @@ tests += restest1 preloadtest loadfail multiload origtest resolvfail \
@@ -27,7 +27,7 @@ index 9cf5cd8dfd..1b144d67e2 100644
  	 tst-latepthread tst-tls-manydynamic tst-nodelete-dlclose \
 -	 tst-debug1 tst-main1 tst-absolute-sym tst-absolute-zero tst-big-note \
 +	 tst-debug1 tst-main1 tst-absolute-zero tst-big-note \
- 	 tst-unwind-ctor tst-unwind-main
+ 	 tst-unwind-ctor tst-unwind-main tst-audit13
  #	 reldep9
  tests-internal += loadtest unload unload2 circleload1 \
 @@ -274,7 +274,7 @@ modules-names = testobj1 testobj2 testobj3 testobj4 testobj5 testobj6 \
@@ -36,9 +36,9 @@ index 9cf5cd8dfd..1b144d67e2 100644
  		tst-nodelete-dlclose-dso tst-nodelete-dlclose-plugin \
 -		tst-main1mod tst-libc_dlvsym-dso tst-absolute-sym-lib \
 +		tst-main1mod tst-libc_dlvsym-dso \
- 		tst-absolute-zero-lib tst-big-note-lib tst-unwind-ctor-lib
+ 		tst-absolute-zero-lib tst-big-note-lib tst-unwind-ctor-lib \
+ 		tst-audit13mod1
  # Most modules build with _ISOMAC defined, but those filtered out
- # depend on internal headers.
 diff --git a/elf/dl-addr.c b/elf/dl-addr.c
 index 9d285d76a7..0dd7d1dde9 100644
 --- a/elf/dl-addr.c
@@ -174,5 +174,5 @@ index 37cab6f06b..eb01538256 100644
  /* On some architectures a pointer to a function is not just a pointer
     to the actual code of the function but rather an architecture
 -- 
-2.20.1
+2.21.0
 

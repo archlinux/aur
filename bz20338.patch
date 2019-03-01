@@ -1,4 +1,4 @@
-From 74250a7cdf106d4ca7d9506e6d5dc7c448dc3434 Mon Sep 17 00:00:00 2001
+From e7d2660cfa942ad08f4398436332f46fd620ddd0 Mon Sep 17 00:00:00 2001
 From: David Michael <david.michael@coreos.com>
 Date: Thu, 15 Dec 2016 15:22:57 -0800
 Subject: [PATCH] gshadow: Sync fgetsgent_r.c with grp/fgetgrent_r.c
@@ -10,12 +10,12 @@ Subject: [PATCH] gshadow: Sync fgetsgent_r.c with grp/fgetgrent_r.c
 	(__fgetsgent_r): Sync with __fgetgrent_r.
 	* nss/nss_files/files-sgrp.c: Fix "fgetsgent_r.c" typo.
 ---
- gshadow/fgetsgent_r.c      | 35 ++++++++++++++++++++++++-----------
+ gshadow/fgetsgent_r.c      | 33 +++++++++++++++++++++++----------
  nss/nss_files/files-sgrp.c |  2 +-
- 2 files changed, 25 insertions(+), 12 deletions(-)
+ 2 files changed, 24 insertions(+), 11 deletions(-)
 
 diff --git a/gshadow/fgetsgent_r.c b/gshadow/fgetsgent_r.c
-index b70f6fa..02cd33a 100644
+index 19a663f048..32eb7a2365 100644
 --- a/gshadow/fgetsgent_r.c
 +++ b/gshadow/fgetsgent_r.c
 @@ -20,39 +20,44 @@
@@ -70,16 +70,12 @@ index b70f6fa..02cd33a 100644
  	  *result = NULL;
  	  __set_errno (ERANGE);
  	  return errno;
-@@ -61,13 +66,21 @@ __fgetsgent_r (FILE *stream, struct sgrp *resbuf, char *buffer, size_t buflen,
-       /* Skip leading blanks.  */
-       while (isspace (*p))
- 	++p;
--    } while (*p == '\0' || *p == '#' ||	/* Ignore empty and comment lines.  */
-+    } while (*p == '\0' || *p == '#'	/* Ignore empty and comment lines.  */
+@@ -64,10 +69,18 @@ __fgetsgent_r (FILE *stream, struct sgrp *resbuf, char *buffer, size_t buflen,
+     } while (*p == '\0' || *p == '#' /* Ignore empty and comment lines.  */
  	     /* Parse the line.  If it is invalid, loop to
  		get the next line of the file to parse.  */
--	     ! parse_line (buffer, (void *) resbuf, (void *) buffer, buflen,
--			   &errno));
+-	     || ! parse_line (buffer, (void *) resbuf, (void *) buffer, buflen,
+-			      &errno));
 +	     || ! (parse_result = parse_line (p, resbuf,
 +					      (void *) buffer, buflen,
 +					      &errno)));
@@ -97,7 +93,7 @@ index b70f6fa..02cd33a 100644
    *result = resbuf;
    return 0;
 diff --git a/nss/nss_files/files-sgrp.c b/nss/nss_files/files-sgrp.c
-index 15dc659..05c3805 100644
+index 6fb880a4ba..9f66a4e327 100644
 --- a/nss/nss_files/files-sgrp.c
 +++ b/nss/nss_files/files-sgrp.c
 @@ -23,7 +23,7 @@
@@ -110,5 +106,5 @@ index 15dc659..05c3805 100644
  #define EXTERN_PARSER
  #include "files-parse.c"
 -- 
-2.7.4
+2.21.0
 

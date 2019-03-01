@@ -4,7 +4,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=glibc-git
-pkgver=2.28.r559.ga1b02ae763
+pkgver=2.29.r102.g462e83a4a0
 pkgrel=1
 pkgdesc='GNU C Library'
 arch=('i686' 'x86_64')
@@ -26,8 +26,11 @@ source=('git+https://sourceware.org/git/glibc.git'
         'bz20338.patch')
 sha256sums=('SKIP'
             '05fbb88877cdddc99ef25e48304d6e5ac236660c20925d461cb4e90ebcb3b7de'
-            '84ee34285796d7154a92cc6177920d1d9cac361f02c6ef164e13a121dec59d05'
-            '959d4f41edd004bddd9091c4d8c8c3aa07d79a04bfdb89d59f9f26fe5a74d32a')
+            '5cf67db2da1a8c421b44ed191c2822864ad6672695843409b02487da7addaf92'
+            '7ff38c08e51c4a0a3d7fd2712cf435f700bef078fb8f4e7566424ae3d1754bab')
+
+# remove default hardening for building libraries
+CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
 
 pkgver() {
     cd glibc
@@ -36,8 +39,6 @@ pkgver() {
 }
 
 prepare() {
-    mkdir -p build
-
     cd glibc
     # https://sourceware.org/bugzilla/show_bug.cgi?id=20338
     patch -p1 -i ../bz20338.patch
@@ -49,6 +50,7 @@ prepare() {
 }
 
 build() {
+    mkdir -p build
     cd build
 
     if [[ ${CARCH} = "i686" ]]; then
@@ -61,9 +63,6 @@ build() {
       printf 'sbindir=/usr/bin\n'
       printf 'rootsbindir=/usr/bin\n'
     } >> configparms
-
-    # remove fortify for building libraries
-    CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
 
     "$srcdir"/glibc/configure \
         --prefix=/usr \

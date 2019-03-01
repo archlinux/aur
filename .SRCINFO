@@ -1,6 +1,6 @@
 pkgbase = glibc-git
 	pkgdesc = GNU C Library
-	pkgver = 2.28.r559.ga1b02ae763
+	pkgver = 2.29.r102.g462e83a4a0
 	pkgrel = 1
 	url = https://www.gnu.org/software/libc/
 	install = glibc-git.install
@@ -15,7 +15,7 @@ pkgbase = glibc-git
 	depends = tzdata
 	depends = filesystem
 	optdepends = gd: graph image generation with memusage
-	provides = glibc=2.28
+	provides = glibc=2.29
 	conflicts = glibc
 	options = staticlibs
 	backup = etc/gai.conf
@@ -26,8 +26,8 @@ pkgbase = glibc-git
 	source = bz20338.patch
 	sha256sums = SKIP
 	sha256sums = 05fbb88877cdddc99ef25e48304d6e5ac236660c20925d461cb4e90ebcb3b7de
-	sha256sums = 84ee34285796d7154a92cc6177920d1d9cac361f02c6ef164e13a121dec59d05
-	sha256sums = 959d4f41edd004bddd9091c4d8c8c3aa07d79a04bfdb89d59f9f26fe5a74d32a
+	sha256sums = 5cf67db2da1a8c421b44ed191c2822864ad6672695843409b02487da7addaf92
+	sha256sums = 7ff38c08e51c4a0a3d7fd2712cf435f700bef078fb8f4e7566424ae3d1754bab
 
 pkgname = glibc-git
 	options = staticlibs
