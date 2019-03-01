@@ -3,7 +3,7 @@
 _pkgname=lammps
 pkgname=${_pkgname}-beta
 _pkgver=28Feb2019
-pkgver=20190208
+pkgver=20190228
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator."
 url="http://lammps.sandia.gov/"
