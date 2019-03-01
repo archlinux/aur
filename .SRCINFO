@@ -1,7 +1,7 @@
 pkgbase = pgbrowse
 	pkgdesc = PgBrowse is a graphical PostgreSQL client. It will allow the user to connect to a PostgreSQL database and execute SQL commands (and much more).
 	pkgver = 1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Geballin/PgBrowse
 	arch = x86_64
 	arch = i686
@@ -9,6 +9,8 @@ pkgbase = pgbrowse
 	makedepends = make
 	depends = tcl
 	depends = tk
+	depends = tcllib
+	depends = tktable
 	source = https://github.com/Geballin/PgBrowse/archive/1.9.tar.gz
 	md5sums = d0f919afbc838b116927dbe2dce5c4a1
 

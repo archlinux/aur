@@ -1,12 +1,12 @@
 # Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=pgbrowse
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="PgBrowse is a graphical PostgreSQL client. It will allow the user to connect to a PostgreSQL database and execute SQL commands (and much more)."
 url="https://github.com/Geballin/PgBrowse"
 arch=('x86_64' 'i686')
 license=('GPLv3')
-depends=('tcl' 'tk')
+depends=('tcl' 'tk' 'tcllib' 'tktable')
 optdepends=()
 makedepends=(make)
 conflicts=()
