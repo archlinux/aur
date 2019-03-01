@@ -5,10 +5,12 @@ pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r2.8766391
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/VFR-maniac/VapourSynth-ReduceFlicker'
 license=('GPL')
-depends=('vapoursynth' 'fftw')
+depends=('vapoursynth'
+         'fftw'
+         )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -27,9 +29,11 @@ prepare() {
 
 build() {
   cd "${_plug}"
-  ./configure --prefix=/usr \
-              --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth)" \
-              --extra-ldflags="${LDFLAGS}"
+  ./configure \
+    --prefix=/usr \
+    --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth)" \
+    --extra-ldflags="${LDFLAGS}"
+
   make
 }
 
