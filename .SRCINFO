@@ -1,0 +1,18 @@
+pkgbase = lammpsdoc-git
+	pkgdesc = Utilities for converting LAMMPS txt docs to Sphinx ReStructuredText
+	pkgver = r181.de814fd
+	pkgrel = 1
+	url = https://github.com/rbberger/lammps-doc-utils
+	arch = any
+	license = GPL
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	provides = lammpsdoc
+	conflicts = lammpsdoc
+	source = lammpsdoc::git+https://github.com/rbberger/lammps-doc-utils.git
+	sha256sums = SKIP
+
+pkgname = lammpsdoc-git
+
