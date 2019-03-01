@@ -2,30 +2,36 @@
 
 pkgname=astromatic-psfex
 _pkgname=psfex
-pkgver=3.17.1
+pkgver=3.21.1
 pkgrel=1
 pkgdesc="extracts models of the PSF from FITS images processed with sextractor"
-url="http://www.astromatic.net/software/psfex"
+url="http://www.astromatic.net/software/sextractor"
 arch=('x86_64')
 license=('GPL')
-depends=('fftw' 'atlas-lapack' 'astromatic-sextractor')
+depends=('astromatic-sextractor')
 makedepends=()
-conflicts=()
-replaces=()
+provides=()
 backup=()
-source=(http://www.astromatic.net/download/psfex/psfex-${pkgver}.tar.gz)
-sha1sums=('366a7bdb2609fd0453d712aab3d11fdf95604c60')
+source=(https://github.com/astromatic/psfex/archive/${pkgver}.tar.gz)
+sha1sums=('b2b33fdde68230de21cfb6868fb999b5d30fcea4')
+
 
 build() {
-  cd $srcdir/${_pkgname}-${pkgver}
-  ./configure --prefix=/usr
-  make
+
+	_COPTS="--enable-openblas --with-openblas-incdir=/usr/include"
+
+	cd $srcdir/${_pkgname}-${pkgver}
+	sh autogen.sh
+	./configure --prefix=/usr $_COPTS
+	make
 }
 
 package() {
-  cd $srcdir/${_pkgname}-${pkgver}
-  make DESTDIR="$pkgdir" install
 
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	cd $srcdir/${_pkgname}-${pkgver}
+	make DESTDIR="$pkgdir" install
+
+	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
 }
 
