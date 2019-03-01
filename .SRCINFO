@@ -5,7 +5,11 @@ pkgbase = awesome-carrot
 	url = https://pouyanh.github.io/carrot/
 	arch = any
 	license = GPL3
+	depends = awesome
 	depends = lua
+	depends = vicious
+	depends = lain
+	depends = awesome-freedesktop
 	source = awesome-carrot-1.0.0.tar.gz::https://github.com/pouyanh/carrot/archive/v1.0.0.tar.gz
 	md5sums = 4482bc06dfad33ee98d04691a6863d04
 

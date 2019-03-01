@@ -8,7 +8,7 @@ pkgdesc="Carrot awesomeWM personalization application"
 arch=('any')
 url="https://pouyanh.github.io/carrot/"
 license=('GPL3')
-depends=('awesome' 'lua' 'vicious' 'lain')
+depends=('awesome' 'lua' 'vicious' 'lain' 'awesome-freedesktop')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/pouyanh/carrot/archive/v${pkgver}.tar.gz)
 md5sums=('4482bc06dfad33ee98d04691a6863d04')
 
