@@ -5,10 +5,11 @@ pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r3.3851d25
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/Irrational-Encoding-Wizardry/fvsfunc'
 license=('GPL')
-depends=('vapoursynth-plugin-muvsfunc-git'
+depends=('capoursynth'
+         'vapoursynth-plugin-muvsfunc-git'
          'vapoursynth-plugin-nnedi3_rpow2-git'
          )
 makedepends=('git')
