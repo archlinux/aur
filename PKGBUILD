@@ -6,7 +6,7 @@ pkgver=r9
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('any')
-url='http://forum.doom9.org/showthread.php?t=166524'
+url='https://forum.doom9.org/showthread.php?t=166524'
 license=('GPL')
 depends=('vapoursynth')
 provides=("vapoursynth-plugin-${_plug}")
