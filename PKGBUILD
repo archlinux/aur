@@ -40,11 +40,13 @@ build() {
 	make
 }
 
-#check() {
-#	msg "Running unit tests"
-#	cd "${srcdir}/${_name}-${pkgver}-build"
-#	make test
-#}
+check() {
+	cd "${srcdir}/${_name}-${pkgver}-build"
+	msg "Compiling unit tests"
+	make tests
+	msg "Running unit tests"
+	make test
+}
 
 package() {
 	cd "${srcdir}/${_name}-${pkgver}-build"
