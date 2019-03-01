@@ -53,7 +53,7 @@ package_shiboken2-git() {
     cd "$srcdir"/$pkgbase/sources/shiboken2/build-py3
     make DESTDIR="$pkgdir" install
 
-    _upver=${pkgver%%.r*}
+    _upver="${pkgver%%.r*}"
     rm -rf "$pkgdir/usr/lib/python"*
     rm -rf "$pkgdir/usr/lib/libshiboken2"*
     rm -rf "$pkgdir/usr/lib/pkgconfig/"
@@ -82,7 +82,6 @@ package_python2-shiboken2-git() {
 package_python-shiboken2-git() {
     pkgdesc="Support library for Python bindings"
     depends=("python" "shiboken2-git")
-    _upver="${pkgver%%.r*}"
     provides=("python-shiboken2=${pkgver%%.r*}")
     conflicts=("python-shiboken2")
 
