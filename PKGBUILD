@@ -1,6 +1,6 @@
 #Contributor: Simon Legner <Simon.Legner@gmail.com>
 pkgname=perl-devel-camelcadedb
-pkgver=2018.3.0
+pkgver=2019.1
 pkgrel=1
 pkgdesc='Perl side of the Perl debugger for IntelliJ IDEA and other JetBrains IDE'
 _dist=Devel-Camelcadedb
@@ -32,4 +32,4 @@ package() {
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
 
-sha256sums=('4c991fa2867e41b20dca4d06f208ed630aef1b7a26ed2c81bb0c61cded2c2b16')
+sha256sums=('91cd5d51384559b6821fc61768341f57443208a871461902a400d449c0e53f94')
