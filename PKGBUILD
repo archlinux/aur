@@ -94,7 +94,7 @@ package() {
     install -Dm644 "$srcdir/tor.service"       "$pkgdir/usr/lib/systemd/system/tor.service"
     install -Dm644 "$srcdir/tor.tmpfiles"      "$pkgdir/usr/lib/tmpfiles.d/tor.conf"
     install -Dm644 "$srcdir/tor.sysusers"      "$pkgdir/usr/lib/sysusers.d/tor.conf"
-    install -Dm644 LICENSE                     "$pkgdir/usr/share/licenses/tor/LICENSE"
+    install -Dm644 LICENSE                     "$pkgdir/usr/share/licenses/tor-git/LICENSE"
 
     chown -R 43:43 "$pkgdir"/etc/tor
 }
