@@ -1,0 +1,19 @@
+pkgbase = codimd-cli-git
+	pkgdesc = A tiny CLI to perform common operations on CodiMD (formerly known as HackMD).
+	pkgver = r34.063634d
+	pkgrel = 1
+	url = https://github.com/hackmdio/codimd-cli
+	arch = any
+	license = AGPL3
+	makedepends = git
+	depends = bash
+	depends = curl
+	depends = jq
+	depends = wget
+	provides = codimd-cli
+	conflicts = codimd-cli
+	source = codimd-cli::git+https://github.com/hackmdio/codimd-cli.git
+	sha256sums = SKIP
+
+pkgname = codimd-cli-git
+
