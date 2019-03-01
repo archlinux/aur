@@ -1,0 +1,18 @@
+pkgbase = domain2idna
+	pkgdesc = The tool to convert domains the famous IDNA format.
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/funilrys/domain2idna
+	arch = any
+	license = MIT
+	depends = python3
+	depends = python-distribute
+	depends = python-setuptools
+	depends = python-colorama
+	source = https://files.pythonhosted.org/packages/source/d/domain2idna/domain2idna-1.7.0.tar.gz
+	source = https://raw.githubusercontent.com/funilrys/domain2idna/master/LICENSE
+	sha256sums = df89c0fc0494d3a9c5806842b0664ab4042b4615b0b31c37cb9f7d00b840377a
+	sha256sums = 2724d2ee7c0af6df0fb2b8e932958c0f13470078f2edfce182cbbf2a2a8a91cb
+
+pkgname = domain2idna
+
