@@ -6,14 +6,14 @@
 
 pkgname=plymouth
 pkgver=0.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A graphical boot splash screen with kernel mode-setting support"
 url="http://www.freedesktop.org/wiki/Software/Plymouth/"
 arch=('x86_64')
 license=('GPL')
-depends=('libdrm' 'pango' 'systemd' 'xf86-video-fbdev')
+depends=('libdrm' 'pango' 'systemd')
 makedepends=('docbook-xsl')
-optdepends=('ttf-dejavu')
+optdepends=('ttf-dejavu' 'xf86-video-fbdev')
 provides=('plymouth')
 conflicts=('plymouth-git' 'plymouth-legacy' 'plymouth-nosystemd')
 backup=('etc/plymouth/plymouthd.conf')
