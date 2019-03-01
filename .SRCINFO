@@ -1,0 +1,16 @@
+pkgbase = csvquote-git
+	pkgdesc = smart and simple CSV processing on the command line
+	pkgver = 0.r52.baf37fa
+	pkgrel = 1
+	url = https://github.com/dbro/csvquote
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = csvquote
+	conflicts = csvquote
+	source = csvquote-git::git+https://github.com/dbro/csvquote.git
+	md5sums = SKIP
+
+pkgname = csvquote-git
+
