@@ -2,18 +2,18 @@
 
 _plug=genericfilters
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r131.de02ff0
+pkgver=r132.209263f
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
-url='http://forum.doom9.org/showthread.php?p=1656901#post1656901'
+arch=('x86_64')
+url='https://forum.doom9.org/showthread.php?p=1656901#post1656901'
 license=('LGPL2.1')
 depends=('vapoursynth')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/myrsloik/GenericFilters.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -31,6 +31,7 @@ build() {
     --install="${pkgdir}/usr/lib/vapoursynth" \
     --extra-cflags="${CFLAGS} $(pkg-config --cflags vapoursynth)" \
     --extra-ldflags="${LDFLAGS}"
+
   make
 }
 
