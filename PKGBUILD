@@ -2,12 +2,13 @@
 # Maintainer: Alexander Boyko <4le34n at gmail dot com>
 pkgname=activemq
 pkgver=5.15.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Popular and powerful open source messaging and Integration Patterns provider"
 arch=('x86_64')
 url="http://activemq.apache.org"
 license=('Apache 2.0')
 depends=('java-runtime' 'lsb-release')
+backup=('opt/activemq/conf/activemq.xml')
 source=("http://archive.apache.org/dist/${pkgname}/${pkgver}/apache-${pkgname}-${pkgver}-bin.tar.gz"
 	profile.sh
 	profile.csh
