@@ -4,7 +4,7 @@
 # Contributor: Jose Valecillos <valecillosjg@gmail.com>
 
 pkgname=dosbox-multilib-patched
-_rev=4081
+_rev=4194
 pkgver=0.74.$_rev
 pkgrel=1
 pkgdesc="An emulator with builtin DOS for running DOS Games. 32-bit build with selected patches"
@@ -15,31 +15,36 @@ depends=(lib32-alsa-lib hicolor-icon-theme lib32-libgl lib32-libpng lib32-mesa l
 makedepends=(subversion munt-git libgl)
 provides=(dosbox)
 conflicts=(dosbox)
-source=("$pkgname::svn+https://dosbox.svn.sourceforge.net/svnroot/dosbox/dosbox/trunk#revision=$_rev"
+source=("$pkgname::svn+https://svn.code.sf.net/p/dosbox/code-0/dosbox/trunk#revision=$_rev"
 	$pkgname.desktop
-	dosbox-16.png 
-	dosbox-48.png 
+	dosbox-16.png
+	dosbox-48.png
 	dosbox-128.png
 	patches.tar.xz)
-#	dosbox_r3995_digi_pcspkr.diff
-#	dosbox-SVN-r4000-mt32-patch.diff
-#	gl.patch
-#	voodoo_linux_r4006.diff)
-#install=$pkgname.install
+options=(!strip)
 prepare() {
 	cd "$srcdir/$pkgname"
+	echo "PCSPKR"
 	patch -p0 <"../patches/dosbox_r3995_digi_pcspkr.diff"
+	echo "MT32"
 	patch -p1 <"../patches/dosbox-SVN-r4025-mt32-patch.diff"
-	patch -p0 <"../patches/nukedopl.patch"
+	echo "NUKED"
+	patch -p0 <"../patches/nukedopl_1_8.patch"
+	echo "VOODOO"
 	patch -p1 <"../patches/1_voodoo_gl.diff"
+	#patch -p0 <"../patches/pixel-perfect-alpha14.patch"
+	echo PIXEL PERFECT
+	#patch -p0 <"../patches/pp14-4157.patch"
+	patch -p0 <"../patches/pp23rc.diff"
 }
+
 build() {
 	cd $pkgname/
 	export CC='gcc -m32'
 	export CXX='g++ -m32'
 	export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 	sh autogen.sh
-	./configure --prefix=/usr --sysconfdir=/etc/dosbox --host=i686-pc-linux-gnu
+	./configure --prefix=/usr --enable-dynamic-x86 --sysconfdir=/etc/dosbox --host=i686-pc-linux-gnu
 	make
 }
 package() {
@@ -58,4 +63,4 @@ sha256sums=('SKIP'
             'e657254e56dd7d66cb1cefbf37f0f360e13a221bc60b1638c00dcda508f7fd56'
             'e71a3984170b3bf7af7d9cfbec0752187d70be76602721a1227b60980d7c380a'
             '228593e97732eaa31e0202b7d46da9d7529672369c17312db3f97784601b5d81'
-            '1bee6dba880cbeaf0ee7fc75f0812967a9ccd570b6f948194cfd1c7a570db492')
+            'e0e2d6396bec2db97dabd104002dbd597c30b8f7fbc231046605170b7403a505')
