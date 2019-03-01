@@ -2,10 +2,10 @@
 
 _plug=hqdn3d
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.c36c1b8
+pkgver=r10.eb820cb
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/Hinterwaeldlers/vapoursynth-${_plug}"
 license=('GPL')
 depends=('vapoursynth')
@@ -22,19 +22,22 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p build
+
   cd "${_plug}"
   ./autogen.sh
 }
 
 build() {
-  cd "${_plug}"
-  ./configure \
+  cd build
+  ../"${_plug}"/configure \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
+
   make
 }
 
 package(){
-  cd "${_plug}"
-  make DESTDIR="${pkgdir}" install
+  make -C build DESTDIR="${pkgdir}" install
+  install -Dm644 "${_plug}/readme.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 }
