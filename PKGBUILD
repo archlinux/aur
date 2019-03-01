@@ -2,13 +2,12 @@
 # Maintainer:  skydrome <skydrome@protonmail.com>
 
 pkgname=torsocks-git
-pkgver=2.3.0.1
+pkgver=2.3.0.1.g4c00ec8
 pkgrel=1
 pkgdesc='Torsocks allows you to use most socks-friendly applications in a safe way with Tor.'
 url='https://gitweb.torproject.org/torsocks.git'
 license=('GPL2')
 arch=('i686' 'x86_64')
-depends=('libnsl')
 conflicts=('torsocks')
 provides=('torsocks')
 backup=('etc/tor/torsocks.conf')
