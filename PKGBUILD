@@ -6,7 +6,7 @@ pkgver=r4.1.0.g7184c67
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
-url='http://forum.doom9.org/showthread.php?t=171678'
+url='https://forum.doom9.org/showthread.php?t=171678'
 license=('GPL')
 depends=('vapoursynth'
          'fftw'
@@ -23,13 +23,15 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p build
+
   cd "${_plug}"
   ./autogen.sh
 }
 
 build() {
-  cd "${_plug}"
-  ./configure \
+  cd build
+  ../"${_plug}"/configure \
      --prefix=/usr \
      --libdir=/usr/lib/vapoursynth
 
@@ -37,8 +39,7 @@ build() {
 }
 
 package(){
-  cd "${_plug}"
-  make DESTDIR="${pkgdir}" install
+  make -C build DESTDIR="${pkgdir}" install
 
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
