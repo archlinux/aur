@@ -4,7 +4,7 @@ pkgname=gnvim-git
 url="https://github.com/vhakulinen/gnvim"
 pkgdesc="GUI for neovim, without any web bloat"
 pkgver=r158.b279ea6
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('neovim' 'gtk3' 'webkit2gtk')
@@ -26,5 +26,5 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname}"
-    make DESTDIR="$pkgdir/" install
+    make PREFIX="/usr" DESTDIR="$pkgdir/" install
 }
