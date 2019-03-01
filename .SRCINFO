@@ -1,0 +1,12 @@
+pkgbase = python-pandoc-include
+	pkgdesc = Panflute filter to allow file includes
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/DCsunset/pandoc-include
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-pandoc-include
+
