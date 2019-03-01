@@ -1,0 +1,25 @@
+pkgbase = linset
+	pkgdesc = Evil Twin Attack Bash script
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/vk496/linset
+	arch = x86_64
+	license = GPL-3.0
+	depends = aircrack-ng
+	depends = curl
+	depends = dhcp
+	depends = hostapd
+	depends = wireless_tools
+	depends = lighttpd
+	depends = macchanger
+	depends = mdk3
+	depends = php-cgi
+	depends = pyrit
+	depends = python
+	depends = unzip
+	depends = xterm
+	source = linset::git+https://github.com/vk496/linset
+	md5sums = SKIP
+
+pkgname = linset
+
