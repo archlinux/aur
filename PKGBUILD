@@ -8,7 +8,8 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url="https://github.com/dubhater/vapoursynth-${_plug}"
 license=('GPL')
-depends=('vapoursynth-plugin-awarpsharp2-git'
+depends=('vapoursynth'
+         'vapoursynth-plugin-awarpsharp2-git'
          'vapoursynth-plugin-decross-git'
          'vapoursynth-plugin-fluxsmooth-git'
          'vapoursynth-plugin-hqdn3d-git'
