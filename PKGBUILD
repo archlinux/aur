@@ -1,15 +1,15 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=go-kbdgrab
-pkgver=r19.c8fbdeb
+pkgver=r22.e829367
 pkgrel=1
 pkgdesc='Key grabber written in golang for cleaning your keyboard'
 arch=(i686 x86_64)
 url='https://github.com/tonylambiris/go-kbdgrab'
 license=(BSD)
-makedepends=(go go-bindata-new-git)
-source=("git+https://github.com/tonylambiris/go-kbdgrab.git")
-md5sums=('SKIP')
+makedepends=(go)
+source=("git+https://github.com/tonylambiris/go-kbdgrab")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
@@ -17,18 +17,19 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
 prepare() {
 	cd "${srcdir}/${pkgname}"
 
 	install -m755 -d "${srcdir}/go/src/github.com/tonylambiris/"
-	cp -a "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/tonylambiris/"
+	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/tonylambiris/go-kbdgrab"
 }
 
 build() {
 	cd "${srcdir}/go/src/github.com/tonylambiris/go-kbdgrab"
 
-	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" PATH="$PATH:$GOPATH/bin" make
+	export GOPATH="${srcdir}/go"
+	export PATH="${PATH}:${GOPATH}/bin"
+	make
 }
 
 package() {
