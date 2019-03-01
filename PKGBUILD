@@ -10,7 +10,7 @@ url='https://gist.github.com/4re'
 license=('GPL')
 depends=('vapoursynth'
          'vapoursynth-plugin-tcanny-git'
-         'vapoursynth-plugin-mvtools'
+         'vapoursynth-plugin-mvtools-git'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
