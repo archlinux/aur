@@ -11,9 +11,9 @@ arch=(any)
 url="https://github.com/ickc/$_pipname"
 license=(GPLv3)
 makedepends=("python" "python-pip")
-depends=("pandoc-include"
-         "python-click"
+depends=("python-click"
          "python-future"
+         "python-pandoc-include"
          "python-panflute"
          "python-yaml"
          "python-shutilwhich")
