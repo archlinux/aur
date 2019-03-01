@@ -8,7 +8,8 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url="https://github.com/dubhater/vapoursynth-${_plug}"
 license=('GPL')
-depends=('vapoursynth-plugin-temporalmedian-git'
+depends=('vapoursynth'
+         'vapoursynth-plugin-temporalmedian-git'
          'vapoursynth-plugin-temporalsoften2-git'
          'vapoursynth-plugin-fluxsmooth-git'
          'vapoursynth-plugin-msmoosh-git'
@@ -22,7 +23,6 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git")
 sha256sums=('SKIP')
-
 
 _site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
