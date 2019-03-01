@@ -1,7 +1,7 @@
 pkgbase = kickshaw
 	pkgdesc = A menu editor for freedesktop standard menus
-	pkgver = 0.6.4
-	pkgrel = 2
+	pkgver = 0.6.5
+	pkgrel = 1
 	url = https://bitbucket.org/natemaia/kickshaw
 	arch = x86_64
 	license = GPL2
