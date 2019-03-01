@@ -1,7 +1,7 @@
 _npmname=bootlint
-_npmver=0.16.2
+_npmver=0.16.4
 pkgname=nodejs-bootlint
-pkgver=0.16.2
+pkgver=0.16.4
 pkgrel=1
 pkgdesc="HTML linter for Bootstrap projects"
 arch=(any)
@@ -19,4 +19,4 @@ package() {
   npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
 }
 
-sha256sums=('f5357b92c08bb7a07c8dca4595870afb676d2447c241638ad1bc8953a6d6be3c')
+sha256sums=('dfd3ae07b33777a49f19f0b566857e169994940a42a55015d8980ea716b8398a')
