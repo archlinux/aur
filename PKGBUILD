@@ -2,7 +2,7 @@
 
 pkgname=python-zodb
 _pkgname=ZODB
-pkgver=5.5.0
+pkgver=5.5.1
 pkgrel=1
 pkgdesc="A native object database for Python"
 arch=(any)
@@ -13,7 +13,7 @@ optdepends=('python-btreefolder2')
 makedepends=('python-setuptools')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zopefoundation/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('dcbc8c9b8330fc2807655d076749c96af0209fecf361edf102eb83784cc4494a')
+sha256sums=('39db86d515c20d192567effc83c23092087576f119a8f24e7045fbbc714022bd')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
