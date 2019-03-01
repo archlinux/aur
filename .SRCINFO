@@ -1,0 +1,12 @@
+pkgbase = pulseaudio-arctis-pro-wireless
+	pkgdesc = Configuration files to support SteelSeries Arctis Pro Wireless mono/stereo output on pulseaudio
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = LGPL
+	depends = pulseaudio
+	source = 90-pulseaudio-arctis-pro-wireless.rules
+	md5sums = b886fb65a79adce4dfd8c0990176bbd5
+
+pkgname = pulseaudio-arctis-pro-wireless
+
