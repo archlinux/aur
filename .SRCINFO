@@ -31,6 +31,7 @@ pkgbase = casile-git
 	depends = povray
 	depends = python-isbnlib
 	depends = python-pandocfilters
+	depends = python-pantable
 	depends = python-usfm2osis-cw-git
 	depends = python-yaml
 	depends = rsync
