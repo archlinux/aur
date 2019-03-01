@@ -1,6 +1,6 @@
 pkgbase = bingo-git
 	pkgdesc = A Go language server that speaks Language Server Protocol, largely inspired by go-langserver (git version).
-	pkgver = 1.1.0.r95.gc4b7017
+	pkgver = r875.ea0a232
 	pkgrel = 1
 	url = https://github.com/saibing/bingo
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = bingo-git
 	provides = bingo
 	conflicts = bingo
 	source = bingo::git://github.com/saibing/bingo
-	sha256sums = SKIP
+	md5sums = SKIP
 
 pkgname = bingo-git
 
