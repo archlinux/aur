@@ -5,10 +5,10 @@ pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r33.6472770
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('any')
 url='https://github.com/MonoS/MonoS-VS-Func'
 license=('GPL')
-depends=('vapoursynth-plugin-havsfunc'
+depends=('vapoursynth-plugin-havsfunc-git'
          'vapoursynth-plugin-nnedi3_resample-git'
          )
 makedepends=('git')
