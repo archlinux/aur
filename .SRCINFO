@@ -1,5 +1,5 @@
 pkgbase = shiboken2-git
-	pkgver = 5.12.1.r6177.b5d27d9f
+	pkgver = 5.12.2.r6266.54f48761
 	pkgrel = 1
 	url = http://www.pyside.org
 	arch = i686
@@ -20,14 +20,14 @@ pkgname = python2-shiboken2-git
 	pkgdesc = Support library for Python2 bindings
 	depends = python2
 	depends = shiboken2-git
-	provides = python2-shiboken2
+	provides = python2-shiboken2=5.12.2
 	conflicts = python2-shiboken2
 
 pkgname = python-shiboken2-git
 	pkgdesc = Support library for Python bindings
 	depends = python
 	depends = shiboken2-git
-	provides = python-shiboken2
+	provides = python-shiboken2=5.12.2
 	conflicts = python-shiboken2
 
 pkgname = shiboken2-git
@@ -37,6 +37,6 @@ pkgname = shiboken2-git
 	depends = qt5-xmlpatterns
 	optdepends = python2-shiboken2-git: for compilation against python2
 	optdepends = python-shiboken2-git: for compilation against python
-	provides = shiboken2
+	provides = shiboken2=5.12.2
 	conflicts = shiboken2
 
