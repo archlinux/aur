@@ -11,7 +11,7 @@ pkgbase = python-pantable
 	depends = python-click
 	depends = python-future
 	depends = python-panflute
-	depends = python-pyyaml
+	depends = python-yaml
 	depends = python-shutilwhich
 
 pkgname = python-pantable

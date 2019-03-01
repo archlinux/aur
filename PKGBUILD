@@ -15,7 +15,7 @@ depends=("pandoc-include"
          "python-click"
          "python-future"
          "python-panflute"
-         "python-pyyaml"
+         "python-yaml"
          "python-shutilwhich")
 
 build() {
