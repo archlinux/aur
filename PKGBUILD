@@ -5,10 +5,10 @@ pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=v9.r48.413e23f
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('any')
 url='http://forum.doom9.org/showthread.php?t=172564'
 license=('GPL')
-depends=('vapoursynth-plugin-fmtconv'
+depends=('vapoursynth-plugin-fmtconv-git'
          'vapoursynth-plugin-bm3d-git'
          )
 makedepends=('git')
