@@ -6,7 +6,7 @@ pkgver=6.7.3
 pkgrel=1
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
-url="http://dartsim.github.io"
+url="https://dartsim.github.io"
 license=('BSD')
 depends=('assimp' 'boost' 'eigen>=3' 'fcl' 'flann' 'glut' 'libccd' 'libgl'
          'urdfdom' 'octomap')
