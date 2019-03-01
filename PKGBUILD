@@ -3,8 +3,15 @@
 # https://bbs.archlinux.org/viewtopic.php?id=235884
 
 pkgname=lando-git
-pkgver=3.0.0.rc.1.r284.gd76f66f8
-_target_version="3.0.0-rc.1"
+pkgver=3.0.0.rc.13.r12.gc0e229e8
+
+# Transform git tag into target version string
+_target_version=${pkgver: 0:-10}
+_target_version=${_target_version%%[[:digit:]]}
+_target_version=${_target_version%%[[:digit:]]}
+_target_version=${_target_version%%.r}
+_target_version=${_target_version/.rc/-rc}
+
 pkgrel=1
 pkgdesc="A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology"
 arch=('x86_64')
@@ -15,6 +22,8 @@ optdepends=('gcc-libs')
 makedepends=('npm' 'yarn' 'git')
 source=("${pkgname}::git+https://github.com/lando/lando.git")
 sha256sums=('SKIP')
+conflicts=("lando")
+provides=("lando")
 
 # strip breaks executable
 options=(!strip)
