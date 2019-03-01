@@ -1,13 +1,14 @@
 pkgbase = lammps-beta
 	pkgdesc = Large-scale Atomic/Molecular Massively Parallel Simulator.
 	pkgver = 20190228
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lammps.sandia.gov/
 	arch = x86_64
 	license = GPL
 	depends = fftw
 	depends = openmpi
 	optdepends = kim-api: support for OpenKIM potentials
+	optdepends = python-virtualenv: build documentation
 	provides = lammps
 	conflicts = lammps
 	source = https://github.com/lammps/lammps/archive/patch_28Feb2019.tar.gz

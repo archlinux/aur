@@ -4,13 +4,14 @@ _pkgname=lammps
 pkgname=${_pkgname}-beta
 _pkgver=28Feb2019
 pkgver=20190228
-pkgrel=1
+pkgrel=2
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator."
 url="http://lammps.sandia.gov/"
 arch=('x86_64')
 license=('GPL')
 depends=('fftw' 'openmpi')
-optdepends=('kim-api: support for OpenKIM potentials')
+optdepends=('kim-api: support for OpenKIM potentials'
+            'python-virtualenv: build documentation')
 conflicts=('lammps')
 provides=('lammps')
 source=(https://github.com/${_pkgname}/${_pkgname}/archive/patch_${_pkgver}.tar.gz)
@@ -22,6 +23,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_INSTALL_LIBDIR="lib" \
         -DCMAKE_INSTALL_LIBEXECDIR="/usr/lib" #\
+        #-DBUILD_DOC=yes #\
         #-DPKG_KIM=yes # KIM package
         # Add options for additional packages
         #-DPKG_<NAME>=yes
