@@ -2,7 +2,7 @@
 
 pkgname=blugon
 pkgdesc="simple, highly configurable Blue Light Filter for X"
-pkgver=1.9
+pkgver=1.10.1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/jumper149/blugon"
@@ -26,4 +26,5 @@ build() {
 package() {
   cd "${_gitname}"
   make install DESTDIR="${pkgdir}"
+  make clean
 }
