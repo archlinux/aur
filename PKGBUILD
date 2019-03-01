@@ -1,14 +1,16 @@
-# Maintainer: Christoph J. Thompson <thompsonc at protonmail dot ch>
+# Maintainer: Deposite Pirate <dpirate at metalpunks dot info>
+#
+# Upstream: https://git.metalpunks.info/arch-ports
 
 _pkgname=gopherus
 _pkgver=1.1
 pkgname=$_pkgname-svn
-pkgver=1.1.r48
+pkgver=1.1.r123
 pkgrel=1
 pkgdesc="Gopher client"
 arch=('i686' 'x86_64')
 url="http://gopherus.sourceforge.net"
-license=('GPL3')
+license=('BSD')
 depends=('ncurses')
 optdepends=('sdl2')
 makedepends=('subversion')
@@ -27,9 +29,7 @@ pkgver() {
 
 build() {
   cd "${_pkgname}/trunk"
-  sed -i '/upx --best --lzma/d' Makefile.lin
   make -f Makefile.lin CFLAGS="${CFLAGS}"
-  make -f Makefile.lin gopherus-sdl CFLAGS="${CFLAGS}"
 }
 
 package() {
@@ -41,6 +41,12 @@ package() {
   install -dm755 "${pkgdir}/usr/share/doc/${_pkgname}"
   install -m644 gopherus.txt history.txt \
    "${pkgdir}/usr/share/doc/${_pkgname}"
+
+  install -dm755 "${pkgdir}/usr/share/licenses/${_pkgname}"
+  (
+    cd "${pkgdir}/usr/share/licenses/${_pkgname}"
+    ln -s /usr/share/doc/${_pkgname}/gopherus.txt LICENSE
+  )
 
   install -Dm644 icon.svg \
    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
