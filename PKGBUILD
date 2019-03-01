@@ -2,15 +2,16 @@
 
 _plug=oyster
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r97.8fc1d8b
+pkgver=r137.54fe6c3
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
-url='http://forum.doom9.org/showthread.php?t=173470'
+arch=('any')
+url='https://forum.doom9.org/showthread.php?t=173470'
 license=('LGPL2.1')
-depends=('vapoursynth-plugin-bm3d-git'
-         'vapoursynth-plugin-knlmeanscl'
-         'vapoursynth-plugin-fmtconv'
+depends=('vapoursynth'
+         'vapoursynth-plugin-bm3d-git'
+         'vapoursynth-plugin-knlmeanscl-git'
+         'vapoursynth-plugin-fmtconv-git'
          'vapoursynth-plugin-msmoosh-git'
          'vapoursynth-plugin-mvtools_sf-git'
          'vapoursynth-plugin-nnedi3-git'
