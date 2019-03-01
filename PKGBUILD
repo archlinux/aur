@@ -12,13 +12,13 @@ pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
 url="https://www.gimp.org"
 license=('GPL' 'LGPL')
-depends=('pygtk' 'lcms2>=2.2' 'libwmf>=0.2.8' 'icu' 'enchant'
-         'libgexiv2' 'librsvg>=2.16.1' 'desktop-file-utils'
-         'libexif>=0.6.15' 'libart-lgpl>=2.3.19' 'dbus-glib' 'gtk-doc'
-         'poppler-glib' 'poppler-data' 'openexr>=1.6.1' 'mypaint-brushes>=1.3.0'
-         'babl>=0.1.57' 'gegl>=0.4.9' 'cairo>=1.14' 'appstream-glib>=0.7.7')
-makedepends=('git' 'gutenprint>=5.0.0' 'intltool>=0.40.1' 'gnome-python>=2.16.2'
-             'alsa-lib>=1.0.0' 'libxslt' 'glib-networking'
+depends=('pygtk' 'lcms2' 'libwmf' 'icu' 'enchant'
+         'libgexiv2' 'librsvg' 'desktop-file-utils'
+         'libexif' 'libart-lgpl' 'dbus-glib' 'gtk-doc'
+         'poppler-glib' 'poppler-data' 'openexr' 'mypaint-brushes'
+         'babl' 'gegl' 'cairo' 'appstream-glib')
+makedepends=('git' 'gutenprint' 'intltool' 'gnome-python'
+             'alsa-lib' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm' 'webkit2gtk'
              'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib')
 checkdepends=('xorg-server-xvfb')
