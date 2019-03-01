@@ -1,0 +1,12 @@
+pkgbase = python-panflute
+	pkgdesc = Pythonic Pandoc filters
+	pkgver = 1.11.2
+	pkgrel = 1
+	url = https://github.com/sergiocorreia/panflute
+	arch = any
+	license = BSD3
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-panflute
+
