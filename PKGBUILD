@@ -75,6 +75,8 @@ package_python2-shiboken2-git() {
     rm -rf "$pkgdir"/usr/{include,bin,share}
     rm "$pkgdir/usr/lib/cmake/Shiboken2-${_upver}/Shiboken2ConfigVersion.cmake"
     rm "$pkgdir/usr/lib/cmake/Shiboken2-${_upver}/Shiboken2Config.cmake"
+    rm "$pkgdir/usr/lib/cmake/Shiboken2-${_upver}"/Shiboken2Targets{,-release}.cmake
+    rm "$pkgdir/usr/lib/cmake/Shiboken2-${_upver}/shiboken_helpers.cmake"
 }
 
 package_python-shiboken2-git() {
@@ -91,4 +93,6 @@ package_python-shiboken2-git() {
     rm -rf "$pkgdir"/usr/{include,bin,share}
     rm "$pkgdir/usr/lib/cmake/Shiboken2-${_upver}/Shiboken2ConfigVersion.cmake"
     rm "$pkgdir/usr/lib/cmake/Shiboken2-${_upver}/Shiboken2Config.cmake"
+    rm "$pkgdir/usr/lib/cmake/Shiboken2-${_upver}"/Shiboken2Targets{,-release}.cmake
+    rm "$pkgdir/usr/lib/cmake/Shiboken2-${_upver}/shiboken_helpers.cmake"
 }
