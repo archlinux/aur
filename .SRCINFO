@@ -1,12 +1,12 @@
 pkgbase = nap-bin
 	pkgdesc = A fast reverse proxy client for napyy.com
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://napyy.com
 	arch = x86_64
 	license = Apache
 	source = https://o.tc.ink/ddns-nap/0.1.3/nap_linux_amd64.tar.gz
-	md5sums = 9657f4ce3fe9c618dcb6be7eb5fd39c9
+	md5sums = 3c174bfdd58aaa1e5cf9807a50899a82
 
 pkgname = nap-bin
 
