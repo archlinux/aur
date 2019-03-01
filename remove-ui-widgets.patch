@@ -1,6 +1,6 @@
 diff -ru virt-viewer-7.0.orig/src/resources/ui/virt-viewer.ui virt-viewer-7.0/src/resources/ui/virt-viewer.ui
---- virt-viewer-7.0.orig/src/resources/ui/virt-viewer.ui	2018-07-27 06:22:28.000000000 -0400
-+++ virt-viewer-7.0/src/resources/ui/virt-viewer.ui	2019-02-28 14:57:47.601597525 -0500
+--- virt-viewer-7.0.orig/src/resources/ui/virt-viewer.ui	2019-03-01 09:33:24.760507867 -0500
++++ virt-viewer-7.0/src/resources/ui/virt-viewer.ui	2019-02-27 17:45:16.000000000 -0500
 @@ -18,7 +18,7 @@
              <property name="can_focus">False</property>
              <child>
@@ -11,8 +11,8 @@ diff -ru virt-viewer-7.0.orig/src/resources/ui/virt-viewer.ui virt-viewer-7.0/sr
                  <child>
                    <object class="GtkMenuItem" id="menu-file">
 diff -ru virt-viewer-7.0.orig/src/virt-viewer-window.c virt-viewer-7.0/src/virt-viewer-window.c
---- virt-viewer-7.0.orig/src/virt-viewer-window.c	2018-07-27 06:22:28.000000000 -0400
-+++ virt-viewer-7.0/src/virt-viewer-window.c	2019-02-28 14:57:27.314931013 -0500
+--- virt-viewer-7.0.orig/src/virt-viewer-window.c	2019-03-01 09:33:24.760507867 -0500
++++ virt-viewer-7.0/src/virt-viewer-window.c	2019-03-01 09:24:20.364748301 -0500
 @@ -483,7 +483,6 @@
          virt_viewer_display_set_fullscreen(priv->display, FALSE);
      }
@@ -21,10 +21,11 @@ diff -ru virt-viewer-7.0.orig/src/virt-viewer-window.c virt-viewer-7.0/src/virt-
      gtk_widget_hide(priv->toolbar);
      gtk_widget_set_size_request(priv->window, -1, -1);
      gtk_window_unfullscreen(GTK_WINDOW(priv->window));
-@@ -1169,44 +1168,6 @@
+@@ -1168,48 +1167,6 @@
+     gtk_toolbar_set_show_arrow(GTK_TOOLBAR(priv->toolbar), FALSE);
      gtk_widget_set_no_show_all(priv->toolbar, TRUE);
      gtk_toolbar_set_style(GTK_TOOLBAR(priv->toolbar), GTK_TOOLBAR_BOTH_HORIZ);
- 
+-
 -    /* Close connection */
 -    button = GTK_WIDGET(gtk_tool_button_new(NULL, NULL));
 -    gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(button), "window-close");
@@ -63,6 +64,9 @@ diff -ru virt-viewer-7.0.orig/src/virt-viewer-window.c virt-viewer-7.0/src/virt-
 -    gtk_toolbar_insert(GTK_TOOLBAR(priv->toolbar), GTK_TOOL_ITEM(button), 0);
 -    g_signal_connect(button, "clicked", G_CALLBACK(virt_viewer_window_toolbar_leave_fullscreen), self);
 -
-     priv->revealer = virt_viewer_timed_revealer_new(priv->toolbar);
-     overlay = GTK_WIDGET(gtk_builder_get_object(priv->builder, "viewer-overlay"));
-     gtk_overlay_add_overlay(GTK_OVERLAY(overlay), GTK_WIDGET(priv->revealer));
+-    priv->revealer = virt_viewer_timed_revealer_new(priv->toolbar);
+-    overlay = GTK_WIDGET(gtk_builder_get_object(priv->builder, "viewer-overlay"));
+-    gtk_overlay_add_overlay(GTK_OVERLAY(overlay), GTK_WIDGET(priv->revealer));
+ }
+ 
+ VirtViewerNotebook*
