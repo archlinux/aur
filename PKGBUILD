@@ -11,7 +11,7 @@ license=('custom:cc-by-nc-sa-4.0' 'custom')
 depends=('gconf')
 _zmninja_file="zmninjapro.$_customver.AppImage"
 source=("https://github.com/pliablepixels/zmNinja/releases/download/v$pkgver/$_zmninja_file" "zmninja.desktop" "cc-by-nc-sa-4.0.txt" "LICENSE" "zmninja.png")
-sha256sums=(""424098fd5f4a3c6d956817bbe276c434f920501c5190fbfc31dd786b097a580e "SKIP" "SKIP" "SKIP" "SKIP")
+sha256sums=("424098fd5f4a3c6d956817bbe276c434f920501c5190fbfc31dd786b097a580e" "SKIP" "SKIP" "SKIP" "SKIP")
 
 build() {
 	:
