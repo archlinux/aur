@@ -3,8 +3,8 @@ _name="balena"
 _module="${_name}-sdk"
 _fullname="${_module}-python"
 pkgname=("python-${_name}" "python2-${_name}")
-pkgver="7.0.0"
-pkgrel="3"
+pkgver="7.2.0"
+pkgrel="1"
 pkgdesc="Balena SDK for Python"
 arch=("any")
 url="https://github.com/balena-io/resin-sdk-python"
@@ -12,7 +12,7 @@ license=("Apache")
 makedepends=("python-setuptools" "python2-setuptools")
 provides=("python-${_name}" "python2-${_name}")
 source=("https://github.com/balena-io/${_fullname}/archive/v${pkgver}.tar.gz")
-sha256sums=('480d5e164cf480217c02bc6c8300798d4e1e806b49d3c9b9c4b2dfe0dd1fe266')
+sha256sums=('78183a6dfd01675d460d8475528f0b153f2dfd86c113ead23dcf2d598cb08c35')
 
 prepare() {
     cp -a "${srcdir}/${_fullname}-${pkgver}" "${srcdir}/${_fullname}-${pkgver}-python2"
