@@ -1,6 +1,6 @@
 pkgbase = movim
 	pkgdesc = Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol.
-	pkgver = v0.14.bbaa1e4f
+	pkgver = 0.14.1.97bb70d4d
 	pkgrel = 1
 	url = https://movim.eu
 	install = movim.install
@@ -10,22 +10,27 @@ pkgbase = movim
 	makedepends = composer
 	depends = php-gd
 	depends = php-imagick
-	depends = php-zmq
 	optdepends = postgresql: to use the postgresql database backend
 	optdepends = php-pgsql: php bindings for postgresql
+	optdepends = php-sqlite: php bindings for sqlite
 	optdepends = mariadb: to use the mysql database backend
+	optdepends = sqlite3: to use the sqlite database backend
 	optdepends = nginx: reverse proxy
 	optdepends = apache: reverse proxy
 	optdepends = php-fpm: PHP FactCGI process manager
 	provides = movim
 	backup = etc/webapps/movim/db.inc.php
 	backup = etc/default/movim
-	source = movim::git+https://github.com/movim/movim#tag=v0.14
+	source = movim::git+https://github.com/movim/movim#tag=0.14.1
 	source = movim.env
 	source = movim.service
+	source = sysuser.conf
+	source = tmpfiles.conf
 	sha256sums = SKIP
 	sha256sums = 5dfff91dd4a54f3d3713530e204370a96d37898b670a61123d8cad42f92da306
-	sha256sums = 793b85ca2080d92d9663af1750d0be9d1cbd20de9c828cb0ce0cc91ad5510f11
+	sha256sums = 813d580300ee5bb7f1f9603db2404f5af67fd02f49017708d4adb919d4422045
+	sha256sums = c8b569f1eafb97d8d03bbaabb9b4d6ed3415f922a05a52bd865942676368f4c5
+	sha256sums = e3cd2ceb71f4ef4689028313188def52aa19859e35aa8abcaa200495cd187935
 
 pkgname = movim
 

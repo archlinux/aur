@@ -2,26 +2,30 @@
 # Contributor: Guillaume Friloux <guillaume@friloux.me>
 
 _pkgbase='movim'
-_tagname=v0.14
+_tagname=0.14.1
 pkgname=movim
-pkgver=v0.14.bbaa1e4f
+pkgver=0.14.1.97bb70d4d
 pkgrel=1
 pkgdesc="Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol."
 arch=('any')
 url='https://movim.eu'
 license=('AGPL3')
 provides=('movim')
-depends=('php-gd' 'php-imagick' 'php-zmq')
+depends=('php-gd' 'php-imagick')
 optdepends=('postgresql: to use the postgresql database backend'
             'php-pgsql: php bindings for postgresql'
+            'php-sqlite: php bindings for sqlite'
             'mariadb: to use the mysql database backend'
+            'sqlite3: to use the sqlite database backend'
             'nginx: reverse proxy'
             'apache: reverse proxy'
             'php-fpm: PHP FactCGI process manager')
 makedepends=('git' 'composer')
-source=("$_pkgbase::git+https://github.com/movim/movim#tag=$_tagname"
+source=("$_pkgbase::git+https://github.com/movim/movim#tag=${_tagname}"
         movim.env
-        movim.service)
+        movim.service
+        sysuser.conf
+        tmpfiles.conf)
 install=movim.install
 backup=("etc/webapps/$_pkgbase/db.inc.php"
         "etc/default/movim")
@@ -40,15 +44,14 @@ build() {
 package() {
   cd "$srcdir/$_pkgbase"
 
-  install -m755 -d "$pkgdir/usr/share/webapps/$_pkgbase"
+  # Systemd files
+  install -m755 -d "$pkgdir/etc/default"
+  install -Dm640 "$srcdir/movim.env" "$pkgdir/etc/default/$_pkgbase"
+  install -Dm644 "$srcdir/movim.service" "$pkgdir/usr/lib/systemd/system/movim.service"
+  install -Dm644 "$srcdir/sysuser.conf" "$pkgdir/usr/lib/sysusers.d/movim.conf"
+  install -Dm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/movim.conf"
 
-  # Cache
-  install -m750 -d "$pkgdir/var/cache/webapps/$_pkgbase/cache"\
-    "$pkgdir/var/cache/webapps/$_pkgbase/users"
-  chown -R root:http "$pkgdir/var/cache/webapps/$_pkgbase"
-  chmod -R u+rwX,g+rwX,o-rwx "$pkgdir/var/cache/webapps/$_pkgbase"
-  # XXX: Symlinks created post_upgrade. Waiting for upstream to fix
-  # https://github.com/movim/movim/issues/509.
+  install -m755 -d "$pkgdir/usr/share/webapps/$_pkgbase"
 
   cp -r app database lib locales src themes vendor \
     "$pkgdir/usr/share/webapps/$_pkgbase"
@@ -58,21 +61,11 @@ package() {
 
   # Configuration file
   install -m750 -d "$pkgdir/etc/webapps/$_pkgbase"
-  install -Dm750 config/db.example.inc.php "$pkgdir/etc/webapps/$_pkgbase/db.inc.php"
-  chown -R root:http "$pkgdir/etc/webapps/$_pkgbase"
-  chmod -R u+rwX,g+rwX,o-rwx "$pkgdir/etc/webapps/$_pkgbase"
-  ln -s "/etc/webapps/$_pkgbase" "$pkgdir/usr/share/webapps/$_pkgbase/config"
-
-  # Log files
-  install -m770 -d "$pkgdir/var/log/webapps/$_pkgbase"
-  chown -R root:http "$pkgdir/var/log/webapps/$_pkgbase"
-  ln -s "/var/log/webapps/$_pkgbase" "$pkgdir/usr/share/webapps/$_pkgbase/log"
-
-  # Systemd unit file
-  install -m755 -d "$pkgdir/etc/default"
-  install -g http -Dm640 "$srcdir/movim.env" "$pkgdir/etc/default/$_pkgbase"
-  install -Dm644 "$srcdir/movim.service" "$pkgdir/usr/lib/systemd/system/movim.service"
+  install -Dm640 config/db.example.inc.php "$pkgdir/etc/webapps/$_pkgbase/db.inc.php"
 }
+
 sha256sums=('SKIP'
             '5dfff91dd4a54f3d3713530e204370a96d37898b670a61123d8cad42f92da306'
-            '793b85ca2080d92d9663af1750d0be9d1cbd20de9c828cb0ce0cc91ad5510f11')
+            '813d580300ee5bb7f1f9603db2404f5af67fd02f49017708d4adb919d4422045'
+            'c8b569f1eafb97d8d03bbaabb9b4d6ed3415f922a05a52bd865942676368f4c5'
+            'e3cd2ceb71f4ef4689028313188def52aa19859e35aa8abcaa200495cd187935')
