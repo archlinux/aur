@@ -1,0 +1,24 @@
+pkgbase = srcml
+	pkgdesc = commandline and library for srcML, an XML representation for source code
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://www.srcml.org/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = boost
+	makedepends = man2html
+	makedepends = docbook2x
+	depends = libxml2
+	depends = libxslt
+	depends = libarchive
+	depends = boost-libs
+	depends = curl
+	depends = openssl
+	depends = antlr2
+	depends = python2
+	source = srcml-0.9.5.tar.gz::http://131.123.42.38/lmcrs/beta/srcML-src.tar.gz
+	md5sums = e5c4223f7556b57984b20d70606f50ab
+
+pkgname = srcml
+
