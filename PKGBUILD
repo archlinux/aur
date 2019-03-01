@@ -10,9 +10,11 @@ url="https://dartsim.github.io"
 license=('BSD')
 depends=('assimp' 'boost' 'eigen>=3' 'fcl' 'flann' 'glut' 'libccd' 'libgl'
          'urdfdom' 'octomap')
-optdepends=('bullet: Bullet support'
-            'coin-or-ipopt: Ipopt support'
-            'nlopt: NLopt support')
+optdepends=('bullet: Bullet collision detection support'
+            'ode: ODE collision detection support'
+            'coin-or-ipopt: Ipopt optimizer support'
+            'nlopt: NLopt optimizer support'
+            'openscenegraph: required for dart-gui-osg')
 makedepends=('cmake' 'doxygen')
 _name=dart
 source=(https://github.com/dartsim/${_name}/archive/v${pkgver}.tar.gz)

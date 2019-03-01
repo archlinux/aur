@@ -18,9 +18,11 @@ pkgbase = libdart
 	depends = libgl
 	depends = urdfdom
 	depends = octomap
-	optdepends = bullet: Bullet support
-	optdepends = coin-or-ipopt: Ipopt support
-	optdepends = nlopt: NLopt support
+	optdepends = bullet: Bullet collision detection support
+	optdepends = ode: ODE collision detection support
+	optdepends = coin-or-ipopt: Ipopt optimizer support
+	optdepends = nlopt: NLopt optimizer support
+	optdepends = openscenegraph: required for dart-gui-osg
 	source = https://github.com/dartsim/dart/archive/v6.7.3.tar.gz
 	sha256sums = bacee34f6c848f6bf777d2ea0c85d2000f0a831c6f5827d3d6a5b922bc48fcf8
 
