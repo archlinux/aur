@@ -1,35 +1,28 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 # Contributor: Nikolaos Bezirgiannis <bezeria@gmail.com>
+
 pkgname=hol
 pkgver=kananaskis.12
-pkgrel=1
-pkgdesc="Interactive proof assistant for higher order logic"
-url='http://hol.sourceforge.net/'
-arch=('i686' 'x86_64')
+pkgrel=2
+pkgdesc='HOL4 theorem-proving system'
+url='https://hol-theorem-prover.org/'
+arch=('x86_64')
 license=('BSD')
+install="$pkgname.install"
 source=("http://sourceforge.net/projects/hol/files/hol/${pkgver//./-}/hol-${pkgver//./-}.tar.gz"
-        '0001-fix-holdir.patch'
-        '0002-fix-emit.patch'
-    )
-md5sums=('5b01d43494c7809c029764a95bf06402'
-         'd613c3d825d6f382a24533c0136c5b1e'
-         '4a01da11b5bfb917a3e5a08ee8bde856')
-depends=('mosml')
-#optdepends=('graphviz')
-conflicts=('hol-git')
-
-prepare() {
-   cd "${srcdir}/${pkgname}-${pkgver//./-}"
-   patch -p1 -i "${srcdir}/0001-fix-holdir.patch"
-   patch -p1 -i "${srcdir}/0002-fix-emit.patch"
-   #echo "val holdir = \"/opt/hol\";" > tools-poly/poly-includes.ML
-   echo "val mosmldir = \"/usr/bin\";" > config-override
-}
+        #
+       )
+md5sums=('5b01d43494c7809c029764a95bf06402')
+depends=('polyml' 'graphviz')
+conflicts=('ocaml-num')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver//./-}"
-  mosml < tools/smart-configure.sml
-  bin/build --nograph
+
+  poly < tools/smart-configure.sml
+  bin/build
+
+  bin/build cleanForReloc
 }
 
 package() {
@@ -38,24 +31,9 @@ package() {
 
   cd $_oldtop
 
-  # fix broken symlinks
-  for _link in $(find ${_oldtop}/sigobj/ -type l)
-  do
-    _oldsrc=$(readlink -v $_link)
-    ln -sfn ${_oldsrc/$_oldtop/$_newtop} $_link
-  done
-
-  # fix references inside text files
-  sed -i -e 's,'"$_oldtop"','"$_newtop"',g' bin/hol bin/hol.bare bin/hol.bare.noquote bin/hol.noquote sigobj/SRCFILES
-
-  # install hol programs and libraries under /opt/hol
+  # install everything under /opt/hol
   install -m755 -d "${pkgdir}/opt/${pkgname}"
-  install -m644 std.prelude "${pkgdir}/opt/${pkgname}"
-  cp -r src "${pkgdir}/opt/${pkgname}"
-  cp -r sigobj "${pkgdir}/opt/${pkgname}"
-  cp -r bin "${pkgdir}/opt/${pkgname}"
-  cp -r tools "${pkgdir}/opt/${pkgname}"
-  cp -r help "${pkgdir}/opt/${pkgname}"
+  cp -r . "${pkgdir}/opt/${pkgname}"
 
   # install license
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -66,5 +44,4 @@ package() {
   ln -s /opt/hol/bin/hol ${pkgdir}/usr/bin/hol
   ln -s /opt/hol/bin/hol.noquote ${pkgdir}/usr/bin/hol.noquote
   ln -s /opt/hol/bin/Holmake ${pkgdir}/usr/bin/Holmake
-
 }
