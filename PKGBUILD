@@ -1,15 +1,15 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=kicad-git
-pkgver=r12145.f5144eb5c
-pkgrel=3
+pkgver=r12473.16b3c80a7
+pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
 url="http://kicad-pcb.org/"
 license=('GPL')
 depends=('glew' 'wxgtk3' 'desktop-file-utils' 'boost-libs' 'python'
-         'glm' 'curl' 'swig' 'python-wxpython' 'opencascade' 'ngspice>=27')
-makedepends=('cmake' 'git' 'zlib' 'mesa' 'boost' 'clang')
+         'glm-git' 'curl' 'swig' 'python-wxpython' 'opencascade' 'ngspice>=27')
+makedepends=('cmake' 'git' 'zlib' 'mesa' 'boost')
 optdepends=('kicad-library: for footprints')
 conflicts=('kicad' 'kicad-bzr')
 provides=('kicad')
@@ -26,7 +26,6 @@ build() {
   cd "${srcdir}/${pkgname}"
   mkdir -p build
   cd build
-  export CXX=clang++
   cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
