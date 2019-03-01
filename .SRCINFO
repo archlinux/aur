@@ -1,0 +1,17 @@
+pkgbase = steamvr-openhmd-git
+	pkgdesc = SteamVR plugin for using OpenHMD drivers in SteamVR
+	pkgver = r61.b4899b2
+	pkgrel = 1
+	url = https://github.com/ChristophHaag/SteamVR-OpenHMD
+	install = steamvr-openhmd-git.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = openhmd-git
+	source = steamvr-openhmd::git+https://github.com/ChristophHaag/SteamVR-OpenHMD
+	sha256sums = SKIP
+
+pkgname = steamvr-openhmd-git
+
