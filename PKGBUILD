@@ -6,7 +6,7 @@
 
 pkgname=plymouth
 pkgver=0.9.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A graphical boot splash screen with kernel mode-setting support"
 url="http://www.freedesktop.org/wiki/Software/Plymouth/"
 arch=('x86_64')
@@ -81,8 +81,6 @@ build() {
 		--enable-gtk=no \
 		--enable-tracing \
 		--disable-tests \
-		--without-boot-entry \
-		--without-default-plugin \
 		--enable-gdm-transition \
 		--with-logo=/usr/share/plymouth/arch-logo.png \
 		--with-release-file=/etc/os-release \

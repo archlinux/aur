@@ -1,7 +1,7 @@
 pkgbase = plymouth
 	pkgdesc = A graphical boot splash screen with kernel mode-setting support
 	pkgver = 0.9.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.freedesktop.org/wiki/Software/Plymouth/
 	arch = x86_64
 	license = GPL
