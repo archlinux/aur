@@ -6,7 +6,7 @@ pkgver=r41.73be955
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('x86_64')
-url='http://forum.doom9.org/showthread.php?t=173633'
+url='https://forum.doom9.org/showthread.php?t=173633'
 license=('GPL')
 depends=('vapoursynth'
          'libpng'
