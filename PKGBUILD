@@ -6,7 +6,7 @@ pkgver=v3.0.g77a20a5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
-url='http://forum.doom9.org/showthread.php?t=171555'
+url='https://forum.doom9.org/showthread.php?t=171555'
 license=('custom:WTFPL'
          'LGPL'
          )
