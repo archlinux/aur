@@ -5,7 +5,7 @@ pkgname=vapoursynth-plugin-${_plug}-hg
 pkgver=1.79f0e8e8408e
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (HG version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://bitbucket.org/James1201/vapoursynth-noisegen'
 license=('custom:WTFPL')
 depends=('vapoursynth')
@@ -21,21 +21,23 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p build
+
   cd "${_plug}"
   chmod +x autogen.sh
   ./autogen.sh
 }
 
 build() {
-  cd "${_plug}"
-  ./configure \
+  cd build
+  ../"${_plug}"/configure \
     --libdir="/usr/lib/vapoursynth"
+
   make
 }
 
 package(){
-  cd "${_plug}"
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  make -C build DESTDIR="${pkgdir}" install
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
