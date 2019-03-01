@@ -1,0 +1,17 @@
+pkgbase = a-john-shots
+	pkgdesc = A tool to get the Security Hash Algorightms (SHA) of all file in a given path.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/funilrys/A-John-Shots
+	arch = any
+	license = MIT
+	depends = python3
+	depends = python-setuptools
+	depends = python-colorama
+	source = https://files.pythonhosted.org/packages/source/a/a-john-shots/a-john-shots-2.0.0.tar.gz
+	source = https://raw.githubusercontent.com/funilrys/A-John-Shots/master/LICENSE
+	sha256sums = a5f2aa947b847acf1d5252c4be38e118c9d273961eb3bdaea9b40e521c81f8d9
+	sha256sums = 1a1b0133c4abf0795a5d861a6832374d1e74e268f81b9164d6106f461342caff
+
+pkgname = a-john-shots
+
