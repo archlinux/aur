@@ -1,0 +1,26 @@
+From 8ea65d0a2c22468276d202d746877fa67083cf12 Mon Sep 17 00:00:00 2001
+From: Ryan Gonzalez <rymg19@gmail.com>
+Date: Sat, 2 Mar 2019 13:21:46 -0600
+Subject: [PATCH] Silence errors due to which failing to find swiftenv
+
+---
+ Source/SourceKittenFramework/library_wrapper.swift | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/Source/SourceKittenFramework/library_wrapper.swift b/Source/SourceKittenFramework/library_wrapper.swift
+index 0651afe..6a0a440 100644
+--- a/Source/SourceKittenFramework/library_wrapper.swift
++++ b/Source/SourceKittenFramework/library_wrapper.swift
+@@ -79,6 +79,9 @@ private func runCommand(_ path: String, _ args: String...) -> String? {
+ 
+     let pipe = Pipe()
+     process.standardOutput = pipe
++    // FileHandle.nullDevice does not work here, as it consists of an invalid file descriptor,
++    // causing process.launch() to abort with an EBADF.
++    process.standardError = FileHandle(forWritingAtPath: "/dev/null")!
+     process.launch()
+ 
+     let data = pipe.fileHandleForReading.readDataToEndOfFile()
+-- 
+2.20.1
+
