@@ -2,7 +2,7 @@
 
 pkgname='ibus-typing-booster-git'
 pkgdesc='A completion input method for faster typing, git version.'
-pkgver=2.6.0
+pkgver=git
 pkgrel=1
 url='https://mike-fabian.github.io/ibus-typing-booster/'
 arch=('any')
