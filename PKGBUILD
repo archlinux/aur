@@ -52,6 +52,9 @@ _fakeadd_error() {
 
 prepare() {
 
+	# Against proot error `proot info: pid XXXX: terminated with signal 11`
+	export PROOT_NO_SECCOMP=1
+
 	# Enable fakeadd under fakeroot environment
 	export LD_PRELOAD='/usr/lib/fakeuser/libfakeuser.so'
 
@@ -66,17 +69,15 @@ package() {
 	msg 'Creating a temporary mysql user/group with fakeadd...'
 
 	getent group mysql > /dev/null || fakeadd -G -n mysql -g 992 || _fakeadd_error
-	getent passwd mysql > /dev/null || fakeadd -U -n mysql -g 992 -u 992 || _fakeadd_error
+	getent passwd mysql > /dev/null || fakeadd -U -n mysql -g 992 -u 992 -s /bin/false || _fakeadd_error
 
 	msg 'Extracting package (this might take several minutes, don'\''t give up!)...'
 
 	chmod +x "${srcdir}/${pkgname}-linux-x64-${pkgver}-0-installer.run"
 
-        PROOT_NO_SECCOMP=1 proot -0 \
-               -b "${pkgdir}/opt/lampp:/opt/lampp" \
-               "${srcdir}/${pkgname}-linux-x64-${pkgver}-0-installer.run" \
-               --mode unattended --disable-components 'xampp_developer_files' --debuglevel 4 --launchapps 0 --debugtrace 'bitrock_debug.log'
-
+	proot -0 -b "${pkgdir}/opt/lampp:/opt/lampp" "${srcdir}/${pkgname}-linux-x64-${pkgver}-0-installer.run" \
+		--mode unattended --disable-components 'xampp_developer_files' --debuglevel 4 --launchapps 0 \
+		--debugtrace "${srcdir}/bitrock_debug.log"
 
 	msg 'Copying executables and launcher...'
 
