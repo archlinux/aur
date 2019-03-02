@@ -17,7 +17,7 @@ sha512sums=('82afdb5c4b9809bee095a8ab248e30bfbe8a46910cd3d59c91880df857ba954e801
             )
 
 package() {
-  cd "$pkgname-v$pkgver/files"
+  cd "$pkgname-$pkgver/files"
 
   install -Dm 755 $pkgname "$pkgdir/usr/bin/$pkgname"
   install -Dm 644 $pkgname.service "$pkgdir/etc/systemd/system/$pkgname.service"
