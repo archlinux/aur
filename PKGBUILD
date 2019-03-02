@@ -30,8 +30,7 @@ prepare() {
 }
 
 build() {
-  cd "${_plug}"
-  make
+  make -C "${_plug}"
 }
 
 package(){
