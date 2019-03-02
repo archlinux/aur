@@ -1,0 +1,15 @@
+pkgbase = wasmer
+	pkgdesc = Universal Binaries Powered by WebAssembly
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/wasmerio/wasmer
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = python
+	source = https://github.com/wasmerio/wasmer/archive/0.2.1.tar.gz
+	sha512sums = f949a686cb5b5dc63d361e93d5ef73f11a2f3450dd6af8d2be9553ceabdff24ccfaa64067862bed091e8090c9fcbac359d83106892ba354d72729f675f42e0c0
+
+pkgname = wasmer
+
