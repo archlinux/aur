@@ -1,29 +1,28 @@
-# Maintainer: Stoyan Minaev <stoyan.minaev@gmail.com>
+# Maintainer: Murat Çileli <murat.cileli@gmail.com>
 
 pkgbase="pkgbase"
-pkgname="loli"
-pkgver="0.8"
+pkgname="adwaita-creamy"
+pkgver="0.1"
 pkgrel="1"
-pkgdesc="Loli is a embedded programming language"
+pkgdesc="Refreshed new Adwaita theme with creamy colors and minor changes. "
 arch=("x86_64")
 license=("MIT")
-url="http://loli-lang.ml/"
-makedepends=("git" "cmake" "make" "gcc")
-provides=("loli")
+url="https://github.com/murat-cileli/adwaita-creamy"
+makedepends=()
+provides=("adwaita-creamy")
 
-source=("loli-$pkgver::git+https://github.com/loli-foundation/loli.git#tag=$pkgver")
+source=("git+https://github.com/murat-cileli/adwaita-creamy.git")
 sha256sums=("SKIP")
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    mkdir -p ./build
-    cmake -S ./ -B ./build
-    cd ./build && make
+    cd "${pkgname}"
+    mkdir -p ~/.themes/adwaita-creamy
+    cp gtk-2.0 ~/.themes/adwaita-creamy/ -R
+    cp gtk-3.0 ~/.themes/adwaita-creamy/ -R
+    cp index.theme ~/.themes/adwaita-creamy/
 }
 
 package() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    mkdir -p $pkgdir/usr/{bin,lib}
-    install -m 755 ./build/loli $pkgdir/usr/bin/
-    install -m 755 ./build/libloli.so $pkgdir/usr/lib/
+  echo "Package"
 }
+
