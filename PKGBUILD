@@ -1,7 +1,7 @@
 # Maintainer: redfish <redfish at galactica dot pw>
 pkgname='monero-wallet-qt-git'
-_monerover=0.13.0.4
-pkgver=0.13.0.4
+_monerover=0.14.0.0
+pkgver=0.14.0.0
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://getmonero.org/"
