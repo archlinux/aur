@@ -19,7 +19,7 @@ pkgname="${_pyver}-${_pybase}"
 _pyverother='' #python-'
 fi
 _pybasend="${_pybase//-/}"
-pkgver='3.14.10'
+pkgver='3.14.13'
 pkgrel='1'
 pkgdesc='The API and CLI tools that provide access to Amazon Elastic Beanstalk awsebcli'
 arch=('any')
@@ -32,7 +32,7 @@ _verwatch=("https://pypi.org/simple/${_pybasend}/" "${_pybasend}-\([0-9\.]\+\)\.
 # https://bitbucket.org/pypa/pypi/issues/438/backwards-compatible-un-hashed-package
 # https://bitbucket.org/pypa/pypi/issues/447/direct-links-of-packages-gone
 source=("https://files.pythonhosted.org/packages/source/${_pybasend: 0:1}/${_pybasend}/${_pybasend}-${pkgver}.tar.gz")
-sha256sums=('cc2f32e4dc4c6ddea4033bf9de74cd520f5971249f3a3f5e5c48b7f867a89f6e')
+sha256sums=('bd0d3b1a69cef2ed991cf89b440c1351b0fb4fa0196d669a7cc516daa6d58a7d')
 
 # Convert python requires to PKGBUILD depends
 # $1: prefix python- or python2-
@@ -47,7 +47,8 @@ requires = [
     'botocore>=1.12.29,<1.13',
     'cement==2.8.2',
     'colorama>=0.3.9,<0.4.0',  # use the same range that 'docker-compose' uses
-    'pathspec==0.5.5',
+    'future>=0.16.0,<0.17.0',
+    'pathspec==0.5.9',
     'python-dateutil>=2.1,<3.0.0',  # use the same range that 'botocore' uses
     'PyYAML>=3.10,<=3.13',  # use the same range that 'aws-cli' uses. This is also compatible with 'docker-compose'
     'requests>=2.20.1,<2.21',
@@ -55,7 +56,8 @@ requires = [
     'semantic_version == 2.5.0',
     'six>=1.11.0,<1.12.0',
     'termcolor == 1.1.0',
-    'urllib3>=1.24.1,<1.25'
+    'urllib3>=1.24.1,<1.25',
+    'wcwidth>=0.1.7,<0.2.0',
     #found further down in setup.py
     'docker-compose >= 1.23.2, < 1.24.0',
     'blessed>=1.9.5',
