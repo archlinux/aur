@@ -21,18 +21,19 @@ pkgver() {
 }
 
 prepare() {
-
+  cd "${_plug}"
   echo "all:
-	  g++ -c -std=c++11 -Wall -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o autocrop.o autocrop/autocrop.cpp
+	  g++ -c -std=c++11 -Wall -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o autocrop.o autocrop.cpp
 	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so autocrop.o" > Makefile
 }
 
 build() {
-  make
+  make -C "${_plug}"
 }
 
 package(){
+  cd "${_plug}"
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
 
-  install -Dm644 autocrop/README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
