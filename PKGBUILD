@@ -1,11 +1,12 @@
 # Maintainer: Joakim Nylen (jnylen) <me@jnylen.nu>
+# Contributor: Foxboron
 
 pkgname=jotta-cli
-pkgver=0.4.4986
-pkgrel=3
+pkgver=0.5.13131
+pkgrel=1
 pkgdesc="Jottacloud command line client to back up/share your files to/on Jottacloud."
 arch=('x86_64' 'i686')
-license=('custom: (C) Jotta AS 2018')
+license=('custom: (C) Jotta AS 2018-2019')
 url="http://docs.jottacloud.com/jottacloud-command-line-tool"
 
 source=("jotta-cli.sysusers"
@@ -14,8 +15,8 @@ source_x86_64=("https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_${p
 source_i686=("https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_${pkgver}_i386.deb")
 sha256sums=('236b77504910d1e9c2bec69bd73d49ce9e9ca21dfd26cf0c69a212fe370bbe2d'
             '2f686a82aafbb9b2168303907b2fe623fe4635ff314583dfb38ad747e0a0e450')
-sha256sums_x86_64=('e6497d8425d8ababbc0ccc50edc617e5a44a19a05f9bee3ce2672437c7871222')
-sha256sums_i686=('9a5e1558ecb569bd88e34e622e50809ea3dd75950525af82cea4c737ebf0a247')
+sha256sums_x86_64=('7cd1027021e6f85e7283d72104c6cf5a35c47db1a03a16e321cc53ef6c1ce9a9')
+sha256sums_i686=('d5854a48c4c28e47503cd2eca0ea58468bf496b1e7be7239c63d5b33a29f4a3e')
 
 package() {
     cd ${srcdir}
