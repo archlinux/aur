@@ -1,3 +1,13 @@
+4.5.7 (2019-03-01 17:10:24)
+
+    Fixes a huge slowdown on some big binaries,
+    Tweaks the switch hint dialog for ARM.
+
+4.5.6 (2019-02-14 20:48:06)
+
+    Fixes some optimisation issues in ARM64 decompiler.
+    Fixes more issues with PDB symbols.
+
 4.5.5 (2019-02-01 18:10:43)
 
     Fixes loading of some PDB files,
