@@ -1,8 +1,8 @@
 # Package maintainer: Martino Pilia <martino.pilia@gmail.com>
 _upstream_name=plasma-applet-ambientnoise
 pkgname=plasma5-applets-ambientnoise
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Plasmoid for ambient noise reproduction"
 arch=('any')
 url="https://github.com/m-pilia/plasma-applet-ambientnoise"
@@ -16,22 +16,25 @@ optdepends=('anoise-media: noise files and icons'
             'anoise-community-extension5: noise files and icons')
 makedepends=('extra-cmake-modules'
              'git')
-source=(https://github.com/m-pilia/${_upstream_name}/archive/${pkgver}.tar.gz)
-sha512sums=('bc3de029fda7344bcfdd3e5d28b38d7f61a4c896905f9514303759203586d9020c72128a6b16a39078af017d6b3cd416b310bf43529a9bb3db7d1d0d08f74a98')
+source=("https://github.com/m-pilia/${_upstream_name}/archive/${pkgver}.tar.gz")
+sha256sums=('d0936c0273b2877545edecb06316eed99ae4225b0bf1a889262e42ac5abaa314')
 
 prepare() {
-  mkdir -p build
+  export _build_dir="${srcdir}/${_upstream_name}-${pkgver}"/build
+
+  mkdir "${_build_dir}" || :
+  cd "${_build_dir}"
+  cmake .. -DCMAKE_INSTALL_PREFIX="`kf5-config --prefix`" \
+           -DCMAKE_BUILD_TYPE=Release
 }
 
 build() {
-  cd build
-  cmake ../${_upstream_name}-${pkgver} -DCMAKE_INSTALL_PREFIX="`kf5-config --prefix`" \
-                                       -DCMAKE_BUILD_TYPE=Release
+  cd "${_build_dir}"
   make
 }
 
 package() {
-  cd build
+  cd "${_build_dir}"
   make install DESTDIR="${pkgdir}"
-  rm -f "$pkgdir/usr/share/icons/breeze/icon-theme.cache" || :
+  rm -rf "${pkgdir}"/usr/share/icons/*/icon-theme.cache
 }
