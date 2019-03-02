@@ -7,7 +7,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=2.18.3
+pkgver=2.20.7.r0.gc7162fdcc
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -75,10 +75,10 @@ sha256sums=('SKIP'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a')
 
-#pkgver() {
-#  cd Flexget
-#  printf "%s.r%s.%s" "$(grep __version__ flexget/_version.py | sed -r "s/.*([0-9].*\.[0-9].*\.[0-9].*)\.dev.*/\1/g")" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-#}
+pkgver() {
+  cd "${_pkgname}"
+   git describe --tags --long | sed 's/^v//' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
   cd "${_pkgname}"
