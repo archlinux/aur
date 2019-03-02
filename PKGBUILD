@@ -14,7 +14,7 @@ _node_version="v8.11.3"
 
 pkgname=wechat-devtools
 pkgver=${_wechat_devtools_ver}
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="WeChat Devtools Linux version."
 arch=("x86_64")
@@ -47,6 +47,8 @@ build() {
     cd ${srcdir}/wechat_devtools/\$APPDATA/Tencent/微信web开发者工具/package.nw
     sed -ri -e 's/f\.isMac\?"node-sync-ipc":"node-sync-ipc-nwjs"/"node-sync-ipc"/g' ./js/*.js
     sed -i 's#-load-extension=\./js#-load-extension=./package.nw/js#' package.json
+    sed -i 's#AppData/Local/\${global.userDirName}/User Data/Default#.config/\${global.userDirName}/Default#g' ./js/common/cli/index.js
+    sed -i 's#USERPROFILE#HOME#g' ./js/common/cli/index.js
 
     # rebuild node-sync-ipc
     cd ./node_modules/node-sync-ipc
