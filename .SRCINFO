@@ -1,7 +1,7 @@
 pkgbase = python-logfury
 	pkgdesc = Responsible, low-boilerplate logging of method calls for python libraries
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ppolewicz/logfury
 	arch = any
 	license = BSD

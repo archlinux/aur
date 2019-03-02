@@ -1,7 +1,7 @@
 # Maintainer: Yaron de Leeuw < me at jarondl dot net >
 pkgname=python-logfury
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Responsible, low-boilerplate logging of method calls for python libraries"
 arch=('any')
 url="https://github.com/ppolewicz/logfury"
@@ -21,7 +21,7 @@ package() {
   cd "$srcdir/logfury-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
-  install -D LICENSE.txt "$pkgdir/usr/share/licenses/python2-logfury/LICENSE.txt"
+  install -D LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
 
 
