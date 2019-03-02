@@ -1,7 +1,7 @@
 # Maintainer: Bart Verhagen <barrie.verhagen@gmail.com>
 pkgname=('exec-helper' 'exec-helper-docs')
 pkgbase='exec-helper'
-pkgver=0.3.1_0_g57ac486
+pkgver=0.4.0_3_gbf3a490
 pkgrel=1
 epoch=
 pkgdesc="How To Get Coffee In Peace: a shell meta-wrapper"
@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=exec-helper.changelog
-source=('exec-helper::git+https://github.com/bverhagen/exec-helper.git#commit=57ac4862c604976e6c26e745532434379b9d730b')
+source=('exec-helper::git+https://github.com/bverhagen/exec-helper.git#commit=bf3a490c115cfbe7a36b885ab13b76e8de2343c1')
 noextract=()
 validpgpkeys=()
 
@@ -32,7 +32,7 @@ pkgver() {
 
 build() {
     _system_description=$(lsb_release --description --short | sed 's/"//g')
-    _source_version=0.3.1_0_g57ac486
+    _source_version=0.4.0_3_gbf3a490
     _release_version="($_system_description) $_source_version"
     _copyright="Copyright (c) $(date +'%Y') Bart Verhagen"
 
