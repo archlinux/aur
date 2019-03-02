@@ -1,0 +1,18 @@
+pkgbase = python-panwid
+	pkgdesc = A collection of widgets for urwid
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/tonycpsu/panwid
+	arch = any
+	license = LGPL2.1
+	depends = python-urwid
+	depends = python-urwid_utils>=0.1.2
+	depends = python-six
+	depends = python-raccoon
+	depends = python-blist
+	depends = python-orderedattrdict
+	source = https://github.com/tonycpsu/panwid/archive/v0.2.5.tar.gz
+	sha256sums = 1646404886f158682eef5f76daa43e47513813d6f0349e6b54b0b9dc3f4b1ebf
+
+pkgname = python-panwid
+
