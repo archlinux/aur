@@ -1,6 +1,6 @@
 pkgname=ant-bloody-gtk-theme
-pkgver=1.1.0
-pkgrel=4
+pkgver=1.3.0
+pkgrel=5
 pkgdesc="Ant Bloody Theme for GTK 3.x"
 arch=(any)
 url=https://www.gnome-look.org/p/1099856/
@@ -10,8 +10,8 @@ depends=('gtk3')
 _p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
 read _s _t <<< $(echo -n $(curl -s $url | sed -n "s/$_p/\2\3/p"))
 
-source=("https://dl.opendesktop.org/api/files/downloadfile/id/1518217181/s/$_s/t/$_t/u//Ant-Bloody.tar")
-sha256sums=('5052a5289ad7f9cb35283cc9b9a6fa64987d11022de782747a232b7445fe114a')
+source=("https://github.com/EliverLara/Ant-Bloody/releases/download/v1.3.0/Ant-Bloody.tar")
+sha256sums=('1afd626d337e4641d0d108d4120bda9d53a6d63d86e70d4f90b8ca5f27283f67')
 
 package(){
 	cd "$srcdir"

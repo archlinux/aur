@@ -1,12 +1,12 @@
 pkgbase = ant-bloody-gtk-theme
 	pkgdesc = Ant Bloody Theme for GTK 3.x
-	pkgver = 1.1.0
-	pkgrel = 4
+	pkgver = 1.3.0
+	pkgrel = 5
 	url = https://www.gnome-look.org/p/1099856/
 	arch = any
 	depends = gtk3
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1518217181/s/25ca1d028ceb084cb710741083fec39b/t/1518649785/u//Ant-Bloody.tar
-	sha256sums = 5052a5289ad7f9cb35283cc9b9a6fa64987d11022de782747a232b7445fe114a
+	source = https://github.com/EliverLara/Ant-Bloody/releases/download/v1.3.0/Ant-Bloody.tar
+	sha256sums = 1afd626d337e4641d0d108d4120bda9d53a6d63d86e70d4f90b8ca5f27283f67
 
 pkgname = ant-bloody-gtk-theme
 
