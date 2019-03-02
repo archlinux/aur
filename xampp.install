@@ -1,10 +1,12 @@
+_mysql_uuid=992
+
 post_install() {
 
 	if ! id -u mysql &> /dev/null; then
 
 		echo "Creating user 'mysql'..."
-		groupadd mysql -g 992
-		useradd -u 992 -r -g mysql -s /bin/false mysql
+		groupadd mysql -g "${_mysql_uuid}"
+		useradd -u "${_mysql_uuid}" -r -g mysql -s /bin/false mysql
 
 	fi
 
