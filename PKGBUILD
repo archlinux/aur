@@ -2,7 +2,7 @@
 
 _plug=vmaf
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r3.0.g4c6d972
+pkgver=r4.0.g44bbaf7
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
