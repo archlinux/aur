@@ -1,6 +1,6 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
 pkgname=msgfplus
-pkgver=2019.02.27
+pkgver=2019.02.28
 pkgrel=1
 pkgdesc="MS/MS database search tool"
 arch=('any')
@@ -11,7 +11,7 @@ source=("https://github.com/MSGFPlus/msgfplus/releases/download/v${pkgver}/MSGFP
 		"msgf+"
 		"mzid2tsv"
         "https://raw.githubusercontent.com/sangtaekim/msgfplus/master/LICENSE.txt")
-md5sums=('828025ce5c4674c37deae73449907119'
+md5sums=('68cfd426731bcf41da1b847cc1c04d5f'
          'c43c6581b373266171c3930c3718eb9c'
          'c860b9c30b74dae43de2d3933a405ac1'
          '88b22e0922010401ea88bcf03e3bb5d2')
