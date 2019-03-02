@@ -1,7 +1,7 @@
-diff -ruN librsvg-2.44.8/Makefile.am librsvg-2.44.8-patched/Makefile.am
---- librsvg-2.44.8/Makefile.am	2018-08-31 02:39:42.000000000 +0800
-+++ librsvg-2.44.8-patched/Makefile.am	2018-08-31 14:57:47.170559312 +0800
-@@ -143,6 +143,7 @@
+diff -ruN librsvg-2.45.5/Makefile.am librsvg-2.45.5-fixed/Makefile.am
+--- librsvg-2.45.5/Makefile.am	2019-02-16 01:01:25.000000000 +0800
++++ librsvg-2.45.5-fixed/Makefile.am	2019-03-02 20:17:17.432974000 +0800
+@@ -139,6 +139,7 @@
  cargo_verbose_1 = --verbose
  
  RUST_LIB=@abs_top_builddir@/target/@RUST_TARGET_SUBDIR@/librsvg_internals.a
@@ -9,17 +9,16 @@ diff -ruN librsvg-2.44.8/Makefile.am librsvg-2.44.8-patched/Makefile.am
  CARGO_TARGET_DIR=@abs_top_builddir@/target
  
  check-local:
-@@ -171,7 +172,8 @@
+@@ -167,7 +168,7 @@
  	PKG_CONFIG_ALLOW_CROSS=1						\
  	PKG_CONFIG='$(PKG_CONFIG)'						\
  	CARGO_TARGET_DIR=$(CARGO_TARGET_DIR)					\
--	cargo build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS)
-+	cargo build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS) \
-+	&& cp $(RUST_LIB_WIN) $(RUST_LIB)
+-	$(CARGO) build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS)
++	$(CARGO) build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS) && cp $(RUST_LIB_WIN) $(RUST_LIB)
  
  librsvg_@RSVG_API_MAJOR_VERSION@_la_CPPFLAGS = \
  	-I$(top_srcdir) 			\
-@@ -197,7 +199,6 @@
+@@ -193,7 +194,6 @@
  	$(AM_LDFLAGS)
  
  librsvg_@RSVG_API_MAJOR_VERSION@_la_LIBADD = \
@@ -27,10 +26,10 @@ diff -ruN librsvg-2.44.8/Makefile.am librsvg-2.44.8-patched/Makefile.am
  	$(LIBRSVG_LIBS) 	\
  	$(LIBM)			\
  	$(DLOPEN_LIBS)
-diff -ruN librsvg-2.44.8/Makefile.in librsvg-2.44.8-patched/Makefile.in
---- librsvg-2.44.8/Makefile.in	2018-08-31 02:39:57.000000000 +0800
-+++ librsvg-2.44.8-patched/Makefile.in	2018-08-31 14:57:47.170559312 +0800
-@@ -224,7 +224,7 @@
+diff -ruN librsvg-2.45.5/Makefile.in librsvg-2.45.5-fixed/Makefile.in
+--- librsvg-2.45.5/Makefile.in	2019-02-16 07:42:52.000000000 +0800
++++ librsvg-2.45.5-fixed/Makefile.in	2019-03-02 20:17:17.432974000 +0800
+@@ -227,7 +227,7 @@
    }
  LTLIBRARIES = $(lib_LTLIBRARIES)
  am__DEPENDENCIES_1 =
@@ -39,7 +38,7 @@ diff -ruN librsvg-2.44.8/Makefile.in librsvg-2.44.8-patched/Makefile.in
  	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
  	$(am__DEPENDENCIES_1)
  am__dirstamp = $(am__leading_dot)dirstamp
-@@ -733,6 +733,7 @@
+@@ -739,6 +739,7 @@
  cargo_verbose_0 = 
  cargo_verbose_1 = --verbose
  RUST_LIB = @abs_top_builddir@/target/@RUST_TARGET_SUBDIR@/librsvg_internals.a
@@ -47,7 +46,7 @@ diff -ruN librsvg-2.44.8/Makefile.in librsvg-2.44.8-patched/Makefile.in
  CARGO_TARGET_DIR = @abs_top_builddir@/target
  librsvg_@RSVG_API_MAJOR_VERSION@_la_CPPFLAGS = \
  	-I$(top_srcdir) 			\
-@@ -758,7 +759,6 @@
+@@ -764,7 +765,6 @@
  	$(AM_LDFLAGS)
  
  librsvg_@RSVG_API_MAJOR_VERSION@_la_LIBADD = \
@@ -55,24 +54,23 @@ diff -ruN librsvg-2.44.8/Makefile.in librsvg-2.44.8-patched/Makefile.in
  	$(LIBRSVG_LIBS) 	\
  	$(LIBM)			\
  	$(DLOPEN_LIBS)
-@@ -1110,8 +1110,8 @@
- librsvg/@RSVG_API_MAJOR_VERSION@_la-rsvg-styles.lo:  \
+@@ -1103,8 +1103,8 @@
+ librsvg/@RSVG_API_MAJOR_VERSION@_la-rsvg-pixbuf.lo:  \
  	librsvg/$(am__dirstamp) librsvg/$(DEPDIR)/$(am__dirstamp)
  
 -librsvg-@RSVG_API_MAJOR_VERSION@.la: $(librsvg_@RSVG_API_MAJOR_VERSION@_la_OBJECTS) $(librsvg_@RSVG_API_MAJOR_VERSION@_la_DEPENDENCIES) $(EXTRA_librsvg_@RSVG_API_MAJOR_VERSION@_la_DEPENDENCIES) 
 -	$(AM_V_CCLD)$(librsvg_@RSVG_API_MAJOR_VERSION@_la_LINK) -rpath $(libdir) $(librsvg_@RSVG_API_MAJOR_VERSION@_la_OBJECTS) $(librsvg_@RSVG_API_MAJOR_VERSION@_la_LIBADD) $(LIBS)
 +librsvg-@RSVG_API_MAJOR_VERSION@.la: $(librsvg_@RSVG_API_MAJOR_VERSION@_la_OBJECTS) $(RUST_LIB) $(librsvg_@RSVG_API_MAJOR_VERSION@_la_DEPENDENCIES) $(EXTRA_librsvg_@RSVG_API_MAJOR_VERSION@_la_DEPENDENCIES) 
 +	$(AM_V_CCLD)$(librsvg_@RSVG_API_MAJOR_VERSION@_la_LINK) -rpath $(libdir) $(librsvg_@RSVG_API_MAJOR_VERSION@_la_OBJECTS) $(RUST_LIB) $(librsvg_@RSVG_API_MAJOR_VERSION@_la_LIBADD) $(LIBS)
- librsvg/rsvg_convert-rsvg-size-callback.$(OBJEXT):  \
- 	librsvg/$(am__dirstamp) librsvg/$(DEPDIR)/$(am__dirstamp)
  
-@@ -1969,7 +1969,8 @@
+ rsvg-convert$(EXEEXT): $(rsvg_convert_OBJECTS) $(rsvg_convert_DEPENDENCIES) $(EXTRA_rsvg_convert_DEPENDENCIES) 
+ 	@rm -f rsvg-convert$(EXEEXT)
+@@ -1893,7 +1893,7 @@
  	PKG_CONFIG_ALLOW_CROSS=1						\
  	PKG_CONFIG='$(PKG_CONFIG)'						\
  	CARGO_TARGET_DIR=$(CARGO_TARGET_DIR)					\
--	cargo build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS)
-+	cargo build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS) \
-+	&& cp $(RUST_LIB_WIN) $(RUST_LIB)
+-	$(CARGO) build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS)
++	$(CARGO) build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS) && cp $(RUST_LIB_WIN) $(RUST_LIB)
  
- librsvg/librsvg-enum-types.h: librsvg/s-enum-types-h
- 	@true
+ @HAVE_INTROSPECTION_TRUE@-include $(INTROSPECTION_MAKEFILE)
+ 
