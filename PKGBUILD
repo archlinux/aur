@@ -1,10 +1,10 @@
-# $Id$
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Jake <aur@ja-ke.tech>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # Contributor: Josia Roßkopf <josia-login@rosskopfs.de>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Yen Chi Hsuan <yan12125 at gmail.com>
 pkgname=nwjs-bin
-pkgver=0.36.1
+pkgver=0.36.3
 pkgrel=1
 pkgdesc="An app runtime based on Chromium and node.js."
 arch=("x86_64")
@@ -19,7 +19,7 @@ provides=("nwjs" "node-webkit")
 replaces=("node-webkit")
 conflicts=("nwjs" "node-webkit")
 source=("${pkgname}-${pkgver}.tar.gz::http://dl.nwjs.io/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-x64.tar.gz")
-sha256sums=('031c0a5418e81dd1e16f861327fbfd2227a6411d4b5508d577963081d17dd889')
+sha256sums=('fc2a8a16b0747e75516630a9d9f01c97bac84dc462087c1febb5c35f74c07f7e')
 
 package() {
   cd "${pkgname%-bin}-v${pkgver}-linux-x64"
