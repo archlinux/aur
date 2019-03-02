@@ -4,7 +4,7 @@
 pkgbase=('monero-git')
 pkgname=('monero-git' 'libmonero-wallet-git')
 _gitname='monero'
-pkgver=0.13.0.4
+pkgver=0.14.0.0
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://getmonero.org/"
@@ -15,8 +15,7 @@ makedepends=('git' 'cmake' 'boost' 'gtest' 'qt5-tools')
 
 pkgdesc="Peer-to-peer anonymous digital currency (daemon, CLI wallet, and wallet API library)"
 _upstream=https://github.com/monero-project/monero.git
-source=("$_gitname::git+$_upstream"
-        "cmake-libsodium.patch")
+source=("$_gitname::git+$_upstream")
 
 _builddir=build
 
@@ -105,16 +104,23 @@ package_monero-git() {
         # Uncomment for a debug build
         # options=(!strip debug)
 
-	install -D -m755 "$srcdir/$_gitname/build/bin/monerod" "$pkgdir/usr/bin/monerod"
-
-	install -D -m755 "$srcdir/$_gitname/build/bin/monero-wallet-cli" "$pkgdir/usr/bin/monero-wallet-cli"
-	install -D -m755 "$srcdir/$_gitname/build/bin/monero-wallet-rpc" "$pkgdir/usr/bin/monero-wallet-rpc"
-
-	install -D -m755 "$srcdir/$_gitname/build/bin/monero-blockchain-import" "$pkgdir/usr/bin/monero-blockchain-import"
-	install -D -m755 "$srcdir/$_gitname/build/bin/monero-blockchain-export" "$pkgdir/usr/bin/monero-blockchain-export"
-	install -D -m755 "$srcdir/$_gitname/build/bin/monero-blockchain-usage" "$pkgdir/usr/bin/monero-blockchain-usage"
-
-	install -D -m755 "$srcdir/$_gitname/build/bin/monero-gen-trusted-multisig" "$pkgdir/usr/bin/monero-gen-trusted-multisig"
+	for b in \
+		monero-blockchain-ancestry \
+		monero-blockchain-depth \
+		monero-blockchain-export \
+		monero-blockchain-import \
+		monero-blockchain-mark-spent-outputs \
+		monero-blockchain-prune \
+		monero-blockchain-prune-known-spent-data \
+		monero-blockchain-stats \
+		monero-blockchain-usage \
+		monerod \
+		monero-gen-trusted-multisig \
+		monero-wallet-cli \
+		monero-wallet-rpc
+	do
+		install -D -m755 "$srcdir/$_gitname/build/bin/$b" "$pkgdir/usr/bin/$b"
+	done
 
 	install -Dm644 $srcdir/$_gitname/utils/systemd/monerod.service "${pkgdir}/usr/lib/systemd/system/monerod.service"
 	install -Dm644 "$srcdir/$_gitname/utils/conf/monerod.conf" "$pkgdir/etc/monerod.conf"
@@ -139,5 +145,4 @@ package_libmonero-wallet-git() {
         cd $_stagedir
         find usr/{include,lib} -type f -exec install -D -m 755 {} ${pkgdir}/{} \;
 }
-sha256sums=('SKIP'
-            'fceaadde45f7fec587a8ce9456e23ca3d1500bc021aae5fdc7a7872362f8891e')
+sha256sums=('SKIP')
