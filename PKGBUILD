@@ -7,8 +7,9 @@ pkgdesc="Glossy cross-platform client for Matrix"
 arch=(any)
 url="https://gitlab.com/b0/spectral"
 license=('GPL3')
-depends=('qt5-tools' 'qt5-quickcontrols2' 'qt5-graphicaleffects')
-makedepends=('cmake')
+depends=(
+    'qt5-tools' 'qt5-multimedia' 'qt5-quickcontrols2' 'qt5-graphicaleffects')
+makedepends=('cmake' 'git')
 options=()
 source=("$pkgname::git+https://gitlab.com/b0/spectral.git")
 md5sums=('SKIP')
