@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wpewebkit
-pkgver=2.22.4
+pkgver=2.22.5
 pkgrel=1
 pkgdesc='Web content engine library optimized for embedded devices'
 arch=(x86_64 i686)
@@ -11,10 +11,10 @@ depends=(cairo libxslt gst-plugins-base-libs libepoxy libsoup libwebp
          harfbuzz-icu woff2 'libwpe>=1.0.0')
 makedepends=(gperf ruby cmake python2 ninja)
 source=("${url}/releases/${pkgname}-${pkgver}.tar.xz")
-md5sums=('6e5c668473c57906bdec1c641bac4579')
-sha1sums=('002b8b25f4fc26bfef68767b3ff1eba1aac53fa5')
-sha256sums=('871e86b7e989de0c1224ac7ab8ed6d8b52756cf793a8c253b56ab8ba8d288c96')
-sha512sums=('be6d60661cee393d35a21323ecd5b204dfdd140aa3b2ec6f119a1effd1032701b81c0f20968e7c5c58e3f988cffe16084c52c55e0cde5757128a91b7a44b5bca')
+md5sums=('7b768bfae1295ebbc9a9038bf8fb6e6c')
+sha1sums=('c85f927e0f17f1e7045a5d33c683d310c7af24de')
+sha256sums=('d5e7b23e4f9e9f1b9d369faa4d527cdb59aef56b3e6a50a16dad243df5f699f3')
+sha512sums=('d84ca94e4108e8e0a4fef6a34611d639f6f2de593092b5bc3fe6003edd594a33a2f4048215171d58128e8260033df8cee0901ab33d2528149d4d249084806e79')
 
 prepare () {
 	mkdir -p _build
