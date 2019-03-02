@@ -62,6 +62,7 @@ depends=(
   opencore-amr
   openjpeg2
   opus
+  raspberrypi-firmware
   sdl2
   speex
   v4l-utils
