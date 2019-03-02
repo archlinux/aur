@@ -2,7 +2,7 @@
 
 pkgname=mapton
 pkgver=0.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Some kind of map application"
 arch=(any)
 url="https://mapton.org"
@@ -10,10 +10,10 @@ license=('Apache')
 depends=('java-runtime>=8' 'java-openjfx')
 makedepends=('git' 'jdk8-openjdk' 'maven')
 
-_commit=ba1ca79f23ffc96404997e4ae1cbe8dffab0c732
+_commit=2091754f0454155d72a32d3004e4789ed5f1f3ad
 source=(git+https://github.com/trixon/mapton.git#commit=$_commit
         mapton.desktop
-        git+https://github.com/trixon/almond3.git#commit=dd953cd8dd6da0faee1a82d334e200bbe02a37eb
+        git+https://github.com/trixon/almond3.git#commit=3f16b553bb4dad3ecf72508e5d9e5cee17da934a
         git+https://github.com/rterp/GMapsFX.git#commit=4623d3f768e8ad78fc50ee32dd204d236e01059f)
 sha256sums=('SKIP'
             '303620b07b9a48324acfa2541a1f93fe5630cca7919cd5b5b1141f0ffe7b6cd7'
@@ -29,7 +29,7 @@ prepare() {
 }
 
 build() {
-	MAVENCACHE="${SRCDEST-$srcdir}"
+	MAVENCACHE="${SRCDEST:-$srcdir}"
 	export MAVENCACHE
 
 	cd "$srcdir"/$pkgname/almond3
