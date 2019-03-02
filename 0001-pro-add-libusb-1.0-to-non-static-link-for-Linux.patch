@@ -1,0 +1,40 @@
+From 811f81de15a22481d93a2688a466767debc4b64e Mon Sep 17 00:00:00 2001
+From: redfish <redfish@galactica.pw>
+Date: Sat, 19 Jan 2019 16:12:14 -0500
+Subject: [PATCH 1/2] pro: add libusb-1.0 to non-static link for Linux
+
+Fixes failing link on Arch Linux with libmonero-wallet
+4e723843183b12308bce2ef560385ea885ad0174
+
+/usr/bin/ld:
+/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/libwallet_merged.a(transport.cpp.o):
+undefined reference to symbol 'libusb_interrupt_transfer'
+/usr/bin/ld: /usr/lib/libusb-1.0.so.0: error adding symbols: DSO missing from command line
+collect2: error: ld returned 1 exit status
+---
+ monero-wallet-gui.pro | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/monero-wallet-gui.pro b/monero-wallet-gui.pro
+index 2662c5c9..c91cec5e 100644
+--- a/monero-wallet-gui.pro
++++ b/monero-wallet-gui.pro
+@@ -283,7 +283,6 @@ linux {
+         QMAKE_LFLAGS += -static-libgcc -static-libstdc++
+    #     contains(QT_ARCH, x86_64) {
+             LIBS+= -lunbound \
+-                   -lusb-1.0 \
+                    -lhidapi-hidraw \
+                    -ludev
+    #     }
+@@ -305,6 +304,7 @@ linux {
+         -llmdb \
+         -lsodium \
+         -lhidapi-libusb \
++        -lusb-1.0 \
+         -lcrypto $$TREZOR_LINKER
+ 
+     if(!android) {
+-- 
+2.20.1
+

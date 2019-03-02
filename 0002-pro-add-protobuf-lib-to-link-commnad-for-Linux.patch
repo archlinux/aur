@@ -1,0 +1,31 @@
+From a76cdaa5f75736269bf5f28cb39b76b1cb6d3ad2 Mon Sep 17 00:00:00 2001
+From: redfish <redfish@galactica.pw>
+Date: Sat, 19 Jan 2019 16:34:22 -0500
+Subject: [PATCH 2/2] pro: add protobuf lib to link commnad for Linux
+
+Fixes link failure on Arch Linux with libmonerowallet
+4e723843183b12308bce2ef560385ea885ad0174
+
+/usr/bin/ld:
+/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/libwallet_merged.a(messages-management.pb.cc.o):(.data.rel.ro._ZTVN2hw6trezor8messages10management13SetU2FCounterE[_ZTVN2hw6trezor8messages10management13SetU2FCounterE]+0xb8):
+undefined reference to `google::protobuf::Message::SpaceUsedLong()
+const'
+---
+ monero-wallet-gui.pro | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/monero-wallet-gui.pro b/monero-wallet-gui.pro
+index c91cec5e..c8afa9b7 100644
+--- a/monero-wallet-gui.pro
++++ b/monero-wallet-gui.pro
+@@ -305,6 +305,7 @@ linux {
+         -lsodium \
+         -lhidapi-libusb \
+         -lusb-1.0 \
++        -lprotobuf \
+         -lcrypto $$TREZOR_LINKER
+ 
+     if(!android) {
+-- 
+2.20.1
+
