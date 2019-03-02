@@ -2,20 +2,21 @@
 
 _pkgbase='macreg'
 pkgname="${_pkgbase}-git"
-pkgver=r135.6e079a6
-pkgrel=2
+pkgver=r137.b5d400d
+pkgrel=1
 pkgdesc='Micro web service to allow local users to register MAC addresses'
 arch=('any')
 url="https://github.com/coNQP/${_pkgbase}"
-license=('GPLv3' 'MIT')
+license=('GPLv3')
 depends=(
     'python'
     'python-peewee'
     'python-peeweeplus'
     'python-flask'
     'python-httpam'
+    'python-pymysql'
     'uwsgi-plugin-python'
-    'python-pymysql')
+)
 makedepends=('git' 'python')
 provides=("python-${_pkgbase}" "${_pkgbase}")
 conflicts=("python-${_pkgbase}" "${_pkgbase}")
@@ -27,8 +28,8 @@ srcdir='src'
 
 
 pkgver() {
-  cd "${_pkgbase}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${_pkgbase}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 
@@ -54,9 +55,4 @@ package() {
     pushd "frontend" || exit 1
     install -m 644 -t "${FRONTEND}" ./*
     popd || exit 1
-
-    # Install bootstrap's MIT license.
-    local LICENSES="${pkgdir}/usr/share/licenses/${pkgname}"
-    install -m 755 -d "${LICENSES}"
-    install -m 644 LICENSE.bootstrap.txt "${LICENSES}"
 }
