@@ -129,7 +129,7 @@ package_monero-git() {
 
 package_libmonero-wallet-git() {
 
-	provides=('libmonero-wallet')
+	provides=("libmonero-wallet=$pkgver")
 	conflicts=('libmonero-wallet')
 
         # NOTE: this is crucial, otherwise stripping breaks the .a archive:
