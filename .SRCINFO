@@ -1,6 +1,6 @@
 pkgbase = rescached-git
 	pkgdesc = Resolver/DNS cache daemon
-	pkgver = 2.1.0.r0.gdb7a441
+	pkgver = 2.1.1.r0.ga5ccf7d
 	pkgrel = 1
 	url = https://github.com/shuLhan/rescached-go
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = rescached-git
 	license = custom:BSD
 	makedepends = git
 	makedepends = go-pie>=1.11
-	makedepends = asciidoc
+	makedepends = asciidoctor
 	depends = bash
 	provides = rescached
 	conflicts = bind
