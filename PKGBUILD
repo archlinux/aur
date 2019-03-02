@@ -5,7 +5,7 @@ pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r2.dafa5b5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/invisiblearts/VapourSynth-Inpaint'
 license=('GPL')
 depends=('vapoursynth'
@@ -29,13 +29,12 @@ prepare(){
       -i Inpaint.h
 
   echo "all:
-	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) $(pkg-config --cflags opencv4) -o Inpaint.o Inpaint.cpp
+	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags-only-I vapoursynth) $(pkg-config --cflags-only-I opencv4) -o Inpaint.o Inpaint.cpp
 	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so Inpaint.o" > Makefile
 }
 
 build() {
-  cd "${_plug}"
-  make
+  make -C "${_plug}"
 }
 
 package() {
