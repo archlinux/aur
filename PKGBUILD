@@ -25,9 +25,10 @@ pkgver() {
 prepare(){
   mkdir -p build
 
+  cd "${_plug}"
   sed -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
       -e 's|"VSHelper.h"|<VSHelper.h>|g' \
-      -i "${_plug}/Common.h"
+      -i Common.h
 }
 
 build() {
