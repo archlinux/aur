@@ -3,13 +3,14 @@
 
 _plug=kagefunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r33.25e01b1
+pkgver=r34.dcaff3d
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/Irrational-Encoding-Wizardry/kagefunc'
 license=('GPL')
-depends=('vapoursynth-plugin-mvsfunc-git'
+depends=('vapoursynth'
+         'vapoursynth-plugin-mvsfunc-git'
          'vapoursynth-plugin-fvsfunc-git'
          'vapoursynth-plugin-retinex-git'
          )
@@ -32,5 +33,6 @@ package(){
   install -Dm644 "${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
