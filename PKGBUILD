@@ -1,7 +1,7 @@
 # Maintainer: Modelmat <modelmat@outlook.com.au>
 
 pkgname=my-study-life
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A free cross platform planner app for students, teachers and lecturers designed to make your study life easier to manage."
 arch=("armv7l" "i686" "x86_64")
