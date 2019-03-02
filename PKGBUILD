@@ -52,6 +52,8 @@ _fakeadd_error() {
 
 prepare() {
 
+	cd "${srcdir}"
+
 	# Against proot error `proot info: pid XXXX: terminated with signal 11`
 	export PROOT_NO_SECCOMP=1
 
