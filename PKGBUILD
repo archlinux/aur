@@ -5,8 +5,8 @@ pkgname=vapoursynth-plugin-${_plug}
 pkgver=20171017
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
-arch=('i686' 'x86_64')
-url='http://forum.doom9.org/showthread.php?t=171412'
+arch=('x86_64')
+url='https://forum.doom9.org/showthread.php?t=171412'
 license=('GPL')
 depends=('vapoursynth')
 source=("${_plug}-${pkgver}.7z::http://www.avisynth.nl/users/vcmohan/${_plug}/${_plug}_src.7z")
