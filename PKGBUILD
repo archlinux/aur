@@ -13,7 +13,7 @@ makedepends=('mercurial')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::hg+https://bitbucket.org/James1201/vapoursynth-noisegen")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
