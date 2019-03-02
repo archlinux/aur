@@ -31,7 +31,8 @@ prepare() {
 
   rm -fr src/VapourSynth.h src/VSHelper.h
 
-  sh autogen.sh
+  chmod +x autogen.sh
+  ./autogen.sh
 }
 
 build() {
@@ -46,8 +47,8 @@ build() {
 
 package(){
   make -C build DESTDIR="${pkgdir}" install
-  install -Dm644 "${_plug}/src/mvmulti.py" "${pkgdir}${_site_packages}/mvmulti.py"
 
+  install -Dm644 "${_plug}/src/mvmulti.py" "${pkgdir}${_site_packages}/mvmulti.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/mvmulti.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/mvmulti.py"
 }
