@@ -2,7 +2,7 @@
 
 _plug=fft3dfilter
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=R1.0.g441b222
+pkgver=R1.2.g8b30d06
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
