@@ -1,7 +1,7 @@
 pkgbase = gogios-bin
 	pkgdesc = Checks to see if required services are still running on important machines.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://angrysysadmins.tech
 	install = gogios-bin.install
 	arch = x86_64

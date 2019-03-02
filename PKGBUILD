@@ -2,7 +2,7 @@
 
 pkgname=gogios-bin
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Checks to see if required services are still running on important machines."
 arch=('x86_64')
 url="https://angrysysadmins.tech"
