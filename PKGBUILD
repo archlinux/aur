@@ -10,7 +10,7 @@ license=('custom:Cryptonote')
 provides=('monero-wallet-qt')
 conflicts=('monero-wallet-qt')
 
-depends=("libmonero-wallet-git>=$_monerover"
+depends=("libmonero-wallet>=$_monerover"
 'openssl' 'boost-libs>=1.45'  'libunwind' 'readline' 'unbound' 'hidapi'
 'qt5-base' 'qt5-declarative' 'qt5-graphicaleffects'
 'qt5-location' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-tools' 'qt5-webchannel'
