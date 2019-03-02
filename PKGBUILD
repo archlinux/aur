@@ -13,7 +13,7 @@ makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("git+https://github.com/EleonoreMizo/${_plug}.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -22,6 +22,7 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
   rm -fr "${_plug}/src/VapourSynth.h"
 
   cd "${_plug}/build/unix"
