@@ -1,40 +1,35 @@
-# Maintainer: Gustav Larson <gustav dot larson at gmail dot com>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+
 pkgname=epeg-git
-pkgver=r38.248ae9f
+_pkgname=epeg
+pkgver=0.9.2.r2.g248ae9f
 pkgrel=1
 pkgdesc="An IMMENSELY FAST JPEG thumbnailer library API."
-arch=('any')
+arch=('x86_64')
 url="https://github.com/mattes/epeg"
 license=('MIT')
-groups=()
 depends=('libjpeg' 'libexif')
 makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
-noextract=()
-_gitrepo="$url.git"
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+https://github.com/mattes/epeg.git")
+sha512sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	git clone --single $_gitrepo "$srcdir/${pkgname%-git}"
+    cd "$_pkgname"
+    # cutting off 'v' prefix that presents in the git tag
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	./autogen.sh
-	./configure --prefix=/usr
-	make
+    cd "$_pkgname"
+    NOCONFIGURE=1 ./autogen.sh
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
+    cd "$_pkgname"
+    make DESTDIR="$pkgdir/" install
+    install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
