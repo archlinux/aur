@@ -31,10 +31,10 @@ prepare() {
       -i dpid.cpp
 
   echo "all:
-	  nvcc -Xcompiler -fPIC -rdc=true -c -o kernel8_.o kernel8.cu
-	  nvcc -Xcompiler -fPIC -dlink -o kernel8.o kernel8_.o
-	  nvcc -Xcompiler -fPIC -rdc=true -c -o kernel16_.o kernel16.cu
-	  nvcc -Xcompiler -fPIC -dlink -o kernel16.o kernel16_.o
+	  nvcc -Xcompiler -fPIC -rdc=true -c -o kernel8.cu.o kernel8.cu
+	  nvcc -Xcompiler -fPIC -dlink -o kernel8.o kernel8.cu.o
+	  nvcc -Xcompiler -fPIC -rdc=true -c -o kernel16.cu.o kernel16.cu
+	  nvcc -Xcompiler -fPIC -dlink -o kernel16.o kernel16.cu.o
 	  g++ -c -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o dpid.o dpid.cpp
 	  g++ -shared -L/opt/cuda/lib64 -lcudart -fPIC ${LDFLAGS} -o lib${_plug}.so kernel8.o kernel16.o dpid.o" > Makefile
 }
