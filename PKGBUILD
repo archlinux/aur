@@ -6,9 +6,13 @@
 # Original PKGBUILD taken wholesale from stylemistake's bitwig-studio package
 # JF added a prepare() to allow side-by-side installation with release version
 
+# As of 2.5beta4, Bitwig have moved the beta packages and you'll need to log in
+# to download the source deb package. I asked about it but they're keeping it
+# that way. :(
+
 pkgname=bitwig-studio-beta
 _pkgname=bitwig-studio
-pkgver=2.5beta3
+pkgver=2.5beta8
 _pkgver=2.5
 pkgrel=1
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
@@ -22,8 +26,9 @@ depends=('jack' 'gtk2' 'gtk3' 'lib32-gcc-libs' 'libbsd' 'xcb-util' 'xcb-util-wm'
 optdepends=('alsa-lib' 'oss' 'ffmpeg: MP3 support')
 provides=('bitwig-studio')
 options=(!strip)
-source=("https://downloads.bitwig.com/beta/${_pkgver}/bitwig-studio-${pkgver}.deb")
-sha256sums=('74bb66332c8733fd090c9ea86760857146892071c88159e4ddbb151650c05cb5')
+#source=("https://downloads.bitwig.com/beta/${_pkgver}/bitwig-studio-${pkgver}.deb")
+source=("local://bitwig-studio-${pkgver}.deb")
+sha256sums=('f0f5bdfcb74ea46aeeede7131c0c81ffaa10fe4eff84841e062ee9ba3da9705e')
 
 prepare() {
 	msg2 "Unpacking archive contents..."
