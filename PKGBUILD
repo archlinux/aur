@@ -2,17 +2,20 @@
 
 pkgname=groonga
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An opensource fulltext search engine."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="http://groonga.org/"
 license=('LGPL2')
 source=("http://packages.groonga.org/source/groonga/$pkgname-$pkgver.tar.gz"
         "groonga-httpd.service")
-depends=('zlib' 'lz4' 'glib2' 'libedit' 'zeromq' 'libevent' 'mecab' 'mecab-ipadic')
-optdepends=('cutter-test_framework' 'ruby' 'mercurial' 'kytea' 'snowball-c')
+depends=('zlib' 'lz4' 'glib2' 'libedit' 'zeromq'
+         'libevent' 'mecab' 'mecab-ipadic')
+optdepends=('cutter-test_framework' 'ruby' 'mercurial' 'kytea' 'snowball-c'
+            'autoconf-archive' 'arrow')
 
 build() {
+    # TODO: Enable arrow later
     cd $srcdir/$pkgname-$pkgver
     ./configure --prefix=/usr \
     --localstatedir=/var \
@@ -22,6 +25,7 @@ build() {
     --with-zlib \
     --with-lz4 \
     --without-stemmer \
+    --disable-arrow \
     --enable-shared=yes \
     --enable-static=yes \
     --with-mecab \
