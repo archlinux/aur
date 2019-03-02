@@ -6,7 +6,7 @@ pkgver=20160817
 pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('x86_64')
-url='http://forum.doom9.org/showthread.php?t=172594'
+url='https://forum.doom9.org/showthread.php?t=172594'
 license=('GPL')
 depends=('vapoursynth'
          'fftw'
