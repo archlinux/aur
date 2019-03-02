@@ -7,7 +7,7 @@
 pkgname=gimp-develop-git
 _pkgname=${pkgname%-develop-git}
 epoch=1
-pkgver=2.99.1.r1398.f7ac033777
+pkgver=2.99.1.r2127.03810861d2
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program (non-conflicting git version)"
 arch=('i686' 'x86_64')
@@ -30,8 +30,8 @@ depends=(
 	'poppler-data>=0.4.9'
 	'openexr>=1.6.1'
 	'mypaint-brushes>=1.3.0'
-	'babl>=0.1.61'
-	'gegl>=0.4.13'
+	'babl>=0.1.62'
+	'gegl>=0.4.14'
 	'cairo>=1.14.0'
 	'appstream-glib>=0.7.7'
 	)
@@ -58,7 +58,7 @@ sha512sums=('SKIP'
             '6f33d57f242fa8ce04b65e06a712bd54677306a45b22cb853fbe348089cd4673bd4ed91073074fe067166fe8951c370f8bbbc386783e3ed5170d52e9062666fe')
 
 pkgver() {
-  cd $_pkgname
+  cd $srcdir/$_pkgname
   printf %s.%s.%s.r%s.%s $(grep -oP 'gimp_(major|minor|micro)_version\], \[\K[0-9]{1,2}' configure.ac) $(git rev-list $(git describe --abbrev=0)..HEAD --count) $(git log --pretty=format:'%h' -n 1)
 }
 
