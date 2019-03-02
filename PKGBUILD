@@ -22,7 +22,7 @@ depends=('vapoursynth'
          'vapoursynth-plugin-f3kdb-git'
          'vapoursynth-plugin-fluxsmooth'
          'vapoursynth-plugin-fft3dfilter-git'
-         'vapoursynth-plugin-fmtconv'
+         'vapoursynth-plugin-fmtconv-git'
          'vapoursynth-plugin-hqdn3d-git'
          'vapoursynth-plugin-knlmeanscl'
          'vapoursynth-plugin-mvsfunc-git'
@@ -49,7 +49,8 @@ pkgver() {
 }
 
 package() {
-  install -Dm644 "${_plug}/${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
+  cd "${_plug}"
+  install -Dm644 "${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 }
