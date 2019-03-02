@@ -24,23 +24,25 @@ pkgver() {
 }
 
 prepare() {
+  cd "${_plug}"
 
   echo "all:
-	  g++ -c -std=c++11 -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o descale.o descale/descale.cpp
+	  g++ -c -std=c++11 -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o descale.o descale.cpp
 	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so descale.o" > Makefile
 }
 
 build() {
-  make
+  make -C "${_plug}"
 }
 
 package(){
+  cd "${_plug}"
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
 
-  install -Dm644 descale/descale.py "${pkgdir}${_site_packages}/${_plug}.py"
+  install -Dm644 descale.py "${pkgdir}${_site_packages}/${_plug}.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 
-  install -Dm644 descale/README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
-  install -Dm644 descale/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
