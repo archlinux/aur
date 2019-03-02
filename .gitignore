@@ -1,0 +1,7 @@
+*.pkg.tar.xz
+i3lock/
+src/
+pkg/
+
+*~
+\#*\#

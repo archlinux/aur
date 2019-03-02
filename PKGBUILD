@@ -1,16 +1,16 @@
-# Maintainer: Lukas Tobler <luk4s.tobler@gmail.com>
+# Maintainer: s3lph <account-arch-aur-gzxkqqna at kernelpanic dot lol>
+# Contributor: Lukas Tobler <luk4s.tobler@gmail.com>
 
 pkgname=i3lock-lixxia-git
-pkgver=r255.d0ca5ad
-pkgrel=4
+pkgver=r297.a27257f
+pkgrel=1
 pkgdesc="An improved screenlocker based upon XCB and PAM (Lixxia fork)"
 arch=('i686' 'x86_64')
 url="https://github.com/Lixxia/i3lock"
 license=('MIT')
-groups=("i3")
-depends=('xcb-util-image' 'libev' 'cairo' 'libxkbcommon-x11')
-options=('docs')
-replaces=('i3lock')
+groups=('i3')
+depends=('xcb-util-image' 'libev' 'cairo' 'libxkbcommon-x11' 'pam')
+makedepends=('autoconf' 'git' 'gzip' 'make')
 provides=('i3lock')
 conflicts=('i3lock')
 backup=("etc/pam.d/i3lock")
@@ -24,17 +24,19 @@ pkgver() {
 
 build() {
   cd "${srcdir}/i3lock"
+  autoreconf -fi
+  mkdir -p build
+  gzip -c i3lock.1 > build/i3lock.1.gz
+  cd "${srcdir}/i3lock/build"
+  ../configure \
+    --prefix=${pkgdir}/usr \
+    --sysconfdir=${pkgdir}/etc
   make
-  gzip i3lock.1
 }
 
 package() {
-  cd "${srcdir}/i3lock"
-  make DESTDIR="${pkgdir}" install
-
+  cd "${srcdir}/i3lock/build"
+  make install
   install -Dm644 i3lock.1.gz ${pkgdir}/usr/share/man/man1/i3lock.1.gz
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  make clean
+  install -Dm644 ../LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
-
-# vim:set ts=2 sw=2 et:
