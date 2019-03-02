@@ -13,7 +13,7 @@ makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("git+https://github.com/handaimaoh/${_plug}.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 _sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
@@ -25,7 +25,7 @@ pkgver() {
 
 prepare() {
   cd "${_plug}"
-  rm -fr {VapourSynth,VSHelper}.h
+  rm -fr VapourSynth.h VSHelper.h
 
   echo "all:
 	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o DupBlocks.o DupBlocks.cpp
