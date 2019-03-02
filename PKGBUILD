@@ -2,11 +2,11 @@
 
 _plug=tcanny
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r11.0.g88c9623
+pkgver=r12.0.g6a424f8
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
-url='http://forum.doom9.org/showthread.php?t=171136'
+arch=('x86_64')
+url='https://forum.doom9.org/showthread.php?t=171136'
 license=('GPL')
 depends=('vapoursynth'
          'ocl-icd'
