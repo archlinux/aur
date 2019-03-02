@@ -2,11 +2,11 @@
 
 pkgname=v8-3.14-bin
 pkgver=3.14.5.8
-pkgrel=2
-pkgdesc="v8 3.14 binary package from ubuntu xenial"
-url="https://github.com/v8/v8"
+pkgrel=3
+pkgdesc='v8 3.14 binary package from ubuntu xenial'
+url='https://github.com/v8/v8'
 arch=('x86_64')
-license=('BSD new')
+license=('BSD')
 depends=()
 makedepends=()
 conflicts=('v8-3.14')
@@ -27,12 +27,11 @@ prepare() {
 }
 
 package() {
-  install -Dm644 ${srcdir}/usr/lib/libv8.so.3.14.5                  ${pkgdir}/usr/lib/libv8.so.3.14.5
-  install -Dm644 ${srcdir}/usr/share/doc/libv8-3.14.5/copyright     ${pkgdir}/usr/share/doc/libv8-3.14.5/LICENSE
-  install -Dm644 ${srcdir}/usr/share/doc/libv8-dev/copyright ${pkgdir}/usr/share/doc/libv8-3.14.5-dev/LICENSE
+  install -Dm755 "${srcdir}/usr/lib/libv8.so.3.14.5"        -t "${pkgdir}/usr/lib/"
+  install -Dm644 "${srcdir}/usr/share/doc/libv8-dev/copyright" "${pkgdir}/usr/share/licenses/v8-3.14/LICENSE"
 
-  for file in ${srcdir}/usr/share/doc/libv8-dev/examples/* ${srcdir}/usr/include/*; do
-    install -Dm644  "$file" "${file/$srcdir/$pkgdir}"
+  for file in "${srcdir}/usr/share/doc/libv8-dev/examples/"* "${srcdir}/usr/include/"*; do
+    install -Dm644 "$file" "${file/$srcdir/$pkgdir}"
   done
 }
 
