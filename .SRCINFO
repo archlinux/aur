@@ -1,16 +1,15 @@
 pkgbase = isomaster
 	pkgdesc = CD image editor written in GTK2
-	pkgver = 1.3.13
+	pkgver = 1.3.14
 	pkgrel = 1
 	url = http://littlesvr.ca/isomaster
-	install = isomaster.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = gtk2
 	depends = desktop-file-utils
-	source = http://littlesvr.ca/isomaster/releases/isomaster-1.3.13.tar.bz2
-	md5sums = 0fe6a1d862feb954d8f760d23829e5b4
+	source = isomaster-1.3.14.tar.bz2::http://littlesvr.ca/isomaster/releases/isomaster-1.3.14.tar.bz2
+	sha256sums = 8c8aa009277770741cafe41848c0da07057d0bc75d8617243df284e46465df6d
 
 pkgname = isomaster
 
