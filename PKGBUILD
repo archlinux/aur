@@ -1,7 +1,9 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
+
 pkgname=surfn-icons-git
 pkgver=9.6
-pkgrel=19
+pkgrel=20
+_destname="/usr/share/icons/"
 pkgdesc="Surfn is a colourful icon theme."
 arch=('any')
 url="https://github.com/erikdubois/Surfn"
@@ -13,26 +15,7 @@ source=('Surfn::git+https://github.com/erikdubois/Surfn.git')
 sha256sums=('SKIP')
 
 package() {
-  cd Surfn
-
-  install -dm 755 "${pkgdir}"/usr/share/icons
-  cp -dr --no-preserve='ownership' 'Surfn' "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' 'Surfn-Arc' "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' 'Surfn-Arch-Blue' "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' 'Surfn-Arched' "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' 'Surfn-Breeze-Dark' "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' 'Surfn-Evopop' "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' 'Surfn-Luv' "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' 'Surfn-Luv-Red' "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' 'Surfn-Majestic' "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' 'Surfn-Mint-X-Grey' "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' 'Surfn-Numix' "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' 'Surfn-Numix-Misty' "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' 'Surfn-Numix-Polo' "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' 'Surfn-Orange' "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' 'Surfn-Papirus-Blue' "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' 'Surfn-Papirus-Grey' "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' 'Surfn-Vertexed' "${pkgdir}"/usr/share/icons/
-
-
+  find ${srcdir}/Surfn/surfn-icons -type f -name "*.sh" -exec chmod 644 '{}' \;
+  install -dm 755 ${pkgdir}${_destname}
+  cp -r ${srcdir}/Surfn/surfn-icons/* ${pkgdir}${_destname}
 }
