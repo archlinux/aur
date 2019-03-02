@@ -5,7 +5,7 @@ pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=v0.0.1.0.g70bcc3d
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/gnaggnoyil/VAutoDeint'
 license=('GPL')
 depends=('vapoursynth')
@@ -23,27 +23,28 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_plug}"
+  cd "${_plug}/externalfilters"
 
-  rm -fr externalfilters/VSHelper.h externalfilters/VapourSynth.h
+  rm -fr VapourSynth.h VSHelper.h
 
   echo "all:
-	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o IsCombedTIVTCport.o externalfilters/IsCombedTIVTCport.cpp
-	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o PlaneDifferenceFromPrevious.o externalfilters/PlaneDifferenceFromPrevious.cpp
-	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o PluginInit.o externalfilters/PluginInit.cpp
+	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o IsCombedTIVTCport.o IsCombedTIVTCport.cpp
+	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o PlaneDifferenceFromPrevious.o PlaneDifferenceFromPrevious.cpp
+	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o PluginInit.o PluginInit.cpp
 	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so *.o" > Makefile
 }
 
 build() {
-  cd "${_plug}"
-  make
+  make -C "${_plug}/externalfilters"
 }
 
 package(){
   cd "${_plug}"
-  install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
+  install -Dm755 "externalfilters/lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
+
   install -Dm644 VAutoDeint.py "${pkgdir}${_site_packages}/VAutoDeint.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/VAutoDeint.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/VAutoDeint.py"
+
   install -Dm644 README "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
 }
