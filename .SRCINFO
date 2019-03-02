@@ -1,6 +1,6 @@
 pkgbase = lector
 	pkgdesc = Qt based ebook reader
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/BasioMeusPuga/Lector
 	arch = any
@@ -13,12 +13,12 @@ pkgbase = lector
 	depends = python-pyqt5
 	depends = python-beautifulsoup4
 	depends = python-lxml
-	depends = poppler-qt5
-	depends = python-poppler-qt5
+	depends = python-pymupdf
+	depends = python-xmltodict
 	provides = lector
 	conflicts = lector
-	source = https://github.com/BasioMeusPuga/Lector/archive/0.4.tar.gz
-	sha256sums = c8deefc20fb3da98a327a893ce281e1efe5ee0c0a306d8cd19b44fd2e526649a
+	source = https://github.com/BasioMeusPuga/Lector/archive/0.5.tar.gz
+	sha256sums = cb10aea74bddfe81942c91566d719176347df5c3ca463f0cacd7569dd1f67358
 
 pkgname = lector
 
