@@ -1,46 +1,52 @@
 # Maintainer: Matthias Lisin <ml@visu.li>
 pkgname=ubports-installer-git
 pkgver=0.1.21_beta.r23.ga569e6b
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple tool to install Ubuntu Touch on UBports devices'
 arch=(any)
 url='https://github.com/ubports/ubports-installer'
 license=('GPL3')
-depends=('android-tools' 'electron2')
-makedepends=('git' 'npm')
+depends=('android-tools' 'android-udev' 'electron')
+makedepends=('git' 'jq' 'npm')
 provides=('ubports-installer')
 conflicts=('ubports-installer')
 source=("$pkgname::git+${url}.git"
         ubports-installer
         ubports-installer.desktop
-        use-system-electron2.patch)
+        rootless.patch)
 sha512sums=('SKIP'
-            '55bba31095b0d38b3571e274be585abd426cfb30bbda42244dcb11ebc183d87bf8db040884f46072e4e66a682fe828d9983e5cefc20c46ddbd49ba047121287f'
+            '51280df65c791b745aa06c689cbb0830ba48b69ebcb5ebfc96e4f9917c3da49d4aca6468dbac4bf1221988105f682861c6b76784a877b875ddaa29942e0ef1a2'
             '5370dae98ea52ef6d1a6d35cc15774687457836cc7a74538d32279617db329f215989863f15ed46d3aba7e384d703161a1cf6ae92101d88c8efa1445464bea59'
-            'c380783750dddfb67f0f26b34981f345cc0366643f6d0a04c970d357ed2586e748acc10352e96982f7353553e120ee1156e7b55d8765c765997e38f7284f0f55')
+            '5e1a99f7bde3fd7b5b6b22d771421520e360f5f133fdc78ed35eea03969aa0f379df1ab720c792fd2c7155e92e4ccb70db9e77732ecedbb60e4ab294c8ea7107')
 
 pkgver() {
-	cd "$pkgname"
+    cd "$pkgname"
     git describe --long --tags | sed 's/-/_/;s/-/.r/;s/-/./'
 }
 
 prepare() {
     local cache="$srcdir/npm-cache"
+    local dist=/usr/lib/electron
 
-    # this will be very useful in near future
-    #patch -p1 -d "$pkgname" < use-system-electron2.patch
+    patch -p1 -d "$pkgname" < rootless.patch
 
-	cd "$pkgname"
-    npm install --cache "$cache" "electron@$(sed 's/^v//' </usr/lib/electron2/version)"
-    npm install --cache "$cache"
+    cd "$pkgname"
+    jq '.electronDist = $dist | .electronVersion = $version' \
+        --arg dist "$dist" \
+        --arg version "$(sed s/^v// $dist/version)" \
+        buildconfig-generic.json > new-buildconfig.json
+    mv new-buildconfig.json buildconfig-generic.json
+
+    npm uninstall --no-audit --cache "$cache" electron{,-packager,-sudo,-view-renderer} spectron
 }
 
 build() {
-	cd "$pkgname"
+    cd "$pkgname"
     node build.js --build-to-dir --linux --no-platform-tools
 }
 
 package() {
+    install -Dm644 ubports-installer.desktop "$pkgdir/usr/share/applications/ubports-installer.desktop"
     install -Dm755 ubports-installer "$pkgdir/usr/bin/ubports-installer"
 
     cd "$pkgname/build/icons"
@@ -48,10 +54,6 @@ package() {
         install -Dm644 "$i" "$pkgdir/usr/share/icons/hicolor/${i%.png}/apps/ubports-installer.png"
     done
 
-	cd "$srcdir/$pkgname/dist/linux-unpacked/resources"
-
-    install -dm755 "$pkgdir/usr/share/ubports-installer/app.asar.unpacked/node_modules"
-    install -m644 app.asar "$pkgdir/usr/share/ubports-installer/app.asar"
-    cp -r app.asar.unpacked/node_modules/electron-sudo \
-        "$pkgdir/usr/share/ubports-installer/app.asar.unpacked/node_modules"
+    cd "$srcdir/$pkgname/dist/linux-unpacked/resources"
+    install -Dm644 app.asar "$pkgdir/usr/share/ubports-installer/app.asar"
 }
