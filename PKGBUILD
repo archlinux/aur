@@ -68,8 +68,8 @@ package() {
 
 	msg 'Creating a temporary mysql user/group with fakeadd...'
 
-	getent group mysql > /dev/null || fakeadd -G -n mysql -g 992 || _fakeadd_error
-	getent passwd mysql > /dev/null || fakeadd -U -n mysql -g 992 -u 992 -s /bin/false || _fakeadd_error
+	getent group mysql > /dev/null || fakeadd -G -n mysql -g "${_mysql_uuid}" || _fakeadd_error
+	getent passwd mysql > /dev/null || fakeadd -U -n mysql -g "${_mysql_uuid}" -u "${_mysql_uuid}" -s /bin/false || _fakeadd_error
 
 	msg 'Extracting package (this might take several minutes, don'\''t give up!)...'
 
