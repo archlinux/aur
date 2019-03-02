@@ -26,7 +26,8 @@ pkgver() {
 }
 
 package(){
-  install -Dm644 "${_plug}/Dither.py" "${pkgdir}${_site_packages}/Dither.py"
+  cd "${_plug}"
+  install -Dm644 Dither.py "${pkgdir}${_site_packages}/Dither.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/Dither.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/Dither.py"
 }
