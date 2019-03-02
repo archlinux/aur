@@ -2,16 +2,16 @@
 
 _plug=vine
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r88.2223e37
+pkgver=r100.1a36d54
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('any')
 url='http://forum.doom9.org/showthread.php?t=173703'
 license=('LGPL3.0')
 depends=('vapoursynth'
          'vapoursynth-plugin-knlmeanscl'
          'vapoursynth-plugin-tcanny-git'
-         'vapoursynth-plugin-fmtconv'
+         'vapoursynth-plugin-fmtconv-git'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
