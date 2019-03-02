@@ -3,7 +3,7 @@
 
 pkgname=i-nex
 pkgver=7.6.0
-pkgrel=4
+pkgrel=5
 pkgdesc="System information tool like hardinfo, sysinfo"
 arch=('i686' 'x86_64')
 url="http://i-nex.linux.pl/"
@@ -21,8 +21,10 @@ depends=('gambas3-runtime'
          'pastebinit'
          'procps-ng')
 makedepends=('gambas3-devel' 'gcc' 'imagemagick')
-source=("https://github.com/i-nex/I-Nex/archive/${pkgver}.tar.gz")
-sha256sums=('ad18bb753daa2d17432a0211aef7b19bc1416d5deea4a14a751802a3da998ea8')
+source=("https://github.com/i-nex/I-Nex/archive/${pkgver}.tar.gz"
+        "fix-compilation.patch")
+sha256sums=('ad18bb753daa2d17432a0211aef7b19bc1416d5deea4a14a751802a3da998ea8'
+            '3f2a24e0cbdcccdb2f872c3910d689753d6981dc08c0d896b6d6b5700408ec1d')
 conflicts=('i-nex-git')
 backup=('etc/i-nex/Database/i2c/devices.json'
         'etc/i-nex/Database/A6.json'
@@ -38,6 +40,10 @@ backup=('etc/i-nex/Database/i2c/devices.json'
 
 prepare() {
     cd "${srcdir}/I-Nex-${pkgver}"
+
+    # Fix compile error
+    patch -Np1 < "$srcdir/fix-compilation.patch"
+
     sed -i 's|python3$|python2|' pastebinit
     sed -i -e 's|^STATIC.*|STATIC = false|' i-nex.mk
     sed -i -e 's|^UDEV_RULES_DIR.*|UDEV_RULES_DIR = /usr/lib/udev/rules.d|' i-nex.mk
@@ -50,10 +56,10 @@ build() {
     cd "I-Nex"
     ./configure --prefix=/usr
     cd ..
-    make -j1
+    MAGICK_OCL_DEVICE=OFF make -j1
 }
 
 package() {
     cd "${srcdir}/I-Nex-${pkgver}"
-    make -j1 DESTDIR="${pkgdir}/" install
+    MAGICK_OCL_DEVICE=OFF make -j1 DESTDIR="${pkgdir}/" install
 }
