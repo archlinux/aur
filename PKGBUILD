@@ -1,7 +1,7 @@
 # Maintainer: Aidan Coward <aidan -dot- coward -at- gmail -dot- com>
 
 pkgname=xmage
-pkgver=1.4.33V3a
+pkgver=1.4.33V4a
 pkgrel=0
 
 pkgdesc="Java-based program for playing Magic:The Gathering, including client and server"
