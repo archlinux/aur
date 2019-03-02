@@ -3,16 +3,16 @@
 
 _pkgbasename=libsecret
 pkgname=lib32-$_pkgbasename
-pkgver=0.18.7
+pkgver=0.18.8
 pkgrel=1
 pkgdesc="Library for storing and retrieving passwords and other secrets (32-bit)"
+url="https://wiki.gnome.org/Projects/Libsecret"
 arch=('x86_64')
 license=('LGPL')
-url="https://wiki.gnome.org/Projects/Libsecret"
 depends=('lib32-glib2' 'lib32-libgcrypt' "${_pkgbasename}")
-makedepends=('gcc-multilib' 'intltool' 'gobject-introspection' 'vala' 'git' 'gtk-doc')
-optdepends=('gnome-keyring: key storage service (or use any other service implementing org.freedesktop.secrets)')
-_commit=c5b734f4e86a8c25d5afa6525ca0513768fc2832  # tags/0.18.7^0
+makedepends=('gcc-multilib' 'intltool' 'gobject-introspection' 'vala' 'git' 'gtk-doc' 'meson' 'valgrind')
+optdepends=('gnome-keyring: key storage service, or use any other service implementing org.freedesktop.secrets')
+_commit=b5442654d483e959ac9ecd3a3fb9eebc8d9d8399  # tags/0.18.8^0
 source=("git+https://git.gnome.org/browse/libsecret#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -23,22 +23,19 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgbasename}"
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd "${srcdir}/${_pkgbasename}"
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
-  export LDFLAGS+=' -m32'
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --disable-static --enable-gtk-doc --libdir=/usr/lib32
-  make
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
+  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  export LDFLAGS+=" -m32"
+
+  arch-meson "${srcdir}/${_pkgbasename}" build -Ddocs=false --libdir=/usr/lib32
+  ninja -C build
 }
 
 package() {
-  cd "${srcdir}/${_pkgbasename}"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir}" meson install -C build
   rm -rf "${pkgdir}"/usr/{bin,include,share}
 }
