@@ -1,10 +1,10 @@
 # Maintainer: pingplug <pingplug@foxmail.com>
 
 _pkgname=rust
-_cargo=0.33.0
+_cargo=0.34.0
 
 pkgname=mingw-w64-rust-bin
-pkgver=1.32.0
+pkgver=1.33.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (PLEASE READ COMMENTS FIRST) (official build, mingw-w64)"
 arch=('x86_64')
@@ -20,20 +20,20 @@ provides=("mingw-w64-rust=${pkgver}")
 conflicts=('mingw-w64-rust')
 options=('!strip' 'staticlibs' '!buildflags')
 
-source=("https://static.rust-lang.org/dist/cargo-${_cargo}-x86_64-unknown-linux-gnu.tar.gz"{,.asc}
-        "https://static.rust-lang.org/dist/rustc-${pkgver}-x86_64-unknown-linux-gnu.tar.gz"{,.asc}
-        "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-unknown-linux-gnu.tar.gz"{,.asc}
-        "https://static.rust-lang.org/dist/rust-std-${pkgver}-i686-pc-windows-gnu.tar.gz"{,.asc}
-        "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-pc-windows-gnu.tar.gz"{,.asc})
-sha256sums=('9dd7f79a0ab882ed7c892731514a4aed6435f7bc8a20381a8346b471c8a14209'
+source=("https://static.rust-lang.org/dist/cargo-${_cargo}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
+        "https://static.rust-lang.org/dist/rustc-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
+        "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
+        "https://static.rust-lang.org/dist/rust-std-${pkgver}-i686-pc-windows-gnu.tar.xz"{,.asc}
+        "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-pc-windows-gnu.tar.xz"{,.asc})
+sha256sums=('1730c8ebcacc1327eb28b328cb9f5a2c612bb3d9efff9c350647adf19f304e15'
             'SKIP'
-            '75c31f32e19548c1608611d08b82b87560e02f15caac7b2663a8189a4609977c'
+            '57c5ced1a826d34f26e50adf041528dd0000f2a59e8be32d2359386843382ce1'
             'SKIP'
-            '9f2705a3ed3217c13fd55569406c52f590030752f57520312e135223ae930caf'
+            '6f20343ed73faf5fdfc423bec38a9bb1910a0a962af6f2dddd7184407543ed0e'
             'SKIP'
-            '06ddc4a24314ca2edc264e39ddebe545cb5bc1170bc69575c01de60e14acc00a'
+            '7a17dc89b1e1f53e9142481cad5449f11fa69d9adab9b3022066724b3bb641e6'
             'SKIP'
-            'cad5f1454d591c13eeb3657f1c9dbfeb30e648f59680bd0765b94c63e7afc49e'
+            'ed638e1e49f51fcbe2adea257bb46ca3db66754802a3d824347da7256796a6c7'
             'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
