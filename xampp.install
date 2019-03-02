@@ -1,3 +1,4 @@
+# Make sure to synchronize the UUID declared here with the one declared in the PKGBUILD
 _mysql_uuid=992
 
 post_install() {
