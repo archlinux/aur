@@ -29,12 +29,17 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  cd "${_plug}"
+  sed 's/, meson.project_name()//g' \
+    -i meson.build
 }
 
 build() {
   cd build
   arch-meson "../${_plug}" \
-    --libdir /usr/lib/vapoursynth
+    --libdir /usr/lib/vapoursynth \
+    --datadir /usr/lib/vapoursynth
 
   ninja
 }
@@ -44,5 +49,5 @@ package(){
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 
-  rm -fr "${pkgdir}/usr/share/NNEDI3CL"
+  rm -fr "${pkgdir}/usr/lib/vapoursynth/NNEDI3CL"
 }
