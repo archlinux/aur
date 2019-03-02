@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Campaign Editor
+Exec=gog-heroes-of-might-and-magic-3-complete-edition-campaign-editor
+Type=Application
+StartupNotify=true
+Comment=Campaign Editor
+Icon=gog-heroes-of-might-and-magic-3-complete-edition-campaign-editor
+StartupWMClass=h3ccmped.exe
+Version=4.0.10665
+Terminal=false
+Categories=Game;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Heroes of Might and Magic 3 Complete
+Exec=gog-heroes-of-might-and-magic-3-complete-edition
+Type=Application
+StartupNotify=true
+Icon=gog-heroes-of-might-and-magic-3-complete-edition
+StartupWMClass=heroes3.exe
+Version=4.0.10665
+Terminal=false
+Categories=Game;
