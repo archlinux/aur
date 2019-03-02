@@ -2,10 +2,10 @@
 
 pkgname=java-gnome-bin
 pkgver=4.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Binaries of Java bindings to the GNOME platform (including gtk, glib and glade)'
 arch=('x86_64')
-url='https://github.com/nikitabobko/${pkgname}'
+url='https://github.com/nikitabobko/java-gnome-bin'
 license=('GPL')
 depends=('java-runtime<9' 'gtksourceview3' 'librsvg' 'libnotify' 'enchant' 'gtkspell3')
 conflicts=("java-gnome")
