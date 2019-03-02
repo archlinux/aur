@@ -2,14 +2,14 @@
 
 _plug=sharpaamcmod
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r4
+pkgver=r5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://gist.github.com/4re'
 license=('GPL')
 depends=('vapoursynth'
-         'vapoursynth-plugin-havsfunc'
+         'vapoursynth-plugin-havsfunc-git'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
@@ -25,7 +25,8 @@ pkgver() {
 }
 
 package() {
-  install -Dm644 "${_plug}/${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
+  cd "${_plug}"
+  install -Dm644 "${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 }
