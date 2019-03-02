@@ -6,7 +6,7 @@
 
 # Set this to 'true' to build and install the plugins
 #_plugin_feedreader='true'
-#_plugin_voip='true'
+#_plugin_voip='true' # currently broken!!!
 
 # Set this to 'true' to enable the new automatically generated jsaon api
 #_jsonapi='true'
@@ -73,8 +73,8 @@ fi
 
 prepare() {
 	cd "${srcdir}/RetroShare-${pkgver}"
-	#patch -p1 -i "${srcdir}"/4d287d68bc9725f403dc7d952a927d401c5d6c97.patch
-	#patch -p1 -i "${srcdir}"/428b331d8efede1e2f39f2fc49216c675d081030.patch
+
+	[[ "$_plugin_voip" == 'true' ]] && sed -i -e 's/PKGCONFIG += opencv/PKGCONFIG += opencv4/g' plugins/VOIP/VOIP.pro
 }
 
 build() {
