@@ -9,7 +9,8 @@ arch=('any')
 url='https://gist.github.com/4re'
 license=('GPL')
 depends=('ffms2'
-         'vapoursynth-plugin-lsmashsource'
+         'vapoursynth'
+         'vapoursynth-plugin-lsmashsource-git'
          'vapoursynth-plugin-fmtconv-git'
          'vapoursynth-plugin-removedirtvs-git'
          )
@@ -26,7 +27,8 @@ pkgver() {
 }
 
 package() {
-  install -Dm644 "${_plug}/${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
+  cd "${_plug}"
+  install -Dm644 "${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 }
