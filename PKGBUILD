@@ -2,10 +2,10 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=r40.30.g5f9a0cd
+pkgver=r45.1.5.g5d0b380
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://www.vapoursynth.com'
 license=('LGPL2.1' 'custom:OFL' 'custom:WFTPL')
 depends=('libzimg.so'
@@ -48,6 +48,8 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p build
+
   cd vapoursynth
   mkdir -p doc/_static
 
@@ -55,18 +57,20 @@ prepare() {
 }
 
 build() {
-  cd vapoursynth
-  ./configure \
+  cd build
+  ../vapoursynth/configure \
     --prefix=/usr
 
   make
-  make -C doc html
-  make -C doc man
+
+  make -C "${srcdir}/vapoursynth/doc" html
+  make -C "${srcdir}/vapoursynth/doc" man
 }
 
 package() {
+  make -C build DESTDIR="${pkgdir}" install
+
   cd vapoursynth
-  make DESTDIR="${pkgdir}" install
 
   install -Dm644 doc/_build/man/vapoursynth.3 "${pkgdir}/usr/share/man/man3/vapoursynth.3"
   install -Dm644 doc/_build/man/vspipe.1 "${pkgdir}/usr/share/man/man1/vspipe.1"
