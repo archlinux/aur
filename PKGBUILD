@@ -24,7 +24,8 @@ pkgver() {
 }
 
 package(){
-  install -Dm644 "${_plug}/MaskDetail.py" "${pkgdir}${_site_packages}/MaskDetail.py"
+  cd "${_plug}"
+  install -Dm644 MaskDetail.py "${pkgdir}${_site_packages}/MaskDetail.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/MaskDetail.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/MaskDetail.py"
 }
