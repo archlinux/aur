@@ -2,7 +2,7 @@
 
 pkgname=rgbds
 pkgver=0.3.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Rednex GameBoy Development System"
 arch=('i686' 'x86_64')
 url="https://github.com/rednex/rgbds/"
@@ -13,7 +13,7 @@ sha1sums=('d57ca6b48ff405b2790ec7d3c2790718dd1630f1')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make
+  make VERSION_STRING=$pkgver
 }
 
 package() {
