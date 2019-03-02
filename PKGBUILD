@@ -34,11 +34,11 @@ PyYAML>=3.10,<=3.13
 import awscli
 
 
-requires = ['botocore==1.12.86',
+requires = ['botocore==1.12.106',
             'colorama>=0.2.5,<=0.3.9',
             'docutils>=0.10',
             'rsa>=3.1.2,<=3.5.0',
-            's3transfer>=0.1.12,<0.2.0',
+            's3transfer>=0.2.0,<0.3.0',
             'PyYAML>=3.10,<=3.13']
 "
 }
@@ -54,7 +54,7 @@ else
 pkgname="${_pyver}-${_pybase}"
 _pyverother='python'
 fi
-pkgver=1.16.96
+pkgver=1.16.116
 # Generally when this version changes, the version of botocore also changes
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services awscli'
@@ -63,15 +63,15 @@ url="https://github.com/aws/${_pybase}"
 license=('Apache') # Apache License 2.0
 _pydepends=( # See setup.py, README.rst, and requirements.txt for version dependencies
   "${_pyver}-bcdoc"           # AUR
-  "${_pyver}-botocore>=1.12.86" # AUR == would make upgrades from AUR impossible. See below.
+  "${_pyver}-botocore>=1.12.106" # COM ==
   "${_pyver}-colorama>=0.2.5" #,"<=0.3.7"}   # COM requested by phw
   "${_pyver}-rsa"{'>=3.2','<=3.5.0'}
-  "${_pyver}-s3transfer"{'>=0.1.12','<0.2.0'} # AUR
+  "${_pyver}-s3transfer"{'>=0.2.0','<0.3.0'} # COM
 
   ### These are from python-botocore
-  "${_pyver}-wheel>=0.24.0"   # AUR ==
+  "${_pyver}-wheel>=0.24.0"   # COM ==
   "${_pyver}-dateutil"{">=2.1","<3.0.0"} # COM
-  "${_pyver}-jmespath>=0.7.1" # AUR == is possible for repositories. Makes upgrades impossible in AUR.
+  "${_pyver}-jmespath>=0.7.1" # COM ==
   #"${_pyver}-tox"{'>=2.3.1','<3.0.0'} # COM
   "${_pyver}-yaml"{">=3.10","<=3.13"} # COM
   "${_pyver}-nose>=1.3.7"     # COM ==
@@ -89,7 +89,7 @@ depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!emptydirs' '!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('c04930c475db44175fa3f35bcd9992576a2e6a2553e1b457ad48c0cd94377773')
+sha256sums=('94ebb611efca8d4acbf708747e6895bf848e61a88dab1223c2d869838f4ef5b6')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
