@@ -2,11 +2,11 @@
 
 _plug=templinearapproximate
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r3.4.g50c4633
+pkgver=r3.6.g604688d
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
-url='http://forum.doom9.org/showthread.php?t=169782'
+arch=('x86_64')
+url='https://forum.doom9.org/showthread.php?t=169782'
 license=('MIT')
 depends=('vapoursynth')
 makedepends=('git')
@@ -24,6 +24,7 @@ pkgver() {
 
 prepare() {
   cd "${_plug}"
+
   echo "all:
 	  gcc -c -fPIC  ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o main.o src/main.c
 	  gcc -c -fPIC  ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o processplane.o src/processplane.c
@@ -31,13 +32,13 @@ prepare() {
 }
 
 build() {
-  cd "${_plug}"
-  make
+  make -C "${_plug}"
 }
 
 package(){
   cd "${_plug}"
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
+
   install -Dm644 MCDenoise.py "${pkgdir}${_site_packages}/MCDenoise.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/MCDenoise.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/MCDenoise.py"
