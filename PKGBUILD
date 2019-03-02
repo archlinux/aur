@@ -1,7 +1,7 @@
 # Maintainer: Zhu Chuang <genelocated at foxmail dot com>
 
 pkgname=plasma5-applets-tiledmenu
-pkgver=28
+pkgver=29
 pkgrel=1
 pkgdesc="A menu based on Windows 10's Start Menu."
 arch=(any)
@@ -9,7 +9,7 @@ url="https://store.kde.org/p/1160672/"
 license=(GPL)
 depends=(plasma-workspace qt5-graphicaleffects)
 source=("https://github.com/Zren/plasma-applet-tiledmenu/archive/v$pkgver.tar.gz")
-md5sums=('ec5ec5238879adfebe454b3d82e908ca')
+md5sums=('38c8737d9e8eadac74824c7537e761f1')
 
 package() {
     _pkgdir="$pkgdir/usr/share/plasma/plasmoids/org.kde.plasma.tiledmenu"
