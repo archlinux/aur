@@ -9,7 +9,7 @@
 
 _pkgname=bleachbit
 pkgname=bleachbit-git
-pkgver=r4107.98a3a23f
+pkgver=r4154.0d437691
 pkgrel=1
 pkgdesc='Deletes unneeded files to free disk space and maintain privacy.'
 url='https://www.bleachbit.org/'
@@ -24,12 +24,11 @@ conflicts=('bleachbit')
 provides=('bleachbit')
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd ${srcdir}/${_pkgname}
-
-    make prefix=/usr DESTDIR="$pkgdir" PYTHON=python2 install
+  cd ${srcdir}/${_pkgname}
+  make prefix=/usr DESTDIR="$pkgdir" PYTHON=python2 install
 }
