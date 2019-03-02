@@ -13,7 +13,7 @@ source=(git://git.videolan.org/x264.git#commit=021c0dc6c95c x264.diff configure.
 md5sums=('SKIP' d1eb9bb90d4b89aab82d5e1c70161bbd 2039c9c910d4a667cb881e15aebb739f)
 
 pkgver() {
-  cd x264
+  cd "${srcdir}"/x264
   local _ver=$(grep '#define X264_BUILD' x264.h | cut -d' ' -f3)
   local _date=$(git log -1 --format="%cd" --date=short | tr -d -)
 
@@ -21,9 +21,10 @@ pkgver() {
 }
 
 build() {
+  cd "${srcdir}"
   patch -p1 < ../x264.diff
   patch -p1 < ../configure.diff
-  cd x264
+  cd "${srcdir}"/x264
   ./configure --prefix=/usr \
     --enable-shared --enable-pic
   make
