@@ -1,7 +1,7 @@
 pkgbase = ubuntu-kylin-theme
 	pkgdesc = The official theme for Ubuntu Kylin
-	pkgver = 1.7.4
-	pkgrel = 1.1
+	pkgver = 1.7.9.2
+	pkgrel = 1.2
 	url = https://launchpad.net/ubuntukylin-theme
 	arch = any
 	license = custom:GPL3
@@ -12,8 +12,8 @@ pkgbase = ubuntu-kylin-theme
 	optdepends = grub: Contain a theme for this bootloader manager
 	optdepends = chinese-calendar: Official calendary for Ubuntu Kylin
 	optdepends = fcitx: Contain 4 themes for the Qimpanel version
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/ubuntukylin-theme_1.7.4.tar.xz
-	sha256sums = 04d1a395fa9e1de9b7bc781f126d75206fd5cd710aff03161398885bf4133f2f
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/ubuntukylin-theme_1.7.9.2.tar.xz
+	sha256sums = 60adf558ca9d3407f9d57d188acb2cdd8cee51fab0464d769a49887b9027858b
 
 pkgname = ubuntu-kylin-theme
 

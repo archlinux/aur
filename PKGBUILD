@@ -1,8 +1,8 @@
-# Maintainer: Pablo Lezaeta Reyes <prflr88 arro'a gmail puntocom>
+# Maintainer: Jhon Diaz <electimon@gmail.com>
 
 pkgname=ubuntu-kylin-theme
-pkgver=1.7.4
-pkgrel=1.1
+pkgver=1.7.9.2
+pkgrel=1.2
 pkgdesc="The official theme for Ubuntu Kylin"
 arch=('any')
 url="https://launchpad.net/ubuntukylin-theme"
@@ -14,7 +14,7 @@ optdepends=('plymouth: Contrain a theme for this login splash screen'
 	'chinese-calendar: Official calendary for Ubuntu Kylin'
 	'fcitx: Contain 4 themes for the Qimpanel version')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/ubuntukylin-theme_$pkgver.tar.xz")
-sha256sums=('04d1a395fa9e1de9b7bc781f126d75206fd5cd710aff03161398885bf4133f2f')
+sha256sums=('60adf558ca9d3407f9d57d188acb2cdd8cee51fab0464d769a49887b9027858b')
 
 package() {
   cd "ubuntukylin-theme-${pkgver}"
