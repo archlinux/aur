@@ -1,8 +1,8 @@
 # Maintainer: Jarod G. <skid+aur@tuto-craft.com>
 # Contributor: Jarod G. <skid+aur@tuto-craft.com>
 pkgname=kolossus-launcher
-pkgver="135_26"
-pkgrel=2
+pkgver="140_29"
+pkgrel=1
 pkgdesc="Kolossus Launcher, to download the latest version of the IFSCL."
 arch=(x86_64)
 url="https://en.codelyoko.fr/ifscl/"
@@ -16,9 +16,9 @@ conflicts=()
 replaces=()
 backup=()
 install=()
-source=(http://ifscl.b-cdn.net/kolossus/Kolossus_${pkgver}_Linux.zip Kolossus-Launcher.desktop)
+source=(https://ifscl.b-cdn.net/kolossus/Kolossus_${pkgver}_Linux.zip Kolossus-Launcher.desktop)
 noextract=(Kolossus_${pkgver}_Linux.zip)
-md5sums=('a9c282c652b463d2324ec543fbff634e' '73239120e9509b86484fb1b5c0e44f34')
+md5sums=('a04faf8e76347e600f69a68fdc5f0d20' '73239120e9509b86484fb1b5c0e44f34')
  
 prepare() {
 	mkdir -p "$pkgname-$pkgver/app"
