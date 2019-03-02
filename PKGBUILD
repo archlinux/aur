@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
@@ -7,38 +6,87 @@
 # Contributor: Frédéric Mangano <fmang+aur@mg0.fr>
 
 # ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
-#  - use -fPIC in host cflags for armv7 to fix print_options.c compile
+#  - use -fPIC in host cflags for v7/v8 to fix print_options.c compile
 #  - remove makedepends on ffnvcodec-headers, remove --enable-nvenc, --enable-nvdec
 #  - remove depends on aom, remove --enable-libaom
 # Upstream: https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/ffmpeg/PKGBUILD
 
 pkgname=ffmpeg-mmal
-pkgver=4.1
+pkgver=4.1.1
 pkgrel=1
 epoch=1
 pkgdesc='ffmpeg built with MMAL hardware acceleration support for Raspberry Pi'
 arch=('armv6h' 'armv7h' 'aarch64')
-url='http://ffmpeg.org/'
-license=('GPL3')
+url=https://ffmpeg.org/
+license=(GPL3)
 depends=(
-  'alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
-  'jack' 'lame' 'libavc1394' 'libdrm' 'libiec61883' 'libmodplug'
-  'libomxil-bellagio' 'libpulse' 'libraw1394' 'libsoxr' 'libssh' 'libtheora'
-  'libvdpau' 'libwebp' 'libx11' 'libxcb' 'libxext' 'libxml2' 'libxv'
-  'opencore-amr' 'openjpeg2' 'opus' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
-  'libass.so' 'libbluray.so' 'libfreetype.so' 'libva-drm.so' 'libva.so'
-  'libva-x11.so' 'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
-  'libx264.so' 'libx265.so' 'libxvidcore.so' 'raspberrypi-firmware'
+  alsa-lib
+  bzip2
+  fontconfig
+  fribidi
+  gmp
+  gnutls
+  gsm
+  jack
+  lame
+  libass.so
+  libavc1394
+  libbluray.so
+  libdrm
+  libfreetype.so
+  libiec61883
+  libmodplug
+  libomxil-bellagio
+  libpulse
+  libraw1394
+  libsoxr
+  libssh
+  libtheora
+  libva.so
+  libva-drm.so
+  libva-x11.so
+  libvdpau
+  libvidstab.so
+  libvorbisenc.so
+  libvorbis.so
+  libvpx.so
+  libwebp
+  libx11
+  libx264.so
+  libx265.so
+  libxcb
+  libxext
+  libxml2
+  libxv
+  libxvidcore.so
+  opencore-amr
+  openjpeg2
+  opus
+  sdl2
+  speex
+  v4l-utils
+  xz
+  zlib
 )
-makedepends=('git' 'ladspa' 'yasm')
+makedepends=(
+  git
+  ladspa
+  nasm
+)
 optdepends=('ladspa: LADSPA filters')
 provides=(
-  'ffmpeg'
-  'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-  'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
+  ffmpeg
+  libavcodec.so
+  libavdevice.so
+  libavfilter.so
+  libavformat.so
+  libavutil.so
+  libpostproc.so
+  libswresample.so
+  libswscale.so
 )
+source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver})
 conflicts=('ffmpeg')
-source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}")
 sha256sums=('SKIP')
 
 build() {
