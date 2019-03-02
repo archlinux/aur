@@ -2,13 +2,13 @@
 
 _plug=fvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r3.3851d25
+pkgver=r17.edb4ed9
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Irrational-Encoding-Wizardry/fvsfunc'
 license=('GPL')
-depends=('capoursynth'
+depends=('vapoursynth'
          'vapoursynth-plugin-muvsfunc-git'
          'vapoursynth-plugin-nnedi3_rpow2-git'
          )
@@ -31,5 +31,6 @@ package(){
   install -Dm644 "${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
