@@ -6,8 +6,8 @@
 
 pkgname=flexget
 _pkgname=Flexget
-pkgver=2.18.12
-pkgrel=2
+pkgver=2.20.7
+pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 
@@ -99,7 +99,7 @@ package() {
   install -Dm644 ../flexget.service "${pkgdir}"/usr/lib/systemd/user/flexget.service
 }
 
-sha256sums=('cc5bba119aa79014e02079b428d44d1c7925e9ad2bc02058e34678bca66e2cc0'
+sha256sums=('13ec719b8aa9fa9f4f414d9d57f2c4b0df1660a92d111b0e92bf53f72c8f7d7d'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
