@@ -4,7 +4,7 @@ _plug=vfrtocfr
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=v1.0.9.gd00a374
 pkgrel=1
-pkgdesc="Plugin for Vapoursynth: ${_plug}"
+pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=174711'
 license=('BSD')
