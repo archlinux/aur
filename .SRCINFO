@@ -2,7 +2,7 @@ pkgbase = gnome-shell-extension-dash-to-panel-git
 	pkgdesc = Extension for GNOME shell to combine the dash and main panel
 	pkgver = 18.r39.g83158d5
 	pkgrel = 2
-	url = https://github.com/jderose9/dash-to-panel
+	url = https://github.com/home-sweet-gnome/dash-to-panel
 	install = gnome-shell-extension.install
 	arch = any
 	license = GPL2
@@ -12,7 +12,7 @@ pkgbase = gnome-shell-extension-dash-to-panel-git
 	depends = gnome-shell>=3.18
 	provides = gnome-shell-extension-dash-to-panel
 	conflicts = gnome-shell-extension-dash-to-panel
-	source = git+https://github.com/jderose9/dash-to-panel.git
+	source = git+https://github.com/home-sweet-gnome/dash-to-panel.git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-dash-to-panel-git

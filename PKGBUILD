@@ -8,7 +8,7 @@ pkgrel=2
 pkgdesc='Extension for GNOME shell to combine the dash and main panel'
 arch=(any)
 _githubname=dash-to-panel
-_githubowner=jderose9
+_githubowner=home-sweet-gnome
 url="https://github.com/${_githubowner}/${_githubname}"
 license=(GPL2)
 depends=('gnome-shell>=3.18')
