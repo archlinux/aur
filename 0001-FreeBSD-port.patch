@@ -1,0 +1,543 @@
+From 5d6c5a171bd5561e3ff1f4a1cc71ee80b3edaaf9 Mon Sep 17 00:00:00 2001
+From: Daniel Verite <dverite@gmail.com>
+Date: Tue, 19 Apr 2016 15:58:45 +0200
+Subject: [PATCH 1/3] FreeBSD port
+
+- deal with lack of dirent.d_off on FreeBSD
+- make xattr* functions essentially no-ops
+- skip prctl() and setrlimit()
+- some differences in struct statfs
+- some mount options lacking
+- replace SOL_TCP by IPPROTO_TCP
+- use linux value for errno EOPNOTSUPP
+---
+ diod/Makefile.am      |  3 ++-
+ diod/diod.c           |  8 +++++-
+ diod/diod_dir.h       | 12 +++++++++
+ diod/fid.c            |  2 --
+ diod/ioctx.c          | 24 ++++++++++++++---
+ diod/ioctx.h          |  6 +++--
+ diod/ops.c            | 61 +++++++++++++++++++++++++++++++++++--------
+ diod/xattr.c          | 17 +++++++++---
+ libdiod/diod_auth.c   |  1 -
+ libdiod/diod_sock.c   |  6 ++---
+ libnpclient/readdir.c |  2 ++
+ libnpfs/fcall.c       | 10 +++++++
+ libnpfs/user.c        |  8 ++++++
+ 13 files changed, 132 insertions(+), 28 deletions(-)
+ create mode 100644 diod/diod_dir.h
+
+diff --git a/diod/Makefile.am b/diod/Makefile.am
+index 1926402..7644be7 100644
+--- a/diod/Makefile.am
++++ b/diod/Makefile.am
+@@ -24,7 +24,8 @@ diod_SOURCES = \
+ 	fid.c \
+ 	fid.h \
+ 	xattr.c \
+-	xattr.h
++	xattr.h \
++	diod_dir.h
+ 
+ man8_MANS = \
+         diod.8
+diff --git a/diod/diod.c b/diod/diod.c
+index 02a41a1..af22ffc 100644
+--- a/diod/diod.c
++++ b/diod/diod.c
+@@ -46,7 +46,9 @@
+ #include <sys/stat.h>
+ #include <sys/param.h>
+ #include <sys/resource.h>
++#ifndef __FreeBSD__
+ #include <sys/prctl.h>
++#endif
+ #include <string.h>
+ #include <signal.h>
+ #include <pthread.h>
+@@ -323,9 +325,10 @@ _setrlimit (void)
+             err_exit ("setrlimit RLIMIT_NOFILE");
+ 
+     r.rlim_cur = r.rlim_max = RLIM_INFINITY;
++#ifndef __FreeBSD__
+     if (setrlimit (RLIMIT_LOCKS, &r) < 0)
+         err_exit ("setrlimit RLIMIT_LOCKS");
+-
++#endif
+     r.rlim_cur = r.rlim_max = RLIM_INFINITY;
+     if (setrlimit (RLIMIT_CORE, &r) < 0)
+         err_exit ("setrlimit RLIMIT_CORE");
+@@ -400,6 +403,7 @@ _sighand (int sig)
+     }
+ }
+ 
++
+ /* Thread to handle SIGHUP, SIGTERM, and new connections on listen ports.
+  */
+ static void *
+@@ -619,8 +623,10 @@ _service_run (srvmode_t mode, int rfdno, int wfdno)
+      * Set it here, then maintain it in user.c::np_setfsid () as uids are
+      * further manipulated.
+      */
++#ifndef __FreeBSD__
+     if (prctl (PR_SET_DUMPABLE, 1, 0, 0, 0) < 0)
+         err_exit ("prctl PR_SET_DUMPABLE failed");
++#endif
+ 
+     if (!diod_conf_get_userdb ())
+         flags |= SRV_FLAGS_NOUSERDB;
+diff --git a/diod/diod_dir.h b/diod/diod_dir.h
+new file mode 100644
+index 0000000..49ca478
+--- /dev/null
++++ b/diod/diod_dir.h
+@@ -0,0 +1,12 @@
++#ifndef INC_DIOD_DIRENT
++#define INC_DIOD_DIRENT
++
++#include <dirent.h>
++
++struct diod_dirent
++{
++  struct dirent dir_entry;
++  /* for when ! _DIRENT_HAVE_D_OFF */
++  off_t d_off;
++};
++#endif
+diff --git a/diod/fid.c b/diod/fid.c
+index c930f26..828555f 100644
+--- a/diod/fid.c
++++ b/diod/fid.c
+@@ -36,10 +36,8 @@
+ #include <sys/types.h>
+ #include <sys/file.h>
+ #include <sys/stat.h>
+-#include <sys/statfs.h>
+ #include <sys/socket.h>
+ #include <sys/time.h>
+-#include <sys/fsuid.h>
+ #include <sys/mman.h>
+ #include <pwd.h>
+ #include <grp.h>
+diff --git a/diod/ioctx.c b/diod/ioctx.c
+index b970c8c..aabf367 100644
+--- a/diod/ioctx.c
++++ b/diod/ioctx.c
+@@ -36,10 +36,8 @@
+ #include <sys/types.h>
+ #include <sys/file.h>
+ #include <sys/stat.h>
+-#include <sys/statfs.h>
+ #include <sys/socket.h>
+ #include <sys/time.h>
+-#include <sys/fsuid.h>
+ #include <pwd.h>
+ #include <grp.h>
+ #include <dirent.h>
+@@ -292,9 +290,27 @@ ioctx_seekdir (IOCtx ioctx, long offset)
+ }
+ 
+ int
+-ioctx_readdir_r(IOCtx ioctx, struct dirent *entry, struct dirent **result)
++ioctx_readdir_r(IOCtx ioctx, struct diod_dirent *entry, struct diod_dirent **result)
+ {
+-    return ioctx->dir ? readdir_r (ioctx->dir, entry, result) : EINVAL;
++  int r;
++  struct dirent* rd_result;
++  if (!ioctx->dir)
++    return EINVAL;
++
++  r = readdir_r (ioctx->dir, &entry->dir_entry, &rd_result);
++  if (r==0) {  /* success */
++    /* Does the same to diod_dirent as readdir_r() does to dirent */
++    if (rd_result == NULL)
++      *result = NULL;
++    else
++      *result = entry;
++#ifdef _DIRENT_HAVE_D_OFF
++    entry->d_off = entry->dir_entry.d_off;
++#else
++    entry->d_off = telldir (ioctx->dir);
++#endif
++  }
++  return r;
+ }
+ 
+ int
+diff --git a/diod/ioctx.h b/diod/ioctx.h
+index 185ab68..5372893 100644
+--- a/diod/ioctx.h
++++ b/diod/ioctx.h
+@@ -1,3 +1,5 @@
++#include "diod_dir.h"
++
+ typedef struct path_struct *Path;
+ typedef struct ioctx_struct *IOCtx;
+ 
+@@ -14,8 +16,8 @@ int     ioctx_open (Npfid *fid, u32 flags, u32 mode);
+ int     ioctx_close (Npfid *fid, int seterrno);
+ int     ioctx_pread (IOCtx ioctx, void *buf, size_t count, off_t offset);
+ int     ioctx_pwrite (IOCtx ioctx, const void *buf, size_t count, off_t offset);
+-int     ioctx_readdir_r(IOCtx ioctx, struct dirent *entry,
+-                        struct dirent **result);
++int     ioctx_readdir_r(IOCtx ioctx, struct diod_dirent *entry,
++                        struct diod_dirent **result);
+ void    ioctx_rewinddir (IOCtx ioctx);
+ void    ioctx_seekdir (IOCtx ioctx, long offset);
+ int     ioctx_fsync (IOCtx ioctx);
+diff --git a/diod/ops.c b/diod/ops.c
+index 7f0288a..17aeaa5 100644
+--- a/diod/ops.c
++++ b/diod/ops.c
+@@ -56,9 +56,14 @@
+ #if HAVE_CONFIG_H
+ #include "config.h"
+ #endif
++
++#ifndef __FreeBSD__
+ #define _XOPEN_SOURCE 600   /* pread/pwrite */
+ #define _BSD_SOURCE         /* makedev, st_atim etc */
++#endif
++
+ #define _ATFILE_SOURCE      /* utimensat */
++
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <stdio.h>
+@@ -69,12 +74,25 @@
+ #include <pthread.h>
+ #include <errno.h>
+ #include <sys/types.h>
++
++#ifdef __FreeBSD__
++#if !__BSD_VISIBLE
++typedef unsigned int    u_int;
++#endif
++#endif
++
+ #include <sys/file.h>
+ #include <sys/stat.h>
++
++#ifdef __FreeBSD__
++#include <sys/param.h>
++#include <sys/mount.h>
++#else
+ #include <sys/statfs.h>
++#endif
++
+ #include <sys/socket.h>
+ #include <sys/time.h>
+-#include <sys/fsuid.h>
+ #include <sys/mman.h>
+ #include <pwd.h>
+ #include <grp.h>
+@@ -98,6 +116,7 @@
+ #include "diod_conf.h"
+ #include "diod_log.h"
+ #include "diod_auth.h"
++#include "diod_dir.h"
+ 
+ #include "ops.h"
+ #include "exp.h"
+@@ -215,8 +234,10 @@ diod_ustat2qid (struct stat *st, Npqid *qid)
+ }
+ 
+ static void
+-_dirent2qid (struct dirent *d, Npqid *qid)
++_dirent2qid (struct diod_dirent *d1, Npqid *qid)
+ {
++    struct dirent* d = &(d1->dir_entry);
++
+     NP_ASSERT (d->d_type != DT_UNKNOWN);
+     qid->path = d->d_ino;
+     qid->version = 0;
+@@ -591,14 +612,24 @@ diod_statfs (Npfid *fid)
+         goto error;
+     }
+ 
++#ifdef __FreeBSD__
++    fsid = (u64)sb.f_fsid.val[0] | ((u64)sb.f_fsid.val[1] << 32);
++#else
+     fsid = (u64)sb.f_fsid.__val[0] | ((u64)sb.f_fsid.__val[1] << 32);
++#endif
+     if (diod_conf_get_statfs_passthru ())
+         type = sb.f_type;
+-
++#ifdef __FreeBSD__
++    if (!(ret = np_create_rstatfs(type, sb.f_bsize, sb.f_blocks,
++                                  sb.f_bfree, sb.f_bavail, sb.f_files,
++                                  sb.f_ffree, fsid,
++                                  sb.f_namemax))) {
++#else
+     if (!(ret = np_create_rstatfs(type, sb.f_bsize, sb.f_blocks,
+                                   sb.f_bfree, sb.f_bavail, sb.f_files,
+                                   sb.f_ffree, fsid,
+                                   sb.f_namelen))) {
++#endif
+         np_uerror (ENOMEM);
+         goto error;
+     }
+@@ -632,13 +663,19 @@ _remap_oflags (int flags)
+         { O_TRUNC,      P9_DOTL_TRUNC },
+         { O_APPEND,     P9_DOTL_APPEND },
+         { O_NONBLOCK,   P9_DOTL_NONBLOCK },
++#ifndef __FreeBSD__
+         { O_DSYNC,      P9_DOTL_DSYNC },
++#endif
+         { FASYNC,       P9_DOTL_FASYNC },
+         { O_DIRECT,     P9_DOTL_DIRECT },
++#ifndef __FreeBSD__
+         { O_LARGEFILE,  P9_DOTL_LARGEFILE },
++#endif
+         { O_DIRECTORY,  P9_DOTL_DIRECTORY },
+         { O_NOFOLLOW,   P9_DOTL_NOFOLLOW },
++#ifndef __FreeBSD__
+         { O_NOATIME,    P9_DOTL_NOATIME },
++#endif
+         { O_CLOEXEC,    P9_DOTL_CLOEXEC },
+         { O_SYNC,       P9_DOTL_SYNC},
+     };
+@@ -1065,15 +1102,15 @@ error_quiet:
+ }
+ 
+ static u32
+-_copy_dirent_linux (Fid *f, struct dirent *dp, u8 *buf, u32 buflen)
++_copy_dirent_linux (Fid *f, struct diod_dirent *dp, u8 *buf, u32 buflen)
+ {
+     Npqid qid;
+     u32 ret = 0;
+ 
+-    if (dp->d_type == DT_UNKNOWN) {
++    if (dp->dir_entry.d_type == DT_UNKNOWN) {
+         char path[PATH_MAX + 1];
+         struct stat sb;
+-        snprintf (path, sizeof(path), "%s/%s", path_s (f->path), dp->d_name);
++        snprintf (path, sizeof(path), "%s/%s", path_s (f->path), dp->dir_entry.d_name);
+         if (lstat (path, &sb) < 0) {
+             np_uerror (errno);
+             goto done;
+@@ -1082,8 +1119,8 @@ _copy_dirent_linux (Fid *f, struct dirent *dp, u8 *buf, u32 buflen)
+     } else  {
+         _dirent2qid (dp, &qid);
+     }
+-    ret = np_serialize_p9dirent(&qid, dp->d_off, dp->d_type,
+-                                      dp->d_name, buf, buflen);
++    ret = np_serialize_p9dirent(&qid, dp->d_off, dp->dir_entry.d_type,
++                                      dp->dir_entry.d_name, buf, buflen);
+ done:
+     return ret;
+ }
+@@ -1091,7 +1128,7 @@ done:
+ static u32
+ _read_dir_linux (Fid *f, u8* buf, u64 offset, u32 count)
+ {
+-    struct dirent dbuf, *dp;
++    struct diod_dirent dbuf, *dp;
+     int i, n = 0, err;
+ 
+     if (offset == 0)
+@@ -1106,8 +1143,8 @@ _read_dir_linux (Fid *f, u8* buf, u64 offset, u32 count)
+         }
+         if (err == 0 && dp == NULL)
+             break;
+-        if ((f->flags & DIOD_FID_FLAGS_MOUNTPT) && strcmp (dp->d_name, ".")
+-                                                && strcmp (dp->d_name, ".."))
++        if ((f->flags & DIOD_FID_FLAGS_MOUNTPT) && strcmp (dp->dir_entry.d_name, ".")
++                                                && strcmp (dp->dir_entry.d_name, ".."))
+                 continue;
+         i = _copy_dirent_linux (f, dp, buf + n, count - n);
+         if (i == 0)
+@@ -1354,8 +1391,10 @@ diod_xattrwalk (Npfid *fid, Npfid *attrfid, Npstr *name)
+         goto error;
+     }
+     if (xattr_open (attrfid, name, &size) < 0) {
++#ifndef __FreeBSD__
+         if (np_rerror () == ENODATA)
+             goto error_quiet;
++#endif
+         goto error;
+     }
+     nf->flags |= DIOD_FID_FLAGS_XATTR;
+diff --git a/diod/xattr.c b/diod/xattr.c
+index e2bc8c1..58aee14 100644
+--- a/diod/xattr.c
++++ b/diod/xattr.c
+@@ -39,12 +39,15 @@
+ #include <errno.h>
+ #include <sys/types.h>
+ #include <sys/file.h>
+-#include <attr/xattr.h>
+-#include <sys/stat.h>
++#ifndef __FreeBSD__
++#include <sys/xattr.h>
+ #include <sys/statfs.h>
++#include <sys/fsuid.h>
++#endif
++#include <sys/stat.h>
+ #include <sys/socket.h>
+ #include <sys/time.h>
+-#include <sys/fsuid.h>
++
+ #include <pwd.h>
+ #include <grp.h>
+ #include <dirent.h>
+@@ -157,6 +160,9 @@ xattr_pread (Xattr x, void *buf, size_t count, off_t offset)
+ static int
+ _lgetxattr (Xattr x, const char *path)
+ {
++#ifdef __FreeBSD__
++  return 0;
++#else
+     ssize_t len;
+ 
+     if (x->name)
+@@ -182,6 +188,7 @@ _lgetxattr (Xattr x, const char *path)
+         return -1; 
+     }
+     return 0;
++#endif
+ }
+ 
+ int
+@@ -219,6 +226,9 @@ error:
+ int
+ xattr_close (Npfid *fid)
+ {
++#ifdef __FreeBSD__
++  return 0;
++#else
+     Fid *f = fid->aux;
+     int rc = 0;
+ 
+@@ -240,6 +250,7 @@ xattr_close (Npfid *fid)
+         _xattr_destroy (&f->xattr);
+     }
+     return rc;
++#endif
+ }
+ 
+ 
+diff --git a/libdiod/diod_auth.c b/libdiod/diod_auth.c
+index 9f391e9..c7fe441 100644
+--- a/libdiod/diod_auth.c
++++ b/libdiod/diod_auth.c
+@@ -49,7 +49,6 @@
+ #include <stdarg.h>
+ #include <pthread.h>
+ #include <unistd.h>
+-#include <sys/fsuid.h>
+ #include <string.h>
+ #include <pwd.h>
+ #include <grp.h>
+diff --git a/libdiod/diod_sock.c b/libdiod/diod_sock.c
+index 0489cbe..69aa31d 100644
+--- a/libdiod/diod_sock.c
++++ b/libdiod/diod_sock.c
+@@ -102,19 +102,19 @@ _enable_keepalive(int fd)
+         goto done;
+     }
+     i = 120;
+-    ret = setsockopt (fd, SOL_TCP, TCP_KEEPIDLE, &i, len);
++    ret = setsockopt (fd, IPPROTO_TCP, TCP_KEEPIDLE, &i, len);
+     if (ret < 0) {
+         err ("setsockopt SO_KEEPIDLE");
+         goto done;
+     }
+     i = 120;
+-    ret = setsockopt (fd, SOL_TCP, TCP_KEEPINTVL, &i, len);
++    ret = setsockopt (fd, IPPROTO_TCP, TCP_KEEPINTVL, &i, len);
+     if (ret < 0) {
+         err ("setsockopt SO_KEEPINTVL");
+         goto done;
+     }
+     i = 9;
+-    ret = setsockopt (fd, SOL_TCP, TCP_KEEPCNT, &i, len);
++    ret = setsockopt (fd, IPPROTO_TCP, TCP_KEEPCNT, &i, len);
+     if (ret < 0) {
+         err ("setsockopt SO_KEEPCNT");
+         goto done;
+diff --git a/libnpclient/readdir.c b/libnpclient/readdir.c
+index e9220d8..5debdab 100644
+--- a/libnpclient/readdir.c
++++ b/libnpclient/readdir.c
+@@ -132,7 +132,9 @@ npc_readdir_r (Npcfid *fid, struct dirent *entry, struct dirent **result)
+ 				       fid->buf_len   - fid->buf_used);
+ 	if (res == 0)
+ 		return EIO;
++#ifdef _DIRENT_HAVE_D_OFF
+ 	entry->d_off = offset;
++#endif
+ 	entry->d_type = type;
+ 	entry->d_ino = qid.path;
+ 	//entry->d_reclen
+diff --git a/libnpfs/fcall.c b/libnpfs/fcall.c
+index c676fad..80c2bfd 100644
+--- a/libnpfs/fcall.c
++++ b/libnpfs/fcall.c
+@@ -1243,7 +1243,12 @@ np_renameat (Npreq *req, Npfcall *tc)
+ 	if (np_setfsid (req, newdirfid->user, -1) < 0)
+ 		goto done;
+ 	if (!req->conn->srv->renameat) {
++#ifdef __FreeBSD__
++	  /* hardcoded linux errno for EOPNOTSUPP */
++		np_uerror (95); /* v9fs expects this not ENOSYS for this op */
++#else
+ 		np_uerror (EOPNOTSUPP); /* v9fs expects this not ENOSYS for this op */
++#endif
+ 		goto done;
+ 	}
+ 	rc = (*req->conn->srv->renameat)(olddirfid, &tc->u.trenameat.oldname,
+@@ -1276,7 +1281,12 @@ np_unlinkat (Npreq *req, Npfcall *tc)
+ 	if (np_setfsid (req, dirfid->user, -1) < 0)
+ 		goto done;
+ 	if (!req->conn->srv->unlinkat) {
++#ifdef __FreeBSD__
++	  /* hardcoded linux errno for EOPNOTSUPP */
++		np_uerror (95); /* v9fs expects this not ENOSYS for this op */
++#else
+ 		np_uerror (EOPNOTSUPP); /* v9fs expects this not ENOSYS for this op */
++#endif
+ 		goto done;
+ 	}
+ 	rc = (*req->conn->srv->unlinkat)(dirfid, &tc->u.tunlinkat.name);
+diff --git a/libnpfs/user.c b/libnpfs/user.c
+index ba31345..572cd28 100644
+--- a/libnpfs/user.c
++++ b/libnpfs/user.c
+@@ -34,13 +34,17 @@
+ #include <errno.h>
+ #include <unistd.h>
+ #include <sys/syscall.h>
++#ifndef __FreeBSD__
+ #include <sys/fsuid.h>
++#endif
+ #include <pwd.h>
+ #include <grp.h>
+ #if HAVE_LIBCAP
+ #include <sys/capability.h>
+ #endif
++#ifndef __FreeBSD__
+ #include <sys/prctl.h>
++#endif
+ 
+ #include "9p.h"
+ #include "npfs.h"
+@@ -574,6 +578,9 @@ done:
+ int
+ np_setfsid (Npreq *req, Npuser *u, u32 gid_override)
+ {
++#if __FreeBSD__
++	return 0;
++#else
+ 	Npwthread *wt = req->wthread;
+ 	Npsrv *srv = req->conn->srv;
+ 	int i, n, ret = -1;
+@@ -684,4 +691,5 @@ done:
+ 	if (dumpclrd && prctl (PR_SET_DUMPABLE, 1, 0, 0, 0) < 0)
+         	np_logerr (srv, "prctl PR_SET_DUMPABLE failed");
+ 	return ret;
++#endif
+ }
+-- 
+2.21.0
+

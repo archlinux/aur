@@ -1,0 +1,46 @@
+From 732367504feefb8462f50ff68abe73085bd35559 Mon Sep 17 00:00:00 2001
+From: Leonid Bloch <leonid@daynix.com>
+Date: Mon, 20 Jul 2015 14:02:02 +0300
+Subject: [PATCH 3/3] Diod: Lua detection fix and replacing deprecated function
+
+lua_open was replaced with luaL_newstate, which succeeded it in Lua 5.2.
+lua_open was already deprecated in Lua 5.1.
+Also, in order to check for Lua during config, a test for luaL_newstate
+is used, which works for both Lua 5.1 and 5.2, instead of testing for
+lua_call, which does not work for Lua 5.2.
+
+Signed-off-by: Leonid Bloch <leonid@daynix.com>
+---
+ config/ax_lua.m4    | 2 +-
+ libdiod/diod_conf.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/config/ax_lua.m4 b/config/ax_lua.m4
+index e389876..9c1415f 100644
+--- a/config/ax_lua.m4
++++ b/config/ax_lua.m4
+@@ -164,7 +164,7 @@ AC_DEFUN([AX_LUA_LIBS],
+   AC_CHECK_LIB([m], [exp], [lua_extra_libs="$lua_extra_libs -lm"], [])
+   AC_CHECK_LIB([dl], [dlopen], [lua_extra_libs="$lua_extra_libs -ldl"], [])
+   AC_CHECK_LIB([lua$with_lua_suffix],
+-    [lua_call],
++    [luaL_newstate],
+     [LIBLUA="$LUA_LIB -llua$with_lua_suffix $lua_extra_libs"],
+     [],
+     [$LIBLUA $lua_extra_libs])
+diff --git a/libdiod/diod_conf.c b/libdiod/diod_conf.c
+index 19bd280..03c5a9a 100644
+--- a/libdiod/diod_conf.c
++++ b/libdiod/diod_conf.c
+@@ -629,7 +629,7 @@ diod_conf_init_config_file (char *path) /* FIXME: ENOMEM is fatal */
+             path = config.configpath;  /* missing default file is not fatal */
+     }
+     if (path) {
+-    	lua_State *L = lua_open ();
++        lua_State *L = luaL_newstate ();
+ 
+         luaopen_base (L);
+         luaopen_table (L);
+-- 
+2.21.0
+
