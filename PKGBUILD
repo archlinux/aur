@@ -1,7 +1,8 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander Fasching <fasching.a91@gmail.com>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=python-pyxel
-pkgver=0.9.4
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Retro game development environment'
 arch=('any')
