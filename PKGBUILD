@@ -17,7 +17,7 @@ makedepends=('git'
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -28,6 +28,10 @@ prepare() {
   mkdir -p build
 
   cd "${_plug}"
+
+  sed 's|$(pkgdatadir)|/usr/lib/vapoursynth|g' \
+    -i Makefile.am
+
   ./autogen.sh
 }
 
@@ -42,6 +46,7 @@ build() {
 
 package(){
   make -C build DESTDIR="${pkgdir}" install
+
   install -Dm644 "${_plug}/readme.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 
   rm -fr "${pkgdir}/usr/share/nnedi3"
