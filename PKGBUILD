@@ -1,10 +1,10 @@
 # Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=zimg-git
-pkgver=2.6.3.64.gf578889
+pkgver=2.8.13.g4bfe822
 pkgrel=1
 pkgdesc="Scaling, colorspace conversion, and dithering library. (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=171334'
 license=('custom:WTFPL')
 depends=('gcc-libs'
@@ -27,20 +27,22 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p build
+
   cd zimg
   ./autogen.sh
 }
 
 build() {
-  cd zimg
-  ./configure \
+  cd build
+  ../zimg/configure \
     --prefix=/usr
 
   make
 }
 
 package(){
-  make -C zimg DESTDIR="${pkgdir}" install
+  make -C build DESTDIR="${pkgdir}" install
 
   install -Dm644 zimg/COPYING "${pkgdir}/usr/share/licenses/zimg-git/COPYING"
 }
