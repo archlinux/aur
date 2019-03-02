@@ -1,17 +1,26 @@
 # Maintainer: <andrew dot myers at wanadoo  dot fr>
 pkgname=vpacman
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A Graphical front end for pacman and the AUR"
 arch=('any')
 url="https://github.com/fdservices/vpacman"
 license=('GPL')
 depends=('tcl' 'tk' 'wmctrl')
-optdepends=('xorg-xwininfo: for fine control of terminal windows'
-			'pkgfile: for faster retrieval of package files'
+optdepends=('pkgfile: for faster retrieval of package files'
+			'xorg-xwininfo: for fine control of terminal windows'
+			'gnome-terminal: preconfigured terminal emulator'
+			'konsole: preconfigured terminal emulator'
+			'lxterminal: preconfigured terminal emulator'
+			'mate-terminal: preconfigured terminal emulator'
+			'qterminal: preconfigured terminal emulator'
+			'roxterm: preconfigured terminal emulator'
+			'vte: preconfigured terminal emulator'
+			'xfce4-terminal: preconfigured terminal emulator'
+			'xterm: preconfigured terminal emulator (default)'
 			)
 source=(http://github.com/fdservices/$pkgname/archive/$pkgver.tar.gz)
-md5sums=('9dada01776531c4ac9802622ead0eb14')
+md5sums=('6231d70d1f54d046f3b5aa537f1d2c2e')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -34,6 +43,7 @@ package() {
     install -d "$pkgdir"/usr/share/applications
     install -m644 vpacman.desktop "$pkgdir"/usr/share/applications/
 }
+
 
 
 

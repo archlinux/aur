@@ -1,6 +1,6 @@
 pkgbase = vpacman
 	pkgdesc = A Graphical front end for pacman and the AUR
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/fdservices/vpacman
 	arch = any
@@ -8,10 +8,19 @@ pkgbase = vpacman
 	depends = tcl
 	depends = tk
 	depends = wmctrl
-	optdepends = xorg-xwininfo: for fine control of terminal windows
 	optdepends = pkgfile: for faster retrieval of package files
-	source = http://github.com/fdservices/vpacman/archive/1.3.0.tar.gz
-	md5sums = 9dada01776531c4ac9802622ead0eb14
+	optdepends = xorg-xwininfo: for fine control of terminal windows
+	optdepends = gnome-terminal: preconfigured terminal emulator
+	optdepends = konsole: preconfigured terminal emulator
+	optdepends = lxterminal: preconfigured terminal emulator
+	optdepends = mate-terminal: preconfigured terminal emulator
+	optdepends = qterminal: preconfigured terminal emulator
+	optdepends = roxterm: preconfigured terminal emulator
+	optdepends = vte: preconfigured terminal emulator
+	optdepends = xfce4-terminal: preconfigured terminal emulator
+	optdepends = xterm: preconfigured terminal emulator (default)
+	source = http://github.com/fdservices/vpacman/archive/1.3.1.tar.gz
+	md5sums = 6231d70d1f54d046f3b5aa537f1d2c2e
 
 pkgname = vpacman
 
