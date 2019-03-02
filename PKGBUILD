@@ -2,13 +2,13 @@
 
 pkgname=ffmpeg-compat-55
 pkgver=2.3.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Compatibility package for ffmpeg to provide versions 55 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
 license=('GPL')
 depends=('gsm' 'lame' 'opencore-amr' 'openjpeg' 'opus' 'rtmpdump' 'libvpx'
-         'schroedinger' 'speex' 'v4l-utils' 'xvidcore' 'libpulse'  'libx264'
+         'schroedinger' 'speex' 'v4l-utils' 'xvidcore' 'libpulse'
          'libtheora' 'libbluray' 'libmodplug' 'libva' 'libxv' 'sdl' 'jack'
          'libavutil-52')
 makedepends=('yasm' 'libass')
@@ -56,7 +56,7 @@ build() {
     --enable-libv4l2 \
     --enable-libvorbis \
     --enable-libvpx \
-    --enable-libx264 \
+    --disable-libx264 \
     --enable-libxvid \
     --enable-runtime-cpudetect \
     --enable-shared \
