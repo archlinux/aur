@@ -2,11 +2,11 @@
 
 _plug=muvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v0.1.0.3.g6813396
+pkgver=v0.2.0.32.g3138b06
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('x86_64')
-url='http://forum.doom9.org/showthread.php?t=171956'
+arch=('any')
+url='https://forum.doom9.org/showthread.php?t=171956'
 license=('GPL')
 depends=('vapoursynth-plugin-havsfunc-git'
          'vapoursynth-plugin-mvsfunc-git'
@@ -29,5 +29,6 @@ package(){
   install -Dm644 "${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
