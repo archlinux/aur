@@ -24,4 +24,5 @@ depends=(
         'gridtracker-bin'
         'gqrx'
         'trustedqsl'
+        'sunclock'
         )

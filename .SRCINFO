@@ -21,6 +21,7 @@ pkgbase = ham-radio-meta
 	depends = gridtracker-bin
 	depends = gqrx
 	depends = trustedqsl
+	depends = sunclock
 
 pkgname = ham-radio-meta
 
