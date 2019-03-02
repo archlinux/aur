@@ -31,5 +31,6 @@ package() {
   install -Dm644 "${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+
   install -Dm644 nnedi3_resample-readme.txt "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.txt"
 }
