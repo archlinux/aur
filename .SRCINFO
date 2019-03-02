@@ -1,0 +1,23 @@
+pkgbase = linuxtrack-bin
+	pkgdesc = Linuxtrack is a project aiming to bring head tracking to Linux and Mac.
+	pkgver = 0.99.18
+	pkgrel = 1
+	url = https://github.com/uglyDwarf/linuxtrack
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libusb
+	depends = v4l-utils
+	depends = zlib
+	depends = mxml
+	depends = qt4
+	depends = qtwebkit
+	depends = cwiid
+	depends = opencv
+	provides = linuxtrack
+	conflicts = linuxtrack
+	source = http://linuxtrack.eu/repositories/universal/linuxtrack-0.99.18-64.zip
+	md5sums = aac1e5c89b0ef339954ddeb2c4d7b9e3
+
+pkgname = linuxtrack-bin
+
