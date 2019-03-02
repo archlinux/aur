@@ -2,7 +2,7 @@
 
 _plug=dfmderainbow
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.0.g2c68baa
+pkgver=v2.0.g22faeb5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -32,7 +32,8 @@ pkgver() {
 }
 
 package(){
-  install -Dm644 "${_plug}/${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
+  cd "${_plug}"
+  install -Dm644 "${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 }
