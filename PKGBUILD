@@ -12,7 +12,7 @@ makedepends=("imagemagick" "nodejs-nativefier")
 source=("${pkgname}.png"
         "${pkgname}.desktop")
 sha256sums=("702fbfadf6d53cc3a83ad6c8d5031381f7ee58e7cef0228833d1addb2d7de589"
-            "4747b42251dc5431bf2234484b2846376bc38b45e8ee7ea25d10ee4be0e5d8ae")
+            "059ada2d4a5b85e80a0ea531a3e809967b971df82479106a4004914080a1ab44")
 
 build() {
   cd "${srcdir}"
