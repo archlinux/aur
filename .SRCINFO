@@ -1,6 +1,6 @@
 pkgbase = templight-git
 	pkgdesc = Template Instantiation Profiler and Debugger
-	pkgver = r140.9624f09
+	pkgver = r144.7d69c5e
 	pkgrel = 1
 	url = https://github.com/mikael-s-persson/templight
 	arch = x86_64

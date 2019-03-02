@@ -1,5 +1,5 @@
 pkgname=templight-git
-pkgver=r140.9624f09
+pkgver=r144.7d69c5e
 pkgrel=1
 pkgdesc="Template Instantiation Profiler and Debugger"
 arch=('x86_64')
@@ -140,7 +140,7 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   mkdir -p ${pkgdir}/usr/bin
-  ln -s ${pkgdir}/opt/templight/bin/templight++ ${pkgdir}/usr/bin
+  ln -s /opt/templight/bin/templight++ ${pkgdir}/usr/bin
 }
 
 # vim:set ts=2 sw=2 et:
