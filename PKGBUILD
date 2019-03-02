@@ -2,9 +2,9 @@
 # Maintainer: erik dubois <erik.dubois@gmail.com>
 pkgname=sardi-mono-mint-y-icons-git
 _pkgname=sardi-mono-mint-y-icons
-pkgver=357.1ce9f028
+pkgver=361.3df4ca52
 pkgrel=1
-pkgdesc="New icons from LinuxMint 18 inspired by the Moka icon set with sardi-mono as main icon set"
+pkgdesc="New icons from LinuxMint 18 inspired by the Moka icon set with Sardi-Mono as main icon set"
 arch=('any')
 url="https://github.com/linuxmint/mint-y-icons"
 license=('GPL3')
