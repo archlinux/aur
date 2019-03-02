@@ -2,12 +2,13 @@
 
 pkgname=freefem++
 pkgver=3.62
-pkgrel=2
+pkgrel=3
 pkgdesc='A PDE oriented language using the finite element method'
 arch=('x86_64')
 url="https://freefem.org/index.html"
 license=('LGPL')
-depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-openmpi' 'gsl' 'openmpi' 'lapack' 'arpack' 'parmetis' 'python')
+depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-openmpi' 'gsl' 'openmpi' 'lapack'
+	 'arpack' 'parmetis' 'python')
 makedepends=('texlive-core')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FreeFem/FreeFem-sources/archive/$pkgver.tar.gz")
 sha256sums=('4db5ab10bf65692a5f9acb3577510005a4570e60f7c30de43eb625aacf7c6aad')
@@ -15,14 +16,16 @@ options=('!makeflags')
 
 prepare() {
   cd FreeFem-sources-${pkgver}
-  find ./download -name headers-sparsesolver.inc -exec sed -i 's+#\(FFMPIINCLUDE\s*=\).*+\1 -I/usr/include/+' {} \;
+
   perl download/getall -a
   autoreconf -i
   ./configure --prefix=/usr \
 	      --sysconfdir=/etc \
 	      --enable-download \
-	      --enable-mumps \
-	      --with-mpi=openmpi
+	      --disable-mumps \
+	      --with-petsc=/opt/petsc/linux-c-opt/lib/petsc/conf/petscvariables \
+	      --with-mmg3d-include=/usr/include/mmg/ \
+	      --with-mpi=/usr/bin/mpic++
   
   find . -name Makefile -exec sed -i 's+^gcc+gcc =+' {} \;
   find . -name Makefile -exec sed -i 's+^dir+dir =+' {} \;
