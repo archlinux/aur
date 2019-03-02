@@ -2,7 +2,7 @@
 # Contributor: Anthony DeStefano <adx@fastmail.fm> 
 
 pkgname=flrig
-pkgver=1.3.41
+pkgver=1.3.42
 pkgrel=1
 pkgdesc="Amateur (Ham) Radio Transceiver Control Program"
 arch=('armv7h' 'i686' 'x86_64')
@@ -32,5 +32,5 @@ package() {
 
 	make DESTDIR="$pkgdir" install
 }
-md5sums=('2601da12d00b1cc66a5ad4646411ba6f')
-sha256sums=('a463d82224ee9ca67f134e0253939a81c31707366e9ee5c6f3f7def1be22016e')
+md5sums=('9648ba99fddfe211e94ebde4bf7eeba8')
+sha256sums=('e07e7841dbb91e96e15dcdf9eaea2db0f6e7ad13dfacdf05fe85045d41381683')
