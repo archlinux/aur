@@ -1,7 +1,7 @@
 # Maintainer: Spike29 <leguen.yannick@gmail.com>
 
 pkgname=plasma5-applets-places-widget
-pkgver=1.1
+pkgver=1.3
 pkgrel=1
 pkgdesc="Plasma 5 widget that gives access to user places"
 arch=(any)
@@ -10,7 +10,7 @@ license=(GPL2)
 depends=(plasma-workspace plasma-framework)
 makedepends=(extra-cmake-modules)
 source=("https://github.com/HessiJames/plasma-applet-places-widget/archive/v${pkgver}.tar.gz")
-md5sums=('069664def72e80dd89460fcbdb51b25f')
+md5sums=('35f61cc848ceaf5dadaee5ef8d6a32b3')
 
 prepare() {
   mkdir -p "$srcdir"/plasma-applet-places-widget-${pkgver}/build
