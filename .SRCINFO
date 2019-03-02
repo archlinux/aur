@@ -1,0 +1,19 @@
+pkgbase = java-gnome-bin
+	pkgdesc = Binaries of Java bindings to the GNOME platform (including gtk, glib and glade)
+	pkgver = 4.1.3
+	pkgrel = 1
+	url = https://github.com/nikitabobko/${pkgname}
+	arch = x86_64
+	license = GPL
+	depends = java-runtime<9
+	depends = gtksourceview3
+	depends = librsvg
+	depends = libnotify
+	depends = enchant
+	depends = gtkspell3
+	conflicts = java-gnome
+	source = https://github.com/nikitabobko/java-gnome-bin/releases/download/v4.1.3/java-gnome-bin-v4.1.3.tar
+	sha256sums = e173bbec8bc2640cf8e137c851a747fb23fab0a2657b6da06ae4e3e76eeafaea
+
+pkgname = java-gnome-bin
+
