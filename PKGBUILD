@@ -23,22 +23,23 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p build
+
   cd "${_plug}"
   chmod +x autogen.sh
   ./autogen.sh
 }
 
 build() {
-  cd "${_plug}"
-  ./configure \
+  cd build
+  ../"${_plug}"/configure \
     --libdir="/usr/lib/vapoursynth"
 
   make
 }
 
 package(){
-  cd "${_plug}"
-  make DESTDIR="${pkgdir}" install
+  make -C build DESTDIR="${pkgdir}" install
 
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
