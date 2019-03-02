@@ -1,7 +1,7 @@
 # Maintainer: Anton Karmanov <bergentroll@insiberia.net>
 pkgname=spectral-git
 pkgver=218.r272.g91fe860
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Glossy cross-platform client for Matrix"
 arch=(any)

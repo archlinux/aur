@@ -1,7 +1,7 @@
 pkgbase = spectral-git
 	pkgdesc = Glossy cross-platform client for Matrix
 	pkgver = 218.r272.g91fe860
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/b0/spectral
 	arch = any
 	license = GPL3
