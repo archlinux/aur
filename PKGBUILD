@@ -10,7 +10,7 @@ _cgipkgname='github.com/jung-kurt/caddy-cgi'
 # build some asm files needed by quic-go
 if `pacman -Qq gcc-go >/dev/null 2>/dev/null`
 then
-	NOQUIC=y
+	USING_GCCGO=y
 	GOFLAGS="-gccgoflags -O2"
 fi
 
@@ -18,7 +18,7 @@ pkgname=caddy-with-cgi
 _pkgbase=caddy
 pkgver=0.11.4
 _cgiver=1.10
-pkgrel=2
+pkgrel=3
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS, with caddy-cgi plugin and gcc-go support'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://caddyserver.com'
@@ -36,6 +36,7 @@ source=("https://$_gopkgname/archive/v$pkgver/$_pkgbase-$pkgver.tar.gz"
 	'caddy.tmpfiles'
 	'caddy.conf'
 	'default_nocbc.patch'
+	'latest_tls13.patch'
 	'noquic_aesni.patch'
 	'plugins.patch')
 sha256sums=('5f95c5dc8e0d6a63ae067bdfa42f78a4ca467cfff5407934582f1133ffcda532'
@@ -46,6 +47,7 @@ sha256sums=('5f95c5dc8e0d6a63ae067bdfa42f78a4ca467cfff5407934582f1133ffcda532'
 	'bd4d912d083be176727882ccc1bbe577a27cc160db09238e5edc05ba458aebce'
 	'80520b80ccabf077a3269f6a1bf55faa3811ef5adce115131b35ef2044d37b64'
 	'35410797a8deb629a974dbbf4b3784c3237d3db8d9c7c589ba85e8b9dddf2be0'
+	'75f0f3744117d9423b629e67e8dcee71e52791751be822fbd524a29f9f3a7575'
 	'f3f9fa975a174928d727f3040fa28e2fbd073b1f4ebd3a68fa43b0aebb90eb64'
 	'c8d56b2295e04720ae8fe9493a7931bb2dba5c568fbcae469887ac143bd6b934')
 
@@ -61,9 +63,11 @@ prepare() {
 	# fix rewrite: rewrite the URI instead of just the path
 	# https://github.com/mholt/caddy/issues/2129
 	sed -i 's/URL.Path/URL.RequestURI()/g' caddyhttp/rewrite/rewrite.go
-	if [ "$NOQUIC" == y ]
+	if [ "$USING_GCCGO" == y ]
 	then
 		patch -p1 -i "$srcdir/noquic_aesni.patch"
+	else
+		patch -p1 -i "$srcdir/latest_tls13.patch"
 	fi
 }
 
