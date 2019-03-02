@@ -1,6 +1,6 @@
 pkgname=ant-nebula-gtk-theme
-pkgver=1.1.0
-pkgrel=4
+pkgver=1.3.0
+pkgrel=5
 pkgdesc="Ant Nebula Theme for GTK 3.x"
 arch=(any)
 url=https://www.gnome-look.org/p/1099856/
@@ -10,8 +10,8 @@ depends=('gtk3')
 _p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
 read _s _t <<< $(echo -n $(curl -s $url | sed -n "s/$_p/\2\3/p"))
 
-source=("https://dl.opendesktop.org/api/files/downloadfile/id/1518217227/s/$_s/t/$_t/u//Ant-Nebula.tar")
-sha256sums=('87f8b66a7539c45af3fabd4ec410fe6ce9cdcfb37f1b1e83297d451b7aa47712')
+source=("https://github.com/EliverLara/Ant-Nebula/releases/download/v1.3.0/Ant-Nebula.tar")
+sha256sums=('7fc96426b50df1b06ea9d333fbb20626aaf6c0de5bbc7a4899f2557b4ee1eff6')
 
 package(){
 	cd "$srcdir"
