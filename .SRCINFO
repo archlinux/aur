@@ -1,10 +1,10 @@
 pkgbase = python-raccoon
 	pkgdesc = Python DataFrame with fast insert and appends
 	pkgver = 2.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rsheftel/raccoon
 	arch = any
-	license = custom
+	license = MIT
 	makedepends = python-pip
 	depends = python-blist
 	depends = python-six

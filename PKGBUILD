@@ -2,11 +2,11 @@
 
 pkgname=python-raccoon
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Python DataFrame with fast insert and appends"
 url="https://github.com/rsheftel/raccoon"
 arch=('any')
-license=('custom')
+license=('MIT')
 depends=('python-blist' 'python-six' 'python-tabulate')
 makedepends=('python-pip')
 source=(
