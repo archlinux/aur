@@ -6,55 +6,41 @@
 # Contributor: Bartłomiej Piotrowski <barthalion@gmail.com>
 
 pkgname=midori-no-zeitgeist
-_pkgname=midori
-pkgver=0.5.11
+pkgver=7.0
 pkgrel=1
 pkgdesc='Lightweight web browser (GTK3) without the zeitgeist dependency'
-arch=('x86_64' 'i686' 'armv7h')
-url='http://www.midori-browser.org/'
-license=('LGPL2.1')
-install='midori.install'
+arch=('x86_64' 'armv7h')
+url='https://midori-browser.org/'
+license=('LGPL')
+depends=('aria2' 'gcr' 'gobject-introspection-runtime' 'libpeas' 'libxss'
+         'webkit2gtk')
+makedepends=('bzr' 'cmake' 'git' 'gobject-introspection' 'intltool' 'ninja'
+             'vala')
+optdepends=('gst-plugins-base: HTML5 OGG videos support'
+            'gst-plugins-good: HTML5 H264 and WebM videos support'
+            'gst-libav: HTML5 H264 videos support')
 conflicts=('midori')
 provides=('midori')
-depends=('webkit2gtk' 'libxss' 'gcr')
-makedepends=('bzr' 'intltool' 'vala' 'cmake' 'ninja')
-optdepends=('gst-plugins-base: HTML5 OGG videos support'
-  'gst-plugins-good: HTML5 H264 and WebM videos support'
-  'gst-libav: HTML5 H264 videos support'
-  'aria2: download utility')
 options=('!emptydirs')
-source=("http://www.midori-browser.org/downloads/${_pkgname}_${pkgver}_all_.tar.bz2")
-sha256sums=('96191a96be71144ae848a409fae5a1d6d52a00e583f33122081f47ead9c49c3d')
-
-prepare() {
-  cd "$_pkgname-$pkgver"
-
-  # The latest release of vala is a bit stricter than the previous one
-  sed 's/protected Tally/public Tally/g' -i midori/midori-notebook.vala
-  sed 's/%d other files/%u other files/g' -i extensions/transfers.vala
-  for f in transfers adblock/widgets apps history-list notes; do
-    sed 's/.remove (iter/.remove (ref iter/g' -i "extensions/$f.vala"
-  done
-}
+source=("$pkgname::git+https://github.com/midori-browser/core.git#\
+tag=v${pkgver%.0}")
+md5sums=('SKIP')
 
 build() {
-  cd "$_pkgname-$pkgver"
-
   mkdir -p build
   cd build
-  cmake .. \
+  cmake "../$pkgname" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DHALF_BRO_INCOM_WEBKIT2=ON \
-    -DCMAKE_C_FLAGS="$CFLAGS -w" \
-    -DUSE_ZEITGEIST=0 \
+    -DCMAKE_C_FLAGS="$CFLAGS -fPIC -w" \
+    -DVALA_CFLAGS="$CFLAGS -fPIC -w" \
     -G Ninja
   ninja
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C "$_pkgname-$pkgver/build" install
+  DESTDIR="$pkgdir" ninja -C build install
 }
 
-# getver: -u 2 midori-browser.org/download/source
-# vim:set ts=2 sw=2 et:
+# getver: launchpad.net/midori/+download
+# vim: ts=2 sw=2 et:
