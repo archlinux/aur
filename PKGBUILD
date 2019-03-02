@@ -5,13 +5,13 @@ pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-cuda")
 _pkgname="pytorch"
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
 depends=('python' 'python-yaml' 'python-numpy' 'opencv' 'nccl')
-makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'cudnn' 'git')
+makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'cudnn' 'git' 'gcc7')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         "git+https://github.com/catchorg/Catch2"
         "git+https://github.com/pybind/pybind11"
@@ -107,6 +107,8 @@ prepare() {
 build() {
   # Uncomment and modify the following line to enable Intel MKL and magma support
   # export CMAKE_PREFIX_PATH=/opt/intel/mkl/include:/opt/intel/mkl/lib/intel64:/opt/magma \
+  export CC=gcc-7
+  export CXX=g++-7
   export PYTORCH_BUILD_VERSION=${pkgver}
   export PYTORCH_BUILD_NUMBER=1
 
@@ -122,6 +124,7 @@ build() {
   echo "Building with cuda"
   export NO_CUDA=0
   export WITH_CUDNN=1
+  export CUDAHOSTCXX=g++-7
   export CUDA_HOME=/opt/cuda
   export CUDNN_LIB_DIR=/usr/lib
   export CUDNN_INCLUDE_DIR=/usr/include
