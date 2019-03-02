@@ -35,7 +35,8 @@ pkgver() {
 }
 
 package(){
-  install -Dm644 "${_plug}/ASTDR.py" "${pkgdir}${_site_packages}/${_plug}.py"
+  cd "${_plug}"
+  install -Dm644 ASTDR.py "${pkgdir}${_site_packages}/${_plug}.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 }
