@@ -46,7 +46,7 @@ source=("https://github.com/RetroShare/RetroShare/archive/v${pkgver}.tar.gz")
 sha256sums=('901a1d1f282e04118fbe0e24190355b4a8f355a806cc5448738b1d691b46f5d5')
 
 # Add missing dependencies if needed
-[[ "$_plugin_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
+[[ "$_plugin_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv3-opt')
 [[ "$_plugin_feedreader" == 'true' ]] && depends=(${depends[@]} 'curl' 'libxslt')
 [[ "$_jsonapi" == 'true' ]] && depends=(${depends[@]} 'restbed')
 [[ "$_clang" == 'true' ]] && makedepends=(${makedepends[@]} 'clang')
@@ -74,7 +74,7 @@ fi
 prepare() {
 	cd "${srcdir}/RetroShare-${pkgver}"
 
-	[[ "$_plugin_voip" == 'true' ]] && sed -i -e 's/PKGCONFIG += opencv/PKGCONFIG += opencv4/g' plugins/VOIP/VOIP.pro
+	[[ "$_plugin_voip" == 'true' ]] && sed -i -e 's/PKGCONFIG += opencv/PKGCONFIG += opencv3/g' plugins/VOIP/VOIP.pro
 }
 
 build() {
