@@ -1,4 +1,4 @@
-# Maintainer: Arif Roktim <arifrroktim at gmail dot com>
+# Maintainer: fennecFactor <fennecfactor at protonmail dot com>
 pkgname=mir.qualia
 pkgver=2.0.0
 pkgrel=1
