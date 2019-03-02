@@ -6,7 +6,7 @@
 # OUTLINE_COLOR Variables in the `build()` Function.
 
 pkgname=adwaita-custom-cursor-colors
-pkgver=3.30.0
+pkgver=3.30.1
 pkgrel=1
 pkgdesc="GNOME's Adwaita Theme with Customizable Cursor Colors"
 url="https://git.gnome.org/browse/adwaita-icon-theme"
@@ -17,7 +17,7 @@ makedepends=(intltool git gtk3 gnome-common python2 python2-pillow inkscape xorg
 provides=(adwaita-icon-theme)
 conflicts=(adwaita-icon-theme)
 source=("https://github.com/GNOME/adwaita-icon-theme/archive/$pkgver.tar.gz")
-sha256sums=('14b70916d763f841865c295b4d6dd0aebba6f0829a29c019348d0f775178aeba')
+sha256sums=('3b4a5e97f5583d7493cbba4ced00654c34d60006f4efed69be49f3fefadb982f')
 
 _sourcefolder="adwaita-icon-theme-$pkgver"
 
