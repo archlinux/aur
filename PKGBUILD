@@ -1,13 +1,13 @@
 # Maintainer: Blooser <blooser@protonmail.com>
 pkgname=gemini
 pkgver=1.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical audio player"
 arch=('x86_64')
 md5sums=('93ab2c4d1e0470e57fbceb86096633f4')
 url="https://github.com/blooser/gemini"
 license=('MIT')
-depends=('mpv' 'youtube-dl' 'qt5-base' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'python')
+depends=('mpv' 'youtube-dl' 'qt5-base' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'python')
 makedepends=('cmake' 'python-setuptools')
 binlocation=/usr/bin
 resourcelocation=/usr/share/$pkgname
