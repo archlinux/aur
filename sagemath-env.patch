@@ -1,6 +1,6 @@
 --- src/bin/sage-env.orig	2015-01-06 10:46:04.469687605 +0100
 +++ src/bin/sage-env	2015-01-06 10:49:59.547762019 +0100
-@@ -111,41 +111,7 @@
+@@ -111,41 +111,6 @@
  }
  
  
@@ -39,7 +39,6 @@
 -    echo >&2 "Old SAGE_ROOT=$SAGE_ROOT"
 -    echo >&2 "New SAGE_ROOT=$NEW_SAGE_ROOT"
 -fi
-+NEW_SAGE_ROOT="/usr"
  
  
  # Don't execute the commands more than once for the same version of
