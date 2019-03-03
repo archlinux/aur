@@ -1,6 +1,10 @@
---- MUMPS_5.0.1/libseq/Makefile	2015-07-23 19:08:32.000000000 +0200
-+++ src/MUMPS_5.0.1/libseq/Makefile	2017-01-25 18:05:18.482880555 +0100
-@@ -8,15 +8,17 @@
+Create a shared version of the sequential library, MUST BE LAST IN SERIES
+
+Index: mumps/libseq/Makefile
+===================================================================
+--- mumps.orig/libseq/Makefile
++++ mumps/libseq/Makefile
+@@ -8,15 +8,17 @@ all: libmpiseq
  
  include ../Makefile.inc
  
@@ -13,7 +17,7 @@
 +	$(AR) $@ mpi.o mpic.o elapse.o
  	$(RANLIB) $@
 +libmpiseq$(PLAT).so: mpi.o mpic.o elapse.o
-+	$(FC) -shared $^ -Wl,-soname,$@ -o $@ -Wl,-z,defs
++	$(FC) -shared $^ -Wl,-soname,libmpiseq$(PLAT)-5.1.2.so -o libmpiseq$(PLAT)-5.1.2.so -Wl,-z,defs
  .f.o:
 -	$(FC) $(OPTF)              -c $*.f $(OUTF)$*.o
 +	$(FC) $(OPTF)              -fPIC -c $*.f $(OUTF)$*.o
@@ -24,3 +28,15 @@
  clean:
 -	$(RM) *.o *$(LIBEXT)
 +	$(RM) *.o *.a *.so
+Index: mumps/Makefile
+===================================================================
+--- mumps.orig/Makefile
++++ mumps/Makefile
+@@ -60,6 +60,7 @@ requiredobj: Makefile.inc $(LIBSEQNEEDED
+ 
+ libseqneeded:
+ 	(cd libseq; $(MAKE))
++	cp libseq/lib* $(libdir)
+ 
+ # Build the libpord.a library and copy it into $(topdir)/lib
+ $(libdir)/libpord$(PLAT).a:

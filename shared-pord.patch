@@ -1,6 +1,10 @@
---- MUMPS_5.0.1/PORD/lib/Makefile	2015-07-23 19:08:29.000000000 +0200
-+++ src/MUMPS_5.0.1/PORD/lib/Makefile	2017-01-26 11:32:54.742239842 +0100
-@@ -9,11 +9,11 @@
+Create static and shared versions of the PORD library.
+
+Index: mumps/PORD/lib/Makefile
+===================================================================
+--- mumps.orig/PORD/lib/Makefile
++++ mumps/PORD/lib/Makefile
+@@ -9,7 +9,7 @@
  
  INCLUDES = -I../include
  
@@ -9,12 +13,7 @@
  
  OBJS = graph.o gbipart.o gbisect.o ddcreate.o ddbisect.o nestdiss.o \
         multisector.o gelim.o bucket.o tree.o \
--       symbfac.o interface.o sort.o minpriority.o 
-+       symbfac.o interface.o sort.o minpriority.o
- 
- # Note: numfac.c read.c mapping.c triangular.c matrix.c kernel.c
- # were not direcly used by MUMPS and have been removed from the
-@@ -24,12 +24,15 @@
+@@ -24,12 +24,16 @@ OBJS = graph.o gbipart.o gbisect.o ddcre
  .c.o:
  	$(CC) $(COPTIONS) -c $*.c $(OUTC)$*.o
  
@@ -24,12 +23,55 @@
 +	$(AR) $@ $(OBJS)
  	$(RANLIB) $@
  
-+libpord$(PLAT).so:$(OBJS)
-+	$(CC) -shared $(OBJS) -Wl,-soname,$@ -o $@ -Wl,-z,defs
++libpord$(PLAT).so: $(OBJS)
++	$(CC) -shared $(OBJS) -Wl,-soname,libpord$(PLAT)-5.1.2.so -o libpord$(PLAT)-5.1.2.so -Wl,-z,defs
++	ln -s libpord$(PLAT)-5.1.2.so $@
 +
  clean:
  	rm -f *.o
  
  realclean:
 -	rm -f *.o libpord.a
-+	rm -f *.o libpord.a libpord.so
++	rm -f *.o libpord*.a *.so
+Index: mumps/Makefile
+===================================================================
+--- mumps.orig/Makefile
++++ mumps/Makefile
+@@ -54,7 +54,7 @@ dexamples:	d
+ multi_example:	s d c z
+ 	(cd examples ; $(MAKE) multi)
+ 
+-requiredobj: Makefile.inc $(LIBSEQNEEDED) $(libdir)/libpord$(PLAT)$(LIBEXT)
++requiredobj: Makefile.inc $(LIBSEQNEEDED) $(libdir)/libpord$(PLAT).a $(libdir)/libpord$(PLAT).so
+ 
+ # dummy MPI library (sequential version)
+ 
+@@ -62,19 +62,25 @@ libseqneeded:
+ 	(cd libseq; $(MAKE))
+ 
+ # Build the libpord.a library and copy it into $(topdir)/lib
+-$(libdir)/libpord$(PLAT)$(LIBEXT):
++$(libdir)/libpord$(PLAT).a:
+ 	if [ "$(LPORDDIR)" != "" ] ; then \
+ 	  cd $(LPORDDIR); \
+ 	  $(MAKE) CC="$(CC)" CFLAGS="$(OPTC)" AR="$(AR)" RANLIB="$(RANLIB)" OUTC="$(OUTC)" LIBEXT=$(LIBEXT); \
+ 	fi;
+ 	if [ "$(LPORDDIR)" != "" ] ; then \
+-	  cp $(LPORDDIR)/libpord$(LIBEXT) $@; \
++	  cp $(LPORDDIR)/libpord$(PLAT).a $@; \
+ 	fi;
+ 
++$(libdir)/libpord$(PLAT).so:
++	if [ "$(LPORDDIR)" != "" ] ; then \
++	cd $(LPORDDIR); make CC="$(CC)" CFLAGS="$(OPTC)" AR="$(AR)" ARFUNCT= RANLIB="$(RANLIB)" libpord$(PLAT).so; fi;
++	if [ "$(LPORDDIR)" != "" ] ; then \
++	cp -a $(LPORDDIR)/libpord*.so lib/; fi;
++
+ clean:
+ 	(cd src; $(MAKE) clean)
+ 	(cd examples; $(MAKE) clean)
+-	(cd $(libdir); $(RM) *$(PLAT)$(LIBEXT))
++	(cd $(libdir); $(RM) *$(PLAT).a *$(PLAT).so)
+ 	(cd libseq; $(MAKE) clean)
+ 	if [ "$(LPORDDIR)" != "" ] ; then \
+ 	  cd $(LPORDDIR); $(MAKE) realclean; \

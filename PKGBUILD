@@ -6,7 +6,7 @@
 pkgname=mumps-seq-shared
 _pkgname=mumps
 _PKGNAME=MUMPS
-pkgver=5.0.2
+pkgver=5.1.2
 pkgrel=1
 pkgdesc="Sparse solver library using Gaussian elimination (sequential version, shared library version)"
 url="http://mumps.enseeiht.fr"
@@ -19,24 +19,23 @@ source=("http://mumps.enseeiht.fr/${_PKGNAME}_${pkgver}.tar.gz"
         "Makefile.seq.inc"
         "shared-libseq.patch"
         "shared-pord.patch"
-        "shared-mumps.patch"
-        "shared-mumps-makefile.patch")
-sha256sums=('77292b204942640256097a3da482c2abcd1e0d5a74ecd1d4bab0f5ef6e60fe45'
-            '45e54b8280f3f59576a3cc692a299483abd20a3f35f041ec09eda11d42b5fc4d'
-            '64761306fb864ecc039bb3342e52c5147f40d05c9c9cb1caf946192a1875b398'
-            '8bc83f91d34b90a18c5104e01463c956902969b692a79d1f1a1a5410e43cf615'
-            '433f8ad140190dca546672f1b4bcfb632c441324da9177c1dbb8db797c5c5020'
-            '9a7efa79a97247d4bbbf9de7df1054359c16e17568afc4ca6663be7f9b933ee8')
+        "shared-mumps.patch")
+sha256sums=('eb345cda145da9aea01b851d17e54e7eef08e16bfa148100ac1f7f046cd42ae9'
+            '82c19aa304ddc4cf14df7b3ad025306a8cb6a2b990e59cddac01d60bf9b388b9'
+            '90741c5b9c6888a86a929cc29df87dd580872d4c930d084e4a308299ecfcda27'
+            '17bc8b1b901db1bd801e53676b821a7c4b7cc7a17f6f335fa1e89e2159480366'
+            'e8634b66dfeb78343b607eb7587dadab1273ea4dc7eaedd84f6f552e65613291')
 
 prepare(){
   cd "${srcdir}/${_PKGNAME}_${pkgver}"
 
+  # Makefile and patches are taking from Debian
+  # https://salsa.debian.org/science-team/mumps/tree/master/debian
   ln -sf "${srcdir}/Makefile.seq.inc" Makefile.inc
 
-  patch "${srcdir}/${_PKGNAME}_${pkgver}/libseq/Makefile" "../shared-libseq.patch"
-  patch "${srcdir}/${_PKGNAME}_${pkgver}/PORD/lib/Makefile" "../shared-pord.patch"
-  patch "${srcdir}/${_PKGNAME}_${pkgver}/src/Makefile" "../shared-mumps.patch"
-  patch "${srcdir}/${_PKGNAME}_${pkgver}/Makefile" "../shared-mumps-makefile.patch"
+  patch -p1 <../shared-pord.patch
+  patch -p1 <../shared-mumps.patch
+  patch -p1 <../shared-libseq.patch
 }
 
 build() {
@@ -54,14 +53,22 @@ package(){
   # Install all libraries
   cd "${srcdir}/${_PKGNAME}_${pkgver}/lib"
   install -m 755 -d "${pkgdir}/usr/lib"
-  install -D -m644 -- *.so "${pkgdir}/usr/lib"
+  for _file in *.so; do
+    cp -a "${_file}" "${pkgdir}/usr/lib/${_file}"
+    chmod 755 "${pkgdir}/usr/lib/${_file}"
+  done
 
   # Install mpiseq headers
   cd "${srcdir}/${_PKGNAME}_${pkgver}/libseq"
   install -m 755 -d "${pkgdir}/usr/include/mpiseq"
   install -D -m644 -- *.h "${pkgdir}/usr/include/mpiseq"
   # Install mpiseq libraries
-  install -m 755 libmpiseq.so "${pkgdir}/usr/lib"
+  ln -sf "libmpiseq-${pkgver}.so" libmpiseq.so
+  install -m 755 -d "${pkgdir}/usr/lib"
+  for _file in *.so; do
+    cp -a "${_file}" "${pkgdir}/usr/lib/${_file}"
+    chmod 755 "${pkgdir}/usr/lib/${_file}"
+  done
 
   # Install license
   install -D -m644 "${srcdir}/${_PKGNAME}_${pkgver}/LICENSE"\
