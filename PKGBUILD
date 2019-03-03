@@ -6,14 +6,15 @@
 # Contributer: Jarek Sedlacek <JarekSedlacek@gmail>
 
 pkgname=grive-git
-pkgver=485.cf51167
+pkgver=493.f039e38
 pkgrel=1
 pkgdesc='An open source Linux client for Google Drive with support for the new Drive REST API and partial sync'
 arch=('i686' 'x86_64')
 url='https://github.com/vitalif/grive2'
 license=('GPL2')
 depends=('yajl' 'curl' 'libgcrypt' 'boost-libs' 'gcc-libs' 'json-c' 'expat')
-optdepends=("cppunit: unit tests"
+optdepends=("inotify-tools: scheduled syncs and syncs on file change events"
+	"cppunit: unit tests"
 	"binutils: backtrace and libiberty")
 makedepends=('cmake' 'git' 'boost')
 provides=("grive=${pkgver}")
