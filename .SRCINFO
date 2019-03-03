@@ -1,14 +1,14 @@
 pkgbase = zoom-parallel
 	pkgdesc = Parallel command executor with a focus on simplicity and good cross-platform behaviour
-	pkgver = 0.1.1
-	pkgrel = 3
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://github.com/pwr22/zoom
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = https://github.com/pwr22/zoom/archive/v0.1.1.tar.gz
-	sha256sums = 8819f6414919f9c38273398ac02a691e6235ac757bb9c05a739f59971a699e34
+	source = https://github.com/pwr22/zoom/archive/v0.1.2.tar.gz
+	sha256sums = 667ba0fa6afab4b71c0fcc3a1047c8f3c047c39b9d769223df56e3d531e01f83
 
 pkgname = zoom-parallel
 
