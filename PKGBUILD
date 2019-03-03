@@ -6,7 +6,7 @@
 
 
 pkgname=shadowsocks-libev-git
-pkgver=3.2.4.r1
+pkgver=3.2.4.r5.g2ee1235
 pkgrel=1
 pkgdesc='A lightweight secured socks5 proxy for embedded devices and low end boxes'
 arch=(x86_64)
@@ -17,7 +17,7 @@ makedepends=(asciidoc xmlto git)
 provides=(shadowsocks-libev)
 conflicts=(shadowsocks-libev)
 install=${pkgname}.install
-source=("$pkgname-$pkgver::git+https://github.com/shadowsocks/shadowsocks-libev.git"
+source=("$pkgname::git+https://github.com/shadowsocks/shadowsocks-libev.git"
         'shadowsocks-libev@.service'
         'shadowsocks-libev-server@.service'
         'shadowsocks-libev-redir@.service'
@@ -28,14 +28,20 @@ sha512sums=('SKIP'
             'f2782245478951b35676370c53d6e6d03021bca4327950087f0906ea4ab6606432df9e3dc8036f482f44da186d70b01b575542722c797b3adc14658fda276ea4'
             '42043ac083e9425ce48ba02e6e7cbedd8f4c81c9e9f79b375937635362a461dd09ddba76c520eacbecdc1993e9b1bd203e55d3b331db9b22d98b5ba4196f8886')
 
+pkgver() {
+    cd "$pkgname"
+    # cutting off 'v' prefix that presents in the git tag
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
-    cd "$srcdir"/$pkgname-$pkgver
+    cd "$srcdir"/$pkgname
 
     sed -i 's|AC_CONFIG_FILES(\[libbloom/Makefile libcork/Makefile libipset/Makefile\])||' configure.ac
 }
 
 build() {
-    cd "$srcdir"/$pkgname-$pkgver
+    cd "$srcdir"/$pkgname
 
     ./autogen.sh
     ./configure --prefix=/usr --enable-shared --enable-system-shared-lib
@@ -43,7 +49,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir"/$pkgname-$pkgver
+    cd "$srcdir"/$pkgname
     make DESTDIR="$pkgdir/" install
     install -Dm644 "$srcdir/shadowsocks-libev@.service" "$pkgdir/usr/lib/systemd/system/shadowsocks-libev@.service"
     install -Dm644 "$srcdir/shadowsocks-libev-server@.service" "$pkgdir/usr/lib/systemd/system/shadowsocks-libev-server@.service"
