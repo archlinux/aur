@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-nose')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz" "https://github.com/johnwmillr/LyricsGenius/blob/master/LICENSE.txt")
 md5sums=('35fa7b5ca01d5c8e546837f38fa332a5'
-         '34cf44daf84b602b43197366b2c9b4cc')
+         'fab7a123dc179620410801c5c93c1621')
 
 build() {
   cd $_name-$pkgver
