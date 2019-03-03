@@ -5,13 +5,13 @@
 # Contributor: mazieres
 # Contributor: doze_worm <shuimao@gmail.com> the original port.
 
-pkgname="sendmail"
+pkgname=sendmail
 pkgver=8.15.2
-pkgrel=7
-pkgdesc="The sendmail MTA"
+pkgrel=8
+pkgdesc="A general purpose internetwork email routing MTA"
 url="http://www.sendmail.org"
 arch=('x86_64')
-license=('Sendmail License')
+license=('custom:sendmail')
 provides=('sendmail=8.15')
 conflicts=('msmtp-mta' 'postfix' 'exim' 'opensmtpd')
 backup=('etc/conf.d/sendmail'
@@ -41,7 +41,7 @@ sha256sums=('24f94b5fd76705f15897a78932a5f2439a32b1a2fdc35769bb1a5f5d9b4db439'
             '9b4d2d141191f6c9a18538f7acf65243cceb26359f88b64c92c1c4e8407398f0'
             '95531a87d42e30742ca71f7d7197403eb9d703a407a50c9fda1f909ed21e1010'
             '3469c3c503ef24ccaedeb69b35787ef3745852cf9dc78540f5ec4195d2b817d7'
-            '380edeb289dfdfc5b0d4ea38df3a0fd35e6f83eeee76254ec7b3506eadfb674f'
+            'c53eebc1b5e362bd395cbb1c52354efdc956b9607d06656da2c5a2500554ebc7'
             'ecbd0a27e868d73d87fcfec292c19ea9479d0a8e9783788596d9add5e012218f')
 
 prepare() {
