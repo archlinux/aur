@@ -1,6 +1,6 @@
 pkgname=ipmiview
-pkgver=2.14.0
-_pkghash=180213
+pkgver=2.15.0
+_pkghash=190109
 pkgrel=2
 pkgdesc="Supermicro IPMI tool"
 makedepends=('tar')
@@ -12,7 +12,7 @@ source=("ipmiview.desktop")
 source_x86_64=("https://www.supermicro.com/wftp/utility/IPMIView/Linux/IPMIView_${pkgver}_build.${_pkghash}_bundleJRE_Linux_x64.tar.gz")
 
 sha256sums=('41d5fa089912ee10d476a0f6aa3c12765861c1a71cf4f811efaf2e47c4ce9351')
-sha256sums_x86_64=('90f08a8ccb38b4ccc048010dd93f73cc3360cc259331d08b589a567d2a17e2f2')
+sha256sums_x86_64=('3314341589b22cf00792bc66ed309605d43eff708a1d09de7a4517d3852e5545')
 
 package() {
     cd ${srcdir}/IPMIView_${pkgver}_build.${_pkghash}_bundleJRE_Linux_x64
