@@ -22,11 +22,9 @@ ${url}/releases/download/${pkgver}/intel-igc-opencl_${_depver}_amd64.deb
 ${url}/releases/download/${pkgver}/intel-opencl_${pkgver}_amd64.deb
 )
 
-sha256sums=(
-'SKIP'
-'SKIP'
-'e479c9058b828472e36078647c258a70bb6db779c6b34c90b8f5b621d4d484b0'
-)
+sha256sums=('9cd2359c903a7bcb35c9c86ccfe113828f07757afd2d9bf7fda36d8d68a17b7b'
+            'f05e162a3c2a6785a578fd24e87f3c31e0365caad2c72a620239cf1341833ca3'
+            'e479c9058b828472e36078647c258a70bb6db779c6b34c90b8f5b621d4d484b0')
 
 noextract=(
 ${url}/releases/download/${pkgver}/intel-igc-core_${_depver}_amd64.deb

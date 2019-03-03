@@ -23,8 +23,8 @@ pkgbase = compute-runtime-bin
 	source = https://github.com/intel/compute-runtime/releases/download/19.07.12410/intel-igc-core_18.50.1270_amd64.deb
 	source = https://github.com/intel/compute-runtime/releases/download/19.07.12410/intel-igc-opencl_18.50.1270_amd64.deb
 	source = https://github.com/intel/compute-runtime/releases/download/19.07.12410/intel-opencl_19.07.12410_amd64.deb
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 9cd2359c903a7bcb35c9c86ccfe113828f07757afd2d9bf7fda36d8d68a17b7b
+	sha256sums = f05e162a3c2a6785a578fd24e87f3c31e0365caad2c72a620239cf1341833ca3
 	sha256sums = e479c9058b828472e36078647c258a70bb6db779c6b34c90b8f5b621d4d484b0
 
 pkgname = compute-runtime-bin
