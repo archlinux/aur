@@ -6,6 +6,7 @@ pkgbase = spicetify-cli
 	arch = x86_64
 	arch = i686
 	license = GPL
+	makedepends = git
 	makedepends = go-pie
 	source = https://github.com/khanhas/spicetify-cli/archive/v0.5.0.tar.gz
 	sha256sums = e0540ae6390259aad86e8d00fd843f6a8fc22215e33e70ffcf1693e7d8366afd
