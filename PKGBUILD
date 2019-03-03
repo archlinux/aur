@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd ${_pkgname}
-  dub build --compiler=ldc --target=release
+  dub build --compiler=ldc --build=release
 }
 
 package() {
