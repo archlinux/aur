@@ -18,6 +18,7 @@ depends=('python'
         )
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-ordering' 'python-pytest-mock'
 	      'python-pytest-localserver' 'python-pluggy' 'python-py')
+optdepends=('go-ipfs: IPFS daemon') # an IPFS deamon is a checkdepend, but not required to be go-ipfs
 source=("git+https://github.com/ipfs/py-ipfs-api#branch=py-ipfs-http-client")
 sha256sums=('SKIP')
 
