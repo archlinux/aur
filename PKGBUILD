@@ -40,9 +40,9 @@ depends=(
 	python
 )
 
-_dir="rospack-release-release-melodic-rospack-${pkgver}-${_pkgver_patch}"
+_dir="rospack-release-release-melodic-rospack"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rospack-release/archive/release/melodic/rospack/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('7af1254d1dc1527fd6cfb7c704d55f2037b5cc349b004211328b0360754818cc')
+sha256sums=('d2fc73a722b256d9f6d4d9d2420b643feb88ff860e1c38ba03d7578969dbe442')
 
 build() {
 	# Use ROS environment variables.
