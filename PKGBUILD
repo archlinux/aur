@@ -1,38 +1,33 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=f3-git
-pkgver=6.0.r22.geabf001
+_pkgname=f3
+pkgver=7.1.r13.gfead723
 pkgrel=1
-pkgdesc="Utilities to detect and repair counterfeit flash storage, i.e. thumb drives and memory cards with less flash than advertised"
-arch=('i686' 'x86_64')
+pkgdesc="F3 - Fight Flash Fraud"
+arch=('x86_64')
 url="http://oss.digirati.com.br/f3/"
 license=('GPL3')
-makedepends=('git' 'parted' 'systemd')
-provides=('f3')
-conflicts=('f3')
-source=('git+https://github.com/AltraMayor/f3.git'
-        'argp.patch')
-md5sums=('SKIP'
-         '7ae53eace93bf711faa9abb70b10c6ae')
+depends=('systemd-libs' 'parted')
+makedepends=('git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=('git+https://github.com/AltraMayor/f3.git')
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/f3"
+  cd "$_pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$srcdir/f3"
-  patch < ../argp.patch
-}
-
 build() {
-  cd "$srcdir/f3"
+  cd "$_pkgname"
   make
   make extra
 }
 
 package() {
-  cd "$srcdir/f3"
+  cd "$_pkgname"
   make PREFIX="$pkgdir/usr" install
   make PREFIX="$pkgdir/usr" install-extra
 }
