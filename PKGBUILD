@@ -3,7 +3,7 @@
 
 pkgdesc='Lightweight program for storing and accessing location data published via MQTT (or HTTP) by the OwnTracks apps.'
 pkgname=('owntracks-recorder')
-pkgver=0.7.6
+pkgver=0.8.4
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -11,7 +11,7 @@ url="https://github.com/owntracks/recorder"
 makedepends=('libconfig' 'mosquitto' 'curl')
 depends=('libconfig' 'mosquitto' 'curl')
 source=("https://github.com/owntracks/recorder/archive/${pkgver}.tar.gz" "truncation_error.patch")
-sha256sums=('94caae03ebaa3bd09ce7c48c0d4a0449d6801ad1e4cd484f519e967b07c0c388'
+sha256sums=('cdf4ced2563bdd26717b65aef18990d2d5c25ada231bf1293aab65f279fc8bff'
   'e5bdc4a566c6bf86f2a40cfdcc6f0688ca71edd79fd191d17c4ac0c50970e142')
 
 backup=(etc/default/ot-recorder)
