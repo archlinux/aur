@@ -1,6 +1,6 @@
 # Maintainer: Hendrik 'T4cC0re' Meyer <aur@t4cc0.re>
 pkgname=cryptsetup-vault
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A cli tool and initcpio hook to unlock a cryptdevice via HashiCorp Vault unattended"
 arch=('any')
@@ -20,7 +20,7 @@ build(){
   echo "Verifying go modules..."
   go mod verify
   echo "Compiling..."
-  go build -gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow -ldflags=-extldflags=-static -ldflags='-w -s' -o $pkgname .
+  go build -gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow -ldflags=-extldflags=-static -ldflags='-w -s' -ldflags="-X main.version=v${pkgver}" -o $pkgname .
   if hash upx &>/dev/null ; then
     echo "UPX found. Making extra small..."
     upx --lzma --best --all-filters --exact $pkgname
@@ -35,4 +35,4 @@ package() {
   install -Dm644 "initcpio/hooks/cryptsetupvault"      "$pkgdir/usr/lib/initcpio/hooks/cryptsetupvault"
   install -Dm644 "initcpio/install/cryptsetupvault"    "$pkgdir/usr/lib/initcpio/install/cryptsetupvault"
 }
-sha512sums=(0674534e18b6116210f19257a47af7de5c8a5f650880403771bfce56bdb0a7157e450b98aaff7ac4eca9ae040339971966eae4f123bf1d6fb8ec9cf1174e9dc7)
+sha512sums=(eabd407a6e11a7770b51208fca98c41e0b9ffb28524af6c8afbd3a32fa6e02116fb35b5cf3478eac72dcd0921de6ee9ccfa2bdde0ef5b8da547543fb895cc060)
