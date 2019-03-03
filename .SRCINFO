@@ -1,0 +1,23 @@
+pkgbase = tinyssh-git
+	pkgdesc = Minimalistic SSH server
+	pkgver = 20190101.r6.g8fc6eff
+	pkgrel = 1
+	url = https://tinyssh.org/
+	arch = i686
+	arch = x86_64
+	license = custom:Public Domain
+	makedepends = git
+	depends = glibc
+	provides = tinyssh
+	conflicts = tinyssh
+	source = git+https://github.com/janmojzis/tinyssh.git
+	source = tinyssh@.service::https://git.archlinux.org/svntogit/community.git/plain/trunk/tinyssh@.service?h=packages/tinyssh
+	source = tinyssh@.socket::https://git.archlinux.org/svntogit/community.git/plain/trunk/tinyssh@.socket?h=packages/tinyssh
+	source = tinysshgenkeys.service::https://git.archlinux.org/svntogit/community.git/plain/trunk/tinysshgenkeys.service?h=packages/tinyssh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = tinyssh-git
+
