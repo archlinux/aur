@@ -12,7 +12,6 @@ pkgbase = python-lyricsgenius
 	source = https://github.com/johnwmillr/LyricsGenius/blob/master/LICENSE.txt
 	md5sums = 35fa7b5ca01d5c8e546837f38fa332a5
 	md5sums = fab7a123dc179620410801c5c93c1621
-
 pkgname = python-lyricsgenius
 	depends = python-beautifulsoup4
 	depends = python-requests

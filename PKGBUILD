@@ -11,9 +11,9 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz" "https://github.com/johnwmillr/LyricsGenius/blob/master/LICENSE.txt")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz" "https://raw.githubusercontent.com/johnwmillr/LyricsGenius/master/LICENSE.txt")
 md5sums=('35fa7b5ca01d5c8e546837f38fa332a5'
-         'fab7a123dc179620410801c5c93c1621')
+         '59df04cf30d3972c3e93b2e7436f4542')
 
 build() {
   cd $_name-$pkgver
