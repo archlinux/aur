@@ -2,7 +2,7 @@ pkgbase = weborf-git
 	pkgdesc = Minimal HTTP server to share your files
 	pkgver = 0.15
 	pkgrel = 4
-	url = https://ltworf.github.io/weborf/
+	url = https://ltworf.github.io/weborf
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -13,6 +13,7 @@ pkgbase = weborf-git
 	makedepends = git
 	makedepends = sudo
 	makedepends = findutils
+	optdepends = qweborf-git: graphical user interface
 	conflicts = weborf
 	source = git+https://github.com/ltworf/weborf.git#branch=master
 	md5sums = SKIP
