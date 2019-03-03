@@ -1,13 +1,14 @@
 pkgbase = python-odfpy
 	pkgdesc = Python API and tools to manipulate OpenDocument files
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eea/odfpy
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = python-setuptools
 	depends = python
+	depends = python-defusedxm
 	conflicts = odfpy
 	conflicts = python-odfpy
 	conflicts = python2-odfpy
