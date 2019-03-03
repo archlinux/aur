@@ -1,6 +1,5 @@
-*~
-*.sw[po]
-
-# exclude sources tarballs
-qlcplus-*.src.tar.gz
-qlcplus_*.tar.gz
+*
+!PKGBUILD
+!qlcplus.install
+!.SRCINFO
+!.gitignore
