@@ -35,7 +35,7 @@ case $1 in
     ;;
   stop)
     stat_busy "Stopping Syslog-NG"
-    if [[ $PID ]] && kill $PID &>/dev/null; then
+    if [[ $PID ]] && syslog-ng-ctl stop &>/dev/null; then
       rm_daemon syslog-ng
       stat_done
     else
@@ -49,7 +49,7 @@ case $1 in
       stat_fail
     else
       checkconfig
-      if kill -HUP $PID &>/dev/null; then
+      if syslog-ng-ctl reload &>/dev/null; then
         stat_done
       else
         stat_fail
