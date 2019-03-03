@@ -1,8 +1,8 @@
 # Maintainer: bohoomil <@zoho.com>
-
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=ttf-fira-mono-ibx
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 epoch=1
 depends=(fontconfig)
 pkgdesc="A monospace typeface designed for the Firefox OS."
@@ -13,12 +13,12 @@ groups=(infinality-bundle-fonts-extra)
 conflicts=(ttf-fira-mono otf-fira-mono otf-fira-mono-ibx)
 provides=(ttf-fira-mono)
 replaces=(ttf-fira-mono)
-source=(https://carrois.com/downloads/Fira/Fira_Mono_3_2.zip
+source=(https://bboxtype.com/downloads/Fira/Fira_Mono_3_2.zip
         45-fira-mono.conf
         90-tt-fira-mono.conf)
-sha1sums=('2f73b50ef1a36b2415b4d94f137d3b12bd2f92b5'
-          'd8a085a8e70c28f405dc3ed0d60a5d44d045c86c'
-          'b2970ffff80f13bb73ae05e1d9e858aa016aa6ad')
+sha256sums=('77b83feda1f1c5b8e8da07498aff6fa0f9d2d16bbfa2095dd7e7696c887c6128'
+            '585bb85804a019b23a29770979c23a07026539129855b9ada5f8e2a9398b17d8'
+            '4c73a779d5101baf25a5ea3a1327248a7ccbffaf873503563ebbd7f5bf9ae3fb')
 
 package() {
 
