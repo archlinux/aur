@@ -13,7 +13,7 @@ pkgbase = ros-melodic-rosout
 	depends = ros-melodic-rosgraph-msgs
 	depends = ros-melodic-roscpp
 	source = ros-melodic-rosout-1.14.3-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosout/1.14.3-0.tar.gz
-	sha256sums = 3699399910840cdbd100ffa9f27e0ef478f516c1d3409c7f62d6af8e3ca59cc6
+	sha256sums = 39586fc55f37cdd80ad2e3e6c48a0a8c00db3a128c424f14861dfc81cf5c2355
 
 pkgname = ros-melodic-rosout
 

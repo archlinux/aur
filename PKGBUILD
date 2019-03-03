@@ -31,9 +31,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="ros_comm-release-release-melodic-rosout-${pkgver}-${_pkgver_patch}"
+_dir="ros_comm-release-release-melodic-rosout"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosout/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3699399910840cdbd100ffa9f27e0ef478f516c1d3409c7f62d6af8e3ca59cc6')
+sha256sums=('39586fc55f37cdd80ad2e3e6c48a0a8c00db3a128c424f14861dfc81cf5c2355')
 
 build() {
 	# Use ROS environment variables.
