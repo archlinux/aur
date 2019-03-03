@@ -4,7 +4,7 @@
 # maintainer: fordprefect <fordprefect@dukun.de>
 
 pkgname=postsrsd
-pkgver=1.5
+pkgver=1.6
 pkgrel=3
 pkgdesc="Provides the Sender Rewriting Scheme (SRS) via TCP-based lookup tables for Postfix"
 arch=('i686' 'x86_64' 'armv7h')
@@ -16,7 +16,7 @@ install=postsrsd.install
 license=(GPL2)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/roehling/postsrsd/archive/${pkgver}.tar.gz"
         "postsrsd.conf")
-md5sums=('e33826a7d1055080854ff7db71641fb8'
+md5sums=('cf6709cff63d1f3d7f1d06aede82bdb3'
          '81a5eea5b84f3a2de9ad4713512175f0')
 
 build() {
