@@ -7,8 +7,8 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt       # Build kernel with a different name
-_pkgver=4.19.23
-_rtpatchver=rt14
+_pkgver=4.19.25
+_rtpatchver=rt16
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=(x86_64)
@@ -23,7 +23,6 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/older/patch-${_pkgver}-${_rtpatchver}.patch.xz"
   "https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/older/patch-${_pkgver}-${_rtpatchver}.patch.sign"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch
   config         # the main kernel config file
   60-${pkgbase}.hook  # pacman hook for depmod
   90-${pkgbase}.hook  # pacman hook for initramfs regeneration
@@ -37,12 +36,11 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('2d9b25678aac7f3f109c52e6266fb6ee89cc424b597518a2875874bacb8f130a'
+sha256sums=('7ec71d90d6e96e6f741676d157ac06f30c75be4eaf1649143a3c8b7d4f919731'
             'SKIP'
-            '83fba2dcb0d77b9ecf262bb09ba924d5aa103db46690b9eaca552080a7893620'
+            '904079d66aea9a44ab4b6229d4a5430ef1c1beb2106954ba1a98656223f78036'
             'SKIP'
             '75aa8dd708ca5a0137fbf7cddc9cafefe6aac6b8e0638c06c156d412d05af4bc'
-            '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06'
             '464d6682d4b30e153d66c17c43894d3bd083366ae2d0b72538f63992947485ce'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
