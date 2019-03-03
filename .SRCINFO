@@ -1,6 +1,6 @@
-pkgbase = blender-git
+pkgbase = blender-oidn-git
 	pkgdesc = A fully integrated 3D graphics creation suite (development)
-	pkgver = 84454.690478027bd
+	pkgver = 85418.65a3fe46b50
 	pkgrel = 1
 	url = http://blender.org/
 	install = blender.install
@@ -26,21 +26,25 @@ pkgbase = blender-git
 	depends = libtiff
 	depends = libpng
 	depends = python-numpy
+	depends = oidn
 	optdepends = cuda: CUDA support in Cycles
 	provides = blender
 	conflicts = blender
+	conflicts = blender-git
 	source = git://git.blender.org/blender.git
 	source = blender-addons.git::git://git.blender.org/blender-addons.git
 	source = blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git
 	source = blender-translations.git::git://git.blender.org/blender-translations.git
 	source = blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git
 	source = blender.desktop
+	source = D4304.diff
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 47e5bbe93fc221066882947211ff7812
+	md5sums = 77f1e909583a438205044d6b13114085
 
-pkgname = blender-git
+pkgname = blender-oidn-git
 

@@ -1,0 +1,846 @@
+Index: CMakeLists.txt
+===================================================================
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -242,6 +242,7 @@
+ 
+ # Compositor
+ option(WITH_COMPOSITOR         "Enable the tile based nodal compositor" ON)
++option(WITH_OPENIMAGEDENOISE   "Enable the OpenImageDenoise compositing node" ON)
+ 
+ option(WITH_OPENSUBDIV    "Enable OpenSubdiv for surface subdivision" ${_init_OPENSUBDIV})
+ 
+Index: build_files/build_environment/CMakeLists.txt
+===================================================================
+--- build_files/build_environment/CMakeLists.txt
++++ build_files/build_environment/CMakeLists.txt
+@@ -92,6 +92,7 @@
+ include(cmake/python_site_packages.cmake)
+ include(cmake/numpy.cmake)
+ include(cmake/pugixml.cmake)
++include(cmake/openimagedenoise.cmake)
+ 
+ if(WITH_WEBP)
+ 	include(cmake/webp.cmake)
+Index: build_files/build_environment/cmake/harvest.cmake
+===================================================================
+--- build_files/build_environment/cmake/harvest.cmake
++++ build_files/build_environment/cmake/harvest.cmake
+@@ -160,6 +160,8 @@
+ harvest(openimageio/bin openimageio/bin "oiiotool")
+ harvest(openimageio/include openimageio/include "*")
+ harvest(openimageio/lib openimageio/lib "*.a")
++harvest(openimagedenoise/include openimagedenoise/include "*")
++harvest(openimagedenoise/lib openimagedenoise/lib "*")
+ harvest(openjpeg/include/openjpeg-2.3 openjpeg/include "*.h")
+ harvest(openjpeg/lib openjpeg/lib "*.a")
+ harvest(opensubdiv/include opensubdiv/include "*.h")
+Index: build_files/build_environment/cmake/openimagedenoise.cmake
+===================================================================
+--- /dev/null
++++ build_files/build_environment/cmake/openimagedenoise.cmake
+@@ -0,0 +1,35 @@
++# ***** BEGIN GPL LICENSE BLOCK *****
++#
++# This program is free software; you can redistribute it and/or
++# modify it under the terms of the GNU General Public License
++# as published by the Free Software Foundation; either version 2
++# of the License, or (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program; if not, write to the Free Software Foundation,
++# Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
++#
++# ***** END GPL LICENSE BLOCK *****
++
++
++set(OIDN_EXTRA_ARGS
++	-DWITH_EXAMPLE=OFF
++	-DWITH_TEST=OFF
++	-DTBB_ROOT=${LIBDIR}/tbb
++	-DTBB_STATIC_LIB=ON
++)
++
++ExternalProject_Add(external_openimagedenoise
++	URL ${OIDN_URI}
++	DOWNLOAD_DIR ${DOWNLOAD_DIR}
++	URL_HASH MD5=${OIDN_HASH}
++	PREFIX ${BUILD_DIR}/openimagedenoise
++	CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${LIBDIR}/openimagedenoise ${DEFAULT_CMAKE_FLAGS} ${OIDN_EXTRA_ARGS}
++	PATCH_COMMAND ${PATCH_CMD} --verbose -p 1 -N -d ${BUILD_DIR}/openimagedenoise/src/external_openimagedenoise < ${PATCH_DIR}/openimagedenoise.diff
++	INSTALL_DIR ${LIBDIR}/openimagedenoise
++)
+Index: build_files/build_environment/cmake/tbb.cmake
+===================================================================
+--- build_files/build_environment/cmake/tbb.cmake
++++ build_files/build_environment/cmake/tbb.cmake
+@@ -18,7 +18,7 @@
+ 
+ set(TBB_EXTRA_ARGS
+ 	-DTBB_BUILD_SHARED=Off
+-	-DTBB_BUILD_TBBMALLOC=Off
++	-DTBB_BUILD_TBBMALLOC=On
+ 	-DTBB_BUILD_TBBMALLOC_PROXY=Off
+ 	-DTBB_BUILD_STATIC=On
+ )
+Index: build_files/build_environment/cmake/versions.cmake
+===================================================================
+--- build_files/build_environment/cmake/versions.cmake
++++ build_files/build_environment/cmake/versions.cmake
+@@ -302,3 +302,7 @@
+ set(EMBREE_VERSION 3.2.4)
+ set(EMBREE_URI https://github.com/embree/embree/archive/v${EMBREE_VERSION}.zip)
+ set(EMBREE_HASH 3d4a1147002ff43939d45140aa9d6fb8)
++
++set(OIDN_VERSION 0.8.1)
++set(OIDN_URI https://github.com/OpenImageDenoise/oidn/releases/download/v${OIDN_VERSION}/oidn-${OIDN_VERSION}.src.zip)
++set(OIDN_HASH 24574bb396d6cc4c0420f691393b502a)
+Index: build_files/build_environment/patches/openimagedenoise.diff
+===================================================================
+--- /dev/null
++++ build_files/build_environment/patches/openimagedenoise.diff
+@@ -0,0 +1,37 @@
++diff --git a/CMakeLists.txt b/CMakeLists.txt
++index 394e7c1..873bf8d 100644
++--- a/CMakeLists.txt
+++++ b//CMakeLists.txt
++@@ -160,7 +160,9 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY SOVERSION "0")
++ ## Open Image Denoise examples
++ ## ----------------------------------------------------------------------------
++ 
++-add_subdirectory(examples)
+++if(WITH_EXAMPLE)
+++  add_subdirectory(examples)
+++endif()
++ 
++ ## ----------------------------------------------------------------------------
++ ## Open Image Denoise install and packaging
++diff --git a/mkl-dnn/cmake/TBB.cmake b/mkl-dnn/cmake/TBB.cmake
++index 0711e69..da1e820 100644
++--- a/mkl-dnn/cmake/TBB.cmake
+++++ b/mkl-dnn/cmake/TBB.cmake
++@@ -138,13 +138,13 @@ else()
++         set(TBB_LIBRARY_MALLOC TBB_LIBRARY_MALLOC-NOTFOUND)
++         if(APPLE)
++             find_path(TBB_INCLUDE_DIR tbb/task_scheduler_init.h PATHS ${TBB_ROOT}/include NO_DEFAULT_PATH)
++-            find_library(TBB_LIBRARY tbb PATHS ${TBB_ROOT}/lib NO_DEFAULT_PATH)
++-            find_library(TBB_LIBRARY_MALLOC tbbmalloc PATHS ${TBB_ROOT}/lib NO_DEFAULT_PATH)
+++            find_library(TBB_LIBRARY tbb_static PATHS ${TBB_ROOT}/lib NO_DEFAULT_PATH)
+++            find_library(TBB_LIBRARY_MALLOC tbbmalloc_static PATHS ${TBB_ROOT}/lib NO_DEFAULT_PATH)
++         else()
++             find_path(TBB_INCLUDE_DIR tbb/task_scheduler_init.h PATHS ${TBB_ROOT}/include NO_DEFAULT_PATH)
++             set(TBB_HINTS HINTS ${TBB_ROOT}/lib/intel64/gcc4.4 ${TBB_ROOT}/lib ${TBB_ROOT}/lib64 PATHS /usr/libx86_64-linux-gnu/)
++-            find_library(TBB_LIBRARY tbb ${TBB_HINTS})
++-            find_library(TBB_LIBRARY_MALLOC tbbmalloc ${TBB_HINTS})
+++            find_library(TBB_LIBRARY tbb_static ${TBB_HINTS})
+++            find_library(TBB_LIBRARY_MALLOC tbbmalloc_static ${TBB_HINTS})
++         endif()
++     endif()
++ 
+Index: build_files/cmake/Modules/FindOpenImageDenoise.cmake
+===================================================================
+--- /dev/null
++++ build_files/cmake/Modules/FindOpenImageDenoise.cmake
+@@ -0,0 +1,72 @@
++# - Find OpenImageDenoise library
++# Find the native OpenImageDenoise includes and library
++# This module defines
++#  OPENIMAGEDENOISE_INCLUDE_DIRS, where to find oidn.h, Set when
++#                    OPENIMAGEDENOISE is found.
++#  OPENIMAGEDENOISE_LIBRARIES, libraries to link against to use OpenImageDenoise.
++#  OPENIMAGEDENOISE_ROOT_DIR, The base directory to search for OpenImageDenoise.
++#                This can also be an environment variable.
++#  OPENIMAGEDENOISE_FOUND, If false, do not try to use OpenImageDenoise.
++#
++# also defined, but not for general use are
++#  OPENIMAGEDENOISE_LIBRARY, where to find the OpenImageDenoise library.
++
++#=============================================================================
++# Copyright 2019 Blender Foundation.
++#
++# Distributed under the OSI-approved BSD License (the "License");
++# see accompanying file Copyright.txt for details.
++#
++# This software is distributed WITHOUT ANY WARRANTY; without even the
++# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
++# See the License for more information.
++#=============================================================================
++
++# If OPENIMAGEDENOISE_ROOT_DIR was defined in the environment, use it.
++IF(NOT OPENIMAGEDENOISE_ROOT_DIR AND NOT $ENV{OPENIMAGEDENOISE_ROOT_DIR} STREQUAL "")
++  SET(OPENIMAGEDENOISE_ROOT_DIR $ENV{OPENIMAGEDENOISE_ROOT_DIR})
++ENDIF()
++
++SET(_openimagedenoise_SEARCH_DIRS
++  ${OPENIMAGEDENOISE_ROOT_DIR}
++  /usr/local
++  /sw # Fink
++  /opt/local # DarwinPorts
++  /opt/lib/openimagedenoise
++)
++
++FIND_PATH(OPENIMAGEDENOISE_INCLUDE_DIR
++  NAMES
++    OpenImageDenoise/oidn.h
++  HINTS
++    ${_openimagedenoise_SEARCH_DIRS}
++  PATH_SUFFIXES
++    include
++)
++
++FIND_LIBRARY(OPENIMAGEDENOISE_LIBRARY
++  NAMES
++    OpenImageDenoise
++  HINTS
++    ${_openimagedenoise_SEARCH_DIRS}
++  PATH_SUFFIXES
++    lib64 lib
++  )
++
++# handle the QUIETLY and REQUIRED arguments and set OPENIMAGEDENOISE_FOUND to TRUE if
++# all listed variables are TRUE
++INCLUDE(FindPackageHandleStandardArgs)
++FIND_PACKAGE_HANDLE_STANDARD_ARGS(OPENIMAGEDENOISE DEFAULT_MSG
++    OPENIMAGEDENOISE_LIBRARY OPENIMAGEDENOISE_INCLUDE_DIR)
++
++IF(OPENIMAGEDENOISE_FOUND)
++  SET(OPENIMAGEDENOISE_LIBRARIES ${OPENIMAGEDENOISE_LIBRARY})
++  SET(OPENIMAGEDENOISE_INCLUDE_DIRS ${OPENIMAGEDENOISE_INCLUDE_DIR})
++ELSE()
++  SET(OPENIMAGEDENOISE_FOUND FALSE)
++ENDIF()
++
++MARK_AS_ADVANCED(
++  OPENIMAGEDENOISE_INCLUDE_DIR
++  OPENIMAGEDENOISE_LIBRARY
++)
+Index: build_files/cmake/macros.cmake
+===================================================================
+--- build_files/cmake/macros.cmake
++++ build_files/cmake/macros.cmake
+@@ -313,6 +313,9 @@
+ 		if(WITH_OPENIMAGEIO)
+ 			link_directories(${OPENIMAGEIO_LIBPATH})
+ 		endif()
++		if(WITH_OPENIMAGEDENOISE)
++			link_directories(${OPENIMAGEDENOISE_LIBPATH})
++		endif()
+ 		if(WITH_OPENCOLORIO)
+ 			link_directories(${OPENCOLORIO_LIBPATH})
+ 		endif()
+@@ -428,6 +431,9 @@
+ 	if(WITH_OPENIMAGEIO)
+ 		target_link_libraries(${target} ${OPENIMAGEIO_LIBRARIES})
+ 	endif()
++	if(WITH_OPENIMAGEDENOISE)
++		target_link_libraries(${target} ${OPENIMAGEDENOISE_LIBRARIES})
++	endif()
+ 	if(WITH_OPENCOLORIO)
+ 		target_link_libraries(${target} ${OPENCOLORIO_LIBRARIES})
+ 	endif()
+Index: build_files/cmake/platform/platform_apple.cmake
+===================================================================
+--- build_files/cmake/platform/platform_apple.cmake
++++ build_files/cmake/platform/platform_apple.cmake
+@@ -385,6 +385,10 @@
+ 	set(PLATFORM_LINKFLAGS "${PLATFORM_LINKFLAGS} -Xlinker -stack_size -Xlinker 0x100000")
+ endif()
+ 
++if(WITH_OPENIMAGEDENOISE)
++	find_package(OpenImageDenoise REQUIRED)
++endif()
++
+ if(WITH_OPENMP)
+ 	execute_process(COMMAND ${CMAKE_C_COMPILER} --version OUTPUT_VARIABLE COMPILER_VENDOR)
+ 	string(SUBSTRING "${COMPILER_VENDOR}" 0 5 VENDOR_NAME) # truncate output
+Index: build_files/cmake/platform/platform_unix.cmake
+===================================================================
+--- build_files/cmake/platform/platform_unix.cmake
++++ build_files/cmake/platform/platform_unix.cmake
+@@ -367,6 +367,10 @@
+ 	find_package(Embree 3.2.4 REQUIRED)
+ endif()
+ 
++if(WITH_OPENIMAGEDENOISE)
++	find_package(OpenImageDenoise REQUIRED)
++endif()
++
+ if(WITH_LLVM)
+ 	if(EXISTS ${LIBDIR})
+ 		set(LLVM_STATIC ON)
+Index: release/scripts/startup/nodeitems_builtins.py
+===================================================================
+--- release/scripts/startup/nodeitems_builtins.py
++++ release/scripts/startup/nodeitems_builtins.py
+@@ -345,6 +345,7 @@
+         NodeItem("CompositorNodeDBlur"),
+         NodeItem("CompositorNodePixelate"),
+         NodeItem("CompositorNodeSunBeams"),
++        NodeItem("CompositorNodeDenoise"),
+     ]),
+     CompositorNodeCategory("CMP_OP_VECTOR", "Vector", items=[
+         NodeItem("CompositorNodeNormal"),
+Index: source/blender/blenkernel/BKE_node.h
+===================================================================
+--- source/blender/blenkernel/BKE_node.h
++++ source/blender/blenkernel/BKE_node.h
+@@ -958,6 +958,7 @@
+ #define CMP_NODE_CORNERPIN          321
+ #define CMP_NODE_SWITCH_VIEW    322
+ #define CMP_NODE_CRYPTOMATTE	323
++#define CMP_NODE_DENOISE		324
+ 
+ /* channel toggles */
+ #define CMP_CHAN_RGB		1
+Index: source/blender/blenkernel/intern/node.c
+===================================================================
+--- source/blender/blenkernel/intern/node.c
++++ source/blender/blenkernel/intern/node.c
+@@ -3435,6 +3435,7 @@
+ 	register_node_type_cmp_despeckle();
+ 	register_node_type_cmp_defocus();
+ 	register_node_type_cmp_sunbeams();
++	register_node_type_cmp_denoise();
+ 
+ 	register_node_type_cmp_valtorgb();
+ 	register_node_type_cmp_rgbtobw();
+Index: source/blender/compositor/CMakeLists.txt
+===================================================================
+--- source/blender/compositor/CMakeLists.txt
++++ source/blender/compositor/CMakeLists.txt
+@@ -284,6 +284,8 @@
+ 
+ 	nodes/COM_FilterNode.cpp
+ 	nodes/COM_FilterNode.h
++	nodes/COM_DenoiseNode.h
++	nodes/COM_DenoiseNode.cpp
+ 	nodes/COM_DespeckleNode.cpp
+ 	nodes/COM_DespeckleNode.h
+ 	nodes/COM_DilateErodeNode.cpp
+@@ -495,6 +497,8 @@
+ 	operations/COM_ConvolutionFilterOperation.cpp
+ 	operations/COM_ConvolutionEdgeFilterOperation.h
+ 	operations/COM_ConvolutionEdgeFilterOperation.cpp
++	operations/COM_DenoiseOperation.h
++	operations/COM_DenoiseOperation.cpp
+ 	operations/COM_DespeckleOperation.cpp
+ 	operations/COM_DespeckleOperation.h
+ 	operations/COM_DilateErodeOperation.cpp
+@@ -557,4 +561,11 @@
+ 	add_definitions(-DWITH_INTERNATIONAL)
+ endif()
+ 
++if(WITH_OPENIMAGEDENOISE)
++	add_definitions(-DWITH_OPENIMAGEDENOISE)
++	list(APPEND INC_SYS
++		${OPENIMAGEDENOISE_INCLUDE_DIRS}
++	)
++endif()
++
+ blender_add_lib(bf_compositor "${SRC}" "${INC}" "${INC_SYS}")
+Index: source/blender/compositor/intern/COM_Converter.cpp
+===================================================================
+--- source/blender/compositor/intern/COM_Converter.cpp
++++ source/blender/compositor/intern/COM_Converter.cpp
+@@ -57,6 +57,7 @@
+ #include "COM_CropNode.h"
+ #include "COM_CryptomatteNode.h"
+ #include "COM_DefocusNode.h"
++#include "COM_DenoiseNode.h"
+ #include "COM_DespeckleNode.h"
+ #include "COM_DifferenceMatteNode.h"
+ #include "COM_DilateErodeNode.h"
+@@ -131,7 +132,8 @@
+ 	         b_node->type == CMP_NODE_MOVIEDISTORTION ||
+ 	         b_node->type == CMP_NODE_LENSDIST ||
+ 	         b_node->type == CMP_NODE_DOUBLEEDGEMASK ||
+-	         b_node->type == CMP_NODE_DILATEERODE);
++	         b_node->type == CMP_NODE_DILATEERODE ||
++	         b_node->type == CMP_NODE_DENOISE);
+ }
+ 
+ Node *Converter::convert(bNode *b_node)
+@@ -410,6 +412,9 @@
+ 		case CMP_NODE_CRYPTOMATTE:
+ 			node = new CryptomatteNode(b_node);
+ 			break;
++		case CMP_NODE_DENOISE:
++			node = new DenoiseNode(b_node);
++			break;
+ 	}
+ 	return node;
+ }
+Index: source/blender/compositor/nodes/COM_DenoiseNode.h
+===================================================================
+--- /dev/null
++++ source/blender/compositor/nodes/COM_DenoiseNode.h
+@@ -0,0 +1,37 @@
++/*
++ * Copyright 2019, Blender Foundation.
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software Foundation,
++ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
++ *
++ * Contributor:
++ *      Stefan Werner
++ */
++
++#ifndef __COM_DENOISENODE_H__
++#define __COM_DENOISENODE_H__
++
++#include "COM_Node.h"
++
++/**
++ * \brief DenoiseNode
++ * \ingroup Node
++ */
++class DenoiseNode : public Node {
++public:
++	DenoiseNode(bNode *editorNode);
++	void convertToOperations(NodeConverter &converter, const CompositorContext &context) const;
++};
++
++#endif
+Index: source/blender/compositor/nodes/COM_DenoiseNode.cpp
+===================================================================
+--- /dev/null
++++ source/blender/compositor/nodes/COM_DenoiseNode.cpp
+@@ -0,0 +1,46 @@
++/*
++ * Copyright 2019, Blender Foundation.
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software Foundation,
++ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
++ *
++ * Contributor:
++ *      Stefan Werner
++ */
++
++#include "COM_DenoiseNode.h"
++#include "DNA_node_types.h"
++#include "COM_SetValueOperation.h"
++#include "COM_MixOperation.h"
++#include "COM_DenoiseOperation.h"
++
++DenoiseNode::DenoiseNode(bNode *editorNode) : Node(editorNode)
++{
++	/* pass */
++}
++
++void DenoiseNode::convertToOperations(NodeConverter &converter, const CompositorContext &/*context*/) const
++{
++	bNode *node = this->getbNode();
++	NodeDenoise *denoise = (NodeDenoise *)node->storage;
++
++	DenoiseOperation *operation = new DenoiseOperation();
++	converter.addOperation(operation);
++	operation->setDenoiseSettings(denoise);
++
++	converter.mapInputSocket(getInputSocket(0), operation->getInputSocket(0));
++	converter.mapInputSocket(getInputSocket(1), operation->getInputSocket(1));
++	converter.mapInputSocket(getInputSocket(2), operation->getInputSocket(2));
++	converter.mapOutputSocket(getOutputSocket(0), operation->getOutputSocket(0));
++}
+Index: source/blender/compositor/operations/COM_DenoiseOperation.h
+===================================================================
+--- /dev/null
++++ source/blender/compositor/operations/COM_DenoiseOperation.h
+@@ -0,0 +1,64 @@
++/*
++ * Copyright 2019, Blender Foundation.
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software Foundation,
++ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
++ *
++ * Contributor:
++ *      Stefan Werner
++ */
++
++#ifndef __COM_DENOISEBASEOPERATION_H__
++#define __COM_DENOISEBASEOPERATION_H__
++
++#include "COM_SingleThreadedOperation.h"
++#include "DNA_node_types.h"
++
++class DenoiseOperation : public SingleThreadedOperation {
++private:
++	/**
++	 * \brief Cached reference to the input programs
++	 */
++	SocketReader *m_inputProgramColor;
++	SocketReader *m_inputProgramAlbedo;
++	SocketReader *m_inputProgramNormal;
++
++	/**
++	 * \brief settings of the denoise node.
++	 */
++	NodeDenoise *m_settings;
++public:
++	DenoiseOperation();
++	/**
++	 * Initialize the execution
++	 */
++	void initExecution();
++
++	/**
++	 * Deinitialize the execution
++	 */
++	void deinitExecution();
++
++	void setDenoiseSettings(NodeDenoise *settings) {
++		this->m_settings = settings;
++	}
++	bool determineDependingAreaOfInterest(rcti *input, ReadBufferOperation *readOperation, rcti *output);
++
++protected:
++	void generateDenoise(float *data, MemoryBuffer *inputTileColor, MemoryBuffer *inputTileAlbedo, MemoryBuffer *inputTileNormal, NodeDenoise *settings);
++
++	MemoryBuffer *createMemoryBuffer(rcti *rect);
++
++};
++#endif
+Index: source/blender/compositor/operations/COM_DenoiseOperation.cpp
+===================================================================
+--- /dev/null
++++ source/blender/compositor/operations/COM_DenoiseOperation.cpp
+@@ -0,0 +1,122 @@
++/*
++ * Copyright 2019, Blender Foundation.
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software Foundation,
++ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
++ *
++ * Contributor:
++ *      Stefan Werner
++ */
++
++#include "COM_DenoiseOperation.h"
++#include "BLI_math.h"
++#ifdef WITH_OPENIMAGEDENOISE
++#  include <OpenImageDenoise/oidn.hpp>
++#endif
++#include <iostream>
++
++DenoiseOperation::DenoiseOperation() : SingleThreadedOperation()
++{
++	this->addInputSocket(COM_DT_COLOR);
++	this->addInputSocket(COM_DT_COLOR);
++	this->addInputSocket(COM_DT_COLOR);
++	this->addOutputSocket(COM_DT_COLOR);
++	this->m_settings = NULL;
++}
++void DenoiseOperation::initExecution()
++{
++	SingleThreadedOperation::initExecution();
++	this->m_inputProgramColor = getInputSocketReader(0);
++	this->m_inputProgramAlbedo = getInputSocketReader(1);
++	this->m_inputProgramNormal = getInputSocketReader(2);
++}
++
++void DenoiseOperation::deinitExecution()
++{
++	this->m_inputProgramColor = NULL;
++	this->m_inputProgramAlbedo = NULL;
++	this->m_inputProgramNormal = NULL;
++	SingleThreadedOperation::deinitExecution();
++}
++
++MemoryBuffer *DenoiseOperation::createMemoryBuffer(rcti *rect2)
++{
++	MemoryBuffer *tileColor = (MemoryBuffer *)this->m_inputProgramColor->initializeTileData(rect2);
++	MemoryBuffer *tileAlbedo = (MemoryBuffer *)this->m_inputProgramAlbedo->initializeTileData(rect2);
++	MemoryBuffer *tileNormal = (MemoryBuffer *)this->m_inputProgramNormal->initializeTileData(rect2);
++	rcti rect;
++	rect.xmin = 0;
++	rect.ymin = 0;
++	rect.xmax = getWidth();
++	rect.ymax = getHeight();
++	MemoryBuffer *result = new MemoryBuffer(COM_DT_COLOR, &rect);
++	float *data = result->getBuffer();
++	this->generateDenoise(data, tileColor, tileAlbedo, tileNormal, this->m_settings);
++	return result;
++}
++
++bool DenoiseOperation::determineDependingAreaOfInterest(rcti * /*input*/, ReadBufferOperation *readOperation, rcti *output)
++{
++	if (isCached()) {
++		return false;
++	}
++	else {
++		rcti newInput;
++		newInput.xmax = this->getWidth();
++		newInput.xmin = 0;
++		newInput.ymax = this->getHeight();
++		newInput.ymin = 0;
++		return NodeOperation::determineDependingAreaOfInterest(&newInput, readOperation, output);
++	}
++}
++
++void DenoiseOperation::generateDenoise(float *data, MemoryBuffer *inputTileColor, MemoryBuffer *inputTileAlbedo, MemoryBuffer *inputTileNormal, NodeDenoise *settings)
++{
++	float *inputBufferColor = inputTileColor->getBuffer();
++	BLI_assert(inputBufferColor);
++	if (!inputBufferColor) {
++		return;
++	}
++#ifdef WITH_OPENIMAGEDENOISE
++	oidn::DeviceRef device = oidn::newDevice();
++	device.commit();
++
++	oidn::FilterRef filter = device.newFilter("RT");
++	filter.setImage("color", inputBufferColor, oidn::Format::Float3, inputTileColor->getWidth(), inputTileColor->getHeight(), 0, 4 * sizeof(float));
++	if (inputTileAlbedo && inputTileAlbedo->getBuffer()) {
++		filter.setImage("albedo", inputTileAlbedo->getBuffer(), oidn::Format::Float3, inputTileAlbedo->getWidth(), inputTileAlbedo->getHeight(), 0, 4 * sizeof(float));
++	}
++	if (inputTileNormal && inputTileNormal->getBuffer()) {
++		filter.setImage("normal", inputTileNormal->getBuffer(), oidn::Format::Float3, inputTileNormal->getWidth(), inputTileNormal->getHeight(), 0, 4 * sizeof(float));
++	}
++	filter.setImage("output", data, oidn::Format::Float3, inputTileColor->getWidth(), inputTileColor->getHeight(), 0, 4 * sizeof(float));
++
++	BLI_assert(settings);
++	if (settings) {
++		filter.set("hdr", settings->hdr > 0 ? true : false);
++		filter.set("srgb", settings->srgb && !(settings->hdr > 0) ? true : false);
++	}
++
++	filter.commit();
++	filter.execute();
++
++	/* copy the alpha channel, OpenImageDenoise currently only supports RGB */
++	size_t numPixels = inputTileColor->getWidth() * inputTileColor->getHeight();
++	for (size_t i = 0; i < numPixels; ++i) {
++		data[i * 4 + 3] = inputBufferColor[i * 4 + 3];
++	}
++#else
++	::memcpy(data, inputBufferColor, inputTileColor->getWidth() * inputTileColor->getHeight() * sizeof(float) * 4);
++#endif
++}
+Index: source/blender/editors/space_node/drawnode.c
+===================================================================
+--- source/blender/editors/space_node/drawnode.c
++++ source/blender/editors/space_node/drawnode.c
+@@ -2508,6 +2508,14 @@
+ 	uiItemR(layout, ptr, "use_premultiply", 0, NULL, ICON_NONE);
+ }
+ 
++static void node_composit_buts_denoise(uiLayout *layout, bContext *UNUSED(C), PointerRNA *ptr)
++{
++	uiItemR(layout, ptr, "use_hdr", 0, NULL, ICON_NONE);
++	uiLayout *col = uiLayoutColumn(layout, false);
++	uiLayoutSetActive(col, RNA_boolean_get(ptr, "use_hdr") == false);
++	uiItemR(col, ptr, "use_srgb", 0, NULL, ICON_NONE);
++}
++
+ /* only once called */
+ static void node_composit_set_butfunc(bNodeType *ntype)
+ {
+@@ -2741,6 +2749,10 @@
+ 			break;
+ 		case CMP_NODE_BRIGHTCONTRAST:
+ 			ntype->draw_buttons = node_composit_buts_brightcontrast;
++			break;
++		case CMP_NODE_DENOISE:
++			ntype->draw_buttons = node_composit_buts_denoise;
++			break;
+ 	}
+ }
+ 
+Index: source/blender/makesdna/DNA_node_types.h
+===================================================================
+--- source/blender/makesdna/DNA_node_types.h
++++ source/blender/makesdna/DNA_node_types.h
+@@ -1028,6 +1028,12 @@
+ 	int pad;
+ } NodeCryptomatte;
+ 
++typedef struct NodeDenoise {
++	char hdr;
++	char srgb;
++	char _pad[6];
++} NodeDenoise;
++
+ /* script node mode */
+ #define NODE_SCRIPT_INTERNAL		0
+ #define NODE_SCRIPT_EXTERNAL		1
+Index: source/blender/makesrna/intern/rna_nodetree.c
+===================================================================
+--- source/blender/makesrna/intern/rna_nodetree.c
++++ source/blender/makesrna/intern/rna_nodetree.c
+@@ -6991,6 +6991,23 @@
+ 	RNA_def_property_update(prop, NC_NODE | NA_EDITED, "rna_NodeCryptomatte_update_remove");
+ }
+ 
++static void def_cmp_denoise(StructRNA *srna)
++{
++	PropertyRNA *prop;
++
++	RNA_def_struct_sdna_from(srna, "NodeDenoise", "storage");
++
++	prop = RNA_def_property(srna, "use_hdr", PROP_BOOLEAN, PROP_NONE);
++	RNA_def_property_boolean_sdna(prop, NULL, "hdr", 0);
++	RNA_def_property_ui_text(prop, "HDR", "Process HDR images");
++	RNA_def_property_update(prop, NC_NODE | NA_EDITED, "rna_Node_update");
++
++	prop = RNA_def_property(srna, "use_srgb", PROP_BOOLEAN, PROP_NONE);
++	RNA_def_property_boolean_sdna(prop, NULL, "srgb", 0);
++	RNA_def_property_ui_text(prop, "sRGB", "Work in sRGB space (only valid for non-HDR images");
++	RNA_def_property_update(prop, NC_NODE | NA_EDITED, "rna_Node_update");
++}
++
+ /* -- Texture Nodes --------------------------------------------------------- */
+ 
+ static void def_tex_output(StructRNA *srna)
+Index: source/blender/nodes/CMakeLists.txt
+===================================================================
+--- source/blender/nodes/CMakeLists.txt
++++ source/blender/nodes/CMakeLists.txt
+@@ -65,6 +65,7 @@
+ 	composite/nodes/node_composite_despeckle.c
+ 	composite/nodes/node_composite_doubleEdgeMask.c
+ 	composite/nodes/node_composite_defocus.c
++	composite/nodes/node_composite_denoise.c
+ 	composite/nodes/node_composite_diffMatte.c
+ 	composite/nodes/node_composite_dilate.c
+ 	composite/nodes/node_composite_directionalblur.c
+Index: source/blender/nodes/NOD_composite.h
+===================================================================
+--- source/blender/nodes/NOD_composite.h
++++ source/blender/nodes/NOD_composite.h
+@@ -83,6 +83,7 @@
+ void register_node_type_cmp_inpaint(void);
+ void register_node_type_cmp_despeckle(void);
+ void register_node_type_cmp_defocus(void);
++void register_node_type_cmp_denoise(void);
+ 
+ void register_node_type_cmp_valtorgb(void);
+ void register_node_type_cmp_rgbtobw(void);
+Index: source/blender/nodes/NOD_static_types.h
+===================================================================
+--- source/blender/nodes/NOD_static_types.h
++++ source/blender/nodes/NOD_static_types.h
+@@ -217,6 +217,7 @@
+ DefNode( CompositorNode, CMP_NODE_CORNERPIN,      0,                      "CORNERPIN",      CornerPin,        "Corner Pin",        ""              );
+ DefNode( CompositorNode, CMP_NODE_SUNBEAMS,       def_cmp_sunbeams,       "SUNBEAMS",       SunBeams,         "Sun Beams",         ""              );
+ DefNode( CompositorNode, CMP_NODE_CRYPTOMATTE,    def_cmp_cryptomatte,    "CRYPTOMATTE",    Cryptomatte,      "Cryptomatte",       ""              );
++DefNode(CompositorNode,  CMP_NODE_DENOISE,        def_cmp_denoise,        "DENOISE",        Denoise,          "Denoise",           ""              );
+ 
+ DefNode( TextureNode,    TEX_NODE_OUTPUT,         def_tex_output,         "OUTPUT",         Output,           "Output",            ""              );
+ DefNode( TextureNode,    TEX_NODE_CHECKER,        0,                      "CHECKER",        Checker,          "Checker",           ""              );
+Index: source/blender/nodes/composite/nodes/node_composite_denoise.c
+===================================================================
+--- /dev/null
++++ source/blender/nodes/composite/nodes/node_composite_denoise.c
+@@ -0,0 +1,64 @@
++/*
++ * ***** BEGIN GPL LICENSE BLOCK *****
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software Foundation,
++ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
++ *
++ * The Original Code is Copyright (C) 2019 Blender Foundation.
++ * All rights reserved.
++ *
++ * The Original Code is: all of this file.
++ *
++ * Contributor(s): Stefan Werner
++ *
++ * ***** END GPL LICENSE BLOCK *****
++ */
++
++/** \file blender/nodes/composite/nodes/node_composite_denoise.c
++ *  \ingroup cmpnodes
++ */
++
++
++#include "node_composite_util.h"
++
++static bNodeSocketTemplate cmp_node_denoise_in[] = {
++	{	SOCK_RGBA, 1, N_("Image"),			1.0f, 1.0f, 1.0f, 1.0f},
++	{	SOCK_RGBA, 1, N_("Albedo"),			1.0f, 1.0f, 1.0f, 1.0f},
++	{	SOCK_RGBA, 1, N_("Normal"),			1.0f, 1.0f, 1.0f, 1.0f},
++	{	-1, 0, ""	}
++};
++static bNodeSocketTemplate cmp_node_denoise_out[] = {
++	{	SOCK_RGBA, 0, N_("Image")},
++	{	-1, 0, ""	}
++};
++
++static void node_composit_init_denonise(bNodeTree *UNUSED(ntree), bNode *node)
++{
++	NodeDenoise *ndg = MEM_callocN(sizeof(NodeDenoise), "node denoise data");
++	ndg->hdr = 1;
++	ndg->srgb = 0;
++	node->storage = ndg;
++}
++
++void register_node_type_cmp_denoise(void)
++{
++	static bNodeType ntype;
++
++	cmp_node_type_base(&ntype, CMP_NODE_DENOISE, "Denoise", NODE_CLASS_OP_FILTER, 0);
++	node_type_socket_templates(&ntype, cmp_node_denoise_in, cmp_node_denoise_out);
++	node_type_init(&ntype, node_composit_init_denonise);
++	node_type_storage(&ntype, "NodeDenoise", node_free_standard_storage, node_copy_standard_storage);
++
++	nodeRegisterType(&ntype);
++}
