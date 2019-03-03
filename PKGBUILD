@@ -26,6 +26,6 @@ build() {
 
 package() {
 	cd $pkgname-$pkgver
-	install -m755 -D $GOPATH/bin/$pkgname $pkgdir/usr/bin/$pkgname
+	install -Dm755 $GOPATH/bin/$pkgname $pkgdir/usr/bin/$pkgname
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
