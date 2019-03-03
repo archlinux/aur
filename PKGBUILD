@@ -37,9 +37,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="geometry2-release-release-melodic-tf2_geometry_msgs-${pkgver}-${_pkgver_patch}"
+_dir="geometry2-release-release-melodic-tf2_geometry_msgs"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/melodic/tf2_geometry_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f1516df538999a5fb7cb8eeaf71636c9572bba758adac8cdafbf5446918b7bbc')
+sha256sums=('d272355846872a5d6e16457ef69160530d467748d0caf1d22327e62dd6ab66e2')
 
 build() {
 	# Use ROS environment variables.

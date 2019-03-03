@@ -19,7 +19,7 @@ pkgbase = ros-melodic-tf2-geometry-msgs
 	depends = ros-melodic-orocos-kdl
 	depends = ros-melodic-geometry-msgs
 	source = ros-melodic-tf2-geometry-msgs-0.6.5-0.tar.gz::https://github.com/ros-gbp/geometry2-release/archive/release/melodic/tf2_geometry_msgs/0.6.5-0.tar.gz
-	sha256sums = f1516df538999a5fb7cb8eeaf71636c9572bba758adac8cdafbf5446918b7bbc
+	sha256sums = d272355846872a5d6e16457ef69160530d467748d0caf1d22327e62dd6ab66e2
 
 pkgname = ros-melodic-tf2-geometry-msgs
 
