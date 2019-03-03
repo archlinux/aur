@@ -1,0 +1,19 @@
+pkgbase = python-lyricsgenius
+	pkgdesc = A Python client for the Genius.com API, that provides a simple interface to the song, artist, and lyrics data stored on Genius.com
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/johnwmillr/LyricsGenius
+	arch = any
+	license = MIT
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/l/lyricsgenius/lyricsgenius-1.3.1.tar.gz
+	source = https://github.com/johnwmillr/LyricsGenius/blob/master/LICENSE.txt
+	md5sums = 35fa7b5ca01d5c8e546837f38fa332a5
+	md5sums = 34cf44daf84b602b43197366b2c9b4cc
+
+pkgname = python-lyricsgenius
+	depends = python-beautifulsoup4
+	depends = python-requests
+
