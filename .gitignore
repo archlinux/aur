@@ -1,0 +1,6 @@
+.*.swp
+.*.swo
+src/
+pkg/
+py-ipfs-api
+*.tar.xz
