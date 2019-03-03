@@ -18,7 +18,8 @@ check_env() {
 	echo "UseCustomWine=true" >>$CONFDIR/EVE.conf
 	echo "CustomWinePath=$WINEPATH/wine" >>$CONFDIR/EVE.conf
 	mkdir -p $EVEDIR/SharedCache
-	tar xf $SETUPDIR/lib/launcher-$ELVER.tar.xz -C $EVEDIR
+	tar xf $SETUPDIR/lib/evelauncher-$ELVER.tar.gz -C $EVEDIR
+	mv $EVEDIR/evelauncher/ $LAUNCHER/
 	if [ -d "$SHAREDIR/ResFiles/" ] ;then
 	    mv $SHAREDIR/ResFiles/ $EVEDIR/SharedCache/
 	    mv $SHAREDIR/*.txt $EVEDIR/SharedCache/
@@ -88,7 +89,7 @@ LAUNCHER="$EVEDIR/Launcher"
 SETUPDIR="/opt/evesetup"
 WINEPATH="/usr/bin"
 
-source $SETUPDIR/lib/evelauncher.shlib
+source $SETUPDIR/lib/evelauncher.shlib 2>/dev/null || . $SETUPDIR/lib/evelauncher.shlib
 
 check_env
 check_transl

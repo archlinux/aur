@@ -42,8 +42,8 @@ check_wine() {
     WINECONF=$(find ${WINEINFP%/bin*}/share -name 'wine.inf' 2>/dev/null) || true
     WINEDATE=$(ls -l --time-style=+%s "$WINECONF" 2>/dev/null | cut -d' ' -f6)
     if [ "x$WINEDATE" != "x$INSTWINE" ] ;then
-        desktop_msg "Preparing wine in $WINEPREFIX"
-        env WINEPREFIX=$WINEPREFIX \
+	desktop_msg "Preparing wine in $WINEPREFIX"
+	env WINEPREFIX=$WINEPREFIX \
 	    WINEDEBUG=-all \
 	    WINEDLLOVERRIDES="mscoree,mshtml,winemenubuilder.exe=d" \
 	    $WINEPATH/wine wineboot
@@ -78,7 +78,7 @@ LAUNCHER="$EVEDIR/Launcher"
 SETUPDIR="/opt/evesetup"
 WINEPATH="/usr/bin"
 
-source $SETUPDIR/lib/evelauncher.shlib
+source $SETUPDIR/lib/evelauncher.shlib 2>/dev/null || . $SETUPDIR/lib/evelauncher.shlib
 
 check_env
 check_wine
