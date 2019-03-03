@@ -1,11 +1,11 @@
-# Maintainer: Jake <ja.ke@posteo.de>
+# Maintainer: Jake <aur@ja-ke.tech>
 # Contributor: Youngbin Han <sukso96100@gmail.com>
 # Contributor: Andrew Kluger <evilgnome@gmail.com>
 pkgname=micro-git
-pkgver=v1.3.3.5fc8f84
+pkgver=v1.4.1.2c219ba
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/zyedidia/micro"
 license=('MIT')
 makedepends=('go' 'git')
