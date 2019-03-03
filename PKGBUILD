@@ -38,9 +38,9 @@ depends=(
 	tinyxml2
 )
 
-_dir="pluginlib-release-release-melodic-pluginlib-${pkgver}-${_pkgver_patch}"
+_dir="pluginlib-release-release-melodic-pluginlib"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/pluginlib-release/archive/release/melodic/pluginlib/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('51ad8cc72b954cf0fb32b8e562eaa2f24d830ce72832320582ec2075b95958e1')
+sha256sums=('d126b9eae7db607fb84b1cb56ac2db9862ebca48ba99a47a9f502689bea83eba')
 
 build() {
 	# Use ROS environment variables.
