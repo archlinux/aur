@@ -1,9 +1,10 @@
-# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+# Maintainer: Fabian Maurer <dark.shadow4@web.de>
+# Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgbase=lib32-smbclient
 pkgname=('lib32-libwbclient' 'lib32-smbclient')
-pkgver=4.8.4
+pkgver=4.9.4
 pkgrel=1
 pkgdesc="Tools to access a server's filespace and printers via SMB"
 arch=('x86_64')
@@ -16,7 +17,7 @@ makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap'
              'lib32-libnsl' 'lib32-libtirpc' 'perl-parse-yapp'
              'lib32-jansson' 'rpcsvc-proto' 'smbclient' 'libwbclient')
 source=("https://www.samba.org/samba/samba/ftp/stable/samba-${pkgver}.tar.gz")
-sha256sums=('f5044d149e01894a08b1d114b8b69aed78171a7bb19608bd1fd771453b9a5406')
+sha256sums=('6d98a8d8bcccbe788e4bbb406362e6676311aca711a3f3cc9b3a404bb9ff0b4f')
 
 prepare() {
   cd samba-${pkgver}
@@ -72,7 +73,8 @@ build() {
               --with-shared-modules=${_samba4_idmap_modules},${_samba4_pdb_modules},${_samba4_auth_modules} \
               --disable-rpath-install \
               --disable-glusterfs \
-              --without-lttng
+              --without-lttng \
+              --without-gpgme
 
   make
   make DESTDIR="${srcdir}/staging" install
