@@ -1,8 +1,8 @@
 pkgname=ghdl
-pkgver=0.35
-pkgrel=3
-_gccver=7.3.0
-_islver=0.18
+pkgver=0.36
+pkgrel=1
+_gccver=8.3.0
+_islver=0.20
 arch=('aarch64' 'x86_64')
 pkgdesc='VHDL simulator'
 url='https://github.com/ghdl/ghdl'
@@ -11,20 +11,19 @@ makedepends=('gcc-ada' 'git')
 install=ghdl.install
 options=(!emptydirs staticlibs)
 
-# This is the earliest commit that works with gcc-ada 8.1
 source=(
-  "git+https://github.com/ghdl/ghdl#commit=319092de002423fcd5f624d2f026176503ab6018"
+  "git+https://github.com/ghdl/ghdl#tag=v${pkgver}"
   "https://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
   "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
 )
 sha256sums=(
   'SKIP'
-  '832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c'
-  '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
+  '64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c'
+  'b587e083eb65a8b394e833dea1744f21af3f0e413a448c17536b5549ae42a4c2'
 )
 
 prepare() {
-  ln -s gcc-${_gccver/+/-} gcc
+  [[ ! -d gcc ]] && ln -s gcc-${_gccver/+/-} gcc
 
   cd ghdl
   ./configure --prefix=/usr --with-gcc="${srcdir}/gcc"
