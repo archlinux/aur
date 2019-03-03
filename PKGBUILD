@@ -69,8 +69,7 @@ build(){
         # Profile Guided Optimization build
         #
         # Build with profile generation
-        #make pgo=instrument compiler=g++ platform=linux target=higan profile=${_profile} 
-name=higan-${_profile}
+        #make pgo=instrument compiler=g++ platform=linux target=higan profile=${_profile} name=higan-${_profile}
         #
         # Run all cores and SFC special chips (except the new (famicom variant) nSide systems (Playchoice 10, VS System))
         #"${srcdir}/profilebatch" "out/higan-${_profile}" "/home/${USER}/ROMS/higan"
