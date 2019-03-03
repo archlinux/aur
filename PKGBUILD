@@ -3,7 +3,7 @@
 # Contributor: Michael Kanis <mkanis@gmx.de>
 
 pkgname=libchamplain
-pkgver=0.12.17
+pkgver=0.12.19
 pkgrel=1
 pkgdesc="A map widget"
 url="https://wiki.gnome.org/Projects/libchamplain"
@@ -11,11 +11,9 @@ license=(LGPL)
 arch=(x86_64)
 depends=(clutter-gtk libsoup cairo sqlite)
 makedepends=(gobject-introspection gtk-doc vala meson git)
-_commit=5d2f7f938471d9455aa08bd6bb1f0a244984713c  # tags/LIBCHAMPLAIN_0_12_17^0
-source=("git+https://gitlab.gnome.org/GNOME/libchamplain.git#commit=$_commit"
-        build.diff)
-sha256sums=('SKIP'
-            '1146f8cc78e5ab7986a9f047ff6b7a5e4ba60552907498a6097bb78bdacfec4d')
+_commit=37493068c81f28773a910ab3a781fe83fd8fb6f3  # tags/LIBCHAMPLAIN_0_12_19^0
+source=("git+https://gitlab.gnome.org/GNOME/libchamplain.git#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -24,7 +22,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  patch -Np1 -i ../build.diff
 }
 
 build() {
