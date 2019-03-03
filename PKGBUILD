@@ -3,7 +3,7 @@
 # Contributor: Schmetzler <web.de d i m o n o k>
 
 pkgname=compute-runtime-bin
-depver=18.50.1270
+_depver=18.50.1270
 pkgver=19.07.12410
 pkgrel=1
 pkgdesc='Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond (binary version)'
@@ -17,8 +17,8 @@ provides=(opencl opencl-driver compute-runtime)
 conflicts=(beignet compute-runtime)
 
 source=(
-${url}/releases/download/${pkgver}/intel-igc-core_${depver}_amd64.deb
-${url}/releases/download/${pkgver}/intel-igc-opencl_${depver}_amd64.deb
+${url}/releases/download/${pkgver}/intel-igc-core_${_depver}_amd64.deb
+${url}/releases/download/${pkgver}/intel-igc-opencl_${_depver}_amd64.deb
 ${url}/releases/download/${pkgver}/intel-opencl_${pkgver}_amd64.deb
 )
 
@@ -29,8 +29,8 @@ sha256sums=(
 )
 
 noextract=(
-${url}/releases/download/${pkgver}/intel-igc-core_${depver}_amd64.deb
-${url}/releases/download/${pkgver}/intel-igc-opencl_${depver}_amd64.deb
+${url}/releases/download/${pkgver}/intel-igc-core_${_depver}_amd64.deb
+${url}/releases/download/${pkgver}/intel-igc-opencl_${_depver}_amd64.deb
 ${url}/releases/download/${pkgver}/intel-opencl_${pkgver}_amd64.deb
 )
 
@@ -38,12 +38,12 @@ prepare() {
     cd ${srcdir}
     mkdir -p igc-core/
     cd igc-core/
-    ar xf ../intel-igc-core_${depver}_amd64.deb
+    ar xf ../intel-igc-core_${_depver}_amd64.deb
 
     cd ${srcdir}
     mkdir -p igc-opencl/
     cd igc-opencl/
-    ar xf ../intel-igc-opencl_${depver}_amd64.deb
+    ar xf ../intel-igc-opencl_${_depver}_amd64.deb
 
     cd ${srcdir}
     mkdir -p opencl/
