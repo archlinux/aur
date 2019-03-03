@@ -1,6 +1,6 @@
 pkgbase = python-vcstool
 	pkgdesc = vcstool provides a command line tool to invoke vcs commands on multiple repositories.
-	pkgver = 0.1.37
+	pkgver = 0.1.39
 	pkgrel = 1
 	url = https://github.com/dirk-thomas/vcstool
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-vcstool
 	depends = python
 	depends = python-yaml
 	conflicts = python2-vcstool
-	source = https://files.pythonhosted.org/packages/source/v/vcstool/vcstool-0.1.37.tar.gz
-	md5sums = 9a1cd48707624744a42a3f9071d1b397
+	source = https://files.pythonhosted.org/packages/source/v/vcstool/vcstool-0.1.39.tar.gz
+	md5sums = 2af522d9422488fd912e2f4dd6c166db
 
 pkgname = python-vcstool
 
