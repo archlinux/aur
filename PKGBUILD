@@ -5,16 +5,17 @@
 
 
 pkgname=mucommander
-pkgver=0.9.3
-_pkgver=0.9.3-2
+pkgver=0.9.3.3
+_pkgver=0.9.3-3
+__pkgver=0.9.3
 pkgrel=1
 pkgdesc="A lightweight, cross-platform file manager with a dual-pane interface written in Java"
 url="http://www.mucommander.com"
 depends=('java-runtime' 'bash')
 arch=('any')
 license=('GPL')
-source=(https://github.com/mucommander/mucommander/releases/download/${_pkgver}/${pkgname}_${pkgver}_all.deb)
-sha256sums=('b3f339eadd8e9becd5911ad1792bbb2bb1de2f26896dcb54c533796f12af14d5')
+source=(https://github.com/mucommander/mucommander/releases/download/${_pkgver}/${pkgname}_${__pkgver}_all.deb)
+sha256sums=('73c39b9e4c1404ac2807982bffcaf7b0d3745291e92b1d03350a9a7ea64c42df')
 
 
 prepare() {
