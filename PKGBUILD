@@ -7,7 +7,7 @@ _pkgname=quaternion
 pkgname=quaternion-git
 libname=libQMatrixClient
 _libname=libqmatrixclient
-pkgver=0.0.9.3.r159.59d41e2
+pkgver=0.0.9.4.beta1.r17.gb063aad
 _libqmatrixclient_pkgver=0.5.0
 pkgrel=1
 pkgdesc='Qt5-based IM client for the Matrix protocol'
@@ -25,8 +25,8 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd $appname
-  echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
+  cd "$appname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
