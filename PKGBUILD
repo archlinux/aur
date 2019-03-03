@@ -2,7 +2,7 @@
 
 pkgname='gnunet-fuse-git'
 _appname='gnunet-fuse'
-pkgver='0.11.0.r108.eeb1cfa'
+pkgver='0.11.0.r112.56513fc'
 pkgrel=1
 pkgdesc='Read-only mounting of GNUnet directories as file systems using FUSE'
 arch=('i686' 'x86_64')
