@@ -1,10 +1,11 @@
-# Maintainer: Evgeny Kurnevsky <kurnevsky@gmail.com>
+# Maintainer:  mrxx <mrxx at cyberhome dot at>
+# Contributor: Evgeny Kurnevsky <kurnevsky@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=motion
-pkgver=4.2
+pkgver=4.2.2
 pkgrel=1
-pkgdesc="A software motion detector which grabs images from video4linux devices and/or from webcams"
+pkgdesc="Monitor and record video signals from many types of cameras"
 arch=('x86_64' 'i686' 'armv7h' 'armv6h' 'aarch64')
 license=('GPL')
 url="https://motion-project.github.io"
@@ -15,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Motion-Project/motion/archi
         'motion.service'
         'motion.sysusers'
         'motion.tmpfiles')
-sha256sums=('6ef8504fc5be00a49c82c4045c0004fbf575d9a5df8687025a9b06923efda2a9'
+sha256sums=('c8d40976b41da8eb9f9f7128599403a312fc26b7226bf3787d75f78cb5a6cc6e'
             'a78dba35414f4d7147cc2c622eecdb3df249978023cbea5c6bc420c34ca387e7'
             '353fe3c2ee0afb7dafe1c6b7d1ac5655449dab836ab387cf335b4bd1dd37bf27'
             'b34eaf6b085a25ef310102f892d0909247f1acb9d6a75cc9faca85e1ef076a1c')
