@@ -1,11 +1,10 @@
 pkgbase = gitin
 	pkgdesc = Commit/branch/workdir explorer for git
 	pkgver = 0.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/isacikgoz/gitin
 	arch = x86_64
 	license = BSD
-	makedepends = cmake
 	makedepends = go
 	makedepends = git
 	makedepends = libgit2
