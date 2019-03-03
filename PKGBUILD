@@ -18,7 +18,7 @@ backup=('etc/caddy/caddy.conf')
 provides=("$_name")
 conflicts=("$_name")
 install='caddy.install'
-makedepends=('go>=1.8.1' 'git')
+makedepends=('go>=1.12' 'git')
 source=("https://$_gopkgname/archive/v$pkgver/$_name-$pkgver.tar.gz"
         'https://caddyserver.com/resources/images/brand/caddy-at-your-service-white.svg'
         'index.html'
@@ -52,7 +52,7 @@ patch_plugins() {
 
 prepare() {
     export GOPATH="$srcdir/build"
-    rm -rf "$GOPATH/src/$gopkgname"
+    rm -rf "$GOPATH/src/$_gopkgname"
     mkdir --parents `dirname "$GOPATH/src/$_gopkgname"`
     mv -Tv "$srcdir/$_name-$pkgver" "$GOPATH/src/$_gopkgname"
 
