@@ -1,6 +1,6 @@
 pkgbase = emacs-rust-mode
 	pkgdesc = A major Emacs mode for editing Rust source code
-	pkgver = r286
+	pkgver = r381
 	pkgrel = 1
 	url = https://github.com/rust-lang/rust-mode
 	arch = any
