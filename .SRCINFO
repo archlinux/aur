@@ -1,6 +1,6 @@
 pkgbase = easyrpg-player-git
 	pkgdesc = FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter (development version)
-	pkgver = 0.5.4.r0.ga778fba8
+	pkgver = 0.6.0.r0.g30a32bb0
 	pkgrel = 1
 	url = https://easyrpg.org
 	install = easyrpg-player-git.install
@@ -17,11 +17,12 @@ pkgbase = easyrpg-player-git
 	depends = mpg123
 	depends = libsndfile
 	depends = speexdsp
+	depends = wildmidi
 	optdepends = wine: for installing the run time packages (RTP)
 	optdepends = libxmp: decoder for tracker music, used by few games
 	optdepends = rpg2000-rtp: run time package for some 2k games
 	optdepends = rpg2003-rtp: run time package for some 2k3 games
-	provides = easyrpg-player=0.5.4
+	provides = easyrpg-player=0.6.0
 	conflicts = easyrpg-player
 	source = easyrpg-player::git+https://github.com/EasyRPG/Player.git
 	md5sums = SKIP
