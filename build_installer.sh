@@ -40,6 +40,7 @@ for cmd in evelauncher.sh everegedit evewine evewinecfg evewinetricks ;do
         cp ../${cmd%.*}.desktop evesetup/
     fi
 done
+cp -f ../evelauncher.shlib evesetup/evelauncher.shlib
 cp -f ../evelauncher.sh.in evesetup/evelauncher.sh
 grep -v '^#-' ../setup.sh.in >evesetup/setup.sh
 chmod a+x evesetup/setup.sh

@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Evelauncher shared functions
+
+desktop_msg() {
+    if [ -x "$(which notify-send 2>/dev/null)" ] ;then
+	notify-send -i eve 'EVE Online Launcher' "$@"
+    fi
+    echo "$(basename $0): $@"
+}
+
+check_custom_wine() {
+    EVECONF=$HOME/.config/CCP/EVE.conf
+    UCW=$(grep UseCustomWine $EVECONF | cut -d= -f2)
+    if [ "x$UCW" = "xtrue" ] ;then
+	CUSTOMWP=$(grep CustomWinePath $EVECONF | cut -d= -f2)
+	WINEPATH=${CUSTOMWP%/*}
+	SHAREDIR=$(grep SharedCacheFolder $EVECONF | cut -d= -f2)
+	WINEPREFIX=${SHAREDIR}wineenv
+    else
+	desktop_msg "ERROR: \"Use custom Wine\" not set!"
+	exit 1
+    fi
+    if [ ! -x "$WINEPATH/wine" ] ;then
+	desktop_msg "ERROR: \"$CUSTOMWP\" from \"Custom Wine path\" not found!"
+	exit 1
+    fi
+}

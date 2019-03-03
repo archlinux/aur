@@ -1,21 +1,8 @@
 #!/bin/sh
 
-EVECONF=$HOME/.config/CCP/EVE.conf
-UCW=$(grep UseCustomWine $EVECONF | cut -d= -f2)
-if [ "x$UCW" = "xtrue" ] ;then
-    CUSTOMWP=$(grep CustomWinePath $EVECONF | cut -d= -f2)
-    WINEPATH=${CUSTOMWP%/*}
-    SHAREDIR=$(grep SharedCacheFolder $EVECONF | cut -d= -f2)
-    WINEPREFIX=${SHAREDIR}wineenv
-else
-    echo "$(basename $0): ERROR: \"Use Custom Wine\" not set!"
-    exit 1
-fi
-if [ ! -x "$WINEPATH/wine" ] ;then
-    echo "$(basename $0): ERROR: \"$CUSTOMWP\" from \"Custom Wine path\" not found!"
-    echo "$(basename $0): The full path are required (example: /usr/bin/wine)."
-    exit 1
-fi
+source /opt/evesetup/lib/evelauncher.shlib
+
+check_custom_wine
 
 if [ -x "$WINEPATH/${0#*eve}" ] ;then
     WINECMD=$WINEPATH/${0#*eve}

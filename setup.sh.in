@@ -44,6 +44,7 @@ bootstrap_install() {
     for eta in $(ls ./eve-transl${qtver}-??.tar.gz) ;do
 	install -m 0644 "$eta" "${target}/lib"
     done
+    install -m 0644 "./evelauncher.shlib" "${target}/lib"
     install -m 0644 "./evelauncher-${elver}.tar.gz" "${target}/lib"
     for icons in $(find . -type f -name '*.png') ;do
 	install -D -m 0644 "$icons" "${prefix}/share/${icons#*/}"
