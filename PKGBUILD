@@ -3,7 +3,7 @@
 
 pkgname='icinga2-git'
 _pkgname=icinga2
-pkgver=2.10.2.r247.g4238b6118
+pkgver=2.10.3.r292.ge2df11520
 pkgrel=1
 pkgdesc="An open source host, service and network monitoring program"
 license=('GPL')
