@@ -1,7 +1,7 @@
 pkgbase = scilab
 	pkgdesc = A scientific software package for numerical computations.
-	pkgver = 6.0.1
-	pkgrel = 5
+	pkgver = 6.0.2
+	pkgrel = 1
 	url = https://www.scilab.org
 	arch = i686
 	arch = x86_64
@@ -44,28 +44,20 @@ pkgbase = scilab
 	depends = apache-lucene>=7
 	depends = java-batik>=1.8
 	depends = java-xmlgraphics-commons>=2.0.1
-	source = https://www.scilab.org/download/6.0.1/scilab-6.0.1-src.tar.gz
+	source = https://www.scilab.org/download/6.0.2/scilab-6.0.2-src.tar.gz
 	source = scilab-jogl-2.3.2.patch
-	source = scilab-strict-jar.patch
 	source = scilab-lucene.patch
-	source = scilab-hdf5-type.patch
-	source = scilab-hdf5-1.8.10.patch
-	source = scilab-type.patch
-	source = scilab-num.patch
-	source = scilab-size-node.patch
+	source = scilab-strict-jar.patch
 	source = scilab-LD_LIBRARY_PATH.patch
 	source = scilab-0004-Fix-build-with-ocaml-4.0.4.patch
-	sha256sums = e459dd5a918626567e3513ab106a68bee5a1085a8713020cba214e5d4c075a4f
+	source = scilab-num.patch
+	sha256sums = 880f4b614143e9f43c41416304874875df6ebc1a1b0e4400e69384851f6216b0
 	sha256sums = f19f173e989f72bd55bda35e271b3c180ecef4e29da964df3f230fce8b1330fc
-	sha256sums = 38aa094951338fa1d267dc6f397552e175213b0f8ba7b35727c178607861f6dd
 	sha256sums = fb27339de4ddd55bf9bb172b0dbf22f67f578a3ca0270924792d728f42b43326
-	sha256sums = c992a4f230dac60c3e217efee04b678c58d856f2aafa6173f742d4c5b050ab9d
-	sha256sums = 2dee1346c240d09ce7870bbbeb3318e0ac5d78f249d855df313e9cb7a2ef7fc0
-	sha256sums = 93597034c6866c3a4aaa7ef92b4588d2753383545ed3366be6cdb404edf949bd
-	sha256sums = 31e757bdb2086e08e2477118fceddcdd50f3c2fcad5c86cf5de8ec06009f34ed
-	sha256sums = 984dd6e01631e5b30bde8587e435770c948f887c60d3d353c2e703e6d8b1fe99
+	sha256sums = 38aa094951338fa1d267dc6f397552e175213b0f8ba7b35727c178607861f6dd
 	sha256sums = a39277cb8cfc3d7929c73ce6d707dc24e3df4b8d8f2d587f075efebda79ff4db
 	sha256sums = 6712c6db2f3ba365d150e1feb1c71bf691f8aa3b45d5a872b05a42f0daf23392
+	sha256sums = 31e757bdb2086e08e2477118fceddcdd50f3c2fcad5c86cf5de8ec06009f34ed
 
 pkgname = scilab
 
