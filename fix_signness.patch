@@ -1,0 +1,44 @@
+From 8e5940a2ebeb74d186a848da3bc21f1fa77c8835 Mon Sep 17 00:00:00 2001
+From: Konstantin Gizdov <kgizdov@gmail.com>
+Date: Sun, 3 Mar 2019 14:46:41 +0200
+Subject: [PATCH] fix signness and tests
+
+---
+ src/XrdCl/XrdClParallelOperation.hh        | 4 ++--
+ tests/XrdClTests/OperationsWorkflowTest.cc | 6 ------
+ 2 files changed, 2 insertions(+), 8 deletions(-)
+
+diff --git a/src/XrdCl/XrdClParallelOperation.hh b/src/XrdCl/XrdClParallelOperation.hh
+index 2bd13b63e43..897fae78a86 100644
+--- a/src/XrdCl/XrdClParallelOperation.hh
++++ b/src/XrdCl/XrdClParallelOperation.hh
+@@ -89,10 +89,10 @@ namespace XrdCl
+       {
+         std::ostringstream oss;
+         oss << "Parallel(";
+-        for( int i = 0; i < pipelines.size(); i++ )
++        for( size_t i = 0; i < pipelines.size(); i++ )
+         {
+           oss << pipelines[i]->ToString();
+-          if( i != pipelines.size() - 1 )
++          if( i + 1  != pipelines.size() )
+           {
+             oss << " && ";
+           }
+diff --git a/tests/XrdClTests/OperationsWorkflowTest.cc b/tests/XrdClTests/OperationsWorkflowTest.cc
+index 26b1b517519..5e09b6689d1 100644
+--- a/tests/XrdClTests/OperationsWorkflowTest.cc
++++ b/tests/XrdClTests/OperationsWorkflowTest.cc
+@@ -157,12 +157,6 @@ namespace {
+           bool executed;
+     };
+ 
+-    char* createBuf(const char* content, uint32_t length){
+-        char* buf = new char[length + 1]();
+-        strncpy(buf, content, length);
+-        return buf;
+-    }
+-
+ 
+ 
+ }

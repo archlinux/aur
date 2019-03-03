@@ -1,0 +1,23 @@
+pkgbase = xrootd-py2
+	pkgdesc = Software framework for fast, low latency, scalable and fault tolerant data access (Python2).
+	pkgver = 4.9.0
+	pkgrel = 1
+	url = http://xrootd.org
+	arch = x86_64
+	license = LGPL3
+	checkdepends = cppunit
+	makedepends = ceph
+	makedepends = cmake
+	depends = ceph
+	depends = cppunit
+	provides = xrootd
+	provides = python2-xrootd
+	provides = python2-pyxrootd
+	conflicts = xrootd
+	source = http://xrootd.org/download/v4.9.0/xrootd-4.9.0.tar.gz
+	source = fix_signness.patch
+	sha256sums = 49791648bdc99ad87545f60d1808dacf926de7b843415ebdd181ccf43b2af8be
+	sha256sums = f291968f0e17168330a422b43c92f1c2ec33f9c058f3310839ceeecff5e25f62
+
+pkgname = xrootd-py2
+
