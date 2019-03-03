@@ -1,6 +1,6 @@
 pkgbase = debmake
 	pkgdesc = Program to make the Debian source package
-	pkgver = 4.2.9
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = http://packages.debian.org/sid/debmake
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = debmake
 	optdepends = strace
 	optdepends = wget
 	optdepends = curl
-	source = debmake-4.2.9::git+https://anonscm.debian.org/git/collab-maint/debmake.git#tag=debian/4.2.9-1
+	source = debmake-4.3.1::git+https://salsa.debian.org/debian/debmake.git#tag=debian/4.3.1-1
 	md5sums = SKIP
 
 pkgname = debmake
