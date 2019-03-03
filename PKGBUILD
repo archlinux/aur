@@ -1,7 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=terminus-terminal
 _pkgname=terminus
-pkgver=1.0.69
+pkgver=1.0.71
 pkgrel=1
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
