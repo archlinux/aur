@@ -2,17 +2,33 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgbase=vbam
-pkgname=('vbam-sdl' 'vbam-wx')
-pkgver=2.1.0
-pkgrel=2
+pkgname=(
+  vbam-sdl
+  vbam-wx
+)
+pkgver=2.1.1
+pkgrel=1
 pkgdesc='Nintendo GameBoy Advance emulator'
-arch=('x86_64')
-url='http://vba-m.com'
-license=('GPL2')
-depends=('gcc-libs' 'glibc' 'libgl' 'libpng' 'sdl2' 'sfml' 'zlib')
-makedepends=('cmake' 'ffmpeg' 'git' 'libglvnd' 'wxgtk3' 'zip')
-source=("git+https://github.com/visualboyadvance-m/visualboyadvance-m.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+arch=(x86_64)
+url=https://vba-m.com
+license=(GPL2)
+depends=(
+  libgl
+  libpng
+  sdl2
+  sfml
+  zlib
+)
+makedepends=(
+  cmake
+  ffmpeg
+  git
+  libglvnd
+  wxgtk3
+  zip
+)
+source=(git+https://github.com/visualboyadvance-m/visualboyadvance-m.git#tag=v${pkgver})
+sha256sums=(SKIP)
 
 prepare() {
   for p in sdl wx; do
@@ -21,51 +37,54 @@ prepare() {
     fi
     mkdir build-$p
   done
-
-  cd visualboyadvance-m
-
-  git cherry-pick -n a8d0508cf299a58b2a659d6017b049db121de8ba  #FS59479
 }
 
 build() {
   cd build-sdl
 
   cmake ../visualboyadvance-m \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_SKIP_RPATH='TRUE' \
-    -DENABLE_SDL='TRUE' \
-    -DENABLE_WX='FALSE' \
-    -DENABLE_LINK='TRUE'
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_SKIP_RPATH=TRUE \
+    -DENABLE_SDL=TRUE \
+    -DENABLE_WX=FALSE \
+    -DENABLE_LINK=TRUE
   make
 
   cd ../build-wx
 
   cmake ../visualboyadvance-m \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_SKIP_RPATH='TRUE' \
-    -DENABLE_SDL='FALSE' \
-    -DENABLE_WX='TRUE' \
-    -DENABLE_FFMPEG='TRUE' \
-    -DENABLE_LINK='TRUE' \
-    -DwxWidgets_CONFIG_EXECUTABLE='/usr/bin/wx-config-gtk3'
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_SKIP_RPATH=TRUE \
+    -DENABLE_SDL=FALSE \
+    -DENABLE_WX=TRUE \
+    -DENABLE_FFMPEG=TRUE \
+    -DENABLE_LINK=TRUE \
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3
   make
 }
 
 package_vbam-sdl() {
-  backup=('etc/vbam.cfg')
-  conflicts=('vbam-wx')
+  backup=(etc/vbam.cfg)
+  conflicts=(vbam-wx)
 
   make DESTDIR="${pkgdir}" -C build-sdl install
 }
 
 package_vbam-wx() {
   depends+=(
-    'glib2' 'gtk3' 'openal' 'wxgtk3' 'zip'
-    'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libswscale.so'
+    glib2
+    gtk3
+    libavcodec.so
+    libavformat.so
+    libavutil.so
+    libswscale.so
+    openal
+    wxgtk3
+    zip
   )
-  conflicts=('vbam-sdl')
+  conflicts=(vbam-sdl)
 
   make DESTDIR="${pkgdir}" -C build-wx install
 }
