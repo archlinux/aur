@@ -4,12 +4,12 @@
 _name=odfpy
 pkgname=python2-odfpy
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete API for OpenDocument in Python. Python 2.x support"
 arch=('i686' 'x86_64')
 url="http://opendocumentfellowship.com/projects/odfpy"
 license=('GPL')
-depends=('python2')
+depends=('python2' 'python2-defusedxml')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 md5sums=('c343718e6177764f649c11c4406a2958')
 
