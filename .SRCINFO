@@ -1,6 +1,6 @@
 pkgbase = fish-git
 	pkgdesc = User friendly shell intended mostly for interactive use.
-	pkgver = 3.0.0.r164.g455959ae
+	pkgver = 3.0.2.r546.ge11c3f352
 	pkgrel = 1
 	epoch = 2
 	url = http://fishshell.com
@@ -9,6 +9,7 @@ pkgbase = fish-git
 	arch = x86_64
 	arch = arm
 	license = GPL2
+	makedepends = cmake
 	makedepends = doxygen
 	makedepends = git
 	makedepends = ncurses

@@ -6,7 +6,7 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=3.0.0.r164.g455959ae
+pkgver=3.0.2.r546.ge11c3f352
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
@@ -16,7 +16,7 @@ license=("GPL2")
 depends=('ncurses')
 optdepends=('python: fish_update_completions and other tools' 
 			'xsel: clipboard integration')
-makedepends=('doxygen' 'git' 'ncurses')
+makedepends=('cmake' 'doxygen' 'git' 'ncurses')
 provides=('fish' 'fish-shell')
 conflicts=('fish' 'fish-shell')
 install='fish.install'
@@ -31,13 +31,18 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_gitname"
-
-	autoreconf --no-recursive
-	./configure --prefix=/usr --sysconfdir=/etc --docdir=/usr/share/doc/fish --without-included-pcre2
+	mkdir -p build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
 	make
+
 }
 
 package() {
-	cd "$srcdir/$_gitname"
+	cd "$srcdir/$_gitname/build"
 	make DESTDIR="$pkgdir" install
+	
+	# https://github.com/fish-shell/fish-shell/issues/5719
+	mv "$pkgdir/usr/local/share/fish/"* "$pkgdir/usr/share/fish"
+	rmdir "$pkgdir/usr/local/share/fish" "$pkgdir/usr/local/share" "$pkgdir/usr/local"
 }
