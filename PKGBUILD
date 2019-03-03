@@ -4,18 +4,18 @@ _oomox_ver=1.11
 _oomox_theme_ver=1.10
 _materia_theme_ver=20190201
 #_materia_cmt=94da12f9c5dfa4e045f8f02e2c818891b13b0930
-_arc_theme_cmt=1100d245c6015a92a1864a4aae37ad414adfe18e
+_arc_theme_ver=20190213
 _archdroid_icons_ver=1.0.2
 _gnome_colors_icons_ver=5.5.5
 _oomoxify_ver=1.1.2
 _base16_cmt=2e4112fe859ed5d33f67c177f11d369d360db9ae
 _numix_icons_cmt=896d9100ec836245f4a4cf5e450ac5a3b0962e50
 _numix_folders_icons_cmt=24e5f6c6603e7f798553d2f24a00de107713c333
-_papirus_icons_ver=20190203
+_papirus_icons_ver=20190302
 
 pkgname=oomox
 pkgver=${_oomox_ver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical application for generating different color variations of Numix/Materia/Arc theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes. Have a hack for HiDPI in gtk2.'
 arch=('i686' 'x86_64')
 url='https://github.com/themix-project/oomox'
@@ -65,7 +65,7 @@ source=(
     "oomox-${_oomox_ver}.tar.gz::https://github.com/themix-project/oomox/archive/${_oomox_ver}.tar.gz"
     "oomox-gtk-theme-${_oomox_theme_ver}.tar.gz::https://github.com/themix-project/oomox-gtk-theme/archive/${_oomox_theme_ver}.tar.gz"
     "materia-theme-${_materia_theme_ver}.tar.gz::https://github.com/nana-4/materia-theme/archive/v${_materia_theme_ver}.tar.gz"
-    "arc-theme-${_arc_theme_cmt}.tar.gz::https://github.com/NicoHood/arc-theme/archive/${_arc_theme_cmt}.tar.gz"
+    "arc-theme-${_arc_theme_ver}.tar.gz::https://github.com/NicoHood/arc-theme/archive/${_arc_theme_ver}.tar.gz"
     "archdroid-icon-theme-${_archdroid_icons_ver}.tar.gz::https://github.com/themix-project/oomox-archdroid-icon-theme/archive/${_archdroid_icons_ver}.tar.gz"
     "gnome-colors-icon-theme-${_gnome_colors_icons_ver}.tar.gz::https://github.com/themix-project/oomox-gnome-colors-icon-theme/archive/${_gnome_colors_icons_ver}.tar.gz"
     "oomoxify-${_oomoxify_ver}.tar.gz::https://github.com/themix-project/oomoxify/archive/${_oomoxify_ver}.tar.gz"
@@ -77,21 +77,21 @@ source=(
 md5sums=('bb3aae697ca4cc4ab28fff4c5be4d560'
          '13945f05eba3b85e6d63fec1ff60380a'
          '0aae4f64987f905dccdabcaaffe2b730'
-         '5d74824f8c158bc51a6efe7a43deb7ac'
+         '376ef3ce6f7cfb3177530183d9867037'
          'cb669130685dcbf03a8f7f5738c71dc6'
          '8b4a9a1837211a3caf661ab825d66cb0'
          '743395f8490fe7d2ec1525930f019d97'
          '8f7506b74131bfce78685aade0e275eb'
          'daaf74cd600619140007d0b679412157'
          '3fcb07cefe43a6a2fe4d977f124624ec'
-         'd3d4453a8f43a975a4e2ac40bc2e4d6c')
+         '893c4dbe58031e9401a7ec9f3984a507')
 
 prepare() {
     cd ${srcdir}
     cp -pr "${pkgname}-gtk-theme-${_oomox_theme_ver}"/* "${pkgname}-${_oomox_ver}/plugins/theme_oomox/gtk-theme"
     cp -pr "materia-theme-${_materia_theme_ver}"/* "${pkgname}-${_oomox_ver}/plugins/theme_materia/materia-theme"
     #cp -pr "materia-theme-${_materia_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/theme_materia/materia-theme"
-    cp -pr "arc-theme-${_arc_theme_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/theme_arc/arc-theme"
+    cp -pr "arc-theme-${_arc_theme_ver}"/* "${pkgname}-${_oomox_ver}/plugins/theme_arc/arc-theme"
     cp -pr "archdroid-icon-theme-${_archdroid_icons_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_archdroid/archdroid-icon-theme"
     cp -pr "gnome-colors-icon-theme-${_gnome_colors_icons_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_gnomecolors/gnome-colors-icon-theme"
     cp -pr "oomoxify-${_oomoxify_ver}"/* "${pkgname}-${_oomox_ver}/plugins/oomoxify"
