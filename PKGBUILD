@@ -4,13 +4,13 @@
 # https://github.com/soker90/paquetes-archinux.git
 pkgname=python-odfpy
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python API and tools to manipulate OpenDocument files"
 arch=('i686' 'x86_64')
 url="https://github.com/eea/odfpy"
 license=('Apache-2.0')
 makedepends=('python-setuptools')
-depends=('python' 'python-defusedxm')
+depends=('python' 'python-defusedxml')
 conflicts=('odfpy' 'python-odfpy' 'python2-odfpy' 'python-all-odfpy')
 source=("https://github.com/eea/odfpy/archive/release-$pkgver.tar.gz")
 md5sums=('c5fe16c7379d9c894f33368f88ab0528')
