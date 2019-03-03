@@ -1,7 +1,7 @@
 # Maintainer: Jörg Behrmann <behrmann@physik.fu-berlin.de>
 # Contributor: Max Schlemmer <max.schlemmer@gmail.com>
 pkgname=python-kwant
-pkgver=1.3.3
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Python package for numerical calculations on tight-binding models with a strong focus on quantum transport"
 arch=('any')
@@ -9,6 +9,7 @@ url="http://kwant-project.org/"
 license=('BSD')
 depends=(python python-scipy lapack blas python-tinyarray)
 optdepends=(
+  'python-qsymm: finding symmetries of Hamiltonians'
   'python-matplotlib: needed for plotting support and the tutorial'
   'python-sympy: needed for the kwant.continuum submodule'
   'mumps: a sparse linear algebra library for speed up and memory usage reduction (use AUR mumps-seq-shared or any other built as shared library)'
@@ -18,8 +19,8 @@ source=(
 	http://downloads.kwant-project.org/kwant/kwant-$pkgver.tar.gz
 	http://downloads.kwant-project.org/kwant/kwant-$pkgver.tar.gz.asc
 )
-sha1sums=('fd57dc16cad3806ef3761d0273d8dbf68553edfb'
-          'SKIP')
+sha256sums=('df8845192952700c02729dee8423e8a2ad413947b1ef901a7da869bfb1c8e577'
+            'SKIP')
 validpgpkeys=('52299057FAD799653C4F088AC3F147F5980F3535')
 
 # Comment the prepare function if you want to build _without_ mumps support.
