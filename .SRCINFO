@@ -1,0 +1,12 @@
+pkgbase = san-francisco-pro-fonts
+	pkgdesc = San Francisco Pro Fonts by Apple
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://developer.apple.com/fonts/
+	arch = any
+	license = custom
+	source = San-Francisco-Pro-Fonts-1.0.tar.gz::https://github.com/Kyominii/San-Francisco-Pro-Fonts/archive/1.0.tar.gz
+	sha256sums = 81673c001f136e8dab5a3751c527a2256318483a137b1aceba0fe60c3559c10b
+
+pkgname = san-francisco-pro-fonts
+
