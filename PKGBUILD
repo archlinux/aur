@@ -3,7 +3,7 @@
 # Contributor: bebehei <bebe@bebehei.de>
 
 pkgname='icinga2'
-pkgver=2.10.2
+pkgver=2.10.3
 pkgrel=1
 pkgdesc="An open source host, service and network monitoring program"
 license=('GPL')
@@ -45,7 +45,7 @@ changelog="icinga2.changelog"
 source=("https://github.com/Icinga/$pkgname/archive/v$pkgver.tar.gz"
         "$pkgname.tmpfiles"
         "$pkgname.sysusers")
-sha256sums=('99ab0c511a8a7014b9cf9467fe126d4a369026e9353f6e64c05ae39a15b32ad9'
+sha256sums=('81d250ca7e609097dc78cb7fea646bdede5ecb4fd435b37d21f8ba3335fb7fd4'
             '1302b333f49ead14f8808a379535971501d3a0c1ba02a7bf7b4406b7d27c754c'
             '2f946a33ea50a3c4400a81acd778e6411ffe5e2257a98004288b84a64f382810')
 
