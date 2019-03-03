@@ -1,0 +1,19 @@
+pkgbase = python-qsymm
+	pkgdesc = Symmetry finder and symmetric Hamiltonian generator
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://gitlab.kwant-project.org/qt/qsymm
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-tinyarray
+	depends = python-sympy
+	optdepends = python-kwant: extends Kwant for finding symmetries of Hamiltonians
+	source = https://gitlab.kwant-project.org/qt/qsymm/-/archive/v1.1.2/qsymm-v1.1.2.tar.gz
+	sha256sums = 805dbb356fbaa3c2b875d56710827bf57792f24203a14348c6542ed1c82baed2
+
+pkgname = python-qsymm
+

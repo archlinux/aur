@@ -1,0 +1,6 @@
+*.tar.xz
+*.tar.gz
+*.tar.gz.asc
+pkg/
+src/
+qsymm-v*/
