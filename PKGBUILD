@@ -1,6 +1,5 @@
-# https://github.com/Earnestly/pkgbuilds/tree/master/bemenu-git
-pkgname=bemenu-git
-pkgver=r223.c3abc43
+pkgname=bemenu
+pkgver=0.1.0
 pkgrel=1
 
 pkgdesc='Dynamic menu library and client program inspired by dmenu with support for wayland compositors.'
@@ -8,36 +7,30 @@ url='https://github.com/Cloudef/bemenu'
 arch=('i686' 'x86_64')
 license=('GPL3' 'LGPL3')
 depends=('pango')
-makedepends=('git' 'cmake' 'libxkbcommon' 'libxinerama' 'wayland')
+makedepends=('cmake' 'libxkbcommon' 'libxinerama' 'wayland')
 optdepends=('wayland: For the wayland backend.'
             'libxkbcommon: For the wayland backend.'
             'libxinerama: For the x11 backend.'
             'ncurses: For the curses backend.')
 
-provides=('bemenu')
-conflicts=('bemenu')
+conflicts=('bemenu-git')
 
-source=('git://github.com/Cloudef/bemenu')
+source=("https://github.com/Cloudef/bemenu/archive/${pkgver}.tar.gz")
 
-md5sums=('SKIP')
-
-pkgver() {
-    cd bemenu
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git describe --always)"
-}
+sha256sums=('fddc08be9f04efea221841ccc481ed7ae27a6f28438c1f9871939fe71b22559e')
 
 build() {
-    cd bemenu
+    cd bemenu-${pkgver}
     cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib
     make
 }
 
 check() {
-    cd bemenu
+    cd bemenu-${pkgver}
     make test
 }
 
 package() {
-    cd bemenu
+    cd bemenu-${pkgver}
     make DESTDIR="$pkgdir" install
 }
