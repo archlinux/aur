@@ -1,5 +1,5 @@
 pkgbase = qemu-pinning-git
-	pkgver = 2.12..r60483.420f81563a
+	pkgver = 3.1.0.r65211.ca3ee98b94
 	pkgrel = 1
 	url = http://wiki.qemu.org/
 	arch = i686

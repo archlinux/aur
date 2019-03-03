@@ -12,7 +12,7 @@ pkgname=('qemu-pinning-git'
          'qemu-block-rbd-pinning-git'
          'qemu-block-gluster-pinning-git'
          'qemu-guest-agent-pinning-git')
-pkgver=2.12..r60483.420f81563a
+pkgver=3.1.0.r65211.ca3ee98b94
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -38,7 +38,7 @@ sha256sums=('SKIP'
             '57d87ba45340f9b7f4b70834fc35da25be72cf4092abcc5012e853aa7b37c83a')
 _extra_arches=(aarch64 alpha arm armeb cris lm32 m68k microblaze microblazeel mips
 mips64 mips64el mipsel mipsn32 mipsn32el or1k ppc ppc64 ppc64abi32 ppc64le s390x
-sh4 sh4eb sparc sparc32plus sparc64 moxie ppcemb tricore unicore32 xtensa xtensaeb)
+sh4 sh4eb sparc sparc32plus sparc64 moxie tricore unicore32 xtensa xtensaeb)
 _extra_blob=(QEMU,cgthree.bin QEMU,tcx.bin bamboo.dtb openbios-ppc
 openbios-sparc32 openbios-sparc64 palcode-clipper petalogix-ml605.dtb
 petalogix-s3adsp1800.dtb ppc_rom.bin s390-ccw.img slof.bin
