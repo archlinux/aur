@@ -3,7 +3,7 @@
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta
-pkgver=2019.1.0b4
+pkgver=2019.1.0b5
 pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
@@ -34,12 +34,12 @@ optdepends=("${pkgname}-doc"
             "unityhub"
             "jq: needed for UnityHub integration helpers --register/--deregister")
 install=${pkgname}.install
-source=("2019.1.0b4.tar.xz::https://beta.unity3d.com/download/fd0dda99e05a/LinuxEditorInstaller/Unity.tar.xz"
+source=("2019.1.0b5.tar.xz::https://beta.unity3d.com/download/9899a5bd7e43/LinuxEditorInstaller/Unity.tar.xz"
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}-icon.png"
         "eula.txt")
-md5sums=("d400b69a3149fe0cb2cf83dfe4d05e1c"
+md5sums=("d940f3f4ac9a47c68314e48846b557e7"
          'bac8a19031259cc585e602b115bae784'
          '03837b6962d1050bbaf29b76e0f257e3'
          '723f9e556821810682a6d1f4be540a74'
