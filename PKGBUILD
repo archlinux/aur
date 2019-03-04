@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=virusgotal-git
-pkgver=1.0.2.r2.g5893d27
-pkgrel=2
+pkgver=1.0.2.r4.g69509a2
+pkgrel=1
 pkgdesc='VirusTotal zero dependency command line client.'
 arch=(x86_64)
 url="https://github.com/moldabekov/virusgotal"
@@ -27,7 +27,7 @@ prepare() {
 
 	cd "${srcdir}/go/src/github.com/moldabekov/virusgotal"
 
-	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
+	export GOPATH="${srcdir}/go"
 	go get -v ./...
 }
 
@@ -36,7 +36,7 @@ build() {
 
 	mkdir -p build
 
-	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
+	export GOPATH="${srcdir}/go"
 	go build -ldflags "-s -w" \
 		-gcflags="all=-trimpath=${GOPATH}/src" \
 		-asmflags="all=-trimpath=${GOPATH}/src" \
