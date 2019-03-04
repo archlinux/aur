@@ -2,12 +2,13 @@
 _npmname=jdrive
 pkgname=nodejs-jdrive
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Drive sync daemon"
 arch=(any) #Any that can fill the dependencies
 url="https://gitlab.com/mrvik/jdrive"
 depends=("nodejs>=10")
 license=("GPL2")
+provides=("jdrive")
 makedepends=(npm python2)
 source=("jdrive.tgz::https://gitlab.com/mrvik/jdrive/-/jobs/artifacts/v${pkgver}/raw/jdrive.tgz?job=Build%20npm%20tarball")
 noextract=("jdrive.tgz")
