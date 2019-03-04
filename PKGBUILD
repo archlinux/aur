@@ -2,12 +2,12 @@
 
 pkgname=gotify-cli
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line interface for pushing messages to gotify/server.'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/gotify/cli'
 license=('MIT')
-makedepends=('go-pie' 'make')
+makedepends=('go-pie' 'make' 'git')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("https://github.com/gotify/cli/archive/v${pkgver}.tar.gz")
