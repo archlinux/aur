@@ -1,0 +1,14 @@
+pkgbase = nextcloud-app-user-sql
+	pkgdesc = App for authenticating Nextcloud users using SQL
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = https://github.com/nextcloud/user_sql
+	arch = any
+	license = AGPL3
+	depends = nextcloud
+	options = !strip
+	source = nextcloud-app-user-sql-4.3.0.tar.gz::https://github.com/nextcloud/user_sql/releases/download/v4.3.0/user_sql-4.3.0.tar.gz
+	sha256sums = 804d69aa6a9c90b487ba0d8d54a87da5adae2a02b053471e670f111e0b8b47f6
+
+pkgname = nextcloud-app-user-sql
+
