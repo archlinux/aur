@@ -1,13 +1,13 @@
 pkgbase = majsoul-plus
 	pkgdesc = Majsoul browser, with more features
 	pkgver = 1.10.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MajsoulPlus/majsoul-plus
 	arch = x86_64
 	license = AGPL3
 	makedepends = npm
 	makedepends = imagemagick
-	depends = electron2
+	depends = electron
 	source = https://github.com/MajsoulPlus/majsoul-plus/archive/v1.10.6.tar.gz
 	sha256sums = c914845e373d56a5b99b870c1b75f25fbfb930f9ce4eadf7eb733ca41c580b53
 
