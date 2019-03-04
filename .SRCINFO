@@ -1,13 +1,14 @@
 pkgbase = jdrive
 	pkgdesc = Google Drive sync daemon
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/mrvik/jdrive
 	arch = any
 	license = GPL2
 	makedepends = npm
 	makedepends = python2
 	depends = nodejs>=10
+	optdepends = jdrive-client: See JDrive progress using JDrive socket
 	provides = jdrive
 	replaces = nodejs-jdrive
 	noextract = jdrive.tgz
