@@ -2,14 +2,14 @@
 
 pkgname=nginx-mainline-mod-dav-ext
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.15.8
+_nginxver=1.15.9
 
 pkgdesc='Nginx mainline module with support for missing PROPFIND and OPTIONS WebDAV methods'
 arch=('i686' 'x86_64')
-depends=('nginx-mainline')
+depends=('nginx-mainline' 'libxslt')
 url="https://github.com/arut/nginx-dav-ext-module"
 license=('CUSTOM')
 
@@ -22,7 +22,7 @@ validpgpkeys=(
 	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
-sha256sums=('a8bdafbca87eb99813ae4fcac1ad0875bf725ce19eb265d28268c309b2b40787'
+sha256sums=('e4cfba989bba614cd53f3f406ac6da9f05977d6b1296e5d20a299f10c2d7ae43'
             'SKIP'
             'd2499d94d82d4e4eac8425d799e52883131ae86a956524040ff2fd230ef9f859')
 
