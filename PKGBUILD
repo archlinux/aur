@@ -3,9 +3,9 @@
 pkgname=weborf-git
 _pkgname="weborf"
 pkgver=0.15
-pkgrel=4
+pkgrel=5
 pkgdesc="Minimal HTTP server to share your files"
-arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
+arch=('any')
 url="https://ltworf.github.io/weborf"
 license=('GPL3')
 makedepends=('pacman>=5.1' 'git' 'sudo' 'findutils')
