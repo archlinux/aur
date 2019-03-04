@@ -1,8 +1,8 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 
 pkgname=arm-linux-gnueabihf-armcl-neon
-pkgver=18.11
-pkgrel=2
+pkgver=19.02
+pkgrel=1
 
 epoch=
 pkgdesc="ARM Computer Vision and Machine Learning Library (armv7a NEON Backend)"
@@ -38,7 +38,8 @@ build() {
   pmu=0 \
   mali=0 \
   validation_tests=0 \
-  benchmark_tests=0
+  benchmark_tests=0 \
+  extra_cxx_flags="-fPIC"
 }
 
 #check() {}
