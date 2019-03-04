@@ -3,7 +3,7 @@
 
 pkgname=emacs-nim-mode
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Emacs mode for the nim programming language"
 arch=('any')
 url="https://github.com/nim-lang/nim-mode"
@@ -25,6 +25,6 @@ build() {
 
 package() {
   cd ${pkgname#emacs-}-$pkgver
-  install -dm755 "$pkgdir"/usr/share/emacs/site-lisp/$pkgname
-  cp *.el "$pkgdir"/usr/share/emacs/site-lisp/$pkgname
+  install -dm755 "$pkgdir"/usr/share/emacs/site-lisp
+  cp *.el{,c} "$pkgdir"/usr/share/emacs/site-lisp
 }
