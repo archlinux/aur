@@ -1,2 +1,2 @@
-u nimiq - "Nimiq" /var/lib/nimiq
+u nimiq - "User with restricted privileges for Nimiq daemon" /var/lib/nimiq
 g nimiq -

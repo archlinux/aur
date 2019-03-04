@@ -1,7 +1,7 @@
 pkgbase = nimiq
 	pkgdesc = Nimiq core
-	pkgver = 1.4.1
-	pkgrel = 0
+	pkgver = 1.4.3
+	pkgrel = 1
 	url = https://nimiq.com
 	install = nimiq.install
 	arch = x86_64
@@ -13,13 +13,13 @@ pkgbase = nimiq
 	makedepends = make
 	depends = nodejs>=8.0.0
 	depends = npm
-	noextract = core.git#tag=v1.4.1
+	noextract = core.git#tag=v1.4.3-1
 	noextract = nimiq.sysusers
 	backup = etc/nimiq/nimiq.conf
-	source = nimiq-core.git::git+https://github.com/nimiq-network/core.git#tag=v1.4.1
+	source = nimiq-core.git::git+https://github.com/nimiq-network/core.git#tag=v1.4.3-1
 	source = nimiq.sysusers
 	sha256sums = SKIP
-	sha256sums = bcccf6e33e8c5f73342a1a73422f48269af1f332a3151cec9c304b05dec74303
+	sha256sums = 8a24a02f92af8ed75b0405eefdd6b5ca33a91237e47111d93da0978df23720df
 
 pkgname = nimiq
 

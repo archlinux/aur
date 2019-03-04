@@ -2,10 +2,10 @@
 
 pkgbase="nimiq"
 pkgname=${pkgbase}
-pkgver=1.4.1
-pkgrel=0
+pkgver=1.4.3
+pkgrel=1
 _svc_tag=v${pkgver}
-if [ ${pkgrel} -gt 0 ];
+if [ ${pkgrel} -gt 1 ];
 then
   _svc_tag=v${pkgver}-${pkgrel}
 fi
@@ -34,7 +34,7 @@ backup=(
 )
 sha256sums=(
   'SKIP'
-  'bcccf6e33e8c5f73342a1a73422f48269af1f332a3151cec9c304b05dec74303'
+  '8a24a02f92af8ed75b0405eefdd6b5ca33a91237e47111d93da0978df23720df'
 )
 install="${pkgbase}.install"
 
