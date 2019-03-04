@@ -8,7 +8,7 @@ pkgbase = starlink-pal
 	license = LGPL3
 	depends = erfa
 	conflicts = icecube-pal-git
-	source = starlink-pal-0.9.8::https://github.com/Starlink/pal/releases/download/v0.9.8/pal-0.9.8.tar.gz
+	source = https://github.com/Starlink/pal/releases/download/v0.9.8/pal-0.9.8.tar.gz
 	md5sums = SKIP
 
 pkgname = starlink-pal
