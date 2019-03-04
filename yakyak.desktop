@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=YakYak
+Comment=Desktop client for Google Hangouts
+GenericName=Hangouts Client
+Exec=yakyak
+Icon=yakyak-stable
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;
