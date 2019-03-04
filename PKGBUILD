@@ -8,7 +8,10 @@ pkgdesc="Emacs mode for the nim programming language"
 arch=('any')
 url="https://github.com/nim-lang/nim-mode"
 license=('GPL3')
-depends=('emacs-dash' 'emacs-epc' 'emacs-ctable' 'emacs-epl' 'emacs-deferred' 'emacs-company-mode' 'emacs-commander' 'emacs-flycheck')
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
+depends=('emacs-dash' 'emacs-epc' 'emacs-ctable' 'emacs-epl' 'emacs-deferred' 'emacs-company-mode'
+	 'emacs-commander' 'emacs-flycheck')
 source=("git+https://github.com/nim-lang/nim-mode.git" Makefile.patch)
 sha256sums=('SKIP' '20fef5db29d67788dd22cbc9dd97dd2a778a66a0b6f0b80aa9776d08cadb4576')
 
