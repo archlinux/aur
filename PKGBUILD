@@ -3,13 +3,13 @@
 
 _pkgname=etcher
 pkgname=etcher-git
-pkgver=1.4.9.r0.g5bdd5da1
+pkgver=1.5.8.r0.g02e0f407
 pkgrel=1
 pkgdesc='Burn images to SD cards & USB drives, safe & easy (git version)'
 arch=(x86_64)
 url='https://www.balena.io/etcher/'
 license=(apache)
-depends=(electron2 gtk2 libxtst libxss gconf nss alsa-lib)
+depends=(electron gtk2 libxtst libxss gconf nss alsa-lib)
 makedepends=(npm python2 git jq)
 optdepends=('libnotify: for notifications'
             'speech-dispatcher: for text-to-speech')
@@ -35,20 +35,10 @@ prepare() {
   git submodule init
   git config submodule.scripts/resin.url "$srcdir/scripts"
   git submodule update
-
-  # electron --version does not work in a chroot
-  # https://github.com/electron/electron/issues/12621
-  export _electron_version=$(tail -c +2 /usr/lib/electron2/version)
-  mv package.json{,.orig}
-  jq '.devDependencies.electron |= env._electron_version' \
-    package.json.orig > package.json
 }
 
 build() {
   cd "$pkgname"
-
-  # workaround for https://github.com/balena-io/scripts/issues/7
-  export AWS_ACCESS_KEY_ID='' AWS_SECRET_ACCESS_KEY=''
   make electron-develop
   make webpack
   npm prune --production
