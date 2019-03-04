@@ -2,13 +2,13 @@
 
 _pkgname=quasselgrep
 pkgname=$_pkgname-git
-pkgver=r74.g502c88b
+pkgver=r95.g9b6b0bc
 pkgrel=1
 pkgdesc='Tool for searching quassel logs from the commandline'
 arch=('any')
 url='https://github.com/fish-face/quasselgrep'
 license=('GPL')
-depends=('python2-setuptools' 'python2-dateutil' 'python2-crypto')
+depends=('python2' 'python2-setuptools' 'python2-dateutil' 'python2-futures' 'python2-pycryptodome')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")

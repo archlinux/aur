@@ -1,15 +1,17 @@
 pkgbase = quasselgrep-git
 	pkgdesc = Tool for searching quassel logs from the commandline
-	pkgver = r74.g502c88b
+	pkgver = r95.g9b6b0bc
 	pkgrel = 1
 	url = https://github.com/fish-face/quasselgrep
 	arch = any
 	license = GPL
 	makedepends = git
+	depends = python2
 	depends = python2-setuptools
 	depends = python2-dateutil
-	depends = python2-crypto
-	provides = quasselgrep=r74.g502c88b
+	depends = python2-futures
+	depends = python2-pycryptodome
+	provides = quasselgrep=r95.g9b6b0bc
 	conflicts = quasselgrep
 	source = git+https://github.com/fish-face/quasselgrep.git
 	sha256sums = SKIP
