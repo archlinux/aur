@@ -4,7 +4,7 @@
 _pkgbasename=libsecret
 pkgname=lib32-$_pkgbasename
 pkgver=0.18.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for storing and retrieving passwords and other secrets (32-bit)"
 url="https://wiki.gnome.org/Projects/Libsecret"
 arch=('x86_64')
@@ -31,6 +31,7 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
   export LDFLAGS+=" -m32"
 
+  CFLAGS+=" -DHAVE_MLOCK" # https://gitlab.gnome.org/GNOME/libsecret/issues/23
   arch-meson "${srcdir}/${_pkgbasename}" build -Ddocs=false --libdir=/usr/lib32
   ninja -C build
 }

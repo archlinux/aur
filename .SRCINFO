@@ -1,7 +1,7 @@
 pkgbase = lib32-libsecret
 	pkgdesc = Library for storing and retrieving passwords and other secrets (32-bit)
 	pkgver = 0.18.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/Libsecret
 	arch = x86_64
 	license = LGPL
