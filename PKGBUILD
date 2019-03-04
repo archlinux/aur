@@ -22,6 +22,15 @@ optdepends=('go-ipfs: IPFS daemon') # an IPFS deamon is a checkdepend, but not r
 source=("git+https://github.com/ipfs/py-ipfs-api#branch=py-ipfs-http-client")
 sha256sums=('SKIP')
 
+prepare() {
+    cd $srcdir/$_reponame
+
+    git remote add up https://github.com/ipfs/$_reponame
+    git pull --no-edit up refs/pull/173/head  # pin ls path args
+    git pull --no-edit up refs/pull/174/head  # offline mode
+    git pull --no-edit up refs/pull/175/head  # fix files.cp assert fail
+}
+
 pkgver() {
     cd $_reponame
 
