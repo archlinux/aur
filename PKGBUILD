@@ -1,9 +1,9 @@
-# Maintainer: Agustin Borgna <hello[at]aborgna.com.ar>
+# Contributor: Agustin Borgna <hello[at]aborgna.com.ar>
 # Contributor: Marcel Korpel <marcel[dot]korpel[at]gmail>
 # Contributor: Renan Birck <renan.ee.ufsm at gmail.com>
 
 pkgname=logisim-evolution-git
-pkgver=2.14.r288.f65ea76
+pkgver=2.15.r659.f1376766
 pkgrel=1
 provides=('logisim-evolution')
 conflicts=('logisim-evolution')
@@ -26,26 +26,26 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/logisim-evolution"
-    printf "2.14.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "2.15.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
     cd "$srcdir/logisim-evolution"
 
-    ant jar
+    ./gradlew shadowJar
 }
 
 package() {
     cd "$srcdir"
 
-    install -Dm644 logisim-evolution/logisim-evolution.jar \
+    install -Dm644 logisim-evolution/build/libs/logisim-evolution-2.15.0-all.jar \
         "${pkgdir}/usr/share/java/logisim-evolution/logisim-evolution.jar"
     install -Dm644 logisim-evolution.xml \
         "${pkgdir}/usr/share/mime/packages/logisim-evolution.xml"
     install -Dm644 logisim-evolution.desktop \
         "${pkgdir}/usr/share/applications/logisim-evolution.desktop"
     for SIZE in 16 20 24 48 64 128; do
-        install -Dm644 logisim-evolution/resources/logisim/img/logisim-icon-${SIZE}.png \
+        install -Dm644 logisim-evolution/build/resources/main/resources/logisim/img/logisim-icon-${SIZE}.png \
             "${pkgdir}/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/logisim-evolution.png"
     done
     install -Dm755 logisim-evolution.sh "${pkgdir}/usr/bin/logisim-evolution"
