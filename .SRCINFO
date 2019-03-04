@@ -13,6 +13,7 @@ pkgbase = scilab
 	makedepends = ocaml-findlib
 	makedepends = ocaml-num
 	makedepends = gcc-fortran
+	makedepends = time
 	depends = suitesparse>=4.4.1
 	depends = arpack
 	depends = fftw

@@ -21,7 +21,8 @@ depends=('suitesparse>=4.4.1' 'arpack' 'fftw' 'eigen'
          'jogl>=2.3.2' 'apache-lucene>=7'
          'java-batik>=1.8' 'java-xmlgraphics-commons>=2.0.1')
 makedepends=('java-environment=8' 'ant>=1.9.0'
-             'ocaml-findlib' 'ocaml-num' 'gcc-fortran')
+             'ocaml-findlib' 'ocaml-num' 'gcc-fortran'
+             'time')
 source=("${url}/download/${pkgver}/${pkgname}-${pkgver}-src.tar.gz"
         "${pkgname}-jogl-2.3.2.patch"
         "${pkgname}-lucene.patch"
