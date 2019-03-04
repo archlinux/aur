@@ -1,10 +1,11 @@
 pkgbase = wpebackend-fdo
 	pkgdesc = Generic WPE WebKit backend using FreeDesktop technologies (Wayland)
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Igalia/WPEBackend-fdo
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	groups = wpe
 	license = custom:BSD
 	makedepends = cmake
