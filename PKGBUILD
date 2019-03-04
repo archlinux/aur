@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=majsoul-plus
 pkgver=1.10.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Majsoul browser, with more features"
 arch=('x86_64')
 url="https://github.com/MajsoulPlus/majsoul-plus"
@@ -36,7 +36,7 @@ package() {
     done
 
 	echo "#!/usr/bin/env bash
-exec electron2 --disable-gpu /opt/majsoul-plus" > "$srcdir/majsoul-plus.sh"
+exec electron2 --enable-logging --disable-gpu /opt/majsoul-plus" > "$srcdir/majsoul-plus.sh"
 	install -Dm755 "$srcdir/majsoul-plus.sh" "$pkgdir/usr/bin/majsoul-plus"
 
 	echo "[Desktop Entry]
