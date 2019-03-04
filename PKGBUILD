@@ -6,6 +6,7 @@ pkgdesc="A major Emacs mode for editing Rust source code"
 arch=('any')
 url="https://github.com/rust-lang/rust-mode"
 depends=('emacs')
+makedepends=('git')
 license=('MIT')
 source=("$pkgname"::'git://github.com/rust-lang/rust-mode.git')
 sha256sums=(SKIP)
