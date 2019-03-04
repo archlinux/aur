@@ -22,10 +22,10 @@ source=("v${pkgver}.tar.gz::https://github.com/yakyak/yakyak/archive/v${pkgver}.
         "yakyak.sh")
 
 build() {
-  cd "${srcdir}/${pkgver}"
+  cd "${srcdir}/v${pkgver}"
 
   sed -i.bak '/"electron:*"/d' ./package.json
-  npm install 
+  npm install
   npm run gulp
 }
 
