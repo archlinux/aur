@@ -2,7 +2,7 @@
 
 pkgname=liri-git-meta
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Meta package to install all the LiriOS ecosystem (git version)'
 arch=(any)
 url='https://liri.io/'
@@ -18,7 +18,6 @@ depends=(
 	liri-platformtheme-git
 	liri-power-manager-git
 	liri-pulseaudio-git
-	liri-qbs-shared-git
 	liri-screencast-git
 	liri-screenshot-git
   liri-settings-git
