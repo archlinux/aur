@@ -3,7 +3,7 @@
 
 pkgname=snakemake
 pkgver=5.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Python-based language and execution environment for GNU Make-like workflows'
 arch=(any)
 url='https://snakemake.readthedocs.io'
@@ -28,7 +28,7 @@ optdepends=(
 	'python-psutil: For benchmarking'
 )
 license=(MIT)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('0896fd44d58ae4272fe77526f4f9e4a2600c1751ed727a078a5646f10dcf86cf')
 
 build() {

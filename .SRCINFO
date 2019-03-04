@@ -29,7 +29,7 @@ pkgbase = snakemake
 	optdepends = python-ftputil: For FTP support
 	optdepends = xrootd: For XRootD support
 	optdepends = python-psutil: For benchmarking
-	source = https://files.pythonhosted.org/packages/source///-5.4.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/snakemake/snakemake-5.4.2.tar.gz
 	sha256sums = 0896fd44d58ae4272fe77526f4f9e4a2600c1751ed727a078a5646f10dcf86cf
 
 pkgname = snakemake
