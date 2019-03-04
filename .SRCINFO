@@ -1,6 +1,6 @@
 pkgbase = displaylink
 	pkgdesc = Linux driver for DL-6xxx, DL-5xxx, DL-41xx and DL-3x00
-	pkgver = 4.4.24
+	pkgver = 5.1.26
 	pkgrel = 1
 	url = http://www.displaylink.com/downloads/ubuntu.php
 	changelog = release-note.txt
@@ -14,12 +14,12 @@ pkgbase = displaylink
 	makedepends = wget
 	depends = evdi>=1.5.0
 	depends = libusb>=1.0.0
-	source = displaylink-driver-4.4.24.zip::https://www.displaylink.com/downloads/file?id=1261
+	source = displaylink-driver-5.1.26.zip::https://www.displaylink.com/downloads/file?id=1304
 	source = udev.sh
 	source = 99-displaylink.rules
 	source = displaylink.service
 	source = displaylink-sleep.sh
-	md5sums = f18b8e6fe8f2baf9c0288afddfd771a1
+	md5sums = f1956e0f795f72cfa54c0ac86cf1268e
 	md5sums = d5de775e41af06edbd8073adc490139d
 	md5sums = 20495d81c7d2540910ef86dc437b7fac
 	md5sums = c141a15e973481c7d961f8e135627ca4
