@@ -1,0 +1,9 @@
+post_install () {
+    xdg-mime install /usr/share/anki/anki.xml --novendor
+    xdg-mime default /usr/share/applications/anki.desktop application/x-colpkg
+    xdg-mime default /usr/share/applications/anki.desktop application/x-apkg
+}
+
+pre_remove() {
+    xdg-mime uninstall /usr/share/anki/anki.xml
+}

@@ -1,0 +1,16 @@
+pkgbase = anki-official-binary-bundle
+	pkgdesc = The official binary shipped with the tested versions of the dependent libraries.
+	pkgver = 2.1.9
+	pkgrel = 1
+	url = https://apps.ankiweb.net
+	arch = x86_64
+	license = GNU AGPL
+	provides = anki
+	conflicts = anki-git
+	source = https://apps.ankiweb.net/downloads/current/anki-2.1.9-linux-amd64.tar.bz2
+	source = remove_xdg_cmds_from_makefile.patch
+	md5sums = 8cc5bb80efc5dac2e9dc9ee802924e24
+	md5sums = a7e473f132a4fecd9cb77ac9c8530f5f
+
+pkgname = anki-official-binary-bundle
+
