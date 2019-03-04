@@ -1,7 +1,7 @@
 # Maintainer: Denis Borisevich <elfmax@tut.by>
 
 pkgname=jeveassets
-pkgver=5.8.0
+pkgver=5.8.2
 pkgrel=1
 pkgdesc="Out-of-game asset manager for Eve-Online, written in Java"
 arch=('any')
@@ -13,8 +13,8 @@ install=$pkgname.install
 source=("https://github.com/GoldenGnu/jeveassets/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.zip"
         "https://eve.nikr.net/${pkgname}/data.zip"
         "$pkgname.desktop" "$pkgname.png" "$pkgname.sh")
-md5sums=('5f96cdf4692f03e8ce1eabd0e3ceb37b'
-         '39e15b992593300e77cc88d48c506961'
+md5sums=('d404bf67c10dbf795ce3562852c1f26d'
+         '4997276d68c24470414da9582776cd1f'
          'fe76109bee617582dc94e35a572070d6'
          '706a6b2856a3aa9e26952078534faa8d'
          '349f0b0edae2c5df570142d43071a7f1')
