@@ -1,13 +1,12 @@
 # Maintainer: Fedor Piecka <teplavoda at gmail dot com>
 
 pkgname=eidklient
-pkgver=3.0.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Slovak eID Client"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
 license=('custom')
-depends=("glibc" "qt4" "pcsclite" "qt5-imageformats" "ccid" "openssl-1.0" "chrpath" "libcurl-openssl-1.0")
 source_i686=('https://eidas.minv.sk/TCTokenService/download/linux/debian/Aplikacia_pre_eID_i386_debian.tar.gz')
 source_x86_64=('https://eidas.minv.sk/TCTokenService/download/linux/debian/Aplikacia_pre_eID_amd64_debian.tar.gz')
 md5sums_i686=('SKIP')
@@ -26,11 +25,10 @@ pkgver() {
 }
 
 package() {
+        depends=("glibc" "qt4" "pcsclite" "qt5-imageformats" "ccid" "chrpath")
+
 	ar p ${srcdir}/Aplikacia_pre_eID_${upstream_arch}_debian.deb data.tar.gz | tar -xz -C "${pkgdir}"
 	
-        # Add LD_PRELOAD var to desktop entry to force OpenSSL 1.0 usage + older libcurl
-	sed -i 's/Exec=/Exec=env LD_PRELOAD=\/usr\/lib\/libcurl-openssl-1.0.so /' ${pkgdir}/usr/share/applications/aplikacia-pre-eid.desktop
-
 	# The application requires the libraries in a specific location
 	ln -sf /usr/lib/qt/plugins/imageformats/libqtga.so ${pkgdir}/usr/lib/eac_mw_klient/
 	ln -sf /usr/lib/qt4/plugins/imageformats/libqgif.so ${pkgdir}/usr/lib/eac_mw_klient/
