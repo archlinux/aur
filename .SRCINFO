@@ -1,15 +1,14 @@
 pkgbase = verdaccio
 	pkgdesc = Private npm repository server
-	pkgver = 3.10.1
+	pkgver = 3.11.6
 	pkgrel = 1
 	url = https://github.com/verdaccio/verdaccio
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = verdaccio-3.10.1.tgz
-	source = https://registry.npmjs.org/verdaccio/-/verdaccio-3.10.1.tgz
-	sha1sums = 35a4997685c3a92518959f3b7d48487a164d6289
+	source = https://registry.npmjs.org/verdaccio/-/verdaccio-3.11.6.tgz
+	sha256sums = f9a699b14e6e24cf7158c6920d7de2614d83a9fa4d8444f89f5718113a4590c6
 
 pkgname = verdaccio
 
