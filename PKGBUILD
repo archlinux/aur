@@ -1,8 +1,8 @@
 # Maintainer: JP-Ellis <josh@jpellis.me>
 
 pkgname=checkmate
-pkgver=2.0.11
-pkgrel=2
+pkgver=2.0.24
+pkgrel=1
 pkgdesc="A program to compare theoretical models against many recent experimental analyses"
 url="http://checkmate.hepforge.org/"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=("delphes"
          "fastjet"
          "hepmc"
          "madgraph"
-         "pythia"
+         "pythia8"
          "python2-scipy"
          "root")
 source=("http://www.hepforge.org/archive/checkmate/CheckMATE-${pkgver}.tar.gz"
@@ -19,18 +19,19 @@ source=("http://www.hepforge.org/archive/checkmate/CheckMATE-${pkgver}.tar.gz"
         "fastjet.patch"
         "path.patch"
         "PythiaHandler.patch")
-sha256sums=('36a6426841c1ae5c268298b13c6674ddf3f3f6d6cdb4b2463c6d36b580074879'
-            '0318bd33ae752a914e1af6102f5c648a4bcb72d87922f30561f7f9e44c80e169'
-            'c5be604f8cc3edcfd69c58b3c56c431ff2d8329e8a3ef1afea39ffd1d4f194f5'
-            '7069aaf2bfa0ad620e268f106c85f3b32688f78f5f122824ea9b4c665603c7cf'
-            'c073ee1e04a415dc3be3aa81de38feb031acec770b98b7b3429707e8cd7f81f1')
+sha256sums=('e72bdccd3151d9b0f2cec47fa638f3c41818b001dcf2811e03d981ab74ede14a'
+            '2df72c368af15e82f4998c1e63bdb870b42070f309b503582e9daa713664aef3'
+            'f4f335940d436e57195c9a6954414f999cb39fe5f9887c4adf72b24d0a74da45'
+            '1c90e1d8a5bf1de25d4eddfa8b6ce7faa0615af4c2ad69b92efbd3b148e2e1af'
+            '669df4be408ce98ac3b5ddf9e1a2246e3c4e9a8f57b4a082007fa45348141d2a')
 
 prepare() {
     msg2 "Patching files"
-    patch -p 1 < ExRootAnalysis.patch
-    patch -p 1 < fastjet.patch
-    patch -p 1 < path.patch
-    patch -p 1 < PythiaHandler.patch
+    cd "${srcdir}/CheckMATE-${pkgver}"
+    patch -p 1 < "${srcdir}/ExRootAnalysis.patch"
+    patch -p 1 < "${srcdir}/fastjet.patch"
+    patch -p 1 < "${srcdir}/path.patch"
+    patch -p 1 < "${srcdir}/PythiaHandler.patch"
 
     msg2 "Removing VCS directories"
     find . -type d -name ".svn" | xargs rm -rf
@@ -38,7 +39,8 @@ prepare() {
 
 build() {
     msg2 "Compiling source"
-    cd CheckMATE-${pkgver}
+    cd "${srcdir}/CheckMATE-${pkgver}"
+    export CXXFLAGS="$CXXFLAGS -std=c++17"
     ./configure --prefix="${pkgdir}/usr/" \
                 --with-hepmc=/usr \
                 --with-pythia=/usr \
