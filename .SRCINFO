@@ -1,0 +1,36 @@
+pkgbase = ayatana-indicator-application
+	pkgdesc = Ayatana Application Indicators
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/AyatanaIndicators
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	license = LGPL2.1
+	license = LGPL3
+	makedepends = mate-common
+	makedepends = xorg-server-xvfb
+	makedepends = glib2
+	makedepends = gtk3
+	makedepends = dbus-glib
+	makedepends = json-glib
+	makedepends = intltool
+	makedepends = libayatana-appindicator-gtk3
+	makedepends = libayatana-indicator-gtk3
+	makedepends = libdbusmenu-glib
+	makedepends = libdbusmenu-gtk3
+	makedepends = systemd
+	depends = libayatana-appindicator-gtk3
+	depends = libayatana-indicator-gtk3
+	depends = dbus-glib
+	depends = libdbusmenu-gtk3
+	depends = glib2
+	depends = gtk3
+	depends = pango
+	options = !emptydirs
+	source = http://releases.ayatana-indicators.org/source/ayatana-indicator-application/ayatana-indicator-application-0.5.2.tar.gz
+	md5sums = 15a5d17de624004cc814cc5d7b895478
+
+pkgname = ayatana-indicator-application
+
