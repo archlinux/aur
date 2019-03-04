@@ -1,8 +1,8 @@
 # Maintainer: Simon Tas <simon.tas.st@gmail.com>
 pkgname="deezloader-remix-git"
 _pkgname="DeezloaderRemix"
-pkgver=4.1.7.r12.g1f1eca5
-pkgrel=2
+pkgver=4.1.7.r13.g9526067
+pkgrel=1
 pkgdesc="Deezloader Remix is an improved version of Deezloader based on the Reborn branch"
 arch=('x86_64')
 url="https://notabug.org/RemixDevs/${_pkgname}"
