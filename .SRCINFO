@@ -1,7 +1,7 @@
 pkgbase = jdrive
 	pkgdesc = Google Drive sync daemon
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/mrvik/jdrive
 	arch = any
 	license = GPL2
@@ -10,6 +10,7 @@ pkgbase = jdrive
 	depends = nodejs>=10
 	optdepends = jdrive-client: See JDrive progress using JDrive socket
 	provides = jdrive
+	conflicts = nodejs-jdrive
 	replaces = nodejs-jdrive
 	noextract = jdrive.tgz
 	source = jdrive.tgz::https://gitlab.com/mrvik/jdrive/-/jobs/artifacts/v2.1.2/raw/jdrive.tgz?job=Build%20npm%20tarball
