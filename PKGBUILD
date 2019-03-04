@@ -5,7 +5,7 @@
 # Contributor: William Giokas <1007380@gmail.com>
 
 pkgname=i3lock-script
-pkgver=2.10.16.gf74c013
+pkgver=2.11.1.88507ff
 pkgrel=1
 pkgdesc="Fork of i3lock-git, that allows to execute a script if authentication fails"
 arch=('i686' 'x86_64')
@@ -21,10 +21,12 @@ source=('git://github.com/jumper149/i3lock-script#branch=master')
 sha1sums=('SKIP')
 
 _gitname='i3lock-script'
+_version=2.11.1
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  echo "$pkgver"
+  _commit="`git rev-parse --short HEAD`"
+  echo "${_version}.${_commit}"
 }
 
 build() {
