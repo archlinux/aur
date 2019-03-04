@@ -1,13 +1,14 @@
-# Maintainer: Björn Wiedenmann <archlinux@xorxor.de>
-# Contributor: Jonathan Yantis <yantis@yantis.net>
-# Contributor: Christian Hesse <mail@eworm.de>
-# Contributor: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: zer0def <zer0def@freenode>
+# Maintainer: Björn Wiedenmann <archlinux cat xorxor dog de>
+# Contributor: Jonathan Yantis <yantis cat yantis dog net>
+# Contributor: Christian Hesse <mail cat eworm dog de>
+# Contributor: Gaetan Bisson <bisson cat archlinux dog org>
 # Contributor: Caspar Verhey <caspar at verhey dot net>
-# Contributor: Seth Fulton  <seth@sysfu.com>
-# Contributor: Aaron Griffin <aaron@archlinux.org>
-# Contributor: judd <jvinet@zeroflux.org>
-# Contributor: benetnash <benetnash@mail.icpnet.pl>
-# Contributor: Thomas Haider <t.haider@vcnc.org>
+# Contributor: Seth Fulton  <seth cat sysfu dog com>
+# Contributor: Aaron Griffin <aaron cat archlinux dog org>
+# Contributor: judd <jvinet cat zeroflux dog org>
+# Contributor: benetnash <benetnash cat mail dog icpnet dog pl>
+# Contributor: Thomas Haider <t.haider cat vcnc dog org>
 
 # Note: The bulk of this PKGBUILD is based off:
 # https://aur.archlinux.org/packages/op/openssh-git/PKGBUILD
@@ -76,7 +77,7 @@ sha256sums=('8025dd92a3247d75fe5a81297e30ff273412a00b0525d6f0fe4e97555b329c28'
 
 install=$pkgname.install
 
-prepare() {
+build() {
   cd openssh-portable-hpn-${_pkgver}/
 
   # fix building if scp is not installed on host
@@ -86,10 +87,6 @@ prepare() {
   # https://gitweb.gentoo.org/repo/gentoo.git/commit/?id=371794f20c7eb2b88cae2619b6fa3444452aafb4
   patch -Np1 < ${srcdir}/openssl11.patch
   autoreconf -fi
-}
-
-build() {
-  cd openssh-portable-hpn-${_pkgver}/
 
   ./configure \
     --prefix=/usr \
@@ -106,7 +103,6 @@ build() {
     --with-mantype=man \
     --with-md5-passwords \
     --with-pid-dir=/run \
-    --with-default-path='/usr/local/sbin:/usr/local/bin:/usr/bin' \
 
   make
 }
