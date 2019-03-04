@@ -1,7 +1,7 @@
 pkgbase = python-nazca
 	pkgdesc = Nazca module for photonic integrated circuit design.
-	pkgver = 0.4.3
-	pkgrel = 2
+	pkgver = 0.5
+	pkgrel = 1
 	url = https://nazca-design.org/
 	arch = any
 	license = AGPLv3+
@@ -11,8 +11,8 @@ pkgbase = python-nazca
 	depends = python-matplotlib
 	depends = python-pillow
 	depends = ipython
-	source = https://nazca-design.org/dist/nazca-0.4.3.zip
-	sha256sums = 51980706f8e4051d7ed2af9511a28eaf6e05acbcdaa782afb116a26a8509344b
+	source = https://nazca-design.org/dist/nazca-0.5.zip
+	sha256sums = c89b3a2334d3b3b1baed5eedee66ee5005a9e1a4068db8a36df95e2ed034adfa
 
 pkgname = python-nazca
 

@@ -1,14 +1,14 @@
 # Maintainer: sasvari <sasvari@fastmail.com>
 pkg="nazca"
 pkgname="python-$pkg"
-pkgver=0.4.3
-pkgrel=2
+pkgver=0.5
+pkgrel=1
 pkgdesc="Nazca module for photonic integrated circuit design."
 arch=(any)
 url="https://nazca-design.org/"
 license=("AGPLv3+")
 depends=("python" "python-pyclipper" "python-pandas" "python-matplotlib" "python-pillow" "ipython")
-sha256sums=('51980706f8e4051d7ed2af9511a28eaf6e05acbcdaa782afb116a26a8509344b')
+sha256sums=('c89b3a2334d3b3b1baed5eedee66ee5005a9e1a4068db8a36df95e2ed034adfa')
 source=("https://nazca-design.org/dist/$pkg-$pkgver.zip")
 
 package() {
