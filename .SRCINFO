@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-proj
 	pkgdesc = Cartographic Projections library. (mingw-w64)
-	pkgver = 5.2.0
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = http://trac.osgeo.org/proj/
 	arch = any
@@ -8,11 +8,12 @@ pkgbase = mingw-w64-proj
 	makedepends = mingw-w64-configure
 	makedepends = mingw-w64-wine
 	depends = mingw-w64-crt
+	depends = mingw-w64-sqlite
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://download.osgeo.org/proj/proj-5.2.0.tar.gz
-	sha256sums = ef919499ffbc62a4aae2659a55e2b25ff09cccbbe230656ba71c6224056c7e60
+	source = http://download.osgeo.org/proj/proj-6.0.0.tar.gz
+	sha256sums = 4510a2c1c8f9056374708a867c51b1192e8d6f9a5198dd320bf6a168e44a3657
 
 pkgname = mingw-w64-proj
 
