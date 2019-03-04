@@ -1,7 +1,5 @@
-diff --git a/CheckMATE-2.0.11.orig/tools/python/info.py b/CheckMATE-2.0.11/tools/python/info.py
-index 4bd10ca..91b58f9 100644
---- a/CheckMATE-2.0.11.orig/tools/python/info.py
-+++ b/CheckMATE-2.0.11/tools/python/info.py
+--- a/tools/python/info.py
++++ b/tools/python/info.py
 @@ -2,6 +2,7 @@ import os, shutil,  sys
  import json, pickle
  import argparse

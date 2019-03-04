@@ -1,5 +1,5 @@
---- a/CheckMATE-2.0.11/tools/analysis/include/base/AnalysisBase.h
-+++ b/CheckMATE-2.0.11/tools/analysis/include/base/AnalysisBase.h
+--- a/tools/analysis/include/base/AnalysisBase.h
++++ b/tools/analysis/include/base/AnalysisBase.h
 @@ -24,8 +24,8 @@
  #include "ExRootAnalysis/ExRootTreeReader.h"
  #include "ExRootAnalysis/ExRootResult.h"
