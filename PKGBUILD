@@ -5,8 +5,8 @@
 pkgname=z-push
 groups=('zarafa'
 	'kopano')
-pkgver=2.4.4
-pkgrel=2
+pkgver=2.4.5
+pkgrel=1
 pkgdesc="open-source implementation of the ActiveSync protocol"
 arch=('any')
 url="http://z-push.sf.net/"
