@@ -1,7 +1,7 @@
 # Maintainer: bohoomil <@zoho.com>
 
 pkgname=ttf-iosevka-ibx
-pkgver=1.14.1
+pkgver=2.1.0
 pkgrel=1
 depends=('fontconfig')
 pkgdesc="A programmer's typeface."
@@ -12,7 +12,7 @@ license=('custom:OFL')
 source=(https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/01-iosevka-${pkgver}.zip
         45-iosevka.conf
         90-tt-iosevka.conf)
-sha1sums=('f541f9676e78e9ba5f8b0c1cd8a9195a06032c27'
+sha1sums=('af06bc289e770020215bed6bd665c48afcb3bf2a'
           '56b9b68799d3945428c5d30958b03898c878eb18'
           '83159b5d820db037c81d10eb75e61f927f4f6fe1')
 
