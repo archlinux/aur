@@ -2,7 +2,7 @@
 
 _name=sen
 pkgname="python-${_name}"
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='sen is a terminal user interface for docker engine'
 url='https://github.com/TomasTomecek/sen'
@@ -12,7 +12,7 @@ depends=('python' 'python-urwid' 'python-humanize' 'python-docker-py' 'python-ur
 provides=("${_name}=${pkgver}")
 source=("${url}/archive/${pkgver}.tar.gz")
 # source=("https://pypi.python.org/packages/source/s/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('8a94ecd3edcbd33182a7d583d095bd9c94f50d120edd20a237f4d6c175cc9250')
+sha256sums=('cf97b722f1fe49a99496fcaf955fcb54516210b26df5aad44d94a513c297fbe5')
 
 # Enable for tests
 check() {
@@ -26,4 +26,4 @@ package() {
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-# vim:set ft=sh ts=2 sw=2 et:
+# vim:set ts=2 sw=2 et:
