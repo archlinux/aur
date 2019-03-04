@@ -1,0 +1,51 @@
+# This is a default template for a post-install scriptlet.
+# Uncomment only required functions and remove any functions
+# you don't need (and this header).
+
+## arg 1:  the new package version
+pre_install() {
+/usr/sbin/groupadd -r emercoin 
+/usr/sbin/useradd -r -d "/usr/local/emercoin" -m -g emercoin -c "emercoin user" -s /bin/false emercoin 
+/usr/sbin/usermod -a -G emercoin root 
+}
+
+## arg 1:  the new package version
+post_install() {
+    chown emercoin:emercoin ./bin/emercoind $pkgdir/usr/bin/emercoind
+    chown emercoin:emercoin /usr/bin/emercoin-qt
+    chown emercoin:emercoin /usr/bin/emercoin-tx
+    chown emercoin:emercoin /usr/bin/emercoin-cli
+    chown emercoin:emercoin /usr/include/emercoinconsensus.h
+    chown emercoin:emercoin /usr/lib/libemercoinconsensus.so.0.0.0
+    chown emercoin:emercoin /share/man/man1/bitcoind.1 
+    chown emercoin:emercoin /share/man/man1/bitcoin-qt.1
+    chown emercoin:emercoin /share/man/man1/bitcoin-tx.1
+    chown emercoin:emercoin /share/man/man1/bitcoin-cli.1
+    chmod 6771 /usr/bin/emercoind
+    chmod 771 /usr/bin/emercoin-qt
+    chmod 6771 /usr/bin/emercoin-tx
+    chmod 6771 /usr/bin/emercoin-cli
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#post_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+#pre_remove() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+post_remove() {
+/usr/sbin/groupdel -f emercoin  
+/usr/sbin/userdel -f emercoin 
+}
