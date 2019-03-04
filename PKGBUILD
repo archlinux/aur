@@ -1,7 +1,7 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='speculum'
-pkgver=1.3.5
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Yet another python mirror list tool'
 arch=('any')
@@ -14,5 +14,6 @@ md5sums=('SKIP')
 
 
 package() {
-    install -Dm 755 "${pkgname}/speculum.py" "${pkgdir}/usr/bin/speculum"
+    cd "${pkgname}"
+    python setup.py install --root "${pkgdir}" --optimize=1
 }
