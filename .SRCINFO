@@ -1,6 +1,6 @@
 pkgbase = cashshuffle
 	pkgdesc = CashShuffle server for BCH.
-	pkgver = 0.6.0
+	pkgver = 0.6.2
 	pkgrel = 0
 	url = http://github.com/cashshuffle/cashshuffle
 	arch = i686
@@ -8,11 +8,11 @@ pkgbase = cashshuffle
 	license = MIT
 	makedepends = go
 	makedepends = git
-	provides = s=0.6.0
+	provides = s=0.6.2
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/cashshuffle/cashshuffle/archive/v0.6.0.tar.gz
-	sha256sums = 4469c1bc7a46204e7f61c068583f8177742a66f761b053ed1be64c625a146a16
+	source = https://github.com/cashshuffle/cashshuffle/archive/v0.6.2.tar.gz
+	sha256sums = 7936ed3a925b5db3b7de470c6851e75bb50ffad4ba8efa270f108d200932c78b
 
 pkgname = cashshuffle
 
