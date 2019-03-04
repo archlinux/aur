@@ -1,0 +1,11 @@
+--- anki-2.1.9-linux-amd64/Makefile.orig	2019-03-04 19:24:16.040322000 +0100
++++ anki-2.1.9-linux-amd64/Makefile	2019-03-04 19:29:45.048864131 +0100
+@@ -10,7 +10,7 @@
+ 	mkdir -p ${PREFIX}/share/anki
+ 	cp -av * ${PREFIX}/share/anki/
+ 	mkdir -p ${PREFIX}/bin
+-	ln -sf ${PREFIX}/share/anki/bin/anki ${PREFIX}/bin/
++	ln -sf /usr/share/anki/bin/anki ${PREFIX}/bin/
+ 	# fix a previous packaging issue where we created this as a file
+ 	(test -f ${PREFIX}/share/applications && rm ${PREFIX}/share/applications)||true
+ 	mkdir -p ${PREFIX}/share/pixmaps
