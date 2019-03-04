@@ -2,13 +2,13 @@
 pkgbase=libayatana-appindicator
 pkgname=("${pkgbase}-gtk"{2,3} "${pkgbase}-sharp" "python2-${pkgbase}")
 pkgver=0.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Ayatana Application Indicators Shared Library'
 url='https://ayatana-indicators.org'
 arch=('x86_64')
 license=('LGPL2.1' 'LGPL3')
 makedepends=('mate-common' 'gtk-doc' 'dbus-glib' 'gobject-introspection' 'gtk-sharp-2'
-             'libayatana-indicator-gtk'{2,3} 'mono' 'pygtk' 'vala' 'python2')
+             'libayatana-indicator-gtk'{2,3} 'libdbusmenu-gtk'{2,3} 'mono' 'pygtk' 'vala' 'python2')
 options=('!emptydirs')
 source=(http://releases.ayatana-indicators.org/source/${pkgbase}/${pkgbase}-${pkgver}.tar.gz)
 sha512sums=('2061582cf16954de1ad4df888acc3972126e642357adcf017d71b742ad600b970089cca91e5fe2c0dac3c35660efb22bb07cd1b3a7559a8d6adc15eba062eec7')
