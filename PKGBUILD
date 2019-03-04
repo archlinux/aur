@@ -2,7 +2,7 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 _pkgname=google-drive-ocamlfuse
 pkgname=google-drive-ocamlfuse-git
-pkgver=r540.c002e65
+pkgver=r550.687ac60
 pkgrel=1
 pkgdesc='FUSE-based file system backed by Google Drive, written in OCaml'
 arch=('x86_64' 'i686')
@@ -35,12 +35,12 @@ pkgver() {
 build() {
 	cd "$srcdir/$_pkgname"
 
-	# Old method requires ocamlbuild instead of jbuilder
+	# Old method requires ocamlbuild instead of jbuilder/dune
 	#ocaml setup.ml -configure --prefix /usr --destdir "$pkgdir" --exec-prefix "/usr"
 	#ocaml setup.ml -build
 
-	#jbuilder build --debug-backtraces --debug-dependency-path --debug-findlib --no-buffer --verbose @install
-	jbuilder build @install
+	#dune build --debug-backtraces --debug-dependency-path --debug-findlib --no-buffer --verbose @install
+	dune build @install
 }
 
 #check() {
@@ -58,5 +58,5 @@ package() {
 	mkdir -p "$pkgdir/usr"
 	mkdir -p "$pkgdir/$(ocamlfind printconf destdir)"
     
-	jbuilder install --prefix="$pkgdir/usr" --libdir="$pkgdir/$(ocamlfind printconf destdir)"
+	dune install --prefix="$pkgdir/usr" --libdir="$pkgdir/$(ocamlfind printconf destdir)"
 }
