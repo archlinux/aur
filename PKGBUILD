@@ -51,6 +51,6 @@ package() {
     cd dist/
     tar xf ${_name}-${_ver}.tar.gz
     cd  ${_name}-${_ver}
-    python setup.py install --root="$pkgdir/" --optimize=1
+    python setup.py install --prefix="$pkgdir/usr" --optimize=1
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
