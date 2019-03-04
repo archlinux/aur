@@ -2,9 +2,9 @@
 pkgdesc='Base library for the WPE WebKit port'
 pkgname=libwpe
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 url=https://github.com/WebPlatformForEmbedded/libwpe
-arch=(x86_64 i686)
+arch=(x86_64 i686 aarch64)
 groups=(wpe)
 makedepends=(cmake opengl-driver)
 conflicts=(libwpe-git)

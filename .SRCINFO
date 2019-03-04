@@ -1,10 +1,11 @@
 pkgbase = libwpe
 	pkgdesc = Base library for the WPE WebKit port
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WebPlatformForEmbedded/libwpe
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	groups = wpe
 	license = custom:BSD
 	makedepends = cmake
