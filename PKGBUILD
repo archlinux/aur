@@ -2,17 +2,17 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=mat2
-pkgver=0.6.0
-pkgrel=3
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Metadata anonymisation toolkit"
 arch=('any')
 url="https://0xacab.org/jvoisin/mat2"
 license=('GPL3')
 makedepends=('python-setuptools')
 depends=('python' 'perl' 'perl-image-exiftool' 'python-mutagen' 'python-cairo' 'python-gobject')
-optdepends=('ffmpeg')
+optdepends=('ffmpeg' 'bubblewrap')
 source=(https://0xacab.org/jvoisin/mat2/-/archive/${pkgver}/mat2-${pkgver}.zip)
-sha256sums=('04a9f7ebaee67f5bb88759ca00a4e63bb83eae5dc8f27e612b4209b58af7f2d1')
+sha256sums=('e0e9cd6888176ed75bdcdc8cf5ce402cad6f989166cfd50d5d03a88a399fb719')
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
