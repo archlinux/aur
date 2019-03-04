@@ -25,5 +25,5 @@ pkgbase = emercoin-bin
 	sha256sums_x86_64 = 363e02d8f9b7e2dbd10220fc327826d188294ccb75920c9a36b2f233ac0e978e
 	sha256sums_x86_64 = fae0ebd505eeb13cf1b4ee1ae3b3014e02a6422c77194e2a4d44c481262ceb8e
 
-pkgname = emercoin
+pkgname = emercoin-bin
 
