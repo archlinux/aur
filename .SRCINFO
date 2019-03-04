@@ -1,14 +1,14 @@
 pkgbase = oilshell
-	pkgdesc = Oil is a new unix shell
-	pkgver = 0.5.0
+	pkgdesc = Oil, a new unix shell
+	pkgver = 0.6.pre16
 	pkgrel = 1
 	url = http://www.oilshell.org/
 	arch = x86_64
 	license = APACHE
-	optdepends = readline: for interactive features
+	depends = readline
 	options = !strip
-	source = https://www.oilshell.org/download/oil-0.5.0.tar.xz
-	sha256sums = dc18bbed27dc3c18925d4614bbbdd576063fef186c44f1ecf20cd00b613eec0f
+	source = https://www.oilshell.org/download/oil-0.6.pre16.tar.xz
+	sha256sums = ccc34f4e4723052d93018efd1bcbeb1c080f0af1cbfc5a9b4f50d0ea4ad0cf90
 
 pkgname = oilshell
 
