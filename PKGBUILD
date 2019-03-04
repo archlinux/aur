@@ -1,53 +1,51 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Maintainer: mwberry <matt@comp.uter.science>
 
 pkgname=s2n-git
-pkgver=r442.674df33
-_libressl_ver=2.3.1
+pkgver=r2225.2fbc43d3
 pkgrel=1
 pkgdesc='Implementation of the TLS/SSL protocols that is designed to be simple, small, fast, and with security as a priority'
-arch=(i686 x86_64)
+arch=(x86_64)
 url='https://github.com/awslabs/s2n'
 license=(Apache)
-#depends=(glibc)
-makedepends=(git)
-source=(git://github.com/awslabs/s2n
-       http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-$_libressl_ver.tar.gz)
-sha1sums=('SKIP'
-          '37c765c6a452e1dd6c5ed368d618c05e5875715e')
+makedepends=(git cmake)
+depends=(openssl)
+source=(git://github.com/awslabs/s2n)
+sha1sums=('SKIP')
 
 pkgver() {
-  cd s2n
+  cd "$srcdir/s2n"
   echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-prepare() {
-  cd s2n
-  # https://github.com/awslabs/s2n/issues/99
-  find . -type f -exec sed -i 's/lpthread/pthread/' '{}' \;
-}
-
 build() {
-  cd s2n
-
-  cd libcrypto-build
-  tar -xzvf "$srcdir"/libressl-$_libressl_ver.tar.gz
-  cd libressl-$_libressl_ver
-  ./configure --prefix=`pwd`/../../libcrypto-root/
-  make CFLAGS=-fPIC install
-
-  cd ../..
-
-  make bin libs
-}
-
-check() {
-  cd s2n
-  make -C tests
+  rm -rf "$srcdir/build"
+  mkdir "$srcdir/build"
+  cd "$srcdir/build"
+  cmake -DBUILD_SHARED_LIBS=ON "$srcdir/s2n"
+  make s2n{,c,d}
 }
 
 package() {
-  cd s2n
+  cd "build"
+  # Note: cmake's built-in 'install' target depends on 'all', which includes 'test'
+  # This slows down the build, but there's not much that can be done about it.
+  make DESTDIR="$pkgdir" install
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # strip /usr/local to /usr and squash /usr/lib64 to /usr/lib
+  mv "$pkgdir/usr/local/"* "$pkgdir/usr/"
+  rmdir "$pkgdir/usr/local"
+  mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
+
+  # it's not clear to me how transitive dependencies which are not cmake-aware are
+  # intended to work (if at all) by Kitware, but the find_package module will look
+  # for *Config.cmake files. The Find*.cmake modules are reserved for the cmake
+  # distribution itself. This worked in my project, YMMV.
+  install -d "$pkgdir/usr/lib/LibCrypto/cmake"
+  mv "$pkgdir/usr/lib/cmake/FindLibCrypto.cmake" "$pkgdir/usr/lib/LibCrypto/LibCryptoConfig.cmake" 
+
+  install -d "$pkgdir/usr/bin"
+  install -Dm644 "$srcdir/build/bin/s2n"{c,d} "$pkgdir/usr/bin"
+  install -Dm644 "$srcdir/s2n/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 

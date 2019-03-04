@@ -1,16 +1,15 @@
 pkgbase = s2n-git
 	pkgdesc = Implementation of the TLS/SSL protocols that is designed to be simple, small, fast, and with security as a priority
-	pkgver = r442.674df33
+	pkgver = r2225.2fbc43d3
 	pkgrel = 1
 	url = https://github.com/awslabs/s2n
-	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = git
+	makedepends = cmake
+	depends = openssl
 	source = git://github.com/awslabs/s2n
-	source = http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.3.1.tar.gz
 	sha1sums = SKIP
-	sha1sums = 37c765c6a452e1dd6c5ed368d618c05e5875715e
 
 pkgname = s2n-git
 
