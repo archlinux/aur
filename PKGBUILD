@@ -4,7 +4,7 @@
 _pkgname=etcher
 pkgname=etcher-git
 pkgver=1.5.8.r0.g02e0f407
-pkgrel=1
+pkgrel=2
 pkgdesc='Burn images to SD cards & USB drives, safe & easy (git version)'
 arch=(x86_64)
 url='https://www.balena.io/etcher/'
@@ -22,7 +22,7 @@ source=("$pkgname::git+https://github.com/balena-io/$_pkgname.git"
         'etcher-electron.desktop')
 sha256sums=('SKIP'
             'SKIP'
-            '58926eb1380e117a5f237d93d3d481a2af4695fa3e7049ae400531c52db87082'
+            '4499f316e4de865696312b31545f8df62850aad4492bcc9736cccb6d8eeb96ec'
             '89291532fb6e6c5555b43d61c9ba3df103bca0eace040483884b86fd30dca3e4')
 
 pkgver() {
