@@ -2,13 +2,14 @@
 
 pkgname=olive
 pkgver=20181223
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Free non-linear video editor"
 url="https://www.olivevideoeditor.org/"
 license=('GPL3')
 depends=('ffmpeg' 'qt5-multimedia')
 makedepends=('libicns')
+conflicts=('olive-git')
 source=("${pkgver}.tar.gz::https://github.com/olive-editor/olive/archive/${pkgver}.tar.gz"
         "olive.desktop"
        )
