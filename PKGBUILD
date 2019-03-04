@@ -5,19 +5,19 @@ pkgdesc="Positional Astronomy Library"
 url="https://github.com/Starlink/pal"
 arch=('x86_64' 'i686')
 license=('LGPL3')
-source=('starlink-pal-0.9.8::https://github.com/Starlink/pal/releases/download/v0.9.8/pal-0.9.8.tar.gz')
+source=('https://github.com/Starlink/pal/releases/download/v0.9.8/pal-0.9.8.tar.gz')
 depends=('erfa')
 conflicts=('icecube-pal-git')
 pkgver=v0.9.8
 md5sums=('SKIP')
 
 build() {
-  cd "${srcdir}/starlink-pal-0.9.8"
+  cd "${srcdir}/pal-0.9.8"
   ./configure --prefix=/usr --without-starlink
   make
 }
 
 package() {
-  cd "${srcdir}/starlink-pal-0.9.8"
+  cd "${srcdir}/pal-0.9.8"
   make DESTDIR="$pkgdir/" install
 }
