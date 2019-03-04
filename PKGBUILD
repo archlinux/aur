@@ -47,8 +47,8 @@ pkgver() {
 check() {
     cd $srcdir/$_reponame
 
-    # Exclude tests that take a long time to run
-    ./test/run-tests.py -k 'not (test_name or test_stat)'
+    # To exclude tests pass: -k 'not test_name'
+    ./test/run-tests.py
 }
 
 package() {
