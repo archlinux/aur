@@ -1,6 +1,6 @@
 pkgbase = scaleway-cli
 	pkgdesc = Manage BareMetal Servers from Command Line
-	pkgver = 1.17
+	pkgver = 1.18
 	pkgrel = 1
 	url = https://scaleway.com
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = scaleway-cli
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = https://github.com/scaleway/scaleway-cli/archive/v1.17.tar.gz
-	sha256sums = 8e9bdd72cbc5a9e6f89e61017c8f6f8b070b5dab23d926d9234ef5cd9e014eda
+	source = https://github.com/scaleway/scaleway-cli/archive/v1.18.tar.gz
+	sha256sums = a6c0e6d3ca785fe86804e89cc86e252761f3dace0884ac172b2635daf6783969
 
 pkgname = scaleway-cli
 
