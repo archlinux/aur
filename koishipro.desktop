@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Koishipro
+Path=/opt/koishipro
+Exec=/usr/bin/koishipro
+Icon=/opt/koishipro/YGOPro.png
+Type=Application
+Categories=Game;CardGame;StrategyGame;LogicGame;

@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /opt/koishipro
+/opt/koishipro/ygopro
