@@ -2,7 +2,7 @@
 
 _pkgbase="nimiq"
 pkgname=${_pkgbase}-bin
-pkgver=1.4.1
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Nimiq core"
 arch=('x86_64')
@@ -28,7 +28,7 @@ backup=(
 )
 sha256sums=(
   'fc01ccb1ce46d8a155de3c84adcaef5cdd4c0db8581f9c4714be1d3b7c90e531'
-  'bcccf6e33e8c5f73342a1a73422f48269af1f332a3151cec9c304b05dec74303'
+  '8a24a02f92af8ed75b0405eefdd6b5ca33a91237e47111d93da0978df23720df'
 )
 install="${_pkgbase}.install"
 

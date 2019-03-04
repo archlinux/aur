@@ -1,6 +1,6 @@
 pkgbase = nimiq-bin
 	pkgdesc = Nimiq core
-	pkgver = 1.4.1
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://nimiq.com
 	install = nimiq.install
@@ -9,13 +9,13 @@ pkgbase = nimiq-bin
 	license = Apache
 	depends = nodejs
 	depends = npm
-	noextract = nimiq-1.4.1-1.x86_64.rpm
+	noextract = nimiq-1.4.3-1.x86_64.rpm
 	noextract = nimiq.sysusers
 	backup = etc/nimiq/nimiq.conf
-	source = https://repo.nimiq.com/rpm/stable/x86_64/nimiq-1.4.1-1.x86_64.rpm
+	source = https://repo.nimiq.com/rpm/stable/x86_64/nimiq-1.4.3-1.x86_64.rpm
 	source = nimiq.sysusers
 	sha256sums = fc01ccb1ce46d8a155de3c84adcaef5cdd4c0db8581f9c4714be1d3b7c90e531
-	sha256sums = bcccf6e33e8c5f73342a1a73422f48269af1f332a3151cec9c304b05dec74303
+	sha256sums = 8a24a02f92af8ed75b0405eefdd6b5ca33a91237e47111d93da0978df23720df
 
 pkgname = nimiq-bin
 
