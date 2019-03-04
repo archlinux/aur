@@ -5,6 +5,7 @@ pkgbase = emacs-rust-mode
 	url = https://github.com/rust-lang/rust-mode
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = emacs
 	source = emacs-rust-mode::git://github.com/rust-lang/rust-mode.git
 	sha256sums = SKIP
