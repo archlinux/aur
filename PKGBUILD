@@ -30,7 +30,4 @@ package() {
   msg 'Installing...'
   install -Dm 755 lispindent.lisp "$pkgdir/usr/bin/lispindent"
   install -Dm 755 scmindent.rkt "$pkgdir/usr/bin/scmindent"
-
-  msg 'Cleaning up pkgdir...'
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
 }
