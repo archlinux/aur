@@ -1,8 +1,9 @@
-# Maintainer: Mike Roll <scaryspiderpig@gmail.com>
+# Maintainer: Andrew Armstrong <smarttechmale31@yahoo.com>
+# Contributor: Mike Roll <scaryspiderpig@gmail.com>
 
 _pkgname=monogame
 pkgname="${_pkgname}-bin"
-pkgver=3.6
+pkgver=3.7.1	
 pkgrel=1
 pkgdesc="Open Source implementation of the Microsoft XNA 4 Framework (official binary build)."
 arch=('x86_64')
@@ -10,13 +11,15 @@ url="http://www.monogame.net/"
 license=('custom', 'MIT')
 depends=('mono'
          'gtk-sharp-3'
-         'openal')
+         'openal'
+	 'unzip')
 optdepends=('monodevelop: to use the bundled IDE addin'
-            'mono-pcl: to use the PCL template')
+            'mono-pcl: to use the PCL template'
+	    'visual-studio-code-bin: Editor for building and debugging modern web and cloud application')
 conflicts=("${_pkgname}" 'tao-framework' 'tao-framework-svn')
 provides=("${_pkgname}")
 install="monogame.install"
-source=("http://www.monogame.net/releases/v${pkgver}/monogame-sdk.run"
+source=("https://github.com/MonoGame/MonoGame/releases/download/v${pkgver}/monogame-sdk.run"
         "https://raw.githubusercontent.com/MonoGame/MonoGame/v${pkgver}/LICENSE.txt"
         "MonogamePipeline.desktop"
         "monogame-pipeline-tool"
@@ -37,7 +40,7 @@ package() {
 
     cd "${_pkgname}-${pkgver}"
     mgroot="/opt/monogame"
-    mglink="/usr/lib/mono/xbuild/MonoGame/v3.0"
+    mglink="/usr/lib/mono/xbuild/MonoGame/v3.7.1"
     mkdir -p "${pkgdir}/${mgroot}"
     mkdir -p "$(dirname ${pkgdir}/${mglink})"
     ln -s "${mgroot}" "${pkgdir}/${mglink}"
@@ -58,12 +61,17 @@ package() {
     install -D -m664 "Main/monogame.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/monogame.svg"
 
     # MIME type
-    install -D -m664 "Main/mgcb.xml" "${pkgdir}/usr/share/mime/packages/mgcb.xml"
+    install -D -m664 "Main/x-mgcb.xml" "${pkgdir}/usr/share/mime/packages/mgcb.xml"
 
     # Application launcher
     install -D -m664 "../MonogamePipeline.desktop" "${pkgdir}/usr/share/applications/MonogamePipeline.desktop"
 
     # Monodevelop AddIn
     mkdir -p "${pkgdir}/usr/lib/monodevelop/AddIns/MonoDevelop.MonoGame"
-    unzip -qo -d "${pkgdir}/usr/lib/monodevelop/AddIns/MonoDevelop.MonoGame" Main/MonoDevelop.MonoGame.mpack
+    unzip -qo -d "${pkgdir}/usr/lib/monodevelop/AddIns/MonoDevelop.MonoGame" "Main/MonoDevelop.MonoGame.mpack"
 }
+md5sums=('6047c8051c3563dd5af92cffb4bf887d'
+         'c491255ec0d1735cfeecad47ce7efae1'
+         '587c27465d575e4522de212346f3f5a0'
+         'e2e0f2a74547318fc0fa7dc76e79bba8'
+         '7e1cfadd88e42bac7fc5739a512e1ce4')
