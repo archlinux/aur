@@ -1,6 +1,6 @@
 pkgbase = rawtran
 	pkgdesc = RAW to FITS convertor
-	pkgver = 0.3.8
+	pkgver = 1.1
 	pkgrel = 1
 	url = http://integral.physics.muni.cz/rawtran/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = rawtran
 	license = GPL2
 	depends = dcraw
 	depends = cfitsio
-	source = ftp://integral.physics.muni.cz/pub/rawtran/rawtran-0.3.8.tar.gz
-	md5sums = 145950686d67544395bc1606a27d6973
+	source = ftp://integral.physics.muni.cz/pub/rawtran/rawtran-1.1.tar.gz
+	md5sums = e8c49f0b3b19b07b10468c1d9f14932f
 
 pkgname = rawtran
 
