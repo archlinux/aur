@@ -1,13 +1,18 @@
 pkgbase = python-rx
 	pkgdesc = The Reactive Extensions for Python (RxPY)
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://reactivex.io
 	arch = any
 	license = apache
+	makedepends = python
+	makedepends = python2
 	makedepends = python-setuptools
-	source = rx::git+https://github.com/ReactiveX/RxPY.git#tag=1.6.1
-	md5sums = SKIP
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/R/Rx/Rx-1.6.1.tar.gz
+	sha512sums = 8602b5175c058e855ac4b67d8feed435f93632da2f4033fe0db54fcbb012a702786b29f97fe3fd641f054c3a61478dccac21c614b5708f7bfb0b986c9951e6a9
 
 pkgname = python-rx
+
+pkgname = python2-rx
 
