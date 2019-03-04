@@ -8,7 +8,7 @@ post_install() {
   echo "| By default, burst wallet uses MySQL                                                 |"
   echo "|                                                                                     |"
   echo "| If you want to use MySQL: pacman -S mariadb                                         |"
-  echo "| and configure by instruction: https://github.com/PoC-Consortium/burstcoin           |"
+  echo "| and configure by instruction: https://github.com/burst-apps-team/burstcoin          |"
   echo "|                                                                                     |"
   echo "| If you want to use H2 DB, you do not need to install additional,                    |"
   echo "| change parameters in config, where DB.url is path to file where will storage DB:    |"
