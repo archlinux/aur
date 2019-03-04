@@ -1,5 +1,5 @@
 pkgbase = zrythm-git
-	pkgdesc = Free GNU/Linux music production system (DAW)
+	pkgdesc = An highly automated, intuitive, Digital Audio Workstation (DAW)
 	pkgver = r254.aeaabd0
 	pkgrel = 1
 	url = https://git.zrythm.org/zrythm/zrythm

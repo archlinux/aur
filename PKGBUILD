@@ -4,7 +4,7 @@ _pkgname=zrythm
 pkgname=$_pkgname-git
 pkgver=r254.aeaabd0
 pkgrel=1
-pkgdesc="Free GNU/Linux music production system (DAW)"
+pkgdesc="An highly automated, intuitive, Digital Audio Workstation (DAW)"
 arch=('x86_64')
 url="https://git.zrythm.org/zrythm/zrythm"
 license=('GPL3')
@@ -33,7 +33,7 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname"
   autoreconf -fi
-  ./configure --prefix=/usr --enable-aur-build
+  ./configure --prefix=/usr --with-ffmpeg
   make
 }
 
