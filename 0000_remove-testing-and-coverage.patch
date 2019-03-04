@@ -1,0 +1,18 @@
+diff -ura a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2018-03-16 15:16:35.000000000 +0100
++++ b/CMakeLists.txt	2019-03-04 14:10:15.170638649 +0100
+@@ -83,14 +83,3 @@
+ add_subdirectory(src)
+ add_subdirectory(data)
+ add_subdirectory(po)
+-
+-
+-# testing & coverage
+-enable_testing ()
+-add_subdirectory(tests)
+-find_package(CoverageReport)
+-ENABLE_COVERAGE_REPORT(
+-  TARGETS ${SERVICE_LIB} ${SERVICE_EXEC}
+-  TESTS ${COVERAGE_TEST_TARGETS}
+-  FILTER /usr/include ${CMAKE_BINARY_DIR}/*
+-)

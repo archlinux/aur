@@ -1,0 +1,25 @@
+pkgbase = ayatana-indicator-power
+	pkgdesc = Ayatana Indicator showing power state
+	pkgver = 2.0.93
+	pkgrel = 1
+	url = https://github.com/AyatanaIndicators
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	makedepends = cmake
+	makedepends = cmake-extras
+	makedepends = libnotify
+	makedepends = glib2
+	makedepends = python
+	depends = libayatana-indicator-gtk3
+	depends = upower
+	depends = systemd
+	depends = libnotify
+	depends = dconf
+	options = !emptydirs
+	source = http://releases.ayatana-indicators.org/source/ayatana-indicator-power/ayatana-indicator-power-2.0.93.tar.gz
+	md5sums = 65b1804b1021262a1c064f26d58f46a1
+
+pkgname = ayatana-indicator-power
+
