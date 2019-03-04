@@ -5,7 +5,7 @@ _reponame=py-ipfs-api
 _name=ipfshttpclient
 pkgver=0.4.3
 pkgrel=1
-pkgdesc="In-process task scheduler with Cron-like capabilities"
+pkgdesc="Python IPFS API client library"
 arch=('any')
 provides=("python-ipfshttpclient=$pkgver")
 conflicts=("python-ipfshttpclient" "python-ipfsapi")
