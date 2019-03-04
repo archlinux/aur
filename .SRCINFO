@@ -1,0 +1,15 @@
+pkgbase = starlink-pal
+	pkgdesc = Positional Astronomy Library
+	pkgver = v0.9.8
+	pkgrel = 1
+	url = https://github.com/Starlink/pal
+	arch = x86_64
+	arch = i686
+	license = LGPL3
+	depends = erfa
+	conflicts = icecube-pal-git
+	source = starlink-pal-0.9.8::https://github.com/Starlink/pal/releases/download/v0.9.8/pal-0.9.8.tar.gz
+	md5sums = SKIP
+
+pkgname = starlink-pal
+
