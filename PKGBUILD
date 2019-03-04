@@ -5,7 +5,7 @@
 # Contributor: Ali H. Caliskan <ali.h.caliskan AT gmail DOT com>
 
 pkgname=jstock
-pkgver=1.0.7.34
+pkgver=1.0.7.37
 pkgrel=1
 pkgdesc="A stock market software that helps you make smart investment decision"
 arch=('any')
@@ -16,7 +16,7 @@ source=("https://github.com/yccheok/${pkgname}/releases/download/release_${pkgve
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}.sh")
-sha512sums=('92744247ab9e7a2f5b31030251d565e55c6213c5e220241dd4290a294c459a95e1bd950bd36e97c67f997089251e97314cd519cfaec4c6d6da0659754a08ffb4'
+sha512sums=('a7eaa115cc6a93d4bd6a6fc73be20bf027cf05c92a710b517ed11003e6b70b58f62d9ddab380ae80198e1b173265e1028f721c0644e45a12c2ef9c4614adb5e0'
             'f9072e95a164ae8929cab855104da4e2474e47d83fa4a854037452950b541462ac55f04c60c6adbd7274c4bb286e497889ffa38eaafae6d86b76e75bc0665c6e'
             '87cb6730b3d707906eca4f705cd12094302b9dfed174eb55c5f010d896237bc200dfb042b9080baed99e112e03427b0ff13085e485b26ba3f6b10ee96dd5fce7'
             '79e2d8b1ec1fa1b4697b6335870d7c8f0c71a8587c6544e3abd09220476876855e9dcc6b1cad2519b9ee34f2f301590801adec23ee2ae65c4c6cddda83c48888')
