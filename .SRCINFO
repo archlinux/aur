@@ -1,0 +1,22 @@
+pkgbase = python-inflect
+	pkgdesc = Correctly generate plurals, singular nouns, ordinals, indefinite articles; convert numbers to words.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/jazzband/inflect
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python2-setuptools-scm
+	source = https://github.com/jazzband/inflect/archive/v2.1.0.tar.gz
+	sha512sums = 0e80cc96bdd7b32bc1845d9ab41d7782f9934f7e6e0ce14e5f3722e3d62793de80134ad19f34af6308734279b2b872311773408a1b4440cede18d61fa176c158
+
+pkgname = python-inflect
+	depends = python
+	depends = python-importlib-metadata
+
+pkgname = python2-inflect
+	depends = python2
+	depends = python2-importlib-metadata
+
