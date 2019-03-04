@@ -11,7 +11,7 @@ license=('GPL3')
 groups=()
 depends=(yaml-cpp boost-libs)
 makedepends=(cmake boost make doxygen graphviz git pkg-config microsoft-gsl-git lsb-release)
-checkdepends=()
+checkdepends=(catch2 rapidcheck)
 optdepends=()
 provides=()
 conflicts=()
@@ -25,6 +25,8 @@ noextract=()
 validpgpkeys=()
 
 _build_dir='build'
+
+_nb_of_cores=$(grep -c ^processor /proc/cpuinfo)
 
 pkgver() {
     printf "%s" $pkgver
@@ -40,9 +42,20 @@ build() {
     _exec_helper_build_targets=('exec-helper' 'docs-man')
     _exec_helper_docs_build_targets=('docs-html')
 
-    cmake -G "Unix Makefiles" -H"$_git_dir" -B"$_build_dir" -DCMAKE_BUILD_TYPE=Release -DUSE_SYSTEM_YAML_CPP=ON -DUSE_SYSTEM_GSL=ON -DBUILD_HTML_DOCUMENTATION=ON -DBUILD_MAN_DOCUMENTATION=ON -DENABLE_TESTING=OFF -DENABLE_WERROR=OFF -DVERSION="$_release_version" -DCOPYRIGHT="$_copyright"
-    _nb_of_cores=$(grep -c ^processor /proc/cpuinfo)
+    cmake -G "Unix Makefiles" -H"$_git_dir" -B"$_build_dir" -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" -DCMAKE_BUILD_TYPE=Release -DUSE_SYSTEM_YAML_CPP=ON -DUSE_SYSTEM_GSL=ON -DBUILD_HTML_DOCUMENTATION=ON -DBUILD_MAN_DOCUMENTATION=ON -DENABLE_TESTING=OFF -DENABLE_WERROR=OFF -DVERSION="$_release_version" -DCOPYRIGHT="$_copyright"
     make --directory "$_build_dir" --jobs ${_nb_of_cores} ${_exec_helper_build_targets[@]} ${_exec_helper_docs_build_targets[@]}
+}
+
+check() {
+    # It only makes sense to run the complete 'system test suite' (called integration by exec-helper devs) here
+    _exec_helper_test_targets=('integration' 'execution-content' 'docs-man-integration')
+
+    # Only define the cmake settings on top of the ones defined in build()
+    cmake -H"$_git_dir" -B"$_build_dir" -DUSE_SYSTEM_CATCH=ON -DUSE_SYSTEM_RAPIDCHECK=ON -DENABLE_TESTING=ON -DENABLE_WERROR=OFF
+    make --directory "$_build_dir" --jobs ${_nb_of_cores} ${_exec_helper_test_targets[@]}
+
+    _install_dir="$pkgdir/usr/"
+    PATH="${PWD}/$_build_dir/src/applications:${PWD}/$_build_dir/test/base-utils/application/:$PATH" "$_build_dir/test/integration/exec-helper-integration-test"
 }
 
 package_exec-helper-git() {
