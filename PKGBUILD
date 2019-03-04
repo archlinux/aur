@@ -10,7 +10,7 @@ license=('GPL3')
 provides=('fnm')
 conflicts=('fnm-git')
 source=("https://github.com/Schniz/fnm/releases/download/v$pkgver/$_pkgname-linux.zip")
-md5sums=('a57f9f72b4d855a2bd020597be517edb')
+md5sums=('e957445fa7dc51665b07aee1301ae5c5')
 
 package() {
   install -Dm755 fnm-linux/fnm "$pkgdir/usr/bin/fnm"
