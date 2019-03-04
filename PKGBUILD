@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 
 pkgname=armcl-opencl
-pkgver=18.11
+pkgver=19.02
 pkgrel=1
 
 epoch=
