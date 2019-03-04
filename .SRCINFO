@@ -1,7 +1,7 @@
 pkgbase = rambox-os-bin
 	pkgdesc = Forked Free and Open Source messaging and emailing app that combines common web applications into one
 	pkgver = 0.5.18
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/TheGoddessInari/rambox
 	arch = x86_64
 	license = GPL3
@@ -16,7 +16,7 @@ pkgbase = rambox-os-bin
 	depends = nss
 	provides = rambox-os
 	conflicts = ramboxrambox-os-gitrambox-binramboxpro-bin
-	source = rambox-os-0.5.18.tar.gz::https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18.tar.gz?job=Image%3A%20Ubuntu&branch=master
+	source = rambox-os-0.5.18.tar.gz::https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-0.5.18.tar.gz
 	source = rambox-os.desktop
 	source = rambox-os.png
 	sha256sums = SKIP
