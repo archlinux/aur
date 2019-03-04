@@ -1,0 +1,69 @@
+--- openssh-portable-hpn-7_9_P1/cipher-ctr-mt.c.orig	2019-03-04 06:21:03.961385448 +0100
++++ openssh-portable-hpn-7_9_P1/cipher-ctr-mt.c	2019-03-04 06:28:57.943455536 +0100
+@@ -435,7 +435,7 @@ ssh_aes_ctr(EVP_CIPHER_CTX *ctx, u_char
+ 		destp.u += AES_BLOCK_SIZE;
+ 		srcp.u += AES_BLOCK_SIZE;
+ 		len -= AES_BLOCK_SIZE;
+-		ssh_ctr_inc(ctx->iv, AES_BLOCK_SIZE);
++		ssh_ctr_inc(c->aes_counter, AES_BLOCK_SIZE);
+ 
+ 		/* Increment read index, switch queues on rollover */
+ 		if ((ridx = (ridx + 1) % KQLEN) == 0) {
+@@ -549,16 +549,16 @@ ssh_aes_ctr_init(EVP_CIPHER_CTX *ctx, co
+ 	}
+ 
+ 	if (iv != NULL) {
+-		memcpy(ctx->iv, iv, AES_BLOCK_SIZE);
++		memcpy(c->aes_counter, iv, AES_BLOCK_SIZE);
+ 		c->state |= HAVE_IV;
+ 	}
+ 
+ 	if (c->state == (HAVE_KEY | HAVE_IV)) {
+ 		/* Clear queues */
+-		memcpy(c->q[0].ctr, ctx->iv, AES_BLOCK_SIZE);
++		memcpy(c->q[0].ctr, c->aes_counter, AES_BLOCK_SIZE);
+ 		c->q[0].qstate = KQINIT;
+ 		for (i = 1; i < numkq; i++) {
+-			memcpy(c->q[i].ctr, ctx->iv, AES_BLOCK_SIZE);
++			memcpy(c->q[i].ctr, c->aes_counter, AES_BLOCK_SIZE);
+ 			ssh_ctr_add(c->q[i].ctr, i * KQLEN, AES_BLOCK_SIZE);
+ 			c->q[i].qstate = KQEMPTY;
+ 		}
+@@ -642,6 +642,22 @@ ssh_aes_ctr_cleanup(EVP_CIPHER_CTX *ctx)
+ const EVP_CIPHER *
+ evp_aes_ctr_mt(void)
+ {
++# if OPENSSL_VERSION_NUMBER >= 0x10100000UL
++	static EVP_CIPHER *aes_ctr;
++
++	aes_ctr = EVP_CIPHER_meth_new(NID_undef, 16/*block*/, 16/*key*/);
++	EVP_CIPHER_meth_set_iv_length(aes_ctr, AES_BLOCK_SIZE);
++	EVP_CIPHER_meth_set_init(aes_ctr, ssh_aes_ctr_init);
++	EVP_CIPHER_meth_set_cleanup(aes_ctr, ssh_aes_ctr_cleanup);
++	EVP_CIPHER_meth_set_do_cipher(aes_ctr, ssh_aes_ctr);
++#  ifndef SSH_OLD_EVP
++	EVP_CIPHER_meth_set_flags(aes_ctr, EVP_CIPH_CBC_MODE
++				      | EVP_CIPH_VARIABLE_LENGTH
++				      | EVP_CIPH_ALWAYS_CALL_INIT
++				      | EVP_CIPH_CUSTOM_IV);
++#  endif
++	return (aes_ctr);
++# else
+ 	static EVP_CIPHER aes_ctr;
+ 
+ 	memset(&aes_ctr, 0, sizeof(EVP_CIPHER));
+@@ -652,11 +668,12 @@ evp_aes_ctr_mt(void)
+ 	aes_ctr.init = ssh_aes_ctr_init;
+ 	aes_ctr.cleanup = ssh_aes_ctr_cleanup;
+ 	aes_ctr.do_cipher = ssh_aes_ctr;
+-#ifndef SSH_OLD_EVP
++#  ifndef SSH_OLD_EVP
+ 	aes_ctr.flags = EVP_CIPH_CBC_MODE | EVP_CIPH_VARIABLE_LENGTH |
+ 	    EVP_CIPH_ALWAYS_CALL_INIT | EVP_CIPH_CUSTOM_IV;
+-#endif
++#  endif
+ 	return &aes_ctr;
++# endif
+ }
+ 
+ #endif /* defined(WITH_OPENSSL) */
