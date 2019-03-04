@@ -7,6 +7,7 @@ pkgbase = html-xml-utils
 	arch = x86_64
 	license = W3C
 	depends = curl
+	depends = libidn2
 	source = http://www.w3.org/Tools/HTML-XML-utils//html-xml-utils-7.7.tar.gz
 	sha256sums = 99373637639bf1bd33c5d2a7c2c4cd4efc30dcf37350fc536c489a2370b998ef
 
