@@ -1,17 +1,15 @@
 pkgbase = vazir-code-fonts
 	pkgdesc = A beautiful monospace Persian font based on Vazir and Inconsolata fonts.
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/rastikerdar/vazir-code-font
 	arch = any
 	license = OFL
 	depends = fontconfig
 	provides = ttf-vazir-code
 	conflicts = ttf-vazir-code
-	source = vazir-code-fonts-1.1.0.zip::https://github.com/rastikerdar/vazir-code-font/releases/download/v1.1.0/vazir-code-font-v1.1.0.zip
-	source = vazir-code-fonts-WOL-1.1.0.zip::https://github.com/rastikerdar/vazir-code-font/releases/download/v1.1.0/vazir-code-font-without-latin-v1.1.0.zip
-	sha256sums = cbe65897efc5e68244f678b39fe0c94c0c1390601faba45280a5c4fb2bf2b63c
-	sha256sums = 3b6ee046e3ee7185cda99ec009c5676e28c90cb7ebfaf09ebb8e09249d861f1f
+	source = vazir-code-fonts-1.1.1.zip::https://github.com/rastikerdar/vazir-code-font/releases/download/v1.1.1/vazir-code-font-v1.1.1.zip
+	sha256sums = fa8032f57798cceaf06de9bf10e5fbcfd194d9bde48c42f5eb44ab3ceeda015f
 
 pkgname = vazir-code-fonts
 
