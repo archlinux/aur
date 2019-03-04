@@ -10,6 +10,7 @@ url="https://github.com/nim-lang/nim-mode"
 license=('GPL3')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
+makedepends=('git')
 depends=('emacs-dash' 'emacs-epc' 'emacs-ctable' 'emacs-epl' 'emacs-deferred' 'emacs-company-mode'
 	 'emacs-commander' 'emacs-flycheck')
 source=("git+https://github.com/nim-lang/nim-mode.git" Makefile.patch)
