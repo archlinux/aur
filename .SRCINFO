@@ -1,6 +1,6 @@
 pkgbase = valacompiler-git
 	pkgdesc = A simple GUI for the command line valac designed for elementary OS
-	pkgver = latest
+	pkgver = r111.17b50ce
 	pkgrel = 1
 	url = https://github.com/basjam/ValaCompiler
 	arch = i686
