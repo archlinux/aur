@@ -1,7 +1,7 @@
 # Maintainer: Víctor González <mrvikxd@gmail.com>
 pkgname=jdrive
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="Google Drive sync daemon"
 arch=(any) #Any that can fill the dependencies
 url="https://gitlab.com/mrvik/${pkgname}"
@@ -15,7 +15,7 @@ optdepends=(
 )
 source=("jdrive.tgz::${url}/-/jobs/artifacts/v${pkgver}/raw/jdrive.tgz?job=Build%20npm%20tarball")
 noextract=("jdrive.tgz")
-sha512sums=('9f284fb1d9756952cf40ad9fbdc1136053fb420446996b8723bf10b6952c0652f67a154ac53a2e948f826d964d8f476c798edcc41fc487bbe18c6028a0984b3c')
+sha512sums=('47cd4e15c720bcdf4c9c12b59c4b04792bf2cb3ad178a1632c221590cf348733b9b1ae4858b94cb7b75a519fbe6e455466b946fcf9c5ee3ce81b868e7ccb8674')
 
 prepare(){
     tar --strip=1 -axf jdrive.tgz package/init
