@@ -1,7 +1,7 @@
 pkgbase = yakyak-stable
 	pkgdesc = Desktop client for Google Hangouts (no pre-release)
 	pkgver = 1.5.3
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/yakyak/yakyak
 	arch = x86_64
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = yakyak-stable
 	source = v1.5.3.tar.gz::https://github.com/yakyak/yakyak/archive/v1.5.3.tar.gz
 	source = yakyak.desktop
 	source = yakyak.sh
-	sha256sums = 901692038e797c3d971c57d1187239b0feed3f68c202876c8d694abf4bbf155b
-	sha256sums = 12baee4e3e926b765ebe21493adb7aa416165c7191f583694670b08d9b9c5360
+	sha256sums = e7b8d0828da2ec099bbde541fe8cfdbcb03d5e1f4cca75dd5578f9cf8b2f50a7
+	sha256sums = 7f7e19c5ba6d8a697ea666db0a732e438c17a53add3175b0a522df45f79efec2
 	sha256sums = 0a02abfbceb1029301308239f8d0a1e8e5a5565d66c561223836ecaaf7cb5046
 
 pkgname = yakyak-stable
