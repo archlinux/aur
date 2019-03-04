@@ -27,7 +27,7 @@ backup=(
   "etc/nimiq/nimiq.conf"
 )
 sha256sums=(
-  'fc01ccb1ce46d8a155de3c84adcaef5cdd4c0db8581f9c4714be1d3b7c90e531'
+  '0f0f35db814eaf738c687f287773c58b53b51b4d1f760a507dc905e3fcc508a8'
   '8a24a02f92af8ed75b0405eefdd6b5ca33a91237e47111d93da0978df23720df'
 )
 install="${_pkgbase}.install"
