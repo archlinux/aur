@@ -2,8 +2,8 @@
 # Maintainer: AsGreyWolf
 # Contributor: AsGreyWolf
 pkgname=gapid
-pkgver=1.3.1
-pkgrel=3
+pkgver=1.4.0
+pkgrel=4
 pkgdesc="GAPID is a collection of tools that allows you to inspect, tweak. And replay calls from an application to a graphics driver."
 arch=('x86_64')
 url="https://github.com/google/gapid"
@@ -11,8 +11,8 @@ license=('apache')
 groups=('')
 depends=('java-runtime' 'libglvnd' 'libx11')
 options=('!strip' '!emptydirs')
-source_x86_64=('https://github.com/google/gapid/releases/download/v1.3.1/gapid-1.3.1-linux.deb')
-sha512sums_x86_64=('7b2ce3dbec4f3954285f27554bebcb3aff434ef68dcac7556f8e33ddefd9d705368727ba4a08561e1d4c7bdf1264f0d807d00f359dce7e6f32de82e107d4944c')
+source_x86_64=('https://github.com/google/gapid/releases/download/v1.4.0/gapid-1.4.0-linux.deb')
+sha512sums_x86_64=('974b1d7a046d1020012e9f1ea6dc8ad4ab8fad6bbd60035e0088bb78fa06711ba93b623c62d7bc765c73021f716254b8d642375c39f70d8f71c11eb315951e94')
 
 package(){
 	# Extract package data
