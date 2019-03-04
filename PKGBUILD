@@ -16,7 +16,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=65.0.1
+pkgver=65.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -128,7 +128,7 @@ build() {
   cd mozilla-unified
   export MOZ_SOURCE_REPO="$_repo"
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-
+  export MOZ_APP_REMOTINGNAME=$pkgname
 
   export CC=gcc
   export CXX=g++
@@ -198,7 +198,7 @@ END
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }
 md5sums=('SKIP'
-         '49c2d3dc354e18ab12c8c4e6f7d68d6b'
+         '7a93c5b10defc17661cb13138d38b6bc'
          '14e0f6237a79b85e60256f4808163160'
          '5cee310a9040ccc5abcf29742b84aeb8'
          '05bb69d25fb3572c618e3adf1ee7b670'
