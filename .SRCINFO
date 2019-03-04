@@ -1,21 +1,21 @@
 pkgbase = cjs-git
 	pkgdesc = Javascript Bindings for Cinnamon
-	pkgver = 1276.7bb3d1b
+	pkgver = 4.0.0.r2.gea081f32
 	pkgrel = 1
 	url = https://github.com/linuxmint/cjs
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gnome-common
-	depends = cairo
-	depends = gobject-introspection
-	depends = js185
+	checkdepends = xorg-server-xvfb
+	makedepends = git
+	makedepends = autoconf-archive
+	makedepends = gobject-introspection
 	depends = dbus-glib
-	provides = cjs
-	conflicts = cjs
-	options = !libtool
-	source = cjs::git+https://github.com/linuxmint/cjs.git
-	sha256sums = SKIP
+	depends = gtk3
+	depends = gobject-introspection-runtime
+	depends = js52
+	source = git+https://github.com/linuxmint/cjs.git
+	sha512sums = SKIP
 
 pkgname = cjs-git
 

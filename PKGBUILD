@@ -1,41 +1,54 @@
-# $Id$
-# Maintainer: Realex
-# Based on cjs PKGBUILD
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Contributor: Alexandre Filgueira <alexfilgueira@cinnarch.com>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
 
-_pkgname=cjs
-pkgname=${_pkgname}-git
-pkgver=1276.7bb3d1b
+pkgname=cjs-git
+pkgver=4.0.0.r2.gea081f32
 pkgrel=1
 pkgdesc="Javascript Bindings for Cinnamon"
-arch=(i686 x86_64)
-url="https://github.com/linuxmint/cjs"
-license=(GPL)
-depends=('cairo' 'gobject-introspection' 'js185' 'dbus-glib')
-makedepends=('gnome-common')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
-options=('!libtool')
-source=(${_pkgname}::git+https://github.com/linuxmint/cjs.git)
-sha256sums=(SKIP)
+arch=('i686' 'x86_64')
+url="https://github.com/linuxmint/${pkgname%-git}"
+license=('GPL')
+depends=('dbus-glib' 'gtk3' 'gobject-introspection-runtime' 'js52')
+makedepends=('git' 'autoconf-archive' 'gobject-introspection')
+checkdepends=('xorg-server-xvfb')
+source=("git+${url}.git")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/${_pkgname}
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+    cd "${srcdir}"/${pkgname%-git}
+
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "${srcdir}"/${pkgname%-git}
+
+    autoreconf -fi
 }
 
 build() {
-  cd ${srcdir}/${_pkgname}
-  ./autogen.sh --prefix=/usr --disable-static --libexecdir=/usr/lib
-  make
+    cd "${srcdir}"/${pkgname%-git}
+
+    ./configure --prefix=/usr \
+                --libexecdir=/usr/lib \
+                --disable-static
+
+    #https://bugzilla.gnome.org/show_bug.cgi?id=656231
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
+    make
 }
 
 check() {
-  cd ${srcdir}/${_pkgname}
-  # Needs a display
-  make -k check || :
+    cd "${srcdir}"/${pkgname%-git}
+
+    # Needs a display
+    xvfb-run make -k check || :
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}
-  make DESTDIR="$pkgdir" install
+    cd "${srcdir}"/${pkgname%-git}
+
+    make DESTDIR="${pkgdir}" install
 }
