@@ -2,7 +2,7 @@
 
 pkgname=netcap-git
 pkgver=v0.3.9.r8.g11bd1ba
-pkgrel=2
+pkgrel=3
 pkgdesc='A framework for secure and scalable network traffic analysis'
 url="https://github.com/dreadl0ck/netcap"
 arch=('x86_64')
@@ -26,7 +26,8 @@ prepare() {
 	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/dreadl0ck/netcap"
 
 	cd "${srcdir}/go/src/github.com/dreadl0ck/netcap"
-	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
+
+	GOPATH="${srcdir}/go"
 	go get -v ./...
 }
 
@@ -35,7 +36,7 @@ build() {
 
 	mkdir -p build
 
-	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
+	export GOPATH="${srcdir}/go"
 	go build \
 		-ldflags "-s -w" \
 		-gcflags="all=-trimpath=${GOPATH}/src" \
