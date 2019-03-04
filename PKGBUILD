@@ -1,7 +1,7 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Tarn W. Burton <twburton@gmail.com>
 
 pkgname=scmindent-git
-pkgver=20140827
+pkgver=20190127
 pkgrel=1
 pkgdesc="External filter program for properly indenting Racket, Scheme and Lisp"
 arch=('any')
@@ -24,7 +24,7 @@ package() {
   cd ${pkgname%-git}
 
   msg 'Installing documentation...'
-  install -Dm 644 README.md "$pkgdir/usr/share/doc/scmindent/README.md"
+  install -Dm 644 README.adoc "$pkgdir/usr/share/doc/scmindent/README.adoc"
   install -Dm 644 history "$pkgdir/usr/share/doc/scmindent/history"
 
   msg 'Installing...'
