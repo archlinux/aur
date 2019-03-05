@@ -1,7 +1,7 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-llvm-git
-pkgver=0.35dev.git20170819
+pkgver=0.37dev.git20190303
 pkgrel=1
 arch=('any')
 pkgdesc='VHDL simulator - LLVM flavour'
@@ -13,7 +13,7 @@ conflicts=('ghdl' 'ghdl-gcc-git' 'ghdl-mcode-git')
 makedepends=('gcc-ada' 'git' 'llvm' 'clang')
 
 source=(
-	"ghdl::git://github.com/tgingold/ghdl.git"
+	"ghdl::git://github.com/ghdl/ghdl.git"
 )
 md5sums=(
 	'SKIP'
@@ -23,7 +23,7 @@ pkgver() {
 	cd "${srcdir}/ghdl"
 
 	# GHDL version (extracted from version.ads)
-	_distver=`sed -n -e 's/.*Ghdl_Ver .*"\(.*\)".*/\1/p' src/version.in | tr -d '-'`
+	_distver=`sed -n -e 's/.*Ghdl_Ver .*"\(.*\)".*/\1/p' version.ads | tr -d '-'`
 	# Date of the last git commit
 	_gitver=`git log -n 1 --date=short | sed -n -e 's/.*Date:\s*\([0-9-]*\).*/\1/p' | tr -d -`
 
@@ -33,15 +33,13 @@ pkgver() {
 build() {
 	cd "${srcdir}/ghdl"
 
-	./configure --prefix=/usr/ --with-llvm=/usr/
+	./configure --prefix=/usr/ --with-llvm-config
 
 	make
-
 }
 
 package() {
 	cd "${srcdir}/ghdl"
 
 	make DESTDIR="${pkgdir}" install
-
 }
