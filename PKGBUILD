@@ -2,15 +2,15 @@
 
 pkgname=blockbench
 pkgname_orig=Blockbench
-pkgver=2.3.1
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="A free, modern block model editor."
 arch=('x86_64')
 url="https://blockbench.net/"
 license=('MIT')
 depends=('gconf' 'libnotify' 'libappindicator' 'libxtst' 'nss' 'libxss')
-source=("https://github.com/JannisX11/blockbench/releases/download/v${pkgver}/Blockbench_${pkgver}_amd64.deb")
-sha512sums=('4318ff1226e3b5de00299d8405854b868598b815de35a655d82c8d9ee86f3a8f8fc298b46696cf1e55e759f24cf04a7d476691c220da9d6640f63298cccea8ec')
+source=("https://github.com/JannisX11/blockbench/releases/download/v${pkgver}/Blockbench_${pkgver}.deb")
+sha512sums=('d6dee5dadced8e714b45c785a0e9664a467e7ab3713ecbda99ba9fb01271d4fab21a8de8413b240499a3db9ec637c3c5ac732ed85acefad7451cb6d59d9c2b63')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
