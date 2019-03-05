@@ -1,6 +1,6 @@
 pkgbase = gnome-chemistry-utils
 	pkgdesc = Gnome Chemistry Utilities (gcu). Includes gchempaint, a tool to draw molecules.
-	pkgver = 0.14.16
+	pkgver = 0.14.17
 	pkgrel = 1
 	url = http://www.nongnu.org/gchemutils/
 	install = gnome-chemistry-utils.install
@@ -13,14 +13,11 @@ pkgbase = gnome-chemistry-utils
 	makedepends = gnome-doc-utils
 	makedepends = boost
 	makedepends = desktop-file-utils
-	makedepends = xulrunner
-	makedepends = npapi-sdk
 	depends = bodr
 	depends = libglade
 	depends = goffice>=0.10.0
 	depends = gtkglext
 	depends = openbabel
-	depends = chemical-mime-data
 	depends = hicolor-icon-theme
 	depends = dconf
 	optdepends = yelp: Viewing help manuals
@@ -34,8 +31,10 @@ pkgbase = gnome-chemistry-utils
 	provides = gspectrum
 	conflicts = gnome-chemistry-utils-devel
 	options = !libtool
-	source = http://download.savannah.gnu.org/releases/gchemutils/0.14/gnome-chemistry-utils-0.14.16.tar.bz2
-	md5sums = e7885d7846ef0b99bb6d22abea1add36
+	source = http://download.savannah.gnu.org/releases/gchemutils/0.14/gnome-chemistry-utils-0.14.17.tar.bz2
+	source = gnumeric-ftbfs.patch
+	md5sums = 961c9f1a5760abeb62204a8f5a1a9802
+	md5sums = SKIP
 
 pkgname = gnome-chemistry-utils
 
