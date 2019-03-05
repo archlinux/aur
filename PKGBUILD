@@ -38,8 +38,10 @@
 # please use the official OpenSSH distribution instead.
 
 pkgname=openssh-hpn
-pkgver=7.9p1
-_pkgver=`sed -e 's/\./_/' -e 's/p/_P/' <<< ${pkgver}`
+_openssh_ver=7.9p1
+_hpn_ver=hpn14v17
+_pkgver=`sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver}`
+pkgver="${_openssh_ver}-${_hpn_ver}"
 pkgrel=1
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='https://www.psc.edu/index.php/hpn-ssh/'
