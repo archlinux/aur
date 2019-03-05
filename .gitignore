@@ -1,0 +1,8 @@
+/*.log
+/*.tar
+/*.tar.*
+/j4status/
+/libgwater/
+/libnkutils/
+/pkg/
+/src/
