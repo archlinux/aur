@@ -1,0 +1,38 @@
+From ad1e03d6b652b4c7ce0bd9469087b40989824f5c Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Tue, 20 Mar 2018 14:11:02 -0400
+Subject: [PATCH] cinnamon-settings: don't rely on the presence of
+ cinnamon-control-center
+
+The existence of the cinnamon-control-center binary does not even tell
+us what control center libraries are available. So instead, do the same
+thing we did for cinnamon-settings modules, and check if the library
+exists.
+---
+ files/usr/bin/cinnamon-settings | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/files/usr/bin/cinnamon-settings b/files/usr/bin/cinnamon-settings
+index fcd1fee9e..e20ba0b78 100755
+--- a/files/usr/bin/cinnamon-settings
++++ b/files/usr/bin/cinnamon-settings
+@@ -7,6 +7,7 @@ Usage:  cinnamon-settings [optional module name]
+ 
+ import os
+ import sys
++import sysconfig
+ 
+ if len(sys.argv) > 1:
+     module = sys.argv[1]
+@@ -14,7 +15,7 @@ if len(sys.argv) > 1:
+         os.execvp("/usr/share/cinnamon/cinnamon-settings/xlet-settings.py", (" ", module[0:-1]) + tuple(sys.argv[2:]))
+     elif os.path.exists("/usr/share/cinnamon/cinnamon-settings/modules/cs_%s.py" % module):
+         os.execvp("/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py", (" ",) + tuple(sys.argv[1:]))
+-    elif os.path.exists("/usr/bin/cinnamon-control-center"):
++    elif os.path.exists(os.path.join(sysconfig.get_config_var("LIBDIR"), "cinnamon-control-center-1/panels/lib%s.so" % module)):
+         os.execvp("/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py", (" ",) + tuple(sys.argv[1:]))
+     elif os.path.exists("/usr/bin/gnome-control-center"):
+         print ("Unknown module %s, calling gnome-control-center" % module)
+-- 
+2.20.0
+

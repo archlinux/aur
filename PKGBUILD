@@ -1,93 +1,91 @@
-# $Id$
-# Maintainer: Christoph Böhmwalder <christoph@boehmwalder.at>
-# Based on cinnamon PKGBUILD
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Contributor: Alexandre Filgueira <alexfilgueira@cinnarch.com>
+# Contributor: M0Rf30
+# Contributor: unifiedlinux
+# Contributor: CReimer
 
-_pkgname=cinnamon
-pkgname=${_pkgname}-git
-pkgver=6161.3842206a
+pkgname=cinnamon-git
+pkgver=4.0.9.r51.gc1820893f
 pkgrel=1
-pkgdesc="A Linux desktop which provides advanced innovative features and a traditional user experience"
-arch=('i686' 'x86_64')
-url="https://github.com/linuxmint/Cinnamon"
+pkgdesc="Linux desktop which provides advanced innovative features and a traditional user experience"
+arch=('x86_64')
+url="https://github.com/linuxmint/${pkgname%-git}"
 license=('GPL2')
-depends=('cinnamon-settings-daemon-git' 'cinnamon-session-git' 'cinnamon-desktop-git' 
-         'cinnamon-control-center-git' 'cjs-git' 'cinnamon-menus-git' 
-         'cinnamon-translations-git' 'muffin-git' 'cinnamon-screensaver-git'
-         'nemo-dev' 'polkit-gnome'
-         'network-manager-applet' 'gnome-icon-theme' 'gnome-themes-standard'
-         'accountsservice' 'caribou' 'clutter-gtk' 'gconf' 'libgnomekbd' 
-         'gnome-themes-standard' 'gstreamer' 'libgnome-keyring'
-         'librsvg' 'networkmanager'  'python2-dbus' 'python2-pillow'
-         'python2-pam' 'python2-pexpect' 'python2-pyinotify' 'python2-lxml' 'webkitgtk' 
-	 'xorg-server')
-makedepends=('gnome-common' 'intltool' 'git')
+depends=('accountsservice' 'caribou' 'cinnamon-control-center' 'cinnamon-menus' 'cinnamon-screensaver'
+         'cinnamon-session' 'cinnamon-settings-daemon' 'cjs' 'gnome-backgrounds'
+         'gnome-themes-extra' 'gstreamer' 'libgnomekbd' 'libkeybinder3' 'librsvg' 'muffin>=4.0.6.r16.g566c4f5b8'
+         'network-manager-applet' 'nemo' 'polkit-gnome' 'python-cairo' 'python-dbus'
+         'python-gobject' 'python-pam' 'python-pexpect' 'python-pillow' 'python-pyinotify' 'xapps')
+optdepends=('blueberry: Bluetooth support'
+            'cinnamon-translations: i18n'
+            'gnome-panel: fallback mode'
+            'metacity: fallback mode'
+            'system-config-printer: printer settings')
+makedepends=('git' 'intltool' 'gtk-doc' 'gobject-introspection')
 options=('!emptydirs')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
-install=${pkgname}.install
-source=("${_pkgname}"::git+https://github.com/linuxmint/cinnamon.git
-        "use-wheel.patch"
-	"default-theme.patch")
+source=("git+${url}.git"
+        "0001-cinnamon-settings-don-t-rely-on-the-presence-of-cinn.patch"
+        "set_wheel.diff"
+        "default-theme.patch")
 sha256sums=('SKIP'
-            '5c98d0e44c2cc2c11fac42a10a22f999ba60016b06fc6e45416484febe048417'
-	    '566585873f38a79ec248b916645a2e081abec3c6d4df2c34339cde1f35375cc5')
+            '024fa59ea6e1e7e6f6307786abf71ddeb1f6add43c832d568ba856bb43bf4dc6'
+            '7517d651d440361947f9539fe8f42548d5eb43a09c28c9a11f51cfdfdefd042f'
+            '566585873f38a79ec248b916645a2e081abec3c6d4df2c34339cde1f35375cc5')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+    cd "${srcdir}"/${pkgname%-git}
+
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd ${srcdir}/cinnamon
+    cd "${srcdir}"/${pkgname%-git}
 
-  # Use wheel group instread of sudo
-  patch -Np1 -i ../use-wheel.patch
+    # Check for the cc-panel module path, not for the irrelevant binary
+    # https://github.com/linuxmint/Cinnamon/pull/7382
+    patch -p1 -i ../0001-cinnamon-settings-don-t-rely-on-the-presence-of-cinn.patch
 
-  # Set default theme to 'cinnamon'
-  patch -Np1 -i ../default-theme.patch
+    # Use wheel group instread of sudo (taken from Fedora)
+    patch -Np1 -i ../set_wheel.diff
 
-  # Add polkit agent to required components
-  sed -i 's/RequiredComponents=\(.*\)$/RequiredComponents=\1polkit-gnome-authentication-agent-1;/' files/usr/share/cinnamon-session/sessions/cinnamon*.session
+    # Set default theme to 'cinnamon'
+    patch -Np1 -i ../default-theme.patch
 
-  # Use pkexec instead of gksu
-  sed -i 's/gksu/pkexec/' files/usr/bin/cinnamon-settings-users
+    # Replace MintInstall with GNOME Software
+    sed -i 's/mintinstall.desktop/org.gnome.Software.desktop/' data/org.cinnamon.gschema.xml.in
 
-  # Check for the cc-panel path, not for the unneeded binary
-  sed -i 's|/usr/bin/cinnamon-control-center|/usr/lib/cinnamon-control-center-1/panels|' files/usr/bin/cinnamon-settings
+    # Add polkit agent to required components
+    sed -i 's/RequiredComponents=\(.*\)$/RequiredComponents=\1polkit-gnome-authentication-agent-1;/' \
+        files/usr/share/cinnamon-session/sessions/cinnamon*.session
 
-  # Cinnamon has no upstream backgrounds, use GNOME backgrounds instead
-  sed -i 's|/usr/share/cinnamon-background-properties|/usr/share/gnome-background-properties|' \
-    files/usr/share/cinnamon/cinnamon-settings/modules/cs_backgrounds.py
+    # https://github.com/linuxmint/Cinnamon/issues/3575#issuecomment-374887122
+    # Cinnamon has no upstream backgrounds, use GNOME backgrounds instead
+    sed -i 's|/usr/share/cinnamon-background-properties|/usr/share/gnome-background-properties|' \
+        files/usr/share/cinnamon/cinnamon-settings/modules/cs_backgrounds.py
 
-  # Fix selected background color in Cinnamon Settings for Adwaita theme
-  sed -i 's/@selected_bg_color;/@theme_selected_bg_color;/' \
-    files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py
-
-  # GNOME Terminal desktop file was renamed in GNOME 3.20
-  sed -i 's/gnome-terminal.desktop/org.gnome.Terminal.desktop/' data/org.cinnamon.gschema.xml.in \
-    files/usr/share/cinnamon/applets/panel-launchers@cinnamon.org/settings-schema.json
-
-  # Replace MintInstall with GNOME Software
-  sed -i 's/mintinstall.desktop/org.gnome.Software.desktop/' data/org.cinnamon.gschema.xml.in
-
-  # Remove broken symlink
-  rm files/etc/xdg/menus/cinnamon-applications-merged
+    NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd ${srcdir}/cinnamon
+    cd "${srcdir}"/${pkgname%-git}
 
-  ./autogen.sh --prefix=/usr \
-               --sysconfdir=/etc \
-               --libexecdir=/usr/lib/cinnamon \
-               --localstatedir=/var \
-               --disable-static \
-               --disable-schemas-compile \
-               --with-session-tracking=systemd
-  make
+    ./configure --prefix=/usr \
+                --sysconfdir=/etc \
+                --libexecdir=/usr/lib/cinnamon \
+                --localstatedir=/var \
+                --disable-static \
+                --disable-gtk-doc \
+                --disable-schemas-compile \
+                --enable-compile-warnings=yes
+
+    # https://bugzilla.gnome.org/show_bug.cgi?id=656231
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
+    make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  make DESTDIR="${pkgdir}/" install
+    cd "${srcdir}"/${pkgname%-git}
+
+    make DESTDIR="${pkgdir}" install
 }
