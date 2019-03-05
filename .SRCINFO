@@ -1,0 +1,22 @@
+pkgbase = ayatana-indicator-session
+	pkgdesc = Ayatana Indicator showing session management, status and user switching
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/AyatanaIndicators
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	makedepends = cmake
+	makedepends = intltool
+	makedepends = glib2
+	depends = libayatana-indicator-gtk3
+	depends = gsettings-desktop-schemas
+	depends = systemd
+	depends = hicolor-icon-theme
+	options = !emptydirs
+	source = http://releases.ayatana-indicators.org/source/ayatana-indicator-session/ayatana-indicator-session-0.4.3.tar.gz
+	md5sums = 9f57e1f0c432ae54a2dd0aa46eb51c16
+
+pkgname = ayatana-indicator-session
+
