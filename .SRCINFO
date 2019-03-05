@@ -1,13 +1,15 @@
 pkgbase = imgur
 	pkgdesc = Upload image to imgur.com image sharing service.
 	pkgver = 9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://imgur.com/apps
 	arch = any
 	license = GPL
 	depends = curl
 	depends = bash
-	source = https://github.com/tremby/imgur.sh/archive/v9.tar.gz
+	optdepends = xsel: clipboard support
+	optdepends = xclip: clipboard support
+	source = imgur-9.tar.gz::https://github.com/tremby/imgur.sh/archive/v9.tar.gz
 	sha512sums = 3b603954c0bb6ecc0a76223a945a51bfdd2351b80a65e3d63ad1483c50836009a80bd130efc28926ac60b3759324aff2d3bc3fb2f957a38c9c804eb427ff35c6
 
 pkgname = imgur
