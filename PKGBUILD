@@ -2,8 +2,8 @@
 
 pkgname=caffe2-cuda-git
 _srcname=pytorch
-pkgver=0.8.2.r14826.gf79fb58744
-pkgrel=2
+pkgver=0.8.2.r16592.g079093a662
+pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (with cuda, git version)'
 arch=('x86_64')
 url='https://caffe2.ai/'
@@ -44,7 +44,7 @@ source=(
         'git+https://github.com/google/protobuf.git'
         'git+https://github.com/Yangqing/ios-cmake.git'
         'git+https://github.com/Maratyszcza/NNPACK.git'
-        'git+https://github.com/facebookincubator/gloo'
+        'git+https://github.com/facebookincubator/gloo.git'
         'git+https://github.com/Maratyszcza/pthreadpool.git'
         'git+https://github.com/Maratyszcza/FXdiv.git'
         'git+https://github.com/Maratyszcza/FP16.git'
@@ -56,18 +56,20 @@ source=(
         'git+https://github.com/benjaminp/six.git'
         'git+https://github.com/ARM-software/ComputeLibrary.git'
         'git+https://github.com/onnx/onnx.git'
-        'git+https://github.com/onnx/onnx-tensorrt'
-        'git+https://github.com/shibatch/sleef'
-        'git+https://github.com/intel/ideep'
-        'git+https://github.com/NVIDIA/nccl'
+        'git+https://github.com/bddppq/onnx-tensorrt.git'
+        'git+https://github.com/zdevito/sleef.git'
+        'git+https://github.com/intel/ideep.git'
+        'git+https://github.com/NVIDIA/nccl.git'
         'git+https://github.com/google/gemmlowp.git'
-        'git+https://github.com/pytorch/QNNPACK'
+        'git+https://github.com/pytorch/QNNPACK.git'
         'git+https://github.com/intel/ARM_NEON_2_x86_SSE.git'
-        'git+https://github.com/pytorch/fbgemm'
+        'git+https://github.com/pytorch/fbgemm.git'
+        'git+https://github.com/houseroad/foxi.git'
     # others:
         'git+https://github.com/asmjit/asmjit.git'
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -104,7 +106,7 @@ prepare() {
     local _submodule
     local _submodule_list="pybind11 cub googletest benchmark protobuf ios-cmake \
                            NNPACK gloo zstd ComputeLibrary onnx onnx-tensorrt \
-                           sleef ideep QNNPACK fbgemm"
+                           sleef ideep QNNPACK fbgemm foxi"
                            
     git submodule init
     
@@ -168,8 +170,6 @@ build() {
         -DBUILD_PYTHON:BOOL='ON' \
         -DBUILD_SHARED_LIBS:BOOL='ON' \
         \
-        -DBUILD_TEST:BOOL='ON' \
-        \
         -DCMAKE_CXX_COMPILER='/usr/bin/g++-7' \
         -DCMAKE_C_COMPILER='/usr/bin/gcc-7' \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
@@ -183,8 +183,6 @@ build() {
         -DCUDA_TOOLKIT_INCLUDE:PATH='/opt/cuda/include' \
         -DCUDA_TOOLKIT_ROOT_DIR:PATH='/opt/cuda' \
         -DCUDA_USE_STATIC_CUDA_RUNTIME:BOOL='OFF' \
-        -DCUDNN_INCLUDE_DIR:PATH='/opt/cuda/include' \
-        -DCUDNN_LIBRARY:FILEPATH='/opt/cuda/lib64/libcudnn.so' \
         -DCUDNN_ROOT_DIR:PATH='/opt/cuda' \
         \
         -DGLOO_STATIC_OR_SHARED:STRING='STATIC' \
@@ -201,7 +199,7 @@ build() {
         -DUSE_CUDA:BOOL='ON' \
         -DUSE_CUDNN:BOOL='ON' \
         -DUSE_DISTRIBUTED:BOOL='ON' \
-        -DUSE_FBGEMM:BOOL='OFF' \
+        -DUSE_FBGEMM:BOOL='ON' \
         -DUSE_FFMPEG:BOOL='ON' \
         -DUSE_GFLAGS:BOOL='ON' \
         -DUSE_GLOG:BOOL='ON' \
@@ -213,10 +211,9 @@ build() {
         -DUSE_LMDB:BOOL='ON' \
         -DUSE_METAL:BOOL='OFF' \
         -DUSE_MKLDNN:BOOL='OFF' \
-        -DUSE_MOBILE_OPENGL:BOOL='OFF' \
         -DUSE_MPI:BOOL='ON' \
         -DUSE_NCCL:BOOL='ON' \
-        -DUSE_NNAPI:BOOL='OFF' \
+        -DUSE_NNAPI:BOOL='ON' \
         -DUSE_NNPACK:BOOL='ON' \
         -DUSE_NUMA:BOOL='ON' \
         -DUSE_NUMPY:BOOL='ON' \
@@ -236,6 +233,7 @@ build() {
         -DUSE_TENSORRT:BOOL='OFF' \
         -DUSE_ZMQ:BOOL='ON' \
         -DUSE_ZSTD:BOOL='ON' \
+        -DWITH_OPENMP:BOOL='ON' \
         \
         -Wno-dev \
         ..
@@ -244,12 +242,6 @@ build() {
     sed -i 's/^preinstall:[[:space:]]all/preinstall:/' Makefile
     
     make
-}
-
-check() {
-    cd "${_srcname}/build"
-    
-    make test
 }
 
 package() {
@@ -262,9 +254,9 @@ package() {
     local _exclude_dirs
     mapfile -t -d '' _exclude_dirs < <(find "${pkgdir}/usr/include" -mindepth 1 -maxdepth 1 -type d ! -name 'caffe*' -print0)
     rm    "$pkgdir"/usr/bin/{protoc,unzstd,zstd{cat,mt,}}
-    rm    "$pkgdir"/usr/include/{*.h,*.py}
+    rm    "$pkgdir"/usr/include/*.h
     rm    "$pkgdir"/usr/lib/*.a
-    rm    "$pkgdir"/usr/lib/lib{zstd,onnxifi}*
+    rm    "$pkgdir"/usr/lib/lib{foxi,onnxifi,zstd}*
     rm -r "$pkgdir"/usr/lib/cmake/protobuf
     rm    "$pkgdir"/usr/lib/pkgconfig/{protobuf-lite,protobuf}.pc
     rm    "$pkgdir"/usr/share/pkgconfig/libzstd.pc
