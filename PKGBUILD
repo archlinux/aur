@@ -1,6 +1,6 @@
 # Maintainer: Michael Koloberdin <koloberdin@gmail.com>
 pkgname=sjasmplus
-pkgver=20190304.3
+pkgver=20190306
 pkgrel=1
 pkgdesc="SJAsmPlus: Z80 cross-assembler"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=(ZLIB)
 depends=(boost-libs)
 makedepends=(cmake)
 source=("https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('ac17c1a6db7bd567089dea3f4a85b83c2725734af36e463911a1b25154b4d19fd2765e258adc140b7281e1331bc38c606b036e953ea946b80c150444e2123024')
+sha512sums=('a3c06d76079efda74731552e4bd85af7e9067b1026e099669f0d213e132b80ad70e8049cd3ef441fc598305dba0fa17e16500e891abec39c21011ac94826a90c')
 
 prepare() {
 	mkdir -p build
