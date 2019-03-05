@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=intel-media-stack-bin
-pkgver=2018.3.1
+pkgver=2018.4.1
 _srcver="${pkgver:2}"
 pkgrel=1
 pkgdesc='Tools and libraries for developing media solutions on Intel products. Includes MediaSDK, Media Driver, libva and libva-utils.'
@@ -20,10 +20,12 @@ backup=('etc/profile.d/intel-mediasdk-devel.sh'
 options=('!strip' '!emptydirs')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/MediaSDK/releases/download/intel-mediasdk-${_srcver}/MediaStack.tar.gz"
-        "https://raw.githubusercontent.com/Intel-Media-SDK/MediaSDK/intel-mediasdk-${_srcver}/LICENSE")
+        "https://raw.githubusercontent.com/Intel-Media-SDK/MediaSDK/intel-mediasdk-${_srcver}/LICENSE"
+        'intel-media-stack-bin-fix-install.patch')
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('5f09a92be728f3ec9236621a63286fef762973dc99abfd1ce767452c8d9d0035'
-            'dfd67773578903698f9ff4a61eb8f2d84810cbecd56f3f3cee8c649f813b6ea6')
+sha256sums=('f053e19fc39d08c35705fadfb90098b2c50b6ac0f37bf89dc18099deb86f93b9'
+            'dfd67773578903698f9ff4a61eb8f2d84810cbecd56f3f3cee8c649f813b6ea6'
+            '2e432be94fb765fad3ea03a65377cbdd57074eb358815f8eb2354635b2f4746d')
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}"
@@ -31,12 +33,7 @@ prepare() {
     printf '%s\n' "  -> Extracting ${pkgname}-${pkgver}.tar.gz with bsdtar..."
     bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" -s'|[^/]*/||'
     
-    sed -i "s|/\\$|${pkgdir}/\\$|g" install_media.sh
-    sed -i "s|/etc|${pkgdir}/etc|g" install_media.sh
-    sed -i '/ldconfig/s/^/#/g'      install_media.sh
-    
-    sed -i 's/[[:space:]]Please[[:space:]]reboot[[:space:]]to[[:space:]]make[[:space:]]it[[:space:]]effective\.//' install_media.sh
-    sed -i 's/[[:space:]]Please[[:space:]]Reboot\.//' install_media.sh
+    patch -Np1 -i "${srcdir}/intel-media-stack-bin-fix-install.patch"
 }
 
 package() {
@@ -44,24 +41,14 @@ package() {
     
     local _command
     local _file
-    local _header
     
     mkdir -p "$pkgdir"/{etc/{ld.so.conf.d,profile.d},usr/lib}
     
     ./install_media.sh
-    
-    # headers (add 'mfx' folder for ffmpeg compatibility)
-    mkdir -p "${pkgdir}/opt/intel/mediasdk/include/mfx"
-    cd "${pkgdir}/opt/intel/mediasdk/include"
-    for _header in *.h
-    do
-        cd mfx
-        ln -sf ../"$_header" "$_header"
-        cd ..
-    done
+    echo "here1"
     
     # add bin folder to PATH
-    for _file in "${pkgdir}/etc/profile.d/"intel-mediasdk.{,c}sh
+    while read -rd '' _file
     do
         if printf '%s' "$_file" | grep -q '\.csh$'
         then
@@ -73,19 +60,16 @@ package() {
         printf '\n' >> "$_file"
         printf '%s\n' '# add bin folder to PATH' >> "$_file"
         printf '%s\n' "${_command} PATH=\${PATH:+\${PATH}:}/opt/intel/mediasdk/bin" >> "$_file"
-    done
-    
-    # move tools to bin folder
-    mv "$pkgdir"/opt/intel/mediasdk/share/mfx/samples/_bin/x64/{asg-hevc,hevc_fei_extractor} "${pkgdir}/opt/intel/mediasdk/bin"
+    done < <(find "${pkgdir}/etc/profile.d" -maxdepth 1 -mindepth 1 -type f -name 'intel-mediasdk.*sh' -print0)
     
     # add symlink for libcttmetrics.so (required by 'metrics_monitor' sample)
-    ln -s ../share/mfx/samples/_bin/x64/libcttmetrics.so "${pkgdir}/opt/intel/mediasdk/lib64/libcttmetrics.so"
+    ln -s ../share/mfx/samples/_bin/libcttmetrics.so "${pkgdir}/opt/intel/mediasdk/lib64/libcttmetrics.so"
     
     # fix broken symlinks for plugins
-    rm "${pkgdir}/opt/intel/mediasdk/lib64/mfx"
-    rm "${pkgdir}/opt/intel/mediasdk/plugins/plugins.cfg"
-    ln -s ../plugins               "${pkgdir}/opt/intel/mediasdk/lib64/mfx"
-    ln -s ../share/mfx/plugins.cfg "${pkgdir}/opt/intel/mediasdk/plugins/plugins.cfg"
+    rm -r "${pkgdir}/opt/intel/mediasdk/plugins"
+    rm    "${pkgdir}/opt/intel/mediasdk/lib64/mfx/plugins.cfg"
+    ln -s lib64/mfx                  "${pkgdir}/opt/intel/mediasdk/plugins"
+    ln -s ../../share/mfx/plugins.cfg "${pkgdir}/opt/intel/mediasdk/lib64/mfx/plugins.cfg"
     
     # do not force the use of 'iHD' libva driver by default (let user choose)
     local _info='# uncomment the LIBVA lines bellow to use the Intel Media Driver (iHD) for VAAPI'

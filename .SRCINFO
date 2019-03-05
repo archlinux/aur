@@ -1,6 +1,6 @@
 pkgbase = intel-media-stack-bin
 	pkgdesc = Tools and libraries for developing media solutions on Intel products. Includes MediaSDK, Media Driver, libva and libva-utils.
-	pkgver = 2018.3.1
+	pkgver = 2018.4.1
 	pkgrel = 1
 	url = https://github.com/Intel-Media-SDK/MediaSDK/
 	install = intel-media-stack-bin.install
@@ -23,17 +23,19 @@ pkgbase = intel-media-stack-bin
 	provides = libva
 	provides = libva-utils
 	conflicts = intel-media-sdk
-	noextract = intel-media-stack-bin-2018.3.1.tar.gz
+	noextract = intel-media-stack-bin-2018.4.1.tar.gz
 	options = !strip
 	options = !emptydirs
 	backup = etc/profile.d/intel-mediasdk-devel.sh
 	backup = etc/profile.d/intel-mediasdk-devel.csh
 	backup = etc/profile.d/intel-mediasdk.sh
 	backup = etc/profile.d/intel-mediasdk.csh
-	source = intel-media-stack-bin-2018.3.1.tar.gz::https://github.com/Intel-Media-SDK/MediaSDK/releases/download/intel-mediasdk-18.3.1/MediaStack.tar.gz
-	source = https://raw.githubusercontent.com/Intel-Media-SDK/MediaSDK/intel-mediasdk-18.3.1/LICENSE
-	sha256sums = 5f09a92be728f3ec9236621a63286fef762973dc99abfd1ce767452c8d9d0035
+	source = intel-media-stack-bin-2018.4.1.tar.gz::https://github.com/Intel-Media-SDK/MediaSDK/releases/download/intel-mediasdk-18.4.1/MediaStack.tar.gz
+	source = https://raw.githubusercontent.com/Intel-Media-SDK/MediaSDK/intel-mediasdk-18.4.1/LICENSE
+	source = intel-media-stack-bin-fix-install.patch
+	sha256sums = f053e19fc39d08c35705fadfb90098b2c50b6ac0f37bf89dc18099deb86f93b9
 	sha256sums = dfd67773578903698f9ff4a61eb8f2d84810cbecd56f3f3cee8c649f813b6ea6
+	sha256sums = 2e432be94fb765fad3ea03a65377cbdd57074eb358815f8eb2354635b2f4746d
 
 pkgname = intel-media-stack-bin
 
