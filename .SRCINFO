@@ -1,6 +1,6 @@
 pkgbase = wingide
 	pkgdesc = Wing IDE Professional is the full-featured Python IDE for professional programmers.
-	pkgver = 6.1.4.1.2
+	pkgver = 6.1.5.1.1
 	pkgrel = 1
 	url = http://www.wingware.com
 	install = wingide.install
@@ -12,12 +12,8 @@ pkgbase = wingide
 	depends = xdg-utils
 	options = !strip
 	options = !emptydirs
-	source = http://wingware.com/pub/wingide/6.1.4/wingide-6.1.4-1-x86_64-linux.tar.bz2
-	source = http://wingware.com/pub/wingide/6.1.4/patches/fix-find-symbol-6.1.4p1-all.tar
-	source = http://wingware.com/pub/wingide/6.1.4/patches/goto-another-visible-split-6.1.4p2-all.tar
-	md5sums = 1a0007a298152cb8a9454534c6af21c9
-	md5sums = 0425c50fecff2fdfa1e41addc13ce825
-	md5sums = dbcfa590bc07f278a4bef50fde4bc8fc
+	source = http://wingware.com/pub/wingide/6.1.5/wingide-6.1.5-1-x86_64-linux.tar.bz2
+	md5sums = 7ff11809aa41aaaf75d7c1c30c5e44ce
 
 pkgname = wingide
 
