@@ -1,0 +1,54 @@
+commit bec3f19
+Author: Emanuele Giaquinta <e.giaquinta@glauco.it>
+Date:   Tue Jun 28 21:56:17 2016 +0000
+
+    Fix invalid moves when smart resize is enabled and the wm uses X11 borders for the frame windows.
+    
+    Patch by Uli Schlachter.
+---
+ src/main.C | 25 +++++++++++++++++++++++--
+ 1 file changed, 23 insertions(+), 2 deletions(-)
+
+diff --git a/src/main.C b/src/main.C
+index 39aa5ec..5fa605e 100644
+--- a/src/main.C
++++ b/src/main.C
+@@ -1054,6 +1054,25 @@ rxvt_term::alias_color (int dst, int src)
+   pix_colors[dst].set (this, rs[Rs_color + dst] = rs[Rs_color + src]);
+ }
+ 
++#ifdef SMART_RESIZE
++static unsigned int
++get_parent_bw (Display *dpy, Window w)
++{
++  int idummy;
++  unsigned int udummy;
++  Window wdummy, parent;
++  Window *children;
++  unsigned int nchildren, border_width;
++
++  XQueryTree (dpy, w, &wdummy, &parent, &children, &nchildren);
++  XFree (children);
++  XGetGeometry (dpy, parent, &wdummy, &idummy, &idummy,
++                &udummy, &udummy, &border_width, &udummy);
++
++  return border_width;
++}
++#endif
++
+ /* -------------------------------------------------------------------- *
+  * -                         WINDOW RESIZING                          - *
+  * -------------------------------------------------------------------- */
+@@ -1098,8 +1117,10 @@ rxvt_term::resize_all_windows (unsigned int newwidth, unsigned int newheight, in
+        */
+       if (x1 != x || y1 != y)
+         {
+-          x -= x1;
+-          y -= y1;
++          unsigned int border_width = get_parent_bw (dpy, parent);
++
++          x -= x1 + border_width;
++          y -= y1 + border_width;
+         }
+ 
+       x1 = (DisplayWidth  (dpy, display->screen) - old_width ) / 2;
