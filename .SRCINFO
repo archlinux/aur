@@ -1,12 +1,12 @@
 pkgbase = batman-adv-dkms
 	pkgdesc = batman kernel module (dkms package)
-	pkgver = v2018.4
+	pkgver = v2019.0
 	pkgrel = 1
 	url = https://www.open-mesh.org/projects/batman-adv
 	arch = any
 	license = GPL
 	depends = dkms
-	source = batman-adv::git+https://git.open-mesh.org/batman-adv.git#commit=eb3e56f832db2c6c12516ce99aabb5c24c64591d
+	source = batman-adv::git+https://git.open-mesh.org/batman-adv.git#commit=d09933a22938fbd5c37ccb444a608b8559cef468
 	source = dkms.conf
 	sha256sums = SKIP
 	sha256sums = af072d643fb0587c8a5af4c7faf0d9a9cb73f3515a3b79853c60d98a30743ab2
