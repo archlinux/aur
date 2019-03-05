@@ -2,7 +2,7 @@
 pkgbase=python-specviz
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.6.2
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="An interactive astronomical 1D spectra analysis tool"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('python-setuptools' 'python-pytest' 'python-pyqtgraph' 'python-astropy>=3.1' 'python-astropy-helpers>=3.1' 'python-sphinx-astropy')
 checkdepends=('python-qtawesome' 'python-click' 'python-asteval' 'python-specutils' 'python-pytest-qt' 'python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('d34efce49dcc48b7401b1cd15a4afc77')
+md5sums=('a3bd8202bc10796f179917f6d5a51627')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
