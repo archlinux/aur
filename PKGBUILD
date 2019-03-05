@@ -2,18 +2,29 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=vapoursynth-editor
-pkgver=R18
+pkgver=R19
 pkgrel=1
 pkgdesc='VapourSynth script editor'
-arch=('x86_64')
-url='https://bitbucket.org/mystery_keeper/vapoursynth-editor'
-license=('CCPL' 'MIT')
-depends=('qt5-base' 'qt5-websockets' 'vapoursynth')
-makedepends=('git')
-source=("git+https://bitbucket.org/mystery_keeper/vapoursynth-editor.git#tag=${pkgver,}"
-        'vsedit.desktop')
-sha256sums=('SKIP'
-            'b6d24441cf5746ea4dc08ecf379c67695bac663deb394db4334ba6aba9474c0f')
+arch=(x86_64)
+url=https://bitbucket.org/mystery_keeper/vapoursynth-editor
+license=(
+  CCPL
+  MIT
+)
+depends=(
+  qt5-base
+  qt5-websockets
+  vapoursynth
+)
+makedepends=(git)
+source=(
+  git+https://bitbucket.org/mystery_keeper/vapoursynth-editor.git#tag=${pkgver,}
+  vsedit.desktop
+)
+sha256sums=(
+  SKIP
+  b6d24441cf5746ea4dc08ecf379c67695bac663deb394db4334ba6aba9474c0f
+)
 
 build() {
   cd vapoursynth-editor/pro
