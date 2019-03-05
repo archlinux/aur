@@ -1,11 +1,10 @@
 pkgbase = libinput-multiplier
 	pkgdesc = scroll patch, discrete deltay multiplier
-	pkgver = 1.12.2
+	pkgver = 1.12.6
 	pkgrel = 1
 	url = http://freedesktop.org/wiki/Software/libinput/
-	arch = i686
 	arch = x86_64
-	license = MIT
+	license = GPL
 	makedepends = gtk3
 	makedepends = meson
 	depends = mtdev
@@ -15,12 +14,12 @@ pkgbase = libinput-multiplier
 	optdepends = gtk3: libinput debug-gui
 	optdepends = python-pyudev: libinput measure
 	optdepends = python-evdev: libinput measure
-	provides = libinput=1.12.2
+	provides = libinput=1.12.6
 	conflicts = libinput
-	source = https://freedesktop.org/software/libinput/libinput-1.12.2.tar.xz
+	source = https://freedesktop.org/software/libinput/libinput-1.12.6.tar.xz
 	source = multiplier.patch
-	sha512sums = f7122a1d18dd2d0072a34fd9897ebe25a065100b3754052d7ec133bddb56d5c2a5a94950cfc8366ef5d117180c28b3ff99b1a62f3ab95df5ac22f86721fbdc67
-	sha512sums = SKIP
+	sha512sums = 02ad90c77a0c8c27fd96ec34e1546c5f0947ced49bad386372c1ef7c41b3b2157c39020f0766f20aaf2ab3c97128567e169279bea21115ced39499dda325d2ef
+	sha512sums = 9564ccadac39632e09e574bee0910896bbc598d684fa0f3afa0414111b8064213290db9bf5b1106365a68555d11afd86e23fb8c957305448e6c4dd1df0743c93
 
 pkgname = libinput-multiplier
 
