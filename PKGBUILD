@@ -2,7 +2,7 @@
 # Python package author: Matthew Honnibal <matt@explosion.ai>
 pkgname=python-blis
 _origpkgname=cython-blis
-pkgver=0.1.0
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="The Blis linear algebra routines as a self-contained Python C-extension"
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=("MIT")
 depends=("cython" "python-numpy" "python-pytest" "python-hypothesis")
 makedepends=("python-setuptools" "python-wheel")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/explosion/cython-blis/archive/v$pkgver.tar.gz")
-md5sums=('b36cf1c713d10473be866a16bbe733e3')
+md5sums=('404155b7e87c728a699b64fa8260cb58')
 
 prepare() {
     # Change gcc-6 to gcc to avoid that dep. I originally made a patch here,
