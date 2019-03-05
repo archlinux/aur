@@ -3,7 +3,7 @@
 # https://aur.archlinux.org/packages/ghdl/
 
 pkgname=ghdl-gcc-git
-pkgver=0.36dev.git20171218
+pkgver=0.37dev.git20190303
 pkgrel=1
 arch=('any')
 pkgdesc='VHDL simulator - GCC flavour'
@@ -16,25 +16,25 @@ makedepends=('gcc-ada' 'git')
 install=ghdl.install
 options=(!emptydirs staticlibs)
 
-_gccver=7.2.0
-_islver=0.18
+_gccver=8.3.0
+_islver=0.20
 
 source=(
-	"ghdl::git://github.com/tgingold/ghdl.git"
+	"ghdl::git://github.com/ghdl/ghdl.git"
 	"ftp://ftp.gnu.org/gnu/gcc/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
 	"http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
 )
 md5sums=(
 	'SKIP'
-	'ff370482573133a7fcdd96cd2f552292'
-	'11436d6b205e516635b666090b94ab32'
+	'65b210b4bfe7e060051f799e0f994896'
+	'cb396f31b24aeeac49840b519741b0e1'
 )
 
 pkgver() {
 	cd "${srcdir}/ghdl"
 
-	# GHDL version (extracted from version.in)
-	_distver=`sed -n -e 's/.*Ghdl_Ver .*"\(.*\)".*/\1/p' src/version.in | tr -d '-'`
+	# GHDL version (extracted from version.ads)
+	_distver=`sed -n -e 's/.*Ghdl_Ver .*"\(.*\)".*/\1/p' version.ads | tr -d '-'`
 	# Date of the last git commit
 	_gitver=`git log -n 1 --date=short | sed -n -e 's/.*Date:\s*\([0-9-]*\).*/\1/p' | tr -d -`
 
@@ -58,8 +58,10 @@ prepare() {
 	# Do not run fixincludes - FIXME Why?
 	sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
 
-	# Arch Linux installs x86_64 libraries in /lib
-	[[ $CARCH == "x86_64" ]] && sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
+	# Arch Linux installs libraries in /lib
+	# FIXME How to fix this for all architectures ?
+	sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
+	sed -i '/lp64=/s/lib64/lib/' gcc/config/aarch64/t-aarch64-linux
 
 	# hack! - some configure tests for header files using "$CPP $CPPFLAGS"
 	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
@@ -89,7 +91,6 @@ build() {
 		--infodir=/usr/share/info \
 		--enable-shared \
 		--enable-threads=posix \
-		--enable-libmpx \
 		--with-system-zlib \
 		--with-isl \
 		--enable-__cxa_atexit \
