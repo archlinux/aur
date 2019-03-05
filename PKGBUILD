@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=libosso
-pkgver=2.32
+pkgver=2.35
 pkgrel=1
 pkgdesc="Basic library for Maemo applications"
 arch=("x86_64" "i686")
@@ -10,7 +10,7 @@ license=('LGPL2.1')
 depends=('dbus-glib')
 makedepends=('mce-dev')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/maemo-leste/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('bebce3550fc9bcf925c5c507d7982f68154d5d196576c2d9600e01fa2c8f1ecc84ed72c35e3f31e8262207b637d9ffe7ddf6568278c977dffbd11212d6da4e9a')
+sha512sums=('8f542e2cac593f2d4bbb7faba0b3d31ea88be07fefaa17ad77961dcb4e0fe2a9958fdf79e29e76bdbfd1b62c434c4a4018a26ec2da5a8e917a1de884d3b6892b')
 
 prepare() {
   cd "$pkgname-$pkgver"
