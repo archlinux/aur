@@ -3,7 +3,7 @@
 pkgname=filet-git
 pkgver=r51.1b2411d
 pkgrel=1
-pkgdesc="A fucking fucking fast file fucker"
+pkgdesc="A fucking fast file manager for your terminal"
 arch=('i686' 'x86_64')
 url="https://github.com/buffet/filet"
 license=('MPL')
