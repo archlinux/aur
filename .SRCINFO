@@ -1,6 +1,6 @@
 pkgbase = snot
 	pkgdesc = Basic Btrfs snapshot tool.
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://gitlab.com/goeb/snot
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = snot
 	backup = etc/snot/list.init
 	backup = etc/snot/restore.conf
 	backup = etc/snot/restore.init
-	source = snot::git+https://gitlab.com/goeb/snot.git#tag=0.1
+	source = snot::git+https://gitlab.com/goeb/snot.git#tag=0.2
 	sha256sums = SKIP
 
 pkgname = snot

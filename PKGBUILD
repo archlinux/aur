@@ -1,7 +1,7 @@
 # Maintainer: Stefan Göbel < snot ʇɐ subtype ˙ de >
 
 pkgname='snot'
-pkgver='0.1'
+pkgver='0.2'
 pkgrel='1'
 pkgdesc='Basic Btrfs snapshot tool.'
 arch=('x86_64' 'i686')
@@ -24,6 +24,8 @@ backup=(
 )
 
 build() {
+
+   export GOCACHE="$srcdir/.gocache"
 
    cd "$pkgname"
 
