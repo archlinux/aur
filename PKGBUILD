@@ -33,7 +33,7 @@ fi
 warning "Setting up libffi compatibility headers (run update-libffi-compat as root if build fails)"
 warning "Downloading bootstrap fbc compiler"
 cd "${srcdir}"
-wget http://downloads.sourceforge.net/fbc/FreeBASIC-${_bootver}-linux-${_arch}.tar.gz
+wget http://downloads.sourceforge.net/fbc/Binaries%20-%20Linux/FreeBASIC-${_bootver}-linux-${_arch}.tar.gz
 tar xzf FreeBASIC-${_bootver}-linux-${_arch}.tar.gz
 cd FreeBASIC-${_bootver}-linux-${_arch}
 export PATH=`pwd`/bin:${PATH}
