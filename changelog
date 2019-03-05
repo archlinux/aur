@@ -1,3 +1,6 @@
+v0.7.4-1 (2019-03-05)
+* repkg: Fix path related issues for remove-backup and rename-file
+
 v0.7.3-1 (2018-09-24)
 * Makefile: Fix PREFIX_… variable declarations - more
 

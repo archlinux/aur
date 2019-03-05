@@ -1,7 +1,7 @@
 # Maintainer: Tinu Weber <http://ayekat.ch>
 
 pkgname=remakepkg
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 arch=(any)
 
@@ -12,15 +12,13 @@ license=(GPL3)
 depends=(coreutils)
 makedepends=(asciidoc git)
 
-provides=(diffrepo getpkg pkgmirror remakepkg repkg)
-conflicts=(diffrepo getpkg pkgmirror remakepkg repkg)
-
 changelog='changelog'
 
 source=("git+https://gitlab.com/ayekat/pacman-hacks.git#tag=v$pkgver"
         'diffrepo.hook.example')
 sha256sums=(SKIP
             4b723cf33b30f6176f8f50623c2325d05d5dc70463ca2bcd893fae2ccab5776e)
+
 _tools='diffrepo getpkg pkgmirror remakepkg repkg'
 
 build() {
