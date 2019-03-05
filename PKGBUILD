@@ -2,7 +2,7 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgname=spl-dkms
-pkgver=0.7.12
+pkgver=0.7.13
 pkgrel=1
 pkgdesc="Solaris Porting Layer kernel modules."
 arch=('any')

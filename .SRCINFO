@@ -1,13 +1,13 @@
 pkgbase = spl-dkms
 	pkgdesc = Solaris Porting Layer kernel modules.
-	pkgver = 0.7.12
+	pkgver = 0.7.13
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = dkms
-	source = git+https://github.com/zfsonlinux/spl.git#tag=spl-0.7.12?signed
+	source = git+https://github.com/zfsonlinux/spl.git#tag=spl-0.7.13?signed
 	source = 0001-only-build-the-module-in-dkms.conf.patch
 	validpgpkeys = 4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027
 	validpgpkeys = C33DF142657ED1F7C328A2960AB9E991C6AF658B
