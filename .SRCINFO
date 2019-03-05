@@ -1,7 +1,7 @@
 pkgbase = bunq-desktop-bin
 	pkgdesc = A desktop implementation for the bunq API
-	pkgver = 0.9.5
-	pkgrel = 2
+	pkgver = 0.9.6
+	pkgrel = 1
 	url = https://github.com/BunqCommunity/BunqDesktop
 	arch = x86_64
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = bunq-desktop-bin
 	provides = bunq-desktop
 	conflicts = bunq-desktop-git
 	conflicts = bunq-desktop-src
-	source = bunqDesktop-linux-unpacked-0.9.5.tar.gz::https://github.com/bunqCommunity/bunqDesktop/releases/download/0.9.5/bunqDesktop-linux-unpacked.tar.gz
-	source = 0.9.5-512x512.png::https://github.com/bunqCommunity/bunqDesktop/raw/0.9.5/build/icons/512x512.png
+	source = bunqDesktop-linux-unpacked-0.9.6.tar.gz::https://github.com/bunqCommunity/bunqDesktop/releases/download/0.9.6/bunqDesktop-linux-unpacked.tar.gz
+	source = 0.9.6-512x512.png::https://github.com/bunqCommunity/bunqDesktop/raw/0.9.6/build/icons/512x512.png
 	source = bunq-desktop-bin.desktop
-	sha256sums = 7d306ac6492356e864e7ec87fec12b28483e32ec499db36e444ca506b91953f5
+	sha256sums = 0534497ffe71fba217e1331d5d59023c3a4c29bacd933d611885394e32050f5c
 	sha256sums = 580274ac3f60cce7789cdb69afc67b9db43da09b04fd82ad563fdec4337302d1
 	sha256sums = 1d84f185830733bb38928fcaa33ffc0ba46140f7f116b4d5ad24c93a585a0ffa
 
