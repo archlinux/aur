@@ -2,7 +2,7 @@
 
 pkgname=fbc
 pkgver=1.06
-pkgrel=1
+pkgrel=2
 _bootver=1.06.0
 pkgdesc="FreeBASIC Compiler (Release version)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('libffi' 'ncurses5-compat-libs')
 provides=('fbc')
 conflicts=('freebasic' 'fbc-git')
 options=(staticlibs)
-source=("https://downloads.sourceforge.net/fbc/FreeBASIC-${_bootver}-source.tar.gz")
+source=("https://downloads.sourceforge.net/fbc/Source%20Code/FreeBASIC-${_bootver}-source.tar.gz")
 sha256sums=('SKIP')
 
 prepare() {
@@ -27,7 +27,7 @@ fi
 warning "Setting up libffi compatibility headers (run update-libffi-compat as root if build fails)"
 warning "Downloading bootstrap fbc compiler"
 cd "${srcdir}"
-wget http://downloads.sourceforge.net/fbc/FreeBASIC-${_bootver}-linux-${_arch}.tar.gz
+wget http://downloads.sourceforge.net/fbc/Binaries%20-%20Linux/FreeBASIC-${_bootver}-linux-${_arch}.tar.gz
 tar xzf FreeBASIC-${_bootver}-linux-${_arch}.tar.gz
 cd FreeBASIC-${_bootver}-linux-${_arch}
 export PATH=`pwd`/bin:${PATH}
