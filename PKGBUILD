@@ -2,7 +2,7 @@
 
 pkgname=caffe2-git
 _srcname=pytorch
-pkgver=0.8.2.r14834.g60e7d04961
+pkgver=0.8.2.r16592.g079093a662
 pkgrel=1
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version)'
@@ -45,7 +45,7 @@ source=(
         'git+https://github.com/google/protobuf.git'
         'git+https://github.com/Yangqing/ios-cmake.git'
         'git+https://github.com/Maratyszcza/NNPACK.git'
-        'git+https://github.com/facebookincubator/gloo'
+        'git+https://github.com/facebookincubator/gloo.git'
         'git+https://github.com/Maratyszcza/pthreadpool.git'
         'git+https://github.com/Maratyszcza/FXdiv.git'
         'git+https://github.com/Maratyszcza/FP16.git'
@@ -57,18 +57,17 @@ source=(
         'git+https://github.com/benjaminp/six.git'
         'git+https://github.com/ARM-software/ComputeLibrary.git'
         'git+https://github.com/onnx/onnx.git'
-        'git+https://github.com/onnx/onnx-tensorrt'
-        'git+https://github.com/shibatch/sleef'
-        'git+https://github.com/intel/ideep'
-        'git+https://github.com/NVIDIA/nccl'
+        'git+https://github.com/bddppq/onnx-tensorrt.git'
+        'git+https://github.com/zdevito/sleef.git'
+        'git+https://github.com/intel/ideep.git'
+        'git+https://github.com/NVIDIA/nccl.git'
         'git+https://github.com/google/gemmlowp.git'
-        'git+https://github.com/pytorch/QNNPACK'
+        'git+https://github.com/pytorch/QNNPACK.git'
         'git+https://github.com/intel/ARM_NEON_2_x86_SSE.git'
-        'git+https://github.com/pytorch/fbgemm'
+        'git+https://github.com/pytorch/fbgemm.git'
+        'git+https://github.com/houseroad/foxi.git'
     # others:
         'git+https://github.com/asmjit/asmjit.git'
-    # patches:
-        'caffe2-git-opencv4-fix.patch'
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -100,7 +99,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '3a9bb782dc77414ba2d86d222d30b6c33c8fc434e489eaf5958c108ab3565c06')
+            'SKIP')
 
 prepare() {
     cd "$_srcname"
@@ -108,7 +107,7 @@ prepare() {
     local _submodule
     local _submodule_list="pybind11 cub googletest benchmark protobuf ios-cmake \
                            NNPACK gloo zstd ComputeLibrary onnx onnx-tensorrt \
-                           sleef ideep QNNPACK fbgemm"
+                           sleef ideep QNNPACK fbgemm foxi"
                            
     git submodule init
     
@@ -135,9 +134,6 @@ prepare() {
     git config --local 'submodule.third-party/cpuinfo.url' "${srcdir}/cpuinfo"
     
     git submodule update
-    
-    # opencv 4.0 fix
-    patch -Np1 -i "${srcdir}/caffe2-git-opencv4-fix.patch"
 }
 
 pkgver() {
@@ -188,7 +184,7 @@ build() {
         -DUSE_CUDA:BOOL='OFF' \
         -DUSE_CUDNN:BOOL='OFF' \
         -DUSE_DISTRIBUTED:BOOL='ON' \
-        -DUSE_FBGEMM:BOOL='OFF' \
+        -DUSE_FBGEMM:BOOL='ON' \
         -DUSE_FFMPEG:BOOL='ON' \
         -DUSE_GFLAGS:BOOL='ON' \
         -DUSE_GLOG:BOOL='ON' \
@@ -200,10 +196,9 @@ build() {
         -DUSE_LMDB:BOOL='ON' \
         -DUSE_METAL:BOOL='OFF' \
         -DUSE_MKLDNN:BOOL='OFF' \
-        -DUSE_MOBILE_OPENGL:BOOL='OFF' \
         -DUSE_MPI:BOOL='ON' \
         -DUSE_NCCL:BOOL='OFF' \
-        -DUSE_NNAPI:BOOL='OFF' \
+        -DUSE_NNAPI:BOOL='ON' \
         -DUSE_NNPACK:BOOL='ON' \
         -DUSE_NUMA:BOOL='ON' \
         -DUSE_NUMPY:BOOL='ON' \
@@ -223,6 +218,7 @@ build() {
         -DUSE_TENSORRT:BOOL='OFF' \
         -DUSE_ZMQ:BOOL='ON' \
         -DUSE_ZSTD:BOOL='ON' \
+        -DWITH_OPENMP:BOOL='ON' \
         \
         -Wno-dev \
         ..
@@ -240,9 +236,9 @@ package() {
     local _exclude_dirs
     mapfile -t -d '' _exclude_dirs < <(find "${pkgdir}/usr/include" -mindepth 1 -maxdepth 1 -type d ! -name 'caffe*' -print0)
     rm    "$pkgdir"/usr/bin/{protoc,unzstd,zstd{cat,mt,}}
-    rm    "$pkgdir"/usr/include/{*.h,*.py}
+    rm    "$pkgdir"/usr/include/*.h
     rm    "$pkgdir"/usr/lib/*.a
-    rm    "$pkgdir"/usr/lib/lib{zstd,onnxifi}*
+    rm    "$pkgdir"/usr/lib/lib{foxi,onnxifi,zstd}*
     rm -r "$pkgdir"/usr/lib/cmake/protobuf
     rm    "$pkgdir"/usr/lib/pkgconfig/{protobuf-lite,protobuf}.pc
     rm    "$pkgdir"/usr/share/pkgconfig/libzstd.pc
