@@ -8,7 +8,7 @@
 # Currently it will not be a mandatory makedepend.
 
 pkgname=intel-media-sdk
-pkgver=2018.4.0
+pkgver=2018.4.1
 _srcver="${pkgver:2}"
 pkgrel=1
 epoch=1
@@ -20,10 +20,10 @@ depends=('gcc-libs' 'libdrm' 'libva' 'wayland' 'intel-media-driver')
 makedepends=('cmake' 'libpciaccess' 'libx11' 'libxcb')
 provides=('libmfx')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-${_srcver}.tar.gz"
+source=("https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-${_srcver}.tar.gz"
         'intel-media-sdk.conf'
         'intel-media-sdk.sh')
-sha256sums=('259d9b57df4fca316898b6dbe7b4d561ce42160fa953f36e2a4b357e86116bf9'
+sha256sums=('2a7b282f71e12f626a6cc70024a5b571a71ffdc5f673e2c8fc4858e9a1e1187b'
             '63e76d28140486871a3ffc29ce19c84914583bf243201946c76943bf54df374a'
             '315ea6f304cf2b7b6a8aaabb0b8f71fcd480677c7fb9c8cbfa51c7830bb159bc')
 
