@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${_gitrepository}"
-  printf '1.%s\n' "$(( $(git rev-list --count master) ))"
+  printf '%s\n' "$(./bin/portunus -V)"
 }
 
 package() {
