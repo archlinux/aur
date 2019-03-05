@@ -4,7 +4,7 @@
 
 pkgname=cjs-git
 pkgver=4.0.0.r2.gea081f32
-pkgrel=1
+pkgrel=2
 pkgdesc="Javascript Bindings for Cinnamon"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/${pkgname%-git}"
@@ -12,6 +12,8 @@ license=('GPL')
 depends=('dbus-glib' 'gtk3' 'gobject-introspection-runtime' 'js52')
 makedepends=('git' 'autoconf-archive' 'gobject-introspection')
 checkdepends=('xorg-server-xvfb')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("git+${url}.git")
 sha512sums=('SKIP')
 
