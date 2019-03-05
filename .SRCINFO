@@ -2,8 +2,8 @@
 # Mon Jan  7 10:24:48 UTC 2019
 pkgbase = decklink
 	pkgdesc = Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video editing cards
-	pkgver = 10.11.4
-	pkgrel = 2
+	pkgver = 11.0
+	pkgrel = 1
 	url = https://www.blackmagicdesign.com/support/family/capture-and-playback
 	arch = i686
 	arch = x86_64
