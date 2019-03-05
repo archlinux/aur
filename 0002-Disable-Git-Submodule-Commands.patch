@@ -1,0 +1,10 @@
+index b27ff963..6e79008b 100644
+--- a/package.json
++++ b/package.json
+@@ -4,4 +4,4 @@
+   "scripts": {
+-    "sub:init": "git submodule update --init --recursive",
+-    "sub:update": "git submodule update --remote",
++    "sub:init": "true",
++    "sub:update": "true",
+     "sub:pull": "git submodule foreach git pull",
