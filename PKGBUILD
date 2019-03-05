@@ -1,4 +1,4 @@
-# Maintainer: Fred <lapdogpdx.yahoo.com>
+# Maintainer: YeahSure <lapdogpdx.yahoo.com>
 
 pkgname=filet-git
 pkgver=r51.1b2411d
