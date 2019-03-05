@@ -1,6 +1,6 @@
 # Maintainer: bilabila <bilabila@qq.com>
 pkgname=fish-xsession
-pkgver=1
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="fish -l as xsession from your display manager"
 arch=('any')
