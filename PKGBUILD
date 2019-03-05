@@ -23,5 +23,5 @@ build() {
 package() {
 	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	cd "akmey-client-$pkgver-alpha"
-	install -Dm644 akmey "$pkgdir/usr/bin/akmey"
+	install -Dm755 akmey "$pkgdir/usr/bin/akmey"
 }
