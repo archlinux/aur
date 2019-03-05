@@ -2,7 +2,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
 
 pkgname=gnome-shell-extension-window-corner-preview-git
-pkgver=2.0.r9.gef01bfc
+pkgver=2.r19.g9c1e97c
 pkgrel=1
 pkgdesc='Extension for GNOME shell to show a video preview on the corner of the screen.'
 arch=(any)
