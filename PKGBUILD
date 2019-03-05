@@ -3,7 +3,7 @@
 
 pkgname=knot-resolver
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='full caching DNS resolver implementation'
 url='https://www.knot-resolver.cz/'
 arch=('x86_64' 'armv7h')
@@ -14,7 +14,7 @@ install=install
 depends=('cmocka'
          'dnssec-anchors'
          'gnutls'
-         'knot>=2.7.2'
+         'knot>=2.8'
          'libedit'
          'libsystemd'
          'libuv'
@@ -22,11 +22,19 @@ depends=('cmocka'
          'lua51-sec'
          'lua51-socket'
          'luajit')
-source=("https://secure.nic.cz/files/${pkgname}/${pkgname}-${pkgver}.tar.xz")
+source=("https://secure.nic.cz/files/${pkgname}/${pkgname}-${pkgver}.tar.xz"
+        "01-compat-Knot-DNS-2.8.patch")
 
 _makevars="PREFIX=/usr SBINDIR=/usr/bin LIBDIR=/usr/lib INCLUDEDIR=/usr/include ETCDIR=/etc/knot-resolver KEYFILE_DEFAULT=/etc/trusted-key.key V=1"
 
-sha256sums=('d1396888ec3a63f19dccdf2b7dbcb0d16a5d8642766824b47f4c21be90ce362b')
+sha256sums=('d1396888ec3a63f19dccdf2b7dbcb0d16a5d8642766824b47f4c21be90ce362b'
+            'SKIP')
+
+prepare() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	patch -p1 -i "${srcdir}/01-compat-Knot-DNS-2.8.patch"
+}
+
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

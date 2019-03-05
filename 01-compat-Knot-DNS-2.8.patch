@@ -1,0 +1,12 @@
+diff --git a/daemon/lua/kres-gen.lua b/daemon/lua/kres-gen.lua
+index eeb8ff7c..4bf6d63b 100644
+--- a/daemon/lua/kres-gen.lua
++++ b/daemon/lua/kres-gen.lua
+@@ -394,6 +394,7 @@ struct zs_scanner {
+ 		_Bool automatic;
+ 		void (*record)(zs_scanner_t *);
+ 		void (*error)(zs_scanner_t *);
++		void (*comment)(zs_scanner_t *);
+ 		void *data;
+ 	} process;
+ 	struct {
