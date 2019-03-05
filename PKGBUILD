@@ -24,11 +24,6 @@ source=("https://github.com/MonoGame/MonoGame/releases/download/v${pkgver}/monog
         "MonogamePipeline.desktop"
         "monogame-pipeline-tool"
         "mgcb")
-md5sums=('68d6b7a7403f718d2502250231db82f4'
-         '2c8089207448fa9571c65eb00f0c9cd1'
-         '587c27465d575e4522de212346f3f5a0'
-         'e2e0f2a74547318fc0fa7dc76e79bba8'
-         'b972af897b3607d2e14bb8b51655d549')
 
 prepare() {
 	sh monogame-sdk.run --noexec --target "${_pkgname}-${pkgver}"
