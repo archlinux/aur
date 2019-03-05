@@ -1,10 +1,8 @@
-# Maintainer: Jonathan Lestrelin <jonathan.lestrelin@gmail.com>
-# Contributor: Nate Pleasant <nate.pleasant@gmail.com>
-# Contributor: Mihai Onofrei <mihai303@gmail.com>
+# Maintainer: YeahSure <lapdogpdx.yahoo.com>
 
 pkgname=colout-git
 _pkgname=colout
-pkgver=r180.9bf6de3
+pkgver=r221.b62b575
 pkgrel=1
 pkgdesc="Reads text on stdin and produces colorized and stylized output"
 arch=('any')
