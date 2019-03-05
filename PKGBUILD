@@ -3,7 +3,7 @@
 pkgname=intel-media-stack-bin
 pkgver=2018.4.1
 _srcver="${pkgver:2}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools and libraries for developing media solutions on Intel products. Includes MediaSDK, Media Driver, libva and libva-utils.'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
@@ -45,7 +45,6 @@ package() {
     mkdir -p "$pkgdir"/{etc/{ld.so.conf.d,profile.d},usr/lib}
     
     ./install_media.sh
-    echo "here1"
     
     # add bin folder to PATH
     while read -rd '' _file
