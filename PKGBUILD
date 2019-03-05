@@ -1,12 +1,12 @@
 # Maintainer: Andrei Pavel <andrei.pavel@cti.pub.ro>
-_gitrepository='curate-pkg'
+_gitrepository='portunus'
 _gitbranch='master'
-pkgname='curate-pkg-git'
-pkgver=1.85
+pkgname='portunus'
+pkgver=2.0
 pkgrel=1
 pkgdesc='aggregates all package managers under one tool'
 arch=('i686' 'x86_64')
-url='https://github.com/andrei-pavel/curate-pkg'
+url='https://github.com/andrei-pavel/portunus'
 license=('MIT')
 depends=('unp' 'yq')
 makedepends=('git')
@@ -23,4 +23,3 @@ package() {
   cd "${srcdir}/${_gitrepository}"
   ./install -p "${pkgdir}"
 }
-

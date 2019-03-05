@@ -1,8 +1,8 @@
-pkgbase = curate-pkg-git
+pkgbase = portunus
 	pkgdesc = aggregates all package managers under one tool
-	pkgver = 1.85
+	pkgver = 2.0
 	pkgrel = 1
-	url = https://github.com/andrei-pavel/curate-pkg
+	url = https://github.com/andrei-pavel/portunus
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -10,8 +10,8 @@ pkgbase = curate-pkg-git
 	depends = unp
 	depends = yq
 	provides = curate-pkg
-	source = git+https://github.com/andrei-pavel/curate-pkg.git#branch=master
+	source = git+https://github.com/andrei-pavel/portunus.git#branch=master
 	md5sums = SKIP
 
-pkgname = curate-pkg-git
+pkgname = portunus
 
