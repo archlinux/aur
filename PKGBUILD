@@ -20,6 +20,6 @@ pkgver() {
 
 package() {
     make -C "${srcdir}/${_pkgname}" DESTDIR="${pkgdir}" PREFIX='/usr' install
-    sed -i "s%version=\"[0-9].[0-9].[0-9]*\"%version=\"$_pkgver\"%g" "${pkgdir}/usr/bin/${_pkgname}"
+    sed -i "s%version=\"[0-9].[0-9].[0-9]*\"%version=\"${pkgver}\"%g" "${pkgdir}/usr/bin/${_pkgname}"
 }
 
