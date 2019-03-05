@@ -3,7 +3,7 @@
 
 pkgbase=python-kombu
 pkgname=('python-kombu' 'python2-kombu')
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc='A messaging library for Python'
 arch=('any')
@@ -18,7 +18,7 @@ checkdepends=('python-pytest-runner' 'python2-pytest-runner' 'python-redis' 'pyt
               'python2-pytest-sugar' 'python-sqlalchemy' 'python2-sqlalchemy' 'python-pyro'
               'python2-pyro' 'python2-librabbitmq' 'python-boto3' 'python2-boto3')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/celery/kombu/archive/v$pkgver.tar.gz")
-sha512sums=('d9dd06a9897f3784f6da75062cc9b9f95c651270f337d45e0621c9e4694b75581eacda67b7db65963e30b333e209d3465e5ecf350cdf1e7cbbab264ba7a454e0')
+sha512sums=('248e861a99e0b2e475394ebb1f8ad9d884fee4c2162004299be46990725f4adb2755b87db8d59527c5d0a5bdbdc8c1729c208402d8f1e0c370bbe37fa478265f')
 
 prepare() {
   cp -a kombu-$pkgver{,-py2}
