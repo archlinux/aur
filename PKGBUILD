@@ -6,14 +6,14 @@
 
 
 pkgname=shadowsocks-libev-git
-pkgver=3.2.4.r5.g2ee1235
+pkgver=3.2.4.r11.g14dd820
 pkgrel=1
 pkgdesc='A lightweight secured socks5 proxy for embedded devices and low end boxes'
 arch=(x86_64)
 url='https://github.com/shadowsocks/shadowsocks-libev'
 license=(GPL3)
 depends=(libcap mbedtls libsodium libev c-ares pcre libcorkipset libbloom)
-makedepends=(asciidoc xmlto git)
+makedepends=(asciidoc git xmlto)
 provides=(shadowsocks-libev)
 conflicts=(shadowsocks-libev)
 install=${pkgname}.install
@@ -30,6 +30,7 @@ sha512sums=('SKIP'
 
 pkgver() {
     cd "$pkgname"
+
     # cutting off 'v' prefix that presents in the git tag
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
@@ -50,6 +51,7 @@ build() {
 
 package() {
     cd "$srcdir"/$pkgname
+
     make DESTDIR="$pkgdir/" install
     install -Dm644 "$srcdir/shadowsocks-libev@.service" "$pkgdir/usr/lib/systemd/system/shadowsocks-libev@.service"
     install -Dm644 "$srcdir/shadowsocks-libev-server@.service" "$pkgdir/usr/lib/systemd/system/shadowsocks-libev-server@.service"
