@@ -41,7 +41,7 @@
   </placement>
   <theme>
     <name>Adwaita-Dark-openbox</name>
-    <titleLayout>LC</titleLayout>
+    <titleLayout>CL</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
       N: window icon
@@ -287,10 +287,10 @@
     </keybind>
     <keybind key="W-e">
       <action name="Execute">
-        <command>kfmclient openProfile filemanagement</command>
+        <command>io.elementary.files</command>
         <startupnotify>
           <enabled>yes</enabled>
-          <name>Konqueror</name>
+          <name>Files</name>
         </startupnotify>
       </action>
     </keybind>
@@ -346,12 +346,12 @@
           <command>compton-trans -c -5</command>
         </action>
       </mousebind>
-      <mousebind action="Click" button="C-A-Up">
+      <mousebind action="Click" button="Button6">
         <action name="GoToDesktop">
           <to>previous</to>
         </action>
       </mousebind>
-      <mousebind action="Click" button="C-A-Down">
+      <mousebind action="Click" button="Button7">
         <action name="GoToDesktop">
           <to>next</to>
         </action>
@@ -539,12 +539,12 @@
       </mousebind>
     </context>
     <context name="Desktop">
-      <mousebind action="Click" button="Up">
+      <mousebind action="Click" button="Button6">
         <action name="GoToDesktop">
           <to>previous</to>
         </action>
       </mousebind>
-      <mousebind action="Click" button="Down">
+      <mousebind action="Click" button="Button7">
         <action name="GoToDesktop">
           <to>next</to>
         </action>
@@ -640,50 +640,50 @@
     <!-- show the manage desktops section in the client-list-(combined-)menu -->
   </menu>
   <applications>
-    <application name="super-wingpanel">
-      <desktop>all</desktop>
-    </application>
     <application name="wingpanel">
       <desktop>all</desktop>
+      <layer>above</layer>
     </application>
-    <application class="Gnome-control-center">
-      <decor>no</decor>
+    <application name="plank">
+      <layer>above</layer>
     </application>
-    <application class="Terminal">
-      <decor>no</decor>
-    </application>
-    <application class="Audience">
-      <decor>no</decor>
-    </application>
-    <application class="Totem">
-      <decor>no</decor>
-    </application>
-    <application class="Gedit">
-      <decor>no</decor>
-    </application>
-    <application class="Noise*">
-      <decor>no</decor>
-    </application>
-    <application class="File-roller">
-      <decor>no</decor>
-    </application>
-    <application class="Gnome-tweak-tool">
-      <decor>no</decor>
-    </application>
-    <application class="Popcorn-Time">
-      <decor>no</decor>
-    </application>
-    <application class="PCSXR">
-      <decor>no</decor>
-    </application>
-    <application class="Shotwell">
-      <decor>no</decor>
-    </application>
-    <application class="Files">
-      <decor>no</decor>
+    <application class="Firefox">
+      <maximized>true</maximized>
+      <desktop>1</desktop>
+      <layer>below</layer>
     </application>
     <application class="Epiphany">
+      <maximized>true</maximized>
+      <desktop>1</desktop>
+      <layer>below</layer>
+    </application>
+    <application class="Io.elementary.mail">
+      <desktop>1</desktop>
+    </application>
+    <application class="Io.elementary.files">
+      <maximized>true</maximized>
+      <desktop>2</desktop>
+      <layer>below</layer>
+    </application>
+    <application class="mpv">
+      <fullscreen>yes</fullscreen>
+      <desktop>3</desktop>
+      <layer>below</layer>
+    </application>
+    <application class="Polari">
+      <maximized>true</maximized>
+     <desktop>3</desktop>
       <decor>no</decor>
+    </application>
+    <application class="Io.elementary.terminal">
+      <maximized>true</maximized>
+      <desktop>4</desktop>
+      <layer>below</layer>
+    </application>
+    <application class="Io.elementary.code">
+      <maximized>true</maximized>
+      <desktop>4</desktop>
+      <layer>below</layer>
     </application>
     <!--
   # this is an example with comments through out. use these to make your
@@ -713,7 +713,7 @@
   # order that they appear in this list
 
 
-    # each rule element can be left out or set to 'default' to specify to not 
+    # each rule element can be left out or set to 'default' to specify to not
     # change that attribute of the window
 
     <decor>yes</decor>

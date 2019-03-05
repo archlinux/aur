@@ -15,7 +15,8 @@ depends=('openbox' 'compton' 'pantheon-workarounds'
 optdepends=("obconf: openbox configuration utility"
             "elementary-os-openbox: Elementary theme for Openbox"
             "hsetroot: Set X11 background"
-            "xorg-xwininfo: set mousewheel transparency scrolling like compiz with compton-trans")
+            "xorg-xwininfo: set mousewheel transparency scrolling like compiz with compton-trans"
+            "dbus: set window color inversion with compton-inverter (must enable dbus backend in compton)")
 provides=("pantheon-lite")
 conflicts=()
 source=(pantheon-openbox.{desktop,session} 
@@ -28,7 +29,7 @@ sha512sums=('6cb25616a1fd238040f81eb8ed2c26f35fa9d9648c2b551df7e3bc2d56726d41d8b
             '8696b95b4f6b37c9edddcdbef95300d0651d56b12cf1238204874aa625a37c84a30b324b08bdfbe67735785eea2c448e09ad3e2028c0f6058b02b7d4cf665e7c'
             '2efa62a0e56a966648b4394d36d10b616ec6e70d06af76f94ea0a2c106257988dcbbad03a7a1a00015d216ef15c084e2ee4b9c0c3d81b4deceeee8e9a29e7dac'
             'c70588c4d844c8916a97c61fae40dab2a38527fa0d31c7261700766f2e784d642edccb1a64544b9dfdc0655dd5a6b872e9bf323029091656ae45b0924d15ea0e'
-            'd9f87bc4d988186f6428c3f1632f4c7722bae703090c4ede1bca0c2620abb75622594132edad0fee06225019d11a76e4075ea3bb3e022795efa66cd9e69b887b'
+            'd138b755854d2b6242d6ec10b9c92efdc8505764b7f678223cf9241deba6727cc73001bdde6a2b10377e15b459d5b978e17829a56b5bc28d7385eba766974284'
             '500a6aea4fa1015cfffc37b8b2ec71c89e5be170197532848132e981dba6be8126f1e661e5be3ed9a19858a7af737c3ea989c0be605b0fbf3fe1d415b2e7042b')
 
 package() {
