@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname='wlroots-git'
-pkgver=0.2.r62.ged5296c6
+pkgver=0.4.1.r20.g30d34261
 pkgrel=1
 license=('custom:MIT')
 pkgdesc='Modular Wayland compositor library'
@@ -37,7 +37,6 @@ build () {
 		-Dlogind-provider=systemd \
 		-Dxcb-errors=enabled \
 		-Dxcb-icccm=enabled \
-		-Dxcb-xkb=enabled \
 		-Dxwayland=enabled \
 		-Dx11-backend=enabled \
 		-Drootston=true \
