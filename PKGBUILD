@@ -7,7 +7,7 @@ pkgname='ros-kinetic-variant-topic-tools'
 pkgver='0.1.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('GNU Lesser General Public License (LGPL)')
 
 ros_makedepends=(ros-kinetic-variant-msgs
@@ -29,9 +29,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="variant-release-release-kinetic-variant_topic_tools"
+_dir="variant-release-release-kinetic-variant_topic_tools-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/anybotics/variant-release/archive/release/kinetic/variant_topic_tools/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3dbc102ed4a7edea43a0f57bd7610bf8b9b45883caf8d399d51a33b5eb731737')
+sha256sums=('482aa06d21a259c8e3fd1e693787ca62ebbf67c949ef88abb8f424d4f7a5a7f9')
 
 build() {
   # Use ROS environment variables
