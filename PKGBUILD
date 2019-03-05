@@ -1,6 +1,6 @@
 # Maintainer: Finn Behrens <finn@dsgvo.fail>
 pkgname=rifo-git 
-pkgver=0.2.0
+pkgver=0.2.1_r1
 pkgrel=1
 pkgdesc="rifo sripts"
 arch=('any')
