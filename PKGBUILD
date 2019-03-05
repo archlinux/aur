@@ -1,12 +1,12 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=majsoul-plus
 pkgver=1.10.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Majsoul browser, with more features"
 arch=('x86_64')
 url="https://github.com/MajsoulPlus/majsoul-plus"
 license=('AGPL3')
-depends=('electron2')
+depends=('electron')
 makedepends=('npm' 'imagemagick')
 source=("https://github.com/MajsoulPlus/majsoul-plus/archive/v$pkgver.tar.gz")
 sha256sums=('c914845e373d56a5b99b870c1b75f25fbfb930f9ce4eadf7eb733ca41c580b53')
@@ -36,7 +36,7 @@ package() {
     done
 
 	echo "#!/usr/bin/env bash
-exec electron2 --enable-logging --disable-gpu /opt/majsoul-plus" > "$srcdir/majsoul-plus.sh"
+exec electron --enable-logging /opt/majsoul-plus" > "$srcdir/majsoul-plus.sh"
 	install -Dm755 "$srcdir/majsoul-plus.sh" "$pkgdir/usr/bin/majsoul-plus"
 
 	echo "[Desktop Entry]
