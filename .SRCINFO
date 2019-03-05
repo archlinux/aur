@@ -15,12 +15,10 @@ pkgbase = zrythm-git
 	depends = libdazzle
 	depends = breeze-icons
 	depends = portaudio
-	depends = ffmpeg
+	depends = libyaml
 	provides = zrythm
 	conflicts = zrythm
 	source = zrythm::git+https://git.zrythm.org/zrythm/zrythm.git
-	source = git+https://github.com/tlsa/libcyaml.git
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = zrythm-git

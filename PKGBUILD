@@ -11,12 +11,10 @@ license=('GPL3')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('gtk3' 'lv2' 'lilv' 'jack' 'libsndfile' 'libsmf' 'libdazzle' 'breeze-icons'
-         'portaudio' 'ffmpeg')
+         'portaudio' 'libyaml')
 makedepends=('git')
-source=("$_pkgname::git+https://git.zrythm.org/zrythm/zrythm.git"
-        "git+https://github.com/tlsa/libcyaml.git")
-md5sums=('SKIP'
-         'SKIP')
+source=("$_pkgname::git+https://git.zrythm.org/zrythm/zrythm.git")
+md5sums=('SKIP')
 
 pkgver () {
   cd "$srcdir/$_pkgname"
@@ -33,7 +31,7 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname"
   autoreconf -fi
-  ./configure --prefix=/usr --with-ffmpeg
+  ./configure --prefix=/usr
   make
 }
 
