@@ -1,7 +1,7 @@
 pkgbase = muffin-git
 	pkgdesc = A window manager for GNOME
-	pkgver = 4.0.5.r0.gf001ea2
-	pkgrel = 1
+	pkgver = 4.0.6.r18.g009f0f3
+	pkgrel = 2
 	url = https://github.com/linuxmint/muffin
 	arch = i686
 	arch = x86_64
@@ -19,8 +19,9 @@ pkgbase = muffin-git
 	depends = libxkbcommon-x11
 	depends = startup-notification
 	depends = zenity
-	provides = muffin
+	provides = muffin=4.0.6.r18.g009f0f3
 	conflicts = muffin
+	conflicts = cinnamon<4.0.9.r48.g394b97c25
 	options = !emptydirs
 	source = git+https://github.com/linuxmint/muffin.git
 	sha512sums = SKIP
