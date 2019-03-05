@@ -1,22 +1,48 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=aegisub-git
-pkgver=3.2.2.r323.f6a2ac08a
+pkgver=3.2.2.r344.2cb92a5f7
 pkgrel=1
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support'
-arch=('x86_64')
-url='http://www.aegisub.org'
-license=('GPL' 'BSD')
-depends=('alsa-lib' 'boost-libs' 'fftw' 'fontconfig' 'gcc-libs' 'glibc'
-         'hunspell' 'icu' 'libgl' 'libpulse' 'uchardet' 'wxgtk3' 'zlib'
-         'libass.so' 'libffms2.so')
-makedepends=('autoconf-archive' 'boost' 'git' 'intltool' 'lua' 'mesa')
-provides=('aegisub')
-conflicts=('aegisub')
-source=('aegisub::git+https://github.com/Aegisub/Aegisub.git'
-        'git+https://github.com/Aegisub/assdraw.git')
-sha256sums=('SKIP'
-            'SKIP')
+arch=(x86_64)
+url=http://www.aegisub.org
+license=(
+  GPL
+  BSD
+)
+depends=(
+  alsa-lib
+  boost-libs
+  fftw
+  fontconfig
+  hunspell
+  icu
+  libass.so
+  libffms2.so
+  libgl
+  libpulse
+  uchardet
+  wxgtk3
+  zlib
+)
+makedepends=(
+  autoconf-archive
+  boost
+  git
+  intltool
+  lua
+  mesa
+)
+provides=(aegisub)
+conflicts=(aegisub)
+source=(
+  aegisub::git+https://github.com/Aegisub/Aegisub.git
+  git+https://github.com/Aegisub/assdraw.git
+)
+sha256sums=(
+  SKIP
+  SKIP
+)
 
 pkgver() {
   cd aegisub
@@ -29,6 +55,9 @@ pkgver() {
 prepare() {
   cd aegisub
 
+  # boost 1.69
+  sed 's|gil/gil_all.hpp|gil.hpp|g' -i src/*.cpp
+
   sed 's/$(LIBS_BOOST) $(LIBS_ICU)/$(LIBS_BOOST) $(LIBS_ICU) -pthread/' -i tools/Makefile
 
   cp -f /usr/share/aclocal/ax_boost_{chrono,filesystem,locale,regex,system,thread}.m4 m4macros/
@@ -39,9 +68,12 @@ prepare() {
 build() {
   cd aegisub
 
+  # http://site.icu-project.org/download/61#TOC-Migration-Issues
+  CPPFLAGS+=' -DU_USING_ICU_NAMESPACE=1'
+
   ./configure \
-    --prefix='/usr' \
-    --with-wx-config='/usr/bin/wx-config-gtk3' \
+    --prefix=/usr \
+    --with-wx-config=/usr/bin/wx-config-gtk3 \
     --without-{portaudio,openal,oss} \
     --disable-update-checker
   make
