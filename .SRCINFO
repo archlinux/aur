@@ -1,0 +1,15 @@
+pkgbase = fargoal
+	pkgdesc = Sword of Fargoal remake by Elias Pschernig and Paul Pridham
+	pkgver = 1
+	pkgrel = 0
+	url = https://archive.org/details/fargoal
+	install = fargoal.install
+	arch = i686
+	arch = x86_64
+	license = Freeware
+	depends = allegro4
+	source = https://archive.org/download/fargoal/fargoal.zip
+	sha256sums = SKIP
+
+pkgname = fargoal
+

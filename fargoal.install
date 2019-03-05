@@ -1,0 +1,17 @@
+post_install() {
+echo " "
+echo ".....SWORD OF FARGOAL...."
+echo " "
+echo " "
+echo -e "To save settings and games, you must \033[5mENABLE\033[0m write permissions to /opt/fargoal/data directory"
+echo "."
+echo "This game uses ALLEGRO4 which does not work well with current ARCH Systems"
+echo " 	when switching to and from FULLSCREEN Mode."
+echo " "
+echo "Your mileage may vary."
+echo " "
+echo 'Type fargoal to play'
+echo " " 
+echo " "
+}
+

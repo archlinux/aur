@@ -1,0 +1,12 @@
+--- Makefile	2003-07-31 13:06:51.000000000 -0400
++++ src/fargoal/src/Makefile	2019-03-03 18:37:45.361050245 -0500
+@@ -2,7 +2,7 @@
+ ../sword: char.o config.o credits.o game.o gfx.o main.o map.o menu.o message.o monster.o player.o save.o scroller.o spell.o  
+ 	$(CC) -o $@ $(LDFLAGS) $^ $(LDLIBS)
+ include makefile.dep
+-CFLAGS = -W -Wall -O3
++CFLAGS = -W -Wall -O3 
+ CXXFLAGS = -W -Wall -O3
+-LDFLAGS = -s
++LDFLAGS = -s -lm
+ LDLIBS =  `allegro-config --libs`
