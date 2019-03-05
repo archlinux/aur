@@ -1,0 +1,13 @@
+[Unit]
+Description=daemon for ALSA RAVENNA/AES67 Driver
+Requires=sound.target
+After=sound.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /opt/ravenna-alsa/ravenna_start.sh
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

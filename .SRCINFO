@@ -1,0 +1,21 @@
+pkgbase = ravenna-alsa-daemon
+	pkgdesc = A daemon for ALSA RAVENNA/AES67 Driver
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://bitbucket.org/MergingTechnologies/ravenna-alsa-lkm
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = avahi
+	depends = ravenna-alsa-lkm-dkms
+	source = git+https://bitbucket.org/MergingTechnologies/ravenna-alsa-lkm.git
+	source = ravenna-alsa.service
+	source = merging_ravenna_daemon.conf
+	source = ravenna_start.sh
+	sha256sums = SKIP
+	sha256sums = cb8a2a9a19828c211b69c91752b65dece52302ccff4e051408e24ba4aa66c4b9
+	sha256sums = 87b5aeae3de90122a0c85458f8e597e6c3d365e7aff91c8c441c978623144de9
+	sha256sums = 359748b578e06808a4df5d9bc8f64cacfaf7d54025114a0cc83a2af2e65f1bdf
+
+pkgname = ravenna-alsa-daemon
+
