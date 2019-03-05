@@ -3,16 +3,24 @@
 
 _plug=kagefunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r34.dcaff3d
+pkgver=r36.47ef14c
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Irrational-Encoding-Wizardry/kagefunc'
 license=('GPL')
 depends=('vapoursynth'
+         'python'
          'vapoursynth-plugin-mvsfunc-git'
          'vapoursynth-plugin-fvsfunc-git'
          'vapoursynth-plugin-retinex-git'
+         'vapoursynth-plugin-vsutil-git'
+         'vapoursynth-plugin-descale-git'
+         'vapoursynth-plugin-fmtconv-git'
+         'vapoursynth-plugin-wwxd-git'
+         'vapoursynth-plugin-addgrain-git'
+         'vapoursynth-plugin-bm3d-git'
+         'vapoursynth-plugin-knlmeanscl-git'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
