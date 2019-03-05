@@ -1,9 +1,9 @@
-# Maintainer: Dominik Heidler <dheidler@gmail.com>
+# Maintainer: Dominik Heidler <dominik@heidler.eu>
 pkgname=rtl_433-git
-pkgver=20150518
-pkgrel=2
+pkgver=18.12.r127.g92617a4
+pkgrel=1
 pkgdesc="Turns your Realtek RTL2832 based DVB dongle into a 433.92MHz generic data receiver"
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('GPL')
 depends=('rtl-sdr')
 makedepends=('git' 'gcc' 'cmake')
@@ -16,10 +16,15 @@ md5sums=('SKIP')
 
 _gitname=rtl_433
 
+pkgver() {
+	cd $srcdir/$_gitname
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
 	cd $srcdir/$_gitname
 	pwd
-	mkdir build
+	mkdir -p build
 	cd build
 	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 	make
