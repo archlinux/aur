@@ -4,7 +4,7 @@
 
 pkgname=mongodb-tools
 pkgver=4.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The MongoDB tools provide import, export, and diagnostic capabilities."
 arch=('x86_64')
 url="https://github.com/mongodb/mongo-tools"
@@ -20,6 +20,7 @@ prepare() {
   cd "${srcdir}"
   install -d build/src/github.com/mongodb/bin
   mv "mongo-tools-r${pkgver}" build/src/github.com/mongodb/mongo-tools
+  sed -i 's/_Ctype_struct_/C.struct_/' build/src/github.com/mongodb/mongo-tools/vendor/github.com/google/gopacket/pcap/pcap.go
 }
 
 build() {
