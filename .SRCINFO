@@ -1,10 +1,11 @@
 pkgbase = kubectl-beta-bin
-	pkgdesc = Kubernetes.io client binary (beta)
+	pkgdesc = Command-line tool for deploying and managing applications on Kubernetes (beta)
 	pkgver = 1.14.0_beta.1
 	pkgrel = 1
-	url = http://kubernetes.io
+	url = https://github.com/kubernetes/kubernetes
 	arch = x86_64
 	license = apache
+	provides = kubectl
 	provides = kubectl-bin
 	conflicts = kubectl
 	conflicts = kubectl-bin
