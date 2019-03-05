@@ -1,17 +1,16 @@
 pkgbase = coinomi-desktop
-	pkgdesc = Coinomi desktop wallet beta.
-	pkgver = latest
-	pkgrel = 2
+	pkgdesc = Coinomi desktop wallet. Securely store, manage and exchange Bitcoin, Ethereum, and more than 500 other blockchain assets.
+	pkgver = 1.0.7
+	pkgrel = 1
 	url = https://coinomi.com
-	arch = any
+	arch = x86_64
 	license = unknown
 	depends = java-runtime=8
 	depends = java-openjfx
-	source = https://beta.coinomi.com/desktopinstallers/Coinomi.deb
+	source = https://coinomistorage.blob.core.windows.net/desktop/coinomi-wallet-1.0.7-linux64.tar.gz
 	source = coinomi.png
-	md5sums = 45aa4155b562df136255a774adc84230
-	md5sums = 32768fd536544331a3df7e7c453c3e9a
-	sha512sums = 320c2a5fad48409419c5584efedee5ba74f15fb2292615c572321ea9d67a4195f7b951a7cce132a636a78fd34ab010cabb968e6cede5e54e2b8c4c15172b0ac7
-	sha512sums = 0b39aee225dbb9fb31348695f58f4f9d7f5c754b4e616443f40f4fb8565f8759cad3054de87ea2954d4fa4e6b2b98a8059f3ad265cddd0a856f95818eaebfffc
+	sha256sums = d8f53819a1a99cc36558ac2e1b7b89ccb2774c3596a7d2011b275f5f4e5e962d
+	sha256sums = SKIP
 
 pkgname = coinomi-desktop
+
