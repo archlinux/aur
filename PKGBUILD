@@ -3,7 +3,7 @@
 pkgname="flat-remix-gtk"
 pkgver=20190302
 pkgrel=1
-pkgdesc="Flat Remix GTK theme is a pretty simple gtk window theme inspired on material design following a modern design using flat colors with high contrasts and sharp borders."
+pkgdesc="Flat Remix GTK theme is a pretty simple gtk window theme inspired on material design following a modern design using \"flat\" colors with high contrasts and sharp borders."
 arch=('any')
 url="https://drasite.com/flat-remix-gtk"
 license=('GPL 3.0')
