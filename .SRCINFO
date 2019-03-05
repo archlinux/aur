@@ -13,6 +13,7 @@ pkgbase = vbam-git
 	depends = wxgtk3
 	depends = sfml
 	depends = ffmpeg
+	depends = zip
 	provides = vbam-wx
 	conflicts = vbam-gtk
 	conflicts = vbam-wx
