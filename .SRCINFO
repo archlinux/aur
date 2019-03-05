@@ -1,25 +1,29 @@
 pkgbase = cinnamon-screensaver-git
-	pkgdesc = Screensaver for cinnamon desktop
-	pkgver = 119.8de7ff0
+	pkgdesc = Screensaver designed to integrate well with the Cinnamon desktop.
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = https://github.com/linuxmint/cinnamon-screensaver
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = intltool
-	makedepends = gnome-common
 	makedepends = git
-	depends = cinnamon-desktop-git
-	depends = cinnamon-translations-git
+	makedepends = gobject-introspection
+	makedepends = intltool
+	depends = accountsservice
+	depends = cinnamon-desktop
 	depends = dbus-glib
 	depends = libgnomekbd
+	depends = python-cairo
+	depends = python-gobject
+	depends = python-setproctitle
+	depends = python-xapp
+	depends = xapps
+	optdepends = cinnamon-translations: i18n
 	provides = cinnamon-screensaver
 	conflicts = cinnamon-screensaver
 	backup = etc/pam.d/cinnamon-screensaver
 	source = git+https://github.com/linuxmint/cinnamon-screensaver.git
-	source = cinnamon-screensaver.pam
 	sha256sums = SKIP
-	sha256sums = b6ea9e2eb586d94bcabb617a8f1c2958111df87afdbb51f645882bccdc15cbda
 
 pkgname = cinnamon-screensaver-git
 

@@ -1,42 +1,50 @@
-# $Id$
-# Maintainer: Realex
-# Based on cinnamon-screensaver PKGBUILD
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Contributor: Alexandre Filgueira <alexfilgueira@cinnarch.com>
+# Based on gnome-screensaver package:
+# Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Jan de Groot <jgc@archlinux.org>
 
-_pkgname=cinnamon-screensaver
-pkgname=${_pkgname}-git
-pkgver=119.8de7ff0
+pkgname=cinnamon-screensaver-git
+pkgver=4.0.3
 pkgrel=1
-pkgdesc="Screensaver for cinnamon desktop"
+pkgdesc="Screensaver designed to integrate well with the Cinnamon desktop."
 arch=('i686' 'x86_64')
-url="https://github.com/linuxmint/cinnamon-screensaver"
+url="https://github.com/linuxmint/${pkgname%-git}"
 license=('GPL')
-backup=(etc/pam.d/cinnamon-screensaver)
-depends=('cinnamon-desktop-git' 'cinnamon-translations-git' 'dbus-glib' 'libgnomekbd')
-makedepends=('intltool' 'gnome-common' 'git')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
-source=('git+https://github.com/linuxmint/cinnamon-screensaver.git'
-        'cinnamon-screensaver.pam')
-sha256sums=('SKIP'
-            'b6ea9e2eb586d94bcabb617a8f1c2958111df87afdbb51f645882bccdc15cbda')
+depends=('accountsservice' 'cinnamon-desktop' 'dbus-glib' 'libgnomekbd'
+         'python-cairo' 'python-gobject' 'python-setproctitle' 'python-xapp' 'xapps')
+optdepends=('cinnamon-translations: i18n')
+makedepends=('git' 'gobject-introspection' 'intltool')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+backup=('etc/pam.d/cinnamon-screensaver')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+    cd "${srcdir}"/${pkgname%-git}
+
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "${srcdir}"/${pkgname%-git}
+
+    autoreconf -fi
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}"/${pkgname%-git}
 
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc \
-               --libexecdir=/usr/lib/cinnamon-screensaver \
-               --localstatedir=/var \
-               --with-mit-ext --with-systemd
-  make
+    ./configure --prefix=/usr \
+                --sysconfdir=/etc \
+                --libexecdir=/usr/lib/cinnamon-screensaver \
+                --localstatedir=/var
+    make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 ../cinnamon-screensaver.pam "$pkgdir/etc/pam.d/cinnamon-screensaver"
+    cd "${srcdir}"/${pkgname%-git}
+
+    make DESTDIR="${pkgdir}" install
 }
