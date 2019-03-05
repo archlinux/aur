@@ -1,7 +1,7 @@
 pkgbase = pantheon-lite
 	pkgdesc = Pantheon Lite Session (replaces Gala with Openbox & Compton)
 	pkgver = 3
-	pkgrel = 10
+	pkgrel = 11
 	url = https://bbs.archlinux.org/viewtopic.php?pid=1402016#p1402016
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = pantheon-lite
 	optdepends = obconf: openbox configuration utility
 	optdepends = elementary-os-openbox: Elementary theme for Openbox
 	optdepends = hsetroot: Set X11 background
+	optdepends = xorg-xwininfo: set mousewheel transparency scrolling like compiz with compton-trans
 	provides = pantheon-lite
 	source = pantheon-openbox.desktop
 	source = pantheon-openbox.session

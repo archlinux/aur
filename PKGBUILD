@@ -4,7 +4,7 @@
 
 pkgname=pantheon-lite
 pkgver=3
-pkgrel=10
+pkgrel=11
 pkgdesc='Pantheon Lite Session (replaces Gala with Openbox & Compton)'
 arch=('i686' 'x86_64')
 url='https://bbs.archlinux.org/viewtopic.php?pid=1402016#p1402016'
@@ -14,7 +14,8 @@ depends=('openbox' 'compton' 'pantheon-workarounds'
          'plank' 'cerbere' 'wingpanel-standalone-git')
 optdepends=("obconf: openbox configuration utility"
             "elementary-os-openbox: Elementary theme for Openbox"
-            "hsetroot: Set X11 background")
+            "hsetroot: Set X11 background"
+            "xorg-xwininfo: set mousewheel transparency scrolling like compiz with compton-trans")
 provides=("pantheon-lite")
 conflicts=()
 source=(pantheon-openbox.{desktop,session} 
