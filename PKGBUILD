@@ -1,39 +1,43 @@
-# $Id$
-# Maintainer: Realex
-# Based on cinnamon-session PKGBUILD
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Contributor: Alexandre Filgueira <alexfilgueira@antergos.com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
-_pkgname=cinnamon-session
-pkgname=${_pkgname}-git
-pkgver=126.8c1b918
+pkgname=cinnamon-session-git
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="The Cinnamon Session Handler"
-arch=(i686 x86_64)
-license=(GPL LGPL)
-depends=('cinnamon-desktop-git' 'upower' 'libcanberra' 'libsm')
-makedepends=('intltool' 'mesa' 'json-glib' 'xtrans' 'gnome-common' 'git')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
-options=('!emptydirs')
-install=${pkgname}.install
-url="http://cinnamon.linuxmint.com/"
-source=(${_pkgname}::git+https://github.com/linuxmint/cinnamon-session.git)
+arch=('i686' 'x86_64')
+url="https://github.com/linuxmint/${pkgname%-git}"
+license=('GPL' 'LGPL')
+depends=('cinnamon-desktop' 'dbus-glib' 'libsm' 'libcanberra' 'xapps')
+optdepends=('cinnamon-translations: i18n')
+makedepends=('git' 'meson' 'xtrans')
+provides=("${pkgname%-git}=${pkgver}")
+conflicts=("${pkgname%-git}")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+    cd "${srcdir}"/${pkgname%-git}
+
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_pkgname
+    mkdir -p "${srcdir}"/${pkgname%-git}/build
+    cd "${srcdir}"/${pkgname%-git}/build
 
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var --libexecdir=/usr/lib/cinnamon-session \
-      --sbindir=/usr/bin --disable-schemas-compile --enable-systemd
-  make
+    meson --prefix=/usr \
+          --libexecdir=lib/${pkgname%-git} \
+          --buildtype=plain \
+          -Dwith-gconf=false \
+          -Dwith-docbook=false \
+          ..
+    ninja
 }
 
 package() {
-  cd $_pkgname
-  make DESTDIR="$pkgdir" install
+    cd "${srcdir}"/${pkgname%-git}/build
+
+    DESTDIR="${pkgdir}" ninja install
 }
