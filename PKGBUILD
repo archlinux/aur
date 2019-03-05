@@ -7,7 +7,7 @@ arch=('any')
 url="https://gitlab.com/jallbrit/bonsai.sh"
 license=('GPL')
 groups=()
-depends=()
+depends=("bash")
 makedepends=()
 optdepends=()
 provides=()
@@ -23,6 +23,5 @@ md5sums=(SKIP)
 
 package() {
         cd "$pkgname-master"
-        chmod +x "$pkgname"
-	install -Dm0755 $pkgname "$pkgdir/usr/bin/$pkgname"
+        install -Dm0755 $pkgname "$pkgdir/usr/bin/$pkgname"
 }
