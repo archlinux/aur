@@ -1,15 +1,15 @@
 pkgbase = youtube-10hourify
 	pkgdesc = loop youtube-videos to 10-hour length
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/AladW/youtube-10hourify
 	arch = any
 	license = custom:WTFPL
 	depends = perl
-	source = youtube-10hourify-1.0.tar.gz::https://github.com/AladW/youtube-10hourify/archive/1.0.tar.gz
-	source = youtube-10hourify-1.0.tar.gz.asc::https://github.com/AladW/youtube-10hourify/releases/download/1.0/1.0.tar.gz.asc
+	source = youtube-10hourify-1.1.tar.gz::https://github.com/AladW/youtube-10hourify/archive/1.1.tar.gz
+	source = youtube-10hourify-1.1.tar.gz.asc::https://github.com/AladW/youtube-10hourify/releases/download/1.1/1.1.tar.gz.asc
 	validpgpkeys = DBE7D3DD8C81D58D0A13D0E76BC26A17B9B7018A
-	sha256sums = 64702e84318a404754b897e89218ea73a65c6f4195bfb246b8c915d87e129ce6
+	sha256sums = 27400d2ff571f817b78eacfb40324641be9eb37fac5708a86cdb619439de3cb5
 	sha256sums = SKIP
 
 pkgname = youtube-10hourify
