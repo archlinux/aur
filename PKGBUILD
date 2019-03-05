@@ -2,8 +2,8 @@
 
 pkgname=gotop-git
 _pkgname=${pkgname%-git}
-pkgver=3.0.0.r7.g3a804eb
-pkgrel=2
+pkgver=3.0.0.r8.g71e10bb
+pkgrel=1
 pkgdesc='A terminal based graphical activity monitor inspired by gtop and vtop'
 arch=(x86_64)
 url='https://github.com/cjbassi/gotop'
