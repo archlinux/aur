@@ -1,6 +1,6 @@
 pkgbase = monogame-bin
 	pkgdesc = Open Source implementation of the Microsoft XNA 4 Framework (official binary build).
-	pkgver = 3.6
+	pkgver = 3.7.1
 	pkgrel = 1
 	url = http://www.monogame.net/
 	install = monogame.install
