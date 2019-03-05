@@ -1,0 +1,18 @@
+pkgbase = chemical-mime-data-debian
+	pkgdesc = Chemical MIME type support Linux desktops.
+	pkgver = 0.1.94_7
+	pkgrel = 1
+	url = https://tracker.debian.org/pkg/chemical-mime-data
+	arch = any
+	license = LGPL
+	depends = shared-mime-info
+	depends = gnome-mime-data
+	provides = chemical-mime-data
+	conflicts = chemical-mime-data
+	options = !strip
+	options = !emptydirs
+	source = http://ftp.fr.debian.org/debian/pool/main/c/chemical-mime-data/chemical-mime-data_0.1.94-7_all.deb
+	sha512sums = f51f914d10ac34e29450893dea717c04ac1d9ab8c2f01fb1fe3aaa8b4202bc127a484aaf1be135a6e1ec5be26ad7b9e1b551fbcd37f6646a087dc6a2c857898c
+
+pkgname = chemical-mime-data-debian
+
