@@ -1,13 +1,13 @@
 pkgname='pacaur-git'
 _pkgname="${pkgname/-git}"
-pkgver=4.7.90.26.gb75157f
-pkgrel=2
+pkgver=4.8.4.4.gd1064f3
+pkgrel=1
 pkgdesc='An AUR helper that minimizes user interaction'
 arch=('any')
 url="https://github.com/E5ten/${_pkgname}"
 license=('ISC')
 depends=('auracle-git' 'expac' 'sudo' 'git' 'jq')
-makedepends=('perl')
+makedepends=('perl' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 backup=("etc/xdg/${_pkgname}/config")
@@ -15,23 +15,11 @@ source=("git+https://github.com/E5ten/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    echo $(git describe --always | sed 's/-/./g')
-}
-
-prepare() {
-    cd "${srcdir}/${_pkgname}"
-    _pkgver=$(git describe --always | sed 's/-/./g')
-    sed -i "s/version=\"[0-9].[0-9].[0-9]*\"/version=\"$_pkgver\"/g" "./${_pkgname}"
-}
-
-build() {
-    cd "${srcdir}/${_pkgname}"
-    make
+    git -C "${srcdir}/${_pkgname}" describe --always | sed 's%-%.%g'
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-    make DESTDIR="${pkgdir}" PREFIX='/usr' install
+    make -C "${srcdir}/${_pkgname}" DESTDIR="${pkgdir}" PREFIX='/usr' install
+    sed -i "s%version=\"[0-9].[0-9].[0-9]*\"%version=\"$_pkgver\"%g" "${pkgdir}/usr/bin/${_pkgname}"
 }
 
