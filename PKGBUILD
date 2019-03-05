@@ -1,43 +1,42 @@
 # Maintainer: Marat Akhin <Marat.Akhin@gmail.com>
 
 pkgname=boolector
-pkgver=2.2.0
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Boolector is an efficient SMT solver for the quantifier-free theory of bit-vectors in combination with the quantifier-free extensional theory of arrays."
 arch=('i686' 'x86_64')
-url="http://fmv.jku.at/boolector/"
-license=('custom')
+url="http://boolector.github.io/"
+license=('MIT')
 makedepends=()
 conflicts=()
 
-install="boolector.install"
-
-source=("http://fmv.jku.at/boolector/boolector-2.2.0-with-lingeling-bal.tar.bz2")
-md5sums=('734654adb0496ea4e8a83cdf8577c857')
+source=("https://github.com/Boolector/boolector/archive/3.0.0.tar.gz")
+md5sums=('b0d6755dd8a9706adac0d5d94f38abb9')
 
 build() {
-  cd "$srcdir/boolector-2.2.0-with-lingeling-bal"
-  CFLAGS="" make
+  cd "$srcdir/boolector-3.0.0"
+
+  # Download and build Lingeling
+  ./contrib/setup-lingeling.sh
+
+  # Download and build BTOR2Tools
+  CFLAGS="" ./contrib/setup-btor2tools.sh
+
+  # Build Boolector
+  CFLAGS="" ./configure.sh && cd build && make
 }
 
 package() {
   mkdir -p "$pkgdir/usr/bin/"
   mkdir -p "$pkgdir/usr/lib/"
-
-  cd "$srcdir/boolector-2.2.0-with-lingeling-bal/lingeling"
-  mkdir -p "$pkgdir/usr/include/lingeling"
-  install -m644 *.h "$pkgdir/usr/include/lingeling/"
-  install -m755 *.a "$pkgdir/usr/lib/"
-  install -m755 lingeling "$pkgdir/usr/bin/"
-
-  cd "$srcdir/boolector-2.2.0-with-lingeling-bal/boolector"
   mkdir -p "$pkgdir/usr/include/boolector"
-  install -m644 *.h "$pkgdir/usr/include/boolector/"
-  install -m755 *.a "$pkgdir/usr/lib/"
-  install -m755 boolector "$pkgdir/usr/bin/"
 
-  mkdir -p "$pkgdir/usr/share/licenses/boolector"
-  install -m644 \
-    "$srcdir/boolector-2.2.0-with-lingeling-bal/boolector/COPYING" \
-    "$pkgdir/usr/share/licenses/boolector/LICENSE"
+  cd "$srcdir/boolector-3.0.0/src"
+  find . -name "*.h" -exec install -D -m644 {} "$pkgdir/usr/include/boolector/{}" \;
+
+  cd "$srcdir/boolector-3.0.0"
+  find . -name "*.a" -exec install -m755 {} "$pkgdir/usr/lib/" \;
+
+  cd "$srcdir/boolector-3.0.0/build/bin"
+  find . -name "b*"  -exec install -D -m755 {} "$pkgdir/usr/bin/{}" \;
 }

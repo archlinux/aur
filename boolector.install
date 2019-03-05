@@ -1,8 +1,0 @@
-post_install() {
-  echo "Please familiarize yourself with the Boolector commercial license at:"
-  echo "    /usr/share/licenses/boolector/LICENSE"
-}
-
-post_upgrade() {
-    post_install
-}
