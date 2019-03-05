@@ -1,0 +1,24 @@
+diff -Naurp a/CPP/7zip/Bundles/LzmaCon/makefile.gcc b/CPP/7zip/Bundles/LzmaCon/makefile.gcc
+--- a/CPP/7zip/Bundles/LzmaCon/makefile.gcc	2015-11-14 10:44:09.000000000 +0000
++++ b/CPP/7zip/Bundles/LzmaCon/makefile.gcc	2019-03-05 12:59:28.084067241 +0000
+@@ -10,9 +10,9 @@ endif
+ ifdef IS_MINGW
+ 
+ RM = del
+-CFLAGS = -c
++CFLAGS += $(CPPFLAGS) -c
+ LIB2 = -loleaut32 -luuid
+-LDFLAGS = -s
++LDFLAGS += -s
+ 
+ FILE_IO =FileIO
+ FILE_IO_2 =Windows/$(FILE_IO)
+@@ -24,7 +24,7 @@ MT_FILES = \
+ else
+ 
+ RM = rm -f
+-CFLAGS = -c -D_7ZIP_ST
++CFLAGS += $(CPPFLAGS) -c -D_7ZIP_ST
+ 
+ FILE_IO =C_FileIO
+ FILE_IO_2 =Common/$(FILE_IO)
