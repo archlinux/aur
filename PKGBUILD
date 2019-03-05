@@ -33,8 +33,8 @@ md5sums=(
 pkgver() {
 	cd "${srcdir}/ghdl"
 
-	# GHDL version (extracted from version.ads)
-	_distver=`sed -n -e 's/.*Ghdl_Ver .*"\(.*\)".*/\1/p' version.ads | tr -d '-'`
+	# GHDL version (extracted from configure)
+	_distver=`sed -n -e 's/.*ghdl_version=.*"\(.*\)".*/\1/p' configure | tr -d '-'`
 	# Date of the last git commit
 	_gitver=`git log -n 1 --date=short | sed -n -e 's/.*Date:\s*\([0-9-]*\).*/\1/p' | tr -d -`
 
