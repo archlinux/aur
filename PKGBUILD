@@ -20,7 +20,7 @@ optdepends=('java-runtime: GUI support')
 source_i686=("NetExtender-${pkgver}.tgz::https://sslvpn.demo.sonicwall.com/NetExtender.tgz"
              "https://www.sonicwall.com/en-us/legal/eupa/general-product-agreement")
 source_x86_64=("NetExtender-${pkgver}.x86_64.tgz::https://sslvpn.demo.sonicwall.com/NetExtender.x86_64.tgz"
-               "https://www.sonicwall.com/en-us/legal/eupa/general-product-agreement")
+               "https://www.sonicwall.com/legal/general-product-agreement")
 sha256sums_i686=('c49eb90876750c6942eeac4df1f6206dc7f364bde7641c2f4d53dcba8d0ce6e3'
                  'SKIP')
 sha256sums_x86_64=('b83eba640001580cab0f4c36d1eba104a19bffa605a606f9087ad1d3beb6561a'
