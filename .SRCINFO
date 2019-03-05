@@ -1,6 +1,6 @@
 pkgbase = wingide-personal
 	pkgdesc = A free Python IDE designed for students and hobbyists. It omits many features found in Wing Pro.
-	pkgver = 6.1.4
+	pkgver = 6.1.5
 	pkgrel = 1
 	url = http://www.wingware.com/
 	install = wingide-personal.install
@@ -9,7 +9,7 @@ pkgbase = wingide-personal
 	depends = python2
 	options = !strip
 	options = !emptydirs
-	source = http://wingware.com/pub/wingide-personal/6.1.4/wingide-personal-6.1.4-1-x86_64-linux.tar.bz2
+	source = http://wingware.com/pub/wingide-personal/6.1.5/wingide-personal-6.1.5-1-x86_64-linux.tar.bz2
 	md5sums = 68a8406238687bdc915ff43dd8ca97f2
 
 pkgname = wingide-personal

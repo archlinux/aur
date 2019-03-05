@@ -1,7 +1,7 @@
 # Maintainer: Jonathon Korhonen <first initial last name [at] alumni [dot] nmu [dot] edu>
 
 pkgname=wingide-personal
-pkgver=6.1.4
+pkgver=6.1.5
 pkgrel=1
 pkgdesc="A free Python IDE designed for students and hobbyists. It omits many features found in Wing Pro."
 arch=('x86_64')
