@@ -1,6 +1,6 @@
 pkgbase = ffsend-git
 	pkgdesc = Easily and securely share files from the command line. A Firefox Send client.
-	pkgver = 0.2.12
+	pkgver = 0.2.13
 	pkgrel = 1
 	url = https://gitlab.com/timvisee/ffsend
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ffsend-git
 	optdepends = xclip: clipboard support
 	provides = ffsend
 	conflicts = ffsend
-	source = ffsend-v0.2.12.tar.gz::https://gitlab.com/timvisee/ffsend/-/archive/v0.2.12/ffsend-v0.2.12.tar.gz
+	source = ffsend-v0.2.13.tar.gz::https://gitlab.com/timvisee/ffsend/-/archive/v0.2.13/ffsend-v0.2.13.tar.gz
 	sha256sums = SKIP
 
 pkgname = ffsend-git
