@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-full-git
 _srcname=ffmpeg
-pkgver=4.2.r93217.ga899b3b3c5
+pkgver=4.2.r93293.gdb332832a1
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -72,7 +72,7 @@ build() {
     if [ "$CARCH" = 'x86_64' ] 
     then
         local _libvmaf='--enable-libvmaf'
-        local _cudasdk='--disable-cuda-sdk'
+        local _cudasdk='--enable-cuda-sdk'
         local _libmfx='--enable-libmfx'
         local _libnpp='--enable-libnpp'
         
