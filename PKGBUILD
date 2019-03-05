@@ -17,7 +17,7 @@
 #
 pkgbase="spl-linux-vfio"
 pkgname=("spl-linux-vfio" "spl-linux-vfio-headers")
-_splver="0.7.12"
+_splver="0.7.13"
 _kernelver="4.20.12.arch1-1"
 _extramodules="4.20.12-arch1-1-vfio"
 
@@ -27,7 +27,7 @@ makedepends=("linux-vfio-headers=${_kernelver}")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_splver}/spl-${_splver}.tar.gz")
-sha256sums=("4709a06e913bbbeb634161a8b68c3f879e5b6040c6c0c09b1f51042b3178c274")
+sha256sums=("6fd4445850ac67b228fdd82fff7997013426a1c2a8fa9017ced70cc9ad2a4338")
 license=("GPL")
 depends=("kmod" "linux-vfio=${_kernelver}")
 
