@@ -1,5 +1,5 @@
 pkgname=go-lint-git
-pkgver=20161114.136_206c0f0
+pkgver=20190301.176_5614ed5
 pkgrel=1
 pkgdesc="golang lint"
 arch=('i686' 'x86_64')
@@ -36,9 +36,9 @@ pkgver() {
 build() {
 	GOPATH=$srcdir
 	GOBIN=$srcdir/bin/
-	mkdir -p $srcdir/src
-	ln -sf $srcdir/lint $srcdir/src
-	cd $srcdir/src/lint/golint
+	mkdir -p $srcdir/src/golang.org/x/
+	ln -sf $srcdir/lint $srcdir/src/golang.org/x/lint
+	cd $srcdir/src/golang.org/x/lint/golint
 	go get -v
 }
 

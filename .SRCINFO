@@ -1,6 +1,6 @@
 pkgbase = go-lint-git
 	pkgdesc = golang lint
-	pkgver = 20161114.136_206c0f0
+	pkgver = 20190301.176_5614ed5
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
