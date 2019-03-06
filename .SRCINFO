@@ -1,11 +1,12 @@
 pkgbase = julia-ijulia
 	pkgdesc = Julia-language backend combined with the Jupyter interactive environment
-	pkgver = 1.15.2
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://github.com/JuliaLang/IJulia.jl
 	arch = any
 	license = MIT
 	makedepends = julia-conda
+	makedepends = julia-distrohelper
 	makedepends = julia-versionparsing
 	depends = julia
 	depends = julia-compat
@@ -15,14 +16,14 @@ pkgbase = julia-ijulia
 	depends = julia-softglobalscope
 	depends = julia-zmq
 	depends = jupyter
-	source = julia-ijulia-1.15.2.tar.gz::https://github.com/JuliaLang/IJulia.jl/archive/v1.15.2.tar.gz
-	source = julia-ijulia-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/e35f954e2ec9437a4ecc4fe84e18d1663d7744b3/I/IJulia/Deps.toml
-	source = julia-ijulia-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/e35f954e2ec9437a4ecc4fe84e18d1663d7744b3/I/IJulia/Package.toml
-	source = julia-ijulia-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/e35f954e2ec9437a4ecc4fe84e18d1663d7744b3/I/IJulia/Versions.toml
-	sha256sums = 69486003a63071f5bfe04e084f3f3cd216ece36288ec2b004a6dd6a6ba54160f
-	sha256sums = dcdb09b20e51ea32814516904292ea28cc2dff1e0db7bcd7bb594a5e38663393
+	source = julia-ijulia-1.17.0.tar.gz::https://github.com/JuliaLang/IJulia.jl/archive/v1.17.0.tar.gz
+	source = julia-ijulia-1.17.0-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/6fd57e2021de7df9e22ebd0de72c85471fbb33ef/I/IJulia/Deps.toml
+	source = julia-ijulia-1.17.0-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/6fd57e2021de7df9e22ebd0de72c85471fbb33ef/I/IJulia/Package.toml
+	source = julia-ijulia-1.17.0-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/6fd57e2021de7df9e22ebd0de72c85471fbb33ef/I/IJulia/Versions.toml
+	sha256sums = c00b369a23bd883b5be439f78fed50eea5836cd30a4a068f1ead43af85890065
+	sha256sums = 19d9d6f2b298aeacfcca861eb26b03db7efb7a275440902cfad257ae3aef7b4c
 	sha256sums = 8f528e7a9177c8b3a30fb17b50b9fbc3bbc4f8a677a3d4cc940446182885e6b0
-	sha256sums = cb94866641d595af13e7ffafa9c95350e543dcc2a5bafbda63ea1dae53be754e
+	sha256sums = 0200f2cbb708b68135ea18805b112714d15a182ea34473bd892bd71a80b90c33
 
 pkgname = julia-ijulia
 

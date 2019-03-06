@@ -2,7 +2,7 @@
 
 pkgname=julia-ijulia
 _pkgname=IJulia
-pkgver=1.15.2
+pkgver=1.17.0
 pkgrel=1
 pkgdesc='Julia-language backend combined with the Jupyter interactive environment'
 arch=(any)
@@ -19,66 +19,34 @@ depends=(julia
 )
 makedepends=(
   julia-conda
+  julia-distrohelper
   julia-versionparsing
 )
 
-_commit=e35f954e2ec9437a4ecc4fe84e18d1663d7744b3
+_commit=6fd57e2021de7df9e22ebd0de72c85471fbb33ef
 source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaLang/$_pkgname.jl/archive/v$pkgver.tar.gz
-        $pkgname-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
-        $pkgname-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
-        $pkgname-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
-sha256sums=('69486003a63071f5bfe04e084f3f3cd216ece36288ec2b004a6dd6a6ba54160f'
-            'dcdb09b20e51ea32814516904292ea28cc2dff1e0db7bcd7bb594a5e38663393'
+        $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
+        $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
+        $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
+sha256sums=('c00b369a23bd883b5be439f78fed50eea5836cd30a4a068f1ead43af85890065'
+            '19d9d6f2b298aeacfcca861eb26b03db7efb7a275440902cfad257ae3aef7b4c'
             '8f528e7a9177c8b3a30fb17b50b9fbc3bbc4f8a677a3d4cc940446182885e6b0'
-            'cb94866641d595af13e7ffafa9c95350e543dcc2a5bafbda63ea1dae53be754e')
+            '0200f2cbb708b68135ea18805b112714d15a182ea34473bd892bd71a80b90c33')
 
 _slug() {
-	local uuid=$(grep uuid $pkgname-Package.toml | cut -f3 -d' ')
-	local sha1=$(grep \"$pkgver\" -a1 $pkgname-Versions.toml | tail -n1 | cut -f3 -d' ')
-	julia -e "u = Base.UUID($uuid);
-	          s = Base.SHA1(hex2bytes($sha1));
-	          println(Base.version_slug(u,s));"
+	dh_julia slug "$srcdir"/"$pkgname"-$pkgver-{Package,Versions}.toml
 }
 
-_deps() {
-	julia -e "using Pkg
-
-	          alldeps = Pkg.TOML.parsefile(\"$srcdir/$pkgname-Deps.toml\")
-	          version = VersionNumber(\"$pkgver\")
-	          majmin  = VersionNumber(\"${pkgver%.*}\")
-	          deps = Dict{String,Any}()
-
-	          for (key, value) in alldeps
-	            vers = split(key, \"-\")
-	            lower = VersionNumber(vers[1])
-	            if length(vers) == 2
-	              upper = VersionNumber(vers[2])
-	              if (majmin  >= lower && majmin  <= upper) ||
-	                 (version >= lower && version <= upper)
-	                merge!(deps, value)
-	              end
-	            elseif length(vers) == 1
-	              if majmin == lower || version == lower
-	                merge!(deps, value)
-	              end
-	            end
-	          end
-
-	          Pkg.TOML.print(deps)"
+_project() {
+	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml
 }
 
 prepare() {
 	# Generate a Project.toml from Registry metadata
-	rm -f Project.toml && touch Project.toml
-	cat $pkgname-Package.toml       >> Project.toml
-	echo -e "version = \"$pkgver\"" >> Project.toml
-	echo -e "\n[deps]"              >> Project.toml
-	echo -e "$(_deps)" | sort       >> Project.toml
-
-	cd $_pkgname.jl-$pkgver/deps
+	rm -f Project.toml && _project
 
 	# Hard-code check for conda to fail. We want it to fail so we use the system jupyter.
-	sed -i '/isconda =/c\isconda = false' build.jl
+	sed -i '/isconda =/c\isconda = false' $_pkgname.jl-$pkgver/deps/build.jl
 }
 
 build() {
@@ -87,7 +55,7 @@ build() {
 
 	# Fix reference to $srcdir
 	sed -i "s|$srcdir/$_pkgname.jl-$pkgver|/usr/share/julia/vendor/$_pkgname|" \
-	        "$srcdir"/.local/share/jupyter/kernels/julia-1.0/kernel.json
+	        "$srcdir"/.local/share/jupyter/kernels/julia-1.1/kernel.json
 
 	msg2 "NOTE: If the Julia kernel fails to run, clear your $HOME/.julia/cache"
 }
@@ -106,6 +74,6 @@ package() {
 
 	install -Dm644 $_pkgname.jl-$pkgver/LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
-	install -Dm644 "$srcdir"/.local/share/jupyter/kernels/julia-1.0/kernel.json \
-	               "$pkgdir"/usr/share/jupyter/kernels/julia-1.0/kernel.json
+	install -Dm644 "$srcdir"/.local/share/jupyter/kernels/julia-1.1/kernel.json \
+	               "$pkgdir"/usr/share/jupyter/kernels/julia-1.1/kernel.json
 }
