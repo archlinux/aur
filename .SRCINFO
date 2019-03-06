@@ -1,0 +1,18 @@
+pkgbase = chemical-mime-data
+	pkgdesc = Chemical MIME type support Linux desktops
+	pkgver = 0_1_94
+	pkgrel = 1
+	url = https://github.com/dleidert/chemical-mime
+	arch = any
+	license = LGPL
+	makedepends = libxslt
+	depends = gnome-mime-data
+	depends = shared-mime-info
+	provides = chemical-mime-data
+	conflicts = chemical-mime-data-debian
+	conflicts = chemical-mime-data-git
+	source = https://github.com/dleidert/chemical-mime/archive/release_0_1_94.tar.gz
+	sha256sums = 9a795a03b59a861dc1e17f513d95ddb1165cca71658ac62c58bebf00feac6dbc
+
+pkgname = chemical-mime-data
+
