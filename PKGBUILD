@@ -2,13 +2,12 @@
 
 pkgname='ghidra'
 pkgver=9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A software reverse engineering (SRE) framework created and maintained by the National Security Agency Research Directorate'
 arch=('x86_64')
 url='https://ghidra-sre.org/'
 license=('Apache')
-depends=('java-runtime' 'bash')
-makedepends=('java-environment')
+depends=('java-environment>=11' 'bash')
 optdepends=('python2: for the Python feature'
             'pam: for GhidraServer support')
 source=('https://www.ghidra-sre.org/ghidra_9.0_PUBLIC_20190228.zip' 'ghidra')

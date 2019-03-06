@@ -1,12 +1,11 @@
 pkgbase = ghidra
 	pkgdesc = A software reverse engineering (SRE) framework created and maintained by the National Security Agency Research Directorate
 	pkgver = 9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ghidra-sre.org/
 	arch = x86_64
 	license = Apache
-	makedepends = java-environment
-	depends = java-runtime
+	depends = java-environment>=11
 	depends = bash
 	optdepends = python2: for the Python feature
 	optdepends = pam: for GhidraServer support
