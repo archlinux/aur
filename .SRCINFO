@@ -1,6 +1,6 @@
 pkgbase = wownero-git
 	pkgdesc = a fairly launched privacy-centric meme coin with no premine and a finite supply
-	pkgver = 0.5.0.0
+	pkgver = 0.5.0.2
 	pkgrel = 1
 	url = http://wownero.org/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = wownero-git
 	depends = unbound
 	depends = libusb
 	provides = wownero-git
-	source = wownero-git::git+https://github.com/wownero/wownero#branch=dev-v0.5
+	source = wownero-git::git+https://github.com/wownero/wownero
 	sha256sums = SKIP
 
 pkgname = wownero-git
