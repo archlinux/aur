@@ -43,7 +43,7 @@ prepare() {
   patch -p1 -i "$srcdir/bz86593.patch"
 
   # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=88568
-  rm -r gcc/testsuite/g++.dg/other/pr88568.C
+  rm -f gcc/testsuite/g++.dg/other/pr88568.C
   patch -p0 -i "$srcdir/gcc9-pr88568-2.patch"
 }
 
