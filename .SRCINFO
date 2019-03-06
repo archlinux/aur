@@ -1,5 +1,5 @@
 pkgbase = epiphany-unstable
-	pkgdesc = A GNOME web browser based on the WebKit rendering engine (unstable version)
+	pkgdesc = A GNOME web browser based on the WebKit rendering engine.
 	pkgver = 3.31.92
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Web
