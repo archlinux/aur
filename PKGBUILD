@@ -1,7 +1,7 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 
 pkgname=tines
-pkgver=1.10
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="A hierarchical console-based outliner/planner/notebook and fork of HNB."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/larrykollar/tines"
 license=("GPL2")
 depends=('ncurses')
 source=("https://github.com/larrykollar/tines/archive/v$pkgver.tar.gz")
-md5sums=('5b08524b46de2f034fe52bf69b40c7b2')
+md5sums=('b53fc69e0a1c163d2d3b9e3df11df346')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -18,6 +18,8 @@ prepare() {
   sed -i 's|/local/|/|' Makefile
   # no DESTDIR support
   sed -i "s|DIR=|&$pkgdir|" Makefile
+  # linux is also a normal unix
+  sed -i "s|INSTFLAGS=-D|INSTFLAGS=-d|" Makefile
 }
 
 build() {
