@@ -14,8 +14,9 @@ url="http://shadow.tech"
 license=('unknown')
 depends=('desktop-file-utils' 'freetype2' 'libuv' 'gconf' 'hicolor-icon-theme' 'json-c' 'libappindicator-gtk2' 'libbsd' 'libcurl-gnutls' 'libdrm' 'libnotify' 'libva' 'libxtst' 'nss' 'opus' 'qt5-base' 'qt5-svg' 'sdl2' 'libappindicator' 'libcurl-compat' 'sdl' 'gcc7-libs' 'ttf-dejavu' 'libxss')
 provides=(shadow-beta)
-source=('https://macosx.update.blade-group.fr/mpl/linux/beta/bionic/shadow-alpha-bionic.zip' 'https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/'${_commit}'/AppImage/wrapper.pl' 'https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/'${_commit}'/AppImage/report.pl')
-md5sums=('22bb2b72fe91d35fe6fe7311e7da091e'
+source=('https://update.shadow.tech/renderer/preprod/linux/bionic/shadow-beta-bionic.zip' 'https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/'${_commit}'/AppImage/wrapper.pl' 
+'https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/'${_commit}'/AppImage/report.pl')
+md5sums=('4a3927cdf91249a86b8a628c6c5bff61'
          SKIP
          SKIP)
 install=$pkgname.install
