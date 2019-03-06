@@ -13,13 +13,12 @@ pkgrel=1
 pkgdesc="A retrosmart look collection of cursors for X."
 url="https://github.com/mdomlop/$name"
 source=("https://github.com/mdomlop/$name/archive/$pkgver.tar.gz")
-md5sums=('04c42a604e316abd7067237647e537fa')
+md5sums=('d82baf529f23cb14658f8a172beabfb7')
 license=('GPL3')
 builddepends=('imagemagick' 'xorg-xcursorgen')
 optdepends=('retrosmart-kvantum-theme: The corresponding theme for Kvantum'
             'retrosmart-qtcurve-theme: The corresponding theme for QtCurve'
             'retrosmart-openbox-themes: The corresponding Openbox themes'
-            'retrosmart-wallpapers: The corresponding backgrounds project'
             'retrosmart-xfwm4-themes: The corresponding XFwm4 themes')
 arch=('any')
 group=('retrosmart')
