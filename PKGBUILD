@@ -5,7 +5,7 @@
 
 pkgname=popcorntime-git
 pkgver=0.3.10+6429+1537575b
-pkgrel=1
+pkgrel=2
 pkgdesc='BitTorrent client with integrated media player (git)'
 arch=(i686 x86_64)
 url=https://popcorntime.sh
@@ -31,6 +31,9 @@ build() {
   yarn install --ignore-engines
   yarn build
 }
+
+[ "$CARCH" = i686 ] && _platform=linux32
+[ "$CARCH" = x86_64 ] && _platform=linux64
 
 package() {
   install -Dm 644 popcorntime.desktop "$pkgdir"/usr/share/applications/popcorntime.desktop
