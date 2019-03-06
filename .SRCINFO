@@ -1,7 +1,7 @@
 pkgbase = chemical-mime-data-git
 	pkgdesc = Chemical MIME type support Linux desktops
 	pkgver = 157.4fd66e3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dleidert/chemical-mime
 	arch = any
 	license = LGPL

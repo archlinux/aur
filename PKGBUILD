@@ -2,7 +2,7 @@
 
 pkgname=chemical-mime-data-git
 pkgver=157.4fd66e3
-pkgrel=1
+pkgrel=2
 pkgdesc="Chemical MIME type support Linux desktops"
 arch=('any')
 url="https://github.com/dleidert/chemical-mime"
@@ -22,7 +22,7 @@ pkgver() {
 build() {
         cd "$srcdir/$_gitname"
         ./autogen.sh
-        ./configure --disable-nls --without-kde-mime --disable-update-database --without-kde-magic
+        ./configure --prefix=/usr --disable-nls --without-kde-mime --disable-update-database --without-kde-magic
 }
 
 package() {
