@@ -1,0 +1,16 @@
+pkgbase = format-sql
+	pkgdesc = Makes your SQL readable.
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/paetzke/format-sql
+	arch = any
+	license = BSD
+	makedepends = python
+	depends = python
+	depends = python-attrs
+	conflicts = python--git
+	source = https://github.com/paetzke/format-sql/archive/v0.12.0.tar.gz
+	md5sums = 65fde3b80da1bd4063e2196676620535
+
+pkgname = format-sql
+
