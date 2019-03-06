@@ -3,8 +3,7 @@
 
 pkgbase=('wownero-git')
 pkgname=('wownero-git')
-_gitbranch='master'
-pkgver=0.5.0.1
+pkgver=0.5.0.2
 pkgrel=1
 pkgdesc="a fairly launched privacy-centric meme coin with no premine and a finite supply"
 license=('custom:Cryptonote')
@@ -14,7 +13,7 @@ depends=('boost-libs' 'zeromq' 'unbound' 'libusb')
 makedepends=('git' 'cmake' 'boost')
 provides=('wownero-git')
 
-source=("${pkgname}"::"git+https://github.com/wownero/wownero#branch=${_gitbranch}")
+source=("${pkgname}"::"git+https://github.com/wownero/wownero")
 
 sha256sums=('SKIP')
 
@@ -26,6 +25,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
+  git fetch --tags && git checkout tags/v${pkgver} -b v${pkgver}
   USE_SINGLE_BUILDDIR=1 make
 }
 
