@@ -1,7 +1,7 @@
 # Maintainer: theflameemperor <un.own.cry@gmail.com>
 pkgname=ygopro-koishipro
 pkgver=2019.3.6
-pkgrel=1
+pkgrel=5
 _pkgrel=1
 zipFile=KoishiPro-linux-full-${pkgver}.zip
 pkgdesc="Link compatable ygopro client with AI"
