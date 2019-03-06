@@ -1,0 +1,67 @@
+#!/bin/sh
+
+#
+# Script to register/build/unregister a kernel module with DKMS.
+#
+# Copyright (C) 2010-2015 Oracle Corporation
+#
+# This file is part of VirtualBox Open Source Edition (OSE), as
+# available from http://www.virtualbox.org. This file is free software;
+# you can redistribute it and/or modify it under the terms of the GNU
+# General Public License (GPL) as published by the Free Software
+# Foundation, in version 2 as it comes in the "COPYING" file of the
+# VirtualBox OSE distribution. VirtualBox OSE is distributed in the
+# hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
+#
+
+ACTION=
+if [ "$1" = "install" ]; then
+  ACTION="install"
+  MODULE="$2"
+  VERSION="$3"
+elif [ "$1" = "uninstall" ]; then
+  shift
+  ACTION="uninstall"
+  OLDMODULES="$*"
+  break
+fi
+
+DKMS=`which dkms 2>/dev/null`
+if [ -n "$DKMS" ]
+then
+    if [ "$ACTION" = "uninstall" ]; then
+
+        echo "Uninstalling modules from DKMS"
+        for m in $OLDMODULES
+        do
+            $DKMS status -m $m | while read line
+            # first, remove _any_ old module
+            do
+                if echo "$line" | grep -q added > /dev/null ||
+                   echo "$line" | grep -q built > /dev/null ||
+                   echo "$line" | grep -q installed > /dev/null; then
+                    # either 'vboxvideo, <version>: added' 
+                    # or 'vboxvideo, <version>, ...: installed'
+                    version=`echo "$line" | sed "s/$m,\([^,]*\)[,:].*/\1/;t;d"`
+                    echo "  removing old DKMS module $m version $version"
+                    $DKMS remove -m $m -v $version --all
+                fi
+            done
+        done
+        exit 0
+
+    elif [ "$ACTION" = "install" ]; then
+
+        echo "Attempting to install using DKMS"
+        if $DKMS add -m $MODULE -v $VERSION &&
+            $DKMS build -m $MODULE -v $VERSION &&
+            $DKMS install -m $MODULE -v $VERSION --force
+        then
+            exit 0
+        fi
+        echo "Failed to install using DKMS, attempting to install without"
+
+    fi
+fi
+
+exit 1

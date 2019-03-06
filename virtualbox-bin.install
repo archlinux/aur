@@ -1,0 +1,47 @@
+# arg 1:  the new package version
+post_install() {
+  # Add vboxusers group, GID 108 is reserved (http://wiki.archlinux.org/index.php/UID_and_GID_list),
+  getent group vboxusers &> /dev/null || groupadd -f -g 108 vboxusers
+
+  # Load new udev rule for module vboxdrv
+  udevadm control --reload-rules
+
+  # Show warnings
+  cat <<EOF
+
+==> Remember to add allowed users to the vboxusers group:
+==> # gpasswd -a USERNAME vboxusers
+EOF
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+pre_upgrade() {
+  # Remove any stuff remaining from the module compilation
+  rm -Rf "/opt/VirtualBox"
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  post_install "$1"
+  (($(vercmp $2 '4.1.14-2') < 0 )) && cat <<EOF || true
+
+==> **Warning**
+==> This version drop vboxdrv initscript.
+==> Please change to dkms instead of vboxdrv in DAEMONS in rc.conf.
+==>
+EOF
+}
+
+# arg 1:  the old package version
+post_remove() {
+  # Remove any stuff remaining from the module compilation
+  rm -Rf "/opt/VirtualBox"
+
+  # Remove any run files
+  rm -Rf "/var/run/VirtualBox"
+
+  # remove vboxusers group
+  groupdel vboxusers &>/dev/null || true
+}
