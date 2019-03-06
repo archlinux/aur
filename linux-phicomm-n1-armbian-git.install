@@ -2,7 +2,7 @@
 # arg 2:  the old package version
 
 KERNEL_NAME=-phicomm-n1-armbian-git
-KERNEL_VERSION=4.19.6-1-ARCH
+KERNEL_VERSION=5.0.0-rc7-1-ARCH
 
 post_install () {
   # updating module dependencies

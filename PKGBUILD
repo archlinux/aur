@@ -1,4 +1,4 @@
-# AArch64 kernel for Phicomm N1, Armbian source
+# AArch64 kernel for Phicomm N1
 # Maintainer: Jerry Xiao <isjerryxiao at outlook dot com>
 # Contributor: Kevin Mihelich <kevin@archlinuxarm.org>
 # Contributor: Peter Cai <peter at typeblog dot net>
@@ -8,36 +8,35 @@ buildarch=8
 pkgbase=linux-phicomm-n1-armbian-git
 _srcname=Amlogic_s905-kernel
 _kernelname=${pkgbase#linux}
-_desc="AArch64 kernel for Phicomm N1, Armbian source"
-pkgver=4.19.13
-pkgrel=2
+_desc="AArch64 kernel for Phicomm N1"
+pkgver=5.0.0.rc7.ge30823ab89
+pkgrel=1
 arch=('aarch64')
-url="https://github.com/isjerryxiao/Amlogic_s905-kernel"
+url="https://github.com/150balbes/Amlogic_s905-kernel"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
-source=("git+https://github.com/isjerryxiao/Amlogic_s905-kernel.git#branch=linux-4.19.y"
-        'config'
+source=("git+https://github.com/150balbes/Amlogic_s905-kernel.git#branch=master"
         'linux.preset'
         '99-linux.hook')
 md5sums=('SKIP'
-         '71a4d2b8faa2d4461f577b06b9bbdbf3'
          'f6ee374f560e1b9df6a7de2399027d1b'
          'd1c40c7367a7081f3b4c03264780f9d4')
+
+pkgver() {
+  cd "${srcdir}/${_srcname}"
+  printf "%s.g%s" "$(make kernelversion| sed 's|-|.|g')" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   cd "${srcdir}/${_srcname}"
 
-  # reset to a certain version
-  git reset --hard 400222822e9c34b8ae18344f73b91feba86b00ec
+  cat config > ./.config
 
-  # Dirty hack to git rid of the + in kernel version
-  rm -rf .git
-
-  cat "${srcdir}/config" > ./.config
-
-  # add pkgrel to extraversion
-  sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile
+  sed -i "s/.*CONFIG_IKCONFIG[^_].*/CONFIG_IKCONFIG=y/g" .config
+  sed -i "s/.*CONFIG_IKCONFIG_PROC[^_].*/CONFIG_IKCONFIG_PROC=y/g" .config
+  sed -i "s/.*CONFIG_LOCALVERSION[^_].*/CONFIG_LOCALVERSION=\"-ARCH\"/g" .config
+  sed -i "s/.*CONFIG_LOCALVERSION_AUTO[^_].*/# CONFIG_LOCALVERSION_AUTO is not set/g" .config
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -45,6 +44,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_srcname}"
+
+  # Dirty hack to git rid of the + in kernel version
+  mv .git .git_1
+
+  # add pkgrel to extraversion
+  sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile
 
   # get kernel version
   make prepare
