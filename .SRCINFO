@@ -1,24 +1,25 @@
 pkgbase = zrythm
-	pkgdesc = Free GNU/Linux music production system (DAW)
-	pkgver = master
-	pkgrel = 3
+	pkgdesc = An highly automated, intuitive, Digital Audio Workstation (DAW)
+	pkgver = 0.1.009
+	pkgrel = 1
 	url = https://git.zrythm.org/zrythm/zrythm
 	arch = x86_64
 	license = GPL3
+	makedepends = python
 	depends = gtk3
 	depends = lv2
 	depends = lilv
+	depends = libx11
 	depends = jack
 	depends = libsndfile
-	depends = libsmf
 	depends = libdazzle
 	depends = breeze-icons
+	depends = libyaml
 	depends = portaudio
-	depends = ffmpeg
-	source = zrythm-master::https://git.zrythm.org/zrythm/zrythm/-/archive/master/zrythm-master.tar.gz
-	source = libcyaml::https://github.com/tlsa/libcyaml/archive/v0.1.0.tar.gz
-	md5sums = SKIP
-	md5sums = SKIP
+	depends = libsamplerate
+	conflicts = zrythm-git
+	source = https://git.zrythm.org/zrythm/zrythm/-/archive/v0.1.009/zrythm-v0.1.009.tar.gz
+	md5sums = 27902dfb379b831ad0c3a18c8ed133aa
 
 pkgname = zrythm
 

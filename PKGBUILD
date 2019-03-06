@@ -1,33 +1,28 @@
-# Maintainer: Alexandros Theodotou <alex at zrythm dot org>
-
+# Maintainer: Alexandros Theodotou <alex@zrythm.org>
 pkgname=zrythm
-pkgver=master
-_pkgname="$pkgname-$pkgver"
-pkgrel=3
-pkgdesc="Free GNU/Linux music production system (DAW)"
-arch=('x86_64')
-url="https://git.zrythm.org/zrythm/zrythm"
-license=('GPL3')
-depends=('gtk3' 'lv2' 'lilv' 'jack' 'libsndfile' 'libsmf' 'libdazzle'
-         'breeze-icons' 'portaudio' 'ffmpeg')
-source=("$_pkgname::https://git.zrythm.org/zrythm/zrythm/-/archive/$pkgver/zrythm-$pkgver.tar.gz"
-        "libcyaml::https://github.com/tlsa/libcyaml/archive/v0.1.0.tar.gz")
-md5sums=('SKIP'
-         'SKIP')
+pkgver=0.1.009
+pkgrel=1
+pkgdesc="An highly automated, intuitive, Digital Audio Workstation (DAW)"
+arch=( 'x86_64' )
+url='https://git.zrythm.org/zrythm/zrythm'
+license=( 'GPL3' )
+depends=('gtk3' 'lv2' 'lilv' 'libx11' 'jack' 'libsndfile' 'libdazzle' 'breeze-icons' 'libyaml'
+         'portaudio' 'libsamplerate')
+makedepends=('python')
+conflicts=( 'zrythm-git' )
+source=( "https://git.zrythm.org/zrythm/${pkgname}/-/archive/v$pkgver/${pkgname}-v$pkgver.tar.gz" )
+md5sums=( '27902dfb379b831ad0c3a18c8ed133aa' )
 
-prepare() {
-	cd "$srcdir/$_pkgname"
-  cp -r $srcdir/libcyaml-0.1.0/* ./ext/libcyaml/
-}
+rootdir="${pkgname}-v${pkgver}"
 
 build() {
-	cd "$srcdir/$_pkgname"
+  cd ${rootdir}/
   autoreconf -fi
-	./configure --prefix=/usr --enable-aur-build
-	make
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-	make DESTDIR="$pkgdir/" install
+  cd ${rootdir}/
+  make DESTDIR="${pkgdir}/" install
 }
