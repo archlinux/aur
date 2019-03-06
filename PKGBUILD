@@ -5,7 +5,7 @@
 _pkgname="xournalpp"
 pkgname="${_pkgname}-git"
 
-pkgver=1.0.8.83.g5a8b0c59
+pkgver=1.0.8.91.ga17a3f2c
 pkgrel=1
 pkgdesc='Xournal++ is a handwriting Notetaking software with PDF annotation support. Supports Pen input like Wacom Tablets.'
 arch=('i686' 'x86_64')
@@ -13,9 +13,6 @@ url="https://github.com/xournalpp/xournalpp"
 license=('GPL2')
 makedepends=('git' 'cmake' 'gettext')
 depends=('texlive-bin' 'gtk3' 'glib2' 'poppler-glib' 'libxml2' 'portaudio' 'libsndfile' 'lua')
-optdepends=('curl: recording support'
-            'vlc: recording support'
-            'alsa-utils: recording support')
 conflicts=('xournalpp')
 install="xournalpp.install"
 source=("${_pkgname}::git+https://github.com/xournalpp/xournalpp.git")
