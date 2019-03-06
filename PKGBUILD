@@ -3,13 +3,13 @@
 _repo=aerial-sddm-theme
 _pkgname=sddm-theme-aerial
 pkgname=$_pkgname-git
-pkgver=0.1.r24.g90d9941
+pkgver=0.1.r39.gd583097
 pkgrel=1
 pkgdesc="SDDM theme with Apple TV Aerial videos"
 arch=('any')
 url="https://github.com/3ximus/aerial-sddm-theme"
 license=('GPL')
-depends=('sddm' 'gst-libav' 'gst-plugins-good' 'phonon-qt5-gstreamer' 'qt5-multimedia')
+depends=('sddm' 'gst-libav' 'phonon-qt5-gstreamer' 'gst-plugins-good' 'qt5-quickcontrols' 'qt5-graphicaleffects')
 makedepends=('git' 'python2')
 install="$_pkgname.install"
 backup=('usr/share/sddm/themes/aerial/theme.conf.user')
@@ -24,11 +24,13 @@ pkgver() {
 }
 build() {
   cd ${srcdir}/$_repo
-  sh generate_playlist.sh  
   if [ -d screens ]; then
        rm -rf screens
+       rm README.md
   fi
 }
 package() {
-  install -Dm644 -t "$pkgdir/usr/share/sddm/themes/aerial/" ${srcdir}/$_repo/*
+  mkdir -p "$pkgdir/usr/share/sddm/themes/aerial/" 
+  mv ${srcdir}/$_repo/* "$pkgdir/usr/share/sddm/themes/aerial/" 
+  chmod 644 "$pkgdir/usr/share/sddm/themes/aerial/"
 }
