@@ -1,6 +1,6 @@
 # Maintainer: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=4.3.1
+pkgver=4.3.5
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
 "$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/$pkgver"
 "$pkgname.desktop"
 )
-md5sums=('dc8d65da540981e49cbad6bc236cd80b'
+md5sums=('381fbf87bd6ed4052b2e732cd6c37658'
          '6787e48a44061671e326ababd1a2ea8d')
 
 package() {

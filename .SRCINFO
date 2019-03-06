@@ -1,6 +1,6 @@
 pkgbase = deezer
 	pkgdesc = A proprietary music streaming service
-	pkgver = 4.3.1
+	pkgver = 4.3.5
 	pkgrel = 1
 	url = https://www.deezer.com/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = deezer
 	depends = electron>=3.0.10
 	provides = deezer
 	options = !strip
-	source = deezer-4.3.1-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/4.3.1
+	source = deezer-4.3.5-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/4.3.5
 	source = deezer.desktop
-	md5sums = dc8d65da540981e49cbad6bc236cd80b
+	md5sums = 381fbf87bd6ed4052b2e732cd6c37658
 	md5sums = 6787e48a44061671e326ababd1a2ea8d
 
 pkgname = deezer
