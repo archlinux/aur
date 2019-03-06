@@ -3,16 +3,18 @@
 pkgname=rtl8192du-git
 _pkgname=rtl8192du
 pkgver=d5056bd
-pkgrel=3
+pkgrel=4
 pkgdesc="Kernel module for Realtek RTL8192DU USB wireless devices."
 arch=('x86_64')
 url="https://github.com/lwfinger/rtl8192du"
 license=('GPL')
 _extramodules="extramodules-ARCH"
-depends=('linux>=4.20' 'linux<4.21')
-makedepends=('linux-headers>=4.20' 'git')
-source=("git://github.com/lwfinger/$_pkgname.git")
-sha256sums=('SKIP')
+depends=('linux>=5.0' 'linux<5.1')
+makedepends=('linux-headers>=5.0' 'git')
+source=("git://github.com/lwfinger/$_pkgname.git"
+00-unfuck-build-for-linux5.0.patch::https://github.com/lwfinger/rtl8192du/pull/69/commits/ddbc81d4c1c172742e5a6f0cabdfef50cb9ba491.patch)
+sha256sums=('SKIP'
+            '55c30249976b7c360ba193b3e61fd1c921a87708bea9ba68a3bf5b8906e1b47d')
 
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
@@ -31,6 +33,8 @@ prepare() {
   # 2) remove the depmod command which we do in the postinstall
   sed -i -e "/^KSRC/ s,\$(KVER),$_kernver," \
     -i -e '/depmod/d' Makefile
+
+  patch -Np1 -i ../00-unfuck-build-for-linux5.0.patch
 }
 
 build() {
