@@ -2,7 +2,7 @@
 
 pkgname=chemical-mime-data-git
 pkgver=157.4fd66e3
-pkgrel=2
+pkgrel=3
 pkgdesc="Chemical MIME type support Linux desktops"
 arch=('any')
 url="https://github.com/dleidert/chemical-mime"
@@ -11,6 +11,7 @@ provides=('chemical-mime-data')
 depends=('gnome-mime-data' 'shared-mime-info')
 makedepends=('libxslt')
 source=('git://github.com/dleidert/chemical-mime.git')
+conflicts=('chemical-mime-data-debian' 'chemical-mime-data')
 sha256sums=('SKIP')
 _gitname="chemical-mime"
 # install=chemical-mime-data.install

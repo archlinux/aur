@@ -1,7 +1,7 @@
 pkgbase = chemical-mime-data-git
 	pkgdesc = Chemical MIME type support Linux desktops
 	pkgver = 157.4fd66e3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dleidert/chemical-mime
 	arch = any
 	license = LGPL
@@ -9,6 +9,8 @@ pkgbase = chemical-mime-data-git
 	depends = gnome-mime-data
 	depends = shared-mime-info
 	provides = chemical-mime-data
+	conflicts = chemical-mime-data-debian
+	conflicts = chemical-mime-data
 	source = git://github.com/dleidert/chemical-mime.git
 	sha256sums = SKIP
 
