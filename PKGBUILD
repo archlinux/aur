@@ -1,7 +1,4 @@
-# Maintainer: fs4000 <matthias_dienstbier[at]yahoo[dot]de>
-# Contributor: Allan McRae <allan@archlinux.org>
-# Contributor: Todd Musall <tmusall@comcast.net>
-# Contributor: David Manouchehri <d@32t.ca>
+# Maintainer: YeahSure <lapdogpdx@yahoo.com>
 
 pkgname=mozplugger
 _pkgname=mozplugger
