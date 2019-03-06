@@ -1,8 +1,8 @@
 pkgbase = nodejs-xml2json
-	pkgdesc = Stream and CLI to convert XML to JSON
+	pkgdesc = Converts XML to JSON using node-expat
 	pkgver = 0.11.2
 	pkgrel = 1
-	url = https://github.com/julien-f/xml2json
+	url = https://github.com/buglabs/node-xml2json
 	arch = any
 	makedepends = jq
 	makedepends = npm
