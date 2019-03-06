@@ -4,5 +4,6 @@
 *.rej
 *.swp
 *.part
+*.tar.xz
 src
 pkg
