@@ -1,0 +1,25 @@
+diff --git a/src/DistroHelper.jl b/src/DistroHelper.jl
+index ee9ae0b..bf4199e 100644
+--- a/src/DistroHelper.jl
++++ b/src/DistroHelper.jl
+@@ -7,6 +7,7 @@ module DistroHelper
+ const JL_REGISTRY_URL = "https://github.com/JuliaRegistries/General/raw/master/"
+ 
+ using Pkg
++include("versions.jl")
+ 
+ """
+ Return the slug string for the given package in specific version.
+@@ -44,9 +45,9 @@ depends("Deps.toml")
+ """
+ function depends(deps::AbstractString, version::Any = nothing)
+ 	alldeps = Pkg.TOML.parsefile(deps)
+-	bounds = map(x -> VersionNumber.(x), split.(keys(alldeps), "-"))
+-	ver	= (version == nothing) ? maximum(maximum(bounds)) : VersionNumber(version) 
+-	mask = [ver >= x[1] && ver <= x[2] for x in bounds]
++	bounds = [VersionRange(x) for x in keys(alldeps)]
++	ver = (version == nothing) ? VersionNumber(maximum(maximum(split.(keys(alldeps), "-")))) : VersionNumber(version)
++	mask = [Base.in(ver, x) for x in bounds]
+ 	realdeps = Dict{String,Any}()
+ 	for (k, v) in zip(mask, values(alldeps))
+ 		if k for (i, j) in v realdeps[i] = j end end
