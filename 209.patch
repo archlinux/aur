@@ -1,0 +1,20 @@
+From d20dd3eb559eeb095c1314050734c757a2246dc0 Mon Sep 17 00:00:00 2001
+From: Julien Schueller <schueller@phimeca.com>
+Date: Fri, 31 Aug 2018 13:34:15 +0200
+Subject: [PATCH] Fix guile extension load
+
+---
+ src/swig/nlopt-guile.i | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/swig/nlopt-guile.i b/src/swig/nlopt-guile.i
+index 2b8a23c..81b9055 100644
+--- a/src/swig/nlopt-guile.i
++++ b/src/swig/nlopt-guile.i
+@@ -78,5 +78,5 @@ static double func_guile(unsigned n, const double *x, double *grad, void *f) {
+ %feature("constasvar", "1");
+ 
+ %scheme %{
+-(load-extension "libnlopt_guile.so" "SWIG_init")
++(load-extension "nlopt_guile" "SWIG_init")
+ %}

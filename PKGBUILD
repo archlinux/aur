@@ -10,17 +10,17 @@ makedepends=('python-numpy' 'octave' 'guile' 'swig' 'cmake')
 optdepends=('octave: to use with octave',
             'python: to use with python',
             'guile: to use with guile')
-source=("https://github.com/stevengj/nlopt/archive/v${pkgver}.tar.gz")
-sha256sums=('c6dd7a5701fff8ad5ebb45a3dc8e757e61d52658de3918e38bab233e7fd3b4ae')
+source=("https://github.com/stevengj/nlopt/archive/v${pkgver}.tar.gz" 209.patch 245.patch)
+sha256sums=('c6dd7a5701fff8ad5ebb45a3dc8e757e61d52658de3918e38bab233e7fd3b4ae' SKIP SKIP)
 
 prepare () {
   cd "$srcdir/$pkgname-$pkgver"
 
   # fix guile extension
-  curl -L https://github.com/stevengj/nlopt/pull/209.patch | patch -p1
+  patch -p1 -i "$srcdir"/209.patch
 
   # fix octave 5.x build
-  curl -L https://github.com/stevengj/nlopt/pull/245.patch | patch -p1
+  patch -p1 -i "$srcdir"/245.patch
 }
 
 build() {
