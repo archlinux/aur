@@ -4,7 +4,7 @@ pkgname=nbfc
 pkgver=1.6_beta2
 _pkgver=$(echo $pkgver | sed -r 's/_/-/g')
 _pkgname=nbfc-${_pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform fan control service for notebooks (STABLE & BETA releases)"
 arch=("i686" "x86_64")
 url="https://github.com/hirschmann/nbfc"
@@ -19,8 +19,8 @@ source=("https://github.com/hirschmann/nbfc/archive/${_pkgver}.tar.gz"
         "nbfc"
         "ec-probe")
 md5sums=("d2b890d4fcee961024aa61e14a61d741"
-         "b8c7ecbe7816a43deeb91426b1ba3fbe"
-         "be72ba56253695932458f7cddc4a2194")
+         "2dc636f29fa935ea427e6e67bdb9f65d"
+         "81686043a7fc44d620a00a171c917936")
 
 build() {
 	cd "${srcdir}/${_pkgname}/"

@@ -1,7 +1,7 @@
 pkgbase = nbfc
 	pkgdesc = Cross-platform fan control service for notebooks (STABLE & BETA releases)
 	pkgver = 1.6_beta2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hirschmann/nbfc
 	install = nbfc.install
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = nbfc
 	source = nbfc
 	source = ec-probe
 	md5sums = d2b890d4fcee961024aa61e14a61d741
-	md5sums = b8c7ecbe7816a43deeb91426b1ba3fbe
-	md5sums = be72ba56253695932458f7cddc4a2194
+	md5sums = 2dc636f29fa935ea427e6e67bdb9f65d
+	md5sums = 81686043a7fc44d620a00a171c917936
 
 pkgname = nbfc
 

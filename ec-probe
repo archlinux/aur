@@ -1,1 +1,3 @@
+#!/bin/sh
+
 mono /opt/nbfc/ec-probe.exe "$@"
