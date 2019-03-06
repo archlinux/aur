@@ -1,6 +1,6 @@
 pkgbase = artanis-git
 	pkgdesc = A fast monolithic web-framework of Scheme
-	pkgver = 0.3.1
+	pkgver = 0.3.1r10rg1e91ae1
 	pkgrel = 1
 	url = http://web-artanis.com/
 	arch = x86_64
