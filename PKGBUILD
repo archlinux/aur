@@ -1,4 +1,5 @@
-# Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
+# Original Author: Maxim Andersson <thesilentboatman@gmail.com>
+# Current Maintainer: Jugal Gala <jugal.gala@sakec.ac.in>
 
 pkgname=gnome-shell-extension-topicons-plus
 pkgver=22
