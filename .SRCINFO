@@ -1,0 +1,14 @@
+pkgbase = julia-distrohelper
+	pkgdesc = DistroHelper.jl (dh_julia)
+	pkgver = 0.1.0r31.fa337bc
+	pkgrel = 1
+	url = https://github.com/cdluminate/DistroHelper.jl
+	arch = any
+	license = Custom:Expat
+	source = git+https://github.com/cdluminate/DistroHelper.jl.git#commit=fa337bc4bbfb58428f0255c1e8903be5a1be57a3
+	source = distro-project-full.diff
+	sha256sums = SKIP
+	sha256sums = 0c9c185024e335bba20f1907754c1057cf6b43b74f0b7d1490b5c2099b3e5656
+
+pkgname = julia-distrohelper
+

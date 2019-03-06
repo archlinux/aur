@@ -1,0 +1,39 @@
+diff --git a/dh_julia b/dh_julia
+index 41cb1f6..75de588 100755
+--- a/dh_julia
++++ b/dh_julia
+@@ -13,7 +13,7 @@ function main(argv)
+ 	elseif argv[1] in ("gather_stdlib_manifest", "distro_manifest_")  # requires pretty print
+ 		result = getfield(DistroHelper, Symbol(argv[1]))(argv[2:end]...)
+ 		Pkg.TOML.print(result)
+-	elseif argv[1] in ("distro_project", "distro_manifest", "distro_merge", "metadata", "download")  # no print
++	elseif argv[1] in ("distro_project", "distro_project_", "distro_manifest", "distro_merge", "metadata", "download")  # no print
+ 		getfield(DistroHelper, Symbol(argv[1]))(argv[2:end]...)
+ 	else
+ 		throw(Base.error("unsupported args"))
+diff --git a/src/DistroHelper.jl b/src/DistroHelper.jl
+index 95e294e..1211032 100644
+--- a/src/DistroHelper.jl
++++ b/src/DistroHelper.jl
+@@ -55,6 +55,21 @@ function depends(deps::AbstractString, version::Any = nothing)
+ end
+ 
+ 
++"""
++Generate a full Project.toml based on given METADATA/Registry files.
++Output will be written to pwd if dest is not specified.
++"""
++function distro_project_(package::AbstractString, versions::AbstractString, deps::AbstractString, version::Any = nothing, dest::Any=nothing)
++	package = Pkg.TOML.parsefile(package)
++	project = Dict{String,Any}()
++	project["name"], project["uuid"] = package["name"], package["uuid"]
++	project["deps"] = depends(deps, version)
++	open((dest==nothing) ? "Project.toml" : dest, "w") do io
++		Pkg.TOML.print(io, project)
++	end
++end
++
++
+ """
+ Gather manifest for stdlib
+ """
