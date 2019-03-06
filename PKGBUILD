@@ -1,7 +1,7 @@
 # Maintainer: Simon Doppler <dopsi@dopsi.ch>
 pkgname=radicale-dovecot-auth
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Dovecot auth for radicale"
 arch=("any")
 url="https://github.com/Arvedui/radicale-dovecot-auth"
@@ -10,7 +10,7 @@ depends=('python' 'radicale')
 makedepends=('git' 'python-setuptools')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Arvedui/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('a4c0847a7a4b8d6b1ee45287953f8b9670fd1e99054d9592abd13780028c2d3e338cfb50412245b2e68cf7b62a3bc5f874b28cc867a3b8442ac8af1fe4dbbe39')
+sha512sums=('336d234a85710bd281f8b9c0035b27bd680f75fc337c330e2e13121f588ec8295a7c690b18ae1f16e20da4127729a2d1a5f9da5419f1a71ff7679ec9d21b2d0f')
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -18,4 +18,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
