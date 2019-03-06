@@ -12,7 +12,7 @@ depends=('mono' 'libevent')
 makedepends=('patchelf')
 source=("https://github.com/purerosefallen/ygopro/releases/download/$pkgver/$zipFile")
 noextract=($zipFile)
-sha256sums=('6ad1083ba1cf5ed669766a2eeca16bdd5f444888c6bbfd8a1d9aacb198113a4d')
+sha256sums=('936ec2c86f4d30e621af807f67e6f2182280c06e92cc98f1162f2e91a96ffdd5')
 options=('!strip' 'emptydirs')
 
 prepare(){
