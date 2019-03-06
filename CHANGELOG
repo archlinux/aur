@@ -12,6 +12,9 @@ WHITE='\033[1;37m'
 NC='\033[0m' # No Color
 
 echo -e "${GREEN}#${NC} ${ORANGE}25.2.0${NC}" 
+echo -e "* “Fixed loop time of update"
+
+echo -e "${GREEN}#${NC} ${ORANGE}25.2.0${NC}" 
 echo -e "* “Added gradient colours support and new three folders colours"
 
 echo -e "${GREEN}#${NC} ${ORANGE}25${NC}" 
