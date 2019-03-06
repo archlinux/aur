@@ -1,14 +1,14 @@
 #Maintainer: Mikhail Rudenko <mike.rudenko@gmail.com>
 _pkgname=bingo
 pkgname=$_pkgname-git
-pkgver=r875.ea0a232
-pkgrel=1
+pkgver=r885.43cf020
+pkgrel=2
 pkgdesc='A Go language server that speaks Language Server Protocol, largely inspired by go-langserver (git version).'
 arch=('x86_64')
 url="https://github.com/saibing/bingo"
 license=('MIT')
 makedepends=('go' 'git')
-source=($_pkgname::git://github.com/saibing/bingo)
+source=(git+https://github.com/saibing/bingo)
 md5sums=('SKIP')
 
 provides=($_pkgname)
