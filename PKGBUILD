@@ -1,4 +1,4 @@
-# Maintainer: Phi11ipus <phi11ipus AT protonmail DOT com
+# Maintainer: Phi11ipus <phi11ipus AT protonmail DOT com>
 # Modified from PKGBUILD in official repositories
 
 pkgname=bochs-sdl
