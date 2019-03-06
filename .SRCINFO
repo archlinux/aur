@@ -1,0 +1,14 @@
+pkgbase = purple-icyque-git
+	pkgdesc = A libpurple/Pidgin plugin for ICQ WIM protocol
+	pkgver = r26.c0187fe
+	pkgrel = 1
+	url = https://github.com/EionRobb/icyque
+	arch = any
+	license = GPL
+	makedepends = json-glib
+	depends = libpurple
+	source = icyque::git+https://github.com/EionRobb/icyque.git
+	md5sums = SKIP
+
+pkgname = purple-icyque-git
+
