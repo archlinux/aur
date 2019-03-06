@@ -2,7 +2,7 @@
 # Contributor: hexchain <i at hexchain.org>
 pkgname=hmcl
 _pkgname=HMCL
-pkgver=3.2.126
+pkgver=3.2.127
 pkgrel=1
 pkgdesc="Hello Minecraft! Launcher, a powerful Minecraft launcher."
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("hmcl-launch-script"
         "${pkgname}.desktop"
 	"${pkgname}_icon::https://raw.githubusercontent.com/huanghongxun/HMCL/javafx/HMCL/src/main/resources/assets/img/craft_table.png")
 sha256sums=('0300218f29af82e9b302a94b37a4c9a92aea26b960bfd1b2e16c0130ac61cfcf'
-            '0bf079a8a144e07887c3dda332dff0b507e95914a71cce823de001edb735dbc3'
+            'ae9904542d7d06861256318b007a0fe768ff510823ab64318c12889b1b7e5b19'
             '5780cf70f1afec0eb3cd8fc43297d361903c7204e274a28c5edf9b8ac3eea83e'
             '2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c')
 package() {
