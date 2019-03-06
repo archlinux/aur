@@ -1,8 +1,8 @@
 # Contributor: Max Devaine <maxdevaine@gmail.com>
 
 pkgname=flexibee
-pkgver=2019.1.1
-pkgbasever=2019.1
+pkgver=2019.2.0.1
+pkgbasever=2019.2
 pkgrel=1
 pkgdesc="Accounting economic system for person and business. Server and client in one package."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ source=("http://download.flexibee.eu/download/$pkgbasever/$pkgver/flexibee-$pkgv
         "flexibee")
 
 
-sha256sums=('aa56caf31bd7a4edd46c8d559282cfdcf0b42c6075a55722cd82c9f02cae27d7'
+sha256sums=('083ee21f1c299b65bd01157a94b3dbd1f0b27c81ec0030cc966f31e828194353'
             '0aaf79ac30bfc5af5e9aba6d1b1189a76019551d3183621bcb9f2bdbe7ea39e3')
 
 prepare() {
