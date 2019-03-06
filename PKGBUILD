@@ -1,15 +1,17 @@
 # Maintainer: Rafael Fontenlle <rafaelff@gnome.org>
 # Collaborator: Manoel Vilela <manoel_vilela@engineer.com>
 
-pkgname=warsaw
+pkgname=warsaw-openrc
 pkgver=1.12.3.11
-pkgrel=4
+pkgrel=5
 pkgdesc="Banking security tool developed by GAS Tecnologia"
 arch=(i686 x86_64)
 url="https://seg.bb.com.br"
 license=('custom')
-depends=('openssl' 'nss')
+depends=('openssl' 'nss' 'openrc')
 makedepends=('chrpath')
+conflicts=("warsaw")
+provides=("warsaw")
 options=(!strip)
 source=(warsaw.service warsaw.openrc)
 source_i686=(https://cloud.gastecnologia.com.br/bb/downloads/ws/warsaw_32_installer.run)

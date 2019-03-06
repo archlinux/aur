@@ -1,7 +1,7 @@
-pkgbase = warsaw
+pkgbase = warsaw-openrc
 	pkgdesc = Banking security tool developed by GAS Tecnologia
 	pkgver = 1.12.3.11
-	pkgrel = 4
+	pkgrel = 5
 	url = https://seg.bb.com.br
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,9 @@ pkgbase = warsaw
 	makedepends = chrpath
 	depends = openssl
 	depends = nss
+	depends = openrc
+	provides = warsaw
+	conflicts = warsaw
 	options = !strip
 	source = warsaw.service
 	source = warsaw.openrc
@@ -19,5 +22,5 @@ pkgbase = warsaw
 	source_x86_64 = https://cloud.gastecnologia.com.br/bb/downloads/ws/warsaw_64_installer.run
 	md5sums_x86_64 = 2d19b66de26dbd01a7980427a0535a8f
 
-pkgname = warsaw
+pkgname = warsaw-openrc
 
