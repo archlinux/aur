@@ -1,7 +1,7 @@
 # Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
 
 pkgname=gnome-shell-extension-topicons-plus
-pkgver=21
+pkgver=22
 pkgrel=1
 pkgdesc="Moves legacy tray icons to the top panel"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/phocean/TopIcons-plus"
 license=('GPL2')
 depends=('gnome-shell')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/phocean/TopIcons-plus/archive/v${pkgver}.tar.gz")
-sha256sums=('92c0865dff0bba89b64fa8a7808a29294bf6904430336c7cb13f51b823f74a13')
+sha256sums=('4a666b462c22b67398813c689ff58ee7b6056f5121293abe32b898e9ea469697')
 
 package() {
   _uuid='TopIcons@phocean.net'
