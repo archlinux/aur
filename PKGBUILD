@@ -1,15 +1,16 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=dogtail
-pkgver=0.9.10
+pkgver=0.9.11
 pkgrel=1
 pkgdesc="GUI test tool and automation framework"
 arch=('any')
 license=('GPL')
 url='https://gitlab.com/dogtail/dogtail'
 depends=('python' 'hicolor-icon-theme')
+makedepends=('python-setuptools')
 source=("https://gitlab.com/$pkgname/$pkgname/raw/released/$pkgname-$pkgver.tar.gz")
-sha256sums=('ab84f9e691fea621a178d89e8cbd00830dd2bcbd945f48b91b122a445b645e93')
+sha256sums=('801a15b183916df5adadd50338e82f76426b5b598477d2dc5e2258b1ce47236b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
