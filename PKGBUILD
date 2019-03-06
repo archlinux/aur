@@ -2,7 +2,7 @@
 # Contributor: Daniel Maslowski <info@orangecms.org>
 
 pkgname=fisher
-pkgver=3.2.7
+pkgver=3.2.8
 pkgrel=1
 pkgdesc="A package manager for the fish shell"
 arch=("any")
@@ -15,7 +15,7 @@ install=fisher.install
 source=(
     "https://github.com/jorgebucaran/fisher/archive/${pkgver}.tar.gz"
 )
-sha512sums=('b6f6ec6ac079a8a72e2866c26ac68411783fba3a5ac80663dec661882c51cd75b6b70ad85622bb4e189fff8dafb39bb704a8b90a5cf5edeab5ee43ff5753a54d')
+sha512sums=('a3d3b1c7fd306287879c6f21f30ae1169ced75aae31165d8e49196bff89acc0c61dc7480f9e8a65baf3c2006a12ceb7779fea73c41d68066ce3717e284047fee')
 
 package() {
     sharepath="${pkgdir}/usr/share"
