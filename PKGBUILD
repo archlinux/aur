@@ -1,18 +1,20 @@
-# Contributor: Francois Boulogne <fboulogne at april dot org>
-# Maintainer: Francois Boulogne <fboulogne at april dot org>
+# Contributor: Francois Boulogne <devel at sciunto dot org>
+# Maintainer: Francois Boulogne <devel at sciunto dot org>
 
 pkgname=mat2
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Metadata anonymisation toolkit"
 arch=('any')
 url="https://0xacab.org/jvoisin/mat2"
 license=('GPL3')
-makedepends=('python-setuptools')
-depends=('python' 'perl' 'perl-image-exiftool' 'python-mutagen' 'python-cairo' 'python-gobject')
+makedepends=('python-setuptools' 'git')
+depends=('python' 'perl' 'perl-image-exiftool' 'python-mutagen' 'python-cairo' 'python-gobject' 'poppler-glib')
 optdepends=('ffmpeg' 'bubblewrap')
-source=(https://0xacab.org/jvoisin/mat2/-/archive/${pkgver}/mat2-${pkgver}.zip)
-sha256sums=('e0e9cd6888176ed75bdcdc8cf5ce402cad6f989166cfd50d5d03a88a399fb719')
+source=("git+https://0xacab.org/jvoisin/mat2.git#tag=${pkgver}?signed")
+sha256sums=('SKIP')
+validpgpkeys=('9FCDEE9E1A381F311EA62A7404D041E8171901CC' # Julien (jvoisin) Voisin
+             )
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
