@@ -2,68 +2,38 @@
 
 pkgname=julia-mbedtls
 _pkgname=MbedTLS
-pkgver=0.6.6
-pkgrel=5
+pkgver=0.6.8
+pkgrel=1
 pkgdesc='Wrapper around mbedtls for Julia'
 arch=(any)
 url=https://github.com/JuliaWeb/MbedTLS.jl
 license=(MIT)
 depends=(julia julia-compat julia-loadpath mbedtls)
+makedepends=(julia-distrohelper)
 
-_commit=bce262503a3b9e38bf2f04bc79979e215f0bbda7
+_commit=29e46ee379eff5814d5c69420bdbc7d271647208
 source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaWeb/$_pkgname.jl/archive/v$pkgver.tar.gz
-        $pkgname-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
-        $pkgname-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
-        $pkgname-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml
+        $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
+        $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
+        $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml
         'disable-test-logsecrets.patch')
-sha256sums=('2d1e81050f117bbdbd4fe1b84060ee3c73ee5060cbfc568e4a28bdf7387d254f'
-            '2186eeb5ff7bc0cbba5cf31ae7272aa7c9cc00505899ce472dfe978a4ce7e95c'
+sha256sums=('a5ab7686da0052cfd073afe3676c47475c79991d1c71584eb640ec3cebd02c4d'
+            '400a4cf81b265b76bb5e17ad04ce613adf128b9c17dcfbe4f5ae7412c40ff830'
             '04d846b75adf0693bf0cda4db3339bb419ac0a338c90dcbd2ac79c1966fb0091'
-            '66fc92f87efda76d0a27c9f9a0d42c48b2b45e1e3a84601a530bed86ce2888ce'
-            'c524da32a37ebee0938229402453ada5089c3396e10b3d4bfefcc80cd82af77f')
+            'e0584c5771a2c30d65075a5bdad68d96f801bea0ad68f3f5151c8cc61d53e4b1'
+            'b6a539c928f02bec79734c6edf45d2a83ab169a696b0591344296615d46d8e1b')
 
 _slug() {
-	local uuid=$(grep uuid $pkgname-Package.toml | cut -f3 -d' ')
-	local sha1=$(grep \"$pkgver\" -a1 $pkgname-Versions.toml | tail -n1 | cut -f3 -d' ')
-	julia -e "u = Base.UUID($uuid);
-	          s = Base.SHA1(hex2bytes($sha1));
-	          println(Base.version_slug(u,s));"
+	dh_julia slug "$srcdir"/"$pkgname"-$pkgver-{Package,Versions}.toml
 }
 
-_deps() {
-	julia -e "using Pkg
-
-	          alldeps = Pkg.TOML.parsefile(\"$srcdir/$pkgname-Deps.toml\")
-	          version = VersionNumber(\"$pkgver\")
-	          majmin  = VersionNumber(\"${pkgver%.*}\")
-	          deps = Dict{String,Any}()
-
-	          for (key, value) in alldeps
-	            vers = split(key, \"-\")
-	            lower = VersionNumber(vers[1])
-	            if length(vers) == 2
-	              upper = VersionNumber(vers[2])
-	              if (majmin  >= lower && majmin  <= upper) ||
-	                 (version >= lower && version <= upper)
-	                merge!(deps, value)
-	              end
-	            elseif length(vers) == 1
-	              if majmin == lower || version == lower
-	                merge!(deps, value)
-	              end
-	            end
-	          end
-
-	          Pkg.TOML.print(deps)"
+_project() {
+	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml
 }
 
 prepare() {
 	# Generate a Project.toml from Registry metadata
-	rm -f Project.toml && touch Project.toml
-	cat $pkgname-Package.toml       >> Project.toml
-	echo -e "version = \"$pkgver\"" >> Project.toml
-	echo -e "\n[deps]"              >> Project.toml
-	echo -e "$(_deps)" | sort       >> Project.toml
+	rm -f Project.toml && _project
 
 	cd $_pkgname.jl-$pkgver
 
