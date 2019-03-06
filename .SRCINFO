@@ -1,21 +1,22 @@
 pkgbase = julia-datastructures
 	pkgdesc = Julia implementation of Data structures
-	pkgver = 0.14.0
-	pkgrel = 4
+	pkgver = 0.15.0
+	pkgrel = 1
 	url = https://github.com/JuliaCollections/DataStructures.jl
 	arch = any
 	license = MIT
+	makedepends = julia-distrohelper
 	depends = julia
 	depends = julia-compat
 	depends = julia-loadpath
-	source = julia-datastructures-0.14.0.tar.gz::https://github.com/JuliaCollections/DataStructures.jl/archive/v0.14.0.tar.gz
-	source = julia-datastructures-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/e558358589cf4704b991bd4425dd9e5fa84c7d11/D/DataStructures/Deps.toml
-	source = julia-datastructures-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/e558358589cf4704b991bd4425dd9e5fa84c7d11/D/DataStructures/Package.toml
-	source = julia-datastructures-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/e558358589cf4704b991bd4425dd9e5fa84c7d11/D/DataStructures/Versions.toml
-	sha256sums = 7934fd1fd78e9489cbafd73ee1a07381953035e675b3d5c6a7faa6cde1e4f087
-	sha256sums = 5a4ef8d0b38f4b5d6096e3809d03cc71f38ef275e93ed2ee80b4bafde2f7aea6
+	source = julia-datastructures-0.15.0.tar.gz::https://github.com/JuliaCollections/DataStructures.jl/archive/v0.15.0.tar.gz
+	source = julia-datastructures-0.15.0-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/8a0711a36f83df30c8cc7c8ff240a58fbbd85570/D/DataStructures/Deps.toml
+	source = julia-datastructures-0.15.0-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/8a0711a36f83df30c8cc7c8ff240a58fbbd85570/D/DataStructures/Package.toml
+	source = julia-datastructures-0.15.0-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/8a0711a36f83df30c8cc7c8ff240a58fbbd85570/D/DataStructures/Versions.toml
+	sha256sums = 583bee9fc22880142298af535f979c599650c064f65ac5c6fa4b45d858919a9b
+	sha256sums = 0e09241d161b507e6568c3a736ae3635b95def76be5f97ea5795f9c59743b5b0
 	sha256sums = 7f7668d5864d661e32aa75e5ef6e9de218e160ec849b67d7555e66a48b2aa4e9
-	sha256sums = ad72f6850abd7dbb09bad3165f5c192ed8e2c5b006a384c53c8a61d533055f1c
+	sha256sums = 98320b421d24300aba70a8e1716f2a47fad2a8a079378717450f1b2c17eeaa59
 
 pkgname = julia-datastructures
 
