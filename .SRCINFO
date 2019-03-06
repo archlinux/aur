@@ -1,20 +1,22 @@
 pkgbase = ubertooth
-	pkgdesc = A 2.4 GHz wireless development board suitable for Bluetooth experimentation. Open source hardware and software. Tools only
-	pkgver = 2018.08.R1
+	pkgdesc = Open source wireless development platform suitable for Bluetooth experimentation
+	pkgver = 2018.12.R1
 	pkgrel = 1
-	url = http://sourceforge.net/projects/ubertooth/
+	url = https://github.com/greatscottgadgets/ubertooth/
 	arch = x86_64
 	arch = i686
 	license = GPL
+	makedepends = cmake
 	depends = bluez-libs
-	depends = libbtbb
+	depends = libbtbb>=2018.12.R1
 	depends = libusbx
 	depends = libpcap
-	depends = python2-pyside
+	depends = python2-pyside2
 	depends = python2-numpy
 	depends = python2-pyusb
-	source = https://github.com/greatscottgadgets/ubertooth/releases/download/2018-08-R1/ubertooth-2018-08-R1.tar.xz
-	md5sums = 41a5c192c1f0b5df0516f4abd08ac995
+	depends = qt5-declarative
+	source = https://github.com/greatscottgadgets/ubertooth/releases/download/2018-12-R1/ubertooth-2018-12-R1.tar.xz
+	sha256sums = 0042daa79db0f4148a0255cdf05aa57006e23ac36edf7024e9e99ccc4892867b
 
 pkgname = ubertooth
 
