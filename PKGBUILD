@@ -3,7 +3,7 @@
 # Derived from official Chromium and Inox PKGBUILDS and ungoogled-chromium buildkit
 
 pkgname=ungoogled-chromium
-pkgver=72.0.3626.96
+pkgver=72.0.3626.109
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency"
@@ -11,10 +11,10 @@ arch=('x86_64')
 url="https://github.com/Eloston/ungoogled-chromium"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
+         'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib' 'libva'
          'desktop-file-utils' 'hicolor-icon-theme' 'jsoncpp')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'git'
-             'clang' 'lld' 'gn' 'llvm' 'libva' 'quilt')
+             'clang' 'lld' 'gn' 'llvm' 'quilt')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -27,9 +27,9 @@ conflicts=('chromium')
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         https://github.com/Eloston/ungoogled-chromium/archive/$pkgver-$pkgrel.tar.gz)
-sha256sums=('b2daf52aac4d9eba0ab9f034db6f2411ad6930dd02544c4b583e3a6e49dcaa3b'
+sha256sums=('574a5400dcd9452bf41481518aa5097c396df6e1eb97c67303638ba967048c2d'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '797ac0ec341324e31296d75ecaefc6dd112c702f44de25c46f523e3bd26fdb00')
+            '2efc42de2970a578c89353be81ecb3671d27ef31c05a2212f24fbc1d138931eb')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -60,10 +60,10 @@ _unwanted_bundled_libs=(
 )
 depends+=(${_system_libs[@]})
 
-prepare() {
-  local _buildkit_cli="$srcdir/$pkgname-$pkgver-$pkgrel/run_buildkit_cli.py"
-  local _config_bundle="$srcdir/$pkgname-$pkgver-$pkgrel/config_bundles/archlinux"
+_buildkit_cli="$srcdir/$pkgname-$pkgver-$pkgrel/run_buildkit_cli.py"
+_config_bundle="$srcdir/$pkgname-$pkgver-$pkgrel/config_bundles/archlinux"
 
+prepare() {
   cd "$srcdir/chromium-$pkgver"
 
   msg2 'Pruning binaries'
@@ -112,9 +112,6 @@ build() {
   export NM=llvm-nm
 
   mkdir -p out/Default
-
-  local _buildkit_cli="$srcdir/$pkgname-$pkgver-$pkgrel/run_buildkit_cli.py"
-  local _config_bundle="$srcdir/$pkgname-$pkgver-$pkgrel/config_bundles/archlinux"
 
   python "$_buildkit_cli" gnargs print -b "$_config_bundle" \
     > "$srcdir/chromium-$pkgver/out/Default/args.gn"
