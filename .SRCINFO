@@ -1,0 +1,14 @@
+pkgbase = nodejs-xml2json
+	pkgdesc = Stream and CLI to convert XML to JSON
+	pkgver = 0.11.2
+	pkgrel = 1
+	url = https://github.com/julien-f/xml2json
+	arch = any
+	makedepends = jq
+	makedepends = npm
+	depends = nodejs
+	source = http://registry.npmjs.org/xml2json/-/xml2json-0.11.2.tgz
+	sha1sums = 70ddd234fd7818312cc58455cab8457b5bcc7c52
+
+pkgname = nodejs-xml2json
+
