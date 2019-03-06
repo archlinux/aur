@@ -2,66 +2,36 @@
 
 pkgname=julia-softglobalscope
 _pkgname=SoftGlobalScope
-pkgver=1.0.8
-pkgrel=4
+pkgver=1.0.9
+pkgrel=1
 pkgdesc='Utilities for "soft" global scope in interactive Julia environments'
 arch=(any)
 url=https://github.com/stevengj/SoftGlobalScope.jl
 license=(MIT)
 depends=(julia julia-compat julia-loadpath)
+makedepends=(julia-distrohelper)
 
-_commit=a310c7f9fd217fb3550aef0c66fc5fd3cf42c8fb
+_commit=b071e24ebb51955824b85795becead12ee04f6c4
 source=($pkgname-$pkgver.tar.gz::https://github.com/stevengj/$_pkgname.jl/archive/v$pkgver.tar.gz
-        $pkgname-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
-        $pkgname-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
-        $pkgname-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
-sha256sums=('6ae2150fb04756cc1b353bcfd03135e20f2d0511cb9178a9398a39ef8c6d3f47'
+        $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
+        $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
+        $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
+sha256sums=('05ace5b7d6c12cf4512a8068dacb4d4c3fa9404802508605b3fc0921e2be99b1'
             'a6e467671ff0ee20352aecc1938c4a947b21786cbc18d07fbc9b66a3d8e59a5b'
             'bd88b87dce5f48dd61010d56f75d2cf8aa73ddfca287c5fdc6f71a09c2bd9ca4'
-            'fd4f0057813c6764d78a83816574e9b4a46179c0e53850f78738591360c1d8ae')
+            'f1cfb6b2d54c6e17aebfe7ab076eb2026aa5e878ab541814c6a8dd2d8cd32372')
 
 _slug() {
-	local uuid=$(grep uuid $pkgname-Package.toml | cut -f3 -d' ')
-	local sha1=$(grep \"$pkgver\" -a1 $pkgname-Versions.toml | tail -n1 | cut -f3 -d' ')
-	julia -e "u = Base.UUID($uuid);
-	          s = Base.SHA1(hex2bytes($sha1));
-	          println(Base.version_slug(u,s));"
+	dh_julia slug "$srcdir"/"$pkgname"-$pkgver-{Package,Versions}.toml
 }
 
-_deps() {
-	julia -e "using Pkg
-
-	          alldeps = Pkg.TOML.parsefile(\"$srcdir/$pkgname-Deps.toml\")
-	          version = VersionNumber(\"$pkgver\")
-	          majmin  = VersionNumber(\"${pkgver%.*}\")
-	          deps = Dict{String,Any}()
-
-	          for (key, value) in alldeps
-	            vers = split(key, \"-\")
-	            lower = VersionNumber(vers[1])
-	            if length(vers) == 2
-	              upper = VersionNumber(vers[2])
-	              if (majmin  >= lower && majmin  <= upper) ||
-	                 (version >= lower && version <= upper)
-	                merge!(deps, value)
-	              end
-	            elseif length(vers) == 1
-	              if majmin == lower || version == lower
-	                merge!(deps, value)
-	              end
-	            end
-	          end
-
-	          Pkg.TOML.print(deps)"
+_project() {
+	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml
 }
 
 prepare() {
 	# Generate a Project.toml from Registry metadata
-	rm -f Project.toml && touch Project.toml
-	cat $pkgname-Package.toml       >> Project.toml
-	echo -e "version = \"$pkgver\"" >> Project.toml
-	echo -e "\n[deps]"              >> Project.toml
-	echo -e "$(_deps)" | sort       >> Project.toml
+	rm -f Project.toml && _project
 }
 
 package() {

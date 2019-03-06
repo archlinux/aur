@@ -1,21 +1,22 @@
 pkgbase = julia-softglobalscope
 	pkgdesc = Utilities for "soft" global scope in interactive Julia environments
-	pkgver = 1.0.8
-	pkgrel = 4
+	pkgver = 1.0.9
+	pkgrel = 1
 	url = https://github.com/stevengj/SoftGlobalScope.jl
 	arch = any
 	license = MIT
+	makedepends = julia-distrohelper
 	depends = julia
 	depends = julia-compat
 	depends = julia-loadpath
-	source = julia-softglobalscope-1.0.8.tar.gz::https://github.com/stevengj/SoftGlobalScope.jl/archive/v1.0.8.tar.gz
-	source = julia-softglobalscope-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/a310c7f9fd217fb3550aef0c66fc5fd3cf42c8fb/S/SoftGlobalScope/Deps.toml
-	source = julia-softglobalscope-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/a310c7f9fd217fb3550aef0c66fc5fd3cf42c8fb/S/SoftGlobalScope/Package.toml
-	source = julia-softglobalscope-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/a310c7f9fd217fb3550aef0c66fc5fd3cf42c8fb/S/SoftGlobalScope/Versions.toml
-	sha256sums = 6ae2150fb04756cc1b353bcfd03135e20f2d0511cb9178a9398a39ef8c6d3f47
+	source = julia-softglobalscope-1.0.9.tar.gz::https://github.com/stevengj/SoftGlobalScope.jl/archive/v1.0.9.tar.gz
+	source = julia-softglobalscope-1.0.9-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/b071e24ebb51955824b85795becead12ee04f6c4/S/SoftGlobalScope/Deps.toml
+	source = julia-softglobalscope-1.0.9-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/b071e24ebb51955824b85795becead12ee04f6c4/S/SoftGlobalScope/Package.toml
+	source = julia-softglobalscope-1.0.9-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/b071e24ebb51955824b85795becead12ee04f6c4/S/SoftGlobalScope/Versions.toml
+	sha256sums = 05ace5b7d6c12cf4512a8068dacb4d4c3fa9404802508605b3fc0921e2be99b1
 	sha256sums = a6e467671ff0ee20352aecc1938c4a947b21786cbc18d07fbc9b66a3d8e59a5b
 	sha256sums = bd88b87dce5f48dd61010d56f75d2cf8aa73ddfca287c5fdc6f71a09c2bd9ca4
-	sha256sums = fd4f0057813c6764d78a83816574e9b4a46179c0e53850f78738591360c1d8ae
+	sha256sums = f1cfb6b2d54c6e17aebfe7ab076eb2026aa5e878ab541814c6a8dd2d8cd32372
 
 pkgname = julia-softglobalscope
 
