@@ -1,20 +1,21 @@
 pkgbase = julia-compat
 	pkgdesc = Compat Package for Julia.
-	pkgver = 1.4.0
-	pkgrel = 5
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/JuliaLang/Compat.jl
 	arch = any
 	license = MIT
+	makedepends = julia-distrohelper
 	depends = julia
 	depends = julia-loadpath
-	source = julia-compat-1.4.0.tar.gz::https://github.com/JuliaLang/Compat.jl/archive/v1.4.0.tar.gz
-	source = julia-compat-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/0a4458707f81e5cf3885e6162f22a0d28d819f5b/C/Compat/Deps.toml
-	source = julia-compat-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/0a4458707f81e5cf3885e6162f22a0d28d819f5b/C/Compat/Package.toml
-	source = julia-compat-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/0a4458707f81e5cf3885e6162f22a0d28d819f5b/C/Compat/Versions.toml
-	sha256sums = 64913d7dbde5b5a64608a1a52dc127dd58c9089dfa68fa4d3584a0a38ac50e5e
-	sha256sums = f3413bf543e8066a5439a120c44e32ef4fb6793ecaabb9c61464a529dc168e58
+	source = julia-compat-2.0.0.tar.gz::https://github.com/JuliaLang/Compat.jl/archive/v2.0.0.tar.gz
+	source = julia-compat-2.0.0-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/0bf9b9c8de8ed0e08cbd44293d93ba972b45fd95/C/Compat/Deps.toml
+	source = julia-compat-2.0.0-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/0bf9b9c8de8ed0e08cbd44293d93ba972b45fd95/C/Compat/Package.toml
+	source = julia-compat-2.0.0-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/0bf9b9c8de8ed0e08cbd44293d93ba972b45fd95/C/Compat/Versions.toml
+	sha256sums = 12c04a618bc13a35e393b32345a4d0aff2c31fde43e1cefaebc94265ea541935
+	sha256sums = be69ba677e6f9945acf5a3ee4a363667d49f1267979383905f6fb253fab4059c
 	sha256sums = 635b69201accd41cbf62491638b8e880370a473dd6ecf438fcfc1a80211b3b6c
-	sha256sums = fb4b9fbfdd0bb4f846603ae206a1e73c5266c81c6be3a36a6db3525604abe5c3
+	sha256sums = 238b556761393c444fe896e7ef60141f087e4473af140b6cccf62fb8b44c72d1
 
 pkgname = julia-compat
 
