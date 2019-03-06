@@ -2,6 +2,7 @@
 /zcash/
 /src/
 /*.tar.gz
+/*.tgz
 /*.xz
 /*.swp
 /concourse-fly*
