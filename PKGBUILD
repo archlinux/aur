@@ -3,7 +3,7 @@
 
 pkgbase=litecoin-git
 pkgname=('litecoin-daemon-git' 'litecoin-cli-git' 'litecoin-qt-git' 'litecoin-tx-git')
-pkgver=0.16.3+6+g82cacfef8
+pkgver=0.17.1rc1+0+gf22cd116c
 pkgrel=1
 arch=('x86_64')
 url="http://www.litecoin.org/"
@@ -44,15 +44,12 @@ package_litecoin-qt-git() {
   provides=(litecoin-qt)
 
   cd "$pkgbase"
-  install -Dm755 src/qt/litecoin-qt "$pkgdir"/usr/bin/litecoin-qt
-  install -Dm644 "$srcdir"/litecoin-qt.desktop \
-    "$pkgdir"/usr/share/applications/litecoin.desktop
-  install -Dm644 share/pixmaps/bitcoin128.png \
-    "$pkgdir"/usr/share/pixmaps/litecoin128.png
-  install -Dm644 doc/man/litecoin-qt.1 \
-    "$pkgdir"/usr/share/man/man1/litecoin-qt.1
+  install -Dt "$pkgdir/usr/bin"                     -m755 src/qt/litecoin-qt
+  install -Dt "$pkgdir/usr/share/man/man1"          -m644 doc/man/litecoin-qt.1
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 COPYING
+  install -Dt "$pkgdir/usr/share/applications"      -m644 ../litecoin-qt.desktop
 
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 share/pixmaps/bitcoin128.png "$pkgdir"/usr/share/pixmaps/litecoin128.png
 }
 
 package_litecoin-daemon-git() {
@@ -62,16 +59,13 @@ package_litecoin-daemon-git() {
   provides=(litecoin-daemon)
 
   cd "$pkgbase"
-  install -Dm755 src/litecoind "$pkgdir"/usr/bin/litecoind
-  install -Dm644 contrib/debian/examples/bitcoin.conf \
-    "$pkgdir/usr/share/doc/$pkgname/examples/litecoin.conf"
-  install -Dm644 doc/man/litecoind.1 \
-    "$pkgdir"/usr/share/man/man1/litecoind.1
-  install -Dm644 "$srcdir/litecoind.service" \
-    "$pkgdir/usr/lib/systemd/system/litecoind.service"
-  install -Dm644 "$srcdir/litecoin.sysusers" \
-    "$pkgdir/usr/lib/sysusers.d/litecoin.conf"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dt "$pkgdir/usr/bin"                         -m755 src/litecoind
+  install -Dt "$pkgdir/usr/share/man/man1"              -m644 doc/man/litecoind.1
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname"     -m644 COPYING
+  install -Dt "$pkgdir/usr/share/doc/$pkgname/examples" -m644 share/examples/litecoin.conf
+  install -Dt "$pkgdir/usr/lib/systemd/system"          -m644 ../litecoind.service
+
+  install -Dm644 ../litecoin.sysusers "$pkgdir"/usr/lib/sysusers.d/litecoin.conf
 }
 
 package_litecoin-cli-git() {
@@ -81,10 +75,9 @@ package_litecoin-cli-git() {
   provides=(litecoin-cli)
 
   cd "$pkgbase"
-  install -Dm755 src/litecoin-cli "$pkgdir"/usr/bin/litecoin-cli
-  install -Dm644 doc/man/litecoin-cli.1 \
-    "$pkgdir"/usr/share/man/man1/litecoin-cli.1
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dt "$pkgdir/usr/bin/litecoin-cli"        -m755 src/litecoin-cli
+  install -Dt "$pkgdir/usr/share/man/man1"          -m644 doc/man/litecoin-cli.1
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 COPYING
 }
 
 package_litecoin-tx-git() {
@@ -94,8 +87,8 @@ package_litecoin-tx-git() {
   provides=(litecoin-tx)
 
   cd "$pkgbase"
-  install -Dm755 src/litecoin-tx "$pkgdir"/usr/bin/litecoin-tx
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dt "$pkgdir/usr/bin"                     -m755 src/litecoin-tx
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 COPYING
 }
 
 # vim:set ts=2 sw=2 et:

@@ -1,5 +1,5 @@
 pkgbase = litecoin-git
-	pkgver = 0.16.3+6+g82cacfef8
+	pkgver = 0.17.1rc1+0+gf22cd116c
 	pkgrel = 1
 	url = http://www.litecoin.org/
 	arch = x86_64
