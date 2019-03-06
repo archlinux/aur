@@ -1,5 +1,6 @@
 pkgname=libbtbb
-pkgver=2018.08.R1
+pkgver=2018.12.R1
+_pkgver=2018-12-R1
 pkgrel=1
 pkgdesc='Bluetooth baseband decoding library'
 url='https://github.com/greatscottgadgets/libbtbb'
@@ -7,11 +8,11 @@ arch=('x86_64' 'i686')
 license=('GPL2')
 makedepends=(cmake)
 depends=('python2')
-source=("https://github.com/greatscottgadgets/libbtbb/archive/2018-08-R1.tar.gz")
-md5sums=('58012533bc30107864a5209d7ccf800d')
+source=("https://github.com/greatscottgadgets/libbtbb/archive/${_pkgver}.tar.gz")
+sha256sums=('0eb2b72e1c1131538206f1e3176e2cf1048751fe7dc665eef1e7429d1f2e6225')
 
 build() {
-  cd "${srcdir}/${pkgname}-2018-08-R1/"
+  cd "${srcdir}/${pkgname}-${_pkgver}/"
   sed -i -r -e "s#@CMAKE_INSTALL_PREFIX@#/usr#" lib/libbtbb.pc.in
   mkdir -p build
   cd build
@@ -23,7 +24,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-2018-08-R1/build/"
+  cd "${srcdir}/${pkgname}-${_pkgver}/build/"
   make install
   cd ../python/pcaptools
   mkdir -p ${pkgdir}/usr/bin
