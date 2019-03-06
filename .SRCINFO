@@ -9,6 +9,7 @@ pkgbase = adbfs-rootless-git
 	makedepends = git
 	depends = fuse
 	depends = android-tools
+	conflicts = adbfs-git
 	source = git+https://github.com/spion/adbfs-rootless
 	sha1sums = SKIP
 

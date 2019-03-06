@@ -9,8 +9,9 @@ pkgdesc='fuse filesystem over adb tool for android devices, no device root requi
 arch=(i686 x86_64)
 url='https://github.com/spion/adbfs-rootless'
 license=(BSD)
-depends=(fuse android-tools)
-makedepends=(git)
+depends=('fuse' 'android-tools')
+conflicts=('adbfs-git')
+makedepends=('git')
 source=(git+https://github.com/spion/adbfs-rootless)
 sha1sums=('SKIP')
 
