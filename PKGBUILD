@@ -1,12 +1,10 @@
-# Mantainer: Sean Anderson <seanga2@gamil.com>
+# Mantainer: Josh Hoffer <hoffer dot joshua at gmail dot com>
 pkgname=proton
 # Upstream version
-_pkgver='3.16beta-20181031'
-# Version for arch
-#pkgver="${_pkgver//_/-}"
-pkgver=3.16_20181031_beta
-pkgrel=2
-epoch=
+_pkgver='3.16-7'
+# Arch - no hyphens
+pkgver=3.16.7
+pkgrel=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 arch=('x86_64')
 url="https://github.com/ValveSoftware/Proton/"
@@ -20,18 +18,7 @@ depends=(
 makedepends=(
 	'vulkan-headers'
 )
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("https://github.com/ValveSoftware/Proton/archive/$pkgname-$_pkgver.tar.gz")
-noextract=()
-md5sums=('aa3ad16ebfc99296a2a280c58a692e9c')
 
 prepare() {
 	cd "Proton-$pkgname-$_pkgver"
@@ -109,3 +96,5 @@ package() {
 	install -d $pkgdir/usr/lib/wine/fakedlls
 	install -m644 build/vrclient.win64/vrclient_x64/vrclient_x64.dll.fake $pkgdir/usr/lib/wine/fakedlls/vrclient_x64.dll
 }
+
+md5sums=('17495d6498f60496862f8f3077e9c998')
