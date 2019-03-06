@@ -1,33 +1,29 @@
-# $Id$
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Leonidas <marek@xivilization.net>
 
 pkgname=yap
-pkgver=6.2.2
-pkgrel=5
+pkgver=6.3.3
+pkgrel=1
 pkgdesc='A high-performance Prolog compiler'
-url='http://www.dcc.fc.up.pt/~vsc/Yap/'
+url='http://www.dcc.fc.up.pt/~vsc/yap/'
 license=('PerlArtistic')
 arch=('i686' 'x86_64')
 depends=('gmp' 'unixodbc' 'libmariadbclient')
 #makedepends=('texi2html' 'texinfo' 'jdk7-openjdk' 'texlive-plainextra')
 #optdepends=('java-runtime-headless: Java Interface Library JPL')
-source=("http://www.dcc.fc.up.pt/~vsc/Yap/${pkgname}-${pkgver}.tar.gz"
-        "friend-function.patch")
-md5sums=('95eaa54978e4811ff6e504e7dca9e835'
-         '5b5884a62e8cd9482408565576b872f8')
+#source=("http://www.dcc.fc.up.pt/~vsc/yap/${pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/vscosta/yap-6.3/archive/yap-$pkgver.tar.gz")
+md5sums=('6d9d2e5617f53b077c8f7da0ada2731b')
 
 # issues building java bindings and info pages?
 # I leave those up to you to fix, dear reader
 
-# gcc 5 patch
-# http://pkgs.fedoraproject.org/cgit/yap.git/plain/yap-6.2.2-Friend-function-template-defined-in-a-class-cannot-b.patch
-
 build() {
-  cd ${pkgname}-${pkgver}
+  cd "yap-6.3-yap-$pkgver"
 
-  patch -p1 -i ../friend-function.patch
+  #patch -p1 -i ../friend-function.patch
 
+  export CPPFLAGS+=" -fpermissive"
   ./configure \
     --prefix=/usr \
     --enable-threads \
@@ -42,7 +38,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "yap-6.3-yap-$pkgver"
 
   make DESTDIR="${pkgdir}" install
   #make DESTDIR="${pkgdir}" install_docs
