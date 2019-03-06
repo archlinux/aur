@@ -5,7 +5,7 @@
 # Based on python2-pyo by amiguet
 
 pkgname=python-pyo
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A Python module written in C to help digital signal processing script creation."
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ provides=("pyo=$pkgver" "python-pyo=$pkgver")
 conflicts=('pyo')
 source=("http://ajaxsoundstudio.com/downloads/pyo_$pkgver-src.tar.bz2"
         "http://ajaxsoundstudio.com/downloads/pyo_$pkgver-doc.tar.bz2")
-md5sums=('de7659eba26a6c93c5b0a8d86459857a'
-         '33a773b02bfe077bf00f854547f2e9c2')
+md5sums=('f3ba1c4b9330bca4a241a4caabf42a67'
+         '0ee8263a533e9ba5619cb72397d5d7ba')
 
 export PYTHON=python
 
