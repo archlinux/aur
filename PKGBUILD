@@ -2,7 +2,6 @@
 # Contributors: Thynix
 
 _fred=#tag=build01483
-
 _wot=#branch=next
 _keyutils=#tag=v5026
 _upnp=#tag=10007
@@ -48,12 +47,16 @@ sha256sums=('SKIP'
             '609705bafc02048f366711f470bebaf2d4e8c5fa1285b1611719826aef755107')
 
 pkgver() {
-    cd "$srcdir/fred"
-    echo "${_pkgver}.$(git describe |sed 's/build0//;s/-/./g')"
+    cd "fred"
+    echo "${_pkgver}.$(git describe --abbrev=0 |sed 's/build0//;s/-/./g')"
 }
 
 prepare() {
-    cd "$srcdir/fred"
+    cd "fred"
+
+    # Gradle 4.10.3 - Allow building with java 10+
+    git fetch https://github.com/skydrome/fred.git gradle-4.10.3
+    git cherry-pick eaee80908f63051e729b8579030d193efaa4264d
 
     ln -sf "$srcdir/gradle.properties" .
     sed -i "$srcdir/plugin-UPnP/build.xml" \
@@ -63,7 +66,7 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/fred"
+    cd "fred"
 
     export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/default}"
     export GRADLE_USER_HOME="$srcdir"
@@ -93,7 +96,7 @@ build_plugins() {
 }
 
 check() {
-    cd "$srcdir/fred"
+    cd "fred"
 
     # these tests use alot of memory and can cause OOM's
     rm -f test/freenet/client/async/{*Storage,ClientRequestSelector}Test.java
@@ -101,7 +104,7 @@ check() {
 }
 
 package() {
-    cd "$srcdir/fred"
+    cd "fred"
 
     # delete bundled wrapper
     zip -qd build/output/freenet-ext-29.jar "org/tanukisoftware/*"
