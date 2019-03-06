@@ -2,7 +2,7 @@
 # TODO: fall back to /builds/old in case the build artifact disappears
 
 pkgname=bombsquad
-pkgver=1.4.146
+pkgver=1.4.147
 pkgrel=1
 pkgdesc='An explosive arcade-style party game'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   'bombsquad.desktop'
 )
 sha256sums=(
-  'a19f9880d9674e672708ba23095a2499390396104155a0f6ed9eb95be67bcf17'
+  '9cbbada70e2092296facc6e9d69100e834a04a526e8fb1cd9ed30d6136418358'
   '850f8a66eb045ce833f8d7dae4533f69b629ac648bd205d98bf5f851339d4515'
   '900ffdf250eb2c59a2944703ccab9b69e58b5cdd7809f8349f6291db0301935c'
 )
