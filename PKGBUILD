@@ -4,7 +4,7 @@ pkgname=virtualbox-bin-5
 pkgver=5.2.26
 _build=128414
 _rev=75085
-pkgrel=1
+pkgrel=2
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version 5)'
 arch=('x86_64')
 url='https://www.virtualbox.org/'
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('dkms' 'fontconfig' 'gcc' 'libgl' 'libidl2' 'libxcursor' 'libxinerama'
          'libxmu' 'python' 'sdl')
 makedepends=('linux-headers')
-optdepends=('virtualbox-ext-oracle: for Oracle extensions'
+optdepends=('virtualbox-ext-oracle-5: for Oracle extensions'
             'linux-headers: build the module for Arch kernel'
             'linux-lts-headers: build the module for LTS Arch kernel')
 provides=("virtualbox=${pkgver}" 'virtualbox-sdk' 'VIRTUALBOX-HOST-MODULES'
