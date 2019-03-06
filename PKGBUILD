@@ -60,10 +60,10 @@ _unwanted_bundled_libs=(
 )
 depends+=(${_system_libs[@]})
 
-_buildkit_cli="$srcdir/$pkgname-$pkgver-$pkgrel/run_buildkit_cli.py"
-_config_bundle="$srcdir/$pkgname-$pkgver-$pkgrel/config_bundles/archlinux"
-
 prepare() {
+  local _buildkit_cli="$srcdir/$pkgname-$pkgver-$pkgrel/run_buildkit_cli.py"
+  local _config_bundle="$srcdir/$pkgname-$pkgver-$pkgrel/config_bundles/archlinux"
+
   cd "$srcdir/chromium-$pkgver"
 
   msg2 'Pruning binaries'
@@ -112,6 +112,9 @@ build() {
   export NM=llvm-nm
 
   mkdir -p out/Default
+
+  local _buildkit_cli="$srcdir/$pkgname-$pkgver-$pkgrel/run_buildkit_cli.py"
+  local _config_bundle="$srcdir/$pkgname-$pkgver-$pkgrel/config_bundles/archlinux"
 
   python "$_buildkit_cli" gnargs print -b "$_config_bundle" \
     > "$srcdir/chromium-$pkgver/out/Default/args.gn"
