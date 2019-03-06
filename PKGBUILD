@@ -1,4 +1,6 @@
-# Contributor: 100best
+# Maintainer: 100best
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
 _pkgname=epiphany
 pkgname=$_pkgname-unstable
