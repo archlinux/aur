@@ -3,7 +3,7 @@
 
 pkgname=epiphany-pantheon
 pkgver=3.28.0.1+1ubuntu1+r21.dbc305d50
-pkgrel=4
+pkgrel=5
 pkgdesc="GNOME web browser based on the WebKit rendering engine (with elementary OS patches)"
 url="https://gitlab.gnome.org/GNOME/epiphany/"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=("git+https://github.com/elementary/os-patches.git#branch=epiphany-browse
 sha256sums=('SKIP'
             'cf90f3ea93fff8c61f82da40c8d07d5db2f33dc9a0d91408a6ffc4142bbedd20'
             'ce1ac321d7bf9d88638634a141dfcb99119fc59ee44c4892e0874608e85006ba'
-            '1f692442846c635085ecf746f8018e87de5bba73c0c6e22730c5bce56fb56e1b')
+            'fdd161fa242ebe39e198a19f2eced9bdc9870601e91a11643e5bebafa87ba1f8')
 
 pkgver() {
     cd "os-patches"
