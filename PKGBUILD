@@ -3,7 +3,7 @@
 _pkgname=peldd
 pkgname=$_pkgname-git
 pkgver=r19.5b07cb3
-pkgrel=2
+pkgrel=3
 pkgdesc='A tool for listing shared object dependencies of a portable executable (PE)'
 arch=('x86_64')
 url="https://github.com/gsauthof/pe-util"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('boost')
 makedepends=('cmake' 'git')
 source=("$_pkgname::git+https://github.com/gsauthof/pe-util"
-        "git://github.com/trailofbits/pe-parse"
+        "git+https://github.com/trailofbits/pe-parse"
         "0001-Fix-search-paths-for-Arch.patch")
 md5sums=('SKIP'
          'SKIP'
