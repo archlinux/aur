@@ -1,0 +1,13 @@
+post_install() {
+ echo ""
+ echo "Configure git to use the rebase tool:"
+ echo "git config --global sequence.editor interactive-rebase-tool"
+ echo ""
+}
+
+post_remove() {
+  echo ""
+  echo "You have to remove the tool from the git configuration:"
+  echo "git config --global --unset sequence.editor"
+  echo ""
+}
