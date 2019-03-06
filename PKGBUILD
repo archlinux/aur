@@ -2,17 +2,16 @@
 
 _plug=vsutil
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r5.e756136
+pkgver=r26.90c602b
 pkgrel=1
 pkgdesc='A collection of general purpose Vapoursynth functions to be reused in modules/scripts'
 arch=('x86_64')
 url='https://github.com/Irrational-Encoding-Wizardry/vsutil'
 license=('MIT')
-depends=('vapoursynth'
-         'python')
+depends=('vapoursynth')
 makedepends=('git')
-provides=("vapoursynth-plugin-${_plug}-git")
-conflicts=("vapoursynth-plugin-${_plug}-git")
+provides=("vapoursynth-plugin-${_plug}")
+conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vsutil.git")
 sha256sums=('SKIP')
 

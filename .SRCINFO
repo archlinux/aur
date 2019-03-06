@@ -1,15 +1,14 @@
 pkgbase = vapoursynth-plugin-vsutil-git
 	pkgdesc = A collection of general purpose Vapoursynth functions to be reused in modules/scripts
-	pkgver = r5.e756136
+	pkgver = r26.90c602b
 	pkgrel = 1
 	url = https://github.com/Irrational-Encoding-Wizardry/vsutil
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = vapoursynth
-	depends = python
-	provides = vapoursynth-plugin-vsutil-git
-	conflicts = vapoursynth-plugin-vsutil-git
+	provides = vapoursynth-plugin-vsutil
+	conflicts = vapoursynth-plugin-vsutil
 	source = vsutil::git+https://github.com/Irrational-Encoding-Wizardry/vsutil.git
 	sha256sums = SKIP
 
