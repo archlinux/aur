@@ -2,7 +2,7 @@
 # Based on wingide (pro) by: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=wingide-101
-pkgver=6.1.4
+pkgver=6.1.5
 pkgrel=1
 pkgdesc="Wing 101 is a very simple free Python IDE designed for teaching beginning programmers. It omits most features found in Wing Pro."
 arch=(x86_64)
@@ -13,7 +13,7 @@ install=${pkgname}.install
 
 source=(https://wingware.com/pub/wingide-101/$pkgver/wingide-101-$pkgver-$pkgrel-x86_64-linux.tar.bz2)
 
-sha256sums=('debbc72a77b623163b2d3f3724390490c796b066d28a96c13a50cb295ffe5349')
+sha256sums=('813393827ee59f90c021ac61e076f77a4b4ed0318d1f26cb72f2edc79e2ec331')
 
 # prepare() {
 # }
