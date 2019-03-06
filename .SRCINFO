@@ -1,6 +1,6 @@
 pkgbase = beamerpresenter
 	pkgdesc = Simple dual screen pdf presentation software
-	pkgver = r40.cc3a720
+	pkgver = r47.136a833
 	pkgrel = 1
 	url = https://github.com/stiglers-eponym/BeamerPresenter
 	arch = x86_64
