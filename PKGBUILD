@@ -3,24 +3,18 @@
 # Contributor: carstene1ns <arch carsten-teibes de>
 
 pkgname=lib32-sdl2_ttf
-pkgver=2.0.14
-pkgrel=3
+pkgver=2.0.15
+pkgrel=1
 pkgdesc='Library that allows you to use TrueType fonts in your SDL applications (Version 2) (32-bit)'
 url='https://www.libsdl.org/projects/SDL_ttf'
 arch=('x86_64')
 license=('MIT')
 depends=('lib32-sdl2' 'lib32-freetype2')
-source=(https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-${pkgver}.tar.gz
-        freetype-pkgconfig.patch)
-sha512sums=('4db817573fd216e26180f4c401cc869ce407589a461032fd7167dc612d35e038cca1ab67be7909b6b49c741581a68125ab46362ad8e3c0a2cdd39624ad847099'
-            'abb3fd400c5d44789b891bad53124ca135ea3125affb95621623ab22fc43f5fbfeb79c63a97648936faf4698180837f76ca57143ee401610106d08741610e937')
+source=(https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-${pkgver}.tar.gz)
+sha512sums=('30d685932c3dd6f2c94e2778357a5c502f0421374293d7102a64d92f9c7861229bf36bedf51c1a698b296a58c858ca442d97afb908b7df1592fc8d4f8ae8ddfd')
 
 prepare() {
   cd SDL2_ttf-${pkgver}
-
-  # Fix build with FreeType 2.9.1
-  patch -Np1 -i ../freetype-pkgconfig.patch
-
   touch NEWS README AUTHORS ChangeLog
   autoreconf -vi
 }
