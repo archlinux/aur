@@ -25,11 +25,11 @@ group=('retrosmart')
 #changelog=Changelog
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${name}-${pkgver}"
     make
     }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${name}-${pkgver}"
     make install DESTDIR=$pkgdir
 }
