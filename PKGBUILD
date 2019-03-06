@@ -4,7 +4,7 @@
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 
 pkgname=popcorntime-git
-pkgver=0.3.10+6415+737b599b
+pkgver=0.3.10+6429+1537575b
 pkgrel=1
 pkgdesc='BitTorrent client with integrated media player (git)'
 arch=(i686 x86_64)
@@ -31,9 +31,6 @@ build() {
   yarn install --ignore-engines
   yarn build
 }
-
-[ "$CARCH" = i686 ] && _platform=linux32
-[ "$CARCH" = x86_64 ] && _platform=linux64
 
 package() {
   install -Dm 644 popcorntime.desktop "$pkgdir"/usr/share/applications/popcorntime.desktop
