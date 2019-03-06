@@ -4,13 +4,13 @@
 
 pkgname=code-git
 pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - git latest'
-pkgver=1.16.0.r22053.g4fe1cdc4df
+pkgver=1.16.0.r23741.g6da595150d
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/Microsoft/vscode'
 license=('MIT')
-depends=('electron' 'libsecret' 'libxkbfile')
-makedepends=('npm' 'gulp' 'python' 'python2' 'git' 'yarn' 'nodejs-lts-carbon')
+depends=('electron' 'libsecret' 'libxkbfile' 'ripgrep')
+makedepends=('npm' 'gulp' 'python2' 'git' 'yarn' 'nodejs-lts-carbon')
 conflicts=('visual-studio-code-git')
 provides=('visual-studio-code-git')
 
@@ -75,6 +75,11 @@ prepare() {
 }
 
 build() {
+    # https://github.com/mapbox/node-sqlite3/issues/1044
+    mkdir -p path
+    ln -sf /usr/bin/python2 path/python
+    export PATH="$PWD/path:$PATH"
+
     cd "${srcdir}/vscode"
 
     yarn install --arch=${_vscode_arch}
@@ -100,6 +105,10 @@ package() {
     cp -r --no-preserve=ownership --preserve=mode \
         VSCode-linux-${_vscode_arch}/resources/app/* \
         "${pkgdir}/usr/lib/${pkgname}"
+
+    # Replace statically included binary with system version
+    ln -sf /usr/bin/rg \
+            "${pkgdir}/usr/lib/${pkgname}/node_modules.asar.unpacked/vscode-ripgrep/bin/rg"
 
     # Put the startup script in /usr/bin
     install -Dm 755 ${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
