@@ -1,16 +1,16 @@
 # Maintainer: Karol Babioch <karol@babioch.de>
 
 pkgname=('powernet-mib')
-pkgver=4.2.6
+pkgver=4.2.8
 pkgrel=1
 pkgdesc='American Power Conversion PowerNet-MIB'
 arch=('any')
-url='http://www.apc.com/us/en/tools/download/index.cfm'
+url='https://www.apc.com'
 license=('custom')
 depends=('net-snmp')
-source=("ftp://ftp.apc.com/apc/public/software/pnetmib/mib/${pkgver//.}/powernet${pkgver//.}.mib"
+source=("powernet${pkgver//.}.mib::https://download.schneider-electric.com/files?p_Doc_Ref=APC_PowerNetMIB${pkgver//.}"
 	'LICENSE')
-sha256sums=('13bff21fd8c36b619623e7a7e4d819c4c601878395348b0918068f7f27a8ba3d'
+sha256sums=('1b6b3cb40ce9f29e4e3d0ab0dded54ae6715bbe104743a24569703641aacc7de'
             '6c8ff5c34d5380b489ae983e33cd7b08b62aadbd0cefeba2ffe18b0c7e1a096c')
 
 package() {
