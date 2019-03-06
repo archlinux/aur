@@ -1,6 +1,6 @@
 pkgbase = portunus
 	pkgdesc = aggregates all package managers under one tool
-	pkgver = 2.0
+	pkgver = 2.01
 	pkgrel = 1
 	url = https://github.com/andrei-pavel/portunus
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = portunus
 	makedepends = git
 	depends = unp
 	depends = yq
-	provides = curate-pkg
+	provides = portunus
 	source = git+https://github.com/andrei-pavel/portunus.git#branch=master
 	md5sums = SKIP
 

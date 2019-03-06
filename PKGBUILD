@@ -2,7 +2,7 @@
 _gitrepository='portunus'
 _gitbranch='master'
 pkgname='portunus'
-pkgver=2.0
+pkgver=2.01
 pkgrel=1
 pkgdesc='aggregates all package managers under one tool'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/andrei-pavel/portunus'
 license=('MIT')
 depends=('unp' 'yq')
 makedepends=('git')
-provides=('curate-pkg')
+provides=('portunus')
 source=("git+https://github.com/andrei-pavel/${_gitrepository}.git#branch=${_gitbranch}")
 md5sums=('SKIP')
 
