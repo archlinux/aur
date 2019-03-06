@@ -2,7 +2,7 @@
 
 pkgname='ghidra'
 pkgver=9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A software reverse engineering (SRE) framework created and maintained by the National Security Agency Research Directorate'
 arch=('x86_64')
 url='https://ghidra-sre.org/'
@@ -19,7 +19,7 @@ prepare() {
 	cd "${pkgname}_${pkgver}"
 
 	# Fix JDWP RCE issue in debug mode
-	sed -i 's/address=*/address=127.0.0.1/' support/launch.sh
+	sed -i 's/address=\*/address=127.0.0.1/' support/launch.sh
 }
 
 package() {
