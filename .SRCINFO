@@ -1,25 +1,25 @@
-pkgbase = bilibili-live-helper
-	pkgdesc = A Helper for Bilibili Live.
-	pkgver = 1.1.3
-	pkgrel = 3
-	url = https://github.com/pandaGao/bilibili-live-helper
+pkgbase = bilibili-live-helper-bin
+	pkgdesc = A Helper for Bilibili Live Broadcasting.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = http://bilibili.danmaku.live/
 	install = bilibili-live-helper.install
 	arch = x86_64
-	license = MIT
+	license = custom
 	depends = libxtst
-	depends = gtk2
+	depends = gtk3
 	depends = libxss
 	depends = nss
-	depends = gconf
 	depends = alsa-lib
 	provides = bilibili-live-helper
 	conflicts = bilibili-live-helper-git
-	source = http://s2.danmaku.live/bilibili-live-helper-linux-v1.1.3.zip
+	replaces = bilibili-live-helper
+	source = http://s2.danmaku.live/弹幕库-linux-v2.1.0.zip
 	source = Bilibili Live Helper.desktop
 	source = bilibili-live-helper.ico
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = bilibili-live-helper
+pkgname = bilibili-live-helper-bin
 

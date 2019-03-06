@@ -1,30 +1,33 @@
-# Maintainer: Jack Wu <origincoder@yahoo.com>
-pkgname=bilibili-live-helper
-entryname="Bilibili Live Helper"
-pkgver=1.1.3
-pkgrel=3
-pkgdesc="A Helper for Bilibili Live."
+# Maintainer: OriginCode <origincoder@yahoo.com>
+
+pkgname=bilibili-live-helper-bin
+_entryname="Bilibili Live Helper"
+_srcname="弹幕库"
+_pkgname=bilibili-live-helper
+pkgver=2.1.0
+pkgrel=1
+pkgdesc="A Helper for Bilibili Live Broadcasting."
 arch=('x86_64')
-url="https://github.com/pandaGao/bilibili-live-helper"
-install=${pkgname}.install
-license=('MIT')
-depends=('libxtst' 'gtk2' 'libxss' 'nss' 'gconf' 'alsa-lib')
-makedepends=()
+url="http://bilibili.danmaku.live/"
+install=$_pkgname.install
+license=('custom')
+depends=('libxtst' 'gtk3' 'libxss' 'nss' 'alsa-lib')
 conflicts=('bilibili-live-helper-git')
+replaces=('bilibili-live-helper')
 provides=('bilibili-live-helper')
-source=("http://s2.danmaku.live/${pkgname}-linux-v${pkgver}.zip" "${entryname}.desktop" "${pkgname}.ico")
+source=("http://s2.danmaku.live/$_srcname-linux-v$pkgver.zip" "$_entryname.desktop" "$_pkgname.ico")
 md5sums=('SKIP' 'SKIP' 'SKIP')
 
 build() {
-	cd ${srcdir}
-	mv Bilibili直播弹幕库-linux-x64 ${pkgname}
-	cd ${pkgname}
-	mv Bilibili直播弹幕库 bilibili-live-helper
+	cd $srcdir
+	mv $_srcname-linux-x64 $_pkgname
+	cd $_pkgname
+	mv $_srcname bilibili-live-helper
 }
 
 package() {
-	install -d "${pkgdir}/opt/${pkgname}"
-	cp -r ${srcdir}/${pkgname}/* "${pkgdir}/opt/${pkgname}"
-	install -Dm755 ./"${entryname}.desktop" "${pkgdir}/usr/share/applications/${entryname}.desktop"
-	install -Dm444 ./"${pkgname}.ico" "${pkgdir}/usr/share/icons/hicolor/128x128/${pkgname}.ico"
+	install -Dd "$pkgdir/opt/$_pkgname"
+	cp -r $srcdir/$_pkgname/* "$pkgdir/opt/$_pkgname"
+	install -Dm755 ./"$_entryname.desktop" "$pkgdir/usr/share/applications/$_entryname.desktop"
+	install -Dm444 ./"$_pkgname.ico" "$pkgdir/usr/share/icons/hicolor/128x128/$_pkgname.ico"
 }
