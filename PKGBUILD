@@ -1,57 +1,46 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-recode
-pkgver=3.6
-pkgrel=12
+pkgver=3.7.1
+pkgrel=1
 pkgdesc="Converts files between various character sets and usages (mingw-w64)"
 arch=('any')
-url="http://recode.progiciels-bpi.ca/index.html"
-license=('GPL' 'LGPL')
+url='https://github.com/rrthomas/recode'
+license=('GPL3' 'LGPL3')
 depends=('mingw-w64-crt' 'mingw-w64-gettext')
 options=('!strip' '!buildflags' 'staticlibs')
-makedepends=('mingw-w64-gcc')
-source=(recode-${pkgver}.tar.gz::"https://github.com/pinard/recode/tarball/v${pkgver}"
-        'http://archive.debian.org/debian/pool/main/r/recode/recode_3.6-17.diff.gz'
-        'recode-3.6-as-if.patch' 'recode-3.6-gettextfix.diff' 'autotools.patch' 'mingw.patch')
-md5sums=('f82e9a6ede9119268c13493c9add2809'
-         '3716ae269074e31add3d29387ff09438'
-         'fca7484ba332c8ad59eb02334883cd92'
-         'eb602e80a24b5448604bfebeacc55304'
-         '8680ae965cdcd26f0dea1b8f85c34226'
-         '515d43fe361a44f576fea310f85472ae')
+makedepends=('mingw-w64-gcc' 'mingw-w64-configure' 'python')
+source=("https://github.com/rrthomas/recode/releases/download/v${pkgver}/recode-${pkgver}.tar.gz"
+        "autotools.patch"
+        "help2man.patch")
+sha256sums=('da1195fce1d1c2887bc32108b4ef4ae09b7bcbe90e87f4f20390c20ca4832508'
+            '596e9f287935406b8d68f24ffe999ad3a15e3e81702505745f57b2b05e63b22f'
+            'ca789328432b01ebe066ca594ac611ca43bd19083ed499e88c4410b15cc8492a')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  cd ${srcdir}/pinard-Recode-2127b34
-  patch -Np1 -i ${srcdir}/recode-3.6-as-if.patch
-  patch -Np1 -i ${srcdir}/recode-3.6-gettextfix.diff
-  patch -Np1 -i ${srcdir}/recode_3.6-17.diff
-  patch -Np1 -i ${srcdir}/autotools.patch
-  patch -Np1 -i ${srcdir}/mingw.patch
-  sed -i '1i#include <stdlib.h>' src/argmatch.c
-  sed -i -e '/^AM_C_PROTOTYPES/d' -e '/^AUTOMAKE_OPTIONS.*ansi2knr/d' \
-  configure.in src/Makefile.am
-  rm -f acinclude.m4
+  cd ${srcdir}/recode-${pkgver}
+
   autoreconf -fi
   libtoolize
+
+  patch -Np1 -i ${srcdir}/autotools.patch
+  patch -Np1 -i ${srcdir}/help2man.patch
 }
 
 build() {
   for _arch in ${_architectures}; do
-    mkdir -p ${srcdir}/build-${_arch} && cd ${srcdir}/build-${_arch}
-    unset LDFLAGS CPPFLAGS
-    export ac_cv_func_malloc_0_nonnull=yes
-    export jm_cv_func_working_malloc=yes
-    export jm_cv_func_working_realloc=yes
-    ${srcdir}/pinard-Recode-2127b34/configure --prefix=/usr/${_arch} --host=${_arch} \
+    mkdir -p ${srcdir}/recode-${pkgver}/build-${_arch} && cd ${srcdir}/recode-${pkgver}/build-${_arch}
+    ${_arch}-configure \
       --mandir=/usr/${_arch}/share/man \
-      --infodir=/usr/${_arch}/share/info --without-included-gettext
-    make
+      --infodir=/usr/${_arch}/share/info \
+      --without-included-gettext
+    make -j1
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd ${srcdir}/build-${_arch}
+    cd ${srcdir}/recode-${pkgver}/build-${_arch}
     make DESTDIR="${pkgdir}" install
 
     rm -r "${pkgdir}/usr/${_arch}/share"

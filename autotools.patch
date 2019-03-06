@@ -1,17 +1,38 @@
---- pinard-Recode-2127b34/configure.in	2008-02-19 05:13:35.000000000 +0100
-+++ patched/configure.in	2014-01-01 18:42:41.561811995 +0100
-@@ -15,7 +15,7 @@
- AM_PROG_LIBTOOL
- 
- AC_ISC_POSIX
--AM_C_PROTOTYPES
-+#AM_C_PROTOTYPES
- AC_C_CONST
- AC_C_INLINE
- ad_AC_PROG_FLEX
-@@ -50,5 +50,13 @@
- LTLIBOBJS=`echo $LIBOBJS | sed 's/\.o /.lo /g;s/\.o$/.lo/'`
- AC_SUBST(LTLIBOBJS)
+diff -ruN recode-3.7/build-aux/ltmain.sh patched/build-aux/ltmain.sh
+--- recode-3.7/build-aux/ltmain.sh	2016-02-08 00:39:37.000000000 +0100
++++ patched/build-aux/ltmain.sh	2018-10-04 00:12:57.345230558 +0200
+@@ -7766,6 +7766,12 @@
+ 	    deplibs="$deplib $deplibs"
+ 	    continue
+ 	  fi
++          case $deplib in
++          *.dll.a)
++	    deplibs="$deplib $deplibs"
++	    continue
++          ;;
++          esac
+ 	  case $linkmode in
+ 	  lib)
+ 	    # Linking convenience modules into shared libraries is allowed,
+diff -ruN recode-3.7/configure patched/configure
+--- recode-3.7/configure	2018-01-30 21:56:07.000000000 +0100
++++ patched/configure	2018-10-03 22:55:29.800468024 +0200
+@@ -7725,7 +7725,8 @@
+   # Base MSYS/MinGW do not provide the 'file' command needed by
+   # func_win32_libid shell function, so use a weaker test based on 'objdump',
+   # unless we find 'file', for example because we are cross-compiling.
+-  if ( file / ) >/dev/null 2>&1; then
++  # func_win32_libid assumes BSD nm, so disallow it if using MS dumpbin.
++  if ( test "$lt_cv_nm_interface" = "BSD nm" && file / ) >/dev/null 2>&1; then
+     lt_cv_deplibs_check_method='file_magic ^x86 archive import|^x86 DLL'
+     lt_cv_file_magic_cmd='func_win32_libid'
+   else
+diff -ruN recode-3.7/configure.ac patched/configure.ac
+--- recode-3.7/configure.ac	2018-01-30 21:19:50.000000000 +0100
++++ patched/configure.ac	2018-10-03 22:51:03.225688695 +0200
+@@ -86,5 +86,13 @@
+ AM_GNU_GETTEXT(external)
+ AM_XGETTEXT_OPTION([--from-code=UTF-8])
  
 +LIBRECODE_LDFLAGS=""
 +case "$host_os" in mingw*)
@@ -21,25 +42,30 @@
 +AC_MSG_RESULT([$LIBRECODE_LDFLAGS])
 +AC_SUBST([LIBRECODE_LDFLAGS])
 +
- AC_OUTPUT(Makefile contrib/Makefile doc/Makefile i18n/Makefile lib/Makefile
- libiconv/Makefile m4/Makefile src/Makefile tests/Makefile tests/atconfig)
---- pinard-Recode-2127b34/src/Makefile.am	2008-02-19 05:13:35.000000000 +0100
-+++ patched/src/Makefile.am	2014-01-01 18:18:11.097703291 +0100
-@@ -48,7 +48,7 @@
- librecode_la_SOURCES = argmatch.c charname.c combine.c fr-charname.c \
- hash.c iconv.c libiconv.c localcharset.c merged.c names.c outer.c quotearg.c \
- recode.c request.c strip-pool.c task.c xmalloc.c $(C_STEPS)
+ AC_OUTPUT(Makefile contrib/Makefile doc/Makefile lib/Makefile
+           po/Makefile.in src/Makefile tests/Makefile tests/setup.py)
+diff -ruN recode-3.7/m4/libtool.m4 patched/m4/libtool.m4
+--- recode-3.7/m4/libtool.m4	2016-02-08 00:39:37.000000000 +0100
++++ patched/m4/libtool.m4	2018-10-03 22:55:28.410443103 +0200
+@@ -3480,7 +3480,8 @@
+   # Base MSYS/MinGW do not provide the 'file' command needed by
+   # func_win32_libid shell function, so use a weaker test based on 'objdump',
+   # unless we find 'file', for example because we are cross-compiling.
+-  if ( file / ) >/dev/null 2>&1; then
++  # func_win32_libid assumes BSD nm, so disallow it if using MS dumpbin.
++  if ( test "$lt_cv_nm_interface" = "BSD nm" && file / ) >/dev/null 2>&1; then
+     lt_cv_deplibs_check_method='file_magic ^x86 archive import|^x86 DLL'
+     lt_cv_file_magic_cmd='func_win32_libid'
+   else
+diff -ruN recode-3.7/src/Makefile.am patched/src/Makefile.am
+--- recode-3.7/src/Makefile.am	2018-01-30 20:18:23.000000000 +0100
++++ patched/src/Makefile.am	2018-10-03 22:51:03.225688695 +0200
+@@ -56,7 +56,7 @@
+ librecode_la_SOURCES = charname.c combine.c fr-charname.c iconv.c \
+ names.c outer.c recode.c request.c strip-pool.c task.c $(ALL_STEPS) \
+ $(include_HEADERS) $(noinst_HEADERS) $(H_STEPS)
 -librecode_la_LDFLAGS = -version-info 0:0:0
 +librecode_la_LDFLAGS = @LIBRECODE_LDFLAGS@ -version-info 0:0:0
+ librecode_la_LIBADD = ../lib/libgnu.la libmerged.la
  
- INCLUDES = -I.. -I$(srcdir) -I$(top_srcdir)/lib -I$(top_srcdir)/libiconv
- DEFS = -DLIBDIR=\"$(libdir)\" @DEFS@
-@@ -99,7 +99,7 @@
- 	grep -v '^# *line [0-9]' merged.tm2 > $(srcdir)/merged.c
- 	rm merged.tm1 merged.tm2
- 
--$(srcdir)/recode.1: recode
-+$(srcdir)/recode.1: recode$(EXEEXT)
- 	@if test -r $@ && test ! -w $@; then \
- 	  echo "WARNING: Page \`$@' read only, not updated"; \
- 	elif $(PERL) $(top_srcdir)/doc/help2man --output=$@ ./recode; then \
+ libmerged_la_SOURCES = merged.c

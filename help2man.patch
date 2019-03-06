@@ -1,0 +1,12 @@
+diff -ruN recode-3.7/src/Makefile.am patched/src/Makefile.am
+--- recode-3.7/src/Makefile.am	2018-10-04 00:47:09.733993844 +0200
++++ patched/src/Makefile.am	2018-10-04 00:45:21.051955465 +0200
+@@ -104,7 +104,7 @@
+ 	$(AM_V_GEN)if ( touch $@.w && rm -f $@.w; ) >/dev/null 2>&1; then \
+ 	  $(top_srcdir)/build-aux/missing --run $(HELP2MAN) \
+ 		--name="converts files between character sets" \
+-		--output=$@ ./recode; \
++		--output=$@ ./recode$(EXEEXT); \
+ 	fi
+ 
+ main.o: main.c ../config.status
