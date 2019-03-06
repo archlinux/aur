@@ -1,7 +1,7 @@
 pkgbase = gnome-chemistry-utils
 	pkgdesc = Gnome Chemistry Utilities (gcu). Includes gchempaint, a tool to draw molecules.
 	pkgver = 0.14.17
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nongnu.org/gchemutils/
 	install = gnome-chemistry-utils.install
 	arch = i686
@@ -20,6 +20,7 @@ pkgbase = gnome-chemistry-utils
 	depends = openbabel
 	depends = hicolor-icon-theme
 	depends = dconf
+	depends = chemical-mime-data
 	optdepends = yelp: Viewing help manuals
 	optdepends = gnumeric>1.12.0: gnumeric plugin
 	optdepends = gnome-doc-utils

@@ -3,7 +3,7 @@
 pkgname=gnome-chemistry-utils
 pkgver=0.14.17
 _majorver=$(echo ${pkgver}|cut -c1-4)
-pkgrel=1
+pkgrel=2
 pkgdesc="Gnome Chemistry Utilities (gcu). Includes gchempaint, a tool to draw molecules."
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/gchemutils/"
@@ -11,7 +11,7 @@ license=('GPL')
 
 provides=('gchempaint' 'gchemcalc' 'gcrystal' 'gchem3d' 'gchemtable' 'gspectrum')
 conflicts=('gnome-chemistry-utils-devel')
-depends=('bodr' 'libglade' 'goffice>=0.10.0' 'gtkglext' 'openbabel' 'hicolor-icon-theme' 'dconf')
+depends=('bodr' 'libglade' 'goffice>=0.10.0' 'gtkglext' 'openbabel' 'hicolor-icon-theme' 'dconf' 'chemical-mime-data')
 	##Already fulfilled dependencies:
 	#gconf required by goffice
 	#libgsf required by goffice
