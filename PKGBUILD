@@ -28,8 +28,8 @@ prepare() {
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  gradle build
-  gradle release
+  gradle --quiet build
+  gradle --quiet release
 }
 
 package(){
