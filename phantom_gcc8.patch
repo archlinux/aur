@@ -1,0 +1,621 @@
+From 08f70712056e399d047c6b5fac5b9d94218d6969 Mon Sep 17 00:00:00 2001
+From: archetype <burchakov.oleg@gmail.com>
+Date: Tue, 12 Feb 2019 12:22:46 +0300
+Subject: [PATCH 1/7] fix unnecessary parentheses warning
+
+---
+ pd/http/time.C | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pd/http/time.C b/pd/http/time.C
+index b17a2f5..a4f2b0e 100644
+--- a/pd/http/time.C
++++ b/pd/http/time.C
+@@ -8,11 +8,11 @@
+ 
+ namespace pd { namespace http {
+ 
+-static char const *(wnames[7]) = {
++static char const *wnames[7] = {
+ 	"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
+ };
+ 
+-static char const *(mnames[12]) = {
++static char const *mnames[12] = {
+ 	"Jan", "Feb", "Mar", "Apr", "May", "Jun",
+ 	"Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+ };
+
+From 6200fe21adaeeb42e9e4e804834a67d7a9f48133 Mon Sep 17 00:00:00 2001
+From: archetype <burchakov.oleg@gmail.com>
+Date: Tue, 12 Feb 2019 12:26:39 +0300
+Subject: [PATCH 2/7] fix uninitialized warning
+
+---
+ phantom/jemalloc/rb.h | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/phantom/jemalloc/rb.h b/phantom/jemalloc/rb.h
+index 3a2b53e..b892e64 100644
+--- a/phantom/jemalloc/rb.h
++++ b/phantom/jemalloc/rb.h
+@@ -88,6 +88,9 @@ struct {								\
+     (a_node)->a_field.rbn_right_red = (a_type *) (((uintptr_t) a_right)	\
+       | (((uintptr_t) (a_node)->a_field.rbn_right_red) & ((size_t)1)));	\
+ } while (0)
++#define	rbp_right_set_no_color(a_type, a_field, a_node, a_right) do {		\
++    (a_node)->a_field.rbn_right_red = (a_type *) (a_right);	\
++} while (0)
+ 
+ /* Color accessors. */
+ #define	rbp_red_get(a_type, a_field, a_node)				\
+@@ -380,7 +383,7 @@ struct {								\
+     int rbp_i_cmp = 0;							\
+     rbp_i_g = &(a_tree)->rbt_nil;					\
+     rbp_left_set(a_type, a_field, &rbp_i_s, (a_tree)->rbt_root);	\
+-    rbp_right_set(a_type, a_field, &rbp_i_s, &(a_tree)->rbt_nil);	\
++    rbp_right_set_no_color(a_type, a_field, &rbp_i_s, &(a_tree)->rbt_nil);	\
+     rbp_black_set(a_type, a_field, &rbp_i_s);				\
+     rbp_i_p = &rbp_i_s;							\
+     rbp_i_c = (a_tree)->rbt_root;					\
+@@ -464,7 +467,7 @@ struct {								\
+     a_type *rbp_r_p, *rbp_r_c, *rbp_r_xp, *rbp_r_t, *rbp_r_u;		\
+     int rbp_r_cmp;							\
+     rbp_left_set(a_type, a_field, &rbp_r_s, (a_tree)->rbt_root);	\
+-    rbp_right_set(a_type, a_field, &rbp_r_s, &(a_tree)->rbt_nil);	\
++    rbp_right_set_no_color(a_type, a_field, &rbp_r_s, &(a_tree)->rbt_nil);	\
+     rbp_black_set(a_type, a_field, &rbp_r_s);				\
+     rbp_r_p = &rbp_r_s;							\
+     rbp_r_c = (a_tree)->rbt_root;					\
+
+From d1567b7392f57ca6fba296437ca7e3906c57a2f5 Mon Sep 17 00:00:00 2001
+From: archetype <burchakov.oleg@gmail.com>
+Date: Tue, 12 Feb 2019 12:27:38 +0300
+Subject: [PATCH 3/7] fix class-memaccess warning
+
+---
+ pd/pi/pi_pro.C  | 2 +-
+ pd/pi/replace.C | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/pd/pi/pi_pro.C b/pd/pi/pi_pro.C
+index c5b77bf..1ae68bd 100644
+--- a/pd/pi/pi_pro.C
++++ b/pd/pi/pi_pro.C
+@@ -105,7 +105,7 @@ void pi_t::pro_t::put(pi_t *&ref, place_t &place) const throw() {
+ 		if(pi->bounds(&from, &to)) {
+ 			_size_t size = to - from;
+ 
+-			memcpy(place._pi, from, size * sizeof(pi_t));
++			memcpy(static_cast<void*>(place._pi), from, size * sizeof(pi_t));
+ 
+ 			(--ref)->setup(pi->type(), place._pi);
+ 			place._pi += size;
+diff --git a/pd/pi/replace.C b/pd/pi/replace.C
+index 045d479..482aac8 100644
+--- a/pd/pi/replace.C
++++ b/pd/pi/replace.C
+@@ -51,7 +51,7 @@ struct pi_t::replace_t {
+ 
+ 	inline void copy_head(pi_t const *dst_from) throw() {
+ 		memcpy(
+-			&res_root->value, &dst_root.value,
++			static_cast<void*>(&res_root->value), &dst_root.value,
+ 			(dst_from - &dst_root.value) * sizeof(pi_t)
+ 		);
+ 	}
+@@ -60,13 +60,13 @@ struct pi_t::replace_t {
+ 		pi_t const *dst_from, pi_t const *src_from, _size_t size
+ 	) throw() {
+ 		pi_t *res_from = __res(dst_from);
+-		memcpy(res_from, src_from, size * sizeof(pi_t));
++		memcpy(static_cast<void*>(res_from), src_from, size * sizeof(pi_t));
+ 	}
+ 
+ 	inline void copy_tail(pi_t const *dst_to) throw() {
+ 		pi_t *res_to = __res(dst_to) + delta;
+ 		_size_t size = dst_root.size - (dst_to - (pi_t const *)&dst_root);
+-		memcpy(res_to, dst_to, size * sizeof(pi_t));
++		memcpy(static_cast<void*>(res_to), dst_to, size * sizeof(pi_t));
+ 	}
+ };
+ 
+
+From 5d5b2e592dac48ebf98233e35b2ff39da492a690 Mon Sep 17 00:00:00 2001
+From: archetype <burchakov.oleg@gmail.com>
+Date: Tue, 12 Feb 2019 12:29:50 +0300
+Subject: [PATCH 4/7] fix implicit-fallthrough warning
+
+---
+ opts.mk | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/opts.mk b/opts.mk
+index 3cfcf27..10991f9 100644
+--- a/opts.mk
++++ b/opts.mk
+@@ -25,6 +25,13 @@ FIXINC ?= -isystem . -isystem /usr/include/pd/fixinclude
+ CPPFLAGS = \
+ 	$(FIXINC) -D_GNU_SOURCE=1 $(CPPDEFS) -Wundef
+ 
++
++GCCVERSIONGTEQ7 := $(shell expr `gcc -dumpversion | cut -f1 -d.` \>= 7)
++
++ifeq "$(GCCVERSIONGTEQ7)" "1"
++	FIXWARN := -Wno-implicit-fallthrough
++endif
++
+ DEPS = \
+ 	-MD -MF deps/$(subst /,%,$(@)).d
+ 
+@@ -33,12 +40,12 @@ CXXFLAGS = \
+ 	-fvisibility=hidden -fvisibility-inlines-hidden -fno-default-inline \
+ 	-fno-omit-frame-pointer -fno-common -fsigned-char \
+ 	-Wall -W -Werror -Wsign-promo -Woverloaded-virtual \
+-	-Wno-ctor-dtor-privacy -Wno-non-virtual-dtor $(CPPFLAGS) $(CXXFLAGS.$(<))
++	-Wno-ctor-dtor-privacy -Wno-non-virtual-dtor $(FIXWARN) $(CPPFLAGS) $(CXXFLAGS.$(<))
+ 
+ CFLAGS = \
+ 	-g -O$(OPT) $(CSTD) \
+ 	-fvisibility=hidden -fno-omit-frame-pointer -fno-common -fsigned-char \
+-	-Wall -W -Werror $(CPPFLAGS) $(CFLAGS.$(<))
++	-Wall -W -Werror $(FIXWARN) $(CPPFLAGS) $(CFLAGS.$(<))
+ 
+ 
+ %.o: %.C; $(CXX) -c $(CXXFLAGS) $(DEPS) $(<) -o $(@)
+
+From dd5668a0923c8afd501b583d34f330d660adde02 Mon Sep 17 00:00:00 2001
+From: archetype <burchakov.oleg@gmail.com>
+Date: Tue, 12 Feb 2019 12:32:06 +0300
+Subject: [PATCH 5/7] add missed return value
+
+---
+ phantom/io_benchmark/mcount.H | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/phantom/io_benchmark/mcount.H b/phantom/io_benchmark/mcount.H
+index 042712d..3b28f1e 100644
+--- a/phantom/io_benchmark/mcount.H
++++ b/phantom/io_benchmark/mcount.H
+@@ -113,6 +113,7 @@ private:
+ 			for(size_t i = 0; i < size; ++i) vals[i] += res.vals[i];
+ 
+ 			interval += res.interval;
++			return *this;
+ 		}
+ 
+ 		inline void swap(res_t &res) {
+
+From 6a0a2b817d6b702a3108671fb4632d7f7dd6c755 Mon Sep 17 00:00:00 2001
+From: archetype <burchakov.oleg@gmail.com>
+Date: Tue, 12 Feb 2019 12:35:55 +0300
+Subject: [PATCH 6/7] fix nullptr dereferencing
+
+---
+ pd/base/alloc.C         |  7 ++----
+ pd/base/config.C        |  8 +++----
+ pd/base/config.H        | 53 +++++++++++++++++++----------------------
+ pd/base/config_enum.H   | 21 +++++++++-------
+ pd/base/config_record.H | 26 ++++++++++----------
+ pd/bq/bq_cont.C         |  2 +-
+ pd/debug/addrinfo_bfd.C | 12 ++++++----
+ phantom/phantom.C       |  8 +++----
+ 8 files changed, 68 insertions(+), 69 deletions(-)
+
+diff --git a/pd/base/alloc.C b/pd/base/alloc.C
+index 00dd427..de5d23b 100644
+--- a/pd/base/alloc.C
++++ b/pd/base/alloc.C
+@@ -70,14 +70,11 @@ class alloc_t {
+ 		inline bool check(bool _array) { return array == _array; }
+ 
+ 		inline void print(out_t &out) {
+-			if(!this)
+-				return;
+-
+ 			out.print((void const *)(this + 1))(',')(' ').print(size).lf();
+ 
+ 			trace.print(out);
+-
+-			next->print(out);
++			if(next)
++				next->print(out);
+ 		}
+ 
+ 		inline void *operator new(size_t size, size_t body_size) {
+diff --git a/pd/base/config.C b/pd/base/config.C
+index 941f325..6df00fc 100644
+--- a/pd/base/config.C
++++ b/pd/base/config.C
+@@ -101,12 +101,12 @@ class environ_t {
+ 		inline ~item_t() throw() { }
+ 
+ 		inline string_t const *lookup(string_t const &_key) const {
+-			if(!this)
+-				return NULL;
+-
+ 			if(string_t::cmp_eq<ident_t>(key, _key))
+ 				return &val;
+ 
++			if(!next)
++				return NULL;
++
+ 			return next->lookup(_key);
+ 		}
+ 	};
+@@ -139,7 +139,7 @@ public:
+ 	}
+ 
+ 	inline string_t const *lookup(string_t const &key) const {
+-		return list->lookup(key);
++		return list ? list->lookup(key) : NULL;
+ 	}
+ };
+ 
+diff --git a/pd/base/config.H b/pd/base/config.H
+index 634bcd1..73c870a 100644
+--- a/pd/base/config.H
++++ b/pd/base/config.H
+@@ -37,12 +37,8 @@ class obj_t {
+ 		virtual x_t *get_item(string_t const &_name) const = 0;
+ 
+ 		x_t *get(string_t const &name) {
+-			x_t *item = NULL;
+-
+-			if(this) {
+-				item = get_item(name);
+-				if(!item) item = next->get(name);
+-			}
++			x_t *item = get_item(name);
++			if(!item && next) item = next->get(name);
+ 
+ 			return item;
+ 		}
+@@ -56,7 +52,7 @@ class obj_t {
+ 
+ public:
+ 	static inline x_t *get(string_t const &name) {
+-		return list->get(name);
++		return list ? list->get(name) : NULL;
+ 	}
+ 
+ 	static item_t *list;
+@@ -104,8 +100,8 @@ public:
+ 		string_t ctor_name;
+ 
+ 		void print(out_t &out, int off, string_t const &type_name) const {
+-			if(!this) return;
+-			next->print(out, off, type_name);
++			if(next)
++				next->print(out, off, type_name);
+ 
+ 			print_off(out, off);
+ 			out(type_name)(' ')(name)(' ')('=')(' ')(ctor_name)(' ');
+@@ -137,7 +133,8 @@ public:
+ 	inline ~obj_ref_t() throw() { while(list) delete list; }
+ 
+ 	inline void print(out_t &out, int off, string_t const &type_name) const {
+-		list->print(out, off, type_name);
++		if(list)
++			list->print(out, off, type_name);
+ 	}
+ };
+ 
+@@ -155,8 +152,8 @@ protected:
+ 	virtual void syntax_object_item(out_t &out) const = 0;
+ 
+ 	void syntax_object(out_t &out, unsigned int &num) {
+-		if(!this) return;
+-		next->syntax_object(out, num);
++		if(next)
++			next->syntax_object(out, num);
+ 
+ 		if(num) out(' ')('|');
+ 		out.lf()(' ')(' ');
+@@ -167,8 +164,8 @@ protected:
+ 	virtual void syntax_name_item(out_t &out) const = 0;
+ 
+ 	void syntax_name(out_t &out, unsigned int &num) {
+-		if(!this) return;
+-		next->syntax_name(out, num);
++		if(next)
++			next->syntax_name(out, num);
+ 
+ 		if(num) out(' ')('|');
+ 		out.lf()(' ')(' ');
+@@ -183,12 +180,14 @@ public:
+ 
+ 	static inline void syntax_object(out_t &out) {
+ 		unsigned int num = 0;
+-		list->syntax_object(out, num);
++		if (list)
++			list->syntax_object(out, num);
+ 	}
+ 
+ 	static inline void syntax_name(out_t &out) {
+ 		unsigned int num = 0;
+-		list->syntax_name(out, num);
++		if (list)
++			list->syntax_name(out, num);
+ 	}
+ };
+ 
+@@ -226,11 +225,7 @@ class binding_t {
+ 		) const = 0;
+ 
+ 		bool parse(string_t const &name, in_t::ptr_t &ptr, conf_t &conf) const {
+-			return
+-				this && (
+-					next->parse(name, ptr, conf) || parse_item(name, ptr, conf)
+-				)
+-			;
++			return next && next->parse(name, ptr, conf) ? true : parse_item(name, ptr, conf);
+ 		}
+ 
+ 		virtual void print_item(out_t &out, int off, conf_t const &conf) const = 0;
+@@ -238,14 +233,14 @@ class binding_t {
+ 		virtual void syntax_item(out_t &out, unsigned int &num) const = 0;
+ 
+ 		void print(out_t &out, int off, conf_t const &conf) const {
+-			if(!this) return;
+-			next->print(out, off, conf);
++			if(next)
++				next->print(out, off, conf);
+ 			print_item(out, off, conf);
+ 		}
+ 
+ 		void syntax(out_t &out, unsigned int &num) const {
+-			if(!this) return;
+-			next->syntax(out, num);
++			if(next)
++				next->syntax(out, num);
+ 			syntax_item(out, num);
+ 		}
+ 
+@@ -262,7 +257,7 @@ public:
+ 	static inline bool parse_item(
+ 		string_t const &name, in_t::ptr_t &ptr, conf_t &conf
+ 	) {
+-		return list->parse(name, ptr, conf);
++		return list && list->parse(name, ptr, conf);
+ 	}
+ 
+ 	static inline void check(in_t::ptr_t const &ptr, conf_t const &conf) {
+@@ -287,12 +282,14 @@ public:
+ 	}
+ 
+ 	static inline void print(out_t &out, int off, conf_t const &conf) {
+-		list->print(out, off, conf);
++		if (list)
++			list->print(out, off, conf);
+ 	}
+ 
+ 	static inline void syntax(out_t &out) {
+ 		unsigned int num = 0;
+-		list->syntax(out, num);
++		if (list)
++			list->syntax(out, num);
+ 	}
+ 
+ 	template<typename val_t>
+diff --git a/pd/base/config_enum.H b/pd/base/config_enum.H
+index 4b3bd1d..6fc79d5 100644
+--- a/pd/base/config_enum.H
++++ b/pd/base/config_enum.H
+@@ -24,20 +24,21 @@ public:
+ 		val_t val;
+ 
+ 		void print(out_t &out, val_t _val) {
+-			if(!this) {
+-				out(CSTR("<unknown enum value>"));
+-			}
+-			else if(val == _val) {
++			if(val == _val) {
+ 				out(name);
+ 			}
+-			else
++			else if(next) {
+ 				next->print(out, _val);
++			}
++			else {
++				out(CSTR("<unknown enum value>"));
++			}
+ 		}
+ 
+ 		void syntax(out_t &out, unsigned int &num) {
+-			if(!this) return;
++			if(next)
++				next->syntax(out, num);
+ 
+-			next->syntax(out, num);
+ 			if(num) out(' ')('|')(' ');
+ 			out(name);
+ 			++num;
+@@ -85,12 +86,14 @@ struct helper_t<enum_t<val_t>> {
+ 	}
+ 
+ 	static inline void print(out_t &out, int, enum_t<val_t> const &val) {
+-		enum_t<val_t>::item_t::list->print(out, val);
++		if (enum_t<val_t>::item_t::list)
++			enum_t<val_t>::item_t::list->print(out, val);
+ 	}
+ 
+ 	static inline void syntax_detail(out_t &out) {
+ 		unsigned int num = 0;
+-		enum_t<val_t>::item_t::list->syntax(out, num);
++		if (enum_t<val_t>::item_t::list)
++			enum_t<val_t>::item_t::list->syntax(out, num);
+ 	}
+ 
+ 	static inline void syntax(out_t &out) {
+diff --git a/pd/base/config_record.H b/pd/base/config_record.H
+index f5a0f34..d322608 100644
+--- a/pd/base/config_record.H
++++ b/pd/base/config_record.H
+@@ -26,25 +26,22 @@ class record_t : public val_t, public block_t {
+ 	public:
+ 
+ 		inline void parse(in_t::ptr_t &ptr, val_t &val) const {
+-			if(this) {
++			if(next)
+ 				next->parse(ptr, val);
+-				parse_item(ptr, val);
+-			}
++			parse_item(ptr, val);
+ 		}
+ 
+ 		inline void print(out_t &out, int off, val_t const &val) const {
+-			if(this) {
++			if(next)
+ 				next->print(out, off, val);
+-				print_item(out, off, val);
+-			}
++			print_item(out, off, val);
+ 		}
+ 
+ 		inline void syntax(out_t &out) const {
+-			if(this) {
++			if(next)
+ 				next->syntax(out);
+-				syntax_item(out);
+-				out(' ');
+-			}
++			syntax_item(out);
++			out(' ');
+ 		}
+ 
+ 		inline item_t() throw() : list_item_t<item_t>(this, list) { }
+@@ -81,7 +78,8 @@ public:
+ 
+ 	static inline void syntax(out_t &out) {
+ 		out('{')(' ');
+-		list->syntax(out);
++		if(list)
++			list->syntax(out);
+ 		out('}');
+ 	}
+ 
+@@ -89,12 +87,14 @@ public:
+ 
+ private:
+ 	virtual void parse_content(in_t::ptr_t &ptr) {
+-		list->parse(ptr, *this);
++		if(list)
++			list->parse(ptr, *this);
+ 		skip_space(ptr);
+ 	}
+ 
+ 	virtual void print_content(out_t &out, int off) const {
+-		list->print(out, off, *this);
++		if(list)
++			list->print(out, off, *this);
+ 	}
+ 
+ 	static item_t *list;
+diff --git a/pd/bq/bq_cont.C b/pd/bq/bq_cont.C
+index d3118c2..2958ec6 100644
+--- a/pd/bq/bq_cont.C
++++ b/pd/bq/bq_cont.C
+@@ -255,7 +255,7 @@ public:
+ 	}
+ 
+ 	inline void *&operator[](unsigned int i) {
+-		if(this && i < spec_num)
++		if(i < spec_num)
+ 			return ((void **)this)[-2 - (int)i];
+ 
+ 		throw exception_sys_t(log::error, EINVAL, "bq_spec: %m");
+diff --git a/pd/debug/addrinfo_bfd.C b/pd/debug/addrinfo_bfd.C
+index 91f0886..c729dac 100644
+--- a/pd/debug/addrinfo_bfd.C
++++ b/pd/debug/addrinfo_bfd.C
+@@ -70,10 +70,9 @@ class bfd_t {
+ 		inline void operator delete(void *ptr) { ::free(ptr); }
+ 
+ 		file_t *find(char const *_name) {
+-			return (!this || !strcmp(name, _name))
+-				? this
+-				: next->find(_name)
+-			;
++			if (strcmp(name, _name) == 0)
++				return this;
++			return next ? next->find(_name) : NULL;
+ 		}
+ 
+ 		void print(uintptr_t addr, uintptr_t addr_rel, demangle_t &demangle, out_t &out);
+@@ -94,7 +93,10 @@ public:
+ 	inline void print(
+ 		uintptr_t addr, uintptr_t addr_rel, char const *fname, out_t &out
+ 	) {
+-		file_t *file = list->find(fname) ?: new file_t(fname, list);
++		file_t *file = list ? list->find(fname) : NULL;
++
++		if(!file)
++			file = new file_t(fname, list);
+ 
+ 		file->print(addr, addr_rel, demangle, out);
+ 	}
+diff --git a/phantom/phantom.C b/phantom/phantom.C
+index 7e17015..530fa0a 100644
+--- a/phantom/phantom.C
++++ b/phantom/phantom.C
+@@ -188,12 +188,12 @@ class fd_list_t {
+ 			: list_item_t<item_t>(this, list), fd(_fd) { }
+ 
+ 		inline bool find(int _fd) {
+-			if(!this)
+-				return false;
+-
+ 			if(fd == _fd)
+ 				return true;
+ 
++			if(!next)
++				return false;
++
+ 			return next->find(_fd);
+ 		}
+ 	};
+@@ -201,7 +201,7 @@ class fd_list_t {
+ 	item_t *list;
+ 
+ public:
+-	inline bool find(int _fd) { return list->find(_fd); }
++	inline bool find(int _fd) { return list ? list->find(_fd) : false; }
+ 
+ 	void store(int _fd) { new item_t(_fd, list); }
+ 
+
+From c0044380f28b5d9f3bf15dabd664fe9c1061134f Mon Sep 17 00:00:00 2001
+From: archetype <burchakov.oleg@gmail.com>
+Date: Tue, 12 Feb 2019 12:39:49 +0300
+Subject: [PATCH 7/7] fix protected access error
+
+---
+ pd/base/config.H      | 1 +
+ pd/base/config_enum.H | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/pd/base/config.H b/pd/base/config.H
+index 73c870a..e783b08 100644
+--- a/pd/base/config.H
++++ b/pd/base/config.H
+@@ -140,6 +140,7 @@ public:
+ 
+ template<typename x_t>
+ class ctor_base_t : public named_list_item_t<ctor_base_t<x_t>> {
++	friend class named_list_item_t<ctor_base_t<x_t>>;
+ 	using named_list_item_t<ctor_base_t<x_t>>::list;
+ 	using named_list_item_t<ctor_base_t<x_t>>::next;
+ 
+diff --git a/pd/base/config_enum.H b/pd/base/config_enum.H
+index 6fc79d5..ab31848 100644
+--- a/pd/base/config_enum.H
++++ b/pd/base/config_enum.H
+@@ -18,6 +18,7 @@ class enum_t {
+ 	val_t val;
+ public:
+ 	class item_t : public named_list_item_t<item_t> {
++		friend class named_list_item_t<item_t>;
+ 		using named_list_item_t<item_t>::next;
+ 		using named_list_item_t<item_t>::name;
+ 
