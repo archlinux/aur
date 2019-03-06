@@ -1,4 +1,4 @@
-# Maintainer: N.E. Neal <naz dot infante dot neal at outlook dot com>
+# Maintainer: N.E. Neal <spam at [part of name before neal without dots] dog com>
 pkgname='bonsai.sh'
 pkgver=1.0
 pkgrel=1
