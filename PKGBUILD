@@ -3,10 +3,10 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 _pkgname=epiphany
-pkgname=$_pkgname-unstable
+pkgname=epiphany-unstable
 pkgver=3.31.92
 pkgrel=1
-pkgdesc="A GNOME web browser based on the WebKit rendering engine (unstable version)"
+pkgdesc="A GNOME web browser based on the WebKit rendering engine."
 url="https://wiki.gnome.org/Apps/Web"
 arch=(x86_64)
 license=(GPL)
