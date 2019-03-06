@@ -1,5 +1,5 @@
 pkgbase = python-imgurpython
-	pkgdesc = Imgur API official Python bindings
+	pkgdesc = Imgur API official Python bindings (deprecated)
 	pkgver = 1.1.8
 	pkgrel = 3
 	url = https://github.com/imgur/imgurpython
