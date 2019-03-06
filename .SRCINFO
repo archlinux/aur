@@ -1,13 +1,13 @@
 pkgbase = kitematic-git
 	pkgdesc = Visual Docker Container Management
-	pkgver = 2172.e75c1c4
+	pkgver = 2275.3d40e133
 	pkgrel = 1
 	url = https://github.com/docker/kitematic
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	makedepends = npm
-	makedepends = nodejs-grunt-cli
+	makedepends = nodejs-grunt
 	depends = docker
 	depends = nodejs
 	conflicts = kitematic
