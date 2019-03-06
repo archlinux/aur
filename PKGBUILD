@@ -3,14 +3,14 @@
 
 _srcname=fancontrol-gui
 pkgname=${_srcname}-git
-pkgver=v0.6.r30.g29a7afb
+pkgver=v0.6.r53.g4a54a93
 pkgrel=1
 pkgdesc="GUI for the fancontrol script and systemd service"
 arch=('i686' 'x86_64')
 url="https://github.com/Maldela/Fancontrol-GUI"
 license=('GPL2')
-depends=('qt5-quickcontrols' 'qt5-declarative' 'lm_sensors' 'kirigami2' 'kdeclarative' 'kauth' 'kpackage' 'ki18n' 'kconfig' 'systemd')
-makedepends=('git' 'extra-cmake-modules' )
+depends=('qt5-quickcontrols2' 'qt5-declarative' 'lm_sensors' 'kirigami2' 'kdbusaddons' 'knotifications' 'kdeclarative' 'kauth' 'kpackage' 'ki18n' 'kconfig' 'systemd')
+makedepends=('git' 'cmake' 'extra-cmake-modules' )
 provides=('fancontrol-gui')
 conflicts=('fancontrol-gui' 'fancontrol-common')
 source=('git://github.com/Maldela/fancontrol-gui.git')
