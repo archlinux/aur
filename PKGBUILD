@@ -1,19 +1,18 @@
-# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
-# Contribotur: Ng Oon-Ee <ngoonee.talk@gmail.com>
+# Maintainer: Mikael Blomstrand <gmail: chawlindel>
+# Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Contributor: Ng Oon-Ee <ngoonee.talk@gmail.com>
 
 pkgname=adbfs-rootless-git
-pkgver=r81.b589634
+pkgver=r101.c1a2c9b
 pkgrel=1
 pkgdesc='fuse filesystem over adb tool for android devices, no device root required'
 arch=(i686 x86_64)
 url='https://github.com/spion/adbfs-rootless'
 license=(BSD)
-depends=(gcc-libs fuse)
+depends=(fuse android-tools)
 makedepends=(git)
-source=(git+https://github.com/spion/adbfs-rootless
-        https://patch-diff.githubusercontent.com/raw/spion/adbfs-rootless/pull/21.patch)
-sha1sums=('SKIP'
-          'ae9f468d95fa7d1efad2bdafd6fbf93aa7882ea8')
+source=(git+https://github.com/spion/adbfs-rootless)
+sha1sums=('SKIP')
 
 pkgver() {
   cd adbfs-rootless
@@ -22,13 +21,11 @@ pkgver() {
 
 build() {
   cd adbfs-rootless
-  # Uncomment the line below if you use Nougat
-  #patch -p1 < ${srcdir}/21.patch
   make
 }
 
 package() {
   cd adbfs-rootless
-  install -Dm755 adbfs "$pkgdir/usr/bin/adbfs"
-  install -Dm644 license "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 adbfs "${pkgdir}/usr/bin/adbfs"
+  install -Dm644 license "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
