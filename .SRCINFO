@@ -1,0 +1,23 @@
+pkgbase = julia-catindices
+	pkgdesc = Julia package for indices-aware array concatenation and growth
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/JuliaArrays/CatIndices.jl
+	arch = any
+	license = MIT
+	makedepends = julia-distrohelper
+	depends = julia
+	depends = julia-compat
+	depends = julia-customunitranges
+	depends = julia-loadpath
+	source = julia-catindices-0.2.0.tar.gz::https://github.com/JuliaArrays/CatIndices.jl/archive/v0.2.0.tar.gz
+	source = julia-catindices-0.2.0-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/05378dceec7bb8b2138a96b5b787ea7430c7ad3d/C/CatIndices/Deps.toml
+	source = julia-catindices-0.2.0-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/05378dceec7bb8b2138a96b5b787ea7430c7ad3d/C/CatIndices/Package.toml
+	source = julia-catindices-0.2.0-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/05378dceec7bb8b2138a96b5b787ea7430c7ad3d/C/CatIndices/Versions.toml
+	sha256sums = e64af9d9d98d4de85814bf09ac3e00bf121770f2889e65b2f3b493de3934c1f8
+	sha256sums = 2710fc229fd01cde0123978f9e1b04f6fb57b91848910fb2077163cee0388cd4
+	sha256sums = a0a6dbcf01b3727654e2ad7fa33b6dc22cd745e4363e86fb078e1a0d0a566ee7
+	sha256sums = 43f62e78ca46c6c62ba27fc18c2bc7b228b4bad7eb00cdb726c84e24321816ce
+
+pkgname = julia-catindices
+
