@@ -4,7 +4,7 @@ pkgname=vim-lsp-git
 _pkgname=vim-lsp
 _pkgname2=async.vim
 pkgver=0.352.0310241
-pkgrel=1
+pkgrel=2
 pkgdesc='async language server protocol plugin for vim and neovim'
 arch=('any')
 url="https://github.com/prabirshrestha/${_pkgname}"
@@ -37,7 +37,7 @@ package() {
 
   cd ${srcdir}/${_pkgname2}
 
-  cp -dpr --no-preserve=ownership autoload "${pkgdir}/usr/share/vim/vimfiles/autoload"
+  cp -dpr --no-preserve=ownership autoload "${pkgdir}/usr/share/vim/vimfiles"
 
   install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
