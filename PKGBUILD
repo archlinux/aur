@@ -10,7 +10,6 @@ arch=('x86_64')
 url='https://github.com/Irrational-Encoding-Wizardry/kagefunc'
 license=('GPL')
 depends=('vapoursynth'
-         'python'
          'vapoursynth-plugin-mvsfunc-git'
          'vapoursynth-plugin-fvsfunc-git'
          'vapoursynth-plugin-retinex-git'
