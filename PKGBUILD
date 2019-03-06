@@ -1,6 +1,6 @@
 pkgname=diylc
 pkgver=3.55.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi platform circuit layout and schematic drawing tool"
 arch=('any')
 url="https://bancika.github.io/diy-layout-creator/"
@@ -17,7 +17,7 @@ source=(
     "diylc.desktop"
 )
 sha256sums=(
-    'c49532245100b42cf1b701b2f8ca95f4ace11b61d49044e81a43ff9626ba0d42'
+    '8e2521c877552bfc739a09c9565a3b974e4f37831825dadfdc1aae0b79225a3e'
     'a4a3c6059cb8cd3e129deb9ccb826025830e3914fa948df977fc73d7a20245c7'
     '6d586133cba43fae2871038ff717fc78d748a5097eec3f9a0dbf136451b88528'
     '66b616f47f907354fc1f7aaf3f077af5640475b025e692bfad0e22cf1af8b319'
