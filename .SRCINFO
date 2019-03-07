@@ -1,6 +1,6 @@
 pkgbase = fotoxx-git
 	pkgdesc = A program for improving image files made with a digital camera, test-version
-	pkgver = 20.0.test.2019.02.08
+	pkgver = 20.0.test.2019.02.25
 	pkgrel = 1
 	url = http://www.kornelix.net/fotoxx/fotoxx.html
 	arch = i686

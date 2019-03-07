@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fotoxx-git
-pkgver=20.0.test.2019.02.08
+pkgver=20.0.test.2019.02.25
 pkgrel=1
 pkgdesc="A program for improving image files made with a digital camera, test-version"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
@@ -19,6 +19,11 @@ sha256sums=('SKIP')
 pkgver() {
   cd ${pkgname%-git}
   git describe --tags | tr - . | cut -c8-
+}
+
+prepare() {
+  cd ${pkgname%-git}/programs/${pkgname%-git}
+  sed -i 's+libchamplain+champlain+g' Makefile
 }
 
 build() {
