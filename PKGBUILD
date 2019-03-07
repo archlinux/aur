@@ -13,14 +13,13 @@ license=("GPL")
 arch=('i686' 'x86_64')
 depends=('ncurses')
 makedepends=('cmake')
-#source=(http://www.wormulon.net/files/code/slurm/$pkgname-$pkgver.tar.gz)
-#source=(http://downloads.openwrt.org/sources/$pkgname-$pkgver.tar.gz)
-source=(https://github.com/mattthias/$pkgname/archive/upstream/$pkgver.tar.gz)
-md5sums=('ff39b8e1fd31274ba1bb36d4aadc1d48')
-
+#source=("http://www.wormulon.net/files/code/slurm/$pkgname-$pkgver.tar.gz")
+#source=("http://downloads.openwrt.org/sources/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/mattthias/$pkgname/archive/upstream/$pkgver.tar.gz")
+md5sums=('82e3657fffee3b0a3fc77a05176104fb')
 
 build() {
-  cd "$srcdir/$pkgname-upstream-$pkgver"
+  cd "$srcdir/$pkgname-upstream"
   #./configure --prefix=/usr CPPFLAGS=-D__Debian__
   #scons
   mkdir -p build
@@ -30,7 +29,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-upstream-$pkgver/build"
+  cd "$srcdir/$pkgname-upstream/build"
   make DESTDIR="$pkgdir" install
   install -Dm644 ../slurm.1 "$pkgdir/usr/share/man/man1/slurm.1"
 }
