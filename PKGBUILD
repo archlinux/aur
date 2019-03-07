@@ -1,27 +1,32 @@
-pkgname=vimix-gtk-themes-git
-_pkgname=vimix-gtk-themes
-pkgdesc='Vimix is a flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell'
-pkgver=173.a95b047
-pkgrel=1
+# Maintainer: sQVe <oskargrunning@gmail.com>
+
 arch=('any')
 depends=('gtk3' 'gtk-engine-murrine' 'gtk-engines')
 license=('GPL3')
+md5sums=('SKIP' 'SKIP')
+pkgdesc='Vimix is a flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell'
+pkgname=vimix-gtk-themes-git
+pkgrel=1
+pkgver=r300.c26a40e
 source=('Install.patch'
         'git+https://github.com/vinceliuice/vimix-gtk-themes.git')
-url='https://github.com/vinceliuice/vimix-gtk-themes'
-md5sums=('SKIP'
-         'SKIP')
 makedepends=('git' 'patch')
+url='https://github.com/vinceliuice/vimix-gtk-themes'
+
+_gitname=vimix-gtk-themes
+
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    cd "${_gitname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 build() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${_gitname}"
     patch Install < "${srcdir}/Install.patch"
 }
+
 package() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${_gitname}"
     install -m755 -d "${pkgdir}/usr/share/themes"
     DEST_DIR="${pkgdir}/usr/share/themes" ./Install
 }
