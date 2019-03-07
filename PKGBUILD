@@ -1,6 +1,6 @@
 # Maintainer: Marcel Campello <tucho@prafrentex.com.br>
 pkgname=leiningen
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Automating Clojure projects without setting your hair on fire."
 arch=('any')
@@ -13,8 +13,8 @@ install="leiningen.install"
 
 source=("${url}/archive/${pkgver}.tar.gz"
         "${url}/releases/download/${pkgver}/leiningen-${pkgver}-standalone.zip")
-sha256sums=('f90a846e99163d5b776764ba036a0017f83f545daae2d163c2f0c5fbbc71f0a5'
-            '3566d7c5453cdf85d3bf7d77de44c12059aae5779db6e686a4839fc24541fc1e')
+sha256sums=('a4c239b407576f94e2fef5bfa107f0d3f97d0b19c253b08860d9609df4ab8b29'
+            'ea7c831a4f5c38b6fc3926c6ad32d1d4b9b91bf830a715ecff5a70a18bda55f8')
 noextract=("leiningen-${pkgver}-standalone.zip")
 
 package() {
