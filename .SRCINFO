@@ -1,6 +1,6 @@
 pkgbase = awesome-git
 	pkgdesc = Highly configurable framework window manager
-	pkgver = 4.3.21.ga5e8cde3
+	pkgver = 4.3.145.g05b47359
 	pkgrel = 1
 	url = http://awesome.naquadah.org/
 	arch = i686
@@ -27,6 +27,7 @@ pkgbase = awesome-git
 	depends = xcb-util-wm
 	depends = xcb-util-xrm
 	depends = libxfixes
+	depends = xcb-util-errors
 	optdepends = rlwrap: readline support for awesome-client
 	optdepends = dex: autostart your desktop files
 	optdepends = vicious: widgets for the Awesome window manager
