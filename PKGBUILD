@@ -2,20 +2,21 @@
 
 _name=fintech
 pkgname=python-$_name
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc=''
 arch=(any)
 url="https://github.com/theislab/$_name"
 license=('custom:restricted use')
 depends=(python-certifi 'python-fpdf>=1.7.2' python-lxml)
-makedepends=(python-pip)
-_wheel="$_name-$pkgver-cp37-none-any.whl"
-source=("https://files.pythonhosted.org/packages/cp37/${_name::1}/$_name/$_wheel")
-sha256sums=('ff189b7c97f4600d49f25a960e5faf28c3b2dd16efeab494776e2c7a80393e78')
+_pyarch=cp37
+_wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
+source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
+sha256sums=('3239606d6d30fce6b0cac405b2696366d0b57ff5bffb281e7ecaec3fc2004d25')
 noextract=("$_wheel")
 
 package() {
-	cd "$srcdir"
-	pip install --compile --no-deps --ignore-installed --root="$pkgdir" "$_wheel"
+	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
+	mkdir -p "$site"
+	unzip "$_wheel" -d "$site"
 }
