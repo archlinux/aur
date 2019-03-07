@@ -1,15 +1,15 @@
 pkgbase = python-udcli
 	pkgdesc = udisks2 command-line interface with zsh completion, written in python3
 	pkgver = 0.1.1
-	pkgrel = 1
-	url = https://github.com/the-isz/udcli
+	pkgrel = 2
+	url = https://gitlab.com/the_isz/udcli
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = python
 	depends = python-dbus
 	depends = udisks2
-	source = https://github.com/the-isz/udcli/archive/0.1.1.tar.gz
+	source = https://gitlab.com/the_isz/udcli/-/archive/0.1.1/udcli-0.1.1.tar.gz
 	md5sums = 06b1ed71b13f0863148625bc46a54353
 
 pkgname = python-udcli
