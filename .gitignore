@@ -1,0 +1,6 @@
+*.xz
+*.log
+pkg
+src
+linux-firmware
+linux-surface

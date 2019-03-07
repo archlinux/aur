@@ -1,0 +1,39 @@
+pkgbase = linux-firmware-full-surface
+	pkgdesc = Firmware files for Linux, patched for surface
+	pkgver = 20190307.28f5f7.5d21cc
+	pkgrel = 1
+	url = http://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary
+	arch = any
+	license = GPL2
+	license = GPL3
+	license = custom
+	makedepends = git
+	makedepends = unzip
+	options = !strip
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#commit=28f5f7dc1f077ea37d663f70de4490844db0449d
+	source = git+https://github.com/jakeday/linux-surface.git#commit=5d21cc824c9b41e65f92fdebcbcccd2181b9393f
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = linux-firmware-full-surface-pro-3
+
+pkgname = linux-firmware-full-surface-pro-4
+
+pkgname = linux-firmware-full-surface-pro-2017
+
+pkgname = linux-firmware-full-surface-pro-6
+
+pkgname = linux-firmware-full-surface-studio
+
+pkgname = linux-firmware-full-surface-laptop
+
+pkgname = linux-firmware-full-surface-laptop-2
+
+pkgname = linux-firmware-full-surface-book
+
+pkgname = linux-firmware-full-surface-book-2
+
+pkgname = linux-firmware-full-surface-book-2-1793
+
+pkgname = linux-firmware-full-surface-go
+
