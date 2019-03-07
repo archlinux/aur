@@ -11,6 +11,8 @@ depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libxslt' 'libxss'
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'trash-cli: file deletion support (trash-put)'
             "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
+provides=("majsoul-plus")
+conflicts=("majsoul-plus")
 source_x86_64=(
 	"majsoul.zip::https://github.com/MajsoulPlus/majsoul-plus/releases/download/v1.11.0/Majsoul_Plus-linux-x64.zip"
 	"https://github.com/MajsoulPlus/majsoul-plus/raw/master/bin/icons/icon.png"
