@@ -1,14 +1,13 @@
 pkgbase = python-docutils-stubs
 	pkgdesc = PEP 561 type stubs for docutils
-	pkgver = 0.0.19
+	pkgver = 0.0.21
 	pkgrel = 1
 	url = https://github.com/tk0miya/docutils-stubs
 	arch = any
-	makedepends = python-pip
 	depends = python
-	noextract = docutils_stubs-0.0.19-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/d/docutils-stubs/docutils_stubs-0.0.19-py3-none-any.whl
-	sha256sums = ce16686c7a260a39cd0a33a50590fddd4f587ef7e3cdbf27dca4f2da12b45ab1
+	noextract = docutils_stubs-0.0.21-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/d/docutils-stubs/docutils_stubs-0.0.21-py3-none-any.whl
+	sha256sums = d8beb6ffac94d2db39179681f6bc17a3b81d3386201dc8b1aec3d61201b1edc9
 
 pkgname = python-docutils-stubs
 
