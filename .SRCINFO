@@ -1,6 +1,6 @@
 pkgbase = hdf5-java
 	pkgdesc = General purpose library and file format for storing scientific data, w/java bindings
-	pkgver = 1.10.4
+	pkgver = 1.10.5
 	pkgrel = 1
 	url = https://www.hdfgroup.org/hdf5
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = hdf5-java
 	conflicts = hdf5-openmpi
 	replaces = hdf5-cpp-fortran
 	options = staticlibs
-	source = https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.4/src/hdf5-1.10.4.tar.bz2
-	sha256sums = 1267ff06aaedc04ca25f7c6026687ea2884b837043431195f153401d942b28df
+	source = https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.5/src/hdf5-1.10.5.tar.bz2
+	sha256sums = 68d6ea8843d2a106ec6a7828564c1689c7a85714a35d8efafa2fee20ca366f44
 
 pkgname = hdf5-java
 

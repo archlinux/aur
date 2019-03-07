@@ -3,7 +3,7 @@
 
 pkgname=hdf5-java
 _pkgname=hdf5
-pkgver=1.10.4
+pkgver=1.10.5
 pkgrel=1
 pkgdesc="General purpose library and file format for storing scientific data, w/java bindings"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('hdf5-cpp-fortran' 'hdf5-java' 'hdf5')
 conflicts=('hdf5' 'hdf5-openmpi')
 options=('staticlibs')
 source=("https://support.hdfgroup.org/ftp/HDF5/releases/${_pkgname}-${pkgver:0:4}/${_pkgname}-${pkgver/_/-}/src/${_pkgname}-${pkgver/_/-}.tar.bz2")
-sha256sums=('1267ff06aaedc04ca25f7c6026687ea2884b837043431195f153401d942b28df')
+sha256sums=('68d6ea8843d2a106ec6a7828564c1689c7a85714a35d8efafa2fee20ca366f44')
 
 build() {
     # Crazy workaround: run CMake to generate pkg-config file
@@ -68,9 +68,6 @@ package() {
     cd ${_pkgname}-${pkgver/_/-}
 
     make DESTDIR="${pkgdir}" install
-
-    # Remove leftover test files
-    rm "${pkgdir}"/usr/include/tst{ds,image,lite,table}{,_tests}.mod
 
     # Move examples to a proper place
     install -dm755 "${pkgdir}"/usr/share/doc/${_pkgname}
