@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=python-btrfs
-pkgver=10
+pkgver=11
 pkgrel=1
 pkgdesc="Python Btrfs"
 arch=('any')
