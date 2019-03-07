@@ -1,4 +1,8 @@
-pkg/
-src/
-*.tar.xz
-*.tar.gz
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!telegraf.install
+!telegraf.service
+!telegraf.sysusers
+!telegraf.tmpfiles
