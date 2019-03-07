@@ -1,0 +1,14 @@
+pkgbase = stns
+	pkgdesc = This server can easily manage Linux user group with TOML format setting file.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/STNS/STNS
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go-pie
+	source = https://github.com/STNS/STNS/archive/v2.1.0.tar.gz
+	md5sums = f7f56ee0433b44296af6813fbc7e8cd1
+
+pkgname = stns
+

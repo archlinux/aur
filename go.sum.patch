@@ -1,0 +1,8 @@
+5c5
+< github.com/coreos/etcd v3.3.9+incompatible h1:/pWnp1yEff0z+vBEOBFLZZ22Ux5xoVozEe7X0VFyRNo=
+---
+> github.com/coreos/etcd v3.3.9+incompatible h1:iKSVPXGNGqroBx4+RmUXv8emeU7y+ucRZSzTYgzLZwM=
+80c80
+< go.etcd.io/etcd v3.3.9+incompatible h1:yzHYlXnJjDaxeML8LSwbI7oCEJl5enW+UHw7XJQbW0A=
+---
+> go.etcd.io/etcd v3.3.9+incompatible h1:9dBehkvrIIwxqtxalmThfTAUnEqep3nD9ewq/HMsQeY=
