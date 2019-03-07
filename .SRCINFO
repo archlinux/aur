@@ -1,6 +1,6 @@
 pkgbase = awesome-luajit-git
 	pkgdesc = awesome window manager built with luajit
-	pkgver = 4.3.24.g3f2391462
+	pkgver = 4.3.148.g795c792d1
 	pkgrel = 1
 	url = http://awesome.naquadah.org/
 	arch = i686
@@ -31,6 +31,7 @@ pkgbase = awesome-luajit-git
 	optdepends = rlwrap: readline support for awesome-client
 	optdepends = dex: autostart your desktop files
 	optdepends = vicious: widgets for the Awesome window manager
+	optdepends = xcb-util-errors: for pretty-printing of X11 errors
 	provides = notification-daemon
 	provides = awesome
 	conflicts = awesome

@@ -4,7 +4,7 @@
 
 _pkgname=awesome
 pkgname=awesome-luajit-git
-pkgver=4.3.24.g3f2391462
+pkgver=4.3.148.g795c792d1
 pkgrel=1
 pkgdesc="awesome window manager built with luajit"
 arch=('i686' 'x86_64')
@@ -17,7 +17,9 @@ makedepends=('asciidoc' 'cmake' 'docbook-xsl' 'git' 'imagemagick' 'ldoc'
              'xmlto' 'lua-penlight')
 optdepends=('rlwrap: readline support for awesome-client'
             'dex: autostart your desktop files'
-            'vicious: widgets for the Awesome window manager')
+            'vicious: widgets for the Awesome window manager'
+            'xcb-util-errors: for pretty-printing of X11 errors'
+            )
 provides=('notification-daemon' 'awesome')
 conflicts=('awesome')
 backup=('etc/xdg/awesome/rc.lua')
