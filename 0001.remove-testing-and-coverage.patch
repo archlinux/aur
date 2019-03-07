@@ -1,0 +1,27 @@
+diff -ura a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2019-03-07 21:57:54.070686996 +0100
++++ b/CMakeLists.txt	2019-03-07 22:16:57.424492917 +0100
+@@ -55,10 +55,6 @@
+ 
+ pkg_check_modules(UNITY_API libunity-api>=0.1.3)
+ 
+-pkg_check_modules(
+-  TEST REQUIRED
+-  dbustest-1>=15.04.0
+-)
+ include_directories(${TEST_INCLUDE_DIRS})
+ 
+ find_package(Vala 0.20)
+@@ -83,12 +79,3 @@
+ add_subdirectory(data)
+ add_subdirectory(src)
+ add_subdirectory(po)
+-
+-enable_testing()
+-add_subdirectory(tests)
+-find_package(CoverageReport)
+-ENABLE_COVERAGE_REPORT(
+-  TARGETS ${COVERAGE_TARGETS}
+-  TESTS ${COVERAGE_TEST_TARGETS}
+-  FILTER /usr/include ${CMAKE_BINARY_DIR}/*
+-)
