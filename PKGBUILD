@@ -5,13 +5,13 @@
 
 pkgname=firefox-esr
 pkgver=60.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/en-US/firefox/organizations/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
-         nss hunspell sqlite ttf-font libpulse libvpx icu)
+         nss hunspell ttf-font libpulse)
 makedepends=(unzip zip diffutils python2 yasm mesa imake inetutils xorg-server-xvfb
              autoconf2.13 rust clang llvm jack gtk2)
 optdepends=('networkmanager: Location detection via available WiFi networks'
@@ -58,12 +58,19 @@ ac_add_options --enable-linker=gold
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
+export CC=clang
+export CXX=clang++
+export AR=llvm-ar
+export NM=llvm-nm
+export RANLIB=llvm-ranlib
+
 
 # Branding
 ac_add_options --enable-official-branding
 ac_add_options --enable-update-channel=release
 ac_add_options --with-distribution-id=org.archlinux
 export MOZILLA_OFFICIAL=1
+export MOZ_APP_REMOTINGNAME=$pkgname
 export MOZ_TELEMETRY_REPORTING=1
 export MOZ_ADDON_SIGNING=1
 export MOZ_REQUIRE_SIGNING=1
@@ -73,15 +80,8 @@ ac_add_options --with-google-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 # System libraries
-ac_add_options --with-system-zlib
-ac_add_options --with-system-bz2
-ac_add_options --with-system-icu
-ac_add_options --with-system-jpeg
-ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --enable-system-sqlite
-ac_add_options --enable-system-ffi
 
 # Features
 ac_add_options --enable-alsa
@@ -95,15 +95,6 @@ END
 
 build() {
   cd firefox-${pkgver}
-
-  # Build with clang
-  if [ "$_CLANG" -eq "1" ]; then
-    export CC=clang
-    export CXX=clang++
-    export AR=llvm-ar
-    export NM=llvm-nm
-    export RANLIB=llvm-ranlib
-  fi
 
   # Do PGO
   #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
