@@ -4,7 +4,7 @@
 
 pkgname=kde-servicemenus-encfs
 _pkgname=kde-service-menu-encfs
-pkgver=0.7.0
+pkgver=0.8
 pkgrel=1
 pkgdesc="One KDE servicemenu for encFS encrypted directories."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('plasma-workspace' 'encfs')
 _hash_time=($(curl -s "$url"|grep -e "hash =" -e "timetamp ="|sed "s/.*= '\(.*\)';/\1/"))
 source=("https://dl.opendesktop.org/api/files/download/id/1524695036/s/${_hash_time[0]}/t/${_hash_time[1]}/u/${_pkgname}-${pkgver}_all.tar.gz")
-sha256sums=('403fd00b27d282fa292038ba6209c84c0ccb8ba941b269e2062ace57a286740d')
+sha256sums=('d982dbae3334603ad9d73c5712504a854ea672dd003a1067c9a065088ef83197')
 
 build() {
   tar -xvf ${srcdir}/${_pkgname}-${pkgver}_all.tar.gz
@@ -33,5 +33,3 @@ package() {
   install -m 644 ${srcdir}/${_pkgname}-${pkgver}_all/doc/* ${pkgdir}/usr/share/doc/${pkgname}
 
 }
-
-# vim:set ts=2 sw=2 et:
