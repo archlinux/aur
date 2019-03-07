@@ -6,6 +6,7 @@ pkgbase = cnijfilter-e560series
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = fakeroot
 	depends = popt
 	depends = libcups
 	depends = libxml2

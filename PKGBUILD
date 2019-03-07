@@ -6,6 +6,7 @@ pkgdesc="Canon IJ Printer Driver (for E560 series)"
 arch=('i686' 'x86_64')
 url="http://support-cn.canon-asia.com/contents/CN/ZH/0100588503.html"
 license=('custom')
+makedepends=('fakeroot')
 depends=('popt' 'libcups' 'libxml2')
 source=('http://gdlp01.c-wss.com/gds/5/0100005885/01/cnijfilter-e560series-4.10-1-deb.tar.gz')
 md5sums=('38ac1c4eb70e5fce53bd06fd571c3830')
@@ -32,8 +33,8 @@ package() {
     chown root:root usr/lib/bjlib/cnnet.ini
 
     # Move licenses to their proper locations
-    install -d usr/share/licenses/cnijfilter-e400series
-    mv usr/share/doc/cnijfilter-common/LICENSE-cnijfilter-${pkgver}*.txt usr/share/licenses/cnijfilter-e400series/
+    install -d usr/share/licenses/cnijfilter-e560series
+    mv usr/share/doc/cnijfilter-common/LICENSE-cnijfilter-${pkgver}*.txt usr/share/licenses/cnijfilter-e560series/
     rm -r usr/share/doc/
 
     # Move the udev rule to its proper location
