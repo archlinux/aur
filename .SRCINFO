@@ -1,7 +1,7 @@
 pkgbase = cdrip
 	pkgdesc = A cdparanoia, lame and musicbrainz.org frontend written in python.
-	pkgver = 3.0
-	pkgrel = 1
+	pkgver = 3.1
+	pkgrel = 0
 	url = https://gitlab.com/the_isz/cdrip
 	arch = any
 	license = GPL
@@ -11,8 +11,8 @@ pkgbase = cdrip
 	depends = python-discid
 	depends = cdparanoia
 	options = !emptydirs
-	source = https://gitlab.com/the_isz/cdrip/-/archive/3.0/cdrip-3.0.tar.gz
-	md5sums = 0ab1c2223c66c4b6bf92cd3820d7eb33
+	source = https://gitlab.com/the_isz/cdrip/-/archive/3.1/cdrip-3.1.tar.gz
+	md5sums = 5afce9706699687fb31b539727596bd6
 
 pkgname = cdrip
 
