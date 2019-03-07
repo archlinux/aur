@@ -1,0 +1,25 @@
+pkgbase = caja-actions
+	pkgdesc = An extension for Caja,the MATE file manager, which allows the user to add arbitrary program to be launched through the popup menu of selected files.
+	pkgver = 1.8.3
+	pkgrel = 1
+	url = https://github.com/raveit65/caja-actions
+	arch = i686
+	arch = x86_64
+	groups = caja-extensions
+	license = GPL2
+	makedepends = mate-common
+	makedepends = yelp-tools
+	makedepends = docbook-utils
+	depends = caja
+	depends = glib2
+	depends = libgtop
+	depends = libnotify
+	depends = polkit
+	depends = procps
+	depends = pygtk
+	depends = xdg-utils
+	source = caja-actions-1.8.3.tar.xz::https://github.com/raveit65/caja-actions/releases/download/v1.8.3/caja-actions-1.8.3.tar.xz
+	sha256sums = 7d756117eb00fc2857552ac330a49a815e6688c7850659b245759133057fa7b4
+
+pkgname = caja-actions
+
