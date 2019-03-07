@@ -2,7 +2,7 @@
 _pkgname=camouflage
 pkgname=$_pkgname-git
 pkgver=0.11.0.r0.g7412b07
-pkgrel=2
+pkgrel=3
 pkgdesc="a mux websocket over TLS proxy, experimental version"
 arch=('x86_64')
 license=('MPL')
@@ -45,7 +45,7 @@ build() {
 
     msg2 "Building binary"
 
-    go build -gcflags "all=-trimpath=${PWD}:${GOPATH}" -asmflags "all=-trimpath=${PWD}:${GOPATH}" -ldflags "-w -s -extldflags ${LDFLAGS}"
+    go build -gcflags "all=-trimpath=${PWD}:${GOPATH}" -asmflags "all=-trimpath=${PWD}:${GOPATH}" -ldflags "-w -s -extldflags ${LDFLAGS}" -v
     
     msg2 "Cleaning residual"
     chmod 777 -R $GOPATH/pkg/mod
