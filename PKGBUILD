@@ -1,16 +1,16 @@
 # Maintainer: sQVe <oskargrunning@gmail.com>
 
-arch=('any')
-depends=('weechat' 'libnotify')
-license=('MIT')
-sha512sums=('SKIP')
-pkgdesc='A WeeChat script that sends highlight and message notifications through notify-send'
 pkgname=weechat-notify-send-git
-pkgrel=1
 pkgver=r180.962218a
-source=('git+https://github.com/s3rvac/weechat-notify-send.git')
-makedepends=('git')
+pkgrel=1
+pkgdesc='A WeeChat script that sends highlight and message notifications through notify-send'
 url='https://github.com/s3rvac/weechat-notify-send'
+arch=('any')
+license=('MIT')
+depends=('weechat' 'libnotify')
+makedepends=('git')
+source=('git+https://github.com/s3rvac/weechat-notify-send.git')
+sha512sums=('SKIP')
 
 _gitname='weechat-notify-send'
 
@@ -21,7 +21,6 @@ pkgver() {
 
 package() {
   cd "${_gitname}"
-
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 notify_send.py "${pkgdir}/usr/lib/weechat/python/notify_send.py"
 }
