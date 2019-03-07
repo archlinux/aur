@@ -2,6 +2,7 @@ pkgbase = fedora-firefox-wayland-bin
 	pkgdesc = Fedora's firefox build wtih wayland enabled by default
 	pkgver = 65.0.2
 	pkgrel = 1
+	epoch = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
 	license = MPL
@@ -24,6 +25,7 @@ pkgbase = fedora-firefox-wayland-bin
 	depends = icu
 	depends = libjpeg6-turbo
 	depends = pipewire
+	depends = libvpx-1.7
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = libnotify: Notification integration
 	optdepends = pulseaudio: Audio support
@@ -33,7 +35,7 @@ pkgbase = fedora-firefox-wayland-bin
 	options = !emptydirs
 	options = !strip
 	source = https://kojipkgs.fedoraproject.org//packages/firefox/65.0.2/1.fc29/x86_64/firefox-65.0.2-1.fc29.x86_64.rpm
-	md5sums = 7ff9c41e8ed22a027bc056429ce6000e
+	md5sums = 69e26751ddeb067a64c9e928d48f3c5b
 
 pkgname = fedora-firefox-wayland-bin
 

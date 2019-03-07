@@ -3,6 +3,7 @@
 pkgname=fedora-firefox-wayland-bin
 pkgver=65.0.2
 pkgrel=1
+epoch=1
 # fedora version
 fc="fc29"
 pkgdesc="Fedora's firefox build wtih wayland enabled by default"
@@ -14,7 +15,8 @@ conflicts=('firefox')
 options=(!emptydirs !strip)
 makedepends=(sed)
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
-         ffmpeg nss hunspell-en_US sqlite ttf-font libpulse libvpx icu libjpeg6-turbo pipewire)
+         ffmpeg nss hunspell-en_US sqlite ttf-font libpulse libvpx icu libjpeg6-turbo pipewire
+         libvpx-1.7)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -22,7 +24,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 
 source=("https://kojipkgs.fedoraproject.org//packages/firefox/$pkgver/$pkgrel.$fc/x86_64/firefox-$pkgver-$pkgrel.$fc.x86_64.rpm")
 
-md5sums=('7ff9c41e8ed22a027bc056429ce6000e')
+md5sums=('69e26751ddeb067a64c9e928d48f3c5b')
 
 
 prepare() {
