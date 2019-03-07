@@ -1,0 +1,16 @@
+pkgbase = vim-minimap-git
+	pkgdesc = A code minimap for Vim
+	pkgver = 0.58.1bc36a0ff307
+	pkgrel = 1
+	url = https://github.com/severin-lemaignan/vim-minimap
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim
+	depends = python
+	source = git+https://github.com/severin-lemaignan/vim-minimap.git
+	sha256sums = SKIP
+
+pkgname = vim-minimap-git
+
