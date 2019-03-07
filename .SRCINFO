@@ -1,0 +1,37 @@
+pkgbase = odio
+	pkgdesc = Audio compression tool for FLAC and Nero AAC
+	pkgver = 19.3.7.226
+	pkgrel = 1
+	url = https://tari.in/www/software/odio
+	arch = any
+	license = GPL3
+	makedepends = bzr
+	makedepends = python-setuptools
+	makedepends = python-polib
+	depends = gst-python
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
+	depends = gst-libav
+	depends = python-html5lib
+	depends = python-beautifulsoup4
+	depends = python-lxml
+	depends = python-psutil
+	depends = flac
+	depends = cuetools
+	depends = shntool
+	depends = atomicparsley
+	depends = mac
+	depends = lsdvd
+	depends = mplayer
+	depends = mhwaveedit
+	depends = aacgain-cvs
+	depends = neroaac
+	depends = sacd-decoder-bzr
+	options = !emptydirs
+	source = bzr+lp:/odio/trunk
+	md5sums = SKIP
+
+pkgname = odio
+

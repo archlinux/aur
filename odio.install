@@ -1,0 +1,26 @@
+post_install()
+{
+
+	if which pycompile >/dev/null 2>&1; then
+		pycompile -p odio 
+	fi
+
+    glib-compile-schemas /usr/share/glib-2.0/schemas/
+}
+
+post_upgrade()
+{
+	post_install
+}
+
+pre_remove()
+{
+	if which pyclean >/dev/null 2>&1; then
+		pyclean -p odio 
+	else
+		pacman -Qql odio | grep '\.py$' | while read file
+		do
+			rm -f "${file}"[co] >/dev/null
+	  	done
+	fi
+}
