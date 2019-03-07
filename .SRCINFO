@@ -1,0 +1,30 @@
+pkgbase = python-ncbi-genome-download
+	pkgdesc = Scripts to download genomes from the NCBI FTP servers
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/kblin/ncbi-genome-download
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python-pytest
+	makedepends = python2-pytest
+	makedepends = python-coverage
+	makedepends = python2-coverage
+	makedepends = python-pytest-cov
+	makedepends = python2-pytest-cov
+	makedepends = python-requests-mock
+	makedepends = python2-requests-mock
+	makedepends = python-pytest-mock
+	makedepends = python2-pytest-mock
+	source = ncbi-genome-download-0.2.9.tar.gz::https://github.com/kblin/ncbi-genome-download/archive/0.2.9.tar.gz
+	sha256sums = fc0bb9a51b99a893eb0838cf0fd469efc92b3634371ca9220076d87d3537d7df
+
+pkgname = python2-ncbi-genome-download
+	depends = python2
+	depends = python2-appdirs
+
+pkgname = python-ncbi-genome-download
+	depends = python
+	depends = python-appdirs
+
