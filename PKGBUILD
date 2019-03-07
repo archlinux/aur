@@ -1,3 +1,5 @@
+# Maintainer: sQVe <oskargrunning@gmail.com>
+
 arch=('any')
 depends=('weechat' 'libnotify')
 license=('MIT')
