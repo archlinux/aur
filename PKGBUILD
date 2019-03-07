@@ -1,7 +1,7 @@
 # Maintainer: edward-p <micro.fedora@gmail.com>
 pkgname=ttf-consolas-with-yahei-powerline-git
-pkgver='0.1.1'
-pkgrel=0
+pkgver=r2.28cedd6
+pkgrel=1
 pkgdesc="Consolas-with-Yahei with powerline patched with nerd-fonts)"
 arch=(any)
 url=https://github.com/crvdgc/Consolas-with-Yahei
@@ -10,6 +10,14 @@ conflicts=(ttf-consolas-with-yahei)
 makedepends=(tar)
 fontname='consolas-with-yahei'
 install=$pkgname.install
+
+pkgver() {
+  cd "$srcdir/$_pkgbase"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
 
 prepare(){
 	git clone --depth=1 https://github.com/crvdgc/Consolas-with-Yahei.git
