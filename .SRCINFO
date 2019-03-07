@@ -11,9 +11,9 @@ pkgbase = rider
 	provides = rider
 	conflicts = rider
 	options = !strip
-	source = https://download-cf.jetbrains.com/rider/JetBrains.Rider-2018.3.1.tar.gz
+	source = https://download-cf.jetbrains.com/rider/JetBrains.Rider-2018.3.4.tar.gz
 	source = rider.desktop
-	sha256sums = 5eb9d9e3fc26d092ec4a2d7df0582c237e212d2346f3afdd612d3e53e588c92e
+	sha256sums = 9754f5febadc3f562c872ea66720ab61ea9f863dd60a0b34b9500ff9387a95ce
 	sha256sums = 91f41e1a5deae9f66bab7d7798a679a39350120aa229b4093415ef8269449714
 
 pkgname = rider
