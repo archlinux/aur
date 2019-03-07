@@ -1,7 +1,7 @@
 pkgbase = ipython-7
 	pkgdesc = IPython provides a rich toolkit to help you make the most of using Python interactively
-	pkgver = 7.2.0
-	pkgrel = 4
+	pkgver = 7.3.0
+	pkgrel = 1
 	url = https://ipython.readthedocs.io/en/stable/
 	arch = any
 	license = BSD
@@ -17,8 +17,8 @@ pkgbase = ipython-7
 	provides = ipython
 	provides = ipython-7
 	conflicts = ipython
-	source = https://github.com/ipython/ipython/releases/download/7.2.0/ipython-7.2.0.tar.gz
-	md5sums = fedcf768627799b7bc39b5d83bfa3df7
+	source = https://github.com/ipython/ipython/releases/download/7.3.0/ipython-7.3.0.tar.gz
+	md5sums = d12de3bf8fdf9997f9cda81d55b6ce6a
 
 pkgname = ipython-7
 
