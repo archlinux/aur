@@ -4,6 +4,7 @@ pkgrel=1
 pkgver=0.0.5.r45.gff59523
 pkgdesc="Tool to generate payloads that exploit unsafe Java object deserialization"
 arch=("any")
+url="https://github.com/frohoff/ysoserial"
 license=('MIT')
 depends=("java-environment")
 makedepends=("maven")
