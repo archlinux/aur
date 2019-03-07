@@ -1,6 +1,6 @@
 pkgbase = jdk8-openj9-bin
 	pkgdesc = Eclipse (former IBM) OpenJ9 with openjdk8
-	pkgver = 8u192-b12
+	pkgver = 8u202-b08
 	pkgrel = 1
 	url = https://adoptopenjdk.net/index.html?variant=openjdk8-openj9
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = jdk8-openj9-bin
 	provides = java-environment=8
 	provides = java-runtime=8
 	provides = java-runtime-headless=8
-	noextract = OpenJDK8U-jdk_x64_linux_openj9_8u192b12_openj9-0.11.0.tar.gz
-	source = https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u192-b12_openj9-0.11.0/OpenJDK8U-jdk_x64_linux_openj9_8u192b12_openj9-0.11.0.tar.gz
-	sha256sums = fd7035c60ad3060fccf7ab67c15b722302a1863ebddd3141dc3dd98bd0b25a68
+        noextract = OpenJDK8U-jdk_x64_Linux_openj9_8u202b08_openj9-0.12.0.tar.gz
+        source = https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u202-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u202b08.tar.gz
+	sha256sums = f5a1c9836beb3ca933ec3b1d39568ecbb68bd7e7ca6a9989a21ff16a74d910ab
 
 pkgname = jdk8-openj9-bin
 
