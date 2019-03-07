@@ -1,7 +1,7 @@
 pkgbase = python-apgl
 	pkgdesc = A simple, fast and easy to use Python graph library using NumPy, Scipy and PySparse
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/charanpald/APGL
 	arch = any
 	license = LGPL
