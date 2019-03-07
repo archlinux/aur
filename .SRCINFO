@@ -1,14 +1,14 @@
 pkgbase = python-unicodedata2
 	pkgdesc = unicodedata backport/updates
-	pkgver = 8.0.0
+	pkgver = 11.0.0
 	pkgrel = 1
 	url = https://github.com/mikekap/unicodedata2
 	arch = i686
 	arch = x86_64
 	license = Apache
 	depends = python
-	source = https://pypi.python.org/packages/source/u/unicodedata2/unicodedata2-8.0.0.tar.gz
-	md5sums = dd870b5db5db41a7f2e923ba90b432a8
+	source = https://pypi.python.org/packages/source/u/unicodedata2/unicodedata2-11.0.0.tar.gz
+	sha256sums = 92197bf855c4b449d99328d1eee28b8295076ec99cdf21f2b6d62d45ff71c3ab
 
 pkgname = python-unicodedata2
 

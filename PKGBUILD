@@ -1,14 +1,16 @@
+# Maintainer: Philipp A. <flying-sheep@web.de>
+
 _name=unicodedata2
 pkgname="python-$_name"
-pkgver=8.0.0
+pkgver=11.0.0
 pkgrel=1
 pkgdesc='unicodedata backport/updates'
 arch=('i686' 'x86_64')
 url="https://github.com/mikekap/$_name"
 license=('Apache')
 depends=('python')
-source=("https://pypi.python.org/packages/source/u/$_name/$_name-$pkgver.tar.gz")
-md5sums=('dd870b5db5db41a7f2e923ba90b432a8')
+source=("https://pypi.python.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('92197bf855c4b449d99328d1eee28b8295076ec99cdf21f2b6d62d45ff71c3ab')
 
 build() {
 	cd "$srcdir/$_name-$pkgver"
