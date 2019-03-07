@@ -1,13 +1,13 @@
 pkgbase = python-better_exchook
 	pkgdesc = A nicer drop-in-replacement for Python sys.excepthook
-	pkgver = 1.20190103.160956
+	pkgver = 1.20190212.151715
 	pkgrel = 1
 	url = https://github.com/albertz/py_better_exchook
 	arch = any
 	license = BSD
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/b/better_exchook/better_exchook-1.20190103.160956.tar.gz
-	sha256sums = ec7541608f0c30f9983f2d517702902cce00f4fa6f65c89e51bbe6034e29cdd5
+	source = https://files.pythonhosted.org/packages/source/b/better_exchook/better_exchook-1.20190212.151715.tar.gz
+	sha256sums = eaa8b9d1ff8e513f18d86debcf3bd24e473367379228cf2aff148e9b65eef000
 
 pkgname = python-better_exchook
 
