@@ -1,6 +1,6 @@
 pkgbase = ib-tws
 	pkgdesc = Electronic trading platform from discount brokerage firm Interactive Brokers
-	pkgver = 974.4o
+	pkgver = 975.3
 	pkgrel = 1
 	url = http://interactivebrokers.com/
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = ib-tws
 	md5sums = b1cbe7273f3d0f2f0b6a09e65606b600
 	md5sums = 238637fb4ab6ae734bade474709bafb1
 	md5sums = ffa9fcfb623850e5c9e796040bdbd052
-	md5sums = 26363be64a3bc033bf3498e76efb52fe
+	md5sums = 723546166571957c7a70c87813c61656
 
 pkgname = ib-tws
 
