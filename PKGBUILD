@@ -6,7 +6,7 @@ pkgdesc="Compare Actions using Meld for Nemo File Manager"
 arch=('any')
 url="https://wiki.archlinux.org/index.php/Nemo#Nemo_Actions"
 license=('GPL')
-optdepends=('nemo' 'meld')
+depends=('nemo' 'meld')
 source=("compare-save-for-later.nemo_action"
         "compare-with-saved.nemo_action"
 		"compare.sh")
