@@ -1,6 +1,6 @@
 # Maintainer: Marcel Campello <tucho@prafrentex.com.br>
 pkgname=leiningen-completions
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Completion scripts for leiningen"
 arch=('any')
