@@ -1,6 +1,6 @@
 pkgbase = python-numcodecs
 	pkgdesc = A Python package providing buffer compression and transformation codecs for use in data storage and communication applications
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/alimanfoo/numcodecs
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-numcodecs
 	depends = cython
 	depends = python-numpy
 	depends = python-msgpack
-	source = https://files.pythonhosted.org/packages/source/n/numcodecs/numcodecs-0.6.2.tar.gz
-	sha256sums = c7ffa57bd8c9776eef12afab0e6fda843cda277d4bb55bcf0d048b5e38bc71e1
+	source = https://files.pythonhosted.org/packages/source/n/numcodecs/numcodecs-0.6.3.tar.gz
+	sha256sums = 5e98413d5d1156def888acd131bed7f3c21313847521efbd7f3707103de5d820
 
 pkgname = python-numcodecs
 
