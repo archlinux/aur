@@ -4,8 +4,8 @@
 
 _target=riscv64-linux-gnu
 pkgname=$_target-binutils
-pkgver=2.31.1
-pkgrel=2
+pkgver=2.32
+pkgrel=1
 pkgdesc='Assemble and manipulate binary and object files for 32-bit and 64-bit RISC-V'
 arch=('x86_64')
 url='https://gnu.org/software/binutils/'
@@ -13,7 +13,7 @@ license=('GPL')
 groups=('risc-v')
 makedepends=('setconf')
 source=("https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz")
-sha512sums=('0fca326feb1d5f5fe505a827b20237fe3ec9c13eaf7ec7e35847fd71184f605ba1cefe1314b1b8f8a29c0aa9d88162849ee1c1a3e70c2f7407d88339b17edb30')
+sha512sums=('d326408f12a03d9a61a9de56584c2af12f81c2e50d2d7e835d51565df8314df01575724afa1e43bd0db45cfc9916b41519b67dfce03232aa4978704492a6994a')
 
 prepare() {
   setconf binutils-$pkgver/libiberty/configure ac_cpp="'\$CPP \$CPPFLAGS -O2'"
