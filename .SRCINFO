@@ -1,0 +1,33 @@
+pkgbase = rethinkdb
+	pkgdesc = Distributed powerful and scalable NoSQL database
+	pkgver = 2.3.6
+	pkgrel = 5
+	url = https://www.rethinkdb.com/
+	install = rethinkdb.install
+	arch = x86_64
+	license = APACHE
+	makedepends = boost
+	makedepends = python2
+	makedepends = wget
+	depends = protobuf
+	depends = ncurses
+	depends = curl
+	depends = openssl-1.0
+	options = !emptydirs
+	backup = etc/rethinkdb/instances.d/default.conf
+	source = https://download.rethinkdb.com/dist/rethinkdb-2.3.6.tgz
+	source = https://download.rethinkdb.com/dist/rethinkdb-2.3.6.tgz.asc
+	source = rethinkdb-tmpfile.conf
+	source = rethinkdb.service
+	source = rethinkdb.sysusers
+	source = mksnapshot_crash_fix.patch::https://github.com/rethinkdb/rethinkdb/commit/871bd3705a1f29c4ab07a096d562a4b06231a97c.patch
+	validpgpkeys = 3B87619DF812A63A8C1005C30742918E5C8DA04A
+	sha512sums = 653177750f7439fa1d61a121e488d578be1eab90f87c7d17ad52b9793d8543f22bbe98f8d501c2ab2d7048c65118096430fe7bde945d87c7a3228905af801af2
+	sha512sums = SKIP
+	sha512sums = 5996f72b8e08aac80285373e8e1b5a664177e9d0e8d13e5638c6b821fe5b7a0368001fbfa9ef3f6709dabf0616abcabea40adc4808d176572f8f99b7a3255bae
+	sha512sums = 95e352cb941ea37b1dc3ddf4c8eaf0c8ef80b32e7a3cccf0e6fdefb92f0af83cfa47e3e6354d0397d7dc63c3c3cd87a8cb600f7b970c20fa6a65b832be219650
+	sha512sums = 974eda083410f400766833588e775c6f054fa16fd31ca80328dcacd985969db2aadfe71ad6cb91ffac89992de7efe94d90f0b3e960e9ccf4858ac962df663236
+	sha512sums = f49bc92ecdd6d93bf89bd816268569f839daf0b289c44b7bede195b26ef53c2efd4ab6fb03ef0086d0a9e347210cd385755eff7e44b50d304a400d513addd5bf
+
+pkgname = rethinkdb
+
