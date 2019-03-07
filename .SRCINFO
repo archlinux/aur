@@ -1,7 +1,7 @@
 pkgbase = python-ahocorasick
 	pkgdesc = Fast and memory efficient exact or approximate multi-pattern string search
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/pyahocorasick
 	arch = any
 	license = BSD
