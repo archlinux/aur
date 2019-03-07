@@ -28,6 +28,16 @@ prepare() {
         -i $(find . -name '*.py')
 }
 
+build() {
+    msg "Building Python2"
+    cd ${srcdir}/${_pyname}-${pkgver}-py2
+    python2 setup.py build
+
+    msg "Building Python3"
+    cd ${srcdir}/${_pyname}-${pkgver}
+    python setup.py build
+}
+
 package_python2-scikit-image() {
     depends=('python2-scipy' 'python2-matplotlib' 'python2-networkx'
              'python2-pillow' 'python2-pywavelets')
