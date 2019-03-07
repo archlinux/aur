@@ -1,18 +1,17 @@
 pkgbase = lib32-ncurses5-compat-libs
 	pkgdesc = System V Release 4.0 curses emulation library (32-bit), ABI 5
 	pkgver = 6.1
-	pkgrel = 1
-	url = http://www.gnu.org/software/ncurses/
+	pkgrel = 2
+	url = https://www.gnu.org/software/ncurses/
 	arch = x86_64
 	license = MIT
-	makedepends = gcc-multilib
 	depends = lib32-glibc
 	depends = lib32-ncurses
 	source = https://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.1.tar.gz
 	source = https://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.1.tar.gz.sig
 	validpgpkeys = C52048C0C0748FEE227D47A2702353E0F7E48EDB
-	md5sums = 98c889aaf8d23910d2b92d65be2e737a
-	md5sums = SKIP
+	sha256sums = aa057eeeb4a14d470101eff4597d5833dcef5965331be3528c08d99cebaa0d17
+	sha256sums = SKIP
 
 pkgname = lib32-ncurses5-compat-libs
 
