@@ -1,6 +1,6 @@
 pkgbase = lombok-eclipse
 	pkgdesc = Project Lombok integrated to Eclipse installation
-	pkgver = 1.18.4
+	pkgver = 1.18.6
 	pkgrel = 1
 	url = http://projectlombok.org
 	install = lombok.install
@@ -10,8 +10,8 @@ pkgbase = lombok-eclipse
 	depends = eclipse-java
 	depends = java-runtime
 	noextract = lombok.jar
-	source = https://projectlombok.org/downloads/lombok-1.18.4.jar
-	sha256sums = 39f3922deb679b1852af519eb227157ef2dd0a21eec3542c8ce1b45f2df39742
+	source = https://projectlombok.org/downloads/lombok-1.18.6.jar
+	sha256sums = 6373d9ade79efdc028cd48d40a9af9ac6a090dbcfaec55b438ec49556a4e92fb
 
 pkgname = lombok-eclipse
 
