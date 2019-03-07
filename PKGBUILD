@@ -2,7 +2,7 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='xmrig-amd'
-pkgver='2.13.0'
+pkgver='2.14.0'
 pkgrel='1'
 pkgdesc='High Perf CryptoNote GPU Miner (Monero, Aeon)'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ backup=("etc/${pkgname}/xmrig.conf")
 source=("${pkgname}.service"
 	"${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('6b1914975f93842fd564b7b4b6ee73b93942c154aebfb5f18e3a2d100041832b'
-            '17204c56debfa8e3e23eeb67839a044b465c6f8320c5eab72231dda709ae4382')
+            '0e96f9bee7abcb6140743a2b9faeb9991e4a11712c90bb429d0ba71c955aee6c')
 prepare() {
   cd "${pkgname}-${pkgver}"
   mkdir build
