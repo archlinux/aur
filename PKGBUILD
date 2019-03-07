@@ -2,7 +2,7 @@
 # Contributor: Jan Dolinar <dolik.rce@gmail.com>
 # Contributor: Andre Klitzing <andre () incubo () de>
 pkgname=dput
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Debian package upload tool"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 makedepends=('python-setuptools')
 depends=('python' 'python-debian' 'python-gpgme')
 source=(http://http.debian.net/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz)
-md5sums=('67924fcbb7cb17f3344dd3696f1c2619')
+md5sums=('bf525a37ac4bfe1851584d7b843717ec')
 
 build() {
   cd "$pkgname-$pkgver"
