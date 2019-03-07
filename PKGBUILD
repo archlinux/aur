@@ -2,7 +2,7 @@
 
 _module='futurist'
 pkgname=('python-futurist' 'python2-futurist')
-pkgver='1.8.0'
+pkgver='1.8.1'
 pkgrel='1'
 pkgdesc='Oslo Log library'
 arch=('any')
@@ -21,7 +21,7 @@ checkdepends=('python-eventlet' 'python2-eventlet'
               'python-testscenarios' 'python2-testscenarios'
               'python-testtools' 'python2-testtools')
 source=("https://github.com/openstack/${_module}/archive/${pkgver}.tar.gz")
-sha512sums=('ab438d8ddaee50eb67674195def2d2d2e3646ad073ee21d867870b0f239f750eced8a51bc05dce9aa834ca483835f5aaeff52d148d11389c7d4bcbb13c3b8c1a')
+sha512sums=('2718593c54d2babba96a9a410f09648d7b32c038af912e3f217143ec0e2f11af6427c739acbf34b114351cb35aee869cf8ebcb7436c148f30ccc264664044cbe')
 
 prepare() {
   cp -a "${srcdir}/${_module}-${pkgver}"{,-py2}
