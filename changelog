@@ -1,3 +1,15 @@
+2019-03-07 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.0.1.0-1:
+    ASF will now discover plugins also from a custom --path directory.
+    ASF will now provide feedback during processing the command on Steam chat (#951, #1114).
+    ASF now includes interactive command console which can be a very convenient way of executing commands.
+    Distributing redeeming preference will now proceed from current bot onwards, as opposed to always proceeding from the first bot (which is still used by Forwarding).
+    Added bgr command.
+    Fixed one more variant of invalid ASF 2FA device identificator.
+    Fixed regression introduced around V4 which caused NRE when using SteamTarget with custom NLog config.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Usual amount of other core improvements, optimizations and bugfixes.
+    [Deprecation for plugin creators] Commands.Response() changed its signature, you might need to recompile your plugins if you're making use of this function.
 2019-02-08 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.0.0.5-1:
     [!] ASF now comes with a plugin system, powerful enough to justify opening a new major ASF V4 version. Despite the version bump, there are no breaking changes compared to V3 and all V3 setups will update to V4 without issues.

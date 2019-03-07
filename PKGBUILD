@@ -1,7 +1,7 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname="asf"
-pkgver="4.0.0.5"
+pkgver="4.0.1.0"
 pkgrel=1
 pkgdesc="Steam cards farmer."
 arch=('x86_64' 'arm' 'i686')
@@ -29,9 +29,9 @@ sha256sums=('8d76996c1024b80704b25af8a8800ef3f8a8a518d19c2a1e85ba62b58b22cdfd'
             '883373be23f6f49ae597f61c1310d8cd45bce7c3ee1b5d456ffc9fedbe7dd486'
             'e63a92fd8008c40dab963161bdac967b57146553c00f114469c204ac6e1795b2'
             '9a10e9e6ff88fcc00000c12464ae2b650a3f075ef7e440088414b46c41214ee4')
-sha256sums_x86_64=('3454d60fe8a864ab344ef33a6cf51ef791a9c4a2a947eadb4f2ec01ee65b3d13')
-sha256sums_arm=('814941975478a3345ff15106b39094779d7a7e4786f098234cb7ff3069442f65')
-sha256sums_i686=('e605592c056339d32b39c655fd7b5ee47eac503144456d9bc7e978ada4fe6dc6')
+sha256sums_x86_64=('1f5ca2697c9a3bbda3e4c1a009c345a94733e1c0e246a140656586f630944136')
+sha256sums_arm=('b5e11328c8c3e322dfc7d7c468208de35885b4ff671bea1aa1f9c0612678c4b8')
+sha256sums_i686=('eb5e883d76748dd44481118c1ccb03e20c28ee3149c0e0f6e03326c6b73d85ee')
 noextract=("${source_x86_64[@]%%::*}" "${source_arm[@]%%::*}" "${source_i686[@]%%::*}")
 
 prepare() {
