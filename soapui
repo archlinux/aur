@@ -25,7 +25,7 @@ esac
 SOAPUI_HOME=/usr/share/soapui
 export SOAPUI_HOME
 
-SOAPUI_CLASSPATH=$SOAPUI_HOME/bin/soapui-#SOAPUIVER#-EB.jar:$SOAPUI_HOME/lib/*
+SOAPUI_CLASSPATH=$SOAPUI_HOME/bin/soapui-#SOAPUIVER#.jar:$SOAPUI_HOME/lib/*
 
 export SOAPUI_CLASSPATH
 
@@ -44,8 +44,8 @@ then
     JAVA_OPTS="$JAVA_OPTS -Dsoapui.ext.libraries=$SOAPUI_HOME/bin/ext"
     JAVA_OPTS="$JAVA_OPTS -Dsoapui.ext.listeners=$SOAPUI_HOME/bin/listeners"
     JAVA_OPTS="$JAVA_OPTS -Dsoapui.ext.actions=$SOAPUI_HOME/bin/actions"
-	JAVA_OPTS="$JAVA_OPTS -Djava.library.path=$SOAPUI_HOME/bin"
-	JAVA_OPTS="$JAVA_OPTS -Dwsi.dir=$SOAPUI_HOME/wsi-test-tools"
+    JAVA_OPTS="$JAVA_OPTS -Djava.library.path=$SOAPUI_HOME/bin"
+    JAVA_OPTS="$JAVA_OPTS -Dwsi.dir=$SOAPUI_HOME/wsi-test-tools"
 #uncomment to disable browser component
 #   JAVA_OPTS="$JAVA_OPTS -Dsoapui.browser.disabled=true"
 fi
