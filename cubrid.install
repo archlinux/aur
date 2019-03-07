@@ -1,0 +1,48 @@
+# Colored makepkg-like functions
+msg_green() {
+    printf "${green}==>${bold} $1${all_off}\n"
+}
+msg_cmd() {
+    printf "${blue}  ->${all_off} $1\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+green="${bold}$(tput setaf 2)"
+blue="${bold}$(tput setaf 4)"
+
+post_install() {
+    if ! getent group cubrid > /dev/null; then
+        groupadd -g 42 cubrid
+    fi
+    if ! getent passwd cubrid > /dev/null; then
+        useradd -c 'cubrid user' -u 42 -g cubrid -d '/opt/cubrid' -s /bin/bash cubrid
+        passwd -l cubrid > /dev/null
+    fi
+    if [ -d '/opt/cubrid' ]; then
+        chown -R cubrid:cubrid '/opt/cubrid'
+    fi
+    if [ ! -d '/var/lib/cubrid/databases' ]; then
+        mkdir -p '/var/lib/cubrid/databases'
+        chmod 775 '/var/lib/cubrid/databases'
+
+        touch '/var/lib/cubrid/databases/databases.txt'
+        chmod 664 '/var/lib/cubrid/databases/databases.txt'
+
+        chown -R cubrid:cubrid '/var/lib/cubrid'
+    fi
+
+    print_note
+}
+
+print_note() {
+    msg_green "Add your user to cubrid group"
+    msg_cmd "sudo usermod -a -G cubrid <username>"
+    msg_green "Run this command for creating cubrid database"
+    msg_cmd "sudo -u cubrid bash -c 'source /etc/profile.d/cubrid.sh; cubrid createdb -v -F $CUBRID_DATABASES demodb en_US'"
+    msg_green "Then start cubrid database and service"
+    msg_cmd "sudo systemctl start cubrid"
+    msg_cmd "sudo systemctl start cubrid-database@demodb"
+    msg_green "Start cubrid interactive SQL utility"
+    msg_cmd "csql demodb@127.0.0.1"
+}

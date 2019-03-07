@@ -1,0 +1,24 @@
+pkgbase = cubrid
+	pkgdesc = Comprehensive open source relational database management system highly optimized for Web Applications
+	pkgver = 10.1.2
+	pkgrel = 1
+	url = http://cubrid.org/
+	install = cubrid.install
+	arch = x86_64
+	license = GPLv2
+	depends = ncurses5-compat-libs
+	source = http://ftp.cubrid.org/CUBRID_Engine/10.1.2/CUBRID-10.1.2.7694-64632b2-Linux.x86_64.tar.gz
+	source = cubrid.service
+	source = cubrid-database@.service
+	source = cubrid.install
+	source = cubrid.sh
+	source = cubrid.csh
+	md5sums = 1404d7f0976e2393dfaa3d499fee05c5
+	md5sums = 7f4c8785860bfd9063da18caef2a6e2c
+	md5sums = 226da8427bfc5d2d9ef6a734c9f00e71
+	md5sums = 212cc0285c504c2c6e206c0d721289c4
+	md5sums = 7a366cc938717249b7cc0114ff98dfa3
+	md5sums = 1de08824d0136935b1c4d1fadd4912d8
+
+pkgname = cubrid
+
