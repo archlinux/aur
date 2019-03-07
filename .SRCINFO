@@ -1,0 +1,34 @@
+pkgbase = pfufs
+	pkgdesc = Fujitsu fi series Image Scanner Driver for SANE
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = http://imagescanner.fujitsu.com/global/dl/
+	install = pfufs.install
+	arch = x86_64
+	license = custom
+	depends = sane
+	source = http://origin.pfultd.com/downloads/IMAGE/fi/ubuntu/232/pfufs-ubuntu18.04_2.3.2_amd64.deb
+	source = http://origin.pfultd.com/downloads/IMAGE/fi/ubuntu/232/P2U3-0200-02ENZ0.pdf
+	source = 60-pfufs.rules
+	source = fujitsu.conf.patch
+	source = pfufs
+	source = pfufs.conf
+	source = pfufs.ini
+	source = pfufs.install
+	source = pfufs-post-sane-upgrade.hook
+	source = pfufs-pre-sane-upgrade.hook
+	source = simple-scan.conf
+	sha256sums = a738e350db54e2a80350d472667b6155f90632b37f3f7bc7136bc09a55287793
+	sha256sums = 6c9e4829cfc3159f269a03b72e64ae6d5f03c8d5139c9ab230182224118334ac
+	sha256sums = 116bbb87a658e7a5004c762e5f860897522d8077c5d4d2f2faeb79e7f45d7687
+	sha256sums = c4552be508a4bf5f831c2143bc430f9dbe0dc50cca45326f0cd8089af3e1c240
+	sha256sums = 36890d01da19034cfd7f0e8aa40672693cc2b8db2902c6e3755628ee36dd0e61
+	sha256sums = c5fa4c0a211c69cb4a764cb6dfcc76443d86c1e27469295386db8194eee11f5b
+	sha256sums = af03606af00cd90726b9d4fd5d7ccad1e1209399b7b668e523eedbf5e7c58521
+	sha256sums = 37f40b8d6d59a6cef9b95c5d739b873878117de311ffadb3933185b2500dbc06
+	sha256sums = eb8842571ce6cd505ff1175b6b9086a6b18bdc099594ee66586dd3dd22a398ca
+	sha256sums = 66b98f15a828404e73d0b03f165b0811b54cb8a0fdd7a96c2c32e01fae1fb9d7
+	sha256sums = 6aec8ca879208e25ce8678a9bb0ecf11ccecca3c5e82f6e07b25425a261cc732
+
+pkgname = pfufs
+

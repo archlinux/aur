@@ -1,0 +1,9 @@
+post_install() {
+  echo "Patching sane's fujitsu.conf to ignore devices supported by the pfufs driver"
+  /usr/bin/patch /etc/sane.d/fujitsu.conf /opt/pfufs/etc/sane.d/fujitsu.conf.patch
+}
+
+pre_remove() {
+  echo "Reverting pfufs' patches to sane's fujitsu.conf"
+  /usr/bin/patch -R /etc/sane.d/fujitsu.conf /opt/pfufs/etc/sane.d/fujitsu.conf.patch
+}

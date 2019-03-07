@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = sane
+
+[Action]
+Description = Reverting pfufs' patches to sane's fujitsu.conf
+When = PreTransaction
+Exec = /usr/bin/patch -R /etc/sane.d/fujitsu.conf /opt/pfufs/etc/sane.d/fujitsu.conf.patch

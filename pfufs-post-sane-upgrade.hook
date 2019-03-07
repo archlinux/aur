@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = sane
+
+[Action]
+Description = Patching sane's fujitsu.conf to ignore devices supported by the pfufs driver
+When = PostTransaction
+Exec = /usr/bin/patch /etc/sane.d/fujitsu.conf /opt/pfufs/etc/sane.d/fujitsu.conf.patch

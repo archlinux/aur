@@ -1,0 +1,91 @@
+--- fujitsu.conf	2019-03-07 16:02:15.758266640 +0100
++++ fujitsu.conf	2019-03-07 16:06:47.183671868 +0100
+@@ -151,18 +151,6 @@
+ #ScanSnap iX500
+ usb 0x04c5 0x132b
+ 
+-#fi-7180
+-usb 0x04c5 0x132c
+-
+-#fi-7280
+-usb 0x04c5 0x132d
+-
+-#fi-7160
+-usb 0x04c5 0x132e
+-
+-#fi-7260
+-usb 0x04c5 0x132f
+-
+ #ScanSnap iX500EE
+ usb 0x04c5 0x13f3
+ 
+@@ -214,21 +202,9 @@
+ #fi-6400
+ usb 0x04c5 0x14ac
+ 
+-#fi-7480
+-usb 0x04c5 0x14b8
+-
+ #fi-6420
+ usb 0x04c5 0x14bd
+ 
+-#fi-7460
+-usb 0x04c5 0x14be
+-
+-#fi-7140
+-usb 0x04c5 0x14df
+-
+-#fi-7240
+-usb 0x04c5 0x14e0
+-
+ #fi-7135
+ usb 0x04c5 0x14e1
+ 
+@@ -256,15 +232,42 @@
+ #fi-400F
+ usb 0x04c5 0x151e
+ 
+-#fi-7030
+-usb 0x04c5 0x151f
+-
+ #fi-7700
+ usb 0x04c5 0x1520
+ 
+ #fi-7600
+ usb 0x04c5 0x1521
+ 
+-#fi-7700S
+-usb 0x04c5 0x1522
+ 
++# The following scanners are commented as they are supported
++# by the pfufs driver
++
++# #fi-7030
++# usb 0x04c5 0x151f
++
++# #fi-7140
++# usb 0x04c5 0x14df
++
++# #fi-7240
++# usb 0x04c5 0x14e0
++
++# #fi-7160
++# usb 0x04c5 0x132e
++
++# #fi-7260
++# usb 0x04c5 0x132f
++
++# #fi-7180
++# usb 0x04c5 0x132c
++
++# #fi-7280
++# usb 0x04c5 0x132d
++
++# #fi-7460
++# usb 0x04c5 0x14be
++
++# #fi-7480
++# usb 0x04c5 0x14b8
++
++# #fi-7700S
++# usb 0x04c5 0x1522
