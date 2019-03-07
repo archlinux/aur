@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=pingo
-pkgver=0.98.56
-pkgrel=2
+pkgver=0.99.beta18
+pkgrel=1
 pkgdesc='An experimental, fast Web PNG/JPG optimizer with visually lossless or lossy compression (uses wine)'
 arch=('x86_64')
 url='https://css-ig.net/pingo'
