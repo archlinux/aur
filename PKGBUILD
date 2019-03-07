@@ -1,17 +1,17 @@
 # Maintainer: sQVe <oskargrunning@gmail.com>
 
-arch=('any')
-depends=('gtk3' 'gtk-engine-murrine' 'gtk-engines')
-license=('GPL3')
-md5sums=('SKIP' 'SKIP')
-pkgdesc='Vimix is a flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell'
 pkgname=vimix-gtk-themes-git
-pkgrel=1
 pkgver=r300.c26a40e
+pkgrel=1
+pkgdesc='Vimix is a flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell'
+url='https://github.com/vinceliuice/vimix-gtk-themes'
+arch=('any')
+license=('GPL3')
+depends=('gtk3' 'gtk-engine-murrine' 'gtk-engines')
+makedepends=('git' 'patch')
 source=('Install.patch'
         'git+https://github.com/vinceliuice/vimix-gtk-themes.git')
-makedepends=('git' 'patch')
-url='https://github.com/vinceliuice/vimix-gtk-themes'
+md5sums=('SKIP' 'SKIP')
 
 _gitname=vimix-gtk-themes
 
