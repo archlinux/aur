@@ -7,8 +7,8 @@ pkgdesc="Tools for binary instrumentation, analysis, and modification"
 arch=('i686' 'x86_64')
 url="https://dyninst.org/"
 license=('LGPL')
-depends=('gcc-libs' 'gcc-fortran' 'boost-libs' 'boost')
-makedepends=('cmake' 'boost-libs' 'intel-tbb' 'openmp' 'libdwarf' 'libelf')
+depends=('gcc-libs' 'gcc-fortran' 'intel-tbb' 'boost')
+makedepends=('cmake' 'boost-libs' 'openmp' 'libdwarf' 'libelf')
 source=(https://github.com/dyninst/dyninst/archive/v${pkgver}.tar.gz)
 md5sums=('7b426c25a163b6994f78cdaedb02fd2f')
 
