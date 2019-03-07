@@ -11,7 +11,7 @@
 
 pkgname=openocd-esp32
 pkgver=.00778.g256cc646
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of OpenOCD that has ESP32 support'
 arch=('i686' 'x86_64' 'arm')
 url='https://github.com/espressif/openocd-esp32'
@@ -49,7 +49,7 @@ build() {
   ./bootstrap
   ./configure \
     --prefix=/usr \
-    --program-prefix=${pkgname%openocd} \
+    --program-suffix=-esp32 \
     --disable-werror \
     --with-gnu-ld
 
