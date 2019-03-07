@@ -3,8 +3,8 @@
 # Contributor: Carl George < arch at cgtx dot us >
 
 pkgname=gnome-shell-extension-dash-to-panel-git
-pkgver=18.r39.g83158d5
-pkgrel=2
+pkgver=18.r42.g3b7d0e0
+pkgrel=1
 pkgdesc='Extension for GNOME shell to combine the dash and main panel'
 arch=(any)
 _githubname=dash-to-panel
