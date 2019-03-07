@@ -7,7 +7,7 @@
 # These are FREE fonts, but see the disclaimer at http://www.ephifonts.com/disclaimer
 
 pkgname=ephifonts-no-helvetica
-pkgver=20181107
+pkgver=20190307
 pkgrel=1
 pkgdesc='Like ephifonts, less Helvetica that messes up fonts in Firefox and Chromium.'
 arch=('any')
@@ -189,6 +189,3 @@ package() {
   install "$srcdir"/LICENCE.md ${pkgdir}/usr/share/licenses/"${pkgname}"/LICENCE.md
 }
 
-pkgver() {
-  date +%Y%m%d
-}
