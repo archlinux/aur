@@ -1,13 +1,13 @@
 pkgbase = python-ahocorasick
 	pkgdesc = Fast and memory efficient exact or approximate multi-pattern string search
-	pkgver = 1.1.6
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = http://pypi.python.org/pypi/pyahocorasick
 	arch = any
 	license = BSD
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pyahocorasick/pyahocorasick-1.1.6.tar.gz
-	sha256sums = 6bb71feccd515584edfb6923cd9e5c143da11cf0f7ffbc3c7d3eb2912cbd2026
+	source = https://files.pythonhosted.org/packages/source/p/pyahocorasick/pyahocorasick-1.4.0.tar.gz
+	sha256sums = f9431a20e47e893cadd29f367825e882dbc6fc324a3c24c41e3ff9648e5d04b2
 
 pkgname = python-ahocorasick
 
