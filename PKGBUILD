@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=devkita64-bin
-pkgver=r9
+pkgver=r12
 pkgrel=1
 pkgdesc="AArch64 toolchain for Nintendo Switch homebrew development (precompiled)"
 arch=('x86_64')
@@ -15,10 +15,10 @@ optdepends=('ncurses5-compat-libs: for aarch64-none-elf-gdb')
 install=devkita64.install
 source=("devkita64.sh"
         "devkita64.fish"
-        "https://github.com/devkitPro/buildscripts/releases/download/devkitA64_$pkgver/devkitA64_$pkgver-linux.tar.xz")
+        "https://github.com/devkitPro/buildscripts/releases/download/devkitA64_$pkgver/devkitA64_$pkgver-2-linux.tar.xz")
 sha256sums=('c71d64c68947c25bf48a5141589f107f5d6269e38e37c4bf528f614ff37b8981'
             'a068e1d2fbbd07f4f520824d256696244bcf85da7bf2142a1a0fe1bd550490e8'
-            '207d445626dfdd4f0f789080e66eb6fea3c615b8eddf2c1b2068b4476ff747a4')
+            '819557da3ba2d69b007e8c90579a8d9f86498b2ac3ad984740a0971d385fa3da')
 
 package() {
   install -d "$pkgdir"/opt/devkitpro
