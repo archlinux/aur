@@ -1,12 +1,12 @@
-pkgbase=python-nfc
-pkgname=('python-nfc' 'python2-nfc')
-pkgver=r92.e5f6f89
+pkgname=python-nfc
+pkgver=r95.1cae8e4
 pkgrel=1
 pkgdesc='Python bindings for libnfc'
 arch=('i686' 'x86_64')
 license=(BSD)
 url="https://github.com/xantares/nfc-bindings"
-makedepends=('cmake' 'swig' 'libnfc' 'python' 'python2')
+makedepends=('cmake' 'swig')
+depends=('python' 'libnfc')
 source=("git+https://github.com/xantares/nfc-bindings.git")
 md5sums=('SKIP')
 
@@ -17,34 +17,15 @@ pkgver() {
 
 build()
 {
-  cp -r "$srcdir"/nfc-bindings "$srcdir"/nfc-bindings-py2
-
   cd "$srcdir"/nfc-bindings
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr ..
-
-  cd "$srcdir"/nfc-bindings-py2
-  mkdir -p build && pushd build
-  cmake \
-    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-    -DCMAKE_INSTALL_PREFIX=/usr ..
 }
 
-package_python-nfc()
+package()
 {
-  depends=('python' 'libnfc')
-
   cd "$srcdir"/nfc-bindings/build
   make DESTDIR="$pkgdir" install
-}
-
-package_python2-nfc()
-{
-  depends=('python2' 'libnfc')
-
-  cd "$srcdir"/nfc-bindings-py2/build
-  make DESTDIR="$pkgdir" install
-  rm -r "$pkgdir"/usr/share
 }
 
