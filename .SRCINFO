@@ -1,6 +1,6 @@
 pkgbase = devkitppc-bin
 	pkgdesc = PowerPC toolchain for Nintendo Gamecube/Wii/Wii U homebrew development (precompiled)
-	pkgver = r30
+	pkgver = r34
 	pkgrel = 1
 	url = http://devkitpro.org
 	install = devkitppc.install
@@ -16,10 +16,12 @@ pkgbase = devkitppc-bin
 	options = emptydirs
 	source = devkitppc.sh
 	source = devkitppc.fish
-	source = https://github.com/devkitPro/buildscripts/releases/download/devkitPPC_r30/devkitPPC_r30-linux.tar.xz
+	source = https://github.com/devkitPro/buildscripts/releases/download/devkitPPC_r34/devkitPPC_r34-linux.tar.xz
+	source = https://github.com/devkitPro/devkitppc-rules/releases/download/v1.0.0/devkitppc-rules-1.0.0.tar.xz
 	sha256sums = 69755d0b77c0c3233dee9255a5d897710410be18b9dcdfb8d9d6b18c6945ae34
 	sha256sums = 135a9cbe1fc28c96c2ce38b19cd305857ce49ed56e35bfb5bd96638a51c3ec6f
-	sha256sums = 6f71cf2bdd9706f361c9f77fd5ebaea609765518ba45ad6a8e6ff2e1a5de734d
+	sha256sums = 2d16f74344d8617c07d12756de311cd4967092dfb90d6c2a5e2371eb4c2f5e9d
+	sha256sums = 91b35b1ca5b1d54bbbb4d3a8873c6245abc1437a658bbc12a81dffc4072a59b4
 
 pkgname = devkitppc-bin
 
