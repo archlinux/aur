@@ -1,7 +1,7 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox browser.
 	pkgver = 60.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/gnuzilla/
 	arch = i686
 	arch = x86_64
@@ -31,7 +31,6 @@ pkgbase = icecat
 	depends = dbus-glib
 	depends = alsa-lib
 	depends = ffmpeg
-	depends = libvpx
 	depends = icu
 	depends = libevent
 	depends = nss
