@@ -1,6 +1,6 @@
 _name=mizani
 pkgname=python-$_name
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='Scales for python'
 arch=(any)
@@ -13,12 +13,14 @@ depends=(
 	python-matplotlib
 	python-palettable
 )
-makedepends=(python-pip)
-_wheel="$_name-$pkgver-py2.py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/$_wheel")
+_pyarch=py2.py3
+_wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
+source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
+sha256sums=('dbb700cac139a47d3edd4eefa7646bd6415e83df48b369cf791ae674cc138a01')
 noextract=("$_wheel")
-sha256sums=('52b6ead2633ff04c30dfba0fe3b662aa8d8291c1a64c9d37328d0dd99bbe8a63')
 
 package() {
-	pip install --compile --no-deps --ignore-installed --root="$pkgdir" "$_wheel"
+	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
+	mkdir -p "$site"
+	unzip "$_wheel" -d "$site"
 }
