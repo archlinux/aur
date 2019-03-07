@@ -1,0 +1,14 @@
+pkgbase = ike-trans
+	pkgdesc = A variation of the IKE-SCAN user guide's transforms discovery script
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/actuated/ike-trans/
+	arch = any
+	license = GPL
+	depends = ike-scan
+	provides = ike-trans
+	source = ike-trans-1.2.tar.gz::https://github.com/actuated/ike-trans/archive/v1.2.tar.gz
+	md5sums = 414389f3b9d7581ee2982ce2eccf132d
+
+pkgname = ike-trans
+
