@@ -1,6 +1,6 @@
 # Maintainer: Víctor González <mrvikxd@gmail.com>
 pkgname=jdrive-client
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="JDrive socket client"
 arch=('x86_64' 'i686') #Any that can fill the dependencies
@@ -12,7 +12,7 @@ optdepends=(
     "jdrive: JDrive main package"
 )
 source=("${url}/-/archive/v${pkgver}/jdrive-client-v${pkgver}.tar.gz")
-sha512sums=('dc13ced635c0a69fca702a85edfc4718c63151140428eb5b641c5798e66a6ed67b73a49d6977d155cb6e9a3c29dd8e0d17886033598ac6d90225c91970e7b50d')
+sha512sums=('045cbc8a8edd60d453fc3df6eceabcb3ed8f812d431e9cc433bd50ddfabc900d75ffe3089a5c6fca983edafaaa96da7f2f0002a30a70f3f451cab11bb19280ce')
 
 build(){
     export GOFLAGS="-buildmode=pie -gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
