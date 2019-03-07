@@ -22,6 +22,7 @@ pkgbase = mxnet
 	depends = python-numpy
 	depends = python-requests
 	depends = intel-tbb
+	depends = double-conversion
 	optdepends = cairo
 	optdepends = cuda
 	optdepends = cudnn
