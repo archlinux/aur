@@ -2,7 +2,7 @@
 
 pkgname=nadeshiko
 pkgver=2.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux tool to cut short videos with ffmpeg"
 arch=('any')
 url="https://github.com/deterenkelt/$pkgname"
@@ -19,6 +19,9 @@ prepare() {
     cd $srcdir/Nadeshiko-$pkgver
 
     sed -i 's/check_for_updates=yes/check_for_updates=no/' exampleconf/example.nadeshiko.rc.sh
+
+    # Workaround for https://github.com/deterenkelt/Nadeshiko/issues/15
+    sed -i 's/libvpx_auto_alt_ref=6/libvpx_auto_alt_ref=1/' exampleconf/example.nadeshiko.rc.sh
 }
 
 package() {
