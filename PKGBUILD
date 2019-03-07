@@ -24,7 +24,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 
 source=("https://kojipkgs.fedoraproject.org//packages/firefox/$pkgver/$pkgrel.$fc/x86_64/firefox-$pkgver-$pkgrel.$fc.x86_64.rpm")
 
-md5sums=('69e26751ddeb067a64c9e928d48f3c5b')
+md5sums=('7ff9c41e8ed22a027bc056429ce6000e')
 
 
 prepare() {
