@@ -1,5 +1,5 @@
 pkgbase = encarne
-	pkgdesc = A command scheduler and manager for shell commands
+	pkgdesc = A program for automatic reencoding of all video containers to h.265 in a specific directory
 	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/nukesor/encarne
