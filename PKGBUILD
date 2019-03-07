@@ -27,8 +27,9 @@ source=("https://github.com/MonoGame/MonoGame/releases/download/v${pkgver}/monog
 md5sums=('6047c8051c3563dd5af92cffb4bf887d'
          'c491255ec0d1735cfeecad47ce7efae1'
          '587c27465d575e4522de212346f3f5a0'
-         'e2e0f2a74547318fc0fa7dc76e79bba8'
+         'cf3315b4e5d22d3e7e6ca1717612d080'
          '7e1cfadd88e42bac7fc5739a512e1ce4')
+
 
 prepare() {
 	sh monogame-sdk.run --noexec --target "${_pkgname}-${pkgver}"
