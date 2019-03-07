@@ -2,10 +2,10 @@
 
 pkgname=xdm-arch-theme
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An Arch Linux theme for xdm."
 arch=("any")
-url="https://github.com/the-isz/xdm-arch-theme"
+url="https://gitlab.com/the_isz/xdm-arch-theme"
 license=("GPL")
 depends=("xorg-xdm" "xorg-xrandr" "xorg-xclock" "xorg-xwininfo" "xorg-xsetroot" "xorg-xkill" "librsvg")
 makedepends=("tar" "gzip")
@@ -15,17 +15,17 @@ optdepends=(
     "feh: another option for setting the background image"
     "xv: another option for setting the background image" )
 source=(
-    "https://github.com/the-isz/$pkgname/tarball/$pkgver"
+    "https://gitlab.com/the_isz/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
     "https://upload.wikimedia.org/wikipedia/commons/a/ac/Archlinux-official-fullcolour.svg"
     )
 md5sums=(
-    "85aaf02c3511f0b65965ad55ad777cf1"
+    "560c2d85401df5a961d05c144724f98c"
     "abc1cc75e716e05a7405071d79dfdf8c"
     )
 install=${pkgname}.install
 
 package() {
-    cd "$srcdir/the-isz-$pkgname-91ad422"
+    cd "$srcdir/$pkgname-$pkgver"
 
     install -g root -o root -d ${pkgdir}/etc/X11/xdm/arch-xdm
     install -g root -o root -p -m 644 arch-xdm/* ${pkgdir}/etc/X11/xdm/arch-xdm
