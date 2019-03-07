@@ -1,6 +1,6 @@
 # Maintainer: Lily Wilson <hotaru@thinkindifferent.net>
 pkgname=raspberrypi-userland-aarch64-git
-pkgver=r677.e5803f2
+pkgver=r684.2e2899c
 pkgrel=1
 pkgdesc="aarch64-compatible bits of /opt/vc for Raspberry Pi (vcgencmd, tvservice, etc.)" 
 arch=('aarch64')
@@ -8,9 +8,11 @@ url="https://github.com/raspberrypi/userland"
 license=('custom')
 makedepends=('git')
 source=('git+https://github.com/raspberrypi/userland.git'
-        'arm64.patch')
+        'arm64.patch'
+        'raspberrypi-userland.conf')
 md5sums=('SKIP'
-         '1fcd17a5c76e1643ade6cf1d2751190c')
+         '1fcd17a5c76e1643ade6cf1d2751190c'
+         '72e0d5818fc513ece1b964f25f7e7882')
 
 pkgver() {
 	cd "$srcdir/userland"
@@ -32,5 +34,6 @@ package() {
 	cd "$srcdir/userland"
         install -Dm755 -t "$pkgdir/opt/vc/bin" build/bin/*
         install -Dm644 -t "$pkgdir/opt/vc/lib" build/lib/*
+	install -Dm644 -t "$pkgdir/etc/ld.so.conf.d" "$srcdir/raspberrypi-userland.conf"
         install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"    
 }
