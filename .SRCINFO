@@ -1,0 +1,12 @@
+pkgbase = libnss-stns
+	pkgdesc = We provide name resolution of Linux user group using STNS.
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://github.com/STNS/libnss
+	arch = i686
+	arch = x86_64
+	source = https://github.com/STNS/libnss/archive/v2.2.3.tar.gz
+	md5sums = d12ac01a3facb8b5cda0acaf4101685e
+
+pkgname = libnss-stns
+

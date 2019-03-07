@@ -1,0 +1,4 @@
+449c449
+<   char fpath[MAXBUF];
+---
+>   char fpath[MAXBUF+1];
