@@ -1,0 +1,22 @@
+pkgbase = python2-keybinder2
+	pkgdesc = Library for registering global keyboard shortcuts (Python 2 bindings)
+	pkgver = 0.3.1
+	pkgrel = 3
+	url = https://github.com/kupferlauncher/keybinder
+	arch = i686
+	arch = x86_64
+	arch = mips64el
+	arch = armv6h
+	arch = armv7h
+	arch = arm
+	arch = aarch64
+	license = GPL
+	makedepends = gobject-introspection
+	depends = pygtk
+	depends = libkeybinder2
+	options = !emptydirs
+	source = https://github.com/kupferlauncher/keybinder/releases/download/v0.3.1/keybinder-0.3.1.tar.gz
+	sha256sums = 879f07130ac64792ddb9fd758e6673119283bda37d75573787ae22af8684a240
+
+pkgname = python2-keybinder2
+
