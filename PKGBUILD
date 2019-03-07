@@ -1,16 +1,16 @@
 # Maintainer: sQVe <oskargrunning@gmail.com>
 
-arch=('any')
-depends=('weechat')
-license=('GPL3')
-sha512sums=('SKIP')
-pkgdesc='A WeeChat script that adds vi-like modes, commands and keybindings'
 pkgname=weechat-vimode
-pkgrel=1
 pkgver=r173.1da5a2e
-source=('git+https://github.com/GermainZ/weechat-vimode.git')
-makedepends=('git')
+pkgrel=1
+pkgdesc='A WeeChat script that adds vi-like modes, commands and keybindings'
 url='https://github.com/GermainZ/weechat-vimode'
+arch=('any')
+license=('GPL3')
+depends=('weechat')
+makedepends=('git')
+source=('git+https://github.com/GermainZ/weechat-vimode.git')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
@@ -19,6 +19,5 @@ pkgver() {
 
 package() {
   cd "${pkgname}"
-
   install -Dm644 "vimode.py" "${pkgdir}/usr/lib/weechat/python/vimode.py"
 }
