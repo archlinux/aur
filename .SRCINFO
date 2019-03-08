@@ -1,0 +1,25 @@
+pkgbase = python-coord-git
+	pkgdesc = Coord is a Python module that provides basic functionality related to angles and celestial coordinatesw
+	pkgver = v1.0.4.r15.328e54c
+	pkgrel = 1
+	url = https://github.com/LSSTDESC/Coord.git
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python
+	makedepends = python-cffi
+	makedepends = python-numpy
+	makedepends = python-future
+	makedepends = python2
+	makedepends = python2-cffi
+	makedepends = python2-numpy
+	makedepends = python2-future
+	source = python-coord-git::git+https://github.com/LSSTDESC/Coord.git
+	md5sums = SKIP
+
+pkgname = python-coord-git
+	depends = glibc
+
+pkgname = python2-coord-git
+	depends = glibc
+
