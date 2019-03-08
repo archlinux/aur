@@ -1,8 +1,8 @@
 pkgbase = phantomjs-bin
 	pkgdesc = Headless WebKit with JavaScript API (official static binary)
 	pkgver = 2.1.1
-	pkgrel = 1
-	url = http://www.phantomjs.org/
+	pkgrel = 2
+	url = http://phantomjs.org/
 	arch = x86_64
 	license = BSD
 	depends = fontconfig
