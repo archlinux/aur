@@ -1,0 +1,14 @@
+pkgbase = termite-style
+	pkgdesc = A simple program to change colors and fonts of termite in real time.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/adi1090x/termite-style
+	arch = any
+	license = GPL
+	depends = termite
+	depends = bash
+	source = https://github.com/adi1090x/termite-style/archive/master.zip
+	md5sums = SKIP
+
+pkgname = termite-style
+
