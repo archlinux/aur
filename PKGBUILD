@@ -3,7 +3,7 @@
 
 pkgname=e-deklaracje
 pkgrel=1
-pkgver=10.0.6
+pkgver=11.0.1
 pkgdesc="Application for submitting tax return in Poland"
 arch=('any')
 url="http://www.finanse.mf.gov.pl/systemy-informatyczne/e-deklaracje"
@@ -11,7 +11,7 @@ license=('custom')
 depends=('acroread' 'adobe-air')
 source=("e-deklaracje-$pkgver.air::http://www.finanse.mf.gov.pl/documents/766655/1196444/e-DeklaracjeDesktop.air"
          'e-deklaracje.desktop')
-sha256sums=('2ffff712fc369cb42a9fcd52af4157b3583a2a38618d7b0e7c7fc31613e87afe'
+sha256sums=('71ee3920de36a80968326d5122aafd53725a16fcd36940f17451d770de19b33b'
             'ca9f9337fb40301d34f3e853dd9d7a83374caa0b0bb27fa95310f4dbeeb83743')
 noextract=(e-deklaracje-$pkgver.air)
 
