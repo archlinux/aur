@@ -3,7 +3,7 @@
 
 pkgname=python-cassandra-driver-git
 pkgdesc="DataStax Python Driver for Apache Cassandra"
-pkgver=3.16.0
+pkgver=3.17.0
 provides=('python-cassandra-driver')
 pkgrel=1
 arch=('any')
