@@ -83,6 +83,7 @@ provides=(
   libswscale.so
 )
 replaces=('ffmpeg')
+conflicts=('ffmpeg')
 source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}
 	0001-Add-ability-for-ffmpeg-to-run-svt-av1-vp9.patch)
 sha256sums=('SKIP'
