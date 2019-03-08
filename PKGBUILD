@@ -3,15 +3,15 @@
 # Contributor: Schmetzler <web.de d i m o n o k>
 
 pkgname=compute-runtime-bin
-_depver=18.50.1270
-pkgver=19.08.12439
+_depver=19.07.1542
+pkgver=19.09.12487
 pkgrel=1
 pkgdesc='Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond (binary version)'
 arch=(x86_64)
 url='https://github.com/intel/compute-runtime'
 license=(MIT)
 install=${pkgname}.install
-depends=(intel-gmmlib zlib ncurses5-compat-libs)
+depends=(intel-gmmlib zlib)
 optdepends=(libdrm libva ocl-icd)
 provides=(opencl opencl-driver compute-runtime)
 conflicts=(beignet compute-runtime)
@@ -22,9 +22,9 @@ ${url}/releases/download/${pkgver}/intel-igc-opencl_${_depver}_amd64.deb
 ${url}/releases/download/${pkgver}/intel-opencl_${pkgver}_amd64.deb
 )
 
-sha256sums=('e2fa8bed843f3215788306e2f17fda6102e5f1cf2103367d676b14ad279d7fb9'
-            '68fad353ba1d24918a6b9ad644d56698295cd3d6e82358fa4eb22ae6f6ea9daa'
-            'ccbba6ded5639ccfd38c7846fe0b88f2af4cebd640fd310a9e960435dd197494')
+sha256sums=('9e5c130df7fe95b860f4c761620bf6fd5f814930df3f06c5e698aa846cadece5'
+	    '964e714899347564af99fe2a3619e7e630e52b74a88d96f183a27a934bbe79ca'
+	    'a3af770dca72e2c46666716fab6076e6f6b320eb223d1a14d341ab58e4f14a71')
 
 noextract=(
 ${url}/releases/download/${pkgver}/intel-igc-core_${_depver}_amd64.deb
@@ -63,7 +63,4 @@ package() {
     sed -i 's/\/usr\/local\/lib/\/usr\/lib/gI' ${pkgdir}/etc/ld.so.conf.d/libintelopencl.conf
     sed -i 's/\/usr\/local\/lib/\/usr\/lib/gI' ${pkgdir}/etc/OpenCL/vendors/intel.icd
     mv ${pkgdir}/etc/OpenCL/vendors/intel.icd ${pkgdir}/etc/OpenCL/vendors/intel-gpu.icd
-
-    cd ${pkgdir}/usr/lib
-    ln -sf libigdgmm.so libigdgmm.so.3
 }
