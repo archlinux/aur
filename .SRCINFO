@@ -1,0 +1,12 @@
+pkgbase = lsuio
+	pkgdesc = List UIO devices
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://www.osadl.org/UIO-Archives.uio-archives.0.html
+	arch = x86_64
+	license = GPL2
+	source = https://www.osadl.org/uploads/media/lsuio-0.2.0.tar.gz
+	sha256sums = c88b3850248b2d3419e025abd7b9b0991c8bd33a2d4983f9608408a29900bfb5
+
+pkgname = lsuio
+
