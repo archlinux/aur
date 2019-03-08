@@ -1,7 +1,7 @@
 pkgbase = isso
 	pkgdesc = A commenting python server similar to Disqus
 	pkgver = 0.12.2
-	pkgrel = 2
+	pkgrel = 4
 	url = http://posativ.org/isso/
 	install = isso.install
 	arch = any
