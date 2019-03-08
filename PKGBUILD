@@ -11,12 +11,21 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 depends=('libusb' 'protobuf' 'openssl' 'boost-libs')
 makedepends=('cmake' 'boost' 'git')
-source=("$pkgname::git+https://github.com/f1xpl/aasdk.git#branch=master")
-md5sums=('SKIP')
+source=(
+  "$pkgname::git+https://github.com/f1xpl/aasdk.git#branch=master"
+  promise.patch
+)
+md5sums=('SKIP'
+         'SKIP')
 
 pkgver() {
   cd $pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd $pkgname
+  patch --forward --strip=1 --input="${srcdir}/promise.patch"
 }
 
 build() {

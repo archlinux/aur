@@ -1,0 +1,11 @@
+diff --git a/include/f1x/aasdk/IO/Promise.hpp b/include/f1x/aasdk/IO/Promise.hpp
+index 9f5e222..646b258 100644
+--- a/include/f1x/aasdk/IO/Promise.hpp
++++ b/include/f1x/aasdk/IO/Promise.hpp
+@@ -20,6 +20,7 @@
+
+ #include <functional>
+ #include <boost/asio.hpp>
++#include <boost/core/noncopyable.hpp>
+ #include <f1x/aasdk/Error/Error.hpp>
+ #include <f1x/aasdk/IO/IOContextWrapper.hpp>
