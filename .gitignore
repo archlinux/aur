@@ -3,3 +3,4 @@
 !.SRCINFO
 !PKGBUILD
 !fallback-x.patch
+!implement-vaquerysurfaceattributes.patch
