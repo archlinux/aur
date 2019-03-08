@@ -1,32 +1,25 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=intel-graphics-compiler-git
-pkgver=2018.12.12.r50.g66ad47d
+pkgver=2019.02.25.r44.g4be564f
 pkgrel=1
 pkgdesc='Intel Graphics Compiler for OpenCL (git version)'
 arch=('x86_64')
 url='https://github.com/intel/intel-graphics-compiler/'
 license=('MIT')
-depends=('gcc-libs' 'ncurses' 'zlib')
-makedepends=(
-    # official repositories:
-        'git' 'cmake' 'python' 'python2' 'python2-pygments' 'python2-yaml'
-        'spirv-tools'
-    # AUR:
-        'clang40'
-)
+depends=('gcc-libs' 'zlib')
+makedepends=('git' 'cmake' 'libxml2' 'python-nose' 'python2' 'python2-pygments'
+             'python2-yaml')
 provides=('intel-graphics-compiler')
 conflicts=('intel-graphics-compiler' 'compute-runtime')
 options=('!emptydirs')
 source=('igc'::'git+https://github.com/intel/intel-graphics-compiler.git'
-        'llvm_source'::'git+https://github.com/llvm-mirror/llvm#branch=release_40'
-        'clang_source'::'git+https://github.com/llvm-mirror/clang#branch=release_40'
-        'llvm7.0.0_source'::"git+https://github.com/llvm-mirror/llvm#branch=release_70"
-        'llvm_patches'::'git+https://github.com/intel/llvm-patches'
-        'common_clang'::'git+https://github.com/intel/opencl-clang'
-        'opencl_headers'::'git+https://github.com/KhronosGroup/OpenCL-Headers')
+        'llvm_patches'::'git+https://github.com/intel/llvm-patches.git'
+        'llvm_source'::'git+https://github.com/llvm-mirror/llvm.git#branch=release_70'
+        'git+https://github.com/llvm-mirror/clang.git#branch=release_70'
+        'git+https://github.com/intel/opencl-clang.git#branch=ocl-open-70'
+        'git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git#branch=llvm_release_70')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -35,6 +28,21 @@ sha256sums=('SKIP'
 
 prepare() {
     mkdir -p build
+    
+    ln -sf "${srcdir}/clang" llvm_source/tools/clang
+    ln -sf "${srcdir}/opencl-clang" llvm_source/projects/opencl-clang
+    ln -sf "${srcdir}/SPIRV-LLVM-Translator" llvm_source/projects/llvm-spirv
+    
+    # for applying patches from llvm-patches
+    local _dir
+    for _dir in clang SPIRV-LLVM-Translator
+    do
+        cd "$_dir"
+        git config --local commit.gpgsign false
+        git config --local user.email 'aur@localhost.none'
+        git config --local user.name 'Arch User Repository (AUR)'
+        cd ..
+    done
 }
 
 pkgver() {
@@ -49,12 +57,10 @@ build() {
     
     cmake \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DIGC_OPTION__OUTPUT_DIR:PATH='../igc-install/Release' \
         -Wno-dev \
         ../igc/IGC
         
     make
-    make package
     
     # license
     sed -n '2,20p' igc.opencl.h > LICENSE # create file
@@ -62,17 +68,9 @@ build() {
 }
 
 package() {
-    cd build/_CPack_Packages/Linux/TXZ
+    cd build
     
-    cd "$(find . -maxdepth 1 -type d -name 'intel-*')"
+    make DESTDIR="$pkgdir" install
     
-    local _dir
-    while read -rd '' _dir
-    do
-        cd "$_dir"
-        cp -af * "$pkgdir"
-        cd ..
-    done < <(find . -maxdepth 1 -type d -name 'igc-*' -print0)
-    
-    install -D -m644 "${srcdir}/build/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
