@@ -2,14 +2,14 @@
 # Generator: Bloop release utilities <https://github.com/scalacenter/bloop>
 pkgname=bloop
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Bloop gives you fast edit/compile/test workflows for Scala."
 arch=(any)
 url="https://scalacenter.github.io/bloop/"
 license=('Apache')
 depends=('scala' 'python')
 source=("https://github.com/scalacenter/bloop/releases/download/v1.2.5/install.py")
-sha256sums=('25a18e6983463725e821f6f4f369cfef8d37f18c4dddb6a1cc1e85fa2961b9c8')
+sha256sums=('1c03fdfad20ff89f8490baeff370d3012dad387a987ad801a04d74db3037b837')
 
 build() {
   python ./install.py --dest "$srcdir/bloop"
