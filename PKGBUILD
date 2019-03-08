@@ -1,4 +1,4 @@
-# Maintainer: Harry Beadle <harry.beadle@gmail.com>
+# Maintainer: Harry Beadle <harrybeadle@protonmail.com>
 
 pkgname=vpr
 pkgver=7.0
