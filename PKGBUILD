@@ -82,7 +82,7 @@ package_libnvidia-container() {
   rm -rf "${pkgdir}/usr/lib/pkgconfig"
 
   # save bin/ for -tools
-  rm -rf "${pkgdir}/usr/bin/"
+  rm -rf "${pkgdir}/usr/bin"
 
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   install -D -m644 "${pkgdir}/usr/share/doc/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/"
@@ -96,8 +96,9 @@ package_libnvidia-container-tools() {
   rm -rf "${pkgdir}/usr/lib/debug"
   rm -rf "${pkgdir}/usr/lib/pkgconfig"
 
-  # save bin/ for -tools
-  rm -rf "${pkgdir}/usr/lib/"
+  # save lib/ and include/ for -tools
+  rm -rf "${pkgdir}/usr/lib"
+  rm -rf "${pkgdir}/usr/include"
 
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   install -D -m644 "${pkgdir}/usr/share/doc/${pkgbase}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/"
