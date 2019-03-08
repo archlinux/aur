@@ -9,7 +9,7 @@ url="http://www.sansbullshitsans.com/"
 license=('APACHE')
 depends=('fontconfig' 'xorg-font-utils')
 install=ttf.install
-source=(http://pixelambacht.nl/downloads/${_realname}.ttf)
+source=(https://pixelambacht.nl/downloads/${_realname}.ttf)
 
 build() { :
 }
