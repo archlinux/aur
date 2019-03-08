@@ -2,7 +2,7 @@
 # Maintainer: Nils Czernia <nils@czserver.de>
 
 pkgname=prometheus-snmp-exporter-bin
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="SNMP Exporter for Prometheus (binary, not built from source)"
 arch=("x86_64" "armv5h" "armv6h" "armv7h")
@@ -24,14 +24,13 @@ source_armv7h=("prometheus-snmp-exporter.service"
                "https://github.com/prometheus/snmp_exporter/releases/download/v${pkgver}/snmp_exporter-${pkgver}.linux-armv7.tar.gz")
 
 sha512sums_x86_64=('770e94f647bc961af3adcc41998ae2b915680d72d3808858fa26834cdc019ce5b1f27f471fdcf988d5c5ec7074be1d613d728027bbcdb1d726f2e4c59a2150a8'
-                   '5ffae81384c94f135f922f8f0f39e3ba79c76344fd33a91c018170cf63d7dcf694b094504dd30652b00e6b838da493db4b68b6de3e2f67eff5c6744d5dfdd8c9')
+                   '1421f162f99ba0d3b29539bc97b447f43c42df2383b6c3cf89ec257a1d143edea9d91bbd39fa58c97a1a19e1440c1c6071fe44e20c0fb4584f6ec5d8b34ed7bb')
 sha512sums_armv5h=('770e94f647bc961af3adcc41998ae2b915680d72d3808858fa26834cdc019ce5b1f27f471fdcf988d5c5ec7074be1d613d728027bbcdb1d726f2e4c59a2150a8'
-                   '31797a81d291ce2df9d040bb2944913ea488a6f4d3b1432b2da220b3fb7839fefd19b48a2f23d94f1cd15b6e0e0c9fd70cc5ad44cda5d0a6e87ab1bc854d5d5f')
+                   '3ede2a822245d5693c375c7ad89de5cb816e9c49f83e609feb35e292a646d2afa816476b10c50a55c14851f551128d8cbf06cc77beada43243dea291f0f04137')
 sha512sums_armv6h=('770e94f647bc961af3adcc41998ae2b915680d72d3808858fa26834cdc019ce5b1f27f471fdcf988d5c5ec7074be1d613d728027bbcdb1d726f2e4c59a2150a8'
-                   '9ebd232891aad70a058472b65b20799347719f42224bb1dcace91c2810d9bbc95ce2dee8179666d92ccaffe767379ab0aa11e638b9c76f8cc1602cafe9fd90fb')
+                   'f115e907e3ad387b2e0145145bbfb92ecb3155690c518f4f56abb1a4ca33b2756f60b68d14f1aa36496212b3eb9625aa58d5e6de5ff8f834f3c7d96d98d6697a')
 sha512sums_armv7h=('770e94f647bc961af3adcc41998ae2b915680d72d3808858fa26834cdc019ce5b1f27f471fdcf988d5c5ec7074be1d613d728027bbcdb1d726f2e4c59a2150a8'
-                   'ff086a30d7b0a841bd8ffc4e05ab3e6ab4e0e7d7b37cc403a9d3e876bc7f690bd4148df80bfd33a1525c30b8566d22e58e5e97396c316b63bfba8331fe13c8a6')
-
+                   'c8f3303a48ef835ec52dd243da71b3a27831b91355f2b5e2f955e4bc88aff62dc4118d23ca28347f02c6c6026bcaa8faa11e64865cd818138f2dbee837050784')
 package() {
     cd "${srcdir}/snmp_exporter-${pkgver}.linux-amd64"
 
