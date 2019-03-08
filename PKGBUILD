@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-term-ss07
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='A slender monospace typeface. Shape: Monaco'
 arch=('any')
@@ -9,8 +9,8 @@ license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/iosevka-term-ss07-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('fb32ce665fc4a5dcf0119f7788e1d7b3b1534b9a5b28fde1e16ef660b24feb77'
-            'a7a0e1da98ab1bae99a1f246f45e51720e0cc13a53b4a5b0692f64991d2191af')
+sha256sums=('5efb72243af1c25037fd4b3e47ccbeb2fbb20816e30827c66b1c2460803088b7'
+            'ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF/
