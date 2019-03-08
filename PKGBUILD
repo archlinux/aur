@@ -5,7 +5,7 @@ pkgver=1.3.6
 pkgrel=1
 pkgdesc="A swiss-army knife for multimedia streaming, notably used for netradios and webtvs"
 arch=('i686' 'x86_64')
-url="http://savonet.sourceforge.net/"
+url="https://www.liquidsoap.info"
 license=('GPL')
 depends=('fluidsynth' 'giflib' 'gst-plugins-bad' 'gst-plugins-good' 'gst-plugins-ugly'
     'ocaml-alsa'
