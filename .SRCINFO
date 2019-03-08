@@ -2,13 +2,13 @@
 # Mon Aug 28 06:27:32 UTC 2017
 pkgbase = listen1
 	pkgdesc = One for all free music in China
-	pkgver = 2.1.2
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://listen1.github.io/listen1/
 	arch = x86_64
 	license = MIT
-	source = https://github.com/listen1/listen1_desktop/releases/download/v2.1.2/Listen1_2.1.2_linux_x86_64.AppImage
-	md5sums = 7cbbb75566c3e6105a1622d53bf33943d53a22cedcb30c3c4895e29b731728e1
+	source = https://github.com/listen1/listen1_desktop/releases/download/v2.1.5/Listen1_2.1.5_linux_x86_64.AppImage
+	md5sums = 833166dfaac778e113223d2c8ffad0e30e02cc845d2a92db3a0449f983643ad2
 
 pkgname = listen1
 
