@@ -6,7 +6,7 @@
 
 pkgname=ffmpeg-svt
 pkgver=4.1.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. SVT Patchset applied'
 arch=(x86_64)
@@ -136,7 +136,10 @@ build() {
     --enable-nvenc \
     --enable-omx \
     --enable-shared \
-    --enable-version3
+    --enable-version3 \
+    --enable-libsvtav1 \
+    --enable-libsvtvp9
+
 
   make
   make tools/qt-faststart
