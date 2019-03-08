@@ -1,6 +1,6 @@
 pkgbase = tsnake
 	pkgdesc = Terminal snake game written in C++ with map support
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/langurmonkey/tsnake
 	arch = x86_64
