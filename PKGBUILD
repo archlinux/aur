@@ -2,7 +2,7 @@
 
 pkgname="ayatana-indicator-sound"
 pkgver=git_r2634
-pkgrel=1
+pkgrel=2
 pkgdesc="Ayatana system sound indicator"
 arch=("i686" "x86_64")
 url="https://github.com/AyatanaIndicators"
@@ -23,13 +23,13 @@ pkgver()
 prepare()
 {
     cd ${srcdir}/${pkgname}
-    patch -Np1 -i ../../0001.remove-testing-and-coverage.patch
+    patch -Np1 -i ../../0001.add-testing-option.patch
 }
 
 build()
 {
     cd ${srcdir}/${pkgname}
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=lib -DCMAKE_INSTALL_LOCALSTATEDIR=/var
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=lib -DCMAKE_INSTALL_LOCALSTATEDIR=/var -Denable_tests=OFF
     make
 }
 
