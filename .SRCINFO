@@ -1,0 +1,14 @@
+pkgbase = pj
+	pkgdesc = JSON parser and visualizer.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+
+pkgname = pj
+
