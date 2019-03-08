@@ -2,7 +2,7 @@
 pkgname='geant4'
 pkgver=10.5
 _pkgver=10.05
-pkgrel=1
+pkgrel=2
 pkgdesc="A simulation toolkit for particle physics interactions."
 depends=('cmake>=3.3'
          'xerces-c'
@@ -24,7 +24,7 @@ analysis'
   'geant4-realsurfacedata: Data files for measured optical surface reflectance'
   'geant4-saiddata: Data files from evaluated cross-sections in SAID data-base'
   'geant4-abladata: Data files for nuclear shell effects in INCL/ABLA hadronic mode'
-  'geant4-incdata: Data files for proton and neutron density profiles'
+  'geant4-incldata: Data files for proton and neutron density profiles'
   'geant4-ensdfstatedata: Nuclei properties from the Evaluated Nuclear Structure Data Files'
   'geant4-particlehpdata: Data files for protons, deuterons, tritons, He3 and alphas for use with ParticleHP'
 )
