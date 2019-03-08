@@ -5,7 +5,7 @@
 # Contributor: Anthony Anderson <aantony4122@gmail.com>
 
 pkgname='discord-ptb'
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(LICENSE
 		"https://dl-ptb.discordapp.net/apps/linux/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
 md5sums=('26b3229c74488c64d94798e48bc49fcd'
-         '20a55a3b1ab4c538a05c19359605d004')
+         'f313e2433c4665dd827f11fd77174b5f')
 
 #This is always latest build, right now I do not know of a version param.
 
