@@ -1,0 +1,19 @@
+pkgbase = skycoin_archlinux_packages-keyring
+	pkgdesc = Skycoin archlinux packages keyring
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/0pcom/skycoin-archlinux-packages
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	source = https://raw.githubusercontent.com/0pcom/skycoin_archlinux_packages/blob/master/skycoin_archlinux_packages-keyring/skycoin_archlinux_packages-keyring.gpg
+	source = https://raw.githubusercontent.com/0pcom/skycoin_archlinux_packages/blob/master/skycoin_archlinux_packages-keyring/skycoin_archlinux_packages-trusted
+	validpgpkeys = DE08F924EEE93832DABC642CA8DC761B1C0C0CFC
+	sha256sums = 765bc9d1b7d4c31531289582f5f69df5189a94ccb4146054db3984c6bc0aa27b
+	sha256sums = 6a31475a58258e152b18ea4746185d75d9ae0e04f7c86fcbd7dbe42e3fea0ee0
+
+pkgname = skycoin_archlinux_packages-keyring
+
