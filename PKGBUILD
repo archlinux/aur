@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl-git
-pkgver=18.08.5.2.r881.g2aeba922c6
+pkgver=19.05.0.0pre3.r28.g3816940ca5
 pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management (development version)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -67,7 +67,7 @@ build() {
 	export CFLAGS="${CFLAGS//-fno-plt/}"
 	export LDFLAGS="${LDFLAGS//-z,now/-z,lazy}"
 
-	./autogen.sh
+	autoreconf
 	./configure \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
