@@ -1,7 +1,7 @@
 pkgbase = ayatana-indicator-sound
 	pkgdesc = Ayatana system sound indicator
 	pkgver = git_r2634
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AyatanaIndicators
 	arch = i686
 	arch = x86_64
