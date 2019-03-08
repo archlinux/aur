@@ -1,0 +1,16 @@
+pkgbase = cx
+	pkgdesc = CX Skycoin Blockchain Programming Language
+	pkgver = 6.1
+	pkgrel = 1
+	url = https://github.com/skycoin/cx
+	arch = x86_64
+	license = MIT
+	makedepends = unzip
+	source = https://github.com/skycoin/cx/releases/download/v0.6.1/cx-0.6.1-bin-linux-x64.zip
+	validpgpkeys = DE08F924EEE93832DABC642CA8DC761B1C0C0CFC
+	sha256sums = d55f7f64ba5a1c47601f4545c5bf87c76c7d8b98bb47ce0126138b50462d27f2
+
+pkgname = cx
+	options = !strip
+	options = staticlibs
+
