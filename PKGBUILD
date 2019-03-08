@@ -1,4 +1,4 @@
-# Maintainer: Xiang Gao <qasdfgtyuiop at gmail dot com>
+# Maintainer: Marc Plano-Lesay <marc.planolesay@gmail.com>
 
 pkgname=bazel-buildtools
 pkgver=0.11.1
