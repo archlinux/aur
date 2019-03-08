@@ -1,10 +1,10 @@
-# Maintainer: Adrià Arrufat <adria.arrufat+AUR@protonmail.ch>
+# Maintainer: Adrià Arrufat <swiftscythe@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.23.91
+pkgver=2.23.92
 pkgrel=1
 pkgdesc="GTK+ Web content engine library"
 arch=(x86_64)
@@ -18,7 +18,7 @@ optdepends=('gtk2: Netscape plugin support'
             'gst-plugins-good: media decoding'
             'gst-libav: nonfree media decoding')
 source=(https://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz{,.asc})
-sha256sums=('f90c4edff3408d1e291b6dbe3c210cf13ac7200486b733c4bb935559bd93d951'
+sha256sums=('ef686cf24939681fb8a88eac6f4580f7f85f38c2f968d74ec471779326a05134'
             'SKIP')
 validpgpkeys=('D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3'
               '5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
