@@ -21,6 +21,7 @@ prepare() {
     patch -p0 < "$srcdir/head-1.patch"
     patch -p1 < "$srcdir/ucspi-tcp-$pkgver-ipv6.patch"
     echo "gcc ${CFLAGS}" > conf-cc
+    echo "gcc ${LDFLAGS}" > conf-ld
     echo "/usr" > conf-home
 }
 
