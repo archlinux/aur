@@ -1,9 +1,9 @@
 #Maintainer: Raimar Buehmann <raimar _at_ buehmann _dot_ de>
 
 pkgname=eclipse-objectaid
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
-pkgdesc='Create UML class diagrams from existing Java source code and libraries with this plugin for Eclipse IDE'
+pkgdesc='Create UML class diagrams from existing Java source code and libraries with this plugin for Eclipse IDE.'
 arch=('any')
 url='http://www.objectaid.com'
 license=('ObjectAid Class Diagram Editor License')
