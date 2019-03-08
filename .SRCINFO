@@ -1,7 +1,7 @@
 pkgbase = bsnes
 	pkgdesc = Super Nintendo emulator focusing on performance, features, and ease of use.
 	pkgver = 107
-	pkgrel = 1
+	pkgrel = 2
 	url = https://byuu.org/emulation/bsnes/
 	arch = x86_64
 	license = GPL3
