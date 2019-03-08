@@ -21,7 +21,5 @@ pkgbase = libnvidia-container
 pkgname = libnvidia-container
 
 pkgname = libnvidia-container-tools
-	depends = libcap
-	depends = libtirpc
 	depends = libnvidia-container
 

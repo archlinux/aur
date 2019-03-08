@@ -86,7 +86,7 @@ package_libnvidia-container() {
 }
 
 package_libnvidia-container-tools() {
-  depends=(libcap libtirpc libnvidia-container)
+  depends=(libnvidia-container)
 
   make_dist
 
