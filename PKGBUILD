@@ -1,4 +1,4 @@
-# Maintainer: Giancarlo Razzolini <grazzoli@gmail.com
+# Maintainer: Max R. P. Grossmann <m@max.pm>
 # Contributor: Christer Edwards <cedwards@xmission.com>
 # Contributor: eric <eric@archlinux.org>
 # Contributor: Manolis Tzanidakis
