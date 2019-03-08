@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl-dev
-pkgver=19.05.0.0pre1
+pkgver=19.05.0.0pre3
 # Hyphens (-) are prohibited however they are used by the package author
 # therefore it is necessary to invoke ${pkgver} like ${pkgver//./-}
 # this will substitute any full stops (.) with hyphens
@@ -45,7 +45,7 @@ sha512sums=('61f07699353d607ec43bab2a4fe29b4a380dab10108619e67ca2737193ab044a6e2
             'a1c2478a049dc1c024d773a73f363da6c9106d9533137f919394e8213376cb9167c8fcca7b038d1c45c441a1adce4524ccb68b6dd269a1000aba11b84b5352d5'
             'ae2d0275bc9e0aac15d0d1dd4913b70ed4d4032e76c9c6ffdeae345c55834219f6495429d1d1c9129779221d6d08bada1228ccdb1c671b05d4a92ed6088bf55c'
             '56459e20d7f2624a8e8dd2982693b257e65df22c3609d991afdc1b2f79adaefc0586a76fd5fdd7dc2bdd39b3af0c91f38ddc4b1139081968903450bc28aca304'
-            'c0bd4638638118d992314158ff5b1a2d1052fb10062e723321efc93082cef3973e8e8061e19a62ab4fdebcc19e3aa6527934377035848ec1d849c6fc156c5aa9')
+            'a668bc92335e7f27c117b83f758f97f747ff850c52356d83942cc8bd30b0c753692312b200d29d8f2a3581eb634513286a503cfec64f17768ddbcf6210f1213e')
 
 build() {
 	cd "${srcdir}/slurm-slurm-${pkgver//./-}"
@@ -62,7 +62,7 @@ build() {
 	export CFLAGS="${CFLAGS//-fno-plt/}"
 	export LDFLAGS="${LDFLAGS//-z,now/-z,lazy}"
 
-	./autogen.sh
+	autoreconf
 	./configure \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
