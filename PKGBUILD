@@ -2,7 +2,7 @@
 
 pkgname=pfufs
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Fujitsu fi series Image Scanner Driver for SANE'
 url='http://imagescanner.fujitsu.com/global/dl/'
 arch=('x86_64')
@@ -19,6 +19,7 @@ source=('http://origin.pfultd.com/downloads/IMAGE/fi/ubuntu/232/pfufs-ubuntu18.0
         pfufs.install
         pfufs-post-sane-upgrade.hook
         pfufs-pre-sane-upgrade.hook
+        pfufsscanbutton.service
         simple-scan.conf)
 sha256sums=('a738e350db54e2a80350d472667b6155f90632b37f3f7bc7136bc09a55287793'
             '6c9e4829cfc3159f269a03b72e64ae6d5f03c8d5139c9ab230182224118334ac'
@@ -30,6 +31,7 @@ sha256sums=('a738e350db54e2a80350d472667b6155f90632b37f3f7bc7136bc09a55287793'
             '37f40b8d6d59a6cef9b95c5d739b873878117de311ffadb3933185b2500dbc06'
             'eb8842571ce6cd505ff1175b6b9086a6b18bdc099594ee66586dd3dd22a398ca'
             '66b98f15a828404e73d0b03f165b0811b54cb8a0fdd7a96c2c32e01fae1fb9d7'
+            'bd0a75c50f92f66471bb2f3eb969394f0156eae60537a206244bb16f597d2c3d'
             '6aec8ca879208e25ce8678a9bb0ecf11ccecca3c5e82f6e07b25425a261cc732')
 
 prepare () {
@@ -49,21 +51,31 @@ package () {
   install -vDm 644 -t "$pkgdir/usr/share/libalpm/hooks" pfufs-{pre,post}-sane-upgrade.hook
   install -vDm 644 -t "$pkgdir/opt/pfufs/etc/sane.d" fujitsu.conf.patch
 
-  cp -pR opt/ usr/ "$pkgdir/"
+  install -d "$pkgdir/opt/pfufs/image"
+
+  cp -pR usr/ "$pkgdir/"
+  cp -pR opt/pfufs/*/ "$pkgdir/opt/pfufs/"
+
   install -vDm 644 -T P2U3-0200-02ENZ0.pdf "$pkgdir/usr/share/doc/$pkgname/pfufs.pdf"
+  install -vDm 444 -t "$pkgdir/usr/share/doc/$pkgname" opt/pfufs/readme*.txt
+  install -vDm 444 -t "$pkgdir/usr/share/licenses/$pkgname" opt/pfufs/License*.txt
 
   # from the deb's preinst
   install -vDm 644 -t "$pkgdir/usr/lib/udev/rules.d" 60-pfufs.rules
 
-  # TODO: create systemd service file for the scanbutton manager
+  install -vDm 644 -t "$pkgdir/usr/lib/systemd/system" pfufsscanbutton.service
 
   # from the deb's postinst
   install -vDm 644 -t "$pkgdir/etc/sane.d/dll.d" pfufs
   install -vDm 644 -t "$pkgdir/opt/pfufs/etc" pfufs.conf pfufs.ini simple-scan.conf
-  install -vDm 444 -t "$pkgdir/usr/share/licenses/$pkgname/" opt/pfufs/LicenseENU.txt
 
   install -d "$pkgdir/usr/bin"
   ln -s -t "$pkgdir/usr/bin" /opt/pfufs/consumables/pfufsconsumables
   ln -s -t "$pkgdir/usr/bin" /opt/pfufs/pfufsgetinfo/pfufsgetscerror
   ln -s -t "$pkgdir/usr/bin" /opt/pfufs/pfufsgetinfo/pfufsgetscstatus
+
+  mv "$pkgdir/opt/pfufs/etc" "$pkgdir/etc/pfufs"
+  ln -s /etc/pfufs "$pkgdir/opt/pfufs/etc"
+
+  install -d "$pkgdir/opt/pfufs/image"
 }

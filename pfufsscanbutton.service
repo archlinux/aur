@@ -1,0 +1,11 @@
+[Unit]
+Description=pfufs scanbutton manager
+
+[Service]
+Type=simple
+ExecStart=/opt/pfufs/bin/pfufsscanmanager
+PIDFile=/var/run/pfufsscanbutton.pid
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target

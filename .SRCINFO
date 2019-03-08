@@ -1,7 +1,7 @@
 pkgbase = pfufs
 	pkgdesc = Fujitsu fi series Image Scanner Driver for SANE
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://imagescanner.fujitsu.com/global/dl/
 	install = pfufs.install
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = pfufs
 	source = pfufs.install
 	source = pfufs-post-sane-upgrade.hook
 	source = pfufs-pre-sane-upgrade.hook
+	source = pfufsscanbutton.service
 	source = simple-scan.conf
 	sha256sums = a738e350db54e2a80350d472667b6155f90632b37f3f7bc7136bc09a55287793
 	sha256sums = 6c9e4829cfc3159f269a03b72e64ae6d5f03c8d5139c9ab230182224118334ac
@@ -28,6 +29,7 @@ pkgbase = pfufs
 	sha256sums = 37f40b8d6d59a6cef9b95c5d739b873878117de311ffadb3933185b2500dbc06
 	sha256sums = eb8842571ce6cd505ff1175b6b9086a6b18bdc099594ee66586dd3dd22a398ca
 	sha256sums = 66b98f15a828404e73d0b03f165b0811b54cb8a0fdd7a96c2c32e01fae1fb9d7
+	sha256sums = bd0a75c50f92f66471bb2f3eb969394f0156eae60537a206244bb16f597d2c3d
 	sha256sums = 6aec8ca879208e25ce8678a9bb0ecf11ccecca3c5e82f6e07b25425a261cc732
 
 pkgname = pfufs
