@@ -17,8 +17,8 @@
 #
 pkgbase="zfs-linux-vfio-git"
 pkgname=("zfs-linux-vfio-git" "zfs-linux-vfio-git-headers")
-_commit='0409679d88a8ccd06397ceae1b6d08935198c756'
-_zfsver="2019.02.28.r4983.g0409679d8"
+_commit='becdcec7b9cd6b8beaa2273495b97c06de24e9e5'
+_zfsver="2019.03.06.r4987.gbecdcec7b"
 _kernelver="4.20.12.arch1-1"
 _extramodules="4.20.12-arch1-1-vfio"
 
@@ -27,10 +27,8 @@ pkgrel=1
 makedepends=("linux-vfio-headers=${_kernelver}" "git" "python")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=${_commit}"
-        "upstream-4f981f6-additional-fixes-for-current_kernel_time-in-4.20.patch")
-sha256sums=("SKIP"
-            "6f27c3dae57c424e06aec31df6c1e1a821e547aa4e933f2f9b894b5e6762b52d")
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=${_commit}")
+sha256sums=("SKIP")
 license=("CDDL")
 depends=("kmod" "zfs-utils-git=${_zfsver}" "linux-vfio=${_kernelver}")
 
