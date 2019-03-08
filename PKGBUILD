@@ -9,8 +9,8 @@ url='https://verilogtorouting.org'
 license=(MIT)
 depends=(ctags)
 makedepends=(sed)
-provides=(vtr)
-conflicts=(vtr)
+provides=(vpr)
+conflicts=(vpr)
 source=(http://www.eecg.utoronto.ca/vtr/vtr_release_7.0_full.tar.gz)
 md5sums=('SKIP')
 
