@@ -7,17 +7,14 @@ pkgbase = libnvidia-container
 	license = custom
 	makedepends = bmake
 	makedepends = lsb-release
-	makedepends = rpcsvc-proto
 	depends = libcap
 	depends = libseccomp
 	depends = libtirpc
 	options = !makeflags
 	source = https://github.com/NVIDIA/libnvidia-container/archive/v1.0.0.tar.gz
-	source = https://downloads.sourceforge.net/project/libtirpc/libtirpc/1.1.4/libtirpc-1.1.4.tar.bz2
 	source = https://sourceforge.net/projects/elftoolchain/files/Sources/elftoolchain-0.7.1/elftoolchain-0.7.1.tar.bz2
 	source = https://github.com/NVIDIA/nvidia-modprobe/archive/396.51.tar.gz
 	sha256sums = 5c8ca77e490fd9a0a47020fa0d6d9842af4951bfcb12d189db37ad5524b67f27
-	sha256sums = 2ca529f02292e10c158562295a1ffd95d2ce8af97820e3534fe1b0e3aec7561d
 	sha256sums = 44f14591fcf21294387215dd7562f3fb4bec2f42f476cf32420a6bbabb2bd2b5
 	sha256sums = 25bc6437a384be670e9fd76ac2e5b9753517e23eb16e7fa891b18537b70c4b20
 
