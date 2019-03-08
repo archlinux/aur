@@ -10,7 +10,9 @@ pkgbase = libnvidia-container-bin
 	provides = libnvidia-container
 	conflicts = libnvidia-container
 	source = https://nvidia.github.io/libnvidia-container/centos7/x86_64/libnvidia-container1-1.0.1-1.x86_64.rpm
+	source = https://nvidia.github.io/libnvidia-container/centos7/x86_64/libnvidia-container-devel-1.0.1-1.x86_64.rpm
 	sha256sums = bb422721c5c66be35e75bdad1bbe14d29529ea2e3fb30744f04b28e3b02d6ef9
+	sha256sums = d88fea93e964b5cab728d586c4575c3632ba5c0e11dd681b16ead30c5b3d3e6c
 
 pkgname = libnvidia-container-bin
 
