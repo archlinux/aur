@@ -1,0 +1,14 @@
+pkgbase = python-brewer2mpl
+	pkgdesc = Connect colorbrewer2.org color maps to Python and matplotlib
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/jiffyclub/brewer2mpl/wiki
+	arch = any
+	license = MIT
+	source = https://pypi.python.org/packages/source/b/brewer2mpl/brewer2mpl-1.4.1.tar.gz
+	md5sums = f8cd1fbb9f5d836a3a095b1ca9d58fc2
+
+pkgname = python-brewer2mpl
+	depends = python
+	optdepends = python-matplotlib: get matplotlib color maps
+
