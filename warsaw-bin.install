@@ -2,7 +2,7 @@ post_install() {
 	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 
 	echo "To use Warsaw, start its service using:"
-	echo "$ sudo warsaw start"
+	echo "$ sudo systemctl start warsaw"
 	echo "To start Warsaw at system startup, use the command:"
 	echo "$ sudo systemctl enable warsaw"
 
