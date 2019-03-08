@@ -10,14 +10,14 @@
 _pkgname="pulseaudio"
 pkgname="$_pkgname-git"
 pkgdesc="A featureful, general-purpose sound server (development version)"
-pkgver=v12.0.260.g7525cc821
+pkgver=v12.0.271.g904dd3800
 pkgrel=1
 arch=("i686" "x86_64" "armv7h")
 url="http://pulseaudio.org/"
 license=("GPL" "LGPL")
 depends=(lib{ltdl,soxr,asyncns,cap,xtst,sm,sndfile} "rtkit" "speexdsp" "tdb"
-         "orc" "webrtc-audio-processing" "dbus" "systemd" "avahi" "openssl"
-         "lirc" "jack" bluez{,-libs} "sbc" python-{pyqt5,dbus,sip} "fftw") #json-c
+         "orc" "webrtc-audio-processing" {jack2-,}dbus "systemd" "avahi" "openssl"
+         "lirc" bluez{,-libs} "sbc" python-{pyqt5,dbus,sip} "fftw") #json-c
 makedepends=("git" lib{asyncns,cap,xtst,sm,sndfile,tool,soxr} "attr" "rtkit"
              "speexdsp" "tdb" "systemd" {jack2-,}dbus "avahi" bluez{,-libs}
              "intltool"  "sbc" "lirc" "openssl" "fftw" "orc" "gtk3"
@@ -29,8 +29,10 @@ backup=(etc/pulse/{daemon.conf,default.pa,system.pa,client.conf})
 provides=(pulseaudio{,-{zeroconf,lirc,jack,bluetooth,equalizer}} "libpulse") #"pulseaudio-xen" "pulseaudio-gconf"
 conflicts=(pulseaudio{,-{zeroconf,lirc,jack,bluetooth,equalizer}} "libpulse") #"pulseaudio-xen" "pulseaudio-gconf"
 options=(!emptydirs)
-source=("git+git://anongit.freedesktop.org/pulseaudio/pulseaudio")
-sha256sums=("SKIP")
+source=("git+git://anongit.freedesktop.org/pulseaudio/pulseaudio"
+        'fixlibtool')
+sha256sums=('SKIP'
+            '8478cb2b495d3ef4844b700140d04ecbcbeb06d5d7bdae5308dec2b74a2c59c4')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -57,6 +59,9 @@ build() {
         --disable-rpath \
         --disable-default-build-tests \
         DATADIRNAME=share
+
+    #Incomplete libtool breaks LTO, possibly other things.
+    #patch -Np2 < ../fixlibtool
 
     # fight unused direct deps
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
