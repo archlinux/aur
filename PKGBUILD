@@ -2,16 +2,16 @@
 
 pkgname=python-intervaltree
 _pkgname=intervaltree
-pkgver=2.1.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='Library providing a mutable, self-balancing interval tree for Python.'
 arch=(any)
-url=https://github.com/d0c-s4vage/py010parser
+url=https://github.com/chaimleib/intervaltree
 license=('Apache')
 depends=(python-sortedcontainers)
 makedepends=(python-setuptools)
 source=(https://github.com/chaimleib/${_pkgname}/archive/${pkgver}.tar.gz)
-md5sums=(ad4020de1066461e46eb777a15ce4bd4)
+sha256sums=('e8ab75b66077f2e5fb85ac56cb6df834689edb048d38601d53d8867cce3b77d1')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
