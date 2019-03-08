@@ -2,13 +2,13 @@
 
 pkgname="ayatana-indicator-application"
 pkgver="0.5.2"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Ayatana Application Indicators"
 arch=("i686" "x86_64")
 url="https://github.com/AyatanaIndicators"
-license=("GPL2" "GPL3" "LGPL2.1" "LGPL3")
-depends=("libayatana-indicator-gtk3" "libayatana-appindicator-gtk3" "dbus-glib")
-makedepends=("mate-common" "xorg-server-xvfb" "glib2" "gtk3" "dbus-glib" "json-glib" "intltool" "libayatana-appindicator-gtk3" "libayatana-indicator-gtk3" "libdbusmenu-glib" "libdbusmenu-gtk3" "systemd")
+license=("GPL3")
+depends=("libayatana-indicator" "dbus-glib" "libayatana-appindicator-gtk3")
+makedepends=("mate-common" "xorg-server-xvfb" "glib2" "gtk3" "dbus-glib" "json-glib" "intltool" "libayatana-appindicator-gtk3" "libayatana-indicator" "libdbusmenu-glib" "libdbusmenu-gtk3" "systemd")
 source=("http://releases.ayatana-indicators.org/source/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=("15a5d17de624004cc814cc5d7b895478")
 options=("!emptydirs")
