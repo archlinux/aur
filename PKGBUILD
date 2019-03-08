@@ -4,7 +4,7 @@
 _build_doc=ON
 _build_apps=ON
 pkgname=openmesh
-pkgver=7.1
+pkgver=8.0
 pkgrel=1
 pkgdesc="A generic and efficient data structure for representing and manipulating polygonal meshes"
 arch=('i686' 'x86_64')
@@ -14,15 +14,15 @@ depends=('mesa')
 optdepends=('qt5-base: for using included applications')
 source=("${pkgname}-${pkgver}.tar.bz2::http://www.openmesh.org/media/Releases/${pkgver}/OpenMesh-${pkgver}.tar.bz2"
     doc-install.patch)
-sha256sums=('71cd5eb25893b0369ac766bb8305a525ffbb39b7f796d2878c7f9b8e0827cbac'
-            '0ca0b0c4092d425615273e0e4ef57b91523b73d8c2bea6df96bc099f8596cb45')
+sha256sums=('f3311232d3611847c523bd4792ce8700f7ec81e9e1ff2a4bdda18eac70577d33'
+            'cedf4ab2e6349caba7e899b5462643435bb42d7e70c6231e582f056ddf7bf41b')
 
 if [[ "${_build_doc}" == "ON" && "${_build_apps}" == "ON" ]]; then
-    makedepends=('cmake' 'qt4' 'graphviz' 'doxygen')
+    makedepends=('cmake' 'qt5-base' 'graphviz' 'doxygen')
 elif [[ "${_build_doc}" == "ON" ]]; then
     makedepends=('cmake' 'graphviz' 'doxygen')
 elif [[ "${_build_apps}" == "ON" ]]; then
-    makedepends=('cmake' 'qt4')
+    makedepends=('cmake' 'qt5-base')
 else
     makedepends=('cmake')
 fi
