@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-nspr
-pkgver=4.20
+pkgver=4.21
 pkgrel=1
 pkgdesc="Netscape Portable Runtime (mingw-w64)"
 arch=('any')
@@ -17,7 +17,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v${pkgver}/src/nsp
         nspr-4.10.2_staticbuild.patch
         nspr-4.10.2_x64.patch
         nspr-4.19-threads.patch)
-sha256sums=('2c8964913da89ffbaf464d49ce44d79e8804e1794ef9a8c52a7bff7224d1556e'
+sha256sums=('15ea32c7b100217b6e3193bc03e77f485d9bf7504051443ba9ce86d1c17c6b5a'
             '725f8d6da56e44dba7669c498ed66af1b2145640115fd9bae9663c9364d9fde9'
             'e3358ed82a289b76b23ceb95308a517145e8c915c0056af58ad1193db870269a'
             '4f47fbfce21a5634094d6a0c7fdd29f2bbdcb352074b8c498ba23a9f4f859b29'
