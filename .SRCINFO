@@ -1,0 +1,16 @@
+pkgbase = pssh-lilydjwg-git
+	pkgdesc = Parallel SSH Tools
+	pkgver = 2.3.1.r27.ga2f936b
+	pkgrel = 1
+	url = https://github.com/lilydjwg/pssh/
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	conflicts = python-pssh
+	source = git+https://github.com/lilydjwg/pssh/
+	sha512sums = SKIP
+
+pkgname = pssh-lilydjwg-git
+
