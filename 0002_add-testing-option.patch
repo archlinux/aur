@@ -1,0 +1,34 @@
+diff -ura a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2018-11-16 09:58:09.000000000 +0100
++++ b/CMakeLists.txt	2019-03-08 12:50:54.181592524 +0100
+@@ -6,6 +6,8 @@
+ set(PROJECT_VERSION "2.0.93")
+ set(PACKAGE ${CMAKE_PROJECT_NAME})
+ 
++option (enable_tests "Build the package's automatic tests." ON)
++
+ ##
+ ##  GNU standard installation directories
+ ## 
+@@ -86,11 +88,13 @@
+ 
+ 
+ # testing & coverage
+-enable_testing ()
+-add_subdirectory(tests)
+-find_package(CoverageReport)
+-ENABLE_COVERAGE_REPORT(
+-  TARGETS ${SERVICE_LIB} ${SERVICE_EXEC}
+-  TESTS ${COVERAGE_TEST_TARGETS}
+-  FILTER /usr/include ${CMAKE_BINARY_DIR}/*
+-)
++if (${enable_tests})
++    enable_testing ()
++    add_subdirectory(tests)
++    find_package(CoverageReport)
++    ENABLE_COVERAGE_REPORT(
++        TARGETS ${SERVICE_LIB} ${SERVICE_EXEC}
++        TESTS ${COVERAGE_TEST_TARGETS}
++        FILTER /usr/include ${CMAKE_BINARY_DIR}/*
++    )
++endif ()
