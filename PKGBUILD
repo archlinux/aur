@@ -7,6 +7,7 @@ pkgdesc="One for all free music in China"
 arch=('x86_64')
 url="https://listen1.github.io/listen1/"
 license=('MIT')
+makedepends=('p7zip')
 noextract=("Listen1_${pkgver}_linux_x86_64.AppImage")
 options=("!strip")
 source=("https://github.com/listen1/listen1_desktop/releases/download/v${pkgver}/Listen1_${pkgver}_linux_x86_64.AppImage" 
