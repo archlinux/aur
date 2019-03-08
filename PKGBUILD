@@ -1,8 +1,8 @@
 # Maintainer: Kilian Guillaume "cafehaine" <kilian dot guillaume at gmail dot com>
 pkgname=coffeestatus-git
 _realname=coffeestatus
-pkgrel=2
-pkgver=r42.69f9181
+pkgrel=1
+pkgver=r43.a5da665
 pkgdesc='A simple status generator for i3 written in lua, meant to be modular.'
 arch=('any')
 url=https://github.com/cafehaine/coffeestatus

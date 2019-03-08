@@ -1,7 +1,7 @@
 pkgbase = coffeestatus-git
 	pkgdesc = A simple status generator for i3 written in lua, meant to be modular.
-	pkgver = r42.69f9181
-	pkgrel = 2
+	pkgver = r43.a5da665
+	pkgrel = 1
 	url = https://github.com/cafehaine/coffeestatus
 	arch = any
 	license = MIT
