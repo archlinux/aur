@@ -1,13 +1,14 @@
 pkgbase = julia-loadpath
 	pkgdesc = Add a system-wide package directory to the JULIA_LOAD_PATH
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://gitlab.manjaro.org/jonathon/julia-loadpath
+	install = julia-loadpath.install
 	arch = any
 	license = GPL3
 	optdepends = julia
-	source = julia-loadpath-1.0.tar.gz::https://gitlab.manjaro.org/jonathon/julia-loadpath/-/archive/1.0/julia-loadpath-1.0.tar.gz
-	sha256sums = 56e8a0daa45ac8be6d82f2676f1dba942022e7455d63c6bf79e29131a827510b
+	source = julia-loadpath-1.0.1.tar.gz::https://gitlab.manjaro.org/jonathon/julia-loadpath/-/archive/1.0.1/julia-loadpath-1.0.1.tar.gz
+	sha256sums = 1a2112f395d8bc79b4b5a21600ecbeb68fabbf104b8810b6c16f42abcde4f36f
 
 pkgname = julia-loadpath
 

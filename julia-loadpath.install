@@ -1,0 +1,18 @@
+post_install() {
+	info
+}
+post_upgrade() {
+	info
+}
+
+info() {
+	echo<<EOM "
+	** NOTE **
+
+	You must start a new shell (or source the profile script) after installing this
+	package to set up the default JULIA_LOAD_PATH environment variable.
+
+	If you don't, any other Julia packages will be unable to find system-wide modules.
+"
+EOM
+}
