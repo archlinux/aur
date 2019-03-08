@@ -21,5 +21,4 @@ package() {
 
   cd "${srcdir}/openTSNE-$pkgver"
   python setup.py install --root=${pkgdir} --optimize=1
-  rm -r "${pkgdir}"/usr/lib/python*/site-packages/{benchmarks,examples,tests}
 }
