@@ -10,8 +10,10 @@ source=(
   "https://github.com/llvm-mirror/llvm/archive/release_70.zip"
   "git+https://github.com/JuliaComputing/llvm-cbe.git"
 )
-sha256sums=('7c3d96b4df6517ff1168cddc61251e7d41eaee17742d7515578c42576664f97e'
-            'SKIP')
+sha256sums=(
+  '7c3d96b4df6517ff1168cddc61251e7d41eaee17742d7515578c42576664f97e'
+  'SKIP'
+)
 
 pkgver() {
   cd llvm-cbe
@@ -19,11 +21,11 @@ pkgver() {
 }
 
 build() {
-  ln -sf llvm-cbe llvm-release_70/projects
+  ln -sf ../../llvm-cbe llvm-release_70/projects
   cd llvm-release_70
   mkdir -p build
   cd build
-  ls Makefile || cmake ..
+  cmake ..
   make
 }
 
