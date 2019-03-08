@@ -2,15 +2,15 @@
 
 _gitname=enlightenment-arc-theme
 pkgname=${_gitname}-git
-pkgver=r105.a4646e2
+pkgver=r124.076896f
 pkgrel=1
-pkgdesc="A flat theme for enlightenment (Warning: will pull latest revision of efl to compile the theme)"
+pkgdesc="A flat theme for enlightenment"
 arch=('any')
-url="https://github.com/charlesmilette/${_gitname}"
+url="https://github.com/thewaiter/${_gitname}"
 license=('GPL3')
 depends=('efl')
 makedepends=('git' 'efl')
-source=("git://github.com/charlesmilette/${_gitname}.git")
+source=("git://github.com/thewaiter/${_gitname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -19,22 +19,8 @@ pkgver() {
 }
 
 build() {
-	if [ -d efl ] ; then
-		cd efl && git pull efl master --depth=1
-	else
-		mkdir efl
-		cd efl
-		git init
-		git remote add efl https://git.enlightenment.org/core/efl.git
-		git config core.sparsecheckout true
-		echo "data/elementary/themes" >> .git/info/sparse-checkout
-		git pull efl master --depth=1
-	fi
 	cd "${srcdir}/${_gitname}"
-	rm arc.edj
-	rm arc-dark.edj
-	# rm arc-darker.edj
-	make orig-theme
+	make clean
 	make all
 }
 

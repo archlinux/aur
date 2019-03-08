@@ -1,14 +1,14 @@
 pkgbase = enlightenment-arc-theme-git
-	pkgdesc = A flat theme for enlightenment (Warning: will pull latest revision of efl to compile the theme)
-	pkgver = r105.a4646e2
+	pkgdesc = A flat theme for enlightenment
+	pkgver = r124.076896f
 	pkgrel = 1
-	url = https://github.com/charlesmilette/enlightenment-arc-theme
+	url = https://github.com/thewaiter/enlightenment-arc-theme
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = efl
 	depends = efl
-	source = git://github.com/charlesmilette/enlightenment-arc-theme.git
+	source = git://github.com/thewaiter/enlightenment-arc-theme.git
 	sha256sums = SKIP
 
 pkgname = enlightenment-arc-theme-git
