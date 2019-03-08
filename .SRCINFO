@@ -5,9 +5,11 @@ pkgbase = tsnake
 	url = https://github.com/langurmonkey/tsnake
 	arch = x86_64
 	license = GPL
+	makedepends = git
+	depends = bash
 	provides = tsnake
 	conflicts = tsnake
-	source = git+https://github.com/langurmonkey/tsnake
+	source = git+https://github.com/langurmonkey/tsnake.git
 	md5sums = SKIP
 
 pkgname = tsnake

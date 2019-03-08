@@ -1,4 +1,4 @@
-# Maintainer: Toni Sagrista <admin@tonisagrista.com>
+# Maintainer: Toni Sagrista <admin at tonisagrista dot com>
 
 pkgname=tsnake
 pkgver=0.1.0
@@ -7,16 +7,21 @@ pkgdesc='Terminal snake game written in C++ with map support'
 arch=(x86_64)
 url='https://github.com/langurmonkey/tsnake'
 license=(GPL)
+depends=('bash')
+makedepends=(git)
 provides=(tsnake)
 conflicts=(tsnake)
-source=(git+https://github.com/langurmonkey/tsnake)
+source=(git+${url}.git)
 md5sums=('SKIP')
 
-package() {
-    cd tsnake/
+build() {
+    cd tsnake
     make
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm755 tsnake "$pkgdir/usr/bin/tsnake"
-    install -Dm644 tsnake.1 "$pkgdir/usr/share/man/man1/tsnake.1"
+}
 
+package() {
+    cd tsnake
+    make DESTDIR="$pkgdir" PREFIX=/usr install
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
