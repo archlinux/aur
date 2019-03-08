@@ -1,8 +1,8 @@
 # Maintainer: Marc Plano-Lesay <marc.planolesay@gmail.com>
 
 pkgname=bazel-buildtools
-pkgver=0.11.1
-pkgrel=2
+pkgver=0.22.0
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/bazelbuild/buildtools'
 license=('Apache')
@@ -15,7 +15,7 @@ package() {
 	install -d "$pkgdir"/usr/bin
 	install -Dm755 buildifier buildozer unused_deps $pkgdir/usr/bin/
 }
-md5sums=('aae6e0cc5249e5468e8f103097c08919'
-         '9e2f79e043960e6dd2dbd17676e46466'
-         '95f2df2d9682230b68b996936e432c94')
+md5sums=('3aa742a8364c0a55c8cf8e0d979a9e89'
+         '2521c3d6de32387113e248f0cded6ece'
+         '1c57c02cf5962b0b66292371601a6b08')
 
