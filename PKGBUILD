@@ -77,10 +77,6 @@ build(){
         # Build with profile analysis
         #make clean
         #make pgo=optimize compiler=g++ platform=linux target=higan profile=${_profile} name=higan-${_profile}
-
-        #Generic build; leave pgo, etc up to the package manager (makepkg-optimize)
-        #make compiler=g++ platform=linux target=higan name=higan-${_profile}
-
 }
 
 package_libananke(){
