@@ -15,5 +15,8 @@ md5sums=('SKIP')
 package() {
     cd tsnake/
     make
-    make install
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 tsnake "$pkgdir/usr/bin/tsnake"
+    install -Dm644 tsnake.1 "$pkgdir/usr/share/man/man1/tsnake.1"
+
 }
