@@ -2,22 +2,25 @@
 
 pkgname="ayatana-indicator-messages"
 pkgver="0.6.0"
-pkgrel="1"
-pkgdesc="indicator that collects messages that need a response"
+pkgrel="2"
+pkgdesc="Ayatana Indicator that collects messages that need a response"
 arch=("i686" "x86_64")
 url="https://github.com/AyatanaIndicators"
 license=("GPL3")
-depends=("dconf" "libayatana-indicator-gtk3" "accountsservice" "glib2" "hicolor-icon-theme")
-makedepends=("gobject-introspection" "gnome-common" "gtk-doc" "intltool" "accountsservice" "vala" "systemd")
+depends=("glib2" "accountsservice" "hicolor-icon-theme" "dconf")
+makedepends=("gobject-introspection" "gtk-doc" "intltool" "accountsservice" "mate-common" "vala")
+optdepends=("mate-ayatana-indicator-applet")
 source=("http://releases.ayatana-indicators.org/source/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=("b8c38939ade3414741c2a4b0ddbb045a")
 options=("!emptydirs")
+provides=("indicator-messages")
+conflicts=("indicator-messages")
 
 prepare()
 {
     cd ${srcdir}/${pkgname}-${pkgver}
-    sed -i "s@PKG_CHECK_MODULES(DBUSTEST, dbustest-1)@@" configure.ac
-    sed -i "s@AM_INIT_AUTOMAKE(subdir-objects)@AM_INIT_AUTOMAKE()@" configure.ac
+    patch -Np1 -i ../../0001.fix-testing-option.patch
+    patch -Np1 -i ../../0002.fix-build.patch
     NOCONFIGURE=1 ./autogen.sh
 }
 
