@@ -1,6 +1,6 @@
 # Maintainer: Harry Beadle <harry.beadle@gmail.com>
 
-pkgname=vtr
+pkgname=vtr-git
 pkgver=8.0
 pkgrel=1
 pkgdesc='Verilog to Routing'
