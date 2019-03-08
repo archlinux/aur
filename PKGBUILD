@@ -2,7 +2,7 @@
 
 pkgname=python-quantlib
 _pkgname=QuantLib-SWIG
-pkgver=1.11
+pkgver=1.15
 pkgrel=1
 pkgdesc="A Python binding for QuantLib."
 arch=("i686" "x86_64")
@@ -11,8 +11,8 @@ license=("BSD")
 options=(!libtool)
 depends=("quantlib>=1.11" "python")
 makedepends=("make"  "gcc")
-source=(http://downloads.sourceforge.net/project/quantlib/QuantLib/$pkgver/other%20languages/$_pkgname-$pkgver.tar.gz)
-md5sums=("958fcd92ba1fb2bb967ba915ae7b2782")
+source=(https://bintray.com/quantlib/releases/download_file?file_path=$_pkgname-$pkgver.tar.gz)
+sha256sums=("bb177822d473c8bd87579ef39b261ca32227fb5492ebd5e21db2e8f090cbc8c6")
 
 build() {
   cd "$srcdir"/"$_pkgname-$pkgver"/
@@ -23,5 +23,5 @@ build() {
 package() {
   cd "$srcdir"/"$_pkgname-$pkgver"/
   sed -i "s#setup.py install#setup.py install --root=\"${pkgdir}\"#g" Python/Makefile
-  make  -C Python install
+  make -C Python install
 }
