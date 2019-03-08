@@ -19,7 +19,10 @@ makedepends=(
     "gcc>=7.2"
     "python>=3.5.2"
 )
-checkdepends=("python>=3.5.2")
+checkdepends=(
+    "python>=3.5.2"
+    "yarn"
+)
 optdepends=(
     "yarn: for package support and allegro"
     "allegro: for graphics support"
