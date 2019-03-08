@@ -1,4 +1,4 @@
-# Maintainer: Harry Beadle <harry.beadle@gmail.com>
+# Maintainer: Harry Beadle <harrybeadle@protonmail.com>
 
 pkgname=vtr-git
 pkgver=8.0
