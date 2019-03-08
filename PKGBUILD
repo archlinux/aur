@@ -89,6 +89,11 @@ source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}
 sha256sums=('SKIP'
             'c7d7b0eb5d5d0874047b7049bdd432d37996a3f8f077bcabbee41cd1697526b4')
 
+prepare() {
+  cd $srcdir/ffmpeg
+  patch -Np1 -i ${srcdir}/0001-Add-ability-for-ffmpeg-to-run-svt-av1-vp9.patch
+}
+
 build() {
   cd ffmpeg
 
