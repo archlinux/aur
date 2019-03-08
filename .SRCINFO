@@ -1,0 +1,17 @@
+pkgbase = dict-freedict-swe-deu-bin
+	pkgdesc = Swedish -> German dictionary for dictd et al. from Freedict.org
+	pkgver = 2018.09.13
+	pkgrel = 1
+	url = https://freedict.org/
+	install = dict-freedict-swe-deu-bin.install
+	arch = any
+	license = CCPL:by-sa
+	license = FDL
+	optdepends = dictd: dict client and server
+	provides = dict-freedict-swe-deu
+	conflicts = dict-freedict-swe-deu
+	source = https://download.freedict.org/dictionaries/swe-deu/2018.09.13/freedict-swe-deu-2018.09.13.dictd.tar.xz
+	sha256sums = 65f3638e7c2070fbae0523aa8698918cb17f9a6616b865f0676372b43f0fd073
+
+pkgname = dict-freedict-swe-deu-bin
+
