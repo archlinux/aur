@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd ${srcdir}/rtl8821ce
-    printf '%s.r%s.g%s' '1.0.1' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf '%s.r%s.g%s' '1.0.3' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
