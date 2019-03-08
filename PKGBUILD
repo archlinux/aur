@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=loccount
-pkgver=2.0
+pkgver=2.3
 pkgrel=1
 pkgdesc="Count source lines of code in a project."
 arch=('i686' 'x86_64')
@@ -9,10 +9,9 @@ url="http://www.catb.org/esr/$pkgname/"
 license=('BSD')
 makedepends=('asciidoc' 'go' 'xmlto')
 source=("$url$pkgname-$pkgver.tar.gz")
-sha512sums=('fbeca20c8665eeb0a402e3b06622a6a24f6779122cb0d017608f778e8b7de675c6376b9a5832995ac7df8a619124f48937d34e77358af31561884d65f9d62618')
+sha512sums=('a1e9f29534e93061407d2a63f3ec4349590d9c46cf595f5265c7b7c5e06ef634eb953e64118c64cac2d185db5bbd8dfebfcd96cd71018283dbf9aeedfd573474')
 
 prepare() {
-  mv "$pkgname-\"$pkgver\"" "$pkgname-$pkgver"
   cd "$pkgname-$pkgver"
 
   for patch in ../*.patch; do
