@@ -1,0 +1,13 @@
+pkgbase = python-oxd-git
+	pkgdesc = A CLI for the Oxford Dictionaries website.
+	pkgver = r23.c271111
+	pkgrel = 1
+	url = https://github.com/mpolidori/python-oxd
+	arch = any
+	license = MIT
+	depends = python
+	source = git+https://github.com/mpolidori/python-oxd.git
+	md5sums = SKIP
+
+pkgname = python-oxd-git
+
