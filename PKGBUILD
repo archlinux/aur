@@ -11,7 +11,7 @@ license=('GPL3')
 groups=('pantheon-qq')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libwnck3' 'cogl')
-makedepends=('meson' 'git' 'granite-git' 'vala')
+makedepends=('meson' 'git' 'vala')
 optdepends=("pantheon-applications-menu-git: Application launcher"
             wingpanel-indicator-{a11y,bluetooth,datetime,keyboard,network,notifications,power,session,sound}-git": Tray applet"
             "wingpanel-indicator-ayatana-git: Unity 7 Tray applets"
@@ -20,7 +20,7 @@ optdepends=("pantheon-applications-menu-git: Application launcher"
             "indicator-sensors: Sensors readout applet"
             "ubuntu-indicator-weather: Simple weather applet")
 provides=(wingpanel{,{,-standalone}-bzr,-git} 'libwingpanel-2.0.so')
-conflicts=('wingpanel')
+conflicts=(wingpanel{,{,-standalone}-bzr,-git} 'libwingpanel-2.0.so')
 replaces=('wingpanel-standalone-bzr')
 source=('git+https://github.com/elementary/wingpanel.git'
         'minus-backgroundmanager.patch'
