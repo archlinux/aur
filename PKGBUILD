@@ -5,7 +5,7 @@
 # Maintainer: Nikos Skalkotos <skalkoto (at) Gmail.com>
 
 pkgname=libguestfs
-pkgver=1.38.6
+pkgver=1.40.2
 pkgver_short=${pkgver%.*}
 pkgrel=1
 pkgdesc="Access and modify virtual machine disk image"
@@ -26,7 +26,8 @@ depends=("qemu-headless"
          "fuse"
          "file"
          "cpio"
-         "wget")
+         "wget"
+	 "jansson")
 makedepends=("qemu-headless"
              "pcre"
              "cdrkit"
@@ -40,6 +41,7 @@ makedepends=("qemu-headless"
              "perl-libintl-perl"
              "perl-sys-virt"
 	     "perl-module-build"
+	     "jansson"
 #             "lua"
 #             "ghc"
 #             "ruby"
@@ -63,8 +65,8 @@ provides=("guestfish=${pkgver}")
 options=()
 source=("http://libguestfs.org/download/${pkgver_short}-stable/${pkgname}-${pkgver}.tar.gz"
         "update-libguestfs-appliance")
-sha512sums=('20a254f1d6a4628a11f42c08947d1165430a020030da7e6ee7b22859b552245e8f3822a2d86c60055878ca00d8f17d346a0ad8274e8f0bb03ef4a9410b9630f1'
-            '436f85c20e5c596738fcadd08089ddf5923e3b51ab05fe0a80d0fea7f0f5a7b797aece70f05e7d0f68387632a4b816d688890e0e06af4c834ae000f0d4ad5aff')
+sha512sums=('d288f15d5a70b4b87a4271ea2eb7dc0ec4f48fdb136b8f62003352a069f75573de873e1063763889f410fb1b99951252e9a48dd73bf0233047f21aae43ac6de2'
+            '6f695baf27927a7643b2b3f6a2497ca37e306b2e8640bd6025c49f1fc3b243a379b38ad6183acb099e9d762e5ab55b28bbdfab0c6dbd1d3fe748caa0846b1c5a')
 
 check() {
     # test-lock fails, perhaps related to:
