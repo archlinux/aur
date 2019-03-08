@@ -12,7 +12,7 @@ url="https://github.com/mdomlop/$pkgname"
 source=("https://github.com/mdomlop/$pkgname/archive/$pkgver.tar.gz")
 license=('GPL3')
 changelog=ChangeLog
-optdepends=('xcursors-retrosmart: The corresponding X11 cursor theme')
+optdepends=('xcursor-retrosmart: The corresponding X11 cursor theme')
 arch=('any')
 group=('retrosmart')
 
