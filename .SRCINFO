@@ -1,0 +1,17 @@
+pkgbase = zsh-zplugin-git
+	pkgdesc = Flexible Zsh plugin manager with clean fpath, reports, completion management, turbo mode
+	pkgver = r1477.43ac67f
+	pkgrel = 1
+	url = http://github.com/zdharma/zplugin
+	arch = any
+	license = GPL
+	license = MIT
+	makedepends = git
+	depends = zsh>=4.3.17
+	provides = zsh-zplugin
+	conflicts = zsh-zplugin
+	source = git+https://github.com/zdharma/zplugin.git
+	sha512sums = SKIP
+
+pkgname = zsh-zplugin-git
+
