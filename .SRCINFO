@@ -1,19 +1,20 @@
 pkgbase = mat2
 	pkgdesc = Metadata anonymisation toolkit
 	pkgver = 0.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://0xacab.org/jvoisin/mat2
 	arch = any
 	license = GPL3
+	checkdepends = ffmpeg
 	makedepends = python-setuptools
 	makedepends = git
-	depends = python
-	depends = perl
 	depends = perl-image-exiftool
 	depends = python-mutagen
 	depends = python-cairo
 	depends = python-gobject
 	depends = poppler-glib
+	depends = gdk-pixbuf2
+	depends = mailcap
 	optdepends = ffmpeg
 	optdepends = bubblewrap
 	source = git+https://0xacab.org/jvoisin/mat2.git#tag=0.8.0?signed
