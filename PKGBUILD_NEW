@@ -10,7 +10,7 @@
 pkgname=davinci-resolve
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
-pkgver=15.3
+pkgver=15.2.3
 pkgrel=1
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 arch=('any')
@@ -24,22 +24,60 @@ conflicts=('davinci-resolve-beta' 'davinci-resolve-studio' 'davinci-resolve-stud
 install=${pkgname}.install
 
 # Trying to make the user's life easier ;o)
-msg2 "Trying to fetch the archive file if available..."
-DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
+_downloadid='24a482e1e9154ef793aa71e5d3b3a391'
+_referid='b9f352753ebe4cc5a74005e2d053263c'
+_srcurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
 
-if [ ! -f ${PWD}/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
-	if [ -f $DOWNLOADS_DIR/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
-		ln -sfn $DOWNLOADS_DIR/DaVinci_Resolve_${pkgver}_Linux.zip ${PWD}
-	else
-		msg2 ""
-		msg2 "The package can be downloaded here: https://www.blackmagicdesign.com/products/davinciresolve/"
-		msg2 "Please remember to put a downloaded package DaVinci_Resolve_${pkgver}_Linux.zip into the build directory ${PWD} or $DOWNLOADS_DIR"
-		msg2 ""
-	fi
-fi
+source=("DaVinci_Resolve_${pkgver}_Linux.zip"::"$_srcurl")
+sha256sums=('d0123739c68b3b03565a1478625a3ebafbb067eb5631a7c7b0a41726f5d5c854')
 
-source=("local://DaVinci_Resolve_${pkgver}_Linux.zip")
-sha256sums=('5cb13097220214c304609e9f9dfca1790f971fff1261f2396ca0d0c1234c7de3')
+_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
+                        AppleWebKit/537.36 (KHTML, like Gecko) \
+                        Chrome/70.0.3538.77 \
+                        Safari/537.36"
+
+_reqjson="{ \
+    \"platform\": \"Linux\", \
+    \"country\": \"us\", \
+    \"firstname\": \"Arch\", \
+    \"lastname\": \"Linux\", \
+    \"email\": \"someone@archlinux.org\", \
+    \"phone\": \"202-555-0194\", \
+    \"state\": \"New York\", \
+    \"city\": \"AUR\", \
+    \"product\": \"DaVinci Resolve ${pkgver}\" \
+}"
+
+_reqjson="$(  printf '%s' "$_reqjson"   | sed 's/[[:space:]]\+/ /g')"
+_useragent="$(printf '%s' "$_useragent" | sed 's/[[:space:]]\+/ /g')"
+_useragent_escaped="${_useragent// /\\ }"
+
+DLAGENTS=("https::/usr/bin/curl \
+              -gqb '' -C - --retry 3 --retry-delay 3 \
+              -H Host:\ sw.blackmagicdesign.com \
+              -H Upgrade-Insecure-Requests:\ 1 \
+              -H ${_useragent_escaped} \
+              -H Accept:\ text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8 \
+              -H Accept-Language:\ en-US,en;q=0.9 \
+              -o %o \
+              --compressed \
+              $(curl \
+                  -s \
+                  -H 'Host: www.blackmagicdesign.com' \
+                  -H 'Accept: application/json, text/plain, */*' \
+                  -H 'Origin: https://www.blackmagicdesign.com' \
+                  -H "$_useragent" \
+                  -H 'Content-Type: application/json;charset=UTF-8' \
+                  -H "Referer: https://www.blackmagicdesign.com/support/download/${_referid}/Linux" \
+                  -H 'Accept-Encoding: gzip, deflate, br' \
+                  -H 'Accept-Language: en-US,en;q=0.9' \
+                  -H 'Authority: www.blackmagicdesign.com' \
+                  -H 'Cookie: _ga=GA1.2.1849503966.1518103294; _gid=GA1.2.953840595.1518103294' \
+                  --data-binary "$_reqjson" \
+                  --compressed \
+                  "$_srcurl"
+              )"
+)
 
 prepare()
 {
@@ -64,7 +102,6 @@ package()
 	mkdir -p "${pkgdir}/etc/xdg/menus"
 
 	msg2 "Extracting from bundle..."
-	msg "Please wait, this take a while"
 	cd "${srcdir}" || exit
 	bsdtar x -f DaVinci_Resolve_${pkgver}_Linux.run -C "${pkgdir}/opt/${_pkgname}"
 
@@ -115,13 +152,8 @@ package()
 	install -D -m644 share/resolve.xml "${pkgdir}/usr/share/mime/packages/resolve.xml"
 	
 	msg2 "Setting the right permissions..."
-	if [ ! "$(lognam 2>&1 >/dev/null)" ]; then
-		_user=$(logname)
-		_group=$(id -g -n ${_user})
-	else
-		_user=root
-		_group=root
-	fi
+	_user=$(logname)
+	_group=$(id -g -n ${_user})
 	chown -R ${_user}:${_group} "${pkgdir}/opt/${_pkgname}/"{*,.*}
 	chown -R ${_user}:root "${pkgdir}/opt/${_pkgname}/"{configs,DolbyVision,easyDCP,Fairlight,logs,Media,'Resolve Disk Database',.crashreport,.license,.LUT}
 
