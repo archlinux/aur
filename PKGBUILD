@@ -1,4 +1,4 @@
-# Maintainer: Harry Beadle <harry.beadle@gmail.com>
+# Maintainer: Harry Beadle <harrybeadle@protonmail.com>
 
 pkgname=subtle-hg
 pkgver=0.11.3224
