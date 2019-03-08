@@ -1,0 +1,16 @@
+pkgbase = skycoin_archlinux_packages-mirrorlist
+	pkgdesc = skycoin archlinux packages mirrorlist
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/0pcom/skycoin_archlinux_packages
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	source = https://raw.githubusercontent.com/0pcom/skycoin_archlinux_packages/master/skycoin_archlinux_packages-mirrorlist/skycoin_archlinux_packages-mirrorlist
+	validpgpkeys = DE08F924EEE93832DABC642CA8DC761B1C0C0CFC
+	sha256sums = 7fec8fe4345a75775ff538a1b5a34940c8ff327d3a746f89e9d59a67bceeec03
+
+pkgname = skycoin_archlinux_packages-mirrorlist
+
