@@ -1,0 +1,19 @@
+pkgbase = svt-av1-git
+	pkgdesc = The Scalable Video Technology for AV1 Encoder (SVT-AV1 Encoder) is an AV1-compliant encoder library core.
+	pkgver = r125.a30e1f6
+	pkgrel = 1
+	url = https://github.com/OpenVisualCloud/SVT-AV1
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = yasm
+	makedepends = git
+	provides = svt-av1
+	replaces = svt-av1
+	source = svt-av1::git+https://github.com/OpenVisualCloud/SVT-AV1.git
+	md5sums = SKIP
+
+pkgname = svt-av1-git
+
