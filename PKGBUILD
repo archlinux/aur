@@ -10,8 +10,8 @@ pkgdesc="Fedora's firefox build wtih wayland enabled by default"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
-provides=('firefox')
-conflicts=('firefox')
+provides=('firefox' 'libvpx=1.7')
+conflicts=('firefox' 'libvpx=1.7')
 options=(!emptydirs !strip)
 makedepends=(sed)
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib

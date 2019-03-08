@@ -30,7 +30,9 @@ pkgbase = fedora-firefox-wayland-bin
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	provides = firefox
+	provides = libvpx=1.7
 	conflicts = firefox
+	conflicts = libvpx=1.7
 	options = !emptydirs
 	options = !strip
 	source = https://kojipkgs.fedoraproject.org//packages/firefox/65.0.2/1.fc29/x86_64/firefox-65.0.2-1.fc29.x86_64.rpm
