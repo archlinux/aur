@@ -1,14 +1,14 @@
 pkgbase = enlightenment-eminence-theme-bin
 	pkgdesc = Purple/Violet Dark Theme for Enlightenment and Terminology
-	pkgver = 0.1.11
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://github.com/Obsidian-StudiosInc/eminence
 	arch = any
 	license = GPL3
-	source = https://github.com/Obsidian-StudiosInc/eminence/releases/download/v0.1.11/eminence-elementary.edj
-	source = https://github.com/Obsidian-StudiosInc/eminence/releases/download/v0.1.11/eminence-terminology.edj
-	md5sums = b130c16aca7c8459d1b2d3d98a02f23b
-	md5sums = a731279e28b90078230273889f162194
+	source = https://github.com/Obsidian-StudiosInc/eminence/releases/download/v0.1.13/eminence-elementary.edj
+	source = https://github.com/Obsidian-StudiosInc/eminence/releases/download/v0.1.13/eminence-terminology.edj
+	md5sums = a7784ae1bd3ec9102a2c3112dd9684e5
+	md5sums = 7470807e0f8963e86155f7c8b1d2580b
 
 pkgname = enlightenment-eminence-theme-bin
 

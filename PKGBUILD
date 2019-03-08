@@ -2,15 +2,15 @@
 
 _gitname=eminence
 pkgname=enlightenment-${_gitname}-theme-bin
-pkgver=0.1.11
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="Purple/Violet Dark Theme for Enlightenment and Terminology"
 arch=('any')
 url="https://github.com/Obsidian-StudiosInc/${_gitname}"
 license=('GPL3')
 source=("https://github.com/Obsidian-StudiosInc/${_gitname}/releases/download/v${pkgver}/eminence-elementary.edj" "https://github.com/Obsidian-StudiosInc/${_gitname}/releases/download/v${pkgver}/eminence-terminology.edj")
-md5sums=('b130c16aca7c8459d1b2d3d98a02f23b'
-         'a731279e28b90078230273889f162194')
+md5sums=('a7784ae1bd3ec9102a2c3112dd9684e5'
+         '7470807e0f8963e86155f7c8b1d2580b')
 
 package() {
 	install -Dm644 "${srcdir}/eminence-elementary.edj" "$pkgdir"/usr/share/elementary/themes/eminence.edj
