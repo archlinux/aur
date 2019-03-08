@@ -3,14 +3,14 @@
 pkgname="mate-ayatana-indicator-applet"
 _pkgnameorig="mate-indicator-applet"
 pkgver="1.20.1"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="MATE panel Ayatana indicator applet"
 arch=("i686" "x86_64")
 url="http://www.mate-desktop.org/"
-license=("GPL" "GPL2" "GPL3" "LGPL3")
+license=("LGPL2.1" "GPL3")
 depends=("mate-panel" "ayatana-ido" "libayatana-indicator-gtk3")
 makedepends=("intltool" "gtk3" "ayatana-ido" "libayatana-indicator-gtk3" "libtool" "libx11" "libxml2" "mate-common")
-optdepends=("ayatana-indicator-application" "ayatana-indicator-power" "ayatana-indicator-printers" "ayatana-indicator-session" "ayatana-indicator-messages")
+optdepends=("ayatana-indicator-application" "ayatana-indicator-power" "ayatana-indicator-datetime" "ayatana-indicator-session" "ayatana-indicator-messages" "ayatana-indicator-keyboard")
 source=("https://github.com/mate-desktop/${_pkgnameorig}/archive/v${pkgver}.tar.gz")
 md5sums=("d7c3a8e40158331e915fc467049f73ce")
 options=("!emptydirs")
