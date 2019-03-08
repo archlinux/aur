@@ -1,16 +1,17 @@
 pkgbase = kodi-addon-inputstream-adaptive
-	pkgdesc = InputStream client for adaptive streams for Kodi 17+
-	pkgver = 1.0.8
+	pkgdesc = InputStream client for adaptive streams for Kodi 18+
+	pkgver = 2.3.15
 	pkgrel = 1
 	url = https://github.com/peak3d/inputstream.adaptive
 	arch = x86_64
 	arch = i686
 	license = GPL2
 	makedepends = kodi-dev
-	depends = kodi-platform=20170306.36fb493
+	makedepends = cmake
+	depends = kodi-platform
 	conflicts = kodi-addon-inputstream-adaptive
-	source = https://github.com/peak3d/inputstream.adaptive/archive/1.0.8_k17.tar.gz
-	md5sums = 5f0b3acfd278a8e9bfac5bb8191b05ec
+	source = https://github.com/peak3d/inputstream.adaptive/archive/2.3.15.tar.gz
+	md5sums = cf98a561ee33d329522340fffb29b68e
 
 pkgname = kodi-addon-inputstream-adaptive
 
