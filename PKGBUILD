@@ -11,7 +11,7 @@ depends=('alsa-lib' 'cairo' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk2'
          'gtksourceview2' 'libao' 'libgl' 'libpulse' 'libx11' 'libxext' 'libxv'
          'openal' 'pango' 'sdl'
          'libudev.so')
-conflicts=('bsnes')
+conflicts=('bsnes' 'bsnes-classic')
 source=("https://download.byuu.org/bsnes_v${pkgver}-source.7z")
 sha256sums=('7b7fa745ce593f9912ce116bdf009cd2e70eb034cd7186264c4abedb87a5da36')
 

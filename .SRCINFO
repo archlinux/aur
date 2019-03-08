@@ -24,6 +24,7 @@ pkgbase = higan-bsnes
 	depends = sdl
 	depends = libudev.so
 	conflicts = bsnes
+	conflicts = bsnes-classic
 	source = https://download.byuu.org/bsnes_v107-source.7z
 	sha256sums = 7b7fa745ce593f9912ce116bdf009cd2e70eb034cd7186264c4abedb87a5da36
 
