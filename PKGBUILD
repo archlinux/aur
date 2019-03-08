@@ -3,13 +3,13 @@
 
 _pkgname=polibeepsync
 pkgname="${_pkgname}"
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Sync Politecnico di Milano's BeeP files with your PC"
 arch=('any')
 url='https://jacotsu.github.io/polibeepsync/'
 license=('GPL3')
-depends=('python' 'python-requests' 'python-appdirs' 'python-pyside2' 'python-beautifulsoup4' 'python-lxml' 'python-pyparsing' 'python-signalslot' 'python-contexter')
+depends=('python' 'python-requests' 'python-appdirs' 'python-pyside2' 'python-beautifulsoup4' 'python-lxml' 'python-pyparsing' 'python-signalslot' 'python-contexter' 'python-keyring')
 makedepends=('git' 'python-setuptools')
 conflicts=($_pkgname)
 provides=($_pkgname)
