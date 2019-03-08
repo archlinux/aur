@@ -1,15 +1,15 @@
 pkgbase = shub-bin
 	pkgdesc = Scrapinghub Command Line Client
-	pkgver = 2.8.0
+	pkgver = 2.8.2
 	pkgrel = 1
 	url = https://github.com/scrapinghub/shub/
 	arch = x86_64
 	license = BSD
-	provides = shub=2.8.0
+	provides = shub=2.8.2
 	conflicts = shub
-	source = https://github.com/scrapinghub/shub/releases/download/v2.8.0/shub-v2.8.0-linux-x64.tar.gz
+	source = https://github.com/scrapinghub/shub/releases/download/v2.8.2/shub-v2.8.2-linux-x64.tar.gz
 	source = https://raw.githubusercontent.com/scrapinghub/shub/master/LICENSE
-	sha256sums = 62fa8cb2e03f377a20960dea375f90f6906c934bcb8413869552f603287005f1
+	sha256sums = 823fff8e3409c77628a44acca779b4c1c2e27121d38a99961ff096e765f33e6e
 	sha256sums = 49ea6190a7f081686a8c71faba2f915c9dbdbee99572e7b26612f30098a130a1
 
 pkgname = shub-bin
