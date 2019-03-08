@@ -6,7 +6,7 @@ pkgbase = retrosmart-xfwm4-themes
 	changelog = ChangeLog
 	arch = any
 	license = GPL3
-	optdepends = xcursors-retrosmart: The corresponding X11 cursor theme
+	optdepends = xcursor-retrosmart: The corresponding X11 cursor theme
 	source = https://github.com/mdomlop/retrosmart-xfwm4-themes/archive/1.0.tar.gz
 	md5sums = 6992d85e9701ceef4665a4bb3147fccc
 
