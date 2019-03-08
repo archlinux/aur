@@ -6,11 +6,11 @@ pkgbase = kodi-addon-inputstream-adaptive
 	arch = x86_64
 	arch = i686
 	license = GPL2
-	makedepends = kodi-dev
+	makedepends = kodi-dev>=18
 	makedepends = cmake
 	depends = kodi-platform
 	conflicts = kodi-addon-inputstream-adaptive
-	source = https://github.com/peak3d/inputstream.adaptive/archive/2.3.15.tar.gz
+	source = kodi-addon-inputstream-adaptive-2.3.15.tar.gz:https://github.com/peak3d/inputstream.adaptive/archive/2.3.15.tar.gz
 	md5sums = cf98a561ee33d329522340fffb29b68e
 
 pkgname = kodi-addon-inputstream-adaptive

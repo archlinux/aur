@@ -1,5 +1,6 @@
-# Maintainer: Cedric Girard <girard.cedric@gmail.com>
+# Maintainer: Cedric Girard <cgirard.archlinux@valinor.fr>
 # Contributor: kevku <kevku@gmx.com>
+
 pkgname=kodi-addon-inputstream-adaptive
 pkgver=2.3.15
 pkgrel=1
@@ -7,10 +8,10 @@ pkgdesc="InputStream client for adaptive streams for Kodi 18+"
 arch=('x86_64' 'i686')
 url="https://github.com/peak3d/inputstream.adaptive"
 license=('GPL2')
-makedepends=('kodi-dev' 'cmake')
+makedepends=('kodi-dev>=18' 'cmake')
 depends=('kodi-platform')
 conflicts=("${pkgname%-git}")
-source=("https://github.com/peak3d/inputstream.adaptive/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz:https://github.com/peak3d/inputstream.adaptive/archive/${pkgver}.tar.gz")
 md5sums=('cf98a561ee33d329522340fffb29b68e')
 
 
