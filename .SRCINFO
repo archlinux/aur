@@ -10,6 +10,7 @@ pkgbase = libnvidia-container
 	makedepends = rpcsvc-proto
 	depends = libcap
 	depends = libseccomp
+	depends = libtirpc
 	options = !makeflags
 	source = https://github.com/NVIDIA/libnvidia-container/archive/v1.0.0.tar.gz
 	source = https://downloads.sourceforge.net/project/libtirpc/libtirpc/1.1.4/libtirpc-1.1.4.tar.bz2
@@ -23,4 +24,7 @@ pkgbase = libnvidia-container
 pkgname = libnvidia-container
 
 pkgname = libnvidia-container-tools
+	depends = libcap
+	depends = libtirpc
+	depends = libnvidia-container
 

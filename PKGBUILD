@@ -1,4 +1,4 @@
-# Maintainer Joel Shapiro (jshapiro <a> nvidia)
+# Maintainer: Joel Shapiro (jshapiro <a> nvidia)
 
 pkgbase=libnvidia-container
 pkgname=(libnvidia-container libnvidia-container-tools)
@@ -15,7 +15,7 @@ url='https://github.com/NVIDIA/libnvidia-container'
 license=('custom')
 
 makedepends=(bmake lsb-release rpcsvc-proto)
-depends=(libcap libseccomp)
+depends=(libcap libseccomp libtirpc)
 
 # yikes! somehow the default flags cause a linking error :(
 options=(!makeflags)
@@ -62,7 +62,7 @@ build(){
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # finally actually make
-  CC=gcc make WITH_LIBELF=yes WITH_TIRPC=yes WITH_SECCOMP=yes prefix=/usr
+  CC=gcc make
 }
 
 make_dist(){
@@ -90,6 +90,8 @@ package_libnvidia-container() {
 }
 
 package_libnvidia-container-tools() {
+  depends=(libcap libtirpc libnvidia-container)
+
   make_dist
 
   # cleanup
