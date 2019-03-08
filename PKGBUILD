@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-standalone-git
-pkgver=r382.dd64ba8
+pkgver=r387.fc1b8ea
 pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 groups=('pantheon-qq')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libwnck3')
-makedepends=('cmake' 'git' 'granite-git' 'vala')
+makedepends=('cmake' 'git' 'granite-git' 'vala' 'cogl')
 optdepends=("pantheon-applications-menu-git: Application launcher"
             wingpanel-indicator-{a11y,bluetooth,datetime,keyboard,network,notifications,power,session,sound}-git": Tray applet"
             "wingpanel-indicator-ayatana-git: Unity 7 Tray applets"
@@ -26,7 +26,6 @@ source=('git+https://github.com/elementary/wingpanel.git'
         'minus-backgroundmanager.patch'
         'minus-galaplugin.patch'
         'minus-gala.patch'
-        'y-is-broken-cogl.patch'
         'autohide.patch'
         'reverse-105c1d0.patch')
 sha256sums=('SKIP'
@@ -62,10 +61,6 @@ prepare() {
   patch -Np2 < ../minus-backgroundmanager.patch
   patch -Np2 < ../minus-galaplugin.patch
   patch -Np2 < ../minus-gala.patch
-
-  #Cogl can't be found when not using gala's cmake package; wtf?
-  msg2 "Remove CoglFixes (broken)"
-  patch -Np2 < ../y-is-broken-cogl.patch
 
   [ ! -d build ] || rm -rf build
 }
