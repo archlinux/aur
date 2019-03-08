@@ -1,0 +1,20 @@
+pkgbase = bsnes
+	pkgdesc = Super Nintendo emulator focusing on performance, features, and ease of use.
+	pkgver = 107
+	pkgrel = 1
+	url = https://byuu.org/emulation/bsnes/
+	arch = x86_64
+	license = GPL3
+	depends = libpulse
+	depends = gtksourceview2
+	depends = libxv
+	depends = libao
+	depends = openal
+	depends = sdl2
+	conflicts = bsnes-classic
+	conflicts = bsnes-plus
+	source = https://download.byuu.org/bsnes_v107-source.7z
+	sha256sums = 7b7fa745ce593f9912ce116bdf009cd2e70eb034cd7186264c4abedb87a5da36
+
+pkgname = bsnes
+
