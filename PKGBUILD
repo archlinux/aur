@@ -1,7 +1,7 @@
 # Maintainer: Dominic Meiser dosm dot mail at gmail
 
 pkgname=qtwebapp-cmake
-pkgver=1.7.3
+pkgver=1.7.8
 pkgrel=1
 pkgdesc="Fork of QtWebApp using CMake as build system. QtWepApp is a HTTP server library in C++, inspired by Java Servlets."
 arch=('x86_64' 'armv7h')
