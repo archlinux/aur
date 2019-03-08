@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Library providing a mutable, self-balancing interval tree for Python.'
 arch=(any)
 url=https://github.com/d0c-s4vage/py010parser
-license=('custom:Apache2')
+license=('Apache')
 depends=(python-sortedcontainers)
 makedepends=(python-setuptools)
 source=(https://github.com/chaimleib/${_pkgname}/archive/${pkgver}.tar.gz)
@@ -21,6 +21,4 @@ build() {
 package() {
   cd ${srcdir}/${_pkgname}-${pkgver}
   python setup.py install --root=${pkgdir} --optimize=1
-  install -d -m 755 ${pkgdir}/usr/share/licenses/${pkgname}
-  install -D -m 644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
