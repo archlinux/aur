@@ -5,19 +5,14 @@
 # repository. $pkgver is currently inherited from there.
 
 pkgname=intel-graphics-compiler-bin
-pkgver=18.48.1124
-_icrver=18.49.11968 # intel-compute-runtime version
+pkgver=19.07.1542
+_icrver=19.09.12487 # intel-compute-runtime version
 pkgrel=1
 pkgdesc='Intel Graphics Compiler for OpenCL'
 arch=('x86_64')
 url='https://github.com/intel/intel-graphics-compiler/'
 license=('MIT')
-depends=(
-    # official repositories:
-        'gcc-libs' 'zlib'
-    # AUR:
-        'ncurses5-compat-libs'
-)
+depends=('gcc-libs' 'zlib')
 provides=('intel-graphics-compiler')
 conflicts=('intel-graphics-compiler' 'compute-runtime')
 options=('!strip' '!emptydirs')
@@ -26,9 +21,9 @@ source=("https://github.com/intel/compute-runtime/releases/download/${_icrver}/i
         'LICENSE')
 noextract=("intel-igc-core_${pkgver}_amd64.deb"
            "intel-igc-opencl_${pkgver}_amd64.deb")
-sha256sums=('f0dd87998a290a713295e9b3498fc49545e7e4c15710ed1d11055e160c1bff17'
-            '7aaf3560d86a8c6be7e7dbc696a16cd030ccc8aea5fda07bcb86d2dbe3590de2'
-            '0a17bb0830659515e66a960a6fd553d9ef939bc8097066e1c8f4954d562c252c')
+sha256sums=('9e5c130df7fe95b860f4c761620bf6fd5f814930df3f06c5e698aa846cadece5'
+            '964e714899347564af99fe2a3619e7e630e52b74a88d96f183a27a934bbe79ca'
+            '4099c7bc8a69e9e9c82f898e75870435cc0ca989a816a8ba6e38faabc88f0c36')
 
 prepare() {
     mkdir -p igc-{core,opencl}-"$pkgver"
@@ -41,6 +36,7 @@ package() {
     tar -Jxf "igc-core-${pkgver}/data.tar.xz" -C "$pkgdir"
     tar -Jxf "igc-opencl-${pkgver}/data.tar.xz" -C "$pkgdir"
     
+    mkdir -p "${pkgdir}/usr/lib"
     mv "$pkgdir"/usr/local/lib/* "${pkgdir}/usr/lib"
     
     # fix wrong ownerships
