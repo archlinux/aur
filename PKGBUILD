@@ -1,6 +1,6 @@
 # Maintainer: Harry Beadle <harry.beadle@gmail.com>
 
-pkgname=vpr
+pkgname=vtr
 pkgver=8.0
 pkgrel=1
 pkgdesc='Verilog to Routing'

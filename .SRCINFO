@@ -1,4 +1,4 @@
-pkgbase = vpr
+pkgbase = vtr
 	pkgdesc = Verilog to Routing
 	pkgver = 8.0
 	pkgrel = 1
@@ -15,5 +15,5 @@ pkgbase = vpr
 	source = git+https://github.com/verilog-to-routing/vtr-verilog-to-routing
 	md5sums = SKIP
 
-pkgname = vpr
+pkgname = vtr
 
