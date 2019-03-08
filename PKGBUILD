@@ -8,23 +8,21 @@
 # Contributor: Martin Poljak <martin 'at' poljak 'dot' cz>
 
 pkgname=xnviewmp
-pkgver=0.93
+pkgver=0.93.1
 srcrel=1 # Incremented when there is a new release for the same version number
 pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter."
 url="http://www.xnview.com/en/xnviewmp/"
 
-arch=('x86_64' 'i686')
+arch=('x86_64')
 license=('custom')
 depends=('qt5-multimedia' 'qt5-svg' 'qt5-webkit' 'qt5-x11extras' 'desktop-file-utils')
-optdepends=('gvfs: support for moving files to trash')
+optdepends=('glib2: support for moving files to trash')
 
-source=('xnviewmp.desktop')
-source_x86_64=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::http://download.xnview.com/XnViewMP-linux-x64.tgz")
-source_i686=("XnViewMP-linux_${pkgver}-rel${srcrel}.tgz::http://download.xnview.com/XnViewMP-linux.tgz")
-md5sums=('24f44d5a881b94daf48775213a57e4ec')
-md5sums_x86_64=('fcf4929e5f69847ee44a1cab0771c4ce')
-md5sums_i686=('17e8ab2a1de48c8d9bd5f4a42bfac83e')
+source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::http://download.xnview.com/XnViewMP-linux-x64.tgz"
+        'xnviewmp.desktop')
+md5sums=('4e395d15d831b0f4258673dfe3d06119'
+         '24f44d5a881b94daf48775213a57e4ec')
 
 package() {
   install -d -m755 "${pkgdir}/opt/${pkgname}"
