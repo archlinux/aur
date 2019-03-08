@@ -2,8 +2,7 @@
 pkgname=umps
 pkgver=2.0.1
 pkgrel=1
-pkgdesc="Virtual machine simulator based around the MIPS R2/3000
-microprocessor."
+pkgdesc="Virtual machine simulator based around the MIPS R2/3000 microprocessor."
 arch=('x86_64')
 url="http://mps.sourceforge.net/"
 license=('GPL2')
@@ -19,16 +18,16 @@ build() {
   autoreconf -vfi
   automake --force-missing --add-missing
   autoconf
-	./configure --enable-maintainer-mode --with-mips-tool-prefix=mipsel-linux-gnu-
-	make
+  ./configure --enable-maintainer-mode --with-mips-tool-prefix=mipsel-linux-gnu-
+  make
 }
 
 check() {
   cd ${srcdir}/"$pkgname-master"
-	make -k check
+  make -k check
 }
 
 package() {
   cd ${srcdir}/"$pkgname-master"
-	make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" install
 }
