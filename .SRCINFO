@@ -1,0 +1,19 @@
+pkgbase = jpf-core-git
+	pkgdesc = Explicit state software model checker for Java bytecode
+	pkgver = jpf.8.0.r67.ge734381
+	pkgrel = 1
+	url = https://github.com/javapathfinder/jpf-core
+	arch = any
+	license = APACHE
+	makedepends = gradle
+	depends = java-environment-openjdk>=7
+	provides = jpf
+	source = git+https://github.com/javapathfinder/jpf-core
+	source = jpf.properties
+	source = jpf
+	md5sums = SKIP
+	md5sums = e25814db7a0c0efb45ff737a538e49a4
+	md5sums = 6f96fef6cc825e9823c7daa8fb5d4460
+
+pkgname = jpf-core-git
+

@@ -1,0 +1,4 @@
+#!/bin/sh
+export CLASSPATH="/usr/share/java/jpf/*"
+
+java gov.nasa.jpf.tool.RunJPF "$@"
