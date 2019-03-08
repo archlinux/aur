@@ -1,6 +1,6 @@
 pkgbase = libsolv-git
 	pkgdesc = A new approach to package dependency solving
-	pkgver = 0.7.3.10.gf9a8953a
+	pkgver = 0.7.3.11.gf79f4ae6
 	pkgrel = 1
 	url = https://github.com/openSUSE/libsolv
 	arch = i686
