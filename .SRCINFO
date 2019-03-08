@@ -70,6 +70,7 @@ pkgbase = ffmpeg-svt
 	provides = libpostproc.so
 	provides = libswresample.so
 	provides = libswscale.so
+	conflicts = ffmpeg
 	replaces = ffmpeg
 	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=n4.1.1
 	source = 0001-Add-ability-for-ffmpeg-to-run-svt-av1-vp9.patch
