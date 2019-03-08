@@ -34,7 +34,7 @@ sha256sums=(
   'SKIP'                                                             # svn+http://svn.pykota.com/tea4cups/trunk
   '6221890bbd1ab3806efeec8624161c80742d1c5fce24c9094e4f8f8466ba2923' # doc_from_website.txt
   'SKIP'                                                             # doc_debianwiki.html
-  '315c82e6e9d352ecb32d511c9290790ac2a52e60e82d4727bff350fcf03aacf0' # "${install}"
+  'ef3106de3e751109dcad9f3261fe608aff09fc6dea18451dfca2a4841ffccf7a' # "${install}"
 )
 
 prepare() {
@@ -56,7 +56,7 @@ package() {
   install -v -m 755 -D "tea4cups"       "${pkgdir}/usr/lib/cups/backend/${_backend_name}"
   
   install -v -m 644 -D "tea4cups.conf"  "${pkgdir}/etc/cups/tea4cups.conf"
-  
+
   for _docfile in CREDITS NEWS README TODO; do
     install -v -m 644 -D "${_docfile}"  "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
