@@ -2,7 +2,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-search-elasticsearch'
-pkgver='5.02'
+_pkgname='Search-Elasticsearch'
+pkgver='6.00'
 pkgrel='1'
 pkgdesc="The official client for Elasticsearch"
 arch=('any')
@@ -12,36 +13,34 @@ depends=('perl-any-uri-escape' 'perl-devel-globaldestruction' 'perl-http-message
 makedepends=()
 checkdepends=('perl-test-deep' 'perl-test-exception' 'perl-test-sharedfork')
 url='https://metacpan.org/release/Search-Elasticsearch'
-source=('http://search.cpan.org/CPAN/authors/id/D/DR/DRTECH/Search-Elasticsearch-5.02.tar.gz')
-md5sums=('66cb4dd24bbc41ea526fddc32451e7bd')
-sha512sums=('a119f8f0dde74cd4e4aa556815311ab8abb5f92ce057978f9a15c78c8aab9424dcfae641e508d32c1d06f5d315e347f74fd308081f8a0df3d71b6c6b492b767c')
-_distdir="Search-Elasticsearch-5.02"
+source=("http://search.cpan.org/CPAN/authors/id/D/DR/DRTECH/$_pkgname-$pkgver.tar.gz")
+md5sums=('0bce60edd54161510e0578d65495b482')
+sha512sums=('c25e31523f63915ac56d953ef601537f2e6a76fb82d20eda837950bf4043de1e48a16758c5c1391383e17784fd740d01a522271c34757500ff47de152552f621')
+_distdir="$_pkgname-$pkgver"
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
       PERL_AUTOINSTALL=--skipdeps                            \
       PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  cd "$srcdir/$_distdir"
+  /usr/bin/perl Makefile.PL
+  make
 }
 
 check() {
   cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+  make test
 }
 
 package() {
   cd "$srcdir/$_distdir"
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete 
 }
 
 # Local Variables:
