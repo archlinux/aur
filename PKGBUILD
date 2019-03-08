@@ -2,8 +2,8 @@
 
 pkgname=julia-loadpath
 pkgver=1.0
-pkgrel=1
-pkgdesc="Add a system-wide package directory to Julia's LOAD_PATH"
+pkgrel=2
+pkgdesc="Add a system-wide package directory to the JULIA_LOAD_PATH"
 arch=(any)
 url="https://gitlab.manjaro.org/jonathon/$pkgname"
 license=(GPL3)
@@ -16,4 +16,14 @@ package() {
 	cd $pkgname-$pkgver
 	install -D julia-load-path.csh $pkgdir/etc/profile.d/julia-load-path.csh
 	install -D julia-load-path.sh  $pkgdir/etc/profile.d/julia-load-path.sh
+
+	echo << EOM "
+	** NOTE **
+
+	You must start a new shell (or source the profile script) after installing this
+	package to set up the default JULIA_LOAD_PATH environment variable.
+
+	If you don't, any other Julia packages will be unable to find system-wide modules.
+"
+EOM
 }
