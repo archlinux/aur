@@ -4,9 +4,9 @@
 
 pkgbase=linux-rc
 pkgrel=1
-_srcname=linux-4.20
-_stable=4.20.13
-_patchver=4.20.14
+_srcname=linux-5.0
+_stable=5.0
+_patchver=5.0.1
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -16,14 +16,13 @@ license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=(
-  https://www.kernel.org/pub/linux/kernel/v4.x/stable-review/$_rcpatch.{xz,sign}
-  https://www.kernel.org/pub/linux/kernel/v4.x/linux-$_stable.tar.{xz,sign}
+  https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_stable.tar.{xz,sign}
+  https://www.kernel.org/pub/linux/kernel/v5.x/stable-review/$_rcpatch.{xz,sign}
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-exec-Fix-mem-leak-in-kernel_read_file.patch
   # Arch-Linux-kernel-vx.xx.x-arch1.patch is not needed for rc1
 )
 validpgpkeys=(
