@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-term-ss10
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='A slender monospace typeface. Shape: Envy Code R'
 arch=('any')
@@ -9,8 +9,8 @@ license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/iosevka-term-ss10-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('37c064a967671adf922e0617708b18eb100cb9b1e6be7629d62ed32093a1ac15'
-            'a7a0e1da98ab1bae99a1f246f45e51720e0cc13a53b4a5b0692f64991d2191af')
+sha256sums=('b5b3c98f2dace7da74a1dcecf89d270ac36ca9e60b92d81f7118caf0ff71295e'
+            'ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF/
