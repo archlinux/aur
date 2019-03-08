@@ -10,8 +10,8 @@ url='https://github.com/elementary/wingpanel'
 license=('GPL3')
 groups=('pantheon-qq')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
-         'libgranite.so' 'libwnck3')
-makedepends=('cmake' 'git' 'granite-git' 'vala' 'cogl')
+         'libgranite.so' 'libwnck3' 'cogl')
+makedepends=('meson' 'git' 'granite-git' 'vala')
 optdepends=("pantheon-applications-menu-git: Application launcher"
             wingpanel-indicator-{a11y,bluetooth,datetime,keyboard,network,notifications,power,session,sound}-git": Tray applet"
             "wingpanel-indicator-ayatana-git: Unity 7 Tray applets"
@@ -32,7 +32,6 @@ sha256sums=('SKIP'
             '206e5e66501bd0aaefaa422edb4ef5b47dc5c1aff8a90410971b8be2147245e6'
             'aa0a27e41df60a7b15e2fd7e0d06551663b98917b7632e4067e6b9a39407de1c'
             '04fc55095e9fabc61862ef9a54934402b940b6cfa90fe5ed67462aa78e6e8f8e'
-            'b1902c1d44ac546df63cd0224a7d2ef2cb6394ca556512c30c370d387db7bbab'
             '54d0fa9110eb948bc7a8ac55ed323b6979aabdf0657dcabfae2304b1dd16c194'
             '53bfa2220d14065ca848c36217abe812685c7d6e0d42251423d0faa2a0ac5394')
 
