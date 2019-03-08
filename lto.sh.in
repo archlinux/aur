@@ -11,7 +11,7 @@ LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
 source "$LIBRARY/util/option.sh"
 
 build_options+=('lto')
-buildenv_functionss+=('buildenv_lto')
+buildenv_functions+=('buildenv_lto')
 
 buildenv_lto() {
 	if check_buildoption "lto" "y" && [[ -f "$(gcc -print-search-dirs | grep install | awk '{print $2 "liblto_plugin.so"}')" ]]; then
