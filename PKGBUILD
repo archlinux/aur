@@ -2,7 +2,7 @@
 
 pkgname=libwacom-surface
 pkgver=0.32
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched libwacom for Microsoft Surface devices"
 arch=('x86_64')
 url="https://github.com/geoffholden/libwacom"
@@ -14,21 +14,21 @@ conflicts=('libwacom')
 provides=("libwacom=${pkgver}")
 
 source=(
-    'mei-bus.patch'
-    'surface-tablet-data.patch'
+    '00_mei-bus.patch'
+    '01_surface-tablet-data.patch'
     "https://github.com/linuxwacom/libwacom/releases/download/libwacom-${pkgver}/libwacom-${pkgver}.tar.bz2"{,.sig}
 )
 sha256sums=(
-    '1e5301bf93bf75352e559b89fbb84aca2d3edb5ec2951dd848546404f9d8fb7f'
-    '32f7a27225af200430c2f3d5e497f9ee51bda5a4921647472879d62e890551ad'
+    'faf69fa3795a5147665b285f28d82c0977a3870522c98ffccaf819730089599e'
+    '9b7f8d681bf12e81e21cde33b7d77b10b4f2a78f3d0c46c5efe147c278c24bf9'
     '6b9dab8bce0471b839c89d34a1b30839de2c24db03796fa8d572817830f85380'
     'SKIP'
 )
 
 prepare() {
     cd "libwacom-${pkgver}"
-    patch -p0 -i "${srcdir}/mei-bus.patch"
-    patch -Np0 -i "${srcdir}/surface-tablet-data.patch" || true
+    patch -p1 -i "${srcdir}/00_mei-bus.patch"
+    patch -Np1 -i "${srcdir}/01_surface-tablet-data.patch" || true
     # If the patched source has been cached this will fail to apply, ignore that with `|| true`
     # XXX: There must be a better option?
 }

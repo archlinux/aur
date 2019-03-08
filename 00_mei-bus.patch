@@ -1,7 +1,7 @@
-diff --git libwacom/libwacom-database.c libwacom/libwacom-database.c
+diff --git a/libwacom/libwacom-database.c b/libwacom/libwacom-database.c
 index 1da9adf..e121c88 100644
---- libwacom/libwacom-database.c
-+++ libwacom/libwacom-database.c
+--- a/libwacom/libwacom-database.c
++++ b/libwacom/libwacom-database.c
 @@ -112,6 +112,8 @@ bus_from_str (const char *str)
  		return WBUSTYPE_BLUETOOTH;
  	if (strcmp (str, "i2c") == 0)
@@ -20,10 +20,10 @@ index 1da9adf..e121c88 100644
  	}
  	g_assert_not_reached ();
  }
-diff --git libwacom/libwacom.c libwacom/libwacom.c
-index b813d5e..884a37b 100644
---- libwacom/libwacom.c
-+++ libwacom/libwacom.c
+diff --git a/libwacom/libwacom.c b/libwacom/libwacom.c
+index 8979a53..c09e07d 100644
+--- a/libwacom/libwacom.c
++++ b/libwacom/libwacom.c
 @@ -144,6 +144,10 @@ get_bus_vid_pid (GUdevDevice  *device,
  		*bus = WBUSTYPE_I2C;
  		retval = TRUE;
@@ -43,10 +43,10 @@ index b813d5e..884a37b 100644
  		case WBUSTYPE_UNKNOWN:		bus_name = "unknown";	break;
  		default:			g_assert_not_reached(); break;
  	}
-diff --git libwacom/libwacom.h libwacom/libwacom.h
+diff --git a/libwacom/libwacom.h b/libwacom/libwacom.h
 index bb968e7..24ab9f3 100644
---- libwacom/libwacom.h
-+++ libwacom/libwacom.h
+--- a/libwacom/libwacom.h
++++ b/libwacom/libwacom.h
 @@ -116,6 +116,7 @@ typedef enum {
  	WBUSTYPE_SERIAL,	/**< Serial tablet */
  	WBUSTYPE_BLUETOOTH,	/**< Bluetooth tablet */
