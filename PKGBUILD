@@ -1,20 +1,19 @@
 pkgname=digikam-git
-pkgver=r36468.5efd13702a
+pkgver=r42360.d25dc5718c
 pkgrel=1
 pkgdesc='Digital photo management application for KDE'
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
-depends=('marble-common' 'libksane-git' 'liblqr' 'libkipi-git' 'kcalcore' 'qtav' 'lensfun' 'knotifyconfig' 'akonadi-contacts' 'kfilemetadata' 'opencv' 'threadweaver')
-makedepends=('git' 'extra-cmake-modules-git' 'eigen' 'doxygen' 'boost' 'mariadb' 'kdoctools')
-optdepends=('kipi-plugins-git: more tools and plugins'
-	    'hugin: panorama tool')
+depends=(liblqr lensfun opencv akonadi-contacts knotifyconfig libksane kfilemetadata qtav marble-common threadweaver kcalcore
+         qt5-xmlpatterns libkvkontakte libmediawiki)
+makedepends=(extra-cmake-modules doxygen eigen boost kdoctools git)
+optdepends=('hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)')
 conflicts=('digikam')
 provides=('digikam')
 install=digikam-git.install
 source=('digikam::git+git://anongit.kde.org/digikam')
 md5sums=('SKIP')
-groups=('digikamsc-git')
 
 pkgver() {
   cd "${srcdir}/digikam"
@@ -31,13 +30,17 @@ if [[ -d "${srcdir}/build" ]]; then
 
 build() {
   cd "${srcdir}/build"
-  cmake "${srcdir}/digikam" -DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DLIB_INSTALL_DIR=lib \
-		-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-		-DBUILD_TESTING=OFF -DENABLE_AKONADICONTACTSUPPORT=ON -DENABLE_KFILEMETADATASUPPORT=ON \
-		-DENABLE_MYSQLSUPPORT=ON -DENABLE_INTERNALMYSQL=ON -DENABLE_MEDIAPLAYER=ON \
-		-DENABLE_OPENCV3=ON -DENABLE_APPSTYLES=ON
+  cmake ../digikam \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_TESTING=OFF \
+    -DENABLE_KFILEMETADATASUPPORT=ON \
+    -DENABLE_MEDIAPLAYER=ON \
+    -DENABLE_AKONADICONTACTSUPPORT=ON \
+    -DENABLE_MYSQLSUPPORT=ON \
+    -DENABLE_APPSTYLES=ON \
+    -DENABLE_QWEBENGINE=ON \
+    -DOpenGL_GL_PREFERENCE=GLVND
   make
 }
 
