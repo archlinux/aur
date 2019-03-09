@@ -1,9 +1,10 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Maintainer: Eric Berquist <eric dot berquist at gmail>
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 _name=ordered-set
 pkgbase='python-ordered-set'
 pkgname=('python-ordered-set' 'python2-ordered-set')
-pkgver=3.0.2
+pkgver=3.1
 pkgrel=1
 pkgdesc="Python MutableSet that remembers its order, so that every entry has an index"
 arch=('any')
@@ -14,7 +15,7 @@ makedepends=(
   'python2' 'python2-setuptools')
 options=(!emptydirs)
 source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.io/packages/source/"${_name:0:1}"/"${_name}"/"${_name}"-"${pkgver}".tar.gz)
-sha256sums=('7d292b866fa44f339ac6e624e3d338accfb415ce0a8431595d51990fbdf61d3b')
+sha256sums=('f9b703ea9aa9c1db44412c5ba1c16cf8b7ad7ef37a685e4da2fd3754b40f8f6a')
 
 prepare() {
   cp -a "${_name}"-"${pkgver}"{,-py2}
