@@ -1,6 +1,6 @@
 pkgbase = python-djoser
 	pkgdesc = REST version of Django authentication system.
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/djoser
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-djoser
 	depends = python-django>=1.11
 	depends = python-django-rest-framework>=3.7
 	provides = djoser
-	source = https://files.pythonhosted.org/packages/e5/9c/4ae26ea9d0aee68ce77cfc55a01a39cae51c8d08924e51899b24149ee1ae/djoser-1.4.0.tar.gz
-	md5sums = 4be2e95ec1f733bdf08be12979f4e800
+	source = https://files.pythonhosted.org/packages/59/20/05ccfb0479abd605a6b30892f3e99da6959948aaca01760cbea0bc64bccb/djoser-1.5.0.tar.gz
+	md5sums = 5c148974abefc660d289337ecd08993f
 
 pkgname = python-djoser
 
