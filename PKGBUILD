@@ -2,7 +2,7 @@
 
 _gitname=emoji-cli
 pkgname=emoji-cli-git
-pkgver=r34.5179c1e
+pkgver=r40.ede4bfe
 pkgrel=1
 pkgdesc="Emoji completion on the command line for ZSH."
 arch=('any')
@@ -19,7 +19,7 @@ install="${pkgname}.install"
 source=("git+${url}.git" 
         'LICENSE::http://b4b4r07.mit-license.org')
 sha256sums=('SKIP'
-			'cbd6dff5609dd1b5523a882b118bd1f966288eb103105792016e8302f5d115e8')
+	    'a807fb2b9b757b95938925e37370c6965e91d020e7afe79a35d15380b89fe889')
 
 pkgver(){
     cd ${_gitname}
