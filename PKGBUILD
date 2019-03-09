@@ -1,4 +1,5 @@
 # Maintainer: higgsbosoncodes higgsbosoncodes@gmail.com
+# https://github.com/higgsbosoncodes
 pkgname=arch-animated-startscreen
 pkgver=1.0
 pkgrel=1
