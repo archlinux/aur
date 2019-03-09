@@ -1,23 +1,20 @@
 # Maintainer: Fangrui Song <i at maskray.me>
 
 pkgname=ccls
-pkgver=0.20181225.8
+pkgver=0.20190308
 pkgrel=1
 pkgdesc='C/C++/ObjC language server supporting cross references, hierarchies, completion and semantic highlighting'
 arch=('x86_64')
 url='https://github.com/MaskRay/ccls'
 license=('Apache')
-depends=('clang' 'llvm-libs')
+depends=('clang' 'llvm-libs' 'rapidjson')
 makedepends=("cmake" "git" "llvm")
 conflicts=('ccls-git')
-source=("https://github.com/MaskRay/$pkgname/archive/$pkgver.tar.gz"
-        'git+https://github.com/Tencent/rapidjson'
-        )
-sha256sums=('SKIP' 'SKIP')
+source=("https://github.com/MaskRay/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('SKIP')
 
 prepare() {
   cd $pkgname-$pkgver
-  cp -r $srcdir/rapidjson third_party
 }
 
 build() {
