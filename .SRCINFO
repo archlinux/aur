@@ -1,10 +1,9 @@
 pkgbase = python-libevdev
 	pkgdesc = Python wrapper for libevdev
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/libevdev/python-libevdev
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	depends = python
 	depends = libevdev
