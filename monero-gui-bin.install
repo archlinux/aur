@@ -1,0 +1,14 @@
+post_install() {
+	echo "********************************************"
+        echo "WARNING: Make sure you're using Ledger app 1.2.0 if you're using Ledger with this; otherwise you risk loss of funds"
+	echo "********************************************"
+}
+
+post_upgrade() {
+        echo "********************************************"
+        echo "WARNING: Make sure you're using Ledger app 1.2.0 if you're using Ledger with this; otherwise you risk loss of funds"
+        echo "********************************************"
+}
+
+post_remove() {
+}
