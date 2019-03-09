@@ -5,6 +5,7 @@ pkgver=6
 pkgrel=1
 arch=('x86_64')
 options=(!strip)
+conflicts=("mindmaster")
 pkgdesc="多功能，高颜值，易使用的专业思维导图软件"
 license=('Commercial')
 # source_x86_64=("http://download.edrawsoft.com/download/${pkgname}-${pkgver}-amd64.tar.gz")
