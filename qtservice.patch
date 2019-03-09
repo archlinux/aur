@@ -1,0 +1,221 @@
+diff --git a/daemon/conflipservice.cpp b/daemon/conflipservice.cpp
+index feef18f..1ecb91a 100644
+--- a/daemon/conflipservice.cpp
++++ b/daemon/conflipservice.cpp
+@@ -16,7 +16,7 @@ void ConflipService::setSlice(const QString &slice)
+ 	QCoreApplication::setApplicationName(QStringLiteral(TARGET "@%1").arg(slice));
+ }
+ 
+-QtService::Service::CommandMode ConflipService::onStart()
++QtService::Service::CommandResult ConflipService::onStart()
+ {
+ 	QCommandLineParser parser;
+ 	parser.setSingleDashWordOptionMode(QCommandLineParser::ParseAsLongOptions);
+@@ -31,8 +31,7 @@ QtService::Service::CommandMode ConflipService::onStart()
+ #endif
+ 	if(!parser.parse(QCoreApplication::arguments())) {
+ 		qCritical().noquote() << parser.errorText();
+-		qApp->exit(EXIT_FAILURE);
+-		return Synchronous;
++		return CommandResult::Failed;
+ 	}
+ 
+ 	QString logStr;
+@@ -56,32 +55,33 @@ QtService::Service::CommandMode ConflipService::onStart()
+ 	QLoggingCategory::setFilterRules(logStr);
+ 
+ 	_engine = new SyncEngine{this};
+-	if(!_engine->start())
+-		qApp->exit(EXIT_FAILURE);
+-	return Synchronous;
++	if(_engine->start())
++		return CommandResult::Completed;
++	else
++		return CommandResult::Failed;
+ }
+ 
+-QtService::Service::CommandMode ConflipService::onStop(int &exitCode)
++QtService::Service::CommandResult ConflipService::onStop(int &exitCode)
+ {
+ 	_engine->pause();
+ 	exitCode = EXIT_SUCCESS;
+-	return Synchronous;
++	return CommandResult::Completed;
+ }
+ 
+-QtService::Service::CommandMode ConflipService::onReload()
++QtService::Service::CommandResult ConflipService::onReload()
+ {
+ 	_engine->reload();
+-	return Synchronous;
++	return CommandResult::Completed;
+ }
+ 
+-QtService::Service::CommandMode ConflipService::onPause()
++QtService::Service::CommandResult ConflipService::onPause()
+ {
+ 	_engine->pause();
+-	return Synchronous;
++	return CommandResult::Completed;
+ }
+ 
+-QtService::Service::CommandMode ConflipService::onResume()
++QtService::Service::CommandResult ConflipService::onResume()
+ {
+ 	_engine->resume();
+-	return Synchronous;
++	return CommandResult::Completed;
+ }
+diff --git a/daemon/conflipservice.h b/daemon/conflipservice.h
+index 57066fa..32c8221 100644
+--- a/daemon/conflipservice.h
++++ b/daemon/conflipservice.h
+@@ -14,11 +14,11 @@ public:
+ 	void setSlice(const QString &slice);
+ 
+ protected:
+-	CommandMode onStart() override;
+-	CommandMode onStop(int &exitCode) override;
+-	CommandMode onReload() override;
+-	CommandMode onPause() override;
+-	CommandMode onResume() override;
++	CommandResult onStart() override;
++	CommandResult onStop(int &exitCode) override;
++	CommandResult onReload() override;
++	CommandResult onPause() override;
++	CommandResult onResume() override;
+ 
+ private:
+ 	SyncEngine *_engine = nullptr;
+diff --git a/gui/mainwindow.cpp b/gui/mainwindow.cpp
+index 895acc6..69c61c1 100644
+--- a/gui/mainwindow.cpp
++++ b/gui/mainwindow.cpp
+@@ -227,8 +227,8 @@ void MainWindow::reload()
+ 
+ 		if(_svcControl->serviceExists()) {
+ 			switch(_svcControl->status()) {
+-			case QtService::ServiceControl::ServiceStopped:
+-			case QtService::ServiceControl::ServiceErrored:
++			case QtService::ServiceControl::Status::Stopped:
++			case QtService::ServiceControl::Status::Errored:
+ 				if(!_svcControl->start()) {
+ 					DialogMaster::critical(this,
+ 										   tr("Failed to start %1 service with error: %2")
+@@ -236,7 +236,7 @@ void MainWindow::reload()
+ 										   tr("Service Error"));
+ 				}
+ 				break;
+-			case QtService::ServiceControl::ServicePaused:
++			case QtService::ServiceControl::Status::Paused:
+ 				if(!_svcControl->resume()) {
+ 					DialogMaster::critical(this,
+ 										   tr("Failed to resume %1 service with error: %2")
+@@ -245,18 +245,18 @@ void MainWindow::reload()
+ 					break;
+ 				}
+ 				Q_FALLTHROUGH();
+-			case QtService::ServiceControl::ServiceRunning:
++			case QtService::ServiceControl::Status::Running:
+ 				on_action_Reload_Daemon_triggered();
+ 				break;
+-			case QtService::ServiceControl::ServiceStatusUnknown:
++			case QtService::ServiceControl::Status::Unknown:
+ 				if(!_svcControl->start())
+ 					on_action_Reload_Daemon_triggered();
+ 				break;
+-			case QtService::ServiceControl::ServiceStarting:
+-			case QtService::ServiceControl::ServiceResuming:
+-			case QtService::ServiceControl::ServiceReloading:
+-			case QtService::ServiceControl::ServiceStopping:
+-			case QtService::ServiceControl::ServicePausing:
++			case QtService::ServiceControl::Status::Starting:
++			case QtService::ServiceControl::Status::Resuming:
++			case QtService::ServiceControl::Status::Reloading:
++			case QtService::ServiceControl::Status::Stopping:
++			case QtService::ServiceControl::Status::Pausing:
+ 				break;
+ 			default:
+ 				Q_UNREACHABLE();
+diff --git a/lib/conflip.cpp b/lib/conflip.cpp
+index 8c7d38e..3821d2f 100644
+--- a/lib/conflip.cpp
++++ b/lib/conflip.cpp
+@@ -3,6 +3,7 @@
+ #include <QJsonSerializer>
+ #include <QLibraryInfo>
+ #include <QTranslator>
++#include <QQueue>
+ #include <qpluginfactory.h>
+ #include "syncentry.h"
+ #include "synchelperplugin.h"
+diff --git a/plugins/dconfsync/dconfsynchelper.cpp b/plugins/dconfsync/dconfsynchelper.cpp
+index c149e28..da17de3 100644
+--- a/plugins/dconfsync/dconfsynchelper.cpp
++++ b/plugins/dconfsync/dconfsynchelper.cpp
+@@ -249,6 +249,13 @@ void DConfSyncTask::writeSyncConf(const QFileInfo &file, const DConfSyncTask::DC
+ 
+ 
+ 
++bool DConfEntry::operator==(const DConfEntry &other) const
++{
++	return type == other.type &&
++			data == other.data &&
++			lastModified == other.lastModified;
++}
++
+ QString DConfEntry::getType() const
+ {
+ 	return QString::fromUtf8(type);
+@@ -258,3 +265,12 @@ void DConfEntry::setType(const QString &value)
+ {
+ 	type = value.toUtf8();
+ }
++
++
++
++uint qHash(const DConfEntry &entry, uint seed)
++{
++	return qHash(entry.type, seed) ^
++			qHash(entry.data, seed) ^
++			qHash(entry.lastModified, seed);
++}
+diff --git a/plugins/dconfsync/dconfsynchelper.h b/plugins/dconfsync/dconfsynchelper.h
+index 361cb71..c08e67f 100644
+--- a/plugins/dconfsync/dconfsynchelper.h
++++ b/plugins/dconfsync/dconfsynchelper.h
+@@ -5,6 +5,7 @@
+ #include <QJsonSerializer>
+ #include <QObject>
+ #include <QSettings>
++#include <QHash>
+ #include <synchelper.h>
+ 
+ class DConfEntry
+@@ -20,11 +21,15 @@ public:
+ 	QByteArray data;
+ 	QDateTime lastModified;
+ 
++	bool operator==(const DConfEntry &other) const;
++
+ private:
+ 	QString getType() const;
+ 	void setType(const QString &value);
+ };
+ 
++uint qHash(const DConfEntry &entry, uint seed);
++
+ class DConfSyncHelper;
+ class DConfSyncTask : public SyncTask
+ {
+diff --git a/plugins/dconfsync/dconfsynchelperplugin.cpp b/plugins/dconfsync/dconfsynchelperplugin.cpp
+index ce8753a..b0ede4f 100644
+--- a/plugins/dconfsync/dconfsynchelperplugin.cpp
++++ b/plugins/dconfsync/dconfsynchelperplugin.cpp
+@@ -1,5 +1,6 @@
+ #include "dconfsynchelperplugin.h"
+ #include "dconfsynchelper.h"
++#include <QQueue>
+ 
+ DConfSyncHelperPlugin::DConfSyncHelperPlugin(QObject *parent) :
+ 	QObject(parent)
