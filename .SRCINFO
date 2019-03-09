@@ -1,6 +1,6 @@
 pkgbase = jd-gui-git
 	pkgdesc = A standalone Java Decompiler GUI
-	pkgver = 1.4.0.r12.g4ed68bf
+	pkgver = 1.4.1.r0.g4ed68bf
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
