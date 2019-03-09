@@ -2,24 +2,25 @@
 
 pkgname=okular-lcd-standalone
 _pkgname=okular
-pkgver=18.04.1
+pkgver=18.12.3
 pkgrel=1
 pkgdesc='KDE Document viewer (PDF, Postscript, djvu, etc.) with built-in LCD subpixel rendering support'
 arch=(x86_64)
 url="https://kde.org/applications/graphics/okular/"
 license=(GPL LGPL FDL)
 groups=(kde-applications kdegraphics)
-depends=(djvulibre libspectre libkexiv2 qca-qt5 kpty kactivities threadweaver kjs kparts purpose)
+depends=(djvulibre libspectre libkexiv2 qca kpty kactivities threadweaver kjs kparts purpose discount phonon-qt5)
 makedepends=(extra-cmake-modules ebook-tools kdegraphics-mobipocket kdoctools khtml chmlib discount git qt4
             qt5-base icu gtk2 python2 libjpeg gcc-libs cairo fontconfig openjpeg pkgconfig lcms2 gobject-introspection)
-optdepends=('ebook-tools: mobi and epub support' 'discount: markdown support'
+optdepends=('ebook-tools: mobi and epub support'
             'kdegraphics-mobipocket: mobi support' 'kirigami2: mobile UI' 'libzip: CHM support'
-            'khtml: CHM support' 'chmlib: CHM support' 'calligra: ODT and ODP support')
+            'khtml: CHM support' 'chmlib: CHM support' 'calligra: ODT and ODP support'
+            'unrar: Comic Book Archive support' 'unarchiver: Comic Book Archive support (alternative)')
 conflicts=(kdegraphics-okular okular okular-git)
 replaces=(kdegraphics-okular okular okular-git)
-_commit=ee57925c5779a572b8d5cc52ab59a380bd4b4e03
+_commit=cdac709ed710b8240a22e103c83c258e228b6cbc
 source=("git+https://github.com/KDE/okular#commit=$_commit"
-        "http://poppler.freedesktop.org/poppler-0.43.0.tar.xz"
+        "https://poppler.freedesktop.org/poppler-0.43.0.tar.xz"
         01-okular-subpixel-rendering-by-poppler.patch
         02-subpixel-rendering-for-poppler-and-glib.patch
         03-cairo-backend-for-poppler-qt5.patch)
