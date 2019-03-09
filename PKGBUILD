@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=vivaldi-snapshot-ffmpeg-codecs
-pkgver=72.0.3626.97
+pkgver=73.0.3683.67
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for vivaldi"
 arch=('x86_64')
@@ -12,11 +12,16 @@ makedepends=(
   'gtk3' 'libexif' 'libxss' 'ninja' 'nss' 'pciutils' 'python2'
   'xdg-utils' 'gn'
 )
-options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
+  'chromium-73-gcc-0.patch'
+  'chromium-73-gcc-2.patch'
+  'chromium-73-gcc-3.patch'
 )
-sha512sums=('b1ba3fd1c3df6436ab62cc7c376567f1b51b6181c7c5c007f0beccfa7deb11d3e4fc2c4232cd2909bb170572765702f544d6ceb2c008bdfbefef60416b467ee9')
+sha512sums=('df5e1efe90f7673aea1b82e6697d0ae2927a1c4ba80c72c8228b93bd0558a2437a48f3b2156827bacc0c67feab31845f97ae3e6c6da3c8b3566c4306742992b4'
+            'de7101ba00d8c1f00cd3f557574653cb9df80e59efe869c4fb127736b0f0793b20157169af74c8e38057c460e29a7e90e05274c749dbb6a30aa0aa7886b74b36'
+            'a242e7669d9c4b86f39dfe0516bced6b234336f4671514b1eca647b3d82228602dda96c69370326eacb3f68b5a47d58a2d6e4f5d97ea67583caf0c2b4430f0d4'
+            '93173033df16138b94dda215b088dd63937f738536d6cbcc4133258502e1f5bdda45bcbbd95250bc7f781839544c3d45e2dfa8aa4477a0617cfaa723e9140085')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
@@ -29,6 +34,9 @@ prepare() {
   mkdir "$srcdir/path"
   ln -s /usr/bin/python2 "$srcdir/path/python"
 
+  patch -p1 -i "$srcdir/chromium-73-gcc-0.patch"
+  patch -p1 -i "$srcdir/chromium-73-gcc-2.patch"
+  patch -p1 -i "$srcdir/chromium-73-gcc-3.patch"
 }
 
 build() {
