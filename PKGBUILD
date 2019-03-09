@@ -2,6 +2,7 @@
 pkgname=glpaper
 pkgver=1.0
 pkgrel=1
+srcdir="src"
 epoch=()
 pkgdesc="WLRoots based GLSL wallpapers for WLRoots compositors"
 arch=('x86_64')
@@ -10,6 +11,8 @@ license=('GPL3')
 groups=()
 depends=('wayland')
 makedepends=('egl-wayland' 'mercurial')
+source=("${pkgname}::hg+$url")
+sha256sums=('SKIP')
 checkdepends=()
 optdepends=()
 provides=()
@@ -21,24 +24,17 @@ install=
 changelog=
 noextract=()
 validpgpkeys=()
-
-
-prepare() {
-	mkdir -p "${pkgname}-${pkgver}"
-	hg clone ${url} "${pkgname}-${pkgver}"
+pkgver() {
+	mkdir -p ${srcdir}/${pkgver}
+	cd ${srcdir}/${pkgname}
+        echo $(hg identify -i)
 }
 
 build() {
-	cd "${pkgname}-${pkgver}/Release"
+	cd "${pkgname}/Release"
         make
 }
-
-check() {
-	echo "Checking"
-}
-
 package() {
-	echo "Packaging"
 	mkdir -p "../pkg/${pkgname}/usr/bin"
-	cp ${pkgname}-${pkgver}/Release/glpaper "../pkg/${pkgname}/usr/bin/"
+	cp ${pkgname}/Release/glpaper "../pkg/${pkgname}/usr/bin/"
 }

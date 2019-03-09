@@ -8,6 +8,8 @@ pkgbase = glpaper
 	makedepends = egl-wayland
 	makedepends = mercurial
 	depends = wayland
+	source = glpaper::hg+https://bitbucket.org/Scoopta/glpaper
+	sha256sums = SKIP
 
 pkgname = glpaper
 
