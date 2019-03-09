@@ -1,0 +1,17 @@
+pkgbase = antares-git
+	pkgdesc = A window manager for X
+	pkgver = r113.g30e3525
+	pkgrel = 1
+	url = https://notabug.org/Leon_Plickat/antares
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = cairo
+	depends = libxinerama
+	provides = antares
+	conflicts = antares
+	source = antares::git+https://notabug.org/Leon_Plickat/antares.git
+	md5sums = SKIP
+
+pkgname = antares-git
+
