@@ -5,10 +5,10 @@ PKGEXT='.pkg.tar'
 pkgbase=xscreensaver-aerial-videos
 pkgname=(xscreensaver-aerial-videos-1080 xscreensaver-aerial-videos-4k)
 pkgver=1.09
-pkgrel=1
+pkgrel=2
 arch=('any')
-_url1="http://a1.v2.phobos.apple.com.edgesuite.net/us/r1000/000/Features/atv/AutumnResources/videos/"
-_url3="http://sylvan.apple.com/Aerials/2x/Videos/"
+_url1="http://a1.v2.phobos.apple.com.edgesuite.net/us/r1000/000/Features/atv/AutumnResources/videos"
+_url3="http://sylvan.apple.com/Aerials/2x/Videos"
 source=(
 # china
 "$_url3/comp_CH_C007_C011_PSNK_v02_SDR_PS_FINAL_20180709_SDR_2K_HEVC.mov"
