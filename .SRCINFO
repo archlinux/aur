@@ -1,0 +1,12 @@
+pkgbase = glpaper
+	pkgdesc = WLRoots based GLSL wallpapers for WLRoots compositors
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://bitbucket.org/Scoopta/glpaper
+	arch = x86_64
+	license = GPL3
+	makedepends = mercurial
+	depends = wayland
+
+pkgname = glpaper
+
