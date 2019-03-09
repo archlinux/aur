@@ -1,0 +1,14 @@
+pkgbase = enhanceddiscord-git
+	pkgdesc = EnhancedDiscord is a modification for the Discord desktop app that allows you to load themes and plugins easily, quickly, and safely.
+	pkgver = r149.c1cd97d
+	pkgrel = 1
+	url = https://github.com/joe27g/EnhancedDiscord
+	arch = any
+	license = unknown
+	makedepends = discord
+	depends = discord
+	source = EnhancedDiscord::git+git://github.com/joe27g/EnhancedDiscord.git
+	md5sums = SKIP
+
+pkgname = enhanceddiscord-git
+
