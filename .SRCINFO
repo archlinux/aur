@@ -1,7 +1,7 @@
 pkgbase = dawayer
 	pkgdesc = An ordinary audio player
 	pkgver = 1552099207370
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/herpproject/Dawayer
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = dawayer
 	depends = nss
 	source = icon.png
 	source = Dawayer.desktop
-	source = https://gitlab.com/herpproject/Dawayer/-/jobs/174508276/artifacts/raw/public/Dawayer.tar.xz
+	source = Dawayer-1552099207370.tar.xz::https://gitlab.com/herpproject/Dawayer/-/jobs/174508276/artifacts/raw/public/Dawayer.tar.xz
 	md5sums = d57d7316ee7ab96130fc6a8c07d1ae3f
 	md5sums = e406095b0807377b9e779d910da220a6
 	md5sums = 11d60ba98b0c18085e31de0a5f365155
