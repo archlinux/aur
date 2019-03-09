@@ -19,8 +19,11 @@ pkgbase = wifite2-git
 	optdepends = hcxdumptool
 	optdepends = hcxtools
 	optdepends = john
+	optdepends = hashcat
 	source = wifite2-git::git+https://github.com/derv82/wifite2.git
+	source = processes.patch
 	sha256sums = SKIP
+	sha256sums = 2feaf268219cd981eeda19bb82627ba066938e9a296b3feef224236f7f9a1bcc
 
 pkgname = wifite2-git
 

@@ -8,14 +8,22 @@ arch=(any)
 url="https://github.com/derv82/wifite2"
 license=('GPL')
 depends=(python aircrack-ng wireless_tools net-tools)
-optdepends=(macchanger wireshark-cli reaver bully cowpatty pyrit hcxdumptool hcxtools john)
+optdepends=(macchanger wireshark-cli reaver bully
+            cowpatty pyrit hcxdumptool hcxtools john hashcat)
 makedepends=(git)
-source=($pkgname::git+https://github.com/derv82/wifite2.git)
-sha256sums=('SKIP')
+source=($pkgname::git+https://github.com/derv82/wifite2.git
+        processes.patch)
+sha256sums=('SKIP'
+            '2feaf268219cd981eeda19bb82627ba066938e9a296b3feef224236f7f9a1bcc')
 
 pkgver() {
   cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$pkgname"
+  patch -Np1 -i ../processes.patch
 }
 
 package() {

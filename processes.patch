@@ -1,0 +1,53 @@
+diff --git a/wifite/tools/airmon.py b/wifite/tools/airmon.py
+index a2a4538..b18570e 100755
+--- a/wifite/tools/airmon.py
++++ b/wifite/tools/airmon.py
+@@ -354,7 +354,16 @@ class Airmon(Dependency):
+ 
+         Color.pl('{!} {O}Killing {R}%d {O}conflicting processes' % len(pid_pnames))
+         for pid, pname in pid_pnames:
+-            if pname == 'NetworkManager' and Process.exists('service'):
++            if pname == 'NetworkManager' and Process.exists('systemctl'):
++                Color.pl('{!} {O}stopping network-manager ({R}systemctl stop NetworkManager{O})')
++                # Can't just pkill network manager; it's a service
++                Process(['systemctl', 'stop', 'NetworkManager']).wait()
++                Airmon.killed_network_manager = True
++            elif pname == 'avahi-daemon' and Process.exists('systemctl'):
++                Color.pl('{!} {O}stopping avahi-daemon ({R}systemctl stop avahi-daemon{O})')
++                # Can't just pkill avahi-daemon; it's a service
++                Process(['systemctl', 'stop', 'avahi-daemon']).wait()
++            elif pname == 'NetworkManager' and Process.exists('service'):
+                 Color.pl('{!} {O}stopping network-manager ({R}service network-manager stop{O})')
+                 # Can't just pkill network manager; it's a service
+                 Process(['service', 'network-manager', 'stop']).wait()
+@@ -381,8 +390,8 @@ class Airmon(Dependency):
+     def start_network_manager():
+         Color.p('{!} {O}restarting {R}NetworkManager{O}...')
+ 
+-        if Process.exists('service'):
+-            cmd = 'service network-manager start'
++        if Process.exists('systemctl'):
++            cmd = 'systemctl start NetworkManager'
+             proc = Process(cmd)
+             (out, err) = proc.get_output()
+             if proc.poll() != 0:
+@@ -394,9 +403,8 @@ class Airmon(Dependency):
+             else:
+                 Color.pl(' {G}done{W} ({C}%s{W})' % cmd)
+                 return
+-
+-        if Process.exists('systemctl'):
+-            cmd = 'systemctl start NetworkManager'
++        elif Process.exists('service'):
++            cmd = 'service network-manager start'
+             proc = Process(cmd)
+             (out, err) = proc.get_output()
+             if proc.poll() != 0:
+@@ -408,6 +416,7 @@ class Airmon(Dependency):
+             else:
+                 Color.pl(' {G}done{W} ({C}%s{W})' % cmd)
+                 return
++
+         else:
+             Color.pl(' {R}cannot restart NetworkManager: {O}systemctl{R} or {O}service{R} not found{W}')
+ 
