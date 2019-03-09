@@ -9,8 +9,8 @@ pkgdesc=" A fast, intuitive linear algebra library for C++ "
 arch=('i686' 'x86_64')
 url="https://github.com/rmjarvis/tmv/"
 license=('BSD')
-depends=('bash' 'cblas')
-makedepends=('git')
+depends=('bash')
+makedepends=('git' 'scons')
 source=("${_pkgname}::git+${url}")
 md5sums=('SKIP')
 

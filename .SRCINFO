@@ -7,8 +7,8 @@ pkgbase = tmv-git
 	arch = x86_64
 	license = BSD
 	makedepends = git
+	makedepends = scons
 	depends = bash
-	depends = cblas
 	source = tmv::git+https://github.com/rmjarvis/tmv/
 	md5sums = SKIP
 
