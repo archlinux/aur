@@ -1,8 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=aminal-git
-pkgver=r422.a2f23c7
-_pkgname=aminal
+pkgver=r423.8a56135
 pkgrel=1
 pkgdesc="Golang terminal emulator from scratch"
 url="https://github.com/liamg/aminal"
@@ -26,7 +25,7 @@ prepare() {
 
 	cd "${srcdir}/go/src/github.com/liamg/aminal"
 
-	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
+	export GOPATH="${srcdir}/go"
 	go get -v ./...
 }
 
@@ -35,7 +34,7 @@ build() {
 
 	mkdir -p build
 
-	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
+	export GOPATH="${srcdir}/go"
 	go build -ldflags "-s -w" \
 		-gcflags="all=-trimpath=${GOPATH}/src" \
 		-asmflags="all=-trimpath=${GOPATH}/src" \
