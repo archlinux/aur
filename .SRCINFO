@@ -1,0 +1,18 @@
+pkgbase = python-pystray
+	pkgdesc = Provides systray integration.
+	pkgver = 0.14.4
+	pkgrel = 1
+	url = https://github.com/moses-palmer/pystray
+	arch = any
+	license = GPL
+	makedepends = python
+	makedepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/moses-palmer/pystray/archive/v0.14.4.tar.gz
+	sha512sums = 8c0da713ce5314137015d23c156de22054a44d4720be36a41ad1917bc694ffaed0b254b9473f67a26bf630e12d7fa71744410723927318280768efcfb752cd81
+
+pkgname = python-pystray
+
+pkgname = python2-pystray
+
