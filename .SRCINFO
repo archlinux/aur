@@ -1,7 +1,7 @@
 pkgbase = openblok
 	pkgdesc = A customizable, cross platform, open-source falling block game, packed with a bunch of features.
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mmatyas/openblok
 	arch = i686
 	arch = x86_64
