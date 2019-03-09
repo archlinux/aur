@@ -34,6 +34,7 @@ package() {
     # Zplugin's source files
     install -dm0755 "${_plugindir}"
     install -m0644 zplugin{,-side,-install,-autoload}.zsh "${_plugindir}"
+    install -m0755 git-process-output.zsh "${_plugindir}"
 
     # Zplugin-module files
     find zmodules/ -type d -exec install -dm 755 "{}" "${_plugindir}/{}" \;
