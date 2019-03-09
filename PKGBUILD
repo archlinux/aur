@@ -3,6 +3,7 @@ pkgname=mindmaster
 pkgver=6
 pkgrel=1
 arch=('x86_64')
+conflicts=("mindmaster-cn")
 options=(!strip)
 pkgdesc="Draw mind maps and brainstorming diagrams in an automatic way"
 license=('Commercial')
