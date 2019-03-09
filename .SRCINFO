@@ -1,7 +1,7 @@
 pkgbase = syrem
 	pkgdesc = A simple reminder application for desktop and mobile, with synchronized reminders
 	pkgver = 3.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Skycoder42/Syrem
 	arch = i686
 	arch = x86_64
@@ -16,15 +16,17 @@ pkgbase = syrem
 	depends = qt5-datasync
 	depends = qt5-mvvmwidgets
 	depends = qt5-mvvmdatasyncwidgets
-	depends = qt5-service
+	depends = qt5-service>=2.0.0
 	optdepends = knotifications: Adds support for KDE notifications, which are more advanced (recompile required)
 	optdepends = repkg: Automatically rebuild the package on dependency updates
 	provides = remind-me
 	conflicts = remind-me
 	source = syrem-3.0.0::git+https://github.com/Skycoder42/Syrem.git#tag=3.0.0
+	source = qtservice.patch
 	source = syrem.rule
 	sha256sums = SKIP
-	sha256sums = 194396e4a4e7c6e0ffcc38e0b76f15b01fd111134e530bf295999ef126480cd3
+	sha256sums = db5a25f08e206e44f47027a9a0d9f863d876383aa85b14c98b6a7928841edfbb
+	sha256sums = 38c7bde0526c138c22b54b98b3b3482e1f2d9dfc14a6a27f3f64d9b3f931a40c
 
 pkgname = syrem
 

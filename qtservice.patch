@@ -1,0 +1,85 @@
+diff --git a/lib/libsyrem.cpp b/lib/libsyrem.cpp
+index 07a7986..91d855d 100644
+--- a/lib/libsyrem.cpp
++++ b/lib/libsyrem.cpp
+@@ -5,6 +5,7 @@
+ #include <QTranslator>
+ #include <QLibraryInfo>
+ #include <QStandardPaths>
++#include <QQueue>
+ 
+ #include "schedule.h"
+ #include "dateparser.h"
+diff --git a/lib/reminder.cpp b/lib/reminder.cpp
+index ae3eca9..10a05c1 100644
+--- a/lib/reminder.cpp
++++ b/lib/reminder.cpp
+@@ -189,6 +189,18 @@ void Reminder::setExpression(QString expression)
+ 	_data->expression = std::move(expression);
+ }
+ 
++bool Reminder::operator==(const Reminder &other) const
++{
++	return _data == other._data || (
++		_data->id == other._data->id &&
++		_data->versionCode == other._data->versionCode &&
++		_data->text == other._data->text &&
++		_data->important == other._data->important &&
++		_data->schedule == other._data->schedule &&
++		_data->snooze == other._data->snooze &&
++		_data->expression == other._data->expression);
++}
++
+ void Reminder::setVersionCode(quint32 versionCode)
+ {
+ 	_data->versionCode = versionCode;
+@@ -203,3 +215,16 @@ void Reminder::setSnooze(QDateTime snooze)
+ {
+ 	_data->snooze = std::move(snooze);
+ }
++
++
++
++uint qHash(const Reminder &reminder, uint seed)
++{
++	return qHash(reminder._data->id, seed) ^
++			qHash(reminder._data->versionCode, seed) ^
++			qHash(reminder._data->text, seed) ^
++			qHash(reminder._data->important, seed) ^
++			qHash(reminder._data->schedule, seed) ^
++			qHash(reminder._data->snooze, seed) ^
++			qHash(reminder._data->expression, seed);
++}
+diff --git a/lib/reminder.h b/lib/reminder.h
+index be234f4..29f8a28 100644
+--- a/lib/reminder.h
++++ b/lib/reminder.h
+@@ -7,6 +7,7 @@
+ #include <QSharedPointer>
+ #include <QUrl>
+ #include <QUuid>
++#include <QHash>
+ #include <QtDataSync/DataTypeStore>
+ 
+ #include "libsyrem_global.h"
+@@ -79,7 +80,11 @@ public:
+ 	void setSchedule(QSharedPointer<Schedule> schedule);
+ 	void setExpression(QString expression);
+ 
++	bool operator==(const Reminder &other) const;
++
+ private:
++	friend LIB_SYREM_EXPORT uint qHash(const Reminder &reminder, uint seed);
++
+ 	QSharedDataPointer<ReminderData> _data;
+ 	mutable struct {
+ 		bool set = false;
+@@ -91,6 +96,8 @@ private:
+ 	void setSnooze(QDateTime snooze);
+ };
+ 
++LIB_SYREM_EXPORT uint qHash(const Reminder &reminder, uint seed);
++
+ Q_DECLARE_METATYPE(Reminder)
+ 
+ #endif // REMINDER_H
