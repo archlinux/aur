@@ -1,1 +1,1 @@
-qt5-base{{^(\d+\.\d+).*$}} qt5-jsonserializer{{^(\d+\.\d+\.\d+).*$}} qt5-service{{^(\d+\.\d+\.\d+).*$}} qt5-mvvmcore{{^(\d+\.\d+\.\d+).*$}} dconf
+qt5-base=v qt5-jsonserializer=v qt5-service=v qt5-mvvmcore=v dconf=v

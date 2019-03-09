@@ -1,7 +1,7 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=conflip
 pkgver=2.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to synchronize settings/configurations across multiple machines"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/Conflip"
@@ -16,7 +16,7 @@ source=("$_pkgfqn::git+https://github.com/Skycoder42/Conflip.git#tag=$pkgver"
 		"$pkgname.rule")
 sha256sums=('SKIP'
             '8fb8bd09d87bcf6419a98f7cd6718a23bc3de86440bed84a67d8deaaf233a04c'
-            '0f7a68d179bf5e1c6817a2be8705f0521db4856af8eabdb25707a2e612f097a6')
+            '505a5dfe05a57f2794f51d66c20116e04f0713074ea8577012960171996b0ba3')
 
 prepare() {
   mkdir -p build
