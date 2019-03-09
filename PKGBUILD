@@ -2,7 +2,7 @@
 
 pkgname=texstudio-lcd
 _pkgname=texstudio
-pkgver=2.12.8
+pkgver=2.12.14
 pkgrel=1
 pkgdesc="IDE for LaTeX documents with LCD subpixel rendering backend for embedded viewer"
 arch=('x86_64')
@@ -16,9 +16,9 @@ optdepends=('evince-lcd-standalone: pdf reader with LCD subpixel rendering'
             'okular-lcd-standalone: QT pdf reader with LCD subpixel rendering')
 conflicts=('texstudio' 'texstudio-dark-git')
 replaces=('texmakerx')
-_commit=613d4e15b55c4c9b3978acca30742cdcfb61d052
+_commit=1551ba13b224a38229d1049983ac572710d352cd
 source=("git+https://github.com/texstudio-org/texstudio#commit=$_commit"
-        "http://poppler.freedesktop.org/poppler-0.43.0.tar.xz"
+        "https://poppler.freedesktop.org/poppler-0.43.0.tar.xz"
         01-texstudio-bug-fix.patch
         02-subpixel-rendering-for-poppler-and-glib.patch
         03-cairo-backend-for-poppler-qt5.patch
@@ -28,7 +28,7 @@ sha256sums=('SKIP'
             '78e242d233ce68a032d2fab5413e1658b952358d9cae71b7ec470c6adf95c0db'
             '608ecfee2e448b323623993072ae0ab80af0714ff19767eb0dc3a3c413c21279'
             '59e3ff8ea3b7e58a4d9e30a60b848fe8a6534b94025a08074488b747974b5626'
-            '8ddd9417fe94557a9d545a9d9772e454297e11723757dc5be34a61190a1d8e54')
+            'b9a9d98009051b741f577b14056149e151710b55fae6d3c12340fd3bfd5ebaf9')
 
 pkgver() {
   cd $_pkgname
