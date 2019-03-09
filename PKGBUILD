@@ -17,6 +17,7 @@ optdepends=('ebook-tools: mobi and epub support'
             'khtml: CHM support' 'chmlib: CHM support' 'calligra: ODT and ODP support'
             'unrar: Comic Book Archive support' 'unarchiver: Comic Book Archive support (alternative)')
 conflicts=(kdegraphics-okular okular okular-git)
+provides=(okular)
 replaces=(kdegraphics-okular okular okular-git)
 _commit=cdac709ed710b8240a22e103c83c258e228b6cbc
 source=("git+https://github.com/KDE/okular#commit=$_commit"

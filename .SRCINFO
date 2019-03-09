@@ -51,6 +51,7 @@ pkgbase = okular-lcd-standalone
 	optdepends = calligra: ODT and ODP support
 	optdepends = unrar: Comic Book Archive support
 	optdepends = unarchiver: Comic Book Archive support (alternative)
+	provides = okular
 	conflicts = kdegraphics-okular
 	conflicts = okular
 	conflicts = okular-git
