@@ -3,7 +3,7 @@
 
 pkgname=wire-desktop-git
 _pkgname=${pkgname%-git}
-pkgver=3.6.2885.r28.ge60eae3c
+pkgver=3.6.2885.r98.g35a11a00
 pkgrel=1
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('x86_64')
@@ -40,9 +40,7 @@ build() {
     cd "${_pkgname}"
     yarn
     yarn build:ts
-    # **********
-    # ***TODO*** in the next release simply use 'linux-prod-package'
-    npx grunt 'clean:linux' 'update-keys' 'gitinfo'  'set-custom-data' 'release-prod' 'bundle'
+    npx grunt 'linux-prod-package'
 }
 
 package() {
