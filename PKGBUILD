@@ -25,6 +25,7 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 build() {
+    export LD_PRELOAD='/usr/lib/libfakeroot/libfakeroot.so'
 	cd "ArchStartscreen-Animated-master"
 	make
 }
@@ -35,6 +36,7 @@ check() {
 }
 
 package() {
+    export LD_PRELOAD='/usr/lib/libfakeroot/libfakeroot.so'
 	cd "ArchStartscreen-Animated-master"
 	make DESTDIR="$pkgdir/" install
 }
