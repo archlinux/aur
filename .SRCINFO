@@ -1,7 +1,7 @@
 pkgbase = boomaga-git
 	pkgdesc = A virtual printer for viewing a document before printing it out using the physical printer
-	pkgver = r446.5ac61e4
-	pkgrel = 3
+	pkgver = 2.0.99.beta4.r20.g5ac61e4
+	pkgrel = 1
 	url = http://www.boomaga.org
 	install = boomaga-git.install
 	arch = i686
