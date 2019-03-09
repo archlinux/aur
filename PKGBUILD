@@ -41,7 +41,7 @@ build() {
 }
 
 check() {
-    read -n 1 -p "Do you want to run checks? [y/N] " runchecks
+    read -n 1 -t 30 -p "Do you want to run checks? [y/N] " runchecks
 
     echo
 
