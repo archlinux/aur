@@ -30,9 +30,9 @@ depends=(
 	pkg-config
 )
 
-_dir="orocos-kdl-release-release-melodic-orocos_kdl"
+_dir="orocos-kdl-release-release-melodic-orocos_kdl-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/orocos/orocos-kdl-release/archive/release/melodic/orocos_kdl/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e5402d77bb68c3cf33bbc2993acdb562016394fcb2c5a2a9590f04de22098a2d')
+sha256sums=('aa01563f804f8c52c6403b872b0a321abd916083757aebf25ac9530c7798830a')
 
 build() {
 	# Use ROS environment variables.
