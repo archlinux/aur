@@ -2,7 +2,7 @@
 
 pkgname=gobuster-git
 pkgver=v2.0.1.r15.g0e209e5
-pkgrel=2
+pkgrel=3
 pkgdesc="A directory/file & DNS busting tool."
 arch=('x86_64')
 url="https://github.com/OJ/gobuster"
@@ -23,12 +23,12 @@ prepare() {
 	cd "${srcdir}/${pkgname}"
 
 	install -m755 -d "${srcdir}/go/src/github.com/OJ/"
-	cp -a "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/OJ/gobuster"
+	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/OJ/gobuster"
 
 	cd "${srcdir}/go/src/github.com/OJ/gobuster"
 
-	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" \
-	go get -v -d ./...
+	export GOPATH="${srcdir}/go"
+	go get -v ./...
 }
 
 build() {
@@ -36,7 +36,7 @@ build() {
 
 	mkdir -p build
 
-	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" \
+	export GOPATH="${srcdir}/go"
 	go build -ldflags "-s -w" \
 		-gcflags="all=-trimpath=${GOPATH}/src" \
 		-asmflags="all=-trimpath=${GOPATH}/src" \
@@ -46,7 +46,7 @@ build() {
 check() {
 	cd "${srcdir}/go/src/github.com/OJ/gobuster"
 
-	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
+	export GOPATH="${srcdir}/go"
 	make test
 }
 
