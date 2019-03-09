@@ -22,7 +22,7 @@ source=("https://launchpad.net/$pkgname/trunk/$pkgver/+download/$pkgname-$pkgver
         archlinux.cloud.cfg)
 sha256sums=('650d1eb38ea488b3ea8cc9d7b0fb975bb3c9a3e5ca7dcaf924892f5f9813da92'
             '0ace6a9e4156145e5b50bd5fa75d6aeefe8e5c10a63f8d9e0d3c7be4c9b53942'
-            '109dd4500593c2fb7b2f7bf05eaf1835be8062c4f7b3025a0371184a691950da')
+            '0fb03b5827d0c7540633b62f1855c9d2731d8e9bf7946d5e1ab60426f1289484')
 
 prepare(){
   cd $pkgname-$pkgver
