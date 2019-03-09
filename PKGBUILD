@@ -1,13 +1,13 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=openblok
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A customizable, cross platform, open-source falling block game, packed with a bunch of features."
 arch=('i686' 'x86_64')
 url="https://github.com/mmatyas/openblok"
 license=('GPL3')
 groups=()
-depends=('')
+depends=()
 makedepends=('cmake')
 optdepends=()
 provides=()
