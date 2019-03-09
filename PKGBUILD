@@ -1,7 +1,7 @@
 # Maintainer: Slashbunny <demodevil5[at]yahoo>
 
 pkgname=prometheus-haproxy-exporter-bin
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Simple server that scrapes HAProxy stats and exports them via HTTP for Prometheus consumption (binary, not built from source)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=( 'prometheus-haproxy-exporter.service' 'prometheus-haproxy-exporter.conf
 "https://github.com/prometheus/haproxy_exporter/releases/download/v${pkgver}/haproxy_exporter-${pkgver}.linux-amd64.tar.gz")
 sha256sums=('59d6753ca5cff752304a7391de336443cd7394bae6095c5986a07c4e431efe4f'
             '7b363fa314f1ab2630ea5dbc4a888c5b7b2b0472a474a745bd8a55d385e5a568'
-            'b0d1caaaf245d3d16432de9504575b3af1fec14b2206a468372a80843be001a0')
+            '08150728e281f813a8fcfff4b336f16dbfe4268a1c7510212c8cff2579b10468')
 
 package() {
     cd "${srcdir}/haproxy_exporter-${pkgver}.linux-amd64"
