@@ -1,0 +1,15 @@
+pkgbase = python-hdmedians
+	pkgdesc = High-dimensional medians
+	pkgver = 0.13
+	pkgrel = 1
+	url = http://github.com/daleroberts/hdmedians
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/h/hdmedians/hdmedians-0.13.tar.gz
+	md5sums = 27945c64fd9ba1a46ef6c136d402291d
+
+pkgname = python-hdmedians
+	depends = python
+
