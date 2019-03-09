@@ -2,7 +2,7 @@
 
 pkgname=evince-lcd-standalone
 _pkgname=evince
-pkgver=3.28.2
+pkgver=3.31.91
 pkgrel=1
 pkgdesc="Document viewer (PDF, Postscript, djvu, etc.) with built-in LCD subpixel rendering support"
 url="https://wiki.gnome.org/Apps/Evince"
@@ -10,7 +10,7 @@ arch=(x86_64)
 license=(GPL)
 depends=('gtk3' 'libgxps' 'libspectre' 'gsfonts' 'djvulibre' 't1lib' 'dconf'
          'libsecret' 'gsettings-desktop-schemas' 'gnome-desktop' 'libarchive'
-         'gst-plugins-base-libs')
+         'gst-plugins-base-libs' 'gspell' 'libsynctex')
 makedepends=('itstool' 'libnautilus-extension' 'texlive-bin' 'gobject-introspection'
              'intltool' 'docbook-xsl' 'gtk-doc' 'gnome-common' 'git' 'python'
              'python2' 'libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg' 'gtk2'
@@ -21,9 +21,9 @@ provides=("evince=$pkgver")
 conflicts=('evince' 'evince-lcdfilter')
 groups=(gnome)
 options=('!emptydirs')
-_commit=7fc165add2f0b002b2c7c790671c9a6d1348c3ce #2a4995479ccf65f5bd15df13f9b6c810c3156b58
+_commit=ae8a46449c65aa274c6a1ebd4b1f057e552517a3
 source=("git+https://git.gnome.org/browse/evince#commit=$_commit"
-        "http://poppler.freedesktop.org/poppler-0.43.0.tar.xz"
+        "https://poppler.freedesktop.org/poppler-0.43.0.tar.xz"
         01-evince-subpixel-rendering-by-poppler.patch
         02-subpixel-rendering-for-poppler-and-glib.patch
         03-cairo-backend-for-poppler-qt5.patch)
@@ -94,5 +94,5 @@ package() {
   make DESTDIR="$pkgdir" install
   libdir=$pkgdir/usr/lib/evince/poppler-lcd
   mkdir -p $libdir
-  cp $srcdir/usr/local/lib/{libpoppler-glib-lcd.so.8,libpoppler-lcd.so.60} $libdir
+  cp "$srcdir/usr/local/lib/libpoppler"{-glib-lcd.so.8,-lcd.so.60} $libdir
 }
