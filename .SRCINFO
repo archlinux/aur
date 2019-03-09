@@ -1,7 +1,7 @@
 pkgbase = openhardwaremonitor-git
 	pkgdesc = An open source program that monitors temperature sensors, fan speeds, voltages, load and clock speeds of a computer.
 	pkgver = 0.8.0.r8.ge199e0c
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openhardwaremonitor.org/
 	arch = any
 	license = custom
