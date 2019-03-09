@@ -1,6 +1,6 @@
 pkgbase = libnvidia-container
 	pkgdesc = NVIDIA container runtime library
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/NVIDIA/libnvidia-container
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = libnvidia-container
 	depends = libseccomp
 	depends = libtirpc
 	options = !makeflags
-	source = https://github.com/NVIDIA/libnvidia-container/archive/v1.0.0.tar.gz
+	source = https://github.com/NVIDIA/libnvidia-container/archive/v1.0.1.tar.gz
 	source = https://sourceforge.net/projects/elftoolchain/files/Sources/elftoolchain-0.7.1/elftoolchain-0.7.1.tar.bz2
 	source = https://github.com/NVIDIA/nvidia-modprobe/archive/396.51.tar.gz
-	sha256sums = 5c8ca77e490fd9a0a47020fa0d6d9842af4951bfcb12d189db37ad5524b67f27
+	sha256sums = f745cdbb630c39f10d0043fa1c1c869a64bbd01e39010ffb8823d632ab94b1d6
 	sha256sums = 44f14591fcf21294387215dd7562f3fb4bec2f42f476cf32420a6bbabb2bd2b5
 	sha256sums = 25bc6437a384be670e9fd76ac2e5b9753517e23eb16e7fa891b18537b70c4b20
 
