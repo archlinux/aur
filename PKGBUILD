@@ -2,9 +2,10 @@
 # CoMaintainer: Frederic Bezies < fredbezies at gmail dot com>
 
 pkgname=ne-git
-pkgver=3.1.2.r6.g9ead37f
+pkgver=3.1.2.r12.g52a78e1
 pkgrel=1
-pkgdesc="A nice developer editor, highly recommended by Episteak French 
+pkgdesc="A nice developer editor, highly recommended by Epitech 
+(aka Episteak) French 
 School - git version"
 arch=('i686' 'x86_64')
 url="https://github.com/vigna/ne"
