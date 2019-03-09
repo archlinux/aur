@@ -36,7 +36,7 @@ package() {
   install -D -m644 "${srcdir}/XnView/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Clean up
-  rm "${pkgdir}/opt/${pkgname}/XnView.desktop"{,~}
+  rm "${pkgdir}/opt/${pkgname}/XnView.desktop"
   chmod -x "${pkgdir}/opt/${pkgname}/xnview.png"
 }
 
