@@ -5,18 +5,17 @@ post_install() {
   ## From Debian packages ##
 
   # We assume that the LibreOffice to be used is built TDF-style
-  # and installs in /opt/collaboraoffice5.3, and that /opt/lool is
+  # and installs in /opt/collaboraoffice6.0, and that /opt/lool is
   # on the same file system
-  mkdir -p           opt/lool/child-roots
+  mkdir -p opt/lool/child-roots
 
   ## From Docker script ##
 
-  # Fix lool resolv.conf problem (wizdude)
-  [ -d opt/lool/systemplate/etc ] || mkdir -p opt/lool/systemplate/etc
-  rm -f opt/lool/systemplate/etc/resolv.conf
-  ln -s /etc/resolv.conf opt/lool/systemplate/etc/
+  # Fix domain name resolution from jails
+  : # no need
 
   # Generate new SSL certificate instead of using the default
+  #+
   # Replace trusted host and set admin username and password
   cat <<-THEEND
 IMPORTANT!
@@ -52,8 +51,8 @@ post_upgrade() {
 
   chown -R lool:lool opt/lool
 
-  fc-cache opt/collaboraoffice5.3/share/fonts/truetype
-  su lool --shell=/bin/sh -c "loolwsd-systemplate-setup /opt/lool/systemplate /opt/collaboraoffice5.3 >/dev/null 2>&1"
+  fc-cache opt/collaboraoffice6.0/share/fonts/truetype
+  su lool --shell=/bin/sh -c 'loolwsd-systemplate-setup /opt/lool/systemplate /opt/collaboraoffice6.0 >/dev/null 2>&1'
 
   systemctl daemon-reload
   if systemctl list-unit-files loolwsd.service | grep -q 'enabled$'; then

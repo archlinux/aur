@@ -1,7 +1,7 @@
 # Maintainer: Yves G. <theYinYeti@yalis.fr>
 
 pkgname=collabora-online-server-nodocker
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Collabora CODE (LibreOffice Online) server for Nextcloud or ownCloud, without Docker"
 arch=('x86_64')
@@ -10,47 +10,20 @@ license=('MPL')
 provides=('libreoffice' 'libreoffice-en-US')
 makedepends=(bzip2 coreutils curl fontconfig gawk grep gzip libcap sed systemd tar util-linux xz)
 
-# From official Archlinux’ LibreOffice:
-optdepends=(
-  'hunspell-de: German hunspell dictionaries for LibreOffice'
-  'hunspell-en: English (US, UK, etc.) hunspell dictionaries for LibreOffice'
-  'hunspell-en_AU: AU English hunspell dictionaries for LibreOffice'
-  'hunspell-en_CA: CA English hunspell dictionaries for LibreOffice'
-  'hunspell-en_GB: GB English hunspell dictionaries for LibreOffice'
-  'hunspell-en_US: US English hunspell dictionaries for LibreOffice'
-  'hunspell-es: Spanish hunspell dictionaries for LibreOffice'
-  'hunspell-fr: French (modern) hunspell dictionaries for LibreOffice'
-  'hunspell-he: Hebrew hunspell dictionary for LibreOffice'
-  'hunspell-it: Italian dictionary for Hunspell for LibreOffice'
-  'hunspell-ro: Romanian dictionary for Hunspell for LibreOffice'
-  'hunspell-el: Greek hunspell dictionary for LibreOffice'
-  'hunspell-hu: Hungarian hunspell dictionary for LibreOffice'
-  'hunspell-nl: Dutch hunspell dictionaries for LibreOffice'
-  'hunspell-pl: Polish dictionary for Hunspell for LibreOffice'
-  'hyphen-de: German hyphenation rules for LibreOffice'
-  'hyphen-en: English hyphenation rules for LibreOffice'
-  'hyphen-es: Spanish hyphenation rules for LibreOffice'
-  'hyphen-fr: French hyphenation rules for LibreOffice'
-  'hyphen-it: Italian hyphenation rules for LibreOffice'
-  'hyphen-nl: Dutch hyphenation rules for LibreOffice'
-  'hyphen-ro: Romanian hyphenation rules for LibreOffice'
-  'hyphen-hu: Hungarian hyphenation rules for LibreOffice'
-  'hyphen-pl: Polish hyphenation rules for LibreOffice'
-)
-depends=(cpio noto-fonts poco)
+# From Dockerfile’s install script, minus inotify-tools+psmisc: not actually part of CODE
+depends=()
+
 source=(
   'https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/Packages'
   install
   mkcert_example.sh
-  nginx.conf
   sysusers
   tmpfiles
 )
 sha1sums=(
   'SKIP'
-  'e2fe8ff373261782d93c500bcfb87de1350d225a'
-  '68ac242ad285eeeca07cb486c22dfbf3a658fe81'
-  'fe998836dbbd5c153de77d4ea877f25719dae304'
+  '3b7c52a40becb96ed9698e624a23cadfe1250a73'
+  '132642655c8684a434ad2a43f1661020218cdfde'
   '2d271f9493ea14c675af1bfa76f6b654569dd51f'
   'f9c102a06b2582548f13121e78790237e2cb38e1'
 )
@@ -58,8 +31,12 @@ sha1sums=(
 # From deb’s conffiles
 backup=(
   opt/collaboraoffice6.0/share/psprint/psprint.conf
+  etc/apache2/conf-available/loolwsd.conf
   etc/loolwsd/loolkitconfig.xcu
   etc/loolwsd/loolwsd.xml
+  etc/nginx/snippets/loolwsd.conf
+
+  etc/sysconfig/loolwsd
 )
 
 # From deb’s pre/post scripts
@@ -88,7 +65,8 @@ _upstream_deps='loolwsd code-brand'
 #    thus add the missing dependency in the $depends array.
 _upstream_equiv='
   adduser             = 
-  cpio                = 
+  cpio                = cpio
+  expat               = expat
   fontconfig          = fontconfig
   init-system-helpers = 
   libc6               = gcc-libs
@@ -101,6 +79,13 @@ _upstream_equiv='
   libpam0g            = pam
   libpcre3            = 
   libpng12-0          = libpng12
+  libpococrypto60     = poco
+  libpocofoundation60 = poco
+  libpocojson60       = poco
+  libpoconet60        = poco
+  libpoconetssl60     = poco
+  libpocoutil60       = poco
+  libpocoxml60        = poco
   libsm6              = libsm
   libssl1.0.0         = openssl-1.0
   libstdc++6          = gcc-libs
@@ -108,6 +93,7 @@ _upstream_equiv='
   libxcb-shm0         = libxcb
   libxinerama1        = libxinerama
   libxrender1         = libxrender
+  locales-all         = glibc
   zlib1g              = zlib
 '
 _upstream_equiv_OLD='
@@ -147,7 +133,7 @@ _upstream_handle_dep() {
   fi
 }
 
-if [ ${#source[*]} -eq 6 ]; then
+if [ ${#source[*]} -eq 5 ]; then
   curl -s "${source[0]}" >Packages
   pkgver=$(
     awk -F$'\n' -vRS= '/^Package:[[:blank:]]*loolwsd\n/{print}' Packages \
@@ -177,9 +163,6 @@ package() {
   # /lib is deprecated
   mv {lib,usr/lib}
 
-  # replace the embedded poco, which depends on unknown libpcre.so.3, with Arch poco
-  rm -f usr/lib/libPoco*
-
   # use systemd for user allocation
   install -Dm0644 "$srcdir"/sysusers usr/lib/sysusers.d/$pkgname.conf
 
@@ -188,8 +171,6 @@ package() {
   install -Dm0644 "$srcdir"/tmpfiles usr/lib/tmpfiles.d/$pkgname.conf
 
   # add dependency on systemd
-  mv usr/lib{/lib,}/systemd
-  rmdir usr/lib/lib
   sed -i '/^\[Unit\]/ a \
 After=systemd-tmpfiles-setup.service' usr/lib/systemd/system/loolwsd.service
 
@@ -200,22 +181,30 @@ After=systemd-tmpfiles-setup.service' usr/lib/systemd/system/loolwsd.service
   mkdir -p usr/share/applications
   sed -i 's#^Exec=collaboraoffice6.0#Exec=/opt/collaboraoffice6.0/program/soffice#' \
     opt/collaboraoffice6.0/share/xdg/*
-  ls opt/collaboraoffice6.0/share/xdg \
+  ls -1 opt/collaboraoffice6.0/share/xdg \
   | while read f; do
     case "$f" in
-    calc.desktop|draw.desktop|impress.desktop|writer.desktop)
-      sed -i "s#^Icon=.*#Icon=/opt/collaboraoffice6.0/share/config/wizard/web/images/${f%.desktop}.gif#" \
-        opt/collaboraoffice6.0/share/xdg/$f
-      ;;
+    base.desktop)
+      icon=/usr/share/loolwsd/loleaflet/dist/images/lc_basicshapes.can.svg ;;
+    calc.desktop)
+      icon=/usr/share/loolwsd/loleaflet/dist/images/x-office-spreadsheet.svg ;;
+    draw.desktop)
+      icon=/usr/share/loolwsd/loleaflet/dist/images/lc_gallery.svg ;;
+    impress.desktop)
+      icon=/usr/share/loolwsd/loleaflet/dist/images/x-office-presentation.svg ;;
+    math.desktop)
+      icon=/usr/share/loolwsd/loleaflet/dist/images/lc_symbolshapes.brace-pair.svg ;;
+    writer.desktop)
+      icon=/usr/share/loolwsd/loleaflet/dist/images/x-office-document.svg ;;
     *)
-      sed -i 's#^Icon=.*#Icon=/opt/collaboraoffice6.0/share/config/wizard/web/images/other.gif#' \
-        opt/collaboraoffice6.0/share/xdg/$f
-      ;;
+      icon=/usr/share/loolwsd/loleaflet/dist/images/toolbar-bg.svg ;;
     esac
+    sed -i "s#^Icon=.*#Icon=${icon}#" opt/collaboraoffice6.0/share/xdg/"$f"
     mv opt/collaboraoffice6.0/share/xdg/"$f" usr/share/applications/"collaboraoffice-$f"
   done
   rm -rf opt/collaboraoffice6.0/share/xdg
 
-  # give some hints about usage
-  install -Dm0644 "$srcdir"/nginx.conf usr/share/doc/loolwsd/example.nginx.conf
+  # https://github.com/CollaboraOnline/Docker-CODE/issues/32
+  [ -d etc/sysconfig ] || mkdir etc/sysconfig
+  echo 'SLEEPFORDEBUGGER=0' >>etc/sysconfig/loolwsd
 }

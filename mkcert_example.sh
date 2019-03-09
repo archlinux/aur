@@ -1,6 +1,9 @@
 #!/bin/sh
 
 ## Taken from the Dockerfile script
+# With fix:
+#-if test "${cert_domain-set}" == set; then
+#+if test "${cert_domain:-set}" == set; then
 
 mkdir -p /opt/ssl/
 cd /opt/ssl/
