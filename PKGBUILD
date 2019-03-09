@@ -1,7 +1,7 @@
-# Maintainer: Facundo Tuesca <facutuesca AT gmail DOT com>
+# Maintainer: archus <archus@archlinux.cba.pl>
 
 pkgname=streamtuner2
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="An internet radio browser"
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('python2' 'pygtk' 'python2-xdg' 'python2-pillow' 'python2-keybinder2' 'python2-lxml' 'python2-cssselect' 'python2-pyquery' 'python2-requests')
 makedepends=('libarchive')
 source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.rpm")
-md5sums=('11e4c5a481ec5ad7ee5f9c213077bea1')
+md5sums=('4b66fd3f73d3a8693b86249cd525edda')
 
 package() {
   cd "${pkgdir}"
