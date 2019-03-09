@@ -1,14 +1,14 @@
 pkgbase = python-pypeln
-	pkgdesc = Pypeline is a simple yet powerful python library for creating concurrent data pipelines.
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgdesc = A simple yet powerful python library for creating concurrent data pipelines.
+	pkgver = 0.1.6
+	pkgrel = 1
 	url = https://github.com/cgarciae/pypeln
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-cytoolz
-	source = https://files.pythonhosted.org/packages/source/p/pypeln/pypeln-0.1.2.tar.gz
-	sha256sums = ac25af7b48516f0adb4653e7d5e2be0e88a9ff4438b33dd51d5d6a970914ac8c
+	source = https://files.pythonhosted.org/packages/source/p/pypeln/pypeln-0.1.6.tar.gz
+	sha256sums = 1304a221de6b43257ba664f13a9dee5c97b7f40a7cbe7d7d839627c96dcf68fd
 
 pkgname = python-pypeln
 
