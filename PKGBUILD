@@ -12,7 +12,7 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.1.0_devel.108563.7c1bf075f30
+pkgver=19.1.0_devel.108956.d7b31969767
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
@@ -82,9 +82,6 @@ package_mesa-git() {
 
   DESTDIR="$pkgdir" ninja -C _build install
 
-  # remove files provided by libglvnd
-  rm "$pkgdir"/usr/lib/libGLESv{1_CM,2}.so*
-   
   # indirect rendering
   ln -s /usr/lib/libGLX_mesa.so.0 ${pkgdir}/usr/lib/libGLX_indirect.so.0
 
