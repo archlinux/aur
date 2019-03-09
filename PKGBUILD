@@ -1,6 +1,6 @@
 # Maintainer: Buce <dmbuce@gmail.com>
 pkgname=clicraft
-pkgver=0.0.7
+pkgver=0.0.11
 pkgrel=1
 pkgdesc="A command-line wrapper for a minecraft or bukkit server."
 arch=("any")
