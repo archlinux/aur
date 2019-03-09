@@ -3,7 +3,7 @@
 _pkgname=boomaga
 pkgname=${_pkgname}-git
 pkgver=r446.5ac61e4
-pkgrel=1
+pkgrel=2
 pkgdesc="A virtual printer for viewing a document before printing it out using the physical printer"
 arch=('i686' 'x86_64')
 url="http://www.boomaga.org"
@@ -27,7 +27,6 @@ build() {
     cmake \
          -DCMAKE_INSTALL_PREFIX=/usr \
          -DCMAKE_BUILD_TYPE=Release \
-         -DUSE_QT5=Yes \
          .
     make
 }
