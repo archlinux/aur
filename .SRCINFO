@@ -4,6 +4,7 @@ pkgbase = mindmaster
 	pkgrel = 1
 	arch = x86_64
 	license = Commercial
+	conflicts = mindmaster-cn
 	options = !strip
 	source_x86_64 = http://download.edrawsoft.com/download/mindmaster-6-amd64.tar.gz
 	sha256sums_x86_64 = bcc030b5da28adf8455a8a01c0ce5c74659c7ef1fa51b681133321e70a354d65
