@@ -1,4 +1,5 @@
 # Maintainer: Marc Plano-Lesay <marc.planolesay@gmail.com>
+# Contributor: Xiang Gao <qasdfgtyuiop at gmail dot com>
 
 pkgname=bazel-buildtools
 pkgver=0.22.0
