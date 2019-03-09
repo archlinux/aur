@@ -2,16 +2,16 @@
 
 _pkgname=mohawk
 pkgname=python-mohawk
-pkgver=0.3.4
-pkgrel=3
-pkgdesc=" Python library for Hawk HTTP authorization"
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Python library for Hawk HTTP authorization"
 arch=('any')
 url="https://github.com/kumar303/mohawk"
 license=('BSD')
 depends=('python-six')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kumar303/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('26fd94a894cdaec1349fa05eae4e7766c63da7cad04a8a4b3eff3a3a0736f203')
+sha256sums=('1bc11c5d8e3a7faf03f551c1a4c682c7c83f0be5b2c28db7c88087e7c530db81')
 
 build() {
   cd $_pkgname-$pkgver
