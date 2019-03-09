@@ -1,25 +1,27 @@
-# Maintainer: Eisfreak7 <eisfreak7@gmail.com>
+# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Contributor: Eisfreak7 <eisfreak7@gmail.com>
 
 pkgname=xtitle
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='Outputs X window titles'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/baskerville/${pkgname}"
 license=('custom:Unlicense')
 depends=('libxcb' 'xcb-util-wm' 'xcb-util')
-provides=("${pkgname}")
-conflicts=("${pkgname}" "${pkgname}-git")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-md5sums=('884843193195e8b6293bafd510ecb69e')
+conflicts=("${pkgname}-git")
+source=("${url}/archive/${pkgver}.tar.gz")
+sha256sums=('c2fbf403892c4e466e43528415284a458d4354855f221273881aa4388d028970')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    make PREFIX=/usr
+  cd "${pkgname}-${pkgver}"
+
+  make PREFIX=/usr
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    make PREFIX=/usr DESTDIR="$pkgdir" install
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${pkgname}-${pkgver}"
+
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
