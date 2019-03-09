@@ -2,9 +2,9 @@
 
 pkgname=python-spacy-es_core_news_sm
 pkgver=2.1.0a7
-pkgrel=1
+pkgrel=2
 pkgdesc="Spanish multi-task CNN trained on the AnCora and WikiNER corpus for spaCy"
-url="https://spacy.io/models/en#section-en_core_web_sm"
+url="https://spacy.io/models/es#section-es_core_news_sm"
 makedepends=('python-setuptools')
 license=('GPL')
 arch=(any)
