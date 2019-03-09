@@ -21,7 +21,7 @@ makedepends=(
 )
 checkdepends=(
     "python>=3.5.2"
-    "yarn"
+    "ninja"
 )
 optdepends=(
     "yarn: for package support and allegro"
