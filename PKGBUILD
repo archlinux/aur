@@ -1,8 +1,8 @@
 # Maintainer: Egor Panasenko <gaura.panasenko@gmail.com>
 
 pkgname=ponyprog
-pkgver=V2_08d.r281.e0ea8ee
-pkgrel=6
+pkgver=3.0.2.r296.f936d4b
+pkgrel=7
 pkgdesc="PonyProg is a serial device programmer based on some simple and cheap interfaces for the PC"
 arch=('any')
 url="http://www.LancOS.com"
@@ -16,7 +16,7 @@ pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
 # Git, tags available
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/V2_08d/3.0.2/g')"
 }
 
 prepare() {
