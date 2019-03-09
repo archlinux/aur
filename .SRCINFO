@@ -1,7 +1,7 @@
 pkgbase = telegraf
 	pkgdesc = Plugin-driven server agent for reporting metrics into InfluxDB
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://influxdb.org/
 	install = telegraf.install
 	arch = i686

@@ -5,7 +5,7 @@
 
 pkgname='telegraf'
 pkgver='1.10.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Plugin-driven server agent for reporting metrics into InfluxDB'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://influxdb.org/'
@@ -27,31 +27,37 @@ sha256sums=('83eedb62c771ef3854f79fcd6fbb7ecb4ddabf7b1aa45bcc11e9c6a1f1553ac6'
 prepare() {
   export GOPATH="${srcdir}/gopath"
   export GOBIN="${GOPATH}/bin"
-  export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
-  export TELEGRAFPATH="${GOPATH}/src/github.com/influxdata/${pkgname}"
-  mkdir -p ${TELEGRAFPATH%/*}
-  ln -fsT ${srcdir}/${pkgname}-${pkgver} \
-    ${GOPATH}/src/github.com/influxdata/${pkgname}
-  cd ${TELEGRAFPATH}
+
+  mkdir -p "${GOPATH}/src/github.com/influxdata/"
+  ln -fsT "${srcdir}/${pkgname}-${pkgver}" \
+    "${GOPATH}/src/github.com/influxdata/${pkgname}"
+  cd "${GOPATH}/src/github.com/influxdata/${pkgname}"
   go get -v -u github.com/golang/dep/cmd/dep
-  ${GOBIN}/dep ensure -v -vendor-only
+  "${GOBIN}/dep" ensure -v -vendor-only
 }
 
 build() {
-  cd ${TELEGRAFPATH}
-  go install -ldflags="-X main.version=${pkgver}" ./...
+  export GOPATH="${srcdir}/gopath"
+  export GOBIN="${GOPATH}/bin"
+
+  cd "${GOPATH}/src/github.com/influxdata/${pkgname}"
+  _LDFLAGS="-X main.version=${pkgver} -X main.branch=master -extldflags ${LDFLAGS}"
+  go install -v -ldflags="$_LDFLAGS" -gcflags "all=-trimpath=${GOPATH}" -asmflags "all=-trimpath=${GOPATH}" "./..."
 }
 
 package() {
+  export GOPATH="${srcdir}/gopath"
+  export GOBIN="${GOPATH}/bin"
+
   # binary
   install -D -m755 "${GOBIN}/telegraf" "${pkgdir}/usr/bin/telegraf"
 
   # configuration files
   install -dD -m755 "${pkgdir}/etc/telegraf/telegraf.d"
-  ${GOBIN}/telegraf -sample-config > "${pkgdir}/etc/telegraf/telegraf.conf"
+  "${GOBIN}/telegraf" -sample-config > "${pkgdir}/etc/telegraf/telegraf.conf"
 
   # license
-  install -Dm644 "${TELEGRAFPATH}/LICENSE" \
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # service
