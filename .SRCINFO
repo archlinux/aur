@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-tcl
 	pkgdesc = The Tcl scripting language (mingw-w64)
-	pkgver = 8.6.8
+	pkgver = 8.6.9
 	pkgrel = 1
 	url = http://tcl.sourceforge.net
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mingw-w64-tcl
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://downloads.sourceforge.net/sourceforge/tcl/tcl8.6.8-src.tar.gz
+	source = http://downloads.sourceforge.net/sourceforge/tcl/tcl8.6.9-src.tar.gz
 	source = 001-fix-relocation.patch
 	source = 002-fix-forbidden-colon-in-paths.mingw.patch
 	source = 004-use-system-zlib.mingw.patch
@@ -21,17 +21,15 @@ pkgbase = mingw-w64-tcl
 	source = 007-install.mingw.patch
 	source = 008-tcl-8.5.14-hidden.patch
 	source = 009-fix-using-gnu-print.patch
-	source = 010-dont-link-shared-with--static-libgcc.patch
-	sha256sums = c43cb0c1518ce42b00e7c8f6eaddd5195c53a98f94adc717234a65cbcfd3f96a
+	sha256sums = ad0cd2de2c87b9ba8086b43957a0de3eb2eb565c7159d5f53ccbba3feb915f4e
 	sha256sums = cfcf9b3816f8bb063b514ac7f63a5ba73108f27e16fdf8e8312dc5f0683083f6
 	sha256sums = 70bf0d8e84985f4e8ee63447ad37d5e50376eaf35ace51112761cacbbd596c4c
-	sha256sums = 931485d71969096c1d03c8bed24fae3922d143fe50820d913e2567492ad6ac41
+	sha256sums = 01bf81675bb189314be5e024f58d20aafb3d2a35c1d2c4353045bbebd1e7a926
 	sha256sums = 2b0f41f6704aa964dbfafa0a65dd5ce0ab97e82ff5cbbe2a95a2e8d644cc5550
 	sha256sums = 5c0162fbb018c03b3e4b907bd0098ab5282314bc212e3929a0416126637e1350
 	sha256sums = f1833c3164229b017417d2ab2ce4cb066252fc1ad256de2313f0239481c7cc37
 	sha256sums = 3ec2702efb1be6873d6ffd2ffb357637588f835f8817ae65cf0373020fcc7359
-	sha256sums = 9c66ffe2de1d543f5291367d562ed5ee94e7e67345b281605788d7d9e02b8e7b
-	sha256sums = 2cd861f04321622722c87f7247a0586e547e4daf95a7dfe94ecd2cbfe45c37fd
+	sha256sums = e49a314ff0262e487f15fa1cb6253e22e25e8b18dad0b057d600e833efa947a7
 
 pkgname = mingw-w64-tcl
 
