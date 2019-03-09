@@ -24,13 +24,21 @@ prepare() {
 	cd "${srcdir}/${pkgname}"
 
 	install -m755 -d "${srcdir}/go/src/github.com/yudai/"
-	cp -a "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/yudai/gotty"
+	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/yudai/gotty"
+
+	cd "${srcdir}/go/src/github.com/yudai/gotty"
+
+	export GOPATH="${srcdir}/go"
+	go get -v -d ./...
 }
 
 build() {
 	cd "${srcdir}/go/src/github.com/yudai/gotty"
 
-	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" make
+	mkdir -p build
+
+	export GOPATH="${srcdir}/go"
+	make
 }
 
 package() {
@@ -39,5 +47,3 @@ package() {
 	install -Dm755 gotty "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
