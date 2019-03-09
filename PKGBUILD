@@ -34,7 +34,7 @@ package() {
   install -d "${pkgdir}/usr/share/pixmaps"
   cp "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/Dawayer.png"
 }
-pkgver=1552079761187
-source=('icon.png' 'Dawayer.desktop' 'https://gitlab.com/herpproject/Dawayer/-/jobs/174348120/artifacts/raw/public/Dawayer.tar.xz
+pkgver=1552099207370
+source=('icon.png' 'Dawayer.desktop' 'https://gitlab.com/herpproject/Dawayer/-/jobs/174508276/artifacts/raw/public/Dawayer.tar.xz
 ')
-md5sums=('d57d7316ee7ab96130fc6a8c07d1ae3f' 'e406095b0807377b9e779d910da220a6' '73d393c821bca1c6186f0949d5af691c')
+md5sums=('d57d7316ee7ab96130fc6a8c07d1ae3f' 'e406095b0807377b9e779d910da220a6' '11d60ba98b0c18085e31de0a5f365155')
