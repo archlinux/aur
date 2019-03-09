@@ -16,7 +16,7 @@ pkgbase = gemini
 	depends = qt5-graphicaleffects
 	depends = python
 	source = https://github.com/blooser/gemini/archive/v1.14.2.tar.gz
-	md5sums = d277e6ee6f90963859bdce4c9faf3bfa
+	md5sums = 05deac68c12690a5ae015dd366b99443
 
 pkgname = gemini
 

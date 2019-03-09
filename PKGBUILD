@@ -4,7 +4,7 @@ pkgver=1.14.2
 pkgrel=1
 pkgdesc="Graphical audio player"
 arch=('x86_64')
-md5sums=('d277e6ee6f90963859bdce4c9faf3bfa')
+md5sums=('05deac68c12690a5ae015dd366b99443')
 url="https://github.com/blooser/gemini"
 license=('MIT')
 depends=('mpv' 'youtube-dl' 'qt5-base' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'python')
@@ -46,4 +46,5 @@ package() {
 		echo "alias gemini=${binlocation}/Gemini" >> ~/.bashrc	
 	fi	
 }
+
 
