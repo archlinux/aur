@@ -7,6 +7,7 @@ pkgbase = fuse-3ds
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python-pycryptodomex
+	makedepends = unzip
 	noextract = fuse-3ds-1.3.1-src.zip
 	options = !strip
 	source = fuse-3ds-1.3.1-src.zip::https://github.com/ihaveamac/fuse-3ds/releases/download/v1.3.1/fuse-3ds-1.3.1-src.zip
