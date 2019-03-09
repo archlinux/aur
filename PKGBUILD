@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lf
-pkgver=10
+pkgver=11
 pkgrel=1
 license=('MIT')
 pkgdesc="A terminal file manager inspred by ranger written in Go"
@@ -11,7 +11,7 @@ makedepends=('dep' 'git' 'go')
 arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/gokcehan/lf"
 source=("$pkgname-r$pkgver.tar.gz::https://github.com/gokcehan/$pkgname/archive/r$pkgver.tar.gz")
-sha256sums=('57ebc53b6f463fa56550f32676bcefb5f242ed27a4a79a51ab76cc1af7528605')
+sha256sums=('9b325380b42584b15cf15758d0cc43f23cc697e81546520efe73e7bde8501906')
 _srcname=${pkgname}-r$pkgver
 
 build() {
