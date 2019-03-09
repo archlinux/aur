@@ -1,0 +1,23 @@
+pkgbase = px4_drv-dkms-git
+	pkgdesc = PLEX PX-W3U4/W3PE4/Q3PE4 unofficial Linux driver
+	pkgver = r71.69a4ff5
+	pkgrel = 1
+	url = https://github.com/nns779/px4_drv
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = unzip
+	depends = dkms
+	provides = px4_drv
+	provides = px4_drv-git
+	provides = px4_drv-dkms
+	conflicts = px4_drv
+	conflicts = px4_drv-git
+	conflicts = px4_drv-dkms
+	source = px4_drv::git+https://github.com/nns779/px4_drv.git#branch=develop
+	source = http://plex-net.co.jp/plex/pxw3u4/pxw3u4_BDA_ver1x64.zip
+	md5sums = SKIP
+	md5sums = d519cb8f1221123fc6d301482ba8d498
+
+pkgname = px4_drv-dkms-git
+
