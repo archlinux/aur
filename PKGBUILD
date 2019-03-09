@@ -2,7 +2,7 @@
 
 _npmname='@sentry/cli'
 pkgname=sentry-cli
-pkgver=1.37.1
+pkgver=1.40.0
 pkgrel=1
 pkgdesc="A command line utility to work with Sentry"
 arch=('i686' 'x86_64')
