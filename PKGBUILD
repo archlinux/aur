@@ -2,7 +2,7 @@
 
 _pkgname=boomaga
 pkgname=${_pkgname}-git
-pkgver=r230.15362b8
+pkgver=r446.5ac61e4
 pkgrel=1
 pkgdesc="A virtual printer for viewing a document before printing it out using the physical printer"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=('boomaga')
 conflicts=('boomaga' 'boomaga-qt5')
 options=(!emptydirs)
 install="${pkgname}.install"
-source=("${_pkgname}::git+https://github.com/Boomaga/boomaga.git#branch=develop")
+source=("${_pkgname}::git+https://github.com/Boomaga/boomaga.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
