@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=zeit-now-bin
-pkgver=13.1.2
+pkgver=14.0.3
 pkgrel=1
 epoch=
 pkgdesc="Realtime Global Deployments by Zeit, pre-built binary"
@@ -27,7 +27,7 @@ install=
 changelog=
 source=("https://github.com/zeit/now-cli/releases/download/${pkgver}/now-linux.gz")
 noextract=()
-md5sums=('ef2a7a9b7d980cf86332714a47979053')
+md5sums=('f64692f156227081bb9a9ae4c0af18bc')
 validpgpkeys=()
 
 build() {
