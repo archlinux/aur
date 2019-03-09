@@ -1,0 +1,38 @@
+From 8760fadf1a29bb078952b6c334dcb74bb5d066a1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?M=C3=A1ty=C3=A1s=20Mustoha?= <matyas.mustoha@gmail.com>
+Date: Mon, 27 Feb 2017 21:11:13 +0100
+Subject: [PATCH] Fixed AppImage data path
+
+---
+ src/CMakeLists.txt        | 2 --
+ src/system/CMakeLists.txt | 1 +
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index f07833e..5823868 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -5,8 +5,6 @@ include_directories(openblok PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/generated")
+ 
+ add_executable(openblok main.cpp version.h)
+ 
+-target_compile_definitions(openblok PRIVATE OPENBLOK_DATADIR="${DATADIR}")
+-
+ add_subdirectory(system)
+ add_subdirectory(game)
+ target_link_libraries(openblok module_game)
+diff --git a/src/system/CMakeLists.txt b/src/system/CMakeLists.txt
+index 32274d7..9cc655e 100644
+--- a/src/system/CMakeLists.txt
++++ b/src/system/CMakeLists.txt
+@@ -50,6 +50,7 @@ add_library(module_system ${MOD_SYSTEM_SRC} ${MOD_SYSTEM_H})
+ 
+ # use SDL2
+ target_include_directories(module_system PRIVATE ${SDL2PP_INCLUDE_DIRS})
++target_compile_definitions(module_system PRIVATE OPENBLOK_DATADIR="${DATADIR}")
+ target_link_libraries(module_system ${SDL2PP_LIBRARIES})
+ 
+ option(ENABLE_JPG "Enable JPG image support" ON)
+-- 
+2.21.0
+
