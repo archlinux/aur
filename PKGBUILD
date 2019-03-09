@@ -1,6 +1,6 @@
 # Maintainer: Shen ZhongLi <szl921818@gmail.com>
 #mindmaster 中文版
-pkgname=mindmaster
+pkgname=mindmaster-cn
 pkgver=6
 pkgrel=1
 arch=('x86_64')
@@ -18,17 +18,17 @@ build() {
 #   rm -f mindmaster-6-amd64.tar.gz
 pwd
 cd ..
-  cp mindmaster.desktop ${srcdir}
+  cp mindmaster-cn.desktop ${srcdir}
 }
 
 package() {	
-	cd "$pkgname-$pkgver-amd64-cn"
+	cd "mindmaster-$pkgver-amd64-cn"
 	chmod 777 MindMaster-6-x86_64
 	mkdir -p "$pkgdir/opt/$pkgname"
 	mv * "$pkgdir/opt/$pkgname"
 	cd "$pkgdir/opt/$pkgname"	
  	install -Dm755 mindmaster.png "${pkgdir}/usr/share/icons/mindmaster.png"
- 	install -Dm755 "${srcdir}/mindmaster.desktop" "${pkgdir}/usr/share/applications/mindmaster.desktop"
+ 	install -Dm755 "${srcdir}/mindmaster-cn.desktop" "${pkgdir}/usr/share/applications/mindmaster-cn.desktop"
 	install -Dm755 mindmaster.xml "${pkgdir}/usr/share/mime/packages/mindmaster.xml"
 	install -Dm755 emmx.svg "${pkgdir}/usr/share/icons/hicolor/512x512/mimetypes/emmx.svg"
 	mkdir "${pkgdir}/usr/bin/"
