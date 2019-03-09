@@ -25,7 +25,7 @@ sha256sums=('f5203d2bbd32c4e347a8f79122e57b2deea68e6c5bd4f0be4087c4d62a31c8a4')
 
 prepare() {
   cd "CAMotics-$pkgver"
-  sed -i '24 a env.Append( LINKFLAGS = os.environ.get("LDFLAGS"))' SConstruct
+  sed -i '24 i env.Append(LINKFLAGS = os.environ.get("LDFLAGS"))' SConstruct
 }
 
 build() {
@@ -45,8 +45,7 @@ package() {
 
   # install examples and machines
   install -d "$pkgdir/usr/share/doc/$pkgname"/{examples,machines}
-  cp -a examples/ "$pkgdir/usr/share/doc/$pkgname"
-  cp -a machines/ "$pkgdir/usr/share/doc/$pkgname"
+  cp -a {examples/,machines/} "$pkgdir/usr/share/doc/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
