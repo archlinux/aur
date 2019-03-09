@@ -2,7 +2,7 @@
 pkgbase=qt5-service
 pkgname=(qt5-service qt5-service-doc)
 group=qt5-service-full
-pkgver=1.1.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A platform independent library to easily create system services and use some of their features"
 arch=('i686' 'x86_64')
