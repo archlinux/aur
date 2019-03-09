@@ -10,12 +10,12 @@ pkgdesc="The standard for customising cloud instances"
 arch=('any')
 url="https://cloud-init.io"
 license=('GPL3')
-depends=('systemd' 'sudo' 'python2-yaml' 'python2-cheetah' 'python2-prettytable'
-         'python2-oauth' 'python2-boto' 'python2-configobj'
-         'python2-jsonschema' 'python2-jsonpatch' 'python2-jsonpointer' 'net-tools'
-         'python2-requests' 'python2-argparse' 'python2-oauthlib'
-         'python2-jinja' 'dhclient')
-makedepends=('python2' 'python2-setuptools' 'pkgconf')
+depends=('systemd' 'sudo' 'python-yaml' 'python-cheetah3' 'python-prettytable'
+         'python-boto' 'python-configobj'
+         'python-jsonschema' 'python-jsonpatch' 'python-jsonpointer' 'net-tools'
+         'python-requests' 'python-argparse' 'python-oauthlib'
+         'python-jinja' 'dhclient')
+makedepends=('python' 'python-setuptools' 'pkgconf')
 backup=('etc/cloud/cloud.cfg' 'etc/cloud/cloud.cfg.d/05_logging.cfg')
 source=("https://launchpad.net/$pkgname/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz"
         fix-lib.patch
@@ -29,15 +29,13 @@ prepare(){
 
   patch -Np1 -i ../fix-lib.patch
 
-  find . -name \*.py -exec sed -i '1s/python$/&2/' {} +
-  sed -i '1s/python$/&2/' tools/read*
   sed -e 's:/etc/systemd:/usr/lib/systemd:g' -e 's:\"/lib\":\"/usr/lib\":g' -i setup.py
 }
 
 package() {
   cd $pkgname-$pkgver
 
-  python2 ./setup.py install --root="$pkgdir" --init-system systemd
+  python ./setup.py install --root="$pkgdir" --init-system systemd
 
   install -m644 ../archlinux.cloud.cfg "$pkgdir"/etc/cloud/cloud.cfg
 }
