@@ -7,6 +7,7 @@ pkgbase = glpaper
 	license = GPL3
 	makedepends = egl-wayland
 	makedepends = mercurial
+	depends = egl-wayland
 	depends = wayland
 	source = glpaper::hg+https://bitbucket.org/Scoopta/glpaper
 	sha256sums = SKIP
