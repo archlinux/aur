@@ -1,0 +1,17 @@
+pkgbase = ceph-deploy-git
+	pkgdesc = Automation tool for ceph file cluster
+	pkgver = r2063.e5831d6
+	pkgrel = 1
+	url = https://github.com/ceph/ceph-deploy.git
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-setuptools
+	depends = python-execnet
+	provides = ceph-deploy
+	conflicts = ceph-deploy
+	source = git+https://github.com/ceph/ceph-deploy.git
+	md5sums = SKIP
+
+pkgname = ceph-deploy-git
+
