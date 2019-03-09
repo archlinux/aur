@@ -1,0 +1,28 @@
+pkgbase = openttd-btpro
+	pkgdesc = An engine for running Transport Tycoon Deluxe. BTPro patches applied.
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = http://openttd.btpro.nl/index.php/forum/30-btpro-openttd-client-talk/1186-btpro-openttd-client-1-8-0
+	arch = x86_64
+	license = GPL
+	depends = libpng
+	depends = sdl
+	depends = icu
+	depends = fontconfig
+	depends = lzo
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = xz
+	optdepends = openttd-opengfx: free graphics
+	optdepends = openttd-openmsx: free musicset
+	optdepends = openttd-opensfx: free soundset
+	conflicts = openttd
+	source = https://binaries.openttd.org/releases/1.8.0/openttd-1.8.0-source.tar.xz
+	source = http://openttd.btpro.nl/OpenTTD_versions/BTPro_Client_1.8.0_B_18002_git.diff
+	source = http://openttd.btpro.nl/OpenTTD_versions/innerhighlight.grf
+	sha256sums = c2d32d9d736d27202a020027a3729ae763f5432ae6f424891e57a4095eeb087f
+	sha256sums = 60b900349eadc3fa3c78e3ec1eeab82a454a90333b03e63b27aec143f6b5fe8a
+	sha256sums = 1b181a27fbb468c7301291fc61384087ce7b1592cb0023be00f04736eec6e79b
+
+pkgname = openttd-btpro
+
