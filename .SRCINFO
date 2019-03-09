@@ -1,20 +1,20 @@
 pkgbase = sendanywhere
 	pkgdesc = Send Anywhere is a multi-platform file sharing service where users can directly share digital content in real time.
-	pkgver = 8.5.28
-	pkgrel = 3
+	pkgver = 9.3.5
+	pkgrel = 1
 	url = http://send-anywhere.com
 	arch = x86_64
-	license = custom:sendanywhere_eula
-	depends = nss
-	depends = libxtst
-	depends = libxss
+	license = custom
 	depends = gconf
-	depends = gtk2
+	depends = libxtst
+	depends = nss
+	depends = libxss
 	depends = alsa-lib
-	options = !strip
-	options = !emptydirs
-	source = sendanywhere-8.5.28.deb::https://update.send-anywhere.com/linux_downloads/sendanywhere_latest_amd64.deb
-	sha512sums = f1e7af787bf936f2ec6e385de4ba2ce160a2199ea5d66f5a9fb8cc955a37084bbb9e744ff2cbe60739e87587275b5e5a3bdd3685c6e75e848cf245f89646eb1a
+	depends = gtk2
+	source = sendanywhere-9.3.5.deb::https://update.send-anywhere.com/linux_downloads/sendanywhere_latest_amd64.deb
+	source = LICENSE
+	sha512sums = ae3799a2822284dedeff3e48bbab8cae9407abe98eb96e91e701261b266e000428be25daf322d0ebde55f0393986bc83e89efed3d36c67f3d0163641c1f9af9f
+	sha512sums = aeb97a12f246d78cbf202354148b429a037997d68087bceed5d5ce5036443d779c2535138b54347579ddf05994a61b9333913f9261733f367d02e0e9cf7d0b5e
 
 pkgname = sendanywhere
 
