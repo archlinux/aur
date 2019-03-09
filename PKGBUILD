@@ -1,7 +1,7 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=keepass-transfer
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of tools to securely transfer passwords to your browser"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/KeepassTransfer"
@@ -16,7 +16,7 @@ source=("$_pkgfqn::git+https://github.com/Skycoder42/KeepassTransfer.git#tag=$pk
 		"$pkgname.rule")
 sha256sums=('SKIP'
             '3859a5e32b3dc273d11901126a8e7a428c081bc84fe9ea3c167a898c87f87cb0'
-            '1b8b79d7dea81de3866da764c67e12b80ffe66064acdcbcf53b9f2fac55c2e21')
+            '96c8f9d011469d30acef0b5009283747c0b339a013baf02d58d578b00585e153')
 
 prepare() {
   cd "$_pkgfqn"
