@@ -2,8 +2,8 @@
 
 pkgname=nordic-theme-git
 _pkgname=Nordic
-pkgver=r21.c298c31
-pkgrel=2
+pkgver=r22.8def2aa
+pkgrel=1
 pkgdesc="Dark Gtk3.20+ theme created using the awesome Nord color pallete."
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
