@@ -2,8 +2,8 @@
 
 pkgname=python-spacy-xx_ent_wiki_sm
 pkgver=2.1.0a7
-pkgrel=1
-pkgdesc="English multi-task CNN trained on OntoNotes, with GloVe vectors trained on Common Crawl for spaCy"
+pkgrel=2
+pkgdesc="Multi-lingual CNN trained on Nothman et al. (2013) Wikipedia corpus for spaCy"
 url="https://spacy.io/models/xx#section-xx_ent_wiki_sm"
 makedepends=('python-setuptools')
 license=('CCPL')
