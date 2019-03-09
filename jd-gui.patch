@@ -1,56 +1,7 @@
-diff --git a/build.gradle b/build.gradle
-index ef05a24..45446f2 100644
---- a/build.gradle
-+++ b/build.gradle
-@@ -5,7 +5,7 @@ buildscript {
- 
-     dependencies {
-         classpath 'com.netflix.nebula:gradle-ospackage-plugin:2.2.6'
--        classpath 'org.spockframework:spock-core:1.0-groovy-2.3'
-+        classpath 'org.spockframework:spock-core:1.0-groovy-2.4'
-     }
- }
- 
-@@ -58,7 +58,7 @@ jar {
- 
-     def deps = []
-     subprojects.each { subproject ->
--        from subproject.sourceSets.main.output.classesDir
-+        from subproject.sourceSets.main.output.classesDirs
-         from subproject.sourceSets.main.output.resourcesDir
-         deps += subproject.configurations.runtime - subproject.configurations.provided
-     }
-@@ -76,9 +76,9 @@ jar {
-     from deps
-     exclude 'META-INF/services/org.jd.gui.spi.*'
-     duplicatesStrategy DuplicatesStrategy.EXCLUDE
-+    // Create temporary directory
-+    def tmpSpiDir = file('build/tmp/spi')
-     doFirst {
--        // Create temporary directory
--        def tmpSpiDir = file('build/tmp/spi')
-         tmpSpiDir.deleteDir()
-         tmpSpiDir.mkdirs()
-         // Copy and merge SPI config files
-@@ -91,10 +91,10 @@ jar {
-                 }
-             }
-         }
--        // Add to JAR file
--        into('META-INF/services') {
--            from tmpSpiDir
--        }
-+    }
-+    // Add to JAR file
-+    into('META-INF/services') {
-+        from tmpSpiDir
-     }
- }
- 
-diff --git a/src/linux/resources/jd-gui.desktop b/src/linux/resources/jd-gui.desktop
+diff --git i/src/linux/resources/jd-gui.desktop w/src/linux/resources/jd-gui.desktop
 index b86bbc1..48afd4c 100644
---- a/src/linux/resources/jd-gui.desktop
-+++ b/src/linux/resources/jd-gui.desktop
+--- i/src/linux/resources/jd-gui.desktop
++++ w/src/linux/resources/jd-gui.desktop
 @@ -2,6 +2,6 @@
  Comment=Java Decompiler JD-GUI
  Terminal=false
@@ -59,6 +10,3 @@ index b86bbc1..48afd4c 100644
 +Exec=java -jar /usr/share/jd-gui/jd-gui.jar
  Type=Application
  Icon=jd-gui
-diff --git a/src/osx/dist/JD-GUI.app/Contents/MacOS/universalJavaApplicationStub.sh b/src/osx/dist/JD-GUI.app/Contents/MacOS/universalJavaApplicationStub.sh
-old mode 100644
-new mode 100755
