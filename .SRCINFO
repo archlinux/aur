@@ -1,6 +1,6 @@
 pkgbase = kolide-git
 	pkgdesc = osquery command and control
-	pkgver = 2.0.2.r2.g4135ad7d
+	pkgver = 2.0.2.r4.g2b2866a4
 	pkgrel = 1
 	url = https://www.kolide.co/
 	install = kolide.install
@@ -14,7 +14,7 @@ pkgbase = kolide-git
 	depends = osquery-git
 	depends = mysql
 	depends = redis
-	source = kolide::git+https://github.com/kolide/fleet.git
+	source = kolide-git::git+https://github.com/kolide/fleet.git
 	source = kolide.sysusers
 	source = kolide.conf.d
 	source = kolide.service

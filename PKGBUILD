@@ -1,7 +1,6 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 pkgname=kolide-git
-_pkgname=kolide
-pkgver=2.0.2.r2.g4135ad7d
+pkgver=2.0.2.r4.g2b2866a4
 pkgrel=1
 pkgdesc="osquery command and control"
 url="https://www.kolide.co/"
@@ -10,7 +9,7 @@ license=('MIT')
 depends=('osquery-git' 'mysql' 'redis')
 makedepends=('go' 'go-bindata' 'nodejs-webpack' 'yarn')
 install="kolide.install"
-source=("${_pkgname}::git+https://github.com/kolide/fleet.git"
+source=("${pkgname}::git+https://github.com/kolide/fleet.git"
         "kolide.sysusers" "kolide.conf.d" "kolide.service")
 sha256sums=('SKIP'
             '3a76a40ee8b7e3b35f9bed7427874627d90574266994c740e8472b9010a5d410'
@@ -18,25 +17,29 @@ sha256sums=('SKIP'
             '3e336962a204f979110a4273a4277ca5117441029a32cf2a5dd042d6c734a522')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${pkgname}"
 
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${pkgname}"
 
 	install -m755 -d "${srcdir}/go/src/github.com/kolide"
-
-	cp -a "${srcdir}/${_pkgname}" "${srcdir}/go/src/github.com/kolide/fleet"
+	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/kolide/fleet"
 }
 
 build() {
 	cd "${srcdir}/go/src/github.com/kolide/fleet"
 
-	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" PATH="$PATH:$GOPATH/bin" make deps
-	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" PATH="$PATH:$GOPATH/bin" make generate
-	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" PATH="$PATH:$GOPATH/bin" make
+	mkdir -p build
+
+	export GOPATH="${srcdir}/go"
+	export PATH="${GOPATH}/bin:${PATH}"
+
+	make deps
+	make generate
+	make
 
 	./build/fleet version --full
 }
@@ -44,14 +47,11 @@ build() {
 package() {
 	cd "${srcdir}/go/src/github.com/kolide/fleet"
 
-	install -Dm644 "${srcdir}/kolide.sysusers" \
-		"${pkgdir}/usr/lib/sysusers.d/kolide.conf"
-
-	install -Dm644 "${srcdir}/kolide.service" \
-		"${pkgdir}/usr/lib/systemd/system/kolide.service"
-
-	install -Dm644 "${srcdir}/kolide.conf.d" "${pkgdir}/etc/conf.d/kolide"
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/kolide/LICENSE"
-
 	install -Dm755 "build/fleet" "${pkgdir}/usr/bin/fleet"
+
+	install -Dm644 "${srcdir}/kolide.sysusers" "${pkgdir}/usr/lib/sysusers.d/kolide.conf"
+	install -Dm644 "${srcdir}/kolide.service" "${pkgdir}/usr/lib/systemd/system/kolide.service"
+	install -Dm644 "${srcdir}/kolide.conf.d" "${pkgdir}/etc/conf.d/kolide"
+
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/kolide/LICENSE"
 }
