@@ -1,8 +1,8 @@
 # Maintainer: Sherlock Holo <sherlockya@gmail.com>
 _pkgname=camouflage
 pkgname=$_pkgname-git
-pkgver=0.11.0.r0.g7412b07
-pkgrel=4
+pkgver=0.11.1.r0.g70abff3
+pkgrel=1
 pkgdesc="a mux websocket over TLS proxy, experimental version"
 arch=('x86_64')
 license=('MPL')
