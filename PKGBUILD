@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=74.0.3717.0
+pkgver=74.0.3724.8
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -77,11 +77,11 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'git+https://github.com/foutrelis/chromium-launcher.git'
         'chromium-dev.svg'
         # Patch form Gentoo.
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-widevine-r4.patch'
          # Misc Patches.
-        'enable-vaapi.patch' #::https://src.fedoraproject.org/cgit/rpms/chromium.git/tree/enable-vaapi.patch'
+        'enable-vaapi.patch::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/master/debian/patches/enable_vaapi_on_linux_2.diff' # Use Saikrishna Arcot patch again
         'chromium-ffmpeg-clang.patch'
         # Patch from crbug (chromium bugtracker) or Arch chromium package.
+        'chromium-widevine-r4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium'
         'chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -89,11 +89,12 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'SKIP'
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
             # Patch form Gentoo
-            '8c6ecc26aab9f4acc911350d9bb1e40f32cad144b6a08c9d7b188e9598d0f2de'
+
             # Misc Patches
-            'd218e4df5c5da97672bcc7ff5bc6ab00d06aa8748aab8bc360265ca8032fe675'
+            'SKIP'
             '16741344288d200fadf74546855e00aa204122e744b4811a36155efd5537bd95'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
+            '8c6ecc26aab9f4acc911350d9bb1e40f32cad144b6a08c9d7b188e9598d0f2de'
             '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
             )
 install=chromium-dev.install
@@ -289,7 +290,6 @@ _keeplibs=(
 
 _keeplibs+=(
             'third_party/icu' # https://crbug.com/678661.
-            'third_party/libjpeg' # https://crbug.com/908298.
             )
 
 # Set build flags.
@@ -317,7 +317,8 @@ _flags=(
         'enable_nacl=true'
         'enable_nacl_nonsfi=true'
         'use_custom_libcxx=false'
-        'use_jumbo_build=false' # https://chromium.googlesource.com/chromium/src/+/lkcr/docs/jumbo.md NOTE: gets OOM in my dual xeon (64Gb ram) machine :/
+        'use_jumbo_build=false' # https://chromium.googlesource.com/chromium/src/+/lkcr/docs/jumbo.md
+#         'jumbo_file_merge_limit=30' # NOTE: test. more than 40 gets OOM in my dual xeon (64Gb ram) machine :/
         'use_vaapi=true'
         'enable_hevc_demuxing=true'
         'enable_ac3_eac3_audio_demuxing=true'
@@ -348,7 +349,7 @@ _use_system=(
 #              'icu'          # https://crbug.com/678661.
              'libdrm'
 #              'libevent'     # Get segfaults and other problems https://bugs.gentoo.org/593458.
-#              'libjpeg'      # https://crbug.com/908298.
+             'libjpeg'
              'libpng'
 #              'libvpx'       # Needs update.
 #              'libwebp'      # Needs update.
@@ -453,6 +454,7 @@ prepare() {
 
   # Enable VAAPI.
   patch -p1 -i "${srcdir}/enable-vaapi.patch"
+  sed 's|/dri/|/|g' -i media/gpu/vaapi/vaapi_wrapper.cc
 
   # Patch from crbug (chromium bugtracker) or Arch chromium package.
 
@@ -557,9 +559,9 @@ package() {
          'libGLESv2.so'
          'libVkICD_mock_icd.so'
          'libVkLayer_core_validation.so'
-         'libVkLayer_object_tracker.so'
-         'libVkLayer_parameter_validation.so'
-         'libVkLayer_threading.so'
+         'libVkLayer_object_lifetimes.so'
+         'libVkLayer_stateless_validation.so'
+         'libVkLayer_thread_safety.so'
          'libVkLayer_unique_objects.so'
          'swiftshader/libEGL.so'
          'swiftshader/libGLESv2.so'

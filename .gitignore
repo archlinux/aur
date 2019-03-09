@@ -5,4 +5,3 @@
 !chromium-dev.install
 !chromium-dev.svg
 !chromium-ffmpeg-clang.patch
-!enable-vaapi.patch
