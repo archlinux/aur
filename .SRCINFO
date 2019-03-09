@@ -1,6 +1,6 @@
 pkgbase = boomaga-git
 	pkgdesc = A virtual printer for viewing a document before printing it out using the physical printer
-	pkgver = r230.15362b8
+	pkgver = r446.5ac61e4
 	pkgrel = 1
 	url = http://www.boomaga.org
 	install = boomaga-git.install
@@ -20,7 +20,7 @@ pkgbase = boomaga-git
 	conflicts = boomaga
 	conflicts = boomaga-qt5
 	options = !emptydirs
-	source = boomaga::git+https://github.com/Boomaga/boomaga.git#branch=develop
+	source = boomaga::git+https://github.com/Boomaga/boomaga.git#branch=master
 	md5sums = SKIP
 
 pkgname = boomaga-git
