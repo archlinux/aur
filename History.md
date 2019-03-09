@@ -1,4 +1,30 @@
 
+uuu_1.2.91 / 2019-02-25
+=======================
+
+  * fix uuu -b qspi flash_qxp_spl.flexspi failure problem
+
+uuu_1.2.89 / 2019-02-22
+=======================
+
+  * correct emmc_ack env check method
+  * check uboot environment emmc_ack
+  * update build tag link
+  * Added travis build tag
+  * Update .travis.yml
+  * Update .travis.yml
+  * Update .travis.yml
+  * Update .travis.yml
+  * Update .travis.yml
+  * Update .travis.yml
+  * Update .travis.yml
+  * Update .travis.yml
+  * Update by use tab .travis.yml
+  * update .travis.yml
+  * Update .travis.yml
+  * Create .travis.yml
+  * set the CMAKE_CXX_STANDARD to c++11 explicitly to fix the compile error on Mac OSX.
+
 uuu_1.2.68 / 2019-01-31
 =======================
 
