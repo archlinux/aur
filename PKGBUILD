@@ -2,7 +2,7 @@
 #Contributor: Martin Friedrich <npanic@acid.wtf>
 pkgname=kunst-git
 _pkgname=kunst
-pkgver=20190215
+pkgver=20190306
 pkgrel=1
 pkgdesc="kunst is a deamon that extracts the album art from the songs playing in mpd."
 arch=('any')

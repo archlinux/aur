@@ -1,6 +1,6 @@
 pkgbase = kunst-git
 	pkgdesc = kunst is a deamon that extracts the album art from the songs playing in mpd.
-	pkgver = 20190215
+	pkgver = 20190306
 	pkgrel = 1
 	url = https://github.com/sdushantha/kunst
 	arch = any
