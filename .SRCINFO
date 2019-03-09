@@ -1,6 +1,6 @@
 pkgbase = linux-surface-petercxy
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -12,7 +12,7 @@ pkgbase = linux-surface-petercxy
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.0.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.0.tar.sign
-	source = https://github.com/PeterCxy/linux-surface-patches/archive/04c53b0e01cbf6d73658a6bca58bea0291fe79e4.zip
+	source = https://github.com/PeterCxy/linux-surface-patches/archive/ba44e8265bfc72a24e9b1cbc3608e0cc09a9e953.zip
 	source = config
 	source = config-surface
 	source = 60-linux.hook
