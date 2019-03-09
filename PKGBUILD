@@ -3,13 +3,13 @@
 _pkgname=boomaga
 pkgname=${_pkgname}-git
 pkgver=r446.5ac61e4
-pkgrel=2
+pkgrel=3
 pkgdesc="A virtual printer for viewing a document before printing it out using the physical printer"
 arch=('i686' 'x86_64')
 url="http://www.boomaga.org"
 license=('LGPL')
-depends=('desktop-file-utils' 'hicolor-icon-theme' 'shared-mime-info' 'qt5-base' 'poppler>=0.26.5' 'libcups')
-makedepends=('git' 'cmake' 'gcc')
+depends=('qt5-base' 'poppler' 'cups')
+makedepends=('qt5-tools' 'git' 'cmake')
 provides=('boomaga')
 conflicts=('boomaga' 'boomaga-qt5')
 options=(!emptydirs)
