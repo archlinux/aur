@@ -12,7 +12,7 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.1.0_devel.108564.603206d0a61
+pkgver=19.1.0_devel.108956.d7b31969767
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -98,9 +98,6 @@ package_lib32-mesa-git () {
   rm -rf "$pkgdir"/usr/share/glvnd/
   rm -rf "$pkgdir"/usr/share/drirc.d/
 
-  # remove files present in lib32-libglvnd
-  rm "$pkgdir"/usr/lib32/libGLESv{1_CM,2}.so*
-    
   # indirect rendering
   ln -s /usr/lib32/libGLX_mesa.so.0 "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
   install -Dt  "$pkgdir"/usr/share/licenses/$pkgbase/ -m644 "$srcdir"/LICENSE 
