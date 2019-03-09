@@ -1,7 +1,7 @@
 pkgbase = keepass-transfer
 	pkgdesc = A collection of tools to securely transfer passwords to your browser
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Skycoder42/KeepassTransfer
 	arch = i686
 	arch = x86_64
@@ -13,14 +13,16 @@ pkgbase = keepass-transfer
 	depends = qt5-base
 	depends = qt5-svg
 	depends = qt5-mvvmwidgets
-	depends = qt5-service
+	depends = qt5-service>=2.0.0
 	depends = keepassxc-client-library
 	depends = keepassxc
 	optdepends = repkg: Automatically rebuild the package on dependency updates
 	optdepends = keepassxc: Import credentials from KeePassXC for easy password transfers
 	source = keepass-transfer-3.0.0::git+https://github.com/Skycoder42/KeepassTransfer.git#tag=3.0.0
+	source = qtservice.patch
 	source = keepass-transfer.rule
 	sha256sums = SKIP
+	sha256sums = 3859a5e32b3dc273d11901126a8e7a428c081bc84fe9ea3c167a898c87f87cb0
 	sha256sums = 1b8b79d7dea81de3866da764c67e12b80ffe66064acdcbcf53b9f2fac55c2e21
 
 pkgname = keepass-transfer
