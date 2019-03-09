@@ -1,6 +1,6 @@
 pkgbase = xash3d-git
 	pkgdesc = A custom Gold Source engine rewritten from scratch
-	pkgver = r354.faee030
+	pkgver = r358.94cbb4e
 	pkgrel = 1
 	url = http://xash.su/
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = xash3d-git
 	depends = lib32-freetype2
 	depends = lib32-fontconfig
 	depends = lib32-sdl2
-	depends = lib32-vgui
 	depends = xash3d-hlsdk
 	backup = etc/conf.d/xash3d
 	source = xash3d-git::git+https://github.com/FWGS/xash3d-fwgs
