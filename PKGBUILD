@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/higgsbosoncodes/ArchStartscreen-Animated/archive/master.tar.gz")
 noextract=()
-md5sums=('86fd75c609b2eb84ae58d9ddc87868da')
+md5sums=('SKIP')
 validpgpkeys=()
 
 build() {
