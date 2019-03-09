@@ -2,13 +2,13 @@
 pkgbase=qt5-datasync
 pkgname=(qt5-datasync qt5-datasync-kwallet-keystore qt5-datasync-secret-keystore qt5-datasync-doc)
 group=qt5-datasync-full
-pkgver=4.2.2
-pkgrel=2
+pkgver=4.2.3
+pkgrel=1
 pkgdesc="A simple offline-first synchronisation framework, to synchronize data of Qt applications between devices"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtDataSync"
 license=('BSD')
-depends=('qt5-base' 'qt5-jsonserializer' 'qt5-websockets' 'qt5-scxml' 'qt5-remoteobjects>=5.12.0' 'qt5-service>=1.1.0' 'crypto++')
+depends=('qt5-base' 'qt5-jsonserializer' 'qt5-websockets' 'qt5-scxml' 'qt5-remoteobjects>=5.12.0' 'qt5-service>=2.0.0' 'crypto++')
 makedepends=('qt5-tools' 'git' 'qdep' 'qt5-declarative' 'pkg-config' 'python' 'doxygen' 'graphviz' 'libsecret' 'kwallet')
 optdepends=("repkg: Automatically rebuild the package on dependency updates"
 			"qt5-datasync-kwallet-keystore: Support for KWallet as keystore"
