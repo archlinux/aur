@@ -1,14 +1,14 @@
 pkgbase = unity-editor-ios
 	pkgdesc = Allows building your Unity projects for the iOS platform
-	pkgver = 2018.3.7f1
+	pkgver = 2018.3.8f1
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
 	license = custom
 	depends = unity-editor
 	options = !strip
-	source = 2018.3.7f1.3.7f1.tar.xz::https://download.unity3d.com/download_unity/9e14d22a41bb/LinuxEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-2018.3.7f1.tar.xz
-	md5sums = 3998676b651645dfff1425854124df2f
+	source = 2018.3.8f1.3.8f1.tar.xz::https://download.unity3d.com/download_unity/fc0fe30d6d91/LinuxEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-2018.3.8f1.tar.xz
+	md5sums = cdd08c300482919efe3c0b66956ceced
 
 pkgname = unity-editor-ios
 
