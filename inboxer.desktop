@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=Inboxer
-Comment=Unofficial Google Inbox
+Comment=Unofficial Gmail desktop app
 Exec=inboxer
 Icon=inboxer
 Categories=Network;Email;
