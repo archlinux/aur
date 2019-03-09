@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-awkward
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 pkgdesc="Manipulate jagged, chunky, and/or bitmasked arrays as easily as Numpy"
 url="https://github.com/scikit-hep/awkward-array"
@@ -11,7 +11,7 @@ depends=('python-numpy')
 makedepends=('python-setuptools' 'python-pytest-runner')
 checkdepends=('python-h5py')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/scikit-hep/awkward-array/archive/$pkgver.tar.gz")
-sha512sums=('66edbf10ad3d1249739e7df19fa42eb29476022b36f4c5ca57450d97d72b01ad2ef4f1f8a1f53ccb1a57b4e8bb1531a29c8b520e7feaea3b8a14b6542513638d')
+sha512sums=('fa9a388c6373526d18983abb011a27a97aab43533b1363164de6e8738da505b10ccf17f86176764be41e122cd39179af75334a55b02624f818b2d826d3fd2e8f')
 
 build() {
   cd awkward-array-$pkgver
