@@ -11,7 +11,7 @@ pkgname=firefox-extension-$_plugin_name
 pkgver=$_plugin_version
 pkgrel=1
 arch=('any')
-url="https://addons.mozilla.org/firefox/addon/$_plugin_id"
+url="https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/"
 depends=("firefox>=57")
 source=("https://addons.mozilla.org/firefox/downloads/file/${_plugin_id}/foxyproxy_standard-${pkgver}${_plugin_ext}.xpi")
 noextract=('foxyproxy_standard-${pkgver}${_plugin_ext}.xpi')
