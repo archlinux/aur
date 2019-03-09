@@ -1,7 +1,7 @@
 # Maintainer: Ivan Fonseca <ivanfon@riseup.net>
 
 pkgname=godot-beta-bin
-pkgver=3.1_beta11
+pkgver=3.1_rc1
 pkgrel=1
 pkgdesc="The latest official beta release of the Godot game engine"
 url="https://godotengine.org"
@@ -9,11 +9,11 @@ license=("MIT")
 arch=("i686" "x86_64")
 provides=("godot-beta-bin")
 source=("godot-beta.desktop")
-source_i686+=("https://downloads.tuxfamily.org/godotengine/3.1/beta11/Godot_v3.1-beta11_x11.32.zip")
-source_x86_64+=("https://downloads.tuxfamily.org/godotengine/3.1/beta11/Godot_v3.1-beta11_x11.64.zip")
+source_i686+=("https://downloads.tuxfamily.org/godotengine/3.1/rc1/Godot_v3.1-rc1_x11.32.zip")
+source_x86_64+=("https://downloads.tuxfamily.org/godotengine/3.1/rc1/Godot_v3.1-rc1_x11.64.zip")
 sha256sums=('53912a2e312559455045e8e83f6e239a2cbc6f891ebb393f441c772063bb9497')
-sha256sums_i686=('13c6be4f2d2f541375eacc8369e70e020f89d06e5c90ff127f4356e22ff43983')
-sha256sums_x86_64=('6f4fd5fde7c1529fc62ea6a9b6325adf00ce6f3dbb5ec406cc97a53b4783968d')
+sha256sums_i686=('c864d20d5dbca4d3654b69b3982ccd0a9eb6e748c909bcbecb3f27e3f52d4c22')
+sha256sums_x86_64=('86c6f22ca4aa36591aef9d1b4c8dbb03add9e03c4dffec8216e14638aff9246b')
 
 package() {
   mkdir -p "$pkgdir/opt/$pkgname"
@@ -22,10 +22,10 @@ package() {
 
   case $CARCH in
     "i686")
-      cp "$srcdir/Godot_v3.1-beta11_x11.32" "$pkgdir/opt/$pkgname/godot-beta"
+      cp "$srcdir/Godot_v3.1-rc1_x11.32" "$pkgdir/opt/$pkgname/godot-beta"
     ;;
     "x86_64")
-      cp "$srcdir/Godot_v3.1-beta11_x11.64" "$pkgdir/opt/$pkgname/godot-beta"
+      cp "$srcdir/Godot_v3.1-rc1_x11.64" "$pkgdir/opt/$pkgname/godot-beta"
     ;;
   esac
 
