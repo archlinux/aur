@@ -1,6 +1,6 @@
 # Maintainer: frichtlm <frichtlm@gmail.com>
 _cranname=purrr
-_cranver=0.3.0
+_cranver=0.3.1
 pkgname=r-$_cranname
 pkgver=${_cranver}
 pkgrel=1
@@ -11,7 +11,7 @@ license=('GPL-3')
 depends=('r>=3.1' 'r-magrittr>=1.5' 'r-rlang>=0.3.1')
 optdepends=('r-covr' 'r-crayon' 'r-dplyr' 'r-knitr' 'r-markdown' 'r-testthat' 'r-tibble' 'r-tidyselect')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('c7470a122ccd7f45dae5da547b7bf2e7') 
+md5sums=('cf9d74ea9135acef56d8664fe4cdc7d2') 
 
 package() {
     mkdir -p ${pkgdir}/usr/lib/R/library
