@@ -3,7 +3,7 @@
 # Contributor: Kaiting Chen <kaiting.chen@kiwilight.com>
 
 pkgname='librelp'
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="The Reliable Event Logging Protocol"
 url="https://www.rsyslog.com/librelp/"
@@ -11,7 +11,7 @@ arch=('x86_64' 'i686')
 license=('GPL3')
 depends=('gnutls')
 source=("http://download.rsyslog.com/librelp/librelp-${pkgver}.tar.gz")
-sha256sums=('9f24a2fc5749b20c1fd4902332c853e3b06b8bf61b830173252815639b4de9f5')
+sha256sums=('5cd02ce7ede2fea037e65cc5389e41dde99b69b1df984b42c14029e60bb9dd05')
 
 build() {
   cd "$srcdir"/${pkgname}-${pkgver}
