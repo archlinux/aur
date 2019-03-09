@@ -1,6 +1,6 @@
 # Maintainer: Projekt:Root projekt.root@tuta.io
 pkgname=recbox-ardour-theme-git
-pkgver=r4.eb63d1d
+pkgver=r6.496cbd1
 pkgrel=1
 pkgdesc="Dark theme for Ardour with Matcha Dark Sea color schema."
 arch=('any')
