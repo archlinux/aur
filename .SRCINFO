@@ -1,7 +1,7 @@
 pkgbase = drawpile
 	pkgdesc = Collaborative drawing program specially made for use with pen tablets
-	pkgver = 2.0.11
-	pkgrel = 3
+	pkgver = 2.1.2
+	pkgrel = 1
 	url = http://drawpile.net/
 	arch = i686
 	arch = x86_64
@@ -10,23 +10,24 @@ pkgbase = drawpile
 	makedepends = qt5-multimedia
 	makedepends = qt5-tools
 	makedepends = qt5-svg
-	makedepends = ninja
 	makedepends = cmake
 	makedepends = extra-cmake-modules
-	source = http://drawpile.net/files/src/drawpile-2.0.11.tar.gz
-	sha256sums = f34a9be3414dca26d059e292e994eaa05932cca70a465a39be9c02067b460140
+	source = http://drawpile.net/files/src/drawpile-2.1.2.tar.gz
+	sha256sums = 11d69427abe60a3c3a7cdbac4252bacbea1bf712d89125306eb0277ec2b0730a
 
 pkgname = drawpile
 	pkgdesc = Collaborative drawing program specially made for use with pen tablets (meta package)
 	arch = any
 	depends = drawpile-client
 	depends = drawpile-server
+	conflicts = drawpile-common
 
 pkgname = drawpile-client
 	pkgdesc = Collaborative drawing program specially made for use with pen tablets (client)
-	depends = drawpile-common
+	install = drawpile.install
 	depends = karchive
 	depends = qt5-multimedia
+	depends = desktop-file-utils
 	optdepends = kdnssd: automatic service discovery (such as printers)
 	optdepends = giflib: GIF support
 	optdepends = miniupnpc: UPnP support
@@ -34,14 +35,7 @@ pkgname = drawpile-client
 
 pkgname = drawpile-server
 	pkgdesc = Collaborative drawing program specially made for use with pen tablets (server)
-	depends = drawpile-common
 	depends = karchive
 	optdepends = libmicrohttpd: web-admin feature
 	optdepends = libsystemd: systemd and logging support
-
-pkgname = drawpile-common
-	pkgdesc = Collaborative drawing program specially made for use with pen tablets (common files)
-	install = drawpile.install
-	arch = any
-	depends = desktop-file-utils
 
