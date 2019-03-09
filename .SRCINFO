@@ -1,0 +1,13 @@
+pkgbase = python-puzpy
+	pkgdesc = Python library for reading and writing .puz crossword files
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/alexdej/puzpy
+	arch = any
+	license = MIT
+	depends = python
+	source = https://github.com/alexdej/puzpy/archive/v0.2.3.tar.gz
+	sha512sums = eee6af3cc1fd52aaff1eb804e47ff73c9794ed2aece6a2bf37a907cab52067aa249587b2afe9d61f94243ebabd05c2f6a2711f7e9a31df8d8c817f776efc17d0
+
+pkgname = python-puzpy
+
