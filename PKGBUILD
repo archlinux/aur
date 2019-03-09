@@ -2,7 +2,7 @@
 
 pkgname=diod
 pkgver=1.0.24
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-threaded, user space file server that speaks 9P2000.L"
 url="https://github.com/chaos/diod"
 arch=('i686' 'x86_64')
@@ -42,6 +42,8 @@ build() {
 package() {
 	cd "${pkgname}-${pkgver}"
 	make "DESTDIR=$pkgdir" install
+
+	ln -s diodmount "${pkgdir}/usr/bin/mount.diod"
 
 	install -Dm644 scripts/diod.service -t "${pkgdir}/usr/lib/systemd/system"
 	rm -rf "$pkgdir/etc/systemd"
