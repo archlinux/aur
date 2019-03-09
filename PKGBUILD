@@ -2,7 +2,7 @@
 
 pkgname='openastro'
 pkgver='1.1.57'
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source fully-featured astrology software'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -23,4 +23,6 @@ package() {
     python setup.py install --root=$pkgdir || return 1
     cd $srcdir"/openastro.org-data-1.9"
     python setup.py install --root=$pkgdir || return 1
+    mkdir -p $pkgdir/usr/share/icons
+    cp $srcdir"/openastro.org-"$pkgver/icons/openastro.svg $pkgdir/usr/share/icons
 }
