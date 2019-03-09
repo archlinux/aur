@@ -1,5 +1,5 @@
 diff --git i/src/linux/resources/jd-gui.desktop w/src/linux/resources/jd-gui.desktop
-index b86bbc1..48afd4c 100644
+index b86bbc1..920b3de 100644
 --- i/src/linux/resources/jd-gui.desktop
 +++ w/src/linux/resources/jd-gui.desktop
 @@ -2,6 +2,6 @@
@@ -7,6 +7,6 @@ index b86bbc1..48afd4c 100644
  Terminal=false
  Name=JD-GUI
 -Exec=java -jar /opt/jd-gui/jd-gui.jar
-+Exec=java -jar /usr/share/jd-gui/jd-gui.jar
++Exec=/usr/bin/jd-gui
  Type=Application
  Icon=jd-gui
