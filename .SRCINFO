@@ -1,0 +1,14 @@
+pkgbase = openblok
+	pkgdesc = A customizable, cross platform, open-source falling block game, packed with a bunch of features.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/mmatyas/openblok
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	source = https://codeload.github.com/mmatyas/openblok/tar.gz/v0.7.0
+	md5sums = 0c82fadc6573e4fa0fe84171d169d978
+
+pkgname = openblok
+
