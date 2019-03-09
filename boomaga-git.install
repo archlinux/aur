@@ -3,22 +3,10 @@ _check_and_install_printer() {
     [ $? -ne 0 ] && /usr/bin/installPrinter.sh
 }
 
-_update_resources() {
-    update-desktop-database -q
-    update-mime-database usr/share/mime
-    xdg-icon-resource forceupdate
-}
-
 post_install() {
     _check_and_install_printer $1
-    _update_resources $1
 }
 
 post_upgrade() {
     _check_and_install_printer $1
-    _update_resources $1
-}
-
-post_remove() {
-    _update_resources $1
 }
