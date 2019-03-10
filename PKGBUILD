@@ -4,7 +4,7 @@ pkgdesc="ROS - MRPT - Bridge"
 url='http://wiki.ros.org/mrpt_bridge'
 
 pkgname='ros-kinetic-mrpt-bridge'
-pkgver='0.1.18'
+pkgver='0.1.25'
 _pkgver_patch=0
 arch=('any')
 pkgrel=0
@@ -22,9 +22,9 @@ makedepends=('cmake' 'git' 'ros-build-tools' 'mrpt'
 ros_depends=()
 depends=(${ros_depends[@]})
 
-_tag=master
+_tag=${pkgver}
 _dir=mrpt_bridge
-source=("${_dir}"::"git+https://github.com/mrpt-ros-pkg/mrpt_navigation.git"#tag=${_tag})
+source=("${_dir}"::"git+https://github.com/mrpt-ros-pkg/mrpt_bridge"#tag=${_tag})
 md5sums=('SKIP')
 
 build() {
@@ -40,7 +40,7 @@ build() {
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
 
   # Build project
-  cmake ${srcdir}/${_dir}/${_dir} \
+  cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/kinetic \

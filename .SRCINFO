@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-mrpt-bridge
 	pkgdesc = ROS - MRPT - Bridge
-	pkgver = 0.1.18
+	pkgver = 0.1.25
 	pkgrel = 0
 	url = http://wiki.ros.org/mrpt_bridge
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = ros-kinetic-mrpt-bridge
 	makedepends = ros-kinetic-sensor-msgs
 	makedepends = ros-kinetic-std-msgs
 	makedepends = ros-kinetic-tf
-	source = mrpt_bridge::git+https://github.com/mrpt-ros-pkg/mrpt_navigation.git#tag=master
+	source = mrpt_bridge::git+https://github.com/mrpt-ros-pkg/mrpt_bridge#tag=0.1.25
 	md5sums = SKIP
 
 pkgname = ros-kinetic-mrpt-bridge
