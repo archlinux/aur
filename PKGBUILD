@@ -60,10 +60,10 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
 _major=4.20
-pkgver=4.20.14
+pkgver=4.20.15
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
-pkgrel=4
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -88,7 +88,6 @@ source=(# mainline kernel patches
         "${_lucjanpath}/${_bfq_sq_mq_path}/${_bfq_sq_mq_patch}"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
         "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
-        "${_lucjanpath}/arch-patches-v2/0002-exec-Fix-mem-leak-in-kernel_read_file.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -100,13 +99,12 @@ source=(# mainline kernel patches
          # standard config files for mkinitcpio ramdisk
         'linux.preset')
 
-sha256sums=('0e08e6d0a9e30fe13d2de624e9072bb455ae1f54a0918dc6981003c2afdf1a81'
+sha256sums=('d93b1b216e909e4ea8441a41a070f839f55ac9cf5f7effb16e1b04e7f5688407'
             'SKIP'
             '9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178'
             '6062ffaacf8b7864c37160afa8f61f67fb31fe159f5bbe45e8009f46e9694843'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             'f7cc42c0ea00aec3debc72a62a1f29f9a267bcba3decb5becb47da5d4741ac79'
-            '76d5658b98eb1baaf38fda662ec53ef02bf1e4935c39bdfe62937e329c0f64a6'
             'cdd585dc4e6ad714ca9761aa8b4c1d965ae952e74d057a884ef509190e9f5a8a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
