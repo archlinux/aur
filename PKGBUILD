@@ -11,7 +11,7 @@ _pkgname="pulseaudio"
 pkgname="$_pkgname-git"
 pkgdesc="A featureful, general-purpose sound server (development version)"
 pkgver=v12.0.271.g904dd3800
-pkgrel=1
+pkgrel=2
 arch=("i686" "x86_64" "armv7h")
 url="http://pulseaudio.org/"
 license=("GPL" "LGPL")
@@ -61,7 +61,7 @@ build() {
         DATADIRNAME=share
 
     #Incomplete libtool breaks LTO, possibly other things.
-    #patch -Np2 < ../fixlibtool
+    patch -Np2 < ../fixlibtool
 
     # fight unused direct deps
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
