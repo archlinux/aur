@@ -1,0 +1,30 @@
+pkgbase = murmur-git-minimal
+	pkgdesc = The voice chat application server for Mumble (git version)
+	pkgver = 1.2.5.2957.gd56005629
+	pkgrel = 1
+	url = http://mumble.sourceforge.net
+	install = murmur.install
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = boost
+	makedepends = python
+	depends = avahi
+	depends = protobuf
+	depends = qt5-base-headless
+	provides = murmur
+	conflicts = murmur
+	conflicts = murmur-static
+	conflicts = murmur-ice
+	backup = etc/murmur.ini
+	source = git://github.com/mumble-voip/mumble.git
+	source = murmur.dbus.conf
+	source = murmur.service
+	source = murmur.sysusers
+	sha512sums = SKIP
+	sha512sums = 97c7effdddec324e40195c36ef4927950a5de26d2ee2d268d89df6fb547207bbbe30292773316cae6f57ec9923244f205fb0edc377b798771ba7385e3c11d86a
+	sha512sums = fc230c3d7119afed34485eeb84fd935968dc69e4a00cbdbebc3a4f4d4ce155613b4581e43c07208d513a6ba4d240ba84058a85f04b2188bfa406f70256f13f65
+	sha512sums = 5af28d0c2b2b072cfbd500b5f63549e88a86cf3fc15e4d2df89e787c4d2bafdecbe078a518e0d1b25d82f9873cb06838ec1c9ebed625ffb7e8c80fcd942ebf74
+
+pkgname = murmur-git-minimal
+

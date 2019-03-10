@@ -1,0 +1,5 @@
+mumble/
+src/
+pkg/
+*.log
+*.pkg.tar*
