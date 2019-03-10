@@ -3,7 +3,7 @@
 
 pkgname=oomox-git
 pkgver=1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Themix: GUI for generating different color variations
 of Arc, Materia, Oomox themes
 (GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm),
@@ -26,8 +26,10 @@ source=(
 	"git+https://github.com/numixproject/numix-folders.git#branch=master"
 	"git+https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git#branch=master"
 	"git+https://github.com/gusbemacbe/suru-plus.git#branch=master"
+	"git+https://github.com/gusbemacbe/suru-plus-aspromauros.git#branch=master"
 )
 md5sums=(
+	"SKIP"
 	"SKIP"
 	"SKIP"
 	"SKIP"
@@ -117,6 +119,7 @@ prepare(){
 	git config submodule.numix-icon-theme.url $srcdir/numix-icon-theme
 	git config submodule.papirus-icon-theme.url $srcdir/papirus-icon-theme
 	git config submodule.suru-plus.url $srcdir/suru-plus
+	git config submodule.suru-plus-aspromauros.url $srcdir/suru-plus-aspromauros
 	git submodule update
 }
 
