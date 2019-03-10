@@ -8,7 +8,7 @@
 pkgname=autotrace
 _date=20190108
 _revision=39
-pkgver=0.40.0.$_date
+pkgver=0.40.0.${_date}.${_revision}
 pkgrel=1
 pkgdesc='An utility to trace bitmaps: convert bitmaps to vector graphics'
 arch=('i686' 'x86_64')
