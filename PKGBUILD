@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=vkd3d-git
-pkgver=1.1.286.g7082214
+pkgver=1.1.344.gf1bfb13
 pkgrel=1
 pkgdesc="D3D12 to Vulkan translation library. (GIT version)"
 arch=('x86_64')
@@ -28,14 +28,13 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  cd vkd3d
+  ./autogen.sh
 }
 
 build() {
-  cd vkd3d
-
-  ./autogen.sh
-
-  cd ../build
+  cd build
   ../vkd3d/configure \
     --prefix=/usr \
     --with-spirv-tools \
