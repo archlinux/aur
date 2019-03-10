@@ -1,7 +1,7 @@
 # Maintainer: higgsbosoncodes higgsbosoncodes@gmail.com
 # https://github.com/higgsbosoncodes
 pkgname=arch-animated-startscreen
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 epoch=
 pkgdesc="Animated SDDM-Theme and Splashscreen for Archlinux (made for KDE)(Aurora Borealis Background)"
@@ -27,17 +27,17 @@ validpgpkeys=()
 
 build() {
     export LD_PRELOAD='/usr/lib/libfakeroot/libfakeroot.so'
-	cd "ArchStartscreen-Animated-master"
+	cd "Arch-Aurora-Borealis-Startscreen-master"
 	make
 }
 
 check() {
-	cd "ArchStartscreen-Animated-master"
+	cd "Arch-Aurora-Borealis-Startscreen-master"
 	make -k check
 }
 
 package() {
     export LD_PRELOAD='/usr/lib/libfakeroot/libfakeroot.so'
-	cd "ArchStartscreen-Animated-master"
+	cd "Arch-Aurora-Borealis-Startscreen-master"
 	make DESTDIR="$pkgdir/" install
 }
