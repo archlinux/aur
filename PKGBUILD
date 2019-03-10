@@ -8,7 +8,7 @@ pkgdesc='A Web Framework built on top of Qt, using the simple approach of Cataly
 arch=('i686' 'x86_64')
 url=https://github.com/$_pkgname/$_pkgname
 license=('LGPL2.1')
-depends=('grantlee' 'libsimplemail-qt')
+depends=('grantlee' 'jemalloc' 'libmemcached' 'libpwquality' 'libsimplemail-qt')
 makedepends=('cmake' 'git' 'uwsgi')
 optdepends=('uwsgi: for the uWSGI engine')
 provides=($_pkgname)
@@ -29,7 +29,10 @@ build () {
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUWSGI_PLUGINS_DIR=/usr/lib/uwsgi \
+    -DBUILD_ALL=ON \
+    -DPLUGIN_VIEW_CLEARSILVER=OFF \
+    -DBUILD_TESTS=OFF \
+    -DBUILD_EXAMPLES=OFF \
     ..
   make
 }
