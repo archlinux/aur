@@ -1,0 +1,11 @@
+post_install() {
+  echo
+  echo "Usage:"
+  echo "Configure your setup to use the theme. Instructions for different frameworks can be found at"
+  echo "https://github.com/romkatv/powerlevel10k#installation-and-configuration"
+  echo
+  echo "Requirements"
+  echo "Vim Powerline patched font. Many different ones on the AUR"
+  echo "Make sure terminal is using 256-colors mode with export TERM=\"xterm-256color\"."
+  echo
+}
