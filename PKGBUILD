@@ -56,5 +56,6 @@ package()
   for FILE in functions/*.zsh; do
     install -D -m644 "${FILE}" "${pkgdir}/usr/share/zsh-theme-${_pkgname}/functions/$(basename ${FILE})"
     install -D -m644 "${FILE}" "${pkgdir}/usr/share/zsh-theme-${_pkgname}/gitstatus/gitstatus.plugin.zsh ${FILE})"
+    install -D -m644 "${FILE}" "${pkgdir}/usr/share/zsh-theme-${_pkgname}/gitstatus/bin/gitstatusd-linux-x86_64 ${FILE})"
   done
 }
