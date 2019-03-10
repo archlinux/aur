@@ -4,7 +4,7 @@ pkgdesc="ROS - This package defines messages for MRPT"
 url='http://wiki.ros.org/mrpt_msgs'
 
 pkgname='ros-kinetic-mrpt-msgs'
-pkgver='0.1.18'
+pkgver='0.1.23'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -25,7 +25,7 @@ depends=(${ros_depends[@]})
 # Git version (e.g. for debugging)
 _tag=master
 _dir=mrpt_msgs
-source=("${_dir}"::"git+https://github.com/mrpt-ros-pkg/mrpt_navigation.git"#tag=${_tag})
+source=("${_dir}"::"git+https://github.com/mrpt-ros-pkg/mrpt_msgs.git"#tag=${_tag})
 sha256sums=('SKIP')
 
 build() {
@@ -41,7 +41,7 @@ build() {
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
 
   # Build project
-  cmake ${srcdir}/${_dir}/${_dir} \
+  cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/kinetic \

@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-mrpt-msgs
 	pkgdesc = ROS - This package defines messages for MRPT
-	pkgver = 0.1.18
+	pkgver = 0.1.23
 	pkgrel = 1
 	url = http://wiki.ros.org/mrpt_msgs
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ros-kinetic-mrpt-msgs
 	depends = ros-kinetic-std-msgs
 	depends = ros-kinetic-message-runtime
 	depends = ros-kinetic-geometry-msgs
-	source = mrpt_msgs::git+https://github.com/mrpt-ros-pkg/mrpt_navigation.git#tag=master
+	source = mrpt_msgs::git+https://github.com/mrpt-ros-pkg/mrpt_msgs.git#tag=master
 	sha256sums = SKIP
 
 pkgname = ros-kinetic-mrpt-msgs
