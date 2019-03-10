@@ -1,0 +1,19 @@
+pkgbase = languagetool-word2vec-pt
+	pkgdesc = Finding errors using neural network rules, portuguese text
+	pkgver = 20180211
+	pkgrel = 1
+	url = https://forum.languagetool.org/t/neural-network-rules/2225
+	install = languagetool-word2vec-pt.install
+	arch = any
+	license = CCPL
+	makedepends = unzip
+	optdepends = languagetool: system wide installation of LT
+	optdepends = libreoffice-extension-languagetool: standalone LT for LibreOffice
+	optdepends = openoffice-extension-languagetool: standalone LT for OpenOffice
+	noextract = languagetool-word2vec-pt-20180211.zip
+	options = !strip
+	source = languagetool-word2vec-pt-20180211.zip::https://languagetool.org/download/word2vec/pt.zip
+	md5sums = 3808d92488f0d57f1884d8c5ce8aebad
+
+pkgname = languagetool-word2vec-pt
+

@@ -1,0 +1,5 @@
+post_install() {
+  echo ''
+  echo 'Do not forget to add "word2vecDir=/usr/share/word2vec" in ~/.languagetool[-ooo].cfg or use LanguageTool GUI config to point to "/usr/share/word2vec"!'
+  echo ''
+}
