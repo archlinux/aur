@@ -1,0 +1,34 @@
+diff --unified --recursive --text package.orig/higan/GNUmakefile package.new/higan/GNUmakefile
+--- package.orig/higan/GNUmakefile	2018-12-21 12:10:31.000000000 -0700
++++ package.new/higan/GNUmakefile	2019-03-09 23:28:46.600329596 -0700
+@@ -23,7 +23,6 @@
+   endif
+ else ifneq ($(filter $(platform),linux bsd),)
+   ifeq ($(binary),application)
+-    flags += -march=native
+     link += -Wl,-export-dynamic
+     link += -lX11 -lXext
+   else ifeq ($(binary),library)
+diff --unified --recursive --text package.orig/higan/target-bsnes/GNUmakefile package.new/higan/target-bsnes/GNUmakefile
+--- package.orig/higan/target-bsnes/GNUmakefile	2018-12-20 03:55:21.000000000 -0700
++++ package.new/higan/target-bsnes/GNUmakefile	2019-03-09 23:07:11.462473491 -0700
+@@ -21,7 +21,7 @@
+ 
+ all: $(hiro.objects) $(ruby.objects) $(objects)
+ 	$(info Linking out/$(name) ...)
+-	+@$(compiler) -o out/$(name) $(hiro.objects) $(ruby.objects) $(objects) $(hiro.options) $(ruby.options) $(options)
++	+@$(compiler) -o out/$(name) $(hiro.objects) $(ruby.objects) $(objects) $(hiro.options) $(ruby.options) $(options) $(LDFLAGS)
+ ifeq ($(platform),macos)
+ 	rm -rf out/$(name).app
+ 	mkdir -p out/$(name).app/Contents/MacOS/
+@@ -34,9 +34,7 @@
+ verbose: hiro.verbose ruby.verbose nall.verbose all;
+ 
+ install: all
+-ifeq ($(shell id -un),root)
+-	$(error "make install should not be run as root")
+-else ifeq ($(platform),windows)
++ifeq ($(platform),windows)
+ else ifeq ($(platform),macos)
+ 	mkdir -p ~/Library/Application\ Support/$(name)/
+ 	cp -R out/$(name).app /Applications/$(name).app
