@@ -26,7 +26,7 @@ prepare() {
   mv "$_pkgname" src/github.com/xeals/
 
   cd src/github.com/xeals/signal-back/
-  git checkout v$pkgver
+  git checkout v0.1.6
 }
 
 build() {
