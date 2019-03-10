@@ -15,7 +15,8 @@ depends=(
 		'python-pytest'
 		'python-texttable'
 		'python-shodan'
-		'python-beautifulsoup4')
+		'python-beautifulsoup4'
+		'python-yaml')
 makedepends=('git' 'bash')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
