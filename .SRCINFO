@@ -1,0 +1,19 @@
+pkgbase = languagetool-ngrams-nl
+	pkgdesc = Finding errors using n-gram data, dutch text
+	pkgver = 20181229
+	pkgrel = 1
+	url = http://wiki.languagetool.org/finding-errors-using-n-gram-data
+	install = languagetool-ngrams-nl.install
+	arch = any
+	license = CCPL
+	makedepends = unzip
+	optdepends = languagetool: system wide installation of LT
+	optdepends = libreoffice-extension-languagetool: standalone LT for LibreOffice
+	optdepends = openoffice-extension-languagetool: standalone LT for OpenOffice
+	noextract = languagetool-ngrams-nl-20181229.zip
+	options = !strip
+	source = languagetool-ngrams-nl-20181229.zip::https://languagetool.org/download/ngram-data/ngrams-nl-20181229.zip
+	md5sums = e94012c08b4c960f36e090dc29646ef7
+
+pkgname = languagetool-ngrams-nl
+
