@@ -1,7 +1,7 @@
 pkgbase = ubertooth
 	pkgdesc = Open source wireless development platform suitable for Bluetooth experimentation
 	pkgver = 2018.12.R1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greatscottgadgets/ubertooth/
 	arch = x86_64
 	arch = i686
