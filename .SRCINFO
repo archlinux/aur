@@ -1,0 +1,15 @@
+pkgbase = ttymidi
+	pkgdesc = MIDI for your serial devices
+	pkgver = 0.60
+	pkgrel = 1
+	url = http://www.varal.org/ttymidi
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = gpl
+	depends = alsa-lib
+	source = http://www.varal.org/ttymidi/ttymidi.tar.gz
+	sha256sums = 97864fced143cecd038e3dd790d224b52e89f6cf6a461893fb11c325e8458476
+
+pkgname = ttymidi
+
