@@ -1,3 +1,22 @@
+# v2.14.1
+- [#246](https://github.com/xmrig/xmrig-nvidia/issues/246) Fixed compatibility with old GPUs (compute capability < 3.5).
+
+# v2.14.0
+- **[#242](https://github.com/xmrig/xmrig-nvidia/pull/242) Added new algorithm `cryptonight/rwz`, short alias `cn/rwz` (also known as CryptoNight ReverseWaltz), for upcoming [Graft](https://www.graft.network/) fork.**
+- **[#931](https://github.com/xmrig/xmrig/issues/931) Added new algorithm `cryptonight/zls`, short alias `cn/zls` for [Zelerius Network](https://zelerius.org) fork.**
+- **[#940](https://github.com/xmrig/xmrig/issues/940) Added new algorithm `cryptonight/double`, short alias `cn/double` (also known as CryptoNight HeavyX), for [X-CASH](https://x-cash.org/).**
+- [#241](https://github.com/xmrig/xmrig-nvidia/issues/241) Minimum required CUDA version increased to 8.0 due CUDA 7.5 lacks support for `nvrtcAddNameExpression`.
+- [#951](https://github.com/xmrig/xmrig/issues/951#issuecomment-469581529) Fixed crash if AVX was disabled on OS level.
+- [#952](https://github.com/xmrig/xmrig/issues/952) Fixed compile error on some Linux.
+- [#957](https://github.com/xmrig/xmrig/issues/957#issuecomment-468890667) Added support for embedded config.
+
+# v2.13.0
+- **[#938](https://github.com/xmrig/xmrig/issues/938) Added support for new algorithm `cryptonight/r`, short alias `cn/r` (also known as CryptoNightR or CryptoNight variant 4), for upcoming [Monero](https://www.getmonero.org/) fork on March 9, thanks [@SChernykh](https://github.com/SChernykh).**
+- [#939](https://github.com/xmrig/xmrig/issues/939) Added support for dynamic (runtime) pools reload.
+
+# v2.12.0-beta
+- [#235](https://github.com/xmrig/xmrig-nvidia/pull/235) Added support for new algorithm `cryptonight/wow`, short alias `cn/wow` (also known as CryptonightR), for upcoming [Wownero](http://wownero.org) fork on February 14.
+
 # v2.11.0
 - [#928](https://github.com/xmrig/xmrig/issues/928) Added support for new algorithm `cryptonight/gpu`, short alias `cn/gpu` (original name `cryptonight-gpu`), for upcoming [Ryo currency](https://ryo-currency.com) fork on February 14.
 
