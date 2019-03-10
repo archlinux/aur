@@ -21,3 +21,9 @@ pkgname = python-censys
 	depends = python-requests
 	depends = python-netaddr
 
+pkgname = python2-censys
+	pkgdesc = A light weight Python 2 wrapper to the Censys REST API
+	depends = python2
+	depends = python2-requests
+	depends = python2-netaddr
+
