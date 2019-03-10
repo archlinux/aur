@@ -6,38 +6,28 @@
 # Contributor: Christian Neukirchen <chneukirchen@gmail.com>
 
 pkgname=autotrace
-pkgver=0.31.1
-pkgrel=18
+_date=20190108
+_revision=39
+pkgver=0.40.0.$_date
+pkgrel=1
 pkgdesc='An utility to trace bitmaps: convert bitmaps to vector graphics'
 arch=('i686' 'x86_64')
 url='http://autotrace.sourceforge.net/'
 license=('GPL' 'LGPL')
-depends=('libpng')
-optdepends=('pstoedit: for postprocessing of postscript files')
-makedepends=('pstoedit')
+depends=('libpng' 'pstoedit')
 options=('!libtool')
-source=("https://sourceforge.net/projects/$pkgname/files/AutoTrace/$pkgver/$pkgname-$pkgver.tar.gz"
-        "complete.patch")
-md5sums=('54eabbb38d2076ded6d271e1ee4d0783'
-         '60cdd0d29d7ab79b71b9b6e579a82b6a')
-sha512sums=('7d0ec86a41617b3d4336eed72f2974c10f569ff53d450a4c91b4611bb6fdb8c4ff81d04d91e9d20f1b4df592f82c8421e7656af7fa2bdc786ffb4618e9eadd24'
-            '92c984a6d7bea6b58ce3fc8419d89af9c52d2029e91b0fe3e29f05f10b18d75742abff828cec551a4e8da44a22c563e321fcd91ceb3a186c040cf465fef77b97')
-
-prepare(){
-  cd "$pkgname-$pkgver"
-  patch < ../complete.patch
-  autoreconf -ivf
-}
+source=("https://github.com/autotrace/autotrace/archive/travis-${_date}.${_revision}.tar.gz")
+sha512sums=('e911763d77e04334e85b9467de98e4a41437c55ec14711ce5bb1ef839f981547b8b3e477274cbf40f615b2ffffc7a8e8d2c860b52f214fb49d2d33636140c443')
 
 build() {
-  cd "$pkgname-$pkgver"
-  ./configure --prefix=/usr --with-pstoedit
-  sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
-  sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
+  cd "$pkgname-travis-${_date}.${_revision}"
+  autoreconf -ivf
+  intltoolize --force
+  ./configure --prefix=/usr --with-pstoedit --without-magick
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-travis-${_date}.${_revision}"
   make install DESTDIR="${pkgdir}"
 }
