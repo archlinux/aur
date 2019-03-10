@@ -1,0 +1,19 @@
+pkgbase = libideviceactivation-git
+	pkgdesc = Activates iDevices using a single tool.
+	pkgver = 1.1.0.r0.gb02cc45
+	pkgrel = 1
+	epoch = 1
+	url = http://github.com/libimobiledevice/libideviceactivation
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1
+	makedepends = git
+	depends = curl
+	depends = libplist-git
+	depends = libxml2
+	depends = libimobiledevice-git
+	source = git://github.com/libimobiledevice/libideviceactivation
+	md5sums = SKIP
+
+pkgname = libideviceactivation-git
+
