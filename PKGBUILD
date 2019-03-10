@@ -56,6 +56,8 @@ package()
   for FILE in functions/*.zsh; do
     install -D -m644 "${FILE}" "${pkgdir}/usr/share/zsh-theme-${_pkgname}/functions/$(basename ${FILE})"
   done
+  install -D -m644 prompt_powerlevel10k_setup "${pkgdir}/usr/share/zsh-theme-${_pkgname}/prompt_powerlevel10k_setup"
+  install -D -m644 prompt.png "${pkgdir}/usr/share/zsh-theme-${_pkgname}/prompt.png"
   install -d "${pkgdir}/usr/share/zsh-theme-${_pkgname}/gitstatus/bin"
   cp -R gitstatus "$pkgdir"/usr/share/zsh-theme-${_pkgname}/
 }
