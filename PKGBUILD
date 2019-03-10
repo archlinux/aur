@@ -1,6 +1,6 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=majsoul-plus-bin
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Majsoul browser (Binary)"
 arch=('i686' 'x86_64')
@@ -13,18 +13,16 @@ optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
 provides=("majsoul-plus")
 conflicts=("majsoul-plus")
+source=("https://github.com/MajsoulPlus/majsoul-plus/raw/master/bin/icons/icon.png")
 source_x86_64=(
-	"majsoul.zip::https://github.com/MajsoulPlus/majsoul-plus/releases/download/v1.11.0/Majsoul_Plus-linux-x64.zip"
-	"https://github.com/MajsoulPlus/majsoul-plus/raw/master/bin/icons/icon.png"
+	"https://github.com/MajsoulPlus/majsoul-plus/releases/download/v$pkgver/Majsoul_Plus-linux-x64.zip"
 )
 source_i686=(
-	"majsoul.zip::https://github.com/MajsoulPlus/majsoul-plus/releases/download/v1.11.0/Majsoul_Plus-linux-ia32.zip"
-	"https://github.com/MajsoulPlus/majsoul-plus/raw/master/bin/icons/icon.png"
+	"https://github.com/MajsoulPlus/majsoul-plus/releases/download/v$pkgver/Majsoul_Plus-linux-ia32.zip"
 )
-sha256sums_i686=('SKIP'
-                 'be6005b9ae4238d53fcd9fe728a4985502c660adb670d3047b17da4a35f6fe31')
-sha256sums_x86_64=('5c99f45426269d35cc04bcbacfd79085491e2cebd2d99690fbcdeb30010c88be'
-                   'be6005b9ae4238d53fcd9fe728a4985502c660adb670d3047b17da4a35f6fe31')
+sha256sums=('be6005b9ae4238d53fcd9fe728a4985502c660adb670d3047b17da4a35f6fe31')
+sha256sums_i686=('1ae146cb80e80a2fab0c8e24b3fda08a4e94e1311622b352db58c2b3a846f935')
+sha256sums_x86_64=('ea69fe54e4aac25e19bb21b9d437412c12c094eeb6c5bc81ffb6336a6e5202d2')
 
 package() {
 	targetarch="x64"

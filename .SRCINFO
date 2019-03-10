@@ -1,6 +1,6 @@
 pkgbase = majsoul-plus-bin
 	pkgdesc = Majsoul browser (Binary)
-	pkgver = 1.11.0
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://github.com/MajsoulPlus/majsoul-plus
 	arch = i686
@@ -21,14 +21,12 @@ pkgbase = majsoul-plus-bin
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
 	provides = majsoul-plus
 	conflicts = majsoul-plus
-	source_i686 = majsoul.zip::https://github.com/MajsoulPlus/majsoul-plus/releases/download/v1.11.0/Majsoul_Plus-linux-ia32.zip
-	source_i686 = https://github.com/MajsoulPlus/majsoul-plus/raw/master/bin/icons/icon.png
+	source = https://github.com/MajsoulPlus/majsoul-plus/raw/master/bin/icons/icon.png
+	sha256sums = be6005b9ae4238d53fcd9fe728a4985502c660adb670d3047b17da4a35f6fe31
+	source_i686 = https://github.com/MajsoulPlus/majsoul-plus/releases/download/v1.11.1/Majsoul_Plus-linux-ia32.zip
 	sha256sums_i686 = SKIP
-	sha256sums_i686 = be6005b9ae4238d53fcd9fe728a4985502c660adb670d3047b17da4a35f6fe31
-	source_x86_64 = majsoul.zip::https://github.com/MajsoulPlus/majsoul-plus/releases/download/v1.11.0/Majsoul_Plus-linux-x64.zip
-	source_x86_64 = https://github.com/MajsoulPlus/majsoul-plus/raw/master/bin/icons/icon.png
-	sha256sums_x86_64 = 5c99f45426269d35cc04bcbacfd79085491e2cebd2d99690fbcdeb30010c88be
-	sha256sums_x86_64 = be6005b9ae4238d53fcd9fe728a4985502c660adb670d3047b17da4a35f6fe31
+	source_x86_64 = https://github.com/MajsoulPlus/majsoul-plus/releases/download/v1.11.1/Majsoul_Plus-linux-x64.zip
+	sha256sums_x86_64 = SKIP
 
 pkgname = majsoul-plus-bin
 

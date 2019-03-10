@@ -1,5 +1,6 @@
 src
 pkg
 *.pkg.tar.xz
-majsoul.zip
+*.zip
+*.zip.part
 icon.png
