@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Neef <aur AT gehaxelt DOT IN>
 pkgbase=theharvester-git
 pkgname=theharvester-git
-pkgver=3.0.6.r264.g21939b0
+pkgver=3.0.6.r349.g35b322e
 pkgrel=1
 pkgdesc="A tool for gathering e-mail accounts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers)."
 arch=('any')
@@ -55,4 +55,9 @@ package() {
 	install "$srcdir/$pkgname/run.sh" "$pkgdir/opt/$pkgname/"
 
 	ln -s "/opt/$pkgname/run.sh" "$pkgdir/usr/bin/theharvester"	
+}
+
+check(){
+	cd "${srcdir}"
+	pytest
 }
