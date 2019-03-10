@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.7.beta6.r0.gc59b6881d8
+pkgver=8.7.beta7.r0.g10407524b1
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -45,10 +45,11 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-cremona.patch
         sagemath-sphinx-1.8.patch
         sagemath-singular-4.1.2.patch
-        sagemath-ecl-sigfpe.patch)
+        sagemath-ecl-sigfpe.patch
+        sagemath-gap-4.10.1.patch)
 sha256sums=('SKIP'
             'e0e36f2a39b634a76e1c3ad9a31f9ab60e734dd53b43203557b76613277d53b9'
-            '71457eb692d5a518686132ee080ea40a4db948113415ba1b8df0de5b0451b944'
+            'b1068a8d5750051c2b5cfcb89d3d5870cf4233ab445e71c398543fb8b1e6281a'
             'b66d5bb692159910cec83c80262c43a687d3a678010c7ae4c7070f7cf3a0d5cb'
             '12cd410035ae644c2495b0dcd3a5138133a471ecc07912d37114c46ee837eb0e'
             'f12bd2a53ad51549015093aacc89978f4d796d9ab5bcd3d737aa0d57a5815b54'
@@ -57,7 +58,8 @@ sha256sums=('SKIP'
             '4c6df9e4e5a7b29ecf6189eda3e5a79f69b6e1b4d29c1b9559663149b8c0af96'
             '22f5e44a42c8276025b8512f45cac1c36d576c29c7fd9d36fde8b19ff87867d8'
             '961bfb5694b67d425d21240d71490cb71714b5207c23448c89be0966512ff8f9'
-            'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938')
+            'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938'
+            '99066a3a11c102dee5183acf86b3f6200e9c3db8fe15e52cf391ecd6f72846c1')
 
 pkgver() {
   cd sage
@@ -82,6 +84,8 @@ prepare(){
   patch -p1 -i ../sagemath-threejs.patch
 # fix introspection with sphinx 1.8
   patch -p1 -i ../sagemath-sphinx-1.8.patch
+# port to GAP 4.10.1 API changes
+  patch -p1 -i ../sagemath-gap-4.10.1.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209

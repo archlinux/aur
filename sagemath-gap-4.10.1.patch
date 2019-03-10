@@ -1,0 +1,31 @@
+diff --git a/src/sage/libs/gap/gap_includes.pxd b/src/sage/libs/gap/gap_includes.pxd
+index 864a13b385..8a2c22ed4a 100644
+--- a/src/sage/libs/gap/gap_includes.pxd
++++ b/src/sage/libs/gap/gap_includes.pxd
+@@ -77,8 +77,8 @@ cdef extern from "<gap/io.h>":
+ 
+ cdef extern from "<gap/libgap-api.h>":
+     ctypedef void (*CallbackFunc)()
+-    void GAP_Initialize(int argc, char ** argv, char ** env,
+-        CallbackFunc, CallbackFunc)
++    void GAP_Initialize(int argc, char ** argv,
++        CallbackFunc, CallbackFunc, int handleSignals)
+     Obj GAP_EvalString(const char *) except *
+     Obj GAP_EvalStringNoExcept "GAP_EvalString"(const char *)
+     Obj GAP_ValueGlobalVariable(const char *)
+diff --git a/src/sage/libs/gap/util.pyx b/src/sage/libs/gap/util.pyx
+index 97c383fdbe..20ecc82976 100644
+--- a/src/sage/libs/gap/util.pyx
++++ b/src/sage/libs/gap/util.pyx
+@@ -329,8 +329,8 @@ cdef initialize():
+             # Initialize GAP and capture any error messages. The
+             # initialization just prints any errors and does not
+             # use the error handler.
+-            GAP_Initialize(argc, argv, env, &gasman_callback,
+-                           &error_handler)
++            GAP_Initialize(argc, argv, &gasman_callback,
++                           &error_handler, 1)
+         finally:
+             sig_off()
+ 
+ 

@@ -1,6 +1,6 @@
 pkgbase = sagemath-git
 	pkgdesc = Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab
-	pkgver = 8.7.beta6.r0.gc59b6881d8
+	pkgver = 8.7.beta7.r0.g10407524b1
 	pkgrel = 1
 	url = http://www.sagemath.org
 	arch = x86_64
@@ -106,9 +106,10 @@ pkgbase = sagemath-git
 	source = sagemath-sphinx-1.8.patch
 	source = sagemath-singular-4.1.2.patch
 	source = sagemath-ecl-sigfpe.patch
+	source = sagemath-gap-4.10.1.patch
 	sha256sums = SKIP
 	sha256sums = e0e36f2a39b634a76e1c3ad9a31f9ab60e734dd53b43203557b76613277d53b9
-	sha256sums = 71457eb692d5a518686132ee080ea40a4db948113415ba1b8df0de5b0451b944
+	sha256sums = b1068a8d5750051c2b5cfcb89d3d5870cf4233ab445e71c398543fb8b1e6281a
 	sha256sums = b66d5bb692159910cec83c80262c43a687d3a678010c7ae4c7070f7cf3a0d5cb
 	sha256sums = 12cd410035ae644c2495b0dcd3a5138133a471ecc07912d37114c46ee837eb0e
 	sha256sums = f12bd2a53ad51549015093aacc89978f4d796d9ab5bcd3d737aa0d57a5815b54
@@ -118,6 +119,7 @@ pkgbase = sagemath-git
 	sha256sums = 22f5e44a42c8276025b8512f45cac1c36d576c29c7fd9d36fde8b19ff87867d8
 	sha256sums = 961bfb5694b67d425d21240d71490cb71714b5207c23448c89be0966512ff8f9
 	sha256sums = a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938
+	sha256sums = 99066a3a11c102dee5183acf86b3f6200e9c3db8fe15e52cf391ecd6f72846c1
 
 pkgname = sagemath-git
 	optdepends = cython2: to compile cython code
