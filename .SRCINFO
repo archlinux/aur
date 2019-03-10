@@ -14,7 +14,7 @@ pkgbase = ubertooth
 	depends = python2-pyside2
 	depends = python2-numpy
 	depends = python2-pyusb
-	depends = qt5-declarative
+	optdepends = qt5-declarative
 	source = https://github.com/greatscottgadgets/ubertooth/releases/download/2018-12-R1/ubertooth-2018-12-R1.tar.xz
 	sha256sums = 0042daa79db0f4148a0255cdf05aa57006e23ac36edf7024e9e99ccc4892867b
 
