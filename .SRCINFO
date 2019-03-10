@@ -1,7 +1,7 @@
 pkgbase = gemini
 	pkgdesc = Graphical audio player
 	pkgver = 1.14.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blooser/gemini
 	arch = x86_64
 	license = MIT
