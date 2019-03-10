@@ -55,6 +55,6 @@ package()
   # Install the utilities
   install -d "${pkgdir}/functions/"
   install -d "${pkgdir}/gitstatus/bin/"
-  cp -r "${srcdir}/${_pkgname}/src/functions/*" "${pkgdir}/functions/"
-  cp -r "${srcdir}/${_pkgname}/src/gitstatus/*" "${pkgdir}/gitstatus/"
+  cp -r "${srcdir}/${_pkgname}/functions/*" "${pkgdir}/functions/"
+  cp -r "${srcdir}/${_pkgname}/gitstatus/*" "${pkgdir}/gitstatus/"
 }
