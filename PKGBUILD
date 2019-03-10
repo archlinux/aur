@@ -1,5 +1,5 @@
 pkgname=x-active-window-indicator
-pkgver=0.0.1
+pkgver=0.1.r103.0f2c386-1
 pkgrel=1
 pkgdesc="An X11 utility that signals the active window"
 url="https://github.com/tomKPZ/x-active-window-indicator"
@@ -12,10 +12,8 @@ source=("${pkgname}::git+git://github.com/tomKPZ/x-active-window-indicator.git")
 md5sums=("SKIP")
 
 pkgver() {
-  cd "${pkgname}"
-
-  local version=$(grep "version=" "setup.py" | sed 's/ *version="\([0-9\.]\+\)",/\1/')
-  printf "${version}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/${pkgname}"
+  printf "0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
