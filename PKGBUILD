@@ -11,6 +11,13 @@ makedepends=("cmake" "git")
 source=("${pkgname}::git+git://github.com/tomKPZ/x-active-window-indicator.git")
 md5sums=("SKIP")
 
+pkgver() {
+  cd "${pkgname}"
+
+  local version=$(grep "version=" "setup.py" | sed 's/ *version="\([0-9\.]\+\)",/\1/')
+  printf "${version}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
     cd "$srcdir/${pkgname}"
     cmake . -DCMAKE_INSTALL_PREFIX=/usr
