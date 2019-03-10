@@ -2,7 +2,7 @@
 
 pkgname=google-drive-ocamlfuse-opam
 _pkgname=google-drive-ocamlfuse
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="FUSE-based file system backed by Google Drive, written in OCaml (installed from opam)"
 arch=('x86_64')
