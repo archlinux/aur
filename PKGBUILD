@@ -1,7 +1,7 @@
 # Maintainer: Betül Ünlü < betulunlu0018 ~at~ gmail ~dot~ com >
 
 pkgname="emojicode"
-pkgver=0.8.4
+pkgver=0.9
 pkgrel=1
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
@@ -12,12 +12,10 @@ depends=(
     "zlib"
 )
 makedepends=(
-    "llvm6>=6.0.1"
-    "llvm-libs>=7"
+    "gcc>=7.2"
+    "llvm>=7"
     "cmake>=3.5.1"
     "ninja"
-    "gcc>=7.2"
-    "python>=3.5.2"
 )
 checkdepends=(
     "python>=3.5.2"
@@ -58,7 +56,8 @@ package() {
     cd "${srcdir}/${pkgname}/build"
     ninja dist
 
-    cd "Emojicode-${pkgver}-Linux-${CARCH}"
+    # FIXME: this .0 is temporary, revert it on the first minor version release
+    cd "Emojicode-${pkgver}.0-Linux-${CARCH}"
 
     install -Dm755 "emojicodec" "${pkgdir}/usr/bin/emojicodec"
 
