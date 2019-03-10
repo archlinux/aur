@@ -1,6 +1,6 @@
 pkgbase = ccls-git
 	pkgdesc = C/C++ language server supporting cross references, hierarchies, completion and semantic highlighting
-	pkgver = 20190309
+	pkgver = 20190310
 	pkgrel = 1
 	url = https://github.com/MaskRay/ccls
 	arch = x86_64
