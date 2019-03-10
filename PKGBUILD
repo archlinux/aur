@@ -3,7 +3,7 @@
 pkgbase=python-coveralls
 pkgname=('python-coveralls' 'python2-coveralls')
 _pypiname=coveralls-python
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Provide Seemless integration with coveralls.io"
 url="https://github.com/coveralls-clients/coveralls-python"
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python-coverage' 'python-requests' 'python-docopt')
 makedepends=('python-setuptools')
 source=(${_pypiname}-${pkgver}.tar.gz::https://github.com/coveralls-clients/coveralls-python/archive/${pkgver}.tar.gz)
-sha256sums=('006254a9a37c9727cc191c4ddeb21b6af9812499e623fae49c8c2c7c15855e5b')
+sha256sums=('c2d28fe1c5da45f4a1030fdc7d75dc827f425c7c27db10a6dc6acc58f27d8198')
 
 package_python-coveralls() {
   depends=('python-coverage' 'python-requests' 'python-docopt')
