@@ -4,15 +4,15 @@
 
 pkgname=nvidia-ck
 pkgver=418.43
-pkgrel=5
+pkgrel=6
 epoch=2
 _extramodules=extramodules-ck
 _pkgdesc="NVIDIA drivers for linux-ck."
 pkgdesc="$_pkgdesc"
 arch=('x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-ck>=4.20' 'linux-ck<4.21' 'libgl' "nvidia-utils=${pkgver}")
-makedepends=("nvidia-utils=${pkgver}" 'libglvnd' 'linux-ck-headers>=4.20' 'linux-ck-headers<4.21')
+depends=('linux-ck' 'libgl' "nvidia-utils=${pkgver}")
+makedepends=("nvidia-utils=${pkgver}" 'libglvnd' 'linux-ck-headers')
 conflicts=('nvidia-340xx-ck' 'nvidia-390xx-ck')
 #groups=('ck-generic')
 #replaces=()
