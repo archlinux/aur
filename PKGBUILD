@@ -12,7 +12,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('72d359529b7cb5132fd7167be26b0b6095331121084c615b7501c61f76038e40')
+sha256sums=('287d0fc08b871c88dcbf43e87d9a87c615c3d9c6907fbb5c091a642ffefc7e53')
 
 package() {
   cd $srcdir
