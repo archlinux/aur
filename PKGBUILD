@@ -4,7 +4,7 @@
 _pkgauthor=kubeless
 _upstream_pkgname=kubeless
 pkgname=kubeless-bin
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A Kubernetes-native serverless framework that lets you deploy small bits of code without having to worry about the underlying infrastructure plumbing."
 arch=('x86_64')
@@ -31,11 +31,11 @@ source=("${_upstream_pkgname}-${pkgver}.zip::https://github.com/${_pkgauthor}/${
   "${_upstream_pkgname}-v${pkgver}.yaml::https://github.com/${_pkgauthor}/${_upstream_pkgname}/releases/download/v${pkgver}/${_upstream_pkgname}-v${pkgver}.yaml"
   "LICENSE::https://raw.githubusercontent.com/${_pkgauthor}/${_upstream_pkgname}/master/LICENSE")
 sha256sums=(
-  "cab96cd4d4c1580ff894417f9f2347752c6b48eeb7ab06c0b493813972138953"
-  "db4841f7963352b10925f721b9ee23703807d90c928a6da0d995de6f11134ab5"
-  "313fc127c899d53fbf4a77e5db2ca1d9e99531546f6aa150186ee088f62db35b"
-  "a90ec8bd568f4dfb35c11c6da87474173d89d066271c3e7fa5469466025123b0"
-  "SKIP"
+  "99897555d4ac5a31c62ce1ee806e1a05d1eeaee62b6851ad79d7eef586ea7faa"
+  "218bdf1f389121365ba47b8ed597ca10e75db1c004b48458504a9bc6ed09f131"
+  "02107c484b74f9bd0d13b66e0a45981ee0e7d4a9024a1da0f9a1e6ca6b739ede"
+  "3ebe31dc64ce67ff353e6ff6e377fd668fa984751a89bb3c475116d0db1f0742"
+  "fdcee9e38cea79678ee1fa2cb86ce9889eea24899b526911dc982bf4519113b2"
 )
 
 package() {
