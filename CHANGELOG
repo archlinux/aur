@@ -1391,3 +1391,31 @@ Sun Jan 27 17:21:46 2019 +0100
      2019-01-04 c191f4aa actionless refactor: bring back python3.4 support
      2019-01-04 81b1bb3b LaurentTreguier chore(dockerfile): add python 3.4 centos 7
      2019-01-04 291b486a actionless feat(preset_list): group plugin presets by first-level dirs
+
+
+Sun Mar 10 06:38:46 2019 +0100
+-------------------------------------------------
+1.12            Release 1.12
+    
+    The most important news:
+     - support for Suru++ icon theme
+    
+    Other notable changes:
+     2019-03-10 25e2104e actionless chore(plugins: theme: arc): update submodule
+     2019-03-10 3d20e1c4 actionless chore(plugins: icons: papirus): update submodule
+     2019-03-10 0bc48926 actionless chore(plugins: materia): update sumbodule
+     2019-03-05 01b18264 Gustavo Reis Update gitmodules for Suru++ (#231)
+     2019-02-23 e76df0fe Gustavo Reis chore(colors): New schemes (#229)
+     2019-02-23 71838f3e Heimen Stoffels chore(locale): Updated and correct Dutch translatiom (#228)
+     2019-02-23 ce788e97 Heimen Stoffels chore(colors): Create Trellium (#227)
+     2019-02-23 ee1dd74d Heimen Stoffels chore(colors): Create Geeko-Dark (#226)
+     2019-02-22 09531b04 Gustavo Reis Fixed misspellings and fuzzy translations in Dutch, French, Italian, Portuguese and Spanish (#223)
+     2019-02-22 f8d5c7cd Gustavo Reis Added new translations
+     2019-02-22 5850af04 Gustavo Reis fix(plugins: icons: suru): add mimetypes to gradients' replacement
+     2019-02-21 0ca54729 actionless feat(plugins: icons: SuruPlus): update to the new theme and add support for optional gradients
+     2019-02-10 98db8ffa Vlada Makhonina WoopWoop: add new palette
+     2019-02-09 c01596ed nana-4 icon: update app icon
+     2019-02-03 1daae2d4 actionless feat(plugins: icons: suru): add support for overriding destination dir
+     2019-02-03 ca9eb98f actionless fix(export_common: dialog with options): save entry value on change
+     2019-02-02 8379b8bb actionless refactor(theme_model, theme_options_list): allow different plugins having different display names/fallback values for the same the keys
+     2019-01-30 c1dbaab3 Sergei Eremenko Added plugin for Suru++ icon theme (#209)

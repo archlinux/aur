@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/themix-project/oomox
 
 pkgname=oomox-git
-pkgver=1.11.r16.g1daae2d4
+pkgver=1.12
 pkgrel=1
 pkgdesc="Themix: GUI for generating different color variations
 of Arc, Materia, Oomox themes
@@ -64,7 +64,7 @@ depends=(
 	'python-pystache'  #  base16_format
 	'python-yaml'  #  base16_format
 
-	'resvg-git'  # materia, arc
+	'resvg'  # materia, arc
 	##or
 	#'inkscape'  # materia, arc
 )
