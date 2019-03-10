@@ -25,7 +25,7 @@ _localmodcfg=
 pkgbase=linux-gc
 _srcver=5.0-arch1
 pkgver=${_srcver%-*}
-pkgrel=1
+pkgrel=2
 _pdsversion=099o
 _uksmversion=4.20
 arch=(x86_64)
@@ -46,6 +46,7 @@ source=(
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "$_psd_patch::https://gitlab.com/alfredchen/PDS-mq/raw/master/5.0/${_psd_patch}"
 #  "$_uksm_patch::https://raw.githubusercontent.com/dolohow/uksm/master/v4.x/uksm-4.20.patch"
+  "fix_compilation_in_arch.patch::https://gitlab.com/alfredchen/linux-pds/commit/91c2ffd8fe4d73d38581bbd988dfec9703d74c5e.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -58,7 +59,8 @@ sha256sums=('0b4454d76dd3e739b16dec176aab916617361fcc2fb3a3ff311ea8fa51b2334a'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '8119fd93d81cb048cbd6912e98cfaa6b69364685e8e8bb87a84e3c7107ca10a7')
+            '8119fd93d81cb048cbd6912e98cfaa6b69364685e8e8bb87a84e3c7107ca10a7'
+            'ef055a073555ef5718df534a9a6419db027808130439ccb5b6d896b0f4ae6e33')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}

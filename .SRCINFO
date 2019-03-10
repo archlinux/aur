@@ -1,6 +1,6 @@
 pkgbase = linux-gc
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
 	license = GPL2
@@ -20,6 +20,7 @@ pkgbase = linux-gc
 	source = linux.preset
 	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
 	source = v5.0_pds099o.patch::https://gitlab.com/alfredchen/PDS-mq/raw/master/5.0/v5.0_pds099o.patch
+	source = fix_compilation_in_arch.patch::https://gitlab.com/alfredchen/linux-pds/commit/91c2ffd8fe4d73d38581bbd988dfec9703d74c5e.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
@@ -30,6 +31,7 @@ pkgbase = linux-gc
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
 	sha256sums = 8119fd93d81cb048cbd6912e98cfaa6b69364685e8e8bb87a84e3c7107ca10a7
+	sha256sums = ef055a073555ef5718df534a9a6419db027808130439ccb5b6d896b0f4ae6e33
 
 pkgname = linux-gc
 	pkgdesc = The Linux-gc kernel and modules with the PDS-mq CPU scheduler and UKSM patchset
