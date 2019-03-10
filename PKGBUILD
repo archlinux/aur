@@ -1,11 +1,11 @@
 pkgname=angular-cli
-pkgver=7.3.1
+pkgver=7.3.5
 pkgrel=1
 pkgdesc="CLI tool for Angular"
 arch=(any)
 url="https://github.com/angular/angular-cli"
 license=(MIT)
-depends=('nodejs' 'npm' )
+depends=('nodejs' 'npm')
 options=(!strip)
 
 package() {
