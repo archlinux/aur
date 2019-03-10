@@ -54,7 +54,7 @@ package()
 
   # Install the utilities
     install -d  "${pkgdir}/functions/"
-    cp -r ${srcdir}/${pkgname}-${pkgver}/functions/* ${pkgdir}/functions/
+    cp -r ${srcdir}/functions/* ${pkgdir}/functions/
     install -D -m644 "${pkgdir}/usr/share/zsh-theme-${_pkgname}/gitstatus/gitstatus.plugin.zsh"
     install -D -m644 "${pkgdir}/usr/share/zsh-theme-${_pkgname}/gitstatus/bin/gitstatusd-linux-x86_64"
 }
