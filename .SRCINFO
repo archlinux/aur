@@ -1,10 +1,11 @@
 pkgbase = aspell-nb
 	pkgdesc = Norwegian Bokmål dictionary for aspell
 	pkgver = 0.50.1
-	pkgrel = 1
-	url = http://aspell.net/
+	pkgrel = 2
+	url = https://aspell.net/
 	arch = any
 	license = GPL
+	makedepends = convmv
 	depends = aspell
 	source = ftp://ftp.gnu.org/gnu/aspell/dict/nb/aspell-nb-0.50.1-0.tar.bz2
 	sha256sums = e7746e8b617b2df576c1172399544818084524504202b16c747f52db5e5d228a
