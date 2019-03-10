@@ -4,14 +4,14 @@
 
 pkgname=nvidia-390xx-ck
 pkgver=390.116
-pkgrel=3
+pkgrel=4
 _extramodules=extramodules-ck
 _pkgdesc="NVIDIA drivers for linux-ck, 390xx legacy branch."
 pkgdesc="$_pkgdesc"
 arch=('x86_64')
 url="http://www.nvidia.com/"
-makedepends=("nvidia-390xx-utils=${pkgver}" 'libglvnd' 'linux-ck-headers>=4.20' 'linux-ck-headers<4.21')
-depends=('linux-ck>=4.20' 'linux-ck<4.21' 'libglvnd' "nvidia-390xx-utils=${pkgver}")
+makedepends=("nvidia-390xx-utils=${pkgver}" 'libglvnd' 'linux-ck-headers')
+depends=('linux-ck' 'libglvnd' "nvidia-390xx-utils=${pkgver}")
 conflicts=('nvidia-340xx-ck' 'nvidia-ck')
 #groups=('ck-generic')
 #replaces=()
