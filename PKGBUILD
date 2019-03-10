@@ -1,6 +1,6 @@
 # Maintainer: <andrew dot myers at wanadoo  dot fr>
 pkgname=vpacman
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A Graphical front end for pacman and the AUR"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=('pkgfile: for faster retrieval of package files'
 			'xterm: preconfigured terminal emulator (default)'
 			)
 source=(http://github.com/fdservices/$pkgname/archive/$pkgver.tar.gz)
-md5sums=('6231d70d1f54d046f3b5aa537f1d2c2e')
+md5sums=('b594fc3e6a5cfaa3557c08b94498a2f9')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -43,6 +43,7 @@ package() {
     install -d "$pkgdir"/usr/share/applications
     install -m644 vpacman.desktop "$pkgdir"/usr/share/applications/
 }
+
 
 
 
