@@ -4,16 +4,16 @@
 
 pkgname=sandy-git
 pkgver=0.5r4.6dcd566
-pkgrel=3
+pkgrel=4
 pkgdesc="An ncurses text editor with an easy-to-read, hackable C source."
 arch=('i686' 'x86_64')
-url="http://tools.suckless.org/sandy"
+url="https://github.com/antics/sandy.git"
 license=('custom:MIT/X')
 depends=('ncurses')
 makedepends=('git')
 provides=('sandy')
 conflicts=('sandy')
-source=("git+https://github.com/antics/sandy.git")
+source=("git+$url")
 md5sums=('SKIP')
 sha1sums=('SKIP')
 
