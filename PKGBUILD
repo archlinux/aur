@@ -1,7 +1,7 @@
 # Maintainer: higgsbosoncodes higgsbosoncodes@gmail.com
 # https://github.com/higgsbosoncodes
 pkgname=arch-animated-startscreen
-pkgver=1.7
+pkgver=1.8.0
 pkgrel=1
 epoch=
 pkgdesc="Animated SDDM-Theme and Splashscreen for Archlinux (made for KDE)(Aurora Borealis Background)"
