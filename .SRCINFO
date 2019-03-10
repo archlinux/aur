@@ -1,7 +1,7 @@
 pkgbase = vmware-workstation
 	pkgdesc = The industry standard for running multiple operating systems as virtual machines on a single Linux PC.
 	pkgver = 15.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.vmware.com/products/workstation-for-linux.html
 	install = vmware-workstation.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = vmware-workstation
 	makedepends = sqlite
 	makedepends = python2
 	makedepends = unzip
+	depends = vmware-keymaps
 	depends = dkms
 	depends = ncurses5-compat-libs
 	depends = fuse2
