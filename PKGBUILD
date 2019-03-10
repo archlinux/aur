@@ -53,9 +53,7 @@ package()
   install -D -m644 powerlevel10k.zsh-theme "${pkgdir}/usr/share/zsh-theme-${_pkgname}/${_pkgname}.zsh-theme"
 
   # Install the utilities
-  for FILE in functions/*.zsh; do
-    install -D -m644 "${FILE}" "${pkgdir}/usr/share/zsh-theme-${_pkgname}/functions/$(basename ${FILE})"
-    install -D -m644 "${FILE}" "${pkgdir}/usr/share/zsh-theme-${_pkgname}/gitstatus/gitstatus.plugin.zsh ${FILE})"
-    install -D -m644 "${FILE}" "${pkgdir}/usr/share/zsh-theme-${_pkgname}/gitstatus/bin/gitstatusd-linux-x86_64 ${FILE})"
-  done
+    install -Dm644 "${pkgdir}/usr/share/zsh-theme-${_pkgname}/functions/$(basename)"
+    install -Dm644 "${pkgdir}/usr/share/zsh-theme-${_pkgname}/gitstatus/gitstatus.plugin.zsh"
+    install -Dm644 "${pkgdir}/usr/share/zsh-theme-${_pkgname}/gitstatus/bin/gitstatusd-linux-x86_64"
 }
