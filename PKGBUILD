@@ -19,6 +19,7 @@ depends=(
 	'python-beautifulsoup4'
 	'python-yaml'
 	'python-decorator'
+	'python-censys'
 )
 makedepends=('git' 'bash')
 provides=("${pkgname}")

@@ -19,6 +19,7 @@ pkgbase = theharvester-git
 	depends = python-beautifulsoup4
 	depends = python-yaml
 	depends = python-decorator
+	depends = python-censys
 	provides = theharvester-git
 	conflicts = theharvester-git
 	source = theharvester-git::git+https://github.com/laramies/theHarvester.git

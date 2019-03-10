@@ -1,5 +1,4 @@
 post_install() {
-    echo "NOTE: the Censys python module has been added upstream as a dependency, but is not available as an Archlinux package. For now, please use "easy_install censys" if you wish to use the censys functionalities."
     echo "IMPORTANT: The location of API keys has changed!"
     echo "Add your keys to /opt/theharvester-git/api-keys.yaml"
     echo "	bingapi"
