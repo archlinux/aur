@@ -6,22 +6,23 @@
 pkgname=nvidia-340xx-ck
 pkgver=340.107
 _extramodules=extramodules-ck
-pkgrel=47
+pkgrel=48
 pkgdesc="NVIDIA drivers for linux-ck, 340xx legacy branch."
 arch=('x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-ck>=4.20' 'linux-ck<4.21' 'libgl' "nvidia-340xx-utils=${pkgver}")
-makedepends=('linux-ck-headers>=4.20' 'linux-ck-headers<4.21' 'nvidia-340xx-libgl')
+depends=('linux-ck' 'libgl' "nvidia-340xx-utils=${pkgver}")
+makedepends=('linux-ck-headers' 'nvidia-340xx-libgl')
 conflicts=('nvidia-ck' 'nvidia-390xx-ck')
 #groups=('ck-generic')
 #replaces=()
 license=('custom')
 options=(!strip)
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-'kernel-4.11.patch'
+'kernel-4.11.patch' 'kernel-5.0.patch'
 )
 sha256sums=('6dc6f183c69c414670d8adef0286a2362eedd6e16ec6dfae811e48ea4a4505dc'
-            '5ba7e6d5e502882c3534d1d8578f7fd29fdf3d2aeb49206efa7b3514a7e3e821')
+            '5ba7e6d5e502882c3534d1d8578f7fd29fdf3d2aeb49206efa7b3514a7e3e821'
+            '236a1d1dc9adc1cafec828f0650d5a15f1f6d0fa27905dab58ca072a46f159fa')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 prepare() {
@@ -30,6 +31,7 @@ prepare() {
 
   # patches here
   patch -Np0 < "${srcdir}/kernel-4.11.patch"
+  patch -Np0 < "${srcdir}/kernel-5.0.patch"
 }
 
 build() {
