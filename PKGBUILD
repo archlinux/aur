@@ -1,7 +1,7 @@
 pkgbase=higan-qq
 pkgname=('higan-qq' 'libananke')
 pkgver=094.8d4b3cfa
-pkgrel=3
+pkgrel=4
 pkgdesc="A Nintendo multi-system emulator with quequotion's customizations"
 arch=('i686' 'x86_64')
 url=https://github.com/quequotion/higan-qq
@@ -42,14 +42,14 @@ prepare(){
 
         #Force Super FX2 Clock (contraversial benefit)
         patch -Np2 < "${srcdir}/super-fx-hax.patch"
-
-        #Append user's CXXFLAGS and LDFLAGS
-        sed -i "\|^flags :=| s|$| $CFLAGS|" nall/Makefile
-        sed -i "\|^link :=| s|$| $LDFLAGS|" nall/Makefile
 }
 
 build(){
         cd "${srcdir}/higan"
+
+        #Append user's CXXFLAGS and LDFLAGS
+        sed -i "\|^flags :=| s|$| $CFLAGS|" nall/Makefile
+        sed -i "\|^link :=| s|$| $LDFLAGS|" nall/Makefile
 
 # libananke
         make \
@@ -58,25 +58,12 @@ build(){
         -C ananke
 
 # higan
-        # Normal build (doesn't work with makepkg-optimize's pgo macro for reasons unkown)
         make \
         compiler=g++ \
         platform=linux \
         target=higan \
         profile=${_profile} \
         name=higan-${_profile}
-
-        # Profile Guided Optimization build
-        #
-        # Build with profile generation
-        #make pgo=instrument compiler=g++ platform=linux target=higan profile=${_profile} name=higan-${_profile}
-        #
-        # Run all cores and SFC special chips (except the new (famicom variant) nSide systems (Playchoice 10, VS System))
-        #"${srcdir}/profilebatch" "out/higan-${_profile}" "/home/${USER}/ROMS/higan"
-        #
-        # Build with profile analysis
-        #make clean
-        #make pgo=optimize compiler=g++ platform=linux target=higan profile=${_profile} name=higan-${_profile}
 }
 
 package_libananke(){

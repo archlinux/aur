@@ -1,7 +1,7 @@
 pkgbase = higan-qq
 	pkgdesc = A Nintendo multi-system emulator with quequotion's customizations
 	pkgver = 094.8d4b3cfa
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/quequotion/higan-qq
 	install = higan.install
 	arch = i686
