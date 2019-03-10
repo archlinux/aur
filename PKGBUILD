@@ -3,7 +3,7 @@ _buildver=191.6014.12
 _pkgver=2019.1
 _eap=y
 pkgver=$_pkgver.$_buildver
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='Powerful Python and Django IDE, Early Access Program (EAP) build. Community edition.'
 arch=(any)
@@ -19,9 +19,8 @@ if [[ $_eap = y ]]; then
 else
     _filever=$_pkgver
 fi
-source=("https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz"{,.sha256})
-sha256sums=($(cut -f1 -d' ' "pycharm-community-$_filever.tar.gz.sha256") SKIP)
-
+source=("https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz")
+sha256sums=($(curl -s "https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz.sha256" | cut -d' ' -f1))
 prepare() {
 	cat >"$srcdir/$pkgname.desktop" <<-EOF
 		[Desktop Entry]
