@@ -5,17 +5,15 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer-git
-pkgver=2019.216.0_167_g89a05c086
+pkgver=2019.308.0
 pkgrel=1
 pkgdesc='Freeware rhythm video game - lazer development version'
 arch=('x86_64')
 url='https://osu.ppy.sh'
 license=('MIT')
-makedepends=('mono'
-             'git')
+makedepends=('git')
 depends=('dotnet-sdk'
          'ffmpeg'
-         'libbass'
          'libgl'
          'shared-mime-info')
 optdepends=()
@@ -60,7 +58,7 @@ build() {
 	# Build
 	export MONO_IOMAP='case'
 	export TERM='xterm'
-	dotnet msbuild /property:Configuration=Release osu.sln
+	dotnet build /property:Configuration=Release osu.sln
 }
 
 package() {
@@ -89,8 +87,8 @@ package() {
 	# Copy binaries
 	cd "$srcdir/osu/osu.Desktop/bin/Release/netcoreapp2.2"
 	mkdir -p "$pkgdir/usr/lib/${pkgname%-git}"
-	for file in *.dll *.json *.pdb *.so; do
-		install -m755 "$file" "$pkgdir/usr/lib/${pkgname%-git}/$file"
+	for file in *.dll *.json *.pdb x86_64/*.so; do
+		install -m755 "$file" "$pkgdir/usr/lib/${pkgname%-git}/${file##*/}"
 	done
 }
 
