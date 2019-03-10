@@ -1,7 +1,7 @@
 # Maintainer: Florian Glorioz <florian.glorioz@epitech.eu>
 pkgname=normez
-pkgver=r121.617849d
-pkgrel=1
+pkgver=r161.574a98a
+pkgrel=2
 pkgdesc="Coding-style checker for Epitech students."
 arch=('any')
 url="https://github.com/ronanboiteau/NormEZ"
