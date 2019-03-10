@@ -56,5 +56,6 @@ package()
   for FILE in functions/*.zsh; do
     install -D -m644 "${FILE}" "${pkgdir}/usr/share/zsh-theme-${_pkgname}/functions/$(basename ${FILE})"
   done
-  cp -r gitstatus "${pkgdir}/usr/share/zsh-theme-${_pkgname}/"
+  install -d "${pkgdir}/usr/share/zsh-theme-${_pkgname}/gitstatus/bin"
+  cp -R gitstatus "$pkgdir"/usr/share/zsh-theme-${_pkgname}/
 }
