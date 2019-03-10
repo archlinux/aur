@@ -3,15 +3,15 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=virtualbox-headless
-pkgver=5.2.22
+pkgver=6.0.4
 _tarver=${pkgver}
 pkgrel=1
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use. Headless build (no GUI, no Java).'
 arch=('i686' 'x86_64')
-url='http://virtualbox.org'
+url='https://virtualbox.org'
 license=('GPL' 'custom')
 depends=('curl' 'libxml2' 'libvpx' 'libpng' 'python' 'opus')
-makedepends=('iasl' 'libxslt' 'cdrkit' 'libidl2' 'libpulse' 'device-mapper' 'libvncserver' 'gsoap')
+makedepends=('iasl' 'libxslt' 'cdrkit' 'libidl2' 'libpulse' 'device-mapper' 'libvncserver' 'gsoap' 'glu')
 makedepends_x86_64=('gcc-multilib')
 optdepends=('vde2: Virtual Distributed Ethernet support'
             'virtualbox-guest-iso: Guest Additions CD image'
@@ -22,7 +22,7 @@ provides=("virtualbox=${pkgver}")
 replaces=('virtualbox-ose' 'virtualbox')
 conflicts=('virtualbox-ose' 'virtualbox')
 install=virtualbox.install
-source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${_tarver}.tar.bz2"
+source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${_tarver}.tar.bz2"
         'virtualbox.sysusers'
         '60-vboxdrv.rules'
         '60-vboxguest.rules'
@@ -35,15 +35,15 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${_tarve
         '005-gsoap-build.patch'
         '008-no-vboxvideo.patch'
         '009-include-path.patch'
-        #'010-x11-stub.cpp-NOREF.patch'
         '011-python-3-7.patch'
+        '012-vbglR3GuestCtrlDetectPeekGetCancelSupport.patch'
         )
 sha256sums=(
-    '5580e875349341a1aabc6d5d2f697d242f277487316faaf1fbe68d9014f788d4'
+    'f80b0c68182c946fb74ada8034960c38159ad91085b153da1277e4f191af6e1f'
     '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
     '9c5238183019f9ebc7d92a8582cad232f471eab9d3278786225abc1a1c7bf66e'
     '033c597e0f5285d2ddb0490868e5b6f945f45c7b1b1152a02a9e6fea438b2c95'
-    'b395e1add983c37cbfa7f7efbfb0699ab181cfa1600aea20d873caf901ed3eb9'
+    '79c0035be857726344f648aea6cf2be9326caf398d83fead569d7e5836f39990'
     '94a808f46909a51b2d0cf2c6e0a6c9dea792034943e6413bf9649a036c921b21'
     '01dbb921bd57a852919cc78be5b73580a564f28ebab2fe8d6c9b8301265cbfce'
     'e6e875ef186578b53106d7f6af48e426cdaf1b4e86834f01696b8ef1c685787f'
@@ -52,8 +52,8 @@ sha256sums=(
     '7d2da8fe10a90f76bbfc80ad1f55df4414f118cd10e10abfb76070326abebd46'
     '8b7f241107863f82a5b0ae336aead0b3366a40103ff72dbebf33f54b512a0cbc'
     '1acc7014bcb3d9ca6da29eed813c3d6e91a688c43f9d93802fd4e3814f67ace4'
-    #'1e7f0fcc5a1fdbd6ef1531fd87897eeac8d8ce719bdaa5bc1f3d76263052c40b'
-    '9535774f1858c0ad92f0edee99875dcf683e41a4c7c95494c8aeb81591426e5a'
+    '55224cb74b54b331d691f171efc0d4c058a14f738551f1d8f559146c2908635d'
+    '81900e13d36630488accd8c0bfd2ceb69563fb2c4f0f171caba1cca59d438024'
 )
 
 prepare() {
@@ -73,12 +73,6 @@ prepare() {
 
     msg2 'Use our CFLAGS'
     echo "VBOX_GCC_OPT=$CXXFLAGS" >> LocalConfig.kmk
-
-    msg2 'Use system GL headers'
-    echo 'VBOX_USE_SYSTEM_GL_HEADERS=true' >> LocalConfig.kmk
-
-    msg2 'Remove gcc version censorship'
-    sed -i 's/^check_gcc$/#check_gcc/' configure
 }
 
 build() {
@@ -111,42 +105,42 @@ package() {
     sed -i '44,45s/VirtualBox/VBoxHeadless/' VBox.sh
 
     # binaries
-    install -dm755 "$pkgdir/usr/bin"
-    install -m755 VBox.sh "$pkgdir/usr/bin/VBox"
+    install -dm0755 "$pkgdir/usr/bin"
+    install -m0755 VBox.sh "$pkgdir/usr/bin/VBox"
     for i in VBoxHeadless VBoxManage vboxwebsrv VBoxBalloonCtrl; do
         ln -sf VBox "$pkgdir/usr/bin/$i"
         ln -sf VBox "$pkgdir/usr/bin/${i,,}"
     done
-    install -m755 VBoxTunctl "$pkgdir/usr/bin"
+    install -m0755 VBoxTunctl "$pkgdir/usr/bin"
 
     # libraries
-    install -dm755 "$pkgdir/usr/lib/virtualbox"
-    install -m755 *.so "$pkgdir/usr/lib/virtualbox"
-    install -m644 *.rc *.r0 VBoxEFI*.fd "$pkgdir/usr/lib/virtualbox"
+    install -dm0755 "$pkgdir/usr/lib/virtualbox"
+    install -m0755 *.so "$pkgdir/usr/lib/virtualbox"
+    install -m0644 *.rc *.r0 VBoxEFI*.fd "$pkgdir/usr/lib/virtualbox"
     ## setuid root binaries
     install -m4755 VBoxHeadless VBoxNetDHCP VBoxNetAdpCtl VBoxNetNAT -t "$pkgdir/usr/lib/virtualbox"
     ## other binaries
-    install -m755 VBoxManage VBoxSVC VBoxExtPackHelperApp VBoxXPCOMIPCD VBoxBalloonCtrl vboxwebsrv webtest -t "$pkgdir/usr/lib/virtualbox"
+    install -m0755 VBoxManage VBoxSVC VBoxExtPackHelperApp VBoxXPCOMIPCD VBoxBalloonCtrl vboxwebsrv webtest -t "$pkgdir/usr/lib/virtualbox"
 
     # components
-    install -dm755 "$pkgdir/usr/lib/virtualbox/components"
-    install -m755 components/* -t "$pkgdir/usr/lib/virtualbox/components"
+    install -dm0755 "$pkgdir/usr/lib/virtualbox/components"
+    install -m0755 components/* -t "$pkgdir/usr/lib/virtualbox/components"
 
     # extensions packs
     ## as virtualbox install itself stuff in this directory, move it to /var and
     ## trick it with a symlink
     ## FIXME: trick is disabled for now
-    #install -dm755 "$pkgdir/var/lib/virtualbox/extensions"
-    #install -dm755 "$pkgdir/usr/share/virtualbox/extensions"
+    #install -dm0755 "$pkgdir/var/lib/virtualbox/extensions"
+    #install -dm0755 "$pkgdir/usr/share/virtualbox/extensions"
     #ln -s ../../../var/lib/virtualbox/extensions "$pkgdir/usr/lib/virtualbox/ExtensionPacks"
-    install -dm755 "$pkgdir/usr/lib/virtualbox/ExtensionPacks"
+    install -dm0755 "$pkgdir/usr/lib/virtualbox/ExtensionPacks"
 
     # useless scripts
-    install -dm755 "$pkgdir/usr/share/virtualbox"
-    install -m755 VBoxCreateUSBNode.sh VBoxSysInfo.sh -t "$pkgdir/usr/share/virtualbox"
+    install -dm0755 "$pkgdir/usr/share/virtualbox"
+    install -m0755 VBoxCreateUSBNode.sh VBoxSysInfo.sh -t "$pkgdir/usr/share/virtualbox"
 
     # icons
-    install -Dm644 VBox.png "$pkgdir/usr/share/pixmaps/VBox.png"
+    install -Dm0644 VBox.png "$pkgdir/usr/share/pixmaps/VBox.png"
 
     pushd icons >/dev/null
     for i in *; do
@@ -156,25 +150,25 @@ package() {
     popd >/dev/null
 
     #desktop
-    install -Dm644 virtualbox.xml "$pkgdir/usr/share/mime/packages/virtualbox.xml"
+    install -Dm0644 virtualbox.xml "$pkgdir/usr/share/mime/packages/virtualbox.xml"
 
     #install configuration
-    install -dm755 "$pkgdir/etc/vbox"
+    install -dm0755 "$pkgdir/etc/vbox"
     echo 'INSTALL_DIR=/usr/lib/virtualbox' > "$pkgdir/etc/vbox/vbox.cfg"
 
     # back to srcdir
     cd "$srcdir"
 
     #licence
-    install -Dm644 VirtualBox-$pkgver/COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm0644 VirtualBox-$pkgver/COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # install systemd stuff
-    install -Dm644 60-vboxdrv.rules "$pkgdir/usr/lib/udev/rules.d/60-vboxdrv.rules"
-    install -Dm644 vboxweb.service "$pkgdir/usr/lib/systemd/system/vboxweb.service"
-    install -Dm644 virtualbox.sysusers "$pkgdir/usr/lib/sysusers.d/virtualbox.conf"
+    install -Dm0644 60-vboxdrv.rules "$pkgdir/usr/lib/udev/rules.d/60-vboxdrv.rules"
+    install -Dm0644 vboxweb.service "$pkgdir/usr/lib/systemd/system/vboxweb.service"
+    install -Dm0644 virtualbox.sysusers "$pkgdir/usr/lib/sysusers.d/virtualbox.conf"
 
     # install module reloading shortcut (with a symlink with default helper)
-    install -Dm755 vboxreload "$pkgdir/usr/bin"
+    install -Dm0755 vboxreload "$pkgdir/usr/bin"
     ln -s vboxreload "$pkgdir/usr/bin/rcvboxdrv"
 }
 
