@@ -1,14 +1,16 @@
 pkgbase = guacamole-client
 	pkgdesc = Java and Maven components of Guacamole
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://guacamole.sourceforge.net/
 	install = guacamole-client.install
 	arch = any
 	license = GPL3
 	makedepends = maven
+	makedepends = jdk8-openjdk
 	depends = java-runtime
 	depends = tomcat8
+	depends = jre8-openjdk
 	replaces = guacamole
 	backup = usr/share/tomcat8/.guacamole/guacamole.properties
 	backup = usr/share/tomcat8/.guacamole/user-mapping.xml
