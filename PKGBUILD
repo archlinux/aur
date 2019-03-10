@@ -1,8 +1,9 @@
+# Contributor: eskimod
 # Maintainer: Sýlvan Heuser <sylvan.heuser@gmx.net>
 
 pkgname=libpurple-lurch-git
 _pkgname=lurch
-pkgver=r43.eac7db0
+pkgver=r117.3f74880
 pkgrel=1
 pkgdesc='Plugin for libpurple (Pidgin, Adium, etc) implementing OMEMO (using axolotl)'
 arch=('i686' 'x86_64')
@@ -25,6 +26,9 @@ pkgver () {
 prepare() {
   cd "$srcdir/$_pkgname"
   msg2 "Getting submodules"
+  # .gitmodules specifies relative paths that don't resolve correctly on a local clone
+  git config --file=.gitmodules submodule."lib/axc".url "https://github.com/gkdr/axc"
+  git config --file=.gitmodules submodule."lib/libomemo".url "https://github.com/gkdr/libomemo"
   git submodule update --init --recursive
 }
 
