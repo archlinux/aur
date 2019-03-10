@@ -1,26 +1,21 @@
-diff --unified --recursive --text package.orig/higan/GNUmakefile package.new/higan/GNUmakefile
---- package.orig/higan/GNUmakefile	2018-12-21 12:10:31.000000000 -0700
-+++ package.new/higan/GNUmakefile	2019-03-09 23:28:46.600329596 -0700
-@@ -23,7 +23,6 @@
-   endif
- else ifneq ($(filter $(platform),linux bsd),)
-   ifeq ($(binary),application)
--    flags += -march=native
-     link += -Wl,-export-dynamic
-     link += -lX11 -lXext
-   else ifeq ($(binary),library)
-diff --unified --recursive --text package.orig/higan/target-bsnes/GNUmakefile package.new/higan/target-bsnes/GNUmakefile
---- package.orig/higan/target-bsnes/GNUmakefile	2018-12-20 03:55:21.000000000 -0700
-+++ package.new/higan/target-bsnes/GNUmakefile	2019-03-09 23:07:11.462473491 -0700
-@@ -21,7 +21,7 @@
+diff --unified --recursive bsnes_v107-source.orig/higan/GNUmakefile bsnes_v107-source.new/higan/GNUmakefile
+--- bsnes_v107-source.orig/higan/GNUmakefile	2019-03-10 01:42:30.163599022 -0700
++++ bsnes_v107-source.new/higan/GNUmakefile	2019-03-10 01:45:20.179375447 -0700
+@@ -1,6 +1,9 @@
++flags = $(CFLAGS)
++options = $(LDFLAGS)
++
+ target := bsnes
+ binary := application
+-build := performance
++build := release
+ openmp := true
+ flags += -I. -I..
  
- all: $(hiro.objects) $(ruby.objects) $(objects)
- 	$(info Linking out/$(name) ...)
--	+@$(compiler) -o out/$(name) $(hiro.objects) $(ruby.objects) $(objects) $(hiro.options) $(ruby.options) $(options)
-+	+@$(compiler) -o out/$(name) $(hiro.objects) $(ruby.objects) $(objects) $(hiro.options) $(ruby.options) $(options) $(LDFLAGS)
- ifeq ($(platform),macos)
- 	rm -rf out/$(name).app
- 	mkdir -p out/$(name).app/Contents/MacOS/
+
+diff --unified --recursive bsnes_v107-source.orig/higan/target-bsnes/GNUmakefile bsnes_v107-source.new/higan/target-bsnes/GNUmakefile
+--- bsnes_v107-source.orig/higan/target-bsnes/GNUmakefile	2019-03-10 01:51:07.601683406 -0700
++++ bsnes_v107-source.new/higan/target-bsnes/GNUmakefile	2019-03-10 01:52:00.013706440 -0700
 @@ -34,9 +34,7 @@
  verbose: hiro.verbose ruby.verbose nall.verbose all;
  
