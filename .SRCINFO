@@ -1,7 +1,7 @@
 pkgbase = libpurple-lurch-git
 	pkgdesc = Plugin for libpurple (Pidgin, Adium, etc) implementing OMEMO (using axolotl)
-	pkgver = r117.3f74880
-	pkgrel = 1
+	pkgver = v0.6.8.r0.g3f74880
+	pkgrel = 2
 	url = https://github.com/gkdr/lurch
 	arch = i686
 	arch = x86_64

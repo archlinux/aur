@@ -3,8 +3,8 @@
 
 pkgname=libpurple-lurch-git
 _pkgname=lurch
-pkgver=r117.3f74880
-pkgrel=1
+pkgver=v0.6.8.r0.g3f74880
+pkgrel=2
 pkgdesc='Plugin for libpurple (Pidgin, Adium, etc) implementing OMEMO (using axolotl)'
 arch=('i686' 'x86_64')
 url="https://github.com/gkdr/lurch"
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver () {
   cd "$srcdir/$_pkgname"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
