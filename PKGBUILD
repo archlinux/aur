@@ -51,7 +51,7 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=4.20
-_minor=14
+_minor=15
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -73,7 +73,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "${_gcc_path}/${_gcc_patch}"
         "${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
-        "${_lucjanpath}/arch-patches-v2/0002-exec-Fix-mem-leak-in-kernel_read_file.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -379,12 +378,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('6a5f16b5fe8a8e5cd759d29fe5196f797fc41e7abe2ab7c89c5d70bfb8a76855def11a6e5b16b0e2acc5e25d197daeeccc8bf0a98081a217e3efab34b2676d20'
+sha512sums=('cfa18332a7ce598cec96d5bc9c73378fc92c3706597a98b6954003fce9187b079c682f9a3075f37ae26fa81659ab325b2c4690c075d350dd077466d36ee8f100'
             'SKIP'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
             'af14061bc151ed0b94c7759da1618a4a05d2c7669aec31d6e59a2f4874fe3b5a1774ad8b8f67f6c01daec84aae2dbd464ce4a74c611dd81619a3f4312507f017'
             '1d98e34bb276c8ccbc5f175a4ef887ccb9ecf2c72ded9133b2973bf940f8ca996129110d0a49b3bbe25f997a3f28108f3d8477403b05f01fee2589b4a04f4d0b'
-            '3b58b55a475a88ea4773bd28064ec4670c7ded3b028fc337facf78014529fecf413ad1aeaa12424b6f478b237438a31205f8938908cc47f1b612894661626bf0'
             '1c180319a3940272c7c22febb746ce804abd64b6ae53651908b9d800aefd366cae7f29a4c6ccbca84810fe6c5ece5b83d7a5ae337453e1163ffcf8f7dd3f5356'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
