@@ -1,7 +1,7 @@
 pkgbase = texlive-moderncv-git
 	pkgdesc = A modern curriculum vitae class for LaTeX
 	pkgver = v2.0.0.r10.g2033517
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xdanaux/moderncv
 	arch = any
 	license = The LaTeX Project Public Li­cense, version 1.3c

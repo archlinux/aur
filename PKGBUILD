@@ -3,7 +3,7 @@
 _pkgname=moderncv
 pkgname=texlive-moderncv-git
 pkgver=v2.0.0.r10.g2033517
-pkgrel=1
+pkgrel=2
 pkgdesc=" A modern curriculum vitae class for LaTeX"
 arch=('any')
 url="https://github.com/xdanaux/moderncv"
@@ -15,6 +15,11 @@ provides=('texlive-moderncv')
 # I use my personal repo until xdanaux adds a tag in his repo
 source=("git+https://github.com/xdanaux/moderncv.git")
 md5sums=('SKIP')
+
+prepare() {
+    cd "$srcdir/$_pkgname"
+    sed -i "/l3regex/d" moderncv.cls
+}
 
 pkgver() {
     cd "$srcdir/$_pkgname"
