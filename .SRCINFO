@@ -5,14 +5,15 @@ pkgbase = languagetool-ngrams-ru
 	url = http://wiki.languagetool.org/finding-errors-using-n-gram-data
 	install = languagetool-ngrams-ru.install
 	arch = any
-	license = LGPL
+	license = CCPL
 	makedepends = unzip
 	optdepends = languagetool: system wide installation of LT
 	optdepends = libreoffice-extension-languagetool: standalone LT for LibreOffice
 	optdepends = openoffice-extension-languagetool: standalone LT for OpenOffice
 	noextract = languagetool-ngrams-ru-20150914.zip
-	source = languagetool-ngrams-ru-20150914.zip::http://languagetool.org/download/ngram-data/untested/ngram-ru-20150914.zip
-	md5sums = SKIP
+	options = !strip
+	source = languagetool-ngrams-ru-20150914.zip::https://languagetool.org/download/ngram-data/untested/ngram-ru-20150914.zip
+	md5sums = faa5db4c3ca7f6f702f2cdba54b08766
 
 pkgname = languagetool-ngrams-ru
 
