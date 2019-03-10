@@ -1,32 +1,28 @@
-# Contributor: Daniel Miranda <dmiranda at gmail dot com>
-# Maintainer: Gustavo Costa <gusbemacbe@gmail.com>
+# Contributor: Daniel Miranda (dmiranda)
+# Contributor: Fabio ‘Lolix’ Loli <lolix at disroot dot org>
+# Contributor: Jonathon <jonathonf>
+# Maintainer: Gustavo Costa (gusbemacbe)
 
-_gitname=suru-plus-aspromauros
 pkgname=suru-plus-aspromauros-git
-pkgver=r1.0
+pkgver=1.0
 pkgrel=1
-pkgdesc="A Suru++ monochromatic icons theme for users of dark environments"
+pkgdesc="Suru++ Asprómauros – A full monochromatic icons set for users of dark environments"
 arch=('any')
-url="https://github.com/gusbemacbe/${_gitname}"
+url="https://github.com/gusbemacbe/${pkgname/-git/}"
 license=('GPL3')
+changelog=CHANGELOG
 makedepends=('git')
-options=('!strip')
-conflicts=(${_gitname})
+conflicts=(${pkgname/-git/})
+provides=(${pkgname/-git/})
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() 
 {
-    cd ${_gitname}
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git -C ${pkgname/-git/} describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 package() 
 {
-    install -d ${pkgdir}/usr/share/icons
-    cp -r ${srcdir}/${_gitname}* ${pkgdir}/usr/share/icons/
-    find ${pkgdir}/usr -type f -exec chmod 644 {} \;
-    find ${pkgdir}/usr -type d -exec chmod 755 {} \;
-    find ${pkgdir}/usr -type f -name '.directory' -delete
-    rm -rf "$pkgdir"/usr/share/icons/suru-plus-aspromauros/{configure, .git, .github, .gitattributes, .gitignore, *.md, *.jpg, *.svg, *.png, .product}
+    make -C ${pkgname/-git/} DESTDIR="$pkgdir/" install
 }

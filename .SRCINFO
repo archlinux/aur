@@ -1,13 +1,14 @@
 pkgbase = suru-plus-aspromauros-git
-	pkgdesc = A Suru++ monochromatic icons theme for users of dark environments
-	pkgver = r1.0
+	pkgdesc = Suru++ Asprómauros – A full monochromatic icons set for users of dark environments
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/gusbemacbe/suru-plus-aspromauros
+	changelog = CHANGELOG
 	arch = any
 	license = GPL3
 	makedepends = git
+	provides = suru-plus-aspromauros
 	conflicts = suru-plus-aspromauros
-	options = !strip
 	source = git+https://github.com/gusbemacbe/suru-plus-aspromauros.git
 	sha256sums = SKIP
 
