@@ -1,9 +1,8 @@
 # Maintaner: Ocelot 1112345@airmail.cc
 
-_pkgname=python-censys
 _pypiname=censys
 pkgbase=python-censys
-pkgname=('python-censys' 'python2-censys')
+pkgname=(python-censys python2-censys)
 pkgdesc='A light weight Python wrapper to the Censys REST API'
 pkgver=0.0.8
 pkgrel=1
