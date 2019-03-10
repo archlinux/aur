@@ -13,6 +13,7 @@ pkgbase = python-censys
 	makedepends = python-netaddr
 	makedepends = python2-netaddr
 	source = https://files.pythonhosted.org/packages/88/4b/3ca07679928c26bb5503b53c37e2f6eef2521289956e2c1bf74b64008afa/censys-0.0.8.tar.gz
+	sha256sums = 7e5f623fbdc2ce1dcf3ef531e63ba486f7e255f20c4d4006b4f70b6d59a78534
 
 pkgname = python-censys
 	pkgdesc = A light weight Python 3 wrapper to the Censys REST API
