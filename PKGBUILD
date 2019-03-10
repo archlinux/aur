@@ -1,25 +1,48 @@
-# Maintainer: Kevin Brodsky <corax26 'at' gmail 'dot' com>
+# Maintainer: Kevin Brodsky <corax26 'at' gmail 'dot' com> the next timeslot.
 
 pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
-pkgver=0.93
+pkgver=0.93.1
 srcrel=1 # Incremented when there is a new release for the same version number
-pkgrel=2
+pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
 url="http://www.xnview.com/en/xnviewmp/"
 
-arch=('x86_64' 'i686')
+arch=('x86_64')
 license=('custom')
 depends=('qt5-multimedia' 'qt5-svg' 'qt5-webkit' 'qt5-x11extras' 'qtav' 'desktop-file-utils')
 optdepends=('glib2: support for moving files to trash')
 conflicts=('xnviewmp')
 
-source=('xnviewmp.desktop' 'gvfs-trash')
-source_x86_64=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::http://download.xnview.com/XnViewMP-linux-x64.tgz")
-source_i686=("XnViewMP-linux_${pkgver}-rel${srcrel}.tgz::http://download.xnview.com/XnViewMP-linux.tgz")
-md5sums=('24f44d5a881b94daf48775213a57e4ec' '0c749b6334e8c4cf55cec56281458214')
-md5sums_x86_64=('fcf4929e5f69847ee44a1cab0771c4ce')
-md5sums_i686=('17e8ab2a1de48c8d9bd5f4a42bfac83e')
+source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::http://download.xnview.com/XnViewMP-linux-x64.tgz"
+        'xnviewmp.desktop'
+        'qt5_std_fun_forwarder.S'
+        'qt5_std_fun_forwarder.lds')
+md5sums=('4e395d15d831b0f4258673dfe3d06119'
+         '24f44d5a881b94daf48775213a57e4ec'
+         'df94e031306ac22f7f19d38bf3023c1a'
+         '7fc3b01ef6eb321c5ecba75099e08d33')
+
+build() {
+  # This is massive hack to work around an incompatibility with the system Qt5
+  # libraries. Starting with 0.93.1, the dynamic linker fails to start XnView,
+  # complaining that:
+  #   symbol _ZNSt20bad_array_new_lengthD1Ev version Qt_5 not defined in file libQt5Gui.so.5 with link time reference
+  # (and other functions related to the std::bad_array_new_length class).
+  #
+  # It seems that the Qt5 libraries shipped in the archive changed in 0.93.1,
+  # and they now declare these functions, but our system libs on Arch don't!
+  # Since these are STL functions, the workaround is to manually define these
+  # functions in a tiny shared library, and implement them by calling the STL
+  # functions in libstdc++. This is frankly horrible, but on the bright side,
+  # these functions should never be called anyway (if an
+  # std::bad_array_new_length exception is thrown, it will most likely make
+  # XnView crash).
+  gcc -fPIC -shared -lstdc++ \
+    -Wl,--version-script="${srcdir}/qt5_std_fun_forwarder.lds" \
+    -o "${srcdir}/qt5_std_fun_forwarder.so" \
+    "${srcdir}/qt5_std_fun_forwarder.S" 
+}
 
 package() {
   install -d -m755 "${pkgdir}/opt/${_pkgname}"
@@ -33,7 +56,7 @@ package() {
   install -D -m644 "${srcdir}/XnView/license.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
   # Clean up
-  rm "${pkgdir}/opt/${_pkgname}/XnView.desktop"{,~}
+  rm "${pkgdir}/opt/${_pkgname}/XnView.desktop"
   chmod -x "${pkgdir}/opt/${_pkgname}/xnview.png"
 
   # Remove the bundled framework libs (Qt and icu).
@@ -49,21 +72,13 @@ package() {
     rm -r "${dir}"
     ln -s "/usr/lib/qt/plugins/$(basename "${dir}")" "${dir}"
   done
-  # Since system directories are not looked up, it may be useful to have
-  # additional symlinks for other plugin directories, even though they are not
-  # normally provided with XnView.
-  for dir in "styles"; do
-    ln -s "/usr/lib/qt/plugins/${dir}" "${pkgdir}/opt/${_pkgname}/lib/"
-  done
 
-  # XnView uses gvfs-trash to move files to the trash, unfortunately gvfs does
-  # not provide this command any more; it has been replaced by gio trash,
-  # provided by glib2. As a workaround, use a wrapper and add it to PATH in
-  # xnview.sh.
-  install -d -m755 "${pkgdir}/opt/${_pkgname}/bin"
-  install -m755 "${srcdir}/gvfs-trash" "${pkgdir}/opt/${_pkgname}/bin"
-  sed -i '/LD_LIBRARY_PATH/ i \
-export PATH="$dirname/bin:$PATH"' "${pkgdir}/opt/${_pkgname}/xnview.sh"
+  # Install our "function forwarder library" (see build()) and force the dynamic
+  # linker to use it by adding to LD_PRELOAD.
+  install -m644 "${srcdir}/qt5_std_fun_forwarder.so" "${pkgdir}/opt/${_pkgname}/lib"
+  sed -i '/exec/ i \
+export LD_PRELOAD="$dirname/lib/qt5_std_fun_forwarder.so:$LD_PRELOAD"' \
+    "${pkgdir}/opt/${_pkgname}/xnview.sh"
 }
 
 # vim:set ts=2 sw=2 et:

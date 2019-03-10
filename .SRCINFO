@@ -1,10 +1,9 @@
 pkgbase = xnviewmp-system-libs
 	pkgdesc = An efficient multimedia viewer, browser and converter (using system libraries).
-	pkgver = 0.93
-	pkgrel = 2
+	pkgver = 0.93.1
+	pkgrel = 1
 	url = http://www.xnview.com/en/xnviewmp/
 	arch = x86_64
-	arch = i686
 	license = custom
 	depends = qt5-multimedia
 	depends = qt5-svg
@@ -14,14 +13,14 @@ pkgbase = xnviewmp-system-libs
 	depends = desktop-file-utils
 	optdepends = glib2: support for moving files to trash
 	conflicts = xnviewmp
+	source = XnViewMP-linux-x64_0.93.1-rel1.tgz::http://download.xnview.com/XnViewMP-linux-x64.tgz
 	source = xnviewmp.desktop
-	source = gvfs-trash
+	source = qt5_std_fun_forwarder.S
+	source = qt5_std_fun_forwarder.lds
+	md5sums = 4e395d15d831b0f4258673dfe3d06119
 	md5sums = 24f44d5a881b94daf48775213a57e4ec
-	md5sums = 0c749b6334e8c4cf55cec56281458214
-	source_x86_64 = XnViewMP-linux-x64_0.93-rel1.tgz::http://download.xnview.com/XnViewMP-linux-x64.tgz
-	md5sums_x86_64 = fcf4929e5f69847ee44a1cab0771c4ce
-	source_i686 = XnViewMP-linux_0.93-rel1.tgz::http://download.xnview.com/XnViewMP-linux.tgz
-	md5sums_i686 = 17e8ab2a1de48c8d9bd5f4a42bfac83e
+	md5sums = df94e031306ac22f7f19d38bf3023c1a
+	md5sums = 7fc3b01ef6eb321c5ecba75099e08d33
 
 pkgname = xnviewmp-system-libs
 
