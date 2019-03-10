@@ -1,6 +1,6 @@
 pkgbase = kubeless
 	pkgdesc = A Kubernetes-native serverless framework that lets you deploy small bits of code without having to worry about the underlying infrastructure plumbing.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/kubeless/kubeless
 	arch = x86_64
