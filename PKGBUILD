@@ -53,10 +53,8 @@ package()
   install -D -m644 powerlevel10k.zsh-theme "${pkgdir}/usr/share/zsh-theme-${_pkgname}/${_pkgname}.zsh-theme"
 
   # Install the utilities
-    install -d  "${pkgdir}/usr/share/zsh-theme-${_pkgname}/functions/"
-    cp -r ${srcdir}/${_pkgname}/functions/* ${pkgdir}/functions/
-    install -d  "${pkgdir}/usr/share/zsh-theme-${_pkgname}/gitstatus/"
-    cp -r ${srcdir}/${_pkgname}/gitstatus/* ${pkgdir}/gitstatus/
-    install -d  "${pkgdir}/usr/share/zsh-theme-${_pkgname}/gitstatus/bin/"
-    cp -r ${srcdir}/${_pkgname}/gitstatus/bin/* ${pkgdir}/gitstatus/bin/
+  install -d ${pkgdir}/functions/
+  install -d ${pkgdir}/gitstatus/bin/
+  cp -r src/functions/* ${pkgdir}/functions/
+  cp -r src/gitstatus/* ${pkgdir}/gitstatus/
 }
