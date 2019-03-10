@@ -27,7 +27,13 @@ package() {
 	mkdir -p "$pkgdir/opt/$pkgname"
 	mv * "$pkgdir/opt/$pkgname"
 	cd "$pkgdir/opt/$pkgname"	
- 	install -Dm755 mindmaster.png "${pkgdir}/usr/share/icons/mindmaster.png"
+ 	mkdir $pkgdir/usr/share/icons
+	mkdir $pkgdir/usr/share/applications
+	mkdir $pkgdir/usr/share/mime/packages
+	mkdir $pkgdir/usr/share/icons/hicolor/512x512/mimetypes
+	
+	
+	install -Dm755 mindmaster.png "${pkgdir}/usr/share/icons/mindmaster.png"
  	install -Dm755 "${srcdir}/mindmaster.desktop" "${pkgdir}/usr/share/applications/mindmaster.desktop"
 	install -Dm755 mindmaster.xml "${pkgdir}/usr/share/mime/packages/mindmaster.xml"
 	install -Dm755 emmx.svg "${pkgdir}/usr/share/icons/hicolor/512x512/mimetypes/emmx.svg"
