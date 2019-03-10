@@ -11,7 +11,7 @@ license=('MIT')
 depends=('ruby')
 makedepends=('ruby-rdoc')
 conflicts=('ruby-chronic')
-source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
+source=(http://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
 sha256sums=('13739596a4e0c4bf8a6495809f1647d26151100fa3df4dc3f4db1fef6e57574f')
 
