@@ -1,0 +1,29 @@
+# Maintainer: John Lane <archlinux at jelmail dot com>
+
+pkgname=ttymidi
+pkgver=r24
+pkgrel=1
+pkgdesc="MIDI for your serial devices"
+url="http://www.varal.org/ttymidi"
+arch=('i686' 'x86_64' 'armv7h')
+license=("gpl")
+depends=('alsa-lib')
+source=("${pkgname}_${pkgver}::bzr+https://code.launchpad.net/~ttymidi-team/ttymidi/trunk")
+sha256sums=( SKIP )
+
+build() {
+  cd "$srcdir/${pkgname}_${pkgver}"
+  sed -i -e '/gcc/s/$/ -pthread/' Makefile
+  sed -i -e '/gcc/s/$/ -Wno-implicit-int/' Makefile # to silence warning (bad!)
+  make
+}
+
+package() {
+  cd "$srcdir/${pkgname}_${pkgver}"
+  install -Dm755 ttymidi $pkgdir/usr/bin/ttymidi
+}
+
+pkgver() {
+  cd "${pkgname}_${pkgver}"
+  printf "r%s" "$(bzr revno)"
+}
