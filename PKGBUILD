@@ -1,4 +1,4 @@
-# Maintainer: Jaja83 <arch_me@keemail.me>
+# Maintainer: Jaja <jaja@mailbox.org>
 #
 
 pkgname=languagetool-ngrams-he
@@ -7,23 +7,23 @@ pkgrel=1
 pkgdesc="Finding errors using n-gram data, hebrew text"
 arch=('any')
 url="http://wiki.languagetool.org/finding-errors-using-n-gram-data"
-license=('LGPL')
+license=('CCPL')
 optdepends=('languagetool: system wide installation of LT'
 'libreoffice-extension-languagetool: standalone LT for LibreOffice'
 'openoffice-extension-languagetool: standalone LT for OpenOffice')
 makedepends=('unzip')
 install=${pkgname}.install
-source=(${pkgname}-${pkgver}.zip::"http://languagetool.org/download/ngram-data/untested/ngram-he-${pkgver}.zip")
+source=(${pkgname}-${pkgver}.zip::"https://languagetool.org/download/ngram-data/untested/ngram-he-${pkgver}.zip")
 noextract=(${pkgname}-${pkgver}.zip)
-md5sums=('SKIP')
+md5sums=('673416fdb6010e390ded7a521cbab553')
+PKGEXT='.pkg.tar'
+options=(!strip)
 
 prepare() {
   echo ''
   echo 'Warning:'
-  echo '· Footage is about 0.4G in size!'
+  echo '· This package requires about 423M to be available within /usr/share.'
   echo '· Make sure you have a _fast_ disk serving /usr/share, i.e. an SSD. Without an SSD, using this data can make LanguageTool much slower.'
-  echo '· Because of this honorable size, compressing this package literally take hours. Make sure to disable compression entirely – at least make use of xz SMP feature. See makepkg wiki page for details …'
-  echo '· Also because of size, you may run out of memory if you use tmpfs aware aur helpers. You are better of not using tmpfs for this one and manually install this Package with "makepkg -s; sudo pacman -U languagetool-ngrams-*" on a spinning-disk based dir.'
   echo ''
 }
 
