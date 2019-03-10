@@ -1,0 +1,12 @@
+diff --git a/compile.sh b/compile.sh
+index 165a0a5..f9dbd59 100755
+--- a/compile.sh
++++ b/compile.sh
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-GAMBCLIBDIR="`gsc -e \"(display (path-expand \\\"~~lib\\\"))\"`"
+-echo "bh.scm:" && gsc -link -l "$GAMBCLIBDIR/_gambcgsc" bh.scm && gsc -obj bh_.c bh.c && gsc -exe -ld-options "$GAMBCLIBDIR/libgambcgsc.a" bh_.o bh.o
++GAMBCLIBDIR="`gambitc -e \"(display (path-expand \\\"~~lib\\\"))\"`"
++echo "bh.scm:" && gambitc -link -l "$GAMBCLIBDIR/_gambitgsc" bh.scm && gambitc -obj bh_.c bh.c && gambitc -exe -ld-options "$GAMBCLIBDIR/libgambitgsc.a" bh_.o bh.o  
+ rm -f bh_.o bh_.c bh.c bh.o
+ 

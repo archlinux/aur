@@ -1,6 +1,6 @@
 pkgbase = blackhole-git
 	pkgdesc = module system for gambit-c scheme
-	pkgver = 0.2.4.g50bb6fd
+	pkgver = 0.2r4.g50bb6fd
 	pkgrel = 1
 	url = http://github.com/pereckerdal/blackhole
 	arch = x86_64
@@ -8,9 +8,10 @@ pkgbase = blackhole-git
 	makedepends = git
 	makedepends = gambit-c
 	depends = glibc
-	options = !makeflags
 	source = git+https://github.com/pereckerdal/blackhole.git
+	source = compilescript.diff
 	md5sums = SKIP
+	md5sums = 29094e13f494d335ec70246ce76cadff
 
 pkgname = blackhole-git
 
