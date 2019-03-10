@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=4.20.14-arch1
+_srcver=5.0.1-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -70,35 +70,31 @@ url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
 makedepends=(kmod inetutils bc libelf)
 options=('!strip')
-_ckpatch="patch-4.20-ck${_ckpatchversion}"
+_ckpatch="patch-5.0-ck${_ckpatchversion}"
 _gcc_more_v='20180509'
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v4.x/linux-$pkgver.tar".{xz,sign}
+  "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  "http://ck.kolivas.org/patches/4.0/4.20/4.20-ck${_ckpatchversion}/$_ckpatch.xz"
-  0000-unfuck-ck1-for-kvm-intel-symbol.patch
+  "http://ck.kolivas.org/patches/5.0/5.0/5.0-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-exec-Fix-mem-leak-in-kernel_read_file.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('0e08e6d0a9e30fe13d2de624e9072bb455ae1f54a0918dc6981003c2afdf1a81'
+sha256sums=('3466214779db5bad716eb1c0a16747b5683009011ba3030bf942bba9640c333e'
             'SKIP'
-            '4ff10c16fa729f808e812e3ff53ef8087ab9c220c84d860676d3bfb5c1c63c5d'
+            'cc8341a0f4b25ee98238d90faa75338c3ed9ae882d3982464b239960ce5b187f'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '4bd614333fcbe509118b5362889f76d241e1d33e1ee691bd24fd82384ce7f2de'
-            '3e8c7d3015bb593e8a861be0b2b9f1de74fcb25e00c6e3eacee3165c6bec6f64'
-            '55823bb3ca652d917ba79860d595b479ec20c22a7c6854cbef901d44b4196316'
-            'bbf31b3a6af1db882cb63bd5e5385f174f2345272acaf18f129712a0a726689b')
+            '661f64bbd8bf49afcc7c760c4148b2e2108511a1eadcae917cfe6056a83d8476'
+            '55823bb3ca652d917ba79860d595b479ec20c22a7c6854cbef901d44b4196316')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
