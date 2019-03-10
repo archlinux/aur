@@ -2,7 +2,7 @@
 
 pkgname=signal-back-git
 pkgver=0.1.6.r0.5b3bce7
-pkgrel=1
+pkgrel=2
 pkgdesc="Decrypt Signal encrypted backups outside the app"
 arch=('i686' 'x86_64')
 url="https://github.com/xeals/signal-back"
