@@ -1,5 +1,6 @@
 [Unit]
 Description=update modules cache for active kernel
+RequiresMountsFor=/var/cache
 
 [Service]
 Type=oneshot
