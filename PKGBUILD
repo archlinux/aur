@@ -1,7 +1,7 @@
 # Maintainer: Tim Visee <tim@visee.me>
 
 pkgname=ffsend-git
-pkgver=0.2.26
+pkgver=0.2.27
 pkgrel=1
 pkgdesc="Easily and securely share files from the command line. A Firefox Send client."
 url="https://gitlab.com/timvisee/ffsend"
