@@ -1,7 +1,7 @@
 pkgname='groff-dejavu'
 pkgdesc="Generates required files to use DejaVu fonts in groff."
 pkgrel=1
-pkgver=0
+pkgver=1
 arch=('any')
 license=('GPL3')
 depends=('groff' 'ttf-dejavu')
