@@ -54,9 +54,9 @@ package()
 
   # Install the utilities
     install -d  "${pkgdir}/usr/share/zsh-theme-${_pkgname}/functions/"
-    cp -r ${srcdir}/${_pkgname}/functions/* ${pkgdir}/functions/
+    cp -r ${srcdir}/src/functions/* ${pkgdir}/functions/
     install -d  "${pkgdir}/usr/share/zsh-theme-${_pkgname}/gitstatus/"
-    cp -r ${srcdir}/${_pkgname}/gitstatus/* ${pkgdir}/gitstatus/
+    cp -r ${srcdir}/src/gitstatus/* ${pkgdir}/gitstatus/
     install -d  "${pkgdir}/usr/share/zsh-theme-${_pkgname}/gitstatus/bin/"
-    cp -r ${srcdir}/${_pkgname}/gitstatus/bin/* ${pkgdir}/gitstatus/bin/
+    cp -r ${srcdir}/src/gitstatus/bin/* ${pkgdir}/gitstatus/bin/
 }
