@@ -53,7 +53,8 @@ package()
   install -D -m644 powerlevel10k.zsh-theme "${pkgdir}/usr/share/zsh-theme-${_pkgname}/${_pkgname}.zsh-theme"
 
   # Install the utilities
-  install -D -dm644 functions/ "${pkgdir}/usr/share/{pkgname}/functions/"
-  install -D -dm644 gitstatus/ "${pkgdir}/usr/share/${pkgname}/gitstatus/"
-  install -D -dm644 gitstatus/bin "${pkgdir}/usr/share/${pkgname}/gitstatus/bin"
+  for FILE in functions/*.zsh; do
+    install -D -m644 "${FILE}" "${pkgdir}/usr/share/zsh-theme-${_pkgname}/functions/$(basename ${FILE})"
+  done
+  cp -r gitstatus "${pkgdir}/usr/share/zsh-theme-${_pkgname}/"
 }
