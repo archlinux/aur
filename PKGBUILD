@@ -27,7 +27,11 @@ package() {
 	chmod 777 MindMaster-6-x86_64
 	mkdir -p "$pkgdir/opt/$pkgname"
 	mv * "$pkgdir/opt/$pkgname"
-	cd "$pkgdir/opt/$pkgname"	
+	cd "$pkgdir/opt/$pkgname"
+    mkdir $pkgdir/usr/share/icons
+	mkdir $pkgdir/usr/share/applications
+	mkdir $pkgdir/usr/share/mime/packages
+	mkdir $pkgdir/usr/share/icons/hicolor/512x512/mimetypes
  	install -Dm755 mindmaster.png "${pkgdir}/usr/share/icons/mindmaster.png"
  	install -Dm755 "${srcdir}/mindmaster-cn.desktop" "${pkgdir}/usr/share/applications/mindmaster-cn.desktop"
 	install -Dm755 mindmaster.xml "${pkgdir}/usr/share/mime/packages/mindmaster.xml"
