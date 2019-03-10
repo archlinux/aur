@@ -16,7 +16,7 @@ pkgname=('vmware-horizon-client'
 pkgver=4.10.0
 _build=11053294
 _cart='CART19FQ4'
-pkgrel=2
+pkgrel=3
 pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop'
 arch=('x86_64')
 url='https://www.vmware.com/go/viewclients'
@@ -110,6 +110,9 @@ build() {
 			"${srcdir}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/lib{crypto,ssl}.so.1.0.2
 	fi
 
+	# remove keymap files, depend on vmware-keymaps instead
+	rm -rf "${srcdir}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/xkeymap/
+
 	# disable seamless window feature with vmware-view-crtbora
 	# this requires binary libraries with messy linking...
 	sed -i 's/vmware-view-crtbora/vmware-view/' "${srcdir}"/extract/vmware-horizon-client/bin/vmware-view
@@ -123,7 +126,7 @@ package_vmware-horizon-client() {
 		'vmware-horizon-pcoip')
 	replaces=('vmware-horizon-pcoip')
 	depends=('gnome-icon-theme' 'gtk2' 'libpng12' 'libudev0-shim' 'libxml2' 'libxss'
-		'libxtst' 'openssl' 'binutils' 'glib2' 'expat')
+		'libxtst' 'openssl' 'binutils' 'glib2' 'expat' 'vmware-keymaps')
 	optdepends=('alsa-lib: audio support via alsa'
 		'freerdp: RDP remote desktop connections'
 		'libpulse: audio support via pulse sound server'

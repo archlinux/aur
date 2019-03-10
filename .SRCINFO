@@ -1,7 +1,7 @@
 pkgbase = vmware-horizon-client
 	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop
 	pkgver = 4.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.vmware.com/go/viewclients
 	arch = x86_64
 	license = custom
@@ -30,6 +30,7 @@ pkgname = vmware-horizon-client
 	depends = binutils
 	depends = glib2
 	depends = expat
+	depends = vmware-keymaps
 	optdepends = alsa-lib: audio support via alsa
 	optdepends = freerdp: RDP remote desktop connections
 	optdepends = libpulse: audio support via pulse sound server
