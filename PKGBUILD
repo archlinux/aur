@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides implementations of the Trajectory Rollout a
 url='http://wiki.ros.org/base_local_planner'
 
 pkgname='ros-kinetic-base-local-planner'
-pkgver='1.14.3'
+pkgver='1.16.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -61,7 +61,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="navigation-release-release-kinetic-base_local_planner"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/base_local_planner.tar.gz")
-sha256sums=('5f38c43f5ff658e22231412c23568559bd71b5e8d062e993ec9482c6bd982fd5')
+sha256sums=('64b643dc3a6c3822a73ff095c5ef03a40a2d7c09292690f1bf7ea5f254be204f')
 
 build() {
   # Use ROS environment variables
