@@ -11,7 +11,7 @@ pkgname=davinci-resolve
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
 pkgver=15.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 arch=('any')
 url="https://www.blackmagicdesign.com/products/davinciresolve"
@@ -115,7 +115,7 @@ package()
 	install -D -m644 share/resolve.xml "${pkgdir}/usr/share/mime/packages/resolve.xml"
 	
 	msg2 "Setting the right permissions..."
-	if [ ! "$(lognam 2>&1 >/dev/null)" ]; then
+	if [ ! "$(logname 2>&1 >/dev/null)" ]; then
 		_user=$(logname)
 		_group=$(id -g -n ${_user})
 	else
