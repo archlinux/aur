@@ -1,0 +1,14 @@
+pkgbase = consolas
+	pkgdesc = Latest consolas font with open source license from Microsoft.
+	pkgver = 8.2
+	pkgrel = 1
+	install = consolas.install
+	arch = any
+	license = Public-Domain
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://github.com/piotrgrochowski/consolas/archive/8.2.tar.gz
+	md5sums = 3a8020f328c6faf244372a6e7e926071
+
+pkgname = consolas
+
