@@ -2,7 +2,7 @@
 # Maintainer: milaq <micha.laqua@gmail.com>
 pkgname=dmenu-height
 pkgver=4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic menu for X, with added height setting"
 arch=('x86_64')
 url="http://tools.suckless.org/dmenu/"
@@ -11,12 +11,12 @@ provides=('dmenu')
 depends=('sh' 'libxinerama' 'libxft' 'freetype2')
 conflicts=('dmenu')
 source=("https://dl.suckless.org/tools/dmenu-$pkgver.tar.gz"
-        "dmenu-lineheight.diff")
+        "https://tools.suckless.org/dmenu/patches/line-height/dmenu-lineheight-4.9.diff")
 sha256sums=('b3971f4f354476a37b2afb498693649009b201550b0c7c88e866af8132b64945'
-            '724fcbe8f3c6e4392d3b6a0a4fa6e34c0a3641745e296eed902e561926529d97')
+            '4f7f6f46b23cbc3f38bcc7eff24a0cb74b8bc8651c2de29aa3adc4f16b4dc06c')
 prepare() {
     cd "$srcdir/dmenu-$pkgver"
-    patch -p1 -i "$srcdir/dmenu-lineheight.diff"
+    patch -p1 -i "$srcdir/dmenu-lineheight-4.9.diff"
 }
 
 build() {
