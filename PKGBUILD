@@ -1,9 +1,10 @@
-# Maintainer: Saleem Rashid <trezor@saleemrashid.com>
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor: Saleem Rashid <trezor@saleemrashid.com>
 _pkgname=trezord
 pkgname="${_pkgname}-git"
-gitname="${_pkgname}-go"
+_gitname="${_pkgname}-go"
 pkgrel=1
-pkgver=2.0.25.r25.g678071f
+pkgver=2.0.26.r0.g7a15878
 pkgdesc='TREZOR Communication Daemon'
 url='https://trezor.io/'
 arch=('i686' 'x86_64')
@@ -13,29 +14,27 @@ conflicts=("${_pkgname}" 'trezor-bridge-bin')
 makedepends=('git' 'go')
 depends=()
 source=(
-    "git://github.com/trezor/${gitname}.git"
+    "git://github.com/trezor/${_gitname}.git"
     "${_pkgname}.sysusers"
     "${_pkgname}.patch"
 )
-sha256sums=(
-    'SKIP'
-    'efa561a7192a22088d1840278fc742b77f649fb3d949aa2a1d8644c681acd270'
-    'c6869841dcb9d6ef3f5c51b3c31ca35f1a981a07ca630a3e742a1245813a2da1'
-)
+sha256sums=('SKIP'
+            'efa561a7192a22088d1840278fc742b77f649fb3d949aa2a1d8644c681acd270'
+            '39cdb6630e4843e3509fb91990df2631780c952d887f401eb0aa6ac523db0082')
 
-_importpath="github.com/trezor/${gitname}"
+_importpath="github.com/trezor/${_gitname}"
 
 prepare() {
-    cd "${srcdir}/${gitname}"
+    cd "${srcdir}/${_gitname}"
 
     git apply "${srcdir}/${_pkgname}.patch"
 
     mkdir -p "${srcdir}/src/$(dirname "${_importpath}")"
-    ln -sf -T "${srcdir}/${gitname}" "${srcdir}/src/${_importpath}"
+    ln -sf -T "${srcdir}/${_gitname}" "${srcdir}/src/${_importpath}"
 }
 
 pkgver() {
-    cd "${srcdir}/${gitname}"
+    cd "${srcdir}/${_gitname}"
     git describe --tags --long | sed \
         -e 's/^v//' \
         -e 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -51,9 +50,9 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${gitname}"
+    cd "${srcdir}/${_gitname}"
 
-    install -Dm0755 "${srcdir}/bin/${gitname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm0755 "${srcdir}/bin/${_gitname}" "${pkgdir}/usr/bin/${_pkgname}"
 
     install -Dm0644 "${srcdir}/${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
 
