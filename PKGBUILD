@@ -1,7 +1,7 @@
 # Maintainer: Peter Cai <peter at typeblog dot net>
 pkgname=netease-cloud-music
 pkgver=1.1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Netease Cloud Music, converted from .deb package"
 arch=("x86_64")
 url="http://music.163.com/"
@@ -13,7 +13,7 @@ depends=(
 	"gst-plugins-good" "gst-plugins-ugly"
 	"gnome-themes-standard" "gconf" "atk"
 	"glibc" "cairo" "vlc" "fontconfig"
-	"dbus" "cups" "expat" "gdk-pixbuf2"
+	"dbus" "expat" "gdk-pixbuf2"
 	"glib2" "pango" "libpulse" "sqlite"
 	"gcc-libs" "libx11" "zlib" "qcef"
 	"taglib" "libxext" "libxtst"
