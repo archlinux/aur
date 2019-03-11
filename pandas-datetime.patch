@@ -1,0 +1,13 @@
+diff -urN partd-0.3.9-orig/partd/pandas.py partd-0.3.9/partd/pandas.py
+--- partd-0.3.9-orig/partd/pandas.py	2019-03-11 11:00:34.131675834 -0400
++++ partd-0.3.9/partd/pandas.py	2019-03-11 11:00:56.070700836 -0400
+@@ -140,8 +140,7 @@
+                                            ordered=extension_values[0])
+     elif extension_type == 'datetime64_tz_type':
+         tz_info = extension_values[0]
+-        values = pd.DatetimeIndex(values).tz_localize('utc').tz_convert(
+-            tz_info)
++        values = pd.DatetimeIndex(values)
+     return make_block(values, placement=placement)
+ 
+ 
