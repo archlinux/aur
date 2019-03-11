@@ -1,12 +1,13 @@
 # Maintainer: Shen ZhongLi <szl921818@gmail.com>
 pkgname=mindmaster
 pkgver=6
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 conflicts=("mindmaster-cn")
 options=(!strip)
 pkgdesc="Draw mind maps and brainstorming diagrams in an automatic way"
 license=('Commercial')
+url="https://www.edrawsoft.com/mindmaster/"
 source_x86_64=("http://download.edrawsoft.com/download/${pkgname}-${pkgver}-amd64.tar.gz")
 #source_x86_64=("https://www.edrawsoft.cn/2download/mindmaster-6-64-cn.tar.gz")
 sha256sums_x86_64=('bcc030b5da28adf8455a8a01c0ce5c74659c7ef1fa51b681133321e70a354d65')
