@@ -1,4 +1,4 @@
-# Maintainer: edward-p <micro.fedora@gmail.com>
+# Maintainer: Edward Pacman <edward@edward-p.xyz>
 pkgname=ttf-consolas-with-yahei-powerline-git
 pkgver=r2.28cedd6
 pkgrel=1
