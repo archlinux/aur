@@ -9,19 +9,18 @@ pkgver=1.0b
 pkgrel=1
 
 url="https://github.com/mdomlop/$pkgname.git"
-source=("https://github.com/mdomlop/$pkgname/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mdomlop/$pkgname/archive/$pkgver.tar.gz")
 md5sums=('5324149eac10878fc254b90d548f9d2f')
 
 license=('GPL3')
 
 depends=('kvantum-qt5')
-optdepends=('retrosmart-aurorae-themes: The corresponding Aurorae themes'
+optdepends=('xcursor-retrosmart: The corresponding X11 cursor theme'
+            'retrosmart-aurorae-themes: The corresponding Aurorae themes'
             'retrosmart-icon-theme: The corresponding icon theme'
-            'retrosmart-gtk-themes: The corresponding GTK themes'
-            'retrosmart-openbox-themes: The corresponding Openbox themes'
-            'retrosmart-wallpapers: The corresponding backgrounds project'
-            'retrosmart-x11-cursors: The corresponding X11 cursor theme'
-            'retrosmart-xfwm4-themes: The corresponding XFwm4 themes')
+            'retrosmart-qtcurve-theme: The corresponding theme for QtCurve'
+            'retrosmart-xfwm4-themes: The corresponding themes for XFwm4'
+            'retrosmart-openbox-themes: The corresponding themes for Openbox')
 arch=('any')
 group=('retrosmart')
 
