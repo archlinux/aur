@@ -1,0 +1,14 @@
+pkgbase = iroffer-dinoex
+	pkgdesc = Dinoex version of iroffer.
+	pkgver = 3.31
+	pkgrel = 1
+	url = http://iroffer.dinoex.net
+	arch = i686
+	arch = x86_64
+	makedepends = ruby
+	makedepends = geoip
+	source = http://iroffer.dinoex.net/iroffer-dinoex-3.31.tar.gz
+	sha512sums = 677aa03a33b99d8062db077bba47fb18b2e9279243691981bbd09cb2859fcb4792e1383225b9698edb23370ce0f60667a09480644d31171e9a8234d80052dd80
+
+pkgname = iroffer-dinoex
+
