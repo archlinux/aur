@@ -1,4 +1,4 @@
-# Maintainer: edward-p <micro.fedora@gmail.com>
+# Maintainer: Edward Pacman <edward@edward-p.xyz>
 pkgname=ttf-consolas-with-yahei
 pkgver='0.1.1'
 pkgrel=0
