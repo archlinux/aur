@@ -1,6 +1,6 @@
 pkgbase = amdgpu-fan
 	pkgdesc = Python daemon for controlling the fans on amdgpu cards
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/chestm007/amdgpu-fan
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = amdgpu-fan
 	depends = python
 	depends = python-yaml
 	depends = python-numpy
-	source = https://github.com/chestm007/amdgpu-fan/archive/0.0.4.tar.gz
+	source = https://github.com/chestm007/amdgpu-fan/archive/0.0.5.tar.gz
 	md5sums = SKIP
 
 pkgname = amdgpu-fan
