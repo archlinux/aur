@@ -10,6 +10,7 @@ pkgbase = python-gpustat
 	depends = python-six
 	depends = nvidia
 	depends = python-blessings
+	depends = python-nvidia-ml-py3-git
 	source = https://github.com/wookayin/gpustat/archive/v0.5.0.tar.gz
 	sha256sums = 1b6cac5f3584028504f3cb8738798dfa4989f74084617ae8fce509c5b426abc7
 
