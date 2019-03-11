@@ -1,4 +1,5 @@
-# Maintainer: Abhishek Mukherjee <amukherjee@tripadvisor.com>
+# Maintainer: Alireza Ayinmehr <alireza.darksun@gmail.com>
+# Contributor: Abhishek Mukherjee <amukherjee@tripadvisor.com>
 pkgname=docker-credential-secretservice
 pkgver=0.6.1
 pkgrel=1
