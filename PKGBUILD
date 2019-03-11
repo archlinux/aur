@@ -1,3 +1,4 @@
+# Maintainer: Jerome Leclanche <jerome@leclan.ch>
 pkgname=sway
 pkgver=1.0
 pkgrel=1
