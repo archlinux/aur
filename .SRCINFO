@@ -1,6 +1,6 @@
 pkgbase = adcli-git
 	pkgdesc = Active Directory account management tool
-	pkgver = 0.8.2.r2.g8514680
+	pkgver = 0.8.2.r30.g3c93c96
 	pkgrel = 1
 	url = https://freedesktop.org/software/realmd/
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = adcli-git
 	makedepends = xmlto
 	depends = krb5
 	depends = openldap
-	provides = adcli=0.8.2.r2.g8514680
+	provides = adcli=0.8.2.r30.g3c93c96
 	conflicts = adcli
-	source = git+https://anongit.freedesktop.org/git/realmd/adcli.git
+	source = git+https://gitlab.freedesktop.org/realmd/adcli.git
 	sha256sums = SKIP
 
 pkgname = adcli-git
