@@ -1,7 +1,7 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=kcc
-pkgver=5.4.5
-pkgrel=2
+pkgver=5.5.1
+pkgrel=1
 pkgdesc="Kindle Comic Converter converts comic files or folders to ePub or Panel View MOBI"
 arch=(any)
 url="https://github.com/ciromattia/kcc"
@@ -9,19 +9,14 @@ license=('ISC')
 depends=('python>=3.5' 'python-pillow>=4.0.0' 'python-psutil>=5.0.0' 'python-pyqt5>=5.6.0' 'python-raven>=6.0.0' 'python-slugify>=1.2.1')
 optdepends=(
   'kindlegen>=2.9: for .mobi generation'
-  'unrar: for CBR/RAR support'
-  'p7zip: for 7z/CB7 support'
+  'p7zip: for zip/CBZ, rar/CBZ, 7z/CB7 support'
 )
-source=(https://github.com/ciromattia/$pkgname/archive/$pkgver.tar.gz)
-md5sums=('8921c0d5f4ccb797e951034d8aa7bd28')
-sha256sums=('ceae876fbe91fe3b9293dda3c6cc00a856d8f4e270127fa5a72195f8c6ea14e0')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  # Patch desktop file
-  sed -i 's#kindlecomicconverter/comic2ebook#pixmaps/kcc#' other/linux/kindlecomicconverter.desktop
-}
+source=(kindlecomicconverter.desktop
+        https://github.com/ciromattia/$pkgname/archive/$pkgver.tar.gz)
+md5sums=('f25b30fbc1bc1db491173215fe411789'
+         'd4b27b9e5f3c6ddc5c2dc61693528a69')
+sha256sums=('3502c38d756f5a812ac06f63fe25e062d8720f620ffd7d25641e6accef9fdd9f'
+            '6082548a6f138494633af0db669c658645a12a45acf072cb75c11a345a4de293')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -38,7 +33,7 @@ package() {
   find "$pkgdir" -name requires.txt -delete
 
   # Install other required files
-  install -Dm644 other/linux/kindlecomicconverter.desktop "$pkgdir/usr/share/applications/kindlecomicconverter.desktop"
+  install -Dm644 "$srcdir/kindlecomicconverter.desktop" "$pkgdir/usr/share/applications/kindlecomicconverter.desktop"
   install -Dm644 icons/comic2ebook.png "$pkgdir/usr/share/pixmaps/kcc.png"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.txt"
   install -Dm644 README.md "$pkgdir/usr/share/docs/${pkgname}/README.md"
