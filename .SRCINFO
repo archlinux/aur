@@ -1,6 +1,6 @@
 pkgbase = python-oxd-git
 	pkgdesc = A CLI for the Oxford Dictionaries website.
-	pkgver = r23.c271111
+	pkgver = r30.31ed8ca
 	pkgrel = 1
 	url = https://github.com/mpolidori/python-oxd
 	arch = any
