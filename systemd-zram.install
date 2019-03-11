@@ -1,0 +1,19 @@
+post_install() {
+    echo "Reloading daemons..."
+    systemctl daemon-reload
+    echo "Installation do not restart service. Run 'systemctl condrestart systemd-zram' to do it."
+}
+
+post_upgrade() {
+    echo "Reloading daemons..."
+    systemctl daemon-reload
+    echo "Upgrade do not restart service. Run 'systemctl condrestart systemd-zram' to do it."
+}
+
+pre_remove() {
+    echo "Stopping systemd-zram service..."
+    systemctl stop systemd-zram
+    echo "Disabling systemd-zram service..."
+    systemctl disable systemd-zram
+}
+
