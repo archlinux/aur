@@ -2,7 +2,7 @@
 
 pkgname=slack-desktop-dark
 pkgver=3.3.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Slack Desktop (Beta) for Linux, with dark theme patch"
 arch=('x86_64')
 url="https://slack.com/downloads"
@@ -17,7 +17,7 @@ source=("https://downloads.slack-edge.com/linux_releases/${pkgname%-dark}-${pkgv
 noextract=("${pkgname%-dark}-${pkgver}-amd64.deb")
 sha256sums=('17310bc323eafcef86c134c7aea9b53a82f8394aa30a886ac419f9a5a23168e0'
             '115d799ca0f7491bfe61963803babe5cb71b551e66bed9b210f7769deffaed86'
-            '3a54ac5cfa3ec9bbe5f1f1a854311f8ec9bfff4207b84357f46a94ab003e52d7'
+            '4e25e00be82bf2809f4157e17a969109d3c0241efe9a37a960a055aa6b52fd32'
             'c952eb32dd59beff9fc5374853b04acde4a60ed8c39934fcd0b66829455d594d')
 
 package() {
@@ -34,6 +34,7 @@ package() {
     rm -rf "${pkgdir}/usr/share/lintian"
     rm -rf "${pkgdir}/usr/share/doc"
 
+    # Insert the black theme directly into ssb-interop.js
     lineno=$(sed -n '/HERE/=' darkify_slack.js)
     file="${pkgdir}/usr/lib/slack/resources/app.asar.unpacked/src/static/ssb-interop.js"
     head -n $((lineno - 1)) darkify_slack.js >> $file
