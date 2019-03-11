@@ -1,6 +1,6 @@
 pkgbase = zsh-zplugin-git
 	pkgdesc = Flexible Zsh plugin manager with clean fpath, reports, completion management, turbo mode
-	pkgver = r1477.43ac67f
+	pkgver = r1479.bb02e20
 	pkgrel = 1
 	url = http://github.com/zdharma/zplugin
 	arch = any

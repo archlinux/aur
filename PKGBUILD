@@ -2,7 +2,7 @@
 
 _name='zsh-zplugin-git'
 pkgname="${_name}"
-pkgver=r1477.43ac67f
+pkgver=r1479.bb02e20
 pkgrel=1
 pkgdesc="Flexible Zsh plugin manager with clean fpath, reports, completion management, turbo mode"
 url="http://github.com/zdharma/zplugin"
@@ -35,6 +35,7 @@ package() {
     install -dm0755 "${_plugindir}"
     install -m0644 zplugin{,-side,-install,-autoload}.zsh "${_plugindir}"
     install -m0755 git-process-output.zsh "${_plugindir}"
+    install -m0744 _zplugin "${_plugindir}"
 
     # Zplugin-module files
     find zmodules/ -type d -exec install -dm 755 "{}" "${_plugindir}/{}" \;
