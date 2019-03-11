@@ -2,7 +2,7 @@
 
 pkgname=plex-media-player-standalone-service
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Systemd service and user to run PMP in stand-alone mode"
 arch=('x86_64')
 url="https://github.com/hv15/plex-media-player-standalone-service"
@@ -15,7 +15,7 @@ source=("https://github.com/hv15/${pkgname}/archive/${pkgver}.tar.gz"
 sha256sums=('a231685b9eed6ccfb0eefcf40b89b823ff8d33954c4daa2d68ed386ac73e172b'
             'SKIP'
             'b0fbffc7a8823b0b543dba8cb6d2ad4aa0ef3ec066753de1455f891bee32937d'
-            '8c3a5069f2a3e2f6d3474e963e41e0e3eb934fef7211dd060d3e49fcd77a8ad8')
+            'fb034bf0b0900eaf0de1cc3593c89d8ebb6ebdd171f4b074322fb693b8d5c8f7')
 validgpgkeys=('0C13DFCDC33937FCF36BEF459062A1BF982A2B64')
 
 prepare() {
