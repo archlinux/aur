@@ -1,0 +1,20 @@
+pkgbase = python-gluoncv
+	pkgdesc = A Deep Learning Toolkit for Computer Vision
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://gluon-cv.mxnet.io
+	arch = any
+	license = Apach 2.0
+	checkdepends = python-nose
+	checkdepends = python-pytest
+	checkdepends = python-scipy
+	makedepends = python-setuptools
+	depends = mxnet
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-scipy
+	source = gluoncv-0.3.0.tar.gz::https://github.com/dmlc/gluon-cv/archive/v0.3.0.tar.gz
+	sha512sums = 0dc5c3e5dfed3451fcf1746be49702d8b1927aac24cda23458cbbc10359463c0d50ad5e6a431624027cf47f0c52dd99050282d72595b6c181928516bee312a51
+
+pkgname = python-gluoncv
+
