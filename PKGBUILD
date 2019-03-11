@@ -2,7 +2,7 @@
 #mindmaster 中文版
 pkgname=mindmaster-cn
 pkgver=6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 options=(!strip)
 conflicts=("mindmaster")
