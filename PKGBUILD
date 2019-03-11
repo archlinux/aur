@@ -1,11 +1,12 @@
-# Maintainer: Sean Anderson <seanga2@gmail.com>
+# Maintiner: Josh Hoffer <hoffer.joshua@gmail.com>
+# Contributor: Sean Anderson <seanga2@gmail.com>
 # Contributor: Daniel Bermond <danielbermond@yahoo.com>
 # Contributor: Sidney Crestani <sidneycrestani@archlinux.net>
 # Contributor: sxe <sxxe@gmx.de>
 # Conttributor: xiretza <xiretza+aur@gmail.com>
 
 pkgname=wine-valve-git
-pkgver=3.16.r203.g174d487bf8
+pkgver=3.16.20190307
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (Valve version)'
 arch=('i686' 'x86_64')
@@ -81,13 +82,8 @@ optdepends=(
 options=('staticlibs')
 install="$pkgname.install"
 source=("$pkgname::git+https://github.com/ValveSoftware/wine.git"
-        'harmony-fix.diff'
         '30-win32-aliases.conf'
         'wine-binfmt.conf')
-sha256sums=('SKIP'
-            '50ccb5bd2067e5d2739c5f7abcef11ef096aa246f5ceea11d2c3b508fc7f77a1'
-            '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
-            '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4')
 
 if [ "$CARCH" = 'i686' ] 
 then
@@ -107,16 +103,13 @@ fi
 pkgver() {
   cd "$pkgname"
   # cutting off 'wine-' prefix that presents in the git tag
-  git describe --long | sed 's/^wine-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  echo 3.16.$(git log -1 --format="%cd" --date=short | sed 's|-||g')
 }
 prepare() {
     cd "$pkgname"
     
     # fix path of opencl headers
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
-    
-    # freetype harmony fix
-    patch -Np1 -i "${srcdir}/harmony-fix.diff"
 }
 
 build() {
@@ -205,3 +198,6 @@ package() {
     # wine binfmt
     install -D -m644 "${srcdir}/wine-binfmt.conf"   "${pkgdir}/usr/lib/binfmt.d/wine.conf"
 }
+sha256sums=('SKIP'
+            '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
+            '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4')

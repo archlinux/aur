@@ -1,6 +1,6 @@
 pkgbase = wine-valve-git
 	pkgdesc = A compatibility layer for running Windows programs (Valve version)
-	pkgver = 3.16.r203.g174d487bf8
+	pkgver = 3.16.20190307
 	pkgrel = 1
 	url = https://github.com/wine-mirror/wine
 	install = wine-valve-git.install
@@ -127,10 +127,10 @@ pkgbase = wine-valve-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=3.16.r203.g174d487bf8
-	provides = bin32-wine=3.16.r203.g174d487bf8
-	provides = wine-wow64=3.16.r203.g174d487bf8
-	provides = wine-valve=3.16.r203.g174d487bf8
+	provides = wine=3.16.20190307
+	provides = bin32-wine=3.16.20190307
+	provides = wine-wow64=3.16.20190307
+	provides = wine-valve=3.16.20190307
 	conflicts = wine
 	conflicts = wine-staging
 	conflicts = wine-staging-git
@@ -139,11 +139,9 @@ pkgbase = wine-valve-git
 	replaces = bin32-wine
 	options = staticlibs
 	source = wine-valve-git::git+https://github.com/ValveSoftware/wine.git
-	source = harmony-fix.diff
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	sha256sums = SKIP
-	sha256sums = 50ccb5bd2067e5d2739c5f7abcef11ef096aa246f5ceea11d2c3b508fc7f77a1
 	sha256sums = 9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7
 	sha256sums = 6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4
 
