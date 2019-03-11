@@ -1,16 +1,16 @@
 pkgbase = ruby-concurrent-ruby
 	pkgdesc = Modern concurrency tools for Ruby. Inspired by Erlang, Clojure, Scala, Haskell, F#, C#, Java, and classic concurrency patterns.
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = http://www.concurrent-ruby.com
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = concurrent-ruby-1.1.4.gem
+	noextract = concurrent-ruby-1.1.5.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/concurrent-ruby-1.1.4.gem
-	sha256sums = e12e6ab140d8d99c14763a605b9671a5e182d4bf6dc951d4cb5debe86eeaacc7
+	source = https://rubygems.org/downloads/concurrent-ruby-1.1.5.gem
+	sha256sums = 5611d14d8699996b17f18e704f4257b73349efa2d9a75fee6566a0a387c807f4
 
 pkgname = ruby-concurrent-ruby
 
