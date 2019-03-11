@@ -1,8 +1,0 @@
---- start-anylogic.sh	2019-03-11 14:14:40.733870703 +0700
-+++ anylogic	2019-03-11 14:15:14.762279318 +0700
-@@ -1,3 +1,3 @@
- #!/bin/sh
- 
--SWT_GTK3=0 UBUNTU_MENUPROXY= ./anylogic
-\ No newline at end of file
-+SWT_GTK3=0 UBUNTU_MENUPROXY= /opt/anylogic/anylogic
