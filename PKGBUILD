@@ -6,7 +6,7 @@
 
 _pkg=wildfly
 pkgname="${_pkg}"-systemd
-pkgver=15.0.0.Final
+pkgver=16.0.0.Final
 pkgrel=1
 
 pkgdesc='Wildfly Application Server with systemd integration'
@@ -14,6 +14,8 @@ arch=('any')
 url='http://www.wildfly.org/'
 license=('LGPL')
 depends=('java-runtime>=8')
+optdepends=('libaio: ActiveMQ Artemis'
+            'lib32-glibc: native OpenSSL support')
 conflicts=('wildfly' 'wildfly-devel')
 
 _pkgloc=opt
@@ -47,7 +49,7 @@ install=${_pkg}.install
 source=(https://download.jboss.org/wildfly/"${pkgver}"/"${_pkg}"-"${pkgver}".tar.gz
 		"${_pkg}".install)
 
-sha256sums=('52a41ca0e36dc41800214e6a8f4e0032276477299804e6a719ba1ffe35d37a92'
+sha256sums=('65ec8881c073e1fda0be293037eb7c8d19b38d6e57f83044086d39dc40a26385'
 			'2844ec981fcf9e6fd93226796e7531b9b8fd30806adba6b31e43d9592a6409c2')
 
 package() {

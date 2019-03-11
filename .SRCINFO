@@ -1,12 +1,14 @@
 pkgbase = wildfly-systemd
 	pkgdesc = Wildfly Application Server with systemd integration
-	pkgver = 15.0.0.Final
+	pkgver = 16.0.0.Final
 	pkgrel = 1
 	url = http://www.wildfly.org/
 	install = wildfly.install
 	arch = any
 	license = LGPL
 	depends = java-runtime>=8
+	optdepends = libaio: ActiveMQ Artemis
+	optdepends = lib32-glibc: native OpenSSL support
 	conflicts = wildfly
 	conflicts = wildfly-devel
 	backup = opt/wildfly/domain/configuration/application-roles.properties
@@ -31,9 +33,9 @@ pkgbase = wildfly-systemd
 	backup = etc/wildfly/wildfly.conf
 	backup = usr/lib/systemd/system/wildfly.service
 	backup = opt/wildfly/bin/launch.sh
-	source = https://download.jboss.org/wildfly/15.0.0.Final/wildfly-15.0.0.Final.tar.gz
+	source = https://download.jboss.org/wildfly/16.0.0.Final/wildfly-16.0.0.Final.tar.gz
 	source = wildfly.install
-	sha256sums = 52a41ca0e36dc41800214e6a8f4e0032276477299804e6a719ba1ffe35d37a92
+	sha256sums = 65ec8881c073e1fda0be293037eb7c8d19b38d6e57f83044086d39dc40a26385
 	sha256sums = 2844ec981fcf9e6fd93226796e7531b9b8fd30806adba6b31e43d9592a6409c2
 
 pkgname = wildfly-systemd
