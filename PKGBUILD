@@ -9,14 +9,15 @@ pkgver=0.2
 pkgrel=1
 pkgdesc="Retrosmart icon theme."
 url="https://github.com/mdomlop/${pkgname}"
-source=("https://github.com/mdomlop/retrosmart-icon-theme/archive/0.2.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mdomlop/$pkgname/archive/$pkgver.tar.gz")
 md5sums=('9f141aaed7b2ff0193586802fc7e2864')
 license=('GPL3')
-optdepends=('retrosmart-gtk-themes: The corresponding GTK themes'
-            'retrosmart-openbox-themes: The corresponding Openbox themes'
-            'retrosmart-wallpapers: The corresponding backgrounds project'
-            'retrosmart-x11-cursors: The corresponding X11 cursor theme'
-            'retrosmart-xfwm4-themes: The corresponding XFwm4 themes')
+optdepends=('xcursor-retrosmart: The corresponding X11 cursor theme'
+            'retrosmart-aurorae-themes: The corresponding Aurorae themes'
+            'retrosmart-kvantum-theme: The corresponding theme for Kvantum'
+            'retrosmart-qtcurve-theme: The corresponding theme for QtCurve'
+            'retrosmart-xfwm4-themes: The corresponding themes for XFwm4'
+            'retrosmart-openbox-themes: The corresponding themes for Openbox')
 arch=('any')
 group=('retrosmart')
 
