@@ -8,8 +8,8 @@ pkgbase = docker-credential-secretservice
 	license = MIT
 	makedepends = go
 	depends = libsecret
-	noextract = docker-credential-helpers-0.6.0.tar.gz
-	source = docker-credential-helpers-0.6.0.tar.gz::https://github.com/docker/docker-credential-helpers/archive/v0.6.0.tar.gz
+	noextract = docker-credential-helpers-0.6.1.tar.gz
+	source = docker-credential-helpers-0.6.1.tar.gz::https://github.com/docker/docker-credential-helpers/archive/v0.6.1.tar.gz
 	sha512sums = 57d7d8039c980974a568be2f4b557227ab2df0dbb48e9ba4f4729826a9d96604170dc8782e4b9baca06337be254ecb118c51911ffd6812e7d01895561e78abd2
 
 pkgname = docker-credential-secretservice
