@@ -1,0 +1,20 @@
+*** a/CMakeLists.txt	Mon Mar 11 15:09:57 2019
+--- b/CMakeLists.txt	Mon Mar 11 15:09:46 2019
+***************
+*** 11,17 ****
+  find_package(catkin REQUIRED COMPONENTS 
+    ${THIS_PACKAGE_ROS_DEPS} 
+    message_generation)
+! find_package(Boost REQUIRED COMPONENTS system signals)
+  include_directories(include ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
+  
+  ##############################################################################
+--- 11,17 ----
+  find_package(catkin REQUIRED COMPONENTS 
+    ${THIS_PACKAGE_ROS_DEPS} 
+    message_generation)
+! find_package(Boost REQUIRED COMPONENTS system)
+  include_directories(include ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
+  
+  ##############################################################################
+
