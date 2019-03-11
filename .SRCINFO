@@ -1,6 +1,6 @@
 pkgbase = netease-cloud-music
 	pkgdesc = Netease Cloud Music, converted from .deb package
-	pkgver = 1.1.3.1
+	pkgver = 1.1.3.2
 	pkgrel = 1
 	url = http://music.163.com/
 	arch = x86_64
@@ -37,10 +37,10 @@ pkgbase = netease-cloud-music
 	depends = taglib
 	depends = libxext
 	depends = libxtst
-	source = http://packages.deepin.com/deepin/pool/main/n/netease-cloud-music/netease-cloud-music_1.1.3.1-1_amd64.deb
+	source = http://packages.deepin.com/deepin/pool/main/n/netease-cloud-music/netease-cloud-music_1.1.3.2_amd64.deb
 	source = http://music.163.com/html/web2/service.html
-	md5sums = 53c47c1bf6797b2a0e455bc59833ab2d
-	md5sums = SKIP
+	md5sums = f3adc3482e3fb084353ef9f58f0ff52b
+	md5sums = a8bda1128eee0f6da45f37767a4bba29
 
 pkgname = netease-cloud-music
 
