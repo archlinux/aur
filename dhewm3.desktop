@@ -1,7 +1,13 @@
 [Desktop Entry]
-Name=Dhewm3
+Type=Application
+Name=Doom 3
+GenericName=Survival horror first-person shooter
 Exec=dhewm3
 Icon=doom3
-Type=Application
-Comment=A Doom 3 port
+Terminal=false
 Categories=Game;ActionGame;
+Actions=RoE;
+
+[Desktop Action RoE]
+Name=Resurrection of Evil
+Exec=dhewm3 +set fs_game d3xp

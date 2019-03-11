@@ -1,39 +1,46 @@
+#!/bin/bash
+# shellcheck disable=SC2034,SC2164
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
-
-pkgname=dhewm3-git
-pkgver=1.5.0.r16.17c10d4
+_pkgname=dhewm3
+pkgname=$_pkgname-git
+pkgver=1.5.1_PRE1.r0.g3a763fc
 pkgrel=1
 epoch=1
-pkgdesc="Doom 3 engine with native 64-bit support, SDL, and OpenAL"
-arch=('i686' 'x86_64')
-url="https://github.com/dhewm/dhewm3"
+pkgdesc="Doom 3 source port"
+arch=('x86_64' 'i686')
+url="https://dhewm3.org/"
 license=('GPL3')
-depends=('curl' 'doom3-data' 'libjpeg' 'libvorbis' 'openal' 'sdl2')
-makedepends=('cmake' 'git')
-conflicts=('dhewm3')
-provides=('dhewm3')
-source=("git+$url"
-        'dhewm3.desktop')
-sha256sums=('SKIP'
-            '7c9ae892c6cf0453fcd57731689ccedac8f8ce10f33043f7dd5fb66bd73d1287')
+depends=('curl' 'libjpeg' 'libvorbis' 'openal' 'sdl2')
+makedepends=('git' 'cmake')
+optdepends=('doom3-data: for game data and icon')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+https://github.com/dhewm/dhewm3.git"
+        "$_pkgname.desktop")
+md5sums=('SKIP'
+         'cd3a45168aa702fea871caea05da95b9')
 
 pkgver() {
-  cd "${pkgname/-git/}"
+	cd $_pkgname
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
-  printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+prepare() {
+	mkdir -p build
 }
 
 build() {
-  cd "${pkgname/-git/}/neo"
-
-  CXXFLAGS='-DLINUX_DEFAULT_PATH=\"/usr/share/games/doom3\"' cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DD3XP=1 -DDEDICATED=1 .
-  make
+	cd build
+	CXXFLAGS=${CXXFLAGS:+$CXXFLAGS }-DLINUX_DEFAULT_PATH='\"/usr/share/games/doom3\"' cmake ../$_pkgname/neo \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DDEDICATED=1
+	make
 }
 
 package() {
-  cd "${pkgname/-git/}/neo"
-
-  make DESTDIR="$pkgdir" libdir="$pkgdir/usr/lib" install
-  install -Dm644 ../../dhewm3.desktop "$pkgdir/usr/share/applications/dhewm3.desktop"
+	# shellcheck disable=SC2154
+	make -C build DESTDIR="$pkgdir" install
+	install -Dm644 -t "$pkgdir"/usr/share/applications $_pkgname.desktop
 }
