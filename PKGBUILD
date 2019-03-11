@@ -5,7 +5,7 @@
 # Maintainer: jooch <jooch AT gmx DOT com>
 
 pkgname=freefilesync
-pkgver=10.9
+pkgver=10.10
 pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
@@ -14,14 +14,14 @@ license=('GPLv3')
 depends=(wxgtk webkit2gtk boost-libs)
 makedepends=(boost unzip)
 source=(
-	"FreeFileSync_${pkgver}_Source.zip::https://www.freefilesync.org/download_redirect.php?file=FreeFileSync_${pkgver}_Source.zip"		#ffs
+	"FreeFileSync_${pkgver}_Source.zip::https://freefilesync.org/download/FreeFileSync_${pkgver}_Source.zip"		#ffs
 	revert_resources_path.patch
 	revert_xdg_config_path.patch
 	FreeFileSync.desktop
 	RealTimeSync.desktop
 	)
 
-sha256sums=('221b905528f8800468f2f1edc33fbaa2ff0f4b6d5a4966fa20eafc18dadac3b0' #ffs source
+sha256sums=('f411fbad8e22a319473c1f21065b373b927f22f522d80b3807cf2eef5613e93c' #ffs source
             '052ef5bf5eb11730499f4b81cd7e70f990fff3cfcc2f7059b84981e7ededc361' #revert_resources_path.patch
             'fef8aa099a27c277b76f1229651ed2324355528482c8f115e09c39269bbf4bdd' #revert_xdg_config_path.patch
             'd492d71c722340a1e6ee8dbbbf1ea24e052b473c38ef2d64d7338131bf417adc' #FreeFileSync.desktop
@@ -41,6 +41,9 @@ prepare() {
 # edit lines to remove functions that require wxgtk 3.1.x  
     sed -e 's:m_textCtrlOfflineActivationKey->ForceUpper:// &:g' -i 'FreeFileSync/Source/ui/small_dlgs.cpp'
     sed -e 's:const double scrollSpeed =:& 6; //:g' -i 'wx+/grid.cpp'
+
+# libssh2 v1.8.0 does not yet implement LIBSSH2_SFTP_DEFAULT_MODE, revert to previous impl.
+    sed -e 's/LIBSSH2_SFTP_DEFAULT_MODE/LIBSSH2_SFTP_S_IRWXU | LIBSSH2_SFTP_S_IRWXG | LIBSSH2_SFTP_S_IRWXO/g' -i 'FreeFileSync/Source/fs/sftp.cpp'
 
 # add '-lz' back into LINKFLAGS
     sed -i '/pie/ s/-pthread/-lz -pthread/' FreeFileSync/Source/Makefile
