@@ -1,19 +1,19 @@
 pkgbase = firejail-apparmor
 	pkgdesc = Apparmor support for Firejail
-	pkgver = 0.9.58
+	pkgver = 0.9.58.2
 	pkgrel = 1
 	url = https://firejail.wordpress.com/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = apparmor
-	provides = firejail
+	provides = firejail=0.9.58.2
 	conflicts = firejail
 	backup = etc/firejail/login.users
 	backup = etc/firejail/firejail.config
 	backup = etc/apparmor.d/local/firejail-local
-	source = firejail-apparmor-0.9.58.tar.gz::https://github.com/netblue30/firejail/archive/0.9.58.tar.gz
-	sha256sums = 908dcd1d37a4b8f40887f04e313d8547625bc9beeb40ba7dc5d7474deb08aaec
+	source = firejail-apparmor-0.9.58.2.tar.gz::https://github.com/netblue30/firejail/archive/0.9.58.2.tar.gz
+	sha256sums = 80a7afb2aa128cbffe537eaa2cad82fe8ecd7879184f5aa0d2ff12268e8edab8
 
 pkgname = firejail-apparmor
 
