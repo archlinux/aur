@@ -5,9 +5,7 @@
 
 pkgname=buildbot
 pkgdesc='The Continuous Integration Framework'
-pkgver=2.0.1
-# `git rev-parse v$pkgver`
-_tag_rev=4c358c260bd9a339ce167a28b8dd6d19cd7a413f
+pkgver=2.1.0
 pkgrel=1
 arch=(any)
 url='https://buildbot.net'
@@ -15,9 +13,8 @@ license=(GPL2)
 depends=(python-twisted python-jinja python-zope-interface python-future
          python-sqlalchemy-migrate python-dateutil python-txaio
          python-autobahn python-pyjwt python-yaml)
-makedepends=(git)
 checkdepends=(python-boto3 python-lz4 python-treq python-txrequests
-              python-mock python-moto
+              python-mock python-moto python-parameterized
               python-buildbot-pkg=$pkgver buildbot-worker=$pkgver python-buildbot-www=$pkgver
               python-pip openssh)
 optdepends=(
@@ -27,19 +24,27 @@ optdepends=(
   'python-txrequests: for using HTTP requests as steps'
   'python-pyopenssl: to use SSL/TLS in mail or IRC notifiers'
 )
-source=("git+https://github.com/buildbot/buildbot?signed#tag=$_tag_rev")
-sha256sums=('SKIP')
+source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.sig}
+        install-test-files.patch)
+sha256sums=('a15491995d9168e8e50c2f958ce4bfef2984ca25dee21bd694c8ea0a12e47509'
+            'SKIP'
+            'b6c583a85555c8dc20a84a0402539dbadd854408a15d6424841e59a6daa47fe2')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com>
 )
 
+prepare() {
+  cd buildbot-$pkgver
+  patch -Np1 -i ../install-test-files.patch
+}
+
 build() {
-  cd buildbot/master
+  cd buildbot-$pkgver/master
   python setup.py build
 }
 
 check() {
-  cd buildbot/master
+  cd buildbot-$pkgver/master
 
   # https://github.com/spulec/moto/issues/1924
   export AWS_SECRET_ACCESS_KEY=foobar_secret
@@ -53,6 +58,6 @@ check() {
 }
 
 package() {
-  cd buildbot/master
+  cd buildbot-$pkgver/master
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
