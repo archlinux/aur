@@ -1,0 +1,30 @@
+# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+pkgname=gnome-web-shortcuts-extension-git
+pkgver=r16.2d89c1e
+pkgrel=1
+pkgdesc="Adds a 'Create web link...' menu item to Nautilus, which makes it simple to create URL shortcut files in directories"
+arch=('any')
+url="https://samthursfield.wordpress.com/2019/03/10/inspire-me-nautilus"
+depends=('nautilus' 'firefox')
+makedepends=('git' 'meson')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+install="${pkgname%-git}.install"
+source=("git+https://gitlab.gnome.org/sthursfield/gnome-web-shortcuts-extension.git")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "${pkgname%-git}"
+ 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+	cd "${pkgname%-git}"
+	meson . build --prefix /usr
+	ninja -C build
+}
+
+package() {
+ 	cd "${pkgname%-git}"
+	DESTDIR="$pkgdir" ninja -C build install
+}

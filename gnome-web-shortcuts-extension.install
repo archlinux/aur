@@ -1,0 +1,11 @@
+post_install() {
+	echo -e "***************************************************"
+	echo -e "*                                                 *"
+	echo -e "* set application/x-desktop to firefox.desktop in *"
+	echo -e "* ~/.config/mimeapps.list:                        *"
+	echo -e "*                                                 *"
+	echo -e "* application/x-desktop=firefox.desktop;          *"
+	echo -e "*                                                 *"
+	echo -e "***************************************************"
+	echo -e -n ""
+}
