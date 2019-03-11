@@ -50,8 +50,8 @@ _1k_HZ_ticks=
 
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
-_major=4.20
-_minor=15
+_major=5.0
+_minor=1
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -62,17 +62,18 @@ options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'graphviz')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
-_uksm_path="https://raw.githubusercontent.com/dolohow/uksm/master/v4.x"
+#_uksm_path="https://raw.githubusercontent.com/dolohow/uksm/master/v4.x"
 #_uksm_path="https://raw.githubusercontent.com/zaza42/uksm/master"
-_uksm_patch="uksm-${_major}.patch"
+#_uksm_patch="uksm-${_major}.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
 
-source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
+        "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_gcc_path}/${_gcc_patch}"
-        "${_uksm_path}/${_uksm_patch}"
-        "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
+        "${_lucjanpath}/pf-uksm/0001-uksm-5.0-initial-submission.patch"
+        "${_lucjanpath}/pf-uksm-fixes/0001-uksm-5.0-adopt-new-MMU-notifiers-API.patch"
+        "${_lucjanpath}/pf-miscellaneous/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -378,12 +379,13 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('cfa18332a7ce598cec96d5bc9c73378fc92c3706597a98b6954003fce9187b079c682f9a3075f37ae26fa81659ab325b2c4690c075d350dd077466d36ee8f100'
+sha512sums=('d2c124d557ed67d435d5b66f5b40dfc1617a551c2478f89aaefeef8ac8359bac68f55b7af32f64034c498cc76090747aadc5c9659d6e0f1a893de532e89362d4'
             'SKIP'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
-            'af14061bc151ed0b94c7759da1618a4a05d2c7669aec31d6e59a2f4874fe3b5a1774ad8b8f67f6c01daec84aae2dbd464ce4a74c611dd81619a3f4312507f017'
-            '1d98e34bb276c8ccbc5f175a4ef887ccb9ecf2c72ded9133b2973bf940f8ca996129110d0a49b3bbe25f997a3f28108f3d8477403b05f01fee2589b4a04f4d0b'
-            '1c180319a3940272c7c22febb746ce804abd64b6ae53651908b9d800aefd366cae7f29a4c6ccbca84810fe6c5ece5b83d7a5ae337453e1163ffcf8f7dd3f5356'
+            'd33b4fc80bcd619be903e4ac1910d4b341514fb23d2bb266ea42905d797ef4577b25e1b1ed06bb5a69548305f2404b0d6dde0bca27c8ae05380e47524726b6a9'
+            'b72e9d6c03cba0d61cfd65a2db3e45f2dafb8ae1889b1e210b467b8e7f4aa5416a51283a03ca3f8ac0a861f0866776cacb0cf514bc7d6e896d8f4d87a1aeb57e'
+            '0182d58cae33d9acd59cf5af937dff1b64f41d0a51031fdc7075d6eeb9d4d97ea1d1d5c991d5a8065a352f06af1aa04f6e48d21aae41a36d24ae06f713e9adf9'
+            'a527fb25b73be4f8652d3ef6162cffffb3d07b6ced0e30cf8de0761ff747db44fb985d17a058f219b8f029d7b03d809d88d8be96cd024a1c9b30e3b0acf188db'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'
