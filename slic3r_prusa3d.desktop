@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Slic3r Prusa Edition (Git version)
+Exec=/usr/bin/slic3r-gui
+Icon=slic3r-prusa3d
+Terminal=false
+Type=Application
+Categories=Graphics;3DGraphics;
+MimeType=model/stl;
+StartupNotify=true
+StartupWMClass=Slic3r-gui

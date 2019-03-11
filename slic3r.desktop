@@ -1,9 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Version=1.0
-Type=Application
-Name=Slic3r Prusa Edition
-Icon=slic3r-prusa3d
-Exec=/usr/bin/slic3r-prusa3d
-StartupNotify=false
-StartupWMClass=Slic3r-prusa3d.pl
