@@ -25,4 +25,4 @@ package() {
     cd $srcdir/$pkgname-$pkgver
     make arch_install DESTDIR="$pkgdir"
 }
-md5sums=('1f0b359579e78933b79c7fbe442a65fe')
+md5sums=('0f990f3ebedea6aeb5415107646b5623')

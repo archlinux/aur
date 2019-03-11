@@ -9,7 +9,7 @@ pkgbase = systemd-zram
 	license = GPL3
 	makedepends = python-docutils
 	source = https://github.com/mdomlop/systemd-zram/archive/1.0.tar.gz
-	md5sums = 1f0b359579e78933b79c7fbe442a65fe
+	md5sums = 0f990f3ebedea6aeb5415107646b5623
 
 pkgname = systemd-zram
 
