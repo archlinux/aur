@@ -1,10 +1,11 @@
 pkgbase = python-future-fstrings
 	pkgdesc = A backport of fstrings to python<3.6
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asottile/future-fstrings
 	arch = any
 	license = MIT
+	makedepends = install-wheel-scripts
 	depends = python
 	noextract = future_fstrings-1.0.0-py2.py3-none-any.whl
 	source = https://files.pythonhosted.org/packages/py2.py3/f/future-fstrings/future_fstrings-1.0.0-py2.py3-none-any.whl
