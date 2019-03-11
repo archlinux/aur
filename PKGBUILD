@@ -1,11 +1,11 @@
-# Maintainer:
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Michael Straube <michael.straube@posteo.de>
 # Contributor: pj1031999 <pj1031999@gmail.com>
 # Contributor: Michal Docekal <docekal@gmail.com>
 # Contributor: Laurie Clark-Michalek <bluepeppers (at) archlinux (dot) us>
 
 pkgname=blockattack
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Open source Tetris Attack clone"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('boost-libs' 'sdl2_mixer' 'sdl2_image' 'sdl2_ttf' 'physfs' 'hicolor-icon-theme')
 makedepends=('cmake' 'boost' 'utf8cpp' 'zip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/blockattack/blockattack-game/archive/v$pkgver.tar.gz")
-sha256sums=('0ac2fd9c86833ad9de92b4b25350668eadede2384063891e7a2ecdf3d0886761')
+sha256sums=('e3627854e5718f6bb51087a262ada9042ed0826e9dd97c255f764a5cec814f22')
 
 prepare() {
   cd $pkgname-game-$pkgver
