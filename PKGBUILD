@@ -1,4 +1,4 @@
-# Maintainer: N.E. Neal <spam at [part of name before neal without dots] dog com>
+# Maintainer: N.E. Neal <contact at [part of name before neal without dots] dog com>
 pkgname='bonsai.sh-git'
 pkgver=r43.0c43085
 pkgrel=1
