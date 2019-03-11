@@ -9,13 +9,13 @@
 _pkgname=thunderbird
 pkgname=thunderbird-appmenu
 pkgver=60.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Thunderbird from extra with appmenu patch"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://aur.archlinux.org/packages/thunderbird-appmenu/"
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib
-         nss hunspell sqlite ttf-font libvpx icu)
+         nss hunspell sqlite ttf-font icu)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
              autoconf2.13 rust clang llvm)
 optdepends=('libcanberra: sound support')
@@ -72,7 +72,6 @@ ac_add_options --with-system-zlib
 ac_add_options --with-system-bz2
 ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
-ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 ac_add_options --enable-system-hunspell

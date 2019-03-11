@@ -1,7 +1,7 @@
 pkgbase = thunderbird-appmenu
 	pkgdesc = Thunderbird from extra with appmenu patch
 	pkgver = 60.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/thunderbird-appmenu/
 	arch = x86_64
 	license = MPL
@@ -34,7 +34,6 @@ pkgbase = thunderbird-appmenu
 	depends = hunspell
 	depends = sqlite
 	depends = ttf-font
-	depends = libvpx
 	depends = icu
 	optdepends = libcanberra: sound support
 	provides = thunderbird=60.5.3
