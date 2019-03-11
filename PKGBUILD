@@ -7,6 +7,7 @@ _pkgver_day=05
 pkgname=retrosmart-kvantum-theme
 pkgver=1.0b
 pkgrel=1
+pkgdesc="Retrosmart theme for Kvantum"
 
 url="https://github.com/mdomlop/$pkgname.git"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mdomlop/$pkgname/archive/$pkgver.tar.gz")
@@ -18,7 +19,6 @@ depends=('kvantum-qt5')
 optdepends=('xcursor-retrosmart: The corresponding X11 cursor theme'
             'retrosmart-aurorae-themes: The corresponding Aurorae themes'
             'retrosmart-icon-theme: The corresponding icon theme'
-            'retrosmart-qtcurve-theme: The corresponding theme for QtCurve'
             'retrosmart-xfwm4-themes: The corresponding themes for XFwm4'
             'retrosmart-openbox-themes: The corresponding themes for Openbox')
 arch=('any')
