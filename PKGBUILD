@@ -12,13 +12,10 @@ url=https://github.com/mdomlop/$pkgname
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mdomlop/$pkgname/archive/$pkgver.tar.gz")
 md5sums=('3076e697e96b386385c8177530e8340e')
 license=('GPL3')
-optdepends=('retrosmart-kvantum-theme: The corresponding theme for Kvantum'
-            'retrosmart-qtcurve-theme: The corresponding theme for QtCurve'
-            'retrosmart-gtk-themes: The corresponding GTK themes'
-            'retrosmart-openbox-themes: The corresponding Openbox themes'
-            'retrosmart-wallpapers: The corresponding backgrounds project'
-            'retrosmart-x11-cursors: The corresponding X11 cursor theme'
-            'retrosmart-xfwm4-themes: The corresponding XFwm4 themes')
+optdepends=('xcursor-retrosmart: The corresponding X11 cursor theme'
+            'retrosmart-icon-theme: The corresponding icon theme'
+            'retrosmart-kvantum-theme: The corresponding theme for Kvantum'
+            'retrosmart-qtcurve-theme: The corresponding theme for QtCurve')
 arch=('any')
 group=('retrosmart')
 changelog=ChangeLog
