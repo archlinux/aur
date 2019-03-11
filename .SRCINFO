@@ -1,7 +1,7 @@
 pkgbase = lzham
 	pkgdesc = Lossless data compression codec with LZMA-like ratios but 1.5x-8x faster decompression speed
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/richgel999/lzham_codec
 	arch = i686
 	arch = x86_64
