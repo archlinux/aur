@@ -3,7 +3,7 @@
 # Contributor: Lucas Saliés Brum <lucas@archlinux.com.br>
  
 pkgname=audio-recorder
-pkgver=2.2.2
+pkgver=3.0.5
 pkgrel=1
 pkgdesc="Audio Recorder Application"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ optdepends=('pulseaudio: for extended recording capabilities'
             'gst-plugins-bad: for AAC encoding'
             'gst-plugins-ugly: for MP3 encoding'
             'gst-libav: plugin for the libav library')
-source=("https://launchpad.net/~${pkgname}/+archive/ubuntu/ppa/+sourcefiles/${pkgname}/${pkgver}~cosmic/${pkgname}_${pkgver}~cosmic.tar.gz")
-md5sums=('549f7a67624b10aa1011c297a16f6a78')
+source=("https://launchpad.net/~${pkgname}/+archive/ubuntu/ppa/+sourcefiles/${pkgname}/${pkgver}~disco/${pkgname}_${pkgver}~disco.tar.gz")
+md5sums=('69e4e6643bf457de7fb36cb9c4fb07d6')
  
 build() {
   cd "${srcdir}/trunk"
