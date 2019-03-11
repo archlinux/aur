@@ -2,7 +2,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=inboxer
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Unofficial, free and open-source Google Gmail desktop app"
 arch=(any)
@@ -14,7 +14,7 @@ options=(!strip)
 source=($pkgname-$pkgver.tar.gz::https://github.com/denysdovhan/$pkgname/archive/v$pkgver.tar.gz
         $pkgname.sh
         $pkgname.desktop)
-sha256sums=('668add3e5e5393205e867c2f6cb8c094d8f4b6cfe8d0fcecf7b6792a4e8054e3'
+sha256sums=('b3a13e6d995336a7bfe11d663f8c3b2f9eb479b8e8411c96dbe67cf791dc7586'
             '3607cef6ac387040f63669f3647323ebf5899be1e7094cb369ccc7e2c89005a3'
             '1af6a2acb72642470d89fd7a66bda0aafe14081b07a11658dc1f08c2281e573e')
 
