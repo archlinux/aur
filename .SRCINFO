@@ -13,7 +13,7 @@ pkgbase = retrosmart-aurorae-themes
 	optdepends = retrosmart-wallpapers: The corresponding backgrounds project
 	optdepends = retrosmart-x11-cursors: The corresponding X11 cursor theme
 	optdepends = retrosmart-xfwm4-themes: The corresponding XFwm4 themes
-	source = https://github.com/mdomlop/retrosmart-aurorae-themes/archive/1.1a.tar.gz
+	source = retrosmart-aurorae-themes-1.1a.tar.gz::https://github.com/mdomlop/retrosmart-aurorae-themes/archive/1.1a.tar.gz
 	md5sums = 3076e697e96b386385c8177530e8340e
 
 pkgname = retrosmart-aurorae-themes
