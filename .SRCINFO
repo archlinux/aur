@@ -1,13 +1,14 @@
 pkgbase = mumps-seq-shared
 	pkgdesc = Sparse solver library using Gaussian elimination (sequential version, shared library version)
 	pkgver = 5.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mumps.enseeiht.fr
 	arch = any
 	license = custom
 	depends = gcc-libs
 	depends = blas
 	depends = metis
+	depends = scotch
 	provides = mumps
 	conflicts = mumps
 	conflicts = mumps-seq
