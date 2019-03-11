@@ -1,49 +1,74 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Andres Alejandro Navarro Alsina <aanavarroa@unal.edu.co>
 # Contributor:  GalSim developers team on GitHub
-pkgname=python-galsim
-pkgver=1.5.0
+pkgbase=python-galsim
+pkgname=('python-galsim' 'python2-galsim' 'galsim-common')
+pkgver=v2.1.4.r0.2e459f5a8
 pkgrel=1
-#epoch=
-
 pkgdesc=" The modular galaxy image simulation toolkit "
+arch=('i686' 'x86_64')
+url="https://github.com/GalSim-developers/GalSim.git"
+license=('BSD')
+makedepends=('git' 'scons' 'boost-libs' 'fftw' 'tmv-git' 'eigen' 'pybind11' 'python-coord-git' 'python2-coord-git' 'python-setuptools' 'python2-setuptools' 'python2-astropy' 'python2-future' 'python2-numpy' 'python-astropy' 'python-future' 'python-numpy')
+checkdepends=('python-nose' 'python2-nose' 'python-yaml' 'python2-yaml' 'python-pandas' 'python2-pandas')
+source=("${pkgbase}::git+${url}#tag=v2.1.4")
+md5sums=('SKIP')
 
+pkgver() {
+	 cd "${pkgbase}"
+	 printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
 
-arch=('x86_64')
-url="https://github.com/GalSim-developers/GalSim/releases/tag/v1.5.0-alpha"
-license=('unknown')
-groups=()
-depends=('python' 'scons' 'fftw' 'boost' 'tmv')
-makedepends=('git')
-checkdepends=()
-optdepends=()
-#provides=()
-#conflicts=()
-#replaces=()
-#backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/GalSim-developers/GalSim/archive/v1.5.0-alpha.tar.gz")
-#noextract=()
-md5sums=('f74fd061510a1e507d6b9bc9f010e84c')
-#validpgpkeys=()
+prepare() {
+	  cp -a $pkgbase{,-py2}
+}
 
 
 build() {
-	cd "$src"	
-	cd "GalSim-$pkgver-alpha"
-	scons PREFIX=/usr TMV_DIR=/usr
+	cd "$srcdir"/$pkgbase
+	scons PREFIX=/usr TMV_DIR=/usr PYBIND11_DIR=/usr/include EIGEN_DIR=/usr/include/eigen3 PYTHON=python
+
+	cd  "$srcdir"/$pkgbase-py2
+	scons PREFIX=/usr TMV_DIR=/usr PYBIND11_DIR=/usr/include EIGEN_DIR=/usr/include/eigen3 PYTHON=python2
+}
+
+check() {
+	cd "$srcdir"/$pkgbase/tests
+	nosetests -v || warning 'Tests failed'
+
+	cd "$srcdir"/$pkgbase-py2/tests
+	nosetests2 -v || warning 'Tests2 failed'
+}
+
+	
+package_python-galsim() {
+			    depends=('pybind11' 'python-astropy' 'python-numpy' 'python-future' 'galsim-common' 'boost-libs' 'fftw' 'tmv-git' 'eigen' 'pybind11' 'python-coord-git')
+			    cd $pkgbase
+			    scons PREFIX="${pkgdir}"/usr  FINAL_PREFIX=/usr  PYTHON=python install
+			    rm -rf "${pkgdir}"/usr/share
+			    rm -f "${pkgdir}"/usr/lib/libgalsim.so
+			    rm -f "${pkgdir}"/usr/lib/libgalsim.so.2.1
+			    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
+}
+
+package_python2-galsim() {
+			     depends=('pybind11' 'python2-astropy' 'python2-numpy' 'python2-future' 'galsim-common' 'boost-libs' 'fftw' 'tmv-git' 'eigen' 'pybind11' 'python2-coord-git')
+			     cd $pkgbase-py2
+			     scons PREFIX=$pkgdir/usr  FINAL_PREFIX=/usr PYTHON=python2 install
+			     rm -rf "${pkgdir}"/usr/share		 
+			     rm -f "${pkgdir}"/usr/lib/libgalsim.so	 
+			     rm -f "${pkgdir}"/usr/lib/libgalsim.so.2.1
+			     for i in galsim galsim_download_cosmos; do mv "$pkgdir"/usr/bin/${i}{,2}; done
+			     install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
+}
+
+package_galsim-common() {
+			    depends=('fftw')
+ 			    pkgdesc='common files for python-galsim and python2-galsim'
+    			    cd $pkgbase
+			    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
+    			    mv "${srcdir}"/$pkgbase/share/ "${pkgdir}"/usr/share/galsim/
+  			    install -Dm644 "${srcdir}"/$pkgbase/lib/libgalsim.so "${pkgdir}"/usr/lib/libgalsim.so
+			    install -Dm644 "${srcdir}"/$pkgbase/lib/libgalsim.so.2.1 "${pkgdir}"/usr/lib/libgalsim.so.2.1
 }
 
 
-package() {
-	cd "$src"
-	cd "GalSim-$pkgver-alpha"
-	scons PREFIX=$pkgdir/usr install
-
-}
