@@ -18,7 +18,7 @@ source=("xmrig.service"
 	"${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('1c4fa2898b1252507e885c4bfa2d8d5b20bce2069cb5f703bb084066d560a770'
             'd8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6'
-            'e229d6b2ac3c805b0abfa2d901070689d04f9fce18deccb5f307c55dbb33fa6b')
+            '644168116cd76747c9e1358113598dd039cfac8fccd2b54f84b9d40a9b075c2b')
 prepare() {
   cd "xmrig-${pkgver}"
   mkdir build
@@ -39,3 +39,4 @@ package() {
   install -Dm644 "${srcdir}/xmrig.service" "${pkgdir}/usr/lib/systemd/system/xmrig@.service"
   install -Dm0644 "${srcdir}/xmrig.sysusers" "${pkgdir}/usr/lib/sysusers.d/xmrig.conf"
 }
+
