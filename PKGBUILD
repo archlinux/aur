@@ -3,7 +3,7 @@
 
 pkgname=('ogdf-snapshot' 'ogdf-snapshot-docs')
 pkgver=2018_03_28
-pkgrel=1
+pkgrel=2
 pkgdesc="OGDF is a self-contained C++ class library for the automatic layout of diagrams. OGDF offers sophisticated algorithms and data structures to use within your own applications or scientific projects."
 arch=('i686' 'x86_64')
 url="http://amber-v7.cs.tu-dortmund.de/doku.php/start"
@@ -15,7 +15,7 @@ sha256sums=("347c3fa8dcdbb094f9c43008cbc2934bc5a64a532af4d3fe360a5fa54488440f")
 
 build() {
 	cd "$srcdir/OGDF-snapshot"
-	cmake -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} ${CPPFLAGS}" \
+	cmake -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} ${CPPFLAGS} -Wno-class-memaccess -Wno-error=restrict" \
 		-DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
 		-DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=true \
 	        -DCMAKE_INSTALL_PREFIX="$pkgdir" .
