@@ -2,7 +2,7 @@
 
 _pkgbasename=pcre
 pkgname=lib32-$_pkgbasename
-pkgver=8.42
+pkgver=8.43
 pkgrel=1
 pkgdesc="A library that implements Perl 5-style regular expressions (32-bit)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://www.pcre.org"
 license=('custom')
 depends=('lib32-gcc-libs' $_pkgbasename)
 source=("https://ftp.pcre.org/pub/pcre/$_pkgbasename-$pkgver.tar.bz2"{,.sig})
-md5sums=('085b6aa253e0f91cae70b3cdbe8c1ac2'
+md5sums=('636222e79e392c3d95dcc545f24f98c4'
          'SKIP')
 validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8') # Philip Hazel
 
