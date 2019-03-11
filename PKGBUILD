@@ -1,7 +1,7 @@
 # Maintainer: basigur
 
 pkgname=neru-icon-classic-theme
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="Classic theme icons Neru"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('gtk-update-icon-cache' 'librsvg' 'hicolor-icon-theme')
 replaces=('neru-icon-classic-theme')
 conflicts=()
 source=("https://github.com/chistota/"${pkgname}"/archive/v"${pkgver}".tar.gz")
-sha512sums=('D6D59755C5E563B670A0E1EBA1F793F81264C32BC90B03DA3420AF2918F0FF7D1D6A47B6CE09A0C7CCFB8AB3C906313BC99080163536C52DA04AFE84FC575350')
+sha512sums=('B6979D21766581FD82108BB20E2DD778BAD95801049DBBA5DD7F953323E5E3B666DE1B4D84F90E6088EBACFC0CFD64A1B04C9D690195358D8917AC23B7C47683')
 
 package() {
 
