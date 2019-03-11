@@ -25,9 +25,9 @@ pkgbase = mrpt
 	source = mrpt-1.5.6::git+https://github.com/MRPT/mrpt.git#tag=1.5.6
 	source = https://raw.githubusercontent.com/majorx234/mrpt_patch/master/mrpt_CmakeLists.patch
 	source = https://raw.githubusercontent.com/majorx234/FindNumPy.cmake/master/FindNumPy.cmake
-	md5sums = SKIP
-	md5sums = 4c755c5fecd2f6bca94b02cf2695bcc1c06bd11d34a85f7b2a90bc9f1ebdf4c7
-	md5sums = e8cbe6841595d594659d9a16464af2386efd0dce2947e8f348e2c47fad1d022f
+	sha256sums = SKIP
+	sha256sums = 4c755c5fecd2f6bca94b02cf2695bcc1c06bd11d34a85f7b2a90bc9f1ebdf4c7
+	sha256sums = e8cbe6841595d594659d9a16464af2386efd0dce2947e8f348e2c47fad1d022f
 
 pkgname = mrpt
 
