@@ -2,7 +2,7 @@
 # Contributor: Jan Holthuis <holthuis.jan@googlemail.com>
 
 pkgname=nzbget-git
-pkgver=21.0.r2202
+pkgver=21.0.r2302
 pkgrel=1
 epoch=1
 pkgdesc="Download from Usenet using .nzb files"
