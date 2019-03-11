@@ -17,8 +17,8 @@ _tag=${pkgver}
 source=("${_dir}"::"git+https://github.com/MRPT/mrpt.git"#tag=${_tag}
         "https://raw.githubusercontent.com/majorx234/mrpt_patch/master/mrpt_CmakeLists.patch"
         "https://raw.githubusercontent.com/majorx234/FindNumPy.cmake/master/FindNumPy.cmake")
-sha256sums=('SKIP' 
-         '4c755c5fecd2f6bca94b02cf2695bcc1c06bd11d34a85f7b2a90bc9f1ebdf4c7'
+sha256sums=('SKIP'
+         '1999b62e1e7317d793706edba2f277bb798aadd7f980db44393ff5b864d67f8c' 
          'e8cbe6841595d594659d9a16464af2386efd0dce2947e8f348e2c47fad1d022f')
 
 prepare() {
