@@ -1,0 +1,16 @@
+pkgbase = devtools-qemu
+	pkgdesc = QEMU based cross-build tools for Archlinux package maintainers
+	pkgver = 2.76715c0
+	pkgrel = 1
+	url = http://github.com/petronny/devtools-qemu
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = binfmt-qemu-static
+	depends = devtools-alarm
+	depends = qemu-user-static-bin
+	source = git://github.com/petronny/devtools-qemu.git
+	sha256sums = SKIP
+
+pkgname = devtools-qemu
+
