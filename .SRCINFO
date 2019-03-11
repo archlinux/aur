@@ -6,11 +6,13 @@ pkgbase = xcursor-retrosmart
 	changelog = ChangeLog
 	arch = any
 	license = GPL3
+	optdepends = retrosmart-aurorae-themes: The corresponding Aurorae themes
 	optdepends = retrosmart-kvantum-theme: The corresponding theme for Kvantum
 	optdepends = retrosmart-qtcurve-theme: The corresponding theme for QtCurve
-	optdepends = retrosmart-openbox-themes: The corresponding Openbox themes
-	optdepends = retrosmart-xfwm4-themes: The corresponding XFwm4 themes
-	source = https://github.com/mdomlop/retrosmart-x11-cursors/archive/1.1.tar.gz
+	optdepends = retrosmart-icon-theme: The corresponding icon theme
+	optdepends = retrosmart-xfwm4-themes: The corresponding themes for XFwm4
+	optdepends = retrosmart-openbox-themes: The corresponding themes for Openbox
+	source = xcursor-retrosmart-1.1.tar.gz::https://github.com/mdomlop/retrosmart-x11-cursors/archive/1.1.tar.gz
 	md5sums = 214db4ec299eaaf3855be8646ae2275f
 
 pkgname = xcursor-retrosmart
