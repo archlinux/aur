@@ -2,11 +2,11 @@
 
 pkgname=python-mxboard
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Logging MXNet Data for Visualization in TensorBoard'
 arch=(any)
 url=https://github.com/awslabs/mxboard
-license=('Apach 2.0')
+license=('Apache')
 depends=(mxnet python-matplotlib python-numpy python-protobuf python-six python-scipy)
 optdepends=(tensorboard)
 makedepends=(python-setuptools)
