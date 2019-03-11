@@ -1,0 +1,183 @@
+diff -pNaru5 driver/2.6.27.orig/dgrp_net_ops.c driver/2.6.27/dgrp_net_ops.c
+--- driver/2.6.27.orig/dgrp_net_ops.c	2018-06-01 12:10:27.000000000 -0400
++++ driver/2.6.27/dgrp_net_ops.c	2019-03-10 21:19:01.244643855 -0400
+@@ -4530,15 +4530,20 @@ static long dgrp_net_ioctl(struct file *
+ 
+ 	nd = file->private_data;
+ 
+ 	dbg_net_trace(IOCTL, ("net ioctl(%p) start\n", nd));
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,0,0)
++#define compat_access_ok(u,v,w) access_ok(v,w)
++#else
++#define compat_access_ok(u,v,w) access_ok(u,v,w)
++#endif
+ 
+ 	if (_IOC_DIR(cmd) & _IOC_READ)
+-		rtn = access_ok(VERIFY_WRITE, (void *) arg, size);
++		rtn = compat_access_ok(VERIFY_WRITE, (void *) arg, size);
+ 	else if (_IOC_DIR(cmd) & _IOC_WRITE)
+-		rtn = access_ok(VERIFY_READ,  (void *) arg, size);
++		rtn = compat_access_ok(VERIFY_READ,  (void *) arg, size);
+ 
+ 	if (rtn == 0)
+ 		goto done;
+ 
+ 	rtn = 0;
+diff -pNaru5 driver/2.6.27.orig/dgrp_ports_ops.c driver/2.6.27/dgrp_ports_ops.c
+--- driver/2.6.27.orig/dgrp_ports_ops.c	2018-06-01 12:10:27.000000000 -0400
++++ driver/2.6.27/dgrp_ports_ops.c	2019-03-10 21:19:56.391097938 -0400
+@@ -516,11 +516,17 @@ static ssize_t dgrp_ports_read(struct fi
+ 	if (len > left) {
+ 		len = left;
+ 		notdone = 1;
+ 	}
+ 
+-	if (access_ok(VERIFY_WRITE, buf, len) == 0) {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,0,0)
++#define compat_access_ok(u,v,w) access_ok(v,w)
++#else
++#define compat_access_ok(u,v,w) access_ok(u,v,w)
++#endif
++
++	if (compat_access_ok(VERIFY_WRITE, buf, len) == 0) {
+ 		res = -EFAULT;
+ 		goto done;
+ 	}
+ 
+ 	res = copy_to_user(buf, &linebuf[linepos], len);
+diff -pNaru5 driver/2.6.27.orig/dgrp_specproc.c driver/2.6.27/dgrp_specproc.c
+--- driver/2.6.27.orig/dgrp_specproc.c	2018-06-01 12:10:27.000000000 -0400
++++ driver/2.6.27/dgrp_specproc.c	2019-03-10 21:20:22.024333131 -0400
+@@ -642,11 +642,17 @@ static int write_config(struct dgrp_proc
+ 	len = *lenp;
+ 
+ 	if (len > INBUFLEN - 1)
+ 		len = INBUFLEN - 1;
+ 
+-	if (access_ok(VERIFY_READ, buffer, len) == 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,0,0)
++#define compat_access_ok(u,v,w) access_ok(v,w)
++#else
++#define compat_access_ok(u,v,w) access_ok(u,v,w)
++#endif
++
++	if (compat_access_ok(VERIFY_READ, buffer, len) == 0)
+ 		return -EFAULT;
+ 
+ 	if (copy_from_user(inbuf, buffer, len))
+ 		return -EFAULT;
+ 
+@@ -729,11 +735,11 @@ static int read_config(struct dgrp_proc_
+ 	if (len > left) {
+ 		len = left;
+ 		notdone = 1;
+ 	}
+ 
+-	if (access_ok(VERIFY_WRITE, buffer, len) == 0)
++	if (compat_access_ok(VERIFY_WRITE, buffer, len) == 0)
+ 		return -EFAULT;
+ 	if (copy_to_user(buffer, &linebuf[linepos], len))
+ 		return -EFAULT;
+ 
+ 	if (notdone)
+@@ -1116,11 +1122,11 @@ static int write_info(struct dgrp_proc_e
+ 	len = *lenp;
+ 
+ 	if (len > INBUFLEN - 1)
+ 		len = INBUFLEN - 1;
+ 
+-	if (access_ok(VERIFY_READ, buffer, len) == 0)
++	if (compat_access_ok(VERIFY_READ, buffer, len) == 0)
+ 		return -EFAULT;
+ 	if (copy_from_user(inbuf, buffer, len))
+ 		return -EFAULT;
+ 
+ 	inbuf[len] = 0;
+@@ -1322,11 +1328,11 @@ static int read_info(struct dgrp_proc_en
+ 	if (len > left) {
+ 		len = left;
+ 		notdone = 1;
+ 	}
+ 
+-	if (access_ok(VERIFY_WRITE, buffer, len) == 0)
++	if (compat_access_ok(VERIFY_WRITE, buffer, len) == 0)
+ 		return -EFAULT;
+ 	if (copy_to_user(buffer, &linebuf[linepos], len))
+ 		return -EFAULT;
+ 
+ 	if (notdone)
+@@ -1431,11 +1437,11 @@ static int read_nodeinfo(struct dgrp_pro
+ 	if (len > left) {
+ 		len = left;
+ 		notdone = 1;
+ 	}
+ 
+-	if (access_ok(VERIFY_WRITE, buffer, len) == 0)
++	if (compat_access_ok(VERIFY_WRITE, buffer, len) == 0)
+ 		return -EFAULT;
+ 	if (copy_to_user(buffer, &linebuf[linepos], len))
+ 		return -EFAULT;
+ 
+ 	if (notdone)
+diff -pNaru5 driver/2.6.27.orig/dgrp_tty.c driver/2.6.27/dgrp_tty.c
+--- driver/2.6.27.orig/dgrp_tty.c	2018-06-01 12:10:27.000000000 -0400
++++ driver/2.6.27/dgrp_tty.c	2019-03-10 21:19:44.367810782 -0400
+@@ -2992,11 +2992,17 @@ static int set_modem_info(struct ch_stru
+ 	int error;
+ 	unsigned int arg;
+ 	int mval = 0;
+ 	ulong lock_flags;
+ 
+-	error = access_ok(VERIFY_READ, value, sizeof(int));
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,0,0)
++#define compat_access_ok(u,v,w) access_ok(v,w)
++#else
++#define compat_access_ok(u,v,w) access_ok(u,v,w)
++#endif
++
++	error = compat_access_ok(VERIFY_READ, value, sizeof(int));
+ 	if (error == 0)
+ 		return -EFAULT;
+ 
+ 	get_user(arg, (unsigned int *) value);
+ 	mval |= ((arg & TIOCM_RTS) ? DM_RTS : 0)
+@@ -3425,11 +3431,11 @@ dgrp_tty_ioctl(struct tty_struct *tty, u
+ 		 * the break.
+ 		 */
+ 		return 0;
+ 
+ 	case TIOCGSOFTCAR:
+-		rc = access_ok(VERIFY_WRITE, (void *) arg, sizeof(long));
++		rc = compat_access_ok(VERIFY_WRITE, (void *) arg, sizeof(long));
+ 		if (rc == 0)
+ 			return -EFAULT;
+ 		put_user(C_CLOCAL(tty) ? 1 : 0, (unsigned long *) arg);
+ 		return 0;
+ 
+@@ -3445,11 +3451,11 @@ dgrp_tty_ioctl(struct tty_struct *tty, u
+ 			 (arg ? CLOCAL : 0));
+ #endif
+ 		return 0;
+ 
+ 	case TIOCMGET:
+-		rc = access_ok(VERIFY_WRITE, (void *) arg,
++		rc = compat_access_ok(VERIFY_WRITE, (void *) arg,
+ 				 sizeof(unsigned int));
+ 		if (rc == 0)
+ 			return -EFAULT;
+ 		return get_modem_info(ch, (unsigned int *) arg);
+ 
+@@ -3729,11 +3735,11 @@ dgrp_tty_ioctl(struct tty_struct *tty, u
+ 			ch->ch_xxoff = dflow.stopc;
+ 		}
+ 		break;
+ 
+ 	case DIGI_GETCUSTOMBAUD:
+-		rc = access_ok(VERIFY_WRITE, (void *) arg, sizeof(int));
++		rc = compat_access_ok(VERIFY_WRITE, (void *) arg, sizeof(int));
+ 		if (rc == 0)
+ 			return -EFAULT;
+ 		put_user(ch->ch_custom_speed, (unsigned int *) arg);
+ 		break;
+ 

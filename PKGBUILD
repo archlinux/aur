@@ -106,7 +106,7 @@ pkgname='dgrp'
 #_pkgver='1.9-38'; _dl='81000137_Y.tgz'
 _pkgver='1.9-39'; _dl='40002086_Z.tgz'
 pkgver="${_pkgver//-/.}"
-pkgrel='1'
+pkgrel='2'
 pkgdesc="tty driver for Digi ${_opt_RealPort} ConnectPort EtherLite Flex One CM PortServer TS IBM RAN serial console terminal servers"
 #_pkgdescshort="Digi ${_opt_RealPort} driver for Ethernet serial servers" # For when we used to generate the autorebuild from here
 arch=('i686' 'x86_64')
@@ -184,6 +184,8 @@ source=(
   "${_mibs[@]/#/${_mibsrc}}"
   #'0000-Kernel-4-13-CLASS_ATTR_STRING.patch' # https://www.digi.com/support/forum/67157/realport-compile-error-with-fedora-27-kernel-4-14-14 https://www.digi.com/support/forum/65817/class_attr_driver_version-error-compiling-in-kernel-4-13
   #'0001-Kernel-4-15-timers.patch' # https://forum.blackmagicdesign.com/viewtopic.php?uid=16&f=3&t=68382&start=0
+  '0002-kernel-5.0.0-do_gettimeofday.patch'
+  '0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch' # https://lkml.org/lkml/2019/1/4/418
 )
 unset _mibsrc
 #source_i686=('http://ftp1.digi.com/support/utilities/40002890_A.tgz')
@@ -218,7 +220,9 @@ sha256sums=('0db5204cc7d7806fde39b5ea7b6a465b4310739c380d7330131956e63af0f137'
             '731e05fc551367faa6ad5dc317eedf305388ab12db196c0a1361a3d01bd35279'
             'c471cafa43503a40d43b42acd8bc6ef49db29e55a74e0494c85f729ea45fe243'
             '5cac7ce2e6f043127f314b93694af021ae7820ffb5bf3de343da7a240d05e9c8'
-            '8654496d83c083e457e8bb9bae2b1e71804d156a38c284d89872d0125eba947d')
+            '8654496d83c083e457e8bb9bae2b1e71804d156a38c284d89872d0125eba947d'
+            '353d15624675c78dfd83318195d75bdb0507fd0476f5e22be1329bf257d2de1e'
+            'acbcf462628daf4fa2dbee064969a158ccc0bb0ce9f286ceb3617e470eab1c1f')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -295,6 +299,14 @@ prepare() {
     echo 'Version mismatch'
     false
   fi
+
+  #cp -p driver/2.6.27/dgrp_mon_ops.c{,.orig}; false
+  #diff -pNau5 driver/2.6.27/dgrp_mon_ops.c{.orig,} > '0002-kernel-5.0.0-do_gettimeofday.patch'
+  patch -Nbup0 -i "${srcdir}/0002-kernel-5.0.0-do_gettimeofday.patch"
+
+  #cp -pr driver/2.6.27{,.orig}
+  #diff -pNaru5 driver/2.6.27{.orig,} > '0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch'
+  patch -Nbup0 -i "${srcdir}/0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch"
 
   # Standardize name of RealPort
   sed -e "s/RealPort/${_opt_RealPort}/gI" -i $(grep -lrF $'RealPort\nRealport' .)

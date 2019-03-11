@@ -1,0 +1,24 @@
+--- driver/2.6.27/dgrp_mon_ops.c.orig	2018-06-01 12:10:27.000000000 -0400
++++ driver/2.6.27/dgrp_mon_ops.c	2019-03-10 21:10:01.023556586 -0400
+@@ -218,10 +218,21 @@ int unregister_mon_device(struct nd_stru
+ 	node->nd_mon_de = NULL;
+ 
+ 	return 0;
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,0,0)
++/* Temporary until reimplemented with 64 bit functions */
++static inline void do_gettimeofday(struct timeval *tv)
++{
++  struct timespec64 now;
++
++  ktime_get_real_ts64(&now);
++  tv->tv_sec = now.tv_sec;
++  tv->tv_usec = now.tv_nsec/1000;
++}
++#endif
+ 
+ /*****************************************************************************
+ *
+ * Function:
+ *
