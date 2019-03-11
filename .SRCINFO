@@ -1,0 +1,15 @@
+pkgbase = fleep-bin
+	pkgdesc = Messenger for all your teams and projects. Fleep enables communication within and across organizations - be it your team chats, project communication or 1:1 conversations.
+	pkgver = 1.0.17
+	pkgrel = 1
+	url = https://builds.fleep.ee/linux/pool/stretch/fleep/
+	arch = x86_64
+	license = custom
+	depends = qt5-webengine
+	depends = qt5-multimedia
+	depends = qt5-quickcontrols
+	source = https://builds.fleep.ee/linux/pool/stretch/fleep//fleep_1.0.17-1_amd64.deb
+	sha512sums = a66e8c57493b2f3eba9c460fe9959b60a9b3adb0f389d725abe5269bfac2799853cf61ad5600f36ef700a0feb2bb2a52140dfae2cdd6989cc7042c7e6b43c146
+
+pkgname = fleep-bin
+
