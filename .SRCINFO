@@ -8,7 +8,7 @@ pkgbase = pbscrap
 	license = GPL3
 	depends = python>=3
 	depends = python-urllib3
-	source = https://github.com/mdomlop/pbscrap/archive/1.0b.tar.gz
+	source = pbscrap-1.0b.tar.gz::https://github.com/mdomlop/pbscrap/archive/1.0b.tar.gz
 	md5sums = abfa14099d06214cc6456a2c0eaf3779
 
 pkgname = pbscrap

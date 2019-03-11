@@ -11,7 +11,7 @@ pkgdesc="A simple pastebin.com scraper."
 arch=('any')
 
 url="https://github.com/mdomlop/$pkgname"
-source=("https://github.com/mdomlop/$pkgname/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mdomlop/$pkgname/archive/$pkgver.tar.gz")
 md5sums=('abfa14099d06214cc6456a2c0eaf3779')
 
 license=('GPL3')
