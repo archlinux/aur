@@ -51,5 +51,5 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 }
