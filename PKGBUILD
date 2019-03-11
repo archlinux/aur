@@ -19,7 +19,6 @@ source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2019/irpf/arquivos/IRPF
         $pkgname.install
 		$pkgname)
  
-
 md5sums=('b1769241f1f4103d811e92b9fb8fd81b'
          '56a8372f7b4e1e1e51a6fff6255365d4'
          '43d8c9617118578f03b2c4eeb1c72c57'
