@@ -2,20 +2,26 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=lib32-libvpx
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='VP8 and VP9 codec'
-arch=('x86_64')
-url='http://www.webmproject.org/'
-license=('BSD')
-depends=('lib32-gcc-libs' 'libvpx')
-makedepends=('git' 'yasm')
-provides=('libvpx.so')
-source=("libvpx-${pkgver}.tar.gz::https://github.com/webmproject/libvpx/archive/v${pkgver}.tar.gz")
-sha256sums=('1fec931eb5c94279ad219a5b6e0202358e94a93a90cfb1603578c326abfc1238')
+arch=(x86_64)
+url=http://www.webmproject.org/
+license=(BSD)
+depends=(
+  lib32-gcc-libs
+  libvpx
+)
+makedepends=(
+  git
+  nasm
+)
+provides=(libvpx.so)
+source=(git+https://chromium.googlesource.com/webm/libvpx#tag=v${pkgver})
+sha256sums=(SKIP)
 
 build() {
-  cd libvpx-${pkgver}
+  cd libvpx
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
@@ -25,21 +31,22 @@ build() {
     --prefix='/usr' \
     --libdir='/usr/lib32' \
     --target='x86-linux-gcc' \
+    --disable-install-bins \
+    --disable-install-docs \
+    --disable-install-srcs \
+    --enable-pic \
+    --enable-postproc \
     --enable-runtime-cpu-detect \
     --enable-shared \
-    --enable-pic \
-    --disable-install-{bins,docs,srcs} \
     --enable-vp8 \
-    --enable-postproc \
     --enable-vp9 \
     --enable-vp9-highbitdepth \
-    --enable-experimental \
-    --enable-spatial-svc
+    --enable-vp9-temporal-denoising
   make
 }
 
 package() {
-  cd libvpx-${pkgver}
+  cd libvpx
 
   make DIST_DIR="${pkgdir}/usr" install
   rm -rf "${pkgdir}"/usr/include
