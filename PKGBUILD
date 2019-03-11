@@ -1,13 +1,13 @@
 # Maintainer: dax <dev@dax.moe>
 pkgname=ddhx-git
-pkgver=r92.488998e
+pkgver=r93.6d0eeb0
 pkgrel=1
 pkgdesc="Console hexadecimal file viewer"
 arch=('x86_64')
 url="https://github.com/dd86k/ddhx"
 license=('MIT')
 depends=()
-makedepends=('git' 'dub')
+makedepends=('git' 'dub' 'dmd')
 provides=("ddhx")
 conflicts=("ddhx")
 source=('git+https://github.com/dd86k/ddhx')

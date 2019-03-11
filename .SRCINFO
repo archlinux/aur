@@ -1,12 +1,13 @@
 pkgbase = ddhx-git
 	pkgdesc = Console hexadecimal file viewer
-	pkgver = r92.488998e
+	pkgver = r93.6d0eeb0
 	pkgrel = 1
 	url = https://github.com/dd86k/ddhx
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = dub
+	makedepends = dmd
 	provides = ddhx
 	conflicts = ddhx
 	source = git+https://github.com/dd86k/ddhx
