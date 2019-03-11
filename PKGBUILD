@@ -2,12 +2,13 @@
 #mindmaster 中文版
 pkgname=mindmaster-cn
 pkgver=6
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 options=(!strip)
 conflicts=("mindmaster")
 pkgdesc="多功能，高颜值，易使用的专业思维导图软件"
 license=('Commercial')
+url="https://www.edrawsoft.cn/mindmaster/"
 # source_x86_64=("http://download.edrawsoft.com/download/${pkgname}-${pkgver}-amd64.tar.gz")
 source_x86_64=("https://www.edrawsoft.cn/2download/mindmaster-6-64-cn.tar.gz")
 sha256sums_x86_64=('078544be07b01cf19351eb729b693daaaaf75b4b0a1fcb10b5a2b1631a0381e2')
