@@ -1,7 +1,7 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 pkgname=sway
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager"
 arch=("x86_64")
 url="https://swaywm.org/"
@@ -21,6 +21,7 @@ optdepends=(
 	"i3status: To display system information with a bar."
 	"imagemagick: For taking screenshots."
 	"rxvt-unicode: Default terminal emulator."
+	"xorg-server-xwayland: X11 support"
 )
 validpgpkeys=("9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A") # Drew DeVault
 install=$pkgname.install
