@@ -1,7 +1,7 @@
 pkgbase = labjack-exodriver-git
 	pkgdesc = Linux low-level LabJack U12, U3, U6, UE9, Digit and T7 USB library
-	pkgver = 161.612b06a
-	pkgrel = 2
+	pkgver = 191.be04726
+	pkgrel = 1
 	url = http://labjack.com/support/software
 	install = labjack-exodriver.install
 	arch = i686

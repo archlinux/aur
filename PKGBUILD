@@ -1,8 +1,8 @@
 # Maintainer: Spyros Stathopoulos <foucault.online@gmail.com>
 pkgname=labjack-exodriver-git
 _gitname="labjack-exodriver"
-pkgver=161.612b06a
-pkgrel=2
+pkgver=191.be04726
+pkgrel=1
 pkgdesc="Linux low-level LabJack U12, U3, U6, UE9, Digit and T7 USB library"
 arch=('i686' 'x86_64')
 url="http://labjack.com/support/software"
@@ -25,7 +25,7 @@ build() {
   cd "${srcdir}"/"${_gitname}"
 
   sed -i -e 's:/usr/local/:/usr/:g' liblabjackusb/Makefile
-  sed -i -e 's:GROUP="adm":GROUP="labjack":g' 10-labjack.rules
+  sed -i -e 's:GROUP="adm":GROUP="labjack":g' 90-labjack.rules
   cd liblabjackusb
   make
   ln -s liblabjackusb.so.* liblabjackusb.so
@@ -40,8 +40,8 @@ package() {
   install -D -m755 liblabjackusb/liblabjackusb.so.* ${pkgdir}/usr/lib/
   cp -dpr --no-preserve=ownership \
     liblabjackusb/liblabjackusb.so ${pkgdir}/usr/lib/liblabjackusb.so
-  install -D -m644 10-labjack.rules \
-    ${pkgdir}/usr/lib/udev/rules.d/10-labjack.rules
+  install -D -m644 90-labjack.rules \
+    ${pkgdir}/usr/lib/udev/rules.d/90-labjack.rules
   install -D -m644 liblabjackusb/labjackusb.h ${pkgdir}/usr/include/
   install -D -m644 ../LICENSE \
     ${pkgdir}/usr/share/licenses/labjack-exodriver/LICENSE
