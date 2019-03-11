@@ -3,7 +3,7 @@
 
 pkgname=terraform-provider-libvirt
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Terraform provider to provision infrastructure with Linux's KVM using libvirt"
 url="https://github.com/dmacvicar/terraform-provider-libvirt"
 arch=("x86_64")
