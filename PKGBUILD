@@ -1,9 +1,10 @@
 # Wildfly Application Server package
 # Contributor: Holger Rauch <holger dot rauch at posteo dot de>
+# Contributor: nstickney <nstickney at pm dot me>
 # Maintainer: Zdenek Obst <zdenek dot obst at gmail dot com>
 
 pkgname=wildfly
-pkgver=15.0.0.Final
+pkgver=16.0.0.Final
 pkgrel=1
 
 pkgdesc='Wildfly Application Server'
@@ -43,13 +44,13 @@ source=(http://download.jboss.org/wildfly/${pkgver}/wildfly-${pkgver}.tar.gz
         ${pkgname}.install
 	systemd-wrapper.sh)
 
-sha256sums=('52a41ca0e36dc41800214e6a8f4e0032276477299804e6a719ba1ffe35d37a92'
+sha256sums=('65ec8881c073e1fda0be293037eb7c8d19b38d6e57f83044086d39dc40a26385'
             '65e4b22b106aa16413e5c95686969b3f16974235451d8445ce4c562299325412'
             '3b2d059fcecb799ea8134b23ee0b77b4bc53dd99c7bd541679c4c139638b323a'
             'a360ddb4beb9c704257bd78e08e8eea69c43b410a9c93d346541158c3b9d4330'
             '922035fcf68a66ed4b36a89370d2335941cb64ef8561e81fa6f59b5784f659e1')
 
-sha512sums=('bbcd90577f04579b4ae61943c228fe961984a50f601c132867ca1a73efaea0550fb3d36f94dee23a90a69dd8b494e28e91964723f9b327c863773c7d3cdfb42e'
+sha512sums=('3e12a72b8998fd37ea84768e29cd721b33d197cd879835f2ad52cf611ef57253e17c56b9a270e660fcbb8ec15bb5d090c6dd900dc45117afe8189abde684be48'
             'cab55d727ea2be620dba204c63a5156fe23386475d242d9988101174eaec7a58524e97e90947f522a09c9d9df6e18cb9e06af56edb9a693796f25f840f553fb3'
             'b5ce879d81cfe825b75edb97de27c7f4c75465cb514fc500f5f7ab9fef9fb87142456692f29a3f327981631a28755d02b7edf9368e5b5d09b372a6606a457d16'
             'd0bbd9e446d3e3640a13c64ee7dde15ff4527cccaa4c66814d262b54c8b22a8603ebe8ef8afa578a56732137a9b2fcf4e313d1c9768c2b356f3c8fbfeaa9453a'
