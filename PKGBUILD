@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a ROS wrapper for OpenSlams Gmapping."
 url='http://ros.org/wiki/gmapping'
 
 pkgname='ros-kinetic-gmapping'
-pkgver='1.3.8'
+pkgver='1.3.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,8 +27,15 @@ depends=(${ros_depends[@]})
 
 _tag=release/kinetic/gmapping/${pkgver}-${_pkgver_patch}
 _dir=gmapping
-source=("${_dir}"::"git+https://github.com/ros-gbp/slam_gmapping-release.git"#tag=${_tag})
-md5sums=('SKIP')
+source=("${_dir}"::"git+https://github.com/ros-gbp/slam_gmapping-release.git"#tag=${_tag}
+        'gmapping_boost.patch')
+md5sums=('SKIP'
+         'SKIP')
+
+prepare() {
+  cd "${srcdir}/${_dir}"
+  patch -Np1 -i "${srcdir}/gmapping_boost.patch"
+}
 
 build() {
   # Use ROS environment variables

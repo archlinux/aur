@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-gmapping
 	pkgdesc = ROS - This package contains a ROS wrapper for OpenSlams Gmapping.
-	pkgver = 1.3.8
+	pkgver = 1.3.10
 	pkgrel = 1
 	url = http://ros.org/wiki/gmapping
 	arch = any
@@ -18,7 +18,9 @@ pkgbase = ros-kinetic-gmapping
 	depends = ros-kinetic-nav-msgs
 	depends = ros-kinetic-roscpp
 	depends = ros-kinetic-openslam-gmapping
-	source = gmapping::git+https://github.com/ros-gbp/slam_gmapping-release.git#tag=release/kinetic/gmapping/1.3.8-0
+	source = gmapping::git+https://github.com/ros-gbp/slam_gmapping-release.git#tag=release/kinetic/gmapping/1.3.10-0
+	source = gmapping_boost.patch
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = ros-kinetic-gmapping
