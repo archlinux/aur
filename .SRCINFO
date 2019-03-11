@@ -1,6 +1,6 @@
 pkgbase = meshroom
 	pkgdesc = Meshroom is a free, open-source 3D Reconstruction Software based on the AliceVision framework.
-	pkgver = 2018.1.0
+	pkgver = 2019.1.0
 	pkgrel = 1
 	url = http://alicevision.github.io/
 	arch = i686
