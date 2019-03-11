@@ -1,8 +1,8 @@
 #!/bin/sh
 
-export LD_LIBRARY_PATH='/usr/lib/skia-sharp58'
-
 exec dotnet /usr/lib/emby-server/EmbyServer.dll \
   -programdata $PROGRAM_DATA \
+  -ffdetect $FFDETECT \
   -ffmpeg $FFMPEG \
   -ffprobe $FFPROBE
+  -restartexitcode 3
