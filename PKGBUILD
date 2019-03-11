@@ -2,7 +2,7 @@
 
 pkgname='lego'
 pkgver=v2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lets Encrypt client and ACME library written in Go'
 url='https://go-acme.github.io/lego/'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ conflicts=("${pkgname}" "${pkgname}-git")
 depends=()
 makedepends=()
 
-_url='https://github.com/xenolf/lego'
+_url='https://github.com/go-acme/lego'
 _basedownloadurl="${_url}/releases/download/${pkgver}"
 _basearchive="${pkgname}_${pkgver}_linux"
 
