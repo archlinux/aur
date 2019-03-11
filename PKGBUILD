@@ -41,7 +41,8 @@ depends=(${ros_depends[@]})
 
 # Tarball version (faster download)
 _dir="laser_filters-release-release-kinetic-laser_filters"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/laser_filters-release/archive/release/kinetic/laser_filters/${pkgver}-${_pkgver_patch}.tar.gz")
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/laser_filters-release/archive/release/kinetic/laser_filters/${pkgver}-${_pkgver_patch}.tar.gz"
+        'laser_filters_boost.patch')
 sha256sums=('488974cb235caec153bb9c67b53d712ccff41819978324722b9ef7e064642f4a')
 
 prepare() {
