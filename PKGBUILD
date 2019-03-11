@@ -5,7 +5,7 @@
 pkgname=nodejs-elm
 _pkgname=elm
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Binaries for the Elm programming language"
 arch=(any)
 url="https://www.npmjs.com/package/elm"
@@ -21,5 +21,6 @@ noextract=("$_pkgname-$pkgver.tgz")
 
 package() {
   npm install -g --user root --unsafe-perm --prefix "$pkgdir/usr" $_pkgname@$pkgver
+  chmod -R go-w "$pkgdir" # force meaningful write permissions
   #rm -r "$pkgdir/usr/etc"
 }
