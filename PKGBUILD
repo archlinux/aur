@@ -1,11 +1,11 @@
 # Maintainer: Witko <kos.na.bordel@gmail.com>
 # Contributor: Ngo Huy <severus@theslinux.org>
 # Contributor: Dave Reisner <dreisner@archlinux.org>
-# Contributor: Nathaniel Stickney <nstickney@gmail.com>
+# Contributor: Stick <stick@stma.is>
 # shellcheck disable=SC2034,SC2148,SC2154
 
 pkgname=jmeter
-pkgver=5.0
+pkgver=5.1
 pkgrel=1
 arch=('any')
 pkgdesc="Java application designed to load test functional behavior and measure performance"
@@ -13,8 +13,8 @@ url="http://jmeter.apache.org/"
 license=("apache")
 depends=("java-environment>=8")
 options=('!strip')
-source=("http://www.us.apache.org/dist/jmeter/binaries/apache-${pkgname}-${pkgver}.tgz" "${pkgname}.desktop")
-sha512sums=('a5a3bdd84ec8f78b67cee1b12bd9f2f578f3e9334ef2dc85cebd37878e0cf69ea3385a9c4f531dae094c0a4df93f262f43c2d9a9dfb10d38565d17eec3f907f1'
+source=("http://archive.apache.org/dist/jmeter/binaries/apache-${pkgname}-${pkgver}.tgz" "${pkgname}.desktop")
+sha512sums=('c9d50ec3d44754abdb0fa7850e119fb2103f88e8c390de01697faf7998e3c3a4de929cf5ead069a9ec47643ca6c51aed7ab964483656a89e0b50a9e2ea7018b6'
             '6379c230a3b2a61539eec5c9cbc18babfc927cdfbb9468d46ff0334b64fccf1cbf5cba0f351d9a871c68a98e3bf1f9c22a992434bc4ffcc2743c185be93bb318')
 validpgpkeys=('C4923F9ABFB2F1A06F08E88BAC214CAA0612B399')
 
