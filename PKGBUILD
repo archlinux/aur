@@ -14,7 +14,7 @@ pkgver=1.7.4
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
-url='http://www.ppsspp.org/'
+url='https://www.ppsspp.org/'
 license=(GPL2)
 depends=(
   glew
