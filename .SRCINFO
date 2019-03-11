@@ -1,0 +1,32 @@
+pkgbase = sway-with-tray
+	pkgdesc = Sway with (rudimentary) tray support
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://swaywm.org/
+	install = sway.install
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = scdoc
+	makedepends = wayland-protocols
+	depends = cairo
+	depends = json-c
+	depends = pango
+	depends = pcre
+	depends = wlroots
+	optdepends = dmenu: Default for launching applications.
+	optdepends = ffmpeg: For recording screencasts.
+	optdepends = gdk-pixbuf2: Required for swaybg.
+	optdepends = i3status: To display system information with a bar.
+	optdepends = rxvt-unicode: Default terminal emulator.
+	provides = sway
+	conflicts = sway
+	source = sway-1.0.tar.gz::https://github.com/swaywm/sway/archive/1.0.tar.gz
+	source = https://github.com/swaywm/sway/releases/download/1.0/sway-1.0.tar.gz.sig
+	validpgpkeys = 9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A
+	sha256sums = 24dafd0f1e630e97a5dd47233841adf856b665e2321d6207acfe6b3002d1bc56
+	sha256sums = SKIP
+
+pkgname = sway-with-tray
+
