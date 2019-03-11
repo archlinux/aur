@@ -2,16 +2,17 @@
 
 pkgname=anylogic-ple
 pkgver=8.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="AnyLogic Personal Learning Edition - for beginners and students"
 arch=(x86_64)
 url="https://www.anylogic.com"
 license=('custom')
 depends=('glibc')
+makedepends=('gendesk')
 options=(!strip)
 source=("https://files.anylogic.com/$pkgname-$pkgver.linux.x86_64.tgz.bin")
 noextract=('$pkgname-$pkgver.linux.x86_64.tgz.bin')
-sha256sums=('40d7439aef966965fbdd0840d091ea582ddda85c09ef4deea582af7728a8cfad')
+sha256sums=('4029bc645995ab6b81b234334f4cb00fbf8608fae05d0cd1fc91dfd701358b87')
 
 prepare() {
 	msg2 "Unpacking archive..."
@@ -24,13 +25,16 @@ prepare() {
 package() {
 	mkdir -p "$pkgdir/opt"
 
-	msg2 "Copying AnyLogic contents..."
+	msg2 "Copying AnyLogic PLE contents..."
 	cp -R "$srcdir/anylogic" "$pkgdir/opt"
 
-	msg2 "Copy AnyLogic start script..."
-	install -Dm755 "$srcdir/anylogic/start-anylogic.sh" "$pkgdir/usr/bin/anylogic"
+	msg2 "Creating .desktop file..."
+	gendesk -q -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='AnyLogic PLE' --exec='anylogic'
+	install -Dm644 "$srcdir/anylogic/icon.xpm" "$pkgdir/usr/share/pixmaps/$pkgname.xpm"
+	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-	msg2 "Patching AnyLogic start script..."
+	msg2 "Creating patched start script..."
+	install -Dm755 "$srcdir/anylogic/start-anylogic.sh" "$pkgdir/usr/bin/anylogic"
 	sed "s#./anylogic#/opt/anylogic/anylogic#" -i "$pkgdir/usr/bin/anylogic"
 
 	install -Dm644 "$srcdir/anylogic/license/Software Licensing Agreement for AnyLogic.txt" "$pkgdir/usr/share/licenses/anylogic/LICENSE"
