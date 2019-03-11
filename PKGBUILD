@@ -13,7 +13,7 @@ arch=('x86_64')
 url='https://github.com/NVIDIA/libnvidia-container'
 license=('custom')
 
-makedepends=(bmake lsb-release)
+makedepends=(bmake lsb-release rpcsvc-proto)
 depends=(libcap libseccomp libtirpc)
 
 # yikes! somehow the default flags cause a linking error :(
