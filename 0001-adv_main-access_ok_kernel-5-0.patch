@@ -1,0 +1,26 @@
+--- driver/adv_main.c.orig	2019-03-10 20:06:08.695818531 -0400
++++ driver/adv_main.c	2019-03-10 20:11:15.161215515 -0400
+@@ -75,14 +75,21 @@ long adv_proc_ioctl(struct file *filp, u
+ 	if(_IOC_NR(cmd) > ADVVCOM_IOCMAX){
+ 		printk("%s(%d) cmd = %x\n", __func__, __LINE__, cmd);
+ 		return -ENOTTY;
+ 	}
+ 
++#include <linux/version.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,0,0)
++#define compat_access_ok(u,v,w) access_ok(v,w)
++#else
++#define compat_access_ok(u,v,w) access_ok(u,v,w)
++#endif
++
+ 	if (_IOC_DIR(cmd) & _IOC_READ){
+-		err = !access_ok(VERIFY_WRITE, (void __user *)arg, _IOC_SIZE(cmd));
++		err = !compat_access_ok(VERIFY_WRITE, (void __user *)arg, _IOC_SIZE(cmd));
+ 	}else if (_IOC_DIR(cmd) & _IOC_WRITE){
+-		err =  !access_ok(VERIFY_READ, (void __user *)arg, _IOC_SIZE(cmd));
++		err =  !compat_access_ok(VERIFY_READ, (void __user *)arg, _IOC_SIZE(cmd));
+ 	}
+ 	if (err)
+ 		return -EFAULT;
+ 
+ 	data = filp->private_data;

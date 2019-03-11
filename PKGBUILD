@@ -55,10 +55,11 @@ set -u
 # Earlier versions of Advantech TTY were called ICOM
 # http://advdownload.advantech.com/productfile/Downloadfile1/1-NZ17GY/ICOM_LINUX_PSEUDO_TTY_DRIVER_V1.4.1.ZIP
 pkgname='advantech-vcom'
+#pkgver='2.0.0'; _dl='4/1-X92NP4'
 #pkgver='2.1.0'; _dl='4/1-15OSOW4'
 #pkgver='2.2.0'; _dl='4/1-1LPJPGD'
-pkgver='2.2.1'; _dl='5/1-1NOKMCV'
-pkgrel='1'
+pkgver='2.2.1'; _dl='5/1-1NOKMCV' # not compatible with Linux 3.16
+pkgrel='2'
 pkgdesc='tty driver for Advantech Adam EKI serial console terminal servers'
 _pkgdescshort="Advantech ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
@@ -73,9 +74,13 @@ source=("http://advdownload.advantech.com/productfile/Downloadfile${_dl}/${_srcd
 #source=("${_srcdir,,}::http://downloadt.advantech.com/download/downloadsr.aspx?File_Id=${_dl}") # redirect works sooner but can be changed arbitrairly
 _srcdir="${_srcdir%\.tar*}"
 #source=("http://advdownload.advantech.com/productfile/Downloadfile4/${_dl}/${_srcdir}.rar")
-source+=('0000-advman.systemd.patch')
+source+=(
+  '0000-advman.systemd.patch'
+  '0001-adv_main-access_ok_kernel-5-0.patch'
+)
 sha256sums=('e5e313a1542e227a654fd1a497f8846ccb90df5490a888929826cb82becb5b0f'
-            '02f504a23fbef07f666aaa595faba0513d9ffec5e99ebca7b7fe2299a0179e32')
+            '02f504a23fbef07f666aaa595faba0513d9ffec5e99ebca7b7fe2299a0179e32'
+            '9335cfe8addfdf80224d21529fe0a70a6b750fa0823cfe806f5c94ae50a06cad')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -86,6 +91,10 @@ fi
 prepare() {
   set -u
   cd "${_srcdir}"
+
+  #cp -p driver/adv_main.c{,.orig}; false
+  #diff -pNau5 driver/adv_main.c{.orig,} > '../0001-adv_main-access_ok_kernel-5-0.patch'
+  patch -Nbup0 -i "${srcdir}/0001-adv_main-access_ok_kernel-5-0.patch"
 
   # Cosmetic correction of CRLF for Linux
   sed -e 's:\r$::g' -i 'readme.txt'
@@ -175,7 +184,7 @@ fi
     -i 'initd/advttyd.c'
 
   # Cosmetic correction of spaces
-  sed -e 's:\s\+$::g' -i 'readme.txt' script/* inotify/* initd/adv* driver/adv* daemon/*
+  sed -e 's:\s\+$::g' -i 'readme.txt' script/* initd/adv* driver/adv* daemon/* inotify/* || :
 
   # Add device table to config
   sed -n -e '/Device-Type Table/,/install/ p' 'readme.txt' | \
@@ -187,7 +196,7 @@ fi
   sed -e 's:^[0-9]:# Sample  &:g' \
       -e '/Minor/ s:^#:&00:g' \
     'config/advttyd.conf' > 'config/advttyd.conf.Arch'
-  sort -g 'config/advttyd.conf.Arch' > 'config/advttyd.conf'
+  cat <(tail +4 'config/advttyd.conf.Arch') <(head -3 'config/advttyd.conf.Arch') > 'config/advttyd.conf'
   rm 'config/advttyd.conf.Arch'
 
   # Make a less noisy start/stop to not clog up the systemd logs
@@ -196,10 +205,13 @@ fi
   # Change original advman to systemd
   #cp -p script/advman{,.orig}; false
   #diff -pNau10 script/advman{.orig,} > '../0000-advman.systemd.patch'
-  patch -Nbup0 -i "${srcdir}/0000-advman.systemd.patch"
+  patch -Nbup0 -i "${srcdir}/0000-advman.systemd.patch" || :
 
   # Tame the port count
   sed -e 's:^\(#define VCOM_PORTS\)\s.*$:'"\1 ${_opt_MAXINSTPORTS}:g" -i 'driver/advconf.h'
+
+  # Get rid of dmesg spam that looks like crashes but aren't.
+  sed -e 's:dump_stack():// &:g' -i 'driver/adv_uart.c'
 
   # The compiled files should not have been included
   'ma'ke -s -j1 clean # keep git-aurcheck quiet
