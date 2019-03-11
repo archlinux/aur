@@ -1,7 +1,7 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 pkgname=sway
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager"
 arch=("x86_64")
 url="https://swaywm.org/"
@@ -13,7 +13,7 @@ depends=(
 	"pcre"
 	"wlroots"
 )
-makedepends=("meson" "ninja" "scdoc" "wayland-protocols")
+makedepends=("meson" "ninja" "gdk-pixbuf2" "scdoc" "wayland-protocols")
 optdepends=(
 	"dmenu: Default for launching applications."
 	"ffmpeg: For recording screencasts."
