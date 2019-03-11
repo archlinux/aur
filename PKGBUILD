@@ -1,6 +1,6 @@
 pkgname=mem-suspend
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A script for suspending to memory"
 arch=('any')
 source=('mem-suspend.c')
@@ -12,6 +12,6 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/mem-suspend" "$pkgdir/usr/bin/mem-suspend"
+  install -Dm750 -gpower "$srcdir/mem-suspend" "$pkgdir/usr/bin/mem-suspend"
   chmod u+s "$pkgdir/usr/bin/mem-suspend"
 }
