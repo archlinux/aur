@@ -1,6 +1,6 @@
 pkgbase = ethminer-cuda
 	pkgdesc = Ethereum miner with OpenCL, CUDA and stratum support.
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/ethereum-mining/ethminer
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ethminer-cuda
 	provides = ethminer
 	conflicts = ethminer
 	conflicts = ethminer-git
-	source = git+https://github.com/ethereum-mining/ethminer.git#tag=v0.17.0
+	source = git+https://github.com/ethereum-mining/ethminer.git#tag=v0.17.1
 	sha256sums = SKIP
 
 pkgname = ethminer-cuda
