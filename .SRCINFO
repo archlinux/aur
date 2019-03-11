@@ -1,0 +1,15 @@
+pkgbase = cursewords
+	pkgdesc = Terminal-based crossword puzzle solver
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/thisisparker/cursewords
+	arch = any
+	license = AGPL3
+	depends = python
+	depends = python-blessed
+	depends = python-puzpy
+	source = https://github.com/thisisparker/cursewords/archive/v1.0.3.tar.gz
+	sha512sums = d599fca05fc4ca61ef06f5c5ab743cb72eebfc1831bc88f108289cba513eba69b6e9b889b9d520ee195714d06c033b9e39c15a5d40ab7bf19a6cba3ee5b0bfc3
+
+pkgname = cursewords
+
