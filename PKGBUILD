@@ -1,4 +1,5 @@
-# Maintainer: David Runge <dave@sleepmap.de>
+# Maintainer: Donald Webster <fryfrog@gmail.com>
+# Contributor: David Runge <dave@sleepmap.de>
 _name=langdetect
 pkgbase=python2-langdetect
 pkgname=('python2-langdetect')
