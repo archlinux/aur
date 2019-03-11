@@ -1,7 +1,7 @@
-# Maintainer: Bryn Edwards <bryn@protonmail.ch>
+# Maintainer: Bryn Edwards <bryn.edwards@gmail.com>
 
 pkgname=antibody
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="A shell plugin manager."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('git')
 makedepends=('go')
 source=("https://github.com/getantibody/antibody/archive/v${pkgver}.tar.gz")
-sha256sums=('aac40071846c09febccac3e540ce4cd3855868972bcea6a9aa903ab8bfa5ff4d')
+sha256sums=('421ef6b7759910fe042002a4b65c9e06fcac374d20d85a04146b406edc93fb32')
 _repodir=(".go/src")
 
 prepare() {
