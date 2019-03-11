@@ -9,8 +9,8 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-gcc
-pkgver=8.2.0
-_mpfrver=4.0.1
+pkgver=8.3.0
+_mpfrver=4.0.2
 _mpcver=1.1.0
 _gmpver=6.1.2
 pkgrel=3
@@ -30,11 +30,9 @@ source=("http://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
         "http://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz"
         "http://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz.sig"
         "http://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz"
-        "http://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz.sig"
-	"isl_includes.patch")
+        "http://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz.sig")
 
-sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP 
-	395891a9c064908a3d08b312f59dc7244f8a36134de30abad81a707541c173e3)
+sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 
 validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06
               07F3DBBECC1A39605078094D980C197698C3739D
@@ -43,7 +41,6 @@ validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06
 
 prepare() {
   cd ${srcdir}/gcc-${pkgver}
-  patch -p1 < ${srcdir}/isl_includes.patch
 
   # symlinks for in-tree build
   ln -s ../mpfr-${_mpfrver}
@@ -63,7 +60,7 @@ build() {
     --target=${_target} \
     --enable-languages="c,c++" \
     --disable-multilib \
-	--with-cpu=${_target_cpu} \
+    --with-cpu=${_target_cpu} \
     --with-system-zlib \
     --with-newlib \
     --with-libgloss \
