@@ -1,0 +1,20 @@
+*** a/CMakeLists.txt	Mon Mar 11 14:30:28 2019
+--- b/CMakeLists.txt	Mon Mar 11 14:30:06 2019
+***************
+*** 9,15 ****
+    laser_geometry pluginlib angles)
+  
+  find_package(catkin REQUIRED COMPONENTS ${THIS_PACKAGE_ROS_DEPS})
+! find_package(Boost REQUIRED COMPONENTS system signals)
+  include_directories(include ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
+  
+  ##############################################################################
+--- 9,15 ----
+    laser_geometry pluginlib angles)
+  
+  find_package(catkin REQUIRED COMPONENTS ${THIS_PACKAGE_ROS_DEPS})
+! find_package(Boost REQUIRED COMPONENTS system)
+  include_directories(include ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
+  
+  ##############################################################################
+

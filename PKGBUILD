@@ -4,7 +4,7 @@ pkgdesc="ROS - Assorted filters designed to operate on 2D planar laser scanners,
 url='http://ros.org/wiki/laser_filters'
 
 pkgname='ros-kinetic-laser-filters'
-pkgver='1.8.5'
+pkgver='1.8.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -40,9 +40,14 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="laser_filters-release-release-kinetic-laser_filters-${pkgver}-${_pkgver_patch}"
+_dir="laser_filters-release-release-kinetic-laser_filters"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/laser_filters-release/archive/release/kinetic/laser_filters/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1fda3b068605b6ce9553eb1d4f050ca8de9656c68a79803f81756b47de6bf05d')
+sha256sums=('488974cb235caec153bb9c67b53d712ccff41819978324722b9ef7e064642f4a')
+
+prepare() {
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/laser_filters_boost.patch
+}
 
 build() {
   # Use ROS environment variables
