@@ -1,5 +1,6 @@
 # Maintainer: Shen ZhongLi <szl921818@gmail.com>
 #mindmaster 中文版
+
 pkgname=mindmaster-cn
 pkgver=6
 pkgrel=3
