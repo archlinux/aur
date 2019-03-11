@@ -1,4 +1,4 @@
-# Maintainer: N.E. Neal <spam at [part of name before neal without dots] dog com>
+# Maintainer: N.E. Neal <contact at [neneal] dog com>
 pkgname=termite-style-git
 pkgver=r19.6c77e36
 pkgrel=1
