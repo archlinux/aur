@@ -2,7 +2,7 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=libplacebo-git
-pkgver=v1.7.0.33.g6ac417a
+pkgver=v1.18.0.7.g2ee4b04
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)'
 url='https://github.com/haasn/libplacebo'
@@ -16,7 +16,7 @@ makedepends=('git'
              )
 provides=('libplacebo')
 conflicts=('libplacebo')
-source=(git+https://github.com/haasn/libplacebo.git)
+source=('git+https://github.com/haasn/libplacebo.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -43,5 +43,6 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" ninja -C build install
-  install -Dm 644 libplacebo/README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+
+  install -Dm644 libplacebo/README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
