@@ -1,19 +1,19 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=ssimulacra
-pkgver=0.1
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc="Structural SIMilarity Unveiling Local And Compression Related Artifacts"
 arch=('x86_64')
 url="https://github.com/cloudinary/ssimulacra"
 license=('Apache')
-depends=('opencv2')
-makedepends=('vtk')
-source=('git+https://github.com/cloudinary/ssimulacra.git#commit=589fac281aa4a8ecfb9ce07ec2e6f6dd1e6eccbb')
+depends=('opencv2' 'boost-libs')
+makedepends=('boost')
+source=('git+https://github.com/cloudinary/ssimulacra.git#commit=4c92d4184a8917fecdecccb68a8231cdfbc24249')
 sha512sums=('SKIP')
 
 prepare() {
 	cd "$pkgname"
-	perl -pe 's/(?:C|LD)FLAGS\K=/+=/g' -i Makefile
+	perl -pe 's/(?:C|LD)FLAGS\K=/+=/g; s/ -lopencv_imgcodecs//' -i Makefile
 }
 
 build() {
