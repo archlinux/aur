@@ -1,12 +1,12 @@
 pkgbase = ssimulacra
 	pkgdesc = Structural SIMilarity Unveiling Local And Compression Related Artifacts
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cloudinary/ssimulacra
 	arch = x86_64
 	license = Apache
 	makedepends = vtk
-	depends = opencv
+	depends = opencv2
 	source = git+https://github.com/cloudinary/ssimulacra.git#commit=589fac281aa4a8ecfb9ce07ec2e6f6dd1e6eccbb
 	sha512sums = SKIP
 
