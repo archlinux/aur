@@ -3,13 +3,13 @@
 
 pkgname=livewallpaper
 pkgver=0.5.0.333
-pkgrel=1
+pkgrel=2
 pkgdesc='Animated 3D wallpapers'
 url='https://launchpad.net/livewallpaper'
 license=(GPL3)
 arch=(x86_64)
-makedepends=(bzr cmake intltool ninja vala xcftools)
-depends=(glew gobject-introspection libappindicator-gtk3 libpeas python-cairo python-opengl upower)
+depends=(glew libpeas python-cairo python-gobject python-opengl python-pillow upower)
+makedepends=(bzr cmake gobject-introspection intltool ninja vala xcftools)
 source=("$pkgname::bzr+$url/trunk#revision=${pkgver##*.}")
 sha256sums=('SKIP')
 
