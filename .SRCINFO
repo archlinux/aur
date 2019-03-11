@@ -1,0 +1,14 @@
+pkgbase = python-headerparser
+	pkgdesc = argparse for mail-style headers
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/jwodder//headerparser
+	arch = any
+	license = MIT
+	depends = python-six
+	noextract = headerparser-0.3.0-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/h/headerparser/headerparser-0.3.0-py2.py3-none-any.whl
+	sha256sums = 216ecee4a995c88c66764814c47c86109cf9fef564105a5a024d6efa6cdfb2b2
+
+pkgname = python-headerparser
+
