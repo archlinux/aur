@@ -13,8 +13,8 @@ pkgdesc=" Coord is a Python module that provides basic functionality related to 
 arch=('i686' 'x86_64')
 url="https://github.com/LSSTDESC/Coord.git"
 license=('BSD')
-makedepends=('git' 'python' 'python-cffi' 'python-numpy' 'python-future' 'python2' 'python2-cffi' 'python2-numpy' 'python2-future' 'python-setuptools' 'python2-setuptools')
-checkdepends=('python-nose' 'python2-nose' 'python-astropy' 'python2-astropy')
+makedepends=('git' 'python'  'python2' 'python-setuptools' 'python2-setuptools')
+checkdepends=('python-nose' 'python-cffi' 'python2-cffi' 'python2-nose' 'python-astropy' 'python2-astropy')
 source=("${pkgbase}::git+${url}")
 md5sums=('SKIP')
 
@@ -44,14 +44,14 @@ check() {
 }
 
 package_python-coord-git() {
-	  		  depends=('glibc' 'python-cffi')
+	  		  depends=('glibc' 'python-cffi' 'python-numpy' 'python-future')
 	  		  cd $pkgbase
 	  		  python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
 			  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 }
 
 package_python2-coord-git() {
-	  		  depends=('glibc' 'python2-cffi')
+	  		  depends=('glibc' 'python2-cffi' 'python2-numpy' 'python2-future')
 	  		  cd $pkgbase-py2
 			  python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
 			  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
