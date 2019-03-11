@@ -4,10 +4,10 @@ pkgdesc="ROS - Provides nodes to assemble point clouds from either LaserScan or 
 url='http://ros.org/wiki/laser_assembler'
 
 pkgname='ros-kinetic-laser-assembler'
-pkgver='1.7.5'
+pkgver='1.7.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-message-filters
@@ -42,11 +42,16 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 #_dir="laser_assembler-release-release-kinetic-laser_assembler-${pkgver}-${_pkgver_patch}"
 _dir="laser_assembler-release-release-kinetic-laser_assembler"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/laser_assembler-release/archive/release/kinetic/laser_assembler/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('669a7dfa27df01d2de4227c284ce13aa33f25a38f1a5846c3ea73aaf291fe21e')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/laser_assembler-release/archive/release/kinetic/laser_assembler/${pkgver}-${_pkgver_patch}.tar.gz"
+        'boost_posix_time.patch'
+        'laser_assembler_boost.patch')
+sha256sums=('669a7dfa27df01d2de4227c284ce13aa33f25a38f1a5846c3ea73aaf291fe21e'
+            'SKIP'
+            'SKIP')
 prepare() {
-  cd ${_dir}
-  patch -Np1 -i ${startdir}/boost_posix_time.patch
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/boost_posix_time.patch
+  patch -Np1 -i ${srcdir}/laser_assembler_boost.patch
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = ros-kinetic-laser-assembler
 	pkgdesc = ROS - Provides nodes to assemble point clouds from either LaserScan or PointCloud messages.
-	pkgver = 1.7.5
-	pkgrel = 2
+	pkgver = 1.7.6
+	pkgrel = 1
 	url = http://ros.org/wiki/laser_assembler
 	arch = any
 	license = BSD
@@ -25,8 +25,12 @@ pkgbase = ros-kinetic-laser-assembler
 	depends = ros-kinetic-filters
 	depends = ros-kinetic-sensor-msgs
 	depends = ros-kinetic-laser-geometry
-	source = ros-kinetic-laser-assembler-1.7.5-0.tar.gz::https://github.com/ros-gbp/laser_assembler-release/archive/release/kinetic/laser_assembler/1.7.5-0.tar.gz
+	source = ros-kinetic-laser-assembler-1.7.6-0.tar.gz::https://github.com/ros-gbp/laser_assembler-release/archive/release/kinetic/laser_assembler/1.7.6-0.tar.gz
+	source = boost_posix_time.patch
+	source = laser_assembler_boost.patch
 	sha256sums = 669a7dfa27df01d2de4227c284ce13aa33f25a38f1a5846c3ea73aaf291fe21e
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ros-kinetic-laser-assembler
 
