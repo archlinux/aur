@@ -1,7 +1,7 @@
 pkgbase = iotacooler
 	pkgdesc = Cold transaction signer for IOTA
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/joshirio/iota-cooler
 	arch = x86_64
 	license = MIT

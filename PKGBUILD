@@ -1,7 +1,7 @@
 # Maintainer: Oirio Joshi <joshirio@protonmail.com>
 pkgname=iotacooler
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Cold transaction signer for IOTA"
 arch=('x86_64')
 url="https://github.com/joshirio/iota-cooler"
