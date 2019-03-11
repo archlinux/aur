@@ -1,6 +1,6 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.11
+_oomox_ver=1.12
 _oomox_theme_ver=1.10
 _materia_theme_ver=20190201
 #_materia_cmt=94da12f9c5dfa4e045f8f02e2c818891b13b0930
@@ -9,14 +9,20 @@ _archdroid_icons_ver=1.0.2
 _gnome_colors_icons_ver=5.5.5
 _oomoxify_ver=1.1.2
 _base16_cmt=2e4112fe859ed5d33f67c177f11d369d360db9ae
-_numix_icons_cmt=896d9100ec836245f4a4cf5e450ac5a3b0962e50
+_numix_icons_cmt=88ba3654506c73f77a28629d863d1e23a553bff7
 _numix_folders_icons_cmt=24e5f6c6603e7f798553d2f24a00de107713c333
 _papirus_icons_ver=20190302
+_suru_plus_icons_ver=25.2
 
 pkgname=oomox
 pkgver=${_oomox_ver}
-pkgrel=2
-pkgdesc='Graphical application for generating different color variations of Numix/Materia/Arc theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes. Have a hack for HiDPI in gtk2.'
+pkgrel=1
+pkgdesc='Themix: GUI for generating different color variations
+of Arc, Materia, Oomox themes
+(GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm),
+ArchDroid, Gnome-Colors, Numix, Papirus, Suru++ icons,
+and terminal palettes.
+Have a hack for HiDPI in GTK2.'
 arch=('i686' 'x86_64')
 url='https://github.com/themix-project/oomox'
 license=('GPL3')
@@ -43,9 +49,9 @@ depends=(
 	'python-pystache'  #  base16_format
 	'python-yaml'  #  base16_format
 
-	#'resvg'  # materia, arc
+	'resvg'  # materia, arc
 	##or
-	'inkscape'  # materia, arc
+	#'inkscape'  # materia, arc
 )
 optdepends=(
 	'xorg-xrdb: for the `xresources` theme'
@@ -73,8 +79,9 @@ source=(
     "numix-icon-theme-${_numix_icons_cmt}.tar.gz::https://github.com/numixproject/numix-icon-theme/archive/${_numix_icons_cmt}.tar.gz"
     "numix-folders-${_numix_folders_icons_cmt}.tar.gz::https://github.com/numixproject/numix-folders/archive/${_numix_folders_icons_cmt}.tar.gz"
     "papirus-icon-theme-${_papirus_icons_ver}.tar.gz::https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/${_papirus_icons_ver}.tar.gz"
+    "suru-plus-icon-theme-${_suru_plus_icons_ver}.tar.gz::https://github.com/gusbemacbe/suru-plus/archive/v${_suru_plus_icons_ver}.tar.gz"
 )
-md5sums=('bb3aae697ca4cc4ab28fff4c5be4d560'
+md5sums=('3acfff30596f7f5785f18aa0fca05643'
          '13945f05eba3b85e6d63fec1ff60380a'
          '0aae4f64987f905dccdabcaaffe2b730'
          '376ef3ce6f7cfb3177530183d9867037'
@@ -82,9 +89,10 @@ md5sums=('bb3aae697ca4cc4ab28fff4c5be4d560'
          '8b4a9a1837211a3caf661ab825d66cb0'
          '743395f8490fe7d2ec1525930f019d97'
          '8f7506b74131bfce78685aade0e275eb'
-         'daaf74cd600619140007d0b679412157'
+         '6873ed4ffd84e69e10625f5aee2bfdc6'
          '3fcb07cefe43a6a2fe4d977f124624ec'
-         '893c4dbe58031e9401a7ec9f3984a507')
+         '893c4dbe58031e9401a7ec9f3984a507'
+         '559533cef2d920bd71eabd4a0bd8953e')
 
 prepare() {
     cd ${srcdir}
@@ -99,6 +107,7 @@ prepare() {
     cp -pr "numix-icon-theme-${_numix_icons_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/icons_numix/numix-icon-theme"
     cp -pr "numix-folders-${_numix_folders_icons_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/icons_numix/numix-folders"
     cp -pr "papirus-icon-theme-${_papirus_icons_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_papirus/papirus-icon-theme"
+    cp -pr "suru-plus-${_suru_plus_icons_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_suruplus/suru-plus"
 }
 
 package() {
