@@ -1,0 +1,14 @@
+pkgbase = python-anticaptcha
+	pkgdesc = Client library for solve captchas with Anticaptcha.com support.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ad-m/python-anticaptcha
+	arch = any
+	license = MIT
+	depends = python
+	options = !emptydirs
+	source = https://github.com/ad-m/python-anticaptcha/archive/0.3.0.tar.gz
+	md5sums = a68a7c8e8b5db778ad11c8bc20a07273
+
+pkgname = python-anticaptcha
+
