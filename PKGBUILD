@@ -26,10 +26,10 @@ package() {
 	cd "mindmaster-$pkgver-amd64-cn"
 	chmod 777 MindMaster-6-x86_64
 	mkdir -p "$pkgdir/opt/$pkgname"
-    mkdir $pkgdir/usr/share/icons
-	mkdir $pkgdir/usr/share/applications
-	mkdir $pkgdir/usr/share/mime/packages
-	mkdir $pkgdir/usr/share/icons/hicolor/512x512/mimetypes
+    mkdir -p $pkgdir/usr/share/icons
+	mkdir -p $pkgdir/usr/share/applications
+	mkdir -p $pkgdir/usr/share/mime/packages
+	mkdir -p $pkgdir/usr/share/icons/hicolor/512x512/mimetypes
 	mv * "$pkgdir/opt/$pkgname"
 	cd "$pkgdir/opt/$pkgname"
 
