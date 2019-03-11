@@ -1,7 +1,7 @@
 # Maintainer: Oirio Joshi <joshirio@protonmail.com>
 pkgname=iotacooler
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cold transaction signer for IOTA"
 arch=('x86_64')
 url="https://github.com/joshirio/iota-cooler"
@@ -19,7 +19,7 @@ build() {
   make
   
   # iotacooler-smidgen
-  git clone https://github.com/joshirio/iota-cooler-smidgen.git
+  git clone --branch iotacooler-v$pkgver https://github.com/joshirio/iota-cooler-smidgen.git
   npm install pkg
   cd iota-cooler-smidgen/
   npm install 
