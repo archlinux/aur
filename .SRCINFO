@@ -1,7 +1,7 @@
 pkgbase = auditwheel
 	pkgdesc = Cross-distribution Linux wheels
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pypa/auditwheel
 	arch = any
 	license = MIT
