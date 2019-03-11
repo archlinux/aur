@@ -5,7 +5,7 @@ _gituser="rejeep"
 _gitrepo="f.el"
 
 pkgname=emacs-f-git
-pkgver=0.20.0.2.g8191672
+pkgver=0.20.0r2.g8191672
 pkgrel=1
 pkgdesc="Modern API for working with files and directories in Emacs"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -15,12 +15,12 @@ depends=('emacs' 'emacs-s')
 makedepends=('git')
 provides=('emacs-f')
 conflicts=('emacs-f')
-source=("git+https://github.com/${_gituser}/${_gitrepo}.git")
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  git describe --tags|tr - .|cut -c2-
+  git describe --tags|sed 's+-+r+'|tr - .|cut -c2-
 }
 
 build() {
