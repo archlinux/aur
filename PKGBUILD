@@ -3,12 +3,13 @@
 _name=modulegraph
 pkgname=python-modulegraph
 pkgver=0.17
-pkgrel=2
+pkgrel=3
 pkgdesc='determines a dependency graph between Python modules primarily by bytecode analysis for import statements'
 arch=('any')
 url="https://bitbucket.org/ronaldoussoren/$_name"
 license=('MIT')
 depends=('python' 'python-altgraph')
+makedepends=(install-wheel-scripts)
 _pyarch=py2.py3
 _wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
 source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
@@ -19,10 +20,5 @@ package() {
 	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
 	mkdir -p "$site"
 	unzip "$_wheel" -d "$site"
-	
-	cat >modulegraph.sh <<-EOF
-	#!/bin/sh
-	exec python3 -m modulegraph "\$@"
-	EOF
-	install -Dm755 modulegraph.sh "$pkgdir/usr/bin/modulegraph"
+	install-wheel-scripts --prefix="$pkgdir/usr" "$_wheel"
 }
