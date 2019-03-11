@@ -1,0 +1,14 @@
+pkgbase = python-nvidia-ml-py3-git
+	pkgdesc = Python 3 Bindings for the NVIDIA Management Library
+	pkgver = r5.2b04f5d
+	pkgrel = 1
+	url = https://github.com/nicolargo/nvidia-ml-py3
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	source = git://github.com/nicolargo/nvidia-ml-py3.git
+	md5sums = SKIP
+
+pkgname = python-nvidia-ml-py3-git
+
