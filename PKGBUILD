@@ -1,7 +1,8 @@
+# Maintainer: Cyrinux <pkgbuilds AT levis DOT name>
 # Maintainer: Irvine <irvinemcminn_at_that gmail_place>
 pkgname=firejail-apparmor
 pkgver=0.9.58.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Apparmor support for Firejail"
 arch=('i686' 'x86_64')
 url="https://firejail.wordpress.com/"
