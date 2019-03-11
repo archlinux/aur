@@ -3,7 +3,7 @@
 _name=modulegraph
 pkgname=python-modulegraph
 pkgver=0.17
-pkgrel=1
+pkgrel=2
 pkgdesc='determines a dependency graph between Python modules primarily by bytecode analysis for import statements'
 arch=('any')
 url="https://bitbucket.org/ronaldoussoren/$_name"
@@ -19,4 +19,10 @@ package() {
 	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
 	mkdir -p "$site"
 	unzip "$_wheel" -d "$site"
+	
+	cat >modulegraph.sh <<-EOF
+	#!/bin/sh
+	exec python3 -m modulegraph "\$@"
+	EOF
+	install -Dm755 modulegraph.sh "$pkgdir/usr/bin/modulegraph"
 }

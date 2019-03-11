@@ -1,7 +1,7 @@
 pkgbase = python-modulegraph
 	pkgdesc = determines a dependency graph between Python modules primarily by bytecode analysis for import statements
 	pkgver = 0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/ronaldoussoren/modulegraph
 	arch = any
 	license = MIT
