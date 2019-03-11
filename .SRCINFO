@@ -1,4 +1,4 @@
-pkgbase = craft
+pkgbase = craft-git
 	pkgdesc = A simple Minecraft clone written in C using modern OpenGL (shaders).
 	pkgver = 1.0
 	pkgrel = 1
@@ -16,5 +16,5 @@ pkgbase = craft
 	sha512sums = SKIP
 	sha512sums = cf9627269bb44654dff99948c1e6ff693dd7bc7eb5aaadfbd02cc1a06f63d8c3b54ef90c3673cfcaded249201a7e522726a61aa6b83a58537d24659c0f19f329
 
-pkgname = craft
+pkgname = craft-git
 

@@ -2,7 +2,7 @@
 # Maintainer: Kied Llaentenn <@kiedtl>
 # Contributer: Michael Fogleman <michael.fogleman@gmail.com>
 
-pkgname=craft
+pkgname=craft-git
 pkgver=1.0
 pkgrel=1
 pkgdesc="A simple Minecraft clone written in C using modern OpenGL (shaders)."
