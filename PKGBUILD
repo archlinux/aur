@@ -4,7 +4,7 @@
 
 pkgname=kernel-alive-git
 pkgver=r30.3182821
-pkgrel=1
+pkgrel=2
 pkgdesc="port of Manjaro kernel-alive, keep previous kernel modules until next reboot."
 arch=('x86_64' 'i686')
 url="https://gitlab.manjaro.org/ste74/kernel-alive"
@@ -46,7 +46,7 @@ package() {
       install -Dm644 "${srcdir}/${pkgname%-git}/$f" "${pkgdir}/usr/lib/systemd/system/"
   done
   for f in $f_svc_sh; do
-      install -Dm644 "${srcdir}/${pkgname%-git}/$f" "${pkgdir}/usr/bin/"
+      install -Dm755 "${srcdir}/${pkgname%-git}/$f" "${pkgdir}/usr/bin/${f%.script}"
   done
 }
 
