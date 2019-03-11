@@ -1,6 +1,6 @@
 # Maintainer: dax <dev@dax.moe>
 pkgname=ff
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Simple, human-readable, fast binary file scanner"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('clang')
 source=("https://git.dd86k.space/dd86k/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('ae39a976623863903f0daeefffb444c0323f93f7021c9a426ee8b73481fdc2a1')
+sha256sums=('c6cf40aeb63fbc02f98f0e814fe5884f0978565a0aa35ebb85fbd1f264ba893d')
 build() {
 	cd "$pkgname-v$pkgver"
 	sh ./build-clang.sh
