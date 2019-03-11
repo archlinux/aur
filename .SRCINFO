@@ -5,6 +5,8 @@ pkgbase = python-btrfs
 	url = https://github.com/knorrie/python-btrfs
 	arch = any
 	license = GPL2
+	makedepends = git
+	depends = python
 	source = python-btrfs::git://github.com/knorrie/python-btrfs.git#tag=v11
 	md5sums = SKIP
 

@@ -7,8 +7,8 @@ pkgdesc="Python Btrfs"
 arch=('any')
 url="https://github.com/knorrie/python-btrfs"
 license=('GPL2')
-depends=()
-makedepends=()
+depends=('python')
+makedepends=('git')
 source=("$pkgname"::"git://github.com/knorrie/python-btrfs.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
