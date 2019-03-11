@@ -2,49 +2,51 @@
 # Contributor: yubimusubi <possum+aur@possum.cc>
 
 pkgname=3dstool
-pkgver=1.0.27
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='An all-in-one tool for extracting/creating 3ds roms'
-arch=('i686' 'x86_64')
-url='https://github.com/dnasdw/3dstool'
-license=('None')
-depends=('curl' 'glibc' 'openssl-1.0')
-makedepends=('cmake')
-source=("3dstool-${pkgver}.tar.gz::https://github.com/dnasdw/3dstool/archive/v${pkgver}.tar.gz"
-        '3dstool-paths.patch'
-        '3dstool-openssl1.0.patch')
-sha256sums=('face9b645ddcf644dc01b1e045261fd9dc761089cf48d54fd12483265a7cd79d'
-            '5ac00e5b56182ffde04c7b9ab2a5151e6cf575400705f0b061ff832116757582'
-            'f6099fde2c1cee1bba111ee112991f475ce29a56b55a17255d80f813dc2f598c')
+arch=(x86_64)
+url=https://github.com/dnasdw/3dstool
+license=(MIT)
+depends=(
+  libcurl.so
+  openssl
+)
+makedepends=(
+  cmake
+  git
+)
+source=(
+  git+https://github.com/dnasdw/3dstool.git#tag=v${pkgver}
+  3dstool-paths.patch
+)
+sha256sums=('SKIP'
+            '5ac00e5b56182ffde04c7b9ab2a5151e6cf575400705f0b061ff832116757582')
 
 prepare() {
-  cd 3dstool-${pkgver}
-
   if [[ -d build ]]; then
     rm -rf build
   fi
   mkdir build
 
+  cd 3dstool
+
   patch -Np1 -i ../3dstool-paths.patch
-  patch -Np1 -i ../3dstool-openssl1.0.patch
 }
 
 build() {
-  cd 3dstool-${pkgver}/build
+  cd build
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DUSE_DEP='OFF'
+  cmake ../3dstool \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DUSE_DEP=OFF
   make
 }
 
 package() {
-  cd 3dstool-${pkgver}/build
-
-  make install
-
-  install -Dm 755 ../bin/3dstool -t "${pkgdir}"/usr/bin/
-  install -Dm 644 ../bin/ignore_3dstool.txt -t "${pkgdir}"/usr/share/3dstool/
+  make -C build install
+  install -Dm 755 3dstool/bin/3dstool -t "${pkgdir}"/usr/bin/
+  install -Dm 644 3dstool/bin/ignore_3dstool.txt -t "${pkgdir}"/usr/share/3dstool/
 }
 
 # vim: ts=2 sw=2 et:
