@@ -1,7 +1,7 @@
 # Maintainer: Shen ZhongLi <szl921818@gmail.com>
 pkgname=mindmaster
 pkgver=6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 conflicts=("mindmaster-cn")
 options=(!strip)
@@ -25,12 +25,13 @@ package() {
 	cd "$pkgname-$pkgver-amd64"
 	chmod 777 MindMaster-6-x86_64
 	mkdir -p "$pkgdir/opt/$pkgname"
+    mkdir -p $pkgdir/usr/share/icons
+	mkdir -p $pkgdir/usr/share/applications
+	mkdir -p $pkgdir/usr/share/mime/packages
+	mkdir -p $pkgdir/usr/share/icons/hicolor/512x512/mimetypes
 	mv * "$pkgdir/opt/$pkgname"
 	cd "$pkgdir/opt/$pkgname"	
- 	mkdir $pkgdir/usr/share/icons
-	mkdir $pkgdir/usr/share/applications
-	mkdir $pkgdir/usr/share/mime/packages
-	mkdir $pkgdir/usr/share/icons/hicolor/512x512/mimetypes
+
 	
 	
 	install -Dm755 mindmaster.png "${pkgdir}/usr/share/icons/mindmaster.png"
