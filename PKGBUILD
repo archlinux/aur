@@ -7,22 +7,28 @@ set -u
 _pkgver='4.5'
 pkgname="gcc${_pkgver//\./}"
 pkgver="${_pkgver}.4"
+_islver='0.12.2'
+_cloogver='0.18.1'
 pkgrel='3'
 pkgdesc="The GNU Compiler Collection (${_pkgver}.x)"
 arch=('i686' 'x86_64')
 url='http://gcc.gnu.org'
 license=('GPL' 'LGPL' 'custom')
-depends=('glibc' 'binutils' 'gmp' 'mpfr' 'libmpc' 'ppl' 'isl' 'cloog' 'elfutils')
+depends=('glibc' 'binutils' 'gmp' 'mpfr' 'libmpc' 'ppl' 'elfutils') #'isl' 'cloog' 
 makedepends=('flex' 'bison' 'setconf')
 #makedepends+=('gcc49')
 conflicts=("gcc${_pkgver//\./}-multilib")
 options=('staticlibs' '!libtool')
 source=(
   "http://www.mirrorservice.org/sites/sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
+  "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
+  "http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz"
   'gcc-hash-style-both.patch'
   'gcc_pure64.patch'
 )
 sha256sums=('eef3f0456db8c3d992cbb51d5d32558190bc14f3bc19383dd93acc27acc6befc'
+            'f4b3dbee9712850006e44f0db2103441ab3d13b406f77996d1df19ee89d11fb4'
+            '02500a4edd14875f94fe84cbeda4290425cb0c1c2474c6f75d75a303d64b4196'
             'a600550d3d2b2fb8ee6a547c68c3a08a2af7579290b340c35ee5598c9bb305a5'
             '2d369cf93c6e15c3559c3560bce581e0ae5f1f34dc86bca013ac67ef1c1a9ff9')
 PKGEXT='.pkg.tar.gz'
@@ -38,6 +44,10 @@ fi
 prepare() {
   set -u
   cd "${_basedir}"
+
+  # link isl/cloog for in-tree builds
+  ln -s "../isl-${_islver}" 'isl'
+  ln -s "../cloog-${_cloogver}" 'cloog'
 
   # Do not install libiberty
   sed -e 's/install_to_$(INSTALL_DEST) //' -i 'libiberty/Makefile.in'
@@ -99,6 +109,7 @@ build() {
       --disable-multilib \
       --enable-__cxa_atexit \
       --enable-clocale='gnu' \
+      --enable-cloog-backend='isl' \
       --enable-languages='c,c++,fortran,objc,obj-c++' \
       --enable-shared \
       --enable-version-specific-runtime-libs \
