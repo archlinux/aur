@@ -1,4 +1,4 @@
-# Maintainer: N.E. Neal <spam at [part of name before neal without dots] dog com>
+# Maintainer: N.E. Neal <contact at [part of name before neal without dots] dog com>
 pkgname=enhanceddiscord-git
 pkgver=r149.c1cd97d
 pkgrel=1
