@@ -7,7 +7,7 @@ pkgdesc="Simple RFC-complient TELNET implementation as a C library."
 url="http://github.com/seanmiddleditch/libtelnet"
 license=('custom')
 arch=('i686' 'x86_64')
-depends=('')
+depends=('zlib')
 makedepends=('make' 'patch' 'libtool' 'pkg-config' 'autoconf' )
 source=("https://github.com/seanmiddleditch/libtelnet/archive/${pkgver}.tar.gz"
         libtelnet-autoconf-2.6.patch)
