@@ -1,0 +1,13 @@
+pkgbase = openarc-git
+	pkgdesc = Open source ARC implementation
+	pkgver = v1.0.0.Beta1.r0.g355ee2a
+	pkgrel = 1
+	url = https://github.com/trusteddomainproject/OpenARC
+	arch = x86_64
+	license = Custom
+	depends = libmilter
+	source = openarc-git::git+https://github.com/trusteddomainproject/OpenARC.git#branch=master
+	sha256sums = SKIP
+
+pkgname = openarc-git
+
