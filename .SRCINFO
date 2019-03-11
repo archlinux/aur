@@ -1,7 +1,7 @@
 pkgbase = dingtalk-electron
 	pkgdesc = 钉钉Linux版本
 	pkgver = 2.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nashaofu/dingtalk#readme
 	arch = x86_64
 	license = MIT

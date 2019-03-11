@@ -3,7 +3,7 @@
 pkgname=dingtalk-electron
 _pkgname=${pkgname//-/_}
 pkgver=2.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="钉钉Linux版本"
 arch=('x86_64')
 url="https://github.com/nashaofu/dingtalk#readme"
@@ -22,7 +22,7 @@ package() {
 	find "${pkgdir}" -type d | xargs chmod 755
 
 	mkdir -p "${pkgdir}"/usr/local/bin/
-	ln -sf /opt/dingtalk "${pkgdir}"/usr/local/bin/dingtalk
+	ln -sf /opt/dingtalk/dingtalk "${pkgdir}"/usr/local/bin/dingtalk
 
 	find "${pkgdir}" -type f | xargs chown root:root
 }
