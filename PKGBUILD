@@ -9,6 +9,8 @@ url="https://www.anylogic.com"
 license=('custom')
 depends=('glibc')
 makedepends=('gendesk')
+optdepends=('chromium: alternative browser for model animating'
+            'firefox: alternative browser for model animating')
 options=(!strip)
 source=("https://files.anylogic.com/$pkgname-$pkgver.linux.x86_64.tgz.bin")
 noextract=('$pkgname-$pkgver.linux.x86_64.tgz.bin')
