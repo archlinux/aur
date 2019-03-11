@@ -1,0 +1,16 @@
+pkgbase = anylogic-ple
+	pkgdesc = AnyLogic Personal Learning Edition - for beginners and students
+	pkgver = 8.4.0
+	pkgrel = 1
+	url = https://www.anylogic.com
+	arch = x86_64
+	license = custom
+	noextract = $pkgname-$pkgver.linux.x86_64.tgz.bin
+	options = !strip
+	source = https://files.anylogic.com/anylogic-ple-8.4.0.linux.x86_64.tgz.bin
+	source = executable.patch
+	sha256sums = 40d7439aef966965fbdd0840d091ea582ddda85c09ef4deea582af7728a8cfad
+	sha256sums = 07c96e32b20a9d7c2c6926d261de442fc323bf82e427b0f78eeab00a79e97f7d
+
+pkgname = anylogic-ple
+
