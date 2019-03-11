@@ -1,6 +1,6 @@
 pkgbase = cursewords-git
 	pkgdesc = Terminal-based crossword puzzle solver
-	pkgver = r96.ed5f7d5
+	pkgver = 1.0.3.r0.ed5f7d5
 	pkgrel = 1
 	url = https://github.com/thisisparker/cursewords
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = cursewords-git
 	depends = python
 	depends = python-blessed
 	depends = python-puzpy
+	conflicts = cursewords
 	source = git+https://github.com/thisisparker/cursewords.git
 	sha512sums = SKIP
 
