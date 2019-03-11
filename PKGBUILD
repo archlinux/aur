@@ -5,15 +5,16 @@ pkgver=1
 pkgrel=1
 pkgdesc="Retrosmart Openbox themes."
 url="https://github.com/mdomlop/${pkgname}"
-source=("https://github.com/mdomlop/${pkgname}/archive/${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mdomlop/$pkgname/archive/$pkgver.tar.gz")
 md5sums=('1693d857f5151dc083e162b6f36de126')
 license=('GPL3')
 makedepends=('python')
-optdepends=('retrosmart-gtk-themes: The corresponding GTK themes'
-            'retrosmart-icon-themes: The corresponding icon theme'
-            'retrosmart-wallpapers: The corresponding backgrounds project'
-            'retrosmart-x11-cursors: The corresponding X11 cursor theme'
-            'retrosmart-xfwm4-themes: The corresponding XFwm4 themes')
+optdepends=('xcursor-retrosmart: The corresponding X11 cursor theme'
+            'retrosmart-aurorae-themes: The corresponding Aurorae themes'
+            'retrosmart-kvantum-theme: The corresponding theme for Kvantum'
+            'retrosmart-qtcurve-theme: The corresponding theme for QtCurve'
+            'retrosmart-xfwm4-themes: The corresponding themes for XFwm4'
+            'retrosmart-icon-theme: The corresponding icon theme')
 arch=('any')
 group=('retrosmart')
 
