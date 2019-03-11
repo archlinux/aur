@@ -1,6 +1,6 @@
 # Maintainer: Abhishek Mukherjee <amukherjee@tripadvisor.com>
 pkgname=docker-credential-secretservice
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="program to use secretservice to keep Docker credentials safe"
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=('libsecret')
 makedepends=('go')
 _gourl="github.com/docker/docker-credential-helpers"
 source=("docker-credential-helpers-$pkgver.tar.gz::https://$_gourl/archive/v$pkgver.tar.gz")
-sha512sums=('359e8ec700f423ce0687f13ce02946007f90456abe86659a87c59419ebde5e79adb4d28ee5e6a9762a44cfd65648c247629a5273326abf18a8880bee637e74d8')
+sha512sums=('57d7d8039c980974a568be2f4b557227ab2df0dbb48e9ba4f4729826a9d96604170dc8782e4b9baca06337be254ecb118c51911ffd6812e7d01895561e78abd2')
 noextract=("docker-credential-helpers-$pkgver.tar.gz")
 install=$pkgname.install
 
