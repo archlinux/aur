@@ -1,14 +1,14 @@
 pkgbase = python-btreefolder2
 	pkgdesc = A BTree based implementation for Zope's OFS
-	pkgver = 4.1
+	pkgver = 4.2
 	pkgrel = 1
 	url = https://github.com/zopefoundation/Products.BTreeFolder2
 	arch = any
 	license = ZPL
 	makedepends = python-setuptools
 	depends = python
-	source = python-btreefolder2-4.1.tar.gz::https://github.com/zopefoundation/Products.BTreeFolder2/archive/4.1.tar.gz
-	sha256sums = d94b229b476e7c0788df28f14b5213a30f8a5c7c7c954fd2a7a05f0618976d1d
+	source = python-btreefolder2-4.2.tar.gz::https://github.com/zopefoundation/Products.BTreeFolder2/archive/4.2.tar.gz
+	sha256sums = 4631c50ed7ce4828a27983baf6440994bad6bd322ad0845e55f26c57788610d6
 
 pkgname = python-btreefolder2
 
