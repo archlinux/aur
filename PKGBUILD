@@ -10,7 +10,7 @@ pkgver=3.16.20190307
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (Valve version)'
 arch=('i686' 'x86_64')
-url='https://github.com/wine-mirror/wine'
+url='https://github.com/ValveSoftware/wine.git'
 license=('LGPL')
 _depends=(
     'sdl2'                  'lib32-sdl2'
