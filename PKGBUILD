@@ -23,7 +23,7 @@ build() {
   npm install pkg
   cd iota-cooler-smidgen/
   npm install 
-  node ../node_modules/pkg/lib-es5/bin.js  . --target latest-linux -o iotacooler-smidgen
+  node ../node_modules/pkg/lib-es5/bin.js  . --target node10-linux -o iotacooler-smidgen #node10 last known working version
 }
 
 package() {
@@ -41,4 +41,3 @@ package() {
   # Copy license
   install -Dm644 "$srcdir/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
