@@ -1,0 +1,20 @@
+pkgbase = perl-compiler-lexer-git
+	pkgdesc = Lexical Analyzer for Perl5
+	pkgver = 214.28116e6
+	pkgrel = 1
+	url = https://github.com/goccy/p5-Compiler-Lexer
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-module-build
+	makedepends = perl-module-build-xsutil
+	depends = perl>=5.8.1
+	provides = perl-compiler-lexer
+	conflicts = perl-compiler-lexer
+	options = !emptydirs
+	source = git+https://github.com/goccy/p5-Compiler-Lexer
+	md5sums = SKIP
+
+pkgname = perl-compiler-lexer-git
+
