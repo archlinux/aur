@@ -2,7 +2,7 @@
 # Contributor: Ryan Thomas <ryant0000@gmail.com.
 
 pkgname='xmrig-donateless'
-pkgver='2.13.0'
+pkgver='2.14.1'
 pkgrel='1'
 pkgdesc='High Perf CryptoNote CPU Miner-No Donate Version'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ source=("xmrig.service"
 	"${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('1c4fa2898b1252507e885c4bfa2d8d5b20bce2069cb5f703bb084066d560a770'
             'd8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6'
-            '1df97d90463023581039f7ae83efaf5e366dafc46280932bb8b8fabce917f3c3')
+            'e229d6b2ac3c805b0abfa2d901070689d04f9fce18deccb5f307c55dbb33fa6b')
 prepare() {
   cd "xmrig-${pkgver}"
   mkdir build
