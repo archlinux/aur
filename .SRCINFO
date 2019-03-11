@@ -1,0 +1,16 @@
+pkgbase = python-mosspy
+	pkgdesc = A Python client for Moss: A System for Detecting Software Similarity
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/soachishti/moss.py
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-lxml
+	depends = python-beautifulsoup4
+	source = https://files.pythonhosted.org/packages/8e/34/18aa21e6d7a6c2ba7c239826702e7b199c1eff4707f8368b4e7fa85af9b2/mosspy-1.0.7-py2.py3-none-any.whl
+	sha256sums = a2595fd587c07c2f21fb7d9989273ca1923c208f735d9605004c4b1bb3707a07
+
+pkgname = python-mosspy
+
