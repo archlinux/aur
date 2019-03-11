@@ -2,11 +2,11 @@
 
 pkgname=python-gluoncv
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Deep Learning Toolkit for Computer Vision'
 arch=(any)
 url=https://gluon-cv.mxnet.io
-license=('Apach 2.0')
+license=('Apache')
 depends=(mxnet python-matplotlib python-numpy python-scipy)
 makedepends=(python-setuptools)
 checkdepends=(python-nose python-pytest python-scipy)
