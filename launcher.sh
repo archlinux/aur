@@ -10,6 +10,6 @@ popd () {
     command popd "$@" > /dev/null
 }
 
-pushd /opt/craft/
+pushd /opt/craft-git/
 ./craft
 popd

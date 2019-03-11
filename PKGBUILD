@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glew' 'xorg-server' 'curl' 'glfw')
 makedepends=("cmake")
 arch=("i686" "x86_64")
-source=("craft::git+https://github.com/fogleman/Craft#branch=master"
+source=("craft-git::git+https://github.com/fogleman/Craft#branch=master"
 		"launcher.sh"
 		)
 
@@ -33,9 +33,9 @@ package() {
 	cp -r ${srcdir}/${pkgname}/${pkgname} ${pkgdir}/opt/
 	chown -R $USER:$USER ${pkgdir}/opt/${pkgname}
 
-	install -Dm 755 launcher.sh ${pkgdir}/usr/bin/${pkgname}
+	install -Dm 755 launcher.sh ${pkgdir}/usr/bin/craft
 	install -Dm644 ${srcdir}/${pkgname}/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 sha512sums=('SKIP'
-            'cf9627269bb44654dff99948c1e6ff693dd7bc7eb5aaadfbd02cc1a06f63d8c3b54ef90c3673cfcaded249201a7e522726a61aa6b83a58537d24659c0f19f329')
+            'dab424a2e7dadcbdbfac316288cab4777c17b31ca31ea639ff69799321b288046bf34d5b8d0383f6f3870beec62780cb69e08e40f5646371a624ec9e62c8f6c8')
