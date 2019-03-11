@@ -3,12 +3,13 @@
 _name=wheel-inspect
 pkgname=python-$_name
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Extract information from wheels'
 arch=(any)
 url="https://github.com/jwodder/$_name"
 license=(MIT)
 depends=(python python-attrs python-headerparser python-packaging python-property-manager python-readme-renderer python-setuptools)
+makedepends=(install-wheel-scripts)
 _pyarch=py3
 _wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
 source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
@@ -19,10 +20,5 @@ package() {
 	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
 	mkdir -p "$site"
 	unzip "$_wheel" -d "$site"
-	
-	cat >wheel2json.sh <<-EOF
-	#!/bin/sh
-	exec python3 -m wheel_inspect "\$@"
-	EOF
-	install -Dm755 wheel2json.sh "$pkgdir/usr/bin/wheel2json"
+	install-wheel-scripts --prefix="$pkgdir/usr" "$_wheel"
 }
