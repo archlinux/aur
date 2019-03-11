@@ -1,8 +1,8 @@
 # Maintainer: Barry Smith <smithbarry@gmx.com>
 
 pkgname=throttled
-pkgver=0.5
-pkgrel=2
+pkgver=0.6
+pkgrel=1
 pkgdesc="Workaround for Intel throttling issues in Linux."
 arch=('x86_64')
 url="https://github.com/erpalma/throttled"
@@ -12,7 +12,7 @@ provides=('lenovo-throttling-fix' 'throttled')
 conflicts=('lenovo-throttling-fix-git' 'lenovo-throttling-fix')
 backup=('etc/lenovo_fix.conf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/erpalma/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('8df2478bad26b0d8be4f6b4a1016bf4fc1b854bc1214955b7e999b7208d4f815')
+sha256sums=('93d11b78d35b99ce345e41291f0268e4c21d0ccb2a80922839e51ec2fe3ae0c1')
 
 prepare() {
   sed -i "s|ExecStart=.*|ExecStart=/usr/lib/$pkgname/lenovo_fix.py|" $pkgname-$pkgver/systemd/lenovo_fix.service
