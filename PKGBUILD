@@ -23,6 +23,7 @@ _opt_defaultmode='666' # default: 666
 # Todo: SSL connections should auto reconnect on Moxa restart
 # Todo: The default mode should be changed to 660
 # Todo: mknod should be chgrp uucp
+# Todo: When characters are held upstream by a low RTS, connecting to /dev/ttyr* brings RTS high too soon. The held characters are released but never come through to ttyr*. This does not happen with a TCP connection.
 
 # Enable and start service
 #   systemctl enable --now 'npreal2.service'
@@ -80,7 +81,7 @@ set -u
 pkgname='npreal2'
 #pkgver='1.18.49'; _commit='6d9ef0dbafd487595c4f5e4e5e64c1faba98d060'
 pkgver='1.19'; _build='17110917'
-pkgrel=1
+pkgrel='2'
 pkgdesc='real tty driver for Moxa NPort serial console terminal server'
 _pkgdescshort="Moxa NPort ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
@@ -101,11 +102,13 @@ source+=('npreal2.sh')
 _patches=(
   #'0000-SSL-destroy-cf-configuration.patch'
   '0001-mxmknod-folder-fix-and-chgrp-uucp.patch'
+  '0002-kernel-5.0.0-access_ok.patch' # https://lkml.org/lkml/2019/1/4/418
 )
 source+=("${_patches[@]}")
 sha256sums=('f99f38ef5618469a1d6f4824e41856616ee65ab8359069daa70d8d481f364462'
             '7241767fa8dead2dbe4cf4db32d39f5cf9d95b08f60daf79822ae306727af372'
-            '7039ca0740be34a641424e3f57b896902f61fdfd2bfcc26e8e954035849e9605')
+            '7039ca0740be34a641424e3f57b896902f61fdfd2bfcc26e8e954035849e9605'
+            '211f3b0ba50452bfe6d39076eb1a60a7557dd038288fb8dcd4374886f4c2844e')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -206,6 +209,10 @@ prepare() {
 
   #diff -pNau5 'mxmknod'{.orig,} > '0001-mxmknod-folder-fix-and-chgrp-uucp.patch'
   patch -Nbup0 -i "${srcdir}/0001-mxmknod-folder-fix-and-chgrp-uucp.patch"
+
+  #cp -p 'npreal2.c'{,.orig}; false
+  #diff -pNau5 'npreal2.c'{.orig,} > '0002-kernel-5.0.0-access_ok.patch'
+  patch -Nbup0 -i "${srcdir}/0002-kernel-5.0.0-access_ok.patch"
 
   # Apply PKGBUILD options
   sed -e 's:^\(ttymajor\)=.*:'"\1=${_opt_ttymajor}:g" \
