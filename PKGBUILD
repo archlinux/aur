@@ -7,8 +7,8 @@ license=("MIT")
 pkgdesc="i3-compatible Wayland compositor"
 makedepends=("meson" "git" "scdoc" "wayland-protocols")
 depends=(
-	"json-c" "pcre" "wlroots-git" "wayland" "libxkbcommon" "cairo" "pango"
-	"gdk-pixbuf2" "pixman" "libcap" "libinput" "pam" "xorg-server-xwayland"
+	"json-c" "pcre" "wlroots-git" "cairo" "pango" "gdk-pixbuf2" "pam"
+	"xorg-server-xwayland"
 )
 optdepends=(
 	"rxvt-unicode: Default terminal emulator."
