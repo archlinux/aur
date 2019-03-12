@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-robotnik-msgs
 	pkgdesc = ROS Definition of msgs and services used by some Robotnik's packages
-	pkgver = 0.2.1
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = http://wiki.ros.org/robotnik_msgs
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ros-kinetic-robotnik-msgs
 	depends = ros-kinetic-message-runtime
 	depends = ros-kinetic-std-msgs
 	depends = python2-rospkg
-	source = ros-kinetic-robotnik-msgs::git+https://github.com/RobotnikAutomation/robotnik_msgs.git#tag=master
+	source = ros-kinetic-robotnik-msgs::git+https://github.com/RobotnikAutomation/robotnik_msgs.git#tag=kinetic-0.2.5
 	sha256sums = SKIP
 
 pkgname = ros-kinetic-robotnik-msgs

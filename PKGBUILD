@@ -5,7 +5,7 @@ url='http://wiki.ros.org/robotnik_msgs'
 
 
 pkgname='ros-kinetic-robotnik-msgs'
-pkgver='0.2.1'
+pkgver='0.2.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 
 
 # Git version (e.g. for debugging)
-_tag=master
+_tag=kinetic-${pkgver}
 _dir=${pkgname}
 source=("${_dir}"::"git+https://github.com/RobotnikAutomation/robotnik_msgs.git"#tag=${_tag})
 sha256sums=('SKIP')
