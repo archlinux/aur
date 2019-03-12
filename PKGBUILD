@@ -8,12 +8,13 @@ pkgrel=1
 pkgdesc='UEFI firmware image viewer and editor and utilities'
 arch=('any')
 url='https://github.com/LongSoft/UEFITool'
+branch='new_engine'
 license=('BSD')
 depends=('qt5-base')
 makedepends=('git' 'qt5-base')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("${_pkgname}::git+https://github.com/LongSoft/UEFITool.git#branch=new_engine")
+source=("${_pkgname}::git+${url}#branch=${branch}")
 sha256sums=('SKIP')
 
 pkgver() {

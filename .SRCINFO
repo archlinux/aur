@@ -10,7 +10,7 @@ pkgbase = uefitool-ng-git
 	depends = qt5-base
 	provides = uefitool-ng
 	conflicts = uefitool-ng
-	source = uefitool-ng::git+https://github.com/LongSoft/UEFITool.git#branch=new_engine
+	source = uefitool-ng::git+https://github.com/LongSoft/UEFITool#branch=new_engine
 	sha256sums = SKIP
 
 pkgname = uefitool-ng-git
