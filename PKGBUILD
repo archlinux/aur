@@ -33,7 +33,8 @@ package_python-apprise() {
            'python-urllib3'
            'python-six'
            'python-click'
-           'python-markdown')
+           'python-markdown'
+           'python-yaml')
 
   cd apprise-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
@@ -47,7 +48,8 @@ package_python2-apprise() {
            'python2-urllib3'
            'python2-six'
            'python2-click'
-           'python2-markdown')
+           'python2-markdown'
+           'python2-yaml')
 
   cd apprise-$pkgver-py2
   python2 setup.py install --root="$pkgdir" --optimize=1

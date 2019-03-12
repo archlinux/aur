@@ -19,6 +19,7 @@ pkgname = python-apprise
 	depends = python-six
 	depends = python-click
 	depends = python-markdown
+	depends = python-yaml
 
 pkgname = python2-apprise
 	depends = python2-decorator
@@ -29,4 +30,5 @@ pkgname = python2-apprise
 	depends = python2-six
 	depends = python2-click
 	depends = python2-markdown
+	depends = python2-yaml
 
