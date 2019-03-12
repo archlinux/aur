@@ -3,7 +3,7 @@
 
 pkgname=kubectl-beta-bin
 pkgdesc="Command-line tool for deploying and managing applications on Kubernetes (beta)"
-pkgver=1.14.0_beta.1
+pkgver=1.14.0_beta.2
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/kubernetes/kubernetes"
@@ -11,7 +11,7 @@ license=('apache')
 provides=('kubectl' 'kubectl-bin')
 conflicts=('kubectl' 'kubectl-bin' 'kubernetes>=1.4.6')
 source=("kubectl-${pkgver//_/-}::https://storage.googleapis.com/kubernetes-release/release/v${pkgver//_/-}/bin/linux/amd64/kubectl")
-sha256sums=('31a027f335bf6c5042eadaea9b4623b28e6255560ed502eeb697d3313124f5bd')
+sha512sums=('af255966ee49c82c85dc3d9bb4023363451289dfc8ba3b0e9c55a8e3c6b65d6e6c0e505bdf2c5669877f3aa683ce6ff6a2fdab24a08eabd6ac866ec79346f0f5')
 
 package() {
   install -Dm 755 "$srcdir/kubectl-${pkgver//_/-}" "$pkgdir/usr/bin/kubectl"
