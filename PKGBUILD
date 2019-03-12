@@ -1,9 +1,10 @@
-# Maintainer: Sam Stuewe <halosghost at archlinux dot info>
-# Maintainer: Serge Victor <arch at random dot re>
-# Maintainer: polyzen <polycitizen at gmail dot com>
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor: Sam Stuewe <halosghost at archlinux dot info>
+# Contributor: Serge Victor <arch at random dot re>
+# Contributor: polyzen <polycitizen at gmail dot com>
 pkgbase=heavything
 pkgname=('rwasa' 'webslap' 'hnwatch' 'dhtool' 'sshtalk' 'toplip')
-pkgver=1.17
+pkgver=1.24
 pkgrel=1
 pkgdesc='A General purpose x64 Asm library for 2ton products'
 arch=('x86_64')
@@ -11,7 +12,7 @@ makedepends=('fasm')
 url='https://2ton.com.au/HeavyThing'
 license=('GPL3')
 source=("https://2ton.com.au/HeavyThing-$pkgver.tar.gz")
-sha256sums=('8432034b21ffac9b4fd6955a17de532668d60dc73e617bb19d561c9e428931a1')
+sha256sums=('77bb53d7717d825515f159a3794808e1edf46ca6b515a1686df3dd6b8a94432d')
 
 build () {
   cd "HeavyThing-$pkgver"
