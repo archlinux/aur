@@ -2,13 +2,13 @@
 
 pkgname=xfce4-dockbarx-plugin
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Embed DockbarX in the xfce4-panel"
 arch=('i686' 'x86_64')
 url="https://github.com/TiZ-EX1/xfce4-dockbarx-plugin"
 license=('X11')
-depends=('vala' 'dockbarx>=0.91' 'xfce4-panel')
-makedepends=('python2' 'git')
+depends=('dockbarx>=0.91' 'xfce4-panel')
+makedepends=('python2' 'git' 'vala')
 conflicts=("${pkgname}-git" 'dockbarx-gtk3-git') # Unfortunately doesn't work with the GTK3 version of dockbarx yet
 
 #source=( ${pkgname}-${pkgver}.tar.gz::https://github.com/TiZ-EX1/${pkgname}/archive/v${pkgver}.tar.gz )
@@ -21,19 +21,19 @@ sha256sums=('SKIP'
             '04892f2eb8413a79288b234ed61af588a66f70553a9db9272d8f1d7904ad1dfa')
 
 prepare() {
-  cd ${srcdir}/${pkgname} #-${pkgver}
+  cd "${srcdir}/${pkgname}" #-${pkgver}"
   patch -Np1 -i ../pref_dialog_fix.patch
 }
 
 build() {
-  cd ${srcdir}/${pkgname} #-${pkgver}
+  cd "${srcdir}/${pkgname}" #-${pkgver}"
   sed -i 's:env python$:&2:' waf wscript
   PREFIX=/usr ./waf configure
   ./waf build
 }
 
 package() {
-  cd ${srcdir}/${pkgname} #-${pkgver}
+  cd "${srcdir}/${pkgname}" #-${pkgver}"
   DESTDIR="${pkgdir}" ./waf install
 }
 
