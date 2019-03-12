@@ -2,19 +2,19 @@
 #_with_docs=1
 
 pkgname=libcomps
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Comps XML file manipulation library"
 arch=('i686' 'x86_64')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2')
-depends=('expat' 'libxml2')
+depends=('expat' 'libxml2' 'zlib')
 makedepends=('cmake' 'python')
-((_with_docs)) && makedepends+=('doxygen')
+((_with_docs)) && makedepends+=('doxygen' 'python-sphinx')
 checkdepends=('check')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgname-$pkgver.tar.gz")
-md5sums=('15508ccbb1367af1aa89417f2c885174')
+md5sums=('e63cf17441e1c7e167405e364fd52fdd')
 
 prepare() {
 	mv "$pkgname-$pkgname-$pkgver" "$pkgname-$pkgver"
@@ -37,6 +37,7 @@ build() {
 
 	if ((_with_docs)); then
 		make docs
+		make pydocs
 	fi
 }
 
@@ -57,8 +58,9 @@ package() {
 	# Install documentation
 	install -Dp -m644 ../README.md  "$pkgdir/usr/share/doc/$pkgname/README.md"
 	if ((_with_docs)); then
-		mkdir -p "$pkgdir/usr/share/doc/$pkgname"
-		cp -Rp docs/libcomps-doc/html/ "$pkgdir/usr/share/doc/$pkgname/"
+		mkdir -p "$pkgdir/usr/share/doc/$pkgname"/{doxygen,sphinx}
+		cp -Rp docs/libcomps-doc/html/ "$pkgdir/usr/share/doc/$pkgname/doxygen/"
+		cp -Rp src/python/docs/html/   "$pkgdir/usr/share/doc/$pkgname/sphinx/"
 	fi
 }
 
