@@ -1,8 +1,8 @@
 # Maintainer: Holger Rauch <holger dot rauch at posteo dot de>
 
-pkgver=5.184
+pkgver=5.191
 _pkgmajver=$(echo $pkgver | cut -f1 -d.)
-pkgrel=2
+pkgrel=3
 _prodvar=micro
 _prodname=payara
 pkgname=${_prodname}${_pkgmajver}-${_prodvar}
@@ -17,10 +17,10 @@ options=(!strip)
 source=("payara-${pkgver}-micro.zip::https://search.maven.org/remotecontent?filepath=fish/${_prodname}/extras/${_prodname}-${_prodvar}/$pkgver/${_prodname}-${_prodvar}-${pkgver}.jar"
         "payara5-micro.service")
 
-sha256sums=('891a4d5d06e6dcaed8a34be9cc2e8538869dacaca6c1890f19ebbd491be2e011'
+sha256sums=('f11375cf5ead8b0fc85f7e5c3ba21905692e0d06d1de39436e5be701040afba6'
             '9276630a47942e37756e23355ef60ce003bba93c712c4f04be62667494da17ff')
 
-sha512sums=('652f2f2b379c184287b8b4103970d08f1635c3265db2ce1baa0e6b8df472552a512689cdff7f0ce1283f3c313400e5589133b77538035dba96f7573e39a70def'
+sha512sums=('56a827e67d98f7967505d83d6afe441b5f1597201ad04dbb1eb83771850db2a05452e8967277f2e08cb51f6a8a78080f81c83f3e4544d1ce43aff2d49082273b'
             '0a29479dd5dd11ba69383554d64fad35d438678e63274e107da2ab959c78be8809e4f8ca837f88a880dc69f09de330c253f00c4acbd6e70e5dac7b72826fe0bf')
 
 package() {
