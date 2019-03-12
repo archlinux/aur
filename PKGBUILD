@@ -4,16 +4,19 @@
 
 pkgname=lib32-tcl
 pkgver=8.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc='The Tcl scripting language'
-arch=('x86_64')
-url='http://tcl.sourceforge.net/'
-license=('custom')
-depends=('lib32-glibc' 'lib32-zlib' 'tcl')
-makedepends=('gcc-multilib')
-options=('staticlibs')
-source=("http://downloads.sourceforge.net/sourceforge/tcl/tcl${pkgver}-src.tar.gz")
-sha256sums=('04abaa207f4bf4f453bea5bbdbcf6cf4bcdba3ed1c5160bfd732c6b8c70c6269')
+arch=(x86_64)
+url=http://tcl.sourceforge.net/
+license=(custom)
+depends=(
+  lib32-glibc
+  lib32-zlib
+  tcl
+)
+options=(staticlibs)
+source=(https://downloads.sourceforge.net/sourceforge/tcl/tcl${pkgver}-src.tar.gz)
+sha256sums=(ad0cd2de2c87b9ba8086b43957a0de3eb2eb565c7159d5f53ccbba3feb915f4e)
 
 prepare() {
   cd tcl${pkgver}
@@ -26,12 +29,12 @@ build() {
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
   ./configure \
-    --prefix='/usr' \
-    --libdir='/usr/lib32' \
-    --mandir='/usr/share/man' \
+    --prefix=/usr \
+    --libdir=/usr/lib32 \
+    --mandir=/usr/share/man \
     --enable-threads
   make
 }
@@ -42,6 +45,8 @@ package() {
   make INSTALL_ROOT="${pkgdir}" install install-private-headers
   rm -rf "${pkgdir}"/usr/{bin,include,lib,share}
   ln -sf libtcl${pkgver%.*}.so "${pkgdir}"/usr/lib32/libtcl.so
+  strip "${pkgdir}"/usr/lib32/libtcl8.6.so
+  chmod 644 "${pkgdir}"/usr/lib32/libtclstub8.6.a
 
   sed -e "s#${srcdir}/tcl${pkgver}/unix#/usr/lib32#" \
       -e "s#${srcdir}/tcl${pkgver}#/usr/include#" \
