@@ -8,6 +8,7 @@ pkgbase = evdev-right-click-emulation
 	license = WTFPL
 	makedepends = gcc
 	makedepends = make
+	makedepends = git
 	depends = libevdev
 	source = evdev-right-click-emulation::git+https://git.angry.im/PeterCxy/evdev-right-click-emulation#commit=0ce9a594ea8f97b5eff77cd14642340aa40791df
 	source = evdev-rce.conf
