@@ -3,7 +3,7 @@
 _pkgname=qr-filetransfer
 _gourl="github.com/claudiodangelis/$_pkgname"
 pkgname="$_pkgname-git"
-pkgver=r89.2df55ab
+pkgver=r128.09241c3
 pkgrel=1
 pkgdesc="Transfer files over wifi from your computer to your mobile device by scanning a QR code without leaving the terminal."
 arch=('any')
@@ -12,10 +12,12 @@ license=('MIT')
 makedepends=('go>=1.8' 'git')
 provides=("$_pkgname")
 options=('!strip' '!emptydirs')
+source=("git://$_gourl")
+sha512sums=('SKIP')
+
 
 pkgver() {
-	git clone -n "$url.git" "$srcdir/pkgver"
-	cd "$srcdir/pkgver"
+	cd "$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 

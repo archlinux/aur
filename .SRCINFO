@@ -1,6 +1,6 @@
 pkgbase = qr-filetransfer-git
 	pkgdesc = Transfer files over wifi from your computer to your mobile device by scanning a QR code without leaving the terminal.
-	pkgver = r89.2df55ab
+	pkgver = r128.09241c3
 	pkgrel = 1
 	url = https://github.com/claudiodangelis/qr-filetransfer
 	arch = any
@@ -10,6 +10,8 @@ pkgbase = qr-filetransfer-git
 	provides = qr-filetransfer
 	options = !strip
 	options = !emptydirs
+	source = git://github.com/claudiodangelis/qr-filetransfer
+	sha512sums = SKIP
 
 pkgname = qr-filetransfer-git
 
