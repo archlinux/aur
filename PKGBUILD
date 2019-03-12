@@ -11,7 +11,7 @@ url='https://lbry.io/'
 license=('MIT')
 depends=('nodejs' 'npm' 'gnome-keyring' 'gconf')
 source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.29.4/LBRY_0.29.4.deb')
-sha256sums=('610CCD35384BAB99DE6D598FCC58D3B3D7B9B1B438D70D40A115038D731ED76E')
+sha256sums=('610ccd35384bab99de6d598fcc58d3b3d7b9b1b438d70d40a115038d731ed76e')
 
 package() {
     tar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
