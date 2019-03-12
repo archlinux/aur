@@ -1,6 +1,6 @@
 pkgbase = dnf-plugins-extras
 	pkgdesc = Extras DNF Plugins
-	pkgver = 4.0.2
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/dnf-plugins-extras
 	arch = any
@@ -8,14 +8,14 @@ pkgbase = dnf-plugins-extras
 	checkdepends = python-nose
 	makedepends = cmake
 	makedepends = python-sphinx
-	depends = dnf>=3.0.0
+	depends = dnf>=4.2.1
 	depends = python
 	optdepends = snapper: for snapper plugin
 	optdepends = tracer: for tracer plugin
 	backup = etc/dnf/plugins/rpmconf.conf
 	backup = etc/dnf/plugins/torproxy.conf
-	source = https://github.com/rpm-software-management/dnf-plugins-extras/archive/4.0.2/dnf-plugins-extras-4.0.2.tar.gz
-	md5sums = c7d5c549fdf15d523afcd90663815be4
+	source = https://github.com/rpm-software-management/dnf-plugins-extras/archive/4.0.4/dnf-plugins-extras-4.0.4.tar.gz
+	md5sums = 806302a1f97085ce298a319dadc80cc2
 
 pkgname = dnf-plugins-extras
 
