@@ -5,6 +5,7 @@ pkgbase = enhanceddiscord-git
 	url = https://github.com/joe27g/EnhancedDiscord
 	arch = any
 	license = unknown
+	makedepends = git
 	depends = discord
 	source = EnhancedDiscord::git+git://github.com/joe27g/EnhancedDiscord.git
 	md5sums = SKIP
