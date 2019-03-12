@@ -1,6 +1,6 @@
 # Maintainer: HRKo <ootaharuki99 at gmail.com>
 pkgname=mathpix-snipping-tool
-pkgver=01.00.0007
+pkgver=01.02.0029
 pkgrel=1
 pkgdesc="Mathpix Snipping Tool"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://snapcraft.io/mathpix-snipping-tool"
 license=('unknown')
 makedepends=('squashfs-tools')
 depends=('qt5-x11extras' 'qt5-webkit')
-source=('https://api.snapcraft.io/api/v1/snaps/download/jnlZEYdmdXGhh6oJTtMsawNGZzEWmMhk_25.snap')
-md5sums=('56bb5327c4db481a8f927aa578ba370b')
+source=('https://api.snapcraft.io/api/v1/snaps/download/jnlZEYdmdXGhh6oJTtMsawNGZzEWmMhk_35.snap')
+md5sums=('43928e16e582a696c60dd20721377ec6')
 
 ## run these to get the source URL and the version
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/mathpix-snipping-tool | jq '.download_url' -r
@@ -17,7 +17,7 @@ md5sums=('56bb5327c4db481a8f927aa578ba370b')
 
 prepare() {
   cd $srcdir
-  unsquashfs -f jnlZEYdmdXGhh6oJTtMsawNGZzEWmMhk_25.snap /usr/bin/mathpix-snipping-tool \
+  unsquashfs -f jnlZEYdmdXGhh6oJTtMsawNGZzEWmMhk_35.snap /usr/bin/mathpix-snipping-tool \
                                                          /meta/gui/mathpix-snipping-tool.desktop \
                                                          /meta/gui/icon.svg
   sed 's|${SNAP}/meta/gui/icon.svg|mathpix-snipping-tool|g' -i squashfs-root/meta/gui/mathpix-snipping-tool.desktop
