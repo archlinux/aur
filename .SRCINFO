@@ -1,7 +1,7 @@
 pkgbase = freecad
 	pkgdesc = A general purpose 3D CAD modeler
-	pkgver = 0.17.13544
-	pkgrel = 9
+	pkgver = 0.18.16093
+	pkgrel = 1
 	url = https://www.freecadweb.org/
 	arch = x86_64
 	license = LGPL
@@ -13,8 +13,8 @@ pkgbase = freecad
 	makedepends = desktop-file-utils
 	makedepends = git
 	makedepends = cmake
-	makedepends = coin>=3.1.3-9
-	makedepends = python2-shiboken2
+	makedepends = coin>=4.0.0a
+	makedepends = python-shiboken2
 	makedepends = pyside2
 	makedepends = shiboken2
 	depends = boost-libs
@@ -33,28 +33,19 @@ pkgbase = freecad
 	depends = qt5-tools
 	depends = qt5-webkit
 	depends = med
-	depends = python2-pivy
-	depends = python2-pyside2
-	depends = python2-matplotlib
+	depends = python-pivy
+	depends = python-pyside2
+	depends = python-matplotlib
 	depends = pyside2-tools
-	optdepends = python2-matplotlib
-	optdepends = python2-pyqt5
+	optdepends = python-matplotlib
 	optdepends = graphviz
 	optdepends = openscad
-	source = git+https://github.com/FreeCAD/FreeCAD.git#commit=e1db7bff8ff36439373eb9a426567d8afe289c4d
+	source = git+https://github.com/FreeCAD/FreeCAD.git#commit=690774c0effe4fd7b8d2b5e2fb2b8c8d145e21ce
 	source = freecad.desktop
 	source = freecad.xml
-	source = gcc8.patch
-	source = smesh-pthread.patch
-	source = qt5.11.patch
-	source = boost1.69.patch
 	sha256sums = SKIP
 	sha256sums = 617968d7bbd1da71bdedaed1b66c5d6eaf24e0fb34678b93f5d925d370c66296
-	sha256sums = 248918de7d3c2145b5cc4fbbc9e224d22f4a6ca7ead2680e8c3a32e91772482a
-	sha256sums = 618bb85c4f3a4eb0e329d1fc30391b777c9b0cffe97aa1e96d45f58b18424311
-	sha256sums = 170c90ee6ef64cf3c8e6a35ca94bb1187d346707f7e0779022e614563c6b74f6
-	sha256sums = a639c9d51f8443e4d2270fe60d5ac3ac62c7c64c532620108514840f8e8704bc
-	sha256sums = 53d5ec0b5337010671ed291dd007dd0f73db61b7313c1edbca105e5bc4921021
+	sha256sums = 1d98fa4e62f352966eb357c93f54b1f0bf562931e8323bf70a83b5e221a5fb14
 
 pkgname = freecad
 
