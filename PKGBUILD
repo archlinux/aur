@@ -2,7 +2,7 @@
 # Contributor: Dmitry Korzhevin <dkorzhevin at gmail dot com>
 
 pkgname=sportstracker
-pkgver=7.5.0
+pkgver=7.6.0
 pkgrel=1
 pkgdesc="Application for people who want to track their sporting activities"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://www.saring.de/sportstracker/"
 license=('GPL')
 source=(sportstracker-$pkgver.deb::https://sourceforge.net/projects/sportstracker/files/SportsTracker/SportsTracker%20$pkgver/Ubuntu/sportstracker-$pkgver.deb/download
         SportsTracker.sh)
-sha1sums=('b8d6b50af75934b3b6bfcbf7eb2d093ea86d2b9e'
+sha1sums=('e5c2714cccb97ea60aa3b7d2822c1e375beca3b8'
           'a4a76ec5366656463489fb37f0725a0692b6c2d5')
 
 package() {
