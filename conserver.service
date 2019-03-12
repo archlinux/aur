@@ -1,5 +1,5 @@
 [Unit]
-Description='An application that allows multiple users to watch a serial console at the same time.'
+Description='serial console remote sharing and logging daemon'
 After=network.target
 
 [Service]
