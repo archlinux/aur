@@ -1,6 +1,6 @@
 pkgbase = minetest-git
 	pkgdesc = Voxel game engine and Infiniminer/Minecraft-inspired game
-	pkgver = 20190203.809cb9fc0
+	pkgver = 20190312.e22a69d61
 	pkgrel = 1
 	url = http://www.minetest.net/
 	install = install
@@ -22,6 +22,7 @@ pkgbase = minetest-git
 	depends = mesa
 	depends = openal
 	depends = sqlite
+	depends = hiredis
 	provides = minetest
 	provides = minetest-common
 	provides = minetest-server

@@ -3,7 +3,7 @@
 
 pkgname=minetest-git
 _pkgname=minetest
-pkgver=20190203.809cb9fc0
+pkgver=20190312.e22a69d61
 pkgrel=1
 pkgdesc='Voxel game engine and Infiniminer/Minecraft-inspired game'
 url='http://www.minetest.net/'
@@ -11,7 +11,7 @@ license=('LGPL2.1' 'CCPL:by-sa')
 arch=('i686' 'x86_64')
 makedepends=('git' 'cmake')
 depends=('bzip2' 'freetype2' 'irrlicht' 'jsoncpp' 'leveldb' 'libjpeg'
-         'libpng' 'libvorbis' 'luajit' 'mesa' 'openal' 'sqlite')
+         'libpng' 'libvorbis' 'luajit' 'mesa' 'openal' 'sqlite' 'hiredis')
 source=('git://github.com/minetest/minetest.git'
         'git://github.com/minetest/minetest_game.git')
 sha256sums=('SKIP'
@@ -38,6 +38,7 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DENABLE_GETTEXT=TRUE \
 		-DRUN_IN_PLACE=FALSE \
+		-DBUILD_SERVER=TRUE \
 
 	make
 }
