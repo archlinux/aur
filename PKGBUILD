@@ -3,8 +3,8 @@
 # Contributor: mezcal
 
 pkgname=rspamd
-pkgver=1.8.3
-pkgrel=2
+pkgver=1.9.0
+pkgrel=3
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
 arch=(x86_64 i686 armv7h)
@@ -38,6 +38,7 @@ backup=('etc/logrotate.d/rspamd'
 		'etc/rspamd/modules.d/dmarc.conf'
 		'etc/rspamd/modules.d/elastic.conf'
 		'etc/rspamd/modules.d/emails.conf'
+		'etc/rspamd/modules.d/external_services.conf'
 		'etc/rspamd/modules.d/force_actions.conf'
 		'etc/rspamd/modules.d/forged_recipients.conf'
 		'etc/rspamd/modules.d/fuzzy_check.conf'
@@ -105,7 +106,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/a
 		"fixes-${pkgver}.diff"
 		)
 
-sha256sums=('09ad1808e8b56db954b29622976efca54785223beaa7b859b2cdb900408de8d7'
+sha256sums=('0273b7b40b4e9260bc5454e328e90b035d70154c2054b1f93490f24cde2d93e4'
             'f89edae5436a3c14e58210fb5c1d5bdd2f8a6f98c03dbc150ea9ff1a3fcfe441'
             '59646874a5036f3f26cac2898a2f60713fe6147b3c60ee964494f07b6acc313f'
             'e705cc908a8e081e4a830cfec5acfc38f00125c5281bb074c939ba3b4a7a8c8b'
