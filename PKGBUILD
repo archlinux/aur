@@ -48,13 +48,15 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "fred"
-    echo "${_pkgver}.$(git describe --abbrev=0 |sed 's/build0//;s/-/./g')"
+    printf "%s.%s" "${_pkgver}" \
+                   "$(git describe --abbrev=0 |sed 's/build0//;s/-/./g')"
 }
 
 prepare() {
     cd "fred"
 
     # Gradle 4.10.3 - Allow building with java 10+
+    export GIT_COMMITTER_NAME="aur" GIT_COMMITTER_EMAIL="aur"
     git fetch https://github.com/skydrome/fred.git gradle-4.10.3
     git cherry-pick eaee80908f63051e729b8579030d193efaa4264d
 
