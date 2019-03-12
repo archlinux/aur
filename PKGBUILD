@@ -1,6 +1,6 @@
 # Maintainer: ber532k <ber532k@gmx.de>
 pkgname=mkpdf
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A simple wrapper around pandoc and latexmk"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('texlive-core' 'biber' 'pandoc')
 optdepends=('python-langdetect: autodetect language of input document')
 source=("https://github.com/seifferth/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('dcca43e29774cae3e2e0d4605d532661')
+md5sums=('486d63953d9c6d68c61ba2c23ea71231')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
