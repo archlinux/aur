@@ -1,16 +1,9 @@
-SERVICE=ecbd.service
-
 post_install() {
-	systemctl enable --now $SERVICE
-}
-
-pre_remove() {
-	[[ $(systemctl is-enabled $SERVICE 1>/dev/null) ]] && systemctl disable --now $SERVICE
+  echo "The ecbd.service must be running for Epson Printer Utility to work."
+  echo "Execute 'sudo systemctl enable --now ecbd.service' in a terminal."
 }
 
 post_upgrade() {
-	if systemctl is-active $SERVICE 1>/dev/null; then
-		systemctl daemon-reload
-		systemctl restart $SERVICE
-	fi
+  post_install
 }
+
