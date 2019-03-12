@@ -3,7 +3,7 @@
 _pkgname=python-emcee-git 
 pkgbase=python-emcee-git
 pkgname=("python-emcee-git" "python2-emcee-git")
-pkgver=v1.2.0.r415.8e73203
+pkgver=v3.0rc2.r0.g4ce5455
 pkgrel=1
 pkgdesc=" The Python ensemble sampling toolkit for affine-invariant MCMC  "
 arch=('any')
@@ -12,13 +12,13 @@ license=('MIT')
 makedepends=('git' 'python' 'python-numpy' 'python2' 'python2-numpy')
 checkdepends=('python-nose' 'python2-nose' 'python-pytest' 'python-scipy' 'python2-scipy' 'python-h5py' 'python2-h5py')
 optdepends=('python2-pytest')
-source=("${_pkgname}::git+${url}")
+source=("${_pkgname}::git+${url}#tag=v3.0rc2")
 md5sums=('SKIP')
 
 pkgver() {
-	 cd $_pkgname
-	 printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
+	 cd "$srcdir"/$_pkgname
+	 printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+}	
 
 prepare() {
 	  cp -a $_pkgname{,-py2}
