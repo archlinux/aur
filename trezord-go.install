@@ -15,6 +15,7 @@ pre_upgrade() {
 }
 
 post_upgrade() {
+    systemctl daemon-reload
     systemctl start trezord.service
 }
 
