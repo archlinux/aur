@@ -1,15 +1,17 @@
 pkgbase = socnetv
 	pkgdesc = Social Networks Analysis and Visualisation
-	pkgver = 2.4
+	pkgver = 2.5
 	pkgrel = 1
 	url = http://socnetv.sourceforge.net/
 	arch = any
 	license = GPL3
 	depends = qt5-base
+	depends = qt5-charts
+	depends = qt5-svg
 	provides = socnetv
 	conflicts = socnetv-git
-	source = https://github.com/socnetv/app/archive/v2.4.tar.gz
-	sha256sums = de1ba2b76b356aa8fe90744241797374cffdafa79685bdbd619f5357ad97bca9
+	source = https://github.com/socnetv/app/archive/v2.5.tar.gz
+	sha256sums = ea70e4ef5d654624ab5d503f050ab9fc1ebaf02dfd917eb9713b0b9050dc4332
 
 pkgname = socnetv
 
