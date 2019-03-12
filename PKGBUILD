@@ -4,9 +4,9 @@
 
 pkgname=qgis-git
 _pkgname=qgis
-pkgver=3.5.0_master.r54107.17b840573c
+pkgver=3.7.0_master.r54293.4b9f4da929
 
-_pkgver=3.5.0_master
+_pkgver=3.7.0_master
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
 url='http://qgis.org/'
