@@ -3,7 +3,7 @@
 # Contributor: Benoit Favre <benoit.favre@lif.univ-mrs.fr>
 # Contributor: Kristof Marussy <kris7topher@gmail.com>
 pkgname=liblinear-multicore
-pkgver=2.11_2
+pkgver=2.21
 pkgrel=1
 pkgdesc="A Library for Large Linear Classification (multi-core)"
 arch=('i686' 'x86_64')
@@ -13,26 +13,27 @@ groups=()
 depends=('coreutils')
 makedepends=()
 optdepends=(
-'python: bindings for latest python version'
-'python2: bindings for python 2'
-'gcc-libs')
+    'python: bindings for latest python version'
+    'python2: bindings for python 2'
+    'gcc-libs'
+)
 provides=('liblinear')
 conflicts=('liblinear')
 replaces=()
 backup=()
 options=()
 install=
-source=("https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/multicore-liblinear/$pkgname-${pkgver//_/-}.zip")
+source=("http://www.csie.ntu.edu.tw/~cjlin/cgi-bin/multicoreliblinear.cgi?+http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/multicore-liblinear+zip")
 noextract=()
-md5sums=('c7e1ece451ba098afb8e8eba3a116f6e')
+md5sums=('2587436eafaa49484cbd5e416882aab5')
 
 build() {
-    cd "$srcdir/$pkgname-${pkgver//_/-}"
+    cd "$srcdir/$pkgname-${pkgver}"
     make lib all
 }
 
 package() {
-    cd "$srcdir/$pkgname-${pkgver//_/-}"
+    cd "$srcdir/$pkgname-${pkgver}"
     install -D -m755 train $pkgdir/usr/bin/liblinear-train
     install -D -m755 predict $pkgdir/usr/bin/liblinear-predict
     install -D -m644 liblinear.so.3 $pkgdir/usr/lib/liblinear.so.3
