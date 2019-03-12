@@ -1,9 +1,10 @@
 [Unit]
 Description=RESTful API Server for PostgreSQL
 Documentation=https://postgres.rest/
-After=network.target
+After=network-online.target postgresql.service docker.service
 
 [Service]
+Restart=on-failure
 ExecStart=/usr/bin/prest
 WorkingDirectory=/etc
 PrivateTmp=true

@@ -4,7 +4,7 @@ _gopkgname='github.com/prest/prest'
 
 pkgname=prest
 pkgver=0.3.4
-pkgrel=1
+pkgrel=3
 pkgdesc='RESTful API Server for PostgreSQL'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url='https://postgres.rest/'
@@ -15,7 +15,7 @@ source=("https://$_gopkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         'prest.service'
         'prest.toml')
 sha256sums=('cc45eb5de17a1957124545e11ae6dcc6e3957e9d5e9b06acf37a341113963829'
-            '75ddc96a1997452c4e244384be375761e34274857b1a3a6bc541e0c6500f2d8e'
+            '7af2f3b91cfad78c4ec5e052290ba556f5196e4b047c6882a9eb45f7723e3730'
             'b04f132360a2f6e1f66bc64e7b48a1474e4296a1e22344bc437b17b122e90af6')
 
 build() {
