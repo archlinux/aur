@@ -1,8 +1,9 @@
 # Maintainer: GrayJack <gr41.j4ck@gmail.com>
 
 _pkgname=janet
+_pkgver=0.5.0
 pkgname=janet-lang-git
-pkgver=0.4.0.r956.327d2ed
+pkgver=0.5.0.r1032.d42bdf2
 pkgrel=1
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -19,7 +20,7 @@ pkgver() {
     cd "${srcdir}/${_pkgname}"
 
     # Get the version number.
-    printf "0.4.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
