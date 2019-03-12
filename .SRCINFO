@@ -1,18 +1,19 @@
 pkgbase = qweborf-git
 	pkgdesc = Minimal HTTP server to share your files - Qt frontend
 	pkgver = 0.15
-	pkgrel = 9
+	pkgrel = 10
 	url = https://ltworf.github.io/weborf
 	arch = any
 	license = GPL3
 	makedepends = pacman>=5.1
 	makedepends = git
 	makedepends = sudo
+	makedepends = python-setuptools
 	depends = python
 	depends = python-pyqt5
 	depends = weborf-git
 	depends = desktop-file-utils
-	conflicts = qweborf
+	conflicts = qweborf-git
 	source = git+https://github.com/ltworf/weborf.git#branch=master
 	md5sums = SKIP
 
