@@ -23,7 +23,7 @@
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
-pkgver=18.2rc1pre61
+pkgver=18.2rc1pre68
 _major=18.1
 pkgrel=1
 _codename=Leia
@@ -39,7 +39,7 @@ _tag="$_major-$_codename"
 #
 # fmt and crossguid can be found http://mirrors.kodi.tv/build-deps/sources/
 #
-_ffmpeg_version="4.0.3-$_codename-RC5"
+_ffmpeg_version="4.0.3-$_codename-18.2"
 _libdvdcss_version="1.4.2-$_codename-Beta-5"
 _libdvdnav_version="6.0.0-$_codename-Alpha-3"
 _libdvdread_version="6.0.0-$_codename-Alpha-3"
@@ -133,6 +133,13 @@ source=(
   59-PR15697.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15697.patch
   60-PR15657.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15657.patch
   61-PR15701.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15701.patch
+  62-PR15685.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15685.patch
+  63-PR15702.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15702.patch
+  64-PR15716.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15716.patch
+  65-PR15713.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15713.patch
+  66-PR15714.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15714.patch
+  67-PR15719.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15719.patch
+  68-PR15643.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15643.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -145,7 +152,7 @@ noextract=(
   "flatbuffers-$_flatbuffers_version.tar.gz"
 )
 sha256sums=('bc1ef0e271d0b6ce2e1be7546ad4f7d330930d7631cc19a9bbc5f75ddc586166'
-            '9a971662e44353c120f2ccf87655571998956e699a2dd800ec708b8b928a53c8'
+            '68535cc2a000946b62ce4be6edf7dda7900bd524f22bcb826800b94f4a873314'
             '38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
             'a30b6aa0aad0f2c505bc77948af2d5531a80b6e68112addb4c123fca24d5d3bf'
@@ -215,7 +222,14 @@ sha256sums=('bc1ef0e271d0b6ce2e1be7546ad4f7d330930d7631cc19a9bbc5f75ddc586166'
             '26f274a5d8df91c3d1b27743b15f4cad2f5442368f0b29afc8c15d18f9c2241b'
             '0a18a6a3013c2080649efc35b8254b9edf754d3883043264d5871d3296ce9129'
             '10ce8de1ce5c4b1c4e49ae8c02df0e4c1793b0e28c8abe18613885312be73fae'
-            '8a1ddc840efa32bc95ba826ae7b2d9d105767fe32e61822a735e3a221f505c07')
+            '8a1ddc840efa32bc95ba826ae7b2d9d105767fe32e61822a735e3a221f505c07'
+            'a61f9bb4e068200728b3fe815f96aec371f5b0050c1e02c38f4af89b9bf448d0'
+            '53006ddb5b7d931933cf761491c52fa2b2459c260dd8ffca648b0191b4f6cef2'
+            '9629c2cdd12334d9cc0beb86bdbad018c2664551b17aa9fef75b66c69b91b740'
+            '036cf77622992b25e5d55e55a4212b50768c8bba65dcc8e014fa691393dde837'
+            '8eea3732c8b7455a16d28697f1619344efdf281a6889ebe39c2366c4676d6cd5'
+            'e72b4b720d699fc33f6da52cfe5df5f94c65370264203737b39bb6d675b35eaa'
+            '59813c0ee7fcab56d8d112ee2311c94d09b1346aa22c688e45de1a7324e6f0fb')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
