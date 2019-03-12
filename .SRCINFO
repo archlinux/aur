@@ -5,12 +5,12 @@ pkgbase = miniserve-bin
 	url = https://github.com/svenstaro/miniserve
 	arch = x86_64
 	license = MIT
-	makedepends = curl
 	provides = miniserve
 	conflicts = miniserve
 	source = https://github.com/svenstaro/miniserve/releases/download/v0.3.1/miniserve-linux
-	sha256sums = d8f214d619a643764367abd88301cb94b41b61fe44ece2d90a8d8c0433f3301a
+	source = https://github.com/svenstaro/miniserve/raw/v0.3.1/LICENSE
 	sha512sums = 3317c766508c1008b1e8aad61fd9c2b10d75b5c09e32524dd06d5e273690877ed55c836e622dcd730ad3f7af0a7397fd09e05407c6f70f0bf43713218389c672
+	sha512sums = 0e5f379c28d49033b0e44982fb94b932eb6dbb81a74656776986eb93a6e9135a89b5dc6764ae9e1ee4cc47f09526d7bf96abe0e84d94ba3198590dc3fa43f9e2
 
 pkgname = miniserve-bin
 
