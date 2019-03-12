@@ -1,15 +1,16 @@
 # Maintainer: Andres Alejandro Navarro Alsina <aanavarroa@unal.edu.co>
 # Contributor:  GalSim developers team on GitHub
-pkgbase=python-galsim-git
+pkgbase=python-galsim
 pkgname=('python-galsim-git' 'python2-galsim-git' 'galsim-common-git')
-pkgver=v2.1.4.r3.68c8695b0
+pkgver=v2.1.4.r0.2e459f5a8
 pkgrel=1
 pkgdesc=" The modular galaxy image simulation toolkit "
 arch=('i686' 'x86_64')
 url="https://github.com/GalSim-developers/GalSim.git"
 license=('BSD')
-makedepends=('git' 'scons' 'boost-libs' 'fftw' 'tmv-git' 'python' 'python2' 'eigen' 'pybind11')
-source=("${pkgbase}::git+${url}")
+makedepends=('git' 'scons' 'boost-libs' 'fftw' 'tmv-git' 'eigen' 'pybind11' 'python-coord-git' 'python2-coord-git' 'python-setuptools' 'python2-setuptools' 'python2-astropy' 'python2-future' 'python2-numpy' 'python-astropy' 'python-future' 'python-numpy')
+checkdepends=('python-nose' 'python2-nose' 'python-yaml' 'python2-yaml' 'python-pandas' 'python2-pandas')
+source=("${pkgbase}::git+${url}#tag=v2.1.4")
 md5sums=('SKIP')
 
 pkgver() {
@@ -35,12 +36,12 @@ check() {
 	nosetests -v || warning 'Tests failed'
 
 	cd "$srcdir"/$pkgbase-py2/tests
-	nosetests2 -v || warning 'Tests failed'
+	nosetests2 -v || warning 'Tests2 failed'
 }
 
 	
 package_python-galsim-git() {
-			    depends=('python' 'boost-libs' 'fftw' 'tmv-git' 'eigen' 'pybind11' 'galsim-common-git')
+			    depends=('pybind11' 'python-astropy' 'python-numpy' 'python-future' 'galsim-common-git' 'boost-libs' 'fftw' 'tmv-git' 'eigen' 'pybind11' 'python-coord-git')
 			    cd $pkgbase
 			    scons PREFIX="${pkgdir}"/usr  FINAL_PREFIX=/usr  PYTHON=python install
 			    rm -rf "${pkgdir}"/usr/share
@@ -50,7 +51,7 @@ package_python-galsim-git() {
 }
 
 package_python2-galsim-git() {
-			     depends=('python2' 'boost-libs' 'fftw' 'tmv-git' 'eigen' 'pybind11' 'galsim-common-git')
+			     depends=('pybind11' 'python2-astropy' 'python2-numpy' 'python2-future' 'galsim-common-git' 'boost-libs' 'fftw' 'tmv-git' 'eigen' 'pybind11' 'python2-coord-git')
 			     cd $pkgbase-py2
 			     scons PREFIX=$pkgdir/usr  FINAL_PREFIX=/usr PYTHON=python2 install
 			     rm -rf "${pkgdir}"/usr/share		 
@@ -61,11 +62,13 @@ package_python2-galsim-git() {
 }
 
 package_galsim-common-git() {
-			    depends=('fftw' 'tmv-git')
- 			    pkgdesc='common files for python-galsim-git and python2-galsim-git'
+			    depends=('fftw')
+ 			    pkgdesc='common files for python-galsim and python2-galsim'
     			    cd $pkgbase
 			    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
     			    mv "${srcdir}"/$pkgbase/share/ "${pkgdir}"/usr/share/galsim/
   			    install -Dm644 "${srcdir}"/$pkgbase/lib/libgalsim.so "${pkgdir}"/usr/lib/libgalsim.so
 			    install -Dm644 "${srcdir}"/$pkgbase/lib/libgalsim.so.2.1 "${pkgdir}"/usr/lib/libgalsim.so.2.1
 }
+
+
