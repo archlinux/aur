@@ -1,6 +1,6 @@
 pkgbase = dnf-plugins-core
 	pkgdesc = Core DNF Plugins
-	pkgver = 4.0.4
+	pkgver = 4.0.6
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/dnf-plugins-core
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = dnf-plugins-core
 	checkdepends = python-nose
 	makedepends = cmake
 	makedepends = python-sphinx
-	depends = dnf>=4.0.7
+	depends = dnf>=4.2.1
 	depends = python
 	optdepends = createrepo_c: for local plugin
 	options = !emptydirs
@@ -17,8 +17,8 @@ pkgbase = dnf-plugins-core
 	backup = etc/dnf/plugins/local.conf
 	backup = etc/dnf/plugins/versionlock.conf
 	backup = etc/dnf/plugins/versionlock.list
-	source = https://github.com/rpm-software-management/dnf-plugins-core/archive/4.0.4/dnf-plugins-core-4.0.4.tar.gz
-	md5sums = 124dbd61fa504c42fca0f4ab41f30ee7
+	source = https://github.com/rpm-software-management/dnf-plugins-core/archive/4.0.6/dnf-plugins-core-4.0.6.tar.gz
+	md5sums = e2afbe7f5d46b2825c04bd4970ed39ba
 
 pkgname = dnf-plugins-core
 
