@@ -5,7 +5,7 @@ url='http://wiki.ros.org/robotnik_sensors'
 
 
 pkgname='ros-kinetic-robotnik-sensors'
-pkgver='1.1.1'
+pkgver='1.1.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]}
 
 
 # Git version (e.g. for debugging)
-_tag=kinetic-multi-devel
+_tag=kinetic-${pkgver}
 _dir=${pkgname}
 source=("${_dir}"::"git+https://github.com/RobotnikAutomation/robotnik_sensors.git"#tag=${_tag})
 sha256sums=('SKIP')

@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-robotnik-sensors
 	pkgdesc = Robotnik standard sensors description. URDF and meshses.
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = http://wiki.ros.org/robotnik_sensors
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ros-kinetic-robotnik-sensors
 	depends = ros-kinetic-urdf
 	depends = python2-rospkg
 	depends = python2-netifaces
-	source = ros-kinetic-robotnik-sensors::git+https://github.com/RobotnikAutomation/robotnik_sensors.git#tag=kinetic-multi-devel
+	source = ros-kinetic-robotnik-sensors::git+https://github.com/RobotnikAutomation/robotnik_sensors.git#tag=kinetic-1.1.2
 	sha256sums = SKIP
 
 pkgname = ros-kinetic-robotnik-sensors
