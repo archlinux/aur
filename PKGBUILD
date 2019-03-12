@@ -2,7 +2,7 @@
 pkgname=extraterm-bin
 _pkgname=extraterm
 pkgver=0.41.0
-pkgrel=1
+pkgrel=2
 conflicts=("extraterm")
 pkgdesc="The swiss army chainsaw of terminal emulators."
 arch=("x86_64")
@@ -22,8 +22,8 @@ package() {
   cp -r "$srcdir/$_pkgname-$pkgver-linux-x64"/* "$pkgdir/opt/$_pkgname"
 
    install -Dm755 /dev/stdin "$pkgdir"/usr/bin/$_pkgname <<END
-    #!/usr/bin/bash
-    /opt/extraterm/extraterm
+   #!/usr/bin/bash
+   /opt/extraterm/extraterm
 END
 
   local _icon_dir="usr/share/icons/hicolor"
