@@ -1,0 +1,163 @@
+SEIKO EPSON CORPORATION
+SOFTWARE LICENSE AGREEMENT FOR LINUX
+
+IMPORTANT! READ THIS SOFTWARE LICENSE AGREEMENT CAREFULLY. The computer software product, fontware, typefaces
+and/or data, including any accompanying explanatory written materials (the "Software") should only be installed
+or used by the Licensee ("you") on the condition you agree with SEIKO EPSON CORPORATION ("EPSON") to the terms
+and conditions set forth in this Agreement. By installing or using the Software, you are representing to agree
+all the terms and conditions set forth in this Agreement. You should read this Agreement carefully before 
+installing or using the Software. If you do not agree with the terms and conditions of this Agreement,
+you are not permitted to install or use the Software.
+
+[Inkjet Printer]
+1.ESC/P
+
+SEIKO EPSON CORPORATION SOFTWARE LICENSE AGREEMENT
+    
+1.    License. EPSON and its suppliers grant you a personal, nonexclusive, royalty-free, non-sublicensable limited
+license to install and use the Software on any single computer or computers that you intend to use directly or via
+network. You may allow other users of the computers connected to the network to use the Software, provided that
+you (a) ensure that all such users agree and are bound by the terms and conditions of this Agreement, (b) ensure
+that all such users use the Software only in conjunction with the computers and in relation to the network of which
+they form part, and (c) indemnify and keep whole EPSON and its suppliers against all damages, losses, costs, expenses
+and liabilities which EPSON or its suppliers may incur as a consequence of such users failing to observe and perform
+the terms and conditions of this Agreement. You may also make copies of the Software as necessary for backup and
+archival purposes, provided that the copyright notice is reproduced in its entirety on the backup copy. The term
+"Software" shall include the software components, media, all copies made by you and any upgrades, modified versions,
+updates, additions and copies of the Software licensed to you by EPSON or its suppliers. 
+EPSON and its suppliers reserve all rights not granted herein.
+
+2.    Other Rights and Limitations. You agree not to modify, adapt or translate the Software. You also agree not to 
+attempt to reverse engineer, decompile, disassemble or otherwise attempt to discover the source code of the Software. 
+You may not share, rent, lease, encumber, sublicense or lend the Software. You may, however, transfer all your rights 
+to use the Software to another person or legal entity provided that you transfer this Agreement, the Software, 
+including all copies, updates and prior versions, to such person or entity, and that you retain no copies, including 
+copies stored on a computer. Some states or jurisdictions, however, do not allow the restriction or limitation on 
+transfer of the Software, so the above limitations may not apply to you.
+
+3.    Ownership. Title, ownership rights, and intellectual property rights in and to the Software and any copies thereof
+ shall remain with EPSON or its suppliers. There is no transfer to you of any title to or ownership of the Software and 
+ this License shall not be construed as a sale of any rights in the Software. The Software is protected by 
+ Japanese Copyright Law and international copyright treaties, as well as other intellectual property laws and treaties. 
+ Except as otherwise provided in this Agreement, you may not copy the Software. You also agree not to remove or 
+ alter any copyright and other proprietary notices on any copies of the Software.
+
+4.    LGPL. The Software uses the open source software programs which apply the GNU Lesser General Public License 
+Version 2 or later version (“ LGPL”). Notwithstanding any provision of this Agreement, you may make modification of the 
+Software for your own use and reverse engineering for debugging such modifications according to the terms and conditions 
+of the LGPL.
+
+5.    Protection and Security. You agree to use your best efforts and take all reasonable steps to safeguard the Software 
+to ensure that no unauthorized person has access to them and that no unauthorized copy, publication, disclosure or 
+distribution of any of the Software is made. You acknowledge that the Software contains valuable, confidential information 
+and trade secrets, that unauthorized use and copying are harmful to EPSON and its suppliers, and that you have a 
+confidentiality obligation as to such valuable information and trade secrets.
+
+6.    Limited Warranty. In case of that you obtained the Software by media from EPSON or a dealer, EPSON warrants that
+ the media on which the Software is recorded will be free from defects in workmanship and materials under normal use
+ for a period of 90 days from the date of delivery to you. If the media is returned to EPSON or the dealer from which 
+ the media was obtained within 90 days of the date of delivery to you, and if EPSON determines the media to be defective 
+ and provided the media was not subject to misuse, abuse, misapplication or use in defective equipment, EPSON will replace 
+ the media, upon your return to EPSON of the Software, including all copies of any portions thereof. 
+ ALL IMPLIED WARRANTIES ON THE MEDIA, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, 
+ ARE LIMITED TO THE DURATION OF THE EXPRESS WARRANTY SET FORTH ABOVE.
+
+    You acknowledge and agree that the use of the Software is at your sole risk. THE SOFTWARE IS PROVIDED "AS IS" AND WITHOUT 
+    ANY WARRANTY OF ANY KIND. EPSON AND ITS SUPPLIERS DO NOT AND CANNOT WARRANT THE PERFORMANCE OR RESULTS YOU MAY OBTAIN BY 
+    USING THE SOFTWARE. THE FOREGOING STATES THE SOLE AND EXCLUSIVE REMEDIES FOR EPSON'S AND ITS SUPPLIERS' BREACH OF WARRANTY. 
+    EXCEPT FOR THE FOREGOING LIMITED WARRANTY, EPSON AND ITS SUPPLIERS MAKE NO WARRANTIES, EXPRESS OR IMPLIED, AS TO NON-INFRINGEMENT, 
+    MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR PURPOSE. Some states or jurisdictions do not allow the exclusion of implied 
+    warranties or limitations on how long an implied warranty may last, so the above limitations may not apply to you. 
+    This warranty gives you specific legal rights. You may have other rights which vary from state to state or jurisdiction to jurisdiction.
+
+    IN NO EVENT WILL EPSON OR ITS SUPPLIERS BE LIABLE TO YOU, WHETHER ARISING UNDER CONTRACT, TORT (INCLUDING NEGLIGENCE), 
+    STRICT LIABILITY, BREACH OR WARRANTY, MISREPRESENTATION OR OTHERWISE, FOR ANY DIRECT, CONSEQUENTIAL, INCIDENTAL OR 
+    SPECIAL DAMAGES, INCLUDING ANY LOST PROFITS OR LOST SAVINGS, EVEN IF EPSON, ITS SUPPLIERS OR ANY REPRESENTATIVE HAS 
+    BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, OR FOR ANY CLAIM BY ANY THIRD PARTY. Some states or jurisdictions, 
+    however, do not allow the exclusion or limitation of incidental, consequential or special damages, so the above 
+    limitations may not apply to you.
+
+7.    Termination. Without prejudice to any other rights EPSON has, this Agreement shall automatically terminate
+upon failure by you to comply with its terms. You may also terminate this Agreement at any time by uninstalling 
+and destroying the Software and all copies thereof.
+
+8.    Export Restriction. You agree not to transfer, export or re-export the Software and any data or information
+ which you obtained from EPSON or use the Software without a proper license under Japanese law, restrictions and 
+ regulations, or the laws of the jurisdiction in which the Software is obtained.
+
+9.    Governing Law and General Provisions. This Agreement shall be governed and construed under by the laws of Japan
+ without regard to its conflicts of law rules. This Agreement is the entire agreement between the parties with respect 
+ to the Software, and supersedes any purchase order, communication, advertisement, or representation concerning the Software. 
+ This Agreement shall be binding upon, and inure to the benefit of, the parties hereto and their respective successors, 
+ assigns and legal representatives. If any provision herein is found void or unenforceable, it will not affect the validity 
+ of the balance of the Agreement, which shall remain valid and enforceable according to its terms. This Agreement may only 
+ be modified in writing signed by an authorized officer of EPSON.
+
+10.    U.S. Government End Users. If you are acquiring the Software on behalf of any unit or agency of 
+the United States Government, the following provisions apply. The Government agrees: (i) if the Software is 
+supplied to the Department of Defense (DoD), the Software is classified as " Commercial Computer Software" and 
+the Government is acquiring only " restricted rights" in the Software and its documentation as that term is defined 
+in Clause 252.227-7013(c)(1) of the DFARS; and (ii) if the Software is supplied to any unit or agency of the United States 
+Government other than DoD, the Government's rights in the Software and its documentation will be as defined 
+in Clause 52.227-19(c)(2) of the FAR or, in the case of NASA, in Clause 18-52.227-86(d) of the NASA supplement to the FAR.
+
+11.    Internet Connection. The Software may have the ability to connect over the Internet to transmit data and/or information 
+to and from your computer regarding the EPSON hardware and/or software that you use ("EPSON Products") including, but 
+not limited to, EPSON Products model information, the country/ region where you live, the condition of EPSON Products, etc. 
+EPSON may alter the items of such data and/or information without your prior approval. EPSON does not collect any personally 
+identifiable information without your permission. EPSON may, however, use non personally identifiable information for 
+statistical purposes to improve the level of service we provide to our users If you agree to install the Software, any 
+transmissions to or from the Internet will be in accordance with EPSON's then-current Privacy Policy provided in EPSON Internet site.
+
+12.    Updating Software Version. The Software may have the ability to connect over the Internet to a server of EPSON or any third 
+party entrusted by EPSON in order to update the software version (i)automatically or (ii)with your consent in advance. Such updated 
+software shall be deemed to be the Software and be governed by this Agreement.
+
+
+2.ESC/P-R
+
+    GNU General Public License
+
+3.PIPS(Photo Image Print System)
+
+    GNU General Public License
+    GNU Lesser General Public License
+    AVASYS Public License [1]
+
+[Laser Printer]
+1.Postscript Printer Description (PPD) file for EPSON Printer
+
+    Please read the license at the top of the EPSON PPD file carefully.
+
+2.GS-LPD (Ghostscript Laser Printer Driver for Linux)
+
+    GNU General Public License
+
+3.Laser Printer Filter for Linux
+
+    AVASYS Public License [1]
+    MIT License
+
+4.Photo Image Print System Plus for Linux
+
+    GNU General Public License
+    GNU Free Documentation License
+    AVASYS Public License [1]
+
+[Scanner]
+1.Image Scan! for Linux
+
+    GNU General Public License
+    GNU Lesser General Public License
+    AVASYS Public License [1]
+    SEIKO EPSON CORPORATION SOFTWARE LICENSE AGREEMENT
+
+2.Image Scan v3
+
+    GNU General Public License
+    AVASYS Public License [1]
+    SEIKO EPSON CORPORATION SOFTWARE LICENSE AGREEMENT
+
+EPSON EULA EN 11/05/2012
+
+[1] AVASYSPL.en.txt
