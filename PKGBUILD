@@ -4,7 +4,7 @@ pkgdesc="ROS - map_server provides the map_server ROS Node, which offers map dat
 url='http://wiki.ros.org/map_server'
 
 pkgname='ros-kinetic-map-server'
-pkgver='1.14.1'
+pkgver='1.14.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
