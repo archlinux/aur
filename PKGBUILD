@@ -1,6 +1,6 @@
 # Maintainer: Guillaume ALAUX <guillaume@archlinux.org>
 pkgname=tomcat8
-pkgver=8.0.53
+pkgver=8.5.38
 pkgrel=1
 pkgdesc='Open source implementation of the Java Servlet 3.1 and JavaServer Pages 2.3 technologies'
 arch=('any')
@@ -16,15 +16,12 @@ backup=(etc/${pkgname}/catalina.policy
         etc/${pkgname}/tomcat-users.xml
         etc/${pkgname}/web.xml)
 install=${pkgname}.install
-source=(https://archive.apache.org/dist/tomcat/tomcat-8/v${pkgver}/bin/apache-tomcat-${pkgver}.tar.gz{,.asc}
+source=(https://archive.apache.org/dist/tomcat/tomcat-8/v${pkgver}/bin/apache-tomcat-${pkgver}.tar.gz
         systemd_${pkgname}.service
         systemd_sysusers.d_${pkgname}.conf
         systemd_tmpfiles.d_${pkgname}.conf)
-validpgpkeys=('DCFD35E0BF8CA7344752DE8B6FB21E8933C60243'  # Mark E D Thomas
-              '713DA88BE50911535FE716F5208B0AB1D63011C7') # Violeta Georgieva Georgieva
 
-sha512sums=('cd8a4e48a629a2f2bb4ce6b101ebcce41da52b506064396ec1b2915c0b0d8d82123091242f2929a649bcd8b65ecf6cd1ab9c7d90ac0e261821097ab6fbe22df9'
-            'SKIP'
+sha512sums=('3a3e624014faf87091e6dbb8bad13c68240955d62301d22cf3d75a1766859dd97500d6850fbd5d3dc012f08f9301eb24c24fa7175bcca616767fa5c18875072d'
             '114c62af0adf4243d210b2f3d7a9a51ca448a7105d38ef4a6587903eac716ad552989bfee76af933cf0022bad374a8dcb1b932abb8e902a93f72dec0aadd7ab7'
             '7b505c79e495c35f787f300cd786e9f474ba2df61f8a50e21d2480de6a4c27a409b627447d1e4cb2fb543f81c107cbb30adbbc31a29754d0fe8e6908ea61cd7a'
             'f5d819afa9b01adbe1f09267a64d1d35f994db48c7af9c49b1731305e82e0306561a24d6b6d4a33116dcd4990989d8a7a9c52532b003d480c0522e63b976c815')
