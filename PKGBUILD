@@ -2,7 +2,7 @@
 
 _pkgname=xfdesktop
 pkgname=${_pkgname}-devel
-pkgver=4.13.2
+pkgver=4.13.3
 pkgrel=1
 pkgdesc="A desktop manager for Xfce"
 arch=('i686' 'x86_64')
@@ -11,15 +11,15 @@ license=('GPL2')
 groups=('xfce4')
 depends=('libxfce4ui>=4.13' 'libxfce4util>=4.13' 'exo' 'thunar>=1.7.0' 'garcon>=0.6.0' 'hicolor-icon-theme' 'libwnck3>=3.14')
 makedepends=('intltool')
-conflicts=('xfce4-menueditor' "${_pkgname}" "${_pkgname}-git")
+conflicts=('xfce4-menueditor' "${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
 replaces=('xfce4-menueditor')
 options=('!libtool')
-source=(http://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('387f43d8a4615f44060c019cad212ac12df62c58eea2605813743116f71ad3bd')
+source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
+sha256sums=('80f7f28ef17638fe1cf4481db694731c208785a56b6c840005202f9c2db238f5')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   ./configure \
     --prefix=/usr \
@@ -34,6 +34,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
