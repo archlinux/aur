@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="auxiliary reliable guardian undertaking system"
 arch=('any')
 url="https://github.com/JRT-FOREVER/argus"
-license=('GPL3')
+license=('MIT')
 depends=('python' 'python-bottle')
 
 #source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
