@@ -1,4 +1,5 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Miguel Useche <migueluseche@skatox.com>
+# Contributor: Daniel Peukert <dan.peukert@gmail.com>
 
 _pkgname=qr-filetransfer
 _gourl="github.com/claudiodangelis/$_pkgname"
