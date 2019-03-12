@@ -1,6 +1,6 @@
 pkgbase = fasttext
 	pkgdesc = Library for fast text representation and classification
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 0
 	url = https://github.com/facebookresearch/fastText
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = fasttext
 	makedepends = python2-setuptools
 	depends = python-numpy
 	depends = python-scipy
-	source = https://github.com/facebookresearch/fastText/archive/v0.1.0.tar.gz
-	sha256sums = d6b4932b18d2c8b3d50905028671aadcd212b7aa31cbc6dd6cac66db2eff1397
+	source = https://github.com/facebookresearch/fastText/archive/v0.2.0.tar.gz
+	sha256sums = 71d24ffec9fcc4364554ecac2b3308d834178c903d16d090aa6be9ea6b8e480c
 
 pkgname = fasttext
 

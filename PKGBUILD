@@ -4,7 +4,7 @@ pkgname='fasttext'
 pkgdesc="Library for fast text representation and classification"
 url="https://github.com/facebookresearch/fastText"
 
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=0
 
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-setuptools' 'python2-setuptools')
 depends=('python-numpy' 'python-scipy')
 
 source=("https://github.com/facebookresearch/fastText/archive/v${pkgver}.tar.gz")
-sha256sums=('d6b4932b18d2c8b3d50905028671aadcd212b7aa31cbc6dd6cac66db2eff1397')
+sha256sums=('71d24ffec9fcc4364554ecac2b3308d834178c903d16d090aa6be9ea6b8e480c')
 
 build() {
     cd "${srcdir}/fastText-${pkgver}"
