@@ -1,0 +1,19 @@
+pkgbase = anylogic-professional
+	pkgdesc = AnyLogic Professional Edition - for companies and government organizations
+	pkgver = 8.4.0
+	pkgrel = 1
+	url = https://www.anylogic.com
+	arch = x86_64
+	license = custom
+	makedepends = gendesk
+	depends = glibc
+	optdepends = chromium: alternative browser for model animating
+	optdepends = firefox: alternative browser for model animating
+	provides = anylogic
+	conflicts = anylogic
+	options = !strip
+	source = https://files.anylogic.com/anylogic-professional-8.4.0.linux.x86_64.tgz.bin
+	sha256sums = 972d7465017b3beaa22b4ebcdbad38ca6fba4a861634a7db2b3f385e9fe00ba5
+
+pkgname = anylogic-professional
+
