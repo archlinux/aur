@@ -1,7 +1,7 @@
 # Maintainer: Markus Kalb <mk@filmkreis.tu-darmstadt.de>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=dcpomatic-git
-pkgver=0.r9473.88d966d9e
+pkgver=0.r10510.b04211812
 pkgrel=1
 pkgdesc="A free, open-source program to generate Digital Cinema Packages (DCPs) from videos or images"
 arch=('i686' 'x86_64')
@@ -22,11 +22,11 @@ pkgver() {
 
 
 build() {
-    PKG_CONFIG_LIBDIR="/usr/lib64/pkgconfig/:/usr/lib/pkgconfig/:$PKG_CONFIG_LIBDIR"
-    CXXFLAGS="$CXXFLAGS    --std=c++11"
-    cd  dcpomatic-git
-    python waf configure --prefix=/usr
-    python waf build
+      PKG_CONFIG_LIBDIR="/usr/lib64/pkgconfig/:/usr/lib/pkgconfig/:$PKG_CONFIG_LIBDIR"
+      CXXFLAGS="$CXXFLAGS    --std=c++11"
+      cd  dcpomatic-git
+      python waf configure --prefix=/usr  --disable-tests
+      python waf build
 }
 
 
