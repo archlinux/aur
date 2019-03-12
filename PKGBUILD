@@ -18,23 +18,23 @@ source=("https://files.anylogic.com/$pkgname-$pkgver.linux.x86_64.tgz.bin")
 sha256sums=('4029bc645995ab6b81b234334f4cb00fbf8608fae05d0cd1fc91dfd701358b87')
 
 prepare() {
-	msg2 "Unpacking archive..."
-	tail -n +347 "$srcdir/$pkgname-$pkgver.linux.x86_64.tgz.bin" > "$pkgname-$pkgver.linux.x86_64.tgz"
+    msg2 "Unpacking archive..."
+    tail -n +347 "$srcdir/$pkgname-$pkgver.linux.x86_64.tgz.bin" > "$pkgname-$pkgver.linux.x86_64.tgz"
 
-	msg2 "Extracting archive..."
-	tar -xf $pkgname-$pkgver.linux.x86_64.tgz
+    msg2 "Extracting archive..."
+    tar -xf $pkgname-$pkgver.linux.x86_64.tgz
 }
 
 package() {
-	mkdir -p "$pkgdir/opt"
+    mkdir -p "$pkgdir/opt"
 
-	msg2 "Copying AnyLogic PLE contents..."
-	cp -R "$srcdir/anylogic" "$pkgdir/opt"
+    msg2 "Copying AnyLogic PLE contents..."
+    cp -R "$srcdir/anylogic" "$pkgdir/opt"
 
-	msg2 "Creating .desktop file..."
-	gendesk -q -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='AnyLogic PLE' --exec='env SWT_GTK3=0 UBUNTU_MENUPROXY= /opt/anylogic/anylogic'
-	install -Dm644 "$srcdir/anylogic/icon.xpm" "$pkgdir/usr/share/pixmaps/$pkgname.xpm"
-	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    msg2 "Creating .desktop file..."
+    gendesk -q -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='AnyLogic PLE' --exec='env SWT_GTK3=0 UBUNTU_MENUPROXY= /opt/anylogic/anylogic'
+    install -Dm644 "$srcdir/anylogic/icon.xpm" "$pkgdir/usr/share/pixmaps/$pkgname.xpm"
+    install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-	install -Dm644 "$srcdir/anylogic/license/Software Licensing Agreement for AnyLogic.txt" "$pkgdir/usr/share/licenses/anylogic/LICENSE"
+    install -Dm644 "$srcdir/anylogic/license/Software Licensing Agreement for AnyLogic.txt" "$pkgdir/usr/share/licenses/anylogic/LICENSE"
 }
