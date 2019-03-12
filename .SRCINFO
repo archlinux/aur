@@ -1,0 +1,15 @@
+pkgbase = ruby-ansi
+	pkgdesc = ANSI at your fingertips!
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://rubyworks.github.com/ansi
+	arch = any
+	license = BSD-2-Clause
+	depends = ruby
+	noextract = ansi-1.5.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ansi-1.5.0.gem
+	sha1sums = fa9e40d63308b9ab61d1aca24dff3ec36581d619
+
+pkgname = ruby-ansi
+
