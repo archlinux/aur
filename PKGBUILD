@@ -6,7 +6,7 @@ _pkgbase='engauge-digitizer'
 
 pkgname=('engauge' 'engauge-samples')
 pkgbase='engauge'
-pkgver=10.11
+pkgver=10.12
 pkgrel=1
 url="http://markummitchell.github.io/engauge-digitizer/"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('qt5-tools' 'fftw' 'log4cpp' 'libjpeg-turbo' 'libpng' 'openjpeg2' '
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/markummitchell/$_pkgbase/archive/v$pkgver.tar.gz"
         "$pkgbase.sh"
         "$pkgbase.desktop")
-sha256sums=('4ff35963549a0899ced1e504255841513442341d05ccecf360828c56af51dfe1'
+sha256sums=('2f6358e58bd1517b39d021b543dbd34909e56e42b336935dd74d0a23fac2c975'
             '4b36a8aa23c5a95a552d33ce1bd75aa1a0be5fdf9ef06f321a060c753298dd18'
             '1b3f2675058693d5653b5aee50fbec1530791de5fcdfbb2f86056a5d748695a4')
 install=engauge.install
@@ -35,7 +35,7 @@ package_engauge() {
 
   cd ${_pkgbase}-$pkgver
   install -Dm755 ../$pkgbase.sh "$pkgdir"/usr/bin/$pkgbase
-  install -Dm755 bin/engauge "$pkgdir"/usr/lib/$_pkgbase/engauge
+  install -Dm755 bin/$pkgbase "$pkgdir"/usr/lib/$_pkgbase/$pkgbase
   # translations
   install -dm755 "$pkgdir"/usr/lib/$_pkgbase/translations/
   install -Dm64 translations/*.qm -t "$pkgdir"/usr/lib/$_pkgbase/translations/

@@ -1,5 +1,5 @@
 pkgbase = engauge
-	pkgver = 10.11
+	pkgver = 10.12
 	pkgrel = 1
 	url = http://markummitchell.github.io/engauge-digitizer/
 	install = engauge.install
@@ -13,10 +13,10 @@ pkgbase = engauge
 	makedepends = libpng
 	makedepends = openjpeg2
 	makedepends = poppler-qt5
-	source = engauge-10.11.tar.gz::https://github.com/markummitchell/engauge-digitizer/archive/v10.11.tar.gz
+	source = engauge-10.12.tar.gz::https://github.com/markummitchell/engauge-digitizer/archive/v10.12.tar.gz
 	source = engauge.sh
 	source = engauge.desktop
-	sha256sums = 4ff35963549a0899ced1e504255841513442341d05ccecf360828c56af51dfe1
+	sha256sums = 2f6358e58bd1517b39d021b543dbd34909e56e42b336935dd74d0a23fac2c975
 	sha256sums = 4b36a8aa23c5a95a552d33ce1bd75aa1a0be5fdf9ef06f321a060c753298dd18
 	sha256sums = 1b3f2675058693d5653b5aee50fbec1530791de5fcdfbb2f86056a5d748695a4
 
