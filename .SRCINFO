@@ -1,8 +1,8 @@
 pkgbase = vicious-git
 	pkgdesc = Widgets for the Awesome window manager
-	pkgver = 2.1.1.207.g4c082ac
+	pkgver = 2.1.1.266.gea0c5a4
 	pkgrel = 1
-	url = http://git.sysphere.org/vicious/about/
+	url = https://github.com/vicious-widgets/vicious
 	arch = any
 	license = GPL2
 	makedepends = git
@@ -13,7 +13,7 @@ pkgbase = vicious-git
 	optdepends = curl: for widget types accessing network resources
 	provides = vicious
 	conflicts = vicious
-	source = vicious-git::git+http://git.sysphere.org/vicious
+	source = vicious-git::git+https://github.com/vicious-widgets/vicious.git
 	md5sums = SKIP
 
 pkgname = vicious-git

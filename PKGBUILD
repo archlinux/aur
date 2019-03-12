@@ -1,27 +1,25 @@
-# Maintianer: Brian Bidulock <bidulock@openss7.org>
+# Maintianer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Adrian C. <anrxc..sysphere.org>
 
 pkgname=vicious-git
 _pkgname=vicious
-pkgver=2.1.1.207.g4c082ac
+pkgver=2.1.1.266.gea0c5a4
 pkgrel=1
 pkgdesc='Widgets for the Awesome window manager'
 arch=('any')
-url='http://git.sysphere.org/vicious/about/'
+url='https://github.com/vicious-widgets/vicious'
 license=('GPL2')
 depends=('lua')
 makedepends=('git')
-optdepends=(
-  'hddtemp: for the HDD Temp widget type'
-  'alsa-utils: for the Volume widget type'
-  'wireless_tools: for the Wireless widget type'
-  'curl: for widget types accessing network resources'
-)
+optdepends=('hddtemp: for the HDD Temp widget type'
+            'alsa-utils: for the Volume widget type'
+            'wireless_tools: for the Wireless widget type'
+            'curl: for widget types accessing network resources')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=(${pkgname}::git+http://git.sysphere.org/${_pkgname})
+source=(${pkgname}::git+https://github.com/vicious-widgets/${_pkgname}.git)
 md5sums=('SKIP')
-
 
 pkgver() {
   cd $pkgname
