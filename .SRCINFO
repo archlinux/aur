@@ -3,18 +3,11 @@ pkgbase = virtctl-git
 	pkgver = r22.07354f1
 	pkgrel = 6
 	url = https://github.com/dehesselle/virtctl
-	install = virtctl-git.install
 	arch = any
 	license = MIT
 	depends = libvirt
-	source = virtctl-git::git+https://github.com/dehesselle/virtctl.git
-	source = fix_usr_local_virtctl.patch
-	source = archify_kvm@_service.patch
-	source = virtctl_create_domain_symlinks
+	source = virtctl-git::git+https://github.com/dehesselle/virtctl.git#tag=v0.3-rc.1
 	md5sums = SKIP
-	md5sums = 03f443ffa18dc0529b5c2fc555bb2fee
-	md5sums = 2741d1206c41c1ebd1c750734f35ce2f
-	md5sums = daaf947f2e9687c532984e747a136371
 
 pkgname = virtctl-git
 
