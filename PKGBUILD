@@ -14,7 +14,7 @@ url="http://www.mucommander.com"
 depends=('java-runtime' 'bash')
 arch=('any')
 license=('GPL')
-source=(https://github.com/mucommander/mucommander/releases/download/${_pkgver}/${pkgname}_${__pkgver}_all.deb)
+source=("${pkgname}-${pkgver}.deb::https://github.com/mucommander/mucommander/releases/download/${_pkgver}/${pkgname}_${__pkgver}_all.deb")
 sha256sums=('73c39b9e4c1404ac2807982bffcaf7b0d3745291e92b1d03350a9a7ea64c42df')
 
 
