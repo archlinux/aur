@@ -36,7 +36,7 @@ package() {
   cd "$srcdir/$_pkgname"
   # Tools
   for tool in "${_tools[@]}"; do
-    install -D -m755 "$tool/$tool" "$pkgdir/usr/bin/${tool,,}"
+    install -D -m755 "$tool/$tool" "$pkgdir/usr/bin/${tool,,}-ng"
   done
   # License
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
