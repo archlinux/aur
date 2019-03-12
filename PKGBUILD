@@ -4,8 +4,8 @@
 # Contributor: Holger Rauch <holger dot rauch at posteo dot de>
 
 pkgname=payara
-pkgver=5.184
-pkgrel=3
+pkgver=5.191
+pkgrel=4
 pkgdesc="A Java EE application server, drived from GlassFish Open Source Edition."
 url="http://www.payara.fish/"
 license=("CDDL" "GPL2")
@@ -17,9 +17,9 @@ options=(!strip)
 source=("$pkgname-$pkgver.zip::https://search.maven.org/remotecontent?filepath=fish/$pkgname/distributions/$pkgname/$pkgver/$pkgname-$pkgver.zip"
         "payara.service")
 
-sha256sums=('e27efd6fb3752d870349848ee7f5edcace947148d415f60a217dc0e0fe6ced94'
+sha256sums=('532eba0feb7b637663acfe5c1c47506a3270da89eb3ea4c870df1a650a25fb17'
             '20be1d3d7c83fe75580e72154728929e560333a4027f5be39799babbe5da860d')
-sha512sums=('f6e65feb3d8b9c0426adf83b38a4cfd13dca20518a93c58428e9b29dc7e519ed77340e52fdead06068c0c4db6ba9439f49a8d2bc0825378e8c9a4d16763ab0ff'
+sha512sums=('7afda3a270f8c1ebea7b43b756991619c963112bc5cebd1e1949555f6efd5189f29cea7f012d49848363aac2dc12feb8c88f88f707d19d2cb5cfc9b9800c10ea'
             '5c176c6a547f86ee4ed633e36e131d34e0f6f633f5ca74f42b96f27f4b9f4c218c50ed06cbc9b8a92b4f10c7f19cd48823bcac4af8d46cf9ac3ce3da71873070')
 
 package() {
