@@ -1,0 +1,37 @@
+--- a/Makefile	2019-03-12 17:31:09.000000000 +0100
++++ b/Makefile	2019-03-12 17:40:23.526521565 +0100
+@@ -1,3 +1,5 @@
++WMNAME  = antares
++
+ libs = x11 xinerama cairo
+ CFLAGS  = $(shell pkg-config --cflags ${libs})
+ LDFLAGS = $(shell pkg-config --libs-only-L ${libs})
+@@ -8,17 +10,23 @@
+ MANPREFIX = $(PREFIX)/share/man
+ 
+ all:
+-	$(CC) $(CFLAGS) $(LDLIBS) -o antares src/antares.c
++	$(CC) $(CFLAGS) $(LDLIBS) -o ${WMNAME} src/antares.c
+ 
+ debug: CFLAGS += -g
+ debug: all
+ 
+ clean:
+-	$(RM) antares
++	@echo cleaning
++	@rm -fv ${WMNAME}
+ 
+ install: all
+-	install -D -m 755 antares $(BINPREFIX)/antares
+-	install -D -m 644 doc/antares.1 $(MANPREFIX)/man1/antares.1
++	@echo installing executable file to ${DESTDIR}${PREFIX}/bin
++	@install -Dm755 ${WMNAME} ${DESTDIR}${PREFIX}/bin/${WMNAME}
++	@echo installing manual page to ${DESTDIR}${MANPREFIX}/man.1
++	@install -Dm644 doc/${WMNAME}.1 ${DESTDIR}${MANPREFIX}/man1/${WMNAME}.1
+ 
+ uninstall:
+-	$(RM) $(BINPREFIX)/antares $(MANPREFIX)/man1/antares.1
++	@echo removing executable file from ${DESTDIR}${PREFIX}/bin
++	@rm -f ${DESTDIR}${PREFIX}/bin/${WMNAME}
++	@echo removing manual page from ${DESTDIR}${MANPREFIX}/man1
++	@rm -f ${DESTDIR}${MANPREFIX}/man1/${WMNAME}.1

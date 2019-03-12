@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=antares-git
-pkgver=r113.g30e3525
+pkgver=r164.g0ab7891
 pkgrel=1
 pkgdesc='A window manager for X'
 arch=(x86_64)
@@ -12,8 +12,10 @@ depends=(cairo libxinerama)
 makedepends=(git)
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("${pkgname%-*}::git+${url}.git")
-md5sums=('SKIP')
+source=("${pkgname%-*}::git+${url}.git"
+	'Makefile.patch')
+sha256sums=('SKIP'
+            '7eb30c4f4f32634ca286bdb6f75b1d5cb473d888ca1b7b4793ff3f6304cb9c9f')
 
 pkgver() {
     cd "${pkgname%-*}"
@@ -22,6 +24,7 @@ pkgver() {
 
 prepare() {
     cd "${pkgname%-*}"
+    patch -Np1 -i ../Makefile.patch
 
     if [ -e $startdir/config.h ]; then
         msg2 "using custom config.h"
@@ -29,15 +32,19 @@ prepare() {
     else
         msg2 "using default config.h"
     fi
+
+    if [ -e $startdir/keybind_functions.c ]; then
+        msg2 "using custom keybind_functions.c"
+	cp ${startdir}/keybind_functions.c src/keybind_functions.c
+    else
+        msg2 "using default keybind_functions.c"
+    fi 
 }
 
 build() {
-    cd "${pkgname%-*}"
-    make
+    make -C "${pkgname%-*}"
 }
 
 package() {
-    cd "${pkgname%-*}"
-    install -D -m 755 antares "$pkgdir"/usr/bin/antares
-    install -D -m 644 doc/antares.1 "$pkgdir"/usr/share/man/man1/antares.1
+    make -C "${pkgname%-*}" PREFIX=/usr DESTDIR="$pkgdir/" install
 }

@@ -1,6 +1,6 @@
 pkgbase = antares-git
 	pkgdesc = A window manager for X
-	pkgver = r113.g30e3525
+	pkgver = r164.g0ab7891
 	pkgrel = 1
 	url = https://notabug.org/Leon_Plickat/antares
 	arch = x86_64
@@ -11,7 +11,9 @@ pkgbase = antares-git
 	provides = antares
 	conflicts = antares
 	source = antares::git+https://notabug.org/Leon_Plickat/antares.git
-	md5sums = SKIP
+	source = Makefile.patch
+	sha256sums = SKIP
+	sha256sums = 7eb30c4f4f32634ca286bdb6f75b1d5cb473d888ca1b7b4793ff3f6304cb9c9f
 
 pkgname = antares-git
 
