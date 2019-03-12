@@ -10,7 +10,7 @@ url="http://github.com/mojombo/chronic"
 license=('MIT')
 depends=(ruby)
 conflicts=('ruby-chronic-old')
-source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
+source=(http://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
 md5sums=('08a655a971a93f476e2a827365973f57')
 
