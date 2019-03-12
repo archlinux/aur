@@ -1,0 +1,21 @@
+pkgbase = python-gluonnlp
+	pkgdesc = A toolkit for Natural Language Processing (NLP) research
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://gluon-cv.mxnet.io
+	arch = any
+	license = Apache
+	checkdepends = python-nose
+	checkdepends = python-pytest
+	checkdepends = python-scipy
+	makedepends = python-setuptools
+	depends = mxnet
+	depends = python-numpy
+	depends = python-scipy
+	optdepends = python-jieba
+	optdepends = python-nltk
+	source = gluon-nlp-0.5.0.tar.gz::https://github.com/dmlc/gluon-nlp/archive/v0.5.0.tar.gz
+	sha512sums = 10f81405ae1e00f2c0f59e347a14daf8a9a1860601e687b1e0342f984b61767170c089b392ea2a454aaf1a544600a2fe3f3eb90f6b534a6fd29dfe2040a4f280
+
+pkgname = python-gluonnlp
+
