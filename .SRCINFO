@@ -1,6 +1,6 @@
 pkgbase = python-fusepy
 	pkgdesc = Simple ctypes bindings for FUSE
-	pkgver = 2.0.4
+	pkgver = 3.0.1
 	pkgrel = 2
 	url = https://github.com/fusepy/fusepy
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-fusepy
 	makedepends = python-setuptools
 	depends = fuse2>=2.6
 	depends = python
-	source = python-fusepy-r2.0.4.tar.gz::https://github.com/fusepy/fusepy/archive/v2.0.4.tar.gz
-	sha256sums = 802610ab25ad04fc9ef34d024a0abe41cdcaff6a2cb8b2fb92cdda0057c09d1f
+	source = https://files.pythonhosted.org/packages/source/f/fusepy/fusepy-3.0.1.tar.gz
+	sha256sums = 72ff783ec2f43de3ab394e3f7457605bf04c8cf288a2f4068b4cde141d4ee6bd
 
 pkgname = python-fusepy
 
