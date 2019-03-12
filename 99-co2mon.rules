@@ -1,1 +1,2 @@
 SUBSYSTEM=="usb", ACTION=="add", ENV{PRODUCT}=="4d9/a052/*", OWNER="nobody", TAG+="systemd", ENV{SYSTEMD_WANTS}="co2mon.service", ENV{SYSTEMD_ALIAS}="/dev/co2mon"
+SUBSYSTEM=="usb", ACTION=="remove", ENV{PRODUCT}=="4d9/a052/*", TAG+="systemd", ENV{SYSTEMD_ALIAS}="/dev/co2mon"
