@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-velocity-controllers
 	pkgdesc = ROS - velocity_controllers.
-	pkgver = 0.13.2
+	pkgver = 0.13.5
 	pkgrel = 1
 	url = https://github.com/ros-controls/ros_controllers/wiki
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = ros-kinetic-velocity-controllers
 	depends = ros-kinetic-angles
 	depends = ros-kinetic-forward-command-controller
 	depends = ros-kinetic-urdf
-	source = velocity_controllers::git+https://github.com/ros-gbp/ros_controllers-release.git#tag=release/kinetic/velocity_controllers/0.13.2-0
+	source = velocity_controllers::git+https://github.com/ros-gbp/ros_controllers-release.git#tag=release/kinetic/velocity_controllers/0.13.5-0
 	md5sums = SKIP
 
 pkgname = ros-kinetic-velocity-controllers

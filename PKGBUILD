@@ -4,7 +4,7 @@ pkgdesc="ROS - velocity_controllers."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-kinetic-velocity-controllers'
-pkgver='0.13.2'
+pkgver='0.13.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
