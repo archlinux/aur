@@ -4,7 +4,7 @@
 # Contributor: Bruno Pagani <archange at archlinux dot org>
 
 pkgname=mattermost
-pkgver=5.7.0
+pkgver=5.8.0
 pkgrel=1
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -30,14 +30,12 @@ source=(
     "${pkgname}.sysusers"
     "${pkgname}.tmpfiles"
 )
-sha512sums=(
-    'b675a6c919ac03daa0ce5cbe0ed75f714fb2e1a2e2520202f82d29a578c8a554fe8cd5fb6f8bc1fae7a729de2ffd39ff5f52316c728ea67de6f0947cad70857a'
-    'a954488f441296065e15fd400b7c051195b34cc8c77a6e0a9cd2f05ec408ff8c06348a1aeef516f42f8cef23a8b3899a886c0be448e5c67887713b5563b3dc74'
-    'ac952eae873aa09ba7bdf1e7abc618f0dc6982fa85df298261ab71ccf71f66c95846dade400e05d731f2c5ee2c6f4332d6f78d737026c9f098f1e03f419bee00'
-    'cd02b3da86869117554c3c53a657a4b46989ea533b7b47c24fb642ffbd182ce6ecfb16a8ddde3af4d5e8cff0ab41a932753129662e126994e1ad5912545e6eb4'
-    'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
-    'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9'
-)
+sha512sums=('1dd576556053820b00b53409a27aa058b5eb315f9f1bed3f419489339dab9a36559dda24da0e63423eeab5b2c36ad91c1e2c6679339d7cc9ea6eff7e7e0b0a3d'
+            '4583883d386fb5661fca57316fbac85e43e1882d4cb6603faa13be2e94ce90aa666e8b79049d2d330a9127d491cbe9362fd147ce04ffb0c1632d967ae39dd021'
+            'ac952eae873aa09ba7bdf1e7abc618f0dc6982fa85df298261ab71ccf71f66c95846dade400e05d731f2c5ee2c6f4332d6f78d737026c9f098f1e03f419bee00'
+            'cd02b3da86869117554c3c53a657a4b46989ea533b7b47c24fb642ffbd182ce6ecfb16a8ddde3af4d5e8cff0ab41a932753129662e126994e1ad5912545e6eb4'
+            'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
+            'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9')
 
 prepare() {
     # cp cannot copy from a symbolic link to the destination link itself
