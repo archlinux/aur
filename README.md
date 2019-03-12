@@ -2,7 +2,7 @@
 
 A PKGBUILD for [Typicons](https://www.s-ings.com/typicons/).
 
-This is an update of [Steel435](https://aur.archlinux.org/account/Steef435)'s abandoned PKGBUILD.
+This is an update of [Steef435](https://aur.archlinux.org/account/Steef435)'s abandoned PKGBUILD.
 
 ## Installation
 
