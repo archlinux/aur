@@ -1,7 +1,7 @@
 # Maintainer: Marat Akhin <Marat.Akhin@gmail.com>
 
 pkgname=z3-stable-git
-pkgver=4.5.0.gc1480b4
+pkgver=4.8.4.g05663592e
 pkgrel=1
 pkgdesc="Z3 is a high-performance theorem prover being developed at Microsoft Research (built from Github)"
 arch=('i686' 'x86_64')
@@ -21,13 +21,14 @@ pkgver() {
 build() {
   cd "$srcdir/z3"
 
+  export PYTHON_SITE_PACKAGES=`python -c "import site; print(site.getsitepackages()[0])"`
+
   Z3_INSTALL_INCLUDE_DIR="include/z3" \
   python scripts/mk_make.py \
     --prefix="$pkgdir/usr" \
-    --pypkgdir="$pkgdir/usr/lib/python3.5/site-packages" \
+    --pypkgdir="$pkgdir$PYTHON_SITE_PACKAGES" \
     --python \
-    --java \
-    --ml
+    --java
 
   cd "$srcdir/z3/build"
   make
