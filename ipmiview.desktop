@@ -2,6 +2,7 @@
 Name=IPMIView
 Comment=Supermicro tool for BMC
 Keywords=ipmi;supermicro;bmc;
+Path=/opt/ipmiview
 Exec=ipmiview
 Icon=
 Terminal=false
