@@ -1,4 +1,4 @@
-pkgbase = sdrangel-git
+pkgbase = sdrangel-without-sdrplay-git
 	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend.
 	pkgver = 4.5.0.r23.f76ed4a4
 	pkgrel = 1
@@ -51,5 +51,5 @@ pkgbase = sdrangel-git
 	sha512sums = 48e3313a02b9066aebd1f7f95bce623955594f30c559012cd0b7414451b42e88d531d42a2e0ea60d30af7f48cace489fb2b00fe2aaaf50f99f551220b713faf8
 	sha512sums = df5474d5fe99816b126be950d3f2eaaf9fd0a3c44845f5438dffd54963dbea8f83acbd6f81d4b194b7448843de77f167ee44f4477cd0d33e3ed9d2ffa4988f2c
 
-pkgname = sdrangel-git
+pkgname = sdrangel-without-sdrplay-git
 

@@ -6,7 +6,7 @@
 # Maintainer: Robert Olejnik <arch@nxt.cx>
 
 
-pkgname=sdrangel-git
+pkgname=sdrangel-without-sdrplay-git
 _pkgname=${pkgname%-git}
 pkgver=4.5.0.r23.f76ed4a4
 pkgrel=1
