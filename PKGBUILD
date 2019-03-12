@@ -6,7 +6,7 @@ _extname='desktop-icons'
 _uuid="${_extname}@csoriano"
 
 pkgname="gnome-shell-extension-${_extname}"
-pkgver='r391.3b8ca0a'
+pkgver='19.01.1'
 pkgrel=1
 pkgdesc='Add icons to the desktop'
 arch=('x86_64' 'i686')
@@ -15,22 +15,18 @@ license=('GPL3')
 depends=('gnome-shell')
 makedepends=('git' 'meson' 'glib2')
 options=('!strip')
-source=("git+https://gitlab.gnome.org/World/ShellExtensions/${_extname}.git")
-md5sums=('SKIP')
-
-pkgver() {
-
-	cd "${_extname}"
-	printf "'r%s.%s'" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-
-}
+conflicts=("${pkgname}-git")
+source=("https://gitlab.gnome.org/World/ShellExtensions/${_extname}/uploads/c15ece9cbe50ca428e195eba96e12fd4/${_extname}-${pkgver}.tar.xz")
+sha256sums=('226392dc3d9a0334d71169bfa8a677dfe4569d33464d507b4c9acefe7f25ce23')
 
 package() {
+
+	cd "${srcdir}"
 
 	install -dm755 "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
 
 	# taken from export-zip.sh
-	local _repodir="${srcdir}/${_extname}"
+	local _repodir="${srcdir}/${_extname}-${pkgver}"
 	local _build_dir="${_repodir}/builddir"
 	local _local_prefix="${_repodir}/${_uuid}"
 	local _extension_dir="${_local_prefix}/share/gnome-shell/extensions/${_uuid}"
