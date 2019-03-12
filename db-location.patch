@@ -2,10 +2,10 @@
 +++ MEA.py
 @@ -7110,7 +7110,7 @@
  arg_num = len(sys.argv)
-
+ 
  # Set dependencies paths
 -db_path = os.path.join(mea_dir, 'MEA.dat')
 +db_path = '/usr/lib/meanalyzer/MEA.dat'
-
+ 
  # Check if dependencies exist
  depend_db = os.path.isfile(db_path)
