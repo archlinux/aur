@@ -1,7 +1,7 @@
 pkgbase = vuos-git
 	pkgdesc = view based o.s.
 	pkgver = r225.f4fdd44
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/virtualsquare/vuos
 	arch = any
 	groups = view-os
@@ -16,9 +16,7 @@ pkgbase = vuos-git
 	provides = vuos
 	conflicts = vuos
 	source = git+https://github.com/virtualsquare/vuos.git
-	source = http://www.cs.unibo.it/~renzo/canonicalize_patch
 	md5sums = SKIP
-	md5sums = d92d7037a246b13fc95f8ba28ed0fe3c
 
 pkgname = vuos-git
 
