@@ -1,15 +1,16 @@
 # Maintainer: Steef Hegeman <steefhegeman@hotmail.com>
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
+# Contributor: Eli W. Hunter <hunter.eli.w@gmail.com>
 
 pkgname=ttf-typicons
-pkgver=2.0.8
+pkgver=2.0.9
 pkgrel=1
 depends=('fontconfig' 'xorg-font-utils')
 pkgdesc="336 pixel perfect, all-purpose vector icons in a web-font kit"
 arch=('any')
 license=("CC BY-SA 3.0")
-source=(https://github.com/stephenhutchings/typicons.font/archive/${pkgver}.tar.gz)
-md5sums=('2402605eb15c7f8e63ab5cedb49b530f')
+source=(https://github.com/stephenhutchings/typicons.font/archive/v${pkgver}.tar.gz)
+md5sums=('4c434d77a88e7bad125faa1f49bd0283')
 url="http://typicons.com/"
 
 package() {
