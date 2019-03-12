@@ -1,5 +1,5 @@
 # Maintainer: Bailey Fox <bfox200012@gmail.com>
-# Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
+# Contributor: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=meanalyzer-git
 pkgver=1.82.3.r154.r0.d8d9dfd
