@@ -1,6 +1,6 @@
 pkgbase = olive-git
 	pkgdesc = Free non-linear video editor
-	pkgver = continuous.r0.g4e04d7b
+	pkgver = continuous.r0.g0f3d91b
 	pkgrel = 1
 	url = https://www.olivevideoeditor.org/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = olive-git
 	depends = qt5-multimedia
 	optdepends = frei0r-plugins
 	conflicts = olive
-	source = git+https://github.com/olive-editor/olive#commit=4e04d7b
+	source = git+https://github.com/olive-editor/olive#commit=0f3d91b
 	sha512sums = SKIP
 
 pkgname = olive-git
