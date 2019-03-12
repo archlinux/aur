@@ -4,7 +4,7 @@
 
 pkgname=vicious-git
 _pkgname=vicious
-pkgver=2.1.1.266.gea0c5a4
+pkgver=2.3.3.r0.gea0c5a4
 pkgrel=1
 pkgdesc='Widgets for the Awesome window manager'
 arch=('any')
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --always | sed 's|^[^0-9]*||;s|\.g[a-f0-9]*$||;s|-|.|g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package () {

@@ -1,6 +1,6 @@
 pkgbase = vicious-git
 	pkgdesc = Widgets for the Awesome window manager
-	pkgver = 2.1.1.266.gea0c5a4
+	pkgver = 2.3.3.r0.gea0c5a4
 	pkgrel = 1
 	url = https://github.com/vicious-widgets/vicious
 	arch = any
