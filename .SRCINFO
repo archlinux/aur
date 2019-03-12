@@ -1,7 +1,7 @@
 pkgbase = krankerl
 	pkgdesc = A CLI helper to manage, package and publish Nextcloud apps
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ChristophWurst/krankerl
 	arch = x86_64
 	license = GPL-3.0

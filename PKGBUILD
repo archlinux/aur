@@ -2,7 +2,7 @@
 
 pkgname=krankerl
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc=" A CLI helper to manage, package and publish Nextcloud apps"
 url="https://github.com/ChristophWurst/krankerl"
 makedepends=()
