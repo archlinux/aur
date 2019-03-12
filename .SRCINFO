@@ -1,0 +1,14 @@
+pkgbase = python2-evdev
+	pkgdesc = Python2 bindings for the Linux input subsystem
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://python-evdev.readthedocs.io/en/latest/
+	arch = x86_64
+	license = BSD
+	makedepends = python2
+	makedepends = git
+	source = git+https://github.com/gvalkov/python-evdev#commit=34a7535e8e160c78bf923adc48a1f1f6bcdcaae8
+	sha256sums = SKIP
+
+pkgname = python2-evdev
+
