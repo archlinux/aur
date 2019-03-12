@@ -3,11 +3,11 @@
 # Contributor: felix <base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg==>
 
 pkgname=djgpp-gcc
-pkgver=8.2.0
+pkgver=8.3.0
 _target="i686-pc-msdosdjgpp"
 _islver=0.18
 _djver=2.05
-pkgrel=2
+pkgrel=1
 pkgdesc="GCC for the djgpp cross-compiler"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
@@ -21,10 +21,10 @@ source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
         "lto.patch"
 	"gcc-djgpp.diff")
-sha256sums=('196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080'
+sha256sums=('64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c'
             '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
             'c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0'
-            'a1c0cd9a7ed1803efee3b585e43596630ea3bfeca1b3e37321e6468bd3d30e96')
+            'a5b493c9550314eb21bf2bfd85707a217cccd3caf6e02a3e2f6f2b9befa5348b')
 
 prepare() {
   cd gcc-$pkgver

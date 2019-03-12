@@ -1,5 +1,5 @@
 diff --git a/gcc/ada/adaint.c b/gcc/ada/adaint.c
-index 3b0aea92c05..02013b9f01a 100644
+index 41434655865..a3bfd1c24e1 100644
 --- a/gcc/ada/adaint.c
 +++ b/gcc/ada/adaint.c
 @@ -247,6 +247,12 @@ char __gnat_dir_separator = DIR_SEPARATOR;
@@ -97,55 +97,6 @@ index 1e2ffa354a3..40d3b689bbd 100644
     pragma Import (C, Current_Time, "__gnat_current_time");
     pragma Import (C, Current_Process_Id, "__gnat_current_process_id");
  
-diff --git a/gcc/config/i386/djgpp.c b/gcc/config/i386/djgpp.c
-index f168eed6f06..d187c3a7452 100644
---- a/gcc/config/i386/djgpp.c
-+++ b/gcc/config/i386/djgpp.c
-@@ -47,3 +47,20 @@ i386_djgpp_asm_named_section(const char *name, unsigned int flags,
- 
-   fprintf (asm_out_file, "\t.section\t%s,\"%s\"\n", name, flagchars);
- }
-+
-+/* Kludge because of missing COFF support for early LTO debug.  */
-+
-+static enum debug_info_levels saved_debug_info_level;
-+
-+void
-+i386_djgpp_asm_lto_start (void)
-+{
-+  saved_debug_info_level = debug_info_level;
-+  debug_info_level = DINFO_LEVEL_NONE;
-+}
-+
-+void
-+i386_djgpp_asm_lto_end (void)
-+{
-+  debug_info_level = saved_debug_info_level;
-+}
-diff --git a/gcc/config/i386/djgpp.h b/gcc/config/i386/djgpp.h
-index 42130edf95c..e95bc09bf69 100644
---- a/gcc/config/i386/djgpp.h
-+++ b/gcc/config/i386/djgpp.h
-@@ -160,8 +160,19 @@ along with GCC; see the file COPYING3.  If not see
- #undef MAKE_DECL_ONE_ONLY
- #define MAKE_DECL_ONE_ONLY(DECL) (DECL_WEAK (DECL) = 1)
- 
-+#undef TARGET_COFF
-+#define TARGET_COFF 1
-+
-+/* Kludge because of missing COFF support for early LTO debug.  */
-+#undef  TARGET_ASM_LTO_START
-+#define TARGET_ASM_LTO_START i386_djgpp_asm_lto_start
-+#undef  TARGET_ASM_LTO_END
-+#define TARGET_ASM_LTO_END i386_djgpp_asm_lto_end
-+
- /* Function protypes for gcc/i386/djgpp.c */
- 
- void
- i386_djgpp_asm_named_section(const char *name, unsigned int flags,
- 			     tree decl);
-+void i386_djgpp_asm_lto_start (void);
-+void i386_djgpp_asm_lto_end (void);
 diff --git a/gcc/config/i386/xm-djgpp.h b/gcc/config/i386/xm-djgpp.h
 index 02096925a88..066417f1d50 100644
 --- a/gcc/config/i386/xm-djgpp.h
@@ -171,38 +122,6 @@ index 02096925a88..066417f1d50 100644
  #undef MAX_OFILE_ALIGNMENT
  #define MAX_OFILE_ALIGNMENT 128
  
-diff --git a/gcc/defaults.h b/gcc/defaults.h
-index 78a08a33f12..9035b333be8 100644
---- a/gcc/defaults.h
-+++ b/gcc/defaults.h
-@@ -1282,6 +1282,10 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
- #define TARGET_PECOFF 0
- #endif
- 
-+#ifndef TARGET_COFF
-+#define TARGET_COFF 0
-+#endif
-+
- #ifndef EH_RETURN_HANDLER_RTX
- #define EH_RETURN_HANDLER_RTX NULL
- #endif
-diff --git a/gcc/dwarf2out.c b/gcc/dwarf2out.c
-index d94cf7dc928..9f6855e6695 100644
---- a/gcc/dwarf2out.c
-+++ b/gcc/dwarf2out.c
-@@ -31832,10 +31832,10 @@ dwarf2out_early_finish (const char *filename)
- 
-   /* Do not generate DWARF assembler now when not producing LTO bytecode.  */
-   if ((!flag_generate_lto && !flag_generate_offload)
--      /* FIXME: Disable debug info generation for PE-COFF targets since the
-+      /* FIXME: Disable debug info generation for (PE-)COFF targets since the
- 	 copy_lto_debug_sections operation of the simple object support in
- 	 libiberty is not implemented for them yet.  */
--      || TARGET_PECOFF)
-+      || TARGET_PECOFF || TARGET_COFF)
-     return;
- 
-   /* Now as we are going to output for LTO initialize sections and labels
 diff --git a/gcc/gcov-tool.c b/gcc/gcov-tool.c
 index 15fd710b18c..91d4c87b31b 100644
 --- a/gcc/gcov-tool.c
@@ -406,10 +325,10 @@ index 1299159a7f1..e1bd7a1c633 100644
  	  file_mode |= S_ISVTX;
  	else if (!is_dir)
 diff --git a/libgfortran/io/unix.c b/libgfortran/io/unix.c
-index a8fd07a5f3b..385640ab903 100644
+index 428760fc315..682c305fe52 100644
 --- a/libgfortran/io/unix.c
 +++ b/libgfortran/io/unix.c
-@@ -210,6 +210,9 @@ typedef struct
+@@ -218,6 +218,9 @@ typedef struct
  }
  unix_stream;
  
@@ -419,7 +338,7 @@ index a8fd07a5f3b..385640ab903 100644
  
  /* fix_fd()-- Given a file descriptor, make sure it is not one of the
     standard descriptors, returning a non-standard descriptor.  If the
-@@ -1190,8 +1193,13 @@ tempfile_open (const char *tempdir, char **fname)
+@@ -1198,8 +1201,13 @@ tempfile_open (const char *tempdir, char **fname)
    char *template = xmalloc (tempdirlen + 23);
  
  #ifdef HAVE_MKSTEMP
@@ -433,7 +352,7 @@ index a8fd07a5f3b..385640ab903 100644
  
  #ifdef HAVE_UMASK
    /* Temporarily set the umask such that the file has 0600 permissions.  */
-@@ -1557,6 +1565,13 @@ open_external (st_parameter_open *opp, unit_flags *flags)
+@@ -1565,6 +1573,13 @@ open_external (st_parameter_open *opp, unit_flags *flags)
      return NULL;
    fd = fix_fd (fd);
  
@@ -576,7 +495,7 @@ index 4e5590f9160..f78405afa03 100644
  
  #ifdef _GLIBCXX_HAVE_EOWNERDEAD
 diff --git a/libstdc++-v3/include/experimental/bits/fs_path.h b/libstdc++-v3/include/experimental/bits/fs_path.h
-index ada7c1791aa..1ec60b2ffc9 100644
+index 088d62f8f43..9cba93e5719 100644
 --- a/libstdc++-v3/include/experimental/bits/fs_path.h
 +++ b/libstdc++-v3/include/experimental/bits/fs_path.h
 @@ -53,6 +53,11 @@
@@ -591,7 +510,7 @@ index ada7c1791aa..1ec60b2ffc9 100644
  namespace std _GLIBCXX_VISIBILITY(default)
  {
  _GLIBCXX_BEGIN_NAMESPACE_VERSION
-@@ -461,6 +466,8 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+@@ -463,6 +468,8 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
      {
  #ifdef _GLIBCXX_FILESYSTEM_IS_WINDOWS
        return __ch == L'/' || __ch == preferred_separator;
@@ -600,7 +519,7 @@ index ada7c1791aa..1ec60b2ffc9 100644
  #else
        return __ch == '/';
  #endif
-@@ -831,6 +838,9 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+@@ -833,6 +840,9 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
  #ifdef _GLIBCXX_FILESYSTEM_IS_WINDOWS
      std::replace(_M_pathname.begin(), _M_pathname.end(), L'/',
  		 preferred_separator);
