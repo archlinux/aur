@@ -4,7 +4,7 @@
 # Contributor: Simon Reiser <simonfxr@gmail.com>
 
 _pkgname=lab
-pkgname=${_pkgname}-git
+pkgname=$_pkgname-git
 pkgver=0.15.2.r1.gb2da778
 _branch=master
 pkgrel=1
@@ -15,8 +15,8 @@ license=('custom:Unlicense')
 depends=('git')
 optdepends=('hub')
 makedepends=('git' 'go')
-conflicts=("$_pkgname" "${_pkgname}-bin")
-source=("git://github.com/zaquestion/${_pkgname}.git#branch=$_branch")
+conflicts=("$_pkgname" "$_pkgname-bin")
+source=("git://github.com/zaquestion/$_pkgname.git#branch=$_branch")
 sha512sums=('SKIP')
 _gourl="github.com/zaquestion/$_pkgname"
 
