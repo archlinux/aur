@@ -47,5 +47,5 @@ check() {
 package() {
 	cd "$_name"
 	make "DESTDIR=$pkgdir" install
-	install -Dm644 "-t$pkgdir/usr/share/licenses/$_name" LICENSE
+	install -Dm644 "-t$pkgdir/usr/share/licenses/$_name" COPYING
 }
