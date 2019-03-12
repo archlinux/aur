@@ -8,6 +8,7 @@ url="https://github.com/ChristophWurst/krankerl"
 makedepends=()
 arch=('x86_64')
 license=('GPL-3.0')
+depends=('libcurl-gnutls')
 source=("${pkgname}-${pkgver}::https://github.com/ChristophWurst/krankerl/releases/download/v${pkgver}/krankerl")
 sha256sums=('b5d8e396d223ad7b2b03ecd3e49852e66e05fc1f3bcbc0d6d186d5245575a1ac')
 
