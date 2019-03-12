@@ -3,7 +3,7 @@
 # Release Code Name: Darwin
 
 pkgname=lbry-app-bin
-pkgver=0.29.3
+pkgver=0.29.4
 pkgrel=1
 pkgdesc='The LBRY app built using electron'
 arch=('x86_64')

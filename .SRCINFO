@@ -1,6 +1,6 @@
 pkgbase = lbry-app-bin
 	pkgdesc = The LBRY app built using electron
-	pkgver = 0.29.3
+	pkgver = 0.29.4
 	pkgrel = 1
 	url = https://lbry.io/
 	arch = x86_64
