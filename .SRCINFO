@@ -1,4 +1,4 @@
-pkgbase = python-fasttext-git
+pkgbase = python-fasttext
 	pkgdesc = Library for fast text representation and classification – Python bindings
 	pkgver = 0.2.0
 	pkgrel = 1
@@ -17,5 +17,5 @@ pkgbase = python-fasttext-git
 	source = https://github.com/facebookresearch/fastText/archive/v0.2.0.tar.gz
 	sha256sums = 71d24ffec9fcc4364554ecac2b3308d834178c903d16d090aa6be9ea6b8e480c
 
-pkgname = python-fasttext-git
+pkgname = python-fasttext
 

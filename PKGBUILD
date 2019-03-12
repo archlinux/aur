@@ -1,6 +1,6 @@
 # Maintainer: peippo <christoph.fink@gmail.com>
 
-pkgname='python-fasttext-git'
+pkgname='python-fasttext'
 pkgdesc="Library for fast text representation and classification – Python bindings"
 url="https://github.com/facebookresearch/fastText"
 
