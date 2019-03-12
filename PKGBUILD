@@ -4,12 +4,12 @@
 pkgname=tvheadend
 
 pkgver=4.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://tvheadend.org/projects/tvheadend"
 license=('GPL3')
-depends=('avahi' 'ffmpeg' 'uriparser' 'openssl' 'tar')
+depends=('avahi' 'ffmpeg' 'uriparser' 'openssl' 'tar' 'libavresample.so')
 makedepends=('git' 'wget' 'python')
 optdepends=('xmltv: For an alternative source of programme listings'
 	    'libiconv: For conversion of character encodings'
@@ -30,6 +30,8 @@ prepare() {
     # Patch tvheadend.service for Arch Linux
     patch -p1 -i "${srcdir}/tvheadend-service.patch"
 
+    CFLAGS="${CFLAGS} -Wno-error=stringop-truncation"
+
     ./configure --prefix=/usr --python=python3 \
         --disable-ffmpeg_static \
         --disable-libx264_static \
@@ -37,8 +39,7 @@ prepare() {
         --disable-libvpx_static \
         --disable-libtheora_static \
         --disable-libvorbis_static \
-        --disable-libfdkaac_static \
-        --disable-libav
+        --disable-libfdkaac_static
 }
 
 build() {

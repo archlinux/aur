@@ -1,7 +1,7 @@
 pkgbase = tvheadend
 	pkgdesc = TV streaming server for Linux
 	pkgver = 4.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tvheadend.org/projects/tvheadend
 	install = tvheadend.install
 	arch = i686
@@ -19,6 +19,7 @@ pkgbase = tvheadend
 	depends = uriparser
 	depends = openssl
 	depends = tar
+	depends = libavresample.so
 	optdepends = xmltv: For an alternative source of programme listings
 	optdepends = libiconv: For conversion of character encodings
 	provides = tvheadend
