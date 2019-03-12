@@ -1,38 +1,43 @@
-# Maintainer: Boohbah <boohbah at gmail.com>
+# Maintainer: Paul Oppenheimer <bepvte at gmail.com>
+# Contributor: Boohbah <boohbah at gmail.com>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Christian Hesse <mail at eworm.de>
 # Contributor: figue <ffigue at gmail.com>
 # Contributor: vinibali <vinibali1 at gmail.com>
 
 pkgname=f2fs-tools-git
-_gitname=f2fs-tools
-pkgver=1.7.0
-pkgrel=1
-pkgdesc="Tools for Flash-Friendly File System (F2FS) (git version)"
-arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/f2fs-tools/"
-license=('GPL')
-depends=('libselinux')
+pkgver=1.12.0
+pkgrel=2
+pkgdesc='Tools for Flash-Friendly File System (F2FS)'
+arch=('x86_64')
+url='https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/about/'
+depends=('util-linux')
 makedepends=('git')
-provides=('f2fs-tools')
-conflicts=('f2fs-tools')
-source=("git://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git")
-md5sums=('SKIP')
+license=('GPL')
+validpgpkeys=('D3452A79D8C2B4EAC656F4224014A87E824850D2') # Jaegeuk Kim <jaegeuk@kernel.org>
+source=("$pkgname::git+https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git")
+sha256sums=('SKIP')
 
-pkgver() {
-  cd $_gitname
-  git describe --all | sed 's:tags/::;s/v//;s/-/./g'
+prepare() {
+	cd "${pkgname}"
+
+	# /usr/bin/sg_write_buffer is provided in sg3_utils
+	sed -i '/sg_write_buffer/d' tools/Makefile.am
+
+	autoreconf -fi
 }
 
 build() {
-  cd $_gitname
-  autoreconf -fi
-  ./configure --prefix=/usr --sbindir=/usr/bin
-  make
+	cd "${pkgname}"
+
+	./configure \
+		--prefix=/usr \
+		--sbindir=/usr/bin
+	make
 }
 
 package() {
-  cd $_gitname
-  make DESTDIR="$pkgdir" sbindir=/usr/bin install
-}
+	cd "${pkgname}"
 
-# vim:set ts=2 sw=2 et:
+	make DESTDIR="${pkgdir}/" sbindir=/usr/bin install
+}
