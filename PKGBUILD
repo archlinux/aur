@@ -28,7 +28,8 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}"
-	cp -a minetest_game minetest/games
+	rm -fr minetest/games/minetest_game
+	cp -a minetest_game minetest/games/
 }
 
 build() {
