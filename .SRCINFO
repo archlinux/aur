@@ -1,0 +1,17 @@
+pkgbase = papertrail-cli
+	pkgdesc = Command-line client for Papertrail hosted log management service.
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = http://github.com/papertrail/papertrail-cli
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-chronic
+	depends = ruby-ansi
+	noextract = papertrail-0.11.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/papertrail-0.11.0.gem
+	sha1sums = 481e470537162ac55bfc2e05661b01de7eb7b139
+
+pkgname = papertrail-cli
+
