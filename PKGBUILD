@@ -1,7 +1,7 @@
 # Maintainer: Jesin <Jesin00@gmail.com>
 pkgname=libb2-git
 _name="${pkgname%-git}"
-pkgver=0.98+7+g7feb2bb
+pkgver=0.98.1
 pkgrel=1
 arch=(x86_64)
 pkgdesc='C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp hash functions'
