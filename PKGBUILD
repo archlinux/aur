@@ -1,7 +1,7 @@
 # Maintainer: Alif Rachmawadi <arch@subosito.com>
 
 pkgname=wavebox-bin
-pkgver=4.8.0
+pkgver=4.8.1
 pkgrel=1
 pkgdesc="The next generation of web-desktop communication"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=('wavebox.desktop')
 source_x86_64=("${_repourl}/releases/download/v${pkgver}/Wavebox_${pkgver//./_}_linux_${CARCH}.tar.gz")
 
 sha256sums=('ed71fff01f57bc7d4b32278b2fb5f33bb30057ed7aeee64b3696eb17dc4ba0fc')
-sha256sums_x86_64=('45fd4e09903e73642f2489a124f09eee92192a8090d922a15a9a09673d800644')
+sha256sums_x86_64=('3ff284df8143d2763636c6e435eca5c8d31adf72b8f53c80ce03ad539d3dba50')
 
 package() {
   cd ${srcdir}/Wavebox-linux-x64
@@ -31,5 +31,4 @@ package() {
   ln -s "/usr/share/wavebox/Wavebox" "${pkgdir}/usr/bin/wavebox"
 
   chmod 644 "${pkgdir}/usr/share/wavebox/wavebox_icon.png"
-  chmod 644 "${pkgdir}/usr/share/wavebox/libnode.so"
 }
