@@ -10,16 +10,15 @@ pkgver=7.2.1
 pkgrel=1
 pkgdesc="Network design and emulation software for Cisco's Networking Academy instructors and students."
 arch=( 'x86_64' )
-depends_x86_64=('openssl-1.0' 'libpng12' 'icu')
+depends=('openssl-1.0' 'libpng12' 'icu')
 url="http://www.netacad.com/about-networking-academy/packet-tracer"
 license=('custom')
 
-source=('packettracer' 'linguist' 'packettracer.sh')
-source_x86_64=('local://Packet Tracer 7.2.1 for Linux 64 bit.tar.gz')
-sha512sums=('7135a62c5e46d9742eb8bdb5b3b171201243487e3681d152595121cfa1b9e5f3a0f89a6e54f25b7aa4cd2ae87156db4351b992a4988d364ba36c7bd71829c4d2'
-	    'dab1f7f9c77c900a65899f2d795d9df39136de7e6ab1f544c538311012a212edbbb2101741672fdbe729c43e5bef0cb323800aa40b68b0cacf14342a1b040800'
-	    '3f4732213a9ca7c95f742edbdccf4d84c95e1c9e00d3dfa72e79b8039ef86bed29bc5b76586402a233ce3af409c0a56c759c2554e17962c292a6bd333654ce71')
-sha512sums_x86_64=('359f1b2740459cf58b2e71da3edd52eb8c49c3197c3a5af25682e469c00e8e35de90b2d43cdd8d9c614cbed0aac554b150d578d6a25295ea547025e090b4ff25')
+source=('packettracer' 'linguist' 'packettracer.sh' 'local://Packet Tracer 7.2.1 for Linux 64 bit.tar.gz')
+sha512sums=('dcfe03ce9594b83963d87a8e79d641745d9b8c6b39dfbec328c17035e2fd1d5b1fa494b2d988c901e0b5d25bc04a601c442a08c7abaec57100c1133e0ac9d228'
+	    '1007b2d5268fe252a8f5395bf8a297d8d0d0f37ef74c793021183ba186d2c794e6ab0f3c16dff549a38ddc3446aea7ae7504534e407dd0aee76c5c43301843fb'
+	    'dcab77daefe69638fe97e9326b1e107f072a582f58c70fcd04d1590a729fdce7a5041b5b173754f9fc9e055fb22614bea67639cb164fd4e00778d1bb57853499'
+	    '359f1b2740459cf58b2e71da3edd52eb8c49c3197c3a5af25682e469c00e8e35de90b2d43cdd8d9c614cbed0aac554b150d578d6a25295ea547025e090b4ff25')
 
 # We don't want to strip anything from the static libraries
 # We want to keep all binaries orginal (Cisco is goofy)
@@ -29,28 +28,28 @@ install=pt.install
 package() {
   cd "${srcdir}/"
 
-  mkdir -p "${pkgdir}/usr/share/packettracer/"{art,backgrounds,bin,extensions,help,languages,saves,Sounds,templates}
+  mkdir -p "${pkgdir}/opt/packettracer/"{art,backgrounds,bin,extensions,help,languages,saves,Sounds,templates}
 
-  cp -r ./art/* "${pkgdir}/usr/share/packettracer/art"
-  cp -r ./backgrounds/* "${pkgdir}/usr/share/packettracer/backgrounds"
-  cp -r ./bin/* "${pkgdir}//usr/share/packettracer/bin"
-  cp -r ./extensions/* "${pkgdir}/usr/share/packettracer/extensions"
-  cp -r ./languages/* "${pkgdir}/usr/share/packettracer/languages"
-  cp -r ./saves/* "${pkgdir}/usr/share/packettracer/saves"
-  cp -r ./Sounds/* "${pkgdir}/usr/share/packettracer/Sounds"
-  cp -r ./templates/* "${pkgdir}/usr/share/packettracer/templates"
+  cp -r ./art/* "${pkgdir}/opt/packettracer/art"
+  cp -r ./backgrounds/* "${pkgdir}/opt/packettracer/backgrounds"
+  cp -r ./bin/* "${pkgdir}/opt/packettracer/bin"
+  cp -r ./extensions/* "${pkgdir}/opt/packettracer/extensions"
+  cp -r ./languages/* "${pkgdir}/opt/packettracer/languages"
+  cp -r ./saves/* "${pkgdir}/opt/packettracer/saves"
+  cp -r ./Sounds/* "${pkgdir}/opt/packettracer/Sounds"
+  cp -r ./templates/* "${pkgdir}/opt/packettracer/templates"
 
   # Help Files that are optinal uncomment to include them (55 MB)
-  # cp -r ./help/* "${pkgdir}/usr/share/packettracer/help"
+  # cp -r ./help/* "${pkgdir}/opt/packettracer/help"
 
   # Mime Info for PKA, PKT, PKZ
   install -D -m644 ./bin/Cisco-pka.xml "${pkgdir}/usr/share/mime/packages/Cisco-pka.xml"
   install -D -m644 ./bin/Cisco-pkt.xml "${pkgdir}/usr/share/mime/packages/Cisco-pkt.xml"
   install -D -m644 ./bin/Cisco-pkz.xml "${pkgdir}/usr/share/mime/packages/Cisco-pkz.xml"
 
-  rm "${pkgdir}/usr/share/packettracer/bin/Cisco-pka.xml"
-  rm "${pkgdir}/usr/share/packettracer/bin/Cisco-pkt.xml"
-  rm "${pkgdir}/usr/share/packettracer/bin/Cisco-pkz.xml"
+  rm "${pkgdir}/opt/packettracer/bin/Cisco-pka.xml"
+  rm "${pkgdir}/opt/packettracer/bin/Cisco-pkt.xml"
+  rm "${pkgdir}/opt/packettracer/bin/Cisco-pkz.xml"
 
   # Install Mimetype Icons
   install -D -m644 ./art/pka.png "${pkgdir}/usr/share/icons/hicolor/48x48/mimetypes/application-x-pka.png"
@@ -62,21 +61,20 @@ package() {
 
   # Shell script to start PT and tell it to use included qt files
   # Arch's QT causes PT to crash when saving!
-  install -D -m755 "${srcdir}/packettracer" "${pkgdir}/usr/share/packettracer/packettracer"
+  install -D -m755 "${srcdir}/packettracer" "${pkgdir}/opt/packettracer/packettracer"
 
   # Symlink to /usr/bin
   mkdir -p "${pkgdir}/usr/bin/"
-  ln -s /usr/share/packettracer/packettracer "${pkgdir}/usr/bin/packettracer"
+  ln -s /opt/packettracer/packettracer "${pkgdir}/usr/bin/packettracer"
 
   # Improved version of Cisco's linguist script
-  install -D -m755 "${srcdir}/linguist" "${pkgdir}/usr/share/packettracer/linguist"
+  install -D -m755 "${srcdir}/linguist" "${pkgdir}/opt/packettracer/linguist"
 
   # Add enviroment variable
   install -D -m755 "${srcdir}/packettracer.sh" "${pkgdir}/etc/profile.d/packettracer.sh"
 
   # Desktop File
   install -D -m644 ./bin/Cisco-PacketTracer.desktop "${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop"
-  sed 's/\/opt\/pt/\/usr\/share\/packettracer/' -i "${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop"
-  rm "${pkgdir}/usr/share/packettracer/bin/Cisco-PacketTracer.desktop"
+  sed 's/\/opt\/pt/\/opt\/packettracer/' -i "${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop"
+  rm "${pkgdir}/opt/packettracer/bin/Cisco-PacketTracer.desktop"
 }
-
