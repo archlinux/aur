@@ -1,15 +1,15 @@
 pkgbase = lcov
 	pkgdesc = front-end for GCC's coverage testing tool gcov
-	pkgver = 1.13
-	pkgrel = 3
+	pkgver = 1.14
+	pkgrel = 1
 	url = https://github.com/linux-test-project/lcov
 	arch = any
 	license = GPL
 	depends = perl
-	source = https://github.com/linux-test-project/lcov/releases/download/v1.13/lcov-1.13.tar.gz
+	source = https://github.com/linux-test-project/lcov/releases/download/v1.14/lcov-1.14.tar.gz
 	source = handle-equals-signs.patch
 	source = fix-undef-behaviour.patch
-	sha256sums = 44972c878482cc06a05fe78eaa3645cbfcbad6634615c3309858b207965d8a23
+	sha256sums = 14995699187440e0ae4da57fe3a64adc0a3c5cf14feab971f8db38fb7d8f071a
 	sha256sums = 54728aa4e244d3662c65ba91fb486dc1d5c64d9d55745ee334c4131109dc233c
 	sha256sums = ceaf41f7cc9cea5a6fc4b0385ffef10d1ab8812acd2a5b16dcd8d7bca7120488
 
