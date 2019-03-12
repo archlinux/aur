@@ -16,19 +16,10 @@
  #Default conf values
  JAVA_EXE="java"
  JAVA_OPTS="-Xms128m -Xmx768m"
--#OPENPROJ_HOME0="/usr/share/projectlibre"
--OPENPROJ_HOME0=`(dirname $0)`
-+OPENPROJ_HOME0="/usr/share/projectlibre"
-+#OPENPROJ_HOME0=`(dirname $0)`
- OPENPROJ_HOME="$OPENPROJ_HOME0"
+-#PROJECTLIBRE_HOME0="/usr/share/projectlibre"
+-PROJECTLIBRE_HOME0=`(dirname $0)`
++PROJECTLIBRE_HOME0="/usr/share/projectlibre"
++#PROJECTLIBRE_HOME0=`(dirname $0)`
+ PROJECTLIBRE_HOME="$PROJECTLIBRE_HOME0"
  LOG_LEVEL="DEBUG"
  LOG_FILE="/dev/null"
-@@ -124,7 +124,8 @@
- 		#Comparable format
- 		MIN_JAVA_VERSION=`echo "$MIN_JAVA_VERSION" | sed -e 's;\.;0;g'`
- 		JAVA_VERSION=`echo "$JAVA_VERSION" | awk '{ print substr($1, 1, 3); }' | sed -e 's;\.;0;g'`
-+		JAVA_VERSION=`printf "%3d" $JAVA_VERSION | tr ' ' 1`
-
- 		if [ "$JAVA_VERSION" ]; then
- 			if [ "$JAVA_VERSION" -ge "$MIN_JAVA_VERSION" ];	then
- 				echo "OK"
