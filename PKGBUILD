@@ -3,6 +3,8 @@
 # 
 # It's based on: sdrangel-git AUR package.
 #
+# It's quick&dirty but get's the job done.
+#
 # Maintainer: Robert Olejnik <arch@nxt.cx>
 
 
