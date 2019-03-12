@@ -4,15 +4,15 @@
 #
 pkgname="mate-notification-theme-slate"
 pkgver=5
-pkgrel=1
-pkgdesc="A CSS-backed notification theme for the MATE Desktop. \n
-         The fallback styling for this plugin emulates the Arc-styled Budgie notifications. "
-url="https://github.com/solus-project/mate-notification-theme-slate"
+pkgrel=2
+pkgdesc="A CSS-backed notification theme for the MATE Desktop.
+         The fallback styling for this plugin emulates the Arc-styled Budgie notifications."
+url="https://github.com/getsolus/${pkgname}"
 arch=('i686' 'x86_64')
 license=('LGPL2.1')
 depends=('gtk3')
 provides=("${pkgname}")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/solus-project/${pkgname}/archive/v5.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v5.tar.gz")
 sha256sums=('966f0fc81711ffd47213c2710cb4ccd0625895542c1c5439067048530abe5621')
 
 build() {
@@ -24,6 +24,8 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}"
     make DESTDIR=${pkgdir} install
+
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-# vim:set ts=4 sw=2 ft=sh et syn=sh ft=sh:
+# vim:set ts=4 sw=4 ft=sh et syn=sh ft=sh:

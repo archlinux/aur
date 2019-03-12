@@ -1,14 +1,14 @@
 pkgbase = mate-notification-theme-slate
-	pkgdesc = A CSS-backed notification theme for the MATE Desktop. \n The fallback styling for this plugin emulates the Arc-styled Budgie notifications.
+	pkgdesc = A CSS-backed notification theme for the MATE Desktop. The fallback styling for this plugin emulates the Arc-styled Budgie notifications.
 	pkgver = 5
-	pkgrel = 1
-	url = https://github.com/solus-project/mate-notification-theme-slate
+	pkgrel = 2
+	url = https://github.com/getsolus/mate-notification-theme-slate
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	depends = gtk3
 	provides = mate-notification-theme-slate
-	source = mate-notification-theme-slate-5.tar.gz::https://github.com/solus-project/mate-notification-theme-slate/archive/v5.tar.gz
+	source = mate-notification-theme-slate-5.tar.gz::https://github.com/getsolus/mate-notification-theme-slate/archive/v5.tar.gz
 	sha256sums = 966f0fc81711ffd47213c2710cb4ccd0625895542c1c5439067048530abe5621
 
 pkgname = mate-notification-theme-slate
