@@ -1,40 +1,62 @@
-# Maintainer: tailinchu <use_my_id at gmail dot com>
+# Based on the files created for Arch Linux by:
+# Christian Rebischke <Chris.Rebischke[at]archlinux[dot]org>
+# Daniel Wallace <danielwallace at gtmanfred dot com>
+# Lucas De Marchi <lucas.de.marchi@gmail.com>
+# Tailinchu <tailinchu at gmail dot com>
 
 pkgname=connman-git
-pkgver=1.29.22.g71657ff
+pkgver=1.36.r151.ga51d7f68
 pkgrel=1
-pkgdesc="Wireless LAN network manager (git version)"
-arch=('i686' 'x86_64')
+pkgdesc="Intel's modular network connection manager. Git version."
 url="https://01.org/connman"
+arch=('x86_64')
 license=('GPL2')
-depends=('dbus' 'iptables' 'gnutls' 'glib2' 'wpa_supplicant' 'pptpclient')
-makedepends=('git')
+provides=("connman=$pkgver")
 conflicts=('connman')
-provides=('connman')
-source=("git://git.kernel.org/pub/scm/network/connman/connman.git")
-md5sums=('SKIP')
+replaces=('connman')
+makedepends=('bluez' 'wpa_supplicant' 'openconnect' 'openvpn' 'ppp' 'iwd')
+depends=('dbus' 'iptables' 'gnutls' 'glib2')
+optdepends=('bluez: Support for Bluetooth devices'
+            'wpa_supplicant: for WiFi devices'
+            'pptpclient: for ppp support'
+            'openvpn: for VPN Support'
+            'iwd: for WiFi devices')
+source=("git+https://git.kernel.org/pub/scm/network/connman/connman.git"
+        'allow_group_network.diff')
+sha512sums=('SKIP' 'SKIP')
 
-_gitroot="connman"
+pkgver() {
+    cd ${pkgname%-*}
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
-pkgver () {
-	cd "$srcdir/$_gitroot"
-	git describe --always | sed 's|-|.|g'
+prepare(){
+  cd ${pkgname%-*}
+  patch -Np1 -i "${srcdir}/allow_group_network.diff"
 }
 
 build() {
-	cd "$srcdir/$_gitroot"
-	./bootstrap
-	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-		--bindir=/usr/bin \
-		--sbindir=/usr/bin \
-		--with-systemdunitdir=/usr/lib/systemd/system \
-		--enable-pptp \
-		--enable-polkit \
-		--enable-client
+	cd "$srcdir/${pkgname%-*}"
+
+        ./configure --prefix=/usr \
+            --sysconfdir=/etc \
+            --localstatedir=/var \
+            --bindir=/usr/bin \
+            --sbindir=/usr/bin \
+            --with-systemdunitdir=/usr/lib/systemd/system \
+            --enable-pptp \
+            --enable-openconnect \
+            --enable-vpnc \
+            --enable-openvpn \
+            --enable-polkit \
+            --enable-client \
+            --enable-nmcompat \
+            --enable-pie \
+            --enable-iwd
 	make
 }
 
 package() {
-	cd "$srcdir/$_gitroot"
+	cd "$srcdir/${pkgname%-*}"
 	make DESTDIR="$pkgdir" install
 }

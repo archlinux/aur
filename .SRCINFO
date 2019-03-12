@@ -1,22 +1,32 @@
 pkgbase = connman-git
-	pkgdesc = Wireless LAN network manager (git version)
-	pkgver = 1.29.22.g71657ff
+	pkgdesc = Intel's modular network connection manager. Git version.
+	pkgver = 1.36.r151.ga51d7f68
 	pkgrel = 1
 	url = https://01.org/connman
-	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = git
+	makedepends = bluez
+	makedepends = wpa_supplicant
+	makedepends = openconnect
+	makedepends = openvpn
+	makedepends = ppp
+	makedepends = iwd
 	depends = dbus
 	depends = iptables
 	depends = gnutls
 	depends = glib2
-	depends = wpa_supplicant
-	depends = pptpclient
-	provides = connman
+	optdepends = bluez: Support for Bluetooth devices
+	optdepends = wpa_supplicant: for WiFi devices
+	optdepends = pptpclient: for ppp support
+	optdepends = openvpn: for VPN Support
+	optdepends = iwd: for WiFi devices
+	provides = connman=1.36.r151.ga51d7f68
 	conflicts = connman
-	source = git://git.kernel.org/pub/scm/network/connman/connman.git
-	md5sums = SKIP
+	replaces = connman
+	source = git+https://git.kernel.org/pub/scm/network/connman/connman.git
+	source = allow_group_network.diff
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = connman-git
 
