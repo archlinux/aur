@@ -14,11 +14,6 @@ provides=('portunus')
 source=("git+https://github.com/andrei-pavel/${_gitrepository}.git#branch=${_gitbranch}")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "${_gitrepository}"
-  printf '%s\n' "$(./bin/portunus -V)"
-}
-
 package() {
   cd "${srcdir}/${_gitrepository}"
   ./install -p "${pkgdir}"
