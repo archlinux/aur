@@ -1,7 +1,7 @@
 # Maintainer: Erazem Kokot <contact at erazem dot eu>
 
 pkgname='hblock'
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc='An adblocker that creates a hosts file from automatically downloaded blacklists'
 arch=('any')
