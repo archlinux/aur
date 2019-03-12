@@ -8,8 +8,8 @@ pkgbase = nerd-fonts-source-code-pro
 	license = MIT
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/SourceCodePro.zip
-	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/2.0.0/LICENSE
+	source = nerd-fonts-source-code-pro-2.0.0.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/SourceCodePro.zip
+	source = nerd-fonts-source-code-pro-2.0.0-LICENSE::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/2.0.0/LICENSE
 	sha256sums = f8e0cc0aceefa97a2c3f256fbc9a460038059ef0a193f02960f644daddfdfbbb
 	sha256sums = d2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5
 
