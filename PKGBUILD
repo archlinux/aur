@@ -1,7 +1,7 @@
 # Maintainer: Federico Giuliani <federico.giuliani86 at gmail dot com>
 
 pkgname=airsonic
-pkgver=10.1.2
+pkgver=10.2.1
 pkgrel=1
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
@@ -30,7 +30,7 @@ package() {
   cp airsonic-systemd-env $pkgdir/etc/airsonic/airsonic.conf
 }
 
-sha256sums=('738c0614a113f692d75f62d9a74efab1580e3ba8c683feb8d6bfded80240f342'
+sha256sums=('9bd4e9651df1a15278fb6414d011bd5a45c037857e84eaeb1375b26c717a5ebe'
             'd24c07f9f585fc00fd564290cc7b7035d7f27ff7183f13c3fa4e6e23490e9531'
             '059a43fe100d95aaaae8091d1c312f4d3a2a2b4edc1969358dd7be35f6525930'
             )
