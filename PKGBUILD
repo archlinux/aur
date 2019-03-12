@@ -1,5 +1,5 @@
 pkgname=librepo
-pkgver=1.9.4
+pkgver=1.9.5
 pkgrel=1
 pkgdesc="Repodata downloading library"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('cmake' 'python')
 checkdepends=('check' 'python-flask' 'python-nose' 'python-gpgme' 'python-pyxattr')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('20f0ba3835667d3a075ea0d09987d85c')
+md5sums=('f2e161f78fa512eb0c212da1ac7d7437')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -26,6 +26,7 @@ build() {
 	      -DCMAKE_INSTALL_PREFIX=/usr \
 	      -DPYTHON_DESIRED=3 \
 	      -DENABLE_DOCS=OFF \
+	      -DENABLE_PYTHON_TESTS=ON \
 	      -DWITH_ZCHUNK=ON \
 	      ..
 
