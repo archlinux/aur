@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-atk
 	pkgdesc = A library providing a set of interfaces for accessibility (mingw-w64)
-	pkgver = 2.30.0
+	pkgver = 2.32.0
 	pkgrel = 1
 	url = https://developer.gnome.org/atk/
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = mingw-w64-atk
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://ftp.gnome.org/pub/gnome/sources/atk/2.30/atk-2.30.0.tar.xz
-	md5sums = 769c85005d392ad17ffbc063f2d26454
+	source = http://ftp.gnome.org/pub/gnome/sources/atk/2.32/atk-2.32.0.tar.xz
+	md5sums = c10b0b2af3c199e42caa6275b845c49d
 
 pkgname = mingw-w64-atk
 
