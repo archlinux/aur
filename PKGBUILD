@@ -1,6 +1,6 @@
 # Maintainer: Andres Alejandro Navarro Alsina <aanavarroa@unal.edu.co>
 # Contributor:  GalSim developers team on GitHub
-pkgbase=python-galsim
+pkgbase=python-galsim-git
 pkgname=('python-galsim-git' 'python2-galsim-git' 'galsim-common-git')
 pkgver=v2.1.4.r0.2e459f5a8
 pkgrel=1
