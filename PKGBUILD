@@ -3,9 +3,9 @@
 
 pkgname=smloadr
 pkgver=1.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A streaming music downloader"
-arch=('x86_64')
+arch=('x86_64' 'armv7h')
 url="https://git.fuwafuwa.moe/SMLoadrDev/SMLoadr"
 license=('unknown')
 makedepends=('npm')
