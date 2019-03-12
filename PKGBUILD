@@ -5,7 +5,7 @@ url='http://wiki.ros.org/twist_mux'
 
 
 pkgname='ros-kinetic-twist-mux'
-pkgver='3.0.0'
+pkgver='3.1.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1

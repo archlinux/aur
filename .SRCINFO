@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-twist-mux
 	pkgdesc = ROS Module Twist multiplexer, which multiplex several velocity commands (topics) and allows to priorize or disable them (locks).
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = http://wiki.ros.org/twist_mux
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = ros-kinetic-twist-mux
 	depends = ros-kinetic-twist-mux-msgs
 	depends = ros-kinetic-diagnostic-updater
 	depends = python2-rospkg
-	source = ros-kinetic-twist-mux::git+https://github.com/ros-teleop/twist_mux.git#tag=3.0.0
+	source = ros-kinetic-twist-mux::git+https://github.com/ros-teleop/twist_mux.git#tag=3.1.0
 	sha256sums = SKIP
 
 pkgname = ros-kinetic-twist-mux
