@@ -1,15 +1,15 @@
 pkgbase = weechat-notify-send
 	pkgdesc = A WeeChat script that sends highlight and message notifications through notify-send
-	pkgver = r180.962218a
-	pkgrel = 2
+	pkgver = 0.8
+	pkgrel = 1
 	url = https://github.com/s3rvac/weechat-notify-send
 	arch = any
 	license = MIT
-	makedepends = git
-	depends = weechat
 	depends = libnotify
-	source = git+https://github.com/s3rvac/weechat-notify-send.git
-	sha512sums = SKIP
+	depends = python
+	depends = weechat
+	source = weechat-notify-send_0.8.tar.gz::https://github.com/s3rvac/weechat-notify-send/archive/v0.8.tar.gz
+	sha512sums = 250814152ea6d123aa4c48fb40648fe490134121a62253c692fcddb1eba05e28bda7523182fbb1db13a41f7a38d63e2e56ea97584d0c06321c4d56f6d701a985
 
 pkgname = weechat-notify-send
 
