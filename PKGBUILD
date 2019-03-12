@@ -5,8 +5,8 @@
 
 pkgname=kubectl
 pkgdesc="Kubernetes.io client binary"
-pkgver=1.13.0
-pkgrel=2
+pkgver=1.13.4
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kubernetes.io"
 license=('Apache')
@@ -14,7 +14,7 @@ makedepends=('go' 'rsync')
 conflicts=('kubernetes>=1.4.6')
 #source=("git+https://github.com/kubernetes/kubernetes#tag=v${pkgver}")
 source=("kubernetes-$pkgver.tar.gz::https://dl.k8s.io/v$pkgver/kubernetes-src.tar.gz")
-sha256sums=('f72fea2b7c479a798d700fe50057ba97fa7771a3638a5eab2fa08bb0870bb6ed')
+sha256sums=('271a4281edd9874f916b95dd841c8b923740dc91b4af80a846b8658de90d80eb')
 
 build() {
   make WHAT=cmd/kubectl 
