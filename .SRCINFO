@@ -1,0 +1,22 @@
+pkgbase = anylogic-ple-8.2.4
+	pkgdesc = AnyLogic PLE - for beginners and students. Last x86 version
+	pkgver = 8.2.4
+	pkgrel = 1
+	url = https://www.anylogic.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gendesk
+	depends = glibc
+	optdepends = chromium: alternative browser for model animating
+	optdepends = firefox: alternative browser for model animating
+	provides = anylogic
+	conflicts = anylogic
+	options = !strip
+	source_i686 = https://files.anylogic.com/anylogic-ple-8.2.4.linux.i586.tgz.bin
+	sha256sums_i686 = d5cd96ea5e1170a7d4e8a9e60a27df0a10b9481bad791347109f77d1c73a3cc7
+	source_x86_64 = https://files.anylogic.com/anylogic-ple-8.2.4.linux.x86_64.tgz.bin
+	sha256sums_x86_64 = e03e6f6046b568595f91330ce9153b562d3c6f3e9e6fe8ef252103073da78400
+
+pkgname = anylogic-ple-8.2.4
+
