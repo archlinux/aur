@@ -1,12 +1,12 @@
 pkgbase = payara
 	pkgdesc = A Java EE application server, drived from GlassFish Open Source Edition.
 	pkgver = 5.191
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.payara.fish/
 	arch = any
 	license = CDDL
 	license = GPL2
-	depends = java-environment>=7
+	depends = java-environment>=8
 	provides = payara
 	conflicts = payara
 	options = !strip

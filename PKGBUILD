@@ -5,13 +5,13 @@
 
 pkgname=payara
 pkgver=5.191
-pkgrel=4
+pkgrel=5
 pkgdesc="A Java EE application server, drived from GlassFish Open Source Edition."
 url="http://www.payara.fish/"
 license=("CDDL" "GPL2")
 provides=("$pkgname")
 conflicts=("$pkgname")
-depends=("java-environment>=7")
+depends=("java-environment>=8")
 arch=("any")
 options=(!strip)
 source=("$pkgname-$pkgver.zip::https://search.maven.org/remotecontent?filepath=fish/$pkgname/distributions/$pkgname/$pkgver/$pkgname-$pkgver.zip"
