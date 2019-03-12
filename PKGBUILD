@@ -5,7 +5,7 @@
 
 _pkgname=lab
 pkgname=$_pkgname-git
-pkgver=0.15.2.r1.gb2da778
+pkgver=0.15.2.r6.g5c82aaf
 _branch=master
 pkgrel=1
 pkgdesc="A hub-like tool for GitLab (git $_branch branch)"
