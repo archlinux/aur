@@ -1,8 +1,9 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=appleseed-git
-#_fragment="#tag=1.7.1-beta"
-pkgver=2.0.5.beta.r58.gc476fda38
+#_fragment="#branch=2.0.5-beta-maintenance"
+pkgver=2.0.0.beta.r254.g499051c45
 pkgrel=1
+epoch=1
 pkgdesc="physically-based global illumination rendering engine primarily designed for animation and visual effects. "
 arch=(i686 x86_64)
 url="http://appleseedhq.net"
