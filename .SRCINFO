@@ -1,7 +1,7 @@
 pkgbase = anylogic-ple-8.2.4
-	pkgdesc = AnyLogic PLE - for beginners and students. Last x86 version
+	pkgdesc = AnyLogic Personal Learning Edition - for beginners and students. Last x86 version
 	pkgver = 8.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.anylogic.com
 	arch = i686
 	arch = x86_64
