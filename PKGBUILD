@@ -1,10 +1,11 @@
-# Maintainer: sballert <sballert@posteo.de>
+# Contributor: sballert <sballert@posteo.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 _gituser="magnars"
 _gitrepo="s.el"
 
 pkgname=emacs-s-git
-pkgver=r258.03410e6
+pkgver=1.12.0r10.g03410e6
 pkgrel=1
 pkgdesc="The long lost Emacs string manipulation library."
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -19,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  git describe --tags --long | sed 's+-+r+'|tr - .
 }
 
 build() {
@@ -29,6 +30,6 @@ build() {
 
 package() {
   cd "$_gitrepo"
-  install -d  "$pkgdir"/usr/share/emacs/site-lisp/s/
-  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/s/
+  install -d  "$pkgdir"/usr/share/emacs/site-lisp/
+  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/
 }

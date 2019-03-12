@@ -1,6 +1,6 @@
 pkgbase = emacs-s-git
 	pkgdesc = The long lost Emacs string manipulation library.
-	pkgver = r258.03410e6
+	pkgver = 1.12.0r10.g03410e6
 	pkgrel = 1
 	url = https://github.com/magnars/s.el
 	arch = any
