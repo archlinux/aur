@@ -2,7 +2,7 @@
 
 pkgname=cc-tool-git
 _pkgver=0.26
-pkgver=0.26.r20.0bde010
+pkgver=0.26.r22.a50c6c7
 pkgrel=1
 pkgdesc="Support for Texas Instruments CC Debugger"
 arch=('x86_64')
