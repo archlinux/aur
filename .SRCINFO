@@ -1,36 +1,31 @@
 pkgbase = coin
 	pkgdesc = A high-level 3D graphics toolkit on top of OpenGL
-	pkgver = 3.1.3
-	pkgrel = 18
+	pkgver = 4.0.0a+11927+me74da184f75b
+	pkgrel = 1
 	url = https://bitbucket.org/Coin3D/coin
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = mercurial
+	makedepends = cmake
 	makedepends = doxygen
 	depends = libgl
-	depends = libsm
 	optdepends = openal: sound/dynamic linking support
 	optdepends = fontconfig: dynamic linking support
 	optdepends = zlib: dynamic linking support
 	optdepends = freetype2: dynamic linking support
-	optdepends = js: dynamic linking support
-	optdepends = simage: image format support
-	source = https://bitbucket.org/Coin3D/coin/downloads/Coin-3.1.3.tar.gz
-	source = fixed-wrong-assignment.patch
-	source = gcc6-crash-fix.patch
-	source = remove-expat.patch
-	sha256sums = 583478c581317862aa03a19f14c527c3888478a06284b9a46a0155fa5886d417
-	sha256sums = f71a13da97f6000ce66a63ae780a67226bcd906f9abf289436ea6e218d77fae0
-	sha256sums = 23326a4790f7a9c9654bd114baec400386a350bf49450c72c17a369056287c53
-	sha256sums = ab939e75dd5e9be87781ab6c9f4c69c9a85c6d6c6c554249fbd3f4e646b4a7de
+	source = coin::hg+https://bitbucket.org/Coin3D/coin#revision=e74da184f75b
+	source = generalmsvcgeneration::hg+https://bitbucket.org/Coin3D/generalmsvcgeneration
+	source = boost-header-libs-full::hg+https://bitbucket.org/Coin3D/boost-header-libs-full
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = coin
 	optdepends = openal: sound/dynamic linking support
 	optdepends = fontconfig: dynamic linking support
 	optdepends = zlib: dynamic linking support
 	optdepends = freetype2: dynamic linking support
-	optdepends = js: dynamic linking support
-	optdepends = simage: image format support
 	optdepends = coin-docs: Coin documentation
 
 pkgname = coin-docs

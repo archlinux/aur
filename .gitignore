@@ -1,2 +1,4 @@
-*.tar.gz
+coin/
+boost-header-libs-full/
+generalmsvcgeneration/
 *.pkg.*
