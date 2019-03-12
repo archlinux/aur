@@ -14,7 +14,7 @@ source=("${pkgname}::git+${url}#branch=master"
         'db-location.patch'
 	'https://github.com/platomav/PTable/archive/boxchar.zip')
 sha256sums=('SKIP'
-            'd6c820300071011041654d4d076c0a3594ca1443e7c93894ae512535a0f38de7'
+            '1bbb83076fc60ceb247670a23797131a51c586938afaf467aa3f01d2558bef55'
             'd8783384fa8e2d84bbd641cf01438f40b29fecf88d79340551789b435333e8b4')
 
 pkgver() {
