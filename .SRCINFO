@@ -1,7 +1,7 @@
 pkgbase = portunus
 	pkgdesc = aggregates all package managers under one tool
 	pkgver = 2.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andrei-pavel/portunus
 	arch = i686
 	arch = x86_64
