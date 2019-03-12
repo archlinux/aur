@@ -1,0 +1,6 @@
+/ncspot/
+/pkg/
+/src/
+/*.tar.*
+/*.xz
+/*.swp
