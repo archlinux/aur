@@ -1,7 +1,7 @@
 pkgbase = anylogic-ple
-	pkgdesc = AnyLogic PLE - for beginners and students
+	pkgdesc = AnyLogic Personal Learning Edition - for beginners and students
 	pkgver = 8.4.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.anylogic.com
 	arch = x86_64
 	license = custom

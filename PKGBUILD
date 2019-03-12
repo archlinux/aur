@@ -2,8 +2,8 @@
 
 pkgname=anylogic-ple
 pkgver=8.4.0
-pkgrel=4
-pkgdesc="AnyLogic PLE - for beginners and students"
+pkgrel=5
+pkgdesc="AnyLogic Personal Learning Edition - for beginners and students"
 arch=(x86_64)
 url="https://www.anylogic.com"
 license=('custom')
@@ -28,11 +28,11 @@ prepare() {
 package() {
     mkdir -p "$pkgdir/opt"
 
-    msg2 "Copying AnyLogic PLE contents..."
+    msg2 "Copying AnyLogic Personal Learning Edition contents..."
     cp -R "$srcdir/anylogic" "$pkgdir/opt"
 
     msg2 "Creating .desktop file..."
-    gendesk -q -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='AnyLogic PLE' --exec='env SWT_GTK3=0 UBUNTU_MENUPROXY= /opt/anylogic/anylogic'
+    gendesk -q -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='AnyLogic Personal Learning Edition' --exec='env SWT_GTK3=0 UBUNTU_MENUPROXY= /opt/anylogic/anylogic'
     install -Dm644 "$srcdir/anylogic/icon.xpm" "$pkgdir/usr/share/pixmaps/$pkgname.xpm"
     install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
