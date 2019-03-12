@@ -13,4 +13,4 @@ install: PKGBUILD build
 	makepkg -i
 
 clean:
-	rm -rf pkg src *.tar.gz *.tar.xz *.part
+	rm -rf pkg src *.tar.* *.part
