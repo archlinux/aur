@@ -2,8 +2,10 @@
 
 pkgname=plata-theme-gs330
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Plata theme that is not broken in GNOME Shell 3.30'
+conflicts=(plata-theme)
+replaces=(plata-theme)
 arch=('any')
 url='https://gitlab.com/tista500/plata-theme/issues/33'
 license=('CCPL' 'GPL2')
@@ -37,5 +39,5 @@ package() {
   install -dm 755 "${pkgdir}"/usr/share/plank/themes
   ln -s /usr/share/themes/Plata/plank "${pkgdir}"/usr/share/plank/themes/Plata
 
-  install -Dm 644 LICENSE_CC_BY_SA4 -t "${pkgdir}"/usr/share/licenses/plata-theme/
+  install -Dm 644 LICENSE_CC_BY_SA4 -t "${pkgdir}"/usr/share/licenses/$pkgname/
 }

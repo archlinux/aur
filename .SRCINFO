@@ -1,7 +1,7 @@
 pkgbase = plata-theme-gs330
 	pkgdesc = Plata theme that is not broken in GNOME Shell 3.30
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/tista500/plata-theme/issues/33
 	arch = any
 	license = CCPL
@@ -14,6 +14,8 @@ pkgbase = plata-theme-gs330
 	makedepends = sassc
 	optdepends = gtk-engine-murrine: for gtk2 themes
 	optdepends = ttf-roboto: Recommended font
+	conflicts = plata-theme
+	replaces = plata-theme
 	source = git+https://gitlab.com/tista500/plata-theme.git#tag=0.6.0
 	sha256sums = SKIP
 
