@@ -1,24 +1,22 @@
-# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+# Maintainer: farwayer <farwayer@gmail.com>
 
-pkgname=ruby-os
-pkgver=0.9.6
+_gemname=os
+pkgname=ruby-$_gemname
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Basic Ruby OS functions"
+pkgdesc="The OS gem allows for some useful and easy functions, like OS.windows? (=> true or false) OS.bits ( => 32 or 64) etc"
 arch=('any')
-url="http://rubygems.org/gems/os/"
+url="https://github.com/rdp/os"
 license=('MIT')
 depends=('ruby')
-source=(http://rubygems.org/downloads/os-$pkgver.gem)
-sha256sums=('bf7a387eed04790758ef4cf53da2dad6ad65f394aca8927b7b8f4bf106479bd2')
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha256sums=('3387ec2c7357df363f3767921501e3c1eb5e0b102a0e0221ca423f0cf70b80e8')
 
 package() {
   cd "$srcdir"
-  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install \
-    -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" \
-    os-$pkgver.gem
-  install -Dm644 "$pkgdir$_gemdir/gems/os-$pkgver/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  install -Dm644 "$pkgdir$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
