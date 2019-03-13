@@ -1,0 +1,23 @@
+pkgbase = zdkimfilter
+	pkgdesc = zDKIM filter for Courier-MTA using the OpenDKIM Project's library.
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://git.eckner.net/Erich/zdkimfilter
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = courier-mta
+	depends = opendkim
+	depends = opendbx
+	depends = nettle
+	depends = libidn2
+	depends = zlib
+	backup = etc/courier/filters/zdkimfilter.conf
+	source = http://www.tana.it/sw/zdkimfilter/zdkimfilter-1.6.tar.gz
+	source = http://www.tana.it/sw/zdkimfilter/zdkimfilter-1.6.tar.gz.asc
+	validpgpkeys = 0A5B4BB141A53F7F55FC8CBCB6ACF44490D17C00
+	sha512sums = 9245efd1221fa7de7864ec04417df36a2ab1b12ba118f328dcb2f5c03abaae63354331e139eb68433e6bb7b9109f77c546177db2a8ade83a3041783203f381e6
+	sha512sums = SKIP
+
+pkgname = zdkimfilter
+
