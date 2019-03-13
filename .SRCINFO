@@ -1,7 +1,7 @@
 pkgbase = ruby-commander-fastlane
 	pkgdesc = The complete solution for Ruby command-line executables
 	pkgver = 4.4.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/commander-rb/commander
 	arch = any
 	license = MIT
