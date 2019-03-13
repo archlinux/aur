@@ -1,0 +1,14 @@
+pkgbase = code-server-1.31
+	pkgdesc = Run VS Code on a remote server
+	pkgver = 1.31.1_100
+	pkgrel = 0
+	url = https://github.com/codercom/code-server
+	arch = x86_64
+	license = MIT
+	conflicts = code-server
+	replaces = code-server
+	source = https://github.com/codercom/code-server/releases/download/1.31.1-100/code-server-1.31.1-100-linux-x64.tar.gz
+	sha512sums = SKIP
+
+pkgname = code-server-1.31
+
