@@ -1,0 +1,14 @@
+pkgbase = python-drf-nested-routers
+	pkgdesc = Nested resources for the Django Rest Framework
+	pkgver = 0.91
+	pkgrel = 1
+	url = https://pypi.org/project/drf-nested-routers/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/d/drf-nested-routers/drf-nested-routers-0.91.tar.gz
+	sha256sums = 46e5c3abc15c782cafafd7d75028e8f9121bbc6228e3599bbb48a3daa4585034
+
+pkgname = python-drf-nested-routers
+
