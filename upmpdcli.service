@@ -1,0 +1,11 @@
+[Unit]
+Description=UPnP Renderer front-end to MPD
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/upmpdcli -c /etc/upmpdcli.conf
+Restart=always
+RestartSec=1min
+
+[Install]
+WantedBy=default.target
