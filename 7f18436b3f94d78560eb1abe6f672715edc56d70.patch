@@ -1,0 +1,231 @@
+From d887d9c2d6428e01b7ada43ddba56b2389d7cabd Mon Sep 17 00:00:00 2001
+From: itchyny <itchyny@hatena.ne.jp>
+Date: Fri, 8 Mar 2019 15:57:59 +0900
+Subject: [PATCH 1/5] add a interface to represent the client of Mackerel API
+
+---
+ mackerelclient/client.go | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+ create mode 100644 mackerelclient/client.go
+
+diff --git a/mackerelclient/client.go b/mackerelclient/client.go
+new file mode 100644
+index 0000000..6611eed
+--- /dev/null
++++ b/mackerelclient/client.go
+@@ -0,0 +1,8 @@
++package mackerelclient
++
++import mackerel "github.com/mackerelio/mackerel-client-go"
++
++// Client represents a client of Mackerel API
++type Client interface {
++	FindHosts(param *mackerel.FindHostsParam) ([]*mackerel.Host, error)
++}
+
+From 861275ef04548a2b4369fff8bc80a6f59224f568 Mon Sep 17 00:00:00 2001
+From: itchyny <itchyny@hatena.ne.jp>
+Date: Fri, 8 Mar 2019 15:58:27 +0900
+Subject: [PATCH 2/5] change mackerelclient.New to return interface
+
+---
+ mackerelclient/new.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mackerelclient/new.go b/mackerelclient/new.go
+index d8dfb7b..4d7501e 100644
+--- a/mackerelclient/new.go
++++ b/mackerelclient/new.go
+@@ -11,7 +11,7 @@ import (
+ )
+ 
+ // New returns new mackerel client
+-func New(conffile, apibase string) (*mkr.Client, error) {
++func New(conffile, apibase string) (Client, error) {
+ 	apikey := os.Getenv("MACKEREL_APIKEY")
+ 	var conf *config.Config
+ 	if apikey == "" {
+
+From 4f5fb2b2111e3802157a0dbb1699147faa03d871 Mon Sep 17 00:00:00 2001
+From: itchyny <itchyny@hatena.ne.jp>
+Date: Fri, 8 Mar 2019 15:58:45 +0900
+Subject: [PATCH 3/5] change the client in hostApp to the client interface
+
+---
+ hosts/app.go     | 3 ++-
+ hosts/command.go | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/hosts/app.go b/hosts/app.go
+index 37f8f73..24918ac 100644
+--- a/hosts/app.go
++++ b/hosts/app.go
+@@ -6,10 +6,11 @@ import (
+ 
+ 	mkr "github.com/mackerelio/mackerel-client-go"
+ 	"github.com/mackerelio/mkr/format"
++	"github.com/mackerelio/mkr/mackerelclient"
+ )
+ 
+ type hostApp struct {
+-	cli *mkr.Client
++	cli mackerelclient.Client
+ 
+ 	verbose bool
+ 
+diff --git a/hosts/command.go b/hosts/command.go
+index 559f091..b448f72 100644
+--- a/hosts/command.go
++++ b/hosts/command.go
+@@ -1,8 +1,9 @@
+ package hosts
+ 
+ import (
+-	"github.com/mackerelio/mkr/mackerelclient"
+ 	cli "gopkg.in/urfave/cli.v1"
++
++	"github.com/mackerelio/mkr/mackerelclient"
+ )
+ 
+ // Command is definition of mkr hosts subcommand
+
+From 3fb0a0e6daeb531d5a08becc962add8f309b6677 Mon Sep 17 00:00:00 2001
+From: itchyny <itchyny@hatena.ne.jp>
+Date: Fri, 8 Mar 2019 16:02:26 +0900
+Subject: [PATCH 4/5] change alias of mackerel-client-go to mackerel
+
+---
+ hosts/app.go          |  5 +++--
+ mackerelclient/new.go | 14 ++++++++------
+ 2 files changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/hosts/app.go b/hosts/app.go
+index 24918ac..68e3196 100644
+--- a/hosts/app.go
++++ b/hosts/app.go
+@@ -4,7 +4,8 @@ import (
+ 	"os"
+ 	"text/template"
+ 
+-	mkr "github.com/mackerelio/mackerel-client-go"
++	mackerel "github.com/mackerelio/mackerel-client-go"
++
+ 	"github.com/mackerelio/mkr/format"
+ 	"github.com/mackerelio/mkr/mackerelclient"
+ )
+@@ -23,7 +24,7 @@ type hostApp struct {
+ }
+ 
+ func (ha *hostApp) run() error {
+-	hosts, err := ha.cli.FindHosts(&mkr.FindHostsParam{
++	hosts, err := ha.cli.FindHosts(&mackerel.FindHostsParam{
+ 		Name:     ha.name,
+ 		Service:  ha.service,
+ 		Roles:    ha.roles,
+diff --git a/mackerelclient/new.go b/mackerelclient/new.go
+index 4d7501e..fc7a068 100644
+--- a/mackerelclient/new.go
++++ b/mackerelclient/new.go
+@@ -4,10 +4,12 @@ import (
+ 	"fmt"
+ 	"os"
+ 
++	cli "gopkg.in/urfave/cli.v1"
++
+ 	"github.com/mackerelio/mackerel-agent/config"
+-	mkr "github.com/mackerelio/mackerel-client-go"
++	mackerel "github.com/mackerelio/mackerel-client-go"
++
+ 	"github.com/mackerelio/mkr/logger"
+-	cli "gopkg.in/urfave/cli.v1"
+ )
+ 
+ // New returns new mackerel client
+@@ -34,11 +36,11 @@ func New(conffile, apibase string) (Client, error) {
+ 		}
+ 		apibase = conf.Apibase
+ 	}
+-	return mkr.NewClientWithOptions(apikey, apibase, os.Getenv("DEBUG") != "")
++	return mackerel.NewClientWithOptions(apikey, apibase, os.Getenv("DEBUG") != "")
+ }
+ 
+ // NewFromContext returns mackerel client from cli.Context
+-func NewFromContext(c *cli.Context) *mkr.Client {
++func NewFromContext(c *cli.Context) *mackerel.Client {
+ 	confFile := c.GlobalString("conf")
+ 	apiBase := c.GlobalString("apibase")
+ 	apiKey := LoadApikeyFromEnvOrConfig(confFile)
+@@ -53,8 +55,8 @@ func NewFromContext(c *cli.Context) *mkr.Client {
+ 		apiBase = LoadApibaseFromConfigWithFallback(confFile)
+ 	}
+ 
+-	mackerel, err := mkr.NewClientWithOptions(apiKey, apiBase, os.Getenv("DEBUG") != "")
++	client, err := mackerel.NewClientWithOptions(apiKey, apiBase, os.Getenv("DEBUG") != "")
+ 	logger.DieIf(err)
+ 
+-	return mackerel
++	return client
+ }
+
+From f088011fa747dda892d4f989b2e9180928dac17d Mon Sep 17 00:00:00 2001
+From: itchyny <itchyny@hatena.ne.jp>
+Date: Fri, 8 Mar 2019 16:09:56 +0900
+Subject: [PATCH 5/5] implement mock client for Mackerel API
+
+---
+ mackerelclient/mock_client.go | 46 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 46 insertions(+)
+ create mode 100644 mackerelclient/mock_client.go
+
+diff --git a/mackerelclient/mock_client.go b/mackerelclient/mock_client.go
+new file mode 100644
+index 0000000..d9a9fd3
+--- /dev/null
++++ b/mackerelclient/mock_client.go
+@@ -0,0 +1,46 @@
++package mackerelclient
++
++import mackerel "github.com/mackerelio/mackerel-client-go"
++
++// MockClient represents a mock client of Mackerel API
++type MockClient struct {
++	findHostsCallback func(param *mackerel.FindHostsParam) ([]*mackerel.Host, error)
++}
++
++// MockClientOption represents an option of mock client of Mackerel API
++type MockClientOption func(*MockClient)
++
++// NewMockClient creates a new mock client of Mackerel API
++func NewMockClient(opts ...MockClientOption) *MockClient {
++	client := &MockClient{}
++	for _, opt := range opts {
++		client.ApplyOption(opt)
++	}
++	return client
++}
++
++// ApplyOption applies a mock client option
++func (c *MockClient) ApplyOption(opt MockClientOption) {
++	opt(c)
++}
++
++type errCallbackNotFound string
++
++func (err errCallbackNotFound) Error() string {
++	return string(err) + " callback not found"
++}
++
++// FindHosts ...
++func (c *MockClient) FindHosts(param *mackerel.FindHostsParam) ([]*mackerel.Host, error) {
++	if c.findHostsCallback != nil {
++		return c.findHostsCallback(param)
++	}
++	return nil, errCallbackNotFound("FindHosts")
++}
++
++// MockFindHosts returns an option to set the callback of FindHosts
++func MockFindHosts(callback func(param *mackerel.FindHostsParam) ([]*mackerel.Host, error)) MockClientOption {
++	return func(c *MockClient) {
++		c.findHostsCallback = callback
++	}
++}
