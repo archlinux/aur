@@ -1,6 +1,6 @@
 pkgbase = anyremote
 	pkgdesc = Remote control (console-oriented) through bluetooth or IR connection
-	pkgver = 6.7.1
+	pkgver = 6.7.2
 	pkgrel = 1
 	url = http://anyremote.sourceforge.net
 	install = anyremote.install
@@ -12,8 +12,8 @@ pkgbase = anyremote
 	depends = dbus-glib
 	depends = libxtst
 	optdepends = irda-utils: IRDA support
-	source = http://downloads.sourceforge.net/sourceforge/anyremote/anyremote-6.7.1.tar.gz
-	md5sums = 699e41b637104688f191086bb58ea742
+	source = http://downloads.sourceforge.net/sourceforge/anyremote/anyremote-6.7.2.tar.gz
+	md5sums = 6eec61034fddaf31c4231922883a3bd8
 
 pkgname = anyremote
 
