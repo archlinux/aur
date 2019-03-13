@@ -1,7 +1,7 @@
 pkgname=mingw-w64-cgns
 _PKGNAME=CGNS
-pkgver=3.3.1
-pkgrel=2
+pkgver=3.4.0
+pkgrel=1
 pkgdesc='Standard for recording and recovering computer data associated with the numerical solution of fluid dynamics equations (mingw-w64)'
 arch=('any')
 url='http://www.cgns.org'
@@ -10,18 +10,12 @@ depends=('mingw-w64-crt' 'mingw-w64-hdf5')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/${_PKGNAME}/${_PKGNAME}/archive/v${pkgver}.tar.gz)
-sha256sums=('81093693b2e21a99c5640b82b267a495625b663d7b8125d5f1e9e7aaa1f8d469')
+sha256sums=('6372196caf25b27d38cf6f056258cb0bdd45757f49d9c59372b6dbbddb1e05da')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare(){
   cd "${srcdir}/${_PKGNAME}-${pkgver}"
-
-  # https://github.com/CGNS/CGNS/pull/45
-  sed -i "s|#ifdef CG_BUILD_64BIT|#if 0|g" src/cgnstypes.h.in
-
-  # https://github.com/CGNS/CGNS/pull/46
-  sed -i "s|add_library(cgns_static|add_library(cgns_static STATIC|g" src/CMakeLists.txt
 }
 
 build() {
