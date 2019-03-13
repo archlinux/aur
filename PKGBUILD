@@ -1,8 +1,8 @@
 # Maintainer: George Cave <gcave@stablecoder.ca>
 
 pkgname=('newton-dynamics-git')
-pkgver=3.13a.r303.gfb4c291c1
-pkgrel=2
+pkgver=3.13a.r305.geb939cbbb
+pkgrel=1
 pkgdesc='A 3D physics library'
 arch=('x86_64')
 url='http://newtondynamics.com'
