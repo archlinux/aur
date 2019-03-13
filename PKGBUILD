@@ -8,8 +8,7 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=font-manager
-pkgver=0.7.4.2
-_pkgver=${pkgver%\.[0-9]*}
+pkgver=0.7.4.3
 pkgrel=1
 pkgdesc="A simple font management application for GTK+ Desktop Environments"
 url="http://fontmanager.github.io/"
@@ -17,18 +16,18 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libgee' 'libxml2' 'sqlite' 'gucharmap' 'file-roller')
 makedepends=('intltool' 'yelp-tools' 'gobject-introspection' 'vala')
-source=("https://github.com/FontManager/master/releases/download/${pkgver}/${pkgname}-${_pkgver}.tar.bz2")
-sha256sums=('fea51765fe6e1b50be273d5908b24992a3bb709b1152a5df56870bfee0163ab2')
+source=("https://github.com/FontManager/master/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('39bb00942b89eeabb96946cc0c0db5e7ecfe8d62805d87f0115de49ee02487b6')
 
 build() {
-  cd ${srcdir}/${pkgname}-${_pkgver}
+  cd ${srcdir}/${pkgname}-${pkgver}
 
   ./configure --prefix=/usr --with-file-roller
   make -j1
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${_pkgver}
+  cd ${srcdir}/${pkgname}-${pkgver}
 
   make DESTDIR=${pkgdir} install
 }
