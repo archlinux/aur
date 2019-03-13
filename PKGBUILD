@@ -1,24 +1,43 @@
+# Maintainer: Denis Vadimov <me @ bloody.pw>
+
 pkgname=geos-php
-pkgver=3.5.0
+pkgver=1.0.0.r4.g2c9c56a
 pkgrel=1
-pkgdesc="PHP bindings for geos"
+pkgdesc="PHP bindings for GEOS"
 arch=('i686' 'x86_64')
-url="http://trac.osgeo.org/geos/"
-license=('LGPL')
+url="http://geos.osgeo.org/"
+license=('LGPL2' 'MIT')
 makedepends=('php')
-depends=("geos")
-source=(http://download.osgeo.org/geos/geos-$pkgver.tar.bz2)
-sha256sums=('49982b23bcfa64a53333dab136b82e25354edeb806e5a2e2f5b8aa98b1d0ae02')
+depends=('geos')
+source=('php-geos::git+https://git.osgeo.org/gitea/geos/php-geos.git')
+sha256sums=('SKIP')
+
+pkgver() {
+   # From AUR package `remmina-git`
+   cd php-geos/
+
+   if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
+          printf '%s.r%s.g%s' \
+                 "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
+                 "$(git rev-list --count ${GITTAG}..)" \
+                 "$(git rev-parse --short HEAD)"
+   else
+          printf '0.r%s.g%s' \
+                 "$(git rev-list --count master)" \
+                 "$(git rev-parse --short HEAD)"
+   fi
+}
 
 build() {
-   cd $srcdir/geos-$pkgver/
+   cd $srcdir/php-geos/
 
-   ./configure --prefix=/usr/ --enable-php
+   ./autogen.sh
+   ./configure --prefix=/usr/
    make
 }
 
 package() {
-   /usr/bin/install -D -m 755 $srcdir/geos-$pkgver/php/.libs/geos.so "$pkgdir"`php-config --extension-dir`/geos.so
+   /usr/bin/install -D -m 755 $srcdir/php-geos/modules/geos.so "$pkgdir"`php-config --extension-dir`/geos.so
 
    mkdir -p $pkgdir/etc/php/conf.d/
    echo ';extension=geos.so' > $pkgdir/etc/php/conf.d/geos.ini
