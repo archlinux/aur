@@ -1,0 +1,34 @@
+pkgbase = electronmail-bin
+	pkgdesc = Unofficial desktop app for several E2E encrypted email providers
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/vladimiry/ElectronMail
+	install = electronmail-bin.install
+	arch = x86_64
+	license = MIT
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = http-parser
+	depends = libevent
+	depends = libvpx
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
+	depends = libnotify
+	depends = libappindicator-gtk2
+	depends = libappindicator-gtk3
+	depends = gconf
+	depends = gnome-keyring
+	provides = electronmail
+	conflicts = electronmail
+	source = https://github.com/vladimiry/ElectronMail/releases/download/v3.0.0/electron-mail-3.0.0-linux-x64.pacman
+	source = LICENSE
+	md5sums = 443a025c176f955ef1ce3c61840d9186
+	md5sums = fc680045f40b19ce3c3e771aeb08bbd3
+
+pkgname = electronmail-bin
+

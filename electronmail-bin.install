@@ -1,0 +1,16 @@
+post_install() {
+    :
+#!/bin/bash
+
+# Link to the binary
+ln -sf '/opt/ElectronMail/electron-mail' '/usr/local/bin/electron-mail'
+
+}
+post_remove() {
+    :
+#!/bin/bash
+
+# Delete the link to the binary
+rm -f '/usr/local/bin/electron-mail'
+
+}
