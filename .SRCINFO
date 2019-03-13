@@ -1,0 +1,15 @@
+pkgbase = vdeplug_vlan-git
+	pkgdesc = 802.1q (vlan) support nested plugin for vdeplug4
+	pkgver = r3.37f5795
+	pkgrel = 1
+	url = https://github.com/rd235/vdeplug_vlan
+	arch = any
+	license = GPL2
+	depends = vdeplug4-git
+	provides = vdeplug_vlan
+	conflicts = vdeplug_vlan
+	source = git+https://github.com/rd235/vdeplug_vlan.git
+	md5sums = SKIP
+
+pkgname = vdeplug_vlan-git
+
