@@ -1,7 +1,7 @@
 pkgbase = pax
 	pkgdesc = Portable Archive Interchange - the POSIX standard archive tool for cpio and tar formats
 	pkgver = 3.4
-	pkgrel = 10
+	pkgrel = 11
 	url = https://man.openbsd.org/pax.1
 	arch = i686
 	arch = x86_64

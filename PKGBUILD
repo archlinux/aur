@@ -5,7 +5,7 @@
 
 pkgname=pax
 pkgver=3.4
-pkgrel=10
+pkgrel=11
 pkgdesc='Portable Archive Interchange - the POSIX standard archive tool for cpio and tar formats'
 arch=('i686' 'x86_64')
 url='https://man.openbsd.org/pax.1'
