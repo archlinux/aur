@@ -16,7 +16,7 @@ url='https://bitbucket.org/Coin3D/coin'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('libgl')
-makedepends=('mercurial' 'cmake' 'doxygen')
+makedepends=('mercurial' 'cmake' 'doxygen' 'glu')
 optdepends=('openal: sound/dynamic linking support'
             'fontconfig: dynamic linking support'
             'zlib: dynamic linking support'
