@@ -3,7 +3,7 @@
 # Contributor: David Rosenstrauch <darose@darose.net>
 
 pkgname=qps
-pkgver=1.10.19
+pkgver=1.10.20
 pkgrel=1
 pkgdesc="a visual process manager, an X11 version of 'top' or 'ps'."
 url="https://github.com/lxqt/qps"
@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 license=("GPL")
 source=("$pkgname-$pkgver.tar.xz::https://github.com/QtDesktop/qps/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
 	"qps.desktop")
-sha256sums=('3a6afa2c4d7a1023766259eee806ec9a3cbea176494e6d8a1d660519be441846'
+sha256sums=('1570e1cdc95af392ec86a19c29f5bcab784f4913ac1ac57cab398bd759cce737'
             '5216455ce5ce096b36f1b301325fd44c972ff796aa3b40b60807a06dae0ab3f9')
 
 build() {
