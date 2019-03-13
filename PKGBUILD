@@ -3,7 +3,7 @@
 _gemname=google-cloud-env
 pkgname=ruby-${_gemname}
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="google-cloud-env provides information on the Google Cloud Platform hosting environment."
 arch=('any')
 depends=(
