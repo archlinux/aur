@@ -1,4 +1,4 @@
-# Maintainer: Jorge Araya Navarro <jorge@esavara.cr>
+# Maintainer: Jorge Araya Navarro <jorgejavieran@yahoo.com.mx>
 # Contributor: Cristian Porras <porrascristian@gmail.com>
 # Contributor: Matthew Bentley <matthew@mtbentley.us>
 
