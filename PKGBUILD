@@ -3,14 +3,16 @@
 
 pkgname=sdlmame-wout-toolkits
 pkgver=0.207
-pkgrel=1
+pkgrel=2
 pkgdesc="A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support. Without Qt toolkit"
 url='http://mamedev.org'
 license=('custom:MAME License')
 arch=('x86_64')
-conflicts=('sdlmame' 'sdlmamefamily-tools')
+conflicts=('sdlmame'
+           'sdlmamefamily-tools'
+           'mame'
+           )
 depends=('sdl2_ttf'
-         'alsa-lib'
          'lua'
          'flac'
          'portmidi'
@@ -26,11 +28,12 @@ makedepends=('nasm'
              'glu'
              'glm'
              'wget'
+             'asio'
              'python-sphinxcontrib-svg2pdfconverter'
              'rapidjson'
              )
 source=("https://github.com/mamedev/mame/archive/mame${pkgver/./}.tar.gz"
-        'sdlmame.sh'
+        'mame.sh'
         )
 sha256sums=('69c29533d2128345c59fbf23fabc3af696322a77a6c1d7a7bd7f5a2ee57adafb'
             'd0289344e2260411965a56290cb4744963f48961326ce7f41b90f75f4221bb42'
@@ -70,10 +73,10 @@ package() {
   cd "mame-mame${pkgver/./}"
 
   # Install the sdlmame script
-  install -Dm755 "${srcdir}/sdlmame.sh" "${pkgdir}/usr/bin/sdlmame"
+  install -Dm755 "${srcdir}/mame.sh" "${pkgdir}/usr/bin/mame"
 
   # Install the applications and the UI font in /usr/share
-  install -Dm755 mame64 "${pkgdir}/usr/share/sdlmame/sdlmame"
+  install -Dm755 mame64 "${pkgdir}/usr/lib/mame/mame"
   _apps=('castool'
          'chdman'
          'floptool'
@@ -92,23 +95,22 @@ package() {
          'testkeys'
          'unidasm'
          )
-  for i in "${_apps[@]}"; do install -Dm755 "${i}" "${pkgdir}/usr/share/sdlmame/${i}"; done
+  for i in "${_apps[@]}"; do install -Dm755 "${i}" "${pkgdir}/usr/lib/mame/${i}"; done
 
   # Install the extra bits
   _extra=('artwork'
           'bgfx'
+          'ctrlr'
           'hash'
           'hlsl'
-          'ini'
           'keymaps'
           'language'
           'plugins'
           'roms'
           )
-  for i in $(find ${_extra[@]} -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/sdlmame/${i}"; done
-  install -d "${pkgdir}/usr/share/sdlmame/shader"
-  install -m644 src/osd/modules/opengl/shader/glsl*.*h "${pkgdir}/usr/share/sdlmame/shader/"
-  install -Dm644 uismall.bdf "${pkgdir}/usr/share/sdlmame/fonts/uismall.bdf"
+  for i in $(find ${_extra[@]} -type f); do install -Dm644 "${i}" "${pkgdir}/usr/lib/mame/${i}"; done
+  (cd src/osd/modules/opengl/shader; for i in glsl*.*h; do install -Dm644 "${i}" "${pkgdir}/usr/lib/mame/shader/${i}"; done)
+  install -Dm644 uismall.bdf "${pkgdir}/usr/lib/mame/fonts/uismall.bdf"
 
   # Install man
   (cd docs/man/; for i in $(find . -type f -name '*.1'); do install -Dm644 "${i}" "${pkgdir}/usr/share/man/man1/${i}"; done)
@@ -119,8 +121,7 @@ package() {
 
   # documentation
   (cd docs; make BUILDDIR="${pkgdir}/usr/share/doc/${pkgname}" html)
-  cd "${pkgdir}/usr/share/doc/${pkgname}"
-  for i in $(find . -type f); do
+  for i in $(find "${pkgdir}/usr/share/doc/${pkgname}" -type f); do
     sed -e "s|${srcdir}||g" \
         -e "s|${pkgdir}||g" \
         -i "${i}"

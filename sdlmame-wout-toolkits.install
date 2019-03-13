@@ -6,12 +6,12 @@ green="${bold}$(tput setaf 2)"
 
 post_upgrade() {
   printf "${yellow}==>${all_off} ${bold}ATENTION:${all_off}
-${green}==>${all_off} ${bold}SDLMAME has been updated.${all_off}
+${green}==>${all_off} ${bold}MAME has been updated.${all_off}
   ${blue}->${all_off} If you are upgrading directly from ${bold}0.117${all_off} or ${bold}earlier${all_off},
      ${bold}you must delete all .cfg files${all_off} and ${bold}re-configure your controllers${all_off}.
      You should also run:
 
-     '$ ${bold}sdlmame --newini${all_off}'
+     '$ ${bold}mame --newini${all_off}'
 
      to force the script to create a new ini
      file with default settings at '${bold}~/.mame/mame.ini${all_off}'
