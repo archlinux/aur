@@ -1,7 +1,7 @@
 pkgbase = ruby-declarative
 	pkgdesc = DSL for nested schemas.
 	pkgver = 0.0.10
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	license = MIT
 	depends = ruby
