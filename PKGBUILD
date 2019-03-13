@@ -4,7 +4,7 @@
 _gemname=atomos
 pkgname=ruby-$_gemname
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple gem to atomically write files'
 arch=(any)
 url='http://github.com/segiddins/atomos'
