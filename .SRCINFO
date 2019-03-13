@@ -1,12 +1,12 @@
 pkgbase = beefy-miracle-backgrounds
 	pkgdesc = Fedora 17 (Beefy Miracle) backgrounds.
 	pkgver = 16.91.0
-	pkgrel = 5
+	pkgrel = 14
 	url = https://fedoraproject.org/wiki/Wallpapers#Fedora_17
 	arch = any
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/b/beefy-miracle-backgrounds-16.91.0-13.fc29.src.rpm
-	sha256sums = 6eedd30c4c03c952be10d0823b831f2a32f7b2095ccc790555356d953b0600ab
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/b/beefy-miracle-backgrounds-16.91.0-14.fc30.src.rpm
+	sha256sums = 569f7e90d81b352442a1e6836c069098895e08aa075e98cd770318786c70a7bb
 
 pkgname = beefy-miracle-backgrounds
 
