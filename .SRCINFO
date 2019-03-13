@@ -1,7 +1,7 @@
 pkgbase = ruby-xcpretty-travis-formatter
 	pkgdesc = xcpretty custom formatter for TravisCI
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kattrali/xcpretty-travis-formatter
 	arch = any
 	license = MIT
