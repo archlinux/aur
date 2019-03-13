@@ -1,8 +1,8 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=code-server
-pkgver=1.31.1_100
-pkgrel=2
+pkgver=1.32.0_245
+pkgrel=1
 pkgdesc="Run VS Code on a remote server"
 arch=('x86_64')
 url="https://github.com/codercom/code-server"
