@@ -9,7 +9,7 @@
 
 pkgname=('python-dlib-cuda' 'python2-dlib-cuda')
 _pkgname='dlib'
-pkgver=19.16
+pkgver=19.17
 pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques."
 arch=('x86_64')
@@ -23,41 +23,44 @@ optdepends=('cblas: for BLAS support'
             'libjpeg-turbo: for JPEG support'
             'libpng: for PNG support'
             'neon: for neon support'
-            'sqlite: for sqlite support')
+            'sqlite: for sqlite support'
+            'ccache-ext: for ccache support during compiling')
 source=("http://dlib.net/files/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('37308406c2b1459a70f21ec2fd7bdc922277659534c708323cb28d6e8e4764a8')
+sha256sums=('24772f9b2b99cf59a85fd1243ca1327cbf7340d83395b32a6c16a3a16136327b')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
   _compiler_opts=()
   # Detecting whether certain cpu optimisations can be made
-  if grep -q avx /proc/cpuinfo; then
-    _compiler_opts+=( '--yes' 'USE_AVX_INSTRUCTIONS' )
+  # Note: from dlib version 19.17 the default is to enable all options, so this
+  # is a check if they need to be turned off 
+  if ! grep -q avx /proc/cpuinfo; then
+    _compiler_opts+=( '--no' 'USE_AVX_INSTRUCTIONS' )
   fi
 
-  if grep -q sse2 /proc/cpuinfo; then
-    _compiler_opts+=( '--yes' 'USE_SSE2_INSTRUCTIONS' )
+  if ! grep -q sse2 /proc/cpuinfo; then
+    _compiler_opts+=( '--no' 'USE_SSE2_INSTRUCTIONS' )
   fi
 
-  if grep -q sse4 /proc/cpuinfo; then
-    _compiler_opts+=( '--yes' 'USE_SSE4_INSTRUCTIONS' )
+  if ! grep -q sse4 /proc/cpuinfo; then
+    _compiler_opts+=( '--no' 'USE_SSE4_INSTRUCTIONS' )
   fi
 
   # Checking if neon is installed
-  if [[ -f '/usr/lib/libneon.so' ]]; then
-    _compiler_opts+=( '--yes' 'USE_NEON_INSTRUCTIONS' )
+  if [[ ! -f '/usr/lib/libneon.so' ]]; then
+    _compiler_opts+=( '--no' 'USE_NEON_INSTRUCTIONS' )
   fi
 
   # Preparing array of variables setting the compiler for CUDA and optionally
   # ccache support.
   # Code based on the dlib package found in the AUR.
-  # To enable ccache support you need to install the following package:
-  # https://github.com/pingplug/PKGBUILDs/tree/master/others/ccache-ext
-  _compiler_vars=( '--set' 'CUDA_HOST_COMPILER=/opt/cuda/bin/gcc' )
+  _compiler_vars=()
   if [[ -f "/usr/lib/ccache/bin/nvcc-ccache" ]]; then
     _compiler_vars+=( '--set' 'CUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache' )
     _compiler_vars+=( '--set' 'CUDA_HOST_COMPILER=/usr/lib/ccache/bin/gcc-7' )
+  else
+    _compiler_vars+=( '--set' 'CUDA_HOST_COMPILER=/opt/cuda/bin/gcc' )
   fi
 
   # Compiling for Python 3
