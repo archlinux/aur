@@ -3,7 +3,7 @@
 _gemname=digest-crc
 pkgname=ruby-${_gemname}
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds support for calculating Cyclic Redundancy Check (CRC) to the Digest module."
 arch=('any')
 depends=(ruby)

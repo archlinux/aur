@@ -1,7 +1,7 @@
 pkgbase = ruby-digest-crc
 	pkgdesc = Adds support for calculating Cyclic Redundancy Check (CRC) to the Digest module.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rubygems.org/gems/digest-crc
 	arch = any
 	license = MIT
