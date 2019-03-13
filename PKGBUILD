@@ -12,7 +12,7 @@ checkdepends=('gflags')
 optdepends=()
 provides=('parquet-cpp')
 conflicts=('parquet-cpp')
-makedepends=('cmake' 'boost' 'brotli' 'double-conversion' 'flatbuffers-static' 'gflags-static' 'google-glog-static' 'lz4-static' 'zlib-static' 'zstd-static' 'snappy-static')
+makedepends=('cmake' 'boost' 'brotli' 'double-conversion' 'flatbuffers-static' 'gflags-static' 'google-glog-static' 'lz4-static' 'python-numpy' 'zlib-static' 'zstd-static' 'snappy-static')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz")
 sha256sums=('aae68622edc3dcadaa16b2d25ae3f00290d5233100321993427b03bcf5b1dd3b')
 
