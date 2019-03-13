@@ -8,31 +8,6 @@ pkgdesc='Network recon framework'
 arch=('any')
 url='https://ivre.rocks/'
 license=('GPL3')
-depends=('python' 'python-pymongo' 'python-future' 'python-bottle')
-optdepends=('python-py2neo: experimental flow analysis (Neo4j backend)'
-            'python-sqlalchemy: experimental PostgreSQL & SQLite backends'
-            'python-psycopg2: experimental PostgreSQL backend'
-            'python-pillow: trim screenshots on insertion'
-            'tesseract: extract words from screenshots on insertion'
-            'python-crypto: extract data from public keys ("ivre getmoduli")'
-            'python-scapy: parse PCAP files for ARP inspection (flow analysis)'
-            'python-matplotlib: create graphs from command line tools'
-            'python-dbus: 3D traceroute graphs'
-            'mongodb: database server'
-            'postgresql: database server (experimental backend)'
-            'neo4j-community: database server (experimental flow analysis)'
-            'apache: Web server'
-            'mod_wsgi: Web server'
-            'dokuwiki: Web server (notebook)'
-            'nmap: Network scan'
-            'masscan: Network scan'
-            'zmap: Network scan'
-            'bro: Network traffic analysis'
-            'argus: Network traffic analysis'
-            'nfdump: Netflow analysis'
-            'imagemagick: Screenshots via Nmap scripts'
-            'phantomjs: HTTP screenshots via Nmap script'
-            'ffmpeg: RTSP Screenshots via Nmap script')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/cea-sec/$pkgname/v$pkgver/pkg/apache/ivre.conf")
