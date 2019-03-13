@@ -2,13 +2,13 @@
 
 pkgname=swaylock-blur-git
 _pkgname=${pkgname%-git}
-pkgver=r6.2011a78
+pkgver=r9.62baed6
 pkgrel=1
 pkgdesc="A small Rust program that runs swaylock and sets the image to a blurred screenshot of the desktop"
 arch=("any")
 url="https://github.com/cjbassi/swaylock-blur"
 license=("MIT")
-depends=("swaylock" "imagemagick" "grim" "sway")
+depends=("swaylock" "ffmpeg" "grim" "sway")
 makedepends=("git" "cargo")
 provides=(${_pkgname})
 conflicts=(${_pkgname})

@@ -1,6 +1,6 @@
 pkgbase = swaylock-blur-git
 	pkgdesc = A small Rust program that runs swaylock and sets the image to a blurred screenshot of the desktop
-	pkgver = r6.2011a78
+	pkgver = r9.62baed6
 	pkgrel = 1
 	url = https://github.com/cjbassi/swaylock-blur
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = swaylock-blur-git
 	makedepends = git
 	makedepends = cargo
 	depends = swaylock
-	depends = imagemagick
+	depends = ffmpeg
 	depends = grim
 	depends = sway
 	provides = swaylock-blur
