@@ -1,6 +1,6 @@
 pkgbase = libdcp
 	pkgdesc = A small C++ library which can create and read Digital Cinema Packages using JPEG2000 and WAV files
-	pkgver = 1.5.7
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = http://carlh.net/libdcp
 	arch = i686
@@ -16,12 +16,12 @@ pkgbase = libdcp
 	depends = xmlsec
 	depends = imagemagick
 	depends = openjpeg2
-	depends = libcxml>=0.15.5
+	depends = libcxml>=0.16.1
 	depends = libsigc++>=2.0
 	depends = boost-libs>=1.66.0
 	depends = libasdcp-cth>=0.1.3
-	source = http://carlh.net/downloads/libdcp/libdcp-1.5.7.tar.bz2
-	sha512sums = ea5a18627021a3514cdc9a1934f457b19731c29355566c15715cedfd18a996a3dc26aeb3e38f32951c5da4cda9b609afed1532600020f02911668ef56b8088f9
+	source = http://carlh.net/downloads/libdcp/libdcp-1.6.4.tar.bz2
+	sha512sums = 0dfc0fe83191331742be7c2ca6137f5f81dc85122980b69f9961b7a22d88b8d595771299b5dd871f06c26bc4863ca9ff839a077f3f8a6338dbc36f165df19abc
 
 pkgname = libdcp
 
