@@ -3,23 +3,20 @@
 # Maintainer: Emanuel Fernandes <efernandes@tektorque.com>
 
 pkgname=studio-3t
-pkgver=2018.6.1
+pkgver=2019.1.0
 pkgrel=2
 pkgdesc="The professional workspace for MongoDB (formerly known as MongoChef)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://studio3t.com"
 license=("custom")
-depends_i686=('java-runtime-openjdk=8' 'java-openjfx')
 depends=('gtk2')
 makedepends=('gendesk' 'unzip')
 provides=('studio-3t')
 replaces=('mongochef')
 
-source_i686=("$pkgname-$pkgver.tar.gz::https://download.studio3t.com/studio-3t/linux/${pkgver}/${pkgname}-linux-x86-no-shell.tar.gz")
-source_x86_64=("$pkgname-$pkgver.tar.gz::https://download.studio3t.com/studio-3t/linux/${pkgver}/${pkgname}-linux-x64.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://download.studio3t.com/studio-3t/linux/${pkgver}/${pkgname}-linux-x64.tar.gz")
             
-sha256sums_i686=('d528914393520670132deef47ddbc8f04120f5df81f6fa77cbdeac7cdfa77188')
-sha256sums_x86_64=('f4dde76b4407f63a0ca4f04cac9318aec3ba6be56e54a601810a616f3698dfae')
+sha256sums=('df1ee4eba40317d30add2a7174e3913c7117ea75c5a741e4b19264a9809e4282')
 
 prepare() {
     # Extract, rename and add execution permision
