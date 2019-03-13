@@ -1,8 +1,9 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=code-server-cp
-pkgver=1.32.0_245
+pkgver=1.31.1_100
 pkgrel=3
+epoch=1
 pkgdesc="This is a test, DO NOT install this"
 conflicts=(code-server)
 replaces=(code-server)
