@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="odio"
-pkgver=19.3.7.226
+pkgver=19.3.7.227
 pkgrel=1
 pkgdesc="Audio compression tool for FLAC and Nero AAC"
 arch=("any")
@@ -15,19 +15,19 @@ options=("!emptydirs")
 
 pkgver()
 {
-    cd $srcdir/trunk
+    cd trunk
     echo "$(cat ${pkgname}/appdata.py | grep APPVERSION | sed 's| ||g' | sed "s|'||g" | cut -f '2' -d '=').$(bzr revno)"
 }
 
 build()
 {
-    cd ${srcdir}/trunk
+    cd trunk
     python setup.py build
 }
 
 package()
 {
-    cd ${srcdir}/trunk
+    cd trunk
 	python setup.py install --root="${pkgdir}" --optimize=1
 
 }

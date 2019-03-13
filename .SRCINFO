@@ -1,6 +1,6 @@
 pkgbase = odio
 	pkgdesc = Audio compression tool for FLAC and Nero AAC
-	pkgver = 19.3.7.226
+	pkgver = 19.3.7.227
 	pkgrel = 1
 	url = https://tari.in/www/software/odio
 	arch = any
