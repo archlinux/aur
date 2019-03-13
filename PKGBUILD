@@ -10,10 +10,6 @@ license=(MIT)
 source=(https://github.com/codercom/code-server/releases/download/${pkgver//_/-}/code-server-${pkgver//_/-}-linux-x64.tar.gz)
 sha512sums=('dff9e1288a71f3f295f6d767665214487a33223548f4cde4b04acf701b8154fac827d29ceaefe9182ed020afe758d7592d29755d1960641832afb08ad0b2c3ee')
 
-build() {
-  cd "$srcdir/code-server-${pkgver//_/-}-linux-x64"
-}
-
 package() {
   cd "$srcdir/code-server-${pkgver//_/-}-linux-x64"
 
