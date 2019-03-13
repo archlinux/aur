@@ -1,7 +1,7 @@
 pkgbase = ruby-colored2
 	pkgdesc = Add even more color to your life.
 	pkgver = 3.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/kigster/colored2
 	arch = any
 	license = MIT
