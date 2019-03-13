@@ -6,14 +6,16 @@ pkgbase = python-pivy
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
+	makedepends = cmake
+	makedepends = swig
 	depends = python
 	depends = coin
-	depends = python
+	depends = qt5-base
 	source = https://github.com/FreeCAD/pivy/archive/0.6.5a0.tar.gz
 	md5sums = 63efa3bd078868c25a5efbd0c7707efd
 
 pkgname = python-pivy
 	depends = python
 	depends = coin
-	depends = python
+	depends = qt5-base
 

@@ -1,3 +1,5 @@
+# Maintainer: Grey Christoforo <first name at last name dot net>
+
 pkgname=python-pivy
 _module='pivy'
 pkgver=0.6.4
@@ -5,8 +7,8 @@ _RC="0.6.5a0"
 pkgrel=1
 pkgdesc="A Python binding for Coin"
 url="http://pivy.coin3d.org/"
-depends=('python' 'coin' 'python')
-makedepends=('python-setuptools')
+depends=('python' 'coin' 'qt5-base')
+makedepends=('python-setuptools' 'cmake' 'swig')
 license=('BSD')
 arch=('any')
 source=("https://github.com/FreeCAD/pivy/archive/${_RC}.tar.gz")
