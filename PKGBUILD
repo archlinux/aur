@@ -10,6 +10,7 @@ license=('MIT')
 makedepends=('python-setuptools')
 source=(https://github.com/miyuchina/mistletoe/archive/v0.6.2.tar.gz)
 sha256sums=('ea9f89e379f33a14af1093413545c3ff302d1a17710a2f8ee37c7ad70a5072a8')
+conflicts=('python-mistletoe')
 
 package() {
   cd "$srcdir/mistletoe-$pkgver"
