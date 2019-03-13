@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-librviz-tutorial
 	pkgdesc = ROS - Tutorial showing how to compile your own C++ program with RViz displays and features.
-	pkgver = 0.10.1
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = http://ros.org/wiki/librviz_tutorial
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ros-kinetic-librviz-tutorial
 	makedepends = ros-kinetic-catkin
 	depends = ros-kinetic-rviz
 	depends = ros-kinetic-roscpp
-	source = librviz_tutorial::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/kinetic/librviz_tutorial/0.10.1-0
+	source = librviz_tutorial::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/kinetic/librviz_tutorial/0.10.3-0
 	md5sums = SKIP
 
 pkgname = ros-kinetic-librviz-tutorial

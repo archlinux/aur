@@ -4,7 +4,7 @@ pkgdesc="ROS - Tutorial showing how to compile your own C++ program with RViz di
 url='http://ros.org/wiki/librviz_tutorial'
 
 pkgname='ros-kinetic-librviz-tutorial'
-pkgver='0.10.1'
+pkgver='0.10.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
