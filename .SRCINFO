@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-nav-core
 	pkgdesc = ROS - This package provides common interfaces for navigation specific robot actions.
-	pkgver = 1.14.2
+	pkgver = 1.14.4
 	pkgrel = 1
 	url = http://wiki.ros.org/nav_core
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = ros-kinetic-nav-core
 	depends = ros-kinetic-costmap-2d
 	depends = ros-kinetic-tf
 	depends = ros-kinetic-geometry-msgs
-	source = ros-kinetic-nav-core-1.14.2-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/kinetic/nav_core/1.14.2-0.tar.gz
-	sha256sums = 02ed4c277f4e4a42f70a6114e0ca4d50b142240883d358d3801db111964b448c
+	source = ros-kinetic-nav-core-1.14.4-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/kinetic/nav_core/1.14.4-0.tar.gz
+	sha256sums = 79a1fb353d602ec3932a6f4e288034ece55f2b2970025c955624320fc96bd589
 
 pkgname = ros-kinetic-nav-core
 

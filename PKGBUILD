@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides common interfaces for navigation specific r
 url='http://wiki.ros.org/nav_core'
 
 pkgname='ros-kinetic-nav-core'
-pkgver='1.14.2'
+pkgver='1.14.4'
 _pkgver_patch='0'
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="navigation-release-release-kinetic-nav_core-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/nav_core/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('02ed4c277f4e4a42f70a6114e0ca4d50b142240883d358d3801db111964b448c')
+sha256sums=('79a1fb353d602ec3932a6f4e288034ece55f2b2970025c955624320fc96bd589')
 
 build() {
   # Use ROS environment variables
