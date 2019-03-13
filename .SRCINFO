@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-visualization-marker-tutorials
 	pkgdesc = ROS - The visulalization_marker_tutorials package.
-	pkgver = 0.10.1
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = http://ros.org/wiki/visualization_marker_tutorials
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ros-kinetic-visualization-marker-tutorials
 	makedepends = ros-kinetic-catkin
 	depends = ros-kinetic-visualization-msgs
 	depends = ros-kinetic-roscpp
-	source = visualization_marker_tutorials::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/kinetic/visualization_marker_tutorials/0.10.1-0
+	source = visualization_marker_tutorials::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/kinetic/visualization_marker_tutorials/0.10.3-0
 	md5sums = SKIP
 
 pkgname = ros-kinetic-visualization-marker-tutorials
