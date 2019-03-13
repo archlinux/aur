@@ -1,0 +1,7 @@
+post_install() {
+    printf "\e[1;34m --> \e[0mInstalled: BlackEye Version %s by \"TheLinuxChoice\"\n" ${1%-*}
+    printf "\e[1;34m --> \e[0m           https://github.com/thelinuxchoice/blackeye\n"
+    printf "\e[1;34m --> \e[31mWARNING:   \e[33mBLACKEYE WILL ONLY WORK ON LAN !\n"
+    printf "\e[1;34m --> \e[0;33m           This tool was made for educational purposes.\e[0m\n"
+}
+
