@@ -3,7 +3,7 @@
 pkgdesc="ROS - SBPL Lattice Planner  provides a path planning algorithm for ROS"
 
 pkgname='ros-kinetic-sbpl-lattice-planner'
-pkgver='0.1.10'
+pkgver='0.3.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -24,7 +24,7 @@ depends=(${ros_depends[@]}
 
 # Git version (e.g. for debugging)
 _dir=${pkgname}
-source=("${_dir}"::"git+https://github.com/trainman419/sbpl_lattice_planner.git")
+source=("${_dir}"::"git+https://github.com/ros-planning/navigation_experimental.git")
 sha256sums=('SKIP')
 options=('!makeflags')  
 
@@ -41,7 +41,7 @@ build() {
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
 
   # Build project
-  cmake ${srcdir}/${pkgname} \
+  cmake ${srcdir}/${pkgname}/sbpl_lattice_planner \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/kinetic \

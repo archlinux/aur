@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-sbpl-lattice-planner
 	pkgdesc = ROS - SBPL Lattice Planner provides a path planning algorithm for ROS
-	pkgver = 0.1.10
+	pkgver = 0.3.2
 	pkgrel = 1
 	arch = any
 	license = BSD
@@ -17,7 +17,7 @@ pkgbase = ros-kinetic-sbpl-lattice-planner
 	depends = ros-kinetic-message-generation
 	depends = python2-rospkg
 	options = !makeflags
-	source = ros-kinetic-sbpl-lattice-planner::git+https://github.com/trainman419/sbpl_lattice_planner.git
+	source = ros-kinetic-sbpl-lattice-planner::git+https://github.com/ros-planning/navigation_experimental.git
 	sha256sums = SKIP
 
 pkgname = ros-kinetic-sbpl-lattice-planner
