@@ -1,16 +1,16 @@
 pkgbase = pingo-bin
 	pkgdesc = An experimental, fast Web PNG/JPG optimizer with visually lossless or lossy compression (unix binary)
-	pkgver = 0.99.beta18
+	pkgver = 0.99.beta21
 	pkgrel = 1
 	url = https://css-ig.net/pingo
 	arch = x86_64
 	license = unknown
 	provides = pingo
 	conflicts = pingo
-	noextract = pingo-nix-0.99.beta18.zip
+	noextract = pingo-nix-0.99.beta21.zip
 	options = !strip
-	source = pingo-nix-0.99.beta18.zip::https://css-ig.net/downloads/zip/pingo-nix.zip
-	sha256sums = 14f84c8f7c7a112b8b55b7d37f9da6f52b4f8c78b6aaa2378b120b61605966b4
+	source = pingo-nix-0.99.beta21.zip::https://css-ig.net/downloads/zip/pingo-nix.zip
+	sha256sums = 0073d9859e04323c03ecfe40c9df67bd72397b67344fd11bcddad214af7d9101
 
 pkgname = pingo-bin
 
