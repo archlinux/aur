@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="unity-mail"
-pkgver=19.3.5.139
+pkgver=19.3.7.144
 pkgrel=1
 pkgdesc="Mail notifications and count for Unity/MATE/Xfce/LXDE/etc."
 arch=("any")
@@ -17,19 +17,19 @@ md5sums=("SKIP")
 
 pkgver()
 {
-    cd $srcdir/trunk
+    cd trunk
     echo "$(cat ${pkgname/\-/}/appdata.py | grep APPVERSION | sed 's| ||g' | sed "s|'||g" | cut -f '2' -d '=').$(bzr revno)"
 }
 
 build()
 {
-    cd ${srcdir}/trunk
+    cd trunk
     python setup.py build
 }
 
 package()
 {
-    cd ${srcdir}/trunk
+    cd trunk
 	python setup.py install --root="${pkgdir}" --optimize=1
 
 }
