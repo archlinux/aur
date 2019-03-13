@@ -1,9 +1,11 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
-pkgname=code-server
+pkgname=code-server-cp
 pkgver=1.32.0_245
 pkgrel=3
 pkgdesc="This is a test, DO NOT install this"
+conflicts=(code-server)
+replaces=(code-server)
 arch=('x86_64')
 url="https://github.com/codercom/code-server"
 license=(MIT)

@@ -1,12 +1,14 @@
-pkgbase = code-server
+pkgbase = code-server-cp
 	pkgdesc = This is a test, DO NOT install this
 	pkgver = 1.32.0_245
 	pkgrel = 3
 	url = https://github.com/codercom/code-server
 	arch = x86_64
 	license = MIT
+	conflicts = code-server
+	replaces = code-server
 	source = https://github.com/codercom/code-server/releases/download/1.32.0-245/code-server-1.32.0-245-linux-x64.tar.gz
 	sha512sums = SKIP
 
-pkgname = code-server
+pkgname = code-server-cp
 
