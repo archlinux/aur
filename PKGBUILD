@@ -4,27 +4,32 @@
 # Contributor: Ernia <monghitri@aruba.it>
 
 pkgname=yad-gtk2
-pkgver=0.40.0
+pkgver=0.42.0
 pkgrel=1
 pkgdesc='A fork of zenity - display graphical dialogs from shell scripts or command line - for gtk2'
-url='http://sourceforge.net/projects/yad-dialog'
+url='https://github.com/v1cont/yad'
 arch=('x86_64' 'i686')
 license=('GPL3')
 depends=('gtk2')
 provides=('yad')
 conflicts=('yad')
 makedepends=('intltool')
-source=($url/files/${pkgname%-gtk2}-${pkgver}.tar.xz)
-sha256sums=('c2d0b7d1b6d3a0877299faa00db75d58c974f81fce72d520a3a84e67d1d60ef4')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('700b11f449b63ec1bc8fecf0d2df3ed18bc7078472de0f3ee034c28e3e096eb61559529cc094c76fc8a9959bbb3e5f159d621ad9739d857b0d9b8d7ff386deaa')
 
 build() {
 	cd "${srcdir}/${pkgname%-gtk2}-${pkgver}"
 
+	autoreconf -ivf
+	intltoolize
 	./configure \
 		--prefix=/usr \
 		--with-gtk=gtk2 \
 		--disable-icon-browser \
-		--disable-html
+		--disable-html \
+		--enable-gio \
+		--enable-spell \
+		--enable-sourceview
 
 	make
 }
