@@ -3,7 +3,7 @@
 
 pkgname=python-isbnlib
 _pyname="${pkgname#python-}"
-pkgver=3.9.1
+pkgver=3.9.6
 pkgrel=1
 pkgdesc='Extract, clean, transform, hyphenate and metadata for ISBNs'
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL3')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://github.com/xlcnd/$_pyname/archive/v$pkgver.tar.gz")
-sha256sums=('a2b9638c68e2db899c0d6cbf8531c3ed0171746708cb53755e5d6fff08b77331')
+sha256sums=('6d77ade297963fc0def10c856db154f3ed76682533d832746a58a6b3bce71d30')
 
 package(){
     cd "$_pyname-$pkgver"
