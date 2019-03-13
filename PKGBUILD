@@ -4,7 +4,7 @@
 _gemname=claide
 pkgname=ruby-$_gemname
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A small command-line interface framework.'
 arch=(any)
 url='https://github.com/CocoaPods/CLAide'

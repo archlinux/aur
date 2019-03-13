@@ -1,7 +1,7 @@
 pkgbase = ruby-claide
 	pkgdesc = A small command-line interface framework.
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/CocoaPods/CLAide
 	arch = any
 	license = MIT
