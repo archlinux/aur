@@ -20,7 +20,7 @@ pkgbase = python-emcee-git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	optdepends = python2-pytest
-	source = python-emcee-git::git+https://github.com/dfm/emcee.git#tag=v2.2.1
+	source = python-emcee::git+https://github.com/dfm/emcee.git#tag=v2.2.1
 	md5sums = SKIP
 
 pkgname = python-emcee-git

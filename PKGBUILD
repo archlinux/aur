@@ -1,6 +1,6 @@
 # Maintainer: Andres Alejandro Navarro Alsina <aanavarroa@unal.edu.co>
 # Contributor: Dan Foreman-Mackey
-_pkgname=python-emcee-git 
+_pkgname=python-emcee
 pkgbase=python-emcee-git
 pkgname=("python-emcee-git" "python2-emcee-git")
 pkgver=v2.2.1.r0.g67c8f79
@@ -35,10 +35,10 @@ build() {
 
 check() {
 	#python -c 'import emcee; emcee.test()'
-	cd "$srcdir"/$pkgbase/emcee
+	cd "$srcdir"/$_pkgname/emcee
 	nosetests -v || warning 'Tests failed'
 
-	cd "$srcdir"/$pkgbase-py2/emcee
+	cd "$srcdir"/$_pkgname-py2/emcee
 	nosetests2 -v || warning 'Tests2 failed'
 }
 
