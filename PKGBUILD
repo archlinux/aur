@@ -1,10 +1,10 @@
 # Maintainer: Blooser <blooser@protonmail.com>
 pkgname=gemini
-pkgver=1.14.2
+pkgver=1.14.3
 pkgrel=1
 pkgdesc="Graphical audio player"
 arch=('x86_64')
-md5sums=('05deac68c12690a5ae015dd366b99443')
+md5sums=('dfc20a729026230e2a4119fa86972081')
 url="https://github.com/blooser/gemini"
 license=('MIT')
 depends=('mpv' 'youtube-dl' 'qt5-base' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'python')
@@ -46,5 +46,7 @@ package() {
 		echo "alias gemini=${binlocation}/Gemini" >> ~/.bashrc	
 	fi	
 }
+
+
 
 
