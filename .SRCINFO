@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-rviz-python-tutorial
 	pkgdesc = ROS - Tutorials showing how to call into rviz internals from python scripts.
-	pkgver = 0.10.1
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = http://ros.org/wiki/rviz_python_tutorial
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ros-kinetic-rviz-python-tutorial
 	makedepends = ros-kinetic-rviz
 	makedepends = ros-kinetic-catkin
 	depends = ros-kinetic-rviz
-	source = rviz_python_tutorial::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/kinetic/rviz_python_tutorial/0.10.1-0
+	source = rviz_python_tutorial::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/kinetic/rviz_python_tutorial/0.10.3-0
 	md5sums = SKIP
 
 pkgname = ros-kinetic-rviz-python-tutorial
