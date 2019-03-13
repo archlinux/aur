@@ -1,7 +1,7 @@
 pkgbase = ruby-xcpretty
 	pkgdesc = xcodebuild formatter done right
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/supermarin/xcpretty
 	arch = any
 	license = MIT
