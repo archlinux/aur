@@ -1,6 +1,6 @@
 pkgbase = go-langserver-git
 	pkgdesc = go-langserver is a Go language server that speaks Language Server Protocol. It supports editor features such as go-to-definition, hover, and find-references for Go projects.
-	pkgver = v2.0.0.r49.gf9fdcbb3
+	pkgver = v2.0.0.r49.gf9fdcbb
 	pkgrel = 1
 	url = https://github.com/sourcegraph/go-langserver
 	arch = any
