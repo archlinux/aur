@@ -2,8 +2,8 @@
 # Contributor: synapse84 <synapse84 at gmail dot com>
 
 pkgname=mumble-snapshot
-pkgver=1.3.0_2868_g44b9004
-pkgrel=3
+pkgver=1.3.0_2942_g755c290
+pkgrel=1
 pkgdesc="A high quality voice chat program."
 arch=('i686' 'x86_64')
 url="https://www.mumble.info/"
@@ -13,10 +13,17 @@ makedepends=('boost' 'qt5-tools' 'python' 'libsndfile' 'speech-dispatcher')
 optdepends=('espeak: speech synthesizer')
 provides=('mumble')
 conflicts=('mumble')
-source=("https://dl.mumble.info/mumble-${pkgver//_/\~}~snapshot.tar.gz"{,.sig})
-validpgpkeys=('F3F5324A14AD0B32568F7839F0413B5CB858BD0E')
-sha256sums=('28ba96277537376c7eee12a93832ba4a5909ec4833ab648d74de84b778d1275d'
-            'SKIP')
+source=("https://dl.mumble.info/mumble-${pkgver//_/\~}~snapshot.tar.gz"
+        "https://github.com/mumble-voip/mumble/commit/ce0ecff200dd6e57a13c67b189406318595b52fb.patch")
+# Disable signature verification for now, since public key is not available
+#validpgpkeys=('F3F5324A14AD0B32568F7839F0413B5CB858BD0E')
+sha256sums=('209cc0680fcf90adc8d374a0f73a932c3a3dfa71611d2a78a3036121e67f78a2'
+            'af078c71af9a2892254c7104b1f6a73d98b2df03927b74c08f64f6f6d6826cc3')
+
+prepare() {
+    cd $srcdir/mumble-${pkgver//_/\~}~snapshot
+    patch --forward --strip=1 --input="${srcdir}/ce0ecff200dd6e57a13c67b189406318595b52fb.patch"
+}
 
 build() {
     cd $srcdir/mumble-${pkgver//_/\~}~snapshot
