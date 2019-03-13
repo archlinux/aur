@@ -1,12 +1,14 @@
 pkgbase = autotrace
 	pkgdesc = An utility to trace bitmaps: convert bitmaps to vector graphics
 	pkgver = 0.40.0.20190108.39
-	pkgrel = 2
-	url = http://autotrace.sourceforge.net/
+	pkgrel = 3
+	url = https://github.com/autotrace/autotrace.git
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL
+	makedepends = intltool
+	makedepends = libmagick6
 	depends = libpng
 	depends = pstoedit
 	options = !libtool
