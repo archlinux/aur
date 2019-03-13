@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides service calls for getting ros meta-information, like lis
 url='http://ros.org/wiki/rosapi'
 
 pkgname='ros-kinetic-rosapi'
-pkgver='0.7.17'
+pkgver='0.10.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
