@@ -1,16 +1,16 @@
-pkgbase = konica-minolta-bizhub-bhc360
-	pkgdesc = CUPS PostScript printer driver for bizhub C220 C280 C360
-	pkgver = 10000.0001
+pkgbase = konica-minolta-bizhub-bh423-series
+	pkgdesc = CUPS PostScript printer driver for bizhub 423 series (423/363/283/223)
+	pkgver = 100000000
 	pkgrel = 1
 	url = https://www.konicaminolta.eu/en/business-solutions/support/download-center.html
 	arch = any
 	license = custom:konica minolta commercial license
 	makedepends = gzip
 	depends = cups
-	source = https://o.cses.konicaminolta.com/file/Default.aspx?FilePath=DL/201111/15083233/BHC360PPDLinux_100000001MU.zip
+	source = https://o.cses.konicaminolta.com/file/Default.aspx?FilePath=DL/201201/12063342/BH423PPDLinux_100000000MU.zip
 	source = LICENSE
-	sha256sums = 774e85ae0e7e19f0160891d2a2bf5b85563ca3348e51c2ba0d93c20b879006bb
+	sha256sums = 93004629b073ee415abef28288c3ebb9f86b05c844db57bcb6b973a1cc05ccc0
 	sha256sums = a3dcdd6459b4a376c61ad8c69ced0f356581229b39b209debe1679749824c408
 
-pkgname = konica-minolta-bizhub-bhc360
+pkgname = konica-minolta-bizhub-bh423-series
 
