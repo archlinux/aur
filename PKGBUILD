@@ -1,6 +1,6 @@
 # Maintainer: Lorenzo Fontana <lo@linux.com>
 pkgname=coredns-bin
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="CoreDNS is a DNS server that chains plugins (official binary version)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(coredns_x64_${pkgver}.tar.gz::https://github.com/coredns/coredns/release
 coredns.service
 coredns-sysusers.conf)
 
-sha256sums=('1e88337650de8c878ab30a0d06adbf83c46c1cbea0d7d98f7f40c0346c39eed6'
+sha256sums=('a42b7e06ad194a143927efc7f7dcee773509a0fefc348acacaa30f3a3144057a'
 '030cd8e938c293c11a9acdb09b138f98b37874772072336792ec4bf0d9eff9b1'
 '536d03f8b20b0d2d6e8f96edd7e4e4dd7f6fef39ab0e952522d8725f3cc186b7')
 
