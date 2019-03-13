@@ -1,7 +1,7 @@
 pkgbase = ruby-fastimage
 	pkgdesc = FastImage - Image info fast
 	pkgver = 2.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/sdsykes/fastimage
 	arch = any
 	license = MIT
