@@ -3,7 +3,7 @@
 _gemname=rouge
 pkgname=ruby-$_gemname-2.0
 pkgver=2.0.7
-pkgrel=3
+pkgrel=4
 pkgdesc='Rouge aims to a be a simple, easy-to-extend drop-in replacement for pygments.'
 arch=(any)
 url='http://rouge.jneen.net/'
