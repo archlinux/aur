@@ -6,8 +6,8 @@
 # Contributor: Malte Rabenseifner <malte@zearan.de>
 
 pkgname=murmur-snapshot-ice
-pkgver=1.3.0_2868_g44b9004
-pkgrel=2
+pkgver=1.3.0_2942_g755c290
+pkgrel=1
 pkgdesc="The voice chat application server for Mumble (development snapshot)"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.mumble.info/wiki/"
@@ -19,15 +19,21 @@ conflicts=('murmur' 'murmur-static' 'murmur-ice' 'murmur-snapshot-noice')
 provides=('murmur')
 backup=("etc/murmur.ini")
 install=murmur.install
-source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz"{,.sig}
+source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz"
+	"https://github.com/mumble-voip/mumble/commit/ce0ecff200dd6e57a13c67b189406318595b52fb.patch"
 	murmur.tmpfilesd
 	murmur.sysusers)
-sha256sums=('28ba96277537376c7eee12a93832ba4a5909ec4833ab648d74de84b778d1275d'
-            'SKIP'
+sha256sums=('209cc0680fcf90adc8d374a0f73a932c3a3dfa71611d2a78a3036121e67f78a2'
+            'af078c71af9a2892254c7104b1f6a73d98b2df03927b74c08f64f6f6d6826cc3'
             '25bf2dbd7574459724b4621fb93c09484dc7520297fa1d0f247a19b592d8cb8e'
             'ff58059e77eb73a5c9ad8eb4ad8d8d7c865f3ae1fb6cb236a729f742da95d83d')
-validpgpkeys=('F3F5324A14AD0B32568F7839F0413B5CB858BD0E')
+#validpgpkeys=('F3F5324A14AD0B32568F7839F0413B5CB858BD0E')
 options=('emptydirs')
+
+prepare() {
+    cd $srcdir/mumble-${pkgver//_/\~}~snapshot
+    patch --forward --strip=1 --input="${srcdir}/ce0ecff200dd6e57a13c67b189406318595b52fb.patch"
+}
 
 build() {
     cd $srcdir/mumble-${pkgver//_/\~}~snapshot
