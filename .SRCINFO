@@ -1,7 +1,7 @@
 pkgbase = ruby-security
 	pkgdesc = Security
 	pkgver = 0.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mattt.me
 	arch = any
 	depends = ruby
