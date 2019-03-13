@@ -1,9 +1,9 @@
-# Maintainer: Jorge Araya Navarro <jorge@esavara.cr>
+# Maintainer: Jorge Araya Navarro <jorgejavieran@yahoo.com.mx>
 # Contributor: Cristian Porras <porrascristian@gmail.com>
 # Contributor: Matthew Bentley <matthew@mtbentley.us>
 
 pkgname=godot-pulse
-pkgver=3.0.6
+pkgver=3.1
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine, with pulseaudio"
 url="http://www.godotengine.org"
@@ -22,7 +22,7 @@ fi
 source=(
   "https://github.com/godotengine/godot/archive/${pkgver}-stable.tar.gz"
 )
-sha256sums=('50431e021ee5ec21002cc23435f530f8fde518c6eb7085c9f7f1027abaae2581')
+sha256sums=('cd66354b2397f28193ba3add8d8cc5c3562775f662887b56f16de82974f041e3')
 
 build() {
   cd "${srcdir}"/${pkgname%-*}-${pkgver}-stable
@@ -40,7 +40,7 @@ package() {
 
   cd "${srcdir}"
 
-  install -Dm644 "${srcdir}"/${pkgname%-*}-${pkgver}-stable/misc/dist/linux/godot.desktop "${pkgdir}"/usr/share/applications/godot.desktop
+  install -Dm644 "${srcdir}"/${pkgname}-${pkgver}-stable/misc/dist/linux/org.godotengine.Godot.desktop "${pkgdir}"/usr/share/applications/godot.desktop
   install -Dm644 "${srcdir}"/${pkgname%-*}-${pkgver}-stable/icon.svg "${pkgdir}"/usr/share/pixmaps/godot.svg
 
   cd "${srcdir}"/${pkgname%-*}-${pkgver}-stable
