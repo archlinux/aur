@@ -1,7 +1,7 @@
 pkgbase = code-server-noextract
 	pkgdesc = This is a test, DO NOT install this
 	pkgver = 1.32.0_245
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://github.com/codercom/code-server
 	arch = x86_64

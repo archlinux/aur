@@ -2,7 +2,7 @@
 
 pkgname=code-server-noextract
 pkgver=1.32.0_245
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="This is a test, DO NOT install this"
 conflicts=(code-server)
@@ -25,17 +25,20 @@ noextract=(code-server-${pkgver//_/-}-linux-x64.tar.gz)
 #}
 
 package() {
-  # Downloading archive...
+  echo 'Downloading archive...'
   curl -L https://github.com/codercom/code-server/releases/download/${pkgver//_/-}/code-server-${pkgver//_/-}-linux-x64.tar.gz > archive.tar.gz
 
-  # Extracting archive...
+  echo 'Extracting archive...'
   tar xf archive.tar.gz
 
   cd archive
 
-  # Installing...
+  echo 'Installing...'
   install -Dm755 code-server "$pkgdir"/usr/bin/code-server
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  echo 'Sleep for 5 seconds...'
+  sleep 5
 
   #mkdir -p "$pkgdir"/usr/bin
   #mkdir -p "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
