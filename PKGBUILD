@@ -1,7 +1,7 @@
 # Maintainer: Honghao Li <im@rasphino.cn>
 
 pkgname=sublime-merge
-pkgver=1103
+pkgver=1107
 pkgrel=1
 pkgdesc="Meet a new Git Client, from the makers of Sublime Text"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=('smerge'
         https://download.sublimetext.com/sublime_merge_build_${pkgver}_x64.tar.xz.asc)
 
 sha256sums=('ddd804f64fa218d053f00ca82b5bb2625f9812d3530c2f2f88049dac9bb41a7d'
-            '2cb35042663cd6f523d5efd24b8a03bee30ae373fd25ad65eb135fb0077b05a0'
+            '70edbb16529d638ea41a694dbc5b1408c76fcc3a7d663ef0e48b4e89e1f19c71'
             'SKIP')
 
 validpgpkeys=('1EDDE2CDFC025D17F6DA9EC0ADAE6AD28A8F901A')
