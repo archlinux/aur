@@ -1,7 +1,7 @@
 pkgbase = ruby-declarative-option
 	pkgdesc = Dynamic options to evaluate at runtime.
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/apotonick/declarative-option
 	arch = any
 	license = MIT
