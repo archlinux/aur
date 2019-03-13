@@ -4,7 +4,7 @@ pkgdesc="ROS - Metapackage referencing tutorials related to rviz and visualizati
 url='http://ros.org/wiki/visualization_tutorials'
 
 pkgname='ros-kinetic-visualization-tutorials'
-pkgver='0.10.1'
+pkgver='0.10.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1

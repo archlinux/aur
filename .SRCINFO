@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-visualization-tutorials
 	pkgdesc = ROS - Metapackage referencing tutorials related to rviz and visualization.
-	pkgver = 0.10.1
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = http://ros.org/wiki/visualization_tutorials
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ros-kinetic-visualization-tutorials
 	depends = ros-kinetic-visualization-marker-tutorials
 	depends = ros-kinetic-librviz-tutorial
 	depends = ros-kinetic-rviz-plugin-tutorials
-	source = visualization_tutorials::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/kinetic/visualization_tutorials/0.10.1-0
+	source = visualization_tutorials::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/kinetic/visualization_tutorials/0.10.3-0
 	md5sums = SKIP
 
 pkgname = ros-kinetic-visualization-tutorials
