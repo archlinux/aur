@@ -1,0 +1,50 @@
+diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+index cee79cb388af..35d260a4cf46 100644
+--- a/drivers/nvme/host/nvme.h
++++ b/drivers/nvme/host/nvme.h
+@@ -92,6 +92,11 @@
+ 	NVME_QUIRK_MEDIUM_PRIO_SQ		= (1 << 7),
+ 
+ 	/*
++	 * Do not disable nvme when suspending(s2idle)
++	 */
++	NVME_QUIRK_NO_DISABLE			= (1 << 8),
++
++	/*
+ 	 * Ignore device provided subnqn.
+ 	 */
+ 	NVME_QUIRK_IGNORE_DEV_SUBNQN		= (1 << 8),
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index c33bb201b884..13a2d6b2d047 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -31,6 +31,7 @@
+ #include <linux/io-64-nonatomic-lo-hi.h>
+ #include <linux/sed-opal.h>
+ #include <linux/pci-p2pdma.h>
++#include <linux/suspend.h>
+ 
+ #include "trace.h"
+ #include "nvme.h"
+@@ -2896,8 +2897,11 @@
+ {
+ 	struct pci_dev *pdev = to_pci_dev(dev);
+ 	struct nvme_dev *ndev = pci_get_drvdata(pdev);
++	struct nvme_ctrl *ctrl = &ndev->ctrl;
++
++	if (!(pm_suspend_via_s2idle() && (ctrl->quirks & NVME_QUIRK_NO_DISABLE)))
++		nvme_dev_disable(ndev, true);
+ 
+-	nvme_dev_disable(ndev, true);
+ 	return 0;
+ }
+ 
+@@ -3002,6 +3006,8 @@
+ 		.driver_data = NVME_QUIRK_LIGHTNVM, },
+ 	{ PCI_DEVICE(0x1d1d, 0x2601),	/* CNEX Granby */
+ 		.driver_data = NVME_QUIRK_LIGHTNVM, },
++	{ PCI_VDEVICE(SK_HYNIX, 0x1527),   /* Sk Hynix */
++		.driver_data = NVME_QUIRK_NO_DISABLE, },
+ 	{ PCI_DEVICE_CLASS(PCI_CLASS_STORAGE_EXPRESS, 0xffffff) },
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_APPLE, 0x2001) },
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_APPLE, 0x2003) },

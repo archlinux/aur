@@ -1,0 +1,23 @@
+diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
+index 4700d24e5d55..b7e6492e8311 100644
+--- a/drivers/pci/quirks.c
++++ b/drivers/pci/quirks.c
+@@ -1332,6 +1332,7 @@ DECLARE_PCI_FIXUP_CLASS_EARLY(PCI_VENDOR_ID_AL, PCI_ANY_ID,
+    occur when mode detecting */
+ DECLARE_PCI_FIXUP_CLASS_EARLY(PCI_VENDOR_ID_VIA, PCI_ANY_ID,
+ 				PCI_CLASS_STORAGE_IDE, 8, quirk_no_ata_d3);
++DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_SK_HYNIX, 0x1527, quirk_no_ata_d3);
+ 
+ /*
+  * This was originally an Alpha-specific thing, but it really fits here.
+diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
+index 69f0abe1ba1a..5f5adda07de0 100644
+--- a/include/linux/pci_ids.h
++++ b/include/linux/pci_ids.h
+@@ -3090,4 +3090,6 @@
+ 
+ #define PCI_VENDOR_ID_NCUBE		0x10ff
+ 
++#define PCI_VENDOR_ID_SK_HYNIX		0x1c5c
++
+ #endif /* _LINUX_PCI_IDS_H */
