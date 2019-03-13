@@ -7,7 +7,7 @@ pkgname='ros-kinetic-stage'
 pkgver='4.3.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=10
+pkgrel=11
 license=('GPL')
 
 ros_makedepends=()
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]}
 
 _tag=release/kinetic/stage/${pkgver}-${_pkgver_patch}
 _dir=stage
-source=("${_dir}"::"git+https://github.com/rtv/Stage.git")
+source=("${_dir}"::"git+https://github.com/rtv/Stage.git"#commit=0c85412d99ecb134088a2b72d541938e5d0657f1)
 md5sums=('SKIP')
 
 #prepare() {
