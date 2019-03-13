@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_py_console is a Python GUI plugin providing an interactive Py
 url='http://ros.org/wiki/rqt_py_console'
 
 pkgname='ros-kinetic-rqt-py-console'
-pkgver='0.4.5'
+pkgver='0.4.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,9 +30,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="rqt_common_plugins-release-release-kinetic-rqt_py_console-${pkgver}-${_pkgver_patch}"
+_dir="rqt_common_plugins-release-release-kinetic-rqt_py_console"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/kinetic/rqt_py_console/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c5c3a46a9c41dc1832f1d585bbe4433d313f76faa074c20708d02acf994c1588')
+sha256sums=('b3dabf3b28cc88b9849d11f213586cad481eba8e682549f4fa497af403fd9d78')
 
 build() {
   # Use ROS environment variables
