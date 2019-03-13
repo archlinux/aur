@@ -12,7 +12,7 @@ makedepends=('python2' 'boost>=1.66.0')
 provides=('libsub')
 conflicts=('libsub')
 source=("${pkgname}-${pkgver}.tar.bz2::http://carlh.net/downloads/libsub/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('aeb5386e03c4525a019a4c59a931be831e18e37778613225446cc23abd5ea0eb5d9e0881ba301c858ac7770631fea5c4a2325c767a625a274d7fd9d84c2f3859')
+sha512sums=('4d5147f3ed6186ae7c1da3b2ad2787d9d2e49577bf3d097e9ca75c9a5b813984cd0f6c691115836aacf49a5b4fb217eb3447e5e1e7802f5aab8d2ee4d0904b6f')
 
 
 build() {
