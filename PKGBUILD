@@ -4,7 +4,7 @@
 # Contributor: Kenneth Lyons (ixjlyons) <ixjlyons@gmail.com>
 
 pkgname=python-poppler-qt5
-pkgver=0.25.1
+pkgver=0.25.3
 pkgrel=1
 pkgdesc='Python binding to libpoppler-qt5.'
 arch=('any')
@@ -15,7 +15,7 @@ depends=('python-pyqt5' 'poppler-qt5')
 makedepends=('python-sip-pyqt5' 'python-sip' 'sip' 'python-setuptools')
 # source=("https://github.com/wbsoft/${pkgname}/archive/v${pkgver}.tar.gz")
 source=("https://github.com/zehome/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('f3d0f649964872275bd8e5ac45b9a7915ca18a4b2a46de904cd920e2c67a8627')
+sha256sums=('0dc5cf9556dbfff4b1beacc5001519d439d285c091d9c78ee4a53601d26a2275')
 
 package() {
     cd "$pkgname-$pkgver"

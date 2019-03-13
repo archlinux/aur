@@ -1,6 +1,6 @@
 pkgbase = python-poppler-qt5
 	pkgdesc = Python binding to libpoppler-qt5.
-	pkgver = 0.25.1
+	pkgver = 0.25.3
 	pkgrel = 1
 	url = https://github.com/zehome/python-poppler-qt5
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-poppler-qt5
 	makedepends = python-setuptools
 	depends = python-pyqt5
 	depends = poppler-qt5
-	source = https://github.com/zehome/python-poppler-qt5/archive/v0.25.1.tar.gz
-	sha256sums = f3d0f649964872275bd8e5ac45b9a7915ca18a4b2a46de904cd920e2c67a8627
+	source = https://github.com/zehome/python-poppler-qt5/archive/v0.25.3.tar.gz
+	sha256sums = 0dc5cf9556dbfff4b1beacc5001519d439d285c091d9c78ee4a53601d26a2275
 
 pkgname = python-poppler-qt5
 
