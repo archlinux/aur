@@ -1,0 +1,15 @@
+pkgbase = emacs-helm-ls-git
+	pkgdesc = Yet another helm for listing the files in a git repo
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://github.com/emacs-helm/helm-ls-git
+	arch = any
+	license = GPL3
+	makedepends = emacs
+	makedepends = git
+	depends = emacs-helm
+	source = https://github.com/emacs-helm/helm-ls-git/archive/v1.9.1.tar.gz
+	sha256sums = 76ee2b08d5ab95dd9fdd84aa7e57ac1c1e9f0996ffe25f6acb7cde502583d59f
+
+pkgname = emacs-helm-ls-git
+
