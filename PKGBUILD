@@ -13,7 +13,7 @@
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
 _srcbasever=4.20-gnu
-_srcver=4.20.11-gnu
+_srcver=5.0-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -23,9 +23,9 @@ _srcname=linux-${_srcbasever%-*}
 _archpkgver=${_srcver%-*}
 pkgver=${_srcver//-/_}
 pkgrel=1
-rcnrel=armv7-x7
+rcnrel=armv7-x2
 arch=(i686 x86_64 armv7h)
-url="https://linux-libre.fsfla.org/"
+url='https://linux-libre.fsfla.org/'
 license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf python-sphinx graphviz)
 makedepends_armv7h=(uboot-tools vboot-utils dtc) # for linux-libre-chromebook
@@ -59,8 +59,7 @@ source=(
   0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch
   0002-fix-Atmel-maXTouch-touchscreen-support.patch
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-net-crypto-set-sk-to-NULL-when-af_alg_release.patch
-  0003-exec-Fix-mem-leak-in-kernel_read_file.patch
+  0002-exec-Fix-mem-leak-in-kernel_read_file.patch
 )
 validpgpkeys=(
   '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
@@ -68,7 +67,7 @@ validpgpkeys=(
 )
 sha512sums=('a4a0a25fd490c051deb32ff84ba51e8807bfc8db1ad46c22c7807e9be2e5db5e1c22c211e47fca2509d5d75d64626fb28e9bbc8ccadc565f27fe9c8e47e12dc4'
             'SKIP'
-            '3cb387665734be799f3c833939f0938e17216f08aff5113a85a845dcf382d997f3574e8ea30c0fb6d5e85295106a347324c3b50858939d4568b6fa25c40a05ff'
+            'ef6ec083f67f2a44110b904798e4263e03dccce38b7a2d1a574ce06cc7db870a37e8f27eba7ef86743eef504f4876eae26c3f96d80b020a2412a28fb96c4feae'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -76,31 +75,30 @@ sha512sums=('a4a0a25fd490c051deb32ff84ba51e8807bfc8db1ad46c22c7807e9be2e5db5e1c2
             'SKIP'
             '7a3716bfe3b9f546da309c7492f3e08f8f506813afeb1c737a474c83313d5c313cf4582b65215c2cfce3b74d9d1021c96e8badafe8f6e5b01fe28d2b5c61ae78'
             'SKIP'
-            'ad7f1ec6f403801f2a7afc26189cecebabda227e1276fc7ed7aef58bf54e6190820ee3b9b52eb54a019573a864303f544d757b4b9e442a272930f933132ac0a9'
-            'f1afd642775273e0cdc6485eab54dfd18b69a543a17aec800ff8524381cdc1185f4908dfc9b494f9130a09333c46c887c78523ad242643b868ff31223a5eccff'
-            '9c34ec064a4763f238fd9721beeb3021d138ea038bd583f65eed49f49b524e2a04190e5653a8607e8613e82000cb76a8b18855ad00f644f603e39261ffb990d3'
+            '7fc366487ad4083a6595046dfbbf2cf100962ebe452da1b5b42019b33fb962714e9aff128bf16a0d3743e0916218e337aa46a93871b6d6afe9e5afd828bb3ae1'
+            '4a6fe5cadd58ae3bdc35e739fe8691e3ab7609f6220c5aeb9db7ac1997b613422fb30e007e2f4c15040568c4a0b06e58da0dd65e1b043883c548fea828a632d8'
+            '492c39f1ffe45cb5baac7de7aa825b22974aa0982d38d57defa956af7bcbbfa98a01bfa3b209a75bbd173625329d418a976d5fa1c0097686da6f21e5322121e1'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             '167bc73c6c1c63931806238905dc44c7d87c5a5c0f6293159f2133dfe717fb44081018d810675716d1605ec7dff5e8333b87b19e09e2de21d0448e447437873b'
             'bb6718984a7357c9b00c37e4788480e5b8b75018c172ecc1441bc3fc5d2d42444eb5d8c7f9d2e3a7d6fed6d03acb565e3c0559486e494c40a7fe6bd0570c9ede'
             '143dea30c6da00e504c99984a98a0eb2411f558fcdd9dfa7f607d6c14e9e7dffff9cb00121d9317044b07e3e210808286598c785ee854084b993ec9cb14d8232'
-            '82375afd5217b8d86a3d0da646af31330bf6bb91531e9b2462a96efb64a618e64696c4710a6bc220e9bf626dcd5c1015b6fd9b8b9c229c67a47cf58ee7aa4dd6'
+            '86efeee41eff41928ce2ce8926dc11d34799437d415cf51239ee7e9cf04b82a20cbb6d11b89af2ae7c6c0464afb57369133093653acaf3a0e0ff9d7630d00834'
             'SKIP'
-            'a1d15484cc68e1ce6919ecde2172d458641bcbb4fca467d3ecb3daa576f26173574c782c89120dab4c6e0d7277aa72695ea5197db47c9ff6964cdd62991bdaeb'
-            '5cc794a821e68b089a09a0083c4971d9c11a057f2cc06c39b7e0c6ba9838cd2e0f2a299a1525725f2b8e462a200e108be97c5b9015d520978e5c61fa932add12'
-            'ff2b5ed0ef46b8a412ef76c0505ddfaa9f19dd8ec1dab001185ef238e5416719aff4a9b70cef52aa734f51c0bc63408082b799e8e30a9d88fc9d7fa7bbde551c'
-            '4fa06537796e5408e67f9e545624ee6512cf502a06c01b231114c16d379a444f8881ce3f217efd74c646c3d75800d41cd78b815458139f592fd012a7e29a06a9'
-            '6d11f0b6d07a395cb2e1517d06aeffe2a8b0593e0e5120f6ba32c61b3af381501e985579ec3dd6febe89385eba6210a5f3dac6abcc237e3ccef2668b99478b69'
-            '0c749098828c4b6cccde15a6899e642520177afac8d07a83602682d43082f9b80a987f3318eb995981d6b9090e2ca0022f507a923ab669a6c78377f92e12ce00'
-            '0967368a1c0ea4c409342050dfdac45a9bde3eaceac766fed1fc0b5127922484cc0d7816d29b43de7ec96634405e811787a5ebd9e09a16515cc8c1d0ac59a0f0'
-            'a0915900391ab897ce2b0ab4eb6524e7ca82cf292db986548357e5d637ca39fdc9dc2cb826ced8ed6afa9bf61bb426f9da38c5a1e240132cc6e4a37f5bf121c5'
-            '1834eff6ff158ae05d059e8e20d33a950ec0c4dc5fb60fd215f9e7202e9efb14231f3d5e312e826e097dff131fb399e6a9d4e8d4069a1ccf6e2966364f453c0d'
+            '6e2eed5e047d95a825241bf30bd09e3edad7787f1f742ca5cf3cf53f4f1383ca7ede306f12cf522fa1175930b3dde550994ef085bf6d93761babfe976dc94ca2'
+            '32a185f7d8b93e8cb70bee0d32eb6876ac0a976abe550ec83de1fc57963b0879872831c671f4aa5281b4def9bf81660c92809047eda9a9ada939bdf5b7d32dbc'
+            'b523cc0978f6426162d8ef82dc44763fca7ca57c8bf3b2b27549d7ed7d873389ba3acf00dfe5576ceef991d31ba39613c3203195cb5a91900330c997c9b0efff'
+            'd85f97025f21c26b438afb599af13939bae3ff769c1d1055bdcf9130a1449703a26ecf04ce715390570c14d6b91b693e7b220e7cff0576f9775990ee2fe75113'
+            'a3b846c5a79afdfc5233ba5020cb8fc91bad0864bd811204f29191f8b2e7dd76cb19d8fa38cac55ad3adbbd4126f3b2102b03016fe9423bd7d0d252ed1b4c460'
+            'd547f6ef7f876690092622c7b7de6995b972e46f25b34fac92b301d90ad7b04f993341346bbc54284e5338e5bbf76ccdfa42485842ed0a0b4a8414cf8a16412a'
+            'b3cc320e6414c6a9a287df405cc6768cbc204bd859189c4c3f6902e55fd425ad7f05743ea6db3996c99a49f6b3a175d83c8fb05fd4314c2b1a3df52e8b1b16f3'
+            'bed58fede674b139e470a2593c3d07f61f7f771d86ce137a5cf7e1b5cc53a8c2127439f7ef2bee9daaf554555f6cb9bb80cf35bbe6a6adf10a04cb5a93d0cc8f'
+            '17b09c80b0c235a5395c350c2b1acfda1c549c5bb6017f6a7056a84686fe23d7983a40f416cfc1da075523ad87d39ff4ff7b4057a275705679830db15b621991'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            'bac4951f03f9ec3882f1afbb3a35a5980d9e8a321056cc00294f91f0e496922a82f2403f8e99950c053866837bd7382e18cda936d9eca58bc408f6903453c89c'
-            '67710358e51ffd30aaf64351e6c3542bdfa9e4e3db43ee38fca8b15357d71be3cd18db0180d196c8b2d44781ce2625e5b709d496dea0723d0616ebdfb048028a'
-            'e81e85b98f126a1e298d54a289659e648582070db617194a8ed13796535341f3a052e3103ee87c4d9bd797103429b883ae2e761cb6f4b61b15f0c0fea017ff95')
+            '6e8710c5f243ec44406730bab11581ff9e4386203c22997d6b13e7f43f8fb99073fa1b7aee4bd8598478e0f4652975ae156e92c5be3f21efefff06345078e703'
+            'f8d47cb9e4cbc3f050afc7a8a364526445439a0e7d64b4182496fa6da056afbc0381d04ee872b3794fe6fa05af38a7ed532549304c919b2c91250554f75997b9')
 
 _kernelname=${pkgbase#linux-libre}
 _replacesarchkernel=("${_replacesarchkernel[@]/\%/${_kernelname}}")
@@ -143,10 +141,9 @@ prepare() {
   install -m644 -t drivers/video/logo \
     ../logo_linux_{clut224.ppm,vga16.ppm,mono.pbm}
 
-  # Arch's linux patches
+  # add Arch patches
   patch -p1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  patch -p1 -i ../0002-net-crypto-set-sk-to-NULL-when-af_alg_release.patch
-  patch -p1 -i ../0003-exec-Fix-mem-leak-in-kernel_read_file.patch
+  patch -p1 -i ../0002-exec-Fix-mem-leak-in-kernel_read_file.patch
 
   # maintain the TTY over USB disconnects
   # http://www.coreboot.org/EHCI_Gadget_Debug
