@@ -28,7 +28,7 @@ fi
 
 pkgname=android-${_android_arch}-qt5
 pkgver=5.12.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt 5 for Android"
 arch=('x86_64')
 url='https://www.qt.io'
@@ -41,31 +41,31 @@ makedepends=('libgl'
              'gperf'
              'libxslt'
              'fontconfig')
-depends=('jre-openjdk-headless'
+depends=('java-runtime-headless-openjdk<=8'
          'apache-ant'
          'android-ndk>=r18.b'
          "android-platform-$ANDROID_MINIMUM_PLATFORM"
-         'android-sdk'
+         'android-sdk<=25.2.5'
          'android-sdk-build-tools'
          'android-sdk-platform-tools')
 groups=('android-qt5')
 
 case "$_android_arch" in
     aarch64)
-        optdepends=('android-google-apis-armv7a-eabi: AVD support'
-                    'android-armv7a-eabi-system-image: AVD support')
+        optdepends=("android-google-apis-arm64-v8a: AVD support"
+                    "android-arm64-v8a-system-image: AVD support")
         ;;
     armv7a-eabi)
-        optdepends=('android-google-apis-armv7a-eabi: AVD support'
-                    'android-armv7a-eabi-system-image: AVD support')
+        optdepends=("android-google-apis-armv7a-eabi: AVD support"
+                    "android-armv7a-eabi-system-image: AVD support")
         ;;
     x86)
-        optdepends=('android-google-apis-x86: AVD support'
-                    'android-x86-system-image: AVD support')
+        optdepends=("android-google-apis-x86: AVD support"
+                    "android-x86-system-image: AVD support")
         ;;
     x86-64)
-        optdepends=('android-google-apis-x86-64: AVD support'
-                    'android-x86-64-system-image: AVD support')
+        optdepends=("android-google-apis-x86-64: AVD support"
+                    "android-x86-64-system-image: AVD support")
         ;;
     *)
         ;;
@@ -76,14 +76,13 @@ options=('!strip'
          'staticlibs'
          '!emptydirs')
 _pkgfqn="qt-everywhere-src-${pkgver}"
+install="${pkgname}.install"
 source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkgver}/single/${_pkgfqn}.tar.xz"
         "0001-Fix-clang-build.patch"
-        "0002-Disable-mapbox.patch"
-        "0003-Fix-androiddeployqt-search-paths.patch")
+        "0002-Disable-mapbox.patch")
 md5sums=('6a37466c8c40e87d4a19c3f286ec2542'
          'bf97665c96c0a084ea7970eb61556754'
-         '20d8bdd24102e9011b561b7361394728'
-         '90141a931baac77fa608146f32414ead')
+         '20d8bdd24102e9011b561b7361394728')
 
 _pref=/opt/android-libs/$_android_arch
 
@@ -91,9 +90,9 @@ prepare() {
     cd ${_pkgfqn}
 
     # Platform specific patches.
+
     patch -Np1 -i "../0001-Fix-clang-build.patch"
     patch -Np1 -i "../0002-Disable-mapbox.patch"
-    patch -Np1 -i "../0003-Fix-androiddeployqt-search-paths.patch"
     sed -i "s/android-16/android-$ANDROID_MINIMUM_PLATFORM/g" qtbase/mkspecs/features/android/sdk.prf
     sed -i "s/android-16/android-$ANDROID_MINIMUM_PLATFORM/g" qtbase/src/android/jar/jar.pro
     sed -i "s/android-16/android-$ANDROID_MINIMUM_PLATFORM/g" qtgamepad/src/plugins/gamepads/android/jar/jar.pro
@@ -151,10 +150,8 @@ build() {
         -opensource
         -silent
         -prefix ${_pref}
-        -archdatadir ${_pref}/lib/qt
-        -datadir ${_pref}/share/qt
-        -examplesdir ${_pref}/share/qt/examples
-        -testsdir ${_pref}/share/qt/tests
+        -examplesdir ${_pref}/share/qt5/examples
+        -testsdir ${_pref}/share/qt5/tests
         -xplatform android-clang
         -nomake tests
         -nomake examples
@@ -187,7 +184,6 @@ build() {
     esac
 
     ./configure ${configue_opts}
-
     make $MAKEFLAGS
 }
 
@@ -218,8 +214,8 @@ package() {
     STRIP=${ANDROID_NDK_ROOT}/toolchains/${toolchain}/prebuilt/linux-x86_64/${stripFolder}/bin/strip
     find ${pkgdir}/${_pref}/bin -type f ! -name '*.pl' -exec strip {} \;
     find ${pkgdir}/${_pref}/lib -type f -name 'lib*.so' -exec ${STRIP} {} \;
-    find ${pkgdir}/${_pref}/lib -type f \( -name 'lib*.a' ! -name 'libQt5Bootstrap.a' ! -name 'libQt5QmlDevTools.a' \) -exec ${STRIP} {} \;
-    find ${pkgdir}/${_pref}/lib/qt/plugins -type f -name 'lib*.so' -exec ${STRIP} {} \;
+    # find ${pkgdir}/${_pref}/lib -type f \( -name 'lib*.a' ! -name 'libQt5Bootstrap.a' ! -name 'libQt5QmlDevTools.a' \) -exec ${STRIP} {} \;
+    find ${pkgdir}/${_pref}/plugins -type f -name 'lib*.so' -exec ${STRIP} {} \;
+    find ${pkgdir}/${_pref}/qml -type f -name 'lib*.so' -exec ${STRIP} {} \;
     sed -i '/QMAKE_PRL_BUILD_DIR/d' ${pkgdir}/${_pref}/lib/lib*.prl
-    sed -i 's/\"plugins\//\"lib\/qt\/plugins\//g' ${pkgdir}/${_pref}/lib/*-android-dependencies.xml
 }
