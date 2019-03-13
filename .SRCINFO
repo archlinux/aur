@@ -8,6 +8,7 @@ pkgbase = bpftrace
 	license = Apache
 	makedepends = cmake
 	makedepends = llvm
+	makedepends = bcc
 	depends = libelf
 	depends = zlib
 	depends = llvm-libs
