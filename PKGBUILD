@@ -1,18 +1,18 @@
+# Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 # Maintainer: Mansour Behabadi <mansour@oxplot.com>
 # Maintainer: Tilman Vatteroth <tilman.vatteroth@udo.edu>
 
 pkgname=upmpdcli
-pkgver=1.2.15
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="A UPnP Media Renderer front-end for the Music Player Daemon (MPD)"
-arch=('i686' 'x86_64' 'armv7h' 'armv6h')
+arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="http://www.lesbonscomptes.com/upmpdcli/"
 license=('GPL2')
-depends=('libmpdclient' 'libupnpp>=0.15.3' 'libmicrohttpd' 'jsoncpp' 'curl' 'expat')
-optdepends=('python2: OpenHome Radio Service')
+depends=('libmpdclient' 'libupnpp>=0.17.0' 'libmicrohttpd' 'jsoncpp' 'curl' 'expat' 'python-requests' 'recoll' 'python-bottle' 'python-mutagen' 'mutagen' 'aspell-en' 'id3lib' 'python-waitress' 'sqlite3')
 install=upmpdcli.install
 source=(http://www.lesbonscomptes.com/upmpdcli/downloads/$pkgname-$pkgver.tar.gz)
-sha256sums=('93d2b9cfd6cb8643c5a23d4115b44622d76c71abe15db9bb8d5b4d83f4d9b49c')
+sha256sums=('SKIP')
 backup=('etc/upmpdcli.conf')
 
 build() {
