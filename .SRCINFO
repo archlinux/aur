@@ -1,7 +1,7 @@
 pkgbase = cmake-extras
 	pkgdesc = Extra CMake utility modules
 	pkgver = 1.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://launchpad.net/cmake-extras
 	arch = any
 	license = LGPL3
