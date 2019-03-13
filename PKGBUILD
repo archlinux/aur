@@ -1,7 +1,7 @@
 pkgname=pycharm-community-eap
-_buildver=191.6014.12
+_buildver=191.6183.9
 _pkgver=2019.1
-_eap=y
+_eap=n
 pkgver=$_pkgver.$_buildver
 pkgrel=2
 epoch=2
@@ -19,8 +19,8 @@ if [[ $_eap = y ]]; then
 else
     _filever=$_pkgver
 fi
-source=("https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz")
-sha256sums=($(curl -s "https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz.sha256" | cut -d' ' -f1))
+source=("https://download.jetbrains.com/python/pycharm-community-$_buildver.tar.gz")
+sha256sums=($(curl -s "https://download.jetbrains.com/python/pycharm-community-$_buildver.tar.gz.sha256" | cut -d' ' -f1))
 prepare() {
 	cat >"$srcdir/$pkgname.desktop" <<-EOF
 		[Desktop Entry]
@@ -61,3 +61,4 @@ package() {
 	ln -s "/opt/$pkgname/bin/pycharm.png" "$pkgdir/usr/share/pixmaps/pycharm.png"
 	install -Dm755 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
+
