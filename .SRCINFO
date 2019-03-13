@@ -1,0 +1,15 @@
+pkgbase = vdeplug_agno-git
+	pkgdesc = agnostic encryption nested plugin for vdeplug4
+	pkgver = r3.1529186
+	pkgrel = 1
+	url = https://github.com/rd235/vdeplug_agno
+	arch = any
+	license = GPL2
+	depends = vdeplug4-git
+	provides = vdeplug_agno
+	conflicts = vdeplug_agno
+	source = git+https://github.com/rd235/vdeplug_agno.git
+	md5sums = SKIP
+
+pkgname = vdeplug_agno-git
+
