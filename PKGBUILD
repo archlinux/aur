@@ -1,30 +1,32 @@
-# Maintainer: epitron <chris@ill-logic.com>
+# Maintainer: Sebastian Eberhardt <gpgpu_blog@protonmail.com>
+# Contributor: epitron <chris@ill-logic.com>
 # Contributor: Anatol Pomozov <anatol dot pomozov at gmail>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
-
+#
 pkgname=openmpi-cuda
 _pkgname=openmpi
-pkgver=1.10.6
+pkgver=4.0.0
 pkgrel=1
-pkgdesc='High performance message passing library (MPI) with CUDA support'
-arch=(i686 x86_64)
-url='http://www.open-mpi.org'
-license=(custom)
-depends=(libltdl hwloc)
-provides=(openmpi)
-conflicts=(openmpi)
-makedepends=(inetutils valgrind gcc-fortran)
+pkgdesc="High Performance Message Passing Library (MPI) compiled with CUDA support enabled"
+arch=('x86_64')
+url="https://www.open-mpi.org/"
+license=('BSD')
+groups=()
+depends=('libsystemd' 'libnl' 'numactl' 'libpciaccess' 'cuda')
+makedepends=('git' 'valgrind' 'gcc-fortran')
+provides=("${pkgname%-cuda}")
+conflicts=("${pkgname%-cuda}")
 optdepends=('gcc-fortran: fortran support')
 options=(staticlibs)
-source=(http://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/${_pkgname}-${pkgver}.tar.bz2)
-sha256sums=('65606184a084a0eda6102b01e5a36a8f02d3195d15e91eabbb63e898bd110354')
+source=(https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/${_pkgname}-${pkgver}.tar.bz2)
+sha256sums=('2f0b8a36cfeb7354b45dda3c5425ef8393c9b04115570b615213faaa3f97366b')
+
 
 build() {
-   cd $_pkgname-$pkgver
+   cd openmpi-$pkgver
 
-   ./autogen.pl
    ./configure --prefix=/usr \
-               --sysconfdir=/etc/${_pkgname} \
+               --sysconfdir=/etc/openmpi \
                --enable-mpi-fortran=all \
                --libdir=/usr/lib/${_pkgname} \
                --with-threads=posix \
@@ -34,12 +36,11 @@ build() {
                --enable-pretty-print-stacktrace \
                --without-slurm \
                --with-hwloc=/usr \
-               --with-libltdl=/usr \
-               --with-cuda=/opt/cuda \
-               FC=/usr/bin/gfortran \
+               --with-cuda=/opt/cuda/include \
+               --with-libltdl=/usr  \
                LDFLAGS="$LDFLAGS -Wl,-z,noexecstack"
 
-   make
+   make -j8
 }
 
 check() {
@@ -54,18 +55,12 @@ package() {
 
    # FS#28583
    install -d -m 755 "$pkgdir"/usr/lib/pkgconfig
-   for i in ompi-c.pc ompi-cxx.pc ompi-f77.pc ompi-f90.pc ompi.pc; do
-      ln -sf /usr/lib/openmpi/pkgconfig/$i "$pkgdir"/usr/lib/pkgconfig/
+   for i in ompi-c.pc ompi-cxx.pc ompi.pc; do
+      ln -sf /usr/lib/$_pkgname/pkgconfig/$i "$pkgdir"/usr/lib/pkgconfig/
    done
-
-   # Openmpi's otfinfo conflicts with the one from texlive
-   mv "$pkgdir"/usr/bin/otfinfo{,mpi}
-
-   # Remove dangling symlink and useless file
-   rm "$pkgdir"/usr/share/vampirtrace/config.log
 
    install -d -m 755 "$pkgdir"/etc/ld.so.conf.d
    echo "/usr/lib/$_pkgname" > "$pkgdir"/etc/ld.so.conf.d/$_pkgname.conf
 
-   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
+   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
