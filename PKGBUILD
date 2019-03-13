@@ -2,7 +2,7 @@
 
 pkgname=ruby-public_suffix-2
 pkgver=2.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Domain name parser based on the Public Suffix List'
 arch=('any')
 url='https://simonecarletti.com/code/publicsuffix-ruby'
