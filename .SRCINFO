@@ -1,7 +1,7 @@
 pkgbase = ruby-retriable
 	pkgdesc = Retriable is an simple DSL to retry failed code blocks with randomized exponential backoff
 	pkgver = 3.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/kamui/retriable
 	arch = any
 	license = MIT
