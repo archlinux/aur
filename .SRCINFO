@@ -1,0 +1,19 @@
+pkgbase = ros-kinetic-rosbridge-suite
+	pkgdesc = ROS - Rosbridge provides a JSON API to ROS functionality for non-ROS programs.
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = http://ros.org/wiki/rosbridge_suite
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-catkin
+	depends = ros-kinetic-rosbridge-library
+	depends = ros-kinetic-rosapi
+	depends = ros-kinetic-rosbridge-server
+	source = rosbridge_suite::git+https://github.com/RobotWebTools-release/rosbridge_suite-release.git#tag=release/kinetic/rosbridge_suite/0.10.2-0
+	md5sums = SKIP
+
+pkgname = ros-kinetic-rosbridge-suite
+
