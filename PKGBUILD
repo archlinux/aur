@@ -3,7 +3,7 @@
 pkgname=ruby-highline-1
 _gemname=highline
 pkgver=1.7.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level text user interface toolkit for Ruby"
 arch=('any')
 url="http://rubygems.org/gems/highline"

@@ -1,7 +1,7 @@
 pkgbase = ruby-highline-1
 	pkgdesc = A high-level text user interface toolkit for Ruby
 	pkgver = 1.7.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rubygems.org/gems/highline
 	arch = any
 	license = GPL2
