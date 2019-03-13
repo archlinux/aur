@@ -2,7 +2,7 @@
 
 pkgname=code-server
 pkgver=1.32.0_245
-pkgrel=4
+pkgrel=5
 pkgdesc="Run VS Code on a remote server"
 arch=('x86_64')
 url="https://github.com/codercom/code-server"

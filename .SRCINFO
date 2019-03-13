@@ -1,12 +1,12 @@
 pkgbase = code-server
 	pkgdesc = Run VS Code on a remote server
 	pkgver = 1.32.0_245
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/codercom/code-server
 	arch = x86_64
 	license = MIT
 	source = https://github.com/codercom/code-server/releases/download/1.32.0-245/code-server-1.32.0-245-linux-x64.tar.gz
-	sha512sums = SKIP
+	sha512sums = dff9e1288a71f3f295f6d767665214487a33223548f4cde4b04acf701b8154fac827d29ceaefe9182ed020afe758d7592d29755d1960641832afb08ad0b2c3ee
 
 pkgname = code-server
 
