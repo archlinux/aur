@@ -4,7 +4,7 @@ pkgdesc="ROS - slam_gmapping contains a wrapper around gmapping which provides S
 url='http://ros.org/wiki/slam_gmapping'
 
 pkgname='ros-kinetic-slam-gmapping'
-pkgver='1.3.8'
+pkgver='1.3.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
