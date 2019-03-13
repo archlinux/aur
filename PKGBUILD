@@ -27,4 +27,6 @@ build() {
 package() {
 	cd "$_pkgname"
 	make DESTDIR="$pkgdir/" install
+	mkdir "$pkgdir"/usr/share
+	mv "$pkgdir"/usr/man "$pkgdir"/usr/share/man
 }
