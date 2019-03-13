@@ -36,7 +36,7 @@ source=("https://github.com/mamedev/mame/archive/mame${pkgver/./}.tar.gz"
         'mame.sh'
         )
 sha256sums=('69c29533d2128345c59fbf23fabc3af696322a77a6c1d7a7bd7f5a2ee57adafb'
-            'd0289344e2260411965a56290cb4744963f48961326ce7f41b90f75f4221bb42'
+            'b6c8eb86c38aa561b4638cb6e277a6f57adf0b8d8c4c4fa8df5070bda3125efe'
             )
 install=sdlmame-wout-toolkits.install
 
