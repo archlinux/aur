@@ -1,6 +1,6 @@
 pkgbase = afdko
 	pkgdesc = Tools used by Adobe font developers for wrapping up PostScript fonts as OpenType/CFF font files
-	pkgver = 2.8.2
+	pkgver = 2.8.7
 	pkgrel = 1
 	url = https://github.com/adobe-type-tools/afdko
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = afdko
 	depends = python2-wheel
 	depends = python2-ufonormalizer-git
 	conflicts = afdko-git
-	source = https://github.com/adobe-type-tools/afdko/releases/download/2.8.2/afdko-2.8.2.tar.gz
-	sha256sums = 677c08eaebd1c0b59ae2316016101b273421f1079f3d5659245d7fecbf916be0
+	source = https://github.com/adobe-type-tools/afdko/releases/download/2.8.7/afdko-2.8.7.tar.gz
+	sha256sums = 795de79f48220cd0f463e82f37c84688e1e5f81f23f79740d121655744eef618
 	depends_x86_64 = lib32-glibc
 
 pkgname = afdko

@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=afdko
-pkgver=2.8.2
+pkgver=2.8.7
 pkgrel=1
 pkgdesc='Tools used by Adobe font developers for wrapping up PostScript fonts as OpenType/CFF font files'
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=('python2'
 depends_x86_64=('lib32-glibc')
 conflicts=("$pkgname-git")
 source=("https://github.com/adobe-type-tools/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('677c08eaebd1c0b59ae2316016101b273421f1079f3d5659245d7fecbf916be0')
+sha256sums=('795de79f48220cd0f463e82f37c84688e1e5f81f23f79740d121655744eef618')
 
 build() {
     cd "$pkgname-$pkgver"
