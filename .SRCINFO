@@ -1,7 +1,7 @@
 pkgbase = hop
 	pkgdesc = Software Development Kit for the Web
 	pkgver = 3.1.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://hop.inria.fr
 	install = hop.install
@@ -19,7 +19,7 @@ pkgbase = hop
 	provides = hop
 	conflicts = hop
 	options = !makeflags
-	source = git+https://github.com/manuel-serrano/hop.git#commit=dbe67556ea8862343f65f5c0781b4fe61f767b18
+	source = git+https://github.com/manuel-serrano/hop.git#commit=218f48c7d71b892dc143cee9e9b2071cae3bc93a
 	md5sums = SKIP
 
 pkgname = hop

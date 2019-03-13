@@ -5,7 +5,7 @@
 pkgname=hop
 epoch=1
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
@@ -15,7 +15,7 @@ conflicts=('hop')
 provides=('hop')
 install=hop.install
 url='http://hop.inria.fr'
-source=("git+https://github.com/manuel-serrano/hop.git#commit=dbe67556ea8862343f65f5c0781b4fe61f767b18")
+source=("git+https://github.com/manuel-serrano/hop.git#commit=218f48c7d71b892dc143cee9e9b2071cae3bc93a")
 md5sums=('SKIP')
 options=('!makeflags')
 
@@ -23,7 +23,7 @@ build() {
   cd $pkgname
   ./configure --prefix=/usr --etcdir=/etc/hop --mandir=/usr/share/man \
 	      --disable-ssl --bigloobindir=/usr/bin \
-	      --bigloolibdir=/usr/lib/bigloo/4.3e
+	      --bigloolibdir=/usr/lib/bigloo/4.3f
   make
   make doc
 }
