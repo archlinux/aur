@@ -10,6 +10,7 @@ pkgbase = roundcubemail-git
 	makedepends = unzip
 	makedepends = java-runtime
 	makedepends = nodejs-less
+	makedepends = yuicompressor
 	depends = php
 	depends = php-gd
 	optdepends = python2
