@@ -1,13 +1,13 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=plata-theme-gs330
-pkgver=0.6.0
-pkgrel=2
-pkgdesc='Plata theme that is not broken in GNOME Shell 3.30'
+pkgver=0.6.2
+pkgrel=1
+pkgdesc='Plata theme for GTK apps and GNOME Shell only'
 conflicts=(plata-theme)
 replaces=(plata-theme)
 arch=('any')
-url='https://gitlab.com/tista500/plata-theme/issues/33'
+url='https://gitlab.com/tista500/plata-theme'
 license=('CCPL' 'GPL2')
 makedepends=('git' 'gnome-shell' 'inkscape' 'libxml2' 'parallel' 'sassc')
 optdepends=('gtk-engine-murrine: for gtk2 themes'
