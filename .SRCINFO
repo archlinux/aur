@@ -1,7 +1,7 @@
 pkgbase = ruby-naturally
 	pkgdesc = Natural Sorting with support for legal numbering, course numbers, and other number/letter mixes.
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/public-law/naturally
 	arch = any
 	makedepends = ruby-rdoc
