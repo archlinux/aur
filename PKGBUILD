@@ -3,8 +3,8 @@
 # Contributor: Tucos <baspape@gmail.com>
 
 pkgname=panda3d-python2
-pkgver=1.10.1
-pkgrel=0
+pkgver=1.10.2
+pkgrel=1
 pkgdesc="A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
 arch=('i686' 'x86_64')
@@ -70,8 +70,6 @@ JOBS=$(nproc)
 
 build() {
   cd "$srcdir/panda3d-$pkgver"
-  #LD_LIBRARY_PATH=/usr/lib/openssl-1.0-compat/
-  # disable broken extensions
   python2 makepanda/makepanda.py --everything --no-opencv --no-opencv --no-maya2012 --no-fmodex --no-gles --no-gles2 --no-openssl --no-egl ${PANDAFLAGS} --threads ${BUILD_THREADS:-$JOBS}
 }
 
@@ -81,5 +79,7 @@ package() {
   install -D -m644 "$srcdir/panda3d-$pkgver/doc/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 }
-md5sums=('a8e438d4a13ac8c81b80d288326617b3'
+sha256=('a8e438d4a13ac8c81b80d288326617b3'
+        '057269173f3c1987953302519bc744fa')
+md5sums=('abfc4ebefdb9bbb1896475f8620e40b0'
          '057269173f3c1987953302519bc744fa')
