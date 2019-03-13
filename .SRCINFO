@@ -15,8 +15,8 @@ pkgbase = python-ngmix
 	md5sums = SKIP
 
 pkgname = python-ngmix
-	depends = python
+	depends = python-numpy
 
 pkgname = python2-ngmix
-	depends = python2
+	depends = python2-numpy
 

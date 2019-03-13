@@ -43,13 +43,13 @@ check() {
 }
 
 package_python-ngmix() {
-		       depends=('python')
+		       depends=('python-numpy')
 		       cd "${_pkgname}"
 		       python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
 }
 
 package_python2-ngmix() {
-			depends=('python2')			    
+			depends=('python2-numpy')			    
 			cd "${_pkgname}"
 			python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
 
