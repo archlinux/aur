@@ -1,16 +1,18 @@
 diff -ura package.orig/tasks/release.js package.new/tasks/release.js
---- package.orig/tasks/release.js	2019-02-24 19:19:17.230601550 +0100
-+++ package.new/tasks/release.js	2019-02-24 19:22:03.772035574 +0100
-@@ -8,10 +8,5 @@
- const publish = env !== 'production' ? 'never' : 'onTagOrDraft';
- gulp.task('release:darwin', () => build({ publish, x64: true, mac: [] }));
- gulp.task('release:win32', () => build({ publish, x64: true, ia32: true, win: ['nsis', 'appx'] }));
--gulp.task('release:linux', async() => {
--	const allLinuxTargetsButSnap = config.linux.target.filter((target) => target !== 'snap');
--	await build({ publish, x64: true, linux: [], c: { productName: 'rocketchat' } });
--	await build({ publish, ia32: true, linux: allLinuxTargetsButSnap, c: { productName: 'rocketchat' } });
--});
--
--gulp.task('release', gulp.series('build-app', `release:${ process.platform }`));
-+gulp.task('release:linux-x64', () => build({ publish, x64: true, linux: [], c: { productName: 'rocketchat' } }));
-+gulp.task('release:linux-ia32', () => build({ publish, ia32: true, linux: [], c: { productName: 'rocketchat' } }));
+--- package.orig/tasks/release.js	2019-03-13 20:47:32.334253693 +0100
++++ package.new/tasks/release.js	2019-03-13 20:57:20.456395083 +0100
+@@ -11,6 +11,14 @@
+ 	await build({ publish, x64, mac: [] });
+ });
+ 
++gulp.task('release:linux-x64', async() => {
++    await build({ publish: 'never', x64, linux: [], c: { productName: 'rocketchat' } });
++});
++
++gulp.task('release:linux-ia32', async() => {
++    await build({ publish: 'never', ia32, linux: [], c: { productName: 'rocketchat' } });
++});
++
+ gulp.task('release:linux', async() => {
+ 	const { linux: { target } } = require('../electron-builder.json');
+ 	const publish = getEnv() === 'production' ? 'onTagOrDraft' : 'never';

@@ -1,7 +1,7 @@
 diff -ura package.orig/src/preload/spellchecking.js package.new/src/preload/spellchecking.js
---- package.orig/src/preload/spellchecking.js	2019-02-24 19:52:13.168606313 +0100
-+++ package.new/src/preload/spellchecking.js	2019-02-24 19:52:55.662351780 +0100
-@@ -21,7 +21,7 @@
+--- package.orig/src/preload/spellchecking.js	2019-03-13 20:47:32.327586968 +0100
++++ package.new/src/preload/spellchecking.js	2019-03-13 20:59:36.190988478 +0100
+@@ -22,7 +22,7 @@
  	async loadDictionaries() {
  		const embeddedDictionaries = spellchecker.getAvailableDictionaries();
  
