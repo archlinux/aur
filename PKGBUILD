@@ -4,8 +4,8 @@
 
 pkgname=cajarename
 _pkgnamealt=caja-rename
-pkgver=18.7.28.26
-pkgrel=2
+pkgver=18.7.28.27
+pkgrel=1
 pkgdesc="Batch renaming extension for Caja"
 arch=('any')
 url="https://tari.in/www/software/cajarename"
@@ -20,19 +20,19 @@ conflicts=("${_pkgnamealt}")
 
 pkgver()
 {
-    cd $srcdir/trunk
+    cd trunk
     echo "$(cat ${pkgname}/appdata.py | grep APPVERSION | sed 's| ||g' | sed "s|'||g" | cut -f '2' -d '=').$(bzr revno)"
 }
 
 build()
 {
-    cd ${srcdir}/trunk
+    cd trunk
     python2 setup.py build
 }
 
 package()
 {
-    cd ${srcdir}/trunk
-	python2 setup.py install --root="${pkgdir}" --optimize=1
+    cd trunk
+    python2 setup.py install --root="${pkgdir}" --optimize=1
 
 }
