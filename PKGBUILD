@@ -4,7 +4,7 @@
 # Contributor: Firmicus <francois . archlinux . org>
 
 pkgname=texlive-localmanager-git
-pkgver=0.5.1
+pkgver=0.6
 pkgrel=1
 pkgdesc="A shell and command-line utility to manage TeXLive on Arch Linux"
 arch=('any')
