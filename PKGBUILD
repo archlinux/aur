@@ -16,18 +16,18 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libgee' 'libxml2' 'sqlite' 'gucharmap' 'file-roller')
 makedepends=('intltool' 'yelp-tools' 'gobject-introspection' 'vala')
-source=("https://github.com/FontManager/master/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
+source=("https://github.com/FontManager/master/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2")
 sha256sums=('39bb00942b89eeabb96946cc0c0db5e7ecfe8d62805d87f0115de49ee02487b6')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "$srcdir/$pkgname-$pkgver"
 
   ./configure --prefix=/usr --with-file-roller
   make -j1
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "$srcdir/$pkgname-$pkgver"
 
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="$pkgdir" install
 }
