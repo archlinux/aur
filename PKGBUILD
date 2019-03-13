@@ -1,15 +1,16 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=majsoul-plus
-pkgver=1.10.6
-pkgrel=5
+pkgver=1.11.1
+pkgrel=1
 pkgdesc="Majsoul browser, with more features"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="https://github.com/MajsoulPlus/majsoul-plus"
 license=('AGPL3')
 depends=('electron')
-makedepends=('npm' 'imagemagick')
+makedepends=('npm' 'imagemagick' 'gulp')
 source=("https://github.com/MajsoulPlus/majsoul-plus/archive/v$pkgver.tar.gz")
-sha256sums=('c914845e373d56a5b99b870c1b75f25fbfb930f9ce4eadf7eb733ca41c580b53')
+sha256sums=('436ed838e9b4a15a82ed410ae43d1c3db1ee7bb2fa28df7b98be386ec474a71e')
+conflicts=("majsoul-plus-bin")
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -19,6 +20,7 @@ prepare() {
 build() {
 	cd "$pkgname-$pkgver"
 	npm install
+	gulp sass
 }
 
 package() {
