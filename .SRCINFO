@@ -1,7 +1,7 @@
 pkgbase = ruby-googleauth
 	pkgdesc = Google Auth Library for Ruby
 	pkgver = 0.6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/google-auth-library-ruby
 	arch = any
 	license = Apache-2.0
