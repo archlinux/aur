@@ -1,10 +1,9 @@
-# Submitter: OmeGa <omega [U+0040] mailoo [.] org>
 # Maintainer: farwayer <farwayer@gmail.com>
 
 _gemname=httpclient
 pkgname=ruby-$_gemname
 pkgver=2.8.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Gives something like the functionality of libwww-perl (LWP) in Ruby."
 arch=('any')
 url="http://github.com/nahi/httpclient"

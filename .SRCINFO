@@ -1,7 +1,7 @@
 pkgbase = ruby-httpclient
 	pkgdesc = Gives something like the functionality of libwww-perl (LWP) in Ruby.
 	pkgver = 2.8.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://github.com/nahi/httpclient
 	arch = any
 	license = Ruby
