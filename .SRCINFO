@@ -1,7 +1,7 @@
 pkgbase = ruby-google-api-client
 	pkgdesc = Client for accessing Google APIs
 	pkgver = 0.23.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/google-api-ruby-client
 	arch = any
 	license = Apache 2.0
