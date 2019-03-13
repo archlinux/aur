@@ -1,7 +1,7 @@
 # Maintainer: Julien Seguinot <seguinot@vaw.baug.ethz.ch>
 
 pkgname=pism
-pkgver=1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Parallel Ice Sheet Model (PISM)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('fftw>=3.1' 'gsl>=1.15' 'netcdf' 'openmpi' 'petsc>=3.5' 'proj' 'udunits
 makedepends=('gcc' 'cmake>=3.1')
 optdepends=()  # FIXME proj is an optional dependence
 source=("https://github.com/pism/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('c8caa9e70ca44b179da0a25d0e65832b')
+md5sums=('be41e796be591c7cc28a9940f243c625')
 
 build() {
   mkdir -p "$pkgname-$pkgver/build"
