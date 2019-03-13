@@ -1,6 +1,6 @@
 pkgname=ssmtp
 pkgver=2.64
-pkgrel=10
+pkgrel=11
 pkgdesc="Extremely simple MTA to get mail off the system to a mailhub (with Fedora patches)"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -22,7 +22,7 @@ source=("http://ftp.debian.org/debian/pool/main/s/ssmtp/${pkgname}_${pkgver}.ori
 md5sums=('65b4e0df4934a6cd08c506cabcbe584f'
          '15d3b21c64b83aba4ad2283318ac0680'
          'd2b946bd299453eb2df7bcc1d6186592'
-         '5430349d5c29afd93def93848b4bb258'
+         '9de4e3a78799492a4fa8238e13e88d06'
          '69c2bd9a00189a4c110d420b23d69258'
          '3473db24c65bbe6fdeb51e99427e8ee2'
          '237a6fad4d367b566ada3a900d1f1bc0'
@@ -60,6 +60,7 @@ package() {
   yes | make prefix="${pkgdir}/usr" mandir="${pkgdir}/usr/share/man/man8" etcdir="${pkgdir}/etc" install
 
   install -D -m644 ssmtp.conf.5 "${pkgdir}/usr/share/man/man5/ssmtp.conf.5"
+  install -m644 ssmtp.conf "${pkgdir}/etc/ssmtp.conf"
 
   ln -s ssmtp "${pkgdir}/usr/sbin/sendmail"
   ln -s ssmtp "${pkgdir}/usr/sbin/newaliases"
