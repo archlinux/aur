@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-rosbridge-library
 	pkgdesc = ROS - The core rosbridge package, repsonsible for interpreting JSON andperforming the appropriate ROS action, like subscribe, publish, call service, and interact with params.
-	pkgver = 0.7.17
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = http://ros.org/wiki/rosbridge_library
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = ros-kinetic-rosbridge-library
 	depends = ros-kinetic-rostopic
 	depends = python2-pillow
 	depends = python2-pymongo
-	source = rosbridge_library::git+https://github.com/RobotWebTools-release/rosbridge_suite-release.git#tag=release/kinetic/rosbridge_library/0.7.17-0
+	source = rosbridge_library::git+https://github.com/RobotWebTools-release/rosbridge_suite-release.git#tag=release/kinetic/rosbridge_library/0.10.2-0
 	md5sums = SKIP
 
 pkgname = ros-kinetic-rosbridge-library
