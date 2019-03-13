@@ -5,7 +5,7 @@ pkgdesc="ROS - This package defines messages for marker/fiducial system."
 url='http://wiki.ros.org/marker_msgs'
 
 pkgname='ros-kinetic-marker-msgs'
-pkgver='0.0.5'
+pkgver='0.0.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=2
