@@ -1,16 +1,15 @@
 # Maintainer: George Cave <gcave@stablecoder.ca>
 
 pkgname=('newton-dynamics-git')
-pkgver=3.13a.r224.g897a23cb6
-pkgrel=1
-pkgdesc="A 3D physics library"
+pkgver=3.13a.r303.gfb4c291c1
+pkgrel=2
+pkgdesc='A 3D physics library'
 arch=('x86_64')
-url="http://newtondynamics.com"
+url='http://newtondynamics.com'
 license=('custom:zlib')
-makedepends=('cmake')
+makedepends=('clang' 'cmake')
 conflicts=('newton-dynamics')
-license=('zlib')
-source=("git+https://github.com/MADEAPPS/newton-dynamics.git")
+source=('git+https://github.com/MADEAPPS/newton-dynamics.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -27,10 +26,14 @@ build() {
     cmake .. \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+        -DCMAKE_C_COMPILER=clang \
+        -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_BUILD_TYPE=Release \
-        -DBUILD_SHARED_LIBS=ON \
         -DNEWTON_BUILD_SHARED_LIBS=ON \
-        -DNEWTON_BUILD_SANDBOX_DEMOS=OFF
+        -DNEWTON_BUILD_SANDBOX_DEMOS=OFF \
+        -DNEWTON_WITH_AVX_PLUGIN=ON \
+        -DNEWTON_WITH_AVX2_PLUGIN=ON \
+        -DNEWTON_WITH_SSE4_PLUGIN=ON
 
     make
 }
