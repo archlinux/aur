@@ -5,23 +5,20 @@
 
 pkgname=networkmanager-l2tp
 _pkgname=network-manager-l2tp
-pkgver=1.2.10
-pkgrel=4
+pkgver=1.2.12
+pkgrel=1
 pkgdesc='L2TP support for NetworkManager'
 arch=('i686' 'x86_64')
 url="https://github.com/nm-l2tp/NetworkManager-l2tp"
 license=('GPL2')
-depends=('libnm' 'libnma' 'ppp' 'xl2tpd' 'libsecret')
-makedepends=('libnm-gtk' 'intltool' 'python')
+depends=('libnm>=1.2' 'ppp' 'xl2tpd' 'libsecret')
+makedepends=('intltool' 'python' 'libnma')
 optdepends=(
   'libreswan: IPSec support (recommended)'
   'strongswan: IPSec support'
 )
-source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/nm-l2tp/${_pkgname}/archive/${pkgver}.tar.gz"
-        "https://github.com/nm-l2tp/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz.asc")
-validpgpkeys=('E48BD89A1C51BFA28413D18349A7787EF8D3C039') # Douglas Kosovic
-md5sums=('48c8fe59fd606871561159331523cf3a'
-         'SKIP')
+source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/nm-l2tp/${_pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('faeb093673b00efcc80e3d93d270c43c')
 
 prepare() {
   cd $_pkgname-$pkgver
