@@ -2,7 +2,7 @@
 
 _gemname=google-cloud-storage
 pkgname=ruby-${_gemname}
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="google-cloud-storage is the official library for Google Cloud Storage."
 arch=('any')
@@ -10,7 +10,7 @@ depends=(
   ruby
   'ruby-digest-crc>=0.4' 'ruby-digest-crc<1'
   'ruby-google-api-client>=0.23' 'ruby-google-api-client<1'
-  'ruby-googleauth>=0.6.2' 'ruby-googleauth<0.7'
+  'ruby-googleauth>=0.6.2' 'ruby-googleauth<0.10'
   'ruby-google-cloud-core>=1.2' 'ruby-google-cloud-core<2'
 )
 url="https://rubygems.org/gems/${_gemname}"
@@ -20,7 +20,7 @@ license=('MIT')
 source=(
   "https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
 )
-sha256sums=('aceed9cc9e7adb9786d2332e2ac9b87b4092a442dbbc16ea984eb1e93bbe63bb')
+sha256sums=('98623fd5c9737b230ea6951c583ac806e09da9e36bed7f578d484a9833cd5453')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

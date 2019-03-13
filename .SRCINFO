@@ -1,6 +1,6 @@
 pkgbase = ruby-google-cloud-storage
 	pkgdesc = google-cloud-storage is the official library for Google Cloud Storage.
-	pkgver = 1.15.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://rubygems.org/gems/google-cloud-storage
 	arch = any
@@ -11,13 +11,13 @@ pkgbase = ruby-google-cloud-storage
 	depends = ruby-google-api-client>=0.23
 	depends = ruby-google-api-client<1
 	depends = ruby-googleauth>=0.6.2
-	depends = ruby-googleauth<0.7
+	depends = ruby-googleauth<0.10
 	depends = ruby-google-cloud-core>=1.2
 	depends = ruby-google-cloud-core<2
-	noextract = google-cloud-storage-1.15.0.gem
+	noextract = google-cloud-storage-1.16.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/google-cloud-storage-1.15.0.gem
-	sha256sums = aceed9cc9e7adb9786d2332e2ac9b87b4092a442dbbc16ea984eb1e93bbe63bb
+	source = https://rubygems.org/downloads/google-cloud-storage-1.16.0.gem
+	sha256sums = 98623fd5c9737b230ea6951c583ac806e09da9e36bed7f578d484a9833cd5453
 
 pkgname = ruby-google-cloud-storage
 
