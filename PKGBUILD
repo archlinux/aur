@@ -2,7 +2,7 @@
 # Based On: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=sdlmame-wout-toolkits
-pkgver=0.198
+pkgver=0.207
 pkgrel=1
 pkgdesc="A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support. Without Qt toolkit"
 url='http://mamedev.org'
@@ -26,13 +26,13 @@ makedepends=('nasm'
              'glu'
              'glm'
              'wget'
-             'python-sphinx'
+             'python-sphinxcontrib-svg2pdfconverter'
              'rapidjson'
              )
 source=("https://github.com/mamedev/mame/archive/mame${pkgver/./}.tar.gz"
         'sdlmame.sh'
         )
-sha256sums=('0c354a5c3d82d46acf2183d6be291364c4454ce6ffdd79cf3397174779cff8fa'
+sha256sums=('69c29533d2128345c59fbf23fabc3af696322a77a6c1d7a7bd7f5a2ee57adafb'
             'd0289344e2260411965a56290cb4744963f48961326ce7f41b90f75f4221bb42'
             )
 install=sdlmame-wout-toolkits.install
@@ -89,6 +89,7 @@ package() {
          'split'
          'src2html'
          'srcclean'
+         'testkeys'
          'unidasm'
          )
   for i in "${_apps[@]}"; do install -Dm755 "${i}" "${pkgdir}/usr/share/sdlmame/${i}"; done
@@ -118,4 +119,11 @@ package() {
 
   # documentation
   (cd docs; make BUILDDIR="${pkgdir}/usr/share/doc/${pkgname}" html)
+  cd "${pkgdir}/usr/share/doc/${pkgname}"
+  for i in $(find . -type f); do
+    sed -e "s|${srcdir}||g" \
+        -e "s|${pkgdir}||g" \
+        -i "${i}"
+  done
+  
 }
