@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-rviz-plugin-tutorials
 	pkgdesc = ROS - Tutorials showing how to write plugins for RViz.
-	pkgver = 0.10.1
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = http://ros.org/wiki/rviz_plugin_tutorials
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ros-kinetic-rviz-plugin-tutorials
 	makedepends = ros-kinetic-rviz
 	makedepends = ros-kinetic-catkin
 	depends = ros-kinetic-rviz
-	source = rviz_plugin_tutorials::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/kinetic/rviz_plugin_tutorials/0.10.1-0
+	source = rviz_plugin_tutorials::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/kinetic/rviz_plugin_tutorials/0.10.3-0
 	md5sums = SKIP
 
 pkgname = ros-kinetic-rviz-plugin-tutorials
