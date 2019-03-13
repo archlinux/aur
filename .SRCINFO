@@ -1,7 +1,7 @@
 pkgbase = ruby-faraday-cookie_jar
 	pkgdesc = Manages client-side cookie jar for Faraday HTTP client
 	pkgver = 0.0.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/miyagawa/faraday-cookie_jar
 	arch = any
 	license = MIT
