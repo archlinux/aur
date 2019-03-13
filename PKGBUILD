@@ -2,7 +2,7 @@
 
 pkgname=deconz
 arch=('x86_64' 'armv6h' 'armv7h')
-pkgver=2.05.59
+pkgver=2.05.60
 pkgrel=1
 pkgdesc="A generic ZigBee monitoring and control tool"
 url="http://www.dresden-elektronik.de"
@@ -28,9 +28,9 @@ source_x86_64=($pkgname-$pkgver-x86_64.deb::https://www.dresden-elektronik.de/de
 source_armv6h=($pkgname-$pkgver-armv6h.deb::https://www.dresden-elektronik.de/rpi/deconz/beta/$pkgname-$pkgver-qt5.deb)
 source_armv7h=($pkgname-$pkgver-armv7h.deb::https://www.dresden-elektronik.de/rpi/deconz/beta/$pkgname-$pkgver-qt5.deb)
 noextract=()
-sha256sums_x86_64=('93b554d6fc7e4dceb9061ac21257c9bde3ab646331f7ff62efa67e472dc81c53')
-sha256sums_armv6h=('7579a0120ed6cabddb082566ac49ea0b4a3331ebcb6feab5956d3aa2e9b648b6')
-sha256sums_armv7h=('7579a0120ed6cabddb082566ac49ea0b4a3331ebcb6feab5956d3aa2e9b648b6')
+sha256sums_x86_64=('6f28290a1555a341b390b9cc4c08c155e3228fcf5742af02a53bbcd62d0584f2')
+sha256sums_armv6h=('dca9f853122f6cd5cb92b3873fa96d51eb07ef84a4cbaf274fc7f57e178c1149')
+sha256sums_armv7h=('dca9f853122f6cd5cb92b3873fa96d51eb07ef84a4cbaf274fc7f57e178c1149')
 
 package() {
   cd "${srcdir}"
