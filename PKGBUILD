@@ -1,5 +1,5 @@
 pkgname=sbpl
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Lattice  Planner based on A* for mobile robotics."
 arch=('i686' 'x86_64' 'armv7h')
