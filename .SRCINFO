@@ -1,7 +1,7 @@
 pkgbase = ruby-word_wrap
 	pkgdesc = Simple tool for word-wrapping text
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pazdera/word_wrap
 	arch = any
 	license = MIT
