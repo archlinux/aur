@@ -10,7 +10,11 @@ pkgdesc="A shell and command-line utility to manage TeXLive on Arch Linux"
 arch=('any')
 url="http://wiki.archlinux.org/index.php?title=TeXLive#TeXLive_Local_Manager"
 license=('GPL')
-depends=('texlive-core>=2011' 'perl-libwww' 'perl-term-shellui' 'perl-term-readline-gnu' 'perl-list-moreutils')
+depends=('texlive-core>=2011'
+         'perl-libwww'
+         'perl-term-shellui'
+         'perl-term-readline-gnu'
+         'perl-list-moreutils')
 install='tllocalmgr.install'
 
 _giturl="git://projects.archlinux.org/users/remy/${pkgname%-git}.git"
