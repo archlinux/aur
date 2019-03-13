@@ -1,22 +1,42 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-calendar-git
-pkgver=r1772.dcb72b85
+pkgver=r2100.d7b9a090
 pkgrel=1
 pkgdesc='The Pantheon Calendar'
-arch=('x86_64')
-url='https://github.com/elementary/calendar'
-license=('GPL3')
-groups=('pantheon-unstable')
-depends=('cairo' 'clutter' 'clutter-gtk' 'evolution-data-server' 'folks'
-         'gdk-pixbuf2' 'geocode-glib' 'glib2' 'glibc' 'gtk3' 'libchamplain'
-         'libgee' 'libical' 'libnotify' 'libsoup'
-         'libgranite.so')
-makedepends=('git' 'granite-git' 'intltool' 'meson' 'vala')
-provides=('pantheon-calendar')
-conflicts=('pantheon-calendar')
-source=('pantheon-calendar::git+https://github.com/elementary/calendar.git')
-sha256sums=('SKIP')
+arch=(x86_64)
+url=https://github.com/elementary/calendar
+license=(GPL3)
+groups=(pantheon-unstable)
+depends=(
+  cairo
+  clutter
+  clutter-gtk
+  evolution-data-server
+  folks
+  gdk-pixbuf2
+  geoclue
+  geocode-glib
+  glib2
+  gtk3
+  libchamplain
+  libgee
+  libgranite.so
+  libical
+  libnotify
+  libsoup
+)
+makedepends=(
+  git
+  granite-git
+  intltool
+  meson
+  vala
+)
+provides=(pantheon-calendar)
+conflicts=(pantheon-calendar)
+source=(pantheon-calendar::git+https://github.com/elementary/calendar.git)
+sha256sums=(SKIP)
 
 pkgver() {
   cd pantheon-calendar
