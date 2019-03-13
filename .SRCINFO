@@ -1,11 +1,10 @@
 pkgbase = code-server
 	pkgdesc = Run VS Code on a remote server
 	pkgver = 1.32.0_245
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/codercom/code-server
 	arch = x86_64
 	license = MIT
-	checkdepends = coreutils
 	source = https://github.com/codercom/code-server/releases/download/1.32.0-245/code-server-1.32.0-245-linux-x64.tar.gz
 	sha512sums = SKIP
 
