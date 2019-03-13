@@ -1,7 +1,7 @@
 pkgbase = conoha-iso-git
 	pkgdesc = ISO image management tool for ConoHa
 	pkgver = 0.4.3.r74.gc5bb13a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hironobu-s/conoha-iso
 	arch = x86_64
 	license = MIT

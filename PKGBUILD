@@ -2,7 +2,7 @@
 _pkgname=conoha-iso
 pkgname=${_pkgname}-git
 pkgver=0.4.3.r74.gc5bb13a
-pkgrel=1
+pkgrel=2
 pkgdesc="ISO image management tool for ConoHa"
 arch=(x86_64)
 url="https://github.com/hironobu-s/conoha-iso"
@@ -34,4 +34,5 @@ build() {
 package() {
 	cd gopath/src/github.com/$_pkgname/$_pkgname
 	install -Dm755 bin/linux/conoha-iso $pkgdir/usr/bin/conoha-iso
+	install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
