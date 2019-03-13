@@ -1,0 +1,9 @@
+post_install() {
+    cat << EOF
+
+Qt for Android only support up to Java 8, set it as default with:
+
+sudo archlinux-java set java-8-openjdk
+
+EOF
+}
