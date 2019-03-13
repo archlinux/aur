@@ -1,5 +1,5 @@
 pkgbase = plata-theme-gs330
-	pkgdesc = Plata theme that is not broken in GNOME Shell 3.30 ()
+	pkgdesc = Plata theme that is not broken in GNOME Shell 3.30
 	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://gitlab.com/tista500/plata-theme/issues/33

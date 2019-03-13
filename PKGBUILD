@@ -3,7 +3,7 @@
 pkgname=plata-theme-gs330
 pkgver=0.6.0
 pkgrel=1
-pkgdesc='Plata theme that is not broken in GNOME Shell 3.30 ()'
+pkgdesc='Plata theme that is not broken in GNOME Shell 3.30'
 arch=('any')
 url='https://gitlab.com/tista500/plata-theme/issues/33'
 license=('CCPL' 'GPL2')
