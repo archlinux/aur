@@ -8,6 +8,7 @@ pkgbase = openmpi-cuda
 	makedepends = git
 	makedepends = valgrind
 	makedepends = gcc-fortran
+	makedepends = hwloc
 	depends = libsystemd
 	depends = libnl
 	depends = numactl
