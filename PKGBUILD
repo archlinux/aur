@@ -4,13 +4,26 @@ _pkgname="vuos"
 
 pkgname="$_pkgname-git"
 pkgver=r227.ce83c05
-pkgrel=2
+pkgrel=3
 pkgdesc="view based o.s."
 arch=('any')
 url="https://github.com/virtualsquare/$_pkgname"
 license=('GPL2')
 groups=('view-os')
-depends=('purelibc-git' 's2argv-execs-git' 'libstropt-git' 'strcase-git' 'libvolatilestream-git' 'vdeplug4-git' 'userbindmount-git' 'fuse-ext2-git')
+depends=(
+	's2argv-execs-git'
+	'vdeplug4-git'
+	'purelibc-git'
+	'libvolatilestream-git'
+	'libstropt-git'
+	'strcase-git'
+	'libvdestack-git'
+	'vdeplug_vlan-git'
+	'cado-git'
+	'fuse-ext2-git'
+	'vdeplug_agno-git'
+	'vdens-git'
+)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
