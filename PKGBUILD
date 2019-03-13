@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=purevpn-networkmanager
-pkgver=2019.01.28
-pkgrel=2
+pkgver=2019.03.13
+pkgrel=1
 pkgdesc='A script to generate template-based PureVPN configuration files for NetworkManager'
 arch=('any')
 url='https://www.purevpn.com/'
@@ -11,12 +11,12 @@ optdepends=("networkmanager-openvpn: for the OpenVPN protocol"
             "networkmanager-pptp: for the PPTP protocol")
 makedepends=("curl")
 replaces=('purevpn-openvpn')
-source=("linux-files.zip::https://s3-us-west-1.amazonaws.com/heartbleed/linux/linux-files.zip"
+source=("OVPN-files.zip::https://s3-us-west-1.amazonaws.com/heartbleed/windows/New+OVPN+Files.zip"
         "template-ovpn"
         "template-pptp"
         "purevpn")
-sha256sums=('0c2fecda247c34003468d35b74438443b47fef0e4debdfa7cb1a6a88d2e93bb9'
-            '336a901c88e406c05f1ec6d192bf7461145299b3c631eb203cebdc94b63c26d6'
+sha256sums=('a5ebcb069a822e6d360bbe75537c8a7dfb306b2d1e29de3bf9434b4d152cde54'
+            '025a9062b948d05d8648c660674090b79164147ad51ed47a45d10695561e334e'
             'eb63f1730a807726e906d6c2e2362ee402f39d3b554bea225d0303a33b19ea58'
             'e647fee6c5600f05d5f90329f63dbd788df0771c3d92973bd10e87d872c62730')
 noextract=("linux-files.zip")
@@ -26,7 +26,7 @@ prepare() {
   cd "${srcdir}"
 
   msg2 "Extracting Certifications..."
-  bsdtar -xf linux-files.zip -s'|[^/]*/||' "*.key" "*.crt"
+  bsdtar -xf OVPN-files.zip -s'|[^/]*/||' "*.key" "*.crt"
 
   msg2 "Getting latest list of VPN servers..."
 
@@ -45,6 +45,8 @@ package() {
   install -D -m 755 "${startdir}/purevpn" "${pkgdir}"/usr/bin
   install -D -m 644 "${startdir}"/{template-ovpn,template-pptp} "${pkgdir}"/usr/lib/purevpn
   cd "${srcdir}"
-  install -Dm600 {OpenVPN_Config_Files/TCP/ca.crt,OpenVPN_Config_Files/TCP/Wdc.key,vpn-list.tsv} "${pkgdir}"/usr/lib/purevpn
+  install -Dm644 vpn-list.tsv "${pkgdir}"/usr/lib/purevpn
+  install -m600 ca.crt.crt "${pkgdir}"/usr/lib/purevpn/ca.crt
+  install -m600 Wdc.key "${pkgdir}"/usr/lib/purevpn/Wdc.key
 }
 

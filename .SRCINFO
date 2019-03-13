@@ -1,7 +1,7 @@
 pkgbase = purevpn-networkmanager
 	pkgdesc = A script to generate template-based PureVPN configuration files for NetworkManager
-	pkgver = 2019.01.28
-	pkgrel = 2
+	pkgver = 2019.03.13
+	pkgrel = 1
 	url = https://www.purevpn.com/
 	install = purevpn-networkmanager.install
 	arch = any
@@ -12,12 +12,12 @@ pkgbase = purevpn-networkmanager
 	optdepends = networkmanager-pptp: for the PPTP protocol
 	replaces = purevpn-openvpn
 	noextract = linux-files.zip
-	source = linux-files.zip::https://s3-us-west-1.amazonaws.com/heartbleed/linux/linux-files.zip
+	source = OVPN-files.zip::https://s3-us-west-1.amazonaws.com/heartbleed/windows/New+OVPN+Files.zip
 	source = template-ovpn
 	source = template-pptp
 	source = purevpn
-	sha256sums = 0c2fecda247c34003468d35b74438443b47fef0e4debdfa7cb1a6a88d2e93bb9
-	sha256sums = 336a901c88e406c05f1ec6d192bf7461145299b3c631eb203cebdc94b63c26d6
+	sha256sums = a5ebcb069a822e6d360bbe75537c8a7dfb306b2d1e29de3bf9434b4d152cde54
+	sha256sums = 025a9062b948d05d8648c660674090b79164147ad51ed47a45d10695561e334e
 	sha256sums = eb63f1730a807726e906d6c2e2362ee402f39d3b554bea225d0303a33b19ea58
 	sha256sums = e647fee6c5600f05d5f90329f63dbd788df0771c3d92973bd10e87d872c62730
 

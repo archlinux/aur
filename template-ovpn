@@ -3,16 +3,12 @@ id=
 uuid=
 type=vpn
 permissions=
-secondaries=
 
 [vpn]
-auth=SHA1
 ca=/usr/lib/purevpn/ca.crt
 cipher=AES-256-CBC
 comp-lzo=yes
 connection-type=password
-dev=tun
-dev-type=tun
 password-flags=1
 port=
 remote=
