@@ -3,7 +3,7 @@
 pkgname=ruby-excon
 _gemname=excon
 pkgver=0.60.0
-pkgrel=2
+pkgrel=3
 pkgdesc="EXtended http(s) CONnections"
 arch=('any')
 url="https://github.com/geemus/excon"
