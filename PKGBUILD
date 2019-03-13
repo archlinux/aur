@@ -1,4 +1,4 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 # Contributor: Ian Yang <doit.ian@gmail.com>
 
 pkgname=google-glog-static
@@ -9,6 +9,7 @@ arch=('x86_64')
 license=('custom:BSD3')
 url='https://github.com/google/glog'
 depends=('gcc-libs')
+makedepends=('cmake')
 options=('staticlibs')
 source=("glog-$pkgver.tar.gz::https://github.com/google/glog/archive/v$pkgver.tar.gz")
 provides=('google-glog')

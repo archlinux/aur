@@ -5,6 +5,7 @@ pkgbase = google-glog-static
 	url = https://github.com/google/glog
 	arch = x86_64
 	license = custom:BSD3
+	makedepends = cmake
 	depends = gcc-libs
 	provides = google-glog
 	conflicts = google-glog
