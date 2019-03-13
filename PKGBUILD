@@ -4,7 +4,7 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 
 pkgname=yabasic
-pkgver=2.82.0
+pkgver=2.82.1
 pkgrel=1
 pkgdesc="Yet Another Basic"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="http://www.yabasic.de/"
 depends=('libx11' 'ncurses')
 makedepends=('libxt')
 source=("http://www.yabasic.de/download/$pkgname-$pkgver.tar.gz")
-sha256sums=('a80aa2c993cb7c89bd3e883a075342afceb3309fed2a8f3ad78d936023528388')
+sha256sums=('d2f76d1db381b13a01e0ed49eb9498ac002dded1803d3f2d2f9a6f45b9a50426')
 
 build() {
   cd $pkgname-$pkgver
