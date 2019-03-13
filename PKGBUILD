@@ -1,8 +1,9 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=code-server-noextract
-pkgver=1.32.1_245
+pkgver=1.32.0_245
 pkgrel=3
+epoch=1
 pkgdesc="This is a test, DO NOT install this"
 conflicts=(code-server)
 replaces=(code-server)
