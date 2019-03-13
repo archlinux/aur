@@ -5,13 +5,13 @@
 pkgbase=opencv3-opt
 pkgname=($pkgbase $pkgbase-samples)
 pkgver=3.4.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Open Source Computer Vision Library (Legacy Version & /opt directory version)"
 arch=(x86_64)
 license=(BSD)
 url="http://opencv.org/"
 depends=(intel-tbb openexr gst-plugins-base libdc1394 cblas lapack libgphoto2 jasper ffmpeg)
-makedepends=(cmake python-numpy python-setuptools mesa eigen hdf5 lapacke gtk3 vtk glew)
+makedepends=(cmake python-numpy python-setuptools mesa eigen hdf5 lapacke gtk3 vtk glew double-conversion)
 optdepends=('opencv-samples: samples'
             'gtk3: for the HighGUI module'
             'vtk: for the viz module'
