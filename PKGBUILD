@@ -4,7 +4,7 @@ _pkgname="slirp4netns"
 pkgname="${_pkgname}-git"
 pkgdesc="User-mode networking for unprivileged network namespaces."
 
-pkgver=v0.2.0.r7.g4775752
+pkgver=v0.3.0.beta.1.r2.g96e43ba
 pkgrel=1
 
 arch=('any')
@@ -28,7 +28,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
 	./autogen.sh
-	LDFLAGS=-static ./configure --prefix=/usr
+	./configure --prefix=/usr
 	make
 }
 
