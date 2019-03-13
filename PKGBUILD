@@ -1,12 +1,9 @@
 # Mainteiner: farwayer <farwayer@gmail.com>
-# Contributer: MadPhysicist <jfoxrabinovitz at gmail dot com>
-# Contributor: Jochen Schalanda <jochen+aur@schalanda.name>
-# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
-# Contributor: Olivier Médoc "oliv" <o_medoc@yahoo.fr>
+
 _gemname=colored
 pkgname=ruby-${_gemname}
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Ruby library for colorizing text output in your terminal'
 arch=(any)
 url="http://github.com/defunkt/colored"

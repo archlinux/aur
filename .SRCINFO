@@ -1,7 +1,7 @@
 pkgbase = ruby-colored
 	pkgdesc = Ruby library for colorizing text output in your terminal
 	pkgver = 1.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://github.com/defunkt/colored
 	arch = any
 	license = MIT
