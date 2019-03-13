@@ -1,5 +1,5 @@
 pkgname=mitogen
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Distributed self-replicating programs in Python"
 license=("BSD")
@@ -9,12 +9,6 @@ makedepends=('python-setuptools')
 optdepends=('ansible: for using the ansible strategy plugin')
 source=("https://github.com/dw/mitogen/archive/v${pkgver}.tar.gz")
 arch=('any')
-
-# https://github.com/dw/mitogen/commit/458a4faa979cac0e7d4a5431ec1f84da64a5787f
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  touch ansible_mitogen/compat/__init__.py
-}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -27,8 +21,8 @@ package() {
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-md5sums=('6f3dcf26b450ff784e79a79bc0695797')
-sha1sums=('76720cf8453adf1f6925e9088df2603963c79b69')
-sha256sums=('d24b4db3884c37068001ebe5989ae2fbc66938ab461acd9f2f4c0ae1c5919015')
-sha384sums=('673d43021221cbd9cc3c883a36f9dbf85e0d5850ff43a0c0caddedddb4693789c7b5bb63d35e9cc245d10bb20503d0a4')
-sha512sums=('c68f3042fb14d87c9d2aa3a8c54e9ec717469756c4006d642f5f9c3f39c8598ad5aeac80ab1bcd6961289ddec0a4bb4380aab3a0495a65c94a96ad2f376670db')
+md5sums=('80ce1ad816da7c1d872a4b239577b376')
+sha1sums=('055cf847a1896a1b4c7a05c30ab0956836317af6')
+sha256sums=('66d35eb6187f4551158d744d3b83469823846c57f26d13d92f6ee3fb8aa83f33')
+sha384sums=('4ebc9c20e478b75c027d061dad2dba15765a3d82cbb100b81dfacb9debe5636e668d45b5e08f0f8a4e6ac07b61afc464')
+sha512sums=('35b44bf310800c5a22eb4f06133deca0977dea70f1bd564edb092fe9dff3758fcc587e4bca9165143bcf5d4a36de940c6b4e6cd44a78cacbbd707cc1a5a175fe')
