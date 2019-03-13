@@ -1,6 +1,6 @@
 pkgbase = evdev-right-click-emulation
 	pkgdesc = Implement Long-Press-to-Right-Click on Touchscreen Linux Device with Xorg or Wayland
-	pkgver = 20190312.0ce9a5
+	pkgver = 20190313.350939
 	pkgrel = 1
 	url = https://git.angry.im/PeterCxy/evdev-right-click-emulation
 	install = evdev-right-click-emulation.install
@@ -10,12 +10,13 @@ pkgbase = evdev-right-click-emulation
 	makedepends = make
 	makedepends = git
 	depends = libevdev
-	source = evdev-right-click-emulation::git+https://git.angry.im/PeterCxy/evdev-right-click-emulation#commit=0ce9a594ea8f97b5eff77cd14642340aa40791df
+	backup = etc/evdev-rce.conf
+	source = evdev-right-click-emulation::git+https://git.angry.im/PeterCxy/evdev-right-click-emulation#commit=350939b8d2e95ed1be352f1ac734bdedf14e43c7
 	source = evdev-rce.conf
 	source = evdev-rce.service
 	sha1sums = SKIP
-	sha1sums = d2fe3eaca1d47f416fb93d9472f17f81b48cba41
-	sha1sums = 6c6cd2a3610bc20760fcd3ef43e49c9d0455ec12
+	sha1sums = 38286fe398788a9909a98eb4c57c4444f8599c54
+	sha1sums = 47fd73fbd6a5c36932567ad11ac14246868b0d14
 
 pkgname = evdev-right-click-emulation
 
