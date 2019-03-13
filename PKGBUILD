@@ -3,7 +3,7 @@
 _gemname=dotenv
 pkgname=ruby-${_gemname}
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Loads environment variables from '.env'."
 arch=('any')
 depends=(ruby)
