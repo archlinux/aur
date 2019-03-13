@@ -2,8 +2,8 @@
 
 pkgname=code-server
 pkgver=1.32.0_245
-pkgrel=2
-pkgdesc="Run VS Code on a remote server"
+pkgrel=3
+pkgdesc="This is a test, DO NOT install this"
 arch=('x86_64')
 url="https://github.com/codercom/code-server"
 license=(MIT)
@@ -17,6 +17,11 @@ build() {
 package() {
   cd "$srcdir/code-server-${pkgver//_/-}-linux-x64"
 
-  install -Dm755 code-server "$pkgdir"/usr/bin/code-server
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  mkdir -p "$pkgdir"/usr/bin
+  mkdir -p "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  cp code-server "$pkgdir"/usr/bin/code-server
+  cp LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  chmod +x "$pkgdir"/usr/bin/code-server
 }

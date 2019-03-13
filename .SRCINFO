@@ -1,7 +1,7 @@
 pkgbase = code-server
-	pkgdesc = Run VS Code on a remote server
+	pkgdesc = This is a test, DO NOT install this
 	pkgver = 1.32.0_245
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/codercom/code-server
 	arch = x86_64
 	license = MIT
