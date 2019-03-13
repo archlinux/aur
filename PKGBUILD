@@ -2,7 +2,7 @@
 
 _gemname=unicode-display_width
 pkgname=ruby-${_gemname}
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Determines the monospace display width of a string"
 arch=('any')
@@ -14,7 +14,7 @@ license=('MIT')
 source=(
   "https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
 )
-sha256sums=('3836b11eda171d92c8c78e1bd21de900b7f7fea3bf83dfab041ac5151d12052f')
+sha256sums=('9890eebd24feb4cb0e0542c9b8c6beecb40cda27be8c7afe49312625b36156eb')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
