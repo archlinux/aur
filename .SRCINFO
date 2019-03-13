@@ -1,7 +1,7 @@
 pkgbase = ruby-mini_magick-4.5
 	pkgdesc = Manipulate images with minimal use of memory via ImageMagick / GraphicsMagick
 	pkgver = 4.5.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/minimagick/minimagick
 	arch = any
 	license = MIT
