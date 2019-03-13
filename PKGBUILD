@@ -7,6 +7,7 @@ url="http://gcc.gnu.org"
 license=('GPL' 'LGPL' 'FDL' 'custom')
 groups=('psp')
 depends=('psp-binutils' 'psp-newlib' 'mpfr')
+conflicts=('psp-gcc-base')
 provides=('psp-gcc-base')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://ftp.gnu.org/pub/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.bz2"
