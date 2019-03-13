@@ -4,7 +4,7 @@ _pkgname="strcase"
 
 pkgname="$_pkgname-git"
 pkgver=r10.7e3be3c
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiway branch (switch) for short strings in C (in one header file)"
 arch=('any')
 url="https://github.com/rd235/$_pkgname"
