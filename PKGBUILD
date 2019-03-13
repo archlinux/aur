@@ -1,15 +1,15 @@
 # Maintainer: Ryan Gonzalez <rymg19 at gmail dot com>
-
-pkgname=('python-mistletoe')
-pkgver=0.5.4
+# Contributor: Ron B.S <ronthecookie0101 on gmail --OR-- me AT ronthecookie DOT me >
+pkgname=('python-mistletoe-0.6.2')
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='A fast, extensible Markdown parser in pure Python.'
 arch=('any')
 url='http://mistletoe.afteryu.me/'
 license=('MIT')
 makedepends=('python-setuptools')
-source=(https://github.com/miyuchina/mistletoe/archive/v0.5.4.tar.gz)
-sha256sums=('1044297c082b162a1c6f37a61a86d6b68ac1520282fcdce3ffd70ab48755e1af')
+source=(https://github.com/miyuchina/mistletoe/archive/v0.6.2.tar.gz)
+sha256sums=('ea9f89e379f33a14af1093413545c3ff302d1a17710a2f8ee37c7ad70a5072a8')
 
 package() {
   cd "$srcdir/mistletoe-$pkgver"

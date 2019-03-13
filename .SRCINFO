@@ -1,13 +1,13 @@
-pkgbase = python-mistletoe
+pkgbase = python-mistletoe-0.6.2
 	pkgdesc = A fast, extensible Markdown parser in pure Python.
-	pkgver = 0.5.4
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = http://mistletoe.afteryu.me/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	source = https://github.com/miyuchina/mistletoe/archive/v0.5.4.tar.gz
-	sha256sums = 1044297c082b162a1c6f37a61a86d6b68ac1520282fcdce3ffd70ab48755e1af
+	source = https://github.com/miyuchina/mistletoe/archive/v0.6.2.tar.gz
+	sha256sums = ea9f89e379f33a14af1093413545c3ff302d1a17710a2f8ee37c7ad70a5072a8
 
-pkgname = python-mistletoe
+pkgname = python-mistletoe-0.6.2
 
