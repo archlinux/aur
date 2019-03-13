@@ -17,9 +17,9 @@ pkgdesc='A general purpose 3D CAD modeler'
 arch=('x86_64')
 url='https://www.freecadweb.org/'
 license=('LGPL')
-depends=('boost-libs' 'curl' 'opencascade>=7.2' 'xerces-c' 'libspnav' 'glu' 'netcdf'
+depends=('boost-libs' 'curl' 'opencascade>=7.2' 'xerces-c' 'libspnav' 'glew' 'netcdf'
          'shared-mime-info' 'hicolor-icon-theme' 'jsoncpp' 'qt5-base' 'qt5-declarative' 'qt5-svg' 'qt5-tools'
-         'qt5-webkit' 'med' 'python-pivy' 'python-pyside2' 'python-matplotlib' 'pyside2-tools')
+         'qt5-x11extras' 'qt5-webkit' 'med' 'python-pivy' 'python-pyside2' 'python-matplotlib' 'pyside2-tools')
 makedepends=('boost' 'eigen' 'gcc-fortran' 'swig' 'xerces-c' 'desktop-file-utils' 'git'
              'cmake' 'coin>=4.0.0a' 'python-shiboken2' 'pyside2' 'shiboken2')
 optdepends=('python-matplotlib' 'graphviz' 'openscad')

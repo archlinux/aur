@@ -22,7 +22,7 @@ pkgbase = freecad
 	depends = opencascade>=7.2
 	depends = xerces-c
 	depends = libspnav
-	depends = glu
+	depends = glew
 	depends = netcdf
 	depends = shared-mime-info
 	depends = hicolor-icon-theme
@@ -31,6 +31,7 @@ pkgbase = freecad
 	depends = qt5-declarative
 	depends = qt5-svg
 	depends = qt5-tools
+	depends = qt5-x11extras
 	depends = qt5-webkit
 	depends = med
 	depends = python-pivy
