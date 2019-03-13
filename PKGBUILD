@@ -1,6 +1,6 @@
 # Maintainer: Denis Vadimov <me @ bloody.pw>
 
-pkgname=geos-php
+pkgname=php-geos-git
 pkgver=1.0.0.r4.g2c9c56a
 pkgrel=1
 pkgdesc="PHP bindings for GEOS"
