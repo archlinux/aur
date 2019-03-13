@@ -3,7 +3,7 @@
 pkgdesc="ROS : converts costmaps"
 
 pkgname='ros-kinetic-costmap-converter'
-pkgver='0.0.7'
+pkgver='0.0.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1

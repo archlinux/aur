@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-costmap-converter
 	pkgdesc = ROS : converts costmaps
-	pkgver = 0.0.7
+	pkgver = 0.0.9
 	pkgrel = 1
 	arch = any
 	license = BSD
