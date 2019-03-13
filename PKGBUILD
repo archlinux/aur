@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides a recovery behavior for the navigation stac
 url='http://wiki.ros.org/clear_costmap_recovery'
 
 pkgname='ros-kinetic-clear-costmap-recovery'
-pkgver='1.14.2'
+pkgver='1.14.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="navigation-release-release-kinetic-clear_costmap_recovery-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/clear_costmap_recovery/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ed48ca7182221611ff6992cf3a7ae1f68e83f2c1ce4bdf05cfaa3e587ff30a04')
+sha256sums=('ed33bd27b341aa89479a4fe5bc11027ea41f5363b181ae1d20ddd65ef094ac5e')
 
 build() {
   # Use ROS environment variables
