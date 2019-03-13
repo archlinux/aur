@@ -1,6 +1,6 @@
 pkgbase = bitwarden
 	pkgdesc = Bitwarden Desktop Application
-	pkgver = 1.13.1
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://github.com/bitwarden/desktop
 	arch = x86_64
@@ -21,12 +21,12 @@ pkgbase = bitwarden
 	conflicts = bitwarden-bin
 	options = !strip
 	options = !emptydirs
-	source = bitwarden-1.13.1.tar.gz::https://github.com/bitwarden/desktop/archive/v1.13.1.tar.gz
-	source = jslib-39b2ba1548b1843cd0cdce610da955844eecddae.tar.gz::https://github.com/bitwarden/jslib/archive/39b2ba1548b1843cd0cdce610da955844eecddae.tar.gz
+	source = bitwarden-1.14.0.tar.gz::https://github.com/bitwarden/desktop/archive/v1.14.0.tar.gz
+	source = jslib-49e06e77c4913867fc468f7d9e0b2b1529c1d181.tar.gz::https://github.com/bitwarden/jslib/archive/49e06e77c4913867fc468f7d9e0b2b1529c1d181.tar.gz
 	source = bitwarden.sh
 	source = bitwarden.desktop
-	sha512sums = 8c2c5d0ef33d3a526aeefef0b58dfeb519d04d3c35ecbf235e1a7a37cc3411966b0d12f292f4bca5ee149406599a905ebc624e886d5f47c168cd9bbd34423727
-	sha512sums = 6dc8516b6dcdbf49dad08881b83879aad893ddb096b7b8054942cf06655b4dd85f06981e518ea00c71f1f74043d53a65e2194ed2d22ccb01cd5ea01d77adc3a1
+	sha512sums = 245d81a87fef13c2e6c69de66511f5b404d1f53659efd621473d1390576b3e9f7b639520095fa9544dd5ec97ca11785d8151560c62562f10f06adc6adc8f5280
+	sha512sums = 89428796d35edd09648814ed8a89b72e95b47a1a5b830855da2a319236e4fae74812f7cd5326ec7c56c87a038ba2d73ac9352764c950a362c2617e21e617b902
 	sha512sums = 72cb31b6bdccf7b4ea2a151e3be1e19d8d6f2f2034a658aef0f6aedca33a5b4faa3bed11ba973cfbbb9317b84532312affe4fdb478d84dc67a365fd25cf1e28c
 	sha512sums = 05b771e72f1925f61b710fb67e5709dbfd63855425d2ef146ca3770b050e78cb3933cffc7afb1ad43a1d87867b2c2486660c79fdfc95b3891befdff26c8520fd
 
