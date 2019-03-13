@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://bgpstream.caida.org"
 license=('GPL')
 depends=("libwandio>=1.0.3")
+makedepends=('sqlite3')
 optdepends=("sqlite3: sqlite data interface")
 source=("http://bgpstream.caida.org/bundles/caidabgpstreamwebhomepage/dists/${pkgname}-${pkgver}.tar.gz")
 md5sums=('7026e42face337a3ce2395328700e549')
