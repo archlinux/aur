@@ -4,7 +4,7 @@ pkgdesc="ROS - A WebSocket interface to rosbridge."
 url='http://ros.org/wiki/rosbridge_server'
 
 pkgname='ros-kinetic-rosbridge-server'
-pkgver='0.7.17'
+pkgver='0.10.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
