@@ -1,4 +1,6 @@
-/[Ee]tcher-*
+/*[Ee]tcher-*
 /*.log
 /src/
 /pkg/
+*tar.xz
+*zip
