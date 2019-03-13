@@ -1,7 +1,7 @@
 pkgbase = ayatana-indicator-messages
 	pkgdesc = Ayatana Indicator that collects messages that need a response
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AyatanaIndicators
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,11 @@ pkgbase = ayatana-indicator-messages
 	conflicts = indicator-messages
 	options = !emptydirs
 	source = http://releases.ayatana-indicators.org/source/ayatana-indicator-messages/ayatana-indicator-messages-0.6.0.tar.gz
+	source = 0001.fix-testing-option.patch
+	source = 0002.fix-build.patch
 	md5sums = b8c38939ade3414741c2a4b0ddbb045a
+	md5sums = 04a69f5f375f33564173083098a07855
+	md5sums = 3fed27ba077bf991a0162c5b3b0d8698
 
 pkgname = ayatana-indicator-messages
 
