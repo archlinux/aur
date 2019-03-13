@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-libgeotiff
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A TIFF based interchange format for georeferenced raster imagery (mingw-w64)"
 arch=('any')
 url="https://trac.osgeo.org/geotiff/"
@@ -37,6 +37,7 @@ prepare() {
 
 build() {
   cd ${srcdir}/libgeotiff-${pkgver}
+  CPPFLAGS+=" -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H=1"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
