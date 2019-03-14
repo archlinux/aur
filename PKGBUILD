@@ -1,7 +1,7 @@
 # Maintainer: Tom Ingleby <tom@ewsting.org>
 pkgname='mraa'
-pkgver=1.9.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Low Level Skeleton Library for IO Communication on GNU/Linux platforms."
 makedepends=('git' 'cmake' 'swig')
 depends=('json-c')
