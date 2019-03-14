@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wpa_supplicant-git
-pkgver=2.6.r2185.gac1f59156
+pkgver=2.7.r604.g3d5cfa0f6
 pkgrel=1
 pkgdesc="A daemon program controlling the wireless connection"
 arch=('i686' 'x86_64')
@@ -50,9 +50,7 @@ package() {
   install -d -m755 "$pkgdir/etc/wpa_supplicant"
   install -Dm644 "wpa_supplicant.conf" "$pkgdir/usr/share/doc/wpa_supplicant/wpa_supplicant.conf"
 
-  install -d -m755 "$pkgdir/usr/share/dbus-1/system-services"
-  install -m644 "dbus/fi.epitest.hostap.WPASupplicant.service" "$pkgdir/usr/share/dbus-1/system-services/"
-  install -m644 "dbus/fi.w1.wpa_supplicant1.service" "$pkgdir/usr/share/dbus-1/system-services/"
+  install -Dm644 "dbus/fi.w1.wpa_supplicant1.service" "$pkgdir/usr/share/dbus-1/system-services/fi.w1.wpa_supplicant1.service"
 
   install -Dm644 "dbus/dbus-wpa_supplicant.conf" "$pkgdir/etc/dbus-1/system.d/wpa_supplicant.conf"
 
