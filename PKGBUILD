@@ -3,7 +3,7 @@
 
 name=cloudcompare
 pkgname=${name}-git
-pkgver=2.10.1.r69.ga98751c4
+pkgver=2.10.2.r115.g75157a8d
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
