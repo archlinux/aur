@@ -1,8 +1,9 @@
-# Maintainer: Davi da Silva Böger <dsboger@gmail.com>
+# Maintainer: Alex Dewar <alex.dewar@gmx.co.uk>
+# Contributer: Davi da Silva Böger <dsboger@gmail.com>
 
 pkgbase='vte3-tilix'
 pkgname=("${pkgbase}" 'vte-tilix-common')
-pkgver=0.54.2
+pkgver=0.56.0
 pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora and Tilix patches'
 arch=('x86_64')
