@@ -1,0 +1,3 @@
+post_install() {
+  printf 'If the device file has not been created, try rebooting.'
+}
