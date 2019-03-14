@@ -1,6 +1,6 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=phonon-qt4
-pkgver=4.10.1
+pkgver=4.10.2
 pkgrel=4
 pkgdesc="The multimedia framework for KDE4"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ url='http://phonon.kde.org/'
 install="phonon-qt4.install"
 license=(LGPL)
 source=("https://download.kde.org/stable/${pkgname%-qt4}/$pkgver/${pkgname%-qt4}-$pkgver.tar.xz"{,.sig})
-sha256sums=('e5a98df31aeffc22493afc8d6adbca5d6f0c27cc2eed73b3be05195321e08db7'
+sha256sums=('34edb1985778575eb7004e4e45151cd7bc995f61ddd6ce3b050b97b7bd778809'
             'SKIP')
 validpgpkeys=('CB9387521E1EE0127DA804843FDBB55084CC5D84') # Harald Sitter <sitter@kde.org>
 
