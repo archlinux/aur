@@ -1,6 +1,6 @@
 # Maintainer: Arafat Zahan <kuasha420@gmail.com>
 pkgname=python-simplepam-git
-_pkgname=python3-simplepam
+_pkgname=python-simplepam
 pkgver=r31.b81a806
 pkgrel=1
 pkgdesc="Pure Python interface to the Pluggable Authentication Modules system on Linux. Git version"
