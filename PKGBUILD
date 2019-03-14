@@ -1,7 +1,7 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname="python-fints"
-pkgver="2.0.1"
+pkgver="2.1.1"
 pkgrel=1
 pkgdesc="Minimal pure-python FinTS (formerly known as HBCI) implementation"
 arch=(any)
@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('python-mt-940')
 makedepends=('python-setuptools')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/raphaelm/python-fints/archive/v${pkgver}.tar.gz)
-sha512sums=('c919b5c4141a9bdd3826f4cbaf59d4f8543bb5edb8b42a2238f4c0a138eebf3f5ecdf92e9f4bb4d22e20409f7f9766af831122944531b0bf12d31a40e4a83c1e')
+sha512sums=('46f5f23656a253b7eacf84591002eb1e5c235d38d1a0cd2354fded972ab39afb50f6aee3ff81c501f33cdd5f2a3bbf5ea4abe219538564d1645bac45ceec833a')
 
 build() {
   cd "${pkgname}-${pkgver}"
