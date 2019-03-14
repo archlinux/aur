@@ -1,7 +1,7 @@
 # Maintainer: Peter Cai <peter at typeblog dot net>
 pkgname=netease-cloud-music
 pkgver=1.1.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Netease Cloud Music, converted from .deb package"
 arch=("x86_64")
 url="http://music.163.com/"
@@ -23,7 +23,7 @@ source=(
 	"http://music.163.com/html/web2/service.html"
 )
 md5sums=('f3adc3482e3fb084353ef9f58f0ff52b'
-         'a8bda1128eee0f6da45f37767a4bba29')
+         'SKIP')
 
 package() {
   cd ${srcdir}
