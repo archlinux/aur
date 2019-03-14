@@ -2,7 +2,7 @@
 
 pkgname=nut-monitor-git
 pkgver=2.7.4.r697.gea0a9945
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI to manage devices connected a NUT server"
 arch=('any')
 url="http://www.networkupstools.org/"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('network-ups-tools' 'python2' 'pygtk')
 provides=('nut-monitor')
 conflicts=('nut-monitor')
-makedepends=('desktop-file-utils')
+makedepends=('desktop-file-utils' 'git')
 source=('git+https://github.com/networkupstools/nut.git#branch=master')
 sha256sums=('SKIP')
 
