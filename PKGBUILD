@@ -1,11 +1,11 @@
 pkgname=godot-mono
-pkgver=3.0.6
+pkgver=3.1
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine."
 arch=('i686' 'x86_64')
 url="https://godotengine.org/"
 license=('MIT')
-depends=('mono>=5.12.0' 'msbuild-stable' 'dotnet-sdk')
+depends=('mono>=5.18.0' 'msbuild-stable' 'dotnet-sdk')
 makedepends=(
     'scons>=3.0' 
     'libxcursor' 
@@ -21,6 +21,7 @@ makedepends=(
     'pkg-config'
     'msbuild'
     'rsync'
+    'nuget'
 )
 provides=('godot-mono')
 conflicts=('godot-mono-bin')
