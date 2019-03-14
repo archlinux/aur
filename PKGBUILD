@@ -6,7 +6,7 @@
 #   french pkgbuild here: https://git.deparis.io/pkgbuilds/tree/cliqz_work/PKGBUILD?id=17ec1716c90dd08
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.25.2
+pkgver=1.25.3
 pkgrel=1
 _cqzchannel=release
 _cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
@@ -15,7 +15,7 @@ arch=(i686 x86_64)
 url="https://cliqz.com/"
 license=(MPL2)
 depends=(gtk3 libxt startup-notification mime-types dbus-glib ffmpeg nss
-         ttf-font libpulse sqlite libvpx icu)
+         ttf-font libpulse sqlite icu)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake
              inetutils xorg-server-xvfb autoconf2.13 rust clang llvm
              jack gtk2 python nodejs python2-psutil cbindgen nasm libnotify
@@ -23,7 +23,7 @@ makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake
 optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz")
-sha256sums=('f66c3c8dd4b35725367db2a9c3cacce066e281cbe143a3790b991fe565286a3a')
+sha256sums=('9069fbe2ac32a8ac356656ab083ebdd27a0d92fb25a8d309247c719568f0f472')
 options=(!emptydirs !makeflags)
 
 prepare() {
@@ -88,7 +88,7 @@ ac_add_options --enable-system-sqlite
 ac_add_options --with-system-bz2
 ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
-ac_add_options --with-system-libvpx
+#ac_add_options --with-system-libvpx
 ac_add_options --with-system-png
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
