@@ -1,0 +1,34 @@
+pkgbase = faiss-cuda-git
+	pkgdesc = A library for efficient similarity search and clustering of dense vectors.
+	pkgver = v1.5.0.r17.g7b07685
+	pkgrel = 1
+	url = https://github.com/facebookresearch/faiss
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = blas
+	depends = lapack
+	depends = cuda
+	source = faiss::git+https://github.com/facebookresearch/faiss.git
+	sha256sums = SKIP
+
+pkgname = faiss-cuda-git
+	provides = faiss
+	conflicts = faiss
+
+pkgname = python-faiss-cuda-git
+	depends = python
+	depends = python-setuptools
+	depends = python-numpy
+	depends = swig
+	provides = python-faiss
+	conflicts = python-faiss
+
+pkgname = python2-faiss-cuda-git
+	depends = python2
+	depends = python2-setuptools
+	depends = python2-numpy
+	depends = swig
+	provides = python2-faiss
+	conflicts = python2-faiss
+
