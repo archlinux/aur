@@ -29,7 +29,7 @@ build() {
   cd ${pkgname%-git}
   ./configure --prefix=/usr --etcdir=/etc/hop --mandir=/usr/share/man \
 	      --disable-ssl --bigloobindir=/usr/bin \
-	      --bigloolibdir=/usr/lib/bigloo/4.3e
+	      --bigloolibdir=/usr/lib/bigloo/4.3f
   make
   make doc
 }
