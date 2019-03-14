@@ -1,7 +1,7 @@
 pkgbase = linux-firmware-full-surface
 	pkgdesc = Firmware files for Linux, patched for surface
 	pkgver = 20190307.28f5f7.5d21cc
-	pkgrel = 1
+	pkgrel = 2
 	url = http://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary
 	arch = any
 	license = GPL2
