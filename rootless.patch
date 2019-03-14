@@ -1,0 +1,21 @@
+diff -ura package.orig/src/utils.js package.new/src/utils.js
+--- package.orig/src/utils.js	2019-03-02 03:00:07.393462552 +0100
++++ package.new/src/utils.js	2019-03-02 02:59:53.770016930 +0100
+@@ -17,7 +17,6 @@
+ const tmp = require('tmp');
+ const exec = require('child_process').exec;
+ const cp = require('child_process');
+-const sudo = require('electron-sudo');
+ const winston = require('winston');
+ const getos = require('getos');
+ const commandExistsSync = require('command-exists').sync;
+@@ -387,8 +386,7 @@
+ }
+ 
+ var needRoot = () => {
+-    if ((os.platform() === "win32") || isSnap()) return false;
+-    return !process.env.SUDO_UID
++    return false
+ }
+ 
+ var ensureRoot = (m) => {

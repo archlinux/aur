@@ -1,7 +1,0 @@
-post_install() {
-	ln -s /opt/ubports-installer/ubports-installer /usr/bin/ubports-installer
-}
-
-post_remove() {
-	rm /usr/bin/ubports-installer
-}
