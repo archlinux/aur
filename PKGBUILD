@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-neutronclient' 'python2-neutronclient')
-pkgver='6.11.0'
+pkgver='6.12.0'
 pkgrel='1'
 pkgdesc='Python client library for Neutron'
 arch=('any')
@@ -32,7 +32,7 @@ checkdepends=('python-mock' 'python2-mock'
               'python-tempest')
 source=("https://github.com/openstack/${pkgname}/archive/${pkgver}.tar.gz"
         'skip-failing-py37-tests.patch')
-sha512sums=('961422f7c5ff762a110dec9aef7e24f46a5aea9918c00b557fd9061de8e6008d1af4e800fcb13415013f52eaeca482b8028d5391abfc195bd0e55940a3b3cbcc'
+sha512sums=('c3e49591c2fcea24a1de8316b5ca331eaf794654128532917561e95787d7a2b56b666e3865fa4064fd4363de410615c9f538e8206a673f1683070d20d3d16d90'
             '20e04c08e3eb37dc9f841ddeb276a26a4283de94d9aa803e6017f8f03b5771234e107743d8e839e4c51e392fccf6c812ebd695f5eabb849555f379c82a6f7dac')
 
 prepare() {
