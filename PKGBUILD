@@ -4,7 +4,7 @@
 # Contributor: Alex 'AdUser' Z
 pkgname=fusioninventory-agent
 _pkgname="FusionInventory-Agent"
-pkgver=2.4.1
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="An application for keeping track of the hardware and software"
 arch=(any)
@@ -24,7 +24,7 @@ depends=(
   'perl-proc-daemon'
 )
 makedepends=(
-  'perl-http-proxy'
+  #'perl-http-proxy'
   'perl-http-server-simple'
   'perl-http-server-simple-authen'
   'perl-io-socket-ssl'
@@ -53,8 +53,7 @@ optdepends=(
   # >=1.14
   'perl-io-socket-ssl: HTTPS support'
   'perl-lwp-protocol-https: HTTPS support'
-  # Required for Systemd. Added to depends.
-  'perl-proc-daemon: daemon mode'
+  'perl-proc-pid-file'
 
 # Inventory
   'perl-datetime'
@@ -127,7 +126,7 @@ checkdepends=(
 )
 source=("https://github.com/fusioninventory/fusioninventory-agent/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         "setup.patch")
-md5sums=('417fd23dd681f615055b65cd4e414187'
+md5sums=('ac10003b29282fe63c0a247a80472743'
          '51f15a7346dda3d3337b514e73a00132')
 backup=('etc/fusioninventory/agent.cfg')
 
