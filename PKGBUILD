@@ -4,7 +4,7 @@
 
 pkgname=hop-git
 epoch=1
-pkgver=3.2.0r5093.848b1d1f
+pkgver=3.2.0r5279.848b1d1f
 pkgrel=1
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
