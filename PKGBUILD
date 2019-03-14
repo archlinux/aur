@@ -26,8 +26,9 @@ pkgver() {
 }
 
 package_python-visdom-git() {
-depends=('python-websocket-client' 'python-numpy' 'python-scipy' 'python-requests' 'python-tornado' 'python-pyzmq' 'python-six' 'python-torchfile-git')
+depends=('python-websocket-client' 'python-numpy' 'python-scipy' 'python-requests' 'python-tornado' 'python-pyzmq' 'python-six' 'python-torchfile')
 provides=('python-visdom')
+conflicts=('python-visdom')
 install='visdom.install'
   cd "${srcdir}/visdom"
   python setup.py install --root="${pkgdir}/" --optimize=1
@@ -36,8 +37,9 @@ install='visdom.install'
 }
 
 package_python2-visdom-git() {
-depends=('python2-websocket-client' 'python2-numpy' 'python2-scipy' 'python2-requests' 'python2-tornado' 'python2-pyzmq' 'python2-six' 'python2-torchfile-git')
+depends=('python2-websocket-client' 'python2-numpy' 'python2-scipy' 'python2-requests' 'python2-tornado' 'python2-pyzmq' 'python2-six' 'python2-torchfile')
 provides=('python2-visdom')
+conflicts=('python2-visdom')
 install='visdom2.install'
   cd "${srcdir}/visdom"
   python2 setup.py install --root="${pkgdir}/" --optimize=1

@@ -20,8 +20,9 @@ pkgname = python-visdom-git
 	depends = python-tornado
 	depends = python-pyzmq
 	depends = python-six
-	depends = python-torchfile-git
+	depends = python-torchfile
 	provides = python-visdom
+	conflicts = python-visdom
 
 pkgname = python2-visdom-git
 	install = visdom2.install
@@ -32,6 +33,7 @@ pkgname = python2-visdom-git
 	depends = python2-tornado
 	depends = python2-pyzmq
 	depends = python2-six
-	depends = python2-torchfile-git
+	depends = python2-torchfile
 	provides = python2-visdom
+	conflicts = python2-visdom
 
