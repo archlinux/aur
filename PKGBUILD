@@ -5,7 +5,7 @@
 
 pkgname=emby-server-beta
 pkgver=4.1.0.14
-pkgrel=1
+pkgrel=2
 _ffmpeg_ver=2018_12_01
 _ffdetect_ver=4.0.2
 pkgdesc='Bring together your videos, music, photos, and live television'
@@ -35,7 +35,7 @@ depends=('alsa-lib'
          'libx11'
          'libx264.so'
          'opus'
-         'skia-sharp60'
+         'skia-sharp'
          'sqlite'
          'zlib'
          'zvbi')
@@ -107,7 +107,7 @@ build() {
 package() {
   install -dm 755 "${pkgdir}"/usr/lib
   cp -dr --no-preserve='ownership' system "${pkgdir}"/usr/lib/emby-server
-  ln -s ../libSkiaSharp.so.60.0.0 "${pkgdir}"/usr/lib/emby-server/libSkiaSharp.so
+  ln -s ../libSkiaSharp.so.68.0.0 "${pkgdir}"/usr/lib/emby-server/libSkiaSharp.so
   install -Dm 755 emby-server -t "${pkgdir}"/usr/bin/
   install -Dm 755 bin/ffdetect "${pkgdir}"/usr/bin/ffdetect-emby
   install -Dm 755 ffmpeg-${_ffmpeg_ver}/ffmpeg "${pkgdir}"/usr/bin/ffmpeg-emby

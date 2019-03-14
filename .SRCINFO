@@ -1,7 +1,7 @@
 pkgbase = emby-server-beta
 	pkgdesc = Bring together your videos, music, photos, and live television
 	pkgver = 4.1.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://emby.media
 	arch = any
 	license = custom
@@ -30,7 +30,7 @@ pkgbase = emby-server-beta
 	depends = libx11
 	depends = libx264.so
 	depends = opus
-	depends = skia-sharp60
+	depends = skia-sharp
 	depends = sqlite
 	depends = zlib
 	depends = zvbi
