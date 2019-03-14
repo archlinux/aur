@@ -1,0 +1,18 @@
+pkgbase = bkcrack-git
+	pkgdesc = Crack legacy zip encryption with Biham and Kocher's known plaintext attack.
+	pkgver = r38.50ab495
+	pkgrel = 1
+	url = https://github.com/kimci86/bkcrack
+	arch = x86_64
+	license = ZLIB
+	makedepends = git
+	makedepends = cmake
+	makedepends = doxygen
+	depends = gcc-libs
+	provides = bkcrack
+	conflicts = bkcrack
+	source = bkcrack::git+https://github.com/kimci86/bkcrack
+	md5sums = SKIP
+
+pkgname = bkcrack-git
+
