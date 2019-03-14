@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-news
-pkgver=13.1.0
+pkgver=13.1.1
 pkgrel=1
 pkgdesc="An RSS/Atom feed reader"
 arch=('any')
