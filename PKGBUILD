@@ -3,7 +3,7 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr
 pkgver=2.4.0
-pkgrel=7
+pkgrel=8
 pkgdesc="'open' digital satellite receiver and timer controlled video disk recorder"
 url="http://tvdr.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -25,6 +25,16 @@ source=("ftp://ftp.tvdr.de/vdr/${pkgname}-${pkgver}.tar.bz2"
         'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-05-fix-shutdown.diff'
         'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-06-fix-channel-switch.diff'
         'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-07-fix-disabling-mtd.diff'
+        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-08-add-multi-frontend-support.diff'
+        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-09-fix-multi-frontend-access.diff'
+        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-10-fix-missing-epg.diff'
+        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-11-fix-peerdemo-udp-port.diff'
+        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-12-fix-empty-pat.diff'
+        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-13-fix-shutdown-2.diff'
+        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-14-fix-eitscan.diff'
+        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-15-fix-skincurses.diff'
+        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-16-fix-nit-transponder-processing.diff'
+        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-17-fix-nit-sdt-trigger.diff'
         'MainMenuHooks-v1_0_2.diff::https://www.vdr-portal.de/index.php?attachment/30330'
         '00-vdr.conf' '50-hello.conf' '50-pictures.conf'
         '60-create-dvb-device-units.rules'
@@ -51,6 +61,16 @@ md5sums=('12c6a3abeadfa915fcfe736bb047a3ab'
          '881cf6a109d531800c6d48bca1ef4a7c'
          'e1a54547146639366512552311bd9df0'
          'f455271c9518498bffd2d1840a102868'
+         '42b62c26e24fe5fb36c357f84a2763f7'
+         'c2fccfb33bb0f6fe4629d278d6f026a6'
+         'e0c439786644a346b0efe564be071f60'
+         'a3d502710a361f9fe8916816be0d0c1b'
+         'c7b7874238ca29fcafb9f6c0a6ff6505'
+         '145a59b3c8e7330921d3c3c584218783'
+         'bcc7c9e7a69ea0876ab72e3b111e07f1'
+         '5e6f5d331cdd0d1a7ae006640876f6cc'
+         '00fe7bf44ae9f3e54f24f12460196de9'
+         'cc93aba56562643f2b0ac551ac981af8'
          '301c9b9766ed5182b07f1debc79abc21'
          'de3dcdea1a4282211c6dac370019548b'
          'fc450f75037b8712673db4969a1dd758'
@@ -81,6 +101,16 @@ prepare() {
   patch -p0 -i "$srcdir/vdr-2.4.0-05-fix-shutdown.diff"
   patch -p0 -i "$srcdir/vdr-2.4.0-06-fix-channel-switch.diff"
   patch -p0 -i "$srcdir/vdr-2.4.0-07-fix-disabling-mtd.diff"
+  patch -p0 -i "$srcdir/vdr-2.4.0-08-add-multi-frontend-support.diff"
+  patch -p0 -i "$srcdir/vdr-2.4.0-09-fix-multi-frontend-access.diff"
+  patch -p0 -i "$srcdir/vdr-2.4.0-10-fix-missing-epg.diff"
+  patch -p0 -i "$srcdir/vdr-2.4.0-11-fix-peerdemo-udp-port.diff"
+  patch -p0 -i "$srcdir/vdr-2.4.0-12-fix-empty-pat.diff"
+  patch -p0 -i "$srcdir/vdr-2.4.0-13-fix-shutdown-2.diff"
+  patch -p0 -i "$srcdir/vdr-2.4.0-14-fix-eitscan.diff"
+  patch -p0 -i "$srcdir/vdr-2.4.0-15-fix-skincurses.diff"
+  patch -p0 -i "$srcdir/vdr-2.4.0-16-fix-nit-transponder-processing.diff"
+  patch -p0 -i "$srcdir/vdr-2.4.0-17-fix-nit-sdt-trigger.diff"
 
   # Custom extensions
   sed -i 's/NULL, 0, true/NULL, 0, OpenSubMenus/g' "$srcdir/MainMenuHooks-v1_0_2.diff"
