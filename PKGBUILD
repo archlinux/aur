@@ -3,20 +3,20 @@
 _pkgname=python-treecorr
 pkgbase=python-treecorr-git
 pkgname=('python-treecorr-git' 'python2-treecorr-git')
-pkgver=v3.3.7.r0.26d4169
+pkgver=v3.3.11.r0.fe0e875
 pkgrel=1
 pkgdesc="A package for efficiently computing 2-point and 3-point correlation functions "
 arch=('i686' 'x86_64')
 url="https://github.com/rmjarvis/TreeCorr.git"
 license=('BSD')
-makedepends=('git' 'python-numpy' 'python2-numpy')
-checkdepends=()
+makedepends=('git' 'python-numpy' 'python2-numpy' 'python-future' 'python-pandas' 'python-yaml' 'python-cffi' 'python2-future' 'python2-pandas' 'python2-yaml' 'python2-cffi' 'python-fitsio-git' 'python2-fitsio-git')
+checkdepends=('python-nose' 'python2-nose')
 source=("${_pkgname}::git+${url}")
 md5sums=('SKIP')
 
 pkgver() {
 	 cd $_pkgname
-	 printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	 printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
@@ -37,21 +37,23 @@ build() {
 
 check() {
 	cd "$srcdir"/$_pkgname/tests
+	#python setup.py test || warning 'Tests failed'
 	nosetests -v || warning 'Tests failed'
 	
 	cd "$srcdir"/$_pkgname-py2/tests
-	nosetests2 -v || warning 'Tests failed'
+	#python2 setup.py test || warning 'Tests2 failed'
+	nosetests2 -v || warning 'Tests2 failed'
 }
 
 package_python-treecorr-git() {
-			      depends=('python')
+			      depends=('python-numpy' 'python-future' 'python-pandas' 'python-yaml' 'python-cffi' 'python-fitsio-git')
 	  		      cd "${_pkgname}"
 	  		      python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
 	  		      install -Dm644 TreeCorr_LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 package_python2-treecorr-git() {
-			       depends=('python2')
+			       depends=('python2-numpy' 'python2-future' 'python-pandas' 'python2-yaml' 'python2-cffi' 'python2-fitsio-git')
 			       cd "${_pkgname}"
 	  		       python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
 			       mv ${pkgdir}/usr/bin/corr2 ${pkgdir}/usr/bin/corr2_py2

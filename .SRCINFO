@@ -1,20 +1,42 @@
 pkgbase = python-treecorr-git
 	pkgdesc = A package for efficiently computing 2-point and 3-point correlation functions
-	pkgver = v3.3.7.r0.26d4169
+	pkgver = v3.3.11.r0.fe0e875
 	pkgrel = 1
 	url = https://github.com/rmjarvis/TreeCorr.git
 	arch = i686
 	arch = x86_64
 	license = BSD
+	checkdepends = python-nose
+	checkdepends = python2-nose
 	makedepends = git
 	makedepends = python-numpy
 	makedepends = python2-numpy
+	makedepends = python-future
+	makedepends = python-pandas
+	makedepends = python-yaml
+	makedepends = python-cffi
+	makedepends = python2-future
+	makedepends = python2-pandas
+	makedepends = python2-yaml
+	makedepends = python2-cffi
+	makedepends = python-fitsio-git
+	makedepends = python2-fitsio-git
 	source = python-treecorr::git+https://github.com/rmjarvis/TreeCorr.git
 	md5sums = SKIP
 
 pkgname = python-treecorr-git
-	depends = python
+	depends = python-numpy
+	depends = python-future
+	depends = python-pandas
+	depends = python-yaml
+	depends = python-cffi
+	depends = python-fitsio-git
 
 pkgname = python2-treecorr-git
-	depends = python2
+	depends = python2-numpy
+	depends = python2-future
+	depends = python-pandas
+	depends = python2-yaml
+	depends = python2-cffi
+	depends = python2-fitsio-git
 
