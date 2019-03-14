@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Microsoft Office Online
+Comment=Microsoft Office Online is an Office suite that is offered as a free web application and is part of the Microsoft Office family.
+Exec=microsoft-office-online
+Icon=microsoft-office-online
+Terminal=false
+Categories=Office;

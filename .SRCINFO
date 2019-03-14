@@ -1,0 +1,17 @@
+pkgbase = ms-office-online-nativefier
+	pkgdesc = Microsoft Office Online is an Office suite that is offered as a free web application and is part of the Microsoft Office family.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/jiahaog/nativefier
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = nodejs-nativefier
+	source = ms-office-online-nativefier.png
+	source = ms-office-online-nativefier.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ms-office-online-nativefier
+
