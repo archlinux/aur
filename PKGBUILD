@@ -1,7 +1,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=gitlint
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Git commit message linter'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://jorisroovers.github.io/gitlint/'
 license=('MIT')
 options=(!emptydirs)
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/jorisroovers/$pkgname/tar.gz/v$pkgver)
-sha256sums=('045e6817c8f9efc1cfa30b0e78572fd7e06c64be30c94e0b9cf0d19fa999abce')
+sha256sums=('0f60eb8f733d2a2bf344dd9ac56a7ae7e09b742ef8967fc6f5bc483da2c7d6fe')
 
 prepare() {
 	cd $pkgname-$pkgver
