@@ -1,7 +1,7 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2
-pkgver=0.2.1
-_rpcver=3.3.0
+pkgver=0.2.2
+_rpcver=3.4.0
 _jsonver=73063f5002612c6bf64fe24f851cd5cc0d83eef9
 pkgrel=1
 pkgdesc='Open source re-implementation of Roller Coaster Tycoon 2 (requires full
@@ -11,24 +11,22 @@ url='https://openrct2.io'
 license=('GPL3')
 depends=('hicolor-icon-theme' 'sdl2' 'curl' 'jansson' 'speexdsp' 'fontconfig'
          'libpng' 'openssl' 'libzip' 'icu')
-makedepends=('cmake')
+makedepends=('cmake' 'rapidjson')
 optdepends=('zenity: System dialog box support (GNOME/GTK)'
             'kdialog: System dialog box support (KDE)'
             'alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver')
 install=openrct2.install
 source=("https://github.com/OpenRCT2/OpenRCT2/archive/v$pkgver.tar.gz"
-        "https://github.com/discordapp/discord-rpc/archive/v$_rpcver.tar.gz"
-        "https://github.com/Tencent/rapidjson/archive/$_jsonver.tar.gz")
-sha256sums=('0ed5b37997396d295f71f60e720d92f9a7713ecb4e96bdcff417de7e0698bfbb'
-            '1c625f3546761e778e084fe037540f4fdb5452e9c297ee790bbb43ce3cf955b5'
-            '896eb817fb2bc62a0a84ca65fac3e3c385b410e6dbf70d69c411e25776663e39')
+        "https://github.com/discordapp/discord-rpc/archive/v$_rpcver.tar.gz")
+sha256sums=('4b7b003fc0cf365be8a43d8784827415dbba3335de59cb948ab720ec1ebcaa7b'
+            'e13427019027acd187352dacba6c65953af66fdf3c35fcf38fc40b454a9d7855')
 
 prepare() {
   cd "$srcdir/OpenRCT2-$pkgver"
   ln -sf "$srcdir/discord-rpc-$_rpcver" discord-rpc
   mkdir -p discord-rpc/thirdparty
-  ln -sf "$srcdir/rapidjson-$_jsonver" discord-rpc/thirdparty/rapidjson
+  ln -sf "/usr/include/rapidjson" discord-rpc/thirdparty/rapidjson
 }
 
 build() {
