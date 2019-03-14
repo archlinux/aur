@@ -20,7 +20,7 @@ prepare() {
 
 build() {
   cd build-qt4
-  cmake ../${pkgname/-qt4/}-$pkgver \
+  cmake ../${pkgname/-qt4/-backend}-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
