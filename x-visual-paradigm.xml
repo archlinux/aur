@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/x-visual-paradigm">
+        <comment>Visual Paradigm File</comment>
+        <icon name="application-x-visual-paradigm"/>
+        <glob-deleteall/>
+        <glob pattern="*.vpp"/>
+	<glob pattern="*.vpp.new"/>
+    </mime-type>
+</mime-info>

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Visual Paradigm
+Exec=/opt/visual-paradigm/Visual_Paradigm
+Icon=visual-paradigm
+Categories=Application
+Name[en_US]=Visual Paradigm
+StartupWMClass=RV
+Categories=Development;
+MimeType=application/x-visual-paradigm
