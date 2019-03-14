@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-serialbus
-_qtver=5.12.1
+_qtver=5.12.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=()
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('97f0c690c77b0e19a8c90e376ecc94d59b21adb20a90179700d1c514a4c50d74')
+sha256sums=('16bfee0be81805d82d4f9c04425b5bc2678ca01fa1617fc72613a893438aaa48')
 
 prepare() {
   mkdir -p build
