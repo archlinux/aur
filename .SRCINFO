@@ -1,6 +1,6 @@
 pkgbase = i3ass
 	pkgdesc = A bash-script collection to assist the use of i3-wm.
-	pkgver = 2019.03.14.4
+	pkgver = 2019.03.14.5
 	pkgrel = 1
 	url = https://github.com/budlabs/i3ass
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = i3ass
 	depends = bash>=4.0.0
 	optdepends = xdotool: floating window placement
 	optdepends = i3-wm: duh
-	source = https://github.com/budlabs/i3ass/archive/2019.03.14.4.tar.gz
-	sha256sums = 083706c269b0b0f08696ba22e0dae413d143a995f14478b75b02bb74f8e871c8
+	source = https://github.com/budlabs/i3ass/archive/2019.03.14.5.tar.gz
+	sha256sums = 738e1a144793d3c26d623583d8c05feb6ab1cb50fddab50ecedde00a5d48bed0
 
 pkgname = i3ass
 
