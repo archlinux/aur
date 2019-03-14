@@ -4,7 +4,6 @@
 # his PKGBUILD that served as a base for this one
 
 pkgbase=python-torchfile-git
-_pkgbase="${pkgbase#python-}"
 pkgdesc="Serialization of torch data"
 pkgname=(python-torchfile-git python2-torchfile-git)
 pkgver=r33.20b3e13
@@ -28,6 +27,7 @@ pkgver() {
 package_python-torchfile-git() {
 depends=('python-numpy')
 provides=('python-torchfile')
+conflicts=('python-torchfile')
   cd "${srcdir}/python-torchfile"
   python setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -36,6 +36,7 @@ provides=('python-torchfile')
 package_python2-torchfile-git() {
 depends=('python2-numpy')
 provides=('python2-torchfile')
+conflicts=('python2-torchfile')
   cd "${srcdir}/python-torchfile"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

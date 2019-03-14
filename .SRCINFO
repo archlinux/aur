@@ -14,8 +14,10 @@ pkgbase = python-torchfile-git
 pkgname = python-torchfile-git
 	depends = python-numpy
 	provides = python-torchfile
+	conflicts = python-torchfile
 
 pkgname = python2-torchfile-git
 	depends = python2-numpy
 	provides = python2-torchfile
+	conflicts = python2-torchfile
 
