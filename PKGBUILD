@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-manilaclient' 'python2-manilaclient')
-pkgver='1.26.0'
+pkgver='1.27.0'
 pkgrel='1'
 pkgdesc='Client library for OpenStack Manila API'
 arch=('any')
@@ -27,7 +27,7 @@ checkdepends=('python-pbr' 'python2-pbr'
               'python-testtools' 'python2-testtools'
               'python-stestr' 'python2-stestr'
               'python-tempest')
-sha512sums=('53e52e226d5eb0256c6a49946ba926135fef5cd96dc9866e7ce35958c0233c3341cc202bf40a493516680f28bd5842d4ed5e25f9e1b5a4cc4a4cefb447edcdd7')
+sha512sums=('161e7fd66c5761362d656eb37b0a5b19b5922b5ab92410cb67292a6bdeb39c3fca3cd8170ccefe56b93762c9eba39220610494139494897ab9805264f8090ea3')
 
 prepare() {
   # Fix tests where ~ is not replaced with %7E
