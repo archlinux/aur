@@ -4,10 +4,10 @@ pkgdesc="ROS - gazebo_ros_control."
 url='http://ros.org/wiki/gazebo_ros_control'
 
 pkgname='ros-kinetic-gazebo-ros-control'
-pkgver='2.5.14'
+pkgver='2.5.18'
 _pkgver_patch=1
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-gazebo-dev
@@ -46,15 +46,8 @@ depends=(${ros_depends[@]})
 
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-kinetic-gazebo_ros_control-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/kinetic/gazebo_ros_control/${pkgver}-${_pkgver_patch}.tar.gz"
-  gazebo_9_fixes.patch)
-sha256sums=('d1ab5943f207f602c0f0439964007c7536a04a3cc411c06ac5c6f0e59a67cedc'
-            'ac4869ae999f4e5871f03b4432a6621f120d754ff1df1820f81ccc491598a83e')
-
-prepare() {
-  cd ${srcdir}
-  patch -p1 <gazebo_9_fixes.patch
-}
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/kinetic/gazebo_ros_control/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('81dca564624e7e58f83ba522de9e7c2d69f563689751d2096a92030d7c722832')
 
 build() {
   # Use ROS environment variables
