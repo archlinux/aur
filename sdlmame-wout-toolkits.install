@@ -14,6 +14,6 @@ ${green}==>${all_off} ${bold}MAME has been updated.${all_off}
      '$ ${bold}mame --newini${all_off}'
 
      to force the script to create a new ini
-     file with default settings at '${bold}~/.mame/mame.ini${all_off}'
+     file with default settings at '${bold}~/.config/mame/mame.ini${all_off}'
      since there may be new ini options.\n"
 }
