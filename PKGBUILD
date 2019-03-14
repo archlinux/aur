@@ -54,7 +54,7 @@ _major=5.0
 _minor=2
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -74,6 +74,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/pf-uksm/0001-uksm-5.0-initial-submission.patch"
         "${_lucjanpath}/pf-uksm-fixes/0001-uksm-5.0-adopt-new-MMU-notifiers-API.patch"
         "${_lucjanpath}/pf-miscellaneous/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
+        "${_lucjanpath}/pf-miscellaneous-v2/0001-netfilter-nf_tables-fix-set-double-free-in-abort-pat.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -385,6 +386,7 @@ sha512sums=('adabeb1b2abff8d5984d339e0554c3560498a8cccdea12bc1fcf22d5b3cac6e37c2
             'd33b4fc80bcd619be903e4ac1910d4b341514fb23d2bb266ea42905d797ef4577b25e1b1ed06bb5a69548305f2404b0d6dde0bca27c8ae05380e47524726b6a9'
             'b72e9d6c03cba0d61cfd65a2db3e45f2dafb8ae1889b1e210b467b8e7f4aa5416a51283a03ca3f8ac0a861f0866776cacb0cf514bc7d6e896d8f4d87a1aeb57e'
             '0182d58cae33d9acd59cf5af937dff1b64f41d0a51031fdc7075d6eeb9d4d97ea1d1d5c991d5a8065a352f06af1aa04f6e48d21aae41a36d24ae06f713e9adf9'
+            '5832aeb2ddbdd9e409a7ef502c81d82ea176ac07f9ea610719baa6d9d772d794eafd2ccbf1cbc913b592f7a679fc428f9c3607ac3e873e1b7d1bc483df54b107'
             'a527fb25b73be4f8652d3ef6162cffffb3d07b6ced0e30cf8de0761ff747db44fb985d17a058f219b8f029d7b03d809d88d8be96cd024a1c9b30e3b0acf188db'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
