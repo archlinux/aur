@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-charts
-_qtver=5.12.1
+_qtver=5.12.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('142eb2b87a0bc2220a9f12e56bf390b846968c201d135b1a2a2338545692fdc0')
+sha256sums=('11d88d3e0ec86730219f7c2efa17f696ec8766415c488b208bfcb8f3c3a68a31')
 
 prepare() {
   mkdir -p build
