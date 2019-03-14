@@ -1,0 +1,16 @@
+pkgbase = cargo-flamegraph
+	pkgdesc = Cargo plugin that generates a flamegraph for a given workload
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/ferrous-systems/cargo-flamegraph
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = APACHE
+	makedepends = cargo
+	depends = gcc-libs
+	source = cargo-flamegraph-0.1.6.tar.gz::https://crates.io/api/v1/crates/flamegraph/0.1.6/download
+	sha512sums = 77d72b92e93903ab1209054fb99deeb0f13cfb3bf8b9cae5a70542d7a2fd7c91ed10e22edfff4c70982cf4eba9bf558dc845b51e7c71168257adfa05384cff9f
+
+pkgname = cargo-flamegraph
+
