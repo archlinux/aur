@@ -1,4 +1,4 @@
-# Maintainer: Joel Shapiro (jshapiro <a> nvidia)
+# Maintainer: Joel Shapiro (jshapiro <a> nvidia) and kiendang
 
 pkgbase=libnvidia-container
 pkgname=(libnvidia-container libnvidia-container-tools)
@@ -11,7 +11,7 @@ pkgrel=1
 pkgdesc='NVIDIA container runtime library'
 arch=('x86_64')
 url='https://github.com/NVIDIA/libnvidia-container'
-license=('custom')
+license=('BSD')
 
 makedepends=(bmake lsb-release rpcsvc-proto)
 depends=(libcap libseccomp libtirpc)
