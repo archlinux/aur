@@ -1,7 +1,7 @@
 # Past Maintainer: Giorgio Wicklein <giowckln@gmail.com>
 # Maintainer: Oirio Joshi <joshirio@protonmail.com>
 pkgname=symphytum
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc="Personal database software"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('qt5-base' 'qt5-svg' 'qt5-imageformats' 'sqlite' 'python3' 'python-setuptools' 'python-six' 'python-certifi' 'python-chardet' 'python-idna' 'python-requests' 'python-urllib3')
 optdepends=('megacmd-bin: MEGA cloud sync support')
 source=("https://github.com/giowck/symphytum/releases/download/v$pkgver/$pkgname-$pkgver-src.tar.gz")
-sha256sums=('caa554aa83ed1d0ae19c552bb2bf2192b2e90073449e53ee4900cbeb1f63ee32')
+sha256sums=('521950fc2b19481a7e976c096c6e4f305e0975cc459d5753753991e784840a32')
 
 build() {
   qmake-qt5 -config release
