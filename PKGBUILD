@@ -4,8 +4,8 @@
 
 pkgname=cajarename
 _pkgnamealt=caja-rename
-pkgver=18.7.28.27
-pkgrel=1
+pkgver="18.7.28.27"
+pkgrel="1"
 pkgdesc="Batch renaming extension for Caja"
 arch=('any')
 url="https://tari.in/www/software/cajarename"
@@ -34,5 +34,4 @@ package()
 {
     cd trunk
     python2 setup.py install --root="${pkgdir}" --optimize=1
-
 }
