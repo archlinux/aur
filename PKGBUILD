@@ -3,7 +3,7 @@
 # Contributor: denton <e9203.00 gmail com>
 pkgname=cope-git
 _gitname=cope
-pkgver=168.a0e6692
+pkgver=170.0dc82a9
 pkgrel=1
 pkgdesc='A colourful wrapper for terminal programs'
 url=http://stuff.cytzol.org/cope/
@@ -11,7 +11,7 @@ arch=(any)
 license=('GPL' 'PerlArtistic')
 depends=("perl>=5.10" 'perl-class-inspector' 'perl-env-path' 'perl-file-sharedir'
          'perl-io-stty' 'perl-io-tty' 'perl-list-moreutils' 'perl-params-util'
-         'perl-regexp-common' 'perl-regexp-ipv6')
+         'perl-regexp-common' 'perl-regexp-ipv6' 'perl-module-install')
 makedepends=('git')
 conflicts=($_gitname)
 provides=($_gitname)
