@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/leonnnn/pyxtrlock/"
 license=("GPLv3+")
 depends=("python" "python-xdg" "python-simplepam")
+makedepends=("git")
 source=("${pkgname%-*}::git+https://github.com/leonnnn/pyxtrlock.git")
 sha1sums=("SKIP")
 provides=("pyxtrlock")

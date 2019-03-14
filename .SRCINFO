@@ -5,6 +5,7 @@ pkgbase = pyxtrlock-git
 	url = https://github.com/leonnnn/pyxtrlock/
 	arch = any
 	license = GPLv3+
+	makedepends = git
 	depends = python
 	depends = python-xdg
 	depends = python-simplepam
