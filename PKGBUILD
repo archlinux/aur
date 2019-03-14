@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-octaviaclient' 'python2-octaviaclient')
-pkgver='1.7.0'
+pkgver='1.8.0'
 pkgrel='1'
 pkgdesc='OpenStack Client plugin for Octavia, an OpenStack Load Balancing project'
 arch=('any')
@@ -42,7 +42,7 @@ checkdepends=('python-requests-mock' 'python2-requests-mock'
               'python-oslotest' 'python2-oslotest'
               'python-stestr' 'python2-stestr')
 source=("https://github.com/openstack/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('221b12fcbbdc247e932ab52545dad9acb2e21ffdfc01eb2943a530652587c274f4a599a68b50e4f030745bd6aa79c3f2388a8dbabef54618aa639fb4bf18c77a')
+sha512sums=('6ee8d6e252f2ff83a00ce243261e227b194fc873320ce81e91be769580918c01f05566fc2a8d290f4a9070514ba1138721566b48a2cb484b87f60de520efce26')
 
 prepare() {
   cp -a "${srcdir}/${pkgname}-${pkgver}"{,-py2}
