@@ -1,8 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-muranoclient' 'python2-muranoclient')
-pkgver='1.1.1'
-pkgrel='2'
+pkgver='1.2.0'
+pkgrel='1'
 pkgdesc='Python client library for Murano'
 arch=('any')
 url="https://docs.openstack.org/developer/${pkgname}/"
@@ -30,7 +30,7 @@ checkdepends=('python-pbr' 'python2-pbr'
               'python-testtools' 'python2-testtools'
               'python-oslotest' 'python2-oslotest')
 source=("https://github.com/openstack/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('7f70df32554d757e2ab9dce10ffa0167a249428310bc18d93a04014b3be135c2c1830dfc1462e2bb20968ef1c0f9618865f408b5deed03ce2fdd6cfdfd36449a')
+sha512sums=('6c8281a694b637d73a48e4f2f81b515c97ffc7a0432a2653258690b31ceb72d1a1793462d61901c628bd2699c0fbbbd6beaf9b1257bd2f9a9114103dd06c5434')
 
 prepare() {
   cp -a "${srcdir}/${pkgname}-${pkgver}"{,-py2}
