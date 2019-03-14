@@ -1,6 +1,6 @@
 pkgbase = roundcubemail-git
 	pkgdesc = A PHP web-based mail client
-	pkgver = 1.4.beta.r117.g224dd78ad
+	pkgver = 1.4.rc1.r37.gc7677a572
 	pkgrel = 1
 	url = https://roundcube.net/
 	arch = any
@@ -10,7 +10,6 @@ pkgbase = roundcubemail-git
 	makedepends = unzip
 	makedepends = java-runtime
 	makedepends = nodejs-less
-	makedepends = yuicompressor
 	depends = php
 	depends = php-gd
 	optdepends = python2
