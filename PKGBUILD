@@ -2,20 +2,22 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='frr'
-pkgver='6.0.2'
-pkgrel='3'
+pkgver='7.0'
+pkgrel='1'
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, NHRP and EIGRP.'
 arch=('any')
 url="https://frrouting.org/"
 license=('GPL2')
-depends=('libcap' 'libnl' 'readline' 'ncurses' 'perl' 'pam' 'json-c' 'net-snmp' 'rtrlib')
-makedepends=('patch' 'gcc' 'net-snmp' 'bison' 'c-ares' 'perl-xml-libxml' 'python-sphinx' 'python-pytest')
+depends=('libcap' 'libnl' 'readline' 'ncurses' 'perl' 'pam' 'json-c' 'net-snmp' 'rtrlib'
+	 'libyang')
+makedepends=('gcc' 'net-snmp' 'bison' 'c-ares' 'perl-xml-libxml' 'python-sphinx')
+checkdepends=('python-pytest')
 conflicts=('quagga' 'babeld' 'quagga_cumulus')
 provides=('quagga' 'quagga_cumulus')
 source=("https://github.com/FRRouting/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('dde97d012b6068a1230c0c6a03b38015befae37f617b9ffbd17024c71a170d94'
+sha256sums=('15b62dc0c52531e4bcefa6b830e9b9b07d1d0f189c2110307dbc19d80b719354'
             '9371cc0522d13621c623b5da77719052bdebdceb7ffdbdc06fc32a2f07118e7e'
             '6f8dd86ef9c600763faead3052908531e8dc8ef67058e6f7f8da01bf0fe4eb89')
 
