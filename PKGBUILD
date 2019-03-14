@@ -3,7 +3,7 @@
 # Contributor:: Daniel Egeberg <daniel.egeberg@gmail.com>
 
 pkgname="sonarr-phantom"
-pkgver="3.0.1.406"
+pkgver="3.0.1.408"
 pkgrel=1
 pkgdesc="TV download automation for usenet and torrents."
 arch=(any)
@@ -28,7 +28,7 @@ source=("https://download.sonarr.tv/v3/phantom-develop/${pkgver}/Sonarr.phantom-
         "sonarr.tmpfiles")
 
 noextract=()
-sha256sums=('1e0158c19e154cfca8ee445d7d8a35c3c8f3b32aa9eedc725abcfb0ba4f10df4'
+sha256sums=('6f62f84ef1a74de4009fb3569572b7b94b1040c6dd35413db001f11e2871bd27'
             'b16e72fc8556aa2708adf81cec6ef44cefd207cfb07fe069790131829c672c39'
             'cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e'
             'a436a979ca3a9e78bdc410bd0027d97956bfa8d2d4f2b7bdf3f7d2ed199dd6a8')
