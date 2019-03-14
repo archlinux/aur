@@ -1,0 +1,4 @@
+59c59
+<   GSL_LIBS = -lgsl -lblas
+---
+>   GSL_LIBS = $(shell pkg-config gsl --libs)
