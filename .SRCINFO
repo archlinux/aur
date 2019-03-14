@@ -1,12 +1,11 @@
 pkgbase = nut-monitor
 	pkgdesc = GUI to manage devices connected a NUT server
 	pkgver = 2.7.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.networkupstools.org/
 	arch = any
 	license = GPL3
 	makedepends = desktop-file-utils
-	depends = network-ups-tools
 	depends = python2
 	depends = pygtk
 	source = http://www.networkupstools.org/source/2.7/nut-2.7.4.tar.gz
