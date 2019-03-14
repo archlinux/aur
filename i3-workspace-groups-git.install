@@ -1,0 +1,8 @@
+#!/bin/bash
+post_install() {
+    echo -e '
+For more information about configuration, 
+checkout out https://github.com/infokiller/i3-workspace-groups
+'
+}
+#post_install
