@@ -1,0 +1,29 @@
+pkgbase = lookit
+	pkgdesc = Quick screenshot uploader
+	pkgver = 1.2.0.gitd0b701a6
+	pkgrel = 1
+	url = https://github.com/zachtib/lookit
+	arch = any
+	license = GPL
+	makedepends = intltool
+	makedepends = python2
+	makedepends = git
+	depends = python2-notify
+	depends = python2-gconf
+	depends = python2-keyring
+	depends = python2-keyrings-alt
+	depends = libgnome-keyring
+	depends = python2-gobject
+	depends = python2-xdg
+	depends = python2-libappindicator
+	depends = python2-paramiko
+	depends = python2-pycurl
+	depends = xdg-user-dirs
+	depends = libindicator-gtk2>=0.3.0
+	depends = libdbusmenu-glib>=0.1.1
+	options = !libtool
+	source = https://github.com/zachtib/lookit/archive/a435f3c3a188266c5d67361c9a15898ed0b701a6.zip
+	md5sums = 3c9159a4aba1c0da8a4753d9017dab62
+
+pkgname = lookit
+
