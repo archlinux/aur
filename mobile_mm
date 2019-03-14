@@ -1,5 +1,5 @@
 # Contributed by Max Wölfing <ff0x@infr.cat>
-# Version: 0.0.6
+# Version: 0.0.7
 
 # KNOWN BUGS:
 # - After suspend/hibernate the mobile broadband connection is not going to reconnect automatically (that's probably ok)
@@ -116,14 +116,24 @@ function mobile_mm_up {
     Mode="4G"
   fi
 
-  report_debug "Full connect string: $__MMCLI -m $MODEM --timeout ${TimeoutConnect:-60} --set-allowed-modes=ANY --set-preferred-mode=${Mode} --simple-connect=$connect_args"
-  $__MMCLI -m "$MODEM" --set-allowed-modes=ANY --timeout ${TimeoutConnect:-60} --set-preferred-mode="${Mode}" --simple-connect="$connect_args" $(if [ "$NETCTL_DEBUG" == 'yes' ]; then echo '2>/dev/null'; fi)
+  report_debug "Full connect string: $__MMCLI -m $MODEM --set-allowed-modes=ANY --set-preferred-mode=${Mode} --simple-connect=$connect_args"
+  $__MMCLI -m "$MODEM" --set-allowed-modes=ANY --set-preferred-mode="${Mode}" --simple-connect="$connect_args" $(if [ "$NETCTL_DEBUG" == 'yes' ]; then echo '2>/dev/null'; fi)
   local bearer bearer_interface
   bearer=$($__MMCLI -m "$MODEM" $(if [ "$NETCTL_DEBUG" == 'yes' ]; then echo '2>/dev/null'; fi) | sed -n 's#.*\(/org/.*/Bearer/[0-9]\+\).*#\1#p')
-  bearer_interface=$($__MMCLI -m "$MODEM" -b "$bearer" $(if [ "$NETCTL_DEBUG" == 'yes' ]; then echo '2>/dev/null'; fi) | sed -n "s/.*interface: \(.*\)/\1/p")
+
+  get_bearer_interface="$__MMCLI -m $MODEM -b $bearer | awk '/Status/ {for(i=1; i<5; i++) {getline; if ($2=="interface:") {gsub("\047","",$3); print $3}}}'"  
+
+  # Some modems need some time for the initialisation the connection
+  TIMEOUT_CONNECTION=${TimeoutConnect:-30}
+  until [[ $($__MMCLI -m $MODEM -b $bearer | awk '/Status/ {for(i=1; i<5; i++) {getline; if ($2=="interface:") {gsub("\047","",$3); print $3}}}') ]] || [ $TIMEOUT_CONNECTION -eq 0 ]; do
+    sleep 1
+    ((TIMEOUT_CONNECTION--))
+  done
+
+  bearer_interface=$($__MMCLI -m "$MODEM" -b "$bearer" $(if [ "$NETCTL_DEBUG" == 'yes' ]; then echo '2>/dev/null'; fi) | awk '/Status/ {for(i=1; i<5; i++) {getline; if ($2=="interface:") {gsub("\047","",$3); print $3}}}')
 
   if [[ -z "$bearer_interface" ]]; then
-    report_error "No bearer interface found"
+    report_error "No bearer interface found. Consider increasing \$TimeoutConnect a bit."
     return 1
   fi
   if [[ "$bearer_interface" != "$Interface" ]]; then
