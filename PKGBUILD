@@ -7,10 +7,10 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt-lts       # Build kernel with a different name
-_pkgver=4.14.93
-_rtpatchver=rt53
+_pkgver=4.14.103
+_rtpatchver=rt55
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=2
+pkgrel=1
 arch=(x86_64)
 url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
 license=(GPL2)
@@ -23,7 +23,6 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/projects/rt/4.14/older/patch-${_pkgver}-${_rtpatchver}.patch.xz"
   "https://www.kernel.org/pub/linux/kernel/projects/rt/4.14/older/patch-${_pkgver}-${_rtpatchver}.patch.sign"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch
   config         # the main kernel config file
   60-${pkgbase}.hook  # pacman hook for depmod
   90-${pkgbase}.hook  # pacman hook for initramfs regeneration
@@ -36,13 +35,13 @@ validpgpkeys=(
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
+  '5BDFC45C2ECC5387D50CE5EFDE09826778A38521'  # Tom Zanussi
 )
-sha256sums=('bb125fb204f7089782e179126121dd0f0aad9f02b7517ce3744982254c221bad'
+sha256sums=('7aa43e34e4c9e5965da29cef5ae196e06006f8c0d1d65fd755a2f197f0796a11'
             'SKIP'
-            '151bc28f2b33d952dac8b8d5059f18205f89002c9b58a523cdfe2e1a26646d4d'
+            'cf34816297240dccdd36539c517280ac06855f371d3dca33ea5ae6ed85039631'
             'SKIP'
             '75aa8dd708ca5a0137fbf7cddc9cafefe6aac6b8e0638c06c156d412d05af4bc'
-            '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06'
             '50b5311f7c0a2848b3a280d7ad6c61695f3613cfe7b110c8aaff5bfa3412d1cd'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
