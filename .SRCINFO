@@ -1,6 +1,6 @@
 pkgbase = netctl-mm
 	pkgdesc = Mobile broadband support for netctl using ModemManager
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	arch = any
 	license = GPL
@@ -8,8 +8,8 @@ pkgbase = netctl-mm
 	depends = modemmanager
 	source = mobile_mm.profile
 	source = mobile_mm
-	md5sums = ccad269de8f7c0d0cb89d3112849023d
-	md5sums = 340792cd0b9f6f7452bbd96ca45a41a4
+	md5sums = 7b317a1f78ad63bfb8fb4973309883f5
+	md5sums = 5f2102d6c6e58b15a056d4e1800c8a92
 
 pkgname = netctl-mm
 

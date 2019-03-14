@@ -1,14 +1,14 @@
 # Maintainer: Max Wölfing <ff0x@infr.cat>
 pkgname=netctl-mm
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Mobile broadband support for netctl using ModemManager"
 arch=(any)
 license=('GPL')
 depends=(netctl modemmanager)
 source=(mobile_mm.profile mobile_mm)
-md5sums=('ccad269de8f7c0d0cb89d3112849023d'
-         '340792cd0b9f6f7452bbd96ca45a41a4')
+md5sums=('7b317a1f78ad63bfb8fb4973309883f5'
+         '5f2102d6c6e58b15a056d4e1800c8a92')
 
 package() {
   install -Dm644 "$srcdir/mobile_mm.profile" "$pkgdir/etc/netctl/examples/mobile_mm"

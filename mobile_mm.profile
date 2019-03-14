@@ -1,43 +1,48 @@
-Description='Example MM/MBIM mobile connection'
-Interface=wwp0s20u4
+Description='Example of a mobile broadband connection profile'
 Connection=mobile_mm
+
+# The Wireless WAN interface provided by the modem
+Interface=wwp0s20u4
 
 # Block/unblock your radio
 #RFKill=tpacpi_wwan_sw
 
-# Currently only 'dhcp' or 'no' supported
+# IPv6 currently only supports 'dhcp' (default: no)
 #IP6=no
 
-# Use default route provided by the peer (default: true)
+# Use the default route provided by the peer (default: true)
 #DefaultRoute=false
+
 # Use DNS provided by the peer (default: true)
 #UsePeerDNS=true
-# Alternative, set your nameservers using the option below
+# As an alternative you can, set your nameservers using the option below
 #DNS=('1.1.1.1' '2606:4700:4700::1111')
 
-# The user and password are not always required
+# Providing user and password are not always required
 #User='example@yourprovider.com'
 #Password='very secret'
 
-# The access point name you are connecting to
+# Access point you are connecting to
 AccessPointName=apn
 
-# If your device has a PIN code, set it here.
+# If your device has a PIN code, set it here
 #Pin=
-# If your device is PUK-locked, we will try to unlock it.
+
+# You can also add your PIN2/PUK code.
+# If your device is PUK-locked, we will try to unlock it
 #Puk=
 
-#The number to dial. Defaults to '*99#'
+#The number to dial (default: *99#)
 #PhoneNumber=*99***1#
 
 # Enable/Disable roaming (default: no)
 #Roaming=yes
 
-# Amount of seconds, we will wait until initialisation of modem will be interrupted, defaults to 5s
+# Amount of seconds, we will wait until initialisation of the modem will be interrupted (default: 5)
 #TimeoutModem=10
 
-# Amount of seconds, we will wait for the connetion is established, defaults to 60s
-#TimeoutConnect=120
+# Amount of seconds, we will wait for the connection is established (default: 30)
+#TimeoutConnect=60
 
-# Mode can be one of (ANY, 2G, 3G, 4G). Defaults to 4G.
+# Preferred mode can be one of {ANY, 2G, 3G, 4G} (default: 4G)
 #Mode=4G

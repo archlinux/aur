@@ -1,5 +1,5 @@
 # Contributed by Max Wölfing <ff0x@infr.cat>
-# Version: 0.0.7
+# Version: 0.0.8
 
 # KNOWN BUGS:
 # - After suspend/hibernate the mobile broadband connection is not going to reconnect automatically (that's probably ok)
