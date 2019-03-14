@@ -4,14 +4,16 @@
 # Contributors: jdc, rayman2200
 
 pkgname=corsix-th-git
-pkgver=0.50.r228.ge8bb00e
+pkgver=0.62.r98.g4e6c9854
 pkgrel=1
 pkgdesc='Reimplementation of the game engine of Theme Hospital, git version'
 url='https://github.com/CorsixTH/CorsixTH'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
 makedepends=('cmake')
-depends=('lua' 'lua-lpeg' 'lua-filesystem' 'sdl2_mixer' 'ffmpeg' 'timidity-freepats')
+provides=('corsix-th')
+conflicts=('corsix-th')
+depends=('lua' 'lua-lpeg' 'lua-filesystem' 'sdl2_mixer' 'ffmpeg' 'freepats-general-midi')
 install=corsix-th.install
 source=("git+https://github.com/CorsixTH/CorsixTH.git"
 	"CorsixTH.desktop"
