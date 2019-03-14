@@ -1,15 +1,21 @@
+# Maintainer: kiendang and Joel Shapiro (jshapiro <a> nvidia)
+
 pkgname=libnvidia-container-tools-bin
 _pkgname=libnvidia-container-tools
+
 pkgver=1.0.1
+
 pkgrel=1
 pkgdesc='NVIDIA container runtime library (command-line tools)'
 arch=('x86_64')
 url='https://github.com/NVIDIA/libnvidia-container'
-license=('custom')
+license=('BSD')
+
 depends=('libnvidia-container')
 provides=('libnvidia-container-tools')
 conflicts=('libnvidia-container-tools')
-source=("https://nvidia.github.io/libnvidia-container/centos7/x86_64/${_pkgname}-1.0.1-1.x86_64.rpm")
+
+source=("https://nvidia.github.io/libnvidia-container/centos7/${CARCH}/${_pkgname}-1.0.1-1.${CARCH}.rpm")
 sha256sums=('e59e91b2a04295350f771402223ea7c8e26aeee1444f71ab79dccce1fbcaebf9')
 
 package() {
