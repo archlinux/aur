@@ -8,7 +8,7 @@ arch=('any')
 license=('MIT')
 source=("git+https://github.com/infokiller/i3-workspace-groups#tag=$pkgver")
 sha256sums=('SKIP')
-depends=('python' 'i3-wm')
+depends=('python' 'i3-wm' 'i3ipc-python')
 makedepends=('python-setuptools' 'git')
 install="${pkgname}.install"
 

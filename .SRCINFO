@@ -10,6 +10,7 @@ pkgbase = i3-workspace-groups
 	makedepends = git
 	depends = python
 	depends = i3-wm
+	depends = i3ipc-python
 	source = git+https://github.com/infokiller/i3-workspace-groups#tag=0.2.0
 	sha256sums = SKIP
 
