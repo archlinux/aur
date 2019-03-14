@@ -1,7 +1,7 @@
 pkgbase = seamonkey-gtk2
 	pkgdesc = SeaMonkey internet suite (GTK2 version)
 	pkgver = 2.49.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.seamonkey-project.org/
 	arch = x86_64
 	arch = i686
@@ -37,7 +37,7 @@ pkgbase = seamonkey-gtk2
 	optdepends = gst-plugins-bad: aac, vp8 and opus decoding
 	optdepends = gst-plugins-good: webm and mp4 demuxing
 	optdepends = gst-plugins-ugly: h.264 decoding
-	provides = seamonkey=2.49.4.3
+	provides = seamonkey=2.49.4.4
 	conflicts = seamonkey
 	source = https://archive.mozilla.org/pub/mozilla.org/seamonkey/releases/2.49.4/source/seamonkey-2.49.4.source.tar.xz
 	source = mozconfig

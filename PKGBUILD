@@ -4,7 +4,7 @@
 pkgname=seamonkey-gtk2
 _pkgname=seamonkey
 pkgver=2.49.4
-pkgrel=3
+pkgrel=4
 pkgdesc="SeaMonkey internet suite (GTK2 version)"
 arch=('x86_64' 'i686')
 license=('MPL')
