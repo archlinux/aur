@@ -1,0 +1,210 @@
+# Contributed by Max Wölfing <ff0x@infr.cat>
+# Version: 0.0.6
+
+# KNOWN BUGS:
+# - After suspend/hibernate the mobile broadband connection is not going to reconnect automatically (that's probably ok)
+#   and sometimes, the modem is PUK-locked afterwards. The netctl connection is still show as active.
+#   To fix this issue just run 'netctl restart <profile>'. This will also unlock the modem if required.
+
+. "$SUBR_DIR/ip"
+. "$SUBR_DIR/rfkill"
+
+if ! hash mmcli; then
+  report_error "'mmcli' not found. Please install 'modemmanager' first"
+  exit 1
+else
+  __MMCLI=$(command -v mmcli)
+fi
+
+# Try to get the modem ID or start ModemManager if available
+MODEM_ID="$($__MMCLI -L 2>/dev/null | awk '/\/Modem\// {print $1}' | cut -d/ -f 6)"
+if [[ -z "$MODEM_ID" ]] || [[ ! "$MODEM_ID" =~ ^[0-9]+$ ]]; then
+  if ! systemctl is-active ModemManager.service &>/dev/null; then
+    systemctl start ModemManager.service
+
+    # Wait until ModemManager has initialised the modem
+    TIMEOUT_MODEM=${TimeoutModem:-5}
+    until [[ $($__MMCLI -L 2>/dev/null | awk '/\/Modem\// {print $1}' | cut -d/ -f 6) =~ ^[0-9]+$ ]] || [ $TIMEOUT_MODEM -eq 0 ]; do
+      sleep 1
+      ((TIMEOUT_MODEM--))
+    done
+
+    # Finally get the modem ID
+    MODEM_ID="$($__MMCLI -L 2>/dev/null | awk '/\/Modem\// {print $1}' | cut -d/ -f 6)"
+    if [[ -z "$MODEM_ID" ]] || [[ ! "$MODEM_ID" =~ ^[0-9]+$ ]]; then
+      report_error "No modem found. Please ensure you have ModemManager installed and the service is started"
+      exit 1
+    fi
+  fi
+fi
+
+# Get the modem path
+MODEM=$($__MMCLI -L 2>/dev/null | sed -n 's#.*\(/org/.*/Modem/[0-9]\+\).*#\1#p')
+if [[ -z "$MODEM" ]]; then
+  report_error "No modem found. Please ensure you have ModemManager installed and the service is started"
+  exit 1
+fi
+
+# Get the modem status
+MODEM_STATUS=$($__MMCLI -m "$MODEM" | awk '/Status/ {for(i=1; i<5; i++) {getline; if ($2=="state:") {gsub("\047","",$3); print $3}}}')
+if [[ "$MODEM_STATUS" == 'locked' ]]; then
+  report_notice "Modem is locked. Trying to supply PIN, if provided in the connection profile.."
+  if [[ $Pin ]]; then
+    PUK=""; [[ $Puk ]] && PUK="--puk=${Puk}"
+    SIM_PATH=$($__MMCLI -m "$MODEM" 2>/dev/null | grep 'SIM' | awk '{print $4}' | sed "s/'//g")
+    if [[ ! -z "$SIM_PATH" ]]; then
+      $__MMCLI -m "$MODEM_ID" -i "$SIM_PATH" $PUK --pin="${Pin}" >/dev/null 2>&1
+      MODEM_STATUS=$($__MMCLI -L 2>/dev/null | sed -n "s/.*state: '\([^ \t]\+\)'.*/\1/p")
+      if [[ "$MODEM_STATUS" == 'locked' ]]; then
+        report_error "Modem is still locked. Maybe the supplied PIN is wrong or the PUK is required"
+        exit 1
+      fi
+    fi
+  else
+    report_error "Modem is locked. PIN (and maybe PUK) required. Please add correspondig options to the connection profile"
+    exit 1
+  fi
+fi
+
+function mobile_mm_up {
+  local mmcli_args=()
+
+  if ! is_interface "$Interface"; then
+    report_notice "Interface '$Interface' does not exist. Is this a problem?"
+  fi
+
+  if [[ $RFKill ]]; then
+    rf_enable "$Interface" "$RFKill" || return 1
+  fi
+
+  if [[ -z $AccessPointName ]]; then
+    report_error "Option 'AccessPointName' is required"
+    return 1
+  else
+    mmcli_args+=("apn=${AccessPointName}")
+  fi
+
+  [[ $Pin ]] && mmcli_args+=("pin=${Pin}")
+
+  local ip_type="ipv4"
+  if [[ $IP6 ]] && [[ ! "$IP6" =~ (dhcp|no) ]]; then
+    report_notice "Currently only the following options are supported for 'IP6' ('dhcp', 'no'). Continueing with disabled IPv6"
+    IP6="no"
+  fi
+  [[ "$IP6" == 'dhcp' ]] && ip_type="ipv4v6"
+  mmcli_args+=("ip-type=${ip_type}")
+
+  if [[ $User ]] && [[ $Password ]]; then
+    mmcli_args+=("user=${User}")
+    mmcli_args+=("password=${Password}")
+  fi
+
+  local roaming=0
+  is_yes "${Roaming:-0}" && roaming=1
+  mmcli_args+=("allow-roaming=${roaming}")
+
+  mmcli_args+=("number=${PhoneNumber:-*99#}")
+
+  local connect_args
+  connect_args=$(printf ",%s" "${mmcli_args[@]}")
+  connect_args=${connect_args:1}
+
+  if [[ $Mode ]] && [[ ! "$Mode" =~ ^(ANY|2G|3G|4G)$ ]]; then
+    report_notice "Mode must be one of (ANY, 2G, 3G, 4G). Selecting 4G as preferred mode"
+    Mode="4G"
+  else
+    Mode="4G"
+  fi
+
+  report_debug "Full connect string: $__MMCLI -m $MODEM --timeout ${TimeoutConnect:-60} --set-allowed-modes=ANY --set-preferred-mode=${Mode} --simple-connect=$connect_args"
+  $__MMCLI -m "$MODEM" --set-allowed-modes=ANY --timeout ${TimeoutConnect:-60} --set-preferred-mode="${Mode}" --simple-connect="$connect_args" $(if [ "$NETCTL_DEBUG" == 'yes' ]; then echo '2>/dev/null'; fi)
+  local bearer bearer_interface
+  bearer=$($__MMCLI -m "$MODEM" $(if [ "$NETCTL_DEBUG" == 'yes' ]; then echo '2>/dev/null'; fi) | sed -n 's#.*\(/org/.*/Bearer/[0-9]\+\).*#\1#p')
+  bearer_interface=$($__MMCLI -m "$MODEM" -b "$bearer" $(if [ "$NETCTL_DEBUG" == 'yes' ]; then echo '2>/dev/null'; fi) | sed -n "s/.*interface: \(.*\)/\1/p")
+
+  if [[ -z "$bearer_interface" ]]; then
+    report_error "No bearer interface found"
+    return 1
+  fi
+  if [[ "$bearer_interface" != "$Interface" ]]; then
+    report_notice "Network interface used by the bearer is not the same as provided by your connection profile. Please update the profile using the right bearer interface: '$bearer_interface'"
+    Interface=$bearer_interface
+  fi
+
+  # Disable IPv6 before bringing the interface up to prevent SLAAC
+  if [[ "$IP6" == "no" ]]; then
+    sysctl -q -w "net.ipv6.conf.${Interface/.//}.disable_ipv6=1"
+  fi
+
+  if ! bring_interface_up "$Interface"; then
+    report_error "Failed to bring interface '$Interface' up"
+    return 1
+  fi
+
+  # Some cards are plain slow to come up. Don't fail immediately.
+  if ! timeout_wait "${TimeoutCarrier:-5}" '(( $(< "/sys/class/net/$Interface/carrier") ))'; then
+    report_error "No connection found on interface '$Interface' (timeout)"
+    bring_interface_down "$Interface"
+    return 1
+  fi
+
+  # Configuring IPv4
+  if [[ $($__MMCLI -m "$MODEM" -b "$bearer" 2>/dev/null | sed -n "s/IPv4.*method: \(.*\)/\1/p") == *static* ]]; then
+    IP="static"
+    for bearer_config in $($__MMCLI -m "$MODEM" -b "$bearer" 2>/dev/null | awk '/IPv4/ {for(i=1; i<5; i++) {getline; print $2 $3 $4}}' | sed "s/'//g"); do
+      [[ $bearer_config == *address:* ]] && interface_address="${bearer_config#*:}"
+      [[ $bearer_config == *prefix:* ]]  && interface_prefix="${bearer_config#*:}"
+      [[ $bearer_config == *gateway:* ]] && interface_gateway="${bearer_config#*:}"
+      [[ $bearer_config == *DNS:* ]]     && interface_dns="${bearer_config#*:}"
+    done
+
+    Address=("${interface_address}/${interface_prefix}")
+    Gateway="$interface_gateway"
+    [[ "${UsePeerDNS:-true}" == 'true' ]] && DNS=("$(echo $interface_dns | sed 's/,/ /g')")
+  else
+    IP="dhcp"
+  fi
+
+  # Configuring IPv6
+  if [[ "$IP6" == 'dhcp' ]]; then
+    if [[ $($__MMCLI -m "$MODEM" -b "$bearer" 2>/dev/null | sed -n "s/IPv6.*method: \(.*\)/\1/p") != *dhcp* ]]; then
+      report_error "IPv6 (dhcp) not supported by modem. Skipping"
+    else
+      IP6="dhcp"
+    fi
+  fi
+
+  if ! ip_set; then
+    bring_interface_down "$Interface"
+    return 1
+  fi
+}
+
+function mobile_mm_down {
+  local bearer_interface
+  bearer=$($__MMCLI -m "$MODEM" 2>/dev/null | sed -n 's#.*\(/org/.*/Bearer/[0-9]\+\).*#\1#p')
+  bearer_interface=$($__MMCLI -m "$MODEM" -b "$bearer" 2>/dev/null | sed -n "s/.*interface: '\([^ \t]\+\)'.*/\1/p")
+
+  if [[ $($__MMCLI -m "$MODEM" -b "$bearer" 2>/dev/null | sed -n "s/IPv4.*method: '\([^ \t]\+\)'.*/\1/p") == *static* ]]; then
+    for bearer_config in $($__MMCLI -m "$MODEM" -b "$bearer" 2>/dev/null | awk '/IPv4/ {for(i=1; i<5; i++) {getline; print $2 $3 $4}}' | sed "s/'//g"); do
+      [[ $bearer_config == *address:* ]] && interface_address="${bearer_config#*:}"
+      [[ $bearer_config == *prefix:* ]]  && interface_prefix="${bearer_config#*:}"
+      [[ $bearer_config == *gateway:* ]] && interface_gateway="${bearer_config#*:}"
+      [[ $bearer_config == *DNS:* ]]     && interface_dns="${bearer_config#*:}"
+    done
+
+    Address=("${interface_address}/${interface_prefix}")
+    Gateway="$interface_gateway"
+    [[ "${UsePeerDNS:-true}" == 'true' ]] && DNS=("$(echo $interface_dns | sed 's/,/ /g')")
+  fi
+
+  $__MMCLI -m "$MODEM" --simple-disconnect 2>/dev/null
+  ip_unset
+  interface_delete "$Interface"
+
+  if [[ $RFKill ]]; then
+    rf_disable "$Interface" "$RFKill"
+  fi
+}
+
+# vim: ft=sh ts=2 et sw=2:
