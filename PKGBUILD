@@ -1,8 +1,9 @@
+# Maintainer: David McInnis <dave@dave3.xyz>
 # Contributor: Andreas Wagner <Andreas dot Wagner at em dot uni-frankfurt dot de>
 
 pkgname=referencer
 pkgver=1.2.2
-pkgrel=7
+pkgrel=8
 pkgdesc="a Gnome application to organise documents or references, and ultimately generate a BibTeX bibliography file"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/referencer/"
@@ -12,9 +13,16 @@ makedepends=(
                 'gnome-doc-utils'
                 'gnome-icon-theme' 
                 'boost' )
-depends=(       'boost-libs'
-	        'libgnomeuimm'
-		'poppler-glib'
+depends=(       'libgnome'
+                'libgnomeui'
+                'libgnome-data'
+                'libgnomemm'
+                'libgnomeuimm'
+                'libbonobo'
+                'libbonoboui'
+                'orbit2'
+                'boost-libs'
+                'poppler-glib'
                 'python2'
                 'yelp' )
 source=(https://launchpad.net/$pkgname/1./$pkgver/+download/$pkgname-$pkgver.tar.gz
