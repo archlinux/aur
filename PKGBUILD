@@ -1,16 +1,16 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem++-git
-pkgver=4.0r20190222
+pkgver=4.0r20190314
 epoch=1
-pkgrel=2
+pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method from git'
 arch=('x86_64')
 url="https://freefem.org/index.html"
 license=('LGPL')
-depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-openmpi' 'gsl' 'openmpi' 'openblas-lapack' 'arpack' 'parmetis' 'python')
+depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5' 'gsl' 'openmpi' 'openblas-lapack' 'arpack' 'parmetis' 'python')
 makedepends=('git' 'texlive-core')
-provides=("freefem++=3.61")
+provides=("freefem++")
 conflicts=('freefem++')
 source=('FreeFem::git+https://github.com/FreeFem/FreeFem-sources.git#branch=develop')
 md5sums=('SKIP')
