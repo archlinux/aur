@@ -1,12 +1,13 @@
 pkgbase = breeze-plymouth
 	pkgdesc = Breeze theme for plymouth
 	pkgver = 5.15.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.kde.org/breeze-plymouth
 	arch = any
 	license = LGPL
 	makedepends = extra-cmake-modules
 	depends = plymouth
+	optdepends = noto-fonts
 	source = http://download.kde.org/stable/plasma/5.15.3/breeze-plymouth-5.15.3.tar.xz
 	source = http://download.kde.org/stable/plasma/5.15.3/breeze-plymouth-5.15.3.tar.xz.sig
 	source = breeze-plymouth.cpiohook
