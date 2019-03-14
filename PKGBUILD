@@ -4,7 +4,7 @@ pkgver=4.3.5
 pkgrel=1
 pkgdesc="RuneScape client for Linux and Unix (RSU-Client,Legacy)"
 arch=(any)
-url="https://github.com/HikariKnight/rsu-client"
+url="https://github.com/rsu-client/rsu-client"
 license=(GPL2)
 depends=(
   'java-runtime' 'perl' 'perl-wx' 'wget' 'libxtst' 'xdg-utils'
@@ -18,7 +18,7 @@ optdepends=(
 )
 conflicts=('runescape-client-bin')
 install=$pkgname.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/HikariKnight/rsu-client/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rsu-client/rsu-client/archive/v$pkgver.tar.gz")
 md5sums=('590f153e0cb928783ef36c1de319e5c3')
 
 package() {
