@@ -1,8 +1,9 @@
 pkgbase = i3-workspace-groups
 	pkgdesc = Manage i3wm workspaces in groups you control
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/infokiller/i3-workspace-groups
+	install = i3-workspace-groups.install
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
