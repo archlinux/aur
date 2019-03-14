@@ -2,12 +2,12 @@
 
 pkgname=python-ludwig
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Train and test deep learning models'
 arch=(any)
 url='https://github.com/uber/ludwig'
 license=(MIT)
-depends=(cython python-h5py python-matplotlib python-numpy python-pandas python-scipy python-scikit-learn python-tqdm python-tabulate python-tensorflow python-yaml python-pytest python-scikit-image python-seaborn python-spacy-en_core_web_sm)
+depends=(cython python-h5py python-matplotlib python-numpy python-pandas python-scipy python-scikit-learn python-tqdm python-tabulate python-tensorflow python-yaml python-pytest python-scikit-image python-seaborn python-spacy-en_core_web_sm python-spacy)
 makedepends=(git)
 source=("git+https://github.com/uber/ludwig#tag=v$pkgver")
 sha256sums=('SKIP')
