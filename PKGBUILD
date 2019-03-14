@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=godot-bin
-pkgver=3.0.6
+pkgver=3.1
 pkgrel=1
 pkgdesc="Godot is an advanced, feature packed, multi-platform 2D and 3D game engine"
 arch=("i686" "x86_64")
@@ -13,8 +13,8 @@ source=("godot.desktop" "icons.tar.gz")
 source_i686+=("$pkgname-$pkgver::https://downloads.tuxfamily.org/godotengine/"$pkgver"/Godot_v"$pkgver"-stable_x11.32.zip")
 source_x86_64+=("$pkgname-$pkgver::https://downloads.tuxfamily.org/godotengine/"$pkgver"/Godot_v"$pkgver"-stable_x11.64.zip")
 md5sums=("fa7422332b97ab8430ea7628ec8b0880" "9dbfaa636daf7737899de6a28c33c3be")
-md5sums_i686=("6474bc76a620f5f2faad74cc4595f690")
-md5sums_x86_64=("6a1b329baf05153299d13b6f16420a40")
+md5sums_i686=("2e398f291dbbe7a007b332f12344c68b")
+md5sums_x86_64=("701f8a5ae40e5d75f0a2b16d2c810065")
 
 package() {
   mkdir -p "$pkgdir/opt/$pkgname"
