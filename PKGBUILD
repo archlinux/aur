@@ -19,16 +19,20 @@ source=("https://bitbucket.org/rude/love/downloads/love-${pkgver}-linux-src.tar.
         "https://bitbucket.org/rude/love/raw/$pkgver/platform/unix/app.svg"
         "https://bitbucket.org/rude/love/raw/$pkgver/platform/unix/game.svg"
         "love.desktop"
+        "love07.patch"
         "https://bitbucket.org/rude/love/raw/$pkgver/platform/unix/love.xml")
 sha256sums=('a57adcb0cbdc390a9bd8e2fe477bc175799b9ffd3486e01f859a36bf27f7f268'
             'c4cb43c06ab89c84349704a62849e9e66bf0c245e8a4df4f9068204124de1845'
             'b8116c4cc8d7b80adba579b582b9570d8178f93d3d9e35977d621e03500b8a7f'
             '7452bc537980d6fdd6293d8bdaedbfa68264fa9bb160503d9b1ad16c8278b6af'
             'd045b6c1aeb8fdb9ec33c75d204e0698f34e863063c274633b79e8b1b7f7a302'
+            '6b63906f9dabc9c000ddce32bec7020e89f51e88425d1eb940a533dd9b9ab09b'
             '5b72ae3818ada71ec7fd69c2a27126dc5c759257e1ff203639655c389a24ccb1')
 
 prepare() {
   cd "$srcdir/love-HEAD"
+
+  patch -p1 < ../love07.patch
 
   # Fix for freetype2 and variants(ubuntu, infinality etc...)
   FILE="/usr/include/freetype2/freetype/freetype.h"
