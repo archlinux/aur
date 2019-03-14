@@ -1,29 +1,31 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+_pyname=APLpy
 pkgname=python-aplpy-doc
-pkgver=1.1.1
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Documentation for APLpy"
 arch=('i686' 'x86_64')
 url="http://aplpy.github.io/"
 license=('MIT')
-makedepends=('python-aplpy' 'python-astropy-helpers>=3.1' 'python-sphinx-astropy')
-source=("https://files.pythonhosted.org/packages/source/A/APLpy/APLpy-${pkgver}.tar.gz")
-md5sums=('634422c006dcd366d5504af3349e9d10')
+makedepends=("python-aplpy=${pkgver}" 'python-astropy-helpers>=3.1' 'python-sphinx-astropy' 'python-reproject')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+md5sums=('e84db8f2447ea624a231e6bc4613dc22')
 
 prepare() {
-    cd ${srcdir}/APLpy-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
+
     sed -i -e '/auto_use/s/True/False/' setup.cfg
 }
 
 build() {
-    cd ${srcdir}/APLpy-${pkgver}/docs
+    cd ${srcdir}/${_pyname}-${pkgver}/docs
 
     make html
 }
 
 package() {
-    cd ${srcdir}/APLpy-${pkgver}/docs/_build
+    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 
-    install -d -m755 "${pkgdir}/usr/share/doc/python-aplpy"
-    cp -a html "${pkgdir}/usr/share/doc/python-aplpy"
+    install -d -m755 "${pkgdir}/usr/share/doc/${pkgname%-doc}"
+    cp -a html "${pkgdir}/usr/share/doc/${pkgname%-doc}"
 }
