@@ -2,7 +2,7 @@
 pkgname=cxxopts
 #for fragment you can use one of: #commit=, #tag=, #branch=
 #fragment=
-pkgver=2.1.0.r6.ge725ea3
+pkgver=2.1.1.r23.g3876c09
 pkgrel=1
 pkgdesc="Lightweight C++ command line option parser"
 arch=(any)
