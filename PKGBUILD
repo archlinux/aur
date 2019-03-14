@@ -8,7 +8,7 @@ pkgver=5.1.0
 pkgrel=1
 pkgdesc="Harrison Mixbus - Digital Audio Workstation"
 arch=('i686' 'x86_64')
-url="http://harrisonconsoles.com/site/mixbus.html"
+url="http://harrisonconsoles.com/site/$pkgname.html"
 license=('EULA, GPLv2')
 depends=('glibc' 'xorg-server')
 provides=("$pkgname")
@@ -16,14 +16,14 @@ provides=("$pkgname")
 prepare() {
 ## Setup mixbus for installation
 _archive=Mixbus-$pkgver-$(uname -m)-gcc5.tar
-if [ -f ../Mixbus-$pkgver-$(uname -m)-gcc5.tar ]; then
-	ln -srf ../Mixbus-$pkgver-$(uname -m)-gcc5.tar $srcdir/Mixbus-$pkgver-$(uname -m)-gcc5.tar
+if [ -f ../${_archive} ]; then
+	ln -srf ../${_archive} $srcdir/${_archive}
 	msg2 "Unpacking Installer..."
-	tar -xf $srcdir/Mixbus-$pkgver-$(uname -m)-gcc5.tar
-	$srcdir/Mixbus-$pkgver-$(uname -m)-gcc5.run --tar xf
+	tar -xf ${_archive}
+	./${_archive//.tar/.run} --tar xf
 	tar -xf $srcdir/Mixbus_$(uname -m)-$pkgver.tar
 else
-	echo "Please download a copy from https://harrisonconsoles.com/site/mixbus.html. Then put the ${_archive} in the root of this PKGBUILD directory."
+	echo "Please download a copy from https://harrisonconsoles.com/site/$pkgname.html. Then put the ${_archive} in the root of this PKGBUILD directory."
 fi
 }
 
