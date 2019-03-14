@@ -3,7 +3,7 @@
 
 pkgname=nextcloud-app-news
 pkgver=13.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An RSS/Atom feed reader"
 arch=('any')
 url="https://github.com/nextcloud/news"
@@ -12,7 +12,7 @@ depends=('nextcloud')
 makedepends=()
 options=('!strip')
 source=("nextcloud-app-news-${pkgver}.tar.gz::https://github.com/nextcloud/news/releases/download/${pkgver}/news.tar.gz")
-sha512sums=("405824bfe30b39eeea4febc0d3e790abed1230b37321e7bb870f43c4dedac6d8868a059580c3027eab862a77f6af68830ca4640e2248ee96e26569eb3bad2518")
+sha512sums=("03c86f00d76a0e46aae951270b94edeca30a700decee70ed08abfb0a94827abea4e9c9e01aa34d7415369de6c6d4d895b23bf745f3950cc87db3fb0ad3d290ec")
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
