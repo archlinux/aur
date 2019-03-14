@@ -1,15 +1,15 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-mistralclient' 'python2-mistralclient')
-pkgver='3.7.0'
-pkgrel='2'
+pkgver='3.8.0'
+pkgrel='1'
 pkgdesc='Mistral Client Library'
 arch=('any')
 url='https://docs.openstack.org/developer/mistral/'
 license=('Apache')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/openstack/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('14797afe8a20942865927536f837320b1b48e171100c58d27ab52e555b53061930c3d238f58e42849cf3227de1830cebe071cc3ee2282b5494ca5cdcbf1e134b')
+sha512sums=('1fabfc93d68651bde207122d74fc5b810670bed31d3e9beb52aa89b978ac23e141e0dfd2bb2f1561c64b3e3cca8a5311897efc35a9543faebffbeb4de2bc900e')
 
 prepare() {
   cp -a "${srcdir}/${pkgname}-${pkgver}"{,-py2}
