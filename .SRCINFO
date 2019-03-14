@@ -1,13 +1,13 @@
 pkgbase = flightgear-data
 	pkgdesc = Base-Data for the opensource flight-simulator.
-	pkgver = 2018.3.1
+	pkgver = 2018.3.2
 	pkgrel = 1
 	url = http://www.flightgear.org/
 	arch = any
 	license = GPL
 	options = !strip
-	source = https://downloads.sourceforge.net/project/flightgear/release-2018.3/FlightGear-2018.3.1-data.tar.bz2
-	sha256sums = b03a74a69cf02370e4ff3cf3dd09fff9ae217b2873f9938803935082a48bc9c0
+	source = https://downloads.sourceforge.net/project/flightgear/release-2018.3/FlightGear-2018.3.2-data.tar.bz2
+	sha256sums = 277e817a39edb917976441a808b750ee64be38e077897d0d77c55dfc8eba9640
 
 pkgname = flightgear-data
 
