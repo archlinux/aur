@@ -1,6 +1,6 @@
 pkgbase = python-flask-jwt-extended
 	pkgdesc = Extended JSON Web Tokens (JWT) support for Flask
-	pkgver = 3.12.1
+	pkgver = 3.18.0
 	pkgrel = 1
 	url = https://github.com/vimalloc/flask-jwt-extended
 	arch = any
@@ -39,9 +39,9 @@ pkgbase = python-flask-jwt-extended
 	depends = python-urllib3
 	depends = python-virtualenv
 	depends = python-werkzeug
-	source = https://github.com/vimalloc/flask-jwt-extended/archive/3.12.1.tar.gz
-	md5sums = 722d1ddf9a88f68c5d4639ef0c0caeef
-	sha1sums = f9298bce5c0cc63536569d8c6685b91e6ca087e2
+	source = https://github.com/vimalloc/flask-jwt-extended/archive/3.18.0.tar.gz
+	md5sums = 7e2f690f076193d290844186856736af
+	sha1sums = 18f2991d9ee1d7ac6ecbc4a1cb08f52e424b59ed
 
 pkgname = python-flask-jwt-extended
 
