@@ -2,7 +2,7 @@
 
 pkgname=gsl-shell
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='GNU Scientific Library shell based on LuaJIT2'
 url='http://www.nongnu.org/gsl-shell'
 license=('GPL3')
