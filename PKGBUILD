@@ -2,7 +2,7 @@
 
 pkgname=espeak-ng
 pkgver=1.49.2
-pkgrel=5
+pkgrel=6
 pkgdesc='Multi-lingual software speech synthesizer'
 url=https://github.com/espeak-ng/espeak-ng
 arch=('x86_64')
@@ -20,7 +20,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --with-extdict-{ru,zh,zhy}
   make src/espeak-ng src/speak-ng
   make -j1
 }
