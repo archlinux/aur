@@ -15,7 +15,7 @@ provides=('anylogic')
 conflicts=('anylogic')
 options=(!strip)
 source=("https://files.anylogic.com/$pkgname-$pkgver.linux.x86_64.tgz.bin")
-sha256sums=('4029bc645995ab6b81b234334f4cb00fbf8608fae05d0cd1fc91dfd701358b87')
+sha256sums=('cbecbedeb2485450645acb468bd9e1e2677a9c1ac06fbab9b3a78b3d1c214183')
 
 prepare() {
     msg2 "Unpacking archive..."
