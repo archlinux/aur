@@ -27,14 +27,6 @@ else
 fi
 }
 
-build() {
-## Setup mixbus for installation
-msg2 "Unpacking Installer..."
-tar -xf $srcdir/Mixbus32C-$pkgver-$(uname -m)-gcc5.tar
-$srcdir/Mixbus32C-$pkgver-$(uname -m)-gcc5.run --tar xf
-tar -xf $srcdir/Mixbus32C_$(uname -m)-$pkgver.tar
-}
-
 package() {
 ## Create package directories
 msg2 "Creating Directories..."
