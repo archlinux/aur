@@ -10,6 +10,7 @@ pkgbase = i3-workspace-groups-git
 	makedepends = git
 	depends = python
 	depends = i3-wm
+	depends = i3ipc-python
 	provides = i3-workspace-groups
 	conflicts = i3-workspace-groups
 	source = git+https://github.com/infokiller/i3-workspace-groups
