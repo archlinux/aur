@@ -6,7 +6,7 @@ epoch=
 pkgdesc="EnhancedDiscord is a modification for the Discord desktop app that allows you to load themes and plugins easily, quickly, and safely. "
 arch=('any')
 url="https://github.com/joe27g/EnhancedDiscord"
-license=('unknown')
+license=('MIT')
 groups=()
 depends=('discord')
 makedepends=('git')
@@ -31,7 +31,7 @@ pkgver() {
 }
 
 prepare() {
-	mv ${srcdir}/EnhancedDiscord ~/.local/share
+	cp -r ${srcdir}/EnhancedDiscord ~/.local/share
 	cd ~/.local/share/EnhancedDiscord
 	injdir=$(pwd)
 }
@@ -43,8 +43,13 @@ package() {
 	
 	# continue as normal
 	cd ~/.config/discord*/0.*/modules/discord_desktop_core/
+	rm -rf index.js && touch index.js
+	echo "module.exports = require('./core.asar');"
 	echo "require('${injdir}/injection.js');" | cat - index.js > temp && mv temp index.js
 	echo "process.env.injDir = '${injdir}';" | cat - index.js > temp && mv temp index.js
 	echo '{}' >> ~/.local/share/EnhancedDiscord/config.json
+	
+	# license
+	install -Dm644 ${srcdir}/EnhancedDiscord/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
