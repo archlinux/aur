@@ -1,8 +1,8 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="odio"
-pkgver=19.3.7.227
-pkgrel=1
+pkgver="19.3.7.227"
+pkgrel="1"
 pkgdesc="Audio compression tool for FLAC and Nero AAC"
 arch=("any")
 url="https://tari.in/www/software/${pkgname}"
@@ -28,6 +28,6 @@ build()
 package()
 {
     cd trunk
-	python setup.py install --root="${pkgdir}" --optimize=1
+    python setup.py install --root="${pkgdir}" --optimize=1
 
 }
