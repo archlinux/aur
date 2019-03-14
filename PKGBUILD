@@ -12,10 +12,9 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 
 prepare () {
-	cd $srcdir
 	_archive=Harrison-AVA-linux-64bit.tar.gz
 	if [ -f ../Harrison-AVA-linux-64bit.tar.gz ]; then
-		ln -srf ../Harrison-AVA-linux-64bit.tar.gz $srcdir/Harrison-AVA-linux-64bit.tar.gz
+		ln -srf ../${_archive} $srcdir/Harrison-AVA-linux-64bit.tar.gz
 		tar -xvzf Harrison-AVA-linux-64bit.tar.gz
 	else
 		echo "Please download a copy from https://harrisonconsoles.com/site/ava-plugins.html. Then put the Harrison-AVA-linux-64bit.tar.gz in the root of this PKGBUILD directory."
