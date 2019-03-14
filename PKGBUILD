@@ -7,7 +7,7 @@ pkgname='ros-kinetic-message-filters'
 pkgver='1.12.14'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-rosunit
@@ -36,13 +36,16 @@ _dir="ros_comm-release-release-kinetic-message_filters-${pkgver}-${_pkgver_patch
 source=(
   "${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/message_filters/${pkgver}-${_pkgver_patch}.tar.gz"
   'fix-c++-syntax.patch'
+  'message_filters_boost.patch'
 )
 sha256sums=('faa45c9fa60f227b7a015a7edc4824d5f823563bb7753a37fffb300472dded96'
-            '2a21768b8874bb1ee7073bee5983cb869f08f79f8e11f1be7d14fb3dab095a6e')
+            '2a21768b8874bb1ee7073bee5983cb869f08f79f8e11f1be7d14fb3dab095a6e'
+            '2aad2b8c6b32770dfcd642ff433e39a6bc7743e3351e03150197477ace264565')
 
 prepare() {
   cd ${srcdir}/${_dir}
   patch -Np1 -i ${srcdir}/fix-c++-syntax.patch
+  patch -Np3 -i ${srcdir}/message_filters_boost.patch
 }
 
 build() {
