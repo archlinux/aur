@@ -1,22 +1,31 @@
 pkgbase = python-fitsio-git
 	pkgdesc = A python library to read from and write to FITS files.
-	pkgver = v0.9.12rc1.r22.507ad1c
+	pkgver = v0.9.12.r38.gcff2588
 	pkgrel = 1
 	url = https://github.com/esheldon/fitsio.git
 	arch = i686
 	arch = x86_64
 	license = BSD
+	checkdepends = python-numpy
+	checkdepends = python2-numpy
+	checkdepends = python-nose
+	checkdepends = python2-nose
+	checkdepends = bzip2
 	makedepends = git
 	makedepends = python
 	makedepends = python2
 	makedepends = python2-setuptools
 	makedepends = python-setuptools
+	makedepends = python-numpy
+	makedepends = python2-numpy
 	source = python-fitsio::git+https://github.com/esheldon/fitsio.git
 	md5sums = SKIP
 
 pkgname = python-fitsio-git
-	depends = python
+	depends = python-numpy
+	depends = curl
 
 pkgname = python2-fitsio-git
-	depends = python2
+	depends = python2-numpy
+	depends = curl
 
