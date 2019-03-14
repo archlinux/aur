@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-winesupport
 	pkgdesc = A video processing framework with the future in mind
-	pkgver = R44
+	pkgver = R45.1
 	pkgrel = 1
 	url = http://www.vapoursynth.com/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = vapoursynth-winesupport
 	depends = libzimg.so
 	provides = vapoursynth
 	conflicts = vapoursynth
-	source = vapoursynth-R44::git+https://github.com/swordfeng/vapoursynth.git#tag=R44-wine
+	source = vapoursynth-R45.1::git+https://github.com/swordfeng/vapoursynth.git#tag=R45.1-wine
 	source = vapoursynth.xml
 	sha256sums = SKIP
 	sha256sums = 8e51579547d20cd7cb9618a47b3ac508423d09d76649bf038d0ab9acb850b068

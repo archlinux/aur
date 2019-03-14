@@ -4,7 +4,7 @@
 # Contributor: jackoneill <cantabile.desu@gmail.com>
 
 pkgname=vapoursynth-winesupport
-pkgver=R44
+pkgver=R45.1
 pkgrel=1
 pkgdesc='A video processing framework with the future in mind'
 arch=('x86_64')
