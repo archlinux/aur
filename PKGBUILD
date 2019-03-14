@@ -1,10 +1,10 @@
 # Maintainer: Blooser <blooser@protonmail.com>
 pkgname=taurus
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="GUI port scanner"
 arch=('x86_64')
-md5sums=('0681ec14f699d55ccc052d4c958945fc')
+md5sums=('95e63d8a24101bc94909c27fbb3c55ad')
 url="https://github.com/blooser/taurus"
 license=('MIT')
 depends=('qt5-base')
@@ -45,4 +45,5 @@ package() {
 		echo "alias taurus=${binlocation}/taurus" >> ~/.bashrc	
 	fi	
 }
+
 
