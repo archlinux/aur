@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-catboost-gpu-git
-pkgver=0.12.2
-pkgrel=5
+pkgver=0.13
+pkgrel=1
 epoch=0
 pkgdesc="CatBoost is an open-source gradient boosting on decision trees library with categorical features support out of the box."
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ validpgpkeys=()
 
 pkgver() {
     cd "$srcdir/catboost"
-    printf "$(git describe | sed -E 's/^v([0-9]+.[0-9]+.[0-9]+).*$/\1/')"
+    printf "$(git describe | sed -E 's/^v([0-9]+\.[0-9]+(\.[0-9]+)?).*$/\1/')"
 }
 
 build() {
@@ -45,5 +45,5 @@ build() {
 
 package() {
     cd "$srcdir/catboost/catboost/python-package"
-    pip3 install --no-deps --prefix $pkgdir/usr catboost-*.whl
+    pip3 install -I --no-deps --prefix $pkgdir/usr catboost-*.whl
 }
