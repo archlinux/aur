@@ -2,7 +2,7 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-glib-networking
-pkgver=2.58.0
+pkgver=2.60.0.1
 pkgrel=1
 pkgdesc='Network-related giomodules for glib'
 arch=('x86_64')
