@@ -1,7 +1,7 @@
 pkgbase = aegisub-dependency-control
 	pkgdesc = Package manager for scripts for the Aegisub subtitle editor
 	pkgver = 0.6.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/TypesettingTools/DependencyControl
 	arch = i686
 	arch = x86_64
@@ -9,13 +9,14 @@ pkgbase = aegisub-dependency-control
 	license = ISC
 	license = MIT
 	makedepends = moonscript
+	makedepends = meson
 	depends = aegisub
-	depends = curl
+	depends = libcurl.so
 	source = DependencyControl-0.6.3-alpha.tar.gz::https://github.com/TypesettingTools/DependencyControl/archive/v0.6.3-alpha.tar.gz
-	source = ffi-experiments-c325e1c6ad3b5a741ac4a18fd3ac3504cf9c8081.tar.gz::https://github.com/torque/ffi-experiments/archive/c325e1c6ad3b5a741ac4a18fd3ac3504cf9c8081.tar.gz
+	source = ffi-experiments-e8d9c915390aaa8ffa1d220f4696f4fe2ca6ae6e.tar.gz::https://github.com/TypesettingTools/ffi-experiments/archive/e8d9c915390aaa8ffa1d220f4696f4fe2ca6ae6e.tar.gz
 	source = luajson-1.3.3.tar.gz::https://github.com/harningt/luajson/archive/1.3.3.tar.gz
 	sha256sums = ac845ee6152db94c42ae80e2ccbede6571c27342c22819efa68c648327cdfdc2
-	sha256sums = b2491554eac19fa2ec2d9c83c8fc71c21ddc32c75c5bb0d700246743c6fc6c67
+	sha256sums = d48c3f3375e480daf3e7ab2a657a1daec208d086173116168363d5bd0bb372b4
 	sha256sums = 6a986efa210a912a04c8e6cae8f3b5e72172c02f974152e14818af6598a5e2db
 
 pkgname = aegisub-dependency-control
