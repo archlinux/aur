@@ -3,7 +3,8 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Linus Sjögren <thelinx@unreliablepollution.net>
 # Contributor: Eric Forgeot < http://anamnese.online.fr >, dreeze
-# Maintainer: SanskritFritz (gmail)
+# Contributor: SanskritFritz (gmail)
+# Maintainer: Parker Reed <parker.l.reed@gmail.com>
 
 pkgname=love07
 pkgver=0.7.2
