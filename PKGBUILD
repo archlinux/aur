@@ -4,7 +4,7 @@
 # Contributor: Tom Burdick <thomas dot burdick at gmail dot com>
 # see http://wiki.archlinux.org/index.php/Java_Package_Guidelines
 pkgname=jgoodies-forms
-pkgver=1.7.2
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A Java Swing form layout library"
 arch=('any')
@@ -15,7 +15,6 @@ depends=('jgoodies-common>=1.6.0')
 optdepends=('java-runtime>=6')
 source=("http://www.jgoodies.com/download/libraries/forms/$pkgname-${pkgver//./_}.zip")
 
-md5sums=('048ed39eaa5f80dd2592a7b7993f93ae')
 package() {
   _src="$srcdir/$pkgname-$pkgver"
   _pkg="$pkgdir/usr/share/java"
@@ -25,3 +24,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+md5sums=('de294993cbf4a8b630284f4bfbca412a')
