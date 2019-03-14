@@ -1,25 +1,5 @@
---- Makefile	2016-07-13 22:24:24.000000000 +0300
-+++ Makefile	2018-11-05 21:27:03.157083651 +0300
-@@ -22,7 +22,7 @@
- 
- # When building from the independent multiseq tree, we'll use an empty list
- # since the dependency will be dealt with manually.
--#MSEQBUILDDIRS = 
-+MSEQBUILDDIRS = 
- 
- # The Intersurf plugin is compiled manually and should only be
- # listed if the binaries are up-to-date for the target platform(s)
-@@ -146,7 +146,7 @@
- 	@echo "Populating distribution directory with compiled plugins"
- 	-mkdir -p $(PLUGINDIR)/include
- 	for header in $(PLUGINHEADERS); do cp -p $(INCLUDEDIR)/$$header $(PLUGINDIR)/include || exit 1 ; done
--	for dir in molfile_plugin $(BUILDDIRS); do cd $$dir && $(MAKE) distrib && cd .. || exit 1 ; done
-+	for dir in molfile_plugin; do cd $$dir && $(MAKE) distrib && cd .. || exit 1 ; done
- 
- include Make-arch
- 
 --- Make-arch	2016-10-22 00:34:39.000000000 +0300
-+++ Make-arch	2018-11-05 21:02:19.862302589 +0300
++++ Make-arch	2019-03-14 14:30:13.136311837 +0300
 @@ -333,7 +333,7 @@
  	"SHLD = gcc -shared"
  
@@ -29,12 +9,35 @@
  	"ARCH = LINUXAMD64" \
  	"COPTO = -fPIC -m64 -o " \
  	"LOPTO = -fPIC -m64 -lstdc++ -o " \
-@@ -342,7 +342,7 @@
+@@ -342,8 +342,10 @@
  	"DEF = -D" \
  	"CCFLAGS = -m64 -O2 -fPIC -Wall" \
  	"CXXFLAGS = -m64 -O2 -fPIC -Wall" \
 -	"TCLLDFLAGS = -ltcl8.5 -ldl" \
 +	"TCLLDFLAGS = -ltcl8.6 -ldl" \
  	"NETCDFLDFLAGS = -lnetcdf " \
++	"NETCDFLIB = -L/usr/lib" \
++	"NETCDFINC = -I/usr/include" \
  	"AR = ar" \
  	"NM = nm -p" \
+ 	"RANLIB = touch" \
+--- Makefile	2016-07-13 22:24:24.000000000 +0300
++++ Makefile	2019-03-14 14:22:10.860111342 +0300
+@@ -22,7 +22,7 @@
+ 
+ # When building from the independent multiseq tree, we'll use an empty list
+ # since the dependency will be dealt with manually.
+-#MSEQBUILDDIRS = 
++MSEQBUILDDIRS = 
+ 
+ # The Intersurf plugin is compiled manually and should only be
+ # listed if the binaries are up-to-date for the target platform(s)
+@@ -139,6 +139,8 @@
+   $(MSEQBUILDDIRS) \
+   $(INTERSURF)
+ 
++BUILDDIRS=
++
+ INCLUDEDIR = include
+ PLUGINHEADERS = vmdplugin.h molfile_plugin.h vmdconio.h
+ 

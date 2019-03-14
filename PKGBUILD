@@ -1,15 +1,15 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 pkgname=vmd-molfile-plugins
 pkgver=1.9.3
-pkgrel=1
-pkgdesc="Visual Molecular Dynamics plugins package"
+pkgrel=2
+pkgdesc="Visual Molecular Dynamics - molfile plugins"
 url="https://www.ks.uiuc.edu/Research/vmd/plugins"
 license=('custom')
 arch=('x86_64')
 depends=('tcl' 'netcdf')
 makedepends=('make' 'gcc')
 md5sums=('5706f88b9b77cc5fafda6fef3a82d6fa'
-         'b79218662efe472ad2844f3b5b9beff6'
+         '33b2cfc6ba31f3a14d11bedfa8339878'
          'f60d4d3f9c39c0e9e997a6eacacbade1')
 
 # You should download the source package from the VMD site and put it in the PKGBUILD folder
@@ -34,11 +34,17 @@ package() {
 
   PLUGINDIR=${srcdir}/molfile make distrib
 
+  # install libraries
   install -d ${pkgdir}/usr/lib/${pkgname}
   install -Dm755 ${srcdir}/molfile/LINUXAMD64/molfile/*.so ${pkgdir}/usr/lib/${pkgname}
-  install -Dm644 ${srcdir}/molfile/LINUXAMD64/molfile/libmolfile_plugin* ${pkgdir}/usr/lib/${pkgname}
-  install -d ${pkgdir}/usr/include/vmd-molfile
-  install -Dm644 ${srcdir}/molfile/include/*.h ${pkgdir}/usr/include/vmd-molfile
+  install -Dm644 ${srcdir}/molfile/LINUXAMD64/molfile/libmolfile_plugin.a ${pkgdir}/usr/lib/${pkgname}
+
+  # install headers
+  install -d ${pkgdir}/usr/include/${pkgname}
+  install -Dm644 ${srcdir}/molfile/LINUXAMD64/molfile/libmolfile_plugin.h ${pkgdir}/usr/include/${pkgname}
+  install -Dm644 ${srcdir}/molfile/include/{molfile_plugin.h,vmdplugin.h} ${pkgdir}/usr/include/${pkgname}
+
+  # install license
   install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
