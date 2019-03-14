@@ -1,7 +1,7 @@
 # Maintainer: Ľubomír 'The_K' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=beautysh
-pkgver=3.12
+pkgver=4.1
 pkgrel=1
 pkgdesc="A Bash beautifier for the masses"
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/bemeurer/beautysh'
 license=('MIT')
 depends=('python-setuptools')
 source=("https://github.com/bemeurer/beautysh/archive/${pkgver}.tar.gz")
-sha256sums=('d42f181cf32be18d2b9b3d3acd9c910d6644a84900159b891a909276234d7d51')
+sha256sums=('0418cb3500b147fe23d43651cdd1ba1765583a0150012b90822810cbdac147e0')
 
 package() {
     cd "${pkgname}-${pkgver}"
