@@ -1,6 +1,6 @@
 # Maintainer: Microoo <hu@microoo.net>
 pkgname=substratumnode-git
-pkgver=0.4.2.r0.g07809e2c
+pkgver=0.4.2.r75.g2283daa3
 pkgrel=1
 pkgdesc="SubstratumNode is the foundation of the decentralized SubstratumNetwork. SubstratumNodes work together to relay CORES packages and content on the network."
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -23,6 +23,7 @@ build() {
     cd "$srcdir/${pkgname}"
     sed -i 's/"${GPG_EXECUTABLE}" --/# "${GPG_EXECUTABLE}" --/' ci/release.sh
     sed -i 's/zip -j/# zip -j/' ci/release.sh
+    sed -i ':a;N;$!ba;s/"$CI_DIR\/build.sh"\n"$CI_DIR\/setup.sh"/"$CI_DIR\/setup.sh"\n"$CI_DIR\/build.sh"/' node-ui/ci/release.sh
     ci/release.sh
 }
 
@@ -32,7 +33,7 @@ package() {
     _version=$(git -C "$srcdir/${pkgname}" describe --abbrev=0 --tags | sed 's/^v//')
 
     # Extract deb file
-    bsdtar -xf "$srcdir/${pkgname}/node_ui/dist/SubstratumNode_${_version}_amd64.deb"
+    bsdtar -xf "$srcdir/${pkgname}/node-ui/electron-builder-out/node-ui_${_version}_amd64.deb"
 
     # Extract package data
     tar xf "data.tar.xz" -C "${pkgdir}"
