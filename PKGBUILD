@@ -1,7 +1,7 @@
 # Maintainer: Peter Cai <peter@typeblog.net>
 
 _pkgname=kwin
-_pkgver=5.14.5
+_pkgver=5.15.3
 pkgname=kwin-aurorae-optional-titlebar
 pkgver=${_pkgver}_1
 pkgrel=1
@@ -16,7 +16,7 @@ source=(
   "kwin-aurorae-optional-titlebar.patch"
   "kwin-aurorae-optional-titlebar.sh"
 )
-md5sums=('996d3477d0016e999d6d517ec072e983'
+md5sums=('2dd5ecd4ecb32be77178d8ac660b94fe'
          'b314f47c73308e1440344288a75f7c93'
          '854459e61a223321d674299a97ec082e')
 
