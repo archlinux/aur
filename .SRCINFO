@@ -6,6 +6,7 @@ pkgbase = python-simplepam-git
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python
 	depends = python
 	depends = pam
 	provides = python-simplepam
