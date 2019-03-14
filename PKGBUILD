@@ -2,8 +2,8 @@
 
 _module='shade'
 pkgname=('python-shade' 'python2-shade')
-pkgver='1.30.0'
-pkgrel='2'
+pkgver='1.31.0'
+pkgrel='1'
 pkgdesc='Simple client library for interacting with OpenStack clouds'
 arch=('any')
 url="http://docs.openstack.org/infra/${_module}"
@@ -36,7 +36,7 @@ checkdepends=('python-pbr' 'python2-pbr'
               'python-stestr' 'python2-stestr'
               'python-oslotest' 'python2-oslotest')
 source=("https://github.com/openstack-infra/${_module}/archive/${pkgver}.tar.gz")
-sha512sums=('d2b0690a76362a1a98729b0c7efe24627cf1d2b4d3420b9c7ba4fde962f3f321e329a5f73182853384a6b0aa4a75ed4e8248fca04bf6758464f2b693a56a6cfc')
+sha512sums=('bbf33ede55c632ff0ac36723a5ab030511b72bac0d7a9ba6d52a22ede7fc54dd19bb27e14292ff58914461dfce7b25bc2b0aeb35a66554c36ade793e6b891d1d')
 
 prepare() {
   # Fix test function name
