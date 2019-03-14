@@ -1,13 +1,13 @@
 # Maintainer: Dan Ziemba <zman0900@gmail.com>
 
 pkgname=nut-monitor-git
-pkgver=2.7.3.r17.g90b526b
+pkgver=2.7.4.r697.gea0a9945
 pkgrel=1
 pkgdesc="GUI to manage devices connected a NUT server"
 arch=('any')
 url="http://www.networkupstools.org/"
 license=('GPL3')
-depends=('network-ups-tools' 'python2')
+depends=('network-ups-tools' 'python2' 'pygtk')
 provides=('nut-monitor')
 conflicts=('nut-monitor')
 makedepends=('desktop-file-utils')
