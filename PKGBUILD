@@ -8,8 +8,9 @@ url="https://gitlab.gnome.org/GNOME/glib-networking"
 arch=(x86_64)
 license=(GPL2)
 depends=(glib2 libproxy gnutls gsettings-desktop-schemas)
-makedepends=(meson git)
+makedepends=(meson git openssl)
 checkdepends=(ca-certificates)
+optdepends=('openssl: Alternative backend')
 _commit=1bdca03d715228e8eee697fb49e82e4136e209e3  # tags/2.60.0.1^0
 source=("git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=$_commit")
 sha256sums=('SKIP')
@@ -24,7 +25,7 @@ prepare() {
 }
 
 build() {
-  arch-meson $pkgname build
+  arch-meson $pkgname build -D openssl=enabled
   ninja -C build
 }
 
