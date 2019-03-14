@@ -1,0 +1,14 @@
+pkgbase = gradle-profiler-git
+	pkgdesc = Powerful build system for the JVM
+	pkgver = r398.5165bcf
+	pkgrel = 1
+	url = https://gradle.org/
+	arch = any
+	license = Apache
+	makedepends = libarchive
+	depends = gradle
+	source = gradle-profiler-git::git+https://github.com/gradle/gradle-profiler
+	sha256sums = SKIP
+
+pkgname = gradle-profiler-git
+
