@@ -1,6 +1,6 @@
 pkgbase = partio-git
 	pkgdesc = Particle IO and manipulation library (git version)
-	pkgver = 1.1.0.r117.g2661682
+	pkgver = 1.7.3.r0.g421ec6a
 	pkgrel = 1
 	url = http://www.disneyanimation.com/technology/partio.html
 	arch = i686
