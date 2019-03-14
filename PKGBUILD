@@ -9,7 +9,7 @@ pkgname=('eiskaltdcpp-core-git'
          'eiskaltdcpp-cli-git'
          'eiskaltdcpp-data-git'
          )
-pkgver=v2.2.10.284.ga1fdeb86
+pkgver=v2.2.10.394.g3c85c56c
 pkgrel=1
 pkgdesc="EiskaltDC++: DC and ADC client based on dcpp core. (GIT Version)"
 license=('GPL3')
