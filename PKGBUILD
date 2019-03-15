@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=27.0.50.r135402
+pkgver=27.0.50.r135573
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -14,13 +14,19 @@ makedepends=('git' 'texlive-core')
 conflicts=('emacs')
 options=('docs' '!emptydirs')
 provides=('emacs' 'emacs-seq')
-source=("git://git.savannah.gnu.org/emacs.git")
-sha256sums=('SKIP')
+source=("git://git.savannah.gnu.org/emacs.git" ccmode-texi.diff)
+sha256sums=('SKIP'
+            '35dd3ad921976a4e3d48806602f6d060ae4a1ea155cda72b43138ae5a1f66d8f')
 
 pkgver() {
   cd emacs
   _mainver=$(grep AC_INIT configure.ac | sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\).\+$/\1/')
   printf "%s.r%s" "$(echo $_mainver)" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd emacs
+  patch -Np1 < "$srcdir"/ccmode-texi.diff
 }
   
 build() {
