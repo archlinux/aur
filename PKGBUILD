@@ -3,7 +3,7 @@
 _plug=vstaambk
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=0.8.0.r105.b1938f6
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/HomeOfVapourSynthEvolution/vsTAAmbk'
