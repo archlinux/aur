@@ -1,6 +1,6 @@
 pkgbase = pism
 	pkgdesc = Parallel Ice Sheet Model (PISM)
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = http://www.pism-docs.org/
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = pism
 	depends = petsc>=3.5
 	depends = proj
 	depends = udunits
-	source = https://github.com/pism/pism/archive/v1.1.2.tar.gz
-	md5sums = c8caa9e70ca44b179da0a25d0e65832b
+	source = https://github.com/pism/pism/archive/v1.1.3.tar.gz
+	md5sums = 65ae12304273d0adc944d944e4e6e300
 
 pkgname = pism
 
