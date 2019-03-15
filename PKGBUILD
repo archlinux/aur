@@ -2,7 +2,7 @@
 
 pkgname=mycrypto-bin
 pkgbin=mycrypto
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Open-source, client-side tool for generating Ether Wallets, handling ERC-20 tokens, and interacting with the blockchain more easily'
 package="linux-x86-64_${pkgver}_MyCrypto.AppImage"
@@ -13,13 +13,13 @@ url='https://github.com/MyCryptoHQ/MyCrypto'
 license=('MIT')
 source=("${url}/releases/download/${pkgver}/${package}"
         'LICENSE')
-sha256sums=('fa624f4331ffc4f56baf90b7a78f1e502bbfc2ff88d1786607487219b1930e4a'
+sha256sums=('82b383bc36b16ab7be4de7ce4f68a9b57d8524442e95050765199249b5451bf4'
             '1b0a4ebe6200441fe008bba2b60bb227b944cd77427b3f9c60f6f7e32120a65d')
 
 package() {
   # Extract files
   chmod +x "$srcdir/$package"
-  `$srcdir/$package --appimage-extract`
+  `$srcdir/$package --appimage-extract &>/dev/null`
   # Clean old build dir files
   rm -rf $srcdir/$pkgbin
   mv -f "$srcdir/squashfs-root" "$srcdir/$pkgbin"
