@@ -3,7 +3,7 @@
 _plug=adjust
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=v1.0.g7370577
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=171956'
