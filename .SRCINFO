@@ -1,0 +1,26 @@
+pkgbase = bedup-fork-git
+	pkgdesc = Offline deduplication utility for the BTRFS filesystem. Git, forked to fix some issues
+	pkgver = 0.10.1
+	pkgrel = 2
+	url = https://github.com/g2p/bedup
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = gcc
+	makedepends = btrfs-progs
+	depends = python
+	depends = python-distribute
+	depends = python-alembic
+	depends = python-sqlalchemy
+	depends = python-cffi
+	depends = python-xdg
+	depends = python-mako
+	conflicts = vpaint-git
+	conflicts = bedup
+	conflicts = bedup-git
+	source = git+https://github.com/galvanized/bedup.git
+	md5sums = SKIP
+
+pkgname = bedup-fork-git
+
