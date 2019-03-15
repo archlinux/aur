@@ -12,7 +12,7 @@ url='https://github.com/iovisor/bcc'
 license=('Apache')
 makedepends=('cmake' 'clang>=3.7.0' 'llvm>=3.7.0' 'flex' 'bison' 'python' 'python2')
 checkdepends=('netperf' 'iperf')
-source=("https://github.com/iovisor/${pkgname}/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/iovisor/${pkgname}/archive/v${pkgver}.tar.gz"
 	"libbpf-${_libbpf_commit}.tar.gz"::"https://github.com/libbpf/libbpf/archive/${_libbpf_commit}.tar.gz")
 sha512sums=('373080181380ec3bcb13469e29ff1f792e924a2df00a614da4647ed54060ad216525dd0f49c5d0afba7946a6d2f4e3475af97250a33db825945af3d165294091'
             '42e62d92785164d8ee6b0aecc2446c982ef56d4413b089367ab1fcb5895c5b8211ad060217c4e11cbea9b6d1dd98092076068a3cbc6beeed3e1a758226138809')
