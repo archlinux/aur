@@ -3,7 +3,6 @@
 _pkgname=faiss
 pkgbase=faiss-git
 pkgname=('faiss-git' 'python-faiss-git' 'python2-faiss-git')
-pkgdesc='A library for efficient similarity search and clustering of dense vectors.'
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('BSD')
@@ -38,6 +37,7 @@ build() {
 }
 
 package_faiss-git() {
+  pkgdesc='A library for efficient similarity search and clustering of dense vectors.'
   provides=('faiss')
   conflicts=('faiss')
   cd "${srcdir}/${_pkgname}"
@@ -45,6 +45,7 @@ package_faiss-git() {
 }
 
 package_python-faiss-git() {
+  pkgdesc='A library for efficient similarity search and clustering of dense vectors. Python wrappers'
   provides=('python-faiss')
   conflicts=('python-faiss')
   depends=('python' 'python-numpy')
@@ -54,6 +55,7 @@ package_python-faiss-git() {
 }
 
 package_python2-faiss-git() {
+  pkgdesc='A library for efficient similarity search and clustering of dense vectors. Python2 wrappers'
   provides=('python2-faiss')
   conflicts=('python2-faiss')
   depends=('python2' 'python2-numpy')
