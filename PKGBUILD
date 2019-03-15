@@ -3,7 +3,7 @@
 _plug=mvtools_sf
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r9.7.g5dfa875
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=172525'
