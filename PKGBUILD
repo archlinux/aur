@@ -1,7 +1,7 @@
 # Maintainer: LLL2yu <lll2yu@protonmail.com>
 
 pkgname=gallery-dl
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Command-line program to download image galleries and collections from pixiv, exhentai, danbooru and more"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('ffmpeg: Convert Pixiv Ugoira to WebM'
 source=(https://github.com/mikf/${pkgname}/releases/download/v${pkgver}/gallery_dl-${pkgver}.tar.gz
 	https://github.com/mikf/${pkgname}/releases/download/v${pkgver}/gallery_dl-${pkgver}.tar.gz.asc)
 validpgpkeys=('3E09F5908333DD83DBDCE7375680CA389D365A88')
-sha512sums=('66906e7345fd9847fcd7d4a9af16714decd45704d88a507c9ad33312bce1d80338dc45be4ffa67068f0ecc1fd794a47146d3fa033de0a1cada43c458e0cea534' 
+sha512sums=('89e5e09f4d4cd1a722c6ecaeb93ee0b88516f16ed8649e15d13408f0291a8700171e5d9a0f1e739a5a211d60e0df9b833bfdeb9186d7bcaf3be3c7cd40e7c296'
 	    'SKIP')
 package() {
   cd "$srcdir"/gallery_dl-$pkgver
