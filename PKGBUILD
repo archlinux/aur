@@ -3,7 +3,7 @@
 _plug=vautodeint
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=v0.0.1.0.g70bcc3d
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/gnaggnoyil/VAutoDeint'
