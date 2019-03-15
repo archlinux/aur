@@ -1,7 +1,8 @@
 # Maintainer: Lukas Zimmermann <luk.zim91@gmail.com>
+# Maintainer: Jonathan Herlin <jonher937+aur@gmail.com>
 
 pkgname=terraform-provider-openstack
-pkgver=1.5.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="Terraform OpenStack provider"
 url="https://github.com/terraform-providers/terraform-provider-openstack"
@@ -11,7 +12,7 @@ makedepends=("go" "git")
 _gourl="github.com/terraform-providers"
 depends=('terraform')
 source=("https://github.com/terraform-providers/terraform-provider-openstack/archive/v${pkgver}.tar.gz")
-sha256sums=('dde2474d28dc6a8f64b6b764d95e23d6e5d026c56571f62a384c17360faa88b4')
+sha256sums=('ef909f38eccb0edcecd4cfdb768acebd4dee404233fed2febd502f8eea86beae')
 
 
 prepare() {
@@ -27,7 +28,7 @@ prepare() {
 build() {
     msg2 "Build program"
     cd "$srcdir/src/$_gourl/$pkgname"
-    GOPATH="$srcdir" PATH="$srcdir/bin:$PATH" make 
+    GOPATH="$srcdir" PATH="$srcdir/bin:$PATH" make
 }
 
 
