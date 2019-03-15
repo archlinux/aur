@@ -2,54 +2,49 @@
 # Maintainer: Sébastien Faucheux <faucheux.seb@gmail.com>
 
 pkgname=gnome-settings-daemon-shutdown
-_pkgname=gnome-settings-daemon
-pkgver=3.30.1.2
-pkgrel=1
-pkgdesc="The GNOME Settings daemon with shutdown button action"
+pkgver=3.32.0
+pkgrel=2
+pkgdesc="GNOME Settings Daemon with shutdown button action"
+url="https://gitlab.gnome.org/GNOME/gnome-settings-daemon"
 arch=(x86_64)
 license=(GPL)
-depends=(dconf gnome-desktop gsettings-desktop-schemas libcanberra-pulse libnotify libsystemd
+depends=(dconf gnome-desktop gsettings-desktop-schemas libcanberra-pulse libnotify systemd-libs
          libwacom pulseaudio pulseaudio-alsa upower librsvg libgweather geocode-glib geoclue2 nss
          libgudev gtk3-print-backends libnm)
 makedepends=(xf86-input-wacom libxslt docbook-xsl python git meson)
-
-url="https://git.gnome.org/browse/gnome-settings-daemon"
+checkdepends=(python-gobject python-dbusmock)
 groups=(gnome)
-provides=('gnome-settings-daemon')
-conflicts=('gnome-settings-daemon')
-_commit=0e5951b4201d2363221d1ddf319fcd313ee39b28  # tags/GNOME_SETTINGS_DAEMON_3_30_1_2^0
+_commit=9381b6c2be1ae0e58a4adb5375f59e6765dd0276  # tags/GNOME_SETTINGS_DAEMON_3_32_0^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git#commit=$_commit"
-        "git+https://git.gnome.org/browse/libgnome-volume-control"
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
         shutdown.patch)
 
 sha256sums=('SKIP'
             'SKIP'
             'cd2136653c24f85865b9011fdc3620448b771d9c50a7e7e16191c352ff02feda')
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/^GNOME_SETTINGS_DAEMON_//;s/_/./g;s/-/+/g'
+}
 
 prepare() {
-  cd $_pkgname
+  cd $pkgname
+
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
   git submodule update
   patch -Np1 -i ../shutdown.patch
 }
 
-pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's/^GNOME_SETTINGS_DAEMON_//;s/_/./g;s/-/+/g'
-}
-
 build() {
-  arch-meson $_pkgname build
+  arch-meson $pkgname build
   ninja -C build
 }
 
 check() {
-  cd build
-  # Needs python-dbusmock
-  #meson test
+  meson test -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 }
