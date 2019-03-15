@@ -63,7 +63,7 @@ _major=4.20
 pkgver=4.20.16
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -229,8 +229,7 @@ prepare() {
     ### Disable MQ scheduling
 	if [ -n "$_mq_disable" ]; then
 		msg2 "Disabling MQ scheduling..."
-		sed -i -e s'/^CONFIG_SCSI_MQ_DEFAULT=y/# CONFIG_SCSI_MQ_DEFAULT is not set/' \
-		    -i -e s'/^CONFIG_DM_MQ_DEFAULT=y/# CONFIG_DM_MQ_DEFAULT is not set/' ./.config
+		sed -i -e s'/^CONFIG_SCSI_MQ_DEFAULT=y/# CONFIG_SCSI_MQ_DEFAULT is not set/' ./.config
         fi
 
 
