@@ -16,6 +16,7 @@ pre_remove() {
 post_remove() {
   rm -rf /etc/windscribe
   rm -rf /usr/share/doc/windscribe-cli
+  rm -rf /usr/share/licenses/windscribe-cli
   rm -rf /etc/bash_completion.d/windscribe_complete
   rm -rf /var/log/windscribe
   systemctl daemon-reload
