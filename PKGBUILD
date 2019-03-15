@@ -2,7 +2,7 @@
 pkgname=taurus
 pkgver=1.2.2
 pkgrel=1
-pkgdesc="GUI port scanner"
+pkgdesc="Port scanner for a quick and plain scan. It is maximum easy for use."
 arch=('x86_64')
 md5sums=('95e63d8a24101bc94909c27fbb3c55ad')
 url="https://github.com/blooser/taurus"
