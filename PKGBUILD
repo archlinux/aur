@@ -3,7 +3,7 @@
 
 pkgbase=freetype2-git
 pkgname=('freetype2-git' 'freetype2-demos-git' 'freetype2-docs-git')
-pkgver=2.9.1+p299+gfb0d66d04
+pkgver=2.10.0+p0+gfbbcf5036
 pkgrel=1
 epoch=1
 pkgdesc="Font rasterization library (from git)"
@@ -24,10 +24,10 @@ source=(git://git.sv.gnu.org/freetype/freetype2.git
         freetype2.sh)
 sha1sums=('SKIP'
           'SKIP'
-          'b573f512cedfcb1d0d8f002b610b70eff50b0205'
-          '97dc94a4af9201ccd4f7f53b9bc215a4159fc4cd'
-          'd6399be0a9bceddd60b786f63bbfb44865ddfae3'
-          '248164642f8c9b8441494689b14f2d98c025ee49'
+          '46fd67e6a594f6c2c473b9321ba64913984ba42f'
+          '4bf0c0749db09878b918cc404300f0d3e9091607'
+          'af76172be8135e74391b7ad1b82c2124ae0ad86c'
+          '7770412a35d60e38cbe673c45214fbe9a17bedcf'
           '72cfecbe738085eec475e012617661ad0cc9b76f'
           'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
