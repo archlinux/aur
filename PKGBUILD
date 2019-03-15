@@ -2,8 +2,8 @@
 
 pkgname=ant-dracula-theme-git
 _pkgname=Ant-Dracula
-pkgver=r50.ffc0fa2
-pkgrel=2
+pkgver=r51.3292a55
+pkgrel=1
 pkgdesc="Dracula variant of the Ant theme"
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
