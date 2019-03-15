@@ -1,4 +1,5 @@
-# Maintainer: flurb
+# Maintainer: c-er
+# Previously flurb <aidand(at)princeton(dot)edu>
 # Previously pyamsoft <pyam(dot)soft(at)gmail(dot)com>
 
 # This build can be installed alongside dolphin-emu
@@ -8,8 +9,8 @@
 # Uses a modified version of https://github.com/FasterMelee/FasterMelee-installer (thank you!)
 
 pkgname=dolphin-emu-faster-melee
-pkgver=5.8.7
-pkgrel=2
+pkgver=5.9
+pkgrel=1
 pkgdesc='The FasterMelee NetPlay build of the Dolphin Emulator'
 arch=('x86_64')
 url='http://fastermelee.net'
@@ -19,15 +20,15 @@ depends=('bluez-libs' 'curl' 'enet' 'ffmpeg' 'glu' 'libao' 'libevdev' 'libsystem
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!emptydirs')
 
-COMMITHASH="6ababb9222fb8bb9723ae137e1263a27196fcd47"
+COMMITHASH="4ecca10c2dc2f4cd33c5cfaed3cbb5a63142a709"
 
 source=("https://github.com/FasterMelee/Ishiiruka/archive/$COMMITHASH.tar.gz"
-        "https://github.com/FasterMelee/FasterMelee-installer/raw/master/config/$pkgver-fmconfig.tar.gz")
+	"https://github.com/FasterMelee/FasterMelee-installer/raw/master/config/5.9-fmconfig.tar.gz")
 
-sha256sums=('02a645a4cc91d0e5c3ff64e2c849c31fe439d9a8ca30e9b072d8899066ac4b66'
-            'b2ba6b74bbc6df5ffb86fb696cb3d1198c6a9b18862b3e2ace9ad1dd211032c3')
+sha256sums=('f1ed6e2e1b89ae69a8bc722a4f92ca0eb5c399b8af7e86bc147bb52bf588194c'
+            'f1eb3e73197f4ab9ed63a17b107f37e33191286f44696fa91de9d189760b5ecb')
 
-CPUS_DESIRED=3
+CPUS_DESIRED=4
 
 prepare() {
   cd "$srcdir"
@@ -52,6 +53,13 @@ prepare() {
   sed -i "s|\${GIT_EXECUTABLE} describe --always --long --dirty|echo FM v$pkgver BETA|g" CMakeLists.txt
   # ensures compatibility w/ netplay
   sed -i "s|\${GIT_EXECUTABLE} rev-parse --abbrev-ref HEAD|echo HEAD|g" CMakeLists.txt
+  # ---
+
+
+  # --- Dirty patch for https://bugs.dolphin-emu.org/issues/11047
+  echo "Patching xgetbv function..."
+  sed -i "s|#include <cstring>|#include <cstring>\n#define _XSAVEINTRIN_H_INCLUDED|g" Source/Core/Common/x64CPUDetect.cpp # issue 1
+  # sed -i "s|check_and_add_flag(CXX17 -std=c++17)|#check_and_add_flag(CXX17 -std=c++17)" # issue 2 not present
   # ---
   
   # --- move necessary config files into the build folder
@@ -107,17 +115,12 @@ build() {
 package() {
   cd "$srcdir"
 
-
 	echo 'SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="0666"' > 51-gcadapter.rules
   install -Dm 644 "${srcdir}"/51-gcadapter.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
 
   install -d "${pkgdir}"/usr/share/
   cp -r "${srcdir}"/bin "${pkgdir}"/usr/share/dolphin-emu-faster-melee/
   
-  echo "#!/bin/sh
-/usr/share/dolphin-emu-faster-melee/dolphin-emu \"\$@\"" > dolphin-emu-faster-melee
+  echo "#!/bin/sh /usr/share/dolphin-emu-faster-melee/dolphin-emu \"\$@\"" > dolphin-emu-faster-melee
   install -Dm 755 "${srcdir}"/dolphin-emu-faster-melee -t "${pkgdir}"/usr/bin/
-
 }
-
-# vim: ts=2 sw=2 et:
