@@ -2,17 +2,18 @@
 
 _appname=freecad
 pkgname="${_appname}-git"
-pkgver=0.17.r1484.g1e6818b6f
-pkgrel=1
+pkgver=0.18.r26.g51fcdd2c0
+pkgrel=2
 epoch=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
-arch=('i686' 'x86_64')
-url='http://www.freecadweb.org/'
+arch=('x86_64')
+url='https://www.freecadweb.org/'
 license=('LGPL')
 depends=('boost-libs' 'curl' 'hicolor-icon-theme' 'libspnav' 'opencascade'
-         'med' 'xerces-c' 'python2-pivy' 'python2-pyside' 'qtwebkit'
-         'libtheora' 'shared-mime-info' 'jsoncpp' )
-makedepends=('git' 'boost' 'cmake' 'coin' 'python2-pyside-tools'
+         'coin' 'libtheora' 'med' 'jsoncpp' 'xerces-c'
+         'python2-netcdf4' 'python2-pivy' 'python2-pyside2'
+         'qt5-svg' 'qt5-webkit')
+makedepends=('git' 'boost' 'cmake' 'desktop-file-utils' 'pyside2-tools'
              'desktop-file-utils' 'eigen' 'gcc-fortran' 'swig')
 optdepends=('python2-matplotlib'
             'pycollada-git: Create, edit and load COLLADA documents.')
@@ -33,14 +34,12 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname}"
 
-    cmake -DCMAKE_BUILD_TYPE=Release \
+    cmake . \
+          -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX="/opt/${_appname}" \
-	  -DFREECAD_USE_OCC_VARIANT="Official Version" \
-          -DFREECAD_USE_EXTERNAL_PIVY=ON \
-          -DBUILD_QT5=ON \
-          -DBUILD_QT5_WEBKIT=OFF \
+          -DFREECAD_USE_OCC_VARIANT="Official Version" \
           -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-          -DBUILD_WEB=OFF
+          -DBUILD_QT5=ON
 
     make
 }
