@@ -2,7 +2,7 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com> ([community] package)
 
 pkgname=remmina-git
-pkgver=1.2.30.r5.g87167761a
+pkgver=1.3.4.r1.g379a42c92
 pkgrel=1
 pkgdesc='A remote desktop client written in GTK+ - git checkout'
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=('gtk2' 'zlib' 'libjpeg' 'libssh' 'libunique' 'avahi' 'vte3'
 	'libgcrypt' 'libxdmcp' 'libgnome-keyring' 'libvncserver'
 	'libsecret' 'webkit2gtk')
 makedepends=('git' 'intltool' 'pkgconfig' 'cmake'
-	'avahi' 'libxkbfile' 'freerdp-git' 'telepathy-glib')
+	'avahi' 'libxkbfile' 'freerdp' 'telepathy-glib')
 optdepends=('avahi' 'libxkbfile' 'freerdp-git' 'telepathy-glib')
 replaces=('remmina-plugins')
 provides=('remmina' 'grdc' "grdc=${pkgver}" 'remmina-plugins')
