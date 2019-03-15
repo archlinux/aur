@@ -4,7 +4,7 @@
 _plug=kagefunc
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r37.813f8f0
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Irrational-Encoding-Wizardry/kagefunc'
