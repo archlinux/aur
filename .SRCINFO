@@ -1,6 +1,6 @@
 pkgbase = terraform-provider-openstack
 	pkgdesc = Terraform OpenStack provider
-	pkgver = 1.5.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/terraform-providers/terraform-provider-openstack
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = terraform-provider-openstack
 	makedepends = go
 	makedepends = git
 	depends = terraform
-	source = https://github.com/terraform-providers/terraform-provider-openstack/archive/v1.5.0.tar.gz
-	sha256sums = dde2474d28dc6a8f64b6b764d95e23d6e5d026c56571f62a384c17360faa88b4
+	source = https://github.com/terraform-providers/terraform-provider-openstack/archive/v1.16.0.tar.gz
+	sha256sums = ef909f38eccb0edcecd4cfdb768acebd4dee404233fed2febd502f8eea86beae
 
 pkgname = terraform-provider-openstack
 
