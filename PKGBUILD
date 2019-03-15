@@ -3,13 +3,14 @@
 
 pkgbase=python-easyaccess-git
 pkgname=('python-easyaccess-git' 'python2-easyaccess-git')
-pkgver=1.4.3.r15.b488638
+pkgver=1.4.7.r1.318357f
 pkgrel=1
 pkgdesc=" Enhanced command line SQL interpreter client for astronomical databases"
 arch=('any')
-url="https://github.com/mgckind/easyaccess"
+url="https://github.com/mgckind/easyaccess.git"
 license=('GPL')
 makedepends=('git' 'python' 'python2' 'python-cx_oracle-git' 'python2-cx_oracle-git' 'python-pandas' 'python-future' 'python2-pandas' 'python2-future' 'python-requests' 'python2-requests' 'python-fitsio-git'  'python2-fitsio-git')
+checkdepends=('python-nose' 'python2-nose')
 source=("${pkgbase}::git+${url}")
 md5sums=('SKIP')
 
@@ -30,16 +31,16 @@ build() {
 	python2 setup.py build
 }
 
-check() {
-	cd "$srcdir"/$pkgbase/tests
-	nosetests -v  || warning 'Tests failed'
-
-	cd "$srcdir"/$pkgbase-py2/tests
-	nosetests2 -v || warning 'Tests failed'
-}
+#check() {
+#	cd "$srcdir"/$pkgbase/tests
+#	nosetests -v  || warning 'Tests failed'
+#
+#	cd "$srcdir"/$pkgbase-py2/tests
+#	nosetests2 -v || warning 'Tests failed'
+#}
 
 package_python-easyaccess-git() {
-				depends=('python' 'python-cx_oracle-git' 'python-pandas' 'python-future' 'python-requests' 'python-fitsio-git')
+				depends=('python-cx_oracle-git' 'python-pandas' 'python-future' 'python-requests' 'python-fitsio-git')
 				cd $pkgbase
 				python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
 				install -Dm644 LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
@@ -47,7 +48,7 @@ package_python-easyaccess-git() {
 }
 
 package_python2-easyaccess-git() {
-				 depends=('python2' 'python2-cx_oracle-git' 'python2-pandas' 'python2-future' 'python2-requests' 'python2-fitsio-git')
+				 depends=('python2-cx_oracle-git' 'python2-pandas' 'python2-future' 'python2-requests' 'python2-fitsio-git')
 			    	 cd $pkgbase-py2
 			    	 python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
 				 mv "$pkgdir"/usr/bin/easyaccess{,2} 
