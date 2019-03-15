@@ -9,13 +9,14 @@
 
 pkgname=font-manager
 pkgver=0.7.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple font management application for GTK+ Desktop Environments"
 url="http://fontmanager.github.io/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('libgee' 'libxml2' 'sqlite' 'gucharmap' 'file-roller')
-makedepends=('intltool' 'yelp-tools' 'gobject-introspection' 'vala')
+depends=('libxml2' 'sqlite')
+optdepends=('file-roller')
+makedepends=('yelp-tools' 'gobject-introspection' 'vala')
 source=("https://github.com/FontManager/master/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2")
 sha256sums=('39bb00942b89eeabb96946cc0c0db5e7ecfe8d62805d87f0115de49ee02487b6')
 

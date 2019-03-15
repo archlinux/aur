@@ -1,20 +1,17 @@
 pkgbase = font-manager
 	pkgdesc = A simple font management application for GTK+ Desktop Environments
 	pkgver = 0.7.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fontmanager.github.io/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = intltool
 	makedepends = yelp-tools
 	makedepends = gobject-introspection
 	makedepends = vala
-	depends = libgee
 	depends = libxml2
 	depends = sqlite
-	depends = gucharmap
-	depends = file-roller
+	optdepends = file-roller
 	source = https://github.com/FontManager/master/releases/download/0.7.4.3/font-manager-0.7.4.3.tar.bz2
 	sha256sums = 39bb00942b89eeabb96946cc0c0db5e7ecfe8d62805d87f0115de49ee02487b6
 
