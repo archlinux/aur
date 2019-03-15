@@ -1,7 +1,7 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=zyn-fusion
-pkgver=3.0.3
-pkgrel=5
+pkgver=3.0.4
+pkgrel=1
 pkgdesc="ZynAddSubFX with a new interactive UI"
 arch=('i686' 'x86_64')
 url="http://zynaddsubfx.sourceforge.net/zyn-fusion.html"
@@ -14,7 +14,7 @@ makedepends=('git' 'wget' 'cmake' 'python' 'ruby-rake'
 provides=('zynaddsubfx')
 conflicts=('zynaddsubfx')
 source=("git+https://github.com/zynaddsubfx/zynaddsubfx.git#tag=$pkgver"
-        'git+https://github.com/mruby-zest/mruby-zest-build.git#commit=c66085607ab2e3a0a2a8e90bda28bdc1ef8dc0e6')
+        'git+https://github.com/mruby-zest/mruby-zest-build.git#commit=3f112eeb6a0d7b6ce65c1be3f591e02fde965923')
 sha512sums=('SKIP' 'SKIP')
 
 prepare() {
