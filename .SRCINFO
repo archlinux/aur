@@ -1,6 +1,6 @@
 pkgbase = cockpit-minimal
 	pkgdesc = A systemd web based user interface for Linux servers (minimal setup with system graphs, journalctl, storage, network, user accounts, systemd services and terminal)
-	pkgver = 187
+	pkgver = 189
 	pkgrel = 1
 	url = http://www.cockpit-project.org/
 	arch = i686
@@ -32,12 +32,12 @@ pkgbase = cockpit-minimal
 	optdepends = udisks2: disk stats support
 	conflicts = cockpit-git
 	conflicts = cockpit
-	noextract = cockpit-187.tar.xz
-	source = https://github.com/cockpit-project/cockpit/releases/download/187/cockpit-187.tar.xz
-	source = https://github.com/cockpit-project/cockpit/releases/download/187/cockpit-cache-187.tar.xz
+	noextract = cockpit-189.tar.xz
+	source = https://github.com/cockpit-project/cockpit/releases/download/189/cockpit-189.tar.xz
+	source = https://github.com/cockpit-project/cockpit/releases/download/189/cockpit-cache-189.tar.xz
 	source = cockpit-pam
-	sha1sums = 31b3b1591ada044a5e7530b0b0e8418b66f96712
-	sha1sums = 097d033816be57c8228209f1f5e46005fef2e4e6
+	sha1sums = 05329af1156fe1c42f70c137bf647451741184af
+	sha1sums = 71ff0f4f5fc677b6f33bdfc72d6897912ea4e595
 	sha1sums = 69b899b034e981cf217c2f8d61264caa2015c0e6
 
 pkgname = cockpit-minimal
