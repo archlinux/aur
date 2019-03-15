@@ -2,7 +2,7 @@
 
 pkgname=vue-language-server
 pkgver=0.0.45
-pkgrel=1
+pkgrel=2
 pkgdesc="Language server protocol implementation for Vue"
 arch=('any')
 depends=('nodejs')
@@ -17,5 +17,6 @@ provides=('vue-language-server')
 
 package() {
     npm install -g --user root --prefix "${pkgdir}/usr" --cache "${srcdir}/npm-cache" "${srcdir}/${pkgname}-${pkgver}.tgz"
-
+    find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+    find "${pkgdir}" -name package.json -print0 | xargs -0 sed -i '/_where/d'
 }
