@@ -1,14 +1,14 @@
 pkgbase = ttf-iosevka-ss05
 	pkgdesc = A slender monospace typeface. Shape: Fira Mono
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://be5invis.github.io/Iosevka/
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = https://github.com/be5invis/Iosevka/releases/download/v2.2.0/iosevka-ss05-2.2.0.zip
-	source = https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
+	source = ttf-iosevka-ss05-2.2.0-2-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
 	sha256sums = 912fbcf56593a496fc908405aa1b0ce90557b72561fb907d5f41a36b6ffdc182
 	sha256sums = ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000
 
