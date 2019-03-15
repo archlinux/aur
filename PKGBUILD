@@ -1,10 +1,10 @@
 # Maintainer: Squalou <squalou.jenkins [at] gmail [dot] com>
 pkgname=google-chat-linux-git
-pkgver=r18.41eeb02
+pkgver=r19.17e08b2
 pkgrel=1
 pkgdesc="Unofficial electron-based desktop client for Google Chat"
 arch=('x86_64' 'i686')
-url="https://github.com/robyf/google-chat-linux"
+url="https://github.com/antoniofruci/google-chat-linux.git"
 license=('WTFPL')
 depends=('electron>=1.8.4')
 makedepends=('nodejs' 'npm')

@@ -1,15 +1,15 @@
 pkgbase = google-chat-linux-git
 	pkgdesc = Unofficial electron-based desktop client for Google Chat
-	pkgver = r18.41eeb02
+	pkgver = r19.17e08b2
 	pkgrel = 1
-	url = https://github.com/robyf/google-chat-linux
+	url = https://github.com/antoniofruci/google-chat-linux.git
 	arch = x86_64
 	arch = i686
 	license = WTFPL
 	makedepends = nodejs
 	makedepends = npm
 	depends = electron>=1.8.4
-	source = google-chat-linux::git+https://github.com/robyf/google-chat-linux#branch=master
+	source = google-chat-linux::git+https://github.com/antoniofruci/google-chat-linux.git#branch=master
 	source = google-chat-linux.desktop
 	source = google-chat-linux.sh
 	source = package.json
