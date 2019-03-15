@@ -1,12 +1,16 @@
 pkgbase = python-fints
 	pkgdesc = Minimal pure-python FinTS (formerly known as HBCI) implementation
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raphaelm/python-fints
 	arch = any
 	license = LGPL
 	makedepends = python-setuptools
+	makedepends = python-pytest
 	depends = python-mt-940
+	depends = python-bleach
+	depends = python-sepaxml
+	depends = python-requests
 	source = python-fints-2.1.1.tar.gz::https://github.com/raphaelm/python-fints/archive/v2.1.1.tar.gz
 	sha512sums = 46f5f23656a253b7eacf84591002eb1e5c235d38d1a0cd2354fded972ab39afb50f6aee3ff81c501f33cdd5f2a3bbf5ea4abe219538564d1645bac45ceec833a
 
