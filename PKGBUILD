@@ -5,7 +5,6 @@
 _pkgname=faiss
 pkgbase=faiss-cuda-git
 pkgname=('faiss-cuda-git' 'python-faiss-cuda-git' 'python2-faiss-cuda-git')
-pkgdesc='A library for efficient similarity search and clustering of dense vectors.'
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('BSD')
@@ -56,6 +55,7 @@ build() {
 }
 
 package_faiss-cuda-git() {
+  pkgdesc='A library for efficient similarity search and clustering of dense vectors, CUDA version.'
   provides=('faiss')
   conflicts=('faiss')
   cd "${srcdir}/${_pkgname}"
@@ -64,6 +64,7 @@ package_faiss-cuda-git() {
 }
 
 package_python-faiss-cuda-git() {
+  pkgdesc='A library for efficient similarity search and clustering of dense vectors, CUDA version. Python wrappers'
   provides=('python-faiss')
   conflicts=('python-faiss')
   depends=('python' 'python-numpy')
@@ -73,6 +74,7 @@ package_python-faiss-cuda-git() {
 }
 
 package_python2-faiss-cuda-git() {
+  pkgdesc='A library for efficient similarity search and clustering of dense vectors, CUDA version. Python2 wrappers'
   provides=('python2-faiss')
   conflicts=('python2-faiss')
   depends=('python2' 'python2-numpy')
