@@ -1,7 +1,7 @@
 # Maintainer: Ysblokje <ysblokje at gmail dot com>
 pkgname=('gamemode')
-pkgver=1.2
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 pkgdesc="A daemon/lib combo for Linux that allows games to request a set of optimisations be temporarily applied to the host OS."
 arch=('x86_64')
 url="https://github.com/FeralInteractive/gamemode.git"
@@ -11,10 +11,11 @@ depends=('polkit')
 makedepends=('meson' 'ninja' 'pkg-config' 'git')
 provides=('gamemode')
 source=("https://github.com/FeralInteractive/gamemode/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('a7b8d63ffdcbea0dc8b557fda42a9471fa9ab0961a5450d2a15cccca0aaf6a95')
+sha256sums=('a2918d46b29b989af1292899e4c7f6fe3a042c6d33b360b49614588e444bd715')
 
 build() {
-  arch-meson gamemode-$pkgver build -Dwith-systemd-user-unit-dir=/usr/lib/systemd/user
+  meson gamemode-$pkgver build --prefix /usr -Dwith-pam-group=gamemode -Dwith-systemd-user-unit-dir=/usr/lib/systemd/user
+  #meson ${_pkgname} build --prefix /usr -Dwith-systemd-user-unit-dir=/usr/lib/systemd/user -Dwith-pam-group=gamemode
   ninja -C build
 }
 
