@@ -1,31 +1,33 @@
-# Maintainer: Lázaro Armando <aur at chipojosoft.com>
+# Maintainer: Thaodan <theodorstormgrade@gmail.com>
+# Contributor: Lázaro Armando <aur at chipojosoft.com>
 
-pkgname=purple-rocketchat
-_gitname="purple-rocketchat"
+_pkgname=purple-rocketchat
+pkgname=$_pkgname-hg
 pkgrel=1
-pkgver=1
+pkgver=r88.cb171c8e78b9
 pkgdesc="A purple (pidgin, finch, ...) plugin for RocketChat services"
+depends=( "libpurple" "json-glib" "zlib" "discount>=2.1.7")
 url="https://bitbucket.org/EionRobb/purple-rocketchat"
 arch=('i686' 'x86_64')
-license=('GNU')
-provides=('purple-rocketchat')
-conflicts=('purple-rocketchat')
-source=('https://bitbucket.org/EionRobb/purple-rocketchat/get/22b606290368.zip')
+license=('GPL3')
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=('hg+https://bitbucket.org/EionRobb/purple-rocketchat')
 md5sums=('SKIP')
 
 pkgver() {
-   echo 1
+  cd $_pkgname
+  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 
-depends=( "libpurple" "json-glib" "zlib" "discount>=2.1.7")
 
 build() {
-   cd EionRobb-purple-rocketchat-22b606290368
+   cd $_pkgname
    make
 }
 
 package() {
-   cd EionRobb-purple-rocketchat-22b606290368
+   cd $_pkgname
    make DESTDIR="$pkgdir/" install
 }
