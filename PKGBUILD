@@ -14,7 +14,7 @@ _revert=1
 
 pkgname=mutter-781835-workaround
 pkgver=3.32.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -59,6 +59,14 @@ prepare() {
   # cogl-winsys-glx: Fix frame notification race/leak [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/216
   git apply -3 ../216.patch
+}
+
+build() {
+  arch-meson $pkgname build \
+   -D egl_device=true \
+   -D wayland_eglstream=true \
+   -D installed_tests=false
+  ninja -C build
 }
 
 : ' not working atm
