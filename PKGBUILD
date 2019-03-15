@@ -12,6 +12,7 @@ pkgrel=1
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git)
 sha256sums=('SKIP')
 depends=('blas' 'lapack')
+makedepends=('python' 'python2' 'python-numpy' 'python2-numpy' 'swig')
 
 pkgver() {
   cd "${_pkgname}"
@@ -22,13 +23,18 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
   cp -ar python python2
+  sed -i 's/makefile.inc/makefile2.inc/g' python2/Makefile
 }
 
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --with-python=python2
+  mv makefile.inc makefile2.inc
+  ./configure --prefix=/usr --with-python=python
   make
+  make -C python
+  make -C python2
 }
 
 package_faiss-git() {
@@ -41,23 +47,17 @@ package_faiss-git() {
 package_python-faiss-git() {
   provides=('python-faiss')
   conflicts=('python-faiss')
-  depends=('python' 'python-setuptools' 'python-numpy' 'swig')
+  depends=('python' 'python-numpy')
 
-  cd "${srcdir}/${_pkgname}"
-  ./configure --prefix=/usr --with-python=python
-  cd python
-  make cpu
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "${srcdir}/${_pkgname}/python"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
 package_python2-faiss-git() {
   provides=('python2-faiss')
   conflicts=('python2-faiss')
-  depends=('python2' 'python2-setuptools' 'python2-numpy' 'swig')
+  depends=('python2' 'python2-numpy')
 
-  cd "${srcdir}/${_pkgname}"
-  ./configure --prefix=/usr --with-python=python2
-  cd python2
-  make cpu
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  cd "${srcdir}/${_pkgname}/python2"
+  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }

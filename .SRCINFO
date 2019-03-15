@@ -6,6 +6,11 @@ pkgbase = faiss-git
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = python
+	makedepends = python2
+	makedepends = python-numpy
+	makedepends = python2-numpy
+	makedepends = swig
 	depends = blas
 	depends = lapack
 	source = faiss::git+https://github.com/facebookresearch/faiss.git
@@ -17,17 +22,13 @@ pkgname = faiss-git
 
 pkgname = python-faiss-git
 	depends = python
-	depends = python-setuptools
 	depends = python-numpy
-	depends = swig
 	provides = python-faiss
 	conflicts = python-faiss
 
 pkgname = python2-faiss-git
 	depends = python2
-	depends = python2-setuptools
 	depends = python2-numpy
-	depends = swig
 	provides = python2-faiss
 	conflicts = python2-faiss
 
