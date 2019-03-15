@@ -3,7 +3,7 @@
 _plug=finesharp
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r9
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('any')
 url='https://forum.doom9.org/showthread.php?t=166524'
