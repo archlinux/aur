@@ -2,7 +2,7 @@
 
 pkgname=glmark2
 pkgver=2014.03
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenGL (ES) 2.0 benchmark"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/glmark2"
@@ -22,6 +22,7 @@ prepare(){
   cd "$srcdir/$pkgname-$pkgver"
   patch -p1 <../pr24.patch
   patch -p1 <../libpng16.patch
+  sed -i "s|-Werror ||g" wscript
 }
 
 build() {
