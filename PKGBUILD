@@ -3,7 +3,7 @@
 
 pkgname=mesasdk
 pkgdesc="Software development kit for use with the MESA stellar evolution code"
-pkgver=20180822
+pkgver=20190315
 pkgrel=1
 arch=('x86_64')
 url="http://www.astro.wisc.edu/~townsend/static.php?ref=mesasdk"
@@ -11,7 +11,7 @@ provides=('mesasdk')
 depends=('binutils' 'make' 'perl' 'libx11' 'zlib' 'tcsh' 'glibc')
 install=mesasdk.install
 source=("http://www.astro.wisc.edu/~townsend/resource/download/${pkgname}/${pkgname}-x86_64-linux-${pkgver}.tar.gz")
-sha1sums=('c6c56dc0c3d278abdbce4bdc9f9d3ab246b4d3c6')
+sha1sums=('336d84fabb18ce85e8d274238d5e6239a020f3e0')
 options=('!strip')
 
 package() {
