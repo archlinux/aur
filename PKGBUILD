@@ -88,6 +88,7 @@ source=(# mainline kernel patches
         "${_lucjanpath}/${_bfq_sq_mq_path}/${_bfq_sq_mq_patch}"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
         "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
+        "${_lucjanpath}/arch-patches-ports/0001-netfilter-nf_tables-fix-set-double-free-in-abort-pat.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -105,6 +106,7 @@ sha256sums=('5e6427b368880e958c05467967b001426cb00e1c5984f5eaf73ca7ee1d54fc96'
             'b344396974ff65c229764e601ce03fdfa2deedb55bf31b28aaf30d64e12bb1c2'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             'f7cc42c0ea00aec3debc72a62a1f29f9a267bcba3decb5becb47da5d4741ac79'
+            '87be2851493faa5f95cb22d88d7248dee2b103f06520e978a95f63c7612fa3b8'
             'cdd585dc4e6ad714ca9761aa8b4c1d965ae952e74d057a884ef509190e9f5a8a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
