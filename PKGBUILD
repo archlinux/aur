@@ -2,17 +2,19 @@
 
 pkgname=code-server
 pkgver=1.32.0_282
-pkgrel=1
+pkgrel=2
 pkgdesc="Run VS Code on a remote server"
 arch=('x86_64')
 url="https://github.com/codercom/code-server"
 license=(MIT)
-source=(https://github.com/codercom/code-server/releases/download/${pkgver//_/-}/code-server-${pkgver//_/-}-linux-x64.tar.gz)
+_ghtag=${pkgver//_/-}
+_dirname=code-server-${_ghtag}-linux-x64
+source=(https://github.com/codercom/code-server/releases/download/${_ghtag}/${_dirname}.tar.gz)
 sha512sums=(SKIP)
 options=('!strip')
 
 package() {
-  cd "$srcdir/code-server-${pkgver//_/-}-linux-x64"
+  cd "$srcdir"/${_dirname}
 
   install -Dm755 code-server "$pkgdir"/usr/bin/code-server
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
