@@ -1,4 +1,5 @@
-# Maintainer: Joel Shapiro (jshapiro <a> nvidia) and kiendang
+# Maintainer: Joel Shapiro <jshapiro at nvidia dot com>
+# Maintainer: Kien Dang <mail at kien dot ai>
 
 pkgbase=libnvidia-container
 pkgname=(libnvidia-container libnvidia-container-tools)
