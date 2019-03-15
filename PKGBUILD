@@ -1,7 +1,7 @@
 pkgname=anbox-image-gapps
 pkgver=2018.07.19
 _gappsver=20190315
-pkgrel=5
+pkgrel=6
 pkgdesc="Android image for running in Anbox, with Opengapps and houdini"
 arch=('x86_64')
 url="https://anbox.io"
@@ -17,8 +17,8 @@ source+=("https://github.com/opengapps/x86_64/releases/download/${_gappsver}/ope
 source+=("http://dl.android-x86.org/houdini/7_y/houdini.sfs")
 # libhoudini
 source+=("https://github.com/Rprop/libhoudini/raw/master/4.0.8.45720/system/lib/libhoudini.so")
-md5sums=('ce5cbb4dbdf8bdcec72eb6649889f2bf'
-         'cb1e141c14b43a305d9edfd5bbef408b'
+md5sums=('26874452a6521ec2e37400670d438e33'
+		 'ce5cbb4dbdf8bdcec72eb6649889f2bf'
          '7ebf618b1af94a02322d9f2d2610090b'
          '205ef556ceb5f3dbcb9c309773a47fc9')
 noextract=('android_amd64.img'
