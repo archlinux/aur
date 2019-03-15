@@ -1,6 +1,6 @@
 # Maintainer: strahe <u@strahe.com>
 pkgname=nap-bin
-pkgver=0.1.5
+pkgver=0.2.0
 pkgrel=1
 epoch=
 pkgdesc="A fast reverse proxy client for napyy.com"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://o.tc.ink/ddns-nap/$pkgver/nap_linux_amd64.tar.gz")
 noextract=()
-md5sums=("e0ad74e415eae0533fa400221967096c")
+md5sums=("f0b5796f93dec52686c644baa6bdcbb7")
 validpgpkeys=()
 
 package() {
