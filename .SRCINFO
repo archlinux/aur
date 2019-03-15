@@ -1,0 +1,35 @@
+pkgbase = python-corner-git
+	pkgdesc = The Python ensemble sampling toolkit for affine-invariant MCMC
+	pkgver = v2.0.0.r35.g790e427
+	pkgrel = 1
+	url = https://github.com/dfm/corner.py.git
+	arch = any
+	license = MIT
+	checkdepends = python-nose
+	checkdepends = python2-nose
+	makedepends = git
+	makedepends = python
+	makedepends = python2
+	makedepends = python-numpy
+	makedepends = python2-numpy
+	makedepends = python-matplotlib
+	makedepends = python2-matplotlib
+	makedepends = python-scipy
+	makedepends = python2-scipy
+	makedepends = python-pandas
+	makedepends = python2-pandas
+	optdepends = python-pytest
+	optdepends = python2-pytest
+	source = python-corner::git+https://github.com/dfm/corner.py.git
+	md5sums = SKIP
+
+pkgname = python-corner-git
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-scipy
+
+pkgname = python2-corner-git
+	depends = python2-numpy
+	depends = python2-matplotlib
+	depends = python2-scipy
+
