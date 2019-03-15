@@ -1,4 +1,5 @@
-# Maintainer: kiendang and Joel Shapiro (jshapiro <a> nvidia)
+# Maintainer: Kien Dang <mail at kien dot ai>
+# Maintainer: Joel Shapiro <jshapiro at nvidia dot com>
 
 pkgname=nvidia-container-runtime-bin
 _pkgname=nvidia-container-runtime
