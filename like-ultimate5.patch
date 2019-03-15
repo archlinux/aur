@@ -1,29 +1,29 @@
-diff --color -U 7 -r -Z -B include/freetype/config/ftoption.h include/freetype/config/ftoption.h
---- include/freetype/config/ftoption.h	2018-01-03 19:00:18.000000000 +0100
-+++ include/freetype/config/ftoption.h	2018-01-12 21:03:10.576887258 +0100
-@@ -114,15 +114,15 @@
-   /*                                                                       */
-   /* Note that this feature is covered by several Microsoft patents        */
-   /* and should not be activated in any default build of the library.      */
-   /* When this macro is not defined, FreeType offers alternative LCD       */
-   /* rendering technology that produces excellent output without LCD       */
-   /* filtering.                                                            */
-   /*                                                                       */
+diff -U 7 -r -Z -B orig/include/freetype/config/ftoption.h mod/include/freetype/config/ftoption.h
+--- orig/include/freetype/config/ftoption.h	2019-02-23 10:09:06.000000000 +0100
++++ mod/include/freetype/config/ftoption.h	2019-03-15 23:15:20.990994130 +0100
+@@ -122,15 +122,15 @@
+    * explicitly set up LCD filtering.
+    *
+    * Note that this feature is covered by several Microsoft patents and
+    * should not be activated in any default build of the library.  When this
+    * macro is not defined, FreeType offers alternative LCD rendering
+    * technology that produces excellent output without LCD filtering.
+    */
 -/* #define FT_CONFIG_OPTION_SUBPIXEL_RENDERING */
-+ #define FT_CONFIG_OPTION_SUBPIXEL_RENDERING
-
-
-   /*************************************************************************/
-   /*                                                                       */
-   /* Many compilers provide a non-ANSI 64-bit data type that can be used   */
-   /* by FreeType to speed up some computations.  However, this will create */
-   /* some problems when compiling the library in strict ANSI mode.         */
-diff --color -U 7 -r -Z -B src/base/ftlcdfil.c src/base/ftlcdfil.c
---- src/base/ftlcdfil.c	2018-01-03 19:00:18.000000000 +0100
-+++ src/base/ftlcdfil.c	2018-01-12 20:58:45.183540775 +0100
-@@ -293,15 +293,15 @@
-
-
++#define FT_CONFIG_OPTION_SUBPIXEL_RENDERING
+ 
+ 
+   /**************************************************************************
+    *
+    * Many compilers provide a non-ANSI 64-bit data type that can be used by
+    * FreeType to speed up some computations.  However, this will create some
+    * problems when compiling the library in strict ANSI mode.
+diff -U 7 -r -Z -B orig/src/base/ftlcdfil.c mod/src/base/ftlcdfil.c
+--- orig/src/base/ftlcdfil.c	2019-02-23 10:06:07.000000000 +0100
++++ mod/src/base/ftlcdfil.c	2019-03-15 23:16:20.003565521 +0100
+@@ -307,15 +307,15 @@
+   /* documentation in ftlcdfil.h */
+ 
    FT_EXPORT_DEF( FT_Error )
    FT_Library_SetLcdFilter( FT_Library    library,
                             FT_LcdFilter  filter )
@@ -33,8 +33,8 @@ diff --color -U 7 -r -Z -B src/base/ftlcdfil.c src/base/ftlcdfil.c
 +                   { 0x1f, 0x47, 0x6B, 0x47, 0x1f };
      static const FT_LcdFiveTapFilter  light_weights =
                     { 0x00, 0x55, 0x56, 0x55, 0x00 };
-
-
+ 
+ 
      if ( !library )
        return FT_THROW( Invalid_Library_Handle );
-
+ 

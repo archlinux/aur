@@ -1,6 +1,6 @@
 pkgbase = freetype2-ultimate5
 	pkgdesc = FreeType patched for effect similar to Infinality's ultimate5 preset.
-	pkgver = 2.9.1
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://www.freetype.org/
 	arch = x86_64
@@ -10,19 +10,19 @@ pkgbase = freetype2-ultimate5
 	depends = bzip2
 	depends = libpng
 	depends = harfbuzz
-	provides = freetype2=2.9.1
+	provides = freetype2=2.10.0
 	provides = libfreetype.so
 	conflicts = freetype2
 	source = like-ultimate5.patch
-	source = upstream_1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Enable-table-validation-modules.patch?h=packages/freetype2&id=72c442c80be19348b3dad3285ad2646a1d91d3f2
-	source = upstream_2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-Enable-infinality-subpixel-hinting.patch?h=packages/freetype2&id=72c442c80be19348b3dad3285ad2646a1d91d3f2
-	source = upstream_3.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Enable-long-PCF-family-names.patch?h=packages/freetype2&id=72c442c80be19348b3dad3285ad2646a1d91d3f2
-	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.9.1.tar.bz2
-	sha1sums = 97253086dd201b7e368e8ee897a0c977b0908c4e
-	sha1sums = d9eb22e5c962923089b0c9fc5491cf28a19bd982
-	sha1sums = d13503902e0404cf3558db76b477f23f9910d06e
-	sha1sums = fc49742fb6c19fe0677e3552bb7c00aac8530265
-	sha1sums = 220c82062171c513e4017c523d196933c9de4a7d
+	source = upstream_1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Enable-table-validation-modules.patch?h=packages/freetype2&id=df0c9a0527d8d4d1f128191c0d3ed454a6f523ab
+	source = upstream_2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-Enable-infinality-subpixel-hinting.patch?h=packages/freetype2&id=df0c9a0527d8d4d1f128191c0d3ed454a6f523ab
+	source = upstream_3.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Enable-long-PCF-family-names.patch?h=packages/freetype2&id=df0c9a0527d8d4d1f128191c0d3ed454a6f523ab
+	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.10.0.tar.bz2
+	sha1sums = 4d111cc93d9a7aca79b4a75ccd069df08aa2ad26
+	sha1sums = 46fd67e6a594f6c2c473b9321ba64913984ba42f
+	sha1sums = 4bf0c0749db09878b918cc404300f0d3e9091607
+	sha1sums = af76172be8135e74391b7ad1b82c2124ae0ad86c
+	sha1sums = f6abf03e0e3189a0de883981c57d3861b5d314f5
 
 pkgname = freetype2-ultimate5
 
