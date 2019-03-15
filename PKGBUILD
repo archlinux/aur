@@ -2,7 +2,7 @@
 
 pkgname=supercollider-git
 _name="supercollider"
-pkgver=3.10.0.r218.g794a842c86
+pkgver=3.10.2.r399.g63783aeca0
 pkgrel=1
 pkgdesc="Environment and programming language for real time audio synthesis and algorithmic composition"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -10,7 +10,7 @@ url="https://supercollider.github.io/"
 license=('GPL3')
 depends=('boost-libs' 'desktop-file-utils' 'fftw' 'jack' 'qt5-svg'
 'qt5-webengine' 'qt5-websockets' 'yaml-cpp')
-makedepends=('boost' 'cmake' 'emacs' 'git' 'qt5-tools')
+makedepends=('boost' 'cmake' 'emacs' 'git' 'link' 'qt5-tools')
 checkdepends=('xorg-server-xvfb')
 optdepends=('emacs: emacs interface'
             'gedit: gedit interface'
@@ -18,14 +18,20 @@ optdepends=('emacs: emacs interface'
 conflicts=('supercollider')
 provides=('supercollider')
 source=("git+https://github.com/${_name}/${_name}.git#branch=develop"
-        "use-system-boost.patch"
-        "git+https://github.com/timblechmann/nova-simd.git"
-        "git+https://github.com/timblechmann/nova-tt.git"
+        "${pkgname}-devendor-ableton-link.patch"
+        "git+https://github.com/ableton/link.git"
+        "git+https://github.com/${_name}/scel.git"
+        "git+https://github.com/${_name}/scvim.git"
         "git+https://github.com/${_name}/hidapi.git"
         "git+https://github.com/${_name}/portaudio.git"
-        "git+https://github.com/${_name}/yaml-cpp.git")
+        "git+https://github.com/${_name}/yaml-cpp.git"
+        "git+https://github.com/timblechmann/nova-simd.git"
+        "git+https://github.com/timblechmann/nova-tt.git")
 sha512sums=('SKIP'
-            '0126a81b410c40bcbfaaaf07ecc8ce292b8eaf5d814eb5ad7c36c76e24b1a39d7b5bd607833b6082f92dd5a9aded7d8360b86a77021ead4a1860f548607e80bf'
+            '8aa14c7bf94b69f0ffa5b6f348544c3df72083d9f39cdf509efee3997e2e93cde2a3a8f6d6a149b3fd431843fec630d22c31c0f0332f2a1fff24c79ca4c16a00'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -40,16 +46,17 @@ pkgver() {
 prepare() {
   cd "${_name}"
   git submodule init
+  git config submodule.editors/sc-el.url "${srcdir}/scel"
+  git config submodule.editors/scvim.url "${srcdir}/scvim"
   git config submodule.external_libraries/nova-simd.url "${srcdir}/nova-simd"
   git config submodule.external_libraries/nova-tt.url "${srcdir}/nova-tt"
   git config submodule.external_libraries/hidapi.url "${srcdir}/hidapi"
   git config submodule.external_libraries/portaudio_sc_org.url "${srcdir}/portaudio"
   git config submodule.external_libraries/portaudio_sc_org.branch "${_name}"
   git config submodule.external_libraries/yaml-cpp.url "${srcdir}/yaml-cpp"
+  git config submodule.external_libraries/link.url "${srcdir}/link"
   git submodule update
-  # make sure system boost is used:
-  # https://github.com/supercollider/supercollider/issues/4096
-  patch -Np1 -i ../use-system-boost.patch
+  patch -Np1 -i ../"${pkgname}-devendor-ableton-link.patch"
   mkdir -p build
 }
 
