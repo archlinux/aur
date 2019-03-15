@@ -9,8 +9,8 @@ pkgdesc="DES WL pipeline code for measuring PSF and shear with shapelets  "
 arch=('i686' 'x86_64')
 url="https://github.com/rmjarvis/deswl_shapelets"
 license=('GPL')
-depends=('atlas-lapack' 'tmv-git' 'ccfits')
-makedepends=('git' 'atlas-lapack' 'tmv-git' 'ccfits') 
+depends=('openblas-lapack' 'tmv-git' 'ccfits')
+makedepends=('git' 'openblas-lapack' 'tmv-git' 'ccfits') 
 source=("${_pkgname}::git+${url}")
 md5sums=('SKIP')
 
