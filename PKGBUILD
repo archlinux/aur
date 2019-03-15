@@ -3,7 +3,7 @@
 _plug=maskdetail
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r10.1f927c8
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://forum.doom9.org/showthread.php?t=171546'
