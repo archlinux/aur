@@ -1,0 +1,15 @@
+pkgbase = python2-musicbrainz2
+	pkgdesc = A client library written in python which provides easy object oriented access to the MusicBrainz database
+	pkgver = 0.7.4
+	pkgrel = 4
+	url = https://musicbrainz.org/doc/python-musicbrainz2
+	arch = any
+	license = BSD
+	depends = python2
+	optdepends = libdiscid: For calculating disc IDs
+	replaces = python-musicbrainz2<=0.7.4-1
+	source = http://ftp.musicbrainz.org/pub/musicbrainz/python-musicbrainz2/python-musicbrainz2-0.7.4.tar.gz
+	md5sums = 40ac802d832deca737cce57235cb23a5
+
+pkgname = python2-musicbrainz2
+
