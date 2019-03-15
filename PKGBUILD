@@ -1,16 +1,16 @@
-# Maintainer: Kien Dang Tran loganeast257@gmail.com
-# Ex-Maintainer: Samantha McVey samantham@posteo.net
-# Based off the official Chromium package, but with a patch to enable VA-API
-# The VA-API patch is taken from the chromium-dev package source
-# Official Arch Linux Chromium package Maintainers and Contributors:
-#
+# Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
+# Contributor: Kien Dang Tran loganeast257@gmail.com
+# Contributor: Samantha McVey samantham@posteo.net
+
+# Based on extra/chromium, but with a patch to enable VA-API
+
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-vaapi
-pkgver=72.0.3626.81
+pkgver=73.0.3683.75
 pkgrel=2
 _launcher_ver=6
 pkgdesc="Chromium with VA-API support to enable hardware acceleration"
@@ -18,34 +18,37 @@ arch=('x86_64')
 url="https://www.chromium.org/Home"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
-         'desktop-file-utils' 'hicolor-icon-theme' 'libva')
-provides=('chromium')
-conflicts=('chromium')
+         'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib' 'libva'
+         'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
              'clang' 'lld' 'gn' 'java-runtime-headless')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
-            'kwallet: for storing passwords in KWallet'
-            'libva-intel-driver: support HW acceleration on Intel graphics cards'
-            'libva-mesa-driver: support HW acceleration on AMD graphics cards'
-            'libva-vdpau-driver-chromium: support HW acceleration on Nvidia graphics cards')
+            'kwallet: for storing passwords in KWallet')
+provides=('chromium')
+conflicts=('chromium')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
+        chromium-drirc-disable-10bpc-color-configs.conf
+        chromium-vaapi.patch
         chromium-system-icu.patch
-        chromium-webrtc-missing-header.patch
+        chromium-color_utils-use-std-sqrt.patch
+        chromium-media-fix-build-with-libstdc++.patch
+        chromium-avoid-log-flooding-in-GLSurfacePresentationHelper.patch
         chromium-widevine.patch
-        chromium-skia-harmony.patch
-        enable-vaapi.patch)
-sha256sums=('dfe89fe389008e6d2098099948d10774989d2f3e8dca6ace78ea4ec636dd8006'
+        chromium-skia-harmony.patch)
+sha256sums=('8304810626c69c296b3262844e20052e7476280b634c525a711a7f6c0e3dd57c'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
+            'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
+            'e87ede45edf39ac19e56ac1ae49c9d1f5f5130e5838bcbb4c3d4fb16e55575c0'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
-            '63cbed7d7af327c17878a2066c303f106ff08636372721845131f7ff13d87b44'
+            'b3b6f5147d519c586cbdaf3b227dd1719676fa3a65edd6f08989087afd287afa'
+            'f51fe91427d8638c5551746d2ec7de99e8059dd76889cfeaee8ca3d8fed62265'
+            'f2b12ccf83a8e0adda4a87ae5c983df5e092ccf1f9a6f2e05799ce4d451dbda1'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
-            '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
-            '561151f381db44908ab5649f3579049e4cbce04cbed76e32d767b156bf83944d')
+            '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -59,7 +62,7 @@ declare -gA _system_libs=(
   [libdrm]=
   [libjpeg]=libjpeg
   #[libpng]=libpng            # https://crbug.com/752403#c10
-  #[libvpx]=libvpx            # needs unreleased libvpx
+  [libvpx]=libvpx
   [libwebp]=libwebp
   [libxml]=libxml2
   [libxslt]=libxslt
@@ -95,21 +98,30 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/libxml_utils.cc
 
+  # https://crbug.com/819294#c88
+  patch -Np1 -i ../chromium-color_utils-use-std-sqrt.patch
+
+  # https://crbug.com/931373
+  patch -d media -Np1 -i ../../chromium-media-fix-build-with-libstdc++.patch
+
+  # https://crbug.com/879929
+  patch -Np1 -i ../chromium-avoid-log-flooding-in-GLSurfacePresentationHelper.patch
+
+  # Enable VAAPI on Linux
+  patch -Np1 -i ../chromium-vaapi.patch
+
   # Load Widevine CDM if available
   patch -Np1 -i ../chromium-widevine.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
 
-  # https://webrtc.googlesource.com/src.git/+/3e70781361ed
-  patch -Np0 -i ../chromium-webrtc-missing-header.patch
-
   # https://bugs.gentoo.org/661880#c21
   patch -Np1 -i ../chromium-system-icu.patch
 
-
   # Remove compiler flags not supported by our system clang
   sed -i \
+    -e '/"-fsplit-lto-unit"/d' \
     -e '/"-Wno-defaulted-function-deleted"/d' \
     build/config/compiler/BUILD.gn
 
@@ -118,9 +130,6 @@ prepare() {
 
   mkdir -p third_party/node/linux/node-linux-x64/bin
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
-
-  msg2 'Applying VA-API patches'
-  patch -Np1 -i ../enable-vaapi.patch
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
@@ -170,12 +179,12 @@ build() {
     'use_custom_libcxx=false'
     'enable_hangout_services_extension=true'
     'enable_widevine=true'
+    'use_vaapi=true'
     'enable_nacl=false'
     'enable_swiftshader=false'
     "google_api_key=\"${_google_api_key}\""
     "google_default_client_id=\"${_google_default_client_id}\""
     "google_default_client_secret=\"${_google_default_client_secret}\""
-    'use_vaapi=true'
   )
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
@@ -207,6 +216,9 @@ package() {
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
   install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
   ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
+
+  install -Dm644 ../chromium-drirc-disable-10bpc-color-configs.conf \
+    "$pkgdir/usr/share/drirc.d/10-$pkgname.conf"
 
   install -Dm644 chrome/installer/linux/common/desktop.template \
     "$pkgdir/usr/share/applications/chromium.desktop"
