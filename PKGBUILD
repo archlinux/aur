@@ -5,14 +5,14 @@
 
 pkgname=chromium
 pkgver=73.0.3683.75
-pkgrel=1
+pkgrel=2
 _launcher_ver=6
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib' 'libva'
+         'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
              'clang' 'lld' 'gn' 'java-runtime-headless')
@@ -20,13 +20,10 @@ optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
-replaces=('chromium-vaapi' 'chromium-vaapi-bin')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        chromium-drirc-disable-10bpc-color-configs.conf
         chromium-system-icu.patch
-        chromium-vaapi.patch
         chromium-color_utils-use-std-sqrt.patch
         chromium-media-fix-build-with-libstdc++.patch
         chromium-avoid-log-flooding-in-GLSurfacePresentationHelper.patch
@@ -34,9 +31,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium-skia-harmony.patch)
 sha256sums=('8304810626c69c296b3262844e20052e7476280b634c525a711a7f6c0e3dd57c'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
-            'e87ede45edf39ac19e56ac1ae49c9d1f5f5130e5838bcbb4c3d4fb16e55575c0'
             'b3b6f5147d519c586cbdaf3b227dd1719676fa3a65edd6f08989087afd287afa'
             'f51fe91427d8638c5551746d2ec7de99e8059dd76889cfeaee8ca3d8fed62265'
             'f2b12ccf83a8e0adda4a87ae5c983df5e092ccf1f9a6f2e05799ce4d451dbda1'
@@ -99,9 +94,6 @@ prepare() {
 
   # https://crbug.com/879929
   patch -Np1 -i ../chromium-avoid-log-flooding-in-GLSurfacePresentationHelper.patch
-
-  # Enable VAAPI on Linux
-  patch -Np1 -i ../chromium-vaapi.patch
 
   # Load Widevine CDM if available
   patch -Np1 -i ../chromium-widevine.patch
@@ -172,7 +164,6 @@ build() {
     'use_custom_libcxx=false'
     'enable_hangout_services_extension=true'
     'enable_widevine=true'
-    'use_vaapi=true'
     'enable_nacl=false'
     'enable_swiftshader=false'
     "google_api_key=\"${_google_api_key}\""
@@ -209,9 +200,6 @@ package() {
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
   install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
   ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
-
-  install -Dm644 ../chromium-drirc-disable-10bpc-color-configs.conf \
-    "$pkgdir/usr/share/drirc.d/10-$pkgname.conf"
 
   install -Dm644 chrome/installer/linux/common/desktop.template \
     "$pkgdir/usr/share/applications/chromium.desktop"
