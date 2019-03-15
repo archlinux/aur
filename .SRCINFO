@@ -1,14 +1,14 @@
 pkgbase = ttf-iosevka-term-ss09
 	pkgdesc = A slender monospace typeface. Shape: Source Code Pro
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://be5invis.github.io/Iosevka/
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = https://github.com/be5invis/Iosevka/releases/download/v2.2.0/iosevka-term-ss09-2.2.0.zip
-	source = https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
+	source = ttf-iosevka-term-ss09-2.2.0-2-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
 	sha256sums = c96963ded9e712dfd97439b81c5bbdc6cdc550d21d1a05b99cb3f989c45ae311
 	sha256sums = ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000
 
