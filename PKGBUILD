@@ -2,8 +2,8 @@
 # Contibutor: Mathieu OTHACEHE <m.othacehe@gmail.com>
 
 pkgname=sencha-cmd-6
-pkgver=6.7.0.37
-pkgrel=2
+pkgver=6.7.0.63
+pkgrel=1
 pkgdesc='Sencha Cmd provides a collection of powerful, time-saving features that work together and in conjunction with the Sencha Ext JS and Sencha Touch frameworks'
 url='https://www.sencha.com/products/extjs/cmd-download/'
 arch=(i686 x86_64)
@@ -13,8 +13,8 @@ provides=(sencha-cmd)
 conflicts=(sencha-cmd sencha-cmd-5)
 source_i686=("http://cdn.sencha.com/cmd/$pkgver/no-jre/SenchaCmd-$pkgver-linux-i386.sh.zip")
 source_x86_64=("http://cdn.sencha.com/cmd/$pkgver/no-jre/SenchaCmd-$pkgver-linux-amd64.sh.zip")
-sha512sums_i686=('67a3b3d1d2217e7a11ec9d18114e22b36822d4a543f585bb88033a32a1405f836f2f0fd16c32e149fa72a44eda2407a9d4fbdf8ff40dcabe0060378e44b62bdd')
-sha512sums_x86_64=('52417cc7b721c376352f96a1077abeb004fc1ff4cba80e91f2439e7d508d8ca32209960a04da6c22f3d2d26dd93b4dbb879c2a38b8226607191975fd8c43ebdf')
+sha512sums_i686=('537716c2f55a380d26a907d8ffa8b45a414bdb0c94faaa441c36c61717c750fb860d4f725d3d7d0be7a5b9378587a148b5c022f10988bd5df6a5b709ce9be51c')
+sha512sums_x86_64=('1fc43ae016b0d38be15f49fd02b2f14d8e605f3ff1c09fb569f991eb665b4ccaaf90132cf7df0751d0c72fc04b10eda8b238d6a6d7002692640653827305cc90')
 
 build() {
 	#tail -c 1397056  SenchaCmd-$pkgver.*-linux-amd64.sh > sfx_archive.tar.gz
