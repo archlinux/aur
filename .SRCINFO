@@ -1,12 +1,12 @@
 pkgbase = virtctl-git
 	pkgdesc = virtctl is a script and framework for libvirt to integrate it with systemd.
-	pkgver = r22.07354f1
-	pkgrel = 6
+	pkgver = r51.42bf776
+	pkgrel = 1
 	url = https://github.com/dehesselle/virtctl
 	arch = any
 	license = MIT
 	depends = libvirt
-	source = virtctl-git::git+https://github.com/dehesselle/virtctl.git#tag=v0.3-rc.1
+	source = virtctl-git::git+https://github.com/dehesselle/virtctl.git#tag=v0.3-rc.2
 	md5sums = SKIP
 
 pkgname = virtctl-git
