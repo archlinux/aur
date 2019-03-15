@@ -1,0 +1,8 @@
+*~
+pkg/
+src/
+plantuml-*.tar.gz
+*.tar.xz
+tests/
+/cmake/
+fftss-*.tar.gz

@@ -1,0 +1,15 @@
+pkgbase = fftss
+	pkgdesc = an open source library for computing the Fast Fourier Transform
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://www.ssisc.org/fftss/index.en.html
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	source = https://www.ssisc.org/fftss/dl/fftss-3.0-20071031.tar.gz
+	source = cmake.tar.gz
+	sha256sums = 5c82f8f918de6b996c2e760c7ba654d429667b9d8649aef3a57d0c72227ee9e8
+	sha256sums = 706a756c0545643ad40ce441b2c0f4bb11d04b80774bc12f297babb3ec6f1845
+
+pkgname = fftss
+
