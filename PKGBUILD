@@ -3,7 +3,7 @@
 _plug=astdr
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=v2.0.gf55e270
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url="https://github.com/dubhater/vapoursynth-${_plug}"
