@@ -1,16 +1,20 @@
 pkgbase = python-cx_oracle-git
 	pkgdesc = Python extension module that allows access to Oracle databases
-	pkgver = 6.1.r19.dbe9e45
+	pkgver = 7.1.2.r0.c1e1659
 	pkgrel = 1
-	url = https://github.com/oracle/python-cx_Oracle
+	url = https://github.com/oracle/python-cx_Oracle.git
 	arch = i686
 	arch = x86_64
 	license = Python
 	checkdepends = python-nose
 	checkdepends = python2-nose
+	makedepends = git
 	makedepends = python
 	makedepends = python2
-	source = python-cx_oracle-git::git+https://github.com/oracle/python-cx_Oracle
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = oracle-instantclient-basic
+	source = python-cx_oracle-git::git+https://github.com/oracle/python-cx_Oracle.git#tag=7.1.2
 	md5sums = SKIP
 
 pkgname = python-cx_oracle-git
