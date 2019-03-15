@@ -1,6 +1,6 @@
 pkgbase = bipscript
 	pkgdesc = A scripting language for interactive music
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = http://www.bipscript.org
 	arch = i686
@@ -17,9 +17,9 @@ pkgbase = bipscript
 	depends = portsmf
 	provides = bipscript
 	conflicts = bipscript
-	source = https://github.com/bipscript/bipscript/archive/v0.4.tar.gz
-	source = bipscript-v0.4.patch
-	md5sums = 73ecad2eca761dbbe40e92ae2484066a
+	source = https://github.com/bipscript/bipscript/archive/v0.5.tar.gz
+	source = bipscript-v0.5.patch
+	md5sums = a870554ac5d50d337979c781c5f7de51
 	md5sums = c775c269b2b654289b93e34858a85699
 
 pkgname = bipscript
