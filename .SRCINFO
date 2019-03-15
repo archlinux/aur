@@ -35,6 +35,8 @@ pkgbase = python-piff-git
 	optdepends = python2-scikit-learn
 	optdepends = python-piff
 	optdepends = python2-piff
+	conflicts = python-piff
+	conflicts = python2-piff
 	source = python-piff-git::git+https://github.com/rmjarvis/Piff.git#tag=v0.2.5
 	md5sums = SKIP
 

@@ -18,6 +18,7 @@ license=('BSD')
 makedepends=('git' 'python' 'libffi' 'python-cffi' 'python-numpy' 'python-scipy' 'python-pyaml' 'python-treecorr-git' 'python-fitsio-git' 'python-lmfit-git' 'python-matplotlib' 'python2' 'python2-cffi' 'python2-numpy' 'python2-scipy' 'python2-pyaml' 'python2-treecorr-git' 'python2-fitsio-git' 'python2-lmfit-git' 'python2-matplotlib' 'python-galsim-git' 'python2-galsim-git' 'python-coord-git' 'python2-coord-git')
 optdepends=('python2-scikit-learn' 'python-piff' 'python2-piff')
 checkdepends=('python-nose' 'python2-nose' 'python-scikit-learn' )
+conflicts=('python-piff' 'python2-piff')
 source=("${pkgbase}::git+${url}#tag=v0.2.5")
 md5sums=('SKIP')
 
@@ -38,13 +39,13 @@ build() {
 	python2 setup.py build
 }
 
-check() {
-	cd "$srcdir"/$pkgbase
-	nosetests -v || warning 'Tests failed'
-
-	cd "$srcdir"/$pkgbase-py2
-	nosetests2 -v || warning 'Tests2 failed'
-}
+#check() {
+#	cd "$srcdir"/$pkgbase
+#	nosetests -v || warning 'Tests failed'
+#
+#	cd "$srcdir"/$pkgbase-py2
+#	nosetests2 -v || warning 'Tests2 failed'
+#}
 
 package_python-piff-git() {
 	  		  depends=('python-cffi' 'python-numpy' 'python-scipy' 'python-pyaml' 'python-treecorr-git' 'python-fitsio-git' 'python-lmfit-git' 'python-matplotlib' 'python-galsim-git' 'python-coord-git')
