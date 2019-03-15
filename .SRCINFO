@@ -1,14 +1,14 @@
 pkgbase = cmeds-git
 	pkgdesc = A minimal C library provided for reading MEDS files
-	pkgver = v0.9.3.r13.339d9bd
+	pkgver = v0.9.6.r1.6e2f537
 	pkgrel = 1
-	url = https://github.com/esheldon/meds
+	url = https://github.com/esheldon/meds.git
 	arch = x86_64
 	arch = i686
 	license = GPL3
 	makedepends = git
 	depends = cfitsio
-	source = cmeds::git+https://github.com/esheldon/meds
+	source = cmeds::git+https://github.com/esheldon/meds.git
 	md5sums = SKIP
 
 pkgname = cmeds-git
