@@ -3,7 +3,7 @@
 
 pkgname=freerdp-git
 pkgdesc='Free RDP client - git checkout'
-pkgver=2.0.0.rc2.r150.ge90184cc5
+pkgver=2.0.0.rc4.r435.g88b7859c8
 pkgrel=1
 depends=('openssl' 'libxcursor' 'libcups' 'alsa-lib' 'libxext' 'libxdamage'
          'ffmpeg' 'libxkbfile' 'libxinerama' 'libxv' 'openh264')
