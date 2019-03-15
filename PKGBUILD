@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/codercom/code-server"
 license=(MIT)
 source=(https://github.com/codercom/code-server/releases/download/${pkgver//_/-}/code-server-${pkgver//_/-}-linux-x64.tar.gz)
-sha512sums=('e4f255ffbb8b1ba6043e6d2b53ded6587c86ae9b80f9b78ee7ba9bd76a6889793650982ca2240e1553490063d504b16b36015f6b042fb58f3685058776027959')
+sha512sums=(SKIP)
 options=('!strip')
 
 package() {
