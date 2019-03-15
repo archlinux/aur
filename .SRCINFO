@@ -8,15 +8,12 @@ pkgbase = font-manager-git
 	license = GPL
 	makedepends = git
 	makedepends = gnome-common
-	makedepends = intltool
 	makedepends = yelp-tools
 	makedepends = gobject-introspection
 	makedepends = vala
-	depends = libgee
 	depends = libxml2
 	depends = sqlite
-	depends = gucharmap
-	depends = file-roller
+	optdepends = file-roller
 	provides = font-manager
 	conflicts = font-manager
 	source = font-manager-git::git://github.com/FontManager/master.git#branch=master

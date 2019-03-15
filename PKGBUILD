@@ -12,8 +12,9 @@ pkgdesc='A simple font management application for GTK+ Desktop Environments'
 url='http://fontmanager.github.io'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('libgee' 'libxml2' 'sqlite' 'gucharmap' 'file-roller')
-makedepends=('git' 'gnome-common' 'intltool' 'yelp-tools' 'gobject-introspection' 'vala')
+depends=('libxml2' 'sqlite')
+optdepends=('file-roller')
+makedepends=('git' 'gnome-common' 'yelp-tools' 'gobject-introspection' 'vala')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git://github.com/FontManager/master.git#branch=$_branch")
