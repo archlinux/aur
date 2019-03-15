@@ -3,7 +3,7 @@
 _plug=mfunc
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r33.6472770
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/MonoS/MonoS-VS-Func'
