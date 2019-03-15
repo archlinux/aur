@@ -1,0 +1,19 @@
+pkgbase = libarib25
+	pkgdesc = ARIB STD-B25 library for Linux.
+	pkgver = 0.2.5_20190204
+	pkgrel = 1
+	url = https://github.com/stz2012/libarib25
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	depends = pcsclite
+	provides = libarib25
+	conflicts = libarib25-git
+	source = https://github.com/stz2012/libarib25/archive/v0.2.5-20190204.tar.gz
+	md5sums = 7aef479af038a72d51e838b46ddfb6b1
+
+pkgname = libarib25
+
