@@ -1,7 +1,7 @@
 pkgbase = goploader-server
 	pkgdesc = Easy file sharing with server-side encryption, curl/httpie/wget compliant
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gpldr.in
 	arch = x86_64
 	license = MIT

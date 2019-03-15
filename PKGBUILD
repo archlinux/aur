@@ -2,7 +2,7 @@
 pkgname=goploader-server
 _pkgname=goploader
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy file sharing with server-side encryption, curl/httpie/wget compliant"
 arch=("x86_64")
 depends=()
@@ -33,7 +33,7 @@ build() {
 package() {
 	install -Dm644 "$pkgname.sysusers"  "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 	
-	install -Dm755 "src/github.com/Depado/$_pkgname/server/server"  "$pkgdir/usr/bin/$_pkgname"
+	install -Dm755 "src/github.com/Depado/$_pkgname/server/server"  "$pkgdir/usr/bin/$_pkgname"d
 	
 	install -Dm644 "src/github.com/Depado/$_pkgname/server/examples/conf.yml.example"  "$pkgdir/etc/$_pkgname/conf.yml"
 	sed -i  "s@/up@/var/lib/$_pkgname@" "$pkgdir/etc/$_pkgname/conf.yml"
@@ -41,7 +41,7 @@ package() {
 	install -Dm644 "src/github.com/Depado/$_pkgname/README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
 	
 	install -Dm644 "src/github.com/Depado/$_pkgname/server/examples/systemd/$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
-	sed -i  "s@WorkingDirectory=/data/goploader-server@@;s@www-data@goploader@;s@/data/goploader-server/server@/usr/bin/$_pkgname -c /etc/$_pkgname/conf.yml@g" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+	sed -i  "s@WorkingDirectory=/data/goploader-server@@;s@www-data@goploader@;s@/data/goploader-server/server@/usr/bin/${_pkgname}d -c /etc/${_pkgname}/conf.yml@g" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
 	
 	install -Dm644 "src/github.com/Depado/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
