@@ -1,11 +1,12 @@
 _basename=tridactyl
 pkgname=$_basename-native-git
-pkgver=1.14.3.r0.g55aadcb
+pkgver=1.14.8.r142.g618f7f6
 pkgrel=1
 url=https://github.com/tridactyl/tridactyl
 pkgdesc="Tridactyl native messaging host application for Firefox, Chromium, Chrome, Vivaldi"
 license=(GPL2)
 depends=(python)
+makedepends=(git)
 arch=(i686 x86_64)
 source=(git+https://github.com/tridactyl/tridactyl.git)
 md5sums=('SKIP')
