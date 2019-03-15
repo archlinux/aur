@@ -2,7 +2,7 @@
 pkgname=pobshare-git
 pkgver=0.1
 pkgrel=1
-pkgdesc="Pobshare is A simple gui for share files. "
+pkgdesc="A simple gui for share files. "
 arch=('any')
 url="https://github.com/pobfdm/pobshare.git"
 license=('GPL')
