@@ -1,14 +1,14 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=code-server
-pkgver=1.32.0_245
-pkgrel=6
+pkgver=1.32.0_275
+pkgrel=0
 pkgdesc="Run VS Code on a remote server"
 arch=('x86_64')
 url="https://github.com/codercom/code-server"
 license=(MIT)
 source=(https://github.com/codercom/code-server/releases/download/${pkgver//_/-}/code-server-${pkgver//_/-}-linux-x64.tar.gz)
-sha512sums=('dff9e1288a71f3f295f6d767665214487a33223548f4cde4b04acf701b8154fac827d29ceaefe9182ed020afe758d7592d29755d1960641832afb08ad0b2c3ee')
+sha512sums=('e4f255ffbb8b1ba6043e6d2b53ded6587c86ae9b80f9b78ee7ba9bd76a6889793650982ca2240e1553490063d504b16b36015f6b042fb58f3685058776027959')
 options=('!strip')
 
 package() {
