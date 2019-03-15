@@ -1,0 +1,32 @@
+From 29c76d50b90fd7b9494c61b0f028287580172940 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@archlinux.org>
+Date: Wed, 15 Aug 2018 22:37:12 -0400
+Subject: [PATCH] setup: don't setup_requires on things used to run development
+ tasks
+
+It's not actually needed for setup.py, and is only used for:
+- `invoke release.bump-version`
+- `invoke release.tag-version`
+
+Including it in setup_requires is just something which ends up being
+downloaded from PyPI as an egg, when doing possibly offline distro
+packaging.
+---
+ setup.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 7c87a2d6..179359f0 100644
+--- a/setup.py
++++ b/setup.py
+@@ -130,7 +130,6 @@ setup(
+         ],
+     },
+     python_requires=">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*",
+-    setup_requires=["invoke", "parver", ],
+     install_requires=required,
+     extras_require={
+         "test": ["pytest<4.0", "pytest-tap", "pytest-xdist", "flaky", "mock"],
+-- 
+2.18.0
+

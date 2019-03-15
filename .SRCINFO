@@ -1,0 +1,23 @@
+pkgbase = python-pipenv-git
+	pkgdesc = Sacred Marriage of Pipfile, Pip, & Virtualenv.
+	pkgver = v2018.11.26.r218.gd5e446ee
+	pkgrel = 1
+	url = https://docs.pipenv.org
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	replaces = python-pipenv
+	source = python-pipenv::git+https://github.com/pypa/pipenv.git
+	source = 0001-setup-don-t-setup_requires-on-things-used-to-run-dev.patch
+	sha256sums = SKIP
+	sha256sums = 50c9482911eb7d12bdce45b5e5a44efd4223d3d4a908c42b265d04ab58064e1f
+
+pkgname = python-pipenv-git
+	depends = python
+	depends = python-pip
+	depends = python-pew
+	depends = python-virtualenv
+	depends = python-setuptools
+	depends = python-virtualenv-clone
+	depends = python-certifi
+
