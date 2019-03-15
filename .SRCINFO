@@ -5,6 +5,7 @@ pkgbase = k3s-bin
 	url = https://k3s.io
 	arch = x86_64
 	license = Apache
+	conflicts = k3s-git
 	source = k3s-0.2.0::https://github.com/rancher/k3s/releases/download/v0.2.0/k3s
 	source = k3s.service
 	sha256sums = a77f1830856ea4fb136f22cc930ab2eaf7635c1563089932630b4d2521a9fe31

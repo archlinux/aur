@@ -7,6 +7,7 @@ pkgdesc="Lightweight Kubernetes"
 url="https://k3s.io"
 license=('Apache')
 arch=('x86_64')
+conflicts=('k3s-git')
 
 source=(
   "k3s-${pkgver}::https://github.com/rancher/k3s/releases/download/v${pkgver}/k3s"
