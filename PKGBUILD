@@ -14,6 +14,8 @@ pkgrel=1
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git)
 sha256sums=('SKIP')
 depends=('blas' 'lapack' 'cuda')
+makedepends=('python' 'python2' 'python-numpy' 'python2-numpy' 'swig' 'python-setuptools' 'python2-setuptools')
+
 
 pkgver() {
   cd "${_pkgname}"
@@ -24,19 +26,33 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
   cp -ar python python2
+  sed -i 's/makefile.inc/makefile2.inc/g' python2/Makefile
 }
 
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  ./configure --prefix=/usr --with-cuda=/opt/cuda
+  ./configure --prefix=/usr --with-cuda=/opt/cuda --with-python=python2
   if ! [ -z "$_GPU_TARGET" ]
   then
      sed -i "s/compute_[0-9][0-9]/compute_${_GPU_TARGET}/g" makefile.inc
      sed -i '$!N; /^\(.*\)\n\1$/!P; D' makefile.inc
   fi
-  make
-  make -C gpu
+  mv makefile.inc makefile2.inc
+  ./configure --prefix=/usr --with-cuda=/opt/cuda --with-python=python
+  if ! [ -z "$_GPU_TARGET" ]
+  then
+     sed -i "s/compute_[0-9][0-9]/compute_${_GPU_TARGET}/g" makefile.inc
+     sed -i '$!N; /^\(.*\)\n\1$/!P; D' makefile.inc
+  fi
+  make 			# build faiss
+  make -C gpu 		# build gpu part
+  make -C python cpu	# build cpu python
+  make -C python gpu 	# build gpu python
+  make -C python build 	# build python package
+  make -C python2 cpu	# build cpu python2
+  make -C python2 gpu 	# build gpu python2
+  make -C python2 build	# build python2 package
 }
 
 package_faiss-cuda-git() {
@@ -50,35 +66,17 @@ package_faiss-cuda-git() {
 package_python-faiss-cuda-git() {
   provides=('python-faiss')
   conflicts=('python-faiss')
-  depends=('python' 'python-setuptools' 'python-numpy' 'swig')
+  depends=('python' 'python-numpy')
 
-  cd "${srcdir}/${_pkgname}"
-  ./configure --prefix=/usr --with-python=python --with-cuda=/opt/cuda
-  if ! [ -z "$_GPU_TARGET" ]
-  then
-     sed -i "s/compute_[0-9][0-9]/compute_${_GPU_TARGET}/g" makefile.inc
-     sed -i '$!N; /^\(.*\)\n\1$/!P; D' makefile.inc
-  fi
-  cd python
-  make cpu
-  make gpu
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "${srcdir}/${_pkgname}/python"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
 package_python2-faiss-cuda-git() {
   provides=('python2-faiss')
   conflicts=('python2-faiss')
-  depends=('python2' 'python2-setuptools' 'python2-numpy' 'swig')
+  depends=('python2' 'python2-numpy')
 
-  cd "${srcdir}/${_pkgname}"
-  ./configure --prefix=/usr --with-python=python2 --with-cuda=/opt/cuda
-  if ! [ -z "$_GPU_TARGET" ]
-  then
-     sed -i "s/compute_[0-9][0-9]/compute_${_GPU_TARGET}/g" makefile.inc
-     sed -i '$!N; /^\(.*\)\n\1$/!P; D' makefile.inc
-  fi
-  cd python2
-  make cpu
-  make gpu
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  cd "${srcdir}/${_pkgname}/python2"
+  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }

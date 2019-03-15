@@ -6,6 +6,13 @@ pkgbase = faiss-cuda-git
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = python
+	makedepends = python2
+	makedepends = python-numpy
+	makedepends = python2-numpy
+	makedepends = swig
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	depends = blas
 	depends = lapack
 	depends = cuda
@@ -18,17 +25,13 @@ pkgname = faiss-cuda-git
 
 pkgname = python-faiss-cuda-git
 	depends = python
-	depends = python-setuptools
 	depends = python-numpy
-	depends = swig
 	provides = python-faiss
 	conflicts = python-faiss
 
 pkgname = python2-faiss-cuda-git
 	depends = python2
-	depends = python2-setuptools
 	depends = python2-numpy
-	depends = swig
 	provides = python2-faiss
 	conflicts = python2-faiss
 
