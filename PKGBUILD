@@ -4,15 +4,16 @@
 pkgname=tvheadend
 
 pkgver=4.2.8
-pkgrel=2
+pkgrel=3
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://tvheadend.org/projects/tvheadend"
 license=('GPL3')
-depends=('avahi' 'ffmpeg' 'uriparser' 'openssl' 'tar' 'libavresample.so')
+depends=('avahi' 'ffmpeg' 'uriparser' 'openssl' 'tar')
 makedepends=('git' 'wget' 'python')
 optdepends=('xmltv: For an alternative source of programme listings'
 	    'libiconv: For conversion of character encodings'
+        'libavresample.so: For use of libav (i.e. for transcoding)'
 )
 provides=('tvheadend')
 conflicts=('tvheadend-git')
@@ -30,7 +31,15 @@ prepare() {
     # Patch tvheadend.service for Arch Linux
     patch -p1 -i "${srcdir}/tvheadend-service.patch"
 
-    CFLAGS="${CFLAGS} -Wno-error=stringop-truncation"
+    # detect libavresample and prepare for using it
+    uselibav=""
+    if [ -f /usr/include/libavresample/avresample.h ]; then
+        echo "libavresample found, enabling use of libav!"
+        CFLAGS="${CFLAGS} -Wno-error=stringop-truncation"
+    else
+        echo "libavresample not found, disabling use of libav! Please install libavresample to enable libav (i.e. for transcoding)."
+        uselibav="--disable-libav"
+    fi
 
     ./configure --prefix=/usr --python=python3 \
         --disable-ffmpeg_static \
@@ -39,7 +48,8 @@ prepare() {
         --disable-libvpx_static \
         --disable-libtheora_static \
         --disable-libvorbis_static \
-        --disable-libfdkaac_static
+        --disable-libfdkaac_static \
+        ${uselibav}
 }
 
 build() {
