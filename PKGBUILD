@@ -3,7 +3,7 @@
 _plug=oyster
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r137.54fe6c3
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://forum.doom9.org/showthread.php?t=173470'
