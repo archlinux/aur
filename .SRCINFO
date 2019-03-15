@@ -1,6 +1,6 @@
 pkgbase = mutter-781835-workaround
 	pkgdesc = A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included.
-	pkgver = 3.30.2+7
+	pkgver = 3.32.0
 	pkgrel = 15
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -27,19 +27,11 @@ pkgbase = mutter-781835-workaround
 	depends = gnome-shell
 	provides = mutter
 	conflicts = mutter
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=bcd6103c44ff74ebffd1737b8e0f3a952b83bd54
+	source = mutter-781835-workaround::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=efb1ee97308653a28ed4448b0c405e6faf2c4f40
 	source = 216.patch
-	source = 318.patch
-	source = 365.patch
-	source = https://gitlab.gnome.org/GNOME/mutter/merge_requests/347.patch
-	source = startup-notification.patch
 	source = revert.patch
 	sha256sums = SKIP
-	sha256sums = 1ae59343f3f5838babdfe1400962bb315d8b49189deb05bb516966b922cd26a5
-	sha256sums = d4dcffa9c407e60e321670caaa44dcd6e2bfda7221d73ec4145a985c825a43b3
-	sha256sums = a0c86a5770e34973e074dd542dd1c4abb3b7e45b7a429a8aa6a7d1e73df39796
-	sha256sums = 1343ed3c21ca7ab4f179b864eae4b915b910406c3eb8259399973c29822f751c
-	sha256sums = 00d5e77c94e83e1987cc443ed7c47303aa33367ce912b2f665bcd34f88890a17
+	sha256sums = ed4f3cf738a3cffdf8a6e1a352bf24d74078c3b26fb9262c5746e0d95b9df756
 	sha256sums = 2d2e305e0a6cca087bb8164f81bdc0ae7a5ca8e9c13c81d7fd5252eb3563fc09
 
 pkgname = mutter-781835-workaround

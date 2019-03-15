@@ -1,4 +1,4 @@
-From ab03f010df7b78854433093030f08a81c059aa26 Mon Sep 17 00:00:00 2001
+From 6d8d73beeef3a618c553e89b0b3e532ec3654a30 Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Mon, 23 Jul 2018 16:28:56 +0800
 Subject: [PATCH] cogl-winsys-glx: Fix frame notification race/leak
@@ -8,26 +8,29 @@ handler had flushed the first then one of them would be forgotten.
 It would stay queued forever and never emitted as a notification.
 
 This could happen repeatedly causing a slow leak. But worse still,
-clutter-stage-cogl would then have pending_swaps permanently stuck above
-zero preventing the presentation timing logic from being used.
+`clutter-stage-cogl` would then have `pending_swaps` permanently stuck
+above zero preventing the presentation timing logic from being used.
 
-The problem was that CoglBool can only count to one pending notification,
-so we just change that to an integer and count properly.
+The problem is that a boolean can only count to one, but in some cases
+(triple buffering, whether intentional or accidental #334) we need it to
+count to two. So just change booleans to integers and count properly.
+
+https://gitlab.gnome.org/GNOME/mutter/merge_requests/216
 ---
  cogl/cogl/winsys/cogl-winsys-glx.c | 58 +++++++++++++++---------------
  1 file changed, 29 insertions(+), 29 deletions(-)
 
 diff --git a/cogl/cogl/winsys/cogl-winsys-glx.c b/cogl/cogl/winsys/cogl-winsys-glx.c
-index 012c712bd..2cf6e95fc 100644
+index 2623d02c6..235cfe81f 100644
 --- a/cogl/cogl/winsys/cogl-winsys-glx.c
 +++ b/cogl/cogl/winsys/cogl-winsys-glx.c
 @@ -99,9 +99,9 @@ typedef struct _CoglOnscreenGLX
    CoglOnscreenXlib _parent;
    GLXDrawable glxwin;
    uint32_t last_swap_vsync_counter;
--  CoglBool pending_sync_notify;
--  CoglBool pending_complete_notify;
--  CoglBool pending_resize_notify;
+-  gboolean pending_sync_notify;
+-  gboolean pending_complete_notify;
+-  gboolean pending_resize_notify;
 +  uint32_t pending_sync_notify;
 +  uint32_t pending_complete_notify;
 +  uint32_t pending_resize_notify;
@@ -38,8 +41,8 @@ index 012c712bd..2cf6e95fc 100644
      {
        CoglOnscreen *onscreen = COGL_ONSCREEN (framebuffer);
        CoglOnscreenGLX *glx_onscreen = onscreen->winsys;
--      CoglBool pending_sync_notify = glx_onscreen->pending_sync_notify;
--      CoglBool pending_complete_notify = glx_onscreen->pending_complete_notify;
+-      gboolean pending_sync_notify = glx_onscreen->pending_sync_notify;
+-      gboolean pending_complete_notify = glx_onscreen->pending_complete_notify;
  
 -      /* If swap_region is called then notifying the sync event could
 -       * potentially immediately queue a subsequent pending notify so
