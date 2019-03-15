@@ -12,7 +12,7 @@ pkgrel=1
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git)
 sha256sums=('SKIP')
 depends=('blas' 'lapack')
-makedepends=('python' 'python2' 'python-numpy' 'python2-numpy' 'swig')
+makedepends=('python' 'python2' 'python-numpy' 'python2-numpy' 'swig' 'python-setuptools' 'python2-setuptools')
 
 pkgver() {
   cd "${_pkgname}"
