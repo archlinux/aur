@@ -3,7 +3,7 @@
 _plug=colorfade
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r9.bed42cc
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('any')
 url='https://github.com/tormaid/colorfade'
