@@ -1,34 +1,16 @@
 # Maintainer: Fabio Di Matteo <pobfdm@gmail.com>
-pkgname=pobshare
+pkgname=pobshare-git
 pkgver=0.1
 pkgrel=1
-epoch=
 pkgdesc="Pobshare is A simple gui for share files. "
 arch=('any')
-url="https://github.com/pobfdm/pobshare"
+url="https://github.com/pobfdm/pobshare.git"
 license=('GPL')
-groups=('Utility')
 depends=('python-wxpython' 'python-pyftpdlib')
-makedepends=('')
-checkdepends=()
-#optdepends=('')
-provides=('pobshare')
 conflicts=('pobshare')
-replaces=()
-backup=()
-#options=( '')
-install=
-changelog=
-#source=($pkgname-$pkgver.tar.gz)
-noextract=()
 source=(https://github.com/pobfdm/pobshare/archive/master.zip)
 md5sums=('SKIP') #generate with 'makepkg -g'
 
-
-build() {
-  echo "Nothing to build..."
-  
-}
 
 
 package() {
