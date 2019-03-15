@@ -1,6 +1,6 @@
-# Maintainer: Steef Hegeman <steefhegeman@hotmail.com>
+# Maintainer: Eli W. Hunter <hunter.eli.w@gmail.com>
+# Contributor: Steef Hegeman <steefhegeman@hotmail.com>
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
-# Contributor: Eli W. Hunter <hunter.eli.w@gmail.com>
 
 pkgname=ttf-typicons
 pkgver=2.0.9
