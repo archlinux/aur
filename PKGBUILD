@@ -3,7 +3,7 @@
 _plug=warpsharpsupport
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=R1.0.g42f3b5e
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/myrsloik/WarpSharpSupport.git'
