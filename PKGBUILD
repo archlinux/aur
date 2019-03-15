@@ -3,7 +3,7 @@
 pkgname=bemenu-dmenu
 pkgver=1
 pkgrel=1
-pkgdesc="Symlink for using bemenu as a drop-in replacement to dmenu"
+pkgdesc="Symlink for using bemenu (native wayland support) as a drop-in replacement to dmenu"
 arch=('any')
 url="https://github.com/Cloudef/bemenu"
 license=('MIT')
