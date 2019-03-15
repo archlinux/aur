@@ -3,7 +3,7 @@
 _plug=resamplehq
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=v2.0.0.0.gb6ab680
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/4re/resamplehq'
