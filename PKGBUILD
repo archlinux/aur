@@ -2,7 +2,7 @@
 pkgname=cygnus
 pkgver=1.3.4
 pkgrel=1
-pkgdesc="RSS reader"
+pkgdesc="Effortless RSS reader."
 arch=('x86_64')
 md5sums=('7652f1ce6abbd8362241c10dfe358bb1')
 url="https://github.com/blooser/cygnus"
