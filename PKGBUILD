@@ -1,5 +1,5 @@
 # Maintainer: Aniket-Pradhan aniket17133@iiitd.ac.in
-# Owner: User Cont user-cont-team@redhat.com
+# Owner: Userspace Containerization team at Red Hat user-cont-team@redhat.com
 
 pkgname=release-bot
 pkgver=0.6.1
