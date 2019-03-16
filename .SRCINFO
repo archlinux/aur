@@ -8,9 +8,9 @@ pkgbase = dcpomatic
 	makedepends = python2
 	makedepends = boost>=1.66.0
 	depends = pangomm>=1.4
-	depends = libsub>=1.4.2
+	depends = libsub>=1.4.4
 	depends = libcxml>=0.16.1
-	depends = libdcp>=1.6.4
+	depends = libdcp>=1.6.5
 	depends = ffmpeg>=4.0.2
 	depends = glib2
 	depends = imagemagick
