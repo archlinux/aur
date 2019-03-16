@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<k3dml package="k3d" version="0.8.0.7" host="Linux-4.20.12-arch1-1-ARCH;x86_64">
+	<module name="k3d-imagemagick-io.module">
+		<plugins>
+			<plugin name="ImageMagickBitmapImporter" factory_id="4eb70e35 4e654a53 a8e4b07c 4219d946" quality="stable" type="application">
+				<short_description>ImageMagick Formats ( many )</short_description>
+				<categories>
+					<category>Bitmap</category>
+					<category>BitmapImporter</category>
+				</categories>
+				<interfaces>
+					<interface>k3d::ibitmap_importer</interface>
+				</interfaces>
+				<metadata>
+					<pair name="k3d:load-order" value="128"/>
+					<pair name="k3d:mime-types" value="image/bmp image/x-sun-raster"/>
+				</metadata>
+			</plugin>
+		</plugins>
+	</module>
+</k3dml>

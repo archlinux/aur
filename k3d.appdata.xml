@@ -1,0 +1,66 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014 Richard Hughes <richard@hughsie.com> -->
+<!-- Copyright 2019 Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de> -->
+<application>
+  <id type="desktop">k3d.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0-or-later</project_license>
+  <name>K-3D</name>
+  <summary>3D modelling and animation software</summary>
+  <description>
+    <p>
+     K-3D is free-as-in-freedom 3D modeling and animation software.
+     It combines flexible plugins with a visualization pipeline
+     architecture, making K-3D a versatile and powerful tool for artists.
+    </p>
+    <p>
+     K-3D's interface uses your platform's look-and-feel, and it's
+     consistent with the applications you already know.
+     New artists will find K-3D easy to understand, and professionals
+     feel right at home. K-3D is intuitive, consistent, and discoverable.
+    </p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image type="source" width="950" height="741">http://www.k-3d.org/k3d_wiki/images/c/c2/Happy_buddha.png</image>
+    </screenshot>
+  </screenshots>
+  <launchable type="desktop-id">k3d.desktop</launchable>
+  <url type="homepage">http://www.k-3d.org</url>
+  <url type="donation">http://www.k-3d.org/node/4</url>
+  <url type="bugtracker">https://github.com/K-3D/k3d/issues</url>
+  <kudos>
+    <kudo>HiDpiIcon</kudo>
+  </kudos>
+  <categories>
+    <category>Graphics</category>
+    <category>3DGraphics</category>
+    <category>GTK</category>
+  </categories>
+  <provides>
+    <binary>k3d</binary>
+    <binary>k3d-renderframe</binary>
+    <binary>k3d-renderjob</binary>
+    <binary>k3d-sl2xml</binary>
+    <binary>k3d-uuidgen</binary>
+    <library>libk3d-solar-solpos.so.1</library>
+    <library>libk3dsdk-expression.so.1</library>
+    <library>libk3dsdk-half.so.1</library>
+    <library>libk3dsdk-ngui.so.1</library>
+    <library>libk3dsdk-opengl.so.1</library>
+    <library>libk3dsdk-parallel.so.1</library>
+    <library>libk3dsdk-python-arrays.so.1</library>
+    <library>libk3dsdk-python-atk.so.1</library>
+    <library>libk3dsdk-python-b.so.1</library>
+    <library>libk3dsdk-python-const-arrays.so.1</library>
+    <library>libk3dsdk-python-interfaces.so.1</library>
+    <library>libk3dsdk-python-mesh.so.1</library>
+    <library>libk3dsdk-python-primitives.so.1</library>
+    <library>libk3dsdk-python-values.so.1</library>
+    <library>libk3dsdk-python.so.1</library>
+    <library>libk3dsdk-resource.so.1</library>
+    <library>libk3dsdk-sgi-tesselator.so.1</library>
+    <library>libk3dsdk-subdivision-surface.so.1</library>
+    <library>libk3dsdk.so.1</library>
+  </provides>
+</application>
