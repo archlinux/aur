@@ -1,7 +1,7 @@
 # Maintainer: Térence Clastres <t dot clastres at gmail dot com>
 
 pkgname=gnome-shell-extension-gsconnect-git
-pkgver=13.r30.g6c4a883
+pkgver=21.rc2.r2.g77913553
 pkgrel=1
 pkgdesc="KDE Connect implementation with GNOME Shell integration"
 arch=('any')
@@ -10,7 +10,6 @@ license=('GPL')
 groups=()
 depends=('gnome-shell')
 optdepends=(
-  'sshfs: Browse remote files'
   'folks: Contacts integration (Evolution)'
   'libgdata: Contacts integration (GNOME Online Accounts)'
   'python-nautilus: Nautilus integration'
