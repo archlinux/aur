@@ -1,8 +1,8 @@
 pkgbase = tilix-git
-	pkgdesc = A tiling terminal emulator based on GTK+ 3 (git master)
-	pkgver = 1.7.5.r49.aba1c15
+	pkgdesc = A tiling terminal emulator for Linux using GTK+ 3 (git master)
+	pkgver = 1.8.9.r33.c3fd5bfc
 	pkgrel = 1
-	url = http://github.com/gnunn1/tilix
+	url = https://gnunn1.github.io/tilix-web/
 	arch = x86_64
 	arch = i686
 	license = MPL
