@@ -38,7 +38,7 @@ pkgbase = casile-git
 	depends = sile-git>=0.9.5.r1
 	depends = sqlite
 	depends = tex-gyre-fonts
-	depends = texlive-most
+	depends = texlive-core
 	depends = ttf-hack
 	depends = xcftools
 	depends = yarn
