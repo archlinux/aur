@@ -4,13 +4,13 @@
 
 pkgname=slingscold
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A lighter launcher"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/slingscold/"
 license=('GPL3')
 depends=('libunique' 'libgee06' 'gnome-menus2' 'libwnck' 'gtk2' 'cairo')
-makedepends=('cmake' 'vala')
+makedepends=('cmake' 'vala0.26')
 source=("http://ppa.launchpad.net/noobslab/apps/ubuntu/pool/main/s/slingscold/slingscold_1.2.1.7t~NoobsLab.com.tar.gz"
         '0001-Add-missing-lm-dep.patch')
 sha256sums=('363f8b9ac6a4a93b9703066dff0f25b39a45b46d6e856c90f4256e9a26dfd418'
@@ -28,7 +28,7 @@ build() {
   cd "$srcdir"/build
   cmake ../"slingscold_1.2.1" \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr 
   make
 }
 
