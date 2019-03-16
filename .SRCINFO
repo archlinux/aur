@@ -1,0 +1,13 @@
+pkgbase = gitpusher
+	pkgdesc = A simple bash script to make it easier to work with the Github and Gitlab
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://kiahamedi.ir
+	arch = any
+	license = GPL
+	depends = git
+	source = gitpusher-1.0.0.zip::https://github.com/kiahamedi/gitpusher/archive/master.zip
+	md5sums = be5e0840e072ef755d410fff18af107f
+
+pkgname = gitpusher
+
