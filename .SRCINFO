@@ -1,15 +1,15 @@
 pkgbase = nodejs-soccer-go
 	pkgdesc = soccer-go is a node command line application to gather soccer stats and results
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/acifani/soccer-go
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = soccer-go-0.4.0.tgz
-	source = https://registry.npmjs.org/soccer-go/-/soccer-go-0.4.0.tgz
-	sha256sums = 8bc9ba5779bc8175b244cd885a802d7867efbe1ea21b03c3ec97e8a8012ea873
+	noextract = soccer-go-0.5.1.tgz
+	source = https://registry.npmjs.org/soccer-go/-/soccer-go-0.5.1.tgz
+	sha256sums = da0b90ee3906b1cf80b98c1d3c1238e6602ad7ee97a78c9a12d983ac7e2f346e
 
 pkgname = nodejs-soccer-go
 

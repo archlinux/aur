@@ -1,9 +1,9 @@
 # Maintainer: KarlFiabeschi 1984itsnow[at]gmail[dot]com
 
 _npmname=soccer-go
-pkgname=nodejs-soccer-go 
-pkgver=0.4.0
-pkgrel=2
+pkgname=nodejs-soccer-go
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="soccer-go is a node command line application to gather soccer stats and results"
 arch=('any')
 url="https://github.com/acifani/soccer-go"
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=(8bc9ba5779bc8175b244cd885a802d7867efbe1ea21b03c3ec97e8a8012ea873)
+sha256sums=('da0b90ee3906b1cf80b98c1d3c1238e6602ad7ee97a78c9a12d983ac7e2f346e')
 
 package() {
   cd $srcdir
