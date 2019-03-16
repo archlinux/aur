@@ -2,12 +2,12 @@
 
 pkgname='hblock'
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='An adblocker that creates a hosts file from automatically downloaded blacklists'
 arch=('any')
 url='https://github.com/hectorm/hblock'
 license=('MIT')
-sha256sums=('5363ed1aa7c9acb798591949f516d122e8d40100ae87055bfdba937c6c9bf108')
+sha256sums=('2de6856a863e1901d03f6566ed7b425778e65484b7f62c2ebe7c2b2f6fd23363')
 source=("https://github.com/hectorm/${pkgname}/archive/v${pkgver}.tar.gz")
 
 build() {
