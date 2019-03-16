@@ -11,15 +11,15 @@ pkgname=('jre8-openjdk-jetbrains-headless' 'jre8-openjdk-jetbrains' 'jdk8-openjd
 pkgbase=java8-openjdk-jetbrains
 _java_ver=8
 # Found @ https://github.com/JetBrains/jdk8u/releases
-_jdk_update=152
-_jdk_build=1343.12
+_jdk_update=202
+_jdk_build=1483.37
 pkgver=${_java_ver}.u${_jdk_update}.b${_jdk_build}
 _repo_ver=jb${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/JetBrains/jdk8u'
-license=('GPL2')
-makedepends=('java-environment=8' 'cpio' 'unzip' 'zip' 'gcc7'
+license=('custom')
+makedepends=('java-environment=8' 'cpio' 'unzip' 'zip'
              'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib')
 _url_src=https://github.com/JetBrains/jdk8u
 source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
@@ -31,14 +31,14 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         langtools-${_repo_ver}.tar.gz::${_url_src}_langtools/archive/${_repo_ver}.tar.gz
         nashorn-${_repo_ver}.tar.gz::${_url_src}_nashorn/archive/${_repo_ver}.tar.gz)
 
-sha256sums=('1b8b6488c721413c6661366f1159f1be4808f22e226ca954cdfbc4ab40ac2537'
-            'df71286b4a115882bfd1bfd6ccede6456d5c3fa0f4948cd2a868123ca836d437'
-            '5b44e0260d7612e287b6ad03042accd511fad93456d922eaa75993f594f35129'
-            'ebd0a063bf8f3e58d10d046db2092149fae401d181185a7e4f0910296dc9dde7'
-            '4a5ee266e8f6175791b9811aee7c60dccf5f0a9d675e0ccd52132a626ef65f6d'
-            '5a7430e1b065eea7cb757c4a714492152c63728206e8f6df363a3e34b46f4ed1'
-            '01cd7689f59cc9add44336589cbad3eade8b261842cfadbada67f3f15bced7e9'
-            '0b6d22806efb53f600996cf9ec5b60d799ceb4c3f7f9ea3a1f171e419e9f2ecd')
+sha256sums=('d132af8f137c02a3faef8e4a032112a5f727cb0d5b156c631890e82e3ac63dcf'
+            'c77163362c04f03e62c7f97d3dbe95365759229a5b13da76efa6c0251cf6c762'
+            'a67dfa1dce8704d426af4b1039deae915a841f2c4212ee938a88c11631334988'
+            '8c738923146e205d662f973be1fdaace52e0c39e4fef3e986b32a48be6d3ca84'
+            '7fba5b83f2cd2faca73ee65bce3b951a29601f34e9c1eac653ee4af10b79b95f'
+            '21cb5f986236566bfd7555be87b56280d23020bf8e5ad8d4031f0c6a5883356b'
+            '549a808846db98e6746bd4b95fdc8b70483e4baa1e3fc5eaa341dcec2ac65f2a'
+            '4e962e58c989c20d5dc0c3ecd177b361aac132db2fb79dba06c38e9be8c5f777')
 
 case "${CARCH}" in
   'x86_64') _JARCH=amd64 ; _DOC_ARCH=x86_64 ;;
@@ -56,10 +56,8 @@ _nonheadless=(bin/policytool
 
 prepare() {
   cd "${srcdir}/jdk8u-${_repo_ver}"
-
-  for subrepo in corba hotspot jdk jaxws jaxp langtools nashorn
-  do
-    ln -sf ../jdk8u_${subrepo}-${_repo_ver} ${subrepo}
+  for subrepo in corba hotspot jdk jaxws jaxp langtools nashorn; do
+    ln -s ../jdk8u_${subrepo}-${_repo_ver} ${subrepo}
   done
 }
 
@@ -71,10 +69,10 @@ build() {
   unset JAVA_HOME _JAVA_OPTIONS
   # http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=1346
   export MAKEFLAGS=${MAKEFLAGS/-j*}
-  # https://hydra.nixos.org/build/41230444/log
-  export CFLAGS="$CFLAGS -Wno-error=deprecated-declarations"
 
-  export CC=gcc-7 CXX=g++-7
+  # We filter out -O flags so that the optimization of HotSpot is not lowered from O3 to O2
+  export CFLAGS="${CFLAGS//-O2/-O3} ${CPPFLAGS} -Wno-error=deprecated-declarations -Wno-error=stringop-overflow= -Wno-error=return-type -Wno-error=cpp -fno-lifetime-dse -fno-delete-null-pointer-checks"
+  export CXXFLAGS="${CXXFLAGS} ${CPPFLAGS}"
 
   install -d -m 755 "${srcdir}/${_prefix}/"
   sh configure \
@@ -83,18 +81,17 @@ build() {
     --with-build-number="b${_jdk_build}" \
     --with-milestone="fcs" \
     --enable-unlimited-crypto \
-    --with-zlib=system
+    --with-zlib=system \
+    --with-extra-cflags="${CFLAGS}" \
+    --with-extra-cxxflags="${CXXFLAGS}" \
+    --with-extra-ldflags="${LDFLAGS}"
 
-    # TODO OpenJDK does not want last version of giflib (add 'giflib' as dependency once fixed)
-    #--with-giflib=system \
+  # TODO OpenJDK does not want last version of giflib (add 'giflib' as dependency once fixed)
+  #--with-giflib=system \
 
-  # Without 'DEBUG_BINARIES', i686 won't build
-  # http://mail.openjdk.java.net/pipermail/core-libs-dev/2013-July/019203.html
-  make \
-    DEBUG_BINARIES=true
-  # These help to debug builds:
-  # LOG=trace HOTSPOT_BUILD_JOBS=1
-
+  # These help to debug builds: LOG=trace HOTSPOT_BUILD_JOBS=1
+  # Without 'DEBUG_BINARIES', i686 won't build: http://mail.openjdk.java.net/pipermail/core-libs-dev/2013-July/019203.html
+  make
   make docs
 
   # FIXME sadly 'DESTDIR' is not used here!
@@ -114,10 +111,10 @@ build() {
   find . -iname '*.debuginfo' -exec rm {} \;
 }
 
-#check() {
-#  cd "${srcdir}/${pkgname}-${pkgver}"
-#  make -k check
-#}
+check() {
+  cd "${srcdir}/jdk8u-${_repo_ver}"
+  make -k test
+}
 
 package_jre8-openjdk-jetbrains-headless() {
   pkgdesc='OpenJDK Java 8 headless runtime environment (with JetBrains patches)'
@@ -147,7 +144,7 @@ package_jre8-openjdk-jetbrains-headless() {
   cd "${srcdir}/${_imgdir}/jre"
 
   install -d -m 755 "${pkgdir}${_jvmdir}/jre/"
-  cp -a bin lib "${pkgdir}${_jvmdir}/jre"
+  cp -rv --no-preserve=ownership bin lib "${pkgdir}${_jvmdir}/jre"
 
   # Set config files
   mv "${pkgdir}${_jvmdir}"/jre/lib/management/jmxremote.password{.template,}
@@ -162,10 +159,12 @@ package_jre8-openjdk-jetbrains-headless() {
   pushd "${pkgdir}${_jvmdir}/jre/bin"
   install -d -m 755 "${pkgdir}"/usr/share/man/{,ja/}man1/
   for file in *; do
-    install -m 644 "${srcdir}/${_imgdir}/man/man1/${file}.1" \
-      "${pkgdir}/usr/share/man/man1/${file}-${_jdkname}.1"
-    install -m 644 "${srcdir}/${_imgdir}/man/ja/man1/${file}.1" \
-      "${pkgdir}/usr/share/man/ja/man1/${file}-${_jdkname}.1"
+    if [[ -f "${srcdir}/${_imgdir}/man/man1/${file}.1" ]]; then
+      install -m 644 "${srcdir}/${_imgdir}/man/man1/${file}.1" \
+        "${pkgdir}/usr/share/man/man1/${file}-${_jdkname}.1"
+      install -m 644 "${srcdir}/${_imgdir}/man/ja/man1/${file}.1" \
+        "${pkgdir}/usr/share/man/ja/man1/${file}-${_jdkname}.1"
+    fi
   done
   popd
 
@@ -201,7 +200,6 @@ package_jre8-openjdk-jetbrains() {
 
   cd "${srcdir}/${_imgdir}/jre"
 
-  # TODO? Should /usr/lib/jvm/java-8-openjdk/jre/lib/sound.properties belong to jre?
   for f in ${_nonheadless[@]}; do
     install -D ${f} "${pkgdir}${_jvmdir}/jre/${f}"
   done
@@ -261,11 +259,6 @@ package_jdk8-openjdk-jetbrains() {
   # Handling 'java-rmi.cgi' separately
   install -D -m 755 bin/java-rmi.cgi "${pkgdir}${_jvmdir}/bin/java-rmi.cgi"
 
-  # Desktop files.
-  # TODO add these when switching to IcedTea
-  #install -m 644 "${srcdir}/icedtea-${_icedtea_ver}/jconsole.desktop" \
-  #  "${pkgdir}/usr/share/applications"
-
   # link license
   install -d -m 755 "${pkgdir}/usr/share/licenses/"
   ln -sf /usr/share/licenses/${pkgbase} "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -273,18 +266,16 @@ package_jdk8-openjdk-jetbrains() {
 
 package_openjdk8-jetbrains-src() {
   pkgdesc='OpenJDK Java 8 sources (with JetBrains patches)'
-  options=(!strip)
-  arch=('any')
 
   install -D "${srcdir}/${_imgdir}/src.zip" "${pkgdir}${_jvmdir}/src.zip"
 }
 
 package_openjdk8-jetbrains-doc() {
   pkgdesc='OpenJDK Java 8 documentation (with JetBrains patches)'
-  options=(!strip)
-  arch=('any')
 
   install -d -m 755 "${pkgdir}/usr/share/doc/${pkgbase}/"
   cp -r "${srcdir}"/jdk8u-${_repo_ver}/build/linux-${_DOC_ARCH}-normal-server-release/docs/* \
     "${pkgdir}/usr/share/doc/${pkgbase}/"
 }
+
+# vim: ts=2 sw=2 sts=2
