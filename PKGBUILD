@@ -5,7 +5,7 @@
 
 pkgbase='drawpile'
 pkgname=("${pkgbase}"{,'-client','-server'})
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url='http://drawpile.net/'
 license=('GPL3')
 makedepends=('karchive' 'qt5-multimedia' 'qt5-tools' 'qt5-svg' 'cmake' 'extra-cmake-modules')
 source=("http://drawpile.net/files/src/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('11d69427abe60a3c3a7cdbac4252bacbea1bf712d89125306eb0277ec2b0730a')
+sha256sums=('92375a046479952c57ebd6f32bb363b8be9ace53030a196f3746dae86091cf3a')
 
 _cmakeargs+=('-Wno-dev' '-DKIS_TABLET=ON')
 
@@ -25,7 +25,7 @@ build() {
 	mkdir -p 'build'
 	cd 'build'
 
-	cmake .. -DCMAKE_INSTALL_PREFIX='/usr' "${_cmakeargs[@]}"
+	cmake .. -DCMAKE_BUILD_TYPE='Release' -DCMAKE_INSTALL_PREFIX='/usr' "${_cmakeargs[@]}"
 	make
 }
 
