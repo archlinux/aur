@@ -2,8 +2,8 @@
 # Contributor: jfperini <@jfperini>
 
 pkgname=veusz-git
-pkgver=3.0.1.7.g444bf3ff
-pkgrel=3
+pkgver=3.0.1r11.g47ebe97b
+pkgrel=1
 pkgdesc="A scientific plotting and graphing package, designed to create publication-ready Postscript or PDF output."
 url="https://github.com/veusz/veusz"
 arch=('x86_64')
@@ -22,7 +22,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags | tr - .|cut -c7-
+  git describe --tags --long|cut -c7- |sed 's+-+r+'|tr - .
 }
 
 build() {
