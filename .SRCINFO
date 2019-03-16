@@ -1,6 +1,6 @@
 pkgbase = libsepol
 	pkgdesc = SELinux binary policy manipulation library
-	pkgver = 2.8
+	pkgver = 2.9
 	pkgrel = 1
 	url = http://userspace.selinuxproject.org
 	arch = i686
@@ -10,11 +10,11 @@ pkgbase = libsepol
 	license = LGPL2.1
 	makedepends = flex
 	depends = glibc
-	provides = selinux-usr-libsepol=2.8-1
+	provides = selinux-usr-libsepol=2.9-1
 	conflicts = selinux-usr-libsepol
 	options = staticlibs
-	source = https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20180524/libsepol-2.8.tar.gz
-	sha256sums = 3ad6916a8352bef0bad49acc8037a5f5b48c56f94e4cb4e1959ca475fa9d24d6
+	source = https://github.com/SELinuxProject/selinux/releases/download/20190315/libsepol-2.9.tar.gz
+	sha256sums = a34b12b038d121e3e459b1cbaca3c9202e983137819c16baf63658390e3f1d5d
 
 pkgname = libsepol
 
