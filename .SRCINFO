@@ -1,20 +1,19 @@
 pkgbase = libchewing-git
 	pkgdesc = Intelligent Chinese phonetic input method
-	pkgver = 0.5.1.r74.g3df07c9
+	pkgver = 0.5.1.r95.gb082732
 	pkgrel = 1
 	epoch = 1
 	url = http://chewing.im/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = LGPL2.1
+	makedepends = cmake
 	makedepends = git
 	depends = sqlite
-	provides = libchewing=0.5.1.r74.g3df07c9
+	provides = libchewing=0.5.1.r95.gb082732
 	conflicts = libchewing
 	source = git+https://github.com/chewing/libchewing/
-	source = issue219.patch::https://github.com/chewing/libchewing/pull/294.patch
 	md5sums = SKIP
-	md5sums = 22a1d758203218c3f1e264eac77017e5
 
 pkgname = libchewing-git
 
