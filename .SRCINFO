@@ -1,6 +1,6 @@
 pkgbase = bipscript-ide
 	pkgdesc = IDE for the bipscript language
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = http://www.bipscript.org
 	arch = i686
@@ -12,10 +12,10 @@ pkgbase = bipscript-ide
 	depends = qt5-base
 	provides = bipscript-ide
 	conflicts = bipscript-ide
-	source = https://github.com/bipscript/bipscript-ide/archive/v0.4.tar.gz
-	source = bipscript-ide-v0.4.patch
-	md5sums = bbc9fdbf6fc353bb9184343314085636
-	md5sums = 0d66a2efe623b4ef93e1b43f65ad34ae
+	source = https://github.com/bipscript/bipscript-ide/archive/v0.5.tar.gz
+	source = bipscript-ide-v0.5.patch
+	md5sums = 42b50d93e644ecc7d039b54fbebc0ae1
+	md5sums = 846ef29e04748b623443f3264b84ed38
 
 pkgname = bipscript-ide
 

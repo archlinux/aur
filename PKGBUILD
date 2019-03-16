@@ -1,6 +1,6 @@
 # Maintainer: John Hammen <jhammen@j2page.com>
 pkgname=bipscript-ide
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="IDE for the bipscript language"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ provides=("bipscript-ide")
 conflicts=("bipscript-ide")
 source=("https://github.com/bipscript/$pkgname/archive/v$pkgver.tar.gz"
 	"$pkgname-v$pkgver.patch")
-md5sums=('bbc9fdbf6fc353bb9184343314085636'
-         '0d66a2efe623b4ef93e1b43f65ad34ae')
+md5sums=('42b50d93e644ecc7d039b54fbebc0ae1'
+         '846ef29e04748b623443f3264b84ed38')
 
 prepare() {
 	cd "$pkgname-$pkgver"
