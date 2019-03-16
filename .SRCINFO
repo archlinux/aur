@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-hotel-manager
 	pkgdesc = Gnome Shell extension to manage Hotel development servers
-	pkgver = 5
+	pkgver = 6
 	pkgrel = 1
 	url = https://github.com/hardpixel/hotel-manager
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = gnome-shell-extension-hotel-manager
 	depends = curl
 	provides = gnome-shell-extension-hotel-manager
 	conflicts = gnome-shell-extension-hotel-manager-git
-	source = gnome-shell-extension-hotel-manager-5.tar.gz::https://github.com/hardpixel/hotel-manager/archive/v5.tar.gz
-	md5sums = 6196c356a15b485a2f0c34a8a8de0425
+	source = gnome-shell-extension-hotel-manager-6.tar.gz::https://github.com/hardpixel/hotel-manager/archive/v6.tar.gz
+	md5sums = be61e698f7d05d733ac7baa221c1a1eb
 
 pkgname = gnome-shell-extension-hotel-manager
 
