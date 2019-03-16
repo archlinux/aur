@@ -2,7 +2,6 @@
 
 
 pkgname=kcm-colorful-git
-pkgver=0.0.1
 pkgrel=1
 pkgdesc='Make your KDE plasma colorful'
 arch=('x86_64')
@@ -16,6 +15,11 @@ source=(
 )
 
 sha256sums=('SKIP')
+
+pkgver() {
+    cd "$pkgname"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
     cd $srcdir/kcm-colorful
