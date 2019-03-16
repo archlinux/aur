@@ -4,7 +4,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=mcstrans
-pkgver=2.8
+pkgver=2.9
 pkgrel=1
 pkgdesc="SELinux MCS translation daemon"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ url='https://github.com/SELinuxProject/selinux/wiki'
 license=('GPL2')
 groups=('selinux')
 depends=('libcap' 'libselinux>=2.8' 'pcre')
-source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20180524/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ec6ea65660550ed6bbd2a834725ba7526ac53599753d7b95072e4afd4afc14e4')
+source=("https://github.com/SELinuxProject/selinux/releases/download/20190315/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('7eddce6ffefc9a26340f2720ba9afd7d041a31569844842d0199bfe27c5efb19')
 
 build() {
   cd "${pkgname}-${pkgver}"
