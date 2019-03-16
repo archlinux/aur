@@ -5,8 +5,8 @@
 
 pkgbase=selinux-python
 pkgname=(selinux-python selinux-python2)
-pkgver=2.8
-pkgrel=3
+pkgver=2.9
+pkgrel=1
 pkgdesc="SELinux python tools and libraries"
 groups=('selinux')
 arch=('i686' 'x86_64')
@@ -15,15 +15,8 @@ license=('GPL2')
 makedepends=('python2' 'python' 'python-ipy' 'libsemanage>=2.8' 'setools>=4.0.0')
 conflicts=('sepolgen<2.7' 'policycoreutils<2.7')
 provides=("sepolgen=${pkgver}-${pkgrel}")
-source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20180524/${pkgname}-${pkgver}.tar.gz"
-        '0001-python-sepolicy-Update-to-work-with-setools-4.2.0.patch')
-sha256sums=('e69f5e24820cb247a3d881a9c90efba1e64d76af863c82fb81bc3b87ed71e238'
-            'f95c0bb79f86c79abdbc1f3ec3bcb13294f2e10181df15d8ab5a8b54569918f1')
-
-prepare() {
-  cd "${pkgbase}-${pkgver}"
-  patch -p2 -i "$srcdir/0001-python-sepolicy-Update-to-work-with-setools-4.2.0.patch"
-}
+source=("https://github.com/SELinuxProject/selinux/releases/download/20190315/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('3650b5393b0d1790cac66db00e34f059aa91c23cfe3c2559676594e295d75fde')
 
 build() {
   cd "${pkgbase}-${pkgver}"
