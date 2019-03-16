@@ -3,8 +3,8 @@
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 
 pkgname=flightgear-git
-pkgver=2018.4.0r13860.e704d589f
-_pkgver=2018.4.0
+pkgver=2019.2.0r13934.f007dd3ea
+_pkgver=2019.2.0
 pkgrel=1
 pkgdesc="An open-source, multi-platform flight simulator"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('libxmu' 'libxi' 'zlib' 'libxrandr' 'glu' 'glew' 'openal' 'openscenegraph34' 'subversion' 'simgear-git' 'qt5-base' 'qt5-declarative' 'qt5-tools' 'qt5-svg')
 makedepends=('boost' 'cmake' 'mesa' 'sharutils')
 optdepends=('flightgear-data-git')
-provides=('flightgear=2018.4.0')
+provides=('flightgear=2019.2.0')
 conflicts=('flightgear')
 source=("flightgear::git+https://git.code.sf.net/p/flightgear/flightgear#branch=next")
 md5sums=('SKIP')
@@ -33,7 +33,7 @@ build() {
     -DFG_BUILD_TYPE=Release \
     .
   make
-  sed -i 's|Exec=.*|Exec=fgfs --fg-root=/usr/share/flightgear/data|' package/org.flightgear.FlightGear.desktop
+  sed -i 's|Exec=.*|Exec=fgfs --fg-root=/usr/share/flightgear/data --launcher|' package/org.flightgear.FlightGear.desktop
 }
 
 package() {
