@@ -3,8 +3,8 @@
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 
 pkgname=simgear-git
-pkgver=2018.4.0r5124.ed87a0b0
-_pkgver=2018.4.0
+pkgver=2019.2.0r5174.f9643740
+_pkgver=2019.2.0
 pkgrel=1
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="http://home.flightgear.org/"
 license=('GPL')
 depends=('glu' 'glut' 'freealut' 'plib' 'openscenegraph34')
 makedepends=('boost' 'cmake' 'mesa')
-provides=('simgear=2018.4.0')
+provides=('simgear=2019.2.0')
 conflicts=('simgear')
 options=('staticlibs')
 source=("simgear::git+https://git.code.sf.net/p/flightgear/simgear#branch=next")
