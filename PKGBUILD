@@ -14,10 +14,10 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
-pkgver=15.0.2
-_buildver=10952284
+pkgver=15.0.3
+_buildver=12422535
 _pkgver=${pkgver}_${_buildver}
-pkgrel=4
+pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -95,7 +95,7 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  '22675343abd4d88a78399c9af8b271912161d28d58bbb58f0af0804a9957a96a'
+  'abc956af04224401ef772186909bd1955d178369152980dff5eebc6f7b800855'
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
@@ -243,7 +243,6 @@ package() {
   cp -rL \
     vmware-workstation-server/config/etc/vmware/* \
     vmware-workstation-server/etc/vmware/* \
-    "$srcdir"/{bootstrap,config} \
     "$pkgdir/etc/vmware"
 
   cp -r \
@@ -303,6 +302,7 @@ package() {
   install -Dm 644 vmware-vmx/extra/modules.xml "$pkgdir/usr/lib/vmware/modules/modules.xml"
   install -Dm 644 vmware-installer/bootstrap "$pkgdir/etc/vmware-installer/bootstrap"
   install -Dm 644 "$srcdir/vmware-vix-bootstrap" "$pkgdir/etc/vmware-vix/bootstrap"
+  install -Dm 644 "$srcdir"/{bootstrap,config} "$pkgdir/etc/vmware"
   
   rm -r "$pkgdir/usr/lib/vmware/xkeymap" # these files are now provided by vmware-keymaps package
 
