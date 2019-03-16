@@ -2,7 +2,7 @@
 pkgbase="python-anyconfig"
 pkgname=("python-anyconfig" "python2-anyconfig")
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Generic access to configuration files in any formats (to be in the future)'
 url='https://github.com/ssato/python-anyconfig'
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python' 'python-setuptools'
              'python2' 'python2-setuptools')
 checkdepends=('python-tox')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ssato/python-anyconfig/archive/RELEASE_${pkgver}.tar.gz")
-sha256sums=('f6a65fa80c5a8718e9b2aebd23395db4df31aa02e965c9aca6b110c4b1f762c6')
+sha256sums=('7154782890a30d605b050fe439ca18550d0ba1f2afa8a8ba4c76a1c228b05726')
 
 build() {
     cd "${srcdir}/${pkgbase}-RELEASE_${pkgver}"

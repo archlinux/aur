@@ -1,7 +1,7 @@
 pkgbase = python-anyconfig
 	pkgdesc = Generic access to configuration files in any formats (to be in the future)
 	pkgver = 0.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ssato/python-anyconfig
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-anyconfig
 	makedepends = python2
 	makedepends = python2-setuptools
 	source = python-anyconfig-0.9.8.tar.gz::https://github.com/ssato/python-anyconfig/archive/RELEASE_0.9.8.tar.gz
-	sha256sums = f6a65fa80c5a8718e9b2aebd23395db4df31aa02e965c9aca6b110c4b1f762c6
+	sha256sums = 7154782890a30d605b050fe439ca18550d0ba1f2afa8a8ba4c76a1c228b05726
 
 pkgname = python-anyconfig
 	depends = python
