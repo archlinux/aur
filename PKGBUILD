@@ -1,16 +1,16 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-glib-networking
-pkgver=2.58.0
-pkgrel=2
+pkgver=2.60.0.1
+pkgrel=1
 pkgdesc="Network-related GIO modules for glib (mingw-w64)"
 arch=('any')
 url="https://git.gnome.org/browse/glib-networking"
 license=('LGPL2.1')
 depends=(mingw-w64-glib2 mingw-w64-gnutls)
 makedepends=(mingw-w64-meson)
-source=("https://download.gnome.org/sources/glib-networking/${pkgver%.*}/glib-networking-${pkgver}.tar.xz")
+source=("https://download.gnome.org/sources/glib-networking/${pkgver::-4}/glib-networking-${pkgver}.tar.xz")
 options=(!strip !buildflags !libtool staticlibs)
-sha256sums=('bdfa0255e031b8ee003cc283002536b77ee76450105f1dc6ab066b9bf4330068')
+sha256sums=('674e8b062c0639c274848d40b8308f8fb2ecd8b82e7eb6fe805d1aca7deb983c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -19,9 +19,8 @@ build() {
     mkdir -p "${srcdir}/glib-networking-${pkgver}/build-${_arch}"
     cd "${srcdir}/glib-networking-${pkgver}/build-${_arch}"
     ${_arch}-meson \
-      -D libproxy_support=false \
-      -D gnome_proxy_support=false \
-      -D pkcs11_support=false \
+      -D libproxy=disabled \
+      -D gnome_proxy=disabled \
       -D static_modules=true ..
     ninja
   done
