@@ -3,7 +3,7 @@
 _name=shellingham
 pkgbase='python-shellingham'
 pkgname=('python-shellingham' 'python2-shellingham')
-pkgver=1.2.4
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Detect what shell the current Python executable is running in."
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=(
   'python2' 'python2-setuptools')
 options=(!emptydirs)
 source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.io/packages/source/"${_name:0:1}"/"${_name}"/"${_name}"-"${pkgver}".tar.gz)
-sha256sums=('c09c563a2e185ec3d64e43c286dbba3150fc182d96cd29ff5b002f3d3c3f5076')
+sha256sums=('a1bc8cbe437e5348c242d4e8145242d364d9493034ed790a82991c0e2d3ad984')
 
 prepare() {
   cp -a "${_name}"-"${pkgver}"{,-py2}
