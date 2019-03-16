@@ -60,7 +60,7 @@ prepare() {
       -e 's| /usr/local/lib||g' \
       -i caffe/Makefile.config
 
-  cd "${srcdir}/${_plug}"
+  cd "${_plug}"
 
   # Fix opencv4
   sed -e 's/CV_GRAY2RGB/cv::COLOR_GRAY2RGB/g' \
@@ -73,6 +73,7 @@ prepare() {
       -e 's/CV_BGRA2RGB/cv::COLOR_BGRA2RGB/g' \
       -i Waifu2x-caffe/stImage.cpp \
       -i Waifu2x-caffe/waifu2x.cpp
+
   # Fix unknown layer
   echo '#include "caffe/common.hpp"
 #include "caffe/layers/input_layer.hpp"
@@ -86,11 +87,11 @@ namespace caffe{
     extern INSTANTIATE_CLASS(CropLayer);
     //REGISTER_LAYER_CLASS(Scale);
 }' > Waifu2x-caffe/addlayer.h
+
   sed '1i#include "addlayer.h"' \
       -i Waifu2x-caffe/cNet.cpp \
       -i Waifu2x-caffe/waifu2x.cpp \
       -i Waifu2x-caffe/Waifu2x-caffe.cpp
-
 }
 
 build() {
@@ -107,8 +108,9 @@ build() {
   arch-meson "../${_plug}" \
     -Dcuda_includedir=/opt/cuda/include \
     -Dcuda_libdir=/opt/cuda/lib64 \
-    "-Dcaffe_includedir=$(readlink -e "${srcdir}/fakeroot/include")" \
-    "-Dcaffe_libdir=$(readlink -e "${srcdir}/fakeroot/lib")"
+    -Dcaffe_includedir="$(readlink -e "${srcdir}/fakeroot/include")" \
+    -Dcaffe_libdir="$(readlink -e "${srcdir}/fakeroot/lib")" \
+    -Db_lto=false
 
   ninja
 }
