@@ -2,7 +2,7 @@
 
 _name=taskell
 pkgname="${_name}-bin"
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc='A command line kanban board/task manager written in Haskell'
 arch=('x86_64')
