@@ -1,0 +1,17 @@
+pkgbase = ruby-oci
+	pkgdesc = Ruby SDK for Oracle Cloud Infrastructure
+	pkgver = 2.5.2
+	pkgrel = 1
+	url = https://github.com/oracle/oci-ruby-sdk
+	arch = x86_64
+	license = Apache
+	makedepends = ruby-rake
+	makedepends = ruby-rdoc
+	depends = ruby-rdoc
+	depends = ruby-inifile
+	depends = ruby-jwt
+	source = https://github.com/oracle/oci-ruby-sdk/archive/v2.5.2.tar.gz
+	sha256sums = b21e75811f99347573038f0a93e0a99f5112f94a87deb2320e8db71342fc390d
+
+pkgname = ruby-oci
+
