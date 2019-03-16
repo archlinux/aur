@@ -18,7 +18,7 @@ source=(
   "${url}/releases/download/${pkgver}/${_pkgfile}"
   LICENSE
 )
-sha256sums=('343426c71255d7148d85ea3adaf68c1ab0622f73f2eb72e50c288d73e982b6a5'
+sha256sums=('426b43b5225f9d0a3428f467a224a7f1644a2cef4dd74963409230d863773bd3'
             '04dc83953b60b17ab28cbc37ad3188e1c632db38dd423885af7507460f461d29')
 
 package() {
