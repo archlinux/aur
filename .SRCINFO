@@ -1,0 +1,17 @@
+pkgbase = d-rats
+	pkgdesc = A communications tool for D-STAR
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = http://d-rats.com/
+	arch = any
+	license = GPL3
+	depends = python2-lxml
+	depends = python2-pyserial
+	depends = pygtk
+	optdepends = hamradio-menus
+	optdepends = python2-feedparser
+	source = http://www.d-rats.com/download/v0.3.x/d-rats-0.3.3.tar.gz
+	sha256sums = ab0aa371f25777fc0ab8c131f6fa43df2c5f4b18c4e5693d21c979bebcf724b9
+
+pkgname = d-rats
+
