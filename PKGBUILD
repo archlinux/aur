@@ -1,18 +1,26 @@
-# Maintainer: Eric DeStefano <eric at ericdestefano dot com>
+# Maintainer: LIN Ruohshoei <lin dot ruohshoei plus archlinux at gmail dot com>
+# Contributor: Eric DeStefano <eric at ericdestefano dot com>
 # Contributor: Iñigo Alvarez <alvarezviu@gmail.com>
 # Contributor: William Termini <aur@termini.me>
-pkgname='minivmac'
-pkgver='3.5.8'
+pkgname=minivmac
+pkgver=36.04
 pkgrel=1
 pkgdesc="a miniature early Macintosh emulator"
 arch=('x86_64')
-url="http://www.gryphel.com/c/minivmac/"
-license=('GPL')
-makedepends=(tar)
-source=(https://www.gryphel.com/d/minivmac/minivmac-3.5.8/$pkgname-$pkgver-lx64.bin.tgz)
-md5sums=('68168f06472b8d49c98f561ff72eb250')
-
+url="https://www.gryphel.com/c/minivmac/"
+_url_d="https://www.gryphel.com/d/minivmac"
+license=('GPL2')
+depends=('libx11')
+source=(${pkgname}-${pkgver}.tgz::"${_url_d}/${pkgname}-${pkgver}/$pkgname-$pkgver.src.tgz")
+sha256sums=('9b7343cec87723177a203e69ad3baf20f49b4e8f03619e366c4bf2705167dfa4')
+build() {
+  cd ${pkgname}
+  gcc setup/tool.c -o setup_t
+  ./setup_t -t lx64 > setup.sh
+  . setup.sh
+  make
+}
 package() {
-mkdir -p $pkgdir/usr/bin
-mv $srcdir/'Mini vMac' $pkgdir/usr/bin/
+  cd "${pkgname}"
+  install -Dm755 "${pkgname}" "$pkgdir"/usr/bin/$pkgname
 }
