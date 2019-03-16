@@ -5,7 +5,7 @@
 
 _realname=mutter
 pkgname=$_realname-catalyst
-pkgver=3.30.2
+pkgver=3.32.0
 pkgrel=1
 pkgdesc="A window manager for GNOME with patches for catalyst compatibility"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -25,24 +25,26 @@ depends=('dconf'
   'libgudev'
   'libinput'
   'pipewire'
+  'xorg-server-xwayland'
 )
 makedepends=('intltool'
   'gobject-introspection'
   'git'
   'egl-wayland'
+  'meson'
+  'xorg-server'
 )
+checkdepends=('xorg-server-xvfb')
 conflicts=('mutter' "gnome-shell>1:${pkgver:0:6}+999")
 provides=("mutter=${pkgver}")
 groups=('gnome')
-_commit=bcd6103c44ff74ebffd1737b8e0f3a952b83bd54  # tags/3.30.2^0
+_commit=efb1ee97308653a28ed4448b0c405e6faf2c4f40  # tags/3.32.0^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-  "https://gitlab.gnome.org/vanvugt/mutter/commit/fc02b040f3b750b0513f812813351c09795950f6.patch"
-  "startup-notification.patch"
-  "catalyst-workaround-v2.patch"
-  "catalyst mutter cogl.patch")
+        216.patch
+        "catalyst-workaround-v2.patch"
+        "catalyst mutter cogl.patch")
 sha256sums=('SKIP'
-            'dffa2ca19281b9fa5a81bf80bd46a8eae78325c7e1f8b2a25c33945aa7cc0903'
-            '5a35ca4794fc361219658d9fae24a3ca21a365f2cb1901702961ac869c759366'
+            'ed4f3cf738a3cffdf8a6e1a352bf24d74078c3b26fb9262c5746e0d95b9df756'
             '2564846288ea55262d681d38f7e43609c63e94990df1cb0a6b99e16e2c073d14'
             '55079a9daddedc22d9fe4dcfe2e87607345dfafb370f8e7fb6a98c0acae3348a')
 
@@ -55,11 +57,7 @@ prepare() {
   cd "$_realname"
 
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/216
-  git apply -3 ../fc02b040f3b750b0513f812813351c09795950f6.patch
-
-  # https://bugs.archlinux.org/task/51940
-  # As of 2018-05-08: Still needed, according to fmuellner
-  git apply -3 ../startup-notification.patch
+  git apply -3 ../216.patch
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=741581
   echo "Skipping call to output_set_presentation_xrandr to fix issue with catalyst"
@@ -68,31 +66,24 @@ prepare() {
   echo "workaround compatibility shaders used in fw compat ctx in cogl"
   git apply -3 "${srcdir}/catalyst mutter cogl.patch"
   echo "Patches applied"
-
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd "$_realname"
-  ./configure --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --libexecdir=/usr/lib \
-    --disable-static \
-    --disable-schemas-compile \
-    --enable-compile-warnings=minimum \
-    --enable-gtk-doc \
-    --enable-egl-device \
-    --enable-remote-desktop
-
-  # https://bugzilla.gnome.org/show_bug.cgi?id=655517
-  sed -e 's/ -shared / -Wl,-O1,--as-needed\0/g' \
-      -i {.,cogl,clutter}/libtool
-
-  make
+  arch-meson $_realname build \
+    -D egl_device=true \
+    -D wayland_eglstream=true \
+    -D installed_tests=false
+  ninja -C build
 }
 
+check() (
+  mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
+  glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/build/data}"
+  export XDG_RUNTIME_DIR GSETTINGS_SCHEMA_DIR
+
+  dbus-run-session xvfb-run -s '+iglx -noreset' meson test -C build
+)
+
 package() {
-  cd "$_realname"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 }
