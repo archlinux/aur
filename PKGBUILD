@@ -16,7 +16,7 @@ pkgname=vmware-workstation11
 pkgver=11.1.4
 _buildver=3848939
 _pkgver=${pkgver}_${_buildver}
-pkgrel=5
+pkgrel=6
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -34,6 +34,7 @@ provides=(
   vmware-ovftool
 )
 depends=(
+  vmware-keymaps
   dkms
   ncurses5-compat-libs
   fuse2
@@ -239,7 +240,6 @@ package() {
   cp -rL \
     vmware-workstation-server/config/etc/vmware/* \
     vmware-workstation-server/etc/vmware/* \
-    "$srcdir"/{bootstrap,config} \
     "$pkgdir/etc/vmware"
 
   cp -r \
@@ -293,6 +293,9 @@ package() {
   install -Dm 644 vmware-vmx/extra/modules.xml "$pkgdir/usr/lib/vmware/modules/modules.xml"
   install -Dm 644 vmware-installer/bootstrap "$pkgdir/etc/vmware-installer/bootstrap"
   install -Dm 644 "$srcdir/vmware-vix-bootstrap" "$pkgdir/etc/vmware-vix/bootstrap"
+  install -Dm 644 "$srcdir"/{bootstrap,config} "$pkgdir/etc/vmware"
+
+  rm -r "$pkgdir/usr/lib/vmware/xkeymap" # these files are now provided by vmware-keymaps package
 
   for hostd_file in config datastores environments proxy vmAutoStart; do
     install -Dm 644 "$srcdir/$hostd_file.xml" "$pkgdir/etc/vmware/hostd/$hostd_file.xml"
