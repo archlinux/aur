@@ -6,26 +6,31 @@
 # Made with https://github.com/NicolasGuilloux/blade-shadow-beta
 _commit=9add3366d25530d51d168608c54b5339b64d2a4e
 pkgname=shadow-beta
-pkgver=0.9.22
-pkgrel=6
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="Shadow launcher"
 arch=('x86_64')
 url="http://shadow.tech"
 license=('unknown')
-depends=('desktop-file-utils' 'freetype2' 'libuv' 'gconf' 'hicolor-icon-theme' 'json-c' 'libappindicator-gtk2' 'libbsd' 'libcurl-gnutls' 'libdrm' 'libnotify' 'libva' 'libxtst' 'nss' 'opus' 'qt5-base' 'qt5-svg' 'sdl2' 'libappindicator' 'libcurl-compat' 'sdl' 'gcc7-libs' 'ttf-dejavu' 'libxss')
+depends=('desktop-file-utils' 'freetype2' 'libuv' 'gconf' 'hicolor-icon-theme' 'json-c' 'libappindicator-gtk2' 'libbsd' 'libcurl-gnutls' 'libdrm' 'libnotify' 'libva' 'libxtst' 'nss' 'opus' 'qt5-base' 'qt5-svg' 'sdl2' 'libappindicator' 'libcurl-compat' 'sdl' 'gcc7-libs' 'ttf-dejavu' 'libxss' 'libsndio-61-compat')
 provides=(shadow-beta)
-source=('https://update.shadow.tech/renderer/preprod/linux/bionic/shadow-beta-bionic.zip' 'https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/'${_commit}'/AppImage/wrapper.pl' 
+source=('https://shadow.tech/linux/shadow-beta.zip' 'https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/'${_commit}'/AppImage/wrapper.pl'
 'https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/'${_commit}'/AppImage/report.pl')
-md5sums=('4a3927cdf91249a86b8a628c6c5bff61'
+md5sums=('8edcb34e3b23d7719dc899728c0004e8'
          SKIP
          SKIP)
 install=$pkgname.install
 
 # Build the package
 package() {
+  ### Create working folder
+  mkdir shadow
+
+  ### Extract zip file
+  bsdtar -x -f shadow-beta.zip -C shadow
 
 	### Extract the deb
-	ar xv shadow/shadow-beta-bionic-*.deb
+	ar xv shadow/Shadow*.deb
 
 	### Extract the data
 	bsdtar xf data.tar.xz
