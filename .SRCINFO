@@ -1,0 +1,21 @@
+pkgbase = release-bot
+	pkgdesc = Release to Github and PyPI with an ease.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/user-cont/release-bot
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-yaml
+	depends = python-requests
+	depends = python-semver
+	depends = twine
+	depends = python-wheel
+	depends = python-pyjwt
+	source = git+https://github.com/user-cont/release-bot#tag=0.6.1
+	md5sums = SKIP
+
+pkgname = release-bot
+
