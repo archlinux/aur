@@ -3,7 +3,7 @@
 # Headless by: K900 <me@0upti.me>
 
 pkgname=qt5-base-headless
-_qtver=5.12.1
+_qtver=5.12.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -22,7 +22,7 @@ conflicts=('qtchooser' 'qt5-base')
 provides=('qt5-base')
 _pkgfqn="qtbase-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('533078ce02678988576e224cb3844979907950cf83e0fda3364bc1d5701c9049')
+sha256sums=('562c095a59c95f393762ec53bc05c0d80fad1758fd5ff7a5231967d1a98d56c1')
 
 prepare() {
   cd ${_pkgfqn}
