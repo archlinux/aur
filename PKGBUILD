@@ -2,7 +2,7 @@
 pkgbase=qt5-service
 pkgname=(qt5-service qt5-service-doc)
 group=qt5-service-full
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A platform independent library to easily create system services and use some of their features"
 arch=('i686' 'x86_64')
@@ -55,5 +55,9 @@ package_qt5-service-doc() {
     -exec sed -i -e 's:<path>[^<]*<\/path>:<path>/usr/include/qt/QtJsonSerializer</path>:g' {} \;
 
   # install manpages
-  install -Dm644 -t "$pkgdir//usr/share/man/man3" man/man3/*.3
+  install -Dm644 -t "$pkgdir/usr/share/man/man3" man/man3/*.3
+  
+  # install project template
+  cd "../../$_pkgfqn"
+  install -Dm644 -t "$pkgdir/usr/share/qtcreator/templates/wizards/projects/qtservice" ProjectTemplate/*
 }
