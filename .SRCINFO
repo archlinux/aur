@@ -1,7 +1,7 @@
 pkgbase = freetype2-cleartype
 	pkgdesc = Font rasterization library with ClearType patch
 	pkgver = 2.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freetype.org/
 	install = freetype2.install
 	arch = x86_64

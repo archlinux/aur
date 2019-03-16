@@ -11,7 +11,7 @@
 
 pkgname=freetype2-cleartype
 pkgver=2.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Font rasterization library with ClearType patch"
 arch=(x86_64)
 license=('GPL')
@@ -46,7 +46,7 @@ prepare() {
   patch -Np1 -i ../0002-Enable-infinality-subpixel-hinting.patch
   patch -Np1 -i ../0003-Enable-long-PCF-family-names.patch
   # Enable ClearType
-  #patch -Np1 -i ../0007-cleartype.patch
+  patch -Np1 -i ../0007-cleartype.patch
 }
 
 build() {
