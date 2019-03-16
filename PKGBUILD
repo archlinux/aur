@@ -3,8 +3,8 @@
 
 _pkgname=agate-dbf
 pkgname=python-$_pkgname
-pkgver=0.2.0
-pkgrel=4
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Adds read support for dbf files to agate"
 arch=('any')
 url="http://agate-dbf.readthedocs.org/"
@@ -20,7 +20,7 @@ makedepends=(
     'python-sphinx>=1.2.2'
   )
 source=("https://github.com/wireservice/agate-dbf/archive/${pkgver}.tar.gz")
-sha256sums=('fcdb80a52f1738da7313ef7ccc6476254ae4bca9c77fe548bd478cc8b1de34c9')
+sha256sums=('de6ec33fb3e033c4c74376997265e57fbd585195acf0386e28550209bae94a08')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
