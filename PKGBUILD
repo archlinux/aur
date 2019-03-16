@@ -2,7 +2,7 @@
 
 pkgname="vstax"
 _year="2018"
-pkgver="${_year}.1.0.2"
+pkgver="${_year}.1.0.5"
 pkgrel="1"
 pkgdesc="Software to fill the tax forms of the canton of Valais, Switzerland"
 url="http://www.vs.ch/vstax"
@@ -15,9 +15,9 @@ changelog="ChangeLog"
 [ "${CARCH}" = "x86_64" ] && _CARCH='amd64'
 source=("https://sftp.vs.ch/${pkgname}/${_year}/${pkgname}${_year}_${_CARCH}.deb"
         'archlinux.patch')
-sha256sums=('aa43c003f758f932b15ef1c4ae657cffc8d73c3280126d0edb48ff7f48a12f31'
-            'fbbc58a513cf9ddb2bdb83c60ab4614fb143cd4ba0cabfe41066b3350766d76e')
-[ "${CARCH}" = "x86_64" ] && sha256sums[0]='b239f2b8936e57fe18fa6ca251b00ff201a29323847c86aee17d7bd327d2de21'
+sha256sums=('b6411618d9e0cecfac4f3c0404a191bb699c36f227de4816f7b1d9dd8444945f'
+            '3fc8a626be7f60e43729f07a40373f427cdffd3cf59ca88eb5c642e06cfc770d')
+[ "${CARCH}" = "x86_64" ] && sha256sums[0]='a72701dfabfec3484ddb13d12962233526a8849ec42fe9f5f381c671f727a9a2'
 
 prepare() {
     cd "${srcdir}/"
