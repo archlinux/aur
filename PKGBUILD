@@ -1,7 +1,7 @@
 # Maintainer: Ákos Uzonyi <uzonyi.akos@gmail.com>
 pkgname=circuit-simulator
 pkgver=1.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Electronic circuit simulator written by Paul Falstad"
 arch=("any")
 url="http://www.falstad.com/circuit-java"
@@ -28,4 +28,8 @@ package() {
 	
 	mkdir -pm 755 "${pkgdir}/usr/share/icons/hicolor/16x16/apps"
 	convert "${OPT_DIR}/favicon.ico" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/circuit.png"
+
+	SOURCE_DIR="${pkgdir}/usr/src/$pkgname"
+	mkdir -pm 755 "$SOURCE_DIR"
+	unzip "${OPT_DIR}/src.zip" -d "$SOURCE_DIR"
 }
