@@ -1,0 +1,23 @@
+pkgbase = shortwave
+	pkgdesc = Find and listen to internet radio stations.
+	pkgver = 7.2
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/Shortwave
+	arch = any
+	license = GPL3
+	makedepends = cargo
+	makedepends = gobject-introspection
+	makedepends = libdazzle
+	makedepends = libhandy
+	makedepends = meson
+	makedepends = rust
+	depends = gstreamer
+	depends = libhandy
+	provides = shortwave
+	conflicts = shortwave-git
+	options = !emptydirs
+	source = Shortwave-v7.2.tar.gz::https://gitlab.gnome.org/World/Shortwave/-/archive/v7.2/Shortwave-v7.2.tar.gz
+	sha256sums = 0417004126069ad693b1a0afa622cb6edf330aafcd98642577dac230e43cfc16
+
+pkgname = shortwave
+
