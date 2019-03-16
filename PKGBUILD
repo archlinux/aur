@@ -44,7 +44,7 @@ package() {
 	# continue as normal
 	cd ~/.config/discord*/0.*/modules/discord_desktop_core/
 	rm -rf index.js && touch index.js
-	echo "module.exports = require('./core.asar');"
+	echo "module.exports = require('./core.asar');" | cat - index.js > temp && mv temp index.js
 	echo "require('${injdir}/injection.js');" | cat - index.js > temp && mv temp index.js
 	echo "process.env.injDir = '${injdir}';" | cat - index.js > temp && mv temp index.js
 	echo '{}' >> ~/.local/share/EnhancedDiscord/config.json
