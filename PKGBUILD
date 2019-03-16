@@ -1,19 +1,25 @@
 # Maintainer: Dimitrios Vogiatzis <me@dimtree.net>
+# Maintainer: physkets <physkets // at // tutanota dot com>
 # Contributor: Justin Dray <justin@dray.be>
 # Contributor: Bill Kolokithas <kolokithas.b@gmail.com>
 
 pkgname=j4-dmenu-desktop
-pkgver=2.16
+pkgver=2.17
 pkgrel=1
 pkgdesc="A much faster replacement for i3-dmenu-desktop. Its purpose is to find .desktop files and offer you a menu to start an application using dmenu."
 arch=('any')
 url="https://github.com/enkore/j4-dmenu-desktop"
 license=('GPL3')
-depends=('dmenu')
+optdepends=('dmenu: install for the default backend'
+			'bemenu: an alternative backend')
 makedepends=('git' 'cmake')
 conflicts=('j4-dmenu-desktop-git')
-source=("${pkgname}-r${pkgver}.tar.gz::https://github.com/enkore/j4-dmenu-desktop/archive/r${pkgver}.tar.gz")
-sha256sums=('cce03564227677ffbf0d1a15588247904c4fce997bc21bb92e1147a916b6c520')
+source=("${pkgname}-r${pkgver}.tar.gz::${url}/archive/r${pkgver}.tar.gz"
+		"${url}/releases/download/r${pkgver}/${pkgname}-r${pkgver}.tar.gz.sig")
+validpgpkeys=('A1774C1B37DC1DCEDB65EE469B8450B91D1362C1') # Marian Beermann <public@enkore.de>
+sha256sums=('78f6e5a534d8b675ee9fcdd4d5a61f18125089af2b094306fdaca72795ba5f49'
+			'SKIP')
+
 
 build() {
 	cd ${pkgname}-r${pkgver}
