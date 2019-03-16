@@ -22,21 +22,6 @@ design = [                  # Common styles
   "cv46",                   # flat top 3
   "cv54",                   # open short $
 
-  # "slab",
-
-  # "term",                   # strict mono; no ligatures
-  # "termlig",                # strict mono; with ligatures
-
-  # "ligset-haskell",
-  # "ligset-idris",
-  # "ligset-coq",
-  # "ligset-elm",
-  # "ligset-ml",
-  # "ligset-fs",              # F#
-  # "ligset-fstar",           # F*
-  # "ligset-swift",
-  # "ligset-purescript",
-
 ]
 # upright = []                # Upright-only styles
 # italic = []                 # Italic-only styles
@@ -46,6 +31,8 @@ design = [                  # Common styles
 family = "Iosevka Slab Custom"   # Font menu family name
 design = [                       # Common styles
 
+  "slab",
+
   "cv05",                        # hooky i
   "cv14",                        # dotted zero
   "cv24",                        # open double story g
@@ -53,21 +40,6 @@ design = [                       # Common styles
   "cv27",                        # tailed l
   "cv46",                        # flat top 3
   "cv54",                        # open short $
-
-  "slab",
-
-  # "term",                        # strict mono; no ligatures
-  # "termlig",                     # strict mono; with ligatures
-
-  # "ligset-haskell",
-  # "ligset-idris",
-  # "ligset-coq",
-  # "ligset-elm",
-  # "ligset-ml",
-  # "ligset-fs",                   # F#
-  # "ligset-fstar",                # F*
-  # "ligset-swift",
-  # "ligset-purescript",
 
 ]
 # upright = []                     # Upright-only styles
@@ -78,6 +50,8 @@ design = [                       # Common styles
 family = "Iosevka Term Custom"   # Font menu family name
 design = [                       # Common styles
 
+  "term",                        # strict mono; no ligatures
+
   "cv05",                        # hooky i
   "cv14",                        # dotted zero
   "cv24",                        # open double story g
@@ -85,21 +59,6 @@ design = [                       # Common styles
   "cv27",                        # tailed l
   "cv46",                        # flat top 3
   "cv54",                        # open short $
-
-  # "slab",
-
-  "term",                        # strict mono; no ligatures
-  # "termlig",                     # strict mono; with ligatures
-
-  # "ligset-haskell",
-  # "ligset-idris",
-  # "ligset-coq",
-  # "ligset-elm",
-  # "ligset-ml",
-  # "ligset-fs",                   # F#
-  # "ligset-fstar",                # F*
-  # "ligset-swift",
-  # "ligset-purescript",
 
 ]
 # upright = []                     # Upright-only styles
@@ -110,6 +69,8 @@ design = [                       # Common styles
 family = "Iosevka TermLig Custom"   # Font menu family name
 design = [                          # Common styles
 
+  "termlig",                        # strict mono; with ligatures
+
   "cv05",                           # hooky i
   "cv14",                           # dotted zero
   "cv24",                           # open double story g
@@ -117,21 +78,6 @@ design = [                          # Common styles
   "cv27",                           # tailed l
   "cv46",                           # flat top 3
   "cv54",                           # open short $
-
-  # "slab",
-
-  # "term",                           # strict mono; no ligatures
-  "termlig",                        # strict mono; with ligatures
-
-  # "ligset-haskell",
-  # "ligset-idris",
-  # "ligset-coq",
-  # "ligset-elm",
-  # "ligset-ml",
-  # "ligset-fs",                      # F#
-  # "ligset-fstar",                   # F*
-  # "ligset-swift",
-  # "ligset-purescript",
 
 ]
 # upright = []                        # Upright-only styles
@@ -142,6 +88,9 @@ design = [                          # Common styles
 family = "Iosevka Term Slab Custom"   # Font menu family name
 design = [                            # Common styles
 
+  "term",                             # strict mono; no ligatures
+  "slab",
+
   "cv05",                             # hooky i
   "cv14",                             # dotted zero
   "cv24",                             # open double story g
@@ -149,21 +98,6 @@ design = [                            # Common styles
   "cv27",                             # tailed l
   "cv46",                             # flat top 3
   "cv54",                             # open short $
-
-  "slab",
-
-  "term",                             # strict mono; no ligatures
-  # "termlig",                          # strict mono; with ligatures
-
-  # "ligset-haskell",
-  # "ligset-idris",
-  # "ligset-coq",
-  # "ligset-elm",
-  # "ligset-ml",
-  # "ligset-fs",                        # F#
-  # "ligset-fstar",                     # F*
-  # "ligset-swift",
-  # "ligset-purescript",
 
 ]
 # upright = []                          # Upright-only styles
