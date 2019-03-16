@@ -1,6 +1,6 @@
 pkgbase = lector-git
-	pkgdesc = Qt based ebook reader with support for PDF, epub, fb2, comicbooks, mobi, azw
-	pkgver = r329.f293526
+	pkgdesc = Qt based ebook reader with support for PDF, epub, djvu, fb2, comicbooks, mobi, azw
+	pkgver = r344.38de0dc
 	pkgrel = 1
 	url = https://github.com/BasioMeusPuga/Lector
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = lector-git
 	depends = python-lxml
 	depends = python-pymupdf
 	depends = python-xmltodict
+	depends = python-djvulibre
 	provides = lector
 	conflicts = lector
 	source = git://github.com/basiomeuspuga/lector.git
