@@ -1,0 +1,17 @@
+pkgbase = groff-ru
+	pkgdesc = Groff Russian language localization (hyphenation and mm/mon/me default variables)
+	pkgver = 1
+	pkgrel = 0
+	arch = any
+	license = GPL3
+	depends = groff
+	provides = groff-ru
+	source = koi8-r.tmac
+	source = ruhyphal.tex.koi8-r
+	source = ru.tmac.koi8-r
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = groff-ru
+

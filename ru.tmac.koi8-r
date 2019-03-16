@@ -1,0 +1,147 @@
+.\" -*- mode: nroff; coding: koi8-r; -*-
+.\"
+.\" Russian localization for groff
+.\" Copyright (C) 2019
+.\"   Written by Ilya Kuzmin (i.g.kuzmin.spb <at> gmail.com)
+.
+.\" Locale string
+.
+.\" Activate the translations
+.
+.mso koi8-r.tmac
+.
+.ds locale russian\"
+.
+.\" Predefined text translations
+.ds \*[locale]-abstract АННОТАЦИЯ\"
+.ds \*[locale]-app Прилодение\"
+.ds \*[locale]-april апрель\"
+.ds \*[locale]-attribute_string из\"
+.ds \*[locale]-august август\"
+.ds \*[locale]-chapter_string Глава\"
+.ds \*[locale]-december декабрь\"
+.ds \*[locale]-draft_string Черновик\"
+.ds \*[locale]-endnote_string ПРИМИЧАНИЕ\"
+.ds \*[locale]-february февраль\"
+.ds \*[locale]-finis_string КОНЕЦ\"
+.ds \*[locale]-friday пятница\"
+.ds \*[locale]-january январь\"
+.ds \*[locale]-july июль\"
+.ds \*[locale]-june июнь\"
+.ds \*[locale]-le Уравнения\"
+.ds \*[locale]-letapp Godk\[a :]nd av:\"
+.ds \*[locale]-letat ВНИМАНИЕ:\"
+.ds \*[locale]-letcn КОНФИДЕНЦИАЛЬНО\"
+.ds \*[locale]-letdate дата\"
+.ds \*[locale]-letfc С наилучшими пожеланиями.\"
+.ds \*[locale]-letns!0 Копия к\"
+.ds \*[locale]-letns!1 Копия (обратить внимание) к\"
+.ds \*[locale]-letns!10 Копиря (med atts.) к\"
+.ds \*[locale]-letns!11 Копия (utan atts.) к\"
+.ds \*[locale]-letns!12 Отправитель \"
+.ds \*[locale]-letns!13 Меморандум к\"
+.ds \*[locale]-letns!14 CC:
+.ds \*[locale]-letns!2 Копия (utan att.) till\"
+.ds \*[locale]-letns!3 Att.\"
+.ds \*[locale]-letns!4 Atts.\"
+.ds \*[locale]-letns!5 Enc.\"
+.ds \*[locale]-letns!6 Encs.\"
+.ds \*[locale]-letns!7 Annat f\[o :]rs\[a :]ttsblad\"
+.ds \*[locale]-letns!8 Brev till\"
+.ds \*[locale]-letns!9 Dokument till\"
+.ds \*[locale]-letns!copy Kopia \" space!
+.ds \*[locale]-letns!to " till\"
+.ds \*[locale]-letrn Refererande till:\"
+.ds \*[locale]-letsa Till vederb\[o :]rande:\"
+.ds \*[locale]-letsj Inneh\[a ao]ll:\"
+.ds \*[locale]-lf Figurer\"
+.ds \*[locale]-licon Inneh\[a ao]llsf\[o :]rteckning\"
+.ds \*[locale]-liec \Ekvation\"
+.ds \*[locale]-liex Uppst\[a :]llning\"
+.ds \*[locale]-lifg Figur\"
+.ds \*[locale]-litb Tabell\"
+.ds \*[locale]-lt Tabeller\"
+.ds \*[locale]-lx Uppst\[a :]llningar\"
+.ds \*[locale]-march март\"
+.ds \*[locale]-may май\"
+.ds \*[locale]-monday понедельник\"
+.ds \*[locale]-november ноябрь\"
+.ds \*[locale]-october октябрь\"
+.ds \*[locale]-paper A4\"
+.ds \*[locale]-qrf Гл. \\*[Qrfh], стр. \\*[Qrfp].\"
+.ds \*[locale]-references Корреспонденты\"
+.ds \*[locale]-revision_string Вер.\"
+.ds \*[locale]-rp Корреспондент\"
+.ds \*[locale]-saturday суббота\"
+.ds \*[locale]-september сентябрь\"
+.ds \*[locale]-sunday воскресенье\"
+.ds \*[locale]-thursday четверг\"
+.ds \*[locale]-toc Содержание\"
+.ds \*[locale]-toc_header_string Содержание\"
+.ds \*[locale]-tuesday вторник\"
+.ds \*[locale]-wednesday среда\"
+.
+.
+.\" Activate the translations
+.
+.mso trans.tmac
+.
+.
+.\" ms package
+.if r GS \{\
+.	\" update the date
+.	ds DY \n[dy] \*[MO] \n[year]
+.	\" set hyphenation flags
+.	nr HY 8
+.\}
+.
+.
+.
+.\" me package
+.if d @R \{\
+.	\" date update
+.	ds td \n(dy \*(mo \n(y4
+.\}
+.
+.
+.
+.\" Hypenation
+.hcode а а  А а
+.hcode б б  Б б
+.hcode в в  В в
+.hcode г г  Г г
+.hcode д д  Д д
+.hcode е е  Е е
+.hcode ё ё  Ё ё
+.hcode ж ж  Ж ж
+.hcode з з  З з
+.hcode и и  И и
+.hcode й й  Й й
+.hcode л л  Л л
+.hcode л л  Л л
+.hcode м м  М м
+.hcode н н  Н н
+.hcode о о  О о
+.hcode п п  П п
+.hcode р р  Р р
+.hcode с с  С с
+.hcode т т  Т т
+.hcode у у  У у
+.hcode ф ф  Ф ф
+.hcode х х  Х х
+.hcode ц ц  Ц ц
+.hcode ч ч  Ч ч
+.hcode ш ш  Ш ш
+.hcode щ щ  Щ щ
+.hcode ъ ъ  Ъ ъ
+.hcode ы ы  Ы ы
+.hcode ь ь  Ь ь
+.hcode э э  Э э
+.hcode ю ю  Ю ю
+.hcode я я  Я я
+.
+.hla ru
+.hpf ruhyphal.tex
+.nr Hy 1
+.
+.\" EOF
