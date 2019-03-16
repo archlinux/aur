@@ -13,7 +13,7 @@ url='https://github.com/NVIDIA/nvidia-container-runtime'
 license=('BSD')
 
 depends=('libnvidia-container-tools')
-provides=('nvidia-container-runtime-hook')
+provides=('nvidia-container-runtime-hook=1.4.0')
 conflicts=('nvidia-container-runtime-hook')
 
 source=("https://nvidia.github.io/nvidia-container-runtime/centos7/$CARCH/${_pkgname}-1.4.0-2.$CARCH.rpm")
