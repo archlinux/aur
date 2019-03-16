@@ -7,6 +7,7 @@ pkgbase = iroffer-dinoex
 	arch = x86_64
 	depends = ruby
 	depends = geoip
+	depends = miniupnpc
 	source = http://iroffer.dinoex.net/iroffer-dinoex-3.31.tar.gz
 	sha512sums = 677aa03a33b99d8062db077bba47fb18b2e9279243691981bbd09cb2859fcb4792e1383225b9698edb23370ce0f60667a09480644d31171e9a8234d80052dd80
 
