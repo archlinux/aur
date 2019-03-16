@@ -1,8 +1,8 @@
 # Maintainer: Michał Pałubicki <maln0ir@gmx.com>
 
 pkgname=csvkit
-pkgver=1.0.3
-pkgrel=3
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="A suite of utilities for converting to and working with CSV."
 arch=("any")
 url="http://csvkit.readthedocs.org"
@@ -29,7 +29,7 @@ makedepends=(
     'python-sphinx>=1.2.2'
   )
 source=("https://github.com/wireservice/csvkit/archive/${pkgver}.tar.gz")
-sha256sums=('4ca64988a648c845ad2f02a19d5736c3a2650a44b1dd8952b97b528c7f3e2a97')
+sha256sums=('e19c609894c42e850c25af1ca9082753f76f231450f70a70c46344bec45c1a66')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"

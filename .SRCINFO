@@ -1,7 +1,7 @@
 pkgbase = csvkit
 	pkgdesc = A suite of utilities for converting to and working with CSV.
-	pkgver = 1.0.3
-	pkgrel = 3
+	pkgver = 1.0.4
+	pkgrel = 1
 	url = http://csvkit.readthedocs.org
 	arch = any
 	license = MIT
@@ -20,8 +20,8 @@ pkgbase = csvkit
 	depends = python-xlrd
 	depends = python-sphinx_rtd_theme>=0.1.6
 	optdepends = ipython: nicer command-line for csvpy utility
-	source = https://github.com/wireservice/csvkit/archive/1.0.3.tar.gz
-	sha256sums = 4ca64988a648c845ad2f02a19d5736c3a2650a44b1dd8952b97b528c7f3e2a97
+	source = https://github.com/wireservice/csvkit/archive/1.0.4.tar.gz
+	sha256sums = e19c609894c42e850c25af1ca9082753f76f231450f70a70c46344bec45c1a66
 
 pkgname = csvkit
 
