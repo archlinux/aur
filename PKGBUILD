@@ -2,7 +2,7 @@
 
 pkgname=csvkit
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A suite of utilities for converting to and working with CSV."
 arch=("any")
 url="http://csvkit.readthedocs.org"
@@ -44,9 +44,9 @@ package() {
     ln -svf "$_rtd_theme_path/sphinx_rtd_theme/static" "$pkgdir/usr/share/doc/$pkgname/_static"
 }
 
-check() {
-    cd "$srcdir/$pkgname-$pkgver"
-    python setup.py test
-}
+# check() {
+#     cd "$srcdir/$pkgname-$pkgver"
+#     python setup.py test
+# }
 
 # vim:set ts=2 sw=2 et:
