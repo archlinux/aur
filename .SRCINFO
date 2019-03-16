@@ -1,7 +1,7 @@
 pkgbase = csvkit
 	pkgdesc = A suite of utilities for converting to and working with CSV.
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://csvkit.readthedocs.org
 	arch = any
 	license = MIT
