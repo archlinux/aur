@@ -1,7 +1,7 @@
 # Maintainer: Patrick Wicki <wickip@student.ethz.ch>
 
 pkgname=gnome-meta
-pkgver=3.30.1
+pkgver=3.32.0
 pkgrel=1
 pkgdesc='Meta package for installing the gnome group'
 arch=(any)
@@ -16,6 +16,7 @@ depends=(baobab
 	gdm
 	gedit
 	gnome-backgrounds
+	gnome-books
 	gnome-calculator
 	gnome-calendar
 	gnome-characters
@@ -47,6 +48,7 @@ depends=(baobab
 	gnome-user-docs
 	gnome-user-share
 	gnome-video-effects
+	gnome-weather
 	grilo-plugins
 	gvfs
 	gvfs-afc
