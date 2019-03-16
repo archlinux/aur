@@ -14,11 +14,11 @@ depends=(
     'python-agate>=1.5.0'
     'python-xlrd>=0.9.4'
     'python-openpyxl>=2.3.0'
+    'python-sphinx_rtd_theme>=0.1.6'
   )
 makedepends=(
     'python-setuptools'
     'python-sphinx>=1.2.2'
-    'python-sphinx_rtd_theme>=0.1.6'
   )
 source=(
     "https://github.com/wireservice/agate-excel/archive/${pkgver}.tar.gz"
@@ -42,6 +42,10 @@ package() {
   python setup.py build_sphinx
   mkdir -p "$pkgdir/usr/share/doc"
   cp -rv "$srcdir/$_pkgname-$pkgver/build/sphinx/html" "$pkgdir/usr/share/doc/$_pkgname"
+
+  _rtd_theme_path="$(python -c 'import sphinx_rtd_theme; print(sphinx_rtd_theme.get_html_theme_path())')"
+  rm -rvf "$pkgdir/usr/share/doc/$_pkgname/_static"
+  ln -svf "$_rtd_theme_path/sphinx_rtd_theme/static" "$pkgdir/usr/share/doc/$_pkgname/_static"
 }
 
 check() {
