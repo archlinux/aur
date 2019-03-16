@@ -13,11 +13,11 @@ depends=(
     'python'
     'python-agate>=1.5.0'
     'python-dbfread>=2.0.5'
+    'python-sphinx_rtd_theme>=0.1.6'
   )
 makedepends=(
     'python-setuptools'
     'python-sphinx>=1.2.2'
-    'python-sphinx_rtd_theme>=0.1.6'
   )
 source=("https://github.com/wireservice/agate-dbf/archive/${pkgver}.tar.gz")
 sha256sums=('fcdb80a52f1738da7313ef7ccc6476254ae4bca9c77fe548bd478cc8b1de34c9')
@@ -29,6 +29,10 @@ package() {
   python setup.py build_sphinx
   mkdir -p "$pkgdir/usr/share/doc"
   cp -rv "$srcdir/$_pkgname-$pkgver/build/sphinx/html" "$pkgdir/usr/share/doc/$_pkgname"
+
+  _rtd_theme_path="$(python -c 'import sphinx_rtd_theme; print(sphinx_rtd_theme.get_html_theme_path())')"
+  rm -rvf "$pkgdir/usr/share/doc/$_pkgname/_static"
+  ln -svf "$_rtd_theme_path/sphinx_rtd_theme/static" "$pkgdir/usr/share/doc/$_pkgname/_static"
 }
 
 check() {
