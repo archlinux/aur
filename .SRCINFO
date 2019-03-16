@@ -6,7 +6,7 @@ pkgbase = libnvidia-container-tools-bin
 	arch = x86_64
 	license = BSD
 	depends = libnvidia-container
-	provides = libnvidia-container-tools
+	provides = libnvidia-container-tools=1.0.1
 	conflicts = libnvidia-container-tools
 	source = https://nvidia.github.io/libnvidia-container/centos7/x86_64/libnvidia-container-tools-1.0.1-1.x86_64.rpm
 	sha256sums = e59e91b2a04295350f771402223ea7c8e26aeee1444f71ab79dccce1fbcaebf9

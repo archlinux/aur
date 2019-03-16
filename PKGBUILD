@@ -13,7 +13,7 @@ url='https://github.com/NVIDIA/libnvidia-container'
 license=('BSD')
 
 depends=('libnvidia-container')
-provides=('libnvidia-container-tools')
+provides=('libnvidia-container-tools=1.0.1')
 conflicts=('libnvidia-container-tools')
 
 source=("https://nvidia.github.io/libnvidia-container/centos7/${CARCH}/${_pkgname}-1.0.1-1.${CARCH}.rpm")
