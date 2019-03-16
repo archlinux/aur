@@ -1,18 +1,18 @@
 # Maintainer: Andrew O'Neill <andrew at meanjollies dot com>
 
 pkgname=oci-cli
-pkgver=2.4.33
+pkgver=2.5.3
 pkgrel=1
 pkgdesc='Command line interface for Oracle Cloud Infrastructure'
 arch=('any')
 url='https://github.com/oracle/oci-cli'
 license=('Apache')
-depends=('python' 'python-oci' 'python-arrow' 'python-certifi' 'python-click' 'python-dateutil' 'python-cryptography' 'python-pyopenssl' 'python-jmespath' 'python-terminaltables' 'python-httpsig_cffi' 'python-idna' 'python-pytz' 'python-requests' 'python-six' 'python-retrying')
+depends=('python' 'python-oci' 'python-arrow' 'python-certifi' 'python-click' 'python-dateutil' 'python-cryptography' 'python-pyopenssl' 'python-jmespath' 'python-terminaltables' 'python-httpsig_cffi' 'python-idna' 'python-pytz' 'python-requests' 'python-six' 'python-retrying' 'python-yaml' 'python-cx_oracle-git')
 makedepends=('python-setuptools')
 source=("${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.patch")
-sha256sums=('f8ead61b820d1ac814285db9c522ffab62cbc556d1c1208ef7e1424306714f2d'
-            'b77e6f8fec8b2960e50063771e3fcaaa157ccaab0ddea0b4df817afbd052ab54')
+sha256sums=('379de4d8891004edf22313d5bb9ef0dd183405ae16a48001cfdb3b3d9329dca5'
+            '302c4878f786518cb0589187f73f82e2a66eaeba1107c8486f920c4bd1f2bb43')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
