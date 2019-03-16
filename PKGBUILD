@@ -1,7 +1,7 @@
 # Maintainer: Tinu Weber <http://ayekat.ch>
 
 pkgname=remakepkg
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 arch=(any)
 
@@ -9,7 +9,7 @@ pkgdesc='Apply changes to pacman packages'
 url='https://gitlab.com/ayekat/pacman-hacks'
 license=(GPL3)
 
-depends=(coreutils)
+depends=(coreutils sed)
 makedepends=(asciidoc git)
 
 changelog='changelog'
@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-  depends+=(bash curl expac grep gzip fakeroot libarchive pacman sed sh vi)
+  depends+=(bash curl expac grep gzip fakeroot libarchive pacman sh vi)
 
   cd pacman-hacks
   make DESTDIR="$pkgdir" SCRIPTS="$_tools" MANPAGES="$_tools" install

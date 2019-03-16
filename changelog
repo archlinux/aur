@@ -1,3 +1,6 @@
+v0.7.5-1 (2019-03-16)
+* Makefile: Properly state dependencies for generating the prefix file
+
 v0.7.4-1 (2019-03-05)
 * repkg: Fix path related issues for remove-backup and rename-file
 
