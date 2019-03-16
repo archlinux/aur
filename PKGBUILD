@@ -1,38 +1,45 @@
-# Contributor: danitool
 pkgname=netdiscover
-pkgver=0.3prebeta7
+pkgver=0.5.1
 pkgrel=1
-pkgdesc="network address discovering tool that was developed mainly for those wireless networks without DHCP servers, though it also works on wired networks. It sends ARP requests and sniffs for replies"
+pkgdesc="ARP Scanner"
 arch=('i686' 'x86_64')
-url="http://nixgeneration.com/~jaime/netdiscover/"
+url="https://github.com/netdiscover-scanner/netdiscover/"
 license=('GPL')
 depends=('libnet' 'libpcap')
 makedepends=('gcc' 'make' 'wget')
 provides=('netdiscover')
 conflicts=('netdiscover-debian' 'netdiscover-svn')
-replaces=()
-backup=()
-groups=()
-options=()
-source=("https://sourceforge.net/projects/${pkgname}/files/${pkgname}/0.3-pre-beta7-LINUXONLY/${pkgname}-0.3-pre-beta7-LINUXONLY.tar.gz"
-	'oui.tar.xz')
+source=("https://github.com/netdiscover-scanner/netdiscover/archive/${pkgver}.tar.gz"
+        'http://standards-oui.ieee.org/oui/oui.txt')
 
-md5sums=('8780e66d00496e933b4064cfe9ae61da'
-	'd4bad3f02475c98c9f3072bd64a35613')
+sha256sums=('153bab7fee507ff631cdedee673031cd5fa8e2cbd6347f4928d1edbeab20f2c6'
+            'SKIP')
 
 prepare(){
-	cd "$srcdir"/netdiscover-0.3-pre-beta7
-	patch -p1 -i ../oui.patch
+        cd "$srcdir/$pkgname-$pkgver"
+        cat << EOT > src/oui.h
+struct oui {
+        char *prefix;   /* 24 bit global prefix */
+        char *vendor;   /* Vendor id string     */
+};
+        
+struct oui oui_table[] = {
+EOT
+        cat ../oui.txt | sed 's/\r//' | grep "base 16" | tr '\t' ' ' | tr -s " " | sed 's/(base 16) //' | grep '[0-9A-F]' |  sort | sed 's/ /", "/' | sed 's/^/ { "/' | sed -z 's/\n/" },#/g' | tr '#' '\n' >> src/oui.h
+        cat << EOT >> src/oui.h
+    { NULL, NULL }
+};
+EOT
 }
 
 build() {
-	cd "$srcdir"/netdiscover-0.3-pre-beta7
-	./configure --sbindir=/usr/bin --prefix=/usr --sysconfdir=/etc/
-	make || return 1
-	}
-	
+        cd "$srcdir/$pkgname-$pkgver"
+        ./autogen.sh
+        ./configure --sbindir=/usr/bin --prefix=/usr --sysconfdir=/etc/
+        make 
+}
+        
 package() {
-	cd "$srcdir"/netdiscover-0.3-pre-beta7
-	make DESTDIR="$pkgdir" install || return 1
-	rm -rf "$pkgdir"/usr/doc
+        cd "$srcdir/$pkgname-$pkgver"
+        make DESTDIR="$pkgdir" install || return 1
 }
