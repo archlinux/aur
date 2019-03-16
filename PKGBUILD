@@ -3,7 +3,7 @@
 
 _pkgname=lv2
 pkgname="${_pkgname}-git"
-pkgver=1.15.5.r1110.700b4e2
+pkgver=1.16.0.r1120.0fa4d48
 pkgrel=1
 pkgdesc="A standard for plugins and matching host applications, mainly targeted at audio processing and generation."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=('libsndfile: example sampler plugin'
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}" 'lv2core' "${_pkgname}-svn")
 conflicts=("${_pkgname}" "${_pkgname}-svn")
 replaces=('lv2core')
-source=("${_pkgname}::git+http://lv2plug.in/git/cgit.cgi/lv2.git")
+source=("${_pkgname}::git+http://lv2plug.in/git/lv2.git")
 md5sums=('SKIP')
 
 pkgver() {
