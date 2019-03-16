@@ -13,7 +13,7 @@ url='https://github.com/NVIDIA/nvidia-container-runtime'
 license=('BSD')
 
 depends=('libseccomp' 'nvidia-container-runtime-hook')
-provides=('nvidia-container-runtime')
+provides=('nvidia-container-runtime=2.0.0+1.docker18.09.3')
 conflicts=('nvidia-container-runtime')
 
 source=("https://nvidia.github.io/nvidia-container-runtime/centos7/$CARCH/${_pkgname}-2.0.0-1.docker18.09.3.$CARCH.rpm")

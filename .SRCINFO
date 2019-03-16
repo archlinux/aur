@@ -7,7 +7,7 @@ pkgbase = nvidia-container-runtime-bin
 	license = BSD
 	depends = libseccomp
 	depends = nvidia-container-runtime-hook
-	provides = nvidia-container-runtime
+	provides = nvidia-container-runtime=2.0.0+1.docker18.09.3
 	conflicts = nvidia-container-runtime
 	source = https://nvidia.github.io/nvidia-container-runtime/centos7/x86_64/nvidia-container-runtime-2.0.0-1.docker18.09.3.x86_64.rpm
 	sha256sums = baa919c98282f9a722ef51f987d5d672941f8e68337e582cebfcb0606812eb68
