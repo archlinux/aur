@@ -13,7 +13,7 @@ _revert=1
 
 
 pkgname=mutter-781835-workaround
-pkgver=3.32.0+15+gc96cf0608
+pkgver=3.32.0+30+gdca27a28e
 pkgrel=1
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -48,6 +48,43 @@ prepare() {
   # Commented multiline comment start, remove the # below to disable the patches
   # : '
 
+  git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
+  git fetch vanvugt
+
+  # clutter-stage-cogl: Reduce output latency and reduce missed frames too [performance]
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/281
+  git cherry-pick df73e736^..e0262aac
+
+  # Consolidate all frame throttling into clutter-stage-cogl [performance]
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/363
+  # incompatible with !281 atm
+  # git cherry-pick 7e4270de^..27f669d0
+
+  # clutter-actor: Add detail to captured-event signal [performance]
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/283
+  git cherry-pick a20a0d7a
+
+  # clutter: Deliver events sooner when possible
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/168
+  git cherry-pick ae8fc614
+
+
+  # Resource scale computation optimizations
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/493
+  git cherry-pick 3aa449af^..1017ce44
+
+  # Add experimental key for RT scheduling
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/460
+  git cherry-pick b49640c4^..a18d6901
+
+  # cogl: Enable EGL_IMG_context_priority
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/454
+  git cherry-pick 14a27e87^..a40d7927
+
+  # WIP: renderer-native: Accept frames without ever blocking
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/119
+  # does not compile yet
+  # git cherry-pick 35ec0eaf^..202530c9
 
   # '
   # Commented multiline comment end, remove the # above if disabling the patches
@@ -64,9 +101,9 @@ prepare() {
 
 build() {
   arch-meson $pkgname build \
-   -D egl_device=true \
-   -D wayland_eglstream=true \
-   -D installed_tests=false
+    -D egl_device=true \
+    -D wayland_eglstream=true \
+    -D installed_tests=false
   ninja -C build
 }
 
