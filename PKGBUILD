@@ -2,7 +2,7 @@
 pkgname=gemini
 pkgver=1.14.3
 pkgrel=1
-pkgdesc="Graphical audio player"
+pkgdesc="Audio player with wallpaper changer"
 arch=('x86_64')
 md5sums=('dfc20a729026230e2a4119fa86972081')
 url="https://github.com/blooser/gemini"
@@ -21,7 +21,7 @@ Exec=${binlocation}/Gemini
 Icon[en_US]=${resourcelocation}/gemini.png
 Type=Application
 Categories=Application;AudioVideo
-Comment[en_US]=Take a break and listen to music while looking at wallpapers
+Comment[en_US]=Take a break and listen to your best music while looking at wonderful wallpapers
 "
 
 source=("https://github.com/blooser/gemini/archive/v${pkgver}.tar.gz")
@@ -46,7 +46,4 @@ package() {
 		echo "alias gemini=${binlocation}/Gemini" >> ~/.bashrc	
 	fi	
 }
-
-
-
 

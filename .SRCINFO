@@ -1,5 +1,5 @@
 pkgbase = gemini
-	pkgdesc = Graphical audio player
+	pkgdesc = Audio player with wallpaper changer
 	pkgver = 1.14.3
 	pkgrel = 1
 	url = https://github.com/blooser/gemini
