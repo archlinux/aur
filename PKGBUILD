@@ -16,10 +16,10 @@ depends=('gtkmm3'
          'libdbusmenu-gtk3'
          'libappindicator-gtk3'
          'libpulse'
-         'wlroots-git')
+         'wlroots')
 makedepends=('meson'
              'git')
-optdepends=('sway-git: Sway modules support'
+optdepends=('sway: Sway modules support'
             'otf-font-awesome: Icons in the default configuration')
 
 # source=("${pkgname}::git://github.com/Alexays/Waybar#commit=28c65c64"
