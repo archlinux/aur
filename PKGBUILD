@@ -1,7 +1,7 @@
 # Maintainer: Andy Kluger <AndyKluger@gmail.com>
 # Contributor: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-termlig-custom-git
-pkgver=r1145.68b55c13
+pkgver=r1186.a931066d
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
@@ -15,9 +15,9 @@ source=(
   "git+https://github.com/be5invis/Iosevka"
   "private-build-plans.toml"
 )
-md5sums=(
+sha256sums=(
   'SKIP'
-  '7d6b77730ff5400d69e004cc1921ea19'
+  '15a1d88a9b0841df42fac637048f1623154c11c9ae37a64d7320d1c9019668aa'
 )
 
 pkgver() {
@@ -34,7 +34,7 @@ prepare() {
 build() {
   cd Iosevka
   npm install
-  npm run build -- ttf:iosevka-termlig-custom
+  npm run build -- ttf::iosevka-termlig-custom
 }
 
 package() {
