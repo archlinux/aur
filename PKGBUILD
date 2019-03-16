@@ -19,6 +19,7 @@ depends=(
     'python-six>=1.6.1'
     'python-sqlalchemy'
     'python-xlrd'
+    'python-sphinx_rtd_theme>=0.1.6'
   )
 optdepends=(
     'ipython: nicer command-line for csvpy utility'
@@ -26,7 +27,6 @@ optdepends=(
 makedepends=(
     'python-setuptools'
     'python-sphinx>=1.2.2'
-    'python-sphinx_rtd_theme>=0.1.6'
   )
 source=("https://github.com/wireservice/csvkit/archive/${pkgver}.tar.gz")
 sha256sums=('4ca64988a648c845ad2f02a19d5736c3a2650a44b1dd8952b97b528c7f3e2a97')
@@ -38,6 +38,10 @@ package() {
     python setup.py build_sphinx
     mkdir -p "$pkgdir/usr/share/doc"
     cp -rv "$srcdir/$pkgname-$pkgver/build/sphinx/html" "$pkgdir/usr/share/doc/$pkgname"
+
+    _rtd_theme_path="$(python -c 'import sphinx_rtd_theme; print(sphinx_rtd_theme.get_html_theme_path())')"
+    rm -rvf "$pkgdir/usr/share/doc/$pkgname/_static"
+    ln -svf "$_rtd_theme_path/sphinx_rtd_theme/static" "$pkgdir/usr/share/doc/$pkgname/_static"
 }
 
 check() {

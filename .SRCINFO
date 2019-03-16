@@ -7,7 +7,6 @@ pkgbase = csvkit
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python-sphinx>=1.2.2
-	makedepends = python-sphinx_rtd_theme>=0.1.6
 	depends = python
 	depends = python-agate>=1.5.5
 	depends = python-agate-dbf>=0.2.0
@@ -19,6 +18,7 @@ pkgbase = csvkit
 	depends = python-six>=1.6.1
 	depends = python-sqlalchemy
 	depends = python-xlrd
+	depends = python-sphinx_rtd_theme>=0.1.6
 	optdepends = ipython: nicer command-line for csvpy utility
 	source = https://github.com/wireservice/csvkit/archive/1.0.3.tar.gz
 	sha256sums = 4ca64988a648c845ad2f02a19d5736c3a2650a44b1dd8952b97b528c7f3e2a97
