@@ -1,7 +1,7 @@
 # Maintainer: Dct Mei <dctxmei@gmail.com>
 pkgname=libinput-touchpad
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Libinput's touchpad configuration supplement"
 arch=('any')
 groups=('xorg')
