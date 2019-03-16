@@ -1,6 +1,6 @@
 pkgbase = valgrind-git
 	pkgdesc = A tool to help find memory-management problems in programs
-	pkgver = r16016.cd65782db
+	pkgver = VALGRIND_3_14_0.r124.g7e9113cb7
 	pkgrel = 1
 	url = http://valgrind.org/
 	arch = i686
@@ -12,11 +12,13 @@ pkgbase = valgrind-git
 	depends = glibc
 	depends = perl
 	optdepends = openmpi: MPI support
-	provides = valgrind=r16016.cd65782db
+	provides = valgrind=VALGRIND_3_14_0.r124.g7e9113cb7
 	conflicts = valgrind
 	options = !emptydirs
 	source = valgrind::git://sourceware.org/git/valgrind.git
+	source = libmpiwrap.patch
 	md5sums = SKIP
+	md5sums = d57c9ff520e65909f701528dd3e37d80
 
 pkgname = valgrind-git
 
