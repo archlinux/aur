@@ -2,25 +2,20 @@
 
 pkgname='hblock'
 pkgver=2.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='An adblocker that creates a hosts file from automatically downloaded blacklists'
 arch=('any')
 url='https://github.com/hectorm/hblock'
 license=('MIT')
 sha256sums=('2de6856a863e1901d03f6566ed7b425778e65484b7f62c2ebe7c2b2f6fd23363')
-source=("https://github.com/hectorm/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("https://github.com/hectorm/$pkgname/archive/v$pkgver.tar.gz")
 
 build() {
-	cd "${pkgname}-${pkgver}"
+	cd "$pkgname-$pkgver"
 	make
 }
 
-check() {
-	cd "${pkgname}-${pkgver}"
-	make -k check
-}
-
 package() {
-	cd "${pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}/" install
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir/" install
 }
