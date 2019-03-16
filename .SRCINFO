@@ -1,0 +1,36 @@
+pkgbase = gparted-f2fs-patch
+	pkgdesc = A Partition Magic clone, frontend to GNU Parted. Patched with experimental F2FS features.
+	pkgver = 0.33.0
+	pkgrel = 1
+	url = http://gparted.sourceforge.net
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = pkg-config
+	makedepends = gnome-doc-utils
+	makedepends = polkit
+	depends = parted
+	depends = gtkmm
+	optdepends = dosfstools: for FAT16 and FAT32 partitions
+	optdepends = jfsutils: for jfs partitions
+	optdepends = f2fs-tools: for Flash-Friendly File System
+	optdepends = btrfs-progs: for btrfs partitions
+	optdepends = exfat-utils: for exFAT partitions
+	optdepends = ntfs-3g: for ntfs partitions
+	optdepends = reiserfsprogs: for reiser partitions
+	optdepends = udftools: for UDF file system support
+	optdepends = xfsprogs: for xfs partitions
+	optdepends = nilfs-utils: for nilfs2 support
+	optdepends = polkit: to run gparted from application menu
+	optdepends = gpart: for recovering corrupt partition tables
+	optdepends = mtools: utilities to access MS-DOS disks
+	provides = gparted
+	conflicts = gparted
+	source = https://downloads.sourceforge.net/project/gparted/gparted/gparted-0.33.0/gparted-0.33.0.tar.gz
+	source = https://downloads.sourceforge.net/project/gparted/gparted/gparted-0.33.0/gparted-0.33.0.tar.gz.sig
+	validpgpkeys = BB09FFB87563FA2E1A22146817A6D3FF338C9570
+	sha256sums = 5023b8c983f88a22e65bf6f09a12ea09369defc008981b52ee8b96a3879f81d6
+	sha256sums = SKIP
+
+pkgname = gparted-f2fs-patch
+
