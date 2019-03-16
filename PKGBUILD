@@ -13,10 +13,10 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation14
-pkgver=14.1.5
-_buildver=10950780
+pkgver=14.1.6
+_buildver=12368378
 _pkgver=${pkgver}_${_buildver}
-pkgrel=3
+pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -94,7 +94,7 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  '6a002b42219d2011e828b1208f63fac3eb479e16da158a0fa7a6a940aec3d3ae'
+  '0d59207fa5d5ac587469608ec763958376f9feb9860c401e086cbc7c78be2629'
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
