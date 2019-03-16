@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Kamensky <mastersoft24@yandex.ru>
 
 pkgname=cloudcross
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Opensource cross-platform client for multiple cloud providers."
 arch=('x86_64')
@@ -11,7 +11,7 @@ categories=('network')
 replaces=('grive2')
 depends=( 'qt5-base' 'curl')
 source=("$pkgname-$pkgver::https://github.com/MasterSoft24/CloudCross/archive/v$pkgver.tar.gz")
-md5sums=('25f5a74391563de6c0f0a376cbab048a')
+md5sums=('d7cf9cbce273382f449c8e0c2b8e3e04')
 
 build() {
 	cd CloudCross-$pkgver
