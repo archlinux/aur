@@ -1,86 +1,173 @@
-# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de> 
-# Previously:John Lane <archlinux at jelmail dot com>
-# Previously:Fisher Duan <steamedfish@njuopen.com> Ryan Corder <ryanc@greengrey.org>
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
+# Contributor: John Lane <archlinux at jelmail dot com>
+# Contributor: Fisher Duan <steamedfish@njuopen.com>
+# Contributor: Ryan Corder <ryanc@greengrey.org>
 
-pkgname=cyrus-imapd
-pkgver=2.5.10
+pkgbase=cyrus-imapd
+pkgname=(cyrus-imapd cyrus-imapd-docs)
+pkgver=3.0.9
 pkgrel=1
-pkgdesc="Cyrus IMAP mail server"
+pkgdesc="An email, contacts and calendar server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://www.cyrusimap.org/"
-license=('custom')
-depends=('cyrus-sasl' 'db' 'libsasl' 'perl')
-provides=('imap-server' 'pop3-server')
-conflicts=('imap-server' 'pop3-server')
-options=('!makeflags')
-backup=(etc/cyrus/cyrus.conf etc/cyrus/imapd.conf)
-install="$pkgname.install"
-source=(ftp://ftp.cyrusimap.org/cyrus-imapd/$pkgname-$pkgver.tar.gz
-        'cyrus-master-conf.d'
-        'cyrus-imapd.install'
-        'cyrus-master.service')
-sha512sums=('78b85e37c63f1dbb60898da229f70f45810326a01244067d23b1317e2c2ae3326e48b6944787d59024e44c48c441ed2b848d6a83c451c192a3bb95c8f37880fa'
-            '881540a400670e86499db76af7cc41aa663a4492e3c512dbf0687f42b4a54dc5aca9df3ad315dd1c606d084feeec1a07670d50fae82fb9e71f30d5321d94327f'
-            '80bfc8a2fca10cd2aa965449c426c987adf156017b111cebc37b889b3d41b7c5ba8a574e3b858166a72101a0e55f02c16411d06aa4dadc0b6410d40d68902386'
-            '6cc4bbed0d5342a28a69e4acfa4a89f7a8909c6271e2e819e8da855dca2873fdaa5cea6519cb09c169b507df273d030eff5677bb07c4bf6591939958dd8e1bfe')
+url="https://www.cyrusimap.org/"
+license=('BSD')
+makedepends=('libsasl' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
+             'mariadb-libs' 'postgresql-libs' 'libnghttp2' 'brotli' 'shapelib'
+             'libldap' 'libcap' 'net-snmp' 'xapian-core' 'perl' 'clamav'
+             'python-sphinx' 'perl-pod-pom-view-restructured')
+source=("https://www.cyrusimap.org/releases/${pkgbase}-${pkgver}.tar.gz"{,.sig}
+        "clamav0.101.1.patch"
+        "vzic-flags.patch"
+        "imapd.conf.patch"
+        "cyrus-imapd.service"
+        "cyrus-imapd.sysusers.conf"
+        "cyrus-imapd.tmpfiles.conf")
+validpgpkeys=('5B55619A9D7040A9DEE2A2CB554F04FEB36378E0')
+sha512sums=('d1a65e957ad3bbbd70e4c8c699e226c17911c6f5815839694136b967a7067acaf4261c8aaad223ffb1e41d76ef78e9e7279a2805048de9b05939044ce17cb738'
+            'SKIP'
+            '35566c3c220d9d4f6d54915792940451956815535f4277f381ded6215331932861e0743414dd26612a30bfe46c36c8b063686679694013580bdb4b3494ac9c04'
+            'ff1adb55abb059f0c022ae3e375c0a099278d69174bef712b85af40b00fa68a6d49604d09f80195a429ff842813e914557d7aff773231776cbbc5037164c180a'
+            '0862ffc8c05208efd4d2fb50a6e3719ebc65fc2d72f8e6404235aa32cc44d8227056a17b78f2726e15ff8e38d473795f837c34bfbe89b694b2298c9baab9d5db'
+            '738242e80cec2c25ae6a85a889cc8d35d7c2f43b2b4d64d74f99a230b21024f168a885f1e319aec1aab0e0599e41211478b99dc608a4ba036be90f8d7e23fd96'
+            '28612e491371515b414ce6d34554f1c2286624f5b80872e6be7037a2cccba1ed5bd2c4bfed27ed978478debdfb5f3d56aaa30d767f50b125f2ad38e76a37702c'
+            '70fedcd78f4e505038e2716a0446e7bb7f7a344faf2ab43c51f47380ff56a9c2407cfbe0f24c006618a901e44ff124a7f6ed19203478a6b852d7bda7771210c5')
+
+prepare() {
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+
+  patch -Np1 < "${srcdir}/clamav0.101.1.patch"
+  patch -Np1 < "${srcdir}/vzic-flags.patch"
+}
 
 build() {
-    cd $srcdir/$pkgname-$pkgver
+  cd "${srcdir}/${pkgbase}-${pkgver}"
 
-    CFLAGS=-fPIC ./configure \
-     --prefix=/usr \
-     --includedir=/usr/include/cyrus --mandir=/usr/share/man \
-     --docdir=/usr/share/doc/cyrus \
-     --datadir=/usr/share/cyrus --sysconfdir=/etc/cyrus \
-     --localstatedir=/var/lib/cyrus \
-     --sharedstatedir=/usr/share/cyrus \
-     --enable-murder --enable-nntp --enable-replication \
-     --enable-idled \
-     --with-cyrus-user=cyrus --with-cyrus-group=mail \
-     --with-pidfile=/var/run/cyrmaster.pid \
-     --with-syslogfacility=MAIL \
-     --with-cyrus-prefix=/usr/lib/cyrus \
-     --without-libwrap \
-     --exec-prefix=/usr --libexecdir=/usr/sbin
+  export PERL_MM_OPT="NO_PACKLIST=true"
 
-    make
+  ./configure \
+    --prefix=/usr \
+    --libexecdir=/usr/lib/cyrus \
+    --sysconfdir=/etc/cyrus \
+    --sbindir=/usr/bin \
+    --enable-xapian \
+    --enable-autocreate \
+    --enable-idled \
+    --enable-nntp \
+    --enable-murder \
+    --enable-http \
+    --enable-calalarmd \
+    --enable-replication \
+    --enable-backup \
+    --with-mysql=yes \
+    --with-pgsql=yes \
+    --with-ldap \
+    --with-libcap \
+    --with-pidfile=/run/cyrus-master.pid \
+    --with-syslogfacility=MAIL
+
+  make
+  make -C tools/vzic
 }
 
-package() {
-    cd $srcdir/$pkgname-$pkgver
+check() {
+  cd "${srcdir}/${pkgbase}-${pkgver}"
 
-    make DESTDIR="${pkgdir}" install
-
-    # create required directories first    
-    mkdir -m 0755 -p $pkgdir/usr/lib/systemd/system
-    mkdir -m 0755 -p $pkgdir/usr/include/cyrus
-    mkdir -m 0755 -p $pkgdir/etc/cyrus
-    mkdir -m 0755 -p $pkgdir/etc/conf.d
-    mkdir -m 0755 -p $pkgdir/etc/rc.d
-    mkdir -m 0755 -p $pkgdir/usr/bin
-    
-    install -m 755 ${srcdir}/$pkgname-$pkgver/tools/mkimap ${pkgdir}/usr/bin/
-    
-    # rename master.8 so it doesn't conflict with master.8 from Postfix
-    mv $pkgdir/usr/share/man/man8/master.8 $pkgdir/usr/share/man/man8/cyrus-master.8
-
-    # move cyradm to standard location
-    mv $pkgdir/usr/bin/site_perl/cyradm $pkgdir/usr/bin/cyradm
-    rmdir $pkgdir/usr/bin/site_perl
-
-    # install configs, rc scripts, etc
-    install -m 600 $srcdir/$pkgname-$pkgver/master/conf/normal.conf \
-        $pkgdir/etc/cyrus/cyrus.conf
-    echo "# see imapd.conf(5) man page for correct setup of this file" >> \
-        $pkgdir/etc/cyrus/imapd.conf
-    chmod 600 $pkgdir/etc/cyrus/imapd.conf
-    install -m 644 $srcdir/cyrus-master-conf.d $pkgdir/etc/conf.d/cyrus-master
-    install -m 644 $srcdir/cyrus-master.service \
-        $pkgdir/usr/lib/systemd/system/cyrus-master.service
-    install -Dm 644 $srcdir/$pkgname-$pkgver/COPYING \
-        $pkgdir/usr/share/licenses/$pkgname/COPYING
-    install -Dm 644 $srcdir/$pkgname-$pkgver/README \
-        $pkgdir/usr/share/doc/$pkgname/README
+  make check
 }
 
+package_cyrus-imapd() {
+  depends=('libsasl' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
+           'mariadb-libs' 'postgresql-libs' 'libnghttp2' 'brotli' 'shapelib'
+           'libldap' 'libcap' 'net-snmp' 'xapian-core' 'perl')
+  optdepends=('cyrus-imapd-docs: documentation'
+              'clamav: for cyr_virusscan')
+  provides=('imap-server' 'pop3-server')
+  backup=('etc/cyrus/cyrus.conf' 'etc/cyrus/imapd.conf')
+  install="${pkgname}.install"
 
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
+
+  # perllocal.pod is undesired in packages
+  eval local $(perl -V:installarchlib)
+  rm "${pkgdir}/${installarchlib}/perllocal.pod"
+  rmdir "${pkgdir}/${installarchlib}"
+    
+  # Rename httpd.8 and master.8 so they don't conflict with the identically
+  # named manpages from postfix and apache
+  mv "${pkgdir}/usr/share/man/man8/httpd.8" \
+    "${pkgdir}/usr/share/man/man8/httpd.8cyrus"
+  mv "${pkgdir}/usr/share/man/man8/master.8" \
+    "${pkgdir}/usr/share/man/man8/master.8cyrus"
+
+  # Install additional utilities
+  for i in arbitronsort.pl masssievec mkimap mknewsgroups rehash \
+           translatesieve; do
+    install -Dm755 "tools/${i}" "${pkgdir}/usr/bin/${i}"
+  done
+  # Vzic is needed to convert timezone information for CalDAV. Since Cyrus
+  # includes a variant that has been modified for its own needs, we're
+  # installing it under a different name to avoid conflicts
+  install -Dm755 tools/vzic/vzic \
+    "${pkgdir}/usr/bin/cyrus-vzic"
+  install -Dm755 tools/vzic/vzic-merge.pl \
+    "${pkgdir}/usr/bin/cyrus-vzic-merge.pl"
+  # vzic-test.pl and vzic-dump.pl appear to be meant for development/testing
+
+  # Install additional manpages
+  for i in arbitronsort.pl synctest dav_reconstruct; do
+    install -Dm644 "man/${i}.1" "${pkgdir}/usr/share/man/man1/${i}.1"
+  done
+  for i in cvt_xlist_specialuse cyradm cyrdump cyr_sequence cyr_userseen \
+           lmtpproxyd masssievec mkimap mknewsgroups mupdate pop3proxyd proxyd \
+           ptdump ptexpire ptloader rehash sievec sieved translatesieve; do
+    install -Dm644 "man/${i}.8" "${pkgdir}/usr/share/man/man8/${i}.8"
+  done
+
+  # Install configuration files
+  install -Dm644 doc/examples/cyrus_conf/normal.conf \
+    "${pkgdir}/etc/cyrus/cyrus.conf"
+  install -Dm644 doc/examples/imapd_conf/normal.conf \
+    "${pkgdir}/etc/cyrus/imapd.conf"
+  patch "${pkgdir}/etc/cyrus/imapd.conf" "${srcdir}/imapd.conf.patch"
+  # Example cyrus.conf and imapd.conf use different socket paths, but they need
+  # to match
+  sed -i 's@/var/imap/socket/@/run/cyrus/socket/@' \
+    "${pkgdir}/etc/cyrus/cyrus.conf"
+
+  # Install default directories
+  install -dm750 -o70 -gmail \
+    "${pkgdir}/var/lib/cyrus" \
+    "${pkgdir}/var/spool/cyrus" \
+    "${pkgdir}/var/spool/sieve"
+
+  # Install system files
+  install -Dm644 "${srcdir}/cyrus-imapd.service" \
+    "${pkgdir}/usr/lib/systemd/system/cyrus-imapd.service"
+  install -Dm644 "${srcdir}/cyrus-imapd.sysusers.conf" \
+    "${pkgdir}/usr/lib/sysusers.d/cyrus-imapd.conf"
+  install -Dm644 "${srcdir}/cyrus-imapd.tmpfiles.conf" \
+    "${pkgdir}/usr/lib/tmpfiles.d/cyrus-imapd.conf"
+
+  # Install Documentation
+  install -Dm644 -t "${pkgdir}/usr/share/doc/cyrus-imapd/" \
+    README.md doc/README.*
+  cp -r doc/examples "${pkgdir}/usr/share/doc/cyrus-imapd/examples"
+
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+}
+
+package_cyrus-imapd-docs() {
+  pkgdesc="Documentation for the Cyrus IMAP server"
+  arch=('any')
+
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+
+  install -dm755 "${pkgdir}/usr/share/doc/cyrus-imapd"
+  cp -r doc/html doc/internal doc/legacy doc/text \
+    "${pkgdir}/usr/share/doc/cyrus-imapd"
+
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+}
