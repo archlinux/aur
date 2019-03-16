@@ -29,7 +29,7 @@ package() {
 
 	install -Dm644 -t "$pkgdir/usr/share/glib-2.0/schemas"         schemas/*.xml
 
-	install -Dm644 -t "$destdir" *.js *.json *.css
+	install -Dm644 -t "$destdir" *.js *.json
 	find locale -type f -name '*.mo' \
 		-exec cp --parents -dpt "$destdir" {} +
 }
