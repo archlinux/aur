@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-jasper
-pkgver=2.0.14
-pkgrel=3
+pkgver=2.0.16
+pkgrel=1
 pkgdesc="A software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard (mingw-w64)"
 arch=(any)
 url="http://www.ece.uvic.ca/~mdadams/jasper"
@@ -15,7 +15,7 @@ source=("https://github.com/mdadams/jasper/archive/version-${pkgver}.tar.gz"
         "002-add-more-exports.patch"
         "jasper-static-fix.patch")
 
-sha256sums=('85266eea728f8b14365db9eaf1edc7be4c348704e562bb05095b9a077cf1a97b'
+sha256sums=('f1d8b90f231184d99968f361884e2054a1714fdbbd9944ba1ae4ebdcc9bbfdb1'
             'f51377e9b3e4faaa6b17b2d5fcf6f6d94fe2916a65dc9c78b5a99b891f5726dc'
             '2b261c9b40b973d0d11f7b2b6842b36aee45657cbd5e0780fa73cb184f570b65'
             '48c60686d7e3c737f282513d78f8e6263e5f555d71de625002e3fba1c38c8850'
