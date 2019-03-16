@@ -1,0 +1,14 @@
+pkgbase = brother-hl5350dn-lpr-bin
+	pkgdesc = LPR driver for Brother HL-5350DN printer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=hl5350dn_eu
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf006004/hl5350dnlpr-2.0.3-1.i386.deb
+	md5sums = 6b949b14fdfe35aca66f8fe0a9cec2ad
+
+pkgname = brother-hl5350dn-lpr-bin
+
