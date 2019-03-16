@@ -1,5 +1,5 @@
 pkgbase = lyra
-	pkgdesc = A wonderful 3D cryptocurrency analyzer
+	pkgdesc = 3D cryptocurrency analyzer with real-time price tracker.
 	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/blooser/lyra

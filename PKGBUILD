@@ -2,7 +2,7 @@
 pkgname=lyra
 pkgver=1.6.2
 pkgrel=1
-pkgdesc="A wonderful 3D cryptocurrency analyzer"
+pkgdesc="3D cryptocurrency analyzer with real-time price tracker."
 arch=('x86_64')
 md5sums=('177948e8563eb50d11e37e6014d325e0')
 url="https://github.com/blooser/lyra"
@@ -15,12 +15,12 @@ shortcut="
 Encoding=UTF-8
 Version=${pkgver}
 Name[en_US]=Lyra
-GenericName=Wonderful 3D Cryptocurrency analyzer
+GenericName=3D Cryptocurrency analyzer
 Exec=${applocation}/run.sh
 Icon[en_US]=${applocation}/icons/coins.png
 Type=Application
 Categories=Application;Network
-Comment[en_US]=Analyze and track cryptocurrency
+Comment[en_US]=Analyze and track cryptocurrency prices
 "
 
 runscript="
@@ -45,6 +45,3 @@ package() {
 		echo "alias lyra=${applocation}/run.sh" >> ~/.bashrc	
 	fi
 }
-
-
-
