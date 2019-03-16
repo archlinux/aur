@@ -3,14 +3,15 @@ pkgbase=python-pydl
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}" "python-${_pyname}-doc")
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python replacements for functions that are part of the IDL built-in library or part of astronomical IDL libraries"
 arch=('i686' 'x86_64')
 url="http://pydl.readthedocs.io/"
 license=('BSD')
 makedepends=('python-setuptools' 'python-setuptools' 'python-astropy' 'python-astropy-helpers' 'python2-astropy-helpers' 'python-sphinx-astropy')
 checkdepends=('python-pytest-astropy' 'python2-pytest32' 'python2-matplotlib' 'python2-astropy')
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+#source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+source=("https://files.pythonhosted.org/packages/73/87/397a0d22112f48b794b39613ee3bddd315e64a38b33f24898962c4def5e4/pydl-0.7.0.tar.gz"
         "python2-${_pyname}.install")
 md5sums=('0bf0921aef8f5acbf192ac5c49f0d46c'
          '49781cc7f77b9620ebd1252f17c0aa9e')
@@ -52,7 +53,7 @@ package_python2-pydl() {
     optdepends=('python2-pytest32: For testing'
                 'python-pydl-doc: Documentation for PyDL')
     install=python2-${_pyname}.install
-    cd ${srcdir}/${_pyname}-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}-py2
 
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" licenses/*
