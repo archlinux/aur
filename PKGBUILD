@@ -4,7 +4,7 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-performance
-pkgver=3.32.0+15+gb7d79a5f0
+pkgver=3.32.0+16+gc5780056a
 pkgrel=1
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -32,6 +32,19 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+
+  # js/ui: Use captured-event::nonmotion [performance]
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/276
+  # Requires mutter MR283/commit "clutter-actor: Add detail to captured-event signal [performance]"
+  if pacman -Q | grep mutter-781835-workaround; then
+    git cherry-pick 297a18f2
+    echo "======= mutter-781835-workaround detected, MR276 is applied ======="
+    sleep 3
+  else
+    echo "======= mutter-781835-workaround not installed, not applying MR276 ======="
+    sleep 3
+  fi
+
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
   git submodule update
