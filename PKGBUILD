@@ -1,8 +1,8 @@
 # Maintainer: Morten Linderud <morten@linderud.pw>  
 pkgbase="python-anyconfig"
 pkgname=("python-anyconfig" "python2-anyconfig")
-pkgver=0.9.3
-pkgrel=5
+pkgver=0.9.8
+pkgrel=1
 pkgdesc='Generic access to configuration files in any formats (to be in the future)'
 url='https://github.com/ssato/python-anyconfig'
 arch=('any')
