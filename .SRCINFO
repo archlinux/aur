@@ -1,0 +1,24 @@
+pkgbase = aee-git
+	pkgdesc = Classic text editor with both curses and X11 interfaces.
+	pkgver = 2.2.21r4.ed7aa90
+	pkgrel = 1
+	url = https://github.com/xenji/aee.git
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	makedepends = git
+	source = git+https://github.com/xenji/aee.git
+	source = fix_help_and_init_file.patch
+	sha256sums = SKIP
+	sha256sums = 328ba28c07512c7044e7438e91908af80e97685942f34be2b6426bf7df640e85
+
+pkgname = aee-git
+	depends = glibc
+	provides = aee
+	conflicts = aee
+
+pkgname = xae-git
+	depends = libx11
+	depends = aee-git
+	provides = xae
+

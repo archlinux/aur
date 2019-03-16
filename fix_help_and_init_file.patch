@@ -1,0 +1,63 @@
+diff --git a/aee.c b/aee.c
+index 3317576..d5cc8fb 100755
+--- a/aee.c
++++ b/aee.c
+@@ -2627,8 +2627,7 @@ char *string;
+ }
+ 
+ char *init_name[6] = {
+-	"/usr/local/aee/init.ae", 
+-	"/usr/local/lib/init.ae", 
++	"/etc/aee/init.ae", 
+ 	NULL,                           /* to be ~/.init.ae */
+ 	".init.ae",
+ 	NULL,                           /* to be ~/.aeerc */
+diff --git a/help.ae b/help.ae
+index f77f031..685a99a 100755
+--- a/help.ae
++++ b/help.ae
+@@ -1058,11 +1058,11 @@ init.ae
+ 
+ 	The file 'init.ae' may be used to set parameters and define keys to 
+ perform certain functions within ae.  This file may reside in three 
+-locations: /usr/local/lib/init.ae, .init.ae in your home directory, and 
++locations: /etc/aee/init.ae, .init.ae in your home directory, and 
+ .init.ae in the current working directory.
+ 
+         First, aee checks for a system level initialization file, located in 
+-/usr/local/lib.  Next the user's home directory is checked for a file named 
++/etc/aee.  Next the user's home directory is checked for a file named 
+ .init.ae, then the current directory.  The settings from each file are read, 
+ so that the directives from the most recently read file will take precedence 
+ over previously read files.  This allows, for example, the .init.ae file in 
+diff --git a/help.c b/help.c
+index b19f435..41a7f35 100755
+--- a/help.c
++++ b/help.c
+@@ -10,11 +10,8 @@
+ 
+ #include "aee.h"
+ 
+-char *help_file_list[4] = {
+-	"/usr/local/aee/help.ae", 
+-	"/usr/local/lib/help.ae", 
+-	"~/.help.ae", 
+-	"help.ae" 
++char *help_file_list[1] = {
++	"/usr/share/aee/help.ae"
+ 	};
+ 
+ void 
+diff --git a/localize.c b/localize.c
+index 9bcd989..29b41d3 100755
+--- a/localize.c
++++ b/localize.c
+@@ -64,7 +64,7 @@ strings_init()
+ 	catalog = catopen("aee", 0);
+ #endif /* NO_CATGETS */
+ 
+-	ae_help_file = catgetlocal( 1, "/usr/local/lib/help.ae");
++	ae_help_file = catgetlocal( 1, "/usr/share/aee/help.ae");
+ 	main_buffer_name = catgetlocal( 2, "main");
+ 
+ 
