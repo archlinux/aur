@@ -1,0 +1,26 @@
+pkgbase = sandpolis-git
+	pkgdesc = Ultimate remote management utility
+	pkgver = r351.b31f2ec
+	pkgrel = 1
+	url = https://github.com/Subterranean-Security/Sandpolis
+	arch = any
+	license = Apache 2
+	makedepends = java-environment>=11
+	makedepends = git
+	depends = java-runtime>=11
+	source = git+https://github.com/Subterranean-Security/Sandpolis.git
+	sha512sums = SKIP
+
+pkgname = sandpolis-server-git
+	install = sandpolis-server.install
+	provides = sandpolis-server
+	conflicts = sandpolis-server
+
+pkgname = sandpolis-viewer-git
+	provides = sandpolis-viewer
+	conflicts = sandpolis-viewer
+
+pkgname = sandpolis-viewer-cli-git
+	provides = sandpolis-viewer-cli
+	conflicts = sandpolis-viewer-cli
+

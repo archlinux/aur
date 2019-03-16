@@ -1,0 +1,9 @@
+post_install() {
+  useradd -M -s /bin/false sandpolis
+  chown sandpolis /var/lib/sandpolis-server/db
+  chown sandpolis /var/lib/sandpolis-server/gen
+}
+
+post_remove() {
+  userdel sandpolis
+}
