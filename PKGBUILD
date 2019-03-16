@@ -2,8 +2,8 @@
 
 _pkgname=boomaga
 pkgname=${_pkgname}-git
-pkgver=2.0.99.beta4.r20.g5ac61e4
-pkgrel=2
+pkgver=3.0.0.r1.gff169ea
+pkgrel=1
 pkgdesc="A virtual printer for viewing a document before printing it out using the physical printer"
 arch=('i686' 'x86_64')
 url="http://www.boomaga.org"
