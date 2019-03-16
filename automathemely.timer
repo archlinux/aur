@@ -1,0 +1,9 @@
+[Unit]
+Description=Update automathemely sun times daily
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target
