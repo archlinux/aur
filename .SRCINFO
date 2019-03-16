@@ -1,0 +1,18 @@
+pkgbase = terminal-markdown-viewer
+	pkgdesc = Styled Terminal Markdown Viewer
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/axiros/terminal_markdown_viewer
+	arch = any
+	license = BSD
+	checkdepends = python2-nose
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-docopt
+	depends = python2-markdown
+	depends = python2-pyaml
+	source = https://github.com/axiros/terminal_markdown_viewer/archive/1.6.3.tar.gz
+	sha512sums = fdf79d4c67c5fe4b367397d9fa4d6559ff18671fc7cd88c1815b4acaf257afd5b088a37c3a09665439170dc89ce03f894b1416a28f1406591356d5d50c5eb5b9
+
+pkgname = terminal-markdown-viewer
+
