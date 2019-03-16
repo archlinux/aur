@@ -1,9 +1,9 @@
 
 pkgbase=bind-stable
 pkgname=(bind-stable bind-stable-tools)
-_pkgver=9.12.3-P4
+_pkgver=9.12.4
 pkgver=${_pkgver//-/.}
-pkgrel=6
+pkgrel=1
 url='https://www.isc.org/software/bind/'
 license=('MPL2')
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=("https://ftp.isc.org/isc/bind9/${_pkgver}/bind-${_pkgver}.tar.gz"{,.asc}
         '127.0.0.zone'
         'empty.zone'
         )
-sha1sums=('883c1513e0c97887db2c57625b1c6ad5f15f8078'
+sha1sums=('b0078a9fdb1ff31627b9a765566d12853af248a9'
           'SKIP'
           'c5a2bcd9b0f009ae71f3a03fbdbe012196962a11'
           '9537f4835a1f736788d0733c7996a10db2d4eee4'
