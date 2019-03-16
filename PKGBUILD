@@ -1,51 +1,52 @@
+# Maintainer: LIN Ruoshui <lin dot ruohshoei plus archlinux at gmail dot com>
+# Contributor: lukpod
+
 pkgname=amule-git
-pkgver=2.3.2.r49.dc0f6c6f7
+pkgver=2.3.2.r64.20afd75fa
 pkgrel=1
 pkgdesc="Client for the eD2k and Kad networks"
-arch=(i686 x86_64)
+arch=('x86_64')
 url=http://amule.org/
-license=(GPL)
-depends=(boost-libs crypto++ geoip libupnp wxgtk2)
-makedepends=(autoconf automake boost git pkg-config)
+license=(GPL2)
+depends=(boost-libs crypto++ geoip libupnp wxgtk2 gd boost-libs)
+makedepends=(git ccache boost)
 conflicts=(amule)
 source=(
 git+https://github.com/amule-project/amule.git
-#https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/use_xdg-open_as_preview_default.diff
-#https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/version_check.diff
-https://gitlab.com/palopezv/aur-amule-git-patches/raw/master/amuled@.service
-https://gitlab.com/palopezv/aur-amule-git-patches/raw/master/use_xdg-open_as_preview_default.diff
-https://gitlab.com/palopezv/aur-amule-git-patches/raw/master/version_check.diff
+#git+https://repo.or.cz/amule.git
+amuled.systemd amuleweb.systemd amule.sysusers amule.tmpfiles
 )
 sha256sums=('SKIP'
-            'b8ade9930c00c411958758a2f8267c0a56320270fc06b2ee15243a027795745d'
-            '902f8f719c1c02335880621717f23c683da8edbb31add75d3e1267b190e03b9c'
-            '7bf39a64a723ab3e55ccfef93df2ec9cdd8108e56aa0733a4412755931cb3244')
+            '20ac6b60c5f3bf49c0b080dfc02409da3c9d01b154344188008c6a75ca69681e'
+            'f4f43b1154ddccc9036a4291a58c6715f097b171fec62ea7aead0c9d9fa654f2'
+            'c4ca658ab4105b3b90e0bb3efcc8121eca1c4d873787db1ed4f637925c16d502'
+            'e9d1b7019c7075b0f8616c6507a767b87de8f899936680e9ff5829d8cbba224d')
 
 pkgver() {
   cd amule/
-  git describe | sed 's/-/.r/; s/-g/./'
-}
-
-prepare() {
-  cd amule/
-  patch -Np1 <$srcdir/use_xdg-open_as_preview_default.diff
-  patch -Np1 <$srcdir/version_check.diff
+  git describe --tags | sed 's/-/.r/; s/-g/./'
 }
 
 build() {
   cd amule/
   ./autogen.sh
-  local confargs=(
-    --disable-debug
-    --disable-rpath
-    --enable-alcc
-    --enable-geoip
-    --enable-mmap
-    --enable-optimize
-    --prefix=/usr
-    --with-boost
-  )
-  ./configure ${confargs[@]}
+  ./configure --prefix=/usr \
+              --mandir=/usr/share/man \
+              --enable-cas \
+              --enable-wxcas \
+              --enable-amule-daemon \
+              --enable-amulecmd \
+              --enable-amule-gui \
+              --enable-alc \
+              --enable-alcc \
+              --enable-webserver \
+              --disable-debug \
+              --enable-optimize \
+              --enable-ccache \
+              --enable-geoip \
+              --enable-upnp \
+              --enable-fileview \
+              --with-boost
   make
 }
 
@@ -54,5 +55,10 @@ check() {
 }
 
 package() {
-  make -C amule/ DESTDIR=$pkgdir install
+  cd amule
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "$srcdir"/amuled.systemd "$pkgdir"/usr/lib/systemd/system/amuled.service
+  install -Dm644 "$srcdir"/amuleweb.systemd "$pkgdir"/usr/lib/systemd/system/amuleweb.service
+  install -Dm644 "$srcdir"/amule.sysusers "$pkgdir"/usr/lib/sysusers.d/amule.conf
+  install -Dm644 "$srcdir"/amule.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/amule.conf
 }
