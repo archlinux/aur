@@ -1,0 +1,16 @@
+# systemd service for the dotproxy daemon.
+
+[Unit]
+Description=DNS-over-TLS proxy
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+SyslogIdentifier=dotproxy
+ExecStart=/usr/bin/dotproxy  --config /etc/dotproxy/config.yaml --verbosity info
+
+[Install]
+WantedBy=multi-user.target
