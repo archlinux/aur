@@ -38,9 +38,9 @@ package() {
         etc=( daemons daemons.conf frr.conf vtysh.cnf )
         pushd ${srcdir}/${pkgname}
         sed -i 's/lib\/frr/bin/' tools/frr.service
-        install -m 0644 tools/frr.service ${pkgdir}/usr/lib/systemd/system/frr.service
+        install -D -m 0644 tools/frr.service ${pkgdir}/usr/lib/systemd/system/frr.service
         for item in etc; do
-          install -m 0644 tools/etc/ffr/${item} ${pkgdir}/etc/ffr/${item}
+          install -D -m 0644 tools/etc/ffr/${item} ${pkgdir}/etc/ffr/${item}
         done
 	make DESTDIR=${pkgdir} install
 }
