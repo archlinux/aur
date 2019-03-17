@@ -7,6 +7,7 @@ pkgbase = python2-evdev
 	license = BSD
 	makedepends = python2
 	makedepends = git
+	depends = python2-pbr
 	source = git+https://github.com/gvalkov/python-evdev#commit=34a7535e8e160c78bf923adc48a1f1f6bcdcaae8
 	sha256sums = SKIP
 
