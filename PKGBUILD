@@ -1,7 +1,7 @@
 pkgname=(frrouting)
 license=(GPL2)
 pkgver=r15008.61be0e35f
-pkgrel=4
+pkgrel=5
 pkgdesc="FFRouting - IP routing protocol suite for Linux and Unix platforms - git"
 makedepends=(gcc git linux-headers libyang net-snmp)
 depends=(libyang net-snmp)
@@ -50,4 +50,6 @@ package() {
         for item in ${etc[@]}; do
           install -D -m 0644 tools/etc/frr/${item} ${pkgdir}/etc/frr/${item}
         done
+        install -D -m 0644 "${srcdir}/sysusers.frr.conf" "${pkgdir}/usr/lib/sysusers.d/frr.conf"
+
 }
