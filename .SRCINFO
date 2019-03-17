@@ -1,6 +1,6 @@
 pkgbase = miasm-git
 	pkgdesc = Machine code manipulation library
-	pkgver = 0.1.1.dev89
+	pkgver = 0.1.1.dev91
 	pkgrel = 1
 	url = https://miasm.re/
 	arch = any
@@ -18,6 +18,8 @@ pkgname = python-miasm-git
 	optdepends = python-llvmlite: jit with LLVM engine, bridge between Miasm and LLVM IRs
 	optdepends = python-pycparser: additional features based on type manipulations
 	optdepends = python-z3: additional features based on constraint solving
+	provides = python-miasm
+	conflicts = python-miasm
 
 pkgname = python2-miasm-git
 	depends = python2
@@ -26,4 +28,6 @@ pkgname = python2-miasm-git
 	optdepends = python2-llvmlite: jit with LLVM engine, bridge between Miasm and LLVM IRs
 	optdepends = python2-pycparser: additional features based on type manipulations
 	optdepends = python2-z3: additional features based on constraint solving
+	provides = python2-miasm
+	conflicts = python2-miasm
 
