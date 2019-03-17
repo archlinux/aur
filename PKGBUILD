@@ -5,16 +5,16 @@
 # Contributor: strata <strata@dropswitch.net>
 pkgname=lua51-sql-sqlite
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='http://www.keplerproject.org/luasql/'
 license=('MIT')
 pkgdesc='SQLite module for Lua 5.1'
 depends=('lua51' 'sqlite')
-makedepends=('luarocks5.1')
+makedepends=('luarocks')
 
 build() {
-  luarocks-5.1 --tree="${srcdir}" build luasql-sqlite3
+ luarocks --lua-version=5.1 --tree="${srcdir}" build luasql-sqlite3
 }
 
 package() {
