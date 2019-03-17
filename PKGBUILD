@@ -2,16 +2,16 @@
 # Contributor: strata <strata@dropswitch.net>
 pkgname=luazip5.1
 pkgver=1.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="reading files inside zip files"
 arch=('i686' 'x86_64')
 url="http://www.keplerproject.org/luazip/"
 license=('MIT')
 depends=('lua51' 'zziplib')
-makedepends=('git' 'luarocks5.1')
+makedepends=('git' 'luarocks')
 
 build() {
-  luarocks-5.1 --tree="${srcdir}" build luazip
+   luarocks --lua-version=5.1 --tree="${srcdir}" build luazip
 }
 
 package() {
