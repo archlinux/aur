@@ -1,12 +1,12 @@
 pkgbase = lua51-lcf
 	pkgdesc = Lua code formatter (for Lua 5.1)
 	pkgver = 5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/martin-eden/lua_code_formatter
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = luarocks5.1
+	makedepends = luarocks
 	depends = lua51
 	source = https://luarocks.org/lcf-5.1-2.src.rock
 	sha256sums = 318af3a5783c696e91ee2e7377b54e16651965ac93b0b71435a9fc7957428cd3
