@@ -1,6 +1,6 @@
 # Maintainer: Henri Derycke <nheir.kim@gmail.com>
 pkgname=bluez-alsa-git
-pkgver=1.3.1.r39.g576b584
+pkgver=1.4.0.r1.ga6c087c
 pkgrel=1
 pkgdesc="Bluetooth Audio ALSA Backend"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -34,7 +34,7 @@ build() {
 package() {
 	cd "$pkgname"
 	make DESTDIR="$pkgdir/" install
-	install -Dm0644 $srcdir/$pkgname/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	install -Dm0644 $srcdir/$pkgname/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 	install -Dm0644 $srcdir/bluealsa.tmpfiles $pkgdir/usr/lib/tmpfiles.d/bluealsa.conf
 	install -Dm0644 $srcdir/bluealsa.sysusers $pkgdir/usr/lib/sysusers.d/bluealsa.conf
 	install -Dm0644 $srcdir/bluealsa.service $pkgdir/usr/lib/systemd/system/bluealsa.service
