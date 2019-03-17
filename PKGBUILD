@@ -55,13 +55,13 @@ _htmldocs_enable=
 ### Do not edit below this line unless you know what you're doing
 
 # pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
-_major=4.20
+_major=5.0
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
-_lqxpatchrel=15
+_lqxpatchrel=1
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
-pkgver=4.20.16_2
+pkgver=5.0.2_1
 pkgrel=1
 arch=('x86_64')
 url="http://liquorix.net/"
@@ -73,8 +73,8 @@ if [ -n "$_htmldocs_enable" ]; then
     makedepends+=('python-sphinx' 'graphviz')
 fi
 
-source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
+        "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "https://github.com/damentz/${_lqxpatchname}/archive/${_major}-${_lqxpatchrel}.tar.gz"
          # pacman hook for depmod
         '60-linux.hook'
@@ -393,9 +393,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('e282399beea5da539701aed2bc131abd5bc74a970dcd344163e9d295106dfd700180e672ed546ae5e55bc6b9ac95efd5ca1de2039015c1b7a6fc9c01ea6583d4'
+sha512sums=('3fbab70c7b03b1a10e9fa14d1e2e1f550faba4f5792b7699ca006951da74ab86e7d7f19c6a67849ab99343186e7d6f2752cd910d76222213b93c1eab90abf1b0'
             'SKIP'
-            '96933fd83ffd8699c570f0fc1656c37d67e38c46f2d06353a270588ed9fd65cc1d41703bd15978026dabe6b8b9d7e7746a73ed084a1ca036257c170a47145121'
+            '91be53d8e1cf05fc2fb34c54ec6fec0e8a79076c6d8b853ee0bcb3a22e7bb044d40861b292f164c3c7db4435c3ff5abf659847b74a40069c6d42fcd564b8f8de'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'
