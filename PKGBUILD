@@ -6,7 +6,7 @@ pkgdesc="FFRouting - IP routing protocol suite for Linux and Unix platforms - gi
 makedepends=("gcc" "git" "linux-headers" "libyang" "net-snmp")
 depends=("libyang")
 arch=("x86_64")
-url="https://ffrouting.org"
+url="https://frrouting.org"
 source=("${pkgname%-*}::git+https://github.com/FRRouting/frr.git")
 sha1sums=("SKIP")
 provides=("${pkgname}")
@@ -40,7 +40,7 @@ package() {
         sed -i 's/lib\/frr/bin/' tools/frr.service
         install -D -m 0644 tools/frr.service ${pkgdir}/usr/lib/systemd/system/frr.service
         for item in etc; do
-          install -D -m 0644 tools/etc/ffr/${item} ${pkgdir}/etc/ffr/${item}
+          install -D -m 0644 tools/etc/frr/${item} ${pkgdir}/etc/frr/${item}
         done
 	make DESTDIR=${pkgdir} install
 }
