@@ -23,8 +23,8 @@ prepare() {
          --enable-systemd \
          --enable-sharpd \
          --enable-snmp \
-         --localstatedir=/var/run/ffr \
-         --sysconfdir=/etc/ffr \
+         --localstatedir=/var/run/frr \
+         --sysconfdir=/etc/frr \
          --sbindir=/usr/bin \
          --disable-doc
 }
