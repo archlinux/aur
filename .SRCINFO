@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-glibmm
 	pkgdesc = C++ bindings for GLib (mingw-w64)
-	pkgver = 2.58.0
+	pkgver = 2.58.1
 	pkgrel = 1
 	url = https://www.gtkmm.org/
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = mingw-w64-glibmm
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.gnome.org/sources/glibmm/2.58/glibmm-2.58.0.tar.xz
-	md5sums = 4a0402ac65a7c47424b4e21b81b079c0
+	source = https://download.gnome.org/sources/glibmm/2.58/glibmm-2.58.1.tar.xz
+	md5sums = 77f1016cbb27e15d4e04a2b7bfdb4cae
 
 pkgname = mingw-w64-glibmm
 
