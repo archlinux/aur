@@ -1,7 +1,7 @@
 pkgbase = kamailio
 	pkgdesc = Rock solid SIP server
-	pkgver = 5.2.1
-	pkgrel = 2
+	pkgver = 5.2.2
+	pkgrel = 1
 	url = http://www.kamailio.org/
 	arch = i686
 	arch = x86_64
@@ -46,10 +46,10 @@ pkgbase = kamailio
 	makedepends = lksctp-tools
 	makedepends = ruby
 	makedepends = freeradius-client
-	source = http://www.kamailio.org/pub/kamailio/5.2.1/src/kamailio-5.2.1_src.tar.gz
+	source = http://www.kamailio.org/pub/kamailio/5.2.2/src/kamailio-5.2.2_src.tar.gz
 	source = kamailio.service
-	sha256sums = 95d2158f97c76124a381364d99de1420f193275c5a1c9f88489c6409702f2c8f
-	sha256sums = bd434a9b71fc65483f4844c2d75b6f3d5cc5278569d6b14614f42241a6eb2b56
+	sha256sums = 58edf963ed5f24a5a7bbc60bd31d390f8e17cba9abf55bc77d760173b0069bdc
+	sha256sums = 0ccad93274866b9116fe1e029368b92d4bebd7806a3d8f7978a20e44cf0f6451
 
 pkgname = kamailio
 	depends = pcre
