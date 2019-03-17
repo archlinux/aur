@@ -1,0 +1,20 @@
+pkgbase = tarquin
+	pkgdesc = An analysis tool for automatically determining the quantities of molecules present in MR spectroscopy data
+	pkgver = 4.3.12
+	pkgrel = 1
+	url = http://tarquin.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = gcc-fortran
+	makedepends = boost
+	depends = lapack
+	depends = protobuf
+	depends = fftw
+	depends = gnuplot
+	depends = qwt5
+	source = https://github.com/martin3141/tarquin/archive/v4.3.12.tar.gz
+	md5sums = 9886ccd6eaaa35b7b60a26fd56cafecd
+
+pkgname = tarquin
+

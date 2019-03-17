@@ -1,0 +1,13 @@
+--- CMakeLists.txt	2019-03-16 16:10:00.160047036 +0000
++++ CMakeLists_arch.txt	2019-03-16 16:09:46.700046293 +0000
+@@ -28,8 +28,8 @@
+ 	set( FFTW_LIB     -lfftw3 )
+ 	#set( FFTW_LIB     /usr/lib/i386-linux-gnu/libfftw3.a )
+ 
+-	set( QWT_INCLUDE /usr/include/qwt-qt4 )
+-	set( QWT_LIB     -lqwt-qt4 )
++	set( QWT_INCLUDE /usr/include/qwt5 )
++	set( QWT_LIB     -lqwt5 )
+ 
+ 	#set( QWT_INCLUDE /usr/local/qwt-5.2.3/include )
+ 	#set( QWT_LIB     /usr/local/qwt-5.2.3/lib/libqwt.a )
