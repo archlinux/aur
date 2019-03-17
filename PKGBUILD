@@ -1,11 +1,11 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=shinjiru-git
 _pkgname=Shinjiru
-pkgver=3.3.3.r2.gcf4f3b4
+pkgver=3.3.4.r0.g32458b9
 pkgrel=1
 pkgdesc="Shinjiru is an anime list management tool built with Qt designed to automatically update your progress to AniList and act an desktop manager for AniList."
 arch=('i686' 'x86_64')
-url="https://github.com/Kazakuri/Shinjiru"
+url="https://github.com/ShinjiruApp/Shinjiru"
 license=('GPL')
 groups=()
 depends=('hicolor-icon-theme' 'libxinerama' 'qt5-networkauth' 'qt5-base' 'qt5-webkit' 'qt5-webengine' 'gcc-libs-multilib')
