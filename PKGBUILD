@@ -2,8 +2,8 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='aeon'
-pkgver='0.12.8.0'
-pkgrel='2'
+pkgver='0.12.9.0'
+pkgrel='1'
 pkgdesc='A lightweight CryptoNote digital currency.'
 url="https://github.com/${pkgname}ix/${pkgname}"
 depends=('boost-libs' 'openssl' 'zeromq' 'pcsclite' 'icu' 'readline')
@@ -14,14 +14,12 @@ source=("${pkgname}d.service"
 	"${pkgname}.sysusers"
 	"${pkgname}.tmpfiles"
 	"${pkgname}d.conf"
-	"${url}/archive/v${pkgver}-${pkgname}.tar.gz"
-	"https://raw.githubusercontent.com/arcmags/repo/master/pkgbuild/aeon/boost.patch")
+	"${url}/archive/v${pkgver}-${pkgname}.tar.gz")
 sha256sums=('5212dff199bb3880191292976cd8278dcdbae64f9c0ab39a9c2a91a4733186c3'
             'a0cdf75b86073829f4033e367f36e9418dc20556e7adfa6ffac8653c67cd6337'
             '1da20b66d52db4f1c5b3106cf27ee54033650a0e36c5c775b25c9e86e6027be0'
             '3ef15e3c9e2d146c415f2e483dd10e4ec36f653e4684c254d9f69a5fb699036b'
-            '4c591edba109d900416f0a069b6c56ff1772099849928ff9db5664e5a17a28bf'
-            '824000b8c1a9babc87ab36d32ec0bc38fa58caee813f0f575e81f9bcccfc10af')
+            '68d4183275fea756fbc203242016b7bec03289f67fd2dac69721de04d1b46fd3')
 backup=("etc/${pkgname}d.conf")
 
 prepare() {
@@ -30,12 +28,12 @@ prepare() {
   git clone git://github.com/monero-project/unbound.git external/unbound
   git -C external/miniupnp checkout monero
   git -C external/unbound checkout monero
-  patch -p1 -i "${srcdir}/boost.patch"
 }
 
 build() {
   cd "${pkgname}-${pkgver}-${pkgname}"
-  make release
+  cmake -DMANUAL_SUBMODULES=1
+  make
 }
 
 package() {
@@ -44,5 +42,5 @@ package() {
   install -Dm0644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm0644 "${srcdir}/${pkgname}d.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}d.service"
   install -Dm0644 "${srcdir}/${pkgname}d.conf" "${pkgdir}/etc/${pkgname}d.conf"
-  cp -r "build/release/bin" "${pkgdir}/usr"
+  cp -r "bin" "${pkgdir}/usr"
 }
