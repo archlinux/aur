@@ -1,6 +1,6 @@
 pkgbase = dreamchess-git
 	pkgdesc = DreamChess - OpenGL Chess Game
-	pkgver = 498.1c68b1e
+	pkgver = 476.1769262
 	pkgrel = 1
 	url = https://github.com/dreamchess/dreamchess
 	arch = i686

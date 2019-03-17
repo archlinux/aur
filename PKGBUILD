@@ -2,7 +2,7 @@
 
 pkgname=dreamchess-git
 _pkgname=dreamchess
-pkgver=498.1c68b1e
+pkgver=476.1769262
 pkgrel=1
 pkgdesc="DreamChess - OpenGL Chess Game"
 arch=('i686' 'x86_64')
