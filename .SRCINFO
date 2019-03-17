@@ -1,7 +1,7 @@
 pkgbase = cinnamon-git
 	pkgdesc = Linux desktop which provides advanced innovative features and a traditional user experience
-	pkgver = 4.0.9.r51.gc1820893f
-	pkgrel = 1
+	pkgver = 4.0.9.r59.geeecd5bd5
+	pkgrel = 2
 	url = https://github.com/linuxmint/cinnamon
 	arch = x86_64
 	license = GPL2
@@ -23,7 +23,7 @@ pkgbase = cinnamon-git
 	depends = libgnomekbd
 	depends = libkeybinder3
 	depends = librsvg
-	depends = muffin>=4.0.6.r16.g566c4f5b8
+	depends = muffin>=4.0.6.r21.gdf879dc
 	depends = network-manager-applet
 	depends = nemo
 	depends = polkit-gnome
