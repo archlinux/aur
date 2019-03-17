@@ -3,7 +3,7 @@
 
 pkgname=python2-freetype-py
 _name=freetype-py
-pkgver=2.0.0.post6
+pkgver=2.1.0.post1
 pkgrel=1
 pkgdesc="FreeType Python bindings"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python2')
 makedepends=('python2-setuptools')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/f/freetype-py/freetype-py-${pkgver}.tar.gz")
-sha1sums=('a97bef7816cb155beb63c7fad4f1ddd137f72f89')
+sha1sums=('d00bb67064091928f56e0ed8c372643d4f4cc484')
 
 package() {
   cd "$srcdir/freetype-py-$pkgver"
