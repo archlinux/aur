@@ -1,6 +1,6 @@
 pkgbase = featherpad-git
 	pkgdesc = Lightweight Qt5 plain text editor for Linux
-	pkgver = r110.e54a5c6
+	pkgver = 0.9.4.10.g8026818
 	pkgrel = 1
 	url = https://github.com/tsujan/FeatherPad
 	arch = i686
