@@ -1,6 +1,6 @@
 pkgbase = ivre-git
 	pkgdesc = Network recon framework
-	pkgver = 0.9.12
+	pkgver = 0.9.12.dev51
 	pkgrel = 1
 	url = https://ivre.rocks/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = ivre-git
 	sha256sums = SKIP
 
 pkgname = ivre-git
-	depends = python-ivre
+	depends = python-ivre-git
 	optdepends = ivre-docs-git: Documentation
 	optdepends = ivre-web-git: Web server
 	optdepends = nmap: Network scan

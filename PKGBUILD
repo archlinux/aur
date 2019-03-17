@@ -34,7 +34,7 @@ build() {
 }
 
 package_ivre-git() {
-  depends=('python-ivre')
+  depends=('python-ivre-git')
   optdepends=('ivre-docs-git: Documentation'
               'ivre-web-git: Web server'
               'nmap: Network scan'
