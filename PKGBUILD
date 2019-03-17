@@ -9,8 +9,8 @@
 
 pkgname=djgpp-djcrx-bootstrap
 pkgver=2.05
-pkgrel=2
-pkgdec="DJGPP C library and development files for initial bootstrapping djgpp-gcc"
+pkgrel=3
+pkgdesc="DJGPP C library and development files for initial bootstrapping djgpp-gcc"
 arch=('i686' 'x86_64')
 provides=(djgpp-djcrx)
 url="http://www.delorie.com/djgpp/"
