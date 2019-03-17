@@ -1,6 +1,6 @@
 pkgbase = osu-downloader
 	pkgdesc = osu! beatmap downloader based on Osu-Masive-Beatmap-Downloader
-	pkgver = 0.0.1
+	pkgver = 420
 	pkgrel = 1
 	url = https://github.com/GarciaMiguelangel/Osu-Masive-Beatmap-Downloader/
 	arch = any

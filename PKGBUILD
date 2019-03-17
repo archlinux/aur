@@ -1,6 +1,6 @@
 # Maintainer: yurisuki
 pkgname=osu-downloader
-pkgver=0.0.1
+pkgver=420
 pkgrel=1
 pkgdesc="osu! beatmap downloader based on Osu-Masive-Beatmap-Downloader"
 arch=('any')
