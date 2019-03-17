@@ -1,7 +1,7 @@
 # Maintainer: perqin <perqinxie at gmail dot com>
 
 pkgname=sublime-text-3-imfix
-pkgver=3.3176
+pkgver=3.3200
 pkgrel=1
 pkgdesc='Sophisticated text editor for code, markup and prose - Stable build with input method support for CJK users'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     'LICENSE'
 )
 sha256sums=(
-    '74f17c1aec4ddec9d4d4c39f5aec0414a4755d407a05efa571e8892e0b9cf732'
+    'b9d5297c65bd14a8ba3394e74dbd9a5013b3fed5a5a2f8f5120d2cec40614fbd'
     '05c08fc144151713e25ebb528c2a86ef5aaf3afa3e20b79302faefdbb7158f12'
     '00ab76aff168a0dcccec861610985e3695da10e6f95ce1fa399f5747b4d5af5b'
     '8e4c48469bf3f35d0c0904e770c4e307d4965a8931e839c01c5765498a19cf01'
