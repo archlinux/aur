@@ -1,7 +1,8 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Aleksandar Trifunovic akstrfn at gmail dot com
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=python-bayesian-optimization
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Bayesian global optimization with gaussian processes'
 arch=(any)
@@ -14,7 +15,6 @@ md5sums=('SKIP')
 
 build() {
   cd BayesianOptimization
-
   python setup.py build
 }
 
