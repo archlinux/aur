@@ -1,35 +1,41 @@
-# Maintainer:  Eric DeStefano <eric at ericdestefano dot com> 
+# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Contributor: Eric DeStefano <eric at ericdestefano dot com> 
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Boris Timofeev <mashin87@gmail.com>
+
 pkgname=xroar
-pkgver=0.35
+pkgver=0.35.3
 pkgrel=1
-pkgdesc="A Dragon and Tandy CoCo emulator."
+pkgdesc='A Dragon and Tandy CoCo emulator'
 arch=('x86_64')
-license=('GPL')
-url="http://www.6809.org.uk/dragon/xroar.shtml"
+license=('GPL2')
+url='https://www.6809.org.uk/xroar'
 depends=('gtk2' 'sdl2' 'libgl' 'libsndfile' 'gtkglext')
-makedepends=()
-install=xroar.install
-source=(http://www.6809.org.uk/xroar/dl/$pkgname-$pkgver.tar.gz
-        xroar.desktop
-        xroar.png)
-sha256sums=('9fd751cbcf52689e53623c4a58add5a27be22356bc3e61bdb9ca4a474513432d'
-            '50eb3ca94bbc9972283998818b8dab2bcdb1dcc369f39aa97439b5b8ba0aa8dc'
-            '1468756d038a050640764ee9a86e98ff04e1072f1a9b8da9be87039a02367eb1')
+makedepends=('gendesk')
+install=${pkgname}.install
+source=("${url}/dl/${pkgname}-${pkgver}.tar.gz"
+        "${pkgname}.png")
+sha256sums=('55bd7e829022b75f10d44ad61e0b2597a0c8eaeba22044984ca25b14a4111ab5'
+            '0c6e5def77c6ca809cd69ae518512a89bff335147b44eb9ffc898d7302a17a59')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+
+  gendesk --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" --exec "/usr/bin/${pkgname}" -n
+}
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  ./configure --prefix=/usr --disable-jack
+  cd "${pkgname}-${pkgver}"
+
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  install -D -m 755 ./src/xroar $pkgdir/usr/bin/xroar
-  install -D -m 644 ../xroar.png $pkgdir/usr/share/pixmaps/xroar.png
-  install -D -m 644 ../xroar.desktop $pkgdir/usr/share/applications/xroar.desktop
-  mkdir -p $pkgdir/usr/share/xroar/roms
-  gzip ./doc/xroar.info
-  install -D -m 644 ./doc/xroar.info.gz $pkgdir/usr/share/info/xroar.info.gz
+  cd "${pkgname}-${pkgver}"
+
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 "../${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -dm644 "${pkgdir}/usr/share/${pkgname}/roms"
 }
