@@ -1,13 +1,13 @@
 pkgname=(frrouting)
 license=(GPL2)
 pkgver=r15008.61be0e35f
-pkgrel=6
+pkgrel=7
 pkgdesc="FFRouting - IP routing protocol suite for Linux and Unix platforms - git"
 makedepends=(gcc git linux-headers libyang net-snmp)
 depends=(libyang net-snmp)
 arch=(x86_64)
 url="https://frrouting.org"
-source=("${pkgname%-*}::git+https://github.com/FRRouting/frr.git")
+source=("${pkgname%-*}::git+https://github.com/FRRouting/frr.git" sysusers.frr.conf)
 sha1sums=(SKIP)
 provides=(${pkgname})
 
