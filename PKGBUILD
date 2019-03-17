@@ -2,7 +2,7 @@
 
 pkgname=pamac-classic
 pkgver=6.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Gtk3 frontend for libalpm - classic version"
 arch=('x86_64')
 url="https://git.cromer.cl/cromer/pamac-classic"
@@ -16,13 +16,18 @@ conflicts=('pamac' 'pamac-aur')
 provides=('pamac' 'pamac-aur')
 install=pamac-classic.install
 
-source=("pamac-classic-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('35639ef352d99f813dc54cf49cd9110a6a1e5852929ea2af0ab1333022c8ed4d')
+source=(
+	"pamac-classic-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz"
+	"vala-0.44-fix.patch"
+	)
+sha256sums=('35639ef352d99f813dc54cf49cd9110a6a1e5852929ea2af0ab1333022c8ed4d'
+            '80a81cf01402c7adbabc144d36b096ca64bc613f13f55a25270e00ce867d632a')
 
-#prepare() {
-#  cd "${srcdir}/pamac-classic"
-#  # patches here
-#}
+prepare() {
+  cd "${srcdir}/pamac-classic"
+
+  patch --forward --strip=1 --input="${srcdir}/vala-0.44-fix.patch"
+}
 
 build() {
   cd "${srcdir}/pamac-classic"
