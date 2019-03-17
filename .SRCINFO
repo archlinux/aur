@@ -1,0 +1,23 @@
+pkgbase = grpc-git-cmake
+	pkgdesc = gRPC - An RPC library and framework (uses cmake for building)
+	pkgver = v1.12.1.r5278.g8c3d4a7dfd
+	pkgrel = 1
+	url = http://www.grpc.io/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = gflags
+	makedepends = zlib
+	makedepends = cmake
+	makedepends = ninja
+	depends = c-ares
+	depends = protobuf>=3
+	conflicts = grpc
+	conflicts = grpc-git
+	conflicts = grpc-git-boringssl
+	options = !makeflags
+	source = git+https://github.com/grpc/grpc.git
+	md5sums = SKIP
+
+pkgname = grpc-git-cmake
+
