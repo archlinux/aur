@@ -6,20 +6,13 @@ pkgdesc="A free online editor for animated sprites & pixel art."
 arch=('x86_64')
 url="https://github.com/piskelapp/piskel"
 license=('Apache')
-groups=()
 depends=('gconf' 'gtk2' 'alsa-lib' 'libxss' 'nss' 'libxtst')
 makedepends=('nodejs-grunt' 'imagemagick')
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
 options=(!strip)
-install=
-changelog=
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/piskelapp/piskel/archive/v0.14.0.tar.gz")
-noextract=()
-md5sums=('18fcdaad58efc6f45e85bb474d17607d')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/piskelapp/piskel/archive/v0.14.0.tar.gz"
+				"Piskel.desktop")
+md5sums=('18fcdaad58efc6f45e85bb474d17607d'
+         '05e4a9868ef86770de487436a6c42a52')
 
 build() {
 	cd "${pkgname}-${pkgver}"
@@ -35,15 +28,13 @@ package() {
 	chmod +x "${pkgdir}/opt/Piskel/piskel"
 	
 	install -d "${pkgdir}/usr/share/applications"
-	install "${srcdir}/../Piskel.desktop" "${pkgdir}/usr/share/applications"
+	install "${srcdir}/Piskel.desktop" "${pkgdir}/usr/share/applications"
 	
 	install -d "${pkgdir}/usr/bin"
 	ln -s "/opt/Piskel/piskel" "${pkgdir}/usr/bin/piskel"
 	
 	convert "${srcdir}/${pkgname}-${pkgver}/misc/desktop/logo.ico" "${srcdir}/${pkgname}-${pkgver}/misc/desktop/logo.png"
 	install -d "${pkgdir}/usr/share/pixmaps"
-	cp "${srcdir}/${pkgname}-${pkgver}/misc/desktop/logo-3.png" "${pkgdir}/usr/share/pixmaps/piskel.png"
+	install "${pkgname}-${pkgver}/misc/desktop/logo-3.png" "${pkgdir}/usr/share/pixmaps/piskel.png"
 	
 }
-
-

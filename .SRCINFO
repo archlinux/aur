@@ -15,7 +15,9 @@ pkgbase = piskel
 	depends = libxtst
 	options = !strip
 	source = piskel-0.14.0.tar.gz::https://github.com/piskelapp/piskel/archive/v0.14.0.tar.gz
+	source = Piskel.desktop
 	md5sums = 18fcdaad58efc6f45e85bb474d17607d
+	md5sums = 05e4a9868ef86770de487436a6c42a52
 
 pkgname = piskel
 
