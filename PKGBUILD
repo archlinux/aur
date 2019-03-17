@@ -2,7 +2,7 @@
 
 pkgname=crispy-doom
 pkgdesc="Vanilla-compatible enhanced Doom engine"
-pkgver=5.5
+pkgver=5.5.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://fabiangreffrath.github.io/crispy-doom"
@@ -14,12 +14,10 @@ optdepends=('freedm: Free deathmatch game'
             'freedoom2: Free Doom II/Final Doom-compatible game')
 install=crispy-doom.install
 source=(https://github.com/fabiangreffrath/$pkgname/archive/$pkgname-$pkgver.tar.gz)
-sha512sums=('723c7fb15a4a7586506658889a9c309ca3a43bc1c078ce3cd72b976eeffef5f3c138fb6c2a8e2b40151ce5564f1a75e9c28d87bf6ea2c6be034ee73b7d5d3b44')
+sha512sums=('29f2eecc6eab47cc1c6684d9ab913f392f30cf336a9e8b8b61c890e855f892a2eb32a06b853412b0628919ee73eba06fbfe358c7add2622593212d8f8080fcf2')
 
 prepare() {
-  # GitHub's generated archive prefix kind of sucks.
-  mv "$pkgname-$pkgname-$pkgver" "$pkgname-$pkgver"
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgname-$pkgver"
 
   for patch in ../*.patch; do
     if [ ! -f "$patch" ]; then
@@ -31,14 +29,14 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgname-$pkgver"
 
   ./autogen.sh --prefix=/usr
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" install
 
