@@ -1,7 +1,7 @@
 pkgbase = amide-hg
 	pkgdesc = Medical Imaging Data Examiner - mercurial checkout
 	pkgver = 1.0.6r109.7b8fc8a59fd2
-	pkgrel = 6
+	pkgrel = 7
 	url = http://amide.sourceforge.net/packages.html
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = amide-hg
 	depends = gnome-vfs
 	depends = ffmpeg
 	depends = gsl
-	optdepends = volpack: for volume rendering
+	depends = volpack
 	provides = amide
 	conflicts = amide
 	options = !makeflags

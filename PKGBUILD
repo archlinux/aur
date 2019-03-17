@@ -1,13 +1,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=amide-hg
 pkgver=1.0.6r109.7b8fc8a59fd2
-pkgrel=6
+pkgrel=7
 pkgdesc="Medical Imaging Data Examiner - mercurial checkout"
 url="http://amide.sourceforge.net/packages.html"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('dcmtk' 'xmedcon' 'libgnomecanvas' 'gnome-vfs' 'ffmpeg' 'gsl')
-optdepends=('volpack: for volume rendering')
+depends=('dcmtk' 'xmedcon' 'libgnomecanvas' 'gnome-vfs' 'ffmpeg' 'gsl' 'volpack')
 makedepends=('gnome-doc-utils' 'gtk-doc' 'intltool')
 conflicts=('amide')
 provides=('amide')
