@@ -13,13 +13,13 @@ pkgbase = brother-mfc-9335cdw
 	makedepends = a2ps
 	makedepends = tar
 	depends = cups
-	depends = lib32-libcups
 	optdepends = brscan4: scanning support
 	optdepends = brscan-skey: scanner interface (touchscreen/buttons) support
 	source = http://download.brother.com/welcome/dlf102677/mfc9335cdwlpr-1.1.3-0.i386.deb
 	source = http://download.brother.com/welcome/dlf102678/mfc9335cdwcupswrapper-1.1.4-0.i386.deb
 	md5sums = f993eb5322df2c9519a86ac0afcbb197
 	md5sums = f3afb684911c55a131532bb8cfdbc672
+	depends_x86_64 = lib32-libcups
 
 pkgname = brother-mfc-9335cdw
 
