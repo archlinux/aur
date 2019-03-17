@@ -1,9 +1,10 @@
 # Maintainer: Pablo Lezaeta <prflr 88 (arroba) gmail (dot) com>
+# Maintainer: Víctor González <mrvikxd@gmail.com>
 # Contributor: Thayer Williams <thayer@archlinux.org>
 
 pkgname=archlinux-artwork
 pkgver=1.6
-pkgrel=4
+pkgrel=5
 pkgdesc='Official logos, icons, CD labels and other artwork for Arch Linux'
 arch=("any")
 url="http://www.archlinux.org/"
