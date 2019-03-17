@@ -1,44 +1,54 @@
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer:  Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=franz
-_pkgver=5.0.0-beta.22
+_pkgver=5.0.0
 pkgver=${_pkgver//-/_}
 pkgrel=1
+# Due to the previous "_beta" naming
+epoch=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
-arch=('x86_64' 'i686')
+arch=(x86_64 i686)
 url='https://meetfranz.com'
-license=('Apache')
-depends=('electron' 'libx11' 'libxkbfile' 'libxext' 'libxss' 'gconf' 'gtk2' 'alsa-lib' 'nss' 'libxtst')
-makedepends=('yarn' 'npm' 'python2' 'git' 'nodejs')
+license=(Apache)
+depends=(electron)
+makedepends=(npm python2 git)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/meetfranz/$pkgname/archive/v$_pkgver.tar.gz"
         'franz.desktop'
         'franz.sh')
-sha512sums=('f8ece632bc091f2daab12c387059d36218784d87f129614786bd448730739e4a2de38c932ccb8dc72691d0679375d3e7b00f5220247193c779d799319f33e1f0'
+sha512sums=('459c40cb95e52aa63334d5e880f146a1158a4f046ab4c943169333e46990cb809bd8094fda440033a245a437c0a5f96b088c5455bbfbe8f8a0605edee5ca6fa3'
             'ef7c06558f60259dd29ead644327a0030c2c26637e51e3ec27a05542efd4752d68a3f4322973f6a90d6658686abce12700a3ad57aff9e517d0c907c952d7a034'
             '8584507cfc2736f4736637925536b2c06063c59cd943346717633564ae88b64c5eea294c8897f1250812478ed493f54a470501e98e99d084a2ff012dff9671f8')
 
 prepare() {
-  cd $pkgname-$_pkgver
+  # Prepare Python 2 for later
+  mkdir python2_path
+  ln -s `which python2` python2_path/python
 
-  # Fix electron-updater version
-  sed -i "s|\"electron-updater\":.*|\"electron-updater\": \"^4.0.0\",|g" \
-  	package.json
+  # Small patching
+  cd $pkgname-$_pkgver
 
   # Prevent franz from being launched in dev mode
   sed -i "s|export const isDevMode = .*|export const isDevMode = false;|g" \
-  	 src/environment.js
+    src/environment.js
+  sed -i "s|import isDevMode from 'electron-is-dev'|export const isDevMode = false|g" \
+    src/index.js
+
+  # Adjust the electron version to use when building
+  electron_version="`curl -s https://git.archlinux.org/svntogit/community.git/plain/trunk/PKGBUILD?h=packages/electron | \
+                     grep pkgver= | cut -d '=' -f 2`"
+  sed -i "s|\(\s\+\"electron\":\).*,|\1 \"$electron_version\",|" package.json
 }
 
 build() {
   cd $pkgname-$_pkgver
-  yarn install --production --non-interactive
-  yarn add 'electron-builder#28.0.0' 'gulpjs/gulp#4.0'
 
   # Better configuration for npm cache and calling installed binaries
   export npm_config_cache="$srcdir"/npm_cache
-  export PATH="$srcdir"/$pkgname-$_pkgver/node_modules/.bin:$PATH
+  export PATH="$srcdir/$pkgname-$_pkgver/node_modules/.bin:$srcdir/python2_path:$PATH"
 
+  npm  install
   gulp build
   electron-builder --linux dir
 }
