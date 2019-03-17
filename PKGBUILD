@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-        etc=( daemons daemons.conf frr.conf vtysh.cnf )
+        etc=( daemons daemons.conf frr.conf vtysh.conf )
         pushd ${srcdir}/${pkgname}
         sed -i 's/lib\/frr/bin/' tools/frr.service
         install -D -m 0644 tools/frr.service ${pkgdir}/usr/lib/systemd/system/frr.service
