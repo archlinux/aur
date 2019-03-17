@@ -4,6 +4,7 @@ pkgbase = php-redis
 	pkgrel = 1
 	url = http://pecl.php.net/package/redis
 	arch = x86_64
+	arch = armv7h
 	license = PHP
 	makedepends = php>=7.0.0
 	makedepends = php-igbinary
