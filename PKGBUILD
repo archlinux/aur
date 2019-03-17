@@ -14,7 +14,7 @@ prepare() {
 	cd "Sprytile-$pkgver"
 	echo "Disabling addon updater..."
 	echo "The addon will throw harmless errors about the updater;"
-	echo "However, the it should otherwise function normally."
+	echo "However, the addon should otherwise function normally."
 	sed -i 's/addon_updater_ops.register(bl_info)/#addon_updater_ops.register(bl_info)/' __init__.py
 }
 
