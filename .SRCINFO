@@ -1,0 +1,32 @@
+pkgbase = dcmtk363
+	pkgdesc = A collection of libraries and applications implementing large parts the DICOM standard
+	pkgver = 3.6.3
+	pkgrel = 1
+	url = http://dicom.offis.de/dcmtk
+	arch = i686
+	arch = x86_64
+	license = other
+	makedepends = cmake
+	makedepends = make
+	depends = zlib
+	depends = libpng
+	depends = libtiff
+	depends = libxml2
+	depends = openssl
+	depends = libssh
+	depends = libwrap
+	provides = dcmtk
+	conflicts = dcmtk
+	options = !buildflags
+	backup = etc/dcmtk/dcmpstat.cfg
+	backup = etc/dcmtk/dcmqrscp.cfg
+	backup = etc/dcmtk/filelog.cfg
+	backup = etc/dcmtk/logger.cfg
+	backup = etc/dcmtk/printers.cfg
+	backup = etc/dcmtk/storescp.cfg
+	backup = etc/dcmtk/storescu.cfg
+	source = ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/dcmtk363/dcmtk-3.6.3.tar.gz
+	sha512sums = 5b907422d2d80e417ae8239e159d1300da4ed8db7e92cee619cc1d37116165e8824f8a9103605e07a95b1bffe94bbd2d5e05125f068281d241e8e78755d0b5e8
+
+pkgname = dcmtk363
+
