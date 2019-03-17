@@ -13,8 +13,8 @@ pkgname=('kamailio' 'kamailio-autheph-modules' 'kamailio-berkeley-modules' 'kama
          'kamailio-sctp-modules' 'kamailio-snmpstats-modules' 'kamailio-sqlite-modules'
          'kamailio-systemd-modules' 'kamailio-tls-modules' 'kamailio-unixodbc-modules' 'kamailio-utils-modules'
          'kamailio-websocket-modules' 'kamailio-xml-modules' 'kamailio-xmpp-modules')
-pkgver=5.2.1
-pkgrel=2
+pkgver=5.2.2
+pkgrel=1
 pkgdesc="Rock solid SIP server"
 url="http://www.kamailio.org/"
 license=('GPL2')
@@ -26,8 +26,8 @@ makedepends=('flex' 'bison' 'docbook2x' 'pcre' 'python2' 'python' 'openssl' 'db'
              'ruby' 'freeradius-client')
 source=("http://www.kamailio.org/pub/${pkgbase}/${pkgver}/src/${pkgbase}-${pkgver}_src.tar.gz"
         "${pkgname}.service")
-sha256sums=('95d2158f97c76124a381364d99de1420f193275c5a1c9f88489c6409702f2c8f'
-            'bd434a9b71fc65483f4844c2d75b6f3d5cc5278569d6b14614f42241a6eb2b56')
+sha256sums=('58edf963ed5f24a5a7bbc60bd31d390f8e17cba9abf55bc77d760173b0069bdc'
+            '0ccad93274866b9116fe1e029368b92d4bebd7806a3d8f7978a20e44cf0f6451')
 
 prepare() {
   cd "${pkgbase}-${pkgver}"
