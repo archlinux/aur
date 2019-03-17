@@ -1,0 +1,20 @@
+pkgbase = mopidy-spotify-playlist-fix-git
+	pkgdesc = Mopidy extension for playing music from Spotify
+	pkgver = v1.0.0.r409.gc043290
+	pkgrel = 1
+	url = http://www.mopidy.com
+	arch = any
+	license = APACHE
+	makedepends = python2
+	depends = mopidy>=2
+	depends = python2-pykka>=1.1
+	depends = python2-pyspotify>=2
+	depends = python2-setuptools
+	depends = python2-requests>=2
+	provides = mopidy-spotify
+	conflicts = mopidy-spotify
+	source = git+https://github.com/kingosticks/mopidy-spotify.git#branch=fix/web-api-playlists-v2
+	md5sums = SKIP
+
+pkgname = mopidy-spotify-playlist-fix-git
+
