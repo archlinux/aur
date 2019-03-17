@@ -1,6 +1,6 @@
 pkgbase = aurutils-git
 	pkgdesc = helper tools for the arch user repository
-	pkgver = 2.2.0.r16.gecdb75b
+	pkgver = 2.3.1.r24.g7a72b96
 	pkgrel = 1
 	url = https://github.com/AladW/aurutils
 	arch = any
@@ -8,16 +8,13 @@ pkgbase = aurutils-git
 	makedepends = git
 	depends = git
 	depends = jq
-	depends = expac
-	depends = diffstat
 	depends = pacutils
 	depends = parallel
 	depends = wget
 	optdepends = bash-completion: bash completion
 	optdepends = devtools: aur-chroot
 	optdepends = vifm: build file interaction
-	optdepends = xdelta3: generate delta files
-	provides = aurutils=2.2.0
+	provides = aurutils=2.3.1
 	conflicts = aurutils
 	source = git+https://github.com/AladW/aurutils
 	sha256sums = SKIP
