@@ -2,7 +2,7 @@
 _name=pytest-datafiles
 pkgname=('python-pytest-datafiles' 'python2-pytest-datafiles')
 pkgbase=python-$_name
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="py.test plugin to create a 'tmpdir' containing predefined files/directories."
 arch=(any)
@@ -10,7 +10,7 @@ url="https://github.com/omarkohl/pytest-datafiles"
 license=('MIT')
 makedepends=(python-pytest python2-pytest)
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('bb6493c00e8cfb26e9a08f3cc6d5796ae1d168a5a3d09a0e31b3c65b5619a4f0')
+sha256sums=('143329cbb1dbbb07af24f88fa4668e2f59ce233696cf12c49fd1c98d1756dbf9')
 
 prepare() {
   cp -a $_name-$pkgver{,-py2}
