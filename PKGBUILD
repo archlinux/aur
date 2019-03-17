@@ -4,7 +4,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer
-pkgver=2019.131.0
+pkgver=2019.314.0
 pkgrel=1
 
 dotnet_version=2.2
@@ -71,6 +71,7 @@ package()
     # Compiled binaries
     cd "$srcdir/osu-$pkgver/osu.Desktop/bin/Release/netcoreapp$dotnet_version/linux-x64"
     mkdir -p "$pkgdir/usr/lib/$pkgname"
+    mv x86_64/* .
     for binary in *.so *.dll *.json *.pdb; do
         install -m755 "$binary" "$pkgdir/usr/lib/$pkgname/$binary"
     done
