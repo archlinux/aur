@@ -1,16 +1,16 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
-pkgname='kodi-prevent-xscreensaver'
-pkgver=1.15
-pkgrel=2
-pkgdesc='Keep xscreensaver from coming on when kodi is active.'
-arch=('any')
+pkgname=kodi-prevent-xscreensaver
+pkgver=1.16
+pkgrel=1
+pkgdesc="Keep xscreensaver from coming while Kodi is running."
+arch=(any)
 url="https://github.com/graysky2/kodi-prevent-xscreensaver"
-depends=('xscreensaver' 'kodi')
+depends=('xscreensaver' 'kodi>=18')
 license=('MIT')
-source=("http://repo-ck.com/source/$pkgname/$pkgname-$pkgver.tar.xz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/graysky2/kodi-prevent-xscreensaver/archive/v1.16.tar.gz")
 install=readme.install
-sha256sums=('182bf89adfcfcdfbdcbf5f4f06509c24c2c024699a28cd84a341fcbe743f4621')
+sha256sums=('d7885ebe4f07054cd4672a3b68792ea08d322dbd048964c8c4562370bcc0259c')
 
 package() {
   cd "$pkgname-$pkgver"
