@@ -5,7 +5,7 @@ pkgname=('avidemux-core-git'
          'avidemux-qt-git'
          'avidemux-cli-git'
          )
-pkgver=2.7.1.190210.ef2af6011
+pkgver=2.7.2.190317.04c29e0e8
 pkgrel=1
 pkgdesc="A graphical/cli tool to edit video (filter/re-encode/split). (GIT version)"
 arch=('x86_64')
@@ -43,8 +43,9 @@ makedepends=('git'
              'qt5-tools'
              'libxv'
              'vapoursynth'
+             'hicolor-icon-theme'
              )
-source=('avidemux::git+https://github.com/mean00/avidemux2.git'
+source=('avidemux::git+https://github.com/mean00/avidemux2.git#branch=ffmpeg4x'
         'fix_verbose.patch'
         'add_settings_pluginui_message_error.patch'
         'opus_check.patch'
@@ -187,14 +188,13 @@ package_avidemux-core-git() {
            'opencore-amr'
            'twolame'
            'libxvidcore.so'
-           'sqlite'
            'x264'
            'x265'
            )
   optdepends=('avidemux-qt-git: a Qt GUI for Avidemux'
               'avidemux-cli-git: a CLI frontend for Avidemux'
               'wine: AVSload (Load Avisynth scripts on Avidemux)'
-              'vapoursynth: vsProxy (Load Vapoursynth scripts on Avidemux'
+              'vapoursynth: vsProxy (Load Vapoursynth scripts on Avidemux)'
               )
   provides=('avidemux-core')
   conflicts=('avidemux-core')
@@ -214,6 +214,7 @@ package_avidemux-qt-git() {
            'libxv'
            'glu'
            'desktop-file-utils'
+           'hicolor-icon-theme'
            )
   provides=('avidemux-qt')
   conflicts=('avidemux-qt4'
@@ -227,9 +228,7 @@ package_avidemux-qt-git() {
 
 package_avidemux-cli-git() {
   pkgdesc="CLI frontend for Avidemux. (GIT version)"
-  depends=("avidemux-core-git>=${pkgver}"
-           'gcc-libs'
-           )
+  depends=("avidemux-core-git>=${pkgver}")
   provides=('avidemux-cli')
   conflicts=('avidemux-cli')
 
