@@ -8,7 +8,7 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=169771'
 license=('GPL')
-depends=('vapoursynth-plugin-scoll-git')
+depends=('vapoursynth')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
