@@ -3,7 +3,7 @@
 _plug=removedirtvs
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r78.ddc78e5
-pkgrel=2
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=169771'
@@ -14,8 +14,6 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("git+https://github.com/handaimaoh/${_plug}.git")
 sha256sums=('SKIP')
-
-_sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
 pkgver() {
   cd "${_plug}"
