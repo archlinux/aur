@@ -9,9 +9,9 @@ url='http://support.brother.com/g/s/id/linux/en/index.html'
 license=('custom:brother' 'GPL')
 depends=('cups')
 depends_x86_64=('lib32-libcups')
-optdepends=('brscan4: scanning support [AUR]'
-            'brscan-skey: scanner interface (touchscreen/buttons) support [AUR]')
 makedepends=('perl' 'a2ps' 'tar')
+optdepends=('brscan4: scanning support'
+            'brscan-skey: scanner interface (touchscreen/buttons) support')
 install='brother-mfc-9335cdw.install'
 changelog='changelog.md'
 source=('http://download.brother.com/welcome/dlf102677/mfc9335cdwlpr-1.1.3-0.i386.deb'
