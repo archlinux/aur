@@ -24,7 +24,7 @@ pkgbase = nautilus-typeahead
 	depends = tracker-miners
 	optdepends = nautilus-sendto: right click to send files
 	options = !emptydirs
-	source = git+https://gitlab.gnome.org/GNOME/nautilus.git#commit=a241f8f6f37220ccec78a40b015967188490b1df
+	source = git+https://gitlab.gnome.org/albertvaka/nautilus.git#commit=35d98c95016dbdb64ec6d9784b61eaad8321d14b
 	source = nautilus-restore-typeahead.patch
 	sha256sums = SKIP
 	sha256sums = d3e1a3df1042a412aa23d0a1710c490c117239cd4d9ae9bae2ee32e190c8c03f

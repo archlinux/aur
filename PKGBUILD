@@ -16,8 +16,8 @@ depends=(libgexiv2 gnome-desktop gvfs dconf tracker gnome-autoar gst-plugins-bas
 makedepends=(gobject-introspection packagekit git gtk-doc meson appstream-glib 'meson>=0.44.1' ninja)
 optdepends=('nautilus-sendto: right click to send files')
 options=(!emptydirs)
-_commit=a241f8f6f37220ccec78a40b015967188490b1df  # tags/3.32.0^0
-source=("git+https://gitlab.gnome.org/GNOME/nautilus.git#commit=$_commit"
+_commit=35d98c95016dbdb64ec6d9784b61eaad8321d14b
+source=("git+https://gitlab.gnome.org/albertvaka/nautilus.git#commit=$_commit"
         nautilus-restore-typeahead.patch)
 sha256sums=('SKIP'
             'd3e1a3df1042a412aa23d0a1710c490c117239cd4d9ae9bae2ee32e190c8c03f')
