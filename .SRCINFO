@@ -1,6 +1,6 @@
 pkgbase = rednotebook
 	pkgdesc = A simple desktop diary.
-	pkgver = 2.8
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = http://rednotebook.sourceforge.net
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = rednotebook
 	depends = python-gobject
 	depends = gtksourceview3
 	optdepends = python-pyenchant: for spellchecking
-	source = rednotebook-2.8.tar.gz::https://downloads.sourceforge.net/project/rednotebook/rednotebook-2.8.tar.gz
-	sha256sums = 3bd4ede90d165e3e7e02818e3068118795964ad07da5a61f215dc738ff56258f
+	source = rednotebook-2.8.1.tar.gz::https://downloads.sourceforge.net/project/rednotebook/rednotebook-2.8.1.tar.gz
+	sha256sums = a85c568b2a0d3411bac994fede077cc6e2c28be81f220e0b29fc77fcf31dc13e
 
 pkgname = rednotebook
 
