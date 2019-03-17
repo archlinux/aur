@@ -1,0 +1,15 @@
+pkgbase = sqlite2mdoc
+	pkgdesc = Extract C reference manpages from SQLite header file
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/kristapsdz/sqlite2mdoc
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = ISC
+	source = sqlite2mdoc-0.1.4.tar.gz::https://kristaps.bsd.lv/sqlite2mdoc/snapshots/sqlite2mdoc-0.1.4.tar.gz
+	sha256sums = df6f0adee1a04e37baad9d879d1ae24fae0e77b29d59d57cef4ca38fc4dfd16f
+
+pkgname = sqlite2mdoc
+
