@@ -5,8 +5,8 @@
 
 pkgname=xfce4-sensors-plugin-nvidia-hddtemp_through_netcat-current
 _realpkgname=xfce4-sensors-plugin
-pkgver=1.3.90
-pkgrel=4
+pkgver=1.3.92
+pkgrel=1
 pkgdesc="A lm_sensors plugin for the Xfce panel with nvidia and hddtemp (through netcat) support, current version"
 arch=('x86_64')
 url='http://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin'
@@ -19,7 +19,7 @@ optdepends=('hddtemp: for monitoring the temperature of hard drives'
 conflicts=('xfce4-sensors-plugin' 'xfce4-sensors-plugin-nvidia')
 provides=("$_realpkgname")
 source=("https://git.xfce.org/panel-plugins/$_realpkgname/snapshot/$_realpkgname-Release_V$pkgver.tar.gz")
-sha256sums=('37f8c0446614f06f0519559ecf74b9da457f60868b20f969cab14850c612d9d0')
+sha256sums=('5440717246900722c2c396ac3732c6e6574dccc6d6caf0416b9602b0cc5d274b')
 
 build() {
   cd "$srcdir/$_realpkgname-Release_V$pkgver"
