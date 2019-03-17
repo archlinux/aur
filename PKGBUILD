@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
-_pkgname=aiotg
-pkgname=python-$_pkgname
-pkgver=0.9.9
+
+pkgname=python-aiotg
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Asynchronous Python API for building Telegram bots"
 url="https://github.com/szastupov/aiotg"
@@ -9,15 +9,15 @@ depends=('python-aiohttp' 'python-watchdog')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/1a/47/c96d67dcd5fe7ca99aa97518d8e908a60e86cd8e3dc7a2552a601e37812d/aiotg-0.9.9.tar.gz")
-sha256sums=('e3c9e051d3a1e85274b74e7f3473e99abaef9ed9718b5283f6c6782705a10def')
+source=("https://files.pythonhosted.org/packages/25/5b/a62450bc695881b6e7963b4f9efcaaa5677c098b62d0db59f94ad91e614e/aiotg-1.0.0.tar.gz")
+sha256sums=('ab46c1ea719c13e0a998c21558351e16a20176618bc24358f69096cafd918a2b')
 
 build(){
-    cd $srcdir/$_pkgname-$pkgver
+    cd $srcdir/aiotg-$pkgver
     python setup.py build
 }
 
 package(){
-    cd $srcdir/$_pkgname-$pkgver
+    cd $srcdir/aiotg-$pkgver
     python setup.py install --skip-build --root="$pkgdir" --optimize=1
 }
