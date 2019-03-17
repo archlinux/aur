@@ -1,7 +1,7 @@
 pkgbase = sublime-text-3-imfix
 	pkgdesc = Sophisticated text editor for code, markup and prose - Stable build with input method support for CJK users
 	pkgver = 3.3200
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sublimetext.com/3
 	arch = x86_64
 	license = custom
@@ -18,12 +18,8 @@ pkgbase = sublime-text-3-imfix
 	conflicts = sublime-text-dev-imfix
 	conflicts = sublime-text-dev-imfix2
 	source = https://download.sublimetext.com/sublime_text_3_build_3200_x64.tar.bz2
-	source = sublime-imfix.c
-	source = subl
 	source = LICENSE
 	sha256sums = b9d5297c65bd14a8ba3394e74dbd9a5013b3fed5a5a2f8f5120d2cec40614fbd
-	sha256sums = 05c08fc144151713e25ebb528c2a86ef5aaf3afa3e20b79302faefdbb7158f12
-	sha256sums = 00ab76aff168a0dcccec861610985e3695da10e6f95ce1fa399f5747b4d5af5b
 	sha256sums = 8e4c48469bf3f35d0c0904e770c4e307d4965a8931e839c01c5765498a19cf01
 
 pkgname = sublime-text-3-imfix
