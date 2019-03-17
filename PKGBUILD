@@ -36,11 +36,16 @@ build() {
 
 package() {
         etc=( daemons daemons.conf frr.conf vtysh.conf )
+
         pushd ${srcdir}/${pkgname}
+	make DESTDIR=${pkgdir} install
+
         sed -i 's/lib\/frr/bin/' tools/frr.service
         install -D -m 0644 tools/frr.service ${pkgdir}/usr/lib/systemd/system/frr.service
+
+        install -D -m 0644 redhat/frr.pam ${pkgdir}/etc/pam.d/frr.pam
+
         for item in ${etc[@]}; do
           install -D -m 0644 tools/etc/frr/${item} ${pkgdir}/etc/frr/${item}
         done
-	make DESTDIR=${pkgdir} install
 }
