@@ -1,5 +1,7 @@
 pkgname=("frrouting")
 license=("GPL2")
+pkgver=1
+pkgrel=1
 pkgdesc="FFRouting - IP routing protocol suite for Linux and Unix platforms - git"
 makedepends=("gcc" "git" "linux-headers" "libyang" "net-snmp")
 depends=("libyang")
