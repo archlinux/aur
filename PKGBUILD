@@ -1,5 +1,5 @@
 pkgname=rocksdb-release
-pkgver=5.15.10
+pkgver=5.18.3
 pkgrel=1
 pkgdesc='Embedded key-value store for fast storage'
 arch=(i686 x86_64)
@@ -16,7 +16,7 @@ depends=(
 makedepends=('gcc' 'make')
 checkdepends=(python2)
 source=(https://github.com/facebook/rocksdb/archive/v$pkgver.zip)
-sha256sums=('16356771775376b50e5cd4e7a185e84f398493183d375ff14cd6d396cdae6ea0')
+sha256sums=('4d86973cd9f034b95f7b03fe513feee5cf089ebbe34d4a83f59fdbb7c59f3ae3')
 provides=(rocksdb)
 conflicts=(rocksdb)
 
