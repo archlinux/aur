@@ -1,6 +1,6 @@
 pkgbase = glitchlock
 	pkgdesc = a glitch art lockscreen for linux
-	pkgver = 0.33
+	pkgver = 0.34
 	pkgrel = 1
 	url = https://github.com/moolen/glitchlock
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = glitchlock
 	depends = pam
 	depends = libx11
 	depends = tesseract
-	source = glitchlock-0.33.tar.gz::https://github.com/moolen/glitchlock/archive/0.33.tar.gz
-	md5sums = 8abb545854998f2253dc9043e7a25f68
+	source = glitchlock-0.34.tar.gz::https://github.com/moolen/glitchlock/archive/0.34.tar.gz
+	md5sums = a60888b22c26f7631ba8bc10ae9db38a
 
 pkgname = glitchlock
 

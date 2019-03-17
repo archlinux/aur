@@ -1,6 +1,6 @@
 # Maintainer: Moritz Johner <beller.moritz@googlemail.com>
 pkgname=glitchlock
-pkgver=0.33
+pkgver=0.34
 pkgrel=1
 pkgdesc="a glitch art lockscreen for linux"
 arch=('x86_64')
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/moolen/${pkgname}/archive/${pkgver}.tar.gz")
 noextract=()
-md5sums=('8abb545854998f2253dc9043e7a25f68')
+md5sums=('a60888b22c26f7631ba8bc10ae9db38a')
 
 build() {
   cd "${srcdir}/$pkgname-$pkgver"
