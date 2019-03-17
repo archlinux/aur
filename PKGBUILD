@@ -10,6 +10,7 @@ url='https://github.com/tsujan/FeatherNotes'
 license=('GPL3')
 depends=('qt5-x11extras' 'qt5-svg' 'shared-mime-info' 'desktop-file-utils')
 makedepends=('git')
+optdepends=('qt5-translations: localized keyboard shortcuts')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/tsujan/FeatherNotes.git")
