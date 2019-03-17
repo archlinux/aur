@@ -13,7 +13,7 @@ _revert=0
 
 
 pkgname=mutter-781835-workaround
-pkgver=3.32.0+38+g62a9f1f23
+pkgver=3.32.0+38+gcc2f31e8c
 pkgrel=1
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -87,7 +87,7 @@ prepare() {
   git cherry-pick 14a27e87^..a40d7927
 
   # WIP: renderer-native: Accept frames without ever blocking
-  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/119
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/73
   # does not compile yet
   # git cherry-pick 35ec0eaf^..202530c9
 
