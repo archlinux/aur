@@ -1,2 +1,2 @@
 #!/bin/sh
-exec java -classpath /usr/share/java/tla2tools.jar tla2sany.SANY "$@"
+exec tla-tools tla2sany.SANY "$@"
