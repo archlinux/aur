@@ -1,5 +1,5 @@
 [Unit]
-Description=Emby brings together your videos, music, photos, and live television.
+Description=Emby Server Daemon
 
 [Service]
 EnvironmentFile=/etc/conf.d/emby-server

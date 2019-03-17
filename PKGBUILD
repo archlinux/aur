@@ -4,8 +4,8 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-beta
-pkgver=4.1.0.14
-pkgrel=2
+pkgver=4.1.0.15
+pkgrel=1
 _ffmpeg_ver=2018_12_01
 _ffdetect_ver=4.0.2
 pkgdesc='Bring together your videos, music, photos, and live television'
@@ -54,12 +54,12 @@ source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgve
         'license.docx')
 noextract=(license.docx)
 backup=('etc/conf.d/emby-server')
-sha256sums=('ced12d3005852f39f6247eb1647f425d45e27c68c0f4ea5c83ec6dd675bf272e'
+sha256sums=('429ca0f69f2663e47ba46ae6fb7fda60bda30ff79ab2547b892effb034b89ffd'
             '1129e1bfb7fc4090cdd6e055d57b0cd90c9881f0db8b9ceb80fdd145de4ffc71'
             'c25eea4ace3824c7172e0b7cab57cc2baa459004680fed5fa645355205fe2c51'
             'e2185a5f4810726cb57fcc6d9bdbde1854069f08f163be58cb3cef1154b8e2a7'
             '5e3470f834808babe7d60b8d86f462e7945c3617499539e5af45eb55d7b87b23'
-            'efdaabd3002fee13a6831e90fd700dea4d7c6c954ede00da6f28c1eada33ad8c'
+            '2e7f778fd47cad0670690beaab2453fde37c2a3e7d0e7b2ca83b2cbb66087b3c'
             'f7fa33949757ffc587ecf82496dc35ebc8c8e5c98b882b31dc40a24263d3921a'
             '16ead857a1756e3e8cfc3e70f481d14d791a262b79733065a4f7371f21a97abe'
             'a6d7ea65dcb06392479a85e1a10a7aeb872d803da6f784f6935fcd4ee63008c6')
