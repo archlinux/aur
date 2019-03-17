@@ -24,6 +24,7 @@ pkgbase = conky-nvidia
 	depends = libxinerama
 	depends = imlib2
 	depends = libxnvctrl
+	depends = libpulse
 	provides = conky
 	conflicts = conky
 	source = https://github.com/brndnmtthws/conky/archive/v1.11.3.tar.gz
