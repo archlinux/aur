@@ -1,13 +1,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=amide  
 pkgver=1.0.5
-pkgrel=9
+pkgrel=10
 pkgdesc="Medical Imaging Data Examiner"
 url="http://amide.sourceforge.net/packages.html"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('dcmtk' 'xmedcon' 'libgnomecanvas' 'gnome-vfs' 'gconf' 'gsl')
-optdepends=('volpack: for volume rendering')
+depends=('dcmtk' 'xmedcon' 'gconf' 'gsl' 'volpack' 'gnome-vfs' 'libgnomecanvas')
 makedepends=('gnome-doc-utils' 'intltool' 'libgnomecanvas')
 source=(http://downloads.sourceforge.net/project/$pkgname/amide/$pkgver/$pkgname-$pkgver.tgz gsl.patch alignment_mutual_information.patch)
 md5sums=('8a9b89e3d3ec1bb3e390f202f4861a7c'
