@@ -3,7 +3,7 @@
 
 pkgname=nodejs-decktape
 _npmname=decktape
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc='PDF exporter for HTML presentation frameworks'
 arch=('any')
@@ -19,4 +19,4 @@ package() {
   npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$pkgver
   # rmdir "${pkgdir}/usr/etc"
 }
-md5sums=('4738761b9d64f876d05510c78a9b642b')
+md5sums=('4220719ec9e8e998072a7f3a78ce024e')
