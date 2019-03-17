@@ -2,7 +2,7 @@
 _name=pytest-pylint
 pkgname=('python-pytest-pylint' 'python2-pytest-pylint')
 pkgbase=python-$_name
-pkgver=0.12.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="pytest plugin to check source code with pylint"
 arch=(any)
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=(python-pytest python-pylint python2-pytest python2-pylint)
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"
         'https://raw.githubusercontent.com/carsongee/pytest-pylint/master/LICENSE')
-sha256sums=('d30da4ddbf2ad3a0b47987a664db1510b8aa273fc50f4fdc883404381ec0ba89'
+sha256sums=('7bfbb66fc6dc160193a9e813a7c55e5ae32028f18660deeb90e1cb7e980cbbac'
             '25b3eef02225972bdfe2c043ab26eabb5c0ce9730a9b8ce366855d9da36c8995')
 
 prepare() {
