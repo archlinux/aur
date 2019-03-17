@@ -6,7 +6,7 @@ pkgbase = nap-bin
 	arch = x86_64
 	license = Apache
 	source = https://o.tc.ink/ddns-nap/0.2.1/nap_linux_amd64.tar.gz
-	md5sums = 29a6c77842e73d6187e87120e1b855a8
+	md5sums = 42bbdb8e8332b28a0b026d614f23187e
 
 pkgname = nap-bin
 
