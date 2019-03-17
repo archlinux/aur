@@ -3,13 +3,13 @@
 pkgname=auto-reencode
 arch=('any')
 license=('MIT')
-pkgver=2.85
+pkgver=2.86
 pkgrel=1
 pkgdesc="Mass convert asf, flv, or wmv to mp4 contained x264 files using ffmpeg."
 depends=('ffmpeg' 'mediainfo')
 url="https://github.com/graysky2/auto-reencode"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/graysky2/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('cac01409ff07f1f0837ffd0fabe29432084c60ca239e3ca488482028fedabd15')
+sha256sums=('86575ff5f2bc007c1f324c874ee1132037b69425ddc2675fa0eeeacbfe2a02ec')
 
 package() {
 	cd "$pkgname-$pkgver"
