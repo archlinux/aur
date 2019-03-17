@@ -3,7 +3,7 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=megasync-git
-pkgver=v3.4.8.0.g2c7713d2
+pkgver=v4.0.2.0.1.g2dec1949
 pkgrel=1
 pkgdesc="MEGASync Desktop App. (GIT Version)"
 arch=('x86_64')
@@ -32,7 +32,7 @@ sha256sums=('SKIP'
             )
 
 pkgver() {
-  cd sdk
+  cd MEGAsync
   echo "$(git describe --long --tags | tr - . | tr _ . | sed 's|OSX\.||' | sed 's|Win\.||' | sed 's|Linux\.||' | sed 's|\.Ubuntu\.18\.10build||g')"
 }
 
