@@ -2,9 +2,9 @@
 
 _name=ddnet-maps
 pkgname=$_name-git
-pkgver=r1094.g486d51b4
+pkgver=r1120.ga2dd7213
 pkgrel=1
-pkgdesc="All released maps with configs for a DDraceNetwork server"
+pkgdesc="All released maps with configs for DDraceNetwork server"
 arch=(any)
 url="https://ddnet.tw"
 license=('custom')
@@ -57,6 +57,7 @@ package() {
   for type in $(ls $_datadir/types/); do
     ln -rs $_datadir/types/$type/maps/* .
   done
+
     # Avoid file conflicts as they are already provided in DDNet package
   rm "$_datadir/maps/Goo!.map"
   rm "$_datadir/maps/Kobra 4.map"
