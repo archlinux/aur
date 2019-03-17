@@ -1,0 +1,21 @@
+pkgbase = rippled-git
+	pkgdesc = Ripple peer-to-peer network daemon
+	pkgver = develop
+	pkgrel = 1
+	url = https://github.com/ripple/rippled
+	arch = x86_64
+	license = custom:ISC
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = clang
+	makedepends = doxygen
+	depends = protobuf
+	depends = boost-libs
+	backup = etc/opt/ripple/rippled.cfg
+	backup = etc/opt/ripple/validators.txt
+	source = https://github.com/ripple/rippled/archive/develop.zip
+	sha256sums = SKIP
+
+pkgname = rippled-git
+
