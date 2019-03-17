@@ -15,7 +15,7 @@ optdepends=('bash-completion: bash completion'
             'devtools: aur-chroot'
             'vifm: build file interaction'
             'xdelta3: generate delta files')
-sha256sums=('2e8c7656c620c1c8ded07e20cc9e9cb37d7a4bb234c9f5bd166a2e3887d3db65')
+sha256sums=('c657f2d0878bedeb0f11d2b72f3028d271db0f14d8f23c18b641e3c59134150e')
 validpgpkeys=('DBE7D3DD8C81D58D0A13D0E76BC26A17B9B7018A') # Alad Wenter <alad@archlinux.org>
 
 build() {
