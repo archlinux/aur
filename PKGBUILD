@@ -2,7 +2,8 @@
 
 pkgbase=wps-office-mui
 
-pkgver=10.1.0.6757
+pkgver=10.1.0.6758
+_pkgver=10.1.0.6757
 pkgrel=1
 pkgdesc="WPS Office MUI packages"
 depends=(wps-office=${pkgver})
@@ -60,7 +61,7 @@ for _lang in "${_languages[@]}"; do
     _pkgname=wps-office-mui-${_locale}
 
     pkgname+=(${_pkgname})
-    source+=(${_url}/${pkgver}/mui_${_locale/-/_}.7z)
+    source+=(${_url}/${_pkgver}/mui_${_locale/-/_}.7z)
 
     eval "package_${_pkgname}() {
         _package ${_lang}
