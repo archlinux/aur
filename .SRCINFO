@@ -5,6 +5,7 @@ pkgbase = osu-downloader
 	url = https://github.com/GarciaMiguelangel/Osu-Masive-Beatmap-Downloader/
 	arch = any
 	depends = jdk-openjdk
+	depends = wget
 	source = osudownloader
 	source = osudownloader-downloadactually
 	sha512sums = f99acbbe5397d005f15016467f5c55abf40e3e11bf33db97049903b2990dc48d8bc9fa3dfd434e5d1855b7d0ae360caf8b8bb9fa210cd6bfbe4b5c3bda41d6ef
