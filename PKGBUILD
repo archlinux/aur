@@ -3,7 +3,7 @@
 
 _gitname=telegram-qt
 pkgname=telegram-qt-git
-pkgver=r1117.0343562
+pkgver=r1915.e24cd50
 pkgrel=1
 pkgdesc="Qt bindings for the Telegram protocol"
 arch=(i686 x86_64)
