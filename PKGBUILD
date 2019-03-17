@@ -2,7 +2,7 @@
 
 _pkgname=feathernotes
 pkgname=$_pkgname-git
-pkgver=r15.44ff069
+pkgver=0.4.6.18.g9f99845
 pkgrel=1
 pkgdesc='Lightweight Qt hierarchical notes-manager for Linux.'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --always | sed 's:^V::;s:-:.:g'
 }
 
 build() {
