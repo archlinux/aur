@@ -1,0 +1,17 @@
+pkgbase = fontfinder
+	pkgdesc = A Google font browser for your GTK desktop, written in Rust
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://gitlab.com/mmstick/fontfinder
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = webkit2gtk
+	depends = openssl-1.0
+	provides = fontfinder
+	options = !emptydirs
+	source = fontfinder-1.4.1.tar.gz::https://gitlab.com/mmstick/fontfinder/-/archive/1.4.1/fontfinder-1.4.1.tar.gz
+	sha256sums = ca37b974b30b9788e21f2301d0aac46f1db58aa43044db9017ef9c666512384e
+
+pkgname = fontfinder
+
