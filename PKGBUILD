@@ -1,35 +1,64 @@
-# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
-# Contributor: Tom Richards <tom [at] tomrichards [dot] net>
+# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: Wei Congrui < crvv.mail at gmail dot com >
+# Contributor: Carl George < arch at cgtx dot us >
+# Contributor: Eric Engeström <eric at engestrom dot ch>
+# Contributor: Andreas Linz <klingt.net at gmail dot com>
+# Contributor: Akshay S Dinesh <asdofindia at gmail dot com>
 
 pkgname=caddy-git
-pkgver=r1224.2138270a
+_pkgname=caddy
+pkgver=20190311.e6a3e5e1
 pkgrel=1
-pkgdesc="A configurable, general-purpose HTTP/2 web server for any platform"
-arch=('any')
-url="https://github.com/mholt/caddy"
+pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
+url='https://caddyserver.com/'
 license=('Apache')
-install='caddy.install'
-conflicts=('caddy' 'caddy-full-bin' 'caddy-all-features')
-provides=('caddy')
-makedepends=('go' 'curl' 'jq')
+arch=('x86_64')
+makedepends=('git' 'go')
+source=("git+https://github.com/mholt/caddy.git"
+        'tmpfiles'
+        'service'
+        'conf')
+sha256sums=('SKIP'
+            'bd4d912d083be176727882ccc1bbe577a27cc160db09238e5edc05ba458aebce'
+            'e9c228a7ae33e4beb229bcf4f49f031d9b19dc1de78bf2e26c885c401e017ad6'
+            '5c48ac9bb5bdba72d2f5aed5a32356f38b196c88a18ba0c91cb6157675506ea1')
+
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+
+backup=('etc/caddy.conf')
 
 pkgver() {
-  api='https://api.github.com/repos/mholt/caddy'
-  first='4497a16fb0301242ec66cb06411e7e73c0faa435'
-  last_json=$(curl -s "$api/commits?per_page=1")
-  last=$(echo "$last_json" | jq -r '.[0].sha')
-  compare_json=$(curl -s "$api/compare/${first}...${last}")
-  ahead_by=$(echo "$compare_json" | jq -r '.ahead_by')
-  num=$((ahead_by+1))
-  printf "r%d.%s" $num "${last:0:7}"
+	cd "${srcdir}/${_pkgname}"
+	git log -1 --format='%cd.%h' --date=short | tr -d -
+}
+
+prepare() {
+	cd "${srcdir}"
+
+	_cargo=build/src
+	_gopkg=github.com/mholt/caddy
+	export GOPATH="${srcdir}/build"
+
+	git clone caddy "${_cargo}/${_gopkg}"
+#	sed '/^import/a\
+#_ "github.com/jung-kurt/caddy-cgi"\
+#_ "github.com/captncraig/caddy-realip"\
+#' \
+#	-i "${_cargo}/${_gopkg}/caddy/caddymain/run.go"
+	go get -v -d "${_gopkg}/caddy/caddymain"
 }
 
 build() {
-  GOPATH="$srcdir" go get -u -v -fix "github.com/mholt/caddy"
+	cd "${srcdir}"
+	export GOPATH="${srcdir}/build"
+	go build -v -o build/caddy github.com/mholt/caddy/caddy
 }
 
 package() {
-  install -Dm755 "${srcdir}/bin/caddy" "$pkgdir/usr/bin/caddy"
-  install -Dm644 "${srcdir}/caddy/dist/init/linux-systemd/caddy@.service" "${pkgdir}/usr/lib/systemd/system/caddy@.service"
-  install -Dm644 "${srcdir}/caddy/dist/init/linux-systemd/README.md" "${pkgdir}/usr/share/doc/caddy/systemd-service.md"
+	cd "${srcdir}"
+	install -D -m 0755 build/caddy "${pkgdir}/usr/bin/caddy"
+	install -D -m 0644 tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/caddy.conf"
+	install -D -m 0644 service "${pkgdir}/usr/lib/systemd/system/caddy.service"
+	install -D -m 0644 conf "${pkgdir}/etc/caddy.conf"
 }
