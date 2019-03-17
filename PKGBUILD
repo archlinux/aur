@@ -28,5 +28,5 @@ esac
 
 package() {
     install -D -m 755 "${dotproxy}" "${pkgdir}/usr/bin/dotproxy"
-    install -D -m644 "${srcdir}/dotproxy.service" "${pkgdir}/usr/lib/systemd/user/dotproxy.service"
+    install -D -m644 "${srcdir}/dotproxy.service" "${pkgdir}/usr/lib/systemd/system/dotproxy.service"
 }
