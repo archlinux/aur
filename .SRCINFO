@@ -1,0 +1,21 @@
+pkgbase = rumur-git
+	pkgdesc = Yet another Murphi model checker
+	pkgver = 2019.03.11.r11.g9626824
+	pkgrel = 1
+	url = https://github.com/Smattr/rumur
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = bison
+	makedepends = flex
+	makedepends = bison
+	makedepends = flex
+	depends = gmp
+	provides = rumur
+	conflicts = rumur
+	source = git+https://github.com/Smattr/rumur.git
+	sha256sums = SKIP
+
+pkgname = rumur-git
+
