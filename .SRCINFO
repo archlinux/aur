@@ -4,7 +4,6 @@ pkgbase = osu-downloader
 	pkgrel = 1
 	url = https://github.com/GarciaMiguelangel/Osu-Masive-Beatmap-Downloader/
 	arch = any
-	license = GPL2
 	depends = jdk-openjdk
 	source = osudownloader
 	source = osudownloader-downloadactually
