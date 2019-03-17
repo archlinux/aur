@@ -1,8 +1,8 @@
 pkgbase = mingw-w64-netcdf
 	pkgdesc = network Common Data Form interface for array-oriented data access and corresponding library (mingw-w64)
-	pkgver = 4.6.1
+	pkgver = 4.6.3
 	pkgrel = 1
-	url = http://www.unidata.ucar.edu/downloads/netcdf/index.jsp
+	url = https://www.unidata.ucar.edu/software/netcdf/
 	arch = any
 	license = custom
 	makedepends = mingw-w64-cmake
@@ -13,8 +13,8 @@ pkgbase = mingw-w64-netcdf
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = http://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-4.6.1.tar.gz
-	sha256sums = 89c7957458740b763ae828c345240b8a1d29c2c1fed0f065f99b73181b0b2642
+	source = https://github.com/Unidata/netcdf-c/archive/v4.6.3.tar.gz
+	sha256sums = 734a629cdaed907201084d003cfa091806d6080eeffbd4204e7c7f73ff9d3564
 
 pkgname = mingw-w64-netcdf
 
