@@ -11,6 +11,7 @@ pkgbase = frrouting
 	makedepends = libyang
 	makedepends = net-snmp
 	depends = libyang
+	depends = net-snmp
 	provides = frrouting
 	source = frrouting::git+https://github.com/FRRouting/frr.git
 	sha1sums = SKIP
