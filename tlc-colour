@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+
+  # Colour stdin
+  exec perl -pe '
+    s/^(Warning:.*)$/\e[30;43m$1\e[0m/;
+    s/^(Error:(?! The behavior up to this point is).*|\*\*\*.*Error.*)$/\e[97;41m$1\e[0m/;
+    s/^(State \d+: <)(\S+?)( line.+)$/\e[93m$1\e[0;30;43m$2\e[0;93m$3\e[0m/;
+    s/^(State \d+:.*)$/\e[93m$1\e[0m/;
+    s/^(Model checking completed. No error.*)$/\e[30;42m$1\e[0m/;
+  '
+
+else
+
+  # Run tlc
+  exec tlc "$@" | "$0"
+
+fi
