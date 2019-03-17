@@ -1,12 +1,12 @@
 pkgbase = lua-yajl
 	pkgdesc = Integrate the yajl JSON library with Lua.
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://luarocks.org/modules/brimworks/lua-yajl
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = luarocks5.1
+	makedepends = luarocks
 	depends = lua51
 	depends = yajl
 	source = https://luarocks.org/manifests/brimworks/lua-yajl-2.0-1.src.rock
