@@ -1,27 +1,21 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=ddnet-git
-pkgver=11.7.r0.ga689533a9
+pkgver=11.9.r3.g11a5e3ce7
 pkgrel=1
-pkgdesc="DDraceNetwork, a mod of Teeworlds"
+pkgdesc="DDraceNetwork, a cooperative racing mod of Teeworlds"
 arch=('x86_64')
 url="https://ddnet.tw"
 license=('custom:BSD' 'CCPL:by-nc-sa')
 depends=('sdl2' 'freetype2' 'opusfile' 'curl' 'glew' 'wavpack')
-makedepends=('git' 'cmake' 'python')
+makedepends=('git' 'cmake' 'python' 'imagemagick' 'gendesk')
 checkdepends=('gtest')
 optdepends=('ddnet-skins: more skins for your tee'
             'ddnet-maps-git: have all DDNet maps available offline')
 provides=('ddnet')
 conflicts=('ddnet')
-source=("git+https://github.com/ddnet/ddnet"
-        'ddnet.desktop' 'ddnet-server.desktop'
-        'DDNet.png' 'DDNet-Server.png')
-sha256sums=('SKIP'
-            'c60de83f47b5981e79dc0d028c1fe239c898f6319653b94bb74e578cf699a216'
-            'fc8c27e129f92c5dddf96a079306a2439c8cc14d4b8ce719c5fa2f59aceee367'
-            '1dc83efd9fdab2597fc4d41358628422a9550d4d23b60d273f2f30cf7b76dfaa'
-            'e4083f1c40569146caabd21b8f24fdd7862e2f3040552e9c6a260df603249274')
+source=("git+https://github.com/ddnet/ddnet")
+sha256sums=('SKIP')
 
 pkgver() {
     cd ddnet
@@ -32,15 +26,42 @@ pkgver() {
     printf $v.r$r.g$h
 }
 
-build() {
+prepare() {
     [ -d build ] && rm -rf build
-    mkdir build
+    mkdir -p build/prep
+    cd build/prep
 
+      # Extract icons in .png from .ico (name must be lowercase)
+    convert ../../ddnet/other/icons/DDNet-Server.ico ddnet-server.png
+    convert ../../ddnet/other/icons/DDNet.ico        ddnet.png
+
+      # Generate .desktop files
+    gendesk --pkgname="DDNet" --pkgdesc="DDNet" \
+            --icon="ddnet" --categories="Game;ArcadeGame"
+    gendesk --pkgname="DDNet-Server" --name="DDNet Server"          \
+            --pkgdesc="DDNet Server" --terminal=true                \
+            --icon="ddnet-server"    --categories="Game;ArcadeGame" \
+            --exec='sh -c "cd /usr/share/ddnet/data && DDNet-Server"'
+
+      # Create icon files' structure, for installing in package(). How:
+      # For each png file, check its dimensions (e.g. 128 x 128) using
+      # the output of 'file' command. Then double-check the 's' as a
+      # number, then install it into  a "size/filename.png" notation
+    for f in ddnet-?.png ddnet-server-?.png; do
+        s=$(file $f | cut -d' ' -f5)
+        if [ ! -z "${s##*[!0-9]*}" ]; then
+            install -Dm644 $f ${s}x${s}/apps/${f/-[0-9]/}
+            rm $f
+        fi
+    done
+}
+
+build() {
     cd build
-    cmake ../ddnet                \
-      -DCMAKE_BUILD_TYPE=Release  \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DAUTOUPDATE=OFF
+    cmake ../ddnet                  \
+        -DCMAKE_BUILD_TYPE=Release  \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DAUTOUPDATE=OFF
     make all tools
 }
 
@@ -49,17 +70,20 @@ check() {
 }
 
 package() {
-    make install DESTDIR="$pkgdir" -C build
+    cd build
+    make install DESTDIR="$pkgdir"
 
-      # Install desktop and icon files
-    install -d -m755 "$pkgdir/usr/share/applications/"
-    install -d -m755 "$pkgdir/usr/share/pixmaps/"
-    install -m644 ddnet.desktop        "$pkgdir/usr/share/applications/"
-    install -m644 ddnet-server.desktop "$pkgdir/usr/share/applications/"
-    install -m644 DDNet.png            "$pkgdir/usr/share/pixmaps/"
-    install -m644 DDNet-Server.png     "$pkgdir/usr/share/pixmaps/"
+      # Install desktop files and folder
+    install -dvm755 "$pkgdir/usr/share/applications/"
+    install -vm644 prep/DDNet.desktop        "$pkgdir/usr/share/applications/"
+    install -vm644 prep/DDNet-Server.desktop "$pkgdir/usr/share/applications/"
 
-      # Install license files
-    install -d -m755 "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm644 ddnet/license.txt  "$pkgdir/usr/share/licenses/$pkgname/"
+      # Install icon files and folders
+    for f in $(find prep -type f -name '*.png'); do
+        install -Dvm644 $f "$pkgdir/usr/share/icons/hicolor"/${f/prep\/}
+    done
+
+      # Install license file
+    install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
+    install -vm644 ../ddnet/license.txt  "$pkgdir/usr/share/licenses/$pkgname/"
 }
