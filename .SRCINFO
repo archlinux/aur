@@ -9,6 +9,7 @@ pkgbase = ffrouting
 	makedepends = git
 	makedepends = linux-headers
 	makedepends = libyang
+	makedepends = net-snmp
 	provides = ffrouting
 	source = ffrouting::git+https://github.com/FRRouting/frr.git
 	sha1sums = SKIP
