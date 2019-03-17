@@ -2,9 +2,9 @@
 pkgbase='essentia-acousticbrainz'
 pkgname=('essentia-acousticbrainz' 'lib32-essentia-acousticbrainz')
 pkgver=2.1_beta2
-pkgrel=1
+pkgrel=2
 pkgdesc="audio analysis and audio-based music information retrieval (binary for acousticbrainz)"
-url="http://acousticbrainz.org/download"
+url="https://acousticbrainz.org/download"
 license=('AGPL')
 arch=('x86_64' 'i686')
 source=(http://acousticbrainz.org/static/download/essentia-extractor-v${pkgver}-linux-{x86_64,i686}.tar.gz)
