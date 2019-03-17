@@ -10,6 +10,7 @@ url='https://github.com/tsujan/FeatherPad'
 license=('GPL3')
 depends=('qt5-svg' 'qt5-x11extras' 'desktop-file-utils' 'gtk-update-icon-cache')
 makedepends=('git' 'qt5-tools')
+optdepends=('qt5-translations: localized keyboard shortcuts')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/tsujan/FeatherPad.git")
