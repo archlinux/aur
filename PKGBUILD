@@ -1,5 +1,5 @@
 pkgname=mldonkey-ed2kad-daemon-git
-pkgver=3.1.6.2.gfaac682f
+pkgver=3.1.6.4.g297ee9a6
 pkgrel=1
 pkgdesc="A multi-network P2P client. Daemon function, only ED2K/KAD. (GIT Version)"
 arch=('x86_64')
@@ -62,7 +62,7 @@ package() {
   install -Dm755 mld_hash "${pkgdir}/usr/bin/ed2k_hash"
 
   install -Dm644 "${srcdir}/mldonkey.service" "${pkgdir}/usr/lib/systemd/system/mldonkey.service"
-  install -Dm644 "${srcdir}/mldonkey@.service" "${pkgdir}/usr/lib/systemd/user/mldonkey.service"
+  install -Dm644 "${srcdir}/mldonkey@.service" "${pkgdir}/usr/lib/systemd/system/mldonkey@.service"
   install -Dm644 "${srcdir}/mldonkey.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/mldonkey.conf"
   install -Dm644 "${srcdir}/mldonkey.sysuser" "${pkgdir}/usr/lib/sysusers.d/mldonkey.conf"
 

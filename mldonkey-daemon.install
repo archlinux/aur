@@ -19,7 +19,7 @@ _downloads_ini_not_found() {
      mldonkey_bin = \"/usr/bin/mldonkey\"${all_off}
 
      in this file: '${bold}/var/lib/mldonkey/.mldonkey/downloads.ini${all_off}'
-     or: '${bold}"\/$\HOME/".mldonkey/downloads.ini${all_off}'
+     or: '${bold}"$\HOME/".mldonkey/downloads.ini${all_off}'
      if the service is run as user.\n"
 }
 
