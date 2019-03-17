@@ -2,6 +2,10 @@
 # Based on PKGBUILD by
 # - Daichi Shinozaki <dsdseg@gmail.com>     (grpc-git)
 # - Simon Schäfer <simon.schaefer@koeln.de> (grpc-git-boringssl)
+#
+# This package differs from grpc-git, since it uses cmake to overcome
+# "Argument list too long" issue:
+#   https://github.com/grpc/grpc/issues/14844
 
 pkgname=grpc-git-cmake
 _pkgname=${pkgname/-git-cmake/}
