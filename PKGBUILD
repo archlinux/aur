@@ -1,14 +1,14 @@
 # Maintainer: Darryl Pogue <darryl@dpogue.ca>
 
 pkgname="gplugin"
-pkgver=0.27
-pkgrel=3
+pkgver=0.28.0
+pkgrel=1
 arch=('i868' 'x86_64')
 pkgdesc="A GObject based library that implements a reusable plugin system"
-license=("LGPL 2")
+license=("LGPL2")
 url="https://bitbucket.org/gplugin/gplugin"
 depends=("gtk3")
-makedepends=("cmake"
+makedepends=("meson"
              "gcc"
              "gobject-introspection"
              "pkg-config"
@@ -19,24 +19,10 @@ source=("$pkgname::hg+https://bitbucket.org/$pkgname/$pkgname#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname"
-  mkdir -p build
-  cd build
-
-  cmake "$srcdir/$pkgname" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_SKIP_RPATH=ON \
-    -DCMAKE_C_FLAGS="${CFLAGS}" \
-    -DBUILD_LUA="Off" \
-    -DBUILD_PYTHON="Off" \
-    -DTESTING_ENABLED="Off"
-
-  make
+  meson --prefix /usr --buildtype=plain -D perl=false -D python=false -D lua=false -D tcl=false "$srcdir/$pkgname" build
+  ninja -C build
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
 }
