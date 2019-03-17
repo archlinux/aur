@@ -1,7 +1,7 @@
 pkgname=(frrouting)
 license=(GPL2)
 pkgver=r15008.61be0e35f
-pkgrel=3
+pkgrel=4
 pkgdesc="FFRouting - IP routing protocol suite for Linux and Unix platforms - git"
 makedepends=(gcc git linux-headers libyang net-snmp)
 depends=(libyang net-snmp)
@@ -26,8 +26,8 @@ prepare() {
          --localstatedir=/var/run/frr \
          --sysconfdir=/etc/frr \
          --sbindir=/usr/bin \
-         --enable-user root \
-         --enable-group root \
+         --enable-user=root \
+         --enable-group=root \
          --disable-doc
 }
 
