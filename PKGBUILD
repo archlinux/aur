@@ -1,16 +1,17 @@
-# Maintainer : Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
+# Maintainer : L. Bradley LaBoon <me@bradleylaboon.com>
+# Contributor: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: Niels Abspoel <aboe76 (at) Gmail (dot) com>
 
 pkgname=puppetserver
-pkgver=5.3.1
+pkgver=6.2.1
 pkgrel=1
 pkgdesc="Server automation framework and application"
 arch=('any')
 url="https://docs.puppetlabs.com/puppetserver/latest/services_master_puppetserver.html"
 license=("APACHE")
-depends=("ruby" "puppet>=4" "java-runtime-headless" "logrotate" "jruby"
-         "facter>=3.1.3-4" "net-tools")
+depends=("ruby" "puppet>=6" "java-runtime-headless=8" "logrotate" "jruby"
+         "facter" "net-tools")
 backup=('etc/default/puppetserver'
         'etc/logrotate.d/puppetserver'
         'etc/puppetlabs/puppetserver/bootstrap.cfg'
@@ -20,17 +21,19 @@ backup=('etc/default/puppetserver'
         'etc/puppetlabs/puppetserver/conf.d/web-routes.conf'
         'etc/puppetlabs/puppetserver/conf.d/webserver.conf'
         'etc/puppetlabs/puppetserver/logback.xml'
-        'etc/puppetlabs/puppetserver/request-logging.xml')
+        'etc/puppetlabs/puppetserver/request-logging.xml'
+        'etc/puppetlabs/puppetserver/services.d/ca.cfg')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::https://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz.asc")
-sha512sums=('3d618c351299f4cc038682ab43eb4686bd1baf8f88390c8ac41eb3be9fdf8a7a3a501f0ab8713e45bee0ed02d7a9fd1ed1b7252ebb640ee52aa5da638f0b2ce2'
+sha512sums=('ad8cd8441ac76c0443f0fca14999a014c5511d930b96e9721ff9c236ffb48cb3273e0abb2e615fa3210c539173d472c4080466bc391a863c2c4fadb32d26868c'
             'SKIP')
 validpgpkeys=('6F6B15509CF8E59E6E469F327F438280EF8D349F')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
+  echo 'hiera-eyaml 2.1.0' >> ext/build-scripts/jruby-gem-list.txt
   sed -i 's:sysconfig:default:' ext/redhat/puppetserver.service
   sed -i "s:\[/opt/puppetlabs/puppet/lib/ruby/vendor_ruby\]:\[$( ruby -e \
     'puts RbConfig::CONFIG["vendorlibdir"]' ),$( ruby -e \
@@ -54,7 +57,7 @@ _app_logdir=${_app_logdir:=/var/log/puppetlabs/${_real_name}}
   env EZ_VERBOSE=1 DESTDIR="${pkgdir}" prefix=${_prefix} \
     app_prefix=${_app_prefix} app_data=${_app_data} \
     confdir=${_sysconfdir} bindir=${_app_bindir} symbindir=${_sym_bindir} \
-    rundir=${_app_rundir} rubylibdir=${rubylibdir} \
+    rundir=${_app_rundir} \
     bash install.sh install_redhat
 
   env EZ_VERBOSE=1 DESTDIR="${pkgdir}" prefix=${_prefix} \
