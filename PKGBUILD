@@ -22,7 +22,7 @@ options=('!makeflags')
 pkgver() {
   cd ${pkgname%-git}
   . .hoprelease
-  printf "%sr%s.%s" $major "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%sr%s.%s" $major "$(git rev-list --count HEAD)" 
 }
 
 build() {
