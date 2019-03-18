@@ -4,7 +4,7 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-performance
-pkgver=3.32.0+16+gc5780056a
+pkgver=3.32.0+16+ga84e4d9bc
 pkgrel=1
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -22,9 +22,11 @@ provides=(gnome-shell gnome-shell=$pkgver)
 conflicts=(gnome-shell)
 _commit=b7d79a5f063341f1773a9a8a5550a188c04efbda  # master
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
+        hack-detached.diff)
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            '939e81f682ebafd60e86d444e49dbab277fba0f00420466b5ff783568b7dc931')
 pkgver() {
   cd $pkgname
   git describe --tags | sed 's/-/+/g'
@@ -44,6 +46,12 @@ prepare() {
     echo "======= mutter-781835-workaround not installed, not applying MR276 ======="
     sleep 3
   fi
+
+  # Unbreak switcher
+  git cherry-pick -n 31e7f0340fd0bd72f2d9848866b1f432ae82eee8
+
+  # Hack around broken detached locations
+  patch -Np1 -i ../hack-detached.diff
 
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
