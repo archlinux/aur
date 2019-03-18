@@ -1,0 +1,14 @@
+# See also:
+# https://github.com/HOL-Theorem-Prover/HOL/commit/c2615dd
+
+post_install() {
+    cd /opt/hol
+    poly < tools/smart-configure.sml
+    bin/build --relocbuild
+}
+
+post_upgrade() {
+    cd /opt/hol
+    poly < tools/smart-configure.sml
+    bin/build --relocbuild
+}
