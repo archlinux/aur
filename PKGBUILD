@@ -22,4 +22,6 @@ package() {
   # extract package data
   tar xf data.tar.xz -C "${pkgdir}"
   install -Dm644 "$pkgdir/usr/share/doc/onedrive/config" "$pkgdir/usr/share/onedrive/config.default"
+  install -Dm644 "$pkgdir/lib/systemd/system/onedrive@.service" "$pkgdir/usr/lib/systemd/system/onedrive@.service"
+  rm -fr "$pkgdir/lib"
 }
