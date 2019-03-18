@@ -5,15 +5,15 @@
 _pkgname=gpscorrelate
 pkgname=gpscorrelate-git
 pkgver=r149.a6bc064
-pkgrel=2
+pkgrel=3
 pkgdesc='GPS Photo Correlation; Writes location data to EXIF tags using GPX files (command line and GTK interface).'
 url='https://github.com/freefoote/gpscorrelate'
 license=('GPL')
 source=('git+https://github.com/dfandrich/gpscorrelate')
 sha256sums=('SKIP')
 arch=('any')
-depends=('libxml2' 'gtk2' 'exiv2' 'libxslt')
-makedepends=('git')
+depends=('libxml2' 'gtk2' 'exiv2')
+makedepends=('git' 'libxslt')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
