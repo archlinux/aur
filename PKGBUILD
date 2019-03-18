@@ -2,7 +2,7 @@
 
 pkgname=jid-bin
 _pkgname=jid
-pkgver=0.7.3
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Json incremental digger"
 url="https://github.com/simeji/jid"
@@ -13,8 +13,8 @@ conflicts=("jid" "jid-git")
 depends=("glibc")
 source_i686=("https://github.com/simeji/jid/releases/download/v${pkgver}/${_pkgname}_linux_386.zip")
 source_x86_64=("https://github.com/simeji/jid/releases/download/v${pkgver}/${_pkgname}_linux_amd64.zip")
-sha256sums_i686=('e5cbf764753ed1b84217241887a59a6a9bd104acdfdaca1cc9c71ff03f1ecf16')
-sha256sums_x86_64=('8345855bbf1d99f0164964075be396bda58b96a5e27720a9a044ade45626c646')
+sha256sums_i686=('e122ead40f1e4afd18a358a383a242fdbff45b6c0c44182928f35ce20bf74569')
+sha256sums_x86_64=('2df3bef019722bb2a4663252141cb0746f773287016427ae21f30553babadece')
 
 package() {
   cd "${srcdir}"
