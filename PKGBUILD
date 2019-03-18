@@ -1,4 +1,4 @@
-# Maintainer: Your Name <GI_Jack@hackermail.com>
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 # Interesting package I found on github for car hacking. you need to make you
 # own dongle. instructions included
