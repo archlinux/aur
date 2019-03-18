@@ -23,7 +23,5 @@ package() {
   tar xf data.tar.xz -C "${pkgdir}"
   install -Dm644 "$pkgdir/usr/share/doc/onedrive/config" "$pkgdir/usr/share/onedrive/config.default"
   install -Dm644 "$pkgdir/lib/systemd/system/onedrive@.service" "$pkgdir/usr/lib/systemd/system/onedrive@.service"
-  ln -sf "$pkgdir/usr/lib/libphobos2-ldc-shared.so" "$pkgdir/usr/lib/libphobos2-ldc-shared.so.82"
-  ln -sf "$pkgdir/usr/lib/libdruntime-ldc-shared.so" "$pkgdir/usr/lib/libdruntime-ldc-shared.so.82"
   rm -fr "$pkgdir/lib"
 }
