@@ -1,12 +1,12 @@
 pkgbase = fotowall-git
 	pkgdesc = A creative tool that allows you to layout your photos or pictures in a personal way
-	pkgver = 1.0.r796.g3445edd
+	pkgver = 1.0.r831.g9e2436f
 	pkgrel = 1
 	url = https://github.com/enricoros/fotowall
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
+	makedepends = qt5-tools
 	depends = desktop-file-utils
 	depends = qt5-svg
 	provides = fotowall
