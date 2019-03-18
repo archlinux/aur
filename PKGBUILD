@@ -117,7 +117,7 @@ build() {
 	# this requires binary libraries with messy linking...
 	sed -i 's/vmware-view-crtbora/vmware-view/' "${srcdir}"/extract/vmware-horizon-client/bin/vmware-view
 
-	sed -i '/Name=/a Comment=Connect to VMware Horizon View virtual machines' \
+	sed -i -e '/Name=/a Comment=Connect to VMware Horizon View virtual machines' -e '/Icon=/s/.png$//' \
 		"${srcdir}"/extract/vmware-horizon-client/share/applications/vmware-view.desktop
 }
 
