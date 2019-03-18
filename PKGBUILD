@@ -1,5 +1,5 @@
 # Contributor: fnord0 < fnord0 AT riseup DOT net >
-# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=mysqloit
 pkgver=0.2
