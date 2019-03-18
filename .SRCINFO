@@ -5,6 +5,7 @@ pkgbase = code-server
 	url = https://github.com/codercom/code-server
 	arch = x86_64
 	license = MIT
+	depends = net-tools
 	options = !strip
 	source = https://github.com/codercom/code-server/releases/download/1.32.0-282/code-server-1.32.0-282-linux-x64.tar.gz
 	sha512sums = SKIP
