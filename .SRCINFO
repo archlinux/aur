@@ -1,14 +1,13 @@
 pkgbase = pymedusa
 	pkgdesc = Automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pymedusa/Medusa
 	install = pymedusa.install
 	arch = any
 	license = GPL
 	depends = python-babel
 	depends = python-mako
-	optdepends = python-notify
 	optdepends = unrar
 	conflicts = sickbeard
 	conflicts = sickrage
