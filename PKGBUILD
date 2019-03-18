@@ -5,7 +5,7 @@
 _pkgname=gpscorrelate
 pkgname=gpscorrelate-git
 pkgver=r149.a6bc064
-pkgrel=4
+pkgrel=5
 pkgdesc='GPS Photo Correlation; Writes location data to EXIF tags using GPX files (command line and GTK interface).'
 url='https://github.com/freefoote/gpscorrelate'
 license=('GPL')
@@ -14,10 +14,10 @@ sha256sums=('SKIP')
 arch=('any')
 depends=('libxml2' 'gtk2' 'exiv2')
 makedepends=('git' 'libxslt')
-
+provides=("${pkgname//-git}=${pkgver}")
+conflicts=(${pkgname//-git})
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-
   # Get the version number.
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
@@ -28,6 +28,5 @@ package() {
   install -Dm644 gpscorrelate-gui.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/gpscorrelate-gui.svg"
   install -Dm644 gpscorrelate.desktop "$pkgdir/usr/share/applications/gpscorrelate.desktop"
 }
-
 
 # vim: ft=sh ts=2 sw=2 et
