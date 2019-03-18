@@ -10,13 +10,10 @@ license=('AGPL3')
 provides=('maptool')
 conflicts=('maptool')
 source=("https://download.rptools.net/zip/maptool-linux64-${pkgver}.tar" "MapTool.desktop")
+options=(!strip)
 sha256sums=('e0a96e7349db16d2553ec976d2db8f810a3fa4b5b4ba4c22aee5e609e10ff15b' '524c13b4ebdbc392255c1fc7dbb112ab4bb9898186871fa23b3dab1c1edd16bd')
 
 package() {
-
-	tar -C "${pkgdir}" -xf maptool-linux64-${pkgver}.tar
-
-    install -Dm755 "${pkgdir}/MapTool-linux64-offline" "${pkgdir}/usr/bin/MapTool-linux64-offline"
-    install -Dm644 "$srcdir/MapTool.desktop" "${pkgdir}/usr/share/applications/MapTool.desktop"
-
+    install -Dm 644 "$srcdir"/MapTool.desktop -t "$pkgdir"/usr/share/applications/
+    install -Dm 755 "$srcdir"/MapTool-linux64-offline -t "$pkgdir"/usr/bin/
 }

@@ -7,6 +7,7 @@ pkgbase = maptool-stable-bin
 	license = AGPL3
 	provides = maptool
 	conflicts = maptool
+	options = !strip
 	source = https://download.rptools.net/zip/maptool-linux64-1.4.1.8.tar
 	source = MapTool.desktop
 	sha256sums = e0a96e7349db16d2553ec976d2db8f810a3fa4b5b4ba4c22aee5e609e10ff15b
