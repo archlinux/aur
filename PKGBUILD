@@ -11,7 +11,7 @@ url='https://github.com/abraunegg/onedrive'
 license=('GPL3')
 provides=('onedrive')
 conflicts=('onedrive' 'onedrive-abraunegg-git')
-depends=('curl' 'gcc-libs' 'sqlite')
+depends=('liblphobos' 'gcc-libs' 'sqlite')
 optdepends=('libnotify: notification support')
 source_x86_64=("http://http.us.debian.org/debian/pool/main/o/onedrive/onedrive_${pkgver}-${pkgrel}_amd64.deb")
 source_aarch64=("http://http.us.debian.org/debian/pool/main/o/onedrive/onedrive_${pkgver}-${pkgrel}_arm64.deb")
@@ -23,5 +23,7 @@ package() {
   tar xf data.tar.xz -C "${pkgdir}"
   install -Dm644 "$pkgdir/usr/share/doc/onedrive/config" "$pkgdir/usr/share/onedrive/config.default"
   install -Dm644 "$pkgdir/lib/systemd/system/onedrive@.service" "$pkgdir/usr/lib/systemd/system/onedrive@.service"
+  ln -sf "$pkgdir/usr/lib/libphobos2-ldc-shared.so" "$pkgdir/usr/lib/libphobos2-ldc-shared.so.82"
+  ln -sf "$pkgdir/usr/lib/libdruntime-ldc-shared.so" "$pkgdir/usr/lib/libdruntime-ldc-shared.so.82"
   rm -fr "$pkgdir/lib"
 }
