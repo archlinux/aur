@@ -3,22 +3,33 @@
 
 pkgname=lib32-libtiff4
 pkgver=3.9.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for manipulation of TIFF images'
-arch=('x86_64')
-url='http://www.remotesensing.org/libtiff/'
-license=('custom')
-depends=('lib32-gcc-libs' 'lib32-glibc' 'lib32-libjpeg-turbo' 'lib32-zlib')
-makedepends=('gcc-multilib')
-source=("http://download.osgeo.org/libtiff/tiff-${pkgver}.tar.gz")
-sha256sums=('f5d64dd4ce61c55f5e9f6dc3920fbe5a41e02c2e607da7117a35eb5c320cef6a')
+arch=(x86_64)
+url=http://www.simplesystems.org/libtiff/
+license=(custom)
+depends=(
+  lib32-gcc-libs
+  lib32-glibc
+  lib32-libjpeg-turbo
+  lib32-zlib
+)
+makedepends=(git)
+source=(git+https://gitlab.com/libtiff/libtiff.git#tag=Release-v${pkgver//./-})
+sha256sums=(SKIP)
+
+prepare() {
+  cd libtiff
+
+  ./autogen.sh
+}
 
 build() {
-  cd tiff-${pkgver}
+  cd libtiff
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
   ./configure \
     --prefix='/usr' \
@@ -27,13 +38,13 @@ build() {
 }
 
 package() {
-  cd tiff-${pkgver}
-
-  make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}"/usr/{bin,include,lib32/libtiff{,xx}.{so,a},share}
-  mv "${pkgdir}"/usr/lib32/libtiff.so.{3,4}
-  mv "${pkgdir}"/usr/lib32/libtiffxx.so.{3,4}
-
+  make DESTDIR="${pkgdir}" -C libtiff install
+  rm -rf "${pkgdir}"/usr/{bin,include,lib32/libtiff{,xx}.{a,so,so.3},share}
+  # Rename 3.9.7 to 4.3.7, 3.6.x was the first release with the unintentional ABI change
+  mv "${pkgdir}"/usr/lib32/libtiff.so.{3.9.7,4.3.7}
+  mv "${pkgdir}"/usr/lib32/libtiffxx.so.{3.9.7,4.3.7}
+  ln -s libtiff.so.4.3.7 "${pkgdir}"/usr/lib32/libtiff.so.4
+  ln -s libtiffxx.so.4.3.7 "${pkgdir}"/usr/lib32/libtiffxx.so.4
   install -dm 755 "${pkgdir}"/usr/share/licenses
   ln -s libtiff4 "${pkgdir}"/usr/share/licenses/lib32-libtiff4
 }
