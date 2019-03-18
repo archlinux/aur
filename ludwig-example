@@ -1,0 +1,5 @@
+#!/bin/sh
+cd /tmp
+ludwig experiment \
+  --data_csv /usr/share/ludwig-example/reuters-allcats.csv \
+  --model_definition_file /usr/share/ludwig-example/model_definition.yaml

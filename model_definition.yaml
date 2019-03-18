@@ -1,0 +1,1 @@
+{input_features: [{name: text, type: text}], output_features: [{name: class, type: category}]}
