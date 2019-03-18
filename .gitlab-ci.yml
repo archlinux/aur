@@ -8,7 +8,7 @@ build:
     - master
     - web
   script:
-    - pacman -Sy --needed --noconfirm base-devel
+    - pacman -Sy --needed --noconfirm base-devel git
     - useradd -m archie
     - su archie -c "makepkg $i"
   stage: build
