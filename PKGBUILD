@@ -4,7 +4,7 @@
 
 pkgname=hop-git
 epoch=1
-pkgver=3.2.0r5279.848b1d1f
+pkgver=3.2.0r5279
 pkgrel=1
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ options=('!makeflags')
 pkgver() {
   cd ${pkgname%-git}
   . .hoprelease
-  printf "%sr%s.%s" $major "$(git rev-list --count HEAD)" 
+  printf "%sr%s" $major "$(git rev-list --count HEAD)" 
 }
 
 build() {
