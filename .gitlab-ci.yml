@@ -1,0 +1,15 @@
+---
+stages:
+  - build
+
+publish:
+  image:  archlinux/base
+  only:
+    - master
+    - web
+  script:
+    - pacman -Sy base-devel
+    - makepkg $i
+  stage: build
+  tags:
+    - docker
