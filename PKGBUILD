@@ -1,11 +1,11 @@
 # Maintainer: William Belanger <echo d2lsbGlhbS5iZWxyQGdtYWlsLmNvbQ== | base64 -d>
 
 pkgname=obsuite-git
-pkgver=r52.b6006e7
+pkgver=r83.88c0a35
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-pkgdesc="System monitoring tools for custom desktop environments"
+pkgdesc="Collection of system utilities and monitoring tools for custom desktop environments"
 url="https://gitlab.com/william.belanger/${pkgname%-git}"
 arch=("any")
 license=("GPL3")
