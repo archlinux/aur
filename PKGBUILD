@@ -6,7 +6,7 @@
 
 pkgbase="freetype2-infinality"
 pkgname=("${pkgbase}" "${pkgbase/-/-demos-}" "${pkgbase/-/-docs-}")
-pkgver=2.9.1
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Font rasterization library with Infinality patches and custom settings."
 arch=("armv7h" "i686" "x86_64")
@@ -24,17 +24,17 @@ source=("https://download-mirror.savannah.gnu.org/releases/${pkgbase%2-infinalit
         "0003-Enable-long-PCF-family-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Enable-long-PCF-family-names.patch?h=packages/${pkgbase%-infinality}"
         "0005-${pkgbase%2-infinality}-2.5.2-more-demos.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0005-${pkgbase%2-infinality}-2.5.2-more-demos.patch?h=packages/${pkgbase%-infinality}"
         "${pkgbase%-infinality}.sh::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${pkgbase%-infinality}.sh?h=packages/${pkgbase%-infinality}")
-sha256sums=("ec391504e55498adceb30baceebd147a6e963f636eb617424bcfc47a169898ce"
-            "4d4b8248d399f75e8b1a803b6af1d4a08d723f5b5eebb4c5f2681686ce614f0b"
-            "f57c1297f5ad2ad4764f491317fa0f548bd307c4513185d4a0602412e83b1dc9"
-            "84f88cb22a87bae7184de063b7d6d648bb4d34140fef21db8b0d6fda3277651f"
-            "3d440aad3481285c7455f1593577e375c9d5792c800bbaba68d46fd75130fab9"
-            "cd460f0fb00dd8ae43e1d241a83e97d22779b3d825061296c08f90b852c7e764"
-            "55f0c00edc13016288e905b41be6c03ac28b05c3aee8e0924ff3680d1cfb580e"
-            "be3fc13ef3532e1ace9804148fff3357de6298efb80fe37494974017f3076756"
-            "7d681ac3002909cee93385c75b191b9fae2a6d052b5b0083e926f1a7c0e724b7"
-            "36484db4b926ed026e7f32570573493b5a9793a129f08d54383a26d65a6af89b"
-            "f7f8e09c44f7552c883846e9a6a1efc50377c4932234e74adc4a8ff750606467")
+sha256sums=('955e17244e9b38adb0c98df66abb50467312e6bb70eac07e49ce6bd1a20e809a'
+            'SKIP'
+            'd44a3046e5963ba04112beb927f4ea5c628f66a68fac5c01fa84dc2d25cb2c26'
+            'SKIP'
+            'dcf88dfd0b3966f9f8a38f53fc0eb8216b4b129742148167931148e65d262568'
+            'SKIP'
+            '739a67083b810c04e5cb87fa7e5a7819983410307e3d38d8f2a334c23085a5c2'
+            '94b08773fbbb5122e5700398030c310836fe001a5327656a780f946b662e6e02'
+            '778a084b84215fbe62dafaed1dd7ebcdbd35c5c7af681d2789b5fe37764ceadd'
+            '36484db4b926ed026e7f32570573493b5a9793a129f08d54383a26d65a6af89b'
+            'f7f8e09c44f7552c883846e9a6a1efc50377c4932234e74adc4a8ff750606467')
 validpgpkeys=("58E0C111E39F5408C5D3EC76C1A60EACE707FDA5")
 
 prepare() {
