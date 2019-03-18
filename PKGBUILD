@@ -2,7 +2,7 @@
 
 pkgname=fotoxx
 pkgver=19.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A program for improving image files made with a digital camera, stable version"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
 arch=('i686' 'x86_64')
@@ -17,6 +17,7 @@ sha512sums=('d054c5e839572cecea1968b3200c9494f06bc6542980dedd55503b8a04665eeedd8
 prepare() {
   cd $pkgname
   sed -i 's+libchamplain+champlain+g' Makefile
+  chmod o+r images/color-mode.jpg
 }
 
 build() {
