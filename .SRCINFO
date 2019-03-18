@@ -1,6 +1,6 @@
 pkgbase = nginx-config-formatter-git
 	pkgdesc = nginx config file formatter/beautifier written in Python.
-	pkgver = 6df60552ddb39c4b1ea7118e067961733a261f49
+	pkgver = r19.4ea6bbc
 	pkgrel = 1
 	url = https://github.com/1connect/nginx-config-formatter
 	arch = any

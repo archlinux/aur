@@ -1,5 +1,5 @@
 pkgname=nginx-config-formatter-git
-pkgver=6df60552ddb39c4b1ea7118e067961733a261f49
+pkgver=r19.4ea6bbc
 pkgrel=1
 pkgdesc="nginx config file formatter/beautifier written in Python. "
 depends=('python')
@@ -8,6 +8,14 @@ arch=('any')
 url="https://github.com/1connect/nginx-config-formatter"
 source=($pkgname::git+$url)
 sha256sums=('SKIP')
+
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+
+  # Get the version number.
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
     cd "$srcdir/$pkgname"
