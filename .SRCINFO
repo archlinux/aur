@@ -1,0 +1,21 @@
+pkgbase = onedrive-bin
+	pkgdesc = Private messaging from your desktop
+	pkgver = 2.2.6
+	pkgrel = 2
+	url = https://github.com/abraunegg/onedrive
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	depends = curl
+	depends = gcc-libs
+	depends = sqlite
+	provides = onedrive
+	conflicts = onedrive
+	conflicts = onedrive-abraunegg-git
+	source_x86_64 = http://http.us.debian.org/debian/pool/main/o/onedrive/onedrive_2.2.6-2_amd64.deb
+	sha256sums_x86_64 = 8647444295c2a6c223e6f9e39e6126b12e693afecdf95638fad55bb3c13fea11
+	source_aarch64 = http://http.us.debian.org/debian/pool/main/o/onedrive/onedrive_2.2.6-2_arm64.deb
+	sha256sums_aarch64 = 8d71ed8d1573bde34f6fb0d5cfd8ed8ccff97c9c53e77713cc0dae7a234d39e7
+
+pkgname = onedrive-bin
+
