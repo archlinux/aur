@@ -3,21 +3,23 @@
 _pkgname=lammps
 pkgname=${_pkgname}-beta
 pkgver=20190228
-_pkgver=$(date -d ${pkgver} +%-d%b%Y)
+_pkgver="28Feb2019"
+#_pkgver=$(date -d ${pkgver} +%-d%b%Y)
 pkgrel=3
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
 arch=('x86_64')
 license=('GPL')
 depends=('fftw' 'openmpi')
-makedepends=('cmake' 'python-sphinx' 'lammpsdoc')
+makedepends=('cmake')
 conflicts=('lammps')
 provides=('lammps')
 source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/patch_${_pkgver}.tar.gz")
 sha512sums=('dc264ec43a5a917a0a7905f89076c2e10e8d5613bb710fb970eb388721860d7d409db7d988803bde823ddd74691c4b3bdf5bf4a72713476dad5a4b0833a4dbd0')
 
-_BUILD_DOC=true
-# Set the above to 'false' if you want to build documentation
+_BUILD_DOC=false
+# Set the above to 'true' if you want to build documentation
+if $_BUILD_DOC ; then makedepends+=( 'python-sphinx' 'lammpsdoc') ; fi
 
 prepare(){
   cd "${_pkgname}-patch_${_pkgver}"
@@ -36,7 +38,7 @@ build() {
 
   make
 
-  if _BUILD_DOC ; then
+  if $_BUILD_DOC ; then
     # Generate ReStructuredText from Text files
     mkdir -p rst
 
@@ -58,7 +60,7 @@ build() {
 package() {
   cd "${_pkgname}-patch_${_pkgver}/build"
   make DESTDIR="${pkgdir}" install
-  if _BUILD_DOC ; then
+  if $_BUILD_DOC ; then
     install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html" "html/"*.html
     install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html" "html/"*.js
     install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html/_images" "html/_images/"*
