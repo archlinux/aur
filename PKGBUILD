@@ -9,12 +9,12 @@
 pkgname=plex-media-server
 pkgver=1.15.1.791
 _pkgsum=8bec0f76c
-pkgrel=1
+pkgrel=2
 pkgdesc='Plex Media Server'
 arch=('i686' 'x86_64')
 url='https://plex.tv/'
 license=('custom')
-depends=('systemd')
+depends=('systemd' 'libva' 'libdrm')
 provides=('plex-media-server')
 conflicts=('plex-media-server-plexpass')
 backup=('etc/conf.d/plexmediaserver')

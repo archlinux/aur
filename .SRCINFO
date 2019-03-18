@@ -1,13 +1,15 @@
 pkgbase = plex-media-server
 	pkgdesc = Plex Media Server
 	pkgver = 1.15.1.791
-	pkgrel = 1
+	pkgrel = 2
 	url = https://plex.tv/
 	install = plex-media-server.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = systemd
+	depends = libva
+	depends = libdrm
 	provides = plex-media-server
 	conflicts = plex-media-server-plexpass
 	backup = etc/conf.d/plexmediaserver
