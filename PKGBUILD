@@ -1,7 +1,7 @@
 # Maintainer: yurisuki
 pkgname=osu-downloader
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="osu! beatmap downloader based on Osu-Masive-Beatmap-Downloader. Run using 'osudownloader' in terminal."
 arch=('any')
 url='https://github.com/GarciaMiguelangel/Osu-Masive-Beatmap-Downloader/'
