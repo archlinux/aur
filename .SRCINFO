@@ -1,15 +1,17 @@
 pkgbase = fotowall
 	pkgdesc = A creative tool that allows you to layout your photos or pictures in a personal way
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.enricoros.com/opensource/fotowall/
-	arch = i686
 	arch = x86_64
 	license = LGPL3
+	makedepends = qt5-tools
 	depends = desktop-file-utils
 	depends = qt5-svg
 	source = fotowall-1.0.tar.gz::https://github.com/enricoros/fotowall/archive/v1.0.tar.gz
+	source = fotowall-1.0-fix-build-against-qt-5.11.0.patch
 	sha256sums = 8dc42262dd5220a12e92181ff82bd363a6506a4c3ab1ea3841281f2971e1b289
+	sha256sums = fa573efa3529939ca83d3dc96d49277fe4f5472978d7c8e119a147119ac4abb1
 
 pkgname = fotowall
 

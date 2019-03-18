@@ -1,0 +1,34 @@
+diff -Nru a/3rdparty/likebackfrontend/LikeBackDialog.cpp b/3rdparty/likebackfrontend/LikeBackDialog.cpp
+--- a/3rdparty/likebackfrontend/LikeBackDialog.cpp	2017-07-09 10:22:44.000000000 +0200
++++ b/3rdparty/likebackfrontend/LikeBackDialog.cpp	2018-06-02 22:39:10.413838601 +0200
+@@ -37,6 +37,7 @@
+ #include "LikeBackDialog.h"
+ 
+ #include <QApplication>
++#include <QButtonGroup>
+ #include <QLocale>
+ #include <QMessageBox>
+ #include <QNetworkAccessManager>
+diff -Nru a/App/CanvasAppliance.cpp b/App/CanvasAppliance.cpp
+--- a/App/CanvasAppliance.cpp	2017-07-09 10:22:44.000000000 +0200
++++ b/App/CanvasAppliance.cpp	2018-06-02 22:27:06.246459699 +0200
+@@ -30,6 +30,7 @@
+ #include "Settings.h"
+ #include "Workflow.h"
+ 
++#include <QActionGroup>
+ #include <QDesktopWidget>
+ #include <QFileDialog>
+ #include <QInputDialog>
+diff -Nru a/App/CanvasAppliance.h b/App/CanvasAppliance.h
+--- a/App/CanvasAppliance.h	2017-07-09 10:22:44.000000000 +0200
++++ b/App/CanvasAppliance.h	2018-06-02 22:32:38.238990315 +0200
+@@ -15,6 +15,8 @@
+ #ifndef __CanvasAppliance_h__
+ #define __CanvasAppliance_h__
+ 
++#include <QActionGroup>
++
+ #include "Shared/PlugGui/AbstractAppliance.h"
+ #include "ui_CanvasAppliance.h"
+ class QMenu;
