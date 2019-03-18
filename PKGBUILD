@@ -11,17 +11,10 @@ license=('GPL')
 
 depends=('python-babel'
          'python-mako')
-
 optdepends=('unrar')
 
-conflicts=(${_pkgname}
-           'sickbeard'
-           'sickrage'
-           'sickrage-git'
-           'sickrage2-git'
-           'sickgear-git')
-
 options=('!strip')
+
 install=${pkgname}.install
 
 source=("https://github.com/${pkgname}/${_gitname}/archive/v${pkgver}.tar.gz"
