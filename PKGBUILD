@@ -10,14 +10,10 @@ license=('GPL3')
 depends=('dfu-util')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("https://github.com/kiibohd/configurator/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
-sha256sums=('39bf9c96551d4eb4db7818319b2455de8ef18fdb1d9ef91cb7d194d486d0299c')
+source=("https://github.com/kiibohd/configurator/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.tar.gz")
+sha256sums=('68ee7809f21a7ac42049ddc8f86773fead48e70f46195677a7db059881b55e44')
 
 package() {
-    # Extract data
-    tar -xf ${srcdir}/data.tar.xz -C ${pkgdir}
-
-    # Update permissions to match the default system ones
-    chmod 755 ${pkgdir}/opt/
-    find ${pkgdir}/usr/ -type d -exec chmod 755 {} \;
+  _output="${srcdir}/${pkgname/-bin/}-${pkgver}-linux-x64"
+  install -Dm755 "${_output}/${pkgname/-bin/}" "${pkgdir}/usr/bin/${pkgname/-bin/}"
 }
