@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+#
+#   pic.sh - Compile shared libraries with address space layout randomization
+#
+
+[[ -n "$LIBMAKEPKG_BUILDENV_PIC_SH" ]] && return
+LIBMAKEPKG_BUILDENV_PIC_SH=1
+
+LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
+
+source "$LIBRARY/util/option.sh"
+
+build_options+=('pic')
+buildenv_functions+=('buildenv_pic')
+
+buildenv_lto() {
+	if check_buildoption "pic" "y"; then
+		CFLAGS+=" -fpic"
+		CXXFLAGS+=" -fpic"
+		LDFLAGS+=" -shared"
+	fi
+}

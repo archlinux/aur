@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 #
-#   optipng.sh - Optimize PNG image files
+#   optipng.sh - Confirm presence of optipng executable
 #
 
 [[ -n "$LIBMAKEPKG_EXECUTABLE_OPTIPNG_SH" ]] && return
