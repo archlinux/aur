@@ -1,0 +1,13 @@
+--- CMakeLists.txt	2013-11-08 00:52:55.390713402 +0100
++++ CMakeLists.txt.orig	2013-11-08 00:53:37.140909984 +0100
+@@ -16,10 +16,6 @@
+ # Includes all wanted definitions for Qt
+ include(${QT_USE_FILE})
+ 
+-# Remove all Qt modules from include path since there are not needed
+-include(cmake/ReduceQtIncludeDirs.cmake)
+-reduce_qt_include_dirs()
+-
+ 
+ macro(_SET_FANCY _var _value _comment)
+ 	if (KDESupport_SOURCE_DIR)
