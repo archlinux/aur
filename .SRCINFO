@@ -1,7 +1,7 @@
 pkgbase = gparted-f2fs-patch
 	pkgdesc = A Partition Magic clone, frontend to GNU Parted. Patched with experimental F2FS features.
 	pkgver = 0.33.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gparted.sourceforge.net
 	arch = x86_64
 	license = GPL
