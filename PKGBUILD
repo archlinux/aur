@@ -2,13 +2,14 @@
 
 pkgname=gnome-calendar-linuxmint
 _pkgname=gnome-calendar
-pkgver=3.30.1
+pkgver=3.32.0
 pkgrel=2
 pkgdesc="Simple and beautiful calendar application designed to perfectly fit the GNOME desktop. With Linux Mint patches"
 url="https://wiki.gnome.org/Apps/Calendar"
 arch=('x86_64')
 license=('GPL')
-depends=('evolution-data-server' 
+depends=('evolution-data-server'
+    'geoclue' 
     'gsettings-desktop-schemas'
     'libdazzle')
 makedepends=('appstream-glib' 
@@ -19,7 +20,7 @@ makedepends=('appstream-glib'
     'python')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-_commit=262dd7e3b03b3eacf3b62c616005119b64e0d35e  # tags/3.30.1^0
+_commit=f1b5d70be3d1cddb2683346834b49b3c74ed77d7  # tags/3.32.0^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=$_commit"
         "null-icaltime.diff"
         "add_cinnamon_settings_online_support.patch"
@@ -27,7 +28,7 @@ source=("git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=$_commit"
 sha256sums=('SKIP'
             'c1aa738a4ff275f725d0aa5406312600503b2b59270448a9e6b30b82a924dc27'
             '2445f754a044dd1ccb8c948b5d5b43248b61ec3570fc76416f74148abc5abf4d'
-            '8711fb95c39d1f4c34ca537a4dfa8a07736c92c3f4411b1b974ca78b6ed36e5b')
+            'd0c4affaa3edcb0c44ff1ef06a4e78951b7b5820becdbfdf7d41d90d523f3c08')
 
 pkgver() {
   cd $_pkgname
