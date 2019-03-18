@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-performance
 pkgver=3.32.0+16+g85eff0b4d
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
