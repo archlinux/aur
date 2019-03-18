@@ -1,5 +1,5 @@
 pkgbase = onedrive-bin
-	pkgdesc = Private messaging from your desktop
+	pkgdesc = Free OneDrive client written in D
 	pkgver = 2.2.6
 	pkgrel = 2
 	url = https://github.com/abraunegg/onedrive
