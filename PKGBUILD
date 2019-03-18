@@ -2,19 +2,19 @@
 # Contributor: Byron Clark <byron@theclarkfamily.name>
 
 pkgname=thrift-static
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 pkgdesc='Scalable cross-language services framework for IPC/RPC'
-arch=(i686 x86_64)
+arch=('x86_64')
 url='http://thrift.apache.org/'
 license=(APACHE)
 depends=(gcc-libs openssl)
-makedepends=(boost libevent emacs)
+makedepends=(boost flex libevent emacs)
 conflicts=('thrift')
 provides=('thrift')
 options=(staticlibs)
 source=(thrift-$pkgver.zip::https://github.com/apache/thrift/archive/$pkgver.zip)
-sha256sums=('c183e6337ae6d03a019c3581de71d3bd5c6fa92dfe1754398c402e3561d09f23')
+sha256sums=('df776e03de15b4ca8abfe8077e6c9b8a09f2e8774d29f37673941549be4ea873')
 
 build() {
   cd thrift-$pkgver
