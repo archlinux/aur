@@ -4,8 +4,8 @@ pkgdesc="ROS - this package contains a set of messages that are used by the intr
 url='http://www.ros.org/'
 
 pkgname='ros-kinetic-smach-msgs'
-pkgver='2.0.0'
-_pkgver_patch=2
+pkgver='2.0.1'
+_pkgver_patch=0
 arch=('any')
 pkgrel=3
 license=('BSD')
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="executive_smach-release-release-kinetic-smach_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/executive_smach-release/archive/release/kinetic/smach_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3a5afa934becbcf2be023ea2b7008c61c3baad5b0e8c2242cc8f96567bfd9c1d')
+sha256sums=('a631bbe6e98228624f07877ab7581a01c9881c96c69c1a57b757e0a4df5a0c01')
 
 build() {
   # Use ROS environment variables
