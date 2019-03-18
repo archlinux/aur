@@ -26,6 +26,8 @@ buildenv_pgo() {
 			exit 1
 		fi
 
+		[[ "$INFAKEROOT" == 1 ]] && return
+
 		if [ ! -d "$PROFDEST/$pkgbase.gen" ]; then
 			CFLAGS+=" -fprofile-generate -fprofile-dir=$PROFDEST/$pkgbase.gen"
 			CXXFLAGS+=" -fprofile-generate -fprofile-dir=$PROFDEST/$pkgbase.gen"
