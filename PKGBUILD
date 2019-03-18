@@ -4,10 +4,10 @@ _pkgname=lammps
 pkgname=${_pkgname}-git
 pkgver=r13672.f7cbdcf99
 pkgrel=1
-pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator."
-url='http://lammps.sandia.gov/'
-license=("GPL2")
-arch=('any')
+pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
+url="https://lammps.sandia.gov/"
+arch=('x86_64')
+license=('GPL')
 depends=('openmpi')
 makedepends=('cmake>=3.1')
 conflicts=('lammps')
@@ -16,7 +16,6 @@ optdepends=(
   'cuda: Nvidia GPU support' 
   'fftw: fast Fourier transform'
   'vmd: visualization and molfile support'
-  'kim-api: support for OpenKIM potentials'
 )
 source=('git://github.com/lammps/lammps.git')
 sha512sums=('SKIP')
