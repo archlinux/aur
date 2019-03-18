@@ -1,7 +1,7 @@
 pkgbase = tixati
 	pkgdesc = Tixati is a peer-to-peer file sharing program that uses the popular BitTorrent protocol
 	pkgver = 2.59
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.tixati.com/
 	install = tixati.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = tixati
 	depends = gtk2
 	depends = hicolor-icon-theme
 	depends = dbus-glib
+	depends = traceroute
 	optdepends = gconf: for shell integration
 	source = LICENSE
 	sha256sums = 4b8bc7a9be3ad1300dd8e90cbf5af96a597379c3b994ee0793990fee3290c8d2

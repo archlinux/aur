@@ -2,12 +2,12 @@
 
 pkgname=tixati
 pkgver=2.59
-pkgrel=1
+pkgrel=2
 pkgdesc="Tixati is a peer-to-peer file sharing program that uses the popular BitTorrent protocol"
 arch=('x86_64')
 url='http://www.tixati.com/'
 license=('custom:tixati')
-depends=('gtk2' 'hicolor-icon-theme' 'dbus-glib')
+depends=('gtk2' 'hicolor-icon-theme' 'dbus-glib' 'traceroute')
 optdepends=('gconf: for shell integration')
 install='tixati.install'
 source=('LICENSE')
