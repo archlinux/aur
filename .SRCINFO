@@ -1,7 +1,7 @@
 pkgbase = phonon-qt4
 	pkgdesc = The multimedia framework for KDE4
 	pkgver = 4.10.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://phonon.kde.org/
 	install = phonon-qt4.install
 	arch = x86_64

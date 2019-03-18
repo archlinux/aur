@@ -1,7 +1,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=phonon-qt4
 pkgver=4.10.2
-pkgrel=4
+pkgrel=5
 pkgdesc="The multimedia framework for KDE4"
 arch=('x86_64' 'i686')
 optdepends=('pulseaudio: PulseAudio support')
@@ -17,6 +17,7 @@ validpgpkeys=('CB9387521E1EE0127DA804843FDBB55084CC5D84') # Harald Sitter <sitte
 build() {
   mkdir -p build && cd build
   cmake ../${pkgname%-qt4}-$pkgver \
+    -DOpenGL_GL_PREFERENCE=GLVND \
     -DCMAKE_SKIP_RPATH=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=ON \
