@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=v0.29.0.282.gfcb320fd3f
+pkgver=0.29.0.r282.gfcb320fd3f
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -167,7 +167,7 @@ fi
 
 pkgver() {
   cd mpv
-  echo "$(git describe --long --tags | tr - .)"
+  git describe --tags | sed 's/v\(.*\)/\1/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
