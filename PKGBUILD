@@ -1,7 +1,7 @@
 # Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
 pkgname=splunkforwarder
-basever=7.2.4
-pkgver=${basever}_8a94541dcfac
+basever=7.2.4.2
+pkgver=${basever}_fb30470262e3
 pkgrel=1
 pkgdesc="Splunk Universal Forwarder"
 url="https://www.splunk.com/"
@@ -14,9 +14,9 @@ source_x86_64=("https://download.splunk.com/products/universalforwarder/releases
 source_armv6h=("https://download.splunk.com/products/universalforwarder/releases/$basever/linux/$pkgname-${pkgver//_/-}-Linux-arm.tgz")
 source_armv7h=("https://download.splunk.com/products/universalforwarder/releases/$basever/linux/$pkgname-${pkgver//_/-}-Linux-arm.tgz")
 sha256sums=('8bd6b2bcf9e9d89d3ab2160c409687313bbee00b7e44b3df3266b44d15a5c152')
-sha256sums_x86_64=('a528ec5cd745ab69903ac0f20c31c2506861377787e4470f52c7a28e539f071e')
-sha256sums_armv6h=('cbdb1dcbafa885d162c3e1df6e9ed6fed95d12992bd952c6d774b89f3e194873')
-sha256sums_armv7h=('cbdb1dcbafa885d162c3e1df6e9ed6fed95d12992bd952c6d774b89f3e194873')
+sha256sums_x86_64=('79bfff8b2f1f7cce79bad9338616af5af54bb0f1998c6d5e18004e9bfd82185d')
+sha256sums_armv6h=('b411a515ec121c05a4629bbe4a79e807e87fd6e824b1337733adbdc034437909')
+sha256sums_armv7h=('b411a515ec121c05a4629bbe4a79e807e87fd6e824b1337733adbdc034437909')
 
 package() {
 	cd "$srcdir"
