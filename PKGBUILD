@@ -7,7 +7,6 @@ pkgdesc="Search of Emails and Passwords on Pwndb"
 arch=('any')
 url="https://github.com/decoxviii/karma"
 license=('MIT')
-groups=()
 depends=('python' 'python-docopt' 'python-requests' 'python-pysocks' 'python-texttable')
 makedepends=('git')
 provides=("karma")
