@@ -1,7 +1,7 @@
 # Maintainer: William Belanger <echo d2lsbGlhbS5iZWxyQGdtYWlsLmNvbQ== | base64 -d>
 
 pkgname=obsuite-git
-pkgver=r91.7b5d19c
+pkgver=r92.5a6a8e4
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
