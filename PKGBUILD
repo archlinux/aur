@@ -1,13 +1,13 @@
 # Maintainer: Wouter Haffmans <wouter@simply-life.net>
 pkgname=doxygen-git
-pkgver=Release_1_8_13.21.gb91f4665
+pkgver=Release_1_8_15.252.g3670a151
 pkgrel=1
 pkgdesc="A documentation system for C++, C, Java, IDL and PHP - git version"
 arch=('i686' 'x86_64')
 url="http://www.doxygen.org"
 license=('GPL2')
 # Qt5 required for doxywizard
-depends=('qt5-base')
+depends=('qt5-base' 'xapian-core')
 makedepends=('git' 'cmake' 'perl' 'flex' 'bison' 'python2')
 optdepends=('graphviz: enable dot support')
 conflicts=('doxygen')
