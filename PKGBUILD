@@ -3,7 +3,7 @@
 
 pkgname=hol-git
 pkgver=20190312
-pkgrel=1
+pkgrel=2
 pkgdesc='HOL4 theorem-proving system'
 url='https://hol-theorem-prover.org/'
 arch=('x86_64')
@@ -12,6 +12,8 @@ install="$pkgname.install"
 source=("${pkgname}::git://github.com/HOL-Theorem-Prover/HOL.git")
 md5sums=('SKIP')
 depends=('polyml' 'graphviz')
+provides=('hol')
+conflicts=('hol-git')
 
 pkgver() {
   cd "$pkgname"
