@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=kiibohd-configurator-bin
 _pkgname=kiibohd-configurator
-pkgver=0.4.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Client Side Configuration & Flashing Software for Kiibohd compatible keyboards"
 arch=('x86_64')
