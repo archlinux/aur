@@ -1,9 +1,10 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 # Contributor: Nikolaos Bezirgiannis <bezeria@gmail.com>
 
+# FIXME: holyhammer fails to build with ocaml-num
 pkgname=hol
 pkgver=kananaskis.12
-pkgrel=2
+pkgrel=3
 pkgdesc='HOL4 theorem-proving system'
 url='https://hol-theorem-prover.org/'
 arch=('x86_64')
@@ -14,7 +15,8 @@ source=("http://sourceforge.net/projects/hol/files/hol/${pkgver//./-}/hol-${pkgv
        )
 md5sums=('5b01d43494c7809c029764a95bf06402')
 depends=('polyml' 'graphviz')
-conflicts=('ocaml-num')
+provides=('hol')
+conflicts=('hol-git')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver//./-}"
