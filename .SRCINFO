@@ -1,7 +1,7 @@
 pkgbase = maptool-stable-bin
 	pkgdesc = The stable release of an open source virtual tabletop program
 	pkgver = 1.4.1.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://rptools.net/tools/maptool
 	arch = x86_64
 	license = AGPL3

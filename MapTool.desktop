@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=MapTool
 Comment=MapTool
-Exec=MapTool-linux64-offline
+Exec=/usr/bin/MapTool-linux64-offline
 Terminal=false
 Type=Application
 Categories=Unknown
