@@ -9,6 +9,7 @@ pkgbase = onedrive-bin
 	depends = curl
 	depends = gcc-libs
 	depends = sqlite
+	optdepends = libnotify: notification support
 	provides = onedrive
 	conflicts = onedrive
 	conflicts = onedrive-abraunegg-git
