@@ -1,9 +1,9 @@
 --- a/qtbase/mkspecs/android-clang/qmake.conf	2019-02-07 11:03:08.250521061 -0300
 +++ b/qtbase/mkspecs/android-clang/qmake.conf	2019-02-07 11:10:50.389466359 -0300
-@@ -31,11 +31,12 @@
+@@ -34,11 +34,12 @@
+ QMAKE_LINK    = $$QMAKE_CXX $$QMAKE_CFLAGS -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a
+ equals(ANDROID_TARGET_ARCH, armeabi-v7a): QMAKE_LINK += -Wl,--exclude-libs,libunwind.a
 
- QMAKE_CFLAGS += -gcc-toolchain $$NDK_TOOLCHAIN_PATH
- QMAKE_LINK    = $$QMAKE_CXX $$QMAKE_CFLAGS -Wl,--exclude-libs,libgcc.a
 -QMAKE_CFLAGS += -DANDROID_HAS_WSTRING --sysroot=$$NDK_ROOT/sysroot \
 +QMAKE_CFLAGS += -DANDROID_HAS_WSTRING --sysroot=$$ANDROID_PLATFORM_ROOT_PATH \
                  -isystem $$NDK_ROOT/sysroot/usr/include/$$NDK_TOOLS_PREFIX \
@@ -14,13 +14,3 @@
 +                -isystem $$NDK_ROOT/sysroot/usr/include
 
  ANDROID_SOURCES_CXX_STL_LIBDIR = $$NDK_ROOT/sources/cxx-stl/llvm-libc++/libs/$$ANDROID_TARGET_ARCH
-
-@@ -44,7 +45,7 @@
- ANDROID_USE_LLVM = true
-
- exists($$ANDROID_SOURCES_CXX_STL_LIBDIR/libc++.so): \
--    ANDROID_CXX_STL_LIBS = -lc++
-+    ANDROID_CXX_STL_LIBS = -lc++_shared
- else: \
-     ANDROID_CXX_STL_LIBS = $$ANDROID_SOURCES_CXX_STL_LIBDIR/libc++.so.$$replace(ANDROID_PLATFORM, "android-", "")
-
