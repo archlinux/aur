@@ -1,4 +1,4 @@
-# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
 pkgname=dumpsterdiver-git
 _pkgname=${pkgname%-git}
 pkgver=r14.968537c
