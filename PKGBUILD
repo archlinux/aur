@@ -27,8 +27,8 @@ if [ -z "${ANDROID_SDK_ROOT}" ]; then
 fi
 
 pkgname=android-${_android_arch}-qt5
-pkgver=5.12.1
-pkgrel=3
+pkgver=5.12.2
+pkgrel=1
 pkgdesc="Qt 5 for Android"
 arch=('x86_64')
 url='https://www.qt.io'
@@ -80,8 +80,8 @@ install="${pkgname}.install"
 source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkgver}/single/${_pkgfqn}.tar.xz"
         "0001-Fix-clang-build.patch"
         "0002-Disable-mapbox.patch")
-md5sums=('6a37466c8c40e87d4a19c3f286ec2542'
-         'bf97665c96c0a084ea7970eb61556754'
+md5sums=('99c2eb46e533371798b4ca2d1458e065'
+         'ba4ff94ed5a0aa9746396cb0af6f0865'
          '20d8bdd24102e9011b561b7361394728')
 
 _pref=/opt/android-libs/$_android_arch
