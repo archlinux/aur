@@ -1,0 +1,16 @@
+pkgbase = tractor
+	pkgdesc = Setup an onion routing proxy
+	pkgver = r.
+	pkgrel = 1
+	url = https://gitlab.com/tractor-team/tractor
+	arch = any
+	license = GPL3
+	depends = python-gobject
+	depends = python-fire
+	depends = python-stem
+	depends = gsettings-desktop-schemas
+	source = https://gitlab.com/tractor-team/tractor/-/archive/master/tractor-master.tar.gz
+	sha256sums = SKIP
+
+pkgname = tractor
+
