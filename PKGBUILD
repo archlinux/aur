@@ -24,7 +24,7 @@ source=("http://amule.sourceforge.net/tarballs/aMule-SVN-${pkgver}.tar.bz2"
         'amule.tmpfiles'
         )
 sha256sums=('0b3c148f0e3b2be114b8b525973cdfbef942bc9268d59e2e7da044a78c9afdc1'
-            '835a1058ba926e4c0cfcfbd9ac2266abd057753fdf85f7bb9da7e217432e7e56'
+            '339d59211bd914dfa43c6c54b68e2715f9648de3220d712c01c004eda19a5b7a'
             '52824abdd4724db7c8c4bfc05779849c06de04b4795b3d77c98de1baa3a0babc'
             'f50c46605d3ae977913f4dcf0c7405e0bdc84322d1fc877ae851706f0e1ae5fd'
             'bc870ebde3c5e009605ca76435790ea260a848160db643bf37e4f9de48b5e56c'
