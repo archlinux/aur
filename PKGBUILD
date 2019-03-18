@@ -3,7 +3,7 @@
 
 pkgname=pia-manager
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily configure your Private Internet Access VPN"
 arch=('any')
 #url="https://github.com/linuxmint/pia-manager"
@@ -13,6 +13,7 @@ depends=('networkmanager-openvpn'
     'networkmanager'
     'openvpn'
     'python'
+    'python-gobject'
     'python-setproctitle')
 optdepends=('easy-rsa: easy CA and certificate handling')
 #source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
