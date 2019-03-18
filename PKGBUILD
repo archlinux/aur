@@ -2,7 +2,7 @@
 
 _pkgname=powerlevel10k
 pkgname=zsh-theme-${_pkgname}-git
-pkgver=r1877.b55cf13
+pkgver=r1880.c38edde
 pkgrel=1
 pkgdesc="Powerlevel10k is a theme for ZSH. It's a backward-compatible fork of Powerlevel9k with lower latency and better prompt responsiveness"
 arch=('any')
