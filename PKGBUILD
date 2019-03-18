@@ -10,11 +10,11 @@ pkgname=(
   ppsspp-headless
   ppsspp-qt
 )
-pkgver=1.7.4
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
-url='https://www.ppsspp.org/'
+url=https://www.ppsspp.org/
 license=(GPL2)
 depends=(
   glew
