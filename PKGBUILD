@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='The open source OpenXR runtime.'
 arch=('i686' 'x86_64')
 url='https://monado.dev'
-depends=('openxr-loader')
+depends=('openxr-loader' 'openhmd')
 makedepends=('eigen' 'ninja')
 provides=("openxr-runtime")
 
