@@ -1,0 +1,42 @@
+# Maintainer: Mathias Walters <waltersm@protonmail.com>
+
+pkgname=maptool
+_pkgname=MapTool
+pkgver=1.5.0
+pkgrel=1
+pkgdesc="An open source virtual tabletop program"
+arch=('x86_64')
+url="https://rptools.net/tools/maptool"
+license=('AGPL3')
+makedepends=('git' 'gradle' 'jdk10')
+provides=('maptool')
+conflicts=('maptool')
+source=("git+https://github.com/RPTools/maptool.git#tag=${pkgver}")
+sha256sums=('SKIP')
+
+
+build() {
+
+    ORIG_JAVA="$(archlinux-java get)"
+    sudo archlinux-java set java-10-jdk
+
+    cd ${pkgname}
+    gradle deploy
+
+    if [ -n "$ORIG_JAVA" ]; then
+        sudo archlinux-java set $ORIG_JAVA
+    else
+        sudo archlinux-java unset
+    fi
+}
+
+package() {
+
+    cd "${srcdir}/${pkgname}/releases/release-${pkgver}"
+    ar vx "${pkgname}-${pkgver}.deb"
+    tar -C "${pkgdir}" -xf data.tar.xz
+
+    install -Dm644 "${pkgdir}/opt/${_pkgname}/runtime/legal/jdk.zipfs/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 "${pkgdir}/opt/${_pkgname}/runtime/legal/jdk.zipfs/COPYRIGHT" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 "${pkgdir}/opt/${_pkgname}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+}
