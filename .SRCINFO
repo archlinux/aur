@@ -22,7 +22,7 @@ pkgbase = createrepo_c
 	depends = zlib
 	optdepends = python: for python bindings
 	source = https://github.com/rpm-software-management/createrepo_c/archive/0.12.2/createrepo_c-0.12.2.tar.gz
-	md5sums = 9a250667b9742e0bfe0dfd6093baa613
+	md5sums = 6165f41ca5130c59af82bbffda696f8e
 
 pkgname = createrepo_c
 

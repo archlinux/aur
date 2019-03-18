@@ -13,7 +13,7 @@ makedepends=('bash-completion' 'cmake' 'doxygen'
 checkdepends=('python-nose')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('9a250667b9742e0bfe0dfd6093baa613')
+md5sums=('6165f41ca5130c59af82bbffda696f8e')
 
 prepare() {
 	cd "$pkgname-$pkgver"
