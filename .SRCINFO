@@ -1,17 +1,18 @@
 pkgbase = lammps
 	pkgdesc = Large-scale Atomic/Molecular Massively Parallel Simulator.
-	pkgver = 12Dec18
+	pkgver = 20181212
 	pkgrel = 1
 	url = http://lammps.sandia.gov/
-	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = cmake
 	depends = fftw
 	depends = openmpi
-	source = http://lammps.sandia.gov/tars/lammps-stable.tar.gz
-	source = fftw3.patch
-	md5sums = bdba3f57e598be61762a57bff5d7fbfb
-	md5sums = 995c3d49f0df9c28f287fca0a3ea0752
+	optdepends = kim-api: support for OpenKIM potentials
+	optdepends = python-sphinx: install to build documentation
+	optdepends = lammpsdoc: install to build documentation
+	source = lammps-12Dec2018.tar.gz::https://github.com/lammps/lammps/archive/stable_12Dec2018.tar.gz
+	sha512sums = 0245576b592d93225daab9e01f82ef2fc0212a4f4df63ecf1fe58b364b2abe2c2a142f7b33a742dbd785cb19f06af7f9522a4bedbe510d26445d2e76c0015c09
 
 pkgname = lammps
 
