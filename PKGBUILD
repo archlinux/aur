@@ -7,7 +7,7 @@ url='http://github.com/petronny/devtools-qemu'
 license=('GPL')
 depends=('archlinuxarm-keyring' 'binfmt-qemu-static' 'devtools-alarm' 'qemu-user-static-bin')
 makedepends=('git')
-source=('git://github.com/petronny/devtools-qemu.git')
+source=('git+https://github.com/petronny/devtools-qemu.git')
 sha256sums=('SKIP')
 
 pkgver() {

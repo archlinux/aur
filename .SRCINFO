@@ -10,7 +10,7 @@ pkgbase = devtools-qemu
 	depends = binfmt-qemu-static
 	depends = devtools-alarm
 	depends = qemu-user-static-bin
-	source = git://github.com/petronny/devtools-qemu.git
+	source = git+https://github.com/petronny/devtools-qemu.git
 	sha256sums = SKIP
 
 pkgname = devtools-qemu
