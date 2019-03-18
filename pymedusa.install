@@ -1,16 +1,11 @@
-post_install() {
-  systemd-sysusers pymedusa.conf
-  systemd-tmpfiles --create pymedusa.conf
-  chown -R pymedusa:pymedusa /var/lib/pymedusa
-}
-
 post_upgrade() {
-  post_install $1
+  echo "*****************************************************************"
   echo "==> To migrate data from versions prior to 0.3.0:"
   echo "    systemctl stop pymedusa"
   echo "    rm -rf /var/lib/pymedusa/*"
   echo "    cp -a --sparse=always /opt/pymedusa/data/* /var/lib/pymedusa/"
   echo "    chown -R pymedusa:pymedusa /var/lib/pymedusa/"
+  echo "*****************************************************************"
 }
 
 pre_remove() {

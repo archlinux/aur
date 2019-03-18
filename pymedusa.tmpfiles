@@ -1,1 +1,2 @@
 d /run/pymedusa 0775 pymedusa pymedusa
+d /var/lib/pymedusa 0755 pymedusa pymedusa
