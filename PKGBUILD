@@ -4,7 +4,7 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-performance
-pkgver=3.32.0+15+gb7d79a5f0
+pkgver=3.32.0+16+g85eff0b4d
 pkgrel=1
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -23,9 +23,11 @@ conflicts=(gnome-shell)
 _commit=b7d79a5f063341f1773a9a8a5550a188c04efbda  # master
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-        hack-detached.diff)
+         https://github.com/endlessm/gnome-shell/commit/11ddabfb22aedb3c35abe06d2cf0205f223cca03.diff
+         hack-detached.diff)
 sha256sums=('SKIP'
             'SKIP'
+            '53fb32bfe8432e6309d5b1bcf9c2b7f36693b9141778b823f1d7e9c1d3f39425'
             '939e81f682ebafd60e86d444e49dbab277fba0f00420466b5ff783568b7dc931')
 pkgver() {
   cd $pkgname
@@ -52,6 +54,9 @@ prepare() {
 
   # Hack around broken detached locations
   patch -Np1 -i ../hack-detached.diff
+
+  # Hack to fix topicon-* extensions  making gnome-shell CPU usage > 50%
+  patch -Np1 -i ../11ddabfb22aedb3c35abe06d2cf0205f223cca03.diff
 
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
