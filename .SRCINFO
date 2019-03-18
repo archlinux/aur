@@ -15,6 +15,7 @@ pkgbase = arrow
 	makedepends = google-glog-static
 	makedepends = lz4-static
 	makedepends = python-numpy
+	makedepends = thrift-static
 	makedepends = zlib-static
 	makedepends = zstd-static
 	makedepends = snappy-static
