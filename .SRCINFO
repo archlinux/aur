@@ -1,4 +1,4 @@
-pkgbase = tractor
+pkgbase = tractor-git
 	pkgdesc = Setup an onion routing proxy
 	pkgver = r.
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = tractor
 	source = https://gitlab.com/tractor-team/tractor/-/archive/master/tractor-master.tar.gz
 	sha256sums = SKIP
 
-pkgname = tractor
+pkgname = tractor-git
 

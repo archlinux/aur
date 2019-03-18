@@ -1,6 +1,6 @@
 # Maintainer: Hossein Heydari <arch7nelliel@gmail.com>
 
-pkgname='tractor'
+pkgname='tractor-git'
 _pkgname='tractor-master'
 pkgver=r.
 pkgrel=1
