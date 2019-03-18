@@ -1,5 +1,5 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
-# Co-Maintainer: Alexander Mcmillan <linuxguy93@gmail.com>
+# Contributor: Alexander Mcmillan <linuxguy93@gmail.com>
 pkgname=carla-bridges-wine
 pkgver=2.0rc4
 majorver=1.9.14
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://kxstudio.sf.net/carla"
 license=('GPL2')
 conflicts=('carla-bridges-win32' 'carla-bridges-win64')
-provides=('carla-bridges-win')
+provides=("$pkgname")
 depends=('wine' 'carla')
 if [[ $CARCH == 'i686' ]]; then
 	source+=("${pkgname}-${pkgver}.tar.xz::https://github.com/falkTX/Carla/releases/download/v$majorver/Carla_$minorver-linux32.tar.xz")
