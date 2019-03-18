@@ -3,7 +3,7 @@
 
 pkgname=brisk-menu-git
 _gitname=brisk
-pkgver=v0.5.0.r25.ga28e660
+pkgver=v0.5.0.r26.gd153291
 pkgrel=1
 pkgdesc='Modern, efficient menu for the MATE Desktop Environment - git version'
 arch=('i686' 'x86_64')
@@ -11,18 +11,27 @@ url='https://github.com/getsolus/brisk-menu'
 license=('GPL2')
 groups=('mate')
 depends=('mate-panel' 'libnotify')
-makedepends=('gnome-common' 'gettext' 'itstool' 'vala>=0.36' 'meson' 'ninja' )
+makedepends=('gnome-common' 'gettext' 'itstool' 'vala>=0.36' 'meson' 'ninja')
 optdepends=('mozo: for menu edition'
 		'menulibre: for menu edition') 
 options=('!libtool' '!emptydirs')
 provides=('brisk-menu')
 conflicts=('brisk-menu')
-source=(git+https://github.com/getsolus/brisk-menu.git)
-sha1sums=('SKIP')
+source=(git+https://github.com/getsolus/brisk-menu.git
+        mate-122.patch)
+sha1sums=('SKIP'
+          '64641c7c67e357220cab52e48a7518e1d99a04b1')
 
 pkgver() {
     cd "$srcdir/brisk-menu"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+
+prepare() {
+    cd "$srcdir/brisk-menu"
+    # This patch fixes building with mate 1.22.x
+    patch -Np1 -i "${srcdir}/mate-122.patch"
 }
 
 build() {
