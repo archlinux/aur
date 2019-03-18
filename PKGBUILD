@@ -1,4 +1,4 @@
-# Maintainer: Hossein Heydari <nelliel@riseup.net>
+# Maintainer: Hossein Heydari <arch7nelliel@gmail.com>
 
 pkgname='tractor-git'
 pkgver=r35.c2f6ce0
