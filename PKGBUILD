@@ -1,4 +1,5 @@
-# Maintainer: Tom Richards <tom@tomrichards.net>
+# Maintainer: Your Name <you@example.com>
+# Contributor: Tom Richards
 _pkgname=vld
 _pkgver=VLD_0_14_0
 pkgname=php-vld
