@@ -4,9 +4,9 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=networkmanager-l2tp
-_pkgname=network-manager-l2tp
+_pkgname=NetworkManager-l2tp
 pkgver=1.2.12
-pkgrel=1
+pkgrel=2
 pkgdesc='L2TP support for NetworkManager'
 arch=('i686' 'x86_64')
 url="https://github.com/nm-l2tp/NetworkManager-l2tp"
@@ -18,7 +18,7 @@ optdepends=(
   'strongswan: IPSec support'
 )
 source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/nm-l2tp/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('faeb093673b00efcc80e3d93d270c43c')
+md5sums=('e26824d4ae67ec75b7f19ae0fca4ea36')
 
 prepare() {
   cd $_pkgname-$pkgver
