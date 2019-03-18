@@ -42,8 +42,6 @@ validpgpkeys=(
 
 prepare() {
   gendesk --pkgname="$pkgname" --pkgdesc="$pkgdesc" --categories=Network PKGBUILD
-  # workaround https://bugreports.qt.io/browse/QTBUG-69378
-  sed -i 's#<style>#<style type="text/css">#' DropboxGlyph_Blue.svg
 }
 
 package() {
