@@ -9,7 +9,8 @@ build:
     - web
   script:
     - pacman -Sy --needed --noconfirm base-devel
-    - makepkg $i
+    - useradd -m archie
+    - su archie -c "makepkg $i"
   stage: build
   tags:
     - docker
