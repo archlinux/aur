@@ -1,6 +1,6 @@
 pkgname=tea4cups-py3-git
 _pkgname=tea4cups-py3
-pkgver=1.0.0
+pkgver=r12.65b5c3a
 
 pkgrel=1
 pkgdesc="A unofficial python3 fork of Tea4cups"
@@ -36,6 +36,14 @@ sha256sums=(
   'SKIP'                                                             # doc_debianwiki.html
   'ef3106de3e751109dcad9f3261fe608aff09fc6dea18451dfca2a4841ffccf7a' # "${install}"
 )
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+
+  # Get the version number.
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 
 prepare() {
   cd "${srcdir}"

@@ -1,6 +1,6 @@
 pkgbase = tea4cups-py3-git
 	pkgdesc = A unofficial python3 fork of Tea4cups
-	pkgver = 1.0.0
+	pkgver = r12.65b5c3a
 	pkgrel = 1
 	url = https://gitlab.com/dadosch/tea4cups/tree/python3/
 	install = tea4cups.install
@@ -9,8 +9,8 @@ pkgbase = tea4cups-py3-git
 	depends = cups
 	depends = python
 	depends = python-requests
-	provides = tea4cups-py3=1.0.0
-	provides = tea4cups-py3-doc=1.0.0
+	provides = tea4cups-py3=r12.65b5c3a
+	provides = tea4cups-py3-doc=r12.65b5c3a
 	conflicts = tea4cups-svn
 	backup = etc/cups/tea4cups.conf
 	source = tea4cups-py3::git+https://gitlab.com/dadosch/tea4cups#branch=python3
