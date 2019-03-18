@@ -1,30 +1,20 @@
 pkgbase = python-sparse
 	pkgdesc = Sparse multidimensional arrays on top of numpy and scipy
-	pkgver = 0.5.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://sparse.pydata.org
 	arch = any
 	license = BSD-3-clause
 	checkdepends = python-pytest
-	checkdepends = python2-pytest
 	checkdepends = python-pytest-cov
-	checkdepends = python2-pytest-cov
 	checkdepends = python-pytest-flake8
-	checkdepends = python2-pytest-flake8
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://github.com/pydata/sparse/archive/0.5.0.tar.gz
-	sha256sums = de5766c4e0d54a42b4cf156d8c2f16b10cdc5989c16dcf85131d068e826a31c2
-
-pkgname = python-sparse
 	depends = python
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-numba
+	source = https://github.com/pydata/sparse/archive/0.7.0.tar.gz
+	sha256sums = 7f458a24957d53b25d5d61ba7dcb2c0dd6a31fdb41a5319e872923a2449eaaa0
 
-pkgname = python2-sparse
-	depends = python
-	depends = python2-numpy
-	depends = python2-scipy
-	depends = python2-numba
+pkgname = python-sparse
 
