@@ -1,0 +1,34 @@
+pkgbase = gparted-git
+	pkgdesc = A Partition Magic clone, frontend to GNU Parted
+	pkgver = 0.33.0.r60.g0b5cfd34
+	pkgrel = 1
+	url = http://gparted.sourceforge.net
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	makedepends = intltool
+	makedepends = pkg-config
+	makedepends = gnome-doc-utils
+	makedepends = polkit
+	depends = parted
+	depends = gtkmm3
+	optdepends = dosfstools: for FAT16 and FAT32 partitions
+	optdepends = jfsutils: for jfs partitions
+	optdepends = f2fs-tools: for Flash-Friendly File System
+	optdepends = btrfs-progs: for btrfs partitions
+	optdepends = exfat-utils: for exFAT partitions
+	optdepends = ntfs-3g: for ntfs partitions
+	optdepends = reiserfsprogs: for reiser partitions
+	optdepends = udftools: for UDF file system support
+	optdepends = xfsprogs: for xfs partitions
+	optdepends = nilfs-utils: for nilfs2 support
+	optdepends = polkit: to run gparted from application menu
+	optdepends = gpart: for recovering corrupt partition tables
+	optdepends = mtools: utilities to access MS-DOS disks
+	source = git+https://gitlab.gnome.org/GNOME/gparted.git
+	sha256sums = SKIP
+
+pkgname = gparted-git
+
