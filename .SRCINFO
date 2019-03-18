@@ -1,0 +1,14 @@
+pkgbase = traqtor-git
+	pkgdesc = Graphical settings app for tractor in Qt
+	pkgver = r39.7c9798b
+	pkgrel = 1
+	url = https://gitlab.com/tractor-team/qtractor
+	arch = any
+	license = GPL3
+	depends = qt5-quickcontrols2
+	depends = pkgconf
+	source = traqtor-git::git+https://gitlab.com/tractor-team/qtractor.git
+	sha256sums = SKIP
+
+pkgname = traqtor-git
+
