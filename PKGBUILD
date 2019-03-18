@@ -1,77 +1,56 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
-
 pkgname=freecad-linkstage3-git
-pkgver=asm3.0.5.3.r1561.gc9cf1b71c
-pkgrel=5
+pkgver=asm3.0.9.1.r44.gf670d46f2
+pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - LinkStage3 dev branch, git checkout'
 arch=('x86_64')
 url='http://www.freecadweb.org/'
 license=('LGPL')
 conflicts=('freecad')
 depends=(
+  # Copied from Freecad package
+  'boost-libs' 'curl' 'opencascade>=7.2' 'xerces-c' 'libspnav' 'glew' 'netcdf'
+  'shared-mime-info' 'hicolor-icon-theme' 'jsoncpp' 'qt5-base' 'qt5-declarative'
+  'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'qt5-webkit' 'med' 'python-pivy'
+  'python-pyside2' 'python-matplotlib' 'pyside2-tools'
 
-  'boost-libs'
 
-  'calculix'
-  'coin'
-  'gmsh'
-  'med'
-  'netcdf'
-  'netgen-git'
-  'opencascade'
-  'vtk'
-  'glew'
-  'xerces-c'
-  'libspnav'
-  'shiboken2'
-  'jsoncpp'
-
-  # Qt5
-  'qt5-base'
-  'qt5-webkit'
-  'qt5-svg'
-
-  # libxmu-dev
-  # libxmu-headers
-  # libxmu6
-  # libxmuu-dev
-  # libxmuu1
-  # python-pivy
-
-  # automake
-  # dictionaries-common
-  # tcl8.5-dev
-  # tk8.5-dev
-  # libhdf5-dev
-  # libfreetype6-dev
-  # python-dev
-
-  'python2-matplotlib'
-  'python2-pyside2'
-  'pyside2-tools'
-  'python2-shiboken2'
+  # 'calculix'
+  # 'coin'
+  # 'gmsh'
+  # 'netgen-git'
+  # 'vtk'
+  # 'shiboken2'
+  #
+  # # libxmu-dev
+  # # libxmu-headers
+  # # libxmu6
+  # # libxmuu-dev
+  # # libxmuu1
+  #
+  # 'python-shiboken2'
 
 )
 makedepends=(
   'cmake' 'ninja'
-  'gcc-fortran'
-  'desktop-file-utils'
-  'swig'
   'boost'
+  'desktop-file-utils'
   'eigen'
+  'gcc-fortran'
+  'swig'
+  'xerces-c'
+  'coin'
 )
 optdepends=(
-
+  'python-matplotlib' 'graphviz' 'openscad'
 )
 _gitname='FreeCAD'
 source=(
   "git+https://github.com/realthunder/FreeCAD.git#branch=LinkStage3"
-  'temporary_fixes.patch'
 )
 sha256sums=(
   'SKIP'
-  '5075eecebc8c523fac521bcae35e0c31593cffcb9c8b731029bd685a9d5608ee'
 )
 
 
@@ -82,7 +61,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_gitname}"
-  patch -Np1 -i "${srcdir}/temporary_fixes.patch"
+
 }
 
 build() {
@@ -92,27 +71,44 @@ build() {
   mkdir build -p
   pushd build >/dev/null
 
-  cmake .. \
-    -DOpenGL_GL_PREFERENCE=GLVND \
-    -DOCC_INCLUDE_DIR='/usr/include/opencascade' \
-    -DOCC_LIBRARY_DIR='/usr/lib' \
-    -DOpenCASCADE_DIR='/usr/lib/cmake/opencascade' \
-    -DFREECAD_USE_OCC_VARIANT="Official Version" \
-    -DBUILD_FEM_NETGEN=OFF \
-    -DBUILD_QT5=ON \
+  cmake -GNinja .. \
+    -DCMAKE_BUILD_TYPE="Release" \
     -DCMAKE_INSTALL_PREFIX='/usr/lib/freecad' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
+    -DCMAKE_INSTALL_LIBDIR='/usr/lib/freecad/lib' \
     -DCMAKE_INSTALL_DOCDIR='/usr/share/freecad/doc' \
     -DCMAKE_INSTALL_DATADIR='/usr/share/freecad' \
-    -G Ninja
+    -DFREECAD_USE_OCC_VARIANT="Official Version" \
+    -DFREECAD_USE_EXTERNAL_PIVY=ON \
+    -DFREECAD_USE_QT_FILEDIALOG=ON \
+    -DBUILD_QT5=ON \
+    -DPYTHON_EXECUTABLE=/usr/bin/python
 
-  ninja
+  ninja -j$(($(nproc)-1))
 }
 
 package() {
   cd "${srcdir}/${_gitname}/build"
 
   DESTDIR="${pkgdir}" ninja install
-  install -d "${pkgdir}/usr/bin/"
-  ln -s /usr/lib/freecad/bin/FreeCAD "${pkgdir}/usr/bin/freecad"
+
+  # Symlink to /usr/bin
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -srf "${pkgdir}/usr/lib/freecad/bin/FreeCAD" "${pkgdir}/usr/bin/freecad"
+  ln -srf "${pkgdir}/usr/lib/freecad/bin/FreeCAD" "${pkgdir}/usr/bin/FreeCAD"
+  ln -srf "${pkgdir}/usr/lib/freecad/bin/FreeCADCmd" "${pkgdir}/usr/bin/freecadcmd"
+  ln -srf "${pkgdir}/usr/lib/freecad/bin/FreeCADCmd" "${pkgdir}/usr/bin/FreeCADCmd"
+
+  # Install pixmaps and desktop shortcut
+  desktop-file-install \
+      --dir="${pkgdir}/usr/share/applications" \
+      "${srcdir}/${pkgname}.desktop"
+  for i in 16 32 48 64; do
+      install -Dm644 "src/Gui/Icons/freecad-icon-${i}.png" \
+          "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/freecad.png"
+  done
+  install -Dm644 "src/Gui/Icons/freecad.svg" \
+      "${pkgdir}/usr/share/icons/hicolor/scalable/apps/freecad.svg"
+
+  # Mime info
+  install -D -m644 "${srcdir}/freecad.xml" "${pkgdir}/usr/share/mime/packages/freecad.xml"
 }
