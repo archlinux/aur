@@ -11,7 +11,7 @@ provides=('maptool')
 conflicts=('maptool')
 source=("https://download.rptools.net/zip/maptool-linux64-${pkgver}.tar" "MapTool.desktop")
 options=(!strip)
-sha256sums=('e0a96e7349db16d2553ec976d2db8f810a3fa4b5b4ba4c22aee5e609e10ff15b' '524c13b4ebdbc392255c1fc7dbb112ab4bb9898186871fa23b3dab1c1edd16bd')
+sha256sums=('e0a96e7349db16d2553ec976d2db8f810a3fa4b5b4ba4c22aee5e609e10ff15b' 'b99e854c0ecab9ce600dcaf87e255f87e9a0f056a5583cae672dc1975afcb678')
 
 package() {
     install -Dm 644 "$srcdir"/MapTool.desktop -t "$pkgdir"/usr/share/applications/
