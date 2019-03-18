@@ -4,8 +4,8 @@ pkgdesc="ROS - SMACH is a task-level architecture for rapidly creating complex r
 url='http://www.ros.org/'
 
 pkgname='ros-kinetic-smach'
-pkgver='2.0.0'
-_pkgver_patch=2
+pkgver='2.0.1'
+_pkgver_patch=0
 arch=('any')
 pkgrel=3
 license=('BSD')
@@ -26,7 +26,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="executive_smach-release-release-kinetic-smach-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/executive_smach-release/archive/release/kinetic/smach/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('7f2083ab8eeefdf9f31b0c18630a191e743631c5be6f88ad42b6eb0439a14a43')
+sha256sums=('98763352defe3ffd8acb6866467a435578bb2510ca56f67b98e4c66b3d1143fb')
 
 build() {
   # Use ROS environment variables
