@@ -8,7 +8,7 @@ build:
     - master
     - web
   script:
-    - yes | pacman -Sy base-devel
+    - pacman -Sy --needed --noconfirm base-devel
     - makepkg $i
   stage: build
   tags:
