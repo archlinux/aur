@@ -7,7 +7,8 @@ pkgdesc="Site-specific password generator"
 arch=('any')
 url='https://github.com/abbot/pwdhash'
 license=('BSD')
-depends=('python')
+depends=('python2' 'python2-setuptools')
+makedepends=('git')
 source=( "git+https://github.com/abbot/pwdhash")
 md5sums=("SKIP")
 
