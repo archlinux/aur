@@ -2,13 +2,13 @@
 stages:
   - build
 
-publish:
+build:
   image:  archlinux/base
   only:
     - master
     - web
   script:
-    - pacman -Sy base-devel
+    - yes | pacman -Sy base-devel
     - makepkg $i
   stage: build
   tags:
