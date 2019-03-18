@@ -1,7 +1,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=gnome-shell-extension-cast-to-tv
-pkgver=5
+pkgver=8
 pkgrel=1
 pkgdesc="Cast files to your Chromecast or other devices over local network"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('gnome-shell' 'ffmpeg')
 makedepends=('npm' 'gettext')
 source=("https://github.com/Rafostar/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('0ccfc6b5f55b2f9e468170bcae0df34e9cc744366583192969f4831049016902')
+sha256sums=('1c37ea56c9d38950016d8a469e7ee13ff342e6773b6793d2ded0cc1bd118d48e')
 
 build() {
   cd "$pkgname-$pkgver"
