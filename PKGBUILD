@@ -34,10 +34,8 @@ install="zsh-theme-${_pkgname}.install"
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-    ( set -o pipefail
-      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+  # cutting off 'foo-' prefix that presents in the git tag
+  git describe --long | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package()
