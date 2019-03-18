@@ -1,0 +1,16 @@
+pkgbase = curb-git
+	pkgdesc = Run a process on a particular subset of the available hardware
+	pkgver = 0.1.5.r10.2d9f461
+	pkgrel = 1
+	url = https://github.com/jonhoo/curb
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = hwloc
+	depends = hwloc
+	source = curb-git::git+https://github.com/jonhoo/curb.git
+	sha512sums = SKIP
+
+pkgname = curb-git
+
