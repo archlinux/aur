@@ -5,6 +5,20 @@ post_install() {
     cd /opt/hol
     poly < tools/smart-configure.sml
     bin/build --relocbuild
+
+    cat <<EOF
+*************************************************
+Emacs HOL mode
+*************************************************
+Put
+
+   (autoload 'hol "/opt/hol/tools/hol-mode"
+     "Runs a HOL session in a comint window.
+   With a numeric prefix argument, runs it niced to that level
+   or at level 10 with a bare prefix. " t)
+
+into your .emacs file
+EOF
 }
 
 post_upgrade() {
