@@ -1,7 +1,7 @@
 pkgbase = onivim-git
 	pkgdesc = Modern modal editing, powered by Neovim
 	pkgver = 0.3.7.beta2.r46.g50d89d1a5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/onivim/oni
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = onivim-git
 	makedepends = yarn
 	makedepends = npm
 	depends = neovim
-	depends = nodejs
+	depends = nodejs>=8.15.1
 	depends = gconf
 	depends = libxss
 	provides = oni
