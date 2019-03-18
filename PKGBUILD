@@ -5,11 +5,13 @@
 
 pkgname=gparted-git
 pkgver=0.33.0.r60.g0b5cfd34
-pkgrel=1
+pkgrel=2
 pkgdesc="A Partition Magic clone, frontend to GNU Parted"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://gparted.sourceforge.net"
 license=('GPL')
+provides=('gparted')
+conflicts=('gparted')
 depends=('parted' 'gtkmm3')
 makedepends=('intltool' 'pkg-config' 'gnome-doc-utils' 'polkit')
 optdepends=('dosfstools: for FAT16 and FAT32 partitions'

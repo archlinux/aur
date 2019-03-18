@@ -1,7 +1,7 @@
 pkgbase = gparted-git
 	pkgdesc = A Partition Magic clone, frontend to GNU Parted
 	pkgver = 0.33.0.r60.g0b5cfd34
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gparted.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -27,6 +27,8 @@ pkgbase = gparted-git
 	optdepends = polkit: to run gparted from application menu
 	optdepends = gpart: for recovering corrupt partition tables
 	optdepends = mtools: utilities to access MS-DOS disks
+	provides = gparted
+	conflicts = gparted
 	source = git+https://gitlab.gnome.org/GNOME/gparted.git
 	sha256sums = SKIP
 
