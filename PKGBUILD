@@ -2,15 +2,14 @@
 
 pkgname=olive-git
 _pkgname=olive
-pkgver=continuous.r0.g76b3cf5
-_commit=76b3cf5
+pkgver=continuous.r0.g6d01597
+_commit=6d01597
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Free non-linear video editor"
 url="https://www.olivevideoeditor.org/"
 license=('GPL3')
-depends=('ffmpeg' 'qt5-multimedia')
-optdepends=('frei0r-plugins')
+depends=('ffmpeg' 'frei0r-plugins' 'qt5-multimedia' 'qt5-svg')
 makedepends=('git')
 conflicts=('olive')
 source=("git+https://github.com/olive-editor/olive#commit=$_commit")
