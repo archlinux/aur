@@ -5,25 +5,19 @@ pkgname=${_pkgname}-beta
 pkgver=20190228
 _pkgver=$(date -d ${pkgver} +%-d%b%Y)
 pkgrel=3
-pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator."
-url="http://lammps.sandia.gov/"
+pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
+url="https://lammps.sandia.gov/"
 arch=('x86_64')
 license=('GPL')
 depends=('fftw' 'openmpi')
-makedepends=('cmake')
-optdepends=('kim-api: support for OpenKIM potentials'
-            'python-sphinx: install to build documentation'
-            'lammpsdoc: install to build documentation')
+makedepends=('cmake' 'python-sphinx' 'lammpsdoc')
 conflicts=('lammps')
 provides=('lammps')
 source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/patch_${_pkgver}.tar.gz")
 sha512sums=('dc264ec43a5a917a0a7905f89076c2e10e8d5613bb710fb970eb388721860d7d409db7d988803bde823ddd74691c4b3bdf5bf4a72713476dad5a4b0833a4dbd0')
 
-_BUILD_DOC=false
-# Set the above to 'true' if you want local documentation
-# You will also have to install the relevant optional dependencies
-# 'python-sphinx' is in the repos,
-# while lammpsdoc is available via the AUR package 'lammpsdoc-git'
+_BUILD_DOC=true
+# Set the above to 'false' if you want to build documentation
 
 prepare(){
   cd "${_pkgname}-patch_${_pkgver}"
@@ -36,7 +30,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_INSTALL_LIBDIR="lib" \
         -DCMAKE_INSTALL_LIBEXECDIR="/usr/lib" #\
-        #-DPKG_KIM=yes # KIM package
+        #-DPKG_KIM=yes # KIM package. Also install 'kim-api' from the AUR
         # Add options for additional packages
         #-DPKG_<NAME>=yes
 
