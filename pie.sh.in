@@ -13,7 +13,7 @@ source "$LIBRARY/util/option.sh"
 build_options+=('pie')
 buildenv_functions+=('buildenv_pie')
 
-buildenv_lto() {
+buildenv_pie() {
 	if check_buildoption "pie" "y"; then
 		CFLAGS+=" -fpie"
 		CXXFLAGS+=" -fpie"

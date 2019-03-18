@@ -13,7 +13,7 @@ source "$LIBRARY/util/option.sh"
 build_options+=('pic')
 buildenv_functions+=('buildenv_pic')
 
-buildenv_lto() {
+buildenv_pic() {
 	if check_buildoption "pic" "y"; then
 		CFLAGS+=" -fpic"
 		CXXFLAGS+=" -fpic"
