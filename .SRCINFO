@@ -13,6 +13,7 @@ pkgbase = easystroke-git
 	makedepends = gettext
 	makedepends = xorg-server-devel
 	makedepends = help2man
+	makedepends = git
 	depends = gtkmm3
 	depends = boost-libs
 	depends = libxtst
