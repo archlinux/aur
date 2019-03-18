@@ -1,0 +1,15 @@
+pkgbase = yosemite-gtk-theme
+	pkgdesc = Mac OSX Yosemite like theme for GTK 3, GTK 2 and Gnome-Shell etc.
+	pkgver = 2019.03.18
+	pkgrel = 1
+	url = https://vinceliuice.github.io/theme-yosemite
+	arch = any
+	license = GPL
+	makedepends = gawk
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	source = https://github.com/vinceliuice/Yosemite-gtk-theme/archive/master.zip
+	sha256sums = b691720edb3796751f328cbcc15eff3df01f72e47e8dbd6d341d3d02695c887d
+
+pkgname = yosemite-gtk-theme
+
