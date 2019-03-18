@@ -1,9 +1,10 @@
+# Maintainer: Joakim Nylén <me@jnylen.nu>
 # Maintainer: Rashintha Maduneth <rashinthamaduneth@gmail.com>
 # Maintainer: Dhananjay Balan <mail@dbalan.in>
 # Contributor: ahrs
 
 pkgname=mailspring
-pkgver=1.5.7
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A beautiful, fast and maintained fork of Nylas Mail by one of the original authors."
 arch=('x86_64')
@@ -12,7 +13,7 @@ url="https://getmailspring.com/"
 options=('!strip')
 
 source=()
-sha256sums_x86_64=('59ae0732715e0c51846eb2a0f26a294f517ce7114faf57e90efe883dc05bfca2')
+sha256sums_x86_64=('b50db78bdd1fac0ab6766b19fdb2c912810bf6eed1c56b940ee1ec140b7223f9')
 
 source_x86_64=("https://github.com/Foundry376/Mailspring/releases/download/${pkgver}/mailspring-${pkgver}-amd64.deb")
 depends=("libgnome-keyring" "gnome-keyring" "libxss" "libtool" "c-ares" "ctemplate" "tidy" "libxkbfile" "libsecret" "gconf" "gtk3" "nss" "libglvnd")
