@@ -1,7 +1,7 @@
 pkgbase = python-tornado-4.4
 	pkgdesc = open source version of the scalable, non-blocking web server and tools
 	pkgver = 4.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.tornadoweb.org/
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,8 @@ pkgbase = python-tornado-4.4
 	checkdepends = python2-backports-abc
 	checkdepends = python2-trollius
 	checkdepends = python2-monotonic
+	checkdepends = python-service-identity
+	checkdepends = python2-service-identity
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	source = python-tornado-4.4-4.4.3.tar.gz::https://github.com/tornadoweb/tornado/archive/v4.4.3.tar.gz
@@ -28,6 +30,8 @@ pkgname = python-tornado-4.4
 	depends = python
 	optdepends = python-pycurl: for tornado.curl_httpclient
 	optdepends = python-twisted: for tornado.platform.twisted
+	provides = python-tornado=4.4
+	conflicts = python-tornado
 
 pkgname = python2-tornado-4.4
 	depends = python2-singledispatch
@@ -36,4 +40,6 @@ pkgname = python2-tornado-4.4
 	optdepends = python2-monotonic: enable support for a monotonic clock
 	optdepends = python2-pycurl: for tornado.curl_httpclient
 	optdepends = python2-twisted: for tornado.platform.twisted
+	provides = python2-tornado=4.4
+	conflicts = python2-tornado
 
