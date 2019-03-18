@@ -1,35 +1,32 @@
-# $Id$
+# $id$
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-hide-legacy-decorations
 _pkgname=mutter
-pkgver=3.30.2
-pkgrel=2
+pkgver=3.32.0+15+gc96cf0608
+pkgrel=1
 pkgdesc="A window manager for GNOME (with a little hack to hide the window decorations on maximized legacy applications)"
-url="https://git.gnome.org/browse/mutter"
-arch=(i686 x86_64)
+url="https://gitlab.gnome.org/GNOME/mutter"
+arch=(x86_64)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas libcanberra
          startup-notification zenity libsm gnome-desktop upower libxkbcommon-x11
-         gnome-settings-daemon libgudev libinput pipewire)
-makedepends=(intltool gobject-introspection git egl-wayland)
+         gnome-settings-daemon libgudev libinput pipewire xorg-server-xwayland)
+makedepends=(gobject-introspection git egl-wayland meson xorg-server)
+checkdepends=(xorg-server-xvfb)
+groups=(gnome)
 replaces=('mutter-wayland' 'mutter')
 conflicts=('mutter-wayland' 'mutter')
 provides=("mutter=${pkgver}")
-groups=(gnome)
-options=(!emptydirs)
-_commit=bcd6103c44ff74ebffd1737b8e0f3a952b83bd54  # tags/3.30.2^0
+_commit=c96cf0608dd5e92369447ddbba9f63b7a2c84c0f  # master
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-        https://gitlab.gnome.org/vanvugt/mutter/commit/fc02b040f3b750b0513f812813351c09795950f6.patch
-        "startup-notification.patch"
+        216.patch
         "hideTitlebar.patch")
-
 sha256sums=('SKIP'
-            'dffa2ca19281b9fa5a81bf80bd46a8eae78325c7e1f8b2a25c33945aa7cc0903'
-            '00d5e77c94e83e1987cc443ed7c47303aa33367ce912b2f665bcd34f88890a17'
-            'ec1a0f5f98213c340e907761e72fc3e22cb9c8ff503c6c234a4a41aac4ec7ac4')
+            'ed4f3cf738a3cffdf8a6e1a352bf24d74078c3b26fb9262c5746e0d95b9df756'
+            '0f57441f08f7c58d198c6c9b70bcffd05e84b54b2a048e032babd836d8967bcb')
 
 pkgver() {
   cd $_pkgname
@@ -40,33 +37,26 @@ prepare() {
   cd $_pkgname
 
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/216
-  git apply -3 ../fc02b040f3b750b0513f812813351c09795950f6.patch
-
-  # https://bugs.archlinux.org/task/51940
-  # As of 2018-05-08: Still needed, according to fmuellner
-  patch -Np1 -i ../startup-notification.patch
-
+  git apply -3 ../216.patch
   patch -p1 -i $srcdir/hideTitlebar.patch
-
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $_pkgname
-
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-      --libexecdir=/usr/lib --disable-static \
-      --disable-schemas-compile --enable-compile-warnings=minimum \
-      --enable-gtk-doc --enable-egl-device --enable-remote-desktop
-
-  # https://bugzilla.gnome.org/show_bug.cgi?id=655517
-  sed -e 's/ -shared / -Wl,-O1,--as-needed\0/g' \
-      -i {.,cogl,clutter}/libtool
-
-  make
+  arch-meson $_pkgname build \
+    -D egl_device=true \
+    -D wayland_eglstream=true \
+    -D installed_tests=false
+  ninja -C build
 }
 
+check() (
+  mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
+  glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/build/data}"
+  export XDG_RUNTIME_DIR GSETTINGS_SCHEMA_DIR
+
+  dbus-run-session xvfb-run -s '+iglx -noreset' meson test -C build
+)
+
 package() {
-  cd "$_pkgname"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 }

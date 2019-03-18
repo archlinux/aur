@@ -1,16 +1,17 @@
 pkgbase = mutter-hide-legacy-decorations
 	pkgdesc = A window manager for GNOME (with a little hack to hide the window decorations on maximized legacy applications)
-	pkgver = 3.30.2
-	pkgrel = 2
-	url = https://git.gnome.org/browse/mutter
-	arch = i686
+	pkgver = 3.32.0+15+gc96cf0608
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	groups = gnome
 	license = GPL
-	makedepends = intltool
+	checkdepends = xorg-server-xvfb
 	makedepends = gobject-introspection
 	makedepends = git
 	makedepends = egl-wayland
+	makedepends = meson
+	makedepends = xorg-server
 	depends = dconf
 	depends = gobject-introspection-runtime
 	depends = gsettings-desktop-schemas
@@ -25,20 +26,18 @@ pkgbase = mutter-hide-legacy-decorations
 	depends = libgudev
 	depends = libinput
 	depends = pipewire
-	provides = mutter=3.30.2
+	depends = xorg-server-xwayland
+	provides = mutter=3.32.0+15+gc96cf0608
 	conflicts = mutter-wayland
 	conflicts = mutter
 	replaces = mutter-wayland
 	replaces = mutter
-	options = !emptydirs
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=bcd6103c44ff74ebffd1737b8e0f3a952b83bd54
-	source = https://gitlab.gnome.org/vanvugt/mutter/commit/fc02b040f3b750b0513f812813351c09795950f6.patch
-	source = startup-notification.patch
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=c96cf0608dd5e92369447ddbba9f63b7a2c84c0f
+	source = 216.patch
 	source = hideTitlebar.patch
 	sha256sums = SKIP
-	sha256sums = dffa2ca19281b9fa5a81bf80bd46a8eae78325c7e1f8b2a25c33945aa7cc0903
-	sha256sums = 00d5e77c94e83e1987cc443ed7c47303aa33367ce912b2f665bcd34f88890a17
-	sha256sums = ec1a0f5f98213c340e907761e72fc3e22cb9c8ff503c6c234a4a41aac4ec7ac4
+	sha256sums = ed4f3cf738a3cffdf8a6e1a352bf24d74078c3b26fb9262c5746e0d95b9df756
+	sha256sums = 0f57441f08f7c58d198c6c9b70bcffd05e84b54b2a048e032babd836d8967bcb
 
 pkgname = mutter-hide-legacy-decorations
 
