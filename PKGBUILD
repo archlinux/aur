@@ -3,7 +3,7 @@
 pkgname=pymedusa
 _gitname=Medusa
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic."
 arch=('any')
 url="https://github.com/${pkgname}/${_gitname}"
