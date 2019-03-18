@@ -1,5 +1,3 @@
-*.gz
-*.tar
-*.xz
-pkg/
-src/
+*
+!.SRCINFO
+!PKGBUILD
