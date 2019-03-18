@@ -3,7 +3,7 @@
 pkgname=maptool-bin
 pkgver=1.5.0
 pkgrel=1
-pkgdesc="An open source virtual tabletop program, now infused with Nerps!"
+pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
 url="https://rptools.net/tools/maptool"
 license=('AGPL3')

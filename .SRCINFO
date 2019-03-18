@@ -1,5 +1,5 @@
 pkgbase = maptool-bin
-	pkgdesc = An open source virtual tabletop program, now infused with Nerps!
+	pkgdesc = An open source virtual tabletop program
 	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://rptools.net/tools/maptool
