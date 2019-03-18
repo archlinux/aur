@@ -1,6 +1,6 @@
 # Poached from Arch Strike
 # Original: ArchStrike <team@archstrike.org>
-# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=hidattack
 pkgver=0.1
