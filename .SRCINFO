@@ -1,12 +1,13 @@
 pkgbase = mingw-w64-luajit
 	pkgdesc = Just-in-time compiler and drop-in replacement for Lua 5.1
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://luajit.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = gcc-multilib
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
 	options = !strip
 	options = !buildflags
 	source = http://luajit.org/download/LuaJIT-2.0.5.tar.gz
