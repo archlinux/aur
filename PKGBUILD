@@ -2,20 +2,17 @@
 
 pkgname=pymedusa
 _gitname=Medusa
-_gitauthor=pymedusa
-_pymedusa_dir="/opt/medusa"
-pkgver=0.2.14
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic."
 arch=('any')
-url="https://github.com/${_gitauthor}/${_gitname}"
+url="https://github.com/${pkgname}/${_gitname}"
 license=('GPL')
 
-depends=('python2-babel'
-         'python2-cheetah'
-         'python2-mako')
+depends=('python-babel'
+         'python-mako')
 
-optdepends=('python2-notify'
+optdepends=('python-notify'
             'unrar')
 
 conflicts=(${_pkgname}
@@ -28,17 +25,23 @@ conflicts=(${_pkgname}
 options=('!strip')
 install=${pkgname}.install
 
-source=("https://github.com/${_gitauthor}/${_gitname}/archive/v${pkgver}.tar.gz"
+source=("https://github.com/${pkgname}/${_gitname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.service"
-        "${pkgname}.install")
+        "${pkgname}.sysusers"
+        "${pkgname}.tmpfiles")
 
-md5sums=('8e5adf96b6ae246912d3363bfb2d2c8e'
-         '2438a763cb60aa1e507d60de802ac7f2'
-         '188855fff23f878fcd9f8e5b498e0dd3')
+md5sums=('49c939f78489739795a90675a9c81ad6'
+         '70428465c0573416be09c0acb9033a51'
+         '2ebbebb6d18e2ebf3bfab4d2c71c5b58'
+         '1196c8220c501c6e667132a0b945d03d')
 
 package() {
-  install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-  install -dm755 "${pkgdir}${_pymedusa_dir}"/{app,data}
+    install -dm755 "${pkgdir}/usr/lib/${pkgname}"
+    install -dm755 "${pkgdir}/var/lib/${pkgname}"
 
-  cp -rp "${srcdir}/${_gitname}-${pkgver}"/* "${pkgdir}${_pymedusa_dir}"/app/
+    cp -rp "${srcdir}/${_gitname}-${pkgver}"/* "${pkgdir}/usr/lib/${pkgname}"
+
+    install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }

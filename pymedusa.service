@@ -1,11 +1,16 @@
 [Unit]
-Description=Medusa Daemon
+Description=PyMedusa Daemon
+After=network.target
 
 [Service]
-User=medusa
-Group=medusa
+User=pymedusa
+Group=pymedusa
 
-ExecStart=/usr/bin/python2.7 /opt/medusa/app/start.py -q --nolaunch --datadir=/opt/medusa/data
+Type=simple
+ExecStart=/usr/bin/python /usr/lib/pymedusa/start.py -q --nolaunch --datadir=/var/lib/pymedusa
+TimeoutStopSec=25
+KillMode=process
+Restart=on-success
 
 [Install]
 WantedBy=multi-user.target
