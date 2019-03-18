@@ -1,0 +1,6 @@
+monaco-bold/
+nerd-fonts-glyphs/
+pkg/
+src/
+font-patcher
+*.tar.xz

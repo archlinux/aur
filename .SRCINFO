@@ -1,0 +1,24 @@
+pkgbase = otf-nerd-fonts-monacob-mono
+	pkgdesc = MonacoB fonts patched with nerd-fonts
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/vjpr/monaco-bold
+	arch = any
+	license = custom:Apple
+	makedepends = fontforge
+	makedepends = subversion
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = COPYRIGHT
+	source = fix_font_name.py
+	source = monaco-bold::git+https://github.com/vjpr/monaco-bold.git
+	source = nerd-fonts-glyphs::svn+https://github.com/ryanoasis/nerd-fonts/tags/v2.0.0/src/glyphs
+	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.0.0/font-patcher
+	sha256sums = 4a9d48f5368ca3b5699f61c505412a8d734a57c5da00ac0ac5ea70881f615ef3
+	sha256sums = ba2caaadf628a4678b43dec05bcb596b8debf0dd94994ee43d0b557695c09d2e
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 6b73ef4c87b2c9f06f37e56d7cde0788051ddf129b48dee8107565148725f29e
+
+pkgname = otf-nerd-fonts-monacob-mono
+
