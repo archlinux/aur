@@ -27,5 +27,5 @@ build() {
 
 package() {
   cd $pkgname
-  install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm755 $pkgname "$pkgdir"/usr/bin/6cord
 }
