@@ -3,7 +3,7 @@
 
 pkgname=makepkg-optimize
 pkgver=10
-pkgrel=1
+pkgrel=2
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
 license=('GPL')
@@ -13,7 +13,7 @@ replaces=('makepkg-optimize2' pacman-buildenv_ext-git)
 depends=('pacman-git')
 optdepends=('upx' 'optipng' 'nodejs-svgo')
 backup=(etc/makepkg-optimize.conf)
-_buildenv=({pgo,lto,graphite,pic,pie}.sh.in)
+_buildenv=({pgo,lto,graphite}.sh.in)
 _executable=({upx,optipng,svgo}-exec.sh.in)
 _tidy=({upx,optipng,svgo}.sh.in)
 _conf=({{c,cxx,make,ld,debug-make,cmake-}flags,{buildenv,destdirs,pkgopts{,-param}}_ext,compress-param_max}.conf)
@@ -25,8 +25,6 @@ source=(${_buildenv[@]}
 sha1sums=('8f756d02ad1dae9dfbe79e414e557fe96e037549'
           '4078b286395e17bbcfbd14244ab48bbfce24988d'
           '6b719a47146aedae186a7e63b6058507c4948d9f'
-          'ad330393c0d65fd50fa6503a8f68d264b774dae8'
-          'a3143fe08aad1f95dc8ad37cd4f2987608808799'
           'a079a302708342cc0549f56e2b5e17f483fbbbd1'
           'e8358ced786a996a5763faa42f3541900b86647e'
           '9c27d5cef8a12385b385b64e65fce39244e1be4b'
@@ -39,7 +37,7 @@ sha1sums=('8f756d02ad1dae9dfbe79e414e557fe96e037549'
           '202d11e49a611bb400029512cf159a0f8645a6db'
           '2e2cd8c680a86518652543fda9092bf2ab594660'
           '981eab856abb43c5e093620cdf4d8bfa2d690805'
-          '48dfa865011051441aa3b1b261ac076948a40b98'
+          'a2d4cc385d2395ec35094f63dc17847e73bbd565'
           '357102cec0aa56d74955bbf66ae694db74627dab'
           '1fc8035e64b739e20c70fbb4eaa5cb7aa1c63c90'
           '5d0cde13b50641371e4ec4d813d6b2dfae493889'
