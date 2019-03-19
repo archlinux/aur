@@ -22,6 +22,7 @@ prepare() {
   echo 'Warning:'
   echo '· This package requires about 423M to be available within /usr/share.'
   echo '· Make sure you have a _fast_ disk serving /usr/share, i.e. an SSD. Without an SSD, using this data can make LanguageTool much slower.'
+  echo '· The install script will modify your configuration files in each home directory.'
   echo ''
 }
 
