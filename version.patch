@@ -1,0 +1,22 @@
+From f578e55abbfd9ef00d85fcd7e3a5353c42ab42ea Mon Sep 17 00:00:00 2001
+From: Paulus Schoutsen <balloob@gmail.com>
+Date: Sat, 9 Mar 2019 10:12:06 -0800
+Subject: [PATCH] 3.0.0
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 0ffafca..8dcffb4 100644
+--- a/setup.py
++++ b/setup.py
+@@ -5,7 +5,7 @@
+ 
+ setup(
+     name='PyChromecast',
+-    version='2.5.2',
++    version='3.0.0',
+     license='MIT',
+     url='https://github.com/balloob/pychromecast',
+     author='Paulus Schoutsen',
