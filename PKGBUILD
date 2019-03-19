@@ -23,6 +23,7 @@ prepare() {
   echo '· This package requires about 3.1G to be available within /usr/share.'
   echo '· Make sure you have a _fast_ disk serving /usr/share, i.e. an SSD. Without an SSD, using this data can make LanguageTool much slower.'
   echo '· Because of size, you may run out of RAM if you use tmpfs aware aur helpers.'
+  echo '· The install script will modify your configuration files in each home directory.'
   echo ''
 }
 
