@@ -1,0 +1,16 @@
+pkgbase = kanshi-git
+	pkgdesc = Dynamic display configuration for WMs like i3/sway
+	pkgver = r45.970267e
+	pkgrel = 1
+	url = https://github.com/emersion/kanshi
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = rust
+	provides = kanshi
+	conflicts = kanshi
+	source = kanshi::git+https://github.com/emersion/kanshi.git
+	md5sums = SKIP
+
+pkgname = kanshi-git
+
