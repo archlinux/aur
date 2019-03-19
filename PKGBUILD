@@ -7,7 +7,15 @@ pkgdesc="Clang-based FFI wrapper generator"
 arch=('x86_64')
 url="https://github.com/rpav/c2ffi"
 license=('GPL2')
-depends=('clang')
+depends=('clang'
+         'libffi'
+         'libedit'
+         'zlib'
+         'glib'
+         'ncurses'
+         'libxml2'
+         'icu'
+         'xz')
 makedepends=('git'
              'make'
              'cmake'
