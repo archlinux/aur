@@ -1,0 +1,16 @@
+pkgbase = slack-cli-git
+	pkgdesc = Powerful Slack CLI via pure bash. Rich messaging, uploads, posts, piping, oh my!
+	pkgver = r279.46d2274
+	pkgrel = 1
+	url = https://github.com/rockymadden/slack-cli
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	provides = slack-cli
+	conflicts = slack-cli
+	source = slack-cli::git+https://github.com/rockymadden/slack-cli#branch=master
+	md5sums = SKIP
+
+pkgname = slack-cli-git
+
