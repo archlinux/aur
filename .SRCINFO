@@ -1,0 +1,25 @@
+pkgbase = cclasp-boehm-git
+	pkgdesc = Bringing Common Lisp and C++ Together
+	pkgver = 0.4.2.r588.g87c09be5b
+	pkgrel = 1
+	url = https://github.com/clasp-developers/clasp
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = automake
+	makedepends = llvm
+	makedepends = clang
+	makedepends = cmake
+	makedepends = boost
+	makedepends = python2
+	makedepends = zlib
+	makedepends = ncurses
+	makedepends = expat
+	makedepends = libedit
+	makedepends = sbcl
+	provides = cclasp-boehm
+	source = git://github.com/clasp-developers/clasp.git
+	sha512sums = SKIP
+
+pkgname = cclasp-boehm-git
+
