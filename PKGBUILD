@@ -2,7 +2,7 @@
 
 pkgbase=python-vine
 pkgname=('python-vine' 'python2-vine')
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Promises, promises, promises"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/celery/vine"
 makedepends=('python-setuptools' 'python2-setuptools' 'python-case' 'python2-case')
 checkdepends=('python-pytest' 'python2-pytest')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/celery/vine/archive/v$pkgver.tar.gz")
-sha512sums=('7b80d268bac6915ed30f9f25382b2a22534a9a182a88092b651abb94e95ec740aa2465cd13488f16c3636e3ee51b77fdef7f79a8f5a72e93964d3a72d5fe3e3c')
+sha512sums=('cb6ee9fcfcd7e7e23e894fce646c9e8b2300622fcc1811c1547bda90e3756de248ac01e4f812ecbb31dd1798734219d0b8f986354ae16014a7e5d949ab5d994f')
 
 prepare() {
   cp -a vine-$pkgver{,-py2}
