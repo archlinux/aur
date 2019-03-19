@@ -1,7 +1,7 @@
 pkgbase = freetype2-infinality
 	pkgdesc = Font rasterization library with Infinality patches and custom settings.
 	pkgver = 2.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freetype.org/
 	arch = armv7h
 	arch = i686
@@ -13,6 +13,8 @@ pkgbase = freetype2-infinality
 	depends = libpng
 	depends = sh
 	depends = zlib
+	provides = freetype2
+	provides = libfreetype.so
 	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.10.0.tar.gz
 	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.10.0.tar.gz.sig
 	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-doc-2.10.0.tar.gz

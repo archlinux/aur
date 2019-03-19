@@ -7,7 +7,7 @@
 pkgbase="freetype2-infinality"
 pkgname=("${pkgbase}" "${pkgbase/-/-demos-}" "${pkgbase/-/-docs-}")
 pkgver=2.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Font rasterization library with Infinality patches and custom settings."
 arch=("armv7h" "i686" "x86_64")
 license=("GPL")
@@ -15,6 +15,8 @@ url="http://www.${pkgbase%2-infinality}.org/"
 # adding harfbuzz for improved OpenType features auto-hinting
 # introduces a cycle dep to harfbuzz depending on freetype wanted by upstream
 depends=("bzip2" "harfbuzz" "libpng" "sh" "zlib")
+provides=("freetype2"
+          "libfreetype.so")
 makedepends=("libx11")
 source=("https://download-mirror.savannah.gnu.org/releases/${pkgbase%2-infinality}/${pkgbase%2-infinality}-${pkgver}.tar.gz"{,.sig}
         "https://download-mirror.savannah.gnu.org/releases/${pkgbase%2-infinality}/${pkgbase%2-infinality}-doc-${pkgver}.tar.gz"{,.sig}
