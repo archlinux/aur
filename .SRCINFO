@@ -1,0 +1,24 @@
+pkgbase = q2vkpt-git
+	pkgdesc = Real-time path tracer VKPT integrated into q2pro Quake 2 client.
+	pkgver = r1509.0baa1a1
+	pkgrel = 1
+	url = https://github.com/cschied/q2vkpt
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	depends = zlib
+	depends = sdl2
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = vulkan-icd-loader
+	provides = q2vkpt-git
+	source = q2vkpt::git+https://github.com/cschied/q2vkpt.git
+	source = q2vkpt.launcher
+	source = .config
+	md5sums = SKIP
+	md5sums = 903849b55b6be115c81392e549b3b079
+	md5sums = 6bc71f41c15d8ed00505a06c8568fb65
+
+pkgname = q2vkpt-git
+
