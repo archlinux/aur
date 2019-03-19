@@ -9,6 +9,7 @@ license=('GPL')
 provides=('i3-battery-popup')
 conflicts=('i3-battery-popup')
 optdepends=('tk')
+makedepends=('git')
 source=(
 "$pkgname::git+https://github.com/rjekker/i3-battery-popup.git#branch=master"
 )
