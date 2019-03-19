@@ -8,7 +8,7 @@
 # AND (!) the first line in the .install file!
 
 pkgname='tor-browser-en'
-pkgver='8.0.6'
+pkgver='8.0.7'
 _language='en-US'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor'
@@ -30,17 +30,17 @@ source=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-linux64-${
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}.sh")
-md5sums=('cb58e496416d9a70bb1382c169a15034'
+md5sums=('bda93c485ef185681240ce843384a527'
          'SKIP'
          '69c75e328c117249b30a757f60b634bf'
          '7cd059a3b8194745d7d458a628ccc43a'
          '8fdd23d758c49ba83eba1b01d1934924')
-sha256sums=('c711dd6eba6f31bfc389dcee182e2f500a614a5e962efc227c891c7e51162392'
+sha256sums=('bebe0f457f26723687073704ab4b072b696928dccdc1c73ff42d22f2688432e7'
             'SKIP'
             '5a3c8dc36f46b22a2bc45de6209d5efa14898e24d968cd08a7e0e767ea3259bd'
             'bb6b0f27c33d21e0ef6df961e25418327c5e8b01c003bbe18c0a8dae3e16d77d'
             'b51ca669753409c647ba2582b3eb866b409eca61c216f879ed3c1aded8463526')
-sha512sums=('77765d6f80c73bf397ac47bbbdc9c3642f00d3299e8de959b13e18a41eecb811b21d029223f8bfbaed6cf5928a5b0b036c136dd56035f22b907fe1a951033742'
+sha512sums=('5d3a70b0ba619b22284dec7bc37528a5969e28223960635ffb48f39ab2bfb50503aa4dd0136649c5fd24608da94ae1dc28257206e6567be261f5c48d98dced2a'
             'SKIP'
             '1318a652f7b65e30cdb0c607faf4391035288bcfcaffc50f7713de8eeb7d9151c115269fad1225fccd71d4d38537a804f05fba03b3df516afbce8a79d8988d7c'
             '89d971f4f0db7d1b50e090040ddce0f7191d511f4c1cae9d2c3364fda40a43b7f506d0c015ddd1485304fadbc0bf7d5d61d1dbc12bf645a7e615f51c1d1261e0'
