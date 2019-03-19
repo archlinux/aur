@@ -1,7 +1,7 @@
 pkgbase = edrawmax
 	pkgdesc = All-in-One Diagram Software
 	pkgver = 9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.edrawsoft.cn/edrawmax/
 	arch = x86_64
 	license = custom:"Copyright EdrawSoft 2004-2018; All Rights Reserved."
