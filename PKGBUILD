@@ -2,7 +2,7 @@
 
 pkgname=("openxr-loader-git" "openxr-headers-git")
 _dirname="openxr-loader"
-pkgver=r10.baf2a4f
+pkgver=r16.9c637b3
 pkgrel=1
 pkgdesc='OpenXR Loader and headers'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('apache')
 source=("$_dirname::git+https://github.com/KhronosGroup/OpenXR-SDK.git"
 	"support_installing_the_loader.diff")
 md5sums=('SKIP'
-         'b1d87379ab956887007a607de7b2b8af')
+         '59e37b1913142910839620626be16ec5')
 
 #options=('debug' '!strip')
 
