@@ -5,6 +5,7 @@ pkgbase = i3-battery-popup-git
 	url = https://github.com/rjekker/i3-battery-popup
 	arch = any
 	license = GPL
+	makedepends = git
 	optdepends = tk
 	provides = i3-battery-popup
 	conflicts = i3-battery-popup
