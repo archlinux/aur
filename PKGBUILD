@@ -3,7 +3,7 @@
 
 pkgname=cqlsh
 pkgdesc="CQL shell for apache cassandra"
-pkgver=3.11.3
+pkgver=3.11.4
 pkgrel=1
 arch=('any')
 license=('Apache')
