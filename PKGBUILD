@@ -25,7 +25,7 @@ source=('plexmediaserver.conf.d'
         'terms.txt')
 source_i686=("https://downloads.plex.tv/plex-media-server-new/${pkgver}-${_pkgsum}/redhat/plexmediaserver-${pkgver}-${_pkgsum}.i686.rpm")
 source_x86_64=("https://downloads.plex.tv/plex-media-server-new/${pkgver}-${_pkgsum}/redhat/plexmediaserver-${pkgver}-${_pkgsum}.x86_64.rpm")
-sha256sums=('8edc014a66f4d458662b22a183cc23622e15360f729633398348df593f129361'
+sha256sums=('7020748184c2f689f6e1132575343046aec184867c9ed169aca5f6d90240b9dd'
             '9a214a37cc8dd5fd912d5bcca16445f023f892aafd4ca54226aeb2b4910d23a2'
             'ebf153d5789f9d24cb98ae607d227286e1da6ce54e149c8be4f47e08ee729573'
             'dbfb5a9a7146a975863c0932f1a68c4b040ec5d7e693361f39ddfbf60885e631')
