@@ -4,7 +4,7 @@ pkgname=libupnp18
 _pkgname=libupnp
 pkgver=1.8.4
 _pkgver=1.8
-pkgrel=3
+pkgrel=4
 pkgdesc='A separate installation of libupnp 1.8 branch'
 url='http://pupnp.sourceforge.net/'
 arch=('x86_64')
@@ -22,11 +22,20 @@ prepare() {
 
 build() {
   cd ${_pkgname}-${pkgver}
-  ./configure \
-    --prefix=/usr \
-    --enable-reuseaddr \
-    --libdir=/usr/lib/libupnp-${_pkgver} \
-    --includedir=/usr/include/${_pkgname}-${_pkgver}
+
+  if [ "${arch}" == "x86" ]; then
+    CFLAGS+=' -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE' ./configure \
+      --prefix=/usr \
+      --enable-reuseaddr \
+      --libdir=/usr/lib/libupnp-${_pkgver} \
+      --includedir=/usr/include/${_pkgname}-${_pkgver}
+  else
+    ./configure \
+      --prefix=/usr \
+      --enable-reuseaddr \
+      --libdir=/usr/lib/libupnp-${_pkgver} \
+      --includedir=/usr/include/${_pkgname}-${_pkgver}
+  fi
   make
 }
 
