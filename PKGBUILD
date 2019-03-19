@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: Anonymous
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-io-aio'
-pkgver='4.33'
+pkgver='4.71'
 pkgrel='1'
-pkgdesc="Asynchronous Input/Output"
+pkgdesc="Asynchronous/Advanced Input/Output"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('glibc>=2.20' 'perl-common-sense')
+depends=('glibc>=2.28' 'perl-common-sense>=0')
 makedepends=()
-url='http://search.mcpan.org/dist/IO-AIO'
-source=('http://search.mcpan.org/CPAN/authors/id/M/ML/MLEHMANN/IO-AIO-4.33.tar.gz')
-md5sums=('08243848d09e111ca8a682226a36491f')
-sha512sums=('9d59d9ad511bb07178ed760a0387357ade961f9b0e73cdc64861fa3b5674fb4cdb07b44a0c0810cc364909c1bc4fb012c2975269c1e3035cd37ba21a8a029df9')
-_distdir="IO-AIO-4.33"
+url='https://metacpan.org/release/IO-AIO'
+source=('http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/IO-AIO-4.71.tar.gz')
+md5sums=('b748e01f409d7b5849000c181205f4c2')
+sha512sums=('5f5a3acc328035da587fe359ee08e5820ab4de0d950d318ee056be7dbb0fe5665649d4a5416108329e3c6d3908df5dc0320ec094537d9380ecf0a992614710fb')
+_distdir="IO-AIO-4.71"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
