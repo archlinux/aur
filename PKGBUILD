@@ -1,8 +1,8 @@
 # Maintainer: physkets <physkets // at // tutanota dot com>
 # Contributor: James Clark <s1127853@sms.ed.ac.uk>
 pkgname=opencoarrays
-pkgver=2.3.1
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="A transport layer for coarray Fortran compilers."
 url="http://www.opencoarrays.org/"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('mpich' 'gcc-fortran')
 makedepends=('cmake')
 source=("https://github.com/sourceryinstitute/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc})
 validpgpkeys=('1DB1B5EDE32122B28E56810DCB21118C92A64702') #Izaak Beekman <zbeekman@gmail.com>
-sha256sums=('2b87cc8c31874ecb01e0300bc99b30e4017714fc0d17690f637d8fa4d48560f3'
+sha256sums=('fca62bd93b8fdcb6ee68b9c96d26d93f7440c2da8942a5ddcb14159457454276'
             'SKIP' )
 
 build() {
