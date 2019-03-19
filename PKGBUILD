@@ -1,7 +1,7 @@
 # Maintainer: Daniel Appelt <daniel.appelt@gmail.com>
 _pkgbasename=openmusic
 pkgname=${_pkgbasename}-bin
-pkgver=6.14.2
+pkgver=6.15
 pkgrel=1
 pkgdesc="A visual programming language designed for music composition"
 arch=("x86_64")
@@ -16,8 +16,8 @@ conflicts=("${_pkgbasename}")
 # (http://www.lispworks.com/kb/a15fc2ea99b4f8f5802571fe0057705a.html)
 options=(!strip)
 install="${_pkgbasename}.install"
-source=("http://forge.ircam.fr/p/OM/downloads/get/OM_${pkgver}.tar.bz2")
-sha256sums=("b9e019b805f70ade28914dd5d3007f098c3863931e9704a313a08eb2951c6080")
+source=("https://github.com/openmusic-project/OM6/releases/download/v${pkgver}/OM-${pkgver}-Linux.tar.bz2")
+sha256sums=("9eb7e072da8e89d20b62c396e371d51239b83737fd2a0168a74f808bda4e96b7")
 
 package() {
 	cd "$srcdir/OM_${pkgver}"
