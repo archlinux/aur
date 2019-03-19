@@ -1,9 +1,8 @@
-# Maintainer: Michael Gwin <oksijun+arch at gmail dot com>
-# Co-maintainer: Benjamin Denhartog <ben@sudoforge.com>
+# Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 
 pkgname=terragrunt-bin
 pkgver=0.18.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A thin wrapper for Terraform that provides extra tools for working with multiple Terraform modules"
 url="https://github.com/gruntwork-io/terragrunt"
 depends=('terraform')
