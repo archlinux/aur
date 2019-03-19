@@ -3,7 +3,7 @@
 
 pkgname=meanalyzer-git
 pkgver=1.82.3.r154.r0.gd8d9dfd
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel Management Engine firmware analysis tool'
 arch=('any')
 url='https://github.com/platomav/MEAnalyzer'
