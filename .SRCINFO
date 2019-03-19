@@ -1,7 +1,7 @@
 pkgbase = meanalyzer-git
 	pkgdesc = Intel Management Engine firmware analysis tool
-	pkgver = 1.82.3.r154.r0.gd8d9dfd
-	pkgrel = 2
+	pkgver = r155.r0.g51b7a16
+	pkgrel = 1
 	url = https://github.com/platomav/MEAnalyzer
 	arch = any
 	license = GPL3
