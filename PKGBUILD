@@ -1,4 +1,4 @@
-# Maintainer: Ethan Brittain-Morby <ethan AT etha DOT nz>
+# Maintainer: Ethan Brittain-Morby <ebm539 AT protonmail DOT com>
 pkgname=python-metaname-git
 pkgver=r14.ce20e21
 pkgrel=1
