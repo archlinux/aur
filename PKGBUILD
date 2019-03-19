@@ -2,7 +2,7 @@
 pkgname=kiibohd-configurator-git
 _pkgname=kiibohd-configurator
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Client Side Configuration & Flashing Software for Kiibohd compatible keyboards"
 arch=('x86_64')
 url="https://github.com/kiibohd/configurator"
