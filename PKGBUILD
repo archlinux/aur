@@ -6,7 +6,7 @@
 
 pkgname=lib32-libfdk-aac
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fraunhofer FDK AAC codec library (32-bit)'
 arch=('x86_64')
 url='http://sourceforge.net/projects/opencore-amr/'
