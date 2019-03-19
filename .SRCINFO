@@ -1,7 +1,7 @@
 pkgbase = plex-media-server
 	pkgdesc = Plex Media Server
 	pkgver = 1.15.1.791
-	pkgrel = 4
+	pkgrel = 5
 	url = https://plex.tv/
 	install = plex-media-server.install
 	arch = i686
