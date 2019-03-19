@@ -1,0 +1,19 @@
+*** a/CMakeLists.txt	2019-03-19 16:52:44.964645874 +0100
+--- b/CMakeLists.txt	2019-03-19 16:52:26.581383809 +0100
+***************
+*** 9,15 ****
+    set(CMAKE_BUILD_TYPE Release)
+  endif()
+  
+! find_package(Boost REQUIRED thread signals)
+  
+  if(WITH_OPENGL)
+    find_package(OpenGL REQUIRED)
+--- 9,15 ----
+    set(CMAKE_BUILD_TYPE Release)
+  endif()
+  
+! find_package(Boost REQUIRED thread)
+  
+  if(WITH_OPENGL)
+    find_package(OpenGL REQUIRED)

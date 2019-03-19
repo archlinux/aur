@@ -4,7 +4,7 @@ pkgdesc="ROS - Components of MoveIt connecting to perception."
 url='http://moveit.ros.org'
 
 pkgname='ros-kinetic-moveit-ros-perception'
-pkgver='0.9.11'
+pkgver='0.9.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -57,8 +57,10 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="moveit-release-release-kinetic-moveit_ros_perception-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/kinetic/moveit_ros_perception/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a198270fca359a2d4fb0bdfaed0abcd345f5953de0640d4f55f54b47a8593d92')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/kinetic/moveit_ros_perception/${pkgver}-${_pkgver_patch}.tar.gz"
+        'moveit_ros_perception_boost.patch')
+sha256sums=('ac7f565766ee1c96434711462dd6b82235b3668c2cec91724aa8b745081c46cb'
+            '69d478cedc9f31464063ace7ea346f2ac218def046154a0b8bb84fcb1b1a94a8')
 
 prepare() {
   cd ${srcdir}
@@ -67,6 +69,8 @@ prepare() {
 	  -exec sed -r -i "s/[^_]logWarn/CONSOLE_BRIDGE_logWarn/" {} \; \
 	  -exec sed -r -i "s/[^_]logDebug/CONSOLE_BRIDGE_logDebug/" {} \; \
 	  -exec sed -r -i "s/[^_]logInform/CONSOLE_BRIDGE_logInform/" {} \;
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/moveit_ros_perception_boost.patch
 }
 
 build() {
