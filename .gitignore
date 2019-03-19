@@ -1,0 +1,5 @@
+src
+pkg
+6cord-git
+*.tar.gz
+*.tar.xz
