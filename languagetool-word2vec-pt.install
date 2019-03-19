@@ -1,5 +1,55 @@
 post_install() {
-  echo ''
-  echo 'Do not forget to add "word2vecDir=/usr/share/word2vec" in ~/.languagetool[-ooo].cfg or use LanguageTool GUI config to point to "/usr/share/word2vec"!'
-  echo ''
+  # This is a simple, but verbosely written script to change or add a "key=value" line
+  # in two configuration files in every users home directory and the skeleton directory.
+
+  _CONFIGLT=".languagetool.cfg"
+  _CONFIGOO=".languagetool-ooo.cfg"
+  _KEY="word2vecDir"
+  _VALUE="/usr/share/word2vec"
+
+  _update_file() {
+    if (grep -Fxq "$_KEY=$_VALUE" "$1/$2" 2> /dev/null); then
+      # Skip if "key=value" is in place, or
+      printf "    \e[32mUp-to-date\e[0m\t| $1/$2\n"
+    else
+      if (grep -Fq "$_KEY=" "$1/$2" 2> /dev/null); then
+        # update to match the desired value if the key exists, or
+        (sed 's|^'$_KEY'=.*|'$_KEY'='$_VALUE'|' -i "$1/$2")
+        printf "    \e[33mValue updated\e[0m\t| $1/$2\n"
+      else
+        # append the "key=value" to the, possibly just created, configuration file.
+        (printf "$_KEY=$_VALUE\n" >> "$1/$2")
+        printf "    \e[95mLine added\e[0m\t| $1/$2\n"
+      fi
+    fi
+    # Fix the ownership of the configuration file.
+    (chown --reference="$1" "$1/$2")
+  }
+
+  printf "\e[1mUpdating configuration files to match \"$_KEY=$_VALUE\"\e[0m.\n"
+  # For a user's home directory under /home,
+  for USERDIR in $(getent passwd | cut -d: -f6 | grep /home); do
+    # that actually exists,
+    if [ -d "$USERDIR" ]; then
+      # update the 1st configuration file and
+      _update_file "$USERDIR" "$_CONFIGLT"
+      if [ -e "$USERDIR/$_CONFIGOO" ]; then
+        # update the 2nd configuration file if it exists, or
+        _update_file "$USERDIR" "$_CONFIGOO"
+      else
+        # create symbolic link to the 1st if it doesn't.
+        (ln -s "$_CONFIGLT" "$USERDIR/$_CONFIGOO")
+        printf "    \e[95mLink created\e[0m\t| $USERDIR/$_CONFIGOO\n"
+      fi
+    fi
+  done
+
+  # For any later created user, provide skeleton files
+  _update_file "/etc/skel" "$_CONFIGLT"
+  if [ -e "/etc/skel/$_CONFIGOO" ]; then
+    _update_file "/etc/skel" "$_CONFIGOO"
+  else
+    (ln -s "$_CONFIGLT" "/etc/skel/$_CONFIGOO")
+    printf "    \e[95mLink created\e[0m\t| /etc/skel/$_CONFIGOO\n"
+  fi
 }
