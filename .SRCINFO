@@ -1,6 +1,6 @@
 pkgbase = suru-plus-dark-git
 	pkgdesc = Suru++ 25 Dark – A full dark cyberpunk third-party icons theme!
-	pkgver = 25.0
+	pkgver = 25.1
 	pkgrel = 1
 	url = https://github.com/gusbemacbe/suru-plus-dark
 	changelog = CHANGELOG

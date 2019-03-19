@@ -4,7 +4,7 @@
 # Maintainer: Gustavo Costa (gusbemacbe)
 
 pkgname=suru-plus-dark-git
-pkgver=25.0
+pkgver=25.1
 pkgrel=1
 pkgdesc="Suru++ 25 Dark  – A full dark cyberpunk third-party icons theme!"
 arch=('any')

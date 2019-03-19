@@ -11,14 +11,21 @@ WHITE='\033[1;37m'
 
 NC='\033[0m' # No Color
 
+echo -e "${GREEN}#${NC} ${ORANGE}25.1.0${NC}" 
+echo -e "* Added new 13 icons: Alva, Cronopete, Dockstation, Edex, elCalc, elementary OS, Figma, Google Web Designer, Optimizer, Listen1, Lyrics and VNote;"
+echo -e "* Added new icons with two alternatives, designed by @iLynux8888;"
+echo -e "* Added new GNOME 3.32 icons;"
+echo -e "* Added new missed symlinked icons of AppImage apps;"
+echo -e "* Improved the color-picker.svg, suggested by @Bonandry;"
+echo -e "* Improved the 16px color-picker-black.svg to be legible, suggested by @roachsinai."
+echo -e " "
+
 echo -e "${GREEN}#${NC} ${ORANGE}25.0.0${NC}" 
 echo -e "* Upgraded and renamed to Suru++ 25 Dark"
-
 echo -e " "
 
 echo -e "${GREEN}#${NC} ${ORANGE}20.3.2${NC}" 
 echo -e "* “Clean” to “uninstall” fixed by @jonathonf"
-
 echo -e " "
 
 echo -e "${GREEN}#${NC} ${ORANGE}20.3.1${NC}"
