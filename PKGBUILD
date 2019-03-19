@@ -2,8 +2,8 @@
 # Contributor: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=meanalyzer-git
-pkgver=r155.r0.g51b7a16
-pkgrel=1
+pkgver=1.82.3.r154.r0.gd8d9dfd
+pkgrel=2
 pkgdesc='Intel Management Engine firmware analysis tool'
 arch=('any')
 url='https://github.com/platomav/MEAnalyzer'
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
