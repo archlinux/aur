@@ -1,7 +1,7 @@
 pkgbase = xfsdump
 	pkgdesc = Additional XFS filesystem utilities
 	pkgver = 3.1.8
-	pkgrel = 4
+	pkgrel = 5
 	url = http://xfs.org
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,10 @@ pkgbase = xfsdump
 	depends = acl
 	depends = dmapi
 	source = https://kernel.org/pub/linux/utils/fs/xfs/xfsdump/xfsdump-3.1.8.tar.xz
+	source = https://kernel.org/pub/linux/utils/fs/xfs/xfsdump/xfsdump-3.1.8.tar.sign
+	validpgpkeys = 2B8185919E8D248981869DED20AE1692E13DDEE0
 	sha256sums = ed14e67ae5b273c2698e767b43a46f033d361e540fe13feaaf9b110ee0edc585
+	sha256sums = SKIP
 
 pkgname = xfsdump
 
