@@ -1,10 +1,11 @@
 # Contributor: judd <jvinet@zeroflux.org>
 # Contributor: dkaylor <dpkaylor@gmail.com>
-# Maintainer: Pablo Lezaeta <prflr88@gmail.com>
+# Contributor: Pablo Lezaeta <prflr88@gmail.com>
+# Maintainer: Allen Wild <allenwild93@gmail.com>
 
 pkgname=xfsdump
 pkgver=3.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Additional XFS filesystem utilities"
 arch=(i686 x86_64)
 url="http://oss.sgi.com/projects/xfs/"
