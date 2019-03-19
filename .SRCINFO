@@ -1,0 +1,15 @@
+pkgbase = lumins-bin
+	pkgdesc = A fast and reliable alternative to rsync for synchronizing local files
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/wchang22/LuminS
+	arch = x86_64
+	license = MIT
+	provides = lms
+	source = https://github.com/wchang22/LuminS/releases/download/v0.3.0/lms
+	source = LICENSE::https://raw.githubusercontent.com/wchang22/LuminS/master/LICENSE
+	md5sums = 445e0424e4ea278b5afcd0bd45d5735e
+	md5sums = b288a44ff8d3a8991c44878b97794c58
+
+pkgname = lumins-bin
+
