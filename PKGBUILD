@@ -11,7 +11,7 @@ depends=('alsa-lib' 'gconf' 'gtk3' 'libcurl-compat' 'libsecret' 'libxss' 'libxts
 optdepends=('gnome-keyring')
 conflicts=('slack-desktop')
 source=("https://downloads.slack-edge.com/linux_releases/${pkgname%-dark}-${pkgver}-amd64.deb"
-		"https://raw.githubusercontent.com/laCour/slack-night-mode/master/css/raw/black.css"
+        "https://raw.githubusercontent.com/laCour/slack-night-mode/56d2007b5ba9f1628a44af6edf5dbdf74cf92278/css/raw/black.css"
 		"darkify_slack.js"
     	"${pkgname}.patch")
 noextract=("${pkgname%-dark}-${pkgver}-amd64.deb")
