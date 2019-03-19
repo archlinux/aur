@@ -5,7 +5,7 @@
 _pkgorigname=kwin
 pkgname=kwin-presentwindows-close
 pkgver=5.15.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy to use, but flexible, composited Window Manager'
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'

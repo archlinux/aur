@@ -1,7 +1,7 @@
 pkgbase = kwin-presentwindows-close
 	pkgdesc = An easy to use, but flexible, composited Window Manager
 	pkgver = 5.15.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kde.org/workspaces/plasmadesktop/
 	install = kwin.install
 	arch = x86_64
