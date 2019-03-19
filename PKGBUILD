@@ -1,14 +1,14 @@
 # Maintainer: Ron B.S <ronthecookie0101 on gmail --OR-- me AT ronthecookie DOT me >
 
 pkgname=6cord-git
-pkgver=1.r74.gc167ba3
+pkgver=5.r12.ge5b64ec
 pkgrel=1
 pkgdesc='Discord, TUI and SIXEL.'
 arch=('x86_64')
 url="https://gitlab.com/diamondburned/6cord"
 license=('MPL-2.0')
 makedepends=('go-pie')
-source=("$pkgname::git+https://gitlab.com/diamondburned/6cord")
+source=("$pkgname::git+https://gitlab.com/diamondburned/6cord.git")
 md5sums=('SKIP')
 conflicts=('6cord')
 
