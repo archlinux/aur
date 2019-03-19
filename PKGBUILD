@@ -3,7 +3,7 @@
 pkgname=haskell-alsa-mixer
 _hkgname=alsa-mixer
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides bindings to the ALSA simple mixer API"
 url=https://hackage.haskell.org/package/alsa-mixer
 license=('BSD')
