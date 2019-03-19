@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=minetime
-pkgver=1.4.11
+pkgver=1.4.12
 pkgrel=1
 pkgdesc='MineTime is a modern, intuitive and smart calendar application.'
 arch=('x86_64')
