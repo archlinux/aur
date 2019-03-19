@@ -10,7 +10,6 @@ pkgbase = wf-recorder-git
 	makedepends = git
 	makedepends = wayland-protocols
 	makedepends = ninja
-	depends = wlroots-git
 	depends = wayland
 	depends = ffmpeg
 	depends = x264

@@ -7,7 +7,7 @@ license=("MIT")
 pkgdesc="A video recorder for wlroots-based compositors like sway or wayfire"
 makedepends=("meson" "git" "wayland-protocols" "ninja")
 depends=(
-	"wlroots-git" "wayland" "ffmpeg" "x264"
+	"wayland" "ffmpeg" "x264"
 )
 optdepends=(
     "slurp: limit recording to a part of the screen"
