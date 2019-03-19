@@ -1,0 +1,17 @@
+pkgbase = ros-kinetic-audio-common-msgs
+	pkgdesc = ROS - Messages for transmitting audio via ROS.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://ros.org/wiki/audio_common_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-message-generation
+	makedepends = ros-kinetic-catkin
+	depends = ros-kinetic-message-runtime
+	source = ros-kinetic-audio-common-msgs-0.3.2-0.tar.gz::https://github.com/ros-gbp/audio_common-release/archive/release/kinetic/audio_common_msgs/0.3.2-0.tar.gz
+	sha256sums = 25422b538a4bb28341103854facbb28c4dd046f93d094c83360da018cb0c43d7
+
+pkgname = ros-kinetic-audio-common-msgs
+
