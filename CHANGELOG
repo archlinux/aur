@@ -11,14 +11,32 @@ WHITE='\033[1;37m'
 
 NC='\033[0m' # No Color
 
-echo -e "${GREEN}#${NC} ${ORANGE}25.2.0${NC}" 
-echo -e "* “Fixed loop time of update"
+echo -e "${GREEN}#${NC} ${ORANGE}25.3.0${NC}" 
+echo -e "* Added new 13 icons: Alva, Cronopete, Dockstation, Edex, elCalc, elementary OS, Figma, Google Web Designer, Optimizer, Listen1, Lyrics and VNote;"
+echo -e "* Added new icons with two alternatives, designed by @iLynux8888;"
+echo -e "* Added new GNOME 3.32 icons;"
+echo -e "* Added new missed symlinked icons of AppImage apps;"
+echo -e "* Created eSuru++ for supporting elementary OS, suggested by @Chamrosh;"
+echo -e "* Created Suru++ Light for supporting XFCE light panel, suggested by @sptndc;"
+echo -e "* Fixed folder-saved-search.svg's wrong icon of elementary OS Code app in eSuru++;"
+echo -e "* Improved the color-picker.svg, suggested by @Bonandry;"
+echo -e "* Improved the 16px color-picker-black.svg to be legible, suggested by @roachsinai."
+echo -e " "
 
 echo -e "${GREEN}#${NC} ${ORANGE}25.2.0${NC}" 
-echo -e "* “Added gradient colours support and new three folders colours"
+echo -e "* Fixed loop time of update"
+
+echo -e " "
+
+echo -e "${GREEN}#${NC} ${ORANGE}25.2.0${NC}" 
+echo -e "* Added gradient colours support and new three folders colours"
+
+echo -e " "
 
 echo -e "${GREEN}#${NC} ${ORANGE}25${NC}" 
-echo -e "* “Biggest upgrade!"
+echo -e "* Biggest upgrade!"
+
+echo -e " "
 
 echo -e "${GREEN}#${NC} ${ORANGE}20.3.2${NC}" 
 echo -e "* “Clean” to “uninstall” fixed by @jonathonf"
