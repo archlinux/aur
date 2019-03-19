@@ -3,7 +3,7 @@
 
 pkgname=syslog-ng-git
 _pkgname=syslog-ng
-pkgver=3.20.1.r173.gb21d85690
+pkgver=3.20.1.r177.g89fa93166
 pkgrel=1
 pkgdesc="Enhanced system logging daemon"
 arch=('x86_64')
@@ -47,7 +47,7 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
   sed -i -e 's,/bin/,/usr/bin/,' -e 's,/sbin/,/bin/,' contrib/systemd/syslog-ng@.service
-  sed -i -e 's|etc|etc/syslog-ng|g' -e 's|/var/run|/run|g' contrib/systemd/syslog-ng@default
+  sed -i -e 's|/var/run|/run|g' contrib/systemd/syslog-ng@default
 }
 
 build() {
