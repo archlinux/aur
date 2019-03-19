@@ -4,7 +4,7 @@ pkgdesc="ROS - Core libraries used by MoveIt!."
 url='http://moveit.ros.org'
 
 pkgname='ros-kinetic-moveit-core'
-pkgver='0.9.11'
+pkgver='0.9.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -74,7 +74,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="moveit-release-release-kinetic-moveit_core-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/kinetic/moveit_core/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6cd9d4a1e2838682c6a33311984a5148b1cf74df61cb109a43bed82ffbe0b6ce')
+sha256sums=('20ea70a20528c25d48d6ea0c58d6e23ea26b1d92efb231425e92deb15862d0bd')
 
 prepare() {
   cd ${srcdir}
