@@ -1,6 +1,6 @@
 # Maintainer: Logan Koester <logan@logankoester.com>
 pkgname=cljcv-git
-pkgver=0.1.1
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Produce a nicely formatted curriculum vitae or résumé in various formats."
 arch=('any')
