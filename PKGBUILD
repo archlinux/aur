@@ -23,10 +23,10 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=5.0-arch1
+_srcver=5.0.2-arch1
 pkgver=${_srcver%-*}
-pkgrel=2
-_pdsversion=099o
+pkgrel=1
+_bmqversion=090
 _uksmversion=4.20
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
@@ -34,7 +34,7 @@ license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
 _srcname=linux-$_srcver
-_psd_patch="v5.0_pds${_pdsversion}.patch"
+_bmq_patch="v5.0_bmq${_bmqversion}.patch"
 _uksm_patch="uksm-${_uksmversion}.patch"
 _gcc_more_v='20180509'
 source=(
@@ -44,23 +44,21 @@ source=(
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  "$_psd_patch::https://gitlab.com/alfredchen/PDS-mq/raw/master/5.0/${_psd_patch}"
+  "$_bmq_patch::https://gitlab.com/alfredchen/bmq/raw/master/5.0/${_bmq_patch}"
 #  "$_uksm_patch::https://raw.githubusercontent.com/dolohow/uksm/master/v4.x/uksm-4.20.patch"
-  "fix_compilation_in_arch.patch::https://gitlab.com/alfredchen/linux-pds/commit/91c2ffd8fe4d73d38581bbd988dfec9703d74c5e.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('0b4454d76dd3e739b16dec176aab916617361fcc2fb3a3ff311ea8fa51b2334a'
-            'fc06735ef00a38041e0203ed9bcf18b574d7ca615cc4b4782105062872829b5f'
+sha256sums=('0690caf9f27f6f7d7fa588e8a0a9d8703c861636e9448f0afad349764572b083'
+            '6598f775100a4a9dc4a1fc3df9afa2d9f7fcf9647bde8e569ffe897caceaf170'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '8119fd93d81cb048cbd6912e98cfaa6b69364685e8e8bb87a84e3c7107ca10a7'
-            'ef055a073555ef5718df534a9a6419db027808130439ccb5b6d896b0f4ae6e33')
+            '7a5ed5e6d628c4ef20791afd4bad1bd071d87d04ffded8ce7cc1d209ee92425b')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
