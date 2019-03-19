@@ -2,7 +2,7 @@
 
 pkgname=ttf-courier-prime-ib
 pkgver=1.203
-pkgrel=9
+pkgrel=10
 depends=('fontconfig')
 pkgdesc="A free, improved, classical monospaced typeface."
 url="http://quoteunquoteapps.com/courierprime/"
@@ -12,10 +12,10 @@ conflicts=('ttf-courier-prime')
 replaces=('ttf-courier-prime')
 provides=('t1-ibm-courier-ib')
 license=('custom:OFL')
-source=('http://dimkanovikov.pro/courierprime/courierprime.zip'
+source=('http://quoteunquoteapps.com/downloads/courier-prime.zip'
         45-courier-prime.conf
         90-tt-courier-prime.conf)
-sha1sums=('1dc74002d53c2d32b3b2f28c0fe24a51bbc05412'
+sha1sums=('05e3c5fb937d44f8b2dd9b5705df98812ed73711'
           '718837e1ac40010d446d9c4e8817d221abc3041e'
           '5b774e915c204364eb9d1bf580264de991c084a4')
 
