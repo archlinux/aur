@@ -2,7 +2,7 @@
 # Contributor: kitech1 <vatic@vivaldi.net>
 pkgname=edrawmax
 pkgver=9.3
-pkgrel=1
+pkgrel=2
 pkgmaver=9
 pkgmaname=EdrawMax
 epoch=
@@ -22,8 +22,8 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=(http://download.edrawsoft.com/archives/$pkgname-$pkgmaver-64.run.gz)
-sha256sums=('2fd51abc48c453bd550d87305fbcad7032e277506389b97c7cb4b4f74907b074')
+source=(https://www.edrawsoft.com/archives/$pkgname-$pkgmaver-amd64.tar.gz)
+sha256sums=('4ddc489dad1cd663a85ac91b5fe9c3263ae58aedbbcaaa690d7737d9b53e68eb')
 noextract=()
 
 prepare() {
@@ -36,8 +36,8 @@ prepare() {
 
 build() {
   echo "Extracting files..."
-  tar zxf $pkgname-$pkgver.tar.gz
-  rm -f $pkgname-$pkgver.tar.gz
+  tar zxf $pkgname-$pkgmaver-amd64.tar.gz
+  rm -f $pkgname-$pkgmaver-amd64.tar.gz
 }
 
 check() {

@@ -7,8 +7,8 @@ pkgbase = edrawmax
 	license = custom:"Copyright EdrawSoft 2004-2018; All Rights Reserved."
 	depends = qt5-base
 	options = !strip
-	source = http://download.edrawsoft.com/archives/edrawmax-9-64.run.gz
-	sha256sums = 2fd51abc48c453bd550d87305fbcad7032e277506389b97c7cb4b4f74907b074
+	source = https://www.edrawsoft.com/archives/edrawmax-9-amd64.tar.gz
+	sha256sums = 4ddc489dad1cd663a85ac91b5fe9c3263ae58aedbbcaaa690d7737d9b53e68eb
 
 pkgname = edrawmax
 
