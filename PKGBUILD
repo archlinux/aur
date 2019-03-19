@@ -2,11 +2,12 @@
 
 pkgname=kicad-templates
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="KiCad templates"
 arch=('any')
 url="https://github.com/KiCad/kicad-templates"
 license=('GPL')
+groups=('kicad-libraries')
 makedepends=('cmake')
 options=('!strip')
 conflicts=('kicad-templates-git' 'kicad-library-git' 'kicad-library' 'kicad-library-3d')
