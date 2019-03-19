@@ -7,14 +7,15 @@
 _pkgname=links
 pkgname=links-g-directfb
 pkgver=2.18
-pkgrel=1
+pkgrel=2
 pkgdesc="A text WWW browser, similar to Lynx (with directfb, X and fb graphics)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://links.twibright.com/"
 license=('GPL')
 # 'libx11' 'libxt' packages are for the x11 backend
 # 'directfb' package is for the directfb backend
-depends=('bzip2' 'xz' 'openssl' 'gpm' 'libx11' 'libtiff' 'libpng' 'libjpeg-turbo' 'librsvg' 'libevent')
+depends=('bzip2' 'directfb' 'xz' 'openssl' 'gpm' 'libx11' 'libtiff' 
+'libpng' 'libjpeg-turbo' 'librsvg' 'libevent')
 makedepends=('libxt')
 provides=('links' 'links-g')
 conflicts=('links' 'links-g')
