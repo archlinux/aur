@@ -1,0 +1,16 @@
+pkgbase = yin-yang-git
+	pkgdesc = Automatic light -> dark and vice versa theme switcher for KDE Plasma.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/daehruoydeef/yin-yang
+	arch = any
+	license = MIT
+	depends = python>=3
+	depends = python-qtpy
+	depends = python-pyqt5
+	provides = yin-yang
+	source = git+https://github.com/daehruoydeef/yin-yang.git
+	md5sums = SKIP
+
+pkgname = yin-yang-git
+
