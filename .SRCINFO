@@ -7,6 +7,7 @@ pkgbase = soapysdrplay
 	license = MIT
 	makedepends = cmake
 	depends = soapysdr
+	depends = libsdrplay
 	source = https://github.com/pothosware/SoapySDRPlay/archive/soapy-sdrplay-0.2.0.tar.gz
 	sha256sums = 4bf2a73827a575ecf64c8ad1b2a4d9963e78b4726426b7da95959da817719c8c
 
