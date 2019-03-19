@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=pytype
-pkgver=2019.03.08
+pkgver=2019.03.15
 pkgrel=1
 pkgdesc="Python type inferencer"
 arch=('any')
@@ -32,7 +32,7 @@ source=(
   'without-ninja-python-distributions.patch'
 )
 sha256sums=(
-  '35cff079d42dfb50ba35e41853212a6c5ef48de7cd9df2217504e16a38ca311d'
+  '171d637b91df9d85dfda8439f93afcb2b582c9b14fc6af09d952232cb9f54047'
   'ebc3b63747875586f17b967ad2dae6d2a404adb5814612200217f39074377f9a'
   '891d732c77eec9fb57727cd99990a25455d6d5859b1fde107a332c5e238cc9e7'
   '6e634f400fcbe30ac6f5f8e476eef8b3cb8ae7d801e01b81bab04826c6d2402e'
