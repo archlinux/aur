@@ -2,7 +2,7 @@
 pkgname=kiibohd-configurator-git
 _pkgname=kiibohd-configurator
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Client Side Configuration & Flashing Software for Kiibohd compatible keyboards"
 arch=('x86_64')
 url="https://github.com/kiibohd/configurator"
@@ -27,5 +27,5 @@ package() {
   mkdir -p "${pkgdir}/opt"
   mv * "${pkgdir}/opt"
   install -d "${pkgdir}/usr/bin"
-  ln -s "${pkgdir}/opt/${pkgname}/output/linux-unpacked/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  ln -s "/opt/${pkgname}/output/linux-unpacked/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
