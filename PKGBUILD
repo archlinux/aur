@@ -1,5 +1,5 @@
 # Maintainer: emersion <contact emersion.fr>
-# Maintainer: Ethan Brittain-Morby <ethan AT etha DOT nz>
+# Maintainer: Ethan Brittain-Morby <ebm539 AT protonmail DOT com>
 _pkgname=browserpass
 pkgname=$_pkgname-bin
 pkgver=2.0.21
