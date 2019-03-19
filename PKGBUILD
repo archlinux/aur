@@ -6,20 +6,21 @@
 
 pkgbase=tuxguitar
 pkgname=(tuxguitar tuxguitar-common tuxguitar-gtk2)
-pkgver=1.5.2
-pkgrel=2
+pkgver=1.5.2_r1800
+pkgrel=1
 pkgdesc="multitrack guitar tablature editor and player"
 arch=('x86_64')
 url="http://sourceforge.net/projects/tuxguitar"
 license=('LGPL')
 depends=('java-runtime>=8' 'alsa-lib' 'libxtst')
-makedepends=('unzip' 'zip' 'apache-ant' 'jack' 'fluidsynth' 'java-environment>=8' 'maven')
+makedepends=('unzip' 'zip' 'apache-ant' 'jack' 'fluidsynth' 'java-environment>=8' 'maven' 'subversion')
 optdepends=('fluidsynth')
-source=(https://downloads.sourceforge.net/tuxguitar/tuxguitar-$pkgver-src.tar.gz
+source=(tuxguitar-${pkgver}-src::svn+svn://svn.code.sf.net/p/tuxguitar/code/trunk@r1800
         nogcj.patch
         tuxguitar
         tuxguitar-gtk2)
-sha256sums=('a9ade566752aa0ac72831a1cd0b18b85d302eca7934e2192ad875f51df755981'
+#source=(https://downloads.sourceforge.net/tuxguitar/tuxguitar-$pkgver-src.tar.gz)
+sha256sums=('SKIP'
             'bda4bc1b864ecfa27392a145854ee3b5ab20876c2d2bc38bbf85f92ce97fe2bc'
             'efeef39d43ecf5a87ed64abc7d8cf63a01f3c9b08bac0ea299bf959fcb7c216a'
             '39f92c0de6fcf86635dec5ac3b83613ca980fa7d24f66888fd06e5bb2c7c571f')
@@ -31,14 +32,12 @@ esac
 
 prepare() {
   cd tuxguitar-$pkgver-src
-  patch -Np1 -i ../nogcj.patch
-
-  # For jdk9
-  for _i in `find . -name pom.xml -print`; do
-    sed -i 's|<source>1.5</source>|<source>1.6</source>|g' $_i
-    sed -i 's|<target>1.5</target>|<target>1.6</target>|g' $_i
+  # fix version when building from svn checkout
+  for i in $(find . -name "pom.xml")
+  do
+    sed -i s/SNAPSHOT/${pkgver}/g $i
   done
-  
+#  patch -Np1 -i ../nogcj.patch
 }
 
 build() {
