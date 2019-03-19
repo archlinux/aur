@@ -8,7 +8,7 @@ pkgdesc='The open source OpenXR runtime.'
 arch=('i686' 'x86_64')
 url='https://monado.dev'
 depends=('openxr-loader' 'openhmd')
-makedepends=('eigen' 'ninja')
+makedepends=('eigen' 'ninja' 'shaderc')
 provides=("openxr-runtime")
 
 #'doxygen' #When building docs
