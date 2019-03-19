@@ -1,0 +1,11 @@
+--- a/src/evdev-tablet.c
++++ b/src/evdev-tablet.c
+@@ -676,7 +676,7 @@ out:
+ 	}
+ 
+ 	tablet_history_push(tablet, &tablet->axes);
+-	tablet_smoothen_axes(tablet, &axes);
++	/* tablet_smoothen_axes(tablet, &axes); */
+ 
+ 	/* The delta relies on the last *smooth* point, so we do it last */
+ 	axes.delta = tablet_tool_process_delta(tablet, tool, device, &axes, time);
