@@ -3,7 +3,7 @@
 
 pkgname=sway
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
 url='https://swaywm.org/'
@@ -12,10 +12,8 @@ depends=(cairo gdk-pixbuf2 json-c pango pcre wlroots)
 makedepends=(meson ninja scdoc wayland-protocols)
 optdepends=(
   'dmenu:                for launching applications'
-  'ffmpeg:               for recording screencasts'
   'gdk-pixbuf2:          required by swaybg'
   'i3status:             display a status line'
-  'imagemagick:          for taking screenshots'
   'rxvt-unicode:         default terminal emulator'
   'xorg-server-xwayland: X11 support'
 )
