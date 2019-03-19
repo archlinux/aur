@@ -1,6 +1,7 @@
-# Maintainer: kitech1 <vatic@vivaldi.net>
+# Maintainer: Matej Lach <matej.lach@gmail.com>
+# Contributor: kitech1 <vatic@vivaldi.net>
 pkgname=edrawmax
-pkgver=9.1
+pkgver=9.3
 pkgrel=1
 pkgmaver=9
 pkgmaname=EdrawMax
@@ -18,18 +19,19 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=(!strip !upx)
+options=(!strip)
 install=
 changelog=
-source=(http://www.edrawsoft.cn/2download/$pkgname-$pkgmaver-64-cn.run.tgz)
-md5sums=('bba2467bde6c8a7339454460f7c18d23')
+source=(http://download.edrawsoft.com/archives/$pkgname-$pkgmaver-64.run.gz)
+sha256sums=('2fd51abc48c453bd550d87305fbcad7032e277506389b97c7cb4b4f74907b074')
 noextract=()
 
 prepare() {
   line=37  # head -n 3 file.run to get the line
   echo "Unpack bash binary..."
-  tail -n +$line $pkgmaname-$pkgmaver-64-cn.run > $pkgname-$pkgver.tar.gz
-  rm -f $pkgmaname-$pkgmaver-64-cn.run
+  ls -al
+  tail -n +$line $pkgname-$pkgmaver-64.run > $pkgname-$pkgver.tar.gz
+  rm -f $pkgname-$pkgmaver-64.run
 }
 
 build() {
@@ -60,7 +62,6 @@ package() {
   cp -f eddx.svg $pkgdir/usr/share/icons/gnome/scalable/mimetypes/
   ln -f -s /opt/$pkgmaname-$pkgmaver/$pkgmaname $pkgdir/usr/bin/edrawmax
 
-  # orignal package include qt 5.8, but archlinux's 5.9+ is also fine, and fix fcitx problem.
   mv "lib" "lib.bak"
   mkdir -p lib
   cp -a ./lib.bak/libqtitanribbon.so* ./lib/
