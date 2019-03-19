@@ -1,0 +1,36 @@
+pkgbase = ros-kinetic-sound-play
+	pkgdesc = ROS - sound_play provides a ROS node that translates commands on a ROS topic (robotsound) into sounds.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://ros.org/wiki/sound_play
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-actionlib-msgs
+	makedepends = ros-kinetic-roscpp
+	makedepends = ros-kinetic-audio-common-msgs
+	makedepends = ros-kinetic-roslib
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-diagnostic-msgs
+	makedepends = ros-kinetic-actionlib
+	makedepends = ros-kinetic-message-generation
+	depends = ros-kinetic-actionlib-msgs
+	depends = ros-kinetic-message-runtime
+	depends = ros-kinetic-roscpp
+	depends = ros-kinetic-audio-common-msgs
+	depends = ros-kinetic-roslib
+	depends = ros-kinetic-diagnostic-msgs
+	depends = ros-kinetic-rospy
+	depends = festival
+	depends = gstreamer
+	depends = gst-plugins-ugly
+	depends = gst-plugins-good
+	depends = python2-gobject
+	depends = festival-english
+	depends = gst-plugins-base
+	source = ros-kinetic-sound-play-0.3.2-0.tar.gz::https://github.com/ros-gbp/audio_common-release/archive/release/kinetic/sound_play/0.3.2-0.tar.gz
+	sha256sums = 71b560ce7dced4540d72e6036c2a908d697263107f61db84f76cfc39d1c7247d
+
+pkgname = ros-kinetic-sound-play
+
