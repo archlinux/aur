@@ -3,22 +3,22 @@
 pkgname=cx
 projectname=skycoin
 pkgdesc="CX Skycoin Blockchain Programming Language"
-pkgver=6.1
+pkgver=6.2
 pkggopath="github.com/$projectname/$pkgname"
 pkgrel=1
 arch=('x86_64')
 url="https://${pkggopath}"
-license=(MIT)
+license=()
 makedepends=('unzip')
-source=("https://github.com/skycoin/cx/releases/download/v0.6.1/cx-0.6.1-bin-linux-x64.zip")
-sha256sums=('d55f7f64ba5a1c47601f4545c5bf87c76c7d8b98bb47ce0126138b50462d27f2')
+source=("https://github.com/skycoin/cx/releases/download/v0.6.2/cx-0.6.2-bin-linux-x64.zip")
+sha256sums=('eca1452d7d24be43d122213c70e8c573a6debb32f9834dd6531068f48ab34422')
 validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC')
 
 prepare() {
 mkdir -p $srcdir/bin
-mv cx-0.6.1-bin-linux-x64.zip $srcdir/bin/cx-0.6.1-bin-linux-x64.zip
+mv cx-0.6.2-bin-linux-x64.zip $srcdir/bin/cx-0.6.2-bin-linux-x64.zip
 cd $srcdir/bin
-unzip cx-0.6.1-bin-linux-x64.zip
+unzip cx-0.6.2-bin-linux-x64.zip
 }
 
 package() {
