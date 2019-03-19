@@ -1,6 +1,6 @@
 pkgbase = arcanist
 	pkgdesc = The command line interface for Phabricator
-	pkgver = 2019.8
+	pkgver = 2019.10
 	pkgrel = 1
 	url = https://www.phacility.com/phabricator/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = arcanist
 	makedepends = git
 	depends = libphutil
 	depends = python
-	source = git://github.com/phacility/arcanist.git#commit=b4a302683b1aefbbb2ab9d1aaaf418b551b84b28
+	source = git://github.com/phacility/arcanist.git#commit=4d22e0f89f10b8a7f47f6ee615e0ccf0f354e582
 	sha256sums = SKIP
 
 pkgname = arcanist
