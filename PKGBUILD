@@ -2,8 +2,8 @@
 
 pkgname=haskell-alsa-mixer
 _hkgname=alsa-mixer
-pkgver=0.2.0.3
-pkgrel=4
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Provides bindings to the ALSA simple mixer API"
 url=https://hackage.haskell.org/package/alsa-core
 license=('BSD')
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 depends=('ghc-libs' 'haskell-alsa-core' 'haskell-base' 'haskell-unix')
 makedepends=('ghc' 'c2hs')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('f76deb4081a2ce4a765e78a017b2e13c073d2aaa5a2d2652fd5e635dd169cf8d')
+sha256sums=('cb6a197de99c6b4339a7f552e1c6b71eaefa11bb96102d5ba4519a23c615de02')
 
 build() {
     cd ${_hkgname}-${pkgver}
