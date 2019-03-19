@@ -2,8 +2,8 @@
 _gitrepository='portunus'
 _gitbranch='master'
 pkgname='portunus'
-pkgver=2.01
-pkgrel=2
+pkgver=2.02
+pkgrel=1
 pkgdesc='aggregates all package managers under one tool'
 arch=('i686' 'x86_64')
 url='https://github.com/andrei-pavel/portunus'
