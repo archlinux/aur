@@ -13,6 +13,9 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("${pkgname}::git+https://github.com/kiibohd/configurator.git")
 sha256sums=('SKIP')
+  #_pkg="${srcdir}/${pkgname}"
+  #cd "${_pkg}"
+  #cp -R * "${pkgdir}/usr/share/${_pkgname}"
 
 build() {
   cd ${pkgname}
@@ -21,6 +24,8 @@ build() {
 }
 
 package() {
-  _output="${srcdir}/${pkgname}/output/linux-unpacked"
-  install -Dm755 "${_output}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  mkdir -p "${pkgdir}/opt"
+  mv * "${pkgdir}/opt"
+  install -d "${pkgdir}/usr/bin"
+  ln -s "${pkgdir}/opt/${pkgname}/output/linux-unpacked/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
