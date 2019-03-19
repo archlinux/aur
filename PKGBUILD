@@ -1,6 +1,7 @@
 # $Id$
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Victor3D <webmaster@victor3d.com.br>
+# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=directfb
 pkgver=1.7.7
@@ -11,7 +12,7 @@ url="http://www.directfb.org"
 license=('LGPL')
 depends=('gcc-libs' 'libjpeg' 'sdl' 'libpng' 'freetype2' 'libdrm' 'libgl' 'mesa')
 #source=(http://www.directfb.org/downloads/Core/DirectFB-${pkgver%.*}/DirectFB-${pkgver}.tar.gz)
-source=(http://sources.webos-ports.org/downloads/DirectFB-$pkgver.tar.gz)
+source=(http://sources.webos-ports.org/DirectFB-$pkgver.tar.gz)
 sha1sums=('205d824906906303db9b096cc2d3bea0662e8860')
 
 build() {
