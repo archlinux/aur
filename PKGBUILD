@@ -3,7 +3,7 @@
 _name=scanpydoc
 pkgname=python-$_name
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A series of Sphinx extensions to get easy to maintain, numpydoc style documentation.'
 arch=(any)
 url="https://github.com/theislab/$_name"
@@ -19,4 +19,5 @@ package() {
 	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
 	mkdir -p "$site"
 	unzip "$_wheel" -d "$site"
+	find "$site" -type f -exec chmod 644 {} \;
 }
