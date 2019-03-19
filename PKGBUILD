@@ -9,7 +9,7 @@ pkgdesc="Enhanced system logging daemon"
 arch=('x86_64')
 url="https://www.syslog-ng.com/products/open-source-log-management/"
 license=('GPL2' 'LGPL2.1')
-depends=('systemd-libs' 'awk' 'glib2' 'ivykis' 'json-c' 'curl' 'libnet')
+depends=('systemd-libs' 'awk' 'glib2' 'ivykis' 'json-c' 'curl' 'libnet' 'libnsl')
 makedepends=('git' 'autoconf-archive' 'libxslt' 'docbook-xsl' 'json-c' 'curl' 'libdbi' 'libesmtp'
              'hiredis' 'librabbitmq-c' 'riemann-c-client' 'geoip' 'libmaxminddb' 'mongo-c-driver'
              'java-environment=8' 'gradle' 'python')
