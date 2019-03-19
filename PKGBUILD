@@ -2,17 +2,16 @@
 
 _basename=gupnp-igd
 pkgname=lib32-gupnp-igd
-pkgver=0.2.5
+pkgver=0.2.5+3+gedd78a6
 pkgrel=1
 pkgdesc="A library to handle UPnP IGD port mapping (32-bit)"
 url="https://wiki.gnome.org/Projects/GUPnP"
 arch=(x86_64)
 license=(LGPL)
 depends=(lib32-gupnp gupnp-igd)
-makedepends=(git gnome-common gobject-introspection)
-checkdepends=(python2-gobject)
-_commit=5d9c48f3de6277b56c86e7131d84a1b24f30d819  # tags/0.2.5^0
-source=("git+https://git.gnome.org/browse/gupnp-igd#commit=$_commit")
+makedepends=(git gobject-introspection gtk-doc)
+_commit=edd78a6561fc1a6e6769342157f0e4db62705fa3  # master
+source=("git+https://gitlab.gnome.org/GNOME/gupnp-igd.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -24,7 +23,11 @@ pkgver() {
 prepare() {
     cd $_basename
 
-    NOCONFIGURE=1 ./autogen.sh
+    # gupnp 1.2
+    git cherry-pick -n 63531558a16ac2334a59f627b2fca5576dcfbb2e
+
+    gtkdocize
+    autoreconf -fvi
 }
 
 build() {
@@ -33,15 +36,12 @@ build() {
     export CC='gcc -m32'
     export CXX='g++ -m32'
     export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-    export PYTHON=python2
 
     ./configure \
         --prefix=/usr \
         --build=i686-pc-linux-gnu \
         --libdir=/usr/lib32 \
-        --disable-gtk-doc \
-        --disable-python \
-        --disable-static
+        --disable-gtk-doc
 
     make
 }
@@ -49,7 +49,8 @@ build() {
 check() {
     cd $_basename
 
-    make check
+    # test broken (requires root to bind lowport)
+    : make check
 }
 
 package() {
