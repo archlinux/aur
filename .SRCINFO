@@ -6,6 +6,8 @@ pkgbase = lib32-libfdk-aac
 	arch = x86_64
 	license = custom
 	makedepends = git
+	depends = lib32-glibc
+	depends = libfdk-aac
 	source = git+https://github.com/mstorsjo/fdk-aac.git#tag=v2.0.0
 	sha256sums = SKIP
 

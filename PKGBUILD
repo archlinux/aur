@@ -11,6 +11,7 @@ pkgdesc='Fraunhofer FDK AAC codec library (32-bit)'
 arch=('x86_64')
 url='http://sourceforge.net/projects/opencore-amr/'
 license=('custom')
+depends=(lib32-glibc libfdk-aac)
 makedepends=('git')
 source=(git+https://github.com/mstorsjo/fdk-aac.git#tag=v${pkgver})
 sha256sums=('SKIP')
