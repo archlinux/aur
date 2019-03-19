@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=code-server-noopts
-pkgver=1.32.0_282
+pkgver=1.32.0_310
 pkgrel=0
 pkgdesc="Run VS Code on a remote server"
 arch=('x86_64')
