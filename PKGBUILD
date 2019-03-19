@@ -1,4 +1,4 @@
-# Maintainer: Jordi Pakey-Rodriguez <jordi@0xdec.im>
+# Maintainer: Jordi Pakey-Rodriguez <jordi at 0xdec dot im>
 
 pkgname=kicad-templates
 pkgver=5.1.0
