@@ -4,7 +4,7 @@
 # Maintainer: Gustavo Costa (gusbemacbe)
 
 pkgname=suru-plus-aspromauros-git
-pkgver=1.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="Suru++ Asprómauros – A full monochromatic icons set for users of dark environments"
 arch=('any')

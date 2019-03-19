@@ -1,6 +1,6 @@
 pkgbase = suru-plus-aspromauros-git
 	pkgdesc = Suru++ Asprómauros – A full monochromatic icons set for users of dark environments
-	pkgver = 1.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/gusbemacbe/suru-plus-aspromauros
 	changelog = CHANGELOG
