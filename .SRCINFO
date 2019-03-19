@@ -1,0 +1,27 @@
+pkgbase = ros-kinetic-easy-markers
+	pkgdesc = ROS - Python library to assist in publishing markers easily.
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = http://ros.org/wiki/easy_markers
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-tf
+	makedepends = ros-kinetic-interactive-markers
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-roslib
+	makedepends = ros-kinetic-geometry-msgs
+	makedepends = ros-kinetic-visualization-msgs
+	makedepends = ros-kinetic-rospy
+	depends = ros-kinetic-tf
+	depends = ros-kinetic-interactive-markers
+	depends = ros-kinetic-roslib
+	depends = ros-kinetic-geometry-msgs
+	depends = ros-kinetic-visualization-msgs
+	depends = ros-kinetic-rospy
+	source = ros-kinetic-easy-markers-0.2.4-0.tar.gz::https://github.com/wu-robotics/wu_ros_tools/archive/release/kinetic/easy_markers/0.2.4-0.tar.gz
+	sha256sums = 23ff1f37c017bc511dd6643fb9dbab42fc15ac9137f0ce2071b4da67202ebe99
+
+pkgname = ros-kinetic-easy-markers
+
