@@ -6,13 +6,9 @@ pkgbase = python-anyqt
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python-pyqt5
 	source = https://pypi.io/packages/source/A/AnyQt/AnyQt-0.0.8.tar.gz
 	md5sums = 7154018b06770d958659faa8f89c7b9a
 
 pkgname = python-anyqt
-	depends = python-pyqt5
-
-pkgname = python2-anyqt
-	depends = python2-pyqt5
 
