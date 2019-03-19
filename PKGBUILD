@@ -1,4 +1,4 @@
-# Maintainer: Kaan Genç  <aur@kaangenc.me>
+# Maintainer: Marcel Schneider  <marcel@coopmasters.de>
 pkgname=libcsv
 pkgver=3.0.3
 pkgrel=1
