@@ -23,19 +23,11 @@ prepare() {
 build() {
   cd ${_pkgname}-${pkgver}
 
-  if [ "${arch}" == "x86" ]; then
-    CFLAGS+=' -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE' ./configure \
-      --prefix=/usr \
-      --enable-reuseaddr \
-      --libdir=/usr/lib/libupnp-${_pkgver} \
-      --includedir=/usr/include/${_pkgname}-${_pkgver}
-  else
-    ./configure \
-      --prefix=/usr \
-      --enable-reuseaddr \
-      --libdir=/usr/lib/libupnp-${_pkgver} \
-      --includedir=/usr/include/${_pkgname}-${_pkgver}
-  fi
+  CFLAGS+=' -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE' ./configure \
+    --prefix=/usr \
+    --enable-reuseaddr \
+    --libdir=/usr/lib/libupnp-${_pkgver} \
+    --includedir=/usr/include/${_pkgname}-${_pkgver}
   make
 }
 
