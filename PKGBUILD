@@ -1,12 +1,12 @@
-pkgbase=python-assimulo
-pkgname=('python-assimulo' 'python2-assimulo')
+pkgname=python-assimulo
 pkgver=3.0
 pkgrel=1
 pkgdesc="A package for solving ordinary differential equations and differential algebraic equations"
 url="http://www.jmodelica.org/assimulo"
 arch=('i686' 'x86_64')
 license=('LGPL')
-makedepends=('python-setuptools' 'python2-setuptools' 'cython' 'cython2' 'gcc-fortran' 'sundials' 'lapack')
+makedepends=('python-setuptools' 'cython' 'gcc-fortran' 'sundials' 'lapack')
+depends=('python-scipy' 'python-matplotlib' 'lapack' 'sundials')
 source=("https://github.com/modelon/Assimulo/archive/Assimulo-${pkgver}.tar.gz" sundials4.patch)
 sha256sums=('6a1437af8ea0c9af3c0afa1efb44f5d1e11edfec1250ce3510f9e33397a04e6b'
             'SKIP')
@@ -25,16 +25,10 @@ build() {
   cp -r "${srcdir}"/Assimulo-Assimulo-$pkgver "${srcdir}"/Assimulo-Assimulo-$pkgver-py2
 }
 
-package_python-assimulo() {
+package() {
   depends=('python-scipy' 'python-matplotlib' 'lapack' 'sundials')
 
   cd "${srcdir}/Assimulo-Assimulo-$pkgver"
   python setup.py install --root=${pkgdir} --optimize=1 --extra-fortran-link-flags="-shared" --sundials-home=/usr --blas-home=/usr/lib --blas-name="blas" --lapack-home=/usr
 }
 
-package_python2-assimulo() {
-  depends=('python2-numpy' 'python2-matplotlib' 'lapack' 'sundials')
-
-  cd "${srcdir}/Assimulo-Assimulo-$pkgver-py2"
-  python2 setup.py install --root=${pkgdir} --optimize=1 --extra-fortran-link-flags="-shared" --sundials-home=/usr --blas-home=/usr/lib --blas-name="blas" --lapack-home=/usr
-}
