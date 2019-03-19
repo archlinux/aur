@@ -1,0 +1,19 @@
+pkgbase = c2ffi-git
+	pkgdesc = Clang-based FFI wrapper generator
+	pkgver = r164.d7aaba1
+	pkgrel = 1
+	url = https://github.com/rpav/c2ffi
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = make
+	makedepends = cmake
+	makedepends = gcc
+	depends = clang
+	provides = c2ffi
+	conflicts = c2ffi
+	source = git+https://github.com/rpav/c2ffi#branch=llvm-7.0.0
+	md5sums = SKIP
+
+pkgname = c2ffi-git
+
