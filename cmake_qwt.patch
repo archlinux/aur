@@ -1,0 +1,21 @@
+diff --unified --recursive --text orig/serialplot/cmake/modules/FindQwt.cmake new/serialplot/cmake/modules/FindQwt.cmake
+--- orig/serialplot/cmake/modules/FindQwt.cmake	2019-03-19 10:27:30.757849192 +0100
++++ new/serialplot/cmake/modules/FindQwt.cmake	2019-03-19 10:28:59.446743650 +0100
+@@ -66,7 +66,7 @@
+ 
+ if(QWT_ROOT)
+   set(QWT_INCLUDE_DIR "${QWT_ROOT}/include")
+-  find_library(QWT_LIBRARY "qwt-qt5"
++  find_library(QWT_LIBRARY "qwt-qt5" "qwt"
+ 	PATHS "${QWT_ROOT}/lib")
+ else (QWT_ROOT)
+   ## Look into system locations
+@@ -90,7 +90,7 @@
+ 	endif(qwt_version_string)
+   endif (QWT_INCLUDE_DIR)
+   # look into system locations for lib file
+-  find_library(QWT_LIBRARY "qwt-qt5" PATHS /usr/lib)
++  find_library(QWT_LIBRARY "qwt-qt5" "qwt" PATHS /usr/lib)
+ endif(QWT_ROOT)
+ 
+ # set version variables
