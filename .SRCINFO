@@ -1,6 +1,6 @@
 pkgbase = mkcue
 	pkgdesc = generates a cue sheet from a cd
-	pkgver = 1_5
+	pkgver = 1_6
 	pkgrel = 1
 	url = https://packages.debian.org/sid/mkcue
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = mkcue
 	license = LGPL
 	makedepends = quilt
 	source = http://httpredir.debian.org/debian/pool/main/m/mkcue/mkcue_1.orig.tar.gz
-	source = http://httpredir.debian.org/debian/pool/main/m/mkcue/mkcue_1-5.debian.tar.xz
+	source = http://httpredir.debian.org/debian/pool/main/m/mkcue/mkcue_1-6.debian.tar.xz
 	sha256sums = 2aaf57da4d0f2e24329d5e952e90ec182d4aa82e4b2e025283e42370f9494867
-	sha256sums = 5e2d8caaef001807557e72dd97caa5b4353b6d0473d15b0187397015f1d468e7
+	sha256sums = 0bcdfbda8bd05f64c9fa923961e54061957179a6f0825c4387e1e66cae5199d8
 
 pkgname = mkcue
 
