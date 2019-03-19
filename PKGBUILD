@@ -11,10 +11,8 @@ license=('CCPL')
 optdepends=('languagetool: system wide installation of LT'
 'libreoffice-extension-languagetool: standalone LT for LibreOffice'
 'openoffice-extension-languagetool: standalone LT for OpenOffice')
-makedepends=('unzip')
 install=${pkgname}.install
 source=(${pkgname}-${pkgver}.zip::"https://languagetool.org/download/ngram-data/ngrams-de-${pkgver}.zip")
-noextract=(${pkgname}-${pkgver}.zip)
 md5sums=('f9c8bbd525198fdf8005eed763ceda25')
 PKGEXT='.pkg.tar'
 options=(!strip)
@@ -30,5 +28,6 @@ prepare() {
 
 package() {
   install -d "${pkgdir}"/usr/share/ngrams
-  unzip -q "${srcdir}"/${pkgname}-${pkgver}.zip -d "${pkgdir}"/usr/share/ngrams
+  unlink "${srcdir}"/${pkgname}-${pkgver}.zip
+  mv "${srcdir}"/* "${pkgdir}"/usr/share/ngrams/
 }
