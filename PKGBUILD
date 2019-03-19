@@ -17,7 +17,7 @@ optdepends=(
   'python-nautilus: Nautilus integration'
 )
 source=(https://github.com/andyholmes/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('1c3abc7f893de6de48236852f376c207a32685565fac7dca78be49c6a1f8c82d')
+sha256sums=('228b7d3b41cd44d338784284a91f96f9f55ffb3f10c539c4907b1010871abcce')
 
 package() {
   cd "$pkgname-$pkgver"
