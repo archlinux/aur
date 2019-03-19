@@ -1,20 +1,17 @@
 pkgbase = xfsdump
 	pkgdesc = Additional XFS filesystem utilities
 	pkgver = 3.1.8
-	pkgrel = 3
-	url = http://oss.sgi.com/projects/xfs/
+	pkgrel = 4
+	url = http://xfs.org
 	arch = i686
 	arch = x86_64
-	license = LGPL
-	depends = xfsprogs>=3.1.0
-	depends = attr>=2.4.43
-	depends = acl>=2.2.47
-	depends = dmapi>=2.2.10
-	options = !makeflags
-	options = !emptydirs
-	options = !libtool
-	source = https://git.kernel.org/pub/scm/fs/xfs/xfsdump-dev.git/snapshot/xfsdump-dev-3.1.8.tar.gz
-	md5sums = 9059a9c510959aa848f66f6e98814438
+	license = GPL
+	depends = xfsprogs
+	depends = attr
+	depends = acl
+	depends = dmapi
+	source = https://kernel.org/pub/linux/utils/fs/xfs/xfsdump/xfsdump-3.1.8.tar.xz
+	sha256sums = ed14e67ae5b273c2698e767b43a46f033d361e540fe13feaaf9b110ee0edc585
 
 pkgname = xfsdump
 

@@ -5,32 +5,27 @@
 
 pkgname=xfsdump
 pkgver=3.1.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Additional XFS filesystem utilities"
 arch=(i686 x86_64)
-url="http://oss.sgi.com/projects/xfs/"
-license=('LGPL')
-depends=('xfsprogs>=3.1.0' 'attr>=2.4.43' 'acl>=2.2.47' 'dmapi>=2.2.10')
-options=('!makeflags' '!emptydirs' '!libtool')
-source=(https://git.kernel.org/pub/scm/fs/xfs/${pkgname}-dev.git/snapshot/${pkgname}-dev-${pkgver}.tar.gz)
-md5sums=('9059a9c510959aa848f66f6e98814438')
-
+url="http://xfs.org"
+license=('GPL')
+depends=('xfsprogs' 'attr' 'acl' 'dmapi')
+source=("https://kernel.org/pub/linux/utils/fs/xfs/xfsdump/xfsdump-${pkgver}.tar.xz")
+sha256sums=('ed14e67ae5b273c2698e767b43a46f033d361e540fe13feaaf9b110ee0edc585')
 
 build() {
-  cd "${srcdir}/${pkgname}-dev-${pkgver}"
-
-  make PREFIX=/usr SBINDIR=/usr/bin BINDIR=/usr/bin
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr --sbindir=/usr/bin INSTALL_USER=root INSTALL_GROUP=root
+  make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-dev-${pkgver}"
-  make DIST_ROOT="${pkgdir}" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 
-  # hack to merge binaries from /sbin and /usr/sbin into /usr/bin #
-  mkdir -p "$pkgdir/usr/bin"
-  mv "$pkgdir/sbin"/* "$pkgdir/usr/bin"
-  rm -rf "$pkgdir"/{sbin,usr/sbin}
-
-  chown -R root "$pkgdir"
-  chgrp -R root "$pkgdir"
+  # root /sbin directory can't be overridden properly with configure,
+  # so move files manually
+  mv -vf "${pkgdir}/sbin/"* "${pkgdir}/usr/bin/"
+  rmdir "${pkgdir}/sbin"
 }
