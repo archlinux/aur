@@ -1,4 +1,4 @@
-# Maintainer: Jordi Pakey-Rodriguez <me@jordi.codes>
+# Maintainer: Jordi Pakey-Rodriguez <jordi@0xdec.im>
 
 pkgname=ttf-material-design-icons
 _pkgname=material-design-icons
