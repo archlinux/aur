@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains generic definitions of geometric shapes and
 url='http://ros.org/wiki/geometric_shapes'
 
 pkgname='ros-kinetic-geometric-shapes'
-pkgver='0.5.3'
+pkgver='0.5.4'
 _pkgver_patch=1
 arch=('any')
 pkgrel=2
@@ -48,7 +48,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geometric_shapes-release-release-kinetic-geometric_shapes-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometric_shapes-release/archive/release/kinetic/geometric_shapes/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6da99e2c74ec9592c4812811c32389e733dfe1f1202fdf1b6ccf8b5d27ae721d')
+sha256sums=('47688070fddf98a6f8d288c367e80a1e449a641686cafa1ef4e5679fc92c3298')
 
 prepare() {
   cd ${srcdir}
