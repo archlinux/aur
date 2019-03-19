@@ -1,30 +1,23 @@
 # Maintainer: Enihcam <gmail n a n e r i c w a n g>
 # Contributor: Enihcam <gmail n a n e r i c w a n g>
 
-_pkgname=onedrive
 pkgname=onedrive-bin
-pkgver=2.2.6
-pkgrel=2
+pkgver=2.2.1
+pkgrel=1
 pkgdesc='Free OneDrive client written in D'
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url='https://github.com/abraunegg/onedrive'
 license=('GPL3')
 provides=('onedrive')
 conflicts=('onedrive' 'onedrive-abraunegg-git')
 depends=('liblphobos' 'gcc-libs' 'sqlite')
 optdepends=('libnotify: notification support')
-source_x86_64=("http://http.us.debian.org/debian/pool/main/o/onedrive/onedrive_${pkgver}-${pkgrel}_amd64.deb")
-source_aarch64=("http://http.us.debian.org/debian/pool/main/o/onedrive/onedrive_${pkgver}-${pkgrel}_arm64.deb")
-sha256sums_x86_64=('8647444295c2a6c223e6f9e39e6126b12e693afecdf95638fad55bb3c13fea11')
-sha256sums_aarch64=('8d71ed8d1573bde34f6fb0d5cfd8ed8ccff97c9c53e77713cc0dae7a234d39e7')
+source=("http://download-ib01.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/o/onedrive-${pkgver}-4.fc30.x86_64.rpm")
+sha256sums=('3e7309729fb3a9649f8c41bb6de72cc89a4fd188e4e3c172ea741df3dbbb45f3')
 
 package() {
-  # extract package data
-  tar xf data.tar.xz -C "${pkgdir}"
-  install -Dm644 "$pkgdir/usr/share/doc/onedrive/config" "$pkgdir/usr/share/onedrive/config.default"
-  install -Dm644 "$pkgdir/lib/systemd/system/onedrive@.service" "$pkgdir/usr/lib/systemd/system/onedrive@.service"
-  rm -fr "$pkgdir/lib"
-
-  ln -sf /usr/lib/libphobos2-ldc-shared.so "$pkgdir/usr/lib/libphobos2-ldc-shared.so.82"
-  ln -sf /usr/lib/libdruntime-ldc-shared.so "$pkgdir/usr/lib/libdruntime-ldc-shared.so.82"
+    cp -a $srcdir/etc $pkgdir/etc
+    cp -a $srcdir/usr $pkgdir/usr
+    rm -fr $pkgdir/usr/lib/.build-id
+    install -Dm644 "$pkgdir/usr/share/doc/onedrive/config" "$pkgdir/usr/share/onedrive/config.default"
 }
