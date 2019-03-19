@@ -1,11 +1,15 @@
 post_install() {
+  echo "handling file association, waiting a while..."
+  /opt/Yozosoft/Yozo_Office/Jre/bin/java -jar /opt/Yozosoft/Yozo_Office/Mimelnk/fileAssociate.jar -i
+  /opt/Yozosoft/Yozo_Office/Jre/bin/deployApplet -default -nogui
+  echo "After installation is complete. Please restart your computer."
+  post_upgrade
+}
+post_upgrade() {
   xdg-icon-resource forceupdate --theme hicolor &>/dev/null
   update-mime-database /usr/share/mime &>/dev/null
   update-desktop-database -q &>/dev/null
 }
-post_upgrade() {
-  post_install
-}
 post_remove() {
-  post_install
+  post_upgrade
 }

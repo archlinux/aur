@@ -1,8 +1,8 @@
 pkgbase = yozo-office
 	pkgdesc = Yozo Office - An M$ Office Compatible Office Suit
 	pkgver = 7.0.2439.101ZH.S1
-	pkgrel = 1
-	url = http://www.yozosoft.com/person/
+	pkgrel = 2
+	url = http://www.yozosoft.com/
 	install = yozo-office.install
 	arch = i686
 	arch = x86_64
