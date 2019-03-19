@@ -2,7 +2,7 @@
 # Contributor: kitech1 <vatic@vivaldi.net>
 pkgname=edrawmax
 pkgver=9.3
-pkgrel=2
+pkgrel=3
 pkgmaver=9
 pkgmaname=EdrawMax
 epoch=
@@ -22,17 +22,10 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=(https://www.edrawsoft.com/archives/$pkgname-$pkgmaver-amd64.tar.gz)
-sha256sums=('4ddc489dad1cd663a85ac91b5fe9c3263ae58aedbbcaaa690d7737d9b53e68eb')
+source=(https://www.edrawsoft.com/archives/$pkgname-$pkgmaver-amd64.tar.gz edrawmax.desktop)
+sha256sums=('4ddc489dad1cd663a85ac91b5fe9c3263ae58aedbbcaaa690d7737d9b53e68eb' 
+'b0369cd8b8e2d3826f3bdc3362d6c18b9fdcbfa064625d823bd424c0d83b6b1e')
 noextract=()
-
-prepare() {
-  line=37  # head -n 3 file.run to get the line
-  echo "Unpack bash binary..."
-  ls -al
-  tail -n +$line $pkgname-$pkgmaver-64.run > $pkgname-$pkgver.tar.gz
-  rm -f $pkgname-$pkgmaver-64.run
-}
 
 build() {
   echo "Extracting files..."
@@ -41,41 +34,38 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$pkgmaname-$pkgmaver"
+  cd "$srcdir/$pkgname-$pkgmaver-amd64"
 }
 
 package() {
-  cd "$srcdir/$pkgmaname-$pkgmaver"
+  cd "$srcdir/$pkgname-$pkgmaver-amd64"
   mkdir -p "$pkgdir/opt/$pkgmaname-$pkgmaver"
   mv * "$pkgdir/opt/$pkgmaname-$pkgmaver/"
 
   cd "$pkgdir/opt/$pkgmaname-$pkgmaver"
-
-  mkdir -p $pkgdir/usr/share/icon/
   mkdir -p $pkgdir/usr/share/applications/
   mkdir -p $pkgdir/usr/share/mime/packages/
   mkdir -p $pkgdir/usr/share/icons/gnome/scalable/mimetypes/
   mkdir -p $pkgdir/usr/bin/
   cp -f edrawmax.png $pkgdir/usr/share/icons/
-  cp -f edrawmax.desktop $pkgdir/usr/share/applications/
   cp -f edrawmax.xml $pkgdir/usr/share/mime/packages/
   cp -f eddx.svg $pkgdir/usr/share/icons/gnome/scalable/mimetypes/
+  cp -f $srcdir/edrawmax.desktop $pkgdir/usr/share/applications/
   ln -f -s /opt/$pkgmaname-$pkgmaver/$pkgmaname $pkgdir/usr/bin/edrawmax
+}
 
-  mv "lib" "lib.bak"
-  mkdir -p lib
-  cp -a ./lib.bak/libqtitanribbon.so* ./lib/
-  cp -a ./lib.bak/libBaseCore.so* ./lib/
-  cp -a ./lib.bak/libedgraphics.so* ./lib/
-  cp -a ./lib.bak/libObjectModule.so* ./lib/
-  cp -a ./lib.bak/libOSSC.so* ./lib/
-  cp -a ./lib.bak/libImporter.so* ./lib/
-  cp -a ./lib.bak/libExporter.so* ./lib/
+post_install() {
+  update-desktop-database /usr/share/applications
+  update-mime-database /usr/share/mime
+  gtk-update-icon-cache /usr/share/icons/gnome/ -f
+  ldconfig
+}
 
-  rm -fr ./lib.bak
-  rm -f qt.conf
-  rm -fr plugins
-  # rm -fr library sample  # big directory, uncomment for test
+post_upgrade() {
+  update-desktop-database /usr/share/applications
+  update-mime-database /usr/share/mime
+  gtk-update-icon-cache /usr/share/icons/gnome/ -f
+  ldconfig
 }
 
 # vim:set ts=2 sw=2 et:

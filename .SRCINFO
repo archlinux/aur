@@ -1,14 +1,16 @@
 pkgbase = edrawmax
 	pkgdesc = All-in-One Diagram Software
 	pkgver = 9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.edrawsoft.cn/edrawmax/
 	arch = x86_64
 	license = custom:"Copyright EdrawSoft 2004-2018; All Rights Reserved."
 	depends = qt5-base
 	options = !strip
 	source = https://www.edrawsoft.com/archives/edrawmax-9-amd64.tar.gz
+	source = edrawmax.desktop
 	sha256sums = 4ddc489dad1cd663a85ac91b5fe9c3263ae58aedbbcaaa690d7737d9b53e68eb
+	sha256sums = b0369cd8b8e2d3826f3bdc3362d6c18b9fdcbfa064625d823bd424c0d83b6b1e
 
 pkgname = edrawmax
 

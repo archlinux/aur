@@ -1,0 +1,25 @@
+[Desktop Entry]
+Name=EdrawMax
+GenericName=Edraw Max
+Categories=Office;FlowChart;Graphics;2DGraphics;VectorGraphics;
+MimeType=application/x-eddx
+Exec=edrawmax
+Terminal=false
+Type=Application
+Icon=edrawmax
+Encoding=UTF-8
+Hidden=false
+Keywords=EdrawMax;Flowchart;Digram;Graphics;
+Keywords[de]=EdrawMax;Diagramm;
+Keywords[fr]=EdrawMax;Diagramme;
+Keywords[ja]=EdrawMax;図;
+Keywords[es]=EdrawMax;Diagrama;
+Keywords[zh_CN]=EdrawMax;绘图;图;
+Keywords[zh_TW]=EdrawMax;繪圖;圖;
+Comment=All-in-One Diagram Software
+Comment[de]=Integrierte Diagramm Software
+Comment[fr]=Logiciel de diagramme tout-en-un
+Comment[ja]=すべてが揃った作図ソフト
+Comment[es]=Software todo-en-uno de diagrama
+Comment[zh_CN]=全类型综合绘图软件
+Comment[zh_TW]=全類型綜合繪圖軟件
