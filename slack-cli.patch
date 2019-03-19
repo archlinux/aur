@@ -1,0 +1,14 @@
+diff --unified --recursive --text slack-cli-0.18.0.orig/Makefile slack-cli-0.18.0.new/Makefile
+--- slack-cli-0.18.0.orig/Makefile	2019-03-18 16:25:01.744336343 +0600
++++ slack-cli-0.18.0.new/Makefile	2019-03-18 16:25:28.055066530 +0600
+@@ -15,8 +15,8 @@
+ else ifeq (${uname}, Linux)
+ 	@$(eval _bindir := $(shell readlink -f ${bindir}))
+ 	@$(eval _etcdir := $(shell readlink -f ${etcdir}))
+-	@sed -i "s|bindir=.*|bindir=${_bindir}|g" ${bindir}/slack
+-	@sed -i "s|etcdir=.*|etcdir=${_etcdir}|g" ${bindir}/slack
++	@sed -i "s|bindir=.*|bindir=${_bindir}|g" ${bindir}/slack-cli
++	@sed -i "s|etcdir=.*|etcdir=${_etcdir}|g" ${bindir}/slack-cli
+ endif
+ 
+ stub:
