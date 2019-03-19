@@ -18,6 +18,13 @@ md5sums=('46bf12792ae3a8095e9e215a47a8cf02')
 #LANG='C'
 options=(!strip)
 
+prepare() {
+  echo ''
+  echo 'Warning:'
+  echo 'The install script will modify your configuration files in each home directory.'
+  echo ''
+}
+
 package() {
   install -d "${pkgdir}"/usr/share/word2vec
   unlink "${srcdir}"/${pkgname}-${pkgver}.zip
