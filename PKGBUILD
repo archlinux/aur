@@ -4,7 +4,7 @@
 pkgname=octave-hg
 epoch=4
 pkgrel=1
-pkgver=5.1.1r26882.7a6366dbe77e
+pkgver=5.1.1r26943.b4cb230ced82
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -28,22 +28,26 @@ md5sums=('SKIP'
 _hgrepo=octave
 
 pkgver() {
-  cd "$srcdir"/${_hgrepo}
+  cd ${_hgrepo}
   _appver=$(awk -F", " '/bugs.html/ {print $2}' configure.ac|tr -d []|tr - _)
   printf "%sr%s.%s" "${_appver}" "$(hg identify -n)" "$(hg identify -i)"
 }
 
-build() {
+prepare () {
   git submodule init
   git config submodule.gnulib.url gnulib
   git submodule update
 
-  cd "$srcdir"/${_hgrepo}
+  cd ${_hgrepo}
   for i in config.sub config.guess
   do
     [[ -f $i ]] && rm build-aux/$i
   done
-  
+  cp /usr/share/automake-1.16/texinfo.tex build-aux/
+}
+
+build() {
+  cd ${_hgrepo}
   ./bootstrap --gnulib-srcdir="$srcdir"/gnulib
   [[ -d build ]] || mkdir build
   cd build
@@ -51,24 +55,26 @@ build() {
   [[ $CARCH == "i686" ]] && _arch=i386
 
   ../configure QCOLLECTIONGENERATOR=qhelpgenerator-qt5 \
-    --prefix=/usr --libexecdir=/usr/lib --enable-shared --disable-jit \
-    --with-umfpack --enable-java --with-hdf5 \
-    --with-java-homedir=/usr/lib/jvm/`archlinux-java get` \
-    --with-java-includedir=/usr/lib/jvm/`archlinux-java get`/include \
-    --with-java-libdir={/usr/lib/jvm/`archlinux-java get`/lib/${_arch}/server,/usr/lib/jvm/`archlinux-java get`/jre/lib/${_arch}/server} --disable-docs
+	       --prefix=/usr --libexecdir=/usr/lib --enable-shared --disable-jit \
+	       --with-umfpack --enable-java --with-hdf5 --enable-docs \
+	       --with-java-homedir=/usr/lib/jvm/`archlinux-java get` \
+	       --with-java-includedir=/usr/lib/jvm/`archlinux-java get`/include \
+	       --with-java-libdir={/usr/lib/jvm/`archlinux-java get`/lib/${_arch}/server,/usr/lib/jvm/`archlinux-java get`/jre/lib/${_arch}/server}
     
   export CLASSPATH=.:$CLASSPATH
   make
 }
 
 check() {
-  cd "$srcdir"/${_hgrepo}/build
+  cd ${_hgrepo}/build
   make test || true
 }
 
 package() {
-  cd "$srcdir"/${_hgrepo}/build
+  cd ${_hgrepo}/build
   make DESTDIR=${pkgdir} install
+  make DESTDIR=${pkgdir} install-pdf
+  
   # add octave library path to ld.so.conf.d
   _appver=$(awk -F", " '/bugs/ {print $2}' ../configure.ac|tr -d []|tr - _)
   install -d "$pkgdir"/etc/ld.so.conf.d
