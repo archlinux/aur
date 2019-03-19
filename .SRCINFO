@@ -1,20 +1,20 @@
 pkgbase = cytoscape
 	pkgdesc = A software for visualizing molecular interaction networks and integration with gene expression profiles and other state data.
-	pkgver = 3.6.1
+	pkgver = 3.7.1
 	pkgrel = 1
 	url = http://www.cytoscape.org
 	arch = any
 	license = LGPL2
 	depends = java-runtime-headless>=8
 	depends = java-environment>=8
-	source = http://chianti.ucsd.edu/cytoscape-3.6.1/cytoscape-3.6.1.tar.gz
+	source = https://github.com/cytoscape/cytoscape/releases/download/3.7.1/cytoscape-3.7.1.tar.gz
 	source = cytoscape.desktop
 	source = cytoscape.png
 	source = cytoscape
-	md5sums = 7efc75cabc9904aac0faca416e4f3075
-	md5sums = 0a960d9cfb84b986136c2645f4ee4eab
-	md5sums = cbf3c0c062055861c8e2d82105afcc33
-	md5sums = 64521a6620ba82895411c450d4ab639c
+	sha256sums = 1311386b19b565e5a2cf627318b5a2641492de07051dc9c1a1bcbdc5d7b31ad6
+	sha256sums = f4476545086f845e1cec5861169270da9f82a6ad4944972010827a567af0c7d0
+	sha256sums = 135faa3f0beb8ecc1b704cf376408e8bd5f62f32ba50a84002c14321d0bb0b68
+	sha256sums = 5d44223825013e05e80580c4650c0bb8b72d1455fa93099759d1aa756d4a5df2
 
 pkgname = cytoscape
 
