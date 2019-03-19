@@ -10,6 +10,7 @@ license=('MPL-2.0')
 makedepends=('go-pie')
 source=("$pkgname::git+https://gitlab.com/diamondburned/6cord")
 md5sums=('SKIP')
+conflicts=('6cord')
 
 pkgver() {
     cd "$pkgname"
