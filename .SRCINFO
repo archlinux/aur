@@ -18,6 +18,7 @@ pkgbase = ddnet-git
 	depends = curl
 	depends = glew
 	depends = wavpack
+	depends = libwebsockets
 	optdepends = ddnet-skins: more skins for your tee
 	optdepends = ddnet-maps-git: have all DDNet maps available offline
 	provides = ddnet
