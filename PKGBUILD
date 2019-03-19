@@ -2,7 +2,7 @@
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=git-buildpackage
-pkgver=0.9.10
+pkgver=0.9.13
 pkgrel=1
 pkgdesc="Tools from Debian to integrate the package build system with Git"
 arch=(any)
@@ -17,7 +17,18 @@ depends=('git'
 makedepends=('python-distribute'
              'python-coverage'
 	     'python-mock'
-	     'python-nose')
+	     'python-nose'
+	     'python-nosexcover')
+#checkdepends=('devscripts'
+#              'pristine-tar'
+#	      'cpio'
+#	      'unzip'
+#	      'zipmerge'
+#	      'curl'
+#	      'python-requests'
+#	      'debhelper')
+	     
+	     
 backup=('etc/git-buildpackage/gbp.conf')
 source=("git+https://github.com/agx/git-buildpackage.git#tag=debian/$pkgver")
 sha256sums=('SKIP')
@@ -28,10 +39,10 @@ build() {
 }
 
 
-check() {
-  cd git-buildpackage
-  python setup.py check
-}
+#check() {
+#  cd git-buildpackage
+#  python setup.py check
+#}
 
 package() {
   cd git-buildpackage/
