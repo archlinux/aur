@@ -10,7 +10,7 @@ source=("https://github.com/nu774/${pkgname}/archive/v${pkgver}.tar.gz")
 url="https://sites.google.com/site/qaacpage/junk"
 provides=('mp4fpsmod')
 conflicts=('mp4fpsmod-git')
-makedepends=()
+makedepends=('automake')
 md5sums=('6b5add8c3d170ca706aa8e0f628e7786')
 
 #prepare() {
@@ -19,7 +19,8 @@ md5sums=('6b5add8c3d170ca706aa8e0f628e7786')
 #}
 
 build() {
-  cd "$srcdir/$pkgname/"
+  cd "$srcdir/${pkgname}-${pkgver}/"
+  ./bootstrap.sh
   ./configure --prefix=/usr
   make
 
@@ -27,7 +28,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver/"
 
   make DESTDIR="${pkgdir}" install
 }

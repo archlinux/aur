@@ -5,6 +5,7 @@ pkgbase = mp4fpsmod
 	url = https://sites.google.com/site/qaacpage/junk
 	arch = any
 	license = custom
+	makedepends = automake
 	provides = mp4fpsmod
 	conflicts = mp4fpsmod-git
 	source = https://github.com/nu774/mp4fpsmod/archive/v0.26.tar.gz
