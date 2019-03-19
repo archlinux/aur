@@ -1,0 +1,14 @@
+pkgbase = soapysdrplay
+	pkgdesc = SDRplay support module for SoapySDR
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/pothosware/SoapySDRPlay
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = soapysdr
+	source = https://github.com/pothosware/SoapySDRPlay/archive/soapy-sdrplay-0.2.0.tar.gz
+	sha256sums = 4bf2a73827a575ecf64c8ad1b2a4d9963e78b4726426b7da95959da817719c8c
+
+pkgname = soapysdrplay
+
