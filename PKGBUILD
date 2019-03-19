@@ -6,7 +6,7 @@ pkgdesc="Yozo Office - An M$ Office Compatible Office Suit"
 url="http://www.yozosoft.com/person/"
 depends=('libxtst' 'libxt')
 optdepends=('ttf-ms-fonts: Arial, Times, Courier etc.'
-			'ttf-ms-fonts-zh_cn: SimSun, SimHei, MSYH, Tahoma etc.')
+			'ttf-ms-win10-zh_cn: SimSun, SimHei, MSYH, Tahoma etc.')
 options=('!strip')
 license=("unknown")
 arch=('i686' 'x86_64') 
