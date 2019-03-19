@@ -9,7 +9,7 @@ url="https://github.com/KiCad/kicad-templates"
 license=('GPL')
 makedepends=('cmake')
 options=('!strip')
-conflicts=('kicad-templates-git' 'kicad-library-bzr' 'kicad-library-git' 'kicad-library-3d' 'kicad-library')
+conflicts=('kicad-templates-git' 'kicad-library-git' 'kicad-library' 'kicad-library-3d')
 source=("https://github.com/KiCad/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('36c4ac1ea78333cd92dc82b28f57066a9888801dc7d803d822e22b5b2a924516')
 
