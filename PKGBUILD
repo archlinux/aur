@@ -5,7 +5,7 @@
 
 pkgname=gitahead
 pkgrel=1
-pkgver=2.5.4
+pkgver=2.5.5
 pkgdesc='Understand your Git history!'
 url='http://gitahead.scitools.com/'
 arch=('x86_64')

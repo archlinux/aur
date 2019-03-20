@@ -1,6 +1,6 @@
 pkgbase = gitahead
 	pkgdesc = Understand your Git history!
-	pkgver = 2.5.4
+	pkgver = 2.5.5
 	pkgrel = 1
 	url = http://gitahead.scitools.com/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gitahead
 	makedepends = cmake
 	makedepends = ninja
 	depends = curl
-	source = git+https://github.com/gitahead/gitahead#tag=v2.5.4
+	source = git+https://github.com/gitahead/gitahead#tag=v2.5.5
 	source = gitahead-license
 	source = gitahead.desktop
 	source = gitahead.png
