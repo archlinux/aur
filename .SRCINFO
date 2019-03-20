@@ -1,10 +1,11 @@
 pkgbase = python2-antlr3-3.0.1
 	pkgdesc = ANTLR3 runtime for Python, version 3.0.1
 	pkgver = 3.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.antlr3.org/
 	arch = any
 	license = BSD
+	makedepends = python2-setuptools
 	depends = antlr3
 	depends = python2
 	provides = python2-antlr3=3.0.1
