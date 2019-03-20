@@ -8,7 +8,6 @@ pkgdesc='Network recon framework'
 arch=('any')
 url='https://ivre.rocks/'
 license=('GPL3')
-makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/cea-sec/$pkgname/v$pkgver/pkg/apache/ivre.conf")
 sha256sums=('e0d9df1d61d8483ed266738b70c33366b8860d0cc4a864d04924f91ab8abc4ca'
