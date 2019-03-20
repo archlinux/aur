@@ -18,10 +18,10 @@ pkgbase = wpewebkit-aarch64
 	provides = wpewebkit
 	conflicts = wpewebkit
 	source = https://webreflection.github.io/aur/wpewebkit-aarch64-2.22.5.tar.gz
-	md5sums = 98088909c56ec7c5159fc83607ea78ca
-	sha1sums = 0e3bc3d1207fda28dd01dcd0714b55e394960c58
-	sha256sums = df5b2644d26d43d3fd27661f99a9b867b213341f9c053c919ee47cb51c1649fd
-	sha512sums = dc8dd1c37314d5bdb302353c9552d00657e725ea829666c9e013606f75b7ef20327bed0cc8a9497ee62e444791a3d5243716025770c7ed53e2bfe62bdd1ac087
+	md5sums = 33be1546b2a72b3cffffc36fe17fca56
+	sha1sums = 58d05fe0b201f60d8e6a4d4ad364929eb514db46
+	sha256sums = 44f00f257a8a686467879591d140e7c446b9e5bf891bfa993f9737f6235e458f
+	sha512sums = 63be2aee40f21f363ac94d4cbd6a5f0dba180a9b6293bb74944c2daf3ed258343304d716208b142fcfe78bf7bc54e99cd9457922cfb926e5a1016266446c8501
 
 pkgname = wpewebkit-aarch64
 
