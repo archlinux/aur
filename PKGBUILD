@@ -5,7 +5,7 @@
 
 pkgname=linphone-git
 _pkgname=linphone
-pkgver=3.12.0.r3175.gc8ccaeca5
+pkgver=3.12.0.r3338.g254ab7ab2
 pkgrel=1
 pkgdesc="A Voice-over-IP phone library and CLI"
 arch=('x86_64')
