@@ -58,7 +58,7 @@ sha512sums=('SKIP'
             '6f33d57f242fa8ce04b65e06a712bd54677306a45b22cb853fbe348089cd4673bd4ed91073074fe067166fe8951c370f8bbbc386783e3ed5170d52e9062666fe')
 
 pkgver() {
-  cd $_pkgname
+  cd $srcdir/$_pkgname
   printf %s.%s.%s.r%s.%s $(grep -oP 'gimp_(major|minor|micro)_version\], \[\K[0-9]{1,2}' configure.ac) $(git rev-list $(git describe --abbrev=0)..HEAD --count) $(git log --pretty=format:'%h' -n 1)
 }
 
