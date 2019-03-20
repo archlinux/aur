@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-cgi-emulate-psgi'
-pkgver='0.22'
+pkgver='0.23'
 pkgrel='1'
 pkgdesc="PSGI adapter for CGI"
 arch=('any')
@@ -18,30 +18,28 @@ sha512sums=('a0adf28a49f71702439258cd0bbf510c322b7856b18f01d977613e6d8aeab43daf2
 _distdir="CGI-Emulate-PSGI-0.22"
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
       PERL_AUTOINSTALL=--skipdeps                            \
       PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  cd "$srcdir/$_distdir"
+  /usr/bin/perl Makefile.PL
+  make
 }
 
 check() {
   cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+  make test
 }
 
 package() {
   cd "$srcdir/$_distdir"
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete 
 }
 
 # Local Variables:
