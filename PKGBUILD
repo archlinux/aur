@@ -6,7 +6,7 @@
 
 pkgname=mediastreamer-git
 _pkgname=mediastreamer2
-pkgver=2.16.1.r514.gfcba9a96
+pkgver=2.16.1.r545.g9891bed4
 pkgrel=1
 pkgdesc="A modular sound and video processing and streaming library"
 arch=('x86_64')
