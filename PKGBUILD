@@ -1,9 +1,10 @@
-# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+# Maintainer: Fabian Maurer <dark.shadow4@web.de>
+# Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 # Contributor: Mark Weiman <mark dot weiman at markzz dot com>
 
 _name=tevent
 pkgname=lib32-${_name}
-pkgver=0.9.37
+pkgver=0.9.39
 pkgrel=1
 pkgdesc="An event system based on the talloc memory management library (lib32)"
 arch=('x86_64')
@@ -13,7 +14,7 @@ source=("https://samba.org/ftp/${_name}/${_name}-${pkgver}.tar.gz")
 depends=('lib32-talloc' 'tevent')
 makedepends=('lib32-python2')
 optdepends=('lib32-python2: for python bindings')
-sha256sums=('168345ed65eac03785cf77b95238e7dc66cbb473a42811693a6b0916e5dae7e0')
+sha256sums=('f68d0fcc616119d27ebace162499e73f4ae3998e49b98d1f454bb467cdb1d4e6')
 
 prepare() {
   cd ${_name}-${pkgver}
