@@ -1,14 +1,14 @@
 pkgbase = pdf4tcl
 	pkgdesc = Pdf4Tcl is a library for generating PDF documents from Tcl.
-	pkgver = 091
+	pkgver = 092
 	pkgrel = 1
 	url = http://sourceforge.net/projects/pdf4tcl
 	arch = any
 	license = BSD
 	depends = tcl>=8.6
 	depends = tk>=8.6
-	source = https://sourceforge.net/projects/pdf4tcl/files/pdf4tcl091.tar.gz
-	md5sums = cd2e9601e68af27eebd32045e42d1363
+	source = https://sourceforge.net/projects/pdf4tcl/files/pdf4tcl092.tar.gz
+	md5sums = 5bed72f87076e65ce52095c6361a5a0f
 
 pkgname = pdf4tcl
 
