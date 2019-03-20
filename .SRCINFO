@@ -1,12 +1,12 @@
 pkgbase = term_size
-	pkgdesc = change current term's size
-	pkgver = 4
+	pkgdesc = Change terminal font size
+	pkgver = 5
 	pkgrel = 1
-	url = http://example.com
+	url = http://github.com/epita/term_size
 	arch = x86_64
 	license = GPL3
-	source = term_size-4.tar.gz
-	md5sums = 54b786b80912f42d4c04e8f0c74612f6
+	source = term_size-5.tar.gz
+	md5sums = c8d980c314a5662c51547cb1736ddb97
 
 pkgname = term_size
 

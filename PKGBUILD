@@ -1,12 +1,12 @@
-# Maintainer: zarak <jean@bobine.com>
+# Maintainer: zarak <cyril@cri.epita.fr>
 
 pkgname=term_size
-pkgver=4
+pkgver=5
 pkgrel=1
 epoch=
-pkgdesc="change current term's size"
+pkgdesc="Change terminal font size"
 arch=()
-url="http://example.com"
+url="http://github.com/epita/term_size"
 license=('GPL3')
 groups=()
 depends=()
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('54b786b80912f42d4c04e8f0c74612f6')
+md5sums=('c8d980c314a5662c51547cb1736ddb97')
 arch=('x86_64')
 
 validpgpkeys=()
