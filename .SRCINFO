@@ -1,0 +1,22 @@
+pkgbase = opencl-clang-git
+	pkgdesc = A wrapper library around clang than can compile OpenCL C kernels to SPIR-V modules (git version)
+	pkgver = r54.6257ffe
+	pkgrel = 1
+	url = https://github.com/intel/opencl-clang/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = llvm
+	depends = clang
+	provides = opencl-clang
+	conflicts = opencl-clang
+	source = git+https://github.com/intel/opencl-clang.git#branch=ocl-open-70
+	source = git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git#branch=llvm_release_70
+	source = LICENSE-opencl-clang::https://raw.githubusercontent.com/intel/opencl-clang/d487d2ee07e59c8ed09eee9f193516335bd90280/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = d476f6b9b9cf324481b1b8bd1a5d84dc42c9ae0870b0e2458eceaa2a57b8d7bf
+
+pkgname = opencl-clang-git
+
