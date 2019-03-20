@@ -2,7 +2,7 @@
 
 basename=openhmd
 pkgname=$basename-git
-pkgver=0.3.0.393.4ca169b
+pkgver=0.3.0.397.2c2dccc
 pkgrel=1
 pkgdesc="Free and Open Source API and drivers for immersive technology."
 arch=(x86_64 i686)
@@ -11,6 +11,7 @@ license=(Boost)
 depends=(hidapi)
 conflicts=($basename)
 provides=($basename)
+makedepends=("meson")
 
 optdepends=(
   'oculus-udev: Udev rule for Oculus Rift',
