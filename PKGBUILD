@@ -2,13 +2,15 @@
 # Contributor: Moritz Rudert (helios) <helios@planetcyborg.de>
 # Contributer: Janusz Lewandowski <lew21@enves.pl>
 # Contributor: ushi <ushi+arch@honkgong.info>
-# Maintainer: dequis <dx@dxzone.com.ar>
-# Maintainer: sxw <sxw@chronowerks.de>
+# Contributor: dequis <dx@dxzone.com.ar>
+# Contributor: sxw <sxw@chronowerks.de>
+# Maintainer: Erich Eckner <arch at eckner dot net>
 
 pkgname=jabberd2-git
 _pkgname=jabberd2
-pkgver=r1169.bc2d7ae
-pkgrel=1
+pkgver=r1175.376e632
+_commit=${pkgver#*.}
+pkgrel='7'
 pkgdesc='Scalable, architecturally sound, and extensible XMPP server'
 arch=('i686' 'x86_64' 'armv6h')
 url='http://jabberd2.org/'
@@ -19,7 +21,7 @@ optdepends=('sqlite3' 'postgresql-libs')
 makedepends=('sqlite3' 'postgresql-libs' 'autoconf-archive')
 install=install
 source=(
-  "git+https://github.com/${_pkgname}/${_pkgname}.git"
+  "${pkgname}::git+https://github.com/${_pkgname}/${_pkgname}.git#commit=${_commit}"
   'pam_jabberd'
 )
 sha512sums=('SKIP'
@@ -38,12 +40,15 @@ backup=(
 )
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(
+    git -C "${srcdir}/${pkgname}" rev-list --count ${_commit}
+  )" "$(
+    git -C "${srcdir}/${pkgname}" rev-parse --short ${_commit}
+  )"
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname}"
   libtoolize --force
   aclocal
   autoheader
@@ -52,7 +57,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname}"
 
   ./configure \
     --prefix=/usr \
@@ -62,13 +67,14 @@ build() {
     --enable-pgsql \
     --enable-pam \
     --enable-pipe \
-    --enable-anon
+    --enable-anon \
+    --enable-debug
 
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname}"
 
   make DESTDIR="${pkgdir}" install
 
@@ -78,7 +84,7 @@ package() {
   install -d "${pkgdir}/usr/share/jabberd/"
   install tools/{db-setup.*,pipe-auth.pl,jabberd-authpipe-pam-0.1.pl} "${pkgdir}/usr/share/jabberd/"
 
-  chmod o= "${pkgdir}/etc/jabberd/"
+  chmod -R o= "${pkgdir}/etc/jabberd/"
 
   rm -fr "${pkgdir}/usr/etc"
   rm -f "${pkgdir}/etc/jabberd/"jabberd-*.conf
