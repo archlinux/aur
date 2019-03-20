@@ -1,7 +1,9 @@
 pkgname=oacapture
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A planetary imaging application using Qt5"
+provides=("oacapture")
+conflicts=("oacapture-git")
 arch=('i686' 'x86_64')
 license=('GPLv3')
 depends=('qt5-base' 'qt5-tools' 'cfitsio' 'autoconf-archive' 'sdl' 'libdc1394')
