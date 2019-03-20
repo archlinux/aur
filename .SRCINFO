@@ -1,18 +1,18 @@
 pkgbase = ygopro-koishipro
 	pkgdesc = Link compatable ygopro client with AI
-	pkgver = 2019.3.6
-	pkgrel = 5
+	pkgver = 2019.3.15
+	pkgrel = 1
 	url = https://github.com/purerosefallen/ygopro
 	arch = x86_64
 	license = GPL2
 	makedepends = patchelf
 	depends = mono
 	depends = libevent
-	noextract = KoishiPro-linux-full-2019.3.6.zip
+	noextract = KoishiPro-linux-full-2019.3.15.zip
 	options = !strip
 	options = emptydirs
-	source = https://github.com/purerosefallen/ygopro/releases/download/2019.3.6/KoishiPro-linux-full-2019.3.6.zip
-	sha256sums = 936ec2c86f4d30e621af807f67e6f2182280c06e92cc98f1162f2e91a96ffdd5
+	source = https://github.com/purerosefallen/ygopro/releases/download/2019.3.15/KoishiPro-linux-full-2019.3.15.zip
+	sha256sums = 2ae0eccd26f24e3333e31e2baf1f901f07b0c309da6f096bc07a27f7b70f508b
 
 pkgname = ygopro-koishipro
 
