@@ -88,6 +88,7 @@ build() {
         --with-pspell=shared \
         --with-readline \
         --with-snmp=shared \
+        --with-sodium=shared \
         --with-sqlite3=shared,/usr \
         --with-tidy=shared \
         --with-unixODBC=shared,/usr \
