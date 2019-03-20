@@ -1,12 +1,12 @@
 pkgbase = term_size
 	pkgdesc = change current term's size
-	pkgver = 2
+	pkgver = 3
 	pkgrel = 1
 	url = http://example.com
 	arch = x86_64
 	license = GPL3
-	source = term_size-2.tar.gz
-	md5sums = a3f96875c6750d4a9e750a49960146a4
+	source = term_size-3.tar.gz
+	md5sums = 9b35c91288b8f2268d7fa9f39dbfd16e
 
 pkgname = term_size
 
