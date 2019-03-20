@@ -1,13 +1,15 @@
 pkgbase = xtables-addons-dkms
 	pkgdesc = DKMS for additional extensions for Xtables packet filter present in the Linux kernel
-	pkgver = 3.2
-	pkgrel = 3
+	pkgver = 3.3
+	pkgrel = 1
 	url = http://xtables-addons.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = dkms
 	optdepends = perl-text-csv-xs: required for building GeoIP database
+	optdepends = perl-net-cidr-lite: required for building GeoIP database
+	optdepends = wget: required for building GeoIP database
 	optdepends = unzip: required for building GeoIP database
 	conflicts = xtables-addons
 	conflicts = xtables-addons-git
@@ -15,10 +17,10 @@ pkgbase = xtables-addons-dkms
 	replaces = xtables-addons
 	replaces = xtables-addons-git
 	replaces = xtables-addons-multikernel
-	source = https://sourceforge.net/projects/xtables-addons/files/Xtables-addons/xtables-addons-3.2.tar.xz
+	source = https://sourceforge.net/projects/xtables-addons/files/Xtables-addons/xtables-addons-3.3.tar.xz
 	source = dkms.conf
-	sha256sums = 006f4e38bbf4b9a9069b90ca78c93b65800e9ebfd17332b713f1f80292420aaa
-	sha256sums = fc96d577f8dd4404d4ae967d28e0595b4b0f6985bac55cde707ef14e9b10d68b
+	sha256sums = efa62c7df6cd3b82d7195105bf6fe177b605f91f3522e4114d2f4e0ad54320d6
+	sha256sums = 87546f6d100a33271086d3bc990a2a1e4de83e25fb4a048774c520f4c36729e6
 
 pkgname = xtables-addons-dkms
 
