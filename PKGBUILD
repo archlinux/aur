@@ -4,7 +4,7 @@
 ## ATTENTION!! You will need to download the trial and/or obtain a license from Harrison Consoles. Then, drop all appropriate files in the root with the PKGBUILD. Also, uncomment the lines that reference the license file if you want an easy install process.
 
 pkgname=mixbus32c
-pkgver=5.1.0
+pkgver=5.2.130
 pkgrel=1
 pkgdesc="Harrison Mixbus - Digital Audio Workstation (32C Version)"
 arch=('i686' 'x86_64')
@@ -15,12 +15,12 @@ provides=("$pkgname")
 
 prepare() {
 ## Setup mixbus for installation
-_archive=Mixbus32C-$pkgver-$(uname -m)-gcc5.tar
+_archive=Mixbus32C-$pkgver-64bit-gcc5.tar
 if [ -f ../${_archive} ]; then
 	ln -srf ../${_archive} $srcdir/${_archive}
 	msg2 "Unpacking Installer..."
 	tar -xf ${_archive}
-	./${_archive//.tar/.run} --tar xf
+	./Mixbus32C-$pkgver-$(uname -m)-gcc5.run --tar xf
 	tar -xf $srcdir/Mixbus32C_$(uname -m)-$pkgver.tar
 else
 	echo "Please download a copy from https://harrisonconsoles.com/site/$pkgname.html. Then put the ${_archive} in the root of this PKGBUILD directory."
