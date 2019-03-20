@@ -4,8 +4,8 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=60.5.2
-pkgrel=2
+pkgver=60.6.0
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -22,14 +22,16 @@ provides=(firefox)
 conflicts=(firefox)
 options=(!emptydirs !makeflags !strip)
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
-        firefox.desktop firefox-symbolic.svg)
-sha256sums=('b95585982225a5246b663298de2fed275179d9299c46790468c49b6eee08cea4'
+        firefox.desktop firefox-symbolic.svg
+        rust_133-part0.patch 'rust_133-part1.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046663' 'rust_133-part2.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046664' deny_missing_docs.patch)
+sha256sums=('7c80d82c347ff6163e3d5d72448a38911b30e4e627183caac4264bcf613b85d5'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
-            'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9')
+            'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
+            'c10521badc262b476e844d3f3045ddf27e28d83d49b5db0d0e19431f06386e4d'
+            '8b37332dd205946ea95c606103b5b0e1e8498819051ea1c1bce79f04fd88ebca'
+            '08ab4293d6008524a38e20b428c750c4c55a2f7189e9a0067871ad723c1efab5'
+            'cb1116c783995b8187574f84acb8365681aedaa2c76222cf060d31fedcb063c4')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
-
-## Set this variable to 1 if you want to build with clang compiler ##
-#_CLANG=0
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -45,6 +47,14 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
   cd firefox-${pkgver}
+
+  # Bug 1521249 --enable-rust-simd fails to build using Rust 1.33
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
+  patch -Np1 -i ../rust_133-part0.patch
+  patch -Np1 -i ../rust_133-part1.patch || true
+  patch -Np1 -i ../rust_133-part2.patch
+  patch -Np1 -i ../deny_missing_docs.patch
+  rm -vf third_party/rust/boxfnonce/.travis/id_rsa.enc
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -76,7 +86,8 @@ export MOZ_ADDON_SIGNING=1
 export MOZ_REQUIRE_SIGNING=1
 
 # Keys
-ac_add_options --with-google-api-keyfile=${PWD@Q}/google-api-key
+ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
+ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 # System libraries
