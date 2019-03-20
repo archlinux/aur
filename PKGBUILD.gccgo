@@ -7,14 +7,14 @@ pkgdesc='Utilities for handling resolutions, wallpapers and timed wallpapers'
 arch=(x86_64)
 url='https://github.com/xyproto/wallutils'
 license=(MIT)
-depends=(wayland libx11)
-makedepends=(git go libxcursor libxmu xbitmaps xorgproto)
+depends=(libx11 wayland)
+makedepends=(git gcc-go libxcursor libxmu xbitmaps xorgproto)
 optdepends=('feh: for setting the wallpaper for some window managers for X')
 source=("git+$url#tag=$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
-  sed -i 's/go build/go build -gcflags "all=-trimpath=${PWD}" -asmflags "all=-trimpath=${PWD}" -ldflags "-extldflags ${LDFLAGS}"/g' $pkgname/Makefile
+  sed -i 's,go build,export GOPATH="$$PWD/../.."; go get -d; go build -buildmode=pie -gccgoflags="-s -w $$LDFLAGS",g' $pkgname/Makefile
 }
 
 build() {
