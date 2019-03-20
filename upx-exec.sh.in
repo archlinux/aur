@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 #
-#   upx.sh - Confirm presence of upx binary
+#   upx.sh - Confirm presence of upx executable
 #
 
 [[ -n "$LIBMAKEPKG_EXECUTABLE_UPX_SH" ]] && return

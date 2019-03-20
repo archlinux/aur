@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 #
-#   svgo.sh - Confirm presence of svgo binary
+#   svgo.sh - Confirm presence of svgo executable
 #
 
 [[ -n "$LIBMAKEPKG_EXECUTABLE_SVGO_SH" ]] && return
