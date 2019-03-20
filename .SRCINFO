@@ -1,12 +1,12 @@
 pkgbase = nota
 	pkgdesc = Simple note taking using your $EDITOR and git
-	pkgver = 1.5.1
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = http://github.com/cdown/nota
 	arch = any
 	license = Public domain
-	source = https://github.com/cdown/nota/archive/1.5.1.zip
-	md5sums = b1d749d047a76c5f4027245a607073e7
+	source = https://github.com/cdown/nota/archive/1.5.3.zip
+	md5sums = 51211dff66fc890d2c0240b620b876b0
 
 pkgname = nota
 
