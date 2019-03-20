@@ -6,44 +6,40 @@
 # Contributor: Malte Rabenseifner <malte@zearan.de>
 
 pkgname=murmur-snapshot-ice
-pkgver=1.3.0_2942_g755c290
+pkgver=1.3.0_rc1
+_dirname=1.3.0
 pkgrel=1
+epoch=1
 pkgdesc="The voice chat application server for Mumble (development snapshot)"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.mumble.info/wiki/"
 license=('BSD')
 depends=('protobuf' 'qt5-base' 'zeroc-ice')
-
 makedepends=('boost' 'python')
 conflicts=('murmur' 'murmur-static' 'murmur-ice' 'murmur-snapshot-noice')
 provides=('murmur')
 backup=("etc/murmur.ini")
 install=murmur.install
-source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz"
-	"https://github.com/mumble-voip/mumble/commit/ce0ecff200dd6e57a13c67b189406318595b52fb.patch"
+#source=("https://dl.mumble.info/mumble-${pkgver//_/\~}~snapshot.tar.gz"{,.sig} # git snapshots
+source=("https://dl.mumble.info/mumble-${pkgver//_/-}.tar.gz"{,.sig}
 	murmur.tmpfilesd
 	murmur.sysusers)
-sha256sums=('209cc0680fcf90adc8d374a0f73a932c3a3dfa71611d2a78a3036121e67f78a2'
-            'af078c71af9a2892254c7104b1f6a73d98b2df03927b74c08f64f6f6d6826cc3'
+sha256sums=('6f447745e164cc9ddef33f85ba0a3fc52d235eae3bfca588f387c699fe9eca59'
+            'SKIP'
             '25bf2dbd7574459724b4621fb93c09484dc7520297fa1d0f247a19b592d8cb8e'
             'ff58059e77eb73a5c9ad8eb4ad8d8d7c865f3ae1fb6cb236a729f742da95d83d')
-#validpgpkeys=('F3F5324A14AD0B32568F7839F0413B5CB858BD0E')
+validpgpkeys=('56D0B23AE00B1EE9A8BAAC0F5B8CF87BB893449B')
 options=('emptydirs')
 
-prepare() {
-    cd $srcdir/mumble-${pkgver//_/\~}~snapshot
-    patch --forward --strip=1 --input="${srcdir}/ce0ecff200dd6e57a13c67b189406318595b52fb.patch"
-}
-
 build() {
-    cd $srcdir/mumble-${pkgver//_/\~}~snapshot
+    cd $srcdir/mumble-${_dirname}
 
     qmake-qt5 main.pro CONFIG+="no-client no-bonjour optimize"
     make release
 }
 
 package() {
-    cd $srcdir/mumble-${pkgver//_/\~}~snapshot
+    cd $srcdir/mumble-${_dirname}
 
     sed -e "1i# vi:ft=cfg" \
       -e "s|database=|database=/var/lib/murmur/murmur.sqlite|" \
