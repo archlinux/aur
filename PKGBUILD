@@ -10,7 +10,8 @@ arch=('any')
 url="http://xmage.de"
 license=('MIT')
 
-depends=('jre8-openjdk>=8.u181-1')
+makedepends=('detox')
+depends=('jre8-openjdk')
 optdepends=('wmname: change window manager name for compatibility with certain WMs')
 
 source=("http://xmage.de/files/xmage_${pkgver}.zip"
@@ -22,6 +23,9 @@ sha256sums=("48c36f273347fcc4050c16dc040869a404ff5cb3182e22f0c07ef6d8383f4911"
 package() {
 
 	cd "${srcdir}"
+	
+	# clean up filenames
+	detox -r -v ./*
 
 	msg2 "changing file format of included scripts..."
 	awk '{ sub("\r$", ""); print }' mage-client/startClient.sh > mage-client/startClient-unix.sh

@@ -5,7 +5,8 @@ pkgbase = xmage
 	url = http://xmage.de
 	arch = any
 	license = MIT
-	depends = jre8-openjdk>=8.u181-1
+	makedepends = detox
+	depends = jre8-openjdk
 	optdepends = wmname: change window manager name for compatibility with certain WMs
 	source = http://xmage.de/files/xmage_1.4.33V4b.zip
 	source = https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt
