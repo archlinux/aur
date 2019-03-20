@@ -1,0 +1,8 @@
+diff -U0 -r tea4cups/tea4cups.conf tea4cups.patchedconf/tea4cups.conf
+--- tea4cups/tea4cups.conf	2019-03-20 14:18:28.574117737 +0100
++++ tea4cups.patchedconf/tea4cups.conf	2019-03-20 14:29:57.025127482 +0100
+@@ -42,2 +42,2 @@
+-# directory : /var/spool/tea4cups/
+-directory : /var/spool/cups/
++directory : /var/spool/tea4cups/
++# directory : /var/spool/cups/
