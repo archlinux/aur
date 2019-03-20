@@ -2,8 +2,8 @@
 
 pkgname=xscreensaver-backends
 _srcname=xscreensaver
-pkgver=5.40
-pkgrel=2
+pkgver=5.42
+pkgrel=1
 pkgdesc="Screensavers from XScreenSaver for common frontends"
 arch=('i686' 'x86_64')
 url="http://www.jwz.org/xscreensaver/"
@@ -15,7 +15,7 @@ source=(http://www.jwz.org/xscreensaver/${_srcname}-${pkgver}.tar.gz
 	LICENSE
 	migrate-xscreensaver-config.sh
 	xscreensaver-config.xsl)
-sha1sums=('82c7433fe008e6ea9ab8683cf3325a673b8a8233'
+sha1sums=('b8eb08e258a70924aa0e644e4930164baf505ee6'
           '3eedb8b91b13c29df9b1fe5cbb027e1470b802d2'
 	  '19195ef59f0dbc61c6ed599a968213a8f0a7a5d4'
 	  '3b5fd07d97cce754071e6f54db681dfea482a87d')
@@ -24,6 +24,8 @@ sha1sums=('82c7433fe008e6ea9ab8683cf3325a673b8a8233'
 
 build() {
   cd ${_srcname}-${pkgver}
+  sed 's|-std=c89||' -i configure.in
+  autoreconf -fiv
   CFLAGS="-DHAVE_GTK2" ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --libexecdir=/usr/lib --with-x-app-defaults=/usr/share/X11/app-defaults \
     --with-pam --with-gl \
