@@ -2,15 +2,15 @@ pkgbase=php72
 _pkgbase=${pkgbase%72}
 _realpkg=${pkgbase%}
 pkgname=("${pkgbase}"
-         "${_realpkg}-"{cgi,apache,fpm,embed,phpdbg,dblib,enchant,gd,imap,intl,odbc,pgsql,pspell,snmp,sqlite,tidy,xsl}"")
-pkgver=7.2.15
+         "${_realpkg}-"{cgi,apache,fpm,embed,phpdbg,dblib,enchant,gd,imap,intl,odbc,pgsql,pspell,snmp,sqlite,tidy,xsl,sodium}"")
+pkgver=7.2.16
 pkgrel=1
 pkgdesc="php 7.2 compiled as to not conflict with mainline php"
 arch=('i686' 'x86_64')
 license=('PHP')
 url='http://www.php.net'
 makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libmcrypt' 'libxslt' 'libzip' 'net-snmp'
-             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'freetds' 'pcre')
+             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'freetds' 'pcre' 'libsodium')
 #checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch' 'enchant-2.patch' 'php-freetype-2.9.1.patch')
@@ -159,7 +159,7 @@ package_php72() {
     # remove static modules
     rm -f ${pkgdir}/usr/lib/${_realpkg}/modules/*.a
     # remove modules provided by sub packages
-    rm -f ${pkgdir}/usr/lib/${_realpkg}/modules/{enchant,gd,imap,intl,mcrypt,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
+    rm -f ${pkgdir}/usr/lib/${_realpkg}/modules/{enchant,gd,imap,intl,sodium,mcrypt,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
     # remove empty directory
     rmdir ${pkgdir}/usr/include/php/include
 
@@ -343,11 +343,16 @@ package_php72-xsl() {
     install -D -m755 ${srcdir}/build/modules/xsl.so ${pkgdir}/usr/lib/${_realpkg}/modules/xsl.so
 }
 
-md5sums=('2271549c2dadb4ef8cfe59e838bb0281'
+package_php72-sodium() {
+    pkgdesc='sodium module for PHP'
+    depends=("${pkgbase}" 'libsodium')
+    install -D -m755 ${srcdir}/build/modules/sodium.so ${pkgdir}/usr/lib/${_realpkg}/modules/sodium.so
+}
+md5sums=('6a8f1cd5cbf025ab5977e1cca93cd8d8'
          '13cda50a6a420d04ddc26935ded3164e'
          'b7d69762f7c045b3950d770e04db504c'
-         '57342b2632c8a4a829f26e8f9985f3aa'
-         '62fa82888154a0c0d55b41a8d7138a05'
+         'f248c783449f310291905b5551c57e48'
+         '406f7a3ef7f476e4a5c26e462e47b7c7'
          '4bf0b1296fc95947a11bef36fe76102a'
          'e3883dce91ed21e23a3d7ae9fa80216d'
          'b40b82f55208eaead22dbfb64720b064')
