@@ -3,7 +3,7 @@
 
 pkgname='perl-cgi-emulate-psgi'
 pkgver='0.23'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="PSGI adapter for CGI"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -12,10 +12,10 @@ depends=('perl-cgi>=3.63' 'perl-http-message' 'perl>=5.8.1')
 makedepends=()
 checkdepends=('perl-test-requires>=0.08')
 url='https://metacpan.org/release/CGI-Emulate-PSGI'
-source=('http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/CGI-Emulate-PSGI-0.22.tar.gz')
-md5sums=('806886224149a8b49faddce65cf9513f')
-sha512sums=('a0adf28a49f71702439258cd0bbf510c322b7856b18f01d977613e6d8aeab43daf2f956f67c1491e19945b79f40d8229fb928653864de35faed4c13284b70401')
-_distdir="CGI-Emulate-PSGI-0.22"
+source=('https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/CGI-Emulate-PSGI-0.23.tar.gz')
+md5sums=('6986c3d32a3347a1f0e9ce7e7c54f046')
+sha512sums=('0e1017175ccab53ef50993c9884990dc85c7cdb30744f4bac2df4486a63fd5fd24e7f4b0e473d39b1f2b4dfdcf12756016edbc39e0fb725c6c610c21e6a7f96a')
+_distdir="CGI-Emulate-PSGI-0.23"
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
