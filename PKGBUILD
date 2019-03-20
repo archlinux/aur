@@ -32,7 +32,7 @@ sha256sums=('c6ba0cfd808e3f8473a5ea25d4ac2871b826edc62de5f3624c0bd812aad63bc1'
             '64cfd76c471ab3634711bc2e30dee90ae6498815b970014fe68adcbd50ad3741'
             '723631658d0a630538f5ab4f87afd69b551a636a31ddb05e6ab13c0a9e5244a1'
             '4b2d860cac8c8bab2d8fa79760d4405bef6fd042f4e78b680d25d1a5ebcbf83d'
-            '28c89348064d7a2bea96dcdf44339a93b4d3f6fbf868e0b8dc163aca4ff8525c')
+            '777ece58d7e922af0e3c2ad27bac7e3f648fc82738c2ab6286a948a3942476fc')
 
 package() {
 	install -dm755 ${pkgdir}/usr/src/vtunerc-${pkgver}/patches
