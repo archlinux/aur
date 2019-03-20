@@ -1,27 +1,22 @@
 pkgbase = intel-graphics-compiler
 	pkgdesc = Intel Graphics Compiler for OpenCL
-	pkgver = 2019.02.25
+	pkgver = 2019.03.12
 	pkgrel = 1
 	url = https://github.com/intel/intel-graphics-compiler/
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = cmake
+	makedepends = clang
 	makedepends = llvm
 	makedepends = zlib
-	makedepends = p7zip
-	makedepends = python-nose
 	makedepends = python2
-	depends = clang
+	makedepends = opencl-clang-git
+	depends = llvm-libs
 	conflicts = compute-runtime
-	noextract = igc_release_2019-02-25.tar.gz
+	noextract = igc_release_2019-03-12.tar.gz
 	options = !emptydirs
-	source = https://github.com/intel/intel-graphics-compiler/archive/igc_release_2019-02-25.tar.gz
-	source = common_clang::git+https://github.com/intel/opencl-clang.git#branch=ocl-open-70
-	source = llvm-spirv::git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git#branch=llvm_release_70
-	sha256sums = 3a6a3906876aa13262ab2c777f5cd98371f5a44d377eb3e8c2ba2bb317a90532
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = https://github.com/intel/intel-graphics-compiler/archive/igc_release_2019-03-12.tar.gz
+	sha256sums = 933dbd493b3c3307266b6a0ea8d41ffd8e5c44761f9bbbacbb3f36b3d58d2268
 
 pkgname = intel-graphics-compiler
 
