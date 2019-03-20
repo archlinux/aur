@@ -15,18 +15,11 @@ prepare() {
 }
 
 build() {
-  cp -r "${srcdir}"/cachingutil-$pkgver "${srcdir}"/cachingutil-$pkgver-py2
-
   cd "${srcdir}"/cachingutil-$pkgver
   python setup.py build
-
-  cd "${srcdir}"/cachingutil-$pkgver-py2
-  python2 setup.py build
 }
 
 package() {
-  depends=(python-requests python-timingsutil python-fdutil)
-
   cd "${srcdir}/cachingutil-$pkgver"
   python setup.py install --root=${pkgdir} --optimize=1
 }

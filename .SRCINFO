@@ -13,7 +13,4 @@ pkgbase = python-cachingutil
 	md5sums = e425cec6949cd9426ea08a4e40261769
 
 pkgname = python-cachingutil
-	depends = python-requests
-	depends = python-timingsutil
-	depends = python-fdutil
 
