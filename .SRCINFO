@@ -1,7 +1,8 @@
 pkgbase = postforward-git
 	pkgdesc = A mail forwarding utility which aims to compliment postsrsd: Instead of rewriting all incoming mail regardless of final destination, only to-be-forwarded mail is passed to postsrsd.
-	pkgver = v1.1.0
+	pkgver = 1.1.1_1+r15.20190222.51d259d
 	pkgrel = 1
+	epoch = 1
 	url = http://github.com/zoni/postforward
 	arch = i686
 	arch = x86_64
@@ -10,7 +11,7 @@ pkgbase = postforward-git
 	license = BSD
 	makedepends = go
 	depends = postsrsd
-	provides = postforward=v1.1.0
+	provides = postforward=1.1.1_1+r15.20190222.51d259d
 	conflicts = postforward
 	options = emptydirs
 	options = strip
