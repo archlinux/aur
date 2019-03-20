@@ -1,4 +1,4 @@
-pkgbase = ygopro-koishipro
+pkgbase = ygopro-koishi
 	pkgdesc = Link compatable ygopro client with AI
 	pkgver = 2019.3.15
 	pkgrel = 1
@@ -14,5 +14,5 @@ pkgbase = ygopro-koishipro
 	source = https://github.com/purerosefallen/ygopro/releases/download/2019.3.15/KoishiPro-linux-full-2019.3.15.zip
 	sha256sums = 2ae0eccd26f24e3333e31e2baf1f901f07b0c309da6f096bc07a27f7b70f508b
 
-pkgname = ygopro-koishipro
+pkgname = ygopro-koishi
 
