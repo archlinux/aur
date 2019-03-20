@@ -8,7 +8,7 @@ _prevyear="$(( ${_year} - 1 ))"
 _pkgname="idos-timetable-data-chaps-trains-europe-20${_year}"
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2019_3_7
+pkgver=2019_3_19
 pkgrel=1
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the timetable search engines by CHAPS: European trains."
 arch=(any)
@@ -39,10 +39,10 @@ optdepends=(
 
 provides=(
   "${_pkgname}=${pkgver}"
-  
+
   "idos-timetable-data=${pkgver}"
   "idos-timetable-data-trains=${pkgver}"
-  
+
   "idos-timetable-data-trains-europe=${pkgver}"
   "idos-timetable-data-trains-europe-20${_year}=${pkgver}"
 )
@@ -76,8 +76,8 @@ sha256sums=(
 pkgver() {
   # Do not use metadata of the source file, but do website parsing: So we do not need to download the file to (AUR-)update the package version with our own crude hacked script 'idos-aur-update-versions.sh'.
   #date -r "${srcdir}/${_target}" +"%Y_%m_%d"
-  
-  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
+
+  wget  --user-agent='' --dns-timeout=30 --connect-timeout=30 --read-timeout=30 --no-check-certificate -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
 }
 
 package() {
