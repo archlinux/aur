@@ -21,15 +21,15 @@ backup=('opt/i2p/wrapper.config')
 install='i2p.install'
 options=(!strip)
 
-_tomcatver=9.0.16
+_tomcatver=9.0.17
 _gitname=i2p.i2p
 _commit=master
 
 source=("git+https://github.com/i2p/${_gitname}.git#commit=${_commit}"
-        "http://apache.mirrors.pair.com/tomcat/tomcat-9/v${_tomcatver}/bin/apache-tomcat-${_tomcatver}.tar.gz"
+        "https://archive.apache.org/dist/tomcat/tomcat-9/v${_tomcatver}/bin/apache-tomcat-${_tomcatver}.tar.gz"
         'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 sha256sums=('SKIP'
-            '1f45dd960c6cbc044e75ce0ed5ae5d3af62aff0152fa56b8160d2e3dc23f417a'
+            '6c8a8bccc2bee1b28b3a8da128db26f6e22a3546a6cd44e655c8e34157a215a6'
             'ff9942ca43715b5095b0118e306c8aec1af7c68c18e8959dba10d86eac8efbfd'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
             '72c0944cd2b04c747673a534475f2ec42c64d52fdda76714f1165c4655113de2'
@@ -37,8 +37,8 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$_gitname"
-    echo "$(grep 'VERSION =' core/java/src/net/i2p/CoreVersion.java \
-        |sed 's/.*= "//;s/";//').$(grep 'BUILD =' router/java/src/net/i2p/router/RouterVersion.java \
+    printf "%s.%s" "$(grep 'VERSION =' core/java/src/net/i2p/CoreVersion.java \
+        |sed 's/.*= "//;s/";//')" "$(grep 'BUILD =' router/java/src/net/i2p/router/RouterVersion.java \
         |sed 's/.*= //;s/;//')"
 }
 
