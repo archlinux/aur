@@ -2,7 +2,7 @@
 pkgname=moddownloaderr
 pkgver=r42.c431a56
 pkgrel=1
-pkgdesc="moddownloaderr - forked Bash script to download ModArchive music modules."
+pkgdesc="moddownloaderr - forked Bash script to download module music from The Mod Archive"
 arch=('i686' 'x86_64')
 url="https://github.com/mxmilkb/moddownloaderr"
 license=('LGPL3')
