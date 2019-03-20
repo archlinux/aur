@@ -1,7 +1,7 @@
 pkgbase = gnome-settings-daemon-elementary
 	pkgdesc = GNOME Settings Daemon (with elementary OS patches)
-	pkgver = 3.28.1+0ubuntu1+r3.6975d1c25
-	pkgrel = 2
+	pkgver = 3.28.1_0ubuntu1.1_r5.9610af6df
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-settings-daemon
 	arch = i686
 	arch = x86_64
@@ -34,8 +34,8 @@ pkgbase = gnome-settings-daemon-elementary
 	depends = pulseaudio
 	depends = pulseaudio-alsa
 	depends = upower
-	provides = gnome-settings-daemon=3.28.1+0ubuntu1+r3.6975d1c25
-	provides = gnome-settings-daemon-ubuntu=3.28.1+0ubuntu1+r3.6975d1c25
+	provides = gnome-settings-daemon=3.28.1_0ubuntu1.1_r5.9610af6df
+	provides = gnome-settings-daemon-ubuntu=3.28.1_0ubuntu1.1_r5.9610af6df
 	conflicts = gnome-settings-daemon
 	conflicts = gnome-settings-daemon-ubuntu
 	source = git+https://github.com/elementary/os-patches.git#branch=gnome-settings-daemon-bionic-patched

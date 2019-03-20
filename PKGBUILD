@@ -6,8 +6,8 @@
 # Contributor: Adria Arrufat <adria DOT arrufat+aur AT protonmail DOT ch>
 
 pkgname=gnome-settings-daemon-elementary
-pkgver=3.28.1+0ubuntu1+r3.6975d1c25
-pkgrel=2
+pkgver=3.28.1_0ubuntu1.1_r5.9610af6df
+pkgrel=1
 pkgdesc="GNOME Settings Daemon (with elementary OS patches)"
 url="https://gitlab.gnome.org/GNOME/gnome-settings-daemon"
 arch=('i686' 'x86_64')
@@ -28,12 +28,14 @@ sha512sums=('SKIP'
 
 pkgver() {
     cd "os-patches"
-    printf "3.28.1+0ubuntu1+r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+    printf "3.28.1_0ubuntu1.1_r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
     cd "os-patches"
 
+    #https://gitlab.gnome.org/GNOME/gnome-settings-daemon/commit/3110457f72f70b2d283c1ad2f27b91b95d75d92f
     patch -Np2 < ../notify-notification-close.patch
 
     git submodule init
@@ -43,6 +45,7 @@ prepare() {
 
 build() {
     cd "os-patches"
+
     [ -d build ] && rm -rf build
     arch-meson build -Dstatic-false=true
     ninja -C build
