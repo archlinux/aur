@@ -25,9 +25,8 @@ _localmodcfg=
 pkgbase=linux-gc
 _srcver=5.0.2-arch1
 pkgver=${_srcver%-*}
-pkgrel=1
+pkgrel=2
 _bmqversion=090
-_uksmversion=4.20
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
 license=(GPL2)
@@ -35,7 +34,9 @@ makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
 _srcname=linux-$_srcver
 _bmq_patch="v5.0_bmq${_bmqversion}.patch"
-_uksm_patch="uksm-${_uksmversion}.patch"
+_uksm_patch_0001="0002_uksm-5.0-initial.patch"
+_uksm_patch_0002="0003_uksm-5.0-adopt-new-MMU-notifiers-API.patch"
+_uksm_patch_0003="0004_uksm-5.0-fix-BMQ-compile.patch"
 _gcc_more_v='20180509'
 source=(
   "$_srcname.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-$_srcver.tar.gz"
@@ -44,8 +45,10 @@ source=(
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  "$_bmq_patch::https://gitlab.com/alfredchen/bmq/raw/master/5.0/${_bmq_patch}"
-#  "$_uksm_patch::https://raw.githubusercontent.com/dolohow/uksm/master/v4.x/uksm-4.20.patch"
+  "0001_$_bmq_patch::https://gitlab.com/alfredchen/bmq/raw/master/5.0/${_bmq_patch}"
+  "$_uksm_patch_0001::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.0/pf-uksm/0001-uksm-5.0-initial-submission.patch"
+  "$_uksm_patch_0002::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.0/pf-uksm-fixes/0001-uksm-5.0-adopt-new-MMU-notifiers-API.patch"
+  "$_uksm_patch_0003::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.0/bmq-fixes-v2/0001-bmq-Fix-BMQ-compile-fails-for-x86-UP-again.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -53,12 +56,15 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('0690caf9f27f6f7d7fa588e8a0a9d8703c861636e9448f0afad349764572b083'
-            '6598f775100a4a9dc4a1fc3df9afa2d9f7fcf9647bde8e569ffe897caceaf170'
+            '60fe6db77795144cca82c1468ff6520c7bcea38d1d74bf1418c8c8ff91eaf62a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '7a5ed5e6d628c4ef20791afd4bad1bd071d87d04ffded8ce7cc1d209ee92425b')
+            '7a5ed5e6d628c4ef20791afd4bad1bd071d87d04ffded8ce7cc1d209ee92425b'
+            'a336eac26de35e7801cdba88566573ce65aedc9d12d8b5829df0a68df3768af3'
+            '9d86fe1fa290912e22ad79e5e354329e5107544b8d0864061c3bbf71ee45b06f'
+            '162b114fafa3580ff281daeb77c31a14cebc4fc19a9b2d29413696242a152c39')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
