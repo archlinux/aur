@@ -2,14 +2,14 @@
 
 _name=rumur
 pkgname="$_name-git"
-pkgver=2019.03.11.r11.g9626824
+pkgver=2019.03.11.r17.g7e9addb
 pkgrel=1
 pkgdesc="Yet another Murphi model checker"
 arch=('x86_64')
 url="https://github.com/Smattr/rumur"
 license=('custom')
 depends=('gmp')
-makedepends=('git' 'cmake' 'bison' 'flex' 'bison' 'flex')
+makedepends=('git' 'cmake' 'bison>=3.3.2' 'flex' 'python')
 provides=("$_name")
 conflicts=("$_name")
 source=("git+https://github.com/Smattr/$_name.git")
