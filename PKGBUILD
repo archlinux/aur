@@ -15,15 +15,15 @@ pkgdesc="Ebook management application"
 arch=('i686' 'x86_64')
 url="https://calibre-ebook.com/"
 license=('GPL3')
-depends=('chmlib' 'icu' 'jxrlib' 'libmtp' 'libusbx' 'libwmf' 'mathjax' 'mtdev' 'optipng' 'podofo'
-         'poppler' 'python2-apsw' 'python2-cssselect' 'python2-feedparser' 'python2-markdown'
-         'python2-css-parser' 'python2-dateutil' 'python2-dbus' 'python2-dnspython'
-         'python2-dukpy' 'python2-html5-parser' 'python2-mechanize' 'python2-msgpack'
-         'python2-netifaces' 'python2-unrardll' 'python2-pillow' 'python2-psutil'
-         'python2-pygments' 'python2-pyqt5' 'python2-regex' 'qt5-svg' 'qt5-webkit')
+_py_deps=('apsw' 'cssselect' 'css-parser' 'dateutil' 'dbus' 'dnspython' 'dukpy'
+          'feedparser' 'html5-parser' 'lxml' 'markdown' 'mechanize' 'msgpack'
+          'netifaces' 'unrardll' 'pillow' 'psutil' 'pygments' 'pyqt5' 'regex')
+depends=('chmlib' 'icu' 'jxrlib' 'libmtp' 'libusbx' 'libwmf' 'mathjax' 'mtdev' 'optipng'
+         'podofo' "${_py_deps[@]/#/python2-}" 'qt5-svg' 'qt5-webkit' 'udisks2')
 makedepends=('git' 'qt5-x11extras' 'sip' 'xdg-utils' 'rapydscript-ng') #'python2-sphinx')
 checkdepends=('xorg-server-xvfb')
-optdepends=('ipython2: to use calibre-debug')
+optdepends=('ipython2: to use calibre-debug'
+            'poppler: required for converting pdf to html')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://github.com/kovidgoyal/${pkgname%-git}.git?signed"
