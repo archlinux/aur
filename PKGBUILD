@@ -73,8 +73,8 @@ if [ -n "$_htmldocs_enable" ]; then
     makedepends+=('python-sphinx' 'graphviz')
 fi
 
-source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
+source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
+        "https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "https://github.com/damentz/${_lqxpatchname}/archive/${_major}-${_lqxpatchrel}.tar.gz"
          # pacman hook for depmod
         '60-linux.hook'
