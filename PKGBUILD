@@ -3,13 +3,13 @@
 pkgbase='ivre-git'
 pkgbasename='ivre'
 pkgname=('ivre-git' 'ivre-web-git' 'ivre-docs-git' 'python-ivre-git' 'python2-ivre-git')
-pkgver=0.9.12.dev51
+pkgver=0.9.12.dev55
 pkgrel=1
 pkgdesc='Network recon framework'
 arch=('any')
 url='https://ivre.rocks/'
 license=('GPL3')
-makedepends=('git' 'python-setuptools' 'python2-setuptools')
+makedepends=('git')
 source=("git+https://github.com/cea-sec/ivre.git")
 sha256sums=('SKIP')
 
