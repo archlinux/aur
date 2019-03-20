@@ -1,7 +1,7 @@
 pkgbase = cb2bib
 	pkgdesc = A tool for parsing clipboard data into BibTeX bibliographic database files
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.molspaces.com/cb2bib/
 	arch = i686
 	arch = x86_64

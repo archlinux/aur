@@ -4,7 +4,7 @@
 
 pkgname=cb2bib
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for parsing clipboard data into BibTeX bibliographic database files"
 arch=('i686' 'x86_64')
 url="http://www.molspaces.com/cb2bib/"
@@ -21,7 +21,7 @@ sha256sums=('30a59dab4e41ee96ac7f5d0689102baed208e031ed86e34b33991214bb65673f')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./configure --prefix /usr --qmakepath /usr/bin/qmake-qt5
-  make
+  make -j1
 }
 
 package() {
