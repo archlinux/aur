@@ -18,9 +18,6 @@ pkgbase = kicad-rc
 	depends = python-wxpython
 	depends = opencascade
 	depends = ngspice>=27
-	depends = kicad-footprints
-	depends = kicad-symbols
-	depends = kicad-packages3d
 	optdepends = kicad-symbols
 	optdepends = kicad-packages3d
 	optdepends = kicad-footprints
