@@ -1,6 +1,6 @@
 pkgbase = coffee-script-git
 	pkgdesc = Language that compiles into JavaScript
-	pkgver = 2.3.2.1.g294bb475
+	pkgver = 2.3.2r5.gca275c2a
 	pkgrel = 1
 	url = http://coffeescript.org
 	arch = any
