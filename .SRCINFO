@@ -14,11 +14,9 @@ pkgbase = serialplot-hg
 	depends = hicolor-icon-theme
 	provides = serialplot
 	conflicts = serialplot
-	source = hg+https://bitbucket.org/hyOzd/serialplot
-	source = cmake_qwt.patch
+	source = hg+https://bitbucket.org/hyOzd/serialplot#branch=default
 	source = update_check_disable.patch
 	sha256sums = SKIP
-	sha256sums = b1508ee32f79c82ad6e1749ddc79c33e4af3e3178c0e8e67c9011eda040c8652
 	sha256sums = 116736d9471b5e0d283c264c1df8db5e4eb5e927839db7eee0022ab7b9177961
 
 pkgname = serialplot-hg
