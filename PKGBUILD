@@ -10,6 +10,7 @@ url=https://github.com/mutovis/control-software
 license=('GPL-3.0')
 depends=('python' 'python-numpy' 'python-matplotlib' 'python-pyserial' 'python-h5py' 'python-pyvisa' 'python-pyvisa-py' 'python-mpmath' 'python-pyftdi')
 makedepends=('python-setuptools')
+backup=('etc/gpib.conf')
 source=("https://github.com/mutovis/${_pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('e1fef5ba5a8aeeb3c5a7ebb17136c75ad1fc94cab4550c2f046bb82c3bec1435')
 
