@@ -6,7 +6,7 @@ pkgbase = zimwriterfs
 	arch = any
 	license = GPL3
 	makedepends = meson
-	depends = libzim
+	depends = libzim>=4.0.6
 	depends = gumbo-git
 	depends = xapian-core
 	source = https://github.com/openzim/zimwriterfs/archive/1.3.tar.gz
