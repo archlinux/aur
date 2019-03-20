@@ -3,7 +3,7 @@
 
 pkgname=makepkg-optimize
 pkgver=10
-pkgrel=2
+pkgrel=3
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
 license=('GPL')
@@ -20,14 +20,13 @@ _conf=({{c,cxx,make,ld,debug-make,cmake-}flags,{buildenv,destdirs,pkgopts{,-para
 source=(${_buildenv[@]}
         ${_executable[@]}
         ${_tidy[@]}
-        ${_conf[@]}
-        )
+        ${_conf[@]})
 sha1sums=('8f756d02ad1dae9dfbe79e414e557fe96e037549'
           '4078b286395e17bbcfbd14244ab48bbfce24988d'
           '6b719a47146aedae186a7e63b6058507c4948d9f'
-          'a079a302708342cc0549f56e2b5e17f483fbbbd1'
+          '4009ae189dfa940373fc622bea8e7264ed4dddca'
           'e8358ced786a996a5763faa42f3541900b86647e'
-          '9c27d5cef8a12385b385b64e65fce39244e1be4b'
+          '96797df6d6c507aa84e36b91129d1ca4c539f0ad'
           'c93ebf06772fb34d5f707062ddec9faab0b9994f'
           '1a815037390c67195ed831b7887884a42785010a'
           'cff1d2b6e81226de7ece5369005c392fa8083bf2'
@@ -87,13 +86,13 @@ prepare() {
 
 package() {
   # BUILDENV extension scripts
-  install -m755 -D -t ${pkgdir}/usr/share/makepkg/buildenv/ ${_buildenv[@]%.in}
+  install -m644 -D -t ${pkgdir}/usr/share/makepkg/buildenv/ ${_buildenv[@]%.in}
 
   # Executable finding scripts
-  install -m755 -D -t ${pkgdir}/usr/share/makepkg/executable/ ${_executable[@]%.in}
+  install -m644 -D -t ${pkgdir}/usr/share/makepkg/executable/ ${_executable[@]//-exec.sh.in/.sh}
 
   # Supplemental Tidy scripts
-  install -m755 -D -t ${pkgdir}/usr/share/makepkg/tidy/ ${_tidy[@]%.in}
+  install -m644 -D -t ${pkgdir}/usr/share/makepkg/tidy/ ${_tidy[@]%.in}
 
   # Separate config file
   install -m644 -D -t ${pkgdir}/etc/ makepkg-optimize.conf

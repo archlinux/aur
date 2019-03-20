@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 #
-#   svgo.sh - Optimize SVG image files
+#   svgo.sh - Confirm presence of svgo binary
 #
 
 [[ -n "$LIBMAKEPKG_EXECUTABLE_SVGO_SH" ]] && return
