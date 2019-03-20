@@ -7,12 +7,12 @@
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
 pkgver=3.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="An email, contacts and calendar server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://www.cyrusimap.org/"
 license=('BSD')
-makedepends=('libsasl' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
+makedepends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
              'mariadb-libs' 'postgresql-libs' 'libnghttp2' 'brotli' 'shapelib'
              'libldap' 'libcap' 'net-snmp' 'xapian-core' 'perl' 'clamav'
              'python-sphinx' 'perl-pod-pom-view-restructured')
@@ -44,6 +44,8 @@ build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
   export PERL_MM_OPT="NO_PACKLIST=true"
+  # Work around Cyrus bug #2629
+  export LDFLAGS="${LDFLAGS/,--as-needed}"
 
   ./configure \
     --prefix=/usr \
@@ -77,7 +79,7 @@ check() {
 }
 
 package_cyrus-imapd() {
-  depends=('libsasl' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
+  depends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
            'mariadb-libs' 'postgresql-libs' 'libnghttp2' 'brotli' 'shapelib'
            'libldap' 'libcap' 'net-snmp' 'xapian-core' 'perl')
   optdepends=('cyrus-imapd-docs: documentation'
