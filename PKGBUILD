@@ -5,7 +5,7 @@
 
 pkgname=texworks
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A TeX IDE inspired by TeXShop.'
 arch=('i686' 'x86_64')
 url='https://www.tug.org/texworks/'
@@ -32,13 +32,13 @@ build() {
         -DWITH_LUA='ON' \
         -DWITH_PYTHON='ON' \
         -DDESIRED_QT_VERSION:STRING=5 \
-        -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/usr" .
+        -DCMAKE_INSTALL_PREFIX:PATH="/usr" .
     make
 }
 
 package() {
     cd "$pkgname-release-$pkgver"
-    make install
+    make DESTDIR="$pkgdir/" install
 
     for size in 48 128; do
       install -Dm644 res/images/TeXworks-doc-${size}.png \
