@@ -17,7 +17,8 @@ sha1sums=('58d05fe0b201f60d8e6a4d4ad364929eb514db46')
 sha256sums=('44f00f257a8a686467879591d140e7c446b9e5bf891bfa993f9737f6235e458f')
 sha512sums=('63be2aee40f21f363ac94d4cbd6a5f0dba180a9b6293bb74944c2daf3ed258343304d716208b142fcfe78bf7bc54e99cd9457922cfb926e5a1016266446c8501')
 
+
 package () {
-    cp -R /usr 
+    cp -R "${srcdir}/usr" "${pkgdir}"
 }
 
