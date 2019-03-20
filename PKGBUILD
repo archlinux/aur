@@ -5,7 +5,7 @@
 pkgname='vtunerc-dkms'
 pkgdesc='Kernel module to create virtual DVB devices'
 pkgver=1.4
-pkgrel=6
+pkgrel=7
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='http://code.google.com/p/vtuner'
 license=('GPL2')

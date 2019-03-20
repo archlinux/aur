@@ -1,7 +1,7 @@
 pkgbase = vtunerc-dkms
 	pkgdesc = Kernel module to create virtual DVB devices
 	pkgver = 1.4
-	pkgrel = 6
+	pkgrel = 7
 	url = http://code.google.com/p/vtuner
 	arch = x86_64
 	arch = i686
