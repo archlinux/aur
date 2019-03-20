@@ -14,7 +14,7 @@ pkgbase = zygrib
 	depends = ttf-liberation
 	depends = libnova
 	optdepends = zygrib-maps: gshhs high-resolution maps from zygrib.org
-	source = zyGrib-8.0.1.tgz::http://www.zygrib.org/getfile.php?file=zyGrib-8.0.1.tgz
+	source = zyGrib-8.0.1.tgz::https://www.zygrib.org/getfile.php?file=zyGrib-8.0.1.tgz
 	source = zygrib.sh
 	source = zygrib.desktop
 	source = zygrib.png
