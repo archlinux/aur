@@ -1,7 +1,7 @@
-# Maintainer: peshane <peshane@peshane.net>
+# Maintainer: peshane <social at peshane dot net>
 pkgname=postgresqltuner
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Simple script to analyse your PostgreSQL database configuration inspired by mysqltuner.pl"
 arch=('any')
 url="https://github.com/jfcoz/postgresqltuner"
