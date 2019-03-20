@@ -6,8 +6,8 @@
 # Contributor: sxw <sxw@chronowerks.de>
 # Maintainer: Erich Eckner <arch at eckner dot net>
 
-pkgname=jabberd2-git
-_pkgname=jabberd2
+pkgbase=jabberd2
+pkgname=(jabberd2-git)
 pkgver=r1175.376e632
 _commit=${pkgver#*.}
 pkgrel='7'
@@ -21,7 +21,7 @@ optdepends=('sqlite3' 'postgresql-libs')
 makedepends=('sqlite3' 'postgresql-libs' 'autoconf-archive')
 install=install
 source=(
-  "${pkgname}::git+https://github.com/${_pkgname}/${_pkgname}.git#commit=${_commit}"
+  "${pkgbase}::git+https://github.com/${pkgbase}/${pkgbase}.git#commit=${_commit}"
   'pam_jabberd'
 )
 sha512sums=('SKIP'
@@ -41,14 +41,14 @@ backup=(
 
 pkgver() {
   printf "r%s.%s" "$(
-    git -C "${srcdir}/${pkgname}" rev-list --count ${_commit}
+    git -C "${srcdir}/${pkgbase}" rev-list --count ${_commit}
   )" "$(
-    git -C "${srcdir}/${pkgname}" rev-parse --short ${_commit}
+    git -C "${srcdir}/${pkgbase}" rev-parse --short ${_commit}
   )"
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgbase}"
   libtoolize --force
   aclocal
   autoheader
@@ -57,7 +57,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgbase}"
 
   ./configure \
     --prefix=/usr \
@@ -74,7 +74,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgbase}"
 
   make DESTDIR="${pkgdir}" install
 
