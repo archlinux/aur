@@ -1,19 +1,25 @@
 # Maintainer: Alexander Kobel <a-kobel@a-kobel.de>
 
 pkgname=bertini
-pkgver=1.5
-pkgrel=2
+pkgver=1.6
+pkgrel=1
 pkgdesc="Homotopy continuation solver for systems of polynomial equations"
 url="http://bertini.nd.edu/"
 arch=('i686' 'x86_64')
 license=('custom: Bertini license')
-depends=('boost' 'gmp' 'mpfr')
+depends=('boost' 'mpfr')
 optdepends=('openmpi: multithreading support')
-source=("http://bertini.nd.edu/BertiniSource_v${pkgver}.tar.gz")
-sha256sums=('a9a68a96e180fe6a93ba1bc1d61f522784c9a053b049b2cbd98008b5b6deec3c')
+source=("${url}/BertiniSource_v${pkgver}.tar.gz"
+        "${url}/BertiniUsersManual.pdf")
+sha256sums=('b742d4a55623092eb0c46f8ee644aa487e5decf4ad05eb9297306b599795a424'
+            '017313464d162bb32640858faa0dc40ec8498eee439cb703dc22507baa15394f')
 
 prepare () {
-  cd ${srcdir}/BertiniSource_v${pkgver}
+  cd ${srcdir}/BertiniSource_v${pkgver/./}
+
+  # workaround for OpenMPI 4 compatibility
+  find . -type f -exec sed -i -e s/MPI_Address/MPI_Get_address/ -e s/MPI_Type_struct/MPI_Type_create_struct/ {} +
+
   rm aclocal.m4 Makefile.in
   aclocal
   automake --add-missing
@@ -21,14 +27,15 @@ prepare () {
 }
 
 build () {
-  cd ${srcdir}/BertiniSource_v${pkgver}
+  cd ${srcdir}/BertiniSource_v${pkgver/./}
   ./configure --prefix=/usr --includedir=/usr/include/bertini
   make
 }
 
 package() {
-  cd ${srcdir}/BertiniSource_v${pkgver}
+  cd ${srcdir}
+  install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" BertiniUsersManual.pdf
+  cd BertiniSource_v${pkgver/./}
   install -D -m644 Bertini_License -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -D -m644 BertiniUsersManual.pdf "${pkgdir}/usr/share/doc/${pkgname}/BertiniUsersManual.pdf"
   make DESTDIR="${pkgdir}" install
 }
