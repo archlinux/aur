@@ -3,7 +3,7 @@
 _pkgname=keyboardlayouteditor
 pkgname="${_pkgname}"-git
 pkgver=1.1+r100.20190121.56726a3
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="PyGTK programme that helps create or edit XKB keyboard layouts."
 arch=('any')
@@ -16,7 +16,6 @@ license=('GPL3')
 # * GObject
 # * lxml
 depends=(
-  'gucharmap'
   'pygtk'
   'python2'
   #'python2-antlr3=3.1.2'

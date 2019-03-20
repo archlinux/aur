@@ -1,14 +1,13 @@
 pkgbase = keyboardlayouteditor-git
 	pkgdesc = PyGTK programme that helps create or edit XKB keyboard layouts.
 	pkgver = 1.1+r100.20190121.56726a3
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://github.com/hupfdule/keyboardlayouteditor
 	arch = any
 	license = GPL3
 	makedepends = antlr3-3.1.2
 	makedepends = git
-	depends = gucharmap
 	depends = pygtk
 	depends = python2
 	depends = python2-antlr3-3.1.2
