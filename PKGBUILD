@@ -2,13 +2,12 @@ pkgname=tea4cups-py3-git
 _pkgname=tea4cups-py3
 pkgver=r12.65b5c3a
 
-pkgrel=1
+pkgrel=2
 pkgdesc="A unofficial python3 fork of Tea4cups"
 
 url="https://gitlab.com/dadosch/tea4cups/tree/python3/"
 license=('GPL2')
 arch=('any')
-provides=('tea4cups')
 conflicts=('tea4cups-svn')
 depends=(
   'cups'
@@ -18,6 +17,7 @@ depends=(
 optdepends=(
 )
 provides=(
+  "tea4cups=${pkgver}"
   "${_pkgname}=${pkgver}"
   "${_pkgname}-doc=${pkgver}"
 )
