@@ -1,7 +1,7 @@
 pkgbase = linux-firmware-full-surface
 	pkgdesc = Firmware files for Linux, patched for surface
-	pkgver = 20190307.28f5f7.5d21cc
-	pkgrel = 2
+	pkgver = 20190320.efd2c1.5d21cc
+	pkgrel = 1
 	url = http://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary
 	arch = any
 	license = GPL2
@@ -10,7 +10,7 @@ pkgbase = linux-firmware-full-surface
 	makedepends = git
 	makedepends = unzip
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#commit=28f5f7dc1f077ea37d663f70de4490844db0449d
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#commit=efd2c1cc375cff1c17b4259d99a7fee240c3b510
 	source = git+https://github.com/jakeday/linux-surface.git#commit=5d21cc824c9b41e65f92fdebcbcccd2181b9393f
 	md5sums = SKIP
 	md5sums = SKIP
