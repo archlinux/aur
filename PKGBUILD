@@ -4,13 +4,16 @@ _pkgname=python2-antlr3
 pkgname="${_pkgname}"
 pkgdesc='ANTLR3 runtime for Python'
 pkgver=3.1.3
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="http://www.antlr3.org/"
 license=('BSD')
 depends=(
   'antlr3'
   'python2'
+)
+makedepends=(
+  'python2-setuptools'
 )
 source=(
   "https://www.antlr3.org/download/Python/antlr_python_runtime-${pkgver}.tar.gz"
