@@ -15,14 +15,14 @@
 # Maintainer: Aleksey Filippov <sarum9in@gmail.com>
 
 pkgname=turtle
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A C++ Mock_object library based on Boost with a focus on usability, simplicity and flexibility."
 arch=('i686' 'x86_64')
 url="http://turtle.sourceforge.net"
 license=('Boost')
-source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('1f0a8f7b7862e0f99f3849d60b488b1ce6546f1f7cfeb4d8f6c0261f1e3dcbe0')
+source=("https://github.com/mat007/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('96e747159952a002474fb8db8e7a6416dbd6f1ff741c065bd7eef25dbf1ed39e')
 
 package() {
     install -dm755 $pkgdir/usr/include/turtle
