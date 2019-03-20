@@ -4,7 +4,7 @@
 
 pkgname=godot-pulse
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine, with pulseaudio"
 url="http://www.godotengine.org"
 license=('MIT')
@@ -40,7 +40,7 @@ package() {
 
   cd "${srcdir}"
 
-  install -Dm644 "${srcdir}"/${pkgname}-${pkgver}-stable/misc/dist/linux/org.godotengine.Godot.desktop "${pkgdir}"/usr/share/applications/godot.desktop
+  install -Dm644 "${srcdir}"/${pkgname%-*}-${pkgver}-stable/misc/dist/linux/org.godotengine.Godot.desktop "${pkgdir}"/usr/share/applications/godot.desktop
   install -Dm644 "${srcdir}"/${pkgname%-*}-${pkgver}-stable/icon.svg "${pkgdir}"/usr/share/pixmaps/godot.svg
 
   cd "${srcdir}"/${pkgname%-*}-${pkgver}-stable
