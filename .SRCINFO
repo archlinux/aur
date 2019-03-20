@@ -1,13 +1,13 @@
 pkgbase = elasticsearch-ingest-geoip
 	pkgdesc = Ingest processor that uses looksup geo data based on ip adresses using the Maxmind geo database
-	pkgver = 6.6.1
-	pkgrel = 2
+	pkgver = 6.6.2
+	pkgrel = 1
 	url = https://www.elastic.co/guide/en/elasticsearch/plugins/current/ingest-geoip.html
 	arch = any
 	license = Apache
-	depends = elasticsearch=6.6.1
-	source = https://artifacts.elastic.co/downloads/elasticsearch-plugins/ingest-geoip/ingest-geoip-6.6.1.zip
-	sha256sums = 5952c21385c275be454e0f6b2d2f4c5c6495590a0776f5d785bba625b44be202
+	depends = elasticsearch=6.6.2
+	source = https://artifacts.elastic.co/downloads/elasticsearch-plugins/ingest-geoip/ingest-geoip-6.6.2.zip
+	sha256sums = 15b8795c501f8722387272d5f48644ef7898e27f5cee9a1e6070848e61c45944
 
 pkgname = elasticsearch-ingest-geoip
 
