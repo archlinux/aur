@@ -5,7 +5,7 @@ _pkgname="authsae"
 pkgname="${_pkgname}-git"
 pkgrel=1
 pkgver=1.2.9_4+r420.20190225.109a2e8
-epoch=2
+epoch=3
 pkgdesc="Authsae provides secure password-based authentication for 802.11s mesh networking."
 arch=('x86' 'x86_64')
 url="https://github.com/cozybit/${_pkgname}"
@@ -39,6 +39,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
+  msg2 "Configuring with 'cmake' ..."
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
@@ -47,8 +48,10 @@ build() {
     .
 
   # FIXME: the cmake script does something very wrong and attempts to install the config file in prefix+/etc, submit patch to upstream to allow to change that
+  msg2 "Fixing a cmake script fault: Place config in '/etc/', not '/usr/etc/' ..."
   sed -i 's|/usr/etc/|/etc|' cmake_install.cmake
 
+  msg2 "Running 'make' ..."
   make
 }
 
