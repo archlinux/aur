@@ -11,7 +11,7 @@
 # checksums
 
 pkgname=mongodb-3.4
-pkgver=3.4.18
+pkgver=3.4.20
 pkgrel=1
 pkgdesc='A high-performance, open source, schema-free document-oriented database'
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=("http://downloads.mongodb.org/src/mongodb-src-r${pkgver}.tar.gz"
         'mongodb.sysusers' 'mongodb.tmpfiles' 'mongodb.conf' 'mongodb.service'
         'asio-openssl-1.1.0.patch'
         'using-std-string.patch')
-sha512sums=('844e14392b1fba35dae2892fb0fec99ca574c4885af618b27c7a6b14df186f6a10a2ee9abf59bdb340fc4ef7a13a78a2e70bb74f0c6b47ddef846459d376b425'
+sha512sums=('6192ae906e0d56a028c73056471d60c5bbd684ede346c946dfd2d03370e634323ca8ca64f8d9eaaed845c581d4b67a949279b083d78a83abf4ec0db88fb048e9'
             '889425b864c58a767aa5865c0ce9817361ad99fec78050fa600f14eaef5a56ce0bc41a03878233e99f4862596a94dafcfebebecd4d57443b742117b873ab813d'
             'a931c401792f4e7928e4778d91626c1ecc3e97e5728549b170c050de487b2e5234747b0ee2d5acc3d63b798716758c17e30914dcaa9a92ac386db39f8a45a05c'
             '05dead727d3ea5fe8af1a3c3888693f6b3e2b8cb7f197a5d793352e10d2c524e96c9a5c55ad2e88c1114643a9612ec0b26a2574b48a5260a9b51ec8941461f1c'
@@ -87,6 +87,7 @@ prepare() {
   #patch -Np1 -i ../mongodb-3.2.10-boost-1.62.0.patch
 
   sed -i '/counts.tls13/d' src/mongo/util/net/ssl_manager.cpp
+  sed -i '/#ifdef TLS1_3_VERSION/,/#endif/d' src/mongo/util/net/ssl_manager.cpp
 
   sed -e 's|-std=c++11|-std=gnu++11|g' -i SConstruct  # tests use hex floats, not supported in plain C++
 
