@@ -3,7 +3,7 @@
 pkgname=waybar-git
 pkgver=r304.66ad286
 pkgrel=1
-pkgdesc='Highly customizable Wayland bar for Sway or Wlroots based compositors.'
+pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors'
 arch=('x86_64')
 url='https://github.com/Alexays/Waybar/'
 license=('MIT')

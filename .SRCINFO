@@ -1,5 +1,5 @@
 pkgbase = waybar-git
-	pkgdesc = Highly customizable Wayland bar for Sway or Wlroots based compositors.
+	pkgdesc = Highly customizable Wayland bar for Sway and Wlroots based compositors
 	pkgver = r304.66ad286
 	pkgrel = 1
 	url = https://github.com/Alexays/Waybar/
