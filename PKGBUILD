@@ -8,13 +8,19 @@ pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives. 
 url='https://github.com/haasn/libplacebo'
 arch=('x86_64')
 license=('LGPL2.1')
-depends=('vulkan-icd-loader')
+depends=('vulkan-icd-loader'
+         'lcms2'
+         'shaderc'
+         'libshaderc_shared.so'
+         )
 makedepends=('git'
              'meson'
              'ninja'
              'vulkan-headers'
              )
-provides=('libplacebo')
+provides=('libplacebo'
+          'libplacebo.so'
+          )
 conflicts=('libplacebo')
 source=('git+https://github.com/haasn/libplacebo.git')
 sha256sums=('SKIP')
@@ -31,15 +37,17 @@ prepare() {
 build() {
   cd build
   arch-meson ../libplacebo \
-    -D tests=true \
-    -D vulkan=enabled
+    -D vulkan=enabled \
+    -D glslang=enabled \
+    -D shaderc=enabled \
+    -D lcms=enabled
 
   ninja
 }
 
-# check() {
-#   ninja -C build test
-# }
+check() {
+  ninja -C build test
+}
 
 package() {
   DESTDIR="${pkgdir}" ninja -C build install
