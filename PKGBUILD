@@ -4,7 +4,7 @@
 # Contributor: Cayde Dixon <me@cazzar.net>
 # Contributor: Anthony Anderson <aantony4122@gmail.com>
 
-pkgname='discord-ptb'
+pkgname=discord-ptb
 pkgver=0.0.15
 pkgrel=1
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
@@ -20,7 +20,6 @@ optdepends=(
   'noto-fonts-cjk: Font for special characters such as /shrug face.'
 )
 
-install="DiscordPTB.install"
 source=(LICENSE
 		"https://dl-ptb.discordapp.net/apps/linux/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 

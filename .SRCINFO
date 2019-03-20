@@ -3,7 +3,6 @@ pkgbase = discord-ptb
 	pkgver = 0.0.15
 	pkgrel = 1
 	url = https://discordapp.com/
-	install = DiscordPTB.install
 	arch = x86_64
 	license = custom
 	depends = gtk2
