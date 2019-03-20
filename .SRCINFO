@@ -1,6 +1,6 @@
 pkgbase = python-pep8-naming
 	pkgdesc = This module provides a name plugin for flake8, the Python code checker
-	pkgver = 0.7.0
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/PyCQA/pep8-naming
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-pep8-naming
 	makedepends = python-setuptools
 	depends = python
 	provides = flake-pep8-naming
-	source = python-pep8-naming-0.7.0.tar.gz::https://github.com/PyCQA/pep8-naming/archive/0.7.0.tar.gz
-	md5sums = 3f995030cf95cb3a548334d6b9b55033
+	source = python-pep8-naming-0.8.2.tar.gz::https://github.com/PyCQA/pep8-naming/archive/0.8.2.tar.gz
+	md5sums = 9c1689216b47e5c32b5060b17116dc89
 
 pkgname = python-pep8-naming
 
