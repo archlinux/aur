@@ -5,13 +5,16 @@ _pkgname="python2-antlr3-${_pkgver}"
 pkgname="${_pkgname}"
 pkgdesc="ANTLR3 runtime for Python, version ${_pkgver}"
 pkgver="${_pkgver}"
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="http://www.antlr3.org/"
 license=('BSD')
 depends=(
   'antlr3'
   'python2'
+)
+makedepends=(
+  'python2-setuptools'
 )
 provides=("python2-antlr3=${pkgver}")
 conflicts=("python2-antlr3")
