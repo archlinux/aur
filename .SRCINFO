@@ -1,0 +1,23 @@
+pkgbase = julia-arpack
+	pkgdesc = Arpack Package for Julia (compiled from source)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/JuliaLinearAlgebra/Arpack.jl
+	arch = any
+	license = MIT
+	makedepends = julia-distrohelper
+	depends = julia
+	depends = arpack
+	source = julia-arpack-0.3.0.tar.gz::https://github.com/JuliaLinearAlgebra/Arpack.jl/archive/v0.3.0.tar.gz
+	source = julia-arpack-0.3.0-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/master/A/Arpack/Deps.toml
+	source = julia-arpack-0.3.0-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/master/A/Arpack/Package.toml
+	source = julia-arpack-0.3.0-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/master/A/Arpack/Versions.toml
+	source = https://github.com/opencollab/arpack-ng/archive/3.5.0.tar.gz
+	sha256sums = 85f95f96ab400e0135b91886828067eaf59357280ce009fb04309019068ecd97
+	sha256sums = 6b20fc5711c63225d87c803032c8533c78304a761937a39a19e225dab01cabcd
+	sha256sums = d8fc2a720833fb2930bcdc2bc87624cd13852ab8ffb6e27e76b264829d725636
+	sha256sums = f16a79561cfe8825ba19745a65e6a589735dcd7642f8c5e325a701a878501614
+	sha256sums = 50f7a3e3aec2e08e732a487919262238f8504c3ef927246ec3495617dde81239
+
+pkgname = julia-arpack
+
