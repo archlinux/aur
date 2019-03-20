@@ -1,7 +1,7 @@
 # Maintainer: zarak <jean@bobine.com>
 
 pkgname=term_size
-pkgver=1
+pkgver=2
 pkgrel=1
 epoch=
 pkgdesc="change current term's size"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('c31846ee8086af22278492703cc459f3')
+md5sums=('a3f96875c6750d4a9e750a49960146a4')
 arch=('x86_64')
 
 validpgpkeys=()
