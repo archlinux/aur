@@ -9,7 +9,7 @@ arch=('any')
 url='https://github.com/jazzband/django-constance'
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+source=("$pkgbase-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('29e81a2b97a660aa08212029ae664da054cb9c83763ce35b2c959b0b0414202b')
 
 package_python-django-constance() {
