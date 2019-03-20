@@ -1,13 +1,13 @@
 pkgbase = tuxguitar
 	pkgdesc = multitrack guitar tablature editor and player
 	pkgver = 1.5.2_r1800
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/tuxguitar
 	arch = x86_64
 	license = LGPL
 	makedepends = unzip
 	makedepends = zip
-	makedepends = apache-ant
+	makedepends = ant
 	makedepends = jack
 	makedepends = fluidsynth
 	makedepends = java-environment>=8
@@ -17,12 +17,10 @@ pkgbase = tuxguitar
 	depends = alsa-lib
 	depends = libxtst
 	optdepends = fluidsynth
-	source = tuxguitar-1.5.2_r1800-src::svn+svn://svn.code.sf.net/p/tuxguitar/code/trunk@r1800
-	source = nogcj.patch
+	source = tuxguitar-1.5.2_r1800-svn::svn+svn://svn.code.sf.net/p/tuxguitar/code/trunk@r1800
 	source = tuxguitar
 	source = tuxguitar-gtk2
 	sha256sums = SKIP
-	sha256sums = bda4bc1b864ecfa27392a145854ee3b5ab20876c2d2bc38bbf85f92ce97fe2bc
 	sha256sums = efeef39d43ecf5a87ed64abc7d8cf63a01f3c9b08bac0ea299bf959fcb7c216a
 	sha256sums = 39f92c0de6fcf86635dec5ac3b83613ca980fa7d24f66888fd06e5bb2c7c571f
 

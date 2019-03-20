@@ -7,21 +7,19 @@
 pkgbase=tuxguitar
 pkgname=(tuxguitar tuxguitar-common tuxguitar-gtk2)
 pkgver=1.5.2_r1800
-pkgrel=1
+pkgrel=2
 pkgdesc="multitrack guitar tablature editor and player"
 arch=('x86_64')
 url="http://sourceforge.net/projects/tuxguitar"
 license=('LGPL')
 depends=('java-runtime>=8' 'alsa-lib' 'libxtst')
-makedepends=('unzip' 'zip' 'apache-ant' 'jack' 'fluidsynth' 'java-environment>=8' 'maven' 'subversion')
+makedepends=('unzip' 'zip' 'ant' 'jack' 'fluidsynth' 'java-environment>=8' 'maven' 'subversion')
 optdepends=('fluidsynth')
-source=(tuxguitar-${pkgver}-src::svn+svn://svn.code.sf.net/p/tuxguitar/code/trunk@r1800
-        nogcj.patch
+#source=(https://downloads.sourceforge.net/tuxguitar/tuxguitar-$pkgver-src.tar.gz)
+source=(tuxguitar-${pkgver}-svn::svn+svn://svn.code.sf.net/p/tuxguitar/code/trunk@r1800
         tuxguitar
         tuxguitar-gtk2)
-#source=(https://downloads.sourceforge.net/tuxguitar/tuxguitar-$pkgver-src.tar.gz)
 sha256sums=('SKIP'
-            'bda4bc1b864ecfa27392a145854ee3b5ab20876c2d2bc38bbf85f92ce97fe2bc'
             'efeef39d43ecf5a87ed64abc7d8cf63a01f3c9b08bac0ea299bf959fcb7c216a'
             '39f92c0de6fcf86635dec5ac3b83613ca980fa7d24f66888fd06e5bb2c7c571f')
 
@@ -31,25 +29,21 @@ case $CARCH in
 esac
 
 prepare() {
-  cd tuxguitar-$pkgver-src
-  # fix version when building from svn checkout
-  for i in $(find . -name "pom.xml")
-  do
-    sed -i s/SNAPSHOT/${pkgver}/g $i
-  done
-#  patch -Np1 -i ../nogcj.patch
+  cd tuxguitar-$pkgver-svn/build-scripts/tuxguitar-src
+  ant -Ddist.version=${pkgver}
+  mv target/tuxguitar-${pkgver}-src ${srcdir}
 }
 
 build() {
+  cd tuxguitar-$pkgver-src
   export MAVEN_OPTS="$MAVEN_OPTS -Duser.home=$srcdir"
   export JAVA_HOME="/usr/lib/jvm/"`archlinux-java get`
 
-  cd tuxguitar-$pkgver-src
-  for _i in . TuxGuitar-{lib,gm-utils} \
-    build-scripts/{tuxguitar,native-modules/tuxguitar-{alsa,oss,jack,fluidsynth}}-linux-$_arch
+  mvn clean install -P platform-linux-$_arch
+  for _i in build-scripts/{tuxguitar,native-modules/tuxguitar-{alsa,oss,jack,fluidsynth}}-linux-$_arch
   do (
     cd $_i
-    mvn install
+    mvn clean install
   ); done
 }
 
