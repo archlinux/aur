@@ -2,7 +2,7 @@
 # Contributor: Michael Thalmeier <michael@thalmeier.at>
 
 pkgname=curecoin-qt-git
-pkgver=v2.0.0.1.r0.g535abfc
+pkgver=v2.0.0.2.r0.gb68d80f
 pkgrel=1
 pkgdesc="GUI client (wallet) for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
@@ -40,7 +40,7 @@ prepare() {
 build() {
   cd "${srcdir}/CurecoinSource"
   qmake
-  make ${MAKEFLAGS}
+  make -j1
 }
 
 package() {
