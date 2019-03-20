@@ -3,7 +3,7 @@
 
 pkgname=manuskript-git
 _pkgname=manuskript
-pkgver=0.7.0.r0.g97e4679
+pkgver=0.8.0.r0.g0cbf337
 pkgrel=1
 arch=('any')
 
