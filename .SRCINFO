@@ -9,7 +9,7 @@ pkgbase = libosp-bin
 	depends = grpc
 	depends = opencv
 	depends = protobuf
-	source = https://3dvisionlabs.com/wp-content/downloads/HemiStereo-${pkgver}-Linux.tar.gz
+	source = https://3dvisionlabs.com/wp-content/downloads/HemiStereo-0.9.1-Linux.tar.gz
 	sha256sums = 00eaf5b502e54268456417bb76dbc5276c208785a00e6315cd905cb211c54bde
 
 pkgname = libosp-bin
