@@ -1,26 +1,20 @@
 # Maintainer: Vitaliy Berdinskikh <ur6lad at gmail dot com>
-pkgname=swaygrab-helper 
-pkgver=1.1.0
+pkgname=swayshot 
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Put your screenshots to XDG_PICTURES_DIR folder'
 arch=('any')
-url='https://bitbucket.org/all_gravy/swaygrab-helper'
+url='https://gitlab.com/racy/swayshot'
 license=('Apache')
-depends=('sway' 'xdg-user-dirs')
+depends=('sway' 'xdg-user-dirs' 'grim' 'slurp' 'jq')
 optdepends=('xsel: copy the full path to clipboard (or xclip)'
 	'xclip: copy the full path to clipboard (or xsel)')
-source=($pkgname-$pkgver.tar.bz2::https://bitbucket.org/all_gravy/$pkgname/get/$pkgver.tar.bz2)
-noextract=($pkgname-$pkgver.tar.bz2)
-sha256sums=('ed6b90e6590a56d6ecbac2b4d1f405007454e1757df39c1fbe500f6bf6db7cd2')
-
-prepare() {
-	cd "$srcdir"
-
-	tar -xf $pkgname-$pkgver.tar.bz2 --strip-components=1
-}
+replaces=('swaygrab-helper')
+source=(https://gitlab.com/racy/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2)
+sha256sums=('27f89d5c1185d4597f1d70f30dd021930c07121368ad2f4d871628f3a3602aa1')
 
 package() {
-	cd "$srcdir"
+	cd "$srcdir"/$pkgname-$pkgver
 
 	install -d "$pkgdir"/etc/sway/config.d
 	install -m 644 $pkgname.config "$pkgdir"/etc/sway/config.d/$pkgname
