@@ -1,7 +1,7 @@
 pkgname=toot
 _name=toot
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a Mastodon CLI client"
 depends=('python-requests' 'python-beautifulsoup4' 'python-wcwidth')
 license=('GPL3')
@@ -18,4 +18,7 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+# remove Makefile which is added by setup.py
+# Probably a bug, see https://github.com/ihabunek/toot/issues/91
+    rm $pkgdir/usr/Makefile
 }
