@@ -1,4 +1,4 @@
-pkgbase = cclasp-boehm-git
+pkgbase = cclasp-boehm
 	pkgdesc = Bringing Common Lisp and C++ Together
 	pkgver = 0.4.2.r588.g87c09be5b
 	pkgrel = 1

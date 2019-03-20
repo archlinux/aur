@@ -1,5 +1,7 @@
 # Contributor: Eric Schulte <eschulte@grammatech.com>
+# Maintainer: Eric Schulte <eschulte@grammatech.com>
 _srcname=clasp
+pkgname=cclasp-boehm
 pkgname=cclasp-boehm-git
 pkgver=0.4.2.r588.g87c09be5b
 pkgrel=1
