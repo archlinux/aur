@@ -1,6 +1,6 @@
 pkgbase = cajarename
 	pkgdesc = Batch renaming extension for Caja
-	pkgver = 18.7.28.27
+	pkgver = 19.3.20.28
 	pkgrel = 1
 	url = https://tari.in/www/software/cajarename
 	install = cajarename.install

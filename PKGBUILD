@@ -4,7 +4,7 @@
 
 pkgname=cajarename
 _pkgnamealt=caja-rename
-pkgver="18.7.28.27"
+pkgver="19.3.20.28"
 pkgrel="1"
 pkgdesc="Batch renaming extension for Caja"
 arch=('any')
