@@ -3,7 +3,7 @@
 _pkgname=keyboardlayouteditor
 pkgname="${_pkgname}"-git
 pkgver=1.1+r100.20190121.56726a3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="PyGTK programme that helps create or edit XKB keyboard layouts."
 arch=('any')
@@ -30,7 +30,9 @@ makedepends=(
   'antlr3-3.1.2'
   'git'
 )
-optdepends=()
+optdepends=(
+  'gucharmap: To open a character map and drag and drop characters.'
+)
 provides=(
   "${_pkgname}=${pkgver}"
 )
