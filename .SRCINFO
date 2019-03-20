@@ -1,5 +1,5 @@
 pkgbase = swaylock-fancy-git
-	pkgdesc = swaylock-color script: blurs and pixelates background, adds lock icon and text, offers dark/light background detection.
+	pkgdesc = Blurs and pixelates background, adds lock icon and text, for sway.
 	pkgver = r171.ca25a05
 	pkgrel = 1
 	url = https://github.com/Big-B/swaylock-fancy
