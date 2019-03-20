@@ -2,12 +2,13 @@
 
 _pkgname=keyboardlayouteditor
 pkgname="${_pkgname}"-git
-pkgver=1.1+r84.d20181009.g742101b
-pkgrel=3
+pkgver=1.1+r100.20190121.56726a3
+pkgrel=1
 epoch=1
 pkgdesc="PyGTK programme that helps create or edit XKB keyboard layouts."
 arch=('any')
-url="http://github.com/simos/keyboardlayouteditor"
+# url="http://github.com/simos/keyboardlayouteditor" # Original repo.
+url="http://github.com/hupfdule/keyboardlayouteditor" # Fork with some fixes.
 license=('GPL3')
 # To run the application, you need the python UI binding packages. For Ubuntu 14.04, the packages below are already pre-installed.
 # * Cairo
@@ -18,13 +19,15 @@ depends=(
   'gucharmap'
   'pygtk'
   'python2'
-  'python2-antlr3=3.1.2'
+  #'python2-antlr3=3.1.2'
+  'python2-antlr3-3.1.2'
   'python2-cairo'
   'python2-gobject2'
   'python2-lxml'
 )
 makedepends=(
-  'antlr3=3.1.2'
+  #'antlr3=3.1.2'
+  'antlr3-3.1.2'
   'git'
 )
 optdepends=()
@@ -32,7 +35,8 @@ provides=(
   "${_pkgname}=${pkgver}"
 )
 source=(
-  "${_pkgname}::git+git://github.com/simos/${_pkgname}.git"
+  # "${_pkgname}::git+git://github.com/simos/${_pkgname}.git" # Original repo.
+  "${_pkgname}::git+git://github.com/hupfdule/${_pkgname}.git" # Fork with some fixes.
   "keyboardlayouteditor.sh"
 )
 sha256sums=(
@@ -73,7 +77,7 @@ pkgver() {
     return 13
   fi
 
-  echo "${_ver}+r${_rev}.d${_date}.g${_githash}"
+  echo "${_ver}+r${_rev}.${_date}.${_githash}"
 }
 
 prepare() {
@@ -131,7 +135,7 @@ package() {
 
   _cmd install -D -m755 "${srcdir}/keyboardlayouteditor.sh" "${pkgdir}/usr/bin/keyboardlayouteditor"
 
-  for _docfile in 'ChangeLog-git.txt' 'README.md' 'TODO' 'website.url'; do
+  for _docfile in 'ChangeLog-git.txt' 'README.md' 'TODO' 'screenshot.png' 'website.url'; do
     _cmd install -D -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
 
