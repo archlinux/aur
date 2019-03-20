@@ -74,6 +74,9 @@ build() {
   export CFLAGS="${CFLAGS//-O2/-O3} ${CPPFLAGS} -Wno-error=deprecated-declarations -Wno-error=stringop-overflow= -Wno-error=return-type -Wno-error=cpp -fno-lifetime-dse -fno-delete-null-pointer-checks"
   export CXXFLAGS="${CXXFLAGS} ${CPPFLAGS}"
 
+  # Fix building on Linux 5+ https://github.com/JetBrains/jdk8u/issues/16
+  export DISABLE_HOTSPOT_OS_VERSION_CHECK=ok
+
   install -d -m 755 "${srcdir}/${_prefix}/"
   sh configure \
     --prefix="${srcdir}/${_prefix}" \
