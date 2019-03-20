@@ -5,10 +5,10 @@ pkgbase=libnvidia-container
 pkgname=(libnvidia-container libnvidia-container-tools)
 
 pkgver=1.0.1
+pkgrel=2
 _elfver=0.7.1
 _nvmpver=396.51
 
-pkgrel=1
 pkgdesc='NVIDIA container runtime library'
 arch=('x86_64')
 url='https://github.com/NVIDIA/libnvidia-container'
@@ -28,11 +28,13 @@ options=(!makeflags)
 source=("https://github.com/NVIDIA/${pkgbase}/archive/v${pkgver}.tar.gz"
         "https://sourceforge.net/projects/elftoolchain/files/Sources/elftoolchain-${_elfver}/elftoolchain-${_elfver}.tar.bz2"
         "https://github.com/NVIDIA/nvidia-modprobe/archive/396.51.tar.gz"
-        fix_rpc_flags.patch)
+        fix_rpc_flags.patch
+        fix_git_rev_unavail.patch)
 sha256sums=('f745cdbb630c39f10d0043fa1c1c869a64bbd01e39010ffb8823d632ab94b1d6'
             '44f14591fcf21294387215dd7562f3fb4bec2f42f476cf32420a6bbabb2bd2b5'
             '25bc6437a384be670e9fd76ac2e5b9753517e23eb16e7fa891b18537b70c4b20'
-            'ed949dd162cd104071a58b09f1effefe91150a32893ed28d143ee62bc217e566')
+            'ed949dd162cd104071a58b09f1effefe91150a32893ed28d143ee62bc217e566'
+            '48edab623a44e42d3310c87bf38df56878e68146ae4ac446c28d460fa0a4385b')
 
 _srcdir="${pkgname}-${pkgver}"
 
@@ -41,6 +43,7 @@ prepare(){
 
   pwd
   patch -Np1 -i ../../fix_rpc_flags.patch
+  patch -Np1 -i ../../fix_git_rev_unavail.patch
 
   deps_dir="deps/src/"
   # mimic behavior from:
