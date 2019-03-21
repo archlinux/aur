@@ -2,20 +2,29 @@ pkgname=jackett
 pkgver=0.11.102
 pkgrel=1
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
-arch=('any')
+arch=('x86_64' 'aarch64' 'armv7h')
 license=('GPL')
 url='https://github.com/Jackett/Jackett'
-depends=('mono' 'curl')
+depends=('curl')
+options=('!strip' 'staticlibs')
 install='jackett.install'
-source=("Jackett.Binaries.Mono-${pkgver}.tar.gz::https://github.com/Jackett/Jackett/releases/download/v${pkgver}/Jackett.Binaries.Mono.tar.gz"
-        "jackett.service"
+
+source=("jackett.service"
         "jackett.sysusers"
         "jackett.tmpfiles")
 
-sha256sums=('9a5f8e1c4a5ba4c4f8a5de015d10bc57d352d3e9da8e19395388ca2ab0fefc06'
-            '75837fe04f5afd30cdbdd3349bb27b43994dc672202f886382903f7fbc92dc89'
+source_x86_64=("Jackett.Binaries.LinuxAMDx64-${pkgver}.tar.gz::https://github.com/Jackett/Jackett/releases/download/v${pkgver}/Jackett.Binaries.LinuxAMDx64.tar.gz")
+source_aarch64=("Jackett.Binaries.LinuxARM64-${pkgver}.tar.gz::https://github.com/Jackett/Jackett/releases/download/v${pkgver}/Jackett.Binaries.LinuxARM64.tar.gz")
+source_armv7h=("Jackett.Binaries.LinuxARM32-${pkgver}.tar.gz::https://github.com/Jackett/Jackett/releases/download/v${pkgver}/Jackett.Binaries.LinuxARM32.tar.gz")
+
+sha256sums=('13da8a35ee83b210fa640c0df5930bacf4870cc5ccfe2146c67a53bd01665d91'
             'd005fcd009ec5404e1ec88246c31e664167f5551d6cabc35f68eb41750bfe590'
             '64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1')
+sha256sums_x86_64=('709c67ccd734665d95a632af28a5be9131f7c585c998e438b46a823ef5ea9874')
+sha256sums_aarch64=('018265269fdd4d64b177409caca47579ce9d2b51bbe7ec921873896471650e7e')
+sha256sums_armv7h=('d7a4c9a7f8a2190de88ccea1884cf7a3d583a931b1b59aaf441b9c2bdaf327eb')
+
+
 
 package() {
     cd "$srcdir"
