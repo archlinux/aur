@@ -3,7 +3,7 @@
 
 _gemname=open_uri_redirections
 pkgname=ruby-$_gemname
-pkgver=0.1.4
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='OpenURI patch to allow redirections between HTTP and HTTPS'
 arch=(any)
@@ -20,8 +20,13 @@ package() {
 
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
 
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" \
-    -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    --no-document \
+    -i "$pkgdir/$_gemdir" \
+    -n "$pkgdir/usr/bin" \
+    $_gemname-$pkgver.gem
 
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 
@@ -29,4 +34,4 @@ package() {
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
 
-sha256sums=('f4ba5f0655ae436e19dbd9c55ef564c3ec17bead89d1d05422417634f41c4c25')
+sha256sums=('39e629b006b1d8f90dcc3e76908fc2df36365cb25a8fc525283e57017b2bc04e')

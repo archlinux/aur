@@ -1,16 +1,16 @@
 pkgbase = ruby-open_uri_redirections
 	pkgdesc = OpenURI patch to allow redirections between HTTP and HTTPS
-	pkgver = 0.1.4
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/jaimeiniesta/open_uri_redirections
 	arch = any
 	license = MIT
 	makedepends = rubygems
 	depends = ruby
-	noextract = open_uri_redirections-0.1.4.gem
+	noextract = open_uri_redirections-0.2.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/open_uri_redirections-0.1.4.gem
-	sha256sums = f4ba5f0655ae436e19dbd9c55ef564c3ec17bead89d1d05422417634f41c4c25
+	source = https://rubygems.org/downloads/open_uri_redirections-0.2.1.gem
+	sha256sums = 39e629b006b1d8f90dcc3e76908fc2df36365cb25a8fc525283e57017b2bc04e
 
 pkgname = ruby-open_uri_redirections
 
