@@ -1419,3 +1419,15 @@ Sun Mar 10 06:38:46 2019 +0100
      2019-02-03 ca9eb98f actionless fix(export_common: dialog with options): save entry value on change
      2019-02-02 8379b8bb actionless refactor(theme_model, theme_options_list): allow different plugins having different display names/fallback values for the same the keys
      2019-01-30 c1dbaab3 Sergei Eremenko Added plugin for Suru++ icon theme (#209)
+
+
+Thu Mar 21 11:25:42 2019 +0100
+-------------------------------------------------
+1.12.1          Release 1.12.1
+    
+    Notable changes:
+     2019-03-17 d6691f20 actionless chore(colors): push some older themes from desktop machine
+     2019-03-17 1da36664 actionless chore(plugins: materia): update submodule: new release
+     2019-03-15 1eed1b04 Roboron3042 chore(colors: Contributed) add Cyberpunk-Neon (#237)
+     2019-03-11 595637a4 actionless fix(plugins: icons: suru*): don't show Icons Symbolic theme options if Gradient option enabled
+     2019-03-10 d60ad4e2 Gustavo Reis Suru++ Asprómauros plugin (#232) (#233)
