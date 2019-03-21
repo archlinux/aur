@@ -1,0 +1,24 @@
+pkgbase = perl-dist-zilla-plugin-modulebuildtiny
+	pkgdesc = Build a Build.PL that uses Module::Build::Tiny
+	pkgver = 0.015
+	pkgrel = 1
+	url = https://metacpan.org/release/Dist-Zilla-Plugin-ModuleBuildTiny
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-dist-zilla>=0
+	checkdepends = perl-test-deep>=0
+	checkdepends = perl-test-fatal>=0
+	depends = perl-dist-zilla>=4.300039
+	depends = perl-module-build-tiny>=0.039
+	depends = perl-moose>=0
+	depends = perl-moosex-types-perl>=0
+	depends = perl-path-tiny>=0
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Dist-Zilla-Plugin-ModuleBuildTiny-0.015.tar.gz
+	md5sums = 8887e08f0cdef9a2b4226b67e97699a8
+	sha512sums = d63138a5e83b35092d4b4913b4a6d83a87c8c67898cf88edd0b5a46a308a098c80955c2d5c7f7061b68dbbbc410a5c9027627099d07635751add5c3721c6c0ab
+
+pkgname = perl-dist-zilla-plugin-modulebuildtiny
+
