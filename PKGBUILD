@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ipset-git
-pkgver=6.32.r6.g8fc8ad1
+pkgver=7.1.r3.g8eaaf16
 pkgrel=1
 pkgdesc="Administration tool for IP sets"
 arch=('i686' 'x86_64')
@@ -29,7 +29,10 @@ build() {
   cd "ipset"
 
   ./autogen.sh
-  ./configure --prefix="/usr" --sbindir="/usr/bin" --with-kmod=no
+  ./configure \
+    --prefix="/usr" \
+    --sbindir="/usr/bin" \
+    --with-kmod=no
   make
 }
 

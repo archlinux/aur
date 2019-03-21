@@ -1,6 +1,6 @@
 pkgbase = ipset-git
 	pkgdesc = Administration tool for IP sets
-	pkgver = 6.32.r6.g8fc8ad1
+	pkgver = 7.1.r3.g8eaaf16
 	pkgrel = 1
 	url = http://ipset.netfilter.org/
 	arch = i686
