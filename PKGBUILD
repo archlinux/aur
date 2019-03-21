@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=iputils-git
-pkgver=s20161105.r31.gef740f5
-pkgrel=2
+pkgver=s20180629.r180.gcab98aa
+pkgrel=1
 pkgdesc="Network monitoring tools, including ping"
 arch=('i686' 'x86_64')
 url="https://github.com/iputils/iputils"
 license=('GPL' 'BSD' 'custom')
-depends=('glibc' 'libcap' 'libidn' 'openssl')
+depends=('glibc' 'libcap' 'libidn2' 'openssl')
 optdepends=('xinetd: for tftpd')
-makedepends=('git' 'libxslt')
+makedepends=('git' 'meson' 'libxslt')
 provides=('iputils')
 conflicts=('iputils')
 backup=('etc/xinetd.d/tftp')
@@ -29,23 +29,31 @@ pkgver() {
 build() {
   cd "iputils"
 
-  make CCOPTOPT="$CFLAGS" USE_NETTLE=no
-  make -C doc man
+  meson \
+    --buildtype=plain \
+    --prefix="/usr" \
+    --sbindir="bin" \
+    "_build"
+  ninja -C "_build"
+}
+
+check() {
+  cd "iputils"
+
+  meson test -C "_build"
 }
 
 package() {
   cd "iputils"
 
-  install -dm755 "$pkgdir/usr/bin"
-  install -m755 arping clockdiff ping rarpd rdisc tftpd tracepath \
-    "$pkgdir/usr/bin/"
+  DESTDIR="$pkgdir" meson install -C "_build"
 
-  install -dm755 "$pkgdir/usr/share/man/man8"
-  install -m644 doc/{arping,clockdiff,ping,rarpd,rdisc,tftpd,tracepath}.8 \
-    "$pkgdir/usr/share/man/man8/"
-
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/iputils/LICENSE"
-  install -Dm644 "LICENSE.BSD3" "$pkgdir/usr/share/licenses/iputils/LICENSE.BSD3"
+  # workaround
+  mv "$pkgdir/usr/sbin"/* "$pkgdir/usr/bin"
+  rm -r "$pkgdir/usr/sbin"
 
   install -Dm644 "$srcdir/tftp.xinetd" "$pkgdir/etc/xinetd.d/tftp"
+
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/iputils/LICENSE"
+  install -Dm644 "Documentation/LICENSE.BSD3" "$pkgdir/usr/share/licenses/iputils/LICENSE.BSD3"
 }
