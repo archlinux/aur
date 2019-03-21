@@ -2,7 +2,7 @@
 
 pkgname=rofi-mpd-git
 _gitname=Rofi_MPD
-pkgver=r21.c639c38
+pkgver=r55.a712f8d
 pkgrel=1
 pkgdesc="A Rofi menu for interacting with MPD written in Python."
 arch=('i686' 'x86_64')
@@ -20,13 +20,14 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  cd $_gitname/
+
+  python setup.py build
+}
+
 package() {
-    PYVER=$(python --version | awk '{ print $2 }' | awk -F . '{ print $1 "." $2 }')
-    PYPATH=/usr/lib/python$PYVER/site-packages/
+  cd $_gitname/
 
-    cd $_gitname/
-
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/rofi-mpd/LICENSE"
-    install -Dm755 main.py "$pkgdir/usr/bin/rofi-mpd"
-    install -Dm644 rofi.py "$pkgdir$PYPATH/rofi.py"
+  python setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}" --skip-build
 }
