@@ -11,12 +11,12 @@ source=("https://github.com/uqfoundation/multiprocess/archive/multiprocess-${pkg
 sha256sums=('225526007f02469eb8d0baabcd397058c6a68cf33ba231fd3ded9de3c43941fd')
 
 build() {
-  cd "${srcdir}"/multiprocess-$pkgver
+  cd "${srcdir}"/multiprocess-multiprocess-$pkgver
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/multiprocess-$pkgver"
+  cd "${srcdir}/multiprocess-multiprocess-$pkgver"
   python setup.py install --root=${pkgdir} --optimize=1
 }
 
