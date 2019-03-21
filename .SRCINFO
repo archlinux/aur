@@ -1,6 +1,6 @@
 pkgbase = arptables-git
 	pkgdesc = ARP filtering utility
-	pkgver = 0.0.4.r15.gf4ab8f6
+	pkgver = 0.0.4.r17.g28b22d5
 	pkgrel = 1
 	url = http://ebtables.netfilter.org/
 	arch = i686

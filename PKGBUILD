@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=arptables-git
-pkgver=0.0.4.r15.gf4ab8f6
+pkgver=0.0.4.r17.g28b22d5
 pkgrel=1
 pkgdesc="ARP filtering utility"
 arch=('i686' 'x86_64')
@@ -35,10 +35,13 @@ build() {
 package() {
   cd "arptables"
 
-  make DESTDIR="$pkgdir" PREFIX="/usr" LIBDIR="/usr/lib/arptables" BINDIR="/usr/bin" MANDIR="/usr/share/man" \
+  make \
+    DESTDIR="$pkgdir" \
+    PREFIX="/usr" \
+    LIBDIR="/usr/lib/arptables" \
+    BINDIR="/usr/bin" \
+    MANDIR="/usr/share/man" \
     install
-
-  rm -r "$pkgdir/etc/rc.d"
 
   install -Dm755 "$srcdir/arptables.systemd" \
     "$pkgdir/usr/lib/systemd/scripts/arptables"
