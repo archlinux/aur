@@ -13,8 +13,10 @@ pkgbase = tarquin
 	depends = fftw
 	depends = gnuplot
 	depends = qwt5
-	source = https://github.com/martin3141/tarquin/archive/v4.3.12.tar.gz
+	source = tarquin-4.3.12.tar.gz::https://github.com/martin3141/tarquin/archive/v4.3.12.tar.gz
+	source = CMakeListsPatch.txt
 	md5sums = 9886ccd6eaaa35b7b60a26fd56cafecd
+	md5sums = 37e29d28404757eee761507121543609
 
 pkgname = tarquin
 
