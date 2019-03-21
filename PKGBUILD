@@ -3,7 +3,7 @@
 
 _pkgname=freetype2
 pkgname=${_pkgname}-v35
-pkgver=2.9
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Font rasterization library with v35 bytecode interpreter only"
 arch=(i686 x86_64)
@@ -21,14 +21,12 @@ source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pk
         0002-Enable-subpixel-rendering.patch
         0003-Enable-v35-subpixel-hinting.patch
         0004-Enable-long-PCF-family-names.patch
-        0001-psaux-Correctly-handle-Flex-features-52846.patch
         freetype2.sh)
-sha1sums=('94c4399b1a55c5892812e732843fcb4a7c2fe657'
-          'c3e91e668936206d3c158bffde0f69788a086a5b'
-          '4ff958229a7f87e04a9894d5a6ed2df227071931'
-          '5237bd234d7bb359dadb28e804115f07bbbdfb13'
-          '334f229875039794adeb574e27d365bb445fb314'
-          '21ad7dd31e16adb5b39adfa5671018a736626562'
+sha1sums=('f6abf03e0e3189a0de883981c57d3861b5d314f5'
+          '46fd67e6a594f6c2c473b9321ba64913984ba42f'
+          '57b1671593684712a555ac5a42bf22f2b85dbe1b'
+          '8b7911d96f9854ee139b82a88c1ba634e11873ec'
+          'af76172be8135e74391b7ad1b82c2124ae0ad86c'
           'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f')
 
 prepare() {
@@ -37,9 +35,6 @@ prepare() {
   patch -Np1 -i ../0002-Enable-subpixel-rendering.patch
   patch -Np1 -i ../0003-Enable-v35-subpixel-hinting.patch
   patch -Np1 -i ../0004-Enable-long-PCF-family-names.patch
-  # Freetype 2.9 regression: bad rendering for some Type 1 fonts
-  # https://savannah.nongnu.org/bugs/?52846
-  patch -Np1 -i ../0001-psaux-Correctly-handle-Flex-features-52846.patch
 }
 
 build() {
