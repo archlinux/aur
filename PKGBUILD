@@ -1,6 +1,6 @@
 # Maintainer: Jonas Gierer <jgierer12@gmail.com>
 pkgname=pocket-casts-linux-bin
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Electron wrapper around the Pocket Casts web app with support for MPRIS (media controls)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "https://github.com/jgierer12/pocket-casts-linux/releases/download/v$pkgver/pocket-casts-linux-$pkgver-x64.pacman"
   "https://raw.githubusercontent.com/jgierer12/pocket-casts-linux/v$pkgver/LICENSE"
 )
-md5sums=('8f07b49aebffac1bc6d1af0017cdfbd0'
+md5sums=('051d28a9f74472e229b2ce7a89b1be8f'
          '33b6298b0e0e6506f656593f828f958e')
 
 package() {
