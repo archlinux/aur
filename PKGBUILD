@@ -1,13 +1,17 @@
 # Contributor: henning mueller <henning@orgizm.net>
 
 pkgname=transmission-rss
-pkgver=0.2.6
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Adds torrents from rss feeds to transmission web frontend.'
 arch=(any)
 license=(GPL)
 url=http://rubygems.org/gems/transmission-rss
-depends=(ruby 'ruby-open_uri_redirections>=0.1.4')
+depends=(
+  ruby
+  'ruby-open_uri_redirections>=0.1.4'
+  ruby-rb-inotify
+)
 backup=(etc/transmission-rss.conf)
 source=(
   https://rubygems.org/downloads/$pkgname-$pkgver.gem
@@ -26,6 +30,7 @@ package() {
   gem install \
     --ignore-dependencies \
     --no-user-install \
+    --no-document \
     -i "$pkgdir$_gemdir" \
     $pkgname-$pkgver.gem
 
@@ -47,6 +52,6 @@ package() {
   find $pkgdir -type d -empty | xargs rmdir
 }
 
-sha256sums=('fa36f2addf0b2feb99188cdbbf5de7229af6d265e3a33138818de34fb985c7ff'
+sha256sums=('38762e69117a336091daf0cfa00c51d0001067ffdc594c65e86578d0ee4e35c1'
             'afc4ef4b6b80627f9bd02990cdff1f5ff1442830ee9f4ed39742dd927d69f338'
             '8d88a4858d6ce3f84fe851534d4bbf2e0ca8ecb81e25c095e128046d08fb764e')
