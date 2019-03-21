@@ -2,7 +2,7 @@
 # Contributor: McModder <mcmodder @ mcmodder.ru>
 # Contributor: Denis Vadimov <me @ bloody.pw>
 
-_version=67.0a1
+_version=68.0a1
 _baseurl="https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/"
 _date="$(date +%Y%m%d)"
 _filename="firefox-${_version}.ru.linux"
