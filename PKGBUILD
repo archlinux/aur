@@ -1,41 +1,23 @@
-pkgbase=python-pathos
-pkgname=('python-pathos' 'python2-pathos')
-pkgver=0.2.1
+pkgname=python-pathos
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="parallel graph management and execution in heterogeneous computing"
 url="http://trac.mystic.cacr.caltech.edu/project/pathos/wiki.html"
 arch=(any)
 license=('BSD')
-makedepends=('python-setuptools' 'python2-setuptools' 'python-ppft' 'python2-ppft' 'python-pox' 'python2-pox' 'python-multiprocess' 'python2-multiprocess')
+makedepends=('python-setuptools')
+depends=('python-ppft' 'python-pox' 'python-multiprocess')
 source=("https://github.com/uqfoundation/pathos/archive/pathos-${pkgver}.tar.gz")
-sha1sums=('e00d5ac3712a2ec02f54749815117dc1afab82e6')
+sha256sums=('5a325a19f66bd92fe3978febf4e96b8836f45f851ab23b07eaf589beac9c21bc')
 
 build() {
-  cp -r "${srcdir}"/pathos-pathos-$pkgver "${srcdir}"/pathos-$pkgver
-  cp -r "${srcdir}"/pathos-$pkgver "${srcdir}"/pathos-$pkgver-py2
-
   cd "${srcdir}"/pathos-$pkgver
   python setup.py build
-
-  cd "${srcdir}"/pathos-$pkgver-py2
-  python2 setup.py build
 }
 
-package_python-pathos() {
-  depends=('python-ppft' 'python-pox' 'python-multiprocess')
-
+package() {
   cd "${srcdir}/pathos-$pkgver"
   python setup.py install --root=${pkgdir} --optimize=1
 }
 
-package_python2-pathos() {
-  depends=('python2-ppft' 'python2-pox' 'python2-multiprocess')
-
-  cd "${srcdir}/pathos-$pkgver"
-  python2 setup.py install --root=${pkgdir} --optimize=1
-  mv ${pkgdir}/usr/bin/pathos_server.py ${pkgdir}/usr/bin/pathos_server2.py
-  mv ${pkgdir}/usr/bin/pathos_tunnel.py ${pkgdir}/usr/bin/pathos_tunnel2.py
-  mv ${pkgdir}/usr/bin/portpicker.py ${pkgdir}/usr/bin/portpicker2.py
-  mv ${pkgdir}/usr/bin/tunneled_pathos_server.py ${pkgdir}/usr/bin/tunneled_pathos_server2.py
-}
 
