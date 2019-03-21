@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest at mac dot com>
 
 pkgname=cashshuffle
-pkgver=0.6.13
+pkgver=0.6.14
 pkgrel=0
 pkgdesc="CashShuffle server for BCH."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 provides=("s=${pkgver}")
 source=("https://github.com/cashshuffle/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('74edb6a41da8dd791b2f225b0f683b85324afc05d7a65fc0f478d3c11a240e91')
+sha256sums=('d5dcd3bc9a9cb99a616c35e3bf2aa17d513c3c1f095dd3dc0c70989e5851a86f')
 
 build() {
   mkdir -p "${srcdir}/go/src/github.com/cashshuffle"
