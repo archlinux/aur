@@ -1,6 +1,6 @@
 pkgbase = wangle
 	pkgdesc = A full featured, high performance C++ futures implementation.
-	pkgver = 2019.01.14.00
+	pkgver = 2019.03.18.00
 	pkgrel = 1
 	url = https://github.com/facebook/wangle
 	arch = i686
@@ -11,10 +11,10 @@ pkgbase = wangle
 	makedepends = gtest
 	makedepends = google-glog
 	makedepends = boost
-	depends = folly
+	depends = fizz
 	depends = boost-libs
-	source = https://github.com/facebook/wangle/archive/v2019.01.14.00.tar.gz
-	sha256sums = 154c4569c39a9ccb147e2c410c3fc7b60fe5701502ded655002b6c5762f692ea
+	source = https://github.com/facebook/wangle/archive/v2019.03.18.00.tar.gz
+	sha256sums = 60e2767f58a94b76f6ea00d46d05f6d72fb54af8130f7e69364f089727e7a4eb
 
 pkgname = wangle
 
