@@ -11,7 +11,7 @@ pkgbase = nlohmann-json-bin
 	source = include-3.6.1.zip::https://github.com/nlohmann/json/releases/download/v3.6.1/include.zip
 	source = https://raw.githubusercontent.com/nlohmann/json/v3.6.1/LICENSE.MIT
 	sha256sums = 69cc88207ce91347ea530b227ff0776db82dcb8de6704e1a3d74f4841bc651cf
-	sha256sums = 7b875bb7a4e28abb7956ea821b4b7d88ff6a2a4fabf261c3993730a365ec56dd
+	sha256sums = 7400586ce89c6a2cc65f6ca46997da5d356a230673d3a211e040b783f23578a1
 
 pkgname = nlohmann-json-bin
 
