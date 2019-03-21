@@ -1,7 +1,7 @@
 # Maintainer: Shatur <genaloner@gmail.com>
 
 # Use KDE API for tray for additional feautures (this also add knotifier dependency, recommended for Plasma users).
-PLASMA=true
+PLASMA=false
 
 pkgname=optimus-manager-qt-git
 pkgver=1.0.0.r21.g25206c8
