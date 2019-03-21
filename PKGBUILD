@@ -16,7 +16,7 @@ source=(
   "https://raw.githubusercontent.com/jgierer12/pocket-casts-linux/v$pkgver/LICENSE"
 )
 md5sums=('051d28a9f74472e229b2ce7a89b1be8f'
-         '33b6298b0e0e6506f656593f828f958e')
+         '04bf690e790df16c6404870cdea950bc')
 
 package() {
   mv "${srcdir}/usr" "${pkgdir}/usr"

@@ -11,7 +11,7 @@ pkgbase = pocket-casts-linux-bin
 	source = https://github.com/jgierer12/pocket-casts-linux/releases/download/v1.2.0/pocket-casts-linux-1.2.0-x64.pacman
 	source = https://raw.githubusercontent.com/jgierer12/pocket-casts-linux/v1.2.0/LICENSE
 	md5sums = 051d28a9f74472e229b2ce7a89b1be8f
-	md5sums = 33b6298b0e0e6506f656593f828f958e
+	md5sums = 04bf690e790df16c6404870cdea950bc
 
 pkgname = pocket-casts-linux-bin
 
