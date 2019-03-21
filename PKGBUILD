@@ -1,10 +1,11 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgbase=chicago95-git
 pkgname=(chicago95-gtk-theme-git
          chicago95-icon-theme-git
          xcursor-chicago95-git)
-pkgver=r128.7ca8525
+pkgver=r142.9897b93
 pkgrel=1
 pkgdesc="Windows 95 inspired theme"
 arch=(any)
