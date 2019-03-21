@@ -1,0 +1,11 @@
+pkgbase = losslessaudiochecker
+	pkgver = 2.0.5
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://losslessaudiochecker.com/dl/LAC-Linux-64bit.tar.gz
+	md5sums = 85f1925ffa24b963549a8bb7049b75e5
+
+pkgname = losslessaudiochecker
+
