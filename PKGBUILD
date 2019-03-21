@@ -17,8 +17,7 @@ arch=('x86_64' 'armv7h' 'aarch64')
 url='https://plex.tv/'
 license=('custom')
 options=('!emptydirs')
-provides=('plex-media-server')
-conflicts=('plex-media-server')
+conflicts=('plex-media-server-plexpass')
 # Commented to override user version
 #backup=('etc/conf.d/plexmediaserver')
 install='plex-media-server.install'
