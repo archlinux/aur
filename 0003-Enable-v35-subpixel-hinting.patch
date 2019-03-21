@@ -1,14 +1,12 @@
-diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index 67a361dd41e0b026..c4812862518b66a6 100644
---- a/include/freetype/config/ftoption.h
-+++ b/include/freetype/config/ftoption.h
-@@ -675,8 +675,8 @@ FT_BEGIN_HEADER
-   /* [1] http://www.microsoft.com/typography/cleartype/truetypecleartype.aspx */
-   /*                                                                       */
+diff -pudr a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
+--- a/include/freetype/config/ftoption.h	2019-03-21 12:46:59.724994096 +0300
++++ b/include/freetype/config/ftoption.h	2019-03-21 12:47:29.256015057 +0300
+@@ -658,7 +658,7 @@ FT_BEGIN_HEADER
+    * https://www.microsoft.com/typography/cleartype/truetypecleartype.aspx
+    */
  /* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  1         */
 -#define TT_CONFIG_OPTION_SUBPIXEL_HINTING  2
-+/* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  2         */
++/* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  2 */
  /* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  ( 1 | 2 ) */
  
  
-   /*************************************************************************/
