@@ -3,7 +3,7 @@
 
 _pkgname=gthumb
 pkgname=gthumb-git
-pkgver=3.3.4
+pkgver=3.7.1+24+g8765cb91
 pkgrel=1
 pkgdesc="Image browser and viewer for the GNOME Desktop"
 arch=(i686 x86_64)
@@ -22,25 +22,21 @@ optdepends=('libraw: read RAW files'
             'brasero: burn discs'
             'liboauth: web albums')
 options=('!emptydirs')
-install=gthumb.install
-source=($_pkgname::git+https://git.gnome.org/browse/$_pkgname)
+source=("git+https://gitlab.gnome.org/GNOME/gthumb.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd $_pkgname/
-	git describe | sed 's/^v//;s/-/./g'
+  cd $_pkgname/
+  git describe --tags | sed 's/_/./g;s/-/+/g'
 }
 
 build() {
-	cd $_pkgname/
-	./autogen.sh --prefix=/usr --sysconfdir=/etc \
-		--localstatedir=/var --disable-static \
-		--enable-libchamplain --enable-libraw
-	make
+  arch-meson $_pkgname build \
+    --buildtype debugoptimized \
+    -D libchamplain=true
+  ninja -C build
 }
 
 package() {
-    cd $_pkgname/
-    make DESTDIR="$pkgdir" install
-    install -D -m644 $srcdir/gthumb/data/icons/hicolor/48x48/apps/gthumb.png $pkgdir/usr/share/pixmaps/gthumb.png
+  DESTDIR="$pkgdir" meson install -C build
 }
