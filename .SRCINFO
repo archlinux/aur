@@ -1,5 +1,5 @@
 pkgbase = plex-media-server
-	pkgdesc = Plex Media Server (PlexPass version)
+	pkgdesc = Plex Media Server
 	pkgver = 1.15.1.791
 	pkgrel = 6
 	url = https://plex.tv/
