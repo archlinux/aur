@@ -1,10 +1,9 @@
-# $Id$
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=php-pdo_sqlsrv
 _extname=${pkgname#php-}
-pkgver=5.5.0
-_pkgver=${pkgver}preview
+pkgver=5.6.1
+_pkgver=${pkgver}
 pkgrel=1
 pkgdesc="Microsoft Drivers for PHP for SQL Server"
 arch=('i686' 'x86_64')
@@ -12,7 +11,7 @@ url="https://pecl.php.net/package/$_extname"
 license=('MIT')
 depends=('php' 'msodbcsql')
 source=("https://pecl.php.net/get/$_extname-$_pkgver.tgz")
-sha256sums=('68502314499c71f790f33b3a3aa6ee8b7a7e76506b285696b727c2e12b2f32d0')
+sha256sums=('caf4033677cc7b0992bd68ba1989a095e92150489efc98147445398763a0340a')
 backup=("etc/php/conf.d/$_extname.ini")
 
 build() {
