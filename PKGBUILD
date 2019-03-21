@@ -3,9 +3,10 @@
 # Daniel Wallace <danielwallace at gtmanfred dot com>
 # Lucas De Marchi <lucas.de.marchi@gmail.com>
 # Tailinchu <tailinchu at gmail dot com>
+# Maintainer: Andrey Vetrov <vetrov at mail dot ru>
 
 pkgname=connman-git
-pkgver=1.36.r151.ga51d7f68
+pkgver=1.36.r164.gb7ddedc4
 pkgrel=1
 pkgdesc="Intel's modular network connection manager. Git version."
 url="https://01.org/connman"
