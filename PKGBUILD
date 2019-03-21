@@ -4,8 +4,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=73.0.3683.75
-pkgrel=2
+pkgver=73.0.3683.86
+pkgrel=1
 _launcher_ver=6
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium-avoid-log-flooding-in-GLSurfacePresentationHelper.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('8304810626c69c296b3262844e20052e7476280b634c525a711a7f6c0e3dd57c'
+sha256sums=('9ebb731576d25901cee5505f3458cf7780b0a39243743d7779f66514716bbfa3'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
             'b3b6f5147d519c586cbdaf3b227dd1719676fa3a65edd6f08989087afd287afa'
