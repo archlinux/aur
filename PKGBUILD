@@ -1,12 +1,12 @@
 # Maintainer: Shaumyadeep Chaudhuri <shaumya at gmail.com>
 
 pkgname=advanced-rest-client
-pkgver=12.1.4
+pkgver=13.0.0
 pkgrel=1
 pkgdesc='A developer tool to test a HTTP request. The Advanced REST Client desktop application.'
 arch=('x86_64')
 url='https://advancedrestclient.com/'
-license=('custom')
+license=('Apache')
 options=('!strip')
 depends=(
 	'gconf'
@@ -14,10 +14,10 @@ depends=(
 	'libappindicator-gtk3'
 	'libxtst'
 	'nss'
-    'libxss')
+	'libxss')
 install=advanced-rest-client.install
 source_x86_64=("https://github.com/advanced-rest-client/arc-electron/releases/download/v${pkgver}/arc-linux-${pkgver}-amd64.deb")
-sha256sums_x86_64=('570d01a62d94b61229b7c5bfe5070d619f764a3ab362f90e655d9611cac2f9fb')
+sha256sums_x86_64=('edb1389e4eb5b5276b29f793507bbf4316e28c2549903b4271a7ecd32a527c3c')
 
 prepare() {
 	tar -xf data.tar.xz
