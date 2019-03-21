@@ -1,12 +1,12 @@
 # Maintainer: Fabio Di Matteo <pobfdm@gmail.com>
 pkgname=pobshare-git
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="A simple gui for share files. "
 arch=('any')
 url="https://github.com/pobfdm/pobshare.git"
 license=('GPL')
-depends=('python-wxpython' 'python-pyftpdlib')
+depends=('python-wxpython' 'python-pyftpdlib' 'python-pyopenssl')
 conflicts=('pobshare')
 source=(https://github.com/pobfdm/pobshare/archive/master.zip)
 md5sums=('SKIP') #generate with 'makepkg -g'

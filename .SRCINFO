@@ -1,6 +1,6 @@
 pkgbase = pobshare
 	pkgdesc = Pobshare is A simple gui for share files.
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/pobfdm/pobshare
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = pobshare
 	license = GPL
 	depends = python-wxpython
 	depends = python-pyftpdlib
+	depends = python-pyopenssl
 	provides = pobshare
 	conflicts = pobshare
 	source = https://github.com/pobfdm/pobshare/archive/master.zip
