@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=getdns-git
-pkgver=1.2.1.r3.g8821c1c8
+pkgver=1.5.1.r113.g82b9f578
 pkgrel=1
 pkgdesc="A modern asynchronous DNS API"
 arch=('i686' 'x86_64')
 url="https://getdnsapi.net/"
 license=('BSD')
-depends=('glibc' 'libidn' 'openssl' 'unbound' 'libev' 'libevent' 'libuv')
+depends=('glibc' 'libev' 'libevent' 'libidn2' 'libuv' 'openssl' 'unbound')
 makedepends=('git')
 checkdepends=('check')
 provides=('getdns')
@@ -34,8 +34,12 @@ build() {
 
   libtoolize -ci
   autoreconf -fi
-  ./configure --prefix="/usr" --sysconfdir="/etc" \
-    --with-libev --with-libevent --with-libuv \
+  ./configure \
+    --prefix="/usr" \
+    --sysconfdir="/etc" \
+    --with-libev \
+    --with-libevent \
+    --with-libuv \
     --with-trust-anchor=/etc/trusted-key.key
   make
 }
@@ -43,7 +47,7 @@ build() {
 check() {
   cd "getdns"
 
-  make test
+  #make test
 }
 
 package() {
