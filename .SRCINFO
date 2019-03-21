@@ -1,0 +1,17 @@
+pkgbase = totp-git
+	pkgdesc = command line TOTP generator
+	pkgver = r3.3a495e0
+	pkgrel = 1
+	url = https://github.com/TestudoAquatilis/totp
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-onetimepass
+	source = totp-git::git+https://github.com/TestudoAquatilis/totp
+	md5sums = SKIP
+
+pkgname = totp-git
+

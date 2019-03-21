@@ -1,0 +1,5 @@
+/pkg
+/src
+/totp-git
+
+*.pkg.tar.xz
