@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ebtables-git
-pkgver=2.0.10.4.r12.g73c2371
+pkgver=2.0.10.4.r37.g46b6cf9
 pkgrel=1
 pkgdesc="A filtering tool for a Linux-based bridging firewall"
 arch=('i686' 'x86_64')
@@ -29,6 +29,11 @@ pkgver() {
 build() {
   cd "ebtables"
 
+  ./autogen.sh
+  ./configure \
+    --prefix="/usr" \
+    --sbindir="/usr/bin" \
+    --sysconfdir="/etc"
   make
 }
 
@@ -37,8 +42,6 @@ package() {
 
   make DESTDIR="$pkgdir" BINDIR="/usr/bin" MANDIR="/usr/share/man" \
     install
-
-  rm -r "$pkgdir/etc"
 
   install -Dm755 "$srcdir/ebtables.systemd" \
     "$pkgdir/usr/lib/systemd/scripts/ebtables"
