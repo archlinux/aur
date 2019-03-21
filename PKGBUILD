@@ -5,7 +5,7 @@
 pkgname=knime-desktop
 _upstream_name="knime"
 pkgver=3.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A user-friendly graphical workbench for the entire data analysis process"
 url="http://www.knime.org/"
 license=('custom')
@@ -13,7 +13,8 @@ arch=('x86_64')
 depends=('java-environment' 'python')
 makedepends=('binutils' 'fakeroot' 'imagemagick')
 optdepends=('bash: Required for bash-scriptable nodes'
-            'r: Required for R-scriptable nodes')
+            'r: Required for R-scriptable nodes'
+            'webkit2gtk: Required for displaying HTML content')
 options=('!emptydirs')
 changelog=ChangeLog
 _CARCH="x86_64"
