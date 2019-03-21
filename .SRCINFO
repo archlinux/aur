@@ -6,13 +6,9 @@ pkgbase = python-pushetta
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python
 	source = https://pypi.python.org/packages/1b/af/f1d0d56f9e55a2f1270c324e174492454488663dbcd9a196a969cd81088f/pushetta-1.0.15.tar.gz
 	md5sums = fa7a741800b88b89bcb4fbeee3b03f61
 
 pkgname = python-pushetta
-	depends = python
-
-pkgname = python2-pushetta
-	depends = python2
 
