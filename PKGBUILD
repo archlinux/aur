@@ -1,10 +1,11 @@
-# Maintainer: sballert <sballert@posteo.de>
+# Contributor: sballert <sballert@posteo.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 _gituser="politza"
 _gitrepo="tablist"
 
 pkgname=emacs-tablist-git
-pkgver=r42.c834a84
+pkgver=0.70r8.g389730e
 pkgrel=1
 pkgdesc="Extended tabulated-list-mode"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -19,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  git describe --tags|sed 's+-+r+'|tr - .|cut -c2-
 }
 
 build() {
@@ -29,6 +30,6 @@ build() {
 
 package() {
   cd "$_gitrepo"
-  install -d  "$pkgdir"/usr/share/emacs/site-lisp/${_gitrepo}/
-  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/${_gitrepo}/
+  install -d  "$pkgdir"/usr/share/emacs/site-lisp
+  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp
 }
