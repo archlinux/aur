@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=miniupnpd-git
-pkgver=2.1.r55.gbde31cd
+pkgver=2.1.r99.gf43949b
 pkgrel=1
 pkgdesc="Lightweight UPnP IGD daemon (git)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'iptables' 'net-tools' 'util-linux' 'sh')
 makedepends=('git' 'lsb-release' 'procps-ng')
 provides=('miniupnpd')
 conflicts=('miniupnpd')
-backup=(etc/miniupnpd/miniupnpd.conf)
+backup=('etc/miniupnpd/miniupnpd.conf')
 source=("git+https://github.com/miniupnp/miniupnp.git"
         "miniupnpd.service::https://git.archlinux.org/svntogit/community.git/plain/trunk/miniupnpd.service?h=packages/miniupnpd")
 sha256sums=('SKIP'
@@ -28,13 +28,13 @@ build() {
   cd "miniupnp/miniupnpd"
 
   CONFIG_OPTIONS="--ipv6 --leasefile" make -f Makefile.linux config.h
-  make -f Makefile.linux
+  make -f "Makefile.linux"
 }
 
 package() {
   cd "miniupnp/miniupnpd"
 
-  make DESTDIR="$pkgdir" SBININSTALLDIR="/usr/bin" -f Makefile.linux install
+  make DESTDIR="$pkgdir" SBININSTALLDIR="/usr/bin" -f "Makefile.linux" install
 
   rm -r "$pkgdir/etc/init.d"
 
