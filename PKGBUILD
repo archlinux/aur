@@ -1,5 +1,5 @@
 pkgname=totp-git
-pkgver=r3.3a495e0
+pkgver=r5.5e9f68e
 pkgrel=1
 pkgdesc="command line TOTP generator"
 arch=('i686' 'x86_64' 'armv7h')
@@ -18,6 +18,8 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
+
 package() {
         install -D $srcdir/$pkgname/totp $pkgdir/usr/bin/totp
+        install -D $srcdir/$pkgname/zsh/site-functions/_totp $pkgdir/usr/share/zsh/site-functions/_totp
 }
