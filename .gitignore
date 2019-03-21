@@ -1,0 +1,6 @@
+/*.deb
+/*.rpm
+/*.spk
+/*.xz
+/src/
+/pkg/
