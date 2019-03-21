@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/JakeStanger/Rofi_MPD"
 license=('MIT')
 makedepends=('git')
-depends=('python')
+depends=('python' 'python-mpd2')
 
 source=("git+https://github.com/JakeStanger/Rofi_MPD.git")
 
