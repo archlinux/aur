@@ -16,7 +16,7 @@ pkgbase = lib32-harfbuzz-git
 	depends = lib32-glib2
 	depends = lib32-freetype2
 	depends = harfbuzz
-	source = git+https://anongit.freedesktop.org/git/harfbuzz
+	source = git+https://github.com/harfbuzz/harfbuzz
 	sha256sums = SKIP
 
 pkgname = lib32-harfbuzz-git

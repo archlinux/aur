@@ -10,7 +10,7 @@ license=(MIT)
 depends=(lib32-glib2 lib32-freetype2 harfbuzz)
 makedepends=(lib32-cairo lib32-icu gcc-multilib ragel git python)
 checkdepends=(python-fonttools python-setuptools)
-source=("git+https://anongit.freedesktop.org/git/harfbuzz")
+source=("git+https://github.com/harfbuzz/harfbuzz")
 sha256sums=('SKIP')
 
 pkgver() {
