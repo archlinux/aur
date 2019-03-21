@@ -55,5 +55,5 @@ check() {
 package() {
   cd freetype-${pkgver}
   make DESTDIR="${pkgdir}" install
-  rm -r "${pkgdir}"/usr/{include,share,bin}
+  rm -r "${pkgdir}"/usr/{include,share}
 }
