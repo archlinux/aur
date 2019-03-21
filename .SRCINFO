@@ -15,8 +15,8 @@ pkgbase = wpewebkit-gl-aarch64
 	depends = harfbuzz-icu
 	depends = woff2
 	depends = libwpe>=1.0.0
-	provides = wpewebkit-gl
-	conflicts = wpewebkit-gl
+	provides = wpewebkit
+	conflicts = wpewebkit
 	source = https://webreflection.github.io/aur/wpewebkit-gl-aarch64-2.22.5.tar.gz
 	md5sums = 36a40c4e34c1f495de80870f1075a93e
 	sha1sums = 9e41fd0ac0f626f4943b21088a06aecff6ae0d4e
