@@ -1,0 +1,26 @@
+From dc12bd61a349fa9baf92637d2cc61b806674ed32 Mon Sep 17 00:00:00 2001
+From: Olivier Mehani <shtrom@ssji.net>
+Date: Thu, 21 Mar 2019 21:53:35 +1100
+Subject: [PATCH] mbm_powerstate: protect from empty $1
+
+Signed-off-by: Olivier Mehani <shtrom@ssji.net>
+---
+ utils/mbm_powerstate | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/utils/mbm_powerstate b/utils/mbm_powerstate
+index 2c15936..857ae81 100755
+--- a/utils/mbm_powerstate
++++ b/utils/mbm_powerstate
+@@ -7,7 +7,7 @@ sleep="0"
+ 
+ echo "PIN = $PIN   PUK = $PUK"
+ 
+-if [ $1 == "1" ]
++if [ "$1" == "1" ]
+ then
+ 	let sleep="0"
+ else
+-- 
+2.21.0
+
