@@ -5,12 +5,16 @@
 _pipname=pancritic
 pkgname=python-$_pipname
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CriticMarkdup parser with optional pandoc backend"
 arch=(any)
 url="https://github.com/ickc/$_pipname"
 license=(GPLv3)
 makedepends=("python" "python-pip")
+optdepends=("python-markdown: Markdown backend for Markdown output"
+            "python-markdown2: Markdown2 backend for Markdown output"
+            "python-panflute: Panflute backend for Markdown output"
+            "python-pypandoc: Pandoc backend for Markdown output")
 
 build() {
   pip install --no-deps --target="$_pipname" "$_pipname==$pkgver"
