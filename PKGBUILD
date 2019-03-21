@@ -1,15 +1,15 @@
 # Maintainer: pfm <vorticity at mail dot ru>
 pkgname=("python-eliot" "python2-eliot")
 _pkgname=eliot
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Logging that tells you why it happened"
 arch=(any)
 url="https://eliot.readthedocs.io"
 license=('Apache')
 makedepends=("python-setuptools" "python2-setuptools")
-source=("https://github.com/itamarst/$_pkgname/archive/$pkgver.tar.gz")
-md5sums=('8355b7f9440ab78191a05ca2ed8efbc3')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/itamarst/$_pkgname/archive/$pkgver.tar.gz")
+md5sums=('4e6b19965861245bd7dd2c1a7ad17bb4')
 
 prepare() {
     cp -a $_pkgname-$pkgver{,-py2}
