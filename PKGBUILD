@@ -27,7 +27,7 @@ options=(!makeflags)
 # https://github.com/NVIDIA/libnvidia-container/blob/56704b8dd297bf4daf82a2da4b270dc7f14e0008/mk/nvidia-modprobe.mk
 source=("https://github.com/NVIDIA/${pkgbase}/archive/v${pkgver}.tar.gz"
         "https://sourceforge.net/projects/elftoolchain/files/Sources/elftoolchain-${_elfver}/elftoolchain-${_elfver}.tar.bz2"
-        "https://github.com/NVIDIA/nvidia-modprobe/archive/396.51.tar.gz"
+        "https://github.com/NVIDIA/nvidia-modprobe/archive/${_nvmpver}.tar.gz"
         fix_rpc_flags.patch
         fix_git_rev_unavail.patch)
 sha256sums=('f745cdbb630c39f10d0043fa1c1c869a64bbd01e39010ffb8823d632ab94b1d6'
