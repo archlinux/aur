@@ -1,9 +1,10 @@
+# Maintainer: Manuel Kauschinger <admin a bruzzzla dot de>
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 _name=tomlkit
 pkgbase='python-tomlkit'
 pkgname=('python-tomlkit' 'python2-tomlkit')
-pkgver=0.4.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Style-preserving TOML library for Python"
 arch=('any')
@@ -15,7 +16,7 @@ makedepends=(
 optdepends=('python2-typing')
 options=(!emptydirs)
 source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.io/packages/source/"${_name:0:1}"/"${_name}"/"${_name}"-"${pkgver}".tar.gz)
-sha256sums=('4f112445d6e52a038adf23b027ccb11905fdf88976990116e8f7b171b768cedb')
+sha256sums=('d6506342615d051bc961f70bfcfa3d29b6616cc08a3ddfd4bc24196f16fd4ec2')
 
 prepare() {
   cp -a "${_name}"-"${pkgver}"{,-py2}
