@@ -3,7 +3,7 @@
 
 pkgname=tome4-git
 _pkgname=tome4
-pkgver=1.5.0.r591.g01abffbb7
+pkgver=1.5.0.r890.g4e4c5ee66
 pkgrel=1
 pkgdesc="An open-source, single-player, role-playing roguelike game set in the world of Eyal."
 arch=('i686' 'x86_64')
@@ -36,6 +36,7 @@ pkgver() {
 prepare() {
 	cd "$srcdir"/t-engine4
 	patch -p1 < "${srcdir}/aur-${_pkgname}.patch"
+  sed -i "s|#include <GL/glext.h>||g" src/tgl.h
 }
 
 ###############################################################################
