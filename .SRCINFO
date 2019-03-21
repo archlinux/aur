@@ -16,7 +16,7 @@ pkgbase = harfbuzz-git
 	depends = glib2
 	depends = freetype2
 	depends = graphite
-	source = git+https://anongit.freedesktop.org/git/harfbuzz
+	source = git+https://github.com/harfbuzz/harfbuzz
 	sha256sums = SKIP
 
 pkgname = harfbuzz-git

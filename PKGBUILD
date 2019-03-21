@@ -12,12 +12,12 @@ license=(MIT)
 depends=(glib2 freetype2 graphite)
 makedepends=(cairo icu gobject-introspection ragel git python)
 checkdepends=(python-fonttools python-setuptools)
-source=("git+https://anongit.freedesktop.org/git/harfbuzz")
+source=("git+https://github.com/harfbuzz/harfbuzz")
 sha256sums=('SKIP')
 
 pkgver() {
   cd harfbuzz
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
