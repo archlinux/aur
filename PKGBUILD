@@ -2,7 +2,7 @@
 pkgname='libbsctools'
 pkgdesc='Common library used by some BSC tools such as folding (from BSC).'
 pkgver='1.0.5'
-pkgrel='1'
+pkgrel='2'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPLv2.1')
@@ -14,7 +14,8 @@ build() {
 	cd "$srcdir/$pkgname-$pkgver"
 
 	./configure \
-		--prefix=/usr
+		--prefix=/usr \
+		--enable-static --disable-shared
 
 	make
 }
@@ -23,5 +24,5 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 
 	# NB: using DESTDIR instead, does not work, also often fails with parallel install
-    make prefix="$pkgdir/usr/" install -j1
+	make prefix="$pkgdir/usr/" install -j1
 }
