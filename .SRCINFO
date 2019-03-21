@@ -1,6 +1,6 @@
 pkgbase = emacs-pdf-tools-git
 	pkgdesc = Emacs support library for PDF files.
-	pkgver = r841.8aa7aec
+	pkgver = 0.90r23.g9a63f39
 	pkgrel = 1
 	url = https://github.com/politza/pdf-tools
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = emacs-pdf-tools-git
 	makedepends = git
 	makedepends = cask
 	depends = emacs
-	depends = emacs-tablist
+	depends = emacs-tablist-git
 	depends = libpng
 	depends = zlib
 	depends = poppler-glib

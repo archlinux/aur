@@ -1,16 +1,17 @@
-# Maintainer: sballert <sballert@posteo.de>
+# Contributor: sballert <sballert@posteo.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 _gituser="politza"
 _gitrepo="pdf-tools"
 
 pkgname=emacs-pdf-tools-git
-pkgver=r841.8aa7aec
+pkgver=0.90r23.g9a63f39
 pkgrel=1
 pkgdesc="Emacs support library for PDF files."
 url="https://github.com/${_gituser}/${_gitrepo}"
 arch=('any')
 license=('GPL3')
-depends=('emacs' 'emacs-tablist' 'libpng' 'zlib' 'poppler-glib')
+depends=('emacs' 'emacs-tablist-git' 'libpng' 'zlib' 'poppler-glib')
 optdepends=('imagemagick: following links of a PDF document by plain keystrokes')
 makedepends=('git' 'cask')
 checkdepends=('git' 'cask')
@@ -21,9 +22,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  git describe --tags|sed 's+-+r+'|tr - .|cut -c2-
 }
-
 check() {
   cd "$_gitrepo"
   make check
