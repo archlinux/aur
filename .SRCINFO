@@ -1,6 +1,6 @@
 pkgbase = php-igbinary
 	pkgdesc = Igbinary is a drop in replacement for the standard php serializer.
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/igbinary/igbinary
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = php-igbinary
 	depends = php
 	conflicts = php-igbinary-git
 	backup = etc/php/conf.d/igbinary.ini
-	source = php-igbinary-3.0.0-1.tar.gz::https://github.com/igbinary/igbinary/archive/3.0.0.tar.gz
-	sha256sums = 0ad4ad02209f1bce9c255e574ef253ef2346f9a331bccb9277f2d8d26b8d7297
+	source = php-igbinary-3.0.1-1.tar.gz::https://github.com/igbinary/igbinary/archive/3.0.1.tar.gz
+	sha256sums = a340f3fa3bb250a6353f3b90fb25c0b68fb1afad342d1031c65b69fcd995909d
 
 pkgname = php-igbinary
 
