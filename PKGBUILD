@@ -2,7 +2,7 @@
 
 pkgname=libfido2-git
 _pkgname=${pkgname%-git}
-pkgver=0.3.0.r11.3fff6b5
+pkgver=1.0.0.r0.c3c10af
 pkgrel=1
 pkgdesc="Provides library functionality for FIDO 2.0, including communication with a device over USB"
 arch=('x86_64')
@@ -27,7 +27,7 @@ build() {
     cd "$srcdir/${_pkgname}/build"
     cmake .. \
        -DCMAKE_INSTALL_PREFIX=/usr \
-       -DCMAKE_INSTALL_LIBDIR=/usr/lib
+       -DCMAKE_INSTALL_LIBDIR=lib
     make
 }
 
