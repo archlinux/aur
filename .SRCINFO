@@ -9,6 +9,7 @@ pkgbase = jackett
 	arch = armv7h
 	license = GPL
 	depends = curl
+	depends = openssl-1.0
 	options = !strip
 	options = staticlibs
 	source = jackett.service
