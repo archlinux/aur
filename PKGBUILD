@@ -1,6 +1,6 @@
 # Maintainer: Magnus Bergmark <magnus.bergmark@gmail.com>
 pkgname=bitwarden-rofi
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Wrapper for Bitwarden bitwarden/cli and Rofi"
 arch=('any')
@@ -11,7 +11,7 @@ optdepends=('xsel: copy to clipboard'
             'xclip: copy to clipboard')
 makedepends=()
 source=("https://github.com/mattydebie/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('f39bacada75b1b093a4172c8caa479c8867890475f6ca2e0f91b67ff366e141672ef081a82082119affc4a91f4ee3004b044b53178b6a3d484f51fac60f1bdd4')
+sha512sums=('f7d7825ec81a671113f35de47ed043b77eca496caa3480cebfdde02e40040e3973e04411bf9f0e922283354fba0e32ad0c83720c6ea12526ffb7629590f57fe8')
 
 package() {
   cd "$pkgname-$pkgver" || exit 1
