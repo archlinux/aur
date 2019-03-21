@@ -1,0 +1,15 @@
+pkgbase = basicanalysis
+	pkgdesc = Framework for automatic extraction of fundamental factors for Paraver traces (from BSC).
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
+	arch = any
+	license = LGPLv2.1
+	depends = python-scipy
+	depends = python-numpy
+	optdepends = gnuplot
+	source = https://ftp.tools.bsc.es/basicanalysis/basicanalysis-0.3.6-src.tar.bz2
+	sha512sums = 94fac4171454978c1f3a27ec29e0c407413008b491ffe9aed2f7915ef9e5d3f7b2cdbc155ba00aa3e426b261ca259e1c00b59ffdde941bbb6a3cc49194827897
+
+pkgname = basicanalysis
+
