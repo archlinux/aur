@@ -1,5 +1,5 @@
 # Contributed by Max Wölfing <ff0x@infr.cat>
-# Version: 0.0.8
+# Version: 0.0.9
 
 # KNOWN BUGS:
 # - After suspend/hibernate the mobile broadband connection is not going to reconnect automatically (that's probably ok)
@@ -120,6 +120,11 @@ function mobile_mm_up {
   $__MMCLI -m "$MODEM" --set-allowed-modes=ANY --set-preferred-mode="${Mode}" --simple-connect="$connect_args" $(if [ "$NETCTL_DEBUG" == 'yes' ]; then echo '2>/dev/null'; fi)
   local bearer bearer_interface
   bearer=$($__MMCLI -m "$MODEM" $(if [ "$NETCTL_DEBUG" == 'yes' ]; then echo '2>/dev/null'; fi) | sed -n 's#.*\(/org/.*/Bearer/[0-9]\+\).*#\1#p')
+
+  if [[ -z "$bearer" ]]; then
+    report_error "No bearer found!"
+    return 1
+  fi
 
   get_bearer_interface="$__MMCLI -m $MODEM -b $bearer | awk '/Status/ {for(i=1; i<5; i++) {getline; if ($2=="interface:") {gsub("\047","",$3); print $3}}}'"  
 
