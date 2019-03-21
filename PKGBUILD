@@ -3,20 +3,21 @@
 pkgname=wingide
 _wingver=6.1.5
 _wingrel=1
-_wing_patch_lvl=1 #bump this when adding a patch
+_wing_patch_lvl=2 #bump this when adding a patch
 pkgver=$_wingver.$_wingrel.$_wing_patch_lvl
 pkgrel=1
 pkgdesc="Wing IDE Professional is the full-featured Python IDE for professional programmers."
 url="http://www.wingware.com"
 license=('custom')
 arch=('x86_64')
-_wingpatch=()
+_wingpatch=("fix-pep8-line-format-6.1.5p1-all.tar")
 _patch_url_prefix=http://wingware.com/pub/$pkgname/$_wingver/patches/
 _wingpatch=( "${_wingpatch[@]/#/$_patch_url_prefix}" )
 source=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_wingrel-x86_64-linux.tar.bz2" ${_wingpatch[*]})
 depends=('hicolor-icon-theme' 'libpng' 'python2' 'xdg-utils')
 options=(!strip !emptydirs)
-md5sums=('7ff11809aa41aaaf75d7c1c30c5e44ce')
+md5sums=('7ff11809aa41aaaf75d7c1c30c5e44ce'
+         'a1893ea754ab80fd5be4dca7dde230ff')
 
 install=${pkgname}.install
 
