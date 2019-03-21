@@ -8,6 +8,7 @@ Group=jackett
 Restart=always
 RestartSec=5
 Type=simple
+Environment=XDG_CONFIG_HOME=/var/lib/jackett
 ExecStart=/usr/lib/jackett/jackett --NoRestart --NoUpdates --DataFolder /var/lib/jackett
 TimeoutStopSec=20
 
