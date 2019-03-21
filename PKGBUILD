@@ -2,7 +2,7 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=xubuntu-artwork
-pkgver=18.04
+pkgver=18.10
 pkgrel=1
 _uver=artful
 pkgdesc="Xubuntu themes and artwork"
@@ -45,6 +45,5 @@ package() {
 }
 # I use MD5 because is what "makepkg -g" give by default, blame Allan
 
-
-md5sums=('6f6b6cc63f0630881a69c3aad08c21cc'
+md5sums=('1ac2a27723c578081a60420ec6c3ebb9'
          'd55fbe17f8a79a738b1337f0b96aa064')
