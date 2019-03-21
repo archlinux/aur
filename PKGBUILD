@@ -3,15 +3,15 @@
 pkgname=kvirustotal
 pkgver=0.30.0
 pkgdesc="Online antivirus and anti-phishing tool"
-pkgrel=4
+pkgrel=5
 arch=(i686 x86_64)
 url="http://kde-apps.org/content/show.php?content=139065"
 license=(GPL3)
 groups=('kde' 'security')
 makedepends=(cmake automoc4)
-depends=(qjson kdelibs)
+depends=(qjson kdelibs qca-qt4)
 options=()
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Musikolo/kvirustotal/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Musikolo/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('0fd19e0e52863a50d592f970cd2a56129e641f32833b019847e05138f3eac590')
 
 build() {
