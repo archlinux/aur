@@ -1,7 +1,7 @@
 # Maintainer: zarak <cyril@cri.epita.fr>
 
 pkgname=term_size
-pkgver=5
+pkgver=6
 pkgrel=1
 epoch=
 pkgdesc="Change terminal font size"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('c8d980c314a5662c51547cb1736ddb97')
+md5sums=('8f40d78b2a1d44dc13e9cb31dcefcbb0')
 arch=('x86_64')
 
 validpgpkeys=()
