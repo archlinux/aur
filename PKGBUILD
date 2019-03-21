@@ -1,5 +1,5 @@
 # Maintainer: theflameemperor <un.own.cry@gmail.com>
-pkgname=ygopro-koishi
+pkgname=ygopro-koishipro
 pkgver=2019.3.15
 pkgrel=1
 _pkgrel=1
