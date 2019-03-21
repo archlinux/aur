@@ -1,17 +1,15 @@
 pkgbase = deepin.com.baidu.pan
-	pkgdesc = Baidu net disk client on Deepin Wine
-	pkgver = 5.5.4deepin8
+	pkgdesc = Deepin Wine Baidupan
+	pkgver = 5.7.3
 	pkgrel = 1
-	url = http://pan.baidu.com
+	url = http://pan.baidu.com/
 	arch = i686
 	arch = x86_64
 	license = Proprietary
 	makedepends = tar
 	depends = deepin-wine
-	conflicts = deepin-baidu-pan
-	noextract = deepin.com.baidu.pan_5.5.4deepin8_i386.deb
-	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin.com.baidu.pan/deepin.com.baidu.pan_5.5.4deepin8_i386.deb
-	md5sums = 20383bc9574c979199cd86e85b6f5871
+	source = https://mirrors.tuna.tsinghua.edu.cn/deepin/pool/non-free/d/deepin.com.baidu.pan/deepin.com.baidu.pan_5.7.3deepin0_i386.deb
+	md5sums = SKIP
 
 pkgname = deepin.com.baidu.pan
 

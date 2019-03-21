@@ -1,11 +1,12 @@
-# Maintainer: SKywol <skywol@qq.com>
+# Maintainer: wszqkzqk <wszqkzqk@gmail.com>
 pkgname=deepin.com.baidu.pan
-pkgver=5.5.4deepin8
+pkgver=5.7.3
+_pkgver=5.7.3deepin0
 pkgrel=1
 epoch=
-pkgdesc="Baidu net disk client on Deepin Wine"
+pkgdesc="Deepin Wine Baidupan"
 arch=('i686' 'x86_64')
-url="http://pan.baidu.com"
+url="http://pan.baidu.com/"
 license=('Proprietary')
 groups=()
 depends=('deepin-wine')
@@ -13,23 +14,20 @@ makedepends=('tar')
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=('deepin-baidu-pan')
+conflicts=()
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=("https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/${pkgname}/${pkgname}_${pkgver}_i386.deb")
-noextract=("${pkgname}_${pkgver}_i386.deb")
-md5sums=('20383bc9574c979199cd86e85b6f5871')
+source=("https://mirrors.tuna.tsinghua.edu.cn/deepin/pool/non-free/d/deepin.com.baidu.pan/deepin.com.baidu.pan_5.7.3deepin0_i386.deb")
+md5sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
-	ar -x ${pkgname}_${pkgver}_i386.deb
-	mkdir ${pkgname}-${pkgver}
+	ar -x ${pkgname}_${_pkgver}_i386.deb
 	tar -xf data.tar.xz --directory="${pkgname}-${pkgver}"	
 }
-
 package() {
 	cd "${pkgname}-${pkgver}"
 	cp -r ./ ${pkgdir}/
