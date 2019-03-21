@@ -2,7 +2,7 @@
 pkgname='clusteringsuite'
 pkgdesc='Automatically expose the main performance trends in applications'\'' computation structure (from BSC).'
 pkgver='2.6.8'
-pkgrel='1'
+pkgrel='2'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPLv2.1')
@@ -22,5 +22,5 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    make DESTDIR="$pkgdir/" install
+    make DESTDIR="$pkgdir/" install -j1 # NB: Often fails with parallel install
 }
