@@ -3,7 +3,7 @@
 # contributer: rob.til.freedman@googlemail.com
 
 pkgname=moonplayer
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="A qt font-end for mplayer with the abilities of watching and downloading videos from chinese network"
 arch=('i686' 'x86_64')
@@ -12,11 +12,11 @@ license=('GPL')
 depends=('python' 'qt5-x11extras' 'qt5-websockets' 'qt5-webengine' 'mpv' 'qtermwidget')
 makedepends=('git')
 source=(
-	$pkgname.tar.gz::https://github.com/coslyk/moonplayer/archive/$pkgver.tar.gz
+	$pkgname-$pkgver.tar.gz::https://github.com/coslyk/moonplayer/archive/$pkgver.tar.gz
 	)
 provides=('moonplayer')
 conflicts=('moonplayer')
-sha1sums=('SKIP')
+sha1sums=('aa247fbf0f0dd49a521420080443721074789cd7')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver/src
@@ -35,7 +35,7 @@ package() {
 	make INSTALL_ROOT=$pkgdir install
 
 	#clean pyc
-	rm $pkgdir/usr/share/moonplayer/plugins/*.pyc
+	#rm $pkgdir/usr/share/moonplayer/plugins/*.pyc
 
 	cd $pkgdir/usr/share
 
