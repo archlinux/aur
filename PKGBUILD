@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd harfbuzz
-  git describe --tags | sed 's/-/+/g'
+  git describe --long | sed 's/([^-]*-g)/r\1/;s/-/./-/g'
 }
 
 prepare() {
