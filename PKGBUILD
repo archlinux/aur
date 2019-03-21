@@ -1,4 +1,5 @@
 # Maintainer: Edward Pacman <edward at edward-p dot xyz>
+# Maintainer: lilac <lilac@build.archlinuxcn.org>
 
 pkgname=kicad-i18n-git
 pkgver=r1633.5292d3b
