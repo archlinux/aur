@@ -16,5 +16,5 @@ sed -i "/pkgver=/c\pkgver=${VERSION}" PKGBUILD
 updpkgsums
 makepkg -s
 makepkg --printsrcinfo > .SRCINFO
-git add .
-git commit -m "Update to ${VERSION}"
+git add . || true
+git commit -m "Update to ${VERSION}" || true
