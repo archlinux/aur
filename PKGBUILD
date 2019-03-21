@@ -5,7 +5,7 @@ pkgrel=1
 epoch=
 pkgdesc="A simple program to change colors and fonts of termite in real time."
 arch=('any')
-url="https://github.com/adi1090x/${pkgname}"
+url="https://github.com/adi1090x/termite-style"
 license=('GPL')
 groups=()
 depends=('termite' 'bash')
@@ -33,7 +33,6 @@ prepare() {
         cd $srcdir/$pkgname
         chmod +x setup
 }
-
 
 package() {
         cd "$pkgname"
