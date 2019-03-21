@@ -40,8 +40,7 @@ build() {
 package() {
   cd "ebtables"
 
-  make DESTDIR="$pkgdir" BINDIR="/usr/bin" MANDIR="/usr/share/man" \
-    install
+  make DESTDIR="$pkgdir" install
 
   install -Dm755 "$srcdir/ebtables.systemd" \
     "$pkgdir/usr/lib/systemd/scripts/ebtables"
