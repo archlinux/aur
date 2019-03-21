@@ -1,4 +1,5 @@
-# Maintainer: Jameson Pugh <imntreal@gmail.com>
+# Maintainer: Lin Ruohshoei <lin {dot] ruohshoei+arch at gmail dot com>
+# Contributor: Jameson Pugh <imntreal@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
@@ -6,7 +7,7 @@
 # Contributor: nbags <neilbags@gmail.com>
 
 pkgname=fail2ban-git
-pkgver=r4880.d88ce718
+pkgver=0.10.4.r317.g7f0bba94
 pkgrel=1
 pkgdesc='Bans IPs after too many failed authentication attempts (git version)'
 url='http://www.fail2ban.org/'
@@ -22,19 +23,19 @@ backup=(etc/fail2ban/fail2ban.conf
         etc/fail2ban/jail.conf
         etc/logrotate.d/fail2ban)
 source=("${pkgname}::git+https://github.com/fail2ban/fail2ban.git"
-        "https://github.com/fail2ban/fail2ban/pull/2174/commits/12df4ec92c27a25a300482f7707f27f7522f592f.patch")
-sha256sums=('SKIP'
-            '19dd85363a59a2bf743e8d119d183cdffa6f8f8554003b9a8c3fa119dfef22b4')
+)
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  (set -o pipefail
+   git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+
 }
 prepare() {
   cd $pkgname
-  # fix tmpfiles.d warning in systemd 239
-  # https://github.com/fail2ban/fail2ban/pull/2174
-  patch -p1 -i ../12df4ec92c27a25a300482f7707f27f7522f592f.patch
   sed -i 's|self.install_dir|"/usr/bin"|' setup.py
   sed -i 's/^before = paths-debian.conf/before = paths-arch.conf/' config/jail.conf
 }
@@ -54,8 +55,6 @@ check() {
 package() {
   cd "${pkgname}"
   python setup.py install --prefix /usr --root "${pkgdir}" --optimize=1
-
-  #chmod 644 "${pkgdir}/usr/lib/python3.6/site-packages/fail2ban-0.11.0.dev0-py3.6.egg-info"/*
 
   install -Dm644 build/fail2ban.service \
     "${pkgdir}"/usr/lib/systemd/system/fail2ban.service
