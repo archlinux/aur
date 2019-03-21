@@ -1,40 +1,27 @@
-pkgbase=python-transitions
-pkgname=('python-transitions' 'python2-transitions')
-pkgver=0.6.4
+pkgname=python-transitions
+pkgver=0.6.9
 pkgrel=1
 pkgdesc="A lightweight, object-oriented finite state machine implementation in Python"
 url="http://github.com/tyarkoni/transitions"
 arch=(any)
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools' 'python-six' 'python2-six')
+makedepends=('python-setuptools')
+depends=('python-six')
 source=("https://github.com/tyarkoni/transitions/archive/${pkgver}.tar.gz")
-md5sums=('c87ad738a331ae2b2cda373e918aafb8')
+sha256sums=('214f5121f045e713a4f2043faf775a3b5fc43731ec9bd9f7bd8f67579d8f6257')
 
 prepare() {
   cd "${srcdir}"/transitions-$pkgver
 }
 
 build() {
-  cp -r "${srcdir}"/transitions-$pkgver "${srcdir}"/transitions-$pkgver-py2
-
   cd "${srcdir}"/transitions-$pkgver
   python setup.py build
-
-  cd "${srcdir}"/transitions-$pkgver-py2
-  python2 setup.py build
 }
 
-package_python-transitions() {
-  depends=('python-six')
-
+package() {
   cd "${srcdir}/transitions-$pkgver"
   python setup.py install --root=${pkgdir} --optimize=1
 }
 
-package_python2-transitions() {
-  depends=('python2-six')
-
-  cd "${srcdir}/transitions-$pkgver"
-  python2 setup.py install --root=${pkgdir} --optimize=1
-}
 
