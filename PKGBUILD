@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=dive-git
-pkgver=v0.6.0.r5.gd4e9bdb
-pkgrel=2
+pkgver=v0.7.0.r1.ge7bf771
+pkgrel=1
 pkgdesc="A tool for exploring each layer in a docker image"
 url="https://github.com/wagoodman/dive"
 arch=('x86_64' 'i686')
@@ -27,7 +27,7 @@ prepare() {
 
 	cd "${srcdir}/go/src/github.com/wagoodman/dive"
 
-	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
+	export GOPATH="${srcdir}/go"
 	go get -v ./...
 }
 
@@ -36,7 +36,7 @@ build() {
 
 	mkdir -p build
 
-	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
+	export GOPATH="${srcdir}/go"
 	go build -ldflags "-s -w" \
 		-gcflags="all=-trimpath=${GOPATH}/src" \
 		-asmflags="all=-trimpath=${GOPATH}/src" \

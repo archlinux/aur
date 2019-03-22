@@ -1,4 +1,5 @@
 src
 pkg
-dive
+dive-git
 *pkg.tar.xz
+tags
