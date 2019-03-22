@@ -1,6 +1,6 @@
 # $Id$
 # Maintainer: Alireza Ayinmehr <alireza.darksun@gmail.com>
-# Contributer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=f30-backgrounds
 pkgver=30.0.0
 pkgrel=1
