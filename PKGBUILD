@@ -1,7 +1,7 @@
-# Maintainer: Jake <ja.ke@posteo.de>
+# Maintainer: Jake <aur@ja-ke.tech.de>
 
 pkgname=hyperion.ng-git
-pkgver=r1567.e438bc62
+pkgver=r1648.91054d8d
 pkgrel=1
 pkgdesc="The reworked version (next generation) of Hyperion, ambient light software - PRE ALPHA"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/hyperion-project/hyperion.ng"
 license=('MIT')
 depends=('libusb' 'protobuf' 'python' 'qt5-serialport' 'avahi')
 optdepends=('xorg-server: X11 grabbing')
-makedepends=('cmake=3.10.3')
+makedepends=('cmake')
 provides=("hyperion")
 conflicts=('hyperion' 'hyperion-git')
 backup=('etc/hyperion/config/hyperion.config.json')
@@ -21,6 +21,11 @@ sha512sums=('SKIP'
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}/${pkgname%-git}"
+  git submodule update --init --recursive
 }
 
 build() {
@@ -40,7 +45,7 @@ package() {
   cd "${srcdir}/${pkgname%-git}"
   
   install -d ${pkgdir}/usr/bin
-  install -D build/bin/* ${pkgdir}/usr/bin
+  install -D build/bin/hyperion* ${pkgdir}/usr/bin
   
   install -d ${pkgdir}/usr/share/hyperion/webconfig
   cp -r assets/webconfig ${pkgdir}/usr/share/hyperion/  

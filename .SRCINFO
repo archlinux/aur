@@ -1,6 +1,6 @@
 pkgbase = hyperion.ng-git
 	pkgdesc = The reworked version (next generation) of Hyperion, ambient light software - PRE ALPHA
-	pkgver = r1567.e438bc62
+	pkgver = r1648.91054d8d
 	pkgrel = 1
 	url = https://github.com/hyperion-project/hyperion.ng
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = hyperion.ng-git
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	makedepends = cmake=3.10.3
+	makedepends = cmake
 	depends = libusb
 	depends = protobuf
 	depends = python
