@@ -30,6 +30,6 @@ package() {
 	make prefix="$pkgdir/usr/" install
 
 	# FIXME: Why are those libraries from libbsctools copied to the package directory when installing?
-	rm "/usr/lib/libparavertraceconfig.so"
-	rm "/usr/lib/libparavertraceparser.so"
+	rm "${pkgdir}/usr/lib/libparavertraceconfig.so"
+	rm "${pkgdir}/usr/lib/libparavertraceparser.so"
 }
