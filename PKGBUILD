@@ -1,10 +1,11 @@
 # Contributor: Gerald Nunn <gerald dot b dot nunn at gmail dot com>
-# Maintainer: Davi da Silva Böger <dsboger at gmail dot com>
+# Contributor: Davi da Silva Böger <dsboger at gmail dot com>
+# Maintainer: Emanuel Fernandes <efernandes@tektorque.com>
 
 pkgname=tilix-bin
 _pkgname=tilix
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiling terminal emulator based on GTK+ 3 (binary distribution)"
 arch=('x86_64')
 url="http://github.com/gnunn1/tilix"
