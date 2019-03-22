@@ -3,7 +3,7 @@
 
 pkgname=emscripten-git
 epoch=1
-pkgver=1.38.19.16.g919d14b42
+pkgver=1.38.30
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags |  sed 's+[_-]+.+g'
+  git describe --tags |  sed 's+-+r+' |tr - .
 }
 
 prepare() {
