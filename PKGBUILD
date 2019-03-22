@@ -4,13 +4,13 @@
 _distname=Astro-SunTime
 pkgname=perl-astro-suntime
 pkgver=0.06
-pkgrel=1
+pkgrel=2
 pkgdesc="Get Sun Rise and Set Times for any location on the globe"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 depends=('perl>=0')
 makedepends=()
-checkdepends=('perl-time-parsedate')
+checkdepends=('perl-time-modules')
 options=('!emptydirs')
 url="https://metacpan.org/release/$_distname"
 source=("http://search.cpan.org/CPAN/authors/id/R/RO/ROBF/$_distname-$pkgver.tar.gz")
