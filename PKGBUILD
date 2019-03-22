@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=pytype
-pkgver=2019.03.15
+pkgver=2019.03.21
 pkgrel=1
 pkgdesc="Python type inferencer"
 arch=('any')
@@ -28,14 +28,14 @@ source=(
   "https://github.com/google/pytype/archive/${pkgver}.tar.gz"
   "cpython-9734024.zip::https://github.com/python/cpython/archive/9734024ec65311e33936faa83fb1cb249ef0de9d.zip"
   "googletest-e82d320.zip::https://github.com/google/googletest/archive/e82d320567a45db1a999f9109f2b9a733bc59bb1.zip"
-  "typeshed-9ee4582.zip::https://github.com/python/typeshed/archive/9ee458226c212acc2691f014d2a5575f33160d6d.zip"
+  "typeshed-afe6656.zip::https://github.com/python/typeshed/archive/afe665690cf6fc58677d5df00c002a9336453c4a.zip"
   'without-ninja-python-distributions.patch'
 )
 sha256sums=(
-  '171d637b91df9d85dfda8439f93afcb2b582c9b14fc6af09d952232cb9f54047'
+  'b54d3d0324fcebf12fe5fce5355c7ba8de1d4ff6f169cf87937f94ab3876fc40'
   'ebc3b63747875586f17b967ad2dae6d2a404adb5814612200217f39074377f9a'
   '891d732c77eec9fb57727cd99990a25455d6d5859b1fde107a332c5e238cc9e7'
-  '6e634f400fcbe30ac6f5f8e476eef8b3cb8ae7d801e01b81bab04826c6d2402e'
+  '6fb78d8389b705111fbb444719acd33f5978d41f9aca83f7557ce705b2ad9fdb'
   '23243118d2e3792a5232186fdc204dc6b81e79e86bdaf4426573e48ca4f9080b'
 )
 
@@ -54,7 +54,7 @@ build() {
   ln -s "${srcdir}/cpython-9734024ec65311e33936faa83fb1cb249ef0de9d" cpython
 
   rm -rf typeshed/
-  ln -s "${srcdir}/typeshed-9ee458226c212acc2691f014d2a5575f33160d6d" typeshed
+  ln -s "${srcdir}/typeshed-afe665690cf6fc58677d5df00c002a9336453c4a" typeshed
 
   python setup.py build
 }
