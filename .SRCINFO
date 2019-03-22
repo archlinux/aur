@@ -1,0 +1,18 @@
+pkgbase = python-yams
+	pkgdesc = A Last.FM scrobbler for MPD
+	pkgver = 0.67
+	pkgrel = 1
+	url = https://github.com/Berulacks/yams
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = mpd
+	depends = python-pyaml
+	depends = python-mpd2
+	depends = python-requests
+	source = https://github.com/Berulacks/yams/archive/0.67.tar.gz
+	sha256sums = fb8145708e35560d0cd868318466433770ba302a3bf84b907ec0206f54869e47
+
+pkgname = python-yams
+
