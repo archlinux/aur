@@ -1,0 +1,14 @@
+pkgbase = perl-log-dispatch-file-stamped
+	pkgdesc = Logging to date/time stamped files
+	pkgver = 0.19
+	pkgrel = 1
+	url = https://metacpan.org/pod/Log::Dispatch::File::Stamped
+	arch = any
+	license = PerlArtistic
+	depends = perl-log-dispatch
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Log-Dispatch-File-Stamped-0.19.tar.gz
+	sha512sums = b6988998e98dc210821af4b9c15948fa1b25711c8a01bbcf7b9c0b7c1e698c940c14458be9585743845b44aae24b25f1c570e2630b33bd656a932f2836994f94
+
+pkgname = perl-log-dispatch-file-stamped
+
