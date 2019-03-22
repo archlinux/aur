@@ -1,7 +1,7 @@
 pkgbase = openmpi-gcc6
-	pkgdesc = High performance message passing library (MPI) build with gcc6
+	pkgdesc = High performance message passing library (MPI) built with gcc6
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.open-mpi.org
 	arch = x86_64
 	license = custom:OpenMPI

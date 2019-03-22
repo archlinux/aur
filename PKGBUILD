@@ -5,8 +5,8 @@
 
 pkgname=openmpi-gcc6
 pkgver=4.0.0
-pkgrel=1
-pkgdesc='High performance message passing library (MPI) build with gcc6'
+pkgrel=2
+pkgdesc='High performance message passing library (MPI) built with gcc6'
 url='https://www.open-mpi.org'
 arch=('x86_64')
 license=('custom:OpenMPI')
@@ -24,7 +24,7 @@ build() {
   ./configure --prefix=/opt/${pkgname} \
     --sysconfdir=/etc/${pkgname} \
     --enable-mpi-fortran=all \
-    --libdir=/usr/lib/${pkgname} \
+    --libdir=/opt/${pkgname}/lib \
     --with-threads=posix \
     --enable-mpi-thread-multiple \
     --enable-smp-locks \
@@ -53,11 +53,11 @@ package() {
   # FS#28583
   install -dm 755 "${pkgdir}/usr/lib/pkgconfig"
   for i in ompi-c.pc ompi-cxx.pc ompi-f77.pc ompi-f90.pc ompi.pc; do
-    ln -sf "/usr/lib/${pkgname}/pkgconfig/${i}" "${pkgdir}/usr/lib/pkgconfig/${i%.pc}-gcc6.pc"
+    ln -sf "/opt/${pkgname}/lib/pkgconfig/${i}" "${pkgdir}/usr/lib/pkgconfig/${i%.pc}-gcc6.pc"
   done
 
   install -dm 755 "${pkgdir}/etc/ld.so.conf.d"
-  echo "/usr/lib/${pkgname}" > "${pkgdir}"/etc/ld.so.conf.d/${pkgname}.conf
+  echo "/opt/${pkgname}/lib" > "${pkgdir}"/etc/ld.so.conf.d/${pkgname}.conf
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
