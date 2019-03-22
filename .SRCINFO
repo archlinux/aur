@@ -12,8 +12,8 @@ pkgbase = cog-wpe-gl
 	depends = wpewebkit-gl-aarch64>=2.22.0
 	depends = wpebackend-fdo>=1.0.0
 	conflicts = cog-git
-	source = https://github.com/Igalia/cog/releases/download/v0.2.0/cog-wpe-gl-0.2.0.tar.xz
-	source = https://github.com/Igalia/cog/releases/download/v0.2.0/cog-wpe-gl-0.2.0.tar.xz.asc
+	source = https://github.com/Igalia/cog/releases/download/v0.2.0/cog-0.2.0.tar.xz
+	source = https://github.com/Igalia/cog/releases/download/v0.2.0/cog-0.2.0.tar.xz.asc
 	validpgpkeys = 5AA3BC334FD7E3369E7C77B291C559DBE4C9123B
 	md5sums = 2fcb68ae8d52bb4212f9e24724b83f33
 	md5sums = SKIP

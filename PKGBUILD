@@ -10,8 +10,8 @@ conflicts=(cog-git)
 depends=('wpewebkit-gl-aarch64>=2.22.0' 'wpebackend-fdo>=1.0.0')
 makedepends=(cmake)
 license=(custom:MIT)
-source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz"
-        "${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz.asc")
+source=("${url}/releases/download/v${pkgver}/cog-${pkgver}.tar.xz"
+        "${url}/releases/download/v${pkgver}/cog-${pkgver}.tar.xz.asc")
 validpgpkeys=('5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
 md5sums=('2fcb68ae8d52bb4212f9e24724b83f33' 'SKIP')
 sha1sums=('0b34082282abff0563922f3b1c3621f0f0706ac1' 'SKIP')
@@ -27,13 +27,13 @@ build () {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
-		"../${pkgname}-${pkgver}"
+		"../cog-${pkgver}"
 	cmake --build .
 }
 
 package () {
 	DESTDIR="${pkgdir}" cmake --build _build --target install
 
-	install -Dm644 "${pkgname}-${pkgver}/COPYING" \
-		"${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+	install -Dm644 "cog-${pkgver}/COPYING" \
+		"${pkgdir}/usr/share/licenses/cog/COPYING"
 }
