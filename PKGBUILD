@@ -23,7 +23,7 @@
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
-pkgver=18.2rc1pre93
+pkgver=18.2rc1pre95
 _major=18.1
 pkgrel=1
 _codename=Leia
@@ -165,6 +165,8 @@ source=(
   91-PR15642.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15642.patch
   92-PR15790.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15790.patch
   93-PR15787.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15787.patch
+  94-PR15593.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15593.patch
+  95-PR15798.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15798.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -231,7 +233,7 @@ sha256sums=('bc1ef0e271d0b6ce2e1be7546ad4f7d330930d7631cc19a9bbc5f75ddc586166'
             '5759ac76eaaf1654afcf893ee7b4128b25099644eebc6dcb0caa3de92e50102d'
             '2eb13d86d4771bf0b319151a9172a09d560bf6a68415902f172afa2be963a922'
             'b163b917b98fc4b9a51f19a30465f2de98f63c6b039dac8a66a872c3a13a18a5'
-            'c2d9bd7c8d3b344f7d6f4002c652c3468f091d6ab9bf8d740746070e8a67dcd1'
+            '25c3945bb5253e8bddfaaca8c2c2edc2990372bd6b3b9143dc439f1e6f2cc375'
             '5537365fca3ca4ea4aa41983dac5e23cf7fb6f7660a7f59ba43b71ec7845c673'
             'e2fe8b2d625ffe7b2f7488e81652917185d3a5d8d48e427fdb6f9142ec841c14'
             '59813c0ee7fcab56d8d112ee2311c94d09b1346aa22c688e45de1a7324e6f0fb'
@@ -279,7 +281,9 @@ sha256sums=('bc1ef0e271d0b6ce2e1be7546ad4f7d330930d7631cc19a9bbc5f75ddc586166'
             'd7d1091d9da9a257763975e123af10f4b1e9fc13e7c579fbb0302c2a48d5f4ba'
             '93c598ab711980f38d9c74c1de7b19c40d4ebbd5ff7894ee21ce12deb5dd600c'
             '07f67450af11adb1c32416ae30083e2e3be48ed070da5f5281b445ee542aee7e'
-            '7afe5626024527b3ef78dfffe7c07b81c1960bdb32b9645fdf2b43ca8136a11b')
+            '7afe5626024527b3ef78dfffe7c07b81c1960bdb32b9645fdf2b43ca8136a11b'
+            '9e14af544612f7fcb8596e327bf702ba65cb85f1180f2c0963412b1dd5bb3933'
+            'e1fb0d5a39f7313349152c830d114117b45bedba9564e0662b7916dd9c1f1a60')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
