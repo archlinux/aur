@@ -1,14 +1,14 @@
 # Based on the file created for Arch Linux by:
 # Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Jan de Groot <jgc@archlinux.org>
-# Maintainer: Andy_Vetrov
+# Maintainer: Andrey Vetrov <vetrov at mail dot ru>
 #
 # Removed webkit2gtk dependency:
 # https://github.com/QubesOS/qubes-issues/issues/3279
 # https://bugs.archlinux.org/task/50548
 
 pkgname=zenity-git
-pkgver=3.30.0.r15.g2744326
+pkgver=3.32.0.r0.g1c2a6b1
 pkgrel=1
 pkgdesc="Display graphical dialog boxes from shell scripts. Webkit-free version."
 url="https://gitlab.gnome.org/GNOME/zenity"
@@ -24,7 +24,6 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-*}
-# git describe --long --tags | sed 's/^ZENITY_//;s/_/./g;s/\([^-]*-g\)/r\1/;s/-/./g'
   git describe --long --tags | sed 's/^ZENITY_//;s/_/./g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
