@@ -1,0 +1,5 @@
+*.zip*
+pkg/
+src/
+*.tar.xz
+logo.png
