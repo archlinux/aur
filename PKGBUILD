@@ -1,7 +1,7 @@
 # Maintainer: Fabio Zanini <fabio.zanini _at_ tuebingen.mpg.de>
 pkgname=vim-biosyntax-git
 pkgver=1518543961
-pkgrel=1
+pkgrel=2
 pkgdesc="Syntax Highlighting for Computational Biology, vim plugin"
 arch=('any')
 license=('GPL3')
@@ -17,10 +17,10 @@ pkgver() {
   git log -n1 --pretty=format:%ct
 }
 
-build() {
-  # Dark background: comment the following line if you prefer the original white background
-  sed -i 's/normal\tcterm=NONE\tguibg=NONE\tguifg=NONE\tctermbg=NONE/normal\tcterm=NONE\tguibg=\#111111\tguifg=NONE\tctermbg=0/' "$srcdir/biosyntax-vim/colors/bioSyntax.vim"
-}
+# uncomment this section if you prefer to force a dark background
+#build() {
+#  sed -i 's/normal\tcterm=NONE\tguibg=NONE\tguifg=NONE\tctermbg=NONE/normal\tcterm=NONE\tguibg=\#111111\tguifg=NONE\tctermbg=0/' "$srcdir/biosyntax-vim/colors/bioSyntax.vim"
+#}
 
 package() {
   cd "$srcdir/biosyntax-vim"
