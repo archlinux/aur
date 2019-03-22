@@ -4,7 +4,7 @@
 
 pkgname=zstd-static
 _pkgname=${pkgname%-static}
-pkgver=1.3.4
+pkgver=1.3.8
 pkgrel=1
 pkgdesc='Zstandard - Fast real-time compression algorithm'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('zlib' 'xz' 'lz4')
 makedepends=('gtest')
 options=('staticlibs')
 source=("https://github.com/facebook/zstd/archive/v${pkgver}.tar.gz")
-sha256sums=('92e41b6e8dd26bbd46248e8aa1d86f1551bc221a796277ae9362954f26d605a9')
+sha256sums=('90d902a1282cc4e197a8023b6d6e8d331c1fd1dfe60f7f8e4ee9da40da886dc3')
 provides=('zstd')
 conflicts=('zstd')
 
