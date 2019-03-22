@@ -1,16 +1,17 @@
 # $Id$
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Alireza Ayinmehr <alireza.darksun@gmail.com>
+# Contributer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=f30-backgrounds
 pkgver=30.0.0
 pkgrel=1
-_rhver="${pkgver}-1.fc31"
+_rhver="${pkgver}-2.fc31"
 pkgdesc="Fedora 30 backgrounds."
 arch=("i686" "x86_64")
-url="https://fedoraproject.org/wiki/F30_Artwork"
+url="https://fedoraproject.org/wiki/Artwork/MediaArt/F30"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/f/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('8eba8682213705d9606bb474a1f868c6c1392607cbcbda337f95774787e74cc1')
+sha256sums=('e39685c5be40a7a6e2c6a426f59103f1c88b6704d03c29aad2c8f7b8f356b9dd')
 
 prepare()  {
   tar -xvJf ./${pkgname}-${pkgver}.tar.xz
