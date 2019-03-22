@@ -2,7 +2,7 @@
 # Contributor: fishburn <frankthefishburn@gmail.com>
 
 pkgname=fsl
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data"
 arch=("x86_64")
@@ -13,21 +13,25 @@ makedepends=(boost fftw)
 optdepends=(cuda)
 source=("http://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-sources.tar.gz"
         "http://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-feeds.tar.gz"
-	"imcp"
-	"imglob"
-	"immv"
-	"001-use_distribution_environment.patch"
-	"002-fix_meldata_usage_of_ifstream.patch"
-	"003-fix_fsl_exec_empty_errorCode.patch")
+        "externallibs.mk"
+	    "systemvars.mk"
+        "imcp"
+	    "imglob"
+	    "immv"
+	    "001-use_distribution_environment.patch"
+	    "002-fix_meldata_usage_of_ifstream.patch"
+	    "003-fix_fsl_exec_empty_errorCode.patch")
 
-sha256sums=('94853ddd1c16d03050a0ef58b8801fd094a7b3636cc3cf35b36c576091143276'
-	    '0d41376add12a6dbf67da19c1875f18bb6fa05e24e8a43d97eff160c70881ad2'
-	    'c61f185fbe7e297c4518e96377aa5ff4852f90eda0dbb9ae8edc5e24735e14ad'
-	    '7a1039cdc38b4d728f14efce3b0fda0cadc7bfcd3432556c3f3113985bf2720a'
-	    'b6f61a6d5672b6684f19150f6e21ded1bd04ec6415dcf07a32291e4002bfa5d8'
-	    'd1dada74e7625ce3a9031af851ff1f3aed9a3f5600dc49a5db13f829cb8c41cb'
-	    '13d4cf35343e7a73bc2534c94b1b0d4db41c338d374e6982091e4cf7a421d420'
-	    '64b4ccefa63a3cf920b185dd52e94b918c24f2cedaebcec8efb767bd80a6418a')
+sha256sums=('ccab9709239340299b0ca034cb00d6ce0170b9e0d075b3adb55c556feacfb2da'
+	        '91aa756d5a052702cc68e41bcc9a64ba7c7f8853feb215d5a44eeb710c4a0fd0'
+	        'e3345af9d3a1bca157c3a5700c63c4d0e01da3cec525f8ffb8f1a04b048aeff1'
+            '326c73cf0fb07ef9436ec31dda00f1e77488949152aa908b50aa4059701b2984'
+            'c61f185fbe7e297c4518e96377aa5ff4852f90eda0dbb9ae8edc5e24735e14ad'
+	        '7a1039cdc38b4d728f14efce3b0fda0cadc7bfcd3432556c3f3113985bf2720a'
+	        'b6f61a6d5672b6684f19150f6e21ded1bd04ec6415dcf07a32291e4002bfa5d8'
+	        'b59921d9b76c07da6c775d63d5fe99ca5069a15827aa7a3d44c2e5eb6f3638d6'
+	        '13d4cf35343e7a73bc2534c94b1b0d4db41c338d374e6982091e4cf7a421d420'
+	        '64b4ccefa63a3cf920b185dd52e94b918c24f2cedaebcec8efb767bd80a6418a')
 
 prepare() {
 	cd "${srcdir}"
@@ -36,8 +40,7 @@ prepare() {
 	export FSLMACHTYPE=$(${FSLDIR}/etc/fslconf/fslmachtype.sh)
 	mkdir "${FSLDIR}/config/${FSLMACHTYPE}"
 	# Use config linux_64-gcc4.8 as template
-	cp "${FSLDIR}"/config/linux_64-gcc4.8/{externallibs.mk,systemvars.mk} "${FSLDIR}/config/${FSLMACHTYPE}"
-	sed -i "s/_FSLMACHTYPE/${FSLMACHTYPE}/g" "${srcdir}/001-use_distribution_environment.patch"
+	cp "${srcdir}"/{externallibs.mk,systemvars.mk} "${FSLDIR}/config/${FSLMACHTYPE}"
 
 	# Apply patches
 	patch -Np1 -i "${srcdir}/001-use_distribution_environment.patch"

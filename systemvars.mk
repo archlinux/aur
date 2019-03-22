@@ -1,4 +1,4 @@
-# $Id: systemvars.mk,v 1.1 2017/02/18 12:20:05 mwebster Exp $
+# $Id: systemvars.mk,v 1.6 2019/02/14 13:29:45 mwebster Exp $
 
 # System dependent paths
 
@@ -25,12 +25,13 @@ CSTATICFLAGS = -static
 CXXSTATICFLAGS = -static
 
 ARCHFLAGS = -m64 
+ARCHLDFLAGS = -Wl,-rpath,'$$ORIGIN/../lib'
 
 PARALLELFLAGS = -fopenmp
 
 DEPENDFLAGS = -MM
 
-OPTFLAGS = -march=native -O3 -fexpensive-optimizations ${ARCHFLAGS}
+OPTFLAGS = -march=native -g -O3 -fexpensive-optimizations ${ARCHFLAGS}
 MACHDBGFLAGS = -g
 GNU_ANSI_FLAGS = -Wall -ansi -pedantic -std=c++11 -Wno-long-long
 SGI_ANSI_FLAGS = -ansi -fullwarn
@@ -42,4 +43,4 @@ GENCODE_FLAGS = $(shell ${FSLDIR}/config/common/supportedGencodes.sh ${CUDA_INST
 LIB_CUDA = ${CUDA_INSTALLATION}/lib64
 INC_CUDA = ${CUDA_INSTALLATION}/include
 NVCC = ${CUDA_INSTALLATION}/bin/nvcc
-NVCC11=${CUDA_INSTALLATION}/bin/nvcc
+NVCC11= ${CUDA_INSTALLATION}/bin/nvcc
