@@ -2,7 +2,7 @@
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 _distname=Dist-Zilla-Plugin-InstallGuide
 pkgname=perl-dist-zilla-plugin-installguide
-pkgver=1.200011
+pkgver=1.200012
 pkgrel=1
 pkgdesc="Build an INSTALL file"
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=()
 checkdepends=('perl-test-fatal>=0')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/$_distname-$pkgver.tar.gz")
-md5sums=('d35b0a5c62b6cb7e86eb32620953cc54')
+md5sums=('cb7b2eb7fcb39189e82a5b9d698707da')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
