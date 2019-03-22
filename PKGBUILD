@@ -1,43 +1,47 @@
+# Maintainer: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
+# Contributor: sL1pKn07 <sl1pkn07@gmail.com>
+_distname=Test-use-ok
 pkgname=perl-test-use-ok
-_realname=Test-use-ok
 pkgver=0.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Alternative to Test::More::use_ok"
 arch=('any')
+url="http://search.mcpan.org/dist/$_distname"
 license=('GPL' 'PerlArtistic')
-url='http://search.cpan.org/~audreyt/Test-use-ok'
-options=(!emptydirs)
 depends=('perl>=5.8.9')
-source=('http://search.cpan.org/CPAN/authors/id/A/AU/AUDREYT/Test-use-ok-0.11.tar.gz')
-sha256sums=('8410438a2acf127bffcf1ab92205b747a615b487e80a48e8c3d0bb9fa0dbb2a8')
+makedepends=('')
+options=(!emptydirs)
+source=("http://search.cpan.org/CPAN/authors/id/A/AU/AUDREYT/$_distname-$pkgver.tar.gz")
+md5sums=('014364cc2f0df651d8416ebb60451f18')
 
 build() {
-  cd "${_realname}-${pkgver}"
-  # install module in vendor directories.
-  ( export PERL_MM_USE_DEFAULT=1 \
-           PERL5LIB="${srcdir}/${_realname}-${pkgver}" \
-           PERL_AUTOINSTALL=--skipdeps \
-           PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='${pkgdir}'" \
-           PERL_MB_OPT="--installdirs vendor --destdir '${pkgdir}'" \
-           MODULEBUILDRC=/dev/null
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
 
-    /usr/bin/perl Makefile.PL
+    cd "$_distname-$pkgver"
+    /usr/bin/perl -I. Makefile.PL
     make
   )
 }
 
 check() {
-  cd "${_realname}-${pkgver}"
-  ( export PERL_MM_USE_DEFAULT=1 \
-           PERL5LIB="${srcdir}/${_realname}-${pkgver}"
-
+  cd "$_distname-$pkgver"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "${_realname}-${pkgver}"
+  cd "$_distname-$pkgver"
   make install
-
-  find "${pkgdir}" -name '.packlist' -o -name 'perllocal.pod' -delete
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
