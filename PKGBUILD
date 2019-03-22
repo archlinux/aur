@@ -11,12 +11,12 @@ source=("https://github.com/uqfoundation/pathos/archive/pathos-${pkgver}.tar.gz"
 sha256sums=('5a325a19f66bd92fe3978febf4e96b8836f45f851ab23b07eaf589beac9c21bc')
 
 build() {
-  cd "${srcdir}"/pathos-$pkgver
+  cd "${srcdir}"/pathos-pathos-$pkgver
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/pathos-$pkgver"
+  cd "${srcdir}/pathos-pathos-$pkgver"
   python setup.py install --root=${pkgdir} --optimize=1
 }
 
