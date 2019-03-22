@@ -1,11 +1,11 @@
 pkgbase = libbsctools
 	pkgdesc = Common library used by some BSC tools such as folding (from BSC).
 	pkgver = 1.0.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
 	arch = i686
 	arch = x86_64
-	license = LGPLv2.1
+	license = LGPL2.1
 	depends = boost
 	options = staticlibs
 	source = https://ftp.tools.bsc.es/libbsctools/libbsctools-1.0.5-src.tar.bz2
