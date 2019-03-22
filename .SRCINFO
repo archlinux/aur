@@ -1,7 +1,7 @@
 pkgbase = tracking
 	pkgdesc = Analyze how the behavior of a parallel application evolves through different scenarios (from BSC).
 	pkgver = 2.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
 	arch = i686
 	arch = x86_64
