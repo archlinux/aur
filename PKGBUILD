@@ -1,8 +1,8 @@
 # Maintainer: j605
 
-_pkgname="jupyter_kernel_gateway"
-pkgname="python-$_pkgname"
-pkgver=2.1.0
+_pkgname="kernel_gateway"
+pkgname="python-jupyter_$_pkgname"
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A web server for spawning and communicating with Jupyter kernels"
 arch=('any')
@@ -11,8 +11,8 @@ url="https://github.com/jupyter/${_pkgname/jupyter_/}"
 makedepends=('python')
 depends=('python' 'python-jupyter_core' 'python-jupyter_client' 'jupyter-notebook'
 'python-traitlets' 'python-tornado' 'python-requests')
-source=("https://files.pythonhosted.org/packages/1d/b5/64a86ba0d97ff6f83385b4f3d7ae27e67fd134da6f9dc3cafe8cde031dcc/$_pkgname-$pkgver.tar.gz")
-sha256sums=("7fb26c04e1cd16ddbf9184a4cb0b74e90031b72b48f1c659e22ecaa8b49a95ce")
+source=($pkgname-$pkgver.tar.gz::"https://github.com/jupyter/kernel_gateway/archive/$pkgver.tar.gz")
+sha256sums=('d6cc1d10b73a620c2990676cea3ace0cdc98a9751724287bddc7ccac0d452b97')
 
 build() {
   cd $_pkgname-$pkgver
