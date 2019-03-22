@@ -1,11 +1,11 @@
 pkgbase = spectral
 	pkgdesc = Signal processing techniques to select representative regions from Paraver traces (from BSC).
 	pkgver = 3.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
 	arch = i686
 	arch = x86_64
-	license = GPLv3
+	license = GPL3
 	depends = fftw
 	depends = libbsctools
 	depends = extrae
