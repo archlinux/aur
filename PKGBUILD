@@ -1,33 +1,64 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.5.r821.bf89b709c
+pkgver=0.0.6.r115.b879b3227
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
-arch=('x86_64')
-url='https://github.com/RPCS3/rpcs3'
-license=('GPL2')
-depends=('alsa-lib' 'glew' 'glu' 'libevdev' 'libgl' 'libice' 'libpng'
-         'libpulse' 'libsm' 'libx11' 'libxext' 'openal' 'qt5-base'
-         'qt5-declarative' 'vulkan-icd-loader' 'zlib'
-         'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libncursesw.so'
-         'libswscale.so' 'libudev.so')
-makedepends=('boost' 'cereal' 'cmake' 'ffmpeg' 'git' 'libglvnd' 'python'
-             'vulkan-validation-layers')
-provides=('rpcs3')
-conflicts=('rpcs3')
-options=('!emptydirs')
-source=('git+https://github.com/RPCS3/rpcs3.git'
-        'rpcs3-common::git+https://github.com/RPCS3/common.git'
-        'rpcs3-hidapi::git+https://github.com/RPCS3/hidapi.git'
-        'rpcs3-llvm::git+https://github.com/RPCS3/llvm.git'
-        'git+https://github.com/kobalicek/asmjit.git'
-        'git+https://github.com/Microsoft/GSL.git'
-        'git+https://github.com/KhronosGroup/glslang.git'
-        'git+https://github.com/zeux/pugixml.git'
-        'git+https://github.com/Cyan4973/xxHash.git'
-        'git+https://github.com/jbeder/yaml-cpp.git')
+arch=(x86_64)
+url=https://github.com/RPCS3/rpcs3
+license=(GPL2)
+depends=(
+  alsa-lib
+  glew
+  glu
+  libevdev
+  libgl
+  libice
+  libpng
+  libpulse
+  libsm
+  libx11
+  libxext
+  openal
+  qt5-base
+  qt5-declarative
+  vulkan-icd-loader
+  zlib
+  libavcodec.so
+  libavformat.so
+  libavutil.so
+  libncursesw.so
+  libswscale.so
+  libudev.so
+)
+makedepends=(
+  boost
+  cereal
+  cmake
+  ffmpeg
+  git
+  libglvnd
+  python
+  vulkan-validation-layers
+)
+provides=(rpcs3)
+conflicts=(rpcs3)
+options=(!emptydirs)
+source=(
+  git+https://github.com/RPCS3/rpcs3.git
+  rpcs3-common::git+https://github.com/RPCS3/common.git
+  rpcs3-hidapi::git+https://github.com/RPCS3/hidapi.git
+  rpcs3-libusb::git+https://github.com/RPCS3/libusb.git
+  rpcs3-llvm::git+https://github.com/RPCS3/llvm.git
+  git+https://github.com/kobalicek/asmjit.git
+  git+https://github.com/Microsoft/GSL.git
+  git+https://github.com/KhronosGroup/glslang.git
+  git+https://github.com/zeux/pugixml.git
+  git+https://github.com/Cyan4973/xxHash.git
+  git+https://github.com/jbeder/yaml-cpp.git
+)
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -47,16 +78,17 @@ pkgver() {
 prepare() {
   pushd rpcs3
 
-  git submodule init 3rdparty/{GSL,hidapi,pugixml,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
+  git submodule init 3rdparty/{GSL,hidapi,libusb,pugixml,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
   git config submodule.asmjit.url ../asmjit
   git config submodule.glslang.url ../glslang
   git config submodule.GSL.url ../GSL
   git config submodule.hidapi.url ../rpcs3-hidapi
+  git config submodule.libusb.url ../rpcs3-libusb
   git config submodule.llvm.url ../rpcs3-llvm
   git config submodule.pugixml.url ../pugixml
   git config submodule.xxHash ../xxHash
   git config submodule.yaml-cpp ../yaml-cpp
-  git submodule update 3rdparty/{GSL,hidapi,pugixml,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
+  git submodule update 3rdparty/{GSL,hidapi,libusb,pugixml,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
 
   popd
 
@@ -76,7 +108,6 @@ build() {
     -DUSE_SYSTEM_FFMPEG='ON' \
     -DUSE_SYSTEM_LIBPNG='ON' \
     -DUSE_NATIVE_INSTRUCTIONS='OFF'
-    #-DCMAKE_EXE_LINKER_FLAGS='-ldl' \
   make
 }
 
