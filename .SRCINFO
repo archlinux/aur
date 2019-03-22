@@ -1,6 +1,6 @@
 pkgbase = linux-gpib-svn
 	pkgdesc = A support package for GPIB (IEEE 488) hardware -- built from the svn source tree
-	pkgver = r1764
+	pkgver = r1809
 	pkgrel = 1
 	url = http://linux-gpib.sourceforge.net/
 	arch = x86_64
@@ -11,9 +11,13 @@ pkgbase = linux-gpib-svn
 	makedepends = bison
 	optdepends = fxload: firmware upload support for NI USB-B, Keithley KUSB-488 and Agilent 82357
 	provides = linux-gpib
+	provides = python-linux-gpib
 	conflicts = linux-gpib
+	conflicts = linux-gpib-dkms
+	conflicts = python-linux-gpib
 	backup = etc/gpib.conf
-	source = linux-gpib::svn://svn.code.sf.net/p/linux-gpib/code/trunk#revision=1764
+	backup = usr/etc/gpib.conf
+	source = linux-gpib::svn://svn.code.sf.net/p/linux-gpib/code/trunk
 	md5sums = SKIP
 
 pkgname = linux-gpib-svn

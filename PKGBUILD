@@ -2,7 +2,7 @@
 
 _pkgname='linux-gpib'
 pkgname=("$_pkgname-svn")
-pkgver=r1764
+pkgver=r1809
 pkgrel=1
 pkgdesc='A support package for GPIB (IEEE 488) hardware -- built from the svn source tree'
 arch=('x86_64')
@@ -10,10 +10,16 @@ url='http://linux-gpib.sourceforge.net/'
 license=('GPL')
 makedepends=('perl' 'python' 'linux-headers' 'bison')
 optdepends=('fxload: firmware upload support for NI USB-B, Keithley KUSB-488 and Agilent 82357')
-conflicts=('linux-gpib')
-provides=('linux-gpib')
-source=("${_pkgname}::svn://svn.code.sf.net/p/linux-gpib/code/trunk#revision=${pkgver/#r}")
-backup=('etc/gpib.conf')
+conflicts=('linux-gpib' 'linux-gpib-dkms' 'python-linux-gpib')
+provides=('linux-gpib' 'python-linux-gpib')
+source=("${_pkgname}::svn://svn.code.sf.net/p/linux-gpib/code/trunk")
+backup=('etc/gpib.conf' 'usr/etc/gpib.conf')
+md5sums=('SKIP')
+
+_kernDir="${_pkgname}/${_pkgname}-kernel"
+_userDir="${_pkgname}/${_pkgname}-user"
+_extramodules=`readlink -e /usr/lib/modules/$(uname -r)/extramodules`
+_buildForPythonVersion=3 # could also be 2
 
 pkgver() {
   cd "${_kernDir}"
@@ -21,17 +27,10 @@ pkgver() {
   printf "r%s" "${ver//[[:alpha:]]}"
 }
 
-_kernDir="${_pkgname}/${_pkgname}-kernel"
-_userDir="${_pkgname}/${_pkgname}-user"
-_extramodules=`readlink -e /usr/lib/modules/$(uname -r)/extramodules`
-_buildForPythonVersion=3 # could also be 2
-
-md5sums=('SKIP')
-
 prepare() {
   cd "${srcdir}/${_kernDir}"
-  ./bootstrap
-  ./configure
+  #./bootstrap
+  #./configure
   make clean 
  
   cd "${srcdir}/${_userDir}"
@@ -70,6 +69,7 @@ install -Dm644 /dev/stdin "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
     MAKEFLAGS="-j1" make DESTDIR="${pkgdir}" install
     install -D -m644 "${srcdir}/${_userDir}/util/templates/gpib.conf" \
      "${pkgdir}/etc/gpib.conf"
+    rm "${pkgdir}/usr/etc/gpib.conf"
 
     mkdir -p "${pkgdir}/etc/udev/rules.d" 
     echo 'KERNEL=="gpib[0-9]*", MODE="0660", GROUP="gpib"' > "${pkgdir}/etc/udev/rules.d/31-gpib.rules"
