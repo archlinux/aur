@@ -1,13 +1,13 @@
 pkgname='cinnamon-theme-new-minty-git'
 pkgver=r127.c2b00d5
-pkgrel=1
+pkgrel=2
 pkgdesc="New-Minty Cinnamon theme"
 arch=('any')
 url='https://github.com/zagortenay333/new-minty'
 license=('AGPL3')
 source=("$pkgname::git+https://github.com/zagortenay333/new-minty.git")
 md5sums=('SKIP')
-depends=('cinnamon')
+depends=('cinnamon' 'ttf-roboto' 'noto-fonts' 'noto-fonts-extra')
 makedepends=('git')
 
 pkgver() {

@@ -1,12 +1,15 @@
 pkgbase = cinnamon-theme-new-minty-git
 	pkgdesc = New-Minty Cinnamon theme
 	pkgver = r127.c2b00d5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zagortenay333/new-minty
 	arch = any
 	license = AGPL3
 	makedepends = git
 	depends = cinnamon
+	depends = ttf-roboto
+	depends = noto-fonts
+	depends = noto-fonts-extra
 	source = cinnamon-theme-new-minty-git::git+https://github.com/zagortenay333/new-minty.git
 	md5sums = SKIP
 
