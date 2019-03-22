@@ -5,7 +5,7 @@
 _pkgname="xournalpp"
 pkgname="${_pkgname}-git"
 
-pkgver=1.0.8.116.ga05afb4d
+pkgver=1.0.8.129.g4577d967
 pkgrel=1
 pkgdesc='Xournal++ is a handwriting Notetaking software with PDF annotation support. Supports Pen input like Wacom Tablets.'
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ build() {
 	if [ -z "$XDG_CONFIG_HOME" ]; then
 		configdir=".config"
 	else
-		configdir="$XDG_CONFIG_HOME"
+		configdir="$(realpath --relative-to="$HOME" "$XDG_CONFIG_HOME")"
 	fi
 	cd "${srcdir}/${_pkgname}/build"
 	cmake -DCMAKE_INSTALL_PREFIX="/usr/" -DDEV_CONFIG_DIR="$configdir/xournalpp" ..
