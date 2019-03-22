@@ -1,8 +1,9 @@
 # Based on the file created for Arch Linux by:
 # Eli Schwartz <eschwartz@archlinux.org>
+# Maintainer: Andrey Vetrov <vetrov at mail dot ru>
 
 pkgname=cinnamon-slim
-pkgver=4.0.9
+pkgver=4.0.10
 pkgrel=1
 pkgdesc="Innovative Linux desktop. Slim version."
 arch=('x86_64')
@@ -32,10 +33,9 @@ source=("${pkgname%-*}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
 sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
-    cd "${srcdir}"/Cinnamon-${pkgver}
+    cd "${srcdir}"/cinnamon-${pkgver}
 
-    # Remove NetworkManager
-    # This patch must be applied before adding polkit agent to required components
+    # Remove NetworkManager patch. Must be applied before adding polkit agent to required components
     patch -Np1 -i ../remove-networkmanager.patch
     rm -rf "${srcdir}/Cinnamon-${pkgver}/files/usr/share/cinnamon/applets/network@cinnamon.org"
 
@@ -65,7 +65,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}"/Cinnamon-${pkgver}
+    cd "${srcdir}"/cinnamon-${pkgver}
 
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
@@ -83,7 +83,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}"/Cinnamon-${pkgver}
+    cd "${srcdir}"/cinnamon-${pkgver}
 
     make DESTDIR="${pkgdir}" install
 }
