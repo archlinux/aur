@@ -18,7 +18,7 @@ pkgbase = python-mutovis-control
 	backup = etc/gpib.conf
 	backup = usr/etc/gpib.conf
 	source = https://github.com/mutovis/control-software/archive/v1.1.0.tar.gz
-	sha256sums = 88a33083e031185666a1eb312105ff695c8df5c344c433c657ed81ec6f8f8297
+	sha256sums = 426bffe65e89ad8913349d75db9ff19bdf074e94b468a195f30daa1194c20239
 
 pkgname = python-mutovis-control
 
