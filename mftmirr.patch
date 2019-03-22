@@ -1,0 +1,47 @@
+From 85e208176ffd16ce9a51a9f534b194f0ebbde6e3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jean-Pierre=20Andr=C3=A9?= <jpandre@users.sourceforge.net>
+Date: Fri, 22 Dec 2017 11:29:00 +0100
+Subject: [PATCH] Stopped checking matches of MFTMirr against MFT at record 16
+
+Since its 2017 edition, Windows 10 has stopped mirroring $MFT to the
+full size of $MFTMirr leading to mounts of partitions with big clusters
+to be rejected because of mismatches. With this patch, only 16 records
+are checked, though mirroring is still done for all records in $MFTMirr.
+---
+ libntfs-3g/volume.c | 3 ++-
+ ntfsprogs/ntfsfix.c | 5 +++++
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/libntfs-3g/volume.c b/libntfs-3g/volume.c
+index 68b8ee1d..d36c7d55 100644
+--- a/libntfs-3g/volume.c
++++ b/libntfs-3g/volume.c
+@@ -959,7 +959,8 @@ ntfs_volume *ntfs_device_mount(struct ntfs_device *dev, ntfs_mount_flags flags)
+ 		vol->mftmirr_size = l;
+ 	}
+ 	ntfs_log_debug("Comparing $MFTMirr to $MFT...\n");
+-	for (i = 0; i < vol->mftmirr_size; ++i) {
++		/* Windows 10 does not update the full $MFTMirr any more */
++	for (i = 0; (i < vol->mftmirr_size) && (i < FILE_first_user); ++i) {
+ 		MFT_RECORD *mrec, *mrec2;
+ 		const char *ESTR[12] = { "$MFT", "$MFTMirr", "$LogFile",
+ 			"$Volume", "$AttrDef", "root directory", "$Bitmap",
+diff --git a/ntfsprogs/ntfsfix.c b/ntfsprogs/ntfsfix.c
+index 2a624023..6801e70e 100644
+--- a/ntfsprogs/ntfsfix.c
++++ b/ntfsprogs/ntfsfix.c
+@@ -506,6 +506,11 @@ static int fix_mftmirr(ntfs_volume *vol)
+ 
+ 	ntfs_log_info("Comparing $MFTMirr to $MFT... ");
+ 	done = FALSE;
++	/*
++	 * Since 2017, Windows 10 does not mirror to full $MFTMirr when
++	 * using big clusters, and some records may be found different.
++	 * Nevertheless chkdsk.exe mirrors it fully, so we do similarly.
++	 */
+ 	for (i = 0; i < vol->mftmirr_size; ++i) {
+ 		MFT_RECORD *mrec, *mrec2;
+ 		const char *ESTR[12] = { "$MFT", "$MFTMirr", "$LogFile",
+-- 
+2.19.0
+

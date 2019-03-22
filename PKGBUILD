@@ -8,7 +8,7 @@
 pkgname=ntfs-3g-ar
 _pkgname=ntfs-3g_ntfsprogs
 _stablever=2017.3.23
-pkgver=${_stablever}AR.2
+pkgver=${_stablever}AR.4
 pkgrel=1
 pkgdesc='NTFS filesystem driver and utilities with experimental features'
 url='http://jp-andre.pagesperso-orange.fr/advanced-ntfs-3g.html'
@@ -16,17 +16,21 @@ arch=('x86_64')
 license=('GPL2')
 depends=('util-linux' 'fuse2')
 source=("https://tuxera.com/opensource/${_pkgname}-${_stablever}.tgz"
-        "http://pagesperso-orange.fr/jp-andre/${_pkgname}-${pkgver}.tgz")
+        "http://pagesperso-orange.fr/jp-andre/${_pkgname}-${pkgver}.tgz"
+        'mftmirr.patch')
 sha256sums=('3e5a021d7b761261836dcb305370af299793eedbded731df3d6943802e1262d5'
-            '8bc859486ee27063db65d7a4ac14d8ecf06cd6b071a531c2559288c00d6239e6')
+            '46e1edb27362d2f24cbc04db7d81ae2241d8ff6a45bb72240a316b1635caca0b'
+            '4166ff3021921d7a7ffac8f5de64b5735b1d5e365a024744bebc7260cf1ce726')
 
 conflicts=('ntfsprogs' 'ntfs-3g')
 provides=('ntfsprogs' "ntfs-3g=$_stablever-$pkgrel")
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	sed 's|$(DESTDIR)/sbin|$(DESTDIR)/usr/bin|' -i {ntfsprogs,src}/Makefile.in \
-		../${_pkgname}-${_stablever}/{ntfsprogs,src}/Makefile.in
+	sed 's|$(DESTDIR)/sbin|$(DESTDIR)/usr/bin|' -i {ntfsprogs,src}/Makefile.in
+	cd "../${_pkgname}-${_stablever}"
+	sed 's|$(DESTDIR)/sbin|$(DESTDIR)/usr/bin|' -i {ntfsprogs,src}/Makefile.in
+	patch -p1 -i ../mftmirr.patch
 }
 
 _configure() {
