@@ -1,0 +1,14 @@
+pkgbase = ittirish-names
+	pkgdesc = Generate random names from people in Ittiri's city!
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://gitlab.com/slashpark/generatore-nomi-ittiresi
+	arch = any
+	license = GPL3
+	depends = wget
+	depends = ruby
+	source = https://gitlab.com/slashpark/generatore-nomi-ittiresi/raw/v0.2/ittirish-names
+	md5sums = 4130a415c760e02f3995b27f658e834c
+
+pkgname = ittirish-names
+
