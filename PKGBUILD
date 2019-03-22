@@ -4,7 +4,7 @@
 pkgname=pyside2
 _qtver=5.12.2
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
@@ -32,7 +32,7 @@ provides=(python-pyside2)
 replaces=(python-pyside2)
 _pkgfqn=pyside-setup-everywhere-src-${_qtver}
 source=("https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz")
-sha256sums=('96f2cb04f860654492a99522ef8e1cf4fa251ec32e00b42a299092f29684afff')
+sha256sums=('ed974c0592019cbbcd4e4db3b18cf4f2af2c399cc1650e5c526be3efd7562bc1')
 
 prepare() {
   mkdir -p build
