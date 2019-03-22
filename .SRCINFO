@@ -1,6 +1,6 @@
 pkgbase = linux-gc
-	pkgver = 5.0.2
-	pkgrel = 2
+	pkgver = 5.0.3
+	pkgrel = 1
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
 	license = GPL2
@@ -13,7 +13,7 @@ pkgbase = linux-gc
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = linux-5.0.2-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-5.0.2-arch1.tar.gz
+	source = linux-5.0.3-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-5.0.3-arch1.tar.gz
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -26,7 +26,7 @@ pkgbase = linux-gc
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
-	sha256sums = 0690caf9f27f6f7d7fa588e8a0a9d8703c861636e9448f0afad349764572b083
+	sha256sums = b2965621b8a1e5684e8080a371a9ab36c6aa1ea36d87eba2ad5aa928dd042a53
 	sha256sums = 60fe6db77795144cca82c1468ff6520c7bcea38d1d74bf1418c8c8ff91eaf62a
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
@@ -45,12 +45,12 @@ pkgname = linux-gc
 	depends = kmod
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-gc=5.0.2
+	provides = linux-gc=5.0.3
 	backup = etc/mkinitcpio.d/linux-gc.preset
 
 pkgname = linux-gc-headers
 	pkgdesc = Header files and scripts for building modules for Linux-gc kernel and UKSM patchset
 	depends = linux-gc
-	provides = linux-gc-headers=5.0.2
-	provides = linux-headers=5.0.2
+	provides = linux-gc-headers=5.0.3
+	provides = linux-headers=5.0.3
 
