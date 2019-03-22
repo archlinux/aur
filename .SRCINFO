@@ -1,11 +1,11 @@
 pkgbase = etm
 	pkgdesc = Manage events and tasks using simple text files
 	pkgver = 891
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.duke.edu/~dgraham/ETM/
 	arch = any
 	license = GPL
-	makedepends = setuptools
+	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-distribute
 	depends = python2-dateutil
