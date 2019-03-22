@@ -1,17 +1,17 @@
 # Maintainer: Victor <victor@xirion.net>
 
 pkgname=rke-bin
-pkgver=v0.1.17
+pkgver=v0.2.0
 pkgrel=1
 pkgdesc='Rancher Kubernetes Engine, an extremely simple, lightning fast Kubernetes installer that works everywhere. '
 arch=('x86_64')
 url='https://github.com/rancher/rke'
 license=('Apache')
 provides=('rke')
-source=("https://github.com/rancher/rke/releases/download/${pkgver}/rke_linux-amd64")
-md5sums=('926a0b72b9595de53ea000bcef710064')
+_rke_file=rke-$pkgver
+source=($_rke_file::"https://github.com/rancher/rke/releases/download/${pkgver}/rke_linux-amd64")
+md5sums=('7fa7070ebc5db1d3090146675578103f')
 
 package() {
-    mkdir -p "${pkgdir}/usr/bin"
-    install -D -m755 rke_linux-amd64 "${pkgdir}/usr/bin/rke"
+    install -Dm 755 "$srcdir/$_rke_file" "${pkgdir}/usr/bin/rke"
 }
