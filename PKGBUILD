@@ -1,4 +1,4 @@
-# Maintainer: gilbus <aur(AT)tinkershell.eu>
+# Maintainer: drrossum <d.r.vanrossum(AT)gmx.de>
 pkgname=swaylock-delay-password-git
 _pkgname=swaylock-delay-password
 pkgver=r213.c063745
