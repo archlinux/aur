@@ -4,7 +4,7 @@
 
 pkgname=compute-runtime-bin
 _depver=19.07.1542
-pkgver=19.09.12487
+pkgver=19.10.12542
 pkgrel=1
 pkgdesc='Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond (binary version)'
 arch=(x86_64)
@@ -22,9 +22,9 @@ ${url}/releases/download/${pkgver}/intel-igc-opencl_${_depver}_amd64.deb
 ${url}/releases/download/${pkgver}/intel-opencl_${pkgver}_amd64.deb
 )
 
-sha256sums=('9e5c130df7fe95b860f4c761620bf6fd5f814930df3f06c5e698aa846cadece5'
-	    '964e714899347564af99fe2a3619e7e630e52b74a88d96f183a27a934bbe79ca'
-	    'a3af770dca72e2c46666716fab6076e6f6b320eb223d1a14d341ab58e4f14a71')
+sha256sums=('63204463ad129f638f96db60e49867a0deb9367e53881fe49905243f1c852534'
+            '9d2cf756c1a8e561a1347f49baa09d54f4a1792125741fcf7ccf44145c1e0861'
+            'f0a040fdc36081d0d24a9c3a9a27722fe2fa4e3abc56a00a52f3eab3cae4b54f')
 
 noextract=(
 ${url}/releases/download/${pkgver}/intel-igc-core_${_depver}_amd64.deb
