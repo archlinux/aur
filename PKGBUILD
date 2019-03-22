@@ -1,17 +1,18 @@
 # Maintainer: Vitaliy Berdinskikh <ur6lad at gmail dot com>
 pkgname=swayshot 
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='Put your screenshots to XDG_PICTURES_DIR folder'
 arch=('any')
 url='https://gitlab.com/racy/swayshot'
 license=('Apache')
 depends=('sway' 'xdg-user-dirs' 'grim' 'slurp' 'jq')
-optdepends=('xsel: copy the full path to clipboard (or xclip)'
-	'xclip: copy the full path to clipboard (or xsel)')
+optdepends=('wl-clipboard: copy the full path to clipboard'
+	'xsel: copy the full path to clipboard'
+	'xclip: copy the full path to clipboard')
 conflicts=('swaygrab-helper')
 source=(https://gitlab.com/racy/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2)
-sha256sums=('694c77150c93d43d43c25281a94aea0d67d19d38bf9a2fe105d5db5a1306f4b6')
+sha256sums=('4d20f78e16d6f733c0d047f5b1fd6c76b8470c5981b09cf421fff3328a90e1d0')
 
 package() {
 	cd "$srcdir"/$pkgname-$pkgver
