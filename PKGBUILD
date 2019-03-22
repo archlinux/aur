@@ -24,7 +24,6 @@ depends=(
   'perl-proc-daemon'
 )
 makedepends=(
-  #'perl-http-proxy'
   'perl-http-server-simple'
   'perl-http-server-simple-authen'
   'perl-io-socket-ssl'
@@ -101,7 +100,6 @@ checkdepends=(
     'perl-file-copy-recursive'
     # Needed for perl-http-server-simple to work properly
     'perl-cgi'
-    'perl-http-proxy'
     'perl-http-server-simple'
     'perl-http-server-simple-authen'
     'perl-io-socket-ssl'

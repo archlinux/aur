@@ -7,7 +7,6 @@ pkgbase = fusioninventory-agent
 	license = GPL
 	checkdepends = perl-file-copy-recursive
 	checkdepends = perl-cgi
-	checkdepends = perl-http-proxy
 	checkdepends = perl-http-server-simple
 	checkdepends = perl-http-server-simple-authen
 	checkdepends = perl-io-socket-ssl
