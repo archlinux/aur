@@ -1,0 +1,27 @@
+pkgbase = swaylock-delay-password-git
+	pkgdesc = Screen locker for Wayland with delayed password locking support
+	pkgver = r213.c063745
+	pkgrel = 1
+	url = https://swaywm.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	makedepends = scdoc
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = libxkbcommon
+	depends = pango
+	depends = cairo
+	depends = pam
+	optdepends = gdk-pixbuf2: For background images other than PNG
+	provides = swaylock
+	conflicts = swaylock
+	options = debug
+	options = !strip
+	source = swaylock-delay-password::git+https://github.com/gdamjan/swaylock.git#branch=delay-password
+	sha1sums = SKIP
+
+pkgname = swaylock-delay-password-git
+
