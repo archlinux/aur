@@ -1,9 +1,10 @@
-# Maintainer: Adrian Hühn <adrian.huehn@web.de>
-# Previous Maintainer: Vit <vitruss@gmail.com>
+# Maintainer: Ke Liu <spcter119@gmail.com>
+# Contributor: Adrian Hühn <adrian.huehn@web.de>
+# Contributor: Vit <vitruss@gmail.com>
 
 pkgname=xcrysden
 pkgver=1.5.60
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="crystalline and molecular structure visualisation program"
 arch=('x86_64')

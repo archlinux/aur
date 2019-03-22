@@ -14,14 +14,13 @@ pkgbase = xcrysden
 	depends = gcc-fortran
 	depends = glu
 	depends = libxmu
-	optdepends = openbabel
 	replaces = xcrysden-bin
 	source = http://www.xcrysden.org/download/xcrysden-1.5.60.tar.gz
 	source = fix-xcrysden-install.patch
 	source = Make.sys
 	sha256sums = a695729f1bb3e486b86a74106c06a392c8aca048dc6b0f20785c3c311cfb2ef4
 	sha256sums = 61a0bbc7728beff05bcb7f1676053de468ebb926b638869174aa2bbcb5bc554c
-	sha256sums = 65087f42dc08b335798b2cdeee2e3dc5ed99ef177c71dbf9c5ff3ac5039161a6
+	sha256sums = 077ca35a6d7264c0b13489a3c06cb49041c6afaf394d136c303ba9b4a5614d66
 
 pkgname = xcrysden
 
