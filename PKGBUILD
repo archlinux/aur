@@ -1,20 +1,20 @@
+# Maintainer: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
-
-pkgname='perl-x10'
-pkgver='0.03'
-pkgrel='1'
+_distname=X10
+pkgname=perl-x10
+pkgver=0.04
+pkgrel=1
 pkgdesc="Manage X10 devices in Perl"
 arch=('any')
+url="http://search.mcpan.org/dist/_distname"
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl-astro-suntime>=0.01' 'perl-device-serialport' 'perl-time-modules')
+depends=('perl-astro-suntime>=0.01'
+         'perl-device-serialport'
+         'perl-time-modules')
 makedepends=()
-url='http://search.mcpan.org/dist/X10'
-source=('http://search.mcpan.org/CPAN/authors/id/R/RO/ROBF/X10-0.03.tar.gz')
-md5sums=('056b3d98fab545865148b948de6784c7')
-sha512sums=('6ed2b9526732dc5f704ceb94f3a9abb51c208aabb6f127480046ce1f01ecf763e4de2dcb5bf52ef598831dbd5ba78ff9d108238001070076b0cc05c7681dea2f')
-_distdir="X10-0.03"
+options=('!emptydirs')
+source=("http://search.mcpan.org/CPAN/authors/id/R/RO/ROBF/$_distname-$pkgver.tar.gz")
+md5sums=('20dcca2dfb978bfed3043276aa3481e5')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -23,23 +23,22 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd "$_distname-$pkgver"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd "$_distname-$pkgver"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "$_distname-$pkgver"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 

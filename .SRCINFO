@@ -1,8 +1,8 @@
 pkgbase = perl-x10
 	pkgdesc = Manage X10 devices in Perl
-	pkgver = 0.03
+	pkgver = 0.04
 	pkgrel = 1
-	url = http://search.mcpan.org/dist/X10
+	url = http://search.mcpan.org/dist/_distname
 	arch = any
 	license = PerlArtistic
 	license = GPL
@@ -10,9 +10,8 @@ pkgbase = perl-x10
 	depends = perl-device-serialport
 	depends = perl-time-modules
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/R/RO/ROBF/X10-0.03.tar.gz
-	md5sums = 056b3d98fab545865148b948de6784c7
-	sha512sums = 6ed2b9526732dc5f704ceb94f3a9abb51c208aabb6f127480046ce1f01ecf763e4de2dcb5bf52ef598831dbd5ba78ff9d108238001070076b0cc05c7681dea2f
+	source = http://search.mcpan.org/CPAN/authors/id/R/RO/ROBF/X10-0.04.tar.gz
+	md5sums = 20dcca2dfb978bfed3043276aa3481e5
 
 pkgname = perl-x10
 
