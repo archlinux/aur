@@ -1,0 +1,37 @@
+pkgbase = jriver-media-center25
+	pkgdesc = The Most Comprehensive Media Software
+	pkgver = 25.0.15
+	pkgrel = 1
+	url = http://www.jriver.com/
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = libx11
+	depends = libxext
+	depends = libxcb
+	depends = libxau
+	depends = libxdmcp
+	depends = util-linux
+	depends = libxext
+	depends = gtk3
+	depends = webkit2gtk
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
+	depends = gst-plugins-ugly
+	depends = gst-libav
+	optdepends = mesa-libgl: nouveau video support
+	optdepends = nvidia-libgl: nvidia video support
+	optdepends = vorbis-tools
+	optdepends = musepack-tools
+	conflicts = jriver-media-center
+	conflicts = jriver-media-center24
+	source = http://files.jriver.com/mediacenter/channels/v25/latest/MediaCenter-25.0.15-amd64.deb
+	source = License.txt
+	sha256sums = SKIP
+	sha256sums = ee00f430918df6be37777a61e12812875b5583379c78daaa969bae7383a41fbd
+
+pkgname = jriver-media-center25
+
