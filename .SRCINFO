@@ -1,7 +1,7 @@
 pkgbase = trinnity-caffe-cuda-git
 	pkgdesc = Caffe 1.0 with triNNity extensions (CUDA backend)
 	pkgver = 1.0
-	pkgrel = 6
+	pkgrel = 13
 	url = https://bitbucket.org/STG-TCD/trinnity-caffe
 	arch = x86_64
 	license = BSD
@@ -29,6 +29,7 @@ pkgbase = trinnity-caffe-cuda-git
 	depends = python-six
 	depends = python-scikit-image
 	depends = opencv>=4.0.0
+	depends = gtk3
 	depends = cuda
 	depends = nccl
 	optdepends = openblas: OpenBLAS for backend linear algebra ops,
