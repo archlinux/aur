@@ -3,13 +3,13 @@
 pkgname='compute-runtime'
 pkgdesc="Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond. Weekly build version."
 pkgver='19.11.12599'
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://01.org/compute-runtime'
 license=('MIT')
 makedepends=(
     # official repositories:
-	'git' 'llvm' 'clang' 'python2' 'cmake' 'intel-gmmlib'
+	'git' 'cmake' 'intel-gmmlib'
     # AUR:
         'intel-graphics-compiler'    
 )	
