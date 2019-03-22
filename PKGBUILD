@@ -1,14 +1,14 @@
 # Maintainer: Stefan Göbel < snot ʇɐ subtype ˙ de >
 
 pkgname='snot'
-pkgver='0.2'
+pkgver='0.3'
 pkgrel='1'
 pkgdesc='Basic Btrfs snapshot tool.'
 arch=('x86_64' 'i686')
 url='https://gitlab.com/goeb/snot'
 license=('GPL3')
 depends=('btrfs-progs')
-makedepends=('git' 'go' 'python-docutils')
+makedepends=('git' 'go-pie' 'python-docutils')
 source=("$pkgname::git+https://gitlab.com/goeb/$pkgname.git#tag=$pkgver")
 sha256sums=('SKIP')
 backup=(
