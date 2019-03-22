@@ -2,7 +2,7 @@
 pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
 pkgver='3.6.1'
-pkgrel='4'
+pkgrel='5'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
@@ -21,8 +21,14 @@ build() {
 	./configure \
 		--prefix=/usr \
 		--with-mpi=/usr \
+		--with-mpi-libs=/usr/lib/openmpi \
+		--with-mpi-headers=/usr/include/openmpi \
 		--with-unwind=/usr \
+		--with-unwind-headers=/usr/include \
+		--with-unwind-libs=/usr/lib \
 		--with-papi=/usr \
+		--with-papi-headers=/usr/include \
+		--with-papi-libs=/usr/lib \
 		--without-dyninst
 
 	make
