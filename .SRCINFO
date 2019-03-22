@@ -1,7 +1,7 @@
 pkgbase = puppetserver
 	pkgdesc = Server automation framework and application
 	pkgver = 6.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.puppetlabs.com/puppetserver/latest/services_master_puppetserver.html
 	install = puppetserver.install
 	arch = any
