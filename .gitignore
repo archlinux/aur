@@ -1,0 +1,6 @@
+src
+pkg
+*.zip
+*.pkg.tar.xz
+README.md
+*.log
