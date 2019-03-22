@@ -1,7 +1,7 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 
 pkgname=mingw-w64-libxml2
-pkgver=2.9.8
+pkgver=2.9.9
 pkgrel=1
 arch=('any')
 pkgdesc="XML parsing library, version 2 (mingw-w64)"
@@ -11,7 +11,7 @@ options=('!buildflags' '!strip' 'staticlibs')
 license=('LGPL')
 url="http://www.xmlsoft.org/"
 source=("http://xmlsoft.org/sources/libxml2-${pkgver}.tar.gz")
-sha256sums=('0b74e51595654f958148759cfef0993114ddccccbb6f31aee018f3558e8e2732')
+sha256sums=('94fb70890143e3c6549f265cee93ec064c80a84c42ad0f23e85ee1fd6540a871')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
