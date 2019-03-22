@@ -2,10 +2,10 @@
 pkgname='basicanalysis'
 pkgdesc='Framework for automatic extraction of fundamental factors for Paraver traces (from BSC).'
 pkgver='0.3.6'
-pkgrel='2'
+pkgrel='3'
 arch=('any')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
-license=('LGPLv2.1')
+license=('LGPL2.1')
 depends=(python python-scipy python-numpy)
 optdepends=('gnuplot: For drawing the generated plots')
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-$pkgver-src.tar.bz2")
