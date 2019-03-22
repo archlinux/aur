@@ -1,7 +1,7 @@
 pkgbase = folding
 	pkgdesc = Combined instrumentation and sampling for instantaneous metric evolution with low overhead (from BSC).
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
 	arch = i686
 	arch = x86_64

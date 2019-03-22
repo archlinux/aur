@@ -2,7 +2,7 @@
 pkgname='folding'
 pkgdesc='Combined instrumentation and sampling for instantaneous metric evolution with low overhead (from BSC).'
 pkgver='1.3.2'
-pkgrel='1'
+pkgrel='2'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('GPLv3')
@@ -28,4 +28,8 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 
 	make prefix="$pkgdir/usr/" install
+
+	# FIXME: Why are those libraries from libbsctools copied to the package directory when installing?
+	rm "/usr/lib/libparavertraceconfig.so"
+	rm "/usr/lib/libparavertraceparser.so"
 }
