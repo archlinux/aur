@@ -1,0 +1,16 @@
+pkgbase = spectral
+	pkgdesc = Signal processing techniques to select representative regions from Paraver traces (from BSC).
+	pkgver = 3.4.1
+	pkgrel = 1
+	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = fftw
+	depends = libbsctools
+	depends = extrae
+	source = https://ftp.tools.bsc.es/spectral/spectral-3.4.1-src.tar.bz2
+	sha512sums = 5b6350cbc6800857d1eeec7b6061406e3d238c12078f90a1ab611f89865f4bf07ef01dd638d9f258e64dfeded3963bdb48fba142599c29b57ffbcb7a86ac72f4
+
+pkgname = spectral
+
