@@ -1,6 +1,6 @@
 pkgbase = compute-runtime-bin
 	pkgdesc = Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond (binary version)
-	pkgver = 19.10.12542
+	pkgver = 19.11.12599
 	pkgrel = 1
 	url = https://github.com/intel/compute-runtime
 	install = compute-runtime-bin.install
@@ -16,15 +16,15 @@ pkgbase = compute-runtime-bin
 	provides = compute-runtime
 	conflicts = beignet
 	conflicts = compute-runtime
-	noextract = https://github.com/intel/compute-runtime/releases/download/19.10.12542/intel-igc-core_19.07.1542_amd64.deb
-	noextract = https://github.com/intel/compute-runtime/releases/download/19.10.12542/intel-igc-opencl_19.07.1542_amd64.deb
-	noextract = https://github.com/intel/compute-runtime/releases/download/19.10.12542/intel-opencl_19.10.12542_amd64.deb
-	source = https://github.com/intel/compute-runtime/releases/download/19.10.12542/intel-igc-core_19.07.1542_amd64.deb
-	source = https://github.com/intel/compute-runtime/releases/download/19.10.12542/intel-igc-opencl_19.07.1542_amd64.deb
-	source = https://github.com/intel/compute-runtime/releases/download/19.10.12542/intel-opencl_19.10.12542_amd64.deb
-	sha256sums = 63204463ad129f638f96db60e49867a0deb9367e53881fe49905243f1c852534
-	sha256sums = 9d2cf756c1a8e561a1347f49baa09d54f4a1792125741fcf7ccf44145c1e0861
-	sha256sums = f0a040fdc36081d0d24a9c3a9a27722fe2fa4e3abc56a00a52f3eab3cae4b54f
+	noextract = https://github.com/intel/compute-runtime/releases/download/19.11.12599/intel-igc-core_19.11.1622_amd64.deb
+	noextract = https://github.com/intel/compute-runtime/releases/download/19.11.12599/intel-igc-opencl_19.11.1622_amd64.deb
+	noextract = https://github.com/intel/compute-runtime/releases/download/19.11.12599/intel-opencl_19.11.12599_amd64.deb
+	source = https://github.com/intel/compute-runtime/releases/download/19.11.12599/intel-igc-core_19.11.1622_amd64.deb
+	source = https://github.com/intel/compute-runtime/releases/download/19.11.12599/intel-igc-opencl_19.11.1622_amd64.deb
+	source = https://github.com/intel/compute-runtime/releases/download/19.11.12599/intel-opencl_19.11.12599_amd64.deb
+	sha256sums = 6ed64329e0816e23ca7aed8c8a54b98c9bcfbdf4b9b78f254407cdac10fa17a4
+	sha256sums = a1c3e3c8848e8cf52790c558ec310ab72a20865a8c6473046c3a29052b08c273
+	sha256sums = 1d6b197d1341545a570d6b2f8722163db7c1cf2d369ba4160d4081e39922c95b
 
 pkgname = compute-runtime-bin
 
