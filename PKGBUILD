@@ -13,8 +13,8 @@ _revert=0
 
 
 pkgname=mutter-781835-workaround
-pkgver=3.32.0+40+g943a6279e
-pkgrel=1
+pkgver=3.32.0+25+gf0b9654de
+pkgrel=2
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -53,43 +53,43 @@ prepare() {
 
   # Geometric (GPU-less) picking
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/189
-  git cherry-pick d774fb22
+  git cherry-pick -n d774fb22
 
   # clutter-stage-cogl: Reduce output latency and reduce missed frames too [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/281
-  git cherry-pick df73e736^..e0262aac
+  git cherry-pick -n df73e736^..e0262aac
 
   # Consolidate all frame throttling into clutter-stage-cogl [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/363
   # incompatible with !281 atm
-  # git cherry-pick 7e4270de^..27f669d0
+  # git cherry-pick -n 7e4270de^..27f669d0
 
   # clutter-actor: Add detail to captured-event signal [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/283
-  git cherry-pick a20a0d7a
+  git cherry-pick -n a20a0d7a
 
   # clutter: Deliver events sooner when possible
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/168
   # Disabled by default as causes lag when moving a window around
-  # git cherry-pick ae8fc614
+  # git cherry-pick -n ae8fc614
 
 
   # Resource scale computation optimizations
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/493
-  git cherry-pick 3aa449af^..1017ce44
+  git cherry-pick -n 3aa449af^..1017ce44
 
   # Add experimental key for RT scheduling
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/460
-  git cherry-pick b49640c4^..a18d6901
+  git cherry-pick -n b49640c4^..a18d6901
 
   # cogl: Enable EGL_IMG_context_priority
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/454
-  git cherry-pick 14a27e87^..a40d7927
+  git cherry-pick -n 14a27e87^..a40d7927
 
   # WIP: renderer-native: Accept frames without ever blocking
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/73
   # does not compile yet
-  # git cherry-pick 35ec0eaf^..202530c9
+  # git cherry-pick -n 35ec0eaf^..202530c9
 
   # '
   # Commented multiline comment end, remove the # above if disabling the patches
