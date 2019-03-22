@@ -26,7 +26,7 @@ options=("!strip")
 install=
 changelog=
 # Actually this is just an information about the latest version.
-source=("https://github.com/zeit/now-cli/releases/latest")
+source=("https://api.github.com/repos/zeit/now-cli/releases/latest")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
@@ -34,8 +34,11 @@ validpgpkeys=()
 pkgver() {
 	# Could not find a way to check version *before* downloading sources,
 	# so we fetch version information instead of sources
-	# and then download the real binary in build()
-	cat latest | grep -o 'tag/[^"]*' | sed 's:tag/::'
+	# and then download the real binary in build().
+	# The data in `latest` is a pretty-printed JSON.
+	# We could parse it using `jq` package, but let's not introduce extra dependencies
+	# for such trivial case.
+	cat latest | grep -Po '(?<="tag_name":)\s*"[0-9.]*"' | tr -d '" '
 }
 
 build() {

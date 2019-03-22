@@ -10,7 +10,7 @@ pkgbase = zeit-now-bin
 	provides = zeit-now
 	conflicts = nodejs-now
 	options = !strip
-	source = https://github.com/zeit/now-cli/releases/latest
+	source = https://api.github.com/repos/zeit/now-cli/releases/latest
 	md5sums = SKIP
 
 pkgname = zeit-now-bin
