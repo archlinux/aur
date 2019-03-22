@@ -4,7 +4,7 @@
 
 pkgname=cinnamon-slim
 pkgver=4.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Innovative Linux desktop. Slim version."
 arch=('x86_64')
 url="https://github.com/linuxmint/Cinnamon"
@@ -37,7 +37,7 @@ prepare() {
 
     # Remove NetworkManager patch. Must be applied before adding polkit agent to required components
     patch -Np1 -i ../remove-networkmanager.patch
-    rm -rf "${srcdir}/Cinnamon-${pkgver}/files/usr/share/cinnamon/applets/network@cinnamon.org"
+    rm -rf "${srcdir}/cinnamon-${pkgver}/files/usr/share/cinnamon/applets/network@cinnamon.org"
 
     # Check for the cc-panel module path, not for the irrelevant binary
     # https://github.com/linuxmint/Cinnamon/pull/7382
