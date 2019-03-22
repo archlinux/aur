@@ -2,7 +2,7 @@
 
 pkgname=tla-tools
 pkgver=1.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for the TLA+2 language (SANY, TLC, PlusCal translator and TLATeX)"
 arch=('any')
 url="http://research.microsoft.com/en-us/um/people/lamport/tla/tools.html"
