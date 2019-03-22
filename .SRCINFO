@@ -5,6 +5,7 @@ pkgbase = markdown_previewer
 	url = https://github.com/TomaszGasior/markdown_previewer
 	arch = i686
 	arch = x86_64
+	makedepends = git
 	depends = php
 	depends = zenity
 	source = git+https://github.com/TomaszGasior/markdown_previewer.git#commit=a576155f380612c84bbcd05dcfc56dcb2c34e0ac

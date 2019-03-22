@@ -9,6 +9,7 @@ pkgdesc='Simple Markdown files previewer.'
 arch=('i686' 'x86_64')
 url='https://github.com/TomaszGasior/markdown_previewer'
 depends=('php' 'zenity')
+makedepends=('git')
 source=(
 	"git+https://github.com/TomaszGasior/$pkgname.git#commit=$__commit"
 	"markdown_previewer.desktop"
