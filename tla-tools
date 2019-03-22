@@ -1,2 +1,2 @@
-#!/bin/sh
-exec java -classpath /usr/share/java/tla2tools.jar "$@"
+#!/bin/bash
+exec ${TLA_JAVA:-java} $TLA_JAVA_OPTS -classpath /usr/share/java/tla2tools.jar "$@"

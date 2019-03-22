@@ -1,2 +1,2 @@
 #!/bin/sh
-exec tla-tools pcal.trans "$@"
+exec "$(dirname "$0")"/tla-tools pcal.trans "$@"

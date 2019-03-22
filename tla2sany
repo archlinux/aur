@@ -1,2 +1,2 @@
 #!/bin/sh
-exec tla-tools tla2sany.SANY "$@"
+exec "$(dirname "$0")"/tla-tools tla2sany.SANY "$@"

@@ -1,2 +1,2 @@
 #!/bin/sh
-exec tla-tools tlc2.tool.distributed.TLCServer "$@"
+exec "$(dirname "$0")"/tla-tools tlc2.tool.distributed.TLCServer "$@"
