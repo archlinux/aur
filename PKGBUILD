@@ -1,4 +1,4 @@
-# Maintainer: Charles Wise <charles [at] charlesbwise [dot] com>
+# Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 
 _python=python2
 _pkgname=python-musicbrainz2
