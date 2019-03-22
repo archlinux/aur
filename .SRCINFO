@@ -1,0 +1,16 @@
+pkgbase = reqrypt-client-git
+	pkgdesc = ReQrypt is a tool for tunneling and encrypting web browser requests to hide them from local snooping and interception.
+	pkgver = r80.98bc77d
+	pkgrel = 1
+	url = https://reqrypt.org/reqrypt.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	makedepends = autoconf
+	source = reqrypt-client-git::git+https://github.com/basil00/reqrypt.git#branch=master
+	md5sums = SKIP
+
+pkgname = reqrypt-client-git
+
