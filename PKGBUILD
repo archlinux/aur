@@ -1,18 +1,18 @@
 # Maintainer: Sandro Kalbermatter <info.kalsan [ät-symbol] valaiscom.ch>
 pkgname=schemaspy
-pkgver=5.0.0
-pkgrel=2
+pkgver=6.0.0
+pkgrel=1
 pkgdesc="Graphical Database Schema Metadata Browser"
 arch=(any)
 url="http://schemaspy.sourceforge.net/"
-license=(LGPL2.1)
-depends=('java-environment' 'bash')
+license=(LGPL3)
+depends=('java-environment' 'bash' 'graphviz')
 provides=('schemaspy')
 install=${pkgname}.install
-_jarname="schemaSpy_${pkgver}.jar"
-source=("$_jarname::http://downloads.sourceforge.net/project/schemaspy/schemaspy/SchemaSpy%20${pkgver}/schemaSpy_${pkgver}.jar")
+_jarname="schemaspy-${pkgver}.jar"
+source=("$_jarname::https://github.com/schemaspy/schemaspy/releases/download/v${pkgver}/${_jarname}")
 noextract=("${_jarname}")
-md5sums=('d1a4ca73e932f8c22d6da0f563f42690')
+md5sums=('13cf5baf57fb963942c4c70e863f55a0')
 
 build() {
   msg2 "Generate start script..."
