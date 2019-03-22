@@ -2,7 +2,7 @@
 # Contributor (from 1.0.2): Viliam Ganz <viliam.ganz@gmail.com>
 
 pkgname=kafkatool2
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 epoch=
 pkgdesc="The Ultimate Kafka UI Tool, version 2"
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("http://www.kafkatool.com/download2/kafkatool.sh")
 noextract=("kafkatool.sh")
-md5sums=('932db885b3e5dfee351d14fe29baa928')
+md5sums=('f26f53082c4e23a2e2ca496a9667de4f')
 validpgpkeys=()
 
 package() {
