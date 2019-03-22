@@ -1,7 +1,7 @@
 pkgbase = dosbox-gcc
 	pkgdesc = djgpp cross-compiler for the dosbox environment
-	pkgver = 8.2.0
-	pkgrel = 6
+	pkgver = 8.3.0
+	pkgrel = 1
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -20,14 +20,16 @@ pkgbase = dosbox-gcc
 	options = !strip
 	options = staticlibs
 	options = !emptydirs
-	source = https://ftp.gnu.org/gnu/gcc/gcc-8.2.0/gcc-8.2.0.tar.xz
-	source = http://isl.gforge.inria.fr/isl-0.18.tar.xz
-	source = https://zlib.net/zlib-1.2.11.tar.gz"
+	source = https://ftp.gnu.org/gnu/gcc/gcc-8.3.0/gcc-8.3.0.tar.xz
 	source = http://www.delorie.com/pub/djgpp/current/v2/djcrx205.zip
+	source = http://isl.gforge.inria.fr/isl-0.18.tar.xz
+	source = https://zlib.net/zlib-1.2.11.tar.gz
+	source = http://www.watt-32.net/watt32s-2.2-dev.10.zip
 	source = mkmake.bash
 	source = watt32.pc
-        source = gcc-djgpp.diff
+	source = gcc-djgpp.diff
 	source = lto.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -38,3 +40,4 @@ pkgbase = dosbox-gcc
 	sha256sums = c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0
 
 pkgname = dosbox-gcc
+
