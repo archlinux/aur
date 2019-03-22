@@ -1,11 +1,11 @@
 pkgbase = extrae
 	pkgdesc = Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).
 	pkgver = 3.6.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
 	arch = i686
 	arch = x86_64
-	license = LGPLv2.1
+	license = LGPL2.1
 	depends = openmpi
 	depends = libunwind
 	depends = papi
