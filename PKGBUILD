@@ -1,12 +1,13 @@
-# Maintainer: Ainola
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor: Ainola
 
 pkgname=imv-git
-pkgver=v2.1.3.r137.g7e1c122
+pkgver=v2.1.3.r202.ge278e28
 pkgrel=1
-pkgdesc='Image viewer for Wayland and X11'
+pkgdesc='imv is a command line image viewer intended for use with tiling window managers, with Wayland and X11 support.'
 url="https://github.com/eXeC64/imv"
 arch=('x86_64' 'i686')
-license=('GPL')
+license=('MIT')
 depends=('freeimage' 'sdl2_ttf' 'fontconfig')
 makedepends=('git' 'asciidoc')
 provides=('imv')
