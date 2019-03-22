@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=60.6.0
+pkgver=60.6.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
@@ -24,7 +24,7 @@ options=(!emptydirs !makeflags !strip)
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         firefox.desktop firefox-symbolic.svg
         rust_133-part0.patch 'rust_133-part1.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046663' 'rust_133-part2.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046664' deny_missing_docs.patch)
-sha256sums=('7c80d82c347ff6163e3d5d72448a38911b30e4e627183caac4264bcf613b85d5'
+sha256sums=('94037fdceb83785ef6748de196eae562d9fa83ab7ec858b07ed13c1f540a04f5'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'c10521badc262b476e844d3f3045ddf27e28d83d49b5db0d0e19431f06386e4d'
