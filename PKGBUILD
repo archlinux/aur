@@ -8,8 +8,8 @@ arch=('any')
 url="https://github.com/akiyosi/gonvim"
 license=('mit')
 depends=('neovim' 'qt5-base' 'qt5-tools' 'qt5-multimedia' 'qt5-svg' 'qt5-declarative' 'qt5-webchannel' 'qt5-webengine')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+provides=("${_pkgname}")
+conflicts=("gonvim")
 source=("https://github.com/akiyosi/gonvim/releases/download/v0.3.4/Gonvim-$pkgver-linux.tar.gz")
 sha256sums=('e635a9897be4c7766fe6b9016d90d5779119713d7bb8aaad1973ffab9747e954')
 
