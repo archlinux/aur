@@ -1,6 +1,6 @@
 pkgbase = devilutionx-git
 	pkgdesc = Diablo devolved for linux (git version)
-	pkgver = 0.3.1.r8.g30138419
+	pkgver = 0.3.1.r9.g47a9ad12
 	pkgrel = 1
 	url = https://github.com/diasurgical/devilutionX
 	install = devilutionx.install
@@ -8,16 +8,32 @@ pkgbase = devilutionx-git
 	license = custom:unlicense
 	makedepends = git
 	makedepends = cmake
-	makedepends = gcovr
-	makedepends = nasm
-	depends = sdl2_mixer
-	depends = sdl2_ttf
-	depends = libsodium
-	provides = devilutionx-git=0.3.1.r8.g30138419
-	source = devilutionx-git::git+https://github.com/diasurgical/devilutionX.git
+	makedepends = lib32-gcc-libs
+	makedepends = lib32-sdl2_mixer
+	makedepends = sdl2_ttf
+	makedepends = sdl2_ttf
+	makedepends = lib32-sdl2_ttf
+	makedepends = lib32-libsodium
+	makedepends = libsodium
+	source = devilutionx::git+https://github.com/diasurgical/devilutionX.git
 	source = LICENSE::https://raw.githubusercontent.com/diasurgical/devilutionX/master/LICENSE
 	sha256sums = SKIP
 	sha256sums = 88d9b4eb60579c191ec391ca04c16130572d7eedc4a86daa58bf28c6e14c9bcd
 
 pkgname = devilutionx-git
+	pkgdesc = Diablo devolved for linux (native build)
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	depends = libsodium
+	provides = devilutionx=0.3.1.r9.g47a9ad12
+
+pkgname = devilutionx-multilib-git
+	pkgdesc = Diablo devolved for linux (multilib build)
+	depends = lib32-gcc-libs
+	depends = lib32-sdl2_mixer
+	depends = sdl2_ttf
+	depends = lib32-sdl2_ttf
+	depends = lib32-libsodium
+	depends = libsodium
+	provides = devilutionx=0.3.1.r9.g47a9ad12
 
