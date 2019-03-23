@@ -1,13 +1,13 @@
 pkgbase = emacs-git-timemachine
 	pkgdesc = Step through historic versions of git controlled file using everyone's favourite editor
-	pkgver = 4.8
+	pkgver = 4.10
 	pkgrel = 1
 	url = https://gitlab.com/pidu/git-timemachine.git
 	arch = any
 	license = GPL3
 	depends = emacs
-	source = https://gitlab.com/pidu/git-timemachine/-/archive/4.8/git-timemachine-4.8.tar.gz
-	sha256sums = 0774d207bd9ba1399fc0d82a37763c99ff28e96429a77430a0edc7599c495a86
+	source = https://gitlab.com/pidu/git-timemachine/-/archive/4.10/git-timemachine-4.10.tar.gz
+	sha256sums = 08182d7468e2f756a747e322d11e9a2d5ae1de2a96374da52b58216510ad06f8
 
 pkgname = emacs-git-timemachine
 
