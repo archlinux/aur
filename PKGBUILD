@@ -2,20 +2,20 @@
 
 pkgname=devilutionx-git
 _pkgname=devilutionx
-pkgver=0.3.1.r5.gf2e352fb
+pkgver=0.3.1.r8.g30138419
 pkgrel=1
 pkgdesc="Diablo devolved for linux (git version)"
 arch=('x86_64')
 url="https://github.com/diasurgical/devilutionX"
 license=('custom:unlicense')
 depends=('sdl2_mixer' 'sdl2_ttf' 'libsodium')
-makedepends=('git' 'cmake' 'gcovr' 'nasm') 
-provides=("${pkgname}")
+makedepends=('git' 'cmake' 'gcovr' 'nasm')
+provides=("${pkgname}"="${pkgver}")
+install="${_pkgname}".install
 source=(
   "${pkgname}::git+https://github.com/diasurgical/devilutionX.git"
   LICENSE::https://raw.githubusercontent.com/diasurgical/devilutionX/master/LICENSE
 )
-noextract=()
 sha256sums=('SKIP'
             '88d9b4eb60579c191ec391ca04c16130572d7eedc4a86daa58bf28c6e14c9bcd')
 pkgver() {
