@@ -1,6 +1,6 @@
 pkgname=openra-kknd-git
 _pkgname=openra-kknd
-pkgver=148
+pkgver=148.git.5fc5d83
 pkgrel=1
 pkgdesc="A Krush, Kill n' Destroy-inspired mod of OpenRA"
 arch=('any')
@@ -20,6 +20,13 @@ md5sums=('SKIP'
          '97e2915c76fed6ddc325652bbc03daa6'
          'c5f78612c8da1e25119bd13c14989a14'
          'bca1c5bd8363910c329041cafcb784d5')
+
+pkgver() {
+    cd $srcdir/KKnD
+    no=$(git rev-list --count HEAD)
+    hash=$(git log | head -n 1 | cut -d ' ' -f 2 | head -c 7)
+    printf "${no}.git.${hash}"
+}
 
 prepare() {
     cd $srcdir/KKnD
