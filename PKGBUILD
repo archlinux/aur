@@ -12,7 +12,7 @@ depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolo
 makedepends=('dos2unix' 'git' 'unzip')
 provides=("${_pkgname}")
 options=(!strip)
-source=("git+$url.git"
+source=("git+${url}.git"
 "${_pkgname}"
 "${_pkgname}.appdata.xml"
 "${_pkgname}.desktop")
@@ -31,7 +31,7 @@ pkgver() {
 prepare() {
     cd $srcdir/Generals-Alpha
     dos2unix *.md
-    make version VERSION="Master commit #${pkgver}"
+    make version VERSION="${pkgver}"
 }
 
 build() {
