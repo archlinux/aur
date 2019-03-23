@@ -1,12 +1,12 @@
 # Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
 
 pkgname=openra-sp-git
-_pkgname=openra-sp
+_pkgname=${pkgname/-git}
 pkgver=206.git.525762a
 pkgrel=1
-pkgdesc="A Tiberian Sun-inspired mod of OpenRA"
+pkgdesc="A significantly modified Tiberian Sun-inspired mod of OpenRA"
 arch=('any')
-url="https://www.openra.net"
+url="https://github.com/ABrandau/OpenRAModSDK"
 license=('GPL3')
 install=openra-sp.install
 depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
@@ -34,7 +34,7 @@ prepare() {
     cd $srcdir/OpenRAModSDK
     dos2unix *.md
     chmod +x *.sh
-    make version VERSION="Master commit ${pkgver}"
+    make version VERSION="${pkgver}"
 }
 
 build() {
