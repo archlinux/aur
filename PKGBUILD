@@ -6,7 +6,7 @@
 pkgname=tor-browser-dev-en
 pkgver=8.5a9
 _language='en-US'
-pkgrel=1
+pkgrel=2
 pkgdesc="Tor Browser is +1 for privacy and -1 for mass surveillance"
 arch=('i686' 'x86_64')
 url="https://www.torproject.org/projects/torbrowser.html.en"
@@ -15,11 +15,11 @@ depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
 optdepends=('zenity: simple dialog boxes'
-            'kdebase-kdialog: KDE dialog boxes'
-            'gst-plugins-good: h.264 video'
-            'gst-libav: h.264 video'
+            'kdialog: KDE dialog boxes'
+            'gst-plugins-good: H.264 video'
+            'gst-libav: H.264 video'
             'libpulse: PulseAudio audio driver'
-            'libnotify: GNOME dialog boxes')
+            'libnotify: Gnome dialog boxes')
 source_i686=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-linux32-${pkgver}_${_language}.tar.xz"{,.asc})
 source_x86_64=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-linux64-${pkgver}_${_language}.tar.xz"{,.asc})
 source+=(${pkgname}.desktop
