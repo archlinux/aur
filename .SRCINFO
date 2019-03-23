@@ -1,0 +1,14 @@
+pkgbase = emacs-transient
+	pkgdesc = Implements prefix commands, infix arguments and suffix commands.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/magit/transient
+	arch = any
+	license = GPL3
+	depends = emacs-dash
+	depends = emacs-hydra
+	source = emacs-transient-0.1.0.tar.gz::https://github.com/magit/transient/archive/v0.1.0.tar.gz
+	sha256sums = cd364462010e4ea9d334e7a32c42a7e8168472055a85b80e18d7b2257b141677
+
+pkgname = emacs-transient
+
