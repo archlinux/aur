@@ -3,7 +3,7 @@
 _pkgname=xtensa-lx106-elf-gcc
 pkgname=$_pkgname-bin
 pkgver=1.22.0_92_g8facf4c_5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ESP8266 GCC Cross-compiler Toolchain"
 arch=('x86_64')
 url="https://github.com/espressif/ESP8266_RTOS_SDK"
