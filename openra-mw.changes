@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Sun Aug 26 06:45:12 UTC 2018 - brentonhorne77@gmail.com
+
+- Oddly upstream now uses {DEV_VERSION} (latest git commit on bleed
+  branch as engine version), so fixing. See commit #5eeb3e7 for
+  my fix to mwup at my common-scripts git repo.
+
+-------------------------------------------------------------------
+Thu Jul 26 19:30:32 UTC 2018 - brentonhorne77@gmail.com
+
+- Rm libgdiplus-devel build dependency, as RPMLint is whinging
+  that rpm should detect it for itself. 
+
+-------------------------------------------------------------------
+Thu Jul 26 18:47:06 UTC 2018 - brentonhorne77@gmail.com
+
+- Initial commit, version 152 (#e9fa8b2). 

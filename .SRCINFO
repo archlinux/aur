@@ -1,0 +1,36 @@
+pkgbase = openra-mw-git
+	pkgdesc = An original mod of OpenRA depicting medieval warfare
+	pkgver = 267
+	pkgrel = 1
+	url = https://github.com/CombinE88/Medieval-Warfare
+	install = openra-mw.install
+	arch = any
+	license = GPL3
+	makedepends = dos2unix
+	makedepends = git
+	makedepends = unzip
+	depends = mono
+	depends = ttf-dejavu
+	depends = openal
+	depends = libgl
+	depends = freetype2
+	depends = sdl2
+	depends = lua51
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = zenity
+	provides = openra-mw
+	options = !strip
+	source = git+https://github.com/CombinE88/Medieval-Warfare.git
+	source = openra-mw
+	source = openra-mw.appdata.xml
+	source = openra-mw.desktop
+	md5sums = SKIP
+	md5sums = e0a97ba9134ed19d29cf61bf44c9b0ee
+	md5sums = 0f77c0a5b31dbcf523e985d27c438788
+	md5sums = 2410c10bc2fce972a940f734471db5a1
+
+pkgname = openra-mw-git
+

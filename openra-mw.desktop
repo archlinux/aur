@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=OpenRA - Medieval Warfare
+GenericName=Real Time Strategy Game
+GenericName[de]=Echtzeit-Strategiespiel
+Comment=An open-source game depicting medieval warfare
+Icon=openra-mw
+Exec=openra-mw
+Terminal=false
+Categories=Game;StrategyGame;X-RTS;X-RealTimeStrategy;X-RealTimeStrategyGame;
