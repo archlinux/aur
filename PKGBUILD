@@ -1,10 +1,12 @@
+# Maintainer: Brenton Horne <brentonhorne77@gmail.com>
+
 pkgname=openra-kknd-git
 _pkgname=openra-kknd
 pkgver=148.git.5fc5d83
 pkgrel=1
 pkgdesc="A Krush, Kill n' Destroy-inspired mod of OpenRA"
 arch=('any')
-url="https://www.openra.net"
+url="https://www.kknd-game.com/"
 license=('GPL3')
 install=${_pkgname}.install
 depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
@@ -32,7 +34,7 @@ prepare() {
     cd $srcdir/KKnD
     dos2unix *.md
     printf "Success in converting docs...\n"
-    make version VERSION="Master commit ${pkgver}"
+    make version VERSION="${pkgver}"
     printf "Success in setting version\n"
 }
 
