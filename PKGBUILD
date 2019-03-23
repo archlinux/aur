@@ -1,6 +1,6 @@
 # Maintainer: theflameemperor <un.own.cry@gmail.com>
 pkgname=ygopro-koishipro
-pkgver=2019.3.15
+pkgver=2019.3.22
 pkgrel=1
 _pkgrel=1
 zipFile=KoishiPro-linux-full-${pkgver}.zip
@@ -12,7 +12,7 @@ depends=('mono' 'libevent')
 makedepends=('patchelf')
 source=("https://github.com/purerosefallen/ygopro/releases/download/$pkgver/$zipFile")
 noextract=($zipFile)
-sha256sums=('2ae0eccd26f24e3333e31e2baf1f901f07b0c309da6f096bc07a27f7b70f508b')
+sha256sums=('d92133ec4391413a30fc4d5819ff7200366264ce6e82b0800f43e6d85ab2ab8f')
 options=('!strip' 'emptydirs')
 
 prepare(){
@@ -30,7 +30,6 @@ prepare(){
 package(){
     outputDir="$pkgdir/opt/$pkgname"
     mkdir -p $outputDir
-    echo $outputDir
     cp -r ../usr $pkgdir
     cp ../YGOPro.png $outputDir/
     cp -dR $pkgname/* $outputDir
