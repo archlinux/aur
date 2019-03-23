@@ -1,8 +1,10 @@
+# Maintainer: Brenton Horne <brentonhorne77@gmail.com>
+
 pkgname=openra-rv-git
 _pkgname=openra-rv
 pkgver=1624.git.7f5be71
 pkgrel=1
-pkgdesc="A Romanov's Vengeance-inspired mod of OpenRA, warning you will need the original Red Alert 2 game (Ultimate Edition) assets to play this game"
+pkgdesc="A Command & Conquer: Red Alert 2-inspired mod of OpenRA"
 arch=('any')
 url="https://www.openra.net"
 license=('GPL3')
@@ -12,7 +14,7 @@ depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolo
 makedepends=('dos2unix' 'git' 'unzip')
 provides=('openra-rv')
 options=(!strip)
-source=("git+https://github.com/MustaphaTR/Romanovs-Vengeance.git"
+source=("git+${url}.git"
 "openra-rv"
 "openra-rv.appdata.xml"
 "openra-rv.desktop")
@@ -32,7 +34,7 @@ prepare() {
     cd $srcdir/Romanovs-Vengeance
     dos2unix *.md
     printf "Success in converting docs...\n"
-    make version VERSION="Master commit ${pkgver}"
+    make version VERSION="${pkgver}"
     printf "Success in setting version\n"
 }
 

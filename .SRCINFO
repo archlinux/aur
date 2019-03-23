@@ -1,5 +1,5 @@
 pkgbase = openra-rv-git
-	pkgdesc = A Romanov's Vengeance-inspired mod of OpenRA, warning you will need the original Red Alert 2 game (Ultimate Edition) assets to play this game
+	pkgdesc = A Command & Conquer: Red Alert 2-inspired mod of OpenRA
 	pkgver = 1624.git.7f5be71
 	pkgrel = 1
 	url = https://www.openra.net
@@ -23,7 +23,7 @@ pkgbase = openra-rv-git
 	depends = zenity
 	provides = openra-rv
 	options = !strip
-	source = git+https://github.com/MustaphaTR/Romanovs-Vengeance.git
+	source = git+https://www.openra.net.git
 	source = openra-rv
 	source = openra-rv.appdata.xml
 	source = openra-rv.desktop
