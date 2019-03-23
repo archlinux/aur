@@ -35,11 +35,13 @@ source=("https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/pkg/$p
 
 md5sums=('a8f2dbb84545be4ee71c81e9e33433b6')
 
-build() {
+prepare() {
     umask 022
     mkdir -p "$_install_dir/ui" "$_install_dir/other"
     mkdir -p "$_symlink_dir"
+}
 
+build() {
     install -m 755 "other/archNews.py" "$_install_dir/other"
     install -m 755 "ui/cli.sh" "$_install_dir/ui"
     install -m 755 "ui/nCurses.sh" "$_install_dir/ui"
