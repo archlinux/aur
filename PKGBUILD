@@ -1,7 +1,7 @@
 # Maintainer: Leonard de Ruijter <dev@systeemdenker.nl>
 
 pkgname=icecast-kh
-pkgver=2.4.0_kh10
+pkgver=2.4.0_kh11
 pkgrel=2
 pkgdesc='The KH branche extends the official release of Icecast with features that may be (if found to be working out well) merged into the next official release.'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(https://github.com/karlheyes/$pkgname/archive/${pkgname/-*}-${pkgver//_/
         $pkgname.logrotate
         start-by-icecast.patch
         $pkgname.service)
-sha256sums=('783684db7b199b0e4096fcbd9f1b4c50bb79542e1a33dbaf6d817b2ba4150d33'
+sha256sums=('1d3871e842b3fcf9a2d0a663863c1fa309a97cee863a0edca03200e3d7959b32'
             '46f4d6942223a6d82f0b188e616a8a9cda3911663d59cc976c44b7a9822149f0'
             'b09ac79daccf8347ead4088aca31d2214dcd27e211e9ee2e96ef1a44b65df84f'
             '4b7f31aff45c6a572d54279531b7944567363d4c2bcd86d9c48887dc7da80a73')
