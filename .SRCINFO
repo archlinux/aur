@@ -1,16 +1,16 @@
 pkgbase = zfs-linux-zen-git
-	pkgver = 2019.03.15.r5012.gca6c7a94c_5.0.2.zen1.1
+	pkgver = 2019.03.21.r5019.g060f0226e_5.0.3.zen1.2
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-zen-headers=5.0.2.zen1-1
+	makedepends = linux-zen-headers=5.0.3.zen1-2
 	makedepends = git
 	makedepends = python
 	depends = kmod
-	depends = zfs-utils-git=2019.03.15.r5012.gca6c7a94c
-	depends = linux-zen=5.0.2.zen1-1
-	source = git+https://github.com/zfsonlinux/zfs.git#commit=ca6c7a94c994b9979824f8fccf1c6ddb00ee5598
+	depends = zfs-utils-git=2019.03.21.r5019.g060f0226e
+	depends = linux-zen=5.0.3.zen1-2
+	source = git+https://github.com/zfsonlinux/zfs.git#commit=060f0226e6396a3c7104fedc8d2af7063a27c1f9
 	sha256sums = SKIP
 
 pkgname = zfs-linux-zen-git
