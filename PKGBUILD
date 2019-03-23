@@ -7,7 +7,7 @@ pkgname=('tsmuxer-ng-cli-bin'
 pkgver=2.6.11
 pkgrel=1
 pkgdesc="Transport Stream muxer. New Generation (3D capable)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=168539'
 license=('custom')
 makedepends=('upx')
@@ -23,12 +23,9 @@ options=('!strip')
 
 package_tsmuxer-ng-cli-bin() {
   pkgdesc="Transport Stream muxer. New Generation (3D capable). CLI"
-  depends_i686=('gcc-libs'
-                'freetype2'
-                )
-  depends_x86_64=('lib32-gcc-libs'
-                  'lib32-freetype2'
-                  )
+  depends=('lib32-gcc-libs'
+           'lib32-freetype2'
+           )
   provides=('tsmuxer-cli'
             'tsmuxer-ng-cli'
             )
@@ -44,12 +41,9 @@ package_tsmuxer-ng-cli-bin() {
 
 package_tsmuxer-ng-gui-bin() {
   pkgdesc="Transport Stream muxer. New Generation (3D capable). GUI"
-  depends_i686=('gcc-libs'
-                'qt4'
-                )
-  depends_x86_64=('lib32-gcc-libs'
-                  'lib32-qt4'
-                  )
+  depends=('lib32-gcc-libs'
+           'lib32-qt4'
+          )
   provides=('tsmuxer-gui'
             'tsmuxer-ng-gui'
             )
