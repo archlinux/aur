@@ -1,0 +1,36 @@
+pkgbase = openra-gen-git
+	pkgdesc = A Command & Conquer: Generals-inspired mod of OpenRA
+	pkgver = 1160.git.e448241
+	pkgrel = 1
+	url = https://github.com/MustaphaTR/Generals-Alpha
+	install = openra-gen.install
+	arch = any
+	license = GPL3
+	makedepends = dos2unix
+	makedepends = git
+	makedepends = unzip
+	depends = mono
+	depends = ttf-dejavu
+	depends = openal
+	depends = libgl
+	depends = freetype2
+	depends = sdl2
+	depends = lua51
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = zenity
+	provides = openra-gen
+	options = !strip
+	source = git+https://github.com/MustaphaTR/Generals-Alpha.git
+	source = openra-gen
+	source = openra-gen.appdata.xml
+	source = openra-gen.desktop
+	md5sums = SKIP
+	md5sums = 8974b3935a56e8fd957ee5dc9404595c
+	md5sums = d3c7476b79a6b07522e597f05eaa8ae7
+	md5sums = 40267bdbbcde926b3524e99cce966592
+
+pkgname = openra-gen-git
+
