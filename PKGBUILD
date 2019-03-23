@@ -4,7 +4,7 @@ _pkgsrcname=hydra
 _pkgmaintainer=abo-abo
 _pkgdestdirname=hydra
 _versionprefix=
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Make Emacs bindings that stick around"
 pkgname=emacs-${_pkgdestdirname}
@@ -14,7 +14,7 @@ license=('GPL3')
 depends=('emacs')
 optdepends=('emacs-org-mode: Comes with an org-mode export widget')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('93023bd90722cf5e12134c2cfa6b9fd640224641e8afde41ea47caf1a89cd6a7')
+sha256sums=('a8664c86a5f48af37e47983829d653b31114eade87a2b6f234107eeedc980421')
 install=${pkgname}.install
 
 build() {
