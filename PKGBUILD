@@ -1,8 +1,8 @@
 pkgname=openra-mw-git
-_pkgname=openra-mw
+_pkgname=${pkgname/-git}
 pkgver=267.git.fc62353
 pkgrel=1
-pkgdesc="An original mod of OpenRA depicting medieval warfare"
+pkgdesc="An mod of OpenRA depicting medieval warfare"
 arch=('any')
 url="https://github.com/CombinE88/Medieval-Warfare"
 license=('GPL3')
@@ -13,7 +13,7 @@ makedepends=('dos2unix' 'git' 'unzip')
 provides=('openra-mw')
 options=(!strip)
 source=("git+${url}.git"
-"openra-mw"
+"${_pkgname}"
 "openra-mw.appdata.xml"
 "openra-mw.desktop")
 md5sums=('SKIP'
@@ -36,9 +36,9 @@ prepare() {
 
 build() {
     cd $srcdir/Medieval-Warfare
-    make || (printf "make failed; please do not complain at the AUR about this, as this is an upstream issue.\n" && \
+    make || ( printf "make failed; please do not complain at the AUR about this, as this is an upstream issue.\n" && \
 	printf "So report this at ${url}/issues/new, after checking\n" && \
-	printf "for existing issues.\n")
+	printf "for existing issues.\n" )
 }
 
 package() {
