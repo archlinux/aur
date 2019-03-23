@@ -1,7 +1,7 @@
 # Maintainer: ZenQy <zenqy.qin@gmail.com>
 
 pkgname=athens
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=2
 pkgdesc="A proxy server for the Go Modules download API"
 arch=('x86_64')
@@ -10,11 +10,11 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz" 'athens.service')
-md5sums=('ae76cf5bfedbd265077ccbf215a834b0'
+md5sums=('b6351cb11b81bdbbfd0b27ebb3372457'
          '5bb8e6295d07efcd72392f89702d9501')
 
 build() {
-  rm "${srcdir}/${pkgname}-${pkgver}/go.sum"
+  # rm "${srcdir}/${pkgname}-${pkgver}/go.sum"
   cd "${srcdir}/${pkgname}-${pkgver}/cmd/proxy"
   go build -ldflags "-extldflags ${LDFLAGS}" -buildmode=pie
 }
