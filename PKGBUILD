@@ -3,7 +3,7 @@
 pkgname=intel-graphics-compiler
 pkgver=2019.03.12
 _srcver="${pkgver//./-}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel Graphics Compiler for OpenCL'
 arch=('x86_64')
 url='https://github.com/intel/intel-graphics-compiler/'
@@ -15,7 +15,6 @@ makedepends=(
     # AUR:
         'opencl-clang-git'
 )
-conflicts=('compute-runtime')
 options=('!emptydirs')
 source=("https://github.com/intel/intel-graphics-compiler/archive/igc_release_${_srcver}.tar.gz")
 noextract=("igc_release_${_srcver}.tar.gz")
