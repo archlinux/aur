@@ -1,18 +1,21 @@
 # Maintainer: ObserverOfTime <chronobserver@disroot.org>
 
 pkgname=waifu2x-converter-glsl
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
-pkgdesc="C++ implementation of waifu2x with OpenGL-based GPU acceleration"
+pkgdesc="C++ implementation of waifu2x using OpenGL shaders"
 arch=('any')
 url="https://github.com/ObserverOfTime/$pkgname"
 license=('MIT')
-depends=('opencv' 'mesa' 'glfw')
-makedepends=('cmake' 'opencl-headers' 'libepoxy' 'libglvnd' 'vtk')
+depends=('mesa' 'opencv')
+makedepends=(
+    'cmake' 'glfw' 'libepoxy' 'libglvnd'
+    'mesa' 'opencv' 'pkgconfig' 'vtk'
+)
 provides=()
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('fd51010218dbad7ad59ce34d1baad0c5867ce75093fe97b0eaf222f3e32c9012')
+sha256sums=('716267d41397852d8b19d969cc5bc56358895a62b9b0a503e2c84f0e195f0a56')
 
 build() {
     mkdir -p build && cd build
