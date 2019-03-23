@@ -4,7 +4,7 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-performance
-pkgver=3.32.0+21+g2a7058b83
+pkgver=3.32.0+20+g05e55cee2
 pkgrel=1
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -41,7 +41,7 @@ prepare() {
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/276
   # Requires mutter MR283/commit "clutter-actor: Add detail to captured-event signal [performance]"
   if pacman -Q mutter-781835-workaround &> /dev/null; then
-    git cherry-pick 297a18f2
+    git cherry-pick -n 297a18f2
     echo "======= mutter-781835-workaround detected, MR276 is applied ======="
     sleep 3
   else
