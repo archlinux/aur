@@ -1,22 +1,22 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 
 pkgname=python-tagpy
-pkgver=2013.1
+pkgver=2018.1.1
 pkgrel=1
 pkgdesc='Python bindings for TagLib'
-arch=('x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'arm' 'aarch64')
 url='http://pypi.python.org/pypi/tagpy'
 license=('MIT')
 depends=('python' 'taglib' 'boost-libs')
 makedepends=('python-setuptools' 'boost')
 source=("https://pypi.python.org/packages/source/t/tagpy/tagpy-$pkgver.tar.gz"
-        'disable_setuptools_distribute_hack.patch')
-sha256sums=('80481c78ce34878e7a1f3231acd781a3bf1b0b569c70ce0e8d63af58061152f4'
-            '9d5675b2acfe01399faed31e9213234b29992e387a62fa9d6528e0eae395dd52')
+        'compile_fix.patch')
+sha256sums=('5d406305d1e777f12a53899eb5a559d60189874aa30a03aaf5c891c12231aa4d'
+            '51a5a77a8ffcb079c99d024a83f77bb4a5bba6552c8372c19ae99e71d4220968')
 
 prepare() {
   cd "tagpy-$pkgver"
-  patch -uNp2 -r- -i ../disable_setuptools_distribute_hack.patch
+  patch -uNp2 -r- -i ../compile_fix.patch
 }
 
 build() {

@@ -1,0 +1,17 @@
+diff -Naur ./tagpy-2018.1.1.orig/src/wrapper/id3.cpp ./tagpy-2018.1.1/src/wrapper/id3.cpp
+--- ./tagpy-2018.1.1.orig/src/wrapper/id3.cpp	2019-03-23 08:26:04.975722018 -0400
++++ ./tagpy-2018.1.1/src/wrapper/id3.cpp	2019-03-23 08:26:54.438399217 -0400
+@@ -220,12 +220,7 @@
+       .DEF_SIMPLE_METHOD(removeFrame)
+       .DEF_SIMPLE_METHOD(removeFrames)
+ 
+-      #if (TAGPY_TAGLIB_HEX_VERSION >= 0x10800)
+-        .DEF_OVERLOADED_METHOD(render, ByteVector (cl::*)() const)
+-        .DEF_OVERLOADED_METHOD(render, ByteVector (cl::*)(int) const)
+-      #else
+-        .def("render", (ByteVector (cl::*)() const) &cl::render)
+-      #endif
++      .def("render", (ByteVector (cl::*)() const) &cl::render)
+       ;
+   }
+ 
