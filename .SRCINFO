@@ -1,0 +1,15 @@
+pkgbase = cargo-watch-git
+	pkgdesc = Watches over your Cargo project’s source
+	pkgver = 7.2.0.r234.faa34e1
+	pkgrel = 1
+	url = https://github.com/passcod/cargo-watch
+	arch = x86_64
+	license = custom: CC0-1.0
+	makedepends = cargo
+	provides = cargo-watch
+	conflicts = cargo-watch
+	source = git+https://github.com/passcod/cargo-watch.git
+	sha512sums = SKIP
+
+pkgname = cargo-watch-git
+
