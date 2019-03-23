@@ -4,7 +4,7 @@ _target="msp430-elf"
 pkgname=${_target}-gcc
 pkgver=8.3.0
 _islver=0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection for the ${_target} target."
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
@@ -42,7 +42,7 @@ build() {
 
   cd gcc-build
 
-  [ $NOEXTRACT -eq 1 ] || ../configure \
+  ../configure \
     --prefix=/usr \
     --program-prefix=${_target}- \
     --target=${_target} \
