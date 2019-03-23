@@ -1,0 +1,36 @@
+pkgbase = openra-ss-git
+	pkgdesc = A Solve Survivor-inspired mod of OpenRA, warning you will need the original game assets to play this game
+	pkgver = 77
+	pkgrel = 1
+	url = https://www.openra.net
+	install = openra-ss.install
+	arch = any
+	license = GPL3
+	makedepends = dos2unix
+	makedepends = git
+	makedepends = unzip
+	depends = mono
+	depends = ttf-dejavu
+	depends = openal
+	depends = libgl
+	depends = freetype2
+	depends = sdl2
+	depends = lua51
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = zenity
+	provides = openra-ss
+	options = !strip
+	source = git+https://github.com/MustaphaTR/sole-survivor.git
+	source = openra-ss
+	source = openra-ss.appdata.xml
+	source = openra-ss.desktop
+	md5sums = SKIP
+	md5sums = 4f41d431c8bb01dbb4569ca698e47402
+	md5sums = 6f7d848e4a53dd600889572d43ed16d2
+	md5sums = b7a61da8bdec86e6756fc7a8cf6f52ae
+
+pkgname = openra-ss-git
+
