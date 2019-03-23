@@ -1,7 +1,7 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=openra-dr-git
-_pkgname=openra-dr
+_pkgname=${pkgname/-git}
 pkgver=324.git.ffcd6ba
 pkgrel=1
 pkgdesc="A Dark Reign-inspired mod of OpenRA"
@@ -14,8 +14,8 @@ depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolo
 makedepends=('dos2unix' 'git' 'unzip')
 provides=('openra-dr')
 options=(!strip)
-source=("git+https://github.com/drogoganor/DarkReign.git"
-"openra-dr"
+source=("git+${url}.git"
+"${_pkgname}"
 "openra-dr.appdata.xml"
 "openra-dr.desktop")
 md5sums=('SKIP'
@@ -38,7 +38,9 @@ prepare() {
 
 build() {
     cd $srcdir/DarkReign
-    make
+    make || (printf "make failed; please do not complain at the AUR about this, as this is an upstream issue.\n" && \
+	printf "So report this at ${url}/issues/new, after checking\n" && \
+	printf "for existing issues.\n")
 }
 
 package() {
