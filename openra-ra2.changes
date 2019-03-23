@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Sun Aug 26 08:50:28 UTC 2018 - brentonhorne77@gmail.com
+
+- Minor macro substitutions, attempts to make it compatible with
+  CentOS and Fedora too. Local builds seem to confirm it works, 
+  although for CentOS I needed to wipebinaries for Mono and thereby 
+  trigger a rebuild due to conflicts between the old mono-web 
+  (4.2.1) and the newer (4.6.x) mono-core. 
