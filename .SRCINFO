@@ -1,0 +1,17 @@
+pkgbase = wiibafu
+	pkgdesc = Fork of Wii Backup Fusion fixing the bug with game spliting. The complete and simple to use backup solution for your Wii games
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/evertonstz/wiibafu
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = wget
+	depends = wit
+	depends = qt5-base
+	source = https://github.com/evertonstz/wiibafu/archive/1.2.tar.gz
+	sha256sums = d946569bc5348a09e1c9963ebb24e75b95349acaecbb237bd0b161f829341b6e
+
+pkgname = wiibafu
+
