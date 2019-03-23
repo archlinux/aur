@@ -1,8 +1,10 @@
+# Maintainer: Brenton Horne <brentonhorne77@gmail.com>
+
 pkgname=openra-dr-git
 _pkgname=openra-dr
 pkgver=324.git.ffcd6ba
 pkgrel=1
-pkgdesc="A Red Alert-inspired mod of OpenRA"
+pkgdesc="A Dark Reign-inspired mod of OpenRA"
 arch=('any')
 url="https://www.openra.net"
 license=('GPL3')
@@ -31,7 +33,7 @@ pkgver() {
 prepare() {
     cd $srcdir/DarkReign
     dos2unix *.md
-    make version VERSION="Master commit ${pkgver}"
+    make version VERSION="${pkgver}"
 }
 
 build() {

@@ -1,5 +1,5 @@
 pkgbase = openra-dr-git
-	pkgdesc = A Red Alert-inspired mod of OpenRA
+	pkgdesc = A Dark Reign-inspired mod of OpenRA
 	pkgver = 324.git.ffcd6ba
 	pkgrel = 1
 	url = https://www.openra.net
