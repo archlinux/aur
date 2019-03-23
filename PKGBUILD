@@ -12,7 +12,7 @@ depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolo
 makedepends=('dos2unix' 'git' 'unzip')
 provides=('openra-yr')
 options=(!strip)
-source=("git+https://github.com/cookgreen/yr.git"
+source=("git+${url}.git"
 "openra-yr"
 "openra-yr.appdata.xml"
 "openra-yr.desktop")
