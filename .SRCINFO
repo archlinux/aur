@@ -1,0 +1,36 @@
+pkgbase = openra-kknd-git
+	pkgdesc = A Krush, Kill n' Destroy-inspired mod of OpenRA
+	pkgver = 148
+	pkgrel = 1
+	url = https://www.openra.net
+	install = openra-kknd.install
+	arch = any
+	license = GPL3
+	makedepends = dos2unix
+	makedepends = git
+	makedepends = unzip
+	depends = mono
+	depends = ttf-dejavu
+	depends = openal
+	depends = libgl
+	depends = freetype2
+	depends = sdl2
+	depends = lua51
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = zenity
+	provides = openra-kknd
+	options = !strip
+	source = git+https://github.com/IceReaper/KKnD.git
+	source = openra-kknd
+	source = openra-kknd.appdata.xml
+	source = openra-kknd.desktop
+	md5sums = SKIP
+	md5sums = 97e2915c76fed6ddc325652bbc03daa6
+	md5sums = c5f78612c8da1e25119bd13c14989a14
+	md5sums = bca1c5bd8363910c329041cafcb784d5
+
+pkgname = openra-kknd-git
+
