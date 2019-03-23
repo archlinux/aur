@@ -1,0 +1,10 @@
+post_install() {
+	printf "$(tput setaf 4)discord-rpc-wine was installed$(tput sgr0)\n"
+	printf "$(tput setaf 4)You need to source $(tput setaf 2)/etc/profile$(tput setaf 4) or relogin to add the library to your WINEDLLPATH.$(tput sgr0)\n"
+	printf "$(tput setaf 4)To use this library, set $(tput setaf 2)discord-rpc$(tput setaf 4) to $(tput setaf 2)builtin$(tput setaf 4) in a wine prefix' dll overrides.$(tput sgr0)\n"
+	printf "$(tput setaf 4)To use this library in every wine prefix, uncomment the corresponding line in $(tput setaf 2)/etc/profile.d/discord-rpc-wine.sh$(tput setaf 4).$(tput sgr0)\n"
+}
+
+post_upgrade() {
+	post_install
+}

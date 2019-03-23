@@ -1,0 +1,22 @@
+pkgbase = discord-rpc-wine-git
+	pkgdesc = discord-rpc implementation for Wine allowing Wine games to interact with native Discord
+	pkgver = 1.0.0.r0.g7e4d38e
+	pkgrel = 1
+	url = https://github.com/Marc3842h/rpc-wine
+	install = discord-rpc-wine.install
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = rapidjson
+	depends = wine
+	provides = discord-rpc-wine
+	conflicts = discord-rpc-wine
+	source = git+https://github.com/Marc3842h/rpc-wine
+	source = discord-rpc-wine.sh
+	sha256sums = SKIP
+	sha256sums = 9dd85cb4ccd7524b7416c29967dcc0640c2784aaa9561ccc6799c81866b1cffc
+
+pkgname = discord-rpc-wine-git
+
