@@ -1,12 +1,12 @@
 # Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
 
 pkgname=openra-raclassic-git
-_pkgname=openra-raclassic
+_pkgname=${pkgname/-git}
 pkgver=183.git.c76c13e
 pkgrel=1
-pkgdesc="A Red Alert-inspired mod of OpenRA"
+pkgdesc="A mod of OpenRA that more faithfully recreates the Command & Conquer: Red Alert game"
 arch=('any')
-url="https://www.openra.net"
+url="https://github.com/OpenRA/raclassic"
 license=('GPL3')
 install=openra-raclassic.install
 depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
@@ -14,10 +14,10 @@ depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolo
 makedepends=('dos2unix' 'git' 'unzip')
 provides=('openra-raclassic')
 options=(!strip)
-source=("git+https://github.com/OpenRA/raclassic.git"
-"openra-raclassic"
-"openra-raclassic.appdata.xml"
-"openra-raclassic.desktop")
+source=("git+${url}.git"
+"${_pkgname}"
+"${_pkgname}.appdata.xml"
+"${_pkgname}.desktop")
 md5sums=('SKIP'
          'a12b558a94aaf9046466acb26c5fb851'
          '86cb505318478eff0ffbd3bd49bbca2e'
@@ -34,7 +34,7 @@ prepare() {
     cd $srcdir/raclassic
     dos2unix *.md
     chmod +x *.sh
-    make version VERSION="Master commit ${pkgver}"
+    make version VERSION="${pkgver}"
 }
 
 build() {
