@@ -11,7 +11,7 @@ pkgbase = xneur-devel-git
 	depends = libnotify
 	depends = gstreamer>=1.14.4
 	optdepends = hunspell-YOUR-LANGUAGE
-	optdepends = xosd
+	optdepends = xosd [rebuilding needed]
 	provides = xneur
 	conflicts = xneur
 	replaces = xneur
