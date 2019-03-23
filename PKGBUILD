@@ -6,7 +6,7 @@
 
 pkgname=lutris-git
 _pkgname=lutris
-pkgver=0.5.0.1.r29.geb897040
+pkgver=0.5.1.r2.g9f3bf730
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -33,12 +33,11 @@ pkgver() {
 
 }
 
-# Commented out until issue is fixed
-#check() {
-#  cd ${_pkgname}
-#
-#  xvfb-run nosetests --cover-erase --with-xunit --xunit-file=nosetests.xml --with-coverage --cover-package=lutris --cover-xml-file=coverage.xml
-#}
+check() {
+  cd ${_pkgname}
+
+  xvfb-run nosetests --cover-erase --with-xunit --xunit-file=nosetests.xml --with-coverage --cover-package=lutris --cover-xml-file=coverage.xml
+}
 
 package() {
   cd ${_pkgname}
