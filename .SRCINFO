@@ -1,16 +1,27 @@
 pkgbase = python2-autobahn
-	pkgdesc = Twisted-based WebSocket/WAMP client and server framework
-	pkgver = 0.10.5
+	pkgdesc = Real-time framework for Web, Mobile & Internet of Things
+	pkgver = 19.3.2
 	pkgrel = 1
-	url = http://autobahn.ws/python/
+	url = https://crossbar.io/autobahn/
 	arch = any
-	license = Apache
+	license = MIT
+	checkdepends = python2-mock
+	checkdepends = python2-pytest
 	makedepends = python2-setuptools
-	depends = python2
-	depends = twisted
+	makedepends = python2-msgpack
+	makedepends = python2-pynacl
+	makedepends = python2-trollius
+	depends = python2-twisted
 	depends = python2-six
-	source = https://pypi.python.org/packages/source/a/autobahn/autobahn-0.10.5.tar.gz
-	md5sums = 75cbbead47bdac8ee606ca3ce9ee742e
+	depends = python2-txaio
+	depends = python2-trollius
+	depends = python2-wsaccel
+	optdepends = python2-msgpack: MsgPack serializer support
+	optdepends = python2-pynacl: WAMP-cryptosign support
+	source = https://pypi.io/packages/source/a/autobahn/autobahn-19.3.2.tar.gz
+	source = skip-test-missing-serializers.patch
+	sha256sums = 70a221d5e01923ea81457de04a3270ea2de376a759345ec4e8693db216c603a9
+	sha256sums = 2d4ec4300f98cddd13c3a4d70e6ae4934a98f17b04628cadfd18654172d04f92
 
 pkgname = python2-autobahn
 
