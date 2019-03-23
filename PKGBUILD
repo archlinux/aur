@@ -2,7 +2,7 @@
 
 pkgname=opencl-clang-git
 pkgver=r54.6257ffe
-pkgrel=1
+pkgrel=2
 pkgdesc='A wrapper library around clang than can compile OpenCL C kernels to SPIR-V modules (git version)'
 arch=('x86_64')
 url='https://github.com/intel/opencl-clang/'
@@ -61,6 +61,14 @@ package() {
     cd build
     
     make DESTDIR="$pkgdir" install
+    
+    # provide libcommon_clang.so
+    local _sover
+    _sover="$(find -L "$pkgdir" -type f -name 'libopencl_clang.so.*' | head -n1)"
+    _sover="${_sover##*/}"
+    _sover="${_sover##*.}"
+    ln -s libopencl_clang.so "${pkgdir}/usr/lib/libcommon_clang.so"
+    ln -s "libopencl_clang.so.${_sover}" "${pkgdir}/usr/lib/libcommon_clang.so.${_sover}"
     
     install -D -m644 "${srcdir}/LICENSE-opencl-clang" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
