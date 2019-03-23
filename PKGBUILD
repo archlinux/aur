@@ -1,8 +1,8 @@
-# Maintainer: <gdamjan@gmail.com>
+# Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=nextcloud-app-u2f
 _releasename=twofactor_u2f
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Two factor U2F provider for Nextcloud"
 arch=('any')
@@ -22,4 +22,4 @@ package() {
     cp -r --target-directory=$pkgdir/usr/share/webapps/nextcloud/apps/ $srcdir/$_releasename
 }
 
-sha256sums=('5288ae3b1b55b7f09e82a1c0ee8efbd849171c9ff44b93131b6c05c13676e421')
+sha256sums=('aad32baf2d8bc2cb48ef59370c138965388d37457b7a5799573500fdf026ecc2')
