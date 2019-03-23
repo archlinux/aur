@@ -3,12 +3,12 @@
 pkgname='tablet-mode'
 _upstream_name='tablet-switch'
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools to toggle a convertible laptop between laptop and tablet mode'
 arch=('any')
 url="https://github.com/coNQP/${_upstream_name}"
 license=('GPLv3')
-depends=('bash' 'libnotify' 'python' 'sudo' 'systemd')
+depends=('bash' 'evtest' 'libnotify' 'python' 'sudo' 'systemd')
 makedepends=('git')
 source=("git+${url}.git#tag=${pkgver}")
 md5sums=('SKIP')
