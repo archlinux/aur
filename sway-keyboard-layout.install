@@ -1,0 +1,15 @@
+post_install() {
+	cat <<EOT
+Replace status command in your Sway configuration:
+
+	status_command i3status | sway-keyboard-layout i3status
+EOT
+}
+
+pre_remove() {
+	cat <<EOT
+Restore status command in your Sway configuration:
+
+	status_command i3status
+EOT
+}

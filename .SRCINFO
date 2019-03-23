@@ -1,0 +1,17 @@
+pkgbase = sway-keyboard-layout
+	pkgdesc = Put your screenshots to XDG_PICTURES_DIR folder
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/racy/sway-keyboard-layout
+	install = sway-keyboard-layout.install
+	arch = i686
+	arch = x86_64
+	license = Apache2
+	depends = sway
+	depends = i3status
+	depends = xkblayout
+	source = https://gitlab.com/racy/sway-keyboard-layout/-/archive/1.0.0/sway-keyboard-layout-1.0.0.tar.bz2
+	sha256sums = f29bddd169f4103750bc74d90f98f5520b07c7352c657440afe5ace91c72e3dc
+
+pkgname = sway-keyboard-layout
+
