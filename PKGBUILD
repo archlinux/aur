@@ -2,7 +2,7 @@
 
 pkgname=bitwarden_rs
 _pkgbase=bitwarden_rs
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="An unofficial lightweight implementation of the bitwarden-server using rust and sqlite. Does NOT include the web-interface."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ source=("https://github.com/dani-garcia/bitwarden_rs/archive/$pkgver.tar.gz"
 	"${_pkgbase}.install"
 	"${_pkgbase}.service"
 	"0001-Disable-Vault.patch")
-sha512sums=('434a1aaa721f82eaa9eb391ed48df210a14b15bb0c1ef975a5f6dc1b2a50721369b586fcc3e8447f4a82ef98c6eeb26d46a414959545f90c4683312ab001396e'
+sha512sums=('211b65dbe6523117814d5d1fcf136e1f7f10b08c92fa4f8edcdf645e1db273f4e6421b943ebce6a44dd196736ea177d8cca6e5a7181d6d7e33805631a1fe27ef'
             '399e63002acb764895bbcf3b983642c8858343b36909eeeb73133de1a9740a3d81232bc206ff6bf3daed50f72354c5e6fd5314d0d044acd9f1cb23a933b1dd74'
             '4ce188956f6fe7cfdb711b1505f6344ed2775751ea112a0506dc96455c2705ab8529ec442e4747d7810fc3535b4ca78d1864e874dab5b5306373587097e02658'
             'a6f2361c7aa83e63b9a557500406b0cd660e0d7f8b16345f859faa3f96e22bdcecd7589711960486fa0401896291f7d46f66882744c69117fc146056f4a49028')
