@@ -1,12 +1,12 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=openra-ura-git
-_pkgname=openra-ura
+_pkgname=${pkgname/-git}
 pkgver=431.git.128dc53
 pkgrel=1
-pkgdesc="A Red Alert-inspired mod of OpenRA"
+pkgdesc="A Comamnd & Conquer: Red Alert-inspired mod of OpenRA"
 arch=('any')
-url="https://www.openra.net"
+url="http://redalertunplugged.com/"
 license=('GPL3')
 install=openra-ura.install
 depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
@@ -33,7 +33,7 @@ pkgver() {
 prepare() {
     cd $srcdir/uRA
     dos2unix *.md
-    make version VERSION="Master commit ${pkgver}"
+    make version VERSION="${pkgver}"
 }
 
 build() {
