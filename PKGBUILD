@@ -4,7 +4,7 @@
 pkgname="auryo"
 _desktopname="auryo"
 _fullpkgname="Auryo"
-pkgver=2.3.3
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A SoundCloud client for your desktop."
 arch=("x86_64")
@@ -13,7 +13,7 @@ license=("GPL3")
 makedepends=('npm' 'yarn')
 conflicts=('auryo-bin' 'auryo-git')
 source=("https://github.com/Superjo149/auryo/archive/v${pkgver}.tar.gz")
-md5sums=('c6bef0f3de93dfe61ad63671b88d0d35')
+md5sums=('780f6539eb5ab6f11ada0e53b1cbd269')
 _replace_str="\/opt\/${_fullpkgname}\/${_fullpkgname}"
 
 prepare() {
