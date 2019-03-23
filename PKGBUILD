@@ -1,6 +1,6 @@
 pkgname=openra-ss-git
 _pkgname=openra-ss
-pkgver=77
+pkgver=77.git.23e1f3e
 pkgrel=1
 pkgdesc="A Solve Survivor-inspired mod of OpenRA, warning you will need the original game assets to play this game"
 arch=('any')
@@ -20,6 +20,13 @@ md5sums=('SKIP'
          '4f41d431c8bb01dbb4569ca698e47402'
          '6f7d848e4a53dd600889572d43ed16d2'
          'b7a61da8bdec86e6756fc7a8cf6f52ae')
+
+pkgver() {
+    cd $srcdir/sole-survivor
+    no=$(git rev-list --count HEAD)
+    hash=$(git log | head -n 1 | cut -d ' ' -f 2 | head -c 7)
+    printf "${no}.git.${hash}"
+}
 
 prepare() {
     cd $srcdir/sole-survivor
