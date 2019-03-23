@@ -1,3 +1,4 @@
+# Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 pkgname=openra-gen-git
 _pkgname=openra-gen
 pkgver=1160.git.e448241
