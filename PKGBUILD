@@ -1,27 +1,37 @@
-# Contributor(s): xgdgsc <xgdgsc@gmail.com>
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
-
+_pkgname=feeluown
 pkgname=feeluown
-pkgver=2.3
-pkgrel=1
-pkgpath='80/85/14910d675db89f13079f79ece4a237d563d4d50f71d38eae9762d3e65851'
-epoch=
-pkgdesc="一个符合 Unix 哲学的跨平台的音乐播放器"
+pkgver=3.0a5
+pkgrel=2
+pkgdesc="FeelUOwn Music Player"
 arch=('any')
 url="https://github.com/cosven/FeelUOwn"
 license=('GPL3')
-depends=('python-quamash>=0.5.5' 'python-fuocore' 'python-pyqt5')
-makedepends=('python-setuptools')
-install=feeluown.install
-source=("https://files.pythonhosted.org/packages/source/f/feeluown/feeluown-${pkgver}.tar.gz")
-sha256sums=('846f6919c1d3a4acfa5ccd5b645bead6515a67ba42aa3d41e04eef6c6b924fb5')
+depends=('python-quamash' 'python-pyqt5' 'mpv' 'python-beautifulsoup4' 'python-marshmallow' 'python-pycryptodome' 'python-requests' 'python-mutagen' 'python-fuzzywuzzy' 'python-opengl' 'python-janus')
+makedepends=('python-setuptools' 'python-pip')
+_name=${pkgname#python-}
+source=(
+	"https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz" 
+	"feeluown.desktop"
+)
+sha256sums=('00cefd9ef77bb89af04126b91263bf5b881a5b9f2e096ef8b6ee6371d5767c5f'
+            '2b2716ee280c1eeba6d20227173e1325c64a4a3fcb200e038e7777de5cddaebb')
 
 build() {
 	cd "$pkgname-$pkgver"
-	python setup.py build
+	LANG=en_US.UTF-8 python setup.py build
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	LANG=en_US.UTF-8 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+
+	# Install battery packages
+	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps fuo-local
+	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps fuo-xiami
+	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps fuo-netease
+	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps fuo-qqmusic
+
+	install -D -m644 "$srcdir/$pkgname-$pkgver/feeluown/feeluown.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/feeluown.png"
+	install -D -m644 "$srcdir/feeluown.desktop" "$pkgdir/usr/share/applications/feeluown.desktop"
 }
