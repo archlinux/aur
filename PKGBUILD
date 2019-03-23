@@ -8,6 +8,7 @@ url="http://healpy.readthedocs.io"
 license=('GPL')
 depends=('python>=3.4' 'python-numpy>=1.5' 'python-matplotlib' 'python-astropy' 'cfitsio' 'healpix')
 makedepends=('cython>=0.16')
+optdepends=('python-healpy-doc: Documentation for healpy')
 source=("https://files.pythonhosted.org/packages/source/h/healpy/healpy-${pkgver}.tar.gz")
 md5sums=('9c1a5ae49b95b6fdbaf352ac8182b9b8')
 
