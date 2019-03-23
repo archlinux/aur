@@ -1,0 +1,33 @@
+pkgbase = gthumb-lite
+	pkgdesc = Image browser and viewer for the GNOME Desktop. Webkit-free version.
+	pkgver = 3.7.1
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Gthumb
+	arch = x86_64
+	license = GPL
+	makedepends = libchamplain
+	makedepends = exiv2
+	makedepends = libraw
+	makedepends = docbook-xsl
+	makedepends = yelp-tools
+	makedepends = meson
+	makedepends = git
+	depends = dconf
+	depends = librsvg
+	depends = clutter-gtk
+	depends = gst-plugins-base-libs
+	depends = gsettings-desktop-schemas
+	depends = libwebp
+	depends = json-glib
+	depends = gtk3-print-backends
+	optdepends = libraw: read RAW files
+	optdepends = exiv2: metadata support
+	optdepends = libchamplain: map viewer
+	provides = gthumb
+	conflicts = gthumb
+	replaces = gthumb
+	source = git+https://gitlab.gnome.org/GNOME/gthumb.git#commit=c2a0c415679b511d5f5436d89edff3445250d63a
+	sha256sums = SKIP
+
+pkgname = gthumb-lite
+
