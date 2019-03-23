@@ -2,8 +2,8 @@
 
 pkgname='tablet-mode'
 _upstream_name='tablet-switch'
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Tools to toggle a convertible laptop between laptop and tablet mode'
 arch=('any')
 url="https://github.com/coNQP/${_upstream_name}"
