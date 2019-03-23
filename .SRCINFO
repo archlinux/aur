@@ -1,6 +1,6 @@
 pkgbase = ttf-genericmobile
 	pkgdesc = A raster proportional sans serif typeface, extracted from various generic/knockoff mobile devices.
-	pkgver = 20190103.03
+	pkgver = 20190323.01
 	pkgrel = 1
 	url = https://notabug.org/HarvettFox96/ttf-genericmobile
 	arch = any
@@ -8,11 +8,11 @@ pkgbase = ttf-genericmobile
 	depends = fontconfig
 	depends = xorg-font-utils
 	depends = xorg-fonts-encodings
-	source = https://notabug.org/HarvettFox96/ttf-genericmobile/archive/20190103.03.tar.gz
-	source = 20190103.03.tar.gz.sig::https://notabug.org/attachments/286e90da-f1af-4cab-9e71-5fe44340f81f
+	source = https://notabug.org/HarvettFox96/ttf-genericmobile/archive/20190323.01.tar.gz
+	source = 20190323.01.tar.gz.sig::https://notabug.org/attachments/ef72ae01-e642-4d72-9e5a-cd0395a045f8
 	validpgpkeys = 4C565E3C3DB4DE43785F0DA9B627DC6AB09D9B83
 	validpgpkeys = 925C741082DC0DB32CF8AADFCB73A6EB26948E91
-	sha512sums = 9350b348200baeb5d202ee4f2135fb6a32f3231deb9bd7d4a45f3938a65274263ed002c9089444b2add688ae8d69ff7cb2e5e947ae25a46a5e4185e9274e6b4a
+	sha512sums = 65486775d996fb8543415f584f70d800b91dfda4dcb53576e5fc07ea233cdaab28cbb777ef5195c87c954467807925637d5187b7534c6e4ed1ab7f8c3f3a8a4b
 	sha512sums = SKIP
 
 pkgname = ttf-genericmobile
