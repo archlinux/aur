@@ -2,7 +2,7 @@
 _pyname=healpy
 pkgname=python-${_pyname}-doc
 pkgver=1.12.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Documentation for Python iminuit module"
 arch=('i686' 'x86_64')
 url="http://healpy.readthedocs.io"
@@ -30,4 +30,5 @@ package() {
 
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgname%-doc}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgname%-doc}"
+    install -m644 ../healpy_tutorial.ipynb "${pkgdir}/usr/share/doc/${pkgname%-doc}"
 }
