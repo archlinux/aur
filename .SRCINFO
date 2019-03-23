@@ -1,7 +1,7 @@
 pkgbase = intel-graphics-compiler-bin
 	pkgdesc = Intel Graphics Compiler for OpenCL (pre-compiled binaries)
 	pkgver = 19.11.15884
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/intel/intel-graphics-compiler/
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,6 @@ pkgbase = intel-graphics-compiler-bin
 	depends = zlib
 	provides = intel-graphics-compiler
 	conflicts = intel-graphics-compiler
-	conflicts = compute-runtime
 	noextract = intel-igc-core_19.11-15884_amd64.deb
 	noextract = intel-igc-media_19.11-15884_amd64.deb
 	noextract = intel-igc-opencl-devel_19.11-15884_amd64.deb

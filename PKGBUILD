@@ -4,14 +4,14 @@ pkgname=intel-graphics-compiler-bin
 pkgver=19.11.15884
 _srcver="$(printf '%s' "$pkgver" | sed 's/\(\.\)\([0-9]*\)$/-\2/')"
 _igcver=2019-03-12
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel Graphics Compiler for OpenCL (pre-compiled binaries)'
 arch=('x86_64')
 url='https://github.com/intel/intel-graphics-compiler/'
 license=('MIT')
 depends=('gcc-libs' 'zlib')
 provides=('intel-graphics-compiler')
-conflicts=('intel-graphics-compiler' 'compute-runtime')
+conflicts=('intel-graphics-compiler')
 options=('!strip' '!emptydirs')
 source=("https://github.com/intel/intel-graphics-compiler/releases/download/igc_release_${_igcver}/intel-igc-core_${_srcver}_amd64.deb"
         "https://github.com/intel/intel-graphics-compiler/releases/download/igc_release_${_igcver}/intel-igc-media_${_srcver}_amd64.deb"
