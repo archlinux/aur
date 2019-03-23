@@ -4,7 +4,7 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-performance
-pkgver=3.32.0+20+g05e55cee2
+pkgver=3.32.0+22+g05e55cee2
 pkgrel=1
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -31,7 +31,9 @@ sha256sums=('SKIP'
             '939e81f682ebafd60e86d444e49dbab277fba0f00420466b5ff783568b7dc931')
 pkgver() {
   cd $pkgname
-  git describe --tags | sed 's/-/+/g'
+
+  _manual_bump=22 # horrible temporary workaround to account new versioning
+  git describe --tags | sed "s/-/+/g;s/20/$_manual_bump/"
 }
 
 prepare() {
