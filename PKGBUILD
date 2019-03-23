@@ -34,7 +34,7 @@ prepare() {
     cd $srcdir/d2
     dos2unix *.md
     chmod +x *.sh
-    make version VERSION="Master commit ${pkgver}"
+    make version VERSION="${pkgver}"
 }
 
 build() {
