@@ -1,0 +1,44 @@
+diff -ur roctools/rocmlite/CMakeLists.txt ../rocmlite_patch/CMakeLists.txt
+--- roctools/rocmlite/CMakeLists.txt	2019-03-23 23:51:59.356874283 +0100
++++ ../rocmlite_patch/CMakeLists.txt	2019-03-23 22:15:34.293884613 +0100
+@@ -32,7 +32,7 @@
+ 
+ 
+ #Link against LLVM libraries
+-target_link_libraries(rocmlite ${llvm_libs})
++target_link_libraries(rocmlite LLVM)
+ 
+ # include include/
+ target_include_directories(rocmlite PUBLIC ${CMAKE_SOURCE_DIR}/include)
+diff -ur roctools/rocmlite/rocmlite.cpp ../rocmlite_patch/rocmlite.cpp
+--- roctools/rocmlite/rocmlite.cpp	2019-03-23 23:51:59.360207637 +0100
++++ ../rocmlite_patch/rocmlite.cpp	2019-03-23 23:43:33.923731001 +0100
+@@ -396,7 +396,7 @@
+         }
+ 
+ 
+-        M->setTargetTriple(Triple::normalize("amdgcn--amdhsa"));
++        M->setTargetTriple(Triple::normalize("amdgcn-amd-amdhsa"));
+ 
+ 
+         Triple ModuleTriple(M->getTargetTriple());
+@@ -494,7 +494,7 @@
+ 
+         Triple TheTriple;// = Triple(mod->getTargetTriple());
+ 
+-        TheTriple = Triple(Triple::normalize("amdgcn--amdhsa"));
++        TheTriple = Triple(Triple::normalize("amd-amdhsa"));
+ 
+         // Get the target specific parser.
+         std::string Error;
+diff -ur roctools/rocmlite/test/resources/demo_ir.ll ../rocmlite_patch/test/resources/demo_ir.ll
+--- roctools/rocmlite/test/resources/demo_ir.ll	2019-03-23 23:51:59.356874283 +0100
++++ ../rocmlite_patch/test/resources/demo_ir.ll	2019-03-23 23:47:04.055036783 +0100
+@@ -1,6 +1,6 @@
+ ; ModuleID = 'copy_kernel_1d'
+ target datalayout = "e-i64:64-v16:16-v24:32-v32:32-v48:64-v96:128-v192:256-v256:256-v512:512-v1024:1024-n32"
+-target triple = "amdgcn--amdhsa"
++target triple = "amdgcn-amd-amdhsa"
+ 
+ define internal spir_func i32 @hsapy_devfn__5F__5F_main_5F__5F__2E_copy_5F_kernel_5F_1d_24_1_2E_array_28_float32_2C__20_1d_2C__20_C_29__2E_array_28_float32_2C__20_1d_2C__20_C_29_(i8** %.ret, i8* %arg.out.0, i8* %arg.out.1, i64 %arg.out.2, i64 %arg.out.3, float addrspace(4)* %arg.out.4, i64 %arg.out.5.0, i64 %arg.out.6.0, i8* %arg.inp.0, i8* %arg.inp.1, i64 %arg.inp.2, i64 %arg.inp.3, float addrspace(4)* %arg.inp.4, i64 %arg.inp.5.0, i64 %arg.inp.6.0) {
+ entry:
