@@ -2,7 +2,7 @@
 
 pkgname=athens
 pkgver=0.3.1
-pkgrel=2
+pkgrel=1
 pkgdesc="A proxy server for the Go Modules download API"
 arch=('x86_64')
 url="https://github.com/gomods/athens"
