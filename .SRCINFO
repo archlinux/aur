@@ -1,6 +1,6 @@
 pkgbase = zulu-11-bin
 	pkgdesc = Zulu is a certified build of OpenJDK that is fully compliant with the Java SE standard.
-	pkgver = 11.0.1
+	pkgver = 11.0.2
 	pkgrel = 1
 	url = https://www.azul.com/zulu
 	install = zulu-11-bin.install
@@ -19,8 +19,8 @@ pkgbase = zulu-11-bin
 	depends = libelf
 	provides = java-environment=11
 	provides = java-environment-openjdk=11
-	source = http://cdn.azul.com/zulu/bin/zulu11.2.3-jdk11.0.1-linux_x64.tar.gz
-	md5sums = ceed4a5a7ffef5eb293812fa59dd6ee9
+	source = http://cdn.azul.com/zulu/bin/zulu11.29.11-ca-jdk11.0.2-linux_x64.tar.gz
+	md5sums = 06a3df0ff56a1430c1cb8a3d05f1c752
 
 pkgname = zulu-11-bin
 
