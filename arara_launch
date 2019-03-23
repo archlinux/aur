@@ -1,0 +1,10 @@
+#!/bin/bash
+# Example script of arara
+# Installation and usage are described in the documentation
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")";
+  done
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd -P "$(
+dirname "$SOURCE" )" && pwd )"
+java -jar "/usr/share/java/arara/application/target/arara-4.0-jar-with-dependencies.jar" "$@"
+

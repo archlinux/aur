@@ -1,0 +1,22 @@
+pkgbase = arara
+	pkgdesc = The cool TeX automation tool
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://github.com/cereda/arara
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = maven
+	depends = java-environment-common
+	depends = maven
+	optdepends = texlive-core: for compiling LaTeX documents
+	conflicts = arara-git
+	source = https://github.com/cereda/arara/archive/4.0.tar.gz
+	source = arara_launch
+	md5sums = c0e5f4b7f37fd571cf46ac16467fecbf
+	md5sums = efcf9e31c1b0d90cae192afc91a0d980
+	sha256sums = e9e2380c6709fa36b0ca52c776ae4944307e2bcf91e5a0b24077fbc09ea19093
+	sha256sums = e6ac036dfef2f6183ebab83d4252ab2cba225821aee2371bfd48c9ef1fcf72b1
+
+pkgname = arara
+
