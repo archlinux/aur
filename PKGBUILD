@@ -1,8 +1,8 @@
 # Maintainer: Vitaliy Berdinskikh <ur6lad at tuta dot io>
 pkgname=sway-keyboard-layout 
 pkgver=1.0.0
-pkgrel=1
-pkgdesc='Put your screenshots to XDG_PICTURES_DIR folder'
+pkgrel=2
+pkgdesc='Show keyboard layout in the status bar.'
 arch=('i686' 'x86_64')
 url='https://gitlab.com/racy/sway-keyboard-layout'
 license=('Apache2')

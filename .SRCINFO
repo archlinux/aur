@@ -1,7 +1,7 @@
 pkgbase = sway-keyboard-layout
-	pkgdesc = Put your screenshots to XDG_PICTURES_DIR folder
+	pkgdesc = Show keyboard layout in the status bar.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/racy/sway-keyboard-layout
 	install = sway-keyboard-layout.install
 	arch = i686
