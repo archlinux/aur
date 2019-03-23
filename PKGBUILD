@@ -2,8 +2,8 @@
 
 pkgname=arara-git
 _gitname=arara
-pkgver=3.0.r588.g777ea4f
-pkgrel=2
+pkgver=4.0.r588.g777ea4f
+pkgrel=1
 pkgdesc='The cool TeX automation tool'
 arch=('any')
 url='https://github.com/cereda/arara'
