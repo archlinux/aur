@@ -1,0 +1,18 @@
+pkgbase = nod-git
+	pkgdesc = Tool for traversing, dumping, and authoring GameCube and Wii disc images
+	pkgver = v1.0.r34.g95ed2ae
+	pkgrel = 1
+	url = https://gitlab.axiodl.com/AxioDL/nod
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	provides = nod
+	conflicts = nod
+	source = nod::git+https://gitlab.axiodl.com/AxioDL/nod
+	source = logvisor::git+https://gitlab.axiodl.com/AxioDL/logvisor
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = nod-git
+
