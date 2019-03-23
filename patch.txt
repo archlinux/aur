@@ -1,0 +1,20 @@
+--- a/src/gtk/MainView.cxx
++++ b/src/gtk/MainView.cxx
+@@ -1050,7 +1050,7 @@
+ 
+     GError *error = NULL;
+     if ( !gtk_ui_manager_add_ui_from_file (m_UIManager,
+-                                           DATADIR"/ui/epdfview-ui.xml",
++                                           DATADIR"/epdfview/ui/epdfview-ui.xml",
+                                            &error) )
+     {
+         g_critical (_("Error building UI manager: %s\n"), error->message);
+@@ -1060,7 +1060,7 @@
+ 
+ #if defined (HAVE_CUPS)
+     if ( !gtk_ui_manager_add_ui_from_file (m_UIManager,
+-                                           DATADIR"/ui/epdfview-ui-print.xml",
++                                           DATADIR"/epdfview/ui/epdfview-ui-print.xml",
+                                            &error) )
+     {
+         g_critical (_("Error building UI manager: %s\n"), error->message);
