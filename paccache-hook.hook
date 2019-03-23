@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Remove
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = Removing old packages from pacman cache...
+When = PostTransaction
+Exec = /usr/bin/sh /usr/share/libalpm/scripts/paccache-hook.sh
