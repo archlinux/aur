@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=intel-graphics-compiler-git
-pkgver=2019.03.12.r40.g49497e5
+pkgver=19.12.1681.r0.g81d4678
 pkgrel=1
 pkgdesc='Intel Graphics Compiler for OpenCL (git version)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=(
         'opencl-clang-git'
 )
 provides=('intel-graphics-compiler')
-conflicts=('intel-graphics-compiler' 'compute-runtime')
+conflicts=('intel-graphics-compiler')
 options=('!emptydirs')
 source=('git+https://github.com/intel/intel-graphics-compiler.git')
 sha256sums=('SKIP')
@@ -30,7 +30,7 @@ pkgver() {
     cd intel-graphics-compiler
     
     # git, tags available
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^igc_release_//'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^igc\.//'
 }
 
 build() {
@@ -38,7 +38,6 @@ build() {
     
     cmake \
         -DCMAKE_BUILD_TYPE='Release' \
-        -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DIGC_OPTION__OUTPUT_DIR='../igc-install/Release' \
         -DVME_TYPES_DEFINED='FALSE' \
@@ -57,7 +56,7 @@ package() {
     
     make DESTDIR="$pkgdir" install
     
-    rm "${pkgdir}/usr/lib/libopencl_clang.so"
+    rm "${pkgdir}/usr/lib/libcommon_clang.so"
     
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
