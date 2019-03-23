@@ -14,7 +14,7 @@ depends=(glib2)
 provides=("vala=${pkgver}")
 conflicts=('vala')
 makedepends=(libxslt git vala)
-source=("git://git.gnome.org/vala#tag=$pkgver")
+source=("git+https://github.com/GNOME/vala.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 pkgver() {
