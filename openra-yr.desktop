@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=OpenRA - Yuri's Revenge
+GenericName=Real Time Strategy Game
+GenericName[de]=Echtzeit-Strategiespiel
+Comment=Reimagining of the Command Yuri's Revenge: The Future of War Conquer: Yuri's Revenge game
+Icon=openra-yr
+Exec=openra-yr
+Terminal=false
+Categories=Game;StrategyGame;X-RTS;X-RealTimeStrategy;X-RealTimeStrategyGame;
