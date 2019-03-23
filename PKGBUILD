@@ -1,8 +1,10 @@
+# Maintainer: Brenton Horne <brentonhorne77@gmail.com>
+
 pkgname=openra-ca-git
-_pkgname=openra-ca
+_pkgname=${pkgname/-git}
 pkgver=96.git.fc3cf0b
 pkgrel=1
-pkgdesc="A mod of OpenRA that combines units from Red Alert and Tiberian Dawn mods"
+pkgdesc="A mod of OpenRA that combines units from the official Red Alert and Tiberian Dawn mods"
 arch=('any')
 url="https://www.openra.net"
 license=('GPL3')
@@ -12,7 +14,7 @@ depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolo
 makedepends=('dos2unix' 'git' 'unzip')
 provides=('openra-ca')
 options=(!strip)
-source=("git+https://github.com/Inq8/CAmod.git"
+source=("git+${url}.git"
 "openra-ca"
 "openra-ca.appdata.xml"
 "openra-ca.desktop")
@@ -31,7 +33,7 @@ pkgver() {
 prepare() {
     cd $srcdir/CAmod
     dos2unix *.md
-    make version VERSION="Master commit ${pkgver}"
+    make version VERSION="${pkgver}"
 }
 
 build() {
