@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=OpenRA - Dune 2
+GenericName=Real Time Strategy Game
+GenericName[de]=Echtzeit-Strategiespiel
+Comment=Reimagining of the Dune 2 game
+Icon=openra-d2
+Exec=openra-d2
+Terminal=false
+Categories=Game;StrategyGame;X-RTS;X-RealTimeStrategy;X-RealTimeStrategyGame;

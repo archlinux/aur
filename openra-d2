@@ -1,0 +1,19 @@
+#!/bin/sh
+cd "/usr/lib/openra-d2"
+
+# Run the game
+mono --debug OpenRA.Game.exe Game.Mod=d2 Engine.LaunchPath="/usr/bin/openra-d2" "Engine.ModSearchPaths=/usr/lib/openra-d2/mods" "$@"
+
+# Show a crash dialog if something went wrong
+if [ $? != 0 ] && [ $? != 1 ]; then
+  ERROR_MESSAGE="Dune II has encountered a fatal error.\nPlease refer to the crash logs and FAQ for more information.\n\nLog files are located in ~/.openra/Logs\nThe FAQ is available at http://wiki.openra.net/FAQ"
+  if command -v zenity > /dev/null; then
+    zenity --no-wrap --error --title "Dune II" --text "${ERROR_MESSAGE}" 2> /dev/null
+  elif command -v kdialog > /dev/null; then
+    kdialog --title "Dune II" --error "${ERROR_MESSAGE}"
+  else
+    printf "${ERROR_MESSAGE}\n"
+  fi
+  exit 1
+fi
+

@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Sat Jul 21 22:06:28 UTC 2018 - brentonhorne77@gmail.com
+
+- Rm \# from version string, as it makes the rest of the comment
+  invisible.
+- Previous commit bumped to commit 113. 
+
+-------------------------------------------------------------------
+Wed Jul 18 13:23:31 UTC 2018 - brentonhorne77@gmail.com
+
+- Initial commit, version 108. Largely copied from my other mods
+  packaging files. 
+- Fixing build errors associated with this mod, but not others, 
+  like:
+  * The fetch-geoip-db script needed to be removed from the engine 
+    Makefile as it was trying to download the geoip mmdb.gz file.
+  * python dependency was required for make to run issue-free,
+    although it does not seem strictly necessary of the package to
+    build.
+  * The mods included in the engine itself needed to be included 
+    for some reason, I could understand this for the d2k mod as 
+    the README says this, but the ra and cnc mods are surprising.
+- %check macro exits with an error: 
+  https://gist.github.com/143890eaf1ff04bd15aa49e468c71a85 so I 
+  commented it out. 
+- Fixing RPMLint warnings:
+  * Dropping explicit lua51-libs dependency, RPM figures that one
+    out
+  * Escaping # in make version line, as it was interpreting it as a
+    comment.
+  * fdupes needed the -s argument to fix file duplicates warning.

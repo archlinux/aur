@@ -1,0 +1,36 @@
+pkgbase = openra-d2-git
+	pkgdesc = A Dune II-inspired mod of OpenRA
+	pkgver = 134.git.69a4aa7
+	pkgrel = 1
+	url = https://www.openra.net
+	install = openra-d2.install
+	arch = any
+	license = GPL3
+	makedepends = dos2unix
+	makedepends = git
+	makedepends = unzip
+	depends = mono
+	depends = ttf-dejavu
+	depends = openal
+	depends = libgl
+	depends = freetype2
+	depends = sdl2
+	depends = lua51
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = zenity
+	provides = openra-d2
+	options = !strip
+	source = git+https://github.com/OpenRA/d2.git
+	source = openra-d2
+	source = openra-d2.appdata.xml
+	source = openra-d2.desktop
+	md5sums = SKIP
+	md5sums = f883c23d492f8c930aca5ad2c3624cc2
+	md5sums = e6c82533bf669122fd26f2d60ed97a6f
+	md5sums = ad2adc9f6f5f756492371b38c996d44c
+
+pkgname = openra-d2-git
+
