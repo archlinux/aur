@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>openra-dr.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <name>OpenRA - Dark Reign</name>
+  <summary>An open-source remake of the original Dark Reign: The Future of War game</summary>
+  <description>
+    <p>
+      OpenRA Dark Reign is a project that recreates and modernizes the classic Dark Reign: The Future of War real time strategy game.
+    </p>
+    <p>
+      OpenRA Dark Reign: The Future of War is free in itself, and there are free demo assets available for it. In order to use all the game's features, however, you will need to have assets from the original game, which are not free.
+    </p>
+  </description>
+  <screenshots>
+    <screenshot>
+      <image>https://fusion809.github.io/images/Games/OpenRA-DarkReign-commit-100-20180513.png</image>
+      <caption>Dark Reign OpenRA Mod</caption>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://github.com/drogoganor/DarkReign</url>
+  <update_contact>https://github.com/drogoganor</update_contact>
+  <content_rating type="oars-1.0">
+    <content_attribute id="violence-cartoon">none</content_attribute>
+    <content_attribute id="violence-fantasy">none</content_attribute>
+    <content_attribute id="violence-realistic">moderate</content_attribute>
+    <content_attribute id="violence-bloodshed">moderate</content_attribute>
+    <content_attribute id="violence-sexual">none</content_attribute>
+    <content_attribute id="drugs-alcohol">none</content_attribute>
+    <content_attribute id="drugs-narcotics">none</content_attribute>
+    <content_attribute id="drugs-tobacco">none</content_attribute>
+    <content_attribute id="sex-nudity">none</content_attribute>
+    <content_attribute id="sex-themes">none</content_attribute>
+    <content_attribute id="language-profanity">mild</content_attribute>
+    <content_attribute id="language-humor">mild</content_attribute>
+    <content_attribute id="language-discrimination">none</content_attribute>
+    <content_attribute id="social-chat">intense</content_attribute>
+    <content_attribute id="social-info">none</content_attribute>
+    <content_attribute id="social-audio">none</content_attribute>
+    <content_attribute id="social-location">none</content_attribute>
+    <content_attribute id="social-contacts">none</content_attribute>
+    <content_attribute id="money-purchasing">none</content_attribute>
+    <content_attribute id="money-gambling">none</content_attribute>
+  </content_rating>
+</component>

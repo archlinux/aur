@@ -1,0 +1,36 @@
+pkgbase = openra-dr-git
+	pkgdesc = A Red Alert-inspired mod of OpenRA
+	pkgver = 324.git.ffcd6ba
+	pkgrel = 1
+	url = https://www.openra.net
+	install = openra-dr.install
+	arch = any
+	license = GPL3
+	makedepends = dos2unix
+	makedepends = git
+	makedepends = unzip
+	depends = mono
+	depends = ttf-dejavu
+	depends = openal
+	depends = libgl
+	depends = freetype2
+	depends = sdl2
+	depends = lua51
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = zenity
+	provides = openra-dr
+	options = !strip
+	source = git+https://github.com/drogoganor/DarkReign.git
+	source = openra-dr
+	source = openra-dr.appdata.xml
+	source = openra-dr.desktop
+	md5sums = SKIP
+	md5sums = d58a49e0348ab309c3f6b2e2659cf454
+	md5sums = 331eabdd70606238705a80b1566ea932
+	md5sums = ac393c6822f0f3ed822b102f6cc1e16e
+
+pkgname = openra-dr-git
+
