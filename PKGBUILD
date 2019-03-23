@@ -7,13 +7,11 @@
 # This PKGBUILD is maintained on github:
 # https://github.com/michaellass/AUR
 
-_majorver=11
-_minorver=0
-_securityver=2
-_updatever=9
+_majorver=12
+_updatever=33
 pkgrel=1
-pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
-_tag_ver=${_majorver}.${_minorver}.${_securityver}+${_updatever}
+pkgver=${_majorver}.u${_updatever}
+_tag_ver=${_majorver}+${_updatever}
 
 pkgname=jdk-adoptopenjdk
 pkgdesc="OpenJDK Java ${_majorver} development kit (AdoptOpenJDK build)"
@@ -38,19 +36,20 @@ provides=("java-runtime-headless=${_majorver}"
           "jdk-openjdk=${pkgver}"
           "openjdk${_majorver}-src=${pkgver}"
           "openjdk-src=${pkgver}")
-backup=(etc/${pkgname}/net.properties
-        etc/${pkgname}/logging.properties
-        etc/${pkgname}/security/java.security
-        etc/${pkgname}/security/policy/limited/exempt_local.policy
-        etc/${pkgname}/security/policy/limited/default_US_export.policy
-        etc/${pkgname}/security/policy/limited/default_local.policy
-        etc/${pkgname}/security/policy/unlimited/default_US_export.policy
-        etc/${pkgname}/security/policy/unlimited/default_local.policy
-        etc/${pkgname}/security/policy/README.txt
-        etc/${pkgname}/security/java.policy
-        etc/${pkgname}/management/management.properties
+backup=(etc/${pkgname}/logging.properties
         etc/${pkgname}/management/jmxremote.access
         etc/${pkgname}/management/jmxremote.password.template
+        etc/${pkgname}/management/management.properties
+        etc/${pkgname}/net.properties
+        etc/${pkgname}/sdp/sdp.conf.template
+        etc/${pkgname}/security/java.policy
+        etc/${pkgname}/security/java.security
+        etc/${pkgname}/security/policy/limited/default_local.policy
+        etc/${pkgname}/security/policy/limited/default_US_export.policy
+        etc/${pkgname}/security/policy/limited/exempt_local.policy
+        etc/${pkgname}/security/policy/README.txt
+        etc/${pkgname}/security/policy/unlimited/default_local.policy
+        etc/${pkgname}/security/policy/unlimited/default_US_export.policy
         etc/${pkgname}/sound.properties)
 install=install_jdk-adoptopenjdk.sh
 
@@ -59,11 +58,11 @@ source=(https://github.com/AdoptOpenJDK/openjdk${_majorver}-binaries/releases/do
         freedesktop-jconsole.desktop
         freedesktop-policytool.desktop
         freedesktop-jshell.desktop)
-sha256sums=('d02089d834f7702ac1a9776d8d0d13ee174d0656cf036c6b68b9ffb71a6f610e'
-            '734aab5e8fca5360fd996142a0c0ff23434da56f83c21b26cfbcbf31556230eb'
-            '53b7da18785675438d1d7cfa776be419a313c11049c48f791c7426224fe51025'
-            'a0cca82e4ebe103d90399911164c17bee61022c67633f55b83d2fc9de15ccd68'
-            'bc4305c5870fa8e050c0a2cbc629a8f84e366200b436429c789038596a4259f6')
+sha256sums=('4739064dc439a05487744cce0ba951cb544ed5e796f6c699646e16c09da5dd6a'
+            '9b11bbaf5834748fc9a30cb887c129b32f34a81535dc512ff47b26ae72c91927'
+            '16551b98abbd5cbb9da14157df60afd2a608602c6e3734e979d9574e0780f8da'
+            '59ecc9542661f169020867cacba7d8e3723a57ab0b6ccd02c5c1a2fbb898a866'
+            '7d46b5ffcb2528f039b4534dddeab4b87de92106c25ff17e175570edde52f1c9')
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-adoptopenjdk
 _jdkdir=jdk-${_tag_ver}
@@ -86,7 +85,7 @@ package() {
   ln -sf /usr/share/licenses/${pkgname} legal
 
   # Man pages
-  for f in man/man1/* man/ja/man1/* man/ja_JP.UTF-8/man1/*; do
+  for f in man/man1/*; do
     install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-adoptopenjdk${_majorver}.1}"
   done
   rm -rf man
