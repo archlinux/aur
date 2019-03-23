@@ -32,7 +32,7 @@ prepare() {
     cd $srcdir/sole-survivor
     dos2unix *.md
     printf "Success in converting docs...\n"
-    make version VERSION="Master commit ${pkgver}"
+    make version VERSION="${pkgver}"
 }
 
 build() {
