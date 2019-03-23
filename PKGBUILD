@@ -3,15 +3,15 @@
 # Contributor: Thomas Dziedzic <gostrc at gmail>
 # Contributor: Josh Marshall <jrmarsha@mtu.edu>
 pkgname=hmmer
-pkgver=3.1b2
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 pkgdesc="Profile hidden Markov models (HMMs) for database searching using consensus sequences"
 arch=('i686' 'x86_64')
 checkdepends=('perl-perl4-corelibs')
 license=('GPL')
 url="http://hmmer.org/"
-source=("http://eddylab.org/software/hmmer3/$pkgver/hmmer-$pkgver.tar.gz")
-sha256sums=('dd16edf4385c1df072c9e2f58c16ee1872d855a018a2ee6894205277017b5536')
+source=("http://eddylab.org/software/hmmer/hmmer-$pkgver.tar.gz")
+sha256sums=('a56129f9d786ec25265774519fc4e736bbc16e4076946dcbd7f2c16efc8e2b9c')
 
 build() {
   cd "$pkgname-$pkgver"
