@@ -2,7 +2,7 @@
 
 _pkgname=powerlevel10k
 pkgname=zsh-theme-${_pkgname}-git
-pkgver="r1887.db48e0d"
+pkgver="r1912.cea3f32"
 pkgrel=1
 pkgdesc="Powerlevel10k is a theme for ZSH. It's a backward-compatible fork of Powerlevel9k with lower latency and better prompt responsiveness"
 arch=('any')
@@ -46,6 +46,7 @@ package()
 
   # Install Documentation
   install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -D -m644 EXTENDED_CONFIGURATION.md "${pkgdir}/usr/share/doc/${pkgname}/EXTENDED_CONFIGURATION.md"
 
   # Install the theme
   install -D -m644 powerlevel10k.zsh-theme "${pkgdir}/usr/share/zsh-theme-${_pkgname}/${_pkgname}.zsh-theme"
