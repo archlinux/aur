@@ -1,7 +1,7 @@
 pkgbase = python-gitlab
 	pkgdesc = Python wrapper for the GitLab API
-	pkgver = 1.6.0
-	pkgrel = 2
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://github.com/python-gitlab/python-gitlab
 	arch = any
 	license = LGPLv3
@@ -9,8 +9,8 @@ pkgbase = python-gitlab
 	depends = python-requests
 	depends = python-six
 	options = !emptydirs
-	source = https://github.com/python-gitlab/python-gitlab/archive/1.6.0.tar.gz
-	md5sums = 033ee72ebb02239adb15920f7e983c31
+	source = https://github.com/python-gitlab/python-gitlab/archive/1.8.0.tar.gz
+	md5sums = d052327ad5af5fda51ce5e02b013f88c
 
 pkgname = python-gitlab
 
