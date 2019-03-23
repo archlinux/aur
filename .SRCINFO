@@ -1,0 +1,36 @@
+pkgbase = openra-ura-git
+	pkgdesc = A Red Alert-inspired mod of OpenRA
+	pkgver = 431.git.128dc53
+	pkgrel = 1
+	url = https://www.openra.net
+	install = openra-ura.install
+	arch = any
+	license = GPL3
+	makedepends = dos2unix
+	makedepends = git
+	makedepends = unzip
+	depends = mono
+	depends = ttf-dejavu
+	depends = openal
+	depends = libgl
+	depends = freetype2
+	depends = sdl2
+	depends = lua51
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = zenity
+	provides = openra-ura
+	options = !strip
+	source = git+https://github.com/RAunplugged/uRA.git
+	source = openra-ura
+	source = openra-ura.appdata.xml
+	source = openra-ura.desktop
+	md5sums = SKIP
+	md5sums = e3cad77b684f1e8f8456e7b1e4b50cd1
+	md5sums = 9f15794f7fb1bb9940cdb7c7f90f898a
+	md5sums = 462aae2e4517dd55ef4e0dcafe0d4888
+
+pkgname = openra-ura-git
+

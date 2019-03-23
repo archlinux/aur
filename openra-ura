@@ -1,0 +1,19 @@
+#!/bin/sh
+cd "/usr/lib/openra-ura"
+
+# Run the game
+mono --debug OpenRA.Game.exe Game.Mod=ura Engine.LaunchPath="/usr/bin/openra-ura" "Engine.ModSearchPaths=/usr/lib/openra-ura/mods" "$@"
+
+# Show a crash dialog if something went wrong
+if [ $? != 0 ] && [ $? != 1 ]; then
+  ERROR_MESSAGE="OpenRA Red Alert Unplugged has encountered a fatal error.\nPlease refer to the crash logs for more information.\n\nLog files are located in ~/.openra/Logs\n"
+  if command -v zenity > /dev/null; then
+    zenity --no-wrap --error --title "OpenRA Red Alert Unplugged" --text "${ERROR_MESSAGE}" 2> /dev/null
+  elif command -v kdialog > /dev/null; then
+    kdialog --title "OpenRA Red Alert Unplugged" --error "${ERROR_MESSAGE}"
+  else
+    printf "${ERROR_MESSAGE}\n"
+  fi
+  exit 1
+fi
+
