@@ -1,6 +1,7 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
+
 pkgname=openra-gen-git
-_pkgname=openra-gen
+_pkgname=${pkgname/-git}
 pkgver=1160.git.e448241
 pkgrel=1
 pkgdesc="A Command & Conquer: Generals-inspired mod of OpenRA"
@@ -37,7 +38,9 @@ prepare() {
 
 build() {
     cd $srcdir/Generals-Alpha
-    make
+    make || (printf "make failed; please do not complain at the AUR about this, as this is an upstream issue.\n" && \
+	printf "So report this at ${url}/issues/new, after checking\n" && \
+	printf "for existing issues.\n")
 }
 
 package() {
