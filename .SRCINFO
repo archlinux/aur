@@ -1,0 +1,17 @@
+pkgbase = xkblayout
+	pkgdesc = Prints the current xkb keyboard layout
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/alenichev/xkblayout
+	arch = i686
+	arch = x86_64
+	license = custom
+	license = OpenBSD
+	makedepends = git
+	makedepends = gcc
+	depends = libx11
+	source = xkblayout-1.3.tar.gz::https://github.com/alenichev/xkblayout/archive/v1.3.tar.gz
+	sha256sums = cba655d3cd6e779d73da28cf41729d94bcf5fc6968af0dd922fa6189099e58e9
+
+pkgname = xkblayout
+
