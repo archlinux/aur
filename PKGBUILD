@@ -2,12 +2,12 @@
 
 pkgname=sublime-text-nightly
 pkgver=3.3200
-pkgrel=1
+pkgrel=2
 pkgdesc="Sophisticated text editor for code, html and prose - nightly build (available to registered users only)"
 arch=('i686' 'x86_64')
 url="http://www.sublimetext.com/3dev"
 license=('custom')
-depends=('libpng' 'gtk2')
+depends=('libpng' 'gtk3')
 optdepends=('gksu: sudo-save support')
 conflicts=('sublime-text-dev')
 provides=('sublime-text-dev')
