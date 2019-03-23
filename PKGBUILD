@@ -1,12 +1,12 @@
 # Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
 
 pkgname=openra-ra2-git
-_pkgname=openra-ra2
+_pkgname=${pkgname/-git}
 pkgver=898.git.4c966a9
 pkgrel=1
-pkgdesc="A Red Alert 2-inspired mod of OpenRA"
+pkgdesc="A Command & Conquer: Red Alert 2-inspired mod of OpenRA"
 arch=('any')
-url="https://www.openra.net"
+url="https://github.com/OpenRA/ra2"
 license=('GPL3')
 install=openra-ra2.install
 depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
@@ -14,7 +14,7 @@ depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolo
 makedepends=('dos2unix' 'git' 'unzip')
 provides=('openra-ra2')
 options=(!strip)
-source=("git+https://github.com/OpenRA/ra2.git"
+source=("git+${url}.git"
 "openra-ra2"
 "openra-ra2.appdata.xml"
 "openra-ra2.desktop")
@@ -34,7 +34,7 @@ prepare() {
     cd $srcdir/ra2
     dos2unix *.md
     chmod +x *.sh
-    make version VERSION="Master commit ${pkgver}"
+    make version VERSION="${pkgver}"
 }
 
 build() {
