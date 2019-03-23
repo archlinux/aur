@@ -1,0 +1,36 @@
+pkgbase = openra-sp-git
+	pkgdesc = A Tiberian Sun-inspired mod of OpenRA
+	pkgver = 206.git.525762a
+	pkgrel = 1
+	url = https://www.openra.net
+	install = openra-sp.install
+	arch = any
+	license = GPL3
+	makedepends = dos2unix
+	makedepends = git
+	makedepends = unzip
+	depends = mono
+	depends = ttf-dejavu
+	depends = openal
+	depends = libgl
+	depends = freetype2
+	depends = sdl2
+	depends = lua51
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = zenity
+	provides = openra-sp
+	options = !strip
+	source = git+https://github.com/ABrandau/OpenRAModSDK.git
+	source = openra-sp
+	source = openra-sp.appdata.xml
+	source = openra-sp.desktop
+	md5sums = SKIP
+	md5sums = f1cf30ba15c005526b2bbda106011c13
+	md5sums = 9c765b2e005b0db03d569ccf679f323b
+	md5sums = 451b5a8a2e603e2a140f8844461aff68
+
+pkgname = openra-sp-git
+
