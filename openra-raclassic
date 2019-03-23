@@ -1,0 +1,19 @@
+#!/bin/sh
+cd "/usr/lib/openra-raclassic"
+
+# Run the game
+mono --debug OpenRA.Game.exe Game.Mod="raclassic" Engine.LaunchPath="/usr/bin/openra-raclassic" "Engine.ModSearchPaths=/usr/lib/openra-raclassic/mods" "$@"
+
+# Show a crash dialog if something went wrong
+if [ $? != 0 ] && [ $? != 1 ]; then
+  ERROR_MESSAGE="OpenRA Red Alert Classic has encountered a fatal error.\nPlease refer to the crash logs and FAQ for more information.\n\nLog files are located in ~/.openra/Logs\nThe FAQ is available at http://wiki.openra.net/FAQ"
+  if command -v zenity > /dev/null; then
+    zenity --no-wrap --error --title "Red Alert Classic" --text "${ERROR_MESSAGE}" 2> /dev/null
+  elif command -v kdialog > /dev/null; then
+    kdialog --title "Red Alert Classic" --error "${ERROR_MESSAGE}"
+  else
+    printf "${ERROR_MESSAGE}\n"
+  fi
+  exit 1
+fi
+

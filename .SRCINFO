@@ -1,0 +1,36 @@
+pkgbase = openra-raclassic-git
+	pkgdesc = A Red Alert-inspired mod of OpenRA
+	pkgver = 183.git.c76c13e
+	pkgrel = 1
+	url = https://www.openra.net
+	install = openra-raclassic.install
+	arch = any
+	license = GPL3
+	makedepends = dos2unix
+	makedepends = git
+	makedepends = unzip
+	depends = mono
+	depends = ttf-dejavu
+	depends = openal
+	depends = libgl
+	depends = freetype2
+	depends = sdl2
+	depends = lua51
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = zenity
+	provides = openra-raclassic
+	options = !strip
+	source = git+https://github.com/OpenRA/raclassic.git
+	source = openra-raclassic
+	source = openra-raclassic.appdata.xml
+	source = openra-raclassic.desktop
+	md5sums = SKIP
+	md5sums = a12b558a94aaf9046466acb26c5fb851
+	md5sums = 86cb505318478eff0ffbd3bd49bbca2e
+	md5sums = 0f6a6f3b2e76bad0dea522668d8cffbb
+
+pkgname = openra-raclassic-git
+
