@@ -39,6 +39,10 @@ package() {
   # add SSL libs
   sed -i -e "s|LIBS = -lz -ldl -lutil|LIBS = -lz -ldl -lutil -lssl -lcrypto|g" ${srcdir}/shellinabox/Makefile
 
+  # issue 458
+  sed -i -e 's/-oRhostsRSAAuthentication=no//' ${srcdir}/shellinabox/shellinabox/service.c
+  sed -i -e 's/-oRSAAuthentication=no//' ${srcdir}/shellinabox/shellinabox/service.c
+
   make
 
   make DESTDIR="$pkgdir/" install
