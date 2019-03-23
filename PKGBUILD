@@ -31,7 +31,7 @@ pkgver() {
 prepare() {
     cd $srcdir/yr
     dos2unix *.md
-    make version VERSION="Master commit ${pkgver}"
+    make version VERSION="${pkgver}"
 }
 
 build() {
