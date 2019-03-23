@@ -1,0 +1,36 @@
+pkgbase = openra-rv-git
+	pkgdesc = A Romanov's Vengeance-inspired mod of OpenRA, warning you will need the original Red Alert 2 game (Ultimate Edition) assets to play this game
+	pkgver = 1624.git.7f5be71
+	pkgrel = 1
+	url = https://www.openra.net
+	install = openra-rv.install
+	arch = any
+	license = GPL3
+	makedepends = dos2unix
+	makedepends = git
+	makedepends = unzip
+	depends = mono
+	depends = ttf-dejavu
+	depends = openal
+	depends = libgl
+	depends = freetype2
+	depends = sdl2
+	depends = lua51
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = zenity
+	provides = openra-rv
+	options = !strip
+	source = git+https://github.com/MustaphaTR/Romanovs-Vengeance.git
+	source = openra-rv
+	source = openra-rv.appdata.xml
+	source = openra-rv.desktop
+	md5sums = SKIP
+	md5sums = 80198a3797c5f4103536702d15e37f19
+	md5sums = 8bc1150ba694cb3e1a8bcadee4ef75ce
+	md5sums = 98c237db6df1eb777658842765948ea2
+
+pkgname = openra-rv-git
+
