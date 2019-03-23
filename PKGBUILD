@@ -1,7 +1,8 @@
-# Maintainer: sballert <sballert@posteo.de>
+# Contributor: sballert <sballert@posteo.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-hydra-git
-pkgver=r330.87cc74b
+pkgver=0.14.0r38.g9c4a471
 pkgrel=1
 pkgdesc="Make Emacs bindings that stick around"
 url="https://github.com/abo-abo/hydra"
@@ -17,7 +18,7 @@ _gitname="hydra"
 
 pkgver() {
   cd "$_gitname"
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  git describe --tags | sed 's+-+r+' | tr - .
 }
 
 build() {
@@ -27,6 +28,6 @@ build() {
 
 package() {
   cd "$_gitname"
-  install -d "${pkgdir}/usr/share/emacs/site-lisp/hydra"
-  install -m644 {hydra-ox,hydra,lv}.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/hydra/"
+  install -d "$pkgdir"/usr/share/emacs/site-lisp/
+  install -m644 {hydra-ox,hydra,lv}.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/
 }
