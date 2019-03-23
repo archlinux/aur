@@ -1,0 +1,14 @@
+pkgbase = terraform-provider-cloudflare
+	pkgdesc = Terraform provider for Cloudflare
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://github.com/terraform-providers/terraform-provider-cloudflare
+	arch = x86_64
+	license = MPL
+	makedepends = go
+	makedepends = git
+	source = https://github.com/terraform-providers/terraform-provider-cloudflare/archive/v1.12.0.tar.gz
+	sha256sums = 2dfe7eb77b05fae6670140fee109caec5db462c52f04e7908f7d108350ce142a
+
+pkgname = terraform-provider-cloudflare
+
