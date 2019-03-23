@@ -3,7 +3,7 @@
 # Contributor: Asa Marco <marcoasa90[at]gmail[.]com>
 
 pkgname=openshot
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 pkgdesc="an open-source, non-linear video editor for Linux based on MLT framework"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=('frei0r-plugins: effects'
 	    'libquicktime' 'libavc1394' 'faac' 'jack')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenShot/openshot-qt/archive/v$pkgver.tar.gz")
-sha256sums=('901b485c28cfcbb4d1baf3cd6a30b165090c49c96f252236f1bbd8c8ab709721')
+sha256sums=('8197923b3fff2010ee69c75469818543674a12fcb8fcb08944471e4ead3426be')
 
 package() {
   cd "$srcdir"/openshot-qt-$pkgver
