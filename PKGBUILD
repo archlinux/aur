@@ -13,7 +13,7 @@ license=('LGPL')
 depends=("${pkgname#lib32-}" 'lib32-gdk-pixbuf2')
 makedepends=('gcc-multilib' 'git' 'gnome-common' 'gobject-introspection' 'lib32-gtk3')
 _commit=c954cabaad9e224c0c6129032d824012d332c11b  # tags/0.7.7^0
-source=("git://git.gnome.org/libnotify#commit=$_commit")
+source=("${pkgname#lib32-}::git+https://gitlab.gnome.org/GNOME/libnotify.git#commit=$_commit")
 sha512sums=('SKIP')
 
 prepare() {
