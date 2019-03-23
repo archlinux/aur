@@ -1,14 +1,14 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fslpy
 pkgver=1.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The fslpy package is a collection of utilities and data abstractions used by FSLeyes."
 arch=('any')
 url="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes"
 license=('Apache')
 groups=()
-depends=('python')
-makedepends=('python-setuptools' 'python-six' 'python-numpy' 'python-scipy' 'python-deprecation' 'python-nibabel')
+depends=('python' 'python-six' 'python-numpy' 'python-scipy' 'python-deprecation' 'python-nibabel')
+makedepends=('python-setuptools')
 optdepends=()
 provides=()
 conflicts=()
