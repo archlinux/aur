@@ -4,7 +4,7 @@ post_upgrade() {
 }
 
 post_install() {
-    echo "You will need the original game assets to play this game, see https://github.com/MustaphaTR/sole-survivor/wiki for details\n"
+    printf "%s\n" "You will need the original game assets to play this game, see https://github.com/MustaphaTR/sole-survivor/wiki for details"
     post_upgrade
 }
 
