@@ -1,0 +1,35 @@
+pkgbase = simplescreenrecorder-wlroots-git
+	pkgdesc = Experimental fork of simplescreenrecorder with added Wayland support
+	pkgver = 0.3.11.r23.g4b288cb
+	pkgrel = 1
+	url = https://github.com/foxcpp/ssr-wlroots
+	install = simplescreenrecorder-wlroots-git.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	makedepends = wayland-protocols
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = ffmpeg
+	depends = alsa-lib
+	depends = libpulse
+	depends = jack
+	depends = libgl
+	depends = glu
+	depends = libx11
+	depends = libxext
+	depends = libxfixes
+	depends = libxi
+	depends = desktop-file-utils
+	depends = gtk-update-icon-cache
+	depends = wayland
+	provides = simplescreenrecorder
+	conflicts = simplescreenrecorder
+	conflicts = simplescreenrecorder-git
+	source = git+https://github.com/foxcpp/ssr-wlroots
+	md5sums = SKIP
+
+pkgname = simplescreenrecorder-wlroots-git
+
