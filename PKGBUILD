@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=netcap-git
-pkgver=v0.3.9.r8.g11bd1ba
-pkgrel=3
+pkgver=v0.3.9.r10.g9261ff0
+pkgrel=1
 pkgdesc='A framework for secure and scalable network traffic analysis'
 url="https://github.com/dreadl0ck/netcap"
 arch=('x86_64')
@@ -27,7 +27,7 @@ prepare() {
 
 	cd "${srcdir}/go/src/github.com/dreadl0ck/netcap"
 
-	GOPATH="${srcdir}/go"
+	export GOPATH="${srcdir}/go"
 	go get -v ./...
 }
 
