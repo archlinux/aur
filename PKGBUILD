@@ -18,7 +18,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/blockbar"
-    make
+    PREFIX=/usr make
 }
 
 package() {
