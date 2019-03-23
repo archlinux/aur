@@ -4,7 +4,7 @@
 _pkgsrcname=transient
 _pkgmaintainer=magit
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Implements prefix commands, infix arguments and suffix commands."
 pkgname=emacs-transient
 arch=('any')
@@ -21,5 +21,5 @@ build() {
 
 package() {
   cd ${_pkgsrcname}-${pkgver}/lisp
- install -Dm644 *.el{c,} -t "$pkgdir"/usr/share/emacs/site-lisp/
+  install -Dm644 *.el{c,} -t "$pkgdir"/usr/share/emacs/site-lisp/
 }

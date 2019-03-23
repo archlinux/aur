@@ -1,7 +1,7 @@
 pkgbase = emacs-transient
 	pkgdesc = Implements prefix commands, infix arguments and suffix commands.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/magit/transient
 	arch = any
 	license = GPL3
