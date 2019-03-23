@@ -1,6 +1,6 @@
 pkgname=openra-mw-git
 _pkgname=openra-mw
-pkgver=267
+pkgver=267.git.fc62353
 pkgrel=1
 pkgdesc="An original mod of OpenRA depicting medieval warfare"
 arch=('any')
@@ -21,6 +21,13 @@ md5sums=('SKIP'
          '0f77c0a5b31dbcf523e985d27c438788'
          '2410c10bc2fce972a940f734471db5a1')
 
+pkgver() {
+    cd $srcdir/Medieval-Warfare
+    no=$(git rev-list --count HEAD)
+    hash=$(git log | head -n 1 | cut -d ' ' -f 2 | head -c 7)
+    printf "${no}.git.${hash}"
+}
+
 prepare() {
     cd $srcdir/Medieval-Warfare
     dos2unix *.md
@@ -30,7 +37,7 @@ prepare() {
 build() {
     cd $srcdir/Medieval-Warfare
     make || (printf "make failed; please do not complain at the AUR about this, as this is an upstream issue.\n" && \
-	printf "So report this at https://github.com/MustaphaTR/Romanovs-Vengeance/issues/new, after checking\n" && \
+	printf "So report this at ${url}/issues/new, after checking\n" && \
 	printf "for existing issues.\n")
 }
 

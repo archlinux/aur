@@ -1,6 +1,6 @@
 pkgbase = openra-mw-git
 	pkgdesc = An original mod of OpenRA depicting medieval warfare
-	pkgver = 267
+	pkgver = 267.git.fc62353
 	pkgrel = 1
 	url = https://github.com/CombinE88/Medieval-Warfare
 	install = openra-mw.install
