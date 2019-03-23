@@ -12,7 +12,7 @@ depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolo
 makedepends=('dos2unix' 'git' 'unzip')
 provides=('openra-mw')
 options=(!strip)
-source=("git+https://github.com/CombinE88/Medieval-Warfare.git"
+source=("git+${url}.git"
 "openra-mw"
 "openra-mw.appdata.xml"
 "openra-mw.desktop")
@@ -31,7 +31,7 @@ pkgver() {
 prepare() {
     cd $srcdir/Medieval-Warfare
     dos2unix *.md
-    make version VERSION="Master commit #${pkgver}"
+    make version VERSION="${pkgver}"
 }
 
 build() {
