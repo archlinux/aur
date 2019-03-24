@@ -1,0 +1,110 @@
+--- archive_files/common/lib/modules/fglrx/build_mod/2.6.x/Makefile
++++ archive_files/common/lib/modules/fglrx/build_mod/2.6.x/Makefile
+@@ -87,7 +87,7 @@ fglrx-cfiles    = ${fglrx-c-objs:.o=.c}
+ # default:: kmod_build
+ 
+ kmod_build:: $(fglrx-libs) $(fglrx-cfiles) $(fglrx-hdrs) $(drm-hdrs)
+-	$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) modules
++	$(MAKE) -C $(KDIR) M=$(PWD) modules
+ 
+ %.c:
+ 	@ln -s ../$@
+--- archive_files/common/lib/modules/fglrx/build_mod/drmP.h
++++ archive_files/common/lib/modules/fglrx/build_mod/drmP.h
+@@ -218,12 +218,10 @@
+ #define DRM_PROC_LIMIT (PAGE_SIZE-80)
+ 
+ #define DRM_PROC_PRINT(fmt, arg...)					\
+-   len += sprintf(&buf[len], fmt , ##arg);				\
+-   if (len > DRM_PROC_LIMIT) { *eof = 1; return len - offset; }
++   if ((len += sprintf(&buf[len], fmt , ##arg)) > DRM_PROC_LIMIT) { *eof = 1; return len - offset; }
+ 
+ #define DRM_PROC_PRINT_RET(ret, fmt, arg...)				\
+-   len += sprintf(&buf[len], fmt , ##arg);				\
+-   if (len > DRM_PROC_LIMIT) { ret; *eof = 1; return len - offset; }
++   if ((len += sprintf(&buf[len], fmt , ##arg)) > DRM_PROC_LIMIT) { ret; *eof = 1; return len - offset; }
+ 
+ /*@}*/
+ 
+--- archive_files/common/lib/modules/fglrx/build_mod/firegl_public.c
++++ archive_files/common/lib/modules/fglrx/build_mod/firegl_public.c
+@@ -2741,12 +2741,12 @@ void ATI_API_CALL KCL_UnlockMemPage(void* pt)
+ 
+ int ATI_API_CALL KCL_MEM_VerifyReadAccess(void* addr, kcl_size_t size)
+ {
+-    return access_ok(VERIFY_READ, addr, size) ? 0 : -EFAULT;
++    return access_ok(addr, size) ? 0 : -EFAULT;
+ }
+ 
+ int ATI_API_CALL KCL_MEM_VerifyWriteAccess(void* addr, kcl_size_t size)
+ {
+-    return access_ok(VERIFY_WRITE, addr, size) ? 0 : -EFAULT;
++    return access_ok(addr, size) ? 0 : -EFAULT;
+ }
+ 
+ /** \brief Get Init kernel PTE by address. Couldn't be used for kernel >= 2.6.25.
+@@ -6602,6 +6602,7 @@ void ATI_API_CALL KCL_create_uuid(void *buf)
+     generate_random_uuid((char *)buf);
+ }
+ 
++#ifndef CONFIG_X86_64
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3,15,0)
+ static int KCL_fpu_save_init(struct task_struct *tsk)
+ {
+@@ -6658,6 +6659,8 @@ static int KCL_fpu_save_init(struct task_struct *tsk)
+    return 1;
+ }
+ #endif
++#endif
++
+ 
+ /** \brief Prepare for using FPU
+  *  \param none
+@@ -6666,12 +6669,7 @@ static int KCL_fpu_save_init(struct task_struct *tsk)
+ void ATI_API_CALL KCL_fpu_begin(void)
+ {
+ #ifdef CONFIG_X86_64
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(4,2,0)
+     kernel_fpu_begin();
+-#else
+-    preempt_disable();
+-    __kernel_fpu_begin();
+-#endif
+ #else
+ #ifdef TS_USEDFPU
+     struct thread_info *cur_thread = current_thread_info();
+@@ -6718,12 +6716,7 @@ void ATI_API_CALL KCL_fpu_begin(void)
+  */
+ void ATI_API_CALL KCL_fpu_end(void)
+ {
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(4,2,0)
+     kernel_fpu_end();
+-#else
+-    __kernel_fpu_end();
+-    preempt_enable();
+-#endif
+ }
+ 
+ /** Create new directory entry under "/proc/...."
+--- archive_files/common/lib/modules/fglrx/build_mod/firegl_public.h
++++ archive_files/common/lib/modules/fglrx/build_mod/firegl_public.h
+@@ -668,7 +668,7 @@ extern unsigned long        KCL_SYSINFO_TimerTicksPerSecond;
+ #endif
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4,7,0)
+-#ifndef boot_cpu_has(X86_FEATURE_PGE)
++#ifndef boot_cpu_has
+ #define boot_cpu_has(X86_FEATURE_PGE) test_bit(X86_FEATURE_PGE, &boot_cpu_data.x86_capability)
+ #endif
+ #else
+--- archive_files/common/lib/modules/fglrx/build_mod/kcl_ioctl.c
++++ archive_files/common/lib/modules/fglrx/build_mod/kcl_ioctl.c
+@@ -228,7 +228,7 @@ void* ATI_API_CALL KCL_IOCTL_AllocUserSpace32(long size)
+     void __user *ret = COMPAT_ALLOC_USER_SPACE(size);
+ 
+     /* prevent stack overflow */
+-    if (!access_ok(VERIFY_WRITE, ret, size))
++    if (!access_ok(ret, size))
+         return NULL;
+ 
+     return (void *)ret;
