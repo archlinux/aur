@@ -1,0 +1,12 @@
+pkgbase = python-missingno
+	pkgdesc = Missing data visualization module for Python.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/ResidentMario/missingno
+	arch = any
+	license = UNKNOWN
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-missingno
+
