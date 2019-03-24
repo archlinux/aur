@@ -1,7 +1,7 @@
 # Maintainer: Per Osbäck <per@osbeck.com>
 _gitname="terraform-provider-loopia"
 pkgname="${_gitname}-git"
-pkgver=5493abf
+pkgver=r9.5493abf
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/jonlil/terraform-provider-loopia"
@@ -15,7 +15,10 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
-  git describe --always --tags --long | sed 's/^v//;s/-/./;s/-/./g'
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
