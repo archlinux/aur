@@ -2,10 +2,10 @@
 
 pkgname=wpan-tools
 pkgver=0.9
-pkgrel=0
+pkgrel=1
 pkgdesc="Userspace tools for Linux IEEE 802.15.4 stack."
 epoch=
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'aarch64' 'armv7h')
 url="http://wpan.cakelab.org/"
 license=('ISC')
 depends=('libnl')
