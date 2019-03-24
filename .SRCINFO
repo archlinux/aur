@@ -1,7 +1,7 @@
 pkgbase = cado-git
 	pkgdesc = Capability DO (like a sudo providing users with just the capabilities they need))
 	pkgver = 0.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rd235/cado
 	install = cado-git.install
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = cado-git
 	depends = libcap
 	depends = pam
 	depends = mhash
-	depends = libs2argv-execs-git
+	depends = s2argv-execs-git
 	provides = cado
 	provides = caprint
 	conflicts = cado
