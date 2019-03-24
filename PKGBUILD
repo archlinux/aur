@@ -73,7 +73,7 @@ package_python-pip-git() {
 
 package_python2-pip-git() {
   depends=("${_deps[@]/#/python2-}" 'python2-ipaddress')
-  conflicts=('python-pyinstall')
+  conflicts=('python-pyinstall' 'python2-pip')
   replaces=('python-pyinstall')
 
   cd "$srcdir/pip-$pkgver"

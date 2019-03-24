@@ -98,5 +98,6 @@ pkgname = python2-pip-git
 	depends = python2-webencodings
 	depends = python2-ipaddress
 	conflicts = python-pyinstall
+	conflicts = python2-pip
 	replaces = python-pyinstall
 
