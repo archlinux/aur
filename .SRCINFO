@@ -7,7 +7,7 @@ pkgbase = libpurple-signald-git
 	license = GPL3
 	depends = json-glib
 	depends = libpurple
-	depends = signald
+	depends = signald-git
 	source = libpurple-signald::git+https://github.com/hoehermann/libpurple-signald
 	sha512sums = SKIP
 
