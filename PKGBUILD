@@ -2,7 +2,7 @@
 
 pkgname=neru-icon-newyear-theme
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Christmas theme icons Neru"
 arch=('any')
 url="https://github.com/chistota/neru-icon-newyear-theme/"
@@ -36,6 +36,24 @@ package() {
 
 	ln -s qv4l2.svg neru-newyear-dark/medium/apps/qvidcap.svg
 	ln -s usb-creator.svg neru-newyear-dark/medium/apps/mintstick.svg
+
+	ln -s filelight.svg neru-newyear-light/medium/apps/org.gnome.DiskUtility.svg
+	ln -s ark.svg neru-newyear-light/medium/apps/org.gnome.ArchiveManager.svg
+	ln -s preferences-system-privacy.svg neru-newyear-light/medium/apps/org.gnome.seahorse.Application.svg
+	ln -s applications-fonts.svg neru-newyear-light/medium/apps/org.gnome.font-viewer.svg
+	ln -s edit-find.svg neru-newyear-light/medium/apps/gtk-find.svg
+	ln -s applications-multimedia.svg neru-newyear-light/medium/apps/gmtpicon.svg
+	ln -s fontforge.svg neru-newyear-light/medium/apps/org.fontforge.FontForge.svg
+
+
+	ln -s filelight.svg neru-newyear-dark/medium/apps/org.gnome.DiskUtility.svg
+	ln -s ark.svg neru-newyear-dark/medium/apps/org.gnome.ArchiveManager.svg
+	ln -s preferences-system-privacy.svg neru-newyear-dark/medium/apps/org.gnome.seahorse.Application.svg
+	ln -s applications-fonts.svg neru-newyear-dark/medium/apps/org.gnome.font-viewer.svg
+	ln -s edit-find.svg neru-newyear-dark/medium/apps/gtk-find.svg
+	ln -s applications-multimedia.svg neru-newyear-dark/medium/apps/gmtpicon.svg
+	ln -s fontforge.svg neru-newyear-dark/medium/apps/org.fontforge.FontForge.svg
+
 
 	gtk-update-icon-cache neru-newyear-light/
 	gtk-update-icon-cache neru-newyear-dark/
