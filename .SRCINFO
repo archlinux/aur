@@ -1,0 +1,15 @@
+pkgbase = bluetooth-autoconnect
+	pkgdesc = A service to automatically connect to all paired and trusted bluetooth devices
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/jrouleau/bluetooth-autoconnect
+	arch = any
+	license = MIT
+	depends = bluez
+	depends = python
+	depends = python-dbus
+	source = https://github.com/jrouleau/bluetooth-autoconnect/archive/v1.0.tar.gz
+	sha256sums = eb7795401043ef17fdd6c785df20184b17a4eb610c08325353ef5084ff0adda7
+
+pkgname = bluetooth-autoconnect
+
