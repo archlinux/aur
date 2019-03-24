@@ -1,0 +1,13 @@
+pkgbase = brainbash-git
+	pkgdesc = A brainfuck interpreter written in pure Bash
+	pkgver = r32.af033c8
+	pkgrel = 1
+	url = https://github.com/Crestwave/brainbash
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/Crestwave/brainbash.git
+	sha256sums = SKIP
+
+pkgname = brainbash-git
+
