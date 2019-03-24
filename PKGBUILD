@@ -3,7 +3,7 @@
 pkgname=cado-git
 _gitname=cado
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Capability DO (like a sudo providing users with just the
 capabilities they need))"
