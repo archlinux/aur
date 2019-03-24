@@ -45,9 +45,9 @@ build() {
 	cd "$srcdir/xneur-devel/xneur"
 	# If you have xosd, why dont use it?
 	if test `pacman -Qs xosd`; then
-		./autogen.sh --prefix=/opt/xneur --with-gtk=gtk2
+		./autogen.sh --prefix=/usr --sysconfdir=/etc --with-gtk=gtk2
 	else
-		./autogen.sh --prefix=/opt/xneur --with-gtk=gtk2 --without-xosd
+		./autogen.sh --prefix=/usr --sysconfdir=/etc --with-gtk=gtk2 --without-xosd
 	fi
 	make
 }
@@ -57,7 +57,5 @@ package() {
 
 	cd "$srcdir/xneur-devel/xneur"
 	make DESTDIR="$pkgdir/" install
-	ln -s /opt/xneur/bin/xneur $pkgdir/usr/bin/xneur
-	
 }
 
