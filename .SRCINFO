@@ -18,8 +18,8 @@ pkgbase = spectator-rest-client-git
 	depends = libgee
 	depends = webkit2gtk
 	optdepends = lib32-json-glib
-	provides = spectator
-	conflicts = spectator
+	provides = spectator-rest-client
+	conflicts = spectator-rest-client
 	source = git+https://github.com/treagod/spectator.git
 	md5sums = SKIP
 
