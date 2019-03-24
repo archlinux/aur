@@ -3,7 +3,7 @@
 # Contributor: mitts <mittens2001@opmbx.org>
 
 pkgname=gmusicproxy
-pkgver=1.0.8.1
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Stream Google Play Music using any media-player"
 arch=('any')
@@ -13,28 +13,32 @@ depends=('python-gmusicapi' 'python-netifaces' 'python-xdg' 'python-eyed3' 'pyth
 optdepends=('python-keyring: keyring support')
 makedepends=('python-setuptools')
 source=("https://github.com/M0Rf30/gmusicproxy/archive/v${pkgver}.tar.gz"
-	"$pkgname.cfg.sample"
-	"$pkgname.user.service"
-	"$pkgname.system.service"
+	"$pkgname.service"
+	"$pkgname.sysuser"
+	"$pkgname.tmpfiles"
 )
+install="$pkgname.install"
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
+
 	python setup.py install --root="$pkgdir" --optimize=1
 
-	install -Dm644 "${srcdir}"/gmusicproxy.cfg.sample \
-		"${pkgdir}"/etc/gmusicproxy.cfg.sample
+	install -Dm644 "$srcdir/gmusicproxy.service" \
+		"$pkgdir/usr/lib/systemd/system/gmusicproxy.service"
 
-	install -Dm644 "${srcdir}"/gmusicproxy.system.service \
-		"${pkgdir}"/usr/lib/systemd/system/gmusicproxy.service
-
-	install -Dm644 "${srcdir}"/gmusicproxy.user.service \
-		"${pkgdir}"/usr/lib/systemd/user/gmusicproxy.service
+	install -Dm644 "$srcdir/$pkgname.service" \
+		"$pkgdir/usr/lib/systemd/system/$pkgname.service"
+	install -Dm755 "$srcdir/$pkgname.sysuser" \
+		"$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+	install -Dm644 "$srcdir/$pkgname.tmpfiles" \
+		"$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+	install -d "$pkgdir/var/lib/$pkgname"
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-md5sums=('SKIP'
-	'e03e8f0937997fd8e86f60c3c28d1d26'
-	'c7a497a0cb00a3a81c9199a69dc53472'
-'3867da4b9d6c27f10cfb725dcdd9a7b9')
+md5sums=('72f91ea6102abfc96ed7ce9a334e5287'
+	'dcb085039110ab6a87e944865a4fccdb'
+	'f7c765324710c59738db0b8a9c124982'
+'73f91c48628136882893a3dbb1919bae')
