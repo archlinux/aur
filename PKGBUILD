@@ -38,7 +38,10 @@ validpgpkeys=()
 #}
 
 build() {
-    rm -rf /opt/xneur
+    if test -d /opt/xneur; then
+        echo "/OPT/XNEUR is not installation path anymore. Delete It. New path is /usr"
+        sleep 5
+    fi
 	echo "New versions of enchant stores as /usr/include/enchant-2"
 	echo "So I must symlink it to /usr/include/enchant: "
 	sudo ln -s /usr/include/enchant-2 /usr/include/enchant &>/dev/null || echo
