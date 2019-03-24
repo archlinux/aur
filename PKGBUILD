@@ -1,7 +1,7 @@
 # Maintainer: Omar Pakker <archlinux@opakker.nl>
 
 pkgname=python-bidict
-pkgver=0.17.2
+pkgver=0.18.0
 pkgrel=1
 pkgdesc='Bidirectional map implementation and related functionality to work with one-to-one mappings in Python 3'
 arch=('any')
@@ -9,8 +9,8 @@ url='https://bidict.readthedocs.org/'
 license=('MPLv2')
 makedepends=('python-setuptools')
 depends=('python')
-source=("https://files.pythonhosted.org/packages/79/a8/83a52f422b1c041758fcfa3ac4438fc92a14e3cbe2b36f97282d973aff55/bidict-${pkgver}.tar.gz")
-sha256sums=('a6477740bb73b925c1814d0f0d6deca1b74aa19f2d31f252d71f14acc53b187d')
+source=("https://files.pythonhosted.org/packages/8a/18/a3feb46d99a7a73c3078faf1c9b24655eace83bcf696cfecae46288cad8a/bidict-${pkgver}.tar.gz")
+sha256sums=('4d10630fd5d86b7c165387473c5180e7fca7635f12e24b1f426aac259c72c81a')
 
 build() {
 	cd "bidict-${pkgver}"
