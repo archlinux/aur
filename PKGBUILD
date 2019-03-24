@@ -2,8 +2,8 @@
 # Contributer: Andrey Vihrov
 
 pkgname=xfce4-screensaver
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc='Screensaver for XFCE Desktop'
 url="https://www.xfce.org"
 arch=('x86_64')
@@ -13,10 +13,8 @@ makedepends=('intltool' 'systemd' 'xfce4-dev-tools' 'xmlto' 'docbook-xsl' 'exo')
 groups=('xfce4')
 conflicts=('mate-screensaver-gtk3' 'mate-screensaver' 'gnome-screensaver')
 replaces=('mate-screensaver-gtk3' 'mate-screensaver' 'gnome-screensaver')
-source=("https://git.xfce.org/apps/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.gz" 
-	"xfce4-screensaver.pam")
-sha256sums=('8ca6d27d00b907d84188ec8dbd5d66d6c8efe8a30d3b22ebf77bd838e5492574'
-            'f8f58c56a2543a005b13271624bbeec43bd6fe4403a7a4b5e9d10e643cd46f37')
+source=("https://git.xfce.org/apps/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('8a14cbc92b718f591c25bc507b68ae03d5bf66850d4bdd73f4a0e39dd8633902')
 
 build() {
 	cd "${pkgname}-${pkgver}"
@@ -33,6 +31,4 @@ build() {
 package() {
     	cd "${pkgname}-${pkgver}"
     	make DESTDIR="${pkgdir}" install
-
-	cp -f "${srcdir}/xfce4-screensaver.pam" "${pkgdir}/etc/pam.d/xfce4-screensaver"
 }
