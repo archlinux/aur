@@ -1,16 +1,15 @@
 # Maintainer: Otto Naderer <otto.naderer@openmailbox.org>
 pkgname=irrdynamics
-pkgver=9.276fd3e
+pkgver=11.41d9752
 pkgrel=1
-pkgdesc="A light-weight Bullet Physics wrapper for the Irrlicht graphics 
-engine"
+pkgdesc="A light-weight Bullet Physics wrapper for the Irrlicht graphics engine"
 arch=(i686 x86_64 armv7h armv6h)
-url="https://github.com/ottona/irrdynamics"
+url="https://socialg.it/ottona/irrdynamics"
 license=('zlib')
 groups=()
 depends=(bullet irrlicht)
 makedepends=('git')
-source=("git://github.com/ottona/irrdynamics.git")
+source=("git+https://socialg.it/ottona/irrdynamics.git")
 md5sums=("SKIP")
 
 _gitname=irrdynamics
