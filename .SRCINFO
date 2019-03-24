@@ -1,6 +1,6 @@
 pkgbase = carla-bridges-wine
 	pkgdesc = Carla windows bridges
-	pkgver = 2.0rc4
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://kxstudio.sf.net/carla
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = carla-bridges-wine
 	provides = carla-bridges-wine
 	conflicts = carla-bridges-win32
 	conflicts = carla-bridges-win64
-	source = carla-bridges-wine-2.0rc4.tar.xz::https://github.com/falkTX/Carla/releases/download/v1.9.14/Carla_2.0-RC4-linux64.tar.xz
+	source = carla-bridges-wine-2.0.0.tar.xz::https://github.com/falkTX/Carla/releases/download/v2.0.0/Carla_2.0.0-linux64.tar.xz
 	md5sums = 242de9ef989dbdebfebb7f28c144449b
 
 pkgname = carla-bridges-wine

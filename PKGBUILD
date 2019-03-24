@@ -1,9 +1,9 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 # Contributor: Alexander Mcmillan <linuxguy93@gmail.com>
 pkgname=carla-bridges-wine
-pkgver=2.0rc4
-majorver=1.9.14
-minorver=${pkgver//rc4/-RC4}
+pkgver=2.0.0
+majorver=${pkgver}
+minorver=${pkgver}
 pkgrel=1
 pkgdesc="Carla windows bridges"
 arch=('i686' 'x86_64')
@@ -43,7 +43,7 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver/carla.vst"
 	
 	## Enable wine bridge for VST
-	mkdir -p "$pkgdir/usr/lib/lv2/carla.vst"
-	cp *.exe "$pkgdir/usr/lib/lv2/carla.vst"
-	cp *.dll "$pkgdir/usr/lib/lv2/carla.vst"
+	mkdir -p "$pkgdir/usr/lib/vst/carla.vst"
+	cp *.exe "$pkgdir/usr/lib/vst/carla.vst"
+	cp *.dll "$pkgdir/usr/lib/vst/carla.vst"
 }
