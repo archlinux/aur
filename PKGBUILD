@@ -14,17 +14,17 @@ md5sums=('SKIP')
 source=("git+https://github.com/r00tman/${pkgname%-git}")
 
 pkgver() {
-	cd "${pkgname%-git}"
+    cd "${pkgname%-git}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${pkgname%-git}"
+    cd "${pkgname%-git}"
     go build
 }
 
 package() {
-	cd "${pkgname%-git}"
+    cd "${pkgname%-git}"
 
     install -Dm755 corrupter "${pkgdir}/usr/bin/corrupter"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
