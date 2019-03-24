@@ -16,7 +16,7 @@ url="https://github.com/AndrewCrewKuznetsov/xneur-devel"
 license=('GPL')
 groups=()
 depends=('enchant' 'gtk2' 'libnotify' 'gstreamer>=1.14.4')
-makedepends=('git')
+makedepends=('git' 'intltool')
 checkdepends=()
 optdepends=('hunspell-YOUR-LANGUAGE' 'xosd--rebuilding_needed')
 provides=("xneur=$pkgver")

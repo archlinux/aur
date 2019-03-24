@@ -6,6 +6,7 @@ pkgbase = xneur-devel-git
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = intltool
 	depends = enchant
 	depends = gtk2
 	depends = libnotify
