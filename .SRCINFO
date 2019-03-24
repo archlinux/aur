@@ -5,6 +5,8 @@ pkgbase = re2c-git
 	url = http://re2c.org
 	arch = x86_64
 	license = custom
+	provides = re2c
+	conflicts = re2c
 	source = git://github.com/skvadrik/re2c
 	sha1sums = SKIP
 

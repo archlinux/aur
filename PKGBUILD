@@ -11,6 +11,8 @@ makedepends=() # base-devel is sufficient
 depends=()
 source=(git://github.com/skvadrik/re2c)
 sha1sums=('SKIP')
+provides=('re2c')
+conflicts=('re2c')
 
 pkgver() {
   cd "$srcdir/re2c"
