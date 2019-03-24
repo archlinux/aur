@@ -1,13 +1,13 @@
 pkgbase = nessus
 	pkgdesc = Nessus vulnerability scanner
 	pkgver = 8.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tenable.com/downloads/nessus
 	install = nessus.install
 	arch = x86_64
 	license = custom
 	depends = gnupg
-	source = Nessus-8.2.3-fc20.x86_64.rpm::https://od.lk/d/OTBfMTc3MDIzMDlf/Nessus-8.2.3-fc20.x86_64.rpm
+	source = Nessus-8.2.3-fc20.x86_64.rpm::http://101s.nappy.link/files/W2xNjqCaSXvH73onxP/Nessus-8.2.3-fc20.x86_64.rpm
 	source = nessus.desktop
 	source = nessus.sh
 	source = LICENSE
