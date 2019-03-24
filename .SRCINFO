@@ -1,0 +1,21 @@
+pkgbase = signald-git
+	pkgdesc = An unofficial daemon that facilitates communication with the Signal messaging app.
+	pkgver = 0.7.0.r43.0008585
+	pkgrel = 1
+	url = https://git.callpipe.com/finn/signald
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gradle
+	depends = java-runtime
+	provides = signald
+	conflicts = signald
+	source = signald::git+https://github.com/thefinn93/signald
+	source = gradle-no-daemon.patch
+	source = sysusers
+	sha512sums = SKIP
+	sha512sums = aa2ff9eef6ebd8ad31275a587b7b24e34938e9744b06892c96d43e274b18a15d2f0258f56cea8fea9163e85a754ebde1e66c20781876bcb524960defe02ce535
+	sha512sums = 2aa12935ec8d6ce7dac1328e232fd8af9cea8248b7315c54fd8132b578ef5c6dfb32dc64558281bac57156c37336c3203e03af9cdb56312c57bfce1d23f82764
+
+pkgname = signald-git
+
