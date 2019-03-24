@@ -12,7 +12,7 @@ provides=('emoji-font')
 install="$pkgname.install"
 source=("https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/t/twitter-twemoji-fonts-${pkgver}-${_fedrel}.noarch.rpm"
         "75-twemoji.conf")
-sha256sums=('c00a5db08615d43fd7d613899b337b50a1aafd343cf247db05f04b8415f148f5'
+sha256sums=('5b5da708a1e1b1cd29dff783e5d27afe0022ec0b4b4bc58f7911a045b9a5f2bd'
             'fe8a61709b0f262e84224fdedd86bbf0175b191079e2eb5a3a03a30a4ed449ea')
 
 package() {
