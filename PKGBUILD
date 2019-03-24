@@ -2,7 +2,7 @@
 
 _pkgname=sidef
 pkgname=sidef-git
-pkgver=3.60
+pkgver=3.70
 pkgrel=1
 pkgdesc="A modern object-oriented programming language (-git version)."
 arch=('any')
@@ -48,6 +48,7 @@ check() {
 package() {
   cd "$srcdir/$_pkgname"
   make install
+  rm -r "$pkgdir/usr/lib"
 
   #cd "share/sidef"
   #for i in *
@@ -57,9 +58,3 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
