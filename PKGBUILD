@@ -1,34 +1,30 @@
 # Maintainer: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: Sergio Correia <sergio@correia.cc>
 # Contributor: Nicolas Vivet <nizzox@gmail.com>
+# Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
 _pkgname=libphutil
-pkgname=$_pkgname-git
-pkgver=5.r937.gadb8a9c
-pkgrel=2
-pkgdesc='Library system which organizes PHP classes and functions into modules'
+pkgname="${_pkgname}-git"
+
+pkgver() {
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+pkgver=r1532.34b6895
+pkgrel=1
+pkgdesc='A collection of PHP utility classes'
 arch=('any')
-url="http://phabricator.com"
+url="https://www.phacility.com/phabricator/"
 license=('Apache')
 depends=('php')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git+https://secure.phabricator.com/diffusion/PHU/libphutil.git")
+source=("git+https://github.com/phacility/libphutil.git")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd $_pkgname
-  git describe --tags --always | sed 's/^conduit-//;s/-/.r/;s/-/./'
-}
-
-prepare() {
-# Don't override user option, doesn't work right anyway
-  sed -i "s|^\s*'error_log'|//&|" $_pkgname/scripts/__init_script__.php
-}
 
 package() {
   install -d "$pkgdir/usr/share/php/$_pkgname"
-# do not copy hidden directories
   cp -a $_pkgname/* "$pkgdir/usr/share/php/$_pkgname/"
 }
