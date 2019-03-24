@@ -1,10 +1,11 @@
 # Maintainer: perqin <perqinxie at gmail dot com>
 
 pkgname=shadowsocksrr-libev-git
-pkgver=2.5.3.r0.gd63ff86
-pkgrel=3
+pkgver=2.5.3.r1584.ed6c9eb
+pkgrel=1
 pkgdesc='A ShadowsocksR fork'
-arch=('i686' 'x86_64')
+# Removed i386 because the maintainer hasn't tested this package over it
+arch=('x86_64')
 url='https://github.com/shadowsocksrr/shadowsocksr-libev'
 license=('GPL3')
 depends=('openssl' 'libev' 'libsodium' 'udns' 'pcre')
@@ -12,7 +13,7 @@ makedepends=('git' 'zlib' 'asciidoc' 'xmlto')
 optdepends=('mbedtls: another choice of SSL/TLS library') # choose this or openssl as you wish
 options=('docs' '!strip')
 source=(
-        'shadowsocksrr-libev-git::git+https://github.com/shadowsocksrr/shadowsocksr-libev.git#tag=2.5.3'
+        'shadowsocksrr-libev-git::git+https://github.com/shadowsocksrr/shadowsocksr-libev.git#branch=Akkariiin/develop'
         shadowsocksrr-libev-redir@.service
         shadowsocksrr-libev-server@.service
         shadowsocksrr-libev-tunnel@.service
@@ -28,7 +29,7 @@ pkgver() {
   cd "$pkgname"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "2.5.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 

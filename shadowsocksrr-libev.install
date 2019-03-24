@@ -1,3 +1,0 @@
-post_install() {
-	echo "You need to relogin in order for the SSRR binaries to appear in your PATH"
-}
