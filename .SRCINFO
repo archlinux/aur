@@ -1,20 +1,18 @@
 pkgbase = mingw-w64-physfs
 	pkgdesc = A library to provide abstract access to various archives (mingw-w64)
-	pkgver = 3.0.1
-	pkgrel = 3
+	pkgver = 3.0.2
+	pkgrel = 1
 	url = http://icculus.org/physfs/
 	arch = any
 	license = ZLIB
-	makedepends = mingw-w64-gcc
-	makedepends = mingw-w64-crt
 	makedepends = mingw-w64-cmake
 	depends = mingw-w64-zlib
 	options = staticlibs
 	options = !strip
 	options = !buildflags
 	options = !makeflags
-	source = http://icculus.org/physfs/downloads/physfs-3.0.1.tar.bz2
-	sha1sums = 9959a7acad0aa30d1a86d3a418e61155b0ac533c
+	source = http://icculus.org/physfs/downloads/physfs-3.0.2.tar.bz2
+	sha1sums = 6a15c458898d0570101d8f173201cde9ced78df7
 
 pkgname = mingw-w64-physfs
 
