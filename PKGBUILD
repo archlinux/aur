@@ -1,9 +1,10 @@
-# Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
+# Maintainer: Aetf <aetf@unlimitedcodeworks.xyz>
+# Co-Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 # Co-Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 
 pkgname="bcwc-pcie-git"
 pkgver=r254.a22f248
-pkgrel=2
+pkgrel=3
 pkgdesc="Reverse engineered Linux driver for the Broadcom 1570 PCIe webcam."
 arch=('x86_64')
 url="https://github.com/patjak/bcwc_pcie"
@@ -13,7 +14,6 @@ makedepends=('linux-headers' 'git')
 optdepends=('linux-headers: Building with the stock kernel')
 provides=('bcwc-pcie' 'bcwc-pcie-dkms')
 replaces=('bcwc-pcie' 'bcwc-pcie-dkms')
-install="$pkgname.install"
 
 source=("$pkgname::git+https://github.com/patjak/bcwc_pcie.git#branch=mainline"
         "bcwc-pcie.modprobe.conf"
