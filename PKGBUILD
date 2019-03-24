@@ -9,7 +9,7 @@ pkgdesc="Yet Another Dotfiles Manager"
 arch=('any')
 url="https://github.com/TheLocehiliosan/yadm"
 license=('GPL3')
-optdepends=('gpg: encrypt/decrypt sensitive files'
+optdepends=('gnupg: encrypt/decrypt sensitive files'
             'python-envtpl: use templates with variables')
 provides=('yadm')
 conflicts=('yadm-git')
