@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=73.0.3683.75
+pkgver=73.0.3683.86
 pkgrel=1
 _launcher_ver=6
 _release_sha=5fe448ea2471245e64adf805d93b358dd9478fa2
@@ -39,7 +39,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-ozone-wayland.patch::https://github.com/mirror/chromium/compare/${_release_sha}...Igalia:${_igalia_sha}.patch
         chromium-algorithm-header.patch::https://github.com/chromium/chromium/commit/6c0254a78043e32441dbc2e6d4893590dd0d1953.patch
         chromium-vaapi-build.patch::https://github.com/Igalia/chromium/commit/cdb2e638d4488936c80a2c1b506eecf95ffbee02.patch)
-sha256sums=('8304810626c69c296b3262844e20052e7476280b634c525a711a7f6c0e3dd57c'
+sha256sums=('9ebb731576d25901cee5505f3458cf7780b0a39243743d7779f66514716bbfa3'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
