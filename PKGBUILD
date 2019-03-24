@@ -1,4 +1,5 @@
-# Maintainer: Alex Branham <alex.branham@gmail.com>
+# Contributor: Ward Segers <w@rdsegers.be>
+# Contributor: Alex Branham <alex.branham@gmail.com>
 _cranver=0.12
 pkgname=r-evaluate
 pkgver=${_cranver//[:-]/.}
