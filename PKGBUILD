@@ -15,7 +15,6 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install="$pkgname.install"
 changelog=
 source=("https://github.com/cges30901/hmtimer/releases/download/v$pkgver/hmtimer-$pkgver-src.tar.bz2")
 noextract=()

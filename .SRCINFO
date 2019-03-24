@@ -3,7 +3,6 @@ pkgbase = hmtimer
 	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://cges30901.github.io/hmtimer-website/
-	install = hmtimer.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
