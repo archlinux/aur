@@ -1,0 +1,17 @@
+pkgbase = atracdenc-git
+	pkgdesc = Dirty implementation of ATRAC1, ATRAC3 encoder
+	pkgver = r75.218e216
+	pkgrel = 1
+	url = https://github.com/dcherednik/atracdenc
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = make
+	makedepends = git
+	depends = libsndfile
+	provides = atracdenc
+	source = atracdenc::git+https://github.com/dcherednik/atracdenc
+	md5sums = SKIP
+
+pkgname = atracdenc-git
+
