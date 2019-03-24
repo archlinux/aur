@@ -1,0 +1,15 @@
+pkgbase = i4oled-gui
+	pkgdesc = A graphical user interface for i4oled, a utility to set and render OLED icons on Wacom Intuos4 family tablets
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/PrzemoF/i4oled-gui
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = dconf
+	depends = gtk3
+	source = https://github.com/PrzemoF/i4oled-gui/archive/v1.2.tar.gz
+	md5sums = 7cd5c3e9beb89a0f053d8bb9ac13dbdf
+
+pkgname = i4oled-gui
+
