@@ -7,7 +7,7 @@ pkgdesc='Pidgin libpurple bridge to signald.'
 url='https://github.com/hoehermann/libpurple-signald'
 license=('GPL3')
 arch=('any')
-depends=('json-glib' 'libpurple' 'signald')
+depends=('json-glib' 'libpurple' 'signald-git')
 source=("${_reponame}::git+https://github.com/hoehermann/libpurple-signald")
 sha512sums=('SKIP')
 
