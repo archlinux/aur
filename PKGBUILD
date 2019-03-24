@@ -7,7 +7,7 @@
 pkgname=fish-git
 _gitname="fish-shell"
 pkgver=3.0.2.r711.g77e71cfcb
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
 arch=('i686' 'x86_64' 'arm')
@@ -33,7 +33,7 @@ build() {
 	cd "$srcdir/$_gitname"
 	mkdir -p build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SYSCONFDIR=/etc -DCMAKE_BUILD_TYPE=Release ..
 	make
 
 }
