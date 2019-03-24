@@ -11,9 +11,11 @@ makedepends=('nodejs' 'npm')
 
 [[ $CARCH == 'x86_64' ]] && _arch='x64' || _arch='ia32'
 
-source=("${pkgname%}::git+${url}#branch=master")
+source=("${pkgname%}::git+${url}#branch=master"
+        "google-chat-linux.sh")
 
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+        '8a4cbe222200bf214b817003b3598ce0e231956961bc0719b4a6a4cc32aa5b11')
 
 pkgver() {
   cd "$srcdir/${pkgname}"
@@ -39,8 +41,10 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   install -Dm644 "${srcdir}/${pkgname}/assets/icon/chat-favicon-no-new-256dp.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png"
   install -Dm644 "${srcdir}/${pkgname}/${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/"
-  install -Dm755 "${srcdir}/${pkgname}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/"
+  install -Dm755 "${pkgname%-git}.sh" "${pkgdir}/usr/bin/"
+  rm "${srcdir}/${pkgname}/${pkgname%-git}.sh"
   rm -r "${srcdir}/${pkgname}/.git"
+  chmod 4755 "${srcdir}/${pkgname}/node_modules/electron/dist/chrome-sandbox"
   mv "${srcdir}/${pkgname}" "${pkgdir}/usr/share/"
   mv "${pkgdir}/usr/share/${pkgname}" "${pkgdir}/usr/share/${pkgname%-git}"
 }

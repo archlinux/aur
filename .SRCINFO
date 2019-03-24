@@ -9,7 +9,9 @@ pkgbase = google-chat-linux-git
 	makedepends = nodejs
 	makedepends = npm
 	source = google-chat-linux-git::git+https://github.com/squalou/google-chat-linux.git#branch=master
+	source = google-chat-linux.sh
 	sha256sums = SKIP
+	sha256sums = 8a4cbe222200bf214b817003b3598ce0e231956961bc0719b4a6a4cc32aa5b11
 
 pkgname = google-chat-linux-git
 
