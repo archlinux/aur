@@ -3,7 +3,7 @@
 # Maintainer: Teteros <teteros at teknik dot io>
 
 pkgname=radium
-pkgver=5.9.48
+pkgver=5.9.49
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -43,14 +43,12 @@ source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
         "use-libtirpc-headers.patch"
         "use-system-libxcb.patch"
         "use-system-vstsdk.patch"
-        "use-static-llvm40.patch"
-        "add-webkit-lib.patch")
-sha256sums=('8cb2310cfc473e18594e6e3c3ed7b0f356441f18d5ad913ba1f82c8c1c471d65'
+        "use-static-llvm40.patch")
+sha256sums=('aa3c7e4d30d3f9b120c0db890a0817399c4b53a1d329e6812e01eae7cf3bae7f'
             'f2596261f9ebd859f9850cbfc97edb7fd5d45cf8768ce47d0721cbf4b2d80c7e'
             '94de9befbe6530c721917445ee3a0c0202371e1b2229784b2ea6e0c0efaf7808'
             '2ec5e24af44f07afd507b1ef52f6d47d754ee336d89f384cd9181fbde2f7d13a'
-            '8b5a038fd3320bd49ed2cd81150aa2550c5f5389529f24fbcd603755977644a7'
-            '6f918d9d5beabc0b5624d8771642b388d59516ab95c61654ae4a728609a412d5')
+            '8b5a038fd3320bd49ed2cd81150aa2550c5f5389529f24fbcd603755977644a7')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -61,16 +59,20 @@ prepare() {
   # Use system libxcb 1.13 instead of radium's to reduce build time
   patch -p1 < "${srcdir}/use-system-libxcb.patch"
 
-  # JUCE expects the VST SDK in home directory, this adds paths for SDK in steinberg-vst36
+  # JUCE expects the VST SDK in home directory, this adds paths for SDK in steinberg-vst36 from AUR
   patch -p1 < "${srcdir}/use-system-vstsdk.patch"
 
-  # FAUST package is not compatible with LLVM<4.0.1
+  # Bundled FAUST package is not compatible with LLVM above 4.0.1
   # Link llvm40 statically in radium and faust binaries to avoid conflicts with system llvm
-  # https://github.com/kmatheussen/radium/issues/1068
-  # https://users.notam02.no/~kjetism/radium/forum/viewtopic.php?f=7&t=39
+  # https://github.com/kmatheussen/radium/issues/1174
   patch -p1 < "${srcdir}/use-static-llvm40.patch"
 
-  patch -p1 < "${srcdir}/add-webkit-lib.patch"
+  # The optional calf-ladspa package in AUR switched to LMMS's 'veal' fork of Calf LADSPA
+  # Radium's demo and new .rad song files reference the old/unmaintained calf plugins used in its binary distribution
+  # Currently only Calf's 'Multi-Chorus' plugin is used in the preset chorus bus which is replaced by a pipe if missing
+  # Simple sed search and replace can be used to replace the old chorus plugin name with the one used in 'veal' plugins
+  # https://github.com/kmatheussen/radium/issues/1158
+  for file in bin/sounds/*.rad; do sed -i -e 's/Calf MultiChorus LADSPA/Calf Multi Chorus LADSPA/g' "$file"; done
 }
 
 build() {
