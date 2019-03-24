@@ -3,13 +3,13 @@
 
 pkgname=syslog-ng-git
 _pkgname=syslog-ng
-pkgver=3.20.1.r177.g89fa93166
+pkgver=3.20.1.r201.gbd42c0fdc
 pkgrel=1
 pkgdesc="Enhanced system logging daemon"
 arch=('x86_64')
 url="https://www.syslog-ng.com/products/open-source-log-management/"
 license=('GPL2' 'LGPL2.1')
-depends=('systemd-libs' 'awk' 'glib2' 'ivykis' 'json-c' 'curl' 'libnet' 'libnsl')
+depends=('systemd-libs' 'awk' 'glib2' 'ivykis' 'openssl' 'pcre' 'json-c' 'curl' 'libnet' 'libnsl')
 makedepends=('git' 'autoconf-archive' 'libxslt' 'docbook-xsl' 'json-c' 'curl' 'libdbi' 'libesmtp'
              'hiredis' 'librabbitmq-c' 'riemann-c-client' 'geoip' 'libmaxminddb' 'mongo-c-driver'
              'java-environment=8' 'gradle' 'python')
