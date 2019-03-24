@@ -1,6 +1,6 @@
 # Maintainer: Matthias Lisin <ml@visu.li>
 pkgname=ubports-installer-git
-pkgver=0.2.1_beta.r0.g1bea06f
+pkgver=0.2.2_beta.r0.g2400ba9
 pkgrel=1
 pkgdesc='A simple tool to install Ubuntu Touch on UBports devices'
 arch=(any)
