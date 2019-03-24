@@ -2,9 +2,7 @@
 # Contributor: David Scholl <djscholl at gmail dot com>
 
 pkgbase=python-pyhdf
-# TODO: add python2-pyhdf once it has been merged in AUR
-#pkgname=('python-pyhdf' 'python2-pyhdf')
-pkgname=('python-pyhdf')
+pkgname=('python-pyhdf' 'python2-pyhdf')
 pkgver=0.10.1
 pkgrel=1
 pkgdesc='Python bindings for the HDF4 library'

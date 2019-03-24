@@ -18,3 +18,8 @@ pkgname = python-pyhdf
 	depends = python-numpy
 	depends = hdf4
 
+pkgname = python2-pyhdf
+	depends = python2
+	depends = python2-numpy
+	depends = hdf4
+
