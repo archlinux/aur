@@ -1,45 +1,38 @@
-# Maintainer: Manuel Mazzuola <origin.of@gmail.com>
+# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 _pkgname=terraform
-pkgname=${_pkgname}-git
-pkgver=v0.5.3.r319.gcddd54c
+pkgname=terraform-git
+pkgver=v0.12.0.alpha4.r789.g4200b0b2c5
 pkgrel=1
-pkgdesc="Terraform is a tool for building, changing, and combining infrastructure safely and efficiently."
+pkgdesc="Tool for building, changing, and versioning infrastructure safely and efficiently"
 url='http://www.terraform.io/'
-arch=('i686' 'x86_64')
+arch=('x86_64')
+provides=('terraform')
+conflicts=('terraform')
 license=('MPL')
-makedepends=('go' 'git' 'mercurial' 'unzip')
-conflicts=('terraform-bin')
-_gourl=github.com/hashicorp
-source=(${pkgname}::"git+https://${_gourl}/${_pkgname}.git#branch=master")
+makedepends=('git' 'go-pie')
+source=(${_pkgname}::"git+https://github.com/hashicorp/terraform.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd src/github.com/hashicorp/${_pkgname}
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  mkdir -p "${srcdir}/src/${_gourl}"
-  rm -rf "${srcdir}/src/${_gourl}/${_pkgname}"
-  mv -f "${pkgname}" "${srcdir}/src/${_gourl}/${_pkgname}"
-  msg2 "Fetching dependencies"
-  cd "${srcdir}/src/${_gourl}/${_pkgname}"
-  GOPATH="${srcdir}" make updatedeps
+  export GOPATH="${srcdir}"
+  export PATH="$PATH:$GOPATH/bin"
+  mkdir -p src/github.com/hashicorp/
+  mv "${_pkgname}" src/github.com/hashicorp/${_pkgname}
 }
 
 build() {
-  msg2 "Build program"
-  cd "${srcdir}/src/${_gourl}/${_pkgname}"
-  GOPATH="${srcdir}" PATH="${srcdir}/bin:${PATH}" make dev
+  cd src/github.com/hashicorp/"${_pkgname}"
+  go build -o terraform-binary
 }
 
 package() {
-  cd "${srcdir}/bin"
-  install -Dm755 terraform "${pkgdir}/usr/bin/terraform"
-  install -Dm755 terraform-* "${pkgdir}/usr/bin"
-
-  cd "${srcdir}/src/${_gourl}/${_pkgname}"
-  # Zsh completion
-  install -D contrib/zsh-completion/_terraform $pkgdir/usr/share/zsh/site-functions/_terraform
+  cd src/github.com/hashicorp/"${_pkgname}"
+  install -Dm755 terraform-binary "$pkgdir/usr/bin/terraform"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
