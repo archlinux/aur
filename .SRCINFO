@@ -1,7 +1,7 @@
 pkgbase = pyfa
 	pkgdesc = EVE Online Fitting Assistant
 	pkgver = 2.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pyfa-org/Pyfa
 	arch = any
 	license = GPL3
@@ -17,7 +17,7 @@ pkgbase = pyfa
 	depends = python-markdown2
 	depends = python-packaging
 	depends = python-beautifulsoup4
-	depends = python-pyaml
+	depends = python-yaml
 	depends = python-diskcache
 	depends = python-roman
 	source = pyfa.2.8.0.tar.gz::https://github.com/pyfa-org/Pyfa/archive/v2.8.0.tar.gz
