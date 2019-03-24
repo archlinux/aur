@@ -4,9 +4,8 @@ _originalbasename="SceneBuilder"
 pkgname="javafx11-scenebuilder"
 _debpkg=scenebuilder
 pkgver="11.0.0"
-pkgrel=0
-pkgdesc="The release candidate version of 
-Gluon Scene Builder for Java 11, it was released on Nov 23, 2018."
+pkgrel=1
+pkgdesc="The latest version of Scene Builder for Java 11 is 11.0.0."
 arch=('x86_64' 'i686')
 url="http://gluonhq.com/labs/scene-builder/"
 license=('BSD License')
@@ -14,8 +13,8 @@ depends=('libarchive')
 makedepends=()
 optdepends=()
 install=
-source=(https://download2.gluonhq.com/scenebuilder/RC/$pkgver/$_debpkg"-"$pkgver".deb")
-sha1sums=('f1de8c24910133672dad126bfc2d9a011c566341') 
+source=(https://download2.gluonhq.com/scenebuilder/$pkgver/install/linux/$_debpkg"-"$pkgver".deb")
+sha1sums=('593b33970b01b569128075e53b609122016a455f') 
 build() {
   cd "$srcdir/"
   tar -xf data.tar.xz
@@ -23,8 +22,8 @@ build() {
   mv "${srcdir}/opt/${_basename}/${_originalbasename}.desktop" "${srcdir}/opt/${_basename}/${_basename}.desktop"
   mv "${srcdir}/opt/${_basename}/${_originalbasename}.png" "${srcdir}/opt/${_basename}/${_basename}.png"
 echo "[Desktop Entry]
-Name=Scene Builder 11 RC
-Comment=Gluon Scene Builder RC for Java 11
+Name=Scene Builder 11
+Comment=Gluon Scene Builder for Java 11
 Exec=/opt/${_basename}/${_originalbasename}
 Icon=/opt/${_basename}/${_basename}.png
 Terminal=false
