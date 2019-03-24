@@ -1,4 +1,4 @@
 *.pkg.tar.xz
-libpurple-signald/
+libpurple-signald-git/
 src/
 pkg/
