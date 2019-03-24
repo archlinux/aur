@@ -1,0 +1,15 @@
+pkgbase = terraform-provider-loopia-git
+	pkgver = 5493abf
+	pkgrel = 1
+	url = https://github.com/jonlil/terraform-provider-loopia
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = terraform-provider-loopia
+	conflicts = terraform-provider-loopia
+	source = git+https://github.com/jonlil/terraform-provider-loopia.git
+	md5sums = SKIP
+
+pkgname = terraform-provider-loopia-git
+
