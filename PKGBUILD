@@ -2,9 +2,9 @@
 
 pkgname="brig-git"
 _pkgname="brig"
-pkgver="git"
-pkgrel="1"
-pkgdesc="File synchronization on top of ipfs with git like interface and web based UI"
+pkgver="develop"
+pkgrel="2"
+pkgdesc="File synchronization on top of ipfs with git like interface and web based UI -- development branch"
 arch=(x86_64 i686 armv7h aarch64)
 license=("AGPLv3")
 url="https://github.com/sahib/${_pkgname}"
@@ -17,12 +17,13 @@ sha256sums=("SKIP")
 
 build() {
     cd "${_pkgname}"
-    go build
+    git checkout develop
+    export GOBIN=bin/
+    make
 }
 
 package() {
-	cd "${_pkgname}"
-  install -Dm755 "brig" "${pkgdir}/usr/bin/brig"
-
+    cd "${_pkgname}"
+    install -Dm755 "${srcdir}/${_pkgname}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
 
