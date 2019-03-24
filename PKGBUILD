@@ -1,4 +1,4 @@
-# Maintainer: <zer0def on freenode>
+# Maintainer: zer0def <zer0def on freenode>
 pkgname=uts-server-git
 pkgver=r290.8ec9955
 pkgrel=1
@@ -27,6 +27,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
   make DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
