@@ -1,4 +1,5 @@
-# Maintainer: Alex Branham <alex.branham@gmail.com>
+# Contributor: Ward Segers <w@rdsegers.be>
+# Contributor: Alex Branham <alex.branham@gmail.com>
 _cranver=2.0.1
 pkgname=r-testthat
 pkgver=${_cranver//[:-]/.}
