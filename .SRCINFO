@@ -1,0 +1,12 @@
+pkgbase = python-pandas-profiling
+	pkgdesc = Generate profile report for pandas DataFrame
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://github.com/jospolfliet/pandas-profiling
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-pandas-profiling
+
