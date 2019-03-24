@@ -1,29 +1,38 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 pkgname=ar-sdk3-git
-pkgver=ARSDK3_version_3_5.r135.gd4abf11
+pkgver=r6.0da3c34
 pkgrel=1
 pkgdesc="The Parrot's AR SDK for Linux !"
 arch=('any')
 license=('GPL')
 groups=('games')
 depends=()
-makedepends=('git'
-             'yasm'
-             'jdk8-openjdk'
-             'python-virtualenv'
-             'gcc-libs'
-             'uthash')
-install=
+makedepends=(
+  'git'
+  'repo'
+  'autoconf'
+  'libtool'
+  'avahi'
+  'ffmpeg'
+  'ncurses5-compat-libs'
+  'ncurses'
+  'mplayer'
+)
 
-_gitname=ARSDKBuildUtils
+url="https://github.com/Parrot-Developers"
+source=()
+sha256sums=()
 
-url="https://github.com/Parrot-Developers/$_gitname.git"
-source=("git+$url")
-sha256sums=('SKIP')
+
+prepare() {
+  cd "${srcdir}"
+  repo init -u "https://github.com/Parrot-Developers/arsdk_manifests.git"
+  repo sync --force-sync
+}
 
 
 pkgver() {
-    cd "$srcdir/$_gitname"
+    cd "${srcdir}"
     ( set -o pipefail
         git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -31,62 +40,47 @@ pkgver() {
 }
 
 build() {
-
-    # Use Python2 instead of Python
-    virtualenv python2 --python=python2
-    source python2/bin/activate
-
-    # This is needed because of the FORTIFY_SOURCE=2 of makepkg.
-    unset CPPFLAGS
-
-    cd "$_gitname"
-
-    # CheckEnv.py
-
-    if [ `./CheckEnv.py 2>/dev/null | grep Unix | awk '{print $3}' ` == "OK" ]
-        then
-        echo "Okay !"
-    else
-        echo "Error ! Restarting CheckEnv for info…"
-        ./CheckEnv.py
-        #return 1
-    fi
-
-    # Download the sources
-    ./SDK3Build.py -t Unix --none
-
-    # Replace json/json.h with json-c/json.h
-    sed -i 's#json/json.h#json-c/json.h#g' `find .. -name "*.c" -o -name "*.h"`
-    sed -i 's#uthash/uthash.h#uthash.h#g' `find .. -name "*.c" -o -name "*.h"`
-
-    # Build the sources
-    ./SDK3Build.py -t Unix --nogit
-
-    # Use Python2 instead of Python
-    deactivate
-}
-
-check() {
-    echo "check"
-    # cd "$srcdir/$pkgname"
-    # make -k check
+  cd "${srcdir}"
+   ./build.sh -p arsdk-native -t build-sdk -j
+   # out/arsdk-native/staging
 }
 
 package() {
-    cd "$srcdir/$_gitname/Targets/Unix/Install"
+  cd "${srcdir}"
 
-    mkdir -p                "$pkgdir/usr/include"
-    cp -R include/libAR*    "$pkgdir/usr/include"
+  cd "out/arsdk-native/staging"
 
-    mkdir -p                "$pkgdir/usr/lib"
-    cp -R     lib/libar*    "$pkgdir/usr/lib"
+  to_clean=(
+    "native-wrapper.sh"
+    "etc/build.prop"
 
-    cd "$srcdir/"
+    "usr/bin/openssl"
+    "usr/bin/curl"
+    "usr/bin/curl-config"
+    "usr/include/json"
+    "usr/include/json-c"
+    "usr/include/curl"
+    "usr/include/tar.h"
+    "usr/include/libtar.h"
+    "usr/include/libtar_listhash.h"
+    "usr/include/openssl"
 
-    mkdir -p                "$pkgdir/usr/share/doc/ar-sdk3"
-    cp -R Docs/*            "$pkgdir/usr/share/doc/ar-sdk3"
+    "usr/lib/libcrypto.so"
+    "usr/lib/libcurl.so"
+    "usr/lib/libjson-c.so"
+    "usr/lib/libssl.so"
+    "usr/lib/libtar.so"
+    "usr/lib/pkgconfig/json-c.pc"
+    "usr/lib/pkgconfig/libcrypto.pc"
+    "usr/lib/pkgconfig/libcurl.pc"
+    "usr/lib/pkgconfig/libssl.pc"
+    "usr/lib/pkgconfig/openssl.pc"
+    "usr/share/aclocal/libcurl.m4"
+    "usr/share/man"
 
-    mkdir -p                "$pkgdir/usr/share/ar-sdk3"
-    cp -R Samples/          "$pkgdir/usr/share/ar-sdk3"
+  )
+  rm -rf "${to_clean[@]}"
+
+  cp -R . "${pkgdir}"
 
 }
