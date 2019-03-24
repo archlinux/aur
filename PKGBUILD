@@ -2,7 +2,7 @@
 
 pkgname=neru-icon-classic-theme
 pkgver=2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Classic theme icons Neru"
 arch=('any')
 url="https://github.com/chistota/neru-icon-classic-theme"
@@ -31,6 +31,11 @@ package() {
 	ln -s ark.svg neru-classic-light/32x32/apps/org.gnome.ArchiveManager.svg
 	ln -s preferences-system-privacy.svg neru-classic-light/32x32/apps/org.gnome.seahorse.Application.svg
 	ln -s applications-fonts.svg neru-classic-light/32x32/apps/org.gnome.font-viewer.svg
+
+	ln -s edit-find.svg neru-classic-light/32x32/apps/gtk-find.svg
+	ln -s applications-multimedia.svg neru-classic-light/32x32/apps/gmtpicon.svg
+	ln -s fontforge.svg neru-classic-light/32x32/apps/org.fontforge.FontForge.svg
+
 
 	gtk-update-icon-cache neru-classic-light/
 	gtk-update-icon-cache neru-classic-dark/
