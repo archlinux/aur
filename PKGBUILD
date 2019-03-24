@@ -3,7 +3,7 @@
 
 _gitname=spectator
 _author=treagod
-pkgname=("${_gitname}-git")
+pkgname=("${_gitname}-rest-client-git")
 pkgver=r191.623a742
 pkgrel=1
 pkgdesc="Spectator is a native application written in Vala using GTK. It's enables you to test the API endpoints of your HTTP server."
