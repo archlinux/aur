@@ -1,61 +1,72 @@
-# Maintainer: Det <nimetonmaili g-mail> 
-# Check the latest version with:
-# $ curl -sL https://dl.google.com/linux/earth/deb/dists/stable/main/binary-amd64/Packages | grep -Pom1 "Version: \K[^-]*"
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Contributor: Det <nimetonmaili g-mail> 
+
+# check the latest version with:
+# $ curl -sL https://dl.google.com/linux/earth/deb/dists/stable/main/binary-amd64/Packages | grep -Pom1 'Version: \K[^-]*'
 
 pkgname=google-earth-pro
-pkgver=7.3.2.5495
+pkgver=7.3.2.5776
 pkgrel=1
-pkgdesc="3D interface to explore the globe, terrain, streets, buildings and other planets - Pro"
+pkgdesc='3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)'
 arch=('x86_64')
-url="https://www.google.com/earth/index.html"
-license=('custom:earth')
-depends=('glu' 'hicolor-icon-theme' 'ld-lsb>=3-5' 'libsm' 'libxrender' 'nss'
-         'libproxy' 'gst-plugins-base-libs' 'libxi' 'fontconfig' 'alsa-lib' 'libcups')
+url='https://www.google.com/earth/'
+license=('custom')
+depends=('glu' 'hicolor-icon-theme' 'libsm' 'libxrender' 'libproxy'
+         'gst-plugins-base-libs' 'libxi' 'fontconfig' 'alsa-lib' 'libcups'
+         'desktop-file-utils')
 optdepends=('catalyst-utils: For AMD Catalyst'
             'nvidia-utils: For the NVIDIA driver')
 provides=('google-earth')
-options=('!emptydirs')
-install=$pkgname.install
+options=('!strip' '!emptydirs')
+install="${pkgname}.install"
 #source=("google-earth-pro-stable_${pkgver}_amd64.deb::https://dl.google.com/earth/client/current/google-earth-pro-stable_current_amd64.deb"
-source=("https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stable/google-earth-pro-stable_$pkgver-r0_amd64.deb"
-        'Google-Terms-of-Service.html::https://www.google.com/intl/ALL/policies/terms/index.html'
-        'Google-Earth-Additional-Terms-of-Service.html::https://www.google.com/help/terms_maps.html'
-        'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html::https://www.google.com/help/legalnotices_maps.html'
-        'Google-Privacy-Policy.html::https://www.google.com/intl/ALL/policies/privacy/index.html')
-md5sums=('d7ba0319862cf2093be0607b131319ae'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+source=("https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stable/google-earth-pro-stable_${pkgver}-r0_amd64.deb"
+        'Google-Terms-of-Service.html'::'https://www.google.com/intl/ALL/policies/terms/index.html'
+        'Google-Earth-Additional-Terms-of-Service.html'::'https://www.google.com/help/terms_maps.html'
+        'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html'::'https://www.google.com/help/legalnotices_maps.html'
+        'Google-Privacy-Policy.html'::'https://www.google.com/intl/ALL/policies/privacy/index.html')
+noextract=("google-earth-pro-stable_${pkgver}-r0_amd64.deb")
+sha256sums=('7084d3c760db472cefa89b06d0627e029d3c50be44b58020fd0ee57500ff4ab5'
+            '2cb25181ea2e3329e23f559521d394125236d056731e832b976961df136932ba'
+            'dbb7ba4c57bd76f44a2365779c8d60c0ee083ed20d4132d6a7e5ce4e1202d1a5'
+            '7bc7e6c4b02e0321a96d6337e147e2621d97d350bca13e887ac2e151040c9c72'
+            '085c949fd88a1f5699dadeb3fa048dd893c3a54c32284e606c4fae36b17cdf42')
 
-_instdir=/opt/google/earth/pro/
+_installdir='/opt/google/earth/pro'
+
+prepare() {
+    mkdir "${pkgname}-${pkgver}"
+    
+    bsdtar -xf "google-earth-pro-stable_${pkgver}-r0_amd64.deb" -C "${pkgname}-${pkgver}"
+}
 
 package() {
-  msg2 "Extracting the data.tar.xz..."
-  bsdtar -xf data.tar.xz -C "$pkgdir/"
-
-  msg2 "Moving stuff in place..."
-  # The .desktop
-  mv "$pkgdir"/$_instdir/google-earth-pro.desktop "$pkgdir"/usr/share/applications/
-
-  # Icons
-  for i in 16 22 24 32 48 64 128 256; do
-    install -Dm644 "$pkgdir"/$_instdir/product_logo_$i.png \
-                   "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/google-earth-pro.png
-  done
-
-  # Licenses
-  for i in 'Google-Terms-of-Service.html' \
-           'Google-Earth-Additional-Terms-of-Service.html' \
-           'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html' \
-           'Google-Privacy-Policy.html'; do
-     install -Dm644 $i "$pkgdir"/usr/share/licenses/$pkgname/$i
-  done
-
-  msg2 "Removing the Debian-intended cron job and duplicated images..."
-  rm -r "$pkgdir"/etc/cron.daily/ "$pkgdir"/$_instdir/product_logo_*.png
-
-  # Fix Search
-  msg2 "Attempting fix for search..."
-  sed -i '/googleearth-bin/s/^/LC_NUMERIC=en_US.UTF-8 /' "$pkgdir"/$_instdir/googleearth
+    bsdtar -xf "${pkgname}-${pkgver}/data.tar.xz" -C "$pkgdir"
+    
+    # desktop file
+    mv "${pkgdir}/${_installdir}/google-earth-pro.desktop" "${pkgdir}/usr/share/applications"
+    
+    # icons
+    local _res
+    for _res in 16 22 24 32 48 64 128 256
+    do
+        install -Dm644 "${pkgdir}/${_installdir}/product_logo_${_res}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/google-earth-pro.png"
+    done
+    
+    # remove the debian-intended cron job and duplicated images
+    rm -r "${pkgdir}/etc/cron.daily" "${pkgdir}/${_installdir}"/product_logo_*.png
+    
+    # fix search
+    sed -i '/googleearth-bin/s/^/LC_NUMERIC=en_US.UTF-8 /' "${pkgdir}/${_installdir}/googleearth"
+    
+    # licenses
+    local _file
+    for _file in 'Google-Terms-of-Service.html' \
+                 'Google-Earth-Additional-Terms-of-Service.html' \
+                 'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html' \
+                 'Google-Privacy-Policy.html'
+    do
+        install -D -m644 "$_file" "${pkgdir}/usr/share/licenses/${pkgname}/${_file}"
+    done
 }
