@@ -1,7 +1,7 @@
 # Maintainer: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 
 pkgname='sidef'
-pkgver='3.60'
+pkgver='3.70'
 pkgrel='1'
 pkgdesc="A modern object-oriented programming language."
 arch=('any')
@@ -14,11 +14,11 @@ depends=(
     'perl>=5.22.0' 'perl-data-dump' 'perl-math-gmpq>=0.45' 'perl-math-gmpz>=0.39' 'perl-math-mpfr>=3.36' 'perl-math-mpc'
     'perl-math-prime-util-gmp>=0.44' 'perl-term-readline-gnu' 'perl-algorithm-combinatorics' 'perl-algorithm-loops'
 )
-
+optdepends=('perl-math-prime-util: for better performance in several functions')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
 
-md5sums=('ecd963295f91e1f60cfe41b46c46c980')
-sha512sums=('cc9f61020ce2541835f4cacc92904e351f7fca9c3539e1fc39c32990531c018d2a698b84476dd73a4c8b1b8660e07c8e1d0985a97c3bccb3d42de8f098abd955')
+md5sums=('e820a721c41acd983b5cf4aea6ab9076')
+sha512sums=('53db7fe947954a318b8f0958953750e1b33410f3ac2acdfc771d747e670f015ce7d594260f91218992492485ed8e9b9c3ea58dcce5827cedc787929a84c41f6d')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                                          \
@@ -41,6 +41,7 @@ check() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make install
+  rm -r "$pkgdir/usr/lib"
 
   #cd "share/sidef"
   #for i in *
@@ -50,9 +51,3 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
