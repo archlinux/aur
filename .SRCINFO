@@ -1,0 +1,12 @@
+pkgbase = re2c-git
+	pkgdesc = lexer generator for C/C++ http://re2c.org
+	pkgver = 1.1.1_253_ga6cde618
+	pkgrel = 1
+	url = http://re2c.org
+	arch = x86_64
+	license = custom
+	source = git://github.com/skvadrik/re2c
+	sha1sums = SKIP
+
+pkgname = re2c-git
+
