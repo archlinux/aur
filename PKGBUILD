@@ -1,16 +1,16 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=terraform-provider-hcloud
-pkgver=1.5.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Terraform provider for Hetzner Cloud"
 url="https://github.com/terraform-providers/terraform-provider-hcloud"
 arch=("x86_64")
 license=("MPL")
-makedepends=("go" "git")
+makedepends=("go-pie" "git")
 _gourl="github.com/terraform-providers"
 source=("https://github.com/terraform-providers/terraform-provider-hcloud/archive/v$pkgver.tar.gz")
-sha256sums=('25afc721b54f02c44128aebcd8ab63dc347921efbb6d3d727c8b38912fc8ff98')
+sha256sums=('86e8045f05dd9f564c078cde0adb7fe1b00fec58aaa6af0c14b20f262e5cb906')
 
 
 prepare() {
@@ -19,7 +19,6 @@ prepare() {
     mv -f "$pkgname-$pkgver" "$srcdir/src/$_gourl/$pkgname"
     cd "$srcdir/src/$_gourl/$pkgname"
 }
-
 
 build() {
     cd "$srcdir/src/$_gourl/$pkgname"
