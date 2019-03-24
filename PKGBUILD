@@ -1,4 +1,4 @@
-# Maintainer: <zer0def on freenode>
+# Maintainer: zer0def <zer0def on freenode>
 pkgname=signald-git
 pkgver=0.7.0.r43.0008585
 pkgrel=1
@@ -10,7 +10,7 @@ makedepends=('git' 'gradle')
 depends=('java-runtime')
 provides=('signald')
 conflicts=('signald')
-source=('signald::git+https://github.com/thefinn93/signald'
+source=("${pkgname}::git+https://github.com/thefinn93/signald"
         'gradle-no-daemon.patch'
         'sysusers')
 sha512sums=('SKIP'
@@ -18,7 +18,7 @@ sha512sums=('SKIP'
             '2aa12935ec8d6ce7dac1328e232fd8af9cea8248b7315c54fd8132b578ef5c6dfb32dc64558281bac57156c37336c3203e03af9cdb56312c57bfce1d23f82764')
 
 pkgver() {
-    cd "${srcdir}/signald"
+    cd "${srcdir}/${pkgname}"
     GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"
     printf '%s.r%s.%s' \
         "${GITTAG}" \
@@ -27,21 +27,26 @@ pkgver() {
 }
 
 prepare() {
-    cd "${srcdir}/signald"
+    cd "${srcdir}/${pkgname}"
     patch -Np1 < ${srcdir}/gradle-no-daemon.patch
 }
 
 build() {
-    cd "${srcdir}/signald"
+    cd "${srcdir}/${pkgname}"
     make installDist
 }
 
 package() {
-    rm "${srcdir}/signald/build/install/signald/bin/signald.bat"
-    install -dm755 "${pkgdir}/usr/bin/"
+    cd "${srcdir}/${pkgname}"
+
+    rm "build/install/signald/bin/signald.bat"
     install -dm755 "${pkgdir}/var/lib/"
-    cp -dr --no-preserve=ownership "${srcdir}/signald/build/install/signald/" "${pkgdir}/var/lib/"
+    cp -dr --no-preserve=ownership "build/install/signald/" "${pkgdir}/var/lib/"
+
+    install -dm755 "${pkgdir}/usr/bin/"
     ln -s ../../var/lib/signald/bin/signald "${pkgdir}/usr/bin/signald"
+    install -Dm644 "${srcdir}/${pkgname}/debian/signald.service" "${pkgdir}/usr/lib/systemd/system/signald.service"
+
     install -Dm644 "${srcdir}/sysusers" "${pkgdir}/usr/lib/sysusers.d/signald.conf"
-    install -Dm644 "${srcdir}/signald/debian/signald.service" "${pkgdir}/usr/lib/systemd/system/signald.service"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
