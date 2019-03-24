@@ -1,13 +1,13 @@
 # Maintainer: stiglers-eponym
 pkgname=beamerpresenter
-pkgver=r52.f1aae3f
+pkgver=r55.2ed9430
 pkgrel=1
 pkgdesc="Simple dual screen pdf presentation software"
 arch=('x86_64')
 url="https://github.com/stiglers-eponym/BeamerPresenter"
 license=('GPL3')
 depends=('poppler-qt5' 'qt5-multimedia')
-optdepends=('wmctrl' 'mupdf-tools')
+optdepends=('mupdf-tools')
 makedepends=('git')
 source=('git://github.com/stiglers-eponym/BeamerPresenter.git')
 md5sums=('SKIP')
