@@ -2,7 +2,7 @@
 
 pkgname=maptool
 _pkgname=MapTool
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
@@ -13,7 +13,6 @@ provides=('maptool')
 conflicts=('maptool')
 source=("git+https://github.com/RPTools/maptool.git#tag=${pkgver}")
 sha256sums=('SKIP')
-
 
 build() {
 
