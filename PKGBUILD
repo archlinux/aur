@@ -1,4 +1,5 @@
-# Maintainer: Alex Branham <alex.branham@gmail.com>
+# Contributor: Ward Segers <w@rdsegers.be>
+# Contributor: Alex Branham <alex.branham@gmail.com>
 _cranver=0.8
 pkgname=r-rstudioapi
 pkgver=${_cranver//[:-]/.}
