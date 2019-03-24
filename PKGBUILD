@@ -1,4 +1,5 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
+# Contributor: Ward Segers <w@rdsegers.be>
+# Contributor: Alex Branham <branham@utexas.edu>
 _cranname=caret
 _cranver=6.0-80
 _pkgtar=${_cranname}_${_cranver}.tar.gz
