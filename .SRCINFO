@@ -1,0 +1,19 @@
+pkgbase = uts-server-git
+	pkgdesc = Micro RFC 3161 Time-Stamp server written in C.
+	pkgver = r290.8ec9955
+	pkgrel = 1
+	url = https://github.com/kakwa/uts-server
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = linux-headers
+	depends = openssl
+	provides = uts-server
+	conflicts = uts-server
+	source = uts-server-git::git+https://github.com/kakwa/uts-server
+	md5sums = SKIP
+
+pkgname = uts-server-git
+
