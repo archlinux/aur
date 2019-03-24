@@ -1,0 +1,12 @@
+pkgbase = python-quilt
+	pkgdesc = Quilt is a data package manager
+	pkgver = 2.9.15
+	pkgrel = 1
+	url = https://github.com/quiltdata/quilt
+	arch = any
+	license = LICENSE
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-quilt
+
