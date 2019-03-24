@@ -6,7 +6,7 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=3.0.2.r546.ge11c3f352
+pkgver=3.0.2.r711.g77e71cfcb
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
@@ -43,6 +43,6 @@ package() {
 	make DESTDIR="$pkgdir" install
 	
 	# https://github.com/fish-shell/fish-shell/issues/5719
-	mv "$pkgdir/usr/local/share/fish/"* "$pkgdir/usr/share/fish"
-	rmdir "$pkgdir/usr/local/share/fish" "$pkgdir/usr/local/share" "$pkgdir/usr/local"
+# 	mv "$pkgdir/usr/local/share/fish/"* "$pkgdir/usr/share/fish"
+# 	rmdir "$pkgdir/usr/local/share/fish" "$pkgdir/usr/local/share" "$pkgdir/usr/local"
 }
