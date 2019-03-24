@@ -8,8 +8,6 @@ pkgbase = corrupter-git
 	license = custom:ISC
 	makedepends = git
 	makedepends = go
-	depends = libx11
-	depends = notmuch
 	source = git+https://github.com/r00tman/corrupter
 	md5sums = SKIP
 
