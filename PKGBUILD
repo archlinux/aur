@@ -3,7 +3,7 @@
 
 pkgname=gnome-shell-extension-no-topleft-hot-corner
 _pkgname=nohotcorner
-pkgver=18
+pkgver=19
 _pkgver=${pkgver}.0
 pkgrel=1
 pkgdesc="Gnome shell extension disabling hotcorners"
@@ -12,7 +12,7 @@ url="https://github.com/HROMANO/nohotcorner/"
 license=('GPL2')
 depends=('gnome-shell')
 source=("https://github.com/HROMANO/${_pkgname}/archive/v${_pkgver}.tar.gz")
-sha512sums=('7481d3f8a6ae2778c0852d6970079a7f5bfdae13203a65b27ff8a9b51004c62a4880151f2f9d14efc72cff293e8d3fc778a826ebbdd633f9d0a1cee67483f109')
+sha512sums=('956df08717752a03f2320f628279d58b6887b35079c1f37f5172e6ad36b599425191edbe16c252ce104a6a5b8f792b73c60e3332bf1cf6bb0f1e70bc11bec984')
 
 package() {
   cd "${srcdir}/${_pkgname}-${_pkgver}"
