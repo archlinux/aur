@@ -2,8 +2,8 @@
 # Contributor: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=meanalyzer-git
-pkgver=1.82.3.r154.r0.gd8d9dfd
-pkgrel=2
+pkgver=r155.r0.g51b7a16
+pkgrel=1
 pkgdesc='Intel Management Engine firmware analysis tool'
 arch=('any')
 url='https://github.com/platomav/MEAnalyzer'
