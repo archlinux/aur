@@ -4,7 +4,7 @@
  
  pkgname=nomad-gtk-themes-git
 _gitname=nomad-gtk-themes
-pkgver=r19.ddbae65
+pkgver=r22.3e646c7
 pkgrel=1
 pkgdesc="Nomad GTK Themes"
 arch=('any')
