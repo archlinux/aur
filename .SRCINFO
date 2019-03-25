@@ -1,0 +1,19 @@
+pkgbase = svt-hevc-git
+	pkgdesc = The Scalable Video Technology for HEVC Encoder (SVT-HEVC Encoder) is an HEVC-compliant encoder library core.
+	pkgver = r111.54cb2f4
+	pkgrel = 1
+	url = https://github.com/OpenVisualCloud/SVT-HEVC
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = yasm
+	makedepends = git
+	provides = svt-hevc
+	replaces = svt-hevc
+	source = svt-hevc::git+https://github.com/OpenVisualCloud/SVT-HEVC.git
+	md5sums = SKIP
+
+pkgname = svt-hevc-git
+
