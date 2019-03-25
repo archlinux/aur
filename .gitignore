@@ -1,0 +1,4 @@
+src/
+pkg/
+*.tar.xz
+eq3_char_loop.c
