@@ -1,13 +1,13 @@
 # Maintainer: Graham Edgecombe <gpe@grahamedgecombe.com>
 pkgname=nextpnr-git
-pkgver=r1485.b5faa7a
+pkgver=r2004.c67b825
 pkgrel=1
 pkgdesc='Portable FPGA place and route tool'
 arch=('i686' 'x86_64')
 url='https://github.com/YosysHQ/nextpnr'
 license=('custom:ISC')
 depends=('boost-libs' 'python' 'qt5-base')
-makedepends=('boost' 'cmake' 'git' 'icestorm' 'trellis')
+makedepends=('boost' 'cmake' 'eigen' 'git' 'icestorm' 'trellis')
 provides=('nextpnr')
 conflicts=('nextpnr')
 source=('nextpnr::git+https://github.com/YosysHQ/nextpnr.git')
