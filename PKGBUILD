@@ -1,4 +1,5 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com> 
+# Contributor: Slithery <aur [at] slithery [dot] uk>
 
 pkgname=linode-cli
 pkgver=2.1.2
