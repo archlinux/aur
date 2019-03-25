@@ -1,6 +1,6 @@
 pkgname=batman-adv-dkms
 pkgver=v2019.0
-pkgrel=1
+pkgrel=2
 pkgdesc='batman kernel module (dkms package)'
 arch=('any')
 url='https://www.open-mesh.org/projects/batman-adv'
