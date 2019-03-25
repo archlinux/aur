@@ -1,14 +1,14 @@
 pkgbase = iroffer-dinoex
 	pkgdesc = Dinoex version of iroffer.
 	pkgver = 3.32
-	pkgrel = 1
-	url = http://iroffer.dinoex.net
+	pkgrel = 2
+	url = https://iroffer.net
 	arch = i686
 	arch = x86_64
 	depends = ruby
 	depends = geoip
 	depends = miniupnpc
-	source = http://iroffer.dinoex.net/iroffer-dinoex-3.32.tar.gz
+	source = https://iroffer.net/iroffer-dinoex-3.32.tar.gz
 	sha512sums = 03d662cf7eb3093b1f050eda8777011d6e7a833dc2fcf65d29ef0294a0d6ce4e2cea273e2d4e6ee6ba2364c088890ac6338a3aa8e6477d5e2a1a990a6e4e9603
 
 pkgname = iroffer-dinoex
