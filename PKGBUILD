@@ -42,7 +42,7 @@ optdepends=(
 )
 provides=("${pkgname/-git/}" "electron-cash")
 conflicts=("${pkgname/-git/}" "electron-cash")
-source=("${pkgname}::git+https://github.com/clifordsymack/Electron-Cash.git")
+source=("${pkgname}::git+https://github.com/Electron-Cash/Electron-Cash.git")
 sha256sums=('SKIP')
 
 pkgver() {
