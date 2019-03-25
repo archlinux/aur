@@ -22,7 +22,7 @@
 # 'perl-xml-libxml' 'perl-xml-sax-expat' in makedepends
 
 pkgname=conky-cairo
-pkgver=1.11.2
+pkgver=1.11.3
 pkgrel=1
 pkgdesc='conky - built for nvidia - conky now has built in lua 5.3 support (tolua++_5.3 NOT required) - See this PKGBUILD source - Just change one variable to build the git version - defaults to release version.'
 url='https://github.com/brndnmtthws/conky'
