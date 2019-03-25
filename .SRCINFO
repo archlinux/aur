@@ -1,11 +1,9 @@
 pkgbase = cl-named-readtables-git
-	pkgdesc = Named-Readtables is a library that provides a namespace for readtables akin to the already-existing namespace of packages.
-	pkgver = r69.ee15fc6
+	pkgdesc = A library that provides a namespace for readtables akin to the already-existing namespace of packages.
+	pkgver = 0.9.r20.g985b162
 	pkgrel = 1
-	url = git://github.com/trivial-gray-streams/trivial-gray-streams
-	install = cl-named-readtables-git.install
-	arch = i686
-	arch = x86_64
+	url = https://github.com/melisgl/named-readtables
+	arch = any
 	license = BSD
 	makedepends = git
 	depends = common-lisp
