@@ -1,3 +1,8 @@
 #!/bin/sh
-
+if archlinux-java status | grep -q 8
+then
+    export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
+else
+    export PATH=/usr/lib/jvm/java-7-openjdk/jre/bin/:$PATH
+fi
 exec /opt/cmaptools/bin/CmapTools
