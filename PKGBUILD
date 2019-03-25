@@ -6,7 +6,7 @@
 
 pkgname=google-earth-pro
 pkgver=7.3.2.5776
-pkgrel=1
+pkgrel=2
 pkgdesc='3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)'
 arch=('x86_64')
 url='https://www.google.com/earth/'
@@ -27,10 +27,10 @@ source=("https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stab
         'Google-Privacy-Policy.html'::'https://www.google.com/intl/ALL/policies/privacy/index.html')
 noextract=("google-earth-pro-stable_${pkgver}-r0_amd64.deb")
 sha256sums=('7084d3c760db472cefa89b06d0627e029d3c50be44b58020fd0ee57500ff4ab5'
-            '2cb25181ea2e3329e23f559521d394125236d056731e832b976961df136932ba'
-            'dbb7ba4c57bd76f44a2365779c8d60c0ee083ed20d4132d6a7e5ce4e1202d1a5'
-            '7bc7e6c4b02e0321a96d6337e147e2621d97d350bca13e887ac2e151040c9c72'
-            '085c949fd88a1f5699dadeb3fa048dd893c3a54c32284e606c4fae36b17cdf42')
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 _installdir='/opt/google/earth/pro'
 

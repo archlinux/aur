@@ -1,7 +1,7 @@
 pkgbase = google-earth-pro
 	pkgdesc = 3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)
 	pkgver = 7.3.2.5776
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.google.com/earth/
 	install = google-earth-pro.install
 	arch = x86_64
@@ -29,10 +29,10 @@ pkgbase = google-earth-pro
 	source = Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html::https://www.google.com/help/legalnotices_maps.html
 	source = Google-Privacy-Policy.html::https://www.google.com/intl/ALL/policies/privacy/index.html
 	sha256sums = 7084d3c760db472cefa89b06d0627e029d3c50be44b58020fd0ee57500ff4ab5
-	sha256sums = 2cb25181ea2e3329e23f559521d394125236d056731e832b976961df136932ba
-	sha256sums = dbb7ba4c57bd76f44a2365779c8d60c0ee083ed20d4132d6a7e5ce4e1202d1a5
-	sha256sums = 7bc7e6c4b02e0321a96d6337e147e2621d97d350bca13e887ac2e151040c9c72
-	sha256sums = 085c949fd88a1f5699dadeb3fa048dd893c3a54c32284e606c4fae36b17cdf42
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = google-earth-pro
 
