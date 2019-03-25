@@ -1,6 +1,6 @@
 #!/usr/bin/luajit
 
--- version 0.7
+-- version 0.8
 -- https://aur.archlinux.org/packages/check-pacman-mtree/
 
 --require "strict"
