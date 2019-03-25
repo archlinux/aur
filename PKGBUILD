@@ -1,17 +1,17 @@
-# $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-
+# Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
+_extensionuuid=emoji-selector@maestroschan.fr
 pkgname=gnome-shell-extension-emoji-selector-git
-pkgver=11.r30.g0d6ec2c
+pkgver=11.r68.gfcb5be8
 pkgrel=1
 pkgdesc="Gnome shell emoji picker Extension."
 arch=(any)
 url="https://github.com/Maestroschan/emoji-selector-for-gnome"
 license=('GPL3')
-depends=('gnome-shell>=3.18')
+depends=('gnome-shell>=3.26')
 makedepends=('git')
 optdepends=('ttf-emojione: Colored emoji fonts from EmojiOne project. (Recommended)'
-            'noto-fonts-emoji: Google Noto emoji fonts.')
+						'noto-fonts-emoji: Google Noto emoji fonts.')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=gnome-shell-extension.install
@@ -24,8 +24,7 @@ pkgver() {
 }
 
 package() {
-	install -d "${pkgdir}/usr/share/gnome-shell/extensions/emoji-selector@maestroschan.fr"
-	cp -a "${srcdir}/${pkgname%-git}"/* \
-	"${pkgdir}/usr/share/gnome-shell/extensions/emoji-selector@maestroschan.fr"
+	install -d "${pkgdir}/usr/share/gnome-shell/extensions/${_extensionuuid}"
+	cp -a "${srcdir}/${pkgname%-git}/${_extensionuuid}"/* \
+		"${pkgdir}/usr/share/gnome-shell/extensions/${_extensionuuid}"
 }
-# vim:set ts=2 sw=2 et:
