@@ -1,7 +1,7 @@
 # Maintainer: VanLaser <gabi_laser at yahoo dot com>
 
 pkgname=c2ffi-git
-pkgver=r164.d7aaba1
+pkgver=r166.b7fbea3
 pkgrel=1
 pkgdesc="Clang-based FFI wrapper generator"
 arch=('x86_64')
@@ -40,7 +40,9 @@ build() {
 }
 
 package() {
-  install -Dm755 c2ffi/bin/c2ffi "$pkgdir/usr/bin/c2ffi"
+  cd c2ffi
+  make DESTDIR="$pkgdir/" install
+  #install -Dm755 c2ffi/bin/c2ffi "$pkgdir/usr/bin/c2ffi"
 }
 
 # vim:set ts=2 sw=2 et:
