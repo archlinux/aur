@@ -3,7 +3,7 @@
 pkgname=kodi-addon-vfs-rar
 pkgbase=${pkgname}
 _gitname=vfs.rar
-pkgver=2.0.4
+pkgver=2.0.6
 _gitver=branch=master
 pkgrel=1
 pkgdesc='Rar Addon for Kodi'
@@ -13,7 +13,7 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev>=18.0')
 depends=('kodi' 'p8-platform')
-source=("git+https://github.com/notspiff/${_gitname}.git#${_gitver}")
+source=("git+https://github.com/xbmc/${_gitname}.git#${_gitver}")
 md5sums=('SKIP')
 
 _prefix='/usr'
