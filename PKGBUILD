@@ -1,7 +1,7 @@
 # Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
 # Contributor: Justin Dray <justin@dray.be>
 pkgname="sonarr"
-pkgver="2.0.0.5319"
+pkgver="2.0.0.5322"
 pkgrel=1
 pkgdesc="PVR for newsgroup users"
 arch=(any)
@@ -20,7 +20,7 @@ source=("https://update.sonarr.tv/v2/master/mono/NzbDrone.master.${pkgver}.mono.
         "sonarr.service"
         "sonarr.sysusers")
 noextract=()
-sha512sums=('14991351ca67defd9a1f52933a5208e4191c88303a829970c0a7aa203e7077fd560620ca954c7e90a4d727105a473f56d66930fe805a88af811e3d70760e11ed'
+sha512sums=('b9167938c9f7cafcb29fc78da941db9efaa86c8390df6e4d15828e9434cc344f8794ae524cb41393ade68a61c8a5d07e61ff11a974a88347789ae2f24a90e27b'
             '84efa2eebd9afe6b74203aefdc3fdbd4088ecfad17dbe929396f1ffc639743b615a9b75566a0b45d6b7925bd5675368015047c6d65c1421ffe8712728f350695'
             '591c76551f511198afa71b98bd5c1e3a800af4c24f8be3065148a0dccce85dcb2cdbad03e55efb66441f900df3b97043ea6bd1574cc0653808b8ab0e54abd999'
             '35af6024f61003c83e1b35bc5658bd8dbce65cadb6f06e6415de20f4c25ab4c4f107224c27668810f99c4a00bfd24175176c35a4b660243935aef872a39ebce7')
