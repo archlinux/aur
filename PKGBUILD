@@ -9,7 +9,6 @@ license=("BSD")
 arch=('x86_64')
 depends=('gobject-introspection-runtime' 'gtk3')
 conflicts=('deadd-notification-center')
-makedepends=('stack' 'cairo' 'pango' 'gobject-introspection')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/phuhl/linux_notification_center/archive/${pkgver}.tar.gz")
 prepare() {
     tar -zxvf "${pkgname}-${pkgver}.tar.gz"
