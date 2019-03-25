@@ -1,0 +1,66 @@
+From 129892080bf7f5ab3e45657ec36d58ae082a8638 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Thu, 27 Dec 2018 15:42:41 +0100
+Subject: [PATCH] Fix AppStream metadata validation
+
+And don't use legacy path for metainfo file.
+---
+ gourmet.appdata.xml.in | 22 +++++++++++++++-------
+ setup.cfg              |  2 +-
+ 2 files changed, 16 insertions(+), 8 deletions(-)
+
+diff --git a/gourmet.appdata.xml.in b/gourmet.appdata.xml.in
+index 4c5191c4..4337208e 100644
+--- a/gourmet.appdata.xml.in
++++ b/gourmet.appdata.xml.in
+@@ -1,9 +1,11 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!-- Copyright 2014 Thomas Hinkle <Thomas_Hinkle@alumni.brown.edu> -->
+-<application>
+- <id type="desktop">gourmet.desktop</id>
++<component type="desktop-application">
++ <id>com.github.gourmet</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0</project_license>
++ <name>Gourmet</name>
++ <summary>Organize recipes, create shopping lists, calculate nutritional information, and more</summary>
+  <description>
+   <_p>
+    Gourmet Recipe Manager is a recipe-organizer that allows you to collect,
+@@ -21,9 +23,15 @@
+   </_p>
+  </description>
+  <screenshots>
+-  <screenshot type="default">http://thinkle.github.io/gourmet/images/screenshots/SearchView.png</screenshot>
+-  <screenshot>http://thinkle.github.io/gourmet/images/screenshots/CardView.png</screenshot>
++  <screenshot type="default">
++   <image>https://thinkle.github.io/gourmet/images/screenshots/SearchView.png</image>
++  </screenshot>
++  <screenshot>
++   <image>https://thinkle.github.io/gourmet/images/screenshots/CardView.png</image>
++  </screenshot>
+  </screenshots>
+- <url type="homepage">http://thinkle.github.io/gourmet/</url>
+- <updatecontact>https://github.com/thinkle/gourmet/issues</updatecontact>
+-</application>
++ <launchable type="desktop-id">gourmet.desktop</launchable>
++ <url type="homepage">https://thinkle.github.io/gourmet/</url>
++ <url type="bugtracker">https://github.com/thinkle/gourmet/issues</url>
++ <update_contact>Thomas_Hinkle@alumni.brown.edu</update_contact>
++</component>
+diff --git a/setup.cfg b/setup.cfg
+index 647f9660..880c7fed 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -17,7 +17,7 @@ desktop_files=[
+ 	("share/gourmet/plugins/import_export", glob.glob("gourmet/plugins/import_export/*.gourmet-plugin.in"))
+ 	]
+ xml_files=[
+-	("share/appdata", ("gourmet.appdata.xml.in",)),
++	("share/metainfo", ("gourmet.appdata.xml.in",)),
+ 	]
+ 
+ [build_icons]
+-- 
+2.20.1
+

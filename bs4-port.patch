@@ -1,0 +1,207 @@
+From fdd0f10a91d633d4f271ce9548bdf4866c688ae7 Mon Sep 17 00:00:00 2001
+From: Bernhard Reiter <ockham@raz.or.at>
+Date: Sat, 9 Mar 2013 18:09:26 +0100
+Subject: [PATCH] Upgrade BeautifulSoup dependency to version 4.
+
+This involves using the plain BeautifulSoup class instead of
+ICantBelieveItsBeautifulSoup, and dropping the convertEntities
+argument to the BeautifulSoup constructor.
+
+See http://www.crummy.com/software/BeautifulSoup/bs4/doc/#porting-code-to-bs4
+
+Note that we required at least version 4.3.0, as previous 4.x versions
+contain a bug that messes up its input HTML under certain circumstances,
+see https://bugs.launchpad.net/beautifulsoup/+bug/972466
+
+Fixes #707.
+---
+ INSTALL.md                                         | 42 +++++++++++-----------
+ gourmet/importers/html_importer.py                 |  6 ++--
+ .../web_import_plugin/webpage_importer.py          | 16 ++++-----
+ gourmet/test/test_foodnetwork_plugin.py            |  8 ++---
+ gourmet/test/test_ica_se_plugin.py                 |  6 ++--
+ 5 files changed, 36 insertions(+), 42 deletions(-)
+
+diff --git a/INSTALL.md b/INSTALL.md
+index e0a43085..42f8636e 100644
+--- a/INSTALL.md
++++ b/INSTALL.md
+@@ -111,25 +111,25 @@ To sign your installer, run
+ 
+ from the source directory.
+ 
+-Requirements                               |Debian                |MacPorts            |Windows
+--------------------------------------------|----------------------|--------------------|---------------
+-Python 2.7                                 |python                |python27            |http://www.python.org/
+-PyGTK                                      |python-gtk2           |py27-gtk            |[all-in-one installer](http://ftp.gnome.org/pub/GNOME/binaries/win32/pygtk/). Make sure to install PyGTK, PyGObject, PyCairo, and intltool.
+-SQLAlchemy                                 |python-sqlalchemy     |py27-sqlalchemy     |http://www.sqlalchemy.org/download.html
+-Pillow 2.x (Python Imaging Library Fork)   |python-imaging        |py27-Pillow         |https://pypi.python.org/pypi/Pillow/
+-elib.intl                                  |python-elib.intl      |py27-elib.intl      |http://github.com/dieterv/elib.intl/zipball/master
+-*Build Requirements*                       |                      |                    |
+-setuptools (*Windows only!*)               |                      |                    |
+-intltool                                   |intltool              |intltool            |*included in PyGTK installer*
+-python-distutils-extra                     |python-distutils-extra|py27-distutils-extra|https://launchpad.net/python-distutils-extra/
+-*Extra Requirements*                       |                      |
+-Python Reportlab (for printing/PDF export) |python-reportlab      |py27-reportlab      |http://www.reportlab.com/ftp/
+-pypoppler (for printing and PDF export)    |python-poppler        |py27-poppler        |
+-PyGTKSpell (for the spell checking plugin) |python-gtkspell       |py27-gtkspell       |(N/A)
+-python-gst0.10 (for sound)                 |python-gst0.10        |py27-gst-python     |*not required*
+-BeautifulSoup (for the Web import plugin)  |python-beautifulsoup  |py27-beautifulsoup  |http://www.crummy.com/software/BeautifulSoup/#Download
+-IPython 0.12.1 (interactive shell plugin)  |ipython               |py27-ipython        |https://pypi.python.org/pypi/ipython/0.12.1#downloads
+-*Windows only*                             |                      |                    |
+-Perl (needed to run intltool)              |                      |                    |http://strawberryperl.com/
+-cx_Freeze (only needed to build installer) |                      |                    |http://cx-freeze.sourceforge.net/
++Requirements                                      |Debian                |MacPorts            |Windows
++--------------------------------------------------|----------------------|--------------------|---------------
++Python 2.7                                        |python                |python27            |http://www.python.org/
++PyGTK                                             |python-gtk2           |py27-gtk            |[all-in-one installer](http://ftp.gnome.org/pub/GNOME/binaries/win32/pygtk/). Make sure to install PyGTK, PyGObject, PyCairo, and intltool.
++SQLAlchemy                                        |python-sqlalchemy     |py27-sqlalchemy     |http://www.sqlalchemy.org/download.html
++Pillow 2.x (Python Imaging Library Fork)          |python-imaging        |py27-Pillow         |https://pypi.python.org/pypi/Pillow/
++elib.intl                                         |python-elib.intl      |py27-elib.intl      |http://github.com/dieterv/elib.intl/zipball/master
++*Build Requirements*                              |                      |                    |
++setuptools (*Windows only!*)                      |                      |                    |
++intltool                                          |intltool              |intltool            |*included in PyGTK installer*
++python-distutils-extra                            |python-distutils-extra|py27-distutils-extra|https://launchpad.net/python-distutils-extra/
++*Extra Requirements*                              |                      |
++Python Reportlab (for printing/PDF export)        |python-reportlab      |py27-reportlab      |http://www.reportlab.com/ftp/
++pypoppler (for printing and PDF export)           |python-poppler        |py27-poppler        |
++PyGTKSpell (for the spell checking plugin)        |python-gtkspell       |py27-gtkspell       |(N/A)
++python-gst0.10 (for sound)                        |python-gst0.10        |py27-gst-python     |*not required*
++BeautifulSoup>=4.3.0 (for the Web import plugin)  |python-bs4            |py27-beautifulsoup4 |http://www.crummy.com/software/BeautifulSoup/bs4/download/
++IPython 0.12.1 (interactive shell plugin)         |ipython               |py27-ipython        |https://pypi.python.org/pypi/ipython/0.12.1#downloads
++*Windows only*                                    |                      |                    |
++Perl (needed to run intltool)                     |                      |                    |http://strawberryperl.com/
++cx_Freeze (only needed to build installer)        |                      |                    |http://cx-freeze.sourceforge.net/
+ 
+diff --git a/gourmet/importers/html_importer.py b/gourmet/importers/html_importer.py
+index 07bab60a..0729f399 100644
+--- a/gourmet/importers/html_importer.py
++++ b/gourmet/importers/html_importer.py
+@@ -1,6 +1,6 @@
+ import urllib, re, tempfile, os.path
+ import importer
+-import BeautifulSoup
++from bs4 import BeautifulSoup
+ import socket
+ from gourmet.gdebug import debug
+ from gettext import gettext as _
+@@ -43,7 +43,7 @@ def get_url (url, progress):
+         sock = url
+         return read_socket_w_progress(sock,progress,_('Retrieving file'))
+ 
+-class MyBeautifulSoup (BeautifulSoup.ICantBelieveItsBeautifulSoup):
++class MyBeautifulSoup (BeautifulSoup):
+ 
+     def __init__ (self, *args, **kwargs):
+         # Avoid invalid doctype decls of the type
+@@ -56,7 +56,7 @@ def __init__ (self, *args, **kwargs):
+              )
+             )
+         kwargs['avoidParserProblems']=True
+-        BeautifulSoup.ICantBelieveItsBeautifulSoup.__init__(self,*args,**kwargs)
++        BeautifulSoup.__init__(self,*args,**kwargs)
+ 
+     
+     def handle_comment (self, text): pass
+diff --git a/gourmet/plugins/import_export/web_import_plugin/webpage_importer.py b/gourmet/plugins/import_export/web_import_plugin/webpage_importer.py
+index aff9a157..8b10693c 100644
+--- a/gourmet/plugins/import_export/web_import_plugin/webpage_importer.py
++++ b/gourmet/plugins/import_export/web_import_plugin/webpage_importer.py
+@@ -1,5 +1,5 @@
+ # This is a basic
+-import BeautifulSoup
++import bs4
+ from gourmet.importers.generic_recipe_parser import RecipeParser
+ from gourmet.importers.interactive_importer import InteractiveImporter
+ import gourmet.importers.importer
+@@ -20,10 +20,10 @@ class WebParser (InteractiveImporter):
+     TAB = '  '
+     JOINABLE = ['instructions','notes','recipe','ignore','ingredients','include',None]
+     INVISIBLE_TYPES = [
+-        BeautifulSoup.CData,
+-        BeautifulSoup.Comment,
+-        BeautifulSoup.Declaration,
+-        BeautifulSoup.ProcessingInstruction]
++        bs4.CData,
++        bs4.Comment,
++        bs4.Declaration,
++        bs4.ProcessingInstruction]
+ 
+     do_postparse = True
+     imageexcluders = None # This could be a list of compiled regexps which would
+@@ -35,9 +35,7 @@ def __init__ (self, url, data, content_type):
+         #self.name = 'Web Parser'
+         print "HERE's the data we got:", data
+         print "END DATA"
+-        self.soup = BeautifulSoup.BeautifulSoup(data,
+-                                                convertEntities=BeautifulSoup.BeautifulStoneSoup.XHTML_ENTITIES,
+-                                                )
++        self.soup = bs4.BeautifulSoup(data)
+         InteractiveImporter.__init__(self)
+         #self.generic_parser = RecipeParser()
+         self.preparse()
+@@ -150,7 +148,7 @@ def add_buffer_to_parsed (self):
+             to_add = to_add[lws:]
+             self.parsed.append((pre_add,None))
+         # Do extra substitution of MS Characters -- shouldn't be necessary...
+-        for char,tup in BeautifulSoup.UnicodeDammit.MS_CHARS.items():
++        for char,tup in bs4.UnicodeDammit.MS_CHARS.items():
+             char = char.decode('iso-8859-1').encode('utf-8')
+             if to_add.find(char) >= 0:
+                 to_add = to_add.replace(char,unichr(long(tup[1],16)))
+diff --git a/gourmet/test/test_foodnetwork_plugin.py b/gourmet/test/test_foodnetwork_plugin.py
+index 3bafb414..1385524e 100644
+--- a/gourmet/test/test_foodnetwork_plugin.py
++++ b/gourmet/test/test_foodnetwork_plugin.py
+@@ -1,7 +1,7 @@
+ # encoding: utf-8
+ import os.path
+ import unittest
+-import BeautifulSoup
++import bs4
+ 
+ from gourmet.plugins.import_export.website_import_plugins import foodnetwork_plugin
+ 
+@@ -36,16 +36,14 @@ def test_url(self):
+     def test_parse(self):
+         # Setup
+         parser = self.plugin.get_importer(DummyImporter)()
+-        parser.soup = BeautifulSoup.BeautifulSoup(self.text,
+-                            convertEntities=BeautifulSoup.BeautifulStoneSoup.XHTML_ENTITIES,
+-                        )
++        parser.soup = bs4.BeautifulSoup(self.text)
+         # Do the parsing
+         parser.preparse()
+         # Pick apart results
+         result = parser.preparsed_elements
+ 
+         ingredients = [r for r in result if r[1] == "ingredients"][0][0]
+-        ingredients = [i for i in ingredients if type(i) == BeautifulSoup.Tag]
++        ingredients = [i for i in ingredients if type(i) == bs4.Tag]
+         name = [r for r in result if r[1] == "title"][0][0][0].text
+         instructions = [r for r in result if r[1] == "recipe"][0][0].text
+ 
+diff --git a/gourmet/test/test_ica_se_plugin.py b/gourmet/test/test_ica_se_plugin.py
+index 43b6ec21..b7e96ce3 100644
+--- a/gourmet/test/test_ica_se_plugin.py
++++ b/gourmet/test/test_ica_se_plugin.py
+@@ -1,7 +1,7 @@
+ # encoding: utf-8
+ import os.path
+ import unittest
+-import BeautifulSoup
++import bs4
+ 
+ from gourmet.plugins.import_export.website_import_plugins import ica_se_plugin
+ 
+@@ -43,9 +43,7 @@ def test_url(self):
+     def test_parse(self):
+         # Setup
+         parser = self.plugin.get_importer(DummyImporter)()
+-        parser.soup = BeautifulSoup.BeautifulSoup(self.text,
+-                            convertEntities=BeautifulSoup.BeautifulStoneSoup.XHTML_ENTITIES,
+-                        )
++        parser.soup = bs4.BeautifulSoup(self.text)
+         # Do the parsing
+         parser.preparse()
+         # Pick apart results

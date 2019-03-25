@@ -1,0 +1,29 @@
+pkgbase = gourmet
+	pkgdesc = A simple but powerful recipe-managing application
+	pkgver = 0.17.4
+	pkgrel = 8
+	url = https://thinkle.github.io/gourmet/
+	arch = any
+	license = GPL
+	makedepends = python2-distutils-extra
+	depends = pygtk
+	depends = python2-elib-intl
+	depends = python2-pillow
+	depends = python2-sqlalchemy
+	optdepends = ipython2: Python Shell plugin
+	optdepends = python2-pyrtf: RTF support
+	optdepends = python2-beautifulsoup4: Webpage import plugin
+	optdepends = python2-gtkspell: Spell Checking plugin
+	optdepends = python2-poppler: Printing and PDF Export plugin
+	optdepends = python2-reportlab: Printing and PDF Export plugin
+	source = gourmet-0.17.4.tar.gz::https://github.com/thinkle/gourmet/archive/0.17.4.tar.gz
+	source = gourmet-pillow.patch
+	source = bs4-port.patch
+	source = 0001-Fix-AppStream-metadata-validation.patch
+	sha256sums = 13edd3b9c3a3507d20b80cff0f88183ac7979b720e7577290815ffacca097fe3
+	sha256sums = 3680663b09fc61e5797990c378597eeb5db6915b4db987ac2d1a55c7f2636047
+	sha256sums = 815b0fb735d6b581fba0cec713a9ad963f842c969db9fef3e3b0d66ef11bd3b0
+	sha256sums = 010ba6616751a87854d0fefdf6f26cfa6b6d20ea908b46250bbfc6bea04bab35
+
+pkgname = gourmet
+
