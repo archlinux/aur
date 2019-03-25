@@ -1,6 +1,6 @@
 # Maintainer: Thayne McCombs <astrothayne at gmail dot com>
 pkgname=somenu
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Standalone Gtk Menu"
 arch=(any)
@@ -14,4 +14,4 @@ package() {
 	cd "$pkgname-$pkgver"
   install -m 755 -D somenu.py "$pkgdir/usr/bin/somenu"
 }
-md5sums=('9ad42134730279fbb6852737e2df6aef')
+md5sums=('eab2664ca638db1b6bc836cc899d8041')
