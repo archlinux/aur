@@ -1,7 +1,7 @@
-# Contributor: Ke Liu <spcter119@gmail.com>
+# Maintainer: Ke Liu <spcter119@gmail.com>
 pkgname=fermisurfer
 pkgver=1.10.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Fermisurfer can display Fermi surfaces colored as a function of arbitraly quantities such as the orbital character."
 arch=('any')
 url="https://osdn.net/projects/fermisurfer/"
