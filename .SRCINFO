@@ -1,7 +1,7 @@
 pkgbase = lightdm-webkit-theme-archlinux
 	pkgdesc = ArchLinux version of the official Antergos greeter
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Dissonant-Tech/lightdm-webkit-theme-archlinux
 	install = theme.install
 	arch = any
