@@ -1,0 +1,18 @@
+pkgbase = python2-pyudev
+	pkgdesc = A pure Python 2.7 binding to libudev
+	pkgver = 0.21.0
+	pkgrel = 1
+	url = http://pyudev.readthedocs.org/en/latest/index.html
+	arch = any
+	license = LGPL
+	makedepends = python2-setuptools
+	depends = python2
+	depends = systemd
+	optdepends = python2-pyqt5: PyQt integration
+	optdepends = python2-gobject2: Glib integration
+	optdepends = python2-wxpython4: WX integration
+	source = https://github.com/pyudev/pyudev/archive/v0.21.0.tar.gz
+	sha512sums = c6cc8786c69de2a07eeae39cb57e33db6ca5fea83c38fdab277070bf052c97bd053911ab08a11fe65cb56c463492111e74451801390d89dc7f00fd00e68bba19
+
+pkgname = python2-pyudev
+
