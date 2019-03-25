@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 # Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=tpm2-tss-git
-pkgver=2.0.0.r170.b7b42326
+pkgver=2.0.0.r268.79d31052
 pkgrel=1
 pkgdesc='Implementation of the TCG Trusted Platform Module 2.0 Software Stack (TSS2)'
 arch=('x86_64')
@@ -23,6 +23,11 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname%-git}"
+
+	# Temporary fix for a regression in Linux kernel 5.0, see
+	# https://github.com/tpm2-software/tpm2-tools/issues/1356#issuecomment-471641297
+	sed --in-place 's/ | O_NONBLOCK//' src/tss2-tcti/tcti-device.c
+
 	./bootstrap
 }
 
@@ -41,6 +46,6 @@ check() {
 package() {
 	cd "${pkgname%-git}"
 	make DESTDIR="$pkgdir" install
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 	echo 'u tss - "tss user for tpm2"' | install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 }
