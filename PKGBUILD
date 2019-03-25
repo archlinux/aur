@@ -5,7 +5,7 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=65.0.1
+pkgver=66.0.1
 pkgrel=1
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
@@ -27,11 +27,13 @@ options=(!emptydirs !makeflags)
 _repo=https://hg.mozilla.org/mozilla-unified
 source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         $_pkgname.desktop firefox-symbolic.svg
+        "https://gitlab.com/nikatar/for-aur/raw/master/firefox-appmenu/0001-bz-1468911.patch"
         unity-menubar.patch)
 sha256sums=('SKIP'
             '2adca824b52ab5bc6e7e4fa486c1ecb47d283832bd4b75d10494b033f1cab911'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
-            '7df4129a0edd5c10ff0ff54584cb4c11275b4f019e6e8fc3aae69f444445642a')
+            '821f858bac2e13ce02b8c20d5387d4ecc8ab2d0e4ebe0a517cbf935da6aeb31b'
+            'e1ea199faa3da245da5b8ed4fdc6cb71126d014c907d461f6fb7d0ec135e24e7')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -48,6 +50,9 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 prepare() {
   mkdir mozbuild
   cd mozilla-unified
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
+  patch -Np1 -i ../0001-bz-1468911.patch
 
   # actual appmenu patch from ubuntu repos
   patch -Np1 -i ../unity-menubar.patch
@@ -80,7 +85,8 @@ export MOZ_TELEMETRY_REPORTING=1
 export MOZ_REQUIRE_SIGNING=1
 
 # Keys
-ac_add_options --with-google-api-keyfile=${PWD@Q}/google-api-key
+ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
+ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 # System libraries
