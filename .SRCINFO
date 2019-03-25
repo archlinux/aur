@@ -1,0 +1,17 @@
+pkgbase = zero_brightness_fixer-git
+	pkgdesc = The inotify enabled app to fix zero brightness drop in Linux
+	pkgver = r28.c03f8a4
+	pkgrel = 1
+	url = https://github.com/sliusar/zero_brightness_fixer
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	provides = zero_brightness_fixer
+	conflicts = zero_brightness_fixer
+	source = git+https://github.com/sliusar/zero_brightness_fixer
+	source = zero_brightness_fixer.service
+	md5sums = SKIP
+	md5sums = 28ad7cad643ce98e061799b298fba01d
+
+pkgname = zero_brightness_fixer-git
+

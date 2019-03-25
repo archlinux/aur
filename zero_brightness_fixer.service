@@ -1,0 +1,10 @@
+[Unit]
+Description=Ensures that backlight brightness doesn't go below minimal value
+After=systemd-modules-load.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/zero_brightness_fixer /sys/class/backlight/intel_backlight/brightness 4 14
+
+[Install]
+WantedBy=multi-user.target
