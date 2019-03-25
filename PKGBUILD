@@ -4,9 +4,10 @@
 # Contributor: atommixz
 # Contributor: denn
 # Contributor: post-factum
+# Contributor: wrdcrrtmnstr
 
 pkgname=i2pd
-pkgver=2.23.0
+pkgver=2.24.0
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -17,24 +18,37 @@ makedepends=('boost' 'cmake')
 source=(https://github.com/PurpleI2P/${pkgname}/archive/${pkgver}.tar.gz)
 install=$pkgname.install
 backup=(etc/$pkgname/$pkgname.conf
-        etc/$pkgname/tunnels.conf)
+etc/$pkgname/tunnels.conf)
 conflicts=("$pkgname-git")
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$pkgname-$pkgver
 
-  cd build
-  cmake . -DCMAKE_CXX_FLAGS="-w" \
-	  -DCMAKE_INSTALL_PREFIX=/usr \
-	  -DWITH_UPNP=ON -DWITH_PCH=OFF \
-	  -DCMAKE_BUILD_TYPE=Release
-  make
+	cd build
+
+	BUILD_FLAGS='-DCMAKE_CXX_FLAGS="-w" -DCMAKE_INSTALL_PREFIX=/usr
+	-DWITH_UPNP=ON -DWITH_PCH=OFF -DCMAKE_BUILD_TYPE=Release'
+
+	grep -q -m1 -o aes /proc/cpuinfo
+	if [ $? -eq 0 ]
+	then
+		BUILD_FLAGS="${BUILD_FLAGS} -DWITH_AESNI=ON"
+	fi
+
+	grep -q -m1 -o avx /proc/cpuinfo
+	if [ $? -eq 0 ]
+	then
+		BUILD_FLAGS="${BUILD_FLAGS} -DWITH_AVX=ON"
+	fi
+
+	cmake . $BUILD_FLAGS
+	make
 }
 
 package(){
-        _conf_dest=etc/${pkgname}
-        _home_dest=var/lib/${pkgname}
-        _share_dest=usr/share
+	_conf_dest=etc/${pkgname}
+	_home_dest=var/lib/${pkgname}
+	_share_dest=usr/share
 
 	cd $srcdir/$pkgname-$pkgver
 
@@ -61,16 +75,16 @@ package(){
 	# license
 	install -Dm644 $srcdir/$pkgname-$pkgver/LICENSE "$pkgdir/${_share_dest}/licenses/${pkgname}/LICENSE"
 
-  	# docs
+	# docs
 	_dest="$pkgdir/${_share_dest}/doc/${pkgname}"
-  	install -Dm644 $srcdir/$pkgname-$pkgver/README.md "${_dest}/README.md"
+	install -Dm644 $srcdir/$pkgname-$pkgver/README.md "${_dest}/README.md"
 
-  	# remove src folder and LICENSE
-  	rm -r $pkgdir/usr/{src,LICENSE}
+	# remove src folder and LICENSE
+	rm -r $pkgdir/usr/{src,LICENSE}
 
-  	#man
-  	install -Dm644 $srcdir/$pkgname-$pkgver/debian/$pkgname.1 "$pkgdir/${_share_dest}/man/man1/$pkgname.1"
-  	chmod -R o= $pkgdir/${_home_dest}
+	#man
+	install -Dm644 $srcdir/$pkgname-$pkgver/debian/$pkgname.1 "$pkgdir/${_share_dest}/man/man1/$pkgname.1"
+	chmod -R o= $pkgdir/${_home_dest}
 }
 
-md5sums=('b3815eab442230414a66be7e4b7de617')
+md5sums=('89dcd47214b68cd7e147e7b8f2a8c97a')
