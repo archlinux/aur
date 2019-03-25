@@ -11,7 +11,7 @@ source=(
 	'dkms.conf'
 )
 sha256sums=('SKIP'
-            'af072d643fb0587c8a5af4c7faf0d9a9cb73f3515a3b79853c60d98a30743ab2')
+            'c37a0d2985e50586225e92698aeade10c3756bd31d1098d495ceff55f165487a')
 depends=('dkms')
 
 package() {
