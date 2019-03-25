@@ -1,7 +1,7 @@
 # Maintainer: Ryan Kes <alrayyes@gmail.com>
 
 pkgname=corrupter-git
-pkgver=r22.6e23db9
+pkgver=r23.bebddcd
 pkgrel=1
 pkgdesc='Simple image glitcher suitable for producing nice looking i3lock backgrounds'
 arch=('i686' 'x86_64')
