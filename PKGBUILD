@@ -1,5 +1,6 @@
-# Maintainer: end222 <pabloorduna98 at gmail dot com>
-# Ex-Maintainer: Jean Lucas <jean at 4ray dot co>
+# Maintainer: Horo a.k.a KenOokamiHoro <horo at yoitsu dot moe>
+# Contributor: end222 <pabloorduna98 at gmail dot com>
+# Cotributor: Jean Lucas <jean at 4ray dot co>
 # Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 
 pkgname=tor-browser-dev-zh-cn
