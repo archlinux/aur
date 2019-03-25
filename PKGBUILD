@@ -1,31 +1,35 @@
 # Maintainer: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: Sergio Correia <sergio@correia.cc>
 # Contributor: Nicolas Vivet <nizzox@gmail.com>
+# Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
 _pkgname=arcanist
-pkgname=$_pkgname-git
-pkgver=2019.10
+pkgname="${_pkgname}-git"
+
+pkgver() {
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+pkgver=r2047.9830c931
 pkgrel=1
-pkgdesc='The command-line frontend to Phabricator, commonly called arc'
+pkgdesc='The command line interface for Phabricator'
 arch=('any')
-url="http://phabricator.com"
+url="https://www.phacility.com/phabricator/"
 license=('Apache')
-depends=('libphutil-git' 'python')
+depends=('libphutil' 'php' 'python')
+optdepends=('git: Git VCS support'
+            'subversion: Subversion VCS support'
+            'mercurial: Mercurial VCS support')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=(git://github.com/phacility/arcanist.git#branch=stable)
+source=("git+https://github.com/phacility/arcanist.git")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd $_pkgname
-  git log -1 --pretty=%B | sed 's/Week/./g' | tr -d -c 0-9.
-}
 
 package() {
   install -d "$pkgdir/usr/share/php/$_pkgname/" "$pkgdir/usr/bin/"
-# do not copy hidden directories
   cp -a $_pkgname/* "$pkgdir/usr/share/php/$_pkgname/"
-  install -Dm644 $_pkgname/resources/shell/bash-completion "$pkgdir/usr/share/bash-completion/completions/arc"
-  ln -s ../share/php/$_pkgname/bin/arc "$pkgdir/usr/bin/arc"
+  install -Dm644 "$_pkgname/resources/shell/bash-completion" "$pkgdir/usr/share/bash-completion/completions/arc"
+  ln -s "../share/php/$_pkgname/bin/arc" "$pkgdir/usr/bin/arc"
 }

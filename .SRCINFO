@@ -1,16 +1,20 @@
 pkgbase = arcanist-git
-	pkgdesc = The command-line frontend to Phabricator, commonly called arc
-	pkgver = 2019.10
+	pkgdesc = The command line interface for Phabricator
+	pkgver = r2047.9830c931
 	pkgrel = 1
-	url = http://phabricator.com
+	url = https://www.phacility.com/phabricator/
 	arch = any
 	license = Apache
 	makedepends = git
-	depends = libphutil-git
+	depends = libphutil
+	depends = php
 	depends = python
-	provides = arcanist=2019.10
+	optdepends = git: Git VCS support
+	optdepends = subversion: Subversion VCS support
+	optdepends = mercurial: Mercurial VCS support
+	provides = arcanist=r2047.9830c931
 	conflicts = arcanist
-	source = git://github.com/phacility/arcanist.git#branch=stable
+	source = git+https://github.com/phacility/arcanist.git
 	sha256sums = SKIP
 
 pkgname = arcanist-git
