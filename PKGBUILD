@@ -1,10 +1,10 @@
 pkgname=openra-yr-git
 _pkgname=openra-yr
-pkgver=172.git.4bd6919
+pkgver=173.git.3aab217
 pkgrel=1
 pkgdesc="A Command & Conquer: Yuri's Revenge-inspired mod of OpenRA"
 arch=('any')
-url="https://www.openra.net"
+url="https://github.com/cookgreen/yr"
 license=('GPL3')
 install=openra-yr.install
 depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
