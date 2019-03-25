@@ -1,0 +1,13 @@
+pkgbase = esy
+	pkgdesc = package manager for OCaml/Reason
+	pkgver = 0.5.6
+	pkgrel = 0
+	url = https://esy.sh/
+	arch = x86
+	arch = x86_64
+	license = custom
+	makedepends = npm>=6.9
+	depends = gcc-libs
+
+pkgname = esy
+
