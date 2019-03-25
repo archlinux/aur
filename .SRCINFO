@@ -6,6 +6,7 @@ pkgbase = swtpm
 	arch = x86_64
 	license = BSD
 	makedepends = socat
+	makedepends = python
 	depends = glib2
 	depends = fuse2
 	depends = libtpms
