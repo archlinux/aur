@@ -6,7 +6,8 @@ pkgbase = cmaptools
 	arch = x86_64
 	license = unknown
 	makedepends = the_silver_searcher
-	depends = java-environment=8
+	depends = java-environment>=7
+	depends = java-environment<9
 	source = http://cmapdownload.ihmc.us/installs/CmapTools/Linux/Linux64CmapTools_v6.03.01_02-07-19.bin
 	source = installer.properties
 	source = icon.png

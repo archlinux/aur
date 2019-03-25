@@ -8,7 +8,7 @@ pkgdesc="The IHMC Cmap Tools for concept maps"
 arch=('x86_64')
 url="http://cmap.ihmc.us/"
 license=('unknown')
-depends=('java-environment')
+depends=('java-environment>=7','java-environment<9')
 makedepends=('the_silver_searcher')
 
 source=(http://cmapdownload.ihmc.us/installs/CmapTools/Linux/Linux64CmapTools_$pkgver\_$_pkgdate.bin
