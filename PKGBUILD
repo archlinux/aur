@@ -8,8 +8,8 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=pure-ftpd
-pkgver=1.0.47
-pkgrel=3
+pkgver=1.0.48
+pkgrel=1
 pkgdesc="A secure, production-quality and standard-conformant FTP server, focused on efficiency and ease of use."
 arch=('i686' 'x86_64')
 url="https://www.pureftpd.org/"
@@ -22,20 +22,13 @@ source=("https://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-${pkgver
 	'pure-ftpd.service'
 	'pure-ftpd.logrotate'
 	'welcome.msg'
-	'tls1_3.patch'
 	'pure-ftpd.install' )
 
-md5sums=('a41fa531c0d21bd3416dd524d75495ae'
+md5sums=('4538d563fb4cbe755767c91b14ed2fd2'
          '0d0845e17607ffb212eae0112c58e9ff'
          '37a45c88a0f038de37b4a87c6c447534'
          '7e91835f7e7975bd0536648fc99e5a22'
-         '85799b3cce0ca37b035269fef6939c2b'
          'c80cbd3ae1f9915f686f84149f6293e5')
-
-prepare() {
-	cd $pkgname-$pkgver
-	patch -Np0 -i "${srcdir}/tls1_3.patch"
-}
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
@@ -52,7 +45,6 @@ build() {
 	--with-peruserlimits \
 	--with-tls \
 	--with-rfc2640
-	sed -i 's/define MAX_DATA_SIZE (40/define MAX_DATA_SIZE (70/' src/ftpd.h
 	make
 }
 
