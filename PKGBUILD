@@ -1,9 +1,9 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: FreeByrd <nelsonbyrd248@gmail.com>
 # Contributor: Tofe <chris.chapuis@gmail.com>
 # Contributor: erm67 <erm67@yahoo.it>
 
 pkgname=cairo-dock-git
-pkgver=3.4.1.r3.600b2ef
+pkgver=3.4.99.alpha1
 pkgrel=1
 pkgdesc='Light eye-candy fully themable animated dock'
 arch=('i686' 'x86_64')
