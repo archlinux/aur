@@ -2,7 +2,7 @@
 
 pkgname=dkopp
 pkgver=7.1
-pkgrel=6
+pkgrel=7
 pkgdesc="A backup program using DVDs"
 url="https://kornelix.net/dkopp/dkopp.html"
 arch=('i686' 'x86_64')
@@ -21,6 +21,6 @@ build() {
 package() {
   cd $pkgname
   install -d "$pkgdir"/usr/share/applications
-  make DESTDIR="$pkgdir" install 
-  rm "$pkgdir"/usr/share/doc/$pkgname/$pkgname.man
+  make DESTDIR="$pkgdir" ICONDIR=/usr/share/pixmaps install 
+  sed -i 's+/usr/share/dkopp/icons/++' "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
