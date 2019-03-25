@@ -9,14 +9,14 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-git
-pkgver=3.39.1.r15.g2866c8dcbf
+pkgver=3.40.1.r146.g390b0d45c1
 pkgrel=1
 pkgdesc="Ebook management application"
 arch=('i686' 'x86_64')
 url="https://calibre-ebook.com/"
 license=('GPL3')
-_py_deps=('apsw' 'cssselect' 'css-parser' 'dateutil' 'dbus' 'dnspython' 'dukpy'
-          'feedparser' 'html5-parser' 'lxml' 'markdown' 'mechanize' 'msgpack'
+_py_deps=('apsw' 'beautifulsoup4' 'cssselect' 'css-parser' 'dateutil' 'dbus' 'dnspython' 'dukpy'
+          'feedparser' 'html2text' 'html5-parser' 'lxml' 'markdown' 'mechanize' 'msgpack'
           'netifaces' 'unrardll' 'pillow' 'psutil' 'pygments' 'pyqt5' 'regex')
 depends=('chmlib' 'icu' 'jxrlib' 'libmtp' 'libusbx' 'libwmf' 'mathjax' 'mtdev' 'optipng'
          'podofo' "${_py_deps[@]/#/python2-}" 'qt5-svg' 'qt5-webkit' 'udisks2')
@@ -99,7 +99,8 @@ package() {
       "${pkgdir}/usr/share/mime/packages/calibre-mimetypes.xml"
 
   XDG_DATA_DIRS="${pkgdir}/usr/share" LANG='en_US.UTF-8' python2 setup.py install \
-    --staging-root="${pkgdir}/usr" --prefix=/usr
+      --staging-root="${pkgdir}/usr" \
+      --prefix=/usr
 
   #cp -a man-pages/ "${pkgdir}/usr/share/man"
 
