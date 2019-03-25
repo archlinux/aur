@@ -1,0 +1,12 @@
+pkgbase = steam-native-pcre-fix
+	pkgdesc = Temporary fix for FS#62095
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://bugs.archlinux.org/task/62095
+	arch = any
+	depends = libselinux
+	depends = pcre
+	depends = steam-native-runtime
+
+pkgname = steam-native-pcre-fix
+
