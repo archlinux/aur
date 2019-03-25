@@ -1,0 +1,18 @@
+pkgbase = python2-poppler
+	pkgdesc = Python 2.x bindings for Poppler
+	pkgver = 0.12.1
+	pkgrel = 10
+	url = https://launchpad.net/poppler-python
+	arch = x86_64
+	license = GPL
+	depends = pygtk
+	depends = poppler-glib
+	source = https://launchpad.net/poppler-python/trunk/development/+download/pypoppler-0.12.1.tar.gz
+	source = pypoppler-0.12.1-poppler-0.16.0.patch
+	source = python-poppler-0.12.1-poppler-0.39.0-changes.patch
+	md5sums = 1a89e5ed3042afc81bbd4d02e0cf640a
+	md5sums = 683c5b67866d56adc2494120cc329dc8
+	md5sums = 5f0a6f7f4b649ad61a71f800a6e0ba91
+
+pkgname = python2-poppler
+
