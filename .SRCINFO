@@ -1,0 +1,14 @@
+pkgbase = wesnoth-rcx-git
+	pkgdesc = small desktop application for previewing and recoloring Wesnoth graphics
+	pkgver = 0.2.1+23+gb71874b
+	pkgrel = 1
+	url = https://shadowm.ai0867.net/projects/wesnoth-rcx
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = qt5-base
+	source = git+https://github.com/shikadiqueen/morningstar.git
+	md5sums = SKIP
+
+pkgname = wesnoth-rcx-git
+
