@@ -1,0 +1,15 @@
+pkgbase = pyrtf
+	pkgdesc = A set of Python classes that make it possible to produce RTF documents from Python programs
+	pkgver = 0.45
+	pkgrel = 2
+	url = http://pyrtf.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = python2
+	provides = pyrtf=0.45
+	replaces = pyrtf
+	source = https://downloads.sourceforge.net/pyrtf/PyRTF-0.45.tar.gz
+	sha256sums = 7c0b7c35688041978786e959fd83dbdffee66ded9d40e1ad0441c460164a349e
+
+pkgname = python2-pyrtf
+
