@@ -73,7 +73,7 @@ build() {
   make
 }
 
-package() {
+package_jabberd2-git() {
   cd "${srcdir}/${pkgbase}"
 
   make DESTDIR="${pkgdir}" install
