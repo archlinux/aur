@@ -1,0 +1,15 @@
+pkgbase = python2-elib-intl
+	pkgdesc = Enhanced internationalization (I18N) services for Python modules and applications
+	pkgver = 0.0.3
+	pkgrel = 2
+	url = https://github.com/dieterv/elib.intl
+	arch = any
+	license = LGPL
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	source = git+https://github.com/dieterv/elib.intl#commit=d09997cfef8584f9f0bf227752bab890a66a0a61
+	sha512sums = SKIP
+
+pkgname = python2-elib-intl
+
