@@ -1,6 +1,6 @@
 pkgbase = nasc
 	pkgdesc = Do maths like a normal person.
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://parnold-x.github.io/nasc/
 	arch = i686
@@ -14,10 +14,11 @@ pkgbase = nasc
 	depends = libgee
 	depends = gtksourceview3
 	depends = libsoup
+	depends = cln
 	conflicts = nasc-git
 	conflicts = nasc-bzr
-	source = https://github.com/parnold-x/nasc/archive/0.5.1.tar.gz
-	sha512sums = a49aefa40f3eb6581b0fddaf3726ae9070bf4e4f815c4dba07a5f12eed17db2f9c236a4337628a3844fb7d2fd3e876a5b1f790836e794c30b033c2962cdba46f
+	source = https://github.com/parnold-x/nasc/archive/0.5.2.tar.gz
+	sha512sums = b50e0d612144327198e841f76c1152879f91c70eae67c85e26fdd6839de1c4f26d1f4775158eade62a4a37f562b67c2f944e1feedfccf37324335aae3cf25eb3
 
 pkgname = nasc
 
