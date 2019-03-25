@@ -2,7 +2,7 @@
 
 pkgname=pod2man
 pkgver=5.28.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Make pod2man easily accessible'
 arch=(x86_64)
 license=(GPL PerlArtistic)
@@ -10,8 +10,8 @@ url='https://perl.org/'
 depends=(perl)
 
 package() {
-  # perl places pod2man in /usr/bin/core_perl instead of /usr/bin,
-  # for unknown reasons. This creates a symlink in what is now a more
+  # perl 5 places pod2man in /usr/bin/core_perl instead of /usr/bin,
+  # for unknown reasons. This creates a symlink in what is what is now a more
   # conventional location.
 
   install -d "$pkgdir/usr/bin"
