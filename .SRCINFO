@@ -1,6 +1,6 @@
 pkgbase = ttf-fantasque-sans-git
 	pkgdesc = A font family with a great monospaced variant for programmers.
-	pkgver = 1.7.1.r174.127e66b
+	pkgver = 1.7.2.r184.b9c399d
 	pkgrel = 1
 	url = https://github.com/belluzj/fantasque-sans
 	install = ttf-fantasque-sans-git.install
@@ -12,6 +12,7 @@ pkgbase = ttf-fantasque-sans-git
 	makedepends = sfnt2woff
 	makedepends = ttf2eot
 	makedepends = woff2-git
+	makedepends = zip
 	depends = fontconfig
 	depends = xorg-font-utils
 	conflicts = ttf-fantasque-sans-mono
