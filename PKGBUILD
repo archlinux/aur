@@ -3,13 +3,13 @@
 pkgname="brig-git"
 _pkgname="brig"
 pkgver="develop"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="File synchronization on top of ipfs with git like interface and web based UI -- development branch"
 arch=(x86_64 i686 armv7h aarch64)
 license=("AGPLv3")
 url="https://github.com/sahib/${_pkgname}"
 depends=(go)
-makedepends=(git)
+makedepends=(git make)
 provides=("brig")
 
 source=("git+https://github.com/sahib/${_pkgname}")
