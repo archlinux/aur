@@ -1,6 +1,6 @@
 # Maintainer: muttleyxd <muttdini[ at ]gmail.com>
 pkgname=arma3-linux-launcher-git
-pkgver=65.b4b40d8
+pkgver=79.4a45198
 pkgrel=1
 pkgdesc="Advanced launcher for ArmA 3 on Linux"
 arch=('i686' 'x86_64')
