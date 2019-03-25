@@ -1,7 +1,8 @@
 #!/bin/bash
 post_install() {
-    echo ""
+    echo "****************************************vivadow***********************************************"
     echo "vivado-wrapper: executable is installed as 'vivadow'."
     echo "You may read /opt/vivado-wrapper/example and /opt/vivado-wrapper/README.md to learn its usage."
-    echo ""
+    echo "Note: The first 'vivadow build' may need root privilege to create template files."
+    echo "**********************************************************************************************"
 }

@@ -2,9 +2,9 @@
 # Original repo: https://github.com/recolic/vivado-wrapper
 
 pkgname=vivado-wrapper
-pkgver=1.3
+pkgver=1.4
 pkgrel=0
-pkgdesc="Wrap vivado as a simple project manager, which works in shell command line natively."
+pkgdesc="Wrap vivado as a simple project manager, which works in linux command line natively."
 url="https://github.com/recolic/$pkgname"
 license=("GPL3")
 arch=("any")
@@ -16,7 +16,7 @@ source=(
 )
 validpgpkeys=("8A260D8ABBEBEF75855FEFDF7C3D13CDCA5C947F")
 sha256sums=(
-    "473a268b8f237e9816ff3e40bde269c6fe069f9dc18ec8edcd82f85621a848e0"
+    "3519d7cbec49cd80e68672e14ef063f8a981e563c9b4d862ebb2c65d3dd20b43"
     "SKIP"
 )
 
