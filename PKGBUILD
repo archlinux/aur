@@ -1,36 +1,29 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 # shellcheck disable=SC2034,SC2154,SC2164
+
 pkgname=('qt5-styleplugins')
-_srcname='qtstyleplugins'
+pkgver=5.0.0.20170311
+_commit=335dbece103e2cbf6c7cf819ab6672c2956b17b3
 pkgdesc='Additional style plugins for Qt5'
-pkgver='5.0.0'
-_commit='84b443109729664c7a0bd124b42c493f28069efc'
-pkgrel='10'
-arch=('i686' 'x86_64')
-url="https://code.qt.io/cgit/qt/${_srcname}"
+pkgrel=11
+arch=('x86_64')
+url="https://code.qt.io/cgit/qt/qtstyleplugins"
 license=('LGPL')
-
-depends=('qt5-base' 'gtk2' 'libx11')
-makedepends=('git')
-provides=("${pkgname[0]%-git}")
-conflicts=("${pkgname[0]%-git}")
-
-source=("${_srcname}::git+https://code.qt.io/qt/${_srcname}.git#commit=${_commit}")
-sha512sums=('SKIP')
-
+depends=('qt5-base' 'gtk2')
+source=("$pkgname-$_commit.tar.gz::https://github.com/qt/qtstyleplugins/archive/$_commit.tar.gz")
+sha512sums=('e8c2d0e9c6b0a47cab04ffd2e9384606638905b63a7c1580f9b629bbcc84ebff19743363ffee3dbd31c3de1dcda684211ad3052932b5aa0081e529afd9cbb14d')
 install='install.sh'
 
 build() {
-    cd "${srcdir}/${_srcname}"
-
-    qmake PREFIX='/usr' \
+  cd qtstyleplugins-$_commit
+  qmake PREFIX='/usr' \
         LIBDIR='/usr/lib' \
-        QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
-        QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"
-    make
+        QMAKE_CFLAGS_RELEASE="$CFLAGS" \
+        QMAKE_CXXFLAGS_RELEASE="$CXXFLAGS"
+  make
 }
 
 package() {
-    cd "${srcdir}/${_srcname}"
-
-    make INSTALL_ROOT="${pkgdir}" install
+  cd qtstyleplugins-$_commit
+  make INSTALL_ROOT="$pkgdir" install
 }
