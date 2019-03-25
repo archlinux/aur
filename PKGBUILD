@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=elan
-pkgver=5.3
+pkgver=5.4
 pkgrel=1
 pkgdesc="A video and audio annotation tool"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('java-runtime')
 makedepends=('maven' 'jdk8-openjdk')
 source=("http://www.mpi.nl/tools/elan/ELAN_$(echo "${pkgver}" | sed 's/\./-/g')_src.zip"
         "elan")
-sha256sums=('796dc54e07453ef8dc1e6aec1101d694e45da73bb67437663173a459de45cf01'
+sha256sums=('8838a06f1a5fb27509896799f0312c60c36c07b6f840c78700e01b1fbf275ae6'
             'c933caffc0daf1655ffb91564d234209205d9f49e0006c432d63a97a16f43363')
 
 prepare() {
