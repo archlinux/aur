@@ -1,7 +1,7 @@
 # Maintainer: Evgeny Zinoviev (me@ch1p.com)
 
 pkgname=vk-messenger
-pkgver=4.1.6
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="VK Messenger for Linux"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('alsa-lib' 'expat' 'gconf' 'gtk2' 'libgcrypt' 'libgnome-keyring' 'libnotify' 'libxss' 'libxtst' 'nss' 'xdg-utils')
 optdepends=('gnome-keyring')
 source=("vk-${pkgver}-${pkgrel}.zip::https://desktop.userapi.com/linux64/master/vk.zip")
-sha256sums=('cf65077e51f2299e3bbab113cc04834df6c2a39dbdebf30120777a911f5d7f58')
+sha256sums=('d0b141fbf947189c4d7dc011d7c3cfff32a74c66a929aab3c2fe2d84e211456e')
 
 package() {
     # Creating directory structure
