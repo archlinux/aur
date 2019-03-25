@@ -1,5 +1,7 @@
+# Maintainer: Jose Riha <jose1711 gmail com>
+
 pkgname=python-pymsgbox
-pkgver=1.0.3
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Simple, cross-platform, pure Python module to display message boxes, and just message boxes."
 arch=("any")
@@ -8,7 +10,7 @@ license=("BSD")
 makedepends=("python-setuptools")
 depends=("tk")
 source=(https://pypi.python.org/packages/source/P/PyMsgBox/PyMsgBox-${pkgver}.zip)
-md5sums=('f4fa9fece7c1250cd7cb9cdc7cbabeb1')
+md5sums=('c46caf8d2b6daf88a639cd345c051ce1')
 
 package() {
   cd "$srcdir/PyMsgBox-${pkgver}"
