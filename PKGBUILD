@@ -4,12 +4,12 @@
 
 pkgname=('python-sip-pyqt4')
 pkgver=4.19.15
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://www.riverbankcomputing.com/software/sip/intro'
 license=('custom:"sip"')
 makedepends=('python')
-source=("https://www.riverbankcomputing.com/static/Downloads/sip/sip-$pkgver.tar.gz")
+source=("https://www.riverbankcomputing.com/static/Downloads/sip/$pkgver/sip-$pkgver.tar.gz")
 sha256sums=('2b5c0b2c0266b467b365c21376d50dde61a3236722ab87ff1e8dacec283eb610')
 
 prepare() {
