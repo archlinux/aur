@@ -3,7 +3,7 @@
 pkgname=cado-git
 _gitname=cado
 pkgver=0.9.2
-pkgrel=2
+pkgrel=3
 
 pkgdesc="Capability DO (like a sudo providing users with just the
 capabilities they need))"
@@ -16,7 +16,7 @@ provides=('cado' 'caprint')
 conflicts=('cado' 'caprint')
 source=("git://github.com/rd235/cado.git" "cado-0.9.2-arch.patch")
 install="cado-git.install"
-md5sums=('SKIP' 'ab1dffca550b1b771e74d35c9ced400c')
+md5sums=('SKIP' '6cfbb48f650b501a6605ae1fd051c4f4')
 
 build() {
 	cd "$srcdir/$_gitname"
