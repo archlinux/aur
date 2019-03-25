@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd cairo-dock
 
-  tag='3.4.1'
+  tag='3.4.99'
   echo "${tag}.r$(git rev-list --count ${tag}..HEAD).$(git rev-parse --short HEAD)"
 }
 
