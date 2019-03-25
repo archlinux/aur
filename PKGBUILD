@@ -3,7 +3,7 @@
 # Patch by: Alessandro Ghedini <ghedo@debian.org>
 
 pkgname=libcurl3-gnutls
-pkgver=7.63.0
+pkgver=7.64.0
 pkgrel=1
 pkgdesc='An URL retrieval library (linked against gnutls) with libcurl3 versioned symbols'
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('libcurl-gnutls')
 source=("https://curl.haxx.se/download/curl-${pkgver}.tar.gz"{,.asc}
         03_keep_symbols_compat.patch)
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
-sha512sums=('25ad69a1978de2178ac7a456e72152907203931ad895234c14781c27681ea2c5d6669794880c4ebae6e38b8014c6538bc88a6afec2c192210b6d491d60b8f691'
+sha512sums=('ea0e68f9cbf2eb4f235d8506962dcc7709f769ef3526c0e4c130fdaf7186a1a13b303c6ce919cb9125bbf7c64ddf4f8efb3d9269b906f856e6d7b3def027fb81'
             'SKIP'
             '596c227bb5ede8182831c5c92b3ac7b74b770f51fae99277e2aabb02d38b7a5d4d06003731042ab5403ca89e719827d7080c3a179e29ef08b41a1993a7788a33')
 
