@@ -1,0 +1,89 @@
+From 1127988d78956f86880f85314a3d1169378a5db8 Mon Sep 17 00:00:00 2001
+From: Solomon Choina <shlomochoina@gmail.com>
+Date: Sun, 25 Mar 2018 14:05:26 -0400
+Subject: [PATCH] configure-20180325
+
+---
+ configure | 24 +++++++++++++++++++++++-
+ 1 file changed, 23 insertions(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index f7609c9..886ce06 100755
+--- a/configure
++++ b/configure
+@@ -656,6 +656,7 @@ XMLDIR
+ CONFIGDIR
+ BASECONFIGDIR
+ TEMPLATEDIR
++TEMPLATEINFDIR
+ FC_FONTDATE
+ FC_CACHEDIR
+ fc_cachedir
+@@ -866,6 +867,7 @@ with_default_fonts
+ with_add_fonts
+ with_cache_dir
+ with_templatedir
++with_templateinfdir
+ with_baseconfigdir
+ with_configdir
+ with_xmldir
+@@ -1567,6 +1569,10 @@ Optional Packages:
+                           [default=LOCALSTATEDIR/cache/fontconfig]
+   --with-templatedir=DIR  Use DIR to store the configuration template files
+                           [default=DATADIR/fontconfig/conf.avail]
++  --with-templateinfdir=DIR
++                          Use DIR to store the Infinality compliant
++                          configuration template files
++                          [default=DATADIR/fontconfig/conf.avail.infinality]
+   --with-baseconfigdir=DIR
+                           Use DIR to store the base configuration files
+                           [default=SYSCONFDIR/fonts]
+@@ -17808,6 +17814,12 @@ else
+   templatedir=yes
+ fi
+ 
++# Check whether --with-templateinfdir was given.
++if test "${with_templateinfdir+set}" = set; then :
++  withval=$with_templateinfdir; templateinfdir="$withval"
++else
++  templateinfdir=yes
++fi
+ 
+ # Check whether --with-baseconfigdir was given.
+ if test "${with_baseconfigdir+set}" = set; then :
+@@ -17840,6 +17852,15 @@ no|yes)
+ *)
+ 	;;
+ esac
++
++case "$templateinfdir" in
++no|yes)
++	templateinfdir='${datadir}'/fontconfig/conf.avail.infinality
++	;;
++*)
++	;;
++esac
++
+ case "$baseconfigdir" in
+ no|yes)
+ 	baseconfigdir='${sysconfdir}'/fonts
+@@ -17863,6 +17884,7 @@ no|yes)
+ esac
+ 
+ TEMPLATEDIR=${templatedir}
++TEMPLATEINFDIR=${templateinfdir}
+ BASECONFIGDIR=${baseconfigdir}
+ CONFIGDIR=${configdir}
+ XMLDIR=${xmldir}
+@@ -18926,7 +18948,7 @@ _ACEOF
+ 
+ 
+ 
+-ac_config_files="$ac_config_files Makefile fontconfig/Makefile fc-lang/Makefile fc-case/Makefile src/Makefile conf.d/Makefile fc-cache/Makefile fc-cat/Makefile fc-conflist/Makefile fc-list/Makefile fc-match/Makefile fc-pattern/Makefile fc-query/Makefile fc-scan/Makefile fc-validate/Makefile doc/Makefile doc/version.sgml its/Makefile po/Makefile.in po-conf/Makefile.in test/Makefile fontconfig.spec fontconfig.pc fontconfig-zip"
++ac_config_files="$ac_config_files Makefile fontconfig/Makefile fc-lang/Makefile fc-case/Makefile src/Makefile conf.d/Makefile conf.d.infinality/Makefile fc-cache/Makefile fc-cat/Makefile fc-conflist/Makefile fc-list/Makefile fc-match/Makefile fc-pattern/Makefile fc-query/Makefile fc-scan/Makefile fc-validate/Makefile doc/Makefile doc/version.sgml its/Makefile po/Makefile.in po-conf/Makefile.in test/Makefile fontconfig.spec fontconfig.pc fontconfig-zip"
+ 
+ cat >confcache <<\_ACEOF
+ # This file is a shell script that caches the results of configure
+-- 
+2.16.3
+

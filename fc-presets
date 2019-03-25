@@ -1,0 +1,281 @@
+#!/bin/bash
+
+###                    fc-presets v.0.9.3                    ###
+### Set default fontconfig presets for your font collection. ###
+###          (Thanks cfr for testing and suggestions.)       ###
+###                                                          ###
+###                Copyright (c) 2016 bohoomil               ###
+### The MIT License (MIT) http://opensource.org/licenses/MIT ###
+###      part of infinality-bundle  http://bohoomil.com      ###
+
+RED='\E[01;31m'
+GRE='\E[01;32m'
+YEL='\E[01;33m'
+RES='\E[0m'
+
+presets_dir="/etc/fonts/conf.avail.infinality"
+config_dir="/etc/fonts/conf.d"
+
+presets_list=(combi free ms)
+options=(combi free ms reset quit)
+
+option=$1
+
+usage(){
+  echo "Usage: ${0##*/} [check|set|help]"
+  echo ''
+  echo ' Run this script to set a fontconfig preset for your default'
+  echo ' font collection. You can also check which preset you are'
+  echo ' currently using.'
+  echo ''
+  echo 'Options:'
+  echo ' check    Check which preset is currently active'
+  echo ' set      Set a preset configuration (requires root privileges)'
+  echo '          Available presets are:'
+  echo '             combi  --  custom font collection'
+  echo '              free  --  free font collection'
+  echo '                ms  --  Microsoft font collection'
+  echo ' help     Print this help and exit'
+  echo ''
+  echo 'Troubleshooting:'
+  echo '================'
+  echo ' If the [ preset ] has been set correctly, <fc-presets check> should'
+  echo ' return the following information (only one [ preset ] can be set!):'
+  echo '    [ preset1 ] not set'
+  echo '    [ preset3 ] not set'
+  echo ''
+  echo '    The active preset seems to be [ preset2 ].'
+  echo '    Checking symlinks now...'
+  echo ''
+  echo '    30-metric-aliases-preset2.conf is OK'
+  echo '    37-repl-global-preset2.conf is OK'
+  echo '    60-latin-preset2.conf is OK'
+  echo '    65-non-latin-preset2.conf is OK'
+  echo '    66-aliases-wine-preset2.conf is OK'
+  echo ''
+  echo ' If checking symlinks has completed successfully but at least one'
+  echo ' of the lines reads:'
+  echo '    37-repl-global-free.conf is NOT OK'
+  echo '    :: Run <fc-presets help> for more information.'
+  echo ' then the symbolic link must be broken.'
+  echo ' How to fix:'
+  echo ' -----------'
+  echo ' 1. Run <fc-presets set> as root.'
+  echo ' 2. Choose 4) to disable all presets.'
+  echo ' 3. Re-run <fc-presets set> as root and choose a preset 1) - 3).'
+  echo ''
+  echo ' If no preset has been set (which means that at least 1 symbolic link'
+  echo ' from a preset is missing), the relevant message is displayed:'
+  echo '    [ combi ] not set'
+  echo '    [ ms ] not set'
+  echo '    [ free ] not set'
+  echo ' How to fix:'
+  echo ' -----------'
+  echo ' 1. Run <fc-presets set> as root and choose a preset 1) - 3).'
+  echo ' 2. If the error is returned:'
+  echo '      [ preset ] preset is currently in use. Aborting. '
+  echo '    first reset current settings and then set the preset again.'
+  echo ''
+  exit 1
+}
+
+OK(){
+  echo -e 'Done.'
+  exit 0
+}
+
+NOTOK(){
+  echo -e 'An error occured. Check the content of'
+  echo -e "$config_dir manually."
+  exit 1
+}
+
+check_current(){
+  pushd $config_dir >/dev/null
+  for preset in ${presets_list[@]}; do
+    check_preset=$(ls *.conf | grep "\-$preset.conf")
+    count_all=$(echo $check_preset | wc -w)
+    if [[ $? -ne 0 ]] || [[ $count_all -ne 5 ]]; then
+      echo -e " [ $preset ] is not set "
+      echo -e " $YEL:: Run <fc-presets help> for more information.$RES"
+    else
+      echo ''
+      echo " $count_all symlinks found."
+      echo " The active preset seems to be [ $preset ]."
+      echo ' Checking symlinks now...'
+      echo ''
+      i=1
+      ls *.conf | grep "\-$preset.conf" | while read line; do
+      array[ $i ]="$line"
+      if [ -e "$line" ]; then
+        echo -e "$line$GRE is OK$RES"
+      else
+        echo -e "$line$RED is NOT OK$RES"
+        echo -e " $YEL:: Run <fc-presets help> for more information.$RES"
+      fi
+      (( i++ ))
+      done
+      exit 0
+    fi
+  done
+  popd >/dev/null
+}
+
+check_current_prejob(){
+  pushd $config_dir >/dev/null
+  targets_current=("30-metric-aliases-$option.conf" "37-repl-global-$option.conf" "60-latin-$option.conf" "65-non-latin-$option.conf" "66-aliases-wine-$option.conf")
+  for preset in ${targets_current[@]}; do
+    check_current=$(ls *.conf | grep "\-$option.conf")
+    count_all=$(echo $check_current | wc -w)
+    if [[ -e $preset ]] && [[ $count_all -eq 5 ]]; then
+      echo -e " You are already using [ $option ] preset. Aborting."
+      exit 1
+    fi
+  done
+  popd >/dev/null
+}
+
+targets_check_prejob(){
+  pushd $presets_dir >/dev/null
+  preset_selected=$(ls "$option"/*\-$option.conf | wc -w)
+  if [ $preset_selected -lt 5 ]; then
+      echo -e 'Target not found. Did you set up'
+      echo -e 'fontconfig-infinality-ultimate correctly?'
+      exit 1
+    fi
+  popd >/dev/null
+}
+
+fc_reset(){
+  pushd $config_dir >/dev/null
+  targets_rm=("30-metric-aliases-*.conf" "37-repl-global-*.conf" "60-latin-*.conf" "65-non-latin-*.conf" "66-aliases-wine-*.conf")
+  for target in "${targets_rm[@]}"; do
+    # remove old
+    if [ $UID -ne 0 ]; then
+      echo -e 'Run the script again as root to commit changes.'
+      exit 1
+    else
+      rm $target >/dev/null 2>&1
+    fi
+  done
+  popd >/dev/null
+}
+
+fc_set(){
+  pushd $config_dir >/dev/null
+  check_preset=$(ls | grep "\-$option.conf")
+  count_all=$(echo $check_preset | wc -w)
+  if [[ $? -eq 0 ]] && [[ $count_all -eq 5 ]]; then
+    current=$option
+    echo -e " [ $current ] preset is currently in use. Aborting."
+  else
+    if [ $UID -ne 0 ]; then
+      echo -e 'Run the script again as root to commit changes.'
+      exit 1
+    else
+      preset=$option
+      # create new
+      targets_list=$(ls $presets_dir/$preset/*.conf)
+      for target in ${targets_list[@]}; do
+        ln -sf $target $config_dir
+      done
+    fi
+  fi
+  popd >/dev/null
+}
+
+custom_postjob(){
+  pushd $config_dir >/dev/null
+  targets_current=("30-metric-aliases-$option.conf" "37-repl-global-$option.conf" "60-latin-$option.conf" "65-non-latin-$option.conf" "66-aliases-wine-$option.conf")
+  for preset in ${targets_current[@]}; do
+    check_current=$(ls *.conf | grep "\-$option.conf")
+    if [[ $check_current == *combi* ]] && [[ -f $config_dir/35-repl-custom.conf ]]; then
+      rm -f 35-repl-custom.conf 2>/dev/null
+    elif [[ $check_current == *free* ]] || [[ $check_current == *ms* ]]; then
+      if [ ! -f 35-repl-custom ]; then
+        ln -s $presets_dir/35-repl-custom.conf $config_dir/35-repl-custom.conf 2>/dev/null
+      fi
+    fi
+  done
+  popd >/dev/null
+}
+
+set_preset(){
+  PS3='Enter your choice... '
+  select preset in "${options[@]}"; do
+    case "$preset" in
+      combi)
+        echo ' [ combi ] preset chosen...'
+        option='combi'
+        check_current_prejob
+        targets_check_prejob
+        fc_reset
+        fc_set
+        custom_postjob
+        [ $? -eq 0 ] && OK || NOTOK
+        ;;
+      free)
+        echo ' [ free ] preset chosen...'
+        option='free'
+        check_current_prejob
+        targets_check_prejob
+        fc_reset
+        fc_set
+        custom_postjob
+        [ $? -eq 0 ] && OK || NOTOK
+        ;;
+      ms)
+        echo ' [ ms ] preset chosen...'
+        option='ms'
+        check_current_prejob
+        targets_check_prejob
+        fc_reset
+        fc_set
+        custom_postjob
+        [ $? -eq 0 ] && OK || NOTOK
+        ;;
+      reset)
+        echo ' Removing current preset...'
+        fc_reset
+        [ $? -eq 0 ] && echo -e 'Done. Now select a new preset...'
+        continue
+        ;;
+      quit)
+        echo ' No preset chosen. Aborting.'
+        break
+        exit 1
+        ;;
+      *)
+        echo 'Invalid option. Try again:'
+        continue
+        ;;
+    esac
+  break
+  unset $current
+  unset $option
+done
+exit 0
+}
+
+howto(){
+  echo -e "Run '${0##*/} help' to list available options."
+  echo -e ''
+  echo -e 'Unknown or no option selected, aborting.'
+  exit 1
+}
+
+case $option in
+  help)
+    usage
+    ;;
+  check)
+    check_current
+    ;;
+  set)
+    set_preset
+    ;;
+  *)
+    howto
+    ;;
+esac
+
