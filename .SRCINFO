@@ -1,0 +1,19 @@
+pkgbase = wl-clipboard-history-git
+	pkgdesc = Wayland clipboard history tracker based on wl-clipboard
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/janza/wl-clipboard-history
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = arm
+	arch = aarch64
+	license = MIT
+	depends = wl-clipboard
+	depends = sqlite>=3.0
+	source = wl-clipboard-history::git+https://github.com/janza/wl-clipboard-history.git
+	sha1sums = SKIP
+
+pkgname = wl-clipboard-history-git
+
