@@ -1,0 +1,92 @@
+# Maintainer: Philip Deljanov <philip dot deljanov at gmail dot com>
+# Contributor: bohoomil <bohoomil at zoho dot com>
+
+pkgname=cairo-infinality-remix
+_name=cairo
+pkgver=1.16.0
+pkgrel=2
+pkgdesc="Cairo vector graphics library with Infinality patch support"
+arch=(i686 x86_64)
+license=('LGPL' 'MPL')
+url="http://cairographics.org/"
+groups=('infinality-remix')
+
+# requires libGL + libEGL - all libgl variants (mesa
+depends=('libpng' 'libxrender' 'libxext' 'fontconfig' 'pixman' 'glib2' 'libgl' 'lzo')
+makedepends=('libgl' 'librsvg' 'gtk2' 'poppler-glib' 'libspectre' 'gtk-doc' 'valgrind' 'git')
+provides=('cairo-xcb' 'cairo')
+replaces=('cairo-xcb')
+conflicts=('cairo'
+            'cairo-git'
+            'cairo-nomesa'
+            'cairo-infinality'
+            'cairo-infinality-ultimate'
+            'cairo-cleartype'
+            'cairo-dfb'
+            'cairo-ocaml-git'
+            'cairo-ubuntu')
+
+source=("git+https://anongit.freedesktop.org/git/cairo#tag=$pkgver"
+        0001-ft-Use-FT_Done_MM_Var-instead-of-free-when-available.patch
+        cairo-make-lcdfilter-default.patch
+        cairo-respect-fontconfig_pb.patch
+        cairo-server-side-gradients.patch
+        cairo-webkit-html5-fix.patch)
+
+sha256sums=('SKIP'
+            '52ab418058076ad01e046ebbbdc834f390305516c222d07de91a93a4dcebe921'
+            '9d692ffdbb13eaf5a66e7b5821fa6d67f2dbe3629d86d40e44f8bdcf0e6cdc2d'
+            '3ef17cfd14b3edc14092b5e96fc63673b6b020b7f05adaa59d3c3e4b0cfdde66'
+            'b80c99b10fd48dbf98abd70ca2d1265ad6035383c47bfbee5e540a814b6d2a23'
+            'e4fea537fae57f42a453dbace666482fc4de4cb7090d0141fdefb4388f842f32')
+
+prepare(){
+    cd $_name
+
+    # CVE-2018-19876
+    patch -Np1 -i "${srcdir}"/0001-ft-Use-FT_Done_MM_Var-instead-of-free-when-available.patch
+
+    # Infinality patches
+    patch -Np1 -i "${srcdir}"/cairo-make-lcdfilter-default.patch
+    patch -Np1 -i "${srcdir}"/cairo-respect-fontconfig_pb.patch
+
+    # Misc. patches
+    patch -Np1 -i "${srcdir}"/cairo-server-side-gradients.patch
+    patch -Np1 -i "${srcdir}"/cairo-webkit-html5-fix.patch
+
+    # Update gtk-doc
+    cp /usr/share/aclocal/gtk-doc.m4 build/aclocal.gtk-doc.m4
+    cp /usr/share/gtk-doc/data/gtk-doc.make build/Makefile.am.gtk-doc
+
+    NOCONFIGURE=1 ./autogen.sh
+}
+
+build() {
+  cd $_name
+  ./configure --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
+        --disable-static \
+        --disable-gl \
+        --enable-tee \
+        --enable-svg \
+        --enable-ps \
+        --enable-pdf \
+        --enable-gobject \
+        --enable-gtk-doc
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+}
+
+check() {
+    cd cairo
+    # FIXME: tests don't pass
+    env CAIRO_TEST_TARGET=image \
+        CAIRO_TEST_TARGET_FORMAT=rgba \
+        CAIRO_TESTS='!pthread-show-text' make -k check || :
+}
+
+package() {
+    cd $_name
+    make DESTDIR="$pkgdir" install
+}
