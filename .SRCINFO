@@ -1,0 +1,12 @@
+pkgbase = fermisurfer
+	pkgdesc = Fermisurfer can display Fermi surfaces colored as a function of arbitraly quantities such as the orbital character.
+	pkgver = 1.10.1
+	pkgrel = 0
+	url = https://osdn.net/projects/fermisurfer/
+	arch = any
+	depends = freeglut
+	source = https://osdn.net/dl/fermisurfer/fermisurfer-1.10.1.zip
+	sha256sums = 631ed9688fe54a0700ffbf349a5b784d5bac640486887861cf69f9f2c4e47be5
+
+pkgname = fermisurfer
+
