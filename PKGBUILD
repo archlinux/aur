@@ -2,11 +2,11 @@
 
 pkgname=openra-rv-git
 _pkgname=openra-rv
-pkgver=1624.git.7f5be71
+pkgver=1632.git.3b3a111
 pkgrel=1
 pkgdesc="A Command & Conquer: Red Alert 2-inspired mod of OpenRA"
 arch=('any')
-url="https://www.openra.net"
+url="https://github.com/MustaphaTR/Romanovs-Vengeance"
 license=('GPL3')
 install=openra-rv.install
 depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
