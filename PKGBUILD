@@ -1,12 +1,4 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# The following guidelines are specific to BZR, GIT, HG and SVN packages.
-# Other VCS sources are not natively supported by makepkg yet.
-
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Sebastian Krzyszkowiak <dos@dosowisko.net>
 pkgname=intel-power-control-git
 pkgver=r14.5b53221
 pkgrel=1
@@ -35,6 +27,6 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-    mkdir -p "$pkgdir/usr/bin"
+	mkdir -p "$pkgdir/usr/bin"
 	make PREFIX="$pkgdir/usr/" install
 }
