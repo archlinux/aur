@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=74.0.3724.8
+pkgver=74.0.3729.28
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -78,7 +78,7 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'chromium-dev.svg'
         # Patch form Gentoo.
          # Misc Patches.
-        'enable-vaapi.patch::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/master/debian/patches/enable_vaapi_on_linux_2.diff' # Use Saikrishna Arcot patch again
+        'enable-vaapi.patch::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/5c12891c099807bda7fa39ad0b62ef5ee4bc789c/debian/patches/enable_vaapi_on_linux_2.diff' # Use Saikrishna Arcot patch again
         'chromium-ffmpeg-clang.patch'
         # Patch from crbug (chromium bugtracker) or Arch chromium package.
         'chromium-widevine-r4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium'
