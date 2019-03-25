@@ -125,7 +125,6 @@ pkgbase = mpv-full-build-git
 	depends = libmysofa-git
 	depends = libopenmpt-svn
 	depends = mujs
-	depends = ndi-sdk
 	depends = openh264
 	depends = rockchip-mpp
 	depends = rsound
