@@ -4,7 +4,7 @@ pkgver=1.6
 pkgrel=1
 pkgdesc="zDKIM filter for Courier-MTA using the OpenDKIM Project's library."
 arch=('i686' 'x86_64')
-url="https://git.eckner.net/Erich/${pkgname}"
+url='https://www.tana.it/sw/zdkimfilter/'
 license=('GPL3')
 depends=(
   'courier-mta'
