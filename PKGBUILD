@@ -5,7 +5,7 @@ pkgbase=libnvidia-container
 pkgname=(libnvidia-container libnvidia-container-tools)
 
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 _elfver=0.7.1
 _nvmpver=396.51
 
@@ -41,9 +41,8 @@ _srcdir="${pkgname}-${pkgver}"
 prepare(){
   cd ${_srcdir}
 
-  pwd
-  patch -Np1 -i ../../fix_rpc_flags.patch
-  patch -Np1 -i ../../fix_git_rev_unavail.patch
+  patch -Np1 -i "${srcdir}/fix_rpc_flags.patch"
+  patch -Np1 -i "${srcdir}/fix_git_rev_unavail.patch"
 
   deps_dir="deps/src/"
   # mimic behavior from:
