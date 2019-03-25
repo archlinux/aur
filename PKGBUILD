@@ -2,7 +2,7 @@
 
 pkgname=mystuff
 pkgver=3.1
-pkgrel=10
+pkgrel=11
 pkgdesc="Create a custom menu in a popup window"
 url="http://www.kornelix.net/mystuff/mystuff.html"
 arch=('i686' 'x86_64')
@@ -14,10 +14,11 @@ options=('!emptydirs')
 
 build() {
   cd $pkgname
-  make PREFIX=/usr ICONDIR=/usr/share/pixmaps
+  make PREFIX=/usr 
 }
 
 package() {
   cd $pkgname
-  make DESTDIR="$pkgdir" ICONDIR=/usr/share/pixmaps install 
+  make DESTDIR="$pkgdir" ICONDIR=/usr/share/pixmaps install
+  sed -i 's+/usr/share/mystuff/icons/++' "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
