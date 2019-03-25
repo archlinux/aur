@@ -28,6 +28,6 @@ build() {
 package() {
   cd e3
   
-  #mkdir -p "${pkgdir}/opt/"
-  #cp -a "${srcdir}/ng3e-${pkgver}/root/${_base_recipe}" "${pkgdir}/opt/epics"
+  mkdir -p "${pkgdir}/opt/"
+  cp -a "${srcdir}/build/base-{$pkgver}" "${pkgdir}/opt/ess-epics"
 }
