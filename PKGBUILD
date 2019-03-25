@@ -1,6 +1,6 @@
 # Maintainer: Denis Lobanov <denis dot lobanov at zooei dot com>
 pkgname=bloomrpc
-pkgver=1.2.1
+pkgver=1.3.0_alpha
 pkgrel=1
 pkgdesc="GUI Client for GRPC Services"
 arch=(any)
@@ -9,7 +9,7 @@ license=(LGPL3)
 depends=('gtk3' 'gconf' 'libxss' 'libxtst')
 makedepends=('nodejs' 'npm'  'clang' 'git' 'yarn')
 install=${pkgname}.install
-source=("${pkgname}::git+https://github.com/uw-labs/bloomrpc.git#tag=v$pkgver"
+source=("${pkgname}::git+https://github.com/uw-labs/bloomrpc.git#tag=${pkgver//_/-}"
         "${pkgname}.desktop")
 sha1sums=('SKIP'
           'f050f42f2faedfb0df2da3e7afdaef42716a34ff')
