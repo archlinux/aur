@@ -1,7 +1,7 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 
 pkgname=lessmsi
-pkgver=1.6.1
+pkgver=1.6.3
 pkgrel=1
 pkgdesc='An utility to view and extract the contents of an MSI file'
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ makedepends=(gendesk icoutils)
 source=(https://github.com/activescott/lessmsi/archive/v${pkgver}.zip
         lessmsi
         lessmsi-gui)
-sha1sums=('f3e1f452d88b972c82496509913af5d593bf513a'
-          'e9de35cc3515c627a677a8a3b7a5f323c6b7490e'
+sha1sums=('be8632ddac371343facfa0b564e9f861ee82a179'
+          'cfdc4a43e4d7d120cd58d00f036bffa932063db2'
           '82e589e14fda5c2cb4d83844b4d8ea0e2915db1a')
 
 prepare() {
