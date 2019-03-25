@@ -1,3 +1,4 @@
+# Maintainer: Jose Riha <jose 1711 gmail com>
 # Contributor: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 # Contributor: veox <veox at wemakethings dot net>
 # Contributor: Morten Linderud <foxboron@archlinux.org>
@@ -5,7 +6,7 @@
 # Contributor: Anatol Pomozov
 
 pkgname=python2-autobahn
-pkgver=19.3.2
+pkgver=19.3.3
 pkgrel=1
 pkgdesc='Real-time framework for Web, Mobile & Internet of Things'
 arch=(any)
@@ -20,7 +21,7 @@ optdepends=(
 )
 source=(https://pypi.io/packages/source/a/autobahn/autobahn-$pkgver.tar.gz
         skip-test-missing-serializers.patch)
-sha256sums=('70a221d5e01923ea81457de04a3270ea2de376a759345ec4e8693db216c603a9'
+sha256sums=('e92f40ab26fb51672c25cd301ae79a549c6ff7748effe6abdea2ef31d5363a4f'
             '2d4ec4300f98cddd13c3a4d70e6ae4934a98f17b04628cadfd18654172d04f92')
 
 prepare() {
