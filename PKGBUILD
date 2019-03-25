@@ -2,8 +2,8 @@
 
 pkgname=scid
 _pkgname=Scid
-pkgver=4.6.4
-_pkgver=4.6
+pkgver=4.7.0
+_pkgver=4.7
 pkgrel=1
 pkgdesc="A Free Chess Database Application"
 url="http://scid.sourceforge.net"
@@ -15,20 +15,20 @@ optdepends=('snack: for sound support'
             'tkimg: for using some alternate sets of pieces')
 options=('!emptydirs')
 install="${pkgname}.install"
-source=("https://sourceforge.net/projects/${pkgname}/files/${_pkgname}/${_pkgname}%20${_pkgver}/${pkgname}-${pkgver}.zip")
-md5sums=('766f212dc8f3414415c78405aeb6f85d')
+source=("https://sourceforge.net/projects/${pkgname}/files/${_pkgname}/${_pkgname}%20${_pkgver}/${pkgname}-code-${pkgver}.zip")
+sha256sums=('2ed25781ec3c82d60fcee85259c19fd8934feae2547f9464304cdb01960f86da')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgname
   ./configure BINDIR=/usr/bin SHAREDIR=/usr/share/$pkgname
   make || return 1
 }
 
 package () {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgname
   make DESTDIR=$pkgdir install
   msg "Creating Desktop file"
-  install -Dm644 $srcdir/$pkgname-$pkgver/svg/scid.ico $pkgdir/usr/share/scid/scid.ico
+  install -Dm644 $srcdir/$pkgname/resources/svg/scid.ico $pkgdir/usr/share/scid/scid.ico
   cat > $srcdir/$pkgname.desktop <<EOF
 [Desktop Entry]
 Version=1.0
@@ -47,7 +47,7 @@ EOF
 
   msg "Copying sound files"
   install -d $pkgdir/usr/share/sounds
-  install -Dm644 $srcdir/$pkgname-$pkgver/sounds/*.wav $pkgdir/usr/share/sounds
+  install -Dm644 $srcdir/$pkgname/sounds/*.wav $pkgdir/usr/share/sounds
 
   msg "Fix world writtable bit in books folder"
   find $pkgdir/usr/share/scid/books -type f -exec chmod 644 {} \;
