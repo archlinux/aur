@@ -1,27 +1,33 @@
-# Maintainer: Slithery <aur at slithery dot uk>
-# Contributor: Zack Buhman <zbuhman@linode.com>
-# Contributor: Graham Edgecombe <graham@grahamedgecombe.com>
+# Maintainer: Morgenstern <charles [at] charlesbwise [dot] com> 
 
 pkgname=linode-cli
-pkgver=1.4.7
-pkgrel=2
-pkgdesc='A simple command-line interface to the Linode platform'
-url='https://github.com/linode/cli'
-license=('GPL2')
+pkgver=2.1.2
+pkgrel=1
+pkgdesc='Linode API wrapper'
+url='https://github.com/linode/linode-cli'
 arch=('any')
-depends=('perl-try-tiny' 'perl-libwww' 'perl-json' 'perl-crypt-ssleay'
-         'perl-mozilla-ca' 'perl-webservice-linode')
+license=('BSD')
+makedepends=('python-wheel' 'python2-wheel')
+depends=('python-colorclass' 'python2-colorclass' 'python-terminaltables' 'python2-terminaltables' 'python-requests' 'python2-requests' 'python-yaml' 'python2-yaml' 'python2-enum34')
+replaces=('linode-cli-dev')
 install=linode-cli.install
-source=("$url"/archive/v"$pkgver".zip)
-sha256sums=('776a7df7eb4e595fb246b9482c3de2661ec7ff11b35156c870e78ca49ce38c07')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linode/linode-cli/archive/${pkgver}.tar.gz"
+	enum34-extra-requires.patch)
+sha256sums=('63df028a49d90ce4b6f371c36cab7f59cfbc37e0f4872a910432a1b6debf9eb0'
+	    '3c05e163748ec607c3f6d62587e04911af2e593e25635c7acef39cd2d03f9f2e')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver" 
+  patch --strip=2 --input="${srcdir}/enum34-extra-requires.patch"
+}
 
 build() {
-  cd "cli-$pkgver"
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+  cd "$srcdir/$pkgname-$pkgver" 
+  make build
 }
 
 package() {
-  cd "cli-$pkgver"
-  make install DESTDIR="$pkgdir"
+  cd "$srcdir/$pkgname-$pkgver"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm644 "$srcdir"/"$pkgname"-"$pkgver"/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
