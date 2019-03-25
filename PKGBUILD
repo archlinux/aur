@@ -3,7 +3,7 @@
 
 pkgname=breeze-enhanced-git
 _gitname=BreezeEnhanced
-pkgver=r13.c9f5e8a
+pkgver=r25.5760a1c
 pkgrel=1
 pkgdesc='A fork of KDE Breeze decoration with additional options'
 arch=('any')
