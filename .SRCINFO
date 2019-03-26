@@ -1,13 +1,13 @@
 pkgbase = bader
 	pkgdesc = Quantum chemistry - Bader population analysis
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.0.3
+	pkgrel = 3
 	url = http://theory.cm.utexas.edu/henkelman/code/bader/
 	arch = x86_64
 	license = GPL
-	makedepends = gcc-fortran
+	depends = gcc-fortran
 	source = http://theory.cm.utexas.edu/henkelman/code/bader/download/bader.tar.gz
-	md5sums = 543c7bfa654ac4bcd69adc76da065cdf
+	md5sums = ec66f494740b1cb9c59b506d4eaef9eb
 
 pkgname = bader
 
