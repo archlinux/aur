@@ -13,8 +13,7 @@ pkgdesc='A web server based on Nginx and has many advanced features, originated 
 arch=('x86_64')
 url='http://tengine.taobao.org'
 license=('custom')
-depends=('pcre' 'zlib' 'openssl' 'gperftools' 'geoip' 'mailcap')
-makedepends=('luajit')
+depends=('pcre' 'zlib' 'openssl' 'gperftools' 'geoip' 'mailcap' 'luajit')
 backup=('etc/tengine/fastcgi.conf'
         'etc/tengine/fastcgi_params'
         'etc/tengine/koi-win'
@@ -27,9 +26,6 @@ backup=('etc/tengine/fastcgi.conf'
 install=tengine.install
 conflicts=('tengine')
 provides=('nginx' 'tengine')
-optdepends=(
-    'luajit: needed by http_lua_module'
-    )
 source=($url/download/tengine-$pkgver.tar.gz
         service
         logrotate
