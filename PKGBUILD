@@ -1,10 +1,11 @@
 # Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 # Maintainer: Fredy García <frealgagu at gmail dot com>
+# Maintainer: Christoph Bayer <chrbayer@criby.de>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=mongodb-tools
-pkgver=4.0.6
-pkgrel=2
+pkgver=4.0.7
+pkgrel=1
 pkgdesc="The MongoDB tools provide import, export, and diagnostic capabilities."
 arch=('x86_64')
 url="https://github.com/mongodb/mongo-tools"
@@ -12,7 +13,7 @@ license=('Apache')
 depends=('libpcap')
 makedepends=('go-pie')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mongodb/mongo-tools/archive/r${pkgver}.tar.gz")
-sha512sums=('d6185d7442a593d29db78889c55aba53e070bedd522d78d8c0bf52bb27f26c5fee6d010457f65774ea36a2e6d5280f38c95433ff76ed53ed9d74b1c811198cb7')
+sha512sums=('af4b4e035be4cad7d41b16904be9ca5834ede62f498279a47cc8b6a9ab58aed97cb8d06f5041df1f1f90a4b780270f46fc50f4f8f8ff2f324fa335e7032b4f28')
 
 _tools=('bsondump' 'mongostat' 'mongofiles' 'mongoexport' 'mongoimport' 'mongorestore' 'mongodump' 'mongotop' 'mongoreplay')
 
