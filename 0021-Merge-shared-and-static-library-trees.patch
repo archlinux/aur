@@ -1,4 +1,4 @@
-From d21a2fde18007e8abbde3407ae20b967b137069e Mon Sep 17 00:00:00 2001
+From 0e8a2cab1c1a9257ad85cfa3869433c9b454f860 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
 Subject: [PATCH 21/34] Merge shared and static library trees
@@ -13,10 +13,10 @@ Allow installation of shared and static build in the same prefix
  5 files changed, 51 insertions(+), 6 deletions(-)
 
 diff --git a/configure.pri b/configure.pri
-index b3b3e27c44..3136889a2f 100644
+index 629ca78ff1..b4822af13f 100644
 --- a/configure.pri
 +++ b/configure.pri
-@@ -1312,3 +1312,12 @@ defineTest(createConfigStatus) {
+@@ -1315,3 +1315,12 @@ defineTest(createConfigStatus) {
  
  QMAKE_POST_CONFIGURE += \
      "createConfigStatus()"
@@ -51,10 +51,10 @@ index fbf1f3b8df..c261c46e72 100644
  
  !have_target:!force_qt: CONFIG -= qt
 diff --git a/mkspecs/features/qt.prf b/mkspecs/features/qt.prf
-index 5da82fdb5b..5b05aa9e2a 100644
+index d8d5acaafd..167b8dbf2c 100644
 --- a/mkspecs/features/qt.prf
 +++ b/mkspecs/features/qt.prf
-@@ -246,6 +246,23 @@ for(ever) {
+@@ -238,6 +238,23 @@ for(ever) {
              !isEmpty(MODULE_WINRT_CAPABILITIES_DEVICE): \
                  WINRT_MANIFEST.capabilities_device_default += $$MODULE_WINRT_CAPABILITIES_DEVICE
          }
@@ -101,10 +101,10 @@ index 51ea3a8321..275e080ae4 100644
  QMAKE_EXT_YACC          = .y
  
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index e640fb8079..fc7f729ae6 100644
+index 67d97f520a..a802c645c7 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
-@@ -3244,6 +3244,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
+@@ -3247,6 +3247,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
      if (project->isActiveConfig("debug")) {
          ret += "d";
      }
@@ -114,7 +114,7 @@ index e640fb8079..fc7f729ae6 100644
      ret += Option::pkgcfg_ext;
      QString subdir = project->first("QMAKE_PKGCONFIG_DESTDIR").toQString();
      if(!subdir.isEmpty()) {
-@@ -3418,9 +3421,9 @@ MakefileGenerator::writePkgConfigFile()
+@@ -3421,9 +3424,9 @@ MakefileGenerator::writePkgConfigFile()
      t << endl;
  
      // requires
@@ -128,5 +128,5 @@ index e640fb8079..fc7f729ae6 100644
  
      t << endl;
 -- 
-2.20.1
+2.21.0
 

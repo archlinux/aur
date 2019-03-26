@@ -1,4 +1,4 @@
-From 62ddbd09af7ddeb08d21ccbaf2c8724a12c52ef6 Mon Sep 17 00:00:00 2001
+From ee1d9dbd64b6123280c47b8633daf3d407f12ae6 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 3 Feb 2019 14:34:42 +0100
 Subject: [PATCH 34/34] Prevent static build to prefer dynamic libraries
@@ -10,10 +10,10 @@ in order to get a fully statically linked binary in the end.
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/mkspecs/features/qt_configure.prf b/mkspecs/features/qt_configure.prf
-index c45439c3ef..7953cdd19e 100644
+index 7ca65c92b3..48fa54a166 100644
 --- a/mkspecs/features/qt_configure.prf
 +++ b/mkspecs/features/qt_configure.prf
-@@ -541,12 +541,12 @@ defineTest(qtConfResolveLibs) {
+@@ -553,12 +553,12 @@ defineTest(qtConfResolveLibs) {
                  # Under Windows, we look only for static libraries, as even for DLLs
                  # one actually links against a static import library.
                  mingw {
@@ -33,5 +33,5 @@ index c45439c3ef..7953cdd19e 100644
                  lcan += $${lib}.lib
              }
 -- 
-2.20.1
+2.21.0
 
