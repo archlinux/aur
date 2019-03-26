@@ -1,7 +1,7 @@
 # Maintainer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 _pkgname=dupeguru
 pkgname="${_pkgname}-git"
-pkgver=4.0.3
+pkgver=4.0.3.r40.ga1cacbe7
 pkgrel=1
 pkgdesc='Find duplicate files on your system'
 arch=('x86_64')
@@ -11,12 +11,10 @@ depends=('python' 'python-pyqt5' 'python-polib' 'python-send2trash' 'python-hsau
          'libxkbcommon-x11')
 makedepends=('git' 'python-sphinx')
 checkdepends=('python-tox')
-source=('package_py.patch'
-        'git+https://github.com/hsoft/dupeguru.git'
+source=('git+https://github.com/hsoft/dupeguru.git'
         'git+https://github.com/hsoft/hscommon#commit=5497c6fec44de6767a6488f540526d70218ef0da'
         'git+https://github.com/hsoft/qtlib.git#commit=45cf0cbf77c87eb591914f0235b3b2e36ef09bb8')
-md5sums=('01bc14050c5225d0939d051e54c397a3'
-         'SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP')
 provides=('dupeguru')
 conflicts=('dupeguru' 'dupeguru-se' 'dupeguru-pe' 'dupeguru-me')
 
@@ -31,8 +29,6 @@ prepare() {
   git config submodule.hscommon.url "${srcdir}/hscommon"
   git config submodule.qtlib.url    "${srcdir}/qtlib"
   git submodule update
-
-  patch -p1 package.py <"${srcdir}/package_py.patch"
 }
 
 build() {
