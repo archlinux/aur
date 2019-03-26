@@ -4,27 +4,26 @@
 
 pkgname=mosh
 pkgver=1.3.2
-pkgrel=7
+pkgrel=8
 pkgdesc='Mobile shell, surviving disconnects with local echo and line editing'
-arch=('x86_64')
+arch=(x86_64)
 url='https://mosh.org/'
-license=('GPL3')
-depends=('libutempter' 'openssl' 'perl-io-tty' 'protobuf')
-makedepends=('git')
-options=('!emptydirs')
+license=(GPL3)
+depends=(libutempter openssh openssl perl-io-tty protobuf)
+makedepends=(git)
+options=(!emptydirs)
 source=("git+https://github.com/mobile-shell/mosh#tag=$pkgname-$pkgver")
 sha512sums=('SKIP')
 
 build() {
-  cd "$pkgname"
-
+  cd $pkgname
   ./autogen.sh
   ./configure --prefix=/usr --enable-ufw --sysconfdir=/etc
   make
 }
 
 package() {
-  DESTDIR="$pkgdir" make -C "$pkgname" install
+  DESTDIR="$pkgdir" make -C $pkgname install
   install -Dm644 "$pkgname/conf/bash-completion/completions/$pkgname" \
     "$pkgdir/usr/share/bash-completion/completions/$pkgname"
 }
