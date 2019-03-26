@@ -3,7 +3,7 @@
 
 _pkgname=vdf
 pkgname=(python-vdf python2-vdf)
-pkgver=2.4
+pkgver=3.0
 pkgrel=1
 pkgdesc="Library for working with Valve's VDF text format"
 arch=('any')
