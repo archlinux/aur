@@ -1,7 +1,7 @@
 # Maintainer: Edward Pacman <edward@edward-p.xyz>
 
 pkgname=archwrt-ss.sh-git
-pkgver=r5.7eb66f8
+pkgver=r7.27a8001
 pkgrel=1
 pkgdesc="A simple Shadowsocks transparent proxy setup script by archwrt."
 arch=('x86_64')
@@ -31,9 +31,3 @@ package() {
   install -Dm644 archwrt-ss.conf "${pkgdir}/opt/archwrt-ss/archwrt-ss.conf"
   install -Dm644 archwrt-ss.service "${pkgdir}/usr/lib/systemd/system/archwrt-ss.service"
 }
-
-
-
-
-
-
