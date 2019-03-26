@@ -3,45 +3,34 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=proxygen
-pkgver=2019.03.18.00
+pkgver=2019.03.25.00
 pkgrel=1
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server."
 arch=('x86_64')
 url="https://github.com/facebook/proxygen"
 license=('BSD')
-depends=('folly' 'fbthrift' 'libcap')
-makedepends=('autoconf-archive' 'wget' 'ruby' 'gperf' 'gperftools' 'wangle' 'python' 'unzip')
+depends=('folly' 'fbthrift' 'wangle' 'zstd' 'fizz' 'openssl' 'zlib' 'libcap')
+makedepends=('cmake' 'python' 'gperf' 'gperftools')
 conflicts=('proxygen-git')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('b697bc6c2d3f564461a597a323272c0473b5ad624925ff5612525dba7d976850')
-
-prepare() {
-  cd "$pkgname-$pkgver/$pkgname"
-  autoreconf -ivf
-}
+sha256sums=('cf849f27cd7780fbfa8ae7dce3518d15b13650da2ba8ca3c16cc6613f7d423a5')
 
 build() {
-  cd "$pkgname-$pkgver/$pkgname"
-  ./configure --prefix=/usr \
-    --with-sysconfdir=/etc \
-    --with-sysroot=/usr \
-    --with-gnu-ld=yes
-  make
+  cd "$pkgname-$pkgver"
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -B _build .
+  cmake --build _build
 }
 
 check() {
-  cd "$pkgname-$pkgver/$pkgname"
-  make check
+  cd "$pkgname-$pkgver"
+  # cmake --build _build --target test
 }
 
 package() {
-  cd "$pkgname-$pkgver/$pkgname"
-  make DESTDIR="$pkgdir/" install
+  cd "$pkgname-$pkgver"
+  cmake --build _build --target install -- DESTDIR="$pkgdir/"
 
-  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  # By default, 'make install' skips 'external' directory
-  for i in http_parser_cpp.cpp http_parser.{c,h}; do
-    install -Dm644 external/http_parser/$i $pkgdir/usr/include/external/http_parser/$i
-  done
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$pkgname/external/http_parser/http_parser.h" \
+                 "$pkgdir/usr/include/$pkgname/external/http_parser/http_parser.h"
 }
