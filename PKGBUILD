@@ -9,13 +9,13 @@
 pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
 pkgver=4.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
 url="https://www.${pkgname}.com/"
 license=("custom:SSPL")
 # lsb-release::/etc/lsb-release required by src/mongo/util/processinfo_linux.cpp::getLinuxDistro()
-depends=("curl" "libstemmer" "lsb-release" "pcre" "wiredtiger>=3.1.0.20190207" "yaml-cpp")
+depends=("curl" "libstemmer" "lsb-release" "pcre" "wiredtiger>=3.1.0.20190313" "yaml-cpp")
 optdepends=("${pkgname}-tools: mongoimport, mongodump, mongotop, etc")
 makedepends=("libpcap" "ncurses" "python2-cheetah" "python2-regex" "python2-requests" "python2-setuptools" "python2-typing" "python2-yaml" "readline" "scons")
 checkdepends=("python2-pymongo")

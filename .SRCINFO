@@ -1,7 +1,7 @@
 pkgbase = mongodb
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
 	pkgver = 4.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mongodb.com/
 	arch = x86_64
 	license = custom:SSPL
@@ -20,7 +20,7 @@ pkgbase = mongodb
 	depends = libstemmer
 	depends = lsb-release
 	depends = pcre
-	depends = wiredtiger>=3.1.0.20190207
+	depends = wiredtiger>=3.1.0.20190313
 	depends = yaml-cpp
 	optdepends = mongodb-tools: mongoimport, mongodump, mongotop, etc
 	backup = etc/mongodb.conf
