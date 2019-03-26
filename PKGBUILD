@@ -2,7 +2,7 @@
 # Contributor: Eugene Yudin aka Infy <Eugene dot Yudin at gmail dot com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=goldendict-git
-pkgver=1.5.0.RC.978.g6d46fd15
+pkgver=1.5.0.RC.1009.gade20fc1
 pkgrel=1
 pkgdesc="A feature-rich dictionary lookup program, supporting multiple dictionary formats."
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ prepare() {
 
 build(){
   cd "$srcdir/$pkgname"
-  qmake-qt5 "CONFIG+=zim_support" "CONFIG+=chinese_conversion_support" PREFIX="/usr"
+  qmake-qt5 "CONFIG+=zim_support" "CONFIG+=chinese_conversion_support" PREFIX="/usr" goldendict.pro
   make
 }
 
