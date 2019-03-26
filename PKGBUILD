@@ -17,4 +17,4 @@ package() {
   unzip -p ${pkgname}-${pkgver}.zip SDM-master/sdm > sdm-git
   install -D -t "$pkgdir/usr/bin" "$srcdir/sdm-git"
 }
-md5sums=('424594afa27e8d36ce74daf0e350f59d')
+md5sums=('cde3949f3d8e5c141ebddbf4406d399e')
