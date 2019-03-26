@@ -7,14 +7,14 @@
 
 _tcp_module_gitname=nginx_tcp_proxy_module
 pkgname=tengine-extra
-pkgver=2.2.3
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://tengine.taobao.org'
 license=('custom')
 depends=('pcre' 'zlib' 'openssl' 'gperftools' 'geoip' 'mailcap')
-makedepends=('lua51' 'git')
+makedepends=('luajit')
 backup=('etc/tengine/fastcgi.conf'
         'etc/tengine/fastcgi_params'
         'etc/tengine/koi-win'
@@ -28,25 +28,15 @@ install=tengine.install
 conflicts=('tengine')
 provides=('nginx' 'tengine')
 optdepends=(
-    'lua51: needed by http_lua_module'
-    'memcached: needed by http_memcached_module')
+    'luajit: needed by http_lua_module'
+    )
 source=($url/download/tengine-$pkgver.tar.gz
-        git+https://github.com/yaoweibin/$_tcp_module_gitname.git
         service
         logrotate
         )
-sha256sums=('8268d9637640e4bffcfa0817f9f16c5aa8a084104d9531e885911e0cb4ab2274'
-            'SKIP'
-            'bbc2a744fcc65b496549a312a19aba2ee87840ad36a523c2e6bc2a585861bbcd'
+sha256sums=('17cf1380d4faefb70707970437b3f8b66f6ff4530b5e6e61970b35f59b2e2624'
+            'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
             '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97')
-
-prepare() {
-    cd "$srcdir"
-
-    msg "Applying the TCP Proxy module..."
-    cd "$srcdir"/tengine-$pkgver
-    patch -p1 -i "$srcdir"/"$_tcp_module_gitname"/tcp.patch
-}
 
 build() {
     cd tengine-$pkgver
@@ -55,8 +45,6 @@ build() {
         --prefix=/etc/tengine \
         --conf-path=/etc/tengine/tengine.conf \
         --sbin-path=/usr/bin/tengine \
-        --dso-path=/etc/tengine/modules \
-        --dso-tool-path=/usr/bin/dso_tool \
         --pid-path=/run/tengine.pid \
         --lock-path=/run/lock/tengine.lock \
         --user=http \
@@ -68,31 +56,38 @@ build() {
         --http-fastcgi-temp-path=/var/lib/tengine/fastcgi \
         --http-scgi-temp-path=/var/lib/tengine/scgi \
         --http-uwsgi-temp-path=/var/lib/tengine/uwsgi \
-        --with-imap \
-        --with-imap_ssl_module \
-        --with-ipv6 \
-        --with-pcre-jit \
+        --with-cc-opt="$CFLAGS $CPPFLAGS" \
+        --with-ld-opt="$LDFLAGS" \
+        --with-compat \
+        --with-debug \
         --with-file-aio \
         --with-google_perftools_module \
+        --with-http_addition_module \
+        --with-http_auth_request_module \
         --with-http_dav_module \
+        --with-http_degradation_module \
+        --with-http_flv_module \
         --with-http_geoip_module \
         --with-http_gunzip_module \
         --with-http_gzip_static_module \
-        --with-http_lua_module=shared \
-        --with-http_memcached_module=shared \
+        --with-http_lua_module \
+        --with-http_mp4_module \
         --with-http_realip_module \
-        --with-http_secure_link_module=shared \
+        --with-http_secure_link_module \
+        --with-http_slice_module \
         --with-http_ssl_module \
-        --with-http_v2_module \
         --with-http_stub_status_module \
-        --with-http_addition_module \
-        --with-http_degradation_module \
-        --with-http_flv_module=shared \
-        --with-http_mp4_module=shared \
-        --with-http_sub_module=shared \
-        --with-http_sysguard_module=shared \
-        --with-http_reqstat_module=shared \
-        --add-module="$srcdir"/"$_tcp_module_gitname"
+        --with-http_sub_module \
+        --with-http_v2_module \
+        --with-mail \
+        --with-mail_ssl_module \
+        --with-pcre-jit \
+        --with-stream \
+        --with-stream_geoip_module \
+        --with-stream_realip_module \
+        --with-stream_ssl_module \
+        --with-stream_ssl_preread_module \
+        --with-threads \
 
     make
 }
@@ -100,19 +95,12 @@ build() {
 package() {
     cd tengine-$pkgver
     make DESTDIR="$pkgdir" install
-    make DESTDIR="$pkgdir" dso_install
-
-    install -Dm644 contrib/vim/ftdetect/nginx.vim \
-      "$pkgdir"/usr/share/vim/vimfiles/ftdetect/tengine.vim
-    install -Dm644 contrib/vim/syntax/nginx.vim \
-      "$pkgdir"/usr/share/vim/vimfiles/syntax/tengine.vim
-    install -Dm644 contrib/vim/indent/nginx.vim \
-      "$pkgdir"/usr/share/vim/vimfiles/indent/tengine.vim
 
     sed -e 's|\<user\s\+\w\+;|user html;|g' \
         -e '44s|html|/usr/share/tengine/html|' \
         -e '54s|html|/usr/share/tengine/html|' \
         -i "$pkgdir"/etc/tengine/tengine.conf
+
     rm "$pkgdir"/etc/tengine/*.default
     rm "$pkgdir"/etc/tengine/mime.types # in mailcap
     ln -s /etc/nginx/mime.types "$pkgdir"/etc/tengine/mime.types # from mailcap
@@ -129,9 +117,15 @@ package() {
     install -Dm644 "$srcdir"/logrotate "$pkgdir"/etc/logrotate.d/tengine
     install -Dm644 "$srcdir"/service "$pkgdir"/usr/lib/systemd/system/tengine.service
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/tengine/LICENSE
+
     rmdir "$pkgdir"/run
 
     install -d "$pkgdir"/usr/share/man/man8/
     gzip -9c man/nginx.8 > "$pkgdir"/usr/share/man/man8/tengine.8.gz
+
+    for i in ftdetect indent syntax; do
+      install -Dm644 contrib/vim/$i/nginx.vim \
+        "$pkgdir/usr/share/vim/vimfiles/$i/tengine.vim"
+    done
 }
 

@@ -12,4 +12,12 @@ post_upgrade() {
         echo '     - When additional log directories are used in /var/log/nginx make sure they'
         echo '       are owned by root:root and have 755 set as permission to mitigate CVE-2016-1247'
     fi
+    if [[ $(vercmp $2 2.3.0-1) -le 0 ]]; then
+        echo ':: WARNING:'
+        echo '     - Tengine has been upgraded core files from Nginx 1.15.9 version, and some tengine'
+        echo '       features has been replaced by nginx offical ones.'
+        echo '       Check your config files before attempting to restart the process.'
+        echo '     See: https://github.com/alibaba/tengine/issues/1220'
+        echo '     - The nginx_tcp_proxy_module is removed, it's not maintained anymore.'
+    fi
 }

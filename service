@@ -10,6 +10,7 @@ SyslogLevel=err
 
 ExecStart=/usr/bin/tengine -g 'pid /run/tengine.pid;'
 ExecReload=/usr/bin/tengine -s reload
+KillSignal=SIGQUIT
 KillMode=mixed
 
 [Install]
