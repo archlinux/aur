@@ -18,11 +18,10 @@ sha256sums=("SKIP")
 build() {
     cd "${_pkgname}"
     git checkout develop
-    go run mage.go b
+    GOBIN="${srcdir}/${_pkgname}" go run mage.go b
 }
 
 package() {
     cd "${_pkgname}"
     install -Dm755 "${srcdir}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
-
