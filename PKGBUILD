@@ -1,16 +1,15 @@
-# $Id$
 # Contributor: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname=bcmatroska2-git
-_pkgname=libmatroska-c
-pkgver=0.23.r11.gd2e052b
+_pkgname=bcmatroska2
+pkgver=0.23.r12.gfac98dc
 pkgrel=1
 pkgdesc="A C library for working with matroska files"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.linphone.org/"
 license=('GPL')
 makedepends=('cmake')
-source=("git://git.linphone.org/$_pkgname.git")
+source=("git+https://gitlab.linphone.org/BC/public/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {

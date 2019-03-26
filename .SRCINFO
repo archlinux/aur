@@ -1,13 +1,12 @@
 pkgbase = bcmatroska2-git
 	pkgdesc = A C library for working with matroska files
-	pkgver = 0.23.r11.gd2e052b
+	pkgver = 0.23.r12.gfac98dc
 	pkgrel = 1
 	url = http://www.linphone.org/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	source = git://git.linphone.org/libmatroska-c.git
+	source = git+https://gitlab.linphone.org/BC/public/bcmatroska2.git
 	sha256sums = SKIP
 
 pkgname = bcmatroska2-git
