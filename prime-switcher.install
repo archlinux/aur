@@ -1,0 +1,15 @@
+pkgname=prime-switcher
+
+post_install() {
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+  prime-switcher -D -s power-saving
+}
+
+pre_remove() {
+  prime-switcher --uninstall
+  echo "Reboot is required to apply changes"
+}
+
+post_remove() {
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+}
