@@ -4,6 +4,7 @@ pkgname=ipfs-fuse-daemon
 pkgver=0.0.0
 pkgrel=0
 pkgdesc="systemd daemon to mount ipfs as a fuse"
+url=https://github.com/KSXGitHub/ipfs-fuse-daemon.pkgbuild
 arch=(any)
 license=(MIT)
 depends=(bash go-ipfs fuse2)
