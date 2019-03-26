@@ -1,6 +1,4 @@
-# Maintainer:  Andrew Shelyakov <andrew.shelyakov@ya.ru>
-# Contributor: Aleksey Vasilenko <aleksey.vasilenko@gmail.com>
-# Contributor: Iliya Ivanov <i.ivanov@proforge.org>
+# Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 _pkgbase='php'
 pkgbase="${_pkgbase}-zts"
@@ -23,39 +21,46 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=7.3.0
+
+pkgver=7.3.3
 pkgrel=1
 arch=('x86_64')
 license=('PHP')
 url='http://www.php.net'
 makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libsodium' 'libxslt' 'libzip' 'net-snmp'
-             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre')
+             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre' 'libnsl')
 checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
-        'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch')
-sha512sums=('d991101eb833d3a47833aa930341e75c56f26c4cb0249896728ebe209c6c02af1704fccc3052128d8f9fdffc60dcef0ece38a532697131141946898d8b1abcda'
+        'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
+        'enchant-2.patch' 'freetype.patch')
+sha512sums=('bad5fa35f5962fa23dbe01fe85f76ce80e431cf2f9719284c082bb1fa32af26407407a97d3bf999165a6158f83a9669e3dd641f6d70028ec644b74a414fb803d'
             'SKIP'
-            'f3b7de6c18798ee8f1eb323de2da2553c0ee734a0beaac7ccb15d0f8e464a7c0e0b4da8a7da9b0b52d263fcd2e7bf8b067b00b9febb940f3252f0d930ede6604'
+            'a46a39c1b0376a94ce71d3eda92e61054d4060fb20706c5c6472183755683717e20d4ee5a887431df7d789b7b9bbf42ee63f8692d36c596bac9c3c1786ddf256'
             'eccbe1a0c7b2757ab3c982c871cc591a66ad70f085aaa0d44f93cacacedc7b8fd21b8d0c66471327ff070db1bab1ab83a802f6fa190f33bdd74c134975e3910e'
             'c9efb3f50770d6ddfa908b7f562355121f07ce528271e72ba188a4f1c788e264fc117c220053aaded42040825c03f3f17131a62a67d96cc91fd9da472e085deb'
             '824e9a0d10063283357d49a81ab49bf834afd24f098482bdbaa9ab60bbad2b0dea6f5879259b73717d437626b02fb4f2d3ef68b7bcbb26bee274a7b61144720f'
-            'b3bc5defd4877016663c9051518bb67acc8ebcf32206b93df824de1ee0c4b724e6151fce4c6dd11b917361a3aa96c426d542b025e124b6b6cb625ddcc590ad78')
-validpgpkeys=('B1B44D8F021E4E2D6021E995DC9FF8D3EE5AF27F'
-              '1729F83938DA44E27BA0F4D3DBDB397470D12172'
-              'CBAF69F173A0FEA4B537F470D66C9593118BCCB6'
-             )
+            'f397afe7b909d97995b5cf041dfebf165e2c49947bfd749c1d873fdcd13dfc6920ae631d32e6b5bfe84455a8b74d4abede205dcf65e4237f8effac6bb82fe021'
+            '06b49fb044fe8cdeef5109aa7bb6858906396e3f3643827cdb241264029579c71b0a7661d24b78b16573c54832505491c4b2a1fd77ae7c313cb082731c2efd9e'
+            '97ca469d5234f5cc71af38bb99a60130fdab5f849ad1f49f112101779c7659ca4d6700aef72e0294c85bdcb18e487fc0cdda855cc51084b9e8cacb02ec0fb1eb')
+validpgpkeys=('CBAF69F173A0FEA4B537F470D66C9593118BCCB6')
 
 prepare() {
 	cd ${srcdir}/${_pkgbase}-${pkgver}
 
-	patch -p0 -i ${srcdir}/apache.patch
+#	patch -p0 -i ${srcdir}/apache.patch
 	patch -p0 -i ${srcdir}/php-fpm.patch
 	patch -p0 -i ${srcdir}/php.ini.patch
+	patch -p1 -i ${srcdir}/enchant-2.patch
+	patch -p1 -i ${srcdir}/freetype.patch
+	autoconf
 
 	rm tests/output/stream_isatty_*.phpt
 }
 
 build() {
+	# http://site.icu-project.org/download/61#TOC-Migration-Issues
+	CPPFLAGS+=' -DU_USING_ICU_NAMESPACE=1'
+
 	local _phpconfig="--srcdir=../${_pkgbase}-${pkgver} \
 		--config-cache \
 		--prefix=/usr \
@@ -105,6 +110,7 @@ build() {
 		--with-mysql-sock=/run/mysqld/mysqld.sock \
 		--with-mysqli=shared,mysqlnd \
 		--with-openssl \
+		--with-password-argon2 \
 		--with-pcre-regex=/usr \
 		--with-pdo-dblib=shared,/usr \
 		--with-pdo-mysql=shared,mysqlnd \
@@ -177,14 +183,14 @@ check() {
 
 package_php-zts() {
 	pkgdesc='PHP with ZTS enabled'
-	depends=('libxml2' 'curl' 'libzip' 'pcre')
+	depends=('libxml2' 'curl' 'libzip' 'pcre' 'argon2')
 	replaces=("${_pkgbase}" 'php-ldap')
 	conflicts=("${_pkgbase}" 'php-ldap')
 	provides=("${_pkgbase}=${pkgver}" "php-ldap=${pkgver}")
 	backup=('etc/php/php.ini')
 
 	cd ${srcdir}/build
-	make INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
+	make -j1 INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
 	install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/php.ini-production ${pkgdir}/etc/php/php.ini
 	install -d -m755 ${pkgdir}/etc/php/conf.d/
 
@@ -204,7 +210,7 @@ package_php-zts-cgi() {
 	provides=("${_pkgbase}-cgi=${pkgver}")
 
 	cd ${srcdir}/build
-	make INSTALL_ROOT=${pkgdir} install-cgi
+	make -j1 INSTALL_ROOT=${pkgdir} install-cgi
 }
 
 package_php-zts-apache() {
