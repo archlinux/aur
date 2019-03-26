@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 pkgname=hexyl-git
 pkgdesc="A command-line hex viewer"
-pkgrel=2
-pkgver=0.4.0.74
+pkgrel=1
+pkgver=0.4.0.77
 arch=('i686' 'x86_64')
 conflicts=("hexyl")
 provides=("hexyl")
