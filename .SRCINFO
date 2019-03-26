@@ -1,7 +1,7 @@
 pkgbase = wiredtiger
 	pkgdesc = High performance, scalable, production quality, NoSQL, Open Source extensible platform for data management
 	pkgver = 3.1.1.20190314
-	pkgrel = 2
+	pkgrel = 3
 	url = http://source.wiredtiger.com/
 	arch = x86_64
 	license = GPL
