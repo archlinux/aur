@@ -1,4 +1,4 @@
-From c49f1674465685e03c0d95b869d6cea45dcf5447 Mon Sep 17 00:00:00 2001
+From af97d60e4f62cffec74c0c4905b79b49aab598af Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 5 Aug 2017 21:14:26 +0200
 Subject: [PATCH 23/34] Allow usage of static version with CMake
@@ -12,13 +12,13 @@ installed in the same prefix
    via regular find_package(Qt5Core)
 ---
  mkspecs/features/create_cmake.prf             | 103 +++---
- .../data/cmake/Qt5BasicConfig.cmake.in        | 302 ++++++++++++------
+ .../data/cmake/Qt5BasicConfig.cmake.in        | 305 ++++++++++++------
  .../data/cmake/Qt5PluginTarget.cmake.in       |  18 +-
  .../cmake/Qt5StaticOnlyRedirection.cmake.in   |  11 +
  src/corelib/Qt5CoreConfigExtras.cmake.in      |  24 +-
  src/gui/Qt5GuiConfigExtras.cmake.in           |   8 +-
  src/testlib/Qt5TestConfigExtras.cmake.in      |   2 +-
- 7 files changed, 315 insertions(+), 153 deletions(-)
+ 7 files changed, 316 insertions(+), 155 deletions(-)
  create mode 100644 mkspecs/features/data/cmake/Qt5StaticOnlyRedirection.cmake.in
 
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
@@ -244,7 +244,7 @@ index 2a94964b49..839a51f377 100644
  # We are generating cmake files. Most developers of Qt are not aware of cmake,
  # so we require automatic tests to be available. The only module which should
 diff --git a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
-index 15d8b8372e..939e55dfd8 100644
+index 9325bb3190..7ee0c86130 100644
 --- a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 +++ b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 @@ -3,6 +3,33 @@ if (CMAKE_VERSION VERSION_LESS 3.1.0)
@@ -307,19 +307,19 @@ index 15d8b8372e..939e55dfd8 100644
  but this file does not exist.  Possible reasons include:
  * The file was deleted, renamed, or moved to another location.
  * An install or uninstall procedure did not complete successfully.
-@@ -48,23 +79,60 @@ but not all the files it references.
-     endif()
- endmacro()
- 
-+!!IF !isEmpty(CMAKE_STATIC_TYPE)
+@@ -105,33 +136,68 @@ if(NOT COMMAND _qt5_add_dependencies)
+         set(CMAKE_FIND_LIBRARY_PREFIXES \"${DEFAULT_CMAKE_FIND_LIBRARY_PREFIXES}\")
+     endmacro()
+ endif()
++
 +# ensure also regular/dynamic macro exists because it might be used in some extra config
 +if(NOT COMMAND _qt5_$${CMAKE_MODULE_NAME}_check_file_exists)
 +    macro(_qt5_$${CMAKE_MODULE_NAME}_check_file_exists FILE)
-+        _qt5_$${CMAKE_MODULE_NAME}_check_file_exists_static("${FILE}")
++        _qt5_$${CMAKE_MODULE_NAME}_check_file_exists_static(\"${FILE}\")
 +    endmacro()
 +endif()
-+!!ENDIF
-+
+ !!ENDIF
+ 
  !!IF !equals(TEMPLATE, aux)
 -macro(_populate_$${CMAKE_MODULE_NAME}_target_properties TARGET_CONFIG LIB_LOCATION IMPLIB_LOCATION)
 -    set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} APPEND PROPERTY IMPORTED_CONFIGURATIONS ${TARGET_CONFIG})
@@ -368,19 +368,20 @@ index 15d8b8372e..939e55dfd8 100644
      endif()
 -    set_target_properties(Qt5::$${CMAKE_MODULE_NAME} PROPERTIES
 +    set_target_properties(${TARGET_NAME} PROPERTIES
-         \"INTERFACE_LINK_LIBRARIES_${TARGET_CONFIG}\" \"${_Qt5$${CMAKE_MODULE_NAME}_LIB_DEPENDENCIES}${_list_sep}${_Qt5$${CMAKE_MODULE_NAME}_STATIC_${TARGET_CONFIG}_LIB_DEPENDENCIES}\"
          \"IMPORTED_LOCATION_${TARGET_CONFIG}\" ${imported_location}
  !!IF !isEmpty(CMAKE_LIB_SONAME)
-@@ -74,7 +142,7 @@ macro(_populate_$${CMAKE_MODULE_NAME}_target_properties TARGET_CONFIG LIB_LOCATI
-         \"IMPORTED_LINK_INTERFACE_LIBRARIES_${TARGET_CONFIG}\" \"${_Qt5$${CMAKE_MODULE_NAME}_LIB_DEPENDENCIES}${_list_sep}${_Qt5$${CMAKE_MODULE_NAME}_STATIC_${TARGET_CONFIG}_LIB_DEPENDENCIES}\"
+         \"IMPORTED_SONAME_${TARGET_CONFIG}\" \"$${CMAKE_LIB_SONAME}\"
+ !!ENDIF
      )
+-    _qt5_add_dependencies(Qt5::$${CMAKE_MODULE_NAME} \"${TARGET_CONFIG}\" \"${_Qt5$${CMAKE_MODULE_NAME}_LIB_DEPENDENCIES}${_list_sep}${_Qt5$${CMAKE_MODULE_NAME}_STATIC_${TARGET_CONFIG}_LIB_DEPENDENCIES}\")
++    _qt5_add_dependencies(\"${TARGET_NAME}\" \"${TARGET_CONFIG}\" \"${_Qt5$${CMAKE_MODULE_NAME}_LIB_DEPENDENCIES}${_list_sep}${_Qt5$${CMAKE_MODULE_NAME}_STATIC_${TARGET_CONFIG}_LIB_DEPENDENCIES}\")
  !!ELSE
 -    set_target_properties(Qt5::$${CMAKE_MODULE_NAME} PROPERTIES
 +    set_target_properties(${TARGET_NAME} PROPERTIES
          \"INTERFACE_LINK_LIBRARIES_${TARGET_CONFIG}\" \"${_Qt5$${CMAKE_MODULE_NAME}_LIB_DEPENDENCIES}\"
          \"IMPORTED_LOCATION_${TARGET_CONFIG}\" ${imported_location}
  !!IF !isEmpty(CMAKE_LIB_SONAME)
-@@ -91,9 +159,13 @@ macro(_populate_$${CMAKE_MODULE_NAME}_target_properties TARGET_CONFIG LIB_LOCATI
+@@ -148,9 +214,13 @@ macro(_populate_$${CMAKE_MODULE_NAME}_target_properties TARGET_CONFIG LIB_LOCATI
  !!ELSE
      set(imported_implib \"IMPORTED_IMPLIB_${TARGET_CONFIG}\" \"$${CMAKE_LIB_DIR}${IMPLIB_LOCATION}\")
  !!ENDIF
@@ -395,7 +396,7 @@ index 15d8b8372e..939e55dfd8 100644
          \"IMPORTED_IMPLIB_${TARGET_CONFIG}\" ${imported_implib}
          )
      endif()
-@@ -101,8 +173,9 @@ macro(_populate_$${CMAKE_MODULE_NAME}_target_properties TARGET_CONFIG LIB_LOCATI
+@@ -158,8 +228,9 @@ macro(_populate_$${CMAKE_MODULE_NAME}_target_properties TARGET_CONFIG LIB_LOCATI
  endmacro()
  !!ENDIF
  
@@ -406,7 +407,7 @@ index 15d8b8372e..939e55dfd8 100644
  !!IF !no_module_headers
  !!IF !isEmpty(CMAKE_BUILD_IS_FRAMEWORK)
      set(_Qt5$${CMAKE_MODULE_NAME}_OWN_INCLUDE_DIRS
-@@ -110,46 +183,50 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -167,46 +238,50 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
        \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/$${CMAKE_LIB_DIR}Qt$${CMAKE_MODULE_NAME}.framework/Headers\"
      )
  !!IF isEmpty(CMAKE_NO_PRIVATE_INCLUDES)
@@ -474,7 +475,7 @@ index 15d8b8372e..939e55dfd8 100644
      endforeach()
  
  !!IF isEmpty(CMAKE_BUILD_IS_FRAMEWORK)
-@@ -158,16 +235,20 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -215,16 +290,20 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
      list(FIND Qt5$${CMAKE_MODULE_NAME}_FIND_COMPONENTS Private _check_private)
      if (NOT _check_private STREQUAL -1)
          foreach(_dir ${Qt5$${CMAKE_MODULE_NAME}_PRIVATE_INCLUDE_DIRS})
@@ -498,7 +499,7 @@ index 15d8b8372e..939e55dfd8 100644
  !!ENDIF // TEMPLATE != aux
      set(_Qt5$${CMAKE_MODULE_NAME}_MODULE_DEPENDENCIES \"$${CMAKE_MODULE_DEPS}\")
  
-@@ -175,10 +256,10 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -232,10 +311,10 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
      list(APPEND _Qt5$${CMAKE_MODULE_NAME}_MODULE_DEPENDENCIES \"$${CMAKE_INTERFACE_MODULE_DEPS}\")
  !!ENDIF
  
@@ -511,7 +512,7 @@ index 15d8b8372e..939e55dfd8 100644
          set(_Qt5$${CMAKE_MODULE_NAME}_FIND_DEPENDENCIES_REQUIRED REQUIRED)
      endif()
      set(_Qt5$${CMAKE_MODULE_NAME}_FIND_DEPENDENCIES_QUIET)
-@@ -186,17 +267,17 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -243,17 +322,17 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
          set(_Qt5$${CMAKE_MODULE_NAME}_DEPENDENCIES_FIND_QUIET QUIET)
      endif()
      set(_Qt5$${CMAKE_MODULE_NAME}_FIND_VERSION_EXACT)
@@ -533,7 +534,7 @@ index 15d8b8372e..939e55dfd8 100644
                  $$VERSION ${_Qt5$${CMAKE_MODULE_NAME}_FIND_VERSION_EXACT}
                  ${_Qt5$${CMAKE_MODULE_NAME}_DEPENDENCIES_FIND_QUIET}
                  ${_Qt5$${CMAKE_MODULE_NAME}_FIND_DEPENDENCIES_REQUIRED}
-@@ -204,36 +285,41 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -261,36 +340,41 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
              )
          endif()
  
@@ -589,7 +590,7 @@ index 15d8b8372e..939e55dfd8 100644
      macro(_process_prl_file PRL_FILE_LOCATION CONFIGURATION)
          if (EXISTS \"${PRL_FILE_LOCATION}\")
              file(STRINGS \"${PRL_FILE_LOCATION}\" prl_strings REGEX \"QMAKE_PRL_LIBS_FOR_CMAKE\")
-@@ -257,37 +343,48 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -312,37 +396,48 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
      endmacro()
  
  !!IF isEmpty(CMAKE_LIB_DIR_IS_ABSOLUTE)
@@ -650,7 +651,7 @@ index 15d8b8372e..939e55dfd8 100644
  
      # Find plugin targets
      file(GLOB pluginTargetsMaybe \"${CMAKE_CURRENT_LIST_DIR}/*Qt5$${CMAKE_MODULE_NAME}_*.cmake\")
-@@ -301,7 +398,11 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -356,7 +451,11 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
          endforeach()
      endif()
  
@@ -662,7 +663,7 @@ index 15d8b8372e..939e55dfd8 100644
          set_property(TARGET ${PLUGIN_TARGET_NAME} APPEND PROPERTY IMPORTED_CONFIGURATIONS ${CONFIG})
  
  !!IF isEmpty(CMAKE_PLUGIN_DIR_IS_ABSOLUTE)
-@@ -309,7 +410,11 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -364,7 +463,11 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
  !!ELSE
          set(imported_location \"$${CMAKE_PLUGIN_DIR}${PLUGIN_LOCATION}\")
  !!ENDIF
@@ -674,7 +675,7 @@ index 15d8b8372e..939e55dfd8 100644
          set_target_properties(${PLUGIN_TARGET_NAME} PROPERTIES
              \"IMPORTED_LOCATION_${CONFIG}\" ${imported_location}
          )
-@@ -340,16 +445,16 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -395,16 +498,16 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
      endif()
  
      set(_Qt5$${CMAKE_MODULE_NAME}_PRIVATE_DIRS_EXIST TRUE)
@@ -695,15 +696,20 @@ index 15d8b8372e..939e55dfd8 100644
          )
          set(_Qt5$${CMAKE_MODULE_NAME}_PRIVATEDEPS)
          foreach(dep ${_Qt5$${CMAKE_MODULE_NAME}_LIB_DEPENDENCIES})
-@@ -357,66 +462,68 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
-                 list(APPEND _Qt5$${CMAKE_MODULE_NAME}_PRIVATEDEPS ${dep}Private)
+@@ -413,69 +516,72 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
              endif()
          endforeach()
+ !!IF !isEmpty(CMAKE_STATIC_TYPE)
+-        _qt5_add_dependencies(Qt5::$${CMAKE_MODULE_NAME}Private ALL \"Qt5::$${CMAKE_MODULE_NAME};${_Qt5$${CMAKE_MODULE_NAME}_PRIVATEDEPS}\")
++        _qt5_add_dependencies(${QT_VARIANT_PREFIX}Qt5::$${CMAKE_MODULE_NAME}Private ALL
++            \"${QT_VARIANT_PREFIX}Qt5::$${CMAKE_MODULE_NAME};${_Qt5$${CMAKE_MODULE_NAME}_PRIVATEDEPS}\")
+ !!ELSE
 -        set_property(TARGET Qt5::$${CMAKE_MODULE_NAME}Private PROPERTY
 -            INTERFACE_LINK_LIBRARIES Qt5::$${CMAKE_MODULE_NAME} ${_Qt5$${CMAKE_MODULE_NAME}_PRIVATEDEPS}
 +        set_property(TARGET ${QT_VARIANT_PREFIX}Qt5::$${CMAKE_MODULE_NAME}Private PROPERTY
 +            INTERFACE_LINK_LIBRARIES ${QT_VARIANT_PREFIX}Qt5::$${CMAKE_MODULE_NAME} ${_Qt5$${CMAKE_MODULE_NAME}_PRIVATEDEPS}
          )
+ !!ENDIF // CMAKE_STATIC_TYPE
      endif()
  
  !!IF !equals(TEMPLATE, aux)
@@ -786,7 +792,7 @@ index 15d8b8372e..939e55dfd8 100644
      if (EXISTS
  !!IF isEmpty(CMAKE_DLL_DIR_IS_ABSOLUTE)
          \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/$${CMAKE_DLL_DIR}$${CMAKE_LIB_FILE_LOCATION_RELEASE}\"
-@@ -429,7 +536,7 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -488,7 +594,7 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
  !!ELSE
          \"$${CMAKE_IMPLIB_FILE_LOCATION_RELEASE}\" )
  !!ENDIF
@@ -795,7 +801,7 @@ index 15d8b8372e..939e55dfd8 100644
      endif()
  !!ENDIF // CMAKE_STATIC_TYPE
  
-@@ -439,19 +546,22 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -498,19 +604,22 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
  
  !!ENDIF // CMAKE_DEBUG_TYPE
  !!ELSE // TEMPLATE != aux
@@ -997,5 +1003,5 @@ index 2a575958ae..ca0e3be3b5 100644
      INTERFACE_COMPILE_DEFINITIONS QT_TESTCASE_BUILDDIR=\\\"\${CMAKE_BINARY_DIR}\\\"
  )
 -- 
-2.20.1
+2.21.0
 
