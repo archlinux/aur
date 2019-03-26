@@ -1,4 +1,4 @@
-From c37572ff090abe65285eacaedf7e7022af92aae6 Mon Sep 17 00:00:00 2001
+From 53eb02bb30a316f3562e5886cd3fae8ad02af7a0 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:25:40 +0200
 Subject: [PATCH 16/34] Rename qtmain to qt5main
@@ -53,7 +53,7 @@ index ecb167bf18..7c9368c3b3 100644
                  QMAKE_LIBS += -L$$QT.core.libs
              CONFIG(debug, debug|release): QMAKE_LIBS += $${entryLib}$${QT_LIBINFIX}d
 diff --git a/src/winmain/winmain.pro b/src/winmain/winmain.pro
-index 61e9f29d23..a1795bf265 100644
+index 9cb6ab0c59..4327ba365e 100644
 --- a/src/winmain/winmain.pro
 +++ b/src/winmain/winmain.pro
 @@ -2,7 +2,7 @@
@@ -66,5 +66,5 @@ index 61e9f29d23..a1795bf265 100644
  
  CONFIG += static
 -- 
-2.20.1
+2.21.0
 
