@@ -1,8 +1,8 @@
 # Maintainer: surefire <surefire@cryptomile.net>
 
 pkgname=ghetto-skype-git
-pkgver=1.6.0.r0.gbe8fc90
-pkgrel=1
+pkgver=1.6.0.r5.g635a575
+pkgrel=2
 pkgdesc="This is an electron client that uses Web Skype to better integrate with desktop environments found on Linux."
 arch=("any")
 url="https://github.com/stanfieldr/ghetto-skype"
@@ -36,7 +36,12 @@ prepare() {
 build() {
 	cd "${pkgname}/src"
 
-	npm_config_nodedir=/usr/lib/electron/node npm install --production
+	export npm_config_runtime=electron
+	export npm_config_target=$(sed s/^v// /usr/lib/electron/version)
+	export npm_config_nodedir=/usr/lib/electron/node
+	export npm_config_build_from_source=true
+
+	npm install --production
 
 	asar p . ../../ghetto-skype.asar
 }
