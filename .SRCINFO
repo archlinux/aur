@@ -1,7 +1,7 @@
 pkgbase = ipfs-fuse-daemon
 	pkgdesc = systemd daemon to mount ipfs as a fuse
 	pkgver = 0.0.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/KSXGitHub/ipfs-fuse-daemon.pkgbuild
 	arch = any
 	license = MIT
