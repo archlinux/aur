@@ -4,7 +4,7 @@
 
 pkgname=mullvad-vpn-bin-beta
 _pkgname=mullvad-vpn
-pkgver=2019.1
+pkgver=2019.2
 pkgrel=1
 pkgdesc="VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy"
 url="https://www.mullvad.net"
@@ -23,7 +23,7 @@ mullvad-vpn.desktop
 
 sha256sums=('77b71d613ef09c6ffbcfa66a59f787246f64d4463843e648edc6fbbea18dd55e'
             '8090fcecc2e07cb3e384387f14a181c4acf7ee01db53dad322b51649a1f5dc24'
-            '32f0f60e0f6b3cc138ec9bc7ec4d4c7d7214c6cdc319402f0a559a747e5533df'
+            '912a2d4da1e29ef120df28230ba36a50523ba2eeaaa3632b68286f82b5acec58'
             'SKIP')
 validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF')
 

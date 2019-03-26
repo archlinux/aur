@@ -1,3 +1,5 @@
+*.asc
+*.rpm
 *.pkg.tar.*
 *.tar.*
 pkg
