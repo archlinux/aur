@@ -1,32 +1,40 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
-pkgname=code-server-noopts
-pkgver=1.32.0_310
+pkgname=ipfs-fuse-daemon
+pkgver=0.0.0
 pkgrel=0
-pkgdesc="Run VS Code on a remote server"
-arch=('x86_64')
-url="https://github.com/codercom/code-server"
+pkgdesc="systemd daemon to mount ipfs as a fuse"
+arch=(any)
 license=(MIT)
-depends=(net-tools bash)
-conflicts=(code-server)
-replaces=(code-server)
-_ghtag=${pkgver//_/-}
-_dirname=code-server-${_ghtag}-linux-x64
-_nexe=usr/bin/code-server.nexe
-source=(https://github.com/codercom/code-server/releases/download/${_ghtag}/${_dirname}.tar.gz)
+depends=(bash go-ipfs fuse2)
+source=(https://raw.githubusercontent.com/KSXGitHub/MIT/master/LICENSE.md)
 sha512sums=(SKIP)
-options=('!strip')
 
 package() {
   cd "$srcdir"/${_dirname}
 
   (
     echo '#! /usr/bin/bash'
-    echo 'unset NODE_OPTIONS'
-    echo exec "'$pkgdir'"/$_nexe '$@'
-  ) > launch.sh
+    echo 'fusermount -u /ipfs'
+    echo 'fusermount -u /ipns'
+    echo 'ipfs mount'
+  ) > start-ipfs-fuse-daemon.sh
 
-  install -Dm755 launch.sh "$pkgdir"/usr/bin/code-server
-  install -Dm755 code-server "$pkgdir"/$_nexe
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  (
+    echo '[Unit]'
+    echo 'Description=Daemon to mount IPFS'
+    echo 'After=ipfs.service'
+    echo ''
+    echo '[Service]'
+    echo 'ExecStart=/usr/bin/start-ipfs-fuse-daemon.sh'
+    echo 'Restart=on-failure'
+    echo 'RestartSec=3'
+    echo ''
+    echo '[Install]'
+    echo 'WantedBy=default.target'
+  ) > ipfs-fuse.service
+
+  install -Dm755 start-ipfs-fuse-daemon.sh "$pkgdir"/usr/bin/start-ipfs-fuse-daemon.sh
+  install -Dm644 ipfs-fuse.service "$pkgdir"/usr/lib/systemd/user/ipfs-fuse.service
+  install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.md
 }
