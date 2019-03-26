@@ -1,6 +1,6 @@
 # Maintainer: LinArcx <linarcx@gmail.com>
 
-pkgname='soah-git'
+pkgname='soha-git'
 pkgver=r8.b113d54
 pkgrel=1
 pkgdesc="A modern persian calendar written by qt to see dates and events in a quick glance. (Github version)"

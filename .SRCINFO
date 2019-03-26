@@ -1,4 +1,4 @@
-pkgbase = soah-git
+pkgbase = soha-git
 	pkgdesc = A modern persian calendar written by qt to see dates and events in a quick glance. (Github version)
 	pkgver = r8.b113d54
 	pkgrel = 1
@@ -9,8 +9,8 @@ pkgbase = soah-git
 	makedepends = qt5-base
 	depends = qt5-quickcontrols2
 	depends = qt5-quickcontrols
-	source = soah-git::git+https://github.com/LinArcX/Soha.git
+	source = soha-git::git+https://github.com/LinArcX/Soha.git
 	sha256sums = SKIP
 
-pkgname = soah-git
+pkgname = soha-git
 
