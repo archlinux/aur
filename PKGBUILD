@@ -2,7 +2,7 @@
 
 pkgname=ukopp
 pkgver=6.8
-pkgrel=6
+pkgrel=7
 pkgdesc="A backup program for USB devices"
 url="http://www.kornelix.net/ukopp/ukopp.html"
 arch=('i686' 'x86_64')
@@ -20,5 +20,6 @@ build() {
 
 package() {
   cd $pkgname
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" ICONDIR=/usr/share/pixmaps install
+  sed -i 's+/usr/share/ukopp/icons/++' "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
