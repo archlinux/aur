@@ -1,5 +1,5 @@
 pkgname=fluidkeys
-pkgver=0.4.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Simple PGP for engineering teams'
 arch=('any')
@@ -8,7 +8,7 @@ license=('AGPL3')
 makedepends=('go-pie' 'rsync' 'dep')
 provides=("fluidkeys=$pkgver")
 source=("https://github.com/fluidkeys/fluidkeys/archive/v${pkgver}.tar.gz")
-sha256sums=('f3e1697ebb54acef5b11287577d650d377ab673509669afd73062fcb4f4bbeb3')
+sha256sums=('bb3c20faaa771c35608556c335fb4faf5e7f7edf03fa386122592ad0fcec1c23')
 
 _gopath="gopath/src/github.com/fluidkeys/fluidkeys"
 
