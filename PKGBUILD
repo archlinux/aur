@@ -10,7 +10,7 @@
 
 _qt_module=qtscript
 pkgname="mingw-w64-qt5-script"
-pkgver=5.12.1
+pkgver=5.12.2
 pkgrel=1
 arch=('any')
 pkgdesc="Classes for making Qt applications scriptable. Provided for Qt 4.x compatibility (mingw-w64)"
@@ -22,7 +22,7 @@ license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('e5c158fb85799404d20d1ec5dd33a25d5f5736807e1008ce626f666a52c80624')
+sha256sums=('f8717d51072b4d4455755ae081e45f23f3d0ce25602f96231dd7703bd818a2e6')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
