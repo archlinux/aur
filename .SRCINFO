@@ -1,0 +1,12 @@
+pkgbase = python-plotly_express
+	pkgdesc = Plotly Express: a high level wrapper for Plotly.py
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/plotly/plotly_express
+	arch = any
+	license = UNKNOWN
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-plotly_express
+
