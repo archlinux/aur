@@ -3,7 +3,7 @@
 
 pkgname=picpuz
 pkgver=2.9
-pkgrel=6
+pkgrel=7
 pkgdesc="'jigsaw puzzle' program."
 arch=('i686' 'x86_64')
 url="http://www.kornelix.net/picpuz/picpuz.html"
@@ -20,6 +20,6 @@ build() {
 
 package() { 
   cd $pkgname
-  install -d "$pkgdir"/usr/share/icons
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" PREFIX=/usr ICONDIR=/usr/share/pixmaps install
+  sed -i 's+/usr/share/picpuz/icons/++' "$pkgdir"/usr/share/applications/$pkgname.desktop
 }

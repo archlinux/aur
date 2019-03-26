@@ -1,7 +1,7 @@
 pkgbase = picpuz
 	pkgdesc = 'jigsaw puzzle' program.
 	pkgver = 2.9
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.kornelix.net/picpuz/picpuz.html
 	arch = i686
 	arch = x86_64
