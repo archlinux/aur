@@ -1,9 +1,9 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=pwpw-card
-pkgver=2.1.0.r345
-_zipver=2_1_0
-_shlver=2.1.0-r345
-pkgrel=2
+pkgver=2.1.0.33
+_zipver=2_1_0_33
+_shlver=2.1.0.33
+pkgrel=1
 pkgdesc="PKCS#11 driver for PWPW (and CryptoTech) cards, as distributed by LT ADIC"
 arch=(x86_64)
 url="http://www.nsc.vrm.lt/"
@@ -18,11 +18,11 @@ optdepends=(
   'ccpkip11: the older CryptoTech driver'
 )
 source=("http://www.nsc.vrm.lt/files/pwpw_v${_zipver}_linux.zip")
-sha256sums=('5e469cebf94b5adfe725016de646127e4ec4e295e35b0c9eeecf32400310aa93')
+sha256sums=('4192c0de0398c53083564bd8ae2ff6a99214720a56136877d24cd93d58d6102c')
 
 prepare() {
   cd "$srcdir"
-  sh "pwpw-card-${_shlver}.linux.x64.sh" --tar xvf
+  sh "pwpw-card-${_shlver}.linux.x64.run" --tar xvf
 }
 
 package() {
