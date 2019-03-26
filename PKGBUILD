@@ -18,18 +18,17 @@ package() {
     echo '#! /usr/bin/bash'
     echo 'fusermount -u /ipfs'
     echo 'fusermount -u /ipns'
-    echo 'ipfs mount'
+    echo 'ipfs daemon --mount'
   ) > start-ipfs-fuse-daemon.sh
 
   (
     echo '[Unit]'
     echo 'Description=Daemon to mount IPFS'
-    echo 'After=ipfs.service'
+    echo 'Conflicts=ipfs.service'
     echo ''
     echo '[Service]'
     echo 'ExecStart=/usr/bin/start-ipfs-fuse-daemon.sh'
     echo 'Restart=on-failure'
-    echo 'RestartSec=3'
     echo ''
     echo '[Install]'
     echo 'WantedBy=default.target'
