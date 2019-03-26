@@ -17,8 +17,10 @@ pkgbase = xpiks
 	depends = perl-image-exiftool
 	source = xpiks::git+https://github.com/ribtoks/xpiks.git#tag=v1.5.2
 	source = xpiks-build_with_system_libquazip5.diff
+	source = xpiks.desktop
 	md5sums = SKIP
 	md5sums = 8d082ec0a08051aec943aa3c35486592
+	md5sums = 4112f7181afe7e45eb878b8eccc91eaf
 
 pkgname = xpiks
 

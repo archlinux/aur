@@ -15,9 +15,11 @@ makedepends=('git')
 source=(
 	"${_gitname}::git+https://github.com/ribtoks/xpiks.git#tag=v1.5.2"
 	"xpiks-build_with_system_libquazip5.diff"
+	"xpiks.desktop"
 	)
 md5sums=('SKIP'
-         '8d082ec0a08051aec943aa3c35486592')
+         '8d082ec0a08051aec943aa3c35486592'
+         '4112f7181afe7e45eb878b8eccc91eaf')
 
 prepare() {
 	cd "${srcdir}/${_gitname}"
@@ -50,7 +52,7 @@ build() {
 package() {
 	cd "${srcdir}/${_gitname}/build"
 	
-	install -Dm755 Xpiks "${pkgdir}/opt/Xpiks/xpiks-qt"
+	install -Dm755 Xpiks "${pkgdir}/opt/Xpiks/Xpiks"
 	install -d "${pkgdir}/opt/Xpiks/translations/"
 	install -m644 translations/*.qm "${pkgdir}/opt/Xpiks/translations/"
 	install -m644 whatsnew.txt "${pkgdir}/opt/Xpiks/"
@@ -63,12 +65,12 @@ package() {
 	cd "${srcdir}/${_gitname}"
 	install -Dm644 libs/release/libface.so.1 "${pkgdir}/opt/Xpiks/libface.so.1"
 	install -Dm644 libs/release/libssdll.so.1 "${pkgdir}/opt/Xpiks/libssdll.so.1"
+		
+	# install icon
+	install -Dm644 src/xpiks-qt/debian/xpiks.png "${pkgdir}/usr/share/pixmaps/Xpiks.png"
 	
 	# install .desktop file
-	install -Dm644 src/xpiks-qt/debian/xpiks.desktop "${pkgdir}/usr/share/applications/xpiks.desktop"
-	sed -i 's#xpiks-qt#/opt/Xpiks/xpiks-qt#g' "${pkgdir}/usr/share/applications/xpiks.desktop"
-	
-	# install icon
-	install -Dm644 src/xpiks-qt/debian/xpiks.png "${pkgdir}/usr/share/icons/xpiks.png"
+	cd "${srcdir}"
+	install -Dm644 xpiks.desktop "${pkgdir}/usr/share/applications/xpiks.desktop"
 }
 
