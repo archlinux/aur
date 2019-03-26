@@ -1,13 +1,14 @@
 # Maintainer: Robin Lange <robin dot langenc at gmail dot com>
 # Contributor: Robin Lange <robin dot langenc at gmail dot com>
 pkgname=optimus-manager
-pkgver=0.7.1
+pkgver=0.8
 pkgrel=1
 pkgdesc="Management utility to handle GPU switching for Optimus laptops."
 arch=('any')
 url="https://github.com/Askannz/optimus-manager"
 license=('MIT')
-depends=('python' 'python-pyqt5' 'python-setuptools' 'nvidia' 'mesa-demos' 'xorg-xrandr')
+depends=('python' 'python-pyqt5' 'python-setuptools' 'mesa-demos' 'xorg-xrandr')
+optdepends=('bbswitch: alternative power switching method')
 makedepends=('python-setuptools' 'git')
 backup=('etc/optimus-manager/xorg-intel.conf'
         'etc/optimus-manager/xorg-nvidia.conf')
@@ -27,7 +28,7 @@ package() {
   cd "${srcdir}/optimus-manager/"
  
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 modules/optimus-manager.conf "$pkgdir/etc/modprobe.d/optimus-manager.conf"
+  install -Dm644 modules/optimus-manager.conf "$pkgdir/usr/lib/modprobe.d/optimus-manager.conf"
   install -Dm755 xorg/optimus-manager_Xsetup "$pkgdir/usr/bin/optimus-manager_Xsetup"
   install -Dm644 systemd/optimus-manager.service "$pkgdir/usr/lib/systemd/system/optimus-manager.service"
   install -Dm644 systemd/99-optimus-manager.conf "$pkgdir/usr/lib/systemd/system/display-manager.service.d/99-optimus-manager.conf"
