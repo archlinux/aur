@@ -1,5 +1,4 @@
-# Maintainer: Joermungand <joermungand at gmail dot com>
-# Contributor: Alexander Mcmillan <linuxguy93@gmail.com>
+# Maintainer: Alexander Mcmillan <linuxguy93@gmail.com> 
 pkgname=carla-bridges-wine
 pkgver=2.0.0
 majorver=${pkgver}
