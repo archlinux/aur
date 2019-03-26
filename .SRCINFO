@@ -1,7 +1,7 @@
 pkgbase = foobnix
 	pkgdesc = Music player for Linux
 	pkgver = 3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.foobnix.com
 	arch = i686
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgbase = foobnix
 	depends = faac
 	depends = python2-keybinder2
 	depends = ffmpeg
+	depends = python2-dbus
 	source = https://github.com/foobnix/foobnix/archive/3.1.tar.gz
 	sha256sums = a4fb20d1a015eeb07fe7611c577aea7290e71e4eff10f6e458d8c987353f97dd
 
