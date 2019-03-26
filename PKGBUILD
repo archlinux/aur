@@ -8,7 +8,7 @@
 _tcp_module_gitname=nginx_tcp_proxy_module
 pkgname=tengine-extra
 pkgver=2.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('x86_64')
 url='http://tengine.taobao.org'
@@ -26,20 +26,31 @@ backup=('etc/tengine/fastcgi.conf'
 install=tengine.install
 conflicts=('tengine')
 provides=('nginx' 'tengine')
+_psol_ver=1.13.35.2
+_nps_ver=${_psol_ver}-stable
 source=($url/download/tengine-$pkgver.tar.gz
         service
         logrotate
         fix-tengine-version-2.3.0.patch::https://patch-diff.githubusercontent.com/raw/alibaba/tengine/pull/1221.patch
+        pagespeed-v${_nps_ver}.zip::https://github.com/apache/incubator-pagespeed-ngx/archive/v${_nps_ver}.zip
+        psol-v${_psol_ver}.zip::https://dl.google.com/dl/page-speed/psol/${_psol_ver}-x64.tar.gz
         )
 sha256sums=('17cf1380d4faefb70707970437b3f8b66f6ff4530b5e6e61970b35f59b2e2624'
             'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
             '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97'
-            '5a144630e3b0924083ce1ceeb96a8fd13ed2f3c9df350c2d8c41f0c80c4a06ef')
+            '5a144630e3b0924083ce1ceeb96a8fd13ed2f3c9df350c2d8c41f0c80c4a06ef'
+            '474ef99dcfb678684394c9064c340772633c6dafe630ed90a0f1f319931df139'
+            'df3ba3c8fc54e13845d0a1daa7a6e3d983126c23912851bbf8ba35be646a434f')
+
+prepare() {
+    mv psol incubator-pagespeed-ngx-${_nps_ver}/
+
+    cd tengine-$pkgver
+    patch -Np1 -i ../fix-tengine-version-2.3.0.patch
+}
 
 build() {
     cd tengine-$pkgver
-
-    patch -Np1 -i ../fix-tengine-version-2.3.0.patch
 
     ./configure \
         --prefix=/etc/tengine \
@@ -59,7 +70,6 @@ build() {
         --with-cc-opt="$CFLAGS $CPPFLAGS" \
         --with-ld-opt="$LDFLAGS" \
         --with-compat \
-        --with-debug \
         --with-file-aio \
         --with-google_perftools_module \
         --with-http_addition_module \
@@ -88,6 +98,7 @@ build() {
         --with-stream_ssl_module \
         --with-stream_ssl_preread_module \
         --with-threads \
+        --add-dynamic-module=$srcdir/incubator-pagespeed-ngx-${_nps_ver}
 
     make
 }
