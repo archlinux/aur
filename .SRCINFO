@@ -1,0 +1,14 @@
+pkgbase = sdm-git
+	pkgdesc = Simple Download Manager - Bash Script
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kiahamedi/SDM
+	arch = any
+	license = GPL
+	depends = aria2
+	depends = libnotify
+	source = sdm-git-1.0.0.zip::https://github.com/kiahamedi/SDM/archive/master.zip
+	md5sums = 424594afa27e8d36ce74daf0e350f59d
+
+pkgname = sdm-git
+
