@@ -9,6 +9,7 @@ url="https://github.com/Chion82/netfilter-full-cone-nat"
 license=('GPL2')
 depends=('dkms')
 makedepends=('git')
+optdepends=('iptables-fullconenat: iptables with FULLCONENAT')
 source=("dkms.conf"
         "Makefile.patch"
         "${pkgname}::git+https://github.com/Chion82/netfilter-full-cone-nat.git")
