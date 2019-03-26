@@ -1,17 +1,16 @@
 pkgbase = python-slacker
-	pkgdesc = Slacker is a full-featured Python interface for the Slack API
-	pkgver = 0.9.25
+	pkgdesc = Full-featured Python interface for the Slack API
+	pkgver = 0.12.0
 	pkgrel = 1
-	url = http://github.com/os/slacker/
-	arch = i686
-	arch = x86_64
-	groups = devel
-	license = apache
-	makedepends = python-pip
+	url = http://github.com/os/slacker
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
 	depends = python
+	depends = python-requests
 	options = !emptydirs
-	source = https://github.com/os/slacker/archive/v0.9.25.tar.gz
-	md5sums = 4805019b528b22fbf31879feaf1cbbe5
+	source = python-slacker-0.12.0.tar.gz::https://github.com/os/slacker/archive/v0.12.0.tar.gz
+	sha256sums = 7c96fd98ea1c56a04128744800ba35b13e7280c736de77bd805e8a1e5f27b66f
 
 pkgname = python-slacker
 
