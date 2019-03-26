@@ -1,16 +1,16 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 pkgname=awesomebump-git
-pkgver=5.0.r13.g521bafb
-pkgrel=4
+pkgver=5.1.r6.g9f1049f
+pkgrel=1
 pkgdesc="A free program designed to generate normal, height, specular or ambient occlusion textures from a single image"
 arch=('i686' 'x86_64')
 url="http://awesomebump.besaba.com/"
 license=('LGPL3')
-depends=('qt5-base' 'qt5-location' 'qt5-script')
+depends=('qt5-base' 'qt5-location' 'qt5-script' 'qt5-svg')
 conflicts=('awesomebump')
 makedepends=('git' 'wget' 'unzip' 'mesa-demos')
-source=("${pkgname}::git+https://github.com/kmkolasinski/AwesomeBump.git#commit=521bafb"
+source=("${pkgname}::git+https://github.com/kmkolasinski/AwesomeBump.git#branch=master"
         "awesomebump.log.file.moved.to.tmp.patch"
         "awesomeBump.sh"
         "awesomebump.desktop")
@@ -25,13 +25,13 @@ vergte() {
 
 pkgver() {
   cd ${srcdir}/${pkgname}
-  git describe --long --tags | sed 's/^Linuxv//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^Winx32v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd ${srcdir}/${pkgname}
   patch -Np1 -i ../awesomebump.log.file.moved.to.tmp.patch
-  glver=$(LIBGL_ALWAYS_INDIRECT=1 glxinfo |sed -n '/OpenGL version string:/s/^.*: \([0-9.]*\).*$/\1/p')
+  glver=$(LIBGL_ALWAYS_INDIRECT=1 glxinfo |sed -n '/OpenGL version string:/s/^.*: \([0-9.]*\).*$/\1/p'||true)
   #glver=3.3 # uncomment for headles system to build opengl330 version
   if (vergte $glver 3.3) ; then
     sed -i 's:qmake:qmake "CONFIG+=gl330":' unixBuildScript.sh
@@ -41,7 +41,7 @@ prepare() {
 build() {
   cd ${srcdir}/${pkgname}
   #sed -i 's:MY_QT_PATH=/Qt/5.6:MY_QT_PATH=/usr/bin:' unixBuildScript.sh
-  sed -i 's:MY_QT_PATH=:MY_QT_PATH=/usr/bin:' unixBuildScript.sh
+  sed -i 's:MY_QT_PATH=/opt/Qt5.7.0/5.7/gcc_64/bin/:MY_QT_PATH=/usr/bin:' unixBuildScript.sh
   sed -i "s: make: make ${MAKEFLAGS}:" unixBuildScript.sh
   ./unixBuildScript.sh
 }
