@@ -16,28 +16,24 @@
 # Maintainer: Samuel Littley <samuellittley@google.com>
 
 pkgname=('google-compute-engine' 'google-compute-engine-oslogin')
-pkgver=20181023
+pkgver=20190315
 pkgrel=1
 arch=('any' 'x86_64')
 url='https://github.com/GoogleCloudPlatform/compute-image-packages'
 license=('Apache')
 makedepends=('curl' 'json-c' 'pam' 'python-boto' 'python-distro' 'python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/compute-image-packages/archive/$pkgver.tar.gz"
-        "google_oslogin_control.patch")
-sha256sums=('17355f56e405a81b19ebbf139d3d3c8b1f09f3f5b1e6b7cda428ac99d8c70523'
-            '276c1cabcd0e88b668a8c16bdca2153d47e42cc19d69d62ab54b7c7d6badc360')
-
-prepare() {
-	cd "compute-image-packages-$pkgver"
-	patch -p1 -i ../google_oslogin_control.patch
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/compute-image-packages/archive/$pkgver.tar.gz")
+sha256sums=('8ba134f6adf1490eb02782148586cf6a19ae7e5c779331d2e972ccff9734146a')
 
 build() {
-	cd "compute-image-packages-$pkgver"
+	cd "compute-image-packages-$pkgver/packages"
+	pushd python-google-compute-engine
 	python setup.py build
+	popd
 
-	cd google_compute_engine_oslogin
+	pushd google-compute-engine-oslogin
 	make
+	popd
 }
 
 package_google-compute-engine() {
@@ -45,14 +41,21 @@ package_google-compute-engine() {
 	arch=('any')
 	depends=('google-compute-engine-oslogin' 'python-boto' 'python-distro' 'python-setuptools')
 
-	cd "compute-image-packages-$pkgver"
-
+	cd "compute-image-packages-$pkgver/packages"
+	pushd python-google-compute-engine
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-	install -m644 -Dt "$pkgdir/usr/lib/systemd/system/" google_compute_engine_init/systemd/*.service
-	install -m755 -Dt "$pkgdir/etc/dhcp/dhclient-exit-hooks.d/" google_config/bin/google_set_hostname
-	install -m644 -Dt "$pkgdir/etc/modprobe.d" google_config/modprobe/gce-blacklist.conf
-	install -m644 -Dt "$pkgdir/etc/sysctl.d" google_config/sysctl/*
-	install -m644 -Dt "$pkgdir/usr/lib/udev/rules.d" google_config/udev/*
+	popd
+
+	pushd google-compute-engine/src
+	install -d "$pkgdir/etc/dhcp/dhclient-exit-hooks.d"
+	# Use cp to install symbolic links.
+	cp -d etc/dhcp/dhclient-exit-hooks.d/* "$pkgdir/etc/dhcp/dhclient-exit-hooks.d"
+	install -m644 -Dt "$pkgdir/etc/modprobe.d" etc/modprobe.d/*
+	install -m644 -Dt "$pkgdir/etc/sysctl.d" etc/sysctl.d/*
+	install -m644 -Dt "$pkgdir/usr/lib/systemd/system/" lib/systemd/system/*
+	install -m644 -Dt "$pkgdir/usr/lib/udev/rules.d" lib/udev/rules.d/*
+	install -m755 -Dt "$pkgdir/usr/bin" usr/bin/*
+	popd
 }
 
 package_google-compute-engine-oslogin() {
@@ -60,6 +63,6 @@ package_google-compute-engine-oslogin() {
 	arch=('x86_64')
 	depends=('curl' 'json-c' 'pam')
 
-	cd "compute-image-packages-$pkgver"/google_compute_engine_oslogin
+	cd "compute-image-packages-$pkgver"/packages/google-compute-engine-oslogin
 	make DESTDIR="$pkgdir/" NSS_INSTALL_PATH=/usr/lib PAM_INSTALL_PATH=/usr/lib/security install
 }
