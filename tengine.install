@@ -18,6 +18,6 @@ post_upgrade() {
         echo '       features has been replaced by nginx offical ones.'
         echo '       Check your config files before attempting to restart the process.'
         echo '     See: https://github.com/alibaba/tengine/issues/1220'
-        echo '     - The nginx_tcp_proxy_module is removed, it's not maintained anymore.'
+        echo '     - The nginx_tcp_proxy_module is removed, it is not maintained anymore.'
     fi
 }
