@@ -1,4 +1,6 @@
 # Maintainer: Christoph Bayer <chrbayer@criby.de>
+# Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
+# Maintainer: Fredy García <frealgagu at gmail dot com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=wiredtiger
