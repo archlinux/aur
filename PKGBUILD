@@ -1,8 +1,8 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=taskwiki
 pkgname=vim-$_modulename
-pkgver=0.4
-pkgrel=5
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Proper project management in vim. Standing on the shoulders of vimwiki and Taskwarrior"
 arch=(any)
 url="https://github.com/tbabej/taskwiki"
@@ -16,8 +16,8 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("${url}/archive/master.tar.gz")
-sha256sums=('5f172b5f8093705d08054960b2d5a30571e51295006823383ce4f7e862a2f26b')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha256sums=('89e7de650aaaac893871b7ba529adb82402333a3294062ecec297dfe369760a0')
 
 package() {
   cd "$srcdir/$_modulename-master"
