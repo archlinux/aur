@@ -1,5 +1,4 @@
 [Unit]
-Description=Argo Tunnel client daemon for %i
 After=network.target
 Wants=network.target
 
@@ -7,7 +6,7 @@ Wants=network.target
 User=cloudflared
 Group=cloudflared
 Type=simple
-ExecStart=/usr/bin/cloudflared --config /etc/cloudflared/%i.yml
+ExecStart=/usr/bin/cloudflared proxy-dns --port 5300
 Restart=on-failure
 
 [Install]
