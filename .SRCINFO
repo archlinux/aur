@@ -1,0 +1,12 @@
+pkgbase = ttf-alegreya-sans
+	pkgdesc = Humanist sans serif family with a caligraphic feeling.
+	pkgver = 2.008
+	pkgrel = 1
+	url = https://www.huertatipografica.com/en/fonts/alegreya-sans-ht
+	arch = any
+	license = custom:OFL
+	source = https://github.com/huertatipografica/Alegreya-Sans/archive/v2.008.tar.gz
+	sha256sums = ea545572d49e18e675d6b72a6754da344e24b9cacc3d2b76c1eb2bf9ae73a402
+
+pkgname = ttf-alegreya-sans
+
