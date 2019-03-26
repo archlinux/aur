@@ -8,7 +8,7 @@ pkgbase = sdm-git
 	depends = aria2
 	depends = libnotify
 	source = sdm-git-1.0.0.zip::https://github.com/kiahamedi/SDM/archive/master.zip
-	md5sums = 424594afa27e8d36ce74daf0e350f59d
+	md5sums = cde3949f3d8e5c141ebddbf4406d399e
 
 pkgname = sdm-git
 
