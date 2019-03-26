@@ -3,12 +3,13 @@ pkgname=pwpw-card
 pkgver=2.1.0.r345
 _zipver=2_1_0
 _shlver=2.1.0-r345
-pkgrel=1
+pkgrel=2
 pkgdesc="PKCS#11 driver for PWPW (and CryptoTech) cards, as distributed by LT ADIC"
 arch=(x86_64)
 url="http://www.nsc.vrm.lt/"
 license=(GPL2)
 depends=(
+  ccid
   gcc-libs
   gtk3
   pcsclite
