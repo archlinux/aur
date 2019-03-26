@@ -23,7 +23,7 @@ build() {
     fi
 
     mkdir build && cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     make
     make pot
     make po
@@ -31,6 +31,5 @@ build() {
 
 package() {
     cd "Go-For-It-$pkgver/build"
-
     make DESTDIR="$pkgdir" install
 }
