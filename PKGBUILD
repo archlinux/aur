@@ -1,6 +1,6 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 pkgname=aws-sdk-cpp-git
-pkgver=1.7.59.r0.gcc21273299
+pkgver=1.7.76.r0.g64edbaf595
 pkgrel=1
 pkgdesc="AWS SDK for C++"
 arch=('x86_64')
@@ -9,9 +9,9 @@ license=('Apache')
 depends=('cmake')
 makedepends=('openssl' 'curl' 'zlib' 'libutil-linux')
 conclits=('aws-checksums-git')
-_gitcommit='cc212732996dcabbf100404b9af773f85cfb1a42'
-#source=("${pkgname}::git+https://github.com/aws/aws-sdk-cpp")
+_gitcommit='64edbaf595f6e7e0b0ffbf5a14448eca661ac998'
 source=("${pkgname}::git+https://github.com/aws/aws-sdk-cpp#commit=${_gitcommit}")
+#source=("${pkgname}::git+https://github.com/aws/aws-sdk-cpp")
 sha256sums=('SKIP')
 
 # disable until aws engineers can settle on their fucking build process
