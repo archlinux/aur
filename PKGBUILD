@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/opencryptoki/opencrypto
         opencryptoki.sysusers.conf
         opencryptoki.tmpfiles.conf)
 sha256sums=('4d901373b08ed0b0d56a4df5e3f35a7d17142bdc5c5bf9b37c8a10200a08d6fd'
-            '63723f403ac795182cb258d07896e6f3828e8db2fe31597df00a0461783dd16d'
+            '6c96a96f7df9279fa62c6aab4231116fd0db0fbe0a88b661b5d1a7451b0e9a39'
             'e315fc996a1f416efd34f6f3e3149378118cded0da9f8a919e9501ea8db90fac')
 
 build() {
@@ -39,6 +39,7 @@ package() {
                  "${pkgdir}/usr/lib/sysusers.d/opencryptoki.conf"
   install -Dm644 "${srcdir}/opencryptoki.tmpfiles.conf" \
                  "${pkgdir}/usr/lib/tmpfiles.d/opencryptoki.conf"
+  chown -R root:64 ${pkgdir}/var/lib/opencryptoki
   rm -rf ${pkgdir}/var/lock
 }
 
