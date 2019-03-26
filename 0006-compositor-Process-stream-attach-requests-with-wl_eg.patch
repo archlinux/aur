@@ -1,7 +1,7 @@
 From 9036a214efffea4c2eb13e1d275c59621ee17a52 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Thu, 18 May 2017 14:35:36 -0700
-Subject: [PATCH 6/8] compositor: Process stream attach requests with
+Subject: [PATCH 6/9] compositor: Process stream attach requests with
  wl_eglstream_controller
 X-NVConfidentiality: public
 
@@ -31,30 +31,31 @@ requests.
 Signed-off-by: Ashutosh Agarwal <asagarwal@nvidia.com>
 Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
 ---
- Makefile.am             |  14 ++++
+ Makefile.am             |  15 ++++
  configure.ac            |   4 ++
  libweston/compositor.c  |  78 +++++++++++++++++++++
  libweston/compositor.h  |   4 ++
  libweston/gl-renderer.c | 147 +++++++++++++++++++++++++---------------
- 5 files changed, 193 insertions(+), 54 deletions(-)
+ 5 files changed, 194 insertions(+), 54 deletions(-)
 
 diff --git a/Makefile.am b/Makefile.am
-index 83bb2533..ac24e1dd 100644
+index 83bb2533..c15bca01 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -173,6 +173,11 @@ nodist_libweston_@LIBWESTON_MAJOR@_la_SOURCES =				\
+@@ -173,6 +173,12 @@ nodist_libweston_@LIBWESTON_MAJOR@_la_SOURCES =				\
  
  BUILT_SOURCES += $(nodist_libweston_@LIBWESTON_MAJOR@_la_SOURCES)
  
-+nodist_libweston_eglstreams_@LIBWESTON_MAJOR@_la_SOURCES =		\
++libweston_eglstreams_@LIBWESTON_MAJOR@dir = $(top_builddir)/protocol
++nodist_libweston_eglstreams_@LIBWESTON_MAJOR@_HEADERS =		\
 +	protocol/wayland-eglstream-controller-server-protocol.h
 +
-+BUILT_SOURCES += $(nodist_libweston_eglstreams_@LIBWESTON_MAJOR@_la_SOURCES)
++BUILT_SOURCES += $(nodist_libweston_eglstreams_@LIBWESTON_MAJOR@_HEADERS)
 +
  bin_PROGRAMS += weston
  
  weston_LDFLAGS = -export-dynamic
-@@ -1658,6 +1663,15 @@ protocol/%-server-protocol.h : $(WAYLAND_PROTOCOLS_DATADIR)/$$(call protostabili
+@@ -1658,6 +1664,15 @@ protocol/%-server-protocol.h : $(WAYLAND_PROTOCOLS_DATADIR)/$$(call protostabili
  protocol/%-client-protocol.h : $(WAYLAND_PROTOCOLS_DATADIR)/$$(call protostability,$$*)/$$(call protoname,$$*)/$$*.xml
  	$(AM_V_GEN)$(MKDIR_P) $(dir $@) && $(wayland_scanner) client-header < $< > $@
  
