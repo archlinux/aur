@@ -1,19 +1,19 @@
 *** ncid/server/ncidd.c.orig
 --- ncid/server/ncidd.c
 ***************
-*** 2679,2685 ****
-             }
+*** 2684,2690 ****
+         }
   
-             initModem("AT", READTRY);
-!            sprintf(msgbuf, "ATDT%s;%s", cid.cidnmbr, CRLF);
-             if (!(mret = initModem(msgbuf, READTRY)))
-             {
-               /* start timer to hang up after dialdelay seconds */
---- 2679,2685 ----
-             }
+         initModem("AT", READTRY);
+!        sprintf(msgbuf, "ATDT%s;%s", modem_cid.cidnmbr, CRLF);
+         if (!(mret = initModem(msgbuf, READTRY)))
+         {
+           /* start timer to hang up after dialdelay seconds */
+--- 2684,2690 ----
+         }
   
-             initModem("AT", READTRY);
-!            sprintf(msgbuf, "ATDT,%s;%s", cid.cidnmbr, CRLF);
-             if (!(mret = initModem(msgbuf, READTRY)))
-             {
-               /* start timer to hang up after dialdelay seconds */
+         initModem("AT", READTRY);
+!        sprintf(msgbuf, "ATDT,%s;%s", modem_cid.cidnmbr, CRLF);
+         if (!(mret = initModem(msgbuf, READTRY)))
+         {
+           /* start timer to hang up after dialdelay seconds */

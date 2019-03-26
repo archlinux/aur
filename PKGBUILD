@@ -1,12 +1,12 @@
 pkgname=('ncid' 'ncid-client' 'ncid-tools' 'ncid-extensions' 'ncid-module-alert' 'ncid-module-initmodem' 'ncid-module-skel')
 pkgbase=ncid
-pkgver=1.7.2
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Network caller ID."
 arch=('x86_64')
 url="http://ncid.sourceforge.net/"
 license=('GPL3')
-depends=()
+depends=('libpcap' 'pcre')
 makedepends=('libnotify' 'perl')
 optdepends=()
 provides=()
@@ -15,8 +15,8 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://downloads.sourceforge.net/project/ncid/ncid/1.7/$pkgbase-$pkgver-src.tar.gz" "ncidd_pause.patch")
-md5sums=('aabb0d49de9f6ece5c9413e4245926f6' '324ff0e797bb8f21b3906b28bb07de04')
+source=("https://downloads.sourceforge.net/project/ncid/ncid/$pkgver/$pkgbase-$pkgver-src.tar.gz" "ncidd_pause.patch")
+md5sums=('659937bb876b666e6a486809272a3324' '57da2c9ee2bd6eac8e3ba3aac82e1bb9')
 
 build() {
 	cd "$srcdir"
@@ -55,7 +55,7 @@ package_ncid() {
         install -m 644 "$srcdir/$pkgbase/man/ncidd.conf.5" "$pkgdir/usr/share/man/man5"
         install -m 644 "$srcdir/$pkgbase/man/ncidd.whitelist.5" "$pkgdir/usr/share/man/man5"
 
-        install -m 644 "$srcdir/$pkgbase/Fedora/ncidd.service" "$pkgdir/usr/lib/systemd/system"
+        install -m 644 "$srcdir/$pkgbase/systemd/ncidd.service" "$pkgdir/usr/lib/systemd/system"
 
         install -m 644 "$srcdir/$pkgbase/doc/GPL.md" "$pkgdir/usr/share/doc/ncid"
         install -m 644 "$srcdir/$pkgbase/doc/NCID-API.md" "$pkgdir/usr/share/doc/ncid"
@@ -183,7 +183,7 @@ package_ncid-module-initmodem() {
 
         install -m 755 "$srcdir/$pkgbase/modules/ncid-initmodem" "$pkgdir/usr/share/ncid/modules"
         install -m 644 "$srcdir/$pkgbase/man/ncid-initmodem.1" "$pkgdir/usr/share/man/man1"
-        install -m 644 "$srcdir/$pkgbase/Fedora/ncid-initmodem.service" "$pkgdir/usr/lib/systemd/system"
+        install -m 644 "$srcdir/$pkgbase/systemd/ncid-initmodem.service" "$pkgdir/usr/lib/systemd/system"
 
         install -m 644 "$srcdir/$pkgbase/doc/GPL.md" "$pkgdir/usr/share/doc/ncid-module-initmodem"
         install -m 644 "$srcdir/$pkgbase/README" "$pkgdir/usr/share/doc/ncid-module-initmodem"
