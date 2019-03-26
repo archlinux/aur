@@ -1,18 +1,18 @@
 # Maintainer: surefire <surefire@cryptomile.net>
 
 pkgname=ghetto-skype-git
-pkgver=1.6.0.r5.g635a575
-pkgrel=2
+pkgver=1.6.0+5+g635a575
+pkgrel=1
 pkgdesc="This is an electron client that uses Web Skype to better integrate with desktop environments found on Linux."
-arch=("any")
+arch=("x86_64")
 url="https://github.com/stanfieldr/ghetto-skype"
 license=("GPL3")
 depends=('electron')
 makedepends=('npm' 'asar')
-conflicts=('ghetto-skype')
-provides=('ghetto-skype')
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
 options=(!emptydirs)
-source=("${pkgname}::git+https://github.com/stanfieldr/ghetto-skype.git"
+source=("$pkgname::git+$url.git"
         'ghetto-skype.desktop'
         'ghetto-skype')
 md5sums=('SKIP'
@@ -21,16 +21,16 @@ md5sums=('SKIP'
 
 pkgver() {
 	cd "${pkgname}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+	git describe --long --tags | sed 's/^v//; s/-/+/g'
 }
 
 prepare() {
 	cd "${pkgname}"
 
-	sed -i src/tray.js \
+	sed -i \
 		-e 's/skype24.png/skype.png/' \
 		-e 's/skype24-1.png/skype-1.png/' \
-	;
+		src/tray.js
 }
 
 build() {
