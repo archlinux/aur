@@ -1,24 +1,24 @@
 # Maintainer: Shatur <genaloner@gmail.com>
 
-# Use KDE API for tray for additional feautures (this also add knotifier dependency, recommended for KDE users).
-KDE=false
+# Use KDE API features (recommended for Plasma users)
+PLASMA=false
 
 pkgname=optimus-manager-qt
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A Qt interface for Optimus Manager that allows to configure and switch GPUs on Optimus laptops using the tray menu"
 arch=('x86_64')
 url="https://github.com/Shatur95/optimus-manager-qt"
 license=('GPL3')
-depends=('qt5-base' 'optimus-manager')
+depends=('qt5-base' 'optimus-manager>=0.8')
 makedepends=('qt5-tools')
 source=($pkgname.tar.gz::"https://github.com/Shatur95/optimus-manager-qt/archive/$pkgver.tar.gz"
         SingleApplication-submodule.tar.gz::"https://github.com/itay-grudev/SingleApplication/archive/3.0.14.tar.gz")
-sha256sums=('45e8247ceb924a56371377e1ccdb5a89de0ed90a115c53326d27ecefbdca2646'
+sha256sums=('d6864b150280dc80b9f06f2b52d615e946adcc870b8461f3204eb11c09398187'
             '898aa58cebceb07a3b9af65011c0eef23e9789f930a021037dd7e05d2910f318')
 
-if [ ${KDE} == true ]; then
-  depends+=('knotifications')
+if [ ${PLASMA} == true ]; then
+  depends+=('knotifications' 'kiconthemes')
 fi
 
 # Move submodules into the project
@@ -29,8 +29,8 @@ prepare() {
 build() {
     cd "$pkgname-$pkgver"
   
-  if [ ${KDE} == true ]; then
-    qmake "DEFINES += KDE"
+  if [ ${PLASMA} == true ]; then
+    qmake "DEFINES += PLASMA"
   else
     qmake
   fi
