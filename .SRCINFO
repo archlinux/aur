@@ -1,6 +1,6 @@
 pkgbase = wallutils
 	pkgdesc = Utilities for handling resolutions, wallpapers and timed wallpapers
-	pkgver = 5.4.0
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://github.com/xyproto/wallutils
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = wallutils
 	depends = wayland
 	depends = libx11
 	optdepends = feh: for setting the wallpaper for some window managers for X
-	source = git+https://github.com/xyproto/wallutils#tag=5.4.0
+	source = git+https://github.com/xyproto/wallutils#tag=5.4.1
 	sha256sums = SKIP
 
 pkgname = wallutils
