@@ -2,7 +2,7 @@
 
 pkgname=upcheck
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Checker for ArchLinux available updates and send it via notify-rust.'
 arch=('x86_64')
 url="https://gitlab.com/edu4rdshl/upcheck"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('pacman-contrib')
 source=("https://gitlab.com/edu4rdshl/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "$pkgname.install")
-sha256sums=('299F590D967CD98A1E658D6CD4226B1D37B9A5DFF8CABBB5D00BC09072D61C28'
+sha512sums=('1c33f8b005b19ed2c0ef6229cafe3aec348a1b1a6d24057eae71ffe6c4e180f33975a84d4c8293f3f8291bd8817a03003c712ba3062c99375e8703023dcb9c86'
             'SKIP')
 install="$pkgname.install"
 
