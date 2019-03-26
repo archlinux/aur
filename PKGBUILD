@@ -1,20 +1,18 @@
-# $Id$
-# Maintainer:
-# Contributor: Guillaume Horel <guillaume.horel@gmail.com>
+# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname=belr-git
 _pkgname=belr
-pkgver=0.1.3.r54.g1584d38
+pkgver=0.1.3.r56.g57bf7eb
 pkgrel=1
 pkgdesc="A library for working with vCards"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.linphone.org/"
 license=('GPL')
 conflicts=('belr')
 provides=('belr')
 depends=('bctoolbox-git')
 makedepends=('cmake')
-source=("git://github.com/BelledonneCommunications/$_pkgname.git")
+source=("git+https://github.com/BelledonneCommunications/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
