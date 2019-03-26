@@ -1,7 +1,7 @@
 pkgbase = bader
 	pkgdesc = Quantum chemistry - Bader population analysis
 	pkgver = 1.0.3
-	pkgrel = 3
+	pkgrel = 1
 	url = http://theory.cm.utexas.edu/henkelman/code/bader/
 	arch = x86_64
 	license = GPL

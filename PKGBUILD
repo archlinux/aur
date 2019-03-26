@@ -3,7 +3,7 @@
 
 pkgname=bader
 pkgver=1.0.3
-pkgrel=3
+pkgrel=1
 epoch=
 pkgdesc="Quantum chemistry - Bader population analysis"
 arch=('x86_64')
