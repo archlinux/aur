@@ -4,7 +4,7 @@
 
 pkgname=pdfcpu
 _gourl=github.com/hhrutter/pdfcpu
-pkgver=0.1.21
+pkgver=0.1.22
 pkgrel=1
 pkgdesc="A PDF processor written in Go"
 arch=(i686 x86_64 armv7h)
@@ -14,7 +14,7 @@ makedepends=(go)
 
 source=(pdfcpu-$pkgver.tar.gz::https://$_gourl/archive/v$pkgver.tar.gz)
 
-sha256sums=('a43a12a7870979ca4a5a658739052debf8048c8c21dec5a685eab772d2911f8e')
+sha256sums=('452860b423d930d9c751cdcd765381370cdb87e55133a3495bd74bdd36ecb62d')
 
 prepare() {
     export GOPATH="${srcdir}/build"
