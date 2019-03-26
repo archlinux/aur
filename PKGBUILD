@@ -18,9 +18,6 @@ build() {
 }
 
 package() {
-	cd $pkgname-$pkgver
-	sudo rm -rf $pkgname-$pkgver
-	cd ..
 	sudo rm -rf $pkgname-$pkgver	
 }
 
