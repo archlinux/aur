@@ -1,8 +1,8 @@
 pkgbase = fotoxx-git
 	pkgdesc = A program for improving image files made with a digital camera, test-version
 	pkgver = 20.0.test.2019.03.15
-	pkgrel = 1
-	url = http://www.kornelix.net/fotoxx/fotoxx.html
+	pkgrel = 2
+	url = https://gitlab.com/fotoxx/fotoxx.git
 	arch = i686
 	arch = x86_64
 	license = GPL3

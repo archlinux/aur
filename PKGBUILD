@@ -2,9 +2,9 @@
 
 pkgname=fotoxx-git
 pkgver=20.0.test.2019.03.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for improving image files made with a digital camera, test-version"
-url="http://www.kornelix.net/fotoxx/fotoxx.html"
+url="https://gitlab.com/fotoxx/fotoxx.git"
 arch=('i686' 'x86_64')
 license=('GPL3')
 conflicts=('fotoxx')
