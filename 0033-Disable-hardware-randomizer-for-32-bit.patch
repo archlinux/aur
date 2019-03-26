@@ -1,4 +1,4 @@
-From b26414fad10e9ff16f305b3484670260e07df70e Mon Sep 17 00:00:00 2001
+From f3ec9ba64cd4a80639959abbef537ce718dc70d6 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 26 May 2018 03:47:14 +0200
 Subject: [PATCH 33/34] Disable hardware randomizer for 32-bit
@@ -45,5 +45,5 @@ index 917a91098e..c770a3e19b 100644
  #else
      return false;
 -- 
-2.20.1
+2.21.0
 

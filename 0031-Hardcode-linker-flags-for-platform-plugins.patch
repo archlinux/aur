@@ -1,4 +1,4 @@
-From fe25b3abe19208154631b6315587fce9bacc4991 Mon Sep 17 00:00:00 2001
+From 2c28928b34fc030330b00f16fcb546a477c48621 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 23:42:30 +0100
 Subject: [PATCH 31/34] Hardcode linker flags for platform plugins
@@ -82,7 +82,7 @@ index a1a2da547b..7ef91b574d 100644
  DEFINES += QT_NO_FOREACH
  
 diff --git a/src/plugins/platforms/offscreen/offscreen.pro b/src/plugins/platforms/offscreen/offscreen.pro
-index 6652cefd86..a322b17cc5 100644
+index 392ee8bed1..f1f266e2c2 100644
 --- a/src/plugins/platforms/offscreen/offscreen.pro
 +++ b/src/plugins/platforms/offscreen/offscreen.pro
 @@ -1,8 +1,18 @@
@@ -149,5 +149,5 @@ index 174bc7b609..e66488e364 100644
  include(windows.pri)
  
 -- 
-2.20.1
+2.21.0
 
