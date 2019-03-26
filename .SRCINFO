@@ -1,7 +1,7 @@
 pkgbase = sortpuz
 	pkgdesc = Unscramble a square matrix of numbered tiles to put them in order.
 	pkgver = 1.5
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.kornelix.com/sortpuz
 	arch = i686
 	arch = x86_64
