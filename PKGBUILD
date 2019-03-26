@@ -1,7 +1,7 @@
 # Contributor: stefan husmann <stefan-husmann@t-online.de>
 pkgname=galaxy2
 pkgver=1.3
-pkgrel=7
+pkgrel=8
 pkgdesc="Stellar Simulation"
 url="http://www.kornelix.net/galaxy2/galaxy2.html"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ build() {
 
 package() {
   cd $pkgname
-  install -d "$pkgdir"/usr/share/icons
-  make DESTDIR="$pkgdir" install  
+  make DESTDIR="$pkgdir" ICONDIR=/usr/share/pixmaps install  
   rm "$pkgdir"/usr/share/doc/$pkgname/$pkgname.man
+  sed -i 's+/usr/share/galaxy2/icons/++' "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
