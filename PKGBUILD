@@ -2,7 +2,7 @@
 
 pkgname=watsup
 pkgver=4.4
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 makedepends=('xdg-utils')
 depends=('libappindicator-gtk3')
@@ -20,5 +20,6 @@ build() {
 
 package() { 
   cd $pkgname
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" ICONDIR=/usr/share/pixmaps install
+  sed -i 's+/usr/share/watsup/icons/++' "$pkgdir"/usr/share/applications/$pkgname.desktop
 }

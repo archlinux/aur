@@ -1,7 +1,7 @@
 pkgbase = watsup
 	pkgdesc = Showing some system status informations
 	pkgver = 4.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.kornelix.com/watsup
 	arch = i686
 	arch = x86_64
