@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-tools
 	pkgdesc = A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)
-	pkgver = 5.12.1
+	pkgver = 5.12.2
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -20,12 +20,10 @@ pkgbase = mingw-w64-qt5-tools
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.12/5.12.1/submodules/qttools-everywhere-src-5.12.1.tar.xz
+	source = https://download.qt.io/official_releases/qt/5.12/5.12.2/submodules/qttools-everywhere-src-5.12.2.tar.xz
 	source = 0001-Fix-linguist-macro.patch
-	source = 0002-Make-windeployqt-cross-platform-again.patch
-	sha256sums = ab1da4fbd84a9d3873e4ed212a0ae614c6059b8e7dca2f0a599a6f7e61f6cbf3
-	sha256sums = af21681c33589ae384c6582091ac9fe2b09abae33af19c8b0d5eb840c38d20ce
-	sha256sums = ce38a762867b988de6b9b4ecea21272a19132c855c1a7438c9754ae2a8b0ee5f
+	sha256sums = 4aa3a089794ab1c629b666fffb5da4371351a9e85ea691d5d988c2ff63586005
+	sha256sums = 6b1c35f587b31a0ec6aa813b836ea671b31639e7832351a9960402708f7d7906
 
 pkgname = mingw-w64-qt5-tools
 

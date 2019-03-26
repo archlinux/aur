@@ -16,7 +16,7 @@
 
 _qt_module=qttools
 pkgname="mingw-w64-qt5-tools"
-pkgver=5.12.1
+pkgver=5.12.2
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
@@ -28,11 +28,9 @@ license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Fix-linguist-macro.patch'
-        '0002-Make-windeployqt-cross-platform-again.patch')
-sha256sums=('ab1da4fbd84a9d3873e4ed212a0ae614c6059b8e7dca2f0a599a6f7e61f6cbf3'
-            'af21681c33589ae384c6582091ac9fe2b09abae33af19c8b0d5eb840c38d20ce'
-            'ce38a762867b988de6b9b4ecea21272a19132c855c1a7438c9754ae2a8b0ee5f')
+        '0001-Fix-linguist-macro.patch')
+sha256sums=('4aa3a089794ab1c629b666fffb5da4371351a9e85ea691d5d988c2ff63586005'
+            '6b1c35f587b31a0ec6aa813b836ea671b31639e7832351a9960402708f7d7906')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
