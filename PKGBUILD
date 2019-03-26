@@ -1,9 +1,9 @@
 #Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname="mongodb-bin"
-pkgver="4.0.6"
+pkgver="4.0.7"
 basever="4.0"
-pkgrel="4"
+pkgrel="1"
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
 url="https://www.mongodb.com/"
@@ -21,9 +21,9 @@ source=(
     "mongodb.tmpfiles"
     "LICENSE")
 
-sha256sums=("0732fadef967ec2a1d3fc96d85c4c631e3b53560fbaa5a9c2e8e8493244d9e1c"
-	    "298268d803211f87c66f1f16f378de198a8142f4abe34589f2354c775a8bf0b1"
-            "c7238d4c080fe7a52ae3569572da4e9eb32d35b586b3c3222d957810c9a27f29"
+sha256sums=("20142a1055b19e7ad941d7940323d3826e700efac419c3cda3d9b71999c89e71"
+	    "b927863dad727c7fae09b1d9ed17a4be94a5b87ea09d816bcd1d929a3ff144f8"
+            "74fe67454bf11abda19d5f46bd9912056c71378203eaa0b9989d7546ca1f9779"
             "19f55ab28652b3817e98fc3f15cc2f6f3255a5e1dfd7b0d5a27c9ba22fd2703e"
             "8010ce728d657524cd76b5afda7ffbc1cc389642336b12b89cec5df2b09fc0e4"
             "47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b"
