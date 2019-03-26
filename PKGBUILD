@@ -1,7 +1,7 @@
 # Maintainer: Miodrag Tokić
 
 pkgname=watson
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='A wonderful CLI to track your time!'
 arch=('any')
@@ -11,16 +11,11 @@ depends=('python' 'python-arrow' 'python-click' 'python-requests')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 
-source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/TailorDev/Watson/archive/$pkgver.tar.gz"
-)
-sha256sums=(
-    '34d63592e0818c5779ee993e606f2fa8d6f449b94f0a824da5f34bf15472b1ac'
-)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/TailorDev/Watson/archive/$pkgver.tar.gz")
+sha256sums=('b4d4d1a45f04e57fb00aeac0caf1003bb402dfc2cb0989a3b167ed2611077a54')
 
 build() {
     cd "$srcdir/Watson-$pkgver"
-
     python setup.py build
 }
 
