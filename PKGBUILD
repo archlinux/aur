@@ -1,16 +1,16 @@
 # Maintainer: Shatur <genaloner@gmail.com>
 
-# Use KDE API for tray for additional feautures (this also add knotifier dependency, recommended for Plasma users).
+# Use KDE API features (recommended for Plasma users)
 PLASMA=false
 
 pkgname=optimus-manager-qt-git
-pkgver=1.0.0.r21.g25206c8
+pkgver=1.1.0.r0.g0f6fd0a
 pkgrel=1
 pkgdesc="A Qt interface for Optimus Manager that allows to configure and switch GPUs on Optimus laptops using the tray menu"
 arch=('x86_64')
 url="https://github.com/Shatur95/optimus-manager-qt"
 license=('GPL3')
-depends=('qt5-base' 'optimus-manager')
+depends=('qt5-base' 'optimus-manager>=0.8')
 makedepends=('qt5-tools' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
