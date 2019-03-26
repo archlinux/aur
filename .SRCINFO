@@ -1,6 +1,6 @@
 pkgbase = matrix-synapse-git
 	pkgdesc = Matrix reference homeserver
-	pkgver = 0.34.1.1.r33.g25dd56ace
+	pkgver = 0.99.2.r285.g8cbbedaa2
 	pkgrel = 1
 	url = https://github.com/matrix-org/synapse
 	install = synapse.install
@@ -8,7 +8,8 @@ pkgbase = matrix-synapse-git
 	license = Apache
 	checkdepends = python-lxml
 	checkdepends = python-jinja
-	makedepends = python-mock
+	checkdepends = python-mock
+	checkdepends = python-parameterized
 	makedepends = git
 	depends = python-jsonschema
 	depends = python-twisted
@@ -43,7 +44,6 @@ pkgbase = matrix-synapse-git
 	optdepends = python-lxml: URL previewing
 	optdepends = python-jinja: e-mail notifications
 	optdepends = python-bleach: e-mail notifications
-	optdepends = python-matrix-synapse-ldap3: LDAP support
 	optdepends = python-psutil: metrics
 	provides = matrix-synapse
 	conflicts = matrix-synapse
@@ -56,7 +56,7 @@ pkgbase = matrix-synapse-git
 	md5sums = SKIP
 	md5sums = 276a99050f40601089255ea168bb7620
 	md5sums = ecd9f66fb57fe1a2e1e2df07a460a35b
-	md5sums = a5637f061caca1e55cc895daf238adfc
+	md5sums = ad2900abb04351778e577175cedf6edc
 
 pkgname = matrix-synapse-git
 

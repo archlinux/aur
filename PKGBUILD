@@ -1,7 +1,8 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=matrix-synapse-git
-pkgver=0.34.1.1.r33.g25dd56ace
+pkgver=0.99.2.r285.g8cbbedaa2
 pkgrel=1
 
 pkgdesc="Matrix reference homeserver"
@@ -21,13 +22,12 @@ depends=('python-jsonschema' 'python-twisted' 'python-service-identity'
          'python-attrs' 'python-netaddr' 'python-sortedcontainers'
          'python-treq' 'python-psutil'
          'systemd')
-makedepends=('python-mock' 'git')
-checkdepends=('python-lxml' 'python-jinja')
+makedepends=('git')
+checkdepends=('python-lxml' 'python-jinja' 'python-mock' 'python-parameterized')
 optdepends=('python-psycopg2: PostgreSQL support'
             'python-lxml: URL previewing'
             'python-jinja: e-mail notifications'
             'python-bleach: e-mail notifications'
-            'python-matrix-synapse-ldap3: LDAP support'
             'python-psutil: metrics')
 
 source=("git://github.com/matrix-org/synapse.git#branch=develop"
@@ -38,7 +38,7 @@ source=("git://github.com/matrix-org/synapse.git#branch=develop"
 md5sums=('SKIP'
          '276a99050f40601089255ea168bb7620'
          'ecd9f66fb57fe1a2e1e2df07a460a35b'
-         'a5637f061caca1e55cc895daf238adfc')
+         'ad2900abb04351778e577175cedf6edc')
 
 backup=('etc/synapse/log_config.yaml')
 install=synapse.install
