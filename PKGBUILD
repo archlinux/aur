@@ -1,5 +1,5 @@
-# Contributor: TBK <alpine@jjtc.eu>
-# Maintainer: TBK <alpine@jjtc.eu>
+# Contributor: TBK <aur@jjtc.eu>
+# Maintainer: TBK <aur@jjtc.eu>
 pkgname=amiitool
 pkgver=2
 pkgrel=1
