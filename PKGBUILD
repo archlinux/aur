@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=gnome-shell-extension-system76-power-git
-pkgver=r49.f979212
-pkgrel=2
+pkgver=r51.8a5af31
+pkgrel=1
 pkgdesc="Gnome shell extension for System76 power management"
 arch=('any')
 url="https://github.com/pop-os/gnome-shell-extension-system76-power"
