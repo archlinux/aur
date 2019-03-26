@@ -4,12 +4,12 @@
 
 pkgname=proxygen
 pkgver=2019.03.25.00
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server."
 arch=('x86_64')
 url="https://github.com/facebook/proxygen"
 license=('BSD')
-depends=('folly' 'fbthrift' 'wangle' 'zstd' 'fizz' 'openssl' 'zlib' 'libcap')
+depends=('folly' 'wangle' 'zstd' 'fizz' 'boost' 'openssl' 'zlib' 'libcap')
 makedepends=('cmake' 'python' 'gperf' 'gperftools')
 conflicts=('proxygen-git')
 source=("$url/archive/v$pkgver.tar.gz")
