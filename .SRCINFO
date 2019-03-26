@@ -11,7 +11,7 @@ pkgbase = bctoolbox-git
 	depends = mbedtls
 	provides = bctoolbox
 	conflicts = bctoolbox
-	source = git://github.com/BelledonneCommunications/bctoolbox.git
+	source = git+https://github.com/BelledonneCommunications/bctoolbox.git
 	sha256sums = SKIP
 
 pkgname = bctoolbox-git

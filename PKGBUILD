@@ -1,4 +1,4 @@
-# Contributor: Guillaume Horel <guillaume.horel@gmail.com>
+# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname=bctoolbox-git
 _pkgname=bctoolbox
@@ -12,7 +12,7 @@ conflicts=('bctoolbox')
 provides=('bctoolbox')
 depends=('libdecaf' 'mbedtls')
 makedepends=('cmake' 'git')
-source=("git://github.com/BelledonneCommunications/$_pkgname.git")
+source=("git+https://github.com/BelledonneCommunications/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
