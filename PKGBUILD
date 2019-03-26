@@ -5,31 +5,26 @@
 
 _pkgbasename=giflib
 pkgname=lib32-$_pkgbasename
-pkgver=5.1.4
-pkgrel=2
+pkgver=5.1.8
+pkgrel=1
 pkgdesc="A library for reading and writing gif images (32-bit)"
 url="http://sourceforge.net/projects/giflib/"
 arch=('x86_64')
 license=('MIT')
 depends=('lib32-glibc' $_pkgbasename)
 makedepends=('xmlto' 'docbook-xsl' 'docbook-xml')
-source=(https://downloads.sourceforge.net/sourceforge/giflib/${_pkgbasename}-${pkgver}.tar.bz2)
-md5sums=('2c171ced93c0e83bb09e6ccad8e3ba2b')
+source=(https://downloads.sourceforge.net/project/giflib/${_pkgbasename}-${pkgver}.tar.gz)
+sha512sums=('d390917837a64de1912720ab8968e6b077c6be9f9a2f835faced44420f54d6d55d4e3543b9779ec65d399858856188fea93c170b253d0b83928f15548a14aba3')
 
 build() {
-  export CC="gcc -m32"
-  export CXX="g++ -m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-
   cd ${srcdir}/${_pkgbasename}-${pkgver}
-  ./configure --prefix=/usr --libdir=/usr/lib32 --disable-static
-  make
+  make CC="gcc -m32"
 }
 
 package() {
   cd ${srcdir}/${_pkgbasename}-${pkgver}
 
-  make DESTDIR=${pkgdir} install
+  make PREFIX=/usr LIBDIR=/usr/lib32 DESTDIR=${pkgdir} install
 
   rm -rf "${pkgdir}"/usr/{include,share,bin}
   install -m755 -d ${pkgdir}/usr/share/licenses
