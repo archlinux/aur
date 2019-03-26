@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=gnome-shell-extension-screenshot-git
-pkgver=r137.9bec3b3
-pkgrel=2
+pkgver=r141.71b69c7
+pkgrel=1
 pkgdesc="Gnome Shell extension for making and uploading screenshots"
 arch=('any')
 url="https://github.com/OttoAllmendinger/gnome-shell-screenshot"
