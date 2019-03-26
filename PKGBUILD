@@ -2,7 +2,7 @@
 _modulename=taskwiki
 pkgname=vim-$_modulename
 pkgver=0.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Proper project management in vim. Standing on the shoulders of vimwiki and Taskwarrior"
 arch=(any)
 url="https://github.com/tbabej/taskwiki"
@@ -17,7 +17,8 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${url}/archive/master.tar.gz")
-sha256sums=('425692b75878ae3130e6d6d711612d04a6ddffa7c65a9e0e4cbc76b548354b13')
+sha256sums=('5f172b5f8093705d08054960b2d5a30571e51295006823383ce4f7e862a2f26b')
+
 package() {
   cd "$srcdir/$_modulename-master"
   installpath="${pkgdir}/usr/share/vim/vimfiles"
