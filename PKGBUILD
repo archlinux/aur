@@ -9,7 +9,7 @@
 
 _qt_module=qtsvg
 pkgname="mingw-w64-qt5-svg"
-pkgver=5.12.1
+pkgver=5.12.2
 pkgrel=1
 arch=('any')
 pkgdesc="Classes for displaying the contents of SVG files (mingw-w64)"
@@ -21,7 +21,7 @@ license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('5bc1f744d32c06f5aa4eff33759568106a995ce21fa1326a247dfa5f783f63c8')
+sha256sums=('ed9f2118a6d33f53e5d9ed18dcd36f252a4fbaf68382a1c4a663ba75b25ae7bd')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
