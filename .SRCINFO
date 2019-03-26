@@ -1,0 +1,24 @@
+pkgbase = xpiks
+	pkgdesc = Cross-Platform Image Keywording Software
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://xpiksapp.com/
+	arch = x86_64
+	license = MPL
+	makedepends = git
+	depends = curl
+	depends = zlib
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols
+	depends = qt5-svg
+	depends = qt5-graphicaleffects
+	depends = quazip
+	depends = perl-image-exiftool
+	source = xpiks::git+https://github.com/ribtoks/xpiks.git#tag=v1.5.2
+	source = xpiks-build_with_system_libquazip5.diff
+	md5sums = SKIP
+	md5sums = 8d082ec0a08051aec943aa3c35486592
+
+pkgname = xpiks
+

@@ -1,0 +1,35 @@
+diff --git a/src/xpiks-qt/Helpers/ziphelper.cpp b/src/xpiks-qt/Helpers/ziphelper.cpp
+index 1e3c99aa..8f53d404 100644
+--- a/src/xpiks-qt/Helpers/ziphelper.cpp
++++ b/src/xpiks-qt/Helpers/ziphelper.cpp
+@@ -10,7 +10,7 @@
+ 
+ #include "ziphelper.h"
+ #include <QFileInfo>
+-#include <quazip/JlCompress.h>
++#include <quazip5/JlCompress.h>
+ #include "filehelpers.h"
+ #include "../Common/logging.h"
+ 
+diff --git a/src/xpiks-qt/xpiks-qt.pro b/src/xpiks-qt/xpiks-qt.pro
+index d36ccb0d..d6cff7e5 100644
+--- a/src/xpiks-qt/xpiks-qt.pro
++++ b/src/xpiks-qt/xpiks-qt.pro
+@@ -635,7 +635,7 @@ LIBS += -lhunspell
+ LIBS += -lcurl
+ LIBS += -lface
+ LIBS += -lssdll
+-LIBS += -lquazip
++LIBS += -lquazip5
+ LIBS += -lz
+ LIBS += -lthmbnlr
+ LIBS += -lxpks
+@@ -735,7 +735,7 @@ win32 {
+ 
+ linux {
+     message("for Linux")
+-    INCLUDEPATH += "../../vendors/quazip"
++    #INCLUDEPATH += "../../vendors/quazip"
+     BUILDNO = $$system($$PWD/../../scripts/build/buildno.sh)
+ 
+     LIBS += -ldl
