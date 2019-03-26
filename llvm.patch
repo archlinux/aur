@@ -1,0 +1,48 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1108aa2..049e0b7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -88,7 +88,7 @@ set(LLVM_LIB "")
+ if (ENABLE_LLVM_BACKEND)
+     set(LLVM_DIR /usr/share/llvm/cmake CACHE PATH "Where to search for LLVM i.e. ")
+ 
+-    find_package(LLVM CONFIG NAMES LLVM CONFIGS LLVM-Config.cmake LLVMConfig.cmake)
++    find_package(LLVM)
+     if (LLVM_FOUND)
+         set(SEEXPR_ENABLE_LLVM_BACKEND 1)
+         message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
+diff --git a/src/SeExpr/Evaluator.h b/src/SeExpr/Evaluator.h
+index 213ccba..5d82fa5 100644
+--- a/src/SeExpr/Evaluator.h
++++ b/src/SeExpr/Evaluator.h
+@@ -172,7 +172,7 @@ class LLVMEvaluator {
+         };
+         FunctionType *FT = FunctionType::get(voidTy, ParamTys, false);
+         Function *F = Function::Create(FT, Function::ExternalLinkage, uniqueName + "_func", TheModule.get());
+-        F->addAttribute(llvm::AttributeSet::FunctionIndex, llvm::Attribute::AlwaysInline);
++        F->addAttribute(llvm::AttributeList::FunctionIndex, llvm::Attribute::AlwaysInline);
+         {
+             // label the function with names
+             const char *names[] = {"outputPointer", "dataBlock", "indirectIndex"};
+@@ -288,8 +288,10 @@ class LLVMEvaluator {
+         }
+ 
+         if (Expression::debugging) {
++            #ifdef DEBUG
+             std::cerr << "Pre verified LLVM byte code " << std::endl;
+             TheModule->dump();
++            #endif
+         }
+ 
+         // TODO: Find out if there is a new way to veirfy
+@@ -361,8 +363,10 @@ class LLVMEvaluator {
+         }
+ 
+         if (Expression::debugging) {
++            #ifdef DEBUG
+             std::cerr << "Pre verified LLVM byte code " << std::endl;
+             altModule->dump();
++            #endif
+         }
+ 
+         return true;
