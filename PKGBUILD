@@ -8,8 +8,8 @@ url=https://github.com/KSXGitHub/ipfs-fuse-daemon.pkgbuild
 arch=(any)
 license=(MIT)
 depends=(bash go-ipfs fuse2)
-source=(https://raw.githubusercontent.com/KSXGitHub/MIT/master/LICENSE.md)
-sha512sums=(SKIP)
+#source=(https://raw.githubusercontent.com/KSXGitHub/MIT/master/LICENSE.md)
+#sha512sums=(SKIP)
 
 package() {
   cd "$srcdir"/${_dirname}
