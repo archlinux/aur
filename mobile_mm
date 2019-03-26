@@ -1,5 +1,5 @@
 # Contributed by Max Wölfing <ff0x@infr.cat>
-# Version: 0.0.9
+# Version: 0.0.13
 
 # KNOWN BUGS:
 # - After suspend/hibernate the mobile broadband connection is not going to reconnect automatically (that's probably ok)
@@ -24,7 +24,7 @@ if [[ -z "$MODEM_ID" ]] || [[ ! "$MODEM_ID" =~ ^[0-9]+$ ]]; then
 
     # Wait until ModemManager has initialised the modem
     TIMEOUT_MODEM=${TimeoutModem:-5}
-    until [[ $($__MMCLI -L 2>/dev/null | awk '/\/Modem\// {print $1}' | cut -d/ -f 6) =~ ^[0-9]+$ ]] || [ $TIMEOUT_MODEM -eq 0 ]; do
+    until [[ $($__MMCLI -L 2>/dev/null | awk '/\/Modem\// {print $1}' | cut -d/ -f 6) =~ ^[0-9]+$ ]] || [ "$TIMEOUT_MODEM" -eq 0 ]; do
       sleep 1
       ((TIMEOUT_MODEM--))
     done
@@ -46,13 +46,13 @@ if [[ -z "$MODEM" ]]; then
 fi
 
 # Get the modem status
-MODEM_STATUS=$($__MMCLI -m "$MODEM" | awk '/Status/ {for(i=1; i<5; i++) {getline; if ($2=="state:") {gsub("\047","",$3); print $3}}}')
+MODEM_STATUS=$($__MMCLI -m "$MODEM" 2>/dev/null | awk '/Status/ {for(i=1; i<5; i++) {getline; if ($2=="state:") {gsub("\047","",$3); print $3}}}')
 if [[ "$MODEM_STATUS" == 'locked' ]]; then
   report_notice "Modem is locked. Trying to supply PIN, if provided in the connection profile.."
   if [[ $Pin ]]; then
     PUK=""; [[ $Puk ]] && PUK="--puk=${Puk}"
     SIM_PATH=$($__MMCLI -m "$MODEM" 2>/dev/null | grep 'SIM' | awk '{print $4}' | sed "s/'//g")
-    if [[ ! -z "$SIM_PATH" ]]; then
+    if [[ -n "$SIM_PATH" ]]; then
       $__MMCLI -m "$MODEM_ID" -i "$SIM_PATH" $PUK --pin="${Pin}" >/dev/null 2>&1
       MODEM_STATUS=$($__MMCLI -L 2>/dev/null | sed -n "s/.*state: '\([^ \t]\+\)'.*/\1/p")
       if [[ "$MODEM_STATUS" == 'locked' ]]; then
@@ -117,30 +117,38 @@ function mobile_mm_up {
   fi
 
   report_debug "Full connect string: $__MMCLI -m $MODEM --set-allowed-modes=ANY --set-preferred-mode=${Mode} --simple-connect=$connect_args"
-  $__MMCLI -m "$MODEM" --set-allowed-modes=ANY --set-preferred-mode="${Mode}" --simple-connect="$connect_args" $(if [ "$NETCTL_DEBUG" == 'yes' ]; then echo '2>/dev/null'; fi)
-  local bearer bearer_interface
-  bearer=$($__MMCLI -m "$MODEM" $(if [ "$NETCTL_DEBUG" == 'yes' ]; then echo '2>/dev/null'; fi) | sed -n 's#.*\(/org/.*/Bearer/[0-9]\+\).*#\1#p')
+
+  # Trying to establish the broadband connection until the modem got its bearer (and the bearer_interface) or the timeout is reached
+  local bearer=''; bearer_interface=''; TIMEOUT_CONNECT=${TimeoutConnect:-30}
+  until [[ -n "$bearer_interface" ]] || [ "$TIMEOUT_CONNECT" -eq 0 ]; do
+    $__MMCLI -m "$MODEM" --set-allowed-modes=ANY --set-preferred-mode="${Mode}" --simple-connect="$connect_args"
+
+    if [[ -n "$bearer" ]]; then
+      report_debug "Bearer found on modem"
+      until [[ $($__MMCLI -m "$MODEM" -b "$bearer" 2>/dev/null | awk '/Status/ {for(i=1; i<5; i++) {getline; if ($2=="interface:") {gsub("\047","",$3); print $3}}}') ]] || [ "$TIMEOUT_CONNECT" -eq 0 ]; do
+        sleep 1
+        ((TIMEOUT_CONNECT--))
+      done
+      bearer_interface=$($__MMCLI -m "$MODEM" -b "$bearer" 2>/dev/null | awk '/Status/ {for(i=1; i<5; i++) {getline; if ($2=="interface:") {gsub("\047","",$3); print $3}}}')
+    else
+      sleep 1
+      bearer=$($__MMCLI -m "$MODEM" 2>/dev/null | sed -n 's#.*\(/org/.*/Bearer/[0-9]\+\).*#\1#p')
+      ((TIMEOUT_CONNECT--))
+    fi
+  done
 
   if [[ -z "$bearer" ]]; then
     report_error "No bearer found!"
     return 1
   fi
 
-  get_bearer_interface="$__MMCLI -m $MODEM -b $bearer | awk '/Status/ {for(i=1; i<5; i++) {getline; if ($2=="interface:") {gsub("\047","",$3); print $3}}}'"  
-
-  # Some modems need some time for the initialisation the connection
-  TIMEOUT_CONNECTION=${TimeoutConnect:-30}
-  until [[ $($__MMCLI -m $MODEM -b $bearer | awk '/Status/ {for(i=1; i<5; i++) {getline; if ($2=="interface:") {gsub("\047","",$3); print $3}}}') ]] || [ $TIMEOUT_CONNECTION -eq 0 ]; do
-    sleep 1
-    ((TIMEOUT_CONNECTION--))
-  done
-
-  bearer_interface=$($__MMCLI -m "$MODEM" -b "$bearer" $(if [ "$NETCTL_DEBUG" == 'yes' ]; then echo '2>/dev/null'; fi) | awk '/Status/ {for(i=1; i<5; i++) {getline; if ($2=="interface:") {gsub("\047","",$3); print $3}}}')
-
   if [[ -z "$bearer_interface" ]]; then
     report_error "No bearer interface found. Consider increasing \$TimeoutConnect a bit."
     return 1
   fi
+
+  report_debug "Interface found on modem bearer"
+
   if [[ "$bearer_interface" != "$Interface" ]]; then
     report_notice "Network interface used by the bearer is not the same as provided by your connection profile. Please update the profile using the right bearer interface: '$bearer_interface'"
     Interface=$bearer_interface

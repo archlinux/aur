@@ -42,7 +42,7 @@ AccessPointName=apn
 #TimeoutModem=10
 
 # Amount of seconds, we will wait for the connection is established (default: 30)
-#TimeoutConnect=60
+#TimeoutConnect=35
 
 # Preferred mode can be one of {ANY, 2G, 3G, 4G} (default: 4G)
 #Mode=4G
