@@ -33,6 +33,7 @@ build() {
 
 package() {
   cd ${pkgname%-git}/programs/${pkgname%-git}
-  make DESTDIR="$pkgdir" PREFIX=/usr install
+  make DESTDIR="$pkgdir" PREFIX=/usr ICONDIR=/usr/share/pixmaps install
   rm -r "$pkgdir"/usr/share/appdata
+  sed -i 's+/usr/share/fotoxx/icons/++' "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
