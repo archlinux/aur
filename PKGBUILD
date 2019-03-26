@@ -9,7 +9,7 @@
 
 _qt_module=qtwinextras
 pkgname="mingw-w64-qt5-winextras"
-pkgver=5.12.1
+pkgver=5.12.2
 pkgrel=1
 arch=('any')
 pkgdesc="Classes and functions that enable you to use Windows-specific functions (mingw-w64)"
@@ -20,8 +20,10 @@ groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL3' 'LGPL2.1' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('8d312155a7da329df41cc2ea5d265eb632be7dd9cbd789fa3bc0206b4022f557')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
+        '0001-Revert-Directly-link-to-functions-available-from-Win.patch')
+sha256sums=('3141027c4f7dbb2bcef8a35fd60d673adfff0e4fb20c36f73930570252136787'
+            '03ad2a77845d5aac183f99dc9e3af7d3a7dec3549d0dfb8b9817bce99ed9110b')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
