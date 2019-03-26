@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Front Panel Designer Europe: Order Products
+Comment=Order custom front panels and enclosures, Europe version
+Exec=FrontDesignEU-Order
+Icon=/opt/FrontDesignEU/share/FrontDesign/FrontDesignIcon.png
+Type=Application
+Terminal=false
+Categories=Development;
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Front Panel Designer Europe
+Comment=Design custom front panels and enclosures, Europe version
+Exec=FrontDesignEU
+Icon=/opt/FrontDesignEU/share/FrontDesign/FrontDesignIcon.png
+Type=Application
+Terminal=false
+Categories=Development;
