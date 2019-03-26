@@ -1,0 +1,20 @@
+pkgbase = falkon-widevine
+	pkgdesc = A browser plugin designed for the viewing of premium video content (Falkon Web Browser)
+	pkgver = 4.10.1303.2
+	pkgrel = 1
+	epoch = 1
+	url = https://www.widevine.com/
+	arch = x86_64
+	license = custom
+	depends = falkon
+	conflicts = qt5-webengine-widevine
+	options = !strip
+	source = chrome-eula_text-20190307.html::https://www.google.com/intl/en/chrome/privacy/eula_text.html
+	source = https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_73.0.3683.86-1_amd64.deb
+	source = get_cdm_version.c
+	sha256sums = e1e2a694ffe71476b2aefbca64fe470095210c2eb2235c645ca73160cc0b21ea
+	sha256sums = 6bca2828da09563634bce48cfb899f3fb1d069285a297ca5916d3bb63b25b5d6
+	sha256sums = 3fda44a5b8b222434530f27923568de1fda1eb0caa8621b56a8b2a6a2a2e3d5d
+
+pkgname = falkon-widevine
+
