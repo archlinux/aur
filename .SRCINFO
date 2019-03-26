@@ -8,6 +8,7 @@ pkgbase = gotty-git
 	license = MIT
 	makedepends = git
 	makedepends = go
+	makedepends = godep
 	provides = gotty
 	conflicts = gotty
 	source = gotty-git::git+https://github.com/yudai/gotty.git
