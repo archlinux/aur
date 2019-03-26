@@ -2,12 +2,12 @@
 
 pkgname=xviewer-plugins
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugins for xviewer. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('xviewer' 'libpeas')
-makedepends=('gnome-common')
+makedepends=('gnome-common' 'gobject-introspection')
 provides=($pkgname)
 conflicts=('xviewer-plugins-git')
 url='https://github.com/linuxmint/xviewer-plugins'
