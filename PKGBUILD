@@ -7,7 +7,7 @@
 
 pkgname=opera-beta
 pkgver=60.0.3255.8
-pkgrel=2
+pkgrel=3
 pkgdesc='A fast and secure web browser and Internet suite - beta stream'
 arch=('x86_64')
 url='https://www.opera.com/computer'
@@ -15,7 +15,7 @@ license=('custom:opera')
 provides=('opera')
 depends=('gtk3' 'alsa-lib' 'libnotify' 'curl' 'nss' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
 optdepends=(
-    'opera-developer-ffmpeg-codecs: playback of proprietary video/audio'
+    'opera-beta-ffmpeg-codecs: playback of proprietary video/audio'
     'pepper-flash: flash support'
     'upower: opera battery save'
 )
