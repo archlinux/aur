@@ -8,7 +8,7 @@
 _tcp_module_gitname=nginx_tcp_proxy_module
 pkgname=tengine-extra
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('x86_64')
 url='http://tengine.taobao.org'
@@ -29,13 +29,17 @@ provides=('nginx' 'tengine')
 source=($url/download/tengine-$pkgver.tar.gz
         service
         logrotate
+        fix-tengine-version-2.3.0.patch::https://patch-diff.githubusercontent.com/raw/alibaba/tengine/pull/1221.patch
         )
 sha256sums=('17cf1380d4faefb70707970437b3f8b66f6ff4530b5e6e61970b35f59b2e2624'
             'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
-            '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97')
+            '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97'
+            '5a144630e3b0924083ce1ceeb96a8fd13ed2f3c9df350c2d8c41f0c80c4a06ef')
 
 build() {
     cd tengine-$pkgver
+
+    patch -Np1 -i ../fix-tengine-version-2.3.0.patch
 
     ./configure \
         --prefix=/etc/tengine \
