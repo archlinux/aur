@@ -109,7 +109,7 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
   # patch -Np1 -i ../0001-bz-1468911.patch patch is to large for the AUR
-  xcat "$srcdir"/0001-bz-1468911.patch.xz | patch -Np1
+  xzcat "$srcdir"/0001-bz-1468911.patch.xz | patch -Np1
 
   
   if [[ $_pgo ]] ; then
