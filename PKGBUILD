@@ -1,34 +1,26 @@
-# Contributor: Mitsu <archlinux AT suumitsu DOT eu>
-# Maintainer: max-k <max-k AT post DOT com>
+# Maintainer:
+# Contributor: Bruno Pagani <archange@archlinux.org>
 
 pkgname=hubicfuse
 pkgver=3.0.1
-pkgrel=1
+pkgrel=3
 pkgdesc="A fuse filesystem to access HubiC cloud storage"
-arch=('i686' 'x86_64')
-conflicts=("hubicfuse-git")
-provides=("hubicfuse")
-url='https://github.com/TurboGit/hubicfuse'
+arch=('x86_64')
+url="https://github.com/TurboGit/hubicfuse"
 license=('MIT')
-depends=('fuse' 'libxml2' 'json-c')
-makedepends=('gcc' 'libxml2' 'pkg-config' 'make')
-source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('6c4687b07e7e3b184ad30f1d3c66932867ee6e5a38e5d153fbf408ca06d0533e')
+depends=('curl' 'file' 'fuse' 'json-c' 'libxml2')
+source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('39301395987c8e68c5de57361a6b1ce8c8cd58e3dfdf89b23ff9efd63900eb934261aab6df46d2cf73e4151b9815d1ebe4984cabd9145b83191835e6c4360e16')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make -j $(nproc)
+    cd ${pkgname}-${pkgver}
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" install
-
-  install -D -m755 "$srcdir/$pkgname-$pkgver/hubic_token" "$pkgdir/usr/bin/hubic_token"
-  echo "##################################################################"
-  echo "For setup, please refer to https://github.com/TurboGit/hubicfuse"
-  echo "##################################################################"
+    cd ${pkgname}-${pkgver}
+    make DESTDIR="${pkgdir}" install
+    install -Dm755 hubic_token -t "${pkgdir}"/usr/bin/
+    install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
-# vim:set ts=2 sw=2 et:
-
