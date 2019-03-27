@@ -1,13 +1,14 @@
 pkgbase = riot-desktop-git
 	pkgdesc = A glossy Matrix collaboration client for the desktop.
-	pkgver = v0.16.5.r26.gf69869ac
-	pkgrel = 2
+	pkgver = v1.0.5.r56.ga8e49496
+	pkgrel = 1
 	url = https://riot.im
 	arch = any
 	license = Apache
 	makedepends = git
-	makedepends = npm
+	makedepends = nodejs
 	makedepends = jq
+	makedepends = yarn
 	depends = electron
 	provides = riot-desktop
 	conflicts = riot-desktop
@@ -16,9 +17,11 @@ pkgbase = riot-desktop-git
 	source = riot-desktop-git::git://github.com/vector-im/riot-web.git#branch=develop
 	source = riot-desktop.desktop
 	source = riot-desktop.sh
+	source = fetch-develop.deps.sh
 	sha256sums = SKIP
 	sha256sums = ae0654027f0646178961f6397322aefdc817d052625772dd297d636fe9726aff
 	sha256sums = 0f8d896793e6f6f677febb5921b2256c9786fad67294cb32efd6d059ed21e04c
+	sha256sums = 9e157d4c5c958c4bf7aa5de43919a2017f4a850f8171a46786b306531c8b03b0
 
 pkgname = riot-desktop-git
 
