@@ -1,7 +1,7 @@
 pkgbase = beaker-browser-bin
 	pkgdesc = Peer-to-peer browser with tools to create and host websites
 	pkgver = 0.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://beakerbrowser.com/
 	install = beaker-browser-bin.install
 	arch = x86_64
