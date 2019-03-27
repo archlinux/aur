@@ -1,11 +1,12 @@
 pkgbase = checkrun.sh-git
 	pkgdesc = Cron-style mailing wrapper for systemd .timer units
-	pkgver = 20181203
+	pkgver = 20190327
 	pkgrel = 1
 	url = https://github.com/lynix/checkrun.sh
 	arch = any
 	license = MIT
 	depends = bash
+	conflicts = checkrun.sh
 	source = git://github.com/lynix/checkrun.sh.git
 	md5sums = SKIP
 
