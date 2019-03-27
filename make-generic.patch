@@ -1,0 +1,25 @@
+diff -Naur old/configure new/configure
+--- old/configure	2012-04-11 09:33:55.000000000 +0200
++++ new/configure	2012-04-11 12:05:07.098916602 +0200
+@@ -96,9 +96,9 @@
+   fi
+ }
+ 
+-CFLAGS=""
+-CPPFLAGS=""
+-LDFLAGS=""
++CFLAGS="$CFLAGS"
++CPPFLAGS="$CXXFLAGS"
++LDFLAGS="$LDFLAGS"
+ OPTIM=""
+ 
+ do_echo -n "Determining compiler version to use... "
+@@ -451,6 +451,8 @@
+   OPTIM="$OPTIM_BACKUP $BEST_CPUFEATURE"
+ fi
+ 
++OPTIM=""
++
+ do_echo "Updating Makefile.sets ..."
+ 
+ if [ "$DEBUG" = "1" ]; then
