@@ -1,0 +1,18 @@
+pkgbase = python-aws-mfa
+	pkgdesc = Easily manage your AWS Security Credentials when using Multi-Factor Authentication (MFA)
+	pkgver = 0.0.12
+	pkgrel = 1
+	url = https://github.com/broamski/aws-mfa
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-aws-mfa-0.0.12.tar.gz::https://github.com/broamski/aws-mfa/archive/0.0.12.tar.gz
+	sha512sums = 6ea93dc93d2ebdfb6adbbe9c2a4571781a64381aff6b429456ecd9378329857c34eaa98c20f6928aaebdd4410d0c4f69b3b9d1f68429128d7198756e95398663
+
+pkgname = python-aws-mfa
+	depends = python-boto3
+
+pkgname = python2-aws-mfa
+	depends = python2-boto3
+
