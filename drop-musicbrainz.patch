@@ -1,0 +1,144 @@
+diff -Naur muine-0.8.11.orig/src/CoverGetter.cs muine-0.8.11/src/CoverGetter.cs
+--- muine-0.8.11.orig/src/CoverGetter.cs	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/src/CoverGetter.cs	2017-06-24 18:59:25.451408318 +0200
+@@ -27,8 +27,6 @@
+ 
+ using Gdk;
+ 
+-using musicbrainz;
+-
+ namespace Muine
+ {
+ 	public class CoverGetter
+@@ -320,109 +318,7 @@
+ 		/// </exception>
+ 		private Pixbuf DownloadFromAmazonViaMusicBrainz (Album album)
+ 		{
+-			// Rather than do the lib search and catch the
+-			// DllNotFoundException every single time,
+-			// we check a simple bool as a performance helper.
+-			if (musicbrainz_lib_missing)
+-				return null;
+-
+-			Pixbuf pix = null;
+-			try {
+-				// Sane album title
+-				string sane_album_title;
+-				if (album.Name != null)
+-					sane_album_title = SanitizeString (album.Name);
+-				else
+-					sane_album_title = String.Empty;
+-
+-				// Sane artist name
+-				string sane_artist_name;
+-				if (album.Artists != null && album.Artists.Length > 0)
+-					sane_artist_name = album.Artists [0].ToLower ();
+-				else
+-					sane_artist_name = String.Empty;
+-
+-				//
+-				string asin = null;
+-				
+-				// TODO: Move to constant
+-				string AmazonImageUri =
+-				  "http://images.amazon.com/images/P/{0}.01._SCMZZZZZZZ_.jpg";
+-
+-
+-				// remove "disc 1" and family
+-				//  TODO: Make the regexes translatable?
+-				//  (e.g. "uno|dos|tres...", "les|los..)
+-				string sane_album_title_regex  = @"[,:]?\s*";
+-				sane_album_title_regex += @"(cd|dis[ck])\s*";
+-				sane_album_title_regex += @"(\d+|one|two|three|four|five|six|seven|eight|nine|ten)\s*$";
+-				sane_album_title =  Regex.Replace (sane_album_title, sane_album_title_regex, String.Empty);
+-
+-				// Remove "The " and "the " from artist names
+-				string sane_artist_name_regex = @"^the\s+";
+-				sane_artist_name = Regex.Replace (sane_artist_name, sane_artist_name_regex, String.Empty);
+-				
+-				MusicBrainz c = new MusicBrainz ();
+-				
+-				// set the depth of the query
+-				//   (see http://wiki.musicbrainz.org/ClientHOWTO)
+-				c.SetDepth(4);
+-
+-				string [] album_name = new string [] { sane_album_title };
+-
+-				bool match =
+-				  c.Query (MusicBrainz.MBQ_FindAlbumByName, album_name);
+-
+-				if (match) {
+-					int num_albums =
+-					  c.GetResultInt (MusicBrainz.MBE_GetNumAlbums);
+-					
+-					string fetched_artist_name;
+-					for (int i = 1; i <= num_albums; i++) {
+-						c.Select (MusicBrainz.MBS_SelectAlbum, i);
+-
+-						// gets the artist from the first track of the album
+-						c.GetResultData
+-						  (MusicBrainz.MBE_AlbumGetArtistName, 1,
+-						   out fetched_artist_name);
+-
+-						// Remove "The " here as well
+-						if (fetched_artist_name != null) {
+-							string tmp = fetched_artist_name.ToLower ();
+-							string fetched_artist_name_regex = @"^the\s+";
+-							fetched_artist_name = Regex.Replace (tmp, fetched_artist_name_regex, String.Empty);
+-
+-						} else {
+-							fetched_artist_name = String.Empty;
+-						}
+-
+-						if (fetched_artist_name == sane_artist_name) {
+-							c.GetResultData
+-							  (MusicBrainz.MBE_AlbumGetAmazonAsin, out asin);
+-
+-							break;
+-						}
+-
+-						// go back one level so we can select the next album
+-						c.Select(MusicBrainz.MBS_Back); 
+-					}
+-				}
+-
+-				if (asin == null) {
+-					pix = null;
+-				} else {
+-					string uri = String.Format (AmazonImageUri, asin);
+-					pix = Download (uri);
+-				}
+-				
+-			} catch (DllNotFoundException) {
+-				// We catch this exception so we can always include the
+-				// musicbrainz support but not have a strict compile/runtime
+-				// requirement on it.
+-				musicbrainz_lib_missing = true;
+-			}
+-
+-			return pix;
++			return null;
+ 		}
+ 		
+ 		// Methods :: Private :: DownloadFromAmazonViaAPI
+diff -Naur muine-0.8.11.orig/src/Makefile.am muine-0.8.11/src/Makefile.am
+--- muine-0.8.11.orig/src/Makefile.am	2017-06-24 18:53:07.530698000 +0200
++++ muine-0.8.11/src/Makefile.am	2017-06-24 19:00:38.870158064 +0200
+@@ -29,7 +29,6 @@
+ 	$(srcdir)/ColoredCellRendererPixbuf.cs  \
+ 	$(srcdir)/CoverDatabase.cs		\
+ 	$(srcdir)/CoverGetter.cs		\
+-	$(srcdir)/MusicBrainz.cs		\
+ 	$(srcdir)/GnomeProxy.cs			\
+ 	$(srcdir)/CoverImage.cs			\
+ 	$(srcdir)/MmKeys.cs			\
+diff -Naur muine-0.8.11.orig/src/muine.exe.config.in muine-0.8.11/src/muine.exe.config.in
+--- muine-0.8.11.orig/src/muine.exe.config.in	2017-06-24 18:53:07.537364000 +0200
++++ muine-0.8.11/src/muine.exe.config.in	2017-06-24 19:00:20.066291163 +0200
+@@ -2,6 +2,5 @@
+   <dllmap dll="libglib-2.0-0.dll" target="libglib-2.0.so.0"/>
+   <dllmap dll="libgtk-2.0-0.dll" target="libgtk-x11-2.0.so.0"/>
+   <dllmap dll="libgobject-2.0-0.dll" target="libgobject-2.0.so.0"/>
+-  <dllmap dll="musicbrainz" target="libmusicbrainz.so.4"/>
+   <dllmap dll="libmuine" target="@pkglibdir@/libmuine.so"/>
+ </configuration>

@@ -1,0 +1,19 @@
+diff -Naur muine-0.8.11.orig/src/PlaylistWindow.cs muine-0.8.11/src/PlaylistWindow.cs
+--- muine-0.8.11.orig/src/PlaylistWindow.cs	2017-06-24 18:53:07.537364000 +0200
++++ muine-0.8.11/src/PlaylistWindow.cs	2017-06-24 19:21:08.225082062 +0200
+@@ -2091,7 +2091,14 @@
+ 				ArrayList new_dinfos = new ArrayList ();
+ 
+ 				foreach (string s in bits) {
+-					string fn = new Uri(s).LocalPath;
++					string fn;
++					
++					try {
++						fn = new Uri(s).LocalPath;
++
++					} catch {
++						continue;
++					}
+ 
+ 					if (fn == null)
+ 						continue;

@@ -1,0 +1,33 @@
+diff -Naur muine-0.8.11.orig/configure.in muine-0.8.11/configure.in
+--- muine-0.8.11.orig/configure.in	2017-01-28 10:11:32.120801000 +0100
++++ muine-0.8.11/configure.in	2017-01-28 10:12:10.141854469 +0100
+@@ -21,7 +21,7 @@
+ 
+ dnl Version dependencies
+ 
+-GSTREAMER_REQUIRED=0.10.0
++GSTREAMER_REQUIRED=1.0.0
+ GLIB_REQUIRED=2.14
+ GTK_REQUIRED=2.8
+ MONO_REQUIRED=1.1
+@@ -37,7 +37,7 @@
+ 		  gdk-pixbuf-2.0 \
+ 		  glib-2.0 >= $GLIB_REQUIRED \
+ 		  gtk+-2.0 >= $GTK_REQUIRED \
+-		  gstreamer-0.10 >= $GSTREAMER_REQUIRED)
++		  gstreamer-1.0 >= $GSTREAMER_REQUIRED)
+ AC_SUBST(MUINE_CFLAGS)
+ AC_SUBST(MUINE_LIBS)
+ 
+diff -Naur muine-0.8.11.orig/libmuine/player-gst.c muine-0.8.11/libmuine/player-gst.c
+--- muine-0.8.11.orig/libmuine/player-gst.c	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/libmuine/player-gst.c	2017-01-28 10:12:54.106404011 +0100
+@@ -156,7 +156,7 @@
+ 		return;
+ 	}
+ 
+-	sink = gst_element_factory_make ("gconfaudiosink", "sink");
++	sink = gst_element_factory_make ("autoaudiosink", "sink");
+ 	if (!sink) {
+ 		*error = g_strdup (_("Could not render default GStreamer audio output sink"));
+ 

@@ -1,0 +1,169 @@
+diff -Naur muine-0.8.11.orig/configure.in muine-0.8.11/configure.in
+--- muine-0.8.11.orig/configure.in	2017-01-28 09:17:46.537604000 +0100
++++ muine-0.8.11/configure.in	2017-01-28 09:19:15.873500495 +0100
+@@ -24,7 +24,6 @@
+ GSTREAMER_REQUIRED=0.10.0
+ GLIB_REQUIRED=2.14
+ GTK_REQUIRED=2.8
+-ICON_THEME_REQUIRED=2.10
+ MONO_REQUIRED=1.1
+ GTKSHARP_REQUIRED=2.12.9
+ TAGLIBSHARP_REQUIRED=2.0.3
+@@ -38,7 +37,6 @@
+ 		  gdk-pixbuf-2.0 \
+ 		  glib-2.0 >= $GLIB_REQUIRED \
+ 		  gtk+-2.0 >= $GTK_REQUIRED \
+-		  gnome-icon-theme >= $ICON_THEME_REQUIRED \
+ 		  gstreamer-0.10 >= $GSTREAMER_REQUIRED)
+ AC_SUBST(MUINE_CFLAGS)
+ AC_SUBST(MUINE_LIBS)
+diff -Naur muine-0.8.11.orig/data/glade/PlaylistWindow.glade muine-0.8.11/data/glade/PlaylistWindow.glade
+--- muine-0.8.11.orig/data/glade/PlaylistWindow.glade	2017-01-28 09:17:46.540938000 +0100
++++ muine-0.8.11/data/glade/PlaylistWindow.glade	2017-01-28 09:18:58.019655087 +0100
+@@ -97,7 +97,7 @@
+ 				    <widget class="GtkImage" id="toggle_play_image">
+ 				      <property name="visible">True</property>
+ 				      <property name="icon_size">3</property>
+-				      <property name="icon_name">stock_media-play</property>
++				      <property name="icon_name">media-playback-start</property>
+ 				      <property name="xalign">0.5</property>
+ 				      <property name="yalign">0.5</property>
+ 				      <property name="xpad">0</property>
+@@ -114,7 +114,7 @@
+ 				    <widget class="GtkImage" id="image1">
+ 				      <property name="visible">True</property>
+ 				      <property name="icon_size">3</property>
+-				      <property name="icon_name">stock_media-pause</property>
++				      <property name="icon_name">media-playback-pause</property>
+ 				      <property name="xalign">0.5</property>
+ 				      <property name="yalign">0.5</property>
+ 				      <property name="xpad">0</property>
+@@ -149,7 +149,7 @@
+ 			    <widget class="GtkImage" id="previous_image">
+ 			      <property name="visible">True</property>
+ 			      <property name="icon_size">3</property>
+-			      <property name="icon_name">stock_media-prev</property>
++			      <property name="icon_name">media-skip-backward</property>
+ 			      <property name="xalign">0.5</property>
+ 			      <property name="yalign">0.5</property>
+ 			      <property name="xpad">0</property>
+@@ -175,7 +175,7 @@
+ 			    <widget class="GtkImage" id="next_image">
+ 			      <property name="visible">True</property>
+ 			      <property name="icon_size">3</property>
+-			      <property name="icon_name">stock_media-next</property>
++			      <property name="icon_name">media-skip-forward</property>
+ 			      <property name="xalign">0.5</property>
+ 			      <property name="yalign">0.5</property>
+ 			      <property name="xpad">0</property>
+@@ -334,7 +334,7 @@
+ 				<widget class="GtkImage" id="add_album_image">
+ 				  <property name="visible">True</property>
+ 				  <property name="icon_size">3</property>
+-				  <property name="icon_name">stock_music-library</property>
++				  <property name="icon_name">list-add</property>
+ 				  <property name="xalign">0.5</property>
+ 				  <property name="yalign">0.5</property>
+ 				  <property name="xpad">0</property>
+diff -Naur muine-0.8.11.orig/src/Actions.cs muine-0.8.11/src/Actions.cs
+--- muine-0.8.11.orig/src/Actions.cs	2017-01-28 09:17:46.540938000 +0100
++++ muine-0.8.11/src/Actions.cs	2017-01-28 09:18:58.019655087 +0100
+@@ -130,25 +130,25 @@
+ 			new ActionEntry ("Quit", Stock.Quit, null,
+ 				"<control>Q", null, null),
+ 			
+-			new ActionEntry ("Previous", "stock_media-prev", string_previous,
++			new ActionEntry ("Previous", "media-skip-backward", string_previous,
+ 				"B", null, null),
+ 
+-			new ActionEntry ("Next", "stock_media-next", string_next,
++			new ActionEntry ("Next", "media-skip-forward", string_next,
+ 				"N", null, null),
+ 
+ 			new ActionEntry ("SkipTo", Stock.JumpTo, string_skip_to,
+ 				"T", null, null),
+ 
+-			new ActionEntry ("SkipBackwards", "stock_media-rew", string_skip_backwards,
++			new ActionEntry ("SkipBackwards", "media-seek-backward", string_skip_backwards,
+ 				"<control>Left", null, null),
+ 
+-			new ActionEntry ("SkipForward", "stock_media-fwd", string_skip_forward,
++			new ActionEntry ("SkipForward", "media-seek-forward", string_skip_forward,
+ 				"<control>Right", null, null),
+ 
+ 			new ActionEntry ("PlaySong", Stock.Add, string_play_song,
+ 				"S", null, null),
+ 
+-			new ActionEntry ("PlayAlbum", "stock_music-library", string_play_album,
++			new ActionEntry ("PlayAlbum", "list-add", string_play_album,
+ 				"A", null, null),
+ 
+ 			new ActionEntry ("Remove", Stock.Remove, string_remove,
+@@ -160,7 +160,7 @@
+ 			new ActionEntry ("Clear", Stock.Clear, string_clear,
+ 				"<control>L", null, null),
+ 
+-			new ActionEntry ("Shuffle", "stock_shuffle", string_shuffle,
++			new ActionEntry ("Shuffle", "media-playlist-shuffle", string_shuffle,
+ 				"<control>S", null, null),
+ 
+ 			new ActionEntry ("About", "gtk-about", string_about,
+@@ -169,7 +169,7 @@
+ 
+ 		// Static :: Objects :: Toggle Entries
+ 		private static ToggleActionEntry [] toggle_entries = {
+-			new ToggleActionEntry ("TogglePlay", "stock_media-play", string_toggle_play,
++			new ToggleActionEntry ("TogglePlay", "media-playback-start", string_toggle_play,
+ 			       "P", null, null, false),
+ 
+ 			new ToggleActionEntry ("ToggleRepeat", null, string_toggle_repeat,
+diff -Naur muine-0.8.11.orig/src/AddWindow.cs muine-0.8.11/src/AddWindow.cs
+--- muine-0.8.11.orig/src/AddWindow.cs	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/src/AddWindow.cs	2017-01-28 09:18:58.022988516 +0100
+@@ -100,10 +100,10 @@
+ 			base.Raw = this.window.Handle;
+ 
+ 			this.play_button_image.SetFromStock
+-			  ("stock_media-play", Gtk.IconSize.Button);
++			  ("media-playback-start", Gtk.IconSize.Button);
+ 
+ 			this.queue_button_image.SetFromStock
+-			  ("stock_timer", Gtk.IconSize.Button);
++			  ("list-add", Gtk.IconSize.Button);
+ 
+ 			// Cell Renderer
+ 			this.text_renderer.Ellipsize = Pango.EllipsizeMode.End;
+diff -Naur muine-0.8.11.orig/src/StockIcons.cs muine-0.8.11/src/StockIcons.cs
+--- muine-0.8.11.orig/src/StockIcons.cs	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/src/StockIcons.cs	2017-01-28 09:18:58.022988516 +0100
+@@ -41,18 +41,18 @@
+ 
+ 		// Variables :: Themed Icons
+ 		private static readonly string [] icon_theme_icons = {
+-			"stock_media-fwd",
+-			"stock_media-next",
+-			"stock_media-play",
+-			"stock_media-prev",
+-			"stock_media-rew",
+-                        "stock_music-library",
+-                        "stock_volume-0",
+-                        "stock_volume-min",
+-                        "stock_volume-med",
+-                        "stock_volume-max",
+-			"stock_shuffle",
+-			"stock_timer",
++			"media-seek-forward",
++			"media-skip-forward",
++			"media-playback-start",
++			"media-skip-backward",
++			"media-seek-backward",
++                        "list-add",
++                        "audio-volume-muted",
++                        "audio-volume-low",
++                        "audio-volume-medium",
++                        "audio-volume-high",
++			"media-playlist-shuffle",
++			"list-add",
+ 			"gnome-mime-audio"
+ 		};
+ 

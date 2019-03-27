@@ -1,0 +1,112 @@
+diff -Naur muine-0.8.11.orig/configure.in muine-0.8.11/configure.in
+--- muine-0.8.11.orig/configure.in	2017-01-28 10:00:26.485408000 +0100
++++ muine-0.8.11/configure.in	2017-01-28 10:01:57.758024655 +0100
+@@ -59,11 +59,11 @@
+ PKG_CHECK_MODULES(NOTIFYSHARP,
+                  notify-sharp >= $NOTIFYSHARP_REQUIRED)
+ 
+-dnl ndesk-dbus
+-PKG_CHECK_MODULES(DBUS, ndesk-dbus-1.0 >= 0.4 \
+-	ndesk-dbus-glib-1.0 >= 0.3, have_dbus="yes", have_dbus="no")
++dnl dbus-sharp
++PKG_CHECK_MODULES(DBUS, dbus-sharp-2.0 >= 0.7 \
++	dbus-sharp-glib-2.0 >= 0.5, have_dbus="yes", have_dbus="no")
+ if test "x$have_dbus" != "xyes"; then
+-	AC_MSG_ERROR([You need NDESK-DBUS)])
++	AC_MSG_ERROR([You need DBUS-SHARP)])
+ fi
+ AM_CONDITIONAL(EXTERNAL_DBUS, test "x$have_dbus" = "xyes")
+ 
+diff -Naur muine-0.8.11.orig/DBusLib/IPlayer.cs muine-0.8.11/DBusLib/IPlayer.cs
+--- muine-0.8.11.orig/DBusLib/IPlayer.cs	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/DBusLib/IPlayer.cs	2017-01-28 10:01:57.758024655 +0100
+@@ -1,5 +1,5 @@
+ 
+-using NDesk.DBus;
++using DBus;
+ 
+ namespace Muine.DBusLib
+ {
+diff -Naur muine-0.8.11.orig/DBusLib/Makefile.am muine-0.8.11/DBusLib/Makefile.am
+--- muine-0.8.11.orig/DBusLib/Makefile.am	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/DBusLib/Makefile.am	2017-01-28 10:01:57.758024655 +0100
+@@ -13,7 +13,7 @@
+ DBUS_ASSEMBLIES = $(DBUS_LIBS)
+ else
+ DBUS_ASSEMBLIES =							\
+-	-r:$(top_builddir)/deps/dbus-sharp/NDesk.DBus.dll
++	-r:$(top_builddir)/deps/dbus-sharp/dbus-sharp.dll
+ endif
+ 
+ CLIENT_LIB_ASSEMBLIES = 						\
+diff -Naur muine-0.8.11.orig/DBusLib/Player.cs muine-0.8.11/DBusLib/Player.cs
+--- muine-0.8.11.orig/DBusLib/Player.cs	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/DBusLib/Player.cs	2017-01-28 10:01:57.758024655 +0100
+@@ -21,7 +21,7 @@
+ using System;
+ using System.Collections;
+ 
+-using NDesk.DBus;
++using DBus;
+ 
+ using Muine.PluginLib;
+ 
+diff -Naur muine-0.8.11.orig/src/DBusService.cs muine-0.8.11/src/DBusService.cs
+--- muine-0.8.11.orig/src/DBusService.cs	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/src/DBusService.cs	2017-01-28 10:02:42.099287974 +0100
+@@ -21,7 +21,7 @@
+ 
+ using System;
+ 
+-using NDesk.DBus;
++using DBus;
+ using org.freedesktop.DBus;
+ 
+ namespace Muine
+@@ -93,7 +93,7 @@
+ 		/// </param>
+ 		public void RegisterObject (object obj, string path)
+ 		{
+-			Bus.Session.Register ("/org/gnome/Muine/", new ObjectPath (path), obj);
++			Bus.Session.Register (new ObjectPath (path), obj);
+ 		}
+ 	}
+ }
+diff -Naur muine-0.8.11.orig/src/Global.cs muine-0.8.11/src/Global.cs
+--- muine-0.8.11.orig/src/Global.cs	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/src/Global.cs	2017-01-28 10:01:57.761358084 +0100
+@@ -110,7 +110,7 @@
+ 		public static void Main (string [] args)
+ 		{
+ 			try {
+-				NDesk.DBus.BusG.Init ();
++				DBus.BusG.Init ();
+ 			} catch {}
+ 
+ 			try {
+diff -Naur muine-0.8.11.orig/src/GnomeMMKeys.cs muine-0.8.11/src/GnomeMMKeys.cs
+--- muine-0.8.11.orig/src/GnomeMMKeys.cs	2017-01-28 10:00:26.482075000 +0100
++++ muine-0.8.11/src/GnomeMMKeys.cs	2017-01-28 10:01:57.761358084 +0100
+@@ -30,7 +30,7 @@
+ using System;
+ 
+ using Gtk;
+-using NDesk.DBus;
++using DBus;
+ 
+ namespace Muine
+ {
+diff -Naur muine-0.8.11.orig/src/Makefile.am muine-0.8.11/src/Makefile.am
+--- muine-0.8.11.orig/src/Makefile.am	2017-01-28 10:00:26.482075000 +0100
++++ muine-0.8.11/src/Makefile.am	2017-01-28 10:01:57.761358084 +0100
+@@ -58,8 +58,8 @@
+ DBUS_ASSEMBLIES = $(DBUS_LIBS)
+ else
+ DBUS_ASSEMBLIES =							\
+-	-r:$(top_builddir)/deps/dbus-sharp/NDesk.DBus.dll		\
+-	-r:$(top_builddir)/deps/dbus-sharp-glib/NDesk.DBus.GLib.dll
++	-r:$(top_builddir)/deps/dbus-sharp/dbus-sharp.dll		\
++	-r:$(top_builddir)/deps/dbus-sharp-glib/dbus-sharp-glib.dll
+ endif
+ 
+ MUINE_ASSEMBLIES =							\

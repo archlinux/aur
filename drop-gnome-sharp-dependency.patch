@@ -1,0 +1,424 @@
+diff -Naur muine-0.8.11.orig/configure.in muine-0.8.11/configure.in
+--- muine-0.8.11.orig/configure.in	2009-09-13 16:58:14.000000000 +0200
++++ muine-0.8.11/configure.in	2012-03-08 22:49:13.064715139 +0100
+@@ -47,10 +47,8 @@
+ 
+ PKG_CHECK_MODULES(GTKSHARP,
+ 		  gtk-sharp-2.0 >= $GTKSHARP_REQUIRED \
+-		  gnome-sharp-2.0 >= $GTKSHARP_REQUIRED \
+ 		  glade-sharp-2.0 >= $GTKSHARP_REQUIRED \
+-		  gconf-sharp-2.0 >= $GTKSHARP_REQUIRED \
+-		  gnome-vfs-sharp-2.0 >= $GTKSHARP_REQUIRED)
++		  gconf-sharp-2.0 >= $GTKSHARP_REQUIRED)
+ 
+ PKG_CHECK_MODULES(TAGLIBSHARP,
+                  taglib-sharp >= $TAGLIBSHARP_REQUIRED)
+diff -Naur muine-0.8.11.orig/data/glade/AddWindow.glade muine-0.8.11/data/glade/AddWindow.glade
+--- muine-0.8.11.orig/data/glade/AddWindow.glade	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/data/glade/AddWindow.glade	2012-03-08 22:49:13.064715139 +0100
+@@ -2,7 +2,6 @@
+ <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
+ 
+ <glade-interface>
+-<requires lib="gnome"/>
+ 
+ <widget class="GtkDialog" id="window">
+   <property name="border_width">7</property>
+diff -Naur muine-0.8.11.orig/data/glade/GroupEditor.glade muine-0.8.11/data/glade/GroupEditor.glade
+--- muine-0.8.11.orig/data/glade/GroupEditor.glade	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/data/glade/GroupEditor.glade	2012-03-08 22:49:13.071381414 +0100
+@@ -2,7 +2,6 @@
+ <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
+ 
+ <glade-interface>
+-<requires lib="gnome"/>
+ 
+ <widget class="GtkWindow" id="window">
+   <property name="visible">True</property>
+@@ -40,7 +39,6 @@
+ 		  <child>
+ 		    <widget class="GtkImageMenuItem" id="new_group1">
+ 		      <property name="visible">True</property>
+-		      <property name="stock_item">GNOMEUIINFO_MENU_NEW_ITEM</property>
+ 		      <property name="label" translatable="yes">_New Group...</property>
+ 		      <property name="use_underline">True</property>
+ 		      <signal name="activate" handler="HandleNewCommand" last_modification_time="Thu, 15 Apr 2004 19:22:48 GMT"/>
+@@ -154,7 +152,7 @@
+ 		      <child internal-child="image">
+ 			<widget class="GtkImage" id="image31">
+ 			  <property name="visible">True</property>
+-			  <property name="stock">gnome-stock-about</property>
++			  <property name="stock">gtk-about</property>
+ 			  <property name="icon_size">1</property>
+ 			  <property name="xalign">0.5</property>
+ 			  <property name="yalign">0.5</property>
+@@ -209,7 +207,7 @@
+ 	  <child>
+ 	    <widget class="GtkMenuItem" id="menuitem5">
+ 	      <property name="visible">True</property>
+-	      <property name="stock_item">GNOMEUIINFO_MENU_HELP_TREE</property>
++	      <property name="label" translatable="yes">_Help</property>
+ 
+ 	      <child>
+ 		<widget class="GtkMenu" id="menuitem5_menu">
+@@ -217,7 +215,7 @@
+ 		  <child>
+ 		    <widget class="GtkImageMenuItem" id="imagemenuitem7">
+ 		      <property name="visible">True</property>
+-		      <property name="stock_item">GNOMEUIINFO_MENU_ABOUT_ITEM</property>
++		      <property name="label" translatable="yes">_About...</property>
+ 		      <signal name="activate" handler="HandleAboutCommand" last_modification_time="Thu, 15 Apr 2004 19:22:48 GMT"/>
+ 		    </widget>
+ 		  </child>
+@@ -442,7 +440,7 @@
+ 			      <child>
+ 				<widget class="GtkImage" id="add_album_image">
+ 				  <property name="visible">True</property>
+-				  <property name="stock">gnome-stock-about</property>
++				  <property name="stock">gtk-about</property>
+ 				  <property name="icon_size">4</property>
+ 				  <property name="xalign">0.5</property>
+ 				  <property name="yalign">0.5</property>
+diff -Naur muine-0.8.11.orig/data/glade/InfoWindow.glade muine-0.8.11/data/glade/InfoWindow.glade
+--- muine-0.8.11.orig/data/glade/InfoWindow.glade	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/data/glade/InfoWindow.glade	2012-03-08 22:49:13.081380820 +0100
+@@ -2,7 +2,6 @@
+ <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
+ 
+ <glade-interface>
+-<requires lib="gnome"/>
+ 
+ <widget class="GtkDialog" id="window">
+   <property name="border_width">7</property>
+diff -Naur muine-0.8.11.orig/data/glade/NoMusicFoundWindow.glade muine-0.8.11/data/glade/NoMusicFoundWindow.glade
+--- muine-0.8.11.orig/data/glade/NoMusicFoundWindow.glade	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/data/glade/NoMusicFoundWindow.glade	2012-03-08 22:49:13.081380820 +0100
+@@ -2,7 +2,6 @@
+ <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
+ 
+ <glade-interface>
+-<requires lib="gnome"/>
+ 
+ <widget class="GtkWindow" id="window">
+   <property name="border_width">12</property>
+diff -Naur muine-0.8.11.orig/data/glade/PlaylistFilling.glade muine-0.8.11/data/glade/PlaylistFilling.glade
+--- muine-0.8.11.orig/data/glade/PlaylistFilling.glade	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/data/glade/PlaylistFilling.glade	2012-03-08 22:49:13.084713958 +0100
+@@ -2,7 +2,6 @@
+ <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
+ 
+ <glade-interface>
+-<requires lib="gnome"/>
+ 
+ <widget class="GtkDialog" id="window">
+   <property name="border_width">7</property>
+diff -Naur muine-0.8.11.orig/data/glade/PlaylistWindow.glade muine-0.8.11/data/glade/PlaylistWindow.glade
+--- muine-0.8.11.orig/data/glade/PlaylistWindow.glade	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/data/glade/PlaylistWindow.glade	2012-03-08 22:49:43.359594953 +0100
+@@ -2,7 +2,6 @@
+ <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
+ 
+ <glade-interface>
+-<requires lib="gnome"/>
+ 
+ <widget class="GtkWindow" id="window1">
+   <property name="visible">True</property>
+diff -Naur muine-0.8.11.orig/data/glade/ProgressWindow.glade muine-0.8.11/data/glade/ProgressWindow.glade
+--- muine-0.8.11.orig/data/glade/ProgressWindow.glade	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/data/glade/ProgressWindow.glade	2012-03-08 22:49:13.088047096 +0100
+@@ -2,7 +2,6 @@
+ <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
+ 
+ <glade-interface>
+-<requires lib="gnome"/>
+ 
+ <widget class="GtkDialog" id="window">
+   <property name="border_width">7</property>
+diff -Naur muine-0.8.11.orig/data/glade/SkipToWindow.glade muine-0.8.11/data/glade/SkipToWindow.glade
+--- muine-0.8.11.orig/data/glade/SkipToWindow.glade	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/data/glade/SkipToWindow.glade	2012-03-08 22:49:13.094713371 +0100
+@@ -2,7 +2,6 @@
+ <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
+ 
+ <glade-interface>
+-<requires lib="gnome"/>
+ 
+ <widget class="GtkDialog" id="window">
+   <property name="border_width">7</property>
+diff -Naur muine-0.8.11.orig/src/Actions.cs muine-0.8.11/src/Actions.cs
+--- muine-0.8.11.orig/src/Actions.cs	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/src/Actions.cs	2012-03-08 22:49:13.098046508 +0100
+@@ -163,7 +163,7 @@
+ 			new ActionEntry ("Shuffle", "stock_shuffle", string_shuffle,
+ 				"<control>S", null, null),
+ 
+-			new ActionEntry ("About", Gnome.Stock.About, string_about,
++			new ActionEntry ("About", "gtk-about", string_about,
+ 				null, null, null)
+ 		};
+ 
+diff -Naur muine-0.8.11.orig/src/AddAlbumWindow.cs muine-0.8.11/src/AddAlbumWindow.cs
+--- muine-0.8.11.orig/src/AddAlbumWindow.cs	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/src/AddAlbumWindow.cs	2012-03-08 22:49:13.101379644 +0100
+@@ -21,8 +21,6 @@
+ using System.Collections;
+ using Mono.Unix;
+ 
+-using Gnome.Vfs;
+-
+ namespace Muine
+ {
+ 	public class AddAlbumWindow : AddWindow
+@@ -217,7 +215,7 @@
+ 				Album album = GetAlbum (album_ptr_i);
+ 
+ 				foreach (Song song in album.Songs) {
+-					string uri = Gnome.Vfs.Uri.GetUriFromLocalPath (song.Filename);
++					string uri = new Uri(song.Filename).ToString();
+ 					data += (uri + "\r\n");
+ 				}
+ 			}
+diff -Naur muine-0.8.11.orig/src/AddSongWindow.cs muine-0.8.11/src/AddSongWindow.cs
+--- muine-0.8.11.orig/src/AddSongWindow.cs	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/src/AddSongWindow.cs	2012-03-08 22:49:13.104712781 +0100
+@@ -21,8 +21,6 @@
+ using System.Collections;
+ using Mono.Unix;
+ 
+-using Gnome.Vfs;
+-
+ namespace Muine
+ {
+ 	public class AddSongWindow : AddWindow
+@@ -164,7 +162,7 @@
+ 
+ 			foreach (int song_ptr_i in songs) {
+ 				Song song = GetSong (song_ptr_i);
+-				string uri = Gnome.Vfs.Uri.GetUriFromLocalPath (song.Filename);
++				string uri = new Uri(song.Filename).ToString();
+ 				data += (uri + "\r\n");
+ 			}
+ 
+diff -Naur muine-0.8.11.orig/src/CoverImage.cs muine-0.8.11/src/CoverImage.cs
+--- muine-0.8.11.orig/src/CoverImage.cs	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/src/CoverImage.cs	2012-03-08 22:49:13.104712781 +0100
+@@ -94,7 +94,7 @@
+ 				
+ 			case (uint) DndUtils.TargetType.UriList:
+ 				uri_list = DndUtils.SplitSelectionData (data);
+-				fn = Gnome.Vfs.Uri.GetLocalPathFromUri (uri_list [0]);
++				fn = new Uri(uri_list [0]).LocalPath;
+ 
+ 				if (fn == null)
+ 					break;
+diff -Naur muine-0.8.11.orig/src/FileSelector.cs muine-0.8.11/src/FileSelector.cs
+--- muine-0.8.11.orig/src/FileSelector.cs	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/src/FileSelector.cs	2012-03-08 22:49:13.111379052 +0100
+@@ -74,8 +74,8 @@
+ 			string start_dir =
+ 			  (string) Config.Get (gconf_path, GConfDefaultStartDir);
+ 
+-			start_dir = start_dir.Replace ("~",
+-				Gnome.Vfs.Uri.GetUriFromLocalPath (FileUtils.HomeDirectory));
++			Uri uri = new Uri(FileUtils.HomeDirectory);
++			start_dir = start_dir.Replace ("~", uri.ToString());
+ 
+ 			SetCurrentFolderUri (start_dir);
+ 
+diff -Naur muine-0.8.11.orig/src/FileUtils.cs muine-0.8.11/src/FileUtils.cs
+--- muine-0.8.11.orig/src/FileUtils.cs	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/src/FileUtils.cs	2012-03-08 22:49:13.114712188 +0100
+@@ -21,8 +21,6 @@
+ using System.IO;
+ using System.Runtime.InteropServices;
+ 
+-using Gnome.Vfs;
+-
+ using Mono.Unix;
+ 
+ namespace Muine
+@@ -86,8 +84,7 @@
+ 			home_directory = Environment.GetEnvironmentVariable ("HOME");
+ 			
+ 			try {
+-				config_directory =
+-				  Path.Combine (Gnome.User.DirGet (), "muine");
++				config_directory = Environment.GetEnvironmentVariable("HOME") + "/.gnome2/muine";
+ 
+ 				CreateDirectory (config_directory);
+ 
+@@ -295,8 +292,7 @@
+ 		/// </returns>
+ 		public static bool Exists (string fn)
+ 		{
+-			Gnome.Vfs.Uri u = new Gnome.Vfs.Uri (fn);
+-			return u.Exists;
++			return File.Exists(new Uri(fn).LocalPath);
+ 		}
+ 
+ 		// Methods :: Public :: MakeHumanReadable
+diff -Naur muine-0.8.11.orig/src/Global.cs muine-0.8.11/src/Global.cs
+--- muine-0.8.11.orig/src/Global.cs	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/src/Global.cs	2012-03-08 22:49:13.124711601 +0100
+@@ -30,7 +30,7 @@
+ 
+ namespace Muine
+ {
+-	public sealed class Global : Gnome.Program
++	public sealed class Global
+ 	{
+ 		// Strings
+ 		private static readonly string string_dbus_failed =
+@@ -52,7 +52,6 @@
+ 		private static Actions        actions;
+ 
+ 		private static DBusLib.IPlayer dbus_object = null;
+-		private static Gnome.Client   session_client;
+ 		
+ 		// Properties
+ 		// Properties :: DB (get;)
+@@ -118,7 +117,6 @@
+ 			} catch {}
+ 
+ 			Application.Init ();
+-			Gnome.Vfs.Vfs.Initialize ();
+ 
+ 			// Try to find a running Muine
+ 			try {
+@@ -141,9 +139,6 @@
+ 
+ 			Catalog.Init ("muine", Defines.GNOME_LOCALE_DIR);
+ 
+-			new Gnome.Program
+-			  ("muine", Defines.VERSION, Gnome.Modules.UI, args);
+-
+ 			// Initialize D-Bus
+ 			//   We initialize here but don't connect to it until later.
+ 			try {
+@@ -238,11 +233,6 @@
+ 			// Load Covers
+ 			cover_db.Load ();
+ 
+-			// Hook up to the session manager
+-			session_client = Gnome.Global.MasterClient ();
+-			session_client.Die          += OnDieEvent;
+-			session_client.SaveYourself += OnSaveYourselfEvent;
+-
+ 			// Run!
+ 			Application.Run ();
+ 		}
+@@ -370,28 +360,6 @@
+ 			Exit ();
+ 		}
+ 
+-		// Handlers :: OnSaveYourselfEvent
+-		//	TODO: Actually set the restart command to something useful.
+-		/// <summary>
+-		///   Handler called on <see cref="Gnome.Client.SaveYourself" /> event.
+-		/// </summary>
+-		/// <param name="o">
+-		///   The calling object.
+-		/// </param>
+-		/// <param name="args">
+-		///   The <see cref="Gnome.SaveYourselfArgs" />.
+-		/// </param>		
+-		/// <remarks>
+-		///   This doesn't do anything useful yet.
+-		/// </remarks>
+-		private static void OnSaveYourselfEvent
+-		  (object o, Gnome.SaveYourselfArgs args)
+-		{
+-			string [] argv = { "muine" };
+-
+-			session_client.SetRestartCommand (1, argv);
+-		}
+-
+ 		[DllImport ("libc")]
+ 		private static extern int prctl (int option,  
+ 						 byte[] arg2,
+diff -Naur muine-0.8.11.orig/src/muine.exe.config.in muine-0.8.11/src/muine.exe.config.in
+--- muine-0.8.11.orig/src/muine.exe.config.in	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/src/muine.exe.config.in	2012-03-08 22:50:07.131526170 +0100
+@@ -2,7 +2,6 @@
+   <dllmap dll="libglib-2.0-0.dll" target="libglib-2.0.so.0"/>
+   <dllmap dll="libgtk-2.0-0.dll" target="libgtk-x11-2.0.so.0"/>
+   <dllmap dll="libgobject-2.0-0.dll" target="libgobject-2.0.so.0"/>
+-  <dllmap dll="libgnomevfs-2-0.dll" target="libgnomevfs-2.so.0"/>
+   <dllmap dll="musicbrainz" target="libmusicbrainz.so.4"/>
+   <dllmap dll="libmuine" target="@pkglibdir@/libmuine.so"/>
+ </configuration>
+diff -Naur muine-0.8.11.orig/src/PlaylistWindow.cs muine-0.8.11/src/PlaylistWindow.cs
+--- muine-0.8.11.orig/src/PlaylistWindow.cs	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/src/PlaylistWindow.cs	2012-03-08 22:49:13.131377875 +0100
+@@ -23,7 +23,6 @@
+ 
+ using Gtk;
+ using GLib;
+-using Gnome.Vfs;
+ using Bacon;
+ 
+ using Mono.Unix;
+@@ -806,11 +805,11 @@
+ 				BusyLevel ++;
+ 
+ 			// Open
+-			VfsStream stream;
++			FileStream stream;
+ 			StreamWriter writer;
+ 			
+ 			try {
+-				stream = new VfsStream (fn, System.IO.FileMode.Create);
++				stream = new FileStream (new Uri(fn).LocalPath, System.IO.FileMode.Create);
+ 				writer = new StreamWriter (stream);
+ 
+ 			} catch (Exception e) {
+@@ -1320,11 +1319,11 @@
+ 		private void OpenPlaylistInternal
+ 		  (string fn, PlaylistForeachFunc func, object user_data)
+ 		{
+-			VfsStream stream;
++			FileStream stream;
+ 			StreamReader reader;
+ 
+ 			try {
+-				stream = new VfsStream (fn, System.IO.FileMode.Open);
++				stream = new FileStream (new Uri(fn).LocalPath, System.IO.FileMode.Open);
+ 				reader = new StreamReader (stream);
+ 
+ 			} catch (Exception e) {
+@@ -1919,7 +1918,7 @@
+ 					IntPtr s = new IntPtr (p);
+ 					
+ 					Song song = Song.FromHandle (s);
+-					string uri = Gnome.Vfs.Uri.GetUriFromLocalPath (song.Filename);
++					string uri = new Uri(song.Filename).ToString();
+ 					
+ 					files += (uri + "\r\n");
+ 				}
+@@ -2092,7 +2091,7 @@
+ 				ArrayList new_dinfos = new ArrayList ();
+ 
+ 				foreach (string s in bits) {
+-					string fn = Gnome.Vfs.Uri.GetLocalPathFromUri (s);
++					string fn = new Uri(s).LocalPath;
+ 
+ 					if (fn == null)
+ 						continue;
+@@ -2197,7 +2196,7 @@
+ 
+ 				SavePlaylist (file, false, false);
+ 				
+-				string uri = Gnome.Vfs.Uri.GetUriFromLocalPath (file);
++				string uri = new Uri(file).ToString();
+ 
+ 				string target = DndUtils.TargetUriList.Target;
+ 				Gdk.Atom atom = Gdk.Atom.Intern (target, false);
+@@ -2226,7 +2225,7 @@
+ 			bool success = false;
+ 
+ 			foreach (string s in bits) {
+-				string fn = Gnome.Vfs.Uri.GetLocalPathFromUri (s);
++				string fn = new Uri(s).LocalPath;
+ 
+ 				if (fn == null)
+ 					continue;

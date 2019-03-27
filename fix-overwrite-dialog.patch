@@ -1,0 +1,15 @@
+diff -Naur muine-0.8.11.orig/src/OverwriteDialog.cs muine-0.8.11/src/OverwriteDialog.cs
+--- muine-0.8.11.orig/src/OverwriteDialog.cs	2009-09-13 16:53:58.000000000 +0200
++++ muine-0.8.11/src/OverwriteDialog.cs	2017-01-28 10:33:55.095101072 +0100
+@@ -46,11 +46,6 @@
+ 		// Constructor
+ 		public OverwriteDialog (Window parent, string fn)
+ 		{
+-			Glade.XML gxml =
+-			  new Glade.XML (null, "OverwriteDialog.glade", "window", null);
+-
+-			gxml.Autoconnect (this);
+-
+ 			string fn_readable = FileUtils.MakeHumanReadable (fn);
+ 
+ 			string primary_text =
