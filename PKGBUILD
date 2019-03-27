@@ -1,8 +1,8 @@
 # Maintainer: Dániel Kántor <aur@daniel-kantor.com>
 _npmname=emuto-cli
-_npmver=1.7.0
+_npmver=1.8.0
 pkgname=emuto # All lowercase
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="transform data files"
 arch=(any)

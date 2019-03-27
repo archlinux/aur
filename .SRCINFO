@@ -1,14 +1,14 @@
 pkgbase = emuto
 	pkgdesc = transform data files
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/kantord/emuto-cli
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = emuto-cli-1.7.0.tgz
-	source = https://registry.npmjs.org/emuto-cli/-/emuto-cli-1.7.0.tgz
+	noextract = emuto-cli-1.8.0.tgz
+	source = https://registry.npmjs.org/emuto-cli/-/emuto-cli-1.8.0.tgz
 	sha1sums = a551b69e76533064e9549a8e4599f5d0ab1cd001
 
 pkgname = emuto
