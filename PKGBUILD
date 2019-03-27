@@ -39,5 +39,5 @@ package() {
 
   install -dm755 "$pkgdir/usr/lib" "$pkgdir/usr/share/vulkan/explicit_layer.d"
   install -m755 layer/libVkLayer_fossilize.so "$pkgdir/usr/lib"
-  install -m755 layer/VkLayer_fossilize.json "$pkgdir/usr/share/vulkan/explicit_layer.d"
+  install -m644 layer/VkLayer_fossilize.json "$pkgdir/usr/share/vulkan/explicit_layer.d"
 }
