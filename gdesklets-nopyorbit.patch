@@ -1,0 +1,13 @@
+Now gdesklets don't use pyorbit.
+
+--- gdesklets-0.36.3/configure.ac.orig	2015-07-15 18:26:57.300336727 +0100
++++ gdesklets-0.36.3/configure.ac	2015-07-15 18:27:05.390425153 +0100
+@@ -65,7 +65,7 @@ AC_CHECK_HEADER([$PYTHON_PREFIX/include/
+     AC_ERROR([Can't find Python.h! You will need python's development package to compile gDesklets.]))
+ AC_SUBST(PYTHON_CFLAGS)
+ 
+-PKG_CHECK_MODULES(GDESKLETS, pygtk-2.0 >= 2.10.0 pyorbit-2 >= 2.0.1 gnome-python-2.0 >= 2.12.0)
++PKG_CHECK_MODULES(GDESKLETS, pygtk-2.0 >= 2.10.0)
+ AC_SUBST(GDESKLETS_CFLAGS)
+ AC_SUBST(GDESKLETS_LIBS)
+ 

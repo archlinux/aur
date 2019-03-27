@@ -1,0 +1,11 @@
+diff -Naur gdesklets-0.36.3.orig/utils/vfs.py gdesklets-0.36.3/utils/vfs.py
+--- gdesklets-0.36.3.orig/utils/vfs.py	2008-03-20 00:00:59.000000000 +0100
++++ gdesklets-0.36.3/utils/vfs.py	2012-01-10 03:40:42.026593299 +0100
+@@ -21,7 +21,6 @@
+         OPEN_WRITE = gnomevfs.OPEN_WRITE
+ 
+     except ImportError:
+-        log("Using urllib, because gnomevfs isn't available")
+         OPEN_READ = "r"
+         OPEN_WRITE = "w"
+ 

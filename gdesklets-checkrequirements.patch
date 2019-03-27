@@ -1,0 +1,251 @@
+diff -Nurp gdesklets-0.36.3.orig/contrib/gdesklets-migration-tool gdesklets-0.36.3/contrib/gdesklets-migration-tool
+--- gdesklets-0.36.3.orig/contrib/gdesklets-migration-tool	2009-08-28 21:40:50.000000000 +0100
++++ gdesklets-0.36.3/contrib/gdesklets-migration-tool	1970-01-01 01:00:00.000000000 +0100
+@@ -1,206 +0,0 @@
+-#!/usr/bin/env python
+-#
+-# TODO:
+-#   -Add selectors for previous and current gDesklets versions
+-#   -Add command-line options for selecting the above
+-#   -Add command-line options for verbose configuration migrations
+-#
+-#
+-import gtk, gconf
+-import os, re, sys
+-import fileinput
+-import __builtin__
+-
+-if "/usr/lib/gdesklets" not in sys.path:
+-    sys.path.append("/usr/lib/gdesklets")
+-
+-from utils import i18n
+-from utils.HIGDialog import HIGDialog
+-
+-from config.StateSaver import DefaultStateSaver, StateSaver
+-
+-__builtin__._ = i18n.Translator("gdesklets")
+-
+-class MigrationTool:
+-
+-    # Display the main window
+-    def __init__(self):
+-
+-        m  = "This tool will safely migrate your settings from old versions of "
+-        m += "gDesklets (0.3x.x series), so that they will work with versions "
+-        m += "0.35rc1 onwards.\n\n"
+-        
+-        # This message doesn't really apply, but I'm keeping it here 
+-        # in case I forget how to do bold text or if we decide to keep
+-        # the old migration tool.
+-        #m += "If you are migrating from an earlier version, please run\n"
+-        #m += "<span weight=\"bold\">gdesklets-migration-tool</span> first."
+-
+-        dialog = HIGDialog((gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,gtk.STOCK_OK,
+-                            gtk.RESPONSE_OK), gtk.STOCK_DIALOG_INFO,
+-                           "gDesklets Config Migration Tool", m)
+-        
+-        self.__config_path = "/apps/gdesklets"
+-        self.__gdesklets_path = os.path.join(os.getenv("HOME"), ".gdesklets")
+-        # Get the StateSaver structure for shell config (if any)
+-        self.__new_shell_cfg = DefaultStateSaver()
+-        self.__old_shell_cfg = self.__config_path + "/shell"
+-
+-        dialog.connect("response", self.__response)
+-
+-        # Check if ~/.gdesklets exists
+-        if (not os.path.exists(self.__gdesklets_path)):
+-            print ("You don't have a working version of gDesklets! (~/.gdesklets not found)\nExiting!")
+-            sys.exit(1)
+-
+-        try:
+-            self.__displays_file = self.__gdesklets_path + "/displays"
+-        except:
+-            print "Can't find ~/.gdesklets/displays"
+-            sys.exit(1)
+-
+-        # Get IDs from each display in the ~/.gdesklets/displays file
+-        self.__displays = []
+-        
+-        # Probably a better way to do it than with fileinput
+-        for i in fileinput.input(self.__displays_file):
+-            if i.startswith("id"):
+-                l = i.split(" ")
+-                self.__displays.append(l[0] + "CONFIG")
+-        
+-        dialog.show()
+-
+-
+-    def __response(self, dialog, response):
+-
+-        if (response == gtk.RESPONSE_OK):
+-            dialog.hide()
+-            self.__show_warning(dialog)
+-        elif (response == gtk.RESPONSE_YES):
+-            dialog.hide()
+-            self.__migrate(dialog)
+-        else: gtk.main_quit()
+-
+-
+-    def __show_warning(self, dialog):
+-
+-        m  = "This will overwrite any existing settings from 0.35rc1 on up!\n"
+-        m += "Do you wish to continue?"
+-
+-        dialog = HIGDialog((gtk.STOCK_NO, gtk.RESPONSE_NO,
+-                            gtk.STOCK_YES, gtk.RESPONSE_YES),
+-                           gtk.STOCK_DIALOG_QUESTION, "Warning!", m)
+-        dialog.connect("response", self.__response)
+-        dialog.show()
+-
+-
+-    def __show_finished(self, dialog):
+-
+-        dialog = HIGDialog((gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE),
+-                           gtk.STOCK_DIALOG_INFO, "Migration successful!",
+-                           "Settings have been migrated succesfully")
+-        dialog.connect("response", self.__response)
+-        dialog.show()
+-
+-    # This is just a dummy function to see what's in
+-    # the states file.  It's not called except when testing :)
+-    def __list(self, dialog):
+-        
+-        m = ""
+-        
+-        for d in self.__displays:
+-            
+-            s = StateSaver(d)
+-            for l in s.list():
+-                m += str(s.get_key(l))
+-                m += "\n"
+-            m += "\n\n"
+-        
+-        dialog = HIGDialog((gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE),
+-                           gtk.STOCK_DIALOG_INFO, "List", m)
+-
+-        dialog.connect("response", self.__response)
+-        dialog.show()
+-
+-    def __migrate(self, dialog):
+-
+-        # we assume they have a config to start with
+-        noconfig = False;
+-
+-        # set up gconf client
+-        self.__client = gconf.client_get_default()
+-        self.__client.add_dir(self.__config_path, gconf.CLIENT_PRELOAD_RECURSIVE)
+-
+-        # open the new output files
+-        #d_cfile = open(self.__displays_file, "w")
+-
+-        for d in self.__displays:
+-            
+-            cur_id = d[0:len(d) - len("CONFIG")]    # This display's id
+-            s = StateSaver(d)                       # StateSaver for this display
+-            
+-            for entry in self.__client.all_entries(self.__config_path + "/" + cur_id):
+-            
+-                key = entry.get_key()
+-                
+-                # Each key had a corresponding key_TYPE variable
+-                # that indicated the type of configuration stored.
+-                # It seems tests like the following are necessary to
+-                # get the right type from gconf.
+-                if key.endswith("_TYPE"):
+-                
+-                    typ = self.__client.get_string(key)     # Type of variable stored
+-                    key_result = key[0:key.rfind("_TYPE")]  # Actual key
+-                    
+-                    # Get the value from key_result
+-                    if typ == "bool":
+-                        value = self.__client.get_bool(key_result)
+-                    elif typ == "string":
+-                        value = self.__client.get_string(key_result)
+-                    elif typ == "int":
+-                        value = self.__client.get_int(key_result)
+-                    elif typ == "float":
+-                        value = self.__client.get_string(key_result)
+-                    
+-                    key_result = key_result[key_result.rfind("/")+1:]
+-                    #print key_result + " : " + str( (value,typ) )
+-                    
+-                    s.set_key(key_result, (value,typ))
+-        
+-            #print str(s.list())
+-        
+-        # Done with the displays, now migrate the shell configuration
+-        for entry in self.__client.all_entries(self.__old_shell_cfg):
+-        
+-            key = entry.get_key()
+-            
+-            # Find out which key it is
+-            # Are all of these valid from < 0.35_rc1?
+-            if key == "current_tip":
+-                value = self.__client.get_int(key)
+-            elif key == "show_tip_of_the_day":
+-                value = self.__client.get_bool(key)
+-            elif key == "editor":
+-                value = self.__client.get_string(key)
+-            elif key == "dpi":
+-                value = self.__client.get_int(key)
+-            elif key == "translucency":
+-                value = self.__client.get_string(key)
+-            elif key == "authorized_commands":
+-                value = self.__client.get_string(key)
+-            
+-            # Transform the key to just it's value, not the
+-            # entire gconf path
+-            key = key[key.rfind("/")+1:]
+-            
+-            self.__new_shell_cfg.set_key(key, value)
+-        
+-        # we are done...
+-        self.__show_finished(dialog)
+-        
+-
+-
+-if __name__ == "__main__":
+-
+-     MigrationTool()
+-     gtk.main()
+diff -Nurp gdesklets-0.36.3.orig/gdesklets gdesklets-0.36.3/gdesklets
+--- gdesklets-0.36.3.orig/gdesklets	2010-07-24 17:42:10.000000000 +0100
++++ gdesklets-0.36.3/gdesklets	2015-08-06 04:55:04.174117347 +0100
+@@ -67,14 +67,9 @@ def check_system():
+                 {"pygtk_ver": "2.10.0", "gtk_ver": "2.10.0"},
+           True
+         ),
+-        ( ("ORBit",), lambda m : m.__version__ >= (2, 0, 1),
+-          _("ORBit python bindings (pyorbit) version >= %(pyorbit_ver)s "
+-            "are required.") % {"pyorbit_ver": "2.0.1"},
+-          True
+-        ),
+         ( ("bonobo.ui",), lambda m : m,
+           _("bonobo python bindings are required."),
+-          True
++          False
+         ),
+         ( ("dbus",), lambda m : m,
+           _("DBus python bindings are useful, but optional."),
+diff -Nurp gdesklets-0.36.3.orig/Makefile_gdesklets.am gdesklets-0.36.3/Makefile_gdesklets.am
+--- gdesklets-0.36.3.orig/Makefile_gdesklets.am	2011-01-13 14:30:26.000000000 +0000
++++ gdesklets-0.36.3/Makefile_gdesklets.am	2015-08-06 05:06:54.596074228 +0100
+@@ -12,7 +12,6 @@ dist_install_SCRIPTS =             \
+   gdesklets                        \
+   gdesklets-daemon                 \
+   gdesklets-logview                \
+-  contrib/gdesklets-migration-tool \
+   gdesklets-shell                  \
+   test-control.py
+ 
+diff -Nurp gdesklets-0.36.3.orig/Makefile.in gdesklets-0.36.3/Makefile.in
+--- gdesklets-0.36.3.orig/Makefile.in	2011-01-23 19:56:08.000000000 +0000
++++ gdesklets-0.36.3/Makefile.in	2015-08-06 05:07:06.862211403 +0100
+@@ -391,7 +391,6 @@ dist_install_SCRIPTS = \
+   gdesklets                        \
+   gdesklets-daemon                 \
+   gdesklets-logview                \
+-  contrib/gdesklets-migration-tool \
+   gdesklets-shell                  \
+   test-control.py
+ 

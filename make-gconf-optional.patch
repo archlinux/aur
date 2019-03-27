@@ -1,0 +1,36 @@
+diff -Naur gdesklets-0.36.3.orig/shell/plugins/PackageInstaller/Downloader.py gdesklets-0.36.3/shell/plugins/PackageInstaller/Downloader.py
+--- gdesklets-0.36.3.orig/shell/plugins/PackageInstaller/Downloader.py	2008-03-20 00:00:58.000000000 +0100
++++ gdesklets-0.36.3/shell/plugins/PackageInstaller/Downloader.py	2012-01-10 02:58:26.451869752 +0100
+@@ -61,16 +61,22 @@
+ 
+         dest_fd = open(dest, "w")
+ 
+-        import gconf
+-        client = gconf.client_get_default()
+-        use_proxy = client.get_bool('/system/http_proxy/use_http_proxy')
+-        if (use_proxy != 0):
+-           host = client.get_string('/system/http_proxy/host')
+-           port = client.get_int('/system/http_proxy/port')
+-           if (host != ""):
+-               http_proxy = "http://" + host + ':' + str(port)
+-           else:
+-               http_proxy = None
++        try:
++            import gconf
++        except ImportError:
++            gconf = None
++        if gconf:
++            client = gconf.client_get_default()
++            use_proxy = client.get_bool('/system/http_proxy/use_http_proxy')
++            if (use_proxy != 0):
++               host = client.get_string('/system/http_proxy/host')
++               port = client.get_int('/system/http_proxy/port')
++               if (host != ""):
++                   http_proxy = "http://" + host + ':' + str(port)
++               else:
++                   http_proxy = None
++            else:
++                http_proxy = None
+         else:
+             http_proxy = None
+ 
