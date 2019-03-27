@@ -1,7 +1,7 @@
 # Maintainer: JC Francois <jc.francois@gmail.com>
 pkgname=beaker-browser-bin
 pkgver=0.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Peer-to-peer browser with tools to create and host websites"
 arch=('x86_64')
 url="https://beakerbrowser.com/"
@@ -24,7 +24,7 @@ install='beaker-browser-bin.install'
 
 prepare() {
     chmod u+x beaker.browser.${pkgver//_/-}.AppImage
-    ./beaker.browser.${pkgver//_/-}.AppImage --appimage-extract
+    ${srcdir}/beaker.browser.${pkgver//_/-}.AppImage --appimage-extract
 }
 
 package() {
