@@ -2,8 +2,8 @@
 # Contributor: scarecrow <gorillaki at gmail dot com>
 
 pkgname=scid_vs_pc
-pkgver=4.19
-pkgrel=3
+pkgver=4.20
+pkgrel=1
 pkgdesc="Shane's Chess Information Database"
 arch=('i686' 'x86_64')
 url="http://scidvspc.sourceforge.net/"
@@ -17,7 +17,7 @@ source=("scid_vs_pc-"$pkgver".tgz::http://sourceforge.net/projects/scidvspc/file
         $pkgname.desktop
         $pkgname.install
         scidlet)
-md5sums=('f85554718dc22c0548b991d243911fc9'
+md5sums=('914bb0c205fd2d25c64233576334ba15'
          '48f02834420046d1ebd2de22f07ba87c'
          '1df155b3ff86a505dc51a29fa7bfc172'
          'c9ba274c986122ca4c1cd202431b64ce'
