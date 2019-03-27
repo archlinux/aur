@@ -1,3 +1,6 @@
+# Maintainer: Tobias Kunze <r@rixx.de>
+# Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
+
 pkgname=python36
 pkgver=3.6.8
 pkgrel=1
@@ -13,9 +16,6 @@ optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
 source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
 sha256sums=('35446241e995773b1bed7d196f4b624dadcadc8429f26282e756b2fb8a351193')
-# Maintainer: Tobias Kunze <r@rixx.de>
-# Based on python33 script from: Rodolphe Breard <packages@what.tf> and Christopher Arndt <chris@chrisarndt.de>
-# Via the python34 adaption of Raphael Michel <mail@raphaelmichel.de>
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
