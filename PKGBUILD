@@ -13,7 +13,7 @@ _revert=0
 
 
 pkgname=mutter-781835-workaround
-pkgver=3.32.0+41+gf0b9654de
+pkgver=3.32.0+42+g58f7059ea
 pkgrel=1
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -27,19 +27,21 @@ checkdepends=(xorg-server-xvfb)
 provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
-_commit=f0b9654deb947e49e42b76d6daa42b86e5b0ec17  # master
+_commit=58f7059ea42c04fbb28c7210a287437f0f55b2d8  # master
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
+         0001-wayland-xdg-shell-Correct-window-menu-position-in-lo.patch
          216.patch
         revert.patch)
 sha256sums=('SKIP'
+            '8628fe45738d631d7776204be76cc091c5a1359d2874945c7913c7705330f816'
             'ed4f3cf738a3cffdf8a6e1a352bf24d74078c3b26fb9262c5746e0d95b9df756'
             '2d2e305e0a6cca087bb8164f81bdc0ae7a5ca8e9c13c81d7fd5252eb3563fc09')
 
 pkgver() {
   cd $pkgname
 
-  _manual_bump=41 # horrible temporary workaround to account new versioning
-  git describe --tags | sed "s/-/+/g;s/25/$_manual_bump/"
+  _manual_bump=42 # horrible temporary workaround to account new versioning
+  git describe --tags | sed "s/-/+/g;s/33/$_manual_bump/"
 }
 
 prepare() {
@@ -99,6 +101,9 @@ prepare() {
   if [ -n "$_revert" ]; then
     patch -Np1 -i ../revert.patch
   fi
+
+  # https://gitlab.gnome.org/GNOME/mutter/issues/527
+  patch -Np1 -i ../0001-wayland-xdg-shell-Correct-window-menu-position-in-lo.patch
 
   # cogl-winsys-glx: Fix frame notification race/leak [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/216
