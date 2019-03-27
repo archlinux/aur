@@ -4,7 +4,7 @@ pkgdesc="High performance software library for parallel computing with an easy-t
 url='https://arrayfire.com'
 pkgver=3.6.2
 arch=('x86_64')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 depends=('cblas' 'fftw' 'boost-libs' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew' 'glbinding')
 makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'boost' 'python' 'ocl-icd' 'cuda' 'git')
@@ -34,6 +34,7 @@ build() {
   cd build
   cmake .. \
       -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INSTALL_LIBDIR=/usr/lib \
       -DAF_USE_SYSTEM_FORGE=ON \
       -DAF_WITH_IMAGEIO=ON \
       -DAF_WITH_GRAPHICS=ON \
@@ -49,12 +50,11 @@ build() {
   make
 }
 
-# check() {
-#   cd "${srcdir}/arrayfire-full-${pkgver}/build"
-#
-#   # Some tests fail :(
-#   make test
-# }
+check() {
+  cd "${srcdir}/arrayfire-full-${pkgver}/build"
+
+  make test
+}
 
 package() {
   cd "${srcdir}/arrayfire-full-${pkgver}"
