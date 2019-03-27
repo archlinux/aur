@@ -1,0 +1,9 @@
+post_install() {
+  cat << EOF
+==> Put this in your $HOME/.emacs file to enable autoloading of pkgbuild-mode
+==> and auto-recognition of "PKGBUILD" files:
+
+(autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
+(setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode)) auto-mode-alist))
+EOF
+}
