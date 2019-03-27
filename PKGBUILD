@@ -1,72 +1,61 @@
 # Maintainer: Aaron Plattner <aplattner@nvidia.com>
 # Maintainer: Miguel A. Vico <mvicomoya@nvidia.com>
-# Contributor: Sébastien Luttringer
+# Contributor: Eric Toombs
 # Contributor: Joel Teichroeb <joel@teichroeb.net>
+# Contributor: Sébastien Luttringer
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=weston-eglstream
-pkgver=5.0.0
-pkgrel=5
+pkgver=6.0.0
+pkgrel=1
 pkgdesc='Reference implementation of a Wayland compositor with EGLStream support'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://wayland.freedesktop.org/'
 license=('MIT')
-depends=('glibc' 'wayland' 'libxkbcommon' 'libinput' 'libunwind' 'pixman'
-         'libdrm' 'pam' 'libsystemd' 'cairo' 'libpng' 'libjpeg-turbo' 'libwebp'
-         'libegl' 'libgles' 'glib2' 'pango' 'lcms2' 'mtdev' 'libx11'
-         'libxcb' 'dbus' 'libva' 'libxcursor' 'colord' 'egl-wayland' 'autoconf')
-makedepends=('wayland-protocols')
+depends=('wayland' 'libxkbcommon' 'libinput' 'libjpeg-turbo' 'libwebp'
+         'libegl' 'libgles' 'pango' 'libva' 'libxcursor' 'colord' 'egl-wayland')
+makedepends=('meson' 'wayland-protocols')
 provides=('weston')
 conflicts=('weston')
 source=("https://wayland.freedesktop.org/releases/weston-$pkgver.tar.xz"
-          '0001-gl-renderer-Add-EGLDevice-enumeration-support.patch'
-          '0002-gl-renderer-Add-support-for-EGLDevice-composited-fra.patch'
-          '0003-gl-renderer-Add-EGL-client-support-for-EGLStream-fra.patch'
-          '0004-compositor-drm-Gracefully-handle-vblank-and-flip-inv.patch'
-          '0005-compositor-drm-Add-support-for-EGLDevice-EGLOutput.patch'
-          '0006-compositor-Process-stream-attach-requests-with-wl_eg.patch'
-          '0007-simple-egl-Do-not-set-EGL-up-until-XDG-setup-is-comp.patch'
-          '0008-gl-renderer-Use-mailbox-streams-for-scanout.patch'
-          '0009-configure-Temporary-fix-for-gobject-2.0-libs-missing.patch')
-sha256sums=('15a23423bcfa45e31e1dedc0cd524ba71e2930df174fde9c99b71a537c4e4caf'
-            '270c2f68bb84a0f1f670eddb44b3f77729cf29ceecddbe4e62a5ced80fb1d1df'
-            'f4f79611d00847c722e476469f74dc8fce812afdf2fed58ca91235b04bfe0107'
-            '17c8d59665ad33d3dbfea39d8c32634dac660cf528313b51c7064ce27b93ddec'
-            'f5c7ae1142b2cb0dcf28c4b217c7cac42ab98fb1bb5ee14a2978fa8cc9bc6ea7'
-            '59287416cf0a57b76f7e77b7eadf0cf9c91afe480b0c400998abafe2deeb3126'
-            '5917fe7b0b49a1d66c3262958c004ffe22de7bb5026856f92cf5be46e81f9b1e'
-            '9b910c9b7176a4caea796a11ffd5086a54fe7b3c02336d494b8ea050933cfcbe'
-            '840166cc83641e6502c119ea1ff060be3afc1c99c0da792e7e43364ad29e799d'
-            'd84cea4d89f79215adb148e5ed2afe7e94f3ef66df10e2bbecfddf9f04bd13e4')
+        '0001-configure-meson-Tmp-fix-for-gobject-2.0-libs-missing.patch'
+        '0002-gl-renderer-Add-EGLDevice-enumeration-support.patch'
+        '0003-gl-renderer-Add-support-for-EGLDevice-composited-fra.patch'
+        '0004-gl-renderer-Add-EGL-client-support-for-EGLStream-fra.patch'
+        '0005-compositor-drm-Gracefully-handle-vblank-and-flip-inv.patch'
+        '0006-compositor-drm-Add-support-for-EGLDevice-EGLOutput.patch'
+        '0007-compositor-Process-stream-attach-requests-with-wl_eg.patch'
+        '0008-simple-egl-Do-not-set-EGL-up-until-XDG-setup-is-comp.patch')
+sha256sums=('546323a90607b3bd7f48809ea9d76e64cd09718102f2deca6d95aa59a882e612'
+            'd6e78c5bfc2118f1955f8c3eb30aedf7dc01cab9e21271b135dc32be1b895607'
+            'f4b5222e0a8ee1c895f0e60e34d9d7c0a371012c5aab4d7e896e4c6f0df514b7'
+            '8e778e55a2268cf932d57e4a6bbedcc7e24b1e223583cb238091dd426217198b'
+            '01ecdb0363d36e11365ffe77056e9ec282d1928b007023ac7450aa2812a5018f'
+            'f14e27d58b7b0ec72b5aa722db95bd62e9b316e91907070cfeed236e65fe5c17'
+            '77b1633c0162ac0b6f8126a1e614b8fa54a672927c04c1cacc5486b534ebd4ec'
+            '36f05125a0be58d2ce840c8de2b8d42cfeeae8362e5b95861669b85d0f876816'
+            'a2acbc92962d2ae2c1690398af67eac35c5bbe06f0ff03a94f1aa1f12385ea12')
 prepare() {
-	cd weston-$pkgver
+    cd weston-$pkgver
 
-	patch -Np1 -i "${srcdir}/0001-gl-renderer-Add-EGLDevice-enumeration-support.patch"
-	patch -Np1 -i "${srcdir}/0002-gl-renderer-Add-support-for-EGLDevice-composited-fra.patch"
-	patch -Np1 -i "${srcdir}/0003-gl-renderer-Add-EGL-client-support-for-EGLStream-fra.patch"
-	patch -Np1 -i "${srcdir}/0004-compositor-drm-Gracefully-handle-vblank-and-flip-inv.patch"
-	patch -Np1 -i "${srcdir}/0005-compositor-drm-Add-support-for-EGLDevice-EGLOutput.patch"
-	patch -Np1 -i "${srcdir}/0006-compositor-Process-stream-attach-requests-with-wl_eg.patch"
-	patch -Np1 -i "${srcdir}/0007-simple-egl-Do-not-set-EGL-up-until-XDG-setup-is-comp.patch"
-	patch -Np1 -i "${srcdir}/0008-gl-renderer-Use-mailbox-streams-for-scanout.patch"
-	patch -Np1 -i "${srcdir}/0009-configure-Temporary-fix-for-gobject-2.0-libs-missing.patch"
+    patch -Np1 -i "${srcdir}/0001-configure-meson-Tmp-fix-for-gobject-2.0-libs-missing.patch"
+    patch -Np1 -i "${srcdir}/0002-gl-renderer-Add-EGLDevice-enumeration-support.patch"
+    patch -Np1 -i "${srcdir}/0003-gl-renderer-Add-support-for-EGLDevice-composited-fra.patch"
+    patch -Np1 -i "${srcdir}/0004-gl-renderer-Add-EGL-client-support-for-EGLStream-fra.patch"
+    patch -Np1 -i "${srcdir}/0005-compositor-drm-Gracefully-handle-vblank-and-flip-inv.patch"
+    patch -Np1 -i "${srcdir}/0006-compositor-drm-Add-support-for-EGLDevice-EGLOutput.patch"
+    patch -Np1 -i "${srcdir}/0007-compositor-Process-stream-attach-requests-with-wl_eg.patch"
+    patch -Np1 -i "${srcdir}/0008-simple-egl-Do-not-set-EGL-up-until-XDG-setup-is-comp.patch"
 }
 
 build() {
-	cd weston-$pkgver
-	autoreconf --force -v --install
-	./configure \
-		--prefix=/usr \
-		--libexecdir=/usr/lib/weston \
-		--enable-systemd-login \
-		--enable-systemd-notify \
-		--enable-xwayland \
-		--enable-demo-clients-install
-	make
+    arch-meson "build" "weston-$pkgver" -Dbackend-drm-screencast-vaapi=false \
+        -Dscreenshare=false -Dbackend-rdp=false -Dshell-ivi=false \
+        -Dsimple-dmabuf-drm= -Dremoting=false
+    ninja -C "build"
 }
 
 package() {
-	cd weston-$pkgver
-	make DESTDIR="$pkgdir" install
-	# license
-	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    DESTDIR="$pkgdir" ninja -C "build" install
+    install -Dm644 weston-$pkgver/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
