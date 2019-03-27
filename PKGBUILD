@@ -1,10 +1,10 @@
 # Maintainer: Ryan Gonzalez <rymg19 at gmail dot com>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>, youngunix <>
 
-_version=4.2.1
+_version=5.0
 pkgname=swift-bin
 pkgver=${_version//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Official binary builds of the Swift programming language."
 arch=('x86_64')
 url="https://swift.org"
@@ -16,11 +16,11 @@ options=('!strip')
 provides=('swift-language')
 replaces=('swift-language-bin')
 source=(
-  'https://kojipkgs.fedoraproject.org//packages/swift-lang/4.2.1/0.101.20181030git02a6ca9.fc30/x86_64/swift-lang-4.2.1-0.101.20181030git02a6ca9.fc30.x86_64.rpm'
-  'https://kojipkgs.fedoraproject.org//packages/swift-lang/4.2.1/0.101.20181030git02a6ca9.fc30/x86_64/swift-lang-runtime-4.2.1-0.101.20181030git02a6ca9.fc30.x86_64.rpm'
+  'https://kojipkgs.fedoraproject.org//packages/swift-lang/5.0/0.52.20190325gitba33f9e.fc29/x86_64/swift-lang-5.0-0.52.20190325gitba33f9e.fc29.x86_64.rpm'
+  'https://kojipkgs.fedoraproject.org//packages/swift-lang/5.0/0.52.20190325gitba33f9e.fc29/x86_64/swift-lang-runtime-5.0-0.52.20190325gitba33f9e.fc29.x86_64.rpm'
 )
-sha256sums=('9df46cd5601b4318496cfd79056def9af44b706269776f74cc0778fd03842a49'
-            '5ff7fa70ccd47b5cee8f22a2d26bcb2761cfaa392bd687a2a7a142bb7dd407a5')
+sha256sums=('9b4610757147e547373d65c269d2ff627d3c0ef0164e8e130bed3d7a874cbc4b'
+            '8884e3e42cc79bb44775ebf1514647c581478844be859bdb24bd4fe571d7a303')
 
 package() {
   cp -Ppr "${srcdir}"/{etc,usr} "${pkgdir}"
