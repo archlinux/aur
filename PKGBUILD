@@ -4,9 +4,9 @@ _BUILD_CUDA="on"
 
 name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
-fragment="#branch=dev"
-pkgname=${name}-git
-pkgver=3.6.dev.1.r47.gc423ca9
+fragment="#tag=3.6-dev.2"
+pkgname=${name}
+pkgver=3.6.dev.2
 pkgrel=1
 pkgdesc="COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
