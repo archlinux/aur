@@ -1,0 +1,19 @@
+pkgbase = newtonator
+	pkgdesc = An LV2 soft synth based on velocity and acceleration
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://newtonator.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	groups = lv2-plugins
+	license = GPL3
+	makedepends = cmake
+	makedepends = lv2-c++-tools
+	depends = lv2
+	depends = gtkmm
+	depends = stk
+	source = http://downloads.sourceforge.net/project/newtonator/newtonator-0.6.0.tar.gz
+	md5sums = 7f2db9a8928c5e06af1312f50c806646
+
+pkgname = newtonator
+
