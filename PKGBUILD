@@ -2,7 +2,7 @@
 pkgname=intel-mkl-slim
 pkgver_hyphen=2019.3-199
 pkgver=${pkgver_hyphen/-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Intel Math Kernel Library (x86_64 shared libraries and headers only)"
 arch=(x86_64)
 url="https://software.intel.com/en-us/mkl"
@@ -10,7 +10,7 @@ license=("custom:ISSL")
 optdepends=(
 	'intel-tbb: Intel® threading implementation'
 	'openmp: Clang OpenMP runtime'
-	'gcc-lib: GNU OpenMP runtime'
+	'gcc-libs: GNU OpenMP runtime'
 )
 provides=(intel-mkl)
 conflicts=(intel-mkl)
