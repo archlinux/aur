@@ -1,0 +1,113 @@
+diff -Naur screenlets-0.1.7.orig/src/lib/__init__.py screenlets-0.1.7/src/lib/__init__.py
+--- screenlets-0.1.7.orig/src/lib/__init__.py	2018-09-07 05:43:35.190744637 +0200
++++ screenlets-0.1.7/src/lib/__init__.py	2018-09-07 05:15:53.772422000 +0200
+@@ -162,10 +162,7 @@
+ TRANSLATORS = "Special thanks for translators\nFull Translator list on https://translations.launchpad.net/screenlets/"
+ 
+ # the application website
+-WEBSITE = 'http://www.screenlets.org'
+-
+-# The Screenlets download page. Notice that if you translate this, you also have to create/translate the page for your language on the Screenlets.org (it's a Wiki!)
+-THIRD_PARTY_DOWNLOAD = _("http://www.screenlets.org/index.php/Get_more_screenlets")
++WEBSITE = 'https://launchpad.net/screenlets'
+ 
+ 
+ #-------------------------------------------------------------------------------
+diff -Naur screenlets-0.1.7.orig/src/lib/utils.py screenlets-0.1.7/src/lib/utils.py
+--- screenlets-0.1.7.orig/src/lib/utils.py	2018-09-07 05:15:53.782423000 +0200
++++ screenlets-0.1.7/src/lib/utils.py	2018-09-07 05:47:21.560437204 +0200
+@@ -193,23 +193,6 @@
+ 	"""Returns screenlet name on form 'foobar-screenlet' by shortened screenlet class name."""
+ 	return name.lower() + "-screenlet"
+ 
+-def is_screenlets_ppa_enabled():
+-	"""Detect if Screenlets default PPA is enabled on system."""
+-	result = commands.getstatusoutput("ls /etc/apt/sources.list.d/screenlets*ppa*.list | xargs grep '^deb.*'")[0]
+-	return result == 0
+-
+-def get_more_screenlets_ubuntu():
+-	if not is_screenlets_ppa_enabled():
+-		print "PPA not enabled yet"
+-		if screenlets.show_question(None, _('The Screenlets PPA is not listed among Software Sources. Adding this enables installing individual screenlets from Package Manager (or Software Center) and by clicking on an AptURL on web pages like Gnome-look.org. Would you like to add the Screenlets PPA to your system?'), title=_("Do you want to enable the Screenlets PPA?")):
+-			result = commands.getstatusoutput('gksudo add-apt-repository ppa:screenlets-dev/ppa && gksudo apt-get update')[0]
+-			if result == 0:
+-				screenlets.show_message(None, _('The Screenlets PPA added successfully.'), title=_("Success!"))
+-			else:
+-				screenlets.show_error(None, _('Adding the Screenlets PPA failed.'), title=_("Failed!"))
+-	print "show web page anyway"
+-	subprocess.Popen(["xdg-open", screenlets.THIRD_PARTY_DOWNLOAD])
+-
+ 
+ def get_translator(path):
+ 	"""Returns translator by screenlet class path from __file__."""
+diff -Naur screenlets-0.1.7.orig/src/share/screenlets-manager/screenlets-daemon.py screenlets-0.1.7/src/share/screenlets-manager/screenlets-daemon.py
+--- screenlets-0.1.7.orig/src/share/screenlets-manager/screenlets-daemon.py	2018-09-07 05:47:43.807730305 +0200
++++ screenlets-0.1.7/src/share/screenlets-manager/screenlets-daemon.py	2018-09-07 05:15:53.785756000 +0200
+@@ -169,7 +169,6 @@
+ 			add_image_menuitem(self.menu, gtk.STOCK_PREFERENCES, _("Screenlets Manager"), self.openit)
+ 			add_menuitem(self.menu, "-")
+ 			add_image_menuitem(self.menu, gtk.STOCK_ADD, _("Install Screenlet"), self.installit)
+-			add_image_menuitem(self.menu, gtk.STOCK_NETWORK, _("Get more Screenlets"), self.getit)
+ 			add_menuitem(self.menu, "-")
+ 			
+ 			# create the
+@@ -265,14 +264,8 @@
+ 			
+ 
+ 	
+-	def getit(self, widget):
+-		if screenlets.UBUNTU:
+-			utils.get_more_screenlets_ubuntu()
+-		else:
+-			subprocess.Popen(["xdg-open", screenlets.THIRD_PARTY_DOWNLOAD])
+-
+ 	def website_open(self, d, link, data):
+-		utils.xdg_open('http://screenlets.org')
++		utils.xdg_open('https://launchpad.net/screenlets')
+ 
+ 
+ 	def about(self, widget):
+diff -Naur screenlets-0.1.7.orig/src/share/screenlets-manager/screenlets-manager.py screenlets-0.1.7/src/share/screenlets-manager/screenlets-manager.py
+--- screenlets-0.1.7.orig/src/share/screenlets-manager/screenlets-manager.py	2018-09-07 05:15:53.789089000 +0200
++++ screenlets-0.1.7/src/share/screenlets-manager/screenlets-manager.py	2018-09-07 05:49:11.616871511 +0200
+@@ -528,18 +528,12 @@
+ 		# add about/close buttons to window
+ 		but_about = gtk.Button(stock=gtk.STOCK_ABOUT)
+ 		but_close = gtk.Button(stock=gtk.STOCK_CLOSE)
+-		but_download = gtk.Button(_('Get more screenlets'))
+-		but_download.set_image(gtk.image_new_from_stock(gtk.STOCK_GO_DOWN, 
+-			gtk.ICON_SIZE_BUTTON))
+ 		but_about.connect('clicked', self.button_clicked, 'about')
+ 		but_close.connect('clicked', self.button_clicked, 'close')
+-		but_download.connect('clicked', self.button_clicked, 'download')
+ 		but_about.set_tooltip_text(_("Show info about this dialog ..."))
+-		but_download.set_tooltip_text(_("Download more screenlets ..."))
+ 		but_close.set_tooltip_text(_("Close this dialog ..."))
+ 		action_area.set_layout(gtk.BUTTONBOX_EDGE)
+ 		action_area.pack_start(but_about, False, False)
+-		action_area.pack_start(but_download, False, False)
+ 		action_area.pack_end(but_close, False, False)
+ 		vbox.show_all()
+ 		# initially create lower infobox
+@@ -670,7 +664,7 @@
+ 		dlg.destroy()
+ 		
+ 	def website_open(self, d, link, data):
+-		subprocess.Popen(["xdg-open", "http://www.screenlets.org"])
++		subprocess.Popen(["xdg-open", "https://launchpad.net/screenlets"])
+ 
+ 	# could be used to reload screenlets on every activation (but it's a bit too much)
+ 	def on_active_changed(self, window, param):
+@@ -956,12 +950,6 @@
+ 			utils.quit_all_screenlets()
+ 			self.refilter_screenlets(None,'type_changed')
+ 
+-		elif id == 'download':
+-			if screenlets.UBUNTU:
+-				utils.get_more_screenlets_ubuntu()
+-			else:
+-				subprocess.Popen(["xdg-open", screenlets.THIRD_PARTY_DOWNLOAD])
+-			
+ 	def show_install_chose_ui(self):
+ 		install_rbs = gtk.VBox(False, 10)
+ 		install_rbs.set_border_width(10)

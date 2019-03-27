@@ -1,0 +1,15 @@
+diff -Naur screenlets-0.1.7.orig/src/lib/plugins/Proxy.py screenlets-0.1.7/src/lib/plugins/Proxy.py
+--- screenlets-0.1.7.orig/src/lib/plugins/Proxy.py	2017-01-30 21:36:27.000000000 +0100
++++ screenlets-0.1.7/src/lib/plugins/Proxy.py	2018-09-07 09:47:24.977974659 +0200
+@@ -14,7 +14,10 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-import gconf
++try:
++    import gconf
++except ImportError:
++    pass
+ 
+ class Proxy(object):
+ 

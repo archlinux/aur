@@ -1,0 +1,220 @@
+diff -Naur screenlets-0.1.7.orig/screenlets-manager.in screenlets-0.1.7/screenlets-manager.in
+--- screenlets-0.1.7.orig/screenlets-manager.in	2017-01-30 21:36:27.000000000 +0100
++++ screenlets-0.1.7/screenlets-manager.in	2017-06-24 12:35:39.072939002 +0200
+@@ -2,6 +2,5 @@
+ src/share/screenlets-manager/screenlets-daemon.py
+ src/share/screenlets-manager/screenlets-manager.py
+ src/share/screenlets-manager/screenlets-packager.py
+-src/share/screenlets-manager/WidgetScreenlet.py
+ src/lib/install.py
+ src/lib/utils.py
+diff -Naur screenlets-0.1.7.orig/setup.py screenlets-0.1.7/setup.py
+--- screenlets-0.1.7.orig/setup.py	2017-01-30 21:36:27.000000000 +0100
++++ screenlets-0.1.7/setup.py	2017-06-24 12:37:54.663512181 +0200
+@@ -93,9 +93,7 @@
+ 	'src/share/screenlets-manager/noimage.svg',
+ 	'src/share/screenlets-manager/KarambaScreenlet.py',
+ 	'src/share/screenlets-manager/widget.png',
+-	'src/share/screenlets-manager/WidgetScreenlet.py',
+ 	'src/share/screenlets-manager/webframe.png',
+-	'src/share/screenlets-manager/WebframeScreenlet.py',
+ 	'src/share/screenlets-manager/karamba.png']))
+ 
+ 
+diff -Naur screenlets-0.1.7.orig/src/share/screenlets-manager/screenlets-manager.py screenlets-0.1.7/src/share/screenlets-manager/screenlets-manager.py
+--- screenlets-0.1.7.orig/src/share/screenlets-manager/screenlets-manager.py	2017-01-30 21:36:27.000000000 +0100
++++ screenlets-0.1.7/src/share/screenlets-manager/screenlets-manager.py	2017-06-24 12:40:13.327504286 +0200
+@@ -461,7 +461,7 @@
+ 		but8.set_alignment(0,0.5)
+ 		but9.set_alignment(0,0.5)
+ 		but1.set_tooltip_text(_("Launch/add a new instance of the selected Screenlet ..."))
+-		but2.set_tooltip_text(_("Install a new Screenlet, SuperKaramba or Web Widget or Web Application  ..."))
++		but2.set_tooltip_text(_("Install a new Screenlet or SuperKaramba  ..."))
+ 		but3.set_tooltip_text(_("Permanently uninstall/delete the currently selected Screenlet ..."))
+ 		but4.set_tooltip_text(_("Reset this Screenlet configuration (will only work if Screenlet isn't running)"))
+ 		but5.set_tooltip_text(_("Install new theme for this screenlet"))
+@@ -974,12 +974,6 @@
+ 		button = gtk.RadioButton(button, _('Install SuperKaramba Theme'))
+ 		install_rbs.pack_start(button, True, True, 0)
+ 		button.show()
+-		button = gtk.RadioButton(button, _('Convert Web Widget'))
+-		install_rbs.pack_start(button, True, True, 0)
+-		button.show()
+-		button = gtk.RadioButton(button, _('Install Web Application'))
+-		install_rbs.pack_start(button, True, True, 0)
+-		button.show()
+ 
+ 		dialog = gtk.Dialog(_("Install"),self.window,
+                     gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
+@@ -995,10 +989,6 @@
+ 			active_label = active_radios[0].get_label()
+ 			if active_label in (_('Install Screenlet'), _('Install SuperKaramba Theme')):
+ 				self.show_install_dialog()
+-			elif active_label == _('Convert Web Widget'):
+-				self.show_widget_converter()
+-			elif active_label == _('Install Web Application'):
+-				self.show_webapp()						
+ 		dialog.destroy()
+ 
+ 	def show_options_ui(self):
+@@ -1078,160 +1068,6 @@
+ 			f.close()
+ 		dialog.destroy()
+ 
+-	def show_webapp(self):
+-		label1 = gtk.Label(_('Web Application Url'))
+-		label2 = gtk.Label(_('Web Application Name'))
+-		code = gtk.Entry()
+-		name = gtk.Entry()
+-		h = gtk.HBox()
+-		h1 = gtk.HBox()	
+-		h.pack_start(label1,False,False)
+-		h.pack_start(code,True,True)
+-		h1.pack_start(label2,False,False)
+-		h1.pack_start(name,True,True)
+-      		dialog = gtk.Dialog(_("Install Web Application"),self.window,
+-                     gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
+-                     (gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT,
+-                      gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
+-    		label1.show()
+-    		label2.show()
+-		code.show()
+-		name.show()
+-		h.show()
+-		h1.show()
+-		dialog.vbox.pack_start(h,False,False,5)
+-		dialog.vbox.pack_start(h1,False,False,5)
+-				
+-			
+-		resp = dialog.run()
+-		ret = None
+-		if resp == gtk.RESPONSE_ACCEPT:
+-			if code.get_text() != '':
+-				if name.get_text() != '':
+-					try:
+-						a = name.get_text()
+-						a = a.replace(' ','')
+-						if os.path.isdir(DIR_USER + '/' + a):#found_path != None:
+-							if screenlets.show_question(None,(_("There is already a screenlet with that name installed\nDo you wish to continue?") )):
+-								pass
+-							else: 
+-								return False
+-						os.system('mkdir -p ' +DIR_USER + '/' + a + '/themes/default')
+-						os.system('mkdir -p ' +DIR_USER + '/' + a + '/mozilla') # probably not needed since webkit
+-						# this is just to install something if basic pack is not installed
+-						os.system('cp ' + screenlets.INSTALL_PREFIX + '/share/screenlets-manager/WebframeScreenlet.py ' +DIR_USER + '/' + a + '/' + a + 'Screenlet.py')
+-						os.system('cp ' + screenlets.INSTALL_PREFIX + '/share/screenlets-manager/webframe.png ' +DIR_USER + '/' + a + '/icon.png')				
+-						os.system('cp ' + screenlets.INSTALL_PREFIX + '/share/screenlets-manager/prefs.js ' +DIR_USER + '/' + a + '/mozilla')				
+-						os.system('cp ' + screenlets.INSTALL_PREFIX + '/share/screenlets-manager/webframe.png ' +DIR_USER + '/' + a + '/themes/default')
+-						# install the one from basic pack (probably fullest and most updated)
+-						os.system('cp ' + screenlets.INSTALL_PREFIX + '/share/screenlets/screenlets-pack-basic/Webframe/WebframeScreenlet.py ' +DIR_USER + '/' + a + '/' + a + 'Screenlet.py')
+-						os.system('cp ' + screenlets.INSTALL_PREFIX + '/share/screenlets/screenlets-pack-basic/Webframe/icon* ' +DIR_USER + '/' + a)
+-						os.system('cp ' + screenlets.INSTALL_PREFIX + '/share/screenlets/screenlets-pack-basic/Webframe/*.txt ' +DIR_USER + '/' + a)
+-						os.system('cp -r ' + screenlets.INSTALL_PREFIX + '/share/screenlets/screenlets-pack-basic/Webframe/mo ' +DIR_USER + '/' + a)
+-						os.system('cd ' + DIR_USER + '/' + a + '/mo && find -name *.mo | rename -v "s/webframe/' + a.lower() +'/"')
+-						os.system('cp -r ' + screenlets.INSTALL_PREFIX + '/share/screenlets/screenlets-pack-basic/Webframe/themes ' +DIR_USER + '/' + a)
+-						os.system('cp -r ' + screenlets.INSTALL_PREFIX + '/share/screenlets/screenlets-pack-basic/Webframe/mozilla ' +DIR_USER + '/' + a)
+-		
+-						enginecopy = open(DIR_USER + '/' + a + '/' + a + 'Screenlet.py','r')
+-						enginesave = enginecopy.read()
+-						enginesave = enginesave.replace('WebframeScreenlet',a + 'Screenlet')
+-						enginesave = enginesave.replace("home_uri = ''","home_uri = " + chr(34) + code.get_text() + chr(34))
+-						enginecopy.close()
+-						enginecopy = open(DIR_USER + '/' + a + '/' + a + 'Screenlet.py','w')
+-						enginecopy.write(enginesave)
+-						enginecopy.close()
+-						screenlets.show_message (None,_("Web Application was successfully installed"))
+-						self.model.clear()
+-						self.load_screenlets()			
+-					except:	screenlets.show_error(None,_("Error installing!!!"))
+-				else:	screenlets.show_error(None,_("Please specify a name for the widget"))
+-			else:	screenlets.show_error(None,_("No HTML code found"))
+-		dialog.destroy()
+-
+-	def show_widget_converter(self):
+-		label1 = gtk.Label(_('Convert any webpage widget into a Screenlet.'))
+-		label2 = gtk.Label(_('Step 1 : Find the widget you want to convert'))
+-		label3 = gtk.Label(_('Step 2 : Copy and Paste the HTML from the widget in the box below'))
+-		label4 = gtk.Label(_('Step 3 : Give it a name in the box below and click on Ok to convert'))
+-		label5 = gtk.Label(_('The name of the widget'))
+-		code = gtk.Entry()
+-		name = gtk.Entry()
+-		h = gtk.HBox()
+-		h1 = gtk.HBox()
+-		self.combo1 = combo = gtk.combo_box_new_text()
+-		combo.append_text('Google Gadgets')
+-		combo.append_text('Yourminis Widgets')
+-		combo.append_text('SpringWidgets')
+-		combo.append_text('Widgetbox')
+-		combo.set_active(0)
+-		web = gtk.Button('Go to web page')
+-		web.connect('clicked', self.button_clicked, 'widgetsite')
+-    		label1.show()
+-    		label2.show()
+-    		label3.show()
+-    		label4.show()
+-    		label5.show()
+-		combo.show()
+-		name.show()
+-		web.show()
+-		h.show()
+-		h1.show()
+-		code.show()
+-		dialog = gtk.Dialog(_("Widget converter"),
+-                    self.window,
+-                    gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
+-                    (gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT,
+-                     gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
+-		#dialog.set_size_request(300, 500)
+-		dialog.vbox.pack_start(label1,False,False,20)
+-		dialog.vbox.pack_start(label2,True,False,5)
+-		h.pack_start(combo,True,True,5)
+-		h.pack_start(web,False,False,5)
+-		dialog.vbox.pack_start(h,False,False,5)
+-		dialog.vbox.pack_start(label3,False,False,10)
+-		dialog.vbox.pack_start(code,False,False,5)
+-		dialog.vbox.pack_start(label4,False,False,5)
+-		h1.pack_start(label5,False,False,5)			
+-		h1.pack_start(name,True,True,5)
+-		dialog.vbox.pack_start(h1,False,False,5)
+-		resp = dialog.run()
+-		ret = None
+-		if resp == gtk.RESPONSE_ACCEPT:
+-			if code.get_text() != '':
+-				if name.get_text() != '':
+-					try:
+-						a = name.get_text()
+-						a = a.replace(' ','')
+-						if os.path.isdir(DIR_USER + '/' + a):#found_path != None:
+-							if screenlets.show_question(None,(_("There is already a screenlet with that name installed\nDo you wish to continue?") )):
+-								pass
+-							else: 
+-								return False
+-						os.system('mkdir ' +DIR_USER + '/' + a)
+-						os.system('mkdir ' +DIR_USER + '/' + a + '/themes')
+-						os.system('mkdir ' +DIR_USER + '/' + a + '/themes/default')
+-						os.system('mkdir ' +DIR_USER + '/' + a + '/mozilla')
+-						f = open(DIR_USER + '/' + a  + '/' + 'index.html' , 'w')
+-						f.write(code.get_text())
+-						f.close()
+-						os.system('cp ' + screenlets.INSTALL_PREFIX + '/share/screenlets-manager/WidgetScreenlet.py ' +DIR_USER + '/' + a + '/' + a + 'Screenlet.py')
+-						os.system('cp ' + screenlets.INSTALL_PREFIX + '/share/screenlets-manager/widget.png ' +DIR_USER + '/' + a + '/icon.png')				
+-						os.system('cp ' + screenlets.INSTALL_PREFIX + '/share/screenlets-manager/widget.png ' +DIR_USER + '/' + a + '/themes/default')
+-						enginecopy = open(DIR_USER + '/' + a + '/' + a + 'Screenlet.py','r')
+-						enginesave = enginecopy.read()
+-						enginesave = enginesave.replace('WidgetScreenlet',a + 'Screenlet')
+-						enginecopy.close()
+-						enginecopy = open(DIR_USER + '/' + a + '/' + a + 'Screenlet.py','w')
+-						enginecopy.write(enginesave)
+-						enginecopy.close()
+-						screenlets.show_message (None,_("Widget was successfully converted"))
+-						self.model.clear()
+-						self.load_screenlets()			
+-					except:	screenlets.show_error(None,_("Error converting!!!"))
+-				else:	screenlets.show_error(None,_("Please specify a name for the widget"))		
+-			else:	screenlets.show_error(None,_("No HTML code found"))			
+-		dialog.destroy()
+-
+ 	def handle_screenlet_registered (self, name):
+ 		"""Callback for dbus-signal, called when a new screenlet gets 
+ 		registered within the daemon."""

@@ -1,0 +1,21 @@
+diff -Naur screenlets-0.1.7.orig/src/lib/utils.py screenlets-0.1.7/src/lib/utils.py
+--- screenlets-0.1.7.orig/src/lib/utils.py	2017-01-30 21:36:27.000000000 +0100
++++ screenlets-0.1.7/src/lib/utils.py	2017-06-24 21:37:59.383230449 +0200
+@@ -33,7 +33,7 @@
+ import subprocess
+ import commands
+ from HTMLParser import HTMLParser
+-from BeautifulSoup import BeautifulStoneSoup
++from bs4 import BeautifulSoup
+ from xdg.BaseDirectory import *
+ 
+ try:
+@@ -98,7 +98,7 @@
+ 	s = MLStripper()
+ 	s.feed(html)
+ 	no_html = s.get_data()
+-	decoded = BeautifulStoneSoup(no_html, convertEntities=BeautifulStoneSoup.HTML_ENTITIES)
++	decoded = BeautifulSoup(no_html).get_text()
+ 	result = decoded.encode("UTF-8")
+ 	return result.strip(" \n")
+ 

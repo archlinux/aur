@@ -1,0 +1,38 @@
+diff -Naur screenlets-0.1.7.orig/src/lib/__init__.py screenlets-0.1.7/src/lib/__init__.py
+--- screenlets-0.1.7.orig/src/lib/__init__.py	2018-09-07 05:15:53.772422000 +0200
++++ screenlets-0.1.7/src/lib/__init__.py	2018-09-07 05:33:33.317360251 +0200
+@@ -2429,7 +2429,6 @@
+ 			if name== 'width':
+ 				self.p_layout.set_width(width)
+ 			elif name == 'text':
+-				value = utils.html_to_pango(value)
+ 				self.p_layout.set_markup(value)
+ 				self.label.set_markup(value)
+ 				ink_rect, logical_rect = self.p_layout.get_pixel_extents()
+diff -Naur screenlets-0.1.7.orig/src/lib/utils.py screenlets-0.1.7/src/lib/utils.py
+--- screenlets-0.1.7.orig/src/lib/utils.py	2018-09-07 05:15:53.782423000 +0200
++++ screenlets-0.1.7/src/lib/utils.py	2018-09-07 05:32:37.545761868 +0200
+@@ -33,7 +33,6 @@
+ import subprocess
+ import commands
+ from HTMLParser import HTMLParser
+-from BeautifulSoup import BeautifulStoneSoup
+ from xdg.BaseDirectory import *
+ 
+ try:
+@@ -93,15 +92,6 @@
+     def get_data(self):
+         return ''.join(self.fed)
+ 
+-def html_to_pango (html):	
+-	"""Simple html to pango stripper."""
+-	s = MLStripper()
+-	s.feed(html)
+-	no_html = s.get_data()
+-	decoded = BeautifulStoneSoup(no_html, convertEntities=BeautifulStoneSoup.HTML_ENTITIES)
+-	result = decoded.encode("UTF-8")
+-	return result.strip(" \n")
+-
+ def is_manager_running_me():
+ 	"""checks if the one starting the screenlet is the screenlets manager"""
+ 	if str(sys.argv[0]).find('screenlets-manager') != -1:

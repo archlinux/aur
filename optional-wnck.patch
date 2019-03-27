@@ -1,0 +1,65 @@
+diff -Naur screenlets-0.1.7.orig/src/share/screenlets-manager/screenlets-manager.py screenlets-0.1.7/src/share/screenlets-manager/screenlets-manager.py
+--- screenlets-0.1.7.orig/src/share/screenlets-manager/screenlets-manager.py	2018-09-07 05:15:53.789089000 +0200
++++ screenlets-0.1.7/src/share/screenlets-manager/screenlets-manager.py	2018-09-07 05:27:31.226935452 +0200
+@@ -1208,32 +1208,37 @@
+ proc = os.popen("""ps axo "%p,%a" | grep "python.*screenlets-manager.py" | grep -v grep|cut -d',' -f1""").read()
+ procs = proc.split('\n')
+ import sys
+-import wnck
+ try:
+-	wnck.set_client_type(wnck.CLIENT_TYPE_PAGER)
+-except AttributeError:
+-	print "Error: Failed to set libwnck client type, window " \
+-				"activation may not work"
+-if len(procs) > 2:
+-	print "Manager already started"
+-	screen = wnck.screen_get_default()
+-	while gtk.events_pending():
+-		gtk.main_iteration()
+-	wins = screen.get_windows_stacked()
++	import wnck
++	try:
++		wnck.set_client_type(wnck.CLIENT_TYPE_PAGER)
++	except AttributeError:
++		print "Error: Failed to set libwnck client type, window " \
++					"activation may not work"
++	if len(procs) > 2:
++		print "Manager already started"
++		screen = wnck.screen_get_default()
++		while gtk.events_pending():
++			gtk.main_iteration()
++		wins = screen.get_windows_stacked()
++		
++		for win in wins:
++			name = win.get_name()
++			if name == gettext.gettext('Screenlets Manager'):
+ 	
+-	for win in wins:
+-		name = win.get_name()
+-		if name == gettext.gettext('Screenlets Manager'):
+-
+-			if win and win.is_active():
+-				sys.exit(1)
+-			elif win and win.is_minimized():
+-				win.unminimize(1)
+-			elif win and win.is_active() == False:
+-				win.activate(1)
+-
+-
+-	sys.exit(1)
++				if win and win.is_active():
++					sys.exit(1)
++				elif win and win.is_minimized():
++					win.unminimize(1)
++				elif win and win.is_active() == False:
++					win.activate(1)
++	
++	
++		sys.exit(1)
++except ImportError:
++	if len(procs) > 2:
++		print "Manager already started"
++		sys.exit(1)
+ 
+ 
+ app = ScreenletsManager()
