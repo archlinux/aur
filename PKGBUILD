@@ -3,19 +3,19 @@
 pkgbase=python-uproot
 _pkgbase=uproot
 pkgname=('python2-uproot' 'python-uproot')
-pkgver=3.2.12
+pkgver=3.4.15
 pkgrel=1
 pkgdesc="Minimalist CERN ROOT I/O in pure Python and Numpy"
 arch=('any')
-makedepends=('python2-setuptools' 'python2-pytest-runner'
-             'python-setuptools' 'python-pytest-runner')
+makedepends=('python2-cachetools' 'python2-setuptools' 'python2-pytest-runner'
+             'python-cachetools' 'python-setuptools' 'python-pytest-runner')
 checkdepends=('python2-pandas'
               'python-pandas')
 url="https://github.com/scikit-hep/uproot"
 license=('BSD')
 
 source=("${url}/archive/${pkgver}.zip")
-sha256sums=('84b7bddba5204711bbcce36a4af667b2aed66a91fa917e66e9a3fca2fbae2bef')
+sha256sums=('4d79f1d464ae7a85ddef425e5191b72f5ad7761e06ed777e36acd31e1a6cedb9')
 
 prepare() {
     cd "${srcdir}"
@@ -61,7 +61,6 @@ package_python2-uproot() {
     install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     install -D README.rst "${pkgdir}/usr/share/${pkgname}/README.rst"
-    rm "${pkgdir}/usr/README.rst"
 
     install -d "${pkgdir}/usr/share/doc/${pkgname}"
     cp -r docs "${pkgdir}/usr/share/doc/${pkgname}/"
@@ -81,7 +80,6 @@ package_python-uproot() {
     install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     install -D README.rst "${pkgdir}/usr/share/${pkgname}/README.rst"
-    rm "${pkgdir}/usr/README.rst"
 
     install -d "${pkgdir}/usr/share/doc/${pkgname}"
     cp -r docs "${pkgdir}/usr/share/doc/${pkgname}/"
