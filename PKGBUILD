@@ -9,7 +9,7 @@
 # ---------------------------------------------------------------
 
 pkgname=opencpn
-pkgver=4.8.8
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Open Source Chart Plotting / Marine Navigation"
 arch=('x86_64')
@@ -18,8 +18,8 @@ depends=('wxgtk3' 'gpsd' 'portaudio' 'tinyxml' 'hicolor-icon-theme')
 makedepends=('cmake')
 url="http://opencpn.org"
 install=opencpn.install
-source=("https://github.com/OpenCPN/OpenCPN/archive/v4.8.8.tar.gz")
-sha1sums=('faf58e324644856c1649a4dfe5a9e98f8c1d045b')
+source=("https://github.com/OpenCPN/OpenCPN/archive/v5.0.0.tar.gz")
+sha1sums=('9ef9ef76ccd94f2a970ef0689a487aec33b19125')
 
 build() {
   cd "OpenCPN-${pkgver}"
