@@ -2,11 +2,12 @@ pkgname=noice-git
 _pkgname=noice
 pkgver=0.8.r0.gae2cb6f
 pkgrel=1
-pkgdesc='Small file browser'
+pkgdesc='Small terminal file browser written in C'
 arch=('i686' 'x86_64' 'armv6h')
 url='http://git.2f30.org/noice/'
 license=('BSD')
 depends=('ncurses')
+makedepends=('git')
 source=('git://git.2f30.org/noice'
         'config.h')
 md5sums=('SKIP' 'SKIP')
