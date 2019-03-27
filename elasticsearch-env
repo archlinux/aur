@@ -1,0 +1,50 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+ES_HOME=/usr/share/elasticsearch
+
+# now set the classpath
+ES_CLASSPATH="$ES_HOME/lib/*"
+
+# now set the path to java
+if [ -x "$JAVA_HOME/bin/java" ]; then
+  JAVA="$JAVA_HOME/bin/java"
+else
+  set +e
+  JAVA=`which java`
+  set -e
+fi
+
+if [ ! -x "$JAVA" ]; then
+  echo "could not find java; set JAVA_HOME or ensure java is in PATH"
+  exit 1
+fi
+
+# do not let JAVA_TOOL_OPTIONS slip in (as the JVM does by default)
+if [ ! -z "$JAVA_TOOL_OPTIONS" ]; then
+  echo "warning: ignoring JAVA_TOOL_OPTIONS=$JAVA_TOOL_OPTIONS"
+  unset JAVA_TOOL_OPTIONS
+fi
+
+# JAVA_OPTS is not a built-in JVM mechanism but some people think it is so we
+# warn them that we are not observing the value of $JAVA_OPTS
+if [ ! -z "$JAVA_OPTS" ]; then
+  echo -n "warning: ignoring JAVA_OPTS=$JAVA_OPTS; "
+  echo "pass JVM parameters via ES_JAVA_OPTS"
+fi
+
+# check the Java version
+"$JAVA" -cp "$ES_CLASSPATH" org.elasticsearch.tools.java_version_checker.JavaVersionChecker
+
+export HOSTNAME=$HOSTNAME
+
+if [ -z "$ES_PATH_CONF" ]; then ES_PATH_CONF=/etc/elasticsearch; fi
+
+if [ -z "$ES_PATH_CONF" ]; then
+  echo "ES_PATH_CONF must be set to the configuration path"
+  exit 1
+fi
+
+ES_DISTRIBUTION_FLAVOR=default
+ES_DISTRIBUTION_TYPE=tar
