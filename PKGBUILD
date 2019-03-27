@@ -5,7 +5,7 @@ _destname="/usr/share/icons/"
 _pkggithub="https://github.com/erikdubois/Numix-Circle-Arc"
 pkgdesc="Install Numix and Numix Circle. Numix icons combined with the Arc folders"
 pkgver=9.6
-pkgrel=20
+pkgrel=22
 arch=('any')
 url="${pkggithub}"
 license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
@@ -16,8 +16,6 @@ conflicts=("${pkgname}")
 options=(!strip !emptydirs)
 source=("${_pkgname}"::git+"${_pkggithub}")
 sha256sums=('SKIP')
-
-
 package() {
   rm -f "${srcdir}/${_pkgname}/"README.md
   rm -f "${srcdir}/${_pkgname}/"git-v*
