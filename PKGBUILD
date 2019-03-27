@@ -2,9 +2,9 @@
 
 pkgname=nginx-mainline-mod-nchan
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 
-_nginxver=1.15.9
+_nginxver=1.15.10
 
 pkgdesc='nchan nginx module'
 arch=('i686' 'x86_64')
@@ -13,11 +13,9 @@ url="https://nchan.io/"
 license=('MIT')
 
 source=(
-    http://nginx.org/download/nginx-$_nginxver.tar.gz
     https://github.com/slact/nchan/archive/v${pkgver}.tar.gz
+    http://nginx.org/download/nginx-$_nginxver.tar.gz
 )
-sha256sums=('e4cfba989bba614cd53f3f406ac6da9f05977d6b1296e5d20a299f10c2d7ae43'
-            '45d5dd0411238eee1694e36a476c33d88d83f83971316d2e00bc0bf46eeb7a4f')
 
 build() {
     cd "$srcdir"/nginx-$_nginxver
@@ -33,3 +31,5 @@ package() {
     done
 }
 
+sha256sums=('45d5dd0411238eee1694e36a476c33d88d83f83971316d2e00bc0bf46eeb7a4f'
+            'b865743abd52bce4745d0f7e7fedde3cafbaaab617b022c105e3e4e456537c3c')
