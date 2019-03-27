@@ -5,14 +5,17 @@
 # Contributor: Sebastian Voecking < voeck at web dot de >
 
 pkgname=root5
-pkgver=5.34.36
-pkgrel=6
+pkgver=5.34.38
+pkgrel=1
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
 url='http://root.cern.ch'
 license=('LGPL2.1')
 provides=('root' 'root5')
 conflicts=('root')
+makedepends=('gcc-fortran'
+             'pythia8'
+             'xrootd')
 depends=('cfitsio'
          'fftw'
          'ftgl'
@@ -27,22 +30,22 @@ depends=('cfitsio'
          'postgresql-libs'
          'python2')
 optdepends=('gcc-fortran: Enable the Fortran components of ROOT'
-            'pythia: Pythia8 event generator support'
+            'pythia8: Pythia8 event generator support'
             'tcsh: Legacy CSH support'
             'xrootd: XRootD data access support')
 install='root.install'
 options=('!emptydirs')
 source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
-        'enable_new_gcc.patch'
         'root.sh'
         'rootd'
         'root.xml')
-sha256sums=('fc868e5f4905544c3f392cc9e895ef5571a08e48682e7fe173bd44c0ba0c7dcd'
-            'dbaa87782fbd6ad0b41dd1ada6c443b26740f58bd86696d7fadadf84771e6079'
+sha256sums=('2c3bda69601d94836bdd88283a6585b4774eafc813deb6aa348df0af2922c4d2'
             '9d1f8e7ad923cb5450386edbbce085d258653c0160419cdd6ff154542cc32bd7'
             '3c45b03761d5254142710b7004af0077f18efece7c95511910140d0542c8de8a'
             '50c08191a5b281a39aa05ace4feb8d5405707b4c54a5dcba061f954649c38cb0')
-
+get_py2ver () {
+    python2 -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
+}
 prepare() {
     cd "${srcdir}/root"
 
@@ -61,9 +64,6 @@ prepare() {
 
     # Horid glibc hack
     sed -e 's/__USE_BSD/__USE_MISC/' -i core/base/src/TTimeStamp.cxx
-
-    ## https://sft.its.cern.ch/jira/browse/ROOT-8180
-    patch -p1 < "${srcdir}/enable_new_gcc.patch"
 }
 
 build() {
@@ -92,7 +92,7 @@ build() {
         --with-python-libdir=/usr/lib \
         "${sys_libs[@]}"
 
-    make ${MAKEFLAGS}
+    make
 }
 
 package() {
@@ -100,8 +100,6 @@ package() {
 
     make DESTDIR="${pkgdir}" install
 
-    install -D "${srcdir}/root.sh" \
-        "${pkgdir}/etc/profile.d/root.sh"
     install -D "${srcdir}/rootd" \
         "${pkgdir}/etc/rc.d/rootd"
     install -D -m644 "${srcdir}/root.xml" \
@@ -114,6 +112,12 @@ package() {
 
     install -D -m644 "${srcdir}/root/build/package/debian/root-system-bin.png" \
         "${pkgdir}/usr/share/icons/hicolor/48x48/apps/root-system-bin.png"
+
+    # Python config
+    install -d "${pkgdir}"/usr/lib/python$(get_py2ver)/site-packages
+    ln -s "/usr/lib/root" "${pkgdir}"/usr/lib/python$(get_py2ver)/site-packages/
+    install -d "${pkgdir}"/usr/lib/python$(get_py2ver)/site-packages/root-${pkgver}-py2.7.egg-info
+    echo 'root' "${pkgdir}"/usr/lib/python$(get_py2ver)/site-packages/root-${pkgver}-py2.7.egg-info/top_level.txt
 
     # use a file that pacman can track instead of adding directly to ld.so.conf
     install -d "${pkgdir}/etc/ld.so.conf.d"

@@ -3,8 +3,9 @@ post_install () {
     echo "if the optional dependencies are installed before"
     echo "the package compilation has started. Please reco-"
     echo "mpile as needed."
+    post_upgrade
 }
 
 post_upgrade () {
-    post_install
+    ldconfig -r .
 }
