@@ -69,7 +69,8 @@ prepare() {
 
   # clutter-actor: Add detail to captured-event signal [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/283
-  git cherry-pick -n a20a0d7a
+  # requires gnome-shell-performance with the patch manually enabled there as well
+  # git cherry-pick -n a20a0d7a
 
   # clutter: Deliver events sooner when possible
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/168
