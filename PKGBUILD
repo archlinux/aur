@@ -12,7 +12,7 @@ options=('!strip')
 source=(
 	"http://www.objectaid.com/update/current/objectaid-$pkgver.zip"
 )
-sha256sums=('7b83fd645f326e31e5188c8e602f51381c14e83ab07d03aadd4cea4f92e74f61')
+sha256sums=('071545f413d78250bf74ec2d40a85c05509328804901471a261c5b652cebad57')
 
 package() {
 	_dest=$pkgdir/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
