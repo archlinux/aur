@@ -17,7 +17,7 @@ depends=('vapoursynth'
          'vapoursynth-plugin-mvtools-git'
          'vapoursynth-plugin-temporalsoften-git'
          'vapoursynth-plugin-tcanny-git'
-         'vapoursynth-plugin-sangnom-hg'
+         'vapoursynth-plugin-sangnom'
          'vapoursynth-plugin-havsfunc-git'
          )
 makedepends=('git')
