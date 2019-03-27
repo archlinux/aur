@@ -1,7 +1,7 @@
 # Maintainer: Niklas Krafczyk <krafczyk.n at gmail dot com>
 pkgname=klee
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Symbolic virtual machine built on top of the LLVM compiler infrastructure"
 arch=('x86_64')
@@ -12,15 +12,14 @@ depends=('gperftools'
          'z3'
          'libcap'
          'python'
-         'llvm-libs>=3.4')
+         'llvm-libs>=3.4'
+         'klee-uclibc')
 makedepends=('llvm>=3.4'
              'clang'
              'cmake'
              'git')
 checkdepends=()
-optdepends=('cvc4'
-            'yices'
-            'stp')
+optdepends=()
 provides=('klee=2.0')
 conflicts=()
 replaces=()
