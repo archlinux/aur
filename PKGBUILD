@@ -1,11 +1,12 @@
-# Maintainer: Vincent Bernardoff <vb@luminar.eu.org>
+# Maintainer:
+# Contributor: Vincent Bernardoff <vb@luminar.eu.org>
 
 pkgname=clingo
 groups=('potassco')
 pkgver=5.1.0
 pkgrel=1
 pkgdesc="Grounding tools for (disjunctive) logic programs."
-arch=('x86_64' 'i686' 'armv6h' 'armv7h')
+arch=('x86_64')
 url="https://potassco.org"
 license=('GPL3')
 depends=()
