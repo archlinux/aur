@@ -16,6 +16,7 @@ pkgbase = polibeepsync
 	depends = python-pyparsing
 	depends = python-signalslot
 	depends = python-contexter
+	depends = qt5-declarative
 	provides = polibeepsync
 	conflicts = polibeepsync
 	source = git+https://github.com/Jacotsu/polibeepsync.git#tag=0.4.1
