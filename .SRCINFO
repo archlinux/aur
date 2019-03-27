@@ -1,8 +1,10 @@
 pkgbase = stress++
+	pkgdesc = A small, lightweight stress-testing tool for the CPU
 	pkgver = 0.1.2
 	pkgrel = 1
+	url = https://github.com/Code-Log/stress-plug-plus
 	arch = any
-	license = GPL
+	license = GPL3
 
 pkgname = stress++
 

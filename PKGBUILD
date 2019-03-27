@@ -2,8 +2,10 @@
 pkgname=stress++
 pkgver=0.1.2
 pkgrel=1
-license=('GPL')
+license=('GPL3')
 arch=('any')
+pkgdesc="A small, lightweight stress-testing tool for the CPU"
+url="https://github.com/Code-Log/stress-plug-plus"
 
 prepare() {
 
