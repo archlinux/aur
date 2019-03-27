@@ -1,0 +1,154 @@
+From b669d9e6428dfc231ced16c56669f35dfda0754e Mon Sep 17 00:00:00 2001
+From: Oksana Shadura <oksana.shadura@cern.ch>
+Date: Tue, 29 Jan 2019 20:42:39 +0100
+Subject: [PATCH] [ROOT-9924] Fixing compile time installation of clad in
+ CMAKE_INSTALL_PATH
+
+[ROOT-9924] Installing headers for clad
+---
+ CMakeLists.txt                                |  8 +++-
+ interpreter/CMakeLists.txt                    | 13 ------
+ .../cling/tools/plugins/clad/CMakeLists.txt   | 41 +++++++++++--------
+ 3 files changed, 30 insertions(+), 32 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d7fa80406a6..74d24d4419c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -139,7 +139,7 @@ if (build_timing)
+   # FIXME: This currently will override the use of ccache if -Dbuild_timing=On -Dccache=On is passed.
+   set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CMAKE_COMMAND} -E time")
+   set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK "${CMAKE_COMMAND} -E time")
+-  #set_property(GLOBAL PROPERTY RULE_LAUNCH_CUSTOM "${CMAKE_COMMAND} -E time") 
++  #set_property(GLOBAL PROPERTY RULE_LAUNCH_CUSTOM "${CMAKE_COMMAND} -E time")
+ endif()
+ 
+ #---Enable CTest package -----------------------------------------------------------------------
+@@ -472,6 +472,12 @@ set(root_kernel_file kernel.json)
+ configure_file(etc/${root_kernel_dir}/${root_kernel_file}.in etc/${root_kernel_dir}/${root_kernel_file})
+ install(FILES ${CMAKE_BINARY_DIR}/etc/${root_kernel_dir}/${root_kernel_file} DESTINATION ${CMAKE_INSTALL_SYSCONFDIR}/${root_kernel_dir})
+ 
++#---install clad header files-------------------------------------------------------------------
++if(clad)
++   install(DIRECTORY ${CMAKE_BINARY_DIR}/etc/cling/plugins/
++      DESTINATION ${CMAKE_INSTALL_SYSCONFDIR}/cling/plugins)
++endif()
++
+ #---Configure Testing using CTest----------------------------------------------------------------
+ configure_file(${CMAKE_SOURCE_DIR}/cmake/modules/CTestCustom.cmake ${CMAKE_BINARY_DIR} COPYONLY)
+ if(testing)
+diff --git a/interpreter/CMakeLists.txt b/interpreter/CMakeLists.txt
+index ffb89181141..7345246286e 100644
+--- a/interpreter/CMakeLists.txt
++++ b/interpreter/CMakeLists.txt
+@@ -29,19 +29,6 @@ set(LLVM_TOOL_LLVM_AR_BUILD OFF CACHE BOOL "")
+ set(CLANG_TOOL_CLANG_OFFLOAD_BUNDLER_BUILD OFF CACHE BOOL "")
+ set(LLVM_FORCE_USE_OLD_TOOLCHAIN ON CACHE BOOL "")
+ 
+-# FIXME: We cannot use etcdir or prefix from RootConfiguration.cmake because it
+-# is included very late.
+-if(gnuinstall)
+-  set(prefix ${CMAKE_INSTALL_PREFIX})
+-else()
+-  set(prefix ${ROOTSYS})
+-endif()
+-if(IS_ABSOLUTE ${CMAKE_INSTALL_SYSCONFDIR})
+-  set(etcdir ${CMAKE_INSTALL_SYSCONFDIR})
+-else()
+-  set(etcdir ${prefix}/${CMAKE_INSTALL_SYSCONFDIR})
+-endif()
+-set(CLING_PLUGIN_INSTALL_PREFIX "${etcdir}/cling/plugins/" CACHE STRING "" FORCE)
+ set(LLVM_DIR "${CMAKE_BINARY_DIR}/interpreter/llvm/src")
+ if (clad)
+   set(CLING_BUILD_PLUGINS ON)
+diff --git a/interpreter/cling/tools/plugins/clad/CMakeLists.txt b/interpreter/cling/tools/plugins/clad/CMakeLists.txt
+index b6f53fb37b9..e2db703248c 100644
+--- a/interpreter/cling/tools/plugins/clad/CMakeLists.txt
++++ b/interpreter/cling/tools/plugins/clad/CMakeLists.txt
+@@ -6,12 +6,19 @@
+ # LICENSE.TXT for details.
+ #-------------------------------------------------------------------------------
+ 
+-set(_clad_byproduct_binary_dir
+-  ${CMAKE_CURRENT_BINARY_DIR}/clad-prefix/src/clad-build/)
+-set(CLADDIFFERENTIATOR_LIB
+-  ${_clad_byproduct_binary_dir}/lib/Differentiator/${CMAKE_STATIC_LIBRARY_PREFIX}cladDifferentiator${CMAKE_STATIC_LIBRARY_SUFFIX}
+-  ${_clad_byproduct_binary_dir}/tools/${CMAKE_STATIC_LIBRARY_PREFIX}cladPlugin${CMAKE_STATIC_LIBRARY_SUFFIX}
++set(clad_install_dir ${CMAKE_BINARY_DIR}/etc/cling/)
++# Specify include dirs for clad
++set(CLAD_INCLUDE_DIRS ${clad_install_dir})
++# Clad Libraries
++set(_CLAD_LIBRARY_PATH ${clad_install_dir}/plugins/lib)
++
++# build byproducts only needed by Ninja
++if("${CMAKE_GENERATOR}" STREQUAL "Ninja")
++  set(CLAD_BYPRODUCTS
++     ${_CLAD_LIBRARY_PATH}/${CMAKE_STATIC_LIBRARY_PREFIX}cladPlugin${CMAKE_STATIC_LIBRARY_SUFFIX}
++    ${_CLAD_LIBRARY_PATH}/${CMAKE_STATIC_LIBRARY_PREFIX}cladDifferentiator${CMAKE_STATIC_LIBRARY_SUFFIX}
+   )
++endif()
+ 
+ if(MSVC)
+   if (winrtdebug)
+@@ -25,14 +32,16 @@ if(MSVC)
+     GIT_TAG v0.4
+     UPDATE_COMMAND ""
+     CMAKE_ARGS -G ${CMAKE_GENERATOR} -DCLAD_BUILD_STATIC_ONLY=ON
+-               -DCMAKE_INSTALL_PREFIX=${CLING_PLUGIN_INSTALL_PREFIX}
++               -DCMAKE_INSTALL_PREFIX=${clad_install_dir}/plugins
+                -DCLAD_PATH_TO_LLVM_BUILD=${LLVM_BINARY_DIR}
+                -DCLANG_INCLUDE_DIRS=${CLANG_INCLUDE_DIRS}
+     BUILD_COMMAND ${CMAKE_COMMAND} --build . --config ${_clad_build_type}
++    INSTALL_COMMAND ${CMAKE_COMMAND} --build . --config ${_clad_build_type} --target install
+     # Wrap download, configure and build steps in a script to log output
+     LOG_DOWNLOAD ON
+     LOG_CONFIGURE ON
+     LOG_BUILD ON
++    LOG_INSTALL ON
+     # We need the target clangBasic to be built before building clad. However, we
+     # support building prebuilt clang and adding clangBasic breaks this case.
+     # Delegate the dependency resolution to the clingInterpreter target (which
+@@ -58,16 +67,19 @@ else()
+                -DCMAKE_C_FLAGS=${CMAKE_C_FLAGS}
+                -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
+                -DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}
+-               -DCMAKE_INSTALL_PREFIX=${CLING_PLUGIN_INSTALL_PREFIX}
++               -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
+                -DCLAD_PATH_TO_LLVM_BUILD=${LLVM_BINARY_DIR}
+                -DCLANG_INCLUDE_DIRS=${CLANG_INCLUDE_DIRS}
+                -DCLAD_BUILD_STATIC_ONLY=ON
+                ${_clad_extra_cmake_args}
+-    BUILD_BYPRODUCTS ${CLADDIFFERENTIATOR_LIB}
++    INSTALL_COMMAND env DESTDIR=${CMAKE_BINARY_DIR}/plugins ${CMAKE_COMMAND} --build . --target install
++               COMMAND  ${CMAKE_COMMAND} -E copy_directory ${CMAKE_BINARY_DIR}/plugins/${CMAKE_INSTALL_PREFIX}/ ${clad_install_dir}/plugins
++    BUILD_BYPRODUCTS ${CLAD_BYPRODUCTS}
+     # Wrap download, configure and build steps in a script to log output
+     LOG_DOWNLOAD ON
+     LOG_CONFIGURE ON
+     LOG_BUILD ON
++    LOG_INSTALL ON
+     # We need the target clangBasic to be built before building clad. However, we
+     # support building prebuilt clang and adding clangBasic breaks this case.
+     # Delegate the dependency resolution to the clingInterpreter target (which
+@@ -76,18 +88,11 @@ else()
+   )
+ endif()
+ 
+-# Specify include dirs for clad
+-ExternalProject_Get_Property(clad source_dir)
+-set(CLAD_INCLUDE_DIRS ${source_dir}/clad/include/)
+-
+-# Libraries
+-ExternalProject_Get_Property(clad binary_dir)
+-set(_CLAD_LIBRARY_PATH ${binary_dir})
+-
+ # Register cladPlugin, cladDifferentiator
+ foreach (lib cladPlugin cladDifferentiator)
+   add_library(${lib} IMPORTED STATIC GLOBAL)
+   add_dependencies(${lib} clad)
+ endforeach()
+-set_property(TARGET cladPlugin PROPERTY IMPORTED_LOCATION ${_CLAD_LIBRARY_PATH}/tools/${_clad_build_type}/${CMAKE_STATIC_LIBRARY_PREFIX}cladPlugin${CMAKE_STATIC_LIBRARY_SUFFIX})
+-set_property(TARGET cladDifferentiator PROPERTY IMPORTED_LOCATION ${_CLAD_LIBRARY_PATH}/lib/Differentiator/${_clad_build_type}/${CMAKE_STATIC_LIBRARY_PREFIX}cladDifferentiator${CMAKE_STATIC_LIBRARY_SUFFIX})
++
++set_property(TARGET cladPlugin PROPERTY IMPORTED_LOCATION ${_CLAD_LIBRARY_PATH}/${CMAKE_STATIC_LIBRARY_PREFIX}cladPlugin${CMAKE_STATIC_LIBRARY_SUFFIX})
++set_property(TARGET cladDifferentiator PROPERTY IMPORTED_LOCATION ${_CLAD_LIBRARY_PATH}/${CMAKE_STATIC_LIBRARY_PREFIX}cladDifferentiator${CMAKE_STATIC_LIBRARY_SUFFIX})

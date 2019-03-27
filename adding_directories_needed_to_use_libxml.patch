@@ -1,0 +1,22 @@
+From fa8d620472891f1f5a30a616469dea8b65453fe6 Mon Sep 17 00:00:00 2001
+From: Henry Fredrick Schreiner <henry.fredrick.schreiner@cern.ch>
+Date: Tue, 5 Feb 2019 14:41:51 +0100
+Subject: [PATCH] Adding directories needed to use LibXML
+
+---
+ io/xmlparser/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/io/xmlparser/CMakeLists.txt b/io/xmlparser/CMakeLists.txt
+index 09f4ba5d4dc..45108058136 100644
+--- a/io/xmlparser/CMakeLists.txt
++++ b/io/xmlparser/CMakeLists.txt
+@@ -3,7 +3,7 @@
+ # @author Pere Mato, CERN
+ ############################################################################
+ 
+-include_directories(${LIBXML2_INCLUDE_DIR})
++include_directories(${LIBXML2_INCLUDE_DIR} ${LIBXML2_INCLUDE_DIRS})
+ add_definitions(${LIBXML2_DEFINITIONS})
+ 
+ if(WIN32)
