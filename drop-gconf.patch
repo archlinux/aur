@@ -1,0 +1,490 @@
+diff -Naur lat-1.2.4.orig/configure.ac lat-1.2.4/configure.ac
+--- lat-1.2.4.orig/configure.ac	2012-11-18 10:48:06.000000000 +0100
++++ lat-1.2.4/configure.ac	2018-09-03 00:58:14.508472772 +0200
+@@ -28,7 +28,6 @@
+ 
+ PKG_CHECK_MODULES(GTKSHARP,
+ 		  gtk-sharp-2.0 >= $GTKSHARP_REQUIRED \
+-		  gconf-sharp-2.0 >= $GTKSHARP_REQUIRED \
+ 		  glade-sharp-2.0 >= $GTKSHARP_REQUIRED)
+ 
+ AC_SUBST(GTKSHARP_LIBS)
+diff -Naur lat-1.2.4.orig/lat/LdapTreeView.cs lat-1.2.4/lat/LdapTreeView.cs
+--- lat-1.2.4.orig/lat/LdapTreeView.cs	2012-01-09 21:24:10.000000000 +0100
++++ lat-1.2.4/lat/LdapTreeView.cs	2018-09-03 01:11:14.148828656 +0200
+@@ -73,8 +73,6 @@
+ 		Gtk.ToolButton _newButton = null;
+ 		Gtk.ToolButton _deleteButton = null;
+ 
+-		int browserSelectionMethod = 0;
+-
+ 		enum TreeCols { Icon, DN, RDN };
+ 
+ 		public event dnSelectedHandler dnSelected;
+@@ -143,7 +141,6 @@
+ 			this.RowActivated += new RowActivatedHandler (OnRowActivated);
+ 			this.RowCollapsed += new RowCollapsedHandler (ldapRowCollapsed);
+ 			this.RowExpanded += new RowExpandedHandler (ldapRowExpanded);
+-			this.Selection.Changed += OnSelectionChanged;
+ 
+ 			Gtk.Drag.DestSet (this, DestDefaults.All, _targetsTable,
+ 					Gdk.DragAction.Copy);
+@@ -263,33 +260,8 @@
+ 			return null;
+ 		}
+ 		
+-		void OnSelectionChanged (object o, EventArgs args)
+-		{
+-			if (this.BrowserSelectionMethod == 2)
+-				return;
+-
+-			Gtk.TreeIter iter;
+-			Gtk.TreeModel model;
+-			
+-			if (this.Selection.GetSelected (out model, out iter))  {
+-					
+-				string dn = (string) model.GetValue (iter, (int)TreeCols.DN);				
+-				string serverName = FindServerName (iter, model);
+-				
+-				if (dn.Equals (serverName)) {
+-					DispatchDNSelectedEvent (dn, true, serverName);
+-					return;
+-				}
+-
+-				DispatchDNSelectedEvent (dn, false, serverName);
+-			}
+-		}
+-
+ 		void OnRowActivated (object o, RowActivatedArgs args)
+ 		{
+-			if (this.BrowserSelectionMethod == 1)
+-				return;
+-		
+ 			TreePath path = args.Path;
+ 			TreeIter iter;
+ 			
+@@ -697,11 +669,5 @@
+ 
+ 			Log.Debug ("END OnDragDataReceived");
+ 		}
+-		
+-		public int BrowserSelectionMethod
+-		{
+-			get { return browserSelectionMethod; }
+-			set { browserSelectionMethod = value; }
+-		}
+ 	}
+ }
+diff -Naur lat-1.2.4.orig/lat/Preferences.cs lat-1.2.4/lat/Preferences.cs
+--- lat-1.2.4.orig/lat/Preferences.cs	2012-01-09 21:24:10.000000000 +0100
++++ lat-1.2.4/lat/Preferences.cs	2018-09-03 00:55:27.105578468 +0200
+@@ -24,81 +24,6 @@
+ 
+ namespace lat
+ {
+-	public class Preferences
+-	{
+-		public const string MAIN_WINDOW_MAXIMIZED = "/apps/lat/ui/maximized";
+-
+-		public const string MAIN_WINDOW_X = "/apps/lat/ui/main_window_x";
+-		public const string MAIN_WINDOW_Y = "/apps/lat/ui/main_window_y";
+-		public const string MAIN_WINDOW_WIDTH = "/apps/lat/ui/main_window_width";
+-		public const string MAIN_WINDOW_HEIGHT = "/apps/lat/ui/main_window_height";
+-		public const string MAIN_WINDOW_HPANED = "/apps/lat/ui/main_window_hpaned";
+-
+-		public const string BROWSER_SELECTION = "/apps/lat/ui/browser_selection";
+-
+-		static GConf.Client client;
+-		static GConf.NotifyEventHandler changed_handler;
+-
+-		public static GConf.Client Client 
+-		{
+-			get {
+-				if (client == null) {
+-					client = new GConf.Client ();
+-
+-					changed_handler = new GConf.NotifyEventHandler (OnSettingChanged);
+-					client.AddNotify ("/apps/lat", changed_handler);
+-				}
+-				return client;
+-			}
+-		}
+-
+-		public static object GetDefault (string key)
+-		{
+-			switch (key) 
+-			{
+-				case MAIN_WINDOW_X:
+-				case MAIN_WINDOW_Y:
+-				case MAIN_WINDOW_HEIGHT:
+-				case MAIN_WINDOW_WIDTH:
+-				case MAIN_WINDOW_HPANED:
+-					return null;
+-					
+-				case BROWSER_SELECTION:
+-					return 2;
+-			}
+-
+-			return null;
+-		}
+-
+-		public static object Get (string key)
+-		{
+-			try {
+-				return Client.Get (key);
+-			} catch (GConf.NoSuchKeyException) {
+-				object default_val = GetDefault (key);
+-
+-				if (default_val != null)
+-					Client.Set (key, default_val);
+-
+-				return default_val;
+-			}
+-		}
+-
+-		public static void Set (string key, object value)
+-		{
+-			Client.Set (key, value);
+-		}
+-
+-		public static event GConf.NotifyEventHandler SettingChanged;
+-
+-		static void OnSettingChanged (object sender, GConf.NotifyEventArgs args)
+-		{
+-			if (SettingChanged != null) {
+-				SettingChanged (sender, args);
+-			}
+-		}
+-	}
+-	
+ 	public class PreferencesDialog
+ 	{
+ 		Glade.XML ui;
+@@ -129,8 +54,6 @@
+ 
+ 			UpdateProfileList ();
+ 					
+-			LoadPreference (Preferences.BROWSER_SELECTION);
+-					
+ 			preferencesDialog.Icon = Global.latIcon;
+ 			preferencesDialog.Resize (300, 400);			
+ 			preferencesDialog.Run ();
+@@ -151,26 +74,6 @@
+ 				profileStore.AppendValues (s);
+ 		}
+ 
+-		void LoadPreference (String key)
+-		{
+-			object val = Preferences.Get (key);
+-
+-			if (val == null)
+-				return;
+-			
+-			switch (key) {
+-				
+-			case Preferences.BROWSER_SELECTION:
+-				int b = (int) val;
+-				if (b == 1)
+-					browserSingleClickButton.Active = true;
+-				else if (b == 2)
+-					browserDoubleClickButton.Active = true;
+-					
+-				break;
+-			}
+-		}
+-
+ 		string GetSelectedProfileName ()
+ 		{
+ 			TreeIter iter;
+@@ -225,14 +128,6 @@
+ 			}
+ 		}
+ 				
+-		public void OnDoubleClickToggled (object o, EventArgs args)
+-		{
+-			if (browserSingleClickButton.Active)
+-				Preferences.Set (Preferences.BROWSER_SELECTION, 1);
+-			else
+-				Preferences.Set (Preferences.BROWSER_SELECTION, 2);
+-		}
+-		
+ 		public void OnHelpClicked (object o, EventArgs args)
+ 		{
+ 			try {
+diff -Naur lat-1.2.4.orig/lat/SelectContainerDialog.cs lat-1.2.4/lat/SelectContainerDialog.cs
+--- lat-1.2.4.orig/lat/SelectContainerDialog.cs	2012-01-09 21:24:10.000000000 +0100
++++ lat-1.2.4/lat/SelectContainerDialog.cs	2018-09-03 00:55:58.322770395 +0200
+@@ -41,7 +41,6 @@
+ 
+ 			_ldapTreeview = new LdapTreeView (parent, connection);
+ 			_ldapTreeview.dnSelected += new dnSelectedHandler (ldapDNSelected);
+-			_ldapTreeview.BrowserSelectionMethod = (int)Preferences.Get (Preferences.BROWSER_SELECTION);
+ 
+ 			browserScrolledWindow.AddWithViewport (_ldapTreeview);
+ 			browserScrolledWindow.Show ();
+diff -Naur lat-1.2.4.orig/lat/Window.cs lat-1.2.4/lat/Window.cs
+--- lat-1.2.4.orig/lat/Window.cs	2012-04-10 13:50:08.000000000 +0200
++++ lat-1.2.4/lat/Window.cs	2018-09-03 00:53:03.583268121 +0200
+@@ -133,15 +133,6 @@
+ 			Gdk.Pixbuf dirIcon = Gdk.Pixbuf.LoadFromResource ("x-directory-remote-server.png");
+ 			mainWindow.Icon = dirIcon;
+ 			
+-			// Restore window positions
+-			LoadPreference (Preferences.MAIN_WINDOW_WIDTH);
+-			LoadPreference (Preferences.MAIN_WINDOW_X);
+-			LoadPreference (Preferences.MAIN_WINDOW_MAXIMIZED);
+-			LoadPreference (Preferences.MAIN_WINDOW_HPANED);
+-
+-			// Watch for any changes
+-			Preferences.SettingChanged += OnPreferencesChanged;
+-
+ 			// Setup views
+ 			viewsTreeView = new ViewsTreeView ();
+ 			viewsTreeView.ViewSelected += new ViewSelectedHandler (OnViewSelected);
+@@ -154,8 +145,6 @@
+ 			browserScrolledWindow.AddWithViewport (ldapTreeView);
+ 			browserScrolledWindow.Show ();
+ 
+-			LoadPreference (Preferences.BROWSER_SELECTION);
+-
+ 			// Setup schema browser
+ 			schemaTreeview = new SchemaTreeView (mainWindow);
+ 			schemaTreeview.schemaSelected += new schemaSelectedHandler (OnSchemaDNSelected);
+@@ -278,52 +267,6 @@
+ 			return conn;
+ 		}
+ 
+-		void LoadPreference (String key)
+-		{
+-			object val = Preferences.Get (key);
+-
+-			if (val == null) {
+-
+-				if (key == Preferences.MAIN_WINDOW_HPANED)
+-					hpaned1.Position = 250;
+-
+-				return;
+-			}
+-			
+-			Log.Debug ("Setting {0} to {1}", key, val);
+-
+-			switch (key) {
+-			case Preferences.MAIN_WINDOW_MAXIMIZED:
+-				if ((bool) val)
+-					mainWindow.Maximize ();
+-				else
+-					mainWindow.Unmaximize ();
+-				break;
+-
+-			case Preferences.MAIN_WINDOW_X:
+-			case Preferences.MAIN_WINDOW_Y:
+-				mainWindow.Move((int) Preferences.Get(Preferences.MAIN_WINDOW_X),
+-						(int) Preferences.Get(Preferences.MAIN_WINDOW_Y));
+-				break;
+-			
+-			case Preferences.MAIN_WINDOW_WIDTH:
+-			case Preferences.MAIN_WINDOW_HEIGHT:
+-				mainWindow.SetDefaultSize((int) Preferences.Get(Preferences.MAIN_WINDOW_WIDTH),
+-						(int) Preferences.Get(Preferences.MAIN_WINDOW_HEIGHT));
+-
+-				mainWindow.ReshowWithInitialSize();
+-				break;
+-
+-			case Preferences.MAIN_WINDOW_HPANED:
+-				hpaned1.Position = (int) Preferences.Get (Preferences.MAIN_WINDOW_HPANED);
+-				break;
+-				
+-			case Preferences.BROWSER_SELECTION:
+-				ldapTreeView.BrowserSelectionMethod = (int) val; 
+-				break;				
+-			}
+-		}
+-
+ 		void SetBrowserTooltips ()
+ 		{
+ 			newMenuToolButton.TooltipText = "Create a new directory entry";
+@@ -880,23 +823,6 @@
+ 
+ 		void Close ()
+ 		{
+-			int x, y, width, height;
+-			mainWindow.GetPosition (out x, out y);
+-			mainWindow.GetSize (out width, out height);
+-
+-			bool maximized = ((mainWindow.GdkWindow.State & Gdk.WindowState.Maximized) > 0);
+-			Preferences.Set (Preferences.MAIN_WINDOW_MAXIMIZED, maximized);
+-
+-			if (!maximized) {
+-				Preferences.Set (Preferences.MAIN_WINDOW_X, x);
+-				Preferences.Set (Preferences.MAIN_WINDOW_Y, y);
+-				Preferences.Set (Preferences.MAIN_WINDOW_WIDTH, width);
+-				Preferences.Set (Preferences.MAIN_WINDOW_HEIGHT, height);
+-			}
+-
+-			Preferences.Set (Preferences.MAIN_WINDOW_HPANED, hpaned1.Position);
+-			Preferences.Set (Preferences.BROWSER_SELECTION, ldapTreeView.BrowserSelectionMethod);
+-
+ #if ENABLE_AVAHI
+ 			finder.Stop ();
+ #endif
+@@ -1254,11 +1180,6 @@
+ 			viewDataTreeView.ShowNewItemDialog (l.Text);
+ 		}
+ 
+-		public void OnPreferencesChanged (object sender, GConf.NotifyEventArgs args)
+-		{
+-			LoadPreference (args.Key);
+-		}
+-
+ 		void OnSchemaDNSelected (object o, schemaSelectedEventArgs args)
+ 		{
+ 			if (args.Name == "Object Classes" || args.Name == "Attribute Types" || args.Name == "Matching Rules" || args.Name == "LDAP Syntaxes")
+diff -Naur lat-1.2.4.orig/resources/lat.glade lat-1.2.4/resources/lat.glade
+--- lat-1.2.4.orig/resources/lat.glade	2012-04-10 13:54:27.000000000 +0200
++++ lat-1.2.4/resources/lat.glade	2018-09-03 01:00:10.597241955 +0200
+@@ -10426,145 +10426,6 @@
+ 	      <property name="enable_popup">False</property>
+ 
+ 	      <child>
+-		<widget class="GtkVBox" id="vbox136">
+-		  <property name="visible">True</property>
+-		  <property name="homogeneous">False</property>
+-		  <property name="spacing">0</property>
+-
+-		  <child>
+-		    <widget class="GtkHBox" id="hbox431">
+-		      <property name="visible">True</property>
+-		      <property name="homogeneous">False</property>
+-		      <property name="spacing">0</property>
+-
+-		      <child>
+-			<widget class="GtkLabel" id="label431">
+-			  <property name="visible">True</property>
+-			  <property name="label" translatable="yes">&lt;b&gt;Browser selection&lt;/b&gt;</property>
+-			  <property name="use_underline">False</property>
+-			  <property name="use_markup">True</property>
+-			  <property name="justify">GTK_JUSTIFY_LEFT</property>
+-			  <property name="wrap">False</property>
+-			  <property name="selectable">False</property>
+-			  <property name="xalign">0.5</property>
+-			  <property name="yalign">0.5</property>
+-			  <property name="xpad">0</property>
+-			  <property name="ypad">0</property>
+-			  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+-			  <property name="width_chars">-1</property>
+-			  <property name="single_line_mode">False</property>
+-			  <property name="angle">0</property>
+-			</widget>
+-			<packing>
+-			  <property name="padding">10</property>
+-			  <property name="expand">False</property>
+-			  <property name="fill">False</property>
+-			</packing>
+-		      </child>
+-		    </widget>
+-		    <packing>
+-		      <property name="padding">10</property>
+-		      <property name="expand">False</property>
+-		      <property name="fill">False</property>
+-		    </packing>
+-		  </child>
+-
+-		  <child>
+-		    <widget class="GtkHBox" id="hbox432">
+-		      <property name="visible">True</property>
+-		      <property name="homogeneous">False</property>
+-		      <property name="spacing">0</property>
+-
+-		      <child>
+-			<widget class="GtkRadioButton" id="browserSingleClickButton">
+-			  <property name="visible">True</property>
+-			  <property name="can_focus">True</property>
+-			  <property name="label" translatable="yes">Single click</property>
+-			  <property name="use_underline">True</property>
+-			  <property name="relief">GTK_RELIEF_NORMAL</property>
+-			  <property name="focus_on_click">True</property>
+-			  <property name="active">False</property>
+-			  <property name="inconsistent">False</property>
+-			  <property name="draw_indicator">True</property>
+-			</widget>
+-			<packing>
+-			  <property name="padding">20</property>
+-			  <property name="expand">False</property>
+-			  <property name="fill">False</property>
+-			</packing>
+-		      </child>
+-		    </widget>
+-		    <packing>
+-		      <property name="padding">5</property>
+-		      <property name="expand">False</property>
+-		      <property name="fill">False</property>
+-		    </packing>
+-		  </child>
+-
+-		  <child>
+-		    <widget class="GtkHBox" id="hbox433">
+-		      <property name="visible">True</property>
+-		      <property name="homogeneous">False</property>
+-		      <property name="spacing">0</property>
+-
+-		      <child>
+-			<widget class="GtkRadioButton" id="browserDoubleClickButton">
+-			  <property name="visible">True</property>
+-			  <property name="can_focus">True</property>
+-			  <property name="label" translatable="yes">Double click</property>
+-			  <property name="use_underline">True</property>
+-			  <property name="relief">GTK_RELIEF_NORMAL</property>
+-			  <property name="focus_on_click">True</property>
+-			  <property name="active">True</property>
+-			  <property name="inconsistent">False</property>
+-			  <property name="draw_indicator">True</property>
+-			  <property name="group">browserSingleClickButton</property>
+-			  <signal name="toggled" handler="OnDoubleClickToggled" last_modification_time="Sun, 30 Apr 2006 13:27:08 GMT"/>
+-			</widget>
+-			<packing>
+-			  <property name="padding">20</property>
+-			  <property name="expand">False</property>
+-			  <property name="fill">False</property>
+-			</packing>
+-		      </child>
+-		    </widget>
+-		    <packing>
+-		      <property name="padding">0</property>
+-		      <property name="expand">False</property>
+-		      <property name="fill">False</property>
+-		    </packing>
+-		  </child>
+-		</widget>
+-		<packing>
+-		  <property name="tab_expand">False</property>
+-		  <property name="tab_fill">True</property>
+-		</packing>
+-	      </child>
+-
+-	      <child>
+-		<widget class="GtkLabel" id="label429">
+-		  <property name="visible">True</property>
+-		  <property name="label" translatable="yes">General</property>
+-		  <property name="use_underline">False</property>
+-		  <property name="use_markup">False</property>
+-		  <property name="justify">GTK_JUSTIFY_LEFT</property>
+-		  <property name="wrap">False</property>
+-		  <property name="selectable">False</property>
+-		  <property name="xalign">0.5</property>
+-		  <property name="yalign">0.5</property>
+-		  <property name="xpad">0</property>
+-		  <property name="ypad">0</property>
+-		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+-		  <property name="width_chars">-1</property>
+-		  <property name="single_line_mode">False</property>
+-		  <property name="angle">0</property>
+-		</widget>
+-		<packing>
+-		  <property name="type">tab</property>
+-		</packing>
+-	      </child>
+-
+-	      <child>
+ 		<widget class="GtkHBox" id="hbox450">
+ 		  <property name="visible">True</property>
+ 		  <property name="homogeneous">False</property>

@@ -1,0 +1,402 @@
+diff -Naur lat-1.2.4.orig/configure.ac lat-1.2.4/configure.ac
+--- lat-1.2.4.orig/configure.ac	2012-11-18 10:48:06.000000000 +0100
++++ lat-1.2.4/configure.ac	2017-01-23 22:02:06.809880447 +0100
+@@ -28,7 +28,6 @@
+ 
+ PKG_CHECK_MODULES(GTKSHARP,
+ 		  gtk-sharp-2.0 >= $GTKSHARP_REQUIRED \
+-		  gnome-sharp-2.0 >= $GTKSHARP_REQUIRED \
+ 		  gconf-sharp-2.0 >= $GTKSHARP_REQUIRED \
+ 		  glade-sharp-2.0 >= $GTKSHARP_REQUIRED)
+ 
+diff -Naur lat-1.2.4.orig/lat/gtk-sharp-beans/Global.cs lat-1.2.4/lat/gtk-sharp-beans/Global.cs
+--- lat-1.2.4.orig/lat/gtk-sharp-beans/Global.cs	1970-01-01 01:00:00.000000000 +0100
++++ lat-1.2.4/lat/gtk-sharp-beans/Global.cs	2017-01-23 23:23:02.713050743 +0100
+@@ -0,0 +1,44 @@
++// GtkBeans.Global.cs
++//
++// Author(s):
++//      Stephane Delcroix <stephane@delcroix.org>
++//
++// Copyright (c) 2009 Novell, Inc.
++//
++// This program is free software; you can redistribute it and/or
++// modify it under the terms of version 2 of the Lesser GNU General 
++// Public License as published by the Free Software Foundation.
++//
++// This program is distributed in the hope that it will be useful,
++// but WITHOUT ANY WARRANTY; without even the implied warranty of
++// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++// Lesser General Public License for more details.
++//
++// You should have received a copy of the GNU Lesser General Public
++// License along with this program; if not, see <http://www.gnu.org/licenses/>.
++
++using System;
++using System.Collections;
++using System.Runtime.InteropServices;
++
++namespace GtkBeans {
++	public static class Global {
++		[DllImport("libgtk-x11-2.0.so")]
++		static extern unsafe bool gtk_show_uri(IntPtr screen, IntPtr uri, uint timestamp, out IntPtr error);
++
++		public static unsafe bool ShowUri(Gdk.Screen screen, string uri, uint timestamp) {
++			IntPtr native_uri = GLib.Marshaller.StringToPtrGStrdup (uri);
++			IntPtr error = IntPtr.Zero;
++			bool raw_ret = gtk_show_uri(screen == null ? IntPtr.Zero : screen.Handle, native_uri, timestamp, out error);
++			bool ret = raw_ret;
++			GLib.Marshaller.Free (native_uri);
++			if (error != IntPtr.Zero) throw new GLib.GException (error);
++			return ret;
++		}
++
++		public static bool ShowUri (Gdk.Screen screen, string uri)
++		{
++			return ShowUri (screen, uri, Gdk.EventHelper.GetTime (new Gdk.Event(IntPtr.Zero)));
++		}
++	}
++}
+diff -Naur lat-1.2.4.orig/lat/Main.cs lat-1.2.4/lat/Main.cs
+--- lat-1.2.4.orig/lat/Main.cs	2012-11-18 10:48:06.000000000 +0100
++++ lat-1.2.4/lat/Main.cs	2017-01-23 22:25:54.561847898 +0100
+@@ -21,7 +21,6 @@
+ using System;
+ using System.Text;
+ using Gtk;
+-using Gnome;
+ using lat;
+ 
+ public class Global
+@@ -119,9 +118,9 @@
+ 
+ 		try {
+ 		
+-			Program program = new Program (Defines.PACKAGE, Defines.VERSION, Modules.UI, args);					
+-			Global.Window = new MainWindow (program);		
+-			program.Run ();
++			Gtk.Application.Init ();
++			Global.Window = new MainWindow ();		
++			Gtk.Application.Run ();
+ 		
+ 		} catch (Exception e) {
+ 		
+diff -Naur lat-1.2.4.orig/lat/Makefile.am lat-1.2.4/lat/Makefile.am
+--- lat-1.2.4.orig/lat/Makefile.am	2012-01-09 21:24:10.000000000 +0100
++++ lat-1.2.4/lat/Makefile.am	2017-01-23 23:19:46.120628232 +0100
+@@ -57,7 +57,8 @@
+ 	ViewDialog.cs \
+ 	ViewPluginManager.cs \
+ 	ViewsTreeView.cs \
+-	Window.cs
++	Window.cs \
++	gtk-sharp-beans/*.cs
+ 
+ SOURCES_BUILD = $(addprefix $(srcdir)/, $(CSFILES))
+ 
+@@ -94,7 +95,7 @@
+ RESOURCES_BUILD = $(addprefix /resource:$(top_srcdir)/resources/, $(RESOURCES))
+ 
+ $(ASSEMBLY).exe: $(SOURCES_BUILD) $(AVAHI_CSFILES)
+-	$(CSC) -out:$@ $(SOURCES_BUILD) $(AVAHI_CSFILES) $(REFERENCES_BUILD) $(AVAHI_REFERENCES) $(RESOURCES_BUILD) $(GTKSHARP_LIBS)
++	$(CSC) -out:$@ -unsafe $(SOURCES_BUILD) $(AVAHI_CSFILES) $(REFERENCES_BUILD) $(AVAHI_REFERENCES) $(RESOURCES_BUILD) $(GTKSHARP_LIBS)
+ 
+ all: $(ASSEMBLY).exe
+ 
+diff -Naur lat-1.2.4.orig/lat/plugins/ActiveDirectoryCoreViews/dialogs.glade lat-1.2.4/lat/plugins/ActiveDirectoryCoreViews/dialogs.glade
+--- lat-1.2.4.orig/lat/plugins/ActiveDirectoryCoreViews/dialogs.glade	2012-01-09 21:24:10.000000000 +0100
++++ lat-1.2.4/lat/plugins/ActiveDirectoryCoreViews/dialogs.glade	2017-01-23 22:34:19.703805008 +0100
+@@ -2,7 +2,6 @@
+ <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
+ 
+ <glade-interface>
+-<requires lib="gnome"/>
+ 
+ <widget class="GtkDialog" id="editAdComputerDialog">
+   <property name="visible">True</property>
+diff -Naur lat-1.2.4.orig/lat/plugins/JpegAttributeViewer/dialog.glade lat-1.2.4/lat/plugins/JpegAttributeViewer/dialog.glade
+--- lat-1.2.4.orig/lat/plugins/JpegAttributeViewer/dialog.glade	2012-01-09 21:24:10.000000000 +0100
++++ lat-1.2.4/lat/plugins/JpegAttributeViewer/dialog.glade	2017-01-23 22:34:12.676928731 +0100
+@@ -2,7 +2,6 @@
+ <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
+ 
+ <glade-interface>
+-<requires lib="gnome"/>
+ 
+ <widget class="GtkDialog" id="jpegAttributeViewDialog">
+   <property name="visible">True</property>
+diff -Naur lat-1.2.4.orig/lat/plugins/PosixCoreViews/dialogs.glade lat-1.2.4/lat/plugins/PosixCoreViews/dialogs.glade
+--- lat-1.2.4.orig/lat/plugins/PosixCoreViews/dialogs.glade	2012-01-09 21:24:10.000000000 +0100
++++ lat-1.2.4/lat/plugins/PosixCoreViews/dialogs.glade	2017-01-23 22:34:25.383974401 +0100
+@@ -2,7 +2,6 @@
+ <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
+ 
+ <glade-interface>
+-<requires lib="gnome"/>
+ 
+ <widget class="GtkDialog" id="editContactDialog">
+   <property name="visible">True</property>
+diff -Naur lat-1.2.4.orig/lat/Preferences.cs lat-1.2.4/lat/Preferences.cs
+--- lat-1.2.4.orig/lat/Preferences.cs	2012-01-09 21:24:10.000000000 +0100
++++ lat-1.2.4/lat/Preferences.cs	2017-01-23 23:08:39.554428963 +0100
+@@ -109,16 +109,13 @@
+ 		[Glade.Widget] TreeView profilesTreeView;
+ 
+ 		ListStore profileStore;
+-		Gnome.Program program;
+ 		bool gettingHelp = false;
+ 			
+-		public PreferencesDialog (Gnome.Program program)
++		public PreferencesDialog ()
+ 		{
+ 			ui = new Glade.XML (null, "lat.glade", "preferencesDialog", null);
+ 			ui.Autoconnect (this);
+ 			
+-			this.program = program;
+-			
+ 			profileStore = new ListStore (typeof (string));
+ 			profilesTreeView.Model = profileStore;
+ 			profileStore.SetSortColumnId (0, SortType.Ascending);
+@@ -239,11 +236,7 @@
+ 
+ 				gettingHelp = true;
+ 
+-				Gnome.Help.DisplayDesktopOnScreen (program, 
+-					Defines.PACKAGE, 
+-					"lat.xml", 
+-					"lat-preferences", 
+-					Gdk.Screen.Default);
++				GtkBeans.Global.ShowUri(null, "ghelp:lat?lat-preferences");
+ 
+ 			} catch (Exception e) {
+ 
+diff -Naur lat-1.2.4.orig/lat/ViewDataTreeView.cs lat-1.2.4/lat/ViewDataTreeView.cs
+--- lat-1.2.4.orig/lat/ViewDataTreeView.cs	2012-01-10 20:40:21.000000000 +0100
++++ lat-1.2.4/lat/ViewDataTreeView.cs	2017-01-23 23:05:52.962872744 +0100
+@@ -313,7 +313,7 @@
+ 
+ 			try {
+ 			
+-				Gnome.Url.Show ("mailto:" + url);
++				GtkBeans.Global.ShowUri(null, "mailto:" + url);
+ 
+ 			} catch (Exception e) {
+ 
+@@ -470,7 +470,7 @@
+ 
+ 			try {
+ 			
+-				Gnome.Url.Show (url);
++				GtkBeans.Global.ShowUri(null, url);
+ 
+ 			} catch (Exception e) {
+ 
+@@ -533,4 +533,4 @@
+ 			this.ShowAll ();			
+ 		}
+ 	}
+-}
+\ Nincs új sor a fájl végén
++}
+diff -Naur lat-1.2.4.orig/lat/Window.cs lat-1.2.4/lat/Window.cs
+--- lat-1.2.4.orig/lat/Window.cs	2012-04-10 13:50:08.000000000 +0200
++++ lat-1.2.4/lat/Window.cs	2017-01-23 23:16:32.824967378 +0100
+@@ -19,7 +19,6 @@
+ //
+ 
+ using Gtk;
+-using Gnome;
+ using System;
+ using System.Text;
+ using Novell.Directory.Ldap;
+@@ -93,9 +92,7 @@
+ 		[Glade.Widget] Gtk.Button searchBaseButton;
+ 
+ 		[Glade.Widget] Gtk.Image sslImage;
+-		[Glade.Widget] Gnome.AppBar appBar;
+-		
+-		Gnome.Program program;
++		[Glade.Widget] Gtk.Statusbar statusBar;
+ 		
+ 		AccelGroup newAccelGroup;
+ 		
+@@ -121,10 +118,8 @@
+ 		ServiceFinder finder;
+ #endif
+ 		
+-		public MainWindow (Gnome.Program mainProgram)
++		public MainWindow ()
+ 		{
+-			program = mainProgram;
+-			
+ 			ui = new Glade.XML (null, "lat.glade", "mainWindow", null);
+ 			ui.Autoconnect (this);
+ 
+@@ -575,8 +570,8 @@
+ 				else
+ 					msg = String.Format("Bind DN: {0}", conn.AuthDN);
+ 
+-				appBar.Pop ();
+-				appBar.Push (msg);
++				statusBar.Pop (0);
++				statusBar.Push (0, msg);
+ 
+ 				sslImage.Pixbuf = Util.GetSSLIcon (conn.UseSSL);
+ 				
+@@ -587,8 +582,8 @@
+ 
+ 		public void WriteStatusMessage (string msg)
+ 		{
+-			appBar.Pop ();
+-			appBar.Push (msg);
++			statusBar.Pop (0);
++			statusBar.Push (0, msg);
+ 		}
+ 		
+ 		// Handlers
+@@ -761,7 +756,7 @@
+ 
+ 		public void OnPreferencesActivate (object sender, EventArgs args)
+ 		{
+-			new PreferencesDialog (program);
++			new PreferencesDialog ();
+ 			
+ 			Global.Connections.Save ();
+ 		}
+@@ -901,7 +896,7 @@
+ 			finder.Stop ();
+ #endif
+ 
+-			program.Quit ();
++			Gtk.Main.Quit ();
+ 		}
+ 
+ 		public void OnSearchSelected (object o, SearchResultSelectedEventArgs args)
+@@ -972,8 +967,8 @@
+ 				searchTreeView.UpdateSearchResults (searchResults);
+ 
+ 				string msg = String.Format ("Found {0} matching entries", searchResults.Length);
+-				appBar.Pop ();
+-				appBar.Push (msg);
++				statusBar.Pop (0);
++				statusBar.Push (0, msg);
+ 			}
+ 		}
+ 
+@@ -1055,11 +1050,7 @@
+ 		{
+ 			try {
+ 
+-				Gnome.Help.DisplayDesktopOnScreen (program, 
+-					Defines.PACKAGE, 
+-					"lat.xml", 
+-					null, 
+-					Gdk.Screen.Default);
++				GtkBeans.Global.ShowUri(null, "ghelp:lat");
+ 
+ 			} catch (Exception e) {
+ 
+diff -Naur lat-1.2.4.orig/resources/lat.glade lat-1.2.4/resources/lat.glade
+--- lat-1.2.4.orig/resources/lat.glade	2012-04-10 13:54:27.000000000 +0200
++++ lat-1.2.4/resources/lat.glade	2017-01-23 22:54:15.512342180 +0100
+@@ -2,7 +2,6 @@
+ <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
+ 
+ <glade-interface>
+-<requires lib="gnome"/>
+ 
+ <widget class="GtkDialog" id="connectionDialog">
+   <property name="visible">True</property>
+@@ -2311,8 +2310,8 @@
+ 		  <child>
+ 		    <widget class="GtkImageMenuItem" id="newMenuItem">
+ 		      <property name="visible">True</property>
+-		      <property name="stock_item">GNOMEUIINFO_MENU_NEW_ITEM</property>
+-		      <property name="label" translatable="yes">_New</property>
++		      <property name="label">gtk-new</property>
++		      <property name="use_stock">True</property>
+ 		      <property name="use_underline">True</property>
+ 		    </widget>
+ 		  </child>
+@@ -2472,7 +2471,8 @@
+ 		  <child>
+ 		    <widget class="GtkImageMenuItem" id="quit">
+ 		      <property name="visible">True</property>
+-		      <property name="stock_item">GNOMEUIINFO_MENU_EXIT_ITEM</property>
++		      <property name="label">gtk-quit</property>
++		      <property name="use_stock">True</property>
+ 		      <signal name="activate" handler="OnQuitActivate" last_modification_time="Thu, 24 Feb 2005 15:40:49 GMT"/>
+ 		    </widget>
+ 		  </child>
+@@ -2493,7 +2493,8 @@
+ 		  <child>
+ 		    <widget class="GtkImageMenuItem" id="cut">
+ 		      <property name="visible">True</property>
+-		      <property name="stock_item">GNOMEUIINFO_MENU_CUT_ITEM</property>
++		      <property name="label">gtk-cut</property>
++		      <property name="use_stock">True</property>
+ 		      <signal name="activate" handler="OnCutActivate" last_modification_time="Sun, 27 Feb 2005 17:31:44 GMT"/>
+ 		    </widget>
+ 		  </child>
+@@ -2501,7 +2502,8 @@
+ 		  <child>
+ 		    <widget class="GtkImageMenuItem" id="copy">
+ 		      <property name="visible">True</property>
+-		      <property name="stock_item">GNOMEUIINFO_MENU_COPY_ITEM</property>
++		      <property name="label">gtk-copy</property>
++		      <property name="use_stock">True</property>
+ 		      <signal name="activate" handler="OnCopyActivate" last_modification_time="Sun, 27 Feb 2005 17:31:44 GMT"/>
+ 		    </widget>
+ 		  </child>
+@@ -2509,7 +2511,8 @@
+ 		  <child>
+ 		    <widget class="GtkImageMenuItem" id="paste">
+ 		      <property name="visible">True</property>
+-		      <property name="stock_item">GNOMEUIINFO_MENU_PASTE_ITEM</property>
++		      <property name="label">gtk-paste</property>
++		      <property name="use_stock">True</property>
+ 		      <signal name="activate" handler="OnPasteActivate" last_modification_time="Sun, 27 Feb 2005 17:32:05 GMT"/>
+ 		    </widget>
+ 		  </child>
+@@ -2538,7 +2541,8 @@
+ 		  <child>
+ 		    <widget class="GtkImageMenuItem" id="Properties">
+ 		      <property name="visible">True</property>
+-		      <property name="stock_item">GNOMEUIINFO_MENU_PROPERTIES_ITEM</property>
++		      <property name="label">gtk-properties</property>
++		      <property name="use_stock">True</property>
+ 		      <signal name="activate" handler="OnPropertiesActivate" last_modification_time="Fri, 08 Jul 2005 20:08:04 GMT"/>
+ 		    </widget>
+ 		  </child>
+@@ -2552,7 +2556,8 @@
+ 		  <child>
+ 		    <widget class="GtkImageMenuItem" id="preferences1">
+ 		      <property name="visible">True</property>
+-		      <property name="stock_item">GNOMEUIINFO_MENU_PREFERENCES_ITEM</property>
++		      <property name="label">gtk-preferences</property>
++		      <property name="use_stock">True</property>
+ 		      <signal name="activate" handler="OnPreferencesActivate" last_modification_time="Sun, 30 Apr 2006 12:36:07 GMT"/>
+ 		    </widget>
+ 		  </child>
+@@ -2700,7 +2705,8 @@
+ 		  <child>
+ 		    <widget class="GtkImageMenuItem" id="about1">
+ 		      <property name="visible">True</property>
+-		      <property name="stock_item">GNOMEUIINFO_MENU_ABOUT_ITEM</property>
++		      <property name="label">gtk-about</property>
++		      <property name="use_stock">True</property>
+ 		      <signal name="activate" handler="OnAboutActivate" last_modification_time="Thu, 24 Feb 2005 15:41:47 GMT"/>
+ 		    </widget>
+ 		  </child>
+@@ -5195,10 +5201,8 @@
+ 	  </child>
+ 
+ 	  <child>
+-	    <widget class="GnomeAppBar" id="appBar">
++	    <widget class="GtkStatusbar" id="statusBar">
+ 	      <property name="visible">True</property>
+-	      <property name="has_progress">False</property>
+-	      <property name="has_status">True</property>
+ 	    </widget>
+ 	    <packing>
+ 	      <property name="padding">5</property>
