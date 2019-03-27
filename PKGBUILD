@@ -2,11 +2,11 @@
 # Maintainer : Erik Dubois <erik.dubois@gmail.com>
 
 pkgname=numix-circle-icon-theme-git
-pkgver=0.r36.a673d9d
+pkgver=0.r42.657c83e
 pkgrel=1
 pkgdesc='Circle icon theme from the Numix project'
 arch=('any')
-url='http://numixproject.org/'
+url='https://github.com/numixproject/numix-icon-theme-circle/'
 license=('GPL3')
 depends=('numix-icon-theme-git')
 makedepends=('git')
