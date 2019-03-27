@@ -28,7 +28,7 @@ build() {
     cmake .. -DCMAKE_BUILD_TYPE=Release \
              -DCMAKE_INSTALL_PREFIX=/usr \
              -DLIBDIR_SUFFIX=""
-    make -j3
+    make
 }
 
 package() {
