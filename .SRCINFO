@@ -1,6 +1,6 @@
 pkgbase = bettercap-git
 	pkgdesc = Swiss army knife for network attacks and monitoring
-	pkgver = 2.11.1313.8cf3e65
+	pkgver = 2.21.1.1656.4713d25
 	pkgrel = 1
 	url = https://github.com/bettercap/bettercap
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = bettercap-git
 	depends = iproute2
 	depends = glibc
 	depends = libnfnetlink
+	optdepends = bettercap-caplets: scripts (caplets) and proxy modules
 	provides = bettercap
 	conflicts = bettercap
 	source = bettercap-git::git+https://github.com/bettercap/bettercap

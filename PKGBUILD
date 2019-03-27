@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=bettercap-git
-pkgver=2.11.1313.8cf3e65
+pkgver=2.21.1.1656.4713d25
 pkgrel=1
 pkgdesc='Swiss army knife for network attacks and monitoring'
 url='https://github.com/bettercap/bettercap'
@@ -9,6 +9,7 @@ arch=('x86_64')
 license=('GPL3')
 depends=('libpcap' 'libnetfilter_queue' 'iproute2' 'glibc' 'libnfnetlink')
 makedepends=('go-pie' 'git' 'dep')
+optdepends=('bettercap-caplets: scripts (caplets) and proxy modules')
 provides=('bettercap')
 conflicts=('bettercap')
 source=(${pkgname}::git+https://github.com/bettercap/bettercap)
