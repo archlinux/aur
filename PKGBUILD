@@ -1,29 +1,35 @@
-# Contributor: William Rea <sillywilly@gmail.com>
-# Maintainer: Davorin Učakar <davorin.ucakar@gmail.com>
+# Maintainer:
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=icon-slicer
 pkgver=0.3
-pkgrel=6
-pkgdesc='A utility for generating icon themes and libXcursor cursor themes'
-arch=('i686' 'x86_64')
-url='http://freedesktop.org/wiki/Software/icon-slicer'
-license=('GPL')
+pkgrel=2
+pkgdesc="Utility for generating icon themes and libXcursor cursor themes"
+arch=('x86_64')
+url="https://www.freedesktop.org/wiki/Software/icon-slicer/"
+license=('MIT')
 depends=('gdk-pixbuf2' 'popt' 'xorg-xcursorgen')
-source=("http://freedesktop.org/software/${pkgname}/releases/icon-slicer-${pkgver}.tar.gz"
-	'hotspots.patch')
-sha1sums=('82284a87061ad9e1872e61963597c39ddcba53da'
-	  'b9bf8e11ebc444fbcb3f6995d7e5a649f79d346f')
+source=(https://freedesktop.org/software/icon-slicer/releases/$pkgname-$pkgver.tar.gz
+        hotspotfix.patch)
+sha256sums=('05f0216dd0c25a17859de66357f64da5033375b6fbf5f31ca54867311160b64d'
+            '7000ab887b247f24d22ba225934028b1f5b04c1fb8ceac04d01e925b7a602dd0')
+
+prepare() {
+  cd $pkgname-$pkgver
+  patch -Np1 -i ../hotspotfix.patch
+}
 
 build() {
-	cd "${srcdir}/icon-slicer-${pkgver}"
-
-	patch -p1 -i "${srcdir}/hotspots.patch"
-	./configure --prefix=/usr
-	make || return 1
+  cd $pkgname-$pkgver
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd "${srcdir}/icon-slicer-${pkgver}"
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
 
-	make DESTDIR="${pkgdir}" install
+  # License
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  sed '/License/,$!d' README >"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
