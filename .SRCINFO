@@ -1,5 +1,5 @@
 pkgbase = linux-me176c
-	pkgver = 4.19.24
+	pkgver = 4.19.32
 	pkgrel = 1
 	url = https://github.com/me176c-dev/linux-me176c
 	arch = x86_64
@@ -13,13 +13,14 @@ pkgbase = linux-me176c
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = archlinux-linux::git+https://github.com/me176c-dev/linux-me176c.git#tag=4.19.24
+	source = archlinux-linux::git+https://github.com/me176c-dev/linux-me176c.git?signed#tag=4.19.32
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = 2B1138A8BB59D786A3BF42AAD996DA70572407FB
 	sha256sums = SKIP
 	sha256sums = a31ab8fb7efe3516af3214194db39d7bfbc36d83de40faf4bd9b54495cad8fe1
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21

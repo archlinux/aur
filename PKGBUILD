@@ -2,7 +2,7 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-me176c         # Build kernel with a different name
-pkgver=4.19.24
+pkgver=4.19.32
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/me176c-dev/linux-me176c"
@@ -12,7 +12,7 @@ options=('!strip')
 _srcname=archlinux-linux
 source=(
   #"$_srcname::git+https://github.com/me176c-dev/linux-me176c.git#branch=4.19"
-  "$_srcname::git+https://github.com/me176c-dev/linux-me176c.git#tag=$pkgver"
+  "$_srcname::git+https://github.com/me176c-dev/linux-me176c.git?signed#tag=$pkgver"
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -21,6 +21,7 @@ source=(
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
+  '2B1138A8BB59D786A3BF42AAD996DA70572407FB'  # lambdadroid
 )
 sha256sums=('SKIP'
             'a31ab8fb7efe3516af3214194db39d7bfbc36d83de40faf4bd9b54495cad8fe1'
