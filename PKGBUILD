@@ -1,10 +1,11 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer:
+# Contributor: Pierre Neidhardt <ambrevar@gmail.com>
+# Contributor:: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Xilon <xilonmu@gmail.com>
 
 pkgname=catdvi
 pkgver=0.14
-pkgrel=6
+pkgrel=8
 pkgdesc="A DVI to plain text translator"
 arch=('x86_64')
 url="http://catdvi.sourceforge.net"
