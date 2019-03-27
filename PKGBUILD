@@ -1,7 +1,7 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 
 pkgname=cura-git
-pkgver=3.5.1.326.g7b140277d
+pkgver=4.0.0.442.gf6dd3f922
 pkgrel=1
 pkgdesc="A full software solution for 3D printing aimed at RepRaps and the Ultimaker."
 arch=('any')
@@ -13,6 +13,7 @@ depends=('python'
          'python-pyqt5'
          'python-numpy'
          'python-protobuf'
+         'qt5-graphicaleffects'
          'qt5-quickcontrols'
          'qt5-quickcontrols2'
          'libarcus-git'
