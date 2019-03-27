@@ -1,10 +1,10 @@
 # Maintainer: Blooser <blooser@protonmail.com>
 pkgname=taurus
-pkgver=1.2.2
+pkgver=1.3
 pkgrel=1
-pkgdesc="Port scanner for a quick and plain scan. It is maximum easy for use."
+pkgdesc="Port scanner for a quick and plain scan."
 arch=('x86_64')
-md5sums=('95e63d8a24101bc94909c27fbb3c55ad')
+md5sums=('63fe00ac5be6a6dd694548e3ad8b1349')
 url="https://github.com/blooser/taurus"
 license=('MIT')
 depends=('qt5-base')
@@ -16,27 +16,27 @@ shortcut="
 Encoding=UTF-8
 Version=${pkgver}
 Name[en_US]=Taurus
-GenericName=GUI Port Scanner
+GenericName=Quick port scanner
 Exec=${binlocation}/taurus
 Icon[en_US]=${resourcelocation}/discover.png
 Type=Application
 Categories=Application;Network
-Comment[en_US]=Quick ports scan
+Comment[en_US]=Quick and plain port scanning
 "
 
 source=("https://github.com/blooser/taurus/archive/v${pkgver}.tar.gz")
 
 build() {
-	cd $pkgname-$pkgver
+	cd $pkgname-$pkgver/taurus
 	qmake	
 	make
 }
 
 package() {
-	cd $pkgname-$pkgver
+	cd $pkgname-$pkgver/taurus
 	make clean
-	sudo cp taurus ${binlocation} && sudo mkdir -p ${resourcelocation}  && sudo cp icons/discover.png ${resourcelocation} 
-	cd ..
+	sudo cp taurus ${binlocation} && sudo mkdir -p ${resourcelocation}  && sudo cp resources/icons/discover.png ${resourcelocation} 
+	cd ../..
 	rm -rf $pkgname-$pkgver 
 	echo "${shortcut}" > ~/.local/share/applications/taurus.desktop
 	if [ -f ~/.zshrc ]; then
