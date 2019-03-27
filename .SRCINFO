@@ -1,0 +1,18 @@
+pkgbase = xournal
+	pkgdesc = Notetaking and sketching application
+	pkgver = 0.4.8.2016
+	pkgrel = 3
+	url = http://xournal.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = libgnomecanvas
+	depends = poppler-glib
+	depends = shared-mime-info
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	optdepends = ghostscript: import PS/PDF files as bitmap backgrounds
+	source = https://downloads.sourceforge.net/xournal/xournal-0.4.8.2016.tar.gz
+	sha256sums = b25898dbd7a149507f37a16769202d69fbebd4a000d766923bbd32c5c7462826
+
+pkgname = xournal
+
