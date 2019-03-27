@@ -1,33 +1,19 @@
 # Maintainer: Matt Mathis <aur@cloudninja.pw>
 pkgname=glpaper
-pkgver=1.0
+pkgver=r16.2b3a7b552353
 pkgrel=1
-srcdir="src"
-epoch=()
 pkgdesc="WLRoots based GLSL wallpapers for WLRoots compositors"
 arch=('x86_64')
-url="https://bitbucket.org/Scoopta/glpaper"
+url="https://hg.sr.ht/~scoopta/glpaper"
 license=('GPL3')
 groups=()
-depends=('egl-wayland' 'wayland')
-makedepends=('egl-wayland' 'mercurial')
+depends=('wayland')
+makedepends=('mercurial')
 source=("${pkgname}::hg+$url")
 sha256sums=('SKIP')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-noextract=()
-validpgpkeys=()
 pkgver() {
-	mkdir -p ${srcdir}/${pkgver}
-	cd ${srcdir}/${pkgname}
-        echo $(hg identify -i)
+	cd "$pkgname"
+        printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 build() {
@@ -35,6 +21,6 @@ build() {
         make
 }
 package() {
-	mkdir -p "../pkg/${pkgname}/usr/bin"
-	cp ${pkgname}/Release/glpaper "../pkg/${pkgname}/usr/bin/"
+	mkdir -p "$pkgdir/usr/bin"
+	cp ${pkgname}/Release/glpaper "$pkgdir/usr/bin/"
 }
