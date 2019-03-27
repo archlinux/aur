@@ -9,13 +9,10 @@ license=("GPL")
 depends=("inkscape" "python2-lxml" "librsvg")
 provides=("inkscape-multipage-export")
 conflicts=("inkscape-multipage-export-git")
-source=("$pkgname-$pkgver::https://github.com/olibia/inkscape-multipage-export/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 md5sums=("90be17defa5cdf7981788c5893c54694")
 
 package() {
-  mkdir -p "$pkgdir/usr/share/inkscape/extensions/"
-
-  cd "$srcdir/$pkgname-$pkgver"
-  cp "multipage_export.inx" "$pkgdir/usr/share/inkscape/extensions/"
-  cp "multipage_export.py" "$pkgdir/usr/share/inkscape/extensions/"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/multipage_export.inx" "$pkgdir/usr/share/inkscape/extensions/multipage_export.inx"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/multipage_export.py" "$pkgdir/usr/share/inkscape/extensions/multipage_export.py"
 }
