@@ -1,4 +1,5 @@
 # Maintainer: Tobias Kunze <r@rixx.de>
+# Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=python38
 pkgver=3.8.0a3
