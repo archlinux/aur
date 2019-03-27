@@ -1,0 +1,16 @@
+pkgbase = antudark-icons
+	pkgdesc = Colorful, friendly and simple icon pack working nicely with dark themes
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/allienworks/antudark-icons
+	changelog = CHANGELOG
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = antudark-icons
+	conflicts = antudark-icons
+	source = git+https://github.com/allienworks/antudark-icons.git
+	md5sums = SKIP
+
+pkgname = antudark-icons
+
