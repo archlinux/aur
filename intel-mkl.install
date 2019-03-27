@@ -1,3 +1,11 @@
 post_install() {
 	echo -e "\n\tNOTE: Intel® MKL is redistributed under very restrictive license. Please comply.\n"
+	echo -e "\tIntel® OpenMP runtime is located under /usr/lib/intel/ due to conflict
+	with llvm's openmp package.\n"
+	post_upgrade
+}
+
+post_upgrade() {
+	echo -e "\tNOTE: any binary linking with -liomp5 will now use Intel® OpenMP runtime, sorry.
+	To use llvm's OpenMP runtime link with -lomp.\n"
 }
