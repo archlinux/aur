@@ -1,0 +1,9 @@
+[Desktop Entry]
+
+Version=1.0
+Name=Veonim
+Comment=Edit text files
+Type=Application
+Exec=veonim %U
+Terminal=false
+Icon=veonim
