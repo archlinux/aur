@@ -1,7 +1,7 @@
 # Maintainer: Rekidaishi <rekidaishi at gmail>
 pkgname=iroffer-dinoex
 pkgver=3.32
-pkgrel=3
+pkgrel=4
 pkgdesc="Dinoex version of iroffer."
 arch=('i686' 'x86_64')
 url="https://iroffer.net"
@@ -17,10 +17,10 @@ build() {
 	cd "$pkgname-$pkgver"
 	./Configure PREFIX=/usr -curl -geoip -ruby -upnp
 	sed -i '/HAVE_LINUX_SENDFILE/d' src/iroffer_config.h
-	#make
+	make
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	#make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/" install
 }
