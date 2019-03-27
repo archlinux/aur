@@ -12,7 +12,7 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.1.0_devel.108956.d7b31969767
+pkgver=19.1.0_devel.109540.b817d00278a
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -82,6 +82,7 @@ build () {
        -D osmesa=gallium \
        -D shared-glapi=true \
        -D valgrind=false \
+       -D vulkan-overlay-layer=true \
        -D tools=[]
     meson configure _build
     ninja -C _build
@@ -97,6 +98,7 @@ package_lib32-mesa-git () {
   rm -rf "$pkgdir"/usr/include
   rm -rf "$pkgdir"/usr/share/glvnd/
   rm -rf "$pkgdir"/usr/share/drirc.d/
+  rm -rf "$pkgdir"/usr/share/vulkan/explicit_layer.d/
 
   # indirect rendering
   ln -s /usr/lib32/libGLX_mesa.so.0 "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
