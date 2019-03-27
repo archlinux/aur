@@ -10,8 +10,12 @@ url='https://forum.doom9.org/showthread.php?t=173752'
 license=('MIT')
 depends=('vapoursynth')
 makedepends=('mercurial')
-provides=("vapoursynth-plugin-${_plug}")
-conflicts=("vapoursynth-plugin-${_plug}")
+provides=("vapoursynth-plugin-${_plug}"
+          "vapoursynth-plugin-${_plug}-git"
+          )
+conflicts=("vapoursynth-plugin-${_plug}"
+           "vapoursynth-plugin-${_plug}-git"
+           )
 source=("${_plug}::hg+https://bitbucket.org/James1201/vapoursynth-sangnom")
 sha256sums=('SKIP')
 
