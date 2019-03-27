@@ -16,6 +16,7 @@ post_install() {
   fi
   echo "add yourself to the input group in order to be able to use the program:"
   echo "sudo usermod -a -G input <username>"
+  echo "then re-login."
 
   if [ $INSEXTRAFAIL -eq 1 ]
     then echo "additionally, you may have to reboot... :("
