@@ -3,53 +3,31 @@
 # Contributor: Mizuchi <ytj000+AUR@gmail.com>
 # Contributor: Veli-Jussi Raitila <vjr AT iki DOT fi>
 
-pkgbase=python-pysrt
-pkgname=(python-pysrt python2-pysrt)
+pkgname=python-pysrt
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Python parser for SubRip (srt) files"
 arch=('any')
 url="https://github.com/byroot/pysrt"
 license=('GPL3')
-makedepends=('python-setuptools' 'python2-setuptools' 'python-chardet' 'python2-chardet' 'git')
-checkdepends=('python-nose' 'python2-nose')
-source=("git+https://github.com/byroot/pysrt.git#tag=v$pkgver")
-md5sums=('SKIP')
-
-prepare() {
-  cp -a pysrt{,-py2}
-}
+depends=('python-chardet')
+optdepends=('python-setuptools: for srt script')
+makedepends=('python-setuptools')
+checkdepends=('python-nose')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/byroot/pysrt/archive/v$pkgver.tar.gz")
+sha512sums=('91f4eb3b76aeb9eb3a9f6fa8c2a524c8e63b43adb5bd7424f4de7bef2f167967b7de9615eca28905516764f060cb04faae40f59964f5933ff78e6f4b8a7648ca')
 
 build() {
-  cd "$srcdir"/pysrt
+  cd pysrt-$pkgver
   python setup.py build
-
-  cd "$srcdir"/pysrt-py2
-  python2 setup.py build
 }
 
 check() {
-  cd "$srcdir"/pysrt
+  cd pysrt-$pkgver
   nosetests3
-
-  cd "$srcdir"/pysrt-py2
-  nosetests2
 }
 
-package_python-pysrt() {
-  depends=('python-chardet')
-  optdepends=('python-setuptools: for srt script')
-
-  cd pysrt  
+package() {
+  cd pysrt-$pkgver  
   python setup.py install --root="$pkgdir" --optimize=1
-}
-
-package_python2-pysrt() {
-  depends=('python2-chardet')
-  optdepends=('python2-setuptools: for srt2 script')
-
-  cd pysrt-py2
-  python2 setup.py install --root="$pkgdir" --optimize=1
-
-  mv "$pkgdir/usr/bin/srt"{,2}
 }
