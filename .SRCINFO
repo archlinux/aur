@@ -4,12 +4,17 @@ pkgbase = ffsend
 	pkgrel = 1
 	url = https://gitlab.com/timvisee/ffsend
 	arch = x86_64
+	arch = i686
 	license = GPL3
+	makedepends = openssl>=1.0
+	makedepends = rust>=1.32
+	makedepends = cargo
+	makedepends = cmake
 	depends = ca-certificates
 	optdepends = xclip: clipboard support
-	conflicts = ffsend-git
-	source = ffsend::https://github.com/timvisee/ffsend/releases/download/v0.2.42/ffsend-v0.2.42-linux-x64-static
-	sha256sums = SKIP
+	provides = ffsend
+	source = ffsend-v$pkgver.tar.gz::https://gitlab.com/timvisee/ffsend/-/archive/v0.2.42/ffsend-v0.2.42.tar.gz
+	sha256sums = 59e42d03f4e7a1092ce7b5bbaebd57d9810671cefa8805f027bf2b7d62f4e1fc
 
 pkgname = ffsend
 
