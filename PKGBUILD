@@ -1,7 +1,7 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 
 pkgname=cura-fdm-materials-git
-pkgver=r332.3fd3965
+pkgver=r410.790bd49
 pkgrel=1
 pkgdesc="A full software solution for 3D printing aimed at RepRaps and the Ultimaker."
 arch=('any')
