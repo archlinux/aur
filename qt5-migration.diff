@@ -1,0 +1,49 @@
+Description: Ported to Qt5.
+Author: Innocent De Marchi <tangram.peces@gmail.com>
+Last-Update: 2017-12-31
+Forwarded: yes
+
+--- a/history.cc
++++ b/history.cc
+@@ -60,7 +60,7 @@
+ 	m_movelist = new QTreeWidget(this);
+ 	m_movelist->setColumnCount(3);
+ 	m_movelist->header()->setStretchLastSection(true);
+-	m_movelist->header()->setMovable(false);
++    //m_movelist->header()->setMovable(false);
+ 	m_movelist->setRootIsDecorated(false);
+ 	QStringList header;
+ 	header << "#" << tr("Move") << tr("Comment");
+--- a/kcheckers.pro
++++ b/kcheckers.pro
+@@ -1,5 +1,5 @@
+ TEMPLATE = app
+-
++QT += widgets
+ CONFIG  += qt warn_on
+ 
+ HEADERS	= pdn.h \
+--- a/main.cc
++++ b/main.cc
+@@ -37,8 +37,8 @@
+     top->show();
+ 
+     // command line
+-    if(app.argc()==2)
+-	top->open(app.argv()[1]);
++    //if(app.argc() ==2)
++    //top->open(app.argv()[1]);
+ 
+     int exit = app.exec();
+ 
+--- a/pdn.cc
++++ b/pdn.cc
+@@ -21,7 +21,7 @@
+  ***************************************************************************/
+ #include <QFile>
+ #include <QTextStream>
+-#include <QProgressDialog>
++#include <QtWidgets/QProgressDialog>
+ #include <QDebug>
+ 
+ #include "checkers.h"
