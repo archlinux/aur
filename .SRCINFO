@@ -8,7 +8,7 @@ pkgbase = cygnus
 	makedepends = python-setuptools
 	depends = python3
 	source = https://github.com/blooser/cygnus/archive/v1.4.tar.gz
-	md5sums = e2e6d601ca30397714fb08c9ca33c56c
+	md5sums = b66e205ee8a81ddff20268db6f7864f8
 
 pkgname = cygnus
 

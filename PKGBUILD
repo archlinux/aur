@@ -4,7 +4,7 @@ pkgver=1.4
 pkgrel=1
 pkgdesc="Effortless RSS reader."
 arch=('x86_64')
-md5sums=('e2e6d601ca30397714fb08c9ca33c56c')
+md5sums=('b66e205ee8a81ddff20268db6f7864f8')
 url="https://github.com/blooser/cygnus"
 license=('MIT')
 depends=('python3')
@@ -20,4 +20,5 @@ build() {
 package() {
 	sudo rm -rf $pkgname-$pkgver	
 }
+
 
