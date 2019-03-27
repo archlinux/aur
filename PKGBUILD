@@ -1,7 +1,8 @@
 # Maintainer: Gautham Velchuru <gvelchuru@gmail.com>
+# Co-Maintainer: Konstantin Gizdov <arch@kge.pw>
 pkgname=vale
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A customizable, syntax-aware linter for prose."
 arch=('i686' 'x86_64')
 url="https://github.com/errata-ai/vale"
@@ -27,6 +28,7 @@ package() {
     cd "${srcdir}/gopath/src/github.com/errata-ai/vale"
     make LAST_TAG=${pkgver} DESTDIR="${pkgdir}" install
     install -Dm755 "${srcdir}/gopath/bin/vale" "${pkgdir}/usr/bin/vale"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/README.md" "${pkgdir}/usr/share/doc/vale/README.md"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/vale/LICENSE"
     install -d "${pkgdir}/usr/share/vale/styles"
     cp -r "${srcdir}/gopath/src/github.com/errata-ai/vale/styles"/* "${pkgdir}/usr/share/vale/styles/"
