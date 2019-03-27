@@ -1,24 +1,33 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer:
+# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=grumpy
-pkgver=0.aa58aa68
-pkgrel=1
-pkgdesc='Grumpy is a Python to Go source code transcompiler and runtime'
-arch=('x86_64' 'i686')
-url='https://github.com/google/grumpy'
-depends=('go' 'python2')
-makedepends=('go' 'python2' 'git')
+pkgver=0.1
+pkgrel=3
+pkgdesc='Python to Go transpiler and Python interpreter'
+arch=('x86_64')
 license=('Apache')
+url='https://github.com/google/grumpy'
 options=('!strip')
-source=("git+https://github.com/google/grumpy.git#commit=${pkgver#*.}")
+depends=('python2')
+makedepends=('go-pie' 'git')
+optdepend=('go: compile sources with Go'
+           'go-pie: compile sources with Go (PIE)'
+           'gcc-go: compile sources with gcc-go')
+source=("git+https://github.com/google/grumpy.git#commit=2c8ff4b377ebb6455cf81ef8b7a4ec6cd435ed61")
 md5sums=('SKIP')
 
+prepare() {
+  # https://github.com/google/grumpy/issues/378
+  find "$srcdir" -type f -name "*.go" -exec sed -i 's:const _ =:const _x =:g' '{}' \;
+}
+
 build() {
-  make -C grumpy -j2
+  make -C grumpy
 }
 
 package() {
   DESTDIR="$pkgdir" make -C grumpy install
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:
