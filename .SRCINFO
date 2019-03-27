@@ -1,0 +1,13 @@
+pkgbase = estedad-fonts-git
+	pkgdesc = A Sans Serif Arabic-Latin text typeface
+	pkgver = r481.f983410
+	pkgrel = 1
+	url = https://github.com/aminabedi68/Estedad
+	arch = any
+	license = OFL
+	depends = fontconfig
+	source = estedad-fonts-git::git+https://github.com/aminabedi68/Estedad
+	sha256sums = SKIP
+
+pkgname = estedad-fonts-git
+
