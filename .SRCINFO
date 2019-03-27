@@ -1,14 +1,14 @@
 pkgbase = python-vunit_hdl
 	pkgdesc = Unit Testing Framework for VHDL/SystemVerilog
-	pkgver = 4.0.7
+	pkgver = 4.0.8
 	pkgrel = 1
 	url = https://vunit.github.io/
 	arch = any
-	license = MPL
+	license = MPL2
 	depends = python
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/v/vunit_hdl/vunit_hdl-4.0.7.tar.gz
-	md5sums = a0131af5dd336940f4d59da74b63b975
+	source = https://files.pythonhosted.org/packages/source/v/vunit_hdl/vunit_hdl-4.0.8.tar.gz
+	md5sums = c22bbd50b569ef23877dcd6c50b13873
 
 pkgname = python-vunit_hdl
 
