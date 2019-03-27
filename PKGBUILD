@@ -1,37 +1,29 @@
-# $Id: PKGBUILD 256078 2015-12-14 20:36:26Z heftig $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer:
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=gst-validate
-pkgver=1.12.1
-pkgrel=0
-pkgdesc="GStreamer Validate testing Framework"
-arch=('i686' 'x86_64')
-license=('LGPL')
-url="http://gstreamer.freedesktop.org/"
-depends=('gstreamer' 'gst-plugins-base')
-makedepends=('intltool' 'pkgconfig' 'gtk-doc' 'gobject-introspection' 'python3')
-source=(${url}/src/gst-validate/gst-validate-${pkgver}.tar.xz)
-sha256sums=('150044e6aafb31447d0171f56d621671de0579328ee8f7122a671fad6e1e7182')
+pkgver=1.14.4
+pkgrel=1
+pkgdesc="Debugging tool for GStreamer"
+arch=(x86_64)
+url="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-validate/html/"
+license=(LGPL2.1)
+depends=(gst-plugins-base-libs gtk3 python)
+makedepends=(gobject-introspection)
+source=(https://gstreamer.freedesktop.org/src/gst-validate/$pkgname-$pkgver.tar.xz{,.asc})
+sha256sums=('18dccca94bdc0bab3cddb07817bd280df7ab4abbec9a83b92620367a22d955c7'
+            'SKIP')
+validpgpkeys=('7F4BC7CC3CA06F97336BBFEB0668CC1486C2D7B5' # Sebastian Dröge
+              'D637032E45B8C6585B9456565D2EEE6F6F349D7C') # Tim-Philipp Müller
 
 build() {
-  cd "${srcdir}/gst-validate-${pkgver}"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib \
-    --with-package-name="GStreamer Validate (Arch Linux)" \
-    --with-package-origin="http://www.archlinux.org/" \
-    --enable-gtk-doc
-
-  # https://bugzilla.gnome.org/show_bug.cgi?id=655517
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-  make
-}
-
-check() {
-  cd "${srcdir}/gst-validate-${pkgver}"
-  make check
+	cd $pkgname-$pkgver
+	./configure --prefix=/usr
+	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+	make
 }
 
 package() {
-  cd "${srcdir}/gst-validate-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+	cd $pkgname-$pkgver
+	make DESTDIR="$pkgdir" install
 }
