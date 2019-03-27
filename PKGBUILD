@@ -2,7 +2,7 @@
 
 pkgname=eidklient
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Slovak eID Client"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
@@ -12,6 +12,7 @@ source_x86_64=('https://eidas.minv.sk/TCTokenService/download/linux/debian/Aplik
 md5sums_i686=('SKIP')
 md5sums_x86_64=('SKIP')
 options=("!strip")
+install=eidklient.install
 
 # Upstream uses Debian architecture naming convention. Let's prepare a variable for that.
 upstream_arch=

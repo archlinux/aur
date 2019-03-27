@@ -1,0 +1,24 @@
+checkpcscd() {
+    if [ "`systemctl is-enabled pcscd.socket`" != "enabled" -a \
+         "`systemctl is-enabled pcscd.service`" != "enabled" ] ; then
+
+        cat <<-EOF
+		>>> pcscd is required for a proper function of eidklient
+		>>> You can enable it by issuing:
+		>>>
+		>>> sudo systemctl enable pcscd.socket && sudo systemctl start pcscd.socket
+	EOF
+    fi
+}
+
+## arg 1:  the new package version
+post_install() {
+    checkpcscd
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    checkpcscd
+}
+
