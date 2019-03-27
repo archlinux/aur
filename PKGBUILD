@@ -114,7 +114,7 @@ source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}-
 
 pkgver() {
  printf ${_pkgver}v$_snapshot_
-} 
+}
 
 prepare() {
   cd "${_appname_}-${_pkgver}-${_suffix_}"
@@ -135,7 +135,7 @@ build() {
   cd "${_appname_}-${_pkgver}-${_suffix_}"
 
   export CFLAGS+=" -I/usr/include/samba-4.0"
-  export CPPFLAGS+=" -I/usr/include/samba-4.0" 
+  export CPPFLAGS+=" -I/usr/include/samba-4.0"
   export CXXFLAGS+=" -std=c++11"
   export LUAC=/usr/bin/luac
   export LUA_LIBS="`pkg-config --libs lua`"
@@ -235,9 +235,11 @@ build() {
               \
               --libexecdir=/usr/lib \
 	      --disable-daala \
-	      --disable-fdkaac
+	      --disable-fdkaac \
+	      --disable-decklink
   # note: removing --enable-daala for now because it is currently broken
   #       removing --enable-fdkaac for now because it is currently broken
+  #       adding --disable-decklink because it is broken
   make V=1
 }
 
