@@ -2,14 +2,14 @@
 # Contributor: Denis A. Altoé Falqueto <denisfalqueto@gmail.com>
 
 pkgname=python-pychromecast-git
-pkgver=340.124510e
+pkgver=360.0a3ba3f
 pkgrel=1
 pkgdesc="Library for Python 3 to communicate with the Google Chromecast."
 arch=('any')
 url="https://github.com/balloob/pychromecast"
 license=('MIT')
 depends=('python' 'python-requests' 'python-protobuf' 'python-zeroconf')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 provides=('python-pychromecast')
 conflicts=('python-pychromecast')
 options=(!emptydirs)
