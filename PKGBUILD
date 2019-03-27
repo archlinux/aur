@@ -1,5 +1,5 @@
 # Maintainer: Matt Mathis <aur@cloudninja.pw>
-pkgname=glpaper
+pkgname=glpaper-hg
 pkgver=r16.2b3a7b552353
 pkgrel=1
 pkgdesc="WLRoots based GLSL wallpapers for WLRoots compositors"

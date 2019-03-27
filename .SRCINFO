@@ -1,4 +1,4 @@
-pkgbase = glpaper
+pkgbase = glpaper-hg
 	pkgdesc = WLRoots based GLSL wallpapers for WLRoots compositors
 	pkgver = r16.2b3a7b552353
 	pkgrel = 1
@@ -7,8 +7,8 @@ pkgbase = glpaper
 	license = GPL3
 	makedepends = mercurial
 	depends = wayland
-	source = glpaper::hg+https://hg.sr.ht/~scoopta/glpaper
+	source = glpaper-hg::hg+https://hg.sr.ht/~scoopta/glpaper
 	sha256sums = SKIP
 
-pkgname = glpaper
+pkgname = glpaper-hg
 
