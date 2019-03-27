@@ -1,24 +1,24 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Co-Maintainer: Konstantin Gizdov <arch@kge.pw>
 # Contributor: Stephen Zhang <zsrkmyn at gmail dot com>
 
 pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-cuda")
 _pkgname="pytorch"
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
 depends=('python' 'python-yaml' 'python-numpy' 'opencv' 'nccl')
-makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'cudnn' 'git' 'gcc7')
+makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'cudnn' 'git' 'gcc')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         "git+https://github.com/catchorg/Catch2"
         "git+https://github.com/pybind/pybind11"
         "git+https://github.com/NVlabs/cub"
         "git+https://github.com/eigenteam/eigen-git-mirror"
         "git+https://github.com/google/googletest"
-        "git+https://github.com/NervanaSystems/nervanagpu"
         "git+https://github.com/google/benchmark"
         "git+https://github.com/google/protobuf"
         "git+https://github.com/Yangqing/ios-cmake"
@@ -64,7 +64,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             'SKIP')
 
 prepare() {
@@ -76,7 +75,6 @@ prepare() {
   git config submodule."third_party/cub".url "${srcdir}"/cub
   git config submodule."third_party/eigen".url "${srcdir}"/eigen-git-mirror
   git config submodule."third_party/googletest".url "${srcdir}"/googletest
-  git config submodule."third_party/nervanagpu".url "${srcdir}"/nervanagpu
   git config submodule."third_party/benchmark".url "${srcdir}"/benchmark
   git config submodule."third_party/protobuf".url "${srcdir}"/protobuf
   git config submodule."third_party/ios-cmake".url "${srcdir}"/ios-cmake
@@ -107,8 +105,8 @@ prepare() {
 build() {
   # Uncomment and modify the following line to enable Intel MKL and magma support
   # export CMAKE_PREFIX_PATH=/opt/intel/mkl/include:/opt/intel/mkl/lib/intel64:/opt/magma \
-  export CC=gcc-7
-  export CXX=g++-7
+  export CC=gcc
+  export CXX=g++
   export PYTORCH_BUILD_VERSION=${pkgver}
   export PYTORCH_BUILD_NUMBER=1
 
@@ -124,7 +122,7 @@ build() {
   echo "Building with cuda"
   export NO_CUDA=0
   export WITH_CUDNN=1
-  export CUDAHOSTCXX=g++-7
+  export CUDAHOSTCXX=g++
   export CUDA_HOME=/opt/cuda
   export CUDNN_LIB_DIR=/usr/lib
   export CUDNN_INCLUDE_DIR=/usr/include
