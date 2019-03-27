@@ -1,7 +1,7 @@
 pkgbase = upcheck
 	pkgdesc = Checker for ArchLinux available updates and send it via notify-rust.
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/edu4rdshl/upcheck
 	arch = x86_64
 	license = GPL3
