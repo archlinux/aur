@@ -1,8 +1,8 @@
 # Maintainer: Frans-Willem Hardijzer <fw@hardijzer.nl>
 pkgname=linux-surface-jakeday-bin
-pkgver=4.19.23
+pkgver=5.0.1
 pkgrel=1
-_releasenum=57
+_releasenum=4
 pkgdesc="Kernel release for Microsoft Surface devices from https://github.com/jakeday/linux-surface/. Copied binary from jakedays release."
 makedepends=('git')
 arch=('any')
@@ -15,7 +15,7 @@ source=(
   "60-linux.hook"
   "90-linux.hook"
 )
-md5sums=('39b6af3356593e2cda54c0fdb85eafdb'
+md5sums=('19aecce2e6a023d0c19e38c4cd2ffbae'
          'a329f9581060d555dc7358483de9760a'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          'b448c99f0ea9aaee9b13784958a98fd0')
