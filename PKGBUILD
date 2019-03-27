@@ -2,8 +2,9 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 
 name=cloudcompare
-pkgname=${name}-git
-pkgver=2.10.2.r115.g75157a8d
+pkgname=${name}
+_fragment="#tag=v2.10.2"
+pkgver=2.10.2
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ license=('GPL2')
 depends=('qt5-base' 'qt5-tools' 'qt5-svg' 'glu' 'glew' 'mesa' 'vxl' 'ffmpeg' 'cgal' 'pdal')
 makedepends=('git' 'cmake' 'pcl' 'libharu' 'proj' 'python' 'doxygen' 'laz-perf')
 optdepends=('pcl')
-source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git"
+source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git${_fragment}"
         "constexpr.patch"
         )
 md5sums=('SKIP'
@@ -21,12 +22,11 @@ md5sums=('SKIP'
 prepare() {
   cd ${srcdir}/${name}
   git submodule update --init --recursive
-  git apply ${srcdir}/constexpr.patch
 }
 
 pkgver() {
   cd ${srcdir}/${name}
-  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
@@ -43,9 +43,7 @@ build() {
         -DINSTALL_QCOMPASS_PLUGIN=ON \
         -DINSTALL_QPCL_PLUGIN=ON \
         -DINSTALL_QBLUR_PLUGIN=ON \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCOMPILE_CC_CORE_LIB_WITH_CGAL=ON \
-        -DINSTALL_QHPR_PLUGIN=ON \
+        -DCMAKE_BUILD_TYPE=Release \ -DCOMPILE_CC_CORE_LIB_WITH_CGAL=ON \ -DINSTALL_QHPR_PLUGIN=ON \
         -DINSTALL_QPOISSON_RECON_PLUGIN=ON \
         -DPOISSON_RECON_WITH_OPEN_MP=ON \
         -DINSTALL_QEDL_PLUGIN=ON \
