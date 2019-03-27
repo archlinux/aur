@@ -1,22 +1,22 @@
 # $Id$
 # Maintainer: Martchus <martchus@gmx.net>
 
-_android_arch=arm64-v8a
 _pkg_arch=aarch64
-_android_arch=arch-arm64
+_android_arch=arm64-v8a
 _android_toolchain=$_pkg_arch-linux-android
 _android_platform=22 # https://developer.android.com/about/dashboards/
-_android_platform_dir=android-$_android_platform/$_android_arch
+_android_platform_arch=arch-arm64
+_android_platform_dir=android-$_android_platform/${_android_platform_arch}
 _pkgname=openssl
-_ver=1.1.1a
+_ver=1.1.1b
 _pref=/opt/android-libs/$_pkg_arch
 
 # export Android configuration
 export ANDROID_MINIMUM_PLATFORM=$_android_platform
 export ANDROID_NDK_ROOT=${ANDROID_NDK_ROOT:-/opt/android-ndk}
 export ANDROID_SDK_ROOT=${ANDROID_SDK_ROOT:-/opt/android-sdk}
-export ANDROID_EABI=$_android_toolchain-4.9
-export ANDROID_ARCH=$_android_arch
+export ANDROID_EABI=llvm
+export ANDROID_ARCH=${_android_platform_arch}
 
 pkgname=android-$_pkg_arch-$_pkgname
 # use a pacman compatible version scheme
@@ -33,9 +33,9 @@ replaces=("android-$_pkgname-$_android_arch")
 source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"
         "https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz.asc"
         'setenv-android.sh')
-sha256sums=('fc20130f8b7cbd2fb918b2f14e2f429e109c31ddd0fb38fc5d71d9ffed3f9f41'
+sha256sums=('5c557b023230413dfb0756f3137a13e6d726838ccd1430888ad15bfb2b43ea4b'
             'SKIP'
-            '0938c8d68110768db4f350a7ec641070686904f2fe7ba630ac94399d7dc8cc5e')
+            'SKIP')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
 
 build() {
