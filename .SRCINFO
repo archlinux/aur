@@ -13,7 +13,7 @@ pkgbase = ffsend
 	depends = ca-certificates
 	optdepends = xclip: clipboard support
 	provides = ffsend
-	source = ffsend-v$pkgver.tar.gz::https://gitlab.com/timvisee/ffsend/-/archive/v0.2.42/ffsend-v0.2.42.tar.gz
+	source = ffsend-v0.2.42.tar.gz::https://gitlab.com/timvisee/ffsend/-/archive/v0.2.42/ffsend-v0.2.42.tar.gz
 	sha256sums = 59e42d03f4e7a1092ce7b5bbaebd57d9810671cefa8805f027bf2b7d62f4e1fc
 
 pkgname = ffsend
