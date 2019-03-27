@@ -3,7 +3,7 @@
 
 _plug=znedi3
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r1.7.g815beb9
+pkgver=r1.9.gacb7cc3
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('x86_64')
@@ -49,11 +49,11 @@ prepare() {
 }
 
 build() {
-  make -C "${_plug}" CPPFLAGS="-DNNEDI3_WEIGHTS_PATH=\\\"\"/usr/lib/vapoursynth/nnedi3_weights.bin\"\\\"" X86=1
+  make -C "${_plug}" X86=1 CPPFLAGS="-DNNEDI3_WEIGHTS_PATH=\\\"\"/usr/lib/vapoursynth/nnedi3_weights.bin\"\\\""
 }
 
 package(){
   install -Dm755 "${_plug}/vsznedi3.so" "${pkgdir}/usr/lib/vapoursynth/libvsznedi3.so"
+
   install -Dm644 "${_plug}/readme.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 }
-
