@@ -1,0 +1,84 @@
+diff -Naur labyrinth-0.6.orig/labyrinth_lib/Browser.py labyrinth-0.6/labyrinth_lib/Browser.py
+--- labyrinth-0.6.orig/labyrinth_lib/Browser.py	2018-09-05 16:29:11.992110000 +0200
++++ labyrinth-0.6/labyrinth_lib/Browser.py	2018-09-05 16:34:59.848220456 +0200
+@@ -29,7 +29,10 @@
+ # Gtk stuff
+ import gtk
+ if os.name != 'nt':
+-    import gconf
++    try:
++        import gconf
++    except ImportError:
++        gconf = None
+ import gtk.glade
+ import pango
+ import gobject
+@@ -89,7 +92,7 @@
+         self.main_window = self.glade.get_widget ('MapBrowser')
+ 
+         # set remembered size
+-        if os.name != 'nt':
++        if os.name != 'nt' and gconf:
+             self.config_client = gconf.client_get_default()
+             self.config_client.add_dir ("/apps/labyrinth", gconf.CLIENT_PRELOAD_NONE)
+ 
+@@ -105,7 +108,7 @@
+ 
+         view_sortable = self.view.get_model ()
+         view_sortable.connect ('sort-column-changed', self.sort_column_changed_cb)
+-        if os.name != 'nt':
++        if os.name != 'nt' and gconf:
+             sort_order = self.config_client.get_int('/apps/labyrinth/map_sort_order')
+             column_id = self.config_client.get_int('/apps/labyrinth/map_sort_order_column')
+             view_sortable.set_sort_column_id (column_id, sort_order)
+@@ -307,7 +310,7 @@
+ 
+         width, height = self.main_window.get_size()
+ 
+-        if os.name != 'nt':
++        if os.name != 'nt' and gconf:
+             self.config_client.set_int('/apps/labyrinth/width', width)
+             self.config_client.set_int('/apps/labyrinth/height', height)
+ 
+@@ -335,6 +338,6 @@
+ 
+     def sort_column_changed_cb (self, data):
+         column_id, sort_order = data.get_sort_column_id ()
+-        if os.name != 'nt':
++        if os.name != 'nt' and gconf:
+             self.config_client.set_int('/apps/labyrinth/map_sort_order', sort_order)
+             self.config_client.set_int('/apps/labyrinth/map_sort_order_column', column_id)
+diff -Naur labyrinth-0.6.orig/labyrinth_lib/MainWindow.py labyrinth-0.6/labyrinth_lib/MainWindow.py
+--- labyrinth-0.6.orig/labyrinth_lib/MainWindow.py	2018-09-05 16:29:11.998776000 +0200
++++ labyrinth-0.6/labyrinth_lib/MainWindow.py	2018-09-05 16:35:40.649492236 +0200
+@@ -32,7 +32,10 @@
+ import cairo, pangocairo
+ import gobject
+ if os.name != 'nt':
+-    import gconf
++    try:
++        import gconf
++    except ImportError:
++        gconf = None
+ 
+ # Local imports
+ import MMapArea
+@@ -81,7 +84,8 @@
+         self.MainArea.connect ("set_attrs", self.attrs_cb)
+         if os.name != 'nt':
+             self.MainArea.connect ("text_selection_changed", self.selection_changed_cb)
+-            self.config_client = gconf.client_get_default()
++            if gconf:
++                self.config_client = gconf.client_get_default()
+ 
+         glade = gtk.glade.XML(utils.get_data_file_name('labyrinth.glade'))
+         self.main_window = glade.get_widget ('MapWindow')
+@@ -321,7 +325,7 @@
+ 
+     def view_change_cb(self, base, activated):
+         utils.use_bezier_curves = activated.get_current_value() == MMapArea.VIEW_BEZIER
+-        if os.name != 'nt':
++        if os.name != 'nt' and gconf:
+             self.config_client.set_bool('/apps/labyrinth/curves', utils.use_bezier_curves)
+         self.MainArea.update_all_links()
+         self.MainArea.invalidate()

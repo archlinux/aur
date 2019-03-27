@@ -1,0 +1,65 @@
+From 1612f7df877ff58e621cab7c195bf19796b5fa9b Mon Sep 17 00:00:00 2001
+From: Thomas Kluyver <takowl@gmail.com>
+Date: Wed, 4 Jun 2014 10:32:08 -0700
+Subject: [PATCH] Eliminate numpy dependency
+
+We only used numpy for one little thing, and it seems we don't actually
+need it.
+---
+ grab_files.sh                 | 10 ++++++++--
+ installer.cfg                 |  1 -
+ labyrinth_lib/ImageThought.py |  7 +++----
+ labyrinth_lib/utils.py        | 15 ---------------
+ 4 files changed, 11 insertions(+), 22 deletions(-)
+
+diff --git a/labyrinth_lib/ImageThought.py b/labyrinth_lib/ImageThought.py
+index ac68eb7..55c2849 100644
+--- a/labyrinth_lib/ImageThought.py
++++ b/labyrinth_lib/ImageThought.py
+@@ -117,10 +117,9 @@ def export (self, context, move_x, move_y):
+         if self.pic:
+             if hasattr(context, "set_source_pixbuf"):
+                 context.set_source_pixbuf (self.pic, self.pic_location[0]+move_x, self.pic_location[1]+move_y)
+-            elif hasattr(context, "set_source_surface"):
+-                pixel_array = utils.pixbuf_to_cairo (self.pic.get_pixels_array())
+-                image_surface = cairo.ImageSurface.create_for_data(pixel_array, cairo.FORMAT_ARGB32, self.width, self.height, -1)
+-                context.set_source_surface (image_surface, self.pic_location[0]+move_x, self.pic_location[1]+move_y)
++            else:
++                gcontext = gtk.gdk.CairoContext(context)
++                gcontext.set_source_pixbuf(self.pic, self.pic_location[0]+move_x, self.pic_location[1]+move_y)
+             context.rectangle (self.pic_location[0]+move_x, self.pic_location[1]+move_y, self.width, self.height)
+             context.fill ()
+         context.set_source_rgb (0,0,0)
+diff --git a/labyrinth_lib/utils.py b/labyrinth_lib/utils.py
+index 73e2401..00f40aa 100644
+--- a/labyrinth_lib/utils.py
++++ b/labyrinth_lib/utils.py
+@@ -27,7 +27,6 @@
+ from os.path import join, dirname, exists, isdir, isfile
+ import os
+ import warnings
+-from numpy import array
+ from xdg import BaseDirectory
+ 
+ __BE_VERBOSE=os.environ.get('DEBUG_LABYRINTH',0)
+@@ -196,17 +195,3 @@ def export_thought_outline (context, ul, lr, background_color, am_root = False,
+     real_ul = (ul[0]+move[0], ul[1]+move[1])
+     real_lr = (lr[0]+move[0], lr[1]+move[1])
+     draw_thought_extended (context, real_ul, real_lr, False, am_primary, background_color, style == STYLE_EXTENDED_CONTENT)
+-
+-def pixbuf_to_cairo (pixel_array):
+-    result = []
+-    for y in pixel_array:
+-        row = []
+-        for x in y:
+-            color = [int(x[2][0]), int(x[1][0]), int(x[0][0])]
+-            if len(x) == 3:
+-                color.append(255)
+-            elif len(x) == 4:
+-                color.append(int(x[3][0]))
+-            row.append(color)
+-        result.append(row)
+-    return array(result, 'b')
+-- 
+2.0.3
+
