@@ -1,4 +1,6 @@
-# Maintainer: Tobias Kunze <rixx cutebit de>
+# Maintainer: Tobias Kunze <r@rixx.de>
+# Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
+
 pkgname=hostmux-git
 pkgver=1.1.0.r1.g9de5250
 pkgrel=1
