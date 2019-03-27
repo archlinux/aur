@@ -6,7 +6,7 @@
 
 pkgname=root5
 pkgver=5.34.38
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
 url='http://root.cern.ch'
@@ -33,7 +33,6 @@ optdepends=('gcc-fortran: Enable the Fortran components of ROOT'
             'pythia8: Pythia8 event generator support'
             'tcsh: Legacy CSH support'
             'xrootd: XRootD data access support')
-install='root.install'
 options=('!emptydirs')
 source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
         'root.sh'
