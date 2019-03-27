@@ -1,13 +1,14 @@
 pkgbase = scid_vs_pc
 	pkgdesc = Shane's Chess Information Database
 	pkgver = 4.20
-	pkgrel = 1
+	pkgrel = 2
 	url = http://scidvspc.sourceforge.net/
 	install = scid_vs_pc.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = zlib
+	depends = tk
 	optdepends = snack
 	optdepends = tdom
 	conflicts = scid

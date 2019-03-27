@@ -3,12 +3,12 @@
 
 pkgname=scid_vs_pc
 pkgver=4.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Shane's Chess Information Database"
 arch=('i686' 'x86_64')
 url="http://scidvspc.sourceforge.net/"
 license=('GPL2')
-depends=('zlib')
+depends=('zlib' 'tk')
 optdepends=('snack' 'tdom')
 install=$pkgname.install
 conflicts=('scid')
