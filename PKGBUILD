@@ -2,7 +2,7 @@
 
 pkgname=checkrun.sh
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cron-style mailing wrapper (not only) for systemd .timer units"
 url="https://github.com/lynix/checkrun.sh"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('bash' 'coreutils')
 optdepends=()
 makedepends=()
-conflicts=()
+conflicts=( 'checkrun.sh-git' )
 replaces=()
 backup=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lynix/checkrun.sh/archive/v1.0.tar.gz")
