@@ -3,12 +3,13 @@
 
 pkgname=scid_vs_pc
 pkgver=4.19
-pkgrel=2
+pkgrel=3
 pkgdesc="Shane's Chess Information Database"
 arch=('i686' 'x86_64')
 url="http://scidvspc.sourceforge.net/"
 license=('GPL2')
-depends=('snack' 'tdom' 'zlib')
+depends=('zlib')
+optdepends=('snack' 'tdom')
 install=$pkgname.install
 conflicts=('scid')
 source=("scid_vs_pc-"$pkgver".tgz::http://sourceforge.net/projects/scidvspc/files/source/scid_vs_pc-"$pkgver".tgz/download"
@@ -38,13 +39,13 @@ build() {
 
 package() {
     cd $srcdir/$pkgname-$pkgver
-   
+
     # Create directories
     install -dm755 $pkgdir/usr/bin
     install -dm755 $pkgdir/usr/share/scid/{bases,bin,bitmaps,books,data,html,lang,sounds}
     install -dm755 $pkgdir/usr/share/scid/bin/scripts
     install -dm755 $pkgdir/usr/share/fonts/truetype/Scid
-        
+
     # Data
     install -m 755 scid sc_* scidpgn pgnscid tkscid tcscid scmerge scidlet* scidt $pkgdir/usr/share/scid/bin
     rm -r scripts/CB-Mega
@@ -64,13 +65,13 @@ package() {
 
     # Sounds
     cp sounds/* $pkgdir/usr/share/scid/sounds
-    
+
     # Bases
     install -m 666  bases/* $pkgdir/usr/share/scid/bases
 
     # Bitmaps
     cp bitmaps/* $pkgdir/usr/share/scid/bitmaps
-    
+
     # Docs
     cp -r html/* $pkgdir/usr/share/scid/html
 
@@ -79,12 +80,12 @@ package() {
     cp phalanx/phalanx $pkgdir/usr/bin
     cp toga/src/fruit $pkgdir/usr/bin
     install -Dm666 phalanx/eco.phalanx $pkgdir/usr/share/scid/engines/phalanx/eco.phalanx
-    install -m 644  phalanx/pbook.phalanx $pkgdir/usr/share/scid/engines/phalanx 
+    install -m 644  phalanx/pbook.phalanx $pkgdir/usr/share/scid/engines/phalanx
 
     # Fonts
     cd ..
     cp fonts/{ScidChessStandard,ScidChessTraveller}.ttf $pkgdir/usr/share/fonts/truetype/Scid
-    
+
     # Desktop icon
     install -Dm644 icons/scid.png $pkgdir/usr/share/pixmaps/scid.png
     install -Dm644 $srcdir/scid_vs_pc.desktop $pkgdir/usr/share/applications/scid_vs_pc.desktop
