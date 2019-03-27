@@ -1,36 +1,35 @@
-# Maintainer: Vincent Bernardoff <vb@luminar.eu.org>
+# Maintainer:
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
+# Contributor: Vincent Bernardoff <vb@luminar.eu.org>
 
 pkgname=aspcud
-groups=('potassco')
-pkgver=1.9.1
-pkgrel=1
-pkgdesc="Solver for package dependencies"
-arch=('x86_64' 'i686' 'armv6h' 'armv7h')
-url="http://potassco.sourceforge.net/"
+pkgver=1.9.4
+pkgrel=4
+pkgdesc='Solver for package dependencies'
+arch=('x86_64')
+url='https://potassco.org/aspcud'
 license=('GPL3')
-depends=('clasp>=2.1.3' 'clingo>=5.0.0')
-conflicts=('aspcud-svn')
-makedepends=('boost' 'cmake' 're2c')
-source=(
-    "http://downloads.sourceforge.net/project/potassco/${pkgname}/${pkgver}/${pkgname}-${pkgver}-source.tar.gz"
-)
-sha1sums=(db1ce85814699fb77aff41f4f6df0721d6851756)
+makedepends=('boost' 'cmake' 'git' 'ninja' 're2c')
+depends=('clingo')
+source=("git+https://github.com/potassco/$pkgname#tag=v$pkgver")
+md5sums=('SKIP')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver-source"
-    mkdir -p build/release
-    cd build/release
-    cmake \
-	-DCMAKE_INSTALL_PREFIX:PATH=/usr \
-	-DCUDF2LP_LOC=cudf2lp \
-    	-DGRINGO_LOC=gringo \
-	-DCLASP_LOC=clasp \
-	-DCMAKE_BUILD_TYPE=Release ../..
-    make
+  mkdir -p build
+  cd build
+  cmake "../$pkgname" \
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+    -DCMAKE_INSTALL_LIBDIR:PATH=lib \
+    -DCUDF2LP_LOC=cudf2lp \
+    -DGRINGO_LOC=gringo \
+    -DCLASP_LOC=clasp \
+    -DCMAKE_BUILD_TYPE=Release \
+    -GNinja
+  ninja
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver-source"
-    cd build/release
-    make DESTDIR=${pkgdir} install
+  DESTDIR="$pkgdir" ninja -C build install
 }
+
+# vim: ts=2 sw=2 et:
