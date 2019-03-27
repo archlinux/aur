@@ -3,12 +3,12 @@
 
 pkgname=epubcheck
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to validate epub files."
 arch=('any')
 url="https://github.com/IDPF/epubcheck"
 license=('BSD')
-depends=('java-environment')
+depends=('java-environment' 'sh')
 makedepends=('maven')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/w3c/epubcheck/archive/v${pkgver}.tar.gz"
         "epubcheck.1")
@@ -32,7 +32,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
 
   cat >> "$pkgdir/usr/bin/${pkgname}" << EOF 
-#!/bin/bash
+#!/bin/sh
 exec /usr/bin/java -jar '/usr/share/java/epubcheck/epubcheck.jar' "\$@"
 EOF
   chmod 755 "${pkgdir}/usr/bin/${pkgname}"
