@@ -6,7 +6,7 @@
 _reponame=reflective-rapidjson
 pkgname=mingw-w64-reflective-rapidjson
 _name=${pkgname#mingw-w64-}
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 arch=('any')
 pkgdesc='Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON (mingw-w64)'
@@ -18,7 +18,7 @@ checkdepends=('mingw-w64-cppunit' 'mingw-w64-wine' 'mingw-w64-boost')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('4e0a30716d905840359c35edc2acf3933cbe9be2e81de80a28beb119c1163c53')
+sha256sums=('d10e21909b29f960a9dc5e8d925511597e35e2a8436b2732bc2e224acbd62b73')
 options=(!buildflags staticlibs !strip !emptydirs)
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || _configurations='-DENABLE_STATIC_LIBS:BOOL=ON'
@@ -34,6 +34,10 @@ build() {
         -DNO_GENERATOR=ON \
         ${_configurations} \
         ../
+
+    # workaround issue https://gitlab.kitware.com/cmake/cmake/issues/19095
+    find -iname 'includes_CXX.rsp' -exec sed -i -e "s|-isystem /usr/$_arch/include ||" {} \;
+
     make
     popd
   done
