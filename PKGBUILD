@@ -1,7 +1,7 @@
 # Maintainer: Flakebi <flakebi@t-online.de>
 _pkgname=Bucardo
 pkgname=bucardo
-pkgver=5.4.1
+pkgver=5.5.0
 pkgrel=1
 epoch=
 pkgdesc="An asynchronous PostgreSQL replication system, allowing for both multi-master and multi-slave operations"
@@ -12,11 +12,11 @@ depends=('perl-boolean' 'perl-dbi' 'perl-dbd-pg')
 checkdepends=('perl-test-simple')
 source=("http://bucardo.org/downloads/$_pkgname-$pkgver.tar.gz"
         "http://bucardo.org/downloads/$_pkgname-$pkgver.tar.gz.asc")
-md5sums=('fa319e009d61d2427fb5fe2b98b4a0e7'
+md5sums=('1e49f61f30251b99f7c2521efe83c316'
          'SKIP')
-sha256sums=('0f080d75a7dca98c12f4d01463ba01e461c7c25c8daa383aca94202efd5d13dd'
+sha256sums=('14ca09a7394fd63029b583a01e2d04b438d4860af2dac109c6a3352e517abb2d'
             'SKIP')
-validpgpkeys=('2529DF6AB8F79407E94445B4BC9B906714964AC8')
+validpgpkeys=('08A0359786047C5E1E2B8FDE374A23C9DF9B65B8')
 _distdir="$_pkgname-$pkgver"
 
 build() {
