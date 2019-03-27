@@ -10,8 +10,8 @@
 
 _srcname=ffmpeg
 pkgname=ffmpeg-qsv
-pkgver=4.1.1
-pkgrel=2
+pkgver=4.1.2
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (including qsv and libfdk-aac)'
 arch=(x86_64)
 url='https://www.ffmpeg.org/'
@@ -68,6 +68,7 @@ depends=(
 )
 makedepends=(
   ffnvcodec-headers
+  opencl-headers
   git
   ladspa
   nasm
