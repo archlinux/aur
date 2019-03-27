@@ -1,0 +1,14 @@
+pkgbase = yo-runner
+	pkgdesc = A Yaml-driven task runner for lazy people
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://OliverSherouse.github.io/yo-runner
+	arch = any
+	license = GPL
+	depends = python-yaml
+	depends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/y/yo-runner/yo-runner-0.1.1.tar.gz
+	md5sums = c0cb3bbe43cda6195351b434f242b3a2
+
+pkgname = yo-runner
+
