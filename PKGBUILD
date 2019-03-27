@@ -1,30 +1,29 @@
-# Maintainer: Ondrej Kucera <ondrej.kucera@centrum.cz>
+# Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
+# Contributor: Ondrej Kucera <ondrej.kucera@centrum.cz>
 pkgname=swagger-codegen
-pkgver=2.3.1
+pkgver=3.0.7
 pkgrel=1
 pkgdesc="Swagger Code Generator"
 arch=("any")
 url="https://github.com/swagger-api/swagger-codegen"
 license=("Apache")
-groups=()
 depends=('java-runtime')
-makedepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-source=(https://oss.sonatype.org/content/repositories/releases/io/swagger/swagger-codegen-cli/$pkgver/swagger-codegen-cli-$pkgver.jar
+makedepends=('maven')
+provides=('swagger-codegen-cli')
+source=($pkgname-${pkgver}.tar.gz::https://github.com/swagger-api/swagger-codegen/archive/v$pkgver.tar.gz
        swagger-codegen)
-sha256sums=('428cda915b341824353f045f1714e1c7657aeb70126f52f6f4ccc4d33fc8389c'
-            'b1c49877eaf8905f0d6d297a7a68692b5137e24df44ddf585f45033962c4e3ab')
-noextract=(swagger-codegen-cli-$pkgver.jar)
+sha256sums=('4df70e638d1ce9023165c909827dd1cd02bbec1ae5756a4bb7891a0747886d66'
+            '6a876066f7433d1e5b812c63817eff122804db37b2fd79c5013d79844b2b8828')
+
+build() {
+  cd $srcdir/$pkgname-${pkgver}
+  mvn clean package
+}
 
 package() {
-  install -d -m 755 "$pkgdir/usr/share/java/swagger-codegen"
-  install -m 644 swagger-codegen-cli-$pkgver.jar "$pkgdir/usr/share/java/swagger-codegen"
-  ln -s "swagger-codegen-cli-$pkgver.jar" "$pkgdir/usr/share/java/swagger-codegen/swagger-codegen-cli.jar"
-  install -d -m 755 "$pkgdir/usr/bin"
-  install -m 755 swagger-codegen "$pkgdir/usr/bin"
+  install -Dm644 "$srcdir/$pkgname-${pkgver}/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar" "$pkgdir/usr/share/swagger-codegen/swagger-codegen-cli.jar"
+  install -Dm755 swagger-codegen "$pkgdir/usr/bin/swagger-codegen"
 }
+
+# vim: ft=sh syn=sh et
+
