@@ -1,7 +1,7 @@
 # Maintainer: Adrien Jussak <adrien.jussak@wascardev.com>
 
 pkgname="prime-switcher"
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Tool (GUI  + CLI) to select used GPU for Optimus Laptop"
 arch=('any')
@@ -13,7 +13,7 @@ install=prime-switcher.install
 
 source=("https://gitlab.com/tuxnvape/prime-switcher/-/archive/v${pkgver}/prime-switcher-v${pkgver}.tar.gz")
 
-sha256sums=("d34372f7df0cf6b82ad7459038e4f345e311a087b86bfa2db2f9a15b0f7458dd")
+sha256sums=('bd9bc595e026ed1a9445cf6b4a3696724ffcf7a1e390fc743332a9261a578135')
 
 build() {
 	_src="${srcdir}/${pkgname}-v${pkgver}"
