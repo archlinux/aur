@@ -1,7 +1,7 @@
 # Maintainer: AlessioDP <me@alessiodp.com>
 pkgname=kpmenu
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dmenu/rofi interface for KeePass databases"
 arch=("x86_64")
 url=https://github.com/AlessioDP/kpmenu
@@ -20,6 +20,8 @@ build() {
 	export GOPATH="$srcdir"
 	cd "$srcdir/$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/usr" build
+	# Remove write-protection of go get, otherwise you won't be able to delete srcDir
+	chmod -R +w "$srcdir"
 }
 
 package() {
