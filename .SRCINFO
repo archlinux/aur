@@ -1,0 +1,17 @@
+pkgbase = rootbar-hg
+	pkgdesc = Status bar for the Sway Compositor
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://hg.sr.ht/~scoopta/rootbar
+	arch = x86_64
+	license = GPL3
+	makedepends = mercurial
+	depends = wayland
+	depends = gtk3
+	depends = json-c
+	depends = libpulse
+	source = rootbar-hg::hg+https://hg.sr.ht/~scoopta/rootbar
+	sha256sums = SKIP
+
+pkgname = rootbar-hg
+
