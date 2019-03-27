@@ -22,17 +22,12 @@ backup=('etc/conf.d/logstash'
         'etc/logstash/pipelines.yml')
 _jrubydist=jruby-dist-${_jrubyver}-bin.tar.gz
 source=(https://artifacts.elastic.co/downloads/logstash/$relpkgname-$pkgver.tar.gz
-        https://repo1.maven.org/maven2/org/jruby/jruby-dist/${_jrubyver}/${_jrubydist}
-        build.patch
         logstash.service
         logstash@.service
         logstash-sysuser.conf
         logstash-tmpfile.conf
         bundle.config)
-noextract=(${_jrubydist})
 sha256sums=('4ff1a532a5dd41cc7249840a4f74f332c05d4efdb67c0fe7e8b1c0d9c3c505d0'
-            '9d156646623ac2f27174721035b52572a4b05690db7c1293295aa2c04aad3908'
-            '640f1c81e6c68f9d1256875db89f5439992e2b8188fb7e6e3ddcdae1c33a3af8'
             '2b8b29297202334c784fdd7f2eb8d7e776c24c783b3c9f8387b500ab0039335c'
             'a01ea29d4f53d785f6eb926ebfe445e64ed5b3dab5d0418848589dd79502d876'
             '18a68a59ddb0ce19778e83b65e68dd568d65b7180bf45b4cf298fb332d69eb26'
@@ -46,38 +41,7 @@ prepare() {
   sed -e '1i [ -f /etc/profile.d/jre.sh ] && . /etc/profile.d/jre.sh' -i bin/logstash.lib.sh
 
   # remove deprecated JVM options
-  sed 's|"-XX:+UseParNewGC", ||g' -i logstash-core/benchmarks/build.gradle
   sed 's|-XX:+UseParNewGC||g' -i config/jvm.options
-
-  patch -p1 -i "$srcdir"/build.patch
-
-  # Use system gradle (currently not working)
-  # sed 's;./gradlew;gradle;g' -i rakelib/*.rake
-
-  # Skip downloadAndInstallJRuby task in the bootstrap process
-  sed /downloadAndInstallJRuby/d -i rakelib/vendor.rake
-
-  mkdir -p vendor/_/
-  cd vendor/_/
-  ln -s "$srcdir"/${_jrubydist}
-}
-
-build() {
-  cd $relpkgname-${pkgver}
-  export PATH="/usr/lib/jvm/java-10-openjdk/bin:$PWD/vendor/jruby/bin:$PATH"
-
-  # gradle downloadAndInstallJRuby (system gradle currently not working)
-  ./gradlew downloadAndInstallJRuby
-  rake bootstrap
-  rake plugin:install-default
-
-  rm -r vendor/_ build ci logstash-core/{build,src,spec} qa pkg spec rakelib tools vendor/bundle/jruby/*/cache .gradle
-
-  cd vendor/jruby/lib
-  mv jni jni-temp
-  mkdir jni
-  mv jni-temp/x86_64-Linux jni/
-  rm -rf jni-temp
 }
 
 package() {
