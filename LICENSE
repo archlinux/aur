@@ -1,8 +1,15 @@
-Copied from "Help > About Trader Workstation..." menu item
+Copied from "Help > About Trader Workstation..." menu item. The following is
+NOT updated with each successive TWS release (as there is no way to
+automatically extract this content from TWS or its distribution package). As
+such you MUST manually check the latest license as actually displayed by TWS.
 
 ============================
 
-Trader Workstation Copyright © 2000 LICENSOR to Interactive Brokers ALL RIGHTS RESERVED
+Trader Workstation
+Copyright © 2000-2018 LICENSOR to Interactive Brokers
+ALL RIGHTS RESERVED
+
+[... Build and Platform Configuration ...]
 
 This software is covered by U.S. Patent No. 7.827.092.
 
@@ -12,16 +19,20 @@ This product includes software developed by the JDOM (http://www.jdom.org/) and 
 
 This software includes software developed by Hypersonic SQL Group under its licence which can be found here http://hsqldb.org/web/hsqlLicense.html.
 
-This product includes unmodified software developed by Pentaho Corporation (Mondrian 2.4.2.9831) under its license that can be found at http://www.pentaho.com/license.
+This product includes unmodified software developed by Pentaho Corporation (Mondrian 3.14) under its license that can be found at http://www.pentaho.com/license.
 
 This product uses the "Secure Remote Password" cryptographic authentication system developed by Tom Wu (tjw@CS.Stanford.EDU).
 
-Build 935.3, Jan 17, 2013 6:32:55 PM
-Jolt Build 1.2.1, Jun 7, 2012 05:22:01 PM
-Nia Build 1.11.1, Jun 7, 2012 05:23:19 PM
-ModelNav Build 1.1.45, Nov 16, 2012 04:24:03 PM
-Java Version: 1.7.0_09
-OS: Linux (amd64, 3.7.4-1-ARCH)
+This software includes unmodified Apache HttpComponents class library from Apache Software Foundation under the terms of Apache License, which can be found here: http://www.apache.org/licenses/LICENSE-2.0
 
-Interactive Brokers Home Page
+This software includes unmodified Apache Commons Logging class library from Apache Software Foundation under the terms of Apache License, which can be found here: http://www.apache.org/licenses/LICENSE-2.0
 
+This software includes unmodified Apache Commons Codec class library from Apache Software Foundation under the terms of Apache License, which can be found here: http://www.apache.org/licenses/LICENSE-2.0
+
+This software uses JSON reference implementation under JSON license, which can be found at http://www.json.org/license.html
+
+This product includes modified ExoPlayer software under the terms of Apache License, which can be found here: http://www.apache.org/licenses/LICENSE-2.0
+
+This software uses es6-promise implementation under MIT license, which can be found at https://raw.githubusercontent.com/stefanpenner/es6-promise/master/LICENSE
+
+This software uses moment JS implementation under MIT license, which can be found at https://github.com/moment/moment/blob/develop/LICENSE

@@ -21,7 +21,7 @@ source=('LICENSE'
 	'ib-gw.conf'
 	'ib-gw.desktop'
 	'https://download2.interactivebrokers.com/installers/tws/latest-standalone/tws-latest-standalone-linux-x64.sh')
-md5sums=('e1cae2de592add7133bb08123e8db1ad'
+md5sums=('c93bcc44678aef8b9d0ec6faecb27927'
          '428c553da90bb2ea650a7f96ae076937'
          '1ec45ec225b8dcd362634f7395e8cd0d'
          '9205b5eade96d69f8e470cc52c30db4a'
