@@ -1,11 +1,12 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Ben Mazer <blm@groknil.org>
+# Maintainer:
+# Contributor: Pierre Neidhardt <ambrevar@gmail.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Ben Mazer <blm@groknil.org>
 # Contributor: Mike Douglas <code_monkey@gooeylinux.org>
 
 pkgname=gtypist
 pkgver=2.9.5
-pkgrel=3
+pkgrel=5
 pkgdesc="universal typing tutor"
 arch=('x86_64')
 url="http://www.gnu.org/software/gtypist/gtypist.html"
