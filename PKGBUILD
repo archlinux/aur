@@ -1,7 +1,7 @@
 # Maintainer: Valeriy Huz <ghotrix@gmail.com>
 pkgname='lucaschess-git'
 _pkgname=lucaschess
-pkgver=99
+pkgver=107
 pkgrel=1
 pkgdesc="Play Train Compete"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ build() {
     bash ./xmk_linux.sh
     cd "$srcdir/${_pkgname}/LCEngine"
     sed -i s/python/python2/g xcython_linux.sh
-    sed -i s/LCEngine2/LCEngine3/g xcython_linux.sh
+    sed -i s/LCEngine2/LCEngine4/g xcython_linux.sh
     bash ./xcython_linux.sh
 }
 
@@ -45,7 +45,7 @@ package() {
     fi
     install -d "${pkgdir}"/usr/{lib,bin}
     install -m777 -d "${pkgdir}/opt/${_pkgname}"
-    install -Dm755 "$srcdir/${_pkgname}"/LCEngine/{LCEngine3,libirina}.so "${pkgdir}/usr/lib"
+    install -Dm755 "$srcdir/${_pkgname}"/LCEngine/{LCEngine4,libirina}.so "${pkgdir}/usr/lib"
     install -Dm755 "$srcdir/${_pkgname}"/Lucas "${pkgdir}/usr/bin"
     install -Dm755 "$srcdir/${_pkgname}"/Lucas.py "${pkgdir}/opt/${_pkgname}"
     install -m777 -d "${pkgdir}/opt/${_pkgname}/Code"

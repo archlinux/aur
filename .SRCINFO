@@ -1,6 +1,6 @@
 pkgbase = lucaschess-git
 	pkgdesc = Play Train Compete
-	pkgver = 99
+	pkgver = 107
 	pkgrel = 1
 	url = http://lucaschess.pythonanywhere.com/
 	arch = i686
