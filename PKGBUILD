@@ -11,7 +11,7 @@ license=('GPL')
 depends=('vapoursynth'
          'vapoursynth-plugin-vshelpers-git'
          'vapoursynth-plugin-nnedi3-git'
-         'vapoursynth-plugin-sangnom-hg'
+         'vapoursynth-plugin-sangnom'
          'vapoursynth-plugin-msmoosh-git'
          'vapoursynth-plugin-genericfilters-git'
          )
