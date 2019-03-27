@@ -5,19 +5,24 @@
 
 pkgname=libunity
 pkgver=7.1.4
-pkgrel=7
+pkgrel=8
 pkgdesc='Library for instrumenting and integrating with all aspects of the Unity shell'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/libunity'
 license=('LGPL')
 depends=('dee' 'gtk3' 'libdbusmenu-glib')
 makedepends=('gnome-common' 'gobject-introspection' 'intltool' 'vala')
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}+18.04.20180209.1.orig.tar.gz")
-sha256sums=("a6f3a6f6ef5536398b207b31ffed0747b7a9916512a71656d3c1d7e129acf15f")
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}+19.04.20190319.orig.tar.gz")
+sha256sums=('56ecb380d74bf74caba193d9e8ad6b0c85ccf9eeb461bc9731c2b8636e1f1492')
+
+prepare() {
+  cd "${srcdir}"
+  NOCONFIGURE=1 ./autogen.sh
+}
 
 build() {
   cd "${srcdir}"
-  ./autogen.sh --prefix='/usr' --sysconfdir='/etc' --localstatedir='/var' --disable-static
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static
   make
 }
 
