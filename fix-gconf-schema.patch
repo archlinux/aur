@@ -1,0 +1,14 @@
+diff -Naur vmoviedb-0.1.5.orig/data/vmoviedb.schemas.in vmoviedb-0.1.5/data/vmoviedb.schemas.in
+--- vmoviedb-0.1.5.orig/data/vmoviedb.schemas.in	2006-09-08 10:45:01.000000000 +0200
++++ vmoviedb-0.1.5/data/vmoviedb.schemas.in	2017-01-23 19:12:41.777009593 +0100
+@@ -34,10 +34,6 @@
+ 			<locale name="C">
+ 				<short>Show or hide movie information box.</short>
+ 			</locale>
+-
+-			<locale name="bg">
+-				<short>Покажи или скрии информацията за филма.</short>
+-			</locale>
+ 		</schema>
+ 		
+ 		<schema>

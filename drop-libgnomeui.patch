@@ -1,0 +1,271 @@
+diff -Naur vmoviedb-0.1.5.orig/configure.in vmoviedb-0.1.5/configure.in
+--- vmoviedb-0.1.5.orig/configure.in	2006-09-03 22:43:22.000000000 +0200
++++ vmoviedb-0.1.5/configure.in	2017-01-23 18:38:13.191992894 +0100
+@@ -15,7 +15,7 @@
+ 
+ PKG_CHECK_MODULES(VMOVIEDB,
+ 		libxml-2.0 \
+-		libgnomeui-2.0 \
++		gconf-2.0 \
+ 		gtk+-2.0 \
+ 		libglade-2.0)
+ 
+diff -Naur vmoviedb-0.1.5.orig/data/glade/main_window.glade vmoviedb-0.1.5/data/glade/main_window.glade
+--- vmoviedb-0.1.5.orig/data/glade/main_window.glade	2006-09-06 15:23:44.000000000 +0200
++++ vmoviedb-0.1.5/data/glade/main_window.glade	2017-01-23 18:46:20.158405144 +0100
+@@ -2,7 +2,6 @@
+ <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
+ 
+ <glade-interface>
+-<requires lib="gnome"/>
+ 
+ <widget class="GtkWindow" id="window1">
+   <property name="visible">True</property>
+diff -Naur vmoviedb-0.1.5.orig/src/add_dialog.c vmoviedb-0.1.5/src/add_dialog.c
+--- vmoviedb-0.1.5.orig/src/add_dialog.c	2006-09-05 22:03:19.000000000 +0200
++++ vmoviedb-0.1.5/src/add_dialog.c	2017-01-23 18:43:56.281180124 +0100
+@@ -28,8 +28,8 @@
+ #include <libintl.h>
+ #include <locale.h>
+ #include <string.h>
++#include <glib/gi18n.h>
+ #include <glade/glade.h>
+-#include <libgnome/libgnome.h>
+ 
+ #include "add_edit_common.h"
+ #include "gui_struct.h"
+diff -Naur vmoviedb-0.1.5.orig/src/callbacks.c vmoviedb-0.1.5/src/callbacks.c
+--- vmoviedb-0.1.5.orig/src/callbacks.c	2006-09-19 15:06:32.000000000 +0200
++++ vmoviedb-0.1.5/src/callbacks.c	2017-01-23 18:41:52.744520973 +0100
+@@ -31,8 +31,7 @@
+ #include <sys/stat.h>
+ #include <sys/dir.h>
+ #include <fnmatch.h>
+-#include <libgnome/libgnome.h>
+-#include <libgnomeui/libgnomeui.h>
++#include <glib/gi18n.h>
+ #include <libxml/parser.h>
+ 
+ #include "parser.h"
+@@ -93,7 +92,7 @@
+ 	
+ 	i = g_list_length (movies);
+ 	status_message = g_strdup_printf (_("%d movie(s) in database."), i);
+-	gnome_appbar_push (GNOME_APPBAR (main_window.statusbar), status_message);
++	gtk_statusbar_push (GTK_STATUSBAR (main_window.statusbar), 0, status_message);
+ 	
+ 	g_object_unref (icon);
+ 	g_free (status_message);
+@@ -237,7 +236,7 @@
+ 	
+ 	query = g_strdup_printf (("http://imdb.com/find?s=tt&q=%s"), title);
+ 	
+-	gnome_url_show (query, NULL);
++	gtk_show_uri (NULL, query, GDK_CURRENT_TIME, NULL);
+ 
+ 	g_free (query);
+ }
+diff -Naur vmoviedb-0.1.5.orig/src/data_check.c vmoviedb-0.1.5/src/data_check.c
+--- vmoviedb-0.1.5.orig/src/data_check.c	2006-07-04 20:19:01.000000000 +0200
++++ vmoviedb-0.1.5/src/data_check.c	2017-01-23 18:14:04.387596388 +0100
+@@ -28,8 +28,6 @@
+ #include <glib.h>
+ #include <gtk/gtk.h>
+ #include <glade/glade.h>
+-#include <libgnomevfs/gnome-vfs.h>
+-#include <libgnomevfs/gnome-vfs-utils.h>
+ 
+ #include "parser.h"
+ #include "settings_rc.h"
+@@ -60,8 +58,6 @@
+ 	GtkTreeViewColumn *element_column;
+ 	gint run;
+ 	
+-	gnome_vfs_init();
+-	
+ 	list_store = gtk_list_store_new (NUM_COLUMNS,
+ 				      GDK_TYPE_PIXBUF,
+ 				      G_TYPE_STRING,
+@@ -150,9 +146,7 @@
+ 	GList *movies = NULL;
+ 	GList *broken_movie = NULL;
+ 	movie_record *record = NULL;
+-	GnomeVFSURI *uri, *uri1;
+-	gchar *image = NULL;
+-	gchar *location = NULL;
++	GFile *file;
+ 	
+ 	gtk_list_store_clear (GTK_LIST_STORE (list_store));
+ 	
+@@ -168,10 +162,9 @@
+ 		if (strcmp (record->location, "On CD") != 0)
+ 		{
+ 			printf ("%s\n", record->location);
+-			location = gnome_vfs_get_uri_from_local_path (record->location);
+-			uri = gnome_vfs_uri_new (location);
++			file = g_file_new_for_path (record->location);
+ 		
+-			if (!gnome_vfs_uri_exists (uri))
++			if (!g_file_query_exists (file, NULL))
+ 			{
+ 				printf ("Broken movie location.\n");
+ 				gtk_list_store_append (GTK_LIST_STORE (list_store),
+@@ -182,15 +175,16 @@
+ 						  ELEMENT_COLUMN, 
+ 						  _("Broken Location"), -1);
+ 			}
++
++			g_object_unref (file);
+ 		}
+ 			
+ 		if (strlen (record->img) != 0)
+ 		{
+ 			printf ("%s\n", record->img);
+-			image = gnome_vfs_get_uri_from_local_path (record->img);
+-			uri1 = gnome_vfs_uri_new (image);
++			file = g_file_new_for_path (record->location);
+ 		
+-			if (!gnome_vfs_uri_exists (uri1))
++			if (!g_file_query_exists (file, NULL))
+ 			{
+ 				printf ("Broken movie location.\n");
+ 				gtk_list_store_append (GTK_LIST_STORE (list_store),
+@@ -201,31 +195,9 @@
+ 						  ELEMENT_COLUMN, 
+ 						  _("Broken Image"), -1);
+ 			}
++
++			g_object_unref (file);
+ 		}
+-		/*if (!gnome_vfs_uri_exists (uri1))
+-		{
+-			printf ("Broken movie image.\n");
+-			gtk_list_store_append (GTK_LIST_STORE (list_store),
+-					     &iter);
+-			gtk_list_store_set (GTK_LIST_STORE (list_store), &iter,
+-					  ICON_COLUMN, icon,
+-					  TITLE_COLUMN, record->title,
+-					  ELEMENT_COLUMN,
+-					  _("Broken Image"), -1);
+-		}
+-		
+-		if (!gnome_vfs_uri_exists (uri) && !gnome_vfs_uri_exists (uri1))
+-		{
+-			printf ("Broken movie location and image.\n");
+-			gtk_list_store_append (GTK_LIST_STORE (list_store),
+-					     &iter);
+-			gtk_list_store_set (GTK_LIST_STORE (list_store), &iter,
+-					  ICON_COLUMN, icon,
+-					  TITLE_COLUMN, record->title,
+-					  ELEMENT_COLUMN,
+-					  _("Broken Location, Broken Image"),
+-					  -1);
+-		}*/
+ 		
+ 		broken_movie = g_list_next (broken_movie);
+ 	}
+diff -Naur vmoviedb-0.1.5.orig/src/edit_dialog.c vmoviedb-0.1.5/src/edit_dialog.c
+--- vmoviedb-0.1.5.orig/src/edit_dialog.c	2006-09-08 10:21:02.000000000 +0200
++++ vmoviedb-0.1.5/src/edit_dialog.c	2017-01-23 18:43:17.990147526 +0100
+@@ -29,8 +29,8 @@
+ #include <libintl.h>
+ #include <locale.h>
+ #include <string.h>
++#include <glib/gi18n.h>
+ #include <glade/glade.h>
+-#include <libgnome/libgnome.h>
+ 
+ #include "add_edit_common.h"
+ #include "gui_struct.h"
+diff -Naur vmoviedb-0.1.5.orig/src/gui.c vmoviedb-0.1.5/src/gui.c
+--- vmoviedb-0.1.5.orig/src/gui.c	2006-09-24 20:34:06.000000000 +0200
++++ vmoviedb-0.1.5/src/gui.c	2017-01-23 18:40:49.686163576 +0100
+@@ -27,9 +27,8 @@
+ 
+ #include <libintl.h>
+ #include <locale.h>
++#include <glib/gi18n.h>
+ #include <glade/glade.h>
+-#include <libgnome/libgnome.h>
+-#include <libgnomeui/libgnomeui.h>
+ 
+ #include "gui_struct.h"
+ #include "gui.h"
+@@ -256,8 +255,7 @@
+ 	 * create statusbar before the UI manager, or else the tooltips
+ 	 * displayed in the statusbar won't work.
+ 	 */
+-	main_window.statusbar = gnome_appbar_new (FALSE, TRUE, 
+-					      GNOME_PREFERENCES_NEVER);
++	main_window.statusbar = gtk_statusbar_new ();
+ 	gtk_box_pack_end (GTK_BOX (main_vbox), main_window.statusbar, 
+ 			FALSE, TRUE, 0);
+ 	gtk_widget_show (GTK_WIDGET (main_window.statusbar));
+@@ -664,8 +662,8 @@
+ 	{
+ 		g_object_get (data->action, "tooltip", &tooltip, NULL);
+ 		
+-		gnome_appbar_push (GNOME_APPBAR (data->statusbar),
+-				 tooltip ? tooltip : "");
++		gtk_statusbar_push (GTK_STATUSBAR (data->statusbar), 0,
++				  tooltip ? tooltip : "");
+       
+ 		g_free (tooltip);
+ 	}
+@@ -679,7 +677,7 @@
+ 
+ 	if (data)
+ 	{
+-		gnome_appbar_pop (GNOME_APPBAR (data->statusbar));
++		gtk_statusbar_pop (GTK_STATUSBAR (data->statusbar), 0);
+ 	}
+ }
+ 
+@@ -794,7 +792,7 @@
+ {
+ 	GError *error = NULL;
+ 	
+-	if(gnome_url_show ("ghelp://"PACKAGE_HELP_DIR"/C/vmoviedb.xml", &error) == FALSE)
++	if(gtk_show_uri (NULL, "ghelp://"PACKAGE_HELP_DIR"/C/vmoviedb.xml", GDK_CURRENT_TIME, &error) == FALSE)
+ 	{	
+ 		GtkWidget *dialog;
+ 	
+@@ -828,7 +826,7 @@
+ {
+ 	#ifdef _WIN32
+ 	#else
+-	gnome_url_show ("http://vmoviedb.sf.net", NULL);
++	gtk_show_uri (NULL, "http://vmoviedb.sf.net", GDK_CURRENT_TIME, NULL);
+ 	#endif
+ }
+ 
+@@ -836,7 +834,7 @@
+ {
+ 	#ifdef _WIN32
+ 	#else
+-	gnome_url_show ("http://sourceforge.net/tracker/?func=add&group_id=153571&atid=788299", NULL);
++	gtk_show_uri (NULL, "http://sourceforge.net/tracker/?func=add&group_id=153571&atid=788299", GDK_CURRENT_TIME, NULL);
+ 	#endif
+ }
+ 
+@@ -844,6 +842,6 @@
+ {
+ 	#ifdef _WIN32
+ 	#else
+-	gnome_url_show ("mailto:vmoviedb-users@lists.sf.net", NULL);
++	gtk_show_uri (NULL, "mailto:vmoviedb-users@lists.sf.net", GDK_CURRENT_TIME, NULL);
+ 	#endif
+ }
+diff -Naur vmoviedb-0.1.5.orig/src/search.c vmoviedb-0.1.5/src/search.c
+--- vmoviedb-0.1.5.orig/src/search.c	2006-09-19 14:59:20.000000000 +0200
++++ vmoviedb-0.1.5/src/search.c	2017-01-23 18:42:36.995710372 +0100
+@@ -28,8 +28,8 @@
+ #include <libintl.h>
+ #include <locale.h>
+ #include <string.h>
++#include <glib/gi18n.h>
+ #include <glade/glade.h>
+-#include <libgnome/libgnome.h>
+ 
+ #include <widgets/rating_cell_renderer.h>
+ #include "data_struct.h"
