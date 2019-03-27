@@ -1,6 +1,6 @@
 pkgbase = flirc-bin
 	pkgdesc = CLI and GUI application to program your Flirc device
-	pkgver = 3.20.3
+	pkgver = 3.22.1
 	pkgrel = 1
 	url = http://flirc.tv
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = flirc-bin
 	provides = flirc
 	conflicts = flirc
 	replaces = flirc
-	source = https://apt.fury.io/flirc/flirc-3.20.3-amd64
-	md5sums = 9944b9c97941cfc5c324e1a63e763024
+	source = https://apt.fury.io/flirc/flirc-3.22.1-amd64
+	md5sums = e0a3cc66080a081b8457acf57eb012f8
 
 pkgname = flirc-bin
 
