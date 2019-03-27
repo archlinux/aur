@@ -1,0 +1,13 @@
+--- driconf_simpleui-original.py	2013-09-14 18:28:51.783220606 -0600
++++ driconf_simpleui.py	2013-09-14 18:31:01.143223727 -0600
+@@ -266,8 +266,8 @@
+                     j = i
+                     break
+                 i = i - 1
+-            if i < chars/3:
+-                i = chars
++            else:
++                i = j = chars
+             head, tail = head + tail[:i] + '\n', tail[j:]
+     return head
+ 
