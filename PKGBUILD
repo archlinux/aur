@@ -1,4 +1,5 @@
-# Maintainer: rixx <rixx-aur@cutebit.de>
+# Maintainer: Tobias Kunze <r@rixx.de>
+# Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=augenkrebs-git
 pkgver=v0.3.r0.g7d54496
