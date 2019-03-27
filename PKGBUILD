@@ -3,8 +3,8 @@
 pkgbase=python-uproot-methods
 _pkgbase=uproot-methods
 pkgname=('python2-uproot-methods' 'python-uproot-methods')
-pkgver=0.2.7
-pkgrel=2
+pkgver=0.4.4
+pkgrel=1
 pkgdesc="Pythonic mix-ins for ROOT classes"
 arch=('any')
 makedepends=('python2-setuptools' 'python2-awkward' 'python2-numpy'
@@ -13,7 +13,7 @@ url="https://github.com/scikit-hep/uproot-methods"
 license=('BSD')
 
 source=("${url}/archive/${pkgver}.zip")
-sha256sums=('414b0ce779f21c7674c7372939581d06efc6d0f384593caaf8a5f68ec5b73594')
+sha256sums=('52dbf8819cc120a980f2d9eab619b2a35dc296a1c1a9edaa85c126a7a8f194aa')
 
 prepare() {
     cd "${srcdir}"
@@ -52,11 +52,6 @@ package_python2-uproot-methods() {
     install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     install -D README.rst "${pkgdir}/usr/share/${pkgname}/README.rst"
-    rm "${pkgdir}/usr/README.rst"
-
-    # upstream has no docs
-    # install -d "${pkgdir}/usr/share/doc/${pkgname}"
-    # cp -r docs "${pkgdir}/usr/share/doc/${pkgname}/"
 }
 
 package_python-uproot-methods() {
@@ -68,9 +63,4 @@ package_python-uproot-methods() {
     install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     install -D README.rst "${pkgdir}/usr/share/${pkgname}/README.rst"
-    rm "${pkgdir}/usr/README.rst"
-
-    # upstream has no docs
-    # install -d "${pkgdir}/usr/share/doc/${pkgname}"
-    # cp -r docs "${pkgdir}/usr/share/doc/${pkgname}/"
 }
