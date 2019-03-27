@@ -1,0 +1,11 @@
+--- CMakeLists.txt	2018-03-09 05:00:22.000000000 -0600
++++ CMakeLists.txt	2019-03-27 10:09:02.705508958 -0500
+@@ -231,7 +231,7 @@
+ target_link_libraries(oclgrind PRIVATE ${CORE_EXTRA_LIBS}
+   clangFrontend clangSerialization clangDriver clangCodeGen
+   clangParse clangSema clangAnalysis clangEdit clangAST clangLex clangBasic
+-  ${LLVM_LIBS})
++  LLVM)
+
+ if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows")
+   target_link_libraries(oclgrind PRIVATE Version)
