@@ -1,5 +1,5 @@
 pkgname=rootbar-hg
-pkgver=1.0
+pkgver=r98.63ee1eed0bfc
 pkgrel=1
 pkgdesc="Status bar for the Sway Compositor"
 arch=('x86_64')
