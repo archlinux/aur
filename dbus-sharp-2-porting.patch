@@ -1,0 +1,22 @@
+Description: Port to dbus#2 API
+Forwarded: not-needed
+
+--- tasque-0.1.12.orig/src/Gtk.Tasque/RemoteControlProxy.cs
++++ tasque-0.1.12/src/Gtk.Tasque/RemoteControlProxy.cs
+@@ -22,8 +22,7 @@ namespace Tasque
+ 			BusG.Init ();
+ 
+ 			RemoteControl remote_control = new RemoteControl ();
+-			Bus.Session.Register (Namespace,
+-			                      new ObjectPath (Path),
++			Bus.Session.Register (new ObjectPath (Path),
+ 			                      remote_control);
+ 
+ 			if (Bus.Session.RequestName (Namespace)
+@@ -33,4 +32,4 @@ namespace Tasque
+ 			return remote_control;
+ 		}
+ 	}
+-}
+\ No newline at end of file
++}

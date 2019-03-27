@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.gnome.tasque</id>
+  <launchable type="desktop-id">tasque.desktop</launchable>
+  <name>Tasque</name>
+  <summary>Easy quick task management</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <description>
+    <p>Tasque is a simple task management app (TODO list). It supports syncing with the on-line service Remember the Milk or simply storing your tasks locally.</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://people.gnome.org/~sharm/tasque-0.1.8.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="bugtracker">https://gitlab.gnome.org/Archive/tasque/issues</url>
+  <url type="homepage">https://wiki.gnome.org/Attic/Tasque</url>
+  <update_contact>tasque-list@gnome.org</update_contact>
+  <translation type="gettext">tasque</translation>
+</component>

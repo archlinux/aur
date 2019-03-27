@@ -1,0 +1,32 @@
+Index: tasque/configure.ac
+===================================================================
+--- tasque.orig/configure.ac	2013-11-29 00:41:30.025341888 +0000
++++ tasque/configure.ac	2013-11-29 00:41:30.021341888 +0000
+@@ -65,8 +65,8 @@
+ PKG_CHECK_MODULES([GTK_SHARP_20], [gtk-sharp-2.0 >= 2.10.0])
+ PKG_CHECK_MODULES([GTK_SHARP_2_12], gtk-sharp-2.0 >= 2.12.0, GTK_2_12="yes", GTK_2_12="no")
+ AM_CONDITIONAL(GTK_2_12, test "$GTK_2_12" = "yes")
+-PKG_CHECK_MODULES([DBUS_SHARP_10], [dbus-sharp-1.0])
+-PKG_CHECK_MODULES([DBUS_SHARP_GLIB_10], [dbus-sharp-glib-1.0])
++PKG_CHECK_MODULES([DBUS_SHARP_10], [dbus-sharp-2.0])
++PKG_CHECK_MODULES([DBUS_SHARP_GLIB_10], [dbus-sharp-glib-2.0])
+ 
+ #
+ # Allow the project to build without notify-sharp
+Index: tasque/src/Gtk.Tasque/Gtk.Tasque.csproj
+===================================================================
+--- tasque.orig/src/Gtk.Tasque/Gtk.Tasque.csproj	2013-11-29 00:33:43.000000000 +0000
++++ tasque/src/Gtk.Tasque/Gtk.Tasque.csproj	2013-11-29 00:41:53.765341045 +0000
+@@ -63,10 +63,10 @@
+     <Reference Include="notify-sharp, Version=0.4.0.0, Culture=neutral, PublicKeyToken=2df29c54e245917a">
+       <Private>False</Private>
+     </Reference>
+-    <Reference Include="dbus-sharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5675b0c3093115b5">
++    <Reference Include="dbus-sharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5675b0c3093115b5">
+       <Private>False</Private>
+     </Reference>
+-    <Reference Include="dbus-sharp-glib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5675b0c3093115b5">
++    <Reference Include="dbus-sharp-glib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5675b0c3093115b5">
+       <Private>False</Private>
+     </Reference>
+   </ItemGroup>
