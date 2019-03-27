@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>net.sourceforge.medit</id>
+  <launchable type="desktop-id">medit.desktop</launchable>
+  <name>medit</name>
+  <summary>Text editor</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>LGPL-2.1</project_license>
+  <description>
+    <p>medit is a programming and around-programming text editor. Started originally as a simple built-in editor component in GGAP, it grew up to a real text editor.</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>http://mooedit.sourceforge.net/img/medit.png</image>
+    </screenshot>
+    <screenshot>
+      <image>http://mooedit.sourceforge.net/img/medit-2.png</image>
+    </screenshot>
+    <screenshot>
+      <image>http://mooedit.sourceforge.net/img/build.png</image>
+    </screenshot>
+    <screenshot>
+      <image>http://mooedit.sourceforge.net/img/output.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="bugtracker">https://sourceforge.net/p/mooedit/bugs/</url>
+  <url type="homepage">http://mooedit.sourceforge.net/</url>
+</component>
