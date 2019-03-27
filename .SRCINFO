@@ -8,6 +8,7 @@ pkgbase = elasticsearch-xpack
 	depends = java-runtime-headless
 	depends = systemd
 	provides = elasticsearch
+	conflicts = elasticsearch
 	backup = etc/elasticsearch/elasticsearch.yml
 	backup = etc/elasticsearch/log4j2.properties
 	backup = etc/elasticsearch/jvm.options

@@ -12,6 +12,7 @@ url="https://www.elastic.co/products/elasticsearch"
 license=('Apache')
 depends=('java-runtime-headless' 'systemd')
 provides=('elasticsearch')
+conflicts=('elasticsearch')
 relpkgname=elasticsearch
 source=(
   "https://artifacts.elastic.co/downloads/$relpkgname/$relpkgname-$pkgver.tar.gz"
