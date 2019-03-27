@@ -94,7 +94,7 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'SKIP'
             '16741344288d200fadf74546855e00aa204122e744b4811a36155efd5537bd95'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
-            '8c6ecc26aab9f4acc911350d9bb1e40f32cad144b6a08c9d7b188e9598d0f2de'
+            'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
             )
 install=chromium-dev.install
