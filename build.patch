@@ -1,0 +1,58 @@
+diff --git a/build.gradle b/build.gradle
+index 3fda82e..d926183 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -121,7 +121,6 @@ if (versionMap["jruby-runtime-override"]) {
+ clean {
+   delete "${projectDir}/Gemfile"
+   delete "${projectDir}/Gemfile.lock"
+-  delete "${projectDir}/vendor"
+   delete "${projectDir}/.bundle"
+   delete "${projectDir}/qa/integration/Gemfile.lock"
+   delete "${projectDir}/qa/integration/.bundle"
+@@ -158,7 +157,7 @@ task downloadJRuby(type: Download) {
+ 
+ downloadJRuby.onlyIf { customJRubyDir == "" }
+ 
+-task verifyFile(dependsOn: downloadJRuby, type: Verify) {
++task verifyFile(type: Verify) {
+     description "Verify the SHA1 of the download JRuby artifact"
+     inputs.file(jrubyTarPath)
+     outputs.file(jrubyTarPath)
+@@ -169,35 +168,7 @@ task verifyFile(dependsOn: downloadJRuby, type: Verify) {
+ 
+ verifyFile.onlyIf { customJRubyDir == "" }
+ 
+-task buildCustomJRuby(type: Exec) {
+-  description "Build tar.gz and .jar artifacts from JRuby source directory"
+-  workingDir customJRubyDir
+-  commandLine './mvnw', 'clean', 'install', '-Pdist', '-Pcomplete'
+-  standardOutput = new ByteArrayOutputStream()
+-  errorOutput = new ByteArrayOutputStream()
+-  ext.output = {
+-    standardOutput.toString() + errorOutput.toString()
+-  }
+-}
+-
+-buildCustomJRuby.onlyIf { customJRubyDir != "" }
+-
+-task installCustomJRuby(dependsOn: buildCustomJRuby, type: Copy) {
+-  description "Install custom built JRuby in the vendor directory"
+-  inputs.file(customJRubyTar)
+-  outputs.dir("${projectDir}/vendor/jruby")
+-  from tarTree(customJRubyTar == "" ? jrubyTarPath : customJRubyTar)
+-  eachFile { f ->
+-    f.path = f.path.replaceFirst("^jruby-${customJRubyVersion}", '')
+-  }
+-  exclude "**/stdlib/rdoc/**"
+-  includeEmptyDirs = false
+-  into "${projectDir}/vendor/jruby"
+-}
+-
+-installCustomJRuby.onlyIf { customJRubyDir != "" }
+-
+-task downloadAndInstallJRuby(dependsOn: [verifyFile, installCustomJRuby], type: Copy) {
++task downloadAndInstallJRuby(dependsOn: [verifyFile], type: Copy) {
+     description "Install JRuby in the vendor directory"
+     inputs.file(jrubyTarPath)
+     outputs.dir("${projectDir}/vendor/jruby")

@@ -1,0 +1,23 @@
+[Unit]
+Description=Logstash
+Documentation=http://www.elastic.co
+After=elasticsearch.service
+
+[Service]
+Environment=LS_HOME=/var/lib/logstash
+Environment=LS_HEAP_SIZE="500m"
+Environment=LS_CONF_DIR=/etc/logstash/conf.d
+Environment=LS_LOG_DIR=/var/log/logstash
+Environment=LS_SETTINGS_DIR=/etc/logstash
+User=logstash
+Group=logstash
+ExecStart=/usr/share/logstash/bin/logstash -f $LS_CONF_DIR  --path.logs $LS_LOG_DIR --path.data $LS_HOME --path.settings $LS_SETTINGS_DIR
+StandardOutput=null
+StandardError=journal
+SuccessExitStatus=143
+LimitNOFILE=65535
+TimeoutStopSec=20
+LimitMEMLOCK=infinity
+
+[Install]
+WantedBy=multi-user.target

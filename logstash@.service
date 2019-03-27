@@ -1,0 +1,7 @@
+.include /usr/lib/systemd/system/logstash.service
+
+[Unit]
+Description=logstash (%I)
+
+[Service]
+Environment=LOGSTASH_CONF=/etc/logstash/%I.conf
