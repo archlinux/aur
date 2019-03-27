@@ -2,7 +2,7 @@
 # Original Author: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=uranium-git
-pkgver=3.4.1.267.g3f627aae
+pkgver=4.0.0.163.g45047765
 pkgrel=1
 pkgdesc="A Python framework for building Desktop applications."
 url="https://github.com/Ultimaker/Uranium"
