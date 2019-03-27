@@ -1,28 +1,29 @@
 # Maintainer: Marcel Radzio <info@nordgedanken.de>
 pkgbase=riot-desktop-git
-pkgver=v0.16.5.r26.gf69869ac
-pkgrel=2
+pkgver=v1.5.13.r112.gd9fbbe16
+pkgrel=1
 pkgname=riot-desktop-git
 pkgdesc="A glossy Matrix collaboration client for the desktop."
 arch=('any')
 url="https://riot.im"
 license=('Apache')
 depends=('electron')
-makedepends=('git' 'npm' 'jq')
+makedepends=('git' 'nodejs' 'jq' 'yarn')
 conflicts=('riot-desktop' 'riot-web')
 provides=('riot-desktop')
 backup=("etc/riot/config.json")
 source=('riot-desktop-git::git://github.com/vector-im/riot-web.git#branch=develop'
         "riot-desktop.desktop"
-        "riot-desktop.sh")
+        "riot-desktop.sh"
+	"fetch-develop.deps.sh")
 sha256sums=('SKIP'
-	    'ae0654027f0646178961f6397322aefdc817d052625772dd297d636fe9726aff'
-            '0f8d896793e6f6f677febb5921b2256c9786fad67294cb32efd6d059ed21e04c')
+            'ae0654027f0646178961f6397322aefdc817d052625772dd297d636fe9726aff'
+            '0f8d896793e6f6f677febb5921b2256c9786fad67294cb32efd6d059ed21e04c'
+            '8150ac32779104e0e523ddb7df105871e6023fca1f9b6517ee449aa40bfa6247')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
 
-#	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	( set -o pipefail
 		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -37,16 +38,14 @@ prepare() {
 build() {
 	cd "$srcdir/${pkgname}"
 
-	jq '.dependencies."matrix-react-sdk" = "github:matrix-org/matrix-react-sdk#develop"' "$srcdir/${pkgname}/package.json" > "$srcdir/${pkgname}/package_tmp.json"
-	cp "$srcdir/${pkgname}/package_tmp.json" "$srcdir/${pkgname}/package.json"
-	jq '.dependencies."matrix-js-sdk" = "github:matrix-org/matrix-js-sdk#develop"' "$srcdir/${pkgname}/package.json" > "$srcdir/${pkgname}/package_tmp.json"
-	mv "$srcdir/${pkgname}/package_tmp.json" "$srcdir/${pkgname}/package.json"
-        jq '.scripts."build:react-sdk" = "node scripts/npm-sub.js matrix-react-sdk run build"' "$srcdir/${pkgname}/package.json" > "$srcdir/${pkgname}/package_tmp.json"
-        mv "$srcdir/${pkgname}/package_tmp.json" "$srcdir/${pkgname}/package.json"
 
-	npm install --cache "${srcdir}/npm-cache"
+	"${srcdir}"/fetch-develop.deps.sh "${srcdir}/npm-cache"
 
-	npm run build
+	yarn install --cache-folder="${srcdir}/npm-cache"
+	rm -r node_modules/matrix-js-sdk; ln -s ../matrix-js-sdk node_modules/
+	rm -r node_modules/matrix-react-sdk; ln -s ../matrix-react-sdk node_modules/
+	
+	yarn build
 
 }
 
@@ -61,7 +60,7 @@ package() {
 	echo "${pkgver}" > "${pkgdir}"/usr/share/webapps/riot/version
 
 	cd electron_app
-	npm install --cache "${srcdir}/npm-cache"
+	yarn --cache-folder "${srcdir}/npm-cache"
 	cd ..
 
 	install -d "${pkgdir}"{/usr/lib/riot/electron_app,/etc/webapps/riot}
@@ -78,7 +77,7 @@ package() {
 	install -Dm644 "${srcdir}"/riot-desktop.desktop "${pkgdir}"/usr/share/applications/riot.desktop
 	install -Dm755 "${srcdir}"/riot-desktop.sh "${pkgdir}"/usr/bin/riot-desktop
 
-	install -Dm644 res/themes/riot/img/logos/riot-logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/riot.svg
+	install -Dm644 "${srcdir}"/riot-desktop-git/webapp/themes/riot/img/logos/riot-im-logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/riot.svg
 	for i in 16 24 48 64 96 128 256 512; do
 		install -Dm644 electron_app/build/icons/${i}x${i}.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/riot.png
 	done
