@@ -1,0 +1,9 @@
+prefix=/usr
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: libcorrect
+Description: C library for Convolutional codes and Reed-Solomon
+Version: 1.0.0
+Libs: -lcorrect
+Cflags: -I${includedir}

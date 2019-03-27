@@ -1,7 +1,7 @@
 pkgbase = libcorrect-git
 	pkgdesc = C library for Convolutional codes and Reed-Solomon
 	pkgver = r115.f5a28c7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quiet/libcorrect
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,9 @@ pkgbase = libcorrect-git
 	provides = libcorrect
 	conflicts = libcorrect
 	source = git+https://github.com/quiet/libcorrect.git
+	source = libcorrect.pc
 	sha256sums = SKIP
+	sha256sums = 0f09957ae764e59f61344b48c7ecb5aad3a9a1024e57c21707e62e61f023627b
 
 pkgname = libcorrect-git
 

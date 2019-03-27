@@ -3,16 +3,18 @@ _pkgbase=libcorrect
 pkgbase=$_pkgbase-git
 pkgname=($pkgbase $_pkgbase-compat-git)
 pkgver=r115.f5a28c7
-pkgrel=1
+pkgrel=2
 pkgdesc="C library for Convolutional codes and Reed-Solomon"
 arch=('x86_64' 'aarch64')
 url="https://github.com/quiet/libcorrect"
 license=('BSD')
 makedepends=('git' 'cmake')
-provides=('libcorrect')
-conflicts=('libcorrect')
-source=("git+$url.git")
-sha256sums=('SKIP')
+provides=("$_pkgbase")
+conflicts=("$_pkgbase")
+source=("git+$url.git"
+        "$_pkgbase.pc")
+sha256sums=('SKIP'
+            '0f09957ae764e59f61344b48c7ecb5aad3a9a1024e57c21707e62e61f023627b')
 
 pkgver() {
   cd "$_pkgbase"
@@ -58,15 +60,19 @@ package_libcorrect-git() {
   
   cd ..
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
+  cd ..
+  install -D -m644 "$_pkgbase.pc" "$pkgdir/usr/lib/pkgconfig/$_pkgbase.pc"
 }
 
 package_libcorrect-compat-git() {
-  provides=('libcorrect' 'libfec')
-  conflicts=('libcorrect' 'libfec')
+  provides=("$_pkgbase" 'libfec')
+  conflicts=("$_pkgbase" 'libfec')
   
   cd "$_pkgbase/build-shim"
   make DESTDIR="$pkgdir" install
   
   cd ..
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
+  cd ..
+  install -D -m644 "$_pkgbase.pc" "$pkgdir/usr/lib/pkgconfig/$_pkgbase.pc"
 }
