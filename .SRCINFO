@@ -26,9 +26,7 @@ pkgbase = cloudcompare
 	depends = pdal
 	optdepends = pcl
 	source = cloudcompare::git+https://github.com/CloudCompare/CloudCompare.git#tag=v2.10.2
-	source = constexpr.patch
 	md5sums = SKIP
-	md5sums = c1ea23f8a38cf1326196bb42de07e020
 
 pkgname = cloudcompare
 

@@ -14,10 +14,9 @@ depends=('qt5-base' 'qt5-tools' 'qt5-svg' 'glu' 'glew' 'mesa' 'vxl' 'ffmpeg' 'cg
 makedepends=('git' 'cmake' 'pcl' 'libharu' 'proj' 'python' 'doxygen' 'laz-perf')
 optdepends=('pcl')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git${_fragment}"
-        "constexpr.patch"
         )
 md5sums=('SKIP'
-         'c1ea23f8a38cf1326196bb42de07e020')
+         )
 
 prepare() {
   cd ${srcdir}/${name}
