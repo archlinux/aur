@@ -1,34 +1,42 @@
 # Maintainer:
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Vincent Bernardoff <vb@luminar.eu.org>
 
 pkgname=clingo
-groups=('potassco')
-pkgver=5.1.0
-pkgrel=1
-pkgdesc="Grounding tools for (disjunctive) logic programs."
+pkgver=5.3.0
+pkgrel=2
+pkgdesc='Grounding tools for (disjunctive) logic programs'
 arch=('x86_64')
-url="https://potassco.org"
+url='https://potassco.org/'
 license=('GPL3')
-depends=()
-makedepends=('bison' 're2c' 'scons')
-source=("https://github.com/potassco/${pkgname}/archive/v${pkgver}.tar.gz")
-sha1sums=(6025b97e64de4f938c76c98d2e3b6e0a0c366c1f)
+depends=('lua' 'python')
+makedepends=('clang' 'cmake' 'git' 'ninja' 're2c')
+conflicts=('clasp')
+source=("git+https://github.com/potassco/clingo#tag=v$pkgver")
+md5sums=('SKIP')
+
+prepare() {
+  sed '/#include <xlocale.h>/d' -i clingo/clasp/libpotassco/src/string_convert.cpp
+}
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    scons --build-dir=release
+  mkdir -p build
+  cd build
+  cmake "../$pkgname" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCLINGO_REQUIRE_PYTHON=ON \
+    -DCLINGO_BUILD_PY_SHARED=ON \
+    -DPYCLINGO_USER_INSTALL=OFF \
+    -DCLINGO_REQUIRE_LUA=ON \
+    -DCLINGO_BUILD_LUA_SHARED=ON \
+    -DCMAKE_CXX_COMPILER=clang++ \
+    -G Ninja
+  ninja
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}/build/release"
-    install -D gringo ${pkgdir}/usr/bin/gringo
-    install -D clingo ${pkgdir}/usr/bin/clingo
-    install -D reify ${pkgdir}/usr/bin/reify
-    install -D lpconvert ${pkgdir}/usr/bin/lpconvert
-    if [ -x "python/clingo.so" ]; then
-        install -D "python/clingo.so" ${pkgdir}/usr/lib/libclingo_python.so
-    fi
-    if [ -x "lua/clingo.so" ]; then
-        install -D "lua/clingo.so" ${pkgdir}/usr/lib/libclingo_lua.so
-    fi
+  DESTDIR="$pkgdir" ninja -C build install
 }
+
+# vim: ts=2 sw=2 et:
