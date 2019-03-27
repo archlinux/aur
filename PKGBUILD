@@ -21,7 +21,7 @@ backup=('etc/conf.d/logstash'
         'etc/logstash/logstash.yml'
         'etc/logstash/pipelines.yml')
 _jrubydist=jruby-dist-${_jrubyver}-bin.tar.gz
-source=(https://github.com/elastic/logstash/archive/v${pkgver}/$relpkgname-${pkgver}.tar.gz
+source=(https://artifacts.elastic.co/downloads/logstash/$relpkgname-$pkgver.tar.gz
         https://repo1.maven.org/maven2/org/jruby/jruby-dist/${_jrubyver}/${_jrubydist}
         build.patch
         logstash.service
@@ -30,7 +30,7 @@ source=(https://github.com/elastic/logstash/archive/v${pkgver}/$relpkgname-${pkg
         logstash-tmpfile.conf
         bundle.config)
 noextract=(${_jrubydist})
-sha256sums=('bfbd7de22693a34c33c04778823af7a2549e0df74ae9aa01b5f0ef94b59347bf'
+sha256sums=('4ff1a532a5dd41cc7249840a4f74f332c05d4efdb67c0fe7e8b1c0d9c3c505d0'
             '9d156646623ac2f27174721035b52572a4b05690db7c1293295aa2c04aad3908'
             '640f1c81e6c68f9d1256875db89f5439992e2b8188fb7e6e3ddcdae1c33a3af8'
             '2b8b29297202334c784fdd7f2eb8d7e776c24c783b3c9f8387b500ab0039335c'
