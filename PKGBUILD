@@ -12,7 +12,7 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.1.0_devel.108956.d7b31969767
+pkgver=19.1.0_devel.109535.3bccf702118
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
@@ -72,6 +72,7 @@ build () {
        -D shared-glapi=true \
        -D gallium-opencl=icd \
        -D valgrind=false \
+       -D vulkan-overlay-layer=true \
        -D tools=[]
     meson configure _build
     ninja -C _build
