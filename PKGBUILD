@@ -1,22 +1,23 @@
-# Maintainer: Adrian Berriel <berriel[at]gmail[dot]com>
+# Maintainer: Francois Menning <f.menning@pm.me>
+# Contributor: Adrian Berriel <berriel[at]gmail[dot]com>
 
 pkgname=plasma-theme-helium
-pkgver=6.0.0
+pkgver=9.1.0
 pkgrel=1
-pkgdesc="Transparent theme based on air and eleonora. but giving it an extra touch"
-arch=('i686' 'x86_64')
-license=('GPL')
-url="http://kde-look.org/content/show.php/Helium?content=125471"
-depends=('kdebase-workspace') 
-conflicts=('plasma-theme-gremix')
-source=("http://kde-look.org/CONTENT/content-files/125471-Helium.tar.xz")
-md5sums=('f0a03eaa13b09e19d8f5d75001a8dae1')
+pkgdesc="Helium is a clear / white theme designed from scratch for Plasma 5"
+arch=('any')
+url="https://github.com/mcder3/Helium-Plasma-Theme"
+license=('custom:Creative Commons')
+depends=('plasma-workspace')
+provides=("${pkgname}")
+conflicts=("${pkgname}-git")
+options=('!strip')
+source=("${pkgname}::git+https://github.com/mcder3/Helium-Plasma-Theme.git#commit=3d8c5dfae5437586af60d44a01d5457378f0bf17")
+md5sums=('SKIP')
 
 package() {
+  install -dm755 "${pkgdir}/usr/share/plasma/desktoptheme/"
+  install -Dm644 "${srcdir}/${pkgname}/LICENSE.md/CC BY-SA 4.0 EN.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 
-  mkdir -p $pkgdir/usr/share/apps/desktoptheme
-  cd $srcdir
-  cp -r Helium $pkgdir/usr/share/apps/desktoptheme
-  chmod -R 755 $pkgdir/usr/share/apps/desktoptheme/Helium
-
+  mv "${srcdir}/${pkgname}/Helium" "${pkgdir}/usr/share/plasma/desktoptheme"
 }
