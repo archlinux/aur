@@ -3,9 +3,9 @@
 # Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=alpm_octopi_utils
-pkgver=1.0.0
-_commit=7f3a6c7e0e46bf9acb54af472f4fe45ab632d58c
-pkgrel=3
+pkgver=1.0.1
+_commit=19276e6269509d94bdb7a216da1b347c8dea6d73
+pkgrel=1
 pkgdesc="Alpm utils for Octopi"
 url="https://octopiproject.wordpress.com/"
 arch=('i686' 'x86_64')
@@ -13,16 +13,10 @@ license=('GPL3')
 depends=('pacman')
 makedepends=('vala')
 source=("https://github.com/aarnt/${pkgname}/archive/${_commit}.zip")
-sha256sums=('1be08455e2845fc03f4e4f3010e11c6946fb6dae7d0d9807c7ac5349dda04ba6')
+sha256sums=('0af157f39a35551c6cb4172686ed19f0565b9111978c5f68c285efd0fcd73434')
          
 build() {
     cd "$pkgname-$_commit"
-    sed -i -e 's|Alpm.List<Package>|Alpm.List<unowned Package>|g' vapi/libalpm.vapi
-    sed -i -e 's|Alpm.List<DB>|Alpm.List<unowned DB>|g' vapi/libalpm.vapi
-    sed -i -e 's|Alpm.List<string>|Alpm.List<unowned string>|g' vapi/libalpm.vapi
-    sed -i -e 's|Alpm.List<string>|Alpm.List<unowned string>|g' src/alpm_config.vala
-    sed -i -e 's|public Alpm.List<string>|public Alpm.List<unowned string>|g' src/alpm_octopi_utils.vala
-    sed -i -e 's|unowned Alpm.List<string> list = syncfirsts;|unowned Alpm.List<unowned string> list = syncfirsts;|g' src/alpm_octopi_utils.vala
     make
 }
 
