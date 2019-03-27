@@ -1,6 +1,6 @@
 pkgbase = eql5-git
 	pkgdesc = Embedded Qt Lisp (Qt5 binding embedded in ECL, embeddable in Qt)
-	pkgver = r254.dbb1c60
+	pkgver = r261.464efd3
 	pkgrel = 1
 	url = https://gitlab.com/eql/EQL5
 	arch = x86_64
