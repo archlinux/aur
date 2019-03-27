@@ -1,0 +1,15 @@
+<SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/">
+<ShortName>ArchPkgs</ShortName>
+<Description>Arch Linux Packages</Description>
+<InputEncoding>UTF-8</InputEncoding>
+<Image width="16" height="16">data:image/x-icon;base64,R0lGODlhEAAQAKUmABeS0BeS0RiS0ReT0BeT0ReT0hiT0RiT0hiU0huV0hyV0h2V0x2W0iOZ0ySZ
+1SSa1Caa1Cyd1S+e1jKf1jCg1jKg1jOg1zSh1zeh2Dei1zqk2Duk2Dql2T2l2T6l2UOo2UOo2kao
+2UWq20qr206t3E+t3P//////////////////////////////////////////////////////////
+/////////////////////////////////////////////yH5BAEKAD8ALAAAAAAQABAAAAZVwJ9w
+SCwahQbH8ch4LI2QBuc5pEgiGOoQc5mEqB+Qp6MBUUmjjaWSES1LFwVhTlgsE3PAgY4w0gNCAnRF
+dAREdAeHg0NzBUQDdAZEBgFzjI5PllpFQQA7</Image>
+<Url type="text/html" method="GET" template="https://www.archlinux.org/packages/">
+  <Param name="q" value="{searchTerms}"/>
+</Url>
+<SearchForm>https://www.archlinux.org/</SearchForm>
+</SearchPlugin>
