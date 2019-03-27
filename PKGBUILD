@@ -2,8 +2,8 @@
 # Contributor: Justin R. St-Amant <jstamant24 at gmail dot com>
 
 pkgname=draftsight
-pkgver=2018SP3
-pkgrel=2
+pkgver=2019SP0
+pkgrel=1
 pkgdesc="Freeware CAD software for DWG/DXF files."
 arch=('x86_64')
 url="http://www.3ds.com/products/$pkgname/"
@@ -29,9 +29,9 @@ depends=('alsa-lib'
          'qt5-base'
          'qt5-x11extras'
          'zlib')
-source=("$pkgname-$pkgver::http://dl-ak.solidworks.com/nonsecure/$pkgname/HOTFIX-$pkgver/draftSight.rpm"
+source=("$pkgname-$pkgver::http://dl-ak.solidworks.com/nonsecure/$pkgname/$pkgver/draftSight.rpm"
         "$pkgname.desktop")
-md5sums=('ea35b3c7077852b5cd6e2aa9bcdd4b70'
+md5sums=('6bd7b4dee942576e3244d24b0e3b92dc'
          'f371f6eaac0f2aefef906f86d3ffac2e')
 
 _pkgprefix='opt/dassault-systemes/DraftSight'
