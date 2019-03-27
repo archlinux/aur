@@ -3,19 +3,19 @@
 pkgname=pext
 _pkgname=Pext
 pkgver=0.23
-pkgrel=1
+pkgrel=2
 pkgdesc='Python-based extendable tool'
 url='https://pext.io/'
 arch=(any)
 license=(GPL3)
-depends=(python-dulwich python-pynput python-pip python-pyqt5 qt5-quickcontrols python-opengl python-opengl-accelerate python-requests)
+depends=(python-dulwich python-pynput python-pip python-pyqt5 qt5-quickcontrols python-opengl python-opengl-accelerate python-requests python-watchdog)
 makedepends=(python-setuptools)
 optdepends=('pass: password manager support'
             'ffmpeg: radiobrowser music support')
 provides=(pext)
 conflicts=(pext)
 source=("https://github.com/Pext/Pext/archive/v$pkgver.tar.gz")
-sha256sums=('908a98f5e0804b935b1efe21b48470fe543672b5494437475474bccbb1acb289')
+sha256sums=('3cb1378d623db4916d6083fcb1dd0e89386737af5cc1c209259dad752cf7487b')
 
 prepare() {
   sed "s/USE_INTERNAL_UPDATER = .*/USE_INTERNAL_UPDATER = False/" -i ${srcdir}/${_pkgname}-${pkgver}/pext/constants.py
