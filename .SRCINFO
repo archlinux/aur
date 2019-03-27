@@ -1,0 +1,13 @@
+pkgbase = hack-font-ligature-nerd-font-git
+	pkgdesc = Nerd font patched Hack font with ligatures
+	pkgver = r2.d7b312f
+	pkgrel = 1
+	url = https://github.com/pyrho/hack-font-ligature-nerd-font
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/pyrho/hack-font-ligature-nerd-font.git
+	md5sums = SKIP
+
+pkgname = hack-font-ligature-nerd-font-git
+
