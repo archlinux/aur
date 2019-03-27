@@ -4,7 +4,7 @@ pkgver=1.7
 pkgrel=1
 pkgdesc="3D cryptocurrency analyzer with real-time price tracker."
 arch=('x86_64')
-md5sums=('38831369c7930e35323456746960bf4e')
+md5sums=('9aa9ab37df4b66b582009b965d265c0d')
 url="https://github.com/blooser/lyra"
 license=('MIT')
 depends=('python3')
@@ -20,4 +20,5 @@ build() {
 package() {
 	sudo rm -rf $pkgname-$pkgver	
 }
+
 

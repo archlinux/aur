@@ -8,7 +8,7 @@ pkgbase = lyra
 	makedepends = python-setuptools
 	depends = python3
 	source = https://github.com/blooser/lyra/archive/v1.7.tar.gz
-	md5sums = 38831369c7930e35323456746960bf4e
+	md5sums = 9aa9ab37df4b66b582009b965d265c0d
 
 pkgname = lyra
 
