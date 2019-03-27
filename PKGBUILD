@@ -19,7 +19,7 @@ md5sums=('318c04961748fc2512f1a34d0db4e3a0'
 
 prepare() {
     cd "${srcdir}/Oclgrind-${pkgver}/"
-    patch --forward --strip=1 --input="${srcdir}/llvm.patch"
+    patch --forward --input="${srcdir}/llvm.patch"
 }
 
 build() {
