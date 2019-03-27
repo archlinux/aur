@@ -3,14 +3,14 @@
 _pkgbase='better-exceptions'
 pkgbase='python-better-exceptions'
 pkgname=('python-better-exceptions' 'python2-better-exceptions')
-pkgver='0.1.8'
+pkgver='0.2.2'
 pkgrel=1
 pkgdesc="Pretty and useful exceptions in Python, automatically"
 arch=('any')
 url='https://github.com/Qix-/better-exceptions'
 license=('MIT')
 source=("https://github.com/Qix-/better-exceptions/archive/${pkgver}.tar.gz")
-sha256sums=('8272fafb38e09d98e136149cda2cf9ff09af3041500520f2a76db3892d91e2e3')
+sha256sums=('92fdf2cd1a39b1db2564ea43da41a8d0de985f1cc3a755a81d74173d9260cfbc')
 
 package_python-better-exceptions() {
     depends=('python')
