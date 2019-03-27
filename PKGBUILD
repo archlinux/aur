@@ -1,14 +1,15 @@
 # Maintainer: Davide Depau <davide@depau.eu>
+# Maintainer: Raffaele Di Campli <dcdrj.pub@gmail.com>
 
 _pkgname=polibeepsync
 pkgname="${_pkgname}"
-pkgver=0.4.1
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Sync Politecnico di Milano's BeeP files with your PC"
 arch=('any')
 url='https://jacotsu.github.io/polibeepsync/'
 license=('GPL3')
-depends=('python' 'python-requests' 'python-appdirs' 'python-pyside2' 'python-beautifulsoup4' 'python-lxml' 'python-pyparsing' 'python-signalslot' 'python-contexter' 'qt5-declarative')
+depends=('python' 'python-requests' 'python-appdirs' 'python-pyside2' 'python-beautifulsoup4' 'python-lxml' 'python-pyparsing' 'python-signalslot' 'python-contexter' 'python-keyring' 'qt5-declarative')
 makedepends=('git' 'python-setuptools')
 conflicts=($_pkgname)
 provides=($_pkgname)
