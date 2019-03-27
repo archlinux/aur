@@ -2,7 +2,7 @@
 pkgname=trinnity-caffe-git
 _srcname=trinnity-caffe
 pkgver=1.0
-pkgrel=13
+pkgrel=14
 pkgdesc="Caffe 1.0 with triNNity extensions"
 arch=('x86_64')
 url="https://bitbucket.org/STG-TCD/trinnity-caffe"
@@ -13,14 +13,14 @@ depends=(
         'python-matplotlib' 'ipython' 'python-networkx' 'python-nose'
         'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
         'python-yaml' 'python-pillow' 'python-six' 'python-scikit-image'
-        'opencv>=4.0.0' 'gtk3'
+        'opencv>=4.0.0' 'gtk3' 'openmp'
 )
 optdepends=('openblas: OpenBLAS for backend linear algebra ops',
             'cblas: Use CBLAS for  backend linear algebra ops'
 )
 makedepends=('cmake')
 provides=('caffe')
-conflicts=()
+conflicts=('trinnity-caffe-cuda-git' 'trinnity-caffe-cudnn-git')
 source=("${_srcname}"::"git+https://bitbucket.org/STG-TCD/trinnity-caffe.git")
 sha256sums=('SKIP')
 
@@ -47,7 +47,7 @@ prepare() {
     -DUSE_LMDB=OFF \
     -DUSE_HDF5=ON \
     -DALLOW_LMDB_NOLOCK=OFF \
-    -DUSE_OPENMP=OFF \
+    -DUSE_OPENMP=ON \
     -DBLAS=CBLAS \
     -D python_version=3 \
     -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr \
