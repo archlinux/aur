@@ -1,48 +1,42 @@
-# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
-# Contributor: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
-# Contributor: victorique <r+aur@wwad.de> (curlnew patch)
-
-### I AM ONLY THE PACKAGER, NOT THE DEVELOPER
-### Please ask support questions about this software in one of:
-###   1) The AUR comments; OR
-###   2) Upstream forums/maillist etc; OR
-###   3) The ArchLinux forums
-### I do not always know enough about the software itself, or don't have the
-### time to promptly respond to direct emails.
-### If you have found a problem with the package/PKGBUILD (as opposed to
-### the software) then please do email me or post an AUR comment.
+# Maintainer:
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
+# Contributor: Elena ``of Valhalla'' Grandi <elena.valhalla@gmail.com>
 
 pkgname=foxtrotgps
-pkgver=1.2.0
-pkgrel=1
+pkgver=1.2.1
+pkgrel=3
+pkgdesc="Lightweight and fast mapping application"
+arch=('x86_64')
+url="https://www.foxtrotgps.org/"
 license=('GPL')
-pkgdesc="a lightweight and fast mapping application (fork of tangoGPS)"
-arch=(i686 x86_64)
-depends=('libglade' 'gconf' 'libxml2' 'libexif' 'curl' 'gpsd' 'sqlite3')
-makedepends=('intltool' 'bluez')
-optdepends=('python2: import GeoRSS points'
-            'gpscorrelate: photo-geotagging'
-            'jhead: photo-geotagging'
-            'bluez: Zephyr HxM heartrate-monitor support')
-source=(http://www.foxtrotgps.org/releases/$pkgname-$pkgver.tar.gz)
-install=foxtrotgps.install
-url="http://www.foxtrotgps.org/"
-md5sums=('61b86fb9abb16be062145df10eded6c6')
+depends=('curl' 'dconf' 'gpsd' 'libexif' 'libglade' 'sqlite')
+makedepends=('intltool')
+optdepends=('gpscorrelate: geotag photos'
+            'jhead: add photos to database'
+            'python: gpx2osm and osb2foxtrot tools'
+            'python-beautifulsoup4: georss2foxtrotgps-poi tool'
+            'python-feedparser: georss2foxtrotgps-poi tool'
+            'python-sqlalchemy: poi2osm tool')
+source=(https://www.foxtrotgps.org/releases/$pkgname-$pkgver.tar.gz{,.asc}
+        foxtrotgps-gpsd-3.18.patch)
+validpgpkeys=('F0378BFD8385C9968DCBC56CFF7E9E83954BE38A') # Joshua Judson Rosen
+sha256sums=('3ffbe60dd09890e3228bc71a0337b27e69e26e52225c47bd75968b580b19f489'
+            'SKIP'
+            '4a517255e6fa9eade1c0abddf4eab2e803f1b31ce848472d9bbfb69d6ab97aca')
+
+prepare() {
+  cd $pkgname-$pkgver
+  patch -p1 -i ../foxtrotgps-gpsd-3.18.patch # Fix build with gpsd 3.18
+}
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
-
-  ./configure --prefix=/usr --sysconfdir=/etc
-
+  cd $pkgname-$pkgver
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+              --disable-schemas-compile
   make
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
-
-  make DESTDIR=$pkgdir install
-
-  sed -i 's/python$/python2/' "$pkgdir"/usr/bin/georss2foxtrotgps-poi
-  sed -i 's/python$/python2/' "$pkgdir"/usr/bin/osb2foxtrot
-  sed -i 's/python$/python2/' "$pkgdir"/usr/bin/poi2osm
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
 }

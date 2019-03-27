@@ -1,0 +1,11 @@
+--- foxtrotgps-1.2.1/src/gps_functions.c.orig	2018-10-09 17:00:10.297646701 +0000
++++ foxtrotgps-1.2.1/src/gps_functions.c	2018-10-09 17:00:43.751114273 +0000
+@@ -738,7 +738,7 @@
+ 	if (!libgps_initialized)
+ 		return FALSE;
+ 
+-	ret = gps_read(&libgps_gpsdata);
++	ret = gps_read(&libgps_gpsdata, NULL, 0);
+ 	/* Note that gps_read() will never actually return 0
+ 	   (zero-length reads are converted internally to a -1 return,
+ 	    since they mean that the connection to the daemon has closed),
