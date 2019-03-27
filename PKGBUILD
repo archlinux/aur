@@ -5,14 +5,14 @@
 
 pkgname=ttf-unifont
 pkgver=12.0.01
-pkgrel=1
+pkgrel=2
 pkgdesc="TrueType version of the GNU Unifont"
 url="http://unifoundry.com/unifont.html"
 arch=('any')
 license=('GPL')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 source=("http://unifoundry.com/pub/unifont/unifont-$pkgver/unifont-$pkgver.tar.gz"{,.sig})
-sha256sums=('d65d1c0f442febe0e1485a04a51a2fe075e00842df0a9bfd6bf85d482f16da8a'
+sha256sums=('6b275275d4aa279561527ab9de3717708b25de07da062386f798936fbe403215'
             'SKIP')
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy
 
