@@ -1,3 +1,0 @@
-post_install () {
-  echo ">> To get upcheck working automatically, you need to enable the upcheck.timer unit via systemd."
-}
