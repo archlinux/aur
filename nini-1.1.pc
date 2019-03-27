@@ -1,0 +1,8 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+
+Name: nini
+Description: An uncommonly powerful .NET configuration library designed to help build highly configurable applications quickly
+Version: 1.1.0
+Libs: -r:${libdir}/mono/Nini/Nini.dll
