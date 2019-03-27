@@ -1,0 +1,8 @@
+pkgbase = stress++
+	pkgver = 0.1.2
+	pkgrel = 1
+	arch = any
+	license = GPL
+
+pkgname = stress++
+
