@@ -1,0 +1,200 @@
+diff -Naur indiv-screenlets-0.1.7.orig/src/Calc/CalcScreenlet.py indiv-screenlets-0.1.7/src/Calc/CalcScreenlet.py
+--- indiv-screenlets-0.1.7.orig/src/Calc/CalcScreenlet.py	2017-01-30 21:44:28.000000000 +0100
++++ indiv-screenlets-0.1.7/src/Calc/CalcScreenlet.py	2017-06-24 13:52:01.142245226 +0200
+@@ -269,10 +269,10 @@
+ 				if mx>=1 and mx<=3 and my>=1 and my<=4:
+ 					self.maj_result(tab_main[mx-1][my-1])
+ 					#print "Button pressed : "+ self.button_value
+-					self.redraw_canvas()
+ 					action = True
+ 
+ 		#print "action="+str(action)
++		self.redraw_canvas()
+ 		return action
+ 
+ 	def maj_result(self, value):
+diff -Naur indiv-screenlets-0.1.7.orig/src/ClearWeather/ClearWeatherScreenlet.py indiv-screenlets-0.1.7/src/ClearWeather/ClearWeatherScreenlet.py
+--- indiv-screenlets-0.1.7.orig/src/ClearWeather/ClearWeatherScreenlet.py	2017-01-30 21:44:28.000000000 +0100
++++ indiv-screenlets-0.1.7/src/ClearWeather/ClearWeatherScreenlet.py	2017-06-24 21:53:33.298787428 +0200
+@@ -256,6 +256,7 @@
+ 		current = self.current
+ 		# set size
+ 		ctx.scale(self.scale, self.scale)
++		ctx.translate(0, 1)
+ 		# draw bg (if theme available)
+ 		ctx.set_operator(cairo.OPERATOR_OVER)
+ 		ctx.set_source_rgba(*self.background_color)
+diff -Naur indiv-screenlets-0.1.7.orig/src/Flower/FlowerScreenlet.py indiv-screenlets-0.1.7/src/Flower/FlowerScreenlet.py
+--- indiv-screenlets-0.1.7.orig/src/Flower/FlowerScreenlet.py	2017-01-30 21:44:28.000000000 +0100
++++ indiv-screenlets-0.1.7/src/Flower/FlowerScreenlet.py	2017-06-24 20:33:36.816274660 +0200
+@@ -253,6 +253,7 @@
+ 	def on_draw (self, ctx):
+ 		ctx.set_operator(cairo.OPERATOR_OVER)
+ 		ctx.scale(self.scale, self.scale)
++		ctx.translate(0, 1)
+ 		if self.theme:
+ 			#self.theme['flower-pot.svg'].render_cairo(ctx)
+ 			self.theme.render(ctx, 'flower-pot')
+diff -Naur indiv-screenlets-0.1.7.orig/src/FolderView/FolderViewScreenlet.py indiv-screenlets-0.1.7/src/FolderView/FolderViewScreenlet.py
+--- indiv-screenlets-0.1.7.orig/src/FolderView/FolderViewScreenlet.py	2017-01-30 21:44:28.000000000 +0100
++++ indiv-screenlets-0.1.7/src/FolderView/FolderViewScreenlet.py	2017-06-24 16:29:56.377333692 +0200
+@@ -1269,7 +1269,7 @@
+ 					self.draw_icon(self.ctx_fore, 						# self.ctx_fore
+ 						self.get_x(elem) + self.icon_size * 0.5 ,	# x
+ 						self.get_y(elem) + self.icon_size * 0.2,		# y
+-						gtk.STOCK_MISSING_IMAGE, 			# icon name
++						"image-missing", 			# icon name
+ 						self.icon_size, self.icon_size)	
+ 
+ 			#Draw the text
+@@ -1327,13 +1327,13 @@
+ 		self.thumbFactory = gnome.ui.ThumbnailFactory(gnome.ui.THUMBNAIL_SIZE_LARGE)
+ 		self.WorkList = []
+ 		self.DoneList = []
+-		self.stockimage = gtk.STOCK_MISSING_IMAGE 
++		self.stockimage = "image-missing" 
+ 		self.Timer = None
+ 		
+ 	def lookup(self, uri):
+ 		icon = self.thumbFactory.lookup(uri,0)
+ 		if not icon:
+-			icon = gtk.STOCK_MISSING_IMAGE
++			icon = "image-missing"
+ 		return icon
+ 			
+ 	def Process(self,uri,mime_type):
+@@ -1347,7 +1347,7 @@
+ 					self.thumbFactory.save_thumbnail(thumbnail, uri, 0)
+ 			icon = uri
+ 		else:
+-			icon = gtk.STOCK_MISSING_IMAGE
++			icon = "image-missing"
+ 		return icon
+ 		
+ 	def ProcessWorkList(self):
+diff -Naur indiv-screenlets-0.1.7.orig/src/Lipik/LipikScreenlet.py indiv-screenlets-0.1.7/src/Lipik/LipikScreenlet.py
+--- indiv-screenlets-0.1.7.orig/src/Lipik/LipikScreenlet.py	2017-01-30 21:46:05.000000000 +0100
++++ indiv-screenlets-0.1.7/src/Lipik/LipikScreenlet.py	2017-06-24 20:58:39.542781426 +0200
+@@ -33,12 +33,6 @@
+ from screenlets.options import FontOption, ColorOption
+ 
+ import gtk
+-
+-try:
+-  import Image
+-except:
+-    print "Couldn't import python-imaging."
+-
+ import os
+ from gtk import gdk
+ import cairo
+@@ -565,6 +559,7 @@
+ 	def on_draw_shape (self,ctx):
+ 		#set scale
+ 		ctx.scale(self.scale, self.scale)
++		ctx.translate(0, 1)
+ 		# just render bg
+ 		if self.theme:
+ 			#self.theme["note-bg.svg"].render_cairo(ctx)
+diff -Naur indiv-screenlets-0.1.7.orig/src/MailCheck/MailCheckScreenlet.py indiv-screenlets-0.1.7/src/MailCheck/MailCheckScreenlet.py
+--- indiv-screenlets-0.1.7.orig/src/MailCheck/MailCheckScreenlet.py	2017-01-30 21:44:28.000000000 +0100
++++ indiv-screenlets-0.1.7/src/MailCheck/MailCheckScreenlet.py	2017-06-24 20:34:56.248459241 +0200
+@@ -369,6 +369,7 @@
+ 	
+ 	def on_draw (self, ctx):
+ 		ctx.scale(self.scale, self.scale)
++		ctx.translate(0, 1)
+ 		if self.theme:
+ 			if self.__mailbox_status == mail.MailboxStatus.UNREAD_MAIL or \
+ 				self.__mailbox_status == mail.MailboxStatus.NEW_MAIL:
+diff -Naur indiv-screenlets-0.1.7.orig/src/Ruler/RulerScreenlet.py indiv-screenlets-0.1.7/src/Ruler/RulerScreenlet.py
+--- indiv-screenlets-0.1.7.orig/src/Ruler/RulerScreenlet.py	2017-01-30 21:44:28.000000000 +0100
++++ indiv-screenlets-0.1.7/src/Ruler/RulerScreenlet.py	2017-06-24 20:35:29.509375270 +0200
+@@ -94,6 +94,7 @@
+ 	def on_draw (self, ctx):
+ 		ctx.set_operator(cairo.OPERATOR_OVER)
+ 		ctx.scale(self.scale, self.scale)
++		ctx.translate(0, 1)
+ 		if self.theme:
+ 			#self.theme['ruler-bg.svg'].render_cairo(ctx)
+ 			if self.show_vertical:
+diff -Naur indiv-screenlets-0.1.7.orig/src/Sensors/SensorsScreenlet.py indiv-screenlets-0.1.7/src/Sensors/SensorsScreenlet.py
+--- indiv-screenlets-0.1.7.orig/src/Sensors/SensorsScreenlet.py	2017-01-30 21:46:05.000000000 +0100
++++ indiv-screenlets-0.1.7/src/Sensors/SensorsScreenlet.py	2017-06-24 20:27:36.903117069 +0200
+@@ -232,7 +232,7 @@
+ 		# draw bg (if theme available)
+ 		ctx.set_operator(cairo.OPERATOR_OVER)
+ 		if self.theme:
+-			self.theme['cpumeter-bg.svg'].render_cairo(ctx)
++			self.theme.render(ctx, 'cpumeter-bg')
+ 		# draw cpu-graph
+ 			if self.graph_type == _('Graph'):
+ 				ctx.save()
+@@ -275,12 +275,12 @@
+ 			
+ 		# draw glass (if theme available)
+ 	
+-			self.theme['cpumeter-glass.svg'].render_cairo(ctx)
++			self.theme.render(ctx, 'cpumeter-glass')
+ 
+ 	def on_draw_shape(self,ctx):
+ 		if self.theme:
+ 			ctx.scale(self.scale, self.scale)
+-			self.theme['cpumeter-bg.svg'].render_cairo(ctx)
++			self.theme.render(ctx, 'cpumeter-bg')
+ 
+ 
+ # If the program is run directly or passed as an argument to the python
+diff -Naur indiv-screenlets-0.1.7.orig/src/Slideshow/SlideshowScreenlet.py indiv-screenlets-0.1.7/src/Slideshow/SlideshowScreenlet.py
+--- indiv-screenlets-0.1.7.orig/src/Slideshow/SlideshowScreenlet.py	2017-01-30 21:46:05.000000000 +0100
++++ indiv-screenlets-0.1.7/src/Slideshow/SlideshowScreenlet.py	2017-06-24 20:10:48.233128214 +0200
+@@ -900,7 +900,7 @@
+ 			elif self.engine1 == _('Media RSS'):
+ 				os.system('firefox ' + self.url + " &")
+ 			elif self.engine1 == _('Folder'):
+-				os.system('gnome-open ' + chr(34) + self.__image + chr(34) + " &")
++				os.system('xdg-open ' + chr(34) + self.__image + chr(34) + " &")
+ 
+ 		if id == "wall":
+ 			# TODO: use DBus-call for this
+diff -Naur indiv-screenlets-0.1.7.orig/src/Sticker/StickerScreenlet.py indiv-screenlets-0.1.7/src/Sticker/StickerScreenlet.py
+--- indiv-screenlets-0.1.7.orig/src/Sticker/StickerScreenlet.py	2017-01-30 21:46:05.000000000 +0100
++++ indiv-screenlets-0.1.7/src/Sticker/StickerScreenlet.py	2017-06-24 20:18:31.202018031 +0200
+@@ -80,7 +80,7 @@
+ 			ctx.translate(self.theme.width / 2.0, self.theme.height / 2.0);
+ 			ctx.rotate((self.xx)*3.14/180);
+ 			ctx.translate(-self.theme.width / 2.0, -self.theme.height / 2.0);
+-			self.theme['sticker.svg'].render_cairo(ctx)
++			self.theme.render(ctx, 'sticker')
+ 
+ 		
+ 		
+@@ -94,7 +94,6 @@
+ 		
+ 				
+ 	def on_draw_shape(self,ctx):
+-		ctx.scale(self.scale, self.scale)
+ 		ctx.set_operator(cairo.OPERATOR_OVER)	
+ 		if self.theme:
+ 			self.on_draw (ctx)
+diff -Naur indiv-screenlets-0.1.7.orig/src/Stocks/StocksScreenlet.py indiv-screenlets-0.1.7/src/Stocks/StocksScreenlet.py
+--- indiv-screenlets-0.1.7.orig/src/Stocks/StocksScreenlet.py	2017-01-30 21:44:28.000000000 +0100
++++ indiv-screenlets-0.1.7/src/Stocks/StocksScreenlet.py	2017-06-24 20:07:21.120573788 +0200
+@@ -142,7 +142,7 @@
+ 			# make sure that the background covers all the icons
+ 			ctx.save()
+ 			ctx.scale(self.scale, self.scale)
+-			ctx.translate(0, 0)
++			ctx.translate(0, 1)
+ 			self.theme.render(ctx, 'background')
+ 			ctx.restore()
+ 
+@@ -294,7 +294,7 @@
+ 		self.redraw_canvas()
+ 
+ 	def open_info(self):
+-		system("gnome-open 'http://finance.yahoo.com/q?s=" + self.symbol + "'")
++		system("xdg-open 'http://finance.yahoo.com/q?s=" + self.symbol + "'")
+ 
+ # If the program is run directly or passed as an argument to the python
+ # interpreter then create a Screenlet instance and show it

@@ -1,41 +1,37 @@
-# $Id: PKGBUILD 198398 2016-12-07 19:41:34Z bgyorgy $
 # Maintainer: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=screenlets-pack-basic
 _pkgname=indiv-screenlets
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=3
 pkgdesc="Desktop widgets for Screenlets"
 arch=('any')
 url="https://launchpad.net/indiv-screenlets"
 license=('GPL3')
 depends=('screenlets')
-makedepends=('dos2unix')
 optdepends=('python2-feedparser: Clear Rss Screenlet'
-            'python2-pytz: Freemeteo Weather Screenlet'
-            'python2-pillow: Lipik, Lyrics Screenlets'
             'python2-numpy: Lipik Screenlet')
+options=('!emptydirs')
 source=(https://launchpad.net/indiv-screenlets/trunk/$pkgver/+download/$_pkgname-$pkgver.tar.bz2{,.asc}
-        drop-gnomevfs.patch
-        screenlets-pack-basic-pillow.patch)
-validpgpkeys=('D82D1D02396B27DC5045E356A01AFB1B15E8CCA4') # Guido Tabbernuk
-md5sums=('d908308a60eecbee13a21917d36b10bc'
-         'SKIP'
-         '0ee366b0eafea6b646a7a5f02df2a65c'
-         '4e30b2ad949e05f2a32770c95f95cd8f')
+        fix-screenlets.patch)
+validpgpkeys=('D82D1D02396B27DC5045E356A01AFB1B15E8CCA4'  # Guido Tabbernuk
+              '1F78BFA38F0D87A5E007D332990F03C13116C9F7') # Hrotkó Gábor
+sha256sums=('415f488c743171a0e2041245a50ee3c37500d4dfe2259ff4232164a6fd7b6051'
+            'SKIP'
+            '76e140406e911019c2a674b423e4a4c41143413e6992f2dcf8fee485cc623203')
 
 prepare() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd $_pkgname-$pkgver
 
-  # Remove python2-gnomevfs dependency
-  # https://code.launchpad.net/~ballogy/indiv-screenlets/lyrics-replace-gnomevfs/+merge/104175
-  patch -Np1 -i "$srcdir/drop-gnomevfs.patch"
+  # Various fixes
+  patch -Np1 -i ../fix-screenlets.patch
 
-  # Port to Pillow
-  patch -Np1 -i "$srcdir/screenlets-pack-basic-pillow.patch"
-
-  # Some files are distributed in DOS format...
-  find . -name \*.py -exec dos2unix -q '{}' \;
+  # Remove broken screenlets
+  sed -i '/Lyrics/d
+          /Webframe/d
+          /Stocks/d
+          /MailCheck/d
+          s/FreemeteoWeather/ClearWeather/' setup.py
 
   # Python2 fix
   find . -name \*.py -exec sed -i 's@^#.*python$@#!/usr/bin/python2@' '{}' \;
@@ -47,9 +43,9 @@ prepare() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd $_pkgname-$pkgver
 
-  python2 setup.py install --root=$pkgdir/ --optimize=1
+  python2 setup.py install --root="$pkgdir" --optimize=1
 
   # Remove screenlets-pack-all, because a lot of them are broken
   rm "$pkgdir"/usr/lib/python2.7/site-packages/screenlets_pack_all-$pkgver-py2.7.egg-info
