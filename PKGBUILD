@@ -3,7 +3,7 @@
 
 pkgname=gpmdp
 pkgver=4.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music. Stable release."
 arch=('i686' 'x86_64')
 url="http://www.googleplaymusicdesktopplayer.com"
@@ -18,12 +18,12 @@ case $CARCH in
     'x86_64')
         _arch='amd64'
         md5sums=('aca6d73ddfed0f4256176163b0139578'
-                 '66bc0423e793af7b8ca75b9b175a42c8')
+                 'b776561dd313eb1ded6356247cfffa89')
     ;;
     'i686')
         _arch='i386'
         md5sums=('d72cae1e1b4a9fa9036de01b26c0cc20'
-                 '66bc0423e793af7b8ca75b9b175a42c8')
+                 'b776561dd313eb1ded6356247cfffa89')
 	;;
 esac
 

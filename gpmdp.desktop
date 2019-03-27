@@ -2,7 +2,7 @@
 Name=Google Play Music Desktop Player
 Comment=An electron wrapper for Google Play Music
 GenericName=Google Play Music Desktop Player
-Exec=gpmdp %U
+Exec=env XDG_CURRENT_DESKTOP=Unity gpmdp %U
 Icon=gpmdp
 Type=Application
 StartupNotify=true
