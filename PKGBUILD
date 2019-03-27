@@ -10,6 +10,7 @@ url="https://github.com/jrprice/Oclgrind"
 makedepends=("cmake")
 depends=("clang" "llvm")
 license=("BSD")
+conflicts=("oclgrind-git")
 
 source=("https://github.com/jrprice/Oclgrind/archive/v${pkgver}.zip"
         "llvm.patch")
