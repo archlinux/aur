@@ -2,52 +2,31 @@
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: Thomas S Hatch <thatch45@gmail.com>
 
-pkgbase=python-pytddmon
-pkgname=('python-pytddmon' 'python2-pytddmon')
+pkgname=python-pytddmon
 pkgver=1.0.8
 _commit=4b2875cfda88050537af58a4103ea8809c27ee1c
-pkgrel=3
+pkgrel=4
 pkgdesc='Continuous unit testing in Python'
 arch=('any')
 url='http://pytddmon.org'
 license=('Apache')
-makedepends=('python-setuptools' 'python2-setuptools' 'git')
-checkdepends=('python-nose' 'python2-nose')
-source=("git+https://github.com/objarni/pytddmon.git#commit=$_commit")
-md5sums=('SKIP')
-
-prepare() {
-  cp -a pytddmon{,-py2}
-}
+depends=('python')
+makedepends=('python-setuptools')
+checkdepends=('python-nose')
+source=("$pkgname-$_commit.tar.gz::https://github.com/objarni/pytddmon/archive/$_commit.tar.gz")
+sha512sums=('5b71938b0f80995a8e9c9590697e1ccc53f30339d0dc63a31aa37957d8f354913e84444eecaebd6a8e631af645baefbdbed09aaa65f53d7e0d49c90fbc2c7a46')
 
 build() {
-  cd "$srcdir"/pytddmon
+  cd pytddmon-$_commit
   python setup.py build
-
-  cd "$srcdir"/pytddmon-py2
-  python2 setup.py build
 }
 
 check() {
-  cd "$srcdir"/pytddmon
+  cd pytddmon-$_commit
   python setup.py nosetests
-
-  cd "$srcdir"/pytddmon-py2
-  python2 setup.py nosetests
 }
 
-package_python-pytddmon() {
-  depends=('python')
-
-  cd pytddmon
+package() {
+  cd pytddmon-$_commit
   python setup.py install --root="$pkgdir" -O1
-}
-
-package_python2-pytddmon() {
-  depends=('python2')
-
-  cd pytddmon-py2
-  python2 setup.py install --root="$pkgdir" -O1
-
-  mv "$pkgdir"/usr/bin/pytddmon{,2}.py
 }
