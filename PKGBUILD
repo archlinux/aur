@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=code-server
-pkgver=1.32.0_310
+pkgver=1.408_vsc1.32.0
 pkgrel=0
 pkgdesc="Run VS Code on a remote server"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/codercom/code-server"
 license=(MIT)
 depends=(net-tools)
 _ghtag=${pkgver//_/-}
-_dirname=code-server-${_ghtag}-linux-x64
+_dirname=code-server${_ghtag}-linux-x64
 source=(https://github.com/codercom/code-server/releases/download/${_ghtag}/${_dirname}.tar.gz)
 sha512sums=(SKIP)
 options=('!strip')
