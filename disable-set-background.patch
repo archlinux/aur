@@ -1,0 +1,33 @@
+diff -Naur gnome-activity-journal-0.8.0.orig/src/activity_widgets.py gnome-activity-journal-0.8.0/src/activity_widgets.py
+--- gnome-activity-journal-0.8.0.orig/src/activity_widgets.py	2011-07-16 17:58:23.000000000 +0200
++++ gnome-activity-journal-0.8.0/src/activity_widgets.py	2011-11-15 02:15:30.603371223 +0100
+@@ -1689,7 +1689,6 @@
+         context = widget.window.cairo_create()
+         layout = self.create_pango_layout("   ")
+         width = event.area.width
+-        widget.style.set_background(window, gtk.STATE_NORMAL)
+         context.set_source_rgba(*self.line_color)
+         context.set_line_width(2)
+         self.draw_lines(window, context, layout, width)
+diff -Naur gnome-activity-journal-0.8.0.orig/src/histogram.py gnome-activity-journal-0.8.0/src/histogram.py
+--- gnome-activity-journal-0.8.0.orig/src/histogram.py	2011-05-21 14:29:27.000000000 +0200
++++ gnome-activity-journal-0.8.0/src/histogram.py	2011-11-15 02:15:37.776270364 +0100
+@@ -157,7 +157,6 @@
+         """
+         The major drawing method that the expose event calls directly
+         """
+-        widget.style.set_background(widget.window, gtk.STATE_NORMAL)
+         context = widget.window.cairo_create()
+         self.expose(widget, event, context)
+ 
+diff -Naur gnome-activity-journal-0.8.0.orig/src/supporting_widgets.py gnome-activity-journal-0.8.0/src/supporting_widgets.py
+--- gnome-activity-journal-0.8.0.orig/src/supporting_widgets.py	2011-05-21 14:29:27.000000000 +0200
++++ gnome-activity-journal-0.8.0/src/supporting_widgets.py	2011-11-15 02:15:45.059162848 +0100
+@@ -94,7 +94,6 @@
+         self.context = context
+ 
+         self.font_name = self.style.font_desc.get_family()
+-        widget.style.set_background(widget.window, gtk.STATE_NORMAL)
+ 
+         # set a clip region for the expose event
+         context.rectangle(event.area.x, event.area.y, event.area.width, event.area.height)

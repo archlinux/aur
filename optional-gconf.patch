@@ -1,0 +1,228 @@
+diff -Naur gnome-activity-journal-0.8.0.orig/setup.cfg gnome-activity-journal-0.8.0/setup.cfg
+--- gnome-activity-journal-0.8.0.orig/setup.cfg	2010-01-29 18:07:45.000000000 +0100
++++ gnome-activity-journal-0.8.0/setup.cfg	2018-09-05 17:58:05.384745926 +0200
+@@ -2,4 +2,3 @@
+ domain=gnome-activity-journal
+ bug_contact=zeitgeist@lists.launchpad.net
+ desktop_files=[('share/applications', ('extra/gnome-activity-journal.desktop.in',))]
+-schemas_files=[('share/gconf/schemas', ('extra/gnome-activity-journal.schemas.in',))]
+diff -Naur gnome-activity-journal-0.8.0.orig/src/activity_widgets.py gnome-activity-journal-0.8.0/src/activity_widgets.py
+--- gnome-activity-journal-0.8.0.orig/src/activity_widgets.py	2018-09-05 17:55:34.170365000 +0200
++++ gnome-activity-journal-0.8.0/src/activity_widgets.py	2018-09-05 18:52:35.875289887 +0200
+@@ -498,8 +498,12 @@
+             if self.subject.uri.startswith("http"):
+                 self.icon = self.content_obj.get_actor_pixbuf(24)
+             else:
+-                self.icon = self.content_obj.get_icon(
+-                    can_thumb=settings.get('small_thumbnails', False), border=0)          
++                if settings:
++                    self.icon = self.content_obj.get_icon(
++                        can_thumb=settings.get('small_thumbnails', False), border=0)          
++                else:
++                    self.icon = self.content_obj.get_icon(
++                        can_thumb=False, border=0)          
+         else:
+             self.icon = None
+         self.btn.set_relief(gtk.RELIEF_NONE)
+diff -Naur gnome-activity-journal-0.8.0.orig/src/config.py gnome-activity-journal-0.8.0/src/config.py
+--- gnome-activity-journal-0.8.0.orig/src/config.py	2018-09-05 17:55:34.167032000 +0200
++++ gnome-activity-journal-0.8.0/src/config.py	2018-09-05 20:13:33.052030404 +0200
+@@ -34,7 +34,10 @@
+ try:
+     from fungtk.quickconf import QuickConf
+ except ImportError:
+-    from quickconf import QuickConf
++    try:
++        from quickconf import QuickConf
++    except ImportError:
++        QuickConf = None
+ 
+ from zeitgeist.datamodel import Event, Subject, Interpretation, Manifestation, \
+     ResultType
+@@ -60,7 +63,10 @@
+ if not os.path.exists(USER_PLUGIN_PATH) or not os.path.isdir(USER_PLUGIN_PATH):
+     USER_PLUGIN_PATH = None
+ 
+-settings = QuickConf("/apps/gnome-activity-journal")
++if QuickConf:
++    settings = QuickConf("/apps/gnome-activity-journal")
++else:
++    settings = None
+ 
+ def _get_path(path):
+     return os.path.join(BASE_PATH, path)
+@@ -165,7 +171,10 @@
+     str __plugin_name__: plugin name
+     str __description__: description of the plugin
+     """
+-    plugin_settings = QuickConf("/apps/gnome-activity-journal/plugins")
++    if QuickConf:
++        plugin_settings = QuickConf("/apps/gnome-activity-journal/plugins")
++    else:
++        plugin_settings = None
+ 
+     def __init__(self, client, store, window):
+         self.plugins = {}
+@@ -203,13 +212,14 @@
+         return plugins
+ 
+     def load_plugins(self, plugins):
+-        for plugin_name, plugin_module in plugins:
+-            try:
+-                state = self.plugin_settings.get(plugin_name, False)
+-                if not state: continue # If the plugin is not True it will not be loaded
+-                self.activate(plugin_module)
+-            except Exception, e:
+-                print "Loading %s failed." % plugin_name, e
++        if QuickConf:
++            for plugin_name, plugin_module in plugins:
++                try:
++                    state = self.plugin_settings.get(plugin_name, False)
++                    if not state: continue # If the plugin is not True it will not be loaded
++                    self.activate(plugin_module)
++                except Exception, e:
++                    print "Loading %s failed." % plugin_name, e
+ 
+     def __get_plugin_from_name(self, plugin=None, name=None):
+         if not plugin:
+diff -Naur gnome-activity-journal-0.8.0.orig/src/Indicator.py gnome-activity-journal-0.8.0/src/Indicator.py
+--- gnome-activity-journal-0.8.0.orig/src/Indicator.py	2018-09-05 17:55:34.177032000 +0200
++++ gnome-activity-journal-0.8.0/src/Indicator.py	2018-09-05 18:57:58.794690933 +0200
+@@ -148,10 +148,11 @@
+     def __init__(self, main_window):
+         self.tray = None
+         self.main_window = main_window
+-        if settings.get("tray_icon", False):
+-            self._create_tray_icon(self.main_window)
++        if settings:
++            if settings.get("tray_icon", False):
++                self._create_tray_icon(self.main_window)
+ 
+-        settings.connect("tray_icon", self._on_tray_conf_changed)
++            settings.connect("tray_icon", self._on_tray_conf_changed)
+ 
+     def _create_tray_icon(self, main_window):
+         if HAS_INDICATOR: self.tray = Indicator(main_window)
+diff -Naur gnome-activity-journal-0.8.0.orig/src/main.py gnome-activity-journal-0.8.0/src/main.py
+--- gnome-activity-journal-0.8.0.orig/src/main.py	2011-05-21 14:42:13.000000000 +0200
++++ gnome-activity-journal-0.8.0/src/main.py	2018-09-05 18:56:10.259160164 +0200
+@@ -341,10 +341,11 @@
+             min(max(int(screen[2] * 0.80), min_size[0]), screen[2]),
+             min(max(int(screen[3] * 0.75), min_size[1]), screen[3])
+         ]
+-        if settings["window_width"] and settings["window_width"] <= screen[2]:
+-            size[0] = settings['window_width']
+-        if settings["window_height"] and settings["window_height"] <= screen[3]:
+-            size[1] = settings["window_height"]
++        if settings:
++            if settings["window_width"] and settings["window_width"] <= screen[2]:
++                size[0] = settings['window_width']
++            if settings["window_height"] and settings["window_height"] <= screen[3]:
++                size[1] = settings["window_height"]
+ 
+         self.set_geometry_hints(min_width=1024, min_height=360)
+         self.resize(size[0], size[1])
+@@ -399,17 +400,19 @@
+             self.set_title(_("%s to %s") % (start, end) + " - " + _("Activity Journal"))
+ 
+     def on_delete(self, w, event):
+-        x, y = self.get_size()
+-        settings["window_width"] = x
+-        settings["window_height"] = y
+-        if settings.get("tray_icon", False):
+-            self.set_visibility(False)
+-            return True
++        if settings:
++            x, y = self.get_size()
++            settings["window_width"] = x
++            settings["window_height"] = y
++            if settings.get("tray_icon", False):
++                self.set_visibility(False)
++                return True
+ 
+     def quit_and_save(self, *args):
+-        x, y = self.get_size()
+-        settings["window_width"] = x
+-        settings["window_height"] = y
++        if settings:
++            x, y = self.get_size()
++            settings["window_width"] = x
++            settings["window_height"] = y
+         gtk.main_quit()
+ 
+     def quit(self, *args):
+diff -Naur gnome-activity-journal-0.8.0.orig/src/supporting_widgets.py gnome-activity-journal-0.8.0/src/supporting_widgets.py
+--- gnome-activity-journal-0.8.0.orig/src/supporting_widgets.py	2018-09-05 17:55:34.170365000 +0200
++++ gnome-activity-journal-0.8.0/src/supporting_widgets.py	2018-09-05 20:05:26.316133461 +0200
+@@ -1586,7 +1586,8 @@
+             self.connect("row-activated" , self.on_activate)
+ 
+         def set_state(self, entry, state):
+-            PluginManager.plugin_settings._gconf.set_bool(entry.key, state)
++            if PluginManager.plugin_settings:
++                PluginManager.plugin_settings._gconf.set_bool(entry.key, state)
+ 
+         def on_activate(self, widget, path, column):
+             model = self.get_model()
+@@ -1599,21 +1600,22 @@
+                 self.manager.deactivate(name=bname)
+ 
+         def set_items(self, manager):
+-            entries = manager.plugin_settings._gconf.all_entries(PluginManager.plugin_settings._root)
+-            store = gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_BOOLEAN, gobject.TYPE_PYOBJECT)
+-            for entry in entries:
+-                bname = os.path.basename(entry.key)
+-                if manager.plugins.has_key(bname):
+-                    # Load the plugin if the plugin is found
+-                    module = manager.plugins[bname]
+-                    name = "<b>" + module.__plugin_name__ + "</b>"
+-                    desc = "\n<small>" + module.__description__ + "</small>"
+-                    store.append( [name+desc, False if entry.value is None else entry.value.get_bool(), entry])
+-                else:
+-                    # Remove the key if no plugin is found
+-                    manager.plugin_settings._gconf.unset(entry.key)
+-            self.manager = manager
+-            self.set_model(store)
++            if manager.plugin_settings:
++                entries = manager.plugin_settings._gconf.all_entries(PluginManager.plugin_settings._root)
++                store = gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_BOOLEAN, gobject.TYPE_PYOBJECT)
++                for entry in entries:
++                    bname = os.path.basename(entry.key)
++                    if manager.plugins.has_key(bname):
++                        # Load the plugin if the plugin is found
++                        module = manager.plugins[bname]
++                        name = "<b>" + module.__plugin_name__ + "</b>"
++                        desc = "\n<small>" + module.__description__ + "</small>"
++                        store.append( [name+desc, False if entry.value is None else entry.value.get_bool(), entry])
++                    else:
++                        # Remove the key if no plugin is found
++                        manager.plugin_settings._gconf.unset(entry.key)
++                self.manager = manager
++                self.set_model(store)
+ 
+     def __init__(self, parent=None):
+         super(PreferencesDialog, self).__init__()
+@@ -1642,14 +1644,15 @@
+         #Configuration page
+         vbox = gtk.VBox()
+         vbox.set_border_width(5)
+-        hbox_tray = gtk.HBox()
+-        label = gtk.Label(_("Show icon in system tray"))
+-        self.check_button = gtk.CheckButton()
+-        self.check_button.set_active(settings.get("tray_icon", False))
+-        self.check_button.connect("toggled", self.on_check_toggled)
+-        hbox_tray.pack_start(self.check_button,False,False)
+-        hbox_tray.pack_start(label, False,False)
+-        vbox.pack_start(hbox_tray,False,False)
++        if settings:
++            hbox_tray = gtk.HBox()
++            label = gtk.Label(_("Show icon in system tray"))
++            self.check_button = gtk.CheckButton()
++            self.check_button.set_active(settings.get("tray_icon", False))
++            self.check_button.connect("toggled", self.on_check_toggled)
++            hbox_tray.pack_start(self.check_button,False,False)
++            hbox_tray.pack_start(label, False,False)
++            vbox.pack_start(hbox_tray,False,False)
+         notebook.append_page(vbox, gtk.Label( _("Configuration")))
+ 
+         self.connect("delete-event", lambda *args: (True, self.hide())[0])

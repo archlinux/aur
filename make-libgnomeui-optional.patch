@@ -1,0 +1,113 @@
+diff -Naur gnome-activity-journal-0.8.0.orig/src/common.py gnome-activity-journal-0.8.0/src/common.py
+--- gnome-activity-journal-0.8.0.orig/src/common.py	2011-07-16 18:27:43.000000000 +0200
++++ gnome-activity-journal-0.8.0/src/common.py	2011-10-09 07:04:07.011645989 +0200
+@@ -29,7 +29,6 @@
+ import gobject
+ import gettext
+ import gio
+-import gnome.ui
+ import glib
+ import gtk
+ import os
+@@ -44,6 +43,12 @@
+ import zipfile
+ 
+ try:
++    import gnome.ui
++    gnomeui = True
++except ImportError:
++    gnomeui = None
++
++try:
+     import pygments
+ except ImportError:
+     pygments = None
+@@ -72,10 +77,11 @@
+ SIZE_TEXT_TIMELINEVIEW = ["small", "medium", "large", "x-large"]
+ SIZE_TEXT_THUMBVIEW = ["x-small", "small", "large", "xx-large"]
+ 
+-THUMBNAIL_FACTORIES = {
+-    SIZE_NORMAL: gnome.ui.ThumbnailFactory("normal"),
+-    SIZE_LARGE: gnome.ui.ThumbnailFactory("large")
+-}
++if gnomeui:
++    THUMBNAIL_FACTORIES = {
++        SIZE_NORMAL: gnome.ui.ThumbnailFactory("normal"),
++        SIZE_LARGE: gnome.ui.ThumbnailFactory("large")
++    }
+ ICON_THEME = gtk.icon_theme_get_default()
+ 
+ #FIXME i know it's ugly. Btw this is only a temp solution. It will be removed
+@@ -878,39 +884,41 @@
+         try:
+             thumb = THUMBS[size][self.uri]
+         except KeyError:
++            thumb = None
+-            factory = THUMBNAIL_FACTORIES[size]
+-            location = factory.lookup(self.uri, self.mtime)
+-            if location:
+-                thumb, mtime = THUMBS[size][self.uri] = \
+-                    (gtk.gdk.pixbuf_new_from_file(location), self.mtime)
+-            else:
+-                if factory.has_valid_failed_thumbnail(self.uri, self.mtime):
+-                    thumb = THUMBS[size][self.uri] = None
++            if gnomeui:
++                factory = THUMBNAIL_FACTORIES[size]
++                location = factory.lookup(self.uri, self.mtime)
++                if location:
++                    thumb, mtime = THUMBS[size][self.uri] = \
++                        (gtk.gdk.pixbuf_new_from_file(location), self.mtime)
+                 else:
+-                    thumb = factory.generate_thumbnail(self.uri, self.mime_type)
+-                    if thumb is None:
+-                        # maybe we are able to use a custom thumbnailer here
+-                        if filter(lambda name: "application-vnd.oasis.opendocument" in name, self.icon_names):
+-                            thumb = create_opendocument_thumb(self._file_object.get_path())
+-                        elif "text-x-generic" in self.icon_names or "text-x-script" in self.icon_names:
+-                            try:
+-                                thumb = create_text_thumb(self, size, 1)
+-                            except Exception:
+-                                thumb = None
+-                        elif "audio-x-generic" in self.icon_names:
+-                            pass
+-                            #FIXME
+-                            #thumb = self.get_audio_cover(size)
+-                    if thumb is None:
+-                        factory.create_failed_thumbnail(self.uri, self.mtime)
++                    if factory.has_valid_failed_thumbnail(self.uri, self.mtime):
++                        thumb = THUMBS[size][self.uri] = None
+                     else:
+-                        width, height = thumb.get_width(), thumb.get_height()
+-                        if width > size[0] or height > size[1]:
+-                            scale = min(float(size[0])/width, float(size[1])/height)
+-                            thumb = gnome.ui.thumbnail_scale_down_pixbuf(
+-                                thumb, int(scale*width), int(scale*height))
+-                        factory.save_thumbnail(thumb, self.uri, self.mtime)
+-                        THUMBS[size][self.uri] = (thumb, self.mtime)
++                        thumb = factory.generate_thumbnail(self.uri, self.mime_type)
++                        if thumb is None:
++                            # maybe we are able to use a custom thumbnailer here
++                            if filter(lambda name: "application-vnd.oasis.opendocument" in name, self.icon_names):
++                                thumb = create_opendocument_thumb(self._file_object.get_path())
++                            elif "text-x-generic" in self.icon_names or "text-x-script" in self.icon_names:
++                                try:
++                                    thumb = create_text_thumb(self, size, 1)
++                                except Exception:
++                                    thumb = None
++                            elif "audio-x-generic" in self.icon_names:
++                                pass
++                                #FIXME
++                                #thumb = self.get_audio_cover(size)
++                        if thumb is None:
++                            factory.create_failed_thumbnail(self.uri, self.mtime)
++                        else:
++                            width, height = thumb.get_width(), thumb.get_height()
++                            if width > size[0] or height > size[1]:
++                                scale = min(float(size[0])/width, float(size[1])/height)
++                                thumb = gnome.ui.thumbnail_scale_down_pixbuf(
++                                    thumb, int(scale*width), int(scale*height))
++                            factory.save_thumbnail(thumb, self.uri, self.mtime)
++                            THUMBS[size][self.uri] = (thumb, self.mtime)
+         else:
+             if thumb is not None:
+                 if thumb[1] != self.mtime:

@@ -1,0 +1,15 @@
+diff -Naur gnome-activity-journal-0.8.0.orig/src/Indicator.py gnome-activity-journal-0.8.0/src/Indicator.py
+--- gnome-activity-journal-0.8.0.orig/src/Indicator.py	2011-07-16 18:57:07.000000000 +0200
++++ gnome-activity-journal-0.8.0/src/Indicator.py	2011-11-15 02:51:27.156163756 +0100
+@@ -37,9 +37,9 @@
+         A widget that implements the appindicator for ubuntu
+         """
+         def __init__(self, main_window):
+-            path = get_icon_path("hicolor/scalable/apps/gnome-activity-journal.svg")
++            icon = "gnome-activity-journal"
+             name = _("Activity Journal")
+-            appindicator.Indicator.__init__(self, name, path, \
++            appindicator.Indicator.__init__(self, name, icon, \
+                 appindicator.CATEGORY_APPLICATION_STATUS)
+ 
+             self.main_window = main_window

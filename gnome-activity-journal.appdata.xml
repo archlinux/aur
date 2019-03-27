@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>net.launchpad.gnome-activity-journal</id>
+  <launchable type="desktop-id">gnome-activity-journal.desktop</launchable>
+  <name>Activity Journal</name>
+  <summary>Browse a chronological log of your activities and easily find files, contacts, etc.</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <description>
+    <p>GNOME Activity Journal (formerly known as GNOME Zeitgeist) is a tool for easily browsing and finding files on your computer. It keeps a chronological journal of all file activity and supports tagging and establishing relationships between groups of files.</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://screenshots.debian.net/screenshots/000/008/240/large.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="bugtracker">https://bugs.launchpad.net/gnome-activity-journal</url>
+  <url type="homepage">https://launchpad.net/gnome-activity-journal</url>
+</component>
