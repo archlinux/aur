@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Amanoel Dawod <amanoel at outlook dot com>
 # Contributor: Santiago Torres-Arias <santiago@archlinux.org>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
@@ -7,15 +7,14 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ttf-ibm-plex
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
-pkgdesc="IBM Plex Mono, Sans, and Serif"
+pkgdesc="IBM Plex font family"
 arch=('any')
-url='https://github.com/IBM/plex'
-license=(custom:OFL)
-depends=(fontconfig xorg-font-utils)
+url="https://github.com/IBM/plex"
+license=('custom:OFL')
 source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/TrueType.zip")
-sha256sums=('fe4ff7bd12c3dbbe0d62f3380661e506f81c9bcb30bcf86ec044140b4c09f8a8')
+sha256sums=('428d64e8e03fa8326ed79d6ea72e7b1c9e816181c846c7d07fd21ee55aec4011')
 
 package() {
     cd TrueType
@@ -24,5 +23,3 @@ package() {
     # All the other licenses are the same as the one here...
     install -Dm644 IBM-Plex-Mono/license.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim: ts=2 sw=2 et:
