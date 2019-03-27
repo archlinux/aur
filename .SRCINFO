@@ -1,0 +1,18 @@
+pkgbase = log4net
+	pkgdesc = A tool to help the programmer output log statements to a variety of output targets
+	pkgver = 2.0.8
+	pkgrel = 2
+	url = https://logging.apache.org/log4net/
+	arch = any
+	license = Apache
+	depends = mono
+	source = https://archive.apache.org/dist/logging/log4net/source/log4net-2.0.8-src.zip
+	source = https://archive.apache.org/dist/logging/log4net/source/log4net-2.0.8-src.zip.asc
+	source = log4net.pc
+	validpgpkeys = CE8075A251547BEE249BC151A2115AE15F6B8B72
+	sha256sums = 5b4ab2c7753f64fd8d2ca82b553e367c3b5accbed5103ce6a455ab156f7fa08e
+	sha256sums = SKIP
+	sha256sums = 6ce4f40252e0716fb098149e99d1763d7290cc55cc2ccd1420456b1a3b33bb2d
+
+pkgname = log4net
+
