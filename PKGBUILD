@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname="cups-nosystemd"
-pkgver=2.2.10
+pkgver=2.2.11
 pkgrel=1
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ source=(https://github.com/apple/cups/releases/download/v${pkgver}/cups-${pkgver
         cups-no-gzip-man.patch
         cups-1.6.2-statedir.patch
         )
-sha256sums=('77c8b2b3bb7fe8b5fbfffc307f2c817b2d7ec67b657f261a1dd1c61ab81205bb'
+sha256sums=('f58010813fd6903f690cdb0c0b91e4d1bc9e5b9570c28734229ba3ed2908b76c'
             '87cd833e7c07a36298341e35d5ce0534ce68fdf76ce3e9eda697e5455b963d1b'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
