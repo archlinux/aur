@@ -2,7 +2,7 @@
 # Contributor: Kai Geißdörfer <kai.s.geissdoerfer at campus.tu-berlin.de>
 
 pkgname=ccstudio
-pkgver=8.3.0.00009
+pkgver=9.0.0.00018
 pkgrel=1
 pkgdesc="Texas Instruments Code Composer Studio IDE"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=('ttf-dejavu')
 
 # The license file was copy-pasted from the installer's GUI
 _archive=CCS${pkgver}_linux-x64
-source=("http://software-dl.ti.com/ccs/esd/CCSv8/CCS_8_3_0/exports/${_archive}.tar.gz"
+source=("http://software-dl.ti.com/ccs/esd/CCSv9/CCS_9_0_0/exports/${_archive}.tar.gz"
         "LICENSE"
         "61-msp430uif.rules"
         "71-sd-permissions.rules")
@@ -29,18 +29,18 @@ install=$pkgname.install
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
 
-_desktop="Code Composer Studio 8.3.0.desktop"
+_desktop="Code Composer Studio 9.0.0.desktop"
 
 _destdir=opt
 _installdir=installdir
 _installpath=$_installdir/$_destdir/$pkgname
-_scriptsdir=$_installpath/ccsv8/install_scripts
+_scriptsdir=$_installpath/ccs/install_scripts
 
 build() {
     cd $srcdir/${_archive}
 
     echo ">>> Executing installer. You can monitor progress with:"
-    echo ">>>     tail -f ${srcdir}/${_installpath}/ccsv8/install_logs/*/ccs_setup_${pkgver}_install.log"
+    echo ">>>     tail -f ${srcdir}/${_installpath}/ccs/install_logs/*/ccs_setup_${pkgver}_install.log"
 
     # Can't run this in package, because running as fakeroot breaks it:
     #    CCS_INFO: error message: dlsym(acl_get_fd): /usr/lib32/libfakeroot/libfakeroot.so: undefined symbol: acl_get_fd
@@ -87,7 +87,7 @@ package() {
     install -D -m0644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('69408a1d8eea5da27fc734f718db343fc0feabda73a1a682d5830a7027dd30bd'
+sha256sums=('279b41e5e89d2bc06879676415930dd06fd8fd147a35e42c5f31a1667cc58e8d'
             'adc0dd74f5b95e373db4b45c74b034ec3d45e2df462b3a1a35f6d56aa8181076'
             '97061c190d86ac2de195e54070d86d8bde34774ea35261942ee44626ca3c23db'
             'ad63fd5e8a11e1ddcbe1d0d56a739f1c2f573a2781e46f4d52b5a93dd5810d1a')
