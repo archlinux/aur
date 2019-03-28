@@ -3,13 +3,14 @@
 
 pkgname=pkgconf-git
 _pkgname=pkgconf
-pkgver=1.4.2.41.g390b020
+pkgver=1.6.0.7.gbe60112
 pkgrel=1
 pkgdesc='pkg-config compatible utility which does not depend on glib'
 url='https://github.com/pkgconf/pkgconf'
 arch=('i686' 'x86_64')
 license=('ISC')
-depends=(glibc sh git)
+depends=(glibc sh)
+makedepend=(git)
 conflicts=('pkg-config' 'pkgconfig' 'pkgconf')
 provides=('pkg-config' 'pkgconfig' 'pkgconf')
 source=(git://github.com/pkgconf/pkgconf.git
