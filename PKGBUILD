@@ -3,7 +3,7 @@
 _pkgname=qemu-user-static
 pkgdesc='A generic and open source machine emulator, statically linked'
 pkgver=3.1
-pkgrel=5
+pkgrel=6
 _debrel='+dfsg-6'
 
 pkgname=$_pkgname-bin
