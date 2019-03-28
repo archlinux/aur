@@ -1,6 +1,6 @@
 # Maintainer: Jaco Malan <jacomalan.12@gmail.com>
 pkgname=stress++
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 license=('GPL3')
 arch=('any')
