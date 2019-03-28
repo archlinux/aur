@@ -2,7 +2,7 @@
 
 pkgname=srcinfo
 pkgver=0.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Read from PKGBUILD and write to .SRCINFO"
 arch=(any)
 url="https://github.com/KSXGitHub/srcinfo.pkgbuild.git"
