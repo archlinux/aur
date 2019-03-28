@@ -4,6 +4,7 @@ pkgbase = gamin
 	pkgrel = 9
 	url = http://www.gnome.org/~veillard/gamin
 	arch = x86_64
+	arch = i686
 	license = GPL
 	makedepends = python2
 	depends = glib2
