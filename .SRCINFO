@@ -1,5 +1,5 @@
 pkgbase = faiss-cuda-git
-	pkgver = v1.5.0.r17.g7b07685
+	pkgver = v1.5.0.r19.ga9959bf
 	pkgrel = 1
 	url = https://github.com/facebookresearch/faiss
 	arch = i686
@@ -16,7 +16,9 @@ pkgbase = faiss-cuda-git
 	depends = lapack
 	depends = cuda
 	source = faiss::git+https://github.com/facebookresearch/faiss.git
+	source = cuda10.1.patch
 	sha256sums = SKIP
+	sha256sums = b021ca0a3ecfc4cca41e4819a7d8fd0c73a46a3349b1d498d5ad786f1f6a0535
 
 pkgname = faiss-cuda-git
 	pkgdesc = A library for efficient similarity search and clustering of dense vectors, CUDA version.

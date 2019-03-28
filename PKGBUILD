@@ -8,10 +8,11 @@ pkgname=('faiss-cuda-git' 'python-faiss-cuda-git' 'python2-faiss-cuda-git')
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('BSD')
-pkgver=v1.5.0.r17.g7b07685
+pkgver=v1.5.0.r19.ga9959bf
 pkgrel=1
-source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git)
-sha256sums=('SKIP')
+source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git 'cuda10.1.patch')
+sha256sums=('SKIP'
+            'b021ca0a3ecfc4cca41e4819a7d8fd0c73a46a3349b1d498d5ad786f1f6a0535')
 depends=('blas' 'lapack' 'cuda')
 makedepends=('python' 'python2' 'python-numpy' 'python2-numpy' 'swig' 'python-setuptools' 'python2-setuptools')
 
@@ -26,6 +27,7 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
   cp -ar python python2
   sed -i 's/makefile.inc/makefile2.inc/g' python2/Makefile
+  patch -p1 < ../cuda10.1.patch
 }
 
 
