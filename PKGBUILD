@@ -1,7 +1,7 @@
 # Maintainer: Alexandros Theodotou <alex@zrythm.org>
 _pkgname=zrythm
 pkgname=$_pkgname-git
-pkgver=v0.2.052.4.gdbacc17
+pkgver=0.2.052.r4.gdbacc17
 pkgrel=1
 pkgdesc="An highly automated, intuitive, Digital Audio Workstation (DAW)"
 arch=( 'x86_64' )
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 pkgver () {
   cd "$srcdir/$_pkgname"
   #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  printf "%s" "$(git describe --tags | sed 's/-/\./g')"
+  printf "%s" "$(git describe --tags | sed 's/-/\.r/' | sed 's/v//g' | sed 's/-/\./')"
 }
 
 build() {
