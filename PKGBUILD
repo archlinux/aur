@@ -1,33 +1,36 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 pkgname=fpocket-git
-pkgver=3.1.2
+pkgver=r84.d9012c1
 pkgrel=1
 pkgdesc="Fpocket is a very fast open source protein pocket detection algorithm based on Voronoi tessellation"
 arch=('i686' 'x86_64')
 license=('MIT')
 url="https://github.com/Discngine/fpocket"
-makedepends=('git' 'patch')
-source=("git+https://github.com/Discngine/fpocket.git"
+depends=('netcdf' 'vmd-molfile-plugins')
+makedepends=('git' 'patch' 'gcc')
+source=("$pkgname::git+https://github.com/Discngine/fpocket.git"
         "fpocket.patch")
 sha1sums=('SKIP'
-          '376060e821c23483effa2befb6e090d81dcc4d5e')
+          '9e2ec2ad73e0951446d3521335fc90cda12ebf8b')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
-  cd ${srcdir}/fpocket
+  cd ${pkgname}
   patch -Np0 -i "${srcdir}/fpocket.patch"
 }
 
 build() {
-  cd ${srcdir}/fpocket
+  cd ${pkgname}
   
   make
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/bin
-  mkdir -p ${pkgdir}/usr/share/man/man8
-
-  cd ${srcdir}/fpocket
+  cd ${pkgname}
 
   install -Dm755 bin/fpocket ${pkgdir}/usr/bin/fpocket
   install -Dm755 bin/dpocket ${pkgdir}/usr/bin/dpocket
