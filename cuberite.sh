@@ -9,32 +9,32 @@ declare -r game="cuberite"
 # Avoid altering any of those later in the code since they may be readonly (IDLE_SERVER is an exception!)
 
 # You may use this script for any game server of your choice, just alter the config file
-[[ ! -z "${SERVER_ROOT}" ]]  && declare -r SERVER_ROOT=${SERVER_ROOT}   || SERVER_ROOT="/srv/${game}"
-[[ ! -z "${BACKUP_DEST}" ]]  && declare -r BACKUP_DEST=${BACKUP_DEST}   || BACKUP_DEST="/srv/${game}/backup"
-[[ ! -z "${BACKUP_PATHS}" ]] && declare -r BACKUP_PATHS=${BACKUP_PATHS} || BACKUP_PATHS="world world_nether world_the_end"
-[[ ! -z "${KEEP_BACKUPS}" ]] && declare -r KEEP_BACKUPS=${KEEP_BACKUPS} || KEEP_BACKUPS="10"
-[[ ! -z "${GAME_USER}" ]]    && declare -r GAME_USER=${GAME_USER}       || GAME_USER="cuberite"
-[[ ! -z "${MAIN_EXECUTABLE}" ]] && declare -r MAIN_EXECUTABLE=${MAIN_EXECUTABLE} || MAIN_EXECUTABLE="Cuberite"
-[[ ! -z "${SESSION_NAME}" ]] && declare -r SESSION_NAME=${SESSION_NAME} || SESSION_NAME="${game}"
+[[ -n "${SERVER_ROOT}" ]]  && declare -r SERVER_ROOT=${SERVER_ROOT}   || SERVER_ROOT="/srv/${game}"
+[[ -n "${BACKUP_DEST}" ]]  && declare -r BACKUP_DEST=${BACKUP_DEST}   || BACKUP_DEST="/srv/${game}/backup"
+[[ -n "${BACKUP_PATHS}" ]] && declare -r BACKUP_PATHS=${BACKUP_PATHS} || BACKUP_PATHS="world world_nether world_the_end"
+[[ -n "${KEEP_BACKUPS}" ]] && declare -r KEEP_BACKUPS=${KEEP_BACKUPS} || KEEP_BACKUPS="10"
+[[ -n "${GAME_USER}" ]]    && declare -r GAME_USER=${GAME_USER}       || GAME_USER="cuberite"
+[[ -n "${MAIN_EXECUTABLE}" ]] && declare -r MAIN_EXECUTABLE=${MAIN_EXECUTABLE} || MAIN_EXECUTABLE="Cuberite"
+[[ -n "${SESSION_NAME}" ]] && declare -r SESSION_NAME=${SESSION_NAME} || SESSION_NAME="${game}"
 
 # Command and parameter declaration with which to start the server
-[[ ! -z "${SERVER_START_CMD}" ]] && declare -r SERVER_START_CMD=${SERVER_START_CMD} || SERVER_START_CMD="./${MAIN_EXECUTABLE}"
+[[ -n "${SERVER_START_CMD}" ]] && declare -r SERVER_START_CMD=${SERVER_START_CMD} || SERVER_START_CMD="./${MAIN_EXECUTABLE}"
 
 # System parameters for the control script
-[[ ! -z "${IDLE_SERVER}" ]]       && tmp_IDLE_SERVER=${IDLE_SERVER}   || IDLE_SERVER="false"
-[[ ! -z "${IDLE_SESSION_NAME}" ]] && declare -r IDLE_SESSION_NAME=${IDLE_SESSION_NAME} || IDLE_SESSION_NAME="idle_server_${SESSION_NAME}"
-[[ ! -z "${GAME_PORT}" ]]         && declare -r GAME_PORT=${GAME_PORT}       || GAME_PORT="25565"
-[[ ! -z "${CHECK_PLAYER_TIME}" ]] && declare -r CHECK_PLAYER_TIME=${CHECK_PLAYER_TIME} || CHECK_PLAYER_TIME="30"
-[[ ! -z "${IDLE_IF_TIME}" ]]      && declare -r IDLE_IF_TIME=${IDLE_IF_TIME} || IDLE_IF_TIME="1200"
+[[ -n "${IDLE_SERVER}" ]]       && tmp_IDLE_SERVER=${IDLE_SERVER}   || IDLE_SERVER="false"
+[[ -n "${IDLE_SESSION_NAME}" ]] && declare -r IDLE_SESSION_NAME=${IDLE_SESSION_NAME} || IDLE_SESSION_NAME="idle_server_${SESSION_NAME}"
+[[ -n "${GAME_PORT}" ]]         && declare -r GAME_PORT=${GAME_PORT}       || GAME_PORT="25565"
+[[ -n "${CHECK_PLAYER_TIME}" ]] && declare -r CHECK_PLAYER_TIME=${CHECK_PLAYER_TIME} || CHECK_PLAYER_TIME="30"
+[[ -n "${IDLE_IF_TIME}" ]]      && declare -r IDLE_IF_TIME=${IDLE_IF_TIME} || IDLE_IF_TIME="1200"
 
 # Additional configuration options which only few may need to alter
-[[ ! -z "${GAME_COMMAND_DUMP}" ]] && declare -r GAME_COMMAND_DUMP=${GAME_COMMAND_DUMP} || GAME_COMMAND_DUMP="/tmp/${myname}_${SESSION_NAME}_command_dump.txt"
+[[ -n "${GAME_COMMAND_DUMP}" ]] && declare -r GAME_COMMAND_DUMP=${GAME_COMMAND_DUMP} || GAME_COMMAND_DUMP="/tmp/${myname}_${SESSION_NAME}_command_dump.txt"
 
 # Variables passed over the command line will always override the one from a config file
 source /etc/conf.d/"${game}" 2>/dev/null || >&2 echo "Could not source /etc/conf.d/${game}"
 
 # Preserve the content of IDLE_SERVER without making it readonly
-[[ ! -z ${tmp_IDLE_SERVER} ]] && IDLE_SERVER=${tmp_IDLE_SERVER}
+[[ -n ${tmp_IDLE_SERVER} ]] && IDLE_SERVER=${tmp_IDLE_SERVER}
 
 
 # Strictly disallow uninitialized Variables
@@ -50,9 +50,9 @@ else
 fi
 
 # Choose which flavor of netcat is to be used
-if which netcat &> /dev/null; then
+if command -v netcat &> /dev/null; then
 	NETCAT_CMD="netcat"
-elif which ncat &> /dev/null; then
+elif command -v ncat &> /dev/null; then
 	NETCAT_CMD="ncat"
 else
 	NETCAT_CMD=""
@@ -293,7 +293,7 @@ server_restart() {
 # Backup the directories specified in BACKUP_PATHS
 backup_files() {
 	# Check for the availability of the tar binaries
-	if ! which tar &> /dev/null; then
+	if command -v tar &> /dev/null; then
 		>&2 echo "The tar binaries are needed for a backup."
 		exit 11
 	fi
@@ -315,7 +315,9 @@ backup_files() {
 	echo -n "Only keeping the last ${KEEP_BACKUPS} backups and removing the other ones..."
 	BACKUP_COUNT=$(for f in "${BACKUP_DEST}"/[0-9_.]*; do echo "${f}"; done | wc -l)
 	if [[ $(( BACKUP_COUNT - KEEP_BACKUPS )) -gt 0 ]]; then
-		${SUDO_CMD} rm "$(for f in "${BACKUP_DEST}"/[0-9_.]*; do echo "${f}"; done | head -n"$(( BACKUP_COUNT - KEEP_BACKUPS ))")"
+		for old_backup in $(for f in "${BACKUP_DEST}"/[0-9_.]*; do echo "${f}"; done | head -n"$(( BACKUP_COUNT - KEEP_BACKUPS ))"); do
+			${SUDO_CMD} rm "${old_backup}";
+		done
 		echo -e "\e[39;1m done\e[0m ($(( BACKUP_COUNT - KEEP_BACKUPS)) backup(s) pruned)"
 	else
 		echo -e "\e[39;1m done\e[0m (no backups pruned)"
@@ -325,7 +327,7 @@ backup_files() {
 # Restore backup
 backup_restore() {
 	# Check for the availability of the tar binaries
-	if ! which tar &> /dev/null; then
+	if command -v tar &> /dev/null; then
 		>&2 echo "The tar binaries are needed for a backup."
 		exit 11
 	fi
@@ -407,7 +409,9 @@ server_command() {
 # Enter the screen game session
 server_console() {
 	if ${SUDO_CMD} screen -S "${SESSION_NAME}" -Q select . > /dev/null; then
-		${SUDO_CMD} screen -S "${SESSION_NAME}" -rx
+		# Circumvent a permission bug related to running GNU screen as a different user,
+		# see e.g. https://serverfault.com/questions/116775/sudo-as-different-user-and-running-screen
+		${SUDO_CMD} script -q -c "screen -S \"${SESSION_NAME}\" -rx" /dev/null
 	else
 		echo "There is no ${SESSION_NAME} session to connect to."
 	fi
