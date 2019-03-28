@@ -1,6 +1,6 @@
 pkgbase = zrythm
 	pkgdesc = An highly automated, intuitive, Digital Audio Workstation (DAW)
-	pkgver = 0.2.046
+	pkgver = 0.2.052
 	pkgrel = 1
 	url = https://git.zrythm.org/zrythm/zrythm
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = zrythm
 	makedepends = python
 	makedepends = gettext
 	makedepends = sed
+	makedepends = libtool
 	depends = gtk3
 	depends = lv2
 	depends = lilv
@@ -19,8 +20,8 @@ pkgbase = zrythm
 	depends = portaudio
 	depends = libsamplerate
 	conflicts = zrythm-git
-	source = https://git.zrythm.org/zrythm/zrythm/-/archive/v0.2.046/zrythm-v0.2.046.tar.gz
-	md5sums = 9873c6f8c63857e4eb8b0478f67bdd76
+	source = https://git.zrythm.org/zrythm/zrythm/-/archive/v0.2.052/zrythm-v0.2.052.tar.gz
+	md5sums = ed1660c05fa8e64de335f4b72308b29a
 
 pkgname = zrythm
 
