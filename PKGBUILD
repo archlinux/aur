@@ -20,7 +20,9 @@ build() {
   cd glog-$pkgver
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR="/usr/lib" \
+    -DBUILD_SHARED_LIBS=ON ..
   make
 }
 
