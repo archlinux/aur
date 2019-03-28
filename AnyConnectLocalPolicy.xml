@@ -1,0 +1,9 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<AnyConnectLocalPolicy
+    acversion="2.4.140"
+    xmlns="http://schemas.xmlsoap.org/encoding/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemalocation="http://schemas.xmlsoap.org/encoding/ AnyConnectLocalPolicy.xsd"
+>
+    <BypassDownloader>true</BypassDownloader>
+</AnyConnectLocalPolicy>

@@ -1,0 +1,5 @@
+*.log
+pkg/
+src/
+*.pkg.tar*
+anyconnect-linux64-*-core-vpn-webdeploy-k9.sh

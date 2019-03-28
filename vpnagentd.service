@@ -1,0 +1,9 @@
+[Unit]
+Description=Cisco AnyConnect
+After=network.target
+
+[Service]
+ExecStart=/opt/cisco/anyconnect/bin/vpnagentd -d
+
+[Install]
+WantedBy=multi-user.target
