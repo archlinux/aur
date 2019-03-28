@@ -1,8 +1,8 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=ipfs-fuse-daemon
-pkgver=0.0.1
-pkgrel=1
+pkgver=0.0.2
+pkgrel=0
 pkgdesc="systemd daemon to mount ipfs as a fuse"
 url=https://github.com/KSXGitHub/ipfs-fuse-daemon.pkgbuild
 arch=(any)
