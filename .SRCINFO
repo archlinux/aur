@@ -1,6 +1,6 @@
 pkgbase = mixbus
 	pkgdesc = Harrison Mixbus - Digital Audio Workstation
-	pkgver = 5.2.130
+	pkgver = 5.2.191
 	pkgrel = 1
 	url = http://harrisonconsoles.com/site/mixbus.html
 	arch = i686
