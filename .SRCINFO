@@ -1,9 +1,8 @@
 pkgbase = ttf-weather-icons
 	pkgdesc = Icon font with 222 weather themed icons
 	pkgver = 2.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://erikflowers.github.io/weather-icons/
-	install = ttf-weather-icons.install
 	arch = any
 	license = custom:"OFL"
 	source = https://github.com/erikflowers/weather-icons/archive/2.0.10.tar.gz
