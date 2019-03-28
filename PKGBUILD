@@ -23,7 +23,6 @@ backup=('etc/tengine/fastcgi.conf'
         'etc/tengine/win-utf'
         'etc/logrotate.d/tengine')
 install=tengine.install
-conflicts=('tengine-extra')
 provides=('nginx')
 source=($url/download/tengine-$pkgver.tar.gz
         service
@@ -33,7 +32,7 @@ source=($url/download/tengine-$pkgver.tar.gz
 sha256sums=('17cf1380d4faefb70707970437b3f8b66f6ff4530b5e6e61970b35f59b2e2624'
             'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
             '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97'
-            '5a144630e3b0924083ce1ceeb96a8fd13ed2f3c9df350c2d8c41f0c80c4a06ef')
+            '7dc020f6017d396d7cc17f69c8abcf66b90c92a5aa074961a19bb7f615833507')
 
 build() {
     cd tengine-$pkgver
@@ -58,7 +57,6 @@ build() {
         --with-cc-opt="$CFLAGS $CPPFLAGS" \
         --with-ld-opt="$LDFLAGS" \
         --with-compat \
-        --with-debug \
         --with-file-aio \
         --with-http_addition_module \
         --with-http_auth_request_module \
