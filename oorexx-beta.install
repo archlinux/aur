@@ -9,10 +9,10 @@ post_install() {
   orx_prefix=/usr
   data_dir=${orx_prefix}/share/ooRexx
   
-  systemctl link /usr/share/ooRexx/rxapid.service
-  systemctl --system daemon-reload
-  systemctl start rxapid.service
-  systemctl enable rxapid.service
+  #systemctl link /usr/share/ooRexx/rxapid.service
+  #systemctl --system daemon-reload
+  #systemctl start rxapid.service
+  #systemctl enable rxapid.service
 
 }
 
@@ -30,10 +30,10 @@ post_upgrade() {
 
 # arg 1:  the old package version
 pre_remove() {
-  systemctl disable rxapid.service
-  systemctl stop rxapid.service
-  systemctl --system daemon-reload
-  rm -f /etc/systemd/system/rxapid.service
+  #systemctl disable rxapid.service
+  #systemctl stop rxapid.service
+  #systemctl --system daemon-reload
+  #rm -f /etc/systemd/system/rxapid.service
   rm -f /usr/bin/rexxtry.rex
 }
 

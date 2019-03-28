@@ -1,6 +1,6 @@
 # Maintainer: sardo <sardonimous@hotmail.com>
 pkgname=oorexx-beta
-pkgver=5.0.0.r11555
+pkgver=5.0.0.r11852
 pkgrel=1
 pkgdesc="open source implementation of Object Rexx"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("${pkgname}::svn+svn://svn.code.sf.net/p/oorexx/code-0/main/trunk/"
  ${pkgname}.install)
 sha256sums=('SKIP'
             '9b0912eb203f4d53e0ae9098f368d8cff4fc30906dcc5760ebd28ffa14f79808'
-            '6a4119e428d416c594e70bae0be6557685e69f0bc1c46c820c77cdc5d9cd5f19')
+            'a6f754d77fb2805c7cc14cd249002cffc1d624ab877cdc2867b0e0df9aff14f6')
 pkgver() {
   cd "${pkgname}"
   local ver="$(svnversion)"
@@ -38,6 +38,6 @@ package() {
   cd "${pkgname}"
   cd ../build
   make DESTDIR="${pkgdir}" install || return 1
-  cd "${pkgdir}"
-  patch -p1 -i "${srcdir}/oorexx-beta-5.0.0-rxapid.patch"
+  #cd "${pkgdir}"
+  #patch -p1 -i "${srcdir}/oorexx-beta-5.0.0-rxapid.patch"
 }
