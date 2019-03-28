@@ -6,7 +6,7 @@
 
 pkgname='electron-cash-git'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=3.3.6.r1.gaf3482651
+pkgver=4.0.0.r4.g8f37431dc
 pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
@@ -20,6 +20,7 @@ makedepends=(
 )
 depends=(
   'hicolor-icon-theme'
+  'libsecp256k1'
   'python'
   'python-dnspython'
   'python-ecdsa'
@@ -34,20 +35,26 @@ depends=(
   'qt5-base'
 )
 optdepends=(
-  'desktop-file-utils: update desktop icon'
-  'gtk-update-icon-cache: update desktop icon'
   'python-btchip: Ledger hardware wallet support'
   'python-hidapi: Digital Bitbox hardware wallet support'
-  'python-pycryptodomex: use PyCryptodome AES implementation instead of pyaes'
   'python-matplotlib: plot transaction history in graphical mode'
+  'python-pycryptodomex: use PyCryptodome AES implementation instead of pyaes'
+  'python-qdarkstyle: optional dark theme in graphical mode'
   'python-rpyc: send commands to Electrum Python console from an external script'
-  'xdg-utils: update desktop icon'
   'zbar: QR code reading support'
 )
 provides=("${pkgname/-git/}")
 conflicts=("${pkgname/-git/}")
-source=("${pkgname}::git+https://github.com/Electron-Cash/Electron-Cash.git")
-sha256sums=('SKIP')
+source=("${pkgname}::git+https://github.com/Electron-Cash/Electron-Cash.git"
+        "0001-setup.py-option-to-disable-secp-build.patch")
+sha256sums=('SKIP'
+            '3a201d65a364a1f6290c19269f7e4cd79f08af86da851a93d1b0e9d5e79d2d3c')
+
+prepare() {
+  cd "${pkgname}"
+
+  patch -Np1 -i "${srcdir}/0001-setup.py-option-to-disable-secp-build.patch"
+}
 
 pkgver() {
   cd "${pkgname}"
@@ -72,7 +79,8 @@ build() {
 check() {
   cd "${pkgname}"
 
-  tox -e py37
+  python setup.py sdist --format=gztar --disable-secp
+  tox -e py37 --installpkg "dist/Electron Cash-${pkgver/.r*}.tar.gz"
 }
 
 package() {
