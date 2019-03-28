@@ -1,0 +1,29 @@
+pkgbase = python2-pythia8
+	pkgdesc = High-energy physics events generator (Python2 bindings).
+	pkgver = 8.2.40
+	pkgrel = 7
+	url = http://home.thep.lu.se/Pythia/
+	arch = x86_64
+	license = GPL
+	makedepends = python2
+	makedepends = fastjet
+	makedepends = hepmc
+	makedepends = lhapdf>=6.2
+	makedepends = root
+	depends = python
+	source = http://home.thep.lu.se/~torbjorn/pythia8/pythia8240.tgz
+	source = pythia8.sh
+	source = change_to_python2.patch
+	source = fix_lhapdf_build.patch
+	source = respect_lib_suffix.patch
+	sha256sums = d27495d8ca7707d846f8c026ab695123c7c78c7860f04e2c002e483080418d8d
+	sha256sums = 4e373b685960e410024b4e33e22c2dea360dfedd7962837087332f428c974ae5
+	sha256sums = bae1a65399cd2ee599db1758d60da2a1c93335ec4dbd30e323250c156f491086
+	sha256sums = f7c70b069b350005ac7e9028617713dece9b82c1e8b0dc5fb1f2870abec1d94c
+	sha256sums = 4eb15725cfb5e287fdd9520cb4211b88ebc38a690b7522690ba0664d50bc8669
+
+pkgname = python2-pythia8
+	pkgdesc = Python2 bindings for Pythia.
+	depends = python2
+	depends = pythia8
+
