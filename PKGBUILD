@@ -1,12 +1,11 @@
-# Maintainer: zoe <aur at fully dot automated dot ee ignore the everything after ee>
+# Maintainer: zoe <aur at fully dot automated dot ee ignore everything else after the first ee>
 pkgname=ktechlab
 pkgver=0.40.1
 pkgrel=1
-pkgdesc="KTechLab is an IDE for microcontrollers and electronics. It supports circuit simulation, program development for microcontrollers and simulating the programmed microcontroller together with its application circuit."
+pkgdesc="KTechLab IDE for microcontrollers and simulating electronics. This package ships the latest released version."
 arch=('x86_64' 'i686')
-url="https://github.com/ktechlab/ktechlab"
+url="https://cgit.kde.org/ktechlab.git"
 license=('GPL')
-#options=(!makeflags)
 depends=('qt4' 'kdelibs')
 makedepends=('git' 'cmake' 'gcc' 'gendesk' 'automoc4')
 source=(https://codeload.github.com/ktechlab/ktechlab/tar.gz/v0.40.1

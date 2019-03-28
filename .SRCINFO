@@ -1,8 +1,8 @@
 pkgbase = ktechlab
-	pkgdesc = KTechLab is an IDE for microcontrollers and electronics. It supports circuit simulation, program development for microcontrollers and simulating the programmed microcontroller together with its application circuit.
+	pkgdesc = KTechLab IDE for microcontrollers and simulating electronics. This package ships the latest released version.
 	pkgver = 0.40.1
 	pkgrel = 1
-	url = https://github.com/ktechlab/ktechlab
+	url = https://cgit.kde.org/ktechlab.git
 	arch = x86_64
 	arch = i686
 	license = GPL
