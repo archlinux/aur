@@ -3,12 +3,12 @@
 pkgname=snow-theme-git
 _pkgname=snow
 pkgver=r17.ad35149
-pkgrel=2
+pkgrel=3
 pkgdesc="Light Gtk theme with some gradients"
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
 license=('GPL')
-makedepends=('inkscape')
+makedepends=('inkscape' 'optipng')
 optdepends=('ttf-roboto: primary font face defined'
 			'ttf-ubuntu-font-family: secondary font face defined'
 			'cantarell-fonts: tertiary font face defined')

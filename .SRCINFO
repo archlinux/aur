@@ -1,11 +1,12 @@
 pkgbase = snow-theme-git
 	pkgdesc = Light Gtk theme with some gradients
 	pkgver = r17.ad35149
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/EliverLara/snow
 	arch = any
 	license = GPL
 	makedepends = inkscape
+	makedepends = optipng
 	optdepends = ttf-roboto: primary font face defined
 	optdepends = ttf-ubuntu-font-family: secondary font face defined
 	optdepends = cantarell-fonts: tertiary font face defined
