@@ -4,7 +4,7 @@
 _pkgauthor=GoogleContainerTools
 _upstream_pkgname=skaffold
 pkgname=skaffold-bin
-pkgver=0.24.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="A command line tool that facilitates continuous development for Kubernetes applications."
 arch=('x86_64')
@@ -27,7 +27,7 @@ _doc_pdf="index.pdf"
 source=("${_upstream_pkgname}-${_goos}-${_goarch}::https://github.com/${_pkgauthor}/${_upstream_pkgname}/releases/download/v${pkgver}/${_upstream_pkgname}-linux-${_goarch}"
   "LICENSE::https://raw.githubusercontent.com/${_pkgauthor}/${_upstream_pkgname}/master/LICENSE")
 sha256sums=(
-  "e542a668bc1e585b5de66b7460d820ea7cd07bdbd2eb5f5f5c00efa56495e03d"
+  "7e911d4d8d6cff33d544af0648c08cd5521c5790c472a66e1a651111fa1f286e"
   "43a2aa523a99dddb6c131e67e11334493e64c67f03b0d8f6745b6b3f34157d65"
 )
 
