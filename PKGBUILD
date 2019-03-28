@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=soupsieve
 pkgname=python-${_pyname}-doc
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc="Documentation for SoupSieve"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=("python-${_pyname}=${pkgver}.0" 'mkdocs-material')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'build_with_link.patch')
-md5sums=('2ea25f267f0f3806ea360ecc9d066c7b'
+md5sums=('4b4328a9517861f09539a7ad5495aa3e'
          '07432bf923bbeaad8fb45ba9a7442757')
 
 prepare() {
