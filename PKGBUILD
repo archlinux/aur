@@ -9,7 +9,7 @@ license=('GPLv3')
 depends=()
 conflicts=('substratumnode-cli-git')
 options=('!strip' '!emptydirs')
-source=("https://s3.us-east-2.amazonaws.com/substratum-website-downloads/v{pkgver}/SubstratumNode-v{pkgver}-Linux64-binary.zip")
+source=("https://s3.us-east-2.amazonaws.com/substratum-website-downloads/v${pkgver}/SubstratumNode-v${pkgver}-Linux64-binary.zip")
 sha256sums=('b3fc664bf0ab5e29b6436070aac50b9ab8d796a7c7deef22c31f2486570a4d63')
 
 package(){
