@@ -1,7 +1,7 @@
 # Maintainer: grufo <madmurphy333@gmail.com>
 
 pkgname='libconfini'
-pkgver='1.8.6'
+pkgver='1.9.0'
 pkgrel=1
 pkgdesc='Yet another INI parser'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url='https://madmurphy.github.io/libconfini/'
 license=('GPL')
 conflicts=('libconfini-git')
 source=("https://github.com/madmurphy/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('bece7fd75d4ad3bd62d6a5a4d8a3219b9b8f9ab64eae2fd8fac1a168b9239c7e')
+sha256sums=('7053ba4a3b1ac16b16fef2823629ad8fad8b44b8be9901935720c99802466503')
 
 prepare() {
 
