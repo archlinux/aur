@@ -3,7 +3,7 @@
 pkgname=openra-ca-git
 _pkgname=${pkgname/-git}
 pkgver=96.git.fc3cf0b
-pkgrel=1
+pkgrel=2
 pkgdesc="A mod of OpenRA that combines units from the official Red Alert and Tiberian Dawn mods"
 arch=('any')
 url="https://www.openra.net"
@@ -33,11 +33,11 @@ pkgver() {
 prepare() {
     cd $srcdir/CAmod
     dos2unix *.md
-    make version VERSION="${pkgver}"
 }
 
 build() {
     cd $srcdir/CAmod
+    make version VERSION="${pkgver}"
     make
 }
 
