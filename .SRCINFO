@@ -1,0 +1,17 @@
+pkgbase = meshup
+	pkgdesc = Visualization tool for multibody systems based on skeletal animation and magic.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/ORB-HD/MeshUp
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = boost
+	depends = ffmpeg
+	depends = boost-libs
+	depends = qt5-base
+	source = https://github.com/ORB-HD/MeshUp/archive/v0.6.0.tar.gz
+	sha256sums = 0110feddfd66d06173288931c00ffbc3b8cfbcaff45d3bd92a8895c04af9db3d
+
+pkgname = meshup
+
