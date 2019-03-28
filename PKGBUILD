@@ -1,14 +1,14 @@
 # Maintainer: bcclsn <a.buccato at gmail dot com>
 
 pkgname=chibios
-pkgver=19.1.0
+pkgver=19.1.1
 pkgrel=1
 pkgdesc="ChibiOS - free embedded RTOS"
 arch=('any')
-license=('GPL3')
+license=('GPL')
 url="http://chibios.org"
-source=("https://sourceforge.net/projects/chibios/files/ChibiOS%20GPL3/Version%20${pkgver}/ChibiOS_${pkgver}.7z")
-sha256sums=("ae45990f054526805ca48d262f5a183c7ace0c003f12394dd8a7429d90f3d0e7")
+source=("https://osdn.net/frs/redir.php?m=cznic&f=chibios%2F70739%2FChibiOS_${pkgver}.7z")
+sha256sums=('b2b2c3fa6bdf373dabe983cae2f44591e7b0cef5a50a97394491aec5911a5907')
 
 package() {
     mkdir -p ${pkgdir}/usr/src/chibios
