@@ -7,7 +7,7 @@ pkgdesc="The Award-Winning All-in-One Java Profiler"
 arch=(any)
 url="http://jprofiler.com"
 license=('custom')
-depends=('java-environment')
+depends=('java-environment<=9')
 source=("http://download-keycdn.ej-technologies.com/jprofiler/jprofiler_linux_$(echo $pkgver | sed 's/\./_/g').tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")

@@ -5,7 +5,7 @@ pkgbase = jprofiler10
 	url = http://jprofiler.com
 	arch = any
 	license = custom
-	depends = java-environment
+	depends = java-environment<=9
 	options = !strip
 	source = http://download-keycdn.ej-technologies.com/jprofiler/jprofiler_linux_10_1_4.tar.gz
 	source = jprofiler10.desktop
