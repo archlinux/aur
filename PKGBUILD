@@ -2,7 +2,7 @@
 pkgname=trinnity-caffe-git
 _srcname=trinnity-caffe
 pkgver=1.0
-pkgrel=15
+pkgrel=16
 pkgdesc="Caffe 1.0 with triNNity extensions"
 arch=('x86_64')
 url="https://bitbucket.org/STG-TCD/trinnity-caffe"
@@ -36,7 +36,7 @@ prepare() {
     cmake \
     -DCPU_ONLY=ON \
     -DUSE_NCCL=OFF \
-    -DBUILD_tools=OFF \
+    -DBUILD_tools=ON \
     -DBUILD_SHARED_LIBS=OFF \
     -DBUILD_python=ON \
     -DBUILD_matlab=OFF \
