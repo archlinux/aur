@@ -15,19 +15,19 @@ makedepends=('git')
 source=(
 	"${_gitname}::git+https://github.com/ribtoks/xpiks.git#tag=v1.5.2"
 	"xpiks-build_with_system_libquazip5.patch"
-	"xpiks-libxpks_stub.patch"
+	"xpiks-libxpks_stub.patch.gz"
 	"xpiks.desktop"
 	)
 md5sums=('SKIP'
          '8d082ec0a08051aec943aa3c35486592'
-         'cf8d93fcf7d19aa5768024752de0994a'
+         '6684ebad2eb032180dd702d3058b1a55'
          '4112f7181afe7e45eb878b8eccc91eaf')
 
 prepare() {
 	cd "${srcdir}/${_gitname}"
 	
-	git apply ../../xpiks-build_with_system_libquazip5.patch
-	git apply ../../xpiks-libxpks_stub.patch
+	git apply ../xpiks-build_with_system_libquazip5.patch
+	git apply ../xpiks-libxpks_stub.patch
 	
 	git submodule update --init --recursive
 }
