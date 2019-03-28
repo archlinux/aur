@@ -3,7 +3,7 @@
 pkgname=perl-log-any-iflog
 _lastauthor=P/PE/PERLANCAR
 _pkgname=Log-Any-IfLOG
-pkgver=0.08
+pkgver=0.090
 pkgrel=1
 pkgdesc='Load Log::Any only if "logging is enabled"'
 arch=('any')
@@ -12,7 +12,7 @@ options=('!emptydirs')
 depends=('perl-log-any')
 url="https://metacpan.org/release/${_pkgname}"
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha512sums=('8e860c9a07c9026d3e0fb8792159fb18b517dc0b3ae6414b5451356688f13fe293963863a639c1d87bcb10f50b37bed558081552be981bf97c071b0f03f7844e')
+sha512sums=('fcdc8e9de6a948a75bbae80e73e441b36b731be6b654fa739577a9112cfd8acb195af7f555a9a1dfa4c7422596f92c1ac32f414e20de66adc2480d17c7a38f80')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
