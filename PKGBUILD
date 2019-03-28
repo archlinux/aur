@@ -2,7 +2,7 @@
 
 pkgname='libconfini-git'
 _libname='libconfini'
-pkgver='r130.8578c05'
+pkgver='r131.77e95ec'
 pkgrel=1
 pkgdesc='Yet another INI parser'
 arch=('i686' 'x86_64')
