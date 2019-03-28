@@ -1,7 +1,7 @@
 pkgname=openra-mw-git
 _pkgname=${pkgname/-git}
 pkgver=267.git.fc62353
-pkgrel=1
+pkgrel=2
 pkgdesc="An mod of OpenRA depicting medieval warfare"
 arch=('any')
 url="https://github.com/CombinE88/Medieval-Warfare"
@@ -31,11 +31,11 @@ pkgver() {
 prepare() {
     cd $srcdir/Medieval-Warfare
     dos2unix *.md
-    make version VERSION="${pkgver}"
 }
 
 build() {
     cd $srcdir/Medieval-Warfare
+    make version VERSION="${pkgver}"
     make || ( printf "make failed; please do not complain at the AUR about this, as this is an upstream issue.\n" && \
 	printf "So report this at ${url}/issues/new, after checking\n" && \
 	printf "for existing issues.\n" )
