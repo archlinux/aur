@@ -9,10 +9,10 @@
 pkgbase=linux-drm-next-git
 pkgdesc='Linux kernel with DRM patches'
 _srcname=$pkgbase
-_kernel_rel=5.1
+_kernel_rel=5.2
 _branch=drm-next
 _kernelname=${pkgbase#linux}
-pkgver=5.1.813809.4b057e73f28f
+pkgver=5.2.813809.4b057e73f28f
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/drm/drm'
