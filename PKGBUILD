@@ -16,6 +16,11 @@ conflicts=('git-identity')
 source=("$pkgname::git+https://github.com/madx/git-identity.git#branch=master")
 md5sums=('SKIP')
 
+pkgver() {
+  cd "$srcdir/"
+  git describe --always
+}
+
 package() {
 	cd "$pkgname"
 	install -D git-identity -t "$pkgdir/usr/bin"
