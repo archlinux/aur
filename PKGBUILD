@@ -1,7 +1,7 @@
 # Maintainer:  Alexei Colin <ac at alexeicolin dot com>
 
 pkgname=ti-cgt-msp430
-pkgver=18.1.3.LTS
+pkgver=18.12.0.LTS
 pkgrel=1
 pkgdesc="Texas Instruments Code Generation Tools (compiler) for MSP430"
 arch=('x86_64')
@@ -17,11 +17,10 @@ source=("http://downloads.ti.com/codegen/esd/cgt_public_sw/MSP430/${pkgver}/${_i
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
 
-_ccsver=8
 _ccsdir=ccstudio
 _destdir=opt
 _installdir=installdir
-_installloc=$_ccsdir/ccsv$_ccsver/tools/compiler
+_installloc=$_ccsdir/ccs/tools/compiler
 _installpath=$_installdir/$_destdir/$_installloc
 _tooldir=${pkgname}_${pkgver}
 
@@ -47,7 +46,8 @@ package() {
     find $pkgdir/$_destdir/$_ccsdir -type d -exec chmod 0775 {} \;
 
     # Version in filename is out of date upstream
-    install -D -m0644 $srcdir/${_installpath}/${pkgname}_${pkgver}/MSP430_RTS_18.1.0.LTS.html $pkgdir/usr/share/licenses/$pkgname/LICENSE.html
+    # File is gone in this version. Oh well.
+    #install -D -m0644 $srcdir/${_installpath}/${pkgname}_${pkgver}/MSP430_RTS_18.12.0.LTS.html $pkgdir/usr/share/licenses/$pkgname/LICENSE.html
 }
 
-sha256sums=('1ba8c8e9f54d9b5f8e0cde472309cb5c3a249a93aac7e36936bae19d1a9a85ce')
+sha256sums=('cd77891ece4aaf7f07eb96549f4d18f184844aee845eeeb0a51ace4798d97f83')
