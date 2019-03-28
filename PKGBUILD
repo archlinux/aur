@@ -1,6 +1,6 @@
 # Maintainer: Jaco Malan <jacomalan.12@gmail.com>
 pkgname=stress++
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 license=('GPL3')
 arch=('any')
@@ -17,7 +17,7 @@ prepare() {
 build() {
 
 	cd $srcdir/build
-	cmake .. -DCMAKE_BUILD_TYPE=Debug
+	cmake .. -DCMAKE_BUILD_TYPE=Release
 	make $MAKEFLAGS
 
 }
