@@ -10,7 +10,7 @@ _pkgvercommit=v$pkgver
 _pkgvercommit=a1ea02d9180bf8708f40a50939f455ac5fe34435
 sha256sums=('f93bbd042bdda234c21512c332d3c4b277e7552953a947751250eccd48036d4b')
 
-pkgdesc="A Gtk3 frontend for libalpm"
+pkgdesc="Pamac cli frontend for libalpm"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
