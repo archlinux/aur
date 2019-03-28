@@ -1,4 +1,5 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: redfish <redfish@galactica.pw>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-bitcoinlib
 pkgver=0.10.1
