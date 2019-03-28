@@ -9,7 +9,7 @@ url='https://madmurphy.github.io/libconfini/'
 license=('GPL')
 conflicts=('libconfini-git')
 source=("https://github.com/madmurphy/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('cd0fbc268285581c7cbecc0f2743db914030b32560275a1c38a146561acf1be7')
+sha256sums=('c8acece2204eeca39a33f65147aec0ff84a6132299add3feb822033e9153d59b')
 
 prepare() {
 
