@@ -1,0 +1,16 @@
+pkgbase = git-identity-git
+	pkgdesc = Manage your identity in Git
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/madx/git-identity
+	arch = any
+	license = custom:WTFPL
+	depends = git
+	optdepends = zsh: for zsh completion
+	provides = git-identity
+	conflicts = git-identity
+	source = git-identity-git::git+https://github.com/madx/git-identity.git#branch=master
+	md5sums = SKIP
+
+pkgname = git-identity-git
+
