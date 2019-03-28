@@ -1,0 +1,11 @@
+sudo: required
+
+services:
+  - docker
+
+arch:
+  script:
+    - "makepkg -si --noconfirm"
+
+script:
+  - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
