@@ -6,7 +6,7 @@
 
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=3.3.6
+pkgver=4.0.0
 pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
@@ -20,6 +20,7 @@ makedepends=(
 )
 depends=(
   'hicolor-icon-theme'
+  'libsecp256k1'
   'python'
   'python-dnspython'
   'python-ecdsa'
@@ -34,23 +35,29 @@ depends=(
   'qt5-base'
 )
 optdepends=(
-  'desktop-file-utils: update desktop icon'
-  'gtk-update-icon-cache: update desktop icon'
   'python-btchip: Ledger hardware wallet support'
   'python-hidapi: Digital Bitbox hardware wallet support'
-  'python-pycryptodomex: use PyCryptodome AES implementation instead of pyaes'
   'python-matplotlib: plot transaction history in graphical mode'
+  'python-pycryptodomex: use PyCryptodome AES implementation instead of pyaes'
+  'python-qdarkstyle: optional dark theme in graphical mode'
   'python-rpyc: send commands to Electrum Python console from an external script'
-  'xdg-utils: update desktop icon'
   'zbar: QR code reading support'
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver/.0}.tar.gz")
-sha256sums=('470dc7c200045ffade3bc45aa2ba0042fad0c23b9dfac6a52b7dcb6466c4870f')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz"
+        "0001-setup.py-option-to-disable-secp-build.patch")
+sha256sums=('5db277fbd81cf30e6b21fb7dc0a25da90f566d084b65ce727b91aef90fff672e'
+            '3a201d65a364a1f6290c19269f7e4cd79f08af86da851a93d1b0e9d5e79d2d3c')
+
+prepare() {
+  cd "Electron-Cash-${pkgver}"
+
+  patch -Np1 -i "${srcdir}/0001-setup.py-option-to-disable-secp-build.patch"
+}
 
 build() {
-  cd "Electron-Cash-${pkgver/.0}"
+  cd "Electron-Cash-${pkgver}"
 
   # python2-pyqt5 and qt5-base are needed for _only_ the icons...
 
@@ -65,13 +72,14 @@ build() {
 }
 
 check() {
-  cd "Electron-Cash-${pkgver/.0}"
+  cd "Electron-Cash-${pkgver}"
 
-  tox -e py37
+  python setup.py sdist --format=gztar --disable-secp
+  tox -e py37 --installpkg "dist/Electron Cash-${pkgver}.tar.gz"
 }
 
 package() {
-  cd "Electron-Cash-${pkgver/.0}"
+  cd "Electron-Cash-${pkgver}"
 
   python setup.py install --root="${pkgdir}" --optimize=1
 }
