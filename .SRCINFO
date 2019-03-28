@@ -1,12 +1,16 @@
 pkgbase = srcinfo
 	pkgdesc = Read from PKGBUILD and write to .SRCINFO
 	pkgver = 0.0.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/KSXGitHub/srcinfo.pkgbuild.git
 	arch = any
 	license = MIT
 	depends = pacman
 	depends = bash
+	source = srcinfo
+	source = LICENSE.md
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = srcinfo
 
