@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: PhotonX <michael dot kogan at gmx dot net>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
