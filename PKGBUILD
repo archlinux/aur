@@ -14,7 +14,7 @@ depends=('python-apt' 'python-requests-oauthlib' 'python-ssoclient' 'python-prog
 makedepends=('python-setuptools')
 optdepends=('lxd')
 options=(!emptydirs)
-source=("https://github.com/ubuntu-core/snapcraft/archive/${pkgver}.tar.gz")
+source=("https://github.com/snapcore/snapcraft/archive/${pkgver}.tar.gz")
 sha256sums=('5208820b822448d5dc75d852df560548b86cddfeb72144d67a058536699b1d0a')
 
 package() {
