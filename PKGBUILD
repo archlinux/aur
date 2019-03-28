@@ -2,7 +2,7 @@
 
 pkgname=qt5-qmllive-git
 _srcname=qt5-qmllive
-pkgver=v1.0_QtAS.r79.g4d36089
+pkgver=v5.12.1_QtAS.r4.g402894e
 pkgrel=1
 pkgdesc="QmlLive live reloader environment for rapid UI development"
 arch=('armv7h' 'i686' 'x86_64' 'aarch64')
