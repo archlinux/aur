@@ -5,14 +5,15 @@
 
 pkgname=medit
 pkgver=1.2.0
-pkgrel=6
+pkgrel=7
 pkgdesc='GTK+ text editor'
 arch=('x86_64')
 url='http://mooedit.sourceforge.net/'
 license=('LGPL2.1')
 depends=('libsm' 'pygtk')
 makedepends=('intltool' 'python')
-optdepends=('ctags: Show functions in the open document')
+optdepends=('ctags: Show functions in the open document'
+		'vte-legacy: Use the integrated terminal')
 source=(https://downloads.sourceforge.net/mooedit/$pkgname-$pkgver.tar.bz2
         medit.appdata.xml)
 sha256sums=('f0f7b3d9e3337907a5b27aa2ff3a084250d7517b38488c50872a621b4e1f3a4d'
