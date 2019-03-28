@@ -2,7 +2,7 @@
 # Contributor: Ian Yang <doit.ian@gmail.com>
 
 pkgname=google-glog-static
-pkgver=0.3.5
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Logging library for C++"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('staticlibs')
 source=("glog-$pkgver.tar.gz::https://github.com/google/glog/archive/v$pkgver.tar.gz")
 provides=('google-glog')
 conflicts=('google-glog')
-sha256sums=('7580e408a2c0b5a89ca214739978ce6ff480b5e7d8d7698a2aa92fadc484d1e0')
+sha256sums=('f28359aeba12f30d73d9e4711ef356dc842886968112162bc73002645139c39c')
 
 build() {
   cd glog-$pkgver
