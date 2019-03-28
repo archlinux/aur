@@ -2,8 +2,8 @@
 
 pkgname=openra-rv-git
 _pkgname=openra-rv
-pkgver=1632.git.3b3a111
-pkgrel=2
+pkgver=1634.git.910e78a
+pkgrel=1
 pkgdesc="A Command & Conquer: Red Alert 2-inspired mod of OpenRA"
 arch=('any')
 url="https://github.com/MustaphaTR/Romanovs-Vengeance"
