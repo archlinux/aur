@@ -37,8 +37,8 @@ prepare() {
 }
 
 build() {
-    make version VERSION="${pkgver}"
     cd $srcdir/OpenRAModSDK
+    make version VERSION="${pkgver}"
     make
 }
 
