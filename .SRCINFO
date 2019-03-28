@@ -1,20 +1,19 @@
 pkgbase = hmcl
 	pkgdesc = Hello Minecraft! Launcher, a powerful Minecraft launcher.
 	pkgver = 3.2.129
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/huanghongxun/HMCL
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = java-openjfx>=8
-	noextract = hmcl-3.2.129.jar
+	depends = java-environment>=8
 	source = hmcl-launch-script
-	source = hmcl-3.2.129.jar::https://github.com/huanghongxun/HMCL/releases/download/v3.2.129/HMCL-3.2.129.jar
 	source = hmcl.desktop
-	source = hmcl_icon::https://raw.githubusercontent.com/huanghongxun/HMCL/javafx/HMCL/src/main/resources/assets/img/craft_table.png
-	sha256sums = 0300218f29af82e9b302a94b37a4c9a92aea26b960bfd1b2e16c0130ac61cfcf
-	sha256sums = 1e9b8f0882d52df1231cb34ce07e556c132f42d25759b6e0679c1e772e9ede3c
+	source = hmcl-3.2.129::git+https://github.com/huanghongxun/HMCL.git#tag=v3.2.129
+	sha256sums = c6310315a7bc5f0512d1d307bdf1c4fffa3c55707f019274b32f9b2d132688d1
 	sha256sums = 5780cf70f1afec0eb3cd8fc43297d361903c7204e274a28c5edf9b8ac3eea83e
-	sha256sums = 2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c
+	sha256sums = SKIP
 
 pkgname = hmcl
 
