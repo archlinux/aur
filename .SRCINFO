@@ -1,0 +1,14 @@
+pkgbase = eterm8
+	pkgdesc = IDE for assembly language programming
+	pkgver = 0.971
+	pkgrel = 1
+	url = http://www.cse.chalmers.se/edu/resources/software/index.html
+	arch = x86_64
+	license = Copyright 1989-2018, GMV
+	makedepends = libarchive
+	source = http://www.cse.chalmers.se/edu/resources/software/linux/eterm8_0.971_amd64.deb
+	md5sums = 8c221226979285dd40d456e87c43ee3e
+	sha256sums = 63362419ffde2cce716925a373c66dc113f4e46da9fa64b821742d23bd8a42f4
+
+pkgname = eterm8
+
