@@ -8,6 +8,8 @@ arch=(any)
 url="https://github.com/KSXGitHub/srcinfo.pkgbuild.git"
 license=(MIT)
 depends=(pacman bash)
+source=(LICENSE.md)
+sha512sums=(SKIP)
 
 build() {
   (
@@ -18,4 +20,5 @@ build() {
 
 package() {
   install -Dm755 srcinfo "$pkgdir"/usr/bin/srcinfo
+  install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.md
 }
