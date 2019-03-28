@@ -1,0 +1,15 @@
+pkgbase = i3hloc
+	pkgdesc = Flexible scheduler for i3bar. Precompiled binary version
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/radrow/i3hloc
+	arch = x86_64
+	license = BSD3
+	depends = i3-wm
+	provides = i3hloc
+	conflicts = i3hloc-git
+	source = https://github.com/radrow/i3hloc/releases/download/1.0.0/i3hloc
+	sha256sums = 35d6958b6bc777dfbf0ae5cd469dea52744cf9921905275b6d36fb0764a2bba4
+
+pkgname = i3hloc
+
