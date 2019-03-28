@@ -3,7 +3,7 @@
 pkgname=nordic-polar-theme-git
 _pkgname=Nordic-Polar
 pkgver=r20.d31887b
-pkgrel=2
+pkgrel=3
 pkgdesc="A Gtk3.20+ theme created using the awesome Nord color palette."
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
