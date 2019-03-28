@@ -4,7 +4,7 @@
 
 pkgname=networkmanager-libreswan
 pkgver=1.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="NetworkManager IPSec VPN plugin for Libreswan"
 arch=('i686' 'x86_64')
 license=('GPL')
