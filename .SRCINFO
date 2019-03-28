@@ -1,5 +1,5 @@
 pkgbase = pamac-cli
-	pkgdesc = A Gtk3 frontend for libalpm
+	pkgdesc = Pamac cli frontend for libalpm
 	pkgver = 7.3.5
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
