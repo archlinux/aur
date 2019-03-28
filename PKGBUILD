@@ -1,6 +1,6 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 pkgname=dngconverter
-pkgver=11.0
+pkgver=11.1
 pkgrel=1
 pkgdesc='Adobe DNG Converter'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("${pkgname}")
 source=("http://download.adobe.com/pub/adobe/dng/win/DNGConverter_${pkgver/./_}.exe"
         'dngconverter'
         '_dngconverter')
-sha1sums=('68ec7f06544d9f893efd3ef19b9487266ad70722'
+sha1sums=('f6fe016acec0bd4e2ccc2eff8f0083c30bca1832'
           'SKIP'
           'SKIP')
 
