@@ -5,7 +5,7 @@ pkgrel=1
 license=('GPL3')
 arch=('any')
 pkgdesc="A small, lightweight stress-testing tool for the CPU"
-url="https://github.com/Code-Log/stress-plug-plus"
+url="https://github.com/Code-Log/stress-plus-plus"
 
 prepare() {
 
