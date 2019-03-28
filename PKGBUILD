@@ -8,7 +8,10 @@ pkgdesc='The command line interface for Phabricator'
 arch=('any')
 url="https://www.phacility.com/phabricator/"
 license=('Apache')
-depends=('libphutil' 'python')
+depends=('libphutil' 'php' 'python')
+optdepends=('git: Git VCS support'
+            'subversion: Subversion VCS support'
+            'mercurial: Mercurial VCS support')
 makedepends=('git')
 source=("git://github.com/phacility/arcanist.git#commit=${_commit}")
 sha256sums=('SKIP')
