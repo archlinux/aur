@@ -2,7 +2,7 @@
 
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-_swiftver=4.2.3-RELEASE
+_swiftver=5.0-RELEASE
 pkgver=${_swiftver//-RELEASE/}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger"
@@ -18,6 +18,8 @@ source=(
     "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
     "swift-llvm-${_swiftver}.tar.gz::https://github.com/apple/swift-llvm/archive/swift-${_swiftver}.tar.gz"
     "swift-clang-${_swiftver}.tar.gz::https://github.com/apple/swift-clang/archive/swift-${_swiftver}.tar.gz"
+    "swift-clang-tools-extra-${_swiftver}.tar.gz::https://github.com/apple/swift-clang-tools-extra/archive/swift-${_swiftver}.tar.gz"
+    "swift-libcxx-${_swiftver}.tar.gz::https://github.com/apple/swift-libcxx/archive/swift-${_swiftver}.tar.gz"
     "swift-lldb-${_swiftver}.tar.gz::https://github.com/apple/swift-lldb/archive/swift-${_swiftver}.tar.gz"
     "swift-cmark-${_swiftver}.tar.gz::https://github.com/apple/swift-cmark/archive/swift-${_swiftver}.tar.gz"
     "swift-llbuild-${_swiftver}.tar.gz::https://github.com/apple/swift-llbuild/archive/swift-${_swiftver}.tar.gz"
@@ -27,25 +29,23 @@ source=(
     "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
     "swift-compiler-rt-${_swiftver}.tar.gz::https://github.com/apple/swift-compiler-rt/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
-    "0001-sanitizer-Use-pre-computed-size-of-struct-ustat.patch"
     "glibc-includes.patch"
-    "clang7-compat.patch"
 )
-sha256sums=('f99c9b867e033eebc242310fbf4ab405ab943c1bf69ad25ef50d83c76f44603d'
-            'b87678ee9f8b13f3b69d793624aa306c6ed9b8d11471dc5a39b7e7680f1e9de6'
-            'fca19a5a1f0ae7283533d7542b3957aa906d387b0d2281ff00b38e30987fe0b4'
-            '0a663acbfe6d11b5825fde42deaaeddfa3041231d858680fcca98ec22b79d450'
-            '39777863b93e41beb642b969749e8e7a6c336e29c014494d717216827c430891'
-            '9b4550e24e3af3549187370d8a82abe610200822a14feb8be62e2ccfdbb91462'
-            '5b6420432cd57083d05d9c060eb4d707a9268d672d08d35e7398e6763bf9cba9'
-            'd9a40bd7bec478398c38962503155c5ac0defcf12d48afd0d00ecaec26a37f0c'
-            '18ac732178d026625ad2b160ea51395b00200faa9bc8863c5ed56f65b31847c6'
-            '49ee930ad1f26f1a8e478ab676f25b6716c65266b18738b3581037eaaf436b00'
-            '31b6d99f778c10822fd79c5ab6aa3d06e853a5979798b759c4739ae61624c2e6'
-            'df3c0068a2a684cb95ee5508b81f7e3ae216f7ab91a46ee9920a37083d12dd3c'
-            '5cd08c3a83c71e552fa2fd9ec8b076fbd25ba5450b9ecd59a0c877a9c9407b34'
-            '6a94de9adbdc4182b297e0011a68c9387fd25864dcb4386654218c8c530032c2'
-            '9855ce69d2358c8fc76237620f7e18bfbc82459ad72bdf995b8225fa4ba882a2')
+sha256sums=('6ab32565faf2b2337c90b84b995f86ad1e96595146fce7b8981d379c8681d689'
+            '803327ba0a8ce766377fb43e02ded56e32f12f2837d5e8be75e98dad63418ebc'
+            'f57aa0a0cb40913a3ffb26df8f43d890edd88438269b744a39769d08155dbb1e'
+            'c0e5a4584b2af342d33eac12eaa7226528ebbd176e3885981d68fb57dd6f4bac'
+            'e0cb5c92e299fedb5daa16b6a12f8543a6ae35290d4c6cc1a7553dc7d70ce1c0'
+            '72d02d5dddb900975cf88ed3da84867d11bc13f3a0efe0715f935a19b95df33c'
+            '0609052b383e97bf7c248178547b6d6582822a95083c9fdc6919ded9a44de01f'
+            'bfcda4845df448c0f561b43b830f8663b35c726ca29b5e3ae2e7816d6b1a313f'
+            '5278ddeeaba1049b41500bea6060118ec1a9f3dcbfa245f5b13185e803a6e401'
+            'b314ed47a4b3b7a323736ce8fa4e0fa4d87824840a41c6c80a0d7dc393babdb7'
+            'ab4fb6de97d8b680561ea78c28bfd83ea7dd6e785151bfbecfa2c658fc72e78a'
+            'b10e9cb639680e5847f0f8f44254c2848563d67ec00aae7310d5dcfffa6d1cf6'
+            'ddc499695db766ca1b62baf7a479e035f60433d1a2074a9a71f1f7a3c3fba5cd'
+            '99efdfca72839f58941538e3b001f22a9968d56c5c641857f111feca3dba4d1d'
+            '6a94de9adbdc4182b297e0011a68c9387fd25864dcb4386654218c8c530032c2')
 
 prepare() {
     # Use python2 where appropriate
@@ -58,12 +58,12 @@ prepare() {
     sed -i '/^cmake_minimum_required/a set(Python_ADDITIONAL_VERSIONS 2.7)' \
          "$srcdir/swift-lldb-swift-${_swiftver}/CMakeLists.txt"
     sed -i 's/\<python\>/&2/' \
-         "$srcdir/swift-swift-${_swiftver}/utils/build-script-impl" \
-         "$srcdir/swift-swift-${_swiftver}/test/sil-passpipeline-dump/basic.test-sh" \
-         "$srcdir/swift-swift-${_swiftver}/test/Driver/response-file.swift"
+         "$srcdir/swift-swift-${_swiftver}/utils/build-script-impl"
 
     # Use directory names which build-script expects
-    for sdir in llvm clang lldb cmark llbuild compiler-rt; do
+    for sdir in llvm clang clang-tools-extra libcxx lldb cmark llbuild \
+                compiler-rt
+    do
         rm -rf ${sdir}
         mv swift-${sdir}-swift-${_swiftver} ${sdir}
     done
@@ -79,12 +79,6 @@ prepare() {
 
     # Fix wrong glibc include paths in glibc module map
     ( cd swift && patch -p1 -i "$srcdir/glibc-includes.patch" )
-
-    # Fix for clang 7+
-    ( cd swift && patch -p1 -i "$srcdir/clang7-compat.patch" )
-
-    # Backport compiler-rt SVN r333213
-    ( cd compiler-rt && patch -p1 -i "$srcdir/0001-sanitizer-Use-pre-computed-size-of-struct-ustat.patch" )
 }
 
 _common_build_params=(
@@ -154,10 +148,6 @@ package_swift() {
         umask 0022
         cp -rL lib/swift/{clang,linux,shims} "$pkgdir/usr/lib/swift/"
     )
-
-    # Some install targets provide an empty /usr/local/include
-    rmdir "$pkgdir/usr/local/include"
-    rmdir "$pkgdir/usr/local"
 
     # License file
     install -dm755 "$pkgdir/usr/share/licenses/swift"
