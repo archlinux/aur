@@ -1,6 +1,8 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-pkgname=poissonrecon-git
-pkgver=8.0.r25.g154731e
+_name=poissonrecon
+_fragment="#commit=c1b1214"
+pkgname=${_name}
+pkgver=11.0
 pkgrel=1
 pkgdesc="Screened Poisson Surface Reconstruction (and Smoothed Signed Distance Reconstruction)"
 arch=('i686' 'x86_64')
@@ -10,13 +12,20 @@ groups=('photogrametry')
 depends=('glibc' 'gcc-libs' 'libpng' 'libjpeg')
 makedepends=('git')
 provides=('poissonrecon' 'ssdrecon' 'surfacetrimmer')
-source=("${pkgname}::git+https://github.com/mkazhdan/PoissonRecon.git")
-md5sums=('SKIP')
+source=("${pkgname}::git+https://github.com/mkazhdan/PoissonRecon.git${_fragment}"
+        "patch.diff::https://github.com/mkazhdan/PoissonRecon/commit/2fcb16ac782fac312dc3225bea33227cbc0d7488.diff")
+md5sums=('SKIP'
+         '2d86278cd9928c3ce7701c6b043d4d5d')
 
-pkgver() {
+#pkgver() {
+#  cd ${srcdir}/${pkgname}
+#  # cutting off 'V' prefix that presents in the git tag
+#  git describe --tags | sed 's/^V//;s/\([^-]*-g\)/r\1/;s/-/./g'
+#}
+
+prepare() {
   cd ${srcdir}/${pkgname}
-  # cutting off 'V' prefix that presents in the git tag
-  git describe --long --tags | sed 's/^V//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git apply -v ${srcdir}/*.diff
 }
 
 build() {
