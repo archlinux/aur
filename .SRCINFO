@@ -1,7 +1,7 @@
 pkgbase = newtonator
 	pkgdesc = An LV2 soft synth based on velocity and acceleration
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://newtonator.sourceforge.net/
 	arch = i686
 	arch = x86_64
