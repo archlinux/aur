@@ -2,7 +2,7 @@
 # http://go.rapidminer.com/rm-studio-download-linux
 
 pkgname=rapidminer-studio
-pkgver=9.2.0
+pkgver=9.2.1
 pkgrel=1
 pkgdesc="Empowers data scientists and business analysts to effortlessly design predictive analytics from mashup to modeling to deployment"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('java-environment')
 makedepends=('unzip' 'gendesk')
 source=(https://s3.amazonaws.com/rapidminer.releases/rapidminer-studio/$pkgver/rapidminer-studio-$pkgver.zip \
         rapidminer-studio.sh)
-sha256sums=('a4ed7a0dddaa26cf3a62b8af6df5d36cd9f1fea8d393201e6a9d7505bbefbca3'
+sha256sums=('76ccda86b2c45ae0cc24dd7697cb51c8199193548cf532d752c8a7b64e5b9682'
             'd3d76353c1ae15eec44c2fc638bbde98a192b70447bd467763f6d41cf24b6e5a')
 
 prepare() {
