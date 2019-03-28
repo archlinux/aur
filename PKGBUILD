@@ -1,7 +1,7 @@
 # Maintainer: Bjoern Franke <bjo@nord-west.org>
 
 pkgname=dotproxy-bin
-pkgver=28983115cee0804c9a3fa232881b77d6aa71278e
+pkgver=a12441f792ac2976c3b4b24c2bd63024e5328d26
 pkgrel=1
 provides=('dotproxy')
 arch=('armv7h' 'x86_64')
@@ -9,9 +9,9 @@ pkgdesc="High-performance DNS-over-TLS proxy"
 url="https://github.com/LINKIWI/dotproxy"
 source_x86_64=("https://dotproxy.static.kevinlin.info/releases/latest/dotproxy-linux-amd64" "dotproxy.service")
 source_armv7h=("https://dotproxy.static.kevinlin.info/releases/latest/dotproxy-linux-arm" "dotproxy.service")
-sha256sums_armv7h=('2ec9d66e33397dca25a3f23f6fa929b237cd90c5baf81327172df8475c24e008'
+sha256sums_armv7h=('956ba4ee49742d08cf8afc17deb8e27de83b8ec07598391d6ea00cf5e51d1df2'
                    '83d579fa90eeac737dd55c7b37274344d06350027236dab726a5fa4415b23c43')
-sha256sums_x86_64=('c04cbd799c90e7e37d574ea42057b076ef73d0c3711e7349820fc9dd3dbf125c'
+sha256sums_x86_64=('1ed49bcb83bd3798f307d8ba4f5769ccfe3c762acd26032b83cb1ce2d6a5fbe8'
                    '83d579fa90eeac737dd55c7b37274344d06350027236dab726a5fa4415b23c43')
 
 
