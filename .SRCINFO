@@ -15,7 +15,7 @@ pkgbase = mstream
 	source = config.json
 	md5sums = edc1f3de9e2833de93ffef1123bb9bae
 	md5sums = 6640e102dd29a6da5c4c075e4c4042d7
-	md5sums = 0bf80ec584f8b028628f4c684cdaf283
+	md5sums = 4de57ee6dedd2ab9ce7b08321a16610f
 
 pkgname = mstream
 

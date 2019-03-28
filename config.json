@@ -1,9 +1,10 @@
 {
   "port": 3030,
-  "database_plugin":{
-    "dbPath":"/var/lib/mstream/mstream.db"
+  "noUpload": "true",
+  "storage":{
+    "albumDirectory":"/var/lib/mstream/album-art"
+    "dbDirectory":"/var/lib/mstream/"
   },
-  "albumArtDir": "/var/lib/mstream/album-art",
   "folders": {
     "media": "/var/lib/mstream/media"
   }

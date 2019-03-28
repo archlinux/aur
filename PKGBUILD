@@ -23,7 +23,8 @@ package() {
   install -d -g 49 -o 49 "${pkgdir}/var/lib/${pkgname}/album-art"
   install -Dm644 mstream.service "$pkgdir"/usr/lib/systemd/system/mstream.service
   install -Dm644 -g 49 -o 49 config.json "${pkgdir}/var/lib/${pkgname}/config.json"
+  chown -R 49:49 "${pkgdir}/usr/lib/node_modules/${pkgname}"
 }
 md5sums=('edc1f3de9e2833de93ffef1123bb9bae'
          '6640e102dd29a6da5c4c075e4c4042d7'
-         '0bf80ec584f8b028628f4c684cdaf283')
+         '4de57ee6dedd2ab9ce7b08321a16610f')
