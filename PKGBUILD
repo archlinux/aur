@@ -3,7 +3,7 @@
 pkgname=openra-ura-git
 _pkgname=${pkgname/-git}
 pkgver=431.git.128dc53
-pkgrel=1
+pkgrel=2
 pkgdesc="A Comamnd & Conquer: Red Alert-inspired mod of OpenRA"
 arch=('any')
 url="http://redalertunplugged.com/"
@@ -33,11 +33,11 @@ pkgver() {
 prepare() {
     cd $srcdir/uRA
     dos2unix *.md
-    make version VERSION="${pkgver}"
 }
 
 build() {
     cd $srcdir/uRA
+    make version VERSION="${pkgver}"
     make
 }
 

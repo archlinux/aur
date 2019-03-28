@@ -1,7 +1,7 @@
 pkgbase = openra-ura-git
 	pkgdesc = A Comamnd & Conquer: Red Alert-inspired mod of OpenRA
 	pkgver = 431.git.128dc53
-	pkgrel = 1
+	pkgrel = 2
 	url = http://redalertunplugged.com/
 	install = openra-ura.install
 	arch = any
