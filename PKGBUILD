@@ -1,6 +1,6 @@
 pkgname=openra-yr-git
 _pkgname=openra-yr
-pkgver=175.git.8e7a15b
+pkgver=178.git.5001b8a
 pkgrel=1
 pkgdesc="A Command & Conquer: Yuri's Revenge-inspired mod of OpenRA"
 arch=('any')
@@ -31,11 +31,11 @@ pkgver() {
 prepare() {
     cd $srcdir/yr
     dos2unix *.md
-    make version VERSION="${pkgver}"
 }
 
 build() {
     cd $srcdir/yr
+    make version VERSION="${pkgver}"
     make
 }
 
