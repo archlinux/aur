@@ -3,7 +3,7 @@
 pkgname=openra-raclassic-git
 _pkgname=${pkgname/-git}
 pkgver=183.git.c76c13e
-pkgrel=1
+pkgrel=2
 pkgdesc="A mod of OpenRA that more faithfully recreates the Command & Conquer: Red Alert game"
 arch=('any')
 url="https://github.com/OpenRA/raclassic"
@@ -34,11 +34,11 @@ prepare() {
     cd $srcdir/raclassic
     dos2unix *.md
     chmod +x *.sh
-    make version VERSION="${pkgver}"
 }
 
 build() {
     cd $srcdir/raclassic
+    make version VERSION="${pkgver}"
     make
 }
 
