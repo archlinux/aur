@@ -3,7 +3,7 @@
 pkgname=openra-rv-git
 _pkgname=openra-rv
 pkgver=1632.git.3b3a111
-pkgrel=1
+pkgrel=2
 pkgdesc="A Command & Conquer: Red Alert 2-inspired mod of OpenRA"
 arch=('any')
 url="https://github.com/MustaphaTR/Romanovs-Vengeance"
@@ -34,12 +34,12 @@ prepare() {
     cd $srcdir/Romanovs-Vengeance
     dos2unix *.md
     printf "Success in converting docs...\n"
-    make version VERSION="${pkgver}"
-    printf "Success in setting version\n"
 }
 
 build() {
     cd $srcdir/Romanovs-Vengeance
+    make version VERSION="${pkgver}"
+    printf "Success in setting version\n"
     make || (printf "make failed; please do not complain at the AUR about this, as this is an upstream issue.\n" && \
 	printf "So report this at https://github.com/MustaphaTR/Romanovs-Vengeance/issues/new, after checking\n" && \
 	printf "for existing issues.\n")
