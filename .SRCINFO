@@ -4,6 +4,7 @@ pkgbase = lcms
 	pkgrel = 7
 	url = http://www.littlecms.com
 	arch = x86_64
+	arch = i686
 	license = custom
 	makedepends = python2
 	depends = libtiff
