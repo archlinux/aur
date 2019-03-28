@@ -2,7 +2,7 @@
 # Contributor: Spyhawk
 
 pkgname=libsolv-git
-pkgver=0.7.3.13.g67d113f3
+pkgver=0.7.3.26.gd7d064a5
 pkgrel=1
 pkgdesc="A new approach to package dependency solving"
 arch=('i686' 'x86_64')
