@@ -1,7 +1,7 @@
 # Maintainer: itsagoodbrain <itsrottenisay@gmail.com>
 
 pkgname=zettlr-bin
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=()
 provides=(zettlr)
 source=("${pkgname}-${pkgver}.rpm::https://github.com/Zettlr/Zettlr/releases/download/v${pkgver}/Zettlr-linux-x64-${pkgver}.rpm")
-md5sums=(c143fbe111132d4851bbabd82a8acb38)
+md5sums=(c82d06c17d129d02e016c126dbd56005)
 package() {
 	mv $srcdir/opt $pkgdir/opt
 	mv $srcdir/usr $pkgdir/usr
