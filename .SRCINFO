@@ -1,0 +1,22 @@
+pkgbase = x11spice
+	pkgdesc = Connects a running X server as a Spice server.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/spice/x11spice
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = spice-protocol
+	makedepends = git
+	makedepends = libxcb
+	makedepends = xcb-util
+	makedepends = gtk3
+	makedepends = xf86-video-qxl
+	makedepends = libcacard
+	depends = spice
+	depends = gtk3
+	source = x11spice-1.1::git+https://gitlab.freedesktop.org/spice/x11spice
+	md5sums = SKIP
+
+pkgname = x11spice
+
