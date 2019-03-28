@@ -1,7 +1,7 @@
 # Maintainer : pianoslum <pianoslum@mailbox.org>
 
 pkgname=elster
-pkgver=20.1.0
+pkgver=20.2.0
 pkgrel=1
 pkgdesc='Elektronische Steuererklärung - Ein Projekt der deutschen Steuerverwaltungen aller Länder und des Bundes zur Abwicklung der Steuererklärungen und Steueranmeldungen über das Internet (The official German software for electronic tax declaration)'
 arch=('any')
@@ -14,11 +14,11 @@ source=(
     "https://download.elster.de/aktuell/ElsterFormularPrivat.msi"
     "elster"
     )
+
 md5sums=(
-    "ebeb6bbd07a9d56362c0f9c5a85298bf"
+    "09a03640984253092eb06ac062d3e701"
     "1cad66434bf3a305e6d5700c61359ca1"
     )
-
 
 build() {
     install -m755 -d "$srcdir"/tmp/elster/
@@ -28,7 +28,7 @@ build() {
     export WINEDLLOVERRIDES="winemenubuilder.exe=d;mscoree=d;mshtml=d"
     # don't show debug messages when running wine
     export WINEDEBUG="-all"
-    wine msiexec /i "$srcdir"/ElsterFormularPrivat.msi
+    wine msiexec /i "$srcdir"/ElsterFormularPrivat.msi /quiet
 }
 
 package() {
