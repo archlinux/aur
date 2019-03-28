@@ -1,7 +1,7 @@
 pkgname=openra-ss-git
 _pkgname=openra-ss
 pkgver=77.git.23e1f3e
-pkgrel=1
+pkgrel=2
 pkgdesc="A Sole Survivor-inspired mod of OpenRA, warning you will need the original game assets to play this game"
 arch=('any')
 url="https://www.openra.net"
@@ -32,11 +32,11 @@ prepare() {
     cd $srcdir/sole-survivor
     dos2unix *.md
     printf "Success in converting docs...\n"
-    make version VERSION="${pkgver}"
 }
 
 build() {
     cd $srcdir/sole-survivor
+    make version VERSION="${pkgver}"
     make || (printf "make failed; please do not complain at the AUR about this, as this is an upstream issue.\n" && \
 	printf "So report this at ${url}/issues/new, after checking\n" && \
 	printf "for existing issues.\n")
