@@ -3,11 +3,12 @@
 # Daniel Wallace <danielwallace at gtmanfred dot com>
 # Lucas De Marchi <lucas.de.marchi@gmail.com>
 # Tailinchu <tailinchu at gmail dot com>
+# tormen <quickhelp@gmail.com>
 # Maintainer: Andrey Vetrov <vetrov at mail dot ru>
 
 pkgname=connman-git
 pkgver=1.36.r164.gb7ddedc4
-pkgrel=2
+pkgrel=3
 pkgdesc="Intel's modular network connection manager. Git version."
 url="https://01.org/connman"
 arch=('x86_64')
@@ -37,7 +38,10 @@ prepare(){
 }
 
 build() {
-	cd ${pkgname%-*}
+	cd "$srcdir/${pkgname%-*}"
+
+        autoreconf --install
+        autoconf
 
         ./configure --prefix=/usr \
             --sysconfdir=/etc \
@@ -58,6 +62,6 @@ build() {
 }
 
 package() {
-	cd ${pkgname%-*}
+	cd "$srcdir/${pkgname%-*}"
 	make DESTDIR="$pkgdir" install
 }

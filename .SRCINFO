@@ -1,7 +1,7 @@
 pkgbase = connman-git
 	pkgdesc = Intel's modular network connection manager. Git version.
 	pkgver = 1.36.r164.gb7ddedc4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://01.org/connman
 	arch = x86_64
 	license = GPL2
