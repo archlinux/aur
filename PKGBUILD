@@ -3,12 +3,12 @@
 pkgname=ant-bloody-theme-git
 _pkgname=Ant-Bloody
 pkgver=r53.60fce70
-pkgrel=1
+pkgrel=2
 pkgdesc="Bloody variant of the Ant theme"
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
 license=('GPL')
-makedepends=('inkscape')
+makedepends=('inkscape' 'optipng')
 optdepends=('ttf-roboto: primary font face defined'
 			'ttf-ubuntu-font-family: secondary font face defined'
 			'cantarell-fonts: tertiary font face defined')
