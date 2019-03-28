@@ -1,5 +1,5 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
-pkgname=jprofiler
+pkgname=jprofiler10
 pkgver=10.1.4
 pkgrel=1
 options=(!strip)
