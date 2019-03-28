@@ -1,18 +1,25 @@
 pkgname=libmodulemd
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="C Library for manipulating module metadata files"
 arch=('i686' 'x86_64')
 url="https://github.com/fedora-modularity/$pkgname"
 license=('custom:MIT')
 depends=('glib2' 'libyaml')
-makedepends=('gobject-introspection' 'gtk-doc' 'meson' 'python-gobject')
+makedepends=('gobject-introspection' 'gtk-doc' 'meson>=0.47' 'python-gobject')
 optdepends=('python-gobject: for python bindings')
-source=("$url/releases/download/$pkgname-$pkgver/${pkgname#lib}-$pkgver.tar.xz")
-md5sums=('597750f1814d9990e66f116f97b2ffc1')
+source=("$url/releases/download/$pkgname-$pkgver/${pkgname#lib}-$pkgver.tar.xz"
+        "$pkgname-2.2.2-disable-python2.patch::$url/pull/258.patch")
+md5sums=('5591eaa539444d43e9d61c5f7315e943'
+         'cf09a032f530f9197f20174370d1d279')
 
 prepare() {
 	mv "${pkgname#lib}-$pkgver" "$pkgname-$pkgver"
+
+	cd "$pkgname-$pkgver"
+
+	# Disable python2 stuff
+	patch -p1 < "$srcdir/$pkgname-2.2.2-disable-python2.patch"
 }
 
 build() {

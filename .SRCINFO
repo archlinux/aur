@@ -1,6 +1,6 @@
 pkgbase = libmodulemd
 	pkgdesc = C Library for manipulating module metadata files
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/fedora-modularity/libmodulemd
 	arch = i686
@@ -8,13 +8,15 @@ pkgbase = libmodulemd
 	license = custom:MIT
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
-	makedepends = meson
+	makedepends = meson>=0.47
 	makedepends = python-gobject
 	depends = glib2
 	depends = libyaml
 	optdepends = python-gobject: for python bindings
-	source = https://github.com/fedora-modularity/libmodulemd/releases/download/libmodulemd-2.2.1/modulemd-2.2.1.tar.xz
-	md5sums = 597750f1814d9990e66f116f97b2ffc1
+	source = https://github.com/fedora-modularity/libmodulemd/releases/download/libmodulemd-2.2.2/modulemd-2.2.2.tar.xz
+	source = libmodulemd-2.2.2-disable-python2.patch::https://github.com/fedora-modularity/libmodulemd/pull/258.patch
+	md5sums = 5591eaa539444d43e9d61c5f7315e943
+	md5sums = cf09a032f530f9197f20174370d1d279
 
 pkgname = libmodulemd
 
