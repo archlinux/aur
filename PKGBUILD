@@ -2,12 +2,13 @@
 
 pkgname=ccl
 pkgver=1.11.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A Common Lisp implementation."
 arch=("x86_64")
 url="http://ccl.clozure.com"
 license=("Apache")
-provides=("ccl")
+provides=("common-lisp" "ccl")
+conflicts=("ccl-bin" "ccl-git")
 source=("https://github.com/Clozure/ccl/releases/download/v$pkgver/$pkgname-$pkgver-linuxx86.tar.gz")
 sha256sums=("b80850d8d6ca8662499975f1cd76bf51affdd29e2025796ddcff6576fe704143")
 
