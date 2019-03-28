@@ -3,7 +3,7 @@
 pkgname=openra-gen-git
 _pkgname=${pkgname/-git}
 pkgver=1160.git.e448241
-pkgrel=1
+pkgrel=2
 pkgdesc="A mod of OpenRA based on Command & Conquer: Generals"
 arch=('any')
 url="https://github.com/MustaphaTR/Generals-Alpha"
@@ -33,11 +33,11 @@ pkgver() {
 prepare() {
     cd $srcdir/Generals-Alpha
     dos2unix *.md
-    make version VERSION="${pkgver}"
 }
 
 build() {
     cd $srcdir/Generals-Alpha
+    make version VERSION="${pkgver}"
     make || (printf "make failed; please do not complain at the AUR about this, as this is an upstream issue.\n" && \
 	printf "So report this at ${url}/issues/new, after checking\n" && \
 	printf "for existing issues.\n")

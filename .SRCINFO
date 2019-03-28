@@ -1,7 +1,7 @@
 pkgbase = openra-gen-git
 	pkgdesc = A mod of OpenRA based on Command & Conquer: Generals
 	pkgver = 1160.git.e448241
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MustaphaTR/Generals-Alpha
 	install = openra-gen.install
 	arch = any
