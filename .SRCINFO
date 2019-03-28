@@ -6,6 +6,7 @@ pkgbase = pkgconf-git
 	arch = i686
 	arch = x86_64
 	license = ISC
+	makedepends = git
 	depends = glibc
 	depends = sh
 	provides = pkg-config
