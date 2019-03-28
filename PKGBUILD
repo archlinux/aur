@@ -1,13 +1,13 @@
 # Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
 pkgname=snapgene-viewer
-pkgver=4.2.5
+pkgver=4.3.5
 pkgrel=1
 pkgdesc='Software for plasmid mapping, primer design, and restriction site analysis'
 arch=('x86_64')
 url='http://www.snapgene.com/products/snapgene_viewer/'
 license=('custom')
-source=("snapgene_viewer_${pkgver}_linux.rpm::http://www.snapgene.com/products/download.php?product=viewer&majorRelease=${pkgver:0:3}&minorRelease=${pkgver}&os=linux_rpm")
-sha512sums=('66c5e0595d57c1280cd1a6577f8dfec5bace08dd561b5321d0fc0eb46e69ba76841381147d63ee51161d299ae4ae6a83c0177a75054a67acf05646737150800f')
+source=("snapgene_viewer_${pkgver}_linux.rpm::https://www.snapgene.com/local/targets/viewer_download.php?os=linux_rpm&majorRelease=latest&minorRelease=latest")
+sha512sums=('fc2a1b67c40eedf340cd1249a0991eeef3fc1cd16f2bfdb363cae419ca1edaf07394ab74014759aaee42df08035eb9a233a98a7b11e353fba99ec914367aa8f5')
 
 package() {
     cd "$pkgdir"
