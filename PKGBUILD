@@ -1,15 +1,15 @@
 # Maintainer: Alexandros Theodotou <alex@zrythm.org>
 _pkgname=zrythm
 pkgname=$_pkgname-git
-pkgver=r314.6ea7285
+pkgver=r428.f8e0633
 pkgrel=1
 pkgdesc="An highly automated, intuitive, Digital Audio Workstation (DAW)"
 arch=( 'x86_64' )
 url='https://git.zrythm.org/zrythm/zrythm'
 license=( 'GPL3' )
-depends=('gtk3' 'lv2' 'lilv' 'libx11' 'jack' 'libsndfile' 'libdazzle' 'breeze-icons' 'libyaml'
+depends=('gtk3' 'lv2' 'lilv' 'libx11' 'jack' 'libsndfile' 'libyaml' 'gettext'
          'portaudio' 'libsamplerate')
-makedepends=('python' 'git')
+makedepends=('python' 'gettext' 'sed' 'git')
 conflicts=( "$_pkgname" )
 provides=( "$_pkgname" )
 source=("$_pkgname::git+https://git.zrythm.org/zrythm/zrythm.git")
