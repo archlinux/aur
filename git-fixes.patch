@@ -1,0 +1,4419 @@
+diff --git a/ChangeLog b/ChangeLog
+index 3ef650e..153a20d 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,5 +1,29 @@
+ 2011-12-17  Jeffrey Stedfast  <fejj@gnome.org>
+ 
++	* src/main.c: Removed GnomeProgram API usage.
++
++	* src/alleyoop.c: Subclass GtkWindow instead of GnomeApp and
++	updated to use GtkUIManager APIs to replace GnomeUIInfo APIs.
++
++2011-12-17  Jeffrey Stedfast  <fejj@gnome.org>
++
++	* alleyoop.desktop.in: Added.
++
++	* src/alleyoop.c: Replaced the GnomeAbout dialog with a
++	GtkAboutDialog.
++
++	* src/vggeneralprefs.c: Replace GnomeFileEntry with
++	GtkFileChooserButton.
++
++2011-12-17  Jeffrey Stedfast  <fejj@gnome.org>
++
++	* src/main.c: Get rid of glade dependency.
++
++	* src/*.c: Replaced references to libgnome/gnome-i18n.h with
++	glib/gi18n.h in an effort to remove libgnome(ui) dependencies.
++
++2011-12-17  Jeffrey Stedfast  <fejj@gnome.org>
++
+ 	* configure.in: Bumped version to 0.9.8
+ 
+ 2010-12-06  Jeffrey Stedfast  <fejj@novell.com>
+diff --git a/Makefile.am b/Makefile.am
+index e4dce61..2a1e211 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,19 +1,30 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-SUBDIRS = src po
++ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
++
++SUBDIRS = src po m4
++
++desktop_in_files = alleyoop.desktop.in
++
++Applicationsdir = $(datadir)/applications
++Applications_DATA = $(desktop_files)
++
++desktop_files=$(desktop_in_files:.desktop.in=.desktop)
++@INTLTOOL_DESKTOP_RULE@
+ 
+ EXTRA_DIST = 			\
+ 	autogen.sh 		\
+-	alleyoop.glade 		\
+-	alleyoop.gladep		\
+ 	intltool-merge.in	\
+ 	intltool-update.in	\
+-	intltool-extract.in
++	intltool-extract.in	\
++	$(desktop_in_files)     \
++	$(desktop_files)
+ 
+ DISTCLEANFILES = 		\
+ 	intltool-merge		\
+ 	intltool-update		\
+-	intltool-extract
++	intltool-extract	\
++	$(desktop_files)
+ 
+ install-data-local:
+ 	@$(NORMAL_INSTALL)
+diff --git a/acconfig.h b/acconfig.h
+deleted file mode 100644
+index 0a76fa0..0000000
+--- a/acconfig.h
++++ /dev/null
+@@ -1,7 +0,0 @@
+-#undef ENABLE_NLS
+-#undef HAVE_CATGETS
+-#undef HAVE_GETTEXT
+-#undef GETTEXT_PACKAGE
+-#undef HAVE_LC_MESSAGES
+-#undef HAVE_STPCPY
+-#undef HAVE_LIBSM
+diff --git a/alleyoop.desktop.in b/alleyoop.desktop.in
+new file mode 100644
+index 0000000..2a495d1
+--- /dev/null
++++ b/alleyoop.desktop.in
+@@ -0,0 +1,10 @@
++[Desktop Entry]
++Version=1.0
++_Name=Alleyoop
++_GenericName=Memory Checker
++_X-GNOME-FullName=Alleyoop Memory Checker
++_Comment=Find memory-management problems in your programs using the valgrind tool
++Categories=Debugger;Development;GNOME;Profiling;
++Type=Application
++Exec=alleyoop
++Icon=alleyoop
+diff --git a/alleyoop.glade b/alleyoop.glade
+deleted file mode 100644
+index fd93e8b..0000000
+--- a/alleyoop.glade
++++ /dev/null
+@@ -1,1623 +0,0 @@
+-<?xml version="1.0" standalone="no"?> <!--*- mode: xml -*-->
+-<!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
+-
+-<glade-interface>
+-<requires lib="gnome"/>
+-<requires lib="bonobo"/>
+-
+-<widget class="GnomeApp" id="alleyoop">
+-  <property name="visible">True</property>
+-  <property name="title" translatable="yes">Alleyoop</property>
+-  <property name="type">GTK_WINDOW_TOPLEVEL</property>
+-  <property name="window_position">GTK_WIN_POS_NONE</property>
+-  <property name="modal">False</property>
+-  <property name="resizable">True</property>
+-  <property name="destroy_with_parent">False</property>
+-  <property name="enable_layout_config">True</property>
+-
+-  <child internal-child="dock">
+-    <widget class="BonoboDock" id="bonobodock1">
+-      <property name="visible">True</property>
+-      <property name="allow_floating">True</property>
+-
+-      <child>
+-	<widget class="BonoboDockItem" id="bonobodockitem1">
+-	  <property name="visible">True</property>
+-	  <property name="shadow_type">GTK_SHADOW_NONE</property>
+-
+-	  <child>
+-	    <widget class="GtkMenuBar" id="menubar">
+-	      <property name="visible">True</property>
+-
+-	      <child>
+-		<widget class="GtkMenuItem" id="mnuFile">
+-		  <property name="visible">True</property>
+-		  <property name="stock_item">GNOMEUIINFO_MENU_FILE_TREE</property>
+-
+-		  <child>
+-		    <widget class="GtkMenu" id="mnuFile_menu">
+-
+-		      <child>
+-			<widget class="GtkImageMenuItem" id="mnuFileRun">
+-			  <property name="visible">True</property>
+-			  <property name="label" translatable="yes">_Run</property>
+-			  <property name="use_underline">True</property>
+-			  <signal name="activate" handler="on_mnuFileRun_activate" last_modification_time="Tue, 11 Mar 2003 00:30:01 GMT"/>
+-			  <accelerator key="R" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+-
+-			  <child internal-child="image">
+-			    <widget class="GtkImage" id="image15">
+-			      <property name="visible">True</property>
+-			      <property name="stock">gtk-execute</property>
+-			      <property name="icon_size">1</property>
+-			      <property name="xalign">0.5</property>
+-			      <property name="yalign">0.5</property>
+-			      <property name="xpad">0</property>
+-			      <property name="ypad">0</property>
+-			    </widget>
+-			  </child>
+-			</widget>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkImageMenuItem" id="mnuFileKill">
+-			  <property name="visible">True</property>
+-			  <property name="label" translatable="yes">_Kill</property>
+-			  <property name="use_underline">True</property>
+-			  <signal name="activate" handler="on_mnuFileKill_activate" last_modification_time="Tue, 11 Mar 2003 00:30:01 GMT"/>
+-			  <accelerator key="K" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+-
+-			  <child internal-child="image">
+-			    <widget class="GtkImage" id="image16">
+-			      <property name="visible">True</property>
+-			      <property name="stock">gtk-cancel</property>
+-			      <property name="icon_size">1</property>
+-			      <property name="xalign">0.5</property>
+-			      <property name="yalign">0.5</property>
+-			      <property name="xpad">0</property>
+-			      <property name="ypad">0</property>
+-			    </widget>
+-			  </child>
+-			</widget>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkImageMenuItem" id="mnuFileOpen">
+-			  <property name="visible">True</property>
+-			  <property name="stock_item">GNOMEUIINFO_MENU_OPEN_ITEM</property>
+-			  <signal name="activate" handler="on_mnuFileOpen_activate" last_modification_time="Wed, 12 Mar 2003 00:22:50 GMT"/>
+-			</widget>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkImageMenuItem" id="mnuFileSave">
+-			  <property name="visible">True</property>
+-			  <property name="stock_item">GNOMEUIINFO_MENU_SAVE_ITEM</property>
+-			  <signal name="activate" handler="on_mnuFileSave_activate" last_modification_time="Wed, 12 Mar 2003 00:23:05 GMT"/>
+-			</widget>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkImageMenuItem" id="mnuFileSaveAs">
+-			  <property name="visible">True</property>
+-			  <property name="stock_item">GNOMEUIINFO_MENU_SAVE_AS_ITEM</property>
+-			  <signal name="activate" handler="on_mnuFileSaveAs_activate" last_modification_time="Wed, 12 Mar 2003 00:23:24 GMT"/>
+-			</widget>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkMenuItem" id="separator1">
+-			  <property name="visible">True</property>
+-			</widget>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkImageMenuItem" id="mnuFileQuit">
+-			  <property name="visible">True</property>
+-			  <property name="stock_item">GNOMEUIINFO_MENU_EXIT_ITEM</property>
+-			  <signal name="activate" handler="on_mnuFileQuit_activate" last_modification_time="Tue, 11 Mar 2003 00:39:44 GMT"/>
+-			</widget>
+-		      </child>
+-		    </widget>
+-		  </child>
+-		</widget>
+-	      </child>
+-
+-	      <child>
+-		<widget class="GtkMenuItem" id="mnuEdit">
+-		  <property name="visible">True</property>
+-		  <property name="stock_item">GNOMEUIINFO_MENU_EDIT_TREE</property>
+-
+-		  <child>
+-		    <widget class="GtkMenu" id="mnuEdit_menu">
+-
+-		      <child>
+-			<widget class="GtkImageMenuItem" id="mnuEditCut">
+-			  <property name="visible">True</property>
+-			  <property name="stock_item">GNOMEUIINFO_MENU_CUT_ITEM</property>
+-			  <signal name="activate" handler="on_mnuEditCut_activate" last_modification_time="Tue, 11 Mar 2003 00:39:44 GMT"/>
+-			</widget>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkImageMenuItem" id="mnuEditCopy">
+-			  <property name="visible">True</property>
+-			  <property name="stock_item">GNOMEUIINFO_MENU_COPY_ITEM</property>
+-			  <signal name="activate" handler="on_mnuEditCopy_activate" last_modification_time="Tue, 11 Mar 2003 00:40:01 GMT"/>
+-			</widget>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkImageMenuItem" id="mnuEditPaste">
+-			  <property name="visible">True</property>
+-			  <property name="stock_item">GNOMEUIINFO_MENU_PASTE_ITEM</property>
+-			  <signal name="activate" handler="on_mnuEditPaste_activate" last_modification_time="Tue, 11 Mar 2003 00:40:15 GMT"/>
+-			</widget>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkImageMenuItem" id="mnuEditClear">
+-			  <property name="visible">True</property>
+-			  <property name="stock_item">GNOMEUIINFO_MENU_CLEAR_ITEM</property>
+-			  <signal name="activate" handler="on_mnuEditClear_activate" last_modification_time="Tue, 11 Mar 2003 00:41:12 GMT"/>
+-			</widget>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkMenuItem" id="separator2">
+-			  <property name="visible">True</property>
+-			</widget>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkImageMenuItem" id="mnuEditProperties">
+-			  <property name="visible">True</property>
+-			  <property name="stock_item">GNOMEUIINFO_MENU_PROPERTIES_ITEM</property>
+-			  <signal name="activate" handler="on_mnuEditProperties_activate" last_modification_time="Tue, 11 Mar 2003 00:41:12 GMT"/>
+-			</widget>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkMenuItem" id="separator3">
+-			  <property name="visible">True</property>
+-			</widget>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkImageMenuItem" id="mnuEditPreferences">
+-			  <property name="visible">True</property>
+-			  <property name="stock_item">GNOMEUIINFO_MENU_PREFERENCES_ITEM</property>
+-			  <signal name="activate" handler="on_mnuEditPreferences_activate" last_modification_time="Tue, 11 Mar 2003 00:41:12 GMT"/>
+-			</widget>
+-		      </child>
+-		    </widget>
+-		  </child>
+-		</widget>
+-	      </child>
+-
+-	      <child>
+-		<widget class="GtkMenuItem" id="mnuHelp">
+-		  <property name="visible">True</property>
+-		  <property name="stock_item">GNOMEUIINFO_MENU_HELP_TREE</property>
+-
+-		  <child>
+-		    <widget class="GtkMenu" id="mnuHelp_menu">
+-
+-		      <child>
+-			<widget class="GtkImageMenuItem" id="mnuHelpAbout">
+-			  <property name="visible">True</property>
+-			  <property name="stock_item">GNOMEUIINFO_MENU_ABOUT_ITEM</property>
+-			  <signal name="activate" handler="on_mnuHelpAbout_activate" last_modification_time="Tue, 11 Mar 2003 00:39:00 GMT"/>
+-			</widget>
+-		      </child>
+-		    </widget>
+-		  </child>
+-		</widget>
+-	      </child>
+-	    </widget>
+-	  </child>
+-	</widget>
+-	<packing>
+-	  <property name="placement">BONOBO_DOCK_TOP</property>
+-	  <property name="band">0</property>
+-	  <property name="position">0</property>
+-	  <property name="offset">0</property>
+-	  <property name="behavior">BONOBO_DOCK_ITEM_BEH_EXCLUSIVE|BONOBO_DOCK_ITEM_BEH_NEVER_VERTICAL|BONOBO_DOCK_ITEM_BEH_LOCKED</property>
+-	</packing>
+-      </child>
+-
+-      <child>
+-	<widget class="BonoboDockItem" id="bonobodockitem2">
+-	  <property name="visible">True</property>
+-	  <property name="shadow_type">GTK_SHADOW_OUT</property>
+-
+-	  <child>
+-	    <widget class="GtkToolbar" id="toolbar">
+-	      <property name="border_width">1</property>
+-	      <property name="visible">True</property>
+-	      <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+-	      <property name="toolbar_style">GTK_TOOLBAR_BOTH</property>
+-	      <property name="tooltips">True</property>
+-
+-	      <child>
+-		<widget class="button" id="cmdRun">
+-		  <property name="visible">True</property>
+-		  <property name="tooltip" translatable="yes">Run Program</property>
+-		  <property name="label" translatable="yes">Run</property>
+-		  <property name="use_underline">True</property>
+-		  <property name="stock_pixmap">gtk-execute</property>
+-		</widget>
+-	      </child>
+-
+-	      <child>
+-		<widget class="button" id="cmdKill">
+-		  <property name="visible">True</property>
+-		  <property name="tooltip" translatable="yes">Kill Program</property>
+-		  <property name="label" translatable="yes">Kill</property>
+-		  <property name="use_underline">True</property>
+-		  <property name="stock_pixmap">gtk-cancel</property>
+-		</widget>
+-	      </child>
+-
+-	      <child>
+-		<widget class="button" id="cmdLoad">
+-		  <property name="visible">True</property>
+-		  <property name="tooltip" translatable="yes">Open Log File</property>
+-		  <property name="label">gtk-open</property>
+-		  <property name="use_stock">True</property>
+-		</widget>
+-	      </child>
+-
+-	      <child>
+-		<widget class="button" id="cmdSave">
+-		  <property name="visible">True</property>
+-		  <property name="tooltip" translatable="yes">Save File</property>
+-		  <property name="label">gtk-save</property>
+-		  <property name="use_stock">True</property>
+-		</widget>
+-	      </child>
+-	    </widget>
+-	  </child>
+-	</widget>
+-	<packing>
+-	  <property name="placement">BONOBO_DOCK_TOP</property>
+-	  <property name="band">1</property>
+-	  <property name="position">0</property>
+-	  <property name="offset">0</property>
+-	  <property name="behavior">BONOBO_DOCK_ITEM_BEH_EXCLUSIVE</property>
+-	</packing>
+-      </child>
+-
+-      <child>
+-	<widget class="GtkVBox" id="vbox">
+-	  <property name="visible">True</property>
+-	  <property name="homogeneous">False</property>
+-	  <property name="spacing">0</property>
+-
+-	  <child>
+-	    <widget class="GtkHBox" id="hbox">
+-	      <property name="border_width">4</property>
+-	      <property name="visible">True</property>
+-	      <property name="homogeneous">False</property>
+-	      <property name="spacing">4</property>
+-
+-	      <child>
+-		<widget class="GtkOptionMenu" id="omenuSearchCategory">
+-		  <property name="visible">True</property>
+-		  <property name="can_focus">True</property>
+-		  <property name="history">0</property>
+-
+-		  <child>
+-		    <widget class="GtkMenu" id="mnuSearchCategory">
+-
+-		      <child>
+-			<widget class="GtkMenuItem" id="error_type">
+-			  <property name="visible">True</property>
+-			  <property name="label" translatable="yes">Error type</property>
+-			  <property name="use_underline">True</property>
+-			  <signal name="activate" handler="on_error_type1_activate" last_modification_time="Wed, 12 Mar 2003 00:30:30 GMT"/>
+-			</widget>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkMenuItem" id="function">
+-			  <property name="visible">True</property>
+-			  <property name="label" translatable="yes">Function</property>
+-			  <property name="use_underline">True</property>
+-			  <signal name="activate" handler="on_function1_activate" last_modification_time="Wed, 12 Mar 2003 00:30:30 GMT"/>
+-			</widget>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkMenuItem" id="source_file">
+-			  <property name="visible">True</property>
+-			  <property name="label" translatable="yes">Source file</property>
+-			  <property name="use_underline">True</property>
+-			  <signal name="activate" handler="on_source_file1_activate" last_modification_time="Wed, 12 Mar 2003 00:30:30 GMT"/>
+-			</widget>
+-		      </child>
+-		    </widget>
+-		  </child>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">False</property>
+-		  <property name="fill">False</property>
+-		</packing>
+-	      </child>
+-
+-	      <child>
+-		<widget class="GtkOptionMenu" id="omenuSearchMatches">
+-		  <property name="visible">True</property>
+-		  <property name="can_focus">True</property>
+-		  <property name="history">0</property>
+-
+-		  <child>
+-		    <widget class="GtkMenu" id="mnuSearchMatches">
+-
+-		      <child>
+-			<widget class="GtkMenuItem" id="contains">
+-			  <property name="visible">True</property>
+-			  <property name="label" translatable="yes">contains</property>
+-			  <property name="use_underline">True</property>
+-			  <signal name="activate" handler="on_contains_activate" last_modification_time="Wed, 12 Mar 2003 00:31:31 GMT"/>
+-			</widget>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkMenuItem" id="matches">
+-			  <property name="visible">True</property>
+-			  <property name="label" translatable="yes">matches</property>
+-			  <property name="use_underline">True</property>
+-			  <signal name="activate" handler="on_matches_activate" last_modification_time="Wed, 12 Mar 2003 00:31:31 GMT"/>
+-			</widget>
+-		      </child>
+-		    </widget>
+-		  </child>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">False</property>
+-		  <property name="fill">False</property>
+-		</packing>
+-	      </child>
+-
+-	      <child>
+-		<widget class="GtkEntry" id="txtSearch">
+-		  <property name="visible">True</property>
+-		  <property name="can_focus">True</property>
+-		  <property name="editable">True</property>
+-		  <property name="visibility">True</property>
+-		  <property name="max_length">0</property>
+-		  <property name="text" translatable="yes"></property>
+-		  <property name="has_frame">True</property>
+-		  <property name="invisible_char" translatable="yes">*</property>
+-		  <property name="activates_default">False</property>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">True</property>
+-		  <property name="fill">True</property>
+-		</packing>
+-	      </child>
+-	    </widget>
+-	    <packing>
+-	      <property name="padding">0</property>
+-	      <property name="expand">False</property>
+-	      <property name="fill">True</property>
+-	    </packing>
+-	  </child>
+-
+-	  <child>
+-	    <widget class="GtkScrolledWindow" id="scrolledwindow1">
+-	      <property name="visible">True</property>
+-	      <property name="can_focus">True</property>
+-	      <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+-	      <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+-	      <property name="shadow_type">GTK_SHADOW_NONE</property>
+-	      <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
+-
+-	      <child>
+-		<widget class="GtkTreeView" id="treeview">
+-		  <property name="visible">True</property>
+-		  <property name="can_focus">True</property>
+-		  <property name="headers_visible">False</property>
+-		  <property name="rules_hint">False</property>
+-		  <property name="reorderable">False</property>
+-		  <property name="enable_search">True</property>
+-		</widget>
+-	      </child>
+-	    </widget>
+-	    <packing>
+-	      <property name="padding">0</property>
+-	      <property name="expand">True</property>
+-	      <property name="fill">True</property>
+-	    </packing>
+-	  </child>
+-	</widget>
+-      </child>
+-    </widget>
+-    <packing>
+-      <property name="padding">0</property>
+-      <property name="expand">True</property>
+-      <property name="fill">True</property>
+-    </packing>
+-  </child>
+-
+-  <child internal-child="appbar">
+-    <widget class="GnomeAppBar" id="appbar">
+-      <property name="visible">True</property>
+-      <property name="has_progress">True</property>
+-      <property name="has_status">True</property>
+-    </widget>
+-    <packing>
+-      <property name="padding">0</property>
+-      <property name="expand">True</property>
+-      <property name="fill">True</property>
+-    </packing>
+-  </child>
+-</widget>
+-
+-<widget class="GtkDialog" id="prefs">
+-  <property name="border_width">6</property>
+-  <property name="visible">True</property>
+-  <property name="title" translatable="yes">Alleyoop Preferences</property>
+-  <property name="type">GTK_WINDOW_TOPLEVEL</property>
+-  <property name="window_position">GTK_WIN_POS_NONE</property>
+-  <property name="modal">False</property>
+-  <property name="resizable">True</property>
+-  <property name="destroy_with_parent">False</property>
+-  <property name="has_separator">True</property>
+-
+-  <child internal-child="vbox">
+-    <widget class="GtkVBox" id="dialog-vbox1">
+-      <property name="visible">True</property>
+-      <property name="homogeneous">False</property>
+-      <property name="spacing">0</property>
+-
+-      <child internal-child="action_area">
+-	<widget class="GtkHButtonBox" id="dialog-action_area1">
+-	  <property name="visible">True</property>
+-	  <property name="layout_style">GTK_BUTTONBOX_END</property>
+-
+-	  <child>
+-	    <widget class="GtkButton" id="cancelbutton1">
+-	      <property name="visible">True</property>
+-	      <property name="can_default">True</property>
+-	      <property name="can_focus">True</property>
+-	      <property name="label">gtk-close</property>
+-	      <property name="use_stock">True</property>
+-	      <property name="relief">GTK_RELIEF_NORMAL</property>
+-	      <property name="response_id">-7</property>
+-	    </widget>
+-	  </child>
+-	</widget>
+-	<packing>
+-	  <property name="padding">0</property>
+-	  <property name="expand">False</property>
+-	  <property name="fill">True</property>
+-	  <property name="pack_type">GTK_PACK_END</property>
+-	</packing>
+-      </child>
+-
+-      <child>
+-	<widget class="GtkNotebook" id="notebook">
+-	  <property name="visible">True</property>
+-	  <property name="can_focus">True</property>
+-	  <property name="show_tabs">True</property>
+-	  <property name="show_border">True</property>
+-	  <property name="tab_pos">GTK_POS_TOP</property>
+-	  <property name="scrollable">False</property>
+-	  <property name="enable_popup">False</property>
+-
+-	  <child>
+-	    <widget class="GtkVBox" id="vboxGeneral">
+-	      <property name="border_width">6</property>
+-	      <property name="visible">True</property>
+-	      <property name="homogeneous">False</property>
+-	      <property name="spacing">6</property>
+-
+-	      <child>
+-		<widget class="GtkCheckButton" id="demangle">
+-		  <property name="visible">True</property>
+-		  <property name="can_focus">True</property>
+-		  <property name="label" translatable="yes">Demangle c++ symbol names</property>
+-		  <property name="use_underline">True</property>
+-		  <property name="relief">GTK_RELIEF_NORMAL</property>
+-		  <property name="active">True</property>
+-		  <property name="inconsistent">False</property>
+-		  <property name="draw_indicator">True</property>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">False</property>
+-		  <property name="fill">False</property>
+-		</packing>
+-	      </child>
+-
+-	      <child>
+-		<widget class="GtkHBox" id="hboxNumCallers">
+-		  <property name="visible">True</property>
+-		  <property name="homogeneous">False</property>
+-		  <property name="spacing">6</property>
+-
+-		  <child>
+-		    <widget class="GtkLabel" id="lblShow">
+-		      <property name="visible">True</property>
+-		      <property name="label" translatable="yes">Show</property>
+-		      <property name="use_underline">False</property>
+-		      <property name="use_markup">False</property>
+-		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+-		      <property name="wrap">False</property>
+-		      <property name="selectable">False</property>
+-		      <property name="xalign">0.5</property>
+-		      <property name="yalign">0.5</property>
+-		      <property name="xpad">0</property>
+-		      <property name="ypad">0</property>
+-		    </widget>
+-		    <packing>
+-		      <property name="padding">0</property>
+-		      <property name="expand">False</property>
+-		      <property name="fill">False</property>
+-		    </packing>
+-		  </child>
+-
+-		  <child>
+-		    <widget class="GtkSpinButton" id="num-callers">
+-		      <property name="visible">True</property>
+-		      <property name="can_focus">True</property>
+-		      <property name="climb_rate">1</property>
+-		      <property name="digits">0</property>
+-		      <property name="numeric">True</property>
+-		      <property name="update_policy">GTK_UPDATE_ALWAYS</property>
+-		      <property name="snap_to_ticks">False</property>
+-		      <property name="wrap">False</property>
+-		      <property name="adjustment">4 0 100 1 10 10</property>
+-		    </widget>
+-		    <packing>
+-		      <property name="padding">0</property>
+-		      <property name="expand">False</property>
+-		      <property name="fill">False</property>
+-		    </packing>
+-		  </child>
+-
+-		  <child>
+-		    <widget class="GtkLabel" id="lblCallers">
+-		      <property name="visible">True</property>
+-		      <property name="label" translatable="yes">callers in stack traces</property>
+-		      <property name="use_underline">False</property>
+-		      <property name="use_markup">False</property>
+-		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+-		      <property name="wrap">False</property>
+-		      <property name="selectable">False</property>
+-		      <property name="xalign">0.5</property>
+-		      <property name="yalign">0.5</property>
+-		      <property name="xpad">0</property>
+-		      <property name="ypad">0</property>
+-		    </widget>
+-		    <packing>
+-		      <property name="padding">0</property>
+-		      <property name="expand">False</property>
+-		      <property name="fill">False</property>
+-		    </packing>
+-		  </child>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">False</property>
+-		  <property name="fill">False</property>
+-		</packing>
+-	      </child>
+-
+-	      <child>
+-		<widget class="GtkCheckButton" id="error-limit">
+-		  <property name="visible">True</property>
+-		  <property name="can_focus">True</property>
+-		  <property name="label" translatable="yes">Stop showing errors if there are too many</property>
+-		  <property name="use_underline">True</property>
+-		  <property name="relief">GTK_RELIEF_NORMAL</property>
+-		  <property name="active">False</property>
+-		  <property name="inconsistent">False</property>
+-		  <property name="draw_indicator">True</property>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">False</property>
+-		  <property name="fill">False</property>
+-		</packing>
+-	      </child>
+-
+-	      <child>
+-		<widget class="GtkCheckButton" id="sloppy-malloc">
+-		  <property name="visible">True</property>
+-		  <property name="can_focus">True</property>
+-		  <property name="label" translatable="yes">Round malloc sizes to next word</property>
+-		  <property name="use_underline">True</property>
+-		  <property name="relief">GTK_RELIEF_NORMAL</property>
+-		  <property name="active">False</property>
+-		  <property name="inconsistent">False</property>
+-		  <property name="draw_indicator">True</property>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">False</property>
+-		  <property name="fill">False</property>
+-		</packing>
+-	      </child>
+-
+-	      <child>
+-		<widget class="GtkCheckButton" id="trace-children">
+-		  <property name="visible">True</property>
+-		  <property name="can_focus">True</property>
+-		  <property name="label" translatable="yes">Trace any child processes forked off by program being debugged</property>
+-		  <property name="use_underline">True</property>
+-		  <property name="relief">GTK_RELIEF_NORMAL</property>
+-		  <property name="active">False</property>
+-		  <property name="inconsistent">False</property>
+-		  <property name="draw_indicator">True</property>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">False</property>
+-		  <property name="fill">False</property>
+-		</packing>
+-	      </child>
+-
+-	      <child>
+-		<widget class="GtkCheckButton" id="track-fds">
+-		  <property name="visible">True</property>
+-		  <property name="can_focus">True</property>
+-		  <property name="label" translatable="yes">Track open file descriptors</property>
+-		  <property name="use_underline">True</property>
+-		  <property name="relief">GTK_RELIEF_NORMAL</property>
+-		  <property name="active">False</property>
+-		  <property name="inconsistent">False</property>
+-		  <property name="draw_indicator">True</property>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">False</property>
+-		  <property name="fill">False</property>
+-		</packing>
+-	      </child>
+-
+-	      <child>
+-		<widget class="GtkCheckButton" id="run-libc-freeres">
+-		  <property name="visible">True</property>
+-		  <property name="can_focus">True</property>
+-		  <property name="label" translatable="yes">Call ____libc__freeres() at exit before checking for memory leaks</property>
+-		  <property name="use_underline">True</property>
+-		  <property name="relief">GTK_RELIEF_NORMAL</property>
+-		  <property name="active">False</property>
+-		  <property name="inconsistent">False</property>
+-		  <property name="draw_indicator">True</property>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">False</property>
+-		  <property name="fill">False</property>
+-		</packing>
+-	      </child>
+-
+-	      <child>
+-		<widget class="GtkHBox" id="hboxSuppressions">
+-		  <property name="visible">True</property>
+-		  <property name="homogeneous">False</property>
+-		  <property name="spacing">6</property>
+-
+-		  <child>
+-		    <widget class="GtkLabel" id="lblSuppFile">
+-		      <property name="visible">True</property>
+-		      <property name="label" translatable="yes">Suppressions File:</property>
+-		      <property name="use_underline">False</property>
+-		      <property name="use_markup">False</property>
+-		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+-		      <property name="wrap">False</property>
+-		      <property name="selectable">False</property>
+-		      <property name="xalign">0.5</property>
+-		      <property name="yalign">0.5</property>
+-		      <property name="xpad">0</property>
+-		      <property name="ypad">0</property>
+-		    </widget>
+-		    <packing>
+-		      <property name="padding">0</property>
+-		      <property name="expand">False</property>
+-		      <property name="fill">False</property>
+-		    </packing>
+-		  </child>
+-
+-		  <child>
+-		    <widget class="GnomeFileEntry" id="suppressions">
+-		      <property name="visible">True</property>
+-		      <property name="max_saved">10</property>
+-		      <property name="browse_dialog_title" translatable="yes">Choose Valgrind Suppressions File...</property>
+-		      <property name="directory_entry">False</property>
+-		      <property name="modal">False</property>
+-
+-		      <child internal-child="entry">
+-			<widget class="GtkEntry" id="combo-entry">
+-			  <property name="visible">True</property>
+-			  <property name="can_focus">True</property>
+-			  <property name="editable">True</property>
+-			  <property name="visibility">True</property>
+-			  <property name="max_length">0</property>
+-			  <property name="text" translatable="yes"></property>
+-			  <property name="has_frame">True</property>
+-			  <property name="invisible_char" translatable="yes">*</property>
+-			  <property name="activates_default">False</property>
+-			</widget>
+-		      </child>
+-		    </widget>
+-		    <packing>
+-		      <property name="padding">0</property>
+-		      <property name="expand">True</property>
+-		      <property name="fill">True</property>
+-		    </packing>
+-		  </child>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">False</property>
+-		  <property name="fill">False</property>
+-		</packing>
+-	      </child>
+-	    </widget>
+-	    <packing>
+-	      <property name="tab_expand">False</property>
+-	      <property name="tab_fill">True</property>
+-	    </packing>
+-	  </child>
+-
+-	  <child>
+-	    <widget class="GtkLabel" id="lblGeneral">
+-	      <property name="visible">True</property>
+-	      <property name="label" translatable="yes">General</property>
+-	      <property name="use_underline">False</property>
+-	      <property name="use_markup">False</property>
+-	      <property name="justify">GTK_JUSTIFY_LEFT</property>
+-	      <property name="wrap">False</property>
+-	      <property name="selectable">False</property>
+-	      <property name="xalign">0.5</property>
+-	      <property name="yalign">0.5</property>
+-	      <property name="xpad">0</property>
+-	      <property name="ypad">0</property>
+-	    </widget>
+-	    <packing>
+-	      <property name="type">tab</property>
+-	    </packing>
+-	  </child>
+-
+-	  <child>
+-	    <widget class="GtkVBox" id="vboxMemCheck">
+-	      <property name="border_width">6</property>
+-	      <property name="visible">True</property>
+-	      <property name="homogeneous">False</property>
+-	      <property name="spacing">6</property>
+-
+-	      <child>
+-		<widget class="GtkFrame" id="frameMemLeaks">
+-		  <property name="visible">True</property>
+-		  <property name="label_xalign">0</property>
+-		  <property name="label_yalign">0.5</property>
+-		  <property name="shadow_type">GTK_SHADOW_ETCHED_IN</property>
+-
+-		  <child>
+-		    <widget class="GtkVBox" id="vboxMemleaks">
+-		      <property name="border_width">6</property>
+-		      <property name="visible">True</property>
+-		      <property name="homogeneous">False</property>
+-		      <property name="spacing">6</property>
+-
+-		      <child>
+-			<widget class="GtkCheckButton" id="leak-check">
+-			  <property name="visible">True</property>
+-			  <property name="can_focus">True</property>
+-			  <property name="label" translatable="yes">Search for memory leaks at exit</property>
+-			  <property name="use_underline">True</property>
+-			  <property name="relief">GTK_RELIEF_NORMAL</property>
+-			  <property name="active">False</property>
+-			  <property name="inconsistent">False</property>
+-			  <property name="draw_indicator">True</property>
+-			</widget>
+-			<packing>
+-			  <property name="padding">0</property>
+-			  <property name="expand">False</property>
+-			  <property name="fill">False</property>
+-			</packing>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkCheckButton" id="show-reachable">
+-			  <property name="visible">True</property>
+-			  <property name="can_focus">True</property>
+-			  <property name="label" translatable="yes">Show reachable blocks in leak check</property>
+-			  <property name="use_underline">True</property>
+-			  <property name="relief">GTK_RELIEF_NORMAL</property>
+-			  <property name="active">False</property>
+-			  <property name="inconsistent">False</property>
+-			  <property name="draw_indicator">True</property>
+-			</widget>
+-			<packing>
+-			  <property name="padding">0</property>
+-			  <property name="expand">False</property>
+-			  <property name="fill">False</property>
+-			</packing>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkHBox" id="hboxLeakRes">
+-			  <property name="visible">True</property>
+-			  <property name="homogeneous">False</property>
+-			  <property name="spacing">6</property>
+-
+-			  <child>
+-			    <widget class="GtkLabel" id="lblLeakRes">
+-			      <property name="visible">True</property>
+-			      <property name="label" translatable="yes">Leak resolution:</property>
+-			      <property name="use_underline">False</property>
+-			      <property name="use_markup">False</property>
+-			      <property name="justify">GTK_JUSTIFY_LEFT</property>
+-			      <property name="wrap">False</property>
+-			      <property name="selectable">False</property>
+-			      <property name="xalign">0.5</property>
+-			      <property name="yalign">0.5</property>
+-			      <property name="xpad">0</property>
+-			      <property name="ypad">0</property>
+-			    </widget>
+-			    <packing>
+-			      <property name="padding">0</property>
+-			      <property name="expand">False</property>
+-			      <property name="fill">False</property>
+-			    </packing>
+-			  </child>
+-
+-			  <child>
+-			    <widget class="GtkOptionMenu" id="leak-resolution">
+-			      <property name="visible">True</property>
+-			      <property name="can_focus">True</property>
+-			      <property name="history">0</property>
+-
+-			      <child>
+-				<widget class="GtkMenu" id="mnuLeakResolution">
+-
+-				  <child>
+-				    <widget class="GtkMenuItem" id="low">
+-				      <property name="visible">True</property>
+-				      <property name="label" translatable="yes">low</property>
+-				      <property name="use_underline">True</property>
+-				      <signal name="activate" handler="on_low_activate" last_modification_time="Sun, 13 Apr 2003 23:02:25 GMT"/>
+-				    </widget>
+-				  </child>
+-
+-				  <child>
+-				    <widget class="GtkMenuItem" id="med">
+-				      <property name="visible">True</property>
+-				      <property name="label" translatable="yes">med</property>
+-				      <property name="use_underline">True</property>
+-				      <signal name="activate" handler="on_med_activate" last_modification_time="Sun, 13 Apr 2003 23:02:25 GMT"/>
+-				    </widget>
+-				  </child>
+-
+-				  <child>
+-				    <widget class="GtkMenuItem" id="high">
+-				      <property name="visible">True</property>
+-				      <property name="label" translatable="yes">high</property>
+-				      <property name="use_underline">True</property>
+-				      <signal name="activate" handler="on_high_activate" last_modification_time="Sun, 13 Apr 2003 23:02:25 GMT"/>
+-				    </widget>
+-				  </child>
+-				</widget>
+-			      </child>
+-			    </widget>
+-			    <packing>
+-			      <property name="padding">0</property>
+-			      <property name="expand">False</property>
+-			      <property name="fill">False</property>
+-			    </packing>
+-			  </child>
+-			</widget>
+-			<packing>
+-			  <property name="padding">0</property>
+-			  <property name="expand">False</property>
+-			  <property name="fill">False</property>
+-			</packing>
+-		      </child>
+-		    </widget>
+-		  </child>
+-
+-		  <child>
+-		    <widget class="GtkLabel" id="lblMemoryLeaks">
+-		      <property name="visible">True</property>
+-		      <property name="label" translatable="yes">Memory leaks</property>
+-		      <property name="use_underline">False</property>
+-		      <property name="use_markup">False</property>
+-		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+-		      <property name="wrap">False</property>
+-		      <property name="selectable">False</property>
+-		      <property name="xalign">0.5</property>
+-		      <property name="yalign">0.5</property>
+-		      <property name="xpad">0</property>
+-		      <property name="ypad">0</property>
+-		    </widget>
+-		    <packing>
+-		      <property name="type">label_item</property>
+-		    </packing>
+-		  </child>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">False</property>
+-		  <property name="fill">False</property>
+-		</packing>
+-	      </child>
+-
+-	      <child>
+-		<widget class="GtkHBox" id="hboxFreeListVol">
+-		  <property name="visible">True</property>
+-		  <property name="homogeneous">False</property>
+-		  <property name="spacing">6</property>
+-
+-		  <child>
+-		    <widget class="GtkLabel" id="lblFreeListVol1">
+-		      <property name="visible">True</property>
+-		      <property name="label" translatable="yes">Keep up to</property>
+-		      <property name="use_underline">False</property>
+-		      <property name="use_markup">False</property>
+-		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+-		      <property name="wrap">False</property>
+-		      <property name="selectable">False</property>
+-		      <property name="xalign">0.5</property>
+-		      <property name="yalign">0.5</property>
+-		      <property name="xpad">0</property>
+-		      <property name="ypad">0</property>
+-		    </widget>
+-		    <packing>
+-		      <property name="padding">0</property>
+-		      <property name="expand">False</property>
+-		      <property name="fill">False</property>
+-		    </packing>
+-		  </child>
+-
+-		  <child>
+-		    <widget class="GtkSpinButton" id="freelist-vol">
+-		      <property name="visible">True</property>
+-		      <property name="can_focus">True</property>
+-		      <property name="climb_rate">1</property>
+-		      <property name="digits">0</property>
+-		      <property name="numeric">True</property>
+-		      <property name="update_policy">GTK_UPDATE_ALWAYS</property>
+-		      <property name="snap_to_ticks">False</property>
+-		      <property name="wrap">False</property>
+-		      <property name="adjustment">1e+06 0 1e+07 10 100 100</property>
+-		    </widget>
+-		    <packing>
+-		      <property name="padding">0</property>
+-		      <property name="expand">True</property>
+-		      <property name="fill">True</property>
+-		    </packing>
+-		  </child>
+-
+-		  <child>
+-		    <widget class="GtkLabel" id="lblFreeListVol2">
+-		      <property name="visible">True</property>
+-		      <property name="label" translatable="yes">bytes in the queue after being free()'d</property>
+-		      <property name="use_underline">False</property>
+-		      <property name="use_markup">False</property>
+-		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+-		      <property name="wrap">False</property>
+-		      <property name="selectable">False</property>
+-		      <property name="xalign">0.5</property>
+-		      <property name="yalign">0.5</property>
+-		      <property name="xpad">0</property>
+-		      <property name="ypad">0</property>
+-		    </widget>
+-		    <packing>
+-		      <property name="padding">0</property>
+-		      <property name="expand">False</property>
+-		      <property name="fill">False</property>
+-		    </packing>
+-		  </child>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">False</property>
+-		  <property name="fill">False</property>
+-		</packing>
+-	      </child>
+-
+-	      <child>
+-		<widget class="GtkCheckButton" id="workaround-gcc296-bugs">
+-		  <property name="visible">True</property>
+-		  <property name="can_focus">True</property>
+-		  <property name="label" translatable="yes">Work around bugs generated by gcc 2.96</property>
+-		  <property name="use_underline">True</property>
+-		  <property name="relief">GTK_RELIEF_NORMAL</property>
+-		  <property name="active">False</property>
+-		  <property name="inconsistent">False</property>
+-		  <property name="draw_indicator">True</property>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">False</property>
+-		  <property name="fill">False</property>
+-		</packing>
+-	      </child>
+-
+-	      <child>
+-		<widget class="GtkCheckButton" id="avoid-strlen-errors">
+-		  <property name="visible">True</property>
+-		  <property name="can_focus">True</property>
+-		  <property name="label" translatable="yes">Ignore errors produced by inline strlen() calls</property>
+-		  <property name="use_underline">True</property>
+-		  <property name="relief">GTK_RELIEF_NORMAL</property>
+-		  <property name="active">False</property>
+-		  <property name="inconsistent">False</property>
+-		  <property name="draw_indicator">True</property>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">False</property>
+-		  <property name="fill">False</property>
+-		</packing>
+-	      </child>
+-	    </widget>
+-	    <packing>
+-	      <property name="tab_expand">False</property>
+-	      <property name="tab_fill">True</property>
+-	      <property name="menu_label" translatable="yes"></property>
+-	    </packing>
+-	  </child>
+-
+-	  <child>
+-	    <widget class="GtkLabel" id="lblMemCheck">
+-	      <property name="visible">True</property>
+-	      <property name="label" translatable="yes">MemCheck</property>
+-	      <property name="use_underline">False</property>
+-	      <property name="use_markup">False</property>
+-	      <property name="justify">GTK_JUSTIFY_LEFT</property>
+-	      <property name="wrap">False</property>
+-	      <property name="selectable">False</property>
+-	      <property name="xalign">0.5</property>
+-	      <property name="yalign">0.5</property>
+-	      <property name="xpad">0</property>
+-	      <property name="ypad">0</property>
+-	    </widget>
+-	    <packing>
+-	      <property name="type">tab</property>
+-	    </packing>
+-	  </child>
+-
+-	  <child>
+-	    <widget class="GtkVBox" id="vboxCachegrind">
+-	      <property name="border_width">6</property>
+-	      <property name="visible">True</property>
+-	      <property name="homogeneous">False</property>
+-	      <property name="spacing">6</property>
+-
+-	      <child>
+-		<widget class="GtkFrame" id="frameI1">
+-		  <property name="visible">True</property>
+-		  <property name="label_xalign">0</property>
+-		  <property name="label_yalign">0.5</property>
+-		  <property name="shadow_type">GTK_SHADOW_ETCHED_IN</property>
+-
+-		  <child>
+-		    <widget class="GtkVBox" id="vboxI1">
+-		      <property name="border_width">6</property>
+-		      <property name="visible">True</property>
+-		      <property name="homogeneous">False</property>
+-		      <property name="spacing">6</property>
+-
+-		      <child>
+-			<widget class="GtkCheckButton" id="chkI1Override">
+-			  <property name="visible">True</property>
+-			  <property name="can_focus">True</property>
+-			  <property name="label" translatable="yes">Override default settings</property>
+-			  <property name="use_underline">True</property>
+-			  <property name="relief">GTK_RELIEF_NORMAL</property>
+-			  <property name="active">False</property>
+-			  <property name="inconsistent">False</property>
+-			  <property name="draw_indicator">True</property>
+-			</widget>
+-			<packing>
+-			  <property name="padding">0</property>
+-			  <property name="expand">False</property>
+-			  <property name="fill">False</property>
+-			</packing>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkHBox" id="hboxI1">
+-			  <property name="visible">True</property>
+-			  <property name="homogeneous">False</property>
+-			  <property name="spacing">6</property>
+-
+-			  <child>
+-			    <widget class="GtkLabel" id="lblI1Enter">
+-			      <property name="visible">True</property>
+-			      <property name="label" translatable="yes">Enter &lt;size&gt;,&lt;assoc&gt;,&lt;line_size&gt;:</property>
+-			      <property name="use_underline">False</property>
+-			      <property name="use_markup">False</property>
+-			      <property name="justify">GTK_JUSTIFY_LEFT</property>
+-			      <property name="wrap">False</property>
+-			      <property name="selectable">False</property>
+-			      <property name="xalign">0.5</property>
+-			      <property name="yalign">0.5</property>
+-			      <property name="xpad">0</property>
+-			      <property name="ypad">0</property>
+-			    </widget>
+-			    <packing>
+-			      <property name="padding">0</property>
+-			      <property name="expand">False</property>
+-			      <property name="fill">False</property>
+-			    </packing>
+-			  </child>
+-
+-			  <child>
+-			    <widget class="GtkEntry" id="txtI1Settings">
+-			      <property name="visible">True</property>
+-			      <property name="can_focus">True</property>
+-			      <property name="editable">True</property>
+-			      <property name="visibility">True</property>
+-			      <property name="max_length">0</property>
+-			      <property name="text" translatable="yes"></property>
+-			      <property name="has_frame">True</property>
+-			      <property name="invisible_char" translatable="yes">*</property>
+-			      <property name="activates_default">False</property>
+-			    </widget>
+-			    <packing>
+-			      <property name="padding">0</property>
+-			      <property name="expand">True</property>
+-			      <property name="fill">True</property>
+-			    </packing>
+-			  </child>
+-			</widget>
+-			<packing>
+-			  <property name="padding">0</property>
+-			  <property name="expand">True</property>
+-			  <property name="fill">True</property>
+-			</packing>
+-		      </child>
+-		    </widget>
+-		  </child>
+-
+-		  <child>
+-		    <widget class="GtkLabel" id="lblI1">
+-		      <property name="visible">True</property>
+-		      <property name="label" translatable="yes">I1 Cache</property>
+-		      <property name="use_underline">False</property>
+-		      <property name="use_markup">False</property>
+-		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+-		      <property name="wrap">False</property>
+-		      <property name="selectable">False</property>
+-		      <property name="xalign">0.5</property>
+-		      <property name="yalign">0.5</property>
+-		      <property name="xpad">0</property>
+-		      <property name="ypad">0</property>
+-		    </widget>
+-		    <packing>
+-		      <property name="type">label_item</property>
+-		    </packing>
+-		  </child>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">False</property>
+-		  <property name="fill">False</property>
+-		</packing>
+-	      </child>
+-
+-	      <child>
+-		<widget class="GtkFrame" id="frameD1">
+-		  <property name="visible">True</property>
+-		  <property name="label_xalign">0</property>
+-		  <property name="label_yalign">0.5</property>
+-		  <property name="shadow_type">GTK_SHADOW_ETCHED_IN</property>
+-
+-		  <child>
+-		    <widget class="GtkVBox" id="vboxD1">
+-		      <property name="border_width">6</property>
+-		      <property name="visible">True</property>
+-		      <property name="homogeneous">False</property>
+-		      <property name="spacing">6</property>
+-
+-		      <child>
+-			<widget class="GtkCheckButton" id="chkD1Override">
+-			  <property name="visible">True</property>
+-			  <property name="can_focus">True</property>
+-			  <property name="label" translatable="yes">Override default settings</property>
+-			  <property name="use_underline">True</property>
+-			  <property name="relief">GTK_RELIEF_NORMAL</property>
+-			  <property name="active">False</property>
+-			  <property name="inconsistent">False</property>
+-			  <property name="draw_indicator">True</property>
+-			</widget>
+-			<packing>
+-			  <property name="padding">0</property>
+-			  <property name="expand">False</property>
+-			  <property name="fill">False</property>
+-			</packing>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkHBox" id="hboxD1">
+-			  <property name="visible">True</property>
+-			  <property name="homogeneous">False</property>
+-			  <property name="spacing">6</property>
+-
+-			  <child>
+-			    <widget class="GtkLabel" id="lblD1Enter">
+-			      <property name="visible">True</property>
+-			      <property name="label" translatable="yes">Enter &lt;size&gt;,&lt;assoc&gt;,&lt;line_size&gt;:</property>
+-			      <property name="use_underline">False</property>
+-			      <property name="use_markup">False</property>
+-			      <property name="justify">GTK_JUSTIFY_LEFT</property>
+-			      <property name="wrap">False</property>
+-			      <property name="selectable">False</property>
+-			      <property name="xalign">0.5</property>
+-			      <property name="yalign">0.5</property>
+-			      <property name="xpad">0</property>
+-			      <property name="ypad">0</property>
+-			    </widget>
+-			    <packing>
+-			      <property name="padding">0</property>
+-			      <property name="expand">False</property>
+-			      <property name="fill">False</property>
+-			    </packing>
+-			  </child>
+-
+-			  <child>
+-			    <widget class="GtkEntry" id="txtD1Settings">
+-			      <property name="visible">True</property>
+-			      <property name="can_focus">True</property>
+-			      <property name="editable">True</property>
+-			      <property name="visibility">True</property>
+-			      <property name="max_length">0</property>
+-			      <property name="text" translatable="yes"></property>
+-			      <property name="has_frame">True</property>
+-			      <property name="invisible_char" translatable="yes">*</property>
+-			      <property name="activates_default">False</property>
+-			    </widget>
+-			    <packing>
+-			      <property name="padding">0</property>
+-			      <property name="expand">True</property>
+-			      <property name="fill">True</property>
+-			    </packing>
+-			  </child>
+-			</widget>
+-			<packing>
+-			  <property name="padding">0</property>
+-			  <property name="expand">True</property>
+-			  <property name="fill">True</property>
+-			</packing>
+-		      </child>
+-		    </widget>
+-		  </child>
+-
+-		  <child>
+-		    <widget class="GtkLabel" id="lblD1">
+-		      <property name="visible">True</property>
+-		      <property name="label" translatable="yes">D1 Cache</property>
+-		      <property name="use_underline">False</property>
+-		      <property name="use_markup">False</property>
+-		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+-		      <property name="wrap">False</property>
+-		      <property name="selectable">False</property>
+-		      <property name="xalign">0.5</property>
+-		      <property name="yalign">0.5</property>
+-		      <property name="xpad">0</property>
+-		      <property name="ypad">0</property>
+-		    </widget>
+-		    <packing>
+-		      <property name="type">label_item</property>
+-		    </packing>
+-		  </child>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">False</property>
+-		  <property name="fill">False</property>
+-		</packing>
+-	      </child>
+-
+-	      <child>
+-		<widget class="GtkFrame" id="frameL2">
+-		  <property name="visible">True</property>
+-		  <property name="label_xalign">0</property>
+-		  <property name="label_yalign">0.5</property>
+-		  <property name="shadow_type">GTK_SHADOW_ETCHED_IN</property>
+-
+-		  <child>
+-		    <widget class="GtkVBox" id="vboxL2">
+-		      <property name="border_width">6</property>
+-		      <property name="visible">True</property>
+-		      <property name="homogeneous">False</property>
+-		      <property name="spacing">6</property>
+-
+-		      <child>
+-			<widget class="GtkCheckButton" id="chkL2Override">
+-			  <property name="visible">True</property>
+-			  <property name="can_focus">True</property>
+-			  <property name="label" translatable="yes">Override default settings</property>
+-			  <property name="use_underline">True</property>
+-			  <property name="relief">GTK_RELIEF_NORMAL</property>
+-			  <property name="active">False</property>
+-			  <property name="inconsistent">False</property>
+-			  <property name="draw_indicator">True</property>
+-			</widget>
+-			<packing>
+-			  <property name="padding">0</property>
+-			  <property name="expand">False</property>
+-			  <property name="fill">False</property>
+-			</packing>
+-		      </child>
+-
+-		      <child>
+-			<widget class="GtkHBox" id="hboxL2">
+-			  <property name="visible">True</property>
+-			  <property name="homogeneous">False</property>
+-			  <property name="spacing">6</property>
+-
+-			  <child>
+-			    <widget class="GtkLabel" id="lblL2Enter">
+-			      <property name="visible">True</property>
+-			      <property name="label" translatable="yes">Enter &lt;size&gt;,&lt;assoc&gt;,&lt;line_size&gt;:</property>
+-			      <property name="use_underline">False</property>
+-			      <property name="use_markup">False</property>
+-			      <property name="justify">GTK_JUSTIFY_LEFT</property>
+-			      <property name="wrap">False</property>
+-			      <property name="selectable">False</property>
+-			      <property name="xalign">0.5</property>
+-			      <property name="yalign">0.5</property>
+-			      <property name="xpad">0</property>
+-			      <property name="ypad">0</property>
+-			    </widget>
+-			    <packing>
+-			      <property name="padding">0</property>
+-			      <property name="expand">False</property>
+-			      <property name="fill">False</property>
+-			    </packing>
+-			  </child>
+-
+-			  <child>
+-			    <widget class="GtkEntry" id="txtL2Settings">
+-			      <property name="visible">True</property>
+-			      <property name="can_focus">True</property>
+-			      <property name="editable">True</property>
+-			      <property name="visibility">True</property>
+-			      <property name="max_length">0</property>
+-			      <property name="text" translatable="yes"></property>
+-			      <property name="has_frame">True</property>
+-			      <property name="invisible_char" translatable="yes">*</property>
+-			      <property name="activates_default">False</property>
+-			    </widget>
+-			    <packing>
+-			      <property name="padding">0</property>
+-			      <property name="expand">True</property>
+-			      <property name="fill">True</property>
+-			    </packing>
+-			  </child>
+-			</widget>
+-			<packing>
+-			  <property name="padding">0</property>
+-			  <property name="expand">True</property>
+-			  <property name="fill">True</property>
+-			</packing>
+-		      </child>
+-		    </widget>
+-		  </child>
+-
+-		  <child>
+-		    <widget class="GtkLabel" id="lblL2">
+-		      <property name="visible">True</property>
+-		      <property name="label" translatable="yes">L2 Cache</property>
+-		      <property name="use_underline">False</property>
+-		      <property name="use_markup">False</property>
+-		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+-		      <property name="wrap">False</property>
+-		      <property name="selectable">False</property>
+-		      <property name="xalign">0.5</property>
+-		      <property name="yalign">0.5</property>
+-		      <property name="xpad">0</property>
+-		      <property name="ypad">0</property>
+-		    </widget>
+-		    <packing>
+-		      <property name="type">label_item</property>
+-		    </packing>
+-		  </child>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">False</property>
+-		  <property name="fill">False</property>
+-		</packing>
+-	      </child>
+-	    </widget>
+-	    <packing>
+-	      <property name="tab_expand">False</property>
+-	      <property name="tab_fill">True</property>
+-	    </packing>
+-	  </child>
+-
+-	  <child>
+-	    <widget class="GtkLabel" id="lblCachegrind">
+-	      <property name="visible">True</property>
+-	      <property name="label" translatable="yes">Cachegrind</property>
+-	      <property name="use_underline">False</property>
+-	      <property name="use_markup">False</property>
+-	      <property name="justify">GTK_JUSTIFY_LEFT</property>
+-	      <property name="wrap">False</property>
+-	      <property name="selectable">False</property>
+-	      <property name="xalign">0.5</property>
+-	      <property name="yalign">0.5</property>
+-	      <property name="xpad">0</property>
+-	      <property name="ypad">0</property>
+-	    </widget>
+-	    <packing>
+-	      <property name="type">tab</property>
+-	    </packing>
+-	  </child>
+-
+-	  <child>
+-	    <placeholder/>
+-	  </child>
+-
+-	  <child>
+-	    <widget class="GtkLabel" id="lblAddrCheck">
+-	      <property name="visible">True</property>
+-	      <property name="label" translatable="yes">AddrCheck</property>
+-	      <property name="use_underline">False</property>
+-	      <property name="use_markup">False</property>
+-	      <property name="justify">GTK_JUSTIFY_LEFT</property>
+-	      <property name="wrap">False</property>
+-	      <property name="selectable">False</property>
+-	      <property name="xalign">0.5</property>
+-	      <property name="yalign">0.5</property>
+-	      <property name="xpad">0</property>
+-	      <property name="ypad">0</property>
+-	    </widget>
+-	    <packing>
+-	      <property name="type">tab</property>
+-	    </packing>
+-	  </child>
+-
+-	  <child>
+-	    <widget class="GtkVBox" id="vboxHelgrind">
+-	      <property name="border_width">6</property>
+-	      <property name="visible">True</property>
+-	      <property name="homogeneous">False</property>
+-	      <property name="spacing">6</property>
+-
+-	      <child>
+-		<widget class="GtkCheckButton" id="chkPrivateStacks">
+-		  <property name="visible">True</property>
+-		  <property name="can_focus">True</property>
+-		  <property name="label" translatable="yes">Assume thread stacks are used privately</property>
+-		  <property name="use_underline">True</property>
+-		  <property name="relief">GTK_RELIEF_NORMAL</property>
+-		  <property name="active">False</property>
+-		  <property name="inconsistent">False</property>
+-		  <property name="draw_indicator">True</property>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">False</property>
+-		  <property name="fill">False</property>
+-		</packing>
+-	      </child>
+-
+-	      <child>
+-		<widget class="GtkHBox" id="hboxShowLastAccess">
+-		  <property name="visible">True</property>
+-		  <property name="homogeneous">False</property>
+-		  <property name="spacing">6</property>
+-
+-		  <child>
+-		    <widget class="GtkLabel" id="lblShowLastAccess">
+-		      <property name="visible">True</property>
+-		      <property name="label" translatable="yes">Show location of last word access on error:</property>
+-		      <property name="use_underline">False</property>
+-		      <property name="use_markup">False</property>
+-		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+-		      <property name="wrap">False</property>
+-		      <property name="selectable">False</property>
+-		      <property name="xalign">0.5</property>
+-		      <property name="yalign">0.5</property>
+-		      <property name="xpad">0</property>
+-		      <property name="ypad">0</property>
+-		    </widget>
+-		    <packing>
+-		      <property name="padding">0</property>
+-		      <property name="expand">False</property>
+-		      <property name="fill">False</property>
+-		    </packing>
+-		  </child>
+-
+-		  <child>
+-		    <widget class="GtkOptionMenu" id="optShowLastAccess">
+-		      <property name="visible">True</property>
+-		      <property name="can_focus">True</property>
+-		      <property name="history">-1</property>
+-
+-		      <child>
+-			<widget class="GtkMenu" id="mnuShowLastAccess">
+-			  <child>
+-			    <widget class="GtkMenuItem" id="no">
+-			      <property name="visible">True</property>
+-			      <property name="label" translatable="yes">no</property>
+-			      <property name="use_underline">True</property>
+-			      <signal name="activate" handler="on_no_activate" last_modification_time="Sun, 13 Apr 2003 23:02:25 GMT"/>
+-			    </widget>
+-			  </child>
+-
+-			  <child>
+-			    <widget class="GtkMenuItem" id="some">
+-			      <property name="visible">True</property>
+-			      <property name="label" translatable="yes">some</property>
+-			      <property name="use_underline">True</property>
+-			      <signal name="activate" handler="on_some_activate" last_modification_time="Sun, 13 Apr 2003 23:02:25 GMT"/>
+-			    </widget>
+-			  </child>
+-
+-			  <child>
+-			    <widget class="GtkMenuItem" id="all">
+-			      <property name="visible">True</property>
+-			      <property name="label" translatable="yes">all</property>
+-			      <property name="use_underline">True</property>
+-			      <signal name="activate" handler="on_all_activate" last_modification_time="Sun, 13 Apr 2003 23:02:25 GMT"/>
+-			    </widget>
+-			  </child>
+-			</widget>
+-		      </child>
+-		    </widget>
+-		    <packing>
+-		      <property name="padding">0</property>
+-		      <property name="expand">False</property>
+-		      <property name="fill">False</property>
+-		    </packing>
+-		  </child>
+-		</widget>
+-		<packing>
+-		  <property name="padding">0</property>
+-		  <property name="expand">False</property>
+-		  <property name="fill">False</property>
+-		</packing>
+-	      </child>
+-	    </widget>
+-	    <packing>
+-	      <property name="tab_expand">False</property>
+-	      <property name="tab_fill">True</property>
+-	      <property name="menu_label" translatable="yes"></property>
+-	    </packing>
+-	  </child>
+-
+-	  <child>
+-	    <widget class="GtkLabel" id="lblHelgrind">
+-	      <property name="visible">True</property>
+-	      <property name="label" translatable="yes">Helgrind</property>
+-	      <property name="use_underline">False</property>
+-	      <property name="use_markup">False</property>
+-	      <property name="justify">GTK_JUSTIFY_LEFT</property>
+-	      <property name="wrap">False</property>
+-	      <property name="selectable">False</property>
+-	      <property name="xalign">0.5</property>
+-	      <property name="yalign">0.5</property>
+-	      <property name="xpad">0</property>
+-	      <property name="ypad">0</property>
+-	    </widget>
+-	    <packing>
+-	      <property name="type">tab</property>
+-	    </packing>
+-	  </child>
+-	</widget>
+-	<packing>
+-	  <property name="padding">0</property>
+-	  <property name="expand">True</property>
+-	  <property name="fill">True</property>
+-	</packing>
+-      </child>
+-    </widget>
+-  </child>
+-</widget>
+-
+-</glade-interface>
+diff --git a/alleyoop.gladep b/alleyoop.gladep
+deleted file mode 100644
+index 7012234..0000000
+--- a/alleyoop.gladep
++++ /dev/null
+@@ -1,7 +0,0 @@
+-<?xml version="1.0" standalone="no"?> <!--*- mode: xml -*-->
+-<!DOCTYPE glade-project SYSTEM "http://glade.gnome.org/glade-project-2.0.dtd">
+-
+-<glade-project>
+-  <name></name>
+-  <program_name></program_name>
+-</glade-project>
+diff --git a/autogen.sh b/autogen.sh
+index e4665ee..9dd30e3 100755
+--- a/autogen.sh
++++ b/autogen.sh
+@@ -5,9 +5,8 @@ srcdir=`dirname $0`
+ test -z "$srcdir" && srcdir=.
+ 
+ PKG_NAME="Alleyoop"
+-REQUIRED_AUTOMAKE_VERSION=1.6
+ 
+-(test -f $srcdir/configure.in \
++(test -f $srcdir/configure.ac \
+   && test -f $srcdir/ChangeLog \
+   && test -d $srcdir/src) || {
+     echo -n "**Error**: Directory "\`$srcdir\'" does not look like the"
+@@ -16,7 +15,7 @@ REQUIRED_AUTOMAKE_VERSION=1.6
+ }
+ 
+ which gnome-autogen.sh || {
+-    echo "You need to install gnome-common from the GNOME CVS"
++    echo "You need to install gnome-common package."
+     exit 1
+ }
+ 
+diff --git a/configure.in b/configure.ac
+similarity index 81%
+rename from configure.in
+rename to configure.ac
+index f3714c5..ffe2ada 100644
+--- a/configure.in
++++ b/configure.ac
+@@ -1,26 +1,32 @@
+ dnl Process this file with autoconf to produce a configure script.
++AC_PREREQ([2.63])
++AC_INIT([alleyoop],[0.9.8])
+ 
+-AC_INIT(configure.in)
+-AM_INIT_AUTOMAKE(alleyoop, 0.9.8)
+-AM_MAINTAINER_MODE
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADER([config.h])
++AC_CONFIG_SRCDIR([configure.ac])
++AC_CONFIG_MACRO_DIR([m4])
+ 
+ AC_CANONICAL_HOST
+-AC_ISC_POSIX
+-AC_PROG_CC
+-AM_PROG_CC_STDC
+-AC_HEADER_STDC
+ AC_ARG_PROGRAM
++
++AM_INIT_AUTOMAKE([1.10])
++AM_MAINTAINER_MODE([enable])
++
++m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
++
++# Check for build tools
++AC_PROG_CC
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+ AC_PROG_MAKE_SET
+ 
++# Check for i18n tools
++IT_PROG_INTLTOOL([0.40.0])
+ GETTEXT_PACKAGE=alleyoop
+ AC_SUBST(GETTEXT_PACKAGE)
+ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE",[Package name for gettext])
+ 
+ AM_GLIB_GNU_GETTEXT
+-IT_PROG_INTLTOOL([0.35.0])
+ 
+ dnl look for the valgrind program
+ AC_PATH_PROG(VALGRIND, valgrind, not-found, /usr/bin $PATH)
+@@ -65,9 +71,9 @@ fi
+ 
+ AM_GCONF_SOURCE_2
+ 
+-AC_ARG_ENABLE(deprecated, AC_HELP_STRING([--disable-deprecated], [Disable the usage of deprecated Gtk/GNOME widgets]), , enable_deprecated="yes")
++AC_ARG_ENABLE(deprecated, AC_HELP_STRING([--disable-deprecated], [Disable the usage of deprecated Gtk widgets]), , enable_deprecated="yes")
+ if test "x$enable_deprecated" = "xno"; then
+-  DISABLE_DEPRECATED="-DG_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGNOME_DISABLE_DEPRECATED"
++  DISABLE_DEPRECATED="-DG_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED"
+ else
+   DISABLE_DEPRECATED=""
+ fi
+@@ -78,15 +84,18 @@ if test "x$enable_vgstrpool" = "xyes"; then
+   AC_DEFINE(ENABLE_STRPOOL,1,[Enable the use of vgstrpool.c (an attempt at keeping memory usage down).])
+ fi
+ 
+-PKG_CHECK_MODULES(GNOME, glib-2.0 >= 2.14 gtk+-2.0 libglade-2.0 libgnomeui-2.0 gconf-2.0)
+-AC_SUBST(GNOME_CFLAGS)
+-AC_SUBST(GNOME_LIBS)
++PKG_CHECK_MODULES(ALLEYOOP, glib-2.0 >= 2.14 gtk+-2.0 >= 2.14 gconf-2.0)
++AC_SUBST(ALLEYOOP_CFLAGS)
++AC_SUBST(ALLEYOOP_LIBS)
+ 
+ CFLAGS="$CFLAGS -fno-strict-aliasing"
+ AC_SUBST(CFLAGS)
+ 
+-AC_OUTPUT([
++AC_CONFIG_FILES([
+ Makefile
+ src/Makefile
+ po/Makefile.in
++m4/Makefile
+ ])
++
++AC_OUTPUT
+diff --git a/m4/Makefile.am b/m4/Makefile.am
+new file mode 100644
+index 0000000..af864e3
+--- /dev/null
++++ b/m4/Makefile.am
+@@ -0,0 +1 @@
++EXTRA_DIST = $(wildcard *.m4)
+diff --git a/m4/codeset.m4 b/m4/codeset.m4
+new file mode 100644
+index 0000000..a53c042
+--- /dev/null
++++ b/m4/codeset.m4
+@@ -0,0 +1,21 @@
++# codeset.m4 serial 4 (gettext-0.18)
++dnl Copyright (C) 2000-2002, 2006, 2008-2010 Free Software Foundation, Inc.
++dnl This file is free software; the Free Software Foundation
++dnl gives unlimited permission to copy and/or distribute it,
++dnl with or without modifications, as long as this notice is preserved.
++
++dnl From Bruno Haible.
++
++AC_DEFUN([AM_LANGINFO_CODESET],
++[
++  AC_CACHE_CHECK([for nl_langinfo and CODESET], [am_cv_langinfo_codeset],
++    [AC_TRY_LINK([#include <langinfo.h>],
++      [char* cs = nl_langinfo(CODESET); return !cs;],
++      [am_cv_langinfo_codeset=yes],
++      [am_cv_langinfo_codeset=no])
++    ])
++  if test $am_cv_langinfo_codeset = yes; then
++    AC_DEFINE([HAVE_LANGINFO_CODESET], [1],
++      [Define if you have <langinfo.h> and nl_langinfo(CODESET).])
++  fi
++])
+diff --git a/m4/gettext.m4 b/m4/gettext.m4
+new file mode 100644
+index 0000000..f84e6a5
+--- /dev/null
++++ b/m4/gettext.m4
+@@ -0,0 +1,383 @@
++# gettext.m4 serial 63 (gettext-0.18)
++dnl Copyright (C) 1995-2010 Free Software Foundation, Inc.
++dnl This file is free software; the Free Software Foundation
++dnl gives unlimited permission to copy and/or distribute it,
++dnl with or without modifications, as long as this notice is preserved.
++dnl
++dnl This file can can be used in projects which are not available under
++dnl the GNU General Public License or the GNU Library General Public
++dnl License but which still want to provide support for the GNU gettext
++dnl functionality.
++dnl Please note that the actual code of the GNU gettext library is covered
++dnl by the GNU Library General Public License, and the rest of the GNU
++dnl gettext package package is covered by the GNU General Public License.
++dnl They are *not* in the public domain.
++
++dnl Authors:
++dnl   Ulrich Drepper <drepper@cygnus.com>, 1995-2000.
++dnl   Bruno Haible <haible@clisp.cons.org>, 2000-2006, 2008-2010.
++
++dnl Macro to add for using GNU gettext.
++
++dnl Usage: AM_GNU_GETTEXT([INTLSYMBOL], [NEEDSYMBOL], [INTLDIR]).
++dnl INTLSYMBOL can be one of 'external', 'no-libtool', 'use-libtool'. The
++dnl    default (if it is not specified or empty) is 'no-libtool'.
++dnl    INTLSYMBOL should be 'external' for packages with no intl directory,
++dnl    and 'no-libtool' or 'use-libtool' for packages with an intl directory.
++dnl    If INTLSYMBOL is 'use-libtool', then a libtool library
++dnl    $(top_builddir)/intl/libintl.la will be created (shared and/or static,
++dnl    depending on --{enable,disable}-{shared,static} and on the presence of
++dnl    AM-DISABLE-SHARED). If INTLSYMBOL is 'no-libtool', a static library
++dnl    $(top_builddir)/intl/libintl.a will be created.
++dnl If NEEDSYMBOL is specified and is 'need-ngettext', then GNU gettext
++dnl    implementations (in libc or libintl) without the ngettext() function
++dnl    will be ignored.  If NEEDSYMBOL is specified and is
++dnl    'need-formatstring-macros', then GNU gettext implementations that don't
++dnl    support the ISO C 99 <inttypes.h> formatstring macros will be ignored.
++dnl INTLDIR is used to find the intl libraries.  If empty,
++dnl    the value `$(top_builddir)/intl/' is used.
++dnl
++dnl The result of the configuration is one of three cases:
++dnl 1) GNU gettext, as included in the intl subdirectory, will be compiled
++dnl    and used.
++dnl    Catalog format: GNU --> install in $(datadir)
++dnl    Catalog extension: .mo after installation, .gmo in source tree
++dnl 2) GNU gettext has been found in the system's C library.
++dnl    Catalog format: GNU --> install in $(datadir)
++dnl    Catalog extension: .mo after installation, .gmo in source tree
++dnl 3) No internationalization, always use English msgid.
++dnl    Catalog format: none
++dnl    Catalog extension: none
++dnl If INTLSYMBOL is 'external', only cases 2 and 3 can occur.
++dnl The use of .gmo is historical (it was needed to avoid overwriting the
++dnl GNU format catalogs when building on a platform with an X/Open gettext),
++dnl but we keep it in order not to force irrelevant filename changes on the
++dnl maintainers.
++dnl
++AC_DEFUN([AM_GNU_GETTEXT],
++[
++  dnl Argument checking.
++  ifelse([$1], [], , [ifelse([$1], [external], , [ifelse([$1], [no-libtool], , [ifelse([$1], [use-libtool], ,
++    [errprint([ERROR: invalid first argument to AM_GNU_GETTEXT
++])])])])])
++  ifelse(ifelse([$1], [], [old])[]ifelse([$1], [no-libtool], [old]), [old],
++    [AC_DIAGNOSE([obsolete], [Use of AM_GNU_GETTEXT without [external] argument is deprecated.])])
++  ifelse([$2], [], , [ifelse([$2], [need-ngettext], , [ifelse([$2], [need-formatstring-macros], ,
++    [errprint([ERROR: invalid second argument to AM_GNU_GETTEXT
++])])])])
++  define([gt_included_intl],
++    ifelse([$1], [external],
++      ifdef([AM_GNU_GETTEXT_][INTL_SUBDIR], [yes], [no]),
++      [yes]))
++  define([gt_libtool_suffix_prefix], ifelse([$1], [use-libtool], [l], []))
++  gt_NEEDS_INIT
++  AM_GNU_GETTEXT_NEED([$2])
++
++  AC_REQUIRE([AM_PO_SUBDIRS])dnl
++  ifelse(gt_included_intl, yes, [
++    AC_REQUIRE([AM_INTL_SUBDIR])dnl
++  ])
++
++  dnl Prerequisites of AC_LIB_LINKFLAGS_BODY.
++  AC_REQUIRE([AC_LIB_PREPARE_PREFIX])
++  AC_REQUIRE([AC_LIB_RPATH])
++
++  dnl Sometimes libintl requires libiconv, so first search for libiconv.
++  dnl Ideally we would do this search only after the
++  dnl      if test "$USE_NLS" = "yes"; then
++  dnl        if { eval "gt_val=\$$gt_func_gnugettext_libc"; test "$gt_val" != "yes"; }; then
++  dnl tests. But if configure.in invokes AM_ICONV after AM_GNU_GETTEXT
++  dnl the configure script would need to contain the same shell code
++  dnl again, outside any 'if'. There are two solutions:
++  dnl - Invoke AM_ICONV_LINKFLAGS_BODY here, outside any 'if'.
++  dnl - Control the expansions in more detail using AC_PROVIDE_IFELSE.
++  dnl Since AC_PROVIDE_IFELSE is only in autoconf >= 2.52 and not
++  dnl documented, we avoid it.
++  ifelse(gt_included_intl, yes, , [
++    AC_REQUIRE([AM_ICONV_LINKFLAGS_BODY])
++  ])
++
++  dnl Sometimes, on MacOS X, libintl requires linking with CoreFoundation.
++  gt_INTL_MACOSX
++
++  dnl Set USE_NLS.
++  AC_REQUIRE([AM_NLS])
++
++  ifelse(gt_included_intl, yes, [
++    BUILD_INCLUDED_LIBINTL=no
++    USE_INCLUDED_LIBINTL=no
++  ])
++  LIBINTL=
++  LTLIBINTL=
++  POSUB=
++
++  dnl Add a version number to the cache macros.
++  case " $gt_needs " in
++    *" need-formatstring-macros "*) gt_api_version=3 ;;
++    *" need-ngettext "*) gt_api_version=2 ;;
++    *) gt_api_version=1 ;;
++  esac
++  gt_func_gnugettext_libc="gt_cv_func_gnugettext${gt_api_version}_libc"
++  gt_func_gnugettext_libintl="gt_cv_func_gnugettext${gt_api_version}_libintl"
++
++  dnl If we use NLS figure out what method
++  if test "$USE_NLS" = "yes"; then
++    gt_use_preinstalled_gnugettext=no
++    ifelse(gt_included_intl, yes, [
++      AC_MSG_CHECKING([whether included gettext is requested])
++      AC_ARG_WITH([included-gettext],
++        [  --with-included-gettext use the GNU gettext library included here],
++        nls_cv_force_use_gnu_gettext=$withval,
++        nls_cv_force_use_gnu_gettext=no)
++      AC_MSG_RESULT([$nls_cv_force_use_gnu_gettext])
++
++      nls_cv_use_gnu_gettext="$nls_cv_force_use_gnu_gettext"
++      if test "$nls_cv_force_use_gnu_gettext" != "yes"; then
++    ])
++        dnl User does not insist on using GNU NLS library.  Figure out what
++        dnl to use.  If GNU gettext is available we use this.  Else we have
++        dnl to fall back to GNU NLS library.
++
++        if test $gt_api_version -ge 3; then
++          gt_revision_test_code='
++#ifndef __GNU_GETTEXT_SUPPORTED_REVISION
++#define __GNU_GETTEXT_SUPPORTED_REVISION(major) ((major) == 0 ? 0 : -1)
++#endif
++changequote(,)dnl
++typedef int array [2 * (__GNU_GETTEXT_SUPPORTED_REVISION(0) >= 1) - 1];
++changequote([,])dnl
++'
++        else
++          gt_revision_test_code=
++        fi
++        if test $gt_api_version -ge 2; then
++          gt_expression_test_code=' + * ngettext ("", "", 0)'
++        else
++          gt_expression_test_code=
++        fi
++
++        AC_CACHE_CHECK([for GNU gettext in libc], [$gt_func_gnugettext_libc],
++         [AC_TRY_LINK([#include <libintl.h>
++$gt_revision_test_code
++extern int _nl_msg_cat_cntr;
++extern int *_nl_domain_bindings;],
++            [bindtextdomain ("", "");
++return * gettext ("")$gt_expression_test_code + _nl_msg_cat_cntr + *_nl_domain_bindings],
++            [eval "$gt_func_gnugettext_libc=yes"],
++            [eval "$gt_func_gnugettext_libc=no"])])
++
++        if { eval "gt_val=\$$gt_func_gnugettext_libc"; test "$gt_val" != "yes"; }; then
++          dnl Sometimes libintl requires libiconv, so first search for libiconv.
++          ifelse(gt_included_intl, yes, , [
++            AM_ICONV_LINK
++          ])
++          dnl Search for libintl and define LIBINTL, LTLIBINTL and INCINTL
++          dnl accordingly. Don't use AC_LIB_LINKFLAGS_BODY([intl],[iconv])
++          dnl because that would add "-liconv" to LIBINTL and LTLIBINTL
++          dnl even if libiconv doesn't exist.
++          AC_LIB_LINKFLAGS_BODY([intl])
++          AC_CACHE_CHECK([for GNU gettext in libintl],
++            [$gt_func_gnugettext_libintl],
++           [gt_save_CPPFLAGS="$CPPFLAGS"
++            CPPFLAGS="$CPPFLAGS $INCINTL"
++            gt_save_LIBS="$LIBS"
++            LIBS="$LIBS $LIBINTL"
++            dnl Now see whether libintl exists and does not depend on libiconv.
++            AC_TRY_LINK([#include <libintl.h>
++$gt_revision_test_code
++extern int _nl_msg_cat_cntr;
++extern
++#ifdef __cplusplus
++"C"
++#endif
++const char *_nl_expand_alias (const char *);],
++              [bindtextdomain ("", "");
++return * gettext ("")$gt_expression_test_code + _nl_msg_cat_cntr + *_nl_expand_alias ("")],
++              [eval "$gt_func_gnugettext_libintl=yes"],
++              [eval "$gt_func_gnugettext_libintl=no"])
++            dnl Now see whether libintl exists and depends on libiconv.
++            if { eval "gt_val=\$$gt_func_gnugettext_libintl"; test "$gt_val" != yes; } && test -n "$LIBICONV"; then
++              LIBS="$LIBS $LIBICONV"
++              AC_TRY_LINK([#include <libintl.h>
++$gt_revision_test_code
++extern int _nl_msg_cat_cntr;
++extern
++#ifdef __cplusplus
++"C"
++#endif
++const char *_nl_expand_alias (const char *);],
++                [bindtextdomain ("", "");
++return * gettext ("")$gt_expression_test_code + _nl_msg_cat_cntr + *_nl_expand_alias ("")],
++               [LIBINTL="$LIBINTL $LIBICONV"
++                LTLIBINTL="$LTLIBINTL $LTLIBICONV"
++                eval "$gt_func_gnugettext_libintl=yes"
++               ])
++            fi
++            CPPFLAGS="$gt_save_CPPFLAGS"
++            LIBS="$gt_save_LIBS"])
++        fi
++
++        dnl If an already present or preinstalled GNU gettext() is found,
++        dnl use it.  But if this macro is used in GNU gettext, and GNU
++        dnl gettext is already preinstalled in libintl, we update this
++        dnl libintl.  (Cf. the install rule in intl/Makefile.in.)
++        if { eval "gt_val=\$$gt_func_gnugettext_libc"; test "$gt_val" = "yes"; } \
++           || { { eval "gt_val=\$$gt_func_gnugettext_libintl"; test "$gt_val" = "yes"; } \
++                && test "$PACKAGE" != gettext-runtime \
++                && test "$PACKAGE" != gettext-tools; }; then
++          gt_use_preinstalled_gnugettext=yes
++        else
++          dnl Reset the values set by searching for libintl.
++          LIBINTL=
++          LTLIBINTL=
++          INCINTL=
++        fi
++
++    ifelse(gt_included_intl, yes, [
++        if test "$gt_use_preinstalled_gnugettext" != "yes"; then
++          dnl GNU gettext is not found in the C library.
++          dnl Fall back on included GNU gettext library.
++          nls_cv_use_gnu_gettext=yes
++        fi
++      fi
++
++      if test "$nls_cv_use_gnu_gettext" = "yes"; then
++        dnl Mark actions used to generate GNU NLS library.
++        BUILD_INCLUDED_LIBINTL=yes
++        USE_INCLUDED_LIBINTL=yes
++        LIBINTL="ifelse([$3],[],\${top_builddir}/intl,[$3])/libintl.[]gt_libtool_suffix_prefix[]a $LIBICONV $LIBTHREAD"
++        LTLIBINTL="ifelse([$3],[],\${top_builddir}/intl,[$3])/libintl.[]gt_libtool_suffix_prefix[]a $LTLIBICONV $LTLIBTHREAD"
++        LIBS=`echo " $LIBS " | sed -e 's/ -lintl / /' -e 's/^ //' -e 's/ $//'`
++      fi
++
++      CATOBJEXT=
++      if test "$gt_use_preinstalled_gnugettext" = "yes" \
++         || test "$nls_cv_use_gnu_gettext" = "yes"; then
++        dnl Mark actions to use GNU gettext tools.
++        CATOBJEXT=.gmo
++      fi
++    ])
++
++    if test -n "$INTL_MACOSX_LIBS"; then
++      if test "$gt_use_preinstalled_gnugettext" = "yes" \
++         || test "$nls_cv_use_gnu_gettext" = "yes"; then
++        dnl Some extra flags are needed during linking.
++        LIBINTL="$LIBINTL $INTL_MACOSX_LIBS"
++        LTLIBINTL="$LTLIBINTL $INTL_MACOSX_LIBS"
++      fi
++    fi
++
++    if test "$gt_use_preinstalled_gnugettext" = "yes" \
++       || test "$nls_cv_use_gnu_gettext" = "yes"; then
++      AC_DEFINE([ENABLE_NLS], [1],
++        [Define to 1 if translation of program messages to the user's native language
++   is requested.])
++    else
++      USE_NLS=no
++    fi
++  fi
++
++  AC_MSG_CHECKING([whether to use NLS])
++  AC_MSG_RESULT([$USE_NLS])
++  if test "$USE_NLS" = "yes"; then
++    AC_MSG_CHECKING([where the gettext function comes from])
++    if test "$gt_use_preinstalled_gnugettext" = "yes"; then
++      if { eval "gt_val=\$$gt_func_gnugettext_libintl"; test "$gt_val" = "yes"; }; then
++        gt_source="external libintl"
++      else
++        gt_source="libc"
++      fi
++    else
++      gt_source="included intl directory"
++    fi
++    AC_MSG_RESULT([$gt_source])
++  fi
++
++  if test "$USE_NLS" = "yes"; then
++
++    if test "$gt_use_preinstalled_gnugettext" = "yes"; then
++      if { eval "gt_val=\$$gt_func_gnugettext_libintl"; test "$gt_val" = "yes"; }; then
++        AC_MSG_CHECKING([how to link with libintl])
++        AC_MSG_RESULT([$LIBINTL])
++        AC_LIB_APPENDTOVAR([CPPFLAGS], [$INCINTL])
++      fi
++
++      dnl For backward compatibility. Some packages may be using this.
++      AC_DEFINE([HAVE_GETTEXT], [1],
++       [Define if the GNU gettext() function is already present or preinstalled.])
++      AC_DEFINE([HAVE_DCGETTEXT], [1],
++       [Define if the GNU dcgettext() function is already present or preinstalled.])
++    fi
++
++    dnl We need to process the po/ directory.
++    POSUB=po
++  fi
++
++  ifelse(gt_included_intl, yes, [
++    dnl If this is used in GNU gettext we have to set BUILD_INCLUDED_LIBINTL
++    dnl to 'yes' because some of the testsuite requires it.
++    if test "$PACKAGE" = gettext-runtime || test "$PACKAGE" = gettext-tools; then
++      BUILD_INCLUDED_LIBINTL=yes
++    fi
++
++    dnl Make all variables we use known to autoconf.
++    AC_SUBST([BUILD_INCLUDED_LIBINTL])
++    AC_SUBST([USE_INCLUDED_LIBINTL])
++    AC_SUBST([CATOBJEXT])
++
++    dnl For backward compatibility. Some configure.ins may be using this.
++    nls_cv_header_intl=
++    nls_cv_header_libgt=
++
++    dnl For backward compatibility. Some Makefiles may be using this.
++    DATADIRNAME=share
++    AC_SUBST([DATADIRNAME])
++
++    dnl For backward compatibility. Some Makefiles may be using this.
++    INSTOBJEXT=.mo
++    AC_SUBST([INSTOBJEXT])
++
++    dnl For backward compatibility. Some Makefiles may be using this.
++    GENCAT=gencat
++    AC_SUBST([GENCAT])
++
++    dnl For backward compatibility. Some Makefiles may be using this.
++    INTLOBJS=
++    if test "$USE_INCLUDED_LIBINTL" = yes; then
++      INTLOBJS="\$(GETTOBJS)"
++    fi
++    AC_SUBST([INTLOBJS])
++
++    dnl Enable libtool support if the surrounding package wishes it.
++    INTL_LIBTOOL_SUFFIX_PREFIX=gt_libtool_suffix_prefix
++    AC_SUBST([INTL_LIBTOOL_SUFFIX_PREFIX])
++  ])
++
++  dnl For backward compatibility. Some Makefiles may be using this.
++  INTLLIBS="$LIBINTL"
++  AC_SUBST([INTLLIBS])
++
++  dnl Make all documented variables known to autoconf.
++  AC_SUBST([LIBINTL])
++  AC_SUBST([LTLIBINTL])
++  AC_SUBST([POSUB])
++])
++
++
++dnl gt_NEEDS_INIT ensures that the gt_needs variable is initialized.
++m4_define([gt_NEEDS_INIT],
++[
++  m4_divert_text([DEFAULTS], [gt_needs=])
++  m4_define([gt_NEEDS_INIT], [])
++])
++
++
++dnl Usage: AM_GNU_GETTEXT_NEED([NEEDSYMBOL])
++AC_DEFUN([AM_GNU_GETTEXT_NEED],
++[
++  m4_divert_text([INIT_PREPARE], [gt_needs="$gt_needs $1"])
++])
++
++
++dnl Usage: AM_GNU_GETTEXT_VERSION([gettext-version])
++AC_DEFUN([AM_GNU_GETTEXT_VERSION], [])
+diff --git a/m4/glibc21.m4 b/m4/glibc21.m4
+new file mode 100644
+index 0000000..68ada9d
+--- /dev/null
++++ b/m4/glibc21.m4
+@@ -0,0 +1,30 @@
++# glibc21.m4 serial 4
++dnl Copyright (C) 2000-2002, 2004, 2008-2010 Free Software Foundation, Inc.
++dnl This file is free software; the Free Software Foundation
++dnl gives unlimited permission to copy and/or distribute it,
++dnl with or without modifications, as long as this notice is preserved.
++
++# Test for the GNU C Library, version 2.1 or newer.
++# From Bruno Haible.
++
++AC_DEFUN([gl_GLIBC21],
++  [
++    AC_CACHE_CHECK([whether we are using the GNU C Library 2.1 or newer],
++      [ac_cv_gnu_library_2_1],
++      [AC_EGREP_CPP([Lucky GNU user],
++        [
++#include <features.h>
++#ifdef __GNU_LIBRARY__
++ #if (__GLIBC__ == 2 && __GLIBC_MINOR__ >= 1) || (__GLIBC__ > 2)
++  Lucky GNU user
++ #endif
++#endif
++        ],
++        [ac_cv_gnu_library_2_1=yes],
++        [ac_cv_gnu_library_2_1=no])
++      ]
++    )
++    AC_SUBST([GLIBC21])
++    GLIBC21="$ac_cv_gnu_library_2_1"
++  ]
++)
+diff --git a/m4/iconv.m4 b/m4/iconv.m4
+new file mode 100644
+index 0000000..e2041b9
+--- /dev/null
++++ b/m4/iconv.m4
+@@ -0,0 +1,214 @@
++# iconv.m4 serial 11 (gettext-0.18.1)
++dnl Copyright (C) 2000-2002, 2007-2010 Free Software Foundation, Inc.
++dnl This file is free software; the Free Software Foundation
++dnl gives unlimited permission to copy and/or distribute it,
++dnl with or without modifications, as long as this notice is preserved.
++
++dnl From Bruno Haible.
++
++AC_DEFUN([AM_ICONV_LINKFLAGS_BODY],
++[
++  dnl Prerequisites of AC_LIB_LINKFLAGS_BODY.
++  AC_REQUIRE([AC_LIB_PREPARE_PREFIX])
++  AC_REQUIRE([AC_LIB_RPATH])
++
++  dnl Search for libiconv and define LIBICONV, LTLIBICONV and INCICONV
++  dnl accordingly.
++  AC_LIB_LINKFLAGS_BODY([iconv])
++])
++
++AC_DEFUN([AM_ICONV_LINK],
++[
++  dnl Some systems have iconv in libc, some have it in libiconv (OSF/1 and
++  dnl those with the standalone portable GNU libiconv installed).
++  AC_REQUIRE([AC_CANONICAL_HOST]) dnl for cross-compiles
++
++  dnl Search for libiconv and define LIBICONV, LTLIBICONV and INCICONV
++  dnl accordingly.
++  AC_REQUIRE([AM_ICONV_LINKFLAGS_BODY])
++
++  dnl Add $INCICONV to CPPFLAGS before performing the following checks,
++  dnl because if the user has installed libiconv and not disabled its use
++  dnl via --without-libiconv-prefix, he wants to use it. The first
++  dnl AC_TRY_LINK will then fail, the second AC_TRY_LINK will succeed.
++  am_save_CPPFLAGS="$CPPFLAGS"
++  AC_LIB_APPENDTOVAR([CPPFLAGS], [$INCICONV])
++
++  AC_CACHE_CHECK([for iconv], [am_cv_func_iconv], [
++    am_cv_func_iconv="no, consider installing GNU libiconv"
++    am_cv_lib_iconv=no
++    AC_TRY_LINK([#include <stdlib.h>
++#include <iconv.h>],
++      [iconv_t cd = iconv_open("","");
++       iconv(cd,NULL,NULL,NULL,NULL);
++       iconv_close(cd);],
++      [am_cv_func_iconv=yes])
++    if test "$am_cv_func_iconv" != yes; then
++      am_save_LIBS="$LIBS"
++      LIBS="$LIBS $LIBICONV"
++      AC_TRY_LINK([#include <stdlib.h>
++#include <iconv.h>],
++        [iconv_t cd = iconv_open("","");
++         iconv(cd,NULL,NULL,NULL,NULL);
++         iconv_close(cd);],
++        [am_cv_lib_iconv=yes]
++        [am_cv_func_iconv=yes])
++      LIBS="$am_save_LIBS"
++    fi
++  ])
++  if test "$am_cv_func_iconv" = yes; then
++    AC_CACHE_CHECK([for working iconv], [am_cv_func_iconv_works], [
++      dnl This tests against bugs in AIX 5.1, HP-UX 11.11, Solaris 10.
++      am_save_LIBS="$LIBS"
++      if test $am_cv_lib_iconv = yes; then
++        LIBS="$LIBS $LIBICONV"
++      fi
++      AC_TRY_RUN([
++#include <iconv.h>
++#include <string.h>
++int main ()
++{
++  /* Test against AIX 5.1 bug: Failures are not distinguishable from successful
++     returns.  */
++  {
++    iconv_t cd_utf8_to_88591 = iconv_open ("ISO8859-1", "UTF-8");
++    if (cd_utf8_to_88591 != (iconv_t)(-1))
++      {
++        static const char input[] = "\342\202\254"; /* EURO SIGN */
++        char buf[10];
++        const char *inptr = input;
++        size_t inbytesleft = strlen (input);
++        char *outptr = buf;
++        size_t outbytesleft = sizeof (buf);
++        size_t res = iconv (cd_utf8_to_88591,
++                            (char **) &inptr, &inbytesleft,
++                            &outptr, &outbytesleft);
++        if (res == 0)
++          return 1;
++      }
++  }
++  /* Test against Solaris 10 bug: Failures are not distinguishable from
++     successful returns.  */
++  {
++    iconv_t cd_ascii_to_88591 = iconv_open ("ISO8859-1", "646");
++    if (cd_ascii_to_88591 != (iconv_t)(-1))
++      {
++        static const char input[] = "\263";
++        char buf[10];
++        const char *inptr = input;
++        size_t inbytesleft = strlen (input);
++        char *outptr = buf;
++        size_t outbytesleft = sizeof (buf);
++        size_t res = iconv (cd_ascii_to_88591,
++                            (char **) &inptr, &inbytesleft,
++                            &outptr, &outbytesleft);
++        if (res == 0)
++          return 1;
++      }
++  }
++#if 0 /* This bug could be worked around by the caller.  */
++  /* Test against HP-UX 11.11 bug: Positive return value instead of 0.  */
++  {
++    iconv_t cd_88591_to_utf8 = iconv_open ("utf8", "iso88591");
++    if (cd_88591_to_utf8 != (iconv_t)(-1))
++      {
++        static const char input[] = "\304rger mit b\366sen B\374bchen ohne Augenma\337";
++        char buf[50];
++        const char *inptr = input;
++        size_t inbytesleft = strlen (input);
++        char *outptr = buf;
++        size_t outbytesleft = sizeof (buf);
++        size_t res = iconv (cd_88591_to_utf8,
++                            (char **) &inptr, &inbytesleft,
++                            &outptr, &outbytesleft);
++        if ((int)res > 0)
++          return 1;
++      }
++  }
++#endif
++  /* Test against HP-UX 11.11 bug: No converter from EUC-JP to UTF-8 is
++     provided.  */
++  if (/* Try standardized names.  */
++      iconv_open ("UTF-8", "EUC-JP") == (iconv_t)(-1)
++      /* Try IRIX, OSF/1 names.  */
++      && iconv_open ("UTF-8", "eucJP") == (iconv_t)(-1)
++      /* Try AIX names.  */
++      && iconv_open ("UTF-8", "IBM-eucJP") == (iconv_t)(-1)
++      /* Try HP-UX names.  */
++      && iconv_open ("utf8", "eucJP") == (iconv_t)(-1))
++    return 1;
++  return 0;
++}], [am_cv_func_iconv_works=yes], [am_cv_func_iconv_works=no],
++        [case "$host_os" in
++           aix* | hpux*) am_cv_func_iconv_works="guessing no" ;;
++           *)            am_cv_func_iconv_works="guessing yes" ;;
++         esac])
++      LIBS="$am_save_LIBS"
++    ])
++    case "$am_cv_func_iconv_works" in
++      *no) am_func_iconv=no am_cv_lib_iconv=no ;;
++      *)   am_func_iconv=yes ;;
++    esac
++  else
++    am_func_iconv=no am_cv_lib_iconv=no
++  fi
++  if test "$am_func_iconv" = yes; then
++    AC_DEFINE([HAVE_ICONV], [1],
++      [Define if you have the iconv() function and it works.])
++  fi
++  if test "$am_cv_lib_iconv" = yes; then
++    AC_MSG_CHECKING([how to link with libiconv])
++    AC_MSG_RESULT([$LIBICONV])
++  else
++    dnl If $LIBICONV didn't lead to a usable library, we don't need $INCICONV
++    dnl either.
++    CPPFLAGS="$am_save_CPPFLAGS"
++    LIBICONV=
++    LTLIBICONV=
++  fi
++  AC_SUBST([LIBICONV])
++  AC_SUBST([LTLIBICONV])
++])
++
++dnl Define AM_ICONV using AC_DEFUN_ONCE for Autoconf >= 2.64, in order to
++dnl avoid warnings like
++dnl "warning: AC_REQUIRE: `AM_ICONV' was expanded before it was required".
++dnl This is tricky because of the way 'aclocal' is implemented:
++dnl - It requires defining an auxiliary macro whose name ends in AC_DEFUN.
++dnl   Otherwise aclocal's initial scan pass would miss the macro definition.
++dnl - It requires a line break inside the AC_DEFUN_ONCE and AC_DEFUN expansions.
++dnl   Otherwise aclocal would emit many "Use of uninitialized value $1"
++dnl   warnings.
++m4_define([gl_iconv_AC_DEFUN],
++  m4_version_prereq([2.64],
++    [[AC_DEFUN_ONCE(
++        [$1], [$2])]],
++    [[AC_DEFUN(
++        [$1], [$2])]]))
++gl_iconv_AC_DEFUN([AM_ICONV],
++[
++  AM_ICONV_LINK
++  if test "$am_cv_func_iconv" = yes; then
++    AC_MSG_CHECKING([for iconv declaration])
++    AC_CACHE_VAL([am_cv_proto_iconv], [
++      AC_TRY_COMPILE([
++#include <stdlib.h>
++#include <iconv.h>
++extern
++#ifdef __cplusplus
++"C"
++#endif
++#if defined(__STDC__) || defined(__cplusplus)
++size_t iconv (iconv_t cd, char * *inbuf, size_t *inbytesleft, char * *outbuf, size_t *outbytesleft);
++#else
++size_t iconv();
++#endif
++], [], [am_cv_proto_iconv_arg1=""], [am_cv_proto_iconv_arg1="const"])
++      am_cv_proto_iconv="extern size_t iconv (iconv_t cd, $am_cv_proto_iconv_arg1 char * *inbuf, size_t *inbytesleft, char * *outbuf, size_t *outbytesleft);"])
++    am_cv_proto_iconv=`echo "[$]am_cv_proto_iconv" | tr -s ' ' | sed -e 's/( /(/'`
++    AC_MSG_RESULT([
++         $am_cv_proto_iconv])
++    AC_DEFINE_UNQUOTED([ICONV_CONST], [$am_cv_proto_iconv_arg1],
++      [Define as const if the declaration of iconv() needs const.])
++  fi
++])
+diff --git a/m4/intltool.m4 b/m4/intltool.m4
+new file mode 100644
+index 0000000..f88cd1e
+--- /dev/null
++++ b/m4/intltool.m4
+@@ -0,0 +1,215 @@
++## intltool.m4 - Configure intltool for the target system. -*-Shell-script-*-
++## Copyright (C) 2001 Eazel, Inc.
++## Author: Maciej Stachowiak <mjs@noisehavoc.org>
++##         Kenneth Christiansen <kenneth@gnu.org>
++##
++## This program is free software; you can redistribute it and/or modify
++## it under the terms of the GNU General Public License as published by
++## the Free Software Foundation; either version 2 of the License, or
++## (at your option) any later version.
++##
++## This program is distributed in the hope that it will be useful, but
++## WITHOUT ANY WARRANTY; without even the implied warranty of
++## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++## General Public License for more details.
++##
++## You should have received a copy of the GNU General Public License
++## along with this program; if not, see <http://www.gnu.org/licenses/>.
++##
++## As a special exception to the GNU General Public License, if you
++## distribute this file as part of a program that contains a
++## configuration script generated by Autoconf, you may include it under
++## the same distribution terms that you use for the rest of that program.
++
++dnl IT_PROG_INTLTOOL([MINIMUM-VERSION], [no-xml])
++# serial 40 IT_PROG_INTLTOOL
++AC_DEFUN([IT_PROG_INTLTOOL], [
++AC_PREREQ([2.50])dnl
++AC_REQUIRE([AM_NLS])dnl
++
++case "$am__api_version" in
++    1.[01234])
++	AC_MSG_ERROR([Automake 1.5 or newer is required to use intltool])
++    ;;
++    *)
++    ;;
++esac
++
++if test -n "$1"; then
++    AC_MSG_CHECKING([for intltool >= $1])
++
++    INTLTOOL_REQUIRED_VERSION_AS_INT=`echo $1 | awk -F. '{ print $ 1 * 1000 + $ 2 * 100 + $ 3; }'`
++    INTLTOOL_APPLIED_VERSION=`intltool-update --version | head -1 | cut -d" " -f3`
++    [INTLTOOL_APPLIED_VERSION_AS_INT=`echo $INTLTOOL_APPLIED_VERSION | awk -F. '{ print $ 1 * 1000 + $ 2 * 100 + $ 3; }'`
++    ]
++    AC_MSG_RESULT([$INTLTOOL_APPLIED_VERSION found])
++    test "$INTLTOOL_APPLIED_VERSION_AS_INT" -ge "$INTLTOOL_REQUIRED_VERSION_AS_INT" ||
++	AC_MSG_ERROR([Your intltool is too old.  You need intltool $1 or later.])
++fi
++
++AC_PATH_PROG(INTLTOOL_UPDATE, [intltool-update])
++AC_PATH_PROG(INTLTOOL_MERGE, [intltool-merge])
++AC_PATH_PROG(INTLTOOL_EXTRACT, [intltool-extract])
++if test -z "$INTLTOOL_UPDATE" -o -z "$INTLTOOL_MERGE" -o -z "$INTLTOOL_EXTRACT"; then
++    AC_MSG_ERROR([The intltool scripts were not found. Please install intltool.])
++fi
++
++  INTLTOOL_DESKTOP_RULE='%.desktop:   %.desktop.in   $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -d -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< [$]@' 
++INTLTOOL_DIRECTORY_RULE='%.directory: %.directory.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -d -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< [$]@' 
++     INTLTOOL_KEYS_RULE='%.keys:      %.keys.in      $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -k -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< [$]@' 
++     INTLTOOL_PROP_RULE='%.prop:      %.prop.in      $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -d -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< [$]@' 
++      INTLTOOL_OAF_RULE='%.oaf:       %.oaf.in       $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -o -p $(top_srcdir)/po $< [$]@'
++     INTLTOOL_PONG_RULE='%.pong:      %.pong.in      $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -x -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< [$]@' 
++   INTLTOOL_SERVER_RULE='%.server:    %.server.in    $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -o -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< [$]@' 
++    INTLTOOL_SHEET_RULE='%.sheet:     %.sheet.in     $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -x -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< [$]@' 
++INTLTOOL_SOUNDLIST_RULE='%.soundlist: %.soundlist.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -d -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< [$]@' 
++       INTLTOOL_UI_RULE='%.ui:        %.ui.in        $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -x -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< [$]@' 
++      INTLTOOL_XML_RULE='%.xml:       %.xml.in       $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -x -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< [$]@' 
++      INTLTOOL_XML_NOMERGE_RULE='%.xml:       %.xml.in       $(INTLTOOL_MERGE) ; LC_ALL=C $(INTLTOOL_MERGE) -x -u /tmp $< [$]@' 
++      INTLTOOL_XAM_RULE='%.xam:       %.xml.in       $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -x -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< [$]@' 
++      INTLTOOL_KBD_RULE='%.kbd:       %.kbd.in       $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -x -u -m -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< [$]@' 
++    INTLTOOL_CAVES_RULE='%.caves:     %.caves.in     $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -d -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< [$]@' 
++  INTLTOOL_SCHEMAS_RULE='%.schemas:   %.schemas.in   $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -s -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< [$]@' 
++    INTLTOOL_THEME_RULE='%.theme:     %.theme.in     $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -d -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< [$]@' 
++    INTLTOOL_SERVICE_RULE='%.service: %.service.in   $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -d -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< [$]@'
++   INTLTOOL_POLICY_RULE='%.policy:    %.policy.in    $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -x -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< [$]@'
++
++_IT_SUBST(INTLTOOL_DESKTOP_RULE)
++_IT_SUBST(INTLTOOL_DIRECTORY_RULE)
++_IT_SUBST(INTLTOOL_KEYS_RULE)
++_IT_SUBST(INTLTOOL_PROP_RULE)
++_IT_SUBST(INTLTOOL_OAF_RULE)
++_IT_SUBST(INTLTOOL_PONG_RULE)
++_IT_SUBST(INTLTOOL_SERVER_RULE)
++_IT_SUBST(INTLTOOL_SHEET_RULE)
++_IT_SUBST(INTLTOOL_SOUNDLIST_RULE)
++_IT_SUBST(INTLTOOL_UI_RULE)
++_IT_SUBST(INTLTOOL_XAM_RULE)
++_IT_SUBST(INTLTOOL_KBD_RULE)
++_IT_SUBST(INTLTOOL_XML_RULE)
++_IT_SUBST(INTLTOOL_XML_NOMERGE_RULE)
++_IT_SUBST(INTLTOOL_CAVES_RULE)
++_IT_SUBST(INTLTOOL_SCHEMAS_RULE)
++_IT_SUBST(INTLTOOL_THEME_RULE)
++_IT_SUBST(INTLTOOL_SERVICE_RULE)
++_IT_SUBST(INTLTOOL_POLICY_RULE)
++
++# Check the gettext tools to make sure they are GNU
++AC_PATH_PROG(XGETTEXT, xgettext)
++AC_PATH_PROG(MSGMERGE, msgmerge)
++AC_PATH_PROG(MSGFMT, msgfmt)
++AC_PATH_PROG(GMSGFMT, gmsgfmt, $MSGFMT)
++if test -z "$XGETTEXT" -o -z "$MSGMERGE" -o -z "$MSGFMT"; then
++    AC_MSG_ERROR([GNU gettext tools not found; required for intltool])
++fi
++xgversion="`$XGETTEXT --version|grep '(GNU ' 2> /dev/null`"
++mmversion="`$MSGMERGE --version|grep '(GNU ' 2> /dev/null`"
++mfversion="`$MSGFMT --version|grep '(GNU ' 2> /dev/null`"
++if test -z "$xgversion" -o -z "$mmversion" -o -z "$mfversion"; then
++    AC_MSG_ERROR([GNU gettext tools not found; required for intltool])
++fi
++
++AC_PATH_PROG(INTLTOOL_PERL, perl)
++if test -z "$INTLTOOL_PERL"; then
++   AC_MSG_ERROR([perl not found])
++fi
++AC_MSG_CHECKING([for perl >= 5.8.1])
++$INTLTOOL_PERL -e "use 5.8.1;" > /dev/null 2>&1
++if test $? -ne 0; then
++   AC_MSG_ERROR([perl 5.8.1 is required for intltool])
++else
++   IT_PERL_VERSION="`$INTLTOOL_PERL -e \"printf '%vd', $^V\"`"
++   AC_MSG_RESULT([$IT_PERL_VERSION])
++fi
++if test "x$2" != "xno-xml"; then
++   AC_MSG_CHECKING([for XML::Parser])
++   if `$INTLTOOL_PERL -e "require XML::Parser" 2>/dev/null`; then
++       AC_MSG_RESULT([ok])
++   else
++       AC_MSG_ERROR([XML::Parser perl module is required for intltool])
++   fi
++fi
++
++# Substitute ALL_LINGUAS so we can use it in po/Makefile
++AC_SUBST(ALL_LINGUAS)
++
++# Set DATADIRNAME correctly if it is not set yet
++# (copied from glib-gettext.m4)
++if test -z "$DATADIRNAME"; then
++  AC_LINK_IFELSE(
++    [AC_LANG_PROGRAM([[]],
++                     [[extern int _nl_msg_cat_cntr;
++                       return _nl_msg_cat_cntr]])],
++    [DATADIRNAME=share],
++    [case $host in
++    *-*-solaris*)
++    dnl On Solaris, if bind_textdomain_codeset is in libc,
++    dnl GNU format message catalog is always supported,
++    dnl since both are added to the libc all together.
++    dnl Hence, we'd like to go with DATADIRNAME=share
++    dnl in this case.
++    AC_CHECK_FUNC(bind_textdomain_codeset,
++      [DATADIRNAME=share], [DATADIRNAME=lib])
++    ;;
++    *)
++    [DATADIRNAME=lib]
++    ;;
++    esac])
++fi
++AC_SUBST(DATADIRNAME)
++
++IT_PO_SUBDIR([po])
++
++])
++
++
++# IT_PO_SUBDIR(DIRNAME)
++# ---------------------
++# All po subdirs have to be declared with this macro; the subdir "po" is
++# declared by IT_PROG_INTLTOOL.
++#
++AC_DEFUN([IT_PO_SUBDIR],
++[AC_PREREQ([2.53])dnl We use ac_top_srcdir inside AC_CONFIG_COMMANDS.
++dnl
++dnl The following CONFIG_COMMANDS should be executed at the very end
++dnl of config.status.
++AC_CONFIG_COMMANDS_PRE([
++  AC_CONFIG_COMMANDS([$1/stamp-it], [
++    if [ ! grep "^# INTLTOOL_MAKEFILE$" "$1/Makefile.in" > /dev/null ]; then
++       AC_MSG_ERROR([$1/Makefile.in.in was not created by intltoolize.])
++    fi
++    rm -f "$1/stamp-it" "$1/stamp-it.tmp" "$1/POTFILES" "$1/Makefile.tmp"
++    >"$1/stamp-it.tmp"
++    [sed '/^#/d
++	 s/^[[].*] *//
++	 /^[ 	]*$/d
++	'"s|^|	$ac_top_srcdir/|" \
++      "$srcdir/$1/POTFILES.in" | sed '$!s/$/ \\/' >"$1/POTFILES"
++    ]
++    [sed '/^POTFILES =/,/[^\\]$/ {
++		/^POTFILES =/!d
++		r $1/POTFILES
++	  }
++	 ' "$1/Makefile.in" >"$1/Makefile"]
++    rm -f "$1/Makefile.tmp"
++    mv "$1/stamp-it.tmp" "$1/stamp-it"
++  ])
++])dnl
++])
++
++# _IT_SUBST(VARIABLE)
++# -------------------
++# Abstract macro to do either _AM_SUBST_NOTMAKE or AC_SUBST
++#
++AC_DEFUN([_IT_SUBST],
++[
++AC_SUBST([$1])
++m4_ifdef([_AM_SUBST_NOTMAKE], [_AM_SUBST_NOTMAKE([$1])])
++]
++)
++
++# deprecated macros
++AU_ALIAS([AC_PROG_INTLTOOL], [IT_PROG_INTLTOOL])
++# A hint is needed for aclocal from Automake <= 1.9.4:
++# AC_DEFUN([AC_PROG_INTLTOOL], ...)
++
+diff --git a/m4/lcmessage.m4 b/m4/lcmessage.m4
+new file mode 100644
+index 0000000..1a70543
+--- /dev/null
++++ b/m4/lcmessage.m4
+@@ -0,0 +1,31 @@
++# lcmessage.m4 serial 6 (gettext-0.18)
++dnl Copyright (C) 1995-2002, 2004-2005, 2008-2010 Free Software Foundation,
++dnl Inc.
++dnl This file is free software; the Free Software Foundation
++dnl gives unlimited permission to copy and/or distribute it,
++dnl with or without modifications, as long as this notice is preserved.
++dnl
++dnl This file can can be used in projects which are not available under
++dnl the GNU General Public License or the GNU Library General Public
++dnl License but which still want to provide support for the GNU gettext
++dnl functionality.
++dnl Please note that the actual code of the GNU gettext library is covered
++dnl by the GNU Library General Public License, and the rest of the GNU
++dnl gettext package package is covered by the GNU General Public License.
++dnl They are *not* in the public domain.
++
++dnl Authors:
++dnl   Ulrich Drepper <drepper@cygnus.com>, 1995.
++
++# Check whether LC_MESSAGES is available in <locale.h>.
++
++AC_DEFUN([gt_LC_MESSAGES],
++[
++  AC_CACHE_CHECK([for LC_MESSAGES], [gt_cv_val_LC_MESSAGES],
++    [AC_TRY_LINK([#include <locale.h>], [return LC_MESSAGES],
++       [gt_cv_val_LC_MESSAGES=yes], [gt_cv_val_LC_MESSAGES=no])])
++  if test $gt_cv_val_LC_MESSAGES = yes; then
++    AC_DEFINE([HAVE_LC_MESSAGES], [1],
++      [Define if your <locale.h> file defines LC_MESSAGES.])
++  fi
++])
+diff --git a/m4/progtest.m4 b/m4/progtest.m4
+new file mode 100644
+index 0000000..2d804ac
+--- /dev/null
++++ b/m4/progtest.m4
+@@ -0,0 +1,92 @@
++# progtest.m4 serial 6 (gettext-0.18)
++dnl Copyright (C) 1996-2003, 2005, 2008-2010 Free Software Foundation, Inc.
++dnl This file is free software; the Free Software Foundation
++dnl gives unlimited permission to copy and/or distribute it,
++dnl with or without modifications, as long as this notice is preserved.
++dnl
++dnl This file can can be used in projects which are not available under
++dnl the GNU General Public License or the GNU Library General Public
++dnl License but which still want to provide support for the GNU gettext
++dnl functionality.
++dnl Please note that the actual code of the GNU gettext library is covered
++dnl by the GNU Library General Public License, and the rest of the GNU
++dnl gettext package package is covered by the GNU General Public License.
++dnl They are *not* in the public domain.
++
++dnl Authors:
++dnl   Ulrich Drepper <drepper@cygnus.com>, 1996.
++
++AC_PREREQ([2.50])
++
++# Search path for a program which passes the given test.
++
++dnl AM_PATH_PROG_WITH_TEST(VARIABLE, PROG-TO-CHECK-FOR,
++dnl   TEST-PERFORMED-ON-FOUND_PROGRAM [, VALUE-IF-NOT-FOUND [, PATH]])
++AC_DEFUN([AM_PATH_PROG_WITH_TEST],
++[
++# Prepare PATH_SEPARATOR.
++# The user is always right.
++if test "${PATH_SEPARATOR+set}" != set; then
++  echo "#! /bin/sh" >conf$$.sh
++  echo  "exit 0"   >>conf$$.sh
++  chmod +x conf$$.sh
++  if (PATH="/nonexistent;."; conf$$.sh) >/dev/null 2>&1; then
++    PATH_SEPARATOR=';'
++  else
++    PATH_SEPARATOR=:
++  fi
++  rm -f conf$$.sh
++fi
++
++# Find out how to test for executable files. Don't use a zero-byte file,
++# as systems may use methods other than mode bits to determine executability.
++cat >conf$$.file <<_ASEOF
++#! /bin/sh
++exit 0
++_ASEOF
++chmod +x conf$$.file
++if test -x conf$$.file >/dev/null 2>&1; then
++  ac_executable_p="test -x"
++else
++  ac_executable_p="test -f"
++fi
++rm -f conf$$.file
++
++# Extract the first word of "$2", so it can be a program name with args.
++set dummy $2; ac_word=[$]2
++AC_MSG_CHECKING([for $ac_word])
++AC_CACHE_VAL([ac_cv_path_$1],
++[case "[$]$1" in
++  [[\\/]]* | ?:[[\\/]]*)
++    ac_cv_path_$1="[$]$1" # Let the user override the test with a path.
++    ;;
++  *)
++    ac_save_IFS="$IFS"; IFS=$PATH_SEPARATOR
++    for ac_dir in ifelse([$5], , $PATH, [$5]); do
++      IFS="$ac_save_IFS"
++      test -z "$ac_dir" && ac_dir=.
++      for ac_exec_ext in '' $ac_executable_extensions; do
++        if $ac_executable_p "$ac_dir/$ac_word$ac_exec_ext"; then
++          echo "$as_me: trying $ac_dir/$ac_word..." >&AS_MESSAGE_LOG_FD
++          if [$3]; then
++            ac_cv_path_$1="$ac_dir/$ac_word$ac_exec_ext"
++            break 2
++          fi
++        fi
++      done
++    done
++    IFS="$ac_save_IFS"
++dnl If no 4th arg is given, leave the cache variable unset,
++dnl so AC_PATH_PROGS will keep looking.
++ifelse([$4], , , [  test -z "[$]ac_cv_path_$1" && ac_cv_path_$1="$4"
++])dnl
++    ;;
++esac])dnl
++$1="$ac_cv_path_$1"
++if test ifelse([$4], , [-n "[$]$1"], ["[$]$1" != "$4"]); then
++  AC_MSG_RESULT([$][$1])
++else
++  AC_MSG_RESULT([no])
++fi
++AC_SUBST([$1])dnl
++])
+diff --git a/src/Makefile.am b/src/Makefile.am
+index c79cdb5..7788899 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -3,9 +3,8 @@
+ INCLUDES = \
+ 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" 				\
+ 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" 	\
+-	-DPACKAGE_GLADE_DIR=\""$(gladedir)"\"				\
+ 	@DISABLE_DEPRECATED@						\
+-	@GNOME_CFLAGS@
++	@ALLEYOOP_CFLAGS@
+ 
+ bin_PROGRAMS=alleyoop
+ 
+@@ -60,7 +59,7 @@ alleyoop_SOURCES = 		\
+ 	vgtoolview.h		\
+ 	main.c
+ 
+-alleyoop_LDADD = @GNOME_LIBS@ $(INTLLIBS)
++alleyoop_LDADD = @ALLEYOOP_LIBS@ $(INTLLIBS)
+ 
+ vgmarshal.h: vgmarshal.list
+ 	( @GLIB_GENMARSHAL@ --prefix=vg_marshal $(srcdir)/vgmarshal.list --header > vgmarshal.h.tmp \
+diff --git a/src/alleyoop.c b/src/alleyoop.c
+index 0ce63de..9fd91f5 100644
+--- a/src/alleyoop.c
++++ b/src/alleyoop.c
+@@ -1,6 +1,6 @@
+ /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+ /*  Alleyoop
+- *  Copyright (C) 2003-2009 Jeffrey Stedfast
++ *  Copyright (C) 2003-2011 Jeffrey Stedfast
+  *
+  *  This program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+@@ -31,10 +30,9 @@
+ #include <fcntl.h>
+ #include <errno.h>
+ 
++#include <glib.h>
++#include <glib/gi18n.h>
+ #include <gconf/gconf-client.h>
+-#include <libgnome/gnome-i18n.h>
+-#include <libgnomeui/gnome-about.h>
+-#include <libgnomeui/gnome-app-helper.h>
+ 
+ #include "vgdefaultview.h"
+ #include "menu-utils.h"
+@@ -43,22 +41,11 @@
+ #include "prefs.h"
+ 
+ 
+-enum {
+-	VALGRIND_TOOL_MEMCHECK,
+-	VALGRIND_TOOL_ADDRCHECK,
+-	VALGRIND_TOOL_CACHEGRIND,
+-	VALGRIND_TOOL_HELGRIND,
+-};
+-
+-static struct {
+-	const char *name;
+-	int tool;
+-} valgrind_tools[] = {
+-	{ "memcheck",   VALGRIND_TOOL_MEMCHECK   },
+-	{ "addrcheck",  VALGRIND_TOOL_ADDRCHECK  },
+-	{ "cachegrind", VALGRIND_TOOL_CACHEGRIND },
+-	{ "helgrind",   VALGRIND_TOOL_HELGRIND   },
+-	{ NULL,         VALGRIND_TOOL_MEMCHECK   },
++static char *tool_names[] = {
++	"memcheck",
++	"addrcheck",
++	"cachegrind",
++	"helgrind",
+ };
+ 
+ static void alleyoop_class_init (AlleyoopClass *klass);
+@@ -72,7 +59,7 @@ static void alleyoop_finalize (GObject *obj);
+ static gboolean io_ready_cb (GIOChannel *gio, GIOCondition condition, gpointer user_data);
+ 
+ 
+-static GnomeAppClass *parent_class = NULL;
++static GtkWindowClass *parent_class = NULL;
+ 
+ 
+ GType
+@@ -93,7 +80,7 @@ alleyoop_get_type (void)
+ 			(GInstanceInitFunc) alleyoop_init,
+ 		};
+ 		
+-		type = g_type_register_static (GNOME_TYPE_APP, "Alleyoop", &info, 0);
++		type = g_type_register_static (GTK_TYPE_WINDOW, "Alleyoop", &info, 0);
+ 	}
+ 	
+ 	return type;
+@@ -105,7 +92,7 @@ alleyoop_class_init (AlleyoopClass *klass)
+ 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+ 	GtkObjectClass *gtk_object_class = GTK_OBJECT_CLASS (klass);
+ 	
+-	parent_class = g_type_class_ref (GNOME_TYPE_APP);
++	parent_class = g_type_class_ref (GTK_TYPE_WINDOW);
+ 	
+ 	object_class->finalize = alleyoop_finalize;
+ 	gtk_object_class->destroy = alleyoop_destroy;
+@@ -118,6 +105,7 @@ alleyoop_init (Alleyoop *grind)
+ 	grind->srcdir = NULL;
+ 	
+ 	grind->view = NULL;
++	grind->ui = NULL;
+ 	
+ 	grind->gio = NULL;
+ 	grind->watch_id = 0;
+@@ -138,6 +126,9 @@ alleyoop_finalize (GObject *obj)
+ 	if (grind->gio)
+ 		g_io_channel_unref (grind->gio);
+ 	
++	if (grind->ui)
++		g_object_unref (grind->ui);
++	
+ 	G_OBJECT_CLASS (parent_class)->finalize (obj);
+ }
+ 
+@@ -186,7 +177,7 @@ run_prompt_argv (Alleyoop *grind)
+ 	gtk_widget_show (hbox);
+ 	gtk_box_pack_start ((GtkBox *) vbox, hbox, FALSE, FALSE, 0);
+ 	
+-	/* FIXME: use a GnomeFileEntry instead? */
++	/* FIXME: use a GtkFileChooserButton instead? */
+ 	entry = gtk_entry_new ();
+ 	gtk_widget_show (entry);
+ 	gtk_box_pack_start ((GtkBox *) vbox, entry, FALSE, FALSE, 0);
+@@ -488,55 +479,37 @@ edit_rules_cb (GtkWidget *widget, gpointer user_data)
+ }
+ 
+ static void
+-tools_default_cb (GtkWidget *widget, gpointer user_data)
++tool_selected_cb (GtkRadioAction *radio, gpointer user_data)
+ {
+ 	Alleyoop *grind = (Alleyoop *) user_data;
+ 	
+-	grind->tool = NULL;
++	grind->tool = gtk_radio_action_get_current_value (radio);
+ }
+ 
+ static void
+-tools_addrcheck_cb (GtkWidget *widget, gpointer user_data)
++about_destroy (GObject *obj, GObject *deadbeef)
+ {
+-	Alleyoop *grind = (Alleyoop *) user_data;
++	Alleyoop *grind = (Alleyoop *) obj;
+ 	
+-	grind->tool = "addrcheck";
++	grind->about = NULL;
+ }
+ 
+-#if 0
+ static void
+-tools_cachegrind_cb (GtkWidget *widget, gpointer user_data)
++about_response_cb (GtkDialog *about, int response_id, gpointer user_data)
+ {
+-	Alleyoop *grind = (Alleyoop *) user_data;
+-	
+-	grind->tool = "cachegrind";
++	if (response_id == GTK_RESPONSE_CANCEL)
++		gtk_widget_destroy ((GtkWidget *) about);
+ }
+-#endif
+ 
+-static void
+-tools_helgrind_cb (GtkWidget *widget, gpointer user_data)
+-{
+-	Alleyoop *grind = (Alleyoop *) user_data;
+-	
+-	grind->tool = "helgrind";
+-}
++static const char copyright[] = "Copyright 2003-2011 Jeffrey Stedfast <fejj@gnome.org>";
+ 
+-static void
+-about_destroy (GObject *obj, GObject *deadbeef)
+-{
+-	Alleyoop *grind = (Alleyoop *) obj;
+-	
+-	grind->about = NULL;
+-}
++static const char comments[] = N_("Alleyoop is a Valgrind front-end for the GNOME environment.");
+ 
+ static const char *authors[] = {
+-	"Jeffrey Stedfast <fejj@novell.com>",
++	"Jeffrey Stedfast <fejj@gnome.org>",
+ 	NULL
+ };
+ 
+-/* This string should be replaced with the name of the translator */
+-static const char translation[] = N_("Jeffrey Stedfast");
+-
+ static void
+ help_about_cb (GtkWidget *widget, gpointer user_data)
+ {
+@@ -544,11 +517,18 @@ help_about_cb (GtkWidget *widget, gpointer user_data)
+ 	
+ 	grind = (Alleyoop *) user_data;
+ 	if (grind->about == NULL) {
+-		grind->about = gnome_about_new ("Alleyoop", VERSION, "Copyright 2003-2009 Jeffrey Stedfast <fejj@novell.com>",
+-						_("Alleyoop is a Valgrind front-end for the GNOME environment."),
+-						(const char **) authors, NULL, _(translation), NULL);
++		grind->about = gtk_about_dialog_new ();
++		gtk_about_dialog_set_program_name ((GtkAboutDialog *) grind->about, "Alleyoop");
++		gtk_about_dialog_set_version ((GtkAboutDialog *) grind->about, VERSION);
++		gtk_about_dialog_set_copyright ((GtkAboutDialog *) grind->about, copyright);
++		gtk_about_dialog_set_comments ((GtkAboutDialog *) grind->about, _(comments));
++		//gtk_about_dialog_set_license_type ((GtkAboutDialog *) grind->about, GTK_LICENSE_GPL_2_0);
++		gtk_about_dialog_set_website ((GtkAboutDialog *) grind->about, "http://alleyoop.sourceforge.net");
++		gtk_about_dialog_set_authors ((GtkAboutDialog *) grind->about, (const char **) authors);
++		gtk_about_dialog_set_translator_credits ((GtkAboutDialog *) grind->about, _("translator-credits"));
+ 		
+ 		g_object_weak_ref ((GObject *) grind->about, (GWeakNotify) about_destroy, grind);
++		g_signal_connect (grind->about, "response", G_CALLBACK (about_response_cb), grind);
+ 		
+ 		gtk_widget_show (grind->about);
+ 	}
+@@ -556,64 +536,83 @@ help_about_cb (GtkWidget *widget, gpointer user_data)
+ 	gdk_window_raise (grind->about->window);
+ }
+ 
+-static GnomeUIInfo file_menu[] = {
+-	{ GNOME_APP_UI_ITEM, N_("_Run"), NULL, G_CALLBACK (file_run_cb), NULL, NULL,
+-	  GNOME_APP_PIXMAP_STOCK, GTK_STOCK_EXECUTE, 'r', GDK_CONTROL_MASK, NULL },
+-	{ GNOME_APP_UI_ITEM, N_("_Kill"), NULL, G_CALLBACK (file_kill_cb), NULL, NULL,
+-	  GNOME_APP_PIXMAP_STOCK, GTK_STOCK_CANCEL, 'k', GDK_CONTROL_MASK, NULL },
+-	GNOMEUIINFO_MENU_OPEN_ITEM (G_CALLBACK (file_open_cb), NULL),
+-	GNOMEUIINFO_MENU_SAVE_ITEM (G_CALLBACK (file_save_cb), NULL),
+-	GNOMEUIINFO_MENU_SAVE_AS_ITEM (G_CALLBACK (file_save_as_cb), NULL),
+-	GNOMEUIINFO_SEPARATOR,
+-	GNOMEUIINFO_MENU_QUIT_ITEM (G_CALLBACK (file_quit_cb), NULL),
+-	GNOMEUIINFO_END
++/* Normal menu items */
++static const GtkActionEntry normal_menu_items[] = {
++	{ "FileMenu",          NULL,                         N_("_File")                  },
++	{ "Run",               GTK_STOCK_EXECUTE,            N_("_Run"),
++	  "<control>R",        N_("Run program"),            G_CALLBACK (file_run_cb)     },
++	{ "Kill",              GTK_STOCK_CANCEL,             N_("_Kill"),
++	  "<control>K",        N_("Kill program"),           G_CALLBACK (file_kill_cb)    },
++	{ "Open",              GTK_STOCK_OPEN,               N_("_Open..."),
++	  "<control>O",        N_("Open a log file"),        G_CALLBACK (file_open_cb)    },
++	{ "Save",              GTK_STOCK_SAVE,               N_("_Save"),
++	  "<control>S",        N_("Save the file"),          G_CALLBACK (file_save_cb)    },
++	{ "SaveAs",            GTK_STOCK_SAVE_AS,            N_("Save _As..."),
++	  "<shift><control>S", N_("Save the file as..."),    G_CALLBACK (file_save_as_cb) },
++	{ "Quit",              GTK_STOCK_QUIT,               N_("_Quit"),
++	  "<control>Q",        N_("Exit the program"),       G_CALLBACK (file_quit_cb)    },
++	
++	{ "EditMenu",          NULL,                         N_("_Edit")                  },
++	{ "Cut",               GTK_STOCK_CUT,                N_("Cu_t"),
++	  "<control>X",        N_("Cut to clipboard"),       G_CALLBACK (edit_cut_cb)     },
++	{ "Copy",              GTK_STOCK_COPY,               N_("_Copy"),
++	  "<control>C",        N_("Copy to clipboard"),      G_CALLBACK (edit_copy_cb)    },
++	{ "Paste",             GTK_STOCK_PASTE,              N_("_Paste"),
++	  "<control>V",        N_("Paste from clipboard"),   G_CALLBACK (edit_paste_cb)   },
++	{ "Clear",             GTK_STOCK_CLEAR,              N_("C_lear"),
++	  NULL,                N_("Clear log view"),         G_CALLBACK (edit_clear_cb)   },
++	
++	{ "SettingsMenu",      NULL,                         N_("_Settings")              },
++	{ "Preferences",       GTK_STOCK_PREFERENCES,        N_("Prefere_nces"),
++	  NULL,                N_("Edit preferences..."),    G_CALLBACK (edit_prefs_cb)   },
++	{ "Suppressions",      NULL,                         N_("Suppressions"),
++	  NULL,                N_("View/Edit Suppressions"), G_CALLBACK (edit_rules_cb)   },
++	
++	{ "ToolsMenu",         NULL,                         N_("_Tools")                 },
++	
++	{ "HelpMenu",          NULL,                         N_("_Help")                  },
++	{ "About",             GTK_STOCK_ABOUT,              N_("_About"),
++	  NULL,                N_("About Alleyoop"),         G_CALLBACK (help_about_cb)   },
+ };
+ 
+-static GnomeUIInfo edit_menu[] = {
+-	GNOMEUIINFO_MENU_CUT_ITEM (G_CALLBACK (edit_cut_cb), NULL),
+-	GNOMEUIINFO_MENU_COPY_ITEM (G_CALLBACK (edit_copy_cb), NULL),
+-	GNOMEUIINFO_MENU_PASTE_ITEM (G_CALLBACK (edit_paste_cb), NULL),
+-	GNOMEUIINFO_MENU_CLEAR_ITEM (G_CALLBACK (edit_clear_cb), NULL),
+-	GNOMEUIINFO_END
++static const GtkRadioActionEntry radio_menu_items[] = {
++	{ "AddrCheck",  NULL, "AddrCheck", NULL, N_("Use the AddrCheck Valgrind tool"), VALGRIND_TOOL_ADDRCHECK },
++	{ "MemCheck",   NULL, "MemCheck",  NULL, N_("Use the MemCheck Valgrind tool"),  VALGRIND_TOOL_MEMCHECK  },
++	{ "Helgrind",   NULL, "Helgrind",  NULL, N_("Use the Helgrind tool"),           VALGRIND_TOOL_HELGRIND  },
+ };
+ 
+-static GnomeUIInfo settings_menu[] = {
+-	GNOMEUIINFO_MENU_PREFERENCES_ITEM (G_CALLBACK (edit_prefs_cb), NULL),
+-	{ GNOME_APP_UI_ITEM, N_("Suppressions"), N_("View/Edit Suppressions"), G_CALLBACK (edit_rules_cb),
+-	  NULL, NULL, GNOME_APP_PIXMAP_NONE, NULL, 0, 0, NULL },
+-	GNOMEUIINFO_END
+-};
+-
+-static GnomeUIInfo tools_menu_items[] = {
+-	{ GNOME_APP_UI_ITEM, "Memcheck", NULL, G_CALLBACK (tools_default_cb), NULL,
+-	  NULL, GNOME_APP_PIXMAP_NONE, NULL, 0, 0, NULL },
+-	{ GNOME_APP_UI_ITEM, "Addrcheck", NULL, G_CALLBACK (tools_addrcheck_cb), NULL,
+-	  NULL, GNOME_APP_PIXMAP_NONE, NULL, 0, 0, NULL },
+-	/*{ GNOME_APP_UI_ITEM, "Cachegrind", NULL, G_CALLBACK (tools_cachegrind_cb), NULL,
+-	  NULL, GNOME_APP_PIXMAP_NONE, NULL, 0, 0, NULL },*/
+-	{ GNOME_APP_UI_ITEM, "Helgrind", NULL, G_CALLBACK (tools_helgrind_cb), NULL,
+-	  NULL, GNOME_APP_PIXMAP_NONE, NULL, 0, 0, NULL },
+-	GNOMEUIINFO_END
+-};
+-
+-static GnomeUIInfo tools_menu[] = {
+-	GNOMEUIINFO_RADIOLIST (tools_menu_items),
+-	GNOMEUIINFO_END
+-};
+-
+-static GnomeUIInfo help_menu[] = {
+-	GNOMEUIINFO_MENU_ABOUT_ITEM (G_CALLBACK (help_about_cb), NULL),
+-	GNOMEUIINFO_END
+-};
+-
+-static GnomeUIInfo alleyoop_menu[] = {
+-	GNOMEUIINFO_MENU_FILE_TREE (file_menu),
+-	GNOMEUIINFO_MENU_EDIT_TREE (edit_menu),
+-	GNOMEUIINFO_MENU_SETTINGS_TREE (settings_menu),
+-	GNOMEUIINFO_SUBTREE (N_("Tool"), tools_menu),
+-	GNOMEUIINFO_MENU_HELP_TREE (help_menu),
+-	GNOMEUIINFO_END
+-};
++static const char *menu_xml =
++	"<ui>"
++	"  <menubar name='MainMenu'>"
++	"    <menu action='FileMenu'>"
++	"      <menuitem action='Run'/>"
++	"      <menuitem action='Kill'/>"
++	"      <menuitem action='Open'/>"
++	"      <menuitem action='Save'/>"
++	"      <menuitem action='SaveAs'/>"
++	"      <separator/>"
++	"      <menuitem action='Quit'/>"
++	"    </menu>"
++	"    <menu action='EditMenu'>"
++	"      <menuitem action='Cut'/>"
++	"      <menuitem action='Copy'/>"
++	"      <menuitem action='Paste'/>"
++	"      <menuitem action='Clear'/>"
++	"    </menu>"
++	"    <menu action='SettingsMenu'>"
++	"      <menuitem action='Preferences'/>"
++	"      <menuitem action='Suppressions'/>"
++	"    </menu>"
++	"    <menu action='ToolsMenu'>"
++	"      <menuitem action='AddrCheck'/>"
++	"      <menuitem action='MemCheck'/>"
++	"      <menuitem action='Helgrind'/>"
++	"    </menu>"
++	"    <menu action='HelpMenu'>"
++	"      <menuitem action='About'/>"
++	"    </menu>"
++	"  </menubar>"
++	"</ui>";
+ 
+ static GtkWidget *
+ alleyoop_toolbar_new (Alleyoop *grind)
+@@ -666,9 +665,12 @@ prefs_delete_event (GtkWidget *widget, gpointer user_data)
+ }
+ 
+ GtkWidget *
+-alleyoop_new (const char *tool, const char **argv, const char **srcdir)
++alleyoop_new (ValgrindTool tool, const char **argv, const char **srcdir)
+ {
+-	GtkWidget *widget;
++	GtkWidget *menubar, *widget, *vbox;
++	GtkActionGroup *actions;
++	GtkAccelGroup *accels;
++	GError *err = NULL;
+ 	Alleyoop *grind;
+ 	char *title;
+ 	int i;
+@@ -680,48 +682,63 @@ alleyoop_new (const char *tool, const char **argv, const char **srcdir)
+ 	else
+ 		title = g_strdup ("Alleyoop");
+ 	
+-	gnome_app_construct ((GnomeApp *) grind, "alleyoop", title);
++	//gnome_app_construct ((GnomeApp *) grind, "alleyoop", title);
++	gtk_window_set_title ((GtkWindow *) grind, title);
+ 	gtk_window_set_default_size ((GtkWindow *) grind, 300, 400);
+-	gnome_app_enable_layout_config ((GnomeApp *) grind, TRUE);
+ 	g_free (title);
+ 	
+ 	grind->tool = tool;
+ 	grind->argv = argv;
+ 	grind->srcdir = srcdir;
+ 	
+-	/* now construct the UI */
+-	gnome_app_create_menus_with_data ((GnomeApp *) grind, alleyoop_menu, grind);
++	vbox = gtk_vbox_new (FALSE, 0);
+ 	
+-	if (tool != NULL) {
+-		widget = NULL;
+-		
+-		for (i = 0; valgrind_tools[i].name != NULL; i++) {
+-			if (!strcmp (valgrind_tools[i].name, tool)) {
+-				widget = tools_menu_items[i].widget;
+-				break;
+-			}
+-		}
+-		
+-		if (widget != NULL)
+-			gtk_check_menu_item_set_active ((GtkCheckMenuItem *) widget, TRUE);
++	/* construct the menus */
++	grind->ui = gtk_ui_manager_new ();
++	actions = gtk_action_group_new ("MenuActions");
++	gtk_action_group_add_actions (actions, normal_menu_items, G_N_ELEMENTS (normal_menu_items), grind);
++	gtk_action_group_add_radio_actions (actions, radio_menu_items, G_N_ELEMENTS (radio_menu_items), tool,
++					    G_CALLBACK (tool_selected_cb), grind);
++	gtk_ui_manager_insert_action_group (grind->ui, actions, 0);
++	accels = gtk_ui_manager_get_accel_group (grind->ui);
++	gtk_window_add_accel_group ((GtkWindow *) grind, accels);
++	
++	if (!gtk_ui_manager_add_ui_from_string (grind->ui, menu_xml, -1, &err)) {
++		g_message ("Building menus failed: %s", err->message);
++		g_error_free (err);
++		exit (EXIT_FAILURE);
+ 	}
+ 	
++	menubar = gtk_ui_manager_get_widget (grind->ui, "/MainMenu");
++	gtk_widget_show (menubar);
++	
++	/* pack in the menubar */
++	gtk_box_pack_start (GTK_BOX (vbox), menubar, FALSE, FALSE, 0);
++	
+ 	widget = alleyoop_toolbar_new (grind);
+-	gnome_app_set_toolbar ((GnomeApp *) grind, (GtkToolbar *) widget);
+ 	gtk_widget_set_sensitive (grind->toolbar_run, TRUE);
+ 	gtk_widget_set_sensitive (grind->toolbar_kill, FALSE);
++	gtk_widget_show (widget);
++	
++	/* pack in the toolbar */
++	gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+ 	
+ 	grind->view = widget = vg_default_view_new ();
+ 	vg_tool_view_set_argv ((VgToolView *) widget, argv);
+ 	vg_tool_view_set_srcdir ((VgToolView *) widget, srcdir);
+ 	gtk_widget_show (widget);
+-	gnome_app_set_contents ((GnomeApp *) grind, widget);
++	
++	/* pack in the view */
++	gtk_box_pack_start (GTK_BOX (vbox), widget, TRUE, TRUE, 0);
+ 	
+ 	/* create the prefs dialog (we just don't display it) */
+ 	grind->prefs = alleyoop_prefs_new ();
+ 	g_signal_connect (grind->prefs, "response", G_CALLBACK (prefs_response_cb), grind);
+ 	g_signal_connect (grind->prefs, "delete-event", G_CALLBACK (prefs_delete_event), grind);
+ 	
++	gtk_widget_show (vbox);
++	gtk_container_add ((GtkContainer *) grind, vbox);
++	
+ 	return (GtkWidget *) grind;
+ }
+ 
+@@ -763,7 +780,7 @@ alleyoop_run (Alleyoop *grind, GError **err)
+ 	if (pipe (logfd) == -1)
+ 		return;
+ 	
+-	args = alleyoop_prefs_create_argv ((AlleyoopPrefs *) grind->prefs, grind->tool);
++	args = alleyoop_prefs_create_argv ((AlleyoopPrefs *) grind->prefs, tool_names[grind->tool]);
+ 	
+ 	sprintf (logfd_arg, "--log-fd=%d", logfd[1]);
+ 	g_ptr_array_add (args, logfd_arg);
+diff --git a/src/alleyoop.h b/src/alleyoop.h
+index 902d0a3..52caef9 100644
+--- a/src/alleyoop.h
++++ b/src/alleyoop.h
+@@ -1,6 +1,6 @@
+ /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+ /*  Alleyoop
+- *  Copyright (C) 2003-2009 Jeffrey Stedfast
++ *  Copyright (C) 2003-2011 Jeffrey Stedfast
+  *
+  *  This program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+@@ -22,7 +21,6 @@
+ #define __ALLEYOOP_H__
+ 
+ #include <gtk/gtk.h>
+-#include <libgnomeui/gnome-app.h>
+ 
+ #include "vgerror.h"
+ #include "process.h"
+@@ -37,13 +35,21 @@
+ typedef struct _Alleyoop Alleyoop;
+ typedef struct _AlleyoopClass AlleyoopClass;
+ 
++typedef enum {
++	VALGRIND_TOOL_MEMCHECK,
++	VALGRIND_TOOL_ADDRCHECK,
++	VALGRIND_TOOL_CACHEGRIND,
++	VALGRIND_TOOL_HELGRIND,
++} ValgrindTool;
++
+ struct _Alleyoop {
+-	GnomeApp parent_object;
++	GtkWindow parent_object;
+ 	
+-	const char *tool;
+ 	const char **argv;
+ 	const char **srcdir;
++	ValgrindTool tool;
+ 	
++	GtkUIManager *ui;
+ 	GtkWidget *view;
+ 	
+ 	GIOChannel *gio;
+@@ -58,14 +64,14 @@ struct _Alleyoop {
+ };
+ 
+ struct _AlleyoopClass {
+-	GnomeAppClass parent_class;
++	GtkWindowClass parent_class;
+ 	
+ };
+ 
+ 
+ GType alleyoop_get_type (void);
+ 
+-GtkWidget *alleyoop_new (const char *tool, const char **argv, const char **srcdir);
++GtkWidget *alleyoop_new (ValgrindTool tool, const char **argv, const char **srcdir);
+ 
+ void alleyoop_run (Alleyoop *alleyoop, GError **err);
+ void alleyoop_kill (Alleyoop *alleyoop);
+diff --git a/src/getopts.c b/src/getopts.c
+index 097a7db..8c95cbe 100644
+--- a/src/getopts.c
++++ b/src/getopts.c
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/getopts.h b/src/getopts.h
+index 18fa10e..891a4de 100644
+--- a/src/getopts.h
++++ b/src/getopts.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/legolas.c b/src/legolas.c
+index 49218b7..2c8f355 100644
+--- a/src/legolas.c
++++ b/src/legolas.c
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/legolas.h b/src/legolas.h
+index 360059e..efb636a 100644
+--- a/src/legolas.h
++++ b/src/legolas.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/list.c b/src/list.c
+index 1f9b197..802ef3f 100644
+--- a/src/list.c
++++ b/src/list.c
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/list.h b/src/list.h
+index 99234dc..88e114d 100644
+--- a/src/list.h
++++ b/src/list.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/main.c b/src/main.c
+index 36941d7..2982560 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -1,6 +1,6 @@
+ /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+ /*  Alleyoop
+- *  Copyright (C) 2003-2009 Jeffrey Stedfast
++ *  Copyright (C) 2003-2011 Jeffrey Stedfast
+  *
+  *  This program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+@@ -28,8 +27,8 @@
+ #include <sys/stat.h>
+ #include <dirent.h>
+ 
+-#include <gnome.h>
+-#include <glade/glade.h>
++#include <glib.h>
++#include <glib/gi18n.h>
+ #include <gconf/gconf.h>
+ 
+ #include "getopts.h"
+@@ -85,7 +84,7 @@ add_subdirs (GPtrArray *srcdir, GPtrArray *gc, const char *topsrcdir)
+ }
+ 
+ 
+-static const char *tool = NULL;
++static ValgrindTool tool = VALGRIND_TOOL_MEMCHECK;
+ static GPtrArray *srcdir, *gc;
+ 
+ static void
+@@ -142,16 +141,14 @@ static int
+ use_tool (GetOptsContext *ctx, GetOptsOption *opt, const char *arg, void *valuep)
+ {
+ 	if (!g_ascii_strcasecmp (arg, "memcheck")) {
+-		/* default */
+-		tool = NULL;
++		tool = VALGRIND_TOOL_MEMCHECK;
+ 	} else if (!g_ascii_strcasecmp (arg, "addrcheck")) {
+-		tool = "addrcheck";
++		tool = VALGRIND_TOOL_ADDRCHECK;
+ 	} else if (!g_ascii_strcasecmp (arg, "cachegrind")) {
+-		/*tool = "cachegrind";*/
+ 		fprintf (stderr, "%s is currently an unsupported tool\n", arg);
++		/*tool = VALGRIND_TOOL_CACHEGRIND;*/
+ 	} else if (!g_ascii_strcasecmp (arg, "helgrind")) {
+-		/*tool = "helgrind";*/
+-		fprintf (stderr, "%s is currently an unsupported tool\n", arg);
++		tool = VALGRIND_TOOL_HELGRIND;
+ 	} else {
+ 		fprintf (stderr, "Unknown tool: %s\n", arg);
+ 		shutdown ();
+@@ -178,7 +175,6 @@ static GetOptsOption options[] = {
+ 
+ int main (int argc, char **argv)
+ {
+-	GnomeProgram *program;
+ 	GetOptsContext *ctx;
+ 	GtkWidget *alleyoop;
+ 	const char **args;
+@@ -191,6 +187,8 @@ int main (int argc, char **argv)
+ 	textdomain (GETTEXT_PACKAGE);
+ #endif
+ 	
++	gtk_init (&argc, &argv);
++	
+ 	gc = g_ptr_array_new ();
+ 	srcdir = g_ptr_array_new ();
+ 	
+@@ -205,11 +203,6 @@ int main (int argc, char **argv)
+ 	if (n == 0)
+ 		args = NULL;
+ 	
+-	program = gnome_program_init (PACKAGE, VERSION, LIBGNOMEUI_MODULE, argc, argv,
+-				      GNOME_PARAM_HUMAN_READABLE_NAME, _("Alleyoop"),
+-				      GNOME_PARAM_APP_DATADIR, PACKAGE_DATA_DIR,
+-				      NULL);
+-	
+ 	if ((srcdir_env = getenv ("ALLEYOOP_INCLUDE_PATH"))) {
+ 		/* add our environment to the list of srcdir paths */
+ 		char *path, *p;
+@@ -231,7 +224,6 @@ int main (int argc, char **argv)
+ 	
+ 	g_ptr_array_add (srcdir, NULL);
+ 	
+-	glade_init ();
+ 	vg_strpool_init ();
+ 	alleyoop = alleyoop_new (tool, args, (const char **) srcdir->pdata);
+ 	g_signal_connect (alleyoop, "delete-event", G_CALLBACK (alleyoop_close), NULL);
+@@ -240,7 +232,6 @@ int main (int argc, char **argv)
+ 	gtk_main ();
+ 	
+ 	getopts_context_free (ctx, TRUE);
+-	g_object_unref (program);
+ 	vg_strpool_shutdown ();
+ 	g_free (srcdir_env);
+ 	shutdown ();
+diff --git a/src/menu-utils.c b/src/menu-utils.c
+index b6293c5..1a8182d 100644
+--- a/src/menu-utils.c
++++ b/src/menu-utils.c
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/menu-utils.h b/src/menu-utils.h
+index 9458c8e..511a8bc 100644
+--- a/src/menu-utils.h
++++ b/src/menu-utils.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/parser.c b/src/parser.c
+index 7da1b65..591f65f 100644
+--- a/src/parser.c
++++ b/src/parser.c
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/parser.h b/src/parser.h
+index a1dffa1..6abba8c 100644
+--- a/src/parser.h
++++ b/src/parser.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/prefs.c b/src/prefs.c
+index de4331f..73e9128 100644
+--- a/src/prefs.c
++++ b/src/prefs.c
+@@ -1,6 +1,6 @@
+ /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+ /*  Alleyoop
+- *  Copyright (C) 2003-2009 Jeffrey Stedfast
++ *  Copyright (C) 2003-2011 Jeffrey Stedfast
+  *
+  *  This program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+@@ -24,8 +23,9 @@
+ 
+ #include <string.h>
+ 
++#include <glib.h>
++#include <glib/gi18n.h>
+ #include <gconf/gconf-client.h>
+-#include <libgnome/gnome-i18n.h>
+ 
+ #include "prefs.h"
+ #include "vgtoolprefs.h"
+diff --git a/src/prefs.h b/src/prefs.h
+index c705675..90e2b54 100644
+--- a/src/prefs.h
++++ b/src/prefs.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/process.c b/src/process.c
+index 8121fe7..c8dd3d4 100644
+--- a/src/process.c
++++ b/src/process.c
+@@ -1,6 +1,6 @@
+ /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+ /*  Alleyoop
+- *  Copyright (C) 2003-2009 Jeffrey Stedfast
++ *  Copyright (C) 2003-2011 Jeffrey Stedfast
+  *
+  *  This program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+@@ -22,7 +21,8 @@
+ #include <config.h>
+ #endif
+ 
+-#include <libgnome/gnome-i18n.h>
++#include <glib.h>
++#include <glib/gi18n.h>
+ 
+ #include <stdio.h>
+ #include <sys/types.h>
+diff --git a/src/process.h b/src/process.h
+index 6d57d07..dcb2256 100644
+--- a/src/process.h
++++ b/src/process.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgcachegrindprefs.c b/src/vgcachegrindprefs.c
+index 556fc1c..d349fe4 100644
+--- a/src/vgcachegrindprefs.c
++++ b/src/vgcachegrindprefs.c
+@@ -1,6 +1,6 @@
+ /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+ /*  Alleyoop
+- *  Copyright (C) 2003-2009 Jeffrey Stedfast
++ *  Copyright (C) 2003-2011 Jeffrey Stedfast
+  *
+  *  This program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+@@ -25,8 +24,9 @@
+ #include <string.h>
+ #include <limits.h>
+ 
++#include <glib.h>
++#include <glib/gi18n.h>
+ #include <gconf/gconf-client.h>
+-#include <libgnome/gnome-i18n.h>
+ 
+ #include "vgcachegrindprefs.h"
+ 
+diff --git a/src/vgcachegrindprefs.h b/src/vgcachegrindprefs.h
+index 0254a13..8c3ccd8 100644
+--- a/src/vgcachegrindprefs.h
++++ b/src/vgcachegrindprefs.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgdefaultview.c b/src/vgdefaultview.c
+index 3f154ce..13bc653 100644
+--- a/src/vgdefaultview.c
++++ b/src/vgdefaultview.c
+@@ -1,6 +1,6 @@
+ /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+ /*  Alleyoop
+- *  Copyright (C) 2003-2009 Jeffrey Stedfast
++ *  Copyright (C) 2003-2011 Jeffrey Stedfast
+  *
+  *  This program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+@@ -31,8 +30,9 @@
+ #include <fcntl.h>
+ #include <errno.h>
+ 
++#include <glib.h>
++#include <glib/gi18n.h>
+ #include <gconf/gconf-client.h>
+-#include <libgnome/gnome-i18n.h>
+ 
+ #include "vgdefaultview.h"
+ #include "vgrulepattern.h"
+diff --git a/src/vgdefaultview.h b/src/vgdefaultview.h
+index 4b0b563..82b90b4 100644
+--- a/src/vgdefaultview.h
++++ b/src/vgdefaultview.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgerror.c b/src/vgerror.c
+index 0b55bf5..ae9e02b 100644
+--- a/src/vgerror.c
++++ b/src/vgerror.c
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgerror.h b/src/vgerror.h
+index 00aa533..17aef2a 100644
+--- a/src/vgerror.h
++++ b/src/vgerror.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vggeneralprefs.c b/src/vggeneralprefs.c
+index e9d94d2..4cd8447 100644
+--- a/src/vggeneralprefs.c
++++ b/src/vggeneralprefs.c
+@@ -1,6 +1,6 @@
+ /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+ /*  Alleyoop
+- *  Copyright (C) 2003-2009 Jeffrey Stedfast
++ *  Copyright (C) 2003-2011 Jeffrey Stedfast
+  *
+  *  This program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+@@ -29,8 +28,9 @@
+ #include <fcntl.h>
+ #include <errno.h>
+ 
++#include <glib.h>
++#include <glib/gi18n.h>
+ #include <gconf/gconf-client.h>
+-#include <libgnome/gnome-i18n.h>
+ 
+ #include "vggeneralprefs.h"
+ 
+@@ -133,17 +133,14 @@ spin_focus_out (GtkSpinButton *spin, GdkEventFocus *event, const char *key)
+ }
+ 
+ static void
+-file_entry_changed (GtkEntry *entry, const char *key)
++file_entry_changed (GtkFileChooserButton *file_entry, const char *key)
+ {
+-	GnomeFileEntry *file_entry;
+ 	GConfClient *gconf;
+ 	char *str;
+ 	
+ 	gconf = gconf_client_get_default ();
+ 	
+-	file_entry = (GnomeFileEntry *) gtk_widget_get_ancestor ((GtkWidget *) entry, GNOME_TYPE_FILE_ENTRY);
+-	
+-	str = gnome_file_entry_get_full_path (file_entry, FALSE);
++	str = gtk_file_chooser_get_filename ((GtkFileChooser *) file_entry);
+ 	gconf_client_set_string (gconf, key, str ? str : "", NULL);
+ 	g_free (str);
+ 	
+@@ -153,7 +150,7 @@ file_entry_changed (GtkEntry *entry, const char *key)
+ static void
+ vg_general_prefs_init (VgGeneralPrefs *prefs)
+ {
+-	GtkWidget *vbox, *hbox, *label, *w;
++	GtkWidget *vbox, *hbox, *label;
+ 	GConfClient *gconf;
+ 	GError *err = NULL;
+ 	GtkWidget *widget;
+@@ -272,13 +269,15 @@ vg_general_prefs_init (VgGeneralPrefs *prefs)
+ 		g_clear_error (&err);
+ 	}
+ 	
+-	widget = gnome_file_entry_new ("suppressions-id", _("Choose Valgrind Suppressions File..."));
+-	w = gnome_file_entry_gtk_entry ((GnomeFileEntry *) widget);
+-	g_signal_connect (w, "changed", G_CALLBACK (file_entry_changed), SUPPRESSIONS_KEY);
+-	gtk_entry_set_text ((GtkEntry *) w, str ? str : "");
+-	prefs->suppressions = (GnomeFileEntry *) widget;
++	widget = gtk_file_chooser_button_new (_("Choose Valgrind Suppressions File..."), GTK_FILE_CHOOSER_ACTION_OPEN);
++	g_signal_connect (widget, "file-set", G_CALLBACK (file_entry_changed), SUPPRESSIONS_KEY);
++	gtk_file_chooser_set_do_overwrite_confirmation ((GtkFileChooser *) widget, FALSE);
++	gtk_file_chooser_set_show_hidden ((GtkFileChooser *) widget, TRUE);
++	gtk_file_chooser_set_local_only ((GtkFileChooser *) widget, TRUE);
++	gtk_file_chooser_set_filename ((GtkFileChooser *) widget, str);
++	prefs->suppressions = (GtkFileChooserButton *) widget;
+ 	gtk_widget_show (widget);
+-	gtk_box_pack_start ((GtkBox *) hbox, widget, FALSE, FALSE, 0);
++	gtk_box_pack_start ((GtkBox *) hbox, widget, TRUE, TRUE, 0);
+ 	
+ 	g_free (str);
+ 	
+diff --git a/src/vggeneralprefs.h b/src/vggeneralprefs.h
+index 66cfb45..16da7ba 100644
+--- a/src/vggeneralprefs.h
++++ b/src/vggeneralprefs.h
+@@ -1,6 +1,6 @@
+ /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+ /*  Alleyoop
+- *  Copyright (C) 2003-2009 Jeffrey Stedfast
++ *  Copyright (C) 2003-2011 Jeffrey Stedfast
+  *
+  *  This program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -13,16 +13,13 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+ #ifndef __VG_GENERAL_PREFS_H__
+ #define __VG_GENERAL_PREFS_H__
+ 
+-#include <libgnomeui/gnome-file-entry.h>
+-
+ #include "vgtoolprefs.h"
+ 
+ #ifdef __cplusplus
+@@ -52,7 +49,7 @@ struct _VgGeneralPrefs {
+ 	GtkToggleButton *track_origins;
+ 	GtkToggleButton *time_stamp;
+ 	GtkToggleButton *run_libc_freeres;
+-	GnomeFileEntry *suppressions;
++	GtkFileChooserButton *suppressions;
+ };
+ 
+ struct _VgGeneralPrefsClass {
+diff --git a/src/vghelgrindprefs.c b/src/vghelgrindprefs.c
+index 7b8c9c3..5063438 100644
+--- a/src/vghelgrindprefs.c
++++ b/src/vghelgrindprefs.c
+@@ -1,6 +1,6 @@
+ /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+ /*  Alleyoop
+- *  Copyright (C) 2003-2009 Jeffrey Stedfast
++ *  Copyright (C) 2003-2011 Jeffrey Stedfast
+  *
+  *  This program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+@@ -25,8 +24,9 @@
+ #include <string.h>
+ #include <stdlib.h>
+ 
++#include <glib.h>
++#include <glib/gi18n.h>
+ #include <gconf/gconf-client.h>
+-#include <libgnome/gnome-i18n.h>
+ 
+ #include "vghelgrindprefs.h"
+ 
+diff --git a/src/vghelgrindprefs.h b/src/vghelgrindprefs.h
+index 10ee272..b23f73d 100644
+--- a/src/vghelgrindprefs.h
++++ b/src/vghelgrindprefs.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgio.c b/src/vgio.c
+index b39cc58..3a783f8 100644
+--- a/src/vgio.c
++++ b/src/vgio.c
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgio.h b/src/vgio.h
+index 4953139..778f662 100644
+--- a/src/vgio.h
++++ b/src/vgio.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgmemcheckprefs.c b/src/vgmemcheckprefs.c
+index 0149e94..7f8b2da 100644
+--- a/src/vgmemcheckprefs.c
++++ b/src/vgmemcheckprefs.c
+@@ -1,6 +1,6 @@
+ /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+ /*  Alleyoop
+- *  Copyright (C) 2003-2009 Jeffrey Stedfast
++ *  Copyright (C) 2003-2011 Jeffrey Stedfast
+  *
+  *  This program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+@@ -27,8 +26,9 @@
+ #include <limits.h>
+ #include <ctype.h>
+ 
++#include <glib.h>
++#include <glib/gi18n.h>
+ #include <gconf/gconf-client.h>
+-#include <libgnome/gnome-i18n.h>
+ 
+ #include "vgmemcheckprefs.h"
+ 
+diff --git a/src/vgmemcheckprefs.h b/src/vgmemcheckprefs.h
+index f698143..4b045b3 100644
+--- a/src/vgmemcheckprefs.h
++++ b/src/vgmemcheckprefs.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgrule-editor.c b/src/vgrule-editor.c
+index 2866cae..ab09b5e 100644
+--- a/src/vgrule-editor.c
++++ b/src/vgrule-editor.c
+@@ -1,6 +1,6 @@
+ /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+ /*  Alleyoop
+- *  Copyright (C) 2003-2009 Jeffrey Stedfast
++ *  Copyright (C) 2003-2011 Jeffrey Stedfast
+  *
+  *  This program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+@@ -30,7 +29,8 @@
+ #include <fcntl.h>
+ #include <errno.h>
+ 
+-#include <libgnome/gnome-i18n.h>
++#include <glib.h>
++#include <glib/gi18n.h>
+ 
+ #include "vgrule-editor.h"
+ 
+diff --git a/src/vgrule-editor.h b/src/vgrule-editor.h
+index f42d49b..0d63967 100644
+--- a/src/vgrule-editor.h
++++ b/src/vgrule-editor.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgrule-list.c b/src/vgrule-list.c
+index 7a0d99a..addb0b7 100644
+--- a/src/vgrule-list.c
++++ b/src/vgrule-list.c
+@@ -1,6 +1,6 @@
+ /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+ /*  Alleyoop
+- *  Copyright (C) 2003-2009 Jeffrey Stedfast
++ *  Copyright (C) 2003-2011 Jeffrey Stedfast
+  *
+  *  This program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+@@ -30,7 +29,8 @@
+ #include <fcntl.h>
+ #include <errno.h>
+ 
+-#include <libgnome/gnome-i18n.h>
++#include <glib.h>
++#include <glib/gi18n.h>
+ #include <gconf/gconf-client.h>
+ 
+ #include "vgrule-list.h"
+diff --git a/src/vgrule-list.h b/src/vgrule-list.h
+index ef68fb1..1ee2337 100644
+--- a/src/vgrule-list.h
++++ b/src/vgrule-list.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgrule.c b/src/vgrule.c
+index 7c567dc..13826cd 100644
+--- a/src/vgrule.c
++++ b/src/vgrule.c
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgrule.h b/src/vgrule.h
+index 429cdd5..d6cbab8 100644
+--- a/src/vgrule.h
++++ b/src/vgrule.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgrulepattern.c b/src/vgrulepattern.c
+index f521691..147fe74 100644
+--- a/src/vgrulepattern.c
++++ b/src/vgrulepattern.c
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgrulepattern.h b/src/vgrulepattern.h
+index 34d2011..3f5ad90 100644
+--- a/src/vgrulepattern.h
++++ b/src/vgrulepattern.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgsearchbar.c b/src/vgsearchbar.c
+index b0b38bd..816b92a 100644
+--- a/src/vgsearchbar.c
++++ b/src/vgsearchbar.c
+@@ -1,6 +1,6 @@
+ /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+ /*  Alleyoop
+- *  Copyright (C) 2003-2009 Jeffrey Stedfast
++ *  Copyright (C) 2003-2011 Jeffrey Stedfast
+  *
+  *  This program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+@@ -22,7 +21,8 @@
+ #include <config.h>
+ #endif
+ 
+-#include <libgnome/gnome-i18n.h>
++#include <glib.h>
++#include <glib/gi18n.h>
+ 
+ #include "vgsearchbar.h"
+ #include "vgmarshal.h"
+diff --git a/src/vgsearchbar.h b/src/vgsearchbar.h
+index 75bf7ee..2b1039b 100644
+--- a/src/vgsearchbar.h
++++ b/src/vgsearchbar.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgstrpool.c b/src/vgstrpool.c
+index 71692ef..2d5f8f8 100644
+--- a/src/vgstrpool.c
++++ b/src/vgstrpool.c
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgstrpool.h b/src/vgstrpool.h
+index f8032ce..7262d0a 100644
+--- a/src/vgstrpool.h
++++ b/src/vgstrpool.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgtoolprefs.c b/src/vgtoolprefs.c
+index 75264ee..084e57a 100644
+--- a/src/vgtoolprefs.c
++++ b/src/vgtoolprefs.c
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgtoolprefs.h b/src/vgtoolprefs.h
+index 54860aa..bd8a8f1 100644
+--- a/src/vgtoolprefs.h
++++ b/src/vgtoolprefs.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgtoolview.c b/src/vgtoolview.c
+index a9ecaf1..8b546bc 100644
+--- a/src/vgtoolview.c
++++ b/src/vgtoolview.c
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
+diff --git a/src/vgtoolview.h b/src/vgtoolview.h
+index 5d3dea8..86aaf06 100644
+--- a/src/vgtoolview.h
++++ b/src/vgtoolview.h
+@@ -13,8 +13,7 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, write to the Free Software
+- *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+ 
