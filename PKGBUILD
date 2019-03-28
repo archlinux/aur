@@ -1,20 +1,21 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-pkgname=cxxopts
+_name=cxxopts
 #for fragment you can use one of: #commit=, #tag=, #branch=
-#fragment=
-pkgver=2.1.1.r23.g3876c09
+_fragment="#tag=v2.1.2"
+pkgname=${_name}
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Lightweight C++ command line option parser"
 arch=(any)
 url="https://github.com/jarro2783/cxxopts"
 license=(MIT)
 makedepends=(git cmake)
-source=(${pkgname}::git+https://github.com/jarro2783/cxxopts.git${fragment})
+source=(${pkgname}::git+https://github.com/jarro2783/cxxopts.git${_fragment})
 md5sums=(SKIP) #generate with 'makepkg -g'
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
