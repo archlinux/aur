@@ -1,0 +1,8 @@
+post_install() {
+    echo -e "NOTE:"
+    echo -e "\tThe newsup.conf file was installed in /etc/newsup/"
+    echo -e "\tIn order for newsup to find it, you need to copy it to ~/.config/"
+    echo -e "\tMake your changes on ~/.config/newsup.conf"
+    echo -e ""
+    echo -e "You can also use -configure /path/to/file to indicate a valid configuration file"
+}
