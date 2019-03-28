@@ -3,7 +3,7 @@
 pkgname=openra-d2-git
 _pkgname=openra-d2
 pkgver=134.git.69a4aa7
-pkgrel=1
+pkgrel=2
 pkgdesc="A Dune II-inspired mod of OpenRA"
 arch=('any')
 url="https://github.com/OpenRA/d2"
@@ -34,11 +34,11 @@ prepare() {
     cd $srcdir/d2
     dos2unix *.md
     chmod +x *.sh
-    make version VERSION="${pkgver}"
 }
 
 build() {
     cd $srcdir/d2
+    make version VERSION="${pkgver}"
     make
 }
 
