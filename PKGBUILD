@@ -1,27 +1,26 @@
-# Maintainer: Lin Ruoshui <lin.ruohshoei@gmail.com>
+# Maintainer: Lin Rs <20455421+LinRs at users.noreply.github.com>
 # Based on [extra]'s thunderbird
 
-_name=thunderbird
-_channel=nightly
-_version=61.0a1
-pkgver=61.0a1.20180503
-pkgrel=2
 
 _lang=zh-cn
-pkgname=${_name}-${_channel}-${_lang}
 _pkgname=${_name}-${_channel}-zh-CN
-
+_name=thunderbird
+_channel=nightly
+_version=67.0a1
+pkgname=${_name}-${_channel}-${_lang}
+pkgver=67.0a1.20190317
+pkgrel=1
 pkgdesc="Standalone Mail/News reader — Nightly build (${_lang})"
 url="https://www.thunderbird.net"
 provides=(thunderbird-${_channel}=$pkgver)
-conflicts=(thunderbird-${_channel} thunderbird-${_channel}-it)
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig'
          'freetype2' 'gtk2' 'hicolor-icon-theme' 'hunspell' 'libevent' 'libjpeg'
          'libmng' 'libpng' 'libvpx' 'libxt' 'mozilla-common' 'nspr' 'nss'
          'shared-mime-info' 'sqlite' 'startup-notification')
 optdepends=('libcanberra: for sound support')
+makedepends=('imagemagick')
 install=${pkgname}.install
 
 _upstream="https://releases.mozilla.org"
@@ -29,47 +28,17 @@ _url="${_upstream}/pub/${_name}/${_channel}/latest-comm-central-l10n"
 _urlUS="${_upstream}/pub/${_name}/${_channel}/latest-comm-central"
 _src="${_name}-${_version}.zh-CN.linux"
 _srcUS="${_name}-${_version}.en-US.linux"
-_filename="20171126.23-"
 source=("${pkgname}.desktop"
 	'vendor.js')
-source_i686=("${_url}/${_src}-i686.tar.bz2" "${_url}/${_src}-i686.tar.bz2.asc" "${_urlUS}/${_srcUS}-i686.txt")
 source_x86_64=("${_url}/${_src}-x86_64.tar.bz2" "${_url}/${_src}-x86_64.tar.bz2.asc" "${_urlUS}/${_srcUS}-x86_64.txt")
 
 sha512sums=('0a6344a290cd4a52f1e858db0be97056ec2ce47894b4d3c0e6c68aef644b1ff278ab3a641a4be895d4a9a30ecee85bd1cad5c2348c3f97a1ad9096a8f18d845f'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_i686=('SKIP'
-                 'SKIP'
-                 'SKIP')
-sha512sums_x86_64=('SKIP'
+sha512sums_x86_64=('13a5f25e02cf6adcf82a09e410b25dbbb59dbfbe25767b64e47457d63987a9c67f803f1e2686ac6616eaa3705cfbd3c3a1df54f655f52592f20fed826f21c123'
                    'SKIP'
-                   'SKIP')
+                   '5088173c1556ebf3af5f81ec9f7e4565cdac2ffe286ccd725f311c0c0c2824894e14b070ee8c8aec3e72445ac5932eba44e304ce7b0688529f0c7127df1f88df')
+
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
-
-
-
-#language
-#_languages=( zh-CN)
-#for _lang in "${_languages[@]}"; do
-#  _locale=${_lang}
-#  pkgname=${_name}-${_channel}-${_locale,,}
-#  _src="${_name}-${_version}.${_lang}.linux"
-#  _filename="${_filename_prefix}${_src}-x86_64.tar.bz2"
-#
-#  pkgname+=($pkgname)
-#  source+=("${_filename}"::"${_url}/${_src}-x86_64.tar.bz2"
-#           "${_filename}.asc"::"${_url}/${_src}-x86_64.tar.bz2.asc")
-#  eval "package_$pkgname() {
-#    msg2 'Removing old thunderbird directory...'
-#    rm -rf thunderbird
-#    msg2 'Extract ${_filename}...'
-#    bsdtar -xf ${_filename}
-#    _package $_lang
-#  }"
-#done
-
-# Don't extract anything because they'll override each other
-# noextract=(${source[@]%%::*})
-
 pkgver(){
     cd "$srcdir"
     echo "${_version}.$(head -n1 "${_srcUS}-${CARCH}.txt" |cut -c -8)"
