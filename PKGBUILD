@@ -4,10 +4,10 @@
 
 pkgname=vivaldi-widevine
 pkgdesc="A browser plugin designed for the viewing of premium video content, standalone for vivaldi"
-pkgver=4.10.1303.0
-_chrome_ver=72.0.3626.109
+pkgver=4.10.1303.2
+_chrome_ver=73.0.3683.86
 _channel=stable
-pkgrel=4
+pkgrel=1
 epoch=1
 arch=('x86_64')
 url='https://www.widevine.com/'
@@ -21,7 +21,7 @@ license=('custom')
 depends=('gcc-libs' 'glib2' 'glibc' 'nspr' 'nss')
 conflicts=('chromium-widevine' 'google-chrome')
 sha256sums=('SKIP'
-            'c8bf514f3c70868120924ee2d4872a0e47dcff315bdf799ba2f98dd7aa85fe2b'
+            '6bca2828da09563634bce48cfb899f3fb1d069285a297ca5916d3bb63b25b5d6'
             '3fda44a5b8b222434530f27923568de1fda1eb0caa8621b56a8b2a6a2a2e3d5d')
 
 prepare() {
