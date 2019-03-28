@@ -1,0 +1,17 @@
+pkgbase = toggldesktop-latest-bin
+	pkgdesc = Time Tracking Software.
+	pkgver = 7.4.358
+	pkgrel = 1
+	url = https://toggl.com/
+	arch = x86_64
+	depends = libxss
+	depends = openssl
+	provides = toggldesktop
+	conflicts = toggldesktop
+	source = https://github.com/toggl/toggldesktop/releases/download/v7.4.358/toggldesktop_linux_x86_64-7_4_358.tar.gz
+	source = toggldesktop.bin
+	sha256sums = 27625585cbbd39c423c4e02b734eaca99a64b6facf8ed21f79e09c9de05e96ea
+	sha256sums = fb19e902bb9b8ac22967147e9889cd1ae7820af462225524c54a56e2026d17b9
+
+pkgname = toggldesktop-latest-bin
+
