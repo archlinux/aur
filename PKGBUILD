@@ -7,7 +7,7 @@
 
 pkgname=connman-git
 pkgver=1.36.r164.gb7ddedc4
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel's modular network connection manager. Git version."
 url="https://01.org/connman"
 arch=('x86_64')
@@ -37,7 +37,7 @@ prepare(){
 }
 
 build() {
-	cd "$srcdir/${pkgname%-*}"
+	cd ${pkgname%-*}
 
         ./configure --prefix=/usr \
             --sysconfdir=/etc \
@@ -58,6 +58,6 @@ build() {
 }
 
 package() {
-	cd "$srcdir/${pkgname%-*}"
+	cd ${pkgname%-*}
 	make DESTDIR="$pkgdir" install
 }
