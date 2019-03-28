@@ -3,12 +3,12 @@
 pkgname=nordic-theme-git
 _pkgname=Nordic
 pkgver=r22.8def2aa
-pkgrel=1
+pkgrel=2
 pkgdesc="Dark Gtk3.20+ theme created using the awesome Nord color pallete."
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
 license=('GPL')
-makedepends=('inkscape')
+makedepends=('inkscape' 'optipng')
 optdepends=('ttf-roboto: primary font face defined'
 			'ttf-ubuntu-font-family: secondary font face defined'
 			'cantarell-fonts: tertiary font face defined')
