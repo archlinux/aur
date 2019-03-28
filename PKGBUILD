@@ -2,7 +2,7 @@
 
 _pkgname=sqlcipher
 pkgname=mingw-w64-sqlcipher
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="SQLite extension that provides transparent 256-bit AES encryption of database files (mingw-w64)"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('mingw-w64-crt' 'mingw-w64-openssl')
 options=(!buildflags !strip staticlibs !makeflags)
 source=("${_pkgname}-${pkgver}.zip::https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.zip"
         "01-fix_extensions.patch")
-sha256sums=('08b96e956b85755a0bdb16501c09f5519ebd564f2142fa1352ca3fef8e443bf0'
+sha256sums=('983b014677e095fb507debd966016512a303cd8a183a56c8db4f7a6aca2c7855'
             'dfac9b545b3c6fe37eaf47c994b929db078067dbbfaa5be82ba6472f66f77ec1')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
