@@ -1,0 +1,17 @@
+pkgbase = intel-opencl-clang
+	pkgdesc = A wrapper library around clang than can compile OpenCL C kernels to SPIR-V modules
+	pkgver = 7.0.1
+	pkgrel = 1
+	url = https://github.com/intel/opencl-clang/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = llvm
+	makedepends = spirv-llvm-translator
+	depends = clang
+	source = intel-opencl-clang-7.0.1.tar.gz::https://github.com/intel/opencl-clang/archive/v7.0.1.tar.gz
+	sha256sums = 407800aceebebef8deaa1428d4b730a0f74329e0336a96fa1f1dd30a34b952e2
+
+pkgname = intel-opencl-clang
+
