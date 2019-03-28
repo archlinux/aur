@@ -13,8 +13,7 @@ depends=('perl-gnome2-gconf' 'glade-perl' 'openssh' 'perl-crypt-blowfish' 'perl-
 makedepends=('git')
 #conflicts=()
 source=("git+https://github.com/asbru-cm/asbru-cm.git")
-sha256sums=('SKIP'
-            'b2bd4fcdc9e16869f990ae4be47f2a23e81e25fff8a7169a03792864caee1606')
+sha256sums=('SKIP')
 
 package() {
 	cd ${srcdir}/${_pkgname}
