@@ -9,6 +9,7 @@ pkgbase = libcec-git
 	license = GPL
 	makedepends = git
 	makedepends = p8-platform>=2.0
+	makedepends = cmake
 	depends = udev>=151
 	depends = lockdev
 	depends = p8-platform>=2.0
