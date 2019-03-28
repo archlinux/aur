@@ -1,0 +1,17 @@
+pkgbase = sx-git
+	pkgdesc = Portable base library for C/C++ programs and games
+	pkgver = r111.5bbcfd7
+	pkgrel = 1
+	url = https://github.com/septag/sx
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = sx
+	conflicts = sx
+	source = git://github.com/septag/sx
+	sha256sums = SKIP
+
+pkgname = sx-git
+
