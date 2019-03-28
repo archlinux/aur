@@ -1,11 +1,12 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer:
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Angelo Theodorou <encelo@users.sourceforge.net>
 # Contributor: Lex Rivera <aur@x-demon.org>
 # Contributor: Gianluca Sforna <giallu@fedoraproject.org>
 
 pkgname=alleyoop
 pkgver=0.9.8
-pkgrel=7
+pkgrel=8
 pkgdesc='Valgrind front-end for the GNOME environment'
 arch=(x86_64)
 url='https://alleyoop.sourceforge.net/'
