@@ -1,6 +1,6 @@
 pkgbase = mcsctl
 	pkgdesc = Helpers for basic minecraft server management.
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Hetsh/mcsctl
 	install = mcsctl.install
@@ -11,8 +11,8 @@ pkgbase = mcsctl
 	depends = jre-openjdk-headless
 	provides = mcsctl
 	conflicts = mcsctl-git
-	source = https://github.com/Hetsh/mcsctl/archive/v1.0.0.tar.gz
-	sha256sums = c0299fe756d8ffaf57298c42d58607bc5684f6c9737abccdb7b0a41725c749d0
+	source = https://github.com/Hetsh/mcsctl/archive/v1.1.0.tar.gz
+	sha256sums = d1fbe2fad333bbc637f0e2298e96e5ddb1a794e53af62a578376ad94695ec768
 
 pkgname = mcsctl
 
