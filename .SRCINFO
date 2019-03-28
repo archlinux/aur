@@ -9,7 +9,7 @@ pkgbase = substratumnode
 	conflicts = substratumnode-git
 	options = !strip
 	options = !emptydirs
-	source = https://s3.us-east-2.amazonaws.com/substratum-website-downloads/v0.4.3/SubstratumNode-v{pkgver}-Linux64-deb.zip
+	source = https://s3.us-east-2.amazonaws.com/substratum-website-downloads/v0.4.3/SubstratumNode-v0.4.3-Linux64-deb.zip
 	sha256sums = 19423e9df8f893747097025640e21d21ecc6ae4a8960d9db50ac317eb324c7e9
 
 pkgname = substratumnode

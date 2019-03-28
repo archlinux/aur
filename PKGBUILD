@@ -10,13 +10,13 @@ depends=()
 conflicts=('substratumnode-git')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://s3.us-east-2.amazonaws.com/substratum-website-downloads/v${pkgver}/SubstratumNode-v{pkgver}-Linux64-deb.zip")
+source=("https://s3.us-east-2.amazonaws.com/substratum-website-downloads/v${pkgver}/SubstratumNode-v${pkgver}-Linux64-deb.zip")
 sha256sums=('19423e9df8f893747097025640e21d21ecc6ae4a8960d9db50ac317eb324c7e9')
 
 package(){
 
     # Extract deb file
-    bsdtar -xf "SubstratumNode_{pkgver}_amd64.deb"
+    bsdtar -xf "SubstratumNode_${pkgver}_amd64.deb"
     
     # Extract package data
     tar xf "data.tar.xz" -C "${pkgdir}"
