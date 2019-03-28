@@ -1,9 +1,11 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # Maintainer: Alex Dahl <adahl1@umbc.edu>
-pkgname=partio-git
-pkgver=1.7.3.r0.g421ec6a
+_name="partio"
+_fragment="#tag=v1.7.3"
+pkgname=${_name}
+pkgver=1.7.3
 pkgrel=1
-pkgdesc="Particle IO and manipulation library (git version)"
+pkgdesc="Particle IO and manipulation library"
 arch=(i686 x86_64)
 url="http://www.disneyanimation.com/technology/partio.html"
 license=('custom')
@@ -11,9 +13,9 @@ depends=('glut' 'glu' 'seexpr')
 optdepends=('python2: Python interface support'
             'zlib: file compression support')
 makedepends=('cmake>=2.4.6' 'swig' 'git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=('git+https://github.com/wdas/partio.git'
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+source=("git+https://github.com/wdas/partio.git${_fragment}"
 	)
 md5sums=('SKIP'
 	)
@@ -21,12 +23,12 @@ md5sums=('SKIP'
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
   # cutting off 'v' prefix that presents in the git tag
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tag | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 #prepare() {
 #  cd "$srcdir/${pkgname%-git}"
-#  git apply ../
+#  git apply ../*.patch
 #}
 
 build() {
