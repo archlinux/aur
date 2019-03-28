@@ -1,7 +1,7 @@
 # Maintainer: Caleb Jamison <cbjamo@gmail.com> 
 pkgname=litex-git
-pkgver=latest
-pkgrel=2
+pkgver=4143
+pkgrel=3
 pkgdesc="Migen based SoC"
 arch=(any)
 url="https://github.com/enjoy-digital/litex"
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r/;s/-/./g'
+  git rev-list --count HEAD
 }
 
 prepare() {
