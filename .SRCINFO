@@ -1,6 +1,6 @@
 pkgbase = lib32-leptonica
 	pkgdesc = Software that is broadly useful for image processing and image analysis applications (32 bit)
-	pkgver = 1.77.0
+	pkgver = 1.78.0
 	pkgrel = 1
 	url = http://www.leptonica.com/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = lib32-leptonica
 	depends = lib32-libwebp
 	depends = lib32-openjpeg2
 	depends = leptonica
-	source = leptonica-1.77.0.tar.gz::https://github.com/DanBloomberg/leptonica/archive/1.77.0.tar.gz
-	sha256sums = a11a3f6cb709d5e4d20faa7af55f77057335cbc5ef89103c31a17aea52d7b555
+	source = leptonica-1.78.0.tar.gz::https://github.com/DanBloomberg/leptonica/archive/1.78.0.tar.gz
+	sha256sums = f8ac4d93cc76b524c2c81d27850bfc342e68b91368aa7a1f7d69e34ce13adbb4
 
 pkgname = lib32-leptonica
 
