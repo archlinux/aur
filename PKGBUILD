@@ -1,9 +1,10 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer:
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Guillem Rieu <guillemr@gmx.net>
 
 pkgname=ccgo
 pkgver=0.3.6.5
-pkgrel=5
+pkgrel=6
 pkgdesc='Play the game of Go with gnugo or against other players on IGS'
 arch=(x86_64)
 url='https://ccdw.org/~cjj/prog/ccgo/'
