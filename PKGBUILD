@@ -1,6 +1,8 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-pkgname=openmvs-git
-pkgver=0.7.r65.gd19dae8
+_name=openmvs
+_fragment="#tag=v0.9"
+pkgname=${_name}
+pkgver=0.9
 pkgrel=1
 pkgdesc="open Multi-View Stereo reconstruction library with simple and automatic set of tools"
 arch=('i686' 'x86_64')
@@ -12,7 +14,7 @@ optdepends=('nvidia-utils: GPU optimized mesh reconstruction code'
             )
 
 options=()
-source=("${pkgname}::git+https://github.com/cdcseacave/openMVS.git"
+source=("${pkgname}::git+https://github.com/cdcseacave/openMVS.git${_fragment}"
         "vcglib::git+https://github.com/cdcseacave/VCG.git"
         )
 md5sums=('SKIP'
@@ -22,7 +24,7 @@ md5sums=('SKIP'
 pkgver() {
   cd "$pkgname"
   # cutting off 'v' prefix that presents in the git tag
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tag | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 
 }
 
