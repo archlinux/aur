@@ -38,7 +38,8 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-md5sums=('72f91ea6102abfc96ed7ce9a334e5287'
-	'dcb085039110ab6a87e944865a4fccdb'
-	'f7c765324710c59738db0b8a9c124982'
-'73f91c48628136882893a3dbb1919bae')
+
+md5sums=('26bdf574454116abbf4a43d0ac73d0d1'
+         'dcb085039110ab6a87e944865a4fccdb'
+         'f7c765324710c59738db0b8a9c124982'
+         '73f91c48628136882893a3dbb1919bae')
