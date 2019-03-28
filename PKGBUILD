@@ -3,12 +3,12 @@
 pkgname=sweet-theme-git
 _pkgname=Sweet
 pkgver=r27.48b4999
-pkgrel=1
+pkgrel=2
 pkgdesc="Light and dark colorful Gtk3.20+ theme"
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
 license=('GPL')
-makedepends=('inkscape')
+makedepends=('inkscape' 'optipng')
 optdepends=('ttf-roboto: primary font face defined'
 			'ttf-ubuntu-font-family: secondary font face defined'
 			'cantarell-fonts: tertiary font face defined')
