@@ -1,0 +1,21 @@
+pkgbase = haxm-altea-git
+	pkgdesc = Intel® Hardware Accelerated Execution Manager - a hardware-assisted virtualization engine (patched to orbital - git version)
+	pkgver = v7.1.0.r193.g5021453
+	pkgrel = 1
+	url = https://github.com/AlexAltea/haxm
+	install = haxm-git.install
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = linux-headers
+	depends = linux>4
+	depends = nasm>=2.11
+	provides = haxm
+	provides = haxm-git
+	conflicts = haxm
+	conflicts = haxm-git
+	source = haxm-altea-git::git+https://github.com/AlexAltea/haxm.git
+	md5sums = SKIP
+
+pkgname = haxm-altea-git
+
