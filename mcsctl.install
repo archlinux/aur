@@ -1,0 +1,18 @@
+MCS_USER='mcs'
+MCS_GROUP='mcs'
+
+post_install() {
+	if ! getent group "$MCS_GROUP" > /dev/null; then
+		groupadd "$MCS_GROUP"
+	fi
+
+	if ! getent passwd "$MCS_USER" > /dev/null; then
+		useradd -c 'Minecraft user' -g "$MCS_GROUP" -s /usr/bin/nologin -m "$MCS_USER"
+		passwd -l "$MCS_USER" > /dev/null
+	fi
+}
+
+post_remove() {
+	killall -w -u "$MCS_USER" -s KILL
+	userdel -r -f "$MCS_GROUP" > /dev/null
+}
