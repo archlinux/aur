@@ -1,7 +1,7 @@
 # Maintainer: Jocelyn Meyron <jmeyron@gmail.com>
 
 pkgname=dgtal
-pkgver=0.9.4.1
+pkgver=1.0
 pkgrel=1
 pkgdesc="Digital Geometry Tools and Algorithms Library"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("GPL")
 makedepends=("cmake>=3.1" "boost>=1.46" "gcc>=4.8.1")
 depends=("zlib" "gcc-libs")
 source=("https://github.com/DGtal-team/DGtal/archive/$pkgver.zip")
-sha256sums=('d0aa3bcf7515616b5688424c256986dc8ce02b55e85e1ac07727848f40ea50df')
+sha256sums=('3c6cc31830f0c8b6e178d9cfa1855ad5dfef26ca146ce7301c090f220f9100a2')
 
 build() {
     cd "DGtal-$pkgver"
