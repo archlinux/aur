@@ -3,7 +3,7 @@
 pkgname=openra-ra2-git
 _pkgname=${pkgname/-git}
 pkgver=898.git.4c966a9
-pkgrel=1
+pkgrel=2
 pkgdesc="A Command & Conquer: Red Alert 2-inspired mod of OpenRA"
 arch=('any')
 url="https://github.com/OpenRA/ra2"
@@ -34,11 +34,11 @@ prepare() {
     cd $srcdir/ra2
     dos2unix *.md
     chmod +x *.sh
-    make version VERSION="${pkgver}"
 }
 
 build() {
     cd $srcdir/ra2
+    make version VERSION="${pkgver}"
     make
 }
 
