@@ -8,15 +8,8 @@ arch=(any)
 url="https://github.com/KSXGitHub/srcinfo.pkgbuild.git"
 license=(MIT)
 depends=(pacman bash)
-source=(LICENSE.md)
-sha512sums=(SKIP)
-
-build() {
-  (
-    echo '#! /usr/bin/env bash'
-    echo 'makepkg --printsrcinfo > .SRCINFO'
-  ) > srcinfo
-}
+source=(srcinfo LICENSE.md)
+sha512sums=(SKIP SKIP)
 
 package() {
   install -Dm755 srcinfo "$pkgdir"/usr/bin/srcinfo
