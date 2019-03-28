@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Sebastian <asamk@gmx.de>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Tobias Kieslich <tobias@archlinux.org>
