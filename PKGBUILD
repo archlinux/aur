@@ -2,7 +2,7 @@
 
 pkgname=openra-sp-git
 _pkgname=${pkgname/-git}
-pkgver=206.git.525762a
+pkgver=209.git.9b74298
 pkgrel=1
 pkgdesc="A significantly modified Tiberian Sun-inspired mod of OpenRA"
 arch=('any')
@@ -34,10 +34,10 @@ prepare() {
     cd $srcdir/OpenRAModSDK
     dos2unix *.md
     chmod +x *.sh
-    make version VERSION="${pkgver}"
 }
 
 build() {
+    make version VERSION="${pkgver}"
     cd $srcdir/OpenRAModSDK
     make
 }
