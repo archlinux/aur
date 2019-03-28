@@ -1,4 +1,4 @@
 pkg
 src
-mcsctl-*.pkg.tar.xz
-v*.tar.gz
+*.pkg.tar.xz
+*.tar.gz
