@@ -23,7 +23,7 @@ for key in ${!dep_versions[*]};do sed -i "s/@${key}@/${dep_versions[${key}]}/" P
 echo "##finish generating PKGBUILD"
 
 echo "##update pkgver"
-makepkg -Coc
+makepkg -Co
 echo "##finish updating pkgver"
 
 echo "##generate .SRCINFO" >&2
