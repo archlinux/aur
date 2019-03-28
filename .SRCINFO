@@ -9,6 +9,7 @@ pkgbase = tautulli
 	makedepends = curl
 	depends = python2
 	depends = python2-setuptools
+	depends = python2-pytz
 	provides = tautulli
 	conflicts = plexpy-git
 	conflicts = tautulli-beta
