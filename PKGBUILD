@@ -3,7 +3,7 @@
 pkgname=openra-dr-git
 _pkgname=${pkgname/-git}
 pkgver=324.git.ffcd6ba
-pkgrel=1
+pkgrel=2
 pkgdesc="A Dark Reign-inspired mod of OpenRA"
 arch=('any')
 url="https://www.openra.net"
@@ -33,11 +33,11 @@ pkgver() {
 prepare() {
     cd $srcdir/DarkReign
     dos2unix *.md
-    make version VERSION="${pkgver}"
 }
 
 build() {
     cd $srcdir/DarkReign
+    make version VERSION="${pkgver}"
     make || (printf "make failed; please do not complain at the AUR about this, as this is an upstream issue.\n" && \
 	printf "So report this at ${url}/issues/new, after checking\n" && \
 	printf "for existing issues.\n")
