@@ -8,7 +8,11 @@ pkgbase = ipfs-fuse-daemon
 	depends = bash
 	depends = go-ipfs
 	depends = fuse2
+	source = start-ipfs-fuse-daemon.sh
+	source = ipfs-fuse.service
 	source = LICENSE.md
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = ipfs-fuse-daemon
