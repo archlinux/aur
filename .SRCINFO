@@ -8,7 +8,7 @@ pkgbase = ipfs-fuse-daemon
 	depends = bash
 	depends = go-ipfs
 	depends = fuse2
-	source = https://raw.githubusercontent.com/KSXGitHub/MIT/master/LICENSE.md
+	source = LICENSE.md
 	sha512sums = SKIP
 
 pkgname = ipfs-fuse-daemon
