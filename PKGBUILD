@@ -33,7 +33,7 @@ if (( $_BUILD_DOC )); then
     makedepends+=('python-sphinx' 'lammpsdoc')
 fi
 if (( $_ENABLE_KIM )); then
-    depends+=('kim-api')
+    depends+=('kim-api>=2.0.0' 'kim-api<=2.0.1')
     _feature_args+=('-DPKG_KIM=yes')
 fi
 
