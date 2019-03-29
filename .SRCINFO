@@ -1,0 +1,17 @@
+pkgbase = ptxdist-2018.12
+	pkgdesc = Embedded Linux build system, pinned 2018.12 release
+	pkgver = 2018.12.0
+	pkgrel = 1
+	url = http://www.ptxdist.org
+	arch = x86_64
+	license = GPL
+	depends = dialog
+	depends = flex
+	depends = bison
+	depends = patch
+	depends = python2
+	source = http://www.pengutronix.de/software/ptxdist/download/ptxdist-2018.12.0.tar.bz2
+	md5sums = d690c207aa27ed2be7fd392ad2809af3
+
+pkgname = ptxdist-2018.12
+
