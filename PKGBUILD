@@ -2,7 +2,7 @@
 # Author: Fatih Kadir Akın <f@users.noreply.github.com>
 pkgname=guardian-git
 pkgver=v0.0.5.0.804d693
-pkgrel=2
+pkgrel=3
 pkgdesc="Watches over your files and runs assigned tasks"
 arch=('any')
 url="https://github.com/f/guardian"
