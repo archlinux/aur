@@ -1,42 +1,53 @@
+# Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
+# Contributor: GordonGR <ntheo1979@gmail.com>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
-# Maintainer: GordonGR <ntheo1979@gmail.com>
 
-_pkgname=libdvdnav
-pkgname=lib32-${_pkgname}
+_basename=libdvdnav
+pkgname=lib32-libdvdnav
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The library for xine-dvdnav plugin (32 bit)"
-arch=('x86_64')
-license=('GPL')
+arch=(x86_64)
+license=(GPL)
 url="https://www.videolan.org/developers/libdvdnav.html"
-depends=('lib32-libdvdread' "${_pkgname}")
+depends=(lib32-libdvdread libdvdnav)
 makedepends=('git')
 _commit=dcb9109e45ccd304ec82a7c7bf46cca63620adf9  # tags/6.0.0^0
 source=("git+https://code.videolan.org/videolan/libdvdnav.git#commit=$_commit")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-cd ${_pkgname}
-git describe --tags | sed -e 's/-/+/g'
+    cd "${_basename}"
+
+    git describe --tags | sed -e 's/-/+/g'
 }
+
 prepare() {
-cd "${_pkgname}"
-autoreconf -fi
+    cd "${_basename}"
+
+    autoreconf -fi
 }
 
 build() {
-export CC='gcc -m32'
-export CXX='g++ -m32'
-export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-  
-cd "${_pkgname}"
-./configure --prefix=/usr --libdir=/usr/lib32
-make
+    cd "${_basename}"
+
+    export CC='gcc -m32'
+    export CXX='g++ -m32'
+    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+
+    ./configure \
+        --build=i686-pc-linux-gnu \
+        --prefix=/usr \
+        --libdir=/usr/lib32
+
+    make
 }
 
 package() {
-cd "${_pkgname}"
-make DESTDIR="${pkgdir}" install
-rm -rf "${pkgdir}/usr"/{bin,include,share}
+    cd "${_basename}"
+
+    make DESTDIR="${pkgdir}" install
+
+    rm -rf "${pkgdir}/usr"/{include,share}
 }
 
