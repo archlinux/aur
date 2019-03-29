@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: LinRs <20455421+LinRs AT users.noreply.github.com>
 # Contributor: Pierre Neidhardt <ambrevar@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Ben Mazer <blm@groknil.org>
@@ -6,18 +6,19 @@
 
 pkgname=gtypist
 pkgver=2.9.5
-pkgrel=5
+pkgrel=6
 pkgdesc="universal typing tutor"
 arch=('x86_64')
 url="http://www.gnu.org/software/gtypist/gtypist.html"
-license=("GPL")
+license=("GPL3")
 depends=('ncurses' 'perl')
 makedepends=('emacs')
-source=(ftp://ftp.gnu.org/gnu/gtypist/$pkgname-$pkgver.tar.gz
+source=("https://ftp.gnu.org/gnu/gtypist/$pkgname-$pkgver.tar.gz"{,.sig}
 	ncurses.patch)
-md5sums=('6098c32890f2437384b5efe4e993fb32'
-         'a836141e70941b7e0d3477bc8ecdecdf')
-
+sha256sums=('4059be9585683bbb84757dd4bbafa8ff4ecda2ed9eecd4e7594365843f05a266'
+            'SKIP'
+            'c4d7b942aafb2e9262683083662328f770565ce71c0ca11d3e99065a60925945')
+validpgpkeys=("F8F09C0B79F90A20F953FB1CA6D813D8C94AFA52") #Tim Marston <edam@waxworlds.org>
 prepare() {
   cd "$srcdir"/$pkgname-$pkgver
   patch -p1 <"$srcdir"/ncurses.patch
