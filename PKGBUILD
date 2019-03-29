@@ -3,8 +3,8 @@
 # Contributor: Mark Weiman <markzz@archlinux.net>
 
 pkgbase=linux-vfio-selinux
-_srcname=linux-4.20
-pkgver=4.20.11
+_srcname=linux-5.0
+pkgver=5.0.5
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -12,8 +12,8 @@ license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=(
-  https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
-  https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz
+  https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.{xz,sign}
+  https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -26,10 +26,10 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('ad0823183522e743972382df0aa08fb5ae3077f662b125f1e599b0b2aaa12438'
+sha256sums=('437b141a6499159f5a7282d5eb4b2be055f8e862ccce44d7464e8759c31a2e43'
             'SKIP'
-            '35157d905f8d488af632f29a7b0a120cb377d7a7c011cd4e66c6428346d9c5b2'
-            'f13691fa3ea0f6c61435232f640c1c7381e1e12208c2548f507bb91af190838a'
+            '70051be96455f84e13af8a3e487a6da2ed3274843bbd26049004d4e7578365ea'
+            '019c562d3cb2ced689e8aa2b52a7cbd745e09d720632c3c703619003a58ec009'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5'
             '99d0102c8065793096b8ea2ccc01c41fa3dcb96855f9f6f2c583b2372208c6f9'
