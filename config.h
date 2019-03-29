@@ -32,8 +32,8 @@ struct cpair pairs[] = {
 };
 
 struct assoc assocs[] = {
-	{ "\\.(avi|mp4|mkv|wav|mp3|ogg|flac|mov)$", "mpv --quiet" },
-	{ "\\.(png|jpg|gif)$", "sxiv" },
+	{ "\\.(avi|mp4|mkv|wav|mp3|ogg|flac|mov)$", "mpv" },
+	{ "\\.(png|jpg|jpeg|gif)$", "sxiv" },
 	{ "\\.(html|svg)$", "firefox" },
 	{ "\\.pdf$", "mupdf" },
 	{ "\\.sh$", "sh" },
