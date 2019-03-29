@@ -1,9 +1,10 @@
 #!/bin/bash
 # shellcheck disable=SC2034,SC2164
-# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Maintainer: Zack Emmert <zemmert@fastmail.com>
+# Contributor Alexandre Bouvier <contact@amb.tf>
 # Contributor: Daniel Cohen <dan@supercore.co.uk>
 pkgname=plymouth-kcm
-pkgver=5.15.2
+pkgver=5.15.3
 pkgrel=1
 pkgdesc="KCM to manage the Plymouth (Boot) theme"
 arch=('x86_64')
