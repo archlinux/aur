@@ -1,0 +1,20 @@
+pkgbase = gdb-twili-git
+	pkgdesc = The GNU Debugger for Twili
+	pkgver = 97040.65d9087ab0
+	pkgrel = 1
+	url = https://github.com/misson20000/twili-gdb
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = xz
+	depends = ncurses
+	depends = expat
+	depends = python
+	depends = guile2.0
+	depends = gdb-common
+	options = !emptydirs
+	source = git+https://github.com/misson20000/twili-gdb.git
+	sha256sums = SKIP
+
+pkgname = gdb-twili-git
+
