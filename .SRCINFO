@@ -1,0 +1,15 @@
+pkgbase = eva
+	pkgdesc = simple calculator REPL, similar to bc(1)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/NerdyPepper/eva
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	conflicts = eva-git
+	source = 0.2.1.tar.gz::https://github.com/NerdyPepper/eva/archive/v0.2.1.tar.gz
+	sha256sums = ab79c20de26f33b8a809e333cea4403afdd9848ce1e6c755e473953c4024c646
+
+pkgname = eva
+
