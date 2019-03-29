@@ -1,7 +1,7 @@
 pkgname=mingw-w64-python27-bin
-pkgver=2.7.15
+pkgver=2.7.16
 _pybasever=27
-pkgrel=2
+pkgrel=1
 pkgdesc="A high-level scripting language (native MSVC version) (mingw-w64)"
 arch=('any')
 license=('PSF')
@@ -13,8 +13,8 @@ options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.python.org/ftp/python/${pkgver}/python-${pkgver}.msi"
         "http://www.python.org/ftp/python/${pkgver}/python-${pkgver}.amd64.msi"
         wine-python.sh)
-sha256sums=('1afa1b10cf491c788baa340066a813d5ec6232561472cfc3af1664dbc6f29f77'
-            '5e85f3c4c209de98480acbf2ba2e71a907fd5567a838ad4b6748c76deb286ad7'
+sha256sums=('d57dc3e1ba490aee856c28b4915d09e3f49442461e46e481bc6b2d18207831d7'
+            '7c0f45993019152d46041a7db4b947b919558fdb7a8f67bcd0535bc98d42b603'
             SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -29,9 +29,6 @@ build() {
     fi
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
     msiexec /i "${srcdir}"/python-${pkgver}${target}.msi /qb TARGETDIR=$PWD
-
-    # https://bugs.python.org/issue11566
-    sed -i "s|#define hypot _hypot|/*#define hypot _hypot*/|g" include/pyconfig.h
 
     # https://bugs.python.org/issue11722
     sed -i "s|#if defined(MS_WIN64)|#if defined(MS_WIN64) \|\| defined(__MINGW64__)|g" include/pyconfig.h
