@@ -29,7 +29,7 @@ _target_host=false
 _sysroot=""
 _piver=""
 _use_mesa=false
-_float=false
+#_float=true
 _shadow_build=true
 # automatically disabled if you are building webengine
 _debug=true
@@ -95,10 +95,10 @@ fi
 
 # vars
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
-_pkgvermajmin="5.12"
-_pkgverpatch=".1"
+_pkgvermajmin="5.13"
+_pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
-_dev_suffix=""
+_dev_suffix="beta1"
 pkgrel=1
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
@@ -298,7 +298,7 @@ _core_configure_options=" \
                  -reduce-exports \
         "
 
-_tar_xz_sha256="caffbd625c7bc10ff8c5c7a27dbc7d84fa4de146975c0e1ffe904b514ccd6da4"
+_tar_xz_sha256="23756b4786cf66b0bddb27694a48f4ecb01ec40fed1e26949db0bc57a03557cc"
 #_tar_xz_sha256="356f42d9087718f22f03d13d0c2cdfb308f91dc3cf0c6318bed33f2094cd9d6c"
 
 source=("git://github.com/sirspudd/mkspecs.git")
@@ -394,8 +394,7 @@ if ! $_target_host && $_overwrite_mkspec; then
 fi
 
 if $_patching; then
-  cd ${_basedir}
-  patch -p1 < ${startdir}/0001-Turn-bcm_host-library-into-makeSpec-source.patch
+  echo "Patching source"
 fi
 
   rm -Rf ${_bindir}
