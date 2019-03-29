@@ -9,8 +9,9 @@ pkgdesc='The Free Software Media Browser'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://github.com/jellyfin/jellyfin'
 license=('GPL2')
-depends=('ffmpeg' 'imagemagick' 'dotnet-sdk' 'sqlite')
-makedepends=('git')
+# ffmpeg4.0 because of https://github.com/jellyfin/jellyfin/issues/555
+depends=('dotnet-runtime' 'ffmpeg4.0' 'imagemagick' 'sqlite')
+makedepends=('git' 'dotnet-sdk')
 provides=('jellyfin')
 conflicts=('jellyfin')
 source=('git+https://github.com/jellyfin/jellyfin.git'
