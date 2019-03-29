@@ -1,12 +1,12 @@
 pkgbase = ecflow
 	pkgdesc = ecFlow - workflow manager from ECMWF
 	pkgver = 4.14.0
-	pkgrel = 1
-	url = https://software.ecmwf.int/wiki/display/ECFLOW/Getting+Started+with+ecFlowUI
+	pkgrel = 2
+	url = https://confluence.ecmwf.int/display/ECFLOW
 	arch = i686
 	arch = x86_64
 	groups = science
-	license = APACHE
+	license = APACHE 2.0
 	makedepends = cmake
 	makedepends = boost
 	depends = qt5-base

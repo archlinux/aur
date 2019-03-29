@@ -1,11 +1,11 @@
 # Contributor: Martin Grønlien Pejcoch <mpejcoch@gmail.com>
 pkgname=ecflow
 pkgver=4.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ecFlow - workflow manager from ECMWF"
 arch=(i686 x86_64)
-url="https://software.ecmwf.int/wiki/display/ECFLOW/Getting+Started+with+ecFlowUI"
-license=('APACHE')
+url="https://confluence.ecmwf.int/display/ECFLOW"
+license=('APACHE 2.0')
 groups=(science)
 depends=(qt5-base qt5-charts qt5-svg python git)
 makedepends=(cmake boost)
