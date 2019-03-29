@@ -1,0 +1,14 @@
+pkgbase = breezy
+	pkgdesc = Breezy (brz) is version control system forked from the dead Bazaar (bzr)
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://www.breezy-vcs.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python-configobj
+	source = https://launchpad.net/brz/3.0/3.0.0/+download/breezy-3.0.0.tar.gz
+	sha256sums = d5723a7a3fcaa827bf2731c20df5240d7063c7728b2db3a5d58bc90f6257f878
+
+pkgname = breezy
+
