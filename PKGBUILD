@@ -1,42 +1,50 @@
+# Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
+# Contributor: GordonGR <ntheo1979@gmail.com>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
-# Maintainer: GordonGR <ntheo1979@gmail.com>
 
-_pkgname=neon
-pkgname=lib32-${_pkgname}
+_basename=neon
+pkgname=lib32-neon
 pkgver=0.30.2
-pkgrel=4
+pkgrel=5
 pkgdesc="HTTP and WebDAV client library with a C interface (32 bit)"
-arch=('x86_64')
-license=('GPL' 'LGPL')
-depends=('lib32-krb5' 'lib32-expat' "${_pkgname}" 'ca-certificates' 'zlib')
+arch=(x86_64)
 url="https://web.archive.org/web/20170928175008/http://www.webdav.org/neon/"
-source=("https://fossies.org/linux/www/${_pkgname}-${pkgver}.tar.gz")
+license=(GPL LGPL)
+depends=(lib32-krb5 lib32-expat ca-certificates neon)
+source=("https://fossies.org/linux/www/${_basename}-${pkgver}.tar.gz")
 options=('libtool') # FS#16067
-md5sums=('e28d77bf14032d7f5046b3930704ef41')
+source=(https://fossies.org/linux/www/${_basename}-${pkgver}.tar.gz
+        $_basename-$pkgver.tar.gz.asc)
+sha1sums=('d1c020f96731135263476ebaa72b2da07c4727cd'
+          'SKIP')
+validpgpkeys=('190555472DCC589BEF01609C608A86DF9833CC49') # Joe Orton
 
 build() {
-export CC='gcc -m32'
-export CXX='g++ -m32'
-export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-  
-cd "${srcdir}"/${_pkgname}-${pkgver}
-./configure --prefix=/usr \
-  --with-expat \
-  --enable-shared \
-  --disable-static \
-  --with-ssl=openssl \
-  --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt \
-  --libdir=/usr/lib32 --without-libproxy # without proxy, just like 'neon' package
+    cd "${_basename}-${pkgver}"
 
-sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-make
+    export CC='gcc -m32'
+    export CXX='g++ -m32'
+    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-# fix invalid .so links in man pages (FS#24902)
-sed -i '/^\.so/s|\.so \([^.]\+\)\.\([[:digit:]]\)|.so man\2/\1.\2|' doc/man/*
+    ./configure \
+        --build=i686-pc-linux-gnu \
+        --prefix=/usr \
+        --libdir=/usr/lib32 \
+        --with-expat \
+        --enable-shared \
+        --disable-static \
+        --with-ssl=openssl \
+        --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt
+
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
+    make
 }
 
 package() {
-cd "${srcdir}"/${_pkgname}-${pkgver}
-make DESTDIR="${pkgdir}" install
-rm -rf "${pkgdir}/usr"/{bin,include,share}
+    cd "${_basename}-${pkgver}"
+
+    make DESTDIR="${pkgdir}" install
+
+    rm -rf "${pkgdir}/usr"/{bin,include,share}
 }
