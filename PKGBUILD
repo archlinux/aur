@@ -3,7 +3,7 @@
 
 pkgname=sway
 pkgver=1.0
-pkgrel=7
+pkgrel=8
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
 url='https://swaywm.org/'
@@ -12,7 +12,6 @@ depends=(cairo gdk-pixbuf2 json-c pango pcre ttf-font wlroots)
 makedepends=(meson ninja scdoc wayland-protocols)
 optdepends=(
   'dmenu:                for launching applications'
-  'gdk-pixbuf2:          required by swaybg'
   'i3status:             display a status line'
   'rxvt-unicode:         default terminal emulator'
   'xorg-server-xwayland: X11 support'
@@ -27,7 +26,7 @@ sha256sums=('24dafd0f1e630e97a5dd47233841adf856b665e2321d6207acfe6b3002d1bc56'
 
 build() {
   mkdir -p build
-  arch-meson build $pkgname-$pkgver -Dwerror=false
+  arch-meson build $pkgname-$pkgver -D werror=false -D b_ndebug=true
   ninja -C build
 }
 
