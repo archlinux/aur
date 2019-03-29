@@ -14,7 +14,7 @@ options=(!emptydirs)
 source=(https://github.com/petertodd/python-bitcoinlib/archive/$pkgname-v$pkgver.tar.gz)
 sha256sums=('6b0688a8c3d4ef4385f269a6ac9163a40a5eab04e3b13114891d76f87c6926dd')
 conflicts=('python-bitcoin' 'python-pybitcointools' 'python-bitcoinlib')
-provides=("python-python-bitcoinlib=$pkgver")
+provides=("$pkgname=$pkgver")
 
 build() {
   cd "$pkgname-$pkgname-v$pkgver"
