@@ -1,0 +1,42 @@
+From 0eda3ec2ac78577a08ace4c18cd9e912a56609e6 Mon Sep 17 00:00:00 2001
+From: Patrick Steinhardt <ps@pks.im>
+Date: Wed, 27 Mar 2019 07:47:30 +0100
+Subject: [PATCH] Makefile: fix compilation if source is not in a git repo
+
+To make the version available, the Makefile creates a "version.h"
+header. This file will either contain the output of `git describe
+--tags` or a fallback value that is declared inside the Makefile
+itself.
+
+This logic is broken as there is a hard dependcy on the
+".git/index" file. The intent here is to regenerate the header
+file whenever there is any change to the git repo itself. But in
+case where vimb is for example being compiled from a tarball,
+there will be no git index at all, leading to an error "No rule
+to make target '.git/index'".
+
+Fix the issue by using `$(wildcard .git/index)`. In case the file
+exists, we will pick it up as a dependency of "version.h" and
+thus recompile it whenever the git repo changes. Otherwise, the
+wildcard won't match and we will fall back to just using the
+declared value of the "version" variable.
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index fa75f10..de5c4d5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -3,7 +3,7 @@ include config.mk
+ 
+ all: version.h src.subdir-all
+ 
+-version.h: Makefile .git/index
++version.h: Makefile $(wildcard .git/index)
+ 	@echo "create $@"
+ 	$(Q)v="$$(git describe --tags 2>/dev/null)"; \
+ 	echo "#define VERSION \"$${v:-$(version)}\"" > $@
+-- 
+2.21.0
+
