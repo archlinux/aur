@@ -22,4 +22,4 @@ if [ -z `winetricks list-installed|grep vcrun2015` ]; then
   winetricks settings win7
 fi
 cd ~/.cemu
-wine "$HOME"/.cemu/Cemu.exe "$@"
+wine Cemu.exe "$@"

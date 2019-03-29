@@ -1,7 +1,7 @@
 pkgbase = cemu
 	pkgdesc = Wii U emulator (via wine). Includes the Cemuhook plugin and graphic packs
 	pkgver = 1.15.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cemu.info/
 	install = cemu.install
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = cemu
 	source = http://cemu.info/releases/cemu_1.15.3.zip
 	source = https://files.sshnuke.net/cemuhook_1140_0570.zip
 	source = https://github.com/slashiee/cemu_graphic_packs/releases/download/Travis251/graphicPacks251.zip
-	md5sums = bf4a05c4f1d6063ed6bb90b66b2eca7d
+	md5sums = d54375756c33cac10970eab2acb0b5b5
 	md5sums = 54d70005a8975812ab54fcfef53f7bde
 	md5sums = 4906f28ba332aab4a3f70f9c7e4e1c87
 	md5sums = e6c1071d4fc28cdb3b946e683eed3c96
