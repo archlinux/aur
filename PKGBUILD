@@ -13,7 +13,7 @@
 pkgname=llvm-git
 _pkgname='llvm'
 pkgver=9.0.0_r313100.6a75c36ea9b
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='https://llvm.org/'
 license=('custom:University of Illinois/NCSA Open Source License')
@@ -45,54 +45,50 @@ optdepends=('openmp: OpenMP support in clang with -fopenmp')
 provides=(
     'clang'
     "clang=$pkgver"
-    "clang-analyzer=$pkgver" 
+    "clang-analyzer=$pkgver"
     'clang-analyzer-polly-svn'
     "clang-analyzer-svn"
     'clang-compiler-rt'
-    'clang-compiler-rt-git'
     'clang-compiler-rt-polly-svn'
     'clang-compiler-rt-svn'
-    'clang-polly-svn' 
-    'clang-svn' 
-    "clang-tools-extra=$pkgver" 
+    'clang-polly-svn'
+    'clang-svn'
+    "clang-tools-extra=$pkgver"
     'clang-tools-extra-polly-svn'
     "clang-tools-extra-svn"
     'clang-tools-extra-svn'
     'compiler-rt'
-    'compiler-rt-git' 
-    'compiler-rt-svn' 
-    'lld' 
+    'compiler-rt-svn'
+    'lld'
     'lldb'
-    'lldb-git'
     'lldb-polly-svn'
-    'lldb-svn' 
-    'lld-git'
+    'lldb-svn'
     'lld-polly-svn'
-    'lld-svn' 
+    'lld-svn'
     'llvm'
     'llvm-libs'
-    'llvm-libs-git' 
+    'llvm-libs-git'
     'llvm-libs-polly-svn'
     'llvm-libs-svn'
     'llvm-polly-svn'
     'llvm-svn')
 conflicts=(
     'clang'
-    'clang-analyzer' 
-    'clang-compiler-rt' 
+    'clang-analyzer'
+    'clang-compiler-rt'
     'clang-compiler-rt-git'
     'clang-tools-extra'
     'compiler-rt'
     'lld'
-    'lldb' 
+    'lldb'
     'llvm'
     'llvm-libs')
 replaces=(
-    'clang-analyzer' 
+    'clang-analyzer'
     'clang-analyzer-git'
-    'clang-analyzer-svn' 
+    'clang-analyzer-svn'
     'clang-compiler-rt'
-    'clang-compiler-rt-git' 
+    'clang-compiler-rt-git'
     'clang-compiler-rt-svn'
     'clang-tools-extra'
     'clang-tools-extra-git'
@@ -156,7 +152,7 @@ package() {
   cd "${srcdir}/build"
 
   DESTDIR="$pkgdir" ninja install
-  
+
   if [[ $CARCH == x86_64 ]]; then
     # Needed for multilib (https://bugs.archlinux.org/task/29951)
     # Header stub is taken from Fedora
@@ -168,14 +164,14 @@ package() {
   _install_licenses "${srcdir}/compiler-rt"
   _install_licenses "${srcdir}/lld"
   _install_licenses "${srcdir}/lldb"
-  _install_licenses "${srcdir}/llvm" 
+  _install_licenses "${srcdir}/llvm"
 
   python3 -m compileall "$pkgdir"
   python3 -O -m compileall "$pkgdir"
   python3 -OO -m compileall "$pkgdir"
 
   rm -rf "$pkgdir/usr/libexec"
-  sed -i 's|libexec|lib/clang|' "$pkgdir/usr/bin/scan-build"   
+  sed -i 's|libexec|lib/clang|' "$pkgdir/usr/bin/scan-build"
 }
 
 #
@@ -184,7 +180,7 @@ package() {
 
 # Install the license files for a package
 # Arguments: source_directory_to_install_from
-# Notes: We prune some directories that are inserted into the tree in prepare() 
+# Notes: We prune some directories that are inserted into the tree in prepare()
 #        in order to eliminate possible duplicates. We also use NULL-terminated
 #        strings, just in case we have paths including spaces. Finally, we opt
 #        for a flat directory structure, so all license files in subdirectories
