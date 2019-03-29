@@ -1,15 +1,15 @@
 pkgbase = tikzit
 	pkgdesc = Allows the creation and modification of TeX diagrams written using the pgf/TikZ macro library
-	pkgver = 2.0
-	pkgrel = 2
+	pkgver = 2.1.4
+	pkgrel = 1
 	url = https://tikzit.github.io/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = qt5-base
 	optdepends = texlive-core: previews
-	source = tikzit-2.0.tar.gz::https://github.com/tikzit/tikzit/archive/v2.0.tar.gz
-	sha256sums = d1a84531b8ac2298c140217267423cd9ce4d84ee443b5deb4aa47e4beab4f295
+	source = tikzit-2.1.4.tar.gz::https://github.com/tikzit/tikzit/archive/v2.1.4.tar.gz
+	sha256sums = 14443ab430ff20e5c3b185a704932858afb3d776aa9b3a54e1b9898d5b9c13a8
 
 pkgname = tikzit
 
