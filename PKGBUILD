@@ -1,7 +1,7 @@
 # Maintainer: Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
 
 pkgname=ttyplot
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc='A realtime plotting utility for terminal with data input from stdin'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('make' 'gcc')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("https://github.com/tenox7/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('56c4c9343d5da99a23e020e8c37f7f02178cd370983d602cd146f2bb67b0a155')
+sha256sums=('3ced72e59c74655539dddcf570a4c14fda3460a042cd2297bf1914cd9efab2c8')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
