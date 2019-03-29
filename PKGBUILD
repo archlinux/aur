@@ -1,18 +1,18 @@
-# Maintainer: Fredy García <frealgagu at gmail dot com>
+# Contributor: Fredy García <frealgagu at gmail dot com>
 # Contributor: Florent H. CARRÉ <colundrum@gmail.com>
 
 pkgname=skippy-xd-git
-pkgver=2016.10.20.r0.72d1ddf
+pkgver=2016.10.20.r26.8a5723b
 pkgrel=1
 pkgdesc="A full-screen task-switcher for X11, similar to Apple's Expose."
 arch=("i686" "x86_64")
-url="https://github.com/antonio-malcolm/${pkgname%-git}"
+url="https://github.com/dreamcat4/${pkgname%-git}"
 license=("GPL")
 depends=("giflib" "libjpeg" "libxcomposite" "libxft" "libxinerama" "xorg-server")
 makedepends=("git")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git://github.com/antonio-malcolm/${pkgname%-git}.git")
+source=("${pkgname%-git}::git://github.com/dreamcat4/${pkgname%-git}.git")
 sha256sums=("SKIP")
 
 pkgver() {
