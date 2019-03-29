@@ -12,8 +12,8 @@
 
 pkgname=llvm-git
 _pkgname='llvm'
-pkgver=9.0.0_r313100.6a75c36ea9b
-pkgrel=3
+pkgver=9.0.0_r313125.05f1dd93627
+pkgrel=1
 arch=('i686' 'x86_64')
 url='https://llvm.org/'
 license=('custom:University of Illinois/NCSA Open Source License')
@@ -25,21 +25,22 @@ makedepends=(
   'git'
   'graphviz'
   'jsoncpp'
-  # 'lcov'
-  'libedit'
   'libelf'
   'libevent'
   'libffi'
-  'libxml2'
   'mathjax'
   'ncurses'
   'ninja'
   'python-recommonmark'
   'python-requests'
   'python-sphinx'
-  'swig')
-depends=('valgrind' 'python')
-makedepends_x86_64=('lib32-gcc-libs')
+  'swig'
+  'valgrind')
+depends=(
+  'libedit'
+  'libxml2'
+  'python')
+depends_x86_64=('lib32-gcc-libs')
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (git)"
 optdepends=('openmp: OpenMP support in clang with -fopenmp')
 provides=(
