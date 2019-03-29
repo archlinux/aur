@@ -1,4 +1,5 @@
-# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Dan Beste <dan.ray.beste@gmail.com>
 
 # TODO
 #   1. Firejail profile + script
@@ -6,7 +7,7 @@
 pkgname='rust-doom-git'
 _gitname='rust-doom'
 _execname='rs_doom'
-pkgver=r325.5b2a843
+pkgver=r403.6086d57
 pkgrel=1
 pkgdesc='A little Doom 1 & 2 Renderer written in Rust.'
 arch=('i686' 'x86_64')
