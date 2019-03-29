@@ -1,6 +1,6 @@
 pkgbase = pmix
 	pkgdesc = Process Management Interface Exascale
-	pkgver = 3.0.2
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://pmix.github.io/pmix/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = pmix
 	depends = zlib
 	depends = munge
 	conflicts = openmpi
-	source = https://github.com/pmix/pmix/releases/download/v3.0.2/pmix-3.0.2.tar.bz2
-	sha1sums = 3a1c253cb078a9088e9a0a513f3a40e2f7f29cb8
+	source = https://github.com/pmix/pmix/releases/download/v3.1.2/pmix-3.1.2.tar.bz2
+	sha1sums = d066cc45844e1871c3f81fa1c093615ca14f0171
 
 pkgname = pmix
 
