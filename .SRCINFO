@@ -1,0 +1,17 @@
+pkgbase = spell
+	pkgdesc = A clone of the standard Unix program of the same name, implemented as a wrapper for Ispell
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://directory.fsf.org/wiki/Spell
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	source = spell-1.1.tar.gz::https://ftp.gnu.org/gnu/spell/spell-1.1.tar.gz
+	md5sums = c1dc2c4fd30b28d6480279b79a6fb889
+
+pkgname = spell
+	depends = ispell
+
