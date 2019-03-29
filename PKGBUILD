@@ -94,7 +94,7 @@ if $_building && ! $_target_host; then
 fi
 
 # vars
-_local_qt5_repo="/opt/dev/src/qtproject/qt5"
+_local_qt5_repo="${local_qt5_repo}"
 _pkgvermajmin="5.13"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
