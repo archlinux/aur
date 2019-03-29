@@ -1,47 +1,56 @@
-# $Id: PKGBUILD 177015 2013-02-04 08:35:17Z jgc $
+# Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
+# Contributor: GordonGR <gordongr@freemail.gr>
 # Contributor: Sarah Hay <sarah@archlinux.org>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
-# Maintainer: GordonGR <gordongr@freemail.gr>
 
+_basename=libmpeg2
 pkgname=lib32-libmpeg2
-_pkgname=libmpeg2
 pkgver=0.5.1
-pkgrel=3
-pkgdesc="Library for decoding MPEG-1 and MPEG-2 video streams, lib32."
-arch=('x86_64')
+pkgrel=4
+pkgdesc="Library for decoding MPEG-1 and MPEG-2 video streams (32 bit)"
+arch=(x86_64)
 url="http://libmpeg2.sourceforge.net/"
-depends=('glibc' 'libmpeg2')
-makedepends=('lib32-sdl' 'lib32-libxv')
-optdepends=('lib32-sdl: required for mpeg2dec'
-            'lib32-libxv: required for mpeg2dec')
-source=("http://libmpeg2.sourceforge.net/files/${_pkgname}-${pkgver}.tar.gz"
-        "libmpeg2-0.5.1-gcc4.6.patch")
 license=('GPL2')
-options=(!libtool)
-sha512sums=('3648a2b3d7e2056d5adb328acd2fb983a1fa9a05ccb6f9388cc686c819445421811f42e8439418a0491a13080977f074a0d8bf8fa6bc101ff245ddea65a46fbc'
-            '5eef5e283f0f4e8901a1aa1c16e9a2d1e5896a7a09dd5ae107379ec27001f7cd22db62ab731328f2c5e11089e6a8371ced2def4fa8a5a834072ca1e4a4e2ca5d')
+depends=(lib32-glibc libmpeg2)
+makedepends=(lib32-sdl lib32-libxv)
+source=(http://libmpeg2.sourceforge.net/files/${_basename}-${pkgver}.tar.gz
+        libmpeg2-0.5.1-gcc4.6.patch)
+sha256sums=('dee22e893cb5fc2b2b6ebd60b88478ab8556cb3b93f9a0d7ce8f3b61851871d4'
+            '763e188eea36ee3cdfb31e7877bbead00676b5766c25175ec6a7eb20884926d1')
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/libmpeg2-0.5.1-gcc4.6.patch"
+    cd "${_basename}-${pkgver}"
 
-  sed '/AC_PATH_XTRA/d' -i configure.ac
-  autoreconf --force --install
+    patch -Np1 -i "${srcdir}/libmpeg2-0.5.1-gcc4.6.patch"
+
+    sed '/AC_PATH_XTRA/d' -i configure.ac
+
+    autoreconf --force --install
 }
 
 build(){
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	export CC="gcc -m32"
-    export CXX="g++ -m32"
-    export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-	
-	./configure --prefix=/usr --enable-shared --disable-static --libdir=/usr/lib32 --libexecdir=/usr/lib32
-	make OPT_CFLAGS="${CFLAGS}" 	MPEG2DEC_CFLAGS="${CFLAGS}" 	LIBMPEG2_CFLAGS=""
+    cd "${_basename}-${pkgver}"
+
+    export CC='gcc -m32'
+    export CXX='g++ -m32'
+    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+
+    ./configure \
+        --build=i686-pc-linux-gnu \
+        --prefix=/usr \
+        --libdir=/usr/lib32 \
+        --enable-shared \
+        --disable-static
+
+    make OPT_CFLAGS="${CFLAGS}" \
+         MPEG2DEC_CFLAGS="${CFLAGS}" \
+         LIBMPEG2_CFLAGS=""
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
-  cd "$pkgdir/usr"
-  rm -rf {bin,include,share}/
+    cd "${_basename}-${pkgver}"
+
+    make DESTDIR="${pkgdir}" install
+
+    rm -rf "${pkgdir}/usr"/{bin,include,share}
 }
