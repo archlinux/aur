@@ -2,14 +2,13 @@
 # Contributor: ant32 <antreimer@gmail.com>
 
 pkgname=mingw-w64-curl
-pkgver=7.64.0
+pkgver=7.64.1
 pkgrel=1
 pkgdesc="An URL retrival utility and library (mingw-w64)"
 arch=('any')
 url="http://curl.haxx.se"
 license=("MIT")
 depends=('mingw-w64-crt'
-         'mingw-w64-gnutls'
          'mingw-w64-libidn2'
          'mingw-w64-libpsl'
          'mingw-w64-libssh2'
@@ -21,10 +20,10 @@ source=("$url/download/curl-$pkgver.tar.bz2"
         "0001-Make-cURL-relocatable.patch"
         "0002-nghttp2-static.patch"
         "0003-libpsl-static-libs.patch")
-sha256sums=('d573ba1c2d1cf9d8533fadcce480d778417964e8d04ccddcc76e591d544cf2eb'
-            '5d29129b312500c94c4e94cbcdee2fb54148b5788837761534aabb698484f4d4'
+sha256sums=('4cc7c738b35250d0680f29e93e0820c4cb40035f43514ea3ec8d60322d41a45d'
+            'f98fcdf99da76944e3a85da3b6d5bdfce931a2d32c3011c6492273fd2d6078b5'
             '963368c3fdc16f37eef6b1f5b8afa99d7c945b7ae06cc636d3d6277e330c93fb'
-            '5d6563e29e85c7fadd129308e9927450c59fe5d429d9b27aafd3460bfc40defb')
+            '7492d019036b5bec251bfbc3c0b40e5f16d3dd6b2515068835e087a6c21f19ad')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
