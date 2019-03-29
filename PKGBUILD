@@ -1,7 +1,7 @@
 pkgname=mingw-w64-python37-bin
-pkgver=3.7.1
+pkgver=3.7.3
 _pybasever=37
-pkgrel=2
+pkgrel=1
 pkgdesc="Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)"
 arch=('any')
 license=('PSF')
@@ -13,20 +13,18 @@ options=('staticlibs' '!buildflags' '!strip')
 source=("https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-win32.zip"
         "https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-amd64.zip"
         "https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tgz"
-        wine-python.sh bpo-11566.patch)
+        wine-python.sh)
 noextract=("python-${pkgver}-embed-win32.zip"
            "python-${pkgver}-embed-amd64.zip")
-sha256sums=('ba925542487f09568eb503057681a46c55d90ada4f3492c422596c64eee1f23b'
-            'c9e6ff79b0b9baa948e3819334d70fdc9ce2b195dc4948c9d668334ab4ff244e'
-            '36c1b81ac29d0f8341f727ef40864d99d8206897be96be73dc34d4739c9c9f06'
-            SKIP SKIP)
+sha256sums=('ca86268544c19f3b713ea4e4e43b6a64f5d61fba8715b10b9e017b023e88466f'
+            '6de14c9223226cf0cd8c965ecb08c51d62c770171a256991b4fddc25188cfa8e'
+            'd62e3015f2f89c970ac52343976b406694931742fbde2fed8d1ce8ebb4e1f8ff'
+            SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "${srcdir}/Python-${pkgver}"
-  # https://bugs.python.org/issue11566
-  patch -p1 -i "${srcdir}"/bpo-11566.patch
 }
 
 build() {
