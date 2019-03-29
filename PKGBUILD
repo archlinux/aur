@@ -3,7 +3,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=lab-bin
-pkgver=0.15.2
+pkgver=0.15.3
 pkgrel=1
 pkgdesc="A hub-like tool for GitLab (pre-built binary release)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('hub')
 makedepends=('go')
 conflicts=("${pkgname%-bin}-git" "${pkgname%-bin}")
 source=("https://github.com/zaquestion/${pkgname%-bin}/releases/download/v$pkgver/lab_${pkgver}_linux_amd64.tar.gz")
-sha512sums=('33613ad4381683950b9e510e87ad21ef0e338993c896d1308ebfba15f71afc7ad7eee1ec00e9ad5cfc188ec9f70b880f7f76d7885297d02a5ec1600039d53f82')
+sha512sums=('5a96493e7c3dd1466d3bf0d8a2b7fb6a4c3e3e3597fbfda2b6e704ae7edc5aa1fa9c319f2f23cb054235c5128ecb84dc2e3ad7e6b0d9f11a14af9dc4ed583fbf')
 
 package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-bin}"/LICENSE
