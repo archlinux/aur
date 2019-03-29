@@ -1,36 +1,40 @@
+# Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
 # Contributor: josephgbr <rafael.f.f1 at gmail dot com>
-# Maintainer: GordonGR <ntheo1979@gmail.com>
+# Contributor: GordonGR <ntheo1979@gmail.com>
 
-_pkgname=faac
-pkgname=lib32-$_pkgname
+_basename=faac
+pkgname=lib32-faac
 pkgver=1.29.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An AAC audio encoder (32 bit)"
-arch=('x86_64')
+arch=(x86_64)
 url="http://www.audiocoding.com/"
-license=('GPL' 'custom:FAAC')
-depends=('lib32-libmp4v2' "$_pkgname")
-makedepends=('gcc-multilib')
-source=("http://downloads.sourceforge.net/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('2b58d621fad8fda879f07b7cad8bfe10')
+license=('GPL2' 'custom:FAAC')
+depends=(lib32-glibc faac)
+source=("http://downloads.sourceforge.net/${_basename}/${_basename}-${pkgver}.tar.gz")
+sha256sums=('d45f209d837c49dae6deebcdd87b8cc3b04ea290880358faecf5e7737740c771')
 
 build() {
-export CC='gcc -m32'
-export CXX='g++ -m32'
-export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-  
-cd ${_pkgname}-${pkgver}
-  
-./configure --prefix=/usr --libdir=/usr/lib32 --libexecdir=/usr/lib32/${_pkgbase}
-make
+    cd ${_basename}-${pkgver}
+
+    export CC='gcc -m32'
+    export CXX='g++ -m32'
+    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+
+    ./configure \
+        --build=i686-pc-linux-gnu \
+        --prefix=/usr \
+        --libdir=/usr/lib32
+
+    make
 }
 
 package() {
-cd ${_pkgname}-${pkgver}
-make DESTDIR="$pkgdir" install  
-rm -rf "$pkgdir"/usr/{bin,include,share}
-install -Dm644 "${srcdir}"/${_pkgname}-${pkgver}/COPYING "${pkgdir}"/usr/share/licenses/lib32-faac/LICENSE
+    cd ${_basename}-${pkgver}
 
-install -dm755 "$pkgdir"/usr/share/licenses
-ln -s $_pkgbase "$pkgdir"/usr/share/licenses/$pkgname
+    make DESTDIR="$pkgdir" install
+
+    rm -rf "$pkgdir"/usr/{bin,include,share}
+
+    install -Dm644 README "${pkgdir}"/usr/share/licenses/lib32-faac/LICENSE
 }
