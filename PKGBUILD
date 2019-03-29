@@ -74,7 +74,7 @@ fi
 prepare() {
 	cd "${srcdir}/RetroShare-${pkgver}"
 
-	[[ "$_plugin_voip" == 'true' ]] && sed -i -e 's/PKGCONFIG += opencv/PKGCONFIG += opencv3/g' plugins/VOIP/VOIP.pro
+	[[ "$_plugin_voip" == 'true' ]] && sed -i -e 's/PKGCONFIG += opencv/PKGCONFIG += opencv3/g' plugins/VOIP/VOIP.pro || true
 }
 
 build() {
