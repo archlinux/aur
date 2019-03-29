@@ -5,6 +5,7 @@ pkgdesc="Run Qt applications using gtk+ as a windowing system"
 arch=('x86_64')
 url="https://github.com/CrimsonAS/gtkplatform"
 license=('LGPL3' 'GPL2')
+conflicts=('qt-gtk-platform-plugin')
 depends=('gtk3' 'libnotify' 'qt5-base')
 makedepends=('git')
 _commit=a9b84470ceefa481beef598c45bd7cae3042a61c
