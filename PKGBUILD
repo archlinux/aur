@@ -14,8 +14,8 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
-pkgver=15.0.3
-_buildver=12422535
+pkgver=15.0.4
+_buildver=12990004
 _pkgver=${pkgver}_${_buildver}
 pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
@@ -95,7 +95,7 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  'abc956af04224401ef772186909bd1955d178369152980dff5eebc6f7b800855'
+  '2d9e82471e5ad8316de1bcdaf2851ea9e3777545fbfc8a4bc78570035311d959'
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
@@ -119,7 +119,7 @@ sha256sums=(
 
   '05e26d8b21d190ebabb7f693998114d9d5991d9dfb71acb4d990293a65b6b487'
   '6ce902b1dab8fc69be253abd8e79017011985eca850ff7acc7282f9ab668e35d'
-  'd6c2bbe974f41f555927071eb0f8238fdf30cb3fae62ef00acbc5fc2917986ac'
+  'c85deed2bbba2b5eebc12b7937171d0784f1b50cbba86c50642ba69834384438'
   '955329f91f25f523f5974992923238d2718bc6255acc7e18fabf80cf20206531'
 )
 options=(!strip emptydirs)
@@ -130,7 +130,7 @@ _isovirtualprinterimages=(Linux Windows)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=11.0.2_10952296
+_vmware_fusion_ver=11.0.3_12992109
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
 makedepends+=(
@@ -144,8 +144,8 @@ source+=(
   'unlocker.py'
 )
 sha256sums+=(
-  '02cc231902c9fc1b4faf2fc2664e7f3d2121ad4b8a92e18a759b044d20a7b724'
-  'f6b542320ae2aa33bf6c5cb7ccdda702ae5067c3e3ae2e55c1b876a2d65356a3'
+  '0de0f886ad5d53bcdb2adf3969f2c63d4dcbca6ee4c6c7bd2ea4f5237dc52a75'
+  '40a5e530c5b0dc9572931cd892504fafe6ff50cad7bc626a2487fa436a918ee1'
   '29e0b0db9c0296ab81eee543803c4bd430e2c69c76e33492910e17280da1c05c'
 )
 
@@ -303,7 +303,7 @@ package() {
   install -Dm 644 vmware-installer/bootstrap "$pkgdir/etc/vmware-installer/bootstrap"
   install -Dm 644 "$srcdir/vmware-vix-bootstrap" "$pkgdir/etc/vmware-vix/bootstrap"
   install -Dm 644 "$srcdir"/{bootstrap,config} "$pkgdir/etc/vmware"
-  
+
   rm -r "$pkgdir/usr/lib/vmware/xkeymap" # these files are now provided by vmware-keymaps package
 
   for hostd_file in config datastores environments proxy vmAutoStart; do
