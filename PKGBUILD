@@ -6,17 +6,16 @@ pkgname=pacman-static
 pkgver=5.1.3
 _cares_ver=1.15.0
 _nghttp2_ver=1.36.0
-_curlver=7.64.0
+_curlver=7.64.1
 _sslver=1.1.1b
 _xzver=5.2.4
 _bzipver=1.0.6
 _zstdver=1.3.8
 _libarchive_ver=3.3.3
-_gpgerrorver=1.35
+_gpgerrorver=1.36
 _libassuanver=2.5.3
-_gpgmever=1.12.0
-_gnupgver=2.2.12
-pkgrel=1
+_gpgmever=1.13.0
+pkgrel=2
 pkgdesc="Statically-compiled pacman (to fix or install systems without libc)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
@@ -63,7 +62,7 @@ sha512sums=('b556b6d01d651a675ce1e153ede776e682ca0eb671cd2be00d7b7c602504dd11929
             '4e0d5c5cdb4f1b7e5f12790850237f36649af4aa9596033392725972e4e0e5a33bb78bd1aa0735e35e489b523b7e9a236a7b5847dfca69bd7583fcab36c13c76'
             'a1de6c5e7e1a6a13c926aae690e83d5caa51e7313d63da1cf2af6bc757c41d585aad5466bc3ba7b7f7793cb1748fa589f40972b196728851c8b059cfc8c3be50'
             'SKIP'
-            'ea0e68f9cbf2eb4f235d8506962dcc7709f769ef3526c0e4c130fdaf7186a1a13b303c6ce919cb9125bbf7c64ddf4f8efb3d9269b906f856e6d7b3def027fb81'
+            'c8f8c4397e0e2975e7553f36637b7e7caa29d7953229dcf4d8051f9bae0cf55572d6e25fc27d9c34fe8783cf87893d96d447601c74662374b8bbd393b6cb6825'
             'SKIP'
             'b54025fbb4fe264466f3b0d762aad4be45bd23cd48bdb26d901d4c41a40bfd776177e02230995ab181a695435039dbad313f4b9a563239a70807a2e19ecf045d'
             'SKIP'
@@ -72,11 +71,11 @@ sha512sums=('b556b6d01d651a675ce1e153ede776e682ca0eb671cd2be00d7b7c602504dd11929
             'SKIP'
             '00ace5438cfa0c577e5f578d8a808613187eff5217c35164ffe044fbafdfec9e98f4192c02a7d67e01e5a5ccced630583ad1003c37697219b0f147343a3fdd12'
             '5c1c0a7a998b814a9edc1466f6d321b0d8ffcf927295fd5499137c9075a8823be03d98f61ea5212d1969f8d52b32e940b1cc10d1507d7702424ea2eea0e79a1b'
-            '9b1983f18f44f51b89a034c15b27415f710c21ead12dd63821aa489fb4c6d4b649a658ce1d5e1f3424cee483d3243be151b8fe32a24642af4531ded508aa4ac7'
+            '6e5f853f77dc04f0091d94b224cab8e669042450f271b78d0ea0219658d059c9cab1ab0eaa020a4227f451520b417fc340b85971a6f5e144fa69be57e15df346'
             'SKIP'
             'e7ccb651ea75b07b2e687d48d86d0ab83cba8e2af7f30da2aec794808e13e6ec93f21d607db50d3431f1c23cb3a07a2793b71170e69fa2f5a82cffb81961f617'
             'SKIP'
-            'c228b3df28377df882be536ada56dc9c73150048a58e591aa4495f89c854af95820152cd60139840f994c249e9c7df50d8b89eb9d6dc4ce02aa80bbfebcdd014'
+            '47a7a67dcc6d111cddd805d288d42e870948114a6dc09ce0675ad8b3d1580bbc2a683e1e70cb2f416919cf2129c72a9ff30e2e3b9527809d04e863cc1f87267b'
             'SKIP'
             '10063764b610c0c966ba0177cac0d2cb781e297a45545cc8a587741513089af26f40769670894c86e7985b73c47e9cb985253bc3bef3a12fa83fe2a6a30acb6d')
 
@@ -221,7 +220,7 @@ build() {
         --disable-shared \
         --disable-languages
     make -C src
-    make -C src install-{binSCRIPTS,libLTLIBRARIES,nodist_includeHEADERS}
+    make -C src install-{binSCRIPTS,libLTLIBRARIES,nodist_includeHEADERS,pkgconfigDATA}
 
     # ew libtool
     rm "${srcdir}"/temp/usr/lib/lib*.la
