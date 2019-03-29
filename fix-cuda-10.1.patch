@@ -1,0 +1,37 @@
+From b32ba55150c5d678836a80700a126dae8c5b67f8 Mon Sep 17 00:00:00 2001
+From: Chuan Qin <qc2105@qq.com>
+Date: Fri, 1 Mar 2019 23:48:15 +0800
+Subject: [PATCH] workaround to 'fix' issues with
+ ubuntu-18.04/cuda-10.1/g++5.5.0/GeForce RTX 2080 Ti
+
+---
+ .../core/include/opencv2/core/cvstd_wrapper.hpp    | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/modules/core/include/opencv2/core/cvstd_wrapper.hpp b/modules/core/include/opencv2/core/cvstd_wrapper.hpp
+index a65dfd4bd37..1a7cf1cae7d 100644
+--- a/modules/core/include/opencv2/core/cvstd_wrapper.hpp
++++ b/modules/core/include/opencv2/core/cvstd_wrapper.hpp
+@@ -27,14 +27,16 @@ Ptr<_Tp> makePtr(const A1&... a1) { return std::make_shared<_Tp>(a1...); }
+ 
+ #else  // cv::Ptr with compatibility workarounds
+ 
+-// It should be defined for C-API types only.
+-// C++ types should use regular "delete" operator.
+-template<typename Y> struct DefaultDeleter;
+-#if 0
++template<typename Y>
++struct DefaultDeleter
+ {
+-    void operator()(Y* p) const;
+-};
++#ifndef _MSC_VER
++    void operator()(Y* p) const = delete;  // not available by default; enabled for specializations only
++#else
++    void operator()(Y* p) const { delete p; }
+ #endif
++};
++
+ 
+ namespace sfinae {
+ template<typename C, typename Ret, typename... Args>

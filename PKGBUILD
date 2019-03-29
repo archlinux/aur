@@ -4,7 +4,7 @@
 
 pkgname=opencv-cuda
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 provides=(opencv opencv-samples)
 conflicts=(opencv opencv-samples)
 pkgdesc="Open Source Computer Vision Library with CUDA support"
@@ -21,15 +21,20 @@ optdepends=('opencv-samples: samples'
             'python-numpy: Python 3 interface'
             'python2-numpy: Python 2 interface')
 source=("opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
-        "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz")
+        "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz"
+        "fix-cuda-10.1.patch")
 sha256sums=('b79ccdc4797a959c5ab17249a8a302c066248ae070e4d7010e2d77a625fdb30a'
-            '0d8acbad4b7074cfaafd906a7419c23629179d5e98894714402090b192ef8237')
+            '0d8acbad4b7074cfaafd906a7419c23629179d5e98894714402090b192ef8237'
+            '4e1640f37ee357d38551a65d3dbfc03a5d7589bffaa3cde92a64c5ea62f55aef')
 
 prepare() {
   msg2 "Patching sources for CUDA v10"
   sed -i 's|nvcuvid.h|nvidia-sdk/nvcuvid.h|' opencv_contrib-$pkgver/modules/cud*/src/*.hpp
 
   mkdir -p build
+
+  cd opencv-$pkgver
+  patch --forward --strip=1 < ../fix-cuda-10.1.patch
 }
 
 build() {
