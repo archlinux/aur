@@ -1,19 +1,14 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=intel-graphics-compiler-git
-pkgver=19.12.1681.r0.g81d4678
+pkgver=19.12.1681.r20.g48660a1
 pkgrel=1
 pkgdesc='Intel Graphics Compiler for OpenCL (git version)'
 arch=('x86_64')
 url='https://github.com/intel/intel-graphics-compiler/'
 license=('MIT')
 depends=('llvm-libs')
-makedepends=(
-    # official repositories:
-        'git' 'cmake' 'clang' 'llvm' 'zlib' 'python2'
-    # AUR:
-        'opencl-clang-git'
-)
+makedepends=('git' 'cmake' 'clang' 'llvm' 'zlib' 'python2' 'intel-opencl-clang')
 provides=('intel-graphics-compiler')
 conflicts=('intel-graphics-compiler')
 options=('!emptydirs')
@@ -22,8 +17,6 @@ sha256sums=('SKIP')
 
 prepare() {
     mkdir -p build
-    
-    ln -sf intel-graphics-compiler igc
 }
 
 pkgver() {
@@ -37,12 +30,13 @@ build() {
     cd build
     
     cmake \
-        -DCMAKE_BUILD_TYPE='Release' \
+        -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DIGC_OPTION__OUTPUT_DIR='../igc-install/Release' \
+        -DIGC_OPTION__OUTPUT_DIR='../igc-install/None' \
+        -DIGC_PREFERRED_LLVM_VERSION='7.0.1' \
         -DVME_TYPES_DEFINED='FALSE' \
         -Wno-dev \
-        ../igc
+        ../intel-graphics-compiler
         
     make
            
