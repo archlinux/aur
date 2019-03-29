@@ -2,7 +2,7 @@
 
 pkgname=python-elementpath
 _name=${pkgname#python-}
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="XPath 1.0/2.0 parsers and selectors for ElementTree."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('94d5496fcbb0046378c1a383ae793f74cfa60a48b8fa9cc397c202b2f7d98c91')
+sha256sums=('53e4424382ab928ee29528b345270571007727ef4fda6757a0a0acd5f42d2515')
 
 prepare() {
 	cd "$_name-$pkgver"
