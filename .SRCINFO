@@ -15,3 +15,20 @@ pkgbase = odt2tex
 
 pkgname = odt2tex
 
+pkgbase = odt2tex
+	pkgdesc = Convert odt files to tex
+	pkgver = 0.0.13
+	pkgrel = 5
+	url = https://www.chronowerks.de/odt
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = libzip
+	makedepends = expat
+	depends = libzip
+	depends = expat
+	source = https://www.chronowerks.de/odt/release/odt2tex-0.0.13.src.tar.bz2
+	sha512sums = f859819bb32c22a0e5d9d510ceba0bdf99769c60be78f230492ab3663c7b66268689d3f0b3a71f595d586722b43d67a0265353f5e14ac34054ebe92b98598bb5
+
+pkgname = odt2tex
+

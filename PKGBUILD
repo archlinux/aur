@@ -1,22 +1,22 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=odt2tex
 pkgver=0.0.13
-pkgrel=4
+pkgrel=5
 pkgdesc="Convert odt files to tex"
-url="https://www.chronowerks.de"
+url="https://www.chronowerks.de/odt"
 arch=('x86_64' 'i686')
 license=('MIT')
 depends=('libzip' 'expat')
 makedepends=('libzip' 'expat')
-source=('https://www.chronowerks.de/cgit/odt2tex/snapshot/odt2tex-0.0.13.tar.bz2')
-sha512sums=('a28adb32e0fd0ff42ad80b204beb8f350cd753131653407fb8ecf8c12ac2aca995cf398350baeae5ec67e55ddacf0d8c5a6cb64a7bb5952ed2a852d67afff1c0')
+source=("${url}/release/${pkgname}-${pkgver}.src.tar.bz2")
+sha512sums=('f859819bb32c22a0e5d9d510ceba0bdf99769c60be78f230492ab3663c7b66268689d3f0b3a71f595d586722b43d67a0265353f5e14ac34054ebe92b98598bb5')
  
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   make
 }
  
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   make DESTDIR="${pkgdir}" PREFIX="/usr" install
 }
