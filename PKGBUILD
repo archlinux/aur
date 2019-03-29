@@ -13,7 +13,7 @@
 pkgname=llvm-git
 _pkgname='llvm'
 pkgver=9.0.0_r313100.6a75c36ea9b
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='https://llvm.org/'
 license=('custom:University of Illinois/NCSA Open Source License')
@@ -67,7 +67,6 @@ provides=(
     'lld-svn'
     'llvm'
     'llvm-libs'
-    'llvm-libs-git'
     'llvm-libs-polly-svn'
     'llvm-libs-svn'
     'llvm-polly-svn'
@@ -76,7 +75,6 @@ conflicts=(
     'clang'
     'clang-analyzer'
     'clang-compiler-rt'
-    'clang-compiler-rt-git'
     'clang-tools-extra'
     'compiler-rt'
     'lld'
@@ -85,13 +83,10 @@ conflicts=(
     'llvm-libs')
 replaces=(
     'clang-analyzer'
-    'clang-analyzer-git'
     'clang-analyzer-svn'
     'clang-compiler-rt'
-    'clang-compiler-rt-git'
     'clang-compiler-rt-svn'
     'clang-tools-extra'
-    'clang-tools-extra-git'
     'clang-tools-extra-svn')
 # this is always the latest git so debug info can be useful
 options=('staticlibs' '!strip')
