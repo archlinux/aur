@@ -2,9 +2,9 @@
 
 pkgname=intellij-idea-ce
 _pkgname=idea-IC
-_buildver=183.5912.21
+_buildver=183.6156.11
 _veryear=2018
-_verrelease=3.5
+_verrelease=3.6
 pkgver=${_veryear}.${_verrelease}
 pkgrel=1
 pkgdesc="Intellij Idea IDE (community version) with Intellij JDK"
@@ -50,4 +50,4 @@ EOF
     ln -s "/opt/${pkgname}/bin/idea.sh" "${pkgdir}/usr/bin/idea-ce-eap"
 }
 
-md5sums=('cc013fd4f8608ec8815c60f713b5fe24')
+md5sums=('5126bb455734e925d1cb82c90011b313')
