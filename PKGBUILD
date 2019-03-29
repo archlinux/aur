@@ -3,9 +3,9 @@
 # Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 
-# Modificationt to use source from git master
+# Modifications to use source from git master
 # Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
-#    * This PKGBUILD as closely as possible matches core's gcc 8.2.1+20180831-1
+#    * This PKGBUILD as closely as possible matches core's gcc 8.2.1+20181127-1
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
@@ -127,7 +127,6 @@ check() {
 
 package_gcc-libs-git() {
   pkgdesc='Runtime libraries shipped by GCC (git version)'
-  groups=(base)
   depends=('glibc>=2.27')
   options+=(!strip)
   provides=(gcc-libs-multilib=${pkgver}-${pkgrel} libgo.so=${pkgver}-${pkgrel} libgfortran.so=${pkgver}-${pkgrel} libubsan.so=${pkgver}-${pkgrel} libasan.so=${pkgver}-${pkgrel}
@@ -170,7 +169,6 @@ package_gcc-libs-git() {
 package_gcc-git() {
   pkgdesc="The GNU Compiler Collection - C and C++ frontends (git version)"
   depends=("gcc-libs=$pkgver-$pkgrel" 'binutils>=2.28' libmpc)
-  groups=('base-devel')
   optdepends=('lib32-gcc-libs: for generating code for 32-bit ABI')
   provides=(gcc-multilib=${pkgver}-${pkgrel} gcc=${pkgver}-${pkgrel})
   conflicts=(gcc)
@@ -358,7 +356,6 @@ package_lib32-gcc-libs-gitb() {
   depends=('lib32-glibc>=2.27')
   provides=(libgo.so=${pkgver}-${pkgrel} libgfortran.so=${pkgver}-${pkgrel} libubsan.so=${pkgver}-${pkgrel} libasan.so=${pkgver}-${pkgrel} lib32-gcc-libs=${pkgver}-${pkgrel})
   conflicts=(lib32-gcc-libs)
-  groups=(multilib-devel)
   options=(!emptydirs !strip)
 
   cd gcc-build
