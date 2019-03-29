@@ -13,7 +13,7 @@ makedepends=()
 conflicts=( 'checkrun.sh-git' )
 replaces=()
 backup=()
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lynix/checkrun.sh/archive/v1.0.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lynix/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('e0b6c27e6dabb89f9abfd2d0a493ca6c')
 
 package() {
