@@ -1,6 +1,6 @@
 #Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgname=inetsim
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="Internet Services Simulation Suite"
 url="http://www.inetsim.org"
@@ -11,7 +11,7 @@ source=("${pkgname}-${pkgver}.tar.gz::http://www.inetsim.org/downloads/${pkgname
         "inetsim.service"
         "${pkgname}-${pkgver}.tar.gz.asc::http://www.inetsim.org/downloads/${pkgname}-${pkgver}.tar.gz.sig")
 
-sha512sums=('237e2a7dd4cab559d5ee44a84221e007c7cef38eb1568d96d82601ef49e7e552b8af0e20a705c77065a5aed78a338865e8db7c3e167d91d81fa476fdb1767b06'
+sha512sums=('e0afba0b12ebb6b2744ac5fa2e7af0dd757b707071456737fe4ffcf99468aa9c17a051ad7ec3639de11a77e125f14e60fb8c17d336af13f855d651096dcdda3e'
             'b0b5561ec915985545b6a9343cff530b022694d7bf7a06d4a2e55edb4f089e9f339ac491c6db741ca076683758d7bf294a1587236c45f80e76ae7a727663cad4'
             'SKIP')
 validpgpkeys=('5ADF5239D9AAAD3C455094916881B9A7E9F601C8')
