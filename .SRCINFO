@@ -1,10 +1,9 @@
 pkgbase = flowee
 	pkgdesc = Flowee the Hub
-	pkgver = 0.1
+	pkgver = b46ad6f2b
 	pkgrel = 1
-	url = http://flowee.org/
+	url = https://flowee.org/
 	install = flowee.install
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = boost
@@ -14,14 +13,14 @@ pkgbase = flowee
 	depends = openssl
 	provides = flowee-hub
 	backup = etc/flowee/flowee.conf
-	source = git+https://github.com/floweethehub/hub.git#branch=master
+	source = git+https://gitlab.com/FloweeTheHub/thehub.git#branch=2019.02
 	source = flowee.logrotate
 	source = flowee.conf
 	source = logs.conf
 	sha256sums = SKIP
-	sha256sums = d09fe561ed2b5fa0abf40bb5bfce0d6294b3747f97b94b473d040bda7b212985
-	sha256sums = c02e66610a93f1f8b302b5409aa094ec8fd842698f2f7b54d8645bebae3da98b
-	sha256sums = 635bf93ae346f7a8f4baf61d2d8316aa24647e87d23847876302330cb1e1191b
+	sha256sums = aff02b3312c88113fe7316152c15f1545233dc8c2062ee8c36d2dbcad4a9f5bf
+	sha256sums = bc14acf0d1b4064553756a1e81c0b943e842296f2a2af6442e480b846392e6bc
+	sha256sums = 3ec85358d1629a3d41e55710646be6b6a0cda322175779934439432615beba3c
 
 pkgname = flowee
 
