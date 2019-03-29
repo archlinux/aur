@@ -1,46 +1,43 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee-git
-pkgver=git
+pkgver=2cb30c054
 pkgrel=1
 pkgdesc="Flowee the Hub"
-arch=('i686' 'x86_64')
-url="http://flowee.org/"
+arch=('x86_64')
+url="https://flowee.org/"
 license=('GPL')
 depends=('boost-libs' 'libevent' 'openssl')
 makedepends=('boost' 'cmake')
-optdepends=('zeromq: for backwards compatibility in the hub',
-    'miniupnpc: allows the hub to open port-forwarding',
-    'qt5-base: for the hub-gui',
-    'qt5-quickcontrols2: builds the Point-of-Sales component')
 provides=('flowee-hub')
 backup=("etc/flowee/flowee.conf")
 install=flowee.install
-source=("git+https://github.com/floweethehub/hub.git#branch=master"
+source=("git+https://gitlab.com/FloweeTheHub/thehub.git#branch=master"
     "flowee.logrotate"
     "flowee.conf"
     "logs.conf")
 
 sha256sums=('SKIP'
-    "d09fe561ed2b5fa0abf40bb5bfce0d6294b3747f97b94b473d040bda7b212985"
-    "c02e66610a93f1f8b302b5409aa094ec8fd842698f2f7b54d8645bebae3da98b"
-    "635bf93ae346f7a8f4baf61d2d8316aa24647e87d23847876302330cb1e1191b")
+    "aff02b3312c88113fe7316152c15f1545233dc8c2062ee8c36d2dbcad4a9f5bf"
+    "bc14acf0d1b4064553756a1e81c0b943e842296f2a2af6442e480b846392e6bc"
+    "3ec85358d1629a3d41e55710646be6b6a0cda322175779934439432615beba3c")
 
 pkgver() {
-  cd "$srcdir/hub"
+  cd "$srcdir/thehub"
   git rev-parse --short HEAD
 }
 
 build() {
   mkdir -p build
   cd build
-  cmake -Dmark_release=true -Dbuild_tests=true -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ ../hub
-  make -j1 univalue
+  cmake -Dbuild_tests=true -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ ../thehub
+  make -j1 univalue leveldb
   make
 }
 
 check() {
-  ./build/testing/test/test_hub
+    cd build/testing
+    make check
 }
 
 package() {
@@ -52,5 +49,5 @@ package() {
   mv etc/flowee/flowee.conf etc/flowee/flowee-example.conf
   install -Dm 664 "$srcdir/flowee.conf" -t "$pkgdir/etc/flowee"
   install -Dm 664 "$srcdir/logs.conf" -t "$pkgdir/etc/flowee"
-  install -Dm 644 "$srcdir/hub/support/thehub.service" -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm 644 "$srcdir/thehub/support/thehub.service" -t "$pkgdir/usr/lib/systemd/system"
 }

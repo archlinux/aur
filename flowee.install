@@ -8,9 +8,6 @@ post_install() {
   _cnf="/etc/flowee"
   if test ! -d "$_dir"; then
     mkdir -m 750 "$_dir"
-    # disable Copy-On-Write (btrfs directories only)
-    # This avoids lots of known db-corruption issues
-    _is_btrfs "$_dir" && chattr +C "$_dir"
   fi
   mkdir -p -m 770 "$_log"
   chown -R $_bc_user:$_bc_group "$_dir" "$_cnf" "$_log"
@@ -32,18 +29,4 @@ _mkuser() {
     useradd -m -d /etc/flowee -g $_bc_group -s /usr/bin/nologin $_bc_user 2>/dev/null
     echo "done"
   }
-}
-
-# ------------------------------------------------------------------------------
-# helper functions for disabling btrfs Copy-On-Write (CoW)
-# https://wiki.archlinux.org/index.php/Btrfs#Copy-On-Write_.28CoW.29
-# ------------------------------------------------------------------------------
-
-# check if dir is btrfs
-_is_btrfs() {
-  if [[ $(findmnt --target $1 --output FSTYPE --noheadings) == 'btrfs' ]]; then
-    return 0
-  else
-    return 1
-  fi
 }
