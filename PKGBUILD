@@ -8,7 +8,7 @@
 _tcp_module_gitname=nginx_tcp_proxy_module
 pkgname=tengine-extra
 pkgver=2.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('x86_64')
 url='http://tengine.taobao.org'
@@ -31,14 +31,14 @@ _nps_ver=${_psol_ver}-stable
 source=($url/download/tengine-$pkgver.tar.gz
         service
         logrotate
-        fix-tengine-version-2.3.0.patch::https://patch-diff.githubusercontent.com/raw/alibaba/tengine/pull/1221.patch
+        fix-tengine-version-2.3.0.patch::https://github.com/alibaba/tengine/commit/5f7946e59a57b815d6ae0cb346b7922d9ec8250a.patch
         pagespeed-v${_nps_ver}.zip::https://github.com/apache/incubator-pagespeed-ngx/archive/v${_nps_ver}.zip
         psol-v${_psol_ver}.zip::https://dl.google.com/dl/page-speed/psol/${_psol_ver}-x64.tar.gz
         )
 sha256sums=('17cf1380d4faefb70707970437b3f8b66f6ff4530b5e6e61970b35f59b2e2624'
             'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
             '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97'
-            '7dc020f6017d396d7cc17f69c8abcf66b90c92a5aa074961a19bb7f615833507'
+            '57929b3f68456b58b29cdf72bfecfa5f898bf9ba40b51444364f165a68075c63'
             '474ef99dcfb678684394c9064c340772633c6dafe630ed90a0f1f319931df139'
             'df3ba3c8fc54e13845d0a1daa7a6e3d983126c23912851bbf8ba35be646a434f')
 
@@ -60,6 +60,7 @@ build() {
         --lock-path=/run/lock/tengine.lock \
         --user=http \
         --group=http \
+        --build="ArchLinux" \
         --http-log-path=/var/log/tengine/access.log \
         --error-log-path=stderr \
         --http-client-body-temp-path=/var/lib/tengine/client-body \
