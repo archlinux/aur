@@ -10,8 +10,9 @@ arch=('any')
 url="https://zeronet.io/"
 depends=('python' 'python-gevent>=1.1.0' 'python-gevent-websocket'
 	'python-msgpack>=0.4.4' 'python-websocket-client' 'python-rsa'
-	'python-pysocks' 'python-pyasn1' 'python-base58'  'python-pyelliptic'
-	'python-merkletools' 'python-bencode.py' 'python-coincurve'
+	'python-pysocks' 'python-pyasn1' 'python-pyasn1-modules'
+	'python-base58'  'python-pyelliptic' 'python-merkletools'
+	'python-bencode.py' 'python-coincurve'
 	'python-bitcoinlib' 'python-maxminddb')
 optdepends=('tor: anonymity')
 makedepends=('git')
