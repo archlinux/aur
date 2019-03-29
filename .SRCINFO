@@ -1,7 +1,7 @@
 pkgbase = logstash-xpack
 	pkgdesc = Tool for managing events and logs
 	pkgver = 6.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.elastic.co/products/logstash/
 	arch = x86_64
 	license = Apache

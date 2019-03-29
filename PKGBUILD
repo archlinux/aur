@@ -5,8 +5,7 @@
 pkgname=logstash-xpack
 relpkgname=logstash
 pkgver=6.6.2
-_jrubyver=9.1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for managing events and logs'
 url='https://www.elastic.co/products/logstash/'
 arch=('x86_64')
@@ -20,7 +19,6 @@ backup=('etc/conf.d/logstash'
         'etc/logstash/log4j2.properties'
         'etc/logstash/logstash.yml'
         'etc/logstash/pipelines.yml')
-_jrubydist=jruby-dist-${_jrubyver}-bin.tar.gz
 source=(https://artifacts.elastic.co/downloads/logstash/$relpkgname-$pkgver.tar.gz
         logstash.service
         logstash@.service
@@ -52,7 +50,7 @@ package() {
   mv config "${pkgdir}/etc/logstash"
   chmod 750 "${pkgdir}/etc/logstash"
 
-  cp -a bin data lib logstash* modules vendor Gemfile* "${pkgdir}/usr/share/logstash"
+  cp -a bin data lib logstash* modules vendor Gemfile* x-pack "${pkgdir}/usr/share/logstash"
   rm -rf "${pkgdir}/usr/share/logstash/logstash-core/"{.lock,benchmarks,*gradle*}
   chmod -R go-w "${pkgdir}/usr/share/logstash/"
 
