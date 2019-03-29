@@ -1,5 +1,5 @@
 pkgname=libsolv
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Library for solving packages and reading repositories"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ optdepends=('perl: for perl bindings'
             'python: for python bindings'
             'ruby: for ruby bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('b38b2cf93ce1fea2f909171e733843f2')
+md5sums=('8798e1b32d7c5e3a99e8b26b6b8818b5')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -33,6 +33,7 @@ build() {
 	      -DENABLE_BZIP2_COMPRESSION=ON \
 	      -DENABLE_COMPLEX_DEPS=1 \
 	      -DENABLE_COMPS=ON \
+	      -DENABLE_CONDA=ON \
 	      -DENABLE_CUDFREPO=ON \
 	      -DENABLE_DEBIAN=ON \
 	      -DENABLE_HAIKU=OFF \
@@ -47,8 +48,8 @@ build() {
 	      -DENABLE_RPMMD=ON \
 	      -DENABLE_RPMPKG=ON \
 	      -DENABLE_RUBY=ON \
-	      -DENABLE_TCL=OFF \
 	      -DENABLE_SUSEREPO=ON \
+	      -DENABLE_TCL=OFF \
 	      -DENABLE_ZCHUNK_COMPRESSION=ON \
 	      -DENABLE_ZSTD_COMPRESSION=ON \
 	      -DMULTI_SEMANTICS=ON \
