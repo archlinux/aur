@@ -4,8 +4,8 @@
 # Based on original tikzit-aur-package made by pippin
 
 pkgname=tikzit-git
-epoch=1
-pkgver=2.1.1.8.g0efa4c0
+epoch=2
+pkgver=2.1.4r2.g6c5d96d
 pkgrel=1
 pkgdesc="Creation and modification of TeX diagrams written using the pgf/TikZ macro library - rewrite in QT and C++"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ options=('!makeflags')
 
 pkgver() {
   cd ${pkgname%-git}
-  printf "%s" "$(git describe --tags | cut -c2- |tr - .)"
+  printf "%s" "$(git describe --tags | cut -c2- | sed 's+-+r+' | tr - .)"
 }
  
 build() {
