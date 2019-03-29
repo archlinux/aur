@@ -5,7 +5,7 @@ services:
 
 arch:
   script:
-    - "makepkg -si --noconfirm"
+    - "PKGEXT='.pkg.tar' makepkg -si --noconfirm"
 
 script:
   - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
