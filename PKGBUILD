@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh-git
-pkgver=0.0.2.r23.g3326b70
+pkgver=0.0.2.r54.gcdcb873
 pkgrel=1
 pkgdesc="A pure Wayland shell prototype for GNOME on mobile devices"
 url="https://source.puri.sm/Librem5/phosh"
@@ -10,6 +10,7 @@ arch=(i686 x86_64 armv6h armv7h)
 depends=(gcr
          gnome-desktop
          libhandy
+         libpulse
          upower
          wlroots)
 makedepends=(ctags
