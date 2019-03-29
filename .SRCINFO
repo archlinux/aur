@@ -1,0 +1,21 @@
+pkgbase = python-hiddenlayer
+	pkgdesc = A lightweight library for neural network graphs and training metrics for PyTorch, Tensorflow, and Keras
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/waleedka/hiddenlayer
+	arch = any
+	license = MIT
+	checkdepends = flake8
+	checkdepends = ipython
+	checkdepends = python-matplotlib
+	checkdepends = python-numpy
+	checkdepends = python-pytest
+	checkdepends = python-pytorch
+	checkdepends = python-tensorflow
+	checkdepends = python-torchvision
+	makedepends = python-setuptools
+	source = hiddenlayer-0.2.tar.gz::https://github.com/waleedka/hiddenlayer/archive/v0.2.tar.gz
+	sha512sums = 95291b6beaa1c131c9aa27d4e6b5b26e00548f4d34c69518fe38baac29c9d9d4f9c770f8339b1319cd54ffaa81895d46dfde17f25c9786ac91bdee2a6d653443
+
+pkgname = python-hiddenlayer
+
