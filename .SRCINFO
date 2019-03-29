@@ -1,11 +1,10 @@
 pkgbase = llvm-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (git)
-	pkgver = 9.0.0_r313083.7f33574be34
+	pkgver = 9.0.0_r313088.665a3850357
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = i686
 	arch = x86_64
-	groups = llvm-toolchain-git
 	license = custom:University of Illinois/NCSA Open Source License
 	makedepends = cmake
 	makedepends = ninja
@@ -20,13 +19,17 @@ pkgbase = llvm-git
 	makedepends = swig
 	makedepends = perl
 	makedepends = gcc
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = z3
+	makedepends = gcc-libs
 	depends = perl
 	depends = valgrind
 	depends = python
 	optdepends = openmp: OpenMP support in clang with -fopenmp
 	provides = clang
-	provides = clang=9.0.0_r313083.7f33574be34
-	provides = clang-analyzer=9.0.0_r313083.7f33574be34
+	provides = clang=9.0.0_r313088.665a3850357
+	provides = clang-analyzer=9.0.0_r313088.665a3850357
 	provides = clang-analyzer-polly-svn
 	provides = clang-analyzer-svn
 	provides = clang-compiler-rt
@@ -35,7 +38,7 @@ pkgbase = llvm-git
 	provides = clang-compiler-rt-svn
 	provides = clang-polly-svn
 	provides = clang-svn
-	provides = clang-tools-extra=9.0.0_r313083.7f33574be34
+	provides = clang-tools-extra=9.0.0_r313088.665a3850357
 	provides = clang-tools-extra-polly-svn
 	provides = clang-tools-extra-svn
 	provides = clang-tools-extra-svn

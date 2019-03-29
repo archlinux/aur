@@ -12,30 +12,32 @@
 
 pkgname=llvm-git
 _pkgname='llvm'
-pkgver=9.0.0_r313083.7f33574be34
+pkgver=9.0.0_r313088.665a3850357
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://llvm.org/'
 license=('custom:University of Illinois/NCSA Open Source License')
 makedepends=('cmake'
-             'ninja'
-             'git'
-             'libedit'
-             'libffi'
-             'ncurses'
-             'libxml2'
-             'python-sphinx'
-             'python-recommonmark'
-             'python-requests'
-             'swig'
-             'perl'
-             'gcc')
+  'ninja'
+  'git'
+  'libedit'
+  'libffi'
+  'ncurses'
+  'libxml2'
+  'python-sphinx'
+  'python-recommonmark'
+  'python-requests'
+  'swig'
+  'perl'
+  'gcc'
+  'doxygen'
+  'graphviz'
+  'z3'
+  'gcc-libs')
 depends=('perl' 'valgrind' 'python')
 makedepends_x86_64=('lib32-gcc-libs')
-
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (git)"
 optdepends=('openmp: OpenMP support in clang with -fopenmp')
-groups=('llvm-toolchain-git')
 provides=(
     'clang'
     "clang=$pkgver"
@@ -137,7 +139,6 @@ build() {
     -DLLVM_LINK_LLVM_DYLIB=ON \
     -DSPHINX_WARNINGS_AS_ERRORS=OFF \
     -DLLDB_USE_SYSTEM_SIX=1 \
-    -DLLVM_EXTERNAL_LIT=/usr/bin/lit \
     -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
     -DLLVM_BINUTILS_INCDIR=/usr/include \
     -DPOLLY_ENABLE_GPGPU_CODEGEN=ON \
