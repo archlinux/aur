@@ -13,10 +13,10 @@ _ENABLE_KIM=0
 
 _pkgname=lammps
 pkgname=${_pkgname}-beta
-pkgver=20190228
-_pkgver="28Feb2019"
+pkgver=20190329
+_pkgver="29Mar2019"
 #_pkgver=$(date -d ${pkgver} +%-d%b%Y)
-pkgrel=4
+pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
 arch=('x86_64')
@@ -26,14 +26,14 @@ makedepends=('cmake')
 conflicts=('lammps')
 provides=('lammps')
 source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/patch_${_pkgver}.tar.gz")
-sha512sums=('dc264ec43a5a917a0a7905f89076c2e10e8d5613bb710fb970eb388721860d7d409db7d988803bde823ddd74691c4b3bdf5bf4a72713476dad5a4b0833a4dbd0')
+sha512sums=('7e5ba9c033a283d9e0f4f05161bf081bfec45d519f9ac0aae3114ef8cbe630de6943cd8cee4413a7c6ebf4ddde11aa5e838a96d087629a8e34b51892893bc8e9')
 
 # process the build settings from above
 if (( $_BUILD_DOC )); then
     makedepends+=('python-sphinx' 'lammpsdoc')
 fi
 if (( $_ENABLE_KIM )); then
-    depends+=('kim-api>=2.0.0' 'kim-api<=2.0.1')
+    depends+=('kim-api>=2.0.2')
     _feature_args+=('-DPKG_KIM=yes')
 fi
 
