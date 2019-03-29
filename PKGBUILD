@@ -4,7 +4,7 @@ pkgname=intellij-idea-community-edition-jre
 _appname=jetbrains-idea-ce
 pkgver=2019.1
 _buildver=191.6183.87
-pkgrel=1
+pkgrel=2
 pkgdesc="Intellij Idea Community Edition with bundled JRE"
 arch=('any')
 url="http://www.jetbrains.com/idea/"
@@ -12,9 +12,9 @@ license=("Apache2")
 depends=('giflib' 'libxtst' 'python' 'sh' 'ttf-font' 'libdbusmenu-glib')
 provides=("$_appname")
 conflicts=("$_appname")
-source=("https://download.jetbrains.com/idea/ideaIC-$pkgver.tar.gz"
+source=("https://download.jetbrains.com/idea/ideaIC-$pkgver-jbr11.tar.gz"
 		"$_appname.desktop")
-md5sums=('19aede0c1980447f398c1601ea3d8e8b'
+md5sums=('b5114f3d08504a13dc8255be66ec6acb'
          '56d945e72cc22162d5be26af027999dd')
 
 package() {
