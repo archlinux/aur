@@ -1,6 +1,6 @@
 pkgbase = tintin
 	pkgdesc = A console-based MUD client
-	pkgver = 2.01.6
+	pkgver = 2.01.7
 	pkgrel = 1
 	url = http://tintin.sourceforge.net/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = tintin
 	depends = pcre
 	depends = gnutls
 	options = strip
-	source = http://downloads.sourceforge.net/tintin/tintin-2.01.6.tar.gz
-	sha512sums = 730b5715c1707bb0401e7662793335a04ab6783b4194ea39c4b0a485eed9105deaf97793ee93995d314c99b4a97ffd25b927fc145c36d094ad2c68d16924a8c2
+	source = http://downloads.sourceforge.net/tintin/tintin-2.01.7.tar.gz
+	sha512sums = 85499d6c3f4da0c7dfde2e197ae4c693d9ba65341aa83ea683ffd3c6e3ce33f649d618b6e7a6178dfa042de68921d7501c0f8ae521cb5bdb80955e5fe1334e94
 
 pkgname = tintin
 
