@@ -1,7 +1,7 @@
 pkgbase = spirv-llvm-translator
-	pkgdesc = A wrapper library around clang than can compile OpenCL C kernels to SPIR-V modules
+	pkgdesc = Tool and a library for bi-directional translation between SPIR-V and LLVM IR
 	pkgver = 7.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KhronosGroup/SPIRV-LLVM-Translator/
 	arch = x86_64
 	license = custom

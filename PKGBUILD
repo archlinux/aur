@@ -3,9 +3,9 @@
 pkgname=spirv-llvm-translator
 _srcname=SPIRV-LLVM-Translator
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 _build=1
-pkgdesc='A wrapper library around clang than can compile OpenCL C kernels to SPIR-V modules'
+pkgdesc='Tool and a library for bi-directional translation between SPIR-V and LLVM IR'
 arch=('x86_64')
 url='https://github.com/KhronosGroup/SPIRV-LLVM-Translator/'
 license=('custom')
@@ -31,5 +31,5 @@ package() {
     
     make DESTDIR="$pkgdir" install
     
-    install -D -m644 "${srcdir}/${_srcname}-${pkgver}-${_build}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
