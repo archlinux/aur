@@ -4,18 +4,22 @@
 pkgname='zeronet-git'
 _gitname='ZeroNet'
 _gitroot='https://github.com/HelloZeroNet/ZeroNet.git'
-pkgver=0.6.5
+pkgver=0.7.0.r4033.g5df8e10b
 pkgrel=1
 arch=('any')
 url="https://zeronet.io/"
-depends=('python2' 'python2-gevent' 'python2-msgpack')
+depends=('python' 'python-gevent>=1.1.0' 'python-gevent-websocket'
+	'python-msgpack>=0.4.4' 'python-websocket-client' 'python-rsa'
+	'python-pysocks' 'python-pyasn1' 'python-base58'  'python-pyelliptic'
+	'python-merkletools' 'python-bencode.py' 'python-coincurve'
+	'python-bitcoinlib' 'python-maxminddb')
 optdepends=('tor: anonymity')
 makedepends=('git')
 license=('GPL2')
 pkgdesc="Decentralized websites using Bitcoin crypto and the BitTorrent network."
 provides=(zeronet)
 conflicts=(zeronet)
-source=("git+https://github.com/HelloZeroNet/ZeroNet.git"
+source=("git+https://github.com/HelloZeroNet/ZeroNet.git#branch=py3"
         "zeronet.conf"
         "zeronet.service")
 install="zeronet.install"
@@ -45,4 +49,4 @@ package() {
 }
 sha256sums=('SKIP'
             'ea735e82dbb10a2c1fda7abfeb2f38c2429044d8254f9e2396c50cecb6f778f8'
-            '22dfda6233d0477a63247ae3ebb2ccd0b8a181f1628bd2969a9f979f0b9e7ca8')
+            '2ee64a1b671a49a1626901a11d4d7fa338c77cb9b7c9facd2f56b087a4a0bb83')

@@ -5,7 +5,7 @@ Description=ZeroNet: a decentralized web platform
 User=zeronet
 Group=zeronet
 WorkingDirectory=/opt/zeronet
-ExecStart=/usr/bin/env python2 zeronet.py --config_file /etc/zeronet.conf
+ExecStart=/usr/bin/env python zeronet.py --config_file /etc/zeronet.conf
 SyslogIdentifier=zeronet
 Restart=on-failure
 
