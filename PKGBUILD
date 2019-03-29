@@ -1,13 +1,13 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
-pkgname=('python-rtslib-fb' 'python2-rtslib-fb')
+pkgname='python-rtslib-fb'
 _pkgname=rtslib-fb
 pkgver=2.1.fb69
-pkgrel=1
+pkgrel=2
 pkgdesc="free branch version of the LIO target API"
 arch=('any')
 url="https://github.com/agrover/rtslib-fb"
 license=('Apache')
-makedepends=('python-setuptools' 'python2-setuptools' 'python-pyudev' 'python2-pyudev')
+makedepends=('python-setuptools' 'python-pyudev')
 backup=()
 options=()
 install=
@@ -37,16 +37,6 @@ package_python-rtslib-fb() {
   # systemd
   mkdir -p "$pkgdir/usr/lib/systemd/system"
   cp target.service "$pkgdir/usr/lib/systemd/system/"
-}
-
-package_python2-rtslib-fb() {
-  depends=('python2' 'python2-six' 'python2-pyudev')
-  conflicts=('python2-rtslib')
-
-  cd "$srcdir/$_pkgname-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
-  # the service file and targetctl script is in python-rtslib-fb
-  rm -r "$pkgdir/usr/bin"
 }
 
 # vim:set ts=2 sw=2 et:
