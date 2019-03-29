@@ -1,7 +1,7 @@
 pkgbase = intel-opencl-clang
-	pkgdesc = A wrapper library around clang than can compile OpenCL C kernels to SPIR-V modules
+	pkgdesc = A wrapper library around clang that can compile OpenCL C kernels to SPIR-V modules
 	pkgver = 7.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/intel/opencl-clang/
 	arch = x86_64
 	license = custom

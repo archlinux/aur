@@ -3,8 +3,8 @@
 pkgname=intel-opencl-clang
 _srcname=opencl-clang
 pkgver=7.0.1
-pkgrel=1
-pkgdesc='A wrapper library around clang than can compile OpenCL C kernels to SPIR-V modules'
+pkgrel=2
+pkgdesc='A wrapper library around clang that can compile OpenCL C kernels to SPIR-V modules'
 arch=('x86_64')
 url='https://github.com/intel/opencl-clang/'
 license=('custom')
