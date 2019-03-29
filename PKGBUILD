@@ -1,101 +1,29 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
-# Co-Maintainer: Konstantin Gizdov <arch@kge.pw>
 # Contributor: Stephen Zhang <zsrkmyn at gmail dot com>
 
 pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-cuda")
 _pkgname="pytorch"
 pkgver=1.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
 depends=('python' 'python-yaml' 'python-numpy' 'opencv' 'nccl')
-makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'cudnn' 'git' 'gcc')
-source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
-        "git+https://github.com/catchorg/Catch2"
-        "git+https://github.com/pybind/pybind11"
-        "git+https://github.com/NVlabs/cub"
-        "git+https://github.com/eigenteam/eigen-git-mirror"
-        "git+https://github.com/google/googletest"
-        "git+https://github.com/google/benchmark"
-        "git+https://github.com/google/protobuf"
-        "git+https://github.com/Yangqing/ios-cmake"
-        "git+https://github.com/Maratyszcza/NNPACK"
-        "git+https://github.com/facebookincubator/gloo"
-        "git+https://github.com/Maratyszcza/pthreadpool"
-        "git+https://github.com/Maratyszcza/FXdiv"
-        "git+https://github.com/Maratyszcza/FP16"
-        "git+https://github.com/Maratyszcza/psimd"
-        "git+https://github.com/facebook/zstd"
-        "git+https://github.com/Maratyszcza/cpuinfo"
-        "git+https://github.com/PeachPy/enum34"
-        "git+https://github.com/Maratyszcza/PeachPy"
-        "git+https://github.com/benjaminp/six"
-        "git+https://github.com/ARM-software/ComputeLibrary"
-        "git+https://github.com/onnx/onnx"
-        "git+https://github.com/USCILab/cereal"
-        "git+https://github.com/onnx/onnx-tensorrt"
-        "git+https://github.com/shibatch/sleef"
-        "git+https://github.com/intel/ideep")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'cudnn' 'git')
+source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
-  git submodule init
-  git config submodule."third_party/catch".url "${srcdir}"/Catch2
-  git config submodule."third_party/pybind11".url "${srcdir}"/pybind11
-  git config submodule."third_party/cub".url "${srcdir}"/cub
-  git config submodule."third_party/eigen".url "${srcdir}"/eigen-git-mirror
-  git config submodule."third_party/googletest".url "${srcdir}"/googletest
-  git config submodule."third_party/benchmark".url "${srcdir}"/benchmark
-  git config submodule."third_party/protobuf".url "${srcdir}"/protobuf
-  git config submodule."third_party/ios-cmake".url "${srcdir}"/ios-cmake
-  git config submodule."third_party/NNPACK".url "${srcdir}"/NNPACK
-  git config submodule."third_party/gloo".url "${srcdir}"/gloo
-  git config submodule."third_party/NNPACK_deps/pthread_ool".url "${srcdir}"/pthreadpool
-  git config submodule."third_party/NNPACK_deps/FXdiv".url "${srcdir}"/FXdiv
-  git config submodule."third_party/NNPACK_deps/FP16".url "${srcdir}"/FP16
-  git config submodule."third_party/NNPACK_deps/psimd".url "${srcdir}"/psimd
-  git config submodule."third_party/zstd".url "${srcdir}"/zstd
-  git config submodule."third_party/cpuinfo".url "${srcdir}"/cpuinfo
-  git config submodule."third_party/python-enum".url "${srcdir}"/enum34
-  git config submodule."third_party/python-peachpy".url "${srcdir}"/PeachPy
-  git config submodule."third_party/python-six".url "${srcdir}"/six
-  git config submodule."third_party/ComputeLibrary".url "${srcdir}"/ComputeLibrary
-  git config submodule."third_party/onnx".url "${srcdir}"/onnx
-  git config submodule."third_party/cereal".url "${srcdir}"/cereal
-  git config submodule."third_party/onnx-tensorrt".url "${srcdir}"/onnx-tensorrt
-  git config submodule."third_party/sleef".url "${srcdir}"/sleef
-  git config submodule."third_party/ideep".url "${srcdir}"/ideep
-  git submodule update
+  # This is the lazy way since pytorch has sooo many submodules and they keep
+  # changing them around but we've run into more problems so far doing it the
+  # manual than the lazy way. This lazy way (not explicitly specifying all
+  # submodules) will make building inefficient but for now I'll take it.
+  # It will result in the same package, don't worry.
+  git submodule update --init --recursive
 
   cd ..
 
@@ -103,8 +31,6 @@ prepare() {
 }
 
 build() {
-  # Uncomment and modify the following line to enable Intel MKL and magma support
-  # export CMAKE_PREFIX_PATH=/opt/intel/mkl/include:/opt/intel/mkl/lib/intel64:/opt/magma \
   export CC=gcc
   export CXX=g++
   export PYTORCH_BUILD_VERSION=${pkgver}
