@@ -2,8 +2,8 @@
 
 pkgbase=xbmpwall-git
 pkgname=$pkgbase
-pkgver=1.6
-pkgrel=3
+pkgver=1.13
+pkgrel=1
 
 _gitname=xbmpwall
 _gittag="v${pkgver}"
@@ -22,19 +22,20 @@ depends=('libxaw' 'xorg-xsetroot')
 makedepends=('git' 'gcc' 'make' )
 
 source=("git+${url}.git?signed#tag=${_gittag}"
-        "git+https://github.com/daltomi/bitmap-walls.git"
         "xbmpwall.desktop"
         "xbmpwall.png"
         )
 
 sha256sums=('SKIP'
-            'SKIP' 
             '952578d0e2b73f66e6070513ebeea827c4d48cb69b9bf7e95a90541d63b768b9'
             '6200014b0bad8ecdea1eb6eb242ebb0d42758634f93d065243034a42933cc343'
             )
 
 validpgpkeys=('51479755D90A2AACFA90A6551DD242462908D08B')
 
+prepare() {
+  git clone --single-branch --depth=1 "https://github.com/dkeg/bitmap-walls.git"
+}
 
 build() {
   cd $_gitname &&  make release
