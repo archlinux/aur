@@ -1,6 +1,6 @@
 pkgbase = 1pass-git
 	pkgdesc = A caching wrapper for the 1Password CLI
-	pkgver = r57.e0691a7
+	pkgver = r62.06c834a
 	pkgrel = 1
 	url = https://github.com/dcreemer/1pass.git
 	arch = any
