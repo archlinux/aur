@@ -1,0 +1,16 @@
+pkgbase = notify-sharp
+	pkgdesc = C Sharp D-Bus client library for desktop notifications
+	pkgver = 0.4.1
+	pkgrel = 3
+	url = https://www.meebey.net/projects/notify-sharp/
+	arch = any
+	license = MIT
+	depends = gtk-sharp-2
+	depends = dbus-sharp-glib
+	source = https://www.meebey.net/projects/notify-sharp/downloads/notify-sharp-0.4.1.tar.gz
+	source = use_dbussharp_2.pc
+	sha512sums = d72b4f5eb23b1e6bd3ab2ebd89eed963dab2212b895a080f0803f59f5746b08194720799e9ce979fa10ad8e01847ee2b379576e6856ffbcf1e0945682c89f407
+	sha512sums = 4164e0e6e2d7c7ac8b28d0d450fec01a8875bde98962c9164527e783286f1ab9167346aa8801503d8d3c4021dbb779240b860432fb04e757a31476584683e210
+
+pkgname = notify-sharp
+
