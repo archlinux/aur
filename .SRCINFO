@@ -1,6 +1,6 @@
 pkgbase = ojo
 	pkgdesc = A fast and good-looking image viewer, nice as a preliminary stage in a photography workflow
-	pkgver = 0.1.0.r156
+	pkgver = 0.2.0.r228
 	pkgrel = 1
 	url = http://launchpad.net/~ojo/+archive/ubuntu/daily
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = ojo
 	depends = pyexiv2
 	provides = ojo
 	conflicts = ojo-bzr
-	source = ojo-0.1.0.r156.tar.gz::http://launchpad.net/~ojo/+archive/ubuntu/daily/+files/ojo_0.1-0~156~201806250516~ubuntu18.04.1.tar.gz
-	sha256sums = 81e69f6f5757f7bfc89d40d35d8b4203c6e3bdce3512e1a63e4c207207e3b1b3
+	source = ojo-0.2.0.r228.tar.gz::http://launchpad.net/~ojo/+archive/ubuntu/daily/+files/ojo_0.2-0~228~201903042116~ubuntu19.04.1.tar.gz
+	sha256sums = 7e2f0d87ffbc9ec2d3714590f6d77e5169889f2a48ee8df353a095d7ae6b9fcf
 
 pkgname = ojo
 
