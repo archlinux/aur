@@ -1,0 +1,38 @@
+pkgbase = jre11
+	pkgdesc = Oracle Java Runtime Environment
+	pkgver = 11.0.2
+	pkgrel = 1
+	url = https://www.oracle.com/java/
+	install = jre11.install
+	arch = x86_64
+	license = custom
+	depends = java-runtime-common
+	depends = ca-certificates-utils
+	depends = freetype2
+	depends = libxtst
+	depends = libxrender
+	depends = libnet
+	optdepends = alsa-lib: for basic sound support
+	provides = java-runtime=11
+	provides = java-runtime-headless=11
+	provides = java-runtime-jre=11
+	provides = java-runtime-headless-jre=11
+	backup = etc/java11-jre/management/jmxremote.access
+	backup = etc/java11-jre/management/jmxremote.password.template
+	backup = etc/java11-jre/management/management.properties
+	backup = etc/java11-jre/security/policy/limited/default_US_export.policy
+	backup = etc/java11-jre/security/policy/limited/default_local.policy
+	backup = etc/java11-jre/security/policy/limited/exempt_local.policy
+	backup = etc/java11-jre/security/policy/unlimited/default_US_export.policy
+	backup = etc/java11-jre/security/policy/unlimited/default_local.policy
+	backup = etc/java11-jre/security/policy/README.txt
+	backup = etc/java11-jre/security/java.policy
+	backup = etc/java11-jre/security/java.security
+	backup = etc/java11-jre/logging.properties
+	backup = etc/java11-jre/net.properties
+	backup = etc/java11-jre/sound.properties
+	source = https://download.oracle.com/otn-pub/java/jdk/11.0.2+9/f51449fcd52f4d52b93a989c5c56ed3c/jdk-11.0.2_linux-x64_bin.tar.gz
+	sha256sums = 7b4fd8ffcf53e9ff699d964a80e4abf9706b5bdb5644a765c2b96f99e3a2cdc8
+
+pkgname = jre11
+
