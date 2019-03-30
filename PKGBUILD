@@ -11,7 +11,7 @@ depends=('ecl'
          'qt5-base'
          'qt5-tools'
          'qt5-multimedia'
-         'qt5-quickcontrols'
+         'qt5-quickcontrols2'
          'qt5-svg'
          'qt5-webengine')
 makedepends=('git'
