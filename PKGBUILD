@@ -63,5 +63,5 @@ package() {
       cp packaging/linux/mod_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${pkgname}.png"
     done
     rm -rf $pkgdir/usr/lib/openra-rv/*{.txt,.yml,.xslt,.cmd,.md,Mono*,.sh,Makefile,sln.*,Test,.mdb,.pdb,.ps1,.AS,packaging,thirdparty,engines,OpenRA.Mods}
-    rm -rf $pkgdir/usr/lib/openra-rv/{OpenRA.StyleCheck*,OpenRA.Game.exe.config,OpenRA.Platforms.Default.dll.config,OpenRA.Utility.exe.config,OpenRA.sln,fixheader.exe,mods/{all,cnc,d2k,ra,ts},OpenRA.Mods.*,OpenRA.Platforms.Default,OpenRA.Server,OpenRA.Game,OpenRA.Utility,Settings.StyleCop,nunit*}
+    rm -rf $pkgdir/usr/lib/openra-rv/{mods/{all,cnc,d2k,ra,ts},OpenRA.Mods.*,OpenRA.Platforms.Default,OpenRA.Server,OpenRA.Game,OpenRA.Utility,Settings.StyleCop,nunit*}
 }
