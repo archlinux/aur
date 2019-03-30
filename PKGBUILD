@@ -5,7 +5,7 @@
 pkgname=mullvad-vpn-bin-beta
 _pkgname=mullvad-vpn
 pkgver=2019.2
-pkgrel=1
+pkgrel=2
 pkgdesc="VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -36,11 +36,11 @@ package() {
     cp -a "${srcdir}/opt/Mullvad VPN/." "${pkgdir}/opt/${_pkgname}"
 
     # Make it exec
-    chmod 755 "${pkgdir}/opt/${_pkgname}/${pkgname}"
+    chmod 755 "${pkgdir}/opt/${_pkgname}/${_pkgname}"
 
     # Main binary
     mkdir -p ${pkgdir}/usr/bin
-    ln -s "/opt/${_pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/opt/${_pkgname}/${pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
     # Desktop Entry
     install -d "${pkgdir}/usr/share/applications"
