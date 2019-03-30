@@ -1,0 +1,21 @@
+pkgbase = scribes
+	pkgdesc = An ultra minimalist text editor that combines simplicity with power
+	pkgver = 0.4.954
+	pkgrel = 7
+	url = http://scribes.sourceforge.net
+	arch = any
+	license = GPL
+	makedepends = intltool
+	makedepends = gnome-doc-utils
+	depends = python2-dbus
+	depends = pygtksourceview2
+	depends = python2-gtkspell
+	depends = python2-xdg
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	optdepends = yelp: open manual
+	source = http://launchpad.net/scribes/0.4/scribes-milestone1/+download/scribes-0.4-dev-build954.tar.bz2
+	sha256sums = f4cb765d5690f7549eb0336ce23fd0648ba548b9a9e259876e5ee2c095a4b0f1
+
+pkgname = scribes
+
