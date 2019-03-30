@@ -4,7 +4,7 @@
 pkgname='zeronet-git'
 _gitname='ZeroNet'
 _gitroot='https://github.com/HelloZeroNet/ZeroNet.git'
-pkgver=0.7.0.r4033.g5df8e10b
+pkgver=0.7.0
 pkgrel=1
 arch=('any')
 url="https://zeronet.io/"
