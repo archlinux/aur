@@ -1,6 +1,6 @@
 pkgbase = python-pip-git
 	pkgdesc = The PyPA recommended tool for installing Python packages
-	pkgver = 19.0.3
+	pkgver = 19.0.3.r105.gde242d0e
 	pkgrel = 1
 	url = https://pip.pypa.io/
 	arch = any
@@ -52,10 +52,8 @@ pkgbase = python-pip-git
 	makedepends = python-sphinx
 	conflicts = python-pip
 	conflicts = python2-pip
-	source = pip-19.0.3.tar.gz::https://github.com/pypa/pip/archive/19.0.3.tar.gz
-	source = progress.patch
-	sha512sums = f56df1e2fe18eccc4dcba66b0a93a933eb94d12ed0f31d3923662fb85075192674c98bbc00dd48185b1d87cf28a64a6dc321de524e4ccb39a8877b3d5cf578e1
-	sha512sums = 77f48f1ae3c977087630a2009e55d38dc6daa53b08767e3aa2fa51405f76de0291c48cebd5e9dc42346f14bb43189f1f49a325faffde9ce63a4377b63541a296
+	source = pip-19.0.3.r105.gde242d0e::git+https://github.com/pypa/pip.git
+	sha512sums = SKIP
 
 pkgname = python-pip-git
 	depends = python-setuptools
