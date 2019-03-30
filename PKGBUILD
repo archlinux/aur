@@ -4,7 +4,7 @@
 pkgname=octave-hg
 epoch=4
 pkgrel=1
-pkgver=5.1.1r26943.b4cb230ced82
+pkgver=5.1.1r26993.119353eb6b38
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
