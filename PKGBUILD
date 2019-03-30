@@ -4,7 +4,7 @@
 #
 _pkgbase="caja-extensions"
 pkgname="caja-gksu"
-pkgver="1.20.1"
+pkgver="1.22.0"
 pkgrel="1"
 pkgdesc="Allows you to open files with administration privileges using the \
 context menu when browsing your files with Caja."
@@ -15,7 +15,7 @@ groups=('mate-extra')
 depends=('caja' 'caja-extensions-common' 'gksu')
 makedepends=('intltool' 'python')
 source=("https://pub.mate-desktop.org/releases/${pkgver%.*}/${_pkgbase}-${pkgver}.tar.xz")
-sha256sums=('7610931d4a3135f2f3b88551652907e4ef25c48b3f18c8e83ecd65c3df606706')
+sha256sums=('779c237f7e922c877f7884a0201cb54da9c8f30c414a7ee297178fd6aa3406c1')
 
 build() {
     cd "${_pkgbase}-${pkgver}"
@@ -33,4 +33,4 @@ package() {
     make -C gksu DESTDIR="${pkgdir}" install
 }
 
-# vim:set ts=4 sw=4 ft=sh et syn=sh ft=sh:
+# vim:set ts=4 sw=4 ft=sh et syn=sh:
