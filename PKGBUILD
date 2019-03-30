@@ -33,8 +33,9 @@ optdepends=(
   'hostapd-wpe: Modified hostapd to facilitate AP impersonation attacks'
   'john: John the Ripper password cracker'
   'iptables: Linux kernel packet control tool'
+  'nftables: This software provides an in-kernel packet classification framework'
   'lighttpd: A secure, fast, compliant and very flexible web-server'
-  'mdk3: WLAN penetration tool'
+  'mdk4: WLAN penetration tool'
   'pciutils: PCI bus configuration space access library and tools'
   'pixiewps: Offline bruteforce of the WPS pin exploiting the low or non-existing entropy
     of some APs'
