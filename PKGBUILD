@@ -6,7 +6,7 @@
 pkgname=('mysql56' 'libmysqlclient56' 'mysql-clients56')
 _pkgname=mysql
 pkgbase=mysql56
-pkgver=5.6.42
+pkgver=5.6.43
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition v5.6"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("https://dev.mysql.com/get/Downloads/MySQL-5.6/${_pkgname}-${pkgver}.tar
         "mysqld-tmpfile.conf"
         "mysqld.service"
         "mysql-srv_buf_size.patch")
-sha256sums=('fc6d4aa9c2ed1a751163d0ec3d35bf800fc6b7c9bd2f890e376b6810c9393dba'
+sha256sums=('1c95800bf0e1b7a19a37d37fbc5023af85c6bc0b41532433b3a886263a1673ef'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
             '50212165bdb09855b97b15a917464ba34f82edf30a0c43f9a0c93a27071df556'
