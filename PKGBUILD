@@ -60,12 +60,12 @@ prepare() {
 
   # clutter-stage-cogl: Reduce output latency and reduce missed frames too [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/281
-  git cherry-pick -n 6c72dcdb^..186f16f8
+  # first commit replaced by !363
+  git cherry-pick -n 186f16f8
 
   # Consolidate all frame throttling into clutter-stage-cogl [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/363
-  # incompatible with !281 atm
-  # git cherry-pick -n 7e4270de^..27f669d0
+  git cherry-pick -n 577084a4^..c71e6523
 
   # clutter-actor: Add detail to captured-event signal [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/283
