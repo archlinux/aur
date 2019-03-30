@@ -8,7 +8,7 @@ pkgbase=arc-gtk-theme
 _pkgname=arc-theme
 pkgname=('arc-gtk-theme' 'arc-solid-gtk-theme')
 pkgdesc="A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell"
-pkgver=20190213
+pkgver=20190330
 pkgrel=1
 arch=('any')
 # Upstream url: https://github.com/horst3180/arc-theme
@@ -24,7 +24,7 @@ makedepends=('gtk3' 'sassc' 'optipng' 'inkscape' 'parallel')
 
 source=("${pkgname}-${pkgver}.tar.xz::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz"
         "${pkgname}-${pkgver}.tar.xz.sig::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz.asc")
-sha512sums=('f940651f8a82c89854d150f8b559bed2ab320436603ae8fdab6403f46ef97a2811b4cb51b8493584a5dcaa974ede8ff27a4a304b33fef925709265194bfb4705'
+sha512sums=('ac4f1bde028e027314004999502dcc914abf6070ffd4345021df486084de2c943e6c110776b3b6af55143962a40b368c060a11754ffaf30300b87cb923bc55b9'
             'SKIP')
 validpgpkeys=('97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161') # NicoHood
 
