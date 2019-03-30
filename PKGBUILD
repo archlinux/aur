@@ -2,7 +2,7 @@
 # Maintainer: Stephan Springer <buzo+arch@Lini.de>
 
 pkgname=signal-desktop-bin
-pkgver=1.23.1
+pkgver=1.23.2
 pkgrel=1
 pkgdesc='Private messaging from your desktop'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('signal')
 options=('!strip')
 depends=('gconf' 'gtk3' 'libnotify' 'nss' 'xdg-utils' 'libxss')
 source=("https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_${pkgver}_amd64.deb")
-sha256sums=('9ad4f2eea627f6640fa72141f1a849077b73fceccdfb2e2a629cc163da051ac4')
+sha256sums=('1235d8ea9d48539b81959cd4538c9831b36713f087ce24c0e68cdc47c1ce885a')
 
 package() {
   # extract package data
