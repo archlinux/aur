@@ -3,11 +3,11 @@
 pkgname='emoji-stealer'
 _pkgname='emoji_stealer'
 pkgver='1.1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Emoji stealer for Mastodon and Pleroma'
 url='https://git.dtluna.net/dtluna/emoji_stealer'
 arch=('any')
-license=('custom:WTPFL')
+license=('custom:WTFPL')
 
 depends=()
 makedepends=('go')
