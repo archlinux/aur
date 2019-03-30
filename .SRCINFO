@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-svt
 	pkgdesc = Complete solution to record, convert and stream audio and video. SVT Patchset applied
-	pkgver = 4.1.1
-	pkgrel = 2
+	pkgver = 4.1.2
+	pkgrel = 3
 	epoch = 1
 	url = https://ffmpeg.org/
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = ffmpeg-svt
 	makedepends = ladspa
 	makedepends = nasm
 	makedepends = svt-av1
-	makedepends = svt-vp9
 	depends = alsa-lib
 	depends = aom
 	depends = bzip2
@@ -72,10 +71,10 @@ pkgbase = ffmpeg-svt
 	provides = libswscale.so
 	conflicts = ffmpeg
 	replaces = ffmpeg
-	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=n4.1.1
-	source = 0001-Add-ability-for-ffmpeg-to-run-svt-av1-vp9.patch
+	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=n4.1.2
+	source = 0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch
 	sha256sums = SKIP
-	sha256sums = c7d7b0eb5d5d0874047b7049bdd432d37996a3f8f077bcabbee41cd1697526b4
+	sha256sums = 19825c7226c7300514715fc5048c2e6b04000f0c83f9c94688af1c095639bf2b
 
 pkgname = ffmpeg-svt
 

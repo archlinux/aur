@@ -5,7 +5,7 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-svt
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=3
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. SVT Patchset applied'
@@ -68,7 +68,6 @@ makedepends=(
   ladspa
   nasm
   svt-av1
-  svt-vp9
 )
 optdepends=('ladspa: LADSPA filters')
 provides=(
@@ -85,13 +84,14 @@ provides=(
 replaces=('ffmpeg')
 conflicts=('ffmpeg')
 source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}
-	0001-Add-ability-for-ffmpeg-to-run-svt-av1-vp9.patch)
+	0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch)
 sha256sums=('SKIP'
-            'c7d7b0eb5d5d0874047b7049bdd432d37996a3f8f077bcabbee41cd1697526b4')
+            '19825c7226c7300514715fc5048c2e6b04000f0c83f9c94688af1c095639bf2b')
 
 prepare() {
   cd $srcdir/ffmpeg
-  patch -Np1 -i ${srcdir}/0001-Add-ability-for-ffmpeg-to-run-svt-av1-vp9.patch
+  patch -Np1 -i ${srcdir}/0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch
+#  patch -Np1 -i ${srcdir}/0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch || echo Already applied
 }
 
 build() {
@@ -142,8 +142,7 @@ build() {
     --enable-omx \
     --enable-shared \
     --enable-version3 \
-    --enable-libsvtav1 \
-    --enable-libsvtvp9
+    --enable-libsvtav1
 
 
   make
