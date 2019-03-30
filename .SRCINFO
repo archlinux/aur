@@ -1,0 +1,14 @@
+pkgbase = android-platform-dummy
+	pkgdesc = Android SDK Platform, dummy package
+	pkgver = 28_r06
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = GPL
+	depends = android-sdk
+	depends = android-sdk-platform-tools
+	provides = android-platform
+	conflicts = android-platform
+
+pkgname = android-platform-dummy
+
