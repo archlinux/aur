@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Show CommonMark (a standardized Markdown dialect) documents on text terminals.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('oniguruma')
 conflicts=('mdcat-git')
 makedepends=('rust' 'cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha512sums=('654ee4b1e1604eff14d93914aadf244c6cbce1a71d3a6560cf2d144bda839aa541de06ee1f86be8c22d75eefaff44272e005cd42dc29fa78be654fbf8557992a')
+sha256sums=('9528a0dedcb9db559c9973001787f474f87559366a2c7a2ff01148c5ab31eac1')
 
 build() {
   cd "$pkgname-$pkgname-$pkgver"
@@ -19,7 +19,13 @@ build() {
   # reqwest->native-tls->openssl. The version of the openssl crate that is
   # selected does not recognise the version that Arch is using and results in
   # the build failing so this feature is disabled.
-  /usr/bin/cargo build --release --no-default-features --features terminology
+  #
+  # We dynamically link against the system libonig so that, that dependency is
+  # shared with, and kept up to date with the rest of the system. It means
+  # this package will need to have the pkgrel bumped if there is a breaking
+  # release to libonig though.
+  RUSTONIG_DYNAMIC_LIBONIG=1 RUSTONIG_SYSTEM_LIBONIG=1 cargo build \
+    --release --no-default-features --features terminology
 }
 
 package() {
