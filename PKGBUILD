@@ -1,6 +1,6 @@
 # Contributor: Swift Geek <swiftgeek «at» gmail.com>
 pkgname=perl-extutils-cppguess
-pkgver=0.13
+pkgver=0.16
 pkgrel=1
 pkgdesc="ExtUtils::CppGuess - guess C++ compiler and flags"
 arch=('any')
@@ -15,7 +15,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETJ/ExtUtils-CppGuess-${pkgver}.tar.gz")
-md5sums=('a1a84871e549840c2081297ebc136a96')
+md5sums=('48e10d76d49fb695e2f321b0dc44b36c')
 _src_dir='$srcdir/ExtUtils-CppGuess-$pkgver'
 
 build() {
