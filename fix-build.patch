@@ -1,0 +1,12 @@
+diff -Naur gnome-do-0.95.1.orig/Do/src/Do.UI/PluginNodeView.cs gnome-do-0.95.1/Do/src/Do.UI/PluginNodeView.cs
+--- gnome-do-0.95.1.orig/Do/src/Do.UI/PluginNodeView.cs	2014-10-06 02:04:38.165823000 +0200
++++ gnome-do-0.95.1/Do/src/Do.UI/PluginNodeView.cs	2014-10-06 02:04:59.252989251 +0200
+@@ -94,7 +94,7 @@
+ 
+ 			cell = new CellRendererPixbuf ();				
+ 			cell.SetFixedSize (IconSize + IconPadding, IconSize + IconPadding);
+-			AppendColumn ("Icon", cell, IconDataFunc as TreeCellDataFunc);
++			AppendColumn ("Icon", cell, IconDataFunc);
+ 
+ 			cell = new Gtk.CellRendererText ();
+ 			(cell as CellRendererText).WrapWidth = WrapWidth;

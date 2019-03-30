@@ -1,0 +1,28 @@
+pkgbase = gnome-do
+	pkgdesc = Quickly search for many items present on your desktop or the web, and perform useful actions on those items
+	pkgver = 0.95.3
+	pkgrel = 6
+	url = https://do.cooperteam.net/
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	makedepends = gio-sharp
+	depends = gconf-sharp
+	depends = gnome-keyring-sharp
+	depends = mono-addins
+	depends = notify-sharp
+	depends = gkeyfile-sharp
+	source = https://launchpad.net/do/trunk/0.95.3/+download/gnome-do-0.95.3.tar.gz
+	source = https://launchpad.net/do/trunk/0.95.3/+download/gnome-do-0.95.3.tar.gz.asc
+	source = fix-build.patch
+	source = 03_dbus_sharp_2.diff
+	source = drop-gnome-destkop.patch
+	validpgpkeys = 972401D296309DE91E713C6F18B3F50FE5923C18
+	sha256sums = 282343285c818f2bb8198e7876f9ec895327415c8ddadc20c299fbe2c8deedfb
+	sha256sums = SKIP
+	sha256sums = f5206a5d5cf86c72e713dbdca69a95969c71789c03a1b7a5c685cd60c0e97ad7
+	sha256sums = ef839c281fe1b3c9b8624b48cdd7ae9b240e7284c03a4852708db686a573ebfa
+	sha256sums = 5ab8f6c342a4f291356d9bf94cc8678ba8a4b3e71b596be2cef6024da8db55f8
+
+pkgname = gnome-do
+

@@ -1,0 +1,13 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -97,8 +97,8 @@
+ AC_SUBST([GKEYFILE_SHARP_LIBS])
+ 
+ dnl -- Use D-Bus# where available.
+-PKG_CHECK_MODULES([DBUS_SHARP], [dbus-sharp-1.0], HAVE_DBUS_SHARP=yes, HAVE_DBUS_SHARP=no)
+-PKG_CHECK_MODULES([DBUS_SHARP_GLIB], [dbus-sharp-glib-1.0], HAVE_DBUS_SHARP_GLIB=yes, HAVE_DBUS_SHARP_GLIB=no)
++PKG_CHECK_MODULES([DBUS_SHARP], [dbus-sharp-2.0], HAVE_DBUS_SHARP=yes, HAVE_DBUS_SHARP=no)
++PKG_CHECK_MODULES([DBUS_SHARP_GLIB], [dbus-sharp-glib-2.0], HAVE_DBUS_SHARP_GLIB=yes, HAVE_DBUS_SHARP_GLIB=no)
+ 
+ if test "x$HAVE_DBUS_SHARP" = "xyes" ; then
+ 	DBUS_BUILD_DEFINES=-define:USE_DBUS_SHARP
