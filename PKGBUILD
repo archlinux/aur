@@ -1,8 +1,8 @@
 # Maintainer: Térence Clastres <t dot clastres at gmail dot com>
 
 pkgname=gnome-shell-extension-gsconnect-git
-pkgver=21.rc2.r2.g77913553
-pkgrel=1
+pkgver=21.r11.g40335f70
+pkgrel=2
 pkgdesc="KDE Connect implementation with GNOME Shell integration"
 arch=('any')
 url="https://github.com/andyholmes/gnome-shell-extension-gsconnect"
@@ -27,7 +27,7 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
-	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/rc.\.//'
 }
 
 
