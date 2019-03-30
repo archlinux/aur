@@ -2,39 +2,52 @@
 
 # Maintainer: Opty <opty@hotmail.fr>
 
-_gitname=JRomManager
-pkgbase=jrommanager
 pkgname=jrommanager
-pkgver=2.0.3
-pkgrel=6
+_gitname=JRomManager
+pkgver=2.1.0
+pkgrel=7
 pkgdesc='A Rom Manager entirely written in Java and released under GPL v2'
 arch=('any')
-license=('GPL-2')
+license=('GPL2')
 url="https://github.com/optyfr/JRomManager"
 depends=('java-runtime>=8')
-source=("https://github.com/optyfr/${_gitname}/releases/download/${pkgver}/${_gitname}-${pkgver}.zip"
-	"${_gitname}.desktop" 
-	"${_gitname}.png"
-	"${_gitname}.sh")
+makedepends=('java-environment>=8' 'gradle')
 options=(!strip)
+source=("git+https://github.com/optyfr/${_gitname}#tag=${pkgver}"
+  "${_gitname}.desktop" 
+  "${_gitname}.png"
+  "${_gitname}.sh")
+sha256sums=('SKIP'
+            '070fc15f00ba27398e049f7c5753588a9907e3d92e5cbd8158ee66bff3ff7b0d'
+            '247df543bd5d6f711952bf2903b074ed89f9b1df2fa4ec318b3e61ad270ae3b5'
+            '3395aa7b9c51f15d81e4f3795536b45434ace01ba17b60c5207f71ab0436f413')
 
-package() {
-	install -d -m755 "${pkgdir}/usr/share/java/${pkgname}/"
-	install -d -m755 "${pkgdir}/usr/share/java/${pkgname}/lib/"
-	install -m644 lib/*.jar "${pkgdir}/usr/share/java/${pkgname}/lib/"
-	install -m644 *.jar "${pkgdir}/usr/share/java/${pkgname}/"
-	install -Dm755 *.sh "${pkgdir}/usr/share/java/${pkgname}/"
-	cp -dpr --no-preserve=ownership webclient "${pkgdir}/usr/share/java/${pkgname}/"
-	cp -dpr --no-preserve=ownership wrapper "${pkgdir}/usr/share/java/${pkgname}/"
-	install -Dm755 ${_gitname}.sh "${pkgdir}/usr/bin/${pkgname}"
-
-	install -D ${_gitname}.desktop "${pkgdir}/usr/share/applications/${_gitname}.desktop"
-	install -D ${_gitname}.png "${pkgdir}/usr/share/pixmaps/${_gitname}.png"
+prepare() {
+  cd $srcdir/$_gitname
+  git submodule update --init --recursive
 }
 
-# makepkg -g >> PKGBUILD
+build() {
+  cd $srcdir/$_gitname
+  gradle build
+}
 
-md5sums=('c939d394879e03ac4dc454c897090dc7'
-         'feb8697e8eea362a9b6ba5947975dc4c'
-         'aa359e0e6eedc95e172355b83b2c6235'
-         '33c717e50d5db9ca115bf063313bf1df')
+package() {
+  cd $srcdir/$_gitname/build/distributions
+
+  mkdir -p $_gitname-ext
+  bsdtar -xf $_gitname-$pkgver-install.jar
+  bsdtar -xf $_gitname-$pkgver.zip -C $_gitname-ext
+  cd $_gitname-ext
+
+  mkdir -p "$pkgdir/usr/share/java/$pkgname/lib/"
+  install -Dm755 *.sh "$pkgdir/usr/share/java/$pkgname/"
+  install -Dm644 *.jar "$pkgdir/usr/share/java/$pkgname/"
+  install -Dm644 lib/*.jar "$pkgdir/usr/share/java/$pkgname/lib/"
+  cp -dr --preserve=mode {webclient,wrapper} "$pkgdir/usr/share/java/$pkgname/"
+  install -Dm755 $srcdir/$_gitname.sh "$pkgdir/usr/bin/$pkgname"
+
+  install -Dm644 $srcdir/$_gitname.desktop "$pkgdir/usr/share/applications/$_gitname.desktop"
+  install -Dm644 $srcdir/$_gitname.png "$pkgdir/usr/share/pixmaps/$_gitname.png"
+}
+
