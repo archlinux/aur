@@ -4,8 +4,8 @@ pkgver="1.0.0"
 pkgrel=2
 pkgdesc="A pacman hook that will save the list of your packages to /etc/pkglist.txt on every install and removal"
 arch=('any')
-url="https://git.voluntaryism.club/dtluna/pacman-backup-hook"
-license=('unknown')
+url="https://git.dtluna.net/dtluna/pacman-backup-hook"
+license=('custom:Unlicense')
 depends=(
     'pacman>=5.1'
 )
