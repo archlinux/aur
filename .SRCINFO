@@ -1,7 +1,7 @@
 pkgbase = ctl
 	pkgdesc = The Color Transformation Language
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ampas/CTL
 	arch = x86_64
 	license = custom
