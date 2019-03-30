@@ -1,7 +1,7 @@
 pkgbase = xfce4-windowck-plugin-bobko-mod
 	pkgdesc = Xfce panel plugin which allows to put the maximized window title and buttons on the panel. bobko mod
 	pkgver = 0.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nikitabobko/xfce4-windowck-plugin-bobko-mod
 	arch = i686
 	arch = x86_64
