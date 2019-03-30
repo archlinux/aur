@@ -1,6 +1,6 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at pm dot me>
 pkgname=up-git
-pkgver=5873371
+pkgver=e8ddd78
 pkgrel=1
 license=('Apache')
 pkgdesc="Ultimate Plumber is a tool for writing Linux pipes with instant live preview"
