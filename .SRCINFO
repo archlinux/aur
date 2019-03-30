@@ -1,25 +1,25 @@
 pkgbase = mongodb-bin
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
-	pkgver = 4.0.7
+	pkgver = 4.0.8
 	pkgrel = 1
 	url = https://www.mongodb.com/
 	arch = x86_64
 	license = SSPLv1
 	optdepends = mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.
-	provides = mongodb=4.0.7
+	provides = mongodb=4.0.8
 	conflicts = mongodb
 	backup = etc/mongodb.conf
-	source = https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.0/multiverse/binary-amd64/mongodb-org-shell_4.0.7_amd64.deb
-	source = https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.0/multiverse/binary-amd64/mongodb-org-server_4.0.7_amd64.deb
-	source = https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.0/multiverse/binary-amd64/mongodb-org-mongos_4.0.7_amd64.deb
+	source = https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.0/multiverse/binary-amd64/mongodb-org-shell_4.0.8_amd64.deb
+	source = https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.0/multiverse/binary-amd64/mongodb-org-server_4.0.8_amd64.deb
+	source = https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.0/multiverse/binary-amd64/mongodb-org-mongos_4.0.8_amd64.deb
 	source = mongodb.service
 	source = mongodb.conf
 	source = mongodb.sysusers
 	source = mongodb.tmpfiles
 	source = LICENSE
-	sha256sums = 20142a1055b19e7ad941d7940323d3826e700efac419c3cda3d9b71999c89e71
-	sha256sums = b927863dad727c7fae09b1d9ed17a4be94a5b87ea09d816bcd1d929a3ff144f8
-	sha256sums = 74fe67454bf11abda19d5f46bd9912056c71378203eaa0b9989d7546ca1f9779
+	sha256sums = 1fca4c291b03d489b3116d33a236c2e551dce0b36dc5fb0fe1c21ffc76a52168
+	sha256sums = f08b42809a08f47d18b5482da751ffea2c8eb4a4c4e87b4ceeb93ea18efedad7
+	sha256sums = 60ac3af71a16bca98f4acb52a65da684ec1de33eed5e63fc1c93d1948873b4d4
 	sha256sums = 19f55ab28652b3817e98fc3f15cc2f6f3255a5e1dfd7b0d5a27c9ba22fd2703e
 	sha256sums = 8010ce728d657524cd76b5afda7ffbc1cc389642336b12b89cec5df2b09fc0e4
 	sha256sums = 47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b
