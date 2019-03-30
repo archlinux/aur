@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/share/volt
+exec /usr/lib/volt/volt
