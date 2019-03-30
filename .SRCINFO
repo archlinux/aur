@@ -1,0 +1,17 @@
+pkgbase = haskell-ordered-containers
+	pkgdesc = Set and Map-like types that remember the order elements were inserted
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/dmwit/ordered-containers
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = ghc
+	makedepends = ghc-libs
+	makedepends = haskell-containers
+	depends = haskell-containers
+	source = https://hackage.haskell.org/package/ordered-containers-0.2.1/ordered-containers-0.2.1.tar.gz
+	sha256sums = 01d427fd6bc2f2dabed69f2036f4d228fd8bed9fcde39eeb12ad53e73da795f9
+
+pkgname = haskell-ordered-containers
+
