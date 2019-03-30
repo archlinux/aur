@@ -11,7 +11,7 @@
 # You can also set up a tlserver:// DLAGENT in /etc/makepkg.conf.
 
 pkgname=thinlinc-server
-pkgver=4.9.0
+pkgver=4.10.0
 pkgrel=1
 pkgdesc="Cendio ThinLinc Linux remote desktop server"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ source=("tlserver://${_archive_name}.zip"
         'tlwebadm.service'
         'vsmagent.service'
         'vsmserver.service')
-sha256sums=('60dae3e29d8927223ed21b0cc094d17c73882f8a7160602d18d12dc1e157bf8b'
+sha256sums=('f8fe29e9706872c48a922a266cec226c496d45c346d965ee44aad8c6adb40b6c'
             '179583f1e2f61a9a75a99bbe8bb988e35a0216fc2ddcbd4c85ad8bdc70c3149e'
             '8e70ef23f9716dcb100eba660932e7f5d05351d63074fb262cf925812dbdbb63'
             '5a92c5beac6c64487debd92a4d94b56074b9f9b0cd38d154a14a320105f3bccd'
@@ -63,7 +63,10 @@ build()
 package()
 {
     cd "${srcdir}/${_archive_name}/packages/${_extract_dir}"
-    cp -aR * "${pkgdir}"
+    cp -aR etc/ opt/ usr/ var/ "$pkgdir"
+
+    install -dm755 "$pkgdir"/usr/lib
+    cp -aR lib64/* "$pkgdir"/usr/lib
 
     cd "$srcdir"
     install -Dm644 LICENSE             "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
