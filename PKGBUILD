@@ -2,7 +2,7 @@
 
 pkgname=openra-rv-git
 _pkgname=openra-rv
-pkgver=1634.git.910e78a
+pkgver=1650.git.0d4a162
 pkgrel=1
 pkgdesc="A Command & Conquer: Red Alert 2-inspired mod of OpenRA"
 arch=('any')
@@ -49,7 +49,7 @@ package() {
     cd $srcdir/Romanovs-Vengeance
     mkdir -p $pkgdir/usr/{lib/openra-rv/mods,bin,share/pixmaps,share/doc/packages/openra-rv,share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/openra-rv
-    cp -r engine/{glsl,lua,AUTHORS,COPYING,Eluant.dll*,FuzzyLogicLibrary.dll,GeoLite2-Country.mmdb.gz,'global mix database.dat',ICSharpCode.SharpZipLib.dll,launch-dedicated.sh,launch-game.sh,MaxMind.Db.dll,OpenAL-CS.dll,OpenAL-CS.dll.config,Open.Nat.dll,OpenRA.Game.exe,OpenRA.Platforms.Default.dll,OpenRA.Server.exe,OpenRA.Utility.exe,rix0rrr.BeaconLib.dll,SDL2-CS.dll,SDL2-CS.dll.config,SharpFont.dll,SharpFont.dll.config,VERSION} $pkgdir/usr/lib/openra-rv
+    cp -r engine/* $pkgdir/usr/lib/openra-rv
     cp -r mods/rv $pkgdir/usr/lib/openra-rv/mods
     cp -r engine/mods/{as,common,modcontent} $pkgdir/usr/lib/openra-rv/mods
     install -Dm755 $srcdir/openra-rv $pkgdir/usr/bin/openra-rv
@@ -62,5 +62,6 @@ package() {
       size="${size}x${size}"
       cp packaging/linux/mod_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${pkgname}.png"
     done
-    rm $pkgdir/usr/lib/openra-rv/*.sh
+    rm -rf $pkgdir/usr/lib/openra-rv/*{.txt,.yml,.xslt,.cmd,.md,Mono*,.sh,Makefile,sln.*,Test,.mdb,.pdb,.ps1,.AS,packaging,thirdparty,engines,OpenRA.Mods}
+    rm -rf $pkgdir/usr/lib/openra-rv/{OpenRA.StyleCheck*,OpenRA.Game.exe.config,OpenRA.Platforms.Default.dll.config,OpenRA.Utility.exe.config,OpenRA.sln,fixheader.exe,mods/{all,cnc,d2k,ra,ts},OpenRA.Mods.*,OpenRA.Platforms.Default,OpenRA.Server,OpenRA.Game,OpenRA.Utility,Settings.StyleCop,nunit*}
 }

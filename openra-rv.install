@@ -4,8 +4,8 @@ post_upgrade() {
 }
 
 post_install() {
-    echo "You will need the original game assets to play this game, see https://github.com/OpenRA/ra2/wiki for details.\n"
-    echo "Beware you will need the expansion game assets, which are only in C&C: Ultimate Edition.\n"
+    echo "You will need the original game assets to play this game, see https://github.com/OpenRA/ra2/wiki for details."
+    echo "Beware you will need the expansion game assets, which are only in C&C: Ultimate Edition."
     post_upgrade
 }
 
