@@ -7,8 +7,8 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt-lts       # Build kernel with a different name
-_pkgver=4.14.103
-_rtpatchver=rt55
+_pkgver=4.19.31
+_rtpatchver=rt18
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=(x86_64)
@@ -20,8 +20,8 @@ _srcname=linux-${_pkgver}
 source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_pkgver}.tar.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_pkgver}.tar.sign"
-  "https://www.kernel.org/pub/linux/kernel/projects/rt/4.14/older/patch-${_pkgver}-${_rtpatchver}.patch.xz"
-  "https://www.kernel.org/pub/linux/kernel/projects/rt/4.14/older/patch-${_pkgver}-${_rtpatchver}.patch.sign"
+  "https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/older/patch-${_pkgver}-${_rtpatchver}.patch.xz"
+  "https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/older/patch-${_pkgver}-${_rtpatchver}.patch.sign"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   config         # the main kernel config file
   60-${pkgbase}.hook  # pacman hook for depmod
@@ -35,14 +35,13 @@ validpgpkeys=(
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
-  '5BDFC45C2ECC5387D50CE5EFDE09826778A38521'  # Tom Zanussi
 )
-sha256sums=('7aa43e34e4c9e5965da29cef5ae196e06006f8c0d1d65fd755a2f197f0796a11'
+sha256sums=('7aaa90ad42be9025f2555deb3e5a6e87e44520d82eb92b8d97ac070dbf10280b'
             'SKIP'
-            'cf34816297240dccdd36539c517280ac06855f371d3dca33ea5ae6ed85039631'
+            'ceb4541542149687e1373a52328e5fe6647deff6591b99e39810971fd13c3956'
             'SKIP'
             '75aa8dd708ca5a0137fbf7cddc9cafefe6aac6b8e0638c06c156d412d05af4bc'
-            '50b5311f7c0a2848b3a280d7ad6c61695f3613cfe7b110c8aaff5bfa3412d1cd'
+            'daa6df66780eb18299815258cf4314160953d44f66ff750c9bb6ffef064e7b1a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
