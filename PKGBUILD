@@ -1,17 +1,17 @@
-# Maintainer: Daniel T. Borelli < danieltborelli@gmail.com >
+# Maintainer: Daniel T. Borelli < d a n i e l t b o r e l l i @ g m a i l . c o m >
 
 pkgbase=moc_notify-git
 pkgname=$pkgbase
-pkgver=2.2
-pkgrel=3
+pkgver=2.3
+pkgrel=1
 _gitname=moc_notify
-_gittag="v.${pkgver}"
+_gittag="v${pkgver}"
 
 pkgdesc="Notifier for 'Music On Console' using libnotify."
 
-arch=('i686' 'x86_64')
+arch=('x86_64')
 
-url='https://gitlab.com/daltomi/moc_notify'
+url='https://github.com/daltomi/moc_notify'
 
 license=('GPL3')
 
@@ -25,7 +25,8 @@ install=moc_notify-git.install
 
 source=("moc_notify-git.install" "git+${url}.git?signed#tag=${_gittag}")
 
-sha1sums=('ae6f9be60997863f215d13c0cb0bb8da9bbdd5eb' 'SKIP')
+sha256sums=('dc8acfa99a68825cc74e9659f2f5e03802a336705cd5e080504cd4fc88743f01' 'SKIP')
+
 
 validpgpkeys=('51479755D90A2AACFA90A6551DD242462908D08B')
 
