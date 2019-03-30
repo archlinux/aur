@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=rofi-calc
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Do calculations in rofi"
 arch=('x86_64')
