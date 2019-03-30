@@ -1,0 +1,13 @@
+pkgbase = gio-sharp
+	pkgdesc = Mono bindings to Glib's libgio
+	pkgver = 0.3
+	pkgrel = 3
+	url = https://github.com/mono/gio-sharp
+	arch = any
+	license = MIT
+	depends = gtk-sharp-2
+	source = gio-sharp-0.3.tar.gz::https://github.com/mono/gio-sharp/archive/0.3.tar.gz
+	sha256sums = 25142dd9f2cfa984acf10a579fb771612f46ae4c089b65e059d72a403a2fc1d5
+
+pkgname = gio-sharp
+
