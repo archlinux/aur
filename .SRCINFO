@@ -1,0 +1,14 @@
+pkgbase = htmltui
+	pkgdesc = A terminal UI utility to view HTML
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://git.dtluna.net/dtluna/htmltui
+	arch = any
+	license = custom:WTFPL
+	makedepends = go
+	conflicts = htmltui-bin
+	source = https://git.dtluna.net/dtluna/htmltui/archive/v1.1.0.tar.gz
+	sha256sums = ef795e477d9e07bcc16e72488045698e79aa99bfff9edb3efd0b51de775ee8c9
+
+pkgname = htmltui
+
