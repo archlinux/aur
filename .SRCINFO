@@ -1,7 +1,7 @@
 pkgbase = gorgeous-bin
 	pkgdesc = CLI RSS feed reader
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.dtluna.net/dtluna/gorgeous
 	arch = x86_64
 	arch = i686

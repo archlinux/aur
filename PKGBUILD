@@ -3,7 +3,7 @@
 _pkgname_base='gorgeous'
 pkgname="${_pkgname_base}-bin"
 pkgver='1.4.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI RSS feed reader'
 url='https://git.dtluna.net/dtluna/gorgeous'
 arch=('x86_64' 'i686')
@@ -24,8 +24,8 @@ sha256sums_i686=('c8e820d7009d89491ff3c1d5686b36f3fa80f9c6140f52cadeb53035732ea9
 
 package() {
 	  # Bin
-	  rm -f "${pkgdir}/usr/bin/${pkgname}"
-	  install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${_pkgname_base}"
+	  rm -f "${pkgdir}/usr/bin/${_pkgname_base}"
+	  install -Dm755 "${srcdir}/${_pkgname_base}" "${pkgdir}/usr/bin/${_pkgname_base}"
 
 	  # License
 	  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname_base}/LICENSE"
