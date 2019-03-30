@@ -1,35 +1,36 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=luxcorerender
-pkgver=2.1
-#_rel="beta3"
-[ -n "${_rel}" ] && _pkgver+=${_rel} && pkgver+=".${_rel}" || _pkgver=${pkgver}
-pkgrel=5
+pkgver=2.2
+_rel="alpha1"
+[ -n "${_rel}" ] && _pkgver=${pkgver}${_rel} && pkgver+=".${_rel}" || _pkgver=${pkgver}
+pkgrel=1
 epoch=1
 pkgdesc="LuxCoreRender is a physically correct, unbiased rendering engine."
 arch=('x86_64')
 url="https://www.luxcorerender.org/"
 license=('Apache')
-depends=(openimageio boost blosc embree glfw-x11 gtk3 opencl-icd-loader)
+depends=(oidn openimageio boost blosc embree glfw-x11 gtk3 opencl-icd-loader)
 optdepends=("opencl-driver: for gpu acceleration"
             "python-pyside: for pyluxcoretools gui")
 makedepends=(git doxygen cmake python-pyside-tools opencl-headers)
 conflicts=(luxrays-hg)
 provides=(luxrays)
-options=('!buildflags')
 source=("https://github.com/LuxCoreRender/LuxCore/archive/${pkgname}_v${_pkgver}.tar.gz"
         "python.patch"
         "glfw.patch"
+        "boost016900_serialization.patch"
         )
-md5sums=('04f51b65e99a9979befae3298206cdac'
-         '21b963e5f66d2c8c6a50bebcf9f0fe07'
-         '624f2be4cb431f6a4cfcc968d6263ac2')
+md5sums=('028c799d069db672056deb81802a282d'
+         '8e2fd7337fe6afaf5b2801426837f600'
+         'e2a20172b7b7ac92a7002b6218afe327'
+         '52f097678654151e2b5427d271a7e69d')
 
 prepare() {
   cd ${srcdir}/LuxCore-${pkgname}_v${_pkgver}
-  msg "python.patch"
-  patch -Np1 < ../python.patch
-  msg "glfw.patch"
-  patch -Np1 < ../glfw.patch
+  for patch in ${srcdir}/*.patch; do
+    msg2  "apply $patch..."
+    patch -Np1 -i $patch
+  done
 }
 
 build() {

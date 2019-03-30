@@ -1,7 +1,7 @@
 pkgbase = luxcorerender
 	pkgdesc = LuxCoreRender is a physically correct, unbiased rendering engine.
-	pkgver = 2.1
-	pkgrel = 5
+	pkgver = 2.2.alpha1
+	pkgrel = 1
 	epoch = 1
 	url = https://www.luxcorerender.org/
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = luxcorerender
 	makedepends = cmake
 	makedepends = python-pyside-tools
 	makedepends = opencl-headers
+	depends = oidn
 	depends = openimageio
 	depends = boost
 	depends = blosc
@@ -22,13 +23,14 @@ pkgbase = luxcorerender
 	optdepends = python-pyside: for pyluxcoretools gui
 	provides = luxrays
 	conflicts = luxrays-hg
-	options = !buildflags
-	source = https://github.com/LuxCoreRender/LuxCore/archive/luxcorerender_v2.1.tar.gz
+	source = https://github.com/LuxCoreRender/LuxCore/archive/luxcorerender_v2.2alpha1.tar.gz
 	source = python.patch
 	source = glfw.patch
-	md5sums = 04f51b65e99a9979befae3298206cdac
-	md5sums = 21b963e5f66d2c8c6a50bebcf9f0fe07
-	md5sums = 624f2be4cb431f6a4cfcc968d6263ac2
+	source = boost016900_serialization.patch
+	md5sums = 028c799d069db672056deb81802a282d
+	md5sums = 8e2fd7337fe6afaf5b2801426837f600
+	md5sums = e2a20172b7b7ac92a7002b6218afe327
+	md5sums = 52f097678654151e2b5427d271a7e69d
 
 pkgname = luxcorerender
 
