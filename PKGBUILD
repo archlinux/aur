@@ -1,21 +1,21 @@
 # Maintainer: Daniel Schopf <schopf.dan at gmail dot com>
 pkgname=kim-api
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Online framework for reliable, reproducible and portable molecular simulations"
 arch=("i686" "x86_64")
 url="https://openkim.org"
 license=('CDDL')
 depends=(bash)
-makedepends=(gcc-libs)
+makedepends=(cmake gcc-libs)
 install=$pkgname.install
-source=(https://s3.openkim.org/kim-api/kim-api-v2-2.0.0.txz
+source=(https://s3.openkim.org/kim-api/kim-api-2.0.2.txz
 	Fix-Doxygen-command-error.patch)
-sha512sums=('709f7ba26e9ab2a6b55636989fb891e64fada4123fc20c55b69a5555a21a00105053abd3826e0a317856a0ec07c79369a68b185a204fe145ca8d94c455afa5b4'
-            'e2771561f05b49b7ed46b265af6a2c81ad8fbde9e6ab9f2632822764de5802ac0e91973e66d5240136ea7e9a8b82befc312dbbb3bccdb84d8875744851fcb146')
+sha512sums=('69d9c506e365f0633d539c0047bc11f057e28788644ce27083ef9772bfbce31f23519301479fe26588496d5fbe3bcc3c74aea81ddfc1e8c2c1a4d8fa56f108e8'
+            '0063cb18884a19d15261e910cc9877ff319f9c1b428023d736e34b5271f254a7eaca9b90033f80af560199e1fe363523da6afb4ee35a05af76b2760039a94cbd')
 
 prepare() {
-  cd "$pkgname-v2-$pkgver"
+  cd "$pkgname-$pkgver"
   patch -p1 -i ../Fix-Doxygen-command-error.patch
   cd ..
   mkdir -p build
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
   cd build
-  cmake "../$pkgname-v2-$pkgver" \
+  cmake "../$pkgname-$pkgver" \
   	-DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
 	-DCMAKE_INSTALL_LIBDIR="lib" \
