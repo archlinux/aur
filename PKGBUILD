@@ -10,7 +10,7 @@ pkgdesc="The Classic Super Star Trek Game"
 url="http://www.almy.us/sst.html"
 depends=('glibc')
 source=(http://www.almy.us/files/sstsrc.zip)
-md5sums=('23f3ba0f3f0d4e9613893691d3040bac')
+md5sums=('87301bc87b5a06e525f228d073428895')
 
 build() {
   cd "$srcdir/sstsrc"
