@@ -1,7 +1,7 @@
 # Maintainer: Jean-Gabriel Young <info@jgyoung.ca>
 
 pkgname=python-pystan
-pkgver=2.18.0.1
+pkgver=2.18.1.0
 pkgrel=1
 pkgdesc="Python interface to Stan, a package for Bayesian inference."
 arch=('i686' 'x86_64')
