@@ -3,7 +3,7 @@
 _pkgname_base='gorgeous'
 pkgname="${_pkgname_base}-bin"
 pkgver='1.4.0'
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI RSS feed reader'
 url='https://git.dtluna.net/dtluna/gorgeous'
 arch=('x86_64' 'i686')
@@ -11,7 +11,9 @@ license=('custom:WTFPL')
 
 depends=()
 makedepends=()
-optdepends=()
+optdepends=(
+    'htmltui: utility to view content'
+)
 
 conflicts=("${_pkgname_base}")
 

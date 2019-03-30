@@ -6,6 +6,7 @@ pkgbase = gorgeous-bin
 	arch = x86_64
 	arch = i686
 	license = custom:WTFPL
+	optdepends = htmltui: utility to view content
 	conflicts = gorgeous
 	source_x86_64 = gorgeous-bin_1.4.0_linux_x86_64.zip::https://git.dtluna.net/attachments/ff15f6ad-537b-466f-9ccd-487cff0c71d2
 	sha256sums_x86_64 = bf346274f5facdfe848fdf43edeebeddde2b92b2460ecd01b022c8f25d0b1ac8
