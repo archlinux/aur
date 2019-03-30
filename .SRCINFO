@@ -1,0 +1,16 @@
+pkgbase = nanox
+	pkgdesc = Nanos++ is a runtime designed to serve as runtime support in parallel environments. It is mainly used to support OmpSs, a extension to OpenMP developed at BSC.
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://pm.bsc.es/ompss
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc7
+	depends = extrae
+	depends = sqlite3
+	source = https://pm.bsc.es/ftp/ompss/releases/ompss-17.12.1.tar.gz
+	sha512sums = e68effb54b3a4e91da22808a928afcd586d41a3825ec2cea1f783a65d4e075cfb07ce3f5a8006c5a204a46f37fc73383cd549f6706ed12124724b6be18520344
+
+pkgname = nanox
+
