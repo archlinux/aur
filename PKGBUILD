@@ -3,7 +3,7 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr
 pkgver=2.4.0
-pkgrel=9
+pkgrel=10
 pkgdesc="'open' digital satellite receiver and timer controlled video disk recorder"
 url="http://tvdr.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -38,6 +38,11 @@ source=("ftp://ftp.tvdr.de/vdr/${pkgname}-${pkgver}.tar.bz2"
         'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-19-add-eac3-from-other-sources.diff'
         'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-20-fix-logging-inactive-transponders.diff'
         'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-21-fix-libsi.diff'
+        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-22-fix-sort-recordings.diff'
+        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-23-fix-patch-16.diff'
+        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-24-fix-drop-caps.diff'
+        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-25-fix-channels-menu.diff'
+        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-26-fix-shared-ca-pids.diff'
         'MainMenuHooks-v1_0_2.diff::https://www.vdr-portal.de/index.php?attachment/30330'
         '00-vdr.conf' '50-hello.conf' '50-pictures.conf'
         '60-create-dvb-device-units.rules'
@@ -77,6 +82,11 @@ md5sums=('12c6a3abeadfa915fcfe736bb047a3ab'
          '593c0ecd28748467e181f4e2a84929f6'
          '8c164c58e529372f36058539f14a7cc2'
          'b2721133ab1558698f2f86c700071a1d'
+         '6ea776a90ffb0fa0f3e642e7f3a77196'
+         '3784ba9107f82a580fca06b6c12cfd66'
+         '36e8e34dbd55cc9994c7ebb57b5cbce6'
+         '168fca065cbff6237575d3a35842e35d'
+         '181f845e4fe0b855449960e920091ce0'
          '301c9b9766ed5182b07f1debc79abc21'
          'de3dcdea1a4282211c6dac370019548b'
          'fc450f75037b8712673db4969a1dd758'
@@ -120,6 +130,11 @@ prepare() {
   patch -p0 -i "$srcdir/vdr-2.4.0-19-add-eac3-from-other-sources.diff"
   patch -p0 -i "$srcdir/vdr-2.4.0-20-fix-logging-inactive-transponders.diff"
   patch -p0 -i "$srcdir/vdr-2.4.0-21-fix-libsi.diff"
+  patch -p0 -i "$srcdir/vdr-2.4.0-22-fix-sort-recordings.diff"
+  patch -p0 -i "$srcdir/vdr-2.4.0-23-fix-patch-16.diff"
+  patch -p0 -i "$srcdir/vdr-2.4.0-24-fix-drop-caps.diff"
+  patch -p0 -i "$srcdir/vdr-2.4.0-25-fix-channels-menu.diff"
+  patch -p0 -i "$srcdir/vdr-2.4.0-26-fix-shared-ca-pids.diff"
 
   # Custom extensions
   sed -i 's/NULL, 0, true/NULL, 0, OpenSubMenus/g' "$srcdir/MainMenuHooks-v1_0_2.diff"
