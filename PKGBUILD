@@ -4,13 +4,14 @@
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-git
-pkgver=0.C.2016.03.12
-_pkgver=0.C
+pkgver=0.D.2019.03.29
+_pkgver=0.D
 pkgrel=1
 pkgdesc="A post-apocalyptic roguelike."
 #url="http://cataclysmrl.blogspot.com/"
 #url="http://www.cataclysm.glyphgryph.com/"
-url="http://en.cataclysmdda.com/"
+#url="http://en.cataclysmdda.com/"
+url="https://cataclysmdda.org/"
 arch=('i686' 'x86_64')
 license=("CCPL:by-sa")
 conflicts=('cataclysm-dda')
@@ -21,7 +22,6 @@ optdepends=('sdl2_image: for tiles'
             'sdl2_ttf: for tiles'
             'freetype2: for tiles'
             'sdl2_mixer: for tiles')
-install=cataclysm-dda.install
 #source=("$pkgname"::'git://github.com/CleverRaven/Cataclysm-DDA.git#branch=master')
 # The git repo is more than a GB
 # so download a snapshot while waiting for shallow clone support in makepkg
@@ -43,10 +43,9 @@ prepare() {
 
 build() {
   cd "Cataclysm-DDA-master"
-  make PREFIX=/usr RELEASE=1 ZLEVELS=1 USE_HOME_DIR=1 LUA=1
-  make PREFIX=/usr RELEASE=1 ZLEVELS=1 USE_HOME_DIR=1 LUA=1 TILES=1 SOUND=1
+  make PREFIX=/usr RELEASE=1 ZLEVELS=1 USE_XDG_DIR=1 LUA=1
+  make PREFIX=/usr RELEASE=1 ZLEVELS=1 USE_XGD_DIR=1 LUA=1 TILES=1 SOUND=1
   #LUA_BINARY="/usr/bin/lua5.1"
-  # USE_XDG_DIR=1 ?
   # LOCALIZE = 0   to save 30MB
   # DYNAMIC_LINKING = 1 ?
 
@@ -59,10 +58,8 @@ package() {
 
   # no DESTDIR
   make PREFIX="$pkgdir/usr" \
-  RELEASE=1 ZLEVELS=1 USE_HOME_DIR=1 LUA=1 TILES='' SOUND='' \
+  RELEASE=1 ZLEVELS=1 USE_HOME_DIR=1 LUA=1 \
   install
-  # doesn't install executable?
-  install -Dm755 cataclysm "$pkgdir/usr/bin/cataclysm"
 
   make PREFIX="$pkgdir/usr" \
   RELEASE=1 ZLEVELS=1 USE_HOME_DIR=1 LUA=1 TILES=1 SOUND=1 \
@@ -74,6 +71,10 @@ package() {
   # Docs
   install -d "$pkgdir/usr/share/doc/cataclysm-dda"
   cp -r doc/* "$pkgdir/usr/share/doc/cataclysm-dda"
+  rm "$pkgdir/usr/share/doc/cataclysm-dda/"*.6
+  install -Dm644 doc/cataclysm.6 "$pkgdir/usr/share/man/man6/cataclysm.6"
+  install -Dm644 doc/cataclysm-tiles.6 "$pkgdir/usr/share/man/man6/cataclysm-tiles.6"
+
   # undo symlink
   rm "$pkgdir/usr/share/doc/cataclysm-dda/JSON_LOADING_ORDER.md"
   cp 'data/json/LOADING_ORDER.md' "$pkgdir/usr/share/doc/cataclysm-dda/JSON_LOADING_ORDER.md"
