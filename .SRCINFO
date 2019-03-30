@@ -1,6 +1,6 @@
 pkgbase = canta-theme-git
 	pkgdesc = Flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell
-	pkgver = 2018.10.30.r34.4b53d0b
+	pkgver = 2018.10.30.r38.0df5616
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Canta-theme
 	arch = any
