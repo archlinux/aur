@@ -3,8 +3,8 @@
 
 _pkgname=etcher
 pkgname=etcher-git
-pkgver=1.5.8.r0.g02e0f407
-pkgrel=2
+pkgver=1.5.19.r0.ga21a82c6
+pkgrel=1
 pkgdesc='Burn images to SD cards & USB drives, safe & easy (git version)'
 arch=(x86_64)
 url='https://www.balena.io/etcher/'
@@ -39,6 +39,7 @@ prepare() {
 
 build() {
   cd "$pkgname"
+  export NPM_VERSION=$(npm --version)
   make electron-develop
   make webpack
   npm prune --production
