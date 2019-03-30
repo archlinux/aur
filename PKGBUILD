@@ -2,9 +2,9 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-epoch=4
+epoch=5
 pkgrel=1
-pkgver=5.1.1r26993.119353eb6b38
+pkgver=6.0.0r27006.cdc67ea473d1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ optdepends=('texinfo: for help-support in octave'
 conflicts=('octave')
 provides=("octave=$pkgver")
 options=('!emptydirs')
-source=(hg+https://hg.savannah.gnu.org/hgweb/octave#branch=stable git://git.sv.gnu.org/gnulib)
+source=(hg+https://hg.savannah.gnu.org/hgweb/octave git://git.sv.gnu.org/gnulib)
 md5sums=('SKIP'
          'SKIP')
 _hgrepo=octave
