@@ -1,0 +1,21 @@
+pkgbase = billreminder
+	pkgdesc = Small and quick accounting application designed to allow for easy tracking of bills
+	pkgver = 0.4.0
+	pkgrel = 8
+	url = http://ftp.acc.umu.se/pub/GNOME/sources/billreminder/
+	arch = any
+	license = GPL3
+	makedepends = intltool
+	depends = python2-dbus
+	depends = desktop-file-utils
+	depends = pygtk
+	depends = python2-xdg
+	depends = xdg-utils
+	depends = python2-gconf
+	depends = python2-sqlalchemy
+	depends = hicolor-icon-theme
+	source = https://ftp.gnome.org/pub/GNOME/sources/billreminder/0.4/billreminder-0.4.0.tar.bz2
+	sha256sums = 6a89584a1c90f661a7954a0c5c8bd392b8e2712d6cfd759fb6e588548ac8ff4e
+
+pkgname = billreminder
+
