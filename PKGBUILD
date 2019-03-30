@@ -1,7 +1,7 @@
 # Maintainer: heinrich5991 <heinrich5991@gmail.com>
 pkgname=volt
 pkgver=0.80
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast native desktop client Slack, Skype, Twitter, Telegram, and more"
 arch=('x86_64')
 url="https://volt-app.com/"
