@@ -2,7 +2,7 @@
 
 pkgname=assaultcube-reloaded
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 pkgdesc='AssaultCube Reloaded'
 arch=('i686' 'x86_64')
 url='http://acr.victorz.ca'
@@ -37,5 +37,5 @@ package() {
 md5sums=('8ef9f42706153f4d60a918a0f892d811'
     'c6db5816ce66282f6d6c7d08792b6095'
     '53b17712afb7f0a5646b9894032d06ff'
-    'bff621e554812c7325b2bd7f56e9e881'
+    'faf59a6be0054bcc09a4a01df7eb8e6c'
 '3b142417157d73da4a7981fd07bcb628')

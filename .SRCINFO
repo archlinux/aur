@@ -1,7 +1,7 @@
 pkgbase = assaultcube-reloaded
 	pkgdesc = AssaultCube Reloaded
 	pkgver = 2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://acr.victorz.ca
 	arch = i686
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = assaultcube-reloaded
 	md5sums = 8ef9f42706153f4d60a918a0f892d811
 	md5sums = c6db5816ce66282f6d6c7d08792b6095
 	md5sums = 53b17712afb7f0a5646b9894032d06ff
-	md5sums = bff621e554812c7325b2bd7f56e9e881
+	md5sums = faf59a6be0054bcc09a4a01df7eb8e6c
 	md5sums = 3b142417157d73da4a7981fd07bcb628
 
 pkgname = assaultcube-reloaded
