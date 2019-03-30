@@ -6,7 +6,7 @@ pkgver=11.0.2
 _build=9
 _hash=f51449fcd52f4d52b93a989c5c56ed3c
 _majver="${pkgver%%.*}"
-pkgrel=2
+pkgrel=3
 pkgdesc='Oracle Java Runtime Environment'
 arch=('x86_64')
 url='https://www.oracle.com/java/'
@@ -46,7 +46,7 @@ package() {
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
     
     # conf
-    cp -a conf "${pkgdir}/etc/java${_majver}-${pkgname}"
+    cp -a conf "${pkgdir}/etc/java${_majver}-jre"
     ln -s "../../../../etc/java${_majver}-${pkgname}" "${pkgdir}/${_jvmdir}/conf"
     
     # bin
