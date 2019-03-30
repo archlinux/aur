@@ -3,7 +3,7 @@
 pkgbase='ivre-git'
 pkgbasename='ivre'
 pkgname=('ivre-git' 'ivre-web-git' 'ivre-docs-git' 'python-ivre-git' 'python2-ivre-git')
-pkgver=0.9.12.dev55
+pkgver=0.9.12.dev64
 pkgrel=1
 pkgdesc='Network recon framework'
 arch=('any')
