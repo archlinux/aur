@@ -4,7 +4,7 @@ _bundlepkgname='ompss'
 pkgdesc='Mercurium is a C/C++/Fortran source-to-source compilation infrastructure aimed at fast prototyping developed by the Programming Models group at the Barcelona Supercomputing Center.'
 pkgver='2.1.0'
 _bundlepkgver='17.12.1'
-pkgrel='2'
+pkgrel='3'
 arch=('i686' 'x86_64')
 url='https://pm.bsc.es/ompss'
 license=('GPL3')
@@ -18,6 +18,18 @@ sha512sums=(e68effb54b3a4e91da22808a928afcd586d41a3825ec2cea1f783a65d4e075cfb07c
 export CC=gcc-7
 export CXX=g++-7
 [[ ! -z "$LDFLAGS" ]] && export LDFLAGS="$LDFLAGS,--no-as-needed"
+
+prepare() {
+	cd "$srcdir/${_bundlepkgname}-${_bundlepkgver}/$pkgname-$pkgver"
+
+	# WORKAROUND: Force gperf files to be regenerated, to avoid build errors
+	#             (declaration mismatches due to unsigned int / gperf_length_t)
+	rm src/driver/cxx-configoptions.c
+	rm src/driver/cxx-debugflags.c
+	rm src/driver/cxx-fileextensions.c
+	rm src/frontend/cxx-asttype-str-internal.h
+	rm src/frontend/fortran/fortran03-keywords.c
+}
 
 build() {
 	cd "$srcdir/${_bundlepkgname}-${_bundlepkgver}/$pkgname-$pkgver"
