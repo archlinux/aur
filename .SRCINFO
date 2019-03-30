@@ -1,17 +1,18 @@
 pkgbase = luxcorerender-git
 	pkgdesc = LuxCoreRender is a physically correct, unbiased rendering engine.
-	pkgver = 2.1.r141.g068f34597
+	pkgver = 2.2alpha1.r11.gb1b91b90f
 	pkgrel = 1
 	url = https://www.luxcorerender.org/
 	arch = x86_64
 	license = Apache
+	makedepends = boost
 	makedepends = git
 	makedepends = doxygen
 	makedepends = cmake
 	makedepends = python-pyside-tools
 	makedepends = opencl-headers
 	depends = openimageio
-	depends = boost
+	depends = boost-libs
 	depends = blosc
 	depends = embree
 	depends = glfw-x11
@@ -28,9 +29,11 @@ pkgbase = luxcorerender-git
 	source = git+https://github.com/LuxCoreRender/LuxCore.git
 	source = python.patch
 	source = glfw.patch
+	source = boost016900_serialization.patch
 	md5sums = SKIP
-	md5sums = 8a339a25a683208a8c089a9b30420950
-	md5sums = 624f2be4cb431f6a4cfcc968d6263ac2
+	md5sums = 8e2fd7337fe6afaf5b2801426837f600
+	md5sums = e2a20172b7b7ac92a7002b6218afe327
+	md5sums = 52f097678654151e2b5427d271a7e69d
 
 pkgname = luxcorerender-git
 

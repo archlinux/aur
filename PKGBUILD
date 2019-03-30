@@ -1,38 +1,38 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=luxcorerender-git
-pkgver=2.1.r141.g068f34597
+pkgver=2.2alpha1.r11.gb1b91b90f
 pkgrel=1
 pkgdesc="LuxCoreRender is a physically correct, unbiased rendering engine."
 arch=('x86_64')
 url="https://www.luxcorerender.org/"
 license=('Apache')
-depends=(openimageio boost blosc embree glfw-x11 gtk3 oidn opencl-icd-loader)
+depends=(openimageio boost-libs blosc embree glfw-x11 gtk3 oidn opencl-icd-loader)
 optdepends=("opencl-driver: for gpu acceleration"
             "python-pyside: for pyluxcoretools gui")
-makedepends=(git doxygen cmake python-pyside-tools opencl-headers)
+makedepends=(boost git doxygen cmake python-pyside-tools opencl-headers)
 conflicts=(luxrays-hg luxcorerender)
 provides=(luxrays luxcorerender)
 options=('!buildflags')
 source=("git+https://github.com/LuxCoreRender/LuxCore.git"
         "python.patch"
         "glfw.patch"
+        "boost016900_serialization.patch"
         )
 md5sums=('SKIP'
-         '8a339a25a683208a8c089a9b30420950'
-         '624f2be4cb431f6a4cfcc968d6263ac2')
+         '8e2fd7337fe6afaf5b2801426837f600'
+         'e2a20172b7b7ac92a7002b6218afe327'
+         '52f097678654151e2b5427d271a7e69d')
 
 pkgver() {
   cd ${srcdir}/LuxCore
-  git describe --long --tags | sed 's/^luxcorerender_v//;s/beta/\.beta/;;s/\([^-]*-g\)/r\1/;s/-/./g'
+#  git describe --long --tags | sed 's/^luxcorerender_v//;s/beta/\.beta/;;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "%s.r%d.g%s" "2.2alpha1" $(git rev-list --count luxcorerender_v2.2alpha1..HEAD) $(git log --pretty=format:'%h' -n 1)
 } 
 
 
 prepare() {
   cd ${srcdir}/LuxCore
-  msg "python.patch"
-  patch -Np1 < ../python.patch
-  msg "glfw.patch"
-  patch -Np1 < ../glfw.patch
+  git apply -v ${srcdir}/*.patch
 }
 
 build() {
