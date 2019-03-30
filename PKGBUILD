@@ -4,7 +4,7 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=mongodb-tools
-pkgver=4.0.7
+pkgver=4.0.8
 pkgrel=1
 pkgdesc="The MongoDB tools provide import, export, and diagnostic capabilities."
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('Apache')
 depends=('libpcap')
 makedepends=('go-pie')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mongodb/mongo-tools/archive/r${pkgver}.tar.gz")
-sha512sums=('af4b4e035be4cad7d41b16904be9ca5834ede62f498279a47cc8b6a9ab58aed97cb8d06f5041df1f1f90a4b780270f46fc50f4f8f8ff2f324fa335e7032b4f28')
+sha512sums=('9e6886038b8c28d50cbec9f76869aceb79eb3214868bca367a6f7a74c346ff5da8d0ee4567bb6c17436860679ca97add3e24e6ba69a6a8d5764c0e1bc5b04813')
 
 _tools=('bsondump' 'mongostat' 'mongofiles' 'mongoexport' 'mongoimport' 'mongorestore' 'mongodump' 'mongotop' 'mongoreplay')
 
