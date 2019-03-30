@@ -6,7 +6,7 @@ pkgver=11.0.2
 _build=9
 _hash=f51449fcd52f4d52b93a989c5c56ed3c
 _majver="${pkgver%%.*}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Oracle Java Runtime Environment'
 arch=('x86_64')
 url='https://www.oracle.com/java/'
@@ -15,7 +15,7 @@ depends=('java-runtime-common' 'ca-certificates-utils' 'freetype2' 'libxtst'
          'libxrender' 'libnet')
 optdepends=('alsa-lib: for basic sound support')
 provides=("java-runtime=${_majver}" "java-runtime-headless=${_majver}"
-          "java-runtime-jre=${_majver}" "java-runtime-headless-jre=${_majver}")
+          "java-runtime-jre=${_majver}" "java-runtime-headless-jre=${_majver}" "jre=${pkgver}")
 backup=("etc/java${_majver}-jre/management/jmxremote.access"
         "etc/java${_majver}-jre/management/jmxremote.password.template"
         "etc/java${_majver}-jre/management/management.properties"

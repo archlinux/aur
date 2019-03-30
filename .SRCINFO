@@ -1,7 +1,7 @@
 pkgbase = jre11
 	pkgdesc = Oracle Java Runtime Environment
 	pkgver = 11.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.oracle.com/java/
 	install = jre11.install
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = jre11
 	provides = java-runtime-headless=11
 	provides = java-runtime-jre=11
 	provides = java-runtime-headless-jre=11
+	provides = jre=11.0.2
 	backup = etc/java11-jre/management/jmxremote.access
 	backup = etc/java11-jre/management/jmxremote.password.template
 	backup = etc/java11-jre/management/management.properties
