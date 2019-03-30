@@ -1,0 +1,14 @@
+pkgbase = gnome-keyring-sharp
+	pkgdesc = A fully managed implementation of libgnome-keyring
+	pkgver = 1.0.2
+	pkgrel = 6
+	url = https://github.com/mono/gnome-keyring-sharp
+	arch = x86_64
+	license = MIT
+	depends = libgnome-keyring
+	depends = gtk-sharp-2
+	source = http://www.go-mono.com/archive/gnome-keyring-sharp/gnome-keyring-sharp-1.0.2.tar.gz
+	sha256sums = 043e3e22132bdfe34e8ca314b6fd34bb0bc55a23eeb102778c64c243bb595315
+
+pkgname = gnome-keyring-sharp
+
