@@ -1,0 +1,16 @@
+pkgbase = blurwal
+	pkgdesc = Smoothly blurs the wallpaper when windows are opened.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://gitlab.com/BVollmerhaus/blurwal
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	optdepends = libnotify: for displaying status notifications
+	source = https://gitlab.com/BVollmerhaus/blurwal/-/archive/1.1.1/blurwal-1.1.1.tar.gz
+	sha256sums = 492fcfc820f1679440cf8aee56b0634aad1eedc0635280c037214aa53cff72be
+
+pkgname = blurwal
+	depends = imagemagick
+
