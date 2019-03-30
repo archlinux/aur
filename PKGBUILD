@@ -7,14 +7,14 @@ _pypiname=plotly
 pkgbase=python-plotly
 pkgname=('python-plotly' 'python2-plotly')
 pkgdesc="An interactive, browser-based graphing library for Python"
-pkgver=3.6.1
+pkgver=3.7.1
 pkgrel=1
 url="https://plot.ly/python/"
 license=('MIT')
 arch=("any")
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools' 'python-numpy' 'python-pytz' 'python-requests' 'python-retrying' 'python2-numpy' 'python2-pytz' 'python2-requests')
 source=("${_pkgname}-${pkgver}.tar.gz::https://pypi.org/packages/source/p/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
-sha512sums=('8e81eb1e584ce0cf87e3647642477dde8313b658ff4f9521c86270c8f7f9e526f16ddd8042f50be83a49dec2eeecc0ac5c08713d253bae19dfcd0f226302e9a8')
+sha512sums=('ca9a3b289ee073dd0c3590e3dd7bf5733e0fe3336e8f226f0bc8d114a8bc7ef580677dcef47a3ac33c5b992b9b96ba63eb613c1969d9a46052e4dc23d1272a5f')
 #validpgpkeys=('') # TODO https://github.com/plotly/plotly.py/issues/764
 
 prepare() {
