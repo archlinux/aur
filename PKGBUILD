@@ -74,6 +74,7 @@ prepare() {
 
   # clutter: Deliver events sooner when possible
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/168
+  # still has issues with 1000Hz mice
   # git cherry-pick -n ae8fc614
 
 
