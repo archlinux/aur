@@ -1,0 +1,16 @@
+pkgbase = pympd
+	pkgdesc = A Rhythmbox-like PyGTK+ client for Music Player Daemon
+	pkgver = 0.08.1
+	pkgrel = 6
+	url = http://pympd.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	depends = libglade
+	depends = pygtk
+	options = !emptydirs
+	source = http://pympd.sourceforge.net/files/pympd-0.08.1.tar.gz
+	sha256sums = 8da3b91c06857c486321a1d2769c035becd90286ce03791aa2058b0a5f620a06
+
+pkgname = pympd
+
