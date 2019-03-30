@@ -1,6 +1,6 @@
 pkgbase = digikam-without-akonadi-mediawiki-vkontakte
 	pkgdesc = minimized build of Digikam for non-KDE users, without Plasma/KDE integration
-	pkgver = 5.9.0
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = http://www.digikam.org/
 	arch = i686
@@ -27,8 +27,8 @@ pkgbase = digikam-without-akonadi-mediawiki-vkontakte
 	provides = digikam
 	conflicts = digikam
 	conflicts = digikam-git
-	source = http://download.kde.org/stable/digikam/digikam-5.9.0.tar.xz
-	sha256sums = 660d32eedcfd6fe1a75170a651fab068ae62f7f092ae710771a2f32a1c550d1b
+	source = http://download.kde.org/stable/digikam/6.0.0/digikam-6.0.0.tar.xz
+	sha256sums = 6e4f0ee52772ea2baef38fc9b96f18ca10f165f0c5bda71d8161a4eded26fb47
 
 pkgname = digikam-without-akonadi-mediawiki-vkontakte
 
