@@ -1,11 +1,12 @@
 pkgbase = gorgeous
 	pkgdesc = CLI RSS feed reader
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.dtluna.net/dtluna/gorgeous
 	arch = any
 	license = custom:WTFPL
 	makedepends = go
+	optdepends = htmltui: utility to view content
 	conflicts = gorgeous-bin
 	source = https://git.dtluna.net/dtluna/gorgeous/archive/v1.4.0.tar.gz
 	sha256sums = e1d41ce1e63c0ec7d6b58721b8e9defd521d864f5f4ddf363a0f6d6248866f1b
