@@ -2,7 +2,7 @@
 # PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
 
 pkgname=arduino-builder
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="A command line tool for compiling Arduino sketches"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('go-pie' 'git' 'unzip')
 optdepends=('arduino-avr-core: AVR core with upstream avr-gcc and avrdude')
 source=("${pkgname}-${pkgver}.tar.xz::https://github.com/arduino/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"
 		"${pkgname}-${pkgver}.tar.xz.asc::https://github.com/arduino/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz.asc")
-sha512sums=('7625cf063e54d7157585807e3d63d4540e0c4a92b2b6a7a8cbd44c4f60e81a96c1e36750baa0a3dce2a506db91a8367c6da594baf0bb491cb43f42c41fa4af33'
+sha512sums=('306bb7330036c188b02e3fa85da8b595f91426eea177a5bc59098c8ee497549af41ce92fc15ae6ac8aa5eb6293b9ab52104ea7263ef801eb75150d7efddc7038'
             'SKIP')
 validpgpkeys=('326567C1C6B288DF32CB061A95FA6F43E21188C4') # Arduino Packages <support@arduino.cc>
 
@@ -34,6 +34,7 @@ build() {
 	go get github.com/golang/protobuf/proto
 	go get golang.org/x/net/context
 	go get github.com/fsnotify/fsnotify
+	go get github.com/schollz/closestmatch
 	#go get github.com/arduino/arduino-builder
 	go build github.com/arduino/arduino-builder/arduino-builder
 
