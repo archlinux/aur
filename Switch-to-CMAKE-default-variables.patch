@@ -1,0 +1,140 @@
+From 3d759d35c5cbc393d1848b0476fe6bccb1866ae5 Mon Sep 17 00:00:00 2001
+From: Nicolas Chauvet <kwizart@gmail.com>
+Date: Wed, 18 Jul 2018 11:08:04 +0200
+Subject: [PATCH 1/2] Switch to CMAKE default variables
+
+Signed-off-by: Nicolas Chauvet <kwizart@gmail.com>
+---
+ CMakeLists.txt                      | 31 ++++++-----------------------
+ config/AcesContainer.pc.in          |  6 +++---
+ config/AcesContainerConfig.cmake.in |  4 ++--
+ 3 files changed, 11 insertions(+), 30 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 314d42c..f5fa059 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -48,35 +48,20 @@ cmake_minimum_required (VERSION 2.6)
+ project (AcesContainer)
+ 
+ include (GenerateExportHeader)
++include (GNUInstallDirs)
+ 
+ set( AcesContainer_MAJOR_VERSION 1 )
+ set( AcesContainer_MINOR_VERSION 0 )
+ set( AcesContainer_PATCH_VERSION 2 )
+ set( AcesContainer_VERSION ${AcesContainer_MAJOR_VERSION}.${AcesContainer_MINOR_VERSION}.${AcesContainer_PATCH_VERSION} )
+ 
+-set( INSTALL_LIB_DIR lib CACHE PATH "Install directory for libraries" )
+-set( INSTALL_INCLUDE_DIR include CACHE PATH "Install directory for public header files" )
+-
+-
+ if(APPLE)
+   set( CMAKE_MACOSX_RPATH 1 )
+ endif()
+ 
+ if( WIN32 AND NOT CYGWIN )
+-  set(DEF_INSTALL_CMAKE_DIR CMake)
+   set ( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W0" )
+-else()
+-  set(DEF_INSTALL_CMAKE_DIR lib/CMake/AcesContainer)
+ endif()
+-set(INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH "Install directory for project CMake files" )
+-
+-## convert install paths to absolute
+-foreach( p LIB INCLUDE CMAKE )
+-  set( var INSTALL_${p}_DIR )
+-  if( NOT IS_ABSOLUTE "${${var}}" )
+-    set( ${var} "${CMAKE_INSTALL_PREFIX}/${${var}}" )
+-  endif()
+-endforeach()
+ 
+ OPTION (BUILD_SHARED_LIBS "Build Shared Libraries" ON)
+ IF ( BUILD_SHARED_LIBS )
+@@ -103,7 +88,7 @@ GENERATE_EXPORT_HEADER( AcesContainer
+              STATIC_DEFINE AcesContainer_BUILT_AS_STATIC
+ )
+ 
+-install (TARGETS AcesContainer EXPORT AcesContainerTargets DESTINATION ${INSTALL_LIB_DIR})
++install (TARGETS AcesContainer EXPORT AcesContainerTargets DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ install (FILES 
+ 			aces_errors.h
+ 			aces_genericWriter.h
+@@ -118,14 +103,14 @@ install (FILES
+ 			aces_types.h
+ 			aces_writeattributes.h
+ 		 DESTINATION 
+-		 	${INSTALL_INCLUDE_DIR}/aces
++		 	${CMAKE_INSTALL_INCLUDEDIR}/aces
+ 		 )
+ 
+ 
+ find_package( PkgConfig )
+ if ( PKG_CONFIG_FOUND )
+ configure_file(config/AcesContainer.pc.in "${PROJECT_BINARY_DIR}/AcesContainer.pc" @ONLY)
+-install( FILES "${PROJECT_BINARY_DIR}/AcesContainer.pc" DESTINATION lib/pkgconfig COMPONENT dev )
++install( FILES "${PROJECT_BINARY_DIR}/AcesContainer.pc" DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig COMPONENT dev )
+ endif()
+ 
+ include_directories(
+@@ -143,10 +128,6 @@ export(TARGETS AcesContainer
+ export(PACKAGE AcesContainer)
+ # export(PACKAGE AcesContainer_lib)
+ 
+-# Create the FooBarConfig.cmake and FooBarConfigVersion files
+-file(RELATIVE_PATH REL_INCLUDE_DIR "${INSTALL_CMAKE_DIR}"
+-   "${INSTALL_INCLUDE_DIR}")
+-
+ # ... for the build tree
+ set(CONF_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}" "${PROJECT_BINARY_DIR}")
+ set(CONF_LIB_DIRS "${PROJECT_BINARY_DIR}")
+@@ -166,10 +147,10 @@ configure_file(config/AcesContainerConfigVersion.cmake.in
+ install(FILES
+   "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/AcesContainerConfig.cmake"
+   "${PROJECT_BINARY_DIR}/AcesContainerConfigVersion.cmake"
+-  DESTINATION "${INSTALL_CMAKE_DIR}" COMPONENT dev)
++  DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/AcesContainer" COMPONENT dev)
+  
+ # Install the export set for use with the install-tree
+ install(EXPORT AcesContainerTargets DESTINATION
+-  "${INSTALL_CMAKE_DIR}" COMPONENT dev)
++  "${CMAKE_INSTALL_LIBDIR}/cmake/AcesContainer" COMPONENT dev)
+   
+   
+diff --git a/config/AcesContainer.pc.in b/config/AcesContainer.pc.in
+index 838a1d9..a186346 100644
+--- a/config/AcesContainer.pc.in
++++ b/config/AcesContainer.pc.in
+@@ -45,9 +45,9 @@
+ # A.M.P.A.S., WHETHER DISCLOSED OR UNDISCLOSED.
+ 
+ prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@INSTALL_LIB_DIR@
+-includedir=@INSTALL_INCLUDE_DIR@
+-AcesContainer_includedir=@INSTALL_INCLUDE_DIR@/aces
++libdir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@
++includedir=@CMAKE_INSTALL_PREFIX@@CMAKE_INSTALL_INCLUDEDIR@
++AcesContainer_includedir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_INCLUDEDIR@/aces
+ 
+ Name: AcesContainer
+ Description: A library containing an implementation of ACES Image Container File
+diff --git a/config/AcesContainerConfig.cmake.in b/config/AcesContainerConfig.cmake.in
+index f5e6392..c35e145 100644
+--- a/config/AcesContainerConfig.cmake.in
++++ b/config/AcesContainerConfig.cmake.in
+@@ -53,10 +53,10 @@
+ # find paths
+ get_filename_component( AcesContainer_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH )
+ 
+-set(AcesContainer_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
++set(AcesContainer_INCLUDE_DIRS "@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_INCLUDEDIR@/aces")
+ 
+ set(AcesContainer_LIBRARIES AcesContainer )
+-set(AcesContainer_LIBRARY_DIRS "@CONF_LIB_DIRS@" )
++set(AcesContainer_LIBRARY_DIRS "@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@" )
+ set(AcesContainer_VERSION "@AcesContainer_VERSION@" )
+ 
+ set(AcesContainer_FOUND 1 )
+-- 
+2.17.1
+

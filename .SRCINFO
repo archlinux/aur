@@ -1,14 +1,18 @@
 pkgbase = aces-container
 	pkgdesc = ACES Container Reference Implementation
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ampas/aces_container
 	arch = x86_64
 	license = custom
 	makedepends = cmake
 	depends = gcc-libs
-	source = https://github.com/ampas/aces_container/archive/v1.0.2.tar.gz
+	source = aces-container-1.0.2.tar.gz::https://github.com/ampas/aces_container/archive/v1.0.2.tar.gz
+	source = Switch-to-CMAKE-default-variables.patch
+	source = Set-the-appropriate-SONAME-for-the-library.patch
 	sha256sums = cbbba395d2425251263e4ae05c4829319a3e399a0aee70df2eb9efb6a8afdbae
+	sha256sums = 3f1d84e01eed4a6300fdb7ac6d242e617eb530207bd95283ff1e34eddc99a41d
+	sha256sums = 7ac19a147d590471c585fcf73a424a9cb99b164e673f861ca1a0db3d2d907068
 
 pkgname = aces-container
 

@@ -1,0 +1,30 @@
+From 96683a250492efcc7059c8c234859ce4a89910b7 Mon Sep 17 00:00:00 2001
+From: Nicolas Chauvet <kwizart@gmail.com>
+Date: Wed, 18 Jul 2018 11:16:29 +0200
+Subject: [PATCH 2/2] Set the appropriate SONAME for the library
+
+Signed-off-by: Nicolas Chauvet <kwizart@gmail.com>
+---
+ CMakeLists.txt | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f5fa059..02f1631 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -88,6 +88,12 @@ GENERATE_EXPORT_HEADER( AcesContainer
+              STATIC_DEFINE AcesContainer_BUILT_AS_STATIC
+ )
+ 
++# Set the build version (VERSION) and the API version (SOVERSION)
++set_target_properties(AcesContainer
++	PROPERTIES
++	VERSION ${AcesContainer_VERSION}
++	SOVERSION ${AcesContainer_MAJOR_VERSION})
++
+ install (TARGETS AcesContainer EXPORT AcesContainerTargets DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ install (FILES 
+ 			aces_errors.h
+-- 
+2.17.1
+
