@@ -4,14 +4,14 @@
 #
 pkgname="ojo"
 pkgver="0.2.0.r228"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A fast and good-looking image viewer, nice as a preliminary stage in a \
          photography workflow"
 url="http://launchpad.net/~ojo/+archive/ubuntu/daily"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('hicolor-icon-theme' 'python2' 'pyexiv2')
-makedepends=('desktop-file-utils' 'python2-distutils-extra')
+depends=('hicolor-icon-theme' 'python' 'pyexiv2')
+makedepends=('desktop-file-utils' 'python-distutils-extra')
 optdepends=()
 conflicts=('ojo-bzr')
 provides=('ojo')
