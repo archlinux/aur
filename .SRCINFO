@@ -1,0 +1,45 @@
+pkgbase = ogmrip
+	pkgdesc = Libraries and GTK2 interface for DVD ripping using mencoder
+	pkgver = 1.0.1
+	pkgrel = 6
+	url = http://ogmrip.sourceforge.net/
+	changelog = ogmrip.changelog
+	arch = x86_64
+	license = GPL
+	makedepends = patch
+	makedepends = intltool
+	makedepends = perl-xml-parser
+	makedepends = faac
+	makedepends = lame
+	makedepends = libtheora
+	makedepends = ogmtools
+	makedepends = gpac
+	makedepends = vorbis-tools
+	makedepends = tesseract
+	makedepends = python
+	depends = libdvdread>=4.1.3
+	depends = mplayer
+	depends = mencoder
+	depends = enca
+	depends = pkg-config
+	depends = gconf
+	depends = libglade
+	depends = libnotify
+	depends = enchant
+	optdepends = faac: support for the AAC audio codec
+	optdepends = lame: support for the MP3 audio codec
+	optdepends = libtheora: decode and encode Ogg Theora files
+	optdepends = ogmtools: support for the Ogg Media container
+	optdepends = gpac: support for the MP4 container
+	optdepends = vorbis-tools: support for the Ogg Vorbis audio codec
+	optdepends = gocr: support for the SRT subtitle format
+	optdepends = ocrad: support for the SRT subtitle format
+	optdepends = tesseract: support for the SRT subtitle format
+	options = !makeflags
+	source = https://downloads.sourceforge.net/sourceforge/ogmrip/ogmrip-1.0.1.tar.gz
+	source = enchant-2.patch
+	sha256sums = 4e2e9778ac4da9fe1ab159e3dc6d4367b7a9dbd8f3501df99733ecedb25b02ff
+	sha256sums = 61fa359d44af8135ca80fbef2c98d6c30dcaf82e8817aeaf477d9203835f0ba8
+
+pkgname = ogmrip
+

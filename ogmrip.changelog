@@ -1,0 +1,42 @@
+2018-01-15 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* ogmrip 1.0.1-6 enchant 2.2.1 rebuild
+
+2017-11-16 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* ogmrip 1.0.1-4 removed out-of-repo dependency
+
+2016-05-01 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* ogmrip 1.0.1-3 pacman hooks rebuild
+
+2014-07-31 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* ogmrip 1.0.1-1
+
+2013-12-25 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* ogmrip 1.0.0-3 static libraries removed
+
+2013-04-20 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* ogmrip 1.0.0-1
+
+2012-06-07 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* ogmrip O.13.8-1
+
+2012-01-26  Eric Belanger  <eric@archlinux.org>
+	* Rebuild against libpng 1.5 and libtiff 4.0
+	* Add .install file
+
+2011-10-09 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* ogmrip O.13.7-1
+
+2010-08-29 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* ogmrip O.13.6-1
+
+2010-06-29 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* Update to major release O.13.5
+
+2010-04-21 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* Update to major release O.13.4
+
+2010-01-03 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* FS#17517 fixed in minor release O.13.3-2
+
+2010-01-01 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* Update to major release O.13.3
