@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=shortwave-git
-pkgver=r215.b28ab0d
+pkgver=r244.ee8b98a
 pkgrel=1
 pkgdesc="Find and listen to internet radio stations"
 arch=(i686 x86_64 armv6h armv7h)
@@ -12,6 +12,7 @@ depends=(gstreamer
 makedepends=(cargo
              git
              gobject-introspection
+             gst-plugins-base-libs
              libdazzle
              libhandy
              meson
