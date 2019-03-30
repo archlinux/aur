@@ -1,0 +1,15 @@
+pkgbase = behdad-fonts
+	pkgdesc = Behdad is a Persian/Arabic font. This font is a gift to Behdad Esfahbod
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/font-store/BehdadFont
+	arch = any
+	license = OFL-1.1
+	depends = fontconfig
+	provides = ttf-behdad
+	conflicts = ttf-behdad
+	source = behdad-fonts-0.0.3.zip::https://github.com/font-store/BehdadFont/releases/download/v0.0.3/Behdad-0.0.3.zip
+	sha512sums = 74f184c2a406f29f667c2018746a095f19be8888ae48fe349b5efd007844268fb5e79db57509a8067630df7b5767faa135f8112fe0db11dab68a42c7cdbca678
+
+pkgname = behdad-fonts
+
