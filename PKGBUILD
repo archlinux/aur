@@ -8,7 +8,7 @@ arch=('any')
 url='http://fpaste.org/'
 license=('GPL3')
 depends=('python')
-source=("https://releases.pagure.org/fpaste/$pkgname-$pkgver.tar.gz")
+source=("https://pagure.io/fpaste/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
 package() {
 	cd "$pkgname-$pkgver"
