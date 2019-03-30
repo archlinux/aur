@@ -1,7 +1,7 @@
 pkgbase = fatx
 	pkgdesc = XBox filesystem support for linux
 	pkgver = 1.15
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/fatx/
 	arch = any
 	license = GPL

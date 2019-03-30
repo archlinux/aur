@@ -2,7 +2,7 @@
 
 pkgname=fatx
 pkgver=1.15
-pkgrel=2
+pkgrel=3
 pkgdesc="XBox filesystem support for linux"
 arch=('any')
 url="http://sourceforge.net/projects/fatx/"
@@ -20,7 +20,6 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	export CC=/usr/bin/gcc-6
 	./configure --prefix=/usr --sbindir=/usr/bin
 	make
 }
