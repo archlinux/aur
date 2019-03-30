@@ -1,0 +1,13 @@
+pkgbase = gkeyfile-sharp
+	pkgdesc = Mono bindings for GLib’s GKeyFile
+	pkgver = 0.1
+	pkgrel = 4
+	url = https://github.com/mono/gkeyfile-sharp
+	arch = any
+	license = LGPL
+	depends = gtk-sharp-2
+	source = gkeyfile-sharp-0.1.tar.gz::https://github.com/mono/gkeyfile-sharp/archive/GKEYFILE_SHARP_0_1.tar.gz
+	sha256sums = e74cb8ab118f344a15215aeb1cf66ef2a6992f49a1eca1c839fffefaa61ac485
+
+pkgname = gkeyfile-sharp
+
