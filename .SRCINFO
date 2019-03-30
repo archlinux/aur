@@ -1,7 +1,7 @@
 pkgbase = nodejs-addons-linter
 	pkgdesc = The Add-ons Linter, JS edition.
-	pkgver = 0.15.15
-	pkgrel = 1
+	pkgver = 1.7.0
+	pkgrel = 2
 	url = https://github.com/mozilla/addons-linter
 	arch = any
 	license = MPL

@@ -2,8 +2,8 @@
 
 _npmname=addons-linter
 pkgname=nodejs-$_npmname # All lowercase
-pkgver=0.15.15
-pkgrel=1
+pkgver=1.7.0
+pkgrel=2
 pkgdesc='The Add-ons Linter, JS edition.'
 arch=('any')
 url='https://github.com/mozilla/addons-linter'
@@ -20,7 +20,7 @@ package() {
      "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # Clean up
-  find "${pkgdir}" -name "package.json" -exec sed -e "s|${pkgdir}||" -i {} \; \
+  find "${pkgdir}" -name "package.json" -exec sed -e "s|${pkgdir}||g" -e "s|${srcdir}||g" -i {} \; \
        -or -name ".*" -type f -exec rm '{}' \; \
        -or -name ".*" -type d -prune -exec rm -r '{}' \; \
        -or -name "benchmark" -type d -prune -exec rm -r '{}' \; \
