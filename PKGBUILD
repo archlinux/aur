@@ -5,14 +5,14 @@
 pkgname=mullvad-vpn-bin-beta
 _pkgname=mullvad-vpn
 pkgver=2019.2
-pkgrel=2
+pkgrel=3
 pkgdesc="VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('gconf' 'gtk3' 'libnotify' 'libappindicator-gtk2' 'libxss' 'nss')
-conflicts=('mullvad-vpn-old')
-replaces=('mullvad-vpn-old')
+conflicts=($_pkgname)
+replaces=($_pkgname)
 provides=($_pkgname)
 backup=()
 install=
