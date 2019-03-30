@@ -1,13 +1,13 @@
 pkgbase = fail2ban-git
 	pkgdesc = Bans IPs after too many failed authentication attempts (git version)
-	pkgver = 0.10.4.r317.g7f0bba94
+	pkgver = 0.10.4.r327.g1e59d53b
 	pkgrel = 1
 	url = http://www.fail2ban.org/
 	arch = any
 	license = GPL
-	checkdepends = python-setuptools
 	checkdepends = python-coverage
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python-pyinotify
 	depends = whois
 	depends = sqlite

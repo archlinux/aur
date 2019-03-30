@@ -1,4 +1,4 @@
-# Maintainer: Lin Ruohshoei <lin {dot] ruohshoei+arch at gmail dot com>
+# Maintainer: LinRs <20455421+LinRs AT users.noreply.github.com>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
@@ -7,7 +7,7 @@
 # Contributor: nbags <neilbags@gmail.com>
 
 pkgname=fail2ban-git
-pkgver=0.10.4.r317.g7f0bba94
+pkgver=0.10.4.r327.g1e59d53b
 pkgrel=1
 pkgdesc='Bans IPs after too many failed authentication attempts (git version)'
 url='http://www.fail2ban.org/'
@@ -15,8 +15,8 @@ license=('GPL')
 arch=('any')
 depends=('python-pyinotify' 'whois' 'sqlite' 'python-systemd')
 optdepends=('iptables' 'nftables')
-makedepends=('python-setuptools')
-checkdepends=('python-setuptools' 'python-coverage')
+makedepends=('python-setuptools' 'git')
+checkdepends=('python-coverage')
 provides=('fail2ban')
 conflicts=('fail2ban')
 backup=(etc/fail2ban/fail2ban.conf
