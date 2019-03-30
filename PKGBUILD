@@ -5,7 +5,7 @@ pkgname=mos-bin
 pkgver=2.12.1
 pkgrel=1
 pkgdesc="This package contains the Mongoose OS CLI tool."
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'arm64')
 url="https://mongoose-os.com"
 license=('GLPv2')
 groups=('')
@@ -13,8 +13,10 @@ depends=('libftdi-compat' 'libusb>=1.0.16')
 options=('!strip' '!emptydirs')
 source_x86_64=("https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_2.12.1+980a486~xenial0_amd64.deb")
 source_i686=("https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_2.12.1+980a486~xenial0_i386.deb")
+source_arm64=("https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_2.12.1+980a486~xenial0_arm64.deb")
 sha512sums_x86_64=('95fce2941cd5b3f346b93299e42160505b373a14cc198c7abef58a14ad656c8717a264cc71d30ec1f5940b7c60c7ab7b824377b46f0cd9f2624e6eaa429686d5')
 sha512sums_i686=('9e76d325bced497ce499f4a320c11ebabe4426c1bf30e2a33bfdf7ea5d5fa50ccff1304016e19d4d424e695fa5320f37791f31c42d2b15811d096ebb3a06bdb6')
+sha512sums_arm64=('b317c1a3fd73d2d8a8ee04f57a3be80ddc2be93b7f8864d56e287fc4ed1858559fc46fa98c7807f9d3e0fb6afc6e1f8a0a5e04ef679833198c08dd2a8d06f514')
 
 package(){
 
