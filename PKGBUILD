@@ -1,6 +1,6 @@
 # Maintainer: Will Vauclain <willvauclain.dev at gmail dot com>
 pkgname=gebaar
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='A Super Simple WM Independent Touchpad Gesture Daemon for libinput.'
 arch=('x86_64')
