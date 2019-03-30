@@ -1,6 +1,6 @@
 pkgbase = caja-dropbox
 	pkgdesc = Dropbox extension for Caja file manager
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://github.com/mate-desktop/caja-dropbox
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = caja-dropbox
 	license = custom:CC-BY-ND-3
 	license = GPL
 	makedepends = mate-common
-	makedepends = python2-docutils
+	makedepends = python-docutils
 	depends = caja
 	depends = glib2
 	depends = libnotify
@@ -18,8 +18,8 @@ pkgbase = caja-dropbox
 	depends = pygtk
 	depends = xdg-utils
 	optdepends = dropbox: Dropbox support
-	source = caja-dropbox-1.20.0.tar.xz::https://pub.mate-desktop.org/releases/1.20/caja-dropbox-1.20.0.tar.xz
-	sha256sums = 721f2c7df9f27c63438bfdd9ef26d5402b30eca497ae73b8771a1a5ba2635876
+	source = caja-dropbox-1.22.0.tar.gz::https://github.com/mate-desktop/caja-dropbox/archive/v1.22.0.tar.gz
+	sha256sums = 400c6b9bc23ed873721d1885a4eeb3197b461372a01c270a28af4dfcf875239d
 
 pkgname = caja-dropbox
 
