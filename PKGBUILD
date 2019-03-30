@@ -4,7 +4,7 @@
 
 pkgname=logstash-xpack
 relpkgname=logstash
-pkgver=6.6.2
+pkgver=6.7.0
 pkgrel=2
 pkgdesc='Tool for managing events and logs'
 url='https://www.elastic.co/products/logstash/'
@@ -25,7 +25,7 @@ source=(https://artifacts.elastic.co/downloads/logstash/$relpkgname-$pkgver.tar.
         logstash-sysuser.conf
         logstash-tmpfile.conf
         bundle.config)
-sha256sums=('4ff1a532a5dd41cc7249840a4f74f332c05d4efdb67c0fe7e8b1c0d9c3c505d0'
+sha256sums=('39f8d530443aa691e27b6d6d591cc69c3d38ef55dece920ccba4eae927064e93'
             '2b8b29297202334c784fdd7f2eb8d7e776c24c783b3c9f8387b500ab0039335c'
             'a01ea29d4f53d785f6eb926ebfe445e64ed5b3dab5d0418848589dd79502d876'
             '18a68a59ddb0ce19778e83b65e68dd568d65b7180bf45b4cf298fb332d69eb26'
