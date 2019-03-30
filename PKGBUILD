@@ -1,23 +1,29 @@
 # Maintainer: LLL2yu <lll2yu@protonmail.com>
 
 pkgname=gallery-dl
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
-pkgdesc="Command-line program to download image galleries and collections from pixiv, exhentai, danbooru and more"
-arch=('x86_64')
+pkgdesc="Command-line program to download image-galleries and -collections from several image hosting sites"
+arch=('any')
 url="https://github.com/mikf/gallery-dl"
 license=("GPL2")
 depends=('python' 'python-requests')
 makedepends=('python' 'python-setuptools')
 optdepends=('ffmpeg: Convert Pixiv Ugoira to WebM'
-	    'zip: Store downloaded files in a ZIP archive'
 	    'youtube-dl: Download videos')
-source=(https://github.com/mikf/${pkgname}/releases/download/v${pkgver}/gallery_dl-${pkgver}.tar.gz
-	https://github.com/mikf/${pkgname}/releases/download/v${pkgver}/gallery_dl-${pkgver}.tar.gz.asc)
-validpgpkeys=('3E09F5908333DD83DBDCE7375680CA389D365A88')
-sha512sums=('89e5e09f4d4cd1a722c6ecaeb93ee0b88516f16ed8649e15d13408f0291a8700171e5d9a0f1e739a5a211d60e0df9b833bfdeb9186d7bcaf3be3c7cd40e7c296'
+source=(https://github.com/mikf/${pkgname}/releases/download/v${pkgver}/gallery_dl-${pkgver}.tar.gz{,.asc})
+validpgpkeys=('3E09F5908333DD83DBDCE7375680CA389D365A88') #Mike Fährmann
+sha512sums=('6b7943e0555b9b66f83d2da8efde4ec58716534ac51c50ba2c5881b7481edf4cec184c46d26e29944a9d596c0de6f0ad6f5fff129c41c7fa6557989e02e04c32'
 	    'SKIP')
+
+prepare(){
+  cd gallery_dl-$pkgver
+  sed -i 's|etc/bash_completion.d|share/bash-completion/completions|' setup.py
+}
+
 package() {
-  cd "$srcdir"/gallery_dl-$pkgver
+  cd gallery_dl-$pkgver
   python setup.py install -O1 --root="$pkgdir"
+  mv "${pkgdir}/usr/share/bash-completion/completions/gallery-dl.bash_completion" \
+     "${pkgdir}/usr/share/bash-completion/completions/gallery-dl"
 }

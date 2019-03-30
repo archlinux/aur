@@ -1,21 +1,20 @@
 pkgbase = gallery-dl
-	pkgdesc = Command-line program to download image galleries and collections from pixiv, exhentai, danbooru and more
-	pkgver = 1.8.0
+	pkgdesc = Command-line program to download image-galleries and -collections from several image hosting sites
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/mikf/gallery-dl
-	arch = x86_64
+	arch = any
 	license = GPL2
 	makedepends = python
 	makedepends = python-setuptools
 	depends = python
 	depends = python-requests
 	optdepends = ffmpeg: Convert Pixiv Ugoira to WebM
-	optdepends = zip: Store downloaded files in a ZIP archive
 	optdepends = youtube-dl: Download videos
-	source = https://github.com/mikf/gallery-dl/releases/download/v1.8.0/gallery_dl-1.8.0.tar.gz
-	source = https://github.com/mikf/gallery-dl/releases/download/v1.8.0/gallery_dl-1.8.0.tar.gz.asc
+	source = https://github.com/mikf/gallery-dl/releases/download/v1.8.1/gallery_dl-1.8.1.tar.gz
+	source = https://github.com/mikf/gallery-dl/releases/download/v1.8.1/gallery_dl-1.8.1.tar.gz.asc
 	validpgpkeys = 3E09F5908333DD83DBDCE7375680CA389D365A88
-	sha512sums = 89e5e09f4d4cd1a722c6ecaeb93ee0b88516f16ed8649e15d13408f0291a8700171e5d9a0f1e739a5a211d60e0df9b833bfdeb9186d7bcaf3be3c7cd40e7c296
+	sha512sums = 6b7943e0555b9b66f83d2da8efde4ec58716534ac51c50ba2c5881b7481edf4cec184c46d26e29944a9d596c0de6f0ad6f5fff129c41c7fa6557989e02e04c32
 	sha512sums = SKIP
 
 pkgname = gallery-dl
