@@ -1,12 +1,11 @@
 pkgbase = jrommanager
 	pkgdesc = A Rom Manager entirely written in Java and released under GPL v2
 	pkgver = 2.1.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/optyfr/JRomManager
 	arch = any
 	license = GPL2
-	makedepends = java-environment>=8
-	makedepends = gradle
+	makedepends = java-environment=8
 	depends = java-runtime>=8
 	options = !strip
 	source = git+https://github.com/optyfr/JRomManager#tag=2.1.0
