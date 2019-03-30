@@ -1,0 +1,11 @@
+--- ./src/bipscript-0.4/src/midifile.cpp	2018-12-11 08:50:57.000000000 -0800
++++ ../bipscript/src/midifile.cpp	2019-02-02 16:46:39.819996298 -0800
+@@ -2,7 +2,7 @@
+ #include <cstring>
+ #include <iostream>
+ #include <fstream>
+-#include <portSMF/allegro.h>
++#include <portsmf/allegro.h>
+ 
+ namespace bipscript {
+ namespace midi {

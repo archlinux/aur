@@ -1,0 +1,13 @@
+
+command for chroot build:
+
+extra-x86_64-build
+
+generate SHA:
+
+makepkg -g >> PKGBUILD
+
+generate .SRCINFO:
+
+makepkg --printsrcinfo > .SRCINFO
+
