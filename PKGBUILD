@@ -2,7 +2,7 @@
 
 pkgname=crosti
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphic conversion utility to create cross stitches"
 arch=(any)
 url="https://sites.google.com/site/crostiapp/"
