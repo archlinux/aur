@@ -1,0 +1,12 @@
+diff --git a/setup.py b/setup.py
+index 51b97c3..c64074a 100644
+--- a/setup.py
++++ b/setup.py
+@@ -27,6 +27,7 @@ setup(name="magic-wormhole",
+ 
+       package_dir={"": "src"},
+       packages=["wormhole",
++                "wormhole._dilation",
+                 "wormhole.cli",
+                 "wormhole.test",
+                 ],
