@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Show CommonMark (a standardized Markdown dialect) documents on text terminals.'
 arch=('i686' 'x86_64')
 url="https://github.com/lunaryorn/mdcat"
@@ -9,11 +9,21 @@ license=('Apache')
 depends=('oniguruma')
 conflicts=('mdcat-git')
 makedepends=('rust' 'cargo' 'git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('9528a0dedcb9db559c9973001787f474f87559366a2c7a2ff01148c5ab31eac1')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz"
+        Cargo.toml.patch)
+sha256sums=('9528a0dedcb9db559c9973001787f474f87559366a2c7a2ff01148c5ab31eac1'
+            '7860347baf642380ce26366c94ecff6e31a6b9ee4521740d130e87350dac148d')
+
+prepare() {
+  # Enable LTO
+  cd "$pkgname-$pkgname-$pkgver"
+  pwd
+  patch -p1 < ../../Cargo.toml.patch
+}
 
 build() {
   cd "$pkgname-$pkgname-$pkgver"
+
   # Default features are iterm2 terminology and remote_resources. iterm2 is
   # unecessary on Arch, remote_resources brings in a chain of depenedencies
   # reqwest->native-tls->openssl. The version of the openssl crate that is
