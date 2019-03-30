@@ -1,6 +1,6 @@
 pkgbase = tpm2-tss-engine-git
 	pkgdesc = OpenSSL engine for Trusted Platform Module 2.0 devices
-	pkgver = 1.0.0.rc2.r0.61c2866
+	pkgver = 1.0.0.rc3.r0.4284c43
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-tss-engine
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = tpm2-tss-engine-git
 	makedepends = autoconf-archive
 	makedepends = pandoc
 	depends = openssl
-	depends = tpm2-tss-git
+	depends = tpm2-tss
 	provides = tpm2-tss-engine
 	conflicts = tpm2-tss-engine
 	source = git+https://github.com/tpm2-software/tpm2-tss-engine.git
