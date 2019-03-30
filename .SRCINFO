@@ -8,6 +8,7 @@ pkgbase = tikzit-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = poppler-qt5
 	depends = qt5-base
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
