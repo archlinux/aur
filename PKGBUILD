@@ -27,7 +27,7 @@ build() {
 }
  
 package_python-txtorcon() {
-  depends=('python-geoip' 'python-ipaddress' 'python-twisted')
+  depends=('python-geoip' 'python-twisted')
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
