@@ -7,6 +7,5 @@ Terminal=false
 MultipleArgs=false
 Name=AssaultCube Reloaded
 GenericName=Realistic Multiplayer FPS
-MimeType=text/html
 StartupNotify=false
 Categories=Game;ActionGame;
