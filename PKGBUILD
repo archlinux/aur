@@ -8,7 +8,7 @@ license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('glibc')
 makedepends=('git')
-source=($pkgname::git://git.bradleylaboon.com/$pkgname.git)
+source=($pkgname::git+https://git.bradleylaboon.com/lb.laboon/$pkgname.git#tag=v${pkgver})
 sha256sums=('SKIP')
 
 pkgver() {
