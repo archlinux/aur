@@ -1,0 +1,15 @@
+pkgbase = brewbuddy
+	pkgdesc = The best Dutch Open Source software for homebrewers!
+	pkgver = 5.4
+	pkgrel = 1
+	url = https://github.com/BrewBuddyOrg/BrewBuddy
+	arch = x86_64
+	depends = fann
+	depends = qt4pas
+	depends = openal
+	provides = BrewBuddy
+	source = https://github.com/BrewBuddyOrg/BrewBuddy/releases/download/5.4-ubuntu/brewbuddy-5.4_amd64.deb
+	sha256sums = SKIP
+
+pkgname = brewbuddy
+
