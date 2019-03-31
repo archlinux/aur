@@ -15,7 +15,7 @@ pkgrel=1
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 _tag_ver=${_majorver}.${_minorver}.${_securityver}+${_updatever}
 
-pkgname=jdk-adoptopenjdk
+pkgname=jdk11-adoptopenjdk
 pkgdesc="OpenJDK Java ${_majorver} development kit (AdoptOpenJDK build)"
 arch=('x86_64')
 url='https://adoptopenjdk.net/'
@@ -52,7 +52,7 @@ backup=(etc/${pkgname}/net.properties
         etc/${pkgname}/management/jmxremote.access
         etc/${pkgname}/management/jmxremote.password.template
         etc/${pkgname}/sound.properties)
-install=install_jdk-adoptopenjdk.sh
+install=install_jdk11-adoptopenjdk.sh
 
 source=(https://github.com/AdoptOpenJDK/openjdk${_majorver}-binaries/releases/download/jdk-${_tag_ver/+/%2B}/OpenJDK${_majorver}U-jdk_x64_linux_hotspot_${_tag_ver/+/_}.tar.gz
         freedesktop-java.desktop
