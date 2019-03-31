@@ -1,7 +1,4 @@
 # Maintainer: Alireza Ayinmehr <alireza.darksun@gmail.com>
-# Contributor: Dan McGee <dan@archlinux.org>
-# Contributor: Eli Schwartz <eschwartz@archlinux.org>
-# Contributor: Sebastien Binet <binet@lblbox>
 
 pkgname=('python-pip-git' 'python2-pip-git')
 pkgver=19.0.3.r105.gde242d0e
@@ -24,21 +21,6 @@ pkgver() {
   cd "pip-$pkgver"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
-
-# shopt -s extglob
-# prepare() {
-#   cd "$srcdir/pip-$pkgver"
-
-#   # Fix compat with python-progress 1.5
-#   # https://github.com/pypa/pip/pull/6319
-#   patch -Np1 -i ../progress.patch
-
-#   rm -rf src/pip/_vendor/!(__init__.py)
-#   sed -i -e 's/DEBUNDLED = False/DEBUNDLED = True/' \
-#          -e '/cachecontrol/a\    vendored("pep517")' \
-#             src/pip/_vendor/__init__.py
-# }
 
 build() {
   cd "$srcdir/pip-$pkgver"
