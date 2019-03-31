@@ -12,10 +12,13 @@ provides=('signald')
 conflicts=('signald')
 source=("${pkgname}::git+https://github.com/thefinn93/signald"
         'gradle-no-daemon.patch'
-        'sysusers')
+        'signald-git.install')
 sha512sums=('SKIP'
             'aa2ff9eef6ebd8ad31275a587b7b24e34938e9744b06892c96d43e274b18a15d2f0258f56cea8fea9163e85a754ebde1e66c20781876bcb524960defe02ce535'
-            '2aa12935ec8d6ce7dac1328e232fd8af9cea8248b7315c54fd8132b578ef5c6dfb32dc64558281bac57156c37336c3203e03af9cdb56312c57bfce1d23f82764')
+            '9ac1f323657bdf0357d005635394f0b21a74a76d3b25307c9ccec32c10eed00686e584a021028658ebd023c029c3b44485713532bb6f04b30c887790bf617a42')
+backup=('var/lib/signald/data')
+install=${pkgname}.install
+_daemon_uid=565
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -40,13 +43,13 @@ package() {
     cd "${srcdir}/${pkgname}"
 
     rm "build/install/signald/bin/signald.bat"
-    install -dm755 "${pkgdir}/var/lib/"
+    install -dm755 "${pkgdir}/var/lib/signald/data"
     cp -dr --no-preserve=ownership "build/install/signald/" "${pkgdir}/var/lib/"
+    chown -R ${_daemon_uid}:${_daemon_uid} "${pkgdir}/var/lib/signald/"
 
     install -dm755 "${pkgdir}/usr/bin/"
     ln -s ../../var/lib/signald/bin/signald "${pkgdir}/usr/bin/signald"
     install -Dm644 "${srcdir}/${pkgname}/debian/signald.service" "${pkgdir}/usr/lib/systemd/system/signald.service"
 
-    install -Dm644 "${srcdir}/sysusers" "${pkgdir}/usr/lib/sysusers.d/signald.conf"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
