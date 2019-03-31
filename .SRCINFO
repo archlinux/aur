@@ -1,6 +1,6 @@
 pkgbase = pcp
 	pkgdesc = System performance and analysis framework
-	pkgver = 4.2.0
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = http://pcp.io
 	install = pcp.install
@@ -21,10 +21,10 @@ pkgbase = pcp
 	optdepends = qt5-svg: support for PCP-GUI and pmchart
 	optdepends = perl-xml-tokeparser: support for sar2pcp
 	optdepends = perl-date-parse: support for sar2pcp
-	source = https://dl.bintray.com/pcp/source/pcp-4.2.0.tar.gz
+	source = https://dl.bintray.com/pcp/source/pcp-4.3.1.src.tar.gz
 	source = pcp.install
 	source = pcp.tmpfiles
-	sha256sums = 022499a92b47564c103c7a97d0ce6492193446d9121baf3809ca07cccd3194b1
+	sha256sums = 415aff396c55eb88ce2f49b3ba4fb576aaa486f72042ddb8a88608bbfb8c686d
 	sha256sums = 590d816edc87dd03e3700d7637f57ca81d24d63802f32f772709e0c33a4ca0b5
 	sha256sums = 48ce114e95ab640bfe6c6c9608c96c22a75b65ccb38dfa89bfa2b12621845f20
 
