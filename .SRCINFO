@@ -1,0 +1,12 @@
+pkgbase = wolf3d-data-steam
+	pkgdesc = Wolfenstein 3D data via Steam
+	pkgver = 1
+	pkgrel = 1
+	url = http://store.steampowered.com/app/2270
+	arch = any
+	license = Proprietary
+	makedepends = steamcmd
+	provides = wolf3d-data
+
+pkgname = wolf3d-data-steam
+
