@@ -3,6 +3,7 @@ pkgbase = signald-git
 	pkgver = 0.7.0.r43.0008585
 	pkgrel = 1
 	url = https://git.callpipe.com/finn/signald
+	install = signald-git.install
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -10,12 +11,13 @@ pkgbase = signald-git
 	depends = java-runtime
 	provides = signald
 	conflicts = signald
+	backup = var/lib/signald/data
 	source = signald-git::git+https://github.com/thefinn93/signald
 	source = gradle-no-daemon.patch
-	source = sysusers
+	source = signald-git.install
 	sha512sums = SKIP
 	sha512sums = aa2ff9eef6ebd8ad31275a587b7b24e34938e9744b06892c96d43e274b18a15d2f0258f56cea8fea9163e85a754ebde1e66c20781876bcb524960defe02ce535
-	sha512sums = 2aa12935ec8d6ce7dac1328e232fd8af9cea8248b7315c54fd8132b578ef5c6dfb32dc64558281bac57156c37336c3203e03af9cdb56312c57bfce1d23f82764
+	sha512sums = 9ac1f323657bdf0357d005635394f0b21a74a76d3b25307c9ccec32c10eed00686e584a021028658ebd023c029c3b44485713532bb6f04b30c887790bf617a42
 
 pkgname = signald-git
 
