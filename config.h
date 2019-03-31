@@ -3,12 +3,12 @@
 #define CURSR " > "
 #define EMPTY "   "
 
-int dirorder    = 1; /* Set to 1 to sort by directory first */
+int dirorder    = 0; /* Set to 1 to sort by directory first */
 int mtimeorder  = 0; /* Set to 1 to sort by time modified */
 int icaseorder  = 0; /* Set to 1 to sort by ignoring case */
 int idletimeout = 0; /* Screensaver timeout in seconds, 0 to disable */
 int showhidden  = 0; /* Set to 1 to show hidden files by default */
-int usecolor    = 1; /* Set to 1 to enable color attributes */
+int usecolor    = 0; /* Set to 1 to enable color attributes */
 char *idlecmd   = "rain"; /* The screensaver program */
 
 /* See curs_attr(3) for valid video attributes */
@@ -32,12 +32,12 @@ struct cpair pairs[] = {
 };
 
 struct assoc assocs[] = {
-	{ "\\.(avi|mp4|mkv|mov|wav|mp3|ogg|flac|mod|it|xm|s3m)$", "mpv" },
-	{ "\\.(png|jpg|jpeg|gif)$", "sxiv" },
-	{ "\\.(html|svg)$", "firefox" },
-	{ "\\.pdf$", "mupdf" },
-	{ "\\.sh$", "sh" },
-	{ ".", "less" },
+	{ .regex = "\\.(avi|mp4|mkv|mov|ogm|3gp|dv|wav|aiff|pcm|mp3|ogg|flac|ape|aac|m4a|wma|opus|pls|m3u|mod|it|s3m|xm|flv)$", .file = "mpv", .argv = { "mpv", "--really-quiet", "--load-scripts=no", "{}", NULL } },
+	{ .regex = "\\.(png|jpg|jpeg|gif|bmp|tiff|tga)$", .file = "sxiv", .argv = { "sxiv", "{}", NULL} },
+	{ .regex = "\\.(html|svg)$", .file = "firefox", .argv = { "firefox", "{}", NULL } },
+	{ .regex = "\\.pdf$", .file = "mupdf", .argv = { "mupdf", "{}", NULL} },
+	{ .regex = "\\.sh$", .file = "sh", .argv = { "sh", "{}", NULL} },
+	{ .regex = ".", .file = "less", .argv = { "less", "{}", NULL } },
 };
 
 struct key bindings[] = {
@@ -72,26 +72,24 @@ struct key bindings[] = {
 	{ CONTROL('U'),   SEL_PGUP },
 	/* Home */
 	{ KEY_HOME,       SEL_HOME },
-	{ CONTROL('A'),   SEL_HOME },
- 	{ META('<'),      SEL_HOME },
+	{ META('<'),      SEL_HOME },
 	{ '^',            SEL_HOME },
 	/* End */
 	{ KEY_END,        SEL_END },
-	{ CONTROL('E'),   SEL_END },
- 	{ META('>'),      SEL_END },
+	{ META('>'),      SEL_END },
 	{ '$',            SEL_END },
 	/* Change dir */
 	{ 'c',            SEL_CD },
 	{ '~',            SEL_CDHOME },
 	/* Toggle hide .dot files */
 	{ '.',            SEL_TOGGLEDOT },
-  /* Toggle sort by directory first */
-  { 'd',            SEL_DSORT },
+	/* Toggle sort by directory first */
+	{ 'd',            SEL_DSORT },
 	/* Toggle sort by time */
 	{ 't',            SEL_MTIME },
+	/* Toggle case sensitivity */
+	{ 'i',            SEL_ICASE },
 	{ CONTROL('L'),   SEL_REDRAW },
-  /* Toggle case sensitivity */
-  { 'i',            SEL_ICASE },
 	/* Run command */
 	{ 'z',            SEL_RUN, "top" },
 	{ '!',            SEL_RUN, "sh", "SHELL" },

@@ -1,6 +1,6 @@
 pkgname=noice-git
 _pkgname=noice
-pkgver=0.8.r0.gae2cb6f
+pkgver=0.8.r3.g16f473f
 pkgrel=1
 pkgdesc='Small terminal file browser written in C'
 arch=('i686' 'x86_64' 'armv6h')
