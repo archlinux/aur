@@ -1,7 +1,7 @@
 pkgbase = plymouth-kcm
 	pkgdesc = KCM to manage the Plymouth (Boot) theme
 	pkgver = 5.15.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cgit.kde.org/plymouth-kcm.git/
 	arch = x86_64
 	license = GPL

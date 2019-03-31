@@ -5,7 +5,7 @@
 # Contributor: Daniel Cohen <dan@supercore.co.uk>
 pkgname=plymouth-kcm
 pkgver=5.15.3
-pkgrel=1
+pkgrel=2
 pkgdesc="KCM to manage the Plymouth (Boot) theme"
 arch=('x86_64')
 url="https://cgit.kde.org/plymouth-kcm.git/"
