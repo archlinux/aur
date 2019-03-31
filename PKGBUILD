@@ -2,7 +2,7 @@
 
 pkgname=miniterm-git
 _pkgname=miniterm
-pkgver=v1.6.1.0.g12f19df
+pkgver=v1.7.0.0.gbdd12c3
 pkgrel=1
 pkgdesc="Lightweight VTE terminal emulator with colorscheme support (fork of tinyterm)"
 arch=('i386' 'x86_64')
