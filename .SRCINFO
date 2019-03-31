@@ -1,0 +1,12 @@
+pkgbase = final-doom-data-steam
+	pkgdesc = Final Doom data via Steam
+	pkgver = 1
+	pkgrel = 1
+	url = http://store.steampowered.com/app/2290
+	arch = any
+	license = Proprietary
+	makedepends = steamcmd
+	provides = final-doom-data
+
+pkgname = final-doom-data-steam
+
