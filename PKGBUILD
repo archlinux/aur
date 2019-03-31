@@ -1,7 +1,7 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 _name=resvg
 pkgname=$_name-cairo
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='SVG rendering library and CLI (Linked against cairo)'
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ conflicts=(resvg)
 depends=(gdk-pixbuf2 cairo pango)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f9d0dc31de9b6f516c0c5350f22142ab8af6a2d957a729494bb403cff32ba611')
+sha256sums=('63786673eb6848e82c25c7f76e54d962d2da623e322efc45ed802837fef26c9c')
 
 build() {
 	cd "$_name-$pkgver"
