@@ -1,7 +1,7 @@
 pkgbase = cinnamon-settings-daemon-git
 	pkgdesc = The Cinnamon Settings daemon
-	pkgver = 4.0.3.r0.gd3ead09
-	pkgrel = 1
+	pkgver = 4.0.3.r7.gc9f0bb4
+	pkgrel = 2
 	url = https://github.com/linuxmint/cinnamon-settings-daemon
 	arch = i686
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = cinnamon-settings-daemon-git
 	depends = pulseaudio-alsa
 	depends = upower
 	optdepends = cinnamon-translations: i18n
-	provides = cinnamon-settings-daemon
+	provides = cinnamon-settings-daemon=4.0.3.r7.gc9f0bb4
 	conflicts = cinnamon-settings-daemon
 	options = !emptydirs
 	source = git+https://github.com/linuxmint/cinnamon-settings-daemon.git

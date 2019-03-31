@@ -3,8 +3,8 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=cinnamon-settings-daemon-git
-pkgver=4.0.3.r0.gd3ead09
-pkgrel=1
+pkgver=4.0.3.r7.gc9f0bb4
+pkgrel=2
 pkgdesc="The Cinnamon Settings daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/${pkgname%-git}"
@@ -14,7 +14,7 @@ depends=('cinnamon-desktop' 'colord' 'dbus-glib' 'libcanberra-pulse' 'libcups'
          'pulseaudio-alsa' 'upower')
 optdepends=('cinnamon-translations: i18n')
 makedepends=('git' 'autoconf-archive' 'intltool' 'python' 'xf86-input-wacom')
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
 options=('!emptydirs')
 source=("git+${url}.git")
@@ -39,7 +39,6 @@ build() {
                 --sysconfdir=/etc \
                 --localstatedir=/var \
                 --libexecdir="/usr/lib/${pkgname%-git}" \
-                --enable-systemd \
                 --enable-polkit
 
     #https://bugzilla.gnome.org/show_bug.cgi?id=656231
