@@ -19,7 +19,8 @@ pkgname='bios-lenovo-thinkserver-ts140'
 #pkgver='20180221.CVA'
 #pkgver='20180315.CWA'
 #pkgver='20180711.CZA'
-pkgver='20181016.D0A'
+#pkgver='20181016.D0A'
+pkgver='20190329.D3A'
 pkgrel='1'
 pkgdesc='BIOS update for Lenovo ThinkServer ts140 ts440' # ts240 ts540 The website claims less models than the enclosed readme
 arch=('i686' 'x86_64')
@@ -43,9 +44,9 @@ _ver="${_ver,,}"
 source=("https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbkt${_ver}_bioslinux32.txt")
 source_i686=("https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbkt${_ver}_bioslinux32.tgz")
 source_x86_64=("https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbkt${_ver}_bioslinux64.tgz")
-sha256sums=('6b8b8daa1726f76b96fd14535b209716ba9b157e9df7e6d5c30633e712ea87b5')
-sha256sums_i686=('7b61d232697e2e13abeae3ba8e6f897ab31c760ea30c1757f8ab5ad0c3ac5375')
-sha256sums_x86_64=('a29580667511cb45fdd9591cbb7883193251c2274058bbf085e5d73baf2ae159')
+sha256sums=('8f73f884948af67f4011002663140a3e5796a9996ae15dd8006b555eed909e0c')
+sha256sums_i686=('afa03c3d009f37c75c657408b4d2a09e6bf0a843d5008106aa6f646f8a65307c')
+sha256sums_x86_64=('9d4208b3a70ba1c4e009e61c9ede3b591b746984d5a047a67fd17cbf2a3c8dba')
 
 declare -gA _srcdir=(['i686']='BIOSLinux32' ['x86_64']='BIOSLinux64')
 declare -gA _exe=(['i686']='afulnx_26_32' ['x86_64']='afulnx_26_64')
@@ -68,7 +69,7 @@ EOF
   sed -e '1i #!/usr/bin/sh' \
       -e "1i cp -p '/usr/lib/${pkgname}/ArchOpts' '/tmp/'" \
       -e 's:^\(\s\+\)\./afulnx_26_64:\1sync\n&:g' \
-      -e '# Prevent auto reboot. This stops the reboot but if you dont autoreboot the updgrade doesnt happen.' \
+      -e '# Prevent auto reboot. This stops the reboot but if you dont autoreboot the upgrade doesnt happen.' \
       -e '#s: /defans::g' \
     -i "${_sh[${CARCH}]}"
   set +u
