@@ -1,6 +1,6 @@
 # Maintainer: diesys <code@flowin.space>
 pkgname=iblu-git
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="Intel Black Light Utility, written in python, allows you to control the screen brightness (iX processors family), via command line interface."
 arch=('i686' 'x86_64' 'aarch64')
