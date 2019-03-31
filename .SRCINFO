@@ -1,0 +1,12 @@
+pkgbase = ultimate-doom-data-steam
+	pkgdesc = The Ultimate Doom data via Steam
+	pkgver = 1
+	pkgrel = 1
+	url = http://store.steampowered.com/app/2280
+	arch = any
+	license = Proprietary
+	makedepends = steamcmd
+	provides = ultimate-doom-data
+
+pkgname = ultimate-doom-data-steam
+
