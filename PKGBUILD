@@ -1,12 +1,12 @@
 # Maintainer: Dan Elkouby <streetwalrus@codewalr.us>
 pkgname=python-telethon-git
-pkgver=0.18.3.r48.g32b7e9e
+pkgver=1.6.2.r44.g34a8140f
 pkgrel=1
 pkgdesc="Pure Python 3 Telegram client library, asyncio version"
 arch=('any')
 url="https://github.com/LonamiWebs/Telethon/"
 license=('MIT')
-depends=('python>=3.5' 'python-pyaes' 'python-rsa' 'python-async_generator')
+depends=('python' 'python-pyaes' 'python-rsa')
 makedepends=('git' 'python-setuptools')
 provides=('python-telethon')
 conflicts=('python-telethon' 'python-telethon-aio-git')
