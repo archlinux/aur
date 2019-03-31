@@ -1,6 +1,6 @@
 # Maintainer: Niels Sonnich Poulsen <niels@nielssp.dk>
 pkgname=csol
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A small collection of ncurses-based solitaire/patience games."
 url="https://github.com/nielssp/csol"
