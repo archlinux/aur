@@ -14,5 +14,5 @@ post_install() {
 
 post_remove() {
 	killall -w -u "$MCS_USER" -s KILL
-	userdel -r -f "$MCS_GROUP" > /dev/null
+	userdel -r -f "$MCS_GROUP" &> /dev/null
 }
