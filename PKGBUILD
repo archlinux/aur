@@ -1,20 +1,22 @@
-# Maintainer: Hendrik R. <hendrikr_10 [at] yahoo [dot] de>
+# Maintainer: H. Rosendahl <h [at] ro [dot] sendahl [dot] de>
 
-pkgname='otf-renner'
-pkgver=2.1
+pkgname='otf-jost'
+pkgver=3.3
 pkgrel=1
+replaces=('otf-renner')
+conflicts=('otf-renner')
 pkgdesc="An original font created by indestructible type*. It is inspired by the designs of Paul Renner."
 url="http://indestructible-type.github.io/Renner.html"
 arch=(any)
 license=(custom)
-source=("Renner.zip::https://github.com/indestructible-type/Renner/releases/download/${pkgver}/Renner.zip")
+source=("Jost.zip::https://github.com/indestructible-type/Jost/releases/download/${pkgver}/Jost.zip")
 
-sha256sums=('44109b60d5d27d174518b8e8f501a9ceaa353ea9a2d165ceb32e14302a3f952f')
+sha256sums=('7a274c612c5f02b8de53c7c120a67812847ea6789489d8809feffd238512ad46')
 
 package() {
-  cd "${srcdir}"/'Renner*/Finished OpenType/'
-  install -d "$pkgdir/usr/share/fonts/renner"
-  install -t "$pkgdir/usr/share/fonts/renner" -m644 *.otf
+  cd "${srcdir}/OpenType/"
+  install -d "$pkgdir/usr/share/fonts/jost"
+  install -t "$pkgdir/usr/share/fonts/jost" -m644 *.otf
   install -Dm644 ../LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
