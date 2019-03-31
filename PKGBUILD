@@ -1,28 +1,31 @@
-# Maintainer: Murat Çileli <murat.cileli@gmail.com>
+# Maintainer: diesys <code@flowin.space>
+pkgname=iblu-git
+pkgver=0.8
+pkgrel=1
+pkgdesc="Intel Black Light Utility, written in python, allows you to control the screen brightness (iX processors family), via command line interface."
+arch=('i686' 'x86_64' 'aarch64')
+url="https://git.eigenlab.org/sbiego/iblu"
+license=('GPLv3')
+groups=()
+depends=('python')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+backup=()
+options=()
+install=
+source=('git+https://git.eigenlab.org/sbiego/iblu')
+noextract=()
+md5sums=('SKIP')
 
-pkgbase="pkgbase"
-pkgname="adwaita-creamy"
-pkgver="0.1"
-pkgrel="1"
-pkgdesc="Refreshed new Adwaita theme with creamy colors and minor changes. "
-arch=("x86_64")
-license=("MIT")
-url="https://github.com/murat-cileli/adwaita-creamy"
-makedepends=()
-provides=("adwaita-creamy")
-
-source=("git+https://github.com/murat-cileli/adwaita-creamy.git")
-sha256sums=("SKIP")
-
-build() {
-    cd "${pkgname}"
-    mkdir -p ~/.themes/adwaita-creamy
-    cp gtk-2.0 ~/.themes/adwaita-creamy/ -R
-    cp gtk-3.0 ~/.themes/adwaita-creamy/ -R
-    cp index.theme ~/.themes/adwaita-creamy/
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  echo "Package"
+    ## copia file
+	cd "$srcdir/${pkgname%-git}"
+    install -D ${pkgname%-git} $pkgdir/usr/bin/${pkgname%-git}
 }
-
