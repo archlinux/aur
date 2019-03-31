@@ -1,9 +1,10 @@
 # Contributor: Francois Boulogne <fboulogne@april.org>
+# Contributor: David Wu <xdavidwuph@gmail.com>
 
 pkgname=python2-pyocr
 _pkgname=pyocr
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Optical character recognition (OCR) tool wrapper for python'
 arch=('any')
 url='https://github.com/jflesch/pyocr'
@@ -17,6 +18,7 @@ sha256sums=('9e556d04aff8a6a4a0aef4c0dda7bb1227342634579c1268c300e663c995de12')
 
 build() {
   cd "${_pkgname}-${pkgver}"
+  make version
   python2 setup.py build
 }
 

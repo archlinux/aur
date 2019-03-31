@@ -1,7 +1,7 @@
 pkgbase = python2-pyocr
 	pkgdesc = Optical character recognition (OCR) tool wrapper for python
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jflesch/pyocr
 	arch = any
 	license = GPL3
