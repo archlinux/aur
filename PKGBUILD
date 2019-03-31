@@ -2,7 +2,7 @@
 
 pkgname=('python-pip-git' 'python2-pip-git')
 pkgver=19.0.3.r108.gac9010e87
-pkgrel=1
+pkgrel=2
 pkgdesc="The PyPA recommended tool for installing Python packages"
 url="https://pip.pypa.io/"
 arch=('any')
@@ -14,22 +14,22 @@ makedepends=("${_deps[@]/#/python-}" "${_deps[@]/#/python2-}" 'python2-ipaddress
 checkdepends=('python-pytest-runner' 'python-scripttest' 'python-virtualenv' 'python-pretend'
               'python-yaml' 'python-mock' 'python-freezegun')
 conflicts=('python-pip' 'python2-pip')
-source=("pip-$pkgver::git+https://github.com/pypa/pip.git")
+source=("pip-git::git+https://github.com/pypa/pip.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "pip-$pkgver"
+  cd "pip-git"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/pip-$pkgver"
+  cd "$srcdir/pip-git"
 
   python setup.py build
   python2 setup.py build
 
   cd docs/
-  PYTHONPATH="$srcdir/pip-$pkgver/src/" sphinx-build -W -b man -d build/doctrees/man man build/man -c html
+  PYTHONPATH="$srcdir/pip-git/src/" sphinx-build -W -b man -d build/doctrees/man man build/man -c html
   mkdir -p build/man-pip2
   cd build/man
   for manfile in *; do
@@ -38,14 +38,14 @@ build() {
 }
 
 check() {
-  cd "$srcdir/pip-$pkgver"
+  cd "$srcdir/pip-git"
   python setup.py pytest || warning "Tests failed"
 }
 
 package_python-pip-git() {
   depends=("${_deps[@]/#/python-}")
 
-  cd "$srcdir/pip-$pkgver"
+  cd "$srcdir/pip-git"
   python setup.py install --prefix=/usr --root="$pkgdir"
 
   install -D -m644 LICENSE.txt \
@@ -62,7 +62,7 @@ package_python2-pip-git() {
   conflicts=('python-pyinstall' 'python2-pip')
   replaces=('python-pyinstall')
 
-  cd "$srcdir/pip-$pkgver"
+  cd "$srcdir/pip-git"
   python2 setup.py install --prefix=/usr --root="$pkgdir"
 
   mv "$pkgdir/usr/bin/pip" "$pkgdir/usr/bin/pip2"

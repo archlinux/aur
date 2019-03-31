@@ -1,7 +1,7 @@
 pkgbase = python-pip-git
 	pkgdesc = The PyPA recommended tool for installing Python packages
 	pkgver = 19.0.3.r108.gac9010e87
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pip.pypa.io/
 	arch = any
 	license = MIT
@@ -52,7 +52,7 @@ pkgbase = python-pip-git
 	makedepends = python-sphinx
 	conflicts = python-pip
 	conflicts = python2-pip
-	source = pip-19.0.3.r108.gac9010e87::git+https://github.com/pypa/pip.git
+	source = pip-git::git+https://github.com/pypa/pip.git
 	sha512sums = SKIP
 
 pkgname = python-pip-git
