@@ -7,7 +7,7 @@ pkgname=(
   vbam-wx
 )
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Nintendo GameBoy Advance emulator'
 arch=(x86_64)
 url=https://vba-m.com
