@@ -1,6 +1,6 @@
 pkgbase = blender-plugin-luxcorerender
 	pkgdesc = LuxCoreRender exporter plugin for Blender
-	pkgver = 2.2.a1
+	pkgver = 2.2alpha1
 	pkgrel = 1
 	epoch = 1
 	url = http://www.luxrender.net/
