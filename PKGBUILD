@@ -4,7 +4,7 @@
 pkgname=astromatic-sextractor
 _pkgname=sextractor
 pkgver=2.25.0
-pkgrel=3
+pkgrel=4
 pkgdesc="builds a catalogue of objects from an astronomical image (build from source) "
 url="http://www.astromatic.net/software/sextractor"
 arch=('x86_64')
