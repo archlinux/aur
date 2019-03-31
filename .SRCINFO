@@ -1,0 +1,12 @@
+pkgbase = doom2-data-steam
+	pkgdesc = Doom 2 data via Steam
+	pkgver = 1
+	pkgrel = 1
+	url = http://store.steampowered.com/app/2300
+	arch = any
+	license = Proprietary
+	makedepends = steamcmd
+	provides = doom2-data
+
+pkgname = doom2-data-steam
+
