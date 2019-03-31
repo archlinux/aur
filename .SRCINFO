@@ -1,10 +1,10 @@
 pkgbase = flasciibird
 	pkgdesc = ncurses implementation of famous Flappy Bird game
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dos1/flasciibird
 	arch = any
-	license = GPL3+
+	license = GPL3
 	depends = python
 	depends = ncurses
 	source = https://github.com/dos1/flasciibird/archive/0.0.4.tar.gz
