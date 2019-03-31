@@ -1,0 +1,17 @@
+pkgbase = drawing
+	pkgdesc = Drawing application for the GNOME desktop
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/maoschanz/drawing
+	arch = any
+	license = GPL
+	makedepends = meson
+	makedepends = python
+	depends = gtk3
+	depends = python
+	provides = com.github.maoschanz.Drawing
+	source = https://github.com/maoschanz/drawing/archive/0.2.tar.gz
+	sha256sums = 83873fcda8102f51c9e5ecd17e95086d0e9ac8196bcf9e202d6e30c0c926fa35
+
+pkgname = drawing
+
