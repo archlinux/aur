@@ -1,10 +1,10 @@
 # $Id$
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Kianoosh Hooshmand <kianoosh.hoooshmand at gmail dot com>
 
 pkgname=jalali-momentjs
-pkgver=2.0.1
+pkgver=3.3.1
 pkgrel=1
-pkgdesc='A JavaScript library for parsing, validating, manipulating, and displaying jalali (Persian, Khorshidi, Shamsi) or Gregorian (Miladi) dates and times.'
+pkgdesc='Display, parse, manipulate and validate jalali (Persian, Khorshidi, Shamsi) or Gregorian (Miladi) dates and times and also convert Jalali (Persian, Khorshidi, Shamsi) date to Gregorian (Miladi) or vice versa in javascript or typescript.'
 arch=('any')
 url='https://github.com/fingerpich/jalali-moment'
 license=('MIT')
