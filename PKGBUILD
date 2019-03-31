@@ -5,15 +5,15 @@
 # Contributor: CReimer
 
 pkgname=cinnamon-git
-pkgver=4.0.9.r59.geeecd5bd5
+pkgver=4.0.9.r73.g05b529767
 pkgrel=2
 pkgdesc="Linux desktop which provides advanced innovative features and a traditional user experience"
 arch=('x86_64')
 url="https://github.com/linuxmint/${pkgname%-git}"
 license=('GPL2')
 depends=('accountsservice' 'caribou' 'cinnamon-control-center' 'cinnamon-menus' 'cinnamon-screensaver'
-         'cinnamon-session' 'cinnamon-settings-daemon' 'cjs' 'gnome-backgrounds'
-         'gnome-themes-extra' 'gstreamer' 'libgnomekbd' 'libkeybinder3' 'librsvg' 'muffin>=4.0.6.r21.gdf879dc'
+         'cinnamon-session' 'cinnamon-settings-daemon>=4.0.3.r3.gg8ebfd80' 'cjs' 'gnome-backgrounds'
+         'gnome-themes-extra' 'gstreamer' 'libgnomekbd' 'libkeybinder3' 'librsvg' 'muffin-git'
          'network-manager-applet' 'nemo' 'polkit-gnome' 'python-cairo' 'python-dbus'
          'python-gobject' 'python-pam' 'python-pexpect' 'python-pillow' 'python-pyinotify' 'xapps')
 optdepends=('blueberry: Bluetooth support'
