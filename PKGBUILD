@@ -9,7 +9,7 @@ pkgdesc="an open-source, non-linear video editor for Linux based on MLT framewor
 arch=('any')
 url="https://www.openshot.org/"
 license=('GPL')
-depends=('mlt-python-bindings' 'sdl' 'librsvg' 'mplayer'
+depends=('python-mlt' 'sdl' 'librsvg' 'mplayer'
 	 'pyxdg' 'python-pyqt5' 'python-httplib2' 'python-pillow' 'dvgrab'
 	 'ladspa' 'sox' 'vid.stab' 'qt5-svg' 'sdl_image'
 	 'libopenshot' 'python-pyzmq' 'qt5-webkit' 'python-setuptools'
