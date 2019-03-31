@@ -1,0 +1,16 @@
+pkgbase = aurvote-utils
+	pkgdesc = A set of utilities for managing AUR votes
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jadenPete/aurvote-utils
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-requests
+	conflicts = aurvote
+	source = https://github.com/jadenPete/aurvote-utils/archive/v1.0.0.tar.gz
+	sha256sums = d8b992f836a663584c4b447befc46e47824795143780b4c23d2da8481dc12711
+
+pkgname = aurvote-utils
+
