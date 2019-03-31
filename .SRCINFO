@@ -1,7 +1,7 @@
 pkgbase = srecord
 	pkgdesc = The SRecord package is a collection of powerful tools for manipulating EPROM load files.
 	pkgver = 1.64
-	pkgrel = 1
+	pkgrel = 2
 	url = http://srecord.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = srecord
 	makedepends = ghostscript
 	options = !makeflags
 	source = http://srecord.sourceforge.net/srecord-1.64.tar.gz
+	source = coe.patch
 	md5sums = 4de4a7497472d7972645c2af91313769
+	md5sums = 7bd7d4451a683d4832a0ddb2b160756e
 
 pkgname = srecord
 
