@@ -9,12 +9,12 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 ### Revert offending commit, recommanded to disable if not using NVIDIA
-_revert=0
+_revert=
 
 
 pkgname=mutter-781835-workaround
 pkgver=3.32.0+42+g58f7059ea
-pkgrel=4
+pkgrel=5
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
