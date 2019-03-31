@@ -1,13 +1,13 @@
 # Maintainer: Jaden Peterson <jadenpeterson150@gmail.com>
 
 pkgname=aurvote-utils-git
-pkgver=1.0.0
+pkgver=1.0.0.r6.g07c9666
 pkgrel=1
 pkgdesc='A set of utilities for managing AUR votes'
 arch=('any')
 url=https://github.com/jadenPete/aurvote-utils
 provides=('aurvote-utils')
-conflicts=('aurvote-utils' 'aurvote')
+conflicts=('aurvote-utils')
 license=('MIT')
 depends=('python' 'python-beautifulsoup4' 'python-requests')
 makedepends=('git')
@@ -21,6 +21,6 @@ pkgver() {
 
 package() {
 	cd aurvote-utils
-	install -D aurvote "${pkgdir}/usr/bin/aurvote"
-	install aurvote-auto "${pkgdir}/usr/bin/aurvote-auto"
+	install -D aur-vote "${pkgdir}/usr/bin/aur-vote"
+	install aur-autovote "${pkgdir}/usr/bin/aur-autovote"
 }
