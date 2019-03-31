@@ -8,7 +8,7 @@ _pkgname=spotify
 pkgver=1.1.0.237
 _commit=g378f6f25
 _epoch=11
-pkgrel=1
+pkgrel=2
 pkgdesc="A proprietary music streaming service"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
@@ -17,7 +17,8 @@ depends=("alsa-lib>=1.0.14" "gtk2" "nss" "libxtst" "libxss" "libcurl-gnutls" "li
 optdepends=('ffmpeg0.10: Adds support for playback of local files'
             'zenity: Adds support for importing local files'
             'libnotify: Desktop notifications')
-conflicts=('spotify')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 
 source=("${_pkgname}-Release::http://repository.spotify.com/dists/testing/Release"
 	"${_pkgname}-Release::http://repository.spotify.com/dists/testing/Release.gpg"

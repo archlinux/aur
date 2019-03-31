@@ -1,7 +1,7 @@
 pkgbase = spotify-dev
 	pkgdesc = A proprietary music streaming service
 	pkgver = 1.1.0.237
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.spotify.com
 	arch = x86_64
 	license = custom:"Copyright (c) 2006-2010 Spotify Ltd"
@@ -15,6 +15,7 @@ pkgbase = spotify-dev
 	optdepends = ffmpeg0.10: Adds support for playback of local files
 	optdepends = zenity: Adds support for importing local files
 	optdepends = libnotify: Desktop notifications
+	provides = spotify
 	conflicts = spotify
 	source = spotify-Release::http://repository.spotify.com/dists/testing/Release
 	source = spotify-Release::http://repository.spotify.com/dists/testing/Release.gpg
