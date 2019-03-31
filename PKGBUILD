@@ -1,6 +1,6 @@
 # Maintainer: Luclu7 <me at luclu7 dot fr>
 pkgname=akmey
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Akmey client"
 arch=('x86_64')
