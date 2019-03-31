@@ -1,5 +1,5 @@
 pkgbase = jalali-momentjs
-	pkgdesc = Display, parse, manipulate and validate jalali (Persian, Khorshidi, Shamsi) or Gregorian (Miladi) dates and times and also convert Jalali (Persian, Khorshidi, Shamsi) date to Gregorian (Miladi) or vice versa in javascript or typescript.
+	pkgdesc = Display, parse, manipulate, validate and convert jalali (Persian, Khorshidi, Shamsi) or Gregorian (Miladi) dates and times.
 	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/fingerpich/jalali-moment
