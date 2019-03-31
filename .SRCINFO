@@ -1,0 +1,15 @@
+pkgbase = shahab-fonts
+	pkgdesc = Shahab is a Persian/Arabic font.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/font-store/ShahabFont
+	arch = any
+	license = OFL-1.1
+	depends = fontconfig
+	provides = ttf-shahab
+	conflicts = ttf-shahab
+	source = shahab-fonts-0.0.2.zip::https://github.com/font-store/ShahabFont/releases/download/v0.0.2/pack.0.0.2.zip
+	sha512sums = 87ee2a2e84ac20cf69227bd997c9287ccf25faec3243cb0dcd536c3903c140f73cdd3c3b22db1b759e9f27b74b80391fe5591799725946bece19170550259bc4
+
+pkgname = shahab-fonts
+
