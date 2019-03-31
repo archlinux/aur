@@ -1,6 +1,6 @@
 pkgbase = cockpit
 	pkgdesc = A systemd web based user interface for Linux servers
-	pkgver = 186
+	pkgver = 189
 	pkgrel = 1
 	url = http://www.cockpit-project.org/
 	arch = i686
@@ -35,11 +35,11 @@ pkgbase = cockpit
 	optdepends = libvirt: manage virtual machines
 	optdepends = kubernetes: manage cluster
 	conflicts = cockpit-git
-	noextract = cockpit-186.tar.xz
-	source = https://github.com/cockpit-project/cockpit/releases/download/186/cockpit-186.tar.xz
-	source = https://github.com/cockpit-project/cockpit/releases/download/186/cockpit-cache-186.tar.xz
-	sha1sums = 0d01f969947522b201237e5c2b42eab77cd84992
-	sha1sums = 552221198fe3092db2d01d4ab8ab92869ff30e41
+	noextract = cockpit-189.tar.xz
+	source = https://github.com/cockpit-project/cockpit/releases/download/189/cockpit-189.tar.xz
+	source = https://github.com/cockpit-project/cockpit/releases/download/189/cockpit-cache-189.tar.xz
+	sha1sums = 05329af1156fe1c42f70c137bf647451741184af
+	sha1sums = 71ff0f4f5fc677b6f33bdfc72d6897912ea4e595
 
 pkgname = cockpit
 
