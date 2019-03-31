@@ -1,42 +1,72 @@
-# Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
-# Contributor: CubeTheThird <cubethethird@gmail.com>
+# Maintainer: Stick <stick at stma dot is>
+# Contributor: Frederik "Freso" S. Olesen <archlinux at freso dot dk>
+# Contributor: CubeTheThird <cubethethird at gmail dot com>
+# shellcheck disable=2034,2154
 
-pkgname=amidst
-_version='4.2'
-pkgver=${_version//_/-}
-_jarver="v${_version}"
-_jarfile="${pkgname}-${_jarver/./-}.jar"
+_pkg=amidst
+pkgname="$_pkg-git"
+pkgver=4.3.beta5.r18.g15953d62
 pkgrel=1
 pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking'
 arch=('any')
-license=('GPL3')
 url='https://github.com/toolbox4minecraft/amidst'
-depends=('java-runtime=8' 'sh')
+license=('GPL3')
+depends=('java-runtime>=8')
+makedepends=('git' 'maven')
 optdepends=('minecraft: the game itself')
-noextract=("$_jarfile")
-changelog=ChangeLog
-source=("https://github.com/toolbox4minecraft/amidst/releases/download/$_jarver/$_jarfile"
-        amidst.desktop
+provides=("$_pkg")
+conflicts=("$_pkg")
+source=("$pkgname::git+$url"
         icon.png)
-md5sums=('da22f11add79ba0fb8ce30b8f979be2a'
-         '3c6900ac68e3175768322e684f9f1bcb'
-         '0d90c979cbd12aa7d08d05f5f3299ce7')
+sha256sums=('SKIP'
+            '30622fc7576475efe3c63675f2b33d29177091040d29fb7db031ec229e79be39')
+
+pkgver() {
+	cd "$pkgname" || exit
+	local _ver
+	_ver="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+	printf '%s\n' "${_ver#v}"
+}
 
 prepare() {
-    cd "$srcdir"
+	cd "$srcdir" || exit
 
-    #Create shell script to launch the application
-    echo "#!/bin/sh" > amidst.sh
-    echo "java -noverify -jar /usr/share/java/$pkgname/AMIDST.jar" >> amidst.sh
+	# Create shell script to launch the application
+	echo "#!/bin/sh" > amidst.sh
+	echo "java -jar /usr/share/java/$_pkg/AMIDST.jar" >> amidst.sh
+
+	# Create .desktop file
+	{
+		echo '[Desktop Entry]'
+		echo 'Type=Application'
+		echo "Version=$pkgver"
+		cat <<- EOF
+			Name=AMIDST
+			Comment=Advanced Minecraft Interface and Data/Structure Tracking
+			TryExec=amidst
+			Exec=java -jar /usr/share/java/amidst/AMIDST.jar
+			Icon=/usr/share/pixmaps/amidst.png
+			Terminal=false
+			Categories=Game;
+			Keywords=minecraft;
+			EOF
+	} > amidst.desktop
+
+	# Build the .jar using maven
+	cd "$pkgname" || exit
+	mvn clean
+	mvn package
 }
 
 package() {
-    cd "$srcdir"
+	local _basever="${pkgver%%.r*}"
+	local _jarver="v${_basever/.beta/-beta}"
 
-    install -vDm755 'amidst.sh'                 "$pkgdir/usr/bin/amidst"
-    install -vDm644 'icon.png'                  "$pkgdir/usr/share/pixmaps/amidst.png"
-    install -vDm644 'amidst.desktop'            "$pkgdir/usr/share/applications/amidst.desktop"
-    install -vDm644 "$_jarfile"                 "$pkgdir/usr/share/java/$pkgname/AMIDST.jar"
+	cd "$srcdir" || exit
+
+	install -vDm755 'amidst.sh' "$pkgdir/usr/bin/amidst"
+	install -vDm644 'icon.png' "$pkgdir/usr/share/pixmaps/amidst.png"
+	install -vDm644 'amidst.desktop' "$pkgdir/usr/share/applications/amidst.desktop"
+	install -vDm644 "$pkgname/target/$_pkg-${_jarver/./-}.jar" \
+		"$pkgdir/usr/share/java/$_pkg/AMIDST.jar"
 }
-
-# vim:set ts=4 sw=4 et:

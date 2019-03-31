@@ -1,21 +1,20 @@
-pkgbase = amidst
+pkgbase = amidst-git
 	pkgdesc = Advanced Minecraft Interface and Data/Structure Tracking
-	pkgver = 4.2
+	pkgver = 4.3.beta5.r18.g15953d62
 	pkgrel = 1
 	url = https://github.com/toolbox4minecraft/amidst
-	changelog = ChangeLog
 	arch = any
 	license = GPL3
-	depends = java-runtime=8
-	depends = sh
+	makedepends = git
+	makedepends = maven
+	depends = java-runtime>=8
 	optdepends = minecraft: the game itself
-	noextract = amidst-v4-2.jar
-	source = https://github.com/toolbox4minecraft/amidst/releases/download/v4.2/amidst-v4-2.jar
-	source = amidst.desktop
+	provides = amidst
+	conflicts = amidst
+	source = amidst-git::git+https://github.com/toolbox4minecraft/amidst
 	source = icon.png
-	md5sums = da22f11add79ba0fb8ce30b8f979be2a
-	md5sums = 3c6900ac68e3175768322e684f9f1bcb
-	md5sums = 0d90c979cbd12aa7d08d05f5f3299ce7
+	sha256sums = SKIP
+	sha256sums = 30622fc7576475efe3c63675f2b33d29177091040d29fb7db031ec229e79be39
 
-pkgname = amidst
+pkgname = amidst-git
 
