@@ -17,9 +17,9 @@ conflicts=('zathura-pdf-poppler')
 depends=('zathura' 'jbig2dec' 'openjpeg2' 'libjpeg' 'cairo' 'desktop-file-utils' 'openssl')
 makedepends=('libmupdf' 'meson' 'ninja')
 
-source=(https://pwmt.org/projects/zathura/plugins/download/zathura-pdf-mupdf-$pkgver.tar.xz)
+source=(zathura-pdf-mupdf-$pkgver.tar.gz::https://github.com/pwmt/zathura-pdf-mupdf/archive/$pkgver.tar.gz)
 
-sha1sums=('f2adf855a67455f4dccd22c61dcf22cde4c5ae2a')
+sha1sums=('001a82036867b7321c62cf126c8c05cf410c77c3')
 
 build() {
   cd zathura-pdf-mupdf-$pkgver
