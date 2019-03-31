@@ -1,7 +1,7 @@
 # Maintainer: Dave Reisner <d@falconindy.com>
 
 pkgname=asp
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc="Arch Linux build source file management tool"
 arch=(any)
