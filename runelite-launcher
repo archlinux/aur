@@ -1,3 +1,0 @@
-#!/bin/bash
-
-exec java -Dhttps.protocols=TLSv1.2 -jar /usr/share/runelite-launcher/Launcher.jar $@
