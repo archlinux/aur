@@ -4,13 +4,13 @@
 
 pkgname=archlinux-artwork
 pkgver=1.6
-pkgrel=5
+pkgrel=6
 pkgdesc='Official logos, icons, CD labels and other artwork for Arch Linux'
 arch=("any")
 url="http://www.archlinux.org/"
 license=("CCPL:cc-by-nc-sa" "custom:TRADEMARKS")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jristz/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('ce4aefa72574465eb74e4d0a795aee5a')
+source=("${pkgname}-${pkgver}.tar.gz::https://sources.archlinux.org/other/artwork/${pkgname}-${pkgver}.tar.gz")
+md5sums=('85d812728309acaa6c9a07e41e3e7e65')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
