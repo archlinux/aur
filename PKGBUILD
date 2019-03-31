@@ -25,5 +25,5 @@ pkgver() {
 package() {
     ## copia file
 	cd "$srcdir/${pkgname%-git}"
-    install -D ${pkgname%-git} $pkgdir/usr/bin/${pkgname%-git}
+    install -D ${pkgname} $pkgdir/usr/bin/${pkgname%-git}
 }
