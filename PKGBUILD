@@ -1,8 +1,8 @@
-# Maintainer: Nathaniel Stickney <nstickney@gmail.com>
-# Contributor: Wyatt J. Brown <sushidudeteam@gmail.com>
+# Maintainer: Stick <stick at stma dot is>
+# Contributor: Wyatt J. Brown <sushidudeteam at gmail dot com>
 # shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
-pkgver=20181124
+pkgver=20190331
 pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
@@ -10,6 +10,7 @@ url='https://aur.archlinux.org/packages/all-repository-fonts/'
 license=('custom:Public Domain')
 depends=('adobe-source-code-pro-fonts'
          'adobe-source-han-sans-cn-fonts'
+         'adobe-source-han-sans-hk-fonts'
          'adobe-source-han-sans-jp-fonts'
          'adobe-source-han-sans-kr-fonts'
          'adobe-source-han-sans-otc-fonts'
@@ -38,6 +39,7 @@ depends=('adobe-source-code-pro-fonts'
          'noto-fonts-extra'
          'opendesktop-fonts'
 		 'otf-cormorant'
+		 'otf-fantasque-sans-mono'
 		 'otf-fira-code'
          'otf-fira-mono'
          'otf-fira-sans'
@@ -55,11 +57,14 @@ depends=('adobe-source-code-pro-fonts'
          'ttf-arphic-uming'
          'ttf-baekmuk'
          'ttf-bitstream-vera'
+         'ttf-caladea'
+         'ttf-carlito'
          'ttf-cheapskate'
 		 'ttf-cormorant'
          'ttf-croscore'
          'ttf-dejavu'
          'ttf-droid'
+         'ttf-fantasque-sans-mono'
 		 'ttf-fira-code'
          'ttf-fira-mono'
          'ttf-fira-sans'
@@ -76,10 +81,12 @@ depends=('adobe-source-code-pro-fonts'
          'ttf-ionicons'
          'ttf-junicode'
          'ttf-khmer'
+         'ttf-lato'
          'ttf-liberation'
          'ttf-linux-libertine'
          'ttf-linux-libertine-g'
          'ttf-mph-2b-damase'
+         'ttf-opensans'
          'ttf-roboto'
          'ttf-sazanami'
          'ttf-tibetan-machine'
@@ -95,7 +102,7 @@ depends=('adobe-source-code-pro-fonts'
          'xorg-fonts-misc'
          'xorg-fonts-type1')
 source=(LICENSE)
-sha512sums=('57f083acfdb3b05be097f27d8df8afb77820c61ca138f097f22564d3e10dd0b713aaf02e421d6ab8223b6fb462ad16833ce08a0f10ed17a0d3a82f34b9494df0')
+sha256sums=('3b4773abb04074e08b55e3c4ca3fddd8e040bec671b835d3850c582b7d884149')
 
 package()
 {
