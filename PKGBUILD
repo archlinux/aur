@@ -1,9 +1,9 @@
-# Maintainer: Jose Riha
+# Maintainer: Jose Riha <jose 1711 gmail com>
 # Contributor: Jose M. Dana <dana.develop - gmail>
 
 pkgname=python-memprof
 pypiname=memprof
-pkgver=0.3.3
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="A memory profiler for Python. It logs and plots the memory usage of all the variables."
 arch=(any)
@@ -12,7 +12,7 @@ license=('GPL')
 depends=("python-matplotlib" "cython")
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/m/memprof/memprof-$pkgver.tar.gz")
-md5sums=("f8a41a19e9bcb5c2a86373e95f252c6f")
+md5sums=('6ee4b90bb7c665cb0248c2d0b697d6b9')
 
 package() {
   cd "$srcdir/$pypiname-$pkgver"
