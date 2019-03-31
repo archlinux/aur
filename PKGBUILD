@@ -1,7 +1,7 @@
 # Maintainer: Alireza Ayinmehr <alireza.darksun@gmail.com>
 
 pkgname=('python-pip-git' 'python2-pip-git')
-pkgver=19.0.3.r105.gde242d0e
+pkgver=19.0.3.r108.gac9010e87
 pkgrel=1
 pkgdesc="The PyPA recommended tool for installing Python packages"
 url="https://pip.pypa.io/"
