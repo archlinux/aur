@@ -11,6 +11,11 @@ post_install() {
 	echo "\nIBLU is ALMOST INSTALLED! \nPlease run the following commands:\n\n\t # iblu UNIT > /usr/lib/systemd/system/iblu.service \t#creates the systemd unit file \n\t # systemctl start iblu.service \t\t\t\t#starting the service\n\t # systemctl enable iblu.service \t\t\t\t#enabling the service\n"
 }
 
+
+
+
+
+################################################################################################
 # read -p "Do you want to do it now (y/n)?" choice
 # case "$choice" in 
 # y|Y ) iblu UNIT > /usr/lib/systemd/system/iblu.service; systemctl start iblu.service; systemctl enable iblu.service;;
