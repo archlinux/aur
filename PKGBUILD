@@ -3,17 +3,17 @@
 
 pkgname=python2-pyocr
 _pkgname=pyocr
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.6
+pkgrel=1
 pkgdesc='Optical character recognition (OCR) tool wrapper for python'
 arch=('any')
-url='https://github.com/jflesch/pyocr'
+url='https://gitlab.gnome.org/World/OpenPaperwork/pyocr'
 license=('GPL3')
 depends=('python2-pillow' 'tesseract')
 makedepends=('python2' 'python2-setuptools')
 optdeps=('cuneiform: alternativer OCR')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/jflesch/pyocr/archive/${pkgver}.tar.gz")
-sha256sums=('9e556d04aff8a6a4a0aef4c0dda7bb1227342634579c1268c300e663c995de12')
+source=("${_pkgname}-${pkgver}.tar.gz::https://gitlab.gnome.org/World/OpenPaperwork/pyocr/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('bef4b9ffd59f4e737d77654a8310f4e4b22225653f88d2e2ba4fbd2abc5eced3')
 
 
 build() {
