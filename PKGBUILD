@@ -31,7 +31,7 @@ check() {
 	export NO_INTERACTION=1
 	export SKIP_ONLINE_TESTS=1
 	export SKIP_SLOW_TESTS=1
-    export TEST_PHP_ARGS='-n -d extension=modules/pcov.so'
+  export TEST_PHP_ARGS='-n -d extension=modules/pcov.so'
 	php run-tests.php -P
 }
 
