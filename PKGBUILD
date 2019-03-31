@@ -13,7 +13,7 @@ replaces=()
 backup=()
 install=
 source=("https://github.com/nielssp/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('e4a5d07e7643d7dc1aae203b249f8734')
+md5sums=('34884b95ac5bfa2588f9c5d93172aa41')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
