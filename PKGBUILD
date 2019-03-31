@@ -3,7 +3,7 @@
 pkgname=astromatic-scamp
 _pkgname=scamp
 pkgver=2.6.7
-pkgrel=3
+pkgrel=4
 pkgdesc="computes astrometric and photometric solutions for any arbitrary sequence of FITS images in a completely automatic way."
 url="http://www.astromatic.net/software/scamp"
 arch=('x86_64')
