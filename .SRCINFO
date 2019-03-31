@@ -1,0 +1,17 @@
+pkgbase = quake3-data-steam
+	pkgdesc = Quake 3 Arena data via Steam
+	pkgver = 1
+	pkgrel = 1
+	url = http://store.steampowered.com/app/2200
+	arch = any
+	license = Proprietary
+	makedepends = steamcmd
+
+pkgname = quake3-data-steam
+	provides = quake3-data
+
+pkgname = quake3-ta-data-steam
+	pkgdesc = Quake 3 Team Arena data via Steam
+	depends = quake3-data
+	provides = quake3-ta-data
+
