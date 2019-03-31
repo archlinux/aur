@@ -2,8 +2,8 @@
 # Contributor: Johannes Schleifenbaum <johannes [at] js-webcoding [dot] de>
 
 pkgname=php-mailparse
-pkgver=3.0.2
-pkgrel=3
+pkgver=3.0.3
+pkgrel=1
 pkgdesc="Extension for parsing and working with email messages (RFC822 and RFC2045)"
 arch=('i686' 'x86_64')
 url="https://pecl.php.net/package/mailparse"
@@ -11,17 +11,9 @@ license=('PHP')
 depends=('php>=7.2.0')
 backup=('etc/php/conf.d/mailparse.ini')
 source=("https://pecl.php.net/get/mailparse-${pkgver}.tgz"
-        'mailparse.ini'
-        'mailparse-upstream.patch')
-sha256sums=('d81a6f8a48e43fca1c0f0d6c90d666830c24d584a23a60add43062aaf221843b'
-            'e3a71ee16492ff486ad4e6b0c87a3af93bdb081efa5baf78d5d47f290f7ec86a'
-            '5fef263ad49bac3b2b009574d07fda529bcb71856d4e208acf3bd51bccdd5312')
-
-prepare() {
-  cd "${srcdir}/mailparse-${pkgver}/"
-
-  patch -Np1 -i "${srcdir}/mailparse-upstream.patch"
-}
+        'mailparse.ini')
+sha256sums=('bfaeae61342c147bcb66b9a90949722e04b65548e6a9d1eb4896aeb62409d302'
+            'e3a71ee16492ff486ad4e6b0c87a3af93bdb081efa5baf78d5d47f290f7ec86a')
 
 build() {
   cd "${srcdir}/mailparse-${pkgver}/"
@@ -29,6 +21,15 @@ build() {
   phpize
   ./configure --prefix=/usr
   make
+}
+
+check() {
+  cd "${srcdir}/mailparse-${pkgver}/"
+
+	export REPORT_EXIT_STATUS=1
+	export NO_INTERACTION=1
+	export SKIP_ONLINE_TESTS=1
+	make test
 }
 
 package() {
