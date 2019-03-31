@@ -3,8 +3,9 @@
 _pkgname=neovim
 pkgname=neovim-nightly
 pkgver=0.4.0
-pkgrel=1
-pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - Nightly Build'
+pkgrel=2
+pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - Nightly Build
+(pkg updated every week)'
 arch=('x86_64')
 url='https://neovim.io'
 license=('custom:neovim')
@@ -16,7 +17,7 @@ optdepends=('python2-neovim: for Python 2 plugin support, see :help python'
             'xsel: for clipboard support, see :help clipboard')
 
 source=('https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz')
-sha512sums=('3a3c599c10d094ae7e7742e3330c2af996290ede5fc30e3e7017bc55716e0ff8ae6cb663cd6a63016b222d56d38e9716f7fa4b5efeed21535e46903fe8a635d8')
+sha512sums=(SKIP)
 install=neovim.install
 
 check() {
