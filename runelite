@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec java -Dhttps.protocols=TLSv1.2 -jar /usr/share/runelite/RuneLite.jar $@
