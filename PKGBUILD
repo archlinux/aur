@@ -10,13 +10,15 @@
 _BUILD_DOC=0
 # KIM package
 _ENABLE_KIM=0
+# Intel and OpenMP packages
+_ENABLE_INTEL=0
 
 _pkgname=lammps
 pkgname=${_pkgname}-beta
 pkgver=20190329
 _pkgver="29Mar2019"
 #_pkgver=$(date -d ${pkgver} +%-d%b%Y)
-pkgrel=1
+pkgrel=2
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
 arch=('x86_64')
@@ -25,8 +27,10 @@ depends=('fftw' 'openmpi')
 makedepends=('cmake')
 conflicts=('lammps')
 provides=('lammps')
-source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/patch_${_pkgver}.tar.gz")
-sha512sums=('7e5ba9c033a283d9e0f4f05161bf081bfec45d519f9ac0aae3114ef8cbe630de6943cd8cee4413a7c6ebf4ddde11aa5e838a96d087629a8e34b51892893bc8e9')
+source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/patch_${_pkgver}.tar.gz"
+        "kim_cmake.patch::https://github.com/${_pkgname}/${_pkgname}/commit/a28ae7c2c0e4d5b179fc7d627f0e5dde8fd9a31f.patch")
+sha512sums=('7e5ba9c033a283d9e0f4f05161bf081bfec45d519f9ac0aae3114ef8cbe630de6943cd8cee4413a7c6ebf4ddde11aa5e838a96d087629a8e34b51892893bc8e9'
+            '383796fff5e6e62c78ad719d5339319e5461beb4075a5bdd3e5fc0332fe7a13446949673142ba63e2423c89c5107d1a3a915c2fbc18d815300c8de32e19b9808')
 
 # process the build settings from above
 if (( $_BUILD_DOC )); then
@@ -36,9 +40,20 @@ if (( $_ENABLE_KIM )); then
     depends+=('kim-api>=2.0.2')
     _feature_args+=('-DPKG_KIM=yes')
 fi
+if (( $_ENABLE_INTEL )); then
+    _feature_args+=('-DCMAKE_C_COMPILER=icc')
+    _feature_args+=('-DCMAKE_CXX_COMPILER=icpc')
+    _feature_args+=('-DCMAKE_CXX_FLAGS=-O2 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias')
+    _feature_args+=('-DCMAKE_Fortran_COMPILER=ifort')
+    _feature_args+=('-DPKG_USER-INTEL=yes')
+    _feature_args+=('-DINTEL_ARCH=cpu')
+    _feature_args+=('-DPKG_USER-OMP=yes')
+    _feature_args+=('-DBUILD_OMP=yes')
+fi
 
 prepare(){
   cd "${_pkgname}-patch_${_pkgver}"
+  patch --strip=1 --input="../kim_cmake.patch"
   mkdir -p build
 }
 
