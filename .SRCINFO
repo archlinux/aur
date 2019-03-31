@@ -1,14 +1,10 @@
 pkgbase = python-theano
 	pkgdesc = Definition and optimized evaluation of mathematical expressions on Numpy arrays.
 	pkgver = 1.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.deeplearning.net/software/theano/
 	arch = any
 	license = BSD
-	checkdepends = python-nose
-	checkdepends = python-parameterized
-	checkdepends = python2-nose
-	checkdepends = python2-parameterized
 	makedepends = python-distribute
 	makedepends = python2-distribute
 	source = https://files.pythonhosted.org/packages/source/T/Theano/Theano-1.0.4.tar.gz
