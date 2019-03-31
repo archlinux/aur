@@ -5,15 +5,16 @@
 
 pkgname=('quake2-data-steam' 'quake2-xatrix-data-steam' 'quake2-rogue-data-steam')
 pkgver=1
-pkgrel=1
-pkgdesc="Quake 2 data via Steam"
+pkgrel=2
 arch=('any')
-provides=('quake2-data' 'quake2-xatrix-data' 'quake2-rogue-data')
 makedepends=('steamcmd')
+pkgdesc="Quake II data via Steam"
 license=('Proprietary')
 url='https://store.steampowered.com/app/2320'
 
 package_quake2-data-steam() {
+    provides=('quake2-data')
+
     # Use steamcmd to get data.
     printf "Enter your Steam username:"
     read steam_username
@@ -37,6 +38,9 @@ package_quake2-data-steam() {
 }
 
 package_quake2-xatrix-data-steam() {
+    pkgdesc="Quake II: The Reckoning data via Steam"
+    provides=('quake2-xatrix-data')
+    depends=('quake2-data')
     # Use steamcmd to get data.
     printf "Enter your Steam username:"
     read steam_username
@@ -55,6 +59,9 @@ package_quake2-xatrix-data-steam() {
 }
 
 package_quake2-rogue-data-steam() {
+    pkgdesc="Quake II: Ground Zero data via Steam"
+    provides=('quake2-rogue-data')
+    depends=('quake2-data')
     # Use steamcmd to get data.
     printf "Enter your Steam username:"
     read steam_username
