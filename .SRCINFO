@@ -1,0 +1,18 @@
+pkgbase = quake2-data-steam
+	pkgdesc = Quake 2 data via Steam
+	pkgver = 1
+	pkgrel = 1
+	url = https://store.steampowered.com/app/2320
+	arch = any
+	license = Proprietary
+	makedepends = steamcmd
+	provides = quake2-data
+	provides = quake2-xatrix-data
+	provides = quake2-rogue-data
+
+pkgname = quake2-data-steam
+
+pkgname = quake2-xatrix-data-steam
+
+pkgname = quake2-rogue-data-steam
+
