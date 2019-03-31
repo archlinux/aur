@@ -1,6 +1,6 @@
 pkgbase = drawing-git
 	pkgdesc = Drawing application for the GNOME desktop
-	pkgver = r134.b748831
+	pkgver = 0.2.r4.g3f49a0e
 	pkgrel = 1
 	url = https://github.com/maoschanz/drawing
 	arch = any
