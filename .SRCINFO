@@ -1,7 +1,7 @@
 pkgbase = luxmark
 	pkgdesc = OpenCL benchmark tool
 	pkgver = 3.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.luxrender.net/
 	arch = x86_64
 	license = GPL3
@@ -25,6 +25,7 @@ pkgbase = luxmark
 	depends = opencl-driver
 	depends = libbcd
 	depends = intel-tbb
+	depends = oidn
 	source = luxmark-3.1-086c23ceefed54be27dfd038be6bc7a33984e75b.tar.bz2::https://github.com/LuxCoreRender/LuxMark/archive/086c23ceefed54be27dfd038be6bc7a33984e75b.tar.gz
 	source = https://bitbucket.org/luxrender/luxmark/downloads/scenes-v3.1beta3.zip
 	source = system_scenes.diff
@@ -34,7 +35,7 @@ pkgbase = luxmark
 	md5sums = 03d3d117dfd2f3a7f825e3ea7b68f045
 	md5sums = c4a378c08f105a84ef2f792370082cd6
 	md5sums = 6ba9b9888160cc06e3c3644e21d80e5a
-	md5sums = 4efb443e534d07812b17367adb3ffedd
+	md5sums = 600b59d4d15bc62ab6133641d39b70bf
 
 pkgname = luxmark
 

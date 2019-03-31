@@ -3,12 +3,12 @@ pkgname=luxmark
 pkgver=3.1
 _scenever=3.1beta3
 _pkgver=086c23ceefed54be27dfd038be6bc7a33984e75b
-pkgrel=5
+pkgrel=6
 pkgdesc="OpenCL benchmark tool"
 arch=('x86_64') # because of embree only x86_64 is supported
 url="http://www.luxrender.net/"
 license=('GPL3')
-depends=('boost-libs' 'embree' 'freetype2' 'freeglut' 'glew' 'opencl-icd-loader' 'libgl' 'libpng' 'openimageio' 'qt4' 'opencl-driver' 'libbcd' 'intel-tbb')
+depends=('boost-libs' 'embree' 'freetype2' 'freeglut' 'glew' 'opencl-icd-loader' 'libgl' 'libpng' 'openimageio' 'qt4' 'opencl-driver' 'libbcd' 'intel-tbb' 'oidn')
 makedepends=('cmake' 'boost' 'luxcorerender' 'mesa' 'opencl-headers' 'freeglut' 'eos_portable_archive')
 source=($pkgname-$pkgver-$_pkgver.tar.bz2::https://github.com/LuxCoreRender/LuxMark/archive/${_pkgver}.tar.gz \
         https://bitbucket.org/luxrender/luxmark/downloads/scenes-v${_scenever}.zip \
@@ -17,7 +17,7 @@ md5sums=('7ca734e249aa630703744ed6c77bb962'
          '03d3d117dfd2f3a7f825e3ea7b68f045'
          'c4a378c08f105a84ef2f792370082cd6'
          '6ba9b9888160cc06e3c3644e21d80e5a'
-         '4efb443e534d07812b17367adb3ffedd')
+         '600b59d4d15bc62ab6133641d39b70bf')
 
 prepare() {
   cd "$srcdir/LuxMark-$_pkgver"
