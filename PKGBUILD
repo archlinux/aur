@@ -3,8 +3,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sddm
-pkgver=0.18.0
-pkgrel=2
+pkgver=0.18.1
+pkgrel=1
 pkgdesc='QML based X11 and Wayland display manager'
 arch=('x86_64')
 url='https://github.com/sddm/sddm'
@@ -16,7 +16,7 @@ backup=('usr/share/sddm/scripts/Xsetup'
 provides=('display-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         sddm.sysusers sddm.tmpfiles)
-sha256sums=('9c50b6194f1b4dbf6e1a1b21f23c2c5e384871172985e192b91585986d38eec4'
+sha256sums=('07296fc747010a5dd58a45f16c3224b439997afad42566e4b043c841b1b71700'
             '9fce66f325d170c61caed57816f4bc72e9591df083e89da114a3bb16b0a0e60f'
             'db625f2a3649d6d203e1e1b187a054d5c6263cadf7edd824774d8ace52219677')
 
