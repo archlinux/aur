@@ -2,13 +2,14 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=persian-fonts
-pkgver=20180520
+pkgver=20190401
 pkgrel=1
 pkgdesc='Meta package to install all Persian fonts.'
 arch=(any)
 url='https://www.archlinux.org/'
 license=(GPL)
 depends=('borna-fonts'
+         'behdad-fonts'
          'gandom-fonts'
          'iran-nastaliq-fonts'
          'iranian-fonts'
@@ -19,6 +20,7 @@ depends=('borna-fonts'
          'sahel-fonts'
          'samim-fonts'
          'shabnam-fonts'
+         'shahab-fonts'
          'sina-fonts'
          'tanha-fonts'
          'vazir-fonts'
