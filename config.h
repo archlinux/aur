@@ -3,12 +3,12 @@
 #define CURSR " > "
 #define EMPTY "   "
 
-int dirorder    = 0; /* Set to 1 to sort by directory first */
+int dirorder    = 1; /* Set to 1 to sort by directory first */
 int mtimeorder  = 0; /* Set to 1 to sort by time modified */
-int icaseorder  = 0; /* Set to 1 to sort by ignoring case */
+int icaseorder  = 1; /* Set to 1 to sort by ignoring case */
 int idletimeout = 0; /* Screensaver timeout in seconds, 0 to disable */
 int showhidden  = 0; /* Set to 1 to show hidden files by default */
-int usecolor    = 0; /* Set to 1 to enable color attributes */
+int usecolor    = 1; /* Set to 1 to enable color attributes */
 char *idlecmd   = "rain"; /* The screensaver program */
 
 /* See curs_attr(3) for valid video attributes */
