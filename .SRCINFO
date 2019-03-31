@@ -1,23 +1,20 @@
 pkgbase = gitahead
-	pkgdesc = Understand your Git history!
+	pkgdesc = Graphical Git client that helps you understand and manage your source history
 	pkgver = 2.5.5
-	pkgrel = 1
-	url = http://gitahead.scitools.com/
+	pkgrel = 2
+	url = https://www.gitahead.com/
 	arch = x86_64
-	license = custom
+	license = MIT
 	makedepends = cmake
 	makedepends = ninja
-	depends = curl
+	depends = desktop-file-utils
+	depends = qt5-base
 	source = git+https://github.com/gitahead/gitahead#tag=v2.5.5
-	source = gitahead-license
 	source = gitahead.desktop
-	source = gitahead.png
-	source = gitahead.sh
+	source = gitahead.patch
 	sha256sums = SKIP
-	sha256sums = d71bfb48c954d213986816fc29478c7f80c8bd2dd10d2889bf51897d649eedd6
-	sha256sums = 6070ebf6752f55f8b7d8a79107ce491c3acf04310eeb9a8242b83cfb4df055f2
-	sha256sums = 66cb53fc57eb2ce2e6cd02ff392476fdfb91b723b76ef5da1856e9b5dc1b5c75
-	sha256sums = ba4e21c675ce7f49e6df27df1f29d1bb99c47679c4981657a2a4cf5d59930b4a
+	sha256sums = 022132e59ea2a1ca43df8ca1e20a1f851fca6e61afe4899814619ca241df7f19
+	sha256sums = 154bedf8ae6bc8300aa31f92b37acf04bbbc25f8a61a681b72ca360a640fc162
 
 pkgname = gitahead
 

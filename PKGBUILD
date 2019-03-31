@@ -2,48 +2,39 @@
 # Contributor: KillWolfVlad <github.com/KillWolfVlad>
 # Contributor: WaveHack <email@wavehack.net>
 # Contributor: Whovian9369 <Whovian9369@gmail.com>
+# Contributor: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=gitahead
-pkgrel=1
+pkgrel=2
 pkgver=2.5.5
-pkgdesc='Understand your Git history!'
-url='http://gitahead.scitools.com/'
+pkgdesc='Graphical Git client that helps you understand and manage your source history'
+url='https://www.gitahead.com/'
 arch=('x86_64')
-license=('custom')
-depends=('curl')
+license=('MIT')
+depends=('desktop-file-utils' 'qt5-base')
 makedepends=('cmake' 'ninja')
 source=(
   "git+https://github.com/gitahead/gitahead#tag=v${pkgver}"
-  "gitahead-license"
   "gitahead.desktop"
-  "gitahead.png"
-  "gitahead.sh"
+  "gitahead.patch"
 )
 sha256sums=('SKIP'
-            'd71bfb48c954d213986816fc29478c7f80c8bd2dd10d2889bf51897d649eedd6'
-            '6070ebf6752f55f8b7d8a79107ce491c3acf04310eeb9a8242b83cfb4df055f2'
-            '66cb53fc57eb2ce2e6cd02ff392476fdfb91b723b76ef5da1856e9b5dc1b5c75'
-            'ba4e21c675ce7f49e6df27df1f29d1bb99c47679c4981657a2a4cf5d59930b4a')
+            '022132e59ea2a1ca43df8ca1e20a1f851fca6e61afe4899814619ca241df7f19'
+            '154bedf8ae6bc8300aa31f92b37acf04bbbc25f8a61a681b72ca360a640fc162')
 
 prepare() {
   cd "$srcdir/gitahead"
+  patch --forward --strip=1 --input="../gitahead.patch"
+
   git submodule update --init --recursive
 }
 
 build() {
-  # Building openssl
-  echo "--- Building openssl ---"
-  cd "$srcdir/gitahead/dep/openssl/openssl"
-  ./config -fPIC
-  make
-
-  echo "--- Building gitahead ---"
-  # Build gitahead
   if [ ! -d "$srcdir/gitahead-build" ]; then
     mkdir "$srcdir/gitahead-build"
   fi
   cd "$srcdir/gitahead-build"
-  cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="${pkgdir}/opt/gitahead" ../gitahead
+  cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/usr/lib -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" ../gitahead
   ninja
 }
 
@@ -52,11 +43,30 @@ package() {
 
   ninja install
 
-  # TODO: Figure out how to only call GitAheads install routine
-  rm -rf "${pkgdir}/opt/gitahead/"{bin,include,lib,lib64,share}
+  rm -f "${pkgdir}"/usr/*.so.*
+  rm -f "${pkgdir}/usr/bin/cmark"
+  mv "${pkgdir}/usr/GitAhead" "${pkgdir}/usr/bin/gitahead"
 
-  install -D -m644 "${srcdir}/gitahead-license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m755 "${srcdir}/gitahead.sh" "${pkgdir}/usr/bin/gitahead"
+  rm -rf "${pkgdir}/usr/include"
+  rm -rf "${pkgdir}"/usr/share/{doc,man}
+  rm -rf "${pkgdir}"/usr/{lib,lib64}
+
+  mkdir -p "${pkgdir}/usr/lib/${pkgname}"
+  mv "${pkgdir}/usr/Plugins" "${pkgdir}/usr/lib/${pkgname}/plugins"
+
+  install -D -m644 "${pkgdir}/usr/Resources/GitAhead.iconset/icon_16x16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/gitahead.png"
+  install -D -m644 "${pkgdir}/usr/Resources/GitAhead.iconset/icon_32x32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/gitahead.png"
+  install -D -m644 "${pkgdir}/usr/Resources/GitAhead.iconset/icon_64x64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/gitahead.png"
+  install -D -m644 "${pkgdir}/usr/Resources/GitAhead.iconset/icon_128x128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/gitahead.png"
+  install -D -m644 "${pkgdir}/usr/Resources/GitAhead.iconset/icon_256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/gitahead.png"
+  install -D -m644 "${pkgdir}/usr/Resources/GitAhead.iconset/icon_512x512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/gitahead.png"
+  rm -rf "${pkgdir}/usr/Resources/GitAhead.iconset"
+
+  mkdir -p "${pkgdir}/usr/share/${pkgname}"
+  mv "${pkgdir}/usr/Resources" "${pkgdir}/usr/share/${pkgname}/resources"
+
+  rm -f "${pkgdir}"/usr/{git-credential-libsecret,indexer,qt.conf,relauncher}
+
+  install -D -m644 ../gitahead/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m644 "${srcdir}/gitahead.desktop" "${pkgdir}/usr/share/applications/gitahead.desktop"
-  install -D -m644 "${srcdir}/gitahead.png" "${pkgdir}/usr/share/pixmaps/gitahead.png"
 }
