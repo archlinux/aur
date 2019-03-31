@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://bettergram.io"
 license=('GPL')
 source=("${pkgname}-${pkgver}.zip::https://bettergram.io/downloads/${pkgname}-linux.zip")
-md5sums=('43ce37e5f1515a4ae0aaab84c96cf318')
+md5sums=('776e9f384687dd86a6ae7324c927ea94')
 
 package() {
   cd "$srcdir"
@@ -23,6 +23,7 @@ package() {
   install -m755 ${_pkgname} "${pkgdir}/opt/${pkgname}/"
 
   install -dm755 ${pkgdir}/usr/bin/
-  ln -sf ${pkgdir}/opt/${pkgname}/${_pkgname} ${pkgdir}/usr/bin/${pkgname}
+  #ln -sf ${pkgdir}/opt/${pkgname}/${_pkgname} ${pkgdir}/usr/bin/${pkgname}
+  ln -sf /opt/${pkgname}/${_pkgname} ${pkgdir}/usr/bin/${pkgname}
   chmod 755 ${pkgdir}/opt/${pkgname}/${_pkgname}
 }
