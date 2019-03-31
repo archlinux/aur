@@ -5,8 +5,8 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-git
-pkgver=5.1.1.r140.gd197d8ab
-pkgrel=1
+pkgver=5.1.1.r160.gd37e6d40
+pkgrel=2
 pkgdesc="A library-based package manager with dependency support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('archlinux-keyring' 'bash' 'curl' 'gpgme' 'libarchive'
          'pacman-mirrorlist')
 optdepends=('pacman-contrib: various helper utilities'
-            'xdelta3: delta support in repo-add')
+            'perl-locale-gettext: translation support in makepkg-template')
 makedepends=('git' 'asciidoc' 'meson')
 checkdepends=('python' 'fakechroot')
 provides=("pacman=${pkgver%.*.*}")
@@ -28,10 +28,10 @@ source=("git+https://git.archlinux.org/pacman.git"
         "pacman.conf.arm"
         "makepkg.conf")
 sha256sums=('SKIP'
-            '0c087d26e80333267391a6e9e34b95a2ffb103cb9391cb53cc5d97ad954af774'
-            'c5a3ec55f9d1bc52e5e5b127f76b7b16b79738268691a3e1d842359033e460da'
-            '2d17478fd607c75e396fe10ef2add8bc9fcc12054810fb6f4409dfb70e01989e'
-            '3159b78d6112f4e8906945d1adc1f33b6186d566b54a5976e3a684597c082942')
+            '059121e28a55a7cdcc726ff95455b94f327f65a5b75d98fa7d3cdb81989c42a8'
+            '1b293a6096c996c930e2eac3fbc4827ab3d99c8cc7a7ae842ce747dba47e1cc0'
+            '24dc59b5806e9d4cd4661db7631ee4138780ebfc1d6cb23927181e50d94073ea'
+            'd69bbcba75bc1d43fa8efed03ee43f06189ef947fea070e09d2110b6800d56f2')
 
 pkgver() {
   cd pacman
