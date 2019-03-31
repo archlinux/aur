@@ -9,7 +9,7 @@ license=('custom: Unlicense')
 conflicts=('akmey')
 source=("https://github.com/akmey/akmey-client/releases/download/v$pkgver-alpha/akmey-client-linux-amd64")
 noextract=('akmey-client-linux-amd64')
-sha512sums=('d2311d149b0d93a83ec7130261e0f732ac32151ee8df2cf8d8f46bea2686b8ba468a8cb488c5a3385b969a5adf6a6db894495cd9231d82df98bd2c7900f4cdf1')
+sha512sums=('9354870bfe9b5d837a955b7fdd50f9f1fd1e380f2176b163a87393e58ef765beef4a088960cab493bb3f909678be98b78171d676fc553f8ebbcf62a2d1708c0d')
 
 warn_build_references() {
     : # I like __FILE__ and don't consider build references to be a problem
