@@ -1,7 +1,7 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=resvg
-pkgver=0.5.0
-pkgrel=4
+pkgver=0.6.1
+pkgrel=1
 pkgdesc='SVG rendering library and CLI'
 arch=(i686 x86_64)
 url="https://github.com/RazrFalcon/$pkgname"
@@ -14,7 +14,7 @@ optdepends=(
 )
 makedepends=(cargo qt5-base qt5-tools kio cairo pango cmake extra-cmake-modules)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f9d0dc31de9b6f516c0c5350f22142ab8af6a2d957a729494bb403cff32ba611')
+sha256sums=('63786673eb6848e82c25c7f76e54d962d2da623e322efc45ed802837fef26c9c')
 
 build() {
 	cd "$pkgname-$pkgver"
