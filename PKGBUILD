@@ -19,12 +19,12 @@ md5sums=(1bed3863ded3f695b6fe65ec02e7c0df
          )
 
 build() {
-  cd $startdir/src/htmlwidget
+  cd ${srcdir}/htmlwidget
   ./configure --prefix=/usr --with-tcl=/usr/lib --with-tk=/usr/lib
   make
 }
 
 package() {
-  cd $startdir/src/htmlwidget
+  cd ${srcdir}/htmlwidget
   make DESTDIR="${pkgdir}" install
 }
