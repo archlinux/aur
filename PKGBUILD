@@ -3,7 +3,7 @@
 # Contributor: <jnbek1972 at gmail dot com>
 # Contributor: <raku at rakutiki.tv>
 pkgname=waterfox-git
-pkgver=56.2.7+61bdb81a2bba
+pkgver=56.2.8+74fd7c3a2b50
 pkgrel=1
 pkgdesc="64-Bit optimized Firefox fork, no data collection, allows unsigned extensions"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('gtk2' 'gtk3' 'mozilla-common' 'libxt' 'startup-notification'
          'dbus-glib' 'alsa-lib' 'ffmpeg' 'desktop-file-utils' 'hicolor-icon-theme'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
-             'xorg-server-xvfb' 'libpulse' 'inetutils' 'rust' 'autoconf2.13' 'clang' 'llvm' 'cargo')
+             'xorg-server-xvfb' 'libpulse' 'inetutils' 'rust<=1:1.32.0-2' 'autoconf2.13' 'clang' 'llvm' 'cargo')
 provides=("waterfox=$pkgver")
 conflicts=('waterfox' 'waterfox-bin')
 install=waterfox.install
@@ -31,7 +31,7 @@ source=(git://github.com/MrAlex94/Waterfox
 		default32.png
 		default48.png)
 sha512sums=('SKIP'
-            '0eb1c5a89b17585126e3cd374c0b61970f97bb2d3c3d63052cf6b632b71ac5a2aa852dc86ac07a3a5b7dfe5e9177014fc5746e0281eb2f71061465279a32eda9'
+            '4b8edfb97146237721a789ef8a58efc7e2e3e107ed507681891bcae6292669186d58c263e5cf7967e933ed42946261cec234d489805f26eb865afd433f3b23e8'
             '93937770fa66d63f69c6283ed1f19ac83b9c9c4f5cc34e79d11ac31676462be9f7f37bcd35e785ceb8c7d234a09236d1f26b21e551b622854076fb21bcda44d3'
             '266989b0c4a37254a40836a6193284a186230b48716907e4d249d73616f58382b258c41baa8c1ffc98d405f77bfafcd3438f749edcf391c7bd22185399adf4bd'
             '01f3ada0d121bc8c5a698356aae5f8d5374b3bd5a1023f02ebc9ec6600b4652f4ab7d7ef339df268bfe5054d2a58320d91e79af31e6609b74ba924aef62116e0'
@@ -47,7 +47,8 @@ sha512sums=('SKIP'
 PKGEXT='.pkg.tar'   
 
 # use pgo?
-_pgo=1
+# don't, it's broken again...and my patch doesn't fix it, something makes the build puke
+_pgo=0
            
 pkgver() {
 	cd Waterfox
@@ -65,11 +66,12 @@ prepare() {
   # alter the install dir
   patch -Np1 -i ../firefox-install-dir.patch
 
-  # these fix PGO partially
-  patch -Np1 -i ../clang-profile.patch
-
-  if [[ $CARCH = x86_64 ]] && [[ $_pgo = 1 ]]; then
+  if [[ $_pgo = 1 ]]; then
+    # these fix PGO but something recently broke the tests
+    patch -Np1 -i ../clang-profile.patch
+    
     echo "mk_add_options PROFILE_GEN_SCRIPT='EXTRA_TEST_ARGS=10 \$(MAKE) -C \$(MOZ_OBJDIR) pgo-profile-run'" >>.mozconfig 
+    echo "export MOZ_PGO=1" >>.mozconfig
 	sed -i 's/disable-tests/enable-tests/g' .mozconfig
   fi
   
@@ -79,12 +81,13 @@ prepare() {
 		cp "${srcdir}/default$i.png" "${srcdir}/Waterfox/browser/branding/unofficial/default$i.png"
 	  fi
   done
-
-
+  
   mkdir -p "$srcdir/path"
 }
 
 build() {
+  msg2 'If you do not wish to use rust 1.32 or lower, disable it in your mozconfig first!'
+	
   cd Waterfox
 
   export PATH="$srcdir/path:$PATH"
@@ -92,10 +95,15 @@ build() {
 
   if [[ $CARCH = x86_64 ]] && [[ $_pgo = 1 ]]; then
     msg2 'PGO build is selected'
-    #xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24"
+    
+	# LTO needs more open files
+	ulimit -n 4096
+
     # this requires you to build within an X console
     # you may have to close waterfox when the profile generating version of it loads up
-    make -j -f client.mk profiledbuild
+    make -j -f client.mk profiledbuild    
+	#xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
+	#./mach buildsymbols
   else
     msg2 'Non-PGO build is selected or your architecture is not x86_64'
     make -j -f client.mk build
