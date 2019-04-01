@@ -2,7 +2,7 @@
 
 pkgname=tinyemu
 pkgver=2019_02_10
-pkgrel=2
+pkgrel=3
 pkgdesc='RISC-V system emulator'
 arch=(x86_64)
 groups=(risc-v)
@@ -16,7 +16,7 @@ sha256sums=('0a2ded13a51bc3d6e69afd29c6a4709b327256ea36e562a5d9fa253cd224fa5b')
 prepare() {
   local m="$pkgname-${pkgver//_/-}/Makefile"
   setconf "$m" bindir="/usr/bin"
-  setconf "$m" CFLAGS="-O2 -Wall -g -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -MMD $CFLAGS -w"
+  setconf "$m" CFLAGS="-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -MMD $CFLAGS -w"
   setconf "$m" LDFLAGS="$LDFLAGS"
 }
 
