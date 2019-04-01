@@ -1,0 +1,62 @@
+diff -Naur -b '--to-file=e4rat-lite-patched/src/' -x '*.o' -x '*.tu' e4rat-lite/src/device.cc e4rat-lite-patched/src/device.cc
+--- src/device.cc    
++++ src/device.cc 
+@@ -32,6 +32,8 @@
+
+ #include <boost/lexical_cast.hpp>
+
++#include <sys/sysmacros.h>
++
+ #define BLOCKS_PER_GROUP(fs)      (fs->super->s_blocks_per_group)
+ #define BLOCKS_PER_FLEX(fs)       (BLOCKS_PER_GROUP(fs) << fs->super->s_log_groups_per_flex)
+ #define FREE_BLOCKS_PER_GROUP(fs) ( BLOCKS_PER_GROUP(fs)        \
+
+diff -Naur -b '--to-file=e4rat-lite-patched/src/' -x '*.o' -x '*.tu' e4rat-lite/src/e4rat-collect.cc e4rat-lite-patched/src/e4rat-collect.cc
+--- src/e4rat-collect.cc 
++++ src/e4rat-collect.cc 
+@@ -45,6 +45,9 @@
+ 
+ #include <boost/foreach.hpp>
+ 
++#include <sys/sysmacros.h>
++
++
+ #define PID_FILE "/dev/.e4rat-collect.pid"
+ 
+ bool isAuditDaemonRunning()
+
+--- src/listener.cc 
++++ src/listener.cc  
+@@ -43,6 +43,8 @@
+
+ #include <fstream>
+
++#include <sys/sysmacros.h>
++
+ std::string getProcessName(pid_t pid)
+ {
+     std::string comm;
+--- src/cmake/Findaudit.cmake
++++ src/cmake/Findaudit.cmake
+@@ -1,7 +1,7 @@
+ FIND_PATH(AUDIT_INCLUDE_DIR libaudit.h /usr/include
+     /usr/local/include)
+ 
+-FIND_LIBRARY(AUDIT_LIBRARY NAMES libaudit.a PATH /usr/lib /usr/local/lib) 
++FIND_LIBRARY(AUDIT_LIBRARY NAMES audit PATH /usr/lib /usr/local/lib) 
+ 
+ IF (AUDIT_INCLUDE_DIR AND AUDIT_LIBRARY)
+    SET(AUDIT_FOUND TRUE)
+
+--- src/cmake/Findauparse.cmake	
++++ src/cmake/Findauparse.cmake	
+@@ -1,7 +1,7 @@
+ FIND_PATH(AUPARSE_INCLUDE_DIR auparse.h /usr/include
+     /usr/local/include)
+ 
+-FIND_LIBRARY(AUPARSE_LIBRARY NAMES libauparse.a PATH /usr/lib /usr/local/lib) 
++FIND_LIBRARY(AUPARSE_LIBRARY NAMES auparse PATH /usr/lib /usr/local/lib) 
+ 
+ IF (AUPARSE_INCLUDE_DIR AND AUPARSE_LIBRARY)
+    SET(AUPARSE_FOUND TRUE)
+

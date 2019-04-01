@@ -1,0 +1,11 @@
+--- src/logging.hh
++++ src/logging.hh
+@@ -93,7 +93,7 @@
+ #define dump_log(...) logger.write(__VA_ARGS__)
+ 
+ #ifdef DEBUG_ENABLED
+-    #define debug(format,args...) dump_log(Debug, "%s:%d in %s(): "format, __FILE__, __LINE__, __FUNCTION__, ## args)
++    #define debug(format, ...) logger.write(Debug, "%s:%d in %s(): " format, __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__)
+ #else
+     #define debug(format,args...)
+ #endif
