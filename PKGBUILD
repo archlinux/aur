@@ -23,11 +23,12 @@ build() {
   ./autogen.sh \
     --prefix='/usr' \
     --enable-parallel \
-    --enable-plank \
     --enable-telegram \
+    --disable-plank \
     --disable-cinnamon \
     --disable-flashback \
     --disable-xfce \
+    --disable-openbox-3 \
     --disable-mate
 
   make
