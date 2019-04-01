@@ -12,7 +12,7 @@
 
 pkgname=llvm-git
 _pkgname='llvm'
-pkgver=9.0.0_r313125.05f1dd93627
+pkgver=9.0.0_r313211.e8c3136994b
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://llvm.org/'
