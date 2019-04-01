@@ -1,6 +1,6 @@
 pkgbase = mosix
-	pkgdesc = MOSIX can manage Linux clusters and multi-cluster private Clouds.
-	pkgver = 4.3.1
+	pkgdesc = MOSIX is a management system for parallel computing on Linux clusters and multi-cluster clouds.
+	pkgver = 4.4.4
 	pkgrel = 1
 	url = http://www.mosix.cs.huji.ac.il
 	arch = x86_64
@@ -10,9 +10,10 @@ pkgbase = mosix
 	conflicts = mosix-tools
 	conflicts = linux-mosix
 	conflicts = linux-mosix-headers
-	source = http://www.mosix.cs.huji.ac.il/mos4/MOSIX-4.3.1.tbz
+	source = http://www.mosix.cs.huji.ac.il/mos4/MOSIX-4.4.4.tbz
 	source = mosix.service
-	sha256sums = cd8b4419382e01430e7545a5c2232652d505efca87026a13c36ca3a1904220f2
+	validpgpkeys = DE08F924EEE93832DABC642CA8DC761B1C0C0CFC
+	sha256sums = 68fb4ed239734d532cbe4868b73b0f9a388b35caf8e020d5032acfd53b673cfa
 	sha256sums = b216039d8eefab0e54200ef1a393f8f10c1aa7d630d1e83865c27f39dd45b8fd
 
 pkgname = mosix
