@@ -1,7 +1,7 @@
 # Maintainer: Fabio Sussarellu <sussarellu.fabio@gmail.com>
 pkgname=screen-sleep
-pkgver=0.1
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc='Simple tool for shut down PC screen'
 arch=('any')
 url='https://gitlab.com/Fabi0Z/screen-sleep'
