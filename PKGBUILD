@@ -3,8 +3,8 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.2.679.r1682
-_gwtver=2.8.1
+pkgver=1.2.1330.r238
+_gwtver=2.8.2
 _ginver=2.1.2
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
@@ -23,7 +23,7 @@ source=("git+https://github.com/rstudio/rstudio.git"
         "https://s3.amazonaws.com/rstudio-buildtools/gwt-${_gwtver}.zip")
 sha256sums=('SKIP'
             'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
-            '0b7af89fdadb4ec51cdb400ace94637d6fe9ffa401b168e2c3d372392a00a0a7')
+            '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b')
 noextract=("gin-${_ginver}.zip")
 
 pkgver() {

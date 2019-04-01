@@ -40,10 +40,10 @@ pkgbase = rstudio-desktop-git
 	noextract = gin-2.1.2.zip
 	source = git+https://github.com/rstudio/rstudio.git
 	source = https://s3.amazonaws.com/rstudio-buildtools/gin-2.1.2.zip
-	source = https://s3.amazonaws.com/rstudio-buildtools/gwt-2.8.1.zip
+	source = https://s3.amazonaws.com/rstudio-buildtools/gwt-2.8.2.zip
 	sha256sums = SKIP
 	sha256sums = b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a
-	sha256sums = 0b7af89fdadb4ec51cdb400ace94637d6fe9ffa401b168e2c3d372392a00a0a7
+	sha256sums = 970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b
 
 pkgname = rstudio-desktop-git
 
