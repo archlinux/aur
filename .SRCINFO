@@ -1,13 +1,17 @@
-pkgbase = pkgbase
-	pkgdesc = Refreshed new Adwaita theme with creamy colors and minor changes. 
-	pkgver = 0.1
+pkgbase = iblu
+	pkgdesc = Intel Black Light Utility, written in python, allows you to control the screen brightness (iX processors family), via command line interface.
+	pkgver = 0.9
 	pkgrel = 1
-	url = https://github.com/murat-cileli/adwaita-creamy
+	url = https://git.eigenlab.org/sbiego/iblu
+	install = iblu.install
+	arch = i686
 	arch = x86_64
-	license = MIT
-	provides = adwaita-creamy
-	source = git+https://github.com/murat-cileli/adwaita-creamy.git
-	sha256sums = SKIP
+	arch = aarch64
+	license = GPLv3
+	depends = python
+	provides = iblu
+	source = https://git.eigenlab.org/sbiego/iblu/-/archive/v0.9/iblu-v0.9.tar.gz
+	sha256sums = 604aec80a03d72c34b5ca807fd2715fedbe73651010d489f43a4c5881ff87d52
 
-pkgname = adwaita-creamy
+pkgname = iblu
 

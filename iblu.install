@@ -1,0 +1,24 @@
+post_install() {
+	
+	### UNCOMMENT the following lines to CREATE and ENABLE the systemd unit
+	# it's MANDATORY execute those to run iblu
+
+	# iblu UNIT > /usr/lib/systemd/system/iblu.service; #creates the systemd unit file
+	# systemctl start iblu.service; #enabling the service
+	# systemctl enable iblu.service; #enabling the service
+	
+	
+	echo -e "\n\tIBLU is ALMOST INSTALLED! \n\tPlease run the following commands:\n\n\t # iblu UNIT > /usr/lib/systemd/system/iblu.service \t#creates the systemd unit file \n\t # systemctl start iblu.service \t\t\t\t#starting the service\n\t # systemctl enable iblu.service \t\t\t\t#enabling the service\n"
+}
+
+
+
+
+
+################################################################################################
+# read -p "Do you want to do it now (y/n)?" choice
+# case "$choice" in 
+# y|Y ) iblu UNIT > /usr/lib/systemd/system/iblu.service; systemctl start iblu.service; systemctl enable iblu.service;;
+# n|N ) echo "You can always to it running the following commands:\n\n\t # iblu UNIT > /usr/lib/systemd/system/iblu.service \t#creates the systemd unit file \n\t # systemctl start iblu.service \t\t\t\t#starting the service\n\t # systemctl enable iblu.service \t\t\t\t#enabling the service\n";;
+# * ) echo "invalid";;
+# esac
