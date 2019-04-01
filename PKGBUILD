@@ -1,6 +1,6 @@
 # Maintainer: theflameemperor <un.own.cry@gmail.com>
 pkgname=ygopro-koishipro
-pkgver=2019.3.22
+pkgver=2019.3.30
 pkgrel=1
 _pkgrel=1
 zipFile=KoishiPro-linux-full-${pkgver}.zip
@@ -12,7 +12,7 @@ depends=('mono' 'libevent')
 makedepends=('patchelf')
 source=("https://github.com/purerosefallen/ygopro/releases/download/$pkgver/$zipFile")
 noextract=($zipFile)
-sha256sums=('d92133ec4391413a30fc4d5819ff7200366264ce6e82b0800f43e6d85ab2ab8f')
+sha256sums=('073b68fb199269f2219a72506c4b59bb66cf2c433146379fbad11c21f710ddec')
 options=('!strip' 'emptydirs')
 
 prepare(){
