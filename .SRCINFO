@@ -11,6 +11,6 @@ pkgbase = ttf-electroharmonix
         source = https://git.syskiller.io/Stykers/fonts/raw/master/electroharmonix.ttf
         source = https://git.syskiller.io/Stykers/fonts/raw/master/electroharmonix.otf
         md5sums = fd2bf4b7a257640325d09d1be945e924
-        md5sums = cc1b1063e4da23dc2db17059270b8fc1
+        md5sums = 8dbc0398858f1d8a59337beb4084563c
 
 pkgname = ttf-electroharmonix

@@ -12,7 +12,7 @@ source=('https://git.syskiller.io/Stykers/fonts/raw/master/electroharmonix.ttf'
         'https://git.syskiller.io/Stykers/fonts/raw/master/electroharmonix.otf')
 install=${pkgname}.install
 md5sums=('fd2bf4b7a257640325d09d1be945e924'
-         'cc1b1063e4da23dc2db17059270b8fc1')
+         '8dbc0398858f1d8a59337beb4084563c')
 
 package() {
   install -Dm644 ${srcdir}/electroharmonix.otf ${pkgdir}/usr/share/fonts/OTF/electroharmonix.otf
