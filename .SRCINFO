@@ -1,0 +1,22 @@
+pkgbase = go1.13
+	pkgver = 1.13
+	pkgrel = 1
+	epoch = 2
+	url = https://golang.org/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	source = https://storage.googleapis.com/golang/go1.12.1.src.tar.gz
+	source = default-buildmode-pie.patch
+	sha256sums = 0be127684df4b842a64e58093154f9d15422f1405f1fcff4b2c36ffc6a15818a
+	sha256sums = 9d2f0d201d4e002d74f548cc82bd131139bab5dd62191004c71dd430fdc1666d
+
+pkgname = go1.13
+	pkgdesc = Core compiler tools for the Go programming language
+
+pkgname = go1.13-pie
+	pkgdesc = Core compiler tools for the Go programming language (with PIE enabled by default)
+	provides = go
+	conflicts = go
+
