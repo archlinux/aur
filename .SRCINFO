@@ -1,0 +1,24 @@
+pkgbase = solo-python
+	pkgdesc = Tools and Python library for SoloKeys.
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/solokeys/solo-python
+	arch = any
+	license = Apache
+	license = MIT
+	makedepends = python-pip
+	makedepends = flit
+	depends = python
+	depends = python-click>=7.0
+	depends = python-cryptography
+	depends = python-ecdsa
+	depends = python-fido2
+	depends = python-intelhex
+	depends = python-pyserial
+	depends = python-pyusb
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/s/solo-python/solo-python-0.0.9.tar.gz
+	sha256sums = 0de0105e53637c6ba8753dcc02cd504f6424c34cc77373219793b5c0d7a832c4
+
+pkgname = solo-python
+
