@@ -1,6 +1,6 @@
 pkgbase = mps-youtube-git
 	pkgdesc = Terminal based YouTube jukebox with playlist management - develop version
-	pkgver = 0.2.8.+
+	pkgver = 0.2.8.develop
 	pkgrel = 1
 	url = https://github.com/mps-youtube/mps-youtube
 	install = mps-youtube-git.install

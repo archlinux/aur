@@ -1,8 +1,8 @@
 pkgname=mps-youtube-git
-pkgver=0.2.8.+
+pkgver=0.2.8.develop
 pkgrel=1
 
-pkgdesc="Terminal based YouTube jukebox with playlist management - develop version"
+pkgdesc="Terminal based YouTube jukebox with playlist management - git develop release"
 url='https://github.com/mps-youtube/mps-youtube'
 arch=('any')
 license=('GPL3')
@@ -20,11 +20,6 @@ install=mps-youtube-git.install
 source=('git+https://github.com/mps-youtube/mps-youtube.git')
 
 md5sums=('SKIP')
-
-pkgver() {
-	cd mps-youtube
-	git describe --tags --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-}
 
 package() {
 	cd mps-youtube
