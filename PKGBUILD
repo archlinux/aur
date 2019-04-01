@@ -2,8 +2,8 @@
 
 pkgname=rua
 pkgver=0.13.1
-pkgrel=1
-pkgdesc='secure jailed AUR helper in rust'
+pkgrel=2
+pkgdesc='secure AUR helper written in Rust'
 url='https://github.com/vn971/rua'
 source=("https://github.com/vn971/rua/archive/${pkgver}.tar.gz")
 arch=('x86_64' 'i686')
