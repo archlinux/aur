@@ -23,7 +23,7 @@
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
-pkgver=18.2rc1pre110
+pkgver=18.2rc1pre112
 _major=18.1
 pkgrel=1
 _codename=Leia
@@ -71,106 +71,106 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   cpuinfo
-  00-fix.building.with.mariadb.patch::https://github.com/wsnipex/xbmc/commit/cd20c8eb8a0394db1f028b118c4ca9b91b7e746a.patch
-  01-PR14488.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/14488.patch
-  02-PR14665.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/14665.patch
-  03-PR15195.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15195.patch
-  04-PR15434.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15434.patch
-  05-PR15477.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15477.patch
-  06-PR15479.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15479.patch
-  07-PR15480.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15480.patch
-  08-PR15489.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15489.patch
-  09-PR15491.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15491.patch
-  10-PR15499.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15499.patch
-  11-PR15506.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15506.patch
-  12-PR15510.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15510.patch
-  13-PR15516.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15516.patch
-  14-PR15518.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15518.patch
-  15-PR15535.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15535.patch
-  16-PR15537.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15537.patch
-  17-PR15543.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15543.patch
-  18-PR15553.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15553.patch
-  19-PR15556.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15556.patch
-  20-PR15557.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15557.patch
-  21-PR15574.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15574.patch
-  22-PR15580.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15580.patch
-  23-PR15582.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15582.patch
-  24-PR15586.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15586.patch
-  25-PR15589.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15589.patch
-  26-PR15591.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15591.patch
-  27-PR15595.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15595.patch
-  28-PR15596.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15596.patch
-  29-PR15598.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15598.patch
-  30-PR15600.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15600.patch
-  31-PR15602.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15602.patch
-  32-PR15605.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15605.patch
-  33-PR15614.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15614.patch
-  34-PR15615.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15615.patch
-  35-PR15619.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15619.patch
-  36-PR15621.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15621.patch
-  37-PR15622.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15622.patch
-  38-PR15624.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15624.patch
-  39-PR15625.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15625.patch
-  40-PR15630.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15630.patch
-  41-PR15631.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15631.patch
-  42-PR15633.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15633.patch
-  43-PR15634.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15634.patch
-  44-PR15635.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15635.patch
-  45-PR15636.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15636.patch
-  46-PR15640.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15640.patch
-  47-PR15641.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15641.patch
-  48-PR15643.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15643.patch
-  49-PR15646.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15646.patch
-  50-PR15649.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15649.patch
-  51-PR15653.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15653.patch
-  52-PR15654.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15654.patch
-  53-PR15657.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15657.patch
-  54-PR15661.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15661.patch
-  55-PR15675.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15675.patch
-  56-PR15678.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15678.patch
-  57-PR15683.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15683.patch
-  58-PR15685.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15685.patch
-  59-PR15689.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15689.patch
-  60-PR15697.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15697.patch
-  61-PR15701.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15701.patch
-  62-PR15702.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15702.patch
-  63-PR15713.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15713.patch
-  64-PR15714.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15714.patch
-  65-PR15716.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15716.patch
-  66-PR15719.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15719.patch
-  67-PR15732.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15732.patch
-  68-PR15738.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15738.patch
-  69-PR15706.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15706.patch
-  70-PR15707.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15707.patch
-  71-PR15711.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15711.patch
-  72-PR15753.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15753.patch
-  73-PR15741.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15741.patch
-  74-PR15755.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15755.patch
-  75-PR15756.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15756.patch
-  76-PR15658.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15658.patch
-  77-PR15585.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15585.patch
-  78-PR15766.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15766.patch
-  79-PR15730.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15730.patch
-  80-PR15647.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15647.patch
-  81-PR15728.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15728.patch
-  82-PR15769.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15769.patch
-  83-PR15712.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15712.patch
-  84-PR15744.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15744.patch
-  85-PR15776.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15776.patch
-  86-PR15780.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15780.patch
-  87-PR15644.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15644.patch
-  88-PR15779.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15779.patch
-  89-PR15782.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15782.patch
-  90-PR15773.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15773.patch
-  91-PR15642.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15642.patch
-  92-PR15790.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15790.patch
-  93-PR15787.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15787.patch
-  94-PR15593.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15593.patch
-  95-PR15798.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15798.patch
-  96-PR15804.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15804.patch
-  97-PR15792.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15792.patch
-  98-PR15810.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15810.patch
-  99-PR15778.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15778.patch
+  000-fix.building.with.mariadb.patch::https://github.com/wsnipex/xbmc/commit/cd20c8eb8a0394db1f028b118c4ca9b91b7e746a.patch
+  001-PR14488.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/14488.patch
+  002-PR14665.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/14665.patch
+  003-PR15195.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15195.patch
+  004-PR15434.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15434.patch
+  005-PR15477.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15477.patch
+  006-PR15479.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15479.patch
+  007-PR15480.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15480.patch
+  008-PR15489.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15489.patch
+  009-PR15491.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15491.patch
+  010-PR15499.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15499.patch
+  011-PR15506.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15506.patch
+  012-PR15510.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15510.patch
+  013-PR15516.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15516.patch
+  014-PR15518.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15518.patch
+  015-PR15535.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15535.patch
+  016-PR15537.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15537.patch
+  017-PR15543.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15543.patch
+  018-PR15553.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15553.patch
+  019-PR15556.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15556.patch
+  020-PR15557.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15557.patch
+  021-PR15574.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15574.patch
+  022-PR15580.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15580.patch
+  023-PR15582.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15582.patch
+  024-PR15586.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15586.patch
+  025-PR15589.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15589.patch
+  026-PR15591.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15591.patch
+  027-PR15595.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15595.patch
+  028-PR15596.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15596.patch
+  029-PR15598.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15598.patch
+  030-PR15600.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15600.patch
+  031-PR15602.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15602.patch
+  032-PR15605.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15605.patch
+  033-PR15614.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15614.patch
+  034-PR15615.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15615.patch
+  035-PR15619.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15619.patch
+  036-PR15621.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15621.patch
+  037-PR15622.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15622.patch
+  038-PR15624.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15624.patch
+  039-PR15625.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15625.patch
+  040-PR15630.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15630.patch
+  041-PR15631.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15631.patch
+  042-PR15633.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15633.patch
+  043-PR15634.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15634.patch
+  044-PR15635.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15635.patch
+  045-PR15636.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15636.patch
+  046-PR15640.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15640.patch
+  047-PR15641.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15641.patch
+  048-PR15643.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15643.patch
+  049-PR15646.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15646.patch
+  050-PR15649.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15649.patch
+  051-PR15653.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15653.patch
+  052-PR15654.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15654.patch
+  053-PR15657.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15657.patch
+  054-PR15661.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15661.patch
+  055-PR15675.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15675.patch
+  056-PR15678.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15678.patch
+  057-PR15683.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15683.patch
+  058-PR15685.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15685.patch
+  059-PR15689.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15689.patch
+  060-PR15697.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15697.patch
+  061-PR15701.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15701.patch
+  062-PR15702.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15702.patch
+  063-PR15713.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15713.patch
+  064-PR15714.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15714.patch
+  065-PR15716.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15716.patch
+  066-PR15719.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15719.patch
+  067-PR15732.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15732.patch
+  068-PR15738.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15738.patch
+  069-PR15706.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15706.patch
+  070-PR15707.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15707.patch
+  071-PR15711.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15711.patch
+  072-PR15753.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15753.patch
+  073-PR15741.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15741.patch
+  074-PR15755.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15755.patch
+  075-PR15756.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15756.patch
+  076-PR15658.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15658.patch
+  077-PR15585.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15585.patch
+  078-PR15766.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15766.patch
+  079-PR15730.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15730.patch
+  080-PR15647.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15647.patch
+  081-PR15728.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15728.patch
+  082-PR15769.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15769.patch
+  083-PR15712.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15712.patch
+  084-PR15744.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15744.patch
+  085-PR15776.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15776.patch
+  086-PR15780.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15780.patch
+  087-PR15644.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15644.patch
+  088-PR15779.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15779.patch
+  089-PR15782.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15782.patch
+  090-PR15773.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15773.patch
+  091-PR15642.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15642.patch
+  092-PR15790.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15790.patch
+  093-PR15787.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15787.patch
+  094-PR15593.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15593.patch
+  095-PR15798.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15798.patch
+  096-PR15804.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15804.patch
+  097-PR15792.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15792.patch
+  098-PR15810.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15810.patch
+  099-PR15778.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15778.patch
   100-PR15795.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15795.patch
   101-PR15667.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15667.patch
   102-PR15783.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15783.patch
@@ -182,6 +182,8 @@ source=(
   108-PR15691.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15691.patch
   109-PR15774.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15774.patch
   110-PR15835.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15835.patch
+  111-PR15813.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15813.patch
+  112-PR15842.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15842.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -312,7 +314,9 @@ sha256sums=('bc1ef0e271d0b6ce2e1be7546ad4f7d330930d7631cc19a9bbc5f75ddc586166'
             '128d6a5e862151f567bf2d743b2d067b51c50d56474658dc61c1f7378d3a7370'
             '01eda49806e7429d3fa8166a88c8a1718f9a118f9093c4588358da5aea1eb956'
             'ef8601bb1f41fb23eb24de91faac6503d4ce6702f406a4581827ff6f946906b6'
-            '85f6c11ca8c6ac4caf0e6055a0a2e5a4481ef78f573ed9ac24e0ef940e750e36')
+            '85f6c11ca8c6ac4caf0e6055a0a2e5a4481ef78f573ed9ac24e0ef940e750e36'
+            'b369a95d8cb40995f81c737dfbd6bedb1f04721e2d9ac4b1503f8254ff7384d1'
+            'f973af66c943c60f402a118c1be905904860e36b8392d4c01df1abc4c6d50f76')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
