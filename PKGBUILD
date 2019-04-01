@@ -6,7 +6,7 @@
 
 set -u
 pkgname='redir'
-pkgver='3.2'
+pkgver='3.3'
 pkgrel='1'
 pkgdesc='Redirect TCP connections'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ depends=('glibc')
 _verwatch=("${url}/releases.atom" "\s\+<title>${pkgname} v\([0-9.]\+\)</title>.*" 'f') # RSS
 #source=("http://sammy.net/~sammy/hacks/${pkgname}-${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/troglobit/redir/archive/v${pkgver}.tar.gz")
-sha256sums=('968eef042ca0fa7a7d6aa0d70da5a5df45d411f239beb8b2a6e9fdaf1da497b1')
+sha256sums=('7311731097aabd390bd4d8f390980278b16b25d0bae8e21a9e768cd824f846f7')
 
 build() {
   set -u
