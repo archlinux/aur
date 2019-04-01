@@ -1,36 +1,50 @@
-# Maintainer: Kars Wang <jaklsy AT gmail.com>
+# Contributor: Anonymous
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-pod-weaver'
-pkgver=4.012
-pkgrel=1
-pkgdesc='weave together a Pod document from an outline'
-_dist='Pod-Weaver'
+pkgver='4.015'
+pkgrel='1'
+pkgdesc="weave together a Pod document from an outline"
 arch=('any')
-url="https://metacpan.org/release/$_dist"
-license=('PerlArtistic')
-depends=('perl' 'perl-namespace-autoclean>=0' 'perl-params-util>=0' 'perl-config-mvp>=2' 'perl-log-dispatchouli>=1.100710' 'perl-datetime>=0' 'perl-encode>=0' 'perl-moose>=0' 'perl-mixin-linewise>=0.103' 'perl-module-runtime>=0' 'perl-string-formatter>=0.100680' 'perl-list-moreutils>=0' 'perl-config-mvp-reader-ini>=0' 'perl-string-flogger>=1' 'perl-pod-elemental>=0.100220' 'perl-string-rewriteprefix>=0' 'perl-scalar-list-utils>=1.33')
-provides=('perl-pod-weaver-config=4.011' 'perl-pod-weaver-config-assembler=4.011' 'perl-pod-weaver-config-finder=4.011' 'perl-pod-weaver-plugin-ensurepod5=4.011' 'perl-pod-weaver-plugin-h1nester=4.011' 'perl-pod-weaver-plugin-singleencoding=4.011' 'perl-pod-weaver-plugin-transformer=4.011' 'perl-pod-weaver-pluginbundle-coreprep=4.011' 'perl-pod-weaver-pluginbundle-default=4.011' 'perl-pod-weaver-role-dialect=4.011' 'perl-pod-weaver-role-finalizer=4.011' 'perl-pod-weaver-role-plugin=4.011' 'perl-pod-weaver-role-preparer=4.011' 'perl-pod-weaver-role-section=4.011' 'perl-pod-weaver-role-stringfromcomment=4.011' 'perl-pod-weaver-role-transformer=4.011' 'perl-pod-weaver-section-authors=4.011' 'perl-pod-weaver-section-bugs=4.011' 'perl-pod-weaver-section-collect=4.011' 'perl-pod-weaver-section-generic=4.011' 'perl-pod-weaver-section-leftovers=4.011' 'perl-pod-weaver-section-legal=4.011' 'perl-pod-weaver-section-name=4.011' 'perl-pod-weaver-section-region=4.011' 'perl-pod-weaver-section-version=4.011')
-options=('!emptydirs' 'purge')
-source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/$_dist-$pkgver.tar.gz")
-sha256sums=('d801cbfaff22d418943d0c5dcb8c145b8cc4d56741f9c33923ef891241116ad6')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl-config-mvp>=2' 'perl-config-mvp-reader-ini>=0' 'perl-datetime>=0' 'perl-list-moreutils>=0' 'perl-log-dispatchouli>=1.100710' 'perl-mixin-linewise>=0' 'perl-module-runtime>=0' 'perl-moose>=0' 'perl-ppi>=0' 'perl-params-util>=0' 'perl-pod-elemental>=0.100220' 'perl-software-license>=0' 'perl-string-flogger>=1' 'perl-string-formatter>=0.100680' 'perl-string-rewriteprefix>=0' 'perl-namespace-autoclean>=0')
+makedepends=()
+checkdepends=('perl-test-differences>=0')
+url='https://metacpan.org/release/Pod-Weaver'
+source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Pod-Weaver-4.015.tar.gz')
+md5sums=('dd3f223882d17273d5b4ea6d600c1db9')
+sha512sums=('333e29757766b0c2ddd39cde3ef0649a3e79143a611c48c3644807d248c0c7d6a027683ca88158bf59b369b1e329cdd6f3f1c3dda6c3baaa26648f80ecdb4a8d')
+_distdir="Pod-Weaver-4.015"
 
-build() (
-  cd "$srcdir/$_dist-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
-  /usr/bin/perl Makefile.PL
-  make
-)
+build() {
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
 
-check() (
-  cd "$srcdir/$_dist-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1
-  make test
-)
+    cd "$srcdir/$_distdir"
+    /usr/bin/perl Makefile.PL
+    make
+  )
+}
 
-package() (
-  cd "$srcdir/$_dist-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
-)
+check() {
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    make test
+  )
+}
+
+package() {
+  cd "$srcdir/$_distdir"
+  make install
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:

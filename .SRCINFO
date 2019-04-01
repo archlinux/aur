@@ -1,56 +1,32 @@
 pkgbase = perl-pod-weaver
 	pkgdesc = weave together a Pod document from an outline
-	pkgver = 4.012
+	pkgver = 4.015
 	pkgrel = 1
 	url = https://metacpan.org/release/Pod-Weaver
 	arch = any
 	license = PerlArtistic
-	depends = perl
-	depends = perl-namespace-autoclean>=0
-	depends = perl-params-util>=0
+	license = GPL
+	checkdepends = perl-test-differences>=0
 	depends = perl-config-mvp>=2
-	depends = perl-log-dispatchouli>=1.100710
-	depends = perl-datetime>=0
-	depends = perl-encode>=0
-	depends = perl-moose>=0
-	depends = perl-mixin-linewise>=0.103
-	depends = perl-module-runtime>=0
-	depends = perl-string-formatter>=0.100680
-	depends = perl-list-moreutils>=0
 	depends = perl-config-mvp-reader-ini>=0
-	depends = perl-string-flogger>=1
+	depends = perl-datetime>=0
+	depends = perl-list-moreutils>=0
+	depends = perl-log-dispatchouli>=1.100710
+	depends = perl-mixin-linewise>=0
+	depends = perl-module-runtime>=0
+	depends = perl-moose>=0
+	depends = perl-ppi>=0
+	depends = perl-params-util>=0
 	depends = perl-pod-elemental>=0.100220
+	depends = perl-software-license>=0
+	depends = perl-string-flogger>=1
+	depends = perl-string-formatter>=0.100680
 	depends = perl-string-rewriteprefix>=0
-	depends = perl-scalar-list-utils>=1.33
-	provides = perl-pod-weaver-config=4.011
-	provides = perl-pod-weaver-config-assembler=4.011
-	provides = perl-pod-weaver-config-finder=4.011
-	provides = perl-pod-weaver-plugin-ensurepod5=4.011
-	provides = perl-pod-weaver-plugin-h1nester=4.011
-	provides = perl-pod-weaver-plugin-singleencoding=4.011
-	provides = perl-pod-weaver-plugin-transformer=4.011
-	provides = perl-pod-weaver-pluginbundle-coreprep=4.011
-	provides = perl-pod-weaver-pluginbundle-default=4.011
-	provides = perl-pod-weaver-role-dialect=4.011
-	provides = perl-pod-weaver-role-finalizer=4.011
-	provides = perl-pod-weaver-role-plugin=4.011
-	provides = perl-pod-weaver-role-preparer=4.011
-	provides = perl-pod-weaver-role-section=4.011
-	provides = perl-pod-weaver-role-stringfromcomment=4.011
-	provides = perl-pod-weaver-role-transformer=4.011
-	provides = perl-pod-weaver-section-authors=4.011
-	provides = perl-pod-weaver-section-bugs=4.011
-	provides = perl-pod-weaver-section-collect=4.011
-	provides = perl-pod-weaver-section-generic=4.011
-	provides = perl-pod-weaver-section-leftovers=4.011
-	provides = perl-pod-weaver-section-legal=4.011
-	provides = perl-pod-weaver-section-name=4.011
-	provides = perl-pod-weaver-section-region=4.011
-	provides = perl-pod-weaver-section-version=4.011
+	depends = perl-namespace-autoclean>=0
 	options = !emptydirs
-	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Pod-Weaver-4.012.tar.gz
-	sha256sums = d801cbfaff22d418943d0c5dcb8c145b8cc4d56741f9c33923ef891241116ad6
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Pod-Weaver-4.015.tar.gz
+	md5sums = dd3f223882d17273d5b4ea6d600c1db9
+	sha512sums = 333e29757766b0c2ddd39cde3ef0649a3e79143a611c48c3644807d248c0c7d6a027683ca88158bf59b369b1e329cdd6f3f1c3dda6c3baaa26648f80ecdb4a8d
 
 pkgname = perl-pod-weaver
 
