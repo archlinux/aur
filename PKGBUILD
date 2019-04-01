@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
 pkgver=0.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Show CommonMark (a standardized Markdown dialect) documents on text terminals.'
 arch=('i686' 'x86_64')
 url="https://github.com/lunaryorn/mdcat"
@@ -17,8 +17,7 @@ sha256sums=('9528a0dedcb9db559c9973001787f474f87559366a2c7a2ff01148c5ab31eac1'
 prepare() {
   # Enable LTO
   cd "$pkgname-$pkgname-$pkgver"
-  pwd
-  patch -p1 < ../../Cargo.toml.patch
+  patch -p1 < ../Cargo.toml.patch
 }
 
 build() {

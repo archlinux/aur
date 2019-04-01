@@ -1,7 +1,7 @@
 pkgbase = mdcat
 	pkgdesc = Show CommonMark (a standardized Markdown dialect) documents on text terminals.
 	pkgver = 0.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lunaryorn/mdcat
 	arch = i686
 	arch = x86_64
