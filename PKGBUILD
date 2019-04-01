@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=organizer-git
-pkgver=0.103.r0.gea2bb49
+pkgver=0.201.r0.g87e988e
 pkgrel=1
 pkgdesc="Python GTK app to organize your files"
 arch=('any')
