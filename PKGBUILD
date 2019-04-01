@@ -5,7 +5,7 @@ pkgrel=1
 epoch=1
 pkgdesc="Leftwm - A tiling window manager for the adventurer"
 arch=('i686' 'x86_64')
-url="https://github.com/lex148/leftwm"
+url="https://github.com/leftwm/leftwm"
 license=('MIT')
 depends=()
 makedepends=('cargo' 'rust' 'git')
@@ -13,7 +13,7 @@ optdepends=('dmenu: default launcher'
             'feh: used to set background images'
             'lemonbar: light weight bar'
             'polybar: light weight bar')
-source=("${pkgname}::git+https://github.com/lex148/leftwm.git#tag=${pkgver}")
+source=("${pkgname}::git+https://github.com/leftwm/leftwm.git#tag=${pkgver}")
 md5sums=('SKIP')
 
 build() {
