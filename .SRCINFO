@@ -1,6 +1,6 @@
 pkgbase = slimjet-browser
 	pkgdesc = A lightweight Browser based on Blink (removed setuid-sandbox)
-	pkgver = 21.0.8.0
+	pkgver = 22.0.4.0
 	pkgrel = 1
 	url = http://www.slimjet.com
 	install = slimjet-browser.install
