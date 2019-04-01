@@ -5,8 +5,8 @@ After=bluetooth.service
 
 [Service]
 Type=simple
-User=bluealsa
-Group=audio
+#User=bluealsa
+#Group=audio
 ExecStart=/usr/bin/bluealsa
 
 [Install]

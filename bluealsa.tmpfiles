@@ -1,4 +1,0 @@
-# systemd tmpfile settings for minidlna
-# See tmpfiles.d(5) for details
-
-d /var/run/bluealsa 0755 bluealsa audio -
