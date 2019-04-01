@@ -1,6 +1,6 @@
 # Maintainers: Perry Hung <perry@leaflabs.com> Florent Thiery <fthiery@gmail.com> Théo Le Calvar <tlc@kher.nl>
 pkgname=decklink
-pkgver=11.0
+pkgver=11.1
 pkgrel=1
 pkgdesc="Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video editing cards"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ options=('!strip' 'staticlibs')
 [ "$CARCH" = "i686" ] && _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='x86_64'
 
-_pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/305f424c236d40cf976fec631471ee82"
+_pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/bdb0c72cc1af4bf2ac790957c8e5db12"
 _pkgsrc_file=${pkgname}-${pkgver}.tar.gz
 
 DLAGENTS=("https::/usr/bin/curl \
@@ -29,7 +29,7 @@ DLAGENTS=("https::/usr/bin/curl \
 )
 
 source=("${_pkgsrc_file}"::"${_pkgsrc_url}")
-sha256sums=("34f3b26ee56940b4fc727f4a8fe8917761b958eefccc3e412f13cd4150a5c79f")
+sha256sums=("a3123bfc5d310ee1b221e49ac4fbe25b8d1006fc29973b27507d47b6659543ee")
 
 package() {
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
@@ -41,12 +41,6 @@ package() {
   tar xf desktopvideo-*-${_arch}.tar.gz
   cp -a desktopvideo-*-${_arch}/* $pkgdir
   rm -rf $pkgdir/usr/sbin
-
-  sed -ir 's/\.a/.o/' $pkgdir/usr/src/blackmagic-*/Makefile
-  mv $(echo $pkgdir/usr/src/blackmagic-$pkgver*)/bmd-support.{a,o_shipped}
-  mv $(echo $pkgdir/usr/src/blackmagic-io-$pkgver*)/blackmagic.{a,o_shipped}
-
-  find ${pkgdir} -name dkms.conf -exec sed -i 's|POST_INSTALL="../../lib/blackmagic/blackmagic-loader $PACKAGE_NAME $PACKAGE_VERSION"||' {} \;
 
   tar xf mediaexpress-*-${_arch}.tar.gz
   cp -a mediaexpress-*-${_arch}/* $pkgdir
