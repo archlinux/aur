@@ -94,7 +94,7 @@ set -u
 pkgname='sunix-snx'
 #pkgver='2.0.4_2'; _dl='2016/20160706173626'
 pkgver='2.0.4_3'; _dl='2017/20171122180114'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='kernel module driver for Sunix SUN1889 SUN1989 SUN1999 SUN2212 SUN2410 UL7502AQ UL7512EQ UL7522EQ PCI PCIe multi I/O parallel serial RS-232 422 485 port Dell Lenovo Acer Startech'
 arch=('i686' 'x86_64')
 url='http://www.sunix.com/'
@@ -151,7 +151,7 @@ prepare() {
   sed -e 's: /lib/modules/: /usr/lib/modules/:g' \
       -e '/^install:/,/^$/ s: /usr/lib/: "${DESTDIR}"/usr/lib/:g' \
       -e '# New cache folder for gcc 8' \
-      -e 's/^clean.*:$/&\n\trm -rf .cache.mk/g' \
+      -e 's/^clean.*:$/&\n\trm -f .cache.mk/g' \
       -e '# What sort of make clean deletes files out of system folders?' \
       -e '/^clean/,/^$/ s: /usr/lib/: "${DESTDIR}"/usr/lib/:g' \
       -e '# Prevent file deletion for DKMS' \
@@ -178,9 +178,15 @@ prepare() {
 
   sed -e 's:\r$::g' -i $(grep -slrF $'\r')
 
-  cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}
+  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}
   #diff -pNaru5 snx_V2.0.4.3{.orig-0000,} > '0000-Kernel-4-15-timers.patch'
   patch -Nup1 -i "${srcdir}/0000-Kernel-4-15-timers.patch"
+
+  # Kernel 3,4,5 all use the same makefile. Trim out everything but Kernel 4
+  mv driver/Makefile{,.Arch}
+  sed -n -e '/^# for kernel 4.0/,/^# for kernel 3.0/ p' 'driver/Makefile.Arch' > 'driver/Makefile'
+  sed -e '/findstring =4./ s:^:#:g' -i 'driver/Makefile'
+  rm 'driver/Makefile.Arch'
   set +u
 }
 
