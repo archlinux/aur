@@ -1,0 +1,16 @@
+pkgbase = ttf-electroharmonix
+        pkgdesc = A Japanese font
+        pkgver = 1.0
+        pkgrel = 1
+        url = https://git.syskiller.io/Stykers/fonts.git
+        install = ttf-electroharmonix.install
+        arch = any
+        license = GPL
+        depends = fontconfig
+        depends = xorg-font-utils
+        source = https://git.syskiller.io/Stykers/fonts/raw/master/electroharmonix.ttf?inline=false
+        source = https://git.syskiller.io/Stykers/fonts/raw/master/electroharmonix.otf?inline=false
+        md5sums = fd2bf4b7a257640325d09d1be945e924
+        md5sums = 6ed93967ff0dc6dd9c8d31c17f817a06
+
+pkgname = ttf-electroharmonix
