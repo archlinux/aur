@@ -21,7 +21,7 @@ pkgbase = megacmd-bin
 	source = LICENSE
 	sha256sums = 772d38729ab816eb94dbe30de277ffcc5af4e5d2c451cf7c071031ebe78f44ea
 	source_x86_64 = https://mega.nz/linux/MEGAsync/Arch_Extra/x86_64/megacmd-x86_64.pkg.tar.xz
-	sha256sums_x86_64 = 88f5e049237dc85391aaccb1c333563cc2c70359bdb47fd48fd2965d839d9400
+	sha256sums_x86_64 = ddf9a1c1fc3bb171ca6cac1de2918a14eaa625fccd0dc990e565c06f09f11d67
 
 pkgname = megacmd-bin
 
