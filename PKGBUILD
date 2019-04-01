@@ -17,8 +17,8 @@ pkgname='digi-dgnc'
 #_pkgver='1.3-28'; _dl='40002369_G.tgz'
 _pkgver='1.3-29'; _dl='40002369_H.src.rpm'
 pkgver="${_pkgver//-/.}"
-pkgrel=1
-pkgdesc='tty driver for Digi Neo and legacy ClassicBoard PCI PCIe serial port'
+pkgrel='2'
+pkgdesc='tty driver for Digi Neo and legacy ClassicBoard PCI PCIe RS-232 serial port'
 arch=('i686' 'x86_64')
 url='https://www.digi.com/'
 license=('GPL')
@@ -29,10 +29,12 @@ source=(
   "${pkgname##*-}-${pkgver}-${_dl}::http://ftp1.digi.com/support/driver/${_dl}"
   '0000-Kernel-4-14-DRIVER-ATTR.patch' # https://patchwork.kernel.org/patch/9851919/ Available since 3.11-rc2
   '0001-Kernel-4-15-timers.patch'
+  '0002-kernel-5.0.0-do_gettimeofday.patch'
 )
 sha256sums=('e121a31569e3e1f156caeed70742971ec32fef598429ef647bde98f56aa048f5'
             '625bb794d31690b45ad7469f811e7422dac938cf8e9b777aba4d97b60b3c6eae'
-            '88d5a8589dca55ca98089dfa4570aa1fbde1095957d0788ad710a27b348c2f4f')
+            '88d5a8589dca55ca98089dfa4570aa1fbde1095957d0788ad710a27b348c2f4f'
+            '737df02a12fc76841325d1059d90451467637eab2df016efc20d84976eb5de7d')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -79,6 +81,10 @@ prepare() {
   #diff -pNaru5 dgnc-1.3{.orig-0001,} > '0001-Kernel-4-15-timers.patch'
   patch -Nup1 -i "${srcdir}/0001-Kernel-4-15-timers.patch"
   test ! -d "${srcdir}/${_srcdir}.orig-0001" || echo "${}"
+
+  #cp -p driver/2.6.27/dgnc_tty.c{,.orig}; false
+  #diff -pNau5 driver/2.6.27/dgnc_tty.c{.orig,} > '0002-kernel-5.0.0-do_gettimeofday.patch'
+  patch -Nbup0 -i "${srcdir}/0002-kernel-5.0.0-do_gettimeofday.patch"
 
   # Version check
   local _ver

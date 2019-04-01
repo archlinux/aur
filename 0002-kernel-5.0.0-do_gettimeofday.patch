@@ -1,0 +1,25 @@
+--- driver/2.6.27/dgnc_tty.c.orig	2017-10-21 10:39:21.000000000 -0400
++++ driver/2.6.27/dgnc_tty.c	2019-03-31 21:05:47.560452555 -0400
+@@ -519,10 +519,22 @@ void dgnc_tty_uninit(struct board_t *brd
+ }
+ 
+ 
+ #define TMPBUFLEN (1024)
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,0,0)
++/* Temporary until reimplemented with 64 bit functions */
++static inline void do_gettimeofday(struct timeval *tv)
++{
++  struct timespec64 now;
++
++  ktime_get_real_ts64(&now);
++  tv->tv_sec = now.tv_sec;
++  tv->tv_usec = now.tv_nsec/1000;
++}
++#endif
++
+ /*
+  * dgnc_sniff - Dump data out to the "sniff" buffer if the
+  * proc sniff file is opened...
+  */
+ void dgnc_sniff_nowait_nolock(struct channel_t *ch, uchar *text, uchar *buf, int len)
