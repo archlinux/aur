@@ -3,7 +3,7 @@
 
 pkgname=mindmaster-cn
 pkgver=6
-pkgrel=3
+pkgrel=5
 arch=('x86_64')
 options=(!strip)
 conflicts=("mindmaster")
