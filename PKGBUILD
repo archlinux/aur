@@ -3,11 +3,11 @@
 pkgname=mcsctl
 pkgver=1.1.1
 pkgrel=1
-pkgdesc='Manage multiple minecraft servers with a simple bash script and systemd unit file.'
+pkgdesc='Manage multiple minecraft servers with a simple bash script and systemd unit template.'
 arch=('x86_64')
 url='https://github.com/Hetsh/mcsctl'
 license=('GPL3')
-depends=('systemd' 'screen' 'jre-openjdk-headless')
+depends=('bash' 'grep' 'java-runtime-headless>=8' 'screen' 'sudo' 'systemd')
 provides=('mcsctl')
 conflicts=('mcsctl-git')
 install="$pkgname.install"
