@@ -2,7 +2,7 @@
 # Contributor: mustafagonul <mustafagonul@gmail..com>
 
 pkgname=create-react-app
-pkgver=2.1.5
+pkgver=2.1.8
 pkgrel=1
 pkgdesc='Bootstrapping tool for React'
 arch=(any)
@@ -10,7 +10,6 @@ url=https://github.com/facebookincubator/create-react-app
 license=(MIT)
 depends=(nodejs)
 makedepends=(npm)
-conflicts=(nodejs-create-react-app)
 options=(!strip)
 
 package() {
