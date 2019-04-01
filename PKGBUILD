@@ -4,8 +4,8 @@
 
 pkgname=packer-aur-git
 pkgver=327.e86f847
-pkgrel=1
-pkgdesc='Bash wrapper for pacman and aur'
+pkgrel=2
+pkgdesc='Bash wrapper for pacman and aur (discontinued)'
 arch=('any')
 url="https://github.com/gavinhungry/packer"
 license=('GPL3')
