@@ -17,6 +17,6 @@ pkgver() {
 }
 
 package() {
-    install -d ${pkgdir}/usr/share/fonts/misc/
-    install -m644 "${_pkgname}/"*.pcf ${pkgdir}/usr/share/fonts/misc/
+    install -d ${pkgdir}/usr/share/fonts/$_pkgname/
+    install -m644 "${_pkgname}/"*.pcf ${pkgdir}/usr/share/fonts/$_pkgname/
 }
