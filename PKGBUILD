@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=plane-icon-theme-git
-pkgver=r183.680e311
+pkgver=r184.148b5f2
 pkgrel=1
 pkgdesc="A modern icon theme for gnome linux versions."
 arch=('any')
