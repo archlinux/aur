@@ -1,0 +1,16 @@
+pkgbase = ncmdump-go
+	pkgdesc = netease cloud music copyright protection file dump, go port
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/yoki123/ncmdump
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = go
+	provides = ncmdump
+	conflicts = ncmdump
+	source = ncmdump-go-0.2.0.tar.gz::https://github.com/yoki123/ncmdump/archive/v0.2.0.tar.gz
+	md5sums = e2cdf69603994c9d8424ae7a67265540
+
+pkgname = ncmdump-go
+
