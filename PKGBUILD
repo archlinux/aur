@@ -18,6 +18,9 @@ sha256sums=('SKIP')
 build() {
   cd plata-theme
 
+  echo Checking out ${pkgver}...
+  git checkout ${pkgver}
+
   ./autogen.sh \
     --prefix='/usr' \
     --enable-parallel \
