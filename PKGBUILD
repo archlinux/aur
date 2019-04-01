@@ -13,6 +13,7 @@ source=(
 sha256sums=('SKIP'
             'c37a0d2985e50586225e92698aeade10c3756bd31d1098d495ceff55f165487a')
 depends=('dkms')
+makedepends=('linux-headers')
 
 package() {
 	install -dm755 "${pkgdir}/usr/src/${pkgbase}-${pkgver}/"
