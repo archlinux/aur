@@ -11,6 +11,7 @@ conflicts=("$_basename")
 provides=("$_basename")
 license=('unknown')
 depends=('taglib')
+makedepends=('git')
 source=("$_basename"::'git+https://github.com/anonymous5l/ncmdump')
 md5sums=('SKIP')
 

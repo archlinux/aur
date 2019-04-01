@@ -6,6 +6,7 @@ pkgbase = ncmdump-git
 	arch = i686
 	arch = x86_64
 	license = unknown
+	makedepends = git
 	depends = taglib
 	provides = ncmdump
 	conflicts = ncmdump
