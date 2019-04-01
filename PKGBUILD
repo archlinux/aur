@@ -2,12 +2,12 @@
 
 pkgname=waifu2x-converter-glsl
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ implementation of waifu2x using OpenGL shaders"
 arch=('any')
 url="https://github.com/ObserverOfTime/$pkgname"
 license=('MIT')
-depends=('mesa' 'opencv')
+depends=('glfw' 'mesa' 'opencv')
 makedepends=(
     'cmake' 'glfw' 'libepoxy' 'libglvnd'
     'mesa' 'opencv' 'pkgconfig' 'vtk'

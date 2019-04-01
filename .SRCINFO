@@ -1,7 +1,7 @@
 pkgbase = waifu2x-converter-glsl
 	pkgdesc = C++ implementation of waifu2x using OpenGL shaders
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ObserverOfTime/waifu2x-converter-glsl
 	arch = any
 	license = MIT
@@ -13,6 +13,7 @@ pkgbase = waifu2x-converter-glsl
 	makedepends = opencv
 	makedepends = pkgconfig
 	makedepends = vtk
+	depends = glfw
 	depends = mesa
 	depends = opencv
 	source = waifu2x-converter-glsl-1.2.1.tar.gz::https://github.com/ObserverOfTime/waifu2x-converter-glsl/archive/v1.2.1.tar.gz
