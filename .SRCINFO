@@ -1,6 +1,6 @@
 pkgbase = pdfcpu
 	pkgdesc = A PDF processor written in Go
-	pkgver = 0.1.22
+	pkgver = 0.1.23
 	pkgrel = 1
 	url = https://github.com/hhrutter/pdfcpu
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = pdfcpu
 	arch = armv7h
 	license = Apache
 	makedepends = go
-	source = pdfcpu-0.1.22.tar.gz::https://github.com/hhrutter/pdfcpu/archive/v0.1.22.tar.gz
-	sha256sums = 452860b423d930d9c751cdcd765381370cdb87e55133a3495bd74bdd36ecb62d
+	source = pdfcpu-0.1.23.tar.gz::https://github.com/hhrutter/pdfcpu/archive/v0.1.23.tar.gz
+	sha256sums = 817eae6cf8653b3a15d3763c0ae441e62e8339586943357a20b442e829072423
 
 pkgname = pdfcpu
 
