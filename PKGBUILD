@@ -1,7 +1,7 @@
 # Maintainer: skydrome <skydrome at@at proton mail dot com>
 # Contributors: Thynix
 
-_fred=#tag=build01483
+_fred=#tag=build01484
 _wot=#branch=next
 _keyutils=#tag=v5026
 _upnp=#tag=10007
@@ -13,7 +13,7 @@ _plugins=('WebOfTrust' 'UPnP' 'KeyUtils')
 BUILDENV+=('!check')
 
 pkgname=freenet
-pkgver=0.7.5.1483
+pkgver=0.7.5.1484
 pkgrel=1
 pkgdesc="An encrypted network without censorship"
 url="https://freenetproject.org"
@@ -56,9 +56,8 @@ prepare() {
     cd "fred"
 
     # Gradle 4.10.3 - Allow building with java 10+
-    export GIT_COMMITTER_NAME="aur" GIT_COMMITTER_EMAIL="aur"
-    git fetch https://github.com/skydrome/fred.git gradle-4.10.3
-    git cherry-pick eaee80908f63051e729b8579030d193efaa4264d
+    GIT_COMMITTER_NAME="aur" GIT_COMMITTER_EMAIL="aur" \
+    git cherry-pick 1abf6fa6f1f03b0bc77fd6043eb6317cce901f93
 
     ln -sf "$srcdir/gradle.properties" .
     sed -i "$srcdir/plugin-UPnP/build.xml" \
