@@ -1,10 +1,10 @@
 # Maintainer: Blooser <blooser@protonmail.com>
 pkgname=cygnus
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Effortless RSS reader."
 arch=('x86_64')
-md5sums=('b66e205ee8a81ddff20268db6f7864f8')
+md5sums=('5545c2d83e637f26d1366c96e80338b3')
 url="https://github.com/blooser/cygnus"
 license=('MIT')
 depends=('python3')
@@ -20,5 +20,4 @@ build() {
 package() {
 	sudo rm -rf $pkgname-$pkgver	
 }
-
 
