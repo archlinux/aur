@@ -1,7 +1,9 @@
 # Maintainer: Jeff M. Hubbard <jeffmhubbard@gmail.com>
+# Packager: Jeff M. Hubbard <jeffmhubbard@gmail.com>
+
 _pkgname=mpnotd
 pkgname=${_pkgname}-git
-pkgver=r10.daf63c2
+pkgver=r11.5118f43
 pkgrel=1
 pkgdesc="MPD Notification Daemon"
 arch=('any')

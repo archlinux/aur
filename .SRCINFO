@@ -1,14 +1,12 @@
 pkgbase = mpnotd-git
 	pkgdesc = MPD Notification Daemon
-	pkgver = r10.daf63c2
+	pkgver = r11.5118f43
 	pkgrel = 1
 	url = https://github.com/jeffmhubbard/mpnotd
 	install = mpnotd.install
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = sed
-	makedepends = grep
 	depends = mpd
 	depends = python
 	depends = python-mpd2
