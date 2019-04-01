@@ -5,8 +5,8 @@
 
 pkgname=dwarffortress-ironhand
 _pkgname=dwarffortress
-pkgver=0.44.11
-_pkgver=44_11
+pkgver=0.44.12
+_pkgver=44_12
 pkgrel=1
 tilesetver=44.11
 pkgdesc="A single-player fantasy game in which you build a dwarven outpost or play an adventurer in a randomly generated world"
@@ -25,17 +25,17 @@ install=${_pkgname}.install
 source=("dwarffortress-unfuck-$pkgver.tar.gz::https://github.com/svenstaro/dwarf_fortress_unfuck/archive/$pkgver.tar.gz"
         dwarffortress
         dwarffortress.desktop
-        "ironhand-${tilesetver}.tar.gz::https://github.com/DFgraphics/Ironhand/archive/${tilesetver}.tar.gz"
+        "Ironhand_44_12A.zip::http://dffd.bay12games.com/download.php?id=13283&f=Ironhand_44_12A.zip"
         dwarffortress.png)
 source_x86_64=(http://www.bay12games.com/dwarves/df_"${_pkgver}"_linux.tar.bz2)
 source_i686=(http://www.bay12games.com/dwarves/df_"${_pkgver}"_linux32.tar.bz2)
-sha256sums=('891af9cf5cfabc96a8eede1a76be30913dc211cb4400b7572469f7984baadeec'
+sha256sums=('2d509739df22277dec9c0dc3f7fa9351c9844c7a2027b143e22ceb2b48c7e301'
             '211eaec6559d4fd5c08341dbed1f27bfab997a57bdf61fd268f9940e244652c5'
             'e79e3d945c6cc0da58f4ca30a210c7bf1bc3149fd10406d1262a6214eb40445a'
-            'aa82c525d4c20b4dd56a096f49f85c82efa58dfe525bfe02ef15a0157fb7d55d'
+            '4be4188e87188f43e55d030a833cf28aacde17e5d9d66461c9e8ab5bc3dfe17a'
             '83183abc70b11944720b0d86f4efd07468f786b03fa52fe429ca8e371f708e0f')
-sha256sums_x86_64=('4e13652d0b9c9a88bdc9628d50ef60ab944930497f131dc1b1d74c41fb743fe2')
-sha256sums_i686=('0523a77bfd75d3fd3e86dd05410d789045feddc1c908775ee0b4ebec1d4da386')
+sha256sums_x86_64=('5a2d15730d21b41a68da09ce3c3b70c3e2a6fd15b95c6cbfb68578ed2d2db979')
+sha256sums_i686=('06642ed3ee50992a9b2a6a1bd9fb61b9d2e4e72bd6dd05b40870d5a96343b93a')
 
 conflicts=(dwarffortress dwarffortress-obsidian)
 provides=("dwarffortress=$pkgver")
@@ -53,7 +53,7 @@ package() {
   cp -r "$srcdir"/df_linux "$pkgdir"/opt/"$_pkgname"
   rm -r "$pkgdir"/opt/"$_pkgname"/df "$pkgdir"/opt/"$_pkgname"/libs/* "$pkgdir"/opt/"$_pkgname"/g_src
 
-  cp -r "$srcdir"/Ironhand-"$tilesetver"/* "$pkgdir"/opt/"$_pkgname"
+  cp -r "$srcdir/Dwarf Fortress"/* "$pkgdir"/opt/"$_pkgname"
 
   find "$pkgdir"/opt/"$_pkgname" -type d -exec chmod 755 {} +
   find "$pkgdir"/opt/"$_pkgname" -type f -exec chmod 644 {} +
