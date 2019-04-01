@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 2017-2018 Stefan Ott
+# Distributed under the terms of the GNU General Public License v2
+
+command=/usr/bin/trottinett
+pidfile=/run/trottinett.pid
+name="trottinett network manager"
+command_args=${TROTTINETT_OPTS}
+command_background="yes"
+
+depend() {
+	provide net
+}
