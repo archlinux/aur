@@ -44,7 +44,7 @@ _servicename="${pkgname}-settings"
 #pkgver='1.2'; _build='12071314'
 #pkgver='1.2.9'; _build='14103017'
 pkgver='1.2.13'; _build='18030617'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='kernel module driver for Moxa multi port USB serial 1250 1410 1450 1610 1650 RS-232 422 485'
 _servicedesc='Moxa UPort persistent settings'
 arch=('i686' 'x86_64')
@@ -64,8 +64,10 @@ source=(
   #"https://www.moxa.com/drivers/UPort/U12_14_1600/Linux2.6/V1.2/driv_linux_uport_v${pkgver}_build_${_build}.tgz"
   #"http://ftp.gwdg.de/pub/opensuse/repositories/hardware/openSUSE_Tumbleweed/src/moxa-${pkgver}_${_build}-1.299.src.rpm"
   "https://download.opensuse.org/repositories/hardware/openSUSE_Leap_42.3/src/moxa-${pkgver}_${_build}-1.1.src.rpm"
+  '0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch'
 )
-sha256sums=('aed6f9a1bb6e88a22b520dc6cbbb6624accea080dcaca727c0fab031868228b6')
+sha256sums=('aed6f9a1bb6e88a22b520dc6cbbb6624accea080dcaca727c0fab031868228b6'
+            'f753e48ea68282288bd53f045c88bd61e39a4c6cf691544953c6929888183370')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -143,6 +145,10 @@ prepare() {
 
   # A few files have MS-DOS line endings
   sed -e 's:\s*\r$::g' -i $(grep -rlFe $'\r')
+
+  #cp -p driver/mxuport/mx-uport.c{,.orig}; false
+  #diff -pNaru5 driver/mxuport/mx-uport.c{.orig,} > '0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch'
+  patch -Nbup0 -i "${srcdir}/0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch"
 
   # Fix umbrella Makefile
   sed -e '# Disable silent' \

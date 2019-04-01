@@ -1,0 +1,65 @@
+--- driver/mxuport/mx-uport.c.orig	2018-03-06 21:52:33.000000000 -0500
++++ driver/mxuport/mx-uport.c	2019-03-31 21:25:37.676299896 -0400
+@@ -1055,10 +1055,16 @@ static void mxuport_set_termios (struct
+ 	mx_change_port_settings(mx_port, 0);
+ 
+ 	return;
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,0,0)
++#define compat_access_ok(u,v,w) access_ok(v,w)
++#else
++#define compat_access_ok(u,v,w) access_ok(u,v,w)
++#endif
++
+ /*
+  *  mxuport_ioctl - I/O control function of driver
+  *
+  *	This function handles any ioctl calls to the driver.
+  */
+@@ -1183,17 +1189,17 @@ static int mxuport_ioctl (struct usb_ser
+ 			if (copy_to_user((void __user *)arg, &mx_port->icount, sizeof(mx_port->icount)))
+ 				return -EFAULT;
+ 			return 0;
+ 			
+ 		case TIOCGSOFTCAR:
+-	        if(!access_ok(VERIFY_WRITE, (void *)arg, sizeof(unsigned int))) {
++	        if(!compat_access_ok(VERIFY_WRITE, (void *)arg, sizeof(unsigned int))) {
+ 		        return -EFAULT;
+ 			}
+ 			return put_user(C_CLOCAL(port->tty) ? 1 : 0, (unsigned int *)arg);
+ 
+ 		case TIOCSSOFTCAR:			
+-	        if(!access_ok(VERIFY_READ, (void *)arg, sizeof(unsigned int))) {
++	        if(!compat_access_ok(VERIFY_READ, (void *)arg, sizeof(unsigned int))) {
+ 		        return -EFAULT;
+ 			}
+ 			if(get_user(arg, (unsigned int *)arg))
+ 			    return -EFAULT;
+ #if (LINUX_VERSION_CODE < KERNEL_VERSION(3,7,0))  			
+@@ -1412,11 +1418,11 @@ static int mxuport_ioctl (struct usb_ser
+                (mx_serial->productid != MX_UPORT1250_PID) ||
+                (mx_serial->productid != MX_UPORT1251_PID)) {
+                 return -EINVAL;
+ 			}
+ 
+-	        if(!access_ok(VERIFY_READ, (void *)arg, sizeof(int))) {
++	        if(!compat_access_ok(VERIFY_READ, (void *)arg, sizeof(int))) {
+ 		        return -EFAULT;
+ 			}
+                     
+             if(get_user(req_if, (int *)arg)) {
+ 		        return -EFAULT;
+@@ -1438,11 +1444,11 @@ static int mxuport_ioctl (struct usb_ser
+ 				}
+             }
+             break;
+     
+         case MOXA_SET_SPECIAL_BAUD:
+-	        if(!access_ok(VERIFY_READ, (void *)arg, sizeof(long)))
++	        if(!compat_access_ok(VERIFY_READ, (void *)arg, sizeof(long)))
+ 		        return -EFAULT;
+ 
+             if(get_user(baud, (long *)arg))
+ 		        return -EFAULT;
+             
