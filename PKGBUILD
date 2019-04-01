@@ -1,19 +1,18 @@
-# Maintainer: Christopher Davis <brainblastedmods@gmail.com>
-# Submitter: Falk Alexander Seidl <fa@terminal.run>
+# Maintainer: Falk Alexander Seidl <fa@terminal.run>
 
 pkgname=fractal-git
 _gitname=fractal
-pkgver=r840.d1dba64
+pkgver=r1614.f39555b
 pkgrel=1
-pkgdesc="Matrix.org gtk+ client"
+pkgdesc="Matrix messaging app for GNOME written in Rust"
 arch=('i686' 'x86_64')
 license=('GPL3')
-url="https://gitlab.gnome.org/World/fractal"
-depends=('gtk3' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good'
-        'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav' 'gspell')
+url="https://gitlab.gnome.org/GNOME/fractal"
+depends=('gtk3' 'libhandy' 'gtksourceview3' 'gstreamer' 'gst-plugins-base-libs' 'gst-plugins-bad' 'gst-editing-services' 'gst-libav' 'gspell')
+optdepends=('gnome-keyring: secrets service')
 conflics=('fractal')
 provides=('fractal')
-makedepends=('gtk3' 'rust' 'pkg-config' 'git' 'meson')
+makedepends=('rust' 'gst-editing-services' 'pkg-config' 'git' 'meson')
 source=("git+https://gitlab.gnome.org/World/fractal.git")
 md5sums=('SKIP')
  
@@ -24,7 +23,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_gitname}/"
-	meson . _build --prefix=/usr
+	arch-meson . _build
 	ninja -C _build
 }
 
