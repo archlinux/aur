@@ -1,22 +1,22 @@
 pkgbase = perl-dist-zilla-plugin-podweaver
 	pkgdesc = weave your Pod together from configuration and Dist::Zilla
-	pkgver = 4.006
+	pkgver = 4.008
 	pkgrel = 1
 	url = https://metacpan.org/release/Dist-Zilla-Plugin-PodWeaver
 	arch = any
 	license = PerlArtistic
-	depends = perl
+	license = GPL
 	depends = perl-dist-zilla>=5
-	depends = perl-pod-weaver>=4
-	depends = perl-list-moreutils>=0
+	depends = perl-file-find-rule>=0
 	depends = perl-moose>=0
 	depends = perl-ppi>=0
 	depends = perl-pod-elemental-perlmunger>=0.1
+	depends = perl-pod-weaver>=4
 	depends = perl-namespace-autoclean>=0
 	options = !emptydirs
-	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Dist-Zilla-Plugin-PodWeaver-4.006.tar.gz
-	sha256sums = 744626bf9a22b5bed3b9151b676fee78e21348feae62a58f537d8ec08bc5250a
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Dist-Zilla-Plugin-PodWeaver-4.008.tar.gz
+	md5sums = b3fb0f665cace2ad3d134f626c2546aa
+	sha512sums = e780dc2269b9691d0c334866c278fd2dea2eb68a3d84a5c8dad80b2b9277a7396e523a2b8c45b32d7c8b7b1379b7e3f7d68871b40901d3fa3a2bb0d039e824e5
 
 pkgname = perl-dist-zilla-plugin-podweaver
 

@@ -1,36 +1,49 @@
-# Maintainer: Kars Wang <jaklsy AT gmail.com>
+# Contributor: Anonymous
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-dist-zilla-plugin-podweaver'
-pkgver=4.006
-pkgrel=1
-pkgdesc='weave your Pod together from configuration and Dist::Zilla'
-_dist='Dist-Zilla-Plugin-PodWeaver'
+pkgver='4.008'
+pkgrel='1'
+pkgdesc="weave your Pod together from configuration and Dist::Zilla"
 arch=('any')
-url="https://metacpan.org/release/$_dist"
-license=('PerlArtistic')
-depends=('perl' 'perl-dist-zilla>=5' 'perl-pod-weaver>=4' 'perl-list-moreutils>=0' 'perl-moose>=0' 'perl-ppi>=0' 'perl-pod-elemental-perlmunger>=0.1' 'perl-namespace-autoclean>=0')
-check_depends=('perl-file-find-rule>=0' 'perl-test-more>=0.96')
-options=('!emptydirs' 'purge')
-source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/$_dist-$pkgver.tar.gz")
-sha256sums=('744626bf9a22b5bed3b9151b676fee78e21348feae62a58f537d8ec08bc5250a')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl-dist-zilla>=5' 'perl-file-find-rule>=0' 'perl-moose>=0' 'perl-ppi>=0' 'perl-pod-elemental-perlmunger>=0.1' 'perl-pod-weaver>=4' 'perl-namespace-autoclean>=0')
+makedepends=()
+url='https://metacpan.org/release/Dist-Zilla-Plugin-PodWeaver'
+source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Dist-Zilla-Plugin-PodWeaver-4.008.tar.gz')
+md5sums=('b3fb0f665cace2ad3d134f626c2546aa')
+sha512sums=('e780dc2269b9691d0c334866c278fd2dea2eb68a3d84a5c8dad80b2b9277a7396e523a2b8c45b32d7c8b7b1379b7e3f7d68871b40901d3fa3a2bb0d039e824e5')
+_distdir="Dist-Zilla-Plugin-PodWeaver-4.008"
 
-build() (
-  cd "$srcdir/$_dist-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
-  /usr/bin/perl Makefile.PL
-  make
-)
+build() {
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
 
-check() (
-  cd "$srcdir/$_dist-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1
-  make test
-)
+    cd "$srcdir/$_distdir"
+    /usr/bin/perl Makefile.PL
+    make
+  )
+}
 
-package() (
-  cd "$srcdir/$_dist-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
-)
+check() {
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    make test
+  )
+}
+
+package() {
+  cd "$srcdir/$_distdir"
+  make install
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
