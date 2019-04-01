@@ -1,12 +1,10 @@
 pkgbase = iblu-git
 	pkgdesc = Intel Black Light Utility, written in python, allows you to control the screen brightness (iX processors family), via command line interface.
-	pkgver = r7
+	pkgver = r38.0ff4315
 	pkgrel = 1
 	url = https://git.eigenlab.org/sbiego/iblu
 	install = iblu-git.install
-	arch = i686
-	arch = x86_64
-	arch = aarch64
+	arch = any
 	license = GPLv3
 	makedepends = git
 	depends = python
