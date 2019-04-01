@@ -2,7 +2,7 @@
 # Contributor: visit ""
 pkgname=('slimjet-browser')
 _origname='slimjet'
-pkgver=21.0.8.0
+pkgver=22.0.4.0
 pkgrel=1
 pkgdesc="A lightweight Browser based on Blink (removed setuid-sandbox)"
 arch=('x86_64')
