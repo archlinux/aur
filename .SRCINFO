@@ -14,7 +14,7 @@ pkgbase = python-pychromecast
 	depends = python-setuptools
 	depends = python-casttube
 	source = https://github.com/balloob/pychromecast/archive/3.2.0.tar.gz
-	sha512sums = 4b9572dda1ba9785480305b54905f2d9a81aa73ed9149036950a9bf06fc818297eaab064a333cacc85fc00d7b3335c372f61c5033029c00912d83e7daeb7d91f
+	sha512sums = a02a769245fb091b68d802fb2bf58c61f2f0ed661562e871d3c7536fe5251ceb4c48f7fbd3a75196094ae0faa3a19164089fc47de1f628ba78c99ece5211eaf2
 
 pkgname = python-pychromecast
 
