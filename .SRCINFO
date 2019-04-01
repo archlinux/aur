@@ -1,0 +1,12 @@
+pkgbase = miradb
+	pkgdesc = cross platform lightweight open source database (oodb) management
+	pkgver = 1.0.30
+	pkgrel = 1
+	url = https://miradb.com/docs/
+	arch = any
+	license = MIT
+	source = https://github.com/Nodeclient/Mira-DB/releases/download/linux/miradb-1.0.30.tar.gz
+	md5sums = f14d2f0864097c993d9654b9789fcd42
+
+pkgname = miradb
+
