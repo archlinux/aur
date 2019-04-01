@@ -3,7 +3,7 @@
 
 pkgname=matcha-gtk-theme
 pkgver=20190310
-pkgrel=1
+pkgrel=2
 pkgdesc="A flat design themes for GNOME, MATE, Openbox, Unity, XFCE, Budgie"
 arch=('any')
 url='https://www.gnome-look.org/p/1187179'
