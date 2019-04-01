@@ -41,7 +41,8 @@ fi
 if [[ "/opt/$pkgname/clonehero_Data" -nt "$HOME/.$pkgname/clonehero_Data" ]]; then
     echo "Replacing old data folder"
     # This was the name of the data folder before v0.21.7
-    rm "$HOME/.$pkgname/Clone Hero_Data"
+    rm -rf "$HOME/.$pkgname/Clone Hero_Data"
+    rm -rf "$HOME/.$pkgname/clonehero_Data"
     cp -r "/opt/$pkgname/clonehero_Data" "$HOME/.$pkgname/clonehero_Data"
 fi
 
