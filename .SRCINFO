@@ -3,6 +3,7 @@ pkgbase = termsyn-powerline-font-git
 	pkgver = r2.2415446
 	pkgrel = 1
 	url = https://github.com/Anarky/Termsyn-Powerline
+	install = termsyn-powerline-font.install
 	arch = any
 	license = unknown
 	makedepends = git

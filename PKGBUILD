@@ -11,6 +11,7 @@ depends=('fontconfig' 'xorg-font-utils')
 source=("${_pkgname}::git+https://github.com/Anarky/${_pkgname}.git")
 sha256sums=('SKIP')
 makedepends=('git')
+install=termsyn-powerline-font.install
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
