@@ -1,0 +1,15 @@
+pkgbase = termsyn-powerline-font-git
+	pkgdesc = Termsyn-Powerline is a clean monospaced bitmap font based on Termsyn, with added characters for powerline-shell.
+	pkgver = r2.2415446
+	pkgrel = 1
+	url = https://github.com/Anarky/Termsyn-Powerline
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = termsyn-powerline::git+https://github.com/Anarky/termsyn-powerline.git
+	sha256sums = SKIP
+
+pkgname = termsyn-powerline-font-git
+
