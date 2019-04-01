@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=suricata-emerging-rules
-pkgver=8983
+pkgver=9154
 pkgrel=1
 pkgdesc="Suricata rules from emergingthreatspro.com"
 arch=('any')
@@ -24,5 +24,4 @@ package() {
   install -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-md5sums=('6d3d08af2da41f6ff042fdd5ade4091a'
-         'SKIP')
+md5sums=('SKIP' 'SKIP')
