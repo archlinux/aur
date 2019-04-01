@@ -2,14 +2,14 @@
 _modulename=taskwiki
 pkgname=vim-$_modulename
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Proper project management in vim. Standing on the shoulders of vimwiki and Taskwarrior"
 arch=(any)
 url="https://github.com/tbabej/taskwiki"
 license=('MIT')
 groups=()
-depends=('vim' 'python-tasklib' 'task' 'vim' 'vim-vimwiki')
-makedepends=('python-setuptools')
+depends=('vim' 'python-tasklib' 'task' 'vim' 'vim-vimwiki' 'python-setuptools')
+makedepends=()
 provides=()
 conflicts=()
 replaces=()
