@@ -1,5 +1,5 @@
 pkgname=libosp-bin
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="HemiStereo sensor libraries"
 arch=('x86_64')
@@ -7,8 +7,8 @@ url="https://3dvisionlabs.com/"
 license=('unknown')
 depends=('boost' 'grpc' 'opencv' 'protobuf')
 
-source=('https://3dvisionlabs.com/wp-content/downloads/HemiStereo-0.9.1-Linux.tar.gz')
-sha256sums=('00eaf5b502e54268456417bb76dbc5276c208785a00e6315cd905cb211c54bde')
+source=("https://3dvisionlabs.com/wp-content/downloads/HemiStereo-$pkgver-Linux.tar.gz")
+sha256sums=('3945b4c65eb04a594c838c238f24fa11168f3a5131975106ed31fbd59c57f4e3')
 
 package() {
     install -d "${pkgdir}/usr/lib/osp"
@@ -25,7 +25,6 @@ package() {
     install -m755 "${srcdir}/HemiStereo-${pkgver}-Linux/lib/libosp_types.so" "${pkgdir}/usr/lib/"
 
     install -m755 "${srcdir}/HemiStereo-${pkgver}-Linux/lib/libosp_cv.so" "${pkgdir}/usr/lib/"
-    install -m644 "${srcdir}/HemiStereo-${pkgver}-Linux/lib/libosp_grpc_service.a" "${pkgdir}/usr/lib/"
     install -m755 "${srcdir}/HemiStereo-${pkgver}-Linux/lib/libosp_io.so" "${pkgdir}/usr/lib/"
     install -m755 "${srcdir}/HemiStereo-${pkgver}-Linux/lib/libosp_updater.so" "${pkgdir}/usr/lib/"
 
