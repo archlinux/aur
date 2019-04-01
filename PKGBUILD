@@ -1,9 +1,9 @@
 # Maintainer: SanskritFritz (gmail)
 
-pkgname=(pzl_common pzl_ajs pzl_akari pzl_arrowsudoku pzl_boggle pzl_bridges pzl_codeword pzl_fillomino pzl_futoshiki pzl_hidato pzl_hitori pzl_jigsaw pzl_jigsawsudoku pzl_kakuro pzl_minesweeper pzl_nurikabe pzl_scrabbler pzl_othello pzl_shikaku pzl_sokoban pzl_sudoku pzl_suguru pzl_sumpuzzle pzl_wordwheel pzl_wordladder)
+pkgname=(pzl_common pzl_ajs pzl_akari pzl_arrowsudoku pzl_boggle pzl_bridges pzl_codeword pzl_fillomino pzl_futoshiki pzl_hidato pzl_hitori pzl_jigsaw pzl_jigsawsudoku pzl_kakuro pzl_minesweeper pzl_numberlink pzl_nurikabe pzl_scrabbler pzl_othello pzl_shikaku pzl_sokoban pzl_sudoku pzl_suguru pzl_sumpuzzle pzl_wordwheel pzl_wordladder)
 pkgbase="pzl_games"
-pkgver=17.0
-_pkgver=17_0
+pkgver=18.0
+_pkgver=18_0
 pkgrel=1
 pkgdesc="Small collection of puzzle games."
 arch=('any')
@@ -24,6 +24,7 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
         "pzl_jigsawsudoku.desktop"
         "pzl_kakuro.desktop"
         "pzl_minesweeper.desktop"
+        "pzl_numberlink.desktop"
         "pzl_nurikabe.desktop"
         "pzl_scrabbler.desktop"
         "pzl_othello.desktop"
@@ -35,7 +36,7 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
         "pzl_wordwheel.desktop"
         "pzl_wordladder.desktop")
 
-md5sums=('569795363a95d14994913c33ac61d480'
+md5sums=('912a8af2810f3e693be07a571105ace6'
          '6f5058e263976d69a2eb356ca2c2a6b5'
          '37af6d1fa020f7fa532a69a0e07b32ad'
          'a1e25c7621e92598bcdb8d442133031a'
@@ -50,6 +51,7 @@ md5sums=('569795363a95d14994913c33ac61d480'
          'fa5438c87ada71ae5bdf2edd84df4290'
          '27c7b30bf6c9365397b35d4cca7044f8'
          '3938559de7b10ca25f86ccb59676547e'
+         'ab1d907a83c8b7e359eff308ee89d9d9'
          '08f441dcf7ec24f4148d9a952738d7f4'
          'bdcdc0250d61c33f85289e7e436546a6'
          'b56963fa4b72c8b93e799ed25055a3b4'
@@ -212,6 +214,17 @@ package_pzl_minesweeper() {
 	install -m644 pzl3_download/minesweeper.pyw "$pkgdir/usr/share/pzl_games"
 	install -m644 pzl3_download/minesweeper_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
 	install -m644 pzl_minesweeper.desktop "$pkgdir/usr/share/applications"
+}
+
+package_pzl_numberlink() {
+	pkgdesc="A game in which the player makes non-intersecting paths between pairs of numbers."
+	url="http://pzl.org.uk/numberlink.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/numberlink.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/numberlink_data.py "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/numberlink_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_numberlink.desktop "$pkgdir/usr/share/applications"
 }
 
 package_pzl_nurikabe() {
