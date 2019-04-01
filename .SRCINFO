@@ -1,7 +1,7 @@
 pkgbase = caitsith-lkm
 	pkgdesc = CaitSith LKM-based LSM version
-	pkgver = 0.2_20181225
-	pkgrel = 2
+	pkgver = 0.2_20190305
+	pkgrel = 1
 	url = http://caitsith.osdn.jp/
 	install = caitsith-lkm.install
 	arch = i686
@@ -11,12 +11,12 @@ pkgbase = caitsith-lkm
 	depends = linux
 	depends = ncurses
 	optdepends = caitsith-tools
-	noextract = caitsith-patch-0.2-20181225.tar.gz
-	source = http://jaist.dl.osdn.jp/caitsith/66537/caitsith-patch-0.2-20181225.tar.gz
-	source = http://jaist.dl.osdn.jp/caitsith/66537//caitsith-patch-0.2-20181225.tar.gz.asc
+	noextract = caitsith-patch-0.2-20190305.tar.gz
+	source = http://jaist.dl.osdn.jp/caitsith/66537/caitsith-patch-0.2-20190305.tar.gz
+	source = http://jaist.dl.osdn.jp/caitsith/66537//caitsith-patch-0.2-20190305.tar.gz.asc
 	validpgpkeys = 43C83369623D7AD3A96C2FC7425F128D0C64F52A
-	sha256sums = 7c8c9caa866091a56031ec0251779bec8b62038dae649693115c42665daf1005
-	sha256sums = 99665206043372b18df80bdc1688ac73998df5ec6dd96c2780086efb5cbe74c3
+	sha256sums = 7b9717ec43b618063af538e4c2d2d037887b6b5eed6c4f00d2192f5c580b1f34
+	sha256sums = 315f28e6442e93c1ed2574fcbfc24802d2c1bc68577566c99b4718b0bf303cde
 
 pkgname = caitsith-lkm
 
