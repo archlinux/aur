@@ -3,7 +3,7 @@
 pkgname=ttf-electroharmonix
 pkgver=1.0
 pkgrel=3
-pkgdesc="A Japanese font"
+pkgdesc="A Romanji font follow Japanese style"
 arch=('any')
 url="http://git.syskiller.io/stykers/fonts.git"
 license=('GPL')
