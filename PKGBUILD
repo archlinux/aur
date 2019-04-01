@@ -3,16 +3,16 @@
 
 pkgname=spice-up
 _pkgname=Spice-up
-pkgver=1.3.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Create simple and beautiful presentations on the Linux desktop"
 arch=('i686' 'x86_64')
 url="https://github.com/Philip-Scott/Spice-up"
 license=('GPL3')
-depends=('granite' 'libgee' 'gtk3' 'json-glib' 'libgudev' 'libevdev')
+depends=('granite' 'libgee' 'gtk3' 'json-glib' 'libgudev' 'libevdev' 'libsoup')
 makedepends=('cmake' 'vala')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Philip-Scott/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('61351f2ebf8187935752fbf10c2c06c290de69df0d05c874a9388edfb03f54552a4951c88eed63f69c085963d8911b210e2e97c1b33b0333d044a415db1b69f2')
+sha512sums=('f092156d1226a0c1fd65e72fe8c8192ef6c0b7c9e8f829d862c03b786e1fe347d43955892510ed40532699a4a0111eef2bec07d1bf52fa330dd42a7fb0999e6d')
 
 build() {
     cd "${_pkgname}-${pkgver}"
