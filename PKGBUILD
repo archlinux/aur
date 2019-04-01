@@ -5,7 +5,7 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=66.0.1
+pkgver=66.0.2
 pkgrel=1
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
@@ -30,7 +30,7 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         "https://gitlab.com/nikatar/for-aur/raw/master/firefox-appmenu/0001-bz-1468911.patch"
         unity-menubar.patch)
 sha256sums=('SKIP'
-            '2adca824b52ab5bc6e7e4fa486c1ecb47d283832bd4b75d10494b033f1cab911'
+            'e8d2908727309a58bee9a3dc994e85140c5977b2d486381d67d5e22ad3830d28'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
             '821f858bac2e13ce02b8c20d5387d4ecc8ab2d0e4ebe0a517cbf935da6aeb31b'
             'e1ea199faa3da245da5b8ed4fdc6cb71126d014c907d461f6fb7d0ec135e24e7')
@@ -81,6 +81,7 @@ ac_add_options --enable-official-branding
 ac_add_options --enable-update-channel=release
 ac_add_options --with-distribution-id=org.archlinux
 export MOZILLA_OFFICIAL=1
+export MOZ_APP_REMOTINGNAME=${pkgname//-/}
 export MOZ_TELEMETRY_REPORTING=1
 export MOZ_REQUIRE_SIGNING=1
 
