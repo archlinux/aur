@@ -7,6 +7,7 @@ pkgbase = uefitool-ng-git
 	license = BSD
 	makedepends = git
 	makedepends = qt5-base
+	makedepends = cmake
 	depends = qt5-base
 	provides = uefitool-ng
 	conflicts = uefitool-ng
