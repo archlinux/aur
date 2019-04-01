@@ -15,4 +15,9 @@ post_install() {
 post_remove() {
 	killall -w -u "$MCS_USER" -s KILL
 	userdel -r -f "$MCS_GROUP" &> /dev/null
+	
+	CONF_FILE="/etc/mcsctl.conf"
+	if [ -e "$CONF_FILE" ]; then
+		echo "==> Your configuration in \"$CONF_FILE\" was preserved."
+	fi
 }

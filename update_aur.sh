@@ -17,6 +17,7 @@ if [ ! -e "$BUILD_FILE" ]; then
 fi
 source "$BUILD_FILE"
 
+# Replace with latest commit to master branch
 LATEST_COMMIT=$(git ls-remote "$url" master | cut -f 1)
 if [ "$commit" = "$LATEST_COMMIT" ]; then
 	echo "Already on latest commit!"
@@ -27,6 +28,7 @@ sed -i "s%commit\=.*%commit\=('$LATEST_COMMIT')%" "$BUILD_FILE"
 # Increment pkgrel on every "release"
 sed -i "s%pkgrel\=.*%pkgrel\=$((pkgrel+1))%" "$BUILD_FILE"
 
+# Update package checksum
 PKG_SHA=$(curl -L -s "$url/archive/$LATEST_COMMIT.tar.gz" | sha256sum | cut -d " " -f 1)
 sed -i "s%sha256sums\=.*%sha256sums\=('$PKG_SHA')%" "$BUILD_FILE"
 

@@ -2,9 +2,9 @@
 
 pkgname=mcsctl-git
 pkgver=master
-commit=('3da454b8d864d946a183741328e6c058597e8be1')
-pkgrel=2
-pkgdesc='Manage multiple minecraft servers with a simple bash script and systemd unit file.'
+commit=('d2b579bbd2f977a7547405135f04d3a0be6c2add')
+pkgrel=3
+pkgdesc='Manage multiple minecraft servers with a simple bash script and systemd unit template.'
 arch=('x86_64')
 url='https://github.com/Hetsh/mcsctl'
 license=('GPL3')
@@ -13,9 +13,13 @@ provides=('mcsctl')
 conflicts=('mcsctl')
 install="$pkgname.install"
 source=("$url/archive/$commit.tar.gz")
-sha256sums=('63d3eb92d76634d7a5cfde7275b90c7041f035e8a315772d3ea40597f4911125')
+sha256sums=('cfe60c3f6de7ce47fd314123f167583c132ff92ba27689d01445e4470b07b0f0')
 
 package() {
 	install -Dm 644 "$srcdir/${pkgname%-git}-$commit/mcs@.service" "$pkgdir/usr/lib/systemd/system/mcs@.service"
 	install -Dm 755 "$srcdir/${pkgname%-git}-$commit/mcsctl.sh" "$pkgdir/usr/bin/mcsctl"
+	
+	# Generate an example config file from default options inside the mcsctl script
+	sed -n '/\# Mutable config/,/\# \/Mutable config/p' "$srcdir/${pkgname%-git}-$commit/mcsctl.sh" | head -n -1 | tail -n +2 > "$srcdir/${pkgname%-git}-$commit/mcsctl.conf.bak"
+	install -Dm 644 "$srcdir/${pkgname%-git}-$commit/mcsctl.conf.bak" "$pkgdir/etc/mcsctl.conf.bak"
 }
