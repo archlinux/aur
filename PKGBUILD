@@ -14,7 +14,7 @@ optdepends=('languagetool: system wide installation of LT'
 install=${pkgname}.install
 source=(${pkgname}-${pkgver}.zip::"https://languagetool.org/download/word2vec/pt.zip")
 md5sums=('3808d92488f0d57f1884d8c5ce8aebad')
-#PKGEXT='.pkg.tar'
+PKGEXT='.pkg.tar'
 #LANG='C'
 options=(!strip)
 
