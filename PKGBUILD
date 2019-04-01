@@ -3,7 +3,8 @@ pkgname=python-papis-rofi-git
 _name=${pkgname#python-}
 _name=${_name//-git}
 provides=('python-papis-rofi')
-pkgver=0.1.1
+_pkgver=0.1.1
+pkgver=0.1.1.r2.5a60ed2
 pkgrel=1
 pkgdesc="Create simple GUIs using the Rofi application (fork for papis)"
 arch=('any')
@@ -20,7 +21,7 @@ noextract=()
 
 pkgver() {
   cd "${srcdir}/${_name}"
-  printf "${pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
