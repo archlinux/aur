@@ -58,7 +58,6 @@ pkgbase = lib32-ffmpeg
 	provides = libavdevice.so
 	provides = libavfilter.so
 	provides = libavformat.so
-	provides = libavresample.so
 	provides = libavutil.so
 	provides = libpostproc.so
 	provides = libswresample.so

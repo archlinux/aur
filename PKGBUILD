@@ -65,8 +65,7 @@ makedepends=('ffnvcodec-headers' 'git' 'lib32-ladspa' 'yasm')
 optdepends=('lib32-ladspa: LADSPA filters')
 provides=(
       'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-      'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
-      'libswscale.so'
+      'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
 )
 source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}")
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
@@ -91,7 +90,6 @@ build() {
     --disable-debug \
     --disable-static \
     --disable-stripping \
-    --enable-avresample \
     --enable-fontconfig \
     --enable-gmp \
     --enable-gnutls \
@@ -123,6 +121,7 @@ build() {
     --enable-libxml2 \
     --enable-libxvid \
     --enable-nvenc \
+    --enable-nvdec \
     --enable-omx \
     --enable-shared \
     --enable-version3
