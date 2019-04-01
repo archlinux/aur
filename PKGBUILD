@@ -11,12 +11,12 @@ _oomoxify_ver=1.1.2
 _base16_cmt=2e4112fe859ed5d33f67c177f11d369d360db9ae
 _numix_icons_cmt=88ba3654506c73f77a28629d863d1e23a553bff7
 _numix_folders_icons_cmt=24e5f6c6603e7f798553d2f24a00de107713c333
-_papirus_icons_ver=20190302
+_papirus_icons_ver=20190331
 _suru_plus_icons_ver=25.2
 
 pkgname=oomox
 pkgver=${_oomox_ver}
-pkgrel=2
+pkgrel=3
 pkgdesc='Themix: GUI for generating different color variations
 of Arc, Materia, Oomox themes
 (GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm),
@@ -91,7 +91,7 @@ md5sums=('c1398148b5af106b5588b73322f60eee'
          '8f7506b74131bfce78685aade0e275eb'
          '6873ed4ffd84e69e10625f5aee2bfdc6'
          '3fcb07cefe43a6a2fe4d977f124624ec'
-         '893c4dbe58031e9401a7ec9f3984a507'
+         'a34ef2ac3bfe76dace113166bfdca8fe'
          '559533cef2d920bd71eabd4a0bd8953e')
 
 prepare() {
