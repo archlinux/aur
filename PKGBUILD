@@ -7,8 +7,8 @@ pkgdesc="Extended emulation of metalic gear based toy, creates curved line desig
 arch=('x86_64')
 url="http://www.akatz712.com/"
 license=('GPL')
-depends=('fltk' 'libharu')
-makedepends=('fltk' 'libharu')
+depends=('fltk>=1.3.3' 'libharu')
+makedepends=('fltk>=1.3.3' 'libharu')
 source=("https://sourceforge.net/projects/complexshapes/files/$pkgname-$pkgver.tar.gz/download")
 md5sums=('9fb8340006da51ce6694de4e49b1f506')
 

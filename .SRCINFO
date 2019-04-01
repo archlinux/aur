@@ -5,9 +5,9 @@ pkgbase = mdesigner
 	url = http://www.akatz712.com/
 	arch = x86_64
 	license = GPL
-	makedepends = fltk
+	makedepends = fltk>=1.3.3
 	makedepends = libharu
-	depends = fltk
+	depends = fltk>=1.3.3
 	depends = libharu
 	source = https://sourceforge.net/projects/complexshapes/files/mdesigner-1.0.tar.gz/download
 	md5sums = 9fb8340006da51ce6694de4e49b1f506
