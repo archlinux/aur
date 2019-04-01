@@ -1,0 +1,22 @@
+pkgbase = perl-dist-zilla-plugin-test-perl-critic
+	pkgdesc = Tests to check your code against best practices
+	pkgver = 3.001
+	pkgrel = 1
+	url = https://metacpan.org/release/Dist-Zilla-Plugin-Test-Perl-Critic
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-perl-critic>=0
+	depends = perl-data-section>=0.004
+	depends = perl-dist-zilla>=0
+	depends = perl-moose>=0
+	depends = perl-sub-exporter-formethods>=0
+	depends = perl-namespace-autoclean>=0
+	depends = perl>=5.008
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-Test-Perl-Critic-3.001.tar.gz
+	md5sums = a47ab06215e27a49db553fe885594c77
+	sha512sums = 848c00dfabea61984c056fd16fff29a3b53aef3b46f2533ab5b6dcd0c8e0fb38984f307523e1d735825c4289cd58312c36ca5455d4a18848f278c2933ad7ce84
+
+pkgname = perl-dist-zilla-plugin-test-perl-critic
+
