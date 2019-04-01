@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=dive-git
-pkgver=v0.7.0.r1.ge7bf771
+pkgver=v0.7.1.r0.gfa48fc1
 pkgrel=1
 pkgdesc="A tool for exploring each layer in a docker image"
 url="https://github.com/wagoodman/dive"
