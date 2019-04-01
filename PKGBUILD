@@ -8,8 +8,8 @@ pkgdesc="SQL Client built in Vala and GTK3"
 arch=('i686' 'x86_64')
 url="https://github.com/Alecaddd/sequeler"
 license=('GPL3')
-depends=('gtk3' 'vala' 'granite' 'libxml2' 'libgda' 'libgda-mysql' 'libgda-postgres' 'gtksourceview3')
-makedepends=('git' 'meson' 'ninja' 'libfixposix')
+depends=('gtk3' 'granite' 'libxml2' 'libgda' 'libgda-mysql' 'libgda-postgres' 'gtksourceview3')
+makedepends=('git' 'meson' 'ninja' 'vala')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/Alecaddd/sequeler.git")
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_gitname}/"
-    meson . _build --prefix=/usr
+    arch-meson . _build
     ninja -C _build
 }
 
