@@ -84,6 +84,9 @@ package() {
 	fi
     done
 
+    # Workaround conflict with jlink-software-and-documentation
+    mv $pkgdir/usr/lib/udev/rules.d/99-jlink.rules $pkgdir/usr/lib/udev/rules.d/99-ti-jlink.rules
+
     install -D -m0644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
