@@ -1,13 +1,13 @@
 # Maintainer: Kieran Colford <kieran@kcolford.com>
 pkgname=pacman-cycles-git
 pkgver=1.0.0.r0.g116d2cd
-pkgrel=1
+pkgrel=2
 pkgdesc="A script to print out installed packages that are part of a dependency cycle."
 arch=('any')
 url="https://github.com/kcolford/pacman-cycles"
 license=('GPL')
 groups=()
-depends=('bash' 'pacman')
+depends=('bash' 'pacman' 'pacman-contrib')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
