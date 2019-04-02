@@ -7,6 +7,7 @@
 #
 # DON'T FORGET TO REPLACE `yay` to your favorite AUR helper
 # #########################################################
+cd $(dirname "$0")
 
 RELEASE_TIMESTAMP=$(curl -sL https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/ | grep -A2 "firefox-$(cat PKGBUILD  | grep -oP "^_version=\K(.*)"  | awk '{print $1}').ru.linux-$(uname -m).tar.bz2\"" | tail -n1 | cut -f2 -d'>' | cut -f1 -d'<' | date +"%s" -f -)
 LOCAL_TIMESTAMP=$(cat ~/.firefox-nightly-ru.release.timestamp || echo 0)
