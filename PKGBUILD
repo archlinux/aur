@@ -1,7 +1,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=appleseed-git
 #_fragment="#branch=2.0.5-beta-maintenance"
-pkgver=2.0.0.beta.r254.g499051c45
+pkgver=2.0.0.beta.r291.g653efbc37
 pkgrel=1
 epoch=1
 pkgdesc="physically-based global illumination rendering engine primarily designed for animation and visual effects. "
@@ -21,23 +21,15 @@ md5sums=('SKIP'
   
 #_pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
 #_pyver=$(pacman -Sddp --print-format %v python|grep -oP ^[0-9.]{3})
-CMAKE_FLAGS=" -DUSE_EXTERNAL_EXR=ON \
-              -DUSE_EXTERNAL_OCIO=ON \
-              -DUSE_EXTERNAL_EMBREE=ON \
-              -DUSE_EXTERNAL_OIIO=ON \
-              -DUSE_EXTERNAL_OSL=ON \
-              -DUSE_EXTERNAL_PNG=ON \
-              -DUSE_EXTERNAL_XERCES=ON \
-              -DUSE_EXTERNAL_ZLIB=ON \
-              -DUSE_EXTERNAL_SEEXPR=ON \
+CMAKE_FLAGS=" -DWITH_EMBREE=ON \
+              -DWITH_DISNEY_MATERIAL=ON \
+              -DWITH_PYTHON3_BINDINGS=ON \
               -DUSE_STATIC_EMBREE=OFF \
               -DUSE_STATIC_EXR=OFF \
               -DUSE_STATIC_BOOST=OFF \
               -DUSE_STATIC_OCIO=OFF \
               -DUSE_STATIC_OIIO=OFF \
               -DUSE_STATIC_OSL=OFF \
-              -DWITH_DISNEY_MATERIAL=ON \
-              -DWITH_PYTHON3_BINDINGS=ON \
               -DPYTHON3_INCLUDE_DIR=/usr/include/python3.7m \
               -DWARNINGS_AS_ERRORS=OFF"
 
@@ -51,6 +43,7 @@ prepare() {
   git apply -v ../cmake.extra.install.dirs.remove.patch
   grep -q avx /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_AVX=ON"
   grep -q avx2 /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_AVX2=ON"
+  grep -q f16c /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_F16C=ON"
   grep -q sse4_2 /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_SSE42=ON"
 }
 build() {
