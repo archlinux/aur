@@ -8,6 +8,12 @@ depends=("glibc" "java-runtime=8")
 arch=('x86_64')
 license=('custom:"Super Micro Computer"')
 url="http://www.supermicro.com/products/nfo/ipmi.cfm"
+
+backup=('account.properties'
+        'email.properties'
+        'IPMIView.properties'
+        'timeout.properties')
+
 source=("ipmiview.desktop")
 source_x86_64=("https://www.supermicro.com/wftp/utility/IPMIView/Linux/IPMIView_${pkgver}_build.${_pkghash}_bundleJRE_Linux_x64.tar.gz")
 

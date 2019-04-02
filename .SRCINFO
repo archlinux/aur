@@ -8,6 +8,10 @@ pkgbase = ipmiview
 	makedepends = tar
 	depends = glibc
 	depends = java-runtime=8
+	backup = account.properties
+	backup = email.properties
+	backup = IPMIView.properties
+	backup = timeout.properties
 	source = ipmiview.desktop
 	sha256sums = 6a923aab3561e28e5d3f59acc7897bb51a2051f066dd925500498126c7fdf555
 	source_x86_64 = https://www.supermicro.com/wftp/utility/IPMIView/Linux/IPMIView_2.15.0_build.190109_bundleJRE_Linux_x64.tar.gz
