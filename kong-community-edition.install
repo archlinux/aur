@@ -1,0 +1,9 @@
+post_install() {
+	mkdir -p /etc/kong
+	mv /usr/lib/luarocks/rocks/kong/1.1.0-0/kong.conf.default /etc/kong/kong.conf.default
+
+}
+
+post_upgrade() {
+	post_install
+}
