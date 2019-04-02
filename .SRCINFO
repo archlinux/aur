@@ -1,6 +1,6 @@
 pkgbase = python-uproot-methods
 	pkgdesc = Pythonic mix-ins for ROOT classes
-	pkgver = 0.4.4
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/scikit-hep/uproot-methods
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-uproot-methods
 	makedepends = python-setuptools
 	makedepends = python-awkward
 	makedepends = python-numpy
-	source = https://github.com/scikit-hep/uproot-methods/archive/0.4.4.zip
-	sha256sums = 52dbf8819cc120a980f2d9eab619b2a35dc296a1c1a9edaa85c126a7a8f194aa
+	source = https://github.com/scikit-hep/uproot-methods/archive/0.4.6.zip
+	sha256sums = c93015ba68d886b28eba57a1c111ba5bccc761a96ef2c396e39b9633b43ce60b
 
 pkgname = python2-uproot-methods
 	depends = python2-awkward
