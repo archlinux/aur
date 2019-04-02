@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-AUR_REPO="$1"
-if [ -n "$AUR_REPO" ]; then
-	cd "$AUR_REPO"
+# Change to the AUR repo
+if [ -n "$1" ]; then
+	cd "$1"
 fi
 
 if [ ! -d ".git" ]; then
-	echo "Not a repository!"
+	echo "Not a git repository!"
 	exit 1
 fi
 
