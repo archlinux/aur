@@ -2,7 +2,7 @@
 # Contributor:  Andrew Katz <akatz712@gmail.com>
 pkgname=mdesigner
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Extended emulation of metalic gear based toy, creates curved line designs."
 arch=('x86_64')
 url="http://www.akatz712.com/"

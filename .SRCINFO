@@ -1,7 +1,7 @@
 pkgbase = mdesigner
 	pkgdesc = Extended emulation of metalic gear based toy, creates curved line designs.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.akatz712.com/
 	arch = x86_64
 	license = GPL
