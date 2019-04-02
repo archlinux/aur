@@ -2,27 +2,33 @@
 
 _pkgname=assemblyscript
 pkgname=assemblyscript-git
-_pkgver=0.3.0
-pkgver=r634.b2adf8b1
+pkgver=0.6.0.r636.abf3de90
 pkgrel=1
 pkgdesc="Compiles TypeScript to WebAssembly using Binaryen"
 arch=('any')
 url="https://github.com/AssemblyScript/${_pkgname}"
 license=('Apache')
+depends=('nodejs')
 makedepends=('npm' 'git')
 source=("${_pkgname}::git+${url}#branch=master")
 sha256sums=('SKIP')
 
+get_pkgver() {
+  _pkgver=$(node -pe "require('${srcdir}/${_pkgname}/package.json').version")
+}
+
 pkgver() {
+  get_pkgver
   cd "${_pkgname}"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    echo "${_pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
   )
 }
 
 package() {
-  npm pack "${_pkgname}"
+  get_pkgver
+  npm pack "${srcdir}/${_pkgname}"
   npm install -g --user root --prefix "${pkgdir}/usr" "${_pkgname}-${_pkgver}.tgz"
   find "${pkgdir}" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
 
