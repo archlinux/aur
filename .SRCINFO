@@ -3,6 +3,7 @@ pkgbase = wps-dark-theme-hook
 	pkgver = 1
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/wps-dark-theme-hook
+	install = wps-dark-theme-hook.install
 	arch = any
 	license = GPL
 	depends = wps-office
