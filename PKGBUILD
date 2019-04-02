@@ -12,11 +12,11 @@ depends=('libyaml' 'luajit' 'openssl' 'pcre' 'zlib')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("git+https://github.com/Kong/kong.git#1.1.0")
-sha512sums=('755e7b1b2cfae427c1dc49ef5bd0dff72b06fda690438f2b831762268313ce53aa14d3f42d2b8f13f6c3cb3643ef1aa74ffde7ccac14b80dd3fc527d3be5204b')
+# sha512sums=('755e7b1b2cfae427c1dc49ef5bd0dff72b06fda690438f2b831762268313ce53aa14d3f42d2b8f13f6c3cb3643ef1aa74ffde7ccac14b80dd3fc527d3be5204b')
 
 package(){
 	# Enter the dir
-	cd "$srcdir"
+	# cd "$srcdir"
 
 	# Extract package data
 	# tar xzf data.tar.gz -C "${pkgdir}"
