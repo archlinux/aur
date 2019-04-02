@@ -1,6 +1,6 @@
 pkgbase = blend2d-git
 	pkgdesc = A high-performance 2D vector graphics engine written in C++
-	pkgver = r3.e15b9ca
+	pkgver = r4.1490253
 	pkgrel = 1
 	url = https://blend2d.com
 	arch = i686

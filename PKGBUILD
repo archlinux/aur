@@ -2,7 +2,7 @@
 
 _pkgname=blend2d
 pkgname=${_pkgname}-git
-pkgver=r3.e15b9ca
+pkgver=r4.1490253
 pkgrel=1
 pkgdesc='A high-performance 2D vector graphics engine written in C++'
 url='https://blend2d.com'
@@ -28,7 +28,6 @@ build() {
   mkdir build && cd build
 
   # "It's strongly advised to use Clang to compile Blend2D on all platforms to achieve maximum performance."
-  # Moreover, unit testing currently fails with GCC and march=native.
   export CC='clang'
   export CXX='clang++'
 
