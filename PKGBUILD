@@ -8,15 +8,15 @@
 # Contributor: Tobias Hunger <tobias dot hunger at gmail dot com>
 
 pkgname=qtcreator-git
-pkgver=v4.5.0.r629.ge1ad7a1784
+pkgver=v4.9.0.rc1.r328.ged87b74a59
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
-arch=('i686' 'x86_64')
-url='https://www.qt.io/ide/'
-license=('GPL')
-depends=('clang' 'qt5-declarative' 'qt5-script' 'qt5-svg' 'qt5-tools')
-makedepends=('git' 'llvm' 'mesa')
-options=('docs')
+arch=('x86_64')
+url='https://www.qt.io'
+license=(LGPL)
+depends=(clang clazy qt5-quickcontrols qt5-quickcontrols2 qt5-script qt5-tools qt5-webengine)
+makedepends=(git llvm mesa python)
+options=(docs)
 optdepends=('bzr: bazaar support'
             'cmake: cmake project support'
             'cvs: cvs support'
@@ -29,35 +29,44 @@ optdepends=('bzr: bazaar support'
             'subversion: subversion support'
             'valgrind: analyze support'
             'x11-ssh-askpass: ssh support')
-provides=('qtcreator' 'qbs')
-conflicts=('qtcreator' 'qbs')
+provides=(qtcreator qbs)
+conflicts=(qtcreator qbs)
 source=('git+https://code.qt.io/qt-creator/qt-creator.git'
-        'git+https://code.qt.io/qbs/qbs.git')
-md5sums=('SKIP'
-         'SKIP')
+        'git+https://code.qt.io/qbs/qbs.git'
+        'qtcreator-clang-plugins.patch')
+sha256sums=('SKIP'
+            'SKIP'
+            '955e2ec0de1ea0fd2994d04dfb9a04e74513e4f3fe189e76dd4a256fd9c864eb')
 
 pkgver() {
     cd qt-creator
+
     git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-    [[ -d build ]] && rm -r build
-    mkdir build
+    mkdir -p build
+
+    cd qt-creator
 
     # fix hardcoded libexec path
-    sed -e 's|libexec\/qtcreator|lib\/qtcreator|g' -i qt-creator/qtcreator.pri
+    sed -e 's|libexec\/qtcreator|lib\/qtcreator|g' -i qtcreator.pri
+
+    # Load analyzer plugins on demand, since upstream clang doesn't link to all plugins
+    # see http://code.qt.io/cgit/clang/clang.git/commit/?id=7f349701d3ea0c47be3a43e265699dddd3fd55cf
+    # and https://bugs.archlinux.org/task/59492
+    patch -p1 -i ../qtcreator-clang-plugins.patch
 
     # Do *NOT* use system Qbs: qt creator master is *NOT* compatible with any released Qbs!
-    ( cd qt-creator/src/shared && rm -rf qbs && ln -s ../../../qbs qbs )
+    ( cd src/shared && rm -rf qbs && ln -s ../../../qbs qbs )
 }
 
 build() {
     cd build
 
-    QTC_FORCE_CLANG_LIBTOOLING=1 \
-        qmake LLVM_INSTALL_DIR=/usr CONFIG+=journald QMAKE_CFLAGS_ISYSTEM=-I \
-            "$srcdir"/qt-creator/qtcreator.pro
+    qmake LLVM_INSTALL_DIR=/usr CONFIG+=journald QMAKE_CFLAGS_ISYSTEM=-I \
+        "${srcdir}/qt-creator/qtcreator.pro"
+
     make
     make docs
 }
