@@ -1,7 +1,7 @@
 pkgbase = g_lomepro
 	pkgdesc = Local Membrane Property Analysis
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www3.mpibpc.mpg.de/groups/grubmueller/start/g_lomepro.html
 	arch = i686
 	arch = x86_64

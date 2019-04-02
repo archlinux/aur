@@ -3,7 +3,7 @@
 pkgname=g_lomepro
 _gromacs=gromacs-4.6.7
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Local Membrane Property Analysis'
 url='http://www3.mpibpc.mpg.de/groups/grubmueller/start/g_lomepro.html'
 license=("GPL")
@@ -22,6 +22,8 @@ build() {
       -e "s:/home/vgapsys/Downloads/fftw/compiled/lib64:/usr/lib:" \
       -e "s:/home/vgapsys/Downloads/fftw/compiled/include:/usr/include:" \
       -i Makefile
+  # Hack due to rpc removed from gclib. tirpc has compatible API.
+  export C_INCLUDE_PATH=/usr/include/tirpc/
   make
 }
 
