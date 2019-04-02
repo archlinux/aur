@@ -26,7 +26,7 @@ package(){
 	install -D -m644 "/usr/local/openresty/pod/nginx/license_copyright.pod" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
 	mkdir usr/bin 2> /dev/null; mv usr/local/bin/* usr/bin; rm -rf usr/local/bin
 
-	mv usr/local/* usr; rm -rf usr/local
+	rsync -a usr/local/* usr; rm -rf usr/local
 
 	cd ..
 
