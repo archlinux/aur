@@ -1,18 +1,18 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=intel-opencl-clang-git
-pkgver=7.0.1.r1.gd29e1fa
-pkgrel=2
+pkgver=8.0.0.r0.gdaf5e4d
+pkgrel=1
 pkgdesc='A wrapper library around clang that can compile OpenCL C kernels to SPIR-V modules (git version)'
 arch=('x86_64')
 url='https://github.com/intel/opencl-clang/'
 license=('custom')
-depends=('clang')
+depends=('clang' 'llvm-libs')
 makedepends=('git' 'cmake' 'llvm' 'spirv-llvm-translator')
 provides=('intel-opencl-clang' 'opencl-clang-git')
 conflicts=('intel-opencl-clang' 'opencl-clang-git')
 replaces=('opencl-clang-git')
-source=('git+https://github.com/intel/opencl-clang.git#branch=ocl-open-70')
+source=('git+https://github.com/intel/opencl-clang.git#branch=ocl-open-80')
 sha256sums=('SKIP')
 
 pkgver() {
