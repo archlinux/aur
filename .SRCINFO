@@ -1,0 +1,13 @@
+pkgbase = wps-dark-theme-hook
+	pkgdesc = Pacman hook that force wps-office using gtk style with Adwaita to avoid issues under dark themes
+	pkgver = 1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/wps-dark-theme-hook
+	arch = any
+	license = GPL
+	depends = wps-office
+	source = wps-dark-theme.hook
+	sha256sums = a9f6d1bf014c9080abed88a4d4c6bd02485f98d9fd618badd65ebb19bae67fa8
+
+pkgname = wps-dark-theme-hook
+
