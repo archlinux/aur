@@ -1,7 +1,7 @@
 pkgbase = amidst-git
 	pkgdesc = Advanced Minecraft Interface and Data/Structure Tracking
 	pkgver = 4.3.beta5.r18.g15953d62
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/toolbox4minecraft/amidst
 	arch = any
 	license = GPL3

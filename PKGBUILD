@@ -6,7 +6,7 @@
 _pkg=amidst
 pkgname="$_pkg-git"
 pkgver=4.3.beta5.r18.g15953d62
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking'
 arch=('any')
 url='https://github.com/toolbox4minecraft/amidst'
@@ -28,7 +28,7 @@ pkgver() {
 	printf '%s\n' "${_ver#v}"
 }
 
-prepare() {
+build() {
 	cd "$srcdir" || exit
 
 	# Create shell script to launch the application
