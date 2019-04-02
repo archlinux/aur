@@ -3,14 +3,14 @@
 _gopkgname='github.com/natsukagami/mpd-mpris'
 
 pkgname=mpd-mpris
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='An implementation of the MPRIS protocol for MPD.'
 arch=('any')
 url='https://github.com/natsukagami/mpd-mpris'
 makedepends=('go>=1.9' 'git')
 source=("https://github.com/natsukagami/mpd-mpris/archive/v$pkgver.tar.gz")
-sha256sums=('d4eb193e0a98f584aed5603170ea226f2bf996769f995138ab5d2a9850c67cdb')
+sha256sums=('9ea6c3cbae012590c10077dee81158c6a104fc4c86113955bfdbb543db15ce02')
 
 prepare() {
     export GOPATH="$srcdir/build"
