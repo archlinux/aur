@@ -2,7 +2,7 @@
 _gitrepository='portunus'
 _gitbranch='master'
 pkgname='portunus'
-pkgver=2.03
+pkgver=2.04
 pkgrel=1
 pkgdesc='aggregates all package managers under one tool'
 arch=('i686' 'x86_64')
