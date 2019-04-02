@@ -1,0 +1,16 @@
+pkgbase = olive-community-effects-git
+	pkgdesc = A collection of effects for Olive made by the community
+	pkgver = r34.fe15bf9
+	pkgrel = 1
+	url = https://github.com/cgvirus/Olive-Editor-Community-Effects
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = olive-git
+	conflicts = olive
+	source = git+https://github.com/cgvirus/Olive-Editor-Community-Effects#commit=fe15bf9
+	sha512sums = SKIP
+
+pkgname = olive-community-effects-git
+
