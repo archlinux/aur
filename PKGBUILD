@@ -1,7 +1,7 @@
 # Based on snapgene-viewer package by Antony Lee <anntzer dot lee at gmail dot com>
 # Maintainer: Matthijs Tadema <M dot J dot Tadema at gmail dot com>
 pkgname=snapgene
-pkgver=4.2.6
+pkgver=4.2.6-1
 pkgrel=1
 pkgdesc='Software for plasmid mapping, primer design, and restriction site analysis'
 arch=('x86_64')
