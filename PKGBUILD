@@ -1,56 +1,32 @@
-# Maintainer: Filipe Verri <filipeverri@gmail.com>
+# Maintainer: Adrià Arrufat <swiftscythe@gmail.com>
+# Contributor: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=build2
-pkgver=0.6.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="build2 build system"
 arch=(i686 x86_64)
 url="https://build2.org/"
 license=('MIT')
-depends=('libbutl>=0.6' 'libbutl<0.7')
+makedepends=(clang wget)
 source=("https://download.build2.org/$pkgver/build2-toolchain-$pkgver.tar.xz")
-sha256sums=('9f451f9e6355cc8c009b23d9a3454e6f010bac491b3b8a81a8364521c217af04')
+sha256sums=('d41d516cc09b7d8af877fbd1f279cf36358b33288498131476284232891b8d60')
 
 build() {
   cd build2-toolchain-$pkgver
-
-  if test -z "$(command -v b && b --version | grep '^build2 0\.6\.')"
-  then
-    cd build2
-    if ! test -x build2/b-boot; then
-      ./bootstrap.sh g++
-    fi
-    cd ..
-    export BCMD="$(pwd)/build2/build2/b-boot"
-  else
-    export BCMD=b
-  fi
-
-  cd $pkgname
-
-  $BCMD configure                      \
-    config.cxx=g++                     \
-    config.cc.coptions=-O3             \
-    config.bin.lib=shared              \
-    config.install.root="$pkgdir/usr"  \
-    config.import.libbutl=''
-
-  $BCMD "update($pkgname/)"
+  mkdir -p install
+  ./build.sh --trust yes --install-dir `pwd`/install clang++
 }
 
 package() {
   cd build2-toolchain-$pkgver
-
-  if test -z "$(command -v b && b --version | grep '^build2 0\.6\.')"
-  then
-    export BCMD="$(pwd)/build2/build2/b-boot"
-  else
-    export BCMD=b
-  fi
-
-  cd $pkgname
-  $BCMD install
-
+  mkdir -p "$pkgdir/usr/bin"
+  cp install/bin/* "$pkgdir/usr/bin/"
+  mkdir -p "$pkdir/usr/share"
+  cp -R install/share/ "$pkgdir/usr/share/"
+  mkdir -p "$pkdir/usr/lib"
+  cp -R install/lib/ "$pkgdir/usr/lib/"
+  rm $pkgdir/usr/lib/{libsqlite3.so,libpkgconf.so}
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 ./build2/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
