@@ -1,0 +1,43 @@
+From 788a52c399f4731ac1fb27a49db48626f3e140e1 Mon Sep 17 00:00:00 2001
+From: anthraxx <levente@leventepolyak.net>
+Date: Tue, 2 Apr 2019 14:53:28 +0200
+Subject: [PATCH] respect existence of distro CFLAGS and CPPFLAGS
+
+- append CFLAGS instead of set to honor default distro CFLAGS
+- add CPPFLAGS that are defined by distros
+---
+ Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index e4ded69..7fef84a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -8,7 +8,7 @@
+ #
+ OFLAGS = -O0 -g
+ OFLAGS  = -O2
+-CFLAGS  = -std=gnu99 -fPIC -Wall -Wno-format-truncation $(OFLAGS)
++CFLAGS  += -std=gnu99 -fPIC -Wall -Wno-format-truncation $(OFLAGS)
+ 
+ SHELL = /bin/sh
+ TAR = tar
+@@ -68,13 +68,13 @@ all: libgif.so libgif.a libutil.so libutil.a $(UTILS)
+ $(UTILS):: libgif.a libutil.a
+ 
+ libgif.so: $(OBJECTS) $(HEADERS)
+-	$(CC) $(CFLAGS) -shared $(LDFLAGS) -Wl,-soname -Wl,libgif.so.$(LIBMAJOR) -o libgif.so $(OBJECTS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) -shared $(LDFLAGS) -Wl,-soname -Wl,libgif.so.$(LIBMAJOR) -o libgif.so $(OBJECTS)
+ 
+ libgif.a: $(OBJECTS) $(HEADERS)
+ 	$(AR) rcs libgif.a $(OBJECTS)
+ 
+ libutil.so: $(UOBJECTS) $(UHEADERS)
+-	$(CC) $(CFLAGS) -shared $(LDFLAGS) -Wl,-soname -Wl,libutil.so.$(LIBMAJOR) -o libutil.so $(UOBJECTS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) -shared $(LDFLAGS) -Wl,-soname -Wl,libutil.so.$(LIBMAJOR) -o libutil.so $(UOBJECTS)
+ 
+ libutil.a: $(UOBJECTS) $(UHEADERS)
+ 	$(AR) rcs libutil.a $(UOBJECTS)
+-- 
+2.21.0
+
