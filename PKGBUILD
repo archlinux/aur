@@ -7,12 +7,12 @@
 _basename=x265
 pkgname=lib32-x265
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Source H265/HEVC video encoder. 32bit libraries.'
 arch=('x86_64')
 url='https://bitbucket.org/multicoreware/x265'
 license=('GPL')
-depends=('gcc-libs-multilib'  'lib32-numactl')
+depends=('lib32-gcc-libs'  'lib32-numactl')
 makedepends=('cmake' 'nasm')
 provides=('libx265.so')
 source=("https://bitbucket.org/multicoreware/x265/downloads/x265_${pkgver}.tar.gz")
@@ -61,7 +61,7 @@ build() {
   #ln -s ../build-12/libx265.a libx265_main12.a
 
   cmake ../source \
-    -DCMAKE_INSTALL_PREFIX='/usr' -DLIB_INSTALL_DIR='/usr/lib32'  -DCMAKE_LIBRARY_PATH='/usr/lib32'   \
+    -DCMAKE_INSTALL_PREFIX='/usr' -DLIB_INSTALL_DIR='lib32'  \
     -DENABLE_SHARED='TRUE' \
     -DENABLE_HDR10_PLUS='TRUE' \
     -DEXTRA_LINK_FLAGS='-L .' 
