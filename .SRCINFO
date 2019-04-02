@@ -1,14 +1,14 @@
 pkgbase = python-cfgv
 	pkgdesc = Validate configuration and produce human readable error messages.
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://pypi.org/project/cfgv/
 	arch = any
 	license = MIT
 	makedepends = python
 	makedepends = python2
-	source = https://pypi.io/packages/source/c/cfgv/cfgv-1.4.0.tar.gz
-	md5sums = 583abc660a415f92196773b9156e0f44
+	source = https://pypi.io/packages/source/c/cfgv/cfgv-1.6.0.tar.gz
+	md5sums = 1e08f4a1e2438a3ef6d15e8f19468335
 
 pkgname = python-cfgv
 	pkgdesc = Python 3 client for cfgv
