@@ -10,12 +10,12 @@
 # Contributor: delor <bartekpiech gmail com>
 
 pkgname=qtcreator-fixed-themes
-pkgver=4.8.1
-_clangver=7.0.1
+pkgver=4.8.2
+_clangver=8.0.0
 pkgrel=2
 pkgdesc='Lightweight, cross-platform integrated development environment, with fixes applied for various themes and other bug fixes'
 arch=(x86_64)
-url='http://qt-project.org'
+url='https://www.qt.io'
 license=(LGPL)
 depends=(qt5-tools qt5-quickcontrols qt5-quickcontrols2 qt5-webengine clang=$_clangver qbs clazy)
 makedepends=(git mesa llvm python)
@@ -31,15 +31,15 @@ optdepends=('qt5-doc: integrated Qt documentation'
             'mercurial: mercurial support'
             'bzr: bazaar support'
             'valgrind: analyze support')
-source=("http://download.qt.io/official_releases/qtcreator/${pkgver%.*}/$pkgver/qt-creator-opensource-src-$pkgver.tar.xz"
+source=("https://download.qt.io/official_releases/qtcreator/${pkgver%.*}/$pkgver/qt-creator-opensource-src-$pkgver.tar.xz"
         qtcreator-clang-plugins.patch
         qtcreator-theme-fixes.patch
         qtcreator-occurrences-fix.patch
         qtcreator-debugger-columns-fix.patch
         qtcreator-cmake-fail-target-fix.patch
         qtcreator-cmake-edit-fix.patch)
-sha256sums=('8f691de9b30b99dd44e010525ba9bf3054142a1082dc5273c46c533b91c07bd9'
-            '6f19fc9d83964a5460d224b3d44ce580553847960181fe0364e2ce26e1efd2e6'
+sha256sums=('a8257daf39f6025c8523285dc73fd6b66645f3ff071e112b484325966eee0c92'
+            '34ea74698ddff9925e06bff6b4c995bf93488d1104e8cc517bcfdd621effb428'
             'bf0f8e88d0fa628d24f59eaf1f359873926998dde442e3bcbd56afcdd6eec7fa'
             '640c4c1607f9ee867e2445ad576697b9b0d3c9a64ae6589c1b99ea4f1d7e3481'
             'cf378a8b591a10646ad89d101375d8b04844c76a83d6c9c960036ba6a3b122e3'
