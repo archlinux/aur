@@ -7,18 +7,20 @@
 pkgbase=pyqt4
 pkgname=('pyqt4-common' 'python-pyqt4' 'python2-pyqt4')
 pkgver=4.12.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://www.riverbankcomputing.com/software/pyqt/intro'
 license=('GPL')
-makedepends=('sip' 'python-sip' 'python2-sip' 'python-dbus' 'phonon-qt4' 'mesa'
-             'python2-opengl' 'python2-dbus')
+makedepends=('sip' 'python-sip-pyqt4' 'python2-sip-pyqt4' 'python-dbus' 'phonon-qt4'
+             'mesa' 'python2-opengl' 'python2-dbus')
 source=("http://downloads.sourceforge.net/pyqt/PyQt4_gpl_x11-${pkgver}.tar.gz")
 sha256sums=('a00f5abef240a7b5852b7924fa5fdf5174569525dc076cd368a566619e56d472')
 
-build() {
+prepare() {
   cp -a PyQt4_gpl_x11-${pkgver}{,-py2}
+}
 
+build() {
   cd PyQt4_gpl_x11-${pkgver}
   python configure-ng.py \
     --confirm-license \
@@ -28,7 +30,6 @@ build() {
 
   # Thanks Gerardo for the rpath fix
   find -name 'Makefile' | xargs sed -i 's|-Wl,-rpath,/usr/lib||g;s|-Wl,-rpath,.* ||g'
-
   make
 
   ### Python2 version ###
@@ -41,7 +42,6 @@ build() {
 
   # Thanks Gerardo for the rpath fix
   find -name 'Makefile' | xargs sed -i 's|-Wl,-rpath,/usr/lib||g;s|-Wl,-rpath,.* ||g'
-
   make
 }
 
@@ -64,7 +64,7 @@ package_pyqt4-common() {
 
 package_python-pyqt4() {
   pkgdesc="A set of Python 3.x bindings for the Qt toolkit"
-  depends=('sip' 'python-sip' 'python-dbus' 'pyqt4-common')
+  depends=('sip' 'python-sip-pyqt4' 'python-dbus' 'pyqt4-common')
   optdepends=('phonon-qt4: enable audio and video in PyQt applications')
   replaces=('pyqt')
   conflicts=('pyqt')
@@ -81,7 +81,7 @@ package_python-pyqt4() {
 
 package_python2-pyqt4() {
   pkgdesc="A set of Python 2.x bindings for the Qt toolkit"
-  depends=('sip' 'python2-sip' 'python2-dbus' 'pyqt4-common')
+  depends=('sip' 'python2-sip-pyqt4' 'python2-dbus' 'pyqt4-common')
   optdepends=('phonon-qt4: enable audio and video in PyQt applications'
               'python2-opengl: enable OpenGL 3D graphics in PyQt applications')
   replaces=('python2-pyqt')
