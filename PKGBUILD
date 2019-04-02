@@ -4,7 +4,7 @@
 pkgname=openvpn-openssl-1.0
 _pkgname=openvpn
 pkgver=2.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) (build against openssl-1.0)'
 arch=('i686' 'x86_64')
 url='http://openvpn.net/index.php/open-source.html'
@@ -27,6 +27,8 @@ prepare() {
 build() {
   mkdir "${srcdir}"/build
   cd "${srcdir}"/build
+
+  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
 
   "${srcdir}"/${_pkgname}/configure \
     --prefix=/usr \
@@ -72,3 +74,5 @@ package() {
     esac
   done
 }
+
+# vim: ts=2 sw=2 et:

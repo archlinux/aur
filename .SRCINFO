@@ -1,7 +1,7 @@
 pkgbase = openvpn-openssl-1.0
 	pkgdesc = An easy-to-use, robust and highly configurable VPN (Virtual Private Network) (build against openssl-1.0)
 	pkgver = 2.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openvpn.net/index.php/open-source.html
 	arch = i686
 	arch = x86_64
