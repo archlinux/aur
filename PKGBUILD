@@ -1,8 +1,8 @@
 # Maintainer: Ainola
 
 pkgname=python-oath
-pkgver=1.4.1
-pkgrel=8
+pkgver=1.4.2
+pkgrel=1
 pkgdesc="Python implementation of HOTP, TOTP and OCRA algorithms from OATH"
 arch=('any')
 url="https://github.com/bdauvergne/python-oath"
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://pypi.io/packages/source/o/oath/oath-$pkgver.tar.gz")
-sha256sums=('60f59ead7dfe56c49e98ace4d4abab1b62fe65b657d3bfeebb60b322c0be30db')
+sha256sums=('4ab990e530ebbc607f67d7df34c5d26147a7d431bae54dcfb44b3704b04dbd0f')
 
 build() {
     cd "oath-$pkgver"

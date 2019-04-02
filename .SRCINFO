@@ -1,14 +1,14 @@
 pkgbase = python-oath
 	pkgdesc = Python implementation of HOTP, TOTP and OCRA algorithms from OATH
-	pkgver = 1.4.1
-	pkgrel = 8
+	pkgver = 1.4.2
+	pkgrel = 1
 	url = https://github.com/bdauvergne/python-oath
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = python-oath-1.4.1.tar.gz::https://pypi.io/packages/source/o/oath/oath-1.4.1.tar.gz
-	sha256sums = 60f59ead7dfe56c49e98ace4d4abab1b62fe65b657d3bfeebb60b322c0be30db
+	source = python-oath-1.4.2.tar.gz::https://pypi.io/packages/source/o/oath/oath-1.4.2.tar.gz
+	sha256sums = 4ab990e530ebbc607f67d7df34c5d26147a7d431bae54dcfb44b3704b04dbd0f
 
 pkgname = python-oath
 
