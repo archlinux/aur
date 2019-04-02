@@ -6,7 +6,7 @@ pkgdesc="A collection of optimized low-level functions targeting storage applica
 arch=(x86_64)
 url="https://github.com/01org/$pkgname"
 license=('BSD')
-makedepends=('nasm')
+makedepends=('nasm' 'patchelf')
 source=("$url/archive/v$pkgver.tar.gz")
 sha1sums=('cefa5ac20e8698639b67a3ebe9f0fd726b627b03')
 
@@ -14,6 +14,7 @@ build() {
     cd "${srcdir}/$pkgname-$pkgver"
     ./autogen.sh
     ./configure --prefix="${pkgdir}/usr" -q
+
     make
 }
 
@@ -27,4 +28,5 @@ package() {
     make install
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    patchelf --remove-rpath $pkgdir/usr/bin/igzip
 }
