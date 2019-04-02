@@ -2,18 +2,18 @@
 
 pkgname=lmfit-git
 _pkgname=lmfit
-pkgver=269.822d724
+pkgver=396.e71e485
 pkgrel=1
 pkgdesc="Self-contained C library for Levenberg-Marquardt least-squares minimization and curve fitting."
 arch=('i686' 'x86_64')
-url="http://apps.jcns.fz-juelich.de/doku/sc/$_pkgname"
+url="https://jugit.fz-juelich.de/mlz/$_pkgname"
 license=('FreeBSD')
 provides=(lmfit)
 conflicts=(lmfit)
 replaces=(lmfit)
-source=("git://apps.jcns.fz-juelich.de/$_pkgname")
+source=("git+https://jugit.fz-juelich.de/mlz/$_pkgname.git")
 depends=()
-makedepends=('git')
+makedepends=('cmake' 'git')
 md5sums=('SKIP')
 
 
@@ -31,16 +31,10 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  # http://askubuntu.com/a/27679
-  libtoolize --force
-  aclocal
-  autoheader
-  automake --force-missing --add-missing
-  autoconf
-
-  cd "build"
-  ../configure --prefix=/usr
+  cd "$srcdir/$_pkgname/build"
+  cmake \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DBUILD_SHARED_LIBS='TRUE' ..
   make
 }
 
