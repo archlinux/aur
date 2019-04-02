@@ -1,0 +1,14 @@
+diff --git a/src/Widgets/DisplayWidget.vala b/src/Widgets/DisplayWidget.vala
+index 6d0cbcf..e389920 100644
+--- a/src/Widgets/DisplayWidget.vala
++++ b/src/Widgets/DisplayWidget.vala
+@@ -33,8 +33,7 @@ public class Weather.Widgets.DisplayWidget : Gtk.Box {
+         //Read file of weather discription and set icon accordingly.
+ 
+         try {
+-            map_file = File.new_for_path (Environment.get_home_dir() + "/.weather-map.dat");
+-            stderr.printf("home dir: %s\n",Environment.get_home_dir());
++            map_file = File.new_for_path ("/etc/weather-map.conf");
+             
+             if (map_file.query_exists ()) {
+ 

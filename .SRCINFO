@@ -1,0 +1,29 @@
+pkgbase = wingpanel-indicator-weather-git
+	pkgdesc = Weather indicator for Wingpanel
+	pkgver = r14.0cbe7a0
+	pkgrel = 1
+	url = https://github.com/kunalkushwaha/wingpanel-indicator-weather
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL2
+	makedepends = git
+	makedepends = granite
+	makedepends = cmake
+	makedepends = vala
+	makedepends = libwingpanel-2.0.so
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = granite
+	depends = libsoup
+	depends = json-glib
+	depends = libwingpanel-2.0.so
+	provides = wingpanel-indicator-weather
+	conflicts = wingpanel-indicator-weather
+	source = git+https://github.com/kunalkushwaha/wingpanel-indicator-weather.git
+	source = fix-config-file.patch
+	sha256sums = SKIP
+	sha256sums = 8c818bfc42f4dbd09a70aef90a54e71933438ee9cb3f08797608d48b54a95806
+
+pkgname = wingpanel-indicator-weather-git
+
