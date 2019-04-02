@@ -6,7 +6,7 @@ _binname=stdiscosrv
 _pkgname=syncthing
 pkgname=$_pkgname-discosrv
 epoch=1
-pkgver=1.0.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Discover server for the syncthing P2P synchronization utility'
 url='http://syncthing.net'
@@ -23,7 +23,7 @@ source=(
 )
 
 sha512sums=(
-  '7f9fd48e00fae2f0913eb9eeddadaad1d5d7559164a24020706e70411f8ec43420192c4c9422699be6faa1641a382d5b8627038ca9a5dad38ee0e189970efbb7'
+  '71cd07afb2935a03c57ff5a2848c510888068fd3fc78c7f2b8aa846fcf4a1e1cdbe795196cc9e98b3557020d5d8f59c04cef2e77d5aa52c15829ccb8d0052189'
   'f67a6051a1bbe9d3b562caaaecfc4829afa25cfddc5d5dd70dc8170bddc9d938fd85ab89b1c198f074f323d8e385d9fa8bc3a9bfe53594629dbfbf984c2e7015'
   '28b0bb6a6f2fa536ec8cb887cfebf4706be25af5e29da39e2e3776daeeeb48f75fb5be255472920355948d8905830342866e89299facd626ddf8a658d84faf27'
 )
@@ -32,6 +32,8 @@ prepare() {
   rm -rf src
   install -d src/github.com/$_pkgname
   mv $_pkgname-$pkgver src/github.com/$_pkgname/$_pkgname
+  cd src/github.com/$_pkgname/$_pkgname
+  go mod vendor
 }
 
 build() {
