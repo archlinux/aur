@@ -1,0 +1,33 @@
+pkgbase = moonlight-embedded-git
+	pkgdesc = Gamestream client for embedded devices
+	pkgver = 2.4.7.498.212eac6
+	pkgrel = 1
+	url = https://github.com/irtimmer/moonlight-embedded
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = curl
+	depends = avahi
+	depends = curl
+	depends = libevdev
+	depends = enet
+	depends = ffmpeg
+	optdepends = raspberrypi-firmware-tools: Raspberry Pi support
+	optdepends = imx-vpu: i.MX6 support
+	optdepends = aml-libs-c1: ODROID-C1 support
+	optdepends = libcec: CEC support
+	provides = moonlight
+	conflicts = moonlight
+	source = moonlight-embedded-git::git+https://github.com/irtimmer/moonlight-embedded.git
+	sha512sums = SKIP
+	makedepends_armv6h = raspberrypi-firmware-tools
+	makedepends_armv7h = raspberrypi-firmware-tools
+	makedepends_armv7h = imx-vpu
+	makedepends_armv7h = linux-imx6-headers
+	makedepends_armv7h = v4l-utils
+	makedepends_armv7h = aml-libs-c1
+
+pkgname = moonlight-embedded-git
+
