@@ -2,7 +2,7 @@
 
 _pkgname=mindforger
 pkgname=$_pkgname-src
-pkgver=1.48.2
+pkgver=1.49.2
 pkgrel=1
 pkgdesc="Thinking notebook and Markdown IDE. Search, browse, view and edit your Markdown files. Get as much as possible from knowledge in your remarks. (Build from source.)"
 arch=('any')
@@ -15,7 +15,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+https://github.com/dvorka/$_pkgname.git#tag=$pkgver"
-	"$_pkgname-repository::git+https://github.com/dvorka/$_pkgname-repository.git#commit=120b883"
+	"$_pkgname-repository::git+https://github.com/dvorka/$_pkgname-repository.git#commit=05f3b4e"
 )
 sha256sums=('SKIP' 'SKIP')
 
@@ -26,6 +26,12 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_pkgname"
+
+	mkdir -p deps/cmark-gfm/build
+	cd deps/cmark-gfm/build
+	cmake -DCMARK_TESTS=OFF -DCMARK_SHARED=OFF ..
+	cmake --build .
+	cd -
 
 	cd deps/discount
 	./configure.sh
