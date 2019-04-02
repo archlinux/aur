@@ -1,14 +1,13 @@
-# Maintainer: Austin Haedicke (austin.haedicke@gmail.com), Telegram @savageze
-
-# If you find errors or have suggestions feel free to file an issue
-# or submit a pull request @ https://github.com/savagezen/pkgbuild
+# Maintainer: Austin Haedicke (austin.haedicke@gmail.com)
+# Telegram @savagezenl / @savagezen_aur
+# GitHub https://github.com/savagezen/pkgbuild
 
 # Contributor: Marcin Karpezo <sirmacik at gmail dot com>
 # Contributor: Daenyth <Daenyth+Arch [at] gmail [dot] com>
 # Contributor: Rafał Przywara <ptah.peteh (at) gmail (dot) com>
 
 pkgname=rakudo-star
-pkgver=2018.10
+pkgver=2019.03
 pkgrel=2
 pkgdesc="Rakudo Perl6 on MoarVM with additional modules"
 arch=('i686' 'x86_64')
@@ -20,7 +19,7 @@ optdepends=('zef')
 provides=('rakudo-star' 'rakudo-moarvm')
 conflicts=('rakudo-star' 'rakudo-moarvm')
 source=(http://rakudo.org/downloads/star/$pkgname-$pkgver.tar.gz)
-sha512sums=('50b258409df71003e30563f8a080691f6316c33c958d90579f999b1efd9382292272032874e58953061d6336b1aa2a74a5fba63326480b85eaaf98e10ef6facc')
+sha512sums=('f9632c6193b8b6fc5ba10d8eb2bf69560965b77bf1aa08af458f8a5fee52d9750bbbb2b2fcd42a0b609d925627940bb3167520a32a5df04cce8d2c4e7815b999')
 
 build() {
   cd "$pkgname-$pkgver"
