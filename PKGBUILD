@@ -1,8 +1,8 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-libgeotiff
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="A TIFF based interchange format for georeferenced raster imagery (mingw-w64)"
 arch=('any')
 url="https://trac.osgeo.org/geotiff/"
@@ -12,8 +12,8 @@ makedepends=('mingw-w64-configure')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("http://download.osgeo.org/geotiff/libgeotiff/libgeotiff-${pkgver}.tar.gz"
         "libgeotiff_buildsys.patch")
-sha256sums=('b8510d9b968b5ee899282cdd5bef13fd02d5a4c19f664553f81e31127bc47265'
-            'b158fc586ea55e5c8a1c8137eaf9a1f95c2d28709f8b550739aad9f85235bfcf')
+sha256sums=('f9e99733c170d11052f562bcd2c7cb4de53ed405f7acdde4f16195cd3ead612c'
+            '0639212e7dee968ec303c70e98eb074e0ac31596388d3a62c10f3ab76c072ed5')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -37,7 +37,6 @@ prepare() {
 
 build() {
   cd ${srcdir}/libgeotiff-${pkgver}
-  CPPFLAGS+=" -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H=1"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
