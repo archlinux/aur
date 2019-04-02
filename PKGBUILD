@@ -30,7 +30,7 @@ prepare() {
     cd gtk
 
     # https://gitlab.gnome.org/GNOME/gtk/issues/1761
-    git cherry-pick -n 9b4c8d6b329c5daef9269b4ec41645f90ad73644
+    git cherry-pick -n 2d3936cbe6bf19bc39e400e1d9660538e42f4341
 
     # Typeahead-specific changes
     patch gtk/gtkfilechooserwidget.c -i $srcdir/typeahead.patch
