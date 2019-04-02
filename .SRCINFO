@@ -1,0 +1,17 @@
+pkgbase = aegisub-subinspector-git
+	pkgdesc = Subinspector library for the Aegisub Automation interface
+	pkgver = v0.5.2.r11.c1154a0
+	pkgrel = 1
+	url = https://github.com/TypesettingTools/SubInspector
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	depends = aegisub
+	depends = libass
+	source = SubInspector::git+https://github.com/TypesettingTools/SubInspector.git
+	sha256sums = SKIP
+
+pkgname = aegisub-subinspector-git
+
