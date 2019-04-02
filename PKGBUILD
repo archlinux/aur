@@ -1,14 +1,14 @@
 # Maintainer: Michael Koloberdin <koloberdin@gmail.com>
 pkgname=unreal-speccy-portable-git
 pkgver=0.0.83.r1.ged823c7
-pkgrel=1
+pkgrel=2
 pkgdesc="Portable ZX Spectrum emulator based on UnrealSpeccy 0.37.3 by SMT"
 arch=('x86_64')
 _reponame='unrealspeccyp'
 url="https://bitbucket.org/djdron/${_reponame}"
 license=('GPL')
 depends=('sdl' 'curl' 'mesa')
-makedepends=('git')
+makedepends=('cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://bitbucket.org/djdron/${_reponame}")
