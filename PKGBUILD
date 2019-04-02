@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-njs
-pkgver=0.2.8 # http://hg.nginx.org/njs/tags
-pkgrel=7
+pkgver=0.3.0 # http://hg.nginx.org/njs/tags
+pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.15.10
@@ -24,7 +24,7 @@ validpgpkeys=(
 
 sha256sums=('b865743abd52bce4745d0f7e7fedde3cafbaaab617b022c105e3e4e456537c3c'
             'SKIP'
-            '8f0c9ab2a635079496d87b3dd15a25de9c27f18632fd8fccf7612f41da115e5f')
+            '39cb7d3682cbbe343c7048a01f1e857e1db7e7b396c672e3b7b2743454ef7af5')
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
