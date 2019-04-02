@@ -5,7 +5,7 @@
 
 pkgname=emby-server-beta
 pkgver=4.1.0.19
-pkgrel=1
+pkgrel=2
 _ffmpeg_ver=2018_12_01
 _ffdetect_ver=4.0.2
 pkgdesc='Bring together your videos, music, photos, and live television'
@@ -33,7 +33,7 @@ depends=('alsa-lib'
          'libvorbis.so'
          'libwebp'
          'libx11'
-         'x264'
+         'libx264.so'
          'opus'
          'skia-sharp'
          'sqlite'
