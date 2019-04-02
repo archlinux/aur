@@ -1,0 +1,57 @@
+KUBE_PS1_PATH="/opt/kube-ps1"
+BASHRC_FILE="$HOME/.bashrc"
+ZSHRC_FILE="$HOME/.zshrc"
+
+LINE_SOURCE="source '$KUBE_PS1_PATH/kube-ps1.sh'"
+LINE_PS1_BASH="PS1='[\u@\h \W "'$(kube_ps1)'"]\$ '"
+LINE_PS1_ZSH="PROMPT='"'$(kube_ps1)'"'"'$PROMPT'
+
+post_install() {
+	if [ -f "$BASHRC_FILE" ]; then
+		TMP_FILE=$(mktemp)
+		grep -vF "$LINE_SOURCE" "$BASHRC_FILE" | grep -vF "$LINE_PS1_BASH" > "$TMP_FILE"
+
+		echo "$LINE_SOURCE" >> "$TMP_FILE"
+		echo "$LINE_PS1_BASH" >> "$TMP_FILE"
+
+		mv "$TMP_FILE" "$BASHRC_FILE"
+
+		echo '################################################################################'
+		echo "$BASHRC_FILE file has been modified."
+		echo "Add the following lines to another user's bashrc file if needed:"
+		echo "$LINE_SOURCE"
+		echo "$LINE_PS1_BASH"
+		echo '################################################################################'
+	fi
+
+	if [ -f "$ZSHRC_FILE" ]; then
+		TMP_FILE=$(mktemp)
+		grep -vF "$LINE_SOURCE" "$ZSHRC_FILE" | grep -vF "$LINE_PS1_ZSH" > "$TMP_FILE"
+
+		echo "$LINE_SOURCE" >> "$TMP_FILE"
+		echo "$LINE_PS1_ZSH" >> "$TMP_FILE"
+
+		mv "$TMP_FILE" "$ZSHRC_FILE"
+
+		echo '################################################################################'
+		echo "$ZSHRC_FILE file has been modified."
+		echo "Add the following lines to another user's zshrc file if needed:"
+		echo "$LINE_SOURCE"
+		echo "$LINE_PS1_ZSH"
+		echo '################################################################################'
+	fi
+}
+
+post_remove() {
+	if [ -f "$BASHRC_FILE" ]; then
+		TMP_FILE=$(mktemp)
+		grep -vF "$LINE_SOURCE" "$BASHRC_FILE" | grep -vF "$LINE_PS1_BASH" > "$TMP_FILE"
+		mv "$TMP_FILE" "$BASHRC_FILE"
+	fi
+
+	if [ -f "$ZSHRC_FILE" ]; then
+		TMP_FILE=$(mktemp)
+		grep -vF "$LINE_SOURCE" "$ZSHRC_FILE" | grep -vF "$LINE_PS1_ZSH" > "$TMP_FILE"
+		mv "$TMP_FILE" "$ZSHRC_FILE"
+	fi
+}
