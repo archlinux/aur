@@ -6,8 +6,8 @@ _setFullLibdir="${_setPrefix}/${_setLibdir}"
 _pkgbase=openjpeg2
 
 pkgname=${_setLibdir}-${_pkgbase}
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="An open source JPEG 2000 codec, version ${pkgver}"
 arch=('x86_64')
 license=('BSD')
@@ -15,7 +15,7 @@ url="http://www.openjpeg.org"
 makedepends=('cmake' 'lib32-gcc-libs' 'lib32-libpng'  'lib32-libtiff' 'lib32-lcms2')
 depends=("${_pkgbase}" 'lib32-zlib')
 source=("https://github.com/uclouvain/openjpeg/archive/v${pkgver}.tar.gz")
-md5sums=("6a1f8aaa1fe55d2088e3a9c942e0f698")
+md5sums=("3b9941dc7a52f0376694adb15a72903f")
 
 build() {
   export CFLAGS="-m32"
