@@ -1,6 +1,7 @@
 pkgbase = bspwmbar
 	pkgver = 0.0.1
 	pkgrel = 1
+	url = https://github.com/odknt/bspwmbar
 	arch = x86_64
 	license = ISC
 	depends = bspwm
