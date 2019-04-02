@@ -3,6 +3,7 @@ pkgname=bspwmbar
 pkgver=0.0.1
 pkgrel=1
 arch=(x86_64)
+license=('ISC')
 depends=(bspwm alsa-lib libxft fontconfig)
 source=("https://github.com/odknt/bspwmbar/archive/v${pkgver}.tar.gz"
         'config.h')
