@@ -1,12 +1,13 @@
 pkgbase = assemblyscript-git
 	pkgdesc = Compiles TypeScript to WebAssembly using Binaryen
-	pkgver = r634.b2adf8b1
+	pkgver = 0.6.0.r636.abf3de90
 	pkgrel = 1
 	url = https://github.com/AssemblyScript/assemblyscript
 	arch = any
 	license = Apache
 	makedepends = npm
 	makedepends = git
+	depends = nodejs
 	source = assemblyscript::git+https://github.com/AssemblyScript/assemblyscript#branch=master
 	sha256sums = SKIP
 
