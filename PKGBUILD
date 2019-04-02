@@ -1,5 +1,6 @@
-# Maintainer: Fredrick Brennan <copypaste@kittens.ph>
-# Author: inemum <newmanisaac49@gmail.com>
+# Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Contributor: Fredrick Brennan <copypaste@kittens.ph>
+# Contributor: inemum <newmanisaac49@gmail.com>
 
 # based on https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/sip
 
@@ -32,4 +33,3 @@ package_python2-sip-pyqt4() {
 
   install -Dm644 ../sip-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
