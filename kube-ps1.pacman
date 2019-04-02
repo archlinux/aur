@@ -7,6 +7,8 @@ LINE_PS1_BASH="PS1='[\u@\h \W "'$(kube_ps1)'"]\$ '"
 LINE_PS1_ZSH="PROMPT='"'$(kube_ps1)'"'"'$PROMPT'
 
 post_install() {
+	echo '################################################################################'
+
 	if [ -f "$BASHRC_FILE" ]; then
 		TMP_FILE=$(mktemp)
 		grep -vF "$LINE_SOURCE" "$BASHRC_FILE" | grep -vF "$LINE_PS1_BASH" > "$TMP_FILE"
@@ -16,12 +18,7 @@ post_install() {
 
 		mv "$TMP_FILE" "$BASHRC_FILE"
 
-		echo '################################################################################'
 		echo "$BASHRC_FILE file has been modified."
-		echo "Add the following lines to another user's bashrc file if needed:"
-		echo "$LINE_SOURCE"
-		echo "$LINE_PS1_BASH"
-		echo '################################################################################'
 	fi
 
 	if [ -f "$ZSHRC_FILE" ]; then
@@ -33,13 +30,19 @@ post_install() {
 
 		mv "$TMP_FILE" "$ZSHRC_FILE"
 
-		echo '################################################################################'
-		echo "$ZSHRC_FILE file has been modified."
-		echo "Add the following lines to another user's zshrc file if needed:"
-		echo "$LINE_SOURCE"
-		echo "$LINE_PS1_ZSH"
-		echo '################################################################################'
+		echo "$ZSHRC_FILE file has been modified."=
 	fi
+
+	echo 'More information at https://github.com/jonmosco/kube-ps1'
+	echo '################################################################################'
+	echo "Add the following lines to another user's bashrc file if needed:"
+	echo "$LINE_SOURCE"
+	echo "$LINE_PS1_BASH"
+	echo '################################################################################'
+	echo "Add the following lines to another user's zshrc file if needed:"
+	echo "$LINE_SOURCE"
+	echo "$LINE_PS1_ZSH"
+	echo '################################################################################'
 }
 
 post_remove() {

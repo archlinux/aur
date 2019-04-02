@@ -1,7 +1,7 @@
 pkgbase = kube-ps1
 	pkgdesc = A script that lets you add the current Kubernetes context and namespace configured on kubectl to your Bash/Zsh prompt
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jonmosco/kube-ps1
 	install = kube-ps1.pacman
 	arch = any
