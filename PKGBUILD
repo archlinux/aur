@@ -8,6 +8,8 @@ license=('GPL3')
 arch=('any')
 makedepends=('git' 'gradle')
 depends=('java-runtime')
+optdepends=('openbsd-netcat: interaction with signald socket'
+            'qrencode: display account linking token as QR code')
 provides=('signald')
 conflicts=('signald')
 source=("${pkgname}::git+https://github.com/thefinn93/signald"
