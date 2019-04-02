@@ -1,7 +1,7 @@
 # Maintainer: Aston <astonbitecode at gmail dot com>
 
 pkgname="rust-keylock-ui"
-pkgver="0.8.1"
+pkgver="0.8.2"
 pkgrel=1
 epoch=
 pkgdesc="Password manager with goals to be Secure, Simple to use, Portable and Extensible"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/rust-keylock/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-sha512sums=("153e2d5af3858f9ee8e69ce245f4234eb233f4266b70936c465eca6d92bc914fc3e1d657eeff827e4759b3c047ffcf3bce3f32ceef575436281444f9fcb9b093")
+sha512sums=("e468d6f31785523528f0545e067699af0b4352a58490bb4e176eda477b6e8530420b598ccc15fb56909c50dffead218cca257100f1d0f9f5789ad57a7c7bde20")
 validpgpkeys=()
 
 prepare() {
@@ -42,7 +42,6 @@ package() {
 	install -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/
 	
 	cp $srcdir/$pkgname-$pkgver/rust/target/release/rust-keylock-ui $pkgdir/opt/$pkgname/
-	cp $srcdir/$pkgname-$pkgver/rust/target/release/rust-keylock-ui-app $pkgdir/opt/$pkgname/
 	cp $srcdir/$pkgname-$pkgver/rust/target/release/deps/libj4rs-*.so $pkgdir/opt/$pkgname/deps/
 	cp -R $srcdir/$pkgname-$pkgver/rust/target/release/jassets $pkgdir/opt/$pkgname/
 	cp -R $srcdir/$pkgname-$pkgver/rust/target/release/scalaassets $pkgdir/opt/$pkgname/
