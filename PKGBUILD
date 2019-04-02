@@ -1,7 +1,10 @@
 # Maintainer: robertfoster
+# Contributor: radfish
 
 pkgbase=python-pyelliptic
-pkgname=('python2-pyelliptic' 'python-pyelliptic')
+pkgname=(
+#'python2-pyelliptic' 
+'python-pyelliptic')
 _pkgname=pyelliptic
 pkgver=1.5.8
 pkgrel=1
