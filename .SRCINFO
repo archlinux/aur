@@ -1,21 +1,29 @@
 pkgbase = jsignpdf
-	pkgdesc = Digital sign PDF files with X.509 certificates.
+	pkgdesc = Digitally sign PDF files with X.509 certificates in GUI and CLI.
 	pkgver = 1.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jsignpdf.sourceforge.net/
+	changelog = changelog
 	arch = any
 	license = LGPL
 	license = MPL
+	license = CCPL
+	license = Apache
+	license = custom
 	depends = java-runtime>=8
-	provides = jsignpdf
-	source = https://downloads.sourceforge.net/project/jsignpdf/stable/JSignPdf%201.6.4/JSignPdf-1.6.4.zip
-	source = jsignpdf.sh
-	source = jsignpdf.png
-	source = jsignpdf.desktop
+	depends = bash
+	optdepends = hicolor-icon-theme: icon for launcher
+	optdepends = desktop-file-utils: MIME cache update
+	backup = usr/share/java/jsignpdf/conf/conf.properties
+	backup = usr/share/java/jsignpdf/conf/pkcs11.cfg
+	source = jsignpdf-1.6.4.zip::https://downloads.sourceforge.net/project/jsignpdf/stable/JSignPdf%201.6.4/JSignPdf-1.6.4.zip
+	source = jsignpdf_48.png::https://raw.githubusercontent.com/kwart/jsignpdf/master/doc/icon/iconverticons.com/signedpdf_48x48x32.png
+	source = jsignpdf_128.png::https://raw.githubusercontent.com/kwart/jsignpdf/master/doc/icon/iconverticons.com/signedpdf_128x128x32.png
+	source = supplementary.tar.xz
 	md5sums = a459876cba8e2d30abcf9baaf16ff986
-	md5sums = 84b680dbdc61784f05d94a66a012c51d
-	md5sums = 8ea58c7a94f615d15a5f736a9e0b100d
-	md5sums = 8a242f0bc9cfda5f77f53f644d44000b
+	md5sums = a44ef91da28d94fb949e361d19adbbd5
+	md5sums = bf2d11e38c706fe183900cce1fab0e38
+	md5sums = 0d2ebc62ed6bffa1e387fa0ba957cd2a
 
 pkgname = jsignpdf
 

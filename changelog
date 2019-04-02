@@ -1,0 +1,385 @@
+2018-09-10 Josef Cacek (1.6.4)
+  * Upgrade Java runtime in Windows distributions to Java 8 (u181)
+
+2018-09-09 Dan Cvrcek
+  * A new interface for remote/external crypto service providers - net.sf.jsignpdf.extcsp.IExternalCryptoProvider
+  * Integration with FoxyProxy (https://gitlab.com/cloudfoxy/foxyproxy) for (eIDAS) external signatures 
+
+2018-04-19 Josef Cacek (1.6.3)
+  * Allow loading truststore specified by "javax.net.ssl.trustStore" System property
+  * Log warning message if conf/conf.properties configuration file is not found
+
+2017-12-12 Josef Cacek (1.6.2)
+  * BouncyCastle library updated to version 1.49 (due to http://www.bouncycastle.org/jira/browse/BJA-351)
+
+2014-09-16 Josef Cacek (1.6.1)
+  * page number out of range means the last page in the visible signatures (contrary to the first one used in previous versions)
+
+2014-06-30 Josef Cacek (1.6.0)
+  * TSA hash algorithm support added also as a program option in both modes - CLI (-tsh) and GUI
+
+2014-06-24 Josef Cacek (1.5.5 test)
+  * tsa.hashAlgorithm support in conf.properties
+
+2014-06-24 Josef Cacek
+  * jsignpdf-itxt moved directly under JSignPdf project (on github) 
+
+2014-06-22 Josef Cacek (1.5.4)
+  * Recompiled 1.5.3 - a wrong version of jsignpdf-itxt caused non-working time-stamping
+
+2014-06-11 Josef Cacek (1.5.3)
+  * Fixed unregistering PKCS11 keystore type for GUI
+
+2014-06-10 Josef Cacek
+  * Verifier - added exit code 10 when no signature field is present in the PDF
+
+2014-05-30 Josef Cacek (1.5.2)
+  * Fix -ff option in Verifier (it's flag without arguments, till now an argument was required)
+  * Fix exit codes in Verifier (the non-zero codes used even if the -ff is not used)
+  * Disable fallbacks for key alias lookup. Originally if the alias name was used
+    and it doesn't existed in the keystore, the first key in the selected keystore was used.
+
+2013-10-02 Josef Cacek (1.5.1)
+  * Added support for signature field placeholders in custom L2 texts. Possible values are:
+    - ${signer}
+    - ${timestamp}
+    - ${location}
+    - ${reason}
+    - ${contact}
+
+2013-09-01 Josef Cacek (1.5.0)
+  * Implement image rendering using JPedal
+  * Upgrade libraries used for PDF preview (PDFBox, PDFRenderer)
+  * Reimplementation of selection in preview window
+
+2013-08-31 Vaclav Slavik
+  * Fixed certificates handling in signature verification - make the OCSP verification more robust. Thanks for the fix!
+
+2013-07-10 Josef Cacek (1.4.5)
+  * Fixed non-working --crl option when using CLI (batch mode)
+
+2013-02-05 Josef Cacek (1.4.4)
+  * SunPKCS11 security provider removed at the end
+
+2012-11-22 Josef Cacek (1.4.3)
+  * Fixed NPE in signing encrypted PDFs from CLI
+
+2012-11-22 Josef Cacek (1.4.2)
+  * Fixed signing PDFs protected only with an owner password, but without user password
+
+2012-10-08 Josef Cacek (1.4.1)
+  * Fix for using TSA authentication from command line (https://groups.google.com/forum/?fromgroups=#!topic/jsignpdf/c5zAObNmQZg)
+  * Added possibility to use different keystore types  for TSA CERTIFICATE authentication (only in command line -tsct)
+
+2012-09-24 Josef Cacek (1.4.0)
+  * JSignPdf's retiring - read https://groups.google.com/forum/#!topic/jsignpdf/PMduEVZcSko
+
+2012-09-03 Josef Cacek
+  * Merged Greek translation from Vassilis Michalitsis. Thanks for it!
+
+2012-08-11 Josef Cacek (1.3.9 test)
+  * build scripts run on linux now
+
+2012-07-16 Josef Cacek
+  * Certificate authentication for TSA
+  * relaxing SSL security is enabled by defaul (can be disabled in conf/conf.properties)
+  * string "based on iText 2.1.7" used in jsignpdf-itxt library product line
+
+2012-05-01 Josef Cacek
+  * Certificate encryption support for the output PDF added
+  * Window positioning fixed for multiple displays
+  * Source code moved from SourceForge CVS to GitHub
+
+2012-04-15 Josef Cacek
+  * DejaVu Sans font used for visible signatures instead of Rus Sans Pokrytie
+
+2012-03-03 Josef Cacek (1.3.0)
+  * documentation updated
+
+2012-02-17 Josef Cacek (1.2.8 test)
+  * jod-converter no more used for converting "JSignPdf guide" to PDF
+  * SLF4J removed from the project (only Log4J remains)
+  * used StringUtils from commons-lang3
+
+2012-02-16 Josef Cacek
+  * improved hiding of components in the GUI (e.g. keystore file and password are hidden for WINDOWS-MY keystore)
+
+2012-02-13 Josef Cacek
+  * symbolic link to /Applications added to Mac OS X .dmg package
+
+2012-02-10 Josef Cacek (1.2.7 test)
+  * Updated Java runtime for Windows (6u30)
+  * Mac OS X test support (dmg)
+
+2012-02-05 Josef Cacek
+  * wildcard (*,?) support in PDF names when using batch signing
+  * updated Apache commons libraries (commons-lang3-3.1, commons-io-2.1)
+
+2012-02-04 Josef Cacek (1.2.6)
+  * fixed bug in handling CLI option "-pr DISALLOW_PRINTING" (c.f. https://sourceforge.net/projects/jsignpdf/forums/forum/782217/topic/4925360)
+  * IOUtils class removed from jsignpdf packages - commons-io version is used instead
+
+2011-12-13 Josef Cacek (1.2.5)
+  * fixed problem with removing existing signatures (when PDF page dictionary is missing)
+
+2011-12-02 Josef Cacek (1.2.4)
+  * add non-zero exit codes to SignatureCounter for error cases:
+    EXIT_CODE_PARSE_ERR = 1 (command line in a wrong format)
+    EXIT_CODE_CANT_READ_FILE = 5 (unable to read the file from given path)
+    EXIT_CODE_COMMON_ERROR = 6 (counting signatures in the PDF failed)
+  * new SignatureCounter parameter --names (prints signatures names instead of signatures count)
+  * added sections about command-line tools to documentation - Verifier and SignatureCounter (including exit codes)
+
+2011-11-28 Aleksandar Stojsavljevic
+  * Verifier: If certificate is successfully validated against CRL - don't set warning flag for OCSP
+
+2011-11-23 Josef Cacek
+  * if PDF version update is not possible, show eror message and don't sign
+  * print stacktrace if PKCS11 provider initialization fails
+
+2011-11-18 Josef Cacek (1.2.3)
+  * fix CLI - the "append mode" for signatures was used always
+
+2011-11-16 Josef Cacek (1.2.2)
+  * exit codes improved in CLI
+    EXIT_CODE_PARSE_ERR = 1 (command line in a wrong format)
+    EXIT_CODE_NO_COMMAND = 2 (nothing to do - e.g. no file for signing provided)
+    EXIT_CODE_SOME_SIG_FAILED = 3 (signing of some - but not all - files failed)
+    EXIT_CODE_ALL_SIG_FAILED = 4 (signing of all files failed)
+
+2011-11-12 Josef Cacek (1.2.1)
+  * updated French translations (thanks David)
+  * better handling of misconfigured keystore (https://sourceforge.net/projects/jsignpdf/forums/forum/782217/topic/4802421)
+  * chapter "Changing the application language" added to the documentation
+
+2011-10-26 Josef Cacek (1.2.0)
+  * fixed illegal enum initial values in property file
+
+2011-10-18 Josef Cacek
+  * added French translation (thanks to David Ruelle)
+
+2011-08-03 Josef Cacek
+  * fix OpenOffice.org/LibreOffice toolbar naming (problem reported by Zbig Wittmann)
+
+2011-08-02 Josef Cacek
+  * contact field specified from command line (tracker#3304993)
+  * Polish translation from Zbig Wittmann added
+
+2011-07-01 Josef Cacek (1.1.10 test)
+  * new command line tool added: SignatureCounter
+  * fixed wrong spelling of RenderMode.DESCRIPTION_ONLY enum instance (thanks to Jiri Lisicky for reporting)
+
+2011-04-28 Aleksandar Stojsavljevic
+  * Verifier: Improved verification (added new validation codes for certificate status)
+  * Verifier: SignatureVerification class now holds signing certificate and certificate path
+
+2011-04-28 Aleksandar Stojsavljevic
+  * Verifier: verification is now possible against content of pdf (file doesn't have to be on file system).
+
+2011-04-12 Josef Cacek
+  * Signer: if the render mode is GRAPHIC_AND_DESCRIPTION but no graphic is provided, then fall back to DESCRIPTION_ONLY - tracker#3279620
+
+2011-04-06 Aleksandar Stojsavljevic
+  * Verifier: Improved verification (added checking for OCSP url inside certificate, added validation of TS server's certificate against keystore)
+
+2011-04-01 Aleksandar Stojsavljevic
+  * Verifier: removed certificateValid flag from SignatureVerification class
+  * Verifier: introduced more complex checking for certification validity with methods getValidationCodes(VerificationResult) and getValidationCode(SignatureVerification, boolean)
+
+2011-03-30 Josef Cacek
+  * Verifier checks the certification levels (and following modifications)
+
+2011-03-30 Josef Cacek (1.1.9 test)
+  * Verifier doesn't use a given keystores directly, it creates in-memory keystore now
+  * Verifier validates the TSA certificates too
+
+2011-03-29 Josef Cacek
+  * Support for SunPKCS11 security provider registration at during application startup (additional configuration in conf.properties)
+  * Added option which allows to disable Acrobat 6 layer mode (in visible signature settings) tracker#3250105
+  * Font size setting applied also for "Signature name and description" display mode as a maximal allowed size
+    - i.e. it can be generated smaller in the result tracker#3201238
+  * Added chapter Advanced application configuration into the documentation (JSignPdf Quick Start Guide)
+  * Visually separate the Append signature checkbox (it's not related to certification level)
+
+2011-03-28 Josef Cacek
+  * Verifier updates suggested in http://sourceforge.net/projects/jsignpdf/forums/forum/782217/topic/4432329
+
+2011-03-13 Josef Cacek
+  * Java Runtime Environment update (6u24)
+
+2011-03-11 Josef Cacek
+  * setting default OCSP server URL
+
+2011-01-09 Josef Cacek (1.1.1)
+  * created l4j.ini files for exe launchers - JRE maximum memory is configurable now
+
+2010-12-22 Josef Cacek
+  * checking known critical extensions is disabled by default
+
+2010-11-18 Josef Cacek
+  * added some "well-known" certificate critical extensions
+
+2010-10-27 Josef Cacek (1.1.0)
+  * updated documentation
+  * fixed setting Policy OID in CLI mode
+
+2010-10-26 Josef Cacek
+  * added support for a custom TSA policy OID
+  * fixed setting hash algorithm from command line (thanks to Jan Klimes)
+
+2010-10-06 Josef Cacek
+  * additional Certificate checks implemented
+  * Certificate checks can be disabled in conf.properties under following keys:
+    - certificate.checkValidity checks the time validity
+    - certificate.checkKeyUsage checks if keyUsage extension contains "digitalSignature" or "nonRepudiation" bits set
+    - certificate.checkCriticalExtensions checks if the certificate contains only supported critical extensions (only KeyUsage in this time)
+
+2010-08-24 Josef Cacek (1.0.3)
+  * Windows verifier launcher Verify.exe
+  * Previous/Next page buttons in PDF preview window
+
+2010-08-18 Josef Cacek
+  * Append mode is the default
+  * Fixed page numbering in PdfRenderer preview
+
+2010-07-26 Josef Cacek
+  * Updated Japanese translation (thanks to mshibata(at)sf.net)
+
+2010-07-14 Josef Cacek
+  * Windows console launcher JSignPdfC.exe
+
+2010-07-12 Josef Cacek (1.0.2)
+  * Install Cert Tool doesn't work with jssecacerts file anymore, it uses directly {java.home}/lib/security/cacerts keystore
+  * InstallCert creates backup of cacerts file before adding new certificate
+
+2010-07-08 Josef Cacek
+  * command line option --load-properties-file (-lpf) added
+  * for windows package use embedded JRE 6 (32-bit, i.e. supports WINDOWS-MY keystore)
+
+2010-06-22 Josef Cacek (released 1.0.1)
+  * KeyStoreUtils fix - the simple didn't work correctly because of NPE for throwed by null key alias
+
+2010-06-19 Josef Cacek (released 1.0.0)
+  * font for visible signature is configurable (set in conf/conf.properties file)
+  * certificate validity check and keyUsage can be disabled (set in conf/conf.properties file)
+
+2010-06-16 Josef Cacek
+  * splashscreen and ReleaseNotes for version 1.0.0
+
+2010-06-13 Josef Cacek
+  * WINDOWS-MY keystore type (if it's present) set as the default one in GUI
+
+2010-06-09 Josef Cacek
+  * PDFBox enabled again as a second try for rendering PDF (if Sun PdfRenderer fails)
+
+2010-06-07 Josef Cacek
+  * fixed reading of X.509 KeyUsage extension
+  * rendering library Apache PDFBox replaced by Sun PdfRenderer (LGPL)
+  * CRL estimated size
+  * InstallCert support (jar, Windows launcher)
+
+2010-06-02 Josef Cacek
+  * proxy support for TSA, OCSP and CRL
+  * centering windows
+
+2010-05-23 Josef Cacek
+  * support for BouncyCastle keystore providers
+  * possibility to choose hash algorithm
+
+2010-05-19 Josef Cacek
+  * added multiline support for signature text (L2)
+  * translation friendly default signature text (L2)
+  * added CRL support
+  * preview and/or select by mouse visible signature (using PdfBox to convert PDF page to image)
+
+2010-05-16 Josef Cacek
+  * fixed handling of multiple-signatures in non-append mode (old signatures are correctly removed now)
+  * fix for Unicode in PDF-producer field
+  * started using own branch of iText library based on version 2.1.7 (new name: JSignPdf-itxt)
+  * fixed handling of empty Output PDF field (it was filled after application restart)
+
+2010-04-26 Josef Cacek & Marcus Schoeller
+  * listing/reloading keys checks certificate validity and KeyUsage attributes (it's still possible
+    to sign with another private key, but you have to provide the correct alias by hand!)
+
+2010-04-14 Josef Cacek
+  * implemented minimal PDF version for visible signature - 1.3 (not used in append-mode)
+
+2010-04-12 Josef Cacek
+  * suffix can be empty in batch mode (output to different directory with the same filename)
+  * additional file-checks in SignerLogic class
+
+2010-04-02 Josef Cacek
+  * set default buttons for dialogs
+
+2010-04-01 Josef Cacek
+  * fixed password usage in a simple view
+  * check if keystore is loaded during key refresh
+  * if the name of output file is not filled, automatically is used "_signed" suffix. E.g. test.pdf->test_signed.pdf
+  * set default buttons for dialogs
+
+2010-03-04 Josef Cacek
+  * command line switches for TSA & OCSP
+
+2010-02-24 Josef Cacek
+  * documentation update
+
+2009-11-07 Josef Cacek
+  * Bouncy castle libraries upgrade (143->144)
+  * Contact field added
+  * TSA & OCSP support
+  * SignerOptions class removed - BasicSignerOptions used instead
+  * workaround for non-unique key aliases in WINDOWS-MY keystore
+  * improvements in command-line version:
+	- possibility to load default property file (-lp parameter)
+	- selecting key by index (e.g. because of national character in key alias, -ki parameter)
+
+2009-07-12 Josef Cacek
+  * build.xml: exporting sources from CVS
+  * iText upgrade (2.1.6->2.1.7)
+
+2009-06-25 Josef Cacek
+  * embedded Unicode font for Layer 2 texts in visible signature
+  * additional option for setting font size in visible signature
+
+2009-06-02 Josef Cacek
+  * redesign of build process
+  * launch4j used to generate exe for Windows
+  * splash screen (in exe file)
+  * JRE 6u14
+
+2009-05-28 Josef Cacek
+  * command-line support (batch processing)
+
+2008-06-26 Josef Cacek
+  * loading certificates from KeyStores (e.g. WINDOWS-ROOT in Java 6)
+
+2008-06-16 Josef Cacek
+  * basic support for PDF signature verification (command line controlled)
+  * loading certificates from X.509 certification files
+
+2008-05-20 Josef Cacek
+  * enable/disable image field in visible signatures - depends on rendering mode
+  * update documentation
+
+2008-05-08 Josef Cacek
+  * show page bounds in visible signature
+
+2008-04 Josef Cacek
+  * implementing visible signature
+
+2008-03-27 Josef Cacek
+  * fix for Java 5 (disable JDialog.setIconImage)
+
+2008-03-26 Josef Cacek
+  * support for encrypted documents
+  * setting rights in the encrypted result PDFs
+  * multiple keys in keystore support
+  * append signature support
+  * windows installer
+  * updated guide
+
+2008-02-11 Josef Cacek
+  * signing PDF documents
+  * OpenOffice.org Add-On
+  * English & Czech language
