@@ -2,7 +2,7 @@
 
 _gemname=oci
 pkgname=ruby-${_gemname}
-pkgver=2.5.2
+pkgver=2.5.5
 pkgrel=1
 pkgdesc='Ruby SDK for Oracle Cloud Infrastructure'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('ruby-rdoc' 'ruby-inifile' 'ruby-jwt')
 makedepends=('ruby-rake' 'ruby-rdoc')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b21e75811f99347573038f0a93e0a99f5112f94a87deb2320e8db71342fc390d')
+sha256sums=('cf3f3b09d46f611ce1205792032cd8de4438b3bcfdd5236cd7421811f5ef854c')
 
 build() {
   cd "${_gemname}-ruby-sdk-${pkgver}"
