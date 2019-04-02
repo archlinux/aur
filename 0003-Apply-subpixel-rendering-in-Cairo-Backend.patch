@@ -1,4 +1,4 @@
-From 15b6154f7d637f961bc8e9d348605df79a490641 Mon Sep 17 00:00:00 2001
+From 9d3df285e6f1b833b637c12c8b059f3b82bab217 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 9 Aug 2016 15:02:53 +0100
 Subject: [PATCH 3/4] Apply subpixel rendering in Cairo Backend
@@ -191,10 +191,10 @@ index d2769a22..f1bb39fc 100644
    glyphs = nullptr;
    if (use_show_text_glyphs) {
 diff --git a/poppler/Gfx.cc b/poppler/Gfx.cc
-index 8dc2dc93..c3f2355c 100644
+index 9244b044..e459a13f 100644
 --- a/poppler/Gfx.cc
 +++ b/poppler/Gfx.cc
-@@ -4607,6 +4607,47 @@ void Gfx::doImage(Object *ref, Stream *str, bool inlineImg) {
+@@ -4605,6 +4605,47 @@ void Gfx::doImage(Object *ref, Stream *str, bool inlineImg) {
    error(errSyntaxError, getPos(), "Bad image parameters");
  }
  
@@ -257,7 +257,7 @@ index 47ae0153..9df0d18d 100644
  
    void drawForm(Object *str, Dict *resDict, const double *matrix, const double *bbox,
 diff --git a/poppler/Page.cc b/poppler/Page.cc
-index 9aa25dfc..285874d0 100644
+index 2cb75146..cd42b656 100644
 --- a/poppler/Page.cc
 +++ b/poppler/Page.cc
 @@ -336,6 +336,19 @@ Dict *Page::getResourceDictCopy(XRef *xrefA) {
@@ -295,5 +295,5 @@ index 01f056f9..d6547a79 100644
    Object getAnnotsObject(XRef *xrefA = nullptr) { return annotsObj.fetch(xrefA ? xrefA : xref); }
    // Add a new annotation to the page
 -- 
-2.20.1
+2.21.0
 
