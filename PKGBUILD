@@ -21,7 +21,7 @@ backup=("etc/waagent.conf")
 options=()
 changelog=
 source=(
-  "https://github.com/Azure/WALinuxAgent/archive/v${pkgver}.tar.gz")
+  "https://github.com/Azure/WALinuxAgent/archive/${pkgver}.tar.gz")
 sha256sums=(
   '6b0ccc83da671fe1d77c3bad4b3f5af15200baa235ffcd541bea7796399d8e7e')
 
