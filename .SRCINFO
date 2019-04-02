@@ -1,0 +1,13 @@
+pkgbase = aegisub-yutils
+	pkgdesc = Yutils library for the Aegisub Automation interface
+	pkgver = v2015.01.17
+	pkgrel = 1
+	url = https://github.com/Youka/Yutils
+	arch = i686
+	arch = x86_64
+	depends = aegisub
+	source = Yutils-v2015.01.17.lua::https://github.com/Youka/Yutils/raw/T1/src/Yutils.lua
+	sha256sums = 45c199bf3e4897a0fca5dfc21a7e53da14ea9ee757c7d919145cab2324200a39
+
+pkgname = aegisub-yutils
+
