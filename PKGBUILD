@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 # Contributor: redfish
 
-pkgbase=python-pyelliptic
+#pkgbase=python-pyelliptic
 pkgname=(
 'python2-pyelliptic'
 #'python-pyelliptic'
