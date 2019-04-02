@@ -3,7 +3,7 @@
 
 pkgname=gromacs
 pkgver=2019.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -18,13 +18,6 @@ makedepends=('cmake' 'libxml2' 'hwloc' 'gcc7')
 options=('!libtool')
 source=(http://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
 sha1sums=('f9abf82ecbe67b8dfe66874b828c4da2bb780376')
-
-#With gcc7 currently there are less errors in the tests
-# also the compilation is possible in cuda capable machines
-export CC=gcc-7
-export CXX=g++-7
-export CFLAGS="-march=native -O2 -pipe -fstack-protector-strong -fno-plt"
-export CXXFLAGS="${CFLAGS}"
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
@@ -43,9 +36,6 @@ build() {
         -DGMX_DOUBLE=ON \
         -DGMX_BUILD_OWN_FFTW=ON \
         -DREGRESSIONTEST_DOWNLOAD=ON
-#        -DGMX_LIBS_SUFFIX=_d
-#        -DBUILD_SHARED_LIBS=ON \
-#        -DGMX_X11=ON \
   make
 
   msg2 "Building the single precision files"
@@ -55,8 +45,6 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=lib\
         -DGMX_BUILD_OWN_FFTW=ON \
         -DREGRESSIONTEST_DOWNLOAD=ON
-#        -DBUILD_SHARED_LIBS=ON \
-#        -DGMX_X11=ON \
   make
 }
 
