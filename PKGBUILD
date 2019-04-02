@@ -1,14 +1,16 @@
 # Maintainer: Michael Migliore <mcmigliore@gmail.com>
+# Contributor: Azrael <charles.gueunet+aur@gmail.com>
 
 pkgname=filament
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A real-time physically based engine'
 arch=('x86_64')
 url="https://github.com/google/filament/tree/v${pkgname}"
 license=('Apache')
 depends=('libc++abi')
 makedepends=('cmake' 'clang')
+conflicts=('mono')
 source=("https://github.com/google/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('7b56e0f5924d206ff8596e5a10a11b7793e14b4757ea09b1945601229215ba22')
 
@@ -16,7 +18,9 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
     [[ -d build_release ]] && rm -r build_release
     mkdir build_release && cd build_release
-    CXX=clang++ cmake \
+        cmake \
+          -DCMAKE_CXX_COMPILER=clang++ \
+          -DCMAKE_C_COMPILER=clang \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DFILAMENT_REQUIRES_CXXABI=ON \
