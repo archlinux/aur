@@ -7,7 +7,7 @@
 # mupen64plus component receives a new commit.
 
 pkgname=mupen64plus-git
-pkgver=2.5.r1032.gef15526e.20181121.044505
+pkgver=2.5.9.r8.gb4566a65.20190318.054142
 pkgrel=1
 pkgdesc='Nintendo64 Emulator (git version)'
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'd45208a1d9e5a08e6711739c9f52bd88ff016fa5c382a85f305cd4b69dbf62d1'
-            '859d0a51319e95c4357d539521a0872fedd5de366b759b89d66d663a6da3b6d0'
+            'a0e0d8cec5bb22e6e5f0e75dde970562bdc7ac94190d66a4cdeea769ac44c77f'
             'e0e6b47aa5ea7b72f2bd5d5ad5e42fee870d947177f2b7e0137b6a93540b894d')
 
 _m64p_components='core rsp-hle video-rice video-glide64mk2 audio-sdl input-sdl ui-console'
@@ -79,7 +79,7 @@ build() {
     do
         printf '%s\n' "  -> Building component '${_component}'..."
         make -C "mupen64plus-${_component}/projects/unix" clean $@
-        make -C "mupen64plus-${_component}/projects/unix" all $@
+        make -C "mupen64plus-${_component}/projects/unix" PREFIX='/usr' all $@
     done
 }
 

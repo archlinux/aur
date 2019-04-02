@@ -1,11 +1,11 @@
 diff -Naurp a/mupen64plus-core/projects/unix/Makefile b/mupen64plus-core/projects/unix/Makefile
---- a/mupen64plus-core/projects/unix/Makefile	2018-12-31 12:55:18.000000000 +0000
-+++ b/mupen64plus-core/projects/unix/Makefile	2018-12-31 13:08:02.609166199 +0000
-@@ -140,6 +140,7 @@ OPTFLAGS ?= -O3 -flto
+--- a/mupen64plus-core/projects/unix/Makefile	2019-04-02 22:09:22.000000000 +0000
++++ b/mupen64plus-core/projects/unix/Makefile	2019-04-02 22:09:22.000000000 +0000
+@@ -146,6 +146,7 @@ OPTFLAGS ?= -O3 -flto
  WARNFLAGS ?= -Wall
  CFLAGS += -ffast-math -fno-strict-aliasing -fvisibility=hidden -I../../src -I../../src/asm_defines -DM64P_PARALLEL
  CXXFLAGS += -fvisibility-inlines-hidden
 +LDFLAGS += -Wl,-z,noexecstack
  LDLIBS +=  -lm
  
- # Since we are building a shared library, we must compile with -fPIC on some architectures
+ # directory paths
