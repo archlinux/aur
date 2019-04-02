@@ -1,17 +1,42 @@
 # Maintainer: robertfoster
+# Contributor: redfish
 
-pkgname=python2-pyelliptic
-pkgver=1.5.8
+pkgbase=python-pyelliptic
+pkgname=(
+'python2-pyelliptic'
+#'python-pyelliptic'
+)
+_pkgname=pyelliptic
+pkgver=2.0.1
 pkgrel=1
-pkgdesc="Python OpenSSL wrapper. For modern cryptography with ECC, AES, HMAC, Blowfish..."
+pkgdesc="Python OpenSSL wrapper for ECC (ECDSA, ECIES), AES, HMAC, Blowfish, ..."
 arch=(any)
-url="https://github.com/yann2192/pyelliptic"
+url="https://github.com/radfish/pyelliptic"
 license=('GPL3')
 depends=('openssl')
-source=(https://github.com/yann2192/pyelliptic/archive/$pkgver.tar.gz)
+makedepends=('python-setuptools')
+source=(https://github.com/radfish/pyelliptic/archive/$pkgver.tar.gz)
 
-package(){
-  cd $srcdir/pyelliptic-$pkgver
-  python2 setup.py install --root="$pkgdir"
+build() {
+    cp -a ${_pkgname}-${pkgver}{,-py2}
+
+    cd ${_pkgname}-${pkgver}
+    python setup.py build
+
+    cd ../${_pkgname}-${pkgver}-py2
+    python2 setup.py build
 }
-md5sums=('ce185fdefe4bfa2ede5ed7e41fa0e8d4')
+
+package_python-pyelliptic(){
+    provides=("$pkgname=$pkgver")
+    cd ${_pkgname}-${pkgver}
+    python setup.py install --root="$pkgdir" --skip-build
+}
+
+package_python2-pyelliptic(){
+    provides=("$pkgname=$pkgver")
+    cd ${_pkgname}-${pkgver}-py2
+    python2 setup.py install --root="$pkgdir" --skip-build
+}
+
+sha256sums=('840ad6f5e79c633e1de79fb08be78bf76fe07a7f260905eea31efb5ddf00180d')
