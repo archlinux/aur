@@ -1,6 +1,6 @@
 pkgbase = mylar-git
 	pkgdesc = Comic book downloader for usenet and torrents
-	pkgver = r1169.6ab1715
+	pkgver = r1431.3f30fae
 	pkgrel = 1
 	url = https://github.com/evilhero/mylar
 	install = mylar.install
@@ -8,6 +8,7 @@ pkgbase = mylar-git
 	license = GPL3
 	makedepends = git
 	depends = python2
+	depends = python2-setuptools
 	optdepends = sabnzbd: usenet downloader
 	optdepends = nzbget: usenet downloader
 	optdepends = transmission-cli: torrent downloader (CLI and daemon)

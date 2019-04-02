@@ -1,12 +1,12 @@
 # Maintainer: Zeke Sonxx <zeke@zekesonxx.com>
 pkgname=mylar-git
-pkgver=r1169.6ab1715
+pkgver=r1431.3f30fae
 pkgrel=1
 pkgdesc="Comic book downloader for usenet and torrents"
 arch=('any')
 url="https://github.com/evilhero/mylar"
 license=('GPL3')
-depends=('python2')
+depends=('python2' 'python2-setuptools')
 optdepends=('sabnzbd: usenet downloader'
             'nzbget: usenet downloader'
             'transmission-cli: torrent downloader (CLI and daemon)'
