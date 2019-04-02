@@ -1,0 +1,18 @@
+pkgbase = python-pyelliptic
+	pkgdesc = Python OpenSSL wrapper. For modern cryptography with ECC, AES, HMAC, Blowfish...
+	pkgver = 1.5.8
+	pkgrel = 1
+	url = https://github.com/yann2192/pyelliptic
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = openssl
+	source = https://github.com/yann2192/pyelliptic/archive/1.5.8.tar.gz
+	sha256sums = ec23fb3a39a9ad9402354c2ac6c66990e737435365eb313070dd9a76e6849153
+
+pkgname = python2-pyelliptic
+	provides = python2-pyelliptic=1.5.8
+
+pkgname = python-pyelliptic
+	provides = python-pyelliptic=1.5.8
+
