@@ -1,14 +1,14 @@
 # Maintainer: Michael Koloberdin <koloberdin@gmail.com>
 pkgname=unreal-speccy-portable
 pkgver=0.0.83
-pkgrel=1
+pkgrel=2
 pkgdesc="Portable ZX Spectrum emulator based on UnrealSpeccy 0.37.3 by SMT"
 arch=('x86_64')
 _reponame='unrealspeccyp'
 url="https://bitbucket.org/djdron/${_reponame}"
 license=('GPL')
 depends=('sdl' 'curl' 'mesa')
-makedepends=('git')
+makedepends=('cmake' 'git')
 source=("https://bitbucket.org/djdron/${_reponame}/get/v${pkgver}.tar.bz2")
 sha512sums=('a5f5067962131d416f2538e1696d52a5baa04bc6278b420de3d3d391e1c73414a05fa1a6175d091788cdb0a29268736e342cc812c611b8587bc9357b5dcd5ea3')
 
