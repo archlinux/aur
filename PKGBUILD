@@ -7,15 +7,15 @@
 pkgbase=handbrake-fdkaac-git
 pkgname=('handbrake-fdkaac-git' 'handbrake-cli-fdkaac-git')
 _gitname=('HandBrake')
-pkgver=1.1.0.r247.g9f9aecdad
+pkgver=1.2.0.r263.gbb54b66f5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/HandBrake/HandBrake"
 license=('GPL2' 'custom:FDKAAC')
-makedepends=('intltool' 'python2' 'nasm' 'wget' 'cmake' 'bzip2' 'gcc-libs'
+makedepends=('intltool' 'python2' 'yasm' 'wget' 'cmake' 'bzip2' 'gcc-libs'
              'zlib' 'libnotify' 'gst-plugins-base' 'gtk3' 'dbus-glib' 'libass'
              'lame' 'libxml2' 'opus' 'libvorbis' 'libtheora' 'libsamplerate'
-             'x264' 'libx264' 'jansson' 'librsvg' 'libgudev')
+             'x264' 'x264' 'jansson' 'librsvg' 'libgudev')
 source=(git+${url}.git)
 sha256sums=('SKIP')
 
@@ -41,7 +41,7 @@ conflicts=('handbrake' 'handbrake-fdkaac')
 provides=('handbrake')
 depends=('bzip2' 'gcc-libs' 'zlib' 'gst-plugins-base' 'libnotify' 'dbus-glib'
          'gtk3' 'libass' 'lame' 'libxml2' 'opus' 'libvorbis' 'libtheora'
-         'libsamplerate' 'libx264' 'jansson' 'librsvg' 'libgudev'
+         'libsamplerate' 'x264' 'jansson' 'librsvg' 'libgudev'
          'desktop-file-utils' 'hicolor-icon-theme')
 optdepends=('gst-plugins-good: for video previews'
             'gst-libav: for video previews'
@@ -50,7 +50,7 @@ optdepends=('gst-plugins-good: for video previews'
    make -C ${srcdir}/${_gitname}/build DESTDIR=${pkgdir} install
   
    mkdir -pm755 ${pkgdir}/usr/share/licenses/fdkaac-ghb
-   install -Dm644 ${srcdir}/${_gitname}/build/contrib/fdkaac/fdk-aac-0.1.5/NOTICE ${pkgdir}/usr/share/licenses/fdkaac-ghb/LICENSE
+   install -Dm644 ${srcdir}/${_gitname}/build/contrib/fdkaac/fdk-aac-0.1.6/NOTICE ${pkgdir}/usr/share/licenses/fdkaac-ghb/LICENSE
   
    rm ${pkgdir}/usr/bin/HandBrakeCLI
 }
@@ -67,7 +67,7 @@ optdepends=('libdvdcss: for decoding encrypted DVDs')
    install -D HandBrakeCLI ${pkgdir}/usr/bin/HandBrakeCLI
    
    mkdir -pm755 ${pkgdir}/usr/share/licenses/fdkaac-ghb-cli
-   install -Dm644 ${srcdir}/${_gitname}/build/contrib/fdkaac/fdk-aac-0.1.5/NOTICE ${pkgdir}/usr/share/licenses/fdkaac-ghb-cli/LICENSE
+   install -Dm644 ${srcdir}/${_gitname}/build/contrib/fdkaac/fdk-aac-0.1.6/NOTICE ${pkgdir}/usr/share/licenses/fdkaac-ghb-cli/LICENSE
 }
 
 
