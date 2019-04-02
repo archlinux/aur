@@ -1,39 +1,44 @@
-#Maintainer: Lubosz <lubosz@gmail.com>
-#Contributor: helq <linuxero789@gmail.com>
+# Based on the file created for Arch Linux by:
+# Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Ionut Biru <ibiru@archlinux.org>
+# Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Adam Hani Schakaki (krzd) <krzd@krzd.net>
+# Maintainer: Andrey Vetrov <vetrov at mail dot ru>
 
 pkgname=gsettings-desktop-schemas-git
-_realpkgname=gsettings-desktop-schemas
-pkgver=3.8.0.5.gca797db
+pkgver=3.32.0.r3.g92f4a57
 pkgrel=1
 pkgdesc="Shared GSettings schemas for the desktop"
-arch=(i686 x86_64)
-url="http://live.gnome.org/"
-license=('GPL')
-depends=('glib2-git' 'intltool')
-makedepends=('git')
-options=(makeflags !emptydirs)
-
-provides=("${_realpkgname}")
-conflicts=("${_realpkgname}")
-
-source="git://git.gnome.org/gsettings-desktop-schemas"
+arch=(any)
+url="https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas"
+license=(GPL)
+provides=("gsettings-desktop-schemas=$pkgver")
+conflicts=('gsettings-desktop-schemas')
+replaces=('gsettings-desktop-schemas')
+depends=('glib2' 'dconf')
+makedepends=('gobject-introspection' 'git' 'meson')
+source=("git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git")
 sha256sums=('SKIP')
 
-_gitname="gsettings-desktop-schemas"
-install=gsettings-desktop-schemas.install
-
 pkgver() {
-  cd $_gitname
-  git describe --always | sed 's|-|.|g'
+  cd ${pkgname:0:25}
+  # git describe --tags | sed 's/-/+/g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd ${pkgname:0:25}
 }
 
 build() {
-  cd $_gitname
-   ./autogen.sh --prefix=/usr || return 1
-   make || return 1
+  arch-meson ${pkgname:0:25} build
+  ninja -C build
+}
+
+check() {
+  meson test -C build
 }
 
 package() {
-  cd $_gitname
-  make DESTDIR=$pkgdir install || return 1
+  DESTDIR="$pkgdir" meson install -C build
 }
