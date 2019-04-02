@@ -10,6 +10,7 @@ arch=('any')
 url="https://aur.archlinux.org/packages/${pkgname}"
 license=('GPL')
 depends=('wps-office')
+install=wps-dark-theme-hook.install
 source=('wps-dark-theme.hook')
 sha256sums=('a9f6d1bf014c9080abed88a4d4c6bd02485f98d9fd618badd65ebb19bae67fa8')
 
