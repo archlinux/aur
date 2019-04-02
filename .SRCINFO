@@ -5,6 +5,7 @@ pkgbase = pyenv-virtualenv
 	url = https://github.com/pyenv/pyenv-virtualenv
 	arch = any
 	license = MIT
+	makedepends = patch
 	depends = pyenv
 	depends = bash
 	source = https://github.com/pyenv/pyenv-virtualenv/archive/v1.1.5.tar.gz
