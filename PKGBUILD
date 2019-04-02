@@ -3,13 +3,13 @@
 # Contributor: muflax <muflax@gmail.com>
 pkgname=eb-library
 pkgver=4.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="EB library for several dictionary formats, including EPWING"
 arch=('any')
 url="https://web-beta.archive.org/web/20120401145849/http://www.sra.co.jp/people/m-kasahr/eb"
 license=('BSD')
 makedepends=('autoconf' 'automake')
-depends=('perl' 'gcc-libs')
+depends=('perl' 'gcc-libs' 'zlib')
 options=('!libtool')
 source=(ftp://ftp.sra.co.jp/pub/misc/eb/eb-$pkgver.tar.bz2)
 md5sums=('17dd1fade7ba0b82ce6e60f19fcbc823')
