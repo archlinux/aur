@@ -1,0 +1,12 @@
+datadir=/var/lib/taskd
+
+post_install() {
+    systemd-sysusers taskd.conf
+    if [[ ! -e $datadir ]]; then
+      echo "Initializing taskd data."
+      install -dm770 $datadir
+      taskd init --data $datadir
+      chown -R taskd:taskd $datadir
+    fi
+
+}
