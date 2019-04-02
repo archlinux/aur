@@ -1,7 +1,7 @@
 # Maintainer: Yingtong Li <archlinux@yingtongli.me>
 pkgname=anyconnect-client
 pkgver=4.5.04029
-pkgrel=2
+pkgrel=3
 pkgdesc="Cisco AnyConnect Secure Mobility Client"
 arch=('x86_64')
 url="https://www.cisco.com/c/en_au/products/security/anyconnect-secure-mobility-client/index.html"
@@ -9,6 +9,7 @@ license=('custom')
 source=("anyconnect-linux64-$pkgver-core-vpn-webdeploy-k9.sh" 'vpnagentd.service')
 sha256sums=('SKIP' '39ea96d1c23ff45619f65e7e0d5bf0e375556ae22fc463f607d58bbb44a22636')
 install='anyconnect-client.install'
+depends=('pangox-compat')
 options=('!strip') # Stripping binaries causes things to stop working
 
 prepare() {
