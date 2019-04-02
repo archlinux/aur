@@ -1,6 +1,6 @@
 # Maintainer: DenBrahe <denbrahe@hotmail.com>
 pkgname=jellyfin-theater-electron-git
-pkgver=r527.22eaded
+pkgver=r529.e588f99
 pkgrel=1
 pkgdesc="Electron Theater app for Jellyfin"
 arch=(i686 x86_64)

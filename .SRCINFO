@@ -1,6 +1,6 @@
 pkgbase = jellyfin-theater-electron-git
 	pkgdesc = Electron Theater app for Jellyfin
-	pkgver = r527.22eaded
+	pkgver = r529.e588f99
 	pkgrel = 1
 	url = https://github.com/jellyfin/jellyfin-theater-electron
 	arch = i686
