@@ -1,7 +1,7 @@
 pkgbase = lizzie-git
 	pkgdesc = Analysis interface for Leela Zero
-	pkgver = 0.6.r19.g6fa818e
-	pkgrel = 1
+	pkgver = 0.6.r84.gfca35c2
+	pkgrel = 2
 	url = https://github.com/featurecat/lizzie
 	arch = x86_64
 	license = GPLv3
@@ -15,9 +15,11 @@ pkgbase = lizzie-git
 	source = git+https://github.com/featurecat/lizzie.git
 	source = lizzie.sh
 	source = lizzie.desktop
+	source = config.txt
 	sha256sums = SKIP
 	sha256sums = 58a4987ab4167aab557e1bcd2bb22daec252ce7c6397e76040c038516b74de70
 	sha256sums = cf5d1651023f04294e580243aa7ef05bc9ebedb468631f4035fd3d5ce0f212f0
+	sha256sums = 3487a0b90ca9340abbd456d47f5dcd8cbaa2876625a4122d732f0a77f09f6caf
 
 pkgname = lizzie-git
 

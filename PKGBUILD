@@ -3,9 +3,9 @@
 
 pkgname=lizzie-git
 _pkgname=lizzie
-pkgver=0.6.r19.g6fa818e
+pkgver=0.6.r84.gfca35c2
 _pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Analysis interface for Leela Zero"
 arch=('x86_64')
 url="https://github.com/featurecat/lizzie"
@@ -16,10 +16,12 @@ provides=('lizzie')
 conflicts=('lizzie')
 source=("git+https://github.com/featurecat/lizzie.git"
         "lizzie.sh"
-        "lizzie.desktop")
+        "lizzie.desktop"
+        "config.txt")
 sha256sums=('SKIP'
             '58a4987ab4167aab557e1bcd2bb22daec252ce7c6397e76040c038516b74de70'
-            'cf5d1651023f04294e580243aa7ef05bc9ebedb468631f4035fd3d5ce0f212f0')
+            'cf5d1651023f04294e580243aa7ef05bc9ebedb468631f4035fd3d5ce0f212f0'
+            '3487a0b90ca9340abbd456d47f5dcd8cbaa2876625a4122d732f0a77f09f6caf')
 
 pkgver() {
   cd lizzie
@@ -27,8 +29,6 @@ pkgver() {
 }
 
 build() {
-  # Use leela-zero-git's weights file instead of downloading a new one just for `mvn test`
-  ln -s /usr/share/leela-zero/networks/weights.txt lizzie/network.gz
   cd lizzie
   mvn package
 }
@@ -39,10 +39,8 @@ check() {
 }
 
 package() {
-  sed -i 's/network.gz/\/usr\/share\/leela-zero\/networks\/weights.txt/g' "$_pkgname"/config.txt
-
   install -Dm644 "$_pkgname"/target/lizzie-"$_pkgver"-shaded.jar "$pkgdir"/usr/share/java/"$_pkgname"/"$_pkgname".jar
-  install -Dm644 "$_pkgname"/config.txt "$pkgdir"/usr/share/"$_pkgname"/config.txt
+  install -Dm644 config.txt "$pkgdir"/usr/share/"$_pkgname"/config.txt
   install -Dm755 "$_pkgname".sh "$pkgdir"/usr/bin/"$_pkgname"
   install -Dm644 "$_pkgname".desktop "$pkgdir"/usr/share/applications/"$_pkgname".desktop
 }
