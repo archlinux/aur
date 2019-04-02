@@ -1,7 +1,8 @@
 # Based on snapgene-viewer package by Antony Lee <anntzer dot lee at gmail dot com>
 # Maintainer: Matthijs Tadema <M dot J dot Tadema at gmail dot com>
+# Co-Maintainer: Lorenzo Gaifas <brisvag at gmail dot com>
 pkgname=snapgene
-pkgver=4.2.6-1
+pkgver=4.3.6
 pkgrel=1
 pkgdesc='Software for plasmid mapping, primer design, and restriction site analysis'
 arch=('x86_64')
@@ -10,7 +11,7 @@ license=('custom')
 # You must download the file yourself using your snapgene account
 # A valid licence is required to use the full version of snapgene
 source=("local://${pkgname}_${pkgver}_linux.rpm")
-md5sums=('e79a343f3fc96a85148390197c002412')
+md5sums=('25e7449a07743a331be0932cee569d77')
 conflicts=()
 options=()
 
