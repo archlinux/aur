@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-geoip2
 pkgver=3.2
-pkgrel=6
+pkgrel=7
 
 _modname="ngx_http_geoip2_module"
-_nginxver=1.15.9
+_nginxver=1.15.10
 
 pkgdesc="GeoIP2 module for mainline nginx"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ validpgpkeys=(
 	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
-sha256sums=('e4cfba989bba614cd53f3f406ac6da9f05977d6b1296e5d20a299f10c2d7ae43'
+sha256sums=('b865743abd52bce4745d0f7e7fedde3cafbaaab617b022c105e3e4e456537c3c'
             'SKIP'
             '15bd1005228cf2c869a6f09e8c41a6aaa6846e4936c473106786ae8ac860fab7')
 
