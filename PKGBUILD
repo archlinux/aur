@@ -3,7 +3,7 @@
 
 _pkgbase="sddm"
 pkgname="$_pkgbase-git"
-pkgver=0.18.0.0.gc8867e0
+pkgver=0.18.1.0.gde41b8e
 pkgrel=1
 pkgdesc="The Simple Desktop Display Manager"
 arch=("x86_64")
@@ -36,8 +36,9 @@ prepare() {
 build() {
         cd build
 	cmake "$srcdir/$_pkgbase" \
-            -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/sddm \
+        -DDBUS_CONFIG_DIR=/usr/share/dbus-1/system.d \
         -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf \
         -DBUILD_MAN_PAGES=ON
   make

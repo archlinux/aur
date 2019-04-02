@@ -1,6 +1,6 @@
 pkgbase = sddm-git
 	pkgdesc = The Simple Desktop Display Manager
-	pkgver = 0.18.0.0.gc8867e0
+	pkgver = 0.18.1.0.gde41b8e
 	pkgrel = 1
 	url = https://github.com/sddm/sddm
 	arch = x86_64
