@@ -2,11 +2,11 @@
 
 pkgname=gromacs-2016-complete
 pkgver=2016.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('lapack' 'zlib' 'libx11')
 optdepends=('cuda: Nvidia GPU support'
             'openmotif:  needed for gmx view'
@@ -19,13 +19,6 @@ source=(http://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz
         GMXRC.bash.cmakein.patch)
 sha1sums=('1a9643eea0f147f47c28b7cb9a2662b5585fe41d'
           '014b2cbfa13db9b495c88f653805c330747117dc')
-
-#With gcc7 currently there are less errors in the tests
-# also the compilation is possible in CUDA capable machines
-export CC=gcc-7
-export CXX=g++-7
-export CFLAGS="-march=native -O2 -pipe -fstack-protector-strong"
-export CXXFLAGS="${CFLAGS}"
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
@@ -49,7 +42,6 @@ build() {
         -DGMX_DOUBLE=ON \
         -DGMX_BUILD_OWN_FFTW=ON \
         -DREGRESSIONTEST_DOWNLOAD=ON
-  #      -DGMX_LIBS_SUFFIX=_d
   make
 
   msg2 "Building the single precision files"
