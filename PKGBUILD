@@ -9,10 +9,17 @@
 # Contributor: p2k <Patrick.Schneider@uni-ulm.de>
 # Contributor: Uffe Jakobsen <uffe@uffe.org>
 #
+# NOTES:
+#
+# 20190409: Mariadb patch applied from https://aur.archlinux.org/packages/codelite/
+# 20151027: ArchLinux clang/llvm-3.7: CommandLine Error: Option 'aarch64-reserve-x18' registered more than once
+# 20151027: -DENABLE_LLDB=0: ArchLinux clang/llvm-3.7: CommandLine Error: Option 'aarch64-reserve-x18' registered more than once
+# 20151027: sudo chmod 000 /usr/lib/codelite/LLDBDebugger.so
+#
 
 pkgname=codelite
 pkgver=12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
@@ -22,7 +29,7 @@ depends=('wxgtk'
           'clang' 'lldb'
           'libedit'
           'libssh'
-          'libmariadbclient'
+          'mariadb-libs'
           'ncurses'
           'xterm' 'curl'
           'python2'
@@ -34,10 +41,20 @@ optdepends=('graphviz: callgraph visualization'
              'valgrind: debugger'
             )
 
-source=(https://github.com/eranif/${pkgname}/archive/${pkgver//_/-}.tar.gz http://repos.codelite.org/wxCrafterLibs/wxgui.zip)
+#source=(https://github.com/eranif/${pkgname}/archive/${pkgver//_/-}.tar.gz
+#        http://repos.codelite.org/wxCrafterLibs/wxgui.zip)
+#noextract=('wxgui.zip')
+
+
+source=(
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/eranif/${pkgname}/archive/${pkgver//_/-}.tar.gz"
+    http://repos.codelite.org/wxCrafterLibs/wxgui.zip
+    mariadb_10_3.patch
+  )
 
 md5sums=('674287c16de4744726afd5fd6521ee4f'
-         '20f3428eb831c3ff2539a7228afaa3b4')
+         '20f3428eb831c3ff2539a7228afaa3b4'
+         '6cd2ad345bc5eff9f88f690519ce6432')
 
 
 #if [[ "$CARCH" == 'i686' ]]; then
@@ -48,33 +65,35 @@ md5sums=('674287c16de4744726afd5fd6521ee4f'
 #  md5sums+=('6fcd2f0fada5fc401d0bcd62cd5452bb')
 #fi
 
-noextract=('wxgui.zip')
 
 pkg_name_ver="${pkgname}-${pkgver//_/-}"
 
-# 20151027: ArchLinux clang/llvm-3.7: CommandLine Error: Option 'aarch64-reserve-x18' registered more than once
-# 20151027: -DENABLE_LLDB=0: ArchLinux clang/llvm-3.7: CommandLine Error: Option 'aarch64-reserve-x18' registered more than once
-# 20151027: sudo chmod 000 /usr/lib/codelite/LLDBDebugger.so
+prepare()
+{
+  cd "${srcdir}/${pkg_name_ver}"
+  patch -p1 -i "${srcdir}"/mariadb_10_3.patch
+}
 
-build() {
+
+build()
+{
 cd "${srcdir}/${pkg_name_ver}"
 
 CXXFLAGS="${CXXFLAGS} -fno-devirtualize"
 
 mkdir -p build
 cd build
-# ArchLinux: CL 9.1.0 needs to be built without LLDB (clang-3.7) because of error: Option 'aarch64-reserve-x18' registered more than once
-#cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DENABLE_CLANG=1 -DENABLE_LLDB=0 -DWITH_MYSQL=1 -DCMAKE_INSTALL_LIBDIR=lib ..
-cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DENABLE_CLANG=1 -DENABLE_LLDB=1 -DWITH_MYSQL=1 -DCMAKE_INSTALL_LIBDIR=lib ..
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DENABLE_CLANG=1 -DENABLE_LLDB=0 -DWITH_MYSQL=1 -DCMAKE_INSTALL_LIBDIR=lib ..
 make
 }
 
-package() {
+package()
+{
 cd "${srcdir}/${pkg_name_ver}/build"
 make -j1 DESTDIR="${pkgdir}" install
-#install -m 755 -D "${srcdir}/wxCrafter.so" "${pkgdir}/usr/lib/codelite/wxCrafter.so"
-install -m 644 -D "${srcdir}/wxgui.zip" "${pkgdir}/usr/share/codelite/wxgui.zip"
 install -m 644 -D "${srcdir}/${pkg_name_ver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+#install -m 755 -D "${srcdir}/wxCrafter.so" "${pkgdir}/usr/lib/codelite/wxCrafter.so"
+#install -m 644 -D "${srcdir}/wxgui.zip" "${pkgdir}/usr/share/codelite/wxgui.zip"
 }
 
 #
