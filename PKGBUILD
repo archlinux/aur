@@ -1,5 +1,5 @@
 # Maintainer: robertfoster
-# Contributor: radfish
+# Contributor: redfish
 
 pkgbase=python-pyelliptic
 pkgname=(
