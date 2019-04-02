@@ -2,7 +2,7 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=craftbukkit-spigot
-pkgver=1.13.2.1969
+pkgver=1.13.2.2027
 _pkgver=1.13.2
 _build="$(echo "$pkgver" | awk -F \. '{print $4}')"
 _build="${_build//_/-}"
