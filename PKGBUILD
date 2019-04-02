@@ -12,6 +12,7 @@ depends=('python>=3.5' 'python-requests>=2.4')
 makedepends=('python-setuptools')
 options=('!emptydirs')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/instaloader/instaloader/tar.gz/v$pkgver)
+sha512sums=('26b3d9a6f11c47566bf4e85db0312c000b13a89a353776a81fb9bd57ae5777442dcb03616a1a00bdc31acf70dd554feb836eb9b388f160edf87147398ed4e173')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
