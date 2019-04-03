@@ -1,0 +1,16 @@
+pkgbase = scim-anthy
+	pkgdesc = Japanese input method module for SCIM
+	pkgver = 1.2.7
+	pkgrel = 6
+	url = http://sourceforge.jp/projects/scim-imengine/
+	arch = x86_64
+	license = GPL
+	depends = scim
+	depends = anthy
+	source = http://osdn.dl.sourceforge.jp/scim-imengine/37309/scim-anthy-1.2.7.tar.gz
+	source = scim-anthy-fix-build.patch
+	sha256sums = cb60070d8f6ff281a99d329c9d731f02ae16893083c9efa9970ccd7287365198
+	sha256sums = 30d025963eab608295415bdb19b5baf65c650ecdfec639414ee29d3422f35a64
+
+pkgname = scim-anthy
+
