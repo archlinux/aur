@@ -1,0 +1,2 @@
+#!/bin/sh
+java -Djava.security.policy=/usr/share/java/glsof/security-client.txt -jar /usr/share/java/glsof/filemonitor.jar
