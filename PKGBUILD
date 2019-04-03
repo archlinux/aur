@@ -18,4 +18,4 @@ package() {
   install -D -t "$pkgdir/usr/bin" "$srcdir/filefolders"
 }
 
-md5sums=('39f696e0d2d0d3b4208c9d1ff89bb17a')
+md5sums=('66d0baf91ebed7f1eaf2c4da4f77e235')
