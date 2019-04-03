@@ -6,24 +6,23 @@
 
 pkgname=gnome-terminal-transparency
 _pkgname=gnome-terminal
-pkgver=3.30.2
+pkgver=3.32.0
 pkgrel=1
 pkgdesc="The GNOME Terminal Emulator, with background transparency"
 url="https://wiki.gnome.org/Apps/Terminal"
 arch=(x86_64)
 license=(GPL)
-depends=('vte3>=0.54.2' gsettings-desktop-schemas dconf)
-makedepends=(intltool itstool docbook-xsl libnautilus-extension appdata-tools
+depends=('vte3>=0.56.0' gsettings-desktop-schemas)
+makedepends=(intltool itstool docbook-xsl libnautilus-extension appstream-glib
              gnome-shell vala yelp-tools)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-options=(!emptydirs)
 groups=(gnome)
 changelog=package.changelog
 source=(https://download.gnome.org/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz
         transparency.patch)
-sha256sums=('6b1fc2720e3bfc592645d41e38d0d3a0f2bdf5ef7bce490b2d5c8ba39f395e38'
-            '96614f799f800d6df1a1f54c0562e3df8c292080ed54598d14840b59097f8a60')
+sha256sums=('240742574974b694ad5c7643684838d28f3dff65be34e478edf92a36cc1495dc'
+            'a834f3c61510a832156eb889a6cfd845f64d177053a6225f1f1b1b624a16b51f')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -34,7 +33,7 @@ prepare() {
 
 build() {
   cd $_pkgname-$pkgver
-  LDFLAGS+=" -pthread"  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --libexecdir=/usr/lib --disable-static --with-nautilus-extension
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
