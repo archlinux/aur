@@ -1,3 +1,10 @@
+2019-04-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.0.1.4-1:
+    ASF will now refuse to launch the second process for the same working directory.
+    Further corrected bots order in Distributing redeem (ref: #1151).
+    Fixed possible trading lock when using SendOnFarmingFinished (ref: #1171).
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2019-03-07 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.0.1.0-1:
     ASF will now discover plugins also from a custom --path directory.
