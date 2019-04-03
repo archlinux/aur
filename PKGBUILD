@@ -4,6 +4,7 @@
 pkgname=pyenv-virtualenv
 pkgver=1.1.5
 pkgrel=3
+epoch=1
 pkgdesc="pyenv plugin to manage virtualenv (a.k.a. python-virtualenv)"
 arch=('any')
 url="https://github.com/pyenv/pyenv-virtualenv"

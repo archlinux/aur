@@ -2,6 +2,7 @@ pkgbase = pyenv-virtualenv
 	pkgdesc = pyenv plugin to manage virtualenv (a.k.a. python-virtualenv)
 	pkgver = 1.1.5
 	pkgrel = 3
+	epoch = 1
 	url = https://github.com/pyenv/pyenv-virtualenv
 	arch = any
 	license = MIT
