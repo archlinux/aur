@@ -1,27 +1,27 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
+# Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 
 _appname=freecad
 pkgname="${_appname}-git"
-pkgver=0.18.r26.g51fcdd2c0
-pkgrel=2
+pkgver=0.19pre.r84.gb66a6fa31
+pkgrel=1
 epoch=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('x86_64')
 url='https://www.freecadweb.org/'
 license=('LGPL')
-depends=('boost-libs' 'curl' 'hicolor-icon-theme' 'libspnav' 'opencascade'
-         'libtheora' 'med' 'jsoncpp' 'xerces-c'
-         'python2-netcdf4' 'python2-pivy' 'python2-pyside2'
-         'qt5-svg' 'qt5-webkit')
-makedepends=('git' 'boost' 'cmake' 'desktop-file-utils' 'pyside2-tools'
-             'desktop-file-utils' 'eigen' 'gcc-fortran' 'swig')
-optdepends=('python2-matplotlib'
-            'pycollada-git: Create, edit and load COLLADA documents.')
+depends=('boost-libs' 'curl' 'desktop-file-utils' 'glew' 'hicolor-icon-theme'
+         'jsoncpp' 'libspnav' 'med' 'opencascade' 'shiboken2' 'xerces-c'
+         'pyside2' 'python-matplotlib' 'python-netcdf4' 'python-pivy'
+         'qt5-svg' 'qt5-webkit' 'qt5-webengine')
+makedepends=('boost' 'cmake' 'eigen' 'git' 'gcc-fortran'
+             'pyside2-tools' 'swig' 'qt5-tools')
+optdepends=('pycollada: Create, edit and load COLLADA documents.')
 provides=('freecad')
 conflicts=('freecad')
 source=("${pkgname}::git+https://github.com/FreeCAD/FreeCAD.git"
         "freecad.desktop"
-	"freecad.xml")
+        "freecad.xml")
 md5sums=('SKIP'
          '7e781d41e90a1c137930e47672996a52'
          'c2f4154c8e4678825411de8e7fa54c6b')
@@ -35,11 +35,24 @@ build() {
     cd "${srcdir}/${pkgname}"
 
     cmake . \
-          -DCMAKE_BUILD_TYPE=Release \
-          -DCMAKE_INSTALL_PREFIX="/opt/${_appname}" \
-          -DFREECAD_USE_OCC_VARIANT="Official Version" \
-          -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-          -DBUILD_QT5=ON
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX="/usr/lib/freecad" \
+        -DCMAKE_INSTALL_DOCDIR="/usr/share/freecad/doc" \
+        -DCMAKE_INSTALL_DATADIR="/usr/share/freecad" \
+        -DFREECAD_USE_OCC_VARIANT="Official Version" \
+        -DBUILD_QT5=ON \
+        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
+        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
+        -DPYTHON_PACKAGES_PATH=/usr/lib/python3.7/site-packages \
+        -DOPENMPI_INCLUDE_DIRS=/usr/include \
+        -DSHIBOKEN_INCLUDE_DIR=/usr/include/shiboken2 \
+        -DSHIBOKEN_BINARY=/usr/bin/shiboken2 \
+        -DSHIBOKEN_LIBRARY=/usr/lib/libshiboken2.cpython-37m-x86_64-linux-gnu.so \
+        -DPYSIDE_INCLUDE_DIR=/usr/include/PySide2 \
+        -DPYSIDE_LIBRARY=/usr/lib/libpyside2.cpython-37m-x86_64-linux-gnu.so \
+        -DPYSIDE_PYTHONPATH=/usr/lib/python3.7/site-packages/PySide2 \
+        -DPYSIDE_TYPESYSTEMS=/usr/share/PySide2/typesystems
 
     make
 }
@@ -50,13 +63,12 @@ package() {
     local bin_cmd="FreeCADCmd"
 
     make DESTDIR="${pkgdir}" install
-	
+
     # Symlink binaries to /usr/bin.
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s "/opt/${_appname}/bin/${bin}" "${pkgdir}/usr/bin/${bin}"
-    ln -s "/opt/${_appname}/bin/${bin_cmd}" "${pkgdir}/usr/bin/${bin_cmd}"
-
-    # Lowercase aliases like the official arch package.
+    ln -s "/usr/lib/freecad/bin/${bin}" "${pkgdir}/usr/bin/${bin}"
+    ln -s "/usr/lib/freecad/bin/${bin_cmd}" "${pkgdir}/usr/bin/${bin_cmd}"
+    # Lowercase aliases for convenience.
     ln -s "/usr/bin/${bin}" "${pkgdir}/usr/bin/${bin,,}"
     ln -s "/usr/bin/${bin_cmd}" "${pkgdir}/usr/bin/${bin_cmd,,}"
 
