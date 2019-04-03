@@ -1,7 +1,7 @@
 # Maintainer: kittydoor <kittydoordev@gmail.com >
 pkgname=st-kitty-git
 _pkgname=st
-pkgver=0.8.2.r9.82110b7
+pkgver=0.8.2.r22.f7d70ea
 pkgrel=1
 pkgdesc="kitty's build of st - the simple terminal by suckless"
 arch=('i686' 'x86_64')
