@@ -2,7 +2,7 @@
 
 _gitname=sniffglue
 pkgname=sniffglue-git
-pkgver=0.5.0.r4.gdef0e5c
+pkgver=0.8.3.r0.g1e5ecae
 pkgrel=1
 pkgdesc="Secure multithreaded packet sniffer"
 url="https://github.com/kpcyrd/sniffglue"
@@ -13,7 +13,7 @@ conflicts=('sniffglue')
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 license=('GPL3')
 backup=('etc/sniffglue.conf')
-source=("git+https://github.com/kpcyrd/$_gitname.git"
+source=("git+https://github.com/kpcyrd/${_gitname}.git"
         "sniffglue-sysuser.conf"
         "sniffglue.conf")
 sha256sums=('SKIP'
@@ -24,27 +24,26 @@ sha512sums=('SKIP'
             '66e6b87e832ba8424334d24e3457a214e60e67c731471098329d0ca54c574518f7856ba780bb6bffde53bdefe2c8f789a242138ae67e2fef3e562fa083b362b1')
 
 pkgver() {
-  cd "$_gitname"
+  cd "${_gitname}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$_gitname"
+  cd "${_gitname}"
   cargo build --release --locked
 }
 
 check() {
-  cd "$_gitname"
+  cd "${_gitname}"
   cargo test --release --locked
 }
 
 package() {
-  cd "$_gitname"
-  install -Dm755 "target/release/$_gitname" -t "$pkgdir/usr/bin"
-  install -Dm644 "$srcdir/sniffglue-sysuser.conf" "$pkgdir/usr/lib/sysusers.d/sniffglue.conf"
-  install -Dm644 "$srcdir/sniffglue.conf" -t "$pkgdir/etc"
-  install -Dm644 docs/sniffglue.1 -t "$pkgdir/usr/share/man/man1"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_gitname"
+  cd "${_gitname}"
+  install -Dm755 "target/release/$_gitname" -t "${pkgdir}/usr/bin"
+  install -Dm644 "${srcdir}/sniffglue-sysuser.conf" "${pkgdir}/usr/lib/sysusers.d/sniffglue.conf"
+  install -Dm644 "${srcdir}/sniffglue.conf" -t "${pkgdir}/etc"
+  install -Dm644 docs/sniffglue.1 -t "${pkgdir}/usr/share/man/man1"
 }
 
 # vim:set ts=2 sw=2 et:
