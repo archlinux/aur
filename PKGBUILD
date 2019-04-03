@@ -1,7 +1,7 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-llvm-git
-pkgver=0.37dev.git20190303
+pkgver=0.37dev.git20190330
 pkgrel=1
 arch=('any')
 pkgdesc='VHDL simulator - LLVM flavour'
@@ -10,7 +10,7 @@ license=('GPLv2')
 
 provides=('ghdl')
 conflicts=('ghdl' 'ghdl-gcc-git' 'ghdl-mcode-git')
-makedepends=('gcc-ada' 'git' 'llvm' 'clang')
+makedepends=('gcc-ada' 'git' 'llvm<8' 'clang<8')
 
 source=(
 	"ghdl::git://github.com/ghdl/ghdl.git"
