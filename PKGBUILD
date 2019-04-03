@@ -3,7 +3,7 @@
 pkgname=python-httpsig
 _name=${pkgname#python-}
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Secure HTTP request signing using the HTTP Signature draft specification'
 url='https://github.com/ahknight/httpsig'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-pycryptodome')
 optdepends=('python-requests')
 makedepends=('python-setuptools')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/ahknight/httpsig/archive/v$pkgver.tar.gz")
-sha256sums=('71d6d50246129c4f7cfec20f5e57e351d2b8492d631cc2aa967914acf91f6ce6')
+md5sums=('dbf9a9464b8ec06c89756d088cdc9810')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
