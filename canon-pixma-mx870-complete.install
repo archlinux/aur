@@ -145,4 +145,11 @@ post_remove() {
 			rm -f /usr/lib32/${LIBS}${model_num}c.so
 		fi	
 	done
+	# Remove .desktop file and icon
+	if [ -h /usr/share/applications/canon-pixma-mx870-complete-scangearmp.desktop ]; then
+		rm -f /usr/share/applications/canon-pixma-mx870-complete-scangearmp.desktop
+	fi
+	if [ -h /usr/share/pixmaps/canon-pixma-mx870-complete-scangearmp-icon.png ]; then
+		rm -f /usr/share/pixmaps/canon-pixma-mx870-complete-scangearmp-icon.png
+	fi
 }
