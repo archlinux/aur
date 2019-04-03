@@ -1,8 +1,9 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 _name=openmvs
+_pkgver=0.9
 _fragment="#branch=develop"
 pkgname=${_name}-git
-pkgver=0.7.r73.g58d4bd8
+pkgver=0.9.r11.g4ca6d29
 pkgrel=1
 pkgdesc="open Multi-View Stereo reconstruction library with simple and automatic set of tools"
 arch=('i686' 'x86_64')
@@ -24,7 +25,8 @@ md5sums=('SKIP'
 pkgver() {
   cd "$pkgname"
   # cutting off 'v' prefix that presents in the git tag
-  git describe --long --tag | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  #git describe --long --tag | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf %s.r%s.g%s $_pkgver $(git rev-list cecc7f2..HEAD --count) $(git rev-parse --short HEAD)
 
 }
 
@@ -37,7 +39,7 @@ build() {
   cd ${srcdir}
   mkdir -p build
   cd build
-  cmake ../${pkgname} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DINSTALL_BIN_DIR=/usr/bin -DVCG_DIR="../vcglib"
+  cmake -Wno-dev ../${pkgname} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DINSTALL_BIN_DIR=/usr/bin -DVCG_DIR="../vcglib"
   make
 }
 
