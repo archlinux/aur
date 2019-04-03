@@ -1,34 +1,27 @@
 # Maintainer: Florian "Bluewind" Pritz <flo@xssn.at>
 pkgname=spampd
-pkgver=2.30
-pkgrel=14
+pkgver=2.53
+pkgrel=1
 pkgdesc="Spamassassin Proxy Daemon"
 arch=('any')
 url="https://www.worlddesign.com/index.cfm/page/software/open-source/spampd.htm"
-license=('GPL')
+license=('GPL3')
 depends=('perl' 'perl-net-server' 'spamassassin')
-source=("https://www.worlddesign.com/Content/rd/mta/$pkgname/$pkgname-$pkgver.tar.gz"
-        spampd.service perl-5.18-fixes.patch)
-md5sums=('742c6f2cb75db54e59d044a8ee40445f'
-         'afc4f2c824bfbd1cc81db3e740f29078'
-         '55ea1067be9e70c60b708d355b085a0a')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  patch -p1 -i "$srcdir/perl-5.18-fixes.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mpaperno/spampd/archive/2.53.tar.gz"
+        spampd.service)
+md5sums=('63ef45a103687ec3a1b7983f537b4d9a'
+         'afc4f2c824bfbd1cc81db3e740f29078')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  make
+  pod2man spampd.pl | gzip -n -c > spampd.8.gz
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  install -Dm755 spampd "$pkgdir/usr/bin/spampd"
+  install -Dm755 spampd.pl "$pkgdir/usr/bin/spampd"
   install -Dm644 spampd.8.gz "$pkgdir/usr/share/man/man8/spampd.8.gz"
   install -Dm644 "$srcdir/spampd.service" "$pkgdir/usr/lib/systemd/system/spampd.service"
 
