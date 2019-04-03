@@ -2,7 +2,7 @@
 
 pkgname=mycrypto-bin
 pkgbin=mycrypto
-pkgver=1.6.1
+pkgver=1.6.3
 pkgrel=1
 pkgdesc='Open-source, client-side tool for generating Ether Wallets, handling ERC-20 tokens, and interacting with the blockchain more easily'
 package="linux-x86-64_${pkgver}_MyCrypto.AppImage"
@@ -13,7 +13,7 @@ url='https://github.com/MyCryptoHQ/MyCrypto'
 license=('MIT')
 source=("${url}/releases/download/${pkgver}/${package}"
         'LICENSE')
-sha256sums=('82b383bc36b16ab7be4de7ce4f68a9b57d8524442e95050765199249b5451bf4'
+sha256sums=('39dc93dee42d22479a6862890e037cb4fd563087aac26152c2b99adeb5cd2849'
             '1b0a4ebe6200441fe008bba2b60bb227b944cd77427b3f9c60f6f7e32120a65d')
 
 package() {
