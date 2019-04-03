@@ -29,7 +29,7 @@ _target_host=false
 _sysroot=""
 _piver=""
 _use_mesa=false
-#_float=true
+_float=true
 _shadow_build=true
 # automatically disabled if you are building webengine
 _debug=true
@@ -137,6 +137,7 @@ case ${_piver} in
   _toolchain_name=aarch64-rpi3-linux-gnu
   _toolchain="/opt/x-tools/${_toolchain_name}/bin/${_toolchain_name}-"
   _use_mesa=true
+  _float=false
   # just for projectmofo!
   #_opengl_variant="desktop"
 ;;
