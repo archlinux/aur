@@ -1,0 +1,16 @@
+pkgbase = xsnow
+	pkgdesc = Display snow, Santa and his reindeers on the root window
+	pkgver = 1.42
+	pkgrel = 7
+	url = https://janswaal.home.xs4all.nl/Xsnow/
+	arch = x86_64
+	license = custom
+	makedepends = imake
+	depends = libxpm
+	source = https://janswaal.home.xs4all.nl/Xsnow/xsnow-1.42.tar.gz
+	source = LICENSE
+	sha1sums = d63987560dac9c6341e50d270089e40d17031ce3
+	sha1sums = c93e236bed35a2d5dc23202c1c615d4e146fba49
+
+pkgname = xsnow
+
