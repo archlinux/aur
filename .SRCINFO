@@ -1,0 +1,16 @@
+pkgbase = epplet-base
+	pkgdesc = Addon plugins for the enlightenment windowmanager
+	pkgver = 0.14
+	pkgrel = 3
+	url = http://www.enlightenment.org
+	arch = x86_64
+	license = GPL
+	makedepends = mesa
+	depends = imlib2
+	depends = libcdaudio
+	depends = libgl
+	source = http://downloads.sourceforge.net/sourceforge/enlightenment/epplets-0.14.tar.gz
+	sha512sums = d83d60521fe06497f109c3fbb5c2e10abd36a43b050c10787a68d9f9f8c2866f57d78a8559a482654d9bb0eaaf3ce791e4839bb0fda88ccbf026d8ec5dc93824
+
+pkgname = epplet-base
+
