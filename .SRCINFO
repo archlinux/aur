@@ -1,12 +1,12 @@
 pkgbase = dero
 	pkgdesc = Dero: cryptonote currency daemon and wallet
-	pkgver = 2.1.5
+	pkgver = 2.1.6
 	pkgrel = 1
 	url = https://github.com/deroproject/derosuite
 	arch = x86_64
 	license = custom:Research
 	makedepends = go
 	depends = glibc
-	source = https://github.com/deroproject/derosuite/archive/v2.1.5.tar.gz
-    md5sums = 21c3c5961de71e2901bf85d77db4c768
+	source = https://github.com/deroproject/derosuite/archive/v2.1.6-1.tar.gz
+    md5sums = 4250f4673704d3417c8deef73373f410
 pkgname = dero
