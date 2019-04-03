@@ -1,7 +1,7 @@
 #Maintainer: juan tascon <juantascon __at__ horlux org>
 
 pkgname="mongodb-shell-bin"
-pkgver="4.0.6"
+pkgver="4.0.8"
 basever="4.0"
 pkgrel="1"
 pkgdesc="Mongo shell client only"
@@ -13,7 +13,7 @@ conflicts=("mongodb")
 optdepends=("mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.")
 source=("https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/${basever}/multiverse/binary-amd64/mongodb-org-shell_${pkgver}_amd64.deb" "LICENSE")
 
-sha256sums=('0732fadef967ec2a1d3fc96d85c4c631e3b53560fbaa5a9c2e8e8493244d9e1c'
+sha256sums=('1fca4c291b03d489b3116d33a236c2e551dce0b36dc5fb0fe1c21ffc76a52168'
             '09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27')
 
 prepare() {
