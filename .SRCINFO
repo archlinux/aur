@@ -1,7 +1,7 @@
 pkgbase = eclipse-objectaid
 	pkgdesc = Create UML class diagrams from existing Java source code and libraries with this plugin for Eclipse IDE.
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.objectaid.com
 	arch = any
 	license = ObjectAid Class Diagram Editor License

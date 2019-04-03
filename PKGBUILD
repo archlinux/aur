@@ -2,7 +2,7 @@
 
 pkgname=eclipse-objectaid
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Create UML class diagrams from existing Java source code and libraries with this plugin for Eclipse IDE.'
 arch=('any')
 url='http://www.objectaid.com'
