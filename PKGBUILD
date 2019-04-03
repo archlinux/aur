@@ -396,6 +396,8 @@ fi
 
 if $_patching; then
   echo "Patching source"
+  cd ${_srcdir}/qtdeclarative
+  patch -p1 < ${startdir}/0005-Fix-qtdeclarative-build-configured-with-qreal-float.patch
 fi
 
   rm -Rf ${_bindir}
