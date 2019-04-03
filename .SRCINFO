@@ -1,17 +1,17 @@
 pkgbase = qt5-webengine-widevine
 	pkgdesc = A browser plugin designed for the viewing of premium video content
-	pkgver = 66.0.3359.181
-	pkgrel = 2
+	pkgver = 73.0.3683.86
+	pkgrel = 1
 	epoch = 1
-	url = http://www.google.com/chrome
+	url = https://www.widevine.com/
 	arch = x86_64
-	license = custom:chrome
+	license = custom
 	depends = qt5-webengine
 	options = !strip
-	source = chrome-eula_text.html::https://www.google.com/intl/en/chrome/browser/privacy/eula_text.html
-	source = https://www.slimjet.com/chrome/download-chrome.php?file=lnx%2Fchrome64_66.0.3359.181.deb
+	source = https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_73.0.3683.86-1_amd64.deb
+	source = https://www.google.com/intl/en/chrome/privacy/eula_text.html
+	sha256sums = 6bca2828da09563634bce48cfb899f3fb1d069285a297ca5916d3bb63b25b5d6
 	sha256sums = SKIP
-	sha256sums = 229b35f0d41bbb6edd98ce4ab8305994a0f5cd1ac4d9817571f07365b2d1ad80
 
 pkgname = qt5-webengine-widevine
 

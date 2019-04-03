@@ -1,28 +1,25 @@
-# Maintainer: Jesse McClure aka "Trilby" <jmcclure at broadinstitute dot org>
+# Maintainer: Jesse McClure aka "Trilby" <code at jessemcclure dot org>
 
 pkgname=qt5-webengine-widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content'
-pkgver=66.0.3359.181
-pkgrel=2
+pkgver=73.0.3683.86
+pkgrel=1
 epoch=1
 arch=('x86_64')
-url='http://www.google.com/chrome'
-license=('custom:chrome')
-options=('!strip')
+url='https://www.widevine.com/'
+license=('custom')
 depends=('qt5-webengine')
-source=('chrome-eula_text.html::https://www.google.com/intl/en/chrome/browser/privacy/eula_text.html'
-        "https://www.slimjet.com/chrome/download-chrome.php?file=lnx%2Fchrome64_${pkgver}.deb")
-sha256sums=('SKIP'
-            '229b35f0d41bbb6edd98ce4ab8305994a0f5cd1ac4d9817571f07365b2d1ad80')
+options=('!strip')
+source=("https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${pkgver}-1_amd64.deb"
+        "https://www.google.com/intl/en/chrome/privacy/eula_text.html")
+sha256sums=('6bca2828da09563634bce48cfb899f3fb1d069285a297ca5916d3bb63b25b5d6'
+            'SKIP')
 
 prepare() {
-	bsdtar -x --strip-components 4 -f data.tar.xz \
-		opt/google/chrome/libwidevinecdm.so \
-		opt/google/chrome/libwidevinecdmadapter.so
+  bsdtar -x --strip-components 4 -f data.tar.xz opt/google/chrome/libwidevinecdm.so
 }
 
 package() {
 	install -Dm644 libwidevinecdm.so -t "$pkgdir/usr/lib/qt/plugins/ppapi/"
-	install -Dm644 libwidevinecdmadapter.so -t "$pkgdir/usr/lib/qt/plugins/ppapi/"
-	install -Dm644 chrome-eula_text.html -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 eula_text.html -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
