@@ -1,7 +1,7 @@
 # Maintainer: Bruno Van de Velde <bruno@texus.me>
 
 pkgname=tgui-git
-pkgver=v0.8.0.r7.g8afc386d
+pkgver=v0.8.4.r71.g14e29fbf
 pkgrel=1
 pkgdesc="Cross-platform C++ GUI library for SFML"
 arch=('i686' 'x86_64')
@@ -25,6 +25,7 @@ build() {
   cd "$srcdir/TGUI"
   cmake -DCMAKE_INSTALL_PREFIX=/usr . \
         -DCMAKE_BUILD_TYPE=RelWithDebugInfo \
+        -DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE \
         -DTGUI_BUILD_DOC=true
   make
 }
