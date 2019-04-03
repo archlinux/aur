@@ -1,0 +1,14 @@
+pkgbase = gnet
+	pkgdesc = A simple network library
+	pkgver = 2.0.8
+	pkgrel = 5
+	url = http://live.gnome.org/GNetLibrary
+	arch = x86_64
+	license = LGPL
+	depends = glib2
+	depends = libnsl
+	source = http://ftp.gnome.org/pub/GNOME/sources/gnet/2.0/gnet-2.0.8.tar.bz2
+	sha1sums = 74a33dd25cc594b874e3a5171795efd99e567387
+
+pkgname = gnet
+
