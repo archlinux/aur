@@ -6,8 +6,8 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=3.0.2.r711.g77e71cfcb
-pkgrel=2
+pkgver=3.0.2.r801.g318fe3c04
+pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
 arch=('i686' 'x86_64' 'arm')
@@ -16,7 +16,7 @@ license=("GPL2")
 depends=('ncurses')
 optdepends=('python: fish_update_completions and other tools' 
 			'xsel: clipboard integration')
-makedepends=('cmake' 'doxygen' 'git' 'ncurses')
+makedepends=('cmake' 'python-sphinx' 'git')
 provides=('fish' 'fish-shell')
 conflicts=('fish' 'fish-shell')
 install='fish.install'
@@ -25,7 +25,6 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$_gitname"
-#	git log -1 --format="%cd" --date=short | sed 's|-|.|g'
 	git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
@@ -42,7 +41,4 @@ package() {
 	cd "$srcdir/$_gitname/build"
 	make DESTDIR="$pkgdir" install
 	
-	# https://github.com/fish-shell/fish-shell/issues/5719
-# 	mv "$pkgdir/usr/local/share/fish/"* "$pkgdir/usr/share/fish"
-# 	rmdir "$pkgdir/usr/local/share/fish" "$pkgdir/usr/local/share" "$pkgdir/usr/local"
 }
