@@ -4,4 +4,3 @@ Name=ScanGear MP
 Exec=/usr/bin/scangearmp
 Icon=/usr/share/pixmaps/canon-pixma-mx870-complete-scangearmp-icon.png
 Categories=Graphics;2DGraphics;
-Name[en_US]=canon-pixma-mx870-complete-scangearmp.desktop

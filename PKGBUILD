@@ -4,7 +4,7 @@
  
 pkgname=canon-pixma-mx870-complete
 pkgver=3.30
-pkgrel=2
+pkgrel=3
 pkgdesc="Complete stand alone driver set (printing and scanning) for Canon Pixma MX870"
 url="https://www.usa.canon.com/internet/portal/us/home/support/details/printers/support-inkjet-printer/mx-series/pixma-mx870"
 arch=('i686' 'x86_64')
