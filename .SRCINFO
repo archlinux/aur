@@ -1,0 +1,16 @@
+pkgbase = ttf-cheapskate
+	pkgdesc = TTFonts collection from dustimo.com
+	pkgver = 2.0
+	pkgrel = 12
+	url = http://dustismo.com/
+	arch = any
+	license = GPL
+	depends = xorg-fonts-encodings
+	depends = xorg-fonts-alias
+	depends = xorg-font-utils
+	depends = fontconfig
+	source = https://sources.archlinux.org/other/packages/ttf-cheapskate/ttf-dustin_20030517.orig.tar.gz
+	sha1sums = 66fe8772adf3e3390706c2a34380e380d5533677
+
+pkgname = ttf-cheapskate
+
