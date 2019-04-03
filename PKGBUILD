@@ -4,7 +4,7 @@
  
 pkgname=canon-pixma-mx870-complete
 pkgver=3.30
-pkgrel=4
+pkgrel=5
 pkgdesc="Complete stand alone driver set (printing and scanning) for Canon Pixma MX870"
 url="https://www.usa.canon.com/internet/portal/us/home/support/details/printers/support-inkjet-printer/mx-series/pixma-mx870"
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ source=('http://gdlp01.c-wss.com/gds/3/0100002723/01/cnijfilter-mx870series-3.30
         "${pkgname}-scangearmp-icon.png")
 sha256sums=('df3694f4cf60a63010a8a4fbefcb38195c895786a8edf3fc2dc452bea7b60a95'
             'ec70d28e830e927d7b05649e4102963dee08e579373cfab9e305f11399afa245'
-            'ff51249c1b54ded7b7a12a5f49cb0a188754ba634c92c9fff9eaa300b4b3bbc5'  
-            '29dbc682d3f22d79f580bda54801d1f4ef261d857c756eaf4db29e1313406bcc')  
+            'b94e03193c2f78d26156f5e4c9bc7fb4451b708aded9ab46f9fc8faa3a40e406'
+            '29dbc682d3f22d79f580bda54801d1f4ef261d857c756eaf4db29e1313406bcc')
 
 _canondir='cnijfilter-mx870series-3.30-1-i386-deb'
 _scangearmpdir='scangearmp-mx870series-1.50-1-i386-deb'
