@@ -40,7 +40,7 @@ _static_build=false
 _build_from_local_src_tree=false
 _patching=true
 _minimal=true
-_uber_minimal=false
+_uber_minimal=true
 
 if [[ -z ${startdir} ]]; then
   _building=false;
