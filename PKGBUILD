@@ -3,7 +3,7 @@
 
 pkgname=wire-desktop
 pkgver=3.9.2895
-pkgrel=1
+pkgrel=2
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('x86_64')
 url='https://wire.com/'
