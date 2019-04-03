@@ -1,0 +1,25 @@
+pkgbase = tuijam-git
+	pkgdesc = A fancy TUI client for Google Play Music
+	pkgver = r102.82e7656
+	pkgrel = 1
+	url = https://github.com/cfangmeier/tuijam
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-distribute
+	depends = python
+	depends = python-gmusicapi-git
+	depends = python-google-api-python-client
+	depends = python-urwid
+	depends = python-pyaml
+	depends = python-mpv
+	depends = python-scrypt
+	depends = python-pydbus
+	depends = pygobject-devel
+	provides = tuijam
+	conflicts = tuijam
+	source = git+https://github.com/cfangmeier/tuijam.git
+	md5sums = SKIP
+
+pkgname = tuijam-git
+
