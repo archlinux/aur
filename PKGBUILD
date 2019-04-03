@@ -1,27 +1,31 @@
 # Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=ndi-sdk
-pkgver=3.20181221.r100036
+pkgver=3.20190401.r102637
 pkgrel=1
+_majver="${pkgver%%.*}"
 pkgdesc='NewTek NDI SDK'
 arch=('i686' 'x86_64')
 url='https://www.newtek.com/ndi/sdk/'
 license=('custom')
 depends=('avahi')
 options=('!strip')
-_srcfile="InstallNDISDK_v${pkgver}_Linux.sh"
-source=("$_srcfile"::"http://514f211588de67e4fdcf-437b8dd50f60b69cf0974b538e50585b.r63.cf1.rackcdn.com/Utilities/SDK/NDI_SDK_Linux_v2/InstallNDISDK_v${pkgver%%.*}_Linux.sh")
+_srcfile="InstallNDISDK_v${pkgver}_Linux.tar.gz"
+source=("$_srcfile"::"http://514f211588de67e4fdcf-437b8dd50f60b69cf0974b538e50585b.r63.cf1.rackcdn.com/Utilities/SDK/NDI_SDK_Linux_v2/InstallNDISDK_v${_majver}_Linux.tar.gz")
 noextract=("$_srcfile")
-sha256sums=('8face05e356ffed5de9660ba4a5232699faa2bf0c9858d5ed88fac6d138c23a0')
+sha256sums=('ca0d5a7070f678d2d4359fab916e5f4306c7c91bfe8dd898209d5034e6a6d3eb')
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}"
     
+    bsdtar -x -f "$_srcfile" -C "${pkgname}-${pkgver}"
+    
     local _target_line
-    _target_line="$(sed -n '/^__NDI_ARCHIVE_BEGIN__$/=' "$_srcfile")"
+    cd "${pkgname}-${pkgver}"
+    _target_line="$(sed -n '/^__NDI_ARCHIVE_BEGIN__$/=' "InstallNDISDK_v${_majver}_Linux.sh")"
     _target_line="$((_target_line + 1))"
     
-    tail -n +"$_target_line" "$_srcfile" | tar -zxvf - -C "${pkgname}-${pkgver}"
+    tail -n +"$_target_line" "InstallNDISDK_v${_majver}_Linux.sh" | tar -zxvf -
 }
 
 package() {
@@ -31,10 +35,10 @@ package() {
     
     # library
     cd "${srcdir}/${pkgname}-${pkgver}/NDI SDK for Linux/lib/${CARCH}-linux-gnu"
-    install -D -m755 "libndi.so.${pkgver%%.*}".* -t "${pkgdir}/usr/lib"
+    install -D -m755 "libndi.so.${_majver}".* -t "${pkgdir}/usr/lib"
     cd "${pkgdir}/usr/lib"
-    ln -s "libndi.so.${pkgver%%.*}".* "libndi.so.${pkgver%%.*}"
-    ln -s "libndi.so.${pkgver%%.*}".*  libndi.so
+    ln -s "libndi.so.${_majver}".* "libndi.so.${_majver}"
+    ln -s "libndi.so.${_majver}".*  libndi.so
     
     # docs
     cd "${srcdir}/${pkgname}-${pkgver}/NDI SDK for Linux/documentation"
