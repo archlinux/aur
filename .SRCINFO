@@ -1,0 +1,17 @@
+pkgbase = aerc2-git
+	pkgdesc = Terminal email client
+	pkgver = r170.1554065285.60627c9
+	pkgrel = 1
+	url = https://git.sr.ht/~sircmpwn/aerc2
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = libvterm
+	provides = aerc2
+	conflicts = aerc2
+	source = aerc2::git+https://git.sr.ht/~sircmpwn/aerc2
+	sha512sums = SKIP
+
+pkgname = aerc2-git
+
