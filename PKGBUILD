@@ -1,13 +1,13 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 pkgname=chronoengine
-pkgver=3.0.0
-#fragment="#tag=${pkgver}"
-pkgrel=3
+pkgver=4.0.0
+_fragment="#tag=${pkgver}"
+pkgrel=1
 pkgdesc="C++ library for physics simulation"
 license=('custom')
 arch=('i686' 'x86_64')
-url="http://projectchrono.org/chronoengine/"
+url="https://projectchrono.org/"
 depends=(openmpi boost-libs)
 makedepends=(cmake git boost glm glew glfw irrlicht glut openmpi)
 makedepends+=(python swig) # -DENABLE_MODULE_PYTHON requirement
@@ -30,7 +30,7 @@ optdepends=(
 #CXXFLAGS="-O2 -pipe -fstack-protector-strong"
 #CFLAGS=${CXXFLAGS}
 
-source=("${pkgname}::git+https://github.com/projectchrono/chrono.git${fragment}"
+source=("${pkgname}::git+https://github.com/projectchrono/chrono.git${_fragment}"
 	"git+https://github.com/google/benchmark.git"
 	"git+https://github.com/google/googletest.git"
 	"chronoengine.sh"
@@ -78,7 +78,7 @@ prepare() {
   sed -i 's/lib64/lib/' ${files[@]}
   sed -i 's|share/chrono/bin|bin/chronoengine|' CMakeLists.txt
   git apply ${srcdir}/glm.patch
-  git apply ${srcdir}/opencascade.patch
+#  git apply ${srcdir}/opencascade.patch
 }
 
 build() {

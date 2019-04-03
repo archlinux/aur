@@ -1,8 +1,8 @@
 pkgbase = chronoengine
 	pkgdesc = C++ library for physics simulation
-	pkgver = 3.0.0
-	pkgrel = 3
-	url = http://projectchrono.org/chronoengine/
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://projectchrono.org/
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -29,7 +29,7 @@ pkgbase = chronoengine
 	optdepends = python: Python bindings
 	optdepends = nvidia-utils: CUDA support in PARALLEL module
 	optdepends = opencascade: add 3D CAD file support (STEP format)
-	source = chronoengine::git+https://github.com/projectchrono/chrono.git
+	source = chronoengine::git+https://github.com/projectchrono/chrono.git#tag=4.0.0
 	source = git+https://github.com/google/benchmark.git
 	source = git+https://github.com/google/googletest.git
 	source = chronoengine.sh
