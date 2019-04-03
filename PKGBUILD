@@ -1,63 +1,67 @@
 # Maintainer: Charles Wise <charles [at] charlesbwise [dot] com>
-# Contributor:  Jeremy Sands <cto [at] jeremysands [dot] com>
+# Contributor: Jeremy Sands <cto [at] jeremysands [dot] com>
+# Contributor: Ryan Owens <ryanowens [at] linux [dot] com>
  
 pkgname=canon-pixma-mx870-complete
 pkgver=3.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete stand alone driver set (printing and scanning) for Canon Pixma MX870"
-url="http://support-sg.canon-asia.com/contents/SG/EN/0100272302.html"
+url="https://www.usa.canon.com/internet/portal/us/home/support/details/printers/support-inkjet-printer/mx-series/pixma-mx870"
 arch=('i686' 'x86_64')
 license=('custom')
-if [[ ${CARCH} = 'x86_64' ]]; then
-  depends=('lib32-popt' 'lib32-libpng12' 'lib32-libusb-compat' 'lib32-libtiff4' 'lib32-libxml2' 'lib32-gtk2')
-elif [[ ${CARCH} = 'i686' ]]; then
-  depends=('popt' 'libpng12' 'libusb-compat' 'libtiff4' 'libxml2' 'gtk2')
-fi
-makedepends=('binutils')
+depends_i686=('popt' 'libpng12' 'libusb-compat' 'libtiff4' 'libxml2' 'gtk2')
+depends_x86_64=('lib32-popt' 'lib32-libpng12' 'lib32-libusb-compat' 'lib32-libtiff4' 'lib32-libxml2' 'lib32-gtk2')
+options=('!strip' '!emptydirs')
+install=${pkgname}.install
 source=('http://gdlp01.c-wss.com/gds/3/0100002723/01/cnijfilter-mx870series-3.30-1-i386-deb.tar.gz'
-        'http://gdlp01.c-wss.com/gds/0/0100002730/01/scangearmp-mx870series-1.50-1-i386-deb.tar.gz')
-md5sums=('2aae1637d5f4c1bf10095fb5473f18c2'
-        'e77cec72a640d1b350c53e483f8792dc')
- 
-package(){
+        'http://gdlp01.c-wss.com/gds/0/0100002730/01/scangearmp-mx870series-1.50-1-i386-deb.tar.gz'
+        "${pkgname}-scangearmp.desktop"
+        "${pkgname}-scangearmp-icon.png")
+sha256sums=('df3694f4cf60a63010a8a4fbefcb38195c895786a8edf3fc2dc452bea7b60a95'
+            'ec70d28e830e927d7b05649e4102963dee08e579373cfab9e305f11399afa245'
+            'ff51249c1b54ded7b7a12a5f49cb0a188754ba634c92c9fff9eaa300b4b3bbc5'  
+            '29dbc682d3f22d79f580bda54801d1f4ef261d857c756eaf4db29e1313406bcc')  
 
-  cd ${srcdir}/cnijfilter-mx870series-3.30-1-i386-deb/packages/
-  install cnijfilter-common_3.30-1_i386.deb ${pkgdir}
-  install cnijfilter-mx870series_3.30-1_i386.deb ${pkgdir}
- 
-  cd ${srcdir}/scangearmp-mx870series-1.50-1-i386-deb/packages
-  install scangearmp-common_1.50-1_i386.deb ${pkgdir}
-  install scangearmp-mx870series_1.50-1_i386.deb ${pkgdir}
- 
+_canondir='cnijfilter-mx870series-3.30-1-i386-deb'
+_scangearmpdir='scangearmp-mx870series-1.50-1-i386-deb'
+
+package() { 
+  # Get the .deb files
+  cd ${srcdir}/${_canondir}/packages
+  find ./ -type f -iname '*.deb*' -exec install -m644 "{}" "${pkgdir}/{}" \;
+  cd ${srcdir}/${_scangearmpdir}/packages
+  find ./ -type f -iname '*.deb*' -exec install -m644 "{}" "${pkgdir}/{}" \;
+
+  # Extract data from .deb archives
   cd ${pkgdir}
- 
-  ar -x cnijfilter-common_3.30-1_i386.deb data.tar.gz
-  tar -xzf data.tar.gz
-  rm cnijfilter-common_3.30-1_i386.deb
-  rm data.tar.gz
- 
-  ar -x cnijfilter-mx870series_3.30-1_i386.deb data.tar.gz
-  tar -xvf data.tar.gz
-  rm cnijfilter-mx870series_3.30-1_i386.deb
-  rm data.tar.gz
- 
-  ar -x scangearmp-common_1.50-1_i386.deb data.tar.gz
-  tar -xvf data.tar.gz
-  rm scangearmp-common_1.50-1_i386.deb
-  rm data.tar.gz
- 
-  ar -x scangearmp-mx870series_1.50-1_i386.deb data.tar.gz
-  tar -xvf data.tar.gz
-  rm scangearmp-mx870series_1.50-1_i386.deb
-  rm data.tar.gz
+  for debfile in $(find ./ -type f -iname '*.deb*'); do
+	ar x $debfile data.tar.gz
+	tar -xvzf data.tar.gz
+	rm $debfile
+	rm data.tar.gz
+  done
 
-  mkdir ${pkgdir}/usr/share/licenses
-  mkdir ${pkgdir}/usr/share/licenses/canon-pixma-mx870-complete
+  # Fix udev rules
+  sed -i -e s/SYSFS/ATTR/g ${pkgdir}/etc/udev/rules.d/80-canon_mfp.rules 
+  sed -i -e s/'MODE="666"'/'TAG+="uaccess", TAG+="udev-acl"'/g ${pkgdir}/etc/udev/rules.d/80-canon_mfp.rules
+
+  # Licenses
   cd ${pkgdir}/usr/share/doc
-  mv cnijfilter-common cnijfilter-mx870series scangearmp-common scangearmp-mx870series ../licenses/canon-pixma-mx870-complete/
-  rm -r ${pkgdir}/usr/share/doc
+  find ./ -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/licenses/$pkgname/{}" \;
 
-  cd ${pkgdir}/usr/lib/bjlib/
-  chmod 644 canon_mfp_net.ini
+  # Clean up
+  chmod 644 ${pkgdir}/usr/lib/bjlib/canon_mfp_net.ini
+  chown root. ${pkgdir}/usr/lib/bjlib/cnnet.ini
 
+  # Install .desktop file and icon for scanner
+  install -Dm644 "${srcdir}/${pkgname}-scangearmp.desktop" "${pkgdir}/usr/share/applications/${pkgname}-scangearmp.desktop"
+  install -Dm644 "${srcdir}/${pkgname}-scangearmp-icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}-scangearmp-icon.png"
+
+  # Fix directory structure differences
+  cd ${pkgdir}
+  if [[ ${CARCH} == x86_64 ]]; then
+	mkdir usr/lib32 2> /dev/null 
+	mv usr/lib/* usr/lib32
+	rm -rf usr/lib
+  fi
 }

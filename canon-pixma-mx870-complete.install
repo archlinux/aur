@@ -1,0 +1,148 @@
+## Built with assistance from debtap --> https://aur.archlinux.org/packages/debtap/
+
+post_install() {
+## cnijfilter-mx870series section
+	gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+
+	CNIJ_PKG_INFO=cnijfilter-mx870-367
+
+	model_name=$(echo ${CNIJ_PKG_INFO} | cut -d- -f2)
+	model_num=$(echo ${CNIJ_PKG_INFO} | cut -d- -f3)
+
+	_cups_path1=/usr/share/ppd
+	_cups_path2=/usr/share/cups/model
+	ppd_name=canon${model_name}.ppd
+
+	if [ -x /usr/bin/ldconfig ]; then
+		/sbin/ldconfig
+	fi
+	# Make symbolic link for the ppd file
+	if [ ! -d ${_cups_path2} ]; then
+		mkdir ${_cups_path2}
+	fi
+	ln -fs ${_cups_path1}/${ppd_name} ${_cups_path2}/${ppd_name}
+	update-desktop-database -q
+
+	
+## scangearmp-common section
+	gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+
+	_gimp2dir1=/usr/lib32/gimp/2.0/plug-ins
+	_gimp2dir2=/usr/lib/gimp/2.0/plug-ins
+
+	if [ -x /usr/bin/ldconfig ]; then
+		/sbin/ldconfig
+	fi
+	# Make symbolic link for GIMP-plug-in
+	if [ -d ${_gimp2dir1} ]; then
+		ln -fs /usr/bin/scangearmp ${_gimp2dir1}/scangearmp
+	elif [ -d ${_gimp2dir2} ]; then
+		ln -fs /usr/bin/scangearmp ${_gimp2dir2}/scangearmp
+	fi
+
+	# Reload udev rules
+	if [ -x /usr/bin/udevadm ]; then
+		/sbin/udevadm control --reload-rules 2> /dev/null
+		/sbin/udevadm trigger --action=add --subsystem-match=usb 2> /dev/null
+	fi
+
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+## cnijfilter-common section
+	if [ -x /usr/bin/ldconfig ]; then
+		/sbin/ldconfig
+	fi
+	# Remove cnbp* libs
+	for LIBS in libcnnet
+	do
+		if [ -h /usr/lib32/${LIBS}.so ]; then
+			rm -f /usr/lib32/${LIBS}.so
+		fi	
+	done
+	if [ "$1" = 0 ] ; then
+		rmdir -p --ignore-fail-on-non-empty /usr/lib32/bjlib
+	fi
+
+
+## cnijfilter-mx870series section
+	gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+
+	CNIJ_PKG_INFO=cnijfilter-mx870-367
+
+	model_name=$(echo ${CNIJ_PKG_INFO} | cut -d- -f2)
+	model_num=$(echo ${CNIJ_PKG_INFO} | cut -d- -f3)
+
+	_cups_path2=/usr/share/cups/model
+	ppd_name=canon${model_name}.ppd
+
+	if [ -x /usr/bin/ldconfig ]; then
+		/sbin/ldconfig
+	fi
+	# Remove cnbp* libs
+	for LIBS in libcnbpcmcm libcnbpcnclapi libcnbpcnclbjcmd libcnbpcnclui libcnbpess libcnbpo
+	do
+		if [ -h /usr/lib32/${LIBS}${model_num}.so ]; then
+			rm -f /usr/lib32/${LIBS}${model_num}.so
+		fi	
+	done
+	# Remove directories
+	if [ "$1" = 0 ] ; then
+		rmdir -p --ignore-fail-on-non-empty /usr/share/locale/*/LC_MESSAGES
+		rmdir -p --ignore-fail-on-non-empty /usr/share/cngpijmon${model_name}
+		rmdir -p --ignore-fail-on-non-empty /usr/share/printui${model_name}
+	fi
+	# Remove symbolic link for ppd
+	rm -f ${_cups_path2}/${ppd_name}
+	update-desktop-database -q
+
+	
+## scangearmp-common section
+	gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+
+	_gimp2dir1=/usr/lib32/gimp/2.0/plug-ins
+	_gimp2dir2=/usr/lib/gimp/2.0/plug-ins
+
+	for LIBS in libcncpmsimg libcncpmslld libcncpcmcm libcncpmsui libcncpnet
+	do
+		if [ -h /usr/lib32/${LIBS}.so ]; then
+			rm -f /usr/lib32/${LIBS}.so
+		fi	
+	done
+
+	# Remove symbolic link for GIMP-plug-in
+	if [ -d ${_gimp2dir1} ]; then
+		rm -f ${_gimp2dir1}/scangearmp	
+	elif [ -d ${_gimp2dir2} ]; then
+		rm -f ${_gimp2dir2}/scangearmp
+	fi
+
+	# Remove sgmp_setting files
+	rm -f /tmp/canon_sgmp_setting*.*
+	update-desktop-database -q
+
+	
+## scangearmp-mx870series section
+	SCAN_PKG_INFO=scangearmp-870-367
+
+	model_num=$(echo ${SCAN_PKG_INFO} | cut -d- -f3)
+
+	if [ -x /usr/bin/ldconfig ]; then
+		/sbin/ldconfig
+	fi
+	# Remove cncp* libs
+	for LIBS in libcncpmsimg libcncpmslld
+	do
+		if [ -h /usr/lib32/${LIBS}${model_num}.so ]; then
+			rm -f /usr/lib32/${LIBS}${model_num}.so
+		fi	
+		if [ -h /usr/lib32/${LIBS}${model_num}c.so ]; then
+			rm -f /usr/lib32/${LIBS}${model_num}c.so
+		fi	
+	done
+}
