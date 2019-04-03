@@ -1,0 +1,2 @@
+u fetchmail 90 "Fetchmail daemon" /var/lib/fetchmail
+m fetchmail nobody
