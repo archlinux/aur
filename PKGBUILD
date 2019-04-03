@@ -2,7 +2,7 @@
 
 pkgname=mstream
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Music player server with a web-based interface'
 arch=('any')
 url="http://mstream.io"
@@ -26,4 +26,4 @@ package() {
 }
 md5sums=('edc1f3de9e2833de93ffef1123bb9bae'
          '6640e102dd29a6da5c4c075e4c4042d7'
-         '4de57ee6dedd2ab9ce7b08321a16610f')
+         '4ed71dda48801c584be9be3cb4103d45')
