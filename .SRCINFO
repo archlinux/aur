@@ -1,0 +1,18 @@
+pkgbase = scim-uim
+	pkgdesc = UIM bridging input engine for SCIM
+	pkgver = 0.2.0
+	pkgrel = 9
+	url = https://github.com/scim-im/scim-uim
+	arch = x86_64
+	license = GPL
+	depends = scim
+	depends = uim
+	source = https://downloads.sourceforge.net/sourceforge/scim/scim-uim-0.2.0.tar.gz
+	source = fix-gcc43-build.patch
+	source = uim-1.5.5-header.patch
+	sha256sums = 457eb89f40dda70f813c0b401aaec8b397e7daa340d53136aba3b97407533e13
+	sha256sums = a0ac1e2f68e20f7326b9ae67d025291b9b4d26942566e8f1431dd6efc4457638
+	sha256sums = 3334bca0581be9cf058a7f1bf8b0a8d85e2953718b79f722f70c6dbd5d0e96b8
+
+pkgname = scim-uim
+
