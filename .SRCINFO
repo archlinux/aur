@@ -1,0 +1,15 @@
+pkgbase = upcxx
+	pkgdesc = UPC++ is a C++ library that supports Partitioned Global Address Space (PGAS) programming.
+	pkgver = 2019.3.0
+	pkgrel = 0
+	url = https://bitbucket.org/berkeleylab/upcxx/wiki/Home
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = https://bitbucket.org/berkeleylab/upcxx/downloads/upcxx-2019.3.0-offline.tar.gz
+	source = upcxx.sh
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = upcxx
+
