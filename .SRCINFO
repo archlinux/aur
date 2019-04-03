@@ -1,0 +1,13 @@
+pkgbase = bootchart
+	pkgdesc = A 'startup' graphing tool
+	pkgver = 1.20
+	pkgrel = 3
+	url = https://github.com/sofar/bootchart
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = http://foo-projects.org/~sofar/bootchart/bootchart-1.20.tar.gz
+	sha512sums = c42f30b5f330be9c1877de051ffe4b840662da43b224e659d948d278c65c23dc5c1a4f5f122a42751157e31dc1cb77ce89b6b8627206ea58485cdb732a269803
+
+pkgname = bootchart
+
