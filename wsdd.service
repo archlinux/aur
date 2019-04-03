@@ -1,0 +1,12 @@
+[Unit]
+Description=Web Services Dynamic Discovery host daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/wsdd --workgroup WORKGROUP
+User=wsdd
+Group=wsdd
+
+[Install]
+WantedBy=multi-user.target
