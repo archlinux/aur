@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="TCP connection hijacker, rust rewrite of shijack"
 url="https://github.com/kpcyrd/rshijack"
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 provides=('rshijack')
 conflicts=('rshijack')
 arch=('i686' 'x86_64' 'armv6h')
@@ -28,7 +28,6 @@ build() {
 package() {
   cd "$_gitname"
   install -Dm755 "target/release/${_gitname}" "$pkgdir/usr/bin/${_gitname}"
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_gitname}"
 }
 
 # vim:set ts=2 sw=2 et:

@@ -8,6 +8,7 @@ pkgbase = rshijack-git
 	arch = armv6h
 	license = GPL3
 	makedepends = cargo
+	makedepends = git
 	depends = gcc-libs
 	provides = rshijack
 	conflicts = rshijack
