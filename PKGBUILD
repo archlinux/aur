@@ -1,8 +1,9 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
-pkgname=chronoengine
-pkgver=4.0.0
-_fragment="#tag=${pkgver}"
+_pkgname=chronoengine
+pkgname=${_pkgname}-git
+pkgver=4.0.0.r62.gba682856c
+#_fragment="#tag=${pkgver}"
 pkgrel=1
 pkgdesc="C++ library for physics simulation"
 license=('custom')
@@ -81,6 +82,11 @@ prepare() {
 #  git apply ${srcdir}/opencascade.patch
 }
 
+pkgver() {
+  cd ${pkgname}
+  git describe --long --tag| sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
   mkdir -p build 
   cd build
@@ -94,6 +100,6 @@ build() {
 package() {
   cd build
   make DESTDIR="$pkgdir" install
-  install -D -m644 "../chronoengine/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"  
+  install -D -m644 "../${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"  
   install -D -m644 "../chronoengine.sh" "${pkgdir}/etc/profile.d/chronoengine.sh"  
 }
