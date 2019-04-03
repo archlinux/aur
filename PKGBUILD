@@ -8,7 +8,7 @@ pkgver=0.7.0
 pkgrel=1
 arch=('any')
 url="https://zeronet.io/"
-depends=('openssl' 'python' 'python-gevent>=1.1.0' 'python-gevent-websocket'
+depends=('python' 'python-gevent>=1.1.0' 'python-gevent-websocket'
 	'python-msgpack>=0.4.4' 'python-websocket-client' 'python-rsa'
 	'python-pysocks' 'python-pyasn1' 'python-pyasn1-modules'
 	'python-base58' 'python-merkletools'
