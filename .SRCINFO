@@ -1,0 +1,15 @@
+pkgbase = ttf-freebanglafont
+	pkgdesc = Bengali fonts
+	pkgver = 20130212
+	pkgrel = 3
+	url = http://www.ekushey.org/
+	arch = any
+	license = GPL
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	depends = fontconfig
+	source = https://sources.archlinux.org/other/packages/ttf-freebanglafont/ttf-freebanglafont-20130212-2.src.tar.gz
+	sha256sums = 19a85c6b76e1b3bff3864485a40724fad7c1224a5e20960be08e31659b91e502
+
+pkgname = ttf-freebanglafont
+
