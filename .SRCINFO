@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches
-	pkgver = 3.32.0+22+g05e55cee2
-	pkgrel = 2
+	pkgver = 3.32.0+46+gfea019277
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
 	arch = x86_64
 	groups = gnome
@@ -34,16 +34,14 @@ pkgbase = gnome-shell-performance
 	optdepends = gnome-control-center: System settings
 	optdepends = evolution-data-server: Evolution calendar integration
 	provides = gnome-shell
-	provides = gnome-shell=3.32.0+22+g05e55cee2
+	provides = gnome-shell=3.32.0+46+gfea019277
 	conflicts = gnome-shell
-	source = gnome-shell-performance::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=05e55cee23d65206f3c3f2d12f4a4d659061651f
+	source = gnome-shell-performance::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=fea01927720e5d73e14e1649ee36cc6c60835d6f
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	source = https://github.com/endlessm/gnome-shell/commit/11ddabfb22aedb3c35abe06d2cf0205f223cca03.diff
-	source = hack-detached.diff
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 53fb32bfe8432e6309d5b1bcf9c2b7f36693b9141778b823f1d7e9c1d3f39425
-	sha256sums = 939e81f682ebafd60e86d444e49dbab277fba0f00420466b5ff783568b7dc931
 
 pkgname = gnome-shell-performance
 

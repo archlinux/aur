@@ -4,8 +4,8 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-performance
-pkgver=3.32.0+22+g05e55cee2
-pkgrel=2
+pkgver=3.32.0+46+gfea019277
+pkgrel=1
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
@@ -20,20 +20,17 @@ optdepends=('gnome-control-center: System settings'
 groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver)
 conflicts=(gnome-shell)
-_commit=05e55cee23d65206f3c3f2d12f4a4d659061651f  # master
+_commit=fea01927720e5d73e14e1649ee36cc6c60835d6f  # master
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-         https://github.com/endlessm/gnome-shell/commit/11ddabfb22aedb3c35abe06d2cf0205f223cca03.diff
-         hack-detached.diff)
+         https://github.com/endlessm/gnome-shell/commit/11ddabfb22aedb3c35abe06d2cf0205f223cca03.diff)
 sha256sums=('SKIP'
             'SKIP'
-            '53fb32bfe8432e6309d5b1bcf9c2b7f36693b9141778b823f1d7e9c1d3f39425'
-            '939e81f682ebafd60e86d444e49dbab277fba0f00420466b5ff783568b7dc931')
+            '53fb32bfe8432e6309d5b1bcf9c2b7f36693b9141778b823f1d7e9c1d3f39425')
 pkgver() {
   cd $pkgname
 
-  _manual_bump=22 # horrible temporary workaround to account new versioning
-  git describe --tags | sed "s/-/+/g;s/20/$_manual_bump/"
+  git describe --tags | sed "s/-/+/g"
 }
 
 prepare() {
@@ -43,12 +40,6 @@ prepare() {
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/276
   # Requires mutter MR283/commit "clutter-actor: Add detail to captured-event signal [performance]"
   # git cherry-pick -n 297a18f2
-
-  # Unbreak switcher
-  git cherry-pick -n 31e7f0340fd0bd72f2d9848866b1f432ae82eee8
-
-  # Hack around broken detached locations
-  patch -Np1 -i ../hack-detached.diff
 
   # Hack to fix topicon-* extensions  making gnome-shell CPU usage > 50%
   patch -Np1 -i ../11ddabfb22aedb3c35abe06d2cf0205f223cca03.diff
