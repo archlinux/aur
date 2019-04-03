@@ -3,7 +3,7 @@
 
 _appname=freecad
 pkgname="${_appname}-git"
-pkgver=0.19pre.r84.gb66a6fa31
+pkgver=0.19pre.r168.gd4f01c440
 pkgrel=1
 epoch=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -34,6 +34,8 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname}"
 
+    PYVER="$(/usr/bin/python3 -c 'import sys; print("{}.{}".format(sys.version_info.major,sys.version_info.minor))')"
+
     cmake . \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX="/usr/lib/freecad" \
@@ -42,16 +44,13 @@ build() {
         -DFREECAD_USE_OCC_VARIANT="Official Version" \
         -DBUILD_QT5=ON \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_PACKAGES_PATH=/usr/lib/python3.7/site-packages \
         -DOPENMPI_INCLUDE_DIRS=/usr/include \
         -DSHIBOKEN_INCLUDE_DIR=/usr/include/shiboken2 \
         -DSHIBOKEN_BINARY=/usr/bin/shiboken2 \
-        -DSHIBOKEN_LIBRARY=/usr/lib/libshiboken2.cpython-37m-x86_64-linux-gnu.so \
+        -DSHIBOKEN_LIBRARY="/usr/lib/libshiboken2.cpython-${PYVER//.}m-x86_64-linux-gnu.so" \
         -DPYSIDE_INCLUDE_DIR=/usr/include/PySide2 \
-        -DPYSIDE_LIBRARY=/usr/lib/libpyside2.cpython-37m-x86_64-linux-gnu.so \
-        -DPYSIDE_PYTHONPATH=/usr/lib/python3.7/site-packages/PySide2 \
+        -DPYSIDE_LIBRARY="/usr/lib/libpyside2.cpython-${PYVER//.}m-x86_64-linux-gnu.so" \
+        -DPYSIDE_PYTHONPATH="/usr/lib/python${PYVER}/site-packages/PySide2" \
         -DPYSIDE_TYPESYSTEMS=/usr/share/PySide2/typesystems
 
     make
