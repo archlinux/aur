@@ -1,8 +1,8 @@
-pkgbase = execute
+pkgbase = execute-git
 	pkgdesc = Opens exe files as if they were native Linux applications, silently selecting the right emulator and configuration for each case
 	pkgver = master
 	pkgrel = 1
-	url = https://gitlab.com/es20490446e/execute
+	url = https://gitlab.com/es20490446e/execute-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -10,9 +10,9 @@ pkgbase = execute
 	depends = q4wine
 	optdepends = wine-mono
 	optdepends = wine_gecko
-	provides = execute
-	source = git+https://gitlab.com/es20490446e/execute.git
+	provides = execute-git
+	source = git+https://gitlab.com/es20490446e/execute-git.git
 	md5sums = SKIP
 
-pkgname = execute
+pkgname = execute-git
 

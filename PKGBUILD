@@ -1,6 +1,6 @@
 #! /bin/bash
 
-pkgname="execute"
+pkgname="execute-git"
 pkgver="master"
 pkgrel=1
 pkgdesc="Opens exe files as if they were native Linux applications, silently selecting the right emulator and configuration for each case"
