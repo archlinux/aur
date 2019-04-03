@@ -1,7 +1,7 @@
 post_install() {
   cat <<EOF
 
-To use with kata-runtime with docker,
+To use kata-runtime with docker,
 - add the following config to /etc/docker/daemon.json
 """
 {
