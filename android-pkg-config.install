@@ -1,0 +1,5 @@
+post_install() {
+  echo "Note that you can use PKG_CONFIG_PATH_CUSTOM to tweak pkg-config path further"
+  echo "See the android-config file itself"
+  echo "for more information"
+}
