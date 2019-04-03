@@ -1,0 +1,174 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 03_gnome-alsamixer.schemas.dpatch.dpatch by Mohammed Adnène Trojette <adn+deb@diwi.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Intent to guess gnome-alsamixer.schemas
+
+@DPATCH@
+
+--- gnome-alsamixer-0.9.7.cvs20050822.orig/gnome-alsamixer.schemas
++++ gnome-alsamixer-0.9.7.cvs20050822/gnome-alsamixer.schemas
+@@ -0,0 +1,163 @@
++<gconfschemafile>
++  <schemalist>
++
++    <!-- Completion uris -->
++
++    <!--schema>
++      <key>/schemas/apps/PAW/PAWed/preferences</key>
++      <applyto>/apps/PAW/PAWed/preferences</applyto>
++      <owner>gnome-alsamixer</owner>
++      <type></type>
++      <default></default>
++      <locale name="C">
++       <short></short>
++      </locale>
++    </schema>
++
++
++    <schema>
++      <key>/schemas/apps/gnomealsamixer/preferences/tab_position</key>
++      <applyto>/apps/gnomealsamixer/preferences/tab_position</applyto>
++      <owner>gnome-alsamixer</owner>
++      <type>int</type>
++      <default></default>
++      <locale name="C">
++       <short></short>
++      </locale>
++    </schema-->
++
++
++    <schema>
++      <key>/schemas/apps/gnome-alsamixer/geometry/main_window_width</key>
++      <applyto>/apps/gnome-alsamixer/geometry/main_window_width</applyto>
++      <owner>gnome-alsamixer</owner>
++      <type>int</type>
++      <default>600</default>
++      <locale name="C">
++       <short></short>
++      </locale>
++    </schema>
++
++
++    <schema>
++      <key>/schemas/apps/gnome-alsamixer/geometry/main_window_height</key>
++      <applyto>/apps/gnome-alsamixer/geometry/main_window_height</applyto>
++      <owner>gnome-alsamixer</owner>
++      <type>int</type>
++      <default>380</default>
++      <locale name="C">
++       <short></short>
++      </locale>
++    </schema>
++
++
++    <schema>
++      <key>/schemas/apps/gnome-alsamixer/geometry/mixer_slider_style</key>
++      <applyto>/apps/gnome-alsamixer/geometry/mixer_slider_style</applyto>
++      <owner>gnome-alsamixer</owner>
++      <type>bool</type>
++      <default>false</default>
++      <locale name="C">
++       <short></short>
++      </locale>
++    </schema>
++
++
++    <schema>
++      <key>/schemas/apps/gnome-alsamixer/geometry/mixer_slider_toggle_style</key>
++      <applyto>/apps/gnome-alsamixer/geometry/mixer_slider_toggle_style</applyto>
++      <owner>gnome-alsamixer</owner>
++      <type>bool</type>
++      <default>true</default>
++      <locale name="C">
++       <short></short>
++      </locale>
++    </schema>
++
++
++    <!--schema>
++      <key>/schemas/apps/gnome-alsamixer/display_names/%s</key>
++      <applyto>/apps/gnome-alsamixer/display_names/%s</applyto>
++      <owner>gnome-alsamixer</owner>
++      <type>bool</type>
++      <default></default>
++      <locale name="C">
++       <short></short>
++      </locale>
++    </schema>
++
++
++    <schema>
++      <key>/schemas/apps/gnome-alsamixer/display_mixers/%s</key>
++      <applyto>/apps/gnome-alsamixer/display_mixers/%s</applyto>
++      <owner>gnome-alsamixer</owner>
++      <type>bool</type>
++      <default></default>
++      <locale name="C">
++       <short></short>
++      </locale>
++    </schema>
++
++
++    <schema>
++      <key>/schemas/apps/gnome-alsamixer/slider_display_names/%s-%s</key>
++      <applyto>/apps/gnome-alsamixer/slider_display_names/%s-%s</applyto>
++      <owner>gnome-alsamixer</owner>
++      <type>string</type>
++      <default></default>
++      <locale name="C">
++       <short></short>
++      </locale>
++    </schema>
++
++
++    <schema>
++      <key>/schemas/apps/gnome-alsamixer/display_sliders/%s-%s</key>
++      <applyto>/apps/gnome-alsamixer/display_sliders/%s-%s</applyto>
++      <owner>gnome-alsamixer</owner>
++      <type>bool</type>
++      <default></default>
++      <locale name="C">
++       <short></short>
++      </locale>
++    </schema>
++
++
++    <schema>
++      <key>/schemas/apps/gnome-alsamixer/slider_locked/%s-%s</key>
++      <applyto>/apps/gnome-alsamixer/slider_locked/%s-%s</applyto>
++      <owner>gnome-alsamixer</owner>
++      <type>bool</type>
++      <default></default>
++      <locale name="C">
++       <short></short>
++      </locale>
++    </schema>
++
++
++    <schema>
++      <key>/schemas/apps/gnome-alsamixer/toggle_display_names/%s-%s</key>
++      <applyto>/apps/gnome-alsamixer/toggle_display_names/%s-%s</applyto>
++      <owner>gnome-alsamixer</owner>
++      <type>string</type>
++      <default></default>
++      <locale name="C">
++       <short></short>
++      </locale>
++    </schema>
++
++
++    <schema>
++      <key>/schemas/apps/gnome-alsamixer/display_toggles/%s-%s</key>
++      <applyto>/apps/gnome-alsamixer/display_toggles/%s-%s</applyto>
++      <owner>gnome-alsamixer</owner>
++      <type>bool</type>
++      <default></default>
++      <locale name="C">
++       <short></short>
++      </locale>
++    </schema-->
++
++
++  </schemalist>
++</gconfschemafile>

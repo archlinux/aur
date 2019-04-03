@@ -1,0 +1,111 @@
+Index: gnome-alsamixer-0.9.7~cvs.20060916.ds.1/src/gam-mixer.c
+===================================================================
+--- gnome-alsamixer-0.9.7~cvs.20060916.ds.1.orig/src/gam-mixer.c	2011-09-12 21:01:20.000000000 +0200
++++ gnome-alsamixer-0.9.7~cvs.20060916.ds.1/src/gam-mixer.c	2011-09-12 21:02:41.000000000 +0200
+@@ -439,7 +439,7 @@
+                          NULL);
+ }
+ 
+-G_CONST_RETURN gchar *
++const gchar *
+ gam_mixer_get_mixer_name (GamMixer *gam_mixer)
+ {
+     GamMixerPrivate *priv;
+@@ -451,7 +451,7 @@
+     return priv->mixer_name;
+ }
+ 
+-G_CONST_RETURN gchar *
++const gchar *
+ gam_mixer_get_config_name (GamMixer *gam_mixer)
+ {
+     GamMixerPrivate *priv;
+Index: gnome-alsamixer-0.9.7~cvs.20060916.ds.1/src/gam-mixer.h
+===================================================================
+--- gnome-alsamixer-0.9.7~cvs.20060916.ds.1.orig/src/gam-mixer.h	2011-09-12 21:01:43.000000000 +0200
++++ gnome-alsamixer-0.9.7~cvs.20060916.ds.1/src/gam-mixer.h	2011-09-12 21:03:36.000000000 +0200
+@@ -57,8 +57,8 @@
+ GType                 gam_mixer_get_type          (void) G_GNUC_CONST;
+ GtkWidget            *gam_mixer_new               (GamApp      *gam_app,
+                                                    const gchar *card_id);
+-G_CONST_RETURN gchar *gam_mixer_get_mixer_name    (GamMixer    *gam_mixer);
+-G_CONST_RETURN gchar *gam_mixer_get_config_name   (GamMixer    *gam_mixer);
++const gchar *gam_mixer_get_mixer_name    (GamMixer    *gam_mixer);
++const gchar *gam_mixer_get_config_name   (GamMixer    *gam_mixer);
+ gchar                *gam_mixer_get_display_name  (GamMixer    *gam_mixer);
+ void                  gam_mixer_set_display_name  (GamMixer    *gam_mixer,
+                                                    const gchar *name);
+Index: gnome-alsamixer-0.9.7~cvs.20060916.ds.1/src/gam-slider.c
+===================================================================
+--- gnome-alsamixer-0.9.7~cvs.20060916.ds.1.orig/src/gam-slider.c	2011-09-12 21:01:49.000000000 +0200
++++ gnome-alsamixer-0.9.7~cvs.20060916.ds.1/src/gam-slider.c	2011-09-12 21:03:47.000000000 +0200
+@@ -440,7 +440,7 @@
+     g_signal_emit (gam_slider, signals[REFRESH], 0);
+ }
+ 
+-G_CONST_RETURN gchar *
++const gchar *
+ gam_slider_get_name (GamSlider *gam_slider)
+ {
+     GamSliderPrivate *priv;
+@@ -452,7 +452,7 @@
+     return snd_mixer_selem_get_name (priv->elem);
+ }
+ 
+-G_CONST_RETURN gchar *
++const gchar *
+ gam_slider_get_config_name (GamSlider *gam_slider)
+ {
+     GamSliderPrivate *priv;
+Index: gnome-alsamixer-0.9.7~cvs.20060916.ds.1/src/gam-slider.h
+===================================================================
+--- gnome-alsamixer-0.9.7~cvs.20060916.ds.1.orig/src/gam-slider.h	2011-09-12 21:01:28.000000000 +0200
++++ gnome-alsamixer-0.9.7~cvs.20060916.ds.1/src/gam-slider.h	2011-09-12 21:03:13.000000000 +0200
+@@ -58,8 +58,8 @@
+ #include "gam-mixer.h"
+     
+ GType                 gam_slider_get_type           (void) G_GNUC_CONST;
+-G_CONST_RETURN gchar *gam_slider_get_name           (GamSlider   *gam_slider);
+-G_CONST_RETURN gchar *gam_slider_get_config_name    (GamSlider   *gam_slider);
++const gchar *gam_slider_get_name           (GamSlider   *gam_slider);
++const gchar *gam_slider_get_config_name    (GamSlider   *gam_slider);
+ gchar                *gam_slider_get_display_name   (GamSlider   *gam_slider);
+ void                  gam_slider_set_display_name   (GamSlider   *gam_slider,
+                                                      const gchar *name);
+Index: gnome-alsamixer-0.9.7~cvs.20060916.ds.1/src/gam-toggle.c
+===================================================================
+--- gnome-alsamixer-0.9.7~cvs.20060916.ds.1.orig/src/gam-toggle.c	2011-09-12 21:01:36.000000000 +0200
++++ gnome-alsamixer-0.9.7~cvs.20060916.ds.1/src/gam-toggle.c	2011-09-12 21:03:26.000000000 +0200
+@@ -371,7 +371,7 @@
+                                       internal_state);
+ }
+ 
+-G_CONST_RETURN gchar *
++const gchar *
+ gam_toggle_get_name (GamToggle *gam_toggle)
+ {
+     GamTogglePrivate *priv;
+@@ -383,7 +383,7 @@
+     return snd_mixer_selem_get_name (priv->elem);
+ }
+ 
+-G_CONST_RETURN gchar *
++const gchar *
+ gam_toggle_get_config_name (GamToggle *gam_toggle)
+ {
+     GamTogglePrivate *priv;
+Index: gnome-alsamixer-0.9.7~cvs.20060916.ds.1/src/gam-toggle.h
+===================================================================
+--- gnome-alsamixer-0.9.7~cvs.20060916.ds.1.orig/src/gam-toggle.h	2011-09-12 21:01:55.000000000 +0200
++++ gnome-alsamixer-0.9.7~cvs.20060916.ds.1/src/gam-toggle.h	2011-09-12 21:04:00.000000000 +0200
+@@ -55,8 +55,8 @@
+ gboolean              gam_toggle_get_state        (GamToggle        *gam_toggle);
+ void                  gam_toggle_set_state        (GamToggle        *gam_toggle,
+                                                    gboolean          state);
+-G_CONST_RETURN gchar *gam_toggle_get_name         (GamToggle        *gam_toggle);
+-G_CONST_RETURN gchar *gam_toggle_get_config_name  (GamToggle        *gam_toggle);
++const gchar *gam_toggle_get_name         (GamToggle        *gam_toggle);
++const gchar *gam_toggle_get_config_name  (GamToggle        *gam_toggle);
+ gchar                *gam_toggle_get_display_name (GamToggle        *gam_toggle);
+ void                  gam_toggle_set_display_name (GamToggle        *gam_toggle,
+                                                    const gchar      *name);

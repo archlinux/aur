@@ -1,0 +1,128 @@
+diff -Naur gnome-alsamixer-0.9.7~cvs.20060916.orig/configure.ac gnome-alsamixer-0.9.7~cvs.20060916/configure.ac
+--- gnome-alsamixer-0.9.7~cvs.20060916.orig/configure.ac	2006-08-06 04:29:44.000000000 +0200
++++ gnome-alsamixer-0.9.7~cvs.20060916/configure.ac	2017-01-21 14:08:40.656742382 +0100
+@@ -32,7 +32,7 @@
+     AC_DEFINE_UNQUOTED(HAVE_GTK26, , "")
+ fi
+ 
+-pkg_modules="libgnomeui-2.0 gconf-2.0 alsa"
++pkg_modules="gtk+-2.0 gconf-2.0 alsa"
+ PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
+ AC_SUBST(PACKAGE_CFLAGS)
+ AC_SUBST(PACKAGE_LIBS)
+diff -Naur gnome-alsamixer-0.9.7~cvs.20060916.orig/src/gam-app.c gnome-alsamixer-0.9.7~cvs.20060916/src/gam-app.c
+--- gnome-alsamixer-0.9.7~cvs.20060916.orig/src/gam-app.c	2005-07-08 15:59:23.000000000 +0200
++++ gnome-alsamixer-0.9.7~cvs.20060916/src/gam-app.c	2017-01-21 13:59:13.194309849 +0100
+@@ -22,13 +22,8 @@
+ #include <config.h>
+ #endif
+ 
+-#include <gtk/gtklabel.h>
+-#include <gtk/gtknotebook.h>
+-#include <gtk/gtkmenuitem.h>
++#include <gtk/gtk.h>
+ #include <glib/gi18n.h>
+-#include <libgnomeui/gnome-about.h>
+-#include <libgnomeui/gnome-app-helper.h>
+-#include <libgnomeui/gnome-stock-icons.h>
+ 
+ #include "gam-app.h"
+ #include "gam-mixer.h"
+@@ -95,7 +90,7 @@
+   { "Exit", GTK_STOCK_OPEN, N_("E_xit"), "<control>Q", N_("Exit the program"), G_CALLBACK (gam_app_quit_cb) },
+   { "Properties", GTK_STOCK_PROPERTIES, N_("Sound Card _Properties"), "", N_("Configure the current sound card"), G_CALLBACK (gam_app_properties_cb) },
+   { "Preferences", GTK_STOCK_PREFERENCES, N_("Program Prefere_nces"), "", N_("Configure the application"), G_CALLBACK (gam_app_preferences_cb) },
+-  { "About", GNOME_STOCK_ABOUT, N_("_About"), "", N_("About this application"), G_CALLBACK (gam_app_about_cb) },
++  { "About", GTK_STOCK_ABOUT, N_("_About"), "", N_("About this application"), G_CALLBACK (gam_app_about_cb) },
+ };
+ 
+ static const gchar *ui_description =
+@@ -261,7 +256,7 @@
+     g_signal_connect (G_OBJECT (gam_app), "delete_event",
+                       G_CALLBACK (gam_app_delete), NULL);
+ 
+-    gnome_window_icon_set_default_from_file (PIXMAP_ICONDIR"/gnome-alsamixer-icon.png");
++    gtk_window_set_default_icon (gdk_pixbuf_new_from_file(PIXMAP_ICONDIR"/gnome-alsamixer-icon.png", NULL));
+ 
+     // Build the main menu and toolbar
+     gtk_action_group_add_actions (priv->main_action_group, action_entries,
+@@ -432,7 +427,6 @@
+         NULL
+     };
+ 
+-#ifdef HAVE_GTK26
+     gtk_show_about_dialog (GTK_WINDOW (data),
+                            "authors", authors,
+                            "comments", _("An ALSA mixer for GNOME"),
+@@ -440,21 +434,6 @@
+                            "name", _("GNOME ALSA Mixer"),
+                            "version", VERSION,
+                            NULL);
+-#else
+-    GtkWidget *about;
+-
+-    about = gnome_about_new (_("GNOME ALSA Mixer"), VERSION,
+-                             "\302\251 2001\342\200\2232005 PAW Digital Dynamics",
+-                             _("An ALSA mixer for GNOME"),
+-                             authors,
+-                             NULL,
+-                             NULL,
+-                             NULL);
+-    gtk_widget_set_name (about, "about");
+-    gtk_window_set_wmclass (GTK_WINDOW (about), "GAMAbout", "GAMAbout");
+-    gtk_window_set_destroy_with_parent (GTK_WINDOW (about), TRUE);
+-    gtk_widget_show (about);
+-#endif
+ }
+ 
+ static void
+diff -Naur gnome-alsamixer-0.9.7~cvs.20060916.orig/src/gam-main.c gnome-alsamixer-0.9.7~cvs.20060916/src/gam-main.c
+--- gnome-alsamixer-0.9.7~cvs.20060916.orig/src/gam-main.c	2005-07-06 17:14:57.000000000 +0200
++++ gnome-alsamixer-0.9.7~cvs.20060916/src/gam-main.c	2017-01-21 13:53:49.171980646 +0100
+@@ -22,7 +22,7 @@
+ #include <config.h>
+ #endif
+ 
+-#include <gnome.h>
++#include <gtk/gtk.h>
+ #include <glib/gi18n.h>
+ 
+ #include "gam-app.h"
+@@ -31,7 +31,6 @@
+ main (int argc, char *argv[])
+ {
+     GtkWidget *app;
+-    GnomeProgram *prog;
+ 
+ #ifdef ENABLE_NLS
+     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+@@ -39,14 +38,7 @@
+     textdomain (GETTEXT_PACKAGE);
+ #endif
+ 
+-    prog = gnome_program_init (PACKAGE, VERSION, LIBGNOMEUI_MODULE,
+-                               argc, argv,
+-                               GNOME_PARAM_HUMAN_READABLE_NAME, _("GNOME ALSA Mixer"),
+-                               GNOME_PARAM_APP_DATADIR, PACKAGE_DATA_DIR,
+-                               NULL);
+-
+-    if (!prog)
+-        return 1;
++    gtk_init (&argc, &argv);
+ 
+     app = gam_app_new ();
+ 
+diff -Naur gnome-alsamixer-0.9.7~cvs.20060916.orig/src/Makefile.am gnome-alsamixer-0.9.7~cvs.20060916/src/Makefile.am
+--- gnome-alsamixer-0.9.7~cvs.20060916.orig/src/Makefile.am	2017-01-21 14:12:24.106285737 +0100
++++ gnome-alsamixer-0.9.7~cvs.20060916/src/Makefile.am	2017-01-21 14:12:36.509963807 +0100
+@@ -4,10 +4,6 @@
+ 	-DPACKAGE_DATA_DIR=\""$(datadir)/gnome-alsamixer"\"        \
+ 	-DPIXMAP_ICONDIR=\""$(datadir)/pixmaps/gnome-alsamixer"\"  \
+ 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
+-	-DG_DISABLE_DEPRECATED					   \
+-	-DGDK_DISABLE_DEPRECATED				   \
+-	-DGTK_DISABLE_DEPRECATED				   \
+-	-DGNOME_DISABLE_DEPRECATED                                 \
+ 	@PACKAGE_CFLAGS@
+ 
+ bin_PROGRAMS = gnome-alsamixer

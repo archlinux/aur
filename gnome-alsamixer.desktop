@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=GNOME ALSA Mixer
+Comment=ALSA sound mixer for GNOME
+Comment[es]=Mezclador de sonido ALSA para GNOME
+Comment[fr]=Mélangeur de son ALSA pour GNOME
+Exec=gnome-alsamixer
+Icon=/usr/share/pixmaps/gnome-alsamixer/gnome-alsamixer-icon.png
+Terminal=false
+Type=Application
+Categories=Application;AudioVideo;
+StartupNotify=true

@@ -1,0 +1,28 @@
+pkgbase = gnome-alsamixer
+	pkgdesc = Gnome ALSA mixer
+	pkgver = 0.9.7
+	pkgrel = 4
+	url = https://launchpad.net/gnome-alsamixer
+	arch = x86_64
+	license = GPL
+	depends = alsa-lib
+	depends = gconf
+	depends = gtk2
+	options = !emptydirs
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/gnome-alsamixer_0.9.7~cvs.20060916.ds.1.orig.tar.gz
+	source = 02_change_gconf-keys_path.patch
+	source = 03_gnome-alsamixer.schemas.patch
+	source = 04_ignore-delimiters.patch
+	source = 05-remove-G_CONST_RETURN.patch
+	source = 06-drop-libgnomeui.patch
+	source = gnome-alsamixer.desktop
+	sha1sums = 98e716cd14fe46cb9c77034de7558ef113da26f5
+	sha1sums = ee7743abfc8d6005be6fcb0fb47b45e636db5fdc
+	sha1sums = 6b3148bab4ed53bc9a0a123b33585cd81b138225
+	sha1sums = d4a7f9a5868c5af52f9b3c7a146ae34ddc45adf7
+	sha1sums = 6b19224d0346cf53b864333b191fa99fc8e7ebdc
+	sha1sums = f3b72ae8d83e482573e78f48125367e9bf8c6cd2
+	sha1sums = 31639f7932d088ca76a18c79839682be811f23d0
+
+pkgname = gnome-alsamixer
+

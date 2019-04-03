@@ -1,0 +1,15 @@
+# Fixes: #400667
+
+Index: gnome-alsamixer-0.9.7~cvs.20060916.ds.1/src/gam-app.h
+===================================================================
+--- gnome-alsamixer-0.9.7~cvs.20060916.ds.1.orig/src/gam-app.h	2008-01-04 00:43:39.000000000 +0100
++++ gnome-alsamixer-0.9.7~cvs.20060916.ds.1/src/gam-app.h	2008-01-04 00:44:18.000000000 +0100
+@@ -26,7 +26,7 @@
+ 
+ G_BEGIN_DECLS
+ 
+-#define GAM_CONFIG_DELIMITERS   " &()+/"
++#define GAM_CONFIG_DELIMITERS   " &()+/,"
+ 
+ #define GAM_TYPE_APP            (gam_app_get_type ())
+ #define GAM_APP(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GAM_TYPE_APP, GamApp))

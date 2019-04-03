@@ -1,0 +1,207 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 02_change_gconf-keys_path.dpatch.dpatch by Mohammed Adnène Trojette <adn+deb@diwi.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Replace path to gnome-alsamixer's gconf keys
+
+@DPATCH@
+
+--- gnome-alsamixer-0.9.7.cvs20050822.orig/src/gam-slider.c
++++ gnome-alsamixer-0.9.7.cvs20050822/src/gam-slider.c
+@@ -481,7 +481,7 @@
+ 
+     disp_name = g_strndup (gam_slider_get_name (gam_slider), 8);
+ 
+-    key = g_strdup_printf ("/apps/PAW/gnome-alsamixer/slider_display_names/%s-%s",
++    key = g_strdup_printf ("/apps/gnome-alsamixer/slider_display_names/%s-%s",
+                            gam_mixer_get_config_name (GAM_MIXER (priv->mixer)),
+                            gam_slider_get_config_name (gam_slider));
+ 
+@@ -508,7 +508,7 @@
+ 
+     priv = GAM_SLIDER_GET_PRIVATE (gam_slider);
+ 
+-    key = g_strdup_printf ("/apps/PAW/gnome-alsamixer/slider_display_names/%s-%s",
++    key = g_strdup_printf ("/apps/gnome-alsamixer/slider_display_names/%s-%s",
+                            gam_mixer_get_config_name (GAM_MIXER (priv->mixer)),
+                            gam_slider_get_config_name (gam_slider));
+ 
+@@ -533,7 +533,7 @@
+ 
+     priv = GAM_SLIDER_GET_PRIVATE (gam_slider);
+ 
+-    key = g_strdup_printf ("/apps/PAW/gnome-alsamixer/display_sliders/%s-%s",
++    key = g_strdup_printf ("/apps/gnome-alsamixer/display_sliders/%s-%s",
+                            gam_mixer_get_config_name (GAM_MIXER (priv->mixer)),
+                            gam_slider_get_config_name (gam_slider));
+ 
+@@ -557,7 +557,7 @@
+ 
+     priv = GAM_SLIDER_GET_PRIVATE (gam_slider);
+ 
+-    key = g_strdup_printf ("/apps/PAW/gnome-alsamixer/display_sliders/%s-%s",
++    key = g_strdup_printf ("/apps/gnome-alsamixer/display_sliders/%s-%s",
+                            gam_mixer_get_config_name (GAM_MIXER (priv->mixer)),
+                            gam_slider_get_config_name (gam_slider));
+ 
+--- gnome-alsamixer-0.9.7.cvs20050822.orig/src/gam-toggle.c
++++ gnome-alsamixer-0.9.7.cvs20050822/src/gam-toggle.c
+@@ -410,7 +410,7 @@
+ 
+     priv = GAM_TOGGLE_GET_PRIVATE (gam_toggle);
+ 
+-    key = g_strdup_printf ("/apps/PAW/gnome-alsamixer/toggle_display_names/%s-%s",
++    key = g_strdup_printf ("/apps/gnome-alsamixer/toggle_display_names/%s-%s",
+                            gam_mixer_get_config_name (GAM_MIXER (priv->mixer)),
+                            gam_toggle_get_config_name (gam_toggle));
+ 
+@@ -433,7 +433,7 @@
+ 
+     priv = GAM_TOGGLE_GET_PRIVATE (gam_toggle);
+ 
+-    key = g_strdup_printf ("/apps/PAW/gnome-alsamixer/toggle_display_names/%s-%s",
++    key = g_strdup_printf ("/apps/gnome-alsamixer/toggle_display_names/%s-%s",
+                            gam_mixer_get_config_name (GAM_MIXER (priv->mixer)),
+                            gam_toggle_get_config_name (gam_toggle));
+ 
+@@ -458,7 +458,7 @@
+ 
+     priv = GAM_TOGGLE_GET_PRIVATE (gam_toggle);
+ 
+-    key = g_strdup_printf ("/apps/PAW/gnome-alsamixer/display_toggles/%s-%s",
++    key = g_strdup_printf ("/apps/gnome-alsamixer/display_toggles/%s-%s",
+                            gam_mixer_get_config_name (GAM_MIXER (priv->mixer)),
+                            gam_toggle_get_config_name (gam_toggle));
+ 
+@@ -482,7 +482,7 @@
+ 
+     priv = GAM_TOGGLE_GET_PRIVATE (gam_toggle);
+ 
+-    key = g_strdup_printf ("/apps/PAW/gnome-alsamixer/display_toggles/%s-%s",
++    key = g_strdup_printf ("/apps/gnome-alsamixer/display_toggles/%s-%s",
+                            gam_mixer_get_config_name (GAM_MIXER (priv->mixer)),
+                            gam_toggle_get_config_name (gam_toggle));
+ 
+--- gnome-alsamixer-0.9.7.cvs20050822.orig/src/gam-app.c
++++ gnome-alsamixer-0.9.7.cvs20050822/src/gam-app.c
+@@ -331,7 +331,7 @@
+     gam_app_load_prefs (gam_app);
+ 
+     /*gconf_client_notify_add (priv->gconf_client,
+-                             "/apps/PAW/gnomealsamixer/preferences/tab_position",
++                             "/apps/gnomealsamixer/preferences/tab_position",
+                              (GConfClientNotifyFunc) pawed_app_gconf_notify_func,
+                              pawed_app,
+                              NULL,
+@@ -351,10 +351,10 @@
+     priv = GAM_APP_GET_PRIVATE (gam_app);
+ 
+     width = gconf_client_get_int (priv->gconf_client,
+-                                  "/apps/PAW/gnome-alsamixer/geometry/main_window_width",
++                                  "/apps/gnome-alsamixer/geometry/main_window_width",
+                                   NULL);
+     height = gconf_client_get_int (priv->gconf_client,
+-                                   "/apps/PAW/gnome-alsamixer/geometry/main_window_height",
++                                   "/apps/gnome-alsamixer/geometry/main_window_height",
+                                    NULL);
+ 
+     if ((height != 0) && (width != 0))
+@@ -376,11 +376,11 @@
+     gdk_window_get_geometry (GDK_WINDOW (GTK_WIDGET (gam_app)->window), NULL, NULL, &width, &height, NULL);
+ 
+     gconf_client_set_int (priv->gconf_client,
+-                          "/apps/PAW/gnome-alsamixer/geometry/main_window_height",
++                          "/apps/gnome-alsamixer/geometry/main_window_height",
+                           height,
+                           NULL);
+     gconf_client_set_int (priv->gconf_client,
+-                          "/apps/PAW/gnome-alsamixer/geometry/main_window_width",
++                          "/apps/gnome-alsamixer/geometry/main_window_width",
+                           width,
+                           NULL);
+ 
+@@ -630,7 +630,7 @@
+ gint
+ gam_app_get_mixer_slider_style (GamApp *gam_app)
+ {
+-    const gchar *key = "/apps/PAW/gnome-alsamixer/geometry/mixer_slider_style";
++    const gchar *key = "/apps/gnome-alsamixer/geometry/mixer_slider_style";
+     gint style = 0;
+ 
+     g_return_if_fail (GAM_IS_APP (gam_app));
+@@ -646,7 +646,7 @@
+ void
+ gam_app_set_mixer_slider_style (GamApp *gam_app, gint style)
+ {
+-    const gchar *key = "/apps/PAW/gnome-alsamixer/geometry/mixer_slider_style";
++    const gchar *key = "/apps/gnome-alsamixer/geometry/mixer_slider_style";
+ 
+     g_return_if_fail (GAM_IS_APP (gam_app));
+ 
+@@ -661,7 +661,7 @@
+ gint
+ gam_app_get_slider_toggle_style (GamApp *gam_app)
+ {
+-    const gchar *key = "/apps/PAW/gnome-alsamixer/geometry/mixer_slider_toggle_style";
++    const gchar *key = "/apps/gnome-alsamixer/geometry/mixer_slider_toggle_style";
+     gint style = 1;
+ 
+     g_return_if_fail (GAM_IS_APP (gam_app));
+@@ -677,7 +677,7 @@
+ void
+ gam_app_set_slider_toggle_style (GamApp *gam_app, gint style)
+ {
+-    const gchar *key = "/apps/PAW/gnome-alsamixer/geometry/mixer_slider_toggle_style";
++    const gchar *key = "/apps/gnome-alsamixer/geometry/mixer_slider_toggle_style";
+ 
+     g_return_if_fail (GAM_IS_APP (gam_app));
+ 
+--- gnome-alsamixer-0.9.7.cvs20050822.orig/src/gam-slider-dual.c
++++ gnome-alsamixer-0.9.7.cvs20050822/src/gam-slider-dual.c
+@@ -446,7 +446,7 @@
+ 
+     priv = GAM_SLIDER_DUAL_GET_PRIVATE (gam_slider_dual);
+ 
+-    key = g_strdup_printf ("/apps/PAW/gnome-alsamixer/slider_locked/%s-%s",
++    key = g_strdup_printf ("/apps/gnome-alsamixer/slider_locked/%s-%s",
+                            gam_mixer_get_config_name (gam_slider_get_mixer (GAM_SLIDER (gam_slider_dual))),
+                            gam_slider_get_config_name (GAM_SLIDER (gam_slider_dual)));
+ 
+--- gnome-alsamixer-0.9.7.cvs20050822.orig/src/gam-mixer.c
++++ gnome-alsamixer-0.9.7.cvs20050822/src/gam-mixer.c
+@@ -478,7 +478,7 @@
+ 
+     priv = GAM_MIXER_GET_PRIVATE (gam_mixer);
+ 
+-    key = g_strdup_printf ("/apps/PAW/gnome-alsamixer/display_names/%s",
++    key = g_strdup_printf ("/apps/gnome-alsamixer/display_names/%s",
+                            gam_mixer_get_config_name (gam_mixer));
+ 
+     name = gconf_client_get_string (gam_app_get_gconf_client (GAM_APP (priv->app)),
+@@ -500,7 +500,7 @@
+ 
+     priv = GAM_MIXER_GET_PRIVATE (gam_mixer);
+ 
+-    key = g_strdup_printf ("/apps/PAW/gnome-alsamixer/display_names/%s",
++    key = g_strdup_printf ("/apps/gnome-alsamixer/display_names/%s",
+                            gam_mixer_get_config_name (gam_mixer));
+ 
+     gconf_client_set_string (gam_app_get_gconf_client (GAM_APP (priv->app)),
+@@ -526,7 +526,7 @@
+ 
+     priv = GAM_MIXER_GET_PRIVATE (gam_mixer);
+ 
+-    key = g_strdup_printf ("/apps/PAW/gnome-alsamixer/display_mixers/%s",
++    key = g_strdup_printf ("/apps/gnome-alsamixer/display_mixers/%s",
+                            gam_mixer_get_config_name (gam_mixer));
+ 
+     if (gconf_client_dir_exists (gam_app_get_gconf_client (GAM_APP (priv->app)), key, NULL))
+@@ -549,7 +549,7 @@
+ 
+     priv = GAM_MIXER_GET_PRIVATE (gam_mixer);
+ 
+-    key = g_strdup_printf ("/apps/PAW/gnome-alsamixer/display_mixers/%s",
++    key = g_strdup_printf ("/apps/gnome-alsamixer/display_mixers/%s",
+                            gam_mixer_get_config_name (gam_mixer));
+ 
+     gconf_client_set_bool (gam_app_get_gconf_client (GAM_APP (priv->app)),
