@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-decklink
 	pkgdesc = Complete solution to record, convert and stream audio and video (decklink enabled)
-	pkgver = 4.1.2
+	pkgver = 4.1.3
 	pkgrel = 1
 	epoch = 1
 	url = https://ffmpeg.org/
@@ -71,11 +71,11 @@ pkgbase = ffmpeg-decklink
 	provides = libswscale.so
 	provides = ffmpeg
 	conflicts = ffmpeg
-	source = https://ffmpeg.org/releases/ffmpeg-4.1.2.tar.xz
-	source = https://ffmpeg.org/releases/ffmpeg-4.1.2.tar.xz.asc
+	source = https://ffmpeg.org/releases/ffmpeg-4.1.3.tar.xz
+	source = https://ffmpeg.org/releases/ffmpeg-4.1.3.tar.xz.asc
 	source = LICENSE
 	validpgpkeys = FCF986EA15E6E293A5644F10B4322F04D67658D8
-	sha256sums = b95f0ae44798ab1434155ac7f81f30a7e9760a02282e4b5898372c22a335347b
+	sha256sums = 0c3020452880581a8face91595b239198078645e7d7184273b8bcc7758beb63d
 	sha256sums = SKIP
 	sha256sums = 04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36
 
