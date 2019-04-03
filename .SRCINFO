@@ -1,0 +1,16 @@
+pkgbase = scim-hangul
+	pkgdesc = Korean input method module for SCIM
+	pkgver = 0.4.0
+	pkgrel = 4
+	url = https://github.com/choehwanjin/scim-hangul
+	arch = x86_64
+	license = GPL
+	depends = libhangul
+	depends = scim
+	source = scim-hangul-0.4.0.tar.gz::https://github.com/choehwanjin/scim-hangul/archive/v0.4.0.tar.gz
+	source = 2012.patch
+	sha256sums = 3b03a8a31ce662158894eaaf6e9b19c7d3b648fbb2a005a2ca09115277dce638
+	sha256sums = dbb0358ef40c9ccb938571304e9f0844a67b4aeb5f1c8995ea62b2ae54aae9cc
+
+pkgname = scim-hangul
+
