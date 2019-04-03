@@ -1,8 +1,8 @@
-# Maintainer: archibald869 at web dot de
+# Maintainer: archibald869 <archibald869 at web dot de>
 
 pkgname=cling-nightly
 _pkgname=cling
-_build_date=2019-03-01
+_build_date=2019-04-02
 pkgver=0.5.${_build_date//-}
 pkgrel=1
 pkgdesc="Interactive C++ interpreter, built on the top of LLVM and Clang libraries"
@@ -20,9 +20,9 @@ source=(
     "${pkgname}-${pkgver}.tar.bz2::https://root.cern.ch/download/cling/cling_${_build_date}_sources.tar.bz2"
 )
 sha256sums=(
-    "bd79bf54344de385e9a351c9a4df82d557fdb3b7b926eb1ce6449171a096727b"
+    "c28edca286a281d0acc491e3d39ebf889a7e13f3619f43b400afb8b6a0a5aa12"
 )
-_cores=$(getconf _NPROCESSORS_ONLN)
+_num_cores=$(getconf _NPROCESSORS_ONLN)
 
 build() {
     mkdir -p "$srcdir/build"
@@ -35,15 +35,15 @@ build() {
         -DLLVM_ENABLE_RTTI=ON \
         "$srcdir/src"
 
-    make -C tools/clang -j$_cores
-    make -C tools/cling -j$_cores
+    make -C tools/clang -j$_num_cores
+    make -C tools/cling -j$_num_cores
 }
 
 package() {
     cd "$srcdir/build"
 
-    make -C tools/clang -j$_cores DESTDIR="$pkgdir" install
-    make -C tools/cling -j$_cores DESTDIR="$pkgdir" install
+    make -C tools/clang -j$_num_cores DESTDIR="$pkgdir" install
+    make -C tools/cling -j$_num_cores DESTDIR="$pkgdir" install
 
     install -d "$pkgdir/usr/bin"
     ln -s "/opt/cling/bin/cling" "$pkgdir/usr/bin/cling"

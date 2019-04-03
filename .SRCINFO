@@ -1,6 +1,6 @@
 pkgbase = cling-nightly
 	pkgdesc = Interactive C++ interpreter, built on the top of LLVM and Clang libraries
-	pkgver = 0.5.20190301
+	pkgver = 0.5.20190402
 	pkgrel = 1
 	url = https://root.cern.ch/cling
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = cling-nightly
 	optdepends = perl: support for scan-build, ccc-analyzer and c++-analyzer
 	provides = cling
 	conflicts = cling
-	source = cling-nightly-0.5.20190301.tar.bz2::https://root.cern.ch/download/cling/cling_2019-03-01_sources.tar.bz2
-	sha256sums = bd79bf54344de385e9a351c9a4df82d557fdb3b7b926eb1ce6449171a096727b
+	source = cling-nightly-0.5.20190402.tar.bz2::https://root.cern.ch/download/cling/cling_2019-04-02_sources.tar.bz2
+	sha256sums = c28edca286a281d0acc491e3d39ebf889a7e13f3619f43b400afb8b6a0a5aa12
 
 pkgname = cling-nightly
 
