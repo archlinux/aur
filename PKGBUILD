@@ -3,7 +3,7 @@
 _pkgname=prototool
 pkgname=${_pkgname}-bin
 pkgdesc="Your Swiss Army Knife for Protocol Buffers"
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/uber/prototool"
@@ -15,7 +15,7 @@ source=(
   "https://raw.githubusercontent.com/uber/prototool/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  29679185ffe4076234b37c214d557a87f58b26e482ab66e35b225093bcdd7528
+  6233572919332d8b7a5246002c2559b5204eaf1bacd809013051cb904efa5eb7
   020d43a0acd998e8c1ce91f6ab7ba9fd505c9968dd6d5ce7c7ae9c749641a95e
 )
 
