@@ -2,15 +2,15 @@
 _pkgname=passivedns
 pkgname=${_pkgname}-git
 pkgver=r275.e126cbb
-pkgrel=1
+pkgrel=2
 pkgdesc="A network sniffer that logs all DNS server replies for use in a passive DNS setup"
 arch=('x86_64')
 url="https://github.com/gamelinux/passivedns"
 license=('GPLv2')
-depends=('git' 'binutils' 'ldns' 'libpcap')
-makedepends=() 
-provides=("${pkgname%-git}")
-source=("passivedns::git://github.com/gamelinux/passivedns.git")
+depends=('ldns' 'libpcap')
+makedepends=('git' 'binutils') 
+provides=("${_pkgname}")
+source=("passivedns::git+git://github.com/gamelinux/passivedns.git")
 sha256sums=('SKIP')
 
 pkgver() {
