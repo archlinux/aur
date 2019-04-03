@@ -1,0 +1,16 @@
+pkgbase = xbill
+	pkgdesc = A game that tests your reflexes as you seek and destroy all forms of Bill
+	pkgver = 2.1
+	pkgrel = 10
+	url = http://www.xbill.org/
+	install = xbill.install
+	arch = x86_64
+	license = GPL
+	makedepends = libxaw
+	depends = xaw3d
+	depends = libxpm
+	source = http://www.xbill.org/download/xbill-2.1.tar.gz
+	sha512sums = 127604d88258db0ec47084209c656f8817146d70b0fe16f5a1d79883415cf38200594834b39080d78c627104ae6d204f3c12caf127fa094108c4edfbfa98d966
+
+pkgname = xbill
+
