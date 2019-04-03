@@ -10,6 +10,9 @@ pkgbase = python-pyelliptic
 	source = https://github.com/radfish/pyelliptic/archive/2.0.1.tar.gz
 	sha256sums = 840ad6f5e79c633e1de79fb08be78bf76fe07a7f260905eea31efb5ddf00180d
 
+pkgname = python2-pyelliptic
+	provides = python2-pyelliptic=2.0.1
+
 pkgname = python-pyelliptic
 	provides = python-pyelliptic=2.0.1
 
