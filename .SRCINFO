@@ -1,6 +1,6 @@
 pkgbase = inkscape-git
 	pkgdesc = An Open Source vector graphics editor, using SVG file format, from git master
-	pkgver = 1.0+devel.r4061.g0783403c25
+	pkgver = 1.0+devel.r4321.g083f7eab9b
 	pkgrel = 1
 	epoch = 1
 	url = https://launchpad.net/inkscape
@@ -17,6 +17,7 @@ pkgbase = inkscape-git
 	makedepends = python
 	makedepends = python2
 	makedepends = fontconfig
+	depends = double-conversion
 	depends = gc
 	depends = poppler-glib
 	depends = libxslt

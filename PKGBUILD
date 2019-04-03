@@ -2,14 +2,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-git
-pkgver=1.0+devel.r4061.g0783403c25
+pkgver=1.0+devel.r4321.g083f7eab9b
 pkgrel=1
 epoch=1
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
 url="https://launchpad.net/inkscape"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
-depends=('gc' 'poppler-glib' 'libxslt' 'gsl' 'libyaml' 'potrace' 'gdl>=3.8.0.25'
+depends=('double-conversion' 'gc' 'poppler-glib' 'libxslt' 'gsl' 'libyaml' 'potrace' 'gdl>=3.8.0.25'
 	 'gtkmm3' 'libcdr' 'libvisio' 'dbus-glib' 'jemalloc' 'gtkspell3' 'libsm'
 	 'libmagick6')
 optdepends=('python2-numpy: some extensions'
