@@ -20,7 +20,6 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
