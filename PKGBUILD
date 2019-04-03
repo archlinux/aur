@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.58.1+67+g17519e039
+pkgver=2.60.0
 pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy911/d199759b46a79782cc1b301649dec8a5"
@@ -17,7 +17,7 @@ optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-repor
             'libelf: gresource inspection tool')
 options=('!docs' '!emptydirs')
 license=(LGPL2.1)
-_commit=17519e039f29b5ffd0aad5ed1661bc56eb1dfeaa  # glib-2-58
+_commit=2edc5aa6dfffec0a48c8a1e9381b73d1096e0489  # tags/2.60.0^0
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
         noisy-glib-compile-schemas.diff
         glib-compile-schemas.hook
@@ -46,7 +46,7 @@ prepare() {
 
 build() {
   arch-meson glib build \
-    -D selinux=false \
+    -D selinux=disabled \
     -D man=true \
     -D gtk_doc=true
   ninja -C build
@@ -54,7 +54,7 @@ build() {
 
 #skip this; test fails
 #check() {
-#  meson test -C build -t 2
+#  meson test -C build --no-suite flaky
 #}
 
 package() {
@@ -63,6 +63,9 @@ package() {
 
   python -m compileall -d /usr/share/glib-2.0/codegen "$pkgdir/usr/share/glib-2.0/codegen"
   python -O -m compileall -d /usr/share/glib-2.0/codegen "$pkgdir/usr/share/glib-2.0/codegen"
+
+  # Remove installed tests
+  rm -r "$pkgdir/usr/lib/installed-tests"
 
   # Split docs
   mv "$pkgdir/usr/share/gtk-doc" "$srcdir"
