@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-full-git
 	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)
-	pkgver = 4.2.r93447.g5252d594a1
+	pkgver = 4.2.r93521.g0e1ea034d8
 	pkgrel = 1
 	url = https://www.ffmpeg.org/
 	arch = i686
@@ -102,7 +102,7 @@ pkgbase = ffmpeg-full-git
 	depends = vo-amrwbenc
 	depends = xavs
 	depends = xavs2
-	depends = libmysofa-git
+	depends = libmysofa
 	depends = rockchip-mpp
 	provides = libavcodec.so
 	provides = libavdevice.so
