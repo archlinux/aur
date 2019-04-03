@@ -4,7 +4,7 @@
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
 pkgver=3.11.0
-pkgrel=1
+pkgrel=2
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -14,7 +14,7 @@ arch=('i686' 'x86_64')
 url="https://www.mcs.anl.gov/petsc/"
 license=('BSD')
 options=(staticlibs)
-depends=('python2' 'openmpi' 'boost' 'lapack')
+depends=('python' 'openmpi' 'boost' 'lapack')
 makedepends=('gcc' 'gcc-fortran' 'cmake')
 optdepends=('trilinos: support for trilinos'
   'ptscotch: support for ptscotch parallel graph partitioning library'
@@ -43,13 +43,6 @@ export MAKEFLAGS="-j1"
 prepare() {
   _build_dir="${srcdir}/${pkgname}-${pkgver/_/-}"
 
-  # force using python2
-  MATCH='\(/usr/bin/env\|/usr/bin/\)python[[:digit:].]*'
-  find ${srcdir} -name "*" -type f -exec grep -le "$MATCH" \{\} + | \
-  while IFS= read file; do
-    sed -i "s#$MATCH#\\1python2#" "$file"
-  done
-
   # install external libraries in _build_dir instead of the prefix
   sed -i 's/self.publicInstall    = 1/self.publicInstall    = 0/' ${_build_dir}/config/BuildSystem/config/package.py
 }
@@ -71,7 +64,7 @@ build() {
   #CONFOPTS="${CONFOPTS} --with-fortran-datatypes --FOPTFLAGS=-O2"
 
   echo ${CONFOPTS}
-  python2 ./configure \
+  python ./configure \
     --prefix=${_install_dir} \
     --PETSC_ARCH=${_petsc_arch} \
     ${CONFOPTS}
