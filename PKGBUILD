@@ -1,5 +1,5 @@
 # Maintainer: Frank Asseg <frank.asseg@objecthunter.net>
-_commit=5182577b6c154a8564fc25c4a8f8f7d5760b3b6a
+_commit=ae9920214698e00179008a2d92d179c3107c51bd
 pkgname=crumbs
 pkgver=0.0.1
 pkgrel=1
