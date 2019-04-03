@@ -14,12 +14,10 @@ source=(
     'klayout::git+https://github.com/klayoutmatthias/klayout#branch=master'
 	klayoutEditor.desktop
 	klayoutViewer.desktop
-    missingOp.patch
 )
 md5sums=(SKIP
          'e790f7fca3c1138e21068d7927fb8ff4'
-         'e6b98e9146c476a5cb76162999964aa8'
-         '553b08ddcf6c2338115a8c85ff1c948c')
+         'e6b98e9146c476a5cb76162999964aa8')
 
 pkgver() {
   cd "$_pkgname"
@@ -37,11 +35,6 @@ build() {
 		-python /usr/bin/python3
         -j${threads}
         -qt5"
-
-   	# apply patch
-	cd ./src/db/db
-	cat ../../../../../missingOp.patch | patch
-	cd ../../../
 
 	./build.sh $build_opt
 }

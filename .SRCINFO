@@ -1,6 +1,6 @@
 pkgbase = klayout-git
 	pkgdesc = High Performance Layout Viewer And Editor. Support of GDS and OASIS files.
-	pkgver = v0.25.4.r517.g51ea5398
+	pkgver = v0.25.4.r47.g9dd603bb
 	pkgrel = 1
 	url = http://www.klayout.org/
 	arch = i686
@@ -16,11 +16,9 @@ pkgbase = klayout-git
 	source = klayout::git+https://github.com/klayoutmatthias/klayout#branch=master
 	source = klayoutEditor.desktop
 	source = klayoutViewer.desktop
-	source = missingOp.patch
 	md5sums = SKIP
 	md5sums = e790f7fca3c1138e21068d7927fb8ff4
 	md5sums = e6b98e9146c476a5cb76162999964aa8
-	md5sums = 553b08ddcf6c2338115a8c85ff1c948c
 
 pkgname = klayout-git
 
