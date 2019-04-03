@@ -3,10 +3,12 @@
 pkgname=wsdd
 pkgver=0.3
 pkgrel=1
-pkgdesc="A Web Service Discovery host daemon."
+pkgdesc="A Web Service Discovery (WSD) host daemon for SMB/Samba."
 arch=('any')
 url="https://github.com/christgau/wsdd"
 license=('MIT')
+
+depends=('samba')
 
 source=("wsdd-${pkgver}.tar.gz::https://github.com/christgau/wsdd/archive/v${pkgver}.tar.gz"
         'wsdd.service'
