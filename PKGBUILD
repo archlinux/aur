@@ -14,7 +14,7 @@ url=https://ffmpeg.org/
 license=(GPL3)
 depends=(
   alsa-lib
-  aom
+  aom-git
   bzip2
   fontconfig
   fribidi
