@@ -13,8 +13,8 @@ _revert=
 
 
 pkgname=mutter-781835-workaround
-pkgver=3.32.0+42+g58f7059ea
-pkgrel=5
+pkgver=3.32.0+49+gb2d0184c6
+pkgrel=1
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -27,21 +27,20 @@ checkdepends=(xorg-server-xvfb)
 provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
-_commit=58f7059ea42c04fbb28c7210a287437f0f55b2d8  # master
+_commit=b2d0184c6efa164ad5dd7a2ca8b10cf13acf5b4c  # master
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-         0001-wayland-xdg-shell-Correct-window-menu-position-in-lo.patch
+        0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
          216.patch
         revert.patch)
 sha256sums=('SKIP'
-            '8628fe45738d631d7776204be76cc091c5a1359d2874945c7913c7705330f816'
+            '842162bf8cec5d69fdb80c85fd152ddd3db6a9179d11d6f81d486f79814838c0'
             'ed4f3cf738a3cffdf8a6e1a352bf24d74078c3b26fb9262c5746e0d95b9df756'
             '2d2e305e0a6cca087bb8164f81bdc0ae7a5ca8e9c13c81d7fd5252eb3563fc09')
 
 pkgver() {
   cd $pkgname
 
-  _manual_bump=42 # horrible temporary workaround to account new versioning
-  git describe --tags | sed "s/-/+/g;s/33/$_manual_bump/"
+  git describe --tags | sed "s/-/+/g"
 }
 
 prepare() {
@@ -103,8 +102,8 @@ prepare() {
     patch -Np1 -i ../revert.patch
   fi
 
-  # https://gitlab.gnome.org/GNOME/mutter/issues/527
-  patch -Np1 -i ../0001-wayland-xdg-shell-Correct-window-menu-position-in-lo.patch
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1534089
+  patch -Np1 -i ../0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
 
   # cogl-winsys-glx: Fix frame notification race/leak [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/216

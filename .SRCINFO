@@ -1,7 +1,7 @@
 pkgbase = mutter-781835-workaround
 	pkgdesc = A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included.
-	pkgver = 3.32.0+42+g58f7059ea
-	pkgrel = 5
+	pkgver = 3.32.0+49+gb2d0184c6
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	groups = gnome
@@ -30,12 +30,12 @@ pkgbase = mutter-781835-workaround
 	depends = gnome-shell
 	provides = mutter
 	conflicts = mutter
-	source = mutter-781835-workaround::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=58f7059ea42c04fbb28c7210a287437f0f55b2d8
-	source = 0001-wayland-xdg-shell-Correct-window-menu-position-in-lo.patch
+	source = mutter-781835-workaround::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=b2d0184c6efa164ad5dd7a2ca8b10cf13acf5b4c
+	source = 0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
 	source = 216.patch
 	source = revert.patch
 	sha256sums = SKIP
-	sha256sums = 8628fe45738d631d7776204be76cc091c5a1359d2874945c7913c7705330f816
+	sha256sums = 842162bf8cec5d69fdb80c85fd152ddd3db6a9179d11d6f81d486f79814838c0
 	sha256sums = ed4f3cf738a3cffdf8a6e1a352bf24d74078c3b26fb9262c5746e0d95b9df756
 	sha256sums = 2d2e305e0a6cca087bb8164f81bdc0ae7a5ca8e9c13c81d7fd5252eb3563fc09
 
