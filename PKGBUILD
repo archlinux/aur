@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python2-healpy
 pkgver=1.12.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Python package to manipulate healpix maps"
 arch=('i686' 'x86_64')
 url="http://healpy.readthedocs.io"
@@ -17,4 +17,5 @@ package() {
 
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
     python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    mv ${pkgdir}/usr/bin/healpy_get_wmap_maps{,2}.sh
 }
