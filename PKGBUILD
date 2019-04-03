@@ -26,7 +26,6 @@ package() {
   install -Dm755 target/release/$pkgname -t "$pkgdir/usr/bin"
 
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
