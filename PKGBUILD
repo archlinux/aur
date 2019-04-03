@@ -1,8 +1,8 @@
 # Maintainer: Frank Asseg <frank.asseg@objecthunter.net>
-_commit=ae9920214698e00179008a2d92d179c3107c51bd
+_commit=dddfba8a278c903806fc83da50efb72e8f6d60b8
 pkgname=crumbs
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A bookmarking system for the command line"
 arch=('any')
