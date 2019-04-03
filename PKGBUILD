@@ -341,7 +341,7 @@ adjust_bin_dir() {
     _bindir="${startdir}/src/${_source_package_name}"
   fi
   if $_shadow_build; then
-    _bindir="${_bindir}-build"
+    _bindir="${startdir}/build"
     if $_minimal && [[ -d $_tmpfs_dir ]]; then
       _bindir="${_tmpfs_dir}/${_bindir}"
     fi
