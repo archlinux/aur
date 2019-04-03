@@ -1,0 +1,25 @@
+pkgbase = intel-compute-runtime-git
+	pkgdesc = Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond. (git version)
+	pkgver = 19.12.12612.r98.gcefa3e31
+	pkgrel = 1
+	url = https://01.org/compute-runtime
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = libva
+	depends = gcc-libs
+	depends = intel-gmmlib
+	depends = intel-graphics-compiler
+	optdepends = libva: for cl_intel_va_api_media_sharing
+	optdepends = libdrm: for cl_intel_va_api_media_sharing
+	provides = opencl-driver
+	provides = intel-compute-runtime
+	conflicts = intel-compute-runtime
+	source = git+https://github.com/intel/compute-runtime.git
+	source = intel-compute-runtime-git-fix-ld.so-config.patch
+	sha256sums = SKIP
+	sha256sums = 08cedef03d3c3fe07360d3d5056f8054a13ecc0b92d3748ea61641f859f8bb44
+
+pkgname = intel-compute-runtime-git
+
