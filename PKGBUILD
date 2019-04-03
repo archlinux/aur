@@ -1,15 +1,15 @@
 # Maintainer: Víctor González <mrvikxd@gmail.com>
 pkgname=fltrdr
-pkgver=0.1.1
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A TUI text reader for the terminal"
 arch=("x86_64")
 url="https://github.com/octobanana/$pkgname"
 license=("MIT")
-depends=() #Depends on gcc-libs but we assume you have base and base-devel
+depends=("icu") #Depends on gcc-libs but we assume you have base and base-devel
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('154f1766800cc8c140cb89c19340ac4d9784e9d9c77bb5c2b19a6f806e8d98b8')
+sha256sums=('2e534c7ce3e236e821b4c221b78c9e6b395c2214124139aa2f68cb0c08a70aec')
 
 build(){
     cd "$pkgname-$pkgver"
