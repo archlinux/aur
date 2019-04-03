@@ -3,7 +3,7 @@
 # Contributor: ValHue <vhuelamo at gmail dot com>
 #
 pkgname="multisystem"
-pkgver=1.0429
+pkgver=1.0430
 pkgrel=1
 pkgdesc="A GUI tool to create a usb system that can boot multiple distro's"
 url="http://liveusb.info/dotclear/index.php"
@@ -19,8 +19,8 @@ provides=("${pkgname}")
 source=("http://liveusb.info/${pkgname}/${pkgname}.tar.bz2"
         "http://liveusb.info/${pkgname}/depot/dists/all/main/binary-i386/Packages"
 )
-sha256sums=('79ec2d404a4e1a8c24a6ef8ae4467d89179961a6260a7b755b190e4f56562445'
-            '34187e30056b8b93bb1196c01c931481f81a1e4877c140dab26a5e03fc4f70ac')
+sha256sums=('07b8c65ae176473c01dcb89cf87e6315e6daf28c5f42e509e4869421793f8f8b'
+            'db626ce88c2b38ad9d75fbcf9b1580b110287ecd60766124defeb9129964864f')
 
 _multisystem="#!/usr/bin/sh
 exec /usr/local/share/multisystem/gui_multisystem.sh
@@ -112,4 +112,4 @@ package() {
     install -m 644 pixmaps/multisystem-vbox.png ${pkgdir}/usr/local/share/pixmaps
 }
 
-# vim:set ts=4 sw=4 ft=sh et:
+# vim: set ts=4 sw=4 et syn=sh ft=sh:
