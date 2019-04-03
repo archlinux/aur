@@ -1,0 +1,19 @@
+pkgbase = thinkfinger
+	pkgdesc = A driver for the SGS Thomson Microelectronics fingerprint reader found in most IBM/Lenovo ThinkPads
+	pkgver = 0.3
+	pkgrel = 9
+	url = http://thinkfinger.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = pam
+	depends = libusb-compat
+	options = emptydirs
+	source = http://downloads.sourceforge.net/thinkfinger/thinkfinger-0.3.tar.gz
+	source = thinkfinger-uinput-hack.patch
+	source = gcc46.patch
+	md5sums = 588565233bcbea5ff0a7f5314361c380
+	md5sums = 71dc334282d19e6db4f6254542ba563c
+	md5sums = 93c80f342329a5bd40f5f324fe670225
+
+pkgname = thinkfinger
+
