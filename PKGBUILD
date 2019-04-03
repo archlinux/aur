@@ -5,7 +5,7 @@
 
 _pkgname=librime
 pkgname=$_pkgname-git
-pkgver=1.4.0.r2.gd15662ae
+pkgver=1.4.0.r32.g97220ce2
 pkgrel=1
 pkgdesc="Rime input method engine"
 arch=('i686' 'x86_64')
@@ -26,7 +26,8 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  make
+  cmake . -Bbuild -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
 }
 
 package() {

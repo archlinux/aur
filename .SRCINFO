@@ -1,6 +1,6 @@
 pkgbase = librime-git
 	pkgdesc = Rime input method engine
-	pkgver = 1.4.0.r2.gd15662ae
+	pkgver = 1.4.0.r32.g97220ce2
 	pkgrel = 1
 	url = http://rime.im/
 	arch = i686
