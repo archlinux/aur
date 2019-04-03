@@ -4,7 +4,7 @@
 
 
 pkgname='telegraf'
-pkgver='1.10.1'
+pkgver='1.10.2'
 pkgrel='1'
 pkgdesc='Plugin-driven server agent for reporting metrics into InfluxDB'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ source=("https://github.com/influxdata/${pkgname}/archive/${pkgver}/${pkgname}-$
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('7d61966b7dc9e6045d97ee58b9fc19316f8fa03e8194134236809899b4695b63'
+sha256sums=('aaa2eaec50494ef73301a0fbef015d6167b9515f1172b51b13a8fde448a7c871'
             'b8494d35b868a256eace5f7baa7caa9d8561ee506aded3c47bd6b2ee031b0745'
             'ef54a27c036f11c44f32a42c81787dd0253f84e77170c2e8f9e268aca8773c33'
             'acf95397a51077b7684e8e4f4db7266c42cf82f24bc969ef2bc112a0f914f4cd'
