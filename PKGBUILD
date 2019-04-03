@@ -3,9 +3,9 @@
 
 _pkgbase=gnome-software
 pkgbase=gnome-software-snap
-pkgname=(gnome-software-snap gnome-software-packagekit-plugin-snap)
-pkgver=3.30.6
-_pkgver=3.30
+pkgname=gnome-software-snap
+pkgver=3.32.0
+_pkgver=3.32
 pkgrel=1
 pkgdesc="GNOME Software Tools with built in snap support"
 url="https://download.gnome.org/sources/gnome-software/"
@@ -14,7 +14,7 @@ license=(GPL2)
 makedepends=(appstream-glib gnome-desktop libpackagekit-glib flatpak fwupd ostree
              docbook-xsl git gobject-introspection gspell gtk-doc meson valgrind snapd-glib liboauth)
 source=("http://download.gnome.org/sources/$_pkgbase/$_pkgver/$_pkgbase-$pkgver.tar.xz")
-sha256sums=('54630cdcde67cc571905a2ef5918fb7697f6aff80d937340440869f65c0c9002')
+sha256sums=('a104a13dda7d84d9892eabb32db08f32ea7f57f193c4988286d9e5adfcdc19a6')
 
 build() {
   arch-meson $_pkgbase-$pkgver build \
@@ -31,26 +31,14 @@ check() {
 
 package_gnome-software-snap() {
   groups=('gnome')
-  conflicts=(gnome-software)
+  conflicts=(gnome-software gnome-software-packagekit-plugin gnome-software-packagekit-plugin-snap)
   provides=(gnome-software)
-  depends=(appstream-glib gnome-desktop gsettings-desktop-schemas gspell libpackagekit-glib gnome-software-packagekit-plugin-snap snapd liboauth)
+  depends=(appstream-glib gnome-desktop gsettings-desktop-schemas gspell libpackagekit-glib snapd liboauth)
   optdepends=('flatpak: Flatpak support plugin'
               'fwupd: fwupd support plugin'
               'ostree: OSTree support plugin')
 
   DESTDIR="$pkgdir" meson install -C build
 
-  # Split out packagekit plugin
-  mkdir "$srcdir"/packagekit-plugin
-  mv "$pkgdir"/usr/lib/gs-plugins-12/libgs_plugin_{packagekit*,systemd-updates}.so "$srcdir"/packagekit-plugin
 }
 
-package_gnome-software-packagekit-plugin-snap() {
-  pkgdesc="PackageKit support plugin for GNOME Software"
-  conflicts=(gnome-software-packagekit-plugin)
-  provides=(gnome-software-packagekit-plugin)
-  depends=(archlinux-appstream-data gnome-software packagekit)
-
-  mkdir -p "$pkgdir"/usr/lib/gs-plugins-12
-  mv "$srcdir"/packagekit-plugin/* "$pkgdir"/usr/lib/gs-plugins-12/
-}

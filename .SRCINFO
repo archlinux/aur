@@ -1,6 +1,6 @@
 pkgbase = gnome-software-snap
 	pkgdesc = GNOME Software Tools with built in snap support
-	pkgver = 3.30.6
+	pkgver = 3.32.0
 	pkgrel = 1
 	url = https://download.gnome.org/sources/gnome-software/
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = gnome-software-snap
 	makedepends = valgrind
 	makedepends = snapd-glib
 	makedepends = liboauth
-	source = http://download.gnome.org/sources/gnome-software/3.30/gnome-software-3.30.6.tar.xz
-	sha256sums = 54630cdcde67cc571905a2ef5918fb7697f6aff80d937340440869f65c0c9002
+	source = http://download.gnome.org/sources/gnome-software/3.32/gnome-software-3.32.0.tar.xz
+	sha256sums = a104a13dda7d84d9892eabb32db08f32ea7f57f193c4988286d9e5adfcdc19a6
 
 pkgname = gnome-software-snap
 	groups = gnome
@@ -30,7 +30,6 @@ pkgname = gnome-software-snap
 	depends = gsettings-desktop-schemas
 	depends = gspell
 	depends = libpackagekit-glib
-	depends = gnome-software-packagekit-plugin-snap
 	depends = snapd
 	depends = liboauth
 	optdepends = flatpak: Flatpak support plugin
@@ -38,12 +37,6 @@ pkgname = gnome-software-snap
 	optdepends = ostree: OSTree support plugin
 	provides = gnome-software
 	conflicts = gnome-software
-
-pkgname = gnome-software-packagekit-plugin-snap
-	pkgdesc = PackageKit support plugin for GNOME Software
-	depends = archlinux-appstream-data
-	depends = gnome-software
-	depends = packagekit
-	provides = gnome-software-packagekit-plugin
 	conflicts = gnome-software-packagekit-plugin
+	conflicts = gnome-software-packagekit-plugin-snap
 
