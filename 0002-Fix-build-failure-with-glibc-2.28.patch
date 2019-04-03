@@ -1,0 +1,33 @@
+From e6e049ca6a371528ebf39b106209c2df586500bc Mon Sep 17 00:00:00 2001
+From: Gang He <ghe@suse.com>
+Date: Mon, 4 Mar 2019 15:20:34 +0800
+Subject: [PATCH] Fix build failure with glibc 2.28
+
+Since glibc git 663e7d78 (to be 2.28), type loff_t will be only defined
+when _DEFAULT_SOURCE defined. And with _XOPEN_SOURCE defined,
+_DEFAULT_SOURCE will not be defined by default.
+
+Build failed with the error messages like,
+Make[1]: Entering directory '/builddir/build/BUILD/ocfs2-tools-ocfs2-tools-1.8.5/libo2cb'
+gcc -O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -mcet -fcf-protection -Wall -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -pipe -fPIC -I../include -I. -DHAVE_CMAP -DHAVE_FSDLM -MD -MP -MF ./.o2cb_abi.d -o o2cb_abi.o -c o2cb_abi.c
+In file included from o2cb_abi.c:52:
+../include/ocfs2/ocfs2.h:222:2: error: unknown type name 'loff_t'
+loff_t d_off; /* Offset of structure in the file */
+^~~~~~
+---
+ Preamble.make | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Preamble.make b/Preamble.make
+index b9b4af03..10adc031 100644
+--- a/Preamble.make
++++ b/Preamble.make
+@@ -28,7 +28,7 @@ DIST_RULES =
+ INCLUDES =
+ DEFINES = 
+ 
+-CFLAGS += -pipe
++CFLAGS += -pipe -D_DEFAULT_SOURCE=1
+ # protect with configure?
+ CDEPFLAGS = -MD -MP -MF $(@D)/.$(basename $(@F)).d
+ 

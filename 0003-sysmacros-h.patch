@@ -1,0 +1,34 @@
+From 03be837c7d0b9be393ffb555879c49e6212fbd0f Mon Sep 17 00:00:00 2001
+From: Valentin Vidic <Valentin.Vidic@CARNet.hr>
+Date: Thu, 25 Jan 2018 13:05:27 +0100
+Subject: [PATCH] mounted.ocfs2: use <sys/sysmacros.h> include for makedev
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+ mounted.c: In function ‘build_partition_list’:
+ mounted.c:354:13: warning: In the GNU C Library, "makedev" is defined
+  by <sys/sysmacros.h>. For historical compatibility, it is
+  currently defined by <sys/types.h> as well, but we plan to
+  remove this soon. To use "makedev", include <sys/sysmacros.h>
+  directly. If you did not intend to use a system-defined macro
+  "makedev", you should undefine it after including <sys/types.h>.
+        makedev(major, minor), &devname);
+              ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+---
+ mounted.ocfs2/mounted.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mounted.ocfs2/mounted.c b/mounted.ocfs2/mounted.c
+index 1576f902..090ab4ed 100644
+--- a/mounted.ocfs2/mounted.c
++++ b/mounted.ocfs2/mounted.c
+@@ -25,7 +25,7 @@
+ #define _LARGEFILE64_SOURCE
+ #define _GNU_SOURCE /* Because libc really doesn't want us using O_DIRECT? */
+ 
+-#include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <errno.h>

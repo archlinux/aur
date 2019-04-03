@@ -1,0 +1,33 @@
+From 4366a961426d536ff675625189a7033eda923528 Mon Sep 17 00:00:00 2001
+From: Valentin Vidic <Valentin.Vidic@CARNet.hr>
+Date: Mon, 2 Apr 2018 21:50:20 +0200
+Subject: [PATCH] tunefs.ocfs2: fix parallel build
+
+Parallel build (make -j 10) sometimes fails with an error:
+
+o2cluster.c:32:10: fatal error: o2ne_err.h: No such file or directory
+ #include "o2ne_err.h"
+          ^~~~~~~~~~~~
+compilation terminated
+make[2]: *** [../Postamble.make:40: o2cluster.o] Error 1
+
+So add a missing depends for o2cluster.o on o2ne_err.h.
+---
+ tunefs.ocfs2/Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tunefs.ocfs2/Makefile b/tunefs.ocfs2/Makefile
+index 38ac7d1e..d63bb11b 100644
+--- a/tunefs.ocfs2/Makefile
++++ b/tunefs.ocfs2/Makefile
+@@ -105,6 +105,7 @@ O2CLUSTER_OBJS = $(subst .c,.o,$(O2CLUSTER_CFILES))
+ 
+ $(LIBOCFS2NE_OBJS): $(HFILES_GEN)
+ $(OCFS2NE_OBJS): $(HFILES_GEN)
++$(O2CLUSTER_OBJS): $(HFILES_GEN)
+ 
+ DIST_FILES = $(CFILES) $(HFILES) tunefs.ocfs2.8.in o2cluster.8.in o2ne_err.et
+ 
+-- 
+2.20.1
+
