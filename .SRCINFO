@@ -1,0 +1,19 @@
+pkgbase = fvwm-crystal
+	pkgdesc = Transparent Themes for fvwm
+	pkgver = 3.4.1
+	pkgrel = 3
+	url = http://fvwm-crystal.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = fvwm
+	depends = imagemagick
+	depends = feh
+	depends = trayer
+	depends = xdg-user-dirs
+	depends = python2
+	options = !makeflags
+	source = http://downloads.sourceforge.net/sourceforge/fvwm-crystal/fvwm-crystal-3.4.1.tar.gz
+	sha1sums = afa5a8a2dbc0454c0809ed46a04cea7d17420fb0
+
+pkgname = fvwm-crystal
+
