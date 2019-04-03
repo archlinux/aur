@@ -5,13 +5,11 @@ the engine to easily find them:
  * For all users: /usr/share/games/doom
  * For a single user: ~/.local/share/games/doom
 
-Files such as doom2.wad, heretic.wad, hexen.wad, and strife1.wad are
-appropriate for installation and usage with Chocolate engines.
+Files such as doom.wad, doom2.wad, tnt.wad, plutonia.wad are
+appropriate for installation and usage with Crispy Doom.
 
 In order to allow co-existence with Chocolate Doom, the following
-manual pages have been removed:
-  default.cfg heretic.cfg hexen.cfg strife.cfg
-They are identical to and are available in the Chocolate Doom packages
-instead.
+manual page has been removed: default.cfg
+It is identical to and are available in the Chocolate Doom packages instead.
 EOF
 }
