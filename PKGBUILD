@@ -1,7 +1,7 @@
 # Maintainer: Stijn Seghers <stijnseghers at gmail dot com>
 
 pkgname=mangband
-pkgver=1.1.3
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='A free online multiplayer real-time roguelike game, derived from the single player game Angband (ncurses-only)'
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ license=('GPL' 'custom')
 depends=('ncurses5-compat-libs')
 
 source=("http://mangband.org/download/${pkgname}-${pkgver}.tar.gz")
-md5sums=('f1cc146cc1cddcfb09c2a30f7936c165')
+md5sums=('a39d2b3f8098052c9a3afa058c021924')
 
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}/src"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   CFLAGS="-mtune=generic -pipe -fstack-protector-strong" \
     ./configure \
@@ -33,5 +33,5 @@ package() {
   cp -a lib "${pkgdir}/usr/share/${pkgname}"
   rm -f "${pkgdir}/usr/share/${pkgname}/*/delete.me"
   install -Dm755 mangclient "${pkgdir}/usr/bin/mangclient"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
