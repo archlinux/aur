@@ -2,10 +2,10 @@
 
 _pkgname=radiotray-ng
 pkgname=${_pkgname}-git
-_pkgver=0.2.5
+_pkgver=0.2.6
 _branch=v${_pkgver}-dev
 epoch=1
-pkgver=0.2.5dev+18+0384bc4
+pkgver=0.2.6dev+5+5b2ec8b
 pkgrel=1
 pkgdesc="An Internet radio player for Linux"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=('python2-lxml: Convert radiotray bookmarks to radiotray-ng format')
 options=('!libtool')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
-_release_commit=6b54d507bea343db7186173ba63d0be5d2e600db
+_release_commit=02d6b3c776f1743a6672c7148ccdaa99ce1b95b0
 source=("${_pkgname}::git+https://github.com/ebruck/radiotray-ng#branch=${_branch}")
 sha256sums=('SKIP')
 
