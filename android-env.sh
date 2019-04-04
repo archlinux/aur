@@ -41,7 +41,7 @@ export ANDROID_PLATFORM=${ANDROID_NDK_ROOT}/platforms/$ANDROID_NDK_PLATFORM
 export ANDROID_TOOLCHAIN=${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64
 export ANDROID_SYSROOT=${ANDROID_TOOLCHAIN}/sysroot
 export ANDROID_CROSS_PREFIX=$ANDROID_TOOLCHAIN/bin/
-export ANDROID_PKGCONFIG=android-$_android_arch-pkg-config
+export ANDROID_PKGCONFIG=android-${_android_arch}-pkg-config
 
 case "$_android_arch" in
     aarch64)
@@ -68,3 +68,6 @@ export ANDROID_AR=${ANDROID_TOOLS_PREFIX}ar
 export ANDROID_NM=${ANDROID_TOOLS_PREFIX}nm
 export ANDROID_RANLIB=${ANDROID_TOOLS_PREFIX}ranlib
 export ANDROID_STRIP=${ANDROID_TOOLS_PREFIX}strip
+export ANDROID_LIBS=/opt/android-libs/${_android_arch}
+export PKG_CONFIG_SYSROOT_DIR=${ANDROID_LIBS}
+export PKG_CONFIG_LIBDIR=${PKG_CONFIG_SYSROOT_DIR}/lib/pkgconfig:${PKG_CONFIG_SYSROOT_DIR}/share/pkgconfig
