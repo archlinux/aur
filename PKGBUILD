@@ -1,6 +1,6 @@
 # Maintainer: Adrien Gallouët <adrien@gallouet.fr>
 pkgname=glorytun
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A small, simple and secure VPN"
 arch=(x86_64)
@@ -8,17 +8,16 @@ url="https://github.com/angt/glorytun"
 license=('BSD')
 depends=('libsodium' 'iproute2')
 makedepends=('meson' 'libsodium' 'pkgconfig')
-_pkgnamever=$pkgname-${pkgver//_/-}
-source=("$url/releases/download/v$pkgver/$_pkgnamever.tar.gz")
-md5sums=('b944059b7aaa70024e377ba4a35a3c78')
+source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+md5sums=('e9394da94e1e69e5b40d346e8595c389')
 
 build() {
-  cd "$srcdir/$_pkgnamever"
+  cd "$srcdir/$pkgname-$pkgver"
   meson build --prefix=/usr
   ninja -C build
 }
 
 package() {
-  cd "$srcdir/$_pkgnamever"
+  cd "$srcdir/$pkgname-$pkgver"
   DESTDIR="$pkgdir/" ninja -C build install
 }
