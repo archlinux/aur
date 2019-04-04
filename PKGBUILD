@@ -5,10 +5,10 @@
 # Original maintainer: Marcin
 
 pkgname=spring-tool-suite
-pkgver=4.1.2
+pkgver=4.2.0
 _pkgver_release=$pkgver.RELEASE
-_eclipse_pkgver=e4.10.0
-_eclipse_pkgver_short=e4.10
+_eclipse_pkgver=e4.11.0
+_eclipse_pkgver_short=e4.11
 pkgrel=1
 pkgdesc="The Spring Tool Suite (STS) from SpringSource"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source_x86_64=(
     "http://download.springsource.com/release/STS4/${_pkgver_release}/dist/${_eclipse_pkgver_short}/${pkgname}-4-${_pkgver_release}-${_eclipse_pkgver}-linux.gtk.x86_64.tar.gz"
     "${pkgname}.desktop"
 )
-sha256sums_x86_64=('6297d031bc29fdc074e1431d042abe9b9bf7895a5f7b7b65e1d5668673e0bab5'
+sha256sums_x86_64=('1389c83a039eb2eba4d5a378bab5c9abdf677e5dc88a47512b9058deb90ed788'
                    '4f3891945c9f86d2efa5b388d0da74d323b28795c46cbb35c56073e1e4cade32')
 
 package() {
