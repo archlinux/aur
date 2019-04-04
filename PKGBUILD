@@ -1,5 +1,5 @@
 pkgname=openmm
-pkgver=7.2.1
+pkgver=7.3.1
 pkgrel=1
 pkgdesc="Toolkit for molecular simulation using high performance GPU code"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ license=('MIT' 'LGPL')
 depends=('fftw')
 makedepends=('cmake' 'swig' 'doxygen')
 source=("https://github.com/pandegroup/openmm/archive/${pkgver}.tar.gz")
-sha1sums=('ab7f0a136152c04cb7f38d10321d35fa212fdbc0')
+sha1sums=('3e2d18d033dbe8bb52867ac1232afb6788bff346')
 
 #prepare() {
 #  cd "${srcdir}"/openmm-${pkgver}
