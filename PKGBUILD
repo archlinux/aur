@@ -9,7 +9,7 @@ pkgname=icecat
 pkgver=60.3.0
 _pkgver=${pkgver}-gnu1
 _pkgverbase=${pkgver%%.*}
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU version of the Firefox browser."
 arch=(i686 x86_64)
 url="http://www.gnu.org/software/gnuzilla/"
@@ -31,12 +31,16 @@ source=(http://ftpmirror.gnu.org/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz
 #source=(https://mirrors.kernel.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2      ## Good mirror
 #source=(http://jenkins.trisquel.info/icecat/${pkgname}-${_pkgver}.tar.bz2      ## Official developer (Ruben Rodriguez) site. Probably only has developer releases.
 #source=(http://alpha.gnu.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2{,.sig}
-        icecat.desktop icecat-safe.desktop)
+        icecat.desktop icecat-safe.desktop
+        'rust_133-part1.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046663' 'rust_133-part2.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046664' deny_missing_docs.patch)
 
 sha256sums=('6145327092b4b195a4f63d0e86f4857eeba5607ffeb69b6f3bceb36e89a19645'
             'SKIP'
             'c44eab35f71dd3028a74632463710d674b2e8a0682e5e887535e3233a3b7bbb3'
-            '190577ad917bccfc89a9bcafbc331521f551b6f54e190bb6216eada48dcb1303')
+            '190577ad917bccfc89a9bcafbc331521f551b6f54e190bb6216eada48dcb1303'
+            '8b37332dd205946ea95c606103b5b0e1e8498819051ea1c1bce79f04fd88ebca'
+            '08ab4293d6008524a38e20b428c750c4c55a2f7189e9a0067871ad723c1efab5'
+            'cb1116c783995b8187574f84acb8365681aedaa2c76222cf060d31fedcb063c4')
 
 validpgpkeys=(A57369A8BABC2542B5A0368C3C76EED7D7E04784) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
 
@@ -47,6 +51,12 @@ prepare() {
   # Patch to move files directly to /usr/lib/icecat. No more symlinks.
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME);g' -i config/baseconfig.mk
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME)-devel;g' -i config/baseconfig.mk
+
+  # Bug 1521249 --enable-rust-simd fails to build using Rust 1.33
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
+  patch -Np1 -i ../rust_133-part1.patch || true
+  patch -Np1 -i ../rust_133-part2.patch
+  patch -Np1 -i ../deny_missing_docs.patch
 
   printf '%b' "  \e[1;36m->\e[0m\033[1m Starting build...\n"
   
