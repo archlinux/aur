@@ -1,5 +1,5 @@
 pkgbase = execute-git
-	pkgdesc = Opens exe files as if they were native Linux applications, silently selecting the right emulator and configuration for each case
+	pkgdesc = Opens exe files as if they were native
 	pkgver = r11.1bc0822
 	pkgrel = 1
 	url = https://gitlab.com/es20490446e/execute
