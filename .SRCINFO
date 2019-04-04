@@ -1,7 +1,7 @@
 pkgbase = ttf-pragmatapro
 	pkgdesc = PragmataPro by Fabrizio Schiavi
-	pkgver = 0.821
-	pkgrel = 1
+	pkgver = 0.827
+	pkgrel = 3
 	url = http://www.fsd.it/shop/fonts/pragmatapro/
 	install = ttf-pragmatapro.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = ttf-pragmatapro
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = LICENSE
-	md5sums = eb2608fd50ca421ecb9fc07de833a5ab
+	sha256sums = 8067e67a5d2153a8990ffc866de319a01d21f6021789812dd1a38219062e1475
 
 pkgname = ttf-pragmatapro
 
