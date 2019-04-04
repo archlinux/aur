@@ -1,5 +1,5 @@
 # Maintainer: Ayrton Araujo <root@ayr-ton.net>
-# Co-maintainer: Kevin Del Castillo R. <lans9831@gmail.com>
+# Maintainer: Kevin Del Castillo R. <lans9831@gmail.com>
 # Contributor: Nuno Araujo <nuno.araujo@russo79.com>
 pkgname=pyenv-virtualenv
 pkgver=1.1.5
