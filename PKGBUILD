@@ -6,7 +6,7 @@
 
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
@@ -45,16 +45,8 @@ optdepends=(
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz"
-        "0001-setup.py-option-to-disable-secp-build.patch")
-sha256sums=('5db277fbd81cf30e6b21fb7dc0a25da90f566d084b65ce727b91aef90fff672e'
-            '3a201d65a364a1f6290c19269f7e4cd79f08af86da851a93d1b0e9d5e79d2d3c')
-
-prepare() {
-  cd "Electron-Cash-${pkgver}"
-
-  patch -Np1 -i "${srcdir}/0001-setup.py-option-to-disable-secp-build.patch"
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz")
+sha256sums=('3df07cce3fb445740588e858224f83dffb3e32a5a588e4a47255249ba6f915c3')
 
 build() {
   cd "Electron-Cash-${pkgver}"
