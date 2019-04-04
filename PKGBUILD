@@ -49,7 +49,9 @@ package() {
     cp -rT $_pkgname-$_pkgver $d
     find $d -type d -exec chmod 755 {} +
     find $d -type f -exec chmod 644 {} +
-    echo -e "\nopen matlab, type
+    echo -e "\n%open matlab, type
 run /usr/share/matconvnet/matlab/vl_setupnn
-vl_testnn('gpu', true)\n" 
+vl_testnn('gpu', true)
+%24 tests create dir in root, should fail
+\n" 
 }
