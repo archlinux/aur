@@ -1,6 +1,6 @@
 pkgbase = python-fpyutils
 	pkgdesc = A collection of useful non-standard Python functions which aim to be simple to use
-	pkgver = 0.0.4
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/frnmst/fpyutils
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-fpyutils
 	makedepends = python-setuptools
 	depends = python
 	options = !emptydirs
-	source = python-fpyutils.tar.gz::https://github.com/frnmst/fpyutils/archive/0.0.4.tar.gz
-	sha256sums = 75404af8ec8225505eb7cf5bb1307453aba42165aba1d6c7224e9d865046838e
+	source = python-fpyutils.tar.gz::https://github.com/frnmst/fpyutils/archive/1.0.0.tar.gz
+	sha256sums = d61a7abd1529fed24445886bc8af831c81d64a2ff4faf82f6fffbf62e125df3d
 
 pkgname = python-fpyutils
 
