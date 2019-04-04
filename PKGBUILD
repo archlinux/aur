@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tpm2-totp-git
-pkgver=0.1.0.rc0.r0.44fcb68
+pkgver=0.1.0.r5.ed86a39
 pkgrel=1
 pkgdesc='Attest the trustworthiness of a device against a human using time-based one-time passwords'
 arch=('x86_64')
@@ -38,10 +38,8 @@ build() {
 }
 
 # WARNING: currently tests are disabled by default because they use an available hardware TPM.
-# This should generally be safe, but the tests might fail if your TPM does not support all
-# cryptographic algorithms used by the test suite and some data might get left behind in the
-# TPM's storage (NVRAM). Familiarise yourself with the documentation before enabling tests
-# or build in a clean chroot that does not have access to the physical TPM device.
+# This will overwrite any TOTP secrects previously stored there! It is recommended to build
+# in a clean chroot that does not have access to the physical TPM device.
 check() {
 	cd "${pkgname%-git}"
 	make --jobs=1 check

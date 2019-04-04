@@ -1,6 +1,6 @@
 pkgbase = tpm2-totp-git
 	pkgdesc = Attest the trustworthiness of a device against a human using time-based one-time passwords
-	pkgver = 0.1.0.rc0.r0.44fcb68
+	pkgver = 0.1.0.r5.ed86a39
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-totp
 	arch = x86_64
