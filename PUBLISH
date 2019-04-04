@@ -3,10 +3,10 @@
 
 
 mainFunction () {
-	message=$(message "${1}")
+	summary=$(summary "${1}")
 
 	updateInfoFile
-	publish "${message}"
+	publish "${summary}"
 }
 
 
@@ -27,21 +27,21 @@ echoOnError () {
 }
 
 
-message () {
-	message="${1}"
+publish () {
+	summary="${1}"
 
-    if [ "${message}" == "" ]; then
-        echo $(date "+%Y-%m-%d %s")
-    fi
+	echoOnError "publish" "git add ."
+	echoOnError "publish" "git commit --message=\"${summary}\""
+	echoOnError "publish" "git push"
 }
 
 
-publish () {
-	message="${1}"
+summary () {
+	summary="${1}"
 
-	echoOnError "publish" "git add ."
-	echoOnError "publish" "git commit --message=\"${message}\""
-	echoOnError "publish" "git push"
+    if [ "${summary}" == "" ]; then
+        echo $(date "+%Y-%m-%d %s")
+    fi
 }
 
 
