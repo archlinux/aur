@@ -1,4 +1,5 @@
 #! /bin/bash
+#  (GPL3+) Alberto Salvia Novella (es20490446e.wordpress.com)
 
 name="execute"
 pkgname="${name}-git"
@@ -6,7 +7,7 @@ pkgver=r11.1bc0822
 pkgrel=1
 pkgdesc="Opens exe files as if they were native"
 arch=("x86_64")
-url="https://gitlab.com/es20490446e/${name}" #maintainer
+url="https://gitlab.com/es20490446e/${name}"
 license=("GPL3")
 makedepends=("git")
 depends=("dosbox-svn" "q4wine")

@@ -3,15 +3,10 @@
 
 
 mainFunction () {
+	message=$(message "${1}")
+
 	updateInfoFile
-	buildPackage
-}
-
-
-buildPackage () {
-	removeBuildFiles
-	echoOnError "buildPackage" "makepkg --force"
-	removeBuildFiles
+	publish "${message}"
 }
 
 
@@ -32,10 +27,21 @@ echoOnError () {
 }
 
 
-removeBuildFiles () {
-	source PKGBUILD
-	folders="pkg src ${name}"
-	echoOnError "removeBuildFiles" "rm --recursive --force ${folders}"
+message () {
+	message="${1}"
+
+    if [ "${message}" == "" ]; then
+        echo $(date "+%Y-%m-%d %s")
+    fi
+}
+
+
+publish () {
+	message="${1}"
+
+	echoOnError "publish" "git add ."
+	echoOnError "publish" "git commit --message=\"${message}\""
+	echoOnError "publish" "git push"
 }
 
 
@@ -45,4 +51,4 @@ updateInfoFile () {
 
 
 changeToThisProgramDir
-mainFunction
+mainFunction ${@}
