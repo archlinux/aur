@@ -2,8 +2,8 @@
 
 pkgname=olive-community-effects-git
 _pkgname=Olive-Editor-Community-Effects
-pkgver=r34.fe15bf9
-_commit=fe15bf9
+pkgver=r37.20a28c2
+_commit=20a28c2
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A collection of effects for Olive made by the community"
