@@ -20,6 +20,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DTesting=OFF \
         -DDocumentation=OFF \
+        -DENABLE_MPI=OFF \
         ..
     make
 }
