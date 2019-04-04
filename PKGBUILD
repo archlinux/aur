@@ -1,7 +1,7 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=openloops
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A particle physics package for the fast numerical evaluation of tree and one-loop matrix elements."
 arch=('x86_64' 'i686')
 url="http://openloops.hepforge.org"
@@ -25,5 +25,5 @@ package() {
 	cp -rp lib proclib $pkgdir/usr/lib/openloops/
 
         # so far necessary for building further process libraries by the user:
-	cp -rp lib_src openloops pyol SConstruct $pkgdir/usr/lib/openloops/
+	cp -rp lib_src openloops pyol SConstruct scons $pkgdir/usr/lib/openloops/
 }
