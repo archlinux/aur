@@ -32,13 +32,15 @@ prepare(){
     # check mwgpu
     f="$d"/bin/glnxa64/libmwgpu.so
     [[ ! -f "$f" ]] && { echo -e "\nerror: can't find "$f", please install 'parallel computing toolbox' add-on\n"; return 1; } || :
-    echo "\n\tMATLABROOT="$d"\n"
+    echo -e "\n\tMATLABROOT="$d"\n"
     # patch
     cd $_pkgname-$_pkgver
     patch -Nlp1 -i ../$_patch
 }
 build() {
+    echo "$d"
     cd $_pkgname-$_pkgver
+    ls
     make ENABLE_GPU=yes CUDAROOT=/opt/cuda MATLABROOT="$d" cudaMethod=nvcc ENABLE_CUDNN=yes CUDNNROOT=/usr
 }
 package() {
