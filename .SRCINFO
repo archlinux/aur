@@ -1,0 +1,17 @@
+pkgbase = perl-http-daemon-ssl
+	pkgdesc = Simple http server class with SSL support
+	pkgver = 1.04
+	pkgrel = 1
+	url = https://metacpan.org/pod/HTTP::Daemon::SSL
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-io-socket-ssl
+	depends = perl-io-socket-inet6
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/A/AU/AUFFLICK/HTTP-Daemon-SSL-1.04.tar.gz
+	sha256sums = 7eae05422d934c8492dfd3505b774fd6590c99808ce8beb6c57efd261e5dc22e
+
+pkgname = perl-http-daemon-ssl
+
