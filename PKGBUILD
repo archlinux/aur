@@ -19,12 +19,13 @@ pkgver() {
 }
 
 build() {
-    cd ${_pkgname}
+    cd "${srcdir}/${_pkgname}"
     autoreconf --install
     ./configure
     make
 }
 
 package() {
-    make install
+    cd "${srcdir}/${_pkgname}"
+    make DESTDIR="${pkgdir}" install
 }
