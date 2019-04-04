@@ -1,10 +1,9 @@
-# Maintainer:
-# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=addinclude
 pkgver=1.0.1
-pkgrel=1
-pkgdesc='Utility to add include statements to header- and sourcefiles, for C and C++'
+pkgrel=2
+pkgdesc='Add include statements to header- and sourcefiles, for C and C++'
 arch=(x86_64)
 url='https://addinclude.roboticoverlords.org/'
 license=(GPL2)
