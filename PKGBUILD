@@ -28,9 +28,11 @@ sha512sums=('SKIP'
             '05efc65a78b2006f3ffdd728dd5a96923ee9c909a3707833f8d55935c18e507051aabdbefff270bb2c58d7f151147966b550c9bbc2a115dae177f51955720482')
 
 prepare() {
-  cd "${pkgname}-git-repo"  
-  # Downgrade electron
-  sed -i 's/"electron": "4.1.1"/"electron": "3.1.6"/' package.json
+  cd "${pkgname}-git-repo"
+
+  # Set system electron version
+  _installed_electron_version=$(electron -v)
+  sed -E -i 's/"electron": "[0-9.]+"/"electron": "'${_installed_electron_version#v}'"/' package.json
 
   # Allow higher node minor versions
   sed -i 's/"node": "/&^/' package.json
