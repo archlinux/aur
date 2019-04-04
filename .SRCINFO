@@ -13,10 +13,10 @@ pkgbase = chromium-widevine
 	depends = nss
 	options = !strip
 	source = chrome-eula_text-20190307.html::https://www.google.com/intl/en/chrome/privacy/eula_text.html
-	source = https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_73.0.3683.86-1_amd64.deb
+	source = https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_73.0.3683.103-1_amd64.deb
 	source = get_cdm_version.c
 	sha256sums = e1e2a694ffe71476b2aefbca64fe470095210c2eb2235c645ca73160cc0b21ea
-	sha256sums = 6bca2828da09563634bce48cfb899f3fb1d069285a297ca5916d3bb63b25b5d6
+	sha256sums = f90961a9c173286fc806dd7d09f08e1b1b1108aa42c86eb83ea64c5b21cecd02
 	sha256sums = 3fda44a5b8b222434530f27923568de1fda1eb0caa8621b56a8b2a6a2a2e3d5d
 
 pkgname = chromium-widevine
