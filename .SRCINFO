@@ -1,6 +1,6 @@
 pkgbase = rumur
 	pkgdesc = Yet another Murphi model checker
-	pkgver = 2019.03.21
+	pkgver = 2019.03.30
 	pkgrel = 1
 	url = https://github.com/Smattr/rumur
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = rumur
 	makedepends = flex
 	makedepends = python
 	depends = gmp
-	source = https://github.com/Smattr/rumur/archive/v2019.03.21.tar.gz
-	sha256sums = 52122954deb22b36e384c0477e954cdf3233d80827e8d255d57721afe69c15c1
+	source = https://github.com/Smattr/rumur/archive/v2019.03.30.tar.gz
+	sha256sums = b21d1c7f922c8fa7d764f1fb7179fff6313cd662eca6147009b0c2ce1dad93f2
 
 pkgname = rumur
 
