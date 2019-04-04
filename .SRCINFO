@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-git
 	pkgdesc = Official desktop version of Telegram messaging app (dev branch)
-	pkgver = 1.5.7.r0.g51b5b14de
+	pkgver = 1.6.3.r0.g9b247ce5e
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = i686
@@ -45,7 +45,7 @@ pkgbase = telegram-desktop-git
 	sha256sums = 3f23161f8239893e82d2a4f655cb80523a558a4e7869a6683802c2f434b68bbf
 	sha256sums = 4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d
 	sha256sums = 95efc9cd84c2c26bddd832ef8c88637353ed9ba9d9068f183b7ee48ba25d1cc7
-	sha256sums = bb04b1eea47370d5f1e45ac851bed81c728e4b52890efd94d511ed59847c9a61
+	sha256sums = 088cbdb71bd96684cf8a60469ba3707b70ed4d606b96b7352f614ec674b9aa8d
 	sha256sums = 2457746d9b963c77decd5d8b08498035dc1003fbcbc95d4dfdb11bf524954f13
 
 pkgname = telegram-desktop-git
