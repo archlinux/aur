@@ -1,7 +1,7 @@
 # Maintainer: Alexandros Theodotou <alex@zrythm.org>
 _pkgname=zrythm
 pkgname=$_pkgname-git
-pkgver=0.2.071.r6.gea32af8f
+pkgver=0.3.006.r2.gdb59418a
 pkgrel=1
 pkgdesc="An highly automated, intuitive, Digital Audio Workstation (DAW)"
 arch=( 'x86_64' )
