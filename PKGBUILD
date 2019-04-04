@@ -3,7 +3,7 @@ _buildver=191.6605.12
 _pkgver=2019.1.1
 _eap=n
 pkgver=$_pkgver.$_buildver
-pkgrel=1
+pkgrel=2
 epoch=3
 pkgdesc='Powerful Python and Django IDE, Early Access Program (EAP) build. Community edition.'
 arch=(any)
@@ -38,8 +38,10 @@ prepare() {
 }
 
 build() {
-	python2 "$srcdir/pycharm-community-$_filever/helpers/pydev/setup_cython.py" build_ext --inplace
-	python3 "$srcdir/pycharm-community-$_filever/helpers/pydev/setup_cython.py" build_ext --inplace
+	# use absolute paths to the python executables so that users with an activated
+	# virtual environment (like e.g. anaconda) can build without issues
+	/usr/bin/python2 "$srcdir/pycharm-community-$_filever/helpers/pydev/setup_cython.py" build_ext --inplace
+	/usr/bin/python3 "$srcdir/pycharm-community-$_filever/helpers/pydev/setup_cython.py" build_ext --inplace
 }
 
 package() {
