@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=antares-git
-pkgver=r164.g0ab7891
+pkgver=r198.g987787c
 pkgrel=1
 pkgdesc='A window manager for X'
 arch=(x86_64)
@@ -15,7 +15,7 @@ conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git+${url}.git"
 	'Makefile.patch')
 sha256sums=('SKIP'
-            '7eb30c4f4f32634ca286bdb6f75b1d5cb473d888ca1b7b4793ff3f6304cb9c9f')
+            '1469f6c22656a25211e55715e84f67eb3fa072913fa97345319318a37831428a')
 
 pkgver() {
     cd "${pkgname%-*}"
