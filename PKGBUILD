@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=jacklistener-git
-pkgver=47.79b6bcf
+pkgver=51.2e73f72
 pkgrel=1
 pkgdesc="Jack Listener Daemon (jack-sensing)"
 arch=('i686' 'x86_64')
@@ -24,7 +24,9 @@ build() {
   autoheader
   automake --add-missing
   autoconf
-  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --enable-systemd --enable-arch
+  ./configure --prefix=/usr --sbindir=/usr/bin \
+	--sysconfdir=/etc --enable-systemd \
+	--enable-arch --enable-udev
   make
 }
 
