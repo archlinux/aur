@@ -1,1 +1,2 @@
 SUBSYSTEM=="net", ACTION=="add", KERNEL=="wlan*", PROGRAM="/usr/bin/crc16.sh $attr{address}", NAME="wlan%c{1}"
+SUBSYSTEM=="net", ACTION=="add", KERNEL=="eth*", PROGRAM="/usr/bin/crc16.sh $attr{address}", NAME="eth%c{1}"
