@@ -3,7 +3,7 @@
 
 pkgname=filament
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A real-time physically based engine'
 arch=('x86_64')
 url="https://github.com/google/${pkgname}/tree/v${pkgver}"
@@ -11,8 +11,16 @@ license=('Apache')
 depends=('libc++' 'libc++abi' 'mesa' 'libxi')
 makedepends=('cmake' 'clang')
 conflicts=('mono') # because of /usr/bin/cmgen
-source=("https://github.com/google/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('c9e22ee94c866e997e5caa09994944addb138d1a5cf0c3ff9558c415af69750317700af461584e92b13a97e217646137e71ac161afc7ab47bc459c20dfd342bf')
+source=("package-fix.patch"
+        "https://github.com/google/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('db215b3f5d8f5b4e305d6e082822df2371b8f225b9d5d937a36fc4ba42ff1943'
+            '7b56e0f5924d206ff8596e5a10a11b7793e14b4757ea09b1945601229215ba22')
+
+prepare() {
+    cd "${pkgname}-${pkgver}"
+    patch -p1 < ../package-fix.patch
+}
+
 build() {
     cd "${pkgname}-${pkgver}"
     [[ -d build_release ]] && rm -r build_release
@@ -25,8 +33,8 @@ build() {
           -DBUILD_DEMO=OFF \
           -DBUILD_TESTING=OFF \
           -DENABLE_JAVA=OFF \
+          -DDIST_DIR="." \
           -DCMAKE_EXE_LINKER_FLAGS="-Wl,-z,relro,-z,now" \
-          -DCMAKE_CXX_FLAGS="-Wno-everything" \
           ..
     make filament
 }
@@ -34,6 +42,5 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}/build_release"
     make DESTDIR="${pkgdir}/" install
-    mv "${pkgdir}/usr/lib/x86_64/"* "${pkgdir}/usr/lib"
-    rm -rf "${pkgdir}/usr/lib/x86_64" "${pkgdir}/usr/README.md" "${pkgdir}/usr/docs"
+    rm -rf "${pkgdir}/usr/README.md" "${pkgdir}/usr/docs"
 }
