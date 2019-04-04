@@ -1,8 +1,10 @@
 # Maintainer: Dustin Falgout <dustin@antergos.com>
 
 pkgname=brisk-menu
-pkgver=0.5.0
-pkgrel=3
+# git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+_commit=3d5e63975d7c56cf2c63a0708065a694d6e54456
+pkgver=0.6.0.r31.g3d5e639
+pkgrel=1
 pkgdesc='Modern, efficient menu for the MATE Desktop Environment.'
 arch=('i686' 'x86_64')
 url='https://github.com/getsolus/brisk-menu'
@@ -10,22 +12,12 @@ license=('GPL2')
 groups=('mate')
 depends=('mate-panel' 'libnotify')
 makedepends=('gnome-common' 'gettext' 'itstool' 'vala>=0.36' 'meson' 'ninja' )
-source=("https://github.com/solus-project/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.xz"
-mate-122.patch
-fix-launch.patch)
-
-
-prepare() {
-    cd "$srcdir/${pkgname}-v${pkgver}"
-    # This patch fixes building with mate 1.22.x
-    patch -Np1 -i "${srcdir}/mate-122.patch"
-    # This fixes starting with mate 1.22.x but removes categories icon for now
-    patch -Np1 -i "${srcdir}/fix-launch.patch"
-}
+source=("https://github.com/getsolus/${pkgname}/archive/${_commit}.zip")
+md5sums=('39ba48d21bd06fcd4f56bae9ac812cc0')
 
 
 build() {
-	cd "${srcdir}/${pkgname}-v${pkgver}"
+	cd "${srcdir}/${pkgname}-${_commit}"
 	mkdir build
 
 	meson build \
@@ -38,10 +30,7 @@ build() {
 
 
 package() {
-	cd "${srcdir}/${pkgname}-v${pkgver}/build"
+	cd "${srcdir}/${pkgname}-${_commit}/build"
 
 	DESTDIR="${pkgdir}" ninja install
 }
-sha256sums=('1377ffbb784e576c290bb4d11a2dd376bc0ad017bb9f56a080bccdbc4fbe88ce'
-            '80326a5b98d0dfd6c7d9a362907edf576e24683032ffb62926f68e3f16abff71'
-            '580f7f78b51107cb8e594b361d36eebbedb38b77a5248b9813dc4bc8961bd775')
