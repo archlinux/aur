@@ -1,5 +1,5 @@
 pkgbase = linux-gc
-	pkgver = 5.0.3
+	pkgver = 5.0.6
 	pkgrel = 1
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
@@ -13,29 +13,27 @@ pkgbase = linux-gc
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = linux-5.0.3-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-5.0.3-arch1.tar.gz
+	source = linux-5.0.6-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-5.0.6-arch1.tar.gz
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
 	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
-	source = 0001_v5.0_bmq090.patch::https://gitlab.com/alfredchen/bmq/raw/master/5.0/v5.0_bmq090.patch
+	source = 0001_v5.0_bmq091.patch::https://gitlab.com/alfredchen/bmq/raw/master/5.0/v5.0_bmq091.patch
 	source = 0002_uksm-5.0-initial.patch::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.0/pf-uksm/0001-uksm-5.0-initial-submission.patch
 	source = 0003_uksm-5.0-adopt-new-MMU-notifiers-API.patch::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.0/pf-uksm-fixes/0001-uksm-5.0-adopt-new-MMU-notifiers-API.patch
-	source = 0004_uksm-5.0-fix-BMQ-compile.patch::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.0/bmq-fixes-v2/0001-bmq-Fix-BMQ-compile-fails-for-x86-UP-again.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
-	sha256sums = b2965621b8a1e5684e8080a371a9ab36c6aa1ea36d87eba2ad5aa928dd042a53
-	sha256sums = 60fe6db77795144cca82c1468ff6520c7bcea38d1d74bf1418c8c8ff91eaf62a
+	sha256sums = 3fc787975caf8edf5a5d40b693083a77286b243af1d6ee70fba336232136dbaa
+	sha256sums = 6b4d991a42ab08cc61b3c2446117d0d2453239434872bfb2230a1a88c71327c2
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
-	sha256sums = 7a5ed5e6d628c4ef20791afd4bad1bd071d87d04ffded8ce7cc1d209ee92425b
+	sha256sums = 2d9d643e24355e1b36cbf49728da99b317e938f898c57412fc1da2ce261d726f
 	sha256sums = a336eac26de35e7801cdba88566573ce65aedc9d12d8b5829df0a68df3768af3
 	sha256sums = 9d86fe1fa290912e22ad79e5e354329e5107544b8d0864061c3bbf71ee45b06f
-	sha256sums = 162b114fafa3580ff281daeb77c31a14cebc4fc19a9b2d29413696242a152c39
 
 pkgname = linux-gc
 	pkgdesc = The Linux-gc kernel and modules with the PDS-mq CPU scheduler and UKSM patchset
@@ -45,12 +43,12 @@ pkgname = linux-gc
 	depends = kmod
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-gc=5.0.3
+	provides = linux-gc=5.0.6
 	backup = etc/mkinitcpio.d/linux-gc.preset
 
 pkgname = linux-gc-headers
 	pkgdesc = Header files and scripts for building modules for Linux-gc kernel and UKSM patchset
 	depends = linux-gc
-	provides = linux-gc-headers=5.0.3
-	provides = linux-headers=5.0.3
+	provides = linux-gc-headers=5.0.6
+	provides = linux-headers=5.0.6
 

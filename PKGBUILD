@@ -23,10 +23,10 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=5.0.3-arch1
+_srcver=5.0.6-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
-_bmqversion=090
+_bmqversion=091
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
 license=(GPL2)
@@ -36,7 +36,6 @@ _srcname=linux-$_srcver
 _bmq_patch="v5.0_bmq${_bmqversion}.patch"
 _uksm_patch_0001="0002_uksm-5.0-initial.patch"
 _uksm_patch_0002="0003_uksm-5.0-adopt-new-MMU-notifiers-API.patch"
-_uksm_patch_0003="0004_uksm-5.0-fix-BMQ-compile.patch"
 _gcc_more_v='20180509'
 source=(
   "$_srcname.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-$_srcver.tar.gz"
@@ -48,23 +47,21 @@ source=(
   "0001_$_bmq_patch::https://gitlab.com/alfredchen/bmq/raw/master/5.0/${_bmq_patch}"
   "$_uksm_patch_0001::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.0/pf-uksm/0001-uksm-5.0-initial-submission.patch"
   "$_uksm_patch_0002::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.0/pf-uksm-fixes/0001-uksm-5.0-adopt-new-MMU-notifiers-API.patch"
-  "$_uksm_patch_0003::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.0/bmq-fixes-v2/0001-bmq-Fix-BMQ-compile-fails-for-x86-UP-again.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('b2965621b8a1e5684e8080a371a9ab36c6aa1ea36d87eba2ad5aa928dd042a53'
-            '60fe6db77795144cca82c1468ff6520c7bcea38d1d74bf1418c8c8ff91eaf62a'
+sha256sums=('3fc787975caf8edf5a5d40b693083a77286b243af1d6ee70fba336232136dbaa'
+            '6b4d991a42ab08cc61b3c2446117d0d2453239434872bfb2230a1a88c71327c2'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '7a5ed5e6d628c4ef20791afd4bad1bd071d87d04ffded8ce7cc1d209ee92425b'
+            '2d9d643e24355e1b36cbf49728da99b317e938f898c57412fc1da2ce261d726f'
             'a336eac26de35e7801cdba88566573ce65aedc9d12d8b5829df0a68df3768af3'
-            '9d86fe1fa290912e22ad79e5e354329e5107544b8d0864061c3bbf71ee45b06f'
-            '162b114fafa3580ff281daeb77c31a14cebc4fc19a9b2d29413696242a152c39')
+            '9d86fe1fa290912e22ad79e5e354329e5107544b8d0864061c3bbf71ee45b06f')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
