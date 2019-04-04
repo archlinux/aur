@@ -12,7 +12,7 @@ conflicts=("${pkgname}")
 depends=('bash' 'udev')
 source=(10-net-names-crc16.rules crc16.sh)
 
-sha256sums=('efc5582c92ab56dc743c63107cb39b0fb91333c2b1777fc8a002aa25a0aa4e14'
+sha256sums=('faa5a892965bcc25b161dc2942c5e1ad47eaebd1d779f3bbfd4cea67af48ec9a'
             '1760f03a70d16f0de9187e930aa1143f0de1425bb8cb53f90973f0f12bbe94a8')
 
 package() {
