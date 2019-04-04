@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=coffee-script-git
-pkgver=2.3.2r5.gca275c2a
+pkgver=2.4.0.r1.gd23919c4
 pkgrel=1
 pkgdesc='Language that compiles into JavaScript'
 arch=('any')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags |sed 's/-/r/'|tr - .
+  git describe --tags |sed 's/-/.r/'|tr - .
 }
 
 package() {
