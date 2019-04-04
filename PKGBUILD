@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tpm2-totp
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Attest the trustworthiness of a device against a human using time-based one-time passwords'
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('mkinitcpio: hook to display the TOTP during boot')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"{,.asc}
         'initcpio_install_tpm2-totp'
         'initcpio_hooks_tpm2-totp')
-sha512sums=('0977332f50f3d902ff4a41ed7894e86ec26db4846eb0160cc8b6d352e8bec906d88807b7f3d854ae9a88b5fbaeca0403894e004114a5e4a3d00c523249b14e58'
+sha512sums=('33a4af16a292ddd674a399bf12ce0b355d95de7014e8be11816a1d88edfd36ae222a8b7508f3aa1be3b46c7e04bf2712ee4839cf9f4f83fc308cb4f639ec5b9f'
             'SKIP'
             '33738cb9d30d6ad338b6cf6bca538ba4f9b49b9ae799626efc7462bb2a31e386cd04d8298e8c2e3743f4c212866e864332869e4393871f22360edc2567fad163'
             'ebce4c738012dbcb82513b1f8148ee17deb088f80fa4f365d1b5f34b9c57f28b1995b4e6d04e003fd2ef6ed3393fb0c4496d182b02a7f5b2609b2ed4a160dac1')
@@ -27,10 +27,8 @@ build() {
 }
 
 # WARNING: currently tests are disabled by default because they use an available hardware TPM.
-# This should generally be safe, but the tests might fail if your TPM does not support all
-# cryptographic algorithms used by the test suite and some data might get left behind in the
-# TPM's storage (NVRAM). Familiarise yourself with the documentation before enabling tests
-# or build in a clean chroot that does not have access to the physical TPM device.
+# This will overwrite any TOTP secrects previously stored there! It is recommended to build
+# in a clean chroot that does not have access to the physical TPM device.
 check() {
 	cd "$pkgname-$pkgver"
 	make --jobs=1 check
