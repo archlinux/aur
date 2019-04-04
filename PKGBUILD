@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/gentoo-root/jacklistener"
 license=('GPL3')
 provides=('jacklistener')
-depends=('dbus')
+depends=('dbus' 'udev')
 optdepends=("jackeventcmd-git: Run custom commands when headphones are (un)plugged"
 	    "jacknotifier-git: Headphones Jack Notification Daemon"
 	    "musicpaused-git: Pause music when headphones are unplugged"

@@ -8,6 +8,7 @@ pkgbase = jacklistener-git
 	license = GPL3
 	makedepends = git
 	depends = dbus
+	depends = udev
 	optdepends = jackeventcmd-git: Run custom commands when headphones are (un)plugged
 	optdepends = jacknotifier-git: Headphones Jack Notification Daemon
 	optdepends = musicpaused-git: Pause music when headphones are unplugged
