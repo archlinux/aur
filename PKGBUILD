@@ -2,15 +2,15 @@
 
 pkgname=python-pyswagger
 _distname=pyswagger
-pkgver=0.8.37
+pkgver=0.8.38
 pkgrel=1
 pkgdesc="Python client for Swagger enabled REST APIs"
 arch=('any')
 license=('MIT')
 url="https://github.com/mission-liao/pyswagger"
 makedepends=('python-setuptools' 'python-six' 'python-pyaml' 'python-validate_email-git')
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('7a84add6ce9fa04b193984099e1d778296b7bd860e378942ea4ceaaff34e8891')
+source=("${_distname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('0cc0b5f05494589c7928fe632243803ebb4da4bf22c0826ed81620a02db1d302')
 
 build() {
   cd "${srcdir}"/"${_distname}-${pkgver}"
