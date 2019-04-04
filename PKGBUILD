@@ -16,8 +16,11 @@ source=(http://www.vlfeat.org/matconvnet/download/$_pkgname-$_pkgver.tar.gz
 $_patch)
 sha512sums=(0ac36308067598ac62a1f0ec529fa5ba7758bb8b3588a88e12de70d1e62c50059e573b2e5936864527a1a1a815299feaf0c95cdc3ef3ec8160aa4bfdbbf534f5
 44709595bcfb607f229725510d08e1975c9ff62eab822085e4f3d2af05d96823abcc7567e810ad6225143fa02331885e706d72911303dc7eaabbfe1ad9b1b939)
-
 prepare(){
+    cd $_pkgname-$_pkgver
+    patch -Nlp1 -i ../$_patch
+}
+build() {
     # find MATLABROOT
     d=/usr/local/MATLAB/
     [[ ! -d "$d" ]] && d=$HOME/bin/MATLAB || :
@@ -33,14 +36,8 @@ prepare(){
     f="$d"/bin/glnxa64/libmwgpu.so
     [[ ! -f "$f" ]] && { echo -e "\nerror: can't find "$f", please install 'parallel computing toolbox' add-on\n"; return 1; } || :
     echo -e "\n\tMATLABROOT="$d"\n"
-    # patch
+    # make
     cd $_pkgname-$_pkgver
-    patch -Nlp1 -i ../$_patch
-}
-build() {
-    echo "$d"
-    cd $_pkgname-$_pkgver
-    ls
     make ENABLE_GPU=yes CUDAROOT=/opt/cuda MATLABROOT="$d" cudaMethod=nvcc ENABLE_CUDNN=yes CUDNNROOT=/usr
 }
 package() {
