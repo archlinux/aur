@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Microsoft Teams for Linux
+Comment=Unofficial Microsoft Teams client for Linux - koyu's fork.
+GenericName=Teams
+Exec=teams-for-linux-koyu
+Icon=teams-for-linux-koyu
+Categories=Network;Chat;InstantMessaging;Application;
+Terminal=false
+StartupNotify=true
+Version=%version%

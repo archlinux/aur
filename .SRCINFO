@@ -1,0 +1,23 @@
+pkgbase = teams-for-linux-koyu-git
+	pkgdesc = Unofficial Microsoft Teams client for Linux using Electron - koyu's fork (development version)
+	pkgver = 0.0.7.r9.gcec47e2
+	pkgrel = 1
+	url = https://git.koyu.space/koyu/teams-for-linux
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = node-gyp
+	makedepends = python2
+	makedepends = yarn
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	source = git+https://git.koyu.space/koyu/teams-for-linux.git
+	source = teams-for-linux-koyu.desktop
+	sha256sums = SKIP
+	sha256sums = 5ec45dada00cb640e0fbf2c39f9a25aac40c706e1f96c7a5e54f27997e74bfe1
+
+pkgname = teams-for-linux-koyu-git
+

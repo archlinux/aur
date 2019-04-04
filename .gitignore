@@ -1,0 +1,6 @@
+teams-for-linux-*.pkg.tar.xz
+teams-for-linux-*.tar.gz
+teams-for-linux-*.log
+PKGBUILD-namcap.log
+src/
+pkg/
