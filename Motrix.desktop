@@ -8,3 +8,4 @@ Terminal=false
 Icon=/usr/share/icons/motrix.png
 Type=Application
 StartupNotify=false
+Categories=Network;FileTransfer;
