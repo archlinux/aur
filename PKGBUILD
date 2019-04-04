@@ -3,20 +3,23 @@
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
-# Remove the bundled JRE to save space - make sure you use your own,
-# either through JAVA_HOME or by setting the path to the JDK
-# in ~/.IntelliJIdea*/config/idea.jdk
-_remove_bundled_jre=
+# Optionally select if you would like to use JBR11 or NO-JBR. The default is JBR8.
+# See more https://blog.jetbrains.com/idea/2019/02/whats-new-in-intellij-idea-2019-1-eap-3/
+#
+# Note - available options:
+# 1. <empty> JBR 8 (default)
+# 2. jbr11 JBR 11
+# 3. no-jbr No bundled JBR included (make sure you provide a Java runtime)
+_JBR=
 
 ### Do no edit below this line unless you know what you're doing
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=191.6183.87
+_buildver=191.6707.7
 _veryear=2019
 _verrelease=1
-_verextra=
-_nojdkrelease=true
+_verextra=1
 pkgver=${_veryear}.${_verrelease}.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (community version)"
@@ -25,12 +28,12 @@ options=(!strip)
 url="http://www.jetbrains.com/idea/"
 license=('Apache2')
 depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
-if [ "${_nojdkrelease}" = "true" ] && [ -n "${_remove_bundled_jre}" ]; then
-  source=("https://download.jetbrains.com/idea/ideaIC-${_veryear}.${_verrelease}-no-jdk.tar.gz")
-  sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIC-${_veryear}.${_verrelease}-no-jdk.tar.gz.sha256" | cut -f1 -d" "))
+if [ -n "${_JBR}" ]; then
+  source=("https://download.jetbrains.com/idea/ideaIC-${_buildver}-${_JBR}.tar.gz")
+  sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIC-${_buildver}-${_JBR}.tar.gz.sha256" | cut -f1 -d" "))
 else
-  source=("https://download.jetbrains.com/idea/ideaIC-${_veryear}.${_verrelease}.tar.gz")
-  sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIC-${_veryear}.${_verrelease}.tar.gz.sha256" | cut -f1 -d" "))
+  source=("https://download.jetbrains.com/idea/ideaIC-${_buildver}.tar.gz")
+  sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIC-${_buildver}.tar.gz.sha256" | cut -f1 -d" "))
 fi
 
 package() {
@@ -40,10 +43,6 @@ package() {
     if [[ $CARCH = 'i686' ]]; then
         rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
         rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
-    fi
-    if [ "${_nojdkrelease}" = "false" ] && [ -n "${_remove_bundled_jre}" ]; then
-      msg "Removing bundled JRE..."
-      rm -rf "${pkgdir}/opt/${pkgname}/jre"
     fi
 (
 cat <<EOF
