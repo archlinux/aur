@@ -7,6 +7,8 @@ pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors 
 arch=('x86_64')
 url='https://github.com/Alexays/Waybar/'
 license=('MIT')
+provides=('waybar')
+conflicts=('waybar')
 depends=('gtkmm3'
          'jsoncpp'
          'libinput'
