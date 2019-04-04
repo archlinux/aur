@@ -1,0 +1,16 @@
+pkgbase = music-dl
+	pkgdesc = Music-dl is a command line tool which helps you search and download music from multiple sources
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/0xHJK/music-dl
+	arch = any
+	license = MIT
+	depends = python-click
+	depends = python-requests
+	depends = python-pycryptodome
+	depends = python-prettytable
+	source = music-dl-2.2.0.tar.gz::https://github.com/0xHJK/music-dl/archive/v2.2.0.tar.gz
+	sha512sums = b6b59e32a8e524fc7b046ada8e87667155ad9d9ae0e3da930bbd067dcc56548a3f728559f2f92cd2a6509e411d250e2d91876011d1bd8ad0656d68741a020da5
+
+pkgname = music-dl
+
