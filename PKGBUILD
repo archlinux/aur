@@ -3,7 +3,7 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}-light-git
-pkgver=r22.8.g5d7c34d
+pkgver=r31.0.g771ef4b
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}. (Optional Depends, GIT Version)"
 arch=('any')
@@ -45,4 +45,6 @@ pkgver() {
 
 package() {
   install -Dm644 "${_plug}/${_plug}.py" "${pkgdir}${_sites_packages}/${_plug}.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 }
