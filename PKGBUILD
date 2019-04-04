@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL3' 'BSD')
 
 depends=('libxkbui' 'libxi' 'pango' 'giflib' 'libltdl' 'libspiro' 'desktop-file-utils'
-         'gtk-update-icon-cache' 'libunicodenames' 'gc' 'python' 'shared-mime-info'
+         'gtk-update-icon-cache' 'libuninameslist' 'gc' 'python' 'shared-mime-info'
          'zeromq')
 makedepends=('git')
 
