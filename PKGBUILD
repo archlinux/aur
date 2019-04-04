@@ -43,8 +43,8 @@ fi
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=5.0.4
-xanmod=3
+pkgver=5.0.6
+xanmod=4
 pkgrel=1
 arch=(x86_64)
 url="http://www.xanmod.org/"
@@ -61,7 +61,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
        0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch  # Grabbed from linux-ck package
 )
 
-sha256sums=('d9dc6417ac3387a1869dee157bd628c3a378258badc1e03051529ef1d2f2882d'
+sha256sums=('865fef2d7a8fd142aaa8e4377228d86ce1f53407046609b77a537aa996042456'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
