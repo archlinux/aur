@@ -3,7 +3,7 @@
 
 pkgbase=sentry
 pkgname=('sentry')
-pkgver=9.0.0
+pkgver=9.1.0
 pkgrel=1
 pkgdesc="Python-based realtime logging and aggregation server."
 arch=(any)
@@ -61,7 +61,7 @@ package() {
     # line and comment-out or remove the one immediately after it. If you wish
     # to be more specific, replace -Wno-error with -Wno-misleading-indentation.
     #CFLAGS="-Wno-error" "${pkgdir}/opt/sentry/bin/pip" install "sentry==${pkgver}"
-    "${pkgdir}/opt/sentry/bin/pip" install "psycopg2==2.7.3" "sentry==${pkgver}" --no-binary "psycopg2"
+    "${pkgdir}/opt/sentry/bin/pip" install "more-itertools==5.0.0" "psycopg2==2.7.3" "six==1.10.0" "sentry==${pkgver}" --no-binary "psycopg2"
 
     # Make certain the virtualenv is relocatable.
     virtualenv2 --relocatable "${pkgdir}/opt/sentry"
