@@ -1,7 +1,7 @@
 pkgbase = matconvnet-cudnn
 	pkgdesc = matconvnet compile with cuda and cudnn
 	pkgver = 1.0.25
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.vlfeat.org/matconvnet/
 	arch = x86_64
 	license = custom
