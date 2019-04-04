@@ -1,0 +1,43 @@
+diff --git a/Makefile b/Makefile
+index 3c65f51..516a3f5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -83,7 +83,7 @@ $(if $(ENABLE_GPU),-DENABLE_GPU,) \
+ $(if $(ENABLE_DOUBLE),-DENABLE_DOUBLE,) \
+ $(if $(ENABLE_CUDNN),-DENABLE_CUDNN -I$(CUDNNROOT)/include,) \
+ $(if $(VERB),-v,) \
+-$(if $(DEBUG),-g -DDEBUG,-O -DNDEBUG)
++$(if $(DEBUG),-g -DDEBUG, -DNDEBUG)
+ 
+ # MEXFLAGS: Additional flags passed to `mex` for compiling C++
+ # code. The MEX_CXXCFLAGS options are passed directly to the
+@@ -98,7 +98,7 @@ endif
+ # MEXCUDA_FLAGS: Additional flags passed to `mex` for compiling C++
+ # code. The MEXCUDA_CXXFLAGS and MEXCUDA_CXXOPTIMFLAGS options are
+ # passed directly to the encapsualted `nvcc` compiler.
+-MEXCUDA_FLAGS = -largeArrayDims \
++MEXCUDA_FLAGS = -O \
+ CXXFLAGS='$$CXXFLAGS $(MEXCUDA_CXXFLAGS)' \
+ CXXOPTIMFLAGS='$$CXXOPTIMFLAGS $(MEXCUDA_CXXOPTIMFLAGS)'
+ ifdef MEXCUDACONFIG
+@@ -108,7 +108,7 @@ endif
+ # MEXLINK_FLAGS: Aditional flags passed to `mex` for linking. The
+ # MEXLINK_LDFLAGS, MEXLINK_LDOPTIMFLAGS, and MEXLINK_LINKLIBS options
+ # are passed directly to the encapsulated C++ compiler/linker.
+-MEXLINK_FLAGS = -largeArrayDims \
++MEXLINK_FLAGS =  \
+ LDFLAGS='$$LDFLAGS $(MEXLINK_LDFLAGS)' \
+ LDOPTIMFLAGS='$$LDOPTIMFLAGS $(MEXLINK_LDOPTIMFLAGS)' \
+ LINKLIBS='$(MEXLINK_LINKLIBS) $$LINKLIBS' \
+@@ -116,9 +116,9 @@ LINKLIBS='$(MEXLINK_LINKLIBS) $$LINKLIBS' \
+ 
+ # Additional flags passed to `nvcc` for compiling CUDA code.
+ NVCCFLAGS = -D_FORCE_INLINES --std=c++11 --compiler-options=-fPIC \
++-O2 -ccbin /usr/bin/gcc \
+ -I"$(MATLABROOT)/extern/include" \
+--I"$(MATLABROOT)/toolbox/distcomp/gpu/extern/include" \
+--gencode=arch=compute_30,code=\"sm_30,compute_30\"
++-I"$(MATLABROOT)/toolbox/distcomp/gpu/extern/include"
+ 
+ # --------------------------------------------------------------------
+ # Generic configuration
