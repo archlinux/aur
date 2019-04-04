@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/bin/bash
 if [[ ! -f "/var/cache/aria2.session" ]]
 then
         touch /var/cache/aria2.session;

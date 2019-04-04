@@ -1,7 +1,7 @@
 pkgbase = motrix
 	pkgdesc = elegent downloading tool frontend for aria2c,using vue(release version)
 	pkgver = git20190211
-	pkgrel = 5
+	pkgrel = 1
 	url = https://github.com/agalwood/Motrix
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = motrix
 	source = Motrix.desktop
 	source = aria2.conf
 	source = motrix
-	source = Motrix.tar.gz::https://github.com/agalwood/Motrix/archive/v1.1.1.tar.gz
+	source = Motrix.tar.gz::https://github.com/agalwood/Motrix/archive/v1.2.2.tar.gz
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP

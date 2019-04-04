@@ -1,9 +1,9 @@
-# Maintainer: weearc <q19981121@163.com>
+#Maintainer: weearc <q19981121@163.com>
 pkgname=motrix
 _pkgname=Motrix
 pkgver=git20190211
-_pkgver=1.1.1
-pkgrel=5
+_pkgver=1.2.2
+pkgrel=1
 epoch=
 pkgdesc="elegent downloading tool frontend for aria2c,using vue(release version)"
 arch=("x86_64")
@@ -48,7 +48,7 @@ prepare() {
 	sed -i '/"pacman"/d' $_pkgname/package.json
 	sed -i '/"rpm"/d' $_pkgname/package.json
 	sed -i 's/"AppImage"/"dir"/g' $_pkgname/package.json
-	
+
 }
 
 build() {
@@ -67,7 +67,7 @@ package() {
 	install -Dm 777 ${srcdir}/motrix ${pkgdir}/usr/bin
 #	chmod a+x ${pkgdir}/usr/bin/motrix
 	install -Dm 644 ${srcdir}/Motrix.desktop ${pkgdir}/usr/share/applications
-	rm ${pkgdir}/opt/motrix/resources/engine/aria2.conf	
+	rm ${pkgdir}/opt/motrix/resources/engine/aria2.conf
 	install -Dm 644 ${srcdir}/aria2.conf ${pkgdir}/opt/motrix/resources/engine/aria2.conf
 #	ln -s /usr/bin/aria2c ${pkgdir}/opt/motrix/reources/engine/aria2
 	rm -rf ${srcdir}
