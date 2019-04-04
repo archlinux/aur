@@ -33,7 +33,7 @@ execute () {
 
 removeBuildFiles () {
 	source PKGBUILD
-	folders="pkg src ${pkgname}"
+	folders="pkg src ${name}"
 	execute "removeBuildFiles" "rm --recursive --force ${folders}"
 }
 
