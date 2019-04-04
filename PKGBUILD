@@ -13,7 +13,7 @@ optdepends=('ghostscript: support for PS and EPS images'
             'zint: support for barcodes'
             'curl: loading remote content')
 
-makedepends=('curl' 'unzip' 'rsync')
+makedepends=('rsync')
 conflicts=()
 replaces=()
 backup=()
@@ -28,10 +28,12 @@ declare -A _platform_map
 _platform_map['i686']='linux-32'
 _platform_map['x86_64']='linux-64'
 
-_zipfile=${_platform_map[$CARCH]}.zip
-
 _lmtxserver=lmtx.pragma-ade.nl
-_wget=http://${_lmtxserver}/install-lmtx/context-${_zipfile}
+_zipfile=context-${_platform_map[$CARCH]}.zip
+
+source=("http://${_lmtxserver}/install-lmtx/${_zipfile}")
+md5sums=('SKIP')
+
 _dest=/opt/luametatex
 
 # Font directories
@@ -46,10 +48,6 @@ pkgver() {
 }
 
 prepare() {
- msg "Downloading the latest scripts"
- curl ${_wget} --output ${_zipfile} || return 1
- cd $srcdir && unzip -o ${_zipfile} || return 1
-
  msg "Starting download or update of ConTeXt distribution"
  chmod +x $srcdir/bin/mtxrun
  $srcdir/bin/mtxrun --script $srcdir/bin/mtx-install.lua --update \
@@ -85,12 +83,12 @@ prepare() {
  # If context-minimal exists, use modules from minimals
  if [ -d $_contextmodulesdir ]
  then
-   if [ -d $srcdir/tex/texmf-modules ]
-   then 
-     rmdir $srcdir/tex/texmf-modules || return 1
-   elif [ -L $srcdir/tex/texmf-modules ]
+   if [ -L $srcdir/tex/texmf-modules ]
    then 
      rm $srcdir/tex/texmf-modules || return 1
+   elif [ -d $srcdir/tex/texmf-modules ]
+   then
+     rmdir $srcdir/tex/texmf-modules || return 1
    fi
    ln -s $_contextmodulesdir $srcdir/tex/texmf-modules || return 1
  fi 
