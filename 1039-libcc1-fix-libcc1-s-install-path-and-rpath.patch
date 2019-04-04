@@ -1,0 +1,29 @@
+diff -ur ../1/libcc1/Makefile.am ./libcc1/Makefile.am
+--- ../1/libcc1/Makefile.am	2018-06-12 19:23:46.000000000 +0200
++++ ./libcc1/Makefile.am	2018-09-15 22:02:50.670937188 +0200
+@@ -37,8 +37,8 @@
+ 	    $(Wc)$(libiberty_normal)))
+ libiberty_dep = $(patsubst $(Wc)%,%,$(libiberty))
+ 
+-plugindir = $(libdir)/gcc/$(target_noncanonical)/$(gcc_version)/plugin
+-cc1libdir = $(libdir)/$(libsuffix)
++cc1libdir = $(libexecdir)/gcc/$(target_noncanonical)/$(gcc_version)
++plugindir = $(cc1libdir)
+ 
+ if ENABLE_PLUGIN
+ plugin_LTLIBRARIES = libcc1plugin.la libcp1plugin.la
+Only in ./libcc1: Makefile.am.orig
+diff -ur ../1/libcc1/Makefile.in ./libcc1/Makefile.in
+--- ../1/libcc1/Makefile.in	2018-06-12 19:23:46.000000000 +0200
++++ ./libcc1/Makefile.in	2018-09-15 22:02:21.667644486 +0200
+@@ -303,8 +303,8 @@
+ 	    $(Wc)$(libiberty_normal)))
+ 
+ libiberty_dep = $(patsubst $(Wc)%,%,$(libiberty))
+-plugindir = $(libdir)/gcc/$(target_noncanonical)/$(gcc_version)/plugin
+-cc1libdir = $(libdir)/$(libsuffix)
++cc1libdir = $(libexecdir)/gcc/$(target_noncanonical)/$(gcc_version)
++plugindir = $(cc1libdir)
+ @ENABLE_PLUGIN_TRUE@plugin_LTLIBRARIES = libcc1plugin.la libcp1plugin.la
+ @ENABLE_PLUGIN_TRUE@cc1lib_LTLIBRARIES = libcc1.la
+ BUILT_SOURCES = c-compiler-name.h cp-compiler-name.h

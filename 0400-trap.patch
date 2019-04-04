@@ -1,0 +1,11 @@
+--- a/newlib/libc/sys/arm/trap.S	2016-03-29 23:33:42.000000000 +0200
++++ b/newlib/libc/sys/arm/trap.S	2018-04-20 12:10:24.093416964 +0200
+@@ -85,7 +85,7 @@ __rt_stkovf_split_big:
+         @        protects the data against any events that may try and use
+         @        the stack.
+ 
+-        SUB     ip, sp, ip      @ extra stack required for function
++        @SUB     ip, sp, ip      @ extra stack required for function
+         @ Add stack extension code here.  If desired a new stack chunk
+         @ can be allocated, and the register state updated suitably.
+ 

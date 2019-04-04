@@ -1,0 +1,22 @@
+diff -ur ../1/libgcc/Makefile.in ./libgcc/Makefile.in
+--- ../1/libgcc/Makefile.in	2018-06-12 19:23:47.000000000 +0200
++++ ./libgcc/Makefile.in	2018-09-15 21:44:22.822605290 +0200
+@@ -523,7 +523,7 @@
+ ifeq ($(LIB2_DIVMOD_EXCEPTION_FLAGS),)
+ # Provide default flags for compiling divmod functions, if they haven't been
+ # set already by a target-specific Makefile fragment.
+-LIB2_DIVMOD_EXCEPTION_FLAGS := -fexceptions -fnon-call-exceptions
++LIB2_DIVMOD_EXCEPTION_FLAGS := -fno-exceptions -fnon-call-exceptions
+ endif
+ 
+ # Build LIB2_DIVMOD_FUNCS.
+@@ -844,7 +844,7 @@
+ # libgcc_eh.a, only LIB2ADDEH matters.  If we do, only LIB2ADDEHSTATIC and
+ # LIB2ADDEHSHARED matter.  (Usually all three are identical.)
+ 
+-c_flags := -fexceptions
++c_flags := -fno-exceptions
+ 
+ ifeq ($(enable_shared),yes)
+ 
+Only in ./libgcc: Makefile.in.orig
