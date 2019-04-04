@@ -5,7 +5,7 @@
 pkgname=franz
 _pkgver=5.0.1
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 # Due to the previous "_beta" naming
 epoch=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
@@ -13,7 +13,7 @@ arch=(x86_64 i686)
 url='https://meetfranz.com'
 license=(Apache)
 depends=(electron)
-makedepends=(npm python2 git)
+makedepends=(expac git npm python2)
 source=("git+https://github.com/meetfranz/$pkgname#tag=v$_pkgver"
         'franz.desktop'
         'franz.sh')
@@ -36,7 +36,7 @@ prepare() {
     src/index.js
 
   # Adjust the electron version to use when building
-  electron_version="`pacman -Qs electron | grep electron | cut -d' ' -f2 | cut -d'-' -f1`"
+  electron_version="`expac %v electron | cut -d'-' -f1`"
   sed -i "s|\(\s\+\"electron\":\).*,|\1 \"$electron_version\",|" package.json
 }
 
