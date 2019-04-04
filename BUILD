@@ -33,7 +33,7 @@ echoOnError () {
 
 
 removeBuildFiles () {
-	source PKGBUILD
+	name=$(variableInFile "Name" "PKGBUILD")
 	folders="pkg src ${name}"
 	echoOnError "removeBuildFiles" "rm --recursive --force ${folders}"
 }
@@ -41,6 +41,17 @@ removeBuildFiles () {
 
 updateInfoFile () {
 	echoOnError "updateInfoFile" "makepkg --printsrcinfo > .SRCINFO"
+}
+
+
+variableInFile () {
+	variable="${1}"
+	file="${2}"
+
+	echo $(
+		source "${file}";
+		eval echo \$\{${variable}\}
+	)
 }
 
 
