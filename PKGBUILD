@@ -4,7 +4,7 @@
 
 set -u
 pkgname='zoiper'
-pkgver='5.2.25'
+pkgver='5.2.28'
 pkgrel='1'
 pkgdesc='a SIP and IAX2 VoIP softphone'
 arch=('i686' 'x86_64')
@@ -58,7 +58,7 @@ package() {
   install -d "${pkgdir}/usr/lib"
   pushd "${pkgdir}/usr/lib" > /dev/null
   set +u; msg2 "Unpack ${_srcfile}"; set -u
-  bsdtar -xf "${startdir}/${_srcfile}"
+  bsdtar --no-same-owner -xf "${startdir}/${_srcfile}"
   mv "Zoiper${pkgver%%.*}" "${pkgname}"
   pushd "${pkgname}" > /dev/null
   chmod 755 "${pkgname}"
