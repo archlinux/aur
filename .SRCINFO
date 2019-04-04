@@ -1,6 +1,6 @@
 pkgbase = gnome-usage-git
 	pkgdesc = GNOME application to view information about use of system resources
-	pkgver = 3.30.0.10.g73966cf
+	pkgver = 3.32.0.35.gc440d66
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Usage
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = gnome-usage-git
 	depends = gtk3
 	depends = libgtop
 	depends = libdazzle
+	depends = tracker
 	optdepends = accountsservice: show user tags for processes
 	provides = gnome-usage
 	conflicts = gnome-usage
