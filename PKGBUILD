@@ -2,8 +2,8 @@
 # Contributor: algebro <algebro at tuta dot io>
 
 pkgname=leela-zero
-pkgver=0.16
-pkgrel=5
+pkgver=0.17
+pkgrel=1
 pkgdesc="Go engine with no human-provided knowledge, modeled after the AlphaGo Zero paper."
 arch=('x86_64')
 url="https://github.com/leela-zero/leela-zero"
