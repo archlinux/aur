@@ -7,7 +7,7 @@ pkgdesc="Automatic shifter for SRT and ASS subtitle based on audio streams."
 arch=('i686' 'x86_64')
 url="https://github.com/tp7/Sushi"
 license=('custom')
-depends=('python2' 'python2-numpy' 'opencv')
+depends=('python2' 'python2-numpy' 'opencv2')
 optdepends=('ffmpeg: if demuxing is used' 
             'mkvtoolnix-cli: faster timecodes extraction when demuxing')
 makedepends=('git')
