@@ -27,9 +27,10 @@ declare -A _platform_map
 
 _platform_map['i686']='linux-32'
 _platform_map['x86_64']='linux-64'
+_platform=${_platform_map[$CARCH]}
 
 _lmtxserver=lmtx.pragma-ade.nl
-_zipfile=context-${_platform_map[$CARCH]}.zip
+_zipfile=context-${_platform}.zip
 
 source=("http://${_lmtxserver}/install-lmtx/${_zipfile}")
 md5sums=('SKIP')
