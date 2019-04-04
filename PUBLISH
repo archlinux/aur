@@ -30,9 +30,9 @@ echoOnError () {
 publish () {
 	summary="${1}"
 
-	echoOnError "publish" "git add ."
-	echoOnError "publish" "git commit --message=\"${summary}\""
-	echoOnError "publish" "git push"
+	echoOnError "" "git add ."
+	echoOnError "" "git commit --message=\"${summary}\""
+	echoOnError "" "git push"
 }
 
 
