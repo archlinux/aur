@@ -1,8 +1,8 @@
 # Maintainer: Frank Asseg <frank.asseg@objecthunter.net>
-_commit=dddfba8a278c903806fc83da50efb72e8f6d60b8
+_commit=2ac7a909e66cff019acaa0566be721e3696f0bce
 pkgname=crumbs
 pkgver=0.0.2
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A bookmarking system for the command line"
 arch=('any')
@@ -27,6 +27,7 @@ validpgpkeys=()
 
 build() {
 	cd "$pkgname"
+    automake --add-missing
 	./configure --prefix=/usr --sysconfdir=/etc
 	make
 }
