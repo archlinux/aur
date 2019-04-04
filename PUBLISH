@@ -31,7 +31,7 @@ publish () {
 	summary="${1}"
 
 	echoOnError "publish: add" "git add ."
-	git commit --message="${summary}"
+	echoOnError "publish: commit" "git commit --message=\"${summary}\"" 2>&1 >"/dev/null"
 	echoOnError "publish: push" "git push"
 }
 
