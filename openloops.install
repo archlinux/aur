@@ -1,6 +1,7 @@
 # arg 1:  the new package version
 post_install() {
-        echo 'You can download more processes by e.g.:'
+        echo 'A basic installation of processes has been installed.'
+        echo 'You can install more processes by e.g.:'
         echo '    $ cd /usr/lib/openloops'
-        echo '    $ sudo scons auto=ppttj,ppllj'
+        echo '    $ sudo ./openloops libinstall ppttj'
 }
