@@ -7,7 +7,7 @@ arch=('any')
 url='https://github.com/tehmaze/ipcalc'
 license=('custom')
 depends=('python2')
-source=("http://pypi.python.org/packages/source/i/ipcalc/ipcalc-${pkgver}.tar.gz")
+source=("https://pypi.python.org/packages/source/i/ipcalc/ipcalc-${pkgver}.tar.gz")
 sha1sums=('a9841397166cce456f02e0226c0b97cbbdaf300a')
 
 package_python-ipcalc() {
