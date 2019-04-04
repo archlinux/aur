@@ -2,25 +2,25 @@
 
 pkgname="deezloader-remix-bin"
 _pkgname="deezloader-remix"
-pkgver=4.2.0
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="Deezloader Remix is an improved version of Deezloader based on the Reborn branch. With this app you can download songs, playlists and albums directly from Deezer's Server in a single and well packaged app."
 arch=('x86_64' 'i686')
 url="https://notabug.org/RemixDevs/DeezloaderRemix"
-license=('GPL')
+license=('GPL3')
 conflicts=('deezloader-remix-git')
-source_x86_64=(${_pkgname}.AppImage::https://www.dropbox.com/s/dmvkws1eg5gzot8/Deezloader%20Remix%20${pkgver}.appimage?dl=0)
-source_i686=(${_pkgname}.AppImage::https://www.dropbox.com/s/i7v6aj4yyc7tc7o/Deezloader%20Remix%20${pkgver}%20i386.appimage?dl=0)
+source_x86_64=(${_pkgname}.appimage::https://www.dropbox.com/s/hhhennqt1d90d5v/Deezloader_Remix_${pkgver}-i386.appimage?dl=0
+source_i686=(${_pkgname}.appimage::https://www.dropbox.com/s/7g2m490lv28vjad/Deezloader_Remix_${pkgver}-x86_64.appimage?dl=0
 options=(!strip)
-md5sums_x86_64=('20a6c5f0f755ec7ee50ce1d7714086ea')
-md5sums_i686=('94a3bf9c02469d90975b252e539dee8b')
+md5sums_x86_64=('706967580087748e9689b056e495cc0d')
+md5sums_i686=('98a3e7e2c050fa695e500f50a7dd22a1')
 
 package() {
     msg2 "Extracting the AppImage..."
     install -d "${pkgdir}/opt/${_pkgname}"
     cd ${srcdir}
-    chmod +x "${_pkgname}.AppImage"
-    "./${_pkgname}.AppImage" --appimage-extract
+    chmod +x "${_pkgname}.appimage"
+    "./${_pkgname}.appimage" --appimage-extract
 
     # Coping to opt
     find squashfs-root -type d -exec chmod 755 {} \;
