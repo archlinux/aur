@@ -1,18 +1,19 @@
-# Maintainer: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
+# Maintainer: Alireza Ayinmehr <alireza.darksun@gmail.com>
+# Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 # Contributor: JSkier <jskier at gmail dot com>
 # Contributor: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=hyperscan
-pkgver=4.7.0
+pkgver=5.1.0
 pkgrel=1
-pkgdesc="A high-performance multiple regex matching library, commonly used with suricata or snort."
-arch=("i686" "x86_64")
-url="https://01.org/hyperscan/"
-license=("BSD")
-provides=("hyperscan")
-makedepends=("boost" "ragel" "cmake")
+pkgdesc='A high-performance multiple regex matching library, commonly used with suricata or snort.'
+arch=('i686' 'x86_64')
+url='https://www.hyperscan.io'
+license=('BSD')
+provides=('hyperscan')
+makedepends=('boost' 'ragel' 'cmake')
 source=("https://github.com/intel/hyperscan/archive/v$pkgver.tar.gz")
-sha256sums=("a0c07b48ae80903001ab216b03fdf6359bfd5777b2976de728947725b335e941")
+sha256sums=('c751e85a537bc2cebb699f42a66faaf42edf10468f0315cb0719d2051eefa4d8')
 
 build() {
   cd "$srcdir/hyperscan-$pkgver"
