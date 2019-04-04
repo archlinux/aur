@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Let’s Encrypt certbot systemd files for running as certbot user rather than root, with either standalone or webroot mode."
 arch=('any')
 license=('Apache')
-url="https://${_pkgname}.eff.org"
+url="https://certbot.eff.org"
 depends=('certbot' 'systemd')
 source=("${_pkgname}.service"
         "${_pkgname}.timer"
@@ -16,7 +16,7 @@ source=("${_pkgname}.service"
         "${_pkgname}.sysusers")
 sha256sums=('e232526dc2cef75dce88c0e81505e9f86dccaa0a918ac1d633d731839789d41f'
             'cc5d7efe48a12b4605cd4d80e1883b1a87b80f937ca411fb051e9ca3df8cfa70'
-            '1691fdc90dcc07f0e3483d10ad6f1ceee65f089ee5fc17238e66d2a3e6e2e905'
+            'e0a5fed17060e16612bcd29612f83f8289a7262049bbce112d33d531e08fa5a8'
             '151621a821f56178408851e016c7fda67dc4c726f210ad3279b29fd1f43282fa')
 
 package() {

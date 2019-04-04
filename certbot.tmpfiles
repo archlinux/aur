@@ -1,6 +1,3 @@
 d /var/lib/letsencrypt   0755 certbot certbot
 d /var/log/letsencrypt   0700 certbot certbot
 d /etc/letsencrypt       0755 certbot certbot
-x /var/lib/letsencrypt/
-x /var/log/letsencrypt/
-x /etc/letsencrypt/

@@ -13,7 +13,7 @@ pkgbase = certbot-user
 	source = certbot.sysusers
 	sha256sums = e232526dc2cef75dce88c0e81505e9f86dccaa0a918ac1d633d731839789d41f
 	sha256sums = cc5d7efe48a12b4605cd4d80e1883b1a87b80f937ca411fb051e9ca3df8cfa70
-	sha256sums = 1691fdc90dcc07f0e3483d10ad6f1ceee65f089ee5fc17238e66d2a3e6e2e905
+	sha256sums = e0a5fed17060e16612bcd29612f83f8289a7262049bbce112d33d531e08fa5a8
 	sha256sums = 151621a821f56178408851e016c7fda67dc4c726f210ad3279b29fd1f43282fa
 
 pkgname = certbot-user
