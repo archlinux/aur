@@ -1,0 +1,15 @@
+pkgbase = replace
+	pkgdesc = Search and replace tool for strings on the all system
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/yoarch/replace
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python>=3
+	source = https://files.pythonhosted.org/packages/source/r/replacefs/replacefs-1.0.4.tar.gz
+	sha256sums = 5712f2e30089bb25db79b97c6e6d74a80b03d8d96e2dd3e89a52dc7d603d3d73
+
+pkgname = replace
+
