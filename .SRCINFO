@@ -1,7 +1,7 @@
 pkgbase = alpscore
 	pkgdesc = ALPS Core libraries for numerical simulations of condensed matter systems.
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://alpscore.org
 	arch = i686
 	arch = x86_64
