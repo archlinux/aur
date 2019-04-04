@@ -2,10 +2,10 @@
 
 pkgname=mcsctl-git
 pkgver=master
-commit=('709324ea158fcd780b3ee749106193231a21e259')
-pkgrel=4
+commit=('402c6a1b50c42e159f2ea44024a3c4215c8b26c2')
+pkgrel=5
 pkgdesc='Manage multiple minecraft servers with a simple bash script and systemd unit template.'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/Hetsh/mcsctl'
 license=('GPL3')
 depends=('bash' 'grep' 'java-runtime-headless>=8' 'jq' 'screen' 'sudo' 'systemd')
@@ -13,7 +13,7 @@ provides=('mcsctl')
 conflicts=('mcsctl')
 install="$pkgname.install"
 source=("$url/archive/$commit.tar.gz")
-sha256sums=('fd294d11f6a7756bae2137bb35e9aefee2f37d8e204bf2200874dee5e64e997c')
+sha256sums=('c7517da6d48df29f6e1a7972e63d3cc7f7172e8af59b0edc7e4eac724ae6b20f')
 
 package() {
 	install -Dm 644 "$srcdir/${pkgname%-git}-$commit/mcs@.service" "$pkgdir/usr/lib/systemd/system/mcs@.service"
