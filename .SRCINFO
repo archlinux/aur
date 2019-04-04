@@ -10,6 +10,7 @@ pkgbase = waybar-git
 	makedepends = meson
 	makedepends = git
 	depends = gtkmm3
+	depends = fmt
 	depends = jsoncpp
 	depends = libinput
 	depends = libnl>=3.0

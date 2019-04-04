@@ -10,6 +10,7 @@ license=('MIT')
 provides=('waybar')
 conflicts=('waybar')
 depends=('gtkmm3'
+         'fmt'
          'jsoncpp'
          'libinput'
          'libnl>=3.0'
