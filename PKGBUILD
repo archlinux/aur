@@ -9,8 +9,8 @@ arch=('x86_64' 'i686')
 url="https://notabug.org/RemixDevs/DeezloaderRemix"
 license=('GPL3')
 conflicts=('deezloader-remix-git')
-source_x86_64=(${_pkgname}.appimage::https://www.dropbox.com/s/hhhennqt1d90d5v/Deezloader_Remix_${pkgver}-i386.appimage?dl=0
-source_i686=(${_pkgname}.appimage::https://www.dropbox.com/s/7g2m490lv28vjad/Deezloader_Remix_${pkgver}-x86_64.appimage?dl=0
+source_x86_64=(${_pkgname}.appimage::https://www.dropbox.com/s/hhhennqt1d90d5v/Deezloader_Remix_${pkgver}-i386.appimage?dl=0)
+source_i686=(${_pkgname}.appimage::https://www.dropbox.com/s/7g2m490lv28vjad/Deezloader_Remix_${pkgver}-x86_64.appimage?dl=0)
 options=(!strip)
 md5sums_x86_64=('706967580087748e9689b056e495cc0d')
 md5sums_i686=('98a3e7e2c050fa695e500f50a7dd22a1')
