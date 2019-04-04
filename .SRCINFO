@@ -1,0 +1,21 @@
+pkgbase = luametatex
+	pkgdesc = ConTeXt LuaMetaTeX distribution
+	pkgver = 2019.04.03
+	pkgrel = 1
+	url = http://www.contextgarden.net
+	install = luametatex.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = curl
+	makedepends = unzip
+	makedepends = rsync
+	optdepends = ghostscript: support for PS and EPS images
+	optdepends = graphicsmagick: support for GIF and TIFF images
+	optdepends = inkscape: support for SVG images
+	optdepends = pstoedit: support for metapost outlines for fonts
+	optdepends = zint: support for barcodes
+	optdepends = curl: loading remote content
+
+pkgname = luametatex
+

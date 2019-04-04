@@ -1,0 +1,19 @@
+post_install() {
+ echo "*************************************************************"
+ echo "To use luametatex run"
+ echo "    source /opt/luametatex/setuptex"
+ echo "from your shell (as a normal user)"
+ echo "*************************************************************"
+}
+
+post_upgrade() {
+ echo "*************************************************************"
+ echo "To use luametatex run"
+ echo "    source /opt/luametatex/setuptex"
+ echo "from your shell (as a normal user)"
+ echo "*************************************************************"
+}
+
+pre_remove() {
+  /bin/true
+}
