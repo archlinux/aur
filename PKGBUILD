@@ -1,17 +1,17 @@
-# Maintainer: Lin Ruoshui <20455421+LinRs at users.noreply.github dot com>
+# Maintainer: Lin Ruoshui <LinRs at users.noreply.github dot com>
 # Contributor: hexchain <i at hexchain.org>
 
 pkgname=hmcl
 _pkgname=HMCL
 pkgver=3.2.129
 _pkgver=3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Hello Minecraft! Launcher, a powerful Minecraft launcher."
 arch=('x86_64')
 license=('GPL3')
 url="https://github.com/huanghongxun/HMCL"
-depends=('java-openjfx>=8' 'java-environment>=8')
-makedepends=('git')
+depends=('java-openjfx>=8')
+makedepends=('git' 'java-environment=8')
 source=(
     "hmcl-launch-script"
     "${pkgname}.desktop"
