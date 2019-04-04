@@ -2,7 +2,7 @@
 
 _name=chatterino2
 pkgname="$_name-git"
-pkgver=r1503.8bcc9c48
+pkgver=r1868.a2fa1bad
 pkgrel=1
 pkgdesc='Chatterino 2 is the second installment of the Twitch chat client series "Chatterino". dev/git version.'
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=("${_name%2}")
 depends=('rapidjson' 'gst-plugins-ugly' 'gst-plugins-good' 'qt5-multimedia' 'qt5-base' 'qt5-svg')
 optdepends=('streamlink: For piping streams to video players' 'pulseaudio: For audio output')
 makedepends=('boost' 'git')
-source=("${_name%2}.png" "${_name%2}.desktop" "git://github.com/fourtf/$_name")
+source=("${_name%2}.png" "${_name%2}.desktop" "git://github.com/fourtf/$_name#branch=pajlada-dev")
 sha1sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
