@@ -6,7 +6,7 @@ source android-env.sh ${_android_arch}
 
 pkgname=android-${_android_arch}-ffmpeg
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete solution to record, convert and stream audio and video (android)"
 arch=('any')
 url="http://ffmpeg.org/"
@@ -20,11 +20,9 @@ depends=('apache-ant'
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-pkg-config' 'git' 'yasm')
 source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
-        configure.patch)
+        'configure.patch')
 sha256sums=('SKIP'
             '574f234bd6e09c47e8435faffd464a3fe01dcfdfd939889e6608451f795a1701')
-
-_pref=/opt/android-libs/$_android_arch
 
 prepare() {
     cd ffmpeg
@@ -58,7 +56,7 @@ build() {
     esac
 
     configue_opts="
-        --prefix="${_pref}"
+        --prefix="${ANDROID_LIBS}"
         --enable-cross-compile
         --cross-prefix="${ANDROID_CROSS_PREFIX}"
         --target-os=android
@@ -104,6 +102,6 @@ package() {
     cd ffmpeg
     make DESTDIR="$pkgdir" install
 
-    ${ANDROID_STRIP} "${pkgdir}"/${_pref}/lib/*.a
-    ${ANDROID_STRIP} "${pkgdir}"/${_pref}/lib/*.so
+    ${ANDROID_STRIP} "${pkgdir}"/${ANDROID_LIBS}/lib/*.a
+    ${ANDROID_STRIP} "${pkgdir}"/${ANDROID_LIBS}/lib/*.so
 }
