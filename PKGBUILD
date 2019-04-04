@@ -3,8 +3,8 @@
 
 pkgname=brisk-menu-git
 _gitname=brisk
-pkgver=v0.5.0.r30.gc274131
-pkgrel=2
+pkgver=v0.5.0.r31.g3d5e639
+pkgrel=1
 pkgdesc='Modern, efficient menu for the MATE Desktop Environment - git version'
 arch=('i686' 'x86_64')
 url='https://github.com/getsolus/brisk-menu'
@@ -17,25 +17,12 @@ optdepends=('mozo: for menu edition'
 options=('!libtool' '!emptydirs')
 provides=('brisk-menu')
 conflicts=('brisk-menu')
-source=(git+https://github.com/getsolus/brisk-menu.git
-        mate-122.patch
-        fix-launch.patch)
-sha1sums=('SKIP'
-          '64641c7c67e357220cab52e48a7518e1d99a04b1'
-          '57a888511a70142ee4c1b192cc50ee12661e84d7')
+source=(git+https://github.com/getsolus/brisk-menu.git)
+sha1sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/brisk-menu"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-
-prepare() {
-    cd "$srcdir/brisk-menu"
-    # This patch fixes building with mate 1.22.x
-    patch -Np1 -i "${srcdir}/mate-122.patch"
-    # This fixes starting with mate 1.22.x but removes categories icon for now
-    patch -Np1 -i "${srcdir}/fix-launch.patch"
 }
 
 build() {
@@ -43,7 +30,6 @@ build() {
     meson --buildtype plain build --prefix=/usr
     ninja -C build -j$(($(getconf _NPROCESSORS_ONLN)+1))
 }
-
 
 package() {
     cd "$srcdir/brisk-menu"
