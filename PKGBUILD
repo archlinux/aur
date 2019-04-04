@@ -1,15 +1,15 @@
 # Maintainer: Simon Perry <aur [at] sanxion [dot] net>
 
 pkgname=python-diskcache
-pkgver=3.0.6
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Python disk and file backed cache library"
 arch=('any')
 license=('Apache')
 url="https://github.com/grantjenks/python-diskcache"
 makedepends=('python-setuptools')
-source=("https://github.com/grantjenks/python-diskcache/archive/v${pkgver}.tar.gz")
-sha256sums=('8e286e1173ae7a4722d35ba4e44c6d75cf30d04566df04facd2a4c7c7a13a14b')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/grantjenks/python-diskcache/archive/v${pkgver}.tar.gz")
+sha256sums=('6ff8626f8e7354863b93c4717647e3f4d34afcf81927905ef369a1797729ad07')
 
 build() {
   cd "${srcdir}"/"${pkgname}-${pkgver}"

@@ -1,13 +1,13 @@
 pkgbase = python-diskcache
 	pkgdesc = Python disk and file backed cache library
-	pkgver = 3.0.6
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/grantjenks/python-diskcache
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
-	source = https://github.com/grantjenks/python-diskcache/archive/v3.0.6.tar.gz
-	sha256sums = 8e286e1173ae7a4722d35ba4e44c6d75cf30d04566df04facd2a4c7c7a13a14b
+	source = python-diskcache-3.1.1.tar.gz::https://github.com/grantjenks/python-diskcache/archive/v3.1.1.tar.gz
+	sha256sums = 6ff8626f8e7354863b93c4717647e3f4d34afcf81927905ef369a1797729ad07
 
 pkgname = python-diskcache
 
