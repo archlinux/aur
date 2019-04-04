@@ -5,7 +5,7 @@
 
 pkgname=dropbox
 pkgver=69.4.102
-pkgrel=1
+pkgrel=2
 pkgdesc="A free service that lets you bring your photos, docs, and videos anywhere and share them easily."
 arch=("i686" "x86_64")
 url="https://www.dropbox.com"
@@ -21,7 +21,7 @@ optdepends=(
 options=('!strip')
 
 # https://www.dropbox.com/scl/fo/0eu2dsn07fy5k0gt5fy74/AABbXqKHbY_mobVJhqgfOXYja/Glyph/Dropbox/SVG/DropboxGlyph_Blue.svg
-source=("DropboxGlyph_Blue.svg::https://uc3135348e74c66f0669fcde8300.dl.dropboxusercontent.com/cd/0/get/AeYRisQv-6SKLfc95CgynP5ZP_DyMV9YC331Th6iimSA9YFsQiTzZl3lg_osmwitILJ5H9MPDlgVpfI0O2CzvZUEGcJdyA7jfEiX6cckYH7W4Q/file?_download_id=385426155243517642556452976793408572138269034287425082593540433136&_notify_domain=www.dropbox.com&dl=1"
+source=("DropboxGlyph_Blue.svg"
         "terms.txt"
         "dropbox.service"
         "dropbox@.service")
