@@ -1,0 +1,23 @@
+pkgbase = tpm2-tss-engine
+	pkgdesc = OpenSSL engine for Trusted Platform Module 2.0 devices
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tpm2-software/tpm2-tss-engine
+	arch = x86_64
+	license = BSD
+	checkdepends = cmocka
+	checkdepends = expect
+	checkdepends = ibm-sw-tpm2
+	checkdepends = tpm2-tools-git
+	depends = openssl
+	depends = tpm2-tss
+	source = https://github.com/tpm2-software/tpm2-tss-engine/releases/download/v1.0.0/tpm2-tss-engine-1.0.0.tar.gz
+	source = https://github.com/tpm2-software/tpm2-tss-engine/releases/download/v1.0.0/tpm2-tss-engine-1.0.0.tar.gz.asc
+	source = tpm2-tss-engine_check.sh
+	validpgpkeys = D6B4D8BAC7E0CC97DCD4AC7272E88B53F7A95D84
+	sha512sums = b06722c82c9cefd5184125b26fb46bd7b20d62631c21c51a028348833c4786b41ff64f2c1cb7d53f749a6cf35b8fae02ae02285fc43d1d044e2d2b6e2e7048a3
+	sha512sums = SKIP
+	sha512sums = 77d0d1789376e76b1f357edea59e5cd0953cfcf33c35069da6c4092c43e028dfb1e1593e3c85456e590f9da8252701519a06a5eb94adf8501cf4e5f21cc92cf1
+
+pkgname = tpm2-tss-engine
+
