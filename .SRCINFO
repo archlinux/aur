@@ -1,0 +1,21 @@
+pkgbase = felix
+	pkgdesc = The Felix programming language
+	pkgver = 2019.01.06.r79.gd78b73884
+	pkgrel = 1
+	url = https://github.com/felix-lang/felix
+	arch = x86_64
+	license = Felix is free for any use.
+	makedepends = ocaml
+	depends = python3
+	depends = gcc
+	depends = gmp
+	depends = gsl
+	depends = sdl2
+	depends = sdl2_ttf
+	depends = sdl2_gfx
+	depends = sdl2_image
+	source = felix::git+https://github.com/felix-lang/felix
+	sha512sums = SKIP
+
+pkgname = felix
+
