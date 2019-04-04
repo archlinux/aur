@@ -8,9 +8,9 @@ pkgbase = deezloader-remix-bin
 	license = GPL3
 	conflicts = deezloader-remix-git
 	options = !strip
-	source_x86_64 = deezloader-remix.appimage::https://www.dropbox.com/s/hhhennqt1d90d5v/Deezloader_Remix_4.2.1-i386.appimage?dl=0
+	source_x86_64 = deezloader-remix.appimage::https://www.dropbox.com/s/7g2m490lv28vjad/Deezloader_Remix_4.2.1-x86_64.appimage?dl=0
 	md5sums_x86_64 = 706967580087748e9689b056e495cc0d
-	source_i686 = deezloader-remix.appimage::https://www.dropbox.com/s/7g2m490lv28vjad/Deezloader_Remix_4.2.1-x86_64.appimage?dl=0
+	source_i686 = deezloader-remix.appimage::https://www.dropbox.com/s/hhhennqt1d90d5v/Deezloader_Remix_4.2.1-i386.appimage?dl=0
 	md5sums_i686 = 98a3e7e2c050fa695e500f50a7dd22a1
 
 pkgname = deezloader-remix-bin
