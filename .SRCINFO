@@ -1,0 +1,22 @@
+pkgbase = python-mailjet
+	pkgdesc = Official Mailjet Python Wrapper
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = https://pypi.org/project/mailjet-rest/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python-requests
+	makedepends = python2-requests
+	source = https://files.pythonhosted.org/packages/69/04/a92885c635ca412c8f5bdf3d11da6f619bbd4bce45c4e28189eeef10bd6a/mailjet_rest-1.3.3.tar.gz
+	source = LICENSE.txt
+	sha256sums = f14424df10c30083491dcaa5902ff9b159af82bca261af5e7b2213afdcf7a11c
+	sha256sums = 104cc6b013a00cb45959c7caa51e996f5b782cfffb7995eb57ebf44147194674
+
+pkgname = python-mailjet
+	depends = python-requests
+
+pkgname = python2-mailjet
+	depends = python2-requests
+
