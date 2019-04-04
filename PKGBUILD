@@ -5,8 +5,7 @@
 # Upstream: https://github.com/lightningnetwork/lnd
 
 pkgname=('lnd-git')
-pkgver=0.5.2.beta.r6512.c1228ae1
-_pkgver=0.5.2.beta.
+pkgver=v0.6.beta.rc2.r0.g3a19afe4
 pkgrel=1
 pkgdesc='The Lightning Network Daemon, for secure off-chain bitcoin transactions.'
 arch=('x86_64')
@@ -21,9 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-#  Disabled until upstream goes back to regular versioning
-#  git describe --tags | sed 's/^v//;s/-/./g'
-  printf "${_pkgver}r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
