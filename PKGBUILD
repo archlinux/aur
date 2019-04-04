@@ -3,7 +3,7 @@
 pkgname=visual-studio-code-bin
 _pkgname=visual-studio-code
 pkgver=1.33.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (official binary version)"
 arch=('x86_64' 'i686')
 url="https://code.visualstudio.com/"
@@ -37,7 +37,7 @@ package() {
   install -d "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/share/icons" 
 
-  install -m644 "${srcdir}/${_pkg}/resources/app/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -m644 "${srcdir}/${_pkg}/resources/app/LICENSE.rtf" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.rtf"
   install -m644 "${srcdir}/${_pkg}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
   install -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -m644 "${srcdir}/${_pkgname}-url-handler.desktop" "${pkgdir}/usr/share/applications/${_pkgname}-url-handler.desktop"
