@@ -2,7 +2,7 @@
 # Contributor: VVL <me@ivvl.ru>
 
 pkgname=mtprotoproxy
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Telegram MTProto proxy written in pure python"
 arch=(any)
@@ -11,7 +11,7 @@ license=('MIT')
 source=("https://github.com/alexbers/mtprotoproxy/archive/v$pkgver.tar.gz"
         "mtprotoproxy.service")
 depends=('python' 'python-pycryptodome')
-sha256sums=('9d3ee572d5629d344a715b9005bb49196055b7d1d620c58fffe2f94257c81afd'
+sha256sums=('cc34c9254f69587ab4ffbeeeab79663c97efc205e1a9717ed0cc759a6aada01e'
             'cd993b52610d68361a3faf9500b744f5d5e4e8eb3e79effc36098576f24b950c')
 backup=('etc/mtprotoproxy.conf')
 package() {
