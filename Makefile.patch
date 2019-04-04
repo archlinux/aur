@@ -1,12 +1,13 @@
---- a/Makefile	2019-03-12 17:31:09.000000000 +0100
-+++ b/Makefile	2019-03-12 17:40:23.526521565 +0100
+diff -ruN a/Makefile b/Makefile
+--- a/Makefile	2019-04-04 16:27:28.000000000 +0200
++++ b/Makefile	2019-04-04 16:36:45.450974401 +0200
 @@ -1,3 +1,5 @@
 +WMNAME  = antares
 +
  libs = x11 xinerama cairo
  CFLAGS  = $(shell pkg-config --cflags ${libs})
  LDFLAGS = $(shell pkg-config --libs-only-L ${libs})
-@@ -8,17 +10,23 @@
+@@ -8,18 +10,27 @@
  MANPREFIX = $(PREFIX)/share/man
  
  all:
@@ -24,14 +25,19 @@
  install: all
 -	install -D -m 755 antares $(BINPREFIX)/antares
 -	install -D -m 644 doc/antares.1 $(MANPREFIX)/man1/antares.1
+-	install -D -m 644 dsk/antares.desktop /usr/share/xsessions/antares.desktop
 +	@echo installing executable file to ${DESTDIR}${PREFIX}/bin
 +	@install -Dm755 ${WMNAME} ${DESTDIR}${PREFIX}/bin/${WMNAME}
 +	@echo installing manual page to ${DESTDIR}${MANPREFIX}/man.1
 +	@install -Dm644 doc/${WMNAME}.1 ${DESTDIR}${MANPREFIX}/man1/${WMNAME}.1
++	@echo installing xsession desktop file to ${DESTDIR}${PREFIX}/xsessions
++	@install -Dm644 dsk/${WMNAME}.desktop ${DESTDIR}${PREFIX}/xsessions/${WMNAME}.desktop
  
  uninstall:
--	$(RM) $(BINPREFIX)/antares $(MANPREFIX)/man1/antares.1
+-	$(RM) $(BINPREFIX)/antares $(MANPREFIX)/man1/antares.1 /usr/share/xsessions/antares.desktop
 +	@echo removing executable file from ${DESTDIR}${PREFIX}/bin
 +	@rm -f ${DESTDIR}${PREFIX}/bin/${WMNAME}
 +	@echo removing manual page from ${DESTDIR}${MANPREFIX}/man1
 +	@rm -f ${DESTDIR}${MANPREFIX}/man1/${WMNAME}.1
++	@echo removing xsession desktop file from ${DESTDIR}${PREFIX}/xsessions
++	@rm -f ${DESTDIR}${PREFIX}/xsessions/${WMNAME}.desktop
