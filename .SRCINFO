@@ -1,0 +1,22 @@
+pkgbase = mate-menus-gtk2
+	pkgdesc = MATE menu specifications (GTK2 version)
+	pkgver = 1.20.2
+	pkgrel = 1
+	url = https://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	groups = mate-gtk2
+	license = GPL
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = intltool
+	makedepends = python2
+	depends = glib2
+	optdepends = python2: python2 bindings
+	provides = mate-menus
+	conflicts = mate-menus
+	source = https://pub.mate-desktop.org/releases/1.20/mate-menus-1.20.2.tar.xz
+	sha1sums = 569e5ed9fa8caddfd73dc368b81994584d1458ef
+
+pkgname = mate-menus-gtk2
+
