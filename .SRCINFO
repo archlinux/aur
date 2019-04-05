@@ -1,15 +1,15 @@
 pkgbase = lebab
 	pkgdesc = Turn your JavaScript ES5 code into readable ES6/ES7
-	pkgver = 3.0.4
+	pkgver = 3.0.5
 	pkgrel = 1
 	url = https://github.com/mohebifar/lebab
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = lebab-3.0.4.tgz
-	source = http://registry.npmjs.org/lebab/-/lebab-3.0.4.tgz
-	sha256sums = 6500a107820c940e0900efee6bdf92ecb2166919653c156bd38e733d72c17963
+	noextract = lebab-3.0.5.tgz
+	source = http://registry.npmjs.org/lebab/-/lebab-3.0.5.tgz
+	sha256sums = 85ccf3bdc1aaa207c740c06ababd23a0e9faeeb92b988476e4b0f488789f839f
 
 pkgname = lebab
 
