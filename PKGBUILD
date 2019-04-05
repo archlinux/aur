@@ -10,7 +10,7 @@ url="https://github.com/fuzeman/bencode.py"
 license=('GPL')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://pypi.io/packages/source/${_pkgname::1}/${_pkngame}/${_pkgname}-${pkgver}.tar.gz")
+source=("https://pypi.io/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 #source=("https://github.com/fuzeman/bencode.py/archive/${pkver}.tar.gz")
 
 build() {
