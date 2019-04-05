@@ -4,7 +4,7 @@
 
 pkgname=libical
 pkgver=3.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source reference implementation of the icalendar data type and serialization format"
 arch=('x86_64')
 url='https://github.com/libical/libical'
