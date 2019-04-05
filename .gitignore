@@ -1,5 +1,6 @@
 *.pkg.tar.xz
 *.jar
+*.asc
 openapi-generator-cli-completion.bash
 /pkg/
 /src/
