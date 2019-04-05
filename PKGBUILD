@@ -5,12 +5,12 @@ _ver=1.16
 _pkgbase=mate-screensaver
 pkgname=(${_pkgbase}-gtk2)
 pkgver=${_ver}.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Screensaver for MATE (GTK2 version)'
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('libmatekbd' 'libnotify' 'libxss' 'mate-desktop' 'mate-menus' 'mate-session-manager')
+depends=('libmatekbd-gtk2' 'libnotify' 'libxss' 'mate-desktop-gtk2' 'mate-menus-gtk2' 'mate-session-manager-gtk2')
 makedepends=('intltool')
 optdepends=('mate-screensaver-hacks: Additional screensavers'
             'rss-glx: Really slick screensavers')
