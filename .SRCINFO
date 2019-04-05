@@ -1,11 +1,11 @@
 pkgbase = exodus-eden
 	pkgdesc = An unsupported, advanced version of Exodus
 	pkgver = 19.3.29
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://exodus.io/eden
 	arch = x86_64
-	license = custom:"Copyright © 2018 Exodus"
+	license = custom
 	depends = gconf
 	depends = gtk2
 	depends = nss
@@ -14,9 +14,11 @@ pkgbase = exodus-eden
 	source = https://exodusbin.azureedge.net/releases/eden/exodus-eden-linux-x64-19.3.29.zip
 	source = exodus-eden.svg
 	source = exodus-eden.desktop
+	source = LICENSE
 	sha256sums = 21086a20d2d7e9139938f2834d34fd8b9e5c3da218153f77cac8ed823aa80d23
 	sha256sums = 231eacce811bdbbf5ffbee3c677ed53df7ed41024af49c757d2f866159180031
 	sha256sums = 820c6de206ffdd5882f26a8b7d5a2720d0b2df6f9fe62d31aa3a9aaefb9b6322
+	sha256sums = 582d6782c9412cd961c55d105f38ed5c911bf8509be040b8d23a836504a25d0b
 
 pkgname = exodus-eden
 
