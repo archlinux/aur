@@ -2,8 +2,8 @@
 
 _pkgname=mpris2controller
 pkgname=mpris2controller-git
-pkgver=0.8.r1.gde972c0
-pkgrel=3
+pkgver=0.9.r0.g5a85e0a
+pkgrel=1
 pkgdesc="A small daemon that intelligently controls MPRIS2 compatible players"
 arch=(any)
 url="https://github.com/icasdri/mpris2controller"
@@ -20,5 +20,5 @@ pkgver() {
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    python setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}/"
+    install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
