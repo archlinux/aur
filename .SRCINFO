@@ -1,6 +1,6 @@
 pkgbase = ffsend-bin
 	pkgdesc = Easily and securely share files from the command line. A Firefox Send client.
-	pkgver = 0.2.43
+	pkgver = 0.2.44
 	pkgrel = 1
 	url = https://gitlab.com/timvisee/ffsend
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = ffsend-bin
 	optdepends = bash-completion: support auto completion for bash
 	provides = ffsend
 	conflicts = ffsend
-	source = ffsend-v0.2.43::https://github.com/timvisee/ffsend/releases/download/v0.2.43/ffsend-v0.2.43-linux-x64-static
-	source = ffsend-v0.2.43.bash::https://gitlab.com/timvisee/ffsend/raw/v0.2.43/contrib/completions/ffsend.bash
-	source = ffsend-v0.2.43.fish::https://gitlab.com/timvisee/ffsend/raw/v0.2.43/contrib/completions/ffsend.fish
-	sha256sums = de1fd1348c70e275e949cb297f86db5eccde0523e92a4d35c803a9df2e7857cd
+	source = ffsend-v0.2.44::https://github.com/timvisee/ffsend/releases/download/v0.2.44/ffsend-v0.2.44-linux-x64-static
+	source = ffsend-v0.2.44.bash::https://gitlab.com/timvisee/ffsend/raw/v0.2.44/contrib/completions/ffsend.bash
+	source = ffsend-v0.2.44.fish::https://gitlab.com/timvisee/ffsend/raw/v0.2.44/contrib/completions/ffsend.fish
+	sha256sums = e870df6b7930124ef38a411e3cb306f1c62f0f80171daed440a41f01f9cbd2a9
 	sha256sums = bd0f63d4acaed87da9bc80725ec2242c273463cf64ac56c858c46164a6a8a3ab
 	sha256sums = 15d9a3e79265615a73af4de0e20dd662ad96470aac7fc5dfeff7d26d90bdc667
 
