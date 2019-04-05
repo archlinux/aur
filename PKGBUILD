@@ -17,7 +17,7 @@ source_i686=(https://global.download.synology.com/download/Tools/CloudStationBac
 
 prepare() {
     cd "${srcdir}"
-    tar -zxf "${srcdir}/data.tar.gz"
+    tar -Jxf "${srcdir}/data.tar.xz"
 }
 
 package() {
