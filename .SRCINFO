@@ -1,13 +1,14 @@
 pkgbase = linux_logo
 	pkgdesc = Text-based logo and system information program
 	pkgver = 5.11
-	pkgrel = 4
-	url = http://www.deater.net/weave/vmwprod/linux_logo
+	pkgrel = 5
+	url = https://github.com/deater/linux_logo
 	arch = x86_64
-	license = GPL
+	license = GPL2
+	makedepends = git
 	depends = glibc
-	source = http://www.deater.net/weave/vmwprod/linux_logo/linux_logo-5.11.tar.gz
-	sha512sums = 3c11d59eeb1ea613eb66d3ea5ef2d7c9ef906cb12430b9350570a6a1937ec174bdd974e6227358339c3fd2e0647a5066a0bea22289c4aa9bc8b03afb0033f114
+	source = linux_logo-5.11::git+https://github.com/deater/linux_logo.git#tag=5.11
+	sha512sums = SKIP
 
 pkgname = linux_logo
 
