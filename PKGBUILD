@@ -1,34 +1,32 @@
 # Maintainer: Ckat <ckat@teknik.io>
-
-_name=chatterino2
-pkgname="$_name-git"
+pkgname=chatterino2-git
 pkgver=r1868.a2fa1bad
 pkgrel=1
-pkgdesc='Chatterino 2 is the second installment of the Twitch chat client series "Chatterino". dev/git version.'
+pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
 arch=('any')
 url=https://chatterino.com
 license=('MIT')
-install=$pkgname.install
-provides=("${_name%2}")
-conflicts=("${_name%2}")
 depends=('rapidjson' 'gst-plugins-ugly' 'gst-plugins-good' 'qt5-multimedia' 'qt5-base' 'qt5-svg')
-optdepends=('streamlink: For piping streams to video players' 'pulseaudio: For audio output')
 makedepends=('boost' 'git')
-source=("${_name%2}.png" "${_name%2}.desktop" "git://github.com/fourtf/$_name#branch=pajlada-dev")
-sha1sums=('SKIP' 'SKIP' 'SKIP')
+optdepends=('streamlink: For piping streams to video players' 'pulseaudio: For audio output')
+provides=('chatterino')
+conflicts=('chatterino')
+install=$pkgname.install
+source=('chatterino.png' 'chatterino.desktop' "git://github.com/fourtf/chatterino2#branch=pajlada-dev")
+md5sums=('b8de2f4e09b13025f92e12bb292dccb1' '6dc7280e81653e9a1f35e150fbebd8a0' 'SKIP')
 
 pkgver() {
-    cd "$srcdir/$_name"
+    cd "$srcdir/chatterino2"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare () {
-    cd "$srcdir/$_name"
+    cd "$srcdir/chatterino2"
     git submodule update --init --recursive
 }
 
 build() {
-    cd "$srcdir/$_name"
+    cd "$srcdir/chatterino2"
     mkdir build
     cd build
     qmake ..
@@ -36,8 +34,8 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$_name/build/bin"
-    install -Dm755 ./"${_name%2}" "$pkgdir/usr/bin/${_name%2}"
-    install -Dm644 "$srcdir/${_name%2}.desktop" "$pkgdir/usr/share/applications/${_name%2}.desktop"
-    install -Dm644 "$srcdir/${_name%2}.png" "$pkgdir/usr/share/pixmaps/${_name%2}.png"
+    cd "$srcdir/chatterino2/build/bin"
+    install -Dm755 chatterino "$pkgdir/usr/bin/chatterino"
+    install -Dm644 "$srcdir/chatterino.desktop" "$pkgdir/usr/share/applications/chatterino.desktop"
+    install -Dm644 "$srcdir/chatterino.png" "$pkgdir/usr/share/pixmaps/chatterino.png"
 }
