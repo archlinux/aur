@@ -8,6 +8,7 @@ arch=('any')
 url='https://github.com/robbles/logstash.vim'
 license=('MIT')
 depends=('vim')
+makedepends=('git')
 source=("vim-logstash::git+https://github.com/robbles/logstash.vim.git")
 sha256sums=('SKIP')
 
