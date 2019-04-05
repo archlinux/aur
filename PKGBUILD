@@ -1,8 +1,8 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
-pkgname=('python-guizero')
+pkgname='python-guizero'
 _module='guizero'
-pkgver='0.5.3'
+pkgver='0.6.2'
 pkgrel=1
 pkgdesc="Python module to allow learners to easily create GUIs"
 url="https://github.com/lawsie/guizero"
@@ -12,7 +12,7 @@ license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/g/guizero/guizero-${pkgver}.tar.gz"
         'https://raw.githubusercontent.com/lawsie/guizero/master/license.txt')
-md5sums=('4d6f6274a5bec5f82e45ae5f814c1f4a'
+md5sums=('9d8d355fb88c37e76e8e4cb548f51972'
          '9670acd16790b84f21178f2b940a96e2')
 
 
