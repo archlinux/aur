@@ -1,0 +1,16 @@
+pkgbase = jalgo-doc-git
+	pkgdesc = Algorithm visualization tool written in Java developed at TU Dresden: Documentation.
+	pkgver = r484.20190207.51652be
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/tud-fop/j-Algo
+	arch = any
+	license = GPL2
+	optdepends = jalgo: For the software this package documents.
+	provides = jalgo-doc=r484.20190207.51652be
+	conflicts = jalgo-doc
+	source = jalgo::git://github.com/tud-fop/j-Algo.git
+	sha256sums = SKIP
+
+pkgname = jalgo-doc-git
+
