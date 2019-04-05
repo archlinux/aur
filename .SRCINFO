@@ -1,7 +1,7 @@
 pkgbase = pdb2pqr
 	pkgdesc = Electrostatic and solvation properties for complex molecules
 	pkgver = 2.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.poissonboltzmann.org/
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = pdb2pqr
 	depends = python2-networkx
 	depends = python2-numpy
 	depends = apbs
-	source = git+https://github.com/Electrostatics/apbs-pdb2pqr.git#commit=044f531f8fb944f7b14c9f34ff33833357b0fea4
+	source = git+https://github.com/Electrostatics/apbs-pdb2pqr.git#commit=433a1984a632b396bda11416b757d00e4ef5189e
 	source = pdb2pqr.patch
 	md5sums = SKIP
 	md5sums = 19cb8e794d49e4d2bc04df54a895f3ad
