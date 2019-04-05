@@ -9,8 +9,8 @@
 # Contributor: Roman Pearah
 
 pkgname=netextender
-pkgver=9.0.803
-pkgrel=2
+pkgver=9.0.805
+pkgrel=1
 pkgdesc="SonicWALL SSL VPN Client"
 arch=('i686' 'x86_64')
 url="https://www.sonicwall.com/en-us/products/remote-access/vpn-client"
@@ -21,9 +21,9 @@ source_i686=("NetExtender-${pkgver}.tgz::https://sslvpn.demo.sonicwall.com/NetEx
              "https://www.sonicwall.com/legal/general-product-agreement")
 source_x86_64=("NetExtender-${pkgver}.x86_64.tgz::https://sslvpn.demo.sonicwall.com/NetExtender.x86_64.tgz"
                "https://www.sonicwall.com/legal/general-product-agreement")
-sha256sums_i686=('c49eb90876750c6942eeac4df1f6206dc7f364bde7641c2f4d53dcba8d0ce6e3'
+sha256sums_i686=('88909607550cc1b88240baf9f9f10dcb3d2dc4b8842a1b2490ffbf21cfadc21d'
                  'SKIP')
-sha256sums_x86_64=('b83eba640001580cab0f4c36d1eba104a19bffa605a606f9087ad1d3beb6561a'
+sha256sums_x86_64=('96a3b8d8d76a2ded82d049bd9c80ecd52a561cbccfd2d253a641cdbcbcbeb9f7'
                  'SKIP')
 
 install="${pkgname}.install"
