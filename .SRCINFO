@@ -21,13 +21,13 @@ pkgbase = cloudflared-bin
 	sha256sums = 407ff5e3f3fdfa3440bac2d4c8cb191493be37fa3bad388e7ab49ffd07c83f21
 	sha256sums = bc40e3f7e1b21b93a949a1b1c05639584943d9ce9cc7ccb96612688eeb9fd206
 	source_x86_64 = https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.tgz
-	sha256sums_x86_64 = ea2ff0daea27107b4104a7efac85b86aa2364c4c53cdedc3c8dddfadc8de5fcf
+	sha256sums_x86_64 = efed0746f107d20d3a8c2be720ad7522a7b963d338bc22c264851291caa709d0
 	source_i686 = https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-386.tgz
-	sha256sums_i686 = 77f9467e61e13467e64f0d4e5e21c6128f73b1f95b21b3bd2b100ef4b6fd2335
+	sha256sums_i686 = 830d468baabdea6965f5443e91329a040d7cabbaa72551247a6dc0264f30b2a8
 	source_armv6h = https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz
-	sha256sums_armv6h = 59e8e58120bf31b79e25f4a1d1e11192fddbb8f6c3e37134960d1683c807958a
+	sha256sums_armv6h = 5ce59d11bc8900d315a625a39a45b92ef0b3d967c7b0219df66978139ec7f296
 	source_armv7h = https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz
-	sha256sums_armv7h = 59e8e58120bf31b79e25f4a1d1e11192fddbb8f6c3e37134960d1683c807958a
+	sha256sums_armv7h = 5ce59d11bc8900d315a625a39a45b92ef0b3d967c7b0219df66978139ec7f296
 
 pkgname = cloudflared-bin
 
