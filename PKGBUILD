@@ -1,7 +1,7 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=nodejs-svgo
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Nodejs-based tool for optimizing SVG vector graphics files'
 arch=('any')
