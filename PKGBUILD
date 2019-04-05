@@ -3,7 +3,7 @@
 pkgname=tarantool
 _commit=dbbd93171374323cef95e2bcde9767bca77143b2
 pkgver=2.1.1.r193
-pkgrel=1
+pkgrel=2
 pkgdesc='Lua application server integrated with a database management system'
 arch=(x86_64)
 url='https://www.tarantool.org'
