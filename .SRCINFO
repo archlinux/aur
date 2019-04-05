@@ -1,6 +1,6 @@
 pkgbase = nvidia-xrun-pm
 	pkgdesc = Alternative version of nvidia-xrun, that relies on kernel PM instead of bbswitch
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/michelesr/nvidia-xrun-pm
 	install = nvidia-xrun-pm.install
@@ -13,8 +13,8 @@ pkgbase = nvidia-xrun-pm
 	depends = mesa-libgl
 	provides = nvidia-xrun
 	conflicts = nvidia-xrun
-	source = git://github.com/michelesr/nvidia-xrun-pm
-	md5sums = SKIP
+	source = https://github.com/michelesr/nvidia-xrun-pm/archive/0.3.2.tar.gz
+	md5sums = 475306af1f238bd3f518486cfc5b8653
 
 pkgname = nvidia-xrun-pm
 

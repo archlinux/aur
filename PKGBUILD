@@ -1,6 +1,6 @@
 # Maintainer: Michele Sorcinelli <michelesr@autistici.org>
 pkgname=nvidia-xrun-pm
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 epoch=
 pkgdesc='Alternative version of nvidia-xrun, that relies on kernel PM instead of bbswitch'
@@ -19,15 +19,16 @@ backup=()
 options=()
 install=$pkgname.install
 changelog=
-source=("git://github.com/michelesr/$pkgname")
+source=("https://github.com/michelesr/nvidia-xrun-pm/archive/${pkgver}.tar.gz")
 noextract=()
-md5sums=('SKIP')
+md5sums=('475306af1f238bd3f518486cfc5b8653')
 validpgpkeys=()
 
 package() {
-  cd ${pkgname}
+  cd "${pkgname}-${pkgver}"
   install -Dm 644 nvidia-xorg.conf "$pkgdir/etc/X11/nvidia-xorg.conf"
   install -Dm 644 nvidia-xinitrc "$pkgdir/etc/X11/xinit/nvidia-xinitrc"
+  install -Dm 644 config/nvidia-xrun "$pkgdir/etc/default/nvidia-xrun"
   install -Dm 755 nvidia-xrun "$pkgdir/usr/bin/nvidia-xrun"
   install -Dm 644 nvidia-xrun-pm.service "$pkgdir/etc/systemd/system/nvidia-xrun-pm.service"
   install -dm 555 "$pkgdir/etc/X11/xinit/nvidia-xinitrc.d"

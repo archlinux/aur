@@ -3,6 +3,8 @@ post_install() {
 In order to automatically disable the NVIDIA graphic card at boot:
   - blacklist the "nvidia" module in /etc/modprobe.d/
   - enable the "nvidia-xrun-pm" systemd service
+If you experience problems with nvidia-xrun-pm:
+  - check https://github.com/michelesr/nvidia-xrun-pm#setting-the-right-bus-id
 EOF
 }
 
