@@ -10,7 +10,9 @@ pkgbase = msmtp-oauth2
 	makedepends = gsasl
 	conflicts = msmtp
 	source = https://marlam.de/msmtp/releases/msmtp-1.8.3.tar.xz
+	source = get-gmail-token
 	sha256sums = 3cb2eefd33d048f0f82de100ef39a494e44fd1485e376ead31f733d2f36b92b4
+	sha256sums = SKIP
 
 pkgname = msmtp-oauth2
 	pkgdesc = A mini smtp client, with oauth2 hack
