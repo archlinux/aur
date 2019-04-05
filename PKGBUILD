@@ -2,7 +2,7 @@
 # Python package author: Standard Ebooks <standardebooks@googlegroups.com>
 # Maintainer: Tassos Natsakis <7712382@eipieq.com>
 pkgname=python-standardebooks
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="The toolset used to produce Standard Ebooks epub ebooks."
 arch=(any)
