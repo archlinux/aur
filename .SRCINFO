@@ -1,6 +1,6 @@
 pkgbase = drminfo
 	pkgdesc = print drm device information
-	pkgver = 5.1
+	pkgver = 6.1
 	pkgrel = 1
 	url = https://www.kraxel.org/cgit/drminfo/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = drminfo
 	depends = cairo
 	depends = pixman
 	depends = gtk3
-	source = https://www.kraxel.org/cgit/drminfo/snapshot/drminfo-5-1.tar.gz
-	sha256sums = e3a5db6ccf22e9198e63b5a4f5268b7bc17169ae8e0056673c8760b3d2a7c9a1
+	source = https://www.kraxel.org/cgit/drminfo/snapshot/drminfo-6-1.tar.gz
+	sha256sums = 70304a49f51c6080d8414f45a69c21eb934732d494ee43b91a80a48ebf8cd18e
 
 pkgname = drminfo
 
