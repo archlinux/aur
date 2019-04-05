@@ -1,14 +1,14 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=agrep-git
 pkgver=r33.7b7f350
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Approximate GREP for fast fuzzy string searching."
 arch=('i686' 'x86_64')
 url="https://github.com/Wikinaut/agrep"
 license=('ISC')
 groups=()
-depends=('')
+depends=()
 makedepends=('git' 'unzip')
 optdepends=()
 checkdepends=()
