@@ -1,14 +1,14 @@
 pkgbase = cutecom
 	pkgdesc = A graphical serial terminal
-	pkgver = 0.50.0
+	pkgver = 0.51.0
 	pkgrel = 0
 	url = https://gitlab.com/cutecom/cutecom
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	depends = qt5-serialport
-	source = cutecom-v0.50.0.tar.gz::https://gitlab.com/cutecom/cutecom/-/archive/v0.50.0/cutecom-v0.50.0.tar.gz
-	md5sums = 17062fcb0c063e496c09f0255e471268
+	source = cutecom-v0.51.0.tar.gz::https://gitlab.com/cutecom/cutecom/-/archive/v0.51.0/cutecom-v0.51.0.tar.gz
+	md5sums = bcc5d13ab5c70f1e343ad32b57c9618c
 
 pkgname = cutecom
 

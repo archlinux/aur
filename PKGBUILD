@@ -1,7 +1,8 @@
-# Maintainer: Nils Bars <nils@nbars.de>
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Nils Bars <nils@nbars.de>
 
 pkgname=cutecom
-pkgver=0.50.0
+pkgver=0.51.0
 pkgrel=0
 pkgdesc="A graphical serial terminal"
 arch=('x86_64')
@@ -25,4 +26,4 @@ package() {
   install -D -m 644 cutecom.1 ${pkgdir}/usr/share/man/man1/cutecom.1
 }
 
-md5sums=('17062fcb0c063e496c09f0255e471268')
+md5sums=('bcc5d13ab5c70f1e343ad32b57c9618c')
