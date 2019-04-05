@@ -1,6 +1,6 @@
 # Maintainer: Jia Li <lijia1608@gmail.com>
 pkgname=python2-pyscf
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Python-based Simulations of Chemistry Framework"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ provides=($pkgname=$pkgver)
 conflicts=(${pkgname}-git)
 _name=${pkgname#python2-}
 source=("https://github.com/pyscf/pyscf/archive/v$pkgver.tar.gz")
-sha256sums=('b6f48fa7da3ef8fca2e78f0a145b595c232ac82001095c097e49c97ce89422d7')
+sha256sums=('60ea5e82a3061466a423dd44650664e9b4594e88c7b880d66749e0b2901f1e2a')
 
 build() {
     cd "${_name}-${pkgver}"
