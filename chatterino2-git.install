@@ -1,17 +1,7 @@
-post_install() {
-    cat << EOF
-
-==> Make sure you properly close chatterino after configuring, this is needed to save settings properly currently.
-
-(this may or may not still be the case at the time of installing this.)
-
-EOF
-}
-
 post_remove() {
     cat << EOF
 
-==> To remove Chatterino settings, delete ~/.config/chatterino
+==> To remove Chatterino settings and cache, delete ~/.local/share/chatterino
 
 EOF
 }
