@@ -1,7 +1,7 @@
 pkgbase = cutecom
 	pkgdesc = A graphical serial terminal
 	pkgver = 0.51.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://gitlab.com/cutecom/cutecom
 	arch = x86_64
 	license = GPL3
