@@ -1,21 +1,21 @@
 # Maintainer: Joost Bremmer <contact@madeofmagicandwires.online>
 
 pkgname=mackup
-pkgver=0.8.19
+pkgver=0.8.22
 pkgrel=1
 pkgdesc="a small Python utitlity to keep your application settings in sync."
 arch=('any')
 url="https://github.com/lra/mackup"
 license=('GPL3')
-depends=('python')
+depends=('python'
+         'python-docopt')
 
 makedepends=(
             'python'
-            'python-docopt'
             'python-setuptools')
 
 source=("https://github.com/lra/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('28c1318a716acd6e9b3ec6ccf5c8a0087dbeb8c46ccef78d1891479dd4ccf31a')
+sha256sums=('277471d41b89d0cd43846c2bdb52b1fe020afcc3cb974e8639a42f29bbbf8ec0')
 
 
 package() {
