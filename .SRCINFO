@@ -13,6 +13,7 @@ pkgbase = chatterino2-git
 	depends = qt5-multimedia
 	depends = qt5-base
 	depends = qt5-svg
+	depends = boost-libs
 	optdepends = streamlink: For piping streams to video players
 	optdepends = pulseaudio: For audio output
 	provides = chatterino
