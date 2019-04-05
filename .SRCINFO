@@ -1,6 +1,6 @@
 pkgbase = nteract-bin
 	pkgdesc = Interactive literate coding notebook
-	pkgver = 0.12.3
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://nteract.io
 	install = nteract-bin.install
@@ -20,9 +20,9 @@ pkgbase = nteract-bin
 	optdepends = python2-ipykernel: support for Python 2
 	optdepends = r: support for R (requires the "IRkernel" package)
 	optdepends = sagemath-jupyter: support for SageMath
-	source = nteract_0.12.3_amd64.deb::https://github.com/nteract/nteract/releases/download/v0.12.3/nteract_0.12.3_amd64.deb
+	source = nteract_0.13.0_amd64.deb::https://github.com/nteract/nteract/releases/download/v0.13.0/nteract_0.13.0_amd64.deb
 	source = LICENSE
-	sha256sums = cd7fdebc78e4fc497eedd90969bcd902f8cdf90db4eeba20a4294c1ae07555d8
+	sha256sums = 7cc2d8171b247dbe7f0032959638687e1acf96196d13287e860167aec0ea184d
 	sha256sums = 866e6fa48cb8810d36d8d85a3085d7aa1c4317d3731f0ef84919428fee87bf71
 
 pkgname = nteract-bin
