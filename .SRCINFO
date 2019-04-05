@@ -1,0 +1,32 @@
+pkgbase = wps-office-bin
+	pkgdesc = Kingsoft Office (WPS Office) is an office productivity suite
+	pkgver = 11.1.0.8372
+	pkgrel = 1
+	url = http://wps-community.org/
+	install = wps-office-bin.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = gtk2
+	depends = xorg-mkfontdir
+	depends = openssl-1.0
+	depends = sdl2
+	depends = libpng12
+	depends = libxss
+	depends = libxtst
+	depends = libsm
+	depends = nss
+	optdepends = cups: for printing support
+	optdepends = libjpeg-turbo: JPEG image codec support
+	optdepends = pango: for complex (right-to-left) text support
+	optdepends = ttf-wps-fonts: Symbol fonts required by wps-office
+	provides = wps-office
+	conflicts = wps-office
+	source_i686 = https://wdl1.cache.wps.cn/wps/download/ep/Linux2019/8372/wps-office_11.1.0.8372_i386.deb
+	sha1sums_i686 = d2a12b05fb2cb8f19a12c266f1e4477f199906ad
+	source_x86_64 = https://wdl1.cache.wps.cn/wps/download/ep/Linux2019/8372/wps-office_11.1.0.8372_amd64.deb
+	sha1sums_x86_64 = 3b7a199c7da8ea64aaa2f00d6474a11c9714eb8a
+
+pkgname = wps-office-bin
+
