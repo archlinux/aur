@@ -1,8 +1,8 @@
 # Maintainer: Spencer Harmon <spencer dot harmon at higher-state dot com>
 
 pkgname="ulam-git"
-pkgver=3.0.12.r130.g0f2c4869
-pkgrel=4
+pkgver=4.0.1.r14.gf4d7c743
+pkgrel=1
 epoch=
 pkgdesc="Github version of ulam compiler and MFM simulator"
 arch=('any')
@@ -53,15 +53,14 @@ prepare() {
 
 #	change non-portable uname flag from -i to -m
 	perl -0777 -i -pe 's/(uname -)i/$1m/' MFM/src/drivers/mfzrun/mfzrun.tmpl
+}
 
+build() {
 	make -C MFM
 	make -C ULAM
 
 	perl ULAM/share/perl/extractDistro.pl bin . "$srcdir/ulam" ulam
 	perl ULAM/share/perl/extractDistro.pl src . "$srcdir/ulam" ulam
-}
-
-build() {
 	make -C ulam
 }
 
