@@ -21,6 +21,8 @@ package(){
 
 	# Fix directories structure differencies
 	cd "${pkgdir}"
+	
+	export PATH=/opt/openresty/bin:$PATH
 
 	install -D -m644 "/usr/local/openresty/pod/nginx/license_copyright.pod" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -D -m644 "/usr/local/openresty/pod/nginx/license_copyright.pod" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
