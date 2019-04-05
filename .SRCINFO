@@ -8,7 +8,6 @@ pkgbase = chatterino2-git
 	license = MIT
 	makedepends = boost
 	makedepends = git
-	depends = rapidjson
 	depends = gst-plugins-ugly
 	depends = gst-plugins-good
 	depends = qt5-multimedia
