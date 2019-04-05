@@ -1,6 +1,6 @@
 pkgbase = python-pip-git
 	pkgdesc = The PyPA recommended tool for installing Python packages
-	pkgver = 19.0.3.r116.g20e42271
+	pkgver = 19.0.3.r119.gd4264dc3
 	pkgrel = 1
 	url = https://github.com/pypa/pip/
 	arch = any
