@@ -2,7 +2,7 @@
 
 pkgname=rambox
 pkgver=0.5.17
-pkgrel=2
+pkgrel=3
 pkgdesc='Free and Open Source messaging and emailing app that combines common web applications into one.'
 arch=(i686 x86_64)
 depends=(electron)
@@ -22,6 +22,7 @@ build() {
 	# retrieve env.js
 	cd "$srcdir"
 	tar xOf "Rambox-$pkgver-x64.tar.gz" "Rambox-$pkgver/resources/app.asar" >app.asar
+	mv "community-edition-$pkgver" "$pkgname-$pkgver"
 	cd "$pkgname-$pkgver"
 	asar ef ../app.asar env.js
 	
