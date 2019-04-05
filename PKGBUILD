@@ -1,14 +1,14 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 pkgname=apbs
 pkgver=1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Electrostatic and solvation properties for complex molecules"
 arch=(x86_64 i686)
 url="http://www.poissonboltzmann.org/"
 license=('MIT')
 depends=('swig' 'python2')
 makedepends=('cmake' 'git' 'gcc')
-source=("git+https://github.com/Electrostatics/apbs-pdb2pqr.git#commit=044f531f8fb944f7b14c9f34ff33833357b0fea4")
+source=("git+https://github.com/Electrostatics/apbs-pdb2pqr.git#commit=aa353941cfadc09ccd113075d261a427864c2979")
 md5sums=('SKIP')
 
 build() {
@@ -27,4 +27,13 @@ package() {
 	cd ${srcdir}/apbs-pdb2pqr/apbs
 
 	make DESTDIR=$pkgdir install
+
+    # fix python versions in scripts
+    sed -i 's|/bin/python|/usr/bin/python2|g' ${pkgdir}/usr/share/apbs/examples/protein-rna/apbs_unix_dx.py
+    sed -i 's|/usr/bin/env python|/usr/bin/python2|g' ${pkgdir}/usr/share/apbs/examples/protein-rna/fit.py
+    sed -i 's|/usr/bin/env python|/usr/bin/python2|g' ${pkgdir}/usr/share/apbs/tools/manip/psize.py
+    sed -i 's|/usr/bin/python|/usr/bin/python2|g' ${pkgdir}/usr/share/apbs/tools/python/noinput.py
+
+    find "${pkgdir}/usr/share/apbs/tests" -name '*.py' -type f -exec \
+       sed -i 's|/usr/bin/env python|/usr/bin/python2|g' {} \;
 }
