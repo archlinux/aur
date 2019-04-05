@@ -1,6 +1,6 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=scheduler
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Alarms and reminders: tasks, events, calendar, pomodoro and timer widgets"
 arch=('any')
@@ -17,10 +17,11 @@ optdepends=('tktray: GUI toolkit for the system tray icon (at least one must be 
             'python-pyqt4: GUI toolkit for the system tray icon (at least one must be installed)'
             'python-pyside: GUI toolkit for the system tray icon (at least one must be installed)'
             'libnotify: desktop notifications'
-            'zenity: nicer color chooser'
-            'python-tkcolorpicker: nicer color chooser')
+            'zenity: nicer color chooser and file browser'
+            'python-tkcolorpicker: nicer color chooser'
+            'python-tkfilebrowser: nicer file browser')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/j4321/Scheduler/archive/v${pkgver}.tar.gz")
-sha512sums=('a6cc5a64e483cd6a36c7fc4373f260da34183f42ca8b17f0770b767bbd761082a557c7c4b741f71520eaec1a9052554e37ce055e8b3afcc82eaee3ab0bc94320')
+sha512sums=('ab7d37c0b60f5577f6308938ed733edcab765eef671a96fd1a6eff9556159c5b32815b649558af9cb80da60be10a6ebdecbb52f6e11999a4bab6ac1ce235d8b2')
 
 build() {
 	cd "$srcdir/Scheduler-${pkgver}"
