@@ -2,7 +2,7 @@
 
 pkgbase=python-iptools
 pkgname=(python-iptools python2-iptools)
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Collection of utilities for dealing with IP addresses"
 url="http://python-iptools.readthedocs.org/"
@@ -17,7 +17,7 @@ source=(
   "https://github.com/bd808/$pkgbase/archive/v$pkgver.tar.gz"
   )
 sha256sums=('c85e8d34884219ec4ac360f28983b015953ec34b1c6d91e6afbb8b421626ea9e'
-            '77513ec4982a807ef636b1b847d3f6ebe69e2e56faf6cb5d425106be9a24d02c')
+            '5ea59c0867e72d8243305ff1297fc5b2d8feaca650369a29985453ce4f39ca97')
 
 package_python-iptools() {
   depends=('python')
