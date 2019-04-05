@@ -1,6 +1,6 @@
 pkgbase = pxlart
 	pkgdesc = A ncurses pixer art creator written in C
-	pkgver = 1.1
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/mananapr/pxlart/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = pxlart
 	makedepends = gcc
 	makedepends = make
 	depends = ncurses
-	source = pxlart-1.1.tar.gz::https://github.com/mananapr/pxlart/archive/v1.1.tar.gz
-	sha256sums = 76072d0724dbb4351cb4be1e1d92d87c79d51696e10871da275faa09c7175a4f
+	source = pxlart-1.4.tar.gz::https://github.com/mananapr/pxlart/archive/v1.4.tar.gz
+	sha256sums = 7d92ceb96adec8298396ca9f9843800b1c408d5601a968033264619ce0902386
 
 pkgname = pxlart
 
