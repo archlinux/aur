@@ -6,6 +6,10 @@
 
 _android_arch=$1
 
+if [ -z "${_android_arch}" ]; then
+    _android_arch=armv7a-eabi
+fi
+
 # Minimum Android platform based on:
 #
 # https://developer.android.com/about/dashboards/
@@ -71,3 +75,24 @@ export ANDROID_STRIP=${ANDROID_TOOLS_PREFIX}strip
 export ANDROID_LIBS=/opt/android-libs/${_android_arch}
 export PKG_CONFIG_SYSROOT_DIR=${ANDROID_LIBS}
 export PKG_CONFIG_LIBDIR=${PKG_CONFIG_SYSROOT_DIR}/lib/pkgconfig:${PKG_CONFIG_SYSROOT_DIR}/share/pkgconfig
+
+ndk_version() {
+    grep 'Pkg.Revision' ${ANDROID_NDK_ROOT}/source.properties | awk '{print $3}'
+}
+
+ndk_version_ge_than() {
+    version=$1
+    ndk_ver=$(ndk_version)
+
+    if [ "${version}" = "${ndk_ver}" ]; then
+        return 0
+    fi
+
+    older_ver=$(printf "${version}\n${ndk_ver}" | sort -V | head -n 1)
+
+    if [ "${older_ver}" = "${ndk_ver}" ]; then
+        return 1
+    fi
+
+    return 0
+}

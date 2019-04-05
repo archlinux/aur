@@ -6,17 +6,12 @@ source android-env.sh ${_android_arch}
 
 pkgname=android-${_android_arch}-ffmpeg
 pkgver=4.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Complete solution to record, convert and stream audio and video (android)"
 arch=('any')
 url="http://ffmpeg.org/"
 license=('GPL3')
-depends=('apache-ant'
-         'android-ndk>=r18.b'
-         "android-platform-$ANDROID_MINIMUM_PLATFORM"
-         'android-sdk-25.2.5'
-         'android-sdk-build-tools'
-         'android-sdk-platform-tools')
+depends=("android-${_android_arch}-libvorbis")
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-pkg-config' 'git' 'yasm')
 source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
@@ -91,6 +86,15 @@ build() {
                  --disable-asm"
             ;;
         *)
+            ;;
+    esac
+
+    case "$_android_arch" in
+        aarch64)
+            ;;
+        *)
+            configue_opts+="
+                --enable-libvorbis"
             ;;
     esac
 
