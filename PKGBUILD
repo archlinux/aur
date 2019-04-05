@@ -3,7 +3,7 @@
 
 pkgname=play-emu-ninja-git
 _gitname=Play-Build
-pkgver=r4322.4154887e
+pkgver=r4796.8e366838
 pkgrel=1
 pkgdesc="Play! is an experimental Playstation 2 emulator. (build using ninja)"
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ prepare () {
 
 build() {
     cd $_gitname/Play/
-    mkdir build
+    mkdir -p build
     cd build
     cmake .. -G"Ninja"
     cmake --build . --config Release
@@ -46,7 +46,7 @@ package() {
     install -d $pkgdir/usr/bin
     install -d $pkgdir/usr/share/pixmaps
     install -d $pkgdir/usr/share/applications
-    install -m755 $srcdir/$_gitname/Play/build/Source/ui_unix/Play $pkgdir/usr/bin/play-emu
+    install -m755 $srcdir/$_gitname/Play/build/Source/ui_qt/Play $pkgdir/usr/bin/play-emu
     install -m755 play.png $pkgdir/usr/share/pixmaps/play.png
     install -m755 play-emu.desktop $pkgdir/usr/share/applications/play-emu.desktop
 }
