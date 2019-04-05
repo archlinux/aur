@@ -12,6 +12,7 @@ pkgbase = kong-community-edition
 	depends = pcre
 	depends = zlib
 	depends = openresty
+	depends = rsync
 	options = !strip
 	options = !emptydirs
 	source = https://bintray.com/kong/kong-community-edition-deb/download_file?file_path=dists/kong-community-edition-1.1.0.stretch.all.deb
