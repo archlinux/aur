@@ -1,6 +1,6 @@
 pkgbase = vnote-bin
 	pkgdesc = A Vim-inspired note-taking application that knows programmers and Markdown better
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://tamlok.github.io/vnote
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = vnote-bin
 	conflicts = vnote
 	replaces = vnote
 	options = !strip
-	source = vnote-2.3.AppImage::https://github.com/tamlok/vnote//releases/download/v2.3/VNote-2.3-x86_64.AppImage
-	sha256sums = 8cb98777f8f601dd1d27a4043d8aa3981f3137476b5fa6cf005426ff16da66f4
+	source = vnote-2.4.AppImage::https://github.com/tamlok/vnote//releases/download/2.4/VNote-2.4-x86_64.AppImage
+	sha256sums = 7f7c013132b6d9581610891e9e108a9b882d441e1b64badb689120053e1f9315
 
 pkgname = vnote-bin
 
