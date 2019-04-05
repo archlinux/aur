@@ -1,0 +1,20 @@
+pkgbase = msmtp
+	pkgdesc = A mini smtp client, with oauth2 hack
+	pkgver = 1.8.3
+	pkgrel = 1
+	url = https://marlam.de/msmtp/
+	arch = x86_64
+	license = GPL3
+	makedepends = texlive-plainextra
+	makedepends = libsecret
+	makedepends = gsasl
+	conflicts = msmtp
+	source = https://marlam.de/msmtp/releases/msmtp-1.8.3.tar.xz
+	sha256sums = 3cb2eefd33d048f0f82de100ef39a494e44fd1485e376ead31f733d2f36b92b4
+
+pkgname = msmtp-oauth2
+	pkgdesc = A mini smtp client, with oauth2 hack
+	depends = libsecret
+	depends = gsasl
+	depends = getmail
+

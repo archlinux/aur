@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+user="myemail@mydomain.com"
+access_token=$(getmail-gmail-xoauth-tokens /path/to/gmail.json)
+echo -ne "user=$user\001auth=Bearer $access_token\001\001"| base64 -w0
