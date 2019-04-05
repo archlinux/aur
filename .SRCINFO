@@ -1,4 +1,4 @@
-pkgbase = msmtp
+pkgbase = msmtp-oauth2
 	pkgdesc = A mini smtp client, with oauth2 hack
 	pkgver = 1.8.3
 	pkgrel = 1
