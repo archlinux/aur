@@ -2,13 +2,13 @@
 
 pkgname=ringo
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-threaded JavaScript on the JVM"
 arch=('any')
 url="https://ringojs.org/"
 license=('Apache')
 depends=('java-runtime-headless' 'bash')
-makedepends=('apache-ant' 'apache-ivy' 'patch')
+makedepends=('ant' 'ivy' 'patch')
 source=("git+https://github.com/ringo/ringojs.git#tag=v${pkgver}"
         'patch.diff')
 sha256sums=('SKIP'
