@@ -1,13 +1,13 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fsleyes
-pkgver=0.27.3
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="FSLeyes is the FSL image viewer"
 arch=('any')
 url="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes"
 license=('Apache')
 groups=()
-depends=('python' 'python-setuptools' 'python-sphinx' 'python-six' 'python-numpy' 'python-matplotlib' 'python-nibabel' 'python-jinja' 'python-pillow' 'python-opengl' 'python-pyparsing' 'python-scipy' 'python-opengl-accelerate' 'python-wxpython>=4.0.1-2' 'fsl' 'fslpy>=1.13.3' 'fsleyes-widgets>=0.7.2' 'fsleyes-props>=1.6.4-2' 'python-wxnatpy>=0.3.1-2' 'python-indexed-gzip>=0.8.7')
+depends=('python' 'python-setuptools' 'python-sphinx' 'python-six' 'python-numpy' 'python-matplotlib' 'python-nibabel' 'python-jinja' 'python-opengl' 'python-pyparsing' 'python-scipy' 'python-opengl-accelerate' 'python-wxpython>=4.0.1-2' 'fsl' 'fslpy>=2.0.1' 'fsleyes-widgets>=0.7.3' 'fsleyes-props>=1.6.5' 'python-wxnatpy>=0.3.1-2' 'python-indexed-gzip>=0.8.8')
 makedepends=()
 provides=()
 conflicts=()
@@ -15,7 +15,7 @@ replaces=()
 source=("${pkgname}-${pkgver}.tar.gz::https://git.fmrib.ox.ac.uk/fsl/fsleyes/fsleyes/repository/archive.tar.gz?ref=${pkgver}"
         "${pkgname}.png::https://git.fmrib.ox.ac.uk/uploads/-/system/group/avatar/85/icon_512x512.png"
         "${pkgname}.desktop")
-sha256sums=('9dce9d2e0c30a043b2e722c5f903a4e773b198a3eb29e63ef138bf1304ac6a75'
+sha256sums=('1d6fe69acef878c21a8ab58ea41b7796ab9551ee8cb5df4e94f04c1d8a67069f'
             'c7211ee624483a272f280b3aa772046ec9226d838f9c3023450888abddf9d71a'
             '6e91e88eb74602f8da7cda6575245dbaaf4577022bffe15c0efedb33106139fb')
 
