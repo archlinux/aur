@@ -1,0 +1,21 @@
+pkgbase = dtvp-utils
+	pkgdesc = Utilities for Kingston DataTraveler Vault Privacy 3.0 encrypted drive
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.kingston.com/en/usb/encrypted_security/dtvp30
+	arch = x86_64
+	license = unknown
+	depends = gcc-libs
+	source = dtvp_about
+	source = dtvp_forgotpassword
+	source = dtvp_initialize
+	source = dtvp_login
+	source = dtvp_logout
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = dtvp-utils
+
