@@ -8,7 +8,7 @@ pkgbase = python-www-authenticate
 	makedepends = python-setuptools
 	depends = python
 	source = https://pypi.python.org/packages/a7/2d/5567291a8274ef5d9b6495a1ec341394ab68933e2396936755b157f87b43/www-authenticate-0.9.2.tar.gz
-	md5sums = 42557d5d1f8ea37996e666039207d902
+	sha256sums = cf75fc2ea5effb0f9342d7de7619b736f2a7d4b223331a53e296863a286e9dcb
 
 pkgname = python-www-authenticate
 
