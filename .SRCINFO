@@ -1,0 +1,30 @@
+pkgbase = pymol-python2
+	pkgdesc = Molecular visualization system on an Open Source foundation
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://pymol.org/
+	arch = x86_64
+	license = custom
+	makedepends = desktop-file-utils
+	makedepends = gendesk
+	makedepends = libmmtf
+	makedepends = msgpack-c
+	depends = freetype2
+	depends = glew
+	depends = glm
+	depends = glut
+	depends = python2-numpy
+	depends = tcsh
+	optdepends = python2-pmw: pmw based UI
+	optdepends = python2-pyqt5: Qt5 based UI
+	provides = pymol
+	conflicts = pymol
+	source = https://github.com/schrodinger/pymol-open-source/archive/v2.3.0.tar.gz
+	source = pymol.png::https://c.fsdn.com/allura/p/pymol/icon
+	source = apbstools_tcltk8.6.patch
+	sha512sums = e1dcea1c97bcd9045d3543e92902f240e6affbf61a38e8d2a0be04309e3dbabfe1a869847d1423b3151008978d4c305bbf3ce994fc9d453c0063ce020100c133
+	sha512sums = 39917c1dc80cd6a59e8f6b3ea49a59491eaf23d14e32ac264f6d71f33007f686deb6a66e50e7f20ef9df5337038e3572b018633c361460d5ee0c1d8f0a8259d1
+	sha512sums = 90fce6d3c4364cd775b44bdd9013a08f26392339bec40ecd749220b3d11391381f5b159734bdb2e2ac675fbc016a6a1b9c4cec2fa8c9c0226609a5f09b610b9c
+
+pkgname = pymol-python2
+
