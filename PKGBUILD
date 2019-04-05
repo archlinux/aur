@@ -1,48 +1,47 @@
-# Maintainer: Kevin Lewis <aur AT kevin DOT oakaged DOT io>
+# Maintainer: Markus Hartung <mail@hartmark.se>
+# Contributor: Kevin Lewis <aur AT kevin DOT oakaged DOT io>
 # Contributor: Jason Lenz <Jason@Lenzplace.org>
-_pkgname=sleepyhead
-pkgname=$_pkgname-git
-pkgver=1.1.r2356.8e6968fb
-pkgrel=2
-pkgdesc="Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment."
+_pkgname=oscar
+pkgname=oscar-git
+pkgver=1.0.r2475.93d263de
+pkgrel=1
+pkgdesc="Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment. Fork of the sleepyhead project."
 arch=('i686' 'x86_64')
-url="http://sleepyhead.jedimark.net"
+url="https://gitlab.com/pholy/OSCAR-code"
 license=('GPL')
 depends=(
   'qt5-serialport'
-  'qt5-tools'
 )
 makedepends=(
   'git'
   'glu'
 )
 provides=("$_pkgname")
-conflicts=('sleepyhead')
 source=(
-  "git+https://gitlab.com/sleepyhead/sleepyhead-code.git"
-  'sleepyhead.desktop'
+  "git+https://gitlab.com/pholy/OSCAR-code.git"
+  'oscar.desktop'
 )
 sha256sums=('SKIP'
-            'a15100d6bf1e1136d41a36f59613cd20776f0709c74c2e2d1b46f03271e08c3c')
+            '0ea864d47fdce50d93df7d5191227198b4ffd3a3def5f5550e07367296476a15')
 
 pkgver() {
-  cd sleepyhead-code
-  _major=$(sed -rn 's/.*major_version = ([0-9]+).*/\1/p' < sleepyhead/version.h)
-  _minor=$(sed -rn 's/.*minor_version = ([0-9]+).*/\1/p' < sleepyhead/version.h)
+  cd OSCAR-code
+  _major=$(sed -rn 's/.*major_version = ([0-9]+).*/\1/p' < oscar/version.h)
+  _minor=$(sed -rn 's/.*minor_version = ([0-9]+).*/\1/p' < oscar/version.h)
   _gitversion=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
   echo $_major.$_minor.$_gitversion
 }
 
 build() {
-  cd sleepyhead-code
+  cd OSCAR-code
   ./configure
-  make
+  make -j$(cat /proc/cpuinfo | awk '/^processor/{print $3}' | wc -l)
 }
 
 package() {
-  install -D $srcdir/sleepyhead-code/sleepyhead/SleepyHead $pkgdir/usr/bin/sleepyhead
-  install -Dm644 $srcdir/sleepyhead-code/sleepyhead/icons/bob-v3.0.png $pkgdir/usr/share/sleepyhead/icon.png
-  install -Dm644 $srcdir/sleepyhead.desktop $pkgdir/usr/share/applications/sleepyhead.desktop
+  install -D $srcdir/OSCAR-code/oscar/OSCAR $pkgdir/usr/bin/oscar
+  install -Dm644 $srcdir/OSCAR-code/oscar/icons/logo-lg.png $pkgdir/usr/share/oscar/icon.png
+  install -Dm644 $srcdir/oscar.desktop $pkgdir/usr/share/applications/oscar.desktop
 }
 
 # vim:set ts=2 sw=2 et:

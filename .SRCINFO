@@ -1,8 +1,8 @@
-pkgbase = sleepyhead-git
+pkgbase = oscar-git
 	pkgdesc = Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment.
 	pkgver = 1.1.r2356.8e6968fb
-	pkgrel = 2
-	url = http://sleepyhead.jedimark.net
+	pkgrel = 1
+	url = https://gitlab.com/pholy/OSCAR-code
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -10,12 +10,12 @@ pkgbase = sleepyhead-git
 	makedepends = glu
 	depends = qt5-serialport
 	depends = qt5-tools
-	provides = sleepyhead
-	conflicts = sleepyhead
-	source = git+https://gitlab.com/sleepyhead/sleepyhead-code.git
-	source = sleepyhead.desktop
+	provides = oscar
+	conflicts = oscar
+	source = git+https://gitlab.com/pholy/OSCAR-code.git
+	source = oscar.desktop
 	sha256sums = SKIP
-	sha256sums = a15100d6bf1e1136d41a36f59613cd20776f0709c74c2e2d1b46f03271e08c3c
+	sha256sums = cfae71fb4aeba2c34276f890a8292ccb2faeb1b29be1a7b0d8db942ab217a090
 
-pkgname = sleepyhead-git
+pkgname = oscar-git
 
