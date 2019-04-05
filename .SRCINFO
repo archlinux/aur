@@ -1,13 +1,13 @@
 pkgbase = mozo-gtk2
 	pkgdesc = MATE menu editing tool (GTK2 version)
 	pkgver = 1.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mate-desktop.org
 	arch = any
 	groups = mate-extra-gtk2
 	license = GPL
 	makedepends = mate-common
-	depends = mate-menus
+	depends = mate-menus-gtk2
 	depends = pygtk
 	depends = python2-gobject
 	provides = mozo

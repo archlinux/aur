@@ -1,16 +1,16 @@
 # Maintainer: Newb I the Newbd <czbd hostedon o2 halfacolon pl>
-# Maintainer : Martin Wimpress <code@flexion.org>
+# Contributor: Martin Wimpress <code@flexion.org>
 
 _ver=1.12
 _pkgbase=mozo
 pkgname=${_pkgbase}-gtk2
 pkgver=${_ver}.0
-pkgrel=2
+pkgrel=3
 pkgdesc="MATE menu editing tool (GTK2 version)"
 url="http://mate-desktop.org"
 arch=('any')
 license=('GPL')
-depends=('mate-menus' 'pygtk' 'python2-gobject')
+depends=('mate-menus-gtk2' 'pygtk' 'python2-gobject')
 makedepends=('mate-common')
 groups=('mate-extra-gtk2')
 conflicts=("${_pkgbase}")
