@@ -4,16 +4,16 @@
 # Contributor: Drew Gilbert <gilbert dot drew at gmail dot com>
 
 pkgname=perl-net-upnp
-pkgver=1.4.4
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="Perl Module UPnP"
 arch=('x86_64')
-url="http://search.cpan.org/~skonno/Net-UPnP-1.4.4/"
+url="https://metacpan.org/release/Net-UPnP"
 license=('BSD' 'PerlArtistic')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/S/SK/SKONNO/Net-UPnP-${pkgver}.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/S/SK/SKONNO/Net-UPnP-$pkgver.tar.gz")
 depends=('perl')
-sha256sums=('6161340fdeedc3014dd90acd892b001b58b8ff37cf56b12998b5ed62add0a0d8')
+sha256sums=('10ae135a8f72d399501166bc697a3b300fb739a6614aa54408e4e08bec1e91dc')
 
 build() {
   cd "${srcdir}/Net-UPnP-${pkgver}"
