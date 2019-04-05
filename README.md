@@ -33,5 +33,13 @@ mksrcinfo
 ```bash
 git clone ssh+git://aur@aur4.archlinux.org/direnv.git/ direnv-archlinux
 cd direnv-archlinux
-git remote set-url --add origin https://github.com/direnv/direnv-archlinux.git
+git remote set-url --add github https://github.com/direnv/direnv-archlinux.git
+```
+
+## Another way...
+
+```bash
+bash -c "updpkgsums && makepkg --printsrcinfo > .SRCINFO"
+git push aur
+git push github
 ```
