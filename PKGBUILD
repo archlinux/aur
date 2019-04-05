@@ -1,6 +1,6 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=python-indexed-gzip
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
 pkgdesc="Drop-in replacement for the built-in python gzip.GzipFile class (IndexedGzipFile); written to allow fast random access of compressed NIfTI files"
 _name=indexed_gzip
@@ -18,7 +18,7 @@ options=(!emptydirs)
 install=
 # Switched from PyPi to GitHub due to persistent 404 errors
 source=("https://github.com/pauldmccarthy/${_name}/archive/v${pkgver}.tar.gz")
-sha256sums=('f09b075980af257f9ec0c56d7609e6bb07b35d6928886dfbd07586de897c0bb5')
+sha256sums=('1b237d26dc84bac870c41564a4b0fe48073586e1d7552b6bed8f9b68f6e0757f')
 
 package() {
   cd "$srcdir/$_name-$pkgver"
