@@ -2,7 +2,7 @@
 
 pkgname=casile-git
 pkgdesc="Caleb's SILE publishing toolkit"
-pkgver=0.0.0.r787.g3e576cf
+pkgver=0.0.0.r811.g5be9d6b
 _branch='master'
 pkgrel=1
 arch=(any)
@@ -40,7 +40,7 @@ depends=('bc'
          'python-pandocfilters'
          'python-pantable'
          'python-usfm2osis-cw-git'
-         'python-yaml'
+         'python-ruamel-yaml'
          'rsync'
          'sile-git>=0.9.5.r1'
          'sqlite'
