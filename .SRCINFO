@@ -2,15 +2,15 @@ pkgbase = aacskeys
 	pkgdesc = A library and program to retrieve decryption keys for HD discs
 	pkgver = 0.4.0e
 	pkgrel = 7.4
-	url = http://forum.doom9.org/showthread.php?t=123311
+	url = http://cyberside.net.ee/ripping/BD_DeviceKeys
 	arch = i686
 	arch = x86_64
 	license = custom:Public Domain
 	makedepends = java-environment
 	makedepends = premake
 	depends = openssl-1.0
-	source = http://deb-multimedia.org/pool/main/a/aacskeys/aacskeys_0.4.0e.orig.tar.gz
-	source = http://deb-multimedia.org/pool/main/a/aacskeys/aacskeys_0.4.0e-dmo7.diff.gz
+	source = https://deb-multimedia.org/pool/main/a/aacskeys/aacskeys_0.4.0e.orig.tar.gz
+	source = https://deb-multimedia.org/pool/main/a/aacskeys/aacskeys_0.4.0e-dmo7.diff.gz
 	sha1sums = 8790f0d4098d6bc83304ad2136cc9681374df83a
 	sha1sums = 481c737983332a4a38aab0b292ba0cd958bb629c
 
