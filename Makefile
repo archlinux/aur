@@ -30,3 +30,9 @@ install:
 
 update:
 	makepkg --printsrcinfo > .SRCINFO
+
+clean:
+	rm -fr src
+	rm -fr pkg
+	rm -f  *.tar.gz
+	rm -f  *.tar.xz
