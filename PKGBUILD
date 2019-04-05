@@ -8,7 +8,7 @@ pkgver=R45.1
 pkgrel=1
 pkgdesc='A video processing framework with the future in mind'
 arch=('x86_64')
-url='http://www.vapoursynth.com/'
+url='https://github.com/swordfeng/vapoursynth'
 license=('LGPL2.1' 'custom:OFL')
 depends=('gcc-libs' 'glibc' 'libmagick' 'python' 'tesseract' 'wine'
          'libass.so' 'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libzimg.so')
