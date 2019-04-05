@@ -1,8 +1,8 @@
 # Maintainer: Robin Lange <robin dot langenc at gmail dot com>
 # Contributor: Robin Lange <robin dot langenc at gmail dot com>
 pkgname=optimus-manager-git
-pkgver=r274.6d8572c
-pkgrel=1
+pkgver=r275.56fd2d8
+pkgrel=2
 pkgdesc="Management utility to handle GPU switching for Optimus laptops (Git version)"
 arch=('any')
 url="https://github.com/Askannz/optimus-manager"
@@ -16,11 +16,11 @@ backup=('etc/optimus-manager/xorg-intel.conf'
         'etc/optimus-manager/xorg-nvidia.conf'
         'etc/optimus-manager/xsetup-intel.sh'
         'etc/optimus-manager/xsetup-nvidia.sh')
-source=("git+https://github.com/Askannz/optimus-manager.git")
+source=("git+https://github.com/Askannz/optimus-manager.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd "${srcdir}/optimus-manager/"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
  

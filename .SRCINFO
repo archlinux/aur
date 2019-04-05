@@ -1,7 +1,7 @@
 pkgbase = optimus-manager-git
 	pkgdesc = Management utility to handle GPU switching for Optimus laptops (Git version)
-	pkgver = r274.6d8572c
-	pkgrel = 1
+	pkgver = r275.56fd2d8
+	pkgrel = 2
 	url = https://github.com/Askannz/optimus-manager
 	arch = any
 	license = MIT
@@ -19,7 +19,7 @@ pkgbase = optimus-manager-git
 	backup = etc/optimus-manager/xorg-nvidia.conf
 	backup = etc/optimus-manager/xsetup-intel.sh
 	backup = etc/optimus-manager/xsetup-nvidia.sh
-	source = git+https://github.com/Askannz/optimus-manager.git
+	source = git+https://github.com/Askannz/optimus-manager.git#branch=master
 	sha256sums = SKIP
 
 pkgname = optimus-manager-git
