@@ -1,7 +1,7 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname=cargo-flamegraph
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="Cargo plugin that generates a flamegraph for a given workload"
 url="https://github.com/ferrous-systems/cargo-flamegraph"
@@ -10,19 +10,16 @@ makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT' 'APACHE')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ferrous-systems/flamegraph/archive/${pkgver}.tar.gz")
-sha512sums=('36f38da5f331ed7d5ebc2e5255c392be7d60ab9da3d18d560fafc5fe8e9fc88cd2d04eafb9e0f834cda74e940f59db9349990e955c445d1484a6472ecb731856')
+sha512sums=('0d035257f835744cd3b24a84b4b602eb20a333df6ea32b0c5641f17d4fcb270d54365d245b8fbd5e4e1adf1f97a36974509e12e5a9625a2d670c215d8cf7b801')
 
 build() {
-  # --locked broke in 0.1.12
   cd "flamegraph-${pkgver}"
-  #cargo build --release --locked
-  cargo build --release
+  cargo build --release --locked
 }
 
 check() {
   cd "flamegraph-${pkgver}"
-  #cargo test --release --locked
-  cargo test --release
+  cargo test --release --locked
 }
 
 package() {
