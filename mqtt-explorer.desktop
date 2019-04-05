@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=MQTT Explorer
+Comment=Explore your message queues
+Exec=mqtt-explorer
+Terminal=false
+Type=Application
+Icon=mqtt-explorer
+StartupWMClass=MQTT Explorer
+X-AppImage-Version=0.2.3
+Categories=Development;
+X-AppImage-BuildId=1I5BgaAHHnnlWEoJFlWm5bvXXSC
