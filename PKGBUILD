@@ -6,9 +6,11 @@ pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/g
 arch=('any')
 url=https://chatterino.com
 license=('MIT')
-depends=('gst-plugins-ugly' 'gst-plugins-good' 'qt5-multimedia' 'qt5-base' 'qt5-svg' 'boost-libs')
-makedepends=('boost' 'git')
-optdepends=('streamlink: For piping streams to video players' 'pulseaudio: For audio output')
+depends=('qt5-multimedia' 'qt5-base' 'boost-libs')
+makedepends=('qt5-svg' 'boost')
+optdepends=('streamlink: For piping streams to video players'
+            'pulseaudio: For audio output'
+            'gst-plugins-good: For audio output')
 provides=('chatterino')
 conflicts=('chatterino')
 install=$pkgname.install
