@@ -1,7 +1,7 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=flacon-git
-pkgver=5.0.0.0.ga90862b
+pkgver=v5.2.0.0.gcec00fe
 pkgrel=1
 pkgdesc="Extracts individual tracks from one big audio file containing the entire album of music and saves them as separate audio files. (Git Version)"
 arch=('x86_64')
@@ -33,7 +33,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd flacon
-  echo "$(git describe --long --tags | tr - . | sed "s|flacon.||")"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 prepare() {
