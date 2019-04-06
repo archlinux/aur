@@ -29,7 +29,7 @@ prepare() {
   # build system expects the directory to be named "oomd"
   ln -s "${pkgname}-${pkgver}" "${srcdir}/${pkgname}"
 
-  # example config is invalid
+  # see https://github.com/facebookincubator/oomd/pull/60
   patch -p 0 --forward --input="${srcdir}/${pkgname}-fix-example-config.patch"
 }
 
