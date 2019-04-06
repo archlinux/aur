@@ -1,0 +1,37 @@
+pkgbase = lib32-llvm-lw-git
+	pkgver = 9.0.0_r313659.ec28615f7fc
+	pkgrel = 1
+	url = http://llvm.org/
+	arch = x86_64
+	license = custom:University of Illinois/NCSA Open Source License
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = lib32-libffi
+	makedepends = lib32-zlib
+	makedepends = python
+	makedepends = lib32-gcc-libs
+	makedepends = lib32-libxml2
+	options = staticlibs
+	source = llvm-project::git+https://github.com/llvm/llvm-project.git
+	sha256sums = SKIP
+
+pkgname = lib32-llvm-lw-git
+	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit)
+	depends = lib32-llvm-libs-lw-git
+	depends = llvm-lw-git
+	provides = lib32-llvm
+	provides = lib32-llvm-svn
+	provides = lib32-llvm-git
+
+pkgname = lib32-llvm-libs-lw-git
+	pkgdesc = Low Level Virtual Machine (runtime library)(32-bit)
+	depends = lib32-libffi
+	depends = lib32-zlib
+	depends = lib32-ncurses
+	depends = lib32-libxml2
+	depends = lib32-gcc-libs
+	provides = lib32-llvm-libs
+	provides = lib32-llvm-libs-svn
+	provides = lib32-llvm-libs-git
+
