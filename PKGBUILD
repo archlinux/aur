@@ -12,7 +12,7 @@ depends=('libyaml' 'luajit' 'luarocks' 'openresty' 'openssl' 'pcre' 'zlib' 'rsyn
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 # source=("https://bintray.com/kong/kong-community-edition-deb/download_file?file_path=dists/kong-community-edition-1.1.0.stretch.all.deb")
-sha512sums=('755e7b1b2cfae427c1dc49ef5bd0dff72b06fda690438f2b831762268313ce53aa14d3f42d2b8f13f6c3cb3643ef1aa74ffde7ccac14b80dd3fc527d3be5204b')
+# sha512sums=('755e7b1b2cfae427c1dc49ef5bd0dff72b06fda690438f2b831762268313ce53aa14d3f42d2b8f13f6c3cb3643ef1aa74ffde7ccac14b80dd3fc527d3be5204b')
 
 # package(){
 
