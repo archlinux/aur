@@ -2,7 +2,7 @@
 
 pkgname=algernon
 pkgver=1.12.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Small self-contained web server with Lua, Markdown, QUIC, Redis and PostgreSQL support'
 arch=(x86_64)
 url='https://algernon.roboticoverlords.org/'
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 prepare() {
   cd "$pkgname"
-  go build -gcflags "all=-trimpath=${PWD}" -asmflags "all=-trimpath=${PWD}" -ldflags "-extldflags ${LDFLAGS}"
+  go build -mod=vendor -gcflags "all=-trimpath=${PWD}" -asmflags "all=-trimpath=${PWD}" -ldflags "-extldflags ${LDFLAGS}"
 }
 
 package() {
