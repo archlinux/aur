@@ -1,8 +1,8 @@
 clean:
-	rm hadolint-Linux-x86_64 hadolint-bin-*.pkg.*
+	rm -f hadolint-Linux-x86_64 hadolint-bin-*.pkg.*
 
 geninteg:
-	makepkg --geninteg
+	makepkg --geninteg >> PKGBUILD
 
 srcinfo:
 	makepkg --printsrcinfo > .SRCINFO
