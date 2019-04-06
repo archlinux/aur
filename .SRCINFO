@@ -1,6 +1,6 @@
 pkgbase = freedoko
 	pkgdesc = Free implementation of the card game Doppelkopf
-	pkgver = 0.7.19
+	pkgver = 0.7.20
 	pkgrel = 1
 	url = http://free-doko.sourceforge.net/en/FreeDoko.html
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = freedoko
 	makedepends = rsync
 	depends = gtkmm3
 	depends = freealut
-	source = https://downloads.sourceforge.net/free-doko/FreeDoko_0.7.19.src.zip
-	source = freedoko-0.7.19-makefiles.patch
-	sha256sums = 1969619c35fd5f950dd817d5652780d76b82de0a283ea4d6b3e266a6a122e717
-	sha256sums = 3abf36eb77aa0490d5e80bdc3fe9796bef2ab6718caebebef168a53f8044dd1e
+	source = https://downloads.sourceforge.net/free-doko/FreeDoko_0.7.20.src.zip
+	source = freedoko-0.7.20-makefiles.patch
+	sha256sums = c326b260b6199c53db432ec05ca3978d7ad3e87f5f8b1ccfc673ae779eb21ad6
+	sha256sums = 60b28c6cbec994831844d45c43017b3cccb582120e50ce1a8c1e1a774fcfa160
 
 pkgname = freedoko
 

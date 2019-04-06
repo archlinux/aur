@@ -1,6 +1,6 @@
-diff -ru FreeDoko_0.7.19-orig/data/Makefile FreeDoko_0.7.19/data/Makefile
---- FreeDoko_0.7.19-orig/data/Makefile	2019-01-01 14:39:11.907798611 +0100
-+++ FreeDoko_0.7.19/data/Makefile	2019-01-01 14:40:19.512521996 +0100
+diff -ru FreeDoko_0.7.20-orig/data/Makefile FreeDoko_0.7.20/data/Makefile
+--- FreeDoko_0.7.20-orig/data/Makefile	2019-04-06 15:52:49.530999521 +0200
++++ FreeDoko_0.7.20/data/Makefile	2019-04-06 15:53:08.818252409 +0200
 @@ -32,8 +32,7 @@
  	for d in cardsets iconsets backgrounds sounds; do \
  	  $(MAKE) -C $$d install; \
@@ -11,9 +11,9 @@ diff -ru FreeDoko_0.7.19-orig/data/Makefile FreeDoko_0.7.19/data/Makefile
  endif
  
  ifeq ($(SHELLTYPE), sh)
-diff -ru FreeDoko_0.7.19-orig/doc/Makefile FreeDoko_0.7.19/doc/Makefile
---- FreeDoko_0.7.19-orig/doc/Makefile	2019-01-01 14:39:11.952825404 +0100
-+++ FreeDoko_0.7.19/doc/Makefile	2019-01-01 14:40:19.512521996 +0100
+diff -ru FreeDoko_0.7.20-orig/doc/Makefile FreeDoko_0.7.20/doc/Makefile
+--- FreeDoko_0.7.20-orig/doc/Makefile	2019-04-06 15:52:49.571042684 +0200
++++ FreeDoko_0.7.20/doc/Makefile	2019-04-06 15:53:30.725104614 +0200
 @@ -34,8 +34,7 @@
  	fi
  	cp Bugs GPL Roadmap $(DESTDIR)$(HELP_DIRECTORY)/
@@ -24,9 +24,9 @@ diff -ru FreeDoko_0.7.19-orig/doc/Makefile FreeDoko_0.7.19/doc/Makefile
  	cd $(DESTDIR)$(DATA_DIRECTORY) && ln -sf $(HELP_DIRECTORY)/ doc
  endif
  
-diff -ru FreeDoko_0.7.19-orig/Makefile FreeDoko_0.7.19/Makefile
---- FreeDoko_0.7.19-orig/Makefile	2019-01-01 14:39:11.906798016 +0100
-+++ FreeDoko_0.7.19/Makefile	2019-01-01 14:40:19.512521996 +0100
+diff -ru FreeDoko_0.7.20-orig/Makefile FreeDoko_0.7.20/Makefile
+--- FreeDoko_0.7.20-orig/Makefile	2019-04-06 15:52:49.530999521 +0200
++++ FreeDoko_0.7.20/Makefile	2019-04-06 15:54:35.429702271 +0200
 @@ -316,8 +316,7 @@
  	echo "Kopiere das Programm"
  	mkdir -p $(DESTDIR)$(BIN_DIRECTORY)
@@ -55,9 +55,9 @@ diff -ru FreeDoko_0.7.19-orig/Makefile FreeDoko_0.7.19/Makefile
  #	copy the desktop file
  	echo "Kopiere den Desktop-Starter"
  	mkdir -p "$(DESTDIR)$(DESKTOP_FILE_DIRECTORY)"
-diff -ru FreeDoko_0.7.19-orig/Makefile.install.directories FreeDoko_0.7.19/Makefile.install.directories
---- FreeDoko_0.7.19-orig/Makefile.install.directories	2019-01-01 14:39:11.906798016 +0100
-+++ FreeDoko_0.7.19/Makefile.install.directories	2019-01-01 14:40:19.512521996 +0100
+diff -ru FreeDoko_0.7.20-orig/Makefile.install.directories FreeDoko_0.7.20/Makefile.install.directories
+--- FreeDoko_0.7.20-orig/Makefile.install.directories	2019-04-06 15:52:49.530999521 +0200
++++ FreeDoko_0.7.20/Makefile.install.directories	2019-04-06 15:54:52.087625236 +0200
 @@ -4,14 +4,14 @@
  # the different directories for the files
  
@@ -104,10 +104,10 @@ diff -ru FreeDoko_0.7.19-orig/Makefile.install.directories FreeDoko_0.7.19/Makef
  
  # Void Linux
  #MAIN_DIRECTORY         = /usr
-diff -ru FreeDoko_0.7.19-orig/src/Makefile FreeDoko_0.7.19/src/Makefile
---- FreeDoko_0.7.19-orig/src/Makefile	2019-01-01 14:39:11.963831954 +0100
-+++ FreeDoko_0.7.19/src/Makefile	2019-01-01 14:40:19.512521996 +0100
-@@ -262,7 +262,6 @@
+diff -ru FreeDoko_0.7.20-orig/src/Makefile FreeDoko_0.7.20/src/Makefile
+--- FreeDoko_0.7.20-orig/src/Makefile	2019-04-06 15:52:49.583055634 +0200
++++ FreeDoko_0.7.20/src/Makefile	2019-04-06 15:53:57.625173952 +0200
+@@ -263,7 +263,6 @@
  		-DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"' \
  		-DLOCALE_DIRECTORY='\"$(LOCALE_DIRECTORY)\"'" \
  	  $(PROGRAM)
