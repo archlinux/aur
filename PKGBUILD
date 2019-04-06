@@ -2,7 +2,7 @@
 
 pkgname=pandoc-panflute
 pkgver=1.11
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python package that makes creating Pandoc filters fun.'
 url='https://github.com/sergiocorreia/panflute'
 depends=('pandoc' 'python' 'python-pandocfilters' 'python-shutilwhich' 'python-future')
@@ -16,10 +16,13 @@ conflicts=('pandoc-panflute-git')
 source=('git://github.com/sergiocorreia/panflute.git')
 md5sums=('SKIP')
 
-#pkgver() {
-#  cd ${srcdir}/panflute
-#  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-#}
+pkgver() {
+  curl -s https://raw.githubusercontent.com/sergiocorreia/panflute/master/panflute/version.py | sed -e "s/.*= '\(.*\)\..*'/\1/"
+}
+
+pkgrel() {
+  curl -s https://raw.githubusercontent.com/sergiocorreia/panflute/master/panflute/version.py | sed -e "s/.*= '.*\..*\.\(.*\).*'/\1/"
+}
 
 package() {
     cd "$srcdir/panflute"
