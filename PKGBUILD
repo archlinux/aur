@@ -10,7 +10,7 @@ source android-env.sh ${_android_arch}
 
 pkgname=android-${_android_arch}-qt5
 pkgver=5.12.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt 5 for Android"
 arch=('x86_64')
 url='https://www.qt.io'
@@ -61,7 +61,7 @@ source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkg
         "0001-Fix-clang-build.patch"
         "0002-Disable-mapbox.patch")
 md5sums=('99c2eb46e533371798b4ca2d1458e065'
-         'ba4ff94ed5a0aa9746396cb0af6f0865'
+         '0b19ddef193baddb656d3170635e6de6'
          '20d8bdd24102e9011b561b7361394728')
 
 prepare() {
