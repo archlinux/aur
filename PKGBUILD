@@ -1,5 +1,5 @@
-# Maintainer: nushkovg
-# Contributor: nushkovg
+# Maintainer: Goran Nushkov
+# Contributor: Goran Nushkov
 pkgname=kong-community-edition
 pkgver=1.1.0
 pkgrel=1
