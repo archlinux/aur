@@ -10,7 +10,7 @@ url='https://github.com/Irrational-Encoding-Wizardry/fvsfunc'
 license=('GPL')
 depends=('vapoursynth'
          'vapoursynth-plugin-muvsfunc-git'
-         'vapoursynth-plugin-nnedi3_rpow2-git'
+         'vapoursynth-plugin-edi_rpow2-git'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
