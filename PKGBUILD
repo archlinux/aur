@@ -20,6 +20,7 @@ backup=()
 
 install=luametatex.install
 PKGEXT=".pkg.tar.gz"
+options=(!strip)
 
 # ConTeXt minimals uses a different naming convention for architectures
 
@@ -58,6 +59,8 @@ prepare() {
                     --server="${_lmtxserverlist}" \
                     --instance="install-lmtx" || return 1
  PATH=$OLDPATH
+ # Make sure the binaries are executable
+ chmod +x $srcdir/tex/texmf-${_platform}/bin/{context,luametatex,mtxrun}
 
  # Generate a setuptex file
 
