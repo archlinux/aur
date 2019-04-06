@@ -11,6 +11,7 @@ pkgbase = networkmanager-fortisslvpn-git
 	makedepends = python
 	makedepends = xorgproto
 	makedepends = pkg-config
+	makedepends = appstream-glib
 	depends = networkmanager
 	depends = nm-connection-editor
 	depends = openfortivpn
