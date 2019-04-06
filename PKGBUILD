@@ -50,11 +50,15 @@ pkgver() {
 }
 
 prepare() {
+ OLDPATH=$PATH
+ PATH=$scrdir/bin:$scrdir/tex/texmf-${_platform}/bin:$PATH
  msg "Starting download or update of ConTeXt distribution"
  chmod +x $srcdir/bin/mtxrun
  $srcdir/bin/mtxrun --script $srcdir/bin/mtx-install.lua --update \
                     --server="${_lmtxserverlist}" \
                     --instance="install-lmtx" || return 1
+ PATH=$OLDPATH
+
  # Generate a setuptex file
 
  echo "TEXMFOS=${_dest}/texmf-${_platform}"   > $srcdir/tex/setuptex
