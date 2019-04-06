@@ -12,7 +12,7 @@ pkgver=1.2.0
 pkgrel=1
 pkgdesc="Data manipulation toolbox similar to R data.frame"
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.io/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.4.0')
@@ -22,9 +22,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('e9b5eba82d2637a97bc4243e821f80e4')
+sha256sums=('5d36b296b3854f3d7ccb8c59037ca9952c24ef3f1ba7dd776967cd4710505981')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
