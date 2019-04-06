@@ -1,18 +1,18 @@
 _npmname=pnpm
-_npmver=2.17.6
+_npmver=3.1.0
 pkgname=nodejs-pnpm
-pkgver=2.17.6
+pkgver=3.1.0
 pkgrel=1
-pkgdesc="Performant npm installations"
+pkgdesc="Fast, disk space efficient package manager"
 arch=(any)
-url='https://github.com/rstacruz/pnpm'
+url='https://github.com/pnpm/pnpm'
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=('f89bcc3a7d6d73eee6addf58a1c3ad7aa703202bb6bf3c0fbce91113eebb001e')
+sha256sums=('d98935b1d6000c41e053fabe372643fa7bedf945daa2601d5cb18fe10c10c0fe')
 
 package() {
   cd $srcdir
