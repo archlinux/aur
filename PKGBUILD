@@ -2,7 +2,7 @@
 # Contributor: Dan Vratil <vratil@progdansoft.com>
 
 pkgname=k3b-git
-pkgver=19.03.70.r6359.062d30a3e
+pkgver=19.07.70.r6386.70cb5a5e8
 pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. (Git version)"
 arch=('x86_64')
@@ -56,8 +56,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_LIBEXECDIR=/usr/lib/k3b \
-    -DBUILD_TESTING=OFF \
-    -DK3B_ENABLE_PERMISSION_HELPER=ON
+    -DBUILD_TESTING=OFF
 
   make
 }
