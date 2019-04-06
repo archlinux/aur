@@ -1,14 +1,15 @@
-# Maintainer: Konstantin Shalygin <k0ste@cn.ru>
+# Maintainer: Konstantin Shalygin <k0ste@k0ste.ru>
+# Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 # Contributor: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
 
 pkgname='xupnpd'
 pkgdesc="eXtensible UPnP agent (proxy IP TV multicast to DLNA)"
 pkgver='1.033'
-pkgrel='5'
+pkgrel='6'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="http://${pkgname}.org"
 license=('GPL2')
-makedepends=('git' 'lua' 'lua-luajson')
+makedepends=('git' 'lua' 'lua52-luajson')
 optdepends=('udpxy: custom udp to http proxy')
 install="${pkgname}.install"
 source=("${pkgname}::git+https://github.com/clark15b/${pkgname}"
@@ -35,17 +36,17 @@ build() {
 
 package() {
   cd ${srcdir}
-  install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-  install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -Dm0644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm0644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   cd "${pkgname}/src"
-  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -dm755 -o 187 -g 187 "${pkgdir}/run/${pkgname}"
-  install -dm755 -o 187 -g 187 "${pkgdir}/${_var}/config"
-  install -dm755 -o 187 -g 187 "${pkgdir}/${_var}/localmedia"
-  install -Dm644 -o 187 -g 187 *.lua -t "${pkgdir}/${_var}"
+  install -Dm0755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -dm0755 -o 187 -g 187 "${pkgdir}/run/${pkgname}"
+  install -dm0755 -o 187 -g 187 "${pkgdir}/${_var}/config"
+  install -dm0755 -o 187 -g 187 "${pkgdir}/${_var}/localmedia"
+  install -Dm0644 -o 187 -g 187 *.lua -t "${pkgdir}/${_var}"
   cp -ax "playlists" "${pkgdir}/${_var}"
   chown -R 187:187 "${pkgdir}/${_var}/playlists"
-  install -dm755 "${pkgdir}/${_usr}"
+  install -dm0755 "${pkgdir}/${_usr}"
   cp -ax "plugins" "${pkgdir}/${_usr}"
   cp -ax "profiles" "${pkgdir}/${_usr}"
   cp -ax "ui" "${pkgdir}/${_usr}"
