@@ -12,8 +12,8 @@
 
 pkgname=llvm-git
 _pkgname='llvm'
-pkgver=9.0.0_r313654.1db96ac88b6
-pkgrel=3
+pkgver=9.0.0_r313660.af1cbdd3bac
+pkgrel=1
 arch=('i686' 'x86_64')
 url='https://llvm.org/'
 license=('custom:University of Illinois/NCSA Open Source License')
@@ -157,6 +157,11 @@ package() {
 
   rm -rf "$pkgdir/usr/libexec"
   sed -i 's|libexec|lib/clang|' "$pkgdir/usr/bin/scan-build"
+}
+
+check() {
+  cd "${srcdir}/build"
+  ninja check
 }
 
 #

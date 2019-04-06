@@ -1,7 +1,7 @@
 pkgbase = llvm-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (git)
-	pkgver = 9.0.0_r313654.1db96ac88b6
-	pkgrel = 3
+	pkgver = 9.0.0_r313660.af1cbdd3bac
+	pkgrel = 1
 	url = https://llvm.org/
 	arch = i686
 	arch = x86_64
@@ -29,13 +29,13 @@ pkgbase = llvm-git
 	depends = python
 	optdepends = openmp: OpenMP support in clang with -fopenmp
 	provides = clang
-	provides = clang=9.0.0_r313654.1db96ac88b6
-	provides = clang-analyzer=9.0.0_r313654.1db96ac88b6
+	provides = clang=9.0.0_r313660.af1cbdd3bac
+	provides = clang-analyzer=9.0.0_r313660.af1cbdd3bac
 	provides = clang-analyzer-svn
 	provides = clang-compiler-rt
 	provides = clang-compiler-rt-svn
 	provides = clang-svn
-	provides = clang-tools-extra=9.0.0_r313654.1db96ac88b6
+	provides = clang-tools-extra=9.0.0_r313660.af1cbdd3bac
 	provides = clang-tools-extra-svn
 	provides = compiler-rt
 	provides = compiler-rt-svn
