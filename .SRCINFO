@@ -1,14 +1,14 @@
 pkgbase = lammps-git
 	pkgdesc = Large-scale Atomic/Molecular Massively Parallel Simulator
 	pkgver = r13672.f7cbdcf99
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lammps.sandia.gov/
 	arch = x86_64
 	license = GPL
 	makedepends = cmake>=3.1
+	depends = fftw
 	depends = openmpi
 	optdepends = cuda: Nvidia GPU support
-	optdepends = fftw: fast Fourier transform
 	optdepends = vmd: visualization and molfile support
 	provides = lammps
 	conflicts = lammps
