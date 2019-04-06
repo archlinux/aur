@@ -13,7 +13,7 @@
 pkgname=llvm-git
 _pkgname='llvm'
 pkgver=9.0.0_r313654.1db96ac88b6
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='https://llvm.org/'
 license=('custom:University of Illinois/NCSA Open Source License')
