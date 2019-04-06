@@ -29,14 +29,30 @@ package(){
 
 	# Fix openresty location
 	cd usr/local/bin/
-	sed -i "s+usr/local+opt+g" kong
-	sed -i "s+usr/local+opt+g" json2lua
-	sed -i "s+usr/local+opt+g" lapis
-	sed -i "s+usr/local+opt+g" lua2json
-	sed -i "s+usr/local+opt+g" luarocks
-	sed -i "s+usr/local+opt+g" luarocks-5.1
-	sed -i "s+usr/local+opt+g" luarocks-admin
-	sed -i "s+usr/local+opt+g" luarocks-admin-5.1
+	sed -i "s+usr/local/openresty+opt/openresty+g" kong
+	sed -i "s+usr/local/share/lua+usr/share/lua+g" kong
+
+	sed -i "s+usr/local/openresty+opt/openresty+g" json2lua
+	sed -i "s+usr/local/share/lua+usr/share/lua+g" json2lua
+
+	sed -i "s+usr/local/openresty+opt/openresty+g" lapis
+	sed -i "s+usr/local/share/lua+usr/share/lua+g" lapis
+	
+	sed -i "s+usr/local/openresty+opt/openresty+g" lua2json
+	sed -i "s+usr/local/share/lua+usr/share/lua+g" lua2json
+	
+	sed -i "s+usr/local/openresty+opt/openresty+g" luarocks
+	sed -i "s+usr/local/share/lua+usr/share/lua+g" luarocks
+	
+	sed -i "s+usr/local/openresty+opt/openresty+g" luarocks-5.1
+	sed -i "s+usr/local/share/lua+usr/share/lua+g" luarocks-5.1
+	
+	sed -i "s+usr/local/openresty+opt/openresty+g" luarocks-admin
+	sed -i "s+usr/local/share/lua+usr/share/lua+g" luarocks-admin
+	
+	sed -i "s+usr/local/openresty+opt/openresty+g" luarocks-admin-5.1
+	sed -i "s+usr/local/share/lua+usr/share/lua+g" luarocks-admin-5.1
+	
 	cd "${pkgdir}"
 
 	mkdir usr/bin 2> /dev/null; mv usr/local/bin/* usr/bin; rm -rf usr/local/bin
