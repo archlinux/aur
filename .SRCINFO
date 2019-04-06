@@ -7,7 +7,6 @@ pkgbase = kong-community-edition
 	arch = any
 	license = Apache
 	depends = libyaml
-	depends = luajit
 	depends = openssl
 	depends = pcre
 	depends = zlib
