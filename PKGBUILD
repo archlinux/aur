@@ -12,7 +12,7 @@ pkgver=2.1.1
 pkgrel=1
 pkgdesc="Octave bindings to the GNU Scientific Library"
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.io/$_pack/"
 license=('GPL')
 groups=('octave-forge')
 depends=('octave>=2.9.7')
@@ -22,9 +22,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('d26449b8d3facef82a8c3393550a11e7')
+sha256sums=('d028c52579e251c3f21ebfdf065dffab3ad7893434efda33b501225ef1ea6ed3')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
