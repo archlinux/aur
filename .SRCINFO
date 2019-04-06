@@ -1,0 +1,14 @@
+pkgbase = timer-git
+	pkgdesc = a simple timer/minutor for terminal with audio alarm
+	pkgver = 4.b44eb43
+	pkgrel = 1
+	url = https://github.com/yoarch/timer
+	arch = any
+	license = MIT
+	depends = bash
+	depends = mpv
+	source = git://github.com/yoarch/timer.git
+	sha256sums = SKIP
+
+pkgname = timer-git
+
