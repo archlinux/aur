@@ -1,12 +1,12 @@
 pkgbase = scmake
 	pkgdesc = A simple build system
-	pkgver = 0.1
-	pkgrel = 2
+	pkgver = 0.2
+	pkgrel = 1
 	url = https://github.com/SirCmpwn/scmake
 	arch = any
 	license = MIT
-	source = https://github.com/SirCmpwn/scmake/archive/0.1.tar.gz
-	sha1sums = 37ec1376117de55a268202ab0caaac9969cfc208
+	source = scmake-0.2.tar.gz::https://github.com/SirCmpwn/scmake/archive/0.2.tar.gz
+	sha256sums = 7401aa2c42a992218c32c55a629d8ee17185fb22514b120b03851d63ffcb3ab4
 
 pkgname = scmake
 
