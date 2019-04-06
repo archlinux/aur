@@ -1,0 +1,2 @@
+#! /usr/bin/env sh
+mono `dirname $0`/../share/naturaldocs2/NaturalDocs.exe $@
