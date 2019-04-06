@@ -1,5 +1,5 @@
 # Maintainer: Elias Riedel Gårding <eliasrg@kth.se>
-# Author: untakenstupidnick <abakh@tuta.io>
+# Author: Hossein Bakhtiarifar <abakh@tuta.io>
 # Discussion: https://www.reddit.com/r/linux/comments/b8y7rp/i_have_made_a_bunch_of_fancy_terminal_games_more/
 pkgname=nbsdgames-git
 pkgver=r35.06237f9_score_patch
