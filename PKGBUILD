@@ -1,7 +1,7 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 _name=scikit-build
 pkgname=python-${_name}
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Improved build system generator for CPython C, C++, Cython and Fortran extensions'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-setuptools' 'python-wheel')
 makedepends=()
 source=("https://github.com/scikit-build/scikit-build/archive/${pkgver}.tar.gz")
-md5sums=('92f09303cec2d1e9cfcaa65fd65c35c5')
+sha256sums=('b7ac5a574ca5a4b0891aeaf5b0340de9fdc88d0081669dca494cef5b9fa760b0')
 
 package() {
 	cd "$srcdir/$_name-$pkgver"
