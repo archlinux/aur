@@ -30,6 +30,7 @@ _platform_map['x86_64']='linux-64'
 _platform=${_platform_map[$CARCH]}
 
 _lmtxserver=lmtx.pragma-ade.nl
+_lmtxserverlist=lmtx.contextgarden.net,lmtx.pragma-ade.com,lmtx.pragma-ade.nl
 _zipfile=context-${_platform}.zip
 
 source=("http://${_lmtxserver}/install-lmtx/${_zipfile}")
@@ -52,7 +53,7 @@ prepare() {
  msg "Starting download or update of ConTeXt distribution"
  chmod +x $srcdir/bin/mtxrun
  $srcdir/bin/mtxrun --script $srcdir/bin/mtx-install.lua --update \
-                    --server="${_lmtxserver}" \
+                    --server="${_lmtxserverlist}" \
                     --instance="install-lmtx" || return 1
  # Generate a setuptex file
 
