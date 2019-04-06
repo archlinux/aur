@@ -98,7 +98,7 @@ prepare() {
     git remote add arch_stable https://git.archlinux.org/linux.git
     git pull --no-edit arch_stable v$_srcver_arch
     
-    msg2 "Reverting 'block: remove the unused bio_iov_iter_get_pages export' which causes `make modules` to fail"
+    msg2 "Reverting 'block: remove the unused bio_iov_iter_get_pages export' which causes 'make modules' to fail"
     git revert --no-edit 0374e1132217711bc2e920cde877dd7fc3dbd2d9
 
     # https://github.com/graysky2/kernel_gcc_patch
