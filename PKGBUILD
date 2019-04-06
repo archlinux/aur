@@ -2,15 +2,15 @@
 # Contributor: erk <v at erk dot io>
 
 pkgname=vnote
-pkgver=2.2
+pkgver=2.4
 pkgrel=1
 pkgdesc="A Vim-inspired note-taking application, especially for Markdown."
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
-url='https://tamlok.github.io/vnote/'
+url="https://tamlok.github.io/vnote/"
 license=(MIT)
-depends=(qt5-base qt5-webengine qt5-svg)
+depends=(qt5-webengine qt5-svg)
 makedepends=(git)
-source=("git+https://github.com/tamlok/vnote.git#tag=v${pkgver}"
+source=("git+https://github.com/tamlok/vnote.git#tag=${pkgver}"
         "git+https://github.com/chjj/marked.git"
         "git+https://github.com/tamlok/hoedown.git")
 sha256sums=('SKIP'
@@ -18,7 +18,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
 
   git submodule init
   git config 'submodule.src/utils/marked.url' "${srcdir}/marked"
@@ -29,13 +29,13 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname/build"
-  qmake-qt5 ../VNote.pro
+  cd "$pkgname/build"
+  qmake ../VNote.pro
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname/build"
+  cd "$pkgname/build"
   make INSTALL_ROOT="$pkgdir" install
   install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
