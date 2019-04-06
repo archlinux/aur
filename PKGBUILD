@@ -1,6 +1,6 @@
 # Maintainer: Amael <nils[DOT]van-zuijlen[AT]mailo[DOT]com>
 
-pkgbase=django-redis-cache
+pkgbase=python-django-redis-cache
 pkgname=('python-django-redis-cache')
 pkgver=2.0.0
 pkgrel=0
