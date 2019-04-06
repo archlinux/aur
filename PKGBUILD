@@ -1,13 +1,13 @@
 # Maintainer: Lorenzo Tomei <tomeil@tiscali.it>
 
 pkgname=j8-git
-pkgver=8.07.20.20181215
-pkgrel=2
+pkgver=8.07.25.20190406
+pkgrel=1
 pkgdesc='J is a modern, high-level, general-purpose, high-performance programming language'
 arch=('i686' 'x86_64')
 url='http://www.jsoftware.com'
 license=('GPL3'  'LGPL')
-depends=('qt5-webkit' 'qt5-multimedia' 'qt5-svg')
+depends=('qt5-webengine' 'qt5-websockets' 'qt5-multimedia' 'qt5-svg')
 optdepends=('wget: for web/gethttp addon'
             'expat: for api/expat addon'
             'fftw: for math/fftw addon'
@@ -15,8 +15,8 @@ optdepends=('wget: for web/gethttp addon'
 makedepends=('clang')
             source=('jsource.zip::https://github.com/jsoftware/jsource/archive/master.zip'
         'qtide.zip::https://github.com/jsoftware/qtide/archive/master.zip'
-        'jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j807_env_20181215.tar.gz')
-md5sums=('SKIP' 'SKIP' '9cf1c95f1d538b63ac6370e1aef62522')
+        'jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j807_env_20190406.tar.gz')
+md5sums=('SKIP' 'SKIP' '7bdef03b668201b3e527fad99cde6c6e')
 install=j8-git.install
 if [ "${CARCH}" = x86_64 ]; then
 _xarch=x86_64
