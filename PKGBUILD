@@ -1,3 +1,4 @@
+# Maintainer: Afnan Enayet <afnan at afnan dot io>
 pkgname=paperspace-node
 pkgver=0.1.14
 pkgrel=1
