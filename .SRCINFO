@@ -1,5 +1,6 @@
 pkgbase = plasma-hud-git
-	pkgver = 16.10.0.r90.g7ff3752
+	pkgdesc = Provides a way to run menubar commands through rofi, much like the Unity 7 Heads-Up Display (HUD).
+	pkgver = 18.12.0.r8.g77b23d4
 	pkgrel = 1
 	url = https://github.com/Zren/plasma-hud
 	install = plasma-hud-git.install
@@ -15,6 +16,7 @@ pkgbase = plasma-hud-git
 	depends = gobject-introspection
 	depends = appmenu-gtk-module
 	depends = appmenu-qt4
+	depends = python-gobject
 	source = git+https://github.com/Zren/plasma-hud.git
 	sha256sums = SKIP
 
