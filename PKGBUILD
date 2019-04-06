@@ -8,8 +8,10 @@ arch=('x86_64')
 url="https://gitlab.com/reisub0/nzb"
 license=('MIT')
 source=('LICENSE'
+        'nzb.1.gz'
         "$pkgname-$pkgver.zip::https://gitlab.com/reisub0/nzb/-/jobs/artifacts/v${pkgver}/download?job=linux-x86_64")
 md5sums=("3c87776c3d12e38215b96b2803959de5"
+         "bec051da5f5d55bb14aea83d77956d92"
          "418fda24914446effa007d650b54d44d")
 
 package() {
@@ -17,4 +19,7 @@ package() {
 
     install -d "${pkgdir}/usr/bin"
     install -m755 "${srcdir}/target/release/nzb" "${pkgdir}/usr/bin"
+
+    install -d "${pkgdir}/usr/share/man/man1"
+    install -m644 "nzb.1.gz" "${pkgdir}/usr/share/man/man1"
 }

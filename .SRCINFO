@@ -6,8 +6,10 @@ pkgbase = nzb-bin
 	arch = x86_64
 	license = MIT
 	source = LICENSE
+	source = nzb.1.gz
 	source = nzb-bin-0.5.1.zip::https://gitlab.com/reisub0/nzb/-/jobs/artifacts/v0.5.1/download?job=linux-x86_64
 	md5sums = 3c87776c3d12e38215b96b2803959de5
+	md5sums = bec051da5f5d55bb14aea83d77956d92
 	md5sums = 418fda24914446effa007d650b54d44d
 
 pkgname = nzb-bin
