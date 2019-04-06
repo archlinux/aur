@@ -1,0 +1,37 @@
+pkgbase = gpgme-git
+	pkgdesc = GnuPG Made Easy
+	pkgver = 1.13.0.r4.g4a4680f8
+	pkgrel = 1
+	url = https://www.gnupg.org/related_software/gpgme/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = gnupg
+	makedepends = python
+	makedepends = qt5-base
+	makedepends = swig
+	source = git+https://dev.gnupg.org/source/gpgme.git
+	sha256sums = SKIP
+
+pkgname = gpgme-git
+	depends = glibc
+	depends = gnupg
+	depends = libgpg-error
+	provides = gpgme
+	conflicts = gpgme
+
+pkgname = python-gpgme-git
+	pkgdesc = Python bindings for GPGme
+	depends = python
+	depends = gpgme-git
+	provides = python-gpgme
+	conflicts = python-gpgme
+
+pkgname = qgpgme-git
+	pkgdesc = Qt bindings for GPGme
+	depends = qt5-base
+	depends = gpgme-git
+	provides = qgpgme
+	conflicts = qgpgme
+
