@@ -5,7 +5,7 @@
 # Contributor: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=gitahead
-pkgrel=2
+pkgrel=3
 pkgver=2.5.5
 pkgdesc='Graphical Git client that helps you understand and manage your source history'
 url='https://www.gitahead.com/'
@@ -34,39 +34,29 @@ build() {
     mkdir "$srcdir/gitahead-build"
   fi
   cd "$srcdir/gitahead-build"
-  cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/usr/lib -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" ../gitahead
+  cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/usr/lib ../gitahead
   ninja
 }
 
 package() {
   cd "$srcdir/gitahead-build"
 
-  ninja install
+  ninja package
 
-  rm -f "${pkgdir}"/usr/*.so.*
-  rm -f "${pkgdir}/usr/bin/cmark"
-  mv "${pkgdir}/usr/GitAhead" "${pkgdir}/usr/bin/gitahead"
+  mkdir -p "${pkgdir}/usr/"{share,bin}
 
-  rm -rf "${pkgdir}/usr/include"
-  rm -rf "${pkgdir}"/usr/share/{doc,man}
-  rm -rf "${pkgdir}"/usr/{lib,lib64}
+  cp -r "${srcdir}/gitahead-build/_CPack_Packages/Linux/STGZ/GitAhead-${pkgver}" "${pkgdir}/usr/share/gitahead"
 
-  mkdir -p "${pkgdir}/usr/lib/${pkgname}"
-  mv "${pkgdir}/usr/Plugins" "${pkgdir}/usr/lib/${pkgname}/plugins"
+  rm -rf "${pkgdir}/usr/share/gitahead/"*.so.*
+  ln -s "/usr/share/gitahead/GitAhead" "${pkgdir}/usr/bin/gitahead"
 
-  install -D -m644 "${pkgdir}/usr/Resources/GitAhead.iconset/icon_16x16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/gitahead.png"
-  install -D -m644 "${pkgdir}/usr/Resources/GitAhead.iconset/icon_32x32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/gitahead.png"
-  install -D -m644 "${pkgdir}/usr/Resources/GitAhead.iconset/icon_64x64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/gitahead.png"
-  install -D -m644 "${pkgdir}/usr/Resources/GitAhead.iconset/icon_128x128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/gitahead.png"
-  install -D -m644 "${pkgdir}/usr/Resources/GitAhead.iconset/icon_256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/gitahead.png"
-  install -D -m644 "${pkgdir}/usr/Resources/GitAhead.iconset/icon_512x512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/gitahead.png"
-  rm -rf "${pkgdir}/usr/Resources/GitAhead.iconset"
+  install -D -m644 "${pkgdir}/usr/share/gitahead/Resources/GitAhead.iconset/icon_16x16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/gitahead.png"
+  install -D -m644 "${pkgdir}/usr/share/gitahead/Resources/GitAhead.iconset/icon_32x32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/gitahead.png"
+  install -D -m644 "${pkgdir}/usr/share/gitahead/Resources/GitAhead.iconset/icon_64x64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/gitahead.png"
+  install -D -m644 "${pkgdir}/usr/share/gitahead/Resources/GitAhead.iconset/icon_128x128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/gitahead.png"
+  install -D -m644 "${pkgdir}/usr/share/gitahead/Resources/GitAhead.iconset/icon_256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/gitahead.png"
+  install -D -m644 "${pkgdir}/usr/share/gitahead/Resources/GitAhead.iconset/icon_512x512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/gitahead.png"
 
-  mkdir -p "${pkgdir}/usr/share/${pkgname}"
-  mv "${pkgdir}/usr/Resources" "${pkgdir}/usr/share/${pkgname}/resources"
-
-  rm -f "${pkgdir}"/usr/{git-credential-libsecret,indexer,qt.conf,relauncher}
-
-  install -D -m644 ../gitahead/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 ${srcdir}/gitahead/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m644 "${srcdir}/gitahead.desktop" "${pkgdir}/usr/share/applications/gitahead.desktop"
 }
