@@ -1,0 +1,15 @@
+pkgbase = teensy-loader
+	pkgdesc = The Teensy Loader makes getting code into your Teensy easy.
+	pkgver = 1.40
+	pkgrel = 1
+	url = https://www.pjrc.com/teensy/loader.html
+	arch = x86_64
+	depends = libpng12
+	depends = libusb
+	source = teensy-loader-1.40.tar.gz::https://www.pjrc.com/teensy/teensy_linux64.tar.gz
+	source = https://www.pjrc.com/teensy/49-teensy.rules
+	sha256sums = b4e26c4717afae5dee397fa3a0660a3e499e573e5edab259c5fd52beb221032e
+	sha256sums = 031de0b26991b5a3b19c497d9c0a17f86c40c55d925b9d07d19ab89f2286469d
+
+pkgname = teensy-loader
+
