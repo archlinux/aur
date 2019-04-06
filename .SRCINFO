@@ -1,0 +1,18 @@
+pkgbase = pugixml-git
+	pkgdesc = Light-weight, simple and fast XML parser for C++
+	pkgver = 1.9.r55.g7247a82
+	pkgrel = 1
+	url = https://pugixml.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	provides = pugixml
+	conflicts = pugixml
+	source = git+https://github.com/zeux/pugixml.git
+	sha256sums = SKIP
+
+pkgname = pugixml-git
+
