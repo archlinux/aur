@@ -1,7 +1,7 @@
 # Maintainer: misson20000 <xenotoad@xenotoad.net>
 
 pkgname=libtwili
-pkgver=1.0.0.r0.g2d6722f
+pkgver=1.1.0.r0.g8cfcc8c
 pkgrel=1
 pkgdesc='Small twili IO library'
 arch=('any')

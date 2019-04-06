@@ -1,6 +1,6 @@
 pkgbase = libtwili
 	pkgdesc = Small twili IO library
-	pkgver = 1.0.0.r0.g2d6722f
+	pkgver = 1.1.0.r0.g8cfcc8c
 	pkgrel = 1
 	url = https://github.com/misson20000/twili-libnx
 	arch = any
