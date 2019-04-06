@@ -8,7 +8,7 @@ arch=('any')
 url="https://getkong.org"
 license=('Apache')
 groups=('')
-depends=('libyaml' 'openresty' 'openssl' 'pcre' 'zlib' 'rsync')
+depends=('libyaml' 'luajit' 'openresty' 'openssl' 'pcre' 'zlib' 'rsync')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://bintray.com/kong/kong-community-edition-deb/download_file?file_path=dists/kong-community-edition-1.1.0.stretch.all.deb")
@@ -27,33 +27,35 @@ package(){
 	install -D -m644 "/opt/openresty/pod/nginx/license_copyright.pod" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -D -m644 "/opt/openresty/pod/nginx/license_copyright.pod" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
 
-	# Fix openresty location
-	cd usr/local/bin/
-	sed -i "s+usr/local/openresty+opt/openresty+g" kong
-	sed -i "s+usr/local/share/lua+usr/share/lua+g" kong
+	luarocks install kong 1.1.0-0
 
-	sed -i "s+usr/local/openresty+opt/openresty+g" json2lua
-	sed -i "s+usr/local/share/lua+usr/share/lua+g" json2lua
+	# # Fix openresty location
+	# cd usr/local/bin/
+	# sed -i "s+usr/local/openresty+opt/openresty+g" kong
+	# sed -i "s+usr/local/share/lua+usr/share/lua+g" kong
 
-	sed -i "s+usr/local/openresty+opt/openresty+g" lapis
-	sed -i "s+usr/local/share/lua+usr/share/lua+g" lapis
+	# sed -i "s+usr/local/openresty+opt/openresty+g" json2lua
+	# sed -i "s+usr/local/share/lua+usr/share/lua+g" json2lua
+
+	# sed -i "s+usr/local/openresty+opt/openresty+g" lapis
+	# sed -i "s+usr/local/share/lua+usr/share/lua+g" lapis
 	
-	sed -i "s+usr/local/openresty+opt/openresty+g" lua2json
-	sed -i "s+usr/local/share/lua+usr/share/lua+g" lua2json
+	# sed -i "s+usr/local/openresty+opt/openresty+g" lua2json
+	# sed -i "s+usr/local/share/lua+usr/share/lua+g" lua2json
 	
-	sed -i "s+usr/local/openresty+opt/openresty+g" luarocks
-	sed -i "s+usr/local/share/lua+usr/share/lua+g" luarocks
+	# sed -i "s+usr/local/openresty+opt/openresty+g" luarocks
+	# sed -i "s+usr/local/share/lua+usr/share/lua+g" luarocks
 	
-	sed -i "s+usr/local/openresty+opt/openresty+g" luarocks-5.1
-	sed -i "s+usr/local/share/lua+usr/share/lua+g" luarocks-5.1
+	# sed -i "s+usr/local/openresty+opt/openresty+g" luarocks-5.1
+	# sed -i "s+usr/local/share/lua+usr/share/lua+g" luarocks-5.1
 	
-	sed -i "s+usr/local/openresty+opt/openresty+g" luarocks-admin
-	sed -i "s+usr/local/share/lua+usr/share/lua+g" luarocks-admin
+	# sed -i "s+usr/local/openresty+opt/openresty+g" luarocks-admin
+	# sed -i "s+usr/local/share/lua+usr/share/lua+g" luarocks-admin
 	
-	sed -i "s+usr/local/openresty+opt/openresty+g" luarocks-admin-5.1
-	sed -i "s+usr/local/share/lua+usr/share/lua+g" luarocks-admin-5.1
+	# sed -i "s+usr/local/openresty+opt/openresty+g" luarocks-admin-5.1
+	# sed -i "s+usr/local/share/lua+usr/share/lua+g" luarocks-admin-5.1
 	
-	cd "${pkgdir}"
+	# cd "${pkgdir}"
 
 	mkdir usr/bin 2> /dev/null; mv usr/local/bin/* usr/bin; rm -rf usr/local/bin
 
