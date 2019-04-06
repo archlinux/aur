@@ -1,8 +1,0 @@
-
-allprojects {
-	repositories {
-		mavenCentral()
-		jcenter()
-		flatDir name: 'localRepository', dirs: "${rootDir}/lib"
-	}
-}
