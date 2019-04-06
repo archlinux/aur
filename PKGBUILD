@@ -13,7 +13,7 @@ pkgver=1.0.4
 pkgrel=1
 pkgdesc="Access a single or a collection of NetCDF files as a multi-dimensional array"
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.io/$_pack/"
 license=('GPL')
 groups=('octave-forge')
 depends=('octave>=3.4.0' 'octave-netcdf>=1.0.2' 'octave-statistics>=1.0.6')
@@ -23,9 +23,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('797cb2398a7e7b6027f1e65094870cfd')
+sha256sums=('ed615f4ea88a5f8c577c747c63674a3b91597fd26ec1cfe0d902ef19e38f266d')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
