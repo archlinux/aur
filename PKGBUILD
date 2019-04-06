@@ -13,18 +13,18 @@ pkgver=0.3.1
 pkgrel=1
 pkgdesc="Low level I/O functions for serial, i2c, parallel, tcp, gpib, vxi11 and usbtmc interfaces."
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.io/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
-depends=('octave>=3.2.0')
+depends=('octave>=3.8.0')
 makedepends=()
 optdepends=()
 backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
-md5sums=('37da49ef9f8fa560ce790cf5162d35ea')
+source=("https://downloads.sourceforge.net/octave/$_archive")
+sha256sums=('d9c3b2e258cc8245ebfdd282e6314af12987daf453f4356555f56ca5ec55873c')
 noextract=("$_archive")
 
 _octave_run() {
