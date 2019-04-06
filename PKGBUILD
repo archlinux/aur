@@ -1,8 +1,8 @@
 # Maintainer: Melvin Vermeeren <mail@mel.vin>
 
 pkgname=mpd-sacd
-pkgver=0.21.5
-pkgrel=4
+pkgver=0.22.0
+pkgrel=1
 pkgdesc='MPD with patches for SACD and DVDA ISO playback.'
 url='https://sourceforge.net/p/sacddecoder/mpd/MPD.git/ci/master/tree/'
 license=('GPL')
@@ -14,7 +14,7 @@ depends=('libao' 'ffmpeg' 'libmodplug' 'audiofile' 'libshout' 'libmad' 'curl' 'f
 makedepends=('boost' 'meson' 'python-sphinx')
 conflicts=('mpd')
 provides=("mpd=${pkgver}")
-source=('mpd::git+https://git.code.sf.net/p/sacddecoder/mpd/MPD.git#commit=f95306d636e5a2f79a198ff184c2e09ebd2f9039'
+source=('mpd::git+https://git.code.sf.net/p/sacddecoder/mpd/MPD.git#commit=fad7f5c0627b4f4f91adec35a8a7f5569a62de09'
 	'sysusers.d'
 	'tmpfiles.d'
 	'conf')
@@ -38,6 +38,7 @@ build() {
 		'-Dadplug=disabled' # not in an official repo
 		'-Dsndio=disabled' # interferes with detection of alsa devices
 		'-Dshine=disabled' # not in an official repo
+		'-Dtremor=disabled' # not in official repo
 		'-Dcdio_paranoia=enabled'
 		'-Diso9660=enabled'
 		'-Djack=enabled'
@@ -64,6 +65,8 @@ package() {
 	install -Dm644 ../../conf "${pkgdir}"/etc/mpd.conf
 	install -Dm644 ../../tmpfiles.d "${pkgdir}"/usr/lib/tmpfiles.d/mpd.conf
 
-	sed '/\[Service\]/a User=mpd' -i "${pkgdir}"/usr/lib/systemd/system/mpd.service
-	sed '/WantedBy=/c WantedBy=default.target' -i "${pkgdir}"/usr/lib/systemd/system/mpd.service
+	sed \
+		-e '/\[Service\]/a User=mpd' \
+		-e '/WantedBy=/c WantedBy=default.target' \
+		-i "${pkgdir}"/usr/lib/systemd/system/mpd.service
 }
