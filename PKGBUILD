@@ -12,7 +12,7 @@
 
 pkgname=llvm-git
 _pkgname='llvm'
-pkgver=9.0.0_r313653.5182302a376
+pkgver=9.0.0_r313654.1db96ac88b6
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://llvm.org/'
@@ -128,7 +128,7 @@ build() {
     -DLLVM_ENABLE_BINDINGS=OFF \
     -DLLVM_ENABLE_RTTI=ON \
     -DLLVM_ENABLE_FFI=ON \
-    -DLLVM_BUILD_TESTS=ON \
+    -DLLVM_BUILD_TESTS=OFF \
     -DLLVM_BUILD_DOCS=ON \
     -DLLVM_ENABLE_SPHINX=ON \
     -DLLVM_ENABLE_DOXYGEN=OFF \
