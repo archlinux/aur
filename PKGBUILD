@@ -1,7 +1,8 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
+
 _pkgname=dipy
-pkgname=python-$_pkgname
-pkgver=0.15.0
+pkgname=python-dipy
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Diffusion MR imaging in Python"
 arch=('x86_64')
@@ -10,7 +11,7 @@ license=('BSD')
 depends=('python-numpy' 'python-scipy' 'python-nibabel' 'python-h5py')
 makedepends=('python-setuptools' 'cython')
 source=("https://github.com/nipy/dipy/archive/${pkgver}.tar.gz")
-sha256sums=('9446486a45059d390ef2fc9dc42b3877f61db2de5e037e795ffbb0b6872af8fb')
+sha256sums=('16f4527524e3dd08a8125f683f8f04bdb49c7ac9072acd2021f1ada1dee3e2ae')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
