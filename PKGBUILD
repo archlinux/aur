@@ -1,8 +1,8 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-full-git
-pkgver=0.5.2.r3.gb7ea586
-pkgrel=2
+pkgver=0.5.3.r2.g41f5cf6
+pkgrel=1
 pkgdesc="A music player aimed at audio enthusiasts and music collectors, all options and engines"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="http://www.strawbs.org/"
@@ -35,7 +35,6 @@ build() {
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_SYSTEM_TAGLIB=ON \
-    -DENABLE_DEEZER=OFF \
     -DENABLE_PHONON=ON
   make
 }
