@@ -1,13 +1,13 @@
 pkgbase = k9s-bin
 	pkgdesc = Kubernetes CLI To Manage Your Clusters In Style!
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://github.com/derailed/k9s
 	arch = x86_64
 	license = Apache
 	provides = k9s
-	source = https://github.com/derailed/k9s/releases/download/0.4.6/k9s_0.4.6_Linux_x86_64.tar.gz
-	md5sums = 0a6752b3a8dede594b184efb916e2a36
+	source = https://github.com/derailed/k9s/releases/download/0.4.7/k9s_0.4.7_Linux_x86_64.tar.gz
+	md5sums = ef21cb5d7067a5f4bfee46ba8415094d
 
 pkgname = k9s-bin
 
