@@ -1,6 +1,6 @@
 pkgbase = eclipse-pmd
 	pkgdesc = PMD static source code analysis (Java, XML, ...) plugin for Eclipse IDE
-	pkgver = 4.1.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = http://pmd.sourceforge.net/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = eclipse-pmd
 	noextract = plugin.jar
 	noextract = license.txt
 	options = !strip
-	source = feature.jar::https://dl.bintray.com/pmd/pmd-eclipse-plugin/releases/4.1.0.v20190307-2036/features/net.sourceforge.pmd.eclipse_4.1.0.v20190307-2036.jar
-	source = plugin.jar::https://dl.bintray.com/pmd/pmd-eclipse-plugin/releases/4.1.0.v20190307-2036/plugins/net.sourceforge.pmd.eclipse.plugin_4.1.0.v20190307-2036.jar
+	source = feature.jar::https://dl.bintray.com/pmd/pmd-eclipse-plugin/releases/4.2.0.v20190331-1136/features/net.sourceforge.pmd.eclipse_4.2.0.v20190331-1136.jar
+	source = plugin.jar::https://dl.bintray.com/pmd/pmd-eclipse-plugin/releases/4.2.0.v20190331-1136/plugins/net.sourceforge.pmd.eclipse.plugin_4.2.0.v20190331-1136.jar
 	source = license.txt::http://sourceforge.net/p/pmd/code/ci/master/tree/LICENSE?format=raw
 	sha256sums = 6d24740a856cf46fcc44861cc76b20ec65df9aaa70e66289bb67b063f79c5e83
 	sha256sums = 629905beaa6f78709e54590635e9ab192333dfc8016496d76af490c77dfbe1f4
