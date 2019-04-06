@@ -14,3 +14,11 @@
 +                -isystem $$NDK_ROOT/sysroot/usr/include
 
  ANDROID_SOURCES_CXX_STL_LIBDIR = $$NDK_ROOT/sources/cxx-stl/llvm-libc++/libs/$$ANDROID_TARGET_ARCH
+
+@@ -54,3 +54,6 @@
+ QMAKE_CFLAGS_OPTIMIZE_SIZE = -Oz
+
+ include(../common/android-base-tail.conf)
++
++QMAKE_PKG_CONFIG = $$[QT_INSTALL_PREFIX]
++QMAKE_PKG_CONFIG = android-$$section(QMAKE_PKG_CONFIG, /, 3, 3)-pkg-config
