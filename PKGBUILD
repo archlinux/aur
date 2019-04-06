@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 pkgname=luametatex
-pkgver=2019.04.03
+pkgver=2019.04.06
 pkgrel=1
 pkgdesc="ConTeXt LuaMetaTeX distribution"
 url="http://www.contextgarden.net"
@@ -67,7 +67,7 @@ prepare() {
  echo "TEXMFOS=${_dest}/texmf-${_platform}"   > $srcdir/tex/setuptex
  echo "export TEXMFOS"                       >> $srcdir/tex/setuptex
  echo ""                                     >> $srcdir/tex/setuptex
- echo "TEXMFCACHE=\$HOME/texmf-cache"        >> $srcdir/tex/setuptex
+ echo "TEXMFCACHE=\$HOME/.cache/luametatex"  >> $srcdir/tex/setuptex
  echo "export TEXMFCACHE"                    >> $srcdir/tex/setuptex
  echo ""                                     >> $srcdir/tex/setuptex
  echo "unset TEXINPUTS MPINPUTS MFINPUTS"    >> $srcdir/tex/setuptex
