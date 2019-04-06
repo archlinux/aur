@@ -13,7 +13,7 @@ pkgver=1.3.0
 pkgrel=1
 pkgdesc="Provides COM interface and additional functionality on Windows"
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.io/$_pack/"
 license=('GPL')
 groups=('octave-forge')
 depends=('octave>=3.2.0')
@@ -23,9 +23,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('00dba012c9980073f72eb16e1f8818aa')
+sha256sums=('8dda7f30ff293eb9cc85baf928f5c2c21a56cd2701d9b3276c30e4cfb1497c0d')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
