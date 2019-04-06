@@ -1,0 +1,5 @@
+# Config file (default: /etc/oomd.json)
+OOMD_CONFIG=/etc/oomd.json
+
+# Event loop polling interval (default: 5)
+OOMD_INTERVAL=5

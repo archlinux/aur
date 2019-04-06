@@ -1,0 +1,10 @@
+--- etc/desktop.json	2019-04-04 19:31:47.000000000 +0200
++++ etc/desktop.json	2019-04-06 14:02:06.765240227 +0200
+@@ -28,6 +28,7 @@
+                     {
+                         "name": "memory_reclaim",
+                         "args": {
++                            "cgroup": "user.slice/user-*.slice/session-*.scope,user.slice/user-*.slice/user@*.service/*,system.slice/*",
+                             "duration": "10"
+                         }
+                     }

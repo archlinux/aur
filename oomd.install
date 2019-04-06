@@ -1,0 +1,7 @@
+post_install() {
+    cat << EOF
+==> An example oomd configuration has been deployed to /etc/oomd.json, please modify it according to your needs.
+==> A systemd service is also available, it can be configured in /etc/default/oomd and started with:
+==>     $ sudo systemctl start oomd
+EOF
+}

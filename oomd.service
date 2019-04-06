@@ -1,0 +1,37 @@
+[Unit]
+Description=userspace out-of-memory killer
+AssertDirectoryNotEmpty=/proc/pressure
+
+[Service]
+Type=simple
+Restart=always
+SyslogIdentifier=oomd
+MemoryLow=64M
+
+Environment=OOMD_CONFIG=/etc/oomd.json
+Environment=OOMD_INTERVAL=5
+EnvironmentFile=-/etc/default/oomd
+
+ExecStartPre=/usr/bin/oomd_bin --check-config ${OOMD_CONFIG}
+ExecStart=/usr/bin/oomd_bin --config ${OOMD_CONFIG} --interval ${OOMD_INTERVAL}
+
+CapabilityBoundingSet= 
+NoNewPrivileges=yes
+PrivateTmp=yes
+DevicePolicy=closed
+DeviceAllow=/dev/kmsg
+ProtectSystem=strict
+ProtectHome=yes
+ProtectControlGroups=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+RestrictAddressFamilies=AF_UNIX
+RestrictRealtime=yes
+RestrictNamespaces=yes
+MemoryDenyWriteExecute=yes
+LockPersonality=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+
+[Install]
+WantedBy=multi-user.target
