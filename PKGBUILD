@@ -4,7 +4,7 @@
 # Contributor: Anthony Anderson <aantony4122@gmail.com>
 
 pkgname=discord-canary
-pkgver=0.0.73
+pkgver=0.0.74
 pkgrel=1
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('libpulse: For pulseaudio support'
             'noto-fonts-cjk: Font for special characters such as /shrug face.')
 source=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'LICENSE')
-sha256sums=('ffc80319a98c2e7c0713fc32a4903cd4a60e22dcd38efc87ed7f15346eb84b13'
+sha256sums=('3fb5530099a6c8db6aa204b4c701aaab2a0e62b732103f7d7af80359dc599200'
             '9be5f85421c9094c390c25bf1f45157c3c8dcf592feb8acb0810a61f11d80b90')
 
 package() {
