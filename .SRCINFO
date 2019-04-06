@@ -1,7 +1,7 @@
 pkgbase = openmpi-gcc6
 	pkgdesc = High performance message passing library (MPI) built with gcc6
-	pkgver = 4.0.0
-	pkgrel = 2
+	pkgver = 4.0.1
+	pkgrel = 1
 	url = https://www.open-mpi.org
 	arch = x86_64
 	license = custom:OpenMPI
@@ -16,9 +16,9 @@ pkgbase = openmpi-gcc6
 	depends = gcc6
 	optdepends = gcc6-fortran: fortran support
 	options = staticlibs
-	source = https://www.open-mpi.org/software/ompi/v4.0/downloads/openmpi-4.0.0.tar.bz2
-	sha256sums = 2f0b8a36cfeb7354b45dda3c5425ef8393c9b04115570b615213faaa3f97366b
-	sha512sums = 978097dcbb16df2a616dcbbef9536fed0f7be40914daa8f927882d91bdda9265e54334fc12aeef49b41073d8782321b5611a7e9c71182258a45bca5f640e927b
+	source = https://www.open-mpi.org/software/ompi/v4.0/downloads/openmpi-4.0.1.tar.bz2
+	sha256sums = cce7b6d20522849301727f81282201d609553103ac0b09162cf28d102efb9709
+	sha512sums = 09f35dc2e44b4f84aab9c5af9d81f90bbdb030e4d90800a5d3ffae88cb32b7faecc9bea0abb113da53c21f73e9d19db68f961f997bc47bdd28d83a87beee0731
 
 pkgname = openmpi-gcc6
 
