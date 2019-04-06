@@ -1,4 +1,4 @@
-pkg
-src
-undistract-me
+pkg/
+src/
+undistract-me/
 *.pkg.*
