@@ -10,11 +10,11 @@ url="https://github.com/hadolint/hadolint"
 license=('GPL3')
 provides=('hadolint')
 conflicts=('hadolint')
-source=("https://github.com/hadolint/hadolint/releases/download/v$pkgver/$_pkgname-Linux-x86_64")
+source=("$_pkgname-$pkgver::https://github.com/hadolint/hadolint/releases/download/v$pkgver/$_pkgname-Linux-x86_64")
 sha256sums=('bd33dd053ad4ee57636f1d473fd11db06c9532eddbbd9669458478dc0067c70c')
 
 package() {
-  install -D -m755 "$srcdir/$_pkgname-Linux-x86_64"  "$pkgdir/usr/bin/$_pkgname"
+  install -D -m755 "$srcdir/$_pkgname-$pkgver"  "$pkgdir/usr/bin/$_pkgname"
 }
 
 # vim:set ts=2 sw=2 et:

@@ -1,5 +1,7 @@
+all: clean build
+
 clean:
-	rm -f hadolint-Linux-x86_64 hadolint-bin-*.pkg.*
+	rm -f hadolint-*
 
 geninteg:
 	makepkg --geninteg >> PKGBUILD
