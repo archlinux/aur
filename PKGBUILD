@@ -137,8 +137,6 @@ build() {
     -DLLDB_USE_SYSTEM_SIX=1 \
     -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
     -DLLVM_BINUTILS_INCDIR=/usr/include \
-    -DPOLLY_ENABLE_GPGPU_CODEGEN=ON \
-    -DLINK_POLLY_INTO_TOOLS=ON \
     "../${_pkgname}/${_pkgname}" \
 
   ninja all
