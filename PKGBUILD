@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/themix-project/oomox
 
 pkgname=oomox-git
-pkgver=1.12.1
+pkgver=1.12.2
 pkgrel=1
 pkgdesc="Themix: GUI for generating different color variations
 of Arc, Materia, Oomox themes
@@ -94,7 +94,7 @@ prepare(){
 	cd "${srcdir}/oomox"
 
 	# remove submodule if building package update without flushing the dir:
-	git submodule deinit --all || true
+	git submodule deinit --all --force || true
 	git config --get-regexp submodule \
 		| cut -d' ' -f1 \
 		| xargs --no-run-if-empty -n1 git config --unset \

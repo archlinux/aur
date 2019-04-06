@@ -1431,3 +1431,16 @@ Thu Mar 21 11:25:42 2019 +0100
      2019-03-15 1eed1b04 Roboron3042 chore(colors: Contributed) add Cyberpunk-Neon (#237)
      2019-03-11 595637a4 actionless fix(plugins: icons: suru*): don't show Icons Symbolic theme options if Gradient option enabled
      2019-03-10 d60ad4e2 Gustavo Reis Suru++ Asprómauros plugin (#232) (#233)
+
+
+Sat Apr 6 23:55:50 2019 +0200
+-------------------------------------------------
+1.12.2          Release 1.12.2
+    
+     2019-04-06 97a169f4 actionless chore(plugins: icons: papirus): update submodule (9000 new icons)
+     2019-04-06 d116f0d9 actionless chore(plugins: icons: numix): update submodule (enpass, insync)
+     2019-04-06 99aeb14b actionless chore(plugins: arc): update submodule (cinnamon, gnome dash)
+     2019-04-06 07a8b7ae actionless chore(plugins: materia): update submodule (gtk combobutton and firefox entry/button)
+     2019-03-31 fcebce5c actionless chore(plugins: theme: arc): update submodule (gnome-shell 3.22)
+     2019-03-26 1ebe6b8a actionless fix(packaging: arch): use --force on submodule deinit during prepare
+     2019-03-24 fb5b801a Gustavo Reis Update Suru++ submodules and new April colourschemes (#238)
