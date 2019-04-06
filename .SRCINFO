@@ -1,7 +1,7 @@
 pkgbase = julia-catindices
 	pkgdesc = Julia package for indices-aware array concatenation and growth
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JuliaArrays/CatIndices.jl
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = julia-catindices
 	depends = julia-compat
 	depends = julia-customunitranges
 	depends = julia-loadpath
+	depends = julia-offsetarrays
 	source = julia-catindices-0.2.0.tar.gz::https://github.com/JuliaArrays/CatIndices.jl/archive/v0.2.0.tar.gz
 	source = julia-catindices-0.2.0-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/05378dceec7bb8b2138a96b5b787ea7430c7ad3d/C/CatIndices/Deps.toml
 	source = julia-catindices-0.2.0-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/05378dceec7bb8b2138a96b5b787ea7430c7ad3d/C/CatIndices/Package.toml

@@ -3,12 +3,12 @@
 pkgname=julia-catindices
 _pkgname=CatIndices
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Julia package for indices-aware array concatenation and growth'
 arch=(any)
 url=https://github.com/JuliaArrays/CatIndices.jl
 license=(MIT)
-depends=(julia julia-compat julia-customunitranges julia-loadpath)
+depends=(julia julia-compat julia-customunitranges julia-loadpath julia-offsetarrays)
 makedepends=(julia-distrohelper)
 
 _commit=05378dceec7bb8b2138a96b5b787ea7430c7ad3d
