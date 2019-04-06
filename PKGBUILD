@@ -33,10 +33,7 @@ package(){
 	sed -i "s+usr/local/openresty+opt/openresty+g" json2lua
 	sed -i "s+usr/local/openresty+opt/openresty+g" lapis
 	sed -i "s+usr/local/openresty+opt/openresty+g" lua2json
-	sed -i "s+usr/local/openresty+opt/openresty+g" luarocks
-	sed -i "s+usr/local/openresty+opt/openresty+g" luarocks-5.1
-	sed -i "s+usr/local/openresty+opt/openresty+g" luarocks-admin
-	sed -i "s+usr/local/openresty+opt/openresty+g" luarocks-admin-5.1
+	rm luarocks luarocks-5.1 luarocks-admin luarocks-admin-5.1
 	cd "${pkgdir}"
 
 	mkdir usr/bin 2> /dev/null; mv usr/local/bin/* usr/bin; rm -rf usr/local/bin
