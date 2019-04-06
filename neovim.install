@@ -5,7 +5,7 @@ post_install() {
   echo "   to get started."
 }
 
-post_update() {
+post_upgrade() {
   echo ":: If you have any questions, check the following page first:"
   echo "   https://github.com/neovim/neovim/wiki/FAQ"
   echo ":: Remember this a pre-release build, see 'Following HEAD' for more info"
