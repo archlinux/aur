@@ -26,9 +26,17 @@ package(){
 
 	install -D -m644 "/opt/openresty/pod/nginx/license_copyright.pod" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -D -m644 "/opt/openresty/pod/nginx/license_copyright.pod" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
-	mkdir usr/bin 2> /dev/null; mv opt/bin/* usr/bin; rm -rf opt/bin
 
-	rsync -a opt/* usr; rm -rf opt
+	# Fix openresty location
+	cd usr/local/bin/
+	sed "s:usr/local:opt:" kong > kongs
+	rm kong
+	mv kongs kong
+	cd "${pkgdir}"
+
+	mkdir usr/bin 2> /dev/null; mv usr/local/bin/* usr/bin; rm -rf usr/local/bin
+
+	rsync -a usr/local/* usr; rm -rf usr/local
 
 	cd ..
 
