@@ -3,7 +3,7 @@
 _name=importlab
 
 pkgname=python-importlab
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="A library to calculate python dependency graphs."
 arch=('any')
@@ -13,13 +13,19 @@ depends=('python-networkx' 'python-six')
 makedepends=('python' 'python-setuptools')
 options=(!emptydirs)
 source=(
-  'https://files.pythonhosted.org/packages/eb/0b/d3473b5719888a5bb889e9559ddc040a6cf7036dfcbbf72db180716cafdc/importlab-0.4.tar.gz'
+  'https://files.pythonhosted.org/packages/6c/14/9081386bafaa5673b7d75063afe084d2c15ce837921e3bfb32281569081f/importlab-0.5.tar.gz'
   )
 sha256sums=(
-  'de791a75fcf9f4b856e4bdb5c267c008f8cfb916543b34be78e331ed05ac6d36'
+  'ab3a0bf77a326de577e3c7f643ec304f83fed93cb1056638560d832413d6e736'
   )
 
-build(){
+prepare() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  # Fix permissions
+  chmod -R +r *
+}
+
+build() {
   cd "${srcdir}/${_name}-${pkgver}"
   python setup.py build
 }
