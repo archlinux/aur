@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=jna
-pkgver=5.1.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="Access native libraries with pure Java code."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('java-runtime')
 source=("http://central.maven.org/maven2/net/java/dev/jna/jna/${pkgver}/jna-${pkgver}.jar"
         'https://raw.githubusercontent.com/java-native-access/jna/master/LICENSE.AL'
         )
-sha256sums=('e0a8f94314d428e8eb11906c01fe6ff6a64e2bbd0052b261f1268b4a88121513'
+sha256sums=('0271ae7fc162a5e69c337f36d86fdb94a8a232c5c42a80d8a7424071addd1fdc'
             'd67be85caf7da46ea5c21495e197e7df6c70fd9d9b027a32b951cc745fa5400e'
             )
 
