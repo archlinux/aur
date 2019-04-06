@@ -13,19 +13,19 @@ pkgver=4.4.5
 pkgrel=1
 pkgdesc="Stochastic concepts and maximum entropy methods for time series analysis"
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.io/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
-depends=('octave>=2.9.7')
+depends=('octave>=2.9.7' 'octave-nan>3.0.0')
 makedepends=()
 optdepends=()
 backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('e4d23a5b41cba7743a954808be8df078')
+sha256sums=('c9eb377fc9006e9764f3b152f7bd4725cb6025699bfab0d6a68f26fe2484d6ef')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
