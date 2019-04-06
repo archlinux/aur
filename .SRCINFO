@@ -1,0 +1,22 @@
+pkgbase = user-admin
+	pkgdesc = Mate-Desktop user management tool
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/zhuyaliang/user-admin
+	arch = x86_64
+	license = GPL3
+	makedepends = gettext
+	makedepends = itstool
+	makedepends = vala
+	makedepends = meson-git
+	makedepends = ninja
+	makedepends = gobject-introspection
+	makedepends = accountsservice
+	depends = mate-polkit
+	depends = group-service
+	options = !emptydirs
+	source = https://github.com/zhuyaliang/user-admin/archive/1.4.1.tar.gz
+	sha256sums = 380146cbb09a5dc4940290dfeee99e1b604ca320a231042b2f09d3672851ff1c
+
+pkgname = user-admin
+
