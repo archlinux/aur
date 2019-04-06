@@ -1,0 +1,22 @@
+pkgbase = xfsprogs-git
+	pkgdesc = Utilities for managing the XFS filesystem
+	pkgver = 4.20.0.r0.g413a0f0d
+	pkgrel = 1
+	url = https://xfs.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL
+	makedepends = git
+	depends = glibc
+	depends = sh
+	depends = libutil-linux
+	depends = readline
+	provides = xfsprogs
+	conflicts = xfsprogs
+	options = staticlibs
+	source = git+https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git
+	sha256sums = SKIP
+
+pkgname = xfsprogs-git
+
