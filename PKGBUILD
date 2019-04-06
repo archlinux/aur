@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=74.0.3729.28
+pkgver=75.0.3753.4
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -72,30 +72,36 @@ optdepends=(
             'libva-mesa-driver: HW video acceleration for Nouveau, R600 and RadeonSI users'
             'libva-intel-driver: HW video acceleration for Intel G45 and HD users'
             )
-source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
+source=(
+        #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         'git+https://github.com/foutrelis/chromium-launcher.git'
         'chromium-dev.svg'
         # Patch form Gentoo.
-         # Misc Patches.
-        'enable-vaapi.patch::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/5c12891c099807bda7fa39ad0b62ef5ee4bc789c/debian/patches/enable_vaapi_on_linux_2.diff' # Use Saikrishna Arcot patch again
+        # Misc Patches.
+        'enable-vaapi.patch' # Use Saikrishna Arcot patch again :https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/4d40b58013b518373b2544d486d3de40796edd36/debian/patches/enable_vaapi_on_linux_2.diff'
         'chromium-ffmpeg-clang.patch'
         # Patch from crbug (chromium bugtracker) or Arch chromium package.
         'chromium-widevine-r4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium'
         'chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
+        'nullptr.patch.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1552864/revisions/2/patch?download'
+        'libcpp.patch.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1546066/revisions/4/patch?download'
         )
-sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
+sha256sums=(
+            #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             'SKIP'
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
             # Patch form Gentoo
 
             # Misc Patches
-            'SKIP'
-            '16741344288d200fadf74546855e00aa204122e744b4811a36155efd5537bd95'
+            '4b785aeee1cab89bf410de063b7769ef4eb99130888ece60a38a584019747b9f'
+            '0d386161052bf8bd3f6c68bdaf766042c75e84db8c3aa356f2e2f8b83511f29f'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
+            '9a8fc71db40d2749819906041fc0eead2b9326521be898cc150b967b936fcbd3'
+            '84a34c48df06ea3cc52bb9ad8e056e68e83a0068c9fce420c3e704091c7203fa'
             )
 install=chromium-dev.install
 
@@ -148,6 +154,7 @@ _keeplibs=(
            'third_party/angle/third_party/vulkan-tools'
            'third_party/angle/third_party/vulkan-validation-layers'
            'third_party/apple_apsl'
+           'third_party/axe-core'
            'third_party/blink'
            'third_party/boringssl'
            'third_party/boringssl/src/third_party/fiat'
@@ -174,10 +181,10 @@ _keeplibs=(
            'third_party/cros_system_api'
            'third_party/dav1d'
            'third_party/devscripts'
+           'third_party/dawn'
            'third_party/dom_distiller_js'
            'third_party/emoji-segmenter'
            'third_party/ffmpeg'
-           'third_party/fips181'
            'third_party/flatbuffers'
            'third_party/flot'
            'third_party/glslang'
@@ -253,6 +260,7 @@ _keeplibs=(
            'third_party/SPIRV-Tools'
            'third_party/sqlite'
            'third_party/swiftshader'
+           'third_party/swiftshader/third_party/llvm-7.0'
            'third_party/swiftshader/third_party/llvm-subzero'
            'third_party/swiftshader/third_party/subzero'
            'third_party/tcmalloc'
@@ -327,6 +335,7 @@ _flags=(
         'enable_mse_mpeg2ts_stream_parser=true'
         'closure_compile=false'
         'clang_use_chrome_plugins=true'
+        'use_gold=false'
         )
 
 if [ "${_wayland}" = "1" ]; then
@@ -393,52 +402,16 @@ _clang_path="${BUILDDIR}${_builddir}/src/chromium-${pkgver}/third_party/llvm-bui
 
 export CC="${_clang_path}clang"
 export CXX="${_clang_path}clang++"
-export AR=ar
+export AR="${_clang_path}llvm-ar"
 export NM=nm
+export RANLIB=/usr/bin/true
+_lld="ld.lld"
+
 
 ################################################
 
 prepare() {
   cd "${srcdir}/chromium-${pkgver}"
-
-  # Use chromium-dev as branch name.
-  sed -e '0,/output_name = "chrome"/s/= "chrome"/= "chromium-dev"/' \
-      -e 's|root_out_dir/chrome"|root_out_dir/chromium-dev"|g' \
-      -i chrome/BUILD.gn
-  sed -e 's|"chromium-browser"|"chromium-dev"|g' \
-      -e 's|"Chromium|&-dev|g' \
-      -i media/audio/pulse/pulse_util.cc
-  sed -e 's|chromium-browser|chromium-dev|g' \
-      -i chrome/browser/shell_integration_linux.cc \
-      -i chrome/browser/ui/libgtkui/gtk_util.cc
-  sed -e 's|config_dir.Append("chromium|&-dev|' \
-      -i chrome/common/chrome_paths_linux.cc
-  sed -e 's|/etc/chromium|&-dev|' \
-      -e 's|/usr/share/chromium|&-dev|' \
-      -i chrome/common/chrome_paths.cc
-  sed -e 's|/etc/chromium|&-dev|' \
-      -i components/policy/tools/template_writers/writer_configuration.py
-  sed -e 's|chrome-sandbox|chrome_sandbox|g'\
-      -i sandbox/linux/suid/client/setuid_sandbox_host.cc
-
-  msg2 "Patching the sources"
-
-  # Misc patches.
-
-  # Pats to chromium dev's about why always they forget add/remove missing build rules.
-  # Not this time (?).
-
-
-  # Allow building against system libraries in official builds.
-  sed 's|OFFICIAL_BUILD|GOOGLE_CHROME_BUILD|' \
-    -i tools/generate_shim_headers/generate_shim_headers.py
-
-  # https://crbug.com/893950.
-  sed -e 's/\<xmlMalloc\>/malloc/' \
-    -e 's/\<xmlFree\>/free/' \
-    -i third_party/blink/renderer/core/xml/*.cc \
-    -i third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
-    -i third_party/libxml/chromium/libxml_utils.cc
 
   # Force script incompatible with Python 3 to use /usr/bin/python2.
   sed -i '1s|python$|&2|' \
@@ -452,11 +425,74 @@ prepare() {
     -i third_party/ffmpeg/chromium/scripts/generate_gn.py
   export PNACLPYTHON=/usr/bin/python2
 
+  # Remove most bundled libraries. Some are still needed.
+  msg2 "Removing unnecessary components to save disk space."
+  build/linux/unbundle/remove_bundled_libraries.py ${_keeplibs[@]} --do-remove
+
+  msg2 "Changing bundle libraries to system ones."
+  build/linux/unbundle/replace_gn_files.py --system-libraries ${_use_system[@]}
+
+  msg2 "Setup NaCl/PNaCl SDK: Download and install toolchains"
+  build/download_nacl_toolchains.py --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator sync --extract
+
+  msg2 "Download external build components from google"
+  tools/clang/scripts/update.py
+
+  # Use chromium-dev as brand name.
+  sed -e 's|=Chromium|&-dev|g' \
+      -i chrome/app/theme/chromium/BRANDING
+  sed -e '0,/output_name = "chrome"/s/= "chrome"/= "chromium-dev"/' \
+      -e 's|root_out_dir/chrome"|root_out_dir/chromium-dev"|g' \
+      -i chrome/BUILD.gn
+  sed -e 's|"chromium-browser"|"chromium-dev"|g' \
+      -i media/audio/pulse/pulse_util.cc
+  sed -e 's|"Chromium|&-dev|g' \
+      -i chrome/common/chrome_constants.cc
+  sed -e 's|chromium-browser|chromium-dev|g' \
+      -i chrome/browser/shell_integration_linux.cc \
+      -i chrome/browser/ui/libgtkui/gtk_util.cc
+  sed -e 's|config_dir.Append("chromium|&-dev|' \
+      -i chrome/common/chrome_paths_linux.cc
+  sed -e 's|/etc/chromium|&-dev|' \
+      -e 's|/usr/share/chromium|&-dev|' \
+      -i chrome/common/chrome_paths.cc
+  sed -e 's|/etc/chromium|&-dev|' \
+      -e "s|'app_name': 'Chromium|&-dev|g" \
+      -i components/policy/tools/template_writers/writer_configuration.py
+
+  # Fix(?) the name of the sandbox.
+  sed -e 's|chrome-sandbox|chrome_sandbox|g'\
+      -i sandbox/linux/suid/client/setuid_sandbox_host.cc
+
+  msg2 "Patching the sources"
+
+  # Misc patches.
+
+  # Pats to chromium dev's about why always they forget add/remove missing build rules.
+  # Not this time (?).
+
+  # Allow building against system libraries in official builds.
+  sed 's|OFFICIAL_BUILD|GOOGLE_CHROME_BUILD|' \
+    -i tools/generate_shim_headers/generate_shim_headers.py
+
+  # https://crbug.com/893950.
+  sed -e 's/\<xmlMalloc\>/malloc/' \
+    -e 's/\<xmlFree\>/free/' \
+    -i third_party/blink/renderer/core/xml/*.cc \
+    -i third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
+    -i third_party/libxml/chromium/libxml_utils.cc
+
   # Enable VAAPI.
   patch -p1 -i "${srcdir}/enable-vaapi.patch"
   sed 's|/dri/|/|g' -i media/gpu/vaapi/vaapi_wrapper.cc
 
   # Patch from crbug (chromium bugtracker) or Arch chromium package.
+
+  # https://crbug.org/819294.
+  base64 --decode "${srcdir}/nullptr.patch.base64" | patch -p1 -i -
+
+  # https://crbug.org/947527.
+  base64 --decode "${srcdir}/libcpp.patch.base64" | patch -p1 -i -
 
   # https://crbug.com/skia/6663#c10.
   patch -p0 -i "${srcdir}/chromium-skia-harmony.patch"
@@ -468,30 +504,24 @@ prepare() {
   mkdir -p third_party/node/linux/node-linux-x64/bin/
   ln -sf /usr/bin/node third_party/node/linux/node-linux-x64/bin/node
 
-  # Setup bundled ffmpeg.
-  # Setup the ffmpeg correct compiler if use bundled clang.
-  cat "${srcdir}/chromium-ffmpeg-clang.patch" | sed "s|__CLANG_PATH__|${_clang_path}|g" | patch -p1 -i -
-
-  # use system opus in bundled ffmpeg.
-  sed -e "s|I' + os.path.join(CHROMIUM_ROOT_DIR,|I' + os.path.join\(|g" \
-      -e 's|third_party/opus/src/include|/usr/include/opus|g' \
-      -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py
-
-  # Remove most bundled libraries. Some are still needed.
-  msg2 "Removing unnecessary components to save space."
-  build/linux/unbundle/remove_bundled_libraries.py ${_keeplibs[@]} --do-remove
-
-  msg2 "Changing bundle libraries to system ones."
-  build/linux/unbundle/replace_gn_files.py --system-libraries ${_use_system[@]}
-
   # Use the file at run time instead of effectively compiling it in.
   sed 's|//third_party/usb_ids/usb.ids|/usr/share/hwdata/usb.ids|g' -i device/usb/BUILD.gn
 
-  msg2 "Setup NaCl/PNaCl SDK: Download and install toolchains"
-  build/download_nacl_toolchains.py --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator sync --extract
+  # Setup the linker in chromium.
+  sed "s|fuse-ld=lld|fuse-ld=${_clang_path}${_lld}|g" -i build/config/compiler/BUILD.gn
 
-  msg2 "Download external build components from google"
-  tools/clang/scripts/update.py --without-android --without-fuchsia
+  # Setup bundled ffmpeg.
+  # Setup the linker in ffmpeg.
+  cat "${srcdir}/chromium-ffmpeg-clang.patch" | sed -e "s|__CLANG_PATH__|${_clang_path}|g" -e "s|__LLD__|${_lld}|g" | patch -p1 -i -
+  # Disable lto.
+  # This avoid messages like:
+  # bfd plugin: LLVM gold plugin has failed to create LTO module: Unknown attribute kind (60) (Producer: 'LLVM9.0.0svn' Reader: 'LLVM 8.0.0')
+  # when you have installed clang in the system.
+  sed 's|--enable-lto|--disable-lto|g' \
+      -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py
+  # Use system opus.
+  rm -fr third_party/opus/src/include
+  ln -sf /usr/include/opus/ third_party/opus/src/include
 }
 
 build() {

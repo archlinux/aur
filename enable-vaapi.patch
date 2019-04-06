@@ -1,0 +1,398 @@
+From 53b93dfe87fd10cced5d2a2a63072dfc7a2af6e4 Mon Sep 17 00:00:00 2001
+From: Daniel Charles <daniel.charles@intel.com>
+Date: Fri, 28 Jul 2017 16:31:47 -0700
+Subject: [PATCH] Enable VAVDA, VAVEA and VAJDA on linux with VAAPI only
+
+This patch contains all the changes necessary to use VA-API along with
+vaapi-driver to run all media use cases supported with hardware acceleration.
+
+It is intended to remain as experimental accessible from chrome://flags on linux.
+It requires libva/intel-vaapi-driver to be installed on the system path where
+chrome is executed.  Other drivers could be tested if available. Flags are
+kept independent for linux, where this feature has to be enabled before
+actually using it.  This should not change how other OSes use the flags
+already, the new flags will show at the buttom on the section of unavailable
+experiments
+
+The changes cover a range of compiler pre-processor flags to enable the stack.
+It moves the presandbox operations to the vaapi_wrapper class as the hook function
+is available there. vaInit will open driver on the correct installed folder.
+
+chrome flags consolidtation into only two flags for linux.  Mjpeg and accelerated
+video are used.  The other flags are kept for ChromeOS and other OSes.
+
+Developer testing was made on skylake hardware, ChromeOS and Ubuntu.
+
+BUG=NONE
+TEST="subjective testing with VAVDA,VAVEA and VAJDA, autotest for encoder"
+TEST="and decoder hardware accelerated"
+TEST="have libva/intel-vaapi-driver installed and not installed in the system"
+TEST="repeat on different hardware families"
+R=posciak@chromium.org
+R=kcwu@chromium.org
+
+Cq-Include-Trybots: master.tryserver.chromium.android:android_optional_gpu_tests_rel;master.tryserver.chromium.linux:linux_optional_gpu_tests_rel;master.tryserver.chromium.mac:mac_optional_gpu_tests_rel;master.tryserver.chromium.win:win_optional_gpu_tests_rel
+Change-Id: Ifbbf5c9e5221a8b5733fc6d4d0cf984a1f103171
+Signed-off-by: Daniel Charles <daniel.charles@intel.com>
+---
+
+Index: dev/chrome/browser/about_flags.cc
+===================================================================
+--- dev.orig/chrome/browser/about_flags.cc
++++ dev/chrome/browser/about_flags.cc
+@@ -1443,7 +1443,7 @@ const FeatureEntry kFeatureEntries[] = {
+         "disable-accelerated-video-decode",
+         flag_descriptions::kAcceleratedVideoDecodeName,
+         flag_descriptions::kAcceleratedVideoDecodeDescription,
+-        kOsMac | kOsWin | kOsCrOS | kOsAndroid,
++        kOsAll,
+         SINGLE_DISABLE_VALUE_TYPE(switches::kDisableAcceleratedVideoDecode),
+     },
+ #if defined(OS_WIN)
+@@ -2000,10 +2000,10 @@ const FeatureEntry kFeatureEntries[] = {
+      FEATURE_VALUE_TYPE(service_manager::features::kXRSandbox)},
+ #endif  // ENABLE_ISOLATED_XR_SERVICE
+ #endif  // ENABLE_VR
+-#if defined(OS_CHROMEOS)
++#if defined(OS_LINUX) && !defined(OS_ANDROID)
+     {"disable-accelerated-mjpeg-decode",
+      flag_descriptions::kAcceleratedMjpegDecodeName,
+-     flag_descriptions::kAcceleratedMjpegDecodeDescription, kOsCrOS,
++     flag_descriptions::kAcceleratedMjpegDecodeDescription, kOsCrOS | kOsLinux,
+      SINGLE_DISABLE_VALUE_TYPE(switches::kDisableAcceleratedMjpegDecode)},
+ #endif  // OS_CHROMEOS
+     {"v8-cache-options", flag_descriptions::kV8CacheOptionsName,
+Index: dev/chrome/browser/flag_descriptions.cc
+===================================================================
+--- dev.orig/chrome/browser/flag_descriptions.cc
++++ dev/chrome/browser/flag_descriptions.cc
+@@ -2972,9 +2972,7 @@ const char kMacViewsTaskManagerDescripti
+ 
+ #endif
+ 
+-// Chrome OS -------------------------------------------------------------------
+-
+-#if defined(OS_CHROMEOS)
++#if defined(OS_LINUX) && !defined(OS_ANDROID)
+ 
+ const char kAcceleratedMjpegDecodeName[] =
+     "Hardware-accelerated mjpeg decode for captured frame";
+@@ -2982,6 +2980,12 @@ const char kAcceleratedMjpegDecodeDescri
+     "Enable hardware-accelerated mjpeg decode for captured frame where "
+     "available.";
+ 
++#endif
++
++// Chrome OS -------------------------------------------------------------------
++
++#if defined(OS_CHROMEOS)
++
+ const char kAppServiceAshName[] = "App Service Ash";
+ const char kAppServiceAshDescription[] =
+     "Use the App Service to provide data to the Ash UI, such as the shelf and "
+Index: dev/chrome/browser/flag_descriptions.h
+===================================================================
+--- dev.orig/chrome/browser/flag_descriptions.h
++++ dev/chrome/browser/flag_descriptions.h
+@@ -1755,13 +1755,17 @@ extern const char kPermissionPromptPersi
+ 
+ #endif  // defined(OS_MACOSX)
+ 
+-// Chrome OS ------------------------------------------------------------------
+-
+-#if defined(OS_CHROMEOS)
++#if defined(OS_LINUX) && !defined(OS_ANDROID)
+ 
+ extern const char kAcceleratedMjpegDecodeName[];
+ extern const char kAcceleratedMjpegDecodeDescription[];
+ 
++#endif
++
++// Chrome OS ------------------------------------------------------------------
++
++#if defined(OS_CHROMEOS)
++
+ extern const char kAppServiceAshName[];
+ extern const char kAppServiceAshDescription[];
+ 
+Index: dev/content/gpu/BUILD.gn
+===================================================================
+--- dev.orig/content/gpu/BUILD.gn
++++ dev/content/gpu/BUILD.gn
+@@ -6,6 +6,7 @@ import("//build/config/jumbo.gni")
+ import("//build/config/ui.gni")
+ import("//gpu/vulkan/features.gni")
+ import("//media/media_options.gni")
++import("//media/gpu/args.gni")
+ import("//ui/ozone/ozone.gni")
+ 
+ # See //content/BUILD.gn for how this works.
+@@ -136,4 +137,8 @@ target(link_target_type, "gpu_sources")
+       (!is_chromecast || is_cast_desktop_build)) {
+     configs += [ "//build/config/linux/dri" ]
+   }
++
++  if (is_desktop_linux && use_vaapi) {
++    public_configs = [ "//build/config/linux/libva" ]
++  }
+ }
+Index: dev/gpu/config/software_rendering_list.json
+===================================================================
+--- dev.orig/gpu/config/software_rendering_list.json
++++ dev/gpu/config/software_rendering_list.json
+@@ -370,17 +370,6 @@
+       ]
+     },
+     {
+-      "id": 48,
+-      "description": "Accelerated video decode is unavailable on Linux",
+-      "cr_bugs": [137247],
+-      "os": {
+-        "type": "linux"
+-      },
+-      "features": [
+-        "accelerated_video_decode"
+-      ]
+-    },
+-    {
+       "id": 50,
+       "description": "Disable VMware software renderer on older Mesa",
+       "cr_bugs": [145531, 332596, 571899, 629434],
+Index: dev/media/base/media_switches.cc
+===================================================================
+--- dev.orig/media/base/media_switches.cc
++++ dev/media/base/media_switches.cc
+@@ -506,7 +506,7 @@ bool IsVideoCaptureAcceleratedJpegDecodi
+           switches::kUseFakeJpegDecodeAccelerator)) {
+     return true;
+   }
+-#if defined(OS_CHROMEOS)
++#if defined(OS_LINUX) && !defined(OS_ANDROID)
+   return true;
+ #endif
+   return false;
+Index: dev/media/filters/BUILD.gn
+===================================================================
+--- dev.orig/media/filters/BUILD.gn
++++ dev/media/filters/BUILD.gn
+@@ -5,6 +5,7 @@
+ import("//build/config/jumbo.gni")
+ import("//media/media_options.gni")
+ import("//third_party/libaom/options.gni")
++import("//media/gpu/args.gni")
+ 
+ jumbo_source_set("filters") {
+   # Do not expand the visibility here without double-checking with OWNERS, this
+@@ -212,7 +213,7 @@ jumbo_source_set("filters") {
+     deps += [ "//media/base/android" ]
+   }
+ 
+-  if (current_cpu != "arm" && is_linux) {
++  if (use_vaapi) {
+     sources += [
+       "h264_bitstream_buffer.cc",
+       "h264_bitstream_buffer.h",
+Index: dev/media/gpu/BUILD.gn
+===================================================================
+--- dev.orig/media/gpu/BUILD.gn
++++ dev/media/gpu/BUILD.gn
+@@ -577,6 +577,7 @@ if (is_chromeos || is_linux) {
+     if (use_ozone) {
+       deps += [ "//ui/ozone" ]
+     }
++    public_configs = [ "//build/config/linux/libva" ]
+   }
+ }
+ 
+Index: dev/media/gpu/gpu_video_decode_accelerator_factory.cc
+===================================================================
+--- dev.orig/media/gpu/gpu_video_decode_accelerator_factory.cc
++++ dev/media/gpu/gpu_video_decode_accelerator_factory.cc
+@@ -183,6 +183,8 @@ GpuVideoDecodeAcceleratorFactory::Create
+     vda = (this->*create_vda_function)(workarounds, gpu_preferences, media_log);
+     if (vda && vda->Initialize(config, client))
+       return vda;
++    else
++      LOG(ERROR) << "Initialization of one or more VDAs failed.";
+   }
+ 
+   return nullptr;
+@@ -241,6 +243,7 @@ GpuVideoDecodeAcceleratorFactory::Create
+     const gpu::GpuDriverBugWorkarounds& workarounds,
+     const gpu::GpuPreferences& gpu_preferences,
+     MediaLog* media_log) const {
++  LOG(WARNING) << "Initializing VAAPI VDA.";
+   std::unique_ptr<VideoDecodeAccelerator> decoder;
+   decoder.reset(new VaapiVideoDecodeAccelerator(make_context_current_cb_,
+                                                 bind_image_cb_));
+Index: dev/media/gpu/ipc/service/gpu_video_decode_accelerator.cc
+===================================================================
+--- dev.orig/media/gpu/ipc/service/gpu_video_decode_accelerator.cc
++++ dev/media/gpu/ipc/service/gpu_video_decode_accelerator.cc
+@@ -381,6 +381,7 @@ bool GpuVideoDecodeAccelerator::Initiali
+     LOG(ERROR) << "Failed creating the VDA factory";
+     return false;
+   }
++  LOG(WARNING) << "Created the VDA factory";
+ 
+   const gpu::GpuDriverBugWorkarounds& gpu_workarounds =
+       stub_->channel()->gpu_channel_manager()->gpu_driver_bug_workarounds();
+@@ -394,6 +395,7 @@ bool GpuVideoDecodeAccelerator::Initiali
+                << (config.is_encrypted() ? " with encryption" : "");
+     return false;
+   }
++  LOG(WARNING) << "Created VDA";
+ 
+   // Attempt to set up performing decoding tasks on IO thread, if supported by
+   // the VDA.
+Index: dev/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
+===================================================================
+--- dev.orig/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
++++ dev/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
+@@ -74,6 +74,7 @@ void CloseGpuMemoryBufferHandle(const gf
+ }
+ #endif
+ 
++#if defined(OS_ANDROID) || defined(OS_CHROMEOS)
+ // Returns true if the CPU is an Intel Kaby/Gemini/Sky Lake or later.
+ // Cpu platform id's are referenced from the following file in kernel source
+ // arch/x86/include/asm/intel-family.h
+@@ -103,6 +104,7 @@ bool IsSkyLakeOrLater() {
+                                      cpuid.model() >= kFirstSkyLakeModelId;
+   return is_sky_lake_or_later;
+ }
++#endif
+ 
+ }  // namespace
+ 
+@@ -652,6 +654,10 @@ void VaapiVideoDecodeAccelerator::Assign
+   const unsigned int va_format = GetVaFormatForVideoCodecProfile(profile_);
+   std::vector<VASurfaceID> va_surface_ids;
+ 
++  // Nvidia doesn't support VAProfileNone, so don't try to create a temporary
++  // copy buffer there. It's not needed anyways for hardware video decoding
++  // to work.
++#if defined(OS_ANDROID) || defined(OS_CHROMEOS)
+   // If we aren't in BufferAllocationMode::kNone, we have to allocate a
+   // |vpp_vaapi_wrapper_| for VaapiPicture to DownloadFromSurface() the VA's
+   // internal decoded frame.
+@@ -665,6 +671,7 @@ void VaapiVideoDecodeAccelerator::Assign
+       NotifyError(PLATFORM_FAILURE);
+     }
+   }
++#endif
+ 
+   for (size_t i = 0; i < buffers.size(); ++i) {
+     DCHECK(requested_pic_size_ == buffers[i].size());
+@@ -673,9 +680,13 @@ void VaapiVideoDecodeAccelerator::Assign
+     // only used as a copy destination. Therefore, the VaapiWrapper used and
+     // owned by |picture| is |vpp_vaapi_wrapper_|.
+     std::unique_ptr<VaapiPicture> picture = vaapi_picture_factory_->Create(
++#if defined(OS_LINUX) && !defined(OS_ANDROID) && !defined(OS_CHROMEOS)
++            vaapi_wrapper_,
++#else
+         (buffer_allocation_mode_ == BufferAllocationMode::kNone)
+             ? vaapi_wrapper_
+             : vpp_vaapi_wrapper_,
++#endif
+         make_context_current_cb_, bind_image_cb_, buffers[i]);
+     RETURN_AND_NOTIFY_ON_FAILURE(picture, "Failed creating a VaapiPicture",
+                                  PLATFORM_FAILURE, );
+@@ -1091,6 +1102,9 @@ VaapiVideoDecodeAccelerator::GetSupporte
+ 
+ VaapiVideoDecodeAccelerator::BufferAllocationMode
+ VaapiVideoDecodeAccelerator::DecideBufferAllocationMode() const {
++#if defined(OS_LINUX) && !defined(OS_ANDROID) && !defined(OS_CHROMEOS)
++  return BufferAllocationMode::kNormal;
++#else
+   // TODO(crbug.com/912295): Enable a better BufferAllocationMode for IMPORT
+   // |output_mode_| as well.
+   if (output_mode_ == VideoDecodeAccelerator::Config::OutputMode::IMPORT)
+@@ -1123,6 +1137,7 @@ VaapiVideoDecodeAccelerator::DecideBuffe
+     return BufferAllocationMode::kReduced;
+
+   return BufferAllocationMode::kSuperReduced;
++#endif
+ }
+ 
+ bool VaapiVideoDecodeAccelerator::IsBufferAllocationModeReducedOrSuperReduced()
+Index: dev/media/gpu/vaapi/vaapi_wrapper.cc
+===================================================================
+--- dev.orig/media/gpu/vaapi/vaapi_wrapper.cc
++++ dev/media/gpu/vaapi/vaapi_wrapper.cc
+@@ -252,6 +252,11 @@ void VADisplayState::PreSandboxInitializ
+       base::File::FLAG_OPEN | base::File::FLAG_READ | base::File::FLAG_WRITE);
+   if (drm_file.IsValid())
+     VADisplayState::Get()->SetDrmFd(drm_file.GetPlatformFile());
++
++  const char kNvidiaPath[] = "/dev/dri/nvidiactl";
++  base::File nvidia_file = base::File(
++      base::FilePath::FromUTF8Unsafe(kNvidiaPath),
++      base::File::FLAG_OPEN | base::File::FLAG_READ | base::File::FLAG_WRITE);
+ }
+ 
+ VADisplayState::VADisplayState()
+@@ -279,9 +284,6 @@ bool VADisplayState::Initialize() {
+ }
+ 
+ bool VADisplayState::InitializeOnce() {
+-  static_assert(VA_MAJOR_VERSION >= 1 && VA_MINOR_VERSION >= 1,
+-                "Requires VA-API >= 1.1.0");
+-
+   switch (gl::GetGLImplementation()) {
+     case gl::kGLImplementationEGLGLES2:
+       va_display_ = vaGetDisplayDRM(drm_fd_.get());
+@@ -289,10 +291,10 @@ bool VADisplayState::InitializeOnce() {
+     case gl::kGLImplementationDesktopGL:
+ #if defined(USE_X11)
+       va_display_ = vaGetDisplay(gfx::GetXDisplay());
+-#else
+-      LOG(WARNING) << "VAAPI video acceleration not available without "
+-                      "DesktopGL (GLX).";
++      if (vaDisplayIsValid(va_display_))
++        break;
+ #endif  // USE_X11
++      va_display_ = vaGetDisplayDRM(drm_fd_.get());
+       break;
+     // Cannot infer platform from GL, try all available displays
+     case gl::kGLImplementationNone:
+@@ -325,8 +327,19 @@ bool VADisplayState::InitializeOnce() {
+   int major_version, minor_version;
+   VAStatus va_res = vaInitialize(va_display_, &major_version, &minor_version);
+   if (va_res != VA_STATUS_SUCCESS) {
+-    LOG(ERROR) << "vaInitialize failed: " << vaErrorStr(va_res);
+-    return false;
++    LOG(ERROR) << "vaInitialize failed (ignore if using Wayland desktop environment): " << vaErrorStr(va_res);
++    va_display_ = vaGetDisplayDRM(drm_fd_.get());
++    if (!vaDisplayIsValid(va_display_)) {
++      LOG(ERROR) << "Could not get a valid DRM VA display";
++      return false;
++    }
++    va_res = vaInitialize(va_display_, &major_version, &minor_version);
++    if (va_res != VA_STATUS_SUCCESS) {
++      LOG(ERROR) << "vaInitialize failed using DRM: " << vaErrorStr(va_res);
++      return false;
++    } else {
++      LOG(WARNING) << "vaInitialize succeeded for DRM";
++    }
+   }
+ 
+   va_initialized_ = true;
+@@ -334,7 +347,7 @@ bool VADisplayState::InitializeOnce() {
+   va_vendor_string_ = vaQueryVendorString(va_display_);
+   DLOG_IF(WARNING, va_vendor_string_.empty())
+       << "Vendor string empty or error reading.";
+-  DVLOG(1) << "VAAPI version: " << major_version << "." << minor_version << " "
++  VLOG(1) << "VAAPI version: " << major_version << "." << minor_version << " "
+            << va_vendor_string_;
+ 
+   // The VAAPI version is determined from what is loaded on the system by
+@@ -638,7 +651,7 @@ bool VASupportedProfiles::AreAttribsSupp
+     if (attribs[i].type != required_attribs[i].type ||
+         (attribs[i].value & required_attribs[i].value) !=
+             required_attribs[i].value) {
+-      DVLOG(1) << "Unsupported value " << required_attribs[i].value
++      VLOG(1) << "Unsupported value " << required_attribs[i].value
+                << " for attribute type " << required_attribs[i].type;
+       return false;
+     }
