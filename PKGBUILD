@@ -3,7 +3,7 @@
 # Contributor: Andreas Schönfelder <passtschu at freenet dot de>
 
 pkgname=phoronix-test-suite-milestone
-pkgver=8.6.0m3
+pkgver=8.8.0m2
 pkgrel=1
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux, milestone version"
 arch=(any)
@@ -23,7 +23,7 @@ provides=(phoronix-test-suite)
 conflicts=(phoronix-test-suite)
 install=${pkgname}.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v${pkgver}.tar.gz")
-sha256sums=('e251cf0dd8065edbeb4eaebe3960fb162ed2643362f7de15e2dbf0be054aa31b')
+sha256sums=('ddd6d74fe4332e62e7d03492342c28fd381f358280fc99aa38ce34ceed1954d6')
 
 package() {
   cd "${srcdir}/phoronix-test-suite-${pkgver}"
