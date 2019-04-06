@@ -1,0 +1,51 @@
+pkgbase = llvm-lw-git
+	pkgver = 9.0.0_r313655.2ea8dbf5642
+	pkgrel = 1
+	url = https://llvm.org/
+	arch = x86_64
+	license = custom:University of Illinois/NCSA Open Source License
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = libffi
+	makedepends = libedit
+	makedepends = ncurses
+	makedepends = libxml2
+	makedepends = ocaml=4.07.1
+	makedepends = ocaml-ctypes
+	makedepends = ocaml-findlib
+	makedepends = python-sphinx
+	makedepends = python-recommonmark
+	options = staticlibs
+	source = llvm-project::git+https://github.com/llvm/llvm-project.git
+	source = llvm-config.h
+	sha256sums = SKIP
+	sha256sums = 597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48
+
+pkgname = llvm-lw-git
+	pkgdesc = Collection of modular and reusable compiler and toolchain technologies
+	depends = llvm-libs
+	depends = perl
+	optdepends = python-setuptools: for using lit (LLVM Integrated Tester)
+	provides = llvm
+	provides = llvm-svn
+
+pkgname = llvm-libs-lw-git
+	pkgdesc = LLVM runtime libraries
+	depends = gcc-libs
+	depends = zlib
+	depends = libffi
+	depends = libedit
+	depends = ncurses
+	depends = libxml2
+	provides = llvm-libs
+	provides = llvm-libs-svn
+
+pkgname = llvm-ocaml-lw-git
+	pkgdesc = OCaml bindings for LLVM
+	depends = llvm
+	depends = ocaml=4.07.1
+	depends = ocaml-ctypes
+	provides = llvm-ocaml
+	provides = llvm-ocaml-svn
+
