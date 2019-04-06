@@ -1,13 +1,14 @@
 pkgbase = openvpn-nordvpn
 	pkgdesc = OpenVPN helper script for nordvpn.com
 	pkgver = 0.1.38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nstinus/nordvpn
 	install = openvpn-nordvpn.install
 	arch = any
 	license = MIT
 	makedepends = coreutils
 	makedepends = asciidoc
+	makedepends = git
 	depends = openvpn
 	depends = systemd
 	depends = openvpn-update-resolv-conf-git
