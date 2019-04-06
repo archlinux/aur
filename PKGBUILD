@@ -3,7 +3,7 @@
 
 pkgname=lib32-libtiff4
 pkgver=3.9.7
-pkgrel=3
+pkgrel=4
 pkgdesc='Library for manipulation of TIFF images'
 arch=(x86_64)
 url=http://www.simplesystems.org/libtiff/
@@ -15,11 +15,20 @@ depends=(
   lib32-zlib
 )
 makedepends=(git)
-source=(git+https://gitlab.com/libtiff/libtiff.git#tag=Release-v${pkgver//./-})
-sha256sums=(SKIP)
+source=(
+  git+https://gitlab.com/libtiff/libtiff.git#tag=Release-v${pkgver//./-}
+  libtiff4-soname.patch
+)
+sha256sums=(
+  SKIP
+  e6246631f6d943715b612b4ddd2279c946ff90c9e8d755fa639e8051a6eb3488
+)
 
 prepare() {
   cd libtiff
+
+  # Rename 3.9.7 to 4.3.7, 3.6.x was the first release with the unintentional ABI change
+  patch -Np1 -i ../libtiff4-soname.patch
 
   ./autogen.sh
 }
@@ -39,12 +48,7 @@ build() {
 
 package() {
   make DESTDIR="${pkgdir}" -C libtiff install
-  rm -rf "${pkgdir}"/usr/{bin,include,lib32/libtiff{,xx}.{a,so,so.3},share}
-  # Rename 3.9.7 to 4.3.7, 3.6.x was the first release with the unintentional ABI change
-  mv "${pkgdir}"/usr/lib32/libtiff.so.{3.9.7,4.3.7}
-  mv "${pkgdir}"/usr/lib32/libtiffxx.so.{3.9.7,4.3.7}
-  ln -s libtiff.so.4.3.7 "${pkgdir}"/usr/lib32/libtiff.so.4
-  ln -s libtiffxx.so.4.3.7 "${pkgdir}"/usr/lib32/libtiffxx.so.4
+  rm -rf "${pkgdir}"/usr/{bin,include,lib32/libtiff{,xx}.{a,so},share}
   install -dm 755 "${pkgdir}"/usr/share/licenses
   ln -s libtiff4 "${pkgdir}"/usr/share/licenses/lib32-libtiff4
 }
