@@ -32,6 +32,7 @@ depends=(
 	python-systemd
 	python-dbus
 	python-pygments
+	python-valkit
 	v4l-utils
 	nginx-mainline
 	openssl

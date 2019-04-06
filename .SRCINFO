@@ -18,6 +18,7 @@ pkgbase = kvmd
 	depends = python-systemd
 	depends = python-dbus
 	depends = python-pygments
+	depends = python-valkit
 	depends = v4l-utils
 	depends = nginx-mainline
 	depends = openssl
