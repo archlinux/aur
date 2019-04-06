@@ -27,8 +27,6 @@ package(){
 	install -D -m644 "/opt/openresty/pod/nginx/license_copyright.pod" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -D -m644 "/opt/openresty/pod/nginx/license_copyright.pod" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
 
-	luarocks install kong 1.1.0-0
-
 	# # Fix openresty location
 	# cd usr/local/bin/
 	# sed -i "s+usr/local/openresty+opt/openresty+g" kong
