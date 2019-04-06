@@ -1,0 +1,19 @@
+pkgbase = segyio
+	pkgdesc = Library for easy interaction with SEG-Y formatted seismic data with bindings for Python and Matlab
+	pkgver = 1.8.3
+	pkgrel = 1
+	url = https://github.com/equinor/segyio
+	arch = x86_64
+	license = lgpl
+	makedepends = cmake
+	makedepends = python-setuptools>=28
+	makedepends = python-setuptools-scm
+	makedepends = python-pytest
+	depends = python>=2.7
+	depends = python-numpy>=1.10
+	optdepends = python-sphinx: to build the documentation
+	source = https://github.com/equinor/segyio/releases/download/1.8.3/segyio-1.8.3.tar.gz
+	md5sums = 0a68792d1d7215b4f48ad735aa3d39fb
+
+pkgname = segyio
+
