@@ -1,13 +1,12 @@
 pkgbase = julia-offsetarrays
 	pkgdesc = Provides Julia users with arrays that have arbitrary indices
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JuliaArrays/OffsetArrays.jl
 	arch = any
 	license = MIT
 	makedepends = julia-distrohelper
 	depends = julia
-	depends = julia-catindices
 	depends = julia-compat
 	depends = julia-loadpath
 	source = julia-offsetarrays-0.10.0.tar.gz::https://github.com/JuliaArrays/OffsetArrays.jl/archive/v0.10.0.tar.gz
