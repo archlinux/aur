@@ -1,0 +1,17 @@
+pkgbase = karakaplidefter
+	pkgdesc = IUE CE 350 Class project
+	pkgver = 1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-base
+	makedepends = git
+	makedepends = sqlite
+	depends = qt5-base
+	depends = git
+	depends = sqlite
+	source = git://github.com/koguz/karakaplidefter
+	md5sums = SKIP
+
+pkgname = karakaplidefter
+
