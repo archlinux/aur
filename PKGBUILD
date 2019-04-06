@@ -3,7 +3,7 @@
 
 pkgname=keneric
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 fullPkgName="${pkgname}-${pkgver}"
 pkgdesc='A generic thumbnailer for KDE'
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ url='http://kde-apps.org/content/show.php/?content=174485'
 license=(GPL)
 depends=(kio)
 makedepends=(extra-cmake-modules)
-source=("https://dl.opendesktop.org/api/files/download/id/1546322930/s/df4f1cd779f89e32601a56407e2a98d16824e37fa557fe3620def8e0df7168f7546bba3848ac6819c72bc61bbb04c5aa19aad61d669eb2c91964832a2c1cf872/t/1546608079/u//${fullPkgName}.tar.gz"
+source=("https://dl.opendesktop.org/api/files/download/id/1546322930/s/503fc5b1fdddf304180d27857d3e5e71aee1706bf368e3c59221a1cea5046ab0321cbce0a550519ea0b557010fe7fa4e01213541d48d0bd2c020a4e59466eab4/t/1554572309/u//${fullPkgName}.tar.gz"
     "stripPicture"
     "kenerickrita.desktop"
 "kenericblend.desktop")
@@ -36,7 +36,7 @@ build() {
 
 package() {
     make -C build DESTDIR="${pkgdir}" install
-    
+
     mkdir -p "${pkgdir}"/usr/{bin,share/kservices5}
     install -Dm755 stripPicture "${pkgdir}"/usr/bin
     install -Dm644 *.desktop "${pkgdir}"/usr/share/kservices5
