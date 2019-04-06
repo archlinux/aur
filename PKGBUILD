@@ -2,7 +2,7 @@
 
 _name=Colr
 pkgname=python-colr
-pkgver=0.8.3
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="Easy terminal colors, with chainable methods."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('ec07e6cc14dd9b58be73ea03a78497f4197373941d9d01029154d60022b24b8f7e3821aaa7b394f0fe0c17883604275f70fc0d57e174e12cca0a4583105ccb8f')
+sha512sums=('63e763129eef15f930a74496e8e5c5aac2b76663e73a9f9260b44687542fb5e11bd6cfcfba3fd1d4978620ff551d5f36a06f26d6f4b845a575a7f0b319aae02d')
 
 package() {
   cd "$_name-$pkgver"
