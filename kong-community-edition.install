@@ -1,8 +1,10 @@
 post_install() {
+	echo 'export PATH=/opt/openresty/bin:$PATH' >> ~/.bashrc 
+	echo 'export PATH=/uopt/openresty/bin:/opt/openresty/nginx/sbin:$PATH' >> ~/.bashrc 
+	source ~/.bashrc
 	luarocks install kong 1.1.0-0
 	mkdir -p /etc/kong
 	mv /usr/lib/luarocks/rocks/kong/1.1.0-0/kong.conf.default /etc/kong/kong.conf.default
-
 }
 
 post_upgrade() {
