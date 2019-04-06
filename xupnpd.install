@@ -1,3 +1,0 @@
-post_remove() {
-  /usr/bin/userdel xupnpd > /dev/null
-}
