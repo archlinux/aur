@@ -7,11 +7,11 @@ _yajsw=12.12
 _hfsx=0.21
 pkgrel=1
 pkgdesc='Software reverse engineering framework (git)'
-arch=(i686 x86_64)
+arch=(x86_64)
 url=https://github.com/NationalSecurityAgency/ghidra
 license=(Apache)
 conflicts=(ghidra ghidra-bin)
-depends=('java-environment>=11')
+depends=('java-environment>=11' bash)
 makedepends=(gradle unzip)
 source=(git+$url
         repositories
