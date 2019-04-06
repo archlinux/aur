@@ -1,6 +1,6 @@
 pkgbase = unix-runescape-client
 	pkgdesc = RuneScape client for Linux and Unix (RSU-Client,Legacy)
-	pkgver = 4.3.7
+	pkgver = 4.3.8
 	pkgrel = 1
 	url = https://github.com/rsu-client/rsu-client
 	install = unix-runescape-client.install
@@ -20,8 +20,8 @@ pkgbase = unix-runescape-client
 	optdepends = pulseaudio: for "force pulseaudio" fix
 	optdepends = p7zip: to extract launcher from .msi
 	conflicts = runescape-client-bin
-	source = unix-runescape-client-4.3.7.tar.gz::https://github.com/rsu-client/rsu-client/archive/v4.3.7.tar.gz
-	md5sums = 27825d2df15ddec4b4d676ecc23a5423
+	source = unix-runescape-client-4.3.8.tar.gz::https://github.com/rsu-client/rsu-client/archive/v4.3.8.tar.gz
+	md5sums = d42e3f901100f5247d37b2cf9b69f23f
 
 pkgname = unix-runescape-client
 
