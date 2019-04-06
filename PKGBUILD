@@ -1,9 +1,9 @@
 # Maintainer Cookie Engineer <@cookiengineer>
 
 _npmname=fx
-_npmver=12.0.2
+_npmver=14.0.1
 pkgname=nodejs-fx # All lowercase
-pkgver=12.0.2
+pkgver=14.0.1
 pkgrel=1
 pkgdesc="Command-line JSON processing tool"
 arch=(any)
