@@ -6,8 +6,8 @@
 # Contributor: Vladimir Ermakov <vooon341@gmail.com>
 
 pkgname=gazebo
-pkgver=9.6.0
-pkgrel=3
+pkgver=10.1.0
+pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -29,17 +29,11 @@ optdepends=('bullet: Bullet support'
             'urdfdom: Load URDF files')
 makedepends=('cmake' 'doxygen' 'ignition-cmake')
 install="${pkgname}.install"
-source=("https://bitbucket.org/osrf/gazebo/get/gazebo9_${pkgver}.tar.bz2")
-sha256sums=('ebfc99ae8256492ba1ab23b77a59e2149da8a968f9b1c2132a42cd9c8225db57')
-
-_rev="371a247d23f7"
-
-prepare() {
-    cd "${srcdir}/osrf-${pkgname}-${_rev}"
-}
+source=("http://osrf-distributions.s3.amazonaws.com/$pkgname/releases/$pkgname-$pkgver.tar.bz2")
+sha256sums=('8a1fcf8697704928c9cda610a9ce81f563f211bdfb2f1fdb458193ffb36c4287')
 
 build() {
-  cd "${srcdir}/osrf-${pkgname}-${_rev}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   mkdir -p build && cd build
 
@@ -53,6 +47,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/osrf-${pkgname}-${_rev}/build"
+  cd "${srcdir}/${pkgname}-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
 }
