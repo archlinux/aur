@@ -1,0 +1,19 @@
+pkgbase = nginx-mod-rtmp-git
+	pkgdesc = Module for nginx that adds RTMP support
+	pkgver = 1196.a5ac72c
+	pkgrel = 1
+	url = https://github.com/sergey-dryabzhinsky/nginx-rtmp-module
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = nginx
+	source = http://nginx.org/download/nginx-1.14.2.tar.gz
+	source = http://nginx.org/download/nginx-1.14.2.tar.gz.asc
+	source = nginx-rtmp-module::git+https://github.com/sergey-dryabzhinsky/nginx-rtmp-module.git
+	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = nginx-mod-rtmp-git
+
