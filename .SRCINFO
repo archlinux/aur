@@ -1,0 +1,37 @@
+pkgbase = clang-lw-git
+	pkgdesc = C language family frontend for LLVM
+	pkgver = 9.0.0_r313656.18a8a64c9f3
+	pkgrel = 1
+	url = https://clang.llvm.org/
+	arch = x86_64
+	license = custom:University of Illinois/NCSA Open Source License
+	makedepends = git
+	makedepends = llvm-lw-git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python-sphinx
+	makedepends = python2
+	depends = llvm-libs-lw-git
+	depends = gcc
+	depends = compiler-rt-lw-git
+	optdepends = openmp: OpenMP support in clang with -fopenmp
+	optdepends = python: for scan-view and git-clang-format
+	provides = clang-analyzer=9.0.0_r313656.18a8a64c9f3
+	provides = clang-tools-extra=9.0.0_r313656.18a8a64c9f3
+	conflicts = clang-analyzer
+	conflicts = clang-tools-extra
+	replaces = clang-analyzer
+	replaces = clang-tools-extra
+	source = llvm-project::git+https://github.com/llvm/llvm-project.git
+	source = enable-SSP-and-PIE-by-default.patch
+	sha256sums = SKIP
+	sha256sums = 58f86da25eb230ed6d423b5b61870cbf3bef88f38103ca676a2c7f34b2372171
+
+pkgname = clang-lw-git
+	provides = clang
+	provides = clang-svn
+	provides = clang-git
+	provides = clang-tools-extra
+	provides = clang-tools-extra-svn
+	provides = clang-tools-extra-git
+
