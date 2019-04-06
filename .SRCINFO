@@ -1,7 +1,7 @@
 pkgbase = proxygen
 	pkgdesc = A collection of C++ HTTP libraries including an easy to use HTTP server.
-	pkgver = 2019.03.25.00
-	pkgrel = 2
+	pkgver = 2019.04.01.00
+	pkgrel = 1
 	url = https://github.com/facebook/proxygen
 	arch = x86_64
 	license = BSD
@@ -18,8 +18,8 @@ pkgbase = proxygen
 	depends = zlib
 	depends = libcap
 	conflicts = proxygen-git
-	source = https://github.com/facebook/proxygen/archive/v2019.03.25.00.tar.gz
-	sha256sums = cf849f27cd7780fbfa8ae7dce3518d15b13650da2ba8ca3c16cc6613f7d423a5
+	source = https://github.com/facebook/proxygen/archive/v2019.04.01.00.tar.gz
+	sha256sums = d377d23e8fd3621b40fab7143013d8aac142f5d295320456e78b0ab7b1824839
 
 pkgname = proxygen
 
