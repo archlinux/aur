@@ -5,11 +5,11 @@
 
 pkgname=emby-server-beta
 pkgver=4.1.0.20
-pkgrel=1
+pkgrel=2
 _ffmpeg_ver=2018_12_01
 _ffdetect_ver=4.0.2
 pkgdesc='Bring together your videos, music, photos, and live television'
-arch=('any')
+arch=('x86_64')
 url='https://emby.media'
 license=('custom')
 depends=('alsa-lib'
@@ -37,7 +37,6 @@ depends=('alsa-lib'
          'opus'
          'skia-sharp'
          'sqlite'
-         'zlib'
          'zvbi')
 makedepends=('ffnvcodec-headers'
              'nasm')
@@ -116,5 +115,5 @@ package() {
   install -Dm 644 emby-server.sysusers "${pkgdir}"/usr/lib/sysusers.d/emby-server.conf
   install -Dm 644 emby-server.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/emby-server.conf
   install -Dm 644 emby-server.conf "${pkgdir}"/etc/conf.d/emby-server
-  install -Dm 644 license.docx -t "${pkgdir}"/usr/share/licenses/emby-server/
+  install -Dm 644 license.docx -t "${pkgdir}"/usr/share/licenses/$pkgname/license.docx
 }
