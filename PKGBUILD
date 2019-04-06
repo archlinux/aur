@@ -6,8 +6,8 @@
 _pkgname=pyexiv2
 pkgname=python2-exiv2
 pkgver=0.3.2
-pkgrel=21
-pkgdesc="pyexiv2 is a Python binding to exiv2, the C++ library for manipulation of EXIF, IPTC and XMP image metadata."
+pkgrel=22
+pkgdesc="Python binding to exiv2, the C++ library for manipulation of EXIF, IPTC and XMP image metadata."
 url="http://launchpad.net/${_pkgname}"
 arch=('x86_64')
 depends=('python2' 'boost-libs' 'exiv2')
