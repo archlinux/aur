@@ -4,8 +4,8 @@
 _commit='f93fe9bfd94884cec2ba711897222e0df5569a53'
 
 pkgname=nccl
-pkgver=2.4.2
-pkgrel=4
+pkgver=2.4.6
+pkgrel=1
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
 arch=('x86_64')
 url='https://developer.nvidia.com/nccl/'
