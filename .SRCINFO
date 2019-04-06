@@ -1,7 +1,7 @@
 pkgbase = acestream-proxy-git
 	pkgdesc = AceProxy new version capable of providing multiple streams of the same channel over HTTP (git version)
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pepsik-kiev/HTTPAceProxy.git
 	arch = any
 	license = custom

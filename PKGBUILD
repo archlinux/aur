@@ -2,7 +2,7 @@
 
 pkgname=acestream-proxy-git
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="AceProxy new version capable of providing multiple streams of the same channel over HTTP (git version)"
 arch=("any")
 url="https://github.com/pepsik-kiev/HTTPAceProxy.git"
@@ -19,6 +19,7 @@ package() {
   mkdir -p "$pkgdir/opt"
   mkdir -p "$pkgdir/usr/bin"
   
+  rm -rf "$srcdir/$pkgname/.git"
   cp -r "$srcdir/$pkgname" "$pkgdir/opt/aceproxy"
 
   ln -s "/opt/aceproxy/acehttp.py" "$pkgdir/usr/bin/aceproxy"
