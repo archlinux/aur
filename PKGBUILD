@@ -33,6 +33,7 @@ build() {
 	source ~/.bashrc
 
 	# Prepare luarocks
+	sudo chown -R $(whoami) /usr/local
 	wget https://luarocks.org/releases/luarocks-2.4.3.tar.gz
 	tar -xvf luarocks-2.4.3.tar.gz && cd luarocks-2.4.3
 	./configure \
