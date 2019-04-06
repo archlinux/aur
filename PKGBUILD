@@ -37,6 +37,6 @@ package() {
   bsdtar xf data.tar.xz --directory "$pkgdir"
 
   install -dm755 "$pkgdir/usr/bin"
-  ln -sf /opt/CPod/cumulonimbus "$pkgdir/usr/bin/cpod"
+  ln -sf /opt/CPod/cpod "$pkgdir/usr/bin/cpod"
 }
 
