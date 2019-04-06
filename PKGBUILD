@@ -12,7 +12,7 @@
 
 pkgname=llvm-git
 _pkgname='llvm'
-pkgver=9.0.0_r313211.e8c3136994b
+pkgver=9.0.0_r313653.5182302a376
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://llvm.org/'
@@ -117,8 +117,7 @@ build() {
     export PKG_CONFIG_PATH='/usr/lib/pkgconfig'
 
     cmake -G Ninja \
-    -DLLVM_ENABLE_PROJECTS='clang;lldb;compiler-rt;lld;polly' \
-    -DLLVM_ENABLE_BINDINGS=OFF \
+    -DLLVM_ENABLE_PROJECTS='clang;lldb;compiler-rt;lld' \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPYTHON_EXECUTABLE=/usr/bin/python \
@@ -126,6 +125,7 @@ build() {
     -DLLVM_BUILD_LLVM_DYLIB=ON \
     -DLLVM_LINK_LLVM_DYLIB=ON \
     -DLLVM_INSTALL_UTILS=ON \
+    -DLLVM_ENABLE_BINDINGS=OFF \
     -DLLVM_ENABLE_RTTI=ON \
     -DLLVM_ENABLE_FFI=ON \
     -DLLVM_BUILD_TESTS=ON \
