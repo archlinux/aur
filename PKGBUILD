@@ -12,7 +12,7 @@ pkgver=3.1.4
 pkgrel=1
 pkgdesc="A statistics and machine learning toolbox for data with and w/o missing values"
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.io/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>3.2.0')
@@ -22,9 +22,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('a102dbf55cf7b5ec6fa64b9b938e4311')
+sha256sums=('083707ce86fe8d64581d18cf1d355c385cfcd36d57af305e299de7690eee988b')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
