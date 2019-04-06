@@ -1,6 +1,6 @@
 pkgbase = mpd-sidplay
 	pkgdesc = Flexible, powerful, server-side application for playing music - built with sidplay support
-	pkgver = 0.21.6
+	pkgver = 0.21.7
 	pkgrel = 1
 	url = https://www.musicpd.org/
 	arch = x86_64
@@ -43,17 +43,17 @@ pkgbase = mpd-sidplay
 	depends = wildmidi
 	depends = yajl
 	depends = zziplib
-	provides = mpd=0.21.6
+	provides = mpd=0.21.7
 	conflicts = mpd
 	replaces = mpd
 	backup = etc/mpd.conf
-	source = https://www.musicpd.org/download/mpd/0.21/mpd-0.21.6.tar.xz
-	source = https://www.musicpd.org/download/mpd/0.21/mpd-0.21.6.tar.xz.sig
+	source = https://www.musicpd.org/download/mpd/0.21/mpd-0.21.7.tar.xz
+	source = https://www.musicpd.org/download/mpd/0.21/mpd-0.21.7.tar.xz.sig
 	source = tmpfiles.d
 	source = sysusers.d
 	source = mpd.conf
 	validpgpkeys = 0392335A78083894A4301C43236E8A58C6DB4512
-	sha256sums = 8d4d116acc069872ba68741016d284885e93f8558a88d0c7ed246b8e1f40e59f
+	sha256sums = 512062bc529bee04d4ccfaa2c6e720afc85bb071e49850a096b5ed518b3b412c
 	sha256sums = SKIP
 	sha256sums = e09e38ab5fd6e8b3b3e6e5a48d837c164ad37aec7e6762a78810c34fe9abf3a1
 	sha256sums = 2679014448e9352e20e85d8d76b021aeebe27bdf6100b24577afee2f37522a95
