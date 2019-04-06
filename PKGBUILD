@@ -12,19 +12,19 @@ pkgver=0.5.3
 pkgrel=1
 pkgdesc="Financial manipulation, plotting functions and additional date manipulation tools."
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.io/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
-depends=('octave>=3.0.1' 'octave-io>=1.0.18')
+depends=('octave>=4.4.0' 'octave-io>=2.4.11' 'octave-statistics>=1.4.0')
 makedepends=()
 optdepends=()
 backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('72ff50cf84923461b83903438619ad6b')
+sha256sums=('ae6ef255597567c79e15f2b78e2d22febf43bc0d679de7ca6c79f36b9e1f2639')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
