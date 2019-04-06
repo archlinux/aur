@@ -13,7 +13,7 @@
 pkgname=llvm-git
 _pkgname='llvm'
 pkgver=9.0.0_r313654.1db96ac88b6
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='https://llvm.org/'
 license=('custom:University of Illinois/NCSA Open Source License')
@@ -47,30 +47,21 @@ provides=(
     'clang'
     "clang=$pkgver"
     "clang-analyzer=$pkgver"
-    'clang-analyzer-polly-svn'
     "clang-analyzer-svn"
     'clang-compiler-rt'
-    'clang-compiler-rt-polly-svn'
     'clang-compiler-rt-svn'
-    'clang-polly-svn'
     'clang-svn'
     "clang-tools-extra=$pkgver"
-    'clang-tools-extra-polly-svn'
-    "clang-tools-extra-svn"
     'clang-tools-extra-svn'
     'compiler-rt'
     'compiler-rt-svn'
     'lld'
     'lldb'
-    'lldb-polly-svn'
     'lldb-svn'
-    'lld-polly-svn'
     'lld-svn'
     'llvm'
     'llvm-libs'
-    'llvm-libs-polly-svn'
     'llvm-libs-svn'
-    'llvm-polly-svn'
     'llvm-svn')
 conflicts=(
     'clang'
