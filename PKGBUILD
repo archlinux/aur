@@ -25,8 +25,8 @@ build() {
 	  --with-http_realip_module \
 	  --with-http_stub_status_module \
 	  --with-http_v2_module
-	make
-	make install
+	sudo make
+	sudo make install
 	cd ../ && rm -rf openresty-1.13.6.2/ && rm openresty-1.13.6.2.tar.gz
 	echo 'export PATH=/usr/local/openresty/bin:$PATH' >> ~/.bashrc 
 	echo 'export PATH=/uusr/local/openresty/bin:/usr/local/openresty/nginx/sbin:$PATH' >> ~/.bashrc 
@@ -39,8 +39,8 @@ build() {
 	  --lua-suffix=jit \
 	  --with-lua=/usr/local/openresty/luajit \
 	  --with-lua-include=/usr/local/openresty/luajit/include/luajit-2.1
-	make build
-	make install
+	sudo make build
+	sudo make install
 	cd ../ && rm -rf luarocks-2.4.3/ && rm luarocks-2.4.3.tar.gz
 	luarocks install kong 1.1.0-0
 
@@ -55,18 +55,6 @@ package(){
 	cd "${pkgdir}"
 	install -D -m644 "/usr/local/openresty/pod/nginx/license_copyright.pod" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -D -m644 "/usr/local/openresty/pod/nginx/license_copyright.pod" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
-
-	# # Fix openresty location
-	# cd usr/local/bin/
-	# sed -i "s+usr/local/openresty+opt/openresty+g" kong
-	# sed -i "s+usr/local/openresty+opt/openresty+g" json2lua
-	# sed -i "s+usr/local/openresty+opt/openresty+g" lapis
-	# sed -i "s+usr/local/openresty+opt/openresty+g" lua2json
-	# sed -i "s+usr/local/openresty+opt/openresty+g" luarocks
-	# sed -i "s+usr/local/openresty+opt/openresty+g" luarocks-5.1
-	# sed -i "s+usr/local/openresty+opt/openresty+g" luarocks-admin
-	# sed -i "s+usr/local/openresty+opt/openresty+g" luarocks-admin-5.1
-	# cd "${pkgdir}"
 
 	mkdir usr/bin 2> /dev/null; mv usr/local/bin/* usr/bin; rm -rf usr/local/bin
 
