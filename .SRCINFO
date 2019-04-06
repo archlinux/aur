@@ -1,48 +1,42 @@
 pkgbase = lib32-llvm-git
-	pkgver = 8.0.0_r307160.40cd4b77e9a
+	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit, git)
+	pkgver = 9.0.0_r313653.5182302a376
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
-	license = custom:University of Illinois
+	license = custom:University of Illinois/NCSA Open Source License
 	makedepends = cmake
 	makedepends = gcc-multilib
 	makedepends = git
 	makedepends = lib32-libffi
 	makedepends = lib32-libxml2
-	makedepends = python2
+	makedepends = lib32-zlib
+	makedepends = ninja
+	makedepends = python
+	depends = lib32-gcc-libs
+	depends = lib32-libffi
+	depends = lib32-libxml2
+	depends = lib32-ncurses
+	depends = lib32-zlib
+	provides = lib32-clang
+	provides = lib32-clang-git
+	provides = lib32-clang-svn
+	provides = lib32-llvm-libs
+	provides = lib32-llvm-libs-git
+	provides = lib32-llvm-libs-svn
+	provides = lib32-llvm-svn
+	conflicts = lib32-clang
+	conflicts = lib32-clang-git
+	conflicts = lib32-clang-svn
+	conflicts = lib32-llvm
+	conflicts = lib32-llvm-libs
+	conflicts = lib32-llvm-libs-git
+	conflicts = lib32-llvm-libs-svn
+	conflicts = lib32-llvm-svn
 	options = staticlibs
 	options = !strip
 	source = llvm::git+https://github.com/llvm/llvm-project.git
 	sha256sums = SKIP
 
 pkgname = lib32-llvm-git
-	pkgdesc = The LLVM Compiler Infrastructure (32-bit)
-	depends = lib32-llvm-libs-git=8.0.0_r307160.40cd4b77e9a-1
-	depends = llvm-git
-	provides = lib32-llvm-svn
-	provides = lib32-llvm
-	conflicts = lib32-llvm-svn
-	conflicts = lib32-llvm
-
-pkgname = lib32-llvm-libs-git
-	pkgdesc = The LLVM Compiler Infrastructure (runtime libraries, 32-bit)
-	depends = lib32-gcc-libs
-	depends = lib32-libffi
-	depends = lib32-libxml2
-	depends = lib32-ncurses
-	depends = lib32-zlib
-	provides = lib32-llvm-libs-svn
-	provides = lib32-llvm-libs
-	conflicts = lib32-llvm-libs-svn
-	conflicts = lib32-llvm-libs
-
-pkgname = lib32-clang-git
-	pkgdesc = C language family frontend for LLVM (32-bit)
-	url = https://clang.llvm.org/
-	depends = clang
-	depends = lib32-llvm-git=8.0.0_r307160.40cd4b77e9a-1
-	provides = lib32-clang-svn
-	provides = lib32-clang
-	conflicts = lib32-clang-svn
-	conflicts = lib32-clang
 
