@@ -15,6 +15,7 @@ pkgbase = networkmanager-fortisslvpn-git
 	depends = nm-connection-editor
 	depends = openfortivpn
 	depends = libsecret
+	depends = appstream-glib
 	provides = networkmanager-fortisslvpn
 	conflicts = networkmanager-fortisslvpn
 	source = network-manager-fortisslvpn::git+https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvpn.git
