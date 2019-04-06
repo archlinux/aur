@@ -1,5 +1,36 @@
 See https://github.com/gaenserich/hostsblock/commits/master for a complete list of updates
 
+Version 0.999.8 (Alpha 8)
+*Background Job Improvements
+  *systemd service now heavily hardened and sandboxed for enhanced security
+  *Fixed simultaneous download feature so that it actually does what it is supposed to
+  *Added processing support for source blocklists that just list domain names to be blocked, e.g. "ads.google.com" instead of "0.0.0.0 ads.google.com"
+  *Added support to read directly from zip and 7z files containing a single file without decompressing to a cache
+  *Optimized filters used to process domains with improved throughput
+  *If run with dash instead of bash, significant performance improvements
+  *Removed annotation feature to reduce dependencies and overall processing demands
+  *Vastly expanded list of potential blocklists
+
+*POSIX-compatibility improvements
+  *Supports POSIX shells (dash, ash, zsh) instead of just bash
+  *Removed GNU-specific utilities, relies only on POSIX options
+  *Should now run on *BSD and macOS (and perhaps even Android and iOS!) if proper POSIX environments are installed. !UNTESTED!
+
+*UrlCheck mode improvements
+  *User-facing command now a wrapper script that handles sudo execution for the user, reducing configuration demands
+  *Significant performance improvements by moving from incremental to mass handling of domain names
+  *Added noninteractive commands -s (status), -b (block), -l (blacklist), -w (whitelist), -b -o (unblock), -l -o (deblacklist), -w -o (dewhitelist)
+  *Interactive and noninteractive commands can now recursively handle urls contained in target page (with -r subcommand), and even target just blocked domains (with -k subcommand)
+  *To minimize repeated writes, changes to target hosts file now don't write to file until after the whole process completes
+
+*Caveats
+  *The hostsblock-urlcheck symlink is depreciated. Please use hostsblock -c URL instead.
+  *Due to enhanced security hardening, hostsblock no longer handles its own postprocessing. New systemd files handle postprocessing in a more secure way.
+  *Large hosts files will generate large temporary cache files that will eat up a lot of temporary storage. If you have a machine with little RAM (<6GB) and want to block a lot of domains, consider changing your $tmpdir to an HDD- or SSD-backed filesystem instead of using the default tmpfs under /tmp.
+  *UrlCheck mode will not be able to provide information on which block list blocked which domains anymore (annotation feature removed)
+  *blocklists= in hostsblock.conf now points to another file (instead of being a bash array), since POSIX-compatibility does not include support for arrays
+  *Now uses 0.0.0.0 as default redirection IP address instead of 127.0.0.1. 0.0.0.0 theoretically offers better performance without the need of a pseudo-server.
+
 Version 0.999.7 (Alpha 7) (19.01.2018)
 *Typo fixes in install.sh (Commits ccdd26d14fce89452e71f7fa4310360f51e0c94e 895e820e6ff80d9e7a8fec5992dedd72b7dc57c7)
 *Added cryptomining block lists (Commits efee8ca4a08867a076c5ac8a0a93d7a149214239 2dc51cdc97db0d73bcb00d68b54da0f8e929ee36)

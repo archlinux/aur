@@ -1,39 +1,40 @@
 # Maintainer/Originator: Jake VanderKolk <jakevanderkolk@gmail.com>
 pkgname=hostsblock
-pkgver=0.999.7
+pkgver=0.999.8
 pkgrel=1
-pkgdesc="A script that downloads, sorts, and compiles multiple ad- and malware-blocking hosts files."
+pkgdesc="An ad- and malware-blocking utility for POSIX systems"
 arch=(any)
-url="http://gaenserich.github.com/hostsblock/"
+url="https://github.com/gaenserich/hostsblock"
 license=('GPL')
-depends=(bash curl grep sed coreutils gzip)
+depends=(sh curl grep sed coreutils findutils)
 optdepends=('dnsmasq: helps speed up DNS resolutions'
 	    'pixelserv: removes boilerplate page on blocked urls'
 	    'kwakd: removes boilerplate page on blocked urls (recommended)'
-            'pixelserv-tls: removes boilerplate page on blocked urls (supports HTTPS)'
+        'pixelserv-tls: removes boilerplate page on blocked urls (supports HTTPS)'
 	    'unzip: allows the use of zipped downloads'
-	    'p7zip: allows the use of 7zipped downloads'
-            'pigz: improves performance of gzip operations')
-backup=('var/lib/hostsblock/hostsblock.conf' 'var/lib/hostsblock/black.list' 'var/lib/hostsblock/white.list' 'var/lib/hostsblock/hosts.head')
+	    'p7zip: allows the use of 7zipped downloads')
+source=(https://github.com/gaenserich/hostsblock/archive/v$pkgver.tar.gz)
 changelog=$pkgname.changelog
 install=$pkgname.install
-source=('hostsblock.sh' 'hostsblock.conf' 'black.list' 'white.list' 'hosts.head' 'hostsblock.service' 'hostsblock.timer')
-sha1sums=('895e820e6ff80d9e7a8fec5992dedd72b7dc57c7'
-          '38a04854bda5a96b57abd6f5c18f5db472c843b9'
-          '30fdaad1ee0497b9b88b61cfbd958d20c644801b'
-          '11ab0a6bac002879a04872ec06a3611c32c80e1d'
-          'cff64336645b54e11248d31a6e4406cc3642483f'
-          '7196c143f060f4dcfc12d2d1ca36a5055ac51ef2'
-          'f57b1cd082e29631b6fbaae5a7191dbc3ddf176b')
+sha1sums=('ad67ce3f45cc5a4b967f5c9e3af6ef8d65b56fa1')
 
 package() {
-  mkdir -p -m 750 "$pkgdir"/var/lib/hostsblock
-  install -Dm750 "$srcdir"/hostsblock.sh "$pkgdir"/usr/bin/hostsblock
-  ln -sf /usr/bin/hostsblock "$pkgdir"/usr/bin/hostsblock-urlcheck
-  install -Dm644 "$srcdir"/hostsblock.conf "$pkgdir"/var/lib/hostsblock/hostsblock.conf
-  install -Dm644 "$srcdir"/black.list "$pkgdir"/var/lib/hostsblock/black.list
-  install -Dm644 "$srcdir"/white.list "$pkgdir"/var/lib/hostsblock/white.list
-  install -Dm644 "$srcdir"/hosts.head "$pkgdir"/var/lib/hostsblock/hosts.head
-  install -Dm644 "$srcdir"/hostsblock.service "$pkgdir"/usr/lib/systemd/system/hostsblock.service
-  install -Dm644 "$srcdir"/hostsblock.timer "$pkgdir"/usr/lib/systemd/system/hostsblock.timer
+  cd "$srcdir"/"$pkgname"-"$pkgver"
+  mkdir -p -m 755 "$pkgdir"/var/lib/hostsblock
+  install -Dm500 src/hostsblock.sh "$pkgdir"/usr/lib/hostsblock.sh
+  [ ! -d "$pkgdir"/usr/bin ] && mkdir "$pkgdir"/usr/bin
+  sed "s/%PREFIX%/\/usr/g" src/hostsblock-wrapper.sh > "$pkgdir"/usr/bin/hostsblock
+  chmod 550 "$pkgdir"/usr/bin/hostsblock
+  install -Dm600 conf/hostsblock.conf "$pkgdir"/var/lib/hostsblock/config.examples/hostsblock.conf
+  install -Dm600 conf/black.list "$pkgdir"/var/lib/hostsblock/config.examples/black.list
+  install -Dm600 conf/white.list "$pkgdir"/var/lib/hostsblock/config.examples/white.list
+  install -Dm600 conf/hosts.head "$pkgdir"/var/lib/hostsblock/config.examples/hosts.head
+  install -Dm600 conf/block.urls "$pkgdir"/var/lib/hostsblock/config.examples/block.urls
+  install -Dm600 conf/redirect.urls "$pkgdir"/var/lib/hostsblock/config.examples/redirect.urls
+  install -Dm444 systemd/hostsblock.service "$pkgdir"/usr/lib/systemd/system/hostsblock.service
+  install -Dm444 systemd/hostsblock.timer "$pkgdir"/usr/lib/systemd/system/hostsblock.timer
+  install -Dm444 systemd/hostsblock-dnsmasq-restart.path "$pkgdir"/usr/lib/systemd/system/hostsblock-dnsmasq-restart.path
+  install -Dm444 systemd/hostsblock-dnsmasq-restart.service "$pkgdir"/usr/lib/systemd/system/hostsblock-dnsmasq-restart.service
+  install -Dm444 systemd/hostsblock-hosts-clobber.path "$pkgdir"/usr/lib/systemd/system/hostsblock-hosts-clobber.path
+  install -Dm444 systemd/hostsblock-hosts-clobber.service "$pkgdir"/usr/lib/systemd/system/hostsblock-hosts-clobber.service
 }

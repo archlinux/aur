@@ -1,32 +1,29 @@
 add_user_group() {
     _changed=0
-    if getent passwd | grep -q "^hostsblock:"; then
-        true
-    else
+    if ! getent passwd hostsblock >/dev/null 2>&1; then
         _changed=1
         useradd -d /var/lib/hostsblock -c "hostsblock" -m -U hostsblock
     fi
-    if getent group | grep -q "^hostsblock:"; then
-        true
-    else
+    if ! getent group hostsblock >/dev/null 2>&1; then
         _changed=1
         groupadd hostsblock
     fi
-    if [ $_changed == 1 ]; then
+    if [ $_changed = 1 ]; then
         gpasswd -a hostsblock hostsblock
         gpasswd -A hostsblock hostsblock
     fi
-    chown -R hostsblock:hostsblock /var/lib/hostsblock /usr/bin/hostsblock
+    chown -R hostsblock:hostsblock /var/lib/hostsblock /usr/bin/hostsblock /usr/lib/hostsblock.sh
     chmod 755 /var/lib/hostsblock
+    chmod 500 /usr/lib/hostsblock.sh
+    chmod 550 /usr/bin/hostsblock
+    chmod 600 /var/lib/hostsblock/config.examples/*
 }
 
 post_install() {
     add_user_group
     cat << EOF
 
-As of 0.999.4, hostsblock requires additional sudo permissions.
-Please see https://github.com/gaenserich/hostsblock for details.
-
+Please see https://github.com/gaenserich/hostsblock for details on how to configure hostsblock.
 EOF
 }
 
@@ -35,8 +32,9 @@ post_upgrade() {
     chown hostsblock:hostsblock /usr/bin/hostsblock
     cat << EOF
 
-As of 0.999.4, hostsblock requires additional sudo permissions.
-Please see https://github.com/gaenserich/hostsblock for details.
+As of 0.999.8, hostsblock's configuration has changed significantly. Please see
+https://github.com/gaenserich/hostsblock#upgrade09998
+for a guide on how to migrate your configuration
 
 EOF
 }
