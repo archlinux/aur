@@ -1,14 +1,14 @@
 pkgbase = hadolint-bin
 	pkgdesc = Dockerfile linter, validate inline bash, written in Haskell
-	pkgver = 1.16.2
+	pkgver = 1.16.3
 	pkgrel = 1
 	url = https://github.com/hadolint/hadolint
 	arch = x86_64
 	license = GPL3
 	provides = hadolint
 	conflicts = hadolint
-	source = https://github.com/hadolint/hadolint/releases/download/v1.16.2/hadolint-Linux-x86_64
-	sha256sums = bd33dd053ad4ee57636f1d473fd11db06c9532eddbbd9669458478dc0067c70c
+	source = hadolint-1.16.3::https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
+	sha256sums = 7224a0304415823a8f8767c99b3f769b1f57e06f4d89d18783cc23a5fe0669c5
 
 pkgname = hadolint-bin
 
