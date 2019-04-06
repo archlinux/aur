@@ -8,7 +8,7 @@ arch=('any')
 url="https://getkong.org"
 license=('Apache')
 groups=('')
-depends=('libyaml' 'luajit' 'openresty' 'openssl' 'pcre' 'zlib' 'rsync')
+depends=('libyaml' 'openresty' 'openssl' 'pcre' 'zlib' 'rsync')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://bintray.com/kong/kong-community-edition-deb/download_file?file_path=dists/kong-community-edition-1.1.0.stretch.all.deb")
@@ -29,14 +29,14 @@ package(){
 
 	# Fix openresty location
 	cd usr/local/bin/
-	sed -i "s:usr/local:opt:" kong
-	sed -i "s:usr/local:opt:" json2lua
-	sed -i "s:usr/local:opt:" lapis
-	sed -i "s:usr/local:opt:" lua2json
-	sed -i "s:usr/local:opt:" luarocks
-	sed -i "s:usr/local:opt:" luarocks-5.1
-	sed -i "s:usr/local:opt:" luarocks-admin
-	sed -i "s:usr/local:opt:" luarocks-admin-5.1
+	sed -i "s+usr/local+opt+g" kong
+	sed -i "s+usr/local+opt+g" json2lua
+	sed -i "s+usr/local+opt+g" lapis
+	sed -i "s+usr/local+opt+g" lua2json
+	sed -i "s+usr/local+opt+g" luarocks
+	sed -i "s+usr/local+opt+g" luarocks-5.1
+	sed -i "s+usr/local+opt+g" luarocks-admin
+	sed -i "s+usr/local+opt+g" luarocks-admin-5.1
 	cd "${pkgdir}"
 
 	mkdir usr/bin 2> /dev/null; mv usr/local/bin/* usr/bin; rm -rf usr/local/bin
