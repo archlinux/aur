@@ -2,7 +2,7 @@
 
 pkgname=xmage
 pkgver=1.4.34V0.1
-pkgrel=1
+pkgrel=2
 _java_version=8u201
 _java_dir=1.8.0_201
 
@@ -13,8 +13,12 @@ url="http://xmage.de"
 license=('MIT')
 
 makedepends=('detox')
-depends=('jre8-openjdk')
 optdepends=('wmname: change window manager name for compatibility with certain WMs')
+
+# Due to compatibility issues with the current version of java in the repositories,
+# xmage now installs a dedicated version of java to /usr/share/xmage/java
+# and therefore currently does not depend on the jre8-openjdk package
+# depends=('jre8-openjdk')
 
 source=("http://xmage.de/files/xmage_${pkgver}.zip"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt')
@@ -25,7 +29,7 @@ sha256sums=("0f731af1cfa07faae133afff7ec5d9c039c18829f8cb67587a49d82bf683d158"
 package() {
 
 	cd "${srcdir}"
-	
+
 	msg2 "downloading dedicated java version..."
 	wget -c --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jre-8u201-linux-x64.tar.gz
 	
