@@ -9,10 +9,45 @@
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
+# Optionally select a sub architecture by number if building in a clean chroot
+# Leaving this entry blank will require user interaction during the build
+# which will cause a failure to build if using makechrootpkg. Note that the
+# generic (default) option is 26.
+#
+# Note - the march=native option is unavailable by this method, use the nconfig
+# and manually select it.
+#
+#  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
+#  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
+#  3. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10)
+#  4. AMD Barcelona (MBARCELONA)
+#  5. AMD Bobcat (MBOBCAT)
+#  6. AMD Jaguar (MJAGUAR)
+#  7. AMD Bulldozer (MBULLDOZER)
+#  8. AMD Piledriver (MPILEDRIVER)
+#  9. AMD Steamroller (MSTEAMROLLER)
+#  10. AMD Excavator (MEXCAVATOR)
+#  11. AMD Zen (MZEN)
+#  12. Intel P4 / older Netburst based Xeon (MPSC)
+#  13. Intel Atom (MATOM)
+#  14. Intel Core 2 (MCORE2)
+#  15. Intel Nehalem (MNEHALEM)
+#  16. Intel Westmere (MWESTMERE)
+#  17. Intel Silvermont (MSILVERMONT)
+#  18. Intel Sandy Bridge (MSANDYBRIDGE)
+#  19. Intel Ivy Bridge (MIVYBRIDGE)
+#  20. Intel Haswell (MHASWELL)
+#  21. Intel Broadwell (MBROADWELL)
+#  22. Intel Skylake (MSKYLAKE)
+#  23. Intel Skylake X (MSKYLAKEX)
+#  24. Intel Cannon Lake (MCANNONLAKE)
+#  25. Intel Ice Lake (MICELAKE)
+#  26. Generic-x86-64 (GENERIC_CPU)
+_subarch=
+
 # Compile ONLY probed modules
-# As of mainline 2.6.32, running with this option will only build the modules
-# that you currently have probed in your system VASTLY reducing the number of
-# modules built and the build time to do it.
+# Build in only the modules that you currently have probed in your system VASTLY
+# reducing the number of modules built and the build time.
 #
 # WARNING - ALL modules must be probed BEFORE you begin making the pkg!
 #
@@ -35,7 +70,7 @@ options=('!strip')
 _gcc_more_v='20180509'
 _srcname=bcachefs
 source=(
-    "$_srcname::git+https://evilpiepirate.org/git/bcachefs.git"
+    "$_srcname::git+https://github.com/koverstreet/bcachefs#branch=master"
     "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
     config         # the main kernel config file
     60-linux.hook  # pacman hook for depmod
@@ -48,7 +83,7 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '749bbc3e2dac595d0c607fbb0d32fd32bb13833a19907c584ebab56445be11b4'
+            'dc3293984d8d7a6a9fea503d8e4768a2397f6924ec2a79f0a2f6ad8117132ea5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -63,6 +98,9 @@ prepare() {
     git remote add arch_stable https://git.archlinux.org/linux.git
     git pull arch_stable v$_srcver_arch
     
+    msg2 "Reverting 'block: remove the unused bio_iov_iter_get_pages export' which causes `make modules` to fail"
+    git revert 0374e1132217711bc2e920cde877dd7fc3dbd2d9
+
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching to enabled additional gcc CPU optimizatons..."
     patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
@@ -83,6 +121,12 @@ prepare() {
 
     msg2 "Setting config..."
     cp ../config .config
+
+    if [ -n "$_subarch" ]; then
+        yes "$_subarch" | make oldconfig
+    else
+        make prepare
+    fi
 
     ### Optionally load needed modules for the make localmodconfig
     # See https://aur.archlinux.org/packages/modprobed-db
@@ -116,7 +160,6 @@ build() {
 
 _package() {
     pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
-    [[ $pkgbase = linux ]] && groups=(base)
     depends=(coreutils linux-firmware kmod mkinitcpio bcachefs-tools)
     optdepends=('crda: to set the correct wireless channels of your country')
     backup=("etc/mkinitcpio.d/$pkgbase.preset")
@@ -172,6 +215,7 @@ _package() {
 
 _package-headers() {
     pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+    provides=("linux-bcachefs-headers=${pkgver}" "linux-headers=${pkgver}")
 
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
@@ -232,13 +276,13 @@ _package-headers() {
     local file
     while read -rd '' file; do
         case "$(file -bi "$file")" in
-            application/x-sharedlib\;*)             # Libraries (.so)
+            application/x-sharedlib\;*)      # Libraries (.so)
                 strip -v $STRIP_SHARED "$file" ;;
-            application/x-archive\;*)               # Libraries (.a)
+            application/x-archive\;*)        # Libraries (.a)
                 strip -v $STRIP_STATIC "$file" ;;
-            application/x-executable\;*)            # Binaries
+            application/x-executable\;*)     # Binaries
                 strip -v $STRIP_BINARIES "$file" ;;
-            application/x-pie-executable\;*)        # Relocatable binaries
+            application/x-pie-executable\;*) # Relocatable binaries
                 strip -v $STRIP_SHARED "$file" ;;
         esac
     done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
@@ -253,6 +297,7 @@ _package-headers() {
 
 _package-docs() {
     pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+    provides=("linux-bcachefs-docs=${pkgver}" "linux-docs=${pkgver}")
 
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 

@@ -13,7 +13,7 @@ pkgbase = linux-bcachefs-git
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = bcachefs::git+https://evilpiepirate.org/git/bcachefs.git
+	source = bcachefs::git+https://github.com/koverstreet/bcachefs#branch=master
 	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
 	source = config
 	source = 60-linux.hook
@@ -23,7 +23,7 @@ pkgbase = linux-bcachefs-git
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = SKIP
 	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
-	sha256sums = 749bbc3e2dac595d0c607fbb0d32fd32bb13833a19907c584ebab56445be11b4
+	sha256sums = dc3293984d8d7a6a9fea503d8e4768a2397f6924ec2a79f0a2f6ad8117132ea5
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
@@ -41,7 +41,11 @@ pkgname = linux-bcachefs-git
 
 pkgname = linux-bcachefs-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bcachefs-git kernel
+	provides = linux-bcachefs-headers=5.0.6.arch1
+	provides = linux-headers=5.0.6.arch1
 
 pkgname = linux-bcachefs-git-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bcachefs-git kernel
+	provides = linux-bcachefs-docs=5.0.6.arch1
+	provides = linux-docs=5.0.6.arch1
 
