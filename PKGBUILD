@@ -44,6 +44,7 @@ build() {
 }
 
 package() {
+	install -Dm644 "$_modname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     cd "nginx-$_nginxver/objs"
     for mod in *.so; do
         install -Dm755 "$mod" "$pkgdir/usr/lib/nginx/modules/$mod"
