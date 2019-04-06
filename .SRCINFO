@@ -1,21 +1,15 @@
 pkgbase = python-nose2
 	pkgdesc = The next generation of nicer testing for python
-	pkgver = 0.6.5
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/nose-devs/nose2
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	options = !emptydirs
-	source = https://github.com/nose-devs/nose2/archive/0.6.5.tar.gz
-	sha256sums = 13c00fd49fe2057688a68860f5de195e50ec85748f102346c74e7692b36d2c23
+	depends = python-coverage
+	depends = python-setuptools
+	depends = python-six
+	source = https://files.pythonhosted.org/packages/source/n/nose2/nose2-0.9.1.tar.gz
+	sha512sums = 40b3a40f731be00ed3aa6b3d20c432d48d41e4d4373f0650c8ebe0245f9a8459dfea9ae24b25134f64b4d34343808d2afb4a489eda9a261c7867199fbf3901fe
 
 pkgname = python-nose2
-	depends = python
-	depends = python-six
-
-pkgname = python2-nose2
-	depends = python2
-	depends = python2-six
 

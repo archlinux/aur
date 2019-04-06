@@ -1,30 +1,33 @@
-# Maintainer: Simon Hanna <simon dot hanna AT serve-me DOT info>
+# Maintainer: David Runge <dave@sleepmap.de>
+# Contributor: Simon Hanna <simon dot hanna AT serve-me DOT info>
 
-pkgname=('python-nose2' 'python2-nose2')
-pkgver=0.6.5
+_name=nose2
+pkgname=python-nose2
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="The next generation of nicer testing for python"
-arch=(any)
+arch=('any')
 url="https://github.com/nose-devs/nose2"
 license=('BSD')
-options=(!emptydirs)
-source=("https://github.com/nose-devs/nose2/archive/${pkgver}.tar.gz")
-sha256sums=('13c00fd49fe2057688a68860f5de195e50ec85748f102346c74e7692b36d2c23')
-makedepends=('python-setuptools' 'python2-setuptools')
+depends=('python-coverage' 'python-setuptools' 'python-six')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha512sums=('40b3a40f731be00ed3aa6b3d20c432d48d41e4d4373f0650c8ebe0245f9a8459dfea9ae24b25134f64b4d34343808d2afb4a489eda9a261c7867199fbf3901fe')
 
-package_python-nose2() {
-  depends=('python' 'python-six')
-  cd "$srcdir/nose2-$pkgver"
-  install -D -m644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  python setup.py install --root="$pkgdir/" --optimize=1
+build() {
+  cd "${_name}-${pkgver}"
+  python setup.py build
 }
 
-package_python2-nose2() {
-  depends=('python2' 'python2-six')
-  cd "$srcdir/nose2-$pkgver"
-  install -D -m644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
-  rm "$pkgdir/usr/bin/nose2"
+package() {
+  cd "${_name}-${pkgver}"
+  python setup.py install --skip-build \
+    --optimize=1 \
+    --prefix=/usr \
+    --root="${pkgdir}"
+  # license
+  install -vDm 644 license.txt \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # docs
+  install -vDm 644 {AUTHORS,README.rst} \
+    -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
-
-# vim:set ts=2 sw=2 et:
