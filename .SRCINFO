@@ -8,6 +8,7 @@ pkgbase = kong-community-edition
 	license = Apache
 	depends = libyaml
 	depends = luajit
+	depends = luarocks
 	depends = openresty
 	depends = openssl
 	depends = pcre
