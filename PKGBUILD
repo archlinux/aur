@@ -1,7 +1,7 @@
 # Maintainer: Matthew McGinn <mamcgi@gmail.com>
 # Contributor: alicewww <almw@protonmail.com>
 pkgname=mullvad-vpn
-pkgver=2019.2
+pkgver=2019.3
 pkgrel=1
 pkgdesc="VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy"
 url="https://www.mullvad.net"
@@ -13,14 +13,13 @@ replaces=('mullvad-vpn-old')
 provides=($pkgname)
 backup=()
 install=
- 
 source=(mullvad-daemon.service
 mullvad-vpn.desktop
 "https://github.com/mullvad/mullvadvpn-app/releases/download/${pkgver}/MullvadVPN-${pkgver}_${arch}.rpm")
 
 md5sums=('ed3a49275addbd5f2098a33bd605f1d3'
          '9628b4f93e72f5cca0a47087ae10b0fd'
-         'b23dd406180108515e9f8fc02070dd38')
+         'b5480033efddf483272688f3bcb61211')
 
 package() {
     # Install systemd service
