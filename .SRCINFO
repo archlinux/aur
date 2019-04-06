@@ -1,0 +1,13 @@
+pkgbase = easyeda
+	pkgdesc = EasyEDA Desktop Client, A Simple and Powerful Electronic Circuit Design Tool
+	pkgver = 2.0.0
+	pkgrel = 0
+	url = https://easyeda.com/page/download
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = https://image.easyeda.com/files/easyeda-client-linux-x64.zip
+	sha256sums = SKIP
+
+pkgname = easyeda
+
