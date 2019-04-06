@@ -1,5 +1,5 @@
---- anki-2.1.9-linux-amd64/Makefile.old	2019-02-20 05:54:05.000000000 +0100
-+++ anki-2.1.9-linux-amd64/Makefile	2019-03-04 09:02:18.385431498 +0100
+--- anki-2.1.11-linux-amd64/Makefile.old
++++ anki-2.1.11-linux-amd64/Makefile
 @@ -20,14 +20,14 @@
  	mv anki.xpm anki.png ${PREFIX}/share/pixmaps/;\
  	mv anki.desktop ${PREFIX}/share/applications/;\
@@ -12,7 +12,7 @@
 +#	xdg-mime default anki.desktop application/x-apkg
  	@echo
  	@echo "Install complete. Type 'anki' to run."
- 
+
  uninstall:
 -	-xdg-mime uninstall ${PREFIX}/share/anki/anki.xml
 +#	-xdg-mime uninstall ${PREFIX}/share/anki/anki.xml

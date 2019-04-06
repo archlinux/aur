@@ -1,5 +1,5 @@
---- anki-2.1.9-linux-amd64/Makefile.orig	2019-03-04 19:24:16.040322000 +0100
-+++ anki-2.1.9-linux-amd64/Makefile	2019-03-04 19:29:45.048864131 +0100
+--- anki-2.1.11-linux-amd64/Makefile.orig
++++ anki-2.1.11-linux-amd64/Makefile
 @@ -10,7 +10,7 @@
  	mkdir -p ${PREFIX}/share/anki
  	cp -av * ${PREFIX}/share/anki/
