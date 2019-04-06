@@ -3,7 +3,7 @@ Description=Mldonkey - Multiple Peer-To-Peer Network Client
 After=network.target
 
 [Service]
-Environment=MLDONKEY_DIR=/home/%u/.mldonkey
+Environment=MLDONKEY_DIR=%h/.mldonkey
 ExecStart=/usr/bin/mlnet -log_to_syslog yes -log_file /dev/null
 
 [Install]

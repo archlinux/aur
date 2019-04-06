@@ -16,7 +16,7 @@ makedepends=('camlp4'
              )
 conflicts=('mldonkey')
 provides=('mldonkey')
-source=('git+http://repo.or.cz/r/mldonkey.git'
+source=('git+https://repo.or.cz/r/mldonkey.git'
         'mldonkey.logrotate'
         'mldonkey.service'
         'mldonkey@.service'
@@ -26,7 +26,7 @@ source=('git+http://repo.or.cz/r/mldonkey.git'
 sha256sums=('SKIP'
             'fe6227ec1a54278226ca6d6a5b0e1bb23224bf7b90e2ea107f014cc9518b0ed3'
             '3a25e71992aa0ab5caabed81b96ebcf313f1d93ccd7a182b1c57bf3f9571b8e8'
-            'b859429d1fa10b2afdb87a08cb248b52d1f5bee375d3c83254d8f6b5a9d49d0f'
+            '2f84c31ff14587926d5dfbf63b61b3239376a822ee77ac05a900a46b43143562'
             '7a7d4d4c9eccadca24cf7970bd26847369c81a16163f8d15923011357e227990'
             'ef14b4c8dcb9e64a1026630463313139171d2682d4ad80965e4a39e5021b93a5'
             )
@@ -46,9 +46,9 @@ build() {
     --enable-bzip2 \
     --enable-magic \
     --enable-donkeysui \
-    --disable-rpath \
     --enable-checks \
-    --enable-pthread
+    --enable-pthread \
+    --disable-rpath
 
   make depend
   make
