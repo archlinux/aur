@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=konversation-git
-pkgver=1.7.master.5111.r8416.7e740681
+pkgver=1.7.master.5112.r8473.a6d18bd3
 pkgrel=1
 pkgdesc="A user friendly IRC client for KDE. (GIT Version)"
 arch=('x86_64')
@@ -38,6 +38,7 @@ prepare() {
 build() {
   cd build
   cmake ../konversation \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
