@@ -12,7 +12,7 @@ pkgver=1.0.15
 pkgrel=1
 pkgdesc="Additional Structure manipulations functions."
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.io/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=2.9.7')
@@ -22,9 +22,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('613db1bdbdf85db6903672b306b6d1c3')
+sha256sums=('d9123792291233af037f8d6b9eedc9a7170cc8534b8c8d580f30105cddaababb')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
