@@ -8,7 +8,7 @@ arch=('any')
 url="https://getkong.org"
 license=('Apache')
 groups=('')
-depends=('libyaml' 'openresty' 'openssl' 'pcre' 'zlib' 'rsync')
+depends=('libyaml' 'luajit' 'openresty' 'openssl' 'pcre' 'zlib' 'rsync')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://bintray.com/kong/kong-community-edition-deb/download_file?file_path=dists/kong-community-edition-1.1.0.stretch.all.deb")
