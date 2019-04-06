@@ -1,6 +1,6 @@
 diff -ru --no-dereference -x .git FreeDoko-orig/data/Makefile FreeDoko/data/Makefile
---- FreeDoko-orig/data/Makefile	2019-03-17 14:32:48.099761856 +0100
-+++ FreeDoko/data/Makefile	2019-03-17 14:34:49.237222983 +0100
+--- FreeDoko-orig/data/Makefile	2019-04-06 15:41:35.144336808 +0200
++++ FreeDoko/data/Makefile	2019-04-06 15:42:03.503886091 +0200
 @@ -32,8 +32,7 @@
  	for d in cardsets iconsets backgrounds sounds; do \
  	  $(MAKE) -C $$d install; \
@@ -12,8 +12,8 @@ diff -ru --no-dereference -x .git FreeDoko-orig/data/Makefile FreeDoko/data/Make
  
  ifeq ($(SHELLTYPE), sh)
 diff -ru --no-dereference -x .git FreeDoko-orig/doc/Makefile FreeDoko/doc/Makefile
---- FreeDoko-orig/doc/Makefile	2019-03-17 14:32:48.259763735 +0100
-+++ FreeDoko/doc/Makefile	2019-03-17 14:35:14.957542368 +0100
+--- FreeDoko-orig/doc/Makefile	2019-04-06 15:41:35.236388320 +0200
++++ FreeDoko/doc/Makefile	2019-04-06 15:42:24.735191139 +0200
 @@ -34,8 +34,7 @@
  	fi
  	cp Bugs GPL Roadmap $(DESTDIR)$(HELP_DIRECTORY)/
@@ -25,8 +25,8 @@ diff -ru --no-dereference -x .git FreeDoko-orig/doc/Makefile FreeDoko/doc/Makefi
  endif
  
 diff -ru --no-dereference -x .git FreeDoko-orig/Makefile FreeDoko/Makefile
---- FreeDoko-orig/Makefile	2019-03-17 14:32:47.963760259 +0100
-+++ FreeDoko/Makefile	2019-03-17 14:36:09.290226275 +0100
+--- FreeDoko-orig/Makefile	2019-04-06 15:41:35.072296495 +0200
++++ FreeDoko/Makefile	2019-04-06 15:43:29.103576620 +0200
 @@ -316,8 +316,7 @@
  	echo "Kopiere das Programm"
  	mkdir -p $(DESTDIR)$(BIN_DIRECTORY)
@@ -56,8 +56,8 @@ diff -ru --no-dereference -x .git FreeDoko-orig/Makefile FreeDoko/Makefile
  	echo "Kopiere den Desktop-Starter"
  	mkdir -p "$(DESTDIR)$(DESKTOP_FILE_DIRECTORY)"
 diff -ru --no-dereference -x .git FreeDoko-orig/Makefile.install.directories FreeDoko/Makefile.install.directories
---- FreeDoko-orig/Makefile.install.directories	2019-03-17 14:32:47.963760259 +0100
-+++ FreeDoko/Makefile.install.directories	2019-03-17 14:33:53.712543968 +0100
+--- FreeDoko-orig/Makefile.install.directories	2019-04-06 15:41:35.072296495 +0200
++++ FreeDoko/Makefile.install.directories	2019-04-06 15:43:50.776816204 +0200
 @@ -4,14 +4,14 @@
  # the different directories for the files
  
@@ -105,9 +105,9 @@ diff -ru --no-dereference -x .git FreeDoko-orig/Makefile.install.directories Fre
  # Void Linux
  #MAIN_DIRECTORY         = /usr
 diff -ru --no-dereference -x .git FreeDoko-orig/src/Makefile FreeDoko/src/Makefile
---- FreeDoko-orig/src/Makefile	2019-03-17 14:32:48.491766459 +0100
-+++ FreeDoko/src/Makefile	2019-03-17 14:37:23.203174859 +0100
-@@ -258,7 +258,6 @@
+--- FreeDoko-orig/src/Makefile	2019-04-06 15:41:35.288417436 +0200
++++ FreeDoko/src/Makefile	2019-04-06 15:44:22.530368921 +0200
+@@ -263,7 +263,6 @@
  		-DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"' \
  		-DLOCALE_DIRECTORY='\"$(LOCALE_DIRECTORY)\"'" \
  	  $(PROGRAM)
