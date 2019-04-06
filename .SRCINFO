@@ -1,5 +1,5 @@
 pkgbase = nginx-mod-rtmp-git
-	pkgdesc = Module for nginx that adds RTMP support
+	pkgdesc = Module for nginx that adds RTMP, HLS, and MPEG-DASH support.
 	pkgver = 1196.a5ac72c
 	pkgrel = 1
 	url = https://github.com/sergey-dryabzhinsky/nginx-rtmp-module
@@ -7,6 +7,8 @@ pkgbase = nginx-mod-rtmp-git
 	arch = x86_64
 	license = BSD
 	depends = nginx
+	depends = openssl
+	provides = nginx-rtmp-module
 	source = http://nginx.org/download/nginx-1.14.2.tar.gz
 	source = http://nginx.org/download/nginx-1.14.2.tar.gz.asc
 	source = nginx-rtmp-module::git+https://github.com/sergey-dryabzhinsky/nginx-rtmp-module.git

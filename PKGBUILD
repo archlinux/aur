@@ -9,10 +9,11 @@ pkgrel=1
 _modname="nginx-rtmp-module"
 _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
 
-pkgdesc="Module for nginx that adds RTMP support"
+pkgdesc='Module for nginx that adds RTMP, HLS, and MPEG-DASH support.'
 arch=('i686' 'x86_64')
-depends=('nginx')
-url="https://github.com/sergey-dryabzhinsky/nginx-rtmp-module"
+depends=('nginx' 'openssl')
+provides=("$_modname")
+url='https://github.com/sergey-dryabzhinsky/nginx-rtmp-module'
 license=('BSD')
 
 source=(
@@ -25,7 +26,7 @@ sha256sums=(
 	'SKIP'
 	'SKIP'
 )
-
+# Maxim Dounin <mdounin@mdounin.ru>
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8')
 
 pkgver() {
@@ -33,20 +34,15 @@ pkgver() {
 	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    cd "nginx-$_nginxver"
-    ./configure --with-compat --add-dynamic-module="../$_modname"
-}
-
 build() {
-    cd "nginx-$_nginxver"
-    make modules
+	cd "nginx-$_nginxver"
+	./configure --with-compat "--add-dynamic-module=../$_modname"
+	make modules
 }
 
 package() {
-	install -Dm644 "$_modname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    cd "nginx-$_nginxver/objs"
-    for mod in *.so; do
-        install -Dm755 "$mod" "$pkgdir/usr/lib/nginx/modules/$mod"
-    done
+	cd "$_modname"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "../nginx-$_nginxver/objs"
+	install -Dm755 ngx_rtmp_module.so "$pkgdir/usr/lib/nginx/modules/ngx_rtmp_module.so"
 }
