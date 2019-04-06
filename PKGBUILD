@@ -14,19 +14,21 @@ install=${pkgname}.install
 source=("https://bintray.com/kong/kong-community-edition-deb/download_file?file_path=dists/kong-community-edition-1.1.0.stretch.all.deb")
 sha512sums=('755e7b1b2cfae427c1dc49ef5bd0dff72b06fda690438f2b831762268313ce53aa14d3f42d2b8f13f6c3cb3643ef1aa74ffde7ccac14b80dd3fc527d3be5204b')
 
-prepare() {
+build() {
 
 	# Prepare openresty
-	wget https://openresty.org/download/openresty-1.13.6.1.tar.gz
-	tar -xvf openresty-1.13.6.1.tar.gz && cd openresty-1.13.6.1
+	wget https://openresty.org/download/openresty-1.13.6.2.tar.gz
+	tar -xvf openresty-1.13.6.2.tar.gz && cd openresty-1.13.6.2
 	./configure \
 	  --with-pcre-jit \
 	  --with-http_ssl_module \
+	  --with-openssl \
 	  --with-http_realip_module \
 	  --with-http_stub_status_module \
 	  --with-http_v2_module
 	make
 	make install
+	cd ../ && rm -rf openresty-1.13.6.2/ && rm openresty-1.13.6.2.tar.gz
 	echo 'export PATH=/usr/local/openresty/bin:$PATH' >> ~/.bashrc 
 	echo 'export PATH=/uusr/local/openresty/bin:/usr/local/openresty/nginx/sbin:$PATH' >> ~/.bashrc 
 	source ~/.bashrc
