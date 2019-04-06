@@ -1,10 +1,10 @@
---- setup.py.orig	2018-12-13 12:18:38.984617089 +0800
-+++ setup.py	2018-12-13 12:18:44.094724415 +0800
-@@ -141,7 +141,6 @@
-     package_data={'pytype': get_builtin_files()},
-     install_requires=[
-         'importlab (>=0.4)',
--        'ninja',
-         'pyyaml (>=3.11)',
-         'six'
-     ],
+--- setup.py.orig	2019-04-06 15:30:48.780722558 +0800
++++ setup.py	2019-04-06 15:30:58.774425717 +0800
+@@ -110,7 +110,6 @@
+ def get_install_requires():
+   requires = [
+       'importlab (>=0.5)',
+-      'ninja',
+       'pyyaml (>=3.11)',
+       'six',
+   ]
