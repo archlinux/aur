@@ -1,6 +1,6 @@
 pkgbase = drawpile
 	pkgdesc = Collaborative drawing program specially made for use with pen tablets
-	pkgver = 2.1.5
+	pkgver = 2.1.6
 	pkgrel = 1
 	url = http://drawpile.net/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = drawpile
 	makedepends = qt5-svg
 	makedepends = cmake
 	makedepends = extra-cmake-modules
-	source = http://drawpile.net/files/src/drawpile-2.1.5.tar.gz
-	sha256sums = d3fb84144b4dae2ff5ec70e9e2198437ac9a4e00a86aa452fc7ed1904824667d
+	source = http://drawpile.net/files/src/drawpile-2.1.6.tar.gz
+	sha256sums = 6de51df0a2e2d91550b95aa38efadb142aea7008247e15550b38bf08ef6e9a6f
 
 pkgname = drawpile
 	pkgdesc = Collaborative drawing program specially made for use with pen tablets (meta package)
