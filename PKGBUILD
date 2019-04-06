@@ -2,15 +2,15 @@
 
 pkgbase='python-django-simple-captcha'
 pkgname=('python-django-simple-captcha' 'python2-django-simple-captcha')
-pkgver='0.5.10'
+pkgver='0.5.11'
 pkgrel=1
 pkgdesc='Django application to add captcha images to any Django form'
 arch=('any')
 url='https://github.com/mbi/django-simple-captcha'
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://github.com/mbi/django-simple-captcha/archive/v$pkgver.tar.gz")
-sha256sums=('31dbdaa819c8c40c20519c0d48e0b8059ca2ffc8bdfa671271f2f133c47be4cd')
+source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('7ca26a4f48e14e5f8be022c0dc099ef98980f3fc99f403ca565ab1f3addaee5b')
 
 package_python-django-simple-captcha() {
     depends=(
