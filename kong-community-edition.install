@@ -1,6 +1,11 @@
 post_install() {
+	pacman -U https://archive.archlinux.org/packages/ ... luarocks-2.4.3-1-any.pkg.tar.xz
 	echo 'export PATH=/opt/openresty/bin:$PATH' >> ~/.bashrc 
 	echo 'export PATH=/uopt/openresty/bin:/opt/openresty/nginx/sbin:$PATH' >> ~/.bashrc 
+	echo 'export LUA_VERSION=  ./configure \
+   				 --lua-suffix=jit \
+   				 --with-lua=/opt/openresty/luajit \
+   				 --with-lua-include=/opt/openresty/luajit/include/luajit-2.1' >> ~/.bashrc
 	source ~/.bashrc
 	luarocks install kong 1.1.0-0
 	mkdir -p /etc/kong

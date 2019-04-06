@@ -8,7 +8,7 @@ arch=('any')
 url="https://getkong.org"
 license=('Apache')
 groups=('')
-depends=('libyaml' 'luajit' 'luarocks' 'openresty' 'openssl' 'pcre' 'zlib' 'rsync')
+depends=('libyaml' 'lua51' 'luajit' 'openresty' 'openssl' 'pcre' 'zlib' 'rsync')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 # source=("https://bintray.com/kong/kong-community-edition-deb/download_file?file_path=dists/kong-community-edition-1.1.0.stretch.all.deb")
@@ -16,28 +16,27 @@ install=${pkgname}.install
 
 # package(){
 
-# 	# # Extract package data
-# 	# tar xzf data.tar.gz -C "${pkgdir}"
+# 	# Extract package data
+# 	tar xzf data.tar.gz -C "${pkgdir}"
 
-# 	# # Fix directories structure differencies
-# 	# cd "${pkgdir}"
-	
-# 	# install -D -m644 "/opt/openresty/pod/nginx/license_copyright.pod" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-# 	# install -D -m644 "/opt/openresty/pod/nginx/license_copyright.pod" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
+# 	# Fix directories structure differences
+# 	cd "${pkgdir}"
+# 	install -D -m644 "/opt/openresty/pod/nginx/license_copyright.pod" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+# 	install -D -m644 "/opt/openresty/pod/nginx/license_copyright.pod" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
 
-# 	# # # Fix openresty location
-# 	# cd usr/local/bin/
-# 	# sed -i "s+usr/local/openresty+opt/openresty+g" kong
-# 	# sed -i "s+usr/local/openresty+opt/openresty+g" json2lua
-# 	# sed -i "s+usr/local/openresty+opt/openresty+g" lapis
-# 	# sed -i "s+usr/local/openresty+opt/openresty+g" lua2json
-# 	# rm luarocks luarocks-5.1 luarocks-admin luarocks-admin-5.1
-# 	# cd "${pkgdir}"
+# 	# # Fix openresty location
+# 	cd usr/local/bin/
+# 	sed -i "s+usr/local/openresty+opt/openresty+g" kong
+# 	sed -i "s+usr/local/openresty+opt/openresty+g" json2lua
+# 	sed -i "s+usr/local/openresty+opt/openresty+g" lapis
+# 	sed -i "s+usr/local/openresty+opt/openresty+g" lua2json
+# 	rm luarocks luarocks-5.1 luarocks-admin luarocks-admin-5.1
+# 	cd "${pkgdir}"
 
-# 	# mkdir usr/bin 2> /dev/null; mv usr/local/bin/* usr/bin; rm -rf usr/local/bin
+# 	mkdir usr/bin 2> /dev/null; mv usr/local/bin/* usr/bin; rm -rf usr/local/bin
 
-# 	# rsync -a usr/local/* usr; rm -rf usr/local
+# 	rsync -a usr/local/* usr; rm -rf usr/local
 
-# 	# cd ..
+# 	cd ..
 
 # }
