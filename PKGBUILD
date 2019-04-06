@@ -2,13 +2,10 @@
 pkgname='matlab-segymat'
 pkgdesc='Set of m files for loading SEG-Y files from Matlab and Octave'
 pkgver='1.6'
-pkgrel='2'
+pkgrel='3'
 arch=('any')
 url='https://cultpenguin.gitbooks.io/segymat/content/'
 license=('lgpl')
-depends=()
-makedepends=('git')
-checkdepends=()
 optdepends=(
   'matlab: support for matlab',
   'octave: support for octave'
