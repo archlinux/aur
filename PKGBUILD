@@ -12,7 +12,7 @@ pkgver=3.1.3
 pkgrel=1
 pkgdesc="Parallel execution package. See also package mpi, maintained by Carlo de Falco. "
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.io/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=4.0.0' 'octave-struct>=1.0.12')
@@ -22,9 +22,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('1000a06dd335f9a833625db8869d5b03')
+sha256sums=('bf4001b688da33df9a6a88e97f5e4fc32ba0c4ad5a30a686ecf9e1ab284bb4f8')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
