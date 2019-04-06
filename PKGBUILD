@@ -3,7 +3,7 @@
 
 _pkgname=blueman
 pkgname=${_pkgname}-git
-pkgver=2.1.alpha2.r103.g32a1ddf8
+pkgver=2.1.alpha3.r5.g088da0c7
 pkgrel=1
 pkgdesc="A GTK+ Bluetooth Manager (BlueZ 5) - git"
 arch=('i686' 'x86_64')
