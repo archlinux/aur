@@ -1,6 +1,6 @@
 pkgbase = pandoc-panflute
 	pkgdesc = A Python package that makes creating Pandoc filters fun.
-	pkgver = 1.10
+	pkgver = 1.11
 	pkgrel = 1
 	url = https://github.com/sergiocorreia/panflute
 	arch = any
