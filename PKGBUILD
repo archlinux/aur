@@ -4,7 +4,7 @@
 
 pkgname=notion-app
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="The all-in-one workspace for your notes and tasks"
 arch=('i686' 'x86_64')
 url="https://www.notion.so/desktop"
@@ -23,13 +23,13 @@ build() {
   cp -r Notion**/Notion.app/Contents/Resources/* tmp/build
   cp notion-app tmp/build
   icns2png -x tmp/build/Notion.icns
-  gendesk -f --pkgname="Notion" --pkgdesc="$pkgdesc" --categories=Office --exec=notion-app --icon=/opt/notion-app/Notion_512x512x32.png
 } 
 
 package() {
   echo "$pkgdir"
   mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt/notion-app"
   cp -r tmp/build/* "$pkgdir/opt/notion-app/"
+  cp Notion_512x512x32.png "$pkgdir/opt/notion-app/"
   install -D -m755 notion-app "$pkgdir/usr/bin/notion-app"
   install -Dm644 "$srcdir"/Notion.desktop -t "$pkgdir"/usr/share/applications
 }
