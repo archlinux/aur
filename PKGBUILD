@@ -2,13 +2,13 @@
 
 pkgname=rtl_biast-git
 pkgver=r414.88ac031
-pkgrel=2
+pkgrel=3
 pkgdesc="Bias tee software for the RTL-SDR.com V3 Dongle"
 arch=('i686' 'x86_64')
 license=('gpl')
 url="https://github.com/rtlsdrblog/rtl_biast"
-depends=('rtl-sdr' 'libusb')
-makedepends=('git' 'cmake' 'gcc')
+depends=('libusb')
+makedepends=('git' 'cmake' 'gcc' 'patch')
 source=("$pkgname::git+https://github.com/rtlsdrblog/rtl_biast.git"
         "rtl_biast.patch")
 sha1sums=('SKIP'
