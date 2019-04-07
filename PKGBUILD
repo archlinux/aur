@@ -1,6 +1,7 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=majsoul-plus
-pkgver=1.11.1
+pkgver=1.12.0b3
+_pkgver=${pkgver/b/-beta.}
 pkgrel=1
 pkgdesc="Majsoul browser, with more features"
 arch=('x86_64' 'i686')
@@ -8,23 +9,23 @@ url="https://github.com/MajsoulPlus/majsoul-plus"
 license=('AGPL3')
 depends=('electron')
 makedepends=('npm' 'imagemagick' 'gulp')
-source=("https://github.com/MajsoulPlus/majsoul-plus/archive/v$pkgver.tar.gz")
-sha256sums=('436ed838e9b4a15a82ed410ae43d1c3db1ee7bb2fa28df7b98be386ec474a71e')
+source=("https://github.com/MajsoulPlus/majsoul-plus/archive/v$_pkgver.tar.gz")
+sha256sums=('3dde01fb24e025485ff4bb95bee7e23d01b13b9712a0b4e2e83d9e0f7ffd57fd')
 conflicts=("majsoul-plus-bin")
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$_pkgver"
 	sed -i '/\"electron/d' package.json
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$_pkgver"
 	npm install
 	gulp sass
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$_pkgver"
 	mkdir -p "$pkgdir/opt/majsoul-plus"
 	mkdir -p "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/usr/share/applications"
