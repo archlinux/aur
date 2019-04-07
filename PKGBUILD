@@ -36,7 +36,7 @@ build() {
   _CONF_FLAGS="--prefix=/usr --with-cuda=/opt/cuda"
   if ! [ -z "$_GPU_TARGET" ]
   then
-    _CONF_FLAGS="$_CONF_FLAGS --with-cuda-arch=-gencode=arch=compute_$_GPU_TARGET,code=sm_$_GPU_TARGET"
+    _CONF_FLAGS="$_CONF_FLAGS --with-cuda-arch=-gencode=arch=compute_$_GPU_TARGET,code=compute_$_GPU_TARGET"
   fi
   ./configure $_CONF_FLAGS --with-python=python2
   mv makefile.inc makefile2.inc
