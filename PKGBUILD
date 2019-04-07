@@ -4,14 +4,15 @@
 Name="batman"
 pkgname="${Name}-git"
 pkgver=r2.a23cddd
-pkgrel=2
+pkgrel=3
 pkgdesc="Opens bat files as if they were native"
 arch=("x86_64")
 url="https://gitlab.com/es20490446e/${Name}"
 license=("GPL3")
 makedepends=("git")
 depends=("dosbox-svn")
-optdepends=("execute-git: opens exe files")
+optdepends=('gnome-color-manager: profile installation for GNOME'
+            'colord-kde: profile installation for Plasma')
 provides=("${Name}")
 conflicts=("${Name}")
 source=("git+${url}.git")
