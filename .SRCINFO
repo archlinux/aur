@@ -1,7 +1,7 @@
 pkgbase = electrumx
 	pkgdesc = Server implementation for the Electrum wallet
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kyuupichan/electrumx
 	install = electrumx.install
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = electrumx
 	depends = python-plyvel
 	depends = python-pylru
 	depends = python-aiorpcx>=0.10.4
+	depends = python-aiorpcx<0.11.0
 	optdepends = bitcoin-daemon: Bitcoin core headless P2P node
 	optdepends = electrum: Bitcoin thin client
 	options = !emptydirs
