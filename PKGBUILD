@@ -29,10 +29,6 @@ pkgver() {
 prepare() {
   cd "${_plug}/Source"
 
-  sed -e 's|"vapoursynth\\VapourSynth.h"|<VapourSynth.h>|g' \
-      -e 's|"vapoursynth\\VSHelper.h"|<VSHelper.h>|g' \
-      -i dpid.cpp
-
   patch -p2 -i "${srcdir}/esee"
 }
 
