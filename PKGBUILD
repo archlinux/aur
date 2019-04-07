@@ -2,7 +2,7 @@
 
 pkgname=group-service 
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Borrowing DBUS services to manage user groups "
 arch=('x86_64')
 url="https://github.com/zhuyaliang/group-service"
