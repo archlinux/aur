@@ -1,0 +1,12 @@
+pkgbase = gmuxbacklight-git
+	pkgdesc = Deepin gmux backlight fix
+	pkgver = r9.9df3036
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	source = gmuxbacklight-git::git+https://github.com/AlexWoroschilow/GmuxBacklight.git
+	md5sums = SKIP
+
+pkgname = gmuxbacklight-git
+
