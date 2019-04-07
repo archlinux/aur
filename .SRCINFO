@@ -1,8 +1,8 @@
 pkgbase = avrcalc
 	pkgdesc = Calculator to speed development of Atmel AVRs
 	pkgver = 0.2
-	pkgrel = 1
-	url = https://sourceforge.net/projects/smina/
+	pkgrel = 2
+	url = https://sourceforge.net/projects/avrcalc
 	arch = i686
 	arch = x86_64
 	license = GPL

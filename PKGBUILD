@@ -1,10 +1,11 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+
 pkgname=avrcalc
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Calculator to speed development of Atmel AVRs"
 arch=('i686' 'x86_64')
-url="https://sourceforge.net/projects/smina/"
+url="https://sourceforge.net/projects/avrcalc"
 license=('GPL')
 depends=('qt4')
 source=("https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname.tar.gz")
@@ -19,5 +20,3 @@ build() {
 package() {
     install -Dm755 ${srcdir}/$pkgname/avrcalc ${pkgdir}/usr/bin/avrcalc
 }
-
-
