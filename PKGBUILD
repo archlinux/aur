@@ -1,9 +1,9 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool
-_commit=dbbd93171374323cef95e2bcde9767bca77143b2
-pkgver=2.1.1.r193
-pkgrel=2
+_commit=42f8dddda09fcdc3b6a2b36001b4434f576deec1
+pkgver=2.1.2.r6
+pkgrel=1
 pkgdesc='Lua application server integrated with a database management system'
 arch=(x86_64)
 url='https://www.tarantool.org'
