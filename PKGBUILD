@@ -1,7 +1,7 @@
 # Maintainer: Brandon Clifford <brandon099 at gmail dot com>
 _pkgname=siji
 pkgname=${_pkgname}-git
-pkgver=r22.9d88311
+pkgver=r23.c691f20
 pkgrel=1
 pkgdesc='Iconic bitmap font based on stlarch with additional glyphs'
 arch=('any')
@@ -23,7 +23,7 @@ pkgver() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  install -D -m644 pcf/siji.pcf "${pkgdir}/usr/share/fonts/misc/siji.pcf"
+  install -D -m644 bdf/siji.bdf "${pkgdir}/usr/share/fonts/misc/siji.bdf"
   install -D -m755 view.sh "${pkgdir}/usr/share/${_pkgname}/view.sh"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
