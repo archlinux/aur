@@ -2,7 +2,7 @@
 pkgname=mpd-sidplay
 _pkgname=mpd
 pkgver=0.21.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Flexible, powerful, server-side application for playing music - built with sidplay support"
 url="https://www.musicpd.org/"
 license=("GPL")
