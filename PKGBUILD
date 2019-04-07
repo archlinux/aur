@@ -3,18 +3,18 @@
 
 _pkgbase=allegro4
 pkgname=lib32-$_pkgbase
-pkgver=4.4.3
+pkgver=4.4.3.1
 pkgrel=1
-pkgdesc='Portable library aimed at video game and multimedia programming (legacy version)'
+pkgdesc='Portable library aimed at video game and multimedia programming (legacy version, 32 bit)'
 arch=('x86_64')
 url='https://liballeg.org/'
 license=('custom')
 depends=('lib32-jack' 'lib32-libxcursor' 'lib32-libxpm' 'lib32-libxxf86dga' 'lib32-libxxf86vm'
-         'lib32-libpng' 'lib32-glu' "$_pkgbase=$pkgver")
+         'lib32-libpng' 'lib32-glu' "$_pkgbase>=$pkgver")
 makedepends=('cmake' 'lib32-mesa' 'gcc-multilib' 'ninja')
 options=(staticlibs)
 source=("https://github.com/liballeg/allegro5/releases/download/$pkgver/allegro-$pkgver.tar.gz")
-sha256sums=('1e096e435e49e2dfd924d9c54ed7325caa1b06cecd28c3307146dd0de3d0bcb4')
+sha256sums=('ec19dbc9a021244582b4819b3583ee594b50141f9fcf6944a4ed8069cbf8d4d4')
 
 build() {
   rm -rf build
