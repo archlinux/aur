@@ -1,7 +1,7 @@
 pkgbase = ts-player
 	pkgdesc = A terminal recorder that produces files capable of efficient random access
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/micromaomao/ts-player
 	arch = x86_64
 	license = MIT

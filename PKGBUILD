@@ -1,7 +1,7 @@
 # Maintainer: Mao Wtm <m@maowtm.org>
 pkgname=ts-player
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal recorder that produces files capable of efficient random access"
 arch=(x86_64)
 url="https://github.com/micromaomao/ts-player"
@@ -16,16 +16,14 @@ build() {
   cd go
   export GOPATH=$(pwd)
   cd src/github.com/micromaomao/$pkgname
-  go get -v -d
-  cd $GOPATH/src/github.com/micromaomao/go-libvterm
-  make
-  go install
-  cd $GOPATH/src/github.com/micromaomao/$pkgname
+  make its.pb.go
+  go get -v
   make
   go install
 }
 
 package() {
   install -s -DT go/bin/ts-player $pkgdir/usr/bin/ts-player
+  install -DT go/src/github.com/micromaomao/ts-player/doc/ts-player.1 $pkgdir/usr/share/man/man1/ts-player.1
 }
 
