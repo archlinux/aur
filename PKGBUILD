@@ -11,7 +11,7 @@ url="http://unifoundry.com/unifont.html"
 arch=('any')
 license=('GPL')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-source=("http://unifoundry.com/pub/unifont/unifont-$pkgver/unifont-$pkgver.tar.gz"{,.sig})
+source=("https://ftp.gnu.org/gnu/unifont/unifont-$pkgver/unifont-$pkgver.tar.gz"{,.sig})
 sha256sums=('6b275275d4aa279561527ab9de3717708b25de07da062386f798936fbe403215'
             'SKIP')
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy
