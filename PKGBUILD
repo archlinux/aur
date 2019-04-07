@@ -40,7 +40,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '0d91d2462f36d35235cc86cbdee11890cadec91a0a01b89d96010924f6c2be99'
-            '305d00533d3efcf31dfbb9944c703a9b01227ba38495add70b9bc4849c29498d'
+            '09446d86c7d26ca9f90d0b22a0d1ad3d30d861a5b87d69421a050c25c5b4d072'
             'a6581d33448c2989ef9f7e888e7e47a8784b0159e76bf8f6bc97eec1d7d55769'
             '434f67e2e86edb555b7dfb572a52d7ff719373989e1f1830f779bfccc678539f'
             'c0ce093a098d91dee6be294f8a2fc929aabad95612f994933194d0da5c4cdd25'
@@ -56,8 +56,9 @@ prepare() {
     cd "fred"
 
     # Gradle 4.10.3 - Allow building with java 10+
-    GIT_COMMITTER_NAME="aur" GIT_COMMITTER_EMAIL="aur" \
-    git cherry-pick 1abf6fa6f1f03b0bc77fd6043eb6317cce901f93
+    export GIT_COMMITTER_NAME="aur" GIT_COMMITTER_EMAIL="aur"
+    git fetch https://github.com/Thynix/fred-staging.git gradle-5-upgrade
+    git cherry-pick 1abf6fa6^..3e75e325
 
     ln -sf "$srcdir/gradle.properties" .
     sed -i "$srcdir/plugin-UPnP/build.xml" \
@@ -74,7 +75,7 @@ build() {
     export GRADLE_OPTS="-Dfile.encoding=UTF-8"
 
     msg "Building Freenet..."
-    ./gradlew copyRuntimeLibs
+    ./gradlew -q copyRuntimeLibs
 
     build_plugins
 }
