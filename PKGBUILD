@@ -3,7 +3,7 @@
 pkgname=hunter-git
 pkgver=1.0.1+2+ge63c007
 pkgrel=1
-pkgdesc='ranger-like file browser written in Rust'
+pkgdesc='ranger-like file browser written in Rust (git)'
 arch=(i686 x86_64)
 url=https://github.com/rabite0/hunter
 license=(WTFPL)
