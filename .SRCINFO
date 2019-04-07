@@ -18,7 +18,7 @@ pkgbase = faiss-cuda-git
 	source = faiss::git+https://github.com/facebookresearch/faiss.git
 	source = cuda10.1.patch
 	sha256sums = SKIP
-	sha256sums = b021ca0a3ecfc4cca41e4819a7d8fd0c73a46a3349b1d498d5ad786f1f6a0535
+	sha256sums = 88be494d517b4879e2dfbf91f74d6f9bc851d038639c5f51f4820278f0309e28
 
 pkgname = faiss-cuda-git
 	pkgdesc = A library for efficient similarity search and clustering of dense vectors, CUDA version.

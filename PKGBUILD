@@ -1,7 +1,7 @@
 # Maintainer: otaj <jasek.ota@gmail.com>
 # If you want to set only one GPU target compute capability, set _GPU_TARGET, otherwise leave it commented out and it will build default targets (35, 52, 60 and 61)
 
-#_GPU_TARGET=61
+_GPU_TARGET=61
 _pkgname=faiss
 pkgbase=faiss-cuda-git
 pkgname=('faiss-cuda-git' 'python-faiss-cuda-git' 'python2-faiss-cuda-git')
@@ -12,7 +12,7 @@ pkgver=v1.5.1.r0.g7f5b22b
 pkgrel=1
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git 'cuda10.1.patch')
 sha256sums=('SKIP'
-            'b021ca0a3ecfc4cca41e4819a7d8fd0c73a46a3349b1d498d5ad786f1f6a0535')
+            '88be494d517b4879e2dfbf91f74d6f9bc851d038639c5f51f4820278f0309e28')
 depends=('blas' 'lapack' 'cuda')
 makedepends=('python' 'python2' 'python-numpy' 'python2-numpy' 'swig' 'python-setuptools' 'python2-setuptools')
 
