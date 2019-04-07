@@ -1,104 +1,86 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=minc-toolkit-v2
 pkgver=1.9.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Medical Imaging NetCDF Toolkit"
-arch=('any')
+arch=('x86_64')
 url="https://www.mcgill.ca/bic/software/minc"
 license=('GPL3')
-depends=('perl' 'libjpeg-turbo' 'libxi' 'libxmu' 'libgl' 'glu' 'fftw' 'glut' 'netcdf' 'pcre' 'zlib' 'hdf5' 'nifticlib' 'insight-toolkit' 'elastix' 'lapacke' 'blas' 'ants')
-makedepends=('git' 'cmake' 'bc' 'libhdf5')
+depends=(
+    'ants'
+    'blas'
+    'cblas'
+    'elastix'
+    'flex'
+    'fftw'
+    'glu'
+    'glut'
+    'gsl'
+    'hdf5'
+    'insight-toolkit'
+    'lapacke'
+    'libgl'
+    'libjpeg-turbo'
+    'libxi'
+    'libxmu'
+    'netcdf'
+    'nifticlib'
+    'openjpeg2'
+    'pcre'
+    'perl'
+    'zlib'
+)
+makedepends=('git' 'cmake' 'bc')
 provides=('minc-toolkit')
-source=('git+https://github.com/BIC-MNI/minc-toolkit-v2.git'
-		'FindNIFTI.patch')
-sha512sums=('SKIP'
-            '28e12be5c8c7e397a063fa570fd4819dc45daf845a608164b9e7aec6fb6fb99d58f4f494d648147613bb80393b88d40f63748ea9f6096d96a1df1e66d17bbed7')
-
-_release_commit="f7952e966e2fdd6169098df8c8ae13968b3e4832"
+source=("git+https://github.com/BIC-MNI/minc-toolkit-v2.git#tag=release-${pkgver}"
+        'FindNIFTI.patch')
+sha256sums=('SKIP'
+            'bfff8b8b72c7ac39bc457709d482bb205d94c1303304ae15fd3a3299bc087b2a')
 
 _itk=`ls /usr/lib/cmake | grep -m1 ITK`
 _install_prefix="/usr/share/minc"
 
 prepare() {
 
-	# ensure that the required ITK modules are present
-	if [ `ls "/usr/include/$_itk" | grep 'itkMINCImageIO.h'` == "" ];
-	then
-		error "ITK must be built with -DModule_ITKIOMINC:BOOL=ON"
-		exit 1
-	fi
-	if [ `ls "/usr/include/$_itk" | grep 'itkMINCTransformAdapter.h'` == "" ];
-	then
-		error "ITK must be built with -DModule_ITKIOTransformMINC:BOOL=ON"
-		exit 1
-	fi
+    # Ensure that the required ITK modules are present
+    if [ `ls "/usr/include/$_itk" | grep 'itkMINCImageIO.h'` == "" ];
+    then
+        error "ITK must be built with -DModule_ITKIOMINC:BOOL=ON"
+        exit 1
+    fi
+    if [ `ls "/usr/include/$_itk" | grep 'itkMINCTransformAdapter.h'` == "" ];
+    then
+        error "ITK must be built with -DModule_ITKIOTransformMINC:BOOL=ON"
+        exit 1
+    fi
 
-	cd "$srcdir/$pkgname"
-	git checkout $_release_commit
-	git submodule update --init --recursive
+    cd "$srcdir/$pkgname"
+    git submodule update --init --recursive
 
-	# that hash seems to be wrong
-	sed -i \
-		's/5c9dad3705a3408d27f696e5b31fb88c/41fe6758d46cccb1675693d155ee7001/' \
-		cmake-modules/BuildNETCDF.cmake
+    # Find system NIFTI in the right place
+    sed -i \
+        's/FIND_PACKAGE(NIFTI OPTIONAL)/FIND_PACKAGE(NIFTI REQUIRED)/' \
+        CMakeLists.txt
+    patch -p0 -i ${srcdir}/FindNIFTI.patch
 
-	# find system NIFTI in the right place
-	sed -i \
-		's/FIND_PACKAGE(NIFTI OPTIONAL)/FIND_PACKAGE(NIFTI REQUIRED)/' \
-		CMakeLists.txt
-	patch -p0 -i ${srcdir}/FindNIFTI.patch
+    # Fix missing libminc in patch_morphology
+    sed -i \
+        -e '5iINCLUDE_DIRECTORIES(${LIBMINC_INCLUDE_DIRS})' \
+        -e '6iLINK_DIRECTORIES(${LIBMINC_LIBRARY_DIRS})' \
+        patch_morphology/legacy/CMakeLists.txt
 
-	# static version of HDF5
-	sed -i \
-		'74iSET(HDF5_LIBRARY "/usr/lib/libhdf5.a")' \
-		cmake-modules/FindHDF5.cmake
-	sed -i \
-		'75iSET(HDF5_LIBRARIES ${HDF5_LIBRARY})' \
-		cmake-modules/FindHDF5.cmake
+    # Fix missing references to libsz, libcblas and liblapacke
+    sed -i \
+        -e '404iSET(LIBMINC_LIBRARIES ${LIBMINC_LIBRARIES} sz)' \
+        libminc/CMakeLists.txt
+    sed -i \
+        -e '1iSET(ITK_LIBRARIES ${ITK_LIBRARIES} cblas lapacke)' \
+        patch_morphology/src/CMakeLists.txt
 
-	# libminc for patch_morphology
-	sed -i \
-		'5iINCLUDE_DIRECTORIES(${LIBMINC_INCLUDE_DIRS})' \
-		patch_morphology/legacy/CMakeLists.txt
-	sed -i \
-		'6iLINK_DIRECTORIES(${LIBMINC_LIBRARY_DIRS})' \
-		patch_morphology/legacy/CMakeLists.txt
-
-	# blas and liblapacke for patch_morphology
-	sed -i \
-		'20ilapacke' \
-		patch_morphology/src/CMakeLists.txt
-	sed -i \
-		'51icblas' \
-		patch_morphology/src/CMakeLists.txt
-	sed -i \
-		'51ilapacke' \
-		patch_morphology/src/CMakeLists.txt
-	sed -i \
-		'76ilapacke' \
-		patch_morphology/src/CMakeLists.txt
-	sed -i \
-		'76icblas' \
-		patch_morphology/src/CMakeLists.txt
-
-	# blas and lapacke for spams_test in BEaST
-	sed -i \
-		'166iblas' \
-		BEaST/CMakeLists.txt
-	sed -i \
-		'167ilapack' \
-		BEaST/CMakeLists.txt
-	sed -i \
-		'201iblas' \
-		BEaST/CMakeLists.txt
-	sed -i \
-		'201ilapack' \
-		BEaST/CMakeLists.txt
-
-	# the compiler won't like this
-	sed -i \
-		's/enum {false=0, true=1};//' \
-		minctools/progs/mincdump/mincdump.h
+    # The C++ compiler won't like this
+    sed -i \
+        's/enum {false=0, true=1};//' \
+        minctools/progs/mincdump/mincdump.h
 
     mkdir build || :
     cd build
@@ -128,7 +110,7 @@ prepare() {
         -DUSE_SYSTEM_NIFTI:BOOL=ON   \
         -DUSE_SYSTEM_PCRE:BOOL=ON   \
         -DUSE_SYSTEM_ZLIB:BOOL=ON \
-		-DITK_DIR:PATH=/usr/lib/cmake/$_itk
+        -DITK_DIR:PATH=/usr/lib/cmake/"$_itk"
 }
 
 build() {
@@ -136,24 +118,19 @@ build() {
     make
 }
 
-#check() {
-#	cd "$srcdir/$pkgname/build"
-#	make test
-#}
-
 package() {
-	cd "$srcdir/$pkgname/build"
+    cd "$srcdir/$pkgname/build"
 
-	make install DESTDIR="${pkgdir}"
+    make install DESTDIR="${pkgdir}"
 
-	cd "${pkgdir}${_install_prefix}"
-	rm -rf minc-toolkit-config*
+    cd "${pkgdir}${_install_prefix}"
+    rm -rf minc-toolkit-config*
 
-	mkdir -p $pkgdir/usr/share/bash-completion/completions
-	mv share/bashcomp.sh $pkgdir/usr/share/bash-completion/completions/c3d
-	mv bin $pkgdir/usr/bin
-	mv include $pkgdir/usr/include
-	mv lib $pkgdir/usr/lib
-	mv man $pkgdir/usr/share/man
+    mkdir -p "$pkgdir"/usr/share/bash-completion/completions
+    mv share/bashcomp.sh "$pkgdir"/usr/share/bash-completion/completions/c3d
+    mv bin "$pkgdir"/usr/bin
+    mv include "$pkgdir"/usr/include
+    mv lib "$pkgdir"/usr/lib
+    mv man "$pkgdir"/usr/share/man
 }
 
