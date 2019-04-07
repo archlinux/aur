@@ -1,10 +1,10 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=tootle-git
-pkgver=0.1.5+17+g458b2a3
-pkgrel=2
+pkgver=0.2+26+g1e42721
+pkgrel=1
 pkgdesc='GTK+ 3 client for Mastodon (git)'
-arch=(any)
+arch=(i686 x86_64)
 url=https://github.com/bleakgrey/tootle
 license=(GPL3)
 depends=(glib2 gtk3 hicolor-icon-theme libsoup granite json-glib)
@@ -25,7 +25,7 @@ sha512sums=(SKIP)
 
 pkgver() {
   cd tootle
-  git describe --tags | sed 's/v//;s/-/+/g'
+  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
