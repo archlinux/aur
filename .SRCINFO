@@ -1,0 +1,9 @@
+pkgbase = lvm-order-patch
+	pkgdesc = Adds missing order functionality to lvm2 service files.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = LGPL3
+
+pkgname = lvm-order-patch
+
