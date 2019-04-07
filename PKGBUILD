@@ -1,8 +1,8 @@
-# Maintainer: skydrome <skydrome@i2pmail.org>
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
 # Contributor: skydrome <skydrome@i2pmail.org>
 
 pkgname='rutorrent-git'
-pkgver=r2136.a645e57b
+pkgver=r2404.d9eb7a79
 pkgrel=1
 pkgdesc="Web frontend to rTorrent in PHP designed to resemble uTorrent"
 url="https://github.com/Novik/ruTorrent"
@@ -18,8 +18,9 @@ optdepends=('php-geoip: enable geoip plugin'
             'geoip: enable geoip plugin'
             'unrar: enable unpack plugin'
             'unzip: enable unpack plugin'
-            'plowshare: fileupload plugin functionality')
-
+            'plowshare: fileupload plugin functionality'
+            'python-cfscrape: cloudflare plugin requirement')
+ 
 conflicts=('rutorrent' 'rutorrent-plugins')
 provides=('rutorrent' 'rutorrent-plugins')
 
@@ -52,7 +53,7 @@ source=("plugins.ini"
         "git+https://github.com/exetico/FlatUI.git")
 
 md5sums=('21b595d878e49dde91fca665a0a8effb'
-         'SKIP'
+         '3e0002fe9ce69f43513152c515944559'
          'SKIP'
          'SKIP'
          'SKIP'
