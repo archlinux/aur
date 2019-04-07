@@ -1,5 +1,5 @@
 [Unit]
-Description=STUN and TURN Relay server for VoIP and WebRTC
+Description=STUN and TURN relay server for VoIP and WebRTC
 After=network.target
 
 [Service]
