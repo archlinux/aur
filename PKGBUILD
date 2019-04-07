@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=code-server
-pkgver=1.691_vsc1.33.0
+pkgver=1.696_vsc1.33.0
 pkgrel=0
 pkgdesc="Run VS Code on a remote server"
 arch=('x86_64')
