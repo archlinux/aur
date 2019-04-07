@@ -1,6 +1,6 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.12.1
+_oomox_ver=1.12.2
 _oomox_theme_ver=1.10
 _materia_theme_ver=20190315
 #_materia_cmt=94da12f9c5dfa4e045f8f02e2c818891b13b0930
@@ -16,7 +16,7 @@ _suru_plus_icons_ver=25.2
 
 pkgname=oomox
 pkgver=${_oomox_ver}
-pkgrel=3
+pkgrel=1
 pkgdesc='Themix: GUI for generating different color variations
 of Arc, Materia, Oomox themes
 (GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm),
@@ -81,7 +81,7 @@ source=(
     "papirus-icon-theme-${_papirus_icons_ver}.tar.gz::https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/${_papirus_icons_ver}.tar.gz"
     "suru-plus-icon-theme-${_suru_plus_icons_ver}.tar.gz::https://github.com/gusbemacbe/suru-plus/archive/v${_suru_plus_icons_ver}.tar.gz"
 )
-md5sums=('c1398148b5af106b5588b73322f60eee'
+md5sums=('3dd791ab2cf30cc713657fc68d0b8e87'
          '13945f05eba3b85e6d63fec1ff60380a'
          '2bc1e31909bf1e6d966d64c82db21a97'
          '57c71dbdf05b6cfda073239ff322033c'
