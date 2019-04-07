@@ -10,7 +10,7 @@
 
 pkgname=davinci-resolve-studio
 _pkgname=resolve
-pkgver=15.3
+pkgver=15.3.1
 pkgrel=1
 pkgext=".tar"
 pkgdesc='Professional A/V post-production software suite'
@@ -29,7 +29,7 @@ sha256sums=('ced9031d69d98222b9fd16ea4b776e356076a0e9286547ee2a8a5b4d07850799' '
 '5190c0c42d3c84ae4691c73b6fe28e7f471da6a247e7400e7b5181a6c0c81bee' '5258d48b12915ff23100cf026eafe6bc85ffb2d62ea6b180f3f48bd907224675' )
 prepare(){
 	_archive="DaVinci_Resolve_Studio_${pkgver}_Linux.zip"
-	_archive_sha256sum='5cd1cadbde55974dd84c9447caf9492b4dea18e5d8f279e4c01c319d13bd0c35'
+	_archive_sha256sum='0c81412ee915d06bd744c750a44a04ef614a6c0518a1677ef146f0b1817070ca'
 
 	DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
 
