@@ -28,8 +28,7 @@ EOF
     # (more appropriate for single-user systems) and save a message about it
     savedir="$HOME/.local/games/${pkgname%%-git}"
 
-    sed -i "1,2s_/usr/games_${savedir}_" \
-        "${pkgname%%-git}/sources/config.h"
+    sed -i "1,2s|/usr/games|${savedir}|" "${pkgname%%-git}/sources/config.h"
 
     cat > score.txt <<EOF
 ${pkgname%%-git} was compiled to store scores from jewels and pipes in $savedir.
