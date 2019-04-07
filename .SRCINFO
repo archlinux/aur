@@ -1,7 +1,7 @@
 pkgbase = gitahead
 	pkgdesc = Graphical Git client that helps you understand and manage your source history
 	pkgver = 2.5.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gitahead.com/
 	arch = x86_64
 	license = MIT
