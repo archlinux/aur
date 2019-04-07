@@ -3,7 +3,6 @@
 # Contributor: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
-pkgbase=python2-terminaltables
 _pyname=terminaltables
 pkgname=('python2-terminaltables')
 pkgver=3.1.0
@@ -34,7 +33,7 @@ check() {
   py.test2
 }
 
-package_python2-terminaltables() {
+package() {
   cd ${_pyname}-${pkgver}
   python2 setup.py install -O1 --root="${pkgdir}" --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
