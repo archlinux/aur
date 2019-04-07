@@ -1,0 +1,19 @@
+pkgbase = python2-terminaltables
+	pkgdesc = Generate simple tables in terminals from a nested list of strings, python2 version
+	pkgver = 3.1.0
+	pkgrel = 6
+	url = https://github.com/Robpol86/terminaltables
+	arch = any
+	license = MIT
+	checkdepends = python2-pytest
+	checkdepends = python2-colorama
+	checkdepends = python2-termcolor
+	checkdepends = python2-colorclass
+	makedepends = python2-setuptools
+	depends = python2
+	replaces = python2-terminaltables<=3.1.0-5
+	source = terminaltables-3.1.0.tar.gz::https://github.com/Robpol86/terminaltables/archive/v3.1.0.tar.gz
+	sha512sums = dc49458652fff8bc6094d316d84c9b8e9fca1a26e3230c0b668bc03ec8528793f4ef024e8032d4a56fbfabfdfd4a1142870f550f0b373ba6a42dd2e3ead3f501
+
+pkgname = python2-terminaltables
+
