@@ -5,6 +5,7 @@ pkgbase = nbsdgames-git
 	url = https://github.com/untakenstupidnick/nbsdgames
 	install = nbsdgames-git.install
 	arch = x86_64
+	arch = i686
 	license = custom
 	makedepends = git
 	makedepends = make
