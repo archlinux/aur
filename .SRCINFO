@@ -1,15 +1,15 @@
 pkgbase = miniserve-bin
 	pkgdesc = Tool to serve files via HTTP
-	pkgver = 0.3.1
-	pkgrel = 4
+	pkgver = 0.4.0
+	pkgrel = 0
 	url = https://github.com/svenstaro/miniserve
 	arch = x86_64
 	license = MIT
 	provides = miniserve
 	conflicts = miniserve
-	source = https://github.com/svenstaro/miniserve/releases/download/v0.3.1/miniserve-linux
-	source = https://github.com/svenstaro/miniserve/raw/v0.3.1/LICENSE
-	sha512sums = 3317c766508c1008b1e8aad61fd9c2b10d75b5c09e32524dd06d5e273690877ed55c836e622dcd730ad3f7af0a7397fd09e05407c6f70f0bf43713218389c672
+	source = https://github.com/svenstaro/miniserve/releases/download/v0.4.0/miniserve-linux-x86_64
+	source = https://github.com/svenstaro/miniserve/raw/v0.4.0/LICENSE
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = miniserve-bin
