@@ -1,8 +1,8 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
 pkgname=ossia-score
-pkgver=2.1.3
-release_tag=v2.1.3
-pkgrel=2
+pkgver=2.2.0
+release_tag=v2.2.0
+pkgrel=1
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts"
 arch=('x86_64')
 url="https://ossia.io"
@@ -14,19 +14,19 @@ provides=("$pkgname=$pkgver")
 conflicts=('ossia-score-git')
 replaces=('i-score')
 source=("https://github.com/OSSIA/score/releases/download/v${pkgver}/Score-v${pkgver}-src.tar.xz")
-sha512sums=("cfb1038ba84e45ad0d94a3c0600eec1747490640115d95120d48fa763ad40949201d6b3b83c00fbb256d75136203620669a0124736d61e0a7f40b17a61114c44")
+sha512sums=("0ba4fea5269d6032823b77550d1ae9fc04e82c5b89ace059dba8cbc0b926ee4e4d493d41cde3ebb15ffd67499059898d338f7ac297cb5d04535acacdbd39321c")
 
 build() {
   cd "$srcdir"
 
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
-  cmake -Wno-dev -DSCORE_CONFIGURATION=static-release -DDEPLOYMENT_BUILD=1 -DCMAKE_SKIP_RPATH=ON -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" "$srcdir/$pkgname"
+  cmake -Wno-dev -DSCORE_CONFIGURATION=static-release -DDEPLOYMENT_BUILD=1 -DCMAKE_SKIP_RPATH=ON -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" "$srcdir"
   cmake --build . --target all_unity
 }
 
 package() {
   cd "$srcdir/build"
   cmake -DCMAKE_INSTALL_DO_STRIP=1 -DCOMPONENT=OssiaScore -P cmake_install.cmake
-  install -D -m644 "$srcdir/$pkgname/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "$srcdir/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
