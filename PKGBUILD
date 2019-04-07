@@ -1,5 +1,5 @@
 pkgname=pandoc-citeproc-bin
-pkgver=2.6
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="Pandoc Cite Processor - executable only, without 750MB Haskell depends/makedepends"
 url="https://hackage.haskell.org/package/pandoc-citeproc"
@@ -13,7 +13,7 @@ depends=('pandoc')
 source=(
     "https://github.com/jgm/pandoc/releases/download/${pkgver}/pandoc-${pkgver}-linux.tar.gz"
 )
-sha256sums=('4f40bddeb0b0fa50a89c0301e9342c52439d4d8685f0631cafd040dcc2c97ab3')
+sha256sums=('6741f73e37a900deee56bc2dc71c2893fb28e0961557db36eb029368de5183c2')
 
 package() {
     # the original pandoc executable is provided by a different package.
