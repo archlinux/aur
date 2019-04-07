@@ -8,7 +8,7 @@ pkgname=('faiss-cuda-git' 'python-faiss-cuda-git' 'python2-faiss-cuda-git')
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('BSD')
-pkgver=v1.5.0.r19.ga9959bf
+pkgver=v1.5.1.r0.g7f5b22b
 pkgrel=1
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git 'cuda10.1.patch')
 sha256sums=('SKIP'
@@ -27,33 +27,23 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
   cp -ar python python2
   sed -i 's/makefile.inc/makefile2.inc/g' python2/Makefile
-  patch -p1 < ../cuda10.1.patch
+  patch -Np1 < ../cuda10.1.patch
 }
 
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  ./configure --prefix=/usr --with-cuda=/opt/cuda --with-python=python2
+  _CONF_FLAGS="--prefix=/usr --with-cuda=/opt/cuda"
   if ! [ -z "$_GPU_TARGET" ]
   then
-     sed -i "s/compute_[0-9][0-9]/compute_${_GPU_TARGET}/g" makefile.inc
-     sed -i '$!N; /^\(.*\)\n\1$/!P; D' makefile.inc
+    _CONF_FLAGS="$_CONF_FLAGS --with-cuda-arch=-gencode=arch=compute_$_GPU_TARGET,code=sm_$_GPU_TARGET"
   fi
+  ./configure $_CONF_FLAGS --with-python=python2
   mv makefile.inc makefile2.inc
-  ./configure --prefix=/usr --with-cuda=/opt/cuda --with-python=python
-  if ! [ -z "$_GPU_TARGET" ]
-  then
-     sed -i "s/compute_[0-9][0-9]/compute_${_GPU_TARGET}/g" makefile.inc
-     sed -i '$!N; /^\(.*\)\n\1$/!P; D' makefile.inc
-  fi
+  ./configure $_CONF_FLAGS --with-python=python
   make 			# build faiss
-  make -C gpu 		# build gpu part
-  make -C python cpu	# build cpu python
-  make -C python gpu 	# build gpu python
-  make -C python build 	# build python package
-  make -C python2 cpu	# build cpu python2
-  make -C python2 gpu 	# build gpu python2
-  make -C python2 build	# build python2 package
+  make -C python  	# build python package
+  make -C python2 	# build python2 package
 }
 
 package_faiss-cuda-git() {
@@ -62,7 +52,6 @@ package_faiss-cuda-git() {
   conflicts=('faiss')
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="$pkgdir" install
-  make -C gpu DESTDIR="$pkgdir" install
 }
 
 package_python-faiss-cuda-git() {
