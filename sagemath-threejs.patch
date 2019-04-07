@@ -7,5 +7,5 @@
 -            version = installed_packages()['threejs'].split('.')[0]
 +            version = 'r80'
              return """
- <script src="https://cdn.rawgit.com/mrdoob/three.js/{0}/build/three.min.js"></script>
- <script src="https://cdn.rawgit.com/mrdoob/three.js/{0}/examples/js/controls/OrbitControls.js"></script>
+ <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@{0}/build/three.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@{0}/examples/js/controls/OrbitControls.js"></script>

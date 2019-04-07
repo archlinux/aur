@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.8.beta0.r0.g44abe7e009
+pkgver=8.8.beta1.r0.g165d450f80
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -43,7 +43,6 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         fes02.patch
         sagemath-threejs.patch
         sagemath-cremona.patch
-        sagemath-sphinx-1.8.patch
         sagemath-singular-4.1.2.patch
         sagemath-ecl-sigfpe.patch)
 sha256sums=('SKIP'
@@ -53,9 +52,8 @@ sha256sums=('SKIP'
             '12cd410035ae644c2495b0dcd3a5138133a471ecc07912d37114c46ee837eb0e'
             'f12bd2a53ad51549015093aacc89978f4d796d9ab5bcd3d737aa0d57a5815b54'
             '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
-            'f6b48abf34f64ea3fc092b0f0179e89633f7d3ecc0d62c2acacbfa1217751d63'
+            'e09910f0080a1b3f4167783f396f72fc2a5f4286cb1efb766aadb4b1463c02e7'
             '4c6df9e4e5a7b29ecf6189eda3e5a79f69b6e1b4d29c1b9559663149b8c0af96'
-            '22f5e44a42c8276025b8512f45cac1c36d576c29c7fd9d36fde8b19ff87867d8'
             '961bfb5694b67d425d21240d71490cb71714b5207c23448c89be0966512ff8f9'
             'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938')
 
@@ -80,8 +78,6 @@ prepare(){
   patch -p1 -i ../sagemath-python3-notebook.patch
 # fix three.js plotting backend
   patch -p1 -i ../sagemath-threejs.patch
-# fix introspection with sphinx 1.8
-  patch -p1 -i ../sagemath-sphinx-1.8.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
