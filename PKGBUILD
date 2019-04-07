@@ -1,7 +1,7 @@
 # Maintainer: Zoron <zoronlivingston@gmail.com>
 
 pkgname=zrandr
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A simple Qt5 front end for xrandr"
 arch=('any')
