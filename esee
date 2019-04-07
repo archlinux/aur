@@ -8,7 +8,7 @@ index b670ac2..b18c520 100644
  	@echo "Installing..."
 -	@cp $(TARGET) $(PREFIX)
 -	@chmod 644 $(PREFIX)/$(TARGET)
-+	@install -Dm644 $(TARGET) $(PREFIX)
++	@install -Dm644 $(TARGET) $(PREFIX)/$(TARGET)
  
  uninstall:
  	@echo "Uninstalling..."
