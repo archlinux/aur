@@ -4,7 +4,7 @@
 
 pkgname=cinnamon-slim
 pkgver=4.0.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Innovative Linux desktop. Slim version."
 arch=('x86_64')
 url="https://github.com/linuxmint/Cinnamon"
@@ -25,12 +25,13 @@ optdepends=('blueberry: Bluetooth support'
 makedepends=('intltool' 'gtk-doc' 'gobject-introspection')
 options=('!emptydirs')
 source=("${pkgname%-*}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
+        "${url}/commit/c843f3664064742e2672e0fea528571a882d84ad.patch"
         '0001-cinnamon-settings-don-t-rely-on-the-presence-of-cinn.patch'
         'set_wheel.patch'
         'default-theme.patch'
         'remove-networkmanager.patch')
 
-sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
     cd "${srcdir}"/cinnamon-${pkgver}
@@ -38,6 +39,9 @@ prepare() {
     # Remove NetworkManager patch. Must be applied before adding polkit agent to required components
     patch -Np1 -i ../remove-networkmanager.patch
     rm -rf "${srcdir}/cinnamon-${pkgver}/files/usr/share/cinnamon/applets/network@cinnamon.org"
+
+    # https://github.com/linuxmint/cinnamon/issues/8495 fixes python-pillow 6 compat
+    patch -p1 -i ../c843f3664064742e2672e0fea528571a882d84ad.patch
 
     # Check for the cc-panel module path, not for the irrelevant binary
     # https://github.com/linuxmint/Cinnamon/pull/7382
