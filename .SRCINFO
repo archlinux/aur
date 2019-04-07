@@ -8,6 +8,7 @@ pkgbase = execute-git
 	makedepends = git
 	depends = dosbox-svn
 	depends = q4wine
+	optdepends = batman-git
 	optdepends = wine-mono
 	optdepends = wine_gecko
 	provides = execute
