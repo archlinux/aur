@@ -7,6 +7,7 @@ pkgbase = batman-git
 	license = GPL3
 	makedepends = git
 	depends = dosbox-svn
+	optdepends = execute-git: opens exe files
 	provides = batman
 	conflicts = batman
 	source = git+https://gitlab.com/es20490446e/batman.git

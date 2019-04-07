@@ -11,6 +11,7 @@ url="https://gitlab.com/es20490446e/${Name}"
 license=("GPL3")
 makedepends=("git")
 depends=("dosbox-svn")
+optdepends=("execute-git: opens exe files")
 provides=("${Name}")
 conflicts=("${Name}")
 source=("git+${url}.git")
