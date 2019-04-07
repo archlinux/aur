@@ -1,6 +1,6 @@
 pkgbase = hostsblock
 	pkgdesc = An ad- and malware-blocking utility for POSIX systems
-	pkgver = 0.999.8
+	pkgver = 0.999.8.1
 	pkgrel = 1
 	url = https://github.com/gaenserich/hostsblock
 	install = hostsblock.install
@@ -19,8 +19,8 @@ pkgbase = hostsblock
 	optdepends = pixelserv-tls: removes boilerplate page on blocked urls (supports HTTPS)
 	optdepends = unzip: allows the use of zipped downloads
 	optdepends = p7zip: allows the use of 7zipped downloads
-	source = https://github.com/gaenserich/hostsblock/archive/v0.999.8.tar.gz
-	sha1sums = ad67ce3f45cc5a4b967f5c9e3af6ef8d65b56fa1
+	source = https://github.com/gaenserich/hostsblock/archive/v0.999.8.1.tar.gz
+	sha1sums = 04259e6c6f3187d3cb765b17e5b5de0651558c8c
 
 pkgname = hostsblock
 

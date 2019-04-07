@@ -16,6 +16,7 @@ add_user_group() {
     chmod 755 /var/lib/hostsblock
     chmod 500 /usr/lib/hostsblock.sh
     chmod 550 /usr/bin/hostsblock
+    chmod 700 /var/lib/hostsblock/config.examples
     chmod 600 /var/lib/hostsblock/config.examples/*
 }
 

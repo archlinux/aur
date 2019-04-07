@@ -1,5 +1,9 @@
 See https://github.com/gaenserich/hostsblock/commits/master for a complete list of updates
 
+Version 0.999.8.1 (Alpha 8.1)
+*Fixed typos in various docs (Thanks to @glitsj16)
+*Made installation more distro-neutral (Thanks to @glitsj16)
+
 Version 0.999.8 (Alpha 8)
 *Background Job Improvements
   *systemd service now heavily hardened and sandboxed for enhanced security

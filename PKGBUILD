@@ -1,6 +1,6 @@
 # Maintainer/Originator: Jake VanderKolk <jakevanderkolk@gmail.com>
 pkgname=hostsblock
-pkgver=0.999.8
+pkgver=0.999.8.1
 pkgrel=1
 pkgdesc="An ad- and malware-blocking utility for POSIX systems"
 arch=(any)
@@ -16,25 +16,37 @@ optdepends=('dnsmasq: helps speed up DNS resolutions'
 source=(https://github.com/gaenserich/hostsblock/archive/v$pkgver.tar.gz)
 changelog=$pkgname.changelog
 install=$pkgname.install
-sha1sums=('ad67ce3f45cc5a4b967f5c9e3af6ef8d65b56fa1')
+sha1sums=('04259e6c6f3187d3cb765b17e5b5de0651558c8c')
+SYSTEMD_DIR="/usr/lib/systemd/system"
+SYSTEMCTLPATH="/usr/bin/systemctl"
+SHPATH="/usr/bin/sh"
+_HOME="/var/lib/hostsblock"
+_PREFIX="/usr"
+
+_mkdir() {
+    # $1 = dir to be made; $2 = chmod hex
+    [ ! -d "$1" ] && mkdir -p -m "$2" -- "$1"
+}
+
+_install() {
+    #$1 = source; $2 = destination; $3 = chmod hex
+    sed -e "s|%PREFIX%|$_PREFIX|g" -e "s|%SYSTEMCTLPATH%|$SYSTEMCTLPATH|g" -e "s|%SHPATH%|$SHPATH|g" -e "s|%_HOME%|$_HOME|g" "$1" > "$2"
+    chmod "$3" "$2"
+}
+
 
 package() {
-  cd "$srcdir"/"$pkgname"-"$pkgver"
-  mkdir -p -m 755 "$pkgdir"/var/lib/hostsblock
-  install -Dm500 src/hostsblock.sh "$pkgdir"/usr/lib/hostsblock.sh
-  [ ! -d "$pkgdir"/usr/bin ] && mkdir "$pkgdir"/usr/bin
-  sed "s/%PREFIX%/\/usr/g" src/hostsblock-wrapper.sh > "$pkgdir"/usr/bin/hostsblock
-  chmod 550 "$pkgdir"/usr/bin/hostsblock
-  install -Dm600 conf/hostsblock.conf "$pkgdir"/var/lib/hostsblock/config.examples/hostsblock.conf
-  install -Dm600 conf/black.list "$pkgdir"/var/lib/hostsblock/config.examples/black.list
-  install -Dm600 conf/white.list "$pkgdir"/var/lib/hostsblock/config.examples/white.list
-  install -Dm600 conf/hosts.head "$pkgdir"/var/lib/hostsblock/config.examples/hosts.head
-  install -Dm600 conf/block.urls "$pkgdir"/var/lib/hostsblock/config.examples/block.urls
-  install -Dm600 conf/redirect.urls "$pkgdir"/var/lib/hostsblock/config.examples/redirect.urls
-  install -Dm444 systemd/hostsblock.service "$pkgdir"/usr/lib/systemd/system/hostsblock.service
-  install -Dm444 systemd/hostsblock.timer "$pkgdir"/usr/lib/systemd/system/hostsblock.timer
-  install -Dm444 systemd/hostsblock-dnsmasq-restart.path "$pkgdir"/usr/lib/systemd/system/hostsblock-dnsmasq-restart.path
-  install -Dm444 systemd/hostsblock-dnsmasq-restart.service "$pkgdir"/usr/lib/systemd/system/hostsblock-dnsmasq-restart.service
-  install -Dm444 systemd/hostsblock-hosts-clobber.path "$pkgdir"/usr/lib/systemd/system/hostsblock-hosts-clobber.path
-  install -Dm444 systemd/hostsblock-hosts-clobber.service "$pkgdir"/usr/lib/systemd/system/hostsblock-hosts-clobber.service
+  cd "$srcdir"/"$pkgname"-"$pkgver" 
+  _mkdir "$pkgdir"/usr/lib 755
+  _install src/hostsblock.sh "$pkgdir"/usr/lib/hostsblock.sh 500
+  _mkdir "$pkgdir"/usr/bin 755
+  _install src/hostsblock-wrapper.sh "$pkgdir"/usr/bin/hostsblock 550
+  _mkdir "$pkgdir"/var/lib/hostsblock/config.examples 700
+  for _conffile in hostsblock.conf black.list white.list hosts.head block.urls redirect.urls; do
+    _install conf/"$_conffile" "$pkgdir"/var/lib/hostsblock/config.examples/"$_conffile" 600
+  done
+  _mkdir "$pkgdir"/usr/lib/systemd/system 755
+  for _sysdfile in hostsblock.service hostsblock.timer hostsblock-dnsmasq-restart.path hostsblock-dnsmasq-restart.service hostsblock-hosts-clobber.path hostsblock-hosts-clobber.service; do
+    _install systemd/"$_sysdfile" "$pkgdir"/usr/lib/systemd/system/"$_sysdfile" 444
+  done
 }
