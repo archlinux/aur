@@ -12,7 +12,7 @@ arch=('any')
 url="http://xmage.de"
 license=('MIT')
 
-makedepends=('detox')
+makedepends=('detox' 'wget')
 optdepends=('wmname: change window manager name for compatibility with certain WMs')
 
 # Due to compatibility issues with the current version of java in the repositories,

@@ -6,6 +6,7 @@ pkgbase = xmage
 	arch = any
 	license = MIT
 	makedepends = detox
+	makedepends = wget
 	optdepends = wmname: change window manager name for compatibility with certain WMs
 	source = http://xmage.de/files/xmage_1.4.34V0.1.zip
 	source = https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt
