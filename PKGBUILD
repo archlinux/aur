@@ -11,7 +11,8 @@ license=('GPL')
 depends=('vapoursynth'
          'cuda'
          )
-makedepends=('git')
+makedepends=('git'
+             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/WolframRhodium/VapourSynth-dpid.git"
