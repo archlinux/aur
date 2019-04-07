@@ -1,7 +1,7 @@
 pkgbase = batman-git
 	pkgdesc = Opens bat files as if they were native
 	pkgver = r2.a23cddd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/es20490446e/batman
 	arch = x86_64
 	license = GPL3
