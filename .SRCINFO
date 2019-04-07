@@ -1,6 +1,6 @@
 pkgbase = howl-git
 	pkgdesc = General purpose, light-weight customizable editor
-	pkgver = 0.5.3.3248
+	pkgver = 0.6.r2.g9fe141e5
 	pkgrel = 1
 	url = http://howl.io/
 	arch = i686

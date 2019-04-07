@@ -3,7 +3,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 
 pkgname=howl-git
-pkgver=0.5.3.3248
+pkgver=0.6.r2.g9fe141e5
 pkgrel=1
 pkgdesc='General purpose, light-weight customizable editor'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd howl
-  printf %s.%s "$(grep "0\." Changelog.md | head -2|tail -1| cut -d" " -f2)" "$(git rev-list --count HEAD)"
+  git describe --tags | sed "s+-+.r+" | tr - .
 }
 
 build() {
