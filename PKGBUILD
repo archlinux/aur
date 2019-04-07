@@ -1,14 +1,31 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=itk-snap
 pkgver=3.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc='ITK-SNAP is a software application used to segment structures in 3D medical images'
 arch=('x86_64')
 url='http://www.itksnap.org'
 license=('GPL3')
-depends=('insight-toolkit' 'vtk' 'qt5-declarative' 'fltk' 'proj' 'gdal' 'unixodbc' 'netcdf' 'glew' 'openmpi')
+depends=(
+	'ffmpeg'
+	'fltk'
+	'gdal'
+	'glew'
+	'insight-toolkit'
+	'libogg'
+	'libtheora'
+	'netcdf'
+	'openmpi'
+	'proj'
+	'pugixml'
+	'python'
+	'qt5-declarative'
+	'qt5-x11extras'
+	'unixodbc'
+	'vtk'
+)
 optdepends=()
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 source=("$pkgname::git+git://git.code.sf.net/p/itk-snap/src"
         "itkKernelFunction.h"
         "itksnap.png"
