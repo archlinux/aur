@@ -1,14 +1,8 @@
 post_install() {
-
-  id turnserver &>/dev/null || \
-    useradd -r -g daemon -d / -s /usr/bin/nologin turnserver
-
-  install -dm 755 "/var/log/turnserver"
-  chown -R turnserver:daemon /var/log/turnserver
-
+  getent passwd turnserver >/dev/null || useradd -rd / -s /sbin/nologin turnserver
   systemd-tmpfiles --create turnserver.conf
-
-  echo "start server by issuing \"systemctl start turnserver.service\" or calling \"turnserver\""
+  chown -R turnserver:turnserver /var/log/turnserver
+  echo 'Settings are at /etc/turnserver.conf'
 }
 
 post_upgrade() {

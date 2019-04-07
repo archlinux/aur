@@ -1,10 +1,10 @@
 [Unit]
-Description=STUN and TURN Relay Server for VoIP and WebRTC
+Description=STUN and TURN Relay server for VoIP and WebRTC
 After=network.target
 
 [Service]
-Type=forking
 User=turnserver
+Type=forking
 ExecStart=/usr/bin/turnserver -c /etc/turnserver.conf -o -v
 
 [Install]
