@@ -17,11 +17,6 @@ build() {
   python setup.py build
 }
 
-check() {
-  cd pyewmh-$pkgver
-  python setup.py test
-}
-
 package() {
   cd pyewmh-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
