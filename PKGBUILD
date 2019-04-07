@@ -14,14 +14,14 @@
 # Contributor: Tomas Wilhelmsson <tomas.wilhelmsson@gmail.com>
 
 pkgname=clang-lw-git
-pkgver=9.0.0_r313656.18a8a64c9f3
+pkgver=9.0.0_r313683.0fa6c15873d
 pkgrel=1
 pkgdesc="C language family frontend for LLVM"
 arch=('x86_64')
 url="https://clang.llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
 depends=('llvm-libs-lw-git' 'gcc' 'compiler-rt-lw-git')
-makedepends=('git' 'llvm-lw-git' 'cmake' 'ninja' 'python-sphinx' 'python2')
+makedepends=('git' 'llvm-lw-git' 'cmake' 'ninja' 'python-sphinx')
 optdepends=('openmp: OpenMP support in clang with -fopenmp'
             'python: for scan-view and git-clang-format')
 provides=("clang-analyzer=$pkgver" "clang-tools-extra=$pkgver")
@@ -81,11 +81,6 @@ check() {
   ninja check-clang{,-tools}
 }
 
-_python2_optimize() {
-  python2 -m compileall "$@"
-  python2 -O -m compileall "$@"
-}
-
 _python3_optimize() {
   python3 -m compileall "$@"
   python3 -O -m compileall "$@"
@@ -109,18 +104,13 @@ package() {
   sed -i 's|libexec|lib/clang|' "$pkgdir/usr/bin/scan-build"
 
   # Install Python bindings
-  for _py in 2.7 3.7; do
+  for _py in 3.7; do
     install -d "$pkgdir/usr/lib/python$_py/site-packages"
     cp -a ../bindings/python/clang "$pkgdir/usr/lib/python$_py/site-packages/"
     _python${_py%%.*}_optimize "$pkgdir/usr/lib/python$_py"
   done
 
-  # Fix shebang in Python 2 script
-  sed -i '1s|/usr/bin/env python$|&2|' \
-    "$pkgdir"/usr/share/clang/run-find-all-symbols.py
-
   # Compile Python scripts
-  _python2_optimize "$pkgdir/usr/share/clang"
   _python3_optimize "$pkgdir/usr/share" -x 'clang-include-fixer|run-find-all-symbols'
 }
 
