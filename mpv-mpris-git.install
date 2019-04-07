@@ -1,0 +1,29 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+yellow="${bold}$(tput setaf 3)"
+blue="${bold}$(tput setaf 4)"
+green="${bold}$(tput setaf 2)"
+
+_instructions() {
+  printf "${yellow}==>${all_off} ${bold}ATENTION:${all_off}
+  ${blue}->${all_off} For run this plugin, add this line:
+     '${bold}script=/usr/share/mpv/scripts/mpris.so${all_off}'
+     in your '${bold}/etc/mpv/mpv.conf${all_off}', or copy the plugin into
+     your '${bold}"$\HOME/".config/mpv/scripts'${all_off}' folder, for autoload it.\n"
+}
+
+_instructions_remove() {
+  printf "${yellow}==>${all_off} ${bold}ATENTION:${all_off}
+  ${blue}->${all_off} Don\'t forget remove this line:
+   '${bold}script=/usr/share/mpv/scripts/mpris.so${all_off}'
+   in your '${bold}/etc/mpv/mpv.conf${all_off}', or remove the plugin into
+     your '${bold}"$\HOME/".config/mpv/scripts'${all_off}' folder.\n"
+}
+
+post_install() {
+  _instructions
+}
+
+post_remove() {
+   _instructions_remove
+}
