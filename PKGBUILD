@@ -1,8 +1,8 @@
 # Maintainer: Marcel O'Neil <marcel@marceloneil.com>
 
 pkgname=exodus-eden
-pkgver=19.3.29
-pkgrel=2
+pkgver=19.4.5
+pkgrel=1
 epoch=1
 pkgdesc="An unsupported, advanced version of Exodus"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("https://exodusbin.azureedge.net/releases/eden/exodus-eden-linux-x64-${p
 	"${pkgname}.svg"
 	"${pkgname}.desktop"
         "LICENSE")
-sha256sums=('21086a20d2d7e9139938f2834d34fd8b9e5c3da218153f77cac8ed823aa80d23'
+sha256sums=('3a2a13f8fb8308e0ed918670fc4d6c11ec9733603cec60e0d983fee80efcc207'
             '231eacce811bdbbf5ffbee3c677ed53df7ed41024af49c757d2f866159180031'
             '820c6de206ffdd5882f26a8b7d5a2720d0b2df6f9fe62d31aa3a9aaefb9b6322'
             '582d6782c9412cd961c55d105f38ed5c911bf8509be040b8d23a836504a25d0b')
