@@ -1,6 +1,6 @@
 pkgbase = taskbook-git
 	pkgdesc = Tasks, boards & notes for the command-line habitat (git)
-	pkgver = 0.3.0
+	pkgver = 0.3.0+5+ga4a5a47
 	pkgrel = 1
 	url = https://github.com/klaussinani/taskbook
 	arch = any
