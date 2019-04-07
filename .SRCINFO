@@ -1,0 +1,17 @@
+pkgbase = ufsd-pro-dkms
+	pkgdesc = Paragon NTFS & HFS for Linux driver. Pro version.
+	pkgver = 9.6.7
+	pkgrel = 1
+	url = http://paragon-software.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = linux-lts-headers
+	depends = linux-lts
+	provides = ntfs-3g
+	conflicts = ntfs-3g
+	source = file://Paragon-715-PRE_NTFS_Linux_9.6.7_Pro.tar.gz
+	md5sums = 5e836a598960bc8a8b4ddebaae3a49a5
+
+pkgname = ufsd-pro-dkms
+
