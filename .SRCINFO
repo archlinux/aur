@@ -1,0 +1,19 @@
+pkgbase = unifydmin-git
+	pkgdesc = Unified administration panel for heterogeneous Linux servers
+	pkgver = 0.1.1.r2.g440665c
+	pkgrel = 1
+	url = https://gitlab.com/gabmus/unifydmin
+	arch = any
+	license = GPL
+	makedepends = meson
+	makedepends = python
+	depends = gtk3
+	depends = fabric
+	provides = unifydmin
+	provides = org.gabmus.unifydmin
+	conflicts = unifydmin
+	source = git+https://gitlab.com/gabmus/unifydmin.git
+	sha256sums = SKIP
+
+pkgname = unifydmin-git
+
