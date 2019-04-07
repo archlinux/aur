@@ -1,0 +1,27 @@
+pkgbase = dosbox-x-fast-bios-git
+	pkgdesc = x86 emulator with builtin DOS, with patches with more features, with fastbios on by default
+	pkgver = 7601.1adf084f2
+	pkgrel = 1
+	url = http://dosbox.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = glu
+	depends = fluidsynth
+	depends = libxkbfile
+	depends = libpng
+	depends = libxrandr
+	depends = mesa
+	depends = ffmpeg
+	source = dosbox-x::git://github.com/joncampbell123/dosbox-x.git
+	source = default-to-fast-bios.patch
+	source = dosbox-x.png
+	source = dosbox-x.desktop
+	md5sums = SKIP
+	md5sums = aa3c4f3ce625e7a2d523ccfe77478a89
+	md5sums = 3dcfe45c5ed0433316eaea51e3620b36
+	md5sums = 615228a51b52d4788c73940602f1dc97
+
+pkgname = dosbox-x-fast-bios-git
+
