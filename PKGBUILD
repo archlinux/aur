@@ -1,7 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=oxy-git
-pkgver=3.0.0+dev1+102+g2f2abc9
+pkgver=3.0.0+105+g891cedf
 pkgrel=1
 pkgdesc='SSH-alike that uses the Noise protocol (git)'
 arch=(i686 x86_64)
