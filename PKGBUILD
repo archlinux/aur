@@ -1,6 +1,7 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=majsoul-plus-bin
-pkgver=1.11.1
+pkgver=1.12.0b3
+_pkgver=${pkgver/b/-beta.}
 pkgrel=1
 pkgdesc="Majsoul browser (Binary)"
 arch=('i686' 'x86_64')
@@ -15,14 +16,14 @@ provides=("majsoul-plus")
 conflicts=("majsoul-plus")
 source=("https://github.com/MajsoulPlus/majsoul-plus/raw/master/bin/icons/icon.png")
 source_x86_64=(
-	"https://github.com/MajsoulPlus/majsoul-plus/releases/download/v$pkgver/Majsoul_Plus-linux-x64.zip"
+	"$pkgname-$pkgver-x86_64.zip::https://github.com/MajsoulPlus/majsoul-plus/releases/download/v$_pkgver/Majsoul_Plus-linux-x64.zip"
 )
 source_i686=(
-	"https://github.com/MajsoulPlus/majsoul-plus/releases/download/v$pkgver/Majsoul_Plus-linux-ia32.zip"
+	"$pkgname-$pkgver-i686.zip::https://github.com/MajsoulPlus/majsoul-plus/releases/download/v$_pkgver/Majsoul_Plus-linux-ia32.zip"
 )
 sha256sums=('be6005b9ae4238d53fcd9fe728a4985502c660adb670d3047b17da4a35f6fe31')
-sha256sums_i686=('1ae146cb80e80a2fab0c8e24b3fda08a4e94e1311622b352db58c2b3a846f935')
-sha256sums_x86_64=('ea69fe54e4aac25e19bb21b9d437412c12c094eeb6c5bc81ffb6336a6e5202d2')
+sha256sums_i686=('b99633465af425362f04f504f062f6854035a697098fca5fb9a3200a111bb9cb')
+sha256sums_x86_64=('137ac7f10c4449ca7ee9e48a3abadd007998dab50d399a5f5d216f62ceb90cd5')
 
 package() {
 	targetarch="x64"
