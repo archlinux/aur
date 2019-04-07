@@ -1,6 +1,6 @@
 pkgbase = archwrt-ss.sh-git
 	pkgdesc = A simple Shadowsocks transparent proxy setup script by archwrt.
-	pkgver = r11.202acbb
+	pkgver = r12.fddf48d
 	pkgrel = 1
 	url = https://github.com/archwrt/archwrt-ss.sh
 	arch = x86_64
