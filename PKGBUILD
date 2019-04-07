@@ -21,8 +21,7 @@ depends=("ruby")
 conflicts=()
 optdepends=("ruby-rake: Rake is a Make-like program implemented in Ruby (Development dependency)"
             "ruby-pry: An IRB alternative and runtime developer console (Development dependency)"
-            "ruby-minitest: minitest provides a complete suite of testing facilities supporting TDD, BDD, mo... (Development dependency)"
-            "ruby-coveralls: A Ruby implementation of the Coveralls API. (Development dependency)")
+            "ruby-minitest: minitest provides a complete suite of testing facilities supporting TDD, BDD, mo... (Development dependency)")
 source=("https://rubygems.org/gems/$_gemname-$pkgver.gem")
 sha256sums=("32fb890700caae31eec13bcc3b4a15aff74cc3fb1d1222fc113041deb45834d8")
 noextract=("$_gemname-$pkgver.gem")
@@ -33,7 +32,7 @@ _gem_install() {
 
   # Install the gem
   install -d -m755 $_bindir $_gemdir
-  $_gem install --no-ri --no-rdoc --ignore-dependencies --no-user-install \
+  $_gem install --no-document --ignore-dependencies --no-user-install \
                 --bindir $_bindir --install-dir $_gemdir "$srcdir/$_gemname-$pkgver.gem"
 }
 

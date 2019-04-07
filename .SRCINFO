@@ -12,7 +12,6 @@ pkgbase = ruby-rubyzip
 	optdepends = ruby-rake: Rake is a Make-like program implemented in Ruby (Development dependency)
 	optdepends = ruby-pry: An IRB alternative and runtime developer console (Development dependency)
 	optdepends = ruby-minitest: minitest provides a complete suite of testing facilities supporting TDD, BDD, mo... (Development dependency)
-	optdepends = ruby-coveralls: A Ruby implementation of the Coveralls API. (Development dependency)
 	noextract = rubyzip-1.2.2.gem
 	options = !emptydirs
 	source = https://rubygems.org/gems/rubyzip-1.2.2.gem
