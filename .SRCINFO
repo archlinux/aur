@@ -1,7 +1,7 @@
 pkgbase = brltty-minimal
-	pkgdesc = Braille display driver for Linux/Unix
+	pkgdesc = Braille display driver for Linux/Unix. minimal version
 	pkgver = 6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://brltty.com
 	arch = x86_64
 	license = GPL
