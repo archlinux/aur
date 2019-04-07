@@ -12,11 +12,12 @@ _base16_cmt=2e4112fe859ed5d33f67c177f11d369d360db9ae
 _numix_icons_cmt=88ba3654506c73f77a28629d863d1e23a553bff7
 _numix_folders_icons_cmt=24e5f6c6603e7f798553d2f24a00de107713c333
 _papirus_icons_ver=20190331
-_suru_plus_icons_ver=25.2
+_suru_plus_icons_ver=25.3
+_suru_plus_aspromauros_icons_ver=2.1
 
 pkgname=oomox
 pkgver=${_oomox_ver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Themix: GUI for generating different color variations
 of Arc, Materia, Oomox themes
 (GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm),
@@ -80,6 +81,7 @@ source=(
     "numix-folders-${_numix_folders_icons_cmt}.tar.gz::https://github.com/numixproject/numix-folders/archive/${_numix_folders_icons_cmt}.tar.gz"
     "papirus-icon-theme-${_papirus_icons_ver}.tar.gz::https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/${_papirus_icons_ver}.tar.gz"
     "suru-plus-icon-theme-${_suru_plus_icons_ver}.tar.gz::https://github.com/gusbemacbe/suru-plus/archive/v${_suru_plus_icons_ver}.tar.gz"
+    "suru-plus-aspromauros-icon-theme-${_suru_plus_aspromauros_icons_ver}.tar.gz::https://github.com/gusbemacbe/suru-plus-aspromauros/archive/v${_suru_plus_aspromauros_icons_ver}.tar.gz"
 )
 md5sums=('3dd791ab2cf30cc713657fc68d0b8e87'
          '13945f05eba3b85e6d63fec1ff60380a'
@@ -92,7 +94,8 @@ md5sums=('3dd791ab2cf30cc713657fc68d0b8e87'
          '6873ed4ffd84e69e10625f5aee2bfdc6'
          '3fcb07cefe43a6a2fe4d977f124624ec'
          'a34ef2ac3bfe76dace113166bfdca8fe'
-         '559533cef2d920bd71eabd4a0bd8953e')
+         '09b09fba07507815319501d5f6b5b140'
+         '852e3cb9292153fd55f8a5e79ce81ebe')
 
 prepare() {
     cd ${srcdir}
@@ -108,6 +111,7 @@ prepare() {
     cp -pr "numix-folders-${_numix_folders_icons_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/icons_numix/numix-folders"
     cp -pr "papirus-icon-theme-${_papirus_icons_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_papirus/papirus-icon-theme"
     cp -pr "suru-plus-${_suru_plus_icons_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_suruplus/suru-plus"
+    cp -pr "suru-plus-aspromauros-${_suru_plus_aspromauros_icons_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_suruplus_aspromauros/suru-plus-aspromauros"
 }
 
 package() {
