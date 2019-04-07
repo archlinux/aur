@@ -1,5 +1,5 @@
 pkgbase = faiss-git
-	pkgver = v1.5.0.r17.g7b07685
+	pkgver = v1.5.1.r0.g7f5b22b
 	pkgrel = 1
 	url = https://github.com/facebookresearch/faiss
 	arch = i686

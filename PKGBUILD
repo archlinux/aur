@@ -6,7 +6,7 @@ pkgname=('faiss-git' 'python-faiss-git' 'python2-faiss-git')
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('BSD')
-pkgver=v1.5.0.r17.g7b07685
+pkgver=v1.5.1.r0.g7f5b22b
 pkgrel=1
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git)
 sha256sums=('SKIP')
@@ -28,9 +28,9 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  ./configure --prefix=/usr --with-python=python2
+  ./configure --prefix=/usr --with-python=python2 --without-cuda
   mv makefile.inc makefile2.inc
-  ./configure --prefix=/usr --with-python=python
+  ./configure --prefix=/usr --with-python=python --without-cuda
   make
   make -C python
   make -C python2
