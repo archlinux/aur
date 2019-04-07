@@ -1,5 +1,5 @@
 diff --git a/Source/Makefile b/Source/Makefile
-index b670ac2..634c128 100644
+index c8d9383..3964b85 100644
 --- a/Source/Makefile
 +++ b/Source/Makefile
 @@ -6,10 +6,11 @@ LIBS = cudart
@@ -15,7 +15,7 @@ index b670ac2..634c128 100644
  
  dpid.o: dpid.cpp dpid.h
  	@echo "Compiling dpid.cpp ..."
-@@ -17,16 +18,15 @@ dpid.o: dpid.cpp dpid.h
+@@ -17,11 +18,11 @@ dpid.o: dpid.cpp dpid.h
  
  kernel8.o: kernel8.cu
  	@echo "Compiling kernel8.cu ..."
@@ -29,9 +29,3 @@ index b670ac2..634c128 100644
  
  install: $(TARGET)
  	@echo "Installing..."
--	@cp $(TARGET) $(PREFIX)
--	@chmod 644 $(PREFIX)/$(TARGET)
-+	@install -Dm644 $(TARGET) $(PREFIX)/$(TARGET)
- 
- uninstall:
- 	@echo "Uninstalling..."

@@ -2,7 +2,7 @@
 
 _plug=dpid
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r3.8.g7771a30
+pkgver=r3.10.g53194f1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
