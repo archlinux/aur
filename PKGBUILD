@@ -12,7 +12,7 @@
 pkgname=lib32-llvm-git
 _pkgname='llvm'
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit, git)"
-pkgver=9.0.0_r313653.5182302a376
+pkgver=9.0.0_r313674.af7314b3179
 pkgrel=1
 arch=('x86_64')
 url='https://llvm.org/'
@@ -94,6 +94,7 @@ build() {
     -DLLVM_ENABLE_BINDINGS=OFF \
     -DLLVM_ENABLE_RTTI=ON \
     -DLLVM_ENABLE_FFI=ON \
+    -DLLVM_BUILD_TESTS=ON \
     -DLLVM_BUILD_DOCS=OFF \
     -DLLVM_ENABLE_SPHINX=OFF \
     -DLLVM_ENABLE_DOXYGEN=OFF \
@@ -102,6 +103,11 @@ build() {
     "../${_pkgname}/${_pkgname}"
 
   ninja all
+}
+
+check() {
+  cd "${srcdir}/build"
+  ninja check
 }
 
 package() { 
