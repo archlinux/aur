@@ -1,8 +1,8 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=oxy
-pkgver=3.0.0+dev1+102+g2f2abc9
-_commit=2f2abc9e351b52656e08b343976fd8cefc318657
+pkgver=3.0.0+105+g891cedf
+_commit=891cedf8fd9945fbccd9e67f6644a80bc4963d81
 pkgrel=1
 pkgdesc='SSH-alike that uses the Noise protocol'
 arch=(i686 x86_64)
@@ -30,6 +30,6 @@ check() {
 
 package() {
   cd oxy
-  install -D target/release/oxy "$pkgdir"/usr/bin/oxy
-  install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/oxy/LICENSE
+  install -D target/release/oxy -t "$pkgdir"/usr/bin
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/oxy
 }
