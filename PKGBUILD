@@ -9,7 +9,7 @@ url="https://github.com/fralonra/zrandr"
 license=('GPL')
 depends=('xorg-xrandr' 'qt5-base' 'qt5-tools')
 source=("https://github.com/fralonra/$pkgname/archive/v${pkgver}.tar.gz")
-md5sums=('9148e93db7ee77c9b9880184ac27eef7')
+md5sums=('f50ee483123b70c985231abaa48d5909')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"

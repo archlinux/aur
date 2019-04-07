@@ -9,7 +9,7 @@ pkgbase = zrandr
 	depends = qt5-base
 	depends = qt5-tools
 	source = https://github.com/fralonra/zrandr/archive/v0.3.2.tar.gz
-	md5sums = 9148e93db7ee77c9b9880184ac27eef7
+	md5sums = f50ee483123b70c985231abaa48d5909
 
 pkgname = zrandr
 
