@@ -4,7 +4,7 @@
 pkgname=qtwebflix-git
 _gitname=qtwebflix
 pkgver=0.1.r163.gbf7dee5
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone HD Netflix Browser using qt5-webengine (also supports Amazon prime, HBO Go, Hulu, Crunchy Roll)'
 arch=('any')
 url='https://github.com/gort818/qtwebflix'
