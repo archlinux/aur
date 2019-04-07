@@ -1,8 +1,8 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=cloudflared-bin
-pkgver=2019.3.2
-pkgrel=4
+pkgver=2019.4.0
+pkgrel=1
 pkgdesc="An Argo Tunnel client which proxies any local webserver through the Cloudflare network"
 arch=("x86_64" "i686" "armv6h" "armv7h")
 url="https://developers.cloudflare.com/argo-tunnel/"
