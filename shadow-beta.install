@@ -6,7 +6,7 @@ post_install() {
 	done
 
 	# Create the link to the binary
-	ln -sf '/opt/shadowbeta/shadow-wrapper.pl' '/usr/bin/shadow-beta'
+	ln -sf '/opt/Shadow Beta/shadow-preprod' '/usr/bin/shadow-beta'
 }
 
 post_remove() {
@@ -16,6 +16,18 @@ post_remove() {
 		if [ -d /home/$user/.config/Shadow\ Beta ]; then
 			rm -R /home/$user/.config/Shadow\ Beta
 		fi
+
+		if [ -d /home/$user/.config/shadow-beta ]; then
+			rm -R /home/$user/.config/shadow-beta
+		fi
+
+		if [ -d /home/$user/.config/shadowbeta ]; then
+			rm -R /home/$user/.config/shadowbeta
+		fi
+
+		if [ -d /home/$user/.config/shadow-preprod ]; then
+			rm -R /home/$user/.config/shadow-preprod
+		fi
 	done
 }
 
@@ -24,9 +36,14 @@ pre_upgrade(){
 	if [ -d "/opt/Shadow Beta" ]; then
 	    rm -r "/opt/Shadow Beta"
 	fi
+
+	# Delete the old version of Shadow
+	if [ -d "/opt/shadowbeta" ]; then
+	    rm -r "/opt/shadowbeta"
+	fi
 }
 
 post_upgrade(){
 	# Replace current shortcut with the new one
-	ln -sf '/opt/shadowbeta/shadow-wrapper.pl' '/usr/bin/shadow-beta'
+	ln -sf '/opt/Shadow Beta/shadow-preprod' '/usr/bin/shadow-beta'
 }
