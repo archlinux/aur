@@ -1,0 +1,14 @@
+diff --git a/Source/Makefile b/Source/Makefile
+index b670ac2..b18c520 100644
+--- a/Source/Makefile
++++ b/Source/Makefile
+@@ -25,8 +25,7 @@ kernel16.o: kernel16.cu
+ 
+ install: $(TARGET)
+ 	@echo "Installing..."
+-	@cp $(TARGET) $(PREFIX)
+-	@chmod 644 $(PREFIX)/$(TARGET)
++	@install -Dm644 $(TARGET) $(PREFIX)
+ 
+ uninstall:
+ 	@echo "Uninstalling..."
