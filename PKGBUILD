@@ -6,8 +6,8 @@
 
 #  printf "'SKIP'%.0s\n" {1..43}
 pkgname=ossia-score-git
-pkgver=r7242.1cb1b909e
-pkgrel=2
+pkgver=r7332.f037f9b63
+pkgrel=1
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts (git master)"
 arch=('x86_64')
 url="https://ossia.io"
@@ -60,9 +60,11 @@ source=('git+https://github.com/OSSIA/score.git'
 "git+https://github.com/Velron/doxygen-bootstrapped"
 "git+https://github.com/jcelerier/QProgressIndicator"
 "git+https://github.com/jcelerier/Qt-Color-Widgets.git"
+"git+https://github.com/jcelerier/phantomstyle.git"
 "git+https://anongit.kde.org/scratch/mart/desktopqqc2style.git"
 )
 sha256sums=(
+'SKIP'
 'SKIP'
 'SKIP'
 'SKIP'
@@ -119,6 +121,7 @@ build() {
   cd "$srcdir/$_gitname"
   git config submodule.3rdparty/libossia.url $srcdir/libossia
   git config submodule.Documentation/Doxygen/doxygen-bootstrapped.url $srcdir/doxygen-bootstrapped
+  git config submodule.src/3rdparty/phantomstyle.url $srcdir/phantomstyle
   git config submodule.src/lib/3rdparty/QProgressIndicator.url $srcdir/QProgressIndicator
   git config submodule.src/lib/3rdparty/Qt-Color-Widgets.url $srcdir/Qt-Color-Widgets
   git config submodule.src/lib/resources/desktopqqc2style.url $srcdir/desktopqqc2style
