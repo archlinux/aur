@@ -1,13 +1,13 @@
 pkgbase = curl-inject-opt
 	pkgdesc = run a command with modified CURL options
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 2
 	arch = x86_64
 	arch = i686
 	license = BSD
 	makedepends = cargo
-	source = curl-inject-opt-0.1.0.tar.gz::https://github.com/de-vri-es/curl-inject-opt/archive/0.1.0.tar.gz
-	sha512sums = 29e6feacbd73b807c91f01f8d64d904f14c4e3161f15d6ae732c5eecc5deaf46f7179d53ab5f9a8611d060a55a269672d581ab19e9d42e571cc9d87ade86dd96
+	source = curl-inject-opt-0.1.1.tar.gz::https://github.com/de-vri-es/curl-inject-opt/archive/0.1.1.tar.gz
+	sha512sums = 8ca5bb67e912592d21923b19bfeaacd530d9ed8718580eca2c1256d69488f827f16d83496e066488c61321d003b2bd312b6a0588246096b2016121d0cba16589
 
 pkgname = curl-inject-opt
 
