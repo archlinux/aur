@@ -9,14 +9,14 @@ pkgdesc='Standalone HD Netflix Browser using qt5-webengine (also supports Amazon
 arch=('any')
 url='https://github.com/gort818/qtwebflix'
 license=('GPL3')
-depends=('xdg-utils' 'qt5-webengine-widevine')
+depends=('xdg-utils' 'chromium-widevine')
 optdepends=('pepper-flash: Needed for some streaming services')
 makedepends=('git')
 source=("git+${url}.git"
         "${_gitname}.desktop")
        
 sha256sums=('SKIP'
-            '656953860c0014977b20eb0f023e1e5e3441a5ec58d4e353230c392d697eaf1a')
+            '7b15975f63818493b965926c336e37b8716f9550d23058fc9057004d3f7ffb2f')
        
 pkgver() {
    cd ${srcdir}/${_gitname}
