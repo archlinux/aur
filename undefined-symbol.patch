@@ -1,0 +1,17 @@
+diff a/src/exiv2wrapper.cpp b/src/exiv2wrapper.cpp
+--- a/src/exiv2wrapper.cpp
++++ b/src/exiv2wrapper.cpp
+@@ -1206,6 +1206,13 @@ Preview::Preview(const Exiv2::PreviewImage& previewImage)
+     }
+ }
+ 
++boost::python::object Preview::getData() const
++{
++    return boost::python::object(boost::python::handle<>(
++        PyBytes_FromStringAndSize(_data.c_str(), _size)
++        ));
++}
++
+ void Preview::writeToFile(const std::string& path) const
+ {
+     std::string filename = path + _extension;
