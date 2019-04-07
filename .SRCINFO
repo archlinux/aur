@@ -1,7 +1,7 @@
 pkgbase = i2pd
 	pkgdesc = Simplified C++ implementation of I2P client
 	pkgver = 2.24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PurpleI2P/i2pd
 	install = i2pd.install
 	arch = i686
