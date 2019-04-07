@@ -1,3 +1,12 @@
+4.5.9 (2019-04-03 17:04:45)
+
+    Fixes an issue which prevented some cross references to be properly computed on iOS 12,
+    Fixes a deadlock on some binaries.
+
+4.5.8 (2019-03-29 17:58:05)
+
+    Fixes AArch64 32bits disassembler (the CPU variant used in the Apple Watch).
+
 4.5.7 (2019-03-01 17:10:24)
 
     Fixes a huge slowdown on some big binaries,
