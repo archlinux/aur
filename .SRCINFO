@@ -1,6 +1,6 @@
 pkgbase = ninja-ide-git
 	pkgdesc = Cross-platform IDE focused on Python application development
-	pkgver = 20181111
+	pkgver = 20190207
 	pkgrel = 1
 	url = http://ninja-ide.org
 	arch = any

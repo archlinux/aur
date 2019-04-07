@@ -2,7 +2,7 @@
 # Contributor: Federico Cinelli <cinelli.federico@gmail.com>
 
 pkgname=ninja-ide-git
-pkgver=20181111
+pkgver=20190207
 pkgrel=1
 pkgdesc="Cross-platform IDE focused on Python application development"
 arch=('any')
