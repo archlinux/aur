@@ -4,7 +4,7 @@
 Name="execute"
 pkgname="${Name}-git"
 pkgver=r11.1bc0822
-pkgrel=1
+pkgrel=4
 pkgdesc="Opens exe files as if they were native"
 arch=("x86_64")
 url="https://gitlab.com/es20490446e/${Name}"
