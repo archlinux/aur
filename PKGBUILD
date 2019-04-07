@@ -4,14 +4,13 @@
 Name="execute"
 pkgname="${Name}-git"
 pkgver=r11.1bc0822
-pkgrel=4
-pkgdesc="Opens exe files as if they were native"
+pkgrel=2
+pkgdesc="Opens exe and bat files as if they were native"
 arch=("x86_64")
 url="https://gitlab.com/es20490446e/${Name}"
 license=("GPL3")
 makedepends=("git")
-depends=("dosbox-svn" "q4wine")
-optdepends=("batman-git" "wine-mono" "wine_gecko")
+depends=("batman-git" "dosbox-svn" "q4wine" "wine_gecko" "wine-mono")
 provides=("${Name}")
 conflicts=("${Name}")
 source=("git+${url}.git")
