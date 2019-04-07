@@ -1,0 +1,21 @@
+pkgbase = tmux-xdg-git
+	pkgdesc = A terminal multiplexer (XDG config patch)
+	pkgver = 2.8.r292.g78adc263
+	pkgrel = 1
+	url = https://github.com/tmux/tmux/wiki
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = ncurses
+	depends = libevent
+	optdepends = libutempter: Record user sessions to utmp and wtmp files (add to depends array and rebuild to enable)
+	provides = tmux
+	provides = tmix-git
+	conflicts = tmux
+	conflicts = tmux-git
+	source = git+https://github.com/mxmilkb/tmux.git
+	md5sums = SKIP
+
+pkgname = tmux-xdg-git
+
