@@ -1,0 +1,15 @@
+pkgbase = rrcc
+	pkgdesc = RoboRock Control Center
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/LazyT/rrcc
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	source = rrcc::git+https://github.com/LazyT/rrcc.git#tag=0.8.3
+	md5sums = SKIP
+
+pkgname = rrcc
+
