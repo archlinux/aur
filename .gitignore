@@ -1,0 +1,5 @@
+*
+!.gitignore
+!.SRCINFO
+!nerd-fonts-arimo.install
+!PKGBUILD
