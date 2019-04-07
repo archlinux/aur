@@ -1,0 +1,27 @@
+pkgbase = servicewall-git
+	pkgdesc = The firewall that remembers the different networks you connect to.
+	pkgver = 0.4.2.r4.a60e19f
+	pkgrel = 1
+	url = https://github.com/lafleurdeboum/servicewall
+	install = servicewall.install
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-iptables
+	depends = python-argparse
+	depends = python-netifaces
+	depends = python-systemd
+	depends = ulogd
+	optdepends = python-argcomplete
+	optdepends = networkd-dispatcher
+	optdepends = networkmanager
+	backup = etc/servicewall/realms.json
+	backup = etc/servicewall/config.json
+	source = servicewall::git://localhost/
+	md5sums = SKIP
+
+pkgname = servicewall-git
+

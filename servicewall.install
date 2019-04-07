@@ -1,0 +1,21 @@
+## arg 1:  the new package version
+post_install() {
+    braise status | grep -q "enabled" || (
+        echo "To enable ServiceWall, issue a\n\t# braise enable"
+    )
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    braise status | grep -q "enabled" && (
+        echo "reloading ServiceWall";
+        braise reload
+    )
+}
+
+## arg 1:  the old package version
+pre_remove() {
+    echo "disabling ServiceWall";
+    braise disable
+}
