@@ -2,9 +2,9 @@
 
 pkgname=xmage
 pkgver=1.4.34V0.1
-pkgrel=2
+pkgrel=3
 _java_version=8u201
-_java_dir=1.8.0_201
+_java_dir=jre1.8.0_201
 
 pkgdesc="Java-based program for playing Magic:The Gathering, including client and server"
 
@@ -30,14 +30,28 @@ package() {
 
 	cd "${srcdir}"
 
+	
+	# check if compatible java for xmage has already been downloaded,
+	# if so, skip the download 
+	msg2 "checking if a previously installed xmage java version exists..."
+	if [ -e /usr/share/xmage/${_java_dir} ] 
+
+	then
+	msg2 "java version exists, skipping download..."
+
+	else
+	msg2 "no dedicated java installation found..."
 	msg2 "downloading dedicated java version..."
+
 	wget -c --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jre-8u201-linux-x64.tar.gz
 	
-	msg2 "uncompressing java..."
+	msg2 "decompressing java tar.gz..."
 	tar -xzvf jre-${_java_version}-linux-x64.tar.gz
+	fi
+
 
 	# clean up filenames
-	detox -r -v ./*
+	detox -r -v ./* &> /dev/null
 
 	msg2 "changing file format of included scripts..."
 	awk '{ sub("\r$", ""); print }' mage-client/startClient.sh > mage-client/startClient-unix.sh
@@ -52,8 +66,8 @@ package() {
 	sed -i '2i cd /usr/share/xmage/mage-server' mage-server/startServer-unix-lib.sh
 
 	msg2 "changing location of java binary..."
-	sed -i "s|java|/usr/share/xmage/jre${_java_dir}/bin/java|g" mage-client/startClient-unix-lib.sh
-	sed -i "s|java|/usr/share/xmage/jre${_java_dir}/bin/java|g" mage-server/startServer-unix-lib.sh
+	sed -i "s|java|/usr/share/xmage/${_java_dir}/bin/java|g" mage-client/startClient-unix-lib.sh
+	sed -i "s|java|/usr/share/xmage/${_java_dir}/bin/java|g" mage-server/startServer-unix-lib.sh
 
 	msg2 "increasing default memory limit of client and server"
 	sed -i 's|-Xmx512m|-Xmx1024m|g' mage-client/startClient-unix-lib.sh
