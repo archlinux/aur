@@ -1,0 +1,67 @@
+# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Contributor: David Runge <dave@sleepmap.de>
+# Contributor: speps <speps at aur dot archlinux dot org>
+# Contributor: osc <farid at archlinux-br.org>
+
+_name=SuperCollider
+pkgname=supercollider-portaudio
+pkgver=3.10.2
+pkgrel=1
+pkgdesc="Environment and programming language for real time audio synthesis and algorithmic composition (portaudio api)"
+arch=('x86_64')
+url="https://supercollider.github.io"
+license=('GPL3')
+groups=('pro-audio')
+depends=('boost-libs' 'desktop-file-utils' 'fftw' 'qt5-svg' 'qt5-webengine' 'qt5-websockets' 'yaml-cpp' 'portaudio')
+makedepends=('boost' 'cmake' 'emacs' 'qt5-tools')
+checkdepends=('xorg-server-xvfb')
+optdepends=('emacs: emacs interface'
+            'gedit: gedit interface'
+            'sc3-plugins: additional extension plugins for scsynth')
+provides=('supercollider')
+conflicts=('supercollider')
+source=("https://github.com/supercollider/supercollider/releases/download/Version-${pkgver}/${_name}-${pkgver}-Source-linux.tar.bz2"
+        'boost-1.67.patch'
+        "supercollider-use_system_boost.patch"
+)
+install="${pkgname}.install"
+sha512sums=('f7d136cb03e32dfd0b72e36047deaa24d5edfac0f7e9eeaac35f8e991cd52b00db0701478e0daefb24bfbbc55b5cf240e3f3429fd46caa8d76daa21c7aebaf46'
+            '9980d77802f18fd56d2a13f24f070e81768d9111b2cc63e479a0e9b405a04aec28bc523e5d36aab0462af6a3831d64598470cdc6c3266431e2ca64aa427a6bf2'
+            'd9b2ef108673b11a27c63654ceacf3b7e51df11ce05fc6d9045abd219ea718c2552f5ea026a5182c272639e695a1073192013b14cae257e7e4b00dd3c303ecae')
+
+prepare() {
+  mv -v "${_name}-Source" "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
+  # supernova build:
+  # https://github.com/supercollider/supercollider/issues/3981
+  patch -Np1 -i ../boost-1.67.patch
+  # make sure system boost is used
+  # https://github.com/supercollider/supercollider/issues/4096
+  patch -Np1 -i ../"supercollider-use_system_boost.patch"
+  mkdir -v build
+}
+
+build() {
+  cd "${pkgname}-${pkgver}/build"
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+           -DCMAKE_BUILD_TYPE=Release \
+           -DLIBSCSYNTH=ON \
+           -DFORTIFY=ON \
+           -DSYSTEM_YAMLCPP=ON \
+           -DSYSTEM_BOOST=ON \
+           -DSC_VIM=OFF \
+           -DAUDIOAPI=portaudio
+  make VERBOSE=1
+}
+
+check() {
+  cd "${pkgname}-${pkgver}/build"
+  xvfb-run make test ARGS="-V" || warning "Known failing tests: https://github.com/supercollider/supercollider/issues/3555"
+}
+
+package() {
+  cd "${pkgname}-${pkgver}/build"
+  make DESTDIR="${pkgdir}" install
+  install -t "${pkgdir}/usr/share/doc/${pkgname}/" \
+    -vDm 644 ../{AUTHORS,{CHANGELOG,README,README_LINUX}.md}
+}

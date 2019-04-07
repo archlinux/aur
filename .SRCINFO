@@ -1,0 +1,36 @@
+pkgbase = supercollider-portaudio
+	pkgdesc = Environment and programming language for real time audio synthesis and algorithmic composition (portaudio api)
+	pkgver = 3.10.2
+	pkgrel = 1
+	url = https://supercollider.github.io
+	install = supercollider-portaudio.install
+	arch = x86_64
+	groups = pro-audio
+	license = GPL3
+	checkdepends = xorg-server-xvfb
+	makedepends = boost
+	makedepends = cmake
+	makedepends = emacs
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = desktop-file-utils
+	depends = fftw
+	depends = qt5-svg
+	depends = qt5-webengine
+	depends = qt5-websockets
+	depends = yaml-cpp
+	depends = portaudio
+	optdepends = emacs: emacs interface
+	optdepends = gedit: gedit interface
+	optdepends = sc3-plugins: additional extension plugins for scsynth
+	provides = supercollider
+	conflicts = supercollider
+	source = https://github.com/supercollider/supercollider/releases/download/Version-3.10.2/SuperCollider-3.10.2-Source-linux.tar.bz2
+	source = boost-1.67.patch
+	source = supercollider-use_system_boost.patch
+	sha512sums = f7d136cb03e32dfd0b72e36047deaa24d5edfac0f7e9eeaac35f8e991cd52b00db0701478e0daefb24bfbbc55b5cf240e3f3429fd46caa8d76daa21c7aebaf46
+	sha512sums = 9980d77802f18fd56d2a13f24f070e81768d9111b2cc63e479a0e9b405a04aec28bc523e5d36aab0462af6a3831d64598470cdc6c3266431e2ca64aa427a6bf2
+	sha512sums = d9b2ef108673b11a27c63654ceacf3b7e51df11ce05fc6d9045abd219ea718c2552f5ea026a5182c272639e695a1073192013b14cae257e7e4b00dd3c303ecae
+
+pkgname = supercollider-portaudio
+
