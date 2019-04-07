@@ -2,7 +2,7 @@
 # Contributor: Zebulon <zeb@zebulon.org.uk>
 
 pkgname=lib32-libxxf86dga
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="X11 Direct Graphics Access extension library (32 bit)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('lib32-libxext' "${pkgname#*-}")
 makedepends=('xorg-util-macros' 'gcc-multilib')
 source=("http://xorg.freedesktop.org/releases/individual/lib/libXxf86dga-$pkgver.tar.bz2")
-sha256sums=('8eecd4b6c1df9a3704c04733c2f4fa93ef469b55028af5510b25818e2456c77e')
+sha256sums=('2b98bc5f506c6140d4eddd3990842d30f5dae733b64f198a504f07461bdb7203')
 
 build() {
   export CC="gcc -m32"
