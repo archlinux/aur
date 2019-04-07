@@ -2,7 +2,7 @@
 # Author: Hossein Bakhtiarifar <abakh@tuta.io>
 # Discussion: https://www.reddit.com/r/linux/comments/b8y7rp/i_have_made_a_bunch_of_fancy_terminal_games_more/
 pkgname=nbsdgames-git
-pkgver=r35.06237f9_score_patch
+pkgver=r39.ad0211c_score_patch
 pkgrel=1
 pkgdesc="A collection of curses-based console games"
 arch=('x86_64' 'i686')
