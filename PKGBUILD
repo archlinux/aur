@@ -7,7 +7,7 @@ pkgdesc="A simple Qt5 front end for xrandr"
 arch=('any')
 url="https://github.com/fralonra/zrandr"
 license=('GPL')
-depends=('xorg-xrandr' 'qt5-base')
+depends=('xorg-xrandr' 'qt5-base' 'qt5-tools')
 source=("https://github.com/fralonra/$pkgname/archive/v${pkgver}.tar.gz")
 md5sums=('254b8365bd2d0fa45428c59c9d87c357')
 

@@ -7,6 +7,7 @@ pkgbase = zrandr
 	license = GPL
 	depends = xorg-xrandr
 	depends = qt5-base
+	depends = qt5-tools
 	source = https://github.com/fralonra/zrandr/archive/v0.3.1.tar.gz
 	md5sums = 254b8365bd2d0fa45428c59c9d87c357
 
