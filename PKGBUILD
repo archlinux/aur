@@ -28,8 +28,10 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Waifu2x-caffe.git"
         'git+https://github.com/HolyWu/caffe.git#branch=lltcggie/custom'
+        'esee'
         )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             )
 
@@ -59,6 +61,9 @@ prepare() {
   sed -e 's| /usr/local/include||g' \
       -e 's| /usr/local/lib||g' \
       -i caffe/Makefile.config
+
+  # silence cuda warnings
+  patch -d caffe -p1 -i "${srcdir}/esee"
 
   cd "${_plug}"
 
