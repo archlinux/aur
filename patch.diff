@@ -1,26 +1,26 @@
---- rip.pl	2017-04-10 03:17:50.442178408 +0200
-+++ regripper	2017-04-10 03:17:46.646189632 +0200
-@@ -1,4 +1,5 @@
+diff --git a/rip.pl b/rip.pl
+index ef8815a..265a56c 100644
+--- a/rip.pl
++++ b/rip.pl
+@@ -1,4 +1,4 @@
 -#! c:\perl\bin\perl.exe
 +#!/usr/bin/perl
-+use lib qw(/usr/local/lib/rip-lib/lib/perl5/);
  #-------------------------------------------------------------------------
  # Rip - RegRipper, CLI version
  # Use this utility to run a plugins file or a single plugin against a Reg
-@@ -60,7 +61,7 @@
- #push(@INC,$str);
- 
+@@ -62,7 +62,7 @@ $str =~ s/($path[scalar(@path) - 1])//;
+ # code updated 20190318
+ my $plugindir;
+ ($^O eq "MSWin32") ? ($plugindir = $str."plugins/")
+-                   : ($plugindir = File::Spec->catfile("plugins"));
++                   : ($plugindir = File::Spec->catfile("/usr/share/regripper/plugins"));
  #my $plugindir = $str."plugins/";
--my $plugindir = File::Spec->catfile("plugins");
-+my $plugindir = File::Spec->catfile("/usr/share/regripper/plugins");
+ #my $plugindir = File::Spec->catfile("plugins");
  #print "Plugins Dir = ".$plugindir."\n";
- # End code update
- my $VERSION = "2\.8_20130801";
-@@ -347,4 +348,5 @@
+@@ -401,4 +401,4 @@ sub getTime($$) {
  	};
  	$t = 0 if ($t < 0);
  	return $t;
 -}
 \ No newline at end of file
 +}
-+
