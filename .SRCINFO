@@ -1,0 +1,22 @@
+pkgbase = python-e3
+	pkgdesc = Framework to ease the development of portable automated build systems
+	pkgver = 20.8.20180302
+	pkgrel = 1
+	url = https://github.com/AdaCore/e3-core
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-colorama
+	depends = python-yaml
+	depends = python-dateutil
+	depends = python-requests
+	depends = python-requests-toolbelt
+	depends = python-tqdm
+	depends = python-stevedore>1.20.0
+	depends = python-netifaces
+	depends = psutils
+	source = https://files.pythonhosted.org/packages/source/e/e3-core/e3-core-20.8.20180302.tar.gz
+	sha512sums = c31f54bacb119205e36cba963876d1f08f693018834c4a773530c8b56c57ebd1a25d861564401a6891760520b128a5aecf22f30916241179fa5a0d2a4150046e
+
+pkgname = python-e3
+
