@@ -13,8 +13,8 @@ source=(
 	"0001-openssl-1.1-compatibility.patch"
 )
 sha256sums=(
-	""
-	""
+	"02aea6d05c5b810074913b954296ddffaa43497ed720ac0a671da4791ec4d018"
+	"021f14fc5f3b8dc058b604c6e3be6401124e4cc715df4c7f08a1175ef7e5183b"
 )
 
 prepare() {
