@@ -82,7 +82,6 @@ pkgbase = all-repository-fonts
 	depends = ttf-liberation
 	depends = ttf-linux-libertine
 	depends = ttf-linux-libertine-g
-	depends = ttf-mph-2b-damase
 	depends = ttf-opensans
 	depends = ttf-roboto
 	depends = ttf-sazanami
