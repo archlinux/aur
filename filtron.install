@@ -1,0 +1,3 @@
+post_install() {
+  echo "By default, Filtron listens on 127.0.0.1:4004, uses the rules at /etc/filtron/rules.json, and targets 127.0.0.1:8888. Change these settings at /usr/lib/systemd/system/filtron.service"
+}
