@@ -1,6 +1,6 @@
 pkgbase = matterhorn-bin
 	pkgdesc = A terminal-based chat client for MatterMost
-	pkgver = 50200.2.0
+	pkgver = 50200.3.0
 	pkgrel = 1
 	url = https://github.com/matterhorn-chat/matterhorn
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = matterhorn-bin
 	provides = matterhorn-bin
 	conflicts = matterhorn
 	conflicts = matterhorn-git
-	source = https://github.com/matterhorn-chat/matterhorn/releases/download/50200.2.0/matterhorn-50200.2.0-ubuntu-18.04-bionic-x86_64.tar.bz2
+	source = https://github.com/matterhorn-chat/matterhorn/releases/download/50200.3.0/matterhorn-50200.3.0-ubuntu-18.04-bionic-x86_64.tar.bz2
 	source = LICENSE::https://github.com/matterhorn-chat/matterhorn/raw/master/LICENSE
-	sha1sums = 3aa01fdf470deeec3e8ec6f9fa8aaa08122d7f84
+	sha1sums = 676d639853ea57f6cc43892a107684f7cbcd0ba8
 	sha1sums = 42e13363365a1fed1318f9e7fadd8d1760e7ba95
 
 pkgname = matterhorn-bin
