@@ -9,7 +9,8 @@ StartLimitIntervalSec=100s
 User=gitlab
 Group=gitlab
 WorkingDirectory=<DATADIR>
-Environment=RAILS_ENV=production PATH=/opt/ruby2.3/bin:/usr/bin
+# Prevent ExecJS from complaining that Node is not installed in production
+Environment=RAILS_ENV=production PATH=/opt/ruby2.5/bin:/usr/bin EXECJS_RUNTIME=Disabled
 SyslogIdentifier=gitlab-unicorn
 PIDFile=/run/gitlab/unicorn.pid
 RuntimeDirectory=gitlab
@@ -23,7 +24,7 @@ ProtectHome=true
 # instead you can safely enable these security features.
 #NoNewPrivileges=true
 #CapabilityBoundingSet=
-ExecStart=/usr/bin/bundle-2.3 exec unicorn_rails -c <DATADIR>/config/unicorn.rb -E production
+ExecStart=/usr/bin/bundle-2.5 exec unicorn_rails -c <DATADIR>/config/unicorn.rb -E production
 ExecStop=/usr/bin/kill -QUIT $MAINPID
 ExecReload=/usr/bin/kill -USR2 $MAINPID
 Restart=on-failure

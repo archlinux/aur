@@ -9,11 +9,12 @@ User=gitlab
 Group=gitlab
 SyslogIdentifier=gitlab-backup
 WorkingDirectory=<DATADIR>
-Environment=RAILS_ENV=production PATH=/opt/ruby2.3/bin:/usr/bin
+# Prevent ExecJS from complaining that Node is not installed in production
+Environment=RAILS_ENV=production PATH=/opt/ruby2.5/bin:/usr/bin EXECJS_RUNTIME=Disabled
 CapabilityBoundingSet=
 PrivateTmp=true
 PrivateDevices=true
 ProtectSystem=full
 ProtectHome=true
 NoNewPrivileges=true
-ExecStart=/usr/bin/bundle-2.3 exec rake gitlab:backup:create
+ExecStart=/usr/bin/bundle-2.5 exec rake gitlab:backup:create
