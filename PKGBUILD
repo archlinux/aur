@@ -3,8 +3,8 @@
 # Contributor: ZaZam <zazaamm ät gmail dt com>
 
 pkgname=yle-dl
-pkgver=20190203
-pkgrel=2
+pkgver=20190331
+pkgrel=1
 pkgdesc="Download video and audio from YLE Areena."
 arch=('any')
 url="http://aajanki.github.io/yle-dl/"
@@ -24,14 +24,8 @@ optdepends=('php: for downloading live TV and certain news broadcasts'
 	    'youtube-dl: an alternative downloader backend to AdobeHDS.php'
             'wget: for some rare streams')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/y/yle-dl/yle-dl-${pkgver}.tar.gz" 'python-attrs.patch')
-sha256sums=('81c3096162657d3d8e9e9a2b4d277261b8be4c8696a31505b1f9b6352cf9996f'
-            'f34434da4ff3303b51c52b729f9180630505f379c1bb6261887dcf86f75fb9a7')
-
-prepare() {
-  cd $pkgname-$pkgver
-  patch -Np1 -i "${srcdir}/python-attrs.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/y/yle-dl/yle-dl-${pkgver}.tar.gz")
+sha256sums=('2664416b44c33188bd41b7bef70ebcf1d12a74ecae4a16bfc60965340534bfdd')
 
 build() {
   cd $pkgname-$pkgver
