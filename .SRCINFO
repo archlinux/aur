@@ -1,13 +1,13 @@
 pkgbase = python-pipx
 	pkgdesc = Execute binaries from Python packages in isolated environments
-	pkgver = 0.12.3.1
+	pkgver = 0.13.0.0
 	pkgrel = 1
 	url = https://github.com/cs01/pipx/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	source = https://github.com/cs01/pipx/archive/0.12.3.1.tar.gz
-	sha512sums = 63c5fd053f6b837063577b4fe3cbe611c1fc633977ad7d727d1d6510d22e82b22e0813653c9641369f1351dba96a8406ef06b0e32e7fe2073985477e812f533a
+	source = https://github.com/cs01/pipx/archive/0.13.0.0.tar.gz
+	sha512sums = 022b5f9bffca10cc3fe0b3ba31d0635e69f73a3a8ed9602ec52a965f014b3362765a2e995311f18a9a2036150326ba90f29bf29fe54b441a68ed929e246b3b6c
 
 pkgname = python-pipx
 
