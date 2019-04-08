@@ -1,7 +1,7 @@
 pkgbase = v8
 	pkgdesc = Fast and modern Javascript engine used in Google Chrome.
 	pkgver = 7.4.288.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://v8.dev
 	arch = i686
 	arch = x86_64

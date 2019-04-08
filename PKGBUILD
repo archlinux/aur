@@ -7,7 +7,7 @@
 
 pkgname=v8
 pkgver=7.4.288.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
 url="https://v8.dev"
@@ -164,16 +164,16 @@ package() {
   then
     install -Dm755 $OUTFLD/libicui18n.so ${pkgdir}/usr/lib/v8/libicui18n.so
     install -Dm755 $OUTFLD/libicuuc.so ${pkgdir}/usr/lib/v8/libicuuc.so
+    install -Dm755 $OUTFLD/icudtl.dat ${pkgdir}/usr/lib/v8/icudtl.dat
   fi
   
   install -Dm755 $OUTFLD/libv8_for_testing.so ${pkgdir}/usr/lib/libv8_for_testing.so
   install -Dm755 $OUTFLD/libv8_libbase.so ${pkgdir}/usr/lib/libv8_libbase.so
   install -Dm755 $OUTFLD/libv8_libplatform.so ${pkgdir}/usr/lib/libv8_libplatform.so
-  install -Dm755 $OUTFLD/libv8.so ${pkgdir}/usr/lib/libv8.so
+  install -Dm755 $OUTFLD/libv8.so ${pkgdir}/usr/lib/v8/libv8.so
 
   install -Dm755 $OUTFLD/natives_blob.bin ${pkgdir}/usr/lib/v8/natives_blob.bin
   install -Dm755 $OUTFLD/snapshot_blob.bin ${pkgdir}/usr/lib/v8/snapshot_blob.bin
-  install -Dm755 $OUTFLD/icudtl.dat ${pkgdir}/usr/lib/v8/icudtl.dat
 
   install -Dm755 ${srcdir}/d8 ${pkgdir}/usr/bin/d8
 
