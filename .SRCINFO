@@ -1,0 +1,13 @@
+pkgbase = python-esprima
+	pkgdesc = Python port of esprima. ECMAScript parsing infrastructure for multipurpose analysis
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://github.com/Kronuz/esprima-python
+	arch = any
+	license = BSD
+	depends = python
+	source = https://github.com/Kronuz/esprima-python/archive/v4.0.1.tar.gz
+	md5sums = 40b066e480bbe52168a441b99814dd23
+
+pkgname = python-esprima
+
