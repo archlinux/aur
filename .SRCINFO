@@ -1,0 +1,15 @@
+pkgbase = blkar
+	pkgdesc = Archive with forward error correction and sector level recoverability
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/darrenldl/blockyarchive
+	arch = x86_64
+	license = MIT
+	checkdepends = cargo
+	makedepends = cargo
+	depends = gcc-libs
+	source = https://github.com/darrenldl/blockyarchive/archive/v4.0.0.tar.gz
+	sha256sums = 4a63ea09aad24cdf5983fd65c31c1b400b6dc6df0f171d6e6b8b2df645e7d4e7
+
+pkgname = blkar
+
