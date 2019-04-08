@@ -4,8 +4,8 @@
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}"
-pkgver=1.6.3
-_pkgver="${pkgver}-linux1"
+pkgver=1.6.5
+_pkgver="${pkgver}-linux6"
 gitname="release-${_pkgver}"
 pkgrel=1
 pkgdesc="GUI for managing Git and GitHub."
