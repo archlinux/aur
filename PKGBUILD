@@ -2,8 +2,8 @@
 
 pybase=(pypylon)
 pkgname=(python-pypylon)
-pkgver=1.3.1
-pkgrel=3
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="The official python wrapper for the Basler pylon Camera Software Suite."
 arch=('any')
 license=('Basler AG')
