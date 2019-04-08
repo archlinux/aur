@@ -5,7 +5,7 @@
 
 pkgname=coturn
 pkgver=4.5.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source implementation of TURN and STUN server'
 arch=(i686 x86_64 armv7h)
 url=https://github.com/coturn/coturn
@@ -16,10 +16,12 @@ install=turnserver.install
 backup=(etc/turnserver.conf)
 source=($url/archive/$pkgver.tar.gz
         turnserver.service
+        turnserver.sysusers.d
         turnserver.tmpfiles.d)
 sha512sums=('a5e1aecdab5a7060ffbc73cc8dd294cafa701f2e0d2a827e40901cb6001af5a2c5ecbafdf14662410713818aad0ad259133f0dc9b34730bf7911863e1e255f70'
             '67d623820c69de86c5831e3daa0172b4ca77278ed138dd55e6775590b89f5293f380adc338a330e26d2eaf0e8dbbc20c0bbf469aca272bae99973386c72aef30'
-            '16810f12ebf75e744f6eaf12ebbb727823de2cc6ffb77fefbbae2021a1699a4ff6627c6171005d84468f391f1722cd4bd092c01431516d065fb4a557cdc1d50a')
+            '69a8aafaef369ff76043ff9e3b8deef0621ac8db647fa5c044bade30fe6f63b8cc79d2ecedacb83f31e7005cea8ee49dc37b55c2f21eed11c5d1a2b7ca5e68a5'
+            'd668df15a81a2bb0bb38ebbf367b7ed3db66a17ebadd5fe5bea9b343fbd992d9ada2d146d945f78fc4b2bf103aaa2407a30f270d01919be540b427221de15741')
 
 build() {
   cd coturn-$pkgver
@@ -38,6 +40,7 @@ check() {
 
 package() {
   install -Dm 644 turnserver.service "$pkgdir"/usr/lib/systemd/system/turnserver.service
+  install -Dm 644 turnserver.sysusers.d "$pkgdir"/usr/lib/sysusers.d/turnserver.conf
   install -Dm 644 turnserver.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/turnserver.conf
 
   cd coturn-$pkgver

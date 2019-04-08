@@ -1,14 +1,3 @@
 post_install() {
-  getent passwd turnserver >/dev/null || useradd -rd / -s /sbin/nologin turnserver
-  systemd-tmpfiles --create turnserver.conf
-  post_upgrade
   echo 'Settings are at /etc/turnserver.conf'
-}
-
-post_upgrade() {
-  chown turnserver:turnserver /var/log/turnserver
-}
-
-pre_remove() {
-  userdel turnserver
 }
