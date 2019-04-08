@@ -27,7 +27,7 @@ pkgbase = asbru-cm-git
 	optdepends = freerdp: RDP connections
 	optdepends = openssh: SSH connections
 	optdepends = mosh: Mobile shell
-	optdepends = vnc: For instance Tigervnc for VNC connections
+	optdepends = tigervnc: for VNC connections
 	source = git+https://github.com/asbru-cm/asbru-cm.git
 	sha256sums = SKIP
 
