@@ -1,6 +1,6 @@
 # Maintainer: Squalou <squalou.jenkins [at] gmail [dot] com>
 pkgname=google-chat-linux-git
-pkgver=r26.2917995
+pkgver=r33.1774d68
 pkgrel=1
 pkgdesc="Unofficial electron-based desktop client for Google Chat, electron included"
 arch=('x86_64' 'i686')
