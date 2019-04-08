@@ -1,7 +1,7 @@
 pkgbase = gzdoom
 	pkgdesc = Advanced Doom source port with OpenGL support
-	pkgver = 3.7.2
-	pkgrel = 2
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,6 @@ pkgbase = gzdoom
 	makedepends = gtk3
 	depends = hicolor-icon-theme
 	depends = libgl
-	depends = libgme
 	depends = libjpeg
 	depends = sdl2
 	optdepends = blasphemer-wad: Blasphemer (free Heretic) game data
@@ -42,12 +41,14 @@ pkgbase = gzdoom
 	optdepends = urbanbrawl-wad: Urban Brawl: Action Doom 2 game data
 	optdepends = xorg-xmessage: crash dialog (other)
 	replaces = gzdoom1
-	source = gzdoom::git://github.com/coelckers/gzdoom.git#tag=g3.7.2
+	source = gzdoom::git://github.com/coelckers/gzdoom.git#tag=g4.0.0
 	source = gzdoom.desktop
 	source = 0001-Fix-soundfont-search-path.patch
 	sha256sums = SKIP
 	sha256sums = 59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d
 	sha256sums = 11323f98caadb086b35cce1697744eeba53c96a3f4f9a8c9184ed23e6fb1ea61
+	optdepends_x86_64 = vulkan-driver: Vulkan renderer
+	optdepends_x86_64 = vulkan-icd-loader: Vulkan renderer
 
 pkgname = gzdoom
 

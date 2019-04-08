@@ -3,15 +3,14 @@
 
 _name=gzdoom
 pkgname=${_name}
-pkgver=3.7.2
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
 license=('BSD' 'custom:dumb' 'GPL3' 'LGPL3')
 depends=('hicolor-icon-theme'
          'libgl'
-         'libgme'
          'libjpeg'
          'sdl2')
 makedepends=('cmake'
@@ -41,6 +40,8 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'square1-wad: The Adventures of Square, Episode 1 game data'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
             'xorg-xmessage: crash dialog (other)')
+optdepends_x86_64=('vulkan-driver: Vulkan renderer'
+                   'vulkan-icd-loader: Vulkan renderer')
 replaces=("${_name}1")
 source=("${_name}::git://github.com/coelckers/${_name}.git#tag=g${pkgver}"
         "${_name}.desktop"
@@ -58,7 +59,8 @@ prepare() {
 build() {
     cd $_name
 
-    local _cflags="-DSHARE_DIR=\\\"/usr/share/$_name\\\" \
+    local _cflags="-ffile-prefix-map=\"$PWD\"=. \
+                   -DSHARE_DIR=\\\"/usr/share/$_name\\\" \
                    -DFLUIDSYNTHLIB2=\\\"libfluidsynth.so.2\\\""
     cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_C_FLAGS="${CFLAGS} ${_cflags}" \
