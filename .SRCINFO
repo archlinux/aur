@@ -1,6 +1,6 @@
 pkgbase = trace-cmd-git
 	pkgdesc = user-space front-end command-line tool for Ftrace, inclduing the GUI interface application kernelshark as well as trace-graph and trace-view.
-	pkgver = 2.7.r358.g5276e83
+	pkgver = 2.7.r368.gff13b78
 	pkgrel = 1
 	url = http://git.kernel.org/?p=linux/kernel/git/rostedt/trace-cmd.git
 	arch = x86_64
@@ -25,7 +25,9 @@ pkgbase = trace-cmd-git
 	provides = trace-cmd
 	conflicts = trace-cmd
 	source = git://git.kernel.org/pub/scm/linux/kernel/git/rostedt/trace-cmd.git
-	sha1sums = SKIP
+	source = 001_ksdir_ksmainwindow.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = trace-cmd-git
 

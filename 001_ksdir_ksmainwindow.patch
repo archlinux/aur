@@ -1,0 +1,92 @@
+--- a/kernel-shark/src/KsMainWindow.cpp	2019-04-01 18:33:38.995391098 -0500
++++ b/kernel-shark/src/KsMainWindow.cpp	2019-04-01 19:01:00.669394063 -0500
+@@ -23,6 +23,7 @@
+ #include <QMenuBar>
+ #include <QLabel>
+ #include <QLocalSocket>
++#include <QStandardPaths>
+ 
+ // KernelShark
+ #include "libkshark.h"
+@@ -133,7 +134,11 @@
+ KsMainWindow::~KsMainWindow()
+ {
+ 	kshark_context *kshark_ctx(nullptr);
+-	QString file = KS_CONF_DIR;
++
++	QString file = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
++	QDir dir(file);
++	if (!dir.exists())
++		dir.mkpath(dir.absolutePath());
+ 
+ 	file += "/lastsession.json";
+ 
+@@ -361,7 +366,7 @@
+ 	QString fileName =
+ 		QFileDialog::getOpenFileName(this,
+ 					     "Open File",
+-					     KS_DIR,
++					     QDir::homePath(),
+ 					     "trace-cmd files (*.dat);;All files (*)");
+ 
+ 	if (!fileName.isEmpty())
+@@ -370,7 +375,11 @@
+ 
+ void KsMainWindow::_restoreSession()
+ {
+-	QString file = KS_CONF_DIR;
++	QString file = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
++	QDir dir(file);
++	if (!dir.exists())
++		dir.mkpath(dir.absolutePath());
++
+ 	file += "/lastsession.json";
+ 
+ 	loadSession(file);
+@@ -382,7 +391,7 @@
+ 	QString fileName =
+ 		QFileDialog::getOpenFileName(this,
+ 					     "Import Session",
+-					     KS_DIR,
++					     QDir::homePath(),
+ 					     "Kernel Shark Config files (*.json);;");
+ 
+ 	if (fileName.isEmpty())
+@@ -413,7 +422,7 @@
+ 	QString fileName =
+ 		QFileDialog::getSaveFileName(this,
+ 					     "Export Filter",
+-					     KS_DIR,
++					     QDir::homePath(),
+ 					     "Kernel Shark Config files (*.json);;");
+ 
+ 	if (fileName.isEmpty())
+@@ -462,7 +471,8 @@
+ 	if (!kshark_instance(&kshark_ctx))
+ 		return;
+ 
+-	fileName = QFileDialog::getOpenFileName(this, "Import Filter", KS_DIR,
++	fileName = QFileDialog::getOpenFileName(this, "Import Filter",
++						QDir::homePath(),
+ 						"Kernel Shark Config files (*.json);;");
+ 
+ 	if (fileName.isEmpty())
+@@ -490,7 +500,8 @@
+ 	if (!kshark_instance(&kshark_ctx))
+ 		return;
+ 
+-	fileName = QFileDialog::getSaveFileName(this, "Export Filter", KS_DIR,
++	fileName = QFileDialog::getSaveFileName(this, "Export Filter",
++						QDir::homePath(),
+ 						"Kernel Shark Config files (*.json);;");
+ 
+ 	if (fileName.isEmpty())
+@@ -811,7 +822,7 @@
+ 
+ 	fileNames =
+ 		QFileDialog::getOpenFileNames(this, "Add KernelShark plugins",
+-					      KS_DIR,
++					      QDir::homePath(),
+ 					      "KernelShark Plugins (*.so);;");
+ 
+ 	if (fileNames.isEmpty())

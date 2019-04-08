@@ -3,7 +3,7 @@
 # Maintainer: Netanel Shine <netanel at archlinux.org.il>
 
 pkgname=trace-cmd-git
-pkgver=2.7.r358.g5276e83
+pkgver=2.7.r368.gff13b78
 pkgrel=1
 pkgdesc="user-space front-end command-line tool for Ftrace, inclduing the GUI interface application kernelshark as well as trace-graph and trace-view."
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,11 @@ optdepends=('python: for the python plugins'
             'glu: for the kernelshark GUI')
 provides=("trace-cmd")
 conflicts=("trace-cmd")
-source=("git://git.kernel.org/pub/scm/linux/kernel/git/rostedt/trace-cmd.git")
-sha1sums=("SKIP")
+source=(
+  "git://git.kernel.org/pub/scm/linux/kernel/git/rostedt/trace-cmd.git"
+  "001_ksdir_ksmainwindow.patch"
+)
+sha256sums=("SKIP" "SKIP")
 
 pkgver() {
   cd "$srcdir/trace-cmd"
@@ -34,40 +37,35 @@ prepare() {
 
   ## fixes for getting kernelshark installed correctly to /usr
 
-  # pass down $prefix to cmake
-  sed -i.cip 's|bin/cmake|bin/cmake -DCMAKE_INSTALL_PREFIX=\$(prefix) -DCMAKE_BUILD_TYPE=Release|g' \
+  # this implements QStandardPaths in KsMainWindow.cpp
+  patch -p1 < "${srcdir}/001_ksdir_ksmainwindow.patch"
+
+  # pass down Release as build type
+  sed -i.cip 's|\(-D_INSTALL_PREFIX=\)|-DCMAKE_BUILD_TYPE=Release \1|g' \
     Makefile
+
+  # all work below is within kernel-shark/
   cd kernel-shark
 
-  # replace hard-coded /usr/local with /usr all over the place
-  for filep in org.freedesktop.kshark-record.policy build/ks.desktop.cmake \
-    src/CMakeLists.txt src/plugins/CMakeLists.txt ./CMakeLists.txt; do
-      sed -i.ul 's|usr/local|usr|g' "${filep}"
-  done
-
   # KS_DIR is the random local build directory, relocate it to /usr
-  sed -i.ks 's|@KS_DIR@|/usr/share/kernelshark|g' build/ks.desktop.cmake
-  sed -i.ks 's|@KS_DIR@|/usr|g' build/deff.h.cmake
-  sed -i.tb 's|@TRACECMD_BIN_DIR@|/usr/bin|g' build/deff.h.cmake
+  sed -i.ks 's|@KS_DIR@|@_INSTALL_PREFIX@/share/kernelshark|g' \
+    build/ks.desktop.cmake
+  sed -i.ks 's|@KS_DIR@|@_INSTALL_PREFIX@|g' build/deff.h.cmake
+  sed -i.tb 's|@TRACECMD_BIN_DIR@|@_INSTALL_PREFIX@/bin|g' build/deff.h.cmake
 
-  # this ends up hard-coded to the build directory
+  # this ends up hard-coded to the build directory, with the above
+  # patches it's no longer useful so set it to a safe directory
   sed -i.ksc 's|KS_CONF_DIR "\${KS_DIR}|KS_CONF_DIR "/tmp|g' CMakeLists.txt
 
-  # the gcc/g++ debug flag is enabled even when _DEBUG=0
+  # the gcc/g++ debug flag is enabled even when _DEBUG=0 which causes
+  # the build directory to get coded into the libraries
   sed -i.dbg 's/-Wall -g/-Wall/g' CMakeLists.txt
 
-  # this source is hard-coded to KS_DIR/lib/plugin-*
+  # this source is hard-coded to KS_DIR/lib/plugin-* (bug?)
   sed -i.plg 's|lib/plugin|lib/kshark/plugin|g' src/KsUtils.cpp
 
-  # these try to use KS_DIR for open/close of files
-  for kfile in src/KsMainWindow.cpp src/KsCaptureDialog.cpp; do
-    sed -i.hm 's/KS_DIR/QDir::homePath()/g' "${kfile}"
-  done
-
-  # KS_CONF_DIR was set above to /tmp for the Makefiles, this is to use
-  # the user's home directory inside the code itself for saving and
-  # restoring their "lastsession.json" file
-  sed -i.ksd 's|KS_CONF_DIR;|QDir::homePath()+"/.ksconf";QDir dir(file);if (!dir.exists()) dir.mkpath(".");|g' src/KsMainWindow.cpp
+  # this tries to use KS_DIR for open/close of files
+  sed -i.hm 's/KS_DIR/QDir::homePath()/g' src/KsCaptureDialog.cpp
 }
 
 build() {
