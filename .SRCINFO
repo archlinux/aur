@@ -1,7 +1,7 @@
 pkgbase = overture
 	pkgdesc = A DNS upstream switcher written in Go in order to purify DNS records
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shawn1m/overture
 	install = overture.install
 	arch = i686
