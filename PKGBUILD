@@ -1,4 +1,5 @@
 # Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
+# Contributor: 
 
 gitname=monitor
 auxname=("pantheon-system-${gitname}")
@@ -12,9 +13,9 @@ arch=('i686' 'x86_64')
 url="https://github.com/stsdc/${gitname}"
 license=('GPL3')
 depends=('granite' 'gtk3' 'vala'
-         'bamf' 'glib2' 'glibc' 'libgee' 'libgtop' 'libwnck3')
+         'bamf' 'glib2' 'glibc' 'libgee' 'libgtop' 'libwnck3' 'wingpanel')
 optdepends=('lib32-glib2')
-makedepends=('cmake' 'git' 'vala')
+makedepends=('git' 'meson' 'ninja')
 provides=("${auxname}")
 conflicts=("${auxname}")
 source=("git+${url}.git")
