@@ -1,4 +1,5 @@
-# Maintainer: Eric Toombs <ee double you toombs at you waterloo dot see eh?>
+# Contributor: Eric Toombs <ee double you toombs at you waterloo dot see eh?>
+# Maintainer: Alfredo Beaumont <alfredo.beaumont@gmail.com>
 
 pkgname='stanza'
 pkgver='0.12.15'
