@@ -1,8 +1,8 @@
 # Maintainer: sgar <swhaat in github>
 
 pkgname=veyon
-pkgver=4.1.7
-pkgrel=2
+pkgver=4.1.8
+pkgrel=1
 pkgdesc="Open Source computer monitoring and classroom management"
 arch=('i686' 'x86_64')
 url="https://github.com/veyon"
@@ -27,10 +27,10 @@ source=("git+${url}/veyon.git#tag=v${pkgver}"
     "git+git://anongit.kde.org/kldap.git")
 
 md5sums=('SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP')
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 prepare() {
     mkdir -p build
