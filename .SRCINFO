@@ -1,6 +1,6 @@
 pkgbase = natron-plugins-git
 	pkgdesc = A collection of Natron plugins made by the community
-	pkgver = 2.1.7.r982.g3cd2a88
+	pkgver = 2.1.7.r1062.g72d4bb5
 	pkgrel = 1
 	url = https://github.com/NatronGitHub/natron-plugins
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = natron-plugins-git
 	depends = natron
 	provides = natron-plugins
 	conflicts = natron-plugins
-	source = natron-plugins::git://github.com/NatronGitHub/natron-plugins.git
+	source = natron-plugins::git://github.com/NatronGitHub/natron-plugins#commit=72d4bb5
 	sha256sums = SKIP
 
 pkgname = natron-plugins-git
