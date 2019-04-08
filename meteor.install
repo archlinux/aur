@@ -1,8 +1,5 @@
 post_install() {
-  echo "==> This package will not upgrade every user's Meteor installation when \`meteor\`"
-  echo "==> is run, it will only create \"~/.meteor/\" once per user, and copy the"
-  echo "==> contents of \"/usr/share/meteor/\" to it. To upgrade Meteor, manually delete"
-  echo "==> your user's \"~/.meteor/\" directory, then run \`meteor\` once again."
+  echo "Meteor is not meant to be upgraded via the binary download, since a Meteor tree needs to be owned by a regular user. First run of \`meteor\` per user will copy the binary tree to ~/.meteor. Subsequent use will run Meteor from your tree. On Arch package version increment - to upgrade your tree, either delete it and run \`meteor\` to copy the new tree over, or manually sync the changes from /usr/share/meteor over to it (e.g. using \`rsync -rl --delete /usr/share/meteor/ ~/.meteor\`)."
 }
 
 post_upgrade() {

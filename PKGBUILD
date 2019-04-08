@@ -11,7 +11,7 @@
 # Contributor: Kamil Śliwak <cameel2 gmail>
 
 pkgname=meteor
-pkgver=1.7.0.4
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='Full-stack JavaScript platform for developing modern web and mobile applications'
 arch=(i686 x86_64)
@@ -20,15 +20,26 @@ license=(MIT)
 depends=(nodejs mongodb)
 options=(!strip)
 install=meteor.install
-source=(meteor.sh)
-source_i686=(meteor-bootstrap-os.linux.$pkgver.i686.tar.gz::https://meteorinstall-4168.kxcdn.com/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_32.tar.gz)
-source_x86_64=(meteor-bootstrap-os.linux.$pkgver.x86_64.tar.gz::https://meteorinstall-4168.kxcdn.com/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_64.tar.gz)
-sha512sums=('739ff7cb9eed1b919335851f0b1b62d21655b046cdbec83a1c8fd7aae83f8044dd39caeec855c8baafc2caf68c5ab986d7d96a98732adeaa90fdffa118a4b393')
-sha512sums_i686=('7f1e9551004919975090d895cbf1fbce7030199dbde3853d64d921a62fbfeb21b8a848ae774e5f55b9b47d6b25428d1cb9b015a1d230161b95e420cb013c45e3')
-sha512sums_x86_64=('589b09e03d96164192dc7f4517b301fa8eec490446f03611422f72e0cfd865d1213d2df105ee1aaff8133201dc21dd8c80ded3a5ad3d0965d8e68f9031d60b34')
+source_i686=(meteor-$pkgver-i686.tar.gz::https://meteorinstall-4168.kxcdn.com/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_32.tar.gz)
+source_x86_64=(meteor-$pkgver-x86_64.tar.gz::https://meteorinstall-4168.kxcdn.com/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_64.tar.gz)
+sha512sums_i686=('e7b7f814e94b247afcb7cabdaec6a3f830fc3a421e056a0ce2118871e027f3fc2325000bf303a20c79ead47160a96b111a7708d508f9e9a72ac8d8930092c42a')
+sha512sums_x86_64=('c92d1e529741a7b8c6dccb2db50096d05546e15d80294e2cc42ae7596d54d4813415a660c3a64c741f58dadd6387bc9aa7448fc6afee5e2c81e0dd4c31bb55e1')
 
 package() {
-  install -d "$pkgdir"/usr/share
+  install -d "$pkgdir"/usr/{share,bin}
+
+  # Copy base Meteor tree to universally-accessible location
   cp -a .meteor "$pkgdir"/usr/share/meteor
-  install -D meteor.sh "$pkgdir"/usr/bin/meteor
+
+  # Create our executable
+  cat > "$pkgdir"/usr/bin/meteor << EOF
+#!/bin/sh
+
+if [ ! -d "\$HOME"/.meteor ]; then
+  mkdir "\$HOME"/.meteor
+  cp -r /usr/share/meteor/* "\$HOME"/.meteor
+fi
+
+"\$HOME"/.meteor/meteor "\$@"
+EOF
 }
