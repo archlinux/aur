@@ -1,1 +1,1 @@
-Z /etc/searx.conf - searx searx
+z /etc/searx.conf - searx searx
