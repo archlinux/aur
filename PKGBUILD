@@ -1,26 +1,27 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=lsmashsource
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r875.14b040e
+pkgver=r935.3edd194
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
-url='http://forum.doom9.org/showthread.php?t=167435'
+arch=('x86_64')
+url='https://forum.doom9.org/showthread.php?t=167435'
 license=('LGPL')
 depends=('vapoursynth'
-         'glibc'
          'libavutil.so'
          'libavformat.so'
          'libavcodec.so'
          'libswscale.so'
          'liblsmash.so'
          )
-makedepends=('git')
+makedepends=('git'
+             'libavresample'
+             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/VFR-maniac/L-SMASH-Works.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -29,7 +30,9 @@ pkgver() {
 }
 
 prepare() {
-  rm -fr "${_plug}/VapourSynth/VapourSynth.h"
+  cd "${_plug}"
+
+  rm -fr VapourSynth/VapourSynth.h
 }
 
 build() {
@@ -38,6 +41,7 @@ build() {
     --prefix=/usr \
     --extra-cflags="${CFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth)" \
     --extra-ldflags="${LDFLAGS}"
+
   make
 }
 
