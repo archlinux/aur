@@ -1,7 +1,7 @@
 pkgbase = supysonic-git
 	pkgdesc = A Python implementation of the Subsonic server API.
-	pkgver = 0.3.488.g5367f06
-	pkgrel = 1
+	pkgver = 0.3.495.g92fed40
+	pkgrel = 2
 	url = https://github.com/spl0k/supysonic
 	arch = any
 	license = AGPL
@@ -15,8 +15,16 @@ pkgbase = supysonic-git
 	depends = python-mutagen
 	depends = python-zipstream
 	optdepends = python-watchdog: Watch for library changes using supysonic-watcher
+	optdepends = ffmpeg: transcoder support
+	backup = etc/supysonic
 	source = supysonic::git+https://github.com/spl0k/supysonic
+	source = supysonic.ini
+	source = supysonic.sysusers
+	source = supysonic.tmpfiles
 	sha256sums = SKIP
+	sha256sums = 8f52e93cd4f13e2e555b5ac4e456020b4395bf311b0226d9d50b13444721872d
+	sha256sums = b4b723d30fb45f86a15ec218910cd3935aac4546d5e2f9a1e1bc79cccfb98480
+	sha256sums = 430eba10de5381a425074b89d0a46fb770be5112b26e81ac6a2b55765675cb13
 
 pkgname = supysonic-git
 
