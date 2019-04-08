@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Marcel Röthke <marcel@roethke.info>
 # Contributor: Pierre Neidhardt <ambrevar@gmail.com>
 # Contributor: csllbr; Popsch <popsch@gmx.net>
 
