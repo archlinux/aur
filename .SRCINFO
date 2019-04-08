@@ -1,0 +1,18 @@
+pkgbase = olivia
+	pkgdesc = Deadass music player for Linux
+	pkgver = r182.517136a
+	pkgrel = 1
+	url = https://github.com/keshavbhatt/olivia
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	depends = qt5-tools
+	depends = mpv
+	depends = python
+	depends = wget
+	source = git+https://github.com/keshavbhatt/olivia.git
+	sha256sums = SKIP
+
+pkgname = olivia
+
