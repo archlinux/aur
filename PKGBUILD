@@ -81,15 +81,15 @@ prepare() {
 	OSFONTDIR="$_userfontdir;$_osfontdir;" 
 	export OSFONTDIR
 	resettex () {
-		PATH=\$_OLD_PATH
-		export PATH
-		unset _OLD_PATH
-		
-		PS1=\$_OLD_PS1
-		export PS1
-		unset _OLD_PS1
-		
-		unset -f resettex
+	    PATH=\$_OLD_PATH
+	    export PATH
+	    unset _OLD_PATH
+	    
+	    PS1=\$_OLD_PS1
+	    export PS1
+	    unset _OLD_PS1
+	    
+	    unset -f resettex
 }
 _EOF_
 
