@@ -1,11 +1,12 @@
 pkgbase = perl-perlio-via-gzip
 	pkgdesc = Perl extension PerlIO::via::gzip
 	pkgver = 0.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/PerlIO::via::gzip
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	makedepends = perl-module-build
 	depends = perl
 	depends = zlib
 	options = !emptydirs
