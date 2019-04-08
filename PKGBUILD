@@ -2,8 +2,8 @@
 
 orig_pkg=php
 pkgname='php-32bits-fixes'
-pkgver=7.3.3
-pkgrel=1
+pkgver=7.3.4
+pkgrel=2
 arch=('x86_64' 'armv7h')
 license=('PHP')
 url='https://secure.php.net/'
@@ -17,7 +17,7 @@ pkgdesc='A general-purpose scripting language that is especially suited to web d
 source=("https://php.net/distributions/${orig_pkg}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
         'enchant-2.patch' 'freetype.patch')
-sha256sums=('6bb03e79a183d0cb059a6d117bbb2e0679cab667fb713a13c6a16f56bebab9b3'
+sha256sums=('6fe79fa1f8655f98ef6708cde8751299796d6c1e225081011f4104625b923b83'
             'SKIP'
             '62e5ceea3c90a3c6eab1166488f876e766efcfd7d4e973c44060a9e72d51a98a'
             'ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce'
