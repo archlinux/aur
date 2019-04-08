@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://unifi-sdn.ui.com/"
 license=('custom')
 makedepends=()
-depends=('')
+depends=()
 source=("https://dl.ubnt.com/unifi/${pkgver}/unifi_sysvinit_all.deb")
 sha256sums=('669b3332e822694e9e52264081c8fa5abcb3dddc3602d0b2f5c8c775f8e6cffd')
 
