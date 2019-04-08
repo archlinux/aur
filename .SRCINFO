@@ -1,13 +1,14 @@
 pkgbase = olive-git
 	pkgdesc = Free non-linear video editor
 	pkgver = continuous.r0.g6264123b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.olivevideoeditor.org/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
+	makedepends = qt5-tools
 	depends = ffmpeg
 	depends = qt5-multimedia
 	depends = qt5-svg
