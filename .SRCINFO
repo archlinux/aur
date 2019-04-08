@@ -1,6 +1,6 @@
 pkgbase = python-keepkey
 	pkgdesc = Python library for communicating with KeepKey Hardware Wallet
-	pkgver = 4.0.2
+	pkgver = 6.0.3
 	pkgrel = 1
 	url = https://github.com/keepkey/python-keepkey
 	arch = any
@@ -10,12 +10,13 @@ pkgbase = python-keepkey
 	depends = python-ecdsa
 	depends = python-hidapi
 	depends = python-mnemonic
+	depends = python-libusb1
 	depends = python-protobuf
 	provides = keepkeyctl
 	provides = python-keepkey
 	conflicts = keepkeyctl
-	source = https://pypi.python.org/packages/bd/7c/8edc3d017b4b02f11533083d9987d11707fcf82ab6606c9b9aedd2e95b4c/keepkey-4.0.2.tar.gz
-	md5sums = d872868e3c90ff33f969b1cb140e76ab
+	source = https://files.pythonhosted.org/packages/d9/e6/d11f9e0214e29869d341df2b352d0c3b417d77e037e4fed25359e492182f/keepkey-6.0.3.tar.gz
+	sha256sums = 6d07e4bbaf3b559068775da95ec636d244556a698c6869c16e6913334c056d7c
 
 pkgname = python-keepkey
 
