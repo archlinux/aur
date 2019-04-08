@@ -3,16 +3,17 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 BUILD_SELINUX=false
+BUILD_RUST=false
 
 pkgname=389-ds-base
-pkgver=1.4.1.1
+pkgver=1.4.1.2
 pkgrel=1
 pkgdesc="389 Directory Server (base)"
 arch=(i686 x86_64)
 url="http://port389.org/"
 license=(GPL)
 depends=(cyrus-sasl cyrus-sasl-gssapi icu lm_sensors net-snmp libsystemd
-         openldap perl-netaddr-ip perl-socket libevent nss pcre pam python)
+         openldap libevent nss pcre pam python)
 makedepends=(doxygen rsync)
 conflicts=(svrcore)
 provides=(svrcore)
@@ -22,6 +23,10 @@ optdepends=('python-lib389: Python managemnt scripts'
 if [[ "${BUILD_SELINUX}" = "true" ]]; then
   depends+=(selinux-usr-policycoreutils)
 fi
+if [[ "${BUILD_RUST}" = "true" ]]; then
+  depends+=(rust)
+fi
+
 backup=(etc/default/dirsrv
         etc/default/dirsrv.systemd
         etc/dirsrv/config/certmap.conf
@@ -31,7 +36,7 @@ backup=(etc/default/dirsrv
 options=(!libtool)
 source=("https://releases.pagure.org/389-ds-base/${pkgname}-${pkgver}.tar.bz2"
 				'nss.patch')
-sha512sums=('ba32f0923cb9e45f86cc17086ed4d362f274bb7ca49a43e647eb04e78128c3610c881db7426e256ccb082ac0a5dc598436b2437d068212182c0823e2fb3859dc'
+sha512sums=('061dc2c814b091e779ecd9f97b74dcc2445ca416b781b3a82d197a25a12fe2f4b4da1ddf647f434d3cf13981c187b9c96c612f5c53ea5cebe8f7bfa38116ee8b'
             'b34c7125176481791d71cf98a78cc6dbaa658b8398ad7bdd48944612b6078307aee2acbb065011098d21672fd504191f207711e36399edc35b49af9aede64337')
 
 prepare() {
@@ -45,6 +50,11 @@ build() {
   local selinux=""
   if [[ "${BUILD_SELINUX}" = "true" ]]; then
     selinux="--with-selinux"
+  fi
+
+  local rust=""
+  if [[ "${BUILD_RUST}" = "true" ]]; then
+    rust="--with-rust"
   fi
 
   if [[ "${CARCH}" = "x86_64" ]]; then
@@ -65,6 +75,7 @@ build() {
     --with-systemdsystemconfdir=/etc/systemd/system \
     --enable-autobind \
     --with-openldap \
+    ${rust} \
     ${selinux} \
     #--disable-static
 
