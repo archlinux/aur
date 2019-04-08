@@ -4,7 +4,7 @@
 # Maintainer: Alfredo Beaumont <alfredo.beaumont@gmail.com>
 
 pkgname=opendylan
-pkgver=2014.1
+pkgver=2019.1
 pkgrel=1
 pkgdesc="Dylan is an advanced, object-oriented, dynamic language which supports rapid program development."
 arch=(i686 x86_64)
@@ -16,11 +16,11 @@ options=(!strip staticlibs)
 if [[ $CARCH == "i686" ]]; then
     depends=('glibc')
     source=(http://opendylan.org/downloads/$pkgname/$pkgver/$pkgname-$pkgver-x86-linux.tar.bz2)
-    md5sums=('8ed5e060f052710e99cef466a02c7a80')
+    md5sums=('c391b1f1e0f2682b9c8d1f85852532f1')
 elif [[ $CARCH == "x86_64" ]]; then
     depends=('glibc' 'gc')
     source=(http://opendylan.org/downloads/$pkgname/$pkgver/$pkgname-$pkgver-x86_64-linux.tar.bz2)
-    md5sums=('8e8388f0a6e5d2b0411d7561977d733e')
+    md5sums=('458a921bd1e1097d3beb02908e3e49a2')
 fi
 
 package() {

@@ -1,14 +1,18 @@
 pkgbase = opendylan
 	pkgdesc = Dylan is an advanced, object-oriented, dynamic language which supports rapid program development.
-	pkgver = 2014.1
+	pkgver = 2019.1
 	pkgrel = 1
 	url = http://www.opendylan.org
 	install = opendylan.install
 	arch = i686
 	arch = x86_64
 	license = custom
+	depends = glibc
+	depends = gc
 	options = !strip
 	options = staticlibs
+	source = http://opendylan.org/downloads/opendylan/2019.1/opendylan-2019.1-x86_64-linux.tar.bz2
+	md5sums = 458a921bd1e1097d3beb02908e3e49a2
 
 pkgname = opendylan
 
