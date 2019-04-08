@@ -24,5 +24,7 @@ build() {
 
 package() {
   cd "$pkgname"
-  make install DESTDIR="$pkgdir"
+  # make install DESTDIR="$pkgdir"
+  mkdir -p "$pkgdir"/usr/bin/
+  install -m755 "$pkgname" "$pkgdir"/usr/bin/"$pkgname"
 }
