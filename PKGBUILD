@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Neef <aur AT gehaxelt DOT IN>
 pkgbase=theharvester-git
 pkgname=theharvester-git
-pkgver=3.0.6.r264.g21939b0
+pkgver=3.0.6.r421.g9f7811d
 pkgrel=1
 pkgdesc="A tool for gathering e-mail accounts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers)."
 arch=('any')
@@ -39,12 +39,11 @@ __EOF__
 }
 
 package() {
+	reponame=theHarvester
 	mkdir -p "$pkgdir/opt/$pkgname/"
 	mkdir -p "$pkgdir/usr/bin"
 	
-	cp -r "$srcdir/$pkgname/discovery" "$pkgdir/opt/$pkgname/"
-	cp -r "$srcdir/$pkgname/lib" "$pkgdir/opt/$pkgname/"
-	cp -r "$srcdir/$pkgname/parsers" "$pkgdir/opt/$pkgname/"
+	cp -r "$srcdir/$pkgname/$reponame" "$pkgdir/opt/$pkgname"
 	cp -r "$srcdir/$pkgname/tests" "$pkgdir/opt/$pkgname/"
 	cp -r "$srcdir/$pkgname/wordlists" "$pkgdir/opt/$pkgname/"
 	install "$srcdir/$pkgname/api-keys.yaml" "$pkgdir/opt/$pkgname/"
