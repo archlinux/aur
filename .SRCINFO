@@ -1,0 +1,23 @@
+pkgbase = frontieres-git
+	pkgdesc = An interactive granular sampler
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/linuxmao-org/Frontieres
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-tools
+	depends = glu
+	depends = liblo
+	depends = libsoxr
+	depends = alsa-lib
+	depends = libglvnd
+	depends = libpulse
+	provides = frontieres
+	conflicts = frontieres
+	source = git+https://github.com/linuxmao-org/Frontieres.git
+	md5sums = SKIP
+
+pkgname = frontieres-git
+
