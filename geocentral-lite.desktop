@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=GeoCentral Lite
+Comment=Simple desktop application for quick geocaches logging
+Exec=geocentral-lite
+Icon=geocentral-lite
+Terminal=false
+Type=Application
+Categories=Utility;
