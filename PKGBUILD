@@ -2,7 +2,7 @@
 
 pkgname=wine-x64
 pkgver=3.21
-pkgrel=1
+pkgrel=2
 
 # replacing rc with -rc
 _pkgbasever=${pkgver/rc/-rc}
@@ -87,7 +87,6 @@ optdepends=(
   dosbox
 )
 makedepends=(${makedepends[@]} ${depends[@]})
-install=${pkgname}.install
 
 prepare() {
   # Allow ccache to work

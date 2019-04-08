@@ -1,9 +1,8 @@
 pkgbase = wine-x64
 	pkgdesc = A compatibility layer for running Windows programs
 	pkgver = 3.21
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.winehq.com
-	install = wine-x64.install
 	arch = x86_64
 	license = LGPL
 	makedepends = autoconf
