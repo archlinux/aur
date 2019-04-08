@@ -23,8 +23,6 @@ build() {
 }
 
 package() {
-  # make install
   cd "$pkgname"
-  mkdir -p "$pkgdir"/usr/bin/
-  install -m755 "$pkgname" "$pkgdir"/usr/bin/"$pkgname"
+  make install
 }
