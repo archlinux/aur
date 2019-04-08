@@ -42,7 +42,7 @@ _origmodname='8250_moxa'
 
 pkgname='moxa-mxser-mxupcie'
 pkgver='1.16'; _build='14030317'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='kernel module driver for Moxa Smartio Industio MUE ISA PCIe UPCI PCI Express CP multi port serial RS-232 422 485'
 arch=('i686' 'x86_64')
 url='https://www.moxa.com/product/PCIe_UPCI_PCI.htm'
@@ -57,10 +57,12 @@ source=(
   "https://www.moxa.com/drivers/MSB/SmartioIndustio/driv_linux_smart_v${pkgver}_build_${_build}.tgz"
   '0000-mxser-utilities-warnings.patch'
   '0001-mxser-kernel-4.12-IRQF_DISABLED.patch'
+  '0003-kernel-5.0.0-access_ok.patch'
 )
 sha256sums=('445f452eb7f56b70ef1b9795421556fb28284a90cde8746e5895316d5c67899f'
             'a22021474be03194faba5e30b0bea15128a83e1eae05d602865a4cdc38309272'
-            '7357da2ada66681705b2c6806fa3fe910ddd198e531d851bd0a97b548de4bbb3')
+            '7357da2ada66681705b2c6806fa3fe910ddd198e531d851bd0a97b548de4bbb3'
+            'ba1a55fa48f93f3a309bec5783d7deb5f728798ae39f28301d19384b5444113e')
 
 # Moxa https doesn't work with curl
 for _dlagentk in "${!DLAGENTS[@]}"; do
@@ -98,6 +100,10 @@ prepare() {
 
   # diff -pNaru5 'src.old/mxser' 'src/mxser' > '0000-mxser-utilities-warnings.patch'
   patch -Nup2 -i '../0000-mxser-utilities-warnings.patch'
+
+  #cp -pr driver{,.orig}; false
+  #diff -pNaru5 driver{.orig,} > '0003-kernel-5.0.0-access_ok.patch'
+  patch -Nbup0 -i "${srcdir}/0003-kernel-5.0.0-access_ok.patch"
 
   # Make package compatible
   #cp -p driver/Makefile{,.Arch}

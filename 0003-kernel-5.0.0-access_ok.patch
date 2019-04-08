@@ -1,0 +1,38 @@
+diff -pNaru5 driver.orig/mxpcie.h driver/mxpcie.h
+--- driver.orig/mxpcie.h	2019-04-07 20:25:51.730935029 -0400
++++ driver/mxpcie.h	2019-04-07 20:24:43.346725700 -0400
+@@ -334,11 +334,15 @@
+ #else
+ #define MX_TTY_DRV(x)	tty->driver.x
+ #endif
+ 
+ #if (LINUX_VERSION_CODE >= VERSION_CODE(2,6,0))
++#if (LINUX_VERSION_CODE >= VERSION_CODE(5,0,0))
++#define MX_ACCESS_CHK(type, addr, size)	access_ok(addr, size)	
++#else
+ #define MX_ACCESS_CHK(type, addr, size)	access_ok(type, addr, size)	
++#endif
+ #else
+ #define MX_ACCESS_CHK(type, addr, size)	verify_area(type, addr, size)	
+ #endif
+ 
+ #if (LINUX_VERSION_CODE >= VERSION_CODE(2,6,0))
+diff -pNaru5 driver.orig/mxser.h driver/mxser.h
+--- driver.orig/mxser.h	2019-04-07 20:25:51.730935029 -0400
++++ driver/mxser.h	2019-04-07 20:25:04.970332643 -0400
+@@ -487,11 +487,15 @@
+ #else
+ #define MX_CGRP()	current->pgrp	
+ #endif
+ 
+ #if (LINUX_VERSION_CODE >= VERSION_CODE(2,6,0))
++#if (LINUX_VERSION_CODE >= VERSION_CODE(5,0,0))
++#define MX_ACCESS_CHK(type, addr, size)	access_ok(addr, size)	
++#else
+ #define MX_ACCESS_CHK(type, addr, size)	access_ok(type, addr, size)	
++#endif
+ #else
+ #define MX_ACCESS_CHK(type, addr, size)	verify_area(type, addr, size)	
+ #endif
+ 
+ #if (LINUX_VERSION_CODE >= VERSION_CODE(2,6,0))
