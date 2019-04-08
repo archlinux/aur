@@ -13,7 +13,7 @@ url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
 depends=('gtk3' 'vala' 'granite' 'glib2' 'json-glib' 'libgee' 'libsoup')
 optdepends=()
-makedepends=('cmake' 'git' 'vala')
+makedepends=('git' 'meson' 'ninja')
 provides=("${_auxname}")
 conflicts=("${_auxname}")
 source=("git+${url}.git")
@@ -27,21 +27,14 @@ pkgver() {
     )
 }
 
-prepare() {
-  cd "${_gitname}"
-  install -d build
-}
-
 build() {
-  cd "${_gitname}/build"
-  cmake .. \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  make
+    cd "${_gitname}/"
+    meson . _build --prefix=/usr
+    ninja -C _build
 }
 
 package() {
-  cd "${_gitname}/build"
-  make DESTDIR="${pkgdir}" install
+    cd "${_gitname}/"
+    DESTDIR="${pkgdir}" ninja -C _build install
 }
 
