@@ -1,5 +1,5 @@
 pkgbase = pantheon-system-monitor-git
-	pkgdesc = Manage processes and monitor system resources. Designed for elementary OS. Make a donate for coffee: https://paypal.me/stsdc/10
+	pkgdesc = Manage processes and monitor system resources. Designed for elementary OS.
 	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/stsdc/monitor

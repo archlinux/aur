@@ -7,8 +7,7 @@ pkgname=("${auxname}-git")
 pkgver=latest
 pkgrel=1
 pkgdesc="Manage processes and monitor system resources. 
-        Designed for elementary OS. 
-        Make a donate for coffee: https://paypal.me/stsdc/10"
+        Designed for elementary OS."
 arch=('i686' 'x86_64')
 url="https://github.com/stsdc/${gitname}"
 license=('GPL3')
