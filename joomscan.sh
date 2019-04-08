@@ -1,2 +1,2 @@
-#!/usr/bin/env sh
-cd /usr/share/joomscan && ./joomscan.pl $*
+#!/usr/bin/bash
+cd '/usr/share/joomscan' && ./joomscan.pl "$@"
