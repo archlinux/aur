@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=picapport
-pkgver=7.2.00
+pkgver=7.4.01
 pkgrel=1
 pkgdesc="An easy-to-use, free of charge, photo server for your home network"
 arch=('any')
@@ -25,5 +25,5 @@ EOF
   chmod 755 "$pkgdir/usr/bin/$pkgname-headless"
 }
 
-sha1sums=('438a53a0067554611da2915e6930e4dc5cdb8528')
-sha256sums=('2d5e5011bddc7e5195a2a69a2257aa3397ecc2071d39517e279a288626d49cd1')
+sha1sums=('9b02a8986461e78f1bf82e4c9937b60c2423c438')
+sha256sums=('90549a223464058c0415f2fa5fe09657359021acf9b40b43a9b847d712d75a07')
