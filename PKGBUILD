@@ -22,7 +22,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 
-pkgver=7.3.3
+pkgver=7.3.4
 pkgrel=1
 arch=('x86_64')
 license=('PHP')
@@ -33,21 +33,22 @@ checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
         'enchant-2.patch' 'freetype.patch')
-sha512sums=('bad5fa35f5962fa23dbe01fe85f76ce80e431cf2f9719284c082bb1fa32af26407407a97d3bf999165a6158f83a9669e3dd641f6d70028ec644b74a414fb803d'
+sha256sums=('6fe79fa1f8655f98ef6708cde8751299796d6c1e225081011f4104625b923b83'
             'SKIP'
-            'a46a39c1b0376a94ce71d3eda92e61054d4060fb20706c5c6472183755683717e20d4ee5a887431df7d789b7b9bbf42ee63f8692d36c596bac9c3c1786ddf256'
-            'eccbe1a0c7b2757ab3c982c871cc591a66ad70f085aaa0d44f93cacacedc7b8fd21b8d0c66471327ff070db1bab1ab83a802f6fa190f33bdd74c134975e3910e'
-            'c9efb3f50770d6ddfa908b7f562355121f07ce528271e72ba188a4f1c788e264fc117c220053aaded42040825c03f3f17131a62a67d96cc91fd9da472e085deb'
-            '824e9a0d10063283357d49a81ab49bf834afd24f098482bdbaa9ab60bbad2b0dea6f5879259b73717d437626b02fb4f2d3ef68b7bcbb26bee274a7b61144720f'
-            'f397afe7b909d97995b5cf041dfebf165e2c49947bfd749c1d873fdcd13dfc6920ae631d32e6b5bfe84455a8b74d4abede205dcf65e4237f8effac6bb82fe021'
-            '06b49fb044fe8cdeef5109aa7bb6858906396e3f3643827cdb241264029579c71b0a7661d24b78b16573c54832505491c4b2a1fd77ae7c313cb082731c2efd9e'
-            '97ca469d5234f5cc71af38bb99a60130fdab5f849ad1f49f112101779c7659ca4d6700aef72e0294c85bdcb18e487fc0cdda855cc51084b9e8cacb02ec0fb1eb')
-validpgpkeys=('CBAF69F173A0FEA4B537F470D66C9593118BCCB6')
+            '54d9e3682c6b4621ee654e5c8df4ad95d790a3bccdd284afcff83e5bb7043fb1'
+            '80c00b40b0de794d87fb0183cdce2f3c93869c849f7534e8ced42ca6c625f2f7'
+            '3de3c76930874c81824c23aa033cb9e66631659fd31f925d7c58f0479aeb18a9'
+            '640dba0d960bfeaae9ad38d2826d3f6b5d6c175a4d3e16664eefff29141faad5'
+            '4c4dd05358f614adfa9c539a3ed61134764fced358c92dde109aac3ab78496c9'
+            '3992491eebaf5b31f6b00095a7276d11682f9a8aaff473bfb25afbdcfa6eba32'
+            '07c4648669dc05afc3c1ad5a4739768079c423b817eabf5296ca3d1ea5ffd163')
+validpgpkeys=('CBAF69F173A0FEA4B537F470D66C9593118BCCB6'
+              'F38252826ACD957EF380D39F2F7956BC5DA04B5D')
 
 prepare() {
 	cd ${srcdir}/${_pkgbase}-${pkgver}
 
-#	patch -p0 -i ${srcdir}/apache.patch
+	patch -p0 -i ${srcdir}/apache.patch
 	patch -p0 -i ${srcdir}/php-fpm.patch
 	patch -p0 -i ${srcdir}/php.ini.patch
 	patch -p1 -i ${srcdir}/enchant-2.patch
@@ -190,7 +191,7 @@ package_php-zts() {
 	backup=('etc/php/php.ini')
 
 	cd ${srcdir}/build
-	make -j1 INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
+	make INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
 	install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/php.ini-production ${pkgdir}/etc/php/php.ini
 	install -d -m755 ${pkgdir}/etc/php/conf.d/
 
@@ -210,7 +211,7 @@ package_php-zts-cgi() {
 	provides=("${_pkgbase}-cgi=${pkgver}")
 
 	cd ${srcdir}/build
-	make -j1 INSTALL_ROOT=${pkgdir} install-cgi
+	make INSTALL_ROOT=${pkgdir} install-cgi
 }
 
 package_php-zts-apache() {

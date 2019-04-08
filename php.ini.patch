@@ -1,6 +1,6 @@
 --- php.ini-production.orig
 +++ php.ini-production
-@@ -902,48 +902,44 @@
+@@ -903,48 +903,44 @@
  ; deprecated in a future PHP major version. So, when it is possible, please
  ; move to the new ('extension=<ext>) syntax.
  ;

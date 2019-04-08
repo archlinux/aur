@@ -4,9 +4,11 @@
 
 makepkg -o --nodeps --noprepare --skipinteg
 
-pushd src/${pkgbase}-${pkgver}
+pushd src/${_pkgbase}-${pkgver}
 
-sed '/APACHE_THREADED_MPM=/d' -i.orig sapi/apache2handler/config.m4
+sed -e '/if test "$APACHE_VERSION" -lt 2004001; then/i PHP_BUILD_THREAD_SAFE' \
+	-e '/if test "$APACHE_VERSION" -lt 2004001; then/,+10d' \
+	-i.orig sapi/apache2handler/config.m4
 
 sed 's/.conf.default/.conf/g' -i.orig sapi/fpm/Makefile.frag
 
