@@ -2,17 +2,17 @@
 _pkgname="overbitenx"
 pkgname="firefox-extension-${_pkgname}"
 pkgver='0.9.2.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Add gopher support to Firefox (beta)"
 arch=('x86_64')
 url="https://github.com/classilla/overbitenx"
 license=('custom')
 groups=('firefox-addons')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/classilla/overbitenx/archive/${pkgver}.tar.gz"
-        "${_pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/1012346/${_pkgname}-0.1-an+fx-linux.xpi")
+        "${_pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/1731666/${_pkgname}-0.2-fx.xpi")
 noextract=("${_pkgname}-${pkgver}.xpi")
 sha256sums=('bf3fa2cf5baaf8503d4ce15bae21071d10f3bd265937e1660765ae0e6f21f56c'
-            '708dd95cd62be2d89e18a613254c4de7ed49d23532ca0b9f728f19ad3280be8e')
+            'ad35b96f9001c51fcee16fe8a206ec4c0312b088d3a4ba0f62c33afe9eeebdd0')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
