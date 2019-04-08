@@ -64,7 +64,8 @@ prepare() {
 build() {
     cd $_name
 
-    local _cflags="-DSHARE_DIR=\\\"/usr/share/$_name\\\" \
+    local _cflags="-ffile-prefix-map=\"$PWD\"=. \
+                   -DSHARE_DIR=\\\"/usr/share/$_name\\\" \
                    -DFLUIDSYNTHLIB2=\\\"libfluidsynth.so.2\\\""
     cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_C_FLAGS="${CFLAGS} ${_cflags}" \
