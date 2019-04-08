@@ -3,7 +3,7 @@
 # Contributor: Alois Nespor <alois.nespor@gmail.com>
 
 pkgname=kid3-cli
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="An MP3, Ogg/Vorbis and FLAC tag editor, CLI version"
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ makedepends=(ninja chromaprint id3lib taglib libmp4v2 qt5-tools
 conflicts=(kid3-kde kid3-qt)
 provides=(kid3)
 source=(http://downloads.sourceforge.net/${pkgname/-cli/}/${pkgname/-cli/}-$pkgver.tar.gz)
-sha256sums=('1d7459b4b517b096eae016b3d3f5c4b2bf56fbfa92f59503baeed109139e44ae')
+sha256sums=('a82db841d023a28636652086905f29678d8c041dc238099165e88fbcb2d47976')
 
 prepare() {
   [ -d ${srcdir}/build ] && rm -rf build
