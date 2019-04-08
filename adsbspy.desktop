@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=ADSBSpy
+Type=Application
+Comment=ADSBSpy application
+Exec=mono --optimize=float32 /opt/sdrsharp/ADSBSpy.exe
+Icon=adsbspy
+GenericName=ADSBSpy
+Categories=AudioVideo;Network;

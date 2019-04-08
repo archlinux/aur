@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=SpectrumSpy
+Type=Application
+Comment=SpectrumSpy application
+Exec=mono --optimize=float32 /opt/sdrsharp/SpectrumSpy.exe
+Icon=spectrumspy
+GenericName=SpectrumSpy
+Categories=AudioVideo;Network;
