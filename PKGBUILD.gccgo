@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=wallutils
-pkgver=5.7.0
+pkgver=5.7.2
 pkgrel=1
 pkgdesc='Utilities for handling resolutions, wallpapers and timed wallpapers'
 arch=(x86_64)
