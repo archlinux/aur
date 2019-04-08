@@ -1,6 +1,6 @@
 pkgbase = gzdoom-git
 	pkgdesc = Advanced Doom source port with OpenGL support (git version)
-	pkgver = g3.8pre+548+gcad2f49ce
+	pkgver = g4.1pre+7+g3c07485d1
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
@@ -16,7 +16,6 @@ pkgbase = gzdoom-git
 	makedepends = gtk3
 	depends = hicolor-icon-theme
 	depends = libgl
-	depends = libgme
 	depends = libjpeg
 	depends = sdl2
 	optdepends = blasphemer-wad: Blasphemer (free Heretic) game data

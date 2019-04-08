@@ -2,7 +2,7 @@
 
 _name=gzdoom
 pkgname=${_name}-git
-pkgver=g3.8pre+548+gcad2f49ce
+pkgver=g4.1pre+7+g3c07485d1
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support (git version)'
 arch=('i686' 'x86_64')
@@ -10,7 +10,6 @@ url='http://www.zdoom.org/'
 license=('BSD' 'custom:dumb' 'GPL3' 'LGPL3')
 depends=('hicolor-icon-theme'
          'libgl'
-         'libgme'
          'libjpeg'
          'sdl2')
 makedepends=('cmake'
