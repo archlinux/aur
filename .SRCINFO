@@ -1,0 +1,16 @@
+pkgbase = perl-perlio-via-gzip
+	pkgdesc = Perl extension PerlIO::via::gzip
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://metacpan.org/pod/PerlIO::via::gzip
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = zlib
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MA/MAJENSEN/PerlIO-via-gzip-0.03.tar.gz
+	sha256sums = b4c101ea2c2d7219f8880e51d3962384aafbc30cb0871ef9dbd57c09f17d4d8b
+
+pkgname = perl-perlio-via-gzip
+
