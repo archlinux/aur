@@ -6,7 +6,7 @@
 # Mantainer: Lorenzo Ferrillo <lorenzofer at live dot it>
 _pkgname=zbar
 pkgname=lib32-zbar
-pkgver=0.21
+pkgver=0.22
 pkgrel=1
 pkgdesc="Application and library for reading bar codes from various sources. 32bit libraries only version"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('zbar')
 makedepends=('lib32-imagemagick' 'lib32-libxv' 'lib32-python2' 'lib32-gtk2' 'pygtk' 'lib32-v4l-utils' 'xmlto')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/mchehab/zbar/archive/$pkgver.tar.gz"
         imagemagick7.patch)
-sha512sums=('148fbcdc3fc01c54087f92f746c92bd21ec37a7e0c27b0f48862f0ff0490d9a4b0954cf9cbc10a536d3bf559e13c8cb2670c1c9e6832ca70841107f3c5bb0210'
+sha512sums=('bef1078f7fe0c943e2ca7348f45e3bb5744e807c5135051fccf2c4499d52515558e98f61620e2ef2c993f35b8104d886d0639b7f0e6f8979caa5dcc49df7c931'
             '43987414a6432b9e7da329f5a416f389d29bfc3417a6edc65a46b2677ade7dbb8c150df90c8b42464a6cb17c4732509fb8d3672387dafe9fd17a5def78a5ef63')
 
 prepare() {
@@ -27,15 +27,14 @@ prepare() {
 
 build() {
   cd zbar-$pkgver
-   export CC="gcc -m32"
+  export CC="gcc -m32"
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   export PYTHON='/usr/bin/python2-32'
   export PYTHON_CONFIG='/usr/bin/python2-32-config'
 
-  #PKG_CONFIG_PATH="/usr/lib32/imagemagick6/pkgconfig" \
+  #PKG_CONFIG_PATH="/usr/lib32/imagemagick6/pkgconfig"  
   
-  PYTHON="/usr/bin/python2" \
   ./configure --prefix=/usr --libdir=/usr/lib32 --without-qt --without-gtk CFLAGS="$CFLAGS -DNDEBUG"
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make -j1
