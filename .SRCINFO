@@ -1,16 +1,16 @@
 pkgbase = nzb-bin
 	pkgdesc = A beautiful CLI front-end for Nozbe written in Rust.
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://gitlab.com/reisub0/nzb
 	arch = x86_64
 	license = MIT
 	source = LICENSE
 	source = nzb.1.gz
-	source = nzb-bin-0.5.1.zip::https://gitlab.com/reisub0/nzb/-/jobs/artifacts/v0.5.1/download?job=linux-x86_64
+	source = nzb-bin-0.5.2.zip::https://gitlab.com/reisub0/nzb/-/jobs/artifacts/v0.5.2/download?job=linux-x86_64
 	md5sums = 3c87776c3d12e38215b96b2803959de5
 	md5sums = bec051da5f5d55bb14aea83d77956d92
-	md5sums = 418fda24914446effa007d650b54d44d
+	md5sums = 619d45e29545ec3e93b2540db395207b
 
 pkgname = nzb-bin
 

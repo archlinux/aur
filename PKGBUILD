@@ -1,7 +1,7 @@
 
 # Maintainer: rollingpanda0 <rollingpanda0 at gmail dot com>
 pkgname=nzb-bin
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A beautiful CLI front-end for Nozbe written in Rust."
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=('LICENSE'
         "$pkgname-$pkgver.zip::https://gitlab.com/reisub0/nzb/-/jobs/artifacts/v${pkgver}/download?job=linux-x86_64")
 md5sums=("3c87776c3d12e38215b96b2803959de5"
          "bec051da5f5d55bb14aea83d77956d92"
-         "418fda24914446effa007d650b54d44d")
+         "619d45e29545ec3e93b2540db395207b")
 
 package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
