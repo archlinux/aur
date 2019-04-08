@@ -3,7 +3,7 @@
 pkgbase='python-catkin_pkg'
 pkgname=('python-catkin_pkg')
 _module='catkin_pkg'
-pkgver='0.4.10'
+pkgver='0.4.11'
 pkgrel=1
 pkgdesc="catkin package library"
 url="http://wiki.ros.org/catkin_pkg"
@@ -13,8 +13,8 @@ conflicts=('python2-catkin_pkg' 'python-catkin-pkg')
 makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/c/catkin_pkg/catkin_pkg-${pkgver}.tar.gz")
-md5sums=('0c8752ab98ab06481a2ea7d037ac3878')
+source=("https://files.pythonhosted.org/packages/03/b5/a6092bc2b697110885421074d28168e0092636489fcaf22994375fe5038b/catkin_pkg-0.4.11.tar.gz")
+md5sums=('ab3adff656c9921adc74cc043bc7cf1d')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
