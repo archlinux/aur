@@ -3,7 +3,7 @@
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-mac
-pkgver=2019.1.0b9
+pkgver=2019.1.0b10
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the Mac platform"
 arch=('x86_64')
@@ -11,8 +11,8 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-beta')
 makedepends=('cpio')
-source=("2019.1.0b9.1.0b9.pkg::https://beta.unity3d.com/download/f1481f10a935/MacEditorTargetInstaller/UnitySetup-Mac-Mono-Support-for-Editor-2019.1.0b9.pkg")
-md5sums=("eb524375969a6dd93e8a5c0b13ca50d0")
+source=("2019.1.0b10.1.0b10.pkg::https://beta.unity3d.com/download/dbf1e96a8b63/MacEditorTargetInstaller/UnitySetup-Mac-Mono-Support-for-Editor-2019.1.0b10.pkg")
+md5sums=("118a778336e2f3083681ffc84fcc7e14")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
