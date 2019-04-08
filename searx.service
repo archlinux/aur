@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 User=searx
-Environment=SEARX_SETTINGS_PATH=/etc/searx/settings.yml
+Environment=SEARX_SETTINGS_PATH=/etc/searx.conf
 PrivateTmp=true
 PrivateDevices=true
 # Prevent access to /home, /root, and /run/user
