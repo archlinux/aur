@@ -11,6 +11,7 @@ pkgbase = olivia
 	depends = mpv
 	depends = python
 	depends = wget
+	depends = socat
 	source = git+https://github.com/keshavbhatt/olivia.git
 	sha256sums = SKIP
 

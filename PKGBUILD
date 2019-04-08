@@ -7,7 +7,7 @@ pkgdesc="Deadass music player for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/keshavbhatt/olivia"
 license=('MIT')
-depends=('qt5-base' 'qt5-tools' 'mpv' 'python' 'wget')
+depends=('qt5-base' 'qt5-tools' 'mpv' 'python' 'wget' 'socat')
 source=("git+https://github.com/keshavbhatt/olivia.git")
 sha256sums=('SKIP')
 
