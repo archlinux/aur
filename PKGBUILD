@@ -1,8 +1,8 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-libbluray
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='Library to access Blu-Ray disks for video playback (mingw-w64)'
 arch=('any')
 url='http://www.videolan.org/developers/libbluray.html'
