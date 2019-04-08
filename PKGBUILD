@@ -1,8 +1,8 @@
 # Maintainer: Luca CPZ <luca.cpz [at] gmail [dot] com>
 
 pkgname=lain-git
-pkgcom=1686
-pkgsha=1a40fe8
+pkgcom=1691
+pkgsha=fd2e616
 pkgver=$pkgcom.$pkgsha
 pkgrel=1
 pkgdesc="Layouts, asynchronous widgets and utilities for Awesome WM"
