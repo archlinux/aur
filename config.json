@@ -9,7 +9,8 @@
       "Timeout": 5,
       "EDNSClientSubnet": {
         "Policy": "disable",
-        "ExternalIP": ""
+        "ExternalIP": "",
+	"NoCookie": true
       }
     },
     {
@@ -20,7 +21,8 @@
       "Timeout": 5,
       "EDNSClientSubnet": {
         "Policy": "disable",
-        "ExternalIP": ""
+        "ExternalIP": "",
+	"NoCookie": true
       }
     }
   ],
@@ -50,6 +52,7 @@
   ],
   "OnlyPrimaryDNS": false,
   "IPv6UseAlternativeDNS": false,
+  "WhenPrimaryDNSAnswerNoneUse": "PrimaryDNS",
   "IPNetworkFile": {
 	  "Primary": "/etc/overture/china_ip_list.txt",
 	  "Alternative": ""
@@ -60,6 +63,7 @@
   },
   "HostsFile": "/etc/overture/hosts",
   "MinimumTTL": 0,
+  "DomainTTLFile": "/etc/overture/domain_ttl.txt",
   "CacheSize": 4096,
   "RejectQtype": [255]
 }
