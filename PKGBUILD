@@ -63,21 +63,36 @@ prepare() {
  chmod +x $srcdir/tex/texmf-${_platform}/bin/{context,luametatex,mtxrun}
 
  # Generate a setuptex file
+ cat <<- _EOF_ > $srcdir/tex/setuptex
+	_OLD_PS1=\$PS1
+	_OLD_PATH=\$PATH
+	TEXMFOS=${_dest}/texmf-${_platform}
+	export TEXMFOS
+	
+	TEXMFCACHE=\$HOME/.cache/luametatex
+	export TEXMFCACHE
+	
+	PATH=\$TEXMFOS/bin:\$PATH
+	export PATH
+	
+	PS1="(lmtx) \$PS1"
+	export PS1
+	
+	OSFONTDIR="$_userfontdir;$_osfontdir;" 
+	export OSFONTDIR
+	resettex () {
+		PATH=\$_OLD_PATH
+		export PATH
+		unset _OLD_PATH
+		
+		PS1=\$_OLD_PS1
+		export PS1
+		unset _OLD_PS1
+		
+		unset -f resettex
+}
+_EOF_
 
- echo "TEXMFOS=${_dest}/texmf-${_platform}"   > $srcdir/tex/setuptex
- echo "export TEXMFOS"                       >> $srcdir/tex/setuptex
- echo ""                                     >> $srcdir/tex/setuptex
- echo "TEXMFCACHE=\$HOME/.cache/luametatex"  >> $srcdir/tex/setuptex
- echo "export TEXMFCACHE"                    >> $srcdir/tex/setuptex
- echo ""                                     >> $srcdir/tex/setuptex
- echo "unset TEXINPUTS MPINPUTS MFINPUTS"    >> $srcdir/tex/setuptex
- echo ""                                     >> $srcdir/tex/setuptex
- echo "PATH=\$TEXMFOS/bin:\$PATH"            >> $srcdir/tex/setuptex
- echo "export PATH"                          >> $srcdir/tex/setuptex
- echo ""                                     >> $srcdir/tex/setuptex
- echo "OSFONTDIR=\"$_userfontdir;$_osfontdir;\"" \
-                                            >> $srcdir/tex/setuptex
- echo "export OSFONTDIR"                    >> $srcdir/tex/setuptex
  # If texlive exists, use fonts from texlive
  if [ -d $_texlivefontdir ]
  then
