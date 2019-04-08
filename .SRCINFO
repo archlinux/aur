@@ -12,6 +12,7 @@ pkgbase = timetable-git
 	depends = gtk3
 	depends = vala
 	depends = granite
+	depends = wingpanel
 	provides = timetable
 	conflicts = timetable
 	source = git+https://github.com/lainsce/timetable.git
