@@ -3,7 +3,7 @@
 # https://aur.archlinux.org/packages/file-roller-tmp/
 
 pkgname=file-roller-tmp
-pkgver=3.32.0
+pkgver=3.32.1
 pkgrel=1
 pkgdesc="Create and modify archives. SSD-friendly version (stores temporary files in /tmp)."
 url="https://gitlab.gnome.org/GNOME/file-roller"
@@ -19,7 +19,7 @@ optdepends=('p7zip: 7z, arj, exe and encrypted zip files support'
             'unace: ACE archive support'
             'lrzip: lrzip archive support')
 groups=(gnome)
-_commit=8242336acef76ac701b32458d540489200c75dc3  # tags/3.32.0^0
+_commit=c892c8c576d026fe87c17775b033e3e73f3d3ac5  # master
 source=("git+https://gitlab.gnome.org/GNOME/file-roller.git#commit=$_commit"
         'tmp-as-temp.patch')
 sha256sums=('SKIP' 'SKIP')
@@ -31,7 +31,7 @@ pkgver() {
 
 prepare() {
   cd ${pkgname:0:11}
-
+  git tag -f 3.32.1 c892c8c576d026fe87c17775b033e3e73f3d3ac5  # fixup missing tag
   #patch
   cd $srcdir/${pkgname:0:11}
   patch -Np0 -i ../tmp-as-temp.patch

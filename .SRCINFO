@@ -1,6 +1,6 @@
 pkgbase = file-roller-tmp
 	pkgdesc = Create and modify archives. SSD-friendly version (stores temporary files in /tmp).
-	pkgver = 3.32.0
+	pkgver = 3.32.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/file-roller
 	arch = x86_64
@@ -23,10 +23,10 @@ pkgbase = file-roller-tmp
 	optdepends = unrar: better RAR archive support
 	optdepends = unace: ACE archive support
 	optdepends = lrzip: lrzip archive support
-	provides = file-roller=3.32.0
+	provides = file-roller=3.32.1
 	conflicts = file-roller
 	replaces = file-roller
-	source = git+https://gitlab.gnome.org/GNOME/file-roller.git#commit=8242336acef76ac701b32458d540489200c75dc3
+	source = git+https://gitlab.gnome.org/GNOME/file-roller.git#commit=c892c8c576d026fe87c17775b033e3e73f3d3ac5
 	source = tmp-as-temp.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
