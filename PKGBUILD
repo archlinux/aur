@@ -1,7 +1,7 @@
 # Maintainer: Eric Toombs <ee double you toombs at you waterloo dot see eh?>
 
 pkgname='stanza'
-pkgver='0.12.14'
+pkgver='0.12.15'
 pkgrel=1
 pkgdesc='The reference compiler for Stanza, a high-level multi-paradigm optionally-typed programming language.'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
     "http://lbstanza.org/resources/stanza/$_srcfile"
 )
 noextract=("$_srcfile")  # Don't extract. Archive is weird. See prepare().
-sha256sums=('a32217aa527b1c9b07b09cee342bbb7014d53b2d43e0c71a4920abb3aaf5d649')
+sha256sums=('63690964fd5863b1e06bdca15e214f67c2d233e04581320abbf3dfb0ee0d0751')
 
 install='install'
 
