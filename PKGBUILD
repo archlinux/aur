@@ -17,8 +17,8 @@ optdepends=('festival-freebsoft-utils: Speech output using Festival.'
             'espeak: Speech output using ESpeak.'
             'svox-pico-git: Speech output using Android pico voice.')
 makedepends=('pkgconfig' 'espeak' 'dotconf' 'automake' 'intltool')
-provides=("speech-dispatcher")
-conflicts=('speech-dispatcher')
+provides=("libspeechd" "speech-dispatcher")
+conflicts=("libspeechd" "speech-dispatcher")
 options=('!libtool') 
 url="http://www.freebsoft.org/speechd"
 _gitname="speechd"
