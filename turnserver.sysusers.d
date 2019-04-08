@@ -1,1 +1,1 @@
-u turnserver - "TurnServer user"
+u turnserver - "TurnServer user" /etc/turnserver

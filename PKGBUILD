@@ -5,7 +5,7 @@
 
 pkgname=coturn
 pkgver=4.5.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Open-source implementation of TURN and STUN server'
 arch=(i686 x86_64 armv7h)
 url=https://github.com/coturn/coturn
@@ -13,15 +13,15 @@ license=(BSD)
 depends=(libevent postgresql-libs libmariadbclient hiredis sqlite)
 conflicts=(coturn-git)
 install=turnserver.install
-backup=(etc/turnserver.conf)
+backup=(etc/turnserver/turnserver.conf)
 source=($url/archive/$pkgver.tar.gz
         turnserver.service
         turnserver.sysusers.d
         turnserver.tmpfiles.d)
 sha512sums=('a5e1aecdab5a7060ffbc73cc8dd294cafa701f2e0d2a827e40901cb6001af5a2c5ecbafdf14662410713818aad0ad259133f0dc9b34730bf7911863e1e255f70'
-            '67d623820c69de86c5831e3daa0172b4ca77278ed138dd55e6775590b89f5293f380adc338a330e26d2eaf0e8dbbc20c0bbf469aca272bae99973386c72aef30'
-            '69a8aafaef369ff76043ff9e3b8deef0621ac8db647fa5c044bade30fe6f63b8cc79d2ecedacb83f31e7005cea8ee49dc37b55c2f21eed11c5d1a2b7ca5e68a5'
-            'd668df15a81a2bb0bb38ebbf367b7ed3db66a17ebadd5fe5bea9b343fbd992d9ada2d146d945f78fc4b2bf103aaa2407a30f270d01919be540b427221de15741')
+            '47af7bbf28f8a5fc674b90d1370026405ccb43623f05e47cf915c594e7e35865f4dce64d2b3001bc609a843a54661d1a1172790153f0b8ba9186db48c42b0024'
+            '32596f741e561c707f69c1ea90adf75c83742906d33c50e1fa5ec0899eeb607d96a48c36fcbb6facb62947beedcace9f6c3fb748c4d67f058bf3f72413766f82'
+            '1d47fd988c36e443aa723d048072eb8be8bb59c2845eb1bbd47eae7d955b6bbda7e5526e00f6ee2f54c5121657413058011aa4c130214a83b9f396a35fb45888')
 
 build() {
   cd coturn-$pkgver
@@ -51,14 +51,14 @@ package() {
   cd "$pkgdir"
 
   # Create needed directories
-  mkdir -p {etc,var/log/turnserver}
+  mkdir -p {etc/turnserver,var/log/turnserver}
 
   # Have the config file use more appropriate directories
-  mv {usr/etc/turnserver.conf.default,etc/turnserver.conf}
+  mv {usr/etc/turnserver.conf.default,etc/turnserver/turnserver.conf}
   sed \
     -e '/^#log-file=\/var\/tmp\/turn.log$/c log-file=\/var\/log\/turnserver\/turn.log' \
     -e '/^#pidfile="\/var\/run\/turnserver.pid"$/c pidfile=\/var\/run\/turnserver\/turnserver.pid' \
-    -i etc/turnserver.conf
+    -i etc/turnserver/turnserver.conf
   rmdir usr/etc
 
   # Remove executable bits from files that erroneously have them
