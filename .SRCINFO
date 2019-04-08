@@ -1,20 +1,20 @@
 pkgbase = turbovnc
 	pkgdesc = An optimized version of TightVNC
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.turbovnc.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	makedepends = rsync
-	makedepends = jdk8-openjdk
+	makedepends = jdk-openjdk
 	depends = libxaw
 	depends = libxt
 	depends = libxi
 	depends = libxcursor
 	depends = libjpeg-turbo
-	depends = java-runtime=8
+	depends = java-runtime
 	depends = openssl-1.0
 	conflicts = turbovnc-bin
 	conflicts = tigervnc
