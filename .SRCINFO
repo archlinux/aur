@@ -1,12 +1,11 @@
 pkgbase = ttf-aireexterior
 	pkgdesc = A geometric sans serif typeface based on the title screen of the 1959 film Plan 9 from Outer Space, superseded from Aero Matics.
 	pkgver = 20190407.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://notabug.org/HarvettFox96/ttf-aireexterior
 	arch = any
 	license = CC0-1.0
 	depends = fontconfig
-	depends = unzip
 	depends = xorg-font-utils
 	depends = xorg-fonts-encodings
 	source = AireExterior-20190407.01.zip::https://notabug.org/attachments/9a1a77c5-fc8f-4ad4-9247-0dc957852cc6

@@ -2,12 +2,12 @@
 
 pkgname=ttf-aireexterior
 pkgver=20190407.01
-pkgrel=1
+pkgrel=2
 pkgdesc="A geometric sans serif typeface based on the title screen of the 1959 film Plan 9 from Outer Space, superseded from Aero Matics."
 url="https://notabug.org/HarvettFox96/${pkgname}"
 license=("CC0-1.0")
 arch=("any")
-depends=("fontconfig" "unzip" "xorg-font-utils" "xorg-fonts-encodings")
+depends=("fontconfig" "xorg-font-utils" "xorg-fonts-encodings")
 source=("AireExterior-${pkgver}.zip::https://notabug.org/attachments/9a1a77c5-fc8f-4ad4-9247-0dc957852cc6"
         "AireExterior-${pkgver}.zip.sig::https://notabug.org/attachments/27f1acca-9e89-49be-be26-d6a9ea8e45bb")
 sha512sums=("066dad662d36bcc0079f3a678b6902008e2c492e53bd122d90b4d2715bbdcffe355b4e63fce1a5a33365e64193ddd7216f270fa0fa96cbe0889e54071da4b193"
