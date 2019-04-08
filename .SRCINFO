@@ -1,6 +1,6 @@
 pkgbase = protobuf-go
 	pkgdesc = Go support for Google's protocol buffers
-	pkgver = 628.ddf2292
+	pkgver = 652.d3c38a4
 	pkgrel = 1
 	url = https://github.com/golang/protobuf
 	arch = i686
