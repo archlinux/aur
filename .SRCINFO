@@ -12,6 +12,7 @@ pkgbase = polybar-git
 	makedepends = python
 	makedepends = python2
 	makedepends = pkg-config
+	makedepends = python-sphinx
 	depends = cairo
 	depends = xcb-util-image
 	depends = xcb-util-wm
