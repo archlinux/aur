@@ -18,5 +18,8 @@ prepare() {
 }
 
 package() {
-  cp -Rfp $srcdir/* $pkgdir/
+  mkdir -p $pkgdir/usr $pkgdir/usr/lib $pkgdir/etc
+  cp -Rfp $srcdir/usr/* $pkgdir/usr
+  cp -Rfp $srcdir/lib/* $pkgdir/usr/lib
+  cp -Rfp $srcdir/etc/* $pkgdir/etc
 }
