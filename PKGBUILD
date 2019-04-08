@@ -2,7 +2,7 @@
 
 pkgname=wine-x64
 pkgver=3.21
-pkgrel=2
+pkgrel=3
 
 # replacing rc with -rc
 _pkgbasever=${pkgver/rc/-rc}
