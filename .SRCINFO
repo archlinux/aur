@@ -7,8 +7,8 @@ pkgbase = anyenv
 	arch = any
 	license = MIT
 	conflicts = anyenv-git
-	source = https://github.com/anyenv/anyenv/archive/v1.0.1.tar.gz
-	md5sums = ad36e956ab51cdecd3d0eb0ba1cba0ac
+	source = https://github.com/anyenv/anyenv/archive/v1.1.0.tar.gz
+	md5sums = 0f348153c235dd194956c3b92cf940e6
 
 pkgname = anyenv
 
