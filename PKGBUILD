@@ -3,7 +3,7 @@
 pkgbase='python2-rosinstall_generator'
 pkgname=('python2-rosinstall_generator')
 _module='rosinstall_generator'
-pkgver='0.1.15'
+pkgver='0.1.16'
 pkgrel=1
 pkgdesc="A tool for generating rosinstall files"
 url="http://wiki.ros.org/rosinstall_generator"
@@ -13,8 +13,8 @@ conflicts=('python-rosinstall_generator' 'python2-rosinstall-generator')
 makedepends=('python2-setuptools')
 license=('BSD')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/4d/e2/917f2e6eebd0f30a2ab8a54e979d1743feeb421b9f8207c6005e3ae839eb/rosinstall_generator-0.1.15.tar.gz")
-md5sums=('f5d3d1cba733b3ae51d39388d0483b71')
+source=("https://files.pythonhosted.org/packages/2e/13/abc5f6f36d3bbd86193a8518435d2552dfe9f35720dd56e3b2d7ef707e88/rosinstall_generator-0.1.16.tar.gz")
+md5sums=('83e2cd4e67f3f06c636ea0a869407bf7')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
