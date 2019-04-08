@@ -1,6 +1,6 @@
 # Maintainer: Ron Asimi <ron.asimi@gmail.com>
 pkgname=interui-ttf-hinted
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 pkgdesc='Inter UI is a typeface specially designed for user interfaces with focus on high legibility of small-to-medium sized text on computer screens.'
 arch=('any')
