@@ -1,14 +1,14 @@
 pkgbase = lua-stringy
 	pkgdesc = Lua string utility library
-	pkgver = 0.4-1
+	pkgver = 0.5.1
 	pkgrel = 0
 	url = https://github.com/brentp/lua-projects/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = lua
-	source = https://github.com/brentp/lua-stringy/archive/v0.4-1.tar.gz
-	md5sums = a603cc2a62ec9179a2a7f07c223f3d2c
+	source = https://github.com/brentp/lua-stringy/archive/v0.5-1.tar.gz
+	md5sums = 6b66ca5f644775673a0035ef89322288
 
 pkgname = lua-stringy
 
