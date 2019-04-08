@@ -1,6 +1,6 @@
-diff -urb catkin_tools-0.4.4/catkin_tools/common.py catkin_tools-0.4.4/catkin_tools/common.py
---- catkin_tools-0.4.4/catkin_tools/common.py	2017-02-08 13:25:41.000000000 -0500
-+++ catkin_tools-0.4.4/catkin_tools/common.py	2018-08-06 14:24:11.800221023 -0400
+diff -ur catkin_tools-0.4.5.orig/catkin_tools/common.py catkin_tools-0.4.5/catkin_tools/common.py
+--- catkin_tools-0.4.5.orig/catkin_tools/common.py	2019-04-03 13:37:46.000000000 -0700
++++ catkin_tools-0.4.5/catkin_tools/common.py	2019-04-07 18:21:14.479191284 -0700
 @@ -20,7 +20,7 @@
  import re
  import sys
@@ -10,9 +10,9 @@ diff -urb catkin_tools-0.4.4/catkin_tools/common.py catkin_tools-0.4.4/catkin_to
  
  from shlex import split as _cmd_split
  try:
-diff -urb catkin_tools-0.4.4/catkin_tools/execution/executor.py catkin_tools-0.4.4/catkin_tools/execution/executor.py
---- catkin_tools-0.4.4/catkin_tools/execution/executor.py	2017-02-08 13:25:41.000000000 -0500
-+++ catkin_tools-0.4.4/catkin_tools/execution/executor.py	2018-08-06 14:43:51.029023552 -0400
+diff -ur catkin_tools-0.4.5.orig/catkin_tools/execution/executor.py catkin_tools-0.4.5/catkin_tools/execution/executor.py
+--- catkin_tools-0.4.5.orig/catkin_tools/execution/executor.py	2019-04-03 13:37:46.000000000 -0700
++++ catkin_tools-0.4.5/catkin_tools/execution/executor.py	2019-04-07 18:25:47.970298585 -0700
 @@ -18,7 +18,7 @@
  
  from itertools import tee
@@ -61,13 +61,13 @@ diff -urb catkin_tools-0.4.4/catkin_tools/execution/executor.py catkin_tools-0.4
 @@ -125,7 +125,7 @@
                          **stage.async_execute_process_kwargs))
  
-                     # Asynchronously yield until this command is  completed
+                     # Asynchronously yield until this command is completed
 -                    retcode = yield asyncio.From(logger.complete)
 +                    retcode = yield from(logger.complete)
-                 except:
-                     logger = IOBufferLogger(verb, job.jid, stage.label, event_queue, log_path)
-                     logger.err(str(traceback.format_exc()))
-@@ -135,7 +135,7 @@
+                 except:  # noqa: E722
+                     # Bare except is permissable here because the set of errors which the CommandState might raise
+                     # is unbounded. We capture the traceback here and save it to the build's log files.
+@@ -137,7 +137,7 @@
                  logger = IOBufferLogger(verb, job.jid, stage.label, event_queue, log_path)
                  try:
                      # Asynchronously yield until this function is completed
@@ -76,16 +76,16 @@ diff -urb catkin_tools-0.4.4/catkin_tools/execution/executor.py catkin_tools-0.4
                          threadpool,
                          stage.function,
                          logger,
-@@ -175,7 +175,7 @@
+@@ -179,7 +179,7 @@
              lock.release()
  
      # Finally, return whether all stages of the job completed
 -    raise asyncio.Return(job.jid, all_stages_succeeded)
-+    return job.jid, all_stages_succeeded
++    return (job.jid, all_stages_succeeded)
  
  
  @asyncio.coroutine
-@@ -268,14 +268,14 @@
+@@ -272,14 +272,14 @@
          ))
  
          # Process jobs as they complete asynchronously
@@ -102,7 +102,7 @@ diff -urb catkin_tools-0.4.4/catkin_tools/execution/executor.py catkin_tools-0.4
  
              # Release a jobserver token now that this job has succeeded
              job_server.release(job_id)
-@@ -358,7 +358,7 @@
+@@ -362,7 +362,7 @@
          completed=completed_jobs
      ))
  
@@ -111,9 +111,9 @@ diff -urb catkin_tools-0.4.4/catkin_tools/execution/executor.py catkin_tools-0.4
  
  
  def run_until_complete(coroutine):
-diff -urb catkin_tools-0.4.4/catkin_tools/verbs/catkin_build/build.py catkin_tools-0.4.4/catkin_tools/verbs/catkin_build/build.py
---- catkin_tools-0.4.4/catkin_tools/verbs/catkin_build/build.py	2017-01-05 15:06:28.000000000 -0500
-+++ catkin_tools-0.4.4/catkin_tools/verbs/catkin_build/build.py	2018-08-06 14:24:32.433486767 -0400
+diff -ur catkin_tools-0.4.5.orig/catkin_tools/verbs/catkin_build/build.py catkin_tools-0.4.5/catkin_tools/verbs/catkin_build/build.py
+--- catkin_tools-0.4.5.orig/catkin_tools/verbs/catkin_build/build.py	2019-04-03 13:37:46.000000000 -0700
++++ catkin_tools-0.4.5/catkin_tools/verbs/catkin_build/build.py	2019-04-07 18:21:08.798699761 -0700
 @@ -22,7 +22,7 @@
  import traceback
  import yaml
@@ -123,3 +123,22 @@ diff -urb catkin_tools-0.4.4/catkin_tools/verbs/catkin_build/build.py catkin_too
  
  try:
      # Python3
+diff -ur catkin_tools-0.4.5.orig/catkin_tools.egg-info/requires.txt catkin_tools-0.4.5/catkin_tools.egg-info/requires.txt
+--- catkin_tools-0.4.5.orig/catkin_tools.egg-info/requires.txt	2019-04-03 13:42:28.000000000 -0700
++++ catkin_tools-0.4.5/catkin_tools.egg-info/requires.txt	2019-04-07 18:24:22.326761874 -0700
+@@ -2,4 +2,3 @@
+ setuptools
+ PyYAML
+ osrf-pycommon>0.1.1
+-trollius
+diff -ur catkin_tools-0.4.5.orig/setup.py catkin_tools-0.4.5/setup.py
+--- catkin_tools-0.4.5.orig/setup.py	2019-04-03 13:37:46.000000000 -0700
++++ catkin_tools-0.4.5/setup.py	2019-04-07 18:20:52.899986813 -0700
+@@ -15,7 +15,6 @@
+     'setuptools',
+     'PyYAML',
+     'osrf-pycommon > 0.1.1',
+-    'trollius'
+ ]
+ if sys.version_info[0] == 2 and sys.version_info[1] <= 6:
+     install_requires.append('argparse')
