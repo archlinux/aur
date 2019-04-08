@@ -1,0 +1,15 @@
+pkgbase = cxo
+	pkgdesc = CX Object Storage System for the Skycoin Blockchain
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/skycoin/cxo
+	arch = any
+	makedepends = unzip
+	source = https://github.com/skycoin/cxo/archive/v3.1.0.tar.gz
+	validpgpkeys = DE08F924EEE93832DABC642CA8DC761B1C0C0CFC
+	sha256sums = e4fc5221d89b0f548a0093c944829c0b3e94f96efcc339effc5fea34f4accbd3
+
+pkgname = cxo
+	options = !strip
+	options = staticlibs
+
