@@ -14,8 +14,8 @@ pkgbase = frontieres-git
 	depends = alsa-lib
 	depends = libglvnd
 	depends = libpulse
-	provides = frontieres
-	conflicts = frontieres
+	provides = Frontieres
+	conflicts = Frontieres
 	source = git+https://github.com/linuxmao-org/Frontieres.git
 	md5sums = SKIP
 

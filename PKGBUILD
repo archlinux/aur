@@ -1,8 +1,7 @@
 # From the unofficial fork of Borderlands, Frontieres, by Linux MAO on GITLAB:
 # Maintainer: loriant <spaceflorent at aol.com>
 
-_name=Frontieres
-_pkgname=frontieres
+_pkgname=Frontieres
 pkgname="frontieres-git"
 pkgver=0.4.0
 pkgrel=1
@@ -19,12 +18,12 @@ source=("git+https://github.com/linuxmao-org/Frontieres.git")
 md5sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${_name}"
+  cd "${srcdir}/${_pkgname}"
   cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
 
 package() {
-  cd "${srcdir}/${_name}"
+  cd "${srcdir}/${_pkgname}"
   make DESTDIR="$pkgdir/" install
 }
