@@ -6,7 +6,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8
-pkgver=7.2.502.25
+pkgver=7.4.288.18
 pkgrel=1
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
@@ -173,6 +173,7 @@ package() {
 
   install -Dm755 $OUTFLD/natives_blob.bin ${pkgdir}/usr/lib/v8/natives_blob.bin
   install -Dm755 $OUTFLD/snapshot_blob.bin ${pkgdir}/usr/lib/v8/snapshot_blob.bin
+  install -Dm755 $OUTFLD/icudtl.dat ${pkgdir}/usr/lib/v8/icudtl.dat
 
   install -Dm755 ${srcdir}/d8 ${pkgdir}/usr/bin/d8
 
