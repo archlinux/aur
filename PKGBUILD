@@ -3,7 +3,7 @@
 
 pkgname=overture
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A DNS upstream switcher written in Go in order to purify DNS records"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/shawn1m/overture"
@@ -75,6 +75,7 @@ package() {
 
   # Config and other files
   install -Dm0644 "$srcdir/config.json" "$pkgdir/etc/overture/config.json"
+  install -Dm0644 "$srcdir/domain_ttl.txt" "$pkgdir/etc/overture/domain_ttl.txt"
   install -Dm0644 "$srcdir/china_ip_list.txt" "$pkgdir/etc/overture/china_ip_list.txt"
   install -Dm0644 "$srcdir/gfwlist.txt" "$pkgdir/etc/overture/gfwlist.txt"
   install -Dm0644 "$srcdir/hosts" "$pkgdir/etc/overture/hosts"

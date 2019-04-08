@@ -10,6 +10,7 @@
 
 # add files that don't have an online source
 !china_ip_list.txt
+!domain_ttl.txt
 !config.json
 !gfwlist.txt
 !hosts
