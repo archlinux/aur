@@ -1,0 +1,14 @@
+pkgbase = git-pair
+	pkgdesc = Pair programming tool to define co-authors in git commits.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/avahe-kellenberger/git-pair
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	depends = git
+	source = https://github.com/avahe-kellenberger/git-pair/archive/v1.0.0.tar.gz
+	md5sums = fdd3927d2b52656f13e736ae559f3ca9
+
+pkgname = git-pair
+
