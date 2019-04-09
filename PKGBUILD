@@ -1,5 +1,5 @@
 pkgname=gnome-shell-extension-appindicator
-pkgver=23
+pkgver=27
 pkgrel=1
 pkgdesc="Integrates AppIndicators into GNOME Shell"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=(
 	'libappindicator-sharp: support .net applications'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1694c638f6397ac1cdab2233427131d145f17cd19d398df19302da491e602a61')
+sha256sums=('e2c7c02ffa71f7a60969132b94d7d1f5362077b18f83f97624682fdbf99b7c27')
 
 package() {
 	cd "$pkgname-$pkgver"
