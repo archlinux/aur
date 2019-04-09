@@ -1,0 +1,21 @@
+pkgbase = python-gluoncv-torch-git
+	pkgdesc = Research Framework for easy and efficient training of GANs based on PyTorch
+	pkgver = 0.0.3.r4.7759620
+	pkgrel = 1
+	url = https://github.com/zhanghang1989/gluoncv-torch
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-requests
+	depends = python-torchvision
+	depends = python-tqdm
+	provides = python-gluoncv-torch=0.0.3.r4.7759620
+	conflicts = python-gluoncv-torch
+	source = python-gluoncv-torch-git::git+https://github.com/zhanghang1989/gluoncv-torch.git
+	md5sums = SKIP
+
+pkgname = python-gluoncv-torch-git
+
