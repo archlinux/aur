@@ -29,7 +29,7 @@ sha1sums_i686=('9deb3908d8edad310258de0e31bcafdb5ff6bc5c')
 sha1sums_x86_64=('d3abdfe94a579083c8bd5e0c817de877e7531e48')
 
 prepare() {
-    cd "${srcdir}"/usr/bin
+    cd "${srcdir}/usr/bin"
 
     sed -i 's|/opt/kingsoft/wps-office|/usr/lib|' wps wpp et
 #   sed -i 's|/office6/${gApp}  ${gOptExt}|/office6/${gApp} -style gtk+ ${gOptExt}|' wps
@@ -38,7 +38,7 @@ prepare() {
 
 package() {
     #cd wps-office_${pkgver}_$_archext
-    cd "${srcdir}"/opt/kingsoft/wps-office/
+    cd "${srcdir}/opt/kingsoft/wps-office/"
 
     install -d "${pkgdir}/usr/lib"
     cp -r office6 "${pkgdir}/usr/lib"
@@ -46,7 +46,7 @@ package() {
     install -Dm644 office6/mui/default/EULA.txt "${pkgdir}/usr/share/licenses/$pkgname/EULA.txt"
 
     install -d "${pkgdir}/usr/bin"
-    cd "${srcdir}"/usr/bin
+    cd "${srcdir}/usr/bin"
     install -m755 wps wpp et "${pkgdir}/usr/bin"
 
     cd "${srcdir}"/usr/share
@@ -64,5 +64,5 @@ package() {
     #install -d "${pkgdir}/usr/share/fonts/wps-office"
     #cp -r fonts/* "${pkgdir}/usr/share/fonts/wps-office"
 
-    install -Dm644 -t "${pkgdir}/etc/xdg/menus/applications-merged" ${srcdir}/etc/xdg/menus/applications-merged/*
+    install -Dm644 -t "${pkgdir}/etc/xdg/menus/applications-merged" "${srcdir}/etc/xdg/menus/applications-merged/wps-office.menu"
 }
