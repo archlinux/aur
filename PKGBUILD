@@ -11,10 +11,9 @@ makedepends=('python2')
 optdepends=('tk: for using fetchmailconf'
             'python2: for using fetchmailconf')
 options=('!makeflags')
-source=("https://sourceforge.net/projects/fetchmail/files/branch_6.3/${pkgname}-${pkgver}.tar.xz"{,.asc}
+source=("https://sourceforge.net/projects/fetchmail/files/branch_6.3/${pkgname}-${pkgver}.tar.xz"
         'disable-sslv3.patch' 'fetchmail.tmpfiles' 'fetchmail.sysusers' 'fetchmail.service')
 sha1sums=('de8dbe62a8edfa232ee4278257a1fe67aa1c797a'
-          'SKIP'
           'dab3bf46b033e8ee7cadc020c1fb4ce325f46693'
           '199ba749c829f22286c34aabcf8b7dd5bbd7c0e6'
           'b113cb61a866eff53cd8f113d084a99f01bf5d77'
