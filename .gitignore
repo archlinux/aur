@@ -1,0 +1,8 @@
+*.xz
+*.xz.sig
+src
+pkg
+flvlc
+clean.sh
+
+
