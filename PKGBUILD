@@ -5,7 +5,7 @@
 _pkgname=teams-for-linux
 _pkgname_fork=teams-for-linux-koyu
 pkgname=teams-for-linux-koyu-git
-pkgver=0.0.8
+pkgver=0.0.8.r1.gf5813af
 pkgrel=1
 pkgdesc="Unofficial Microsoft Teams client for Linux using Electron - koyu's fork (development version)"
 arch=(aarch64 armv7h i686 x86_64)
