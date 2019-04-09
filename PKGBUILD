@@ -1,8 +1,8 @@
 # Maintainer: Martynas Janu <martynas.janu at googlemail dot com>
 # Contributor: Benjamin Asbach <archlinux-aur.pkgname@impl.it>
 pkgname=apache-netbeans
-pkgver=10.0
-pkgrel=7
+pkgver=11.0
+pkgrel=8
 pkgdesc="Apache Netbeans IDE development platform"
 arch=('i686' 'x86_64')
 url="https://netbeans.apache.org"
@@ -11,10 +11,10 @@ options=('!strip')
 depends=('java-runtime>=8')
 provides=('apache-netbeans')
 conflicts=('apache-netbeans')
-source=("https://www-eu.apache.org/dist/incubator/netbeans/incubating-netbeans/incubating-10.0/incubating-netbeans-10.0-bin.zip"
+source=("https://www-eu.apache.org/dist/incubator/netbeans/incubating-netbeans/incubating-11.0/incubating-netbeans-11.0-bin.zip"
         "apache-netbeans.desktop")
-sha256sums=("efb9175e9a4f773d77b1072f796259ba0b46e11e3f4277b1c52f6e95263a9242"
-            "1f532b1414567911795a5f8f2776452771730bb4a441abd788a6ac3ad097012f")
+sha512sums=("9d7fbe5c6bcf781fc1d3f8e2aee62db0435dd716c60dc73ef900ee2817473cc5b0a8e12c1453b7e57aedcece70cff778673a8cf563c1fa4eea816d9636955d4b"
+            "22eeb1d5af22af6aa88551ea8c8e8a751fe0ed9bc204b3ea79ae1c524c6655ff00e2439f8c62d64187547e5d535512cff43eb6a0a565a7c778fb41a63b34f5e0")
 
 package() {
     mkdir -p $pkgdir/usr/share/apache-netbeans
