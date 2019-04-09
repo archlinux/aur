@@ -1,7 +1,7 @@
 # Contributor: Bug <bug2000@gmail.com>
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=xpra-svn
-pkgver=r19935
+pkgver=r22367
 pkgrel=1
 pkgdesc="multi-platform screen and application forwarding system screen for X11"
 arch=('x86_64')
@@ -36,7 +36,7 @@ backup=('etc/xpra/xpra.conf' 'etc/xpra/xorg.conf'
         'etc/xpra/conf.d/60_server.conf'
         'etc/xpra/conf.d/65_proxy.conf'
         'etc/pam.d/xpra')
-source=("xpra::svn+https://www.xpra.org/svn/Xpra/trunk/src")
+source=("xpra::svn+https://xpra.org/svn/Xpra/trunk/src")
 md5sums=('SKIP')
 
 pkgver() {
@@ -55,8 +55,12 @@ build() {
 package() {
   cd "${srcdir}/${pkgname%-svn}"
   python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build --without-enc_x265
+  sed -i 's|/build/xpra/pkg/xpra/etc/xpra/xorg.conf|/etc/xpra/xorg.conf|' "${pkgdir}"/etc/xpra/conf.d/55_server_x11.conf
   mv "${pkgdir}"/lib/* "${pkgdir}"/usr/lib/
   rmdir "${pkgdir}/lib"
+  mkdir -p "${pkgdir}"/usr/share/dbus-1
+  #Move D-BUS Policy
+  mv "${pkgdir}"/{etc,usr/share}/dbus-1/system.d
 }
 
 # vim:set ts=2 sw=2 et:
