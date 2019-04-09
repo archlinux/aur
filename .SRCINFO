@@ -1,0 +1,23 @@
+pkgbase = stratisd-boot
+	pkgdesc = Stratis binary for inclusion in initramfs to allow using Stratis as boot volume
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://stratis-storage.github.io
+	arch = x86_64
+	license = MPL2
+	makedepends = asciidoc
+	makedepends = cargo
+	makedepends = git
+	makedepends = mpfr
+	makedepends = rust
+	provides = stratisd-boot
+	conflicts = stratisd-boot
+	source = stratisd-1.0.3.tar.gz::https://github.com/stratis-storage/stratisd/archive/v1.0.3.tar.gz
+	source = initcpio-install
+	source = stratisd-boot.service
+	sha256sums = 27e8dcae06b5bbb89ed4e798435f004fd86964400da7162fa2a56742cb4e9bc3
+	sha256sums = ba1812d04a837df55475d4348d4325f3cf4ceae30f963bd9e99a2eb81b0c9b63
+	sha256sums = 2fb79ecabe72885ae637412ad208d3c3290cf1a6754f4165366458714aa14ea9
+
+pkgname = stratisd-boot
+

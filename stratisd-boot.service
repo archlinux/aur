@@ -1,0 +1,17 @@
+[Unit]
+Description=Stratis boot daemon
+Documentation=man:stratisd(8)
+After=systemd-udevd.service
+Before=local-fs-pre.target
+Conflicts=stratisd.service
+DefaultDependencies=no
+
+[Service]
+ExecStart=/usr/bin/stratisd-boot --debug
+KillSignal=SIGINT
+Restart=on-abort
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=basic.target

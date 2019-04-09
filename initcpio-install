@@ -1,0 +1,51 @@
+#!/usr/bin/bash
+
+build() {
+  local mod
+  local symlink
+
+  # add necessary modules
+  for mod in dm-mod dm-snapshot dm-mirror dm-cache dm-cache-smq dm-thin-pool xfs; do
+    add_module "$mod"
+  done
+
+  # binaries from device-mapper
+  add_binary "dmsetup"
+
+  # add stratis-boot binary
+  add_binary "stratisd-boot"
+
+  # add thin-provisioning-tools
+  add_binary "pdata_tools"
+  for symlink in cache_{check,dump,meatadata_size,repair,restore} thin_{check,delta,dump,ls,metadata_size,repair,restore,rmap,trim}; do
+    add_symlink "/usr/bin/${symlink}" "pdata_tools"
+  done
+
+  # add xfs tools
+  for bin in mkfs.xfs xfs_db xfs_growfs; do
+    add_binary "${bin}"
+  done
+
+  # udev rules
+  add_file "/usr/lib/udev/rules.d/10-dm.rules"
+  add_file "/usr/lib/udev/rules.d/13-dm-disk.rules"
+  add_file "/usr/lib/udev/rules.d/95-dm-notify.rules"
+  add_file "/usr/lib/initcpio/udev/11-dm-initramfs.rules" "/usr/lib/udev/rules.d/11-dm-initramfs.rules"
+
+  # add service
+  add_file "/usr/lib/systemd/system/stratisd-boot.service"
+
+  # enable service
+  add_symlink "/var/run" "/run"
+  add_symlink \
+    "/etc/systemd/system/basic.target.wants/stratisd-boot.service" \
+    "/usr/lib/systemd/stratisd-boot.service"
+}
+
+help() {
+  cat <<HELPEOF
+This hook enables Stratis volumes in initramfs.
+HELPEOF
+}
+
+# vim: set ft=sh ts=2 sw=2 et:
