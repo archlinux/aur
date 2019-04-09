@@ -1,11 +1,11 @@
 # Maintainer: Jingbei Li <i@jingbei.lli>
 pkgname='kaldi'
 pkgdesc='Speech recognition research toolkit'
-pkgver=5.5.r8343.f89709c4f
+pkgver=5.5.r8510.76bdf206f
 pkgrel=1
 depends=('cblas' 'cub' 'kaldi-openfst' 'lapack' 'python2')
 optdepends=('cuda' 'kaldi-irstlm' 'kaldi-kaldi_lm' 'kaldi-sctk' 'kaldi-sph2pipe' 'kaldi-srilm')
-makedepends=('git' 'wget' 'sed' 'gcc7')
+makedepends=('git' 'wget' 'sed')
 arch=('x86_64' 'i686')
 url='https://github.com/kaldi-asr/kaldi'
 license=('APACHE')
@@ -36,7 +36,7 @@ prepare(){
 
 build () {
 	cd $srcdir/$pkgname/src
-	CXX=g++-7 \
+	#CXX=g++-7 \
 	LDFLAGS='-lcblas -llapack' \
 	./configure $_cuda_config_opts \
 		--shared \

@@ -1,6 +1,6 @@
 pkgbase = kaldi
 	pkgdesc = Speech recognition research toolkit
-	pkgver = 5.5.r8343.f89709c4f
+	pkgver = 5.5.r8510.76bdf206f
 	pkgrel = 1
 	url = https://github.com/kaldi-asr/kaldi
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = kaldi
 	makedepends = git
 	makedepends = wget
 	makedepends = sed
-	makedepends = gcc7
 	depends = cblas
 	depends = cub
 	depends = kaldi-openfst
