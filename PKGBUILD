@@ -6,8 +6,8 @@
 
 pkgname='electron-cash-git'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.0.1.r1.gd20caa928
-pkgrel=1
+pkgver=ios_4.0.2_build_200.r5.gb17cdd667
+pkgrel=2
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -71,8 +71,7 @@ build() {
 check() {
   cd "${pkgname}"
 
-  python setup.py sdist --format=gztar --disable-secp
-  tox -e py37 --installpkg "dist/Electron Cash-${pkgver/.r*}.tar.gz"
+  tox -e py37
 }
 
 package() {
