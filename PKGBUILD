@@ -10,7 +10,7 @@ url="http://netcat.sourceforge.net/"
 license=('GPL')
 replaces=('netcat')
 provides=('netcat')
-source=("http://downloads.sourceforge.net/sourceforge/netcat/netcat-$pkgver.tar.bz2")
+source=("https://downloads.sourceforge.net/sourceforge/netcat/netcat-$pkgver.tar.bz2")
 md5sums=('0a29eff1736ddb5effd0b1ec1f6fe0ef')
 
 build() {
