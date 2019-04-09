@@ -19,7 +19,7 @@ pkgbase = mingw-w64-winpthreads-git
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = git+https://git.code.sf.net/p/mingw-w64/mingw-w64
+	source = git+https://git.code.sf.net/p/mingw-w64/mingw-w64#commit=b13e8de242269cc58c219fec37516341de1f8310
 	sha256sums = SKIP
 
 pkgname = mingw-w64-winpthreads-git
