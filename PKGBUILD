@@ -2,14 +2,14 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-server-minimal
-pkgver=0.21.3
+pkgver=0.21.7
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback as server running under mpd user."
+arch=(i686 x86_64 armv7h)
 url="https://www.musicpd.org/"
-license=('GPL')
-arch=('i686' 'x86_64' 'armv7h')
-depends=('alsa-lib' 'flac' 'icu' 'libmpdclient' 'libsystemd' 'zlib')
-makedepends=('boost' 'meson')
+license=(GPL)
+depends=(alsa-lib flac icu libmpdclient systemd-libs zlib)
+makedepends=(boost meson)
 provides=("${_pkgname}=$pkgver")
 conflicts=("${_pkgname}")
 backup=("etc/${_pkgname}.conf")
@@ -17,12 +17,12 @@ source=("${url}/download/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz"
         "${_pkgname}.tmpfiles"
         "${_pkgname}.sysusers"
         "${_pkgname}.conf")
-sha256sums=('6cf60e644870c6063a008d833a6c876272b7679a400b83012ed209c15ce06e2a'
+sha256sums=('512062bc529bee04d4ccfaa2c6e720afc85bb071e49850a096b5ed518b3b412c'
             'SKIP'
             '93d5cd794c3b2709d24dd77900574683b04fa382c7eb0a2d26ddb51cbcf7adbf'
             '14d28690bb60d8d182499ebefa583fc42f425093ef00341be25bb66586aecf3d'
             'f40f68205834ca53cea3372e930bfe6c2f9ecc9df3b1605df2fec63a658b2e03')
-validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512') # Max Kellermann <max@musicpd.org>
+validpgpkeys=(0392335A78083894A4301C43236E8A58C6DB4512) # Max Kellermann <max@musicpd.org>
 
 prepare() {
     cd ${_pkgname}-${pkgver}
@@ -79,6 +79,7 @@ build() {
            '-Dopus=disabled'
            '-Dsidplay=disabled'
            '-Dsndfile=disabled'
+           '-Dtremor=disabled'
            '-Dvorbis=disabled'
            '-Dwavpack=disabled'
            '-Dwildmidi=disabled'
@@ -106,7 +107,6 @@ build() {
            '-Dexpat=disabled'
            '-Dicu=enabled'
            '-Diconv=disabled'
-           '-Dlibwrap=disabled'
            '-Dpcre=disabled'
            '-Dsqlite=disabled'
            '-Dyajl=disabled'
