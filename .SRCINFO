@@ -1,7 +1,7 @@
 pkgbase = gravit-designer-bin
 	pkgdesc = A cross-platform, free design tool for the 21st century empowering everyone to design
 	pkgver = 2019_1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://designer.io/
 	arch = x86_64
 	license = custom:freeware
@@ -17,7 +17,7 @@ pkgbase = gravit-designer-bin
 	source = gravit-designer-document.svg
 	source = gravit-designer.xml
 	source = LICENSE
-	md5sums = de8c4595b656cce1cbad1a264ca1cb1d
+	md5sums = 9d12e88309959840d88003ab25494274
 	md5sums = 17969adf6d872a541772e169658b82d1
 	md5sums = 70b0c1397df726a2ba0f16a4ff43993a
 	md5sums = fb3e19b45f7fe02bd959f20cc26e49d0
