@@ -1,7 +1,9 @@
-# Maintainer: Sheng Yu <magicfish1990@gmail.com>
+# Maintainer: antechnologic <antechnologic@pm.me>
+# Contributor: Sheng Yu <magicfish1990@gmail.com>
+# Contributor: Alex Talker <alextalker@yandex.ru>
 pkgname=udptunnel
 pkgver=r19
-pkgrel=1
+pkgrel=2
 pkgdesc="Tunnels TCP over UDP packets."
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/udptunnel/"
@@ -17,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://udptunnel.googlecode.com/files/$pkgname-$pkgver.tar.gz)
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/$pkgname/$pkgname-$pkgver.tar.gz)
 noextract=()
 md5sums=('277088842a092ac34977b371f9b24fc3')
 
