@@ -14,9 +14,7 @@ pkgbase = chess.app
 	depends = gnustep-gui
 	depends = gnustep-back
 	source = http://http.debian.net/debian/pool/main/c/chess.app/chess.app_2.8.orig.tar.gz
-	source = http://http.debian.net/debian/pool/main/c/chess.app/chess.app_2.8-1.debian.tar.xz
 	sha256sums = 0a504959ab9699b04055c6844fc62346f1791c67c155f2de62f885c674ab4bd8
-	sha256sums = f47f4926cc819a3a6268f731a72748e3f6d719da8d82ea75183fdb99edf58ce1
 
 pkgname = chess.app
 
