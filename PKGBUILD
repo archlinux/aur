@@ -58,7 +58,7 @@ package() {
 
     # Copy resources directory from deb package
     ar x $pkgname-$pkgver.deb $_debpack
-    mkdir deb
+    mkdir -p deb
     tar -C ./deb -xvf $_debpack ./opt/brave.com/brave/resources/
     cp -a --reflink=auto deb/opt/brave.com/brave/resources/ "$pkgdir/usr/lib/$pkgname"
 }
