@@ -5,6 +5,7 @@
 # Contributor: rkitover <rkitover@gmail.com>
 
 _pkgver=6.0.0
+_commit=b13e8de242269cc58c219fec37516341de1f8310 # conflict with gcc's own function
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-headers-git
@@ -19,7 +20,7 @@ makedepends=('git')
 provides=("mingw-w64-headers=${pkgver}")
 conflicts=('mingw-w64-headers')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("git+https://git.code.sf.net/p/mingw-w64/mingw-w64")
+source=("git+https://git.code.sf.net/p/mingw-w64/mingw-w64#commit=${_commit}")
 sha256sums=('SKIP')
 
 pkgver() {
