@@ -1,16 +1,15 @@
 # Maintainer: Josh Hoffer < hoffer.joshua@gmail.com > 
 pkgname=awx
-pkgver=3.0.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="AWX provides a web-based user interface, REST API, and task engine built on top of Ansible."
 arch=('any')
 url="https://github.com/ansible/awx"
-license=('Apache-2.0')
+license=('Apache')
 depends=('python2' 'gettext')
 makedepends=('python2-setuptools')
 options=(!emptydirs)
 source=("https://github.com/ansible/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('a2f47ca91edf0178686a5de7fd4cc784')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -23,3 +22,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+md5sums=('85879bded35749857dbd224c3e0eb152')
