@@ -1,6 +1,6 @@
 pkgbase = wesnoth-rcx-git
 	pkgdesc = small desktop application for previewing and recoloring Wesnoth graphics
-	pkgver = 0.2.1+23+gb71874b
+	pkgver = 0.2.1+34+g2afae74
 	pkgrel = 1
 	url = https://shadowm.ai0867.net/projects/wesnoth-rcx
 	arch = i686
