@@ -1,16 +1,16 @@
 # Maintainer: Marc Tiehuis <marctiehuis@gmail.com>
 
 pkgname=zig
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
-pkgdesc='a programming language prioritizing robustness, optimality, and clarity'
+pkgdesc='a programming language prioritizing robustness, optimality, and maintainability'
 arch=('x86_64')
 url='https://ziglang.org/'
 license=('MIT')
 depends=('clang' 'llvm')
 makedepends=('cmake' 'git')
 source=("https://ziglang.org/download/$pkgver/zig-$pkgver.tar.xz" 'force_dynamic_llvm.patch' 'no_stage2_artifacts.patch')
-sha256sums=('d70af604f3a8622f3393d93abb3e056bf60351e32d121e6fa4fe03d8d41e1f5a' 'SKIP' 'SKIP')
+sha256sums=('fec1f3f6b359a3d942e0a7f9157b3b30cde83927627a0e1ea95c54de3c526cfc' 'SKIP' 'SKIP')
 md5sums=('SKIP' 'f65ba29d9ffe19ff7e3d0f8cf64b0eab' 'cb0bbf9c19971a48eff41e8c764ac990')
 
 prepare() {
