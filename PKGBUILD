@@ -63,15 +63,21 @@ _srcver_arch=5.0.7-arch1
 pkgver=${_srcver_arch//-/.}
 pkgrel=1
 arch=(x86_64)
-url="https://evilpiepirate.org/git/"
+url="https://github.com/koverstreet/bcachefs"
 license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
-_gcc_more_v='20180509'
-_srcname=bcachefs
+
+_reponame="bcachefs"
+_repo_url="https://github.com/koverstreet/${_reponame}"
+
+_reponame_gcc_patch="kernel_gcc_patch"
+_repo_url_gcc_patch="https://github.com/graysky2/${_reponame_gcc_patch}"
+_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
+
 source=(
-    "$_srcname::git+https://github.com/koverstreet/bcachefs#branch=master"
-    "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
+    "git+${_repo_url}#branch=master"
+    "git+${_repo_url_gcc_patch}"
     config         # the main kernel config file
     60-linux.hook  # pacman hook for depmod
     90-linux.hook  # pacman hook for initramfs regeneration
@@ -82,7 +88,7 @@ validpgpkeys=(
     '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 sha256sums=('SKIP'
-            '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
+            'SKIP'
             'dc3293984d8d7a6a9fea503d8e4768a2397f6924ec2a79f0a2f6ad8117132ea5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
@@ -92,7 +98,7 @@ _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
 
 prepare() {
-    cd $_srcname
+    cd $_reponame
 
     msg2 "Adding patches from Arch Linux kernel repository..."
     git remote add arch_stable https://git.archlinux.org/linux.git
@@ -100,7 +106,7 @@ prepare() {
 
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching to enabled additional gcc CPU optimizatons..."
-    patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
+    patch -Np1 -i "$srcdir/${_reponame_gcc_patch}/${_gcc_patch_name}"
 
     msg2 "Setting version..."
     scripts/setlocalversion --save-scmversion
@@ -127,16 +133,16 @@ prepare() {
 
     ### Optionally load needed modules for the make localmodconfig
     # See https://aur.archlinux.org/packages/modprobed-db
-        if [ -n "$_localmodcfg" ]; then
-            msg "If you have modprobed-db installed, running it in recall mode now"
-            if [ -e /usr/bin/modprobed-db ]; then
-                [[ -x /usr/bin/sudo ]] || {
-                echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
-                exit 1; }
-                sudo /usr/bin/modprobed-db recall
-                make localmodconfig
-            fi
+    if [ -n "$_localmodcfg" ]; then
+        msg "If you have modprobed-db installed, running it in recall mode now"
+        if [ -e /usr/bin/modprobed-db ]; then
+            [[ -x /usr/bin/sudo ]] || {
+            echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
+            exit 1; }
+            sudo /usr/bin/modprobed-db recall
+            make localmodconfig
         fi
+    fi
 
     # do not run `make olddefconfig` as it sets default options
     yes "" | make config >/dev/null
@@ -151,7 +157,7 @@ prepare() {
 }
 
 build() {
-    cd $_srcname
+    cd $_reponame
     make bzImage modules htmldocs
 }
 
@@ -165,7 +171,7 @@ _package() {
     local kernver="$(<version)"
     local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-    cd $_srcname
+    cd $_reponame
 
     msg2 "Installing boot image..."
     # systemd expects to find the kernel here to allow hibernation
@@ -216,7 +222,7 @@ _package-headers() {
 
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-    cd $_srcname
+    cd $_reponame
 
     msg2 "Installing build files..."
     install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
@@ -298,7 +304,7 @@ _package-docs() {
 
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-    cd $_srcname
+    cd $_reponame
 
     msg2 "Installing documentation..."
     mkdir -p "$builddir"

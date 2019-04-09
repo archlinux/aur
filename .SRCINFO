@@ -1,7 +1,7 @@
 pkgbase = linux-bcachefs-git
 	pkgver = 5.0.7.arch1
 	pkgrel = 1
-	url = https://evilpiepirate.org/git/
+	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -13,8 +13,8 @@ pkgbase = linux-bcachefs-git
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = bcachefs::git+https://github.com/koverstreet/bcachefs#branch=master
-	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
+	source = git+https://github.com/koverstreet/bcachefs#branch=master
+	source = git+https://github.com/graysky2/kernel_gcc_patch
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -22,7 +22,7 @@ pkgbase = linux-bcachefs-git
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = SKIP
-	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
+	sha256sums = SKIP
 	sha256sums = dc3293984d8d7a6a9fea503d8e4768a2397f6924ec2a79f0a2f6ad8117132ea5
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
