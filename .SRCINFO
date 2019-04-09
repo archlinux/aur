@@ -12,6 +12,7 @@ pkgbase = openboard
 	depends = qt5-script
 	depends = qt5-webkit
 	depends = qt5-tools
+	depends = qt5-xmlpatterns
 	depends = libpaper
 	depends = bzip2
 	depends = openssl-1.0
