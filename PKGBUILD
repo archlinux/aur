@@ -56,8 +56,8 @@ package() {
 
     make DESTDIR="${pkgdir}" PREFIX="/usr" ROOT_SBINDIR="/usr/bin" INITRAMFS_DIR="/etc/initcpio" install
     
-    install -Dm644 "arch/etc/initcpio/hooks/bcachefs"
+    install -Dm644 "arch/etc/initcpio/hooks/bcachefs" \
                    "${pkgdir}/etc/initcpio/hooks/bcachefs"
-    install -Dm644 "arch/etc/initcpio/install/bcachefs"
+    install -Dm644 "arch/etc/initcpio/install/bcachefs" \
                    "${pkgdir}/etc/initcpio/install/bcachefs"
 }
