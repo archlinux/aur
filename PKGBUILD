@@ -56,8 +56,8 @@ prepare() {
 
     # Gradle 5.3 and Java 11 support
     export GIT_COMMITTER_NAME="aur" GIT_COMMITTER_EMAIL="aur"
-    git fetch https://github.com/skydrome/fred.git gradle-5
-    git cherry-pick f228ab0^..5a440f4
+    git fetch https://github.com/skydrome/fred.git gradle-5.3
+    git cherry-pick 1abf6fa6^..f696204a
 
     ln -sf "$srcdir/gradle.properties" .
     sed -i "$srcdir/plugin-WebOfTrust/build.xml" \
