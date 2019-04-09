@@ -2,12 +2,12 @@
 
 pkgname=geocentral-lite
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple desktop application for quick geocaches logging"
 arch=('x86_64')
 license=('custom')
 url="https://www.geocentral.pl/"
-depends=('java-runtime>=8')
+depends=('gtk3' 'java-runtime>=8')
 noextract=('geocentral-lite-1.0.5-linux64.jar')
 source=("https://www.geocentral.pl/files/${pkgname}-${pkgver}-linux64.jar"
         "${pkgname}"
@@ -26,6 +26,6 @@ package() {
 
     # Desktop launcher with icon
     install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -D -m644 "${srcdir}/${pkgname}.png"     "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -D -m644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
 

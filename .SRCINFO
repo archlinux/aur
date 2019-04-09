@@ -1,10 +1,11 @@
 pkgbase = geocentral-lite
 	pkgdesc = Simple desktop application for quick geocaches logging
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.geocentral.pl/
 	arch = x86_64
 	license = custom
+	depends = gtk3
 	depends = java-runtime>=8
 	noextract = geocentral-lite-1.0.5-linux64.jar
 	source = https://www.geocentral.pl/files/geocentral-lite-1.0.5-linux64.jar
