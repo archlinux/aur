@@ -2,7 +2,7 @@
 # Based on PKGBUILD from darkcoin-git maintained by Viliam Kubis <viliam dot kubis at gmail dot com>
 
 pkgname='dashcore'
-pkgver=0.13.1.0
+pkgver=0.13.3.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.dash.org/"
@@ -20,13 +20,11 @@ source=(
 )
 source_i686=("https://github.com/dashpay/dash/releases/download/v${pkgver}/dashcore-${pkgver}-i686-pc-linux-gnu.tar.gz")
 source_x86_64=("https://github.com/dashpay/dash/releases/download/v${pkgver}/dashcore-${pkgver}-x86_64-linux-gnu.tar.gz")
-sha256sums=(
-  'd719e01df4b47f4d6f0d4d6eac50d402bebb4127d0b6d64764fe2a42e903819b'
-  '41f83cb53ecf33688d899f83e09bd52f9aa8e6d7b9b0f30810f192988b26079a'
-  'b5290c16b194d488265f3af37a7ab74cb9fecea2de97b910670cefa4e0909853'
-)
-sha256sums_i686=('dee728869f4d4db06df2a9f10065e3620d8cbb71981a02b2916d7965090777a5')
-sha256sums_x86_64=('5ce96dbb8376e99f1e783f4ff77018d562778aac5a1249fbe4f4532c03df6432')
+sha256sums=('d719e01df4b47f4d6f0d4d6eac50d402bebb4127d0b6d64764fe2a42e903819b'
+            '41f83cb53ecf33688d899f83e09bd52f9aa8e6d7b9b0f30810f192988b26079a'
+            'b5290c16b194d488265f3af37a7ab74cb9fecea2de97b910670cefa4e0909853')
+sha256sums_i686=('9cf8a72c58b527b3510c966c97260e69f72eac5b6c2e51926674a47e46982cf3')
+sha256sums_x86_64=('1da7bf1c201259c7ed9304c64e40a07bcce757af5e3fe4f4d8ae0632b2f39f51')
 
 package() {
   install -D -m755 "$srcdir/$pkgname-${pkgver%.*}/bin/dash-qt" "$pkgdir/usr/bin/dash-qt"
