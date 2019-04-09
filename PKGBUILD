@@ -5,7 +5,7 @@
 _pkgname=jasper
 pkgname=lib32-${_pkgname}
 pkgver=2.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard (32-bit)"
 arch=('x86_64')
 url="http://www.ece.uvic.ca/~mdadams/jasper/"
@@ -14,7 +14,7 @@ depends=('lib32-libjpeg' 'jasper')
 optdepends=('jasper-doc: documentation'
             'lib32-freeglut: jiv support'
             'lib32-glu: jiv support')
-makedepends=('lib32-freeglut' 'lib32-libxmu' 'lib32-glu' 'cmake' 'doxygen')
+makedepends=('lib32-freeglut' 'lib32-libxmu' 'lib32-glu' 'cmake')
 options=('staticlibs')
 source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/mdadams/jasper/archive/version-${pkgver}.tar.gz
         jasper-1.900.1-fix-filename-buffer-overflow.patch)
@@ -43,6 +43,7 @@ build() {
     -DJAS_ENABLE_LIBJPEG=ON
     -DJAS_ENABLE_AUTOMATIC_DEPENDENCIES=OFF
     -DCMAKE_SKIP_RPATH=ON
+    -DJAS_ENABLE_DOC=OFF                # Do not build documentation - is already available in extra/jasper-doc
   )
   msg2 "Building static lib..."
   (cd build-static
