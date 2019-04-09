@@ -3,7 +3,7 @@
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-windows
-pkgver=2019.1.0b10
+pkgver=2019.1.0f1
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the Windows platform"
 arch=('x86_64')
@@ -11,8 +11,8 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-beta')
 makedepends=('cpio')
-source=("2019.1.0b10.1.0b10.pkg::https://beta.unity3d.com/download/dbf1e96a8b63/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-2019.1.0b10.pkg")
-md5sums=("8db7da14fb90cfc72cc523ed627a832c")
+source=("2019.1.0f1.1.0f1.pkg::https://beta.unity3d.com/download/5c52223b18d4/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-2019.1.0f1.pkg")
+md5sums=("fda78ea1cdc3bc83eb07b81149212b02")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
