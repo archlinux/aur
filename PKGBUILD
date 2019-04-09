@@ -3,7 +3,7 @@
 _prefix=/opt/Unity
 
 pkgname=unity-editor-webgl
-pkgver=2018.3.11f1
+pkgver=2018.3.12f1
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the WebGL platform"
 arch=('x86_64')
@@ -13,8 +13,8 @@ depends=('unity-editor'
          'ffmpeg'
          'gzip'
          'ncurses5-compat-libs')
-source=("2018.3.11f1.3.11f1.tar.xz::https://download.unity3d.com/download_unity/5063218e4ab8/LinuxEditorTargetInstaller/UnitySetup-WebGL-Support-for-Editor-2018.3.11f1.tar.xz")
-md5sums=("280de6cb07907039fb823a48e584168d")
+source=("2018.3.12f1.3.12f1.tar.xz::https://download.unity3d.com/download_unity/8afd630d1f5b/LinuxEditorTargetInstaller/UnitySetup-WebGL-Support-for-Editor-2018.3.12f1.tar.xz")
+md5sums=("474d21090e307ece89641693cadc848d")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
