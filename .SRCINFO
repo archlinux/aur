@@ -1,7 +1,7 @@
 pkgbase = openboard
 	pkgdesc = Interactive whiteboard software for schools and universities
 	pkgver = 1.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openboard.ch/index.en.html
 	arch = x86_64
 	arch = i686

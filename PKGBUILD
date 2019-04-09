@@ -1,7 +1,7 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=openboard
 pkgver=1.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
@@ -71,7 +71,7 @@ package() {
   cp -rp build/linux/release/product/OpenBoard $pkgdir/opt/openboard/
 
   mkdir -p $pkgdir/usr/share/applications
-  cp -rp $srcdir/openboard.desktop $pkgdir/usr/share/applications
+  cp $srcdir/openboard.desktop $pkgdir/usr/share/applications
 
   mkdir -p $pkgdir/usr/bin
   ln -s /opt/openboard/OpenBoard $pkgdir/usr/bin/openboard
