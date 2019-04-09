@@ -59,13 +59,12 @@ post_remove() {
 		/sbin/ldconfig
 	fi
 	# Remove cnbp* libs
-	for LIBS in libcnnet
-	do
+	for LIBS in libcnnet; do
 		if [ -h /usr/lib32/${LIBS}.so ]; then
-			rm -f /usr/lib32/${LIBS}.so
+			unlink /usr/lib32/${LIBS}.so
 		fi	
 	done
-	if [ "$1" = 0 ] ; then
+	if [ "$1" = 0 ]; then
 		rmdir -p --ignore-fail-on-non-empty /usr/lib32/bjlib
 	fi
 
@@ -85,10 +84,9 @@ post_remove() {
 		/sbin/ldconfig
 	fi
 	# Remove cnbp* libs
-	for LIBS in libcnbpcmcm libcnbpcnclapi libcnbpcnclbjcmd libcnbpcnclui libcnbpess libcnbpo
-	do
+	for LIBS in libcnbpcmcm libcnbpcnclapi libcnbpcnclbjcmd libcnbpcnclui libcnbpess libcnbpo; do
 		if [ -h /usr/lib32/${LIBS}${model_num}.so ]; then
-			rm -f /usr/lib32/${LIBS}${model_num}.so
+			unlink /usr/lib32/${LIBS}${model_num}.so
 		fi	
 	done
 	# Remove directories
@@ -98,7 +96,7 @@ post_remove() {
 		rmdir -p --ignore-fail-on-non-empty /usr/share/printui${model_name}
 	fi
 	# Remove symbolic link for ppd
-	rm -f ${_cups_path2}/${ppd_name}
+	unlink ${_cups_path2}/${ppd_name}
 	update-desktop-database -q
 
 	
@@ -111,15 +109,15 @@ post_remove() {
 	for LIBS in libcncpmsimg libcncpmslld libcncpcmcm libcncpmsui libcncpnet
 	do
 		if [ -h /usr/lib32/${LIBS}.so ]; then
-			rm -f /usr/lib32/${LIBS}.so
+			unlink /usr/lib32/${LIBS}.so
 		fi	
 	done
 
 	# Remove symbolic link for GIMP-plug-in
 	if [ -d ${_gimp2dir1} ]; then
-		rm -f ${_gimp2dir1}/scangearmp	
+		unlink ${_gimp2dir1}/scangearmp	
 	elif [ -d ${_gimp2dir2} ]; then
-		rm -f ${_gimp2dir2}/scangearmp
+		unlink ${_gimp2dir2}/scangearmp
 	fi
 
 	# Remove sgmp_setting files
@@ -136,20 +134,19 @@ post_remove() {
 		/sbin/ldconfig
 	fi
 	# Remove cncp* libs
-	for LIBS in libcncpmsimg libcncpmslld
-	do
+	for LIBS in libcncpmsimg libcncpmslld; do
 		if [ -h /usr/lib32/${LIBS}${model_num}.so ]; then
-			rm -f /usr/lib32/${LIBS}${model_num}.so
+			unlink /usr/lib32/${LIBS}${model_num}.so
 		fi	
 		if [ -h /usr/lib32/${LIBS}${model_num}c.so ]; then
-			rm -f /usr/lib32/${LIBS}${model_num}c.so
+			unlink /usr/lib32/${LIBS}${model_num}c.so
 		fi	
 	done
 	# Remove .desktop file and icon
-	if [ -h /usr/share/applications/canon-pixma-mx870-complete-scangearmp.desktop ]; then
+	if [ -f /usr/share/applications/canon-pixma-mx870-complete-scangearmp.desktop ]; then
 		rm -f /usr/share/applications/canon-pixma-mx870-complete-scangearmp.desktop
 	fi
-	if [ -h /usr/share/pixmaps/canon-pixma-mx870-complete-scangearmp-icon.png ]; then
+	if [ -f /usr/share/pixmaps/canon-pixma-mx870-complete-scangearmp-icon.png ]; then
 		rm -f /usr/share/pixmaps/canon-pixma-mx870-complete-scangearmp-icon.png
 	fi
 }
