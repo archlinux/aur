@@ -16,7 +16,6 @@ pkgbase = fetchmail
 	source = fetchmail.tmpfiles
 	source = fetchmail.sysusers
 	source = fetchmail.service
-	validpgpkeys = FDD00C436E3307E10758C6A8BE618339052E7D95
 	sha1sums = de8dbe62a8edfa232ee4278257a1fe67aa1c797a
 	sha1sums = SKIP
 	sha1sums = dab3bf46b033e8ee7cadc020c1fb4ce325f46693

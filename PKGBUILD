@@ -19,7 +19,6 @@ sha1sums=('de8dbe62a8edfa232ee4278257a1fe67aa1c797a'
           '199ba749c829f22286c34aabcf8b7dd5bbd7c0e6'
           'b113cb61a866eff53cd8f113d084a99f01bf5d77'
           '0fc1870a33d1e0efb70169ddf1b6adc9d253e076')
-validpgpkeys=('FDD00C436E3307E10758C6A8BE618339052E7D95')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
