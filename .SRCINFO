@@ -1,0 +1,19 @@
+pkgbase = selfdock-git
+	pkgdesc = Docker alternative.
+	pkgver = r27.f08bf10
+	pkgrel = 1
+	url = https://github.com/anordal/selfdock
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = narg
+	provides = selfdock=r27.f08bf10
+	conflicts = selfdock
+	source = selfdock::git+https://github.com/anordal/selfdock.git
+	md5sums = SKIP
+
+pkgname = selfdock-git
+
