@@ -6,7 +6,7 @@
 # Conttributor: xiretza <xiretza+aur@gmail.com>
 
 pkgname=wine-valve-git
-pkgver=3.16.20190307
+pkgver=4.2.r270.g06353f78c3
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (Valve version)'
 arch=('i686' 'x86_64')
@@ -81,7 +81,7 @@ optdepends=(
 )
 options=('staticlibs')
 install="$pkgname.install"
-source=("$pkgname::git+https://github.com/ValveSoftware/wine.git"
+source=("$pkgname::git+https://github.com/ValveSoftware/wine.git#branch=proton_4.2"
         '30-win32-aliases.conf'
         'wine-binfmt.conf')
 
@@ -100,10 +100,16 @@ else
     replaces=('bin32-wine')
 fi
 
+#pkgver() {
+#  cd "$pkgname"
+#  # cutting off 'wine-' prefix that presents in the git tag
+#  echo 3.16.$(git log -1 --format="%cd" --date=short | sed 's|-||g')
+#}
+
 pkgver() {
+#  cd "$srcdir"
   cd "$pkgname"
-  # cutting off 'wine-' prefix that presents in the git tag
-  echo 3.16.$(git log -1 --format="%cd" --date=short | sed 's|-||g')
+  git describe --always | sed 's/^wine-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 prepare() {
     cd "$pkgname"

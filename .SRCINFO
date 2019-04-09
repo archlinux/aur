@@ -1,6 +1,6 @@
 pkgbase = wine-valve-git
 	pkgdesc = A compatibility layer for running Windows programs (Valve version)
-	pkgver = 3.16.20190307
+	pkgver = 4.2.r270.g06353f78c3
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/wine.git
 	install = wine-valve-git.install
@@ -127,10 +127,10 @@ pkgbase = wine-valve-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=3.16.20190307
-	provides = bin32-wine=3.16.20190307
-	provides = wine-wow64=3.16.20190307
-	provides = wine-valve=3.16.20190307
+	provides = wine=4.2.r270.g06353f78c3
+	provides = bin32-wine=4.2.r270.g06353f78c3
+	provides = wine-wow64=4.2.r270.g06353f78c3
+	provides = wine-valve=4.2.r270.g06353f78c3
 	conflicts = wine
 	conflicts = wine-staging
 	conflicts = wine-staging-git
@@ -138,7 +138,7 @@ pkgbase = wine-valve-git
 	conflicts = wine-wow64
 	replaces = bin32-wine
 	options = staticlibs
-	source = wine-valve-git::git+https://github.com/ValveSoftware/wine.git
+	source = wine-valve-git::git+https://github.com/ValveSoftware/wine.git#branch=proton_4.2
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	sha256sums = SKIP
