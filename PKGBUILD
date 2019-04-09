@@ -3,15 +3,15 @@
 _prefix=/opt/Unity
 
 pkgname=unity-editor-ios
-pkgver=2018.3.11f1
+pkgver=2018.3.12f1
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the iOS platform"
 arch=('x86_64')
 url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor')
-source=("2018.3.11f1.3.11f1.tar.xz::https://download.unity3d.com/download_unity/5063218e4ab8/LinuxEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-2018.3.11f1.tar.xz")
-md5sums=("eca9a42ba9af5887e60f3485f62960ea")
+source=("2018.3.12f1.3.12f1.tar.xz::https://download.unity3d.com/download_unity/8afd630d1f5b/LinuxEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-2018.3.12f1.tar.xz")
+md5sums=("4484406262605c404c9fedd3542f1a7c")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
