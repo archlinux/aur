@@ -3,7 +3,7 @@
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts-android
-pkgver=2017.4.24f1
+pkgver=2017.4.25f1
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the Android platform"
 arch=('x86_64')
@@ -15,8 +15,8 @@ depends=('unity-editor-lts'
          'android-udev')
 makedepends=('cpio')
 optdepends=('android-ndk-13b: needed for IL2CPP builds')
-source=("2017.4.24f1.4.24f1.pkg::https://download.unity3d.com/download_unity/786769fc3439/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2017.4.24f1.pkg")
-md5sums=("3609120f037c7c254b53b05811ec3046")
+source=("2017.4.25f1.4.25f1.pkg::https://download.unity3d.com/download_unity/9cba1c3a94f1/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2017.4.25f1.pkg")
+md5sums=("0378ccc689fd21e846fcf86fe51ba17b")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
