@@ -2,19 +2,19 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-minimal
-pkgver=0.21.3
+pkgver=0.21.7
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback through socket connection as user."
+arch=(i686 x86_64 armv7h)
 url="https://www.musicpd.org/"
-license=('GPL')
-arch=('i686' 'x86_64' 'armv7h')
-depends=('alsa-lib' 'flac' 'icu' 'libmpdclient' 'libsystemd' 'zlib')
-makedepends=('boost' 'meson')
+license=(GPL)
+depends=(alsa-lib flac icu libmpdclient systemd-libs zlib)
+makedepends=(boost meson)
 provides=("${_pkgname}=$pkgver")
 conflicts=("${_pkgname}")
 source=("${url}/download/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('6cf60e644870c6063a008d833a6c876272b7679a400b83012ed209c15ce06e2a' 'SKIP')
-validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512') # Max Kellermann <max@musicpd.org>
+sha256sums=(512062bc529bee04d4ccfaa2c6e720afc85bb071e49850a096b5ed518b3b412c SKIP)
+validpgpkeys=(0392335A78083894A4301C43236E8A58C6DB4512) # Max Kellermann <max@musicpd.org>
 
 prepare() {
     cd ${_pkgname}-${pkgver}
@@ -69,6 +69,7 @@ build() {
            '-Dopus=disabled'
            '-Dsidplay=disabled'
            '-Dsndfile=disabled'
+           '-Dtremor=disabled'
            '-Dvorbis=disabled'
            '-Dwavpack=disabled'
            '-Dwildmidi=disabled'
@@ -96,7 +97,6 @@ build() {
            '-Dexpat=disabled'
            '-Dicu=enabled'
            '-Diconv=disabled'
-           '-Dlibwrap=disabled'
            '-Dpcre=disabled'
            '-Dsqlite=disabled'
            '-Dyajl=disabled'
