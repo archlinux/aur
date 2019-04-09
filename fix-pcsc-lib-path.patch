@@ -1,0 +1,15 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index ff6bb6c..9b8a244 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -29,9 +29,9 @@ install_ifdnfc_config:
+ 	$(mkinstalldirs) $(ifdnfcdropdir)/
+ 	cp Info.plist $(DESTDIR)$(usbdropdir)/$(IFDNFC_BUNDLE)/Contents/
+ 	$(mkinstalldirs) $(DESTDIR)$(sysconfdir)/reader.conf.d
+ 	sed "s#TARGETNAME#`awk '/IFDNFC_READER_NAME/ {print $$3}' $(srcdir)/ifd-nfc.h`#;\
+-	s#TARGETPATH#$(ifdnfcdropdir)/$(IFDNFC_LIB).$(VERSION)#"   $(srcdir)/reader.conf.in \
++	s#TARGETPATH#$(usbdropdir)/$(IFDNFC_BUNDLE)/Contents/$(BUNDLE_HOST)/$(IFDNFC_LIB).$(VERSION)#"   $(srcdir)/reader.conf.in \
+ 		> $(DESTDIR)$(sysconfdir)/reader.conf.d/ifdnfc
+ 
+ install_ifdnfc_activate: ifdnfc-activate
+ 	$(mkinstalldirs) $(DESTDIR)$(bindir)
