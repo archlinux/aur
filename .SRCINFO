@@ -1,30 +1,27 @@
-pkgbase = seexpr
+pkgbase = seexpr-qt5
 	pkgdesc = An embeddable expression evaluation engine
 	pkgver = 2.11
 	pkgrel = 1
-	url = http://www.disneyanimation.com/technology/seexpr.html
-	arch = i686
+	url = https://www.disneyanimation.com/technology/seexpr.html
 	arch = x86_64
 	license = custom:Apache
-	makedepends = python2-pyqt4
+	makedepends = python2-pyqt5
 	makedepends = doxygen
 	makedepends = libpng
 	makedepends = cmake
 	makedepends = git
 	makedepends = python2-sip
 	depends = python2
-	depends = qt4
-	optdepends = python2-pyqt4: Editor support
+	depends = qt5-base
+	optdepends = python2-pyqt5: Editor support
 	provides = seexpr
 	conflicts = seexpr
-	source = git+https://github.com/wdas/SeExpr.git#tag=v2.11
-	source = build.patch
+	source = git+https://github.com/termhn/SeExpr.git#branch=appleseed-qt5
 	md5sums = SKIP
-	md5sums = ad7a72d539fbb5b899f26f7fd1cfc950
 
-pkgname = seexpr
+pkgname = seexpr-qt5
 
-pkgname = seexpr-doc
+pkgname = seexpr-qt5-doc
 	arch = any
 	depends = 
 	optdepends = 

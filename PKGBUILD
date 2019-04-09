@@ -1,38 +1,32 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-pkgname=('seexpr' 'seexpr-doc')
-_fragment="#tag=v2.11"
+pkgname=('seexpr-qt5' 'seexpr-qt5-doc')
+_fragment="#branch=appleseed-qt5"
 pkgver=2.11
 pkgrel=1
 pkgdesc="An embeddable expression evaluation engine"
-arch=('i686' 'x86_64')
-url="http://www.disneyanimation.com/technology/seexpr.html"
+arch=(x86_64)
+url="https://www.disneyanimation.com/technology/seexpr.html"
 license=('custom:Apache')
-depends=('python2' 'qt4')
-optdepends=('python2-pyqt4: Editor support')
+depends=('python2' 'qt5-base')
+optdepends=('python2-pyqt5: Editor support')
 #makedepends=('python2-pyqt4' 'doxygen' 'glew' 'libpng' 'cmake>=2.4.6' 'git' 'python-sip' 'boost' 'llvm')
-makedepends=('python2-pyqt4' 'doxygen' 'libpng' 'cmake' 'git' 'python2-sip')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
-source=("git+https://github.com/wdas/SeExpr.git${_fragment}"
-        "build.patch")
+makedepends=('python2-pyqt5' 'doxygen' 'libpng' 'cmake' 'git' 'python2-sip')
+provides=("${pkgname[0]%-qt5}")
+conflicts=("${pkgname[0]%-qt5}")
+source=("git+https://github.com/termhn/SeExpr.git${_fragment}"
+        )
 md5sums=('SKIP'
-         'ad7a72d539fbb5b899f26f7fd1cfc950')
-
-prepare() {
-  cd ${srcdir}/SeExpr
-  sed -i 's/env python/env python2/' src/build/build-info
-  patch -Np1 -i ../build.patch 
-}
+         )
 
 build() {
   cd "$srcdir/SeExpr"
   mkdir -p build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_INSTALL_LIBDIR='/usr/lib' ..
-  make
+  make all doc
 }
 
-package_seexpr() {
+package_seexpr-qt5() {
   cd "$srcdir/SeExpr/build"
   make DESTDIR="$pkgdir/" install
   # remove doc
@@ -42,7 +36,7 @@ package_seexpr() {
   install -D -m644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-package_seexpr-doc() {
+package_seexpr-qt5-doc() {
 #reset defs
   arch=('any')
   depends=()
