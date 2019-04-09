@@ -1,18 +1,18 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=qdigidoc4
-pkgver=4.2.0.43
+pkgver=4.2.1.48
 pkgrel=1
 pkgdesc="DigiDoc4 Client is an application for digitally signing and encrypting documents; the software includes functionality to manage Estonian ID-card - change pin codes, update certificates etc."
 arch=('x86_64' 'i686')
 url="http://www.id.ee/"
 license=('LGPL2.1')
-depends=('libdigidocpp>=3.13.6' 'opensc>=0.18.0' 'qt5-svg' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('libdigidocpp>=3.13.9' 'opensc>=0.18.0' 'qt5-svg' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('cmake' 'qt5-tools' 'qt5-translations')
 optdepends=('ccid: smart card support')
 conflicts=('qdigidoc' 'qesteidutil')
 provides=('qdigidoc' 'qesteidutil')
 source=("https://installer.id.ee/media/ubuntu/pool/main/q/$pkgname/${pkgname}_$pkgver.orig.tar.xz")
-sha256sums=('1f2efa3d99e3f0da689e194161377306d7de2b25840b2398d7a4c67f4105ed2a')
+sha256sums=('bd143f2ca779449c965be4f023dd00c1cc6fc8a90d7045b3ab0a0ced4aa84198')
 
 prepare() {
   [[ -d "$pkgname-build" ]] && rm -r "$pkgname-build"
