@@ -12,7 +12,7 @@ _ubuntuver=16.04
 
 pkgname=acestream-engine-stable
 pkgver=3.1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="P2P utility for efficient data storage and transfer (stable version)"
 arch=("x86_64")
 url="http://acestream.org/"
@@ -28,7 +28,7 @@ depends=(
 optdepends=("python2-libappindicator: GTK2 GUI")
 provides=("acestream-engine")
 conflicts=("acestream-engine")
-backup=("opt/acestream/acestream.conf")
+backup=("usr/lib/acestream/acestream.conf")
 install="acestream-engine.install"
 source=(
     "acestream-engine.service"
@@ -44,23 +44,23 @@ sha256sums=(
 )
 
 package() {
-    mkdir -p "$pkgdir/opt/acestream/"
+    mkdir -p "$pkgdir/usr/lib/acestream/"
     mkdir -p "$pkgdir/usr/bin"
     
     cd "$srcdir/acestream_${pkgver}_ubuntu_${_ubuntuver}_$CARCH"
-    sed -i "/ROOT=/c\ROOT=\/opt\/acestream" "start-engine"
+    sed -i "/ROOT=/c\ROOT=\/usr/lib\/acestream" "start-engine"
     
-    install -Dm755 "acestreamengine" "$pkgdir/opt/acestream/acestreamengine"
-    install -Dm755 "start-engine" "$pkgdir/opt/acestream/start-engine"
+    install -Dm755 "acestreamengine" "$pkgdir/usr/lib/acestream/acestreamengine"
+    install -Dm755 "start-engine" "$pkgdir/usr/lib/acestream/start-engine"
     install -Dm644 "$srcdir/acestream-engine.service" "$pkgdir/usr/lib/systemd/system/acestream-engine.service"
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/opt/acestream/LICENSE"
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/lib/acestream/LICENSE"
 
-    cp -a "acestream.conf" "$pkgdir/opt/acestream/acestream.conf"
-    cp -a "data" "$pkgdir/opt/acestream/"
-    cp -a "lib" "$pkgdir/opt/acestream/"
-    cp -a "$srcdir/usr/lib/python2.7/site-packages/M2Crypto" "$pkgdir/opt/acestream/lib"
+    cp -a "acestream.conf" "$pkgdir/usr/lib/acestream/acestream.conf"
+    cp -a "data" "$pkgdir/usr/lib/acestream/"
+    cp -a "lib" "$pkgdir/usr/lib/acestream/"
+    cp -a "$srcdir/usr/lib/python2.7/site-packages/M2Crypto" "$pkgdir/usr/lib/acestream/lib"
 
-    rm "$pkgdir/opt/acestream/lib/lxml-3.7.2-py2.7-linux-x86_64.egg"
+    rm "$pkgdir/usr/lib/acestream/lib/lxml-3.7.2-py2.7-linux-x86_64.egg"
 
-    ln -sf "/opt/acestream/start-engine" "$pkgdir/usr/bin/acestreamengine"
+    ln -sf "/usr/lib/acestream/start-engine" "$pkgdir/usr/bin/acestreamengine"
 }
