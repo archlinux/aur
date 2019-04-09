@@ -6,7 +6,7 @@
 # Contributor: moostik <mooostik at gmail dot com>
 
 pkgname=geogebra-5
-pkgver=5.0.587.0
+pkgver=5.0.588.0
 pkgrel=2
 pkgdesc="Dynamic mathematics software with interactive graphics, algebra and spreadsheet"
 arch=('any')
@@ -22,7 +22,7 @@ source=("https://download.geogebra.org/installers/5.0/GeoGebra-Linux-Portable-${
         "geogebra.desktop"
         "geogebra-mime.xml")
 
-sha512sums=('6481f68aae1689f2c0849c0472d81fe66e59552d0583124c4cf9a08dafcfca86dd327e92365d5156bfa1d5749a538e43587343ded8a2ebbf0c069586f6acb395'
+sha512sums=('56a87e2b23535b1239bc5d15b585f64a9391d9e2b30ab86d15da2d013de2b3bdb3b028e79d9553159f74a37220b3340cec066d470eda7d197744a88c4f55e8ee'
             'a946acb8867f497c68ce6f8fff8172da4a43a9ca118aafcc5ac414318fd52c4bc6ada387bdfa296f0ff2e1d7411ae345b61197b4adaa3f54299aab837647df55'
             '65f49cc85ee450e52c7ba8d2f9222a64a81571630afee032c4b680dea35e3c48e5e96d60148bd25163b3e3bdf1b99e55fb8ec010a7f3a47a64ad3b957a232f7b'
             '64954e749dcd8a9233a932718a4722aab5dfcde868d93998b64f79d54e51c2c34b545665f191f041455f1e945fa46b273417089981d6dff8ed8256519f7e8ae6'
