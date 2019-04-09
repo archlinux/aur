@@ -1,32 +1,29 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
-# Co-Maintainer: Konstantin Gizdov <arch@kge.pw>
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Contributor: Konstantin Gizdov <arch@kge.pw>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
 
-pkgname=(gcc7 gcc7-libs)
+pkgbase=gcc7
+pkgname=(gcc7 gcc7-libs gcc7-fortran)
 pkgver=7.4.1+20181207
 _pkgver=7
 _majorver=${pkgver:0:1}
 _islver=0.18
-pkgrel=3
+pkgrel=4
 pkgdesc='The GNU Compiler Collection (7.x.x)'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url='http://gcc.gnu.org'
-makedepends=(binutils libmpc doxygen python)
-checkdepends=(dejagnu inetutils)
+makedepends=(binutils libmpc doxygen python subversion)
 options=(!emptydirs)
-source=(https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz{,.sig}
+source=(https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
         bz84080.patch)
-validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
-              13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
-              8FC15A064950A99DD1BD14DD39E4B877E62EB915) # svenstaro@gmail.com
 sha256sums=('7686fdae9dd09ad38a2c93374396eec4eaadb7df4960f9401d1f544162fd094f'
-            'SKIP'
             '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
             'bce05807443558db55f0d6b4dae37a678ea1bb3388b541c876fe3d110e3717e7')
 
@@ -88,7 +85,7 @@ build() {
       --mandir=/usr/share/man \
       --infodir=/usr/share/info \
       --with-bugurl=https://bugs.archlinux.org/ \
-      --enable-languages=c,c++,lto \
+      --enable-languages=c,c++,fortran,lto \
       --disable-multilib \
       --enable-shared \
       --enable-threads=posix \
@@ -120,14 +117,6 @@ build() {
   make -C $CHOST/libstdc++-v3/doc doc-man-doxygen
 }
 
-check() {
-  cd gcc-build
-
-  # do not abort on error as some are "expected"
-  make -k check || true
-  "$srcdir/gcc/contrib/test_summary"
-}
-
 package_gcc7-libs() {
   pkgdesc='Runtime libraries shipped by GCC (7.x.x)'
   depends=('glibc>=2.27')
@@ -140,6 +129,7 @@ package_gcc7-libs() {
 
   for lib in libatomic \
              libcilkrts \
+             libgfortran \
              libgomp \
              libitm \
              libquadmath \
@@ -211,4 +201,23 @@ package_gcc7() {
 
   # Remove conflicting files
   rm -rf "$pkgdir"/usr/share/locale
+}
+
+package_gcc7-fortran() {
+  pkgdesc="Fortran front-end for GCC (7.x.x)"
+  depends=("gcc7=$pkgver-$pkgrel")
+  options=('!emptydirs')
+
+  cd gcc-build
+  make -C $CHOST/libgfortran DESTDIR=$pkgdir install-cafexeclibLTLIBRARIES \
+    install-{toolexeclibDATA,nodist_fincludeHEADERS}
+  make -C $CHOST/libgomp DESTDIR=$pkgdir install-nodist_fincludeHEADERS
+  make -C gcc DESTDIR=$pkgdir fortran.install-common
+  install -Dm755 gcc/f951 $pkgdir/${_libdir}/f951
+
+  ln -s gfortran-7 ${pkgdir}/usr/bin/f95-${_pkgver}
+
+  # Install Runtime Library Exception
+  install -d ${pkgdir}/usr/share/licenses/$pkgname
+  ln -s ../gcc-libs/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/$pkgname/
 }

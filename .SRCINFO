@@ -1,35 +1,29 @@
 pkgbase = gcc7
 	pkgdesc = The GNU Compiler Collection (7.x.x)
 	pkgver = 7.4.1+20181207
-	pkgrel = 3
+	pkgrel = 4
 	url = http://gcc.gnu.org
 	arch = x86_64
 	license = GPL
 	license = LGPL
 	license = FDL
 	license = custom
-	checkdepends = dejagnu
-	checkdepends = inetutils
 	makedepends = binutils
 	makedepends = libmpc
 	makedepends = doxygen
 	makedepends = python
+	makedepends = subversion
 	options = !emptydirs
 	source = https://sources.archlinux.org/other/gcc/gcc-7.4.1-20181207.tar.xz
-	source = https://sources.archlinux.org/other/gcc/gcc-7.4.1-20181207.tar.xz.sig
 	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
 	source = bz84080.patch
-	validpgpkeys = F3691687D867B81B51CE07D9BBE43771487328A9
-	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
-	validpgpkeys = 8FC15A064950A99DD1BD14DD39E4B877E62EB915
 	sha256sums = 7686fdae9dd09ad38a2c93374396eec4eaadb7df4960f9401d1f544162fd094f
-	sha256sums = SKIP
 	sha256sums = 6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b
 	sha256sums = bce05807443558db55f0d6b4dae37a678ea1bb3388b541c876fe3d110e3717e7
 
 pkgname = gcc7
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (7.x.x)
-	depends = gcc7-libs=7.4.1+20181207-3
+	depends = gcc7-libs=7.4.1+20181207-4
 	depends = binutils>=2.28
 	depends = libmpc
 	options = !emptydirs
@@ -40,4 +34,9 @@ pkgname = gcc7-libs
 	depends = glibc>=2.27
 	options = !emptydirs
 	options = !strip
+
+pkgname = gcc7-fortran
+	pkgdesc = Fortran front-end for GCC (7.x.x)
+	depends = gcc7=7.4.1+20181207-4
+	options = !emptydirs
 
