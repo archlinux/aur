@@ -1,26 +1,26 @@
 pkgbase = bcachefs-tools-git
-	pkgdesc = bcachefs filesystem utilities
+	pkgdesc = BCacheFS filesystem utilities
 	pkgver = 441
 	pkgrel = 1
-	url = https://evilpiepirate.org/git/bcachefs-tools.git/
+	url = https://github.com/koverstreet/bcachefs-tools
 	install = bcachefs-tools-git.install
 	arch = x86_64
 	license = GPL2
+	makedepends = attr
 	makedepends = git
+	makedepends = keyutils
+	makedepends = libaio
 	makedepends = libscrypt
 	makedepends = libsodium
-	makedepends = attr
+	makedepends = liburcu
 	makedepends = libutil-linux
-	makedepends = keyutils
 	makedepends = pkgconf
 	makedepends = zlib
-	makedepends = liburcu
-	makedepends = libaio
 	provides = bcachefs-tools
-	source = git+https://evilpiepirate.org/git/bcachefs-tools
-	source = ad41c2fb76a96f772d75f3b4b7687fcd29aa0574.patch
-	sha512sums = SKIP
-	sha512sums = 0468db1a0b50fd368c0ded997c027ae87178f53293543151510f9683f3435c949462ee5c5f57fc1b790d304a01f2c9ece1cb893b6afc5f6e285ea39d01a95a24
+	source = git+https://github.com/koverstreet/bcachefs-tools
+	source = add-mkinitcpio-hook-for-Arch.patch
+	sha256sums = SKIP
+	sha256sums = b4d6bc483b417ceaa5c628c686a613e568e64a699288da0388d508a481c710e9
 
 pkgname = bcachefs-tools-git
 
