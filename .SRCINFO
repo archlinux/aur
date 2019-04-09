@@ -1,5 +1,5 @@
 pkgbase = markdown-mime-type
-	pkgdesc = Add the markdown mime type
+	pkgdesc = MIME file type for the markdown format
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/markdown-mime-type/

@@ -3,7 +3,7 @@
 pkgname="markdown-mime-type"
 pkgver='1.0.0'
 pkgrel=1
-pkgdesc='Add the markdown mime type'
+pkgdesc='MIME file type for the markdown format'
 arch=('x86_64' 'i686')
 url="https://aur.archlinux.org/packages/${pkgname}/"
 license=('GPL3')
