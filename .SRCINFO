@@ -1,7 +1,7 @@
 pkgbase = doctl-bin
 	pkgdesc = A command line tool for DigitalOcean services
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/digitalocean/doctl
 	arch = x86_64
 	license = Apache
