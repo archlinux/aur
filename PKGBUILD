@@ -10,7 +10,7 @@ url="https://appleseedhq.net"
 license=('MIT')
 provides=('appleseed')
 conflicts=('appleseed')
-depends=(python2 python embree qt5-base 'seexpr>=2.11' boost openexr opencolorio openimageio 'openshadinglanguage>=1.8.9' xerces-c zlib)
+depends=(python2 python embree qt5-base seexpr-qt5 boost openexr opencolorio openimageio 'openshadinglanguage>=1.8.9' xerces-c zlib)
 makedepends=(git cmake)
 options=()
 source=("${pkgname}::git+https://github.com/appleseedhq/appleseed.git${_fragment}"

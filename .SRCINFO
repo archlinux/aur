@@ -13,7 +13,7 @@ pkgbase = appleseed-git
 	depends = python
 	depends = embree
 	depends = qt5-base
-	depends = seexpr>=2.11
+	depends = seexpr-qt5
 	depends = boost
 	depends = openexr
 	depends = opencolorio
