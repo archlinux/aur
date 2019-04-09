@@ -1,7 +1,7 @@
 # Maintainer: Omar Roth <omarroth@hotmail.com>
 
 pkgname=urbit
-pkgver=0.6.0
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="An operating function"
 arch=('i686' 'x86_64')
