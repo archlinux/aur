@@ -6,7 +6,7 @@ pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
 license=('GPL3')
-depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-script' 'qt5-webkit' 'qt5-tools' 'libpaper' 'bzip2' 'openssl-1.0' 'libfdk-aac' 'sdl' 'ffmpeg')
+depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-script' 'qt5-webkit' 'qt5-tools' 'qt5-xmlpatterns' 'libpaper' 'bzip2' 'openssl-1.0' 'libfdk-aac' 'sdl' 'ffmpeg')
 source=("https://github.com/OpenBoard-org/OpenBoard/archive/v$pkgver.tar.gz"
         "https://github.com/OpenBoard-org/OpenBoard-ThirdParty/archive/master.zip"
         ssl10.patch
