@@ -1,6 +1,6 @@
 pkgbase = pico-8
 	pkgdesc = A fantasy console for making, sharing and playing tiny games and other computer programs.
-	pkgver = 0.1.10c
+	pkgver = 0.1.11g
 	pkgrel = 1
 	url = http://www.lexaloffle.com/pico-8.php
 	arch = i686
@@ -15,14 +15,14 @@ pkgbase = pico-8
 	source = pico-8.xml
 	sha512sums = f63b8f4d32b7183c9785a418c7e8d2ea98343edd90c8553397c7d1776b888eb2b49f0308ec7918bde6c41c9a53b6a00318a533d264fa20e0bbd3d8a9f88c2244
 	sha512sums = 0497c602acbffdbec285ffcdb43ebe55adc793c051ce792933ba2d8d431229f2a938434cd760fbf92133ad6b9604c996b563276166fa883a619cd7313acd4f92
-	source_i686 = hib://pico-8_0.1.10c_i386.zip
-	sha512sums_i686 = 9b2e8fff7d3475808537de07a9a62fc76839065da76bbe4223c10e54bd1ef0ce32a9cbc5981d735a5c775f3dcf6e8f1a3ca9f843a9b7236d5cb5c115594e7ae2
-	source_x86_64 = hib://pico-8_0.1.10c_amd64.zip
-	sha512sums_x86_64 = a3417fb45676412a758e5058dfbb4f5ceeacb502b7eae19fe3db8a8f7b2cae36cb9a380a9d041e6640abc501833846824efbf5a2ea3ac1a3e93f48ad69f78f7f
-	source_armv6h = hib://pico-8_0.1.10c_raspi.zip
-	sha512sums_armv6h = a3ce5d0a9bb1adde6334e5847bb731b907e3a165096d523022d8c4115a0bb8575a914aa3e3d8fe15339e8aa54e93d13d56b8588965b81fc88804fb448486d3e4
-	source_armv7h = hib://pico-8_0.1.10c_raspi.zip
-	sha512sums_armv7h = a3ce5d0a9bb1adde6334e5847bb731b907e3a165096d523022d8c4115a0bb8575a914aa3e3d8fe15339e8aa54e93d13d56b8588965b81fc88804fb448486d3e4
+	source_i686 = hib://pico-8_0.1.11g_i386.zip
+	sha512sums_i686 = c465759da274951dfbd70d373cbf4e088544541a948c5c2d47cf8a45e8ba885a14769c05ed2c708cd62d32ab1dae600666fad65270e1807865c324dc2abff6a4
+	source_x86_64 = hib://pico-8_0.1.11g_amd64.zip
+	sha512sums_x86_64 = 5130bd293667db9d61da064b22a18f11c5cf0c848c73fde5c83797d491a7237b7fc82b4df77176ac3bfbf2e14e46042932ff8258ed5f3cde89e548b6bff5061a
+	source_armv6h = hib://pico-8_0.1.11g_raspi.zip
+	sha512sums_armv6h = c66af7cf4128cc00d7fcfeacee2c87aba77587b7502e4a625f2fad35602e1f33fbe45e65730fc7d50c9d6710f537d5b9dabd7336678a86a0b1440aed8f6b9f23
+	source_armv7h = hib://pico-8_0.1.11g_raspi.zip
+	sha512sums_armv7h = c66af7cf4128cc00d7fcfeacee2c87aba77587b7502e4a625f2fad35602e1f33fbe45e65730fc7d50c9d6710f537d5b9dabd7336678a86a0b1440aed8f6b9f23
 
 pkgname = pico-8
 

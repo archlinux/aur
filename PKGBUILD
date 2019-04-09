@@ -2,7 +2,7 @@
 
 # Common metadata
 pkgname='pico-8'
-pkgver='0.1.10c'
+pkgver='0.1.11g'
 pkgrel=1
 pkgdesc="A fantasy console for making, sharing and playing tiny games and other computer programs."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -26,9 +26,9 @@ _file_zip_arm="pico-8_${pkgver}_${_arch_arm}.zip"
 # Source files hashes (SHA-512)
 _file_desktop_hash="f63b8f4d32b7183c9785a418c7e8d2ea98343edd90c8553397c7d1776b888eb2b49f0308ec7918bde6c41c9a53b6a00318a533d264fa20e0bbd3d8a9f88c2244"
 _file_mime_hash="0497c602acbffdbec285ffcdb43ebe55adc793c051ce792933ba2d8d431229f2a938434cd760fbf92133ad6b9604c996b563276166fa883a619cd7313acd4f92"
-_file_zip_i686_hash="9b2e8fff7d3475808537de07a9a62fc76839065da76bbe4223c10e54bd1ef0ce32a9cbc5981d735a5c775f3dcf6e8f1a3ca9f843a9b7236d5cb5c115594e7ae2"
-_file_zip_x86_64_hash="a3417fb45676412a758e5058dfbb4f5ceeacb502b7eae19fe3db8a8f7b2cae36cb9a380a9d041e6640abc501833846824efbf5a2ea3ac1a3e93f48ad69f78f7f"
-_file_zip_arm_hash="a3ce5d0a9bb1adde6334e5847bb731b907e3a165096d523022d8c4115a0bb8575a914aa3e3d8fe15339e8aa54e93d13d56b8588965b81fc88804fb448486d3e4"
+_file_zip_i686_hash="c465759da274951dfbd70d373cbf4e088544541a948c5c2d47cf8a45e8ba885a14769c05ed2c708cd62d32ab1dae600666fad65270e1807865c324dc2abff6a4"
+_file_zip_x86_64_hash="5130bd293667db9d61da064b22a18f11c5cf0c848c73fde5c83797d491a7237b7fc82b4df77176ac3bfbf2e14e46042932ff8258ed5f3cde89e548b6bff5061a"
+_file_zip_arm_hash="c66af7cf4128cc00d7fcfeacee2c87aba77587b7502e4a625f2fad35602e1f33fbe45e65730fc7d50c9d6710f537d5b9dabd7336678a86a0b1440aed8f6b9f23"
 
 # Source declaration
 source=("${_file_desktop}" "${_file_mime}")
@@ -119,4 +119,3 @@ package () {
   # Links the installed binary to /usr/bin
   ln -s "${_target_opt}/${_pico8_bin}" "${_pkg_bin}/${_pico8_bin}"
 }
-
