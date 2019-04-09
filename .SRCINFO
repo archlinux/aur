@@ -1,7 +1,7 @@
 pkgbase = flvlc
 	pkgdesc = FLTK media player by libvlc
 	pkgver = 2.7
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/spycapitan/flvlc
 	arch = x86_64
 	license = GPL3
