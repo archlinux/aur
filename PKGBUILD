@@ -12,7 +12,7 @@ _ubuntuver=16.04
 
 pkgname=acestream-engine-stable
 pkgver=3.1.16
-pkgrel=3
+pkgrel=4
 pkgdesc="P2P utility for multimedia live streaming and file transfer (stable version)"
 arch=("x86_64")
 url="http://acestream.org/"
@@ -62,7 +62,6 @@ package() {
     install -Dm644 "$srcdir/acestream-engine.desktop" "$pkgdir/usr/share/applications/acestream-engine.desktop"
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/lib/acestream/LICENSE"
 
-    cp -a "acestream.conf" "$pkgdir/usr/lib/acestream/acestream.conf"
     cp -a "data" "$pkgdir/usr/lib/acestream/"
     cp -a "lib" "$pkgdir/usr/lib/acestream/"
     cp -a "$srcdir/usr/lib/python2.7/site-packages/M2Crypto" "$pkgdir/usr/lib/acestream/lib"
