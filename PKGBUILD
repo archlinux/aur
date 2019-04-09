@@ -3,7 +3,7 @@
 _pkgorg=bus1
 _pkgname=dbus-broker
 pkgdesc='Linux D-Bus Message Broker'
-pkgver=r1297.97428cb
+pkgver=r1344.034b3ec
 pkgrel=1
 
 pkgname=$_pkgname-git
@@ -21,7 +21,7 @@ source=("$pkgname::git+https://github.com/$_pkgorg/$_pkgname"
         "git+https://github.com/c-util/c-list"
         "git+https://github.com/c-util/c-rbtree"
         "git+https://github.com/c-util/c-shquote"
-        "git+https://github.com/c-util/c-sundry"
+        "git+https://github.com/c-util/c-stdaux"
         "git+https://github.com/c-util/c-utf8")
 sha256sums=('SKIP'
             'SKIP'
@@ -44,11 +44,11 @@ prepare() {
 
   git submodule init
   git config --local submodule.subprojects/c-dvar.url   "$srcdir/c-dvar"
-  git config --local submodule.subprojects/c-dvar.url   "$srcdir/c-ini"
+  git config --local submodule.subprojects/c-ini.url   "$srcdir/c-ini"
   git config --local submodule.subprojects/c-list.url   "$srcdir/c-list"
   git config --local submodule.subprojects/c-rbtree.url "$srcdir/c-rbtree"
-  git config --local submodule.subprojects/c-sundry.url "$srcdir/c-shquote"
-  git config --local submodule.subprojects/c-sundry.url "$srcdir/c-sundry"
+  git config --local submodule.subprojects/c-shquote.url "$srcdir/c-shquote"
+  git config --local submodule.subprojects/c-stdaux.url "$srcdir/c-stdaux"
   git config --local submodule.subprojects/c-utf8.url   "$srcdir/c-utf8"
   git submodule update
 }
