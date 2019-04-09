@@ -1,0 +1,14 @@
+pkgbase = markdown-mime-type
+	pkgdesc = Add the markdown mime type
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/markdown-mime-type/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	options = !strip
+	source = text-markdown.xml
+	sha256sums = 2023f934586dda2faffbfccc856f6ce2332d3108434f4615c5cf80f49a8cdfdf
+
+pkgname = markdown-mime-type
+
