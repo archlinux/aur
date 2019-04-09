@@ -12,8 +12,8 @@ _ubuntuver=16.04
 
 pkgname=acestream-engine-stable
 pkgver=3.1.16
-pkgrel=2
-pkgdesc="P2P utility for efficient data storage and transfer (stable version)"
+pkgrel=3
+pkgdesc="P2P utility for multimedia live streaming and file transfer (stable version)"
 arch=("x86_64")
 url="http://acestream.org/"
 license=("custom")
@@ -34,25 +34,32 @@ source=(
     "acestream-engine.service"
     "$pkgname-$pkgver.tar.gz::http://dl.acestream.org/linux/acestream_${pkgver}_ubuntu_${_ubuntuver}_x86_64.tar.gz"
     "python2-m2crypto-0.24.0.tar.xz::https://archive.archlinux.org/packages/p/python2-m2crypto/python2-m2crypto-0.24.0-4-x86_64.pkg.tar.xz"
+    "acestream-engine.desktop"
     "LICENSE"
 )
 sha256sums=(
     "9446e4c36c2e92b4253a1c3fea5fa30d366d46295dcd1f1cac4ddfe8f002fcbe"
     "452bccb8ae8b5ff4497bbb796081dcf3fec2b699ba9ce704107556a3d6ad2ad7"
     "177c22681be64a7533b3303652da8724aa20edcbead87be90765bc5040f4cff5"
+    "fad731aec3371b3e76065cf1668be6b61d33547d321c8cfb2b6018faa3d5b7b0"
     "SKIP"
 )
 
 package() {
     mkdir -p "$pkgdir/usr/lib/acestream/"
     mkdir -p "$pkgdir/usr/bin"
+    mkdir -p "$pkgdir/usr/share/applications/"
+    mkdir -p "$pkgdir/usr/share/pixmaps/"
     
     cd "$srcdir/acestream_${pkgver}_ubuntu_${_ubuntuver}_$CARCH"
     sed -i "/ROOT=/c\ROOT=\/usr/lib\/acestream" "start-engine"
     
     install -Dm755 "acestreamengine" "$pkgdir/usr/lib/acestream/acestreamengine"
     install -Dm755 "start-engine" "$pkgdir/usr/lib/acestream/start-engine"
+    install -Dm644 "acestream.conf" "$pkgdir/usr/lib/acestream/acestream.conf"
+    install -Dm644 "data/images/streamer-32.png" "$pkgdir/usr/share/pixmaps/acestream-engine.png"
     install -Dm644 "$srcdir/acestream-engine.service" "$pkgdir/usr/lib/systemd/system/acestream-engine.service"
+    install -Dm644 "$srcdir/acestream-engine.desktop" "$pkgdir/usr/share/applications/acestream-engine.desktop"
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/lib/acestream/LICENSE"
 
     cp -a "acestream.conf" "$pkgdir/usr/lib/acestream/acestream.conf"
