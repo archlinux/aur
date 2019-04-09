@@ -1,17 +1,13 @@
 pkgbase = reactotron
-	pkgdesc = Package archlinux for Reactotron
-	pkgver = 2.1.2
+	pkgdesc = A desktop app for inspecting your React JS and React Native projects
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://github.com/infinitered/reactotron
 	arch = x86_64
-	license = GPL
-	makedepends = unzip
-	source = https://github.com/infinitered/reactotron/releases/download/v2.1.2/Reactotron-linux-x64.zip
-	source = reactotron.png
-	source = reactotron.desktop
-	sha256sums = 9e51df8abcf37d412b439224e441c432214e851bbea2b4a8bc1495c936e90281
-	sha256sums = d933e27778d417a633975f22b2cdc2b6d8d922bffab916c92fc08062a7621896
-	sha256sums = 67142bd7f88c8484713ac13cd552d0018068a817e6b467a6eaa4a2fa0cbed514
+	license = MIT
+	noextract = reactotron-app-2.9.0.x86_64.rpm
+	source = https://github.com/infinitered/reactotron/releases/download/v2.9.0/reactotron-app-2.9.0.x86_64.rpm
+	sha256sums = 4ef0cfe02d0a83a6587ac709635a31d46f2513af3e9c883b52d9f2c248724b24
 
 pkgname = reactotron
 
