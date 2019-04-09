@@ -1,7 +1,7 @@
-From 8f5870fcc2a63b4ea64c6fc9aa245564bc281ad7 Mon Sep 17 00:00:00 2001
+From 11e93e5ab28efacd58cd9364a5090d4a483d0fdb Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
-Subject: [PATCH 01/15] Restore transparency
+Subject: [PATCH 01/14] Restore transparency
 
 The transparency settings were removed as a side effect of
 2bff4b63ed3ceef6055e35563e9b0b33ad57349d
@@ -206,10 +206,10 @@ index a85fcefd40e1..26202e4555ea 100644
  
  static void
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index 1d877a98275b..be6463b6b1b7 100644
+index 19198f49f7b5..5ba767c5fc87 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
-@@ -2115,6 +2115,8 @@ terminal_window_init (TerminalWindow *window)
+@@ -2125,6 +2125,8 @@ terminal_window_init (TerminalWindow *window)
    };
    TerminalWindowPrivate *priv;
    TerminalApp *app;
@@ -218,7 +218,7 @@ index 1d877a98275b..be6463b6b1b7 100644
    GSettings *gtk_debug_settings;
    GtkWindowGroup *window_group;
    //  GtkAccelGroup *accel_group;
-@@ -2130,6 +2132,11 @@ terminal_window_init (TerminalWindow *window)
+@@ -2140,6 +2142,11 @@ terminal_window_init (TerminalWindow *window)
  
    gtk_widget_init_template (GTK_WIDGET (window));
  
@@ -231,13 +231,13 @@ index 1d877a98275b..be6463b6b1b7 100644
    uuid_unparse (u, uuidstr);
    priv->uuid = g_strdup (uuidstr);
 -- 
-2.20.1
+2.21.0
 
 
-From 7c18738498c84c522b14262d6b8669f337ebe729 Mon Sep 17 00:00:00 2001
+From 7e96a519635ef03820d0fb1d57d48890ba2cbcdb Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
-Subject: [PATCH 02/15] window: Make the drawing robust across all themes
+Subject: [PATCH 02/14] window: Make the drawing robust across all themes
 
 There are lots of themes out there in the wild that do not specify a
 background-color for all widgets and the default is transparent. This
@@ -254,10 +254,10 @@ https://bugzilla.gnome.org/show_bug.cgi?id=730016
  1 file changed, 21 insertions(+)
 
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index be6463b6b1b7..7d87c2461e36 100644
+index 5ba767c5fc87..cdd69f9f4f52 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
-@@ -1969,6 +1969,26 @@ terminal_window_realize (GtkWidget *widget)
+@@ -1979,6 +1979,26 @@ terminal_window_realize (GtkWidget *widget)
    terminal_window_update_size (window);
  }
  
@@ -284,7 +284,7 @@ index be6463b6b1b7..7d87c2461e36 100644
  static gboolean
  terminal_window_state_event (GtkWidget            *widget,
                               GdkEventWindowState  *event)
-@@ -2291,6 +2311,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
+@@ -2301,6 +2321,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
  
    widget_class->show = terminal_window_show;
    widget_class->realize = terminal_window_realize;
@@ -293,13 +293,13 @@ index be6463b6b1b7..7d87c2461e36 100644
    widget_class->screen_changed = terminal_window_screen_changed;
    widget_class->style_updated = terminal_window_style_updated;
 -- 
-2.20.1
+2.21.0
 
 
-From 20ebad148e7e1fa1bb180daec5449d1a15effe60 Mon Sep 17 00:00:00 2001
+From 6219b224223d70a52567e71c10567ff787405dcd Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
-Subject: [PATCH 03/15] screen, window: Extra padding around transparent
+Subject: [PATCH 03/14] screen, window: Extra padding around transparent
  terminals in Wayland
 
 https://bugzilla.redhat.com/show_bug.cgi?id=1207943
@@ -388,10 +388,10 @@ index 26202e4555ea..c0ce8a89126c 100644
  terminal_screen_button_press (GtkWidget      *widget,
                                GdkEventButton *event)
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index 7d87c2461e36..2aba397fe922 100644
+index cdd69f9f4f52..6028ca8700d7 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
-@@ -1975,15 +1975,21 @@ terminal_window_draw (GtkWidget *widget,
+@@ -1985,15 +1985,21 @@ terminal_window_draw (GtkWidget *widget,
  {
    if (gtk_widget_get_app_paintable (widget))
      {
@@ -420,13 +420,13 @@ index 7d87c2461e36..2aba397fe922 100644
  
    return GTK_WIDGET_CLASS (terminal_window_parent_class)->draw (widget, cr);
 -- 
-2.20.1
+2.21.0
 
 
-From d2c5bd5309e2b4171469784a4923e3c8d2c97b0e Mon Sep 17 00:00:00 2001
+From a07c8ba6fabacd5b7875c3c22c40d9eca2903503 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 27 Feb 2017 16:53:51 +0100
-Subject: [PATCH 04/15] screen: Silence -Wunused variable
+Subject: [PATCH 04/14] screen: Silence -Wunused variable
 
 https://bugzilla.redhat.com/show_bug.cgi?id=1207943
 ---
@@ -446,13 +446,13 @@ index c0ce8a89126c..1b763a3890dd 100644
    gboolean use_theme_colors;
  
 -- 
-2.20.1
+2.21.0
 
 
-From cd51ab2d849fad93f796abad338da19aa4ec05b7 Mon Sep 17 00:00:00 2001
+From 481bbcb4548a73e03d88952f7011df5126726e4e Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
-Subject: [PATCH 11/15] Restore translations for setting a title and
+Subject: [PATCH 11/14] Restore translations for setting a title and
  transparency
 
 ---
@@ -473,7 +473,7 @@ Subject: [PATCH 11/15] Restore translations for setting a title and
  po/ca@valencia.po | 12 ++++++++++++
  po/cs.po          | 12 ++++++++++++
  po/cy.po          |  8 ++++----
- po/da.po          | 12 ++++++++++++
+ po/da.po          | 11 +++++++++++
  po/de.po          | 12 ++++++++++++
  po/dz.po          |  8 ++++----
  po/el.po          | 15 +++++++++------
@@ -548,7 +548,7 @@ Subject: [PATCH 11/15] Restore translations for setting a title and
  po/zh_CN.po       | 15 +++++++++------
  po/zh_HK.po       | 15 +++++++++------
  po/zh_TW.po       | 15 +++++++++------
- 92 files changed, 710 insertions(+), 363 deletions(-)
+ 92 files changed, 709 insertions(+), 363 deletions(-)
 
 diff --git a/po/am.po b/po/am.po
 index 3445d96da657..ee992f0712a5 100644
@@ -614,10 +614,10 @@ index fcec2668aa11..9e07cb682c57 100644
  #~ msgid "Keyboard Shortcuts"
  #~ msgstr "Alcorces de teclau"
 diff --git a/po/ar.po b/po/ar.po
-index 6f5e80cc2a66..53e15b97f312 100644
+index fac62fd10680..f77804d8aec4 100644
 --- a/po/ar.po
 +++ b/po/ar.po
-@@ -2553,11 +2553,11 @@ msgstr "أغ_لق النافذة"
+@@ -2574,11 +2574,11 @@ msgstr "أغ_لق النافذة"
  #~ msgid "Default size:"
  #~ msgstr "الحجم المبدئي:"
  
@@ -633,7 +633,7 @@ index 6f5e80cc2a66..53e15b97f312 100644
  
  #~ msgid "Title and Command"
  #~ msgstr "العنوان والأمر"
-@@ -2565,8 +2565,8 @@ msgstr "أغ_لق النافذة"
+@@ -2586,8 +2586,8 @@ msgstr "أغ_لق النافذة"
  #~ msgid "_Unlimited"
  #~ msgstr "_غير محدود"
  
@@ -644,7 +644,7 @@ index 6f5e80cc2a66..53e15b97f312 100644
  
  #~ msgid "Current Locale"
  #~ msgstr "المحليّة الحالية"
-@@ -3309,8 +3309,8 @@ msgstr "أغ_لق النافذة"
+@@ -3330,8 +3330,8 @@ msgstr "أغ_لق النافذة"
  #~ msgid "Background image _scrolls"
  #~ msgstr "صورة الخلفية ت_لتف"
  
@@ -905,7 +905,7 @@ index 49e710859ac9..8703552984b1 100644
 +msgid "Set Title"
 +msgstr "Postavi naslov"
 diff --git a/po/ca.po b/po/ca.po
-index 52b30f62831c..81efec6ef9bd 100644
+index bd77fe3bea60..371fa1180d08 100644
 --- a/po/ca.po
 +++ b/po/ca.po
 @@ -2315,3 +2315,15 @@ msgstr ""
@@ -991,14 +991,13 @@ index 644df82363f1..cd862feb50c0 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/da.po b/po/da.po
-index 2ad0736c0b66..0a8858c75e0c 100644
+index b9e57183b071..1d00234c0fb5 100644
 --- a/po/da.po
 +++ b/po/da.po
-@@ -2339,3 +2339,15 @@ msgstr "_Luk vindue"
- 
+@@ -2337,3 +2337,14 @@ msgstr "_Luk vindue"
  #~ msgid "Open the terminal file manager Midnight Commander"
  #~ msgstr "Åbn terminalfilhåndteringen Midnight Commander"
-+
+ 
 +msgid "Title"
 +msgstr "Titel"
 +
@@ -1592,10 +1591,10 @@ index 2d7dc5b14008..8d3d0529df61 100644
  #~ msgid "S/Key Challenge Response"
  #~ msgstr "एस/कुंजी चैलेंज प्रतिक्रिया"
 diff --git a/po/hr.po b/po/hr.po
-index aec2eaa8bac1..207b5c774b32 100644
+index 9722611b3bca..28c07301cb7e 100644
 --- a/po/hr.po
 +++ b/po/hr.po
-@@ -2565,3 +2565,13 @@ msgstr "_Zatvori prozor"
+@@ -2574,3 +2574,13 @@ msgstr "_Zatvori prozor"
  
  #~ msgid "Use transparency from system theme"
  #~ msgstr "Koristi prozirnost iz teme sustava"
@@ -3245,4 +3244,4 @@ index e740ebc6df0b..2fa8c3236b8f 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 -- 
-2.20.1
+2.21.0

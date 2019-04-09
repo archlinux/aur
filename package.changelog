@@ -1,3 +1,7 @@
+2019-04-09
+	upstream update: 3.32.0 -> 3.32.1
+	requires vte3 >= 0.56.1
+
 2019-04-03
 	upstream upgrade: 3.30.2 -> 3.32.0
 	requires vte3 >= 0.56.0
