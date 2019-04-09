@@ -1,0 +1,15 @@
+pkgbase = python-pyosf
+	pkgdesc = A pure python library for simple sync with Open Science Framework
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/psychopy/pyosf
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	source = https://github.com/psychopy/pyosf/archive/v1.0.5.tar.gz
+	md5sums = 5afac9a27e869f274dba276fe00fdecc
+
+pkgname = python-pyosf
+
