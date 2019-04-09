@@ -1,12 +1,12 @@
 pkgbase = credhub-cli
 	pkgdesc = CredHub CLI provides a command line interface to interact with CredHub servers
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/cloudfoundry-incubator/credhub-cli/releases/
 	arch = any
 	license = apache
-	source = https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/2.3.0/credhub-linux-2.3.0.tgz
-	sha256sums = 9018881e1e43794243b6618e675f6f5ab3ac1b2c1f303a8558c1b22e1d1f54eb
+	source = https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/2.4.0/credhub-linux-2.4.0.tgz
+	sha256sums = 73edaf1ee47323c4f0aa455bcc17303a73c0cf2a6d9156542f1f6b7b1b1aa3db
 
 pkgname = credhub-cli
 
