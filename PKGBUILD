@@ -4,7 +4,7 @@
 
 pkgname=flvlc
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 pkgdesc='FLTK media player by libvlc'
 arch=('x86_64')
 url='https://github.com/spycapitan/flvlc'
@@ -18,7 +18,7 @@ source=("git+${url}.git?signed#tag=v${pkgver}"
         )
 
 sha256sums=('SKIP'
-            'b326132810e70f7b99bf3e353c43de46fed3320e81aa462a3ee6ece8e9bebd45'
+            '43c8e129b4cd3d17121a675acb46f8d7e216b2e754f95b1e786b6890a0133a3c'
             '4238f6017fc34cd88bef6f98db33f690f00cd03f02da326b8a5c83bb6bf8133c'
             )
 

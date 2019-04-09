@@ -1,7 +1,7 @@
 pkgbase = flvlc
 	pkgdesc = FLTK media player by libvlc
 	pkgver = 2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spycapitan/flvlc
 	arch = x86_64
 	license = GPL3
@@ -15,7 +15,7 @@ pkgbase = flvlc
 	source = flvlc.png
 	validpgpkeys = 51479755D90A2AACFA90A6551DD242462908D08B
 	sha256sums = SKIP
-	sha256sums = b326132810e70f7b99bf3e353c43de46fed3320e81aa462a3ee6ece8e9bebd45
+	sha256sums = 43c8e129b4cd3d17121a675acb46f8d7e216b2e754f95b1e786b6890a0133a3c
 	sha256sums = 4238f6017fc34cd88bef6f98db33f690f00cd03f02da326b8a5c83bb6bf8133c
 
 pkgname = flvlc

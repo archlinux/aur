@@ -2,7 +2,7 @@
 Type=Application
 Name=flvlc
 Icon=flvlc
-Exec=/usr/bin/flvlc
+Exec=/usr/bin/flvlc %F
 Terminal=false
 MimeType=
 Categories=AudioVideo
