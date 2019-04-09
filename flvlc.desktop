@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=flvlc
+Icon=flvlc
+Exec=/usr/bin/flvlc
+Terminal=false
+MimeType=
+Categories=AudioVideo
+Name[es_ES]=flvlc
+Comment[es_ES]=Reproductor de vídeo.
+Name[en_US]=flvlc
+Comment[en_US]=Video media player.

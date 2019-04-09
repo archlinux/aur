@@ -1,44 +1,37 @@
-# Maintainer : Daniel T. Borelli < daltomi@aol.com >
+# Maintainer : Daniel T. Borelli <danieltborelli@gmail.com>
 # Contributor: sekret
 # Contributor: flu
 
 pkgname=flvlc
-pkgver=2.4.2
+pkgver=2.5
 pkgrel=0
 pkgdesc='FLTK media player by libvlc'
-arch=('i686' 'x86_64')
-#url="http://sourceforge.net/p/flvlc/"
-url='https://bitbucket.org/daltomi/flvlc'
+arch=('x86_64')
+url='https://github.com/spycapitan/flvlc'
 license=('GPL3')
 depends=('fltk' 'vlc')
 makedepends=('git' 'cmake')
 options=('!buildflags')
-_gitroot=$url.git
-_gitname='flvlc'
+source=("git+${url}.git?signed#tag=v${pkgver}"
+        "flvlc.desktop"
+        "flvlc.png"
+        )
 
-prepare() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
+sha256sums=('SKIP'
+            'b326132810e70f7b99bf3e353c43de46fed3320e81aa462a3ee6ece8e9bebd45'
+            '4238f6017fc34cd88bef6f98db33f690f00cd03f02da326b8a5c83bb6bf8133c'
+            )
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" --depth=1 --single-branch --branch "v.$pkgver" "$_gitname"
-  fi
+validpgpkeys=('51479755D90A2AACFA90A6551DD242462908D08B')
 
-  msg "GIT checkout done or server timeout"
-}
 
 build() {
-  local _src_git=$srcdir/$_gitname
-  cd $_src_git
-  cmake -DCMAKE_BUILD_TYPE=Release && make
+  cd "$srcdir/flvlc" &&  cmake -DCMAKE_BUILD_TYPE=Release && make
 }
 
 package() {
-  local _src_git=$srcdir/$_gitname
- install -Dm0755 $_src_git/flvlc "${pkgdir}/usr/bin/flvlc"
+  install -Dm755 "$srcdir/flvlc/flvlc" "$pkgdir/usr/bin/flvlc"
+  install -Dt "$pkgdir/usr/share/applications" -m644 "flvlc.desktop" 
+  install -Dt "$pkgdir/usr/share/pixmaps" -m644 "flvlc.png"
 }
 
-# vim:set ts=2 sw=2 et:
