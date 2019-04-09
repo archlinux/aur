@@ -21,8 +21,7 @@ license=('GPL2')
 arch=('i686' 'x86_64')
 install='freenet.install'
 depends=('java-runtime>=8' 'gmp' 'java-service-wrapper')
-makedepends=('java-environment>=8' 'apache-ant' 'git' 'java-hamcrest' 'zip')
-checkdepends=('junit')
+makedepends=('java-environment>=8' 'apache-ant' 'git' 'zip' 'gradle')
 backup=('opt/freenet/wrapper.config'
         'opt/freenet/conf/freenet.ini')
 
@@ -40,7 +39,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '0d91d2462f36d35235cc86cbdee11890cadec91a0a01b89d96010924f6c2be99'
-            '09446d86c7d26ca9f90d0b22a0d1ad3d30d861a5b87d69421a050c25c5b4d072'
+            'aa93d349c75703b2bc30d44ec18017c4e99e0b71341e6c13848210ab8e4abc68'
             'a6581d33448c2989ef9f7e888e7e47a8784b0159e76bf8f6bc97eec1d7d55769'
             '434f67e2e86edb555b7dfb572a52d7ff719373989e1f1830f779bfccc678539f'
             'c0ce093a098d91dee6be294f8a2fc929aabad95612f994933194d0da5c4cdd25'
@@ -55,12 +54,14 @@ pkgver() {
 prepare() {
     cd "fred"
 
-    # Gradle 4.10.3 - Allow building with java 10+
+    # Gradle 5.3 and Java 11 support
     export GIT_COMMITTER_NAME="aur" GIT_COMMITTER_EMAIL="aur"
-    git fetch https://github.com/Thynix/fred-staging.git gradle-5-upgrade
-    git cherry-pick 1abf6fa6^..3e75e325
+    git fetch https://github.com/skydrome/fred.git gradle-5
+    git cherry-pick f228ab0^..5a440f4
 
     ln -sf "$srcdir/gradle.properties" .
+    sed -i "$srcdir/plugin-WebOfTrust/build.xml" \
+        -e 's:value="7":value="1.8":'
     sed -i "$srcdir/plugin-UPnP/build.xml" \
         -e 's:value="1.5":value="1.8":'
     sed -i "$srcdir/plugin-KeyUtils/build.xml" \
@@ -72,10 +73,9 @@ build() {
 
     export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/default}"
     export GRADLE_USER_HOME="$srcdir"
-    export GRADLE_OPTS="-Dfile.encoding=UTF-8"
 
     msg "Building Freenet..."
-    ./gradlew -q copyRuntimeLibs
+    gradle copyRuntimeLibs
 
     build_plugins
 }
@@ -102,7 +102,7 @@ check() {
 
     # these tests use alot of memory and can cause OOM's
     rm -f test/freenet/client/async/{*Storage,ClientRequestSelector}Test.java
-    ./gradlew test
+    gradle test
 }
 
 package() {
