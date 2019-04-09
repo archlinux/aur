@@ -8,16 +8,19 @@ arch=('any')
 url="https://github.com/laramies/theHarvester"
 license=('GPL2')
 depends=(
-		'bash'
-		'python'
-		'python-yaml'
-		'python-requests'
-		'python-plotly'
-		'python-pytest'
-		'python-texttable'
-		'python-shodan'
-		'python-beautifulsoup4'
-		'python-decorator')
+	'bash'
+	'python'
+	'python-yaml'
+	'python-requests'
+	'python-plotly'
+	'python-pytest'
+	'python-texttable'
+	'python-shodan'
+	'python-beautifulsoup4'
+	'python-yaml'
+	'python-decorator'
+	'python-censys'
+)
 makedepends=('git' 'bash')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -51,4 +54,9 @@ package() {
 	install "$srcdir/$pkgname/run.sh" "$pkgdir/opt/$pkgname/"
 
 	ln -s "/opt/$pkgname/run.sh" "$pkgdir/usr/bin/theharvester"	
+}
+
+check(){
+	cd "${srcdir}"
+	pytest
 }
