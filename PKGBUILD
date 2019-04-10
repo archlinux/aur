@@ -2,7 +2,7 @@
 
 pkgname=libtas
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool-assisted speedrunning utility for Linux-native binaries"
 arch=('x86_64')
 url="https://github.com/clementgallet/libTAS"
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'ffmpeg' 'fontconfig' 'freetype2'
          'qt5-base' 'xcb-util-cursor' 'zlib')
 makedepends=('cmake' 'extra-cmake-modules')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('ce0f4e15936fe7f8444c7e4a0c73e399b216c3b8ecdefa49fff3d40af0b175631d5f6f69b44ada2f1786a6f54d60a80a161f12bb6dcbc81c0bcb1aefcf75a5fa')
+sha512sums=('cb1baaa9ef90b6ff85130732bbaf27093b52b7792d47779838a367648ae05500095afb262fd363369b50012e91da3c121d0e5aca0c58b5ea2fa32fd55b476c79')
 
 prepare() {
   cd libTAS-$pkgver
