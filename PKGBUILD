@@ -6,7 +6,7 @@
 
 pkgname=chromium-ozone
 pkgver=73.0.3683.86
-pkgrel=1
+pkgrel=2
 _launcher_ver=6
 _release_sha=5fe448ea2471245e64adf805d93b358dd9478fa2
 _igalia_sha=9acc2112d690af6caf4c5b8d4152b5724a760639
