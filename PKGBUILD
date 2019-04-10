@@ -1,5 +1,5 @@
 pkgname=pandoc-bin
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="Pandoc - executable only, without 750MB Haskell depends/makedepends"
 url="http://pandoc.org"
@@ -21,8 +21,8 @@ source=(
     # The binary release doesn't have the datafiles, so we need to yoink those out of the source tarball, too.
     "https://github.com/jgm/pandoc/archive/${pkgver}.tar.gz"
 )
-sha256sums=('c7905e974fade782e5cf00f710629e0cf20c93bd90e707d3b1cc5458a0618327'
-            '6e191d666e8d64579feff30cd92c2ec31d0978c1f0abff3cef75f193a62ccf20')
+sha256sums=('6741f73e37a900deee56bc2dc71c2893fb28e0961557db36eb029368de5183c2'
+            'cce58880ef8fd1510f71760ecd637e5e43461a8c6116a5b39c49fcf260116954')
 
 package() {
     cd "${srcdir}/pandoc-${pkgver}"
