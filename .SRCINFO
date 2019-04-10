@@ -18,6 +18,7 @@ pkgbase = ocsinventory-agent
 	depends = perl-proc-daemon
 	depends = perl-proc-pid-file
 	depends = perl-net-ssleay
+        depends = perl-net-snmp
 	optdepends = smartmontools
 	backup = etc/ocsinventory/ocsinventory-agent.cfg
 	source = https://github.com/OCSInventory-NG/UnixAgent/archive/v2.4.2.tar.gz
