@@ -3,7 +3,7 @@
 pkgname=wedder
 pkgdesc="Current weather info for status bars like polybar"
 pkgver=1.0.4
-pkgrel=2
+pkgrel=3
 
 arch=("x86_64")
 url="https://github.com/awersching/wedder"
@@ -12,8 +12,8 @@ conflicts=("wedder-git")
 
 source=(
 	"https://github.com/awersching/wedder/releases/download/${pkgver}/wedder-${pkgver}-x86_64-unknown-linux-gnu"
-	"https://raw.githubusercontent.com/awersching/wedder/master/example/wedder.toml"
-	"https://raw.githubusercontent.com/awersching/wedder/master/LICENSE"
+	"https://raw.githubusercontent.com/awersching/wedder/${pkgver}/example/wedder.toml"
+	"https://raw.githubusercontent.com/awersching/wedder/${pkgver}/LICENSE"
 )
 sha256sums=(
 	"19fdb2c7b7a59ce8322dbee2471ee256116f1242b13661b7b4d686ff39ca3137"
