@@ -1,0 +1,11 @@
+--- a/palm	2019-04-10 09:38:38.217727011 +0200
++++ b/palm	2019-04-10 09:38:51.558320325 +0200
+@@ -54,7 +54,7 @@
+ 
+ # Locate PALM
+ cmdfull=${BASH_SOURCE[0]}
+-PALMDIR=$(dirname ${cmdfull})
++PALMDIR=/usr/lib/palm
+ rlink=$(readlink ${cmdfull})
+ cnt=1
+ while [[ ${rlink} != "" ]] && [[ ${cnt} -lt 100 ]]; do
