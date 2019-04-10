@@ -1,15 +1,15 @@
 # Maintainer: Unix Sheikh <unixsheikh at protonmail dot com>
 
 pkgname=salahtime
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 url="https://github.com/unixsheikh/salahtime"
 pkgdesc="A small C program for displaying the Islamic prayer time for Europe/Copenhagen"
 arch=('any')
 license=('The Unlicense')
 
-source=("https://github.com/unixsheikh/salahtime/archive/1.0.1.zip")
-md5sums=('a5b1e4272d32ea63fc635a3614222124')
+source=("https://github.com/unixsheikh/salahtime/archive/1.0.2.zip")
+md5sums=('3f983739d72510114cb5f5de3908e3ed')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
