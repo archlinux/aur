@@ -31,7 +31,7 @@ source=("git+https://github.com/freenet/fred.git${_fred}"
         "git+https://github.com/freenet/plugin-WebOfTrust.git${_wot}"
         "IpToCountry.dat::http://software77.net/geo-ip/?DL=4"
         "https://github.com/freenet/seedrefs/files/1609768/seednodes.zip"
-        'gradle.properties' 'run.sh' 'freenet.service' 'freenet.ini' 'wrapper.config')
+        'run.sh' 'freenet.service' 'freenet.ini' 'wrapper.config')
 
 sha256sums=('SKIP'
             'SKIP'
@@ -39,7 +39,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '0d91d2462f36d35235cc86cbdee11890cadec91a0a01b89d96010924f6c2be99'
-            'aa93d349c75703b2bc30d44ec18017c4e99e0b71341e6c13848210ab8e4abc68'
             'a6581d33448c2989ef9f7e888e7e47a8784b0159e76bf8f6bc97eec1d7d55769'
             '434f67e2e86edb555b7dfb572a52d7ff719373989e1f1830f779bfccc678539f'
             'c0ce093a098d91dee6be294f8a2fc929aabad95612f994933194d0da5c4cdd25'
@@ -55,11 +54,8 @@ prepare() {
     cd "fred"
 
     # Gradle 5.3 and Java 11 support
-    export GIT_COMMITTER_NAME="aur" GIT_COMMITTER_EMAIL="aur"
-    git fetch https://github.com/skydrome/fred.git gradle-5.3
-    git cherry-pick 1abf6fa6^..f696204a
+    git pull origin pull/657/head
 
-    ln -sf "$srcdir/gradle.properties" .
     sed -i "$srcdir/plugin-WebOfTrust/build.xml" \
         -e 's:value="7":value="1.8":'
     sed -i "$srcdir/plugin-UPnP/build.xml" \
@@ -75,7 +71,7 @@ build() {
     export GRADLE_USER_HOME="$srcdir"
 
     msg "Building Freenet..."
-    gradle copyRuntimeLibs
+    gradle --no-daemon copyRuntimeLibs
 
     build_plugins
 }
