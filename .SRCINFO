@@ -2,7 +2,7 @@ pkgbase = qca-qt4
 	pkgdesc = Qt Cryptographic Architecture. Qt4 Build
 	pkgver = 2.2.0
 	pkgrel = 1
-	url = http://delta.affinix.com/qca/
+	url = https://userbase.kde.org/QCA
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -17,7 +17,10 @@ pkgbase = qca-qt4
 	optdepends = pkcs11-helper: PKCS-11 plugin
 	optdepends = botan: botan plugin
 	source = http://download.kde.org/stable/qca/2.2.0/qca-2.2.0.tar.xz
+	source = http://download.kde.org/stable/qca/2.2.0/qca-2.2.0.tar.xz.sig
+	validpgpkeys = CB9387521E1EE0127DA804843FDBB55084CC5D84
 	sha256sums = 3b479826858099c9ac1bd7992a0e2f1cd68d684d9a32910dbc4372bef592318a
+	sha256sums = SKIP
 
 pkgname = qca-qt4
 
