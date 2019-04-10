@@ -8,7 +8,7 @@ pkgdesc="The unified tool for managing your Platform.sh services from the comman
 arch=('any')
 url="https://github.com/platformsh/$_pkgname"
 license=('MIT')
-depends=('git' 'php' 'composer' 'php-box')
+depends=('git' 'php' 'composer')
 optdepends=('drush')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
@@ -40,7 +40,7 @@ build() {
 check() {
   cd "$_pkgname"
 
-  php -d phar.readonly=Off /usr/bin/php-box verify platform.phar
+  ./vendor/bin/box verify platform.phar
 }
 
 package() {
