@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=es-shell-git
-pkgver=0.9.1.r4.g1da0089
+pkgver=0.9.1.r7.gcb395c2
 pkgrel=1
 epoch=
 pkgdesc="A extensible shell with higher-order functions, derived from the Plan 9 shell, rc."
@@ -42,8 +42,8 @@ package() {
   cd "$srcdir/$pkgname"
   make prefix="$pkgdir/usr" install
   mkdir -p $pkgdir/usr/share/{doc,licenses}/${pkgname%-*-*}
-  install -m644 README initial.es mksignal esdebug \
+  install -m644 README.md initial.es mksignal esdebug \
     doc/usenix-w93.ps doc/ERRATA doc/TODO "$pkgdir/usr/share/doc/${pkgname%-*-*}"
-  sed '35,41!d' README > "$pkgdir"/usr/share/licenses/${pkgname%-*-*}/LICENSE
+  sed '37,42!d' README.md > "$pkgdir"/usr/share/licenses/${pkgname%-*-*}/LICENSE
 }
 
