@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Eiffel Studio
+Comment=Open-source IDE for the Eiffel programming language
+Icon=eiffel-studio.png
+Exec=estudio
+Terminal=false
+Type=Application
+Categories=Development;IDE;
+StartupNotify=true
+StartupWMClass=Ec
