@@ -1,10 +1,11 @@
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=alsaplayer
 pkgver=0.99.81
-pkgrel=9
+pkgrel=10
 pkgdesc="A heavily multi-threaded PCM player that tries to excercise the ALSA library and driver quite a bit"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="http://alsaplayer.sourceforge.net/"
 license=('GPL')
 depends=('gcc-libs' 'desktop-file-utils')

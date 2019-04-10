@@ -1,9 +1,10 @@
 pkgbase = alsaplayer
 	pkgdesc = A heavily multi-threaded PCM player that tries to excercise the ALSA library and driver quite a bit
 	pkgver = 0.99.81
-	pkgrel = 9
+	pkgrel = 10
 	url = http://alsaplayer.sourceforge.net/
 	arch = x86_64
+	arch = i686
 	license = GPL
 	makedepends = gtk2
 	makedepends = libid3tag
