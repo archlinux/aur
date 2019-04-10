@@ -1,0 +1,54 @@
+## arg 1:  the new package version
+pre_install() {
+  # do nothing here
+  /bin/true
+}
+
+infodir=/usr/share/info
+
+
+## arg 1:  the new package version
+post_install() {
+  for file in ${filelist[@]}; do
+    install-info $infodir/$file $infodir/dir 2> /dev/null
+  done
+
+  echo
+  echo "*** Poldi is now installed."
+  echo
+  echo "A PAM configuration file has been installed as '/etc/pam.d/system-auth-poldi'."
+  echo -e "To enable its use, you need to put 'auth include system-auth-poldi'\nin the relevant files (/etc/pam.d/system-auth is a good starting point)."
+  echo
+  echo "You can test the installation with 'pam-test-poldi SERVICE'."
+  echo
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+  # do nothing here
+  /bin/true
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  for file in ${filelist[@]}; do
+    install-info $infodir/$file $infodir/dir 2> /dev/null
+  done
+}
+
+## arg 1:  the old package version
+pre_remove() {
+  for file in ${filelist[@]}; do
+    install-info --delete $infodir/$file $infodir/dir 2> /dev/null
+  done
+}
+
+## arg 1:  the old package version
+post_remove() {
+  # do nothing here
+  /bin/true
+}
+
+# vim:set ts=2 sw=2 et:

@@ -1,0 +1,32 @@
+pkgbase = poldi-ecc-dsa-git
+	pkgdesc = PAM module for authentication using a smartcard
+	pkgver = r142.d9a9ff9
+	pkgrel = 1
+	url = http://git.gnupg.org/cgi-bin/gitweb.cgi?p=poldi.git
+	install = poldi.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	depends = libgcrypt
+	depends = libgpg-error
+	depends = libksba
+	depends = pam
+	optdepends = logrotate: To avoid giant logfiles
+	conflicts = poldi
+	conflicts = poldi-git
+	backup = etc/poldi/poldi.conf
+	backup = etc/pam.d/system-auth-poldi
+	source = poldi::git://git.gnupg.org/poldi/
+	source = 0001-Update-path-to-scdaemon.patch
+	source = 0002-Support-ECC-and-DSA-pub-keys.patch
+	source = poldi.logrotate
+	md5sums = SKIP
+	md5sums = 6ccfe3af0362bca96d1d85aa097b5f1d
+	md5sums = a91b462fc86511fe7e16bb0168fae48e
+	md5sums = 57009cc5211088396d2521fc1997792b
+
+pkgname = poldi-ecc-dsa-git
+

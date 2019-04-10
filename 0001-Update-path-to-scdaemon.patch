@@ -1,0 +1,23 @@
+From 097e6e2ad904f0c21870716e4c305a6d0aedb593 Mon Sep 17 00:00:00 2001
+From: Olivier Mehani <shtrom@ssji.net>
+Date: Mon, 30 Apr 2018 21:06:38 +1000
+Subject: [PATCH] Update path to scdaemon
+
+Signed-off-by: Olivier Mehani <shtrom@ssji.net>
+---
+ conf/poldi.conf.skel | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/conf/poldi.conf.skel b/conf/poldi.conf.skel
+index 3fed157..3babbb1 100644
+--- a/conf/poldi.conf.skel
++++ b/conf/poldi.conf.skel
+@@ -11,4 +11,4 @@ log-file /var/log/poldi
+ debug
+ 
+ # Specify SCDaemon executable
+-scdaemon-program /usr/lib/gnupg2/scdaemon
++scdaemon-program /usr/lib/gnupg/scdaemon
+-- 
+2.17.0
+

@@ -1,0 +1,9 @@
+/var/log/poldi.log {
+	weekly
+	rotate 4
+	missingok
+	notifempty
+	compress
+	copytruncate
+}
+
