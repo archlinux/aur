@@ -1,10 +1,11 @@
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=gnome-alsamixer
 pkgver=0.9.7
 pkgrel=4
 pkgdesc="Gnome ALSA mixer"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="https://launchpad.net/gnome-alsamixer"
 license=('GPL')
 depends=('alsa-lib' 'gconf' 'gtk2')

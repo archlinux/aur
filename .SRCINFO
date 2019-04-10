@@ -4,6 +4,7 @@ pkgbase = gnome-alsamixer
 	pkgrel = 4
 	url = https://launchpad.net/gnome-alsamixer
 	arch = x86_64
+	arch = i686
 	license = GPL
 	depends = alsa-lib
 	depends = gconf
