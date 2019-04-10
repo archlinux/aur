@@ -1,6 +1,6 @@
 pkgbase = electronic-wechat-bin
 	pkgdesc = A better WeChat on macOS and Linux. Built with Electron. Maintained by kooritea
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/kooritea/electronic-wechat
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = electronic-wechat-bin
 	conflicts = electronic-wechat-git
 	replaces = electronic-wechat
 	replaces = electronic-wechat-git
-	source = https://github.com/kooritea/electronic-wechat/releases/download/v2.3.0/electronic-wechat-linux-x64-2.3.0.zip
+	source = https://github.com/kooritea/electronic-wechat/releases/download/v2.3.1/electronic-wechat-linux-x64-2.3.1.zip
 	source = https://github.com/kooritea/electronic-wechat/raw/master/assets/icon.png
 	source = electronic-wechat.desktop
-	md5sums = 30fc4395a9c3279f7fca1241b2e92578
+	md5sums = 656b524fd83451553a800e993e6acc0e
 	md5sums = 5067d2ecdfa58d16affc950102cd36bd
 	md5sums = ffc9bdbcce89519b59f78d4bb50ea315
 

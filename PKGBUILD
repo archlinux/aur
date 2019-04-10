@@ -1,7 +1,7 @@
 #Maintainer:xgdgsc<xgdgsc@gmail.com>
 
 pkgname=electronic-wechat-bin
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="A better WeChat on macOS and Linux. Built with Electron. Maintained by kooritea"
 url=https://github.com/kooritea/electronic-wechat
@@ -12,7 +12,7 @@ depends=('gconf')
 license=(MIT)
 
 
-md5sums=('30fc4395a9c3279f7fca1241b2e92578'
+md5sums=('656b524fd83451553a800e993e6acc0e'
          '5067d2ecdfa58d16affc950102cd36bd'
          'ffc9bdbcce89519b59f78d4bb50ea315')
 
