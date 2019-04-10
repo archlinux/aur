@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://ddnet.tw"
 license=('custom:BSD' 'CCPL:by-nc-sa')
 depends=('sdl2' 'freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'libwebsockets' 'pnglite')
-makedepends=('cmake' 'python' 'imagemagick' 'gendesk')
+makedepends=('cmake' 'ninja' 'python' 'imagemagick' 'gendesk')
 checkdepends=('gtest')
 optdepends=('ddnet-skins: more skins for your tee'
             'ddnet-maps-git: have all DDNet maps available offline')
@@ -16,13 +16,13 @@ source=("https://ddnet.tw/downloads/DDNet-$pkgver.tar.xz")
 sha256sums=('4c5937b6d32074194a8b23ea5bc81db78ebafd533cf9fe8003eadc611dfc534a')
 
 prepare() {
-    [ -d build ] && rm -rf build
-    mkdir -p build/prep
-    cd build/prep
+    [ -d build ] && rm -rf build; mkdir build
+    [ -d prep ]  && rm -rf prep;  mkdir prep
+    cd prep
 
       # Extract icons in .png from .ico (name must be lowercase)
-    convert ../../DDNet-$pkgver/other/icons/DDNet-Server.ico ddnet-server.png
-    convert ../../DDNet-$pkgver/other/icons/DDNet.ico        ddnet.png
+    convert ../DDNet-$pkgver/other/icons/DDNet-Server.ico ddnet-server.png
+    convert ../DDNet-$pkgver/other/icons/DDNet.ico        ddnet.png
 
       # Generate .desktop files
     gendesk --pkgname="DDNet" --pkgdesc="DDNet" \
@@ -51,17 +51,17 @@ build() {
         -DCMAKE_BUILD_TYPE=Release  \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWEBSOCKETS=ON             \
-        -DAUTOUPDATE=OFF
-    make all tools
+        -DAUTOUPDATE=OFF            \
+        -GNinja
+    ninja
 }
 
 check() {
-    make -k run_tests -C build
+    ninja run_tests -C build
 }
 
 package() {
-    cd build
-    make install DESTDIR="$pkgdir"
+    DESTDIR="$pkgdir" ninja install -C build
 
       # Install desktop files and folder
     install -dvm755 "$pkgdir/usr/share/applications/"
@@ -75,5 +75,5 @@ package() {
 
       # Install license file
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
-    install -vm644 ../DDNet-$pkgver/license.txt  "$pkgdir/usr/share/licenses/$pkgname/"
+    install -vm644 DDNet-$pkgver/license.txt  "$pkgdir/usr/share/licenses/$pkgname/"
 }

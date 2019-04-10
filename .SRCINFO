@@ -8,6 +8,7 @@ pkgbase = ddnet
 	license = CCPL:by-nc-sa
 	checkdepends = gtest
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = python
 	makedepends = imagemagick
 	makedepends = gendesk
