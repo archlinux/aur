@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=duc-git
-pkgver=1.4.4r7.g0e688f9
+pkgver=1.4.4.r9.g1d46285
 pkgrel=1
 pkgdesc="collection of tools for inspecting and visualizing disk usage (git version)"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags | sed 's+-+r+' |tr - .
+  git describe --tags | sed 's+-+.r+' |tr - .
 }
 
 prepare() {
