@@ -1,0 +1,30 @@
+pkgbase = appimagelauncher
+	pkgdesc = A Helper application for running and integrating AppImages.
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/TheAssassin/AppImageLauncher
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = wget
+	makedepends = vim
+	makedepends = qt5-tools
+	depends = binutils
+	depends = boost
+	depends = cairo
+	depends = desktop-file-utils
+	depends = fuse
+	depends = gtest
+	depends = libarchive
+	depends = libbsd
+	depends = qt5-base
+	depends = shared-mime-info
+	conflicts = appimagelauncher-git
+	source = git+https://github.com/TheAssassin/AppImageLauncher.git#tag=v1.2.2
+	source = appimage-binfmt-remove.hook
+	sha256sums = SKIP
+	sha256sums = 72a2630cf79b8f90bc21eae1d9f40c07fe77ce22df46c511b500f514455d7c81
+
+pkgname = appimagelauncher
+
