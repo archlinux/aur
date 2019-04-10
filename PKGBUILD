@@ -2,12 +2,12 @@
 
 pkgname=scrumplexweb
 pkgver=19.04.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Static website of Sefa Eyeoglu"
 arch=("any")
 url="https://scrumplex.net"
 license=("GPL")
-builddepends=("npm")
+makedepends=("npm")
 
 source=("https://gitlab.com/Scrumplex/scrumplex.net/-/archive/${pkgver}/scrumplex.net-${pkgver}.tar.bz2")
 # automatically generated with updpkgsums
