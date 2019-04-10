@@ -1,11 +1,28 @@
 --- a/palm	2019-04-10 09:38:38.217727011 +0200
-+++ b/palm	2019-04-10 09:38:51.558320325 +0200
-@@ -54,7 +54,7 @@
++++ b/palm	2019-04-10 13:00:12.599546441 +0200
+@@ -53,24 +53,7 @@
+ # Normally there is no need to edit below this line:
  
  # Locate PALM
- cmdfull=${BASH_SOURCE[0]}
+-cmdfull=${BASH_SOURCE[0]}
 -PALMDIR=$(dirname ${cmdfull})
+-rlink=$(readlink ${cmdfull})
+-cnt=1
+-while [[ ${rlink} != "" ]] && [[ ${cnt} -lt 100 ]]; do
+-  dirnam=$(dirname ${rlink})
+-  if [[ ${dirnam:0} == "/" ]] ; then
+-    PALMDIR=${dirnam}
+-  else
+-    PALMDIR="${PALMDIR}/${dirnam}"
+-  fi
+-  rlink=$(readlink ${rlink})
+-  cnt=$(expr ${cnt} + 1)
+-done
+-if [[ ${cnt} -eq 100 ]] ; then
+-  echo "Error: Too many levels of symbolic links."
+-  exit 1
+-fi
 +PALMDIR=/usr/lib/palm
- rlink=$(readlink ${cmdfull})
- cnt=1
- while [[ ${rlink} != "" ]] && [[ ${cnt} -lt 100 ]]; do
+ 
+ # Command to run inside either Octave or Matlab. It varies slightly
+ # depending whether it's a cluster environment or not.
