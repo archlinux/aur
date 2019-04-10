@@ -1,6 +1,6 @@
 pkgbase = platformsh-cli-git
 	pkgdesc = The unified tool for managing your Platform.sh services from the command line.
-	pkgver = 3.40.11
+	pkgver = 3.40.11r1
 	pkgrel = 1
 	url = https://github.com/platformsh/platformsh-cli
 	arch = any
