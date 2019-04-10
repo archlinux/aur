@@ -8,7 +8,7 @@ url=https://github.com/kooritea/electronic-wechat
 arch=(x86_64)
 replaces=('electronic-wechat' 'electronic-wechat-git')
 conflicts=('electronic-wechat' 'electronic-wechat-git')
-depends=('gconf')
+depends=('nss' 'gtk3' 'libxss')
 license=(MIT)
 
 
