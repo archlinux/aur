@@ -21,7 +21,7 @@ source=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${pkgname}-${pkgv
         "${pkgname}.sh")
 sha256sums=('3fb5530099a6c8db6aa204b4c701aaab2a0e62b732103f7d7af80359dc599200'
             '9be5f85421c9094c390c25bf1f45157c3c8dcf592feb8acb0810a61f11d80b90'
-            '1a882f23dfe74f40980c765fa5df430f500b6cf1ce7dd84f87bee8eda503d347')
+            'ce8c521119e3a7432e7b8c8d4c1393b3fd6d8add4da9518a0ddf90850b646ae7')
 
 package() {
     # Install the main files.
