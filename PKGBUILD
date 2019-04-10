@@ -1,11 +1,11 @@
-# Maintainer: Sebastian Neef <aur AT gehaxelt DOT IN>
+# Maintainer: ocelot <amitchell AT airmail DOT cc>
 pkgbase=python-theharvester-git
 pkgname=python-theharvester-git
-pkgver=3.0.6.r421.g9f7811d
+pkgver=3.0.6.r424.g838892e
 pkgrel=1
 pkgdesc="A tool for gathering e-mail accounts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers)."
 arch=('any')
-url="https://github.com/laramies/theHarvester"
+url="https://github.com/ssolidus/theHarvester"
 license=('GPL2')
 depends=(
 	'python'
@@ -39,7 +39,7 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}"
-    python setup.py install --user --root=${pkgdir} --optimize=1 --skip-build
+    python setup.py install --root=${pkgdir} --optimize=1 --skip-build
 }
 
 check(){
