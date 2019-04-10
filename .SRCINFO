@@ -1,13 +1,14 @@
 pkgbase = fsl-palm
 	pkgdesc = PALM is a set of GNU Octave/MATLAB scripts to perform Permutation Analysis for the Linear Model
 	pkgver = alpha115
-	pkgrel = 3
+	pkgrel = 4
 	url = https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM
 	arch = any
 	license = GPL
-	depends = fsl
 	depends = octave
 	depends = octave-image
+	optdepends = fsl: support for additional image formats, e.g. compressed NIfTI files
+	optdepends = freesurfer-bin: support to read/write FreeSurfer files directly
 	source = https://s3-us-west-2.amazonaws.com/andersonwinkler/palm/palm-alpha115.tar.gz
 	source = 001-adjust_path_for_systemwide_install.patch
 	sha256sums = e3f31cb94a98003ce1384e5d5c9f2901a25023a2132f36317efdf7f208b84ba4
