@@ -5,7 +5,7 @@
 
 pkgname=discord-canary
 pkgver=0.0.74
-pkgrel=1
+pkgrel=2
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
 url='https://discordapp.com/'
@@ -17,26 +17,23 @@ optdepends=('libpulse: For pulseaudio support'
             'ttf-symbola: Font for emoji support.'
             'noto-fonts-cjk: Font for special characters such as /shrug face.')
 source=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        'LICENSE')
+        'LICENSE'
+        "${pkgname}.sh")
 sha256sums=('3fb5530099a6c8db6aa204b4c701aaab2a0e62b732103f7d7af80359dc599200'
-            '9be5f85421c9094c390c25bf1f45157c3c8dcf592feb8acb0810a61f11d80b90')
+            '9be5f85421c9094c390c25bf1f45157c3c8dcf592feb8acb0810a61f11d80b90'
+            '1a882f23dfe74f40980c765fa5df430f500b6cf1ce7dd84f87bee8eda503d347')
 
 package() {
     # Install the main files.
     install -d "${pkgdir}/opt/${pkgname}"
     cp -a "${srcdir}/DiscordCanary/." "${pkgdir}/opt/${pkgname}"
 
-    # Exec bit
-    chmod 755 "${pkgdir}/opt/${pkgname}/DiscordCanary"
-
     # Desktop Entry
-    install -d "${pkgdir}/usr/share/applications"
-    install "${pkgdir}/opt/${pkgname}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
-    sed -i 's%/usr/share%/opt%' "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "${pkgdir}/opt/${pkgname}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    sed -i "s%share/${pkgname}/DiscordCanary%bin/${pkgname}%" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-    # Main binary
-    mkdir -p "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/DiscordCanary" "${pkgdir}/usr/bin/${pkgname}"
+    # Wrapper script enabling --no-sandbox
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
     # Create symbolic link to the icon
     install -d "${pkgdir}/usr/share/pixmaps"
