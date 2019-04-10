@@ -1,0 +1,19 @@
+pkgbase = perl-test-deep-json
+	pkgdesc = Compare JSON with Test::Deep
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-Deep-JSON
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-exporter-lite>=0
+	depends = perl-json-maybexs>=0
+	depends = perl-test-deep>=0
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MO/MOTEMEN/Test-Deep-JSON-0.05.tar.gz
+	md5sums = 4919d51563bb5277b4ea3be72dfafd5a
+	sha512sums = d2fc5d753445c16f38983ef7d0948eb85a5846299a2b7df5b288cc9585e2f658725e5ede6fb21a4e4f69ab1c500fa88f93273460dbc4fc7a7cc0ee1e20a33201
+
+pkgname = perl-test-deep-json
+
