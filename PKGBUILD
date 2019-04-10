@@ -7,7 +7,7 @@
 
 pkgname=v8
 pkgver=7.4.288.18
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
 url="https://v8.dev"
@@ -77,14 +77,19 @@ esac
 
 OUTFLD=out.gn/Release
 
+_export_py2()
+{
+  export PATH=${srcdir}/bin:`pwd`/depot_tools:"$PATH"
+  msg2 "Using: `which python`"
+}
+
 prepare() {
   # Switching to python2 system environment
   mkdir -p bin
   ln -sf /usr/bin/python2 ./bin/python
   ln -sf /usr/bin/python2-config ./bin/python-config
-  msg2 "Using: `which python`"
 
-  export PATH=${srcdir}/bin:`pwd`/depot_tools:"$PATH"
+  _export_py2
   export GYP_GENERATORS=ninja
 
   if [ ! -d "v8" ]; then
@@ -128,6 +133,7 @@ prepare() {
 }
 
 build() {
+  _export_py2
   cd v8
 
   # Fixes bug in generate_shim_headers.py that fails to create these dirs
@@ -140,6 +146,7 @@ build() {
 }
 
 check() {
+  _export_py2
   cd v8
   msg2 "Using `which python`"
   msg2 "Testing, this will also take a while..."
