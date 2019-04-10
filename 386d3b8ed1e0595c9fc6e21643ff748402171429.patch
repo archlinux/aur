@@ -1,0 +1,46 @@
+From 386d3b8ed1e0595c9fc6e21643ff748402171429 Mon Sep 17 00:00:00 2001
+From: Vlad Zagorodniy <vladzzag@gmail.com>
+Date: Tue, 2 Apr 2019 16:01:19 +0300
+Subject: [PATCH] Fix build with Qt 4
+
+Reviewers: #plasma, davidedmundson, fvogt
+
+Reviewed By: #plasma, davidedmundson, fvogt
+
+Subscribers: fvogt, plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D20201
+---
+ kstyle/breezewindowmanager.cpp | 11 +++--------
+ 1 file changed, 3 insertions(+), 8 deletions(-)
+
+diff --git a/kstyle/breezewindowmanager.cpp b/kstyle/breezewindowmanager.cpp
+index aba29eef..5ca3fea5 100644
+--- a/kstyle/breezewindowmanager.cpp
++++ b/kstyle/breezewindowmanager.cpp
+@@ -895,20 +895,15 @@ namespace Breeze
+         // connection
+         auto connection( Helper::connection() );
+ 
+-        #if QT_VERSION >= 0x050300
+-        const qreal dpiRatio = window->devicePixelRatio();
+-        #else
+-        const qreal dpiRatio = 1;
+-        #endif
+-
+         #if BREEZE_USE_KDE4
+         auto net_connection = QX11Info::display();
++        const QPoint native = position;
+         #else
+         auto net_connection = connection;
+-        #endif
+-
++        const qreal dpiRatio = window->devicePixelRatio();
+         const QPoint origin = window->screen()->geometry().topLeft();
+         const QPoint native = (position - origin) * dpiRatio + origin;
++        #endif
+ 
+         xcb_ungrab_pointer( connection, XCB_TIME_CURRENT_TIME );
+         NETRootInfo( net_connection, NET::WMMoveResize ).moveResizeRequest(

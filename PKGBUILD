@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=breeze-kde4
-pkgver=5.14.5
+pkgver=5.15.4
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Artwork, styles and assets for the Breeze visual style for the Plasma Desktop'
@@ -13,9 +13,11 @@ depends=(frameworkintegration kdecoration breeze-icons kwayland hicolor-icon-the
 makedepends=(extra-cmake-modules kcmutils automoc4)
 optdepends=('kcmutils: for breeze-settings')
 groups=(plasma)
-source=("https://download.kde.org/stable/plasma/$pkgver/breeze-$pkgver.tar.xz"{,.sig})
-sha256sums=('e78e6eec31cf8fb7c6d1d823e07bebcabf978ba94772081490a38a5ac5871796'
-            'SKIP')
+source=("https://download.kde.org/stable/plasma/$pkgver/breeze-$pkgver.tar.xz"{,.sig}
+        "386d3b8ed1e0595c9fc6e21643ff748402171429.patch")
+sha256sums=('e5b174d9509f3dcb85b0865b8bc8d40e2e2fb0f9373eda1877e5874a9c456958'
+            'SKIP'
+            '59a8b0c2b469903e818cb17c32a9ce267a0359a1c43f81089bc4d363d8913a71')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
@@ -23,6 +25,8 @@ validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell <jr
 
 prepare() {
   mkdir -p build
+  cd breeze-$pkgver
+  patch -p1 < ../386d3b8ed1e0595c9fc6e21643ff748402171429.patch
 }
 
 build() {
