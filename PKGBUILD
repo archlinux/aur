@@ -6,13 +6,13 @@
 _name=talloc
 pkgname=lib32-${_name}
 pkgver=2.1.16
-pkgrel=2
+pkgrel=3
 pkgdesc='A hierarchical pool based memory allocator with destructors'
 arch=('x86_64')
 url='http://talloc.samba.org/'
 license=('GPL3')
 source=("https://samba.org/ftp/${_name}/${_name}-${pkgver}.tar.gz")
-depends=('lib32-python3' 'talloc')
+depends=('talloc')
 sha256sums=('195bf6830a070deb11c492b8cd575a59cd4d3b634164f3f693f6388f806a52a9')
 
 build() {
@@ -21,9 +21,6 @@ build() {
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-  export PYTHON='/usr/bin/python3-32'
-  export PYTHON_CONFIG='/usr/bin/python3-32-config'
-  export PYTHONPATH="/usr/lib32/python3.7/site-packages"
 
   ./configure --prefix=/usr \
      --libdir='/usr/lib32' \
@@ -31,7 +28,8 @@ build() {
      --localstatedir=/var \
      --bundled-libraries=NONE \
      --builtin-libraries=replace \
-     --enable-talloc-compat1
+     --enable-talloc-compat1 \
+     --disable-python
 
   make
 }
