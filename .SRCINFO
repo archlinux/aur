@@ -1,0 +1,14 @@
+pkgbase = audiotsm
+	pkgdesc = A real-time audio time-scale modification library
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Muges/audiotsm
+	arch = any
+	license = MIT
+	makedepends = python3
+	depends = python
+	source = https://files.pythonhosted.org/packages/f8/b8/721a9c613641c938a6fb9c7c3efb173b7f77b519de066e9cd2eeb27c3289/audiotsm-0.1.2.tar.gz
+	md5sums = 5fb754f002da8f68688988fd773c1902
+
+pkgname = audiotsm
+
