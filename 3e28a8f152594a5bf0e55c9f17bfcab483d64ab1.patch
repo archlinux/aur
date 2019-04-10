@@ -1,0 +1,134 @@
+From 3e28a8f152594a5bf0e55c9f17bfcab483d64ab1 Mon Sep 17 00:00:00 2001
+From: Sebastian Krzyszkowiak <dos@dosowisko.net>
+Date: Wed, 10 Apr 2019 22:06:04 +0200
+Subject: [PATCH] Fix compilation errors with recent glew/mesa combos
+
+---
+ GTK_Dev_Kit/FloorMakerMain.cpp         | 5 +----
+ GTK_Dev_Kit/SludgeFloorMaker.cpp       | 5 +----
+ GTK_Dev_Kit/SludgeGLApplication.cpp    | 5 +----
+ GTK_Dev_Kit/SludgeSpriteBankEditor.cpp | 5 +----
+ GTK_Dev_Kit/SludgeZBufferMaker.cpp     | 5 +----
+ GTK_Dev_Kit/SpriteBankEditorMain.cpp   | 5 +----
+ GTK_Dev_Kit/ZBufferMakerMain.cpp       | 5 +----
+ 7 files changed, 7 insertions(+), 28 deletions(-)
+
+diff --git a/GTK_Dev_Kit/FloorMakerMain.cpp b/GTK_Dev_Kit/FloorMakerMain.cpp
+index d215d6d..7fb9eee 100644
+--- a/GTK_Dev_Kit/FloorMakerMain.cpp
++++ b/GTK_Dev_Kit/FloorMakerMain.cpp
+@@ -25,11 +25,8 @@
+ #include <glib-object.h>
+ #include <glib.h>
+ 
+-#include <GL/glew.h>
+ #define GL_GLEXT_PROTOTYPES
+-#include <GL/gl.h>
+-#include <GL/glu.h>
+-#include <GL/glext.h>
++#include <GL/glew.h>
+ 
+ #include <errno.h>
+ #include <sys/types.h>
+diff --git a/GTK_Dev_Kit/SludgeFloorMaker.cpp b/GTK_Dev_Kit/SludgeFloorMaker.cpp
+index ffbd631..94a97d2 100644
+--- a/GTK_Dev_Kit/SludgeFloorMaker.cpp
++++ b/GTK_Dev_Kit/SludgeFloorMaker.cpp
+@@ -25,11 +25,8 @@
+ #include <glib-object.h>
+ #include <glib.h>
+ 
+-#include <GL/glew.h>
+ #define GL_GLEXT_PROTOTYPES
+-#include <GL/gl.h>
+-#include <GL/glu.h>
+-#include <GL/glext.h>
++#include <GL/glew.h>
+ 
+ #include <errno.h>
+ #include <sys/types.h>
+diff --git a/GTK_Dev_Kit/SludgeGLApplication.cpp b/GTK_Dev_Kit/SludgeGLApplication.cpp
+index c7027e5..8e53a38 100644
+--- a/GTK_Dev_Kit/SludgeGLApplication.cpp
++++ b/GTK_Dev_Kit/SludgeGLApplication.cpp
+@@ -25,11 +25,8 @@
+ #include <glib-object.h>
+ #include <glib.h>
+ 
+-#include <GL/glew.h>
+ #define GL_GLEXT_PROTOTYPES
+-#include <GL/gl.h>
+-#include <GL/glu.h>
+-#include <GL/glext.h>
++#include <GL/glew.h>
+ 
+ #include <errno.h>
+ #include <sys/types.h>
+diff --git a/GTK_Dev_Kit/SludgeSpriteBankEditor.cpp b/GTK_Dev_Kit/SludgeSpriteBankEditor.cpp
+index 6792574..c1b2e37 100644
+--- a/GTK_Dev_Kit/SludgeSpriteBankEditor.cpp
++++ b/GTK_Dev_Kit/SludgeSpriteBankEditor.cpp
+@@ -25,11 +25,8 @@
+ #include <glib-object.h>
+ #include <glib.h>
+ 
+-#include <GL/glew.h>
+ #define GL_GLEXT_PROTOTYPES
+-#include <GL/gl.h>
+-#include <GL/glu.h>
+-#include <GL/glext.h>
++#include <GL/glew.h>
+ 
+ #include <errno.h>
+ #include <sys/types.h>
+diff --git a/GTK_Dev_Kit/SludgeZBufferMaker.cpp b/GTK_Dev_Kit/SludgeZBufferMaker.cpp
+index b714d66..da95a3a 100644
+--- a/GTK_Dev_Kit/SludgeZBufferMaker.cpp
++++ b/GTK_Dev_Kit/SludgeZBufferMaker.cpp
+@@ -25,11 +25,8 @@
+ #include <glib-object.h>
+ #include <glib.h>
+ 
+-#include <GL/glew.h>
+ #define GL_GLEXT_PROTOTYPES
+-#include <GL/gl.h>
+-#include <GL/glu.h>
+-#include <GL/glext.h>
++#include <GL/glew.h>
+ 
+ #include <errno.h>
+ #include <sys/types.h>
+diff --git a/GTK_Dev_Kit/SpriteBankEditorMain.cpp b/GTK_Dev_Kit/SpriteBankEditorMain.cpp
+index 63ce76b..7882f0a 100644
+--- a/GTK_Dev_Kit/SpriteBankEditorMain.cpp
++++ b/GTK_Dev_Kit/SpriteBankEditorMain.cpp
+@@ -25,11 +25,8 @@
+ #include <glib-object.h>
+ #include <glib.h>
+ 
+-#include <GL/glew.h>
+ #define GL_GLEXT_PROTOTYPES
+-#include <GL/gl.h>
+-#include <GL/glu.h>
+-#include <GL/glext.h>
++#include <GL/glew.h>
+ 
+ #include <errno.h>
+ #include <sys/types.h>
+diff --git a/GTK_Dev_Kit/ZBufferMakerMain.cpp b/GTK_Dev_Kit/ZBufferMakerMain.cpp
+index 69a6c16..62fa7b6 100644
+--- a/GTK_Dev_Kit/ZBufferMakerMain.cpp
++++ b/GTK_Dev_Kit/ZBufferMakerMain.cpp
+@@ -25,11 +25,8 @@
+ #include <glib-object.h>
+ #include <glib.h>
+ 
+-#include <GL/glew.h>
+ #define GL_GLEXT_PROTOTYPES
+-#include <GL/gl.h>
+-#include <GL/glu.h>
+-#include <GL/glext.h>
++#include <GL/glew.h>
+ 
+ #include <errno.h>
+ #include <sys/types.h>
