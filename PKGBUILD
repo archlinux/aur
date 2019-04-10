@@ -1,6 +1,6 @@
 # Maintainer: Michael William Le Nguyen <michael at mail dot ttp dot codes>
 pkgname=pack-cli
-pkgver=0.0.9
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="CLI for building apps using Cloud Native Buildpacks"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
 	"pack-${pkgver}::https://github.com/buildpack/pack/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-	"b25028e738ef14cb1df108b8cf12a2302a4a2ec9d88c03c3ccf0638a8fef1994"
+	"20bdfedd8e686ad5aa076696e890834dfd9adfc9b63a94463d8c5f3187717cfe"
 )
 build() {
 	cd "pack-${pkgver}"
