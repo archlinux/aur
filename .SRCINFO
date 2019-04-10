@@ -1,0 +1,20 @@
+pkgbase = xfce4-nameday-plugin-git
+	pkgdesc = Xfce Applet ,that's show namedays
+	pkgver = r10.28f8af1
+	pkgrel = 1
+	url = https://m-opensource.eu
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = xfce4-dev-tools
+	makedepends = intltool
+	makedepends = git
+	depends = xfce4-panel
+	depends = libunique
+	provides = xfce4-nameday-plugin
+	source = git+https://gitlab.com/git-mp/xfce-stuff.git
+	md5sums = SKIP
+
+pkgname = xfce4-nameday-plugin-git
+
