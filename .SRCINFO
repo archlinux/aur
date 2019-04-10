@@ -1,6 +1,6 @@
 pkgbase = cl-ppcre
 	pkgdesc = Perl-compatible, portable regexp library for Common Lisp
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = http://www.weitz.de/cl-ppcre/
 	install = cl-ppcre.install
@@ -9,9 +9,9 @@ pkgbase = cl-ppcre
 	license = BSD
 	depends = common-lisp
 	depends = cl-asdf
-	source = cl-ppcre-2.1.0.tar.gz::https://github.com/edicl/cl-ppcre/archive/v2.1.0.tar.gz
+	source = cl-ppcre-2.1.1.tar.gz::https://github.com/edicl/cl-ppcre/archive/v2.1.1.tar.gz
 	source = LICENSE
-	sha256sums = b520c7df9697b166ebc12886e40ba8255141591f67d9e3e1394dbd319e3396f0
+	sha256sums = 89631179b71648d9e6c565a928f6896a9d5742aa2083b9c1b705fe0b45d85def
 	sha256sums = 47da9448a5379928cd3a56d327d7de89db1c2444498f5e5fa4878834c2538bb7
 
 pkgname = cl-ppcre
