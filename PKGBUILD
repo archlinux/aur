@@ -1,10 +1,11 @@
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=xsnow
 pkgver=1.42
-pkgrel=7
+pkgrel=8
 pkgdesc="Display snow, Santa and his reindeers on the root window"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="https://janswaal.home.xs4all.nl/Xsnow/"
 license=('custom')
 depends=('libxpm')
