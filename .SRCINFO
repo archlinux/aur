@@ -1,18 +1,16 @@
 pkgbase = wpa_actiond
 	pkgdesc = Daemon that connects to wpa_supplicant and handles connect and disconnect events
 	pkgver = 1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://projects.archlinux.org/wpa_actiond.git/
 	arch = x86_64
+	arch = i686
 	license = GPL
 	depends = glibc
 	depends = wpa_supplicant
 	source = https://sources.archlinux.org/other/wpa_actiond/wpa_actiond-1.4.tar.xz
-	source = https://sources.archlinux.org/other/wpa_actiond/wpa_actiond-1.4.tar.xz.sig
 	source = 0001-wpa_actiond-Wait-for-three-failed-PONGs-before-disco.patch
-	validpgpkeys = A314827C4E4250A204CE6E13284FC34C8E4B1A25
 	sha256sums = e0e65e7c52a32796a0ff855ab18aa0b237d6b9afc87d4008c0380735abcb1a54
-	sha256sums = SKIP
 	sha256sums = b318ad3c2dcc65e204dfb5d21a034712fbbb801b062442869420bdf8a0060856
 
 pkgname = wpa_actiond
