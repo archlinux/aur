@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop
 	pkgdesc = Open source and enterprise-ready professional software for the R community
-	pkgver = 1.1.463
+	pkgver = 1.2.1335
 	pkgrel = 1
 	url = http://www.rstudio.com/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = rstudio-desktop
 	license = AGPL
 	makedepends = cmake>=2.8
 	makedepends = boost>=1.63
-	makedepends = java-environment
+	makedepends = java-environment=8
 	makedepends = apache-ant
 	makedepends = openssl
 	makedepends = pam
@@ -24,20 +24,20 @@ pkgbase = rstudio-desktop
 	depends = qt5-location
 	depends = qt5-sensors
 	depends = qt5-svg
-	depends = qt5-webkit
+	depends = qt5-webengine
 	depends = qt5-xmlpatterns
 	conflicts = rstudio-desktop-bin
 	conflicts = rstudio-desktop-git
 	conflicts = rstudio-desktop-preview-bin
 	noextract = core-dictionaries.zip
-	noextract = gin-1.5.zip
-	source = rstudio-1.1.463.tar.gz::https://github.com/rstudio/rstudio/tarball/v1.1.463
-	source = https://s3.amazonaws.com/rstudio-buildtools/gin-1.5.zip
-	source = https://s3.amazonaws.com/rstudio-buildtools/gwt-2.7.0.zip
+	noextract = gin-2.1.2.zip
+	source = rstudio-1.2.1335.tar.gz::https://github.com/rstudio/rstudio/tarball/v1.2.1335
+	source = https://s3.amazonaws.com/rstudio-buildtools/gin-2.1.2.zip
+	source = https://s3.amazonaws.com/rstudio-buildtools/gwt-2.8.1.zip
 	source = https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip
-	sha256sums = 13225d7e12bd8e273a10951f121ed117fbfe25f3a7ce12003b3aff7bcc64af44
-	sha256sums = f561f4eb5d5fe1cff95c881e6aed53a86e9f0de8a52863295a8600375f96ab94
-	sha256sums = aa65061b73836190410720bea422eb8e787680d7bc0c2b244ae6c9a0d24747b3
+	sha256sums = 466d547d1330a39138f25ef0a3ac6d2120cbacafdc71843f257e6a48ddc7c5ae
+	sha256sums = b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a
+	sha256sums = 0b7af89fdadb4ec51cdb400ace94637d6fe9ffa401b168e2c3d372392a00a0a7
 	sha256sums = 4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494
 
 pkgname = rstudio-desktop
