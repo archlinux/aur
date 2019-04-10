@@ -2,7 +2,7 @@
 pkgname=lvm-order-patch
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Adds missing order functionality to lvm2 service files."
+pkgdesc="[DEPRECATED] Adds missing order functionality to lvm2 service files. Do not install this patch anymore, the patch was adopted upstream."
 arch=('any')
 license=('LGPL3')
 package()
