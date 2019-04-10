@@ -1,14 +1,14 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=ddnet-git
-pkgver=11.9.r3.g11a5e3ce7
+pkgver=12.1.r13.g11127f934
 pkgrel=1
 pkgdesc="DDraceNetwork, a cooperative racing mod of Teeworlds"
 arch=('x86_64')
 url="https://ddnet.tw"
 license=('custom:BSD' 'CCPL:by-nc-sa')
-depends=('sdl2' 'freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'libwebsockets')
-makedepends=('git' 'cmake' 'python' 'imagemagick' 'gendesk')
+depends=('sdl2' 'freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'libwebsockets' 'pnglite')
+makedepends=('git' 'cmake' 'ninja' 'python' 'imagemagick' 'gendesk')
 checkdepends=('gtest')
 optdepends=('ddnet-skins: more skins for your tee'
             'ddnet-maps-git: have all DDNet maps available offline')
@@ -16,6 +16,15 @@ provides=('ddnet')
 conflicts=('ddnet')
 source=("git+https://github.com/ddnet/ddnet")
 sha256sums=('SKIP')
+
+# Set 1 to enable MySQL support and add dependencies
+_enable_mysql=0
+
+if [ $_enable_mysql -eq 1 ]; then
+    depends+=('mysql-connector-c++')
+    makedepends+=('boost')
+    _mysql_opt="-DMYSQL=ON"
+fi
 
 pkgver() {
     cd ddnet
@@ -27,13 +36,13 @@ pkgver() {
 }
 
 prepare() {
-    [ -d build ] && rm -rf build
-    mkdir -p build/prep
-    cd build/prep
+    [ -d build ] && rm -rf build; mkdir build
+    [ -d prep ]  && rm -rf prep;  mkdir prep
+    cd prep
 
       # Extract icons in .png from .ico (name must be lowercase)
-    convert ../../ddnet/other/icons/DDNet-Server.ico ddnet-server.png
-    convert ../../ddnet/other/icons/DDNet.ico        ddnet.png
+    convert ../ddnet/other/icons/DDNet-Server.ico ddnet-server.png
+    convert ../ddnet/other/icons/DDNet.ico        ddnet.png
 
       # Generate .desktop files
     gendesk --pkgname="DDNet" --pkgdesc="DDNet" \
@@ -62,17 +71,18 @@ build() {
         -DCMAKE_BUILD_TYPE=Release  \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWEBSOCKETS=ON             \
-        -DAUTOUPDATE=OFF
-    make all tools
+        -DAUTOUPDATE=OFF            \
+        -GNinja                     \
+        $_mysql_opt
+    ninja
 }
 
 check() {
-    make -k run_tests -C build
+    ninja run_tests -C build
 }
 
 package() {
-    cd build
-    make install DESTDIR="$pkgdir"
+    DESTDIR="$pkgdir" ninja install -C build
 
       # Install desktop files and folder
     install -dvm755 "$pkgdir/usr/share/applications/"
@@ -86,5 +96,5 @@ package() {
 
       # Install license file
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
-    install -vm644 ../ddnet/license.txt  "$pkgdir/usr/share/licenses/$pkgname/"
+    install -vm644 ddnet/license.txt  "$pkgdir/usr/share/licenses/$pkgname/"
 }
