@@ -1,10 +1,11 @@
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=xmahjongg
 pkgver=3.7
-pkgrel=7
+pkgrel=8
 pkgdesc="Mahjongg game for X-Window"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="http://www.lcdf.org/xmahjongg/"
 license=('GPL')
 depends=('gcc-libs' 'libx11')

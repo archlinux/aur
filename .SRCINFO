@@ -1,9 +1,10 @@
 pkgbase = xmahjongg
 	pkgdesc = Mahjongg game for X-Window
 	pkgver = 3.7
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.lcdf.org/xmahjongg/
 	arch = x86_64
+	arch = i686
 	license = GPL
 	depends = gcc-libs
 	depends = libx11
