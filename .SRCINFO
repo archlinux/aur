@@ -1,16 +1,16 @@
 pkgbase = perl-term-encoding
 	pkgdesc = Detect encoding of the current terminal
-	pkgver = 0.02
+	pkgver = 0.03
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Term-Encoding
+	url = https://metacpan.org/release/Term-Encoding
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl
+	depends = perl>=0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Term-Encoding-0.02.tar.gz
-	md5sums = 67b7fb38ec7779a3fb79a047fd7edbb5
-	sha512sums = cd4cee9991d857c40b8e8747a645429dcb1f416552d9bb6bd59da609bc4eb11c295a9b4d4c9b1a6e738af57fbc7179419d07387f3342658bf7ec6da90256efad
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Term-Encoding-0.03.tar.gz
+	md5sums = 84d75760e8ce2898675eb384748cb200
+	sha512sums = 781be5087b65e90267daa3efa95bd03b3f2b2f8b3c8aac492238159c0dea3dfef7a82acded856b9551d389e2fcf5baf19a4ff9924da35377d28616b49015a0ce
 
 pkgname = perl-term-encoding
 
