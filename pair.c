@@ -72,6 +72,7 @@ int prompt_add_author(void) {
         if (getchar() == 'q') {
             break;
         }
+        printf("\n");
         count++;
     }
     return count;
@@ -90,7 +91,7 @@ int add_author() {
 
     // Prompt for author email.
     char author_email[BUFSIZ];
-    printf("\n%sEnter author's email:%s ", GREEN, NO_FORMAT);
+    printf("%sEnter author's email:%s ", GREEN, NO_FORMAT);
     fgets(author_email, BUFSIZ, stdin);
     author_email[strlen(author_email) - 1] = '\0';
 
@@ -101,7 +102,6 @@ int add_author() {
 
     // Open authors file for appending.
     FILE *authors_file = fopen(authors_file_name, "a+");
-    // TODO: Check if file was opened.
 
     // Create entry format.
     char *entry = strcat(author_name, " <");
