@@ -3,7 +3,7 @@
 
 pkgname=kamerka
 pkgver=0.20
-pkgdesc="Take photos using your webcam and shiny animated QML interface (KDE4 app)"
+pkgdesc="Take photos using your webcam and shiny animated QML interface"
 pkgrel=1
 epoch=1
 arch=('i686' 'x86_64')

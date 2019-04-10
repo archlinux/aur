@@ -1,5 +1,5 @@
 pkgbase = kamerka
-	pkgdesc = Take photos using your webcam and shiny animated QML interface (KDE4 app)
+	pkgdesc = Take photos using your webcam and shiny animated QML interface
 	pkgver = 0.20
 	pkgrel = 1
 	epoch = 1
