@@ -1,0 +1,30 @@
+pkgbase = python-theharvester-git
+	pkgdesc = A tool for gathering e-mail accounts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers).
+	pkgver = 3.0.6.r421.g9f7811d
+	pkgrel = 1
+	url = https://github.com/laramies/theHarvester
+	install = theHarvester.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = bash
+	depends = bash
+	depends = python-setuptools
+	depends = python
+	depends = python-yaml
+	depends = python-requests
+	depends = python-plotly
+	depends = python-pytest
+	depends = python-texttable
+	depends = python-shodan
+	depends = python-beautifulsoup4
+	depends = python-yaml
+	depends = python-decorator
+	depends = python-censys
+	provides = python-theharvester-git
+	conflicts = python-theharvester-git
+	source = python-theharvester-git::git+https://github.com/laramies/theHarvester.git
+	md5sums = SKIP
+
+pkgname = python-theharvester-git
+

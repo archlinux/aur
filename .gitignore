@@ -1,0 +1,5 @@
+pkg/
+python-theharvester-git-*
+python-theharvester-git/
+src/
+stash.sqlite
