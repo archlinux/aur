@@ -1,0 +1,49 @@
+pkgbase = linux-zen-vfio
+	pkgver = 5.0.7.zen1
+	pkgrel = 1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.0.7-zen1
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	makedepends = git
+	makedepends = python-sphinx
+	makedepends = graphviz
+	options = !strip
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.0.7-zen1
+	source = config
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux.preset
+	source = add-acs-overrides.patch
+	source = i915-vga-arbiter.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
+	sha256sums = SKIP
+	sha256sums = a7def1286f5e64b2b2eaa20a5ec8ba1aae63ed736fe134261f7d6e7198c78c47
+	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
+	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = 8b1bda2060006e6ef73dc1f241f6a79fd5e4f001be2899441b320f339baae6d9
+	sha256sums = afb4c025d1180c1c8d9419910910f44755a4aefc711c2f0d4fee374d6b33e0d5
+
+pkgname = linux-zen-vfio
+	pkgdesc = The Linux-zen-vfio kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-zen-vfio.preset
+
+pkgname = linux-zen-vfio-headers
+	pkgdesc = Header files and scripts for building modules for Linux-zen-vfio kernel
+
+pkgname = linux-zen-vfio-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-zen-vfio kernel
+
