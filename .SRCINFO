@@ -1,0 +1,20 @@
+pkgbase = plpgsql_check
+	pkgdesc = linter for PostgreSQL's procedural language
+	pkgver = 6a8074e
+	pkgrel = 1
+	url = https://github.com/okbob/plpgsql_check
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = Postcardware
+	makedepends = git
+	makedepends = llvm
+	depends = postgresql
+	options = !emptydirs
+	options = !libtool
+	source = git://github.com/okbob/plpgsql_check
+	md5sums = SKIP
+
+pkgname = plpgsql_check-git
+
