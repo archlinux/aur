@@ -1,14 +1,14 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
-pkgver='3.6.1'
-pkgrel='5'
+pkgver='3.7.0'
+pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
 depends=(openmpi libunwind papi libxml2 zlib)
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-$pkgver-src.tar.bz2")
-sha512sums=(e88435364c31e6de051965a2f23c49be8fdb2afe7542a962c23a35ced3520cfdec308823c4a28f8276ee30eab34708d7e4e7ee8f412740a37e1252d85ea8b356)
+sha512sums=(59e886c41f699f58932c22d17511fb1a9540f814689695b03e959896399a9a9d951d0c44adc3b41612b20bb071a0572f27f4cf2d23e11cbcf7f466225b5c353a)
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
