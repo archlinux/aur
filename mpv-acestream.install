@@ -1,0 +1,29 @@
+pkgname=mpv-acestream
+
+_post_install_message() {
+    echo
+    echo ">>> To use this script, specify the following option when starting mpv:"
+    echo
+    echo "    --script /usr/lib/mpv/$pkgname.lua"
+    echo
+    echo ">>> To use it automatically at every mpv startup:"
+    echo
+    echo "    mkdir -p \$HOME/.config/mpv/scripts"
+    echo "    ln -s /usr/lib/mpv/$pkgname.lua \$HOME/.config/mpv/scripts/$pkgname.lua"
+echo
+}
+
+_post_uninstall_message() {
+    echo ">>> If you linked $pkgname script into mpv config folder,"
+    echo "    do not forget to delete it. Check with:"
+    echo
+    echo "    ls \$HOME/.config/mpv/scripts"
+}
+
+post_install() {
+    _post_install_message
+} 
+
+post_remove() {
+    _post_uninstall_message
+}
