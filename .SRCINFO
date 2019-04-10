@@ -9,11 +9,10 @@ pkgbase = python-openchemistrypy-git
 	makedepends = python-setuptools
 	depends = python
 	depends = avogadro2-git
-	provides = python-openchemistrypy-git
-	conflicts = python-openchemistrypy-git
-	source = git+https://github.com/Openchemistry/openchemistrypy.git#branch=master
-	md5sums = SKIP
+	provides = python-openchemistrypy
+	conflicts = python-openchemistrypy
+	source = openchemistrypy::git+https://github.com/OpenChemistry/openchemistrypy.git
+	sha512sums = SKIP
 
 pkgname = python-openchemistrypy-git
-
 
