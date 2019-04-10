@@ -8,7 +8,6 @@ arch=("x86_64")
 url="https://github.com/jenkins-x/jx"
 license=('Apache')
 depends=('go>=1.11.4')
-#checkdepends=('dep')
 source=("https://github.com/jenkins-x/jx/archive/v${pkgver}.tar.gz")
 sha256sums=('0ad7a79ab63d0ae748069fda4df5b73d57f84dc3f1366d3ee0dc7eda4621a404')
 
@@ -22,6 +21,12 @@ build() {
 }
 
 package() {
-    install -Dm 755 "${srcdir}/github.com/jenkins-x/jx/build/jx" "${pkgdir}/usr/local/bin/jx"
+    install -Dm 755 "${srcdir}/github.com/jenkins-x/jx/build/jx" "${pkgdir}/usr/bin/jx"
+
+    # Populate bash and zsh completions
+    install -d 755 "${pkgdir}/usr/share/bash-completion/completions"
+    install -d 755 "${pkgdir}/usr/share/zsh/site-functions"
+    "${pkgdir}/usr/bin/jx" completion bash > "${pkgdir}/usr/share/bash-completion/completions/jx"
+    "${pkgdir}/usr/bin/jx" completion zsh >  "${pkgdir}/usr/share/zsh/site-functions/_jx"
 }
 
