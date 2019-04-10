@@ -27,6 +27,7 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
 
+  composer install
   composer bin all install
 }
 
