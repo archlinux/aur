@@ -34,7 +34,7 @@ prepare() {
 build() {
   cd "$_pkgname"
 
-  ./bin/platform self:build <<< "\n"
+  ./bin/platform self:build --yes
 }
 
 check() {
