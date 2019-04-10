@@ -1,4 +1,5 @@
-# Maintainer: Jacob Mason <jacob@jacobmason.net>
+# Maintainer: David Birks <david@tellus.space>
+
 pkgname=jx
 pkgver=1.3.60
 pkgrel=1
