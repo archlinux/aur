@@ -5,48 +5,23 @@ pkgbase = perl-pod-elemental
 	url = https://metacpan.org/release/Pod-Elemental
 	arch = any
 	license = PerlArtistic
-	depends = perl
+	license = GPL
+	checkdepends = perl-test-deep>=0
+	checkdepends = perl-test-differences>=0
 	depends = perl-class-load>=0
-	depends = perl-moose>=0
-	depends = perl-sub-exporter>=0
 	depends = perl-mixin-linewise>=0
-	depends = perl-sub-exporter-formethods>=0
-	depends = perl-scalar-list-utils>=1.33
-	depends = perl-string-rewriteprefix>=0
-	depends = perl-encode>=0
+	depends = perl-moose>=0
 	depends = perl-moosex-types>=0
-	depends = perl-namespace-autoclean>=0
-	depends = perl-pod-eventual>=0.004
+	depends = perl-pod-eventual>=0
+	depends = perl-string-rewriteprefix>=0
 	depends = perl-string-truncate>=0
-	provides = perl-pod-elemental-paragraph=0.103004
-	provides = perl-pod-elemental-types=0.103004
-	provides = perl-pod-elemental-command=0.103004
-	provides = perl-pod-elemental-document=0.103004
-	provides = perl-pod-elemental-transformer=0.103004
-	provides = perl-pod-elemental-flat=0.103004
-	provides = perl-pod-elemental-autochomp=0.103004
-	provides = perl-pod-elemental-autoblank=0.103004
-	provides = perl-pod-elemental-selectors=0.103004
-	provides = perl-pod-elemental-node=0.103004
-	provides = perl-pod-elemental-objectifier=0.103004
-	provides = perl-pod-elemental-transformer-gatherer=0.103004
-	provides = perl-pod-elemental-transformer-pod5=0.103004
-	provides = perl-pod-elemental-transformer-nester=0.103004
-	provides = perl-pod-elemental-element-nested=0.103004
-	provides = perl-pod-elemental-element-pod5-verbatim=0.103004
-	provides = perl-pod-elemental-element-pod5-nonpod=0.103004
-	provides = perl-pod-elemental-element-pod5-command=0.103004
-	provides = perl-pod-elemental-element-pod5-region=0.103004
-	provides = perl-pod-elemental-element-pod5-data=0.103004
-	provides = perl-pod-elemental-element-pod5-ordinary=0.103004
-	provides = perl-pod-elemental-element-generic-nonpod=0.103004
-	provides = perl-pod-elemental-element-generic-command=0.103004
-	provides = perl-pod-elemental-element-generic-text=0.103004
-	provides = perl-pod-elemental-element-generic-blank=0.103004
+	depends = perl-sub-exporter>=0
+	depends = perl-sub-exporter-formethods>=0
+	depends = perl-namespace-autoclean>=0
 	options = !emptydirs
-	options = purge
 	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Pod-Elemental-0.103004.tar.gz
-	sha256sums = 43625cde7241fb174ad9c7eb45387fba410dc141d7de2323855eeab3590072c9
+	md5sums = 15458de0d87404ee94285633acadec9f
+	sha512sums = d2cae23f7c4131f74374f72aa52e58840035f2245d290f82594265089400fe669c0c03cf01c5b65688770b1b5eba6f611b60693b245af637711330fe8c617a66
 
 pkgname = perl-pod-elemental
 
