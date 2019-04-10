@@ -1,7 +1,7 @@
 pkgbase = metals
 	pkgdesc = Language Server For Scala
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://scalameta.org/metals/
 	arch = any
 	license = Apache
