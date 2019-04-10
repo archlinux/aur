@@ -2,10 +2,10 @@
 # Maintainer: Vincent Grande <shoober420@gmail.com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
-pkgname=sdl2-hg
-pkgver=2.0.9.r22.80f861112154
+pkgname=sdl2-hidpi-hg
+pkgver=2.0.9.r12701+.3477a301a5a8+
 pkgrel=1
-pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
+pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2) (with hidpi support on Wayland)"
 arch=('x86_64')
 url="https://www.libsdl.org"
 license=('MIT')
@@ -15,11 +15,12 @@ makedepends=('alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'l
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver')
-source=("hg+http://hg.libsdl.org/SDL#branch=default")
+source=("hg+http://hg.libsdl.org/SDL#branch=default"
+        "0006-wayland-HiDPI-support.patch")
 provides=(sdl2)
 conflicts=(sdl2)
-sha512sums=('SKIP')
-validpgpkeys=('SKIP') # Sam Lantinga
+sha512sums=('SKIP'
+            'SKIP')
 
 pkgver() {
 
@@ -37,6 +38,7 @@ prepare() {
 
   rm -rf build
   mkdir build
+  patch -p1 < ../0006-wayland-HiDPI-support.patch
 }
 
 build() {

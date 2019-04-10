@@ -1,0 +1,428 @@
+From 53a8296a68c2742728339e9e38865d0434f9260c Mon Sep 17 00:00:00 2001
+From: Sebastian Krzyszkowiak <dos@dosowisko.net>
+Date: Tue, 19 Feb 2019 03:59:06 +0100
+Subject: [PATCH 6/6] wayland: HiDPI support
+
+---
+ src/video/wayland/SDL_waylandopengles.c |  39 ++++++--
+ src/video/wayland/SDL_waylandopengles.h |   1 +
+ src/video/wayland/SDL_waylandvideo.c    |  22 +++--
+ src/video/wayland/SDL_waylandvideo.h    |   5 +
+ src/video/wayland/SDL_waylandwindow.c   | 116 ++++++++++++++++++++++--
+ src/video/wayland/SDL_waylandwindow.h   |   8 +-
+ 6 files changed, 170 insertions(+), 21 deletions(-)
+
+diff --git a/src/video/wayland/SDL_waylandopengles.c b/src/video/wayland/SDL_waylandopengles.c
+index aafd71eb5..396fc0b4a 100644
+--- a/src/video/wayland/SDL_waylandopengles.c
++++ b/src/video/wayland/SDL_waylandopengles.c
+@@ -71,16 +71,24 @@ Wayland_GLES_SwapWindow(_THIS, SDL_Window *window)
+ 
+     // Wayland-EGL forbids drawing calls in-between SwapBuffers and wl_egl_window_resize
+     if (data->resize.pending) {
++        if (data->scale_factor != data->resize.scale_factor) {
++            window->w = 0;
++            window->h = 0;
++        }
+         SDL_SendWindowEvent(window, SDL_WINDOWEVENT_RESIZED, data->resize.width, data->resize.height);
+         window->w = data->resize.width;
+         window->h = data->resize.height;
+-
+-        WAYLAND_wl_egl_window_resize(data->egl_window, window->w, window->h, 0, 0);
+-
+-        if (data->waylandData->shell.xdg) {
+-           xdg_surface_ack_configure(data->shell_surface.xdg.surface, data->resize.serial);
+-        } else if (data->waylandData->shell.zxdg) {
+-           zxdg_surface_v6_ack_configure(data->shell_surface.zxdg.surface, data->resize.serial);
++        data->scale_factor = data->resize.scale_factor;
++        wl_surface_set_buffer_scale(data->surface, data->scale_factor);
++        WAYLAND_wl_egl_window_resize(data->egl_window, window->w * data->scale_factor, window->h * data->scale_factor, 0, 0);
++
++        if (data->resize.configure) {
++           if (data->waylandData->shell.xdg) {
++              xdg_surface_ack_configure(data->shell_surface.xdg.surface, data->resize.serial);
++           } else if (data->waylandData->shell.zxdg) {
++              zxdg_surface_v6_ack_configure(data->shell_surface.zxdg.surface, data->resize.serial);
++           }
++           data->resize.configure = SDL_FALSE;
+         }
+ 
+         region = wl_compositor_create_region(data->waylandData->compositor);
+@@ -113,6 +121,23 @@ Wayland_GLES_MakeCurrent(_THIS, SDL_Window * window, SDL_GLContext context)
+     return ret;
+ }
+ 
++void
++Wayland_GLES_GetDrawableSize(_THIS, SDL_Window * window, int * w, int * h)
++{
++    SDL_WindowData *data;
++    if (window->driverdata) {
++        data = (SDL_WindowData *) window->driverdata;
++
++        if (w) {
++            *w = window->w * data->scale_factor;
++        }
++
++        if (h) {
++            *h = window->h * data->scale_factor;
++        }
++    }
++}
++
+ void 
+ Wayland_GLES_DeleteContext(_THIS, SDL_GLContext context)
+ {
+diff --git a/src/video/wayland/SDL_waylandopengles.h b/src/video/wayland/SDL_waylandopengles.h
+index 58d7f9b08..d1023d612 100644
+--- a/src/video/wayland/SDL_waylandopengles.h
++++ b/src/video/wayland/SDL_waylandopengles.h
+@@ -42,6 +42,7 @@ extern int Wayland_GLES_LoadLibrary(_THIS, const char *path);
+ extern SDL_GLContext Wayland_GLES_CreateContext(_THIS, SDL_Window * window);
+ extern int Wayland_GLES_SwapWindow(_THIS, SDL_Window * window);
+ extern int Wayland_GLES_MakeCurrent(_THIS, SDL_Window * window, SDL_GLContext context);
++extern void Wayland_GLES_GetDrawableSize(_THIS, SDL_Window * window, int * w, int * h);
+ extern void Wayland_GLES_DeleteContext(_THIS, SDL_GLContext context);
+ 
+ #endif /* SDL_waylandopengles_h_ */
+diff --git a/src/video/wayland/SDL_waylandvideo.c b/src/video/wayland/SDL_waylandvideo.c
+index ab4fde0e6..6e54897a9 100644
+--- a/src/video/wayland/SDL_waylandvideo.c
++++ b/src/video/wayland/SDL_waylandvideo.c
+@@ -172,6 +172,7 @@ Wayland_CreateDevice(int devindex)
+     device->GL_SwapWindow = Wayland_GLES_SwapWindow;
+     device->GL_GetSwapInterval = Wayland_GLES_GetSwapInterval;
+     device->GL_SetSwapInterval = Wayland_GLES_SetSwapInterval;
++    device->GL_GetDrawableSize = Wayland_GLES_GetDrawableSize;
+     device->GL_MakeCurrent = Wayland_GLES_MakeCurrent;
+     device->GL_CreateContext = Wayland_GLES_CreateContext;
+     device->GL_LoadLibrary = Wayland_GLES_LoadLibrary;
+@@ -226,7 +227,6 @@ display_handle_geometry(void *data,
+     SDL_VideoDisplay *display = data;
+ 
+     display->name = SDL_strdup(model);
+-    display->driverdata = output;
+ }
+ 
+ static void
+@@ -237,15 +237,15 @@ display_handle_mode(void *data,
+                     int height,
+                     int refresh)
+ {
+-    SDL_VideoDisplay *display = data;
+     SDL_DisplayMode mode;
++    SDL_VideoDisplay *display = data;
+ 
+     SDL_zero(mode);
+     mode.format = SDL_PIXELFORMAT_RGB888;
+     mode.w = width;
+     mode.h = height;
+     mode.refresh_rate = refresh / 1000; // mHz to Hz
+-    mode.driverdata = display->driverdata;
++    mode.driverdata = ((SDL_WaylandOutputData*)display->driverdata)->output;
+     SDL_AddDisplayMode(display, &mode);
+ 
+     if (flags & WL_OUTPUT_MODE_CURRENT) {
+@@ -258,8 +258,10 @@ static void
+ display_handle_done(void *data,
+                     struct wl_output *output)
+ {
++    /* !!! FIXME: this will fail on any further property changes! */
+     SDL_VideoDisplay *display = data;
+     SDL_AddVideoDisplay(display);
++    wl_output_set_user_data(output, display->driverdata);
+     SDL_free(display->name);
+     SDL_free(display);
+ }
+@@ -269,7 +271,8 @@ display_handle_scale(void *data,
+                      struct wl_output *output,
+                      int32_t factor)
+ {
+-    // TODO: do HiDPI stuff.
++    SDL_VideoDisplay *display = data;
++    ((SDL_WaylandOutputData*)display->driverdata)->scale_factor = factor;
+ }
+ 
+ static const struct wl_output_listener output_listener = {
+@@ -283,6 +286,7 @@ static void
+ Wayland_add_display(SDL_VideoData *d, uint32_t id)
+ {
+     struct wl_output *output;
++    SDL_WaylandOutputData *data;
+     SDL_VideoDisplay *display = SDL_malloc(sizeof *display);
+     if (!display) {
+         SDL_OutOfMemory();
+@@ -296,6 +300,10 @@ Wayland_add_display(SDL_VideoData *d, uint32_t id)
+         SDL_free(display);
+         return;
+     }
++    data = SDL_malloc(sizeof *data);
++    data->output = output;
++    data->scale_factor = 1.0;
++    display->driverdata = data;
+ 
+     wl_output_add_listener(output, &output_listener, display);
+ }
+@@ -351,7 +359,7 @@ display_handle_global(void *data, struct wl_registry *registry, uint32_t id,
+     /*printf("WAYLAND INTERFACE: %s\n", interface);*/
+ 
+     if (strcmp(interface, "wl_compositor") == 0) {
+-        d->compositor = wl_registry_bind(d->registry, id, &wl_compositor_interface, 1);
++        d->compositor = wl_registry_bind(d->registry, id, &wl_compositor_interface, SDL_min(3, version));
+     } else if (strcmp(interface, "wl_output") == 0) {
+         Wayland_add_display(d, id);
+     } else if (strcmp(interface, "wl_seat") == 0) {
+@@ -466,7 +474,9 @@ Wayland_VideoQuit(_THIS)
+ 
+     for (i = 0; i < _this->num_displays; ++i) {
+         SDL_VideoDisplay *display = &_this->displays[i];
+-        wl_output_destroy(display->driverdata);
++
++        wl_output_destroy(((SDL_WaylandOutputData*)display->driverdata)->output);
++        SDL_free(display->driverdata);
+         display->driverdata = NULL;
+ 
+         for (j = display->num_display_modes; j--;) {
+diff --git a/src/video/wayland/SDL_waylandvideo.h b/src/video/wayland/SDL_waylandvideo.h
+index d173b28e5..753754d68 100644
+--- a/src/video/wayland/SDL_waylandvideo.h
++++ b/src/video/wayland/SDL_waylandvideo.h
+@@ -82,6 +82,11 @@ typedef struct {
+     int relative_mouse_mode;
+ } SDL_VideoData;
+ 
++typedef struct {
++    struct wl_output *output;
++    float scale_factor;
++} SDL_WaylandOutputData;
++
+ #endif /* SDL_waylandvideo_h_ */
+ 
+ /* vi: set ts=4 sw=4 expandtab: */
+diff --git a/src/video/wayland/SDL_waylandwindow.c b/src/video/wayland/SDL_waylandwindow.c
+index 6c924c2cf..d5352fa74 100644
+--- a/src/video/wayland/SDL_waylandwindow.c
++++ b/src/video/wayland/SDL_waylandwindow.c
+@@ -38,6 +38,10 @@
+ #include "xdg-decoration-unstable-v1-client-protocol.h"
+ #include "org-kde-kwin-server-decoration-manager-client-protocol.h"
+ 
++static float get_window_scale_factor(SDL_Window *window) {
++      return ((SDL_WindowData*)window->driverdata)->scale_factor;
++}
++
+ /* On modern desktops, we probably will use the xdg-shell protocol instead
+    of wl_shell, but wl_shell might be useful on older Wayland installs that
+    don't have the newer protocol, or embedded things that don't have a full
+@@ -107,11 +111,14 @@ handle_configure_zxdg_shell_surface(void *data, struct zxdg_surface_v6 *zxdg, ui
+     struct wl_region *region;
+ 
+     if (!wind->shell_surface.zxdg.initial_configure_seen) {
++        window->w = 0;
++        window->h = 0;
+         SDL_SendWindowEvent(window, SDL_WINDOWEVENT_RESIZED, wind->resize.width, wind->resize.height);
+         window->w = wind->resize.width;
+         window->h = wind->resize.height;
+ 
+-        WAYLAND_wl_egl_window_resize(wind->egl_window, window->w, window->h, 0, 0);
++        wl_surface_set_buffer_scale(wind->surface, get_window_scale_factor(window));
++        WAYLAND_wl_egl_window_resize(wind->egl_window, window->w * get_window_scale_factor(window), window->h * get_window_scale_factor(window), 0, 0);
+ 
+         zxdg_surface_v6_ack_configure(zxdg, serial);
+ 
+@@ -123,6 +130,7 @@ handle_configure_zxdg_shell_surface(void *data, struct zxdg_surface_v6 *zxdg, ui
+         wind->shell_surface.zxdg.initial_configure_seen = SDL_TRUE;
+     } else {
+         wind->resize.pending = SDL_TRUE;
++        wind->resize.configure = SDL_TRUE;
+         wind->resize.serial = serial;
+     }
+ }
+@@ -208,11 +216,14 @@ handle_configure_xdg_shell_surface(void *data, struct xdg_surface *xdg, uint32_t
+     struct wl_region *region;
+ 
+     if (!wind->shell_surface.xdg.initial_configure_seen) {
++        window->w = 0;
++        window->h = 0;
+         SDL_SendWindowEvent(window, SDL_WINDOWEVENT_RESIZED, wind->resize.width, wind->resize.height);
+         window->w = wind->resize.width;
+         window->h = wind->resize.height;
+ 
+-        WAYLAND_wl_egl_window_resize(wind->egl_window, window->w, window->h, 0, 0);
++        wl_surface_set_buffer_scale(wind->surface, get_window_scale_factor(window));
++        WAYLAND_wl_egl_window_resize(wind->egl_window, window->w * get_window_scale_factor(window), window->h * get_window_scale_factor(window), 0, 0);
+ 
+         xdg_surface_ack_configure(xdg, serial);
+ 
+@@ -224,6 +235,7 @@ handle_configure_xdg_shell_surface(void *data, struct xdg_surface *xdg, uint32_t
+         wind->shell_surface.xdg.initial_configure_seen = SDL_TRUE;
+     } else {
+         wind->resize.pending = SDL_TRUE;
++        wind->resize.configure = SDL_TRUE;
+         wind->resize.serial = serial;
+     }
+ }
+@@ -330,6 +342,78 @@ static const struct qt_extended_surface_listener extended_surface_listener = {
+ };
+ #endif /* SDL_VIDEO_DRIVER_WAYLAND_QT_TOUCH */
+ 
++static void
++update_scale_factor(SDL_WindowData *window) {
++   float old_factor = window->scale_factor, new_factor = 0.0;
++
++   if (!(window->sdlwindow->flags & SDL_WINDOW_ALLOW_HIGHDPI)) {
++       return;
++   }
++
++   if (!window->num_outputs) {
++       new_factor = old_factor;
++   }
++
++   if (FULLSCREEN_VISIBLE(window->sdlwindow) && window->sdlwindow->fullscreen_mode.driverdata) {
++       new_factor = ((SDL_WaylandOutputData*)(wl_output_get_user_data(window->sdlwindow->fullscreen_mode.driverdata)))->scale_factor;
++   }
++
++   for (int i = 0; i < window->num_outputs; i++) {
++       float factor = ((SDL_WaylandOutputData*)(wl_output_get_user_data(window->outputs[i])))->scale_factor;
++       if (factor > new_factor) {
++           new_factor = factor;
++       }
++   }
++
++   if (new_factor != old_factor) {
++       /* force the resize event to trigger, as the logical size didn't change */
++       window->resize.width = window->sdlwindow->w;
++       window->resize.height = window->sdlwindow->h;
++       window->resize.scale_factor = new_factor;
++       window->resize.pending = SDL_TRUE;
++   }
++}
++
++static void
++handle_surface_enter(void *data, struct wl_surface *surface,
++        struct wl_output *output) {
++    SDL_WindowData *window = data;
++
++    window->outputs = SDL_realloc(window->outputs, (window->num_outputs + 1) * sizeof *window->outputs);
++    window->outputs[window->num_outputs++] = output;
++    update_scale_factor(window);
++}
++
++static void
++handle_surface_leave(void *data, struct wl_surface *surface,
++        struct wl_output *output) {
++    SDL_WindowData *window = data;
++
++    if (window->num_outputs > 1) {
++       struct wl_output **new_outputs = SDL_malloc((window->num_outputs - 1) * sizeof *window->outputs), **iter = new_outputs;
++       for (int i=0; i < window->num_outputs; i++) {
++           if (window->outputs[i] != output) {
++               *iter = window->outputs[i];
++               iter++;
++           }
++       }
++       SDL_free(window->outputs);
++       window->outputs = new_outputs;
++       window->num_outputs--;
++    } else {
++       window->num_outputs = 0;
++       SDL_free(window->outputs);
++       window->outputs = NULL;
++    }
++
++    update_scale_factor(window);
++}
++
++static const struct wl_surface_listener surface_listener = {
++    handle_surface_enter,
++    handle_surface_leave
++};
++
+ SDL_bool
+ Wayland_GetWindowWMInfo(_THIS, SDL_Window * window, SDL_SysWMinfo * info)
+ {
+@@ -475,7 +559,7 @@ void
+ Wayland_SetWindowFullscreen(_THIS, SDL_Window * window,
+                             SDL_VideoDisplay * _display, SDL_bool fullscreen)
+ {
+-    struct wl_output *output = (struct wl_output *) _display->driverdata;
++    struct wl_output *output = ((SDL_WaylandOutputData*) _display->driverdata)->output;
+     SetFullscreen(_this, window, fullscreen ? output : NULL);
+ }
+ 
+@@ -553,11 +637,28 @@ int Wayland_CreateWindow(_THIS, SDL_Window *window)
+     data->waylandData = c;
+     data->sdlwindow = window;
+ 
++    data->scale_factor = 1.0;
++
++    if (window->flags & SDL_WINDOW_ALLOW_HIGHDPI) {
++        for (int i=0; i < SDL_GetVideoDevice()->num_displays; i++) {
++            float scale = ((SDL_WaylandOutputData*)SDL_GetVideoDevice()->displays[i].driverdata)->scale_factor;
++            if (scale > data->scale_factor) {
++                data->scale_factor = scale;
++            }
++        }
++    }
++
+     data->resize.pending = SDL_FALSE;
++    data->resize.width = window->w;
++    data->resize.height = window->h;
++    data->resize.scale_factor = data->scale_factor;
++
++    data->outputs = NULL;
++    data->num_outputs = 0;
+ 
+     data->surface =
+         wl_compositor_create_surface(c->compositor);
+-    wl_surface_set_user_data(data->surface, data);
++    wl_surface_add_listener(data->surface, &surface_listener, data);
+ 
+     if (c->shell.xdg) {
+         data->shell_surface.xdg.surface = xdg_wm_base_get_xdg_surface(c->shell.xdg, data->surface);
+@@ -587,7 +688,7 @@ int Wayland_CreateWindow(_THIS, SDL_Window *window)
+ #endif /* SDL_VIDEO_DRIVER_WAYLAND_QT_TOUCH */
+ 
+     data->egl_window = WAYLAND_wl_egl_window_create(data->surface,
+-                                            window->w, window->h);
++                                            window->w * data->scale_factor, window->h * data->scale_factor);
+ 
+     /* Create the GLES window surface */
+     data->egl_surface = SDL_EGL_CreateSurface(_this, (NativeWindowType) data->egl_window);
+@@ -676,9 +777,10 @@ void Wayland_SetWindowSize(_THIS, SDL_Window * window)
+     SDL_WindowData *wind = window->driverdata;
+     struct wl_region *region;
+ 
+-    WAYLAND_wl_egl_window_resize(wind->egl_window, window->w, window->h, 0, 0);
++    wl_surface_set_buffer_scale(wind->surface, get_window_scale_factor(window));
++    WAYLAND_wl_egl_window_resize(wind->egl_window, window->w * get_window_scale_factor(window), window->h * get_window_scale_factor(window), 0, 0);
+ 
+-    region =wl_compositor_create_region(data->compositor);
++    region = wl_compositor_create_region(data->compositor);
+     wl_region_add(region, 0, 0, window->w, window->h);
+     wl_surface_set_opaque_region(wind->surface, region);
+     wl_region_destroy(region);
+diff --git a/src/video/wayland/SDL_waylandwindow.h b/src/video/wayland/SDL_waylandwindow.h
+index 4b69f7a4e..7b993a19e 100644
+--- a/src/video/wayland/SDL_waylandwindow.h
++++ b/src/video/wayland/SDL_waylandwindow.h
+@@ -71,11 +71,16 @@ typedef struct {
+ #endif /* SDL_VIDEO_DRIVER_WAYLAND_QT_TOUCH */
+ 
+     struct {
+-        SDL_bool pending;
++        SDL_bool pending, configure;
+         uint32_t serial;
+         int width, height;
++        float scale_factor;
+     } resize;
+ 
++    struct wl_output **outputs;
++    int num_outputs;
++
++    float scale_factor;
+ } SDL_WindowData;
+ 
+ extern void Wayland_ShowWindow(_THIS, SDL_Window *window);
+-- 
+2.20.1
+
