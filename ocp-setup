@@ -1,0 +1,2 @@
+#!/bin/sh
+exec java -jar /usr/share/ocp-setup/ocp-setup-1.0-lite.jar
