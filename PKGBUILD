@@ -2,7 +2,7 @@
 #
 _pkgbase=veeam
 pkgname=veeam
-pkgver=3.0.0.865
+pkgver=3.0.1.1046
 pkgrel=1
 pkgdesc="Veeam Agent for Linux"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('ncurses' 'lvm2' 'fuse' 'rpmextract')
 install=${pkgname}.install
 source=( "${url}/rpm/el/7/x86_64/veeam-${pkgver}-1.el7.x86_64.rpm" )
 conflicts=("${_pkgbase}")
-md5sums=('2d0e10439fbd3b7258e06d4c4f62fde7')
+md5sums=('fab6361f3f947b5a0ed52c7a847b1ccb')
 #
 build() {
   msg "build..."
