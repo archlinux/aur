@@ -1,9 +1,9 @@
 # Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
 pkgname=sensu-go-agent
 _pkgname=sensu-agent
-pkgver=5.5.0.1362
+pkgver=5.5.0
 _pkgver=5.5.0-1362
-pkgrel=1
+pkgrel=2
 pkgdesc="Sensu Go Agent"
 arch=('x86_64')
 url='https://sensu.io'

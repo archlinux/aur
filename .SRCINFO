@@ -1,7 +1,7 @@
 pkgbase = sensu-go-agent
 	pkgdesc = Sensu Go Agent
-	pkgver = 5.5.0.1362
-	pkgrel = 1
+	pkgver = 5.5.0
+	pkgrel = 2
 	url = https://sensu.io
 	arch = x86_64
 	license = MIT
