@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=blis-git
-pkgver=0.5.2r2.g153e0be2
+pkgver=0.5.2.r20.g32812ff5
 pkgrel=1
 pkgdesc="BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group"
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "%s" $(git describe --tags|sed 's+-+r+'|tr - .) 
+  printf "%s" $(git describe --tags|sed 's+-+.r+'|tr - .) 
 }
 
 prepare() {
