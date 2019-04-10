@@ -4,20 +4,20 @@
 
 pkgbase=lib32-smbclient
 pkgname=('lib32-libwbclient' 'lib32-smbclient')
-pkgver=4.9.4
+pkgver=4.10.0
 pkgrel=1
 pkgdesc="Tools to access a server's filespace and printers via SMB"
 arch=('x86_64')
 url='http://www.samba.org'
 license=('GPL3')
 makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap'
-             'lib32-libcups' 'lib32-libgcrypt' 'lib32-pam' 'lib32-python2'
+             'lib32-libcups' 'lib32-libgcrypt' 'lib32-pam' 'lib32-python3'
              'lib32-systemd' 'lib32-talloc' 'lib32-tdb' 'lib32-popt'
              'lib32-tevent' 'lib32-ldb' 'lib32-libarchive' 'lib32-libaio'
              'lib32-libnsl' 'lib32-libtirpc' 'perl-parse-yapp'
              'lib32-jansson' 'rpcsvc-proto' 'smbclient' 'libwbclient')
 source=("https://www.samba.org/samba/samba/ftp/stable/samba-${pkgver}.tar.gz")
-sha256sums=('6d98a8d8bcccbe788e4bbb406362e6676311aca711a3f3cc9b3a404bb9ff0b4f')
+sha256sums=('9f1f400a5a84d197087a3724d7509e179e19148622226afa9dcd6be4cf693458')
 
 prepare() {
   cd samba-${pkgver}
@@ -30,9 +30,9 @@ $(find ${srcdir}/samba-${pkgver} -name 'configure.ac')
 $(find ${srcdir}/samba-${pkgver} -name 'upgrade_from_s3')
 $(find ${srcdir}/samba-${pkgver}/buildtools -type f)
 $(find ${srcdir}/samba-${pkgver}/source4/scripting -type f)"
-  sed -i -e 's|/usr/bin/env python$|/usr/bin/env python2-32|' \
-         -e 's|python-config|python2-32-config|' \
-         -e 's|bin/python|bin/python2-32|' \
+  sed -i -e 's|/usr/bin/env python$|/usr/bin/env python3-32|' \
+         -e 's|python-config|python3-32-config|' \
+         -e 's|bin/python|bin/python3-32|' \
       ${PYTHON_CALLERS}
   IFS=${SAVEIFS}
 }
@@ -43,8 +43,9 @@ build() {
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-  export PYTHON='/usr/bin/python2-32'
-  export PYTHON_CONFIG='/usr/bin/python2-32-config'
+  export PYTHON='/usr/bin/python3-32'
+  export PYTHON_CONFIG='/usr/bin/python3-32-config'
+  export PYTHONPATH="/usr/lib32/python3.7/site-packages"
   _samba4_idmap_modules='idmap_ad,idmap_rid,idmap_adex,idmap_hash,idmap_tdb2'
   _samba4_pdb_modules='pdb_tdbsam,pdb_ldap,pdb_ads,pdb_smbpasswd,pdb_wbc_sam,pdb_samba4'
   _samba4_auth_modules='auth_unix,auth_wbc,auth_server,auth_netlogond,auth_script,auth_samba4'
@@ -96,7 +97,7 @@ package_lib32-libwbclient() {
 package_lib32-smbclient() {
   depends=('lib32-avahi' 'lib32-gnutls' 'lib32-libcap' 'lib32-libcups'
            'lib32-libgcrypt' 'lib32-libwbclient' 'lib32-pam' 'lib32-systemd'
-           'lib32-talloc' 'lib32-tdb' 'lib32-ldb' 'lib32-python2'
+           'lib32-talloc' 'lib32-tdb' 'lib32-ldb' 'lib32-python3'
            'lib32-libaio' 'perl-parse-yapp' 'lib32-jansson' 'smbclient')
 
   cd staging
