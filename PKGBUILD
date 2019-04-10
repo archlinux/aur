@@ -1,15 +1,16 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=libtas-git
-pkgver=1.3.4.r0.9170d91
+pkgver=1.3.4.r0.54098e9
 pkgrel=1
 pkgdesc="Tool-assisted speedrunning utility for Linux-native binaries"
+epoch=1
 arch=('x86_64')
 url="https://github.com/clementgallet/libTAS"
 license=('GPL3')
 depends=('alsa-lib' 'ffmpeg' 'fontconfig' 'freetype2'
          'qt5-base' 'xcb-util-cursor' 'zlib')
-makedepends=('cmake' 'extra-cmake-modules')
+makedepends=('cmake' 'extra-cmake-modules' 'git')
 conflicts=('libtas')
 source=("git+$url")
 sha512sums=(SKIP)
