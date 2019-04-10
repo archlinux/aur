@@ -2,14 +2,14 @@
 # Contributor: Amr Hassan <amr.hassan@gmail.com>
 
 pkgname=utf8cpp
-pkgver=2.3.5
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="UTF-8 with C++ in a Portable Way"
 url='http://utfcpp.sourceforge.net'
 arch=('any')
 license=('Custom')
 source=("https://github.com/nemtrif/utfcpp/archive/v${pkgver}.tar.gz")
-sha256sums=('f3ffe0ef6c02f48ebafe42369cbd741e844143baad27c13baad1cd14b863983d')
+sha256sums=('cc70073645be54efcc7019fc466dbaae0832d4a3afaf5e8519c5b27ba42ac02c')
 
 package() {
   cd "utfcpp-${pkgver}/source"
