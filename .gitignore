@@ -1,0 +1,4 @@
+/src/
+/pkg/
+/*.log
+/metals-*.tar.xz
