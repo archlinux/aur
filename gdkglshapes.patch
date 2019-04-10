@@ -1,0 +1,20 @@
+--- gtkglext-1.2.0.orig/gdk/gdkglshapes.c	2019-04-05 21:26:39.603827724 -0700
++++ gtkglext-1.2.0/gdk/gdkglshapes.c	2019-04-05 21:28:01.124446952 -0700
+@@ -544,7 +544,7 @@
+   {-Z, -X, 0}
+ };
+ 
+-static int index[20][3] =
++static int bindex[20][3] =
+ {
+   {0, 4, 1},
+   {0, 9, 4},
+@@ -574,7 +574,7 @@
+   int i;
+ 
+   for (i = 19; i >= 0; i--) {
+-    drawtriangle(i, idata, index, shadeType);
++    drawtriangle(i, idata, bindex, shadeType);
+   }
+ }
+ 

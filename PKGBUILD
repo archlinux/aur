@@ -1,12 +1,13 @@
 # Contributor: Sphax <zecmerquise at gmail dot com>
 # Contributor: WAAAGH.313ph4n7 <waaagh313ph4n7@gmail.com>
 # Contributor: Anton Larionov <diffident dot cat at gmail dot com>
+# Maintainer: Jon Wiersma (archaur at jonw dot org)
 # Maintainer: josephgbr <rafael.f.f1@gmail.com>
 
 _pkgbase=gtkglext
 pkgname=lib32-$_pkgbase
 pkgver=1.2.0
-pkgrel=9
+pkgrel=10
 pkgdesc="OpenGL extensions for GTK+ (32-bit)"
 arch=('x86_64')
 url="http://gtkglext.sourceforge.net/"
@@ -15,9 +16,17 @@ depends=('lib32-gtk2' 'lib32-libxmu' 'lib32-glu' 'lib32-pangox-compat' "$_pkgbas
 makedepends=('gcc-multilib' 'lib32-mesa')
 options=('!libtool')
 source=("http://downloads.sourceforge.net/sourceforge/gtkglext/${_pkgbase}-${pkgver}.tar.bz2"
-        gtk2.20.patch)
+        gtk2.20.patch
+        gdkglshapes.patch)
 md5sums=('ed7ba24ce06a8630c07f2d0ee5f04ab4'
-         'e5a87ec3f2d0e616c6f32f90c3f7237f')
+         'e5a87ec3f2d0e616c6f32f90c3f7237f'
+         '612bae44f3cc9db93687af2b5d86a02f')
+
+prepare() {
+  cd ${_pkgbase}-${pkgver}
+  patch -Np1 -i ../gtk2.20.patch
+  patch -Np1 -i ../gdkglshapes.patch
+}
 
 build() {
   export CC="gcc -m32"
@@ -25,7 +34,6 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
  
   cd ${_pkgbase}-${pkgver}
-  patch -Np1 -i ../gtk2.20.patch
   autoconf --force
   ./configure --prefix=/usr --libdir=/usr/lib32
   make
