@@ -6,7 +6,7 @@
 # Maintainer: David Strawn <isomarcte a__t gmail d__o__t c__o__m>
 pkgname='metals'
 pkgver='0.4.4'
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='Language Server For Scala'
 url='https://scalameta.org/metals/'
@@ -70,7 +70,15 @@ build() {
     local -r _SBT_DIR="${srcdir}/.sbt"
     local -r _SBT_IVY="${srcdir}/.ivy2"
 	  cd "$pkgname-$pkgver"
-    sbt -sbt-dir "$_SBT_DIR" -ivy "$_SBT_IVY" clean compile
+
+    # When run with some AUR helpers, in particular `yay`, for a
+    # reason I do not understand `sbt` will regularly attempt to
+    # resolve the Scala compiler in a local-preloaded-ivy cache
+    # _only_, and not attempt to download it. However if you just run
+    # it again, it then tries to download it. This does not happen
+    # when run locally, for me at least, with makepkg or in a
+    # systemd-nspawn with extra-x86_64-build.
+    sbt -sbt-dir "$_SBT_DIR" -ivy "$_SBT_IVY" clean compile || sbt -sbt-dir "$_SBT_DIR" -ivy "$_SBT_IVY" clean compile
 }
 
 check() {
