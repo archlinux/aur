@@ -6,7 +6,7 @@
 
 pkgname=mysql-connector-c++
 pkgver=1.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A MySQL database connector for C++'
 arch=('i686' 'x86_64')
 url='http://dev.mysql.com/doc/connector-cpp/en/'
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('libmariadbclient')
 makedepends=('cmake' 'boost')
 validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5') # MySQL Release Engineering <mysql-build@oss.oracle.com>
-source=("http://cdn.mysql.com/Downloads/Connector-C++/${pkgname}-${pkgver}.tar.gz"{,.asc}
+source=("https://mirrors.sohu.com/mysql/Connector-C++/${pkgname}-${pkgver}.tar.gz"{,.asc}
 	'0001-mysql-connector-c++-mariadb-api.patch'
 	'0002-mysql-connector-c++-no-JSON.patch')
 sha256sums=('3e31847a69a4e5c113b7c483731317ec4533858e3195d3a85026a0e2f509d2e4'
@@ -37,7 +37,7 @@ build() {
 	cd build/
 
 	cmake "../${pkgname}-${pkgver}/" \
-		 -Wno-dev \
+		-Wno-dev \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
