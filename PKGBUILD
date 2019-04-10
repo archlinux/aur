@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Gsänger <sebastian_gsaenger@web.de>
 pkgname=vipster
 pkgver=1.16b
-pkgrel=1
+pkgrel=2
 pkgdesc="Molecule editor based on Qt, specialized on periodic structures"
 arch=('x86_64')
 url="https://sgsaenger.github.io/vipster"
@@ -10,7 +10,7 @@ groups=()
 depends=('qt5-base' 'python')
 makedepends=('cmake' 'git')
 source=("https://github.com/sgsaenger/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('57e26d37bf4660d7de8a6b69d59a272d')
+md5sums=('92919e0833ae121ff7058af1aaa61174')
 
 build() {
     cd vipster-$pkgver
