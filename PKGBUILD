@@ -1,32 +1,27 @@
 # Maintainer: David Birks <david@tellus.space>
 
 pkgname=jx
-pkgver=1.3.60
+pkgver=1.3.1099
 pkgrel=1
-epoch=
 pkgdesc="Command line tool for working with Jenkins X: automated CI/CD for Kubernetes"
-arch=(x86_64)
+arch=("x86_64")
 url="https://github.com/jenkins-x/jx"
 license=('Apache')
-groups=()
-depends=('git>=2.0.0' 'go>=1.9')
-checkdepends=('dep')
-source=($pkgname-$pkgver-git::git+https://github.com/jenkins-x/jx.git#tag=v$pkgver)
-md5sums=('SKIP')
+depends=('go>=1.11.4')
+#checkdepends=('dep')
+source=("https://github.com/jenkins-x/jx/archive/v${pkgver}.tar.gz")
+sha256sums=('0ad7a79ab63d0ae748069fda4df5b73d57f84dc3f1366d3ee0dc7eda4621a404')
 
 build() {
-    export GOPATH="$startdir"
+    export GOPATH="${srcdir}"
     echo $GOPATH
     mkdir -p "github.com/jenkins-x"
-    rm -rf "github.com/jenkins-x/jx"
-    mv -f "$pkgname-$pkgver-git" "github.com/jenkins-x/jx"
+    mv "jx-${pkgver}" "github.com/jenkins-x/jx"
     cd "github.com/jenkins-x/jx"
-    make build
+    VERSION=${pkgver} make build
 }
 
 package() {
-    install -d "$pkgdir/usr/local/bin"
-    cp "$srcdir/github.com/jenkins-x/jx/build/jx" "$pkgdir/usr/local/bin"
-    chmod 755 "$pkgdir/usr/local/bin/jx"
+    install -Dm 755 "${srcdir}/github.com/jenkins-x/jx/build/jx" "${pkgdir}/usr/local/bin/jx"
 }
 
