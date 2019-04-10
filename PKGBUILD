@@ -15,6 +15,15 @@ optdepends=('ddnet-skins: more skins for your tee'
 source=("https://ddnet.tw/downloads/DDNet-$pkgver.tar.xz")
 sha256sums=('4c5937b6d32074194a8b23ea5bc81db78ebafd533cf9fe8003eadc611dfc534a')
 
+# Set 1 to enable MySQL support and add dependencies
+_enable_mysql=0
+
+if [ $_enable_mysql -eq 1 ]; then
+    depends+=('mysql-connector-c++')
+    makedepends+=('boost')
+    _mysql_opt="-DMYSQL=ON"
+fi
+
 prepare() {
     [ -d build ] && rm -rf build; mkdir build
     [ -d prep ]  && rm -rf prep;  mkdir prep
@@ -52,7 +61,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWEBSOCKETS=ON             \
         -DAUTOUPDATE=OFF            \
-        -GNinja
+        -GNinja                     \
+        $_mysql_opt
     ninja
 }
 
