@@ -5,7 +5,7 @@ name=cloudcompare
 pkgname=${name}
 _fragment="#tag=v2.10.2"
 pkgver=2.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
@@ -14,9 +14,11 @@ depends=('qt5-base' 'qt5-tools' 'qt5-svg' 'glu' 'glew' 'mesa' 'vxl' 'ffmpeg' 'cg
 makedepends=('git' 'cmake' 'pcl' 'libharu' 'proj' 'python' 'doxygen' 'laz-perf')
 optdepends=('pcl')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git${_fragment}"
-        )
+        CloudCompare.desktop
+        ccViewer.desktop)
 md5sums=('SKIP'
-         )
+         '379e09f6996b2b397429c0661c409bd0'
+         'b6dcb0dee15cc67011166a2fc774c5ef')
 
 prepare() {
   cd ${srcdir}/${name}
@@ -72,5 +74,17 @@ build() {
 package() {
   cd ${srcdir}/${name}/build
   make DESTDIR="$pkgdir/" install
+
+  # install *.desktop files
+  install -D -m 644 ${srcdir}/*.desktop -t ${pkgdir}/usr/share/applications/
+
+  # copy icons for *.desktop files
+  cd ${srcdir}/${name}
+  for size in 16 32 64 256; do
+    install -D -m 644 qCC/images/icon/cc_icon_${size}.png ${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/cc_icon.png
+    install -D -m 644 qCC/images/icon/cc_viewer_icon_${size}.png ${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/cc_viewer_icon.png
+  done 
+  install -D -m 644 qCC/images/icon/cc_icon.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/cc_icon.svg
+  install -D -m 644 qCC/images/icon/cc_viewer_icon.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/cc_viewer_icon.svg
 }
 # vim:set sw=2 ts=2 et:
