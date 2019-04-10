@@ -1,0 +1,13 @@
+pkgbase = qtum-bin
+	pkgdesc = Qtum Desktop Bin
+	pkgver = 0.17.2
+	pkgrel = 1
+	url = https://qtum.org
+	arch = x86_64
+	license = GPL-3.0
+	depends = glibc
+	source = https://repo.qtum.org/apt/ubuntu/pool/main/q/qtum/qtum_0.17.2_amd64.deb
+	sha256sums = 587d9fb0e2163e6b312d2401e46cbfc272f854953389f988ace0c7bc815b81fc
+
+pkgname = qtum-bin
+
