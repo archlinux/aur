@@ -27,13 +27,13 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
 
-  composer install
+  composer bin all install
 }
 
 build() {
   cd "$_pkgname"
 
-  php -d phar.readonly=Off /usr/bin/php-box build
+  ./bin/platform self:build <<< "\n"
 }
 
 check() {
