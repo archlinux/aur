@@ -7,15 +7,17 @@ _name=jack2
 pkgbase=jack2-git
 pkgname=('jack2-git' 'jack2-dbus-git')
 pkgdesc="The next-generation JACK with SMP support"
-pkgver=1.9.12.r91.g205e0d7b
+pkgver=1.9.12.r119.g82329969
 pkgrel=1
 epoch=1
 arch=('x86_64')
 url="http://jackaudio.org/"
-license=('GPL')
+license=('GPL2' 'GPL3')
 groups=('pro-audio')
 makedepends=('python' 'celt' 'opus' 'libsamplerate' 'git' 'libffado')
 optdepends=('a2jmidid: Expose legacy ALSA sequencer applications in JACK MIDI'
+            'libffado: Firewire support'
+            'portaudio: Portaudio support'
             'realtime-privileges: Acquire realtime privileges')
 source=("${pkgname}::git+https://github.com/jackaudio/jack2")
 md5sums=('SKIP')
@@ -54,7 +56,7 @@ build() {
 
 package_jack2-git() {
   pkgdesc="JACK low-latency audio server for multi-processor machines (daemon activation)"
-  depends=('celt' 'libffado' 'opus' 'python-dbus')
+  depends=('celt' 'opus' 'libsamplerate' 'python-dbus')
   conflicts=('jack' 'jack2-dbus')
   provides=('jack')
 
@@ -64,7 +66,7 @@ package_jack2-git() {
 
 package_jack2-dbus-git() {
   pkgdesc="JACK low-latency audio server for multi-processor machines (only dbus activation)"
-  depends=('celt' 'libffado' 'opus' 'python-dbus')
+  depends=('celt' 'opus' 'libsamplerate' 'python-dbus')
   conflicts=('jack' 'jack2')
   provides=('jack' 'jack2')
 
