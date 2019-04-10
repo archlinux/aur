@@ -5,7 +5,7 @@ pkgver=3.0.6.r424.g838892e
 pkgrel=1
 pkgdesc="A tool for gathering e-mail accounts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers)."
 arch=('any')
-url="https://github.com/ssolidus/theHarvester"
+url="https://github.com/laramies/theHarvester"
 license=('GPL2')
 depends=(
 	'python'
