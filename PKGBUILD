@@ -51,13 +51,13 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=4.19
-_minor=25
-_rtver=16
+_minor=31
+_rtver=18
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=9
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -65,7 +65,7 @@ options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'graphviz')
 _bfq_sq_mq_path="bfq-sq-mq"
 _bfq_sq_mq_ver='v10r1'
-_bfq_sq_mq_rel='2K190313-rc1'
+_bfq_sq_mq_rel='2K190410-rc1'
 _bfq_sq_mq_patch="${_major}-bfq-sq-mq-${_bfq_sq_mq_ver}-${_bfq_sq_mq_rel}.patch"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
@@ -80,7 +80,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
         "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
-        "${_lucjanpath}/arch-patches-v2/0002-exec-Fix-mem-leak-in-kernel_read_file.patch"
         "${_lucjanpath}/aur-patches/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"
          # the main kernel config files
         'config'
@@ -387,15 +386,14 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('d7f6cb0980640a772008f3517e260e545d201658d2202834fba82f9abc6d05a2917d45d8ab8885c0282c1064dbd9149adc5df307ba3ea063dbe1a9dde40c8810'
+sha512sums=('9b2e956eaa79f0774c692b60cd17f8fdd6a558574eb57dbcd131909854b48c3e6a1eff0669c07f1cf15319b0310c08a330b0801cfdbf13ca8d8f530db1e538e8'
             'SKIP'
-            'f86a95def90e8c5eca4bd30e67b95d33f193760d6bbe9c643c2a5afb622d8d1803815cd1a0357bfcbe8f51a7ee74ecc81f30949c1bc46c380c8c097975fd6099'
+            'd54025a15ad5f8681f55d0b489b071a58814793424f87997d3f95ae9278e90c39ca500acc8e93eff42118cab788d14a35f920891a0e34f4de89bc44103460e8e'
             'SKIP'
-            'cd64efa5ab886090f84473822516bf8dcec796dce1066686d29e3afc23748c84b33c85a26d46631fa84f225ed1ca9a66e3cdc0f8f5fa3c9532d8c267d78d8f7c'
+            '86ffab9269225a28afd08990ea885658e388ccc639fd00fa6e823e4898243cffbb3328b991564ef27fcc36f37ab95c30cc112e90ef086aa3103a06d4d87ac28d'
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
             '560920b4ebf8d7b753f058a41da62d20fde1e4b42a42e73be11461d3fe25b59bc36250a66d9c1c6e3c499426b237427af5ba7586daa7c549d2cf7bb7087932a1'
-            '3b58b55a475a88ea4773bd28064ec4670c7ded3b028fc337facf78014529fecf413ad1aeaa12424b6f478b237438a31205f8938908cc47f1b612894661626bf0'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
             '17e85ed5227b679884987f3a3ab8420eb5c10d2204d13ddc7f6bfbf4b75345234729b3db4c15e14bad04dd39c83f6979d5638230b84dfe667a363b9c50cf1d97'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
