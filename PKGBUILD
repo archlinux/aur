@@ -6,7 +6,7 @@
 #   french pkgbuild here: https://git.deparis.io/pkgbuilds/tree/cliqz_work/PKGBUILD?id=17ec1716c90dd08
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.25.3
+pkgver=1.26.0
 pkgrel=1
 _cqzchannel=release
 _cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
@@ -19,11 +19,13 @@ depends=(gtk3 libxt startup-notification mime-types dbus-glib ffmpeg nss
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake
              inetutils xorg-server-xvfb autoconf2.13 rust clang llvm
              jack gtk2 python nodejs python2-psutil cbindgen nasm libnotify
-             wget pulseaudio)
+             wget pulseaudio rsync)
 optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
-source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz")
-sha256sums=('9069fbe2ac32a8ac356656ab083ebdd27a0d92fb25a8d309247c719568f0f472')
+source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
+        '0001-bz-1468911.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-bz-1468911.patch?h=packages/firefox&id=3d978bec03d20c51d60844ac29a769f4fff1ec5e')
+sha256sums=('6fbfd93b57ae1273b9a169d0271992426f4f1786352719b3757b5d1a3efbe0e7'
+            '821f858bac2e13ce02b8c20d5387d4ecc8ab2d0e4ebe0a517cbf935da6aeb31b')
 options=(!emptydirs !makeflags)
 
 prepare() {
@@ -35,9 +37,16 @@ prepare() {
   # Patch future desktop file, which does not seems to be embed
   sed -i "s/@MOZ_APP_DISPLAYNAME@/$pkgname/g" mozilla.desktop
   sed -i "s/@MOZ_APP_NAME@/$pkgname/g" mozilla.desktop
+  sed -i "s/@MOZ_APP_REMOTINGNAME@/Cliqz/g" mozilla.desktop
   sed -i "s|^Exec=${pkgname}$|Exec=/usr/lib/${pkgname}/${pkgname} %u|" mozilla.desktop
+  sed -i 's|^MimeType=.*$|MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;|' mozilla.desktop
 
   cat >> mozilla.desktop <<END
+Keywords=Internet;WWW;Browser;Web;Explorer
+Keywords[de]=Internet;WWW;Browser;Web;Explorer;Webseite;Site;surfen;online;browsen
+Keywords[fr]=Internet;WWW;Browser;Web;Explorer;Fureteur;Surfer;Navigateur
+GenericName[fr]=Navigateur Web
+GenericName[de]=Webbrowser
 Actions=new-forget-window;
 
 [Desktop Action new-forget-window]
@@ -49,6 +58,9 @@ Exec=/usr/lib/cliqz/cliqz --private-window %u
 END
 
   cd "$srcdir/${_pkgname}-$pkgver/mozilla-release"
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
+  patch -Np1 -i "$srcdir/0001-bz-1468911.patch"
 
   # Remove -lcrmf from old configure scripts
   sed -i 's/NSS_LIBS="$NSS_LIBS -lcrmf"/NSS_LIBS="$NSS_LIBS"/' old-configure.in
@@ -74,6 +86,9 @@ ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --enable-lto
+export MOZ_APP_NAME=cliqz
+export MOZ_APP_DISPLAYNAME=Cliqz
+export MOZ_APP_REMOTINGNAME=Cliqz
 export MOZ_PGO=1
 export CC=clang
 export CXX=clang++
@@ -88,7 +103,6 @@ ac_add_options --enable-system-sqlite
 ac_add_options --with-system-bz2
 ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
-#ac_add_options --with-system-libvpx
 ac_add_options --with-system-png
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
