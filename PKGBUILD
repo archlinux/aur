@@ -24,6 +24,6 @@ build() {
 
 package() {
   cd "$pkgname"
-  install -Dm777 panrun "$pkgdir/usr/bin/panrun"
+  install -D -m775 panrun "$pkgdir/usr/bin/panrun"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
