@@ -1,0 +1,12 @@
+pkgbase = ttf-nixie-one
+	pkgdesc = A mixture of neon tubes, signage, and a typewriter.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://jovanny.ru/
+	arch = any
+	license = custom:OFL
+	source = http://jovanny.ru/files/fonts/nixie.zip
+	sha256sums = aa2db7b12190fbec270fb29a604ae2f185a0b126ba78c943d4694b83d274b729
+
+pkgname = ttf-nixie-one
+
