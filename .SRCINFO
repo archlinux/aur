@@ -12,7 +12,6 @@ pkgbase = lib32-smbclient
 	makedepends = lib32-libcups
 	makedepends = lib32-libgcrypt
 	makedepends = lib32-pam
-	makedepends = lib32-python3
 	makedepends = lib32-systemd
 	makedepends = lib32-talloc
 	makedepends = lib32-tdb

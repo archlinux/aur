@@ -11,7 +11,7 @@ arch=('x86_64')
 url='http://www.samba.org'
 license=('GPL3')
 makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap'
-             'lib32-libcups' 'lib32-libgcrypt' 'lib32-pam' 'lib32-python3'
+             'lib32-libcups' 'lib32-libgcrypt' 'lib32-pam'
              'lib32-systemd' 'lib32-talloc' 'lib32-tdb' 'lib32-popt'
              'lib32-tevent' 'lib32-ldb' 'lib32-libarchive' 'lib32-libaio'
              'lib32-libnsl' 'lib32-libtirpc' 'perl-parse-yapp'
@@ -43,9 +43,6 @@ build() {
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-  export PYTHON='/usr/bin/python3-32'
-  export PYTHON_CONFIG='/usr/bin/python3-32-config'
-  export PYTHONPATH="/usr/lib32/python3.7/site-packages"
   _samba4_idmap_modules='idmap_ad,idmap_rid,idmap_adex,idmap_hash,idmap_tdb2'
   _samba4_pdb_modules='pdb_tdbsam,pdb_ldap,pdb_ads,pdb_smbpasswd,pdb_wbc_sam,pdb_samba4'
   _samba4_auth_modules='auth_unix,auth_wbc,auth_server,auth_netlogond,auth_script,auth_samba4'
@@ -75,7 +72,9 @@ build() {
               --disable-rpath-install \
               --disable-glusterfs \
               --without-lttng \
-              --without-gpgme
+              --without-gpgme \
+              --disable-python \
+              --without-ad-dc
 
   make
   make DESTDIR="${srcdir}/staging" install
