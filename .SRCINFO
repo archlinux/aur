@@ -1,6 +1,6 @@
 pkgbase = dippi
 	pkgdesc = Calculate display info like DPI and aspect ratio
-	pkgver = 2.3.3
+	pkgver = 2.7.3
 	pkgrel = 1
 	url = https://github.com/cassidyjames/dippi
 	arch = i686
@@ -16,10 +16,10 @@ pkgbase = dippi
 	depends = gobject-introspection
 	depends = libgee
 	depends = granite
-	provides = dippi=2.3.3
+	provides = dippi=2.7.3
 	options = !emptydirs
-	source = https://github.com/cassidyjames/dippi/archive/2.3.3.tar.gz
-	sha256sums = 0839ff2d66121cd76f86abb77cd2535ae0d0840fc08354e388065f902df6c97d
+	source = dippi-2.7.3.tar.gz::https://github.com/cassidyjames/dippi/archive/2.7.3.tar.gz
+	sha256sums = f11fba48e2dba490b404574027c18e2c8f45b1965df8d5ae512ebe0abae9900e
 
 pkgname = dippi
 
