@@ -7,7 +7,7 @@ _lastpokemon=151
 
 pkgname=pokeshell
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Displays pokemons in your shell"
 arch=(any)
 license=('MIT')
@@ -20,7 +20,7 @@ build() {
     for _i in `seq $_firstpokemon 1 $_lastpokemon` ; do
         printf "Generating Pokemon #$_i"
         # download pokemon image
-        curl -s https://pokeapi.co/media/img/$_i.png -o $_i.png
+        curl -sL https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$_i.png -o $_i.png
         printf "."
         # trim image
         convert $_i.png -trim -resize ${_maxwidth}x$(($_maxheight * 2))\>  $_i.png

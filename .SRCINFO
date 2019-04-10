@@ -1,7 +1,7 @@
 pkgbase = pokeshell
 	pkgdesc = Displays pokemons in your shell
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	install = pokeshell.install
 	arch = any
 	license = MIT
