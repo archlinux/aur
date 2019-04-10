@@ -1,0 +1,12 @@
+pkgbase = ttf-dita-sweet
+	pkgdesc = An art deco font by Ivan Gladkikh.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://jovanny.ru/
+	arch = any
+	license = custom:OFL
+	source = http://jovanny.ru/files/fonts/dita-sweet.zip
+	sha256sums = 13efcff4fb4496f9c52669ac8b8779551b7d51ac0af278fc0102ccf1adced20f
+
+pkgname = ttf-dita-sweet
+
