@@ -4,7 +4,7 @@
 # Contributor: Jose Valecillos <valecillosjg@gmail.com>
 
 pkgname=dosbox-multilib-patched
-_rev=4194
+_rev=4204
 pkgver=0.74.$_rev
 pkgrel=1
 pkgdesc="An emulator with builtin DOS for running DOS Games. 32-bit build with selected patches"
@@ -59,7 +59,7 @@ package() {
 	desktop-file-install $pkgname.desktop --dir "$pkgdir"/usr/share/applications/
 }
 sha256sums=('SKIP'
-            '7c8db8a5a475f54283748b539b50fa49b59a87c5ff80e94e82520530b996f871'
+            'e6a1d587b7cf39272dd527fb06d06817b86b09a9f89165b5aef44798058267d2'
             'e657254e56dd7d66cb1cefbf37f0f360e13a221bc60b1638c00dcda508f7fd56'
             'e71a3984170b3bf7af7d9cfbec0752187d70be76602721a1227b60980d7c380a'
             '228593e97732eaa31e0202b7d46da9d7529672369c17312db3f97784601b5d81'
