@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=liquidsoap
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="A swiss-army knife for multimedia streaming, notably used for netradios and webtvs"
 arch=('i686' 'x86_64')
@@ -20,12 +20,13 @@ depends=('fluidsynth' 'giflib' 'gst-plugins-bad' 'gst-plugins-good' 'gst-plugins
     'ocaml-fdkaac'
     'ocaml-ffmpeg'
     'ocaml-flac'
-    #'ocaml-frei0r'
+    'ocaml-frei0r'
     'ocaml-gavl'
     'ocaml-gd4o'
     'ocaml-gstreamer'
     'ocaml-inotify'
     'ocaml-yojson'
+    'ocaml-ladspa'
     'ocaml-lame'
     'ocaml-lastfm'
     'ocaml-lo'
@@ -61,8 +62,8 @@ build() {
     cd $srcdir/$pkgname-$pkgver
 
     ./configure --prefix=/usr  --localstatedir=/var --sysconfdir=/etc \
-		--without-user --without-group \
-    --disable-oss --without-frei0r-dir
+        --without-user --without-group \
+        --disable-oss
 
     make all && make doc
 }
@@ -78,6 +79,6 @@ package() {
     install -Dm0644 $srcdir/$pkgname.tmpfilesd $pkgdir/usr/lib/tmpfiles.d/liquidsoap.conf
 }
 
-md5sums=('1c7bc74c42eb3ba1a5fb450be7f5fc67'
+md5sums=('3445121b5171b34a96573485e46b6487'
     '762d6607ff0889e34b8c874970b38bc9'
 'f9106e5c42cabc21c4c8464d9b1ad63e')
