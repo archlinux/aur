@@ -20,8 +20,7 @@ Generates an executable file named `gitpair`
 
 ## gitpair init
 
-0. If file exists, display an error message and exit
-1. Create `.gitauthors` in `$PWD`
+1. Create `.gitauthors` in `$PWD` if it does not exist.
 2. Invoke `gitpair add`
 3. Invoke `gitpair` to set up the author and optional co-author
 
