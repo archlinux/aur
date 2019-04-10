@@ -1,10 +1,11 @@
 pkgbase = xbill
 	pkgdesc = A game that tests your reflexes as you seek and destroy all forms of Bill
 	pkgver = 2.1
-	pkgrel = 10
+	pkgrel = 11
 	url = http://www.xbill.org/
 	install = xbill.install
 	arch = x86_64
+	arch = i686
 	license = GPL
 	makedepends = libxaw
 	depends = xaw3d

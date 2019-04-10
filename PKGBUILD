@@ -1,10 +1,11 @@
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=xbill
 pkgver=2.1
-pkgrel=10
+pkgrel=11
 pkgdesc="A game that tests your reflexes as you seek and destroy all forms of Bill"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="http://www.xbill.org/"
 license=('GPL')
 depends=('xaw3d' 'libxpm')
