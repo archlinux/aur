@@ -1,9 +1,10 @@
 pkgbase = xfig
 	pkgdesc = An interactive drawing tool
 	pkgver = 3.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mcj.sourceforge.net/
 	arch = x86_64
+	arch = i686
 	license = custom
 	depends = libjpeg
 	depends = xaw3d

@@ -1,11 +1,12 @@
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contirbutor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=xfig
 pkgver=3.2.7
 _pkgver=3.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive drawing tool"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="http://mcj.sourceforge.net/"
 license=('custom')
 depends=('libjpeg' 'xaw3d' 'xorg-fonts-75dpi' 'xorg-fonts-100dpi' 'libpng' 'libxpm')
