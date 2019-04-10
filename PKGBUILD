@@ -1,11 +1,12 @@
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Brian BIdulock <bidulock@openss7.org>
+# Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=enlightenment16
 pkgver=1.0.19
 _themever=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, flexible, and very extensible Window Manager"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="http://www.enlightenment.org"
 license=('BSD' 'custom')
 depends=('libxinerama' 'imlib2' 'perl' 'pango' 'libxcomposite'

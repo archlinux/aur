@@ -1,9 +1,10 @@
 pkgbase = enlightenment16
 	pkgdesc = A fast, flexible, and very extensible Window Manager
 	pkgver = 1.0.19
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.enlightenment.org
 	arch = x86_64
+	arch = i686
 	license = BSD
 	license = custom
 	depends = libxinerama
