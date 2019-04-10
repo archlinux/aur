@@ -1,7 +1,7 @@
 pkgbase = qca-qt4
 	pkgdesc = Qt Cryptographic Architecture. Qt4 Build
-	pkgver = 2.1.3
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = http://delta.affinix.com/qca/
 	arch = i686
 	arch = x86_64
@@ -16,12 +16,8 @@ pkgbase = qca-qt4
 	depends = nss
 	optdepends = pkcs11-helper: PKCS-11 plugin
 	optdepends = botan: botan plugin
-	source = http://download.kde.org/stable/qca/2.1.3/src/qca-2.1.3.tar.xz
-	source = qca-openssl-1.1.patch
-	source = qca-botan2.patch::https://cgit.kde.org/qca.git/patch/?id=47163784
-	sha256sums = 003fd86a32421057a03b18a8168db52e2940978f9db5ebbb6a08882f8ab1e353
-	sha256sums = b1505bc313fd2f4e350cd4c94af69256c901afa419ae6700b208cb6e40e6926d
-	sha256sums = 2b2c3103e47166eee46604288ba343b9ed1ccb957c54650e8eea770faab515e9
+	source = http://download.kde.org/stable/qca/2.2.0/qca-2.2.0.tar.xz
+	sha256sums = 3b479826858099c9ac1bd7992a0e2f1cd68d684d9a32910dbc4372bef592318a
 
 pkgname = qca-qt4
 
