@@ -1,7 +1,7 @@
 pkgbase = metals
 	pkgdesc = Language Server For Scala
 	pkgver = 0.4.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://scalameta.org/metals/
 	arch = any
 	license = Apache
@@ -12,6 +12,7 @@ pkgbase = metals
 	depends = java-environment=8
 	depends = findutils
 	depends = python
+	optdepends = bloop
 	source = https://github.com/scalameta/metals/archive/v0.4.4.tar.gz
 	source = metals-client.sh
 	source = metals-emacs.sh
@@ -56,4 +57,3 @@ pkgbase = metals
 	sha512sums = 485f0360f0a25de9e397e44a987fdb2c5872de62568215f225572d0d0607dcab1ceb15d350b917c27c822caf89bdb24abf1433240ceca25867e0a6696d41f240
 
 pkgname = metals
-
