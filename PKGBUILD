@@ -1,39 +1,38 @@
 # Maintainer: mickele
 pkgname=tclreadline
-pkgver=2.1.0
+pkgver=2.3.5
 pkgrel=1
-pkgdesc="tclreadline makes the GNU readline library available for interactive tcl shells, including history expansion and file/command completion"
-url="http://tclreadline.sourceforge.net/"
+pkgdesc="GNU readline for interactive tcl shells"
+url="https://github.com/flightaware/tclreadline"
 arch=('x86_64' 'i686')
-license=('GPLv3')
-depends=('tcl')
+license=('BSD')
+depends=('tcl' 'readline')
 optdepends=()
 makedepends=()
 conflicts=()
 replaces=()
 backup=()
-install=''
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz" "alloc-invalid-block.patch")
-
-# http://downloads.sourceforge.net/project/tclreadline/tclreadline/tclreadline-2.1.0/tclreadline-2.1.0.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Ftclreadline%2Ffiles%2Ftclreadline%2Ftclreadline-2.1.0%2F&ts=1454875147&use_mirror=netix
+#install=''
+source=("https://github.com/flightaware/${pkgname}/archive/v${pkgver}.tar.gz"
+        "alloc-invalid-block.patch")
+sha256sums=('b90c3f10c75a959a0e58bce8fbe16a3b14f1a234e8e68297eb4fa290e8b304be'
+            'fe50654e7b1648cfd6220ff67d85fea62066af32ca640c0488d500416875d02b')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  autoreconf -ivf
-  patch -Np1 -i "${srcdir}/alloc-invalid-block.patch"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    autoreconf -ivf
+    patch -Np1 -i "${srcdir}/alloc-invalid-block.patch"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr \
-              --with-tcl=/usr/lib \
-	      --with-tcl-includes=/usr/include/tcl
-  make
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    ./configure --prefix=/usr \
+                --with-tcl=/usr/lib \
+                --with-tcl-includes=/usr/include/tcl
+    make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
 }
-md5sums=('219d0247a1373578080940ebde53bdd0'
-         'd8e746f6a02624aa752a946bc5348b5e')
