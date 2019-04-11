@@ -2,13 +2,13 @@
 pkgname=tvlinker
 pkgver=4.5.0
 _branch=master
-pkgrel=4
+pkgrel=5
 pkgdesc="TV show link scraper + downloader for Scene-RLS.com w/ debrid link unrestricting and support for a number of download managers across all platforms + ShadowSocks & v2ray local proxies."
 arch=('any')
 license=('GPL3')
 url="https://tvlinker.ozmartians.com"
 source=(https://github.com/ozmartian/${pkgname}/archive/${_branch}.tar.gz)
-depends=('nodejs' 'python-beautifulsoup4' 'python-lxml' 'python-pyqt5' 'python-pytz' 'python-requests' 'python-setuptools' 'python-tzlocal')
+depends=('python-beautifulsoup4' 'python-js2py' 'python-lxml' 'python-pyjsparser' 'python-pyqt5' 'python-pytz' 'python-requests' 'python-setuptools' 'python-tzlocal')
 makedepends=('python-setuptools')
 optdepends=('aria2' 'persepolis' 'pyload' 'python-pysocks')
 md5sums=('SKIP')
