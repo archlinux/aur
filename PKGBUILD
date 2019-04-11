@@ -24,9 +24,8 @@ prepare() {
 
 build() {
 	sed -i -E "s|Exec=AppRun|Exec=${_pkgname}|" wootility.desktop
-	# .AppImage permissions are 700 for all directories
-	chmod -R 755 usr
-	chmod -x usr/share/icons/hicolor/*x*/apps/*
+	# Fix permissions; .AppImage permissions are 700 for all directories
+	chmod -R a-x+rX usr
 }
 
 package() {
