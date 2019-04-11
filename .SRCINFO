@@ -1,6 +1,6 @@
 pkgbase = mendeleydesktop-bundled-fcitx
 	pkgdesc = mendeleydesktop fcitx input method support
-	pkgver = 1.19.3
+	pkgver = 1.19.4
 	pkgrel = 1
 	url = http://yinflying.top/2017/09/727
 	arch = x86_64

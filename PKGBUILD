@@ -8,7 +8,7 @@
 
 # Maintainer: yinflying <yinflying@foxmail.com>
 pkgname=mendeleydesktop-bundled-fcitx
-pkgver=1.19.3
+pkgver=1.19.4
 pkgrel=1
 pkgdesc="mendeleydesktop fcitx input method support"
 arch=('x86_64')
