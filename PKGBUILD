@@ -17,6 +17,7 @@ optdepends=('python-pyqt5: for imshow(x, fancy=True) and skivi'
             'python-qtpy'
             'freeimage: for reading various types of image file formats'
             'python-pyamg: fast cg_mg mode of random walker segmentation'
+            'python-astropy: Provides FITS I/O capability'
             'python-imread: Optional I/O plugin providing most standard formats'
             'python-simpleitk: Optional I/O plugin providing a wide variety of formats. including specialized formats using in medical imaging')
 options=('!emptydirs')
