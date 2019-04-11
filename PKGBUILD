@@ -3,7 +3,7 @@
 # Upstream: https://gitlab.com/thann/pingg
 
 pkgname=pingg-git
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='Ping latency graphical CLI.'
 arch=('any')

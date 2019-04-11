@@ -1,6 +1,6 @@
 pkgbase = pingg-git
 	pkgdesc = Ping latency graphical CLI.
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = http://gitlab.com/thann/pingg/
 	arch = any
