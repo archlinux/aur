@@ -2,7 +2,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=tslint
-pkgver=5.13.0
+pkgver=5.15.0
 pkgrel=1
 pkgdesc="A Linter for the TypeScript language."
 arch=('any')
@@ -21,4 +21,4 @@ package() {
   find "${pkgdir}"/usr -type d -exec chmod 755 {} +
 }
 
-sha256sums=('d41840d28fce007d29ae01d945da153fa934f7960978e8f98de277b1b648fdb4')
+sha256sums=('eb3edbfffa2368a1001d1ee2066a8a5cb1cacc9684002a7c9d022952177d5b44')
