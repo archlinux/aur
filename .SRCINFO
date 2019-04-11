@@ -1,7 +1,7 @@
 pkgbase = amidstexporter
 	pkgdesc = Advanced Minecraft Interface and Data/Structure Tracking; fork with location export.
 	pkgver = 1.44
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.buildingwithblocks.info/exportfromseed.html
 	changelog = ChangeLog
 	arch = any

@@ -1,9 +1,10 @@
 # Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Contributor: CubeTheThird <cubethethird@gmail.com>
 
 pkgname=amidstexporter
 pkgver='1.44'
 _jarfile='AmidstExporter.jar'
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking; fork with location export.'
 arch=('any')
 license=('GPL3')
@@ -23,19 +24,20 @@ prepare() {
     cd "$srcdir"
 
     # Extract icon
-    bsdcpio --extract --make-directories --insecure 'amidst/resources/icon16.png' 'amidst/resources/icon32.png' 'amidst/resources/icon64.png' < "$_jarfile"
+    bsdcpio --quiet --extract --make-directories --insecure 'amidst/resources/icon*.png' < "$_jarfile"
 }
 
 package() {
     cd "$srcdir"
 
-    install -vDm755 'amidstexporter.sh'           "$pkgdir/usr/bin/amidstexporter"
-    install -vDm644 'amidst/resources/icon16.png' "$pkgdir/usr/share/pixmaps/amidstexporter-16.png"
-    install -vDm644 'amidst/resources/icon32.png' "$pkgdir/usr/share/pixmaps/amidstexporter-32.png"
-    install -vDm644 'amidst/resources/icon64.png' "$pkgdir/usr/share/pixmaps/amidstexporter-64.png"
-    ln -s ./amidstexporter-64.png "$pkgdir/usr/share/pixmaps/amidstexporter.png"
-    install -vDm644 'amidstexporter.desktop'      "$pkgdir/usr/share/applications/amidstexporter.desktop"
-    install -vDm644 "$_jarfile"                   "$pkgdir/usr/share/java/$pkgname/$_jarfile"
+    install -Dm755 'amidstexporter.sh'      "$pkgdir/usr/bin/amidstexporter"
+    install -Dm644 'amidstexporter.desktop' "$pkgdir/usr/share/applications/amidstexporter.desktop"
+    install -Dm644 "$_jarfile"              "$pkgdir/usr/share/java/$pkgname/$_jarfile"
+
+    icon_sizes=(16 32 64)
+    for s in "${icon_sizes[@]}"; do
+        install -Dm644 "amidst/resources/icon${s}.png" "$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps/amidstexporter.png"
+    done
 }
 
 # vim:set ts=4 sw=4 et:

@@ -1,3 +1,11 @@
+2019-04-11  Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+
+	* 1.44-2 :
+	Copy various changes from amidst PKGBUILD:
+	Install program icon(s) as per freedesktop.org’s Icon Theme Specification.
+	Quit/un‐verbose various command outputs.
+	Refactor how the PKGBUILD installs icons.
+
 2016-10-20  Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
 	* 1.44-1 :
