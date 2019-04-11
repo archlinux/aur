@@ -2,23 +2,22 @@
 # Contributor: Wojtek Gawroński <afronski@gmail.com>
 
 pkgname=nomad-bin
-pkgver=0.8.7
+pkgver=0.9.0
 pkgrel=1
-pkgdesc='A distributed, highly available, datacenter-aware scheduler (incl LXC driver)'
+pkgdesc='A distributed, highly available, datacenter-aware scheduler'
 arch=('x86_64')
 url="https://nomadproject.io/"
 license=('MPL2')
-depends=('lxc')
 optdepends=('docker: enables docker driver'
             'java-runtime: enables java driver'
             'qemu-headless: enables qemu driver'
             'rkt: enables rkt driver')
 provides=('nomad')
 conflicts=('nomad')
-source=("https://releases.hashicorp.com/nomad/${pkgver}/nomad_${pkgver}_linux_amd64-lxc.zip"
+source=("https://releases.hashicorp.com/nomad/${pkgver}/nomad_${pkgver}_linux_amd64.zip"
         nomad.service
         example.hcl)
-sha256sums=('ef147af97637dc52e9becb50e4f19c496c462316a7e896b9b7a0ce31232512c1'
+sha256sums=('91fa6448494cc3eb3ad7b5d2a3e80c9531fdcc52e6723b891eb5cc17ee685c7f'
             'SKIP'
             'SKIP')
 
