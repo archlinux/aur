@@ -48,7 +48,7 @@ pkgbase = airgeddon-git
 	optdepends = xorg-xset: User preference utility for X
 	provides = airgeddon-git
 	conflicts = airgeddon-git
-	source = git://github.com/v1s1t0r1sh3r3/airgeddon.git#branch=dev
+	source = git://github.com/v1s1t0r1sh3r3/airgeddon.git#branch=master
 	sha256sums = SKIP
 
 pkgname = airgeddon-git
