@@ -1,16 +1,11 @@
 [Desktop Entry]
-Name=RealtimeSync
-GenericName=Automated Synchronization
-Comment=Real time synchronization
-Exec=RealTimeSync
-NoDisplay=false
-Terminal=0
-TerminalOptions=
-Icon=/usr/share/pixmaps/RealTimeSync.png
-Categories=GTK;Application;Utility;
-StartupNotify=true
 Type=Application
-X-KDE-SubstituteUID=false
-X-KDE-Username=
-
-Name[it_IT.utf8]=RealTimeSync
+Name=RealTimeSync
+GenericName=Automated Synchronization
+GenericName[de_DE]=Automatisierte Synchronisation
+Exec=RealTimeSync %f
+Icon=/usr/share/pixmaps/RealTimeSync.png
+NoDisplay=false
+Terminal=false
+Categories=Utility;FileTools;
+StartupNotify=true

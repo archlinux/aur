@@ -1,7 +1,7 @@
 pkgbase = freefilesync
 	pkgdesc = Backup software to synchronize files and folders
 	pkgver = 10.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.freefilesync.org
 	arch = i686
 	arch = x86_64
