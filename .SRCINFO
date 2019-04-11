@@ -1,6 +1,6 @@
 pkgbase = rapid-photo-downloader-bzr
 	pkgdesc = Photo and video downloader
-	pkgver = 0.9.10.r1084
+	pkgver = 0.9.14.r1121
 	pkgrel = 1
 	url = http://www.damonlynch.net/rapid/
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = rapid-photo-downloader-bzr
 	optdepends = gst-plugins-good: for extra video thumbnails
 	optdepends = python-colorlog: for color output
 	optdepends = python-pyprind: for progressbar
-	provides = rapid-photo-downloader=0.9.10
+	provides = rapid-photo-downloader=0.9.14
 	conflicts = rapid-photo-downloader
 	source = rapid::bzr+https://code.launchpad.net/~dlynch3/rapid/zeromq_pyqt
 	sha256sums = SKIP
