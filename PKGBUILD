@@ -4,7 +4,7 @@
 
 pkgname=pantheon-workarounds
 pkgver=r1103.3661cbd
-pkgrel=2
+pkgrel=3
 pkgdesc='Workarounds for Pantheon derivatives'
 arch=('i686' 'x86_64')
 url='https://github.com/quequotion/pantheon-bzr-qq'
@@ -27,13 +27,17 @@ source=("https://raw.githubusercontent.com/elementary/gala/master/data/org.panth
         'gnome-fallback-media-keys-helper-pantheon.desktop'
         'gnome-fallback-background-helper-pantheon.desktop'
         'gnome-fallback-mount-helper-pantheon.desktop'
-        'numlockx-pantheon.desktop')
+        'numlockx-pantheon.desktop'
+        'gtk.css'
+        'settings.ini')
 sha512sums=('30a488431a23ff5521a12e97fa69ed17b2033ba8f016bb922e07ad9bf2d671e14a90a38266de1567c4dcbf178b6919a8108fad3dd13e50573018dc2a8e9b070e'
             '842db1b456c96287865955741ba00c3ceeecf82691700f691d9fc45dc665230f1224ce7cdf5a1301826ab96cfe59e922c3878a5986ab3639da0cb79a2948f727'
             'b01a18bb7829eb7a48b72c90bdf5aa5913c24247426e0bfc509cba22f49d2d8c9eb301e1937b70f3f7f01a873c987e0bdea6dd5f24f8d900b952188fa5635d39'
             '0df6355d85d2329e245593408a74d09281c0dcea206ed594a7312b78db4d3cd57941a5ec29be780f965128fe512532edae85ffaf11a94b57374d5906875967fc'
             'c06e3b8c59681ebe64fa0dd724eea1d40a579956372ce0851f30ededdda3ac41d329d40e5463bd779daba0d55853faec357203b042a4de3d601eafc8b09c350e'
-            'bc5724ef255adad39e35e3fbd7beacbd3ea270c7019362ff6a8bc15cf8f503a4304c18c5e35ae2a6ddb8d1e6e7cc6973642a2ffdc8fe9e219c7f2dbacf5eab72')
+            'bc5724ef255adad39e35e3fbd7beacbd3ea270c7019362ff6a8bc15cf8f503a4304c18c5e35ae2a6ddb8d1e6e7cc6973642a2ffdc8fe9e219c7f2dbacf5eab72'
+            'ee75dfaa7d887dbfe0c74b7fb6005d5aafbce22fa00b3b476b3c88628a9f786cfd3410237a2b22ca135ea85759b45b59068e5d00650f65449a19ae222e957784'
+            '90b0927892e708b601542f317af52f42174bdcbb4e9df6f3d5667f2a8029deff42cef5459072c295f343d73a99f43b76eaeb5432b8367e69f42d5aac7f1b2f57')
 
 pkgver() {
   cd "${srcdir}"
