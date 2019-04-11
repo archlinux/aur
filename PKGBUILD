@@ -14,7 +14,7 @@ _enginename=acestreamengine
 
 pkgname=acestream-engine-stable
 pkgver=3.1.16
-pkgrel=5
+pkgrel=6
 pkgdesc="P2P utility for multimedia live streaming and file transfer (stable version)"
 arch=("x86_64")
 url="http://acestream.org/"
@@ -30,7 +30,7 @@ depends=(
 optdepends=("python2-libappindicator: GTK2 GUI")
 provides=("$_pkgbasename")
 conflicts=("$_pkgbasename")
-backup=("usr/lib/acestream/acestream.conf")
+backup=("usr/lib/$_pkgbasename/acestream.conf")
 install="$_pkgbasename.install"
 source=(
     "$_pkgbasename.service"
@@ -49,22 +49,22 @@ sha256sums=(
 
 package() {    
     cd "$srcdir/acestream_${pkgver}_ubuntu_${_ubuntuver}_$CARCH"
-    sed -i "/ROOT=/c\ROOT=\/usr/lib\/acestream" "start-engine"
+    sed -i "/ROOT=/c\ROOT=\/usr/lib\/${_pkgbasename}" "start-engine"
     
-    install -Dm755 "$_enginename" "$pkgdir/usr/lib/acestream/$_enginename"
-    install -Dm755 "start-engine" "$pkgdir/usr/lib/acestream/start-engine"
-    install -Dm644 "acestream.conf" "$pkgdir/usr/lib/acestream/acestream.conf"
+    install -Dm755 "$_enginename" "$pkgdir/usr/lib/$_pkgbasename/$_enginename"
+    install -Dm755 "start-engine" "$pkgdir/usr/lib/$_pkgbasename/start-engine"
+    install -Dm644 "acestream.conf" "$pkgdir/usr/lib/$_pkgbasename/acestream.conf"
     install -Dm644 "data/images/streamer-32.png" "$pkgdir/usr/share/pixmaps/$_pkgbasename.png"
     install -Dm644 "$srcdir/$_pkgbasename.service" "$pkgdir/usr/lib/systemd/system/$_pkgbasename.service"
     install -Dm644 "$srcdir/$_pkgbasename.desktop" "$pkgdir/usr/share/applications/$_pkgbasename.desktop"
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$_pkgbasename/LICENSE"
 
-    cp -a "data" "$pkgdir/usr/lib/acestream/"
-    cp -a "lib" "$pkgdir/usr/lib/acestream/"
-    cp -a "$srcdir/usr/lib/python2.7/site-packages/M2Crypto" "$pkgdir/usr/lib/acestream/lib"
+    cp -a "data" "$pkgdir/usr/lib/$_pkgbasename/"
+    cp -a "lib" "$pkgdir/usr/lib/$_pkgbasename/"
+    cp -a "$srcdir/usr/lib/python2.7/site-packages/M2Crypto" "$pkgdir/usr/lib/$_pkgbasename/lib"
 
-    rm "$pkgdir/usr/lib/acestream/lib/lxml-3.7.2-py2.7-linux-x86_64.egg"
+    rm "$pkgdir/usr/lib/$_pkgbasename/lib/lxml-3.7.2-py2.7-linux-x86_64.egg"
 
     mkdir -p "$pkgdir/usr/bin"
-    ln -sf "/usr/lib/acestream/start-engine" "$pkgdir/usr/bin/$_enginename"
+    ln -sf "/usr/lib/$_pkgbasename/start-engine" "$pkgdir/usr/bin/$_enginename"
 }
