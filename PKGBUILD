@@ -5,7 +5,7 @@
 pkgname=r128gain-git
 _pkgname=r128gain
 pkgver=0.8.0.r2.g6b4de54
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast audio loudness (ReplayGain / R128) scanner & tagger'
 arch=('any')
 url="https://github.com/desbma/${pkgname}"
@@ -13,6 +13,8 @@ license=('LGPL')
 depends=('python' 'python-setuptools' 'python-mutagen' 'python-crcmod' 'ffmpeg')
 source=("git+https://github.com/desbma/r128gain.git")
 sha512sums=('SKIP')
+provides=('r128gain')
+conflicts=('r128gain')
 
 pkgver() {
     cd "r128gain"
