@@ -1,0 +1,21 @@
+pkgbase = jumpcutter-git
+	pkgdesc = Automatically edits videos. Explanation here: https://www.youtube.com/watch?v=DQ8orIurGxw
+	pkgver = r18.df41c43
+	pkgrel = 1
+	url = https://github.com/carykh/jumpcutter
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = ffmpeg
+	depends = python-pillow
+	depends = python-audiotsm
+	depends = python-scipy
+	depends = python-numpy
+	depends = python
+	source = jumpcutter-git::git+https://github.com/carykh/jumpcutter.git
+	source = 0001-Add-shebang-line.patch
+	sha256sums = SKIP
+	sha256sums = 33c22ce87b48e0d08081da6543f7f7610fcae4240b95d91e285a49339e601ffb
+
+pkgname = jumpcutter-git
+
