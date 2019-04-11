@@ -1,5 +1,26 @@
 2019-04-11 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
+	* 4.3_beta5-1 :
+	Version bump.
+	See https://github.com/toolbox4minecraft/amidst/releases/tag/v4.3-beta5
+
+	Upstream changelog:
+	- added support up to Minecraft 1.13.1
+	- adjusted keyboard shortcuts for zooming to be CTRL+K and CTRL+J
+	  (CTRL+G was conflicting with the toggle grid keyboard shortcut)
+	- added more appropriate handling of modded Minecraft profiles
+	- We now determine the underlying vanilla Minecraft version and use that instead.
+	- removed -mclibs command line parameter
+	- technical: refactored the amidst.mojangapi.file package
+	- added support for Woodland Mansions
+	- current snapshots still crash Amidst
+	- added support for Ocean Ruins and Shipwrecks
+	- now display correct name and version for default Windows profiles
+	- fix some villages not being shown
+	- bug fixes and tweaks
+
+2019-04-11 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+
 	* 4.2-2 :
 	Extract program icon(s) from .jar instead of bundle it with PKGBUILD.
 	Install program icon(s) as per freedesktop.org’s Icon Theme Specification.

@@ -1,11 +1,12 @@
 # Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: CubeTheThird <cubethethird@gmail.com>
 
-pkgname=amidst
-_version='4.2'
-pkgver=${_version//_/-}
+_pkgname=amidst
+pkgname=${_pkgname}-beta
+_version='4.3-beta5'
+pkgver=${_version//-/_}
 _jarver="v${_version}"
-_jarfile="${pkgname}-${_jarver/./-}.jar"
+_jarfile="${_pkgname}-${_jarver/./-}.jar"
 pkgrel=2
 pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking'
 arch=('any')
@@ -13,11 +14,13 @@ license=('GPL3')
 url='https://github.com/toolbox4minecraft/amidst'
 depends=('java-runtime=8' 'sh')
 optdepends=('minecraft: the game itself')
+conflicts=("$_pkgname")
+provides=("$_pkgname")
 noextract=("$_jarfile")
 changelog=ChangeLog
 source=("https://github.com/toolbox4minecraft/amidst/releases/download/$_jarver/$_jarfile"
         amidst.desktop)
-md5sums=('da22f11add79ba0fb8ce30b8f979be2a'
+md5sums=('6fc0a10082ab10544162d6fa72192f94'
          '3c6900ac68e3175768322e684f9f1bcb')
 
 prepare() {
