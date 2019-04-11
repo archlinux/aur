@@ -1,6 +1,7 @@
 # Maintainer: Jason Stryker <public at jasonstryker dot com>
+
 pkgname=runelite
-pkgver=1.5.18
+pkgver=1.5.19.1
 pkgrel=1
 epoch=1
 pkgdesc="Open source Old School RuneScape client."
@@ -13,32 +14,24 @@ makedepends=('maven')
 provides=("runelite")
 conflicts=('runelite-git')
 source=("${url}/archive/runelite-parent-${pkgver}.tar.gz"
-        runelite        
         runelite.desktop
         runelite.png)
-sha512sums=('2a63b5a12aa0225c154dfe13b62dcc4739150d1f004053adfe9346874932fcc2cb5d18488d8eda657c85fc41af459ce59bad4fe6d5b7f2b9b70453539a4417ed'
-            'f5fc911244eaceffb2a1e1016ce49ad2f76ee730bac2fb773753afc63e6cac5bcf01f942da081ffb4ee8585eccacec436069b009275a2a8fc13f07e1cb63c26a'
+sha512sums=('ab54a0ba223ea5c8c9faa60b5c6748d904705c25f4af10f1e79cf90e95e086a77baa0d9cc028b2d1af4bff7e106be20755832fdb52277d03b71e948bd2a280b1'
             'e00339514623c2f683118f1cdba93cebbc0761fd72f31e2d139ed467b8c41a6738fd0f27ac2beba4d2caa2a365ef4cc49a43af54b13ca5a908e5fd11d03f4bc1'
-            'fe73d666eec61a8ac0059a56a417d3a22ccdc0d09eb567a613469af513318f4284ee70079a4d18d74cd3423c4d75ce5bb0a3c6df9f9f4532f8d5833ffe4a34ce')
+            '73e0c42f4eaf2e0adc249e471bd241e8328da7f867177535f1da206acce14801b60e69fffdbb2a10bc105f1de37b6eaaad23d5e67147b53a108b6e5bf55c586b')
 
 build() {
     cd ${srcdir}/${pkgname}-runelite-parent-${pkgver}/runelite-client/
 
-    mvn clean package \
-        -Dmaven.repo.local="${srcdir}/repo" \
-        -DskipTests=true
-        
+    mvn clean package -DskipTests=true
 }
 
 package() {
-        
-    install -D -m644 \
-        "${srcdir}/${pkgname}-runelite-parent-${pkgver}/runelite-client/target/client-${pkgver}-shaded.jar" \
-        "${pkgdir}/usr/share/runelite/RuneLite.jar"
+    client_jar=$(find ${srcdir}/${pkgname}-runelite-parent-${pkgver}/runelite-client/target -type f -name client-*-shaded.jar)
 
-    install -D -m755 \
-        "${srcdir}/runelite" \
-        "${pkgdir}/usr/bin/runelite"
+    install -D -m644 \
+        "${client_jar}" \
+        "${pkgdir}/usr/share/runelite/RuneLite.jar"
 
     install -D -m644 \
         "${srcdir}/runelite.desktop" \
@@ -51,4 +44,11 @@ package() {
     install -D -m644 \
         "${srcdir}/${pkgname}-runelite-parent-${pkgver}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}"
+
+    install -D -m755 \
+        "/dev/null" \
+        "${pkgdir}/usr/bin/runelite"
+
+    echo '#!/bin/sh' > "${pkgdir}/usr/bin/runelite"
+    echo 'exec java -Dhttps.protocols=TLSv1.2 -jar /usr/share/runelite/RuneLite.jar "$@"' >> "${pkgdir}/usr/bin/runelite"
 }
