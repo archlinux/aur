@@ -6,7 +6,7 @@ _version='4.1'
 pkgver=${_version//_/-}
 _jarver="v${_version}"
 _jarfile="${pkgname}-${_jarver/./-}.jar"
-pkgrel=2
+pkgrel=3
 pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking'
 arch=('any')
 license=('GPL3')
@@ -22,7 +22,7 @@ md5sums=('1f3d6157e4d0339ad4f2d7996a0f88a6'
          '3c6900ac68e3175768322e684f9f1bcb'
          '0d90c979cbd12aa7d08d05f5f3299ce7')
 
-prepare() {
+build() {
     cd "$srcdir"
 
     #Create shell script to launch the application
