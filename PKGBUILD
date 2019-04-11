@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 checkdepends=('cargo')
 source=("https://github.com/darrenldl/blockyarchive/archive/v${pkgver}.tar.gz")
-sha256sums=('4a63ea09aad24cdf5983fd65c31c1b400b6dc6df0f171d6e6b8b2df645e7d4e7')
+sha256sums=('5b282d65b6f571a514896277aab004beeca3bca27beac443886c13897a16d791')
 
 build() {
   cd "blockyarchive-$pkgver"
