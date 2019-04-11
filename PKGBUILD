@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python-pip')
 depends=('python-scipy' 'python-regli' 'python-joblib')
 optdepends=('python-astropy: For testing')
-source=("https://files.pythonhosted.org/packages/py3/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}-py3-none-any.whl")
+source=("https://files.pythonhosted.org/packages/py3/${_pyname:0:1}/${_pyname}/${_pyname/-/_}-${pkgver}-py3-none-any.whl")
 md5sums=('110a30ec9cac4f72c95cd6fa4b87a7a5')
 _pyver=$(python -V | cut -c 8-10)
 
