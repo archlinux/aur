@@ -1,5 +1,13 @@
 2019-04-11 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
+	* 4.2-2 :
+	Extract program icon(s) from .jar instead of bundle it with PKGBUILD.
+	Install program icon(s) as per freedesktop.org’s Icon Theme Specification.
+	Make output from `install` no longer be verbose.
+	Minor refactor of PKGBUILD: move launch script building to build().
+
+2016-11-24 CubeTheThird <cubethethird@gmail.com>
+
 	* 4.2-1 :
 	Version bump.
 	See https://github.com/toolbox4minecraft/amidst/releases/tag/v4.2
@@ -11,22 +19,6 @@
 	- adjusted keyboard shortcuts for zooming to be CTRL+G and CTRL+H
 	- added menu entry to display all logging messages (these are not updated after they are displayed)
 	- fixed bugs
-
-2019-04-11 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
-
-	* 4.1-4 :
-	Extract program icon(s) from .jar instead of bundle it with PKGBUILD.
-	Make output from `install` no longer be verbose.
-
-2019-04-11 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
-
-	* 4.1-3 :
-	Minor refactor of PKGBUILD, moving launch script building to build().
-
-2019-04-11 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
-
-	* 4.1-2 :
-	Now installs program icon as per freedesktop.org’s Icon Theme Specification.
 
 2016-06-23 CubeTheThird <cubethethird@gmail.com>
 
