@@ -1,10 +1,13 @@
 pkgbase = davinci-resolve-beta
-	pkgdesc = Professional A/V post-production software suite
-	pkgver = 15.0b8
-	pkgrel = 0
-	url = https://www.blackmagicdesign.com/
-	arch = x86_64
+	pkgdesc = Professional A/V post-production software suite from Blackmagic Design
+	pkgver = 16.0b1
+	pkgrel = 1
+	url = https://www.blackmagicdesign.com/products/davinciresolve
+	install = davinci-resolve-beta.install
+	arch = any
 	license = Commercial
+	makedepends = libarchive
+	makedepends = xdg-user-dirs
 	depends = glu
 	depends = gtk2
 	depends = gstreamer
@@ -19,12 +22,12 @@ pkgbase = davinci-resolve-beta
 	depends = qt5-webkit
 	depends = qt5-webengine
 	depends = qt5-websockets
-	conflicts = davinci-resolve
+	conflicts = davinci-resolve-beta
 	conflicts = davinci-resolve-studio
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = local://DaVinci_Resolve_15.0b8_Linux.zip
-	sha256sums = ff4497d32a5053a585219919631fe2a8df8e7dda40a8d8ac4d9ab874195d912d
+	source = local://DaVinci_Resolve_16.0b1_Linux.zip
+	sha256sums = 7f4517cc08dde962e515ec1bdfbc65b0f1e55368f8d82d31987590e62a6be9c0
 
 pkgname = davinci-resolve-beta
 

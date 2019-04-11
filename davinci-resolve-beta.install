@@ -1,0 +1,100 @@
+#	These are fragments from the original code.
+#	I do not see any need for it yet, but maybe I will be able to find out later.
+
+#	echo "Removing old files..."
+#	DIRS_TO_REMOVE=(
+#		"Onboarding"
+#		"libs"
+#		"plugins"
+#		"UI_Resource")
+
+#	if [[ -d ${/opt/${_pkgname}} ]]; then
+#		echo "Removing old files"
+#		for dir in "${DIRS_TO_REMOVE[@]}"; do
+#			rm -rf "/opt/${_pkgname}/$dir"
+#		done
+#	fi
+
+#if [[ $EUID -ne 0 ]]; then
+#	# Script being run as non-root user
+#	USER_UID=$EUID
+#else
+#	# Script being run as root
+#	USER_UID=$SUDO_UID
+#	if [ -z "$USER_UID" ]; then
+#		USER_UID=$PKEXEC_UID
+#	fi
+#	if [ -z "$USER_UID" ]; then
+#		USER_UID=0
+#	fi
+#fi
+
+#USER_HOME=`awk -v val=$USER_UID -F ":" '\$3==val{print \$6;exit}' /etc/passwd`
+
+# TODO: We should talk to the BMD developers about it. Pretty sensitive subject systemd @_@
+#	if [[ -d ${/opt/${_pkgname}} && ${/opt/${_pkgname}} == /home/resolve* ]]; then
+#		chown $USER_UID "$/opt/${_pkgname}"
+#	else
+#		# Uninstall the panel daemon only on Standalone install
+#		# Uninstall BMD panel daemon
+#		SVC_NAME=bmdpaneld
+
+#		# Kill the daemon in case it is running
+#		killall -9 ${SVC_NAME}
+
+#		if [ -f /etc/init.d/${SVC_NAME} ]; then
+#			echo "#Uninstalling BMD panel service..."
+#			service ${SVC_NAME} stop
+#			/sbin/chkconfig --del ${SVC_NAME}
+#			rm -f /etc/init.d/${SVC_NAME}
+#		fi
+#		mkdir -m 0775 -p "$/opt/${_pkgname}"
+#		chown $USER_UID "$/opt/${_pkgname}" -R
+#	fi
+
+post_install()
+{
+	echo "Updating icon cache..."
+	gtk-update-icon-cache "share/icons/hicolor" -f 2>&1  >> /dev/null
+	update-mime-database "share/mime/" 2>&1  >> /dev/null
+	
+	echo "Installing the default app associations..."
+	if [ ! "$(grep -ir 'application/x-resolveproj=com.blackmagicdesign.resolve.desktop' /usr/share/applications/defaults.list)" ]; then
+		echo "application/x-resolveproj=com.blackmagicdesign.resolve.desktop" /usr/share/applications/defaults.list
+	fi
+
+	if [ ! "$(grep -ir 'application/x-resolveproj=com.blackmagicdesign.resolve.desktop;' /usr/share/applications/mimeinfo.cache)" ]; then
+		echo "/application\/x-resolveproj=com.blackmagicdesign.resolve.desktop;/d" /usr/share/applications/mimeinfo.cache
+	fi
+
+	# reload the udev rules
+	udevadm control --reload-rules 2>&1
+	udevadm trigger 2>&1
+
+	# Ensure panel permissions are correctly set for the current session
+	DEVICES=`lsusb | grep "ID 1edb\|ID 096e" | sed -e "s/:/ /g" | awk '{print"/dev/bus/usb/"$2"/"$4}'`
+	for DEV in $DEVICES
+	do
+		echo "Fixing usb permissions for $DEV"
+		chmod a+w $DEV
+	done
+}
+
+post_remove()
+{
+	# Remove entry from /usr/share/applications/defaults.list
+	if [ "$(grep -ir 'application/x-resolveproj=com.blackmagicdesign.resolve.desktop' /usr/share/applications/defaults.list)" ]; then
+		sed -i '/application\/x-resolveproj=com.blackmagicdesign.resolve.desktop/d' /usr/share/applications/defaults.list
+	fi
+
+	# Removing entry from /usr/share/applications/mimeinfo.cache
+	if [ "$(grep -ir 'application/x-resolveproj=com.blackmagicdesign.resolve.desktop;' /usr/share/applications/mimeinfo.cache)" ]; then
+		sed -i '/application\/x-resolveproj=com.blackmagicdesign.resolve.desktop;/d' /usr/share/applications/mimeinfo.cache
+	fi
+
+	# Remove udev rules
+	for rules in /usr/lib/udev/rules.d/75-davincipanel.rules /usr/lib/udev/rules.d/75-sdx.rules
+	do
+		[[ -f $rules ]] && rm -rf $rules
+	done
+}
