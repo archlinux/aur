@@ -3,8 +3,9 @@
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
 pkgname=parcellite-git
+_pkgname=parcellite
 pkgver=1.2.1.r11.fa54161
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight GTK+ clipboard manager (git version)"
 arch=('x86_64')
 url="https://github.com/rickyrockrat/parcellite"
@@ -12,9 +13,9 @@ license=('GPL3')
 depends=('gtk2')
 makedepends=('intltool' 'git')
 optdepends=('xdotool: auto-paste support')
-conflicts=('parcellite')
-provides=('parcellite')
-source=("$pkgname"::'git://github.com/rickyrockrat/parcellite')
+conflicts=($_pkgname)
+provides=($_pkgname)
+source=("$pkgname::git+https://github.com/rickyrockrat/${_pkgname}")
 sha256sums=('SKIP')
 
 pkgver() {
