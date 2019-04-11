@@ -1,0 +1,4 @@
+*.pkg.tar.xz
+kubelogin-*.zip
+pkg/
+src/
