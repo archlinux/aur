@@ -4,14 +4,14 @@
 _target_arch=riscv
 _target=riscv64-linux-gnu
 pkgname=$_target-linux-api-headers
-pkgver=4.19
+pkgver=5.0
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace ($_target)"
 arch=(any)
 url='https://www.kernel.org'
 license=(GPL2)
-source=(https://www.kernel.org/pub/linux/kernel/v4.x/linux-$pkgver.tar.{xz,sign})
-sha1sums=('40f3e72192d59c0b7a4638cebd0ea55d35a782bb'
+source=(https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.{xz,sign})
+sha1sums=('3a7bc3cdd77d71b18b96ca0d92e57ef9bded3757'
           'SKIP')
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
