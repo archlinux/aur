@@ -42,7 +42,7 @@ check() {
 
 package() {
   cd "$_pkgname"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" DBUS_POLICY_DIR="/usr/share/dbus-1/system.d" install
 }
 
 # vim: ts=2:sw=2:et
