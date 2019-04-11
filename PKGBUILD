@@ -59,13 +59,22 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-_srcver_arch=5.0.7-arch1
-pkgver=${_srcver_arch//-/.}
+_srcver_tag_arch=5.0.7-arch1
+pkgver=${_srcver_tag_arch//-/.}
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/koverstreet/bcachefs"
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
+makedepends=(
+    bc
+    git
+    graphviz
+    inetutils
+    kmod
+    libelf
+    python-sphinx
+    xmlto
+)
 options=('!strip')
 
 _reponame="bcachefs"
@@ -75,21 +84,19 @@ _reponame_gcc_patch="kernel_gcc_patch"
 _repo_url_gcc_patch="https://github.com/graysky2/${_reponame_gcc_patch}"
 _gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
 
-source=(
-    "git+${_repo_url}#branch=master"
-    "git+${_repo_url_gcc_patch}"
-    config         # the main kernel config file
-    60-linux.hook  # pacman hook for depmod
-    90-linux.hook  # pacman hook for initramfs regeneration
-    linux.preset   # standard config files for mkinitcpio ramdisk
+source=("git+${_repo_url}#branch=master"
+        "git+${_repo_url_gcc_patch}"
+        config         # the main kernel config file
+        60-linux.hook  # pacman hook for depmod
+        90-linux.hook  # pacman hook for initramfs regeneration
+        linux.preset   # standard config files for mkinitcpio ramdisk
 )
-validpgpkeys=(
-    'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
-    '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
+validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
+              '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 sha256sums=('SKIP'
             'SKIP'
-            'dc3293984d8d7a6a9fea503d8e4768a2397f6924ec2a79f0a2f6ad8117132ea5'
+            '2128176f4fb5f3c43be2552bee77fa182c430e0a9750d1429e5ad3946da663a5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -98,11 +105,11 @@ _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
 
 prepare() {
-    cd $_reponame
+    cd ${_reponame}
 
     msg2 "Adding patches from Arch Linux kernel repository..."
     git remote add arch_stable https://git.archlinux.org/linux.git
-    git pull --no-edit arch_stable v$_srcver_arch
+    git pull --no-edit arch_stable v${_srcver_tag_arch}
 
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching to enabled additional gcc CPU optimizatons..."
@@ -157,13 +164,20 @@ prepare() {
 }
 
 build() {
-    cd $_reponame
+    cd ${_reponame}
+    
     make bzImage modules htmldocs
 }
 
 _package() {
     pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
-    depends=(coreutils linux-firmware kmod mkinitcpio bcachefs-tools)
+    depends=(
+        bcachefs-tools-git
+        coreutils
+        kmod
+        linux-firmware
+        mkinitcpio
+    )
     optdepends=('crda: to set the correct wireless channels of your country')
     backup=("etc/mkinitcpio.d/$pkgbase.preset")
     install=linux.install
@@ -171,7 +185,7 @@ _package() {
     local kernver="$(<version)"
     local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-    cd $_reponame
+    cd ${_reponame}
 
     msg2 "Installing boot image..."
     # systemd expects to find the kernel here to allow hibernation
@@ -218,11 +232,14 @@ _package() {
 
 _package-headers() {
     pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-    provides=("linux-bcachefs-headers=${pkgver}" "linux-headers=${pkgver}")
+    provides=(
+        "linux-bcachefs-git-headers=${pkgver}"
+        "linux-headers=${pkgver}"
+    )
 
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-    cd $_reponame
+    cd ${_reponame}
 
     msg2 "Installing build files..."
     install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
@@ -300,11 +317,14 @@ _package-headers() {
 
 _package-docs() {
     pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
-    provides=("linux-bcachefs-docs=${pkgver}" "linux-docs=${pkgver}")
+    provides=(
+        "linux-bcachefs-git-docs=${pkgver}"
+        "linux-docs=${pkgver}"
+    )
 
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-    cd $_reponame
+    cd ${_reponame}
 
     msg2 "Installing documentation..."
     mkdir -p "$builddir"
@@ -330,7 +350,11 @@ _package-docs() {
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+pkgname=(
+    "$pkgbase"
+    "$pkgbase-headers"
+    "$pkgbase-docs"
+)
 for _p in "${pkgname[@]}"; do
     eval "package_$_p() {
         $(declare -f "_package${_p#$pkgbase}")
