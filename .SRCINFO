@@ -1,7 +1,7 @@
 pkgbase = torch7-cutorch-git
 	pkgdesc = A CUDA backend for Torch7
 	pkgver = r1026.5e9d86c
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/torch/cutorch
 	arch = x86_64
 	arch = i686
