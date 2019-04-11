@@ -23,7 +23,7 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
   sed -i '1s/\<python\>/&2/' build/tap-*
-  NOCONFIGURE=1 ./autogen.sh
+  AUTOMAKE=automake ACLOCAL=aclocal NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
