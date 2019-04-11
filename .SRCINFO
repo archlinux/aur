@@ -34,8 +34,9 @@ pkgbase = airgeddon-git
 	optdepends = hostapd-wpe: Modified hostapd to facilitate AP impersonation attacks
 	optdepends = john: John the Ripper password cracker
 	optdepends = iptables: Linux kernel packet control tool
+	optdepends = nftables: This software provides an in-kernel packet classification framework
 	optdepends = lighttpd: A secure, fast, compliant and very flexible web-server
-	optdepends = mdk3: WLAN penetration tool
+	optdepends = mdk4: WLAN penetration tool
 	optdepends = pciutils: PCI bus configuration space access library and tools
 	optdepends = pixiewps: Offline bruteforce of the WPS pin exploiting the low or non-existing entropy of some APs
 	optdepends = reaver: Brute force attack against Wifi Protected Setup
@@ -47,7 +48,7 @@ pkgbase = airgeddon-git
 	optdepends = xorg-xset: User preference utility for X
 	provides = airgeddon-git
 	conflicts = airgeddon-git
-	source = git://github.com/v1s1t0r1sh3r3/airgeddon.git#branch=master
+	source = git://github.com/v1s1t0r1sh3r3/airgeddon.git#branch=dev
 	sha256sums = SKIP
 
 pkgname = airgeddon-git
