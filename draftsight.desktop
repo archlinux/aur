@@ -2,6 +2,7 @@
 Type=Application
 Name=DraftSight
 Comment=Freeware CAD software for your DWG/DXF files.
+Path=/opt/dassault-systemes/DraftSight/Linux
 Exec=env LD_PRELOAD=/usr/lib/libfreetype.so --unset=XDG_CURRENT_DESKTOP --unset=DESKTOP_SESSION --unset=GNOME_DESKTOP_SESSION_ID vblank_mode=0 /opt/dassault-systemes/DraftSight/Linux/DraftSight %U
 Icon=draftsight
 Terminal=false

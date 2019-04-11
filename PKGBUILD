@@ -3,7 +3,7 @@
 
 pkgname=draftsight
 pkgver=2019SP0
-pkgrel=1
+pkgrel=2
 pkgdesc="Freeware CAD software for DWG/DXF files."
 arch=('x86_64')
 url="http://www.3ds.com/products/$pkgname/"
@@ -32,18 +32,11 @@ depends=('alsa-lib'
 source=("$pkgname-$pkgver::http://dl-ak.solidworks.com/nonsecure/$pkgname/$pkgver/draftSight.rpm"
         "$pkgname.desktop")
 md5sums=('6bd7b4dee942576e3244d24b0e3b92dc'
-         'f371f6eaac0f2aefef906f86d3ffac2e')
+         '70904e450823c6978f242435d414e0fc')
 
 _pkgprefix='opt/dassault-systemes/DraftSight'
 
 package() {
-  mkdir -p $pkgdir/usr/bin
-  echo "#!/bin/sh" > $pkgdir/usr/bin/$pkgname
-  echo "unset XDG_CURRENT_DESKTOP DESKTOP_SESSION GNOME_DESKTOP_SESSION_ID" >> $pkgdir/usr/bin/$pkgname
-  echo "env LD_PRELOAD=/usr/lib/libfreetype.so vblank_mode=0 /opt/dassault-systemes/DraftSight/Linux/DraftSight" >> $pkgdir/usr/bin/$pkgname
-
-  chmod 755 $pkgdir/usr/bin/$pkgname
-
   mkdir -p $pkgdir/$_pkgprefix
   cd $srcdir/$_pkgprefix
   install -Dm644 Eula/english/eula.htm $pkgdir/usr/share/licenses/$pkgname/LICENSE
