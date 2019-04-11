@@ -23,7 +23,7 @@
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
-pkgver=18.2rc1pre131
+pkgver=18.2rc1pre136
 _major=18.1
 pkgrel=1
 _codename=Leia
@@ -203,6 +203,11 @@ source=(
   129-PR15877.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15877.patch
   130-PR15878.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15878.patch
   131-PR15879.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15879.patch
+  132-PR15883.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15883.patch
+  133-PR15889.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15889.patch
+  134-PR15880.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15880.patch
+  135-PR15892.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15892.patch
+  136-PR15867.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15867.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -353,7 +358,12 @@ sha256sums=('bc1ef0e271d0b6ce2e1be7546ad4f7d330930d7631cc19a9bbc5f75ddc586166'
             'bd3f98a99f09647fb17541c58fc38d2f1d917f64dc8fd6056ef5d72d0ebc334b'
             'b235781f6dd40ba1c35304757b14d81c69e6896283c530a4f459422c64bbb291'
             '9779921fb639bd7cdc2864844f7a15b9946d6121c5c99bafaeffa6970b94ea4d'
-            '442aa0c63812516e66d8955a44627b20dd4031a93669082dbde09cdf0091eda7')
+            '442aa0c63812516e66d8955a44627b20dd4031a93669082dbde09cdf0091eda7'
+            '3871c87157fa8fd6453ac7a2bba10892c971247b814b0672a5a9834c43159d90'
+            'c58ca00b1e8be959a354b232499144971548144d50c4164794fd6854b26f222c'
+            'c8cc581fd1d1b23a759cc830d4b7776b69f6a837ef6b0d02c824ad0180e66092'
+            '7f79e3ce505198de60b448cb9ebe7a48d25768313ebfe98a386be0e8894ac579'
+            'a3729b65d9c54a65b183828c1c35cd5ca77167f82cc2b56952ad217261440e4b')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
