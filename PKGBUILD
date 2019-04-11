@@ -1,38 +1,82 @@
-# Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
-pkgname_=albert
-pkgname=${pkgname_}-git
-pkgver=0.8.7.1.r0.g4e6fdec
+# Maintainer: Tony Lambiris <tony@criticalstack.com>
+
+pkgname=albert-git
+pkgver=v0.16.1.r7.g34c00d7
 pkgrel=1
-pkgdesc="A DE agnostic omnilauncher."
-arch=('i686' 'x86_64')
-url="https://github.com/ManuelSchneid3r/${pkgname_}"
+pkgdesc="A sophisticated standalone keyboard launcher."
+arch=('any')
+url="https://github.com/albertlauncher"
 license=('GPL')
-depends=('qt5-base' 'libx11' 'muparser' 'qt5-x11extras' 'qt5-svg')
-makedepends=('git' 'cmake' 'qt5-base' 'qt5-tools')
-provides=("${pkgname_}")
-conflicts=("${pkgname_}")
-source=("git+${url}")
-md5sums=('SKIP')
+provides=('albert')
+conflicts=('albert')
+depends=('qt5-charts' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-svg' 'qt5-x11extras' 'libx11')
+makedepends=('cmake' 'git' 'muparser' 'python' 'qt5-declarative' 'qt5-svg' 'virtualbox' 'virtualbox-sdk')
+optdepends=('muparser: Calculator plugin'
+            'python: Python extension'
+            'virtualbox: VirtualBox plugin')
+source=("mirrors/albert::git+https://github.com/albertlauncher/albert.git"
+        "mirrors/plugins::git+https://github.com/albertlauncher/plugins.git"
+        "mirrors/python::git+https://github.com/albertlauncher/python.git"
+        "mirrors/pybind11::git+https://github.com/pybind/pybind11.git")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
-  cd "$pkgname_"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "${srcdir}/albert"
+
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "${srcdir}/albert"
+
+	mkdir -p build
+
+	cd "${srcdir}"/albert
+	git submodule init
+	git config submodule.plugins.url "${srcdir}"/plugins
+	git submodule update plugins
+
+	cd "${srcdir}"/albert/plugins
+	git submodule init
+	git config submodule.python/pybind11.url ${srcdir}/pybind11
+	git config submodule.python/share/modules.url ${srcdir}/python
+	git submodule update python/pybind11 python/share/modules
 }
 
 build() {
-  [[ -d "${pkgname_}/build" ]] || mkdir "${pkgname_}/build"
-  cd "${pkgname_}/build"
-  git checkout dev
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug
-  make
+	cd "${srcdir}/albert/build"
+
+	cmake "${srcdir}/albert" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-Wno-dev \
+		-DBUILD_WIDGETBOXMODEL=ON \
+		-DBUILD_QMLBOXMODEL=ON \
+		-DBUILD_APPLICATIONS=ON \
+		-DBUILD_CALCULATOR=ON \
+		-DBUILD_CHROMEBOOKMARKS=ON \
+		-DBUILD_EXTERNALEXTENSIONS=ON \
+		-DBUILD_DEBUG=OFF \
+		-DBUILD_FILES=ON \
+		-DBUILD_FIREFOXBOOKMARKS=ON \
+		-DBUILD_HASHGENERATOR=ON \
+		-DBUILD_KVSTORE=ON \
+		-DBUILD_MPRIS=ON \
+		-DBUILD_PYTHON=ON \
+		-DBUILD_SSH=ON \
+		-DBUILD_SYSTEM=ON \
+		-DBUILD_TEMPLATE=OFF \
+		-DBUILD_TERMINAL=ON \
+		-DBUILD_VIRTUALBOX=ON
+
+	make
 }
 
 package() {
-  cd "${pkgname_}/build"
-  make DESTDIR="$pkgdir/" install
+	cd "${srcdir}/albert/build"
+
+	make DESTDIR="${pkgdir}" install
 }
-
-# vim:set ts=2 sw=2 et:
-
-
-
