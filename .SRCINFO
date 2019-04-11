@@ -14,6 +14,7 @@ pkgbase = nordnm
 	depends = networkmanager-openvpn
 	depends = python-requests
 	depends = python-numpy
+	depends = systemd
 	provides = nordnm
 	source = https://files.pythonhosted.org/packages/source/n/nordnm/nordnm-0.6.1.tar.gz
 	md5sums = edf6ed60c3e67dd26b472a5422917681
@@ -27,4 +28,5 @@ pkgname = nordnm
 	depends = networkmanager-openvpn
 	depends = python-requests
 	depends = python-numpy
+	depends = systemd
 
