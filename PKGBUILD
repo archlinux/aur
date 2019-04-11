@@ -1,7 +1,7 @@
 # Maintainer: Ron B.S <ronthecookie0101 on gmail --OR-- me AT ronthecookie DOT me 
 pkgname=jumpcutter-git
 pkgver=r18.df41c43
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically edits videos. Explanation here: https://www.youtube.com/watch?v=DQ8orIurGxw"
 arch=('any')
 url="https://github.com/carykh/jumpcutter"
@@ -18,7 +18,7 @@ pkgver() {
 }
 prepare() {
 	cd "$srcdir/$pkgname"
-	git am < $srcdir/0001-Add-shebang-line.patch
+	git am < "$srcdir"/0001-Add-shebang-line.patch
 }
 
 package() {
