@@ -1,0 +1,28 @@
+pkgbase = dtrx-git
+	pkgdesc = An intelligent archive extraction tool
+	pkgver = 7.1.671ccf7
+	pkgrel = 1
+	url = http://github.com/brettcs/dtrx
+	arch = any
+	license = GPL3
+	depends = python2
+	optdepends = tar: to extract tar, deb, and gem archives
+	optdepends = unzip: to extract zip archives
+	optdepends = cpio: to extract cpio and rpm archives
+	optdepends = rpm-org: to extract rpm archives
+	optdepends = binutils: to extract deb archives
+	optdepends = gzip: deb, gem, gzip, and compress archives
+	optdepends = bzip2: to extract deb and bzip2 archives
+	optdepends = xz: to extract xz archives
+	optdepends = p7zip: to extract 7z archives
+	optdepends = unrar: to extract rar archives
+	optdepends = cabextract: to extract MS Cabinet archives
+	optdepends = unshield: to extract InstallShield archives
+	optdepends = lha: to extract lzh archives
+	provides = dtrx
+	conflicts = dtrx
+	source = git+https://github.com/brettcs/dtrx.git
+	md5sums = SKIP
+
+pkgname = dtrx-git
+
