@@ -23,11 +23,11 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
   sed -i '1s/\<python\>/&2/' build/tap-*
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
   cd "$_pkgname"
-  NOCONFIGURE=1 ./autogen.sh
   ./configure \
     --prefix=/usr           \
     --sbindir=/usr/bin      \
