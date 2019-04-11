@@ -1,4 +1,5 @@
 pkgbase = pulsejoin
+	pkgdesc = GUI for making a virtual PulseAudio microphone, from which sound from both microphone and audio output can be recorded
 	pkgver = 2.3
 	pkgrel = 1
 	url = https://gitlab.com/mikhailnov/pulsejoin
