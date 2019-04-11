@@ -1,6 +1,6 @@
 pkgbase = yle-dl-git
 	pkgdesc = Download video and audio from YLE Areena.
-	pkgver = 20181221.r0.g5e423a8
+	pkgver = 20190331.r2.g39b658a
 	pkgrel = 1
 	url = http://aajanki.github.io/yle-dl/
 	arch = any
@@ -8,19 +8,18 @@ pkgbase = yle-dl-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = ffmpeg
-	depends = python-attrs>=18.1.0
-	depends = python-attrs<18.3.0
+	depends = python-attrs
 	depends = python-configargparse
 	depends = python-future
 	depends = python-lxml
 	depends = python-mini-amf
 	depends = python-pycryptodomex
 	depends = python-requests
-	depends = wget
-	optdepends = php: for downloading live TV and certain news broadcasts
-	optdepends = rtmpdump: for downloading Areena audio streams
+	optdepends = php: for downloading certain news broadcasts
+	optdepends = rtmpdump: for downloading Elävä Arkisto streams
 	optdepends = youtube-dl: an alternative downloader backend to AdobeHDS.php
-	provides = yle-dl=20181221.r0.g5e423a8
+	optdepends = wget: for some rare streams
+	provides = yle-dl=20190331.r2.g39b658a
 	conflicts = yle-dl
 	source = yle-dl-git::git+https://github.com/aajanki/yle-dl.git
 	md5sums = SKIP
