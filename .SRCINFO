@@ -1,0 +1,17 @@
+pkgbase = python-ssh2
+	pkgdesc = Python bindings for libssh2
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = https://github.com/ParallelSSH/ssh2-python/
+	arch = x86_64
+	license = GPL
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python
+	depends = libssh2
+	source = https://github.com/ParallelSSH/ssh2-python/archive/0.18.0.tar.gz
+	sha256sums = 50e4168a911cd2a09ee802a6a301297907de64a5ecce36a1cbdb3a74d6563000
+
+pkgname = python-ssh2
+
