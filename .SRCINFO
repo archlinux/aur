@@ -1,0 +1,15 @@
+pkgbase = luniistore
+	pkgdesc = Luniistore. Téléchargez, fabriquez et écoutez de nouvelles histoires ! Download, craft and listen hundreds of new stories !
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://www.lunii.fr
+	install = luniistore.install
+	arch = x86_64
+	license = proprietary
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://storage.googleapis.com/storage.lunii.fr/public/deploy/installers/linux/64bits/luniistore-2.0.0.deb
+	sha512sums_x86_64 = 85e35c7fd9b176effd4448ca4b8b4bd3d91f9bcf24309bb6e0e69e6455ac41e091e8ea974342b72b142ab37e24d4545f7aae3560bff867c6b34b448ef06c7d4f
+
+pkgname = luniistore
+

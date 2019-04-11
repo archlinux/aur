@@ -1,0 +1,59 @@
+pre_install() {
+
+	oldLuniithequeDirectory=/opt/Luniitheque
+
+	if [ -d "$oldLuniithequeDirectory" ]; then
+	    rm -rf "$oldLuniithequeDirectory"
+	fi
+
+	oldLuniistoreDirectory=/opt/Luniistore
+
+	if [ -d "$oldLuniistoreDirectory" ]; then
+	    rm -rf "$oldLuniistoreDirectory"
+	fi
+
+	oldLuniithequeShortcut=/usr/share/applications/Luniitheque.desktop
+
+
+	if [ -d "$oldLuniithequeShortcut" ]; then
+	    rm -rf "$oldLuniithequeShortcut"
+	fi
+
+	oldLuniistoreShortcut=/usr/share/applications/Luniistore.desktop
+
+	if [ -d "$oldLuniistoreShortcut" ]; then
+	    rm -rf "$oldLuniistoreShortcut"
+	fi
+}
+
+post_install() {
+	#create a .rules file and add following content in it:
+	echo "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"0c45\", ATTRS{idProduct}==\"6820\", MODE=\"0666\"" > /etc/udev/rules.d/99-lunii.rules
+
+	#execute following command to reload rules
+	udevadm control --reload-rules
+
+	if [ -x "$(which desktop-file-install)" ]; then
+	  desktop-file-install /opt/Luniistore/Luniistore.desktop
+
+	else
+	  cp /opt/Luniistore/Luniistore.desktop /usr/share/applications
+	fi
+}
+
+pre_upgrade() {
+	pre_install
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	rm -f /etc/udev/rules.d/99-lunii.rules
+
+	#execute following command to reload rules
+	udevadm control --reload-rules
+
+	rm -f /usr/share/applications/Luniistore.desktop
+}
