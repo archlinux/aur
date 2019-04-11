@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-pixman
-pkgver=0.38.0
+pkgver=0.38.4
 pkgrel=1
 pkgdesc="The pixel-manipulation library for X and cairo (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-meson mingw-w64-libpng)
 depends=(mingw-w64-gcc)
 options=(staticlibs !strip !buildflags)
 source=("http://xorg.freedesktop.org/releases/individual/lib/pixman-${pkgver}.tar.bz2")
-sha1sums=('06587395f4a3538bafc0845ac225ea4c6472e550')
+sha1sums=('87e1abc91ac4e5dfcc275f744f1d0ec3277ee7cd')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -19,6 +19,12 @@ build() {
     mkdir -p "${srcdir}/pixman-${pkgver}/build-${_arch}"
     cd "${srcdir}/pixman-${pkgver}/build-${_arch}"
     ${_arch}-meson \
+      -D loongson-mmi=disabled \
+      -D vmx=disabled \
+      -D arm-simd=disabled \
+      -D neon=disabled \
+      -D iwmmxt=disabled \
+      -D mips-dspr2=disabled \
       -D gtk=disabled ..
     ninja
   done
