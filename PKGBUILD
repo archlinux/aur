@@ -9,10 +9,12 @@
 # Contributor: Antti Hautaniemi <an7oine at me dot com>
 
 _ubuntuver=16.04
+_pkgbasename=acestream-engine
+_enginename=acestreamengine
 
 pkgname=acestream-engine-stable
 pkgver=3.1.16
-pkgrel=4
+pkgrel=5
 pkgdesc="P2P utility for multimedia live streaming and file transfer (stable version)"
 arch=("x86_64")
 url="http://acestream.org/"
@@ -26,15 +28,15 @@ depends=(
     "python2-typing" 
     "python2-xlib")
 optdepends=("python2-libappindicator: GTK2 GUI")
-provides=("acestream-engine")
-conflicts=("acestream-engine")
+provides=("$_pkgbasename")
+conflicts=("$_pkgbasename")
 backup=("usr/lib/acestream/acestream.conf")
-install="acestream-engine.install"
+install="$_pkgbasename.install"
 source=(
-    "acestream-engine.service"
+    "$_pkgbasename.service"
     "$pkgname-$pkgver.tar.gz::http://dl.acestream.org/linux/acestream_${pkgver}_ubuntu_${_ubuntuver}_x86_64.tar.gz"
     "python2-m2crypto-0.24.0.tar.xz::https://archive.archlinux.org/packages/p/python2-m2crypto/python2-m2crypto-0.24.0-4-x86_64.pkg.tar.xz"
-    "acestream-engine.desktop"
+    "$_pkgbasename.desktop"
     "LICENSE"
 )
 sha256sums=(
@@ -45,22 +47,17 @@ sha256sums=(
     "SKIP"
 )
 
-package() {
-    mkdir -p "$pkgdir/usr/lib/acestream/"
-    mkdir -p "$pkgdir/usr/bin"
-    mkdir -p "$pkgdir/usr/share/applications/"
-    mkdir -p "$pkgdir/usr/share/pixmaps/"
-    
+package() {    
     cd "$srcdir/acestream_${pkgver}_ubuntu_${_ubuntuver}_$CARCH"
     sed -i "/ROOT=/c\ROOT=\/usr/lib\/acestream" "start-engine"
     
-    install -Dm755 "acestreamengine" "$pkgdir/usr/lib/acestream/acestreamengine"
+    install -Dm755 "$_enginename" "$pkgdir/usr/lib/acestream/$_enginename"
     install -Dm755 "start-engine" "$pkgdir/usr/lib/acestream/start-engine"
     install -Dm644 "acestream.conf" "$pkgdir/usr/lib/acestream/acestream.conf"
-    install -Dm644 "data/images/streamer-32.png" "$pkgdir/usr/share/pixmaps/acestream-engine.png"
-    install -Dm644 "$srcdir/acestream-engine.service" "$pkgdir/usr/lib/systemd/system/acestream-engine.service"
-    install -Dm644 "$srcdir/acestream-engine.desktop" "$pkgdir/usr/share/applications/acestream-engine.desktop"
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/lib/acestream/LICENSE"
+    install -Dm644 "data/images/streamer-32.png" "$pkgdir/usr/share/pixmaps/$_pkgbasename.png"
+    install -Dm644 "$srcdir/$_pkgbasename.service" "$pkgdir/usr/lib/systemd/system/$_pkgbasename.service"
+    install -Dm644 "$srcdir/$_pkgbasename.desktop" "$pkgdir/usr/share/applications/$_pkgbasename.desktop"
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$_pkgbasename/LICENSE"
 
     cp -a "data" "$pkgdir/usr/lib/acestream/"
     cp -a "lib" "$pkgdir/usr/lib/acestream/"
@@ -68,5 +65,6 @@ package() {
 
     rm "$pkgdir/usr/lib/acestream/lib/lxml-3.7.2-py2.7-linux-x86_64.egg"
 
-    ln -sf "/usr/lib/acestream/start-engine" "$pkgdir/usr/bin/acestreamengine"
+    mkdir -p "$pkgdir/usr/bin"
+    ln -sf "/usr/lib/acestream/start-engine" "$pkgdir/usr/bin/$_enginename"
 }
