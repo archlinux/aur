@@ -8,8 +8,8 @@
 #
 pkgname=rstudio-server-git
 _gitname="rstudio"
-pkgver=v1.1.371.r458.g7755310ae8
-_gwtver=2.8.1
+pkgver=v1.2.1330.r329.g7747ad37e6
+_gwtver=2.8.2
 _ginver=2.1.2
 _clangver=3.8.0
 pkgrel=1
@@ -25,13 +25,13 @@ source=('git://github.com/rstudio/rstudio.git'
 	'rstudio-server.service'
 	"https://s3.amazonaws.com/rstudio-buildtools/gin-${_ginver}.zip"
 	"https://s3.amazonaws.com/rstudio-buildtools/gwt-${_gwtver}.zip"
-	'socketproxy-openssl.patch'
 )
 md5sums=('SKIP'
          'eea28f7865720f6c8d5de12f3f631880'
          'e2617189fe5c138945b8cc95f26bd476'
-         'ddd572887957fd5cdfde3469bd8c1102'
-         'd571313f511ad4a17014c4aef6d01bbc')
+         'c295406d68c5ef364e445068599aa6d4'
+         'd571313f511ad4a17014c4aef6d01bbc'
+         '6b9a2c3bec71132cca676f64c7b8db53')
          
 
 pkgver() {
@@ -40,9 +40,7 @@ pkgver() {
 }
 
 prepare () {
-	#msg "Apply socketproxy-openssl.patch"
-	#cd ${srcdir}/$_gitname
-	#patch -p1 < ${srcdir}/socketproxy-openssl.patch
+	cd ${srcdir}/$_gitname
 
 	msg "Extracting dependencies..."
 	    cd "${srcdir}/${_gitname}/src/gwt"
