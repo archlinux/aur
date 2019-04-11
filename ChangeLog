@@ -1,6 +1,7 @@
-2019-04-?? Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+2019-04-11 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
-	* 4.?-? :
+	* 4.1-4 :
+	Extract program icon(s) from .jar instead of bundle it with PKGBUILD.
 	Make output from `install` no longer be verbose.
 
 2019-04-11 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
