@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/tomaspinho/rtl8821ce"
 license=('GPL2')
 depends=('dkms')
-makedepends=('git' 'bc')
+makedepends=('git' 'bc' 'linux-headers')
 conflicts=("${_pkgbase}")
 source=("git+https://github.com/tomaspinho/rtl8821ce.git")
 #        'dkms.conf')
