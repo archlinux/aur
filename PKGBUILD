@@ -4,7 +4,7 @@
 _pkgname=AppImageLauncher
 pkgname=appimagelauncher
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Helper application for running and integrating AppImages."
 arch=('x86_64')
 url="https://github.com/TheAssassin/AppImageLauncher"
@@ -44,4 +44,8 @@ package() {
   cd $_pkgname
   make DESTDIR="$pkgdir" install
   install -Dm644 LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
+  # fix lib location
+  mv $pkgdir/usr/lib64/* $pkgdir/usr/lib/
+  rm -rf $pkgdir/usr/lib64
 }
