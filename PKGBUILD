@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-ffmpeg-codecs
-pkgver=71.0.3578.98
+pkgver=73.0.3683.86
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera"
 arch=('x86_64')
@@ -15,8 +15,14 @@ makedepends=(
 options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
+  'chromium-73-gcc-0.patch'
+  'chromium-73-gcc-2.patch'
+  'chromium-73-gcc-3.patch'
 )
-sha512sums=('dbeb90e16c6c05422c1f43e8fe747d60dab49c1fffdd0f33824ca24429f3871bda649eb1e6402470d3d9bb701e47d55d2fff4f46530e3f43e72f516d1837aad6')
+sha512sums=('5dd450640c1ea30f7941231e8c459aec0312c18e089b2c8b9104c4ee835a8fa389f5fb9b301b46d87ce260956eaf3e3bd6aff6ae54c279a303aa757537cace15'
+            'de7101ba00d8c1f00cd3f557574653cb9df80e59efe869c4fb127736b0f0793b20157169af74c8e38057c460e29a7e90e05274c749dbb6a30aa0aa7886b74b36'
+            'a242e7669d9c4b86f39dfe0516bced6b234336f4671514b1eca647b3d82228602dda96c69370326eacb3f68b5a47d58a2d6e4f5d97ea67583caf0c2b4430f0d4'
+            '93173033df16138b94dda215b088dd63937f738536d6cbcc4133258502e1f5bdda45bcbbd95250bc7f781839544c3d45e2dfa8aa4477a0617cfaa723e9140085')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
@@ -28,6 +34,10 @@ prepare() {
   [[ -d "$srcdir/path" ]] && rm -rf "$srcdir/path"
   mkdir "$srcdir/path"
   ln -s /usr/bin/python2 "$srcdir/path/python"
+
+  patch -p1 -i "$srcdir/chromium-73-gcc-0.patch"
+  patch -p1 -i "$srcdir/chromium-73-gcc-2.patch"
+  patch -p1 -i "$srcdir/chromium-73-gcc-3.patch"
 }
 
 build() {
