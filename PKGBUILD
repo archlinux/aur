@@ -59,7 +59,7 @@ makedepends=(
              )
 optdepends=(
             'pepper-flash: PPAPI Flash Player'
-            'chromium-widevine-dev: Widevine plugin (eg: Netflix) (Dev Channel)'
+            'chromium-widevine: Widevine plugin (eg: Netflix)'
             #
             'kdialog: Needed for file dialogs in KF5'
             'kwalletmanager: Needed for storing passwords in KWallet5'
@@ -78,9 +78,9 @@ source=(
         'git+https://github.com/foutrelis/chromium-launcher.git'
         'chromium-dev.svg'
         # Patch form Gentoo.
+
         # Misc Patches.
         'enable-vaapi.patch' # Use Saikrishna Arcot patch again :https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/4d40b58013b518373b2544d486d3de40796edd36/debian/patches/enable_vaapi_on_linux_2.diff'
-        'chromium-ffmpeg-clang.patch'
         # Patch from crbug (chromium bugtracker) or Arch chromium package.
         'chromium-widevine-r4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium'
         'chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
@@ -96,7 +96,6 @@ sha256sums=(
 
             # Misc Patches
             '4b785aeee1cab89bf410de063b7769ef4eb99130888ece60a38a584019747b9f'
-            '0d386161052bf8bd3f6c68bdaf766042c75e84db8c3aa356f2e2f8b83511f29f'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
@@ -511,14 +510,8 @@ prepare() {
   sed "s|fuse-ld=lld|fuse-ld=${_clang_path}${_lld}|g" -i build/config/compiler/BUILD.gn
 
   # Setup bundled ffmpeg.
-  # Setup the linker in ffmpeg.
-  cat "${srcdir}/chromium-ffmpeg-clang.patch" | sed -e "s|__CLANG_PATH__|${_clang_path}|g" -e "s|__LLD__|${_lld}|g" | patch -p1 -i -
-  # Disable lto.
-  # This avoid messages like:
-  # bfd plugin: LLVM gold plugin has failed to create LTO module: Unknown attribute kind (60) (Producer: 'LLVM9.0.0svn' Reader: 'LLVM 8.0.0')
-  # when you have installed clang in the system.
-  sed 's|--enable-lto|--disable-lto|g' \
-      -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py
+  # add build verbose output
+  sed "s|'make', '-j|'make', 'V=1', '-j|g" -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py
   # Use system opus.
   rm -fr third_party/opus/src/include
   ln -sf /usr/include/opus/ third_party/opus/src/include
@@ -535,7 +528,20 @@ build() {
 
   msg2 "Build bundled ffmpeg"
   pushd third_party/ffmpeg &> /dev/null
-  chromium/scripts/build_ffmpeg.py linux x64 --branding ChromeOS
+  # Disable lto.
+  # NOTE: This avoid messages like:
+  # bfd plugin: LLVM gold plugin has failed to create LTO module: Unknown attribute kind (60) (Producer: 'LLVM9.0.0svn' Reader: 'LLVM 8.0.0')
+  # when you have installed clang in the system.
+  # Use bundled clang
+  chromium/scripts/build_ffmpeg.py linux x64 --branding ChromeOS -- \
+    --disable-lto \
+    --cc="${_clang_path}clang" \
+    --cxx="${_clang_path}clang++" \
+    --ld="${_clang_path}clang" \
+    --ar="${_clang_path}llvm-ar" \
+    --extra-ldflags="-fuse-ld=${_clang_path}${_lld}" \
+#     --disable-asm
+
   chromium/scripts/copy_config.sh
   chromium/scripts/generate_gn.py
   popd &> /dev/null
