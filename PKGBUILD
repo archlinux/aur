@@ -6,15 +6,17 @@ pkgbase=python2-scikit-image
 _pyname=${pkgbase#python2-}
 pkgname=("python2-${_pyname}")
 pkgver=0.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Image processing routines for SciPy"
 arch=('i686' 'x86_64')
 url="http://scikit-image.org/"
 license=('BSD')
-makedepends=('cython2' 'python2-six')
-depends=('python2-scipy' 'python2-matplotlib' 'python2-networkx' 'python2-pillow' 'python2-pywavelets')
+makedepends=('cython2')
+depends=('python2-scipy' 'python2-six' 'python2-matplotlib' 'python2-networkx' 'python2-pillow' 'python2-pywavelets')
 optdepends=('python2-pyqt4: for imshow(x, fancy=True) and skivi'
-            'freeimage: for reading various types of image file formats')
+            'python2-astropy: Provides FITS I/O capability'
+            'freeimage: for reading various types of image file formats'
+            'python2-imread: Optional I/O plugin providing most standard formats')
 options=('!emptydirs')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 sha256sums=('1afd0b84eefd77afd1071c5c1c402553d67be2d7db8950b32d6f773f25850c1f')
