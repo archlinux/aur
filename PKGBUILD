@@ -15,7 +15,6 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd $srcdir/ceres-solver-$pkgver
-  sed -i "s|set(EIGEN_VERSION_FILE|#set(EIGEN_VERSION_FILE|g" cmake/FindEigen.cmake
   sed -i "s|set(RELATIVE_CMAKECONFIG_INSTALL_DIR CMake)|set(RELATIVE_CMAKECONFIG_INSTALL_DIR lib/cmake/Ceres)|g" CMakeLists.txt
 }
 
@@ -23,7 +22,7 @@ build() {
   cd $srcdir/ceres-solver-$pkgver
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DEIGEN_VERSION_FILE=/usr/i686-w64-mingw32/include/Eigen/src/Core/util/Macros.h \
+    ${_arch}-cmake -DEIGEN_INCLUDE_DIR_HINTS=/usr/${_arch}/include \
       -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF -DBUILD_BENCHMARKS=OFF ..
     make
     popd
