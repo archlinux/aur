@@ -50,7 +50,10 @@ build() {
   cd build
   CFLAGS="$CFLAGS -Wno-unused-parameter"
   CFLAGS="$CFLAGS -Wno-maybe-uninitialized"
-  arch-meson -Ddocs=true -Daudit=true "." "../$pkgname"
+  arch-meson "." "../$pkgname" \
+        -Ddocs=true \
+        -Daudit=true \
+        -Dsystem-console-users=gdm
   ninja
 }
 
