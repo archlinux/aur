@@ -1,0 +1,26 @@
+post_install() {
+  # We need to know uid and gid to create /var/lib/jenkins with proper
+  # permissions. So keep systemd-sysusers invocation here despite having
+  # pacman hooks.
+  systemd-sysusers docker-registry.conf
+
+  XHOME="var/lib/docker-registry"
+  [[ -d $XHOME ]] || {
+      install -dm 750 -o docker-registry -g docker-registry "$XHOME"
+
+      ## Very-first run. Maybe to initialize dummy credentials in config?
+      XHTPASSWD="etc/docker-registry/.htpasswd"
+      [[ -f $XHTPASSWD ]] || {
+	   mkdir -p `dirname "$XHTPASSWD"`
+	   touch "$XHTPASSWD"
+	   chown docker-registry:docker-registry "$XHTPASSWD"
+	   chmod 600 "$XHTPASSWD"
+           echo "*** Docker Registry"
+           echo "*** Stub file initialized for credentials in '/$XHTPASSWD'"
+           echo "*** You can add new registry users using:"
+	   echo "***     htpasswd -B /$XHTPASSWD myuser"
+      }
+  }
+
+  
+}

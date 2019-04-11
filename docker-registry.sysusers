@@ -1,0 +1,2 @@
+u docker-registry - "Docker Registry 2.0" /var/lib/docker-registry
+g docker-registry -

@@ -1,0 +1,28 @@
+pkgbase = docker-registry2-git
+	pkgdesc = Official Docker Registry 2.0 implementation to pack, ship, store, and deliver docker images (git version).
+	pkgver = r2691.6d62eb1d
+	pkgrel = 1
+	url = https://github.com/docker/distribution
+	install = docker-registry-git.install
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	arch = arm
+	license = apache
+	makedepends = git
+	makedepends = go
+	provides = docker-registry
+	conflicts = docker-registry
+	source = docker-registry2-git::git+https://github.com/docker/distribution
+	source = docker-registry.conf
+	source = docker-registry.service
+	source = docker-registry.sysusers
+	sha256sums = SKIP
+	sha256sums = fb487613a07a9645f49ada176d4c27f613aeecd4275bb7998094f25fb8e023bd
+	sha256sums = b75e03e96dd90bb05e22d31fb5ee8fa159db21652995fbb7069bf3ac823c57f5
+	sha256sums = 4aada981fb0bc3f4b7eb04790178e17fa2820a7d423474a3dad808ae1607ed39
+
+pkgname = docker-registry2-git
+

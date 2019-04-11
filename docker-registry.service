@@ -1,0 +1,16 @@
+[Unit]
+Description=Docker Registry 2.0 implementation for storing and distributing Docker images.
+After=network.target
+
+[Service]
+User=docker-registry
+Type=simple
+EnvironmentFile=/etc/conf.d/docker-registry
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=docker-registry
+ExecStart=/bin/sh -c 'eval $DOCKER_REGISTRY_CMDLINE'
+
+[Install]
+WantedBy=multi-user.target
+
