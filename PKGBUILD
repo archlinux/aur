@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Radioactiveman <thomas-lange2@gmx.de>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Lauri Niskanen <ape@ape3000.com>
@@ -9,7 +8,7 @@
 # to the depends and delete "no-g15" in the configure line below
 
 pkgname=mumble-git
-pkgver=2019.03.29
+pkgver=2019.04.09
 _pkgver=1.3.0
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -18,7 +17,7 @@ url='https://www.mumble.info/'
 license=('BSD')
 depends=('qt5-base' 'qt5-svg' 'speex' 'lsb-release' 'avahi' 'protobuf' 'libpulse' 'opus'
          'xdg-utils' 'libspeechd' 'libpng' 'freetype2' 'fontconfig' 'libxrender')
-makedepends=('boost' 'mesa' 'qt5-tools' 'jack' 'git')
+makedepends=('boost' 'git' 'jack' 'mesa' 'python' 'qt5-tools')
 optdepends=('jack: JACK audio output'
             'espeak-ng: Text to Speech support'
             'speech-dispatcher: Text to Speech support')
