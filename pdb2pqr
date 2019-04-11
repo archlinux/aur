@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+python2 /opt/pdb2pqr/pdb2pqr.py "$@"
+
+exit 0

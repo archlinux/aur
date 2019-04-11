@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 pkgname=pdb2pqr
 pkgver=2.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Electrostatic and solvation properties for complex molecules"
 arch=(x86_64 i686)
 url="http://www.poissonboltzmann.org/"
@@ -13,11 +13,13 @@ optdepends=("pymol-python2: APBSTools plugin support"
 source=("git+https://github.com/Electrostatics/apbs-pdb2pqr.git#commit=433a1984a632b396bda11416b757d00e4ef5189e"
         "pdb2pqr.patch"
         "amber_dat.patch"
-        "pdb2pqr.sh")
+        "pdb2pqr.sh"
+        "pdb2pqr")
 md5sums=('SKIP'
          '19cb8e794d49e4d2bc04df54a895f3ad'
          '2f2e838377ee176a22f9c4ac313714f5'
-         '4533f9bb6ce2d94ed2d97c0a05e6b071')
+         '4533f9bb6ce2d94ed2d97c0a05e6b071'
+         '0ac1252793114dba8ad9b84d07a8e623')
 
 prepare() {
     cd ${srcdir}/apbs-pdb2pqr/pdb2pqr
@@ -45,4 +47,7 @@ package() {
 
     # install profile script for proper APBSTools plugins usage
     install -Dm644 ${srcdir}/pdb2pqr.sh ${pkgdir}/etc/profile.d/pdb2pqr.sh
+
+    # install system-wide shorthand
+    install -Dm755 ${srcdir}/pdb2pqr ${pkgdir}/usr/bin/pdb2pqr
 }
