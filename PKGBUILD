@@ -2,23 +2,24 @@
 # Contributor: Mike Dacre <mike@dacre.me>
 
 pkgname=tmux-cssh-git
-pkgver=1.0.6.0.r7.g2175073
-pkgrel=2
+pkgver=r76.48c9ed8
+pkgrel=1
+epoch=1
 pkgdesc="TMUX with a \"ClusterSSH\"-like behaviour"
 arch=('any')
-url="https://github.com/dennishafemann/tmux-cssh"
+url="https://github.com/zinic/tmux-cssh"
 license=('Apache')
 depends=('tmux')
 makedepends=('git')
 provides=('tmux-cssh')
 conflicts=('tmux-cssh')
-source=(git+https://github.com/dennishafemann/tmux-cssh.git)
+source=(git+https://github.com/zinic/tmux-cssh.git)
 md5sums=('SKIP')
 
 pkgver() {
   cd tmux-cssh
 
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
