@@ -1,6 +1,6 @@
 pkgbase = exceptions4c-git
 	pkgdesc = Bring the power of exceptions to your C applications with this tiny, portable library.
-	pkgver = 3930c9f
+	pkgver = cce5399
 	pkgrel = 1
 	url = https://exceptions4c.guillermo.in/
 	arch = any
