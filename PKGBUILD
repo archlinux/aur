@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-cgal
-pkgver=4.13
+pkgver=4.14
 pkgrel=1
 arch=('any')
 pkgdesc="Computational Geometry Algorithms Library (mingw-w64)"
@@ -10,7 +10,7 @@ options=('!buildflags' '!strip' 'staticlibs')
 license=('GPL', 'LGPL')
 url="http://www.cgal.org"
 source=("https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-${pkgver}/CGAL-${pkgver}.tar.xz")
-sha256sums=('3e3dd7a64febda58be54c3cbeba329ab6a73b72d4d7647ba4931ecd1fad0e3bc')
+sha256sums=('59464b1eaee892f2223ba570a7642892c999e29524ab102a6efd7c29c94a29f7')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
