@@ -31,8 +31,8 @@ prepare() {
   cd "${pkgname}-git-repo"
 
   # Set system electron version
-  _installed_electron_version=$(electron -v)
-  sed -E -i 's/"electron": "[0-9.]+"/"electron": "'${_installed_electron_version#v}'"/' package.json
+  _installed_electron_version=$(pacman -Q electron | cut -d' ' -f2 | cut -d'-' -f1)
+  sed -E -i 's/"electron": "[0-9.]+"/"electron": "'$_installed_electron_version'"/' package.json
 
   # Allow higher node minor versions
   sed -i 's/"node": "/&^/' package.json
