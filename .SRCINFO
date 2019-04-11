@@ -1,7 +1,7 @@
 pkgbase = openboard
 	pkgdesc = Interactive whiteboard software for schools and universities
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openboard.ch/index.en.html
 	arch = x86_64
 	arch = i686
@@ -23,13 +23,15 @@ pkgbase = openboard
 	source = https://github.com/OpenBoard-org/OpenBoard-ThirdParty/archive/master.zip
 	source = qchar.patch
 	source = qwebkit.patch
-	source = 218.diff
+	source = https://github.com/OpenBoard-org/OpenBoard/pull/218.diff
+	source = https://github.com/OpenBoard-org/OpenBoard/pull/223.diff
 	source = openboard.desktop
 	md5sums = fe3644033dccfd16c80b683210e4ac57
 	md5sums = fa1ff089f0bcc15d2a510bb90cdd3002
 	md5sums = bf2c524f3897cfcfb4315bcd92d4206e
 	md5sums = 60f64db6bf627015f4747879c4b30fd3
 	md5sums = f484614cc48181287607afb5a45ef644
+	md5sums = 04c421c140e983d41975943ede5fe61a
 	md5sums = 21d1749400802f8fc0669feaf77de683
 
 pkgname = openboard
