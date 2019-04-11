@@ -1,5 +1,14 @@
 2019-04-11  Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
+	* 1.45-1 :
+	Version bump to 1.45.
+
+	Upstream changelog (1.44→1.45):
+	- Fixes a crash on launch
+	- Warns users that a 1.10 or earlier profile of Minecraft is required
+
+2019-04-11  Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+
 	* 1.44-3 :
 	Make download of AmidstExporter.jar download to a unique filename.
 

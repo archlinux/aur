@@ -2,10 +2,10 @@
 # Contributor: CubeTheThird <cubethethird@gmail.com>
 
 pkgname=amidstexporter
-pkgver='1.44'
+pkgver='1.45'
 _jarfile='AmidstExporter.jar'
 _jarfile_version="${_jarfile//.jar/}-$pkgver.jar"
-pkgrel=3
+pkgrel=1
 pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking; fork with location export.'
 arch=('any')
 license=('GPL3')
@@ -14,10 +14,10 @@ depends=('java-runtime')
 optdepends=('minecraft: the game itself')
 noextract=("$_jarfile_version")
 changelog=ChangeLog
-source=("${_jarfile_version}::https://github.com/Treer/AMIDST/releases/download/v${pkgver}/${_jarfile}"
+source=("${_jarfile_version}::https://github.com/Treer/AmidstExporter/releases/download/untagged-50f0ec3bf71cd1b72ff3/${_jarfile}"
         amidstexporter.sh
         amidstexporter.desktop)
-md5sums=('9c7a369c34aaa5cc48d7456706cfc989'
+md5sums=('3ce111aaff29423023c1b41a3d606ab2'
          '365558c0aadf7a879ff8f4514943b10c'
          'abe95f51b3ec61a2ae371a05c6edfc1f')
 
