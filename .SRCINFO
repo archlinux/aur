@@ -1,7 +1,7 @@
 pkgbase = xcrysden
 	pkgdesc = crystalline and molecular structure visualisation program
 	pkgver = 1.5.60
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xcrysden.org/
 	arch = x86_64
 	license = GPL2
