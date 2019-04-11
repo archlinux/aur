@@ -1,6 +1,6 @@
 # Maintainer: Darren Ldl <darrenldldev@gmail.com>
 pkgname=blkar
-pkgver=4.0.0
+pkgver=5.0.0
 pkgrel=1
 epoch=
 pkgdesc="Archive with forward error correction and sector level recoverability"
