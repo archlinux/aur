@@ -1,13 +1,13 @@
 pkgbase = pulsejoin
 	pkgdesc = GUI for making a virtual PulseAudio microphone, from which sound from both microphone and audio output can be recorded
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/mikhailnov/pulsejoin
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = pulseaudio
-	depends = pavucontrol
+	depends = pavucontrol-qt
 	depends = yad
 	source = pulsejoin::git+https://gitlab.com/mikhailnov/pulsejoin.git#tag=v2.3
 	sha256sums = SKIP
