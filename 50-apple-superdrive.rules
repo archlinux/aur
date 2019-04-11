@@ -1,0 +1,1 @@
+ACTION=="add", ATTRS{product}=="MacBook Air SuperDrive", ATTRS{manufacturer}=="Apple Inc.", ATTRS{removable}=="removable", DRIVERS=="usb", RUN+="/usr/bin/superdrive-enabler /dev/$kernel"

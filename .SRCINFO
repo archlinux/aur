@@ -1,0 +1,18 @@
+pkgbase = superdrive-enabler-git
+	pkgdesc = Hack for Apple's Superdrive to work with other systems than OSX and MBA
+	pkgver = r9.809e81e
+	pkgrel = 1
+	url = https://github.com/onmomo/superdrive-enabler
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = glibc
+	provides = superdrive-enabler
+	backup = usr/lib/udev/rules.d/50-apple-superdrive.rules
+	source = superdrive-enabler-r9.809e81e::git+https://github.com/onmomo/superdrive-enabler.git
+	source = 50-apple-superdrive.rules
+	sha256sums = SKIP
+	sha256sums = 5c0e6d95cc38c10111af59097a24dd36ee3789d0dceeef50355f3b293e129b95
+
+pkgname = superdrive-enabler-git
+
