@@ -1,0 +1,21 @@
+pkgbase = python-req
+	pkgdesc = Simple python module for loading and dumping structures in req format.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/absperf/python-req
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = https://github.com/absperf/python-req/archive/de878f08f4fb28fa140c80d5cbdb04518ef5e968.tar.gz
+	sha256sums = 67d0bf4c210aa5028cb1de5f83dd5825bc0475617870afa599ad67ff2873b289
+
+pkgname = python-req
+	pkgdesc = Simple python module for loading and dumping structures in req format. (python3 version)
+	depends = python
+
+pkgname = python2-req
+	pkgdesc = Simple python module for loading and dumping structures in req format. (python2 version)
+	depends = python2
+
