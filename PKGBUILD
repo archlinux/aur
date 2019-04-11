@@ -29,9 +29,7 @@ source=('git://github.com/rstudio/rstudio.git'
 md5sums=('SKIP'
          'eea28f7865720f6c8d5de12f3f631880'
          'e2617189fe5c138945b8cc95f26bd476'
-         'c295406d68c5ef364e445068599aa6d4'
-         'd571313f511ad4a17014c4aef6d01bbc'
-         '6b9a2c3bec71132cca676f64c7b8db53')
+         'c295406d68c5ef364e445068599aa6d4')
          
 
 pkgver() {
