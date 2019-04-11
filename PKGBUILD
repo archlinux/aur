@@ -15,24 +15,13 @@ makedepends=('git'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/WolframRhodium/VapourSynth-dpid.git"
-        'esee'
-        )
-sha256sums=('SKIP'
-            'SKIP'
-            )
+source=("${_plug}::git+https://github.com/WolframRhodium/VapourSynth-dpid.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
   echo "$(git describe --long --tags | tr - .)"
 }
-
-prepare() {
-  cd "${_plug}/Source"
-
-  patch -p2 -i "${srcdir}/esee"
-}
-
 
 build() {
   make -C "${_plug}/Source"
