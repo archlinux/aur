@@ -1,7 +1,7 @@
 pkgbase = betaflight-configurator
 	pkgdesc = Crossplatform configuration tool for the Betaflight flight control system
-	pkgver = 10.4.0
-	pkgrel = 2
+	pkgver = 10.5.0
+	pkgrel = 1
 	url = https://github.com/betaflight/betaflight-configurator
 	install = betaflight-configurator.install
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = betaflight-configurator
 	makedepends = git
 	depends = nwjs-bin
 	options = !strip
-	source = https://github.com/betaflight/betaflight-configurator/archive/10.4.0.zip
+	source = https://github.com/betaflight/betaflight-configurator/archive/10.5.0.zip
 	source = betaflight-configurator.sh
 	source = betaflight-configurator.desktop
-	sha512sums = 3538fafc792f27281bb17c9f37f96a3662e0b9ec7e158cf80946b8087b4ec06e4fa38cb609267646b5c91432ccd9fb403761fc95c9ad15070036ebd6bf5fb11b
-	sha512sums = 9d4c372a891644c4f4bf5d359dc2bfca35883e0e26fce8567dd791d8dbb6f2254792879c754426093a95603d6caac387c611bf9c70749cfd3e0f5c3abc1f6c29
+	sha512sums = 43e17a1288a8be7b16af1bed8cfc533c42a76b36f894c40842de615e5f655663efbcd2b0863ca5060d5314b96e22bd3fd6a87f50f6c426a9643ffcc6b5274b84
+	sha512sums = 1f9113fce812355d1f8cc614d4905845c601622b87aad2b6e74b62913582018a87059727a333db0673a4b767a10564389eece1f588658d171dc4d8446055a0e9
 	sha512sums = 79e5ab59cf8520ce7e20fb2bd89ee99ce3debba69e7da892bf219912cc32c7056a7c8fd6dae19eebfe4956c948d0bc75ece40911b203fcc2f34e43f2d8329532
 
 pkgname = betaflight-configurator

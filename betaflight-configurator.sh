@@ -1,3 +1,3 @@
 #!/bin/sh
 
-nw /usr/share/betaflight-configurator/
+nw /usr/share/betaflight-configurator/ "$@"
