@@ -2,7 +2,7 @@
 # Contributor: Prepros <hi@prepros.io>
 
 pkgname=prepros-bin
-pkgver=6.2.3
+pkgver=6.3
 pkgrel=1
 pkgdesc="Compile Sass, Less, Jade and much more with live browser refresh."
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
 source_x86_64=("https://prepros.io/downloads/stable/linux")
-sha512sums_x86_64=('cfb8116b8ff4bf6d1e24ac1b570cff12e83d1433e40fd9255b639df5ac820812bd2a8e989285be3363bc846a6105b0a43ac1cf8d32d419ccf5f5ea70fd170305')
+sha512sums_x86_64=('845ba9d117a18477b3e04529f57c25e8045ea793cba04f7f83d288bbe5866cd83594e8bd42391ad8df755ec68f742fd0e0e45ec65c2f53d8d85093ada6e7c473')
 
 package(){
 
