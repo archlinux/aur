@@ -1,6 +1,6 @@
 pkgbase = gerbera
 	pkgdesc = UPnP Media Server (Based on MediaTomb)
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/gerbera/gerbera
 	install = gerbera.install
@@ -22,10 +22,10 @@ pkgbase = gerbera
 	depends = ffmpegthumbnailer
 	optdepends = libmariadbclient
 	options = emptydirs
-	source = gerbera-1.3.0.tar.gz::https://github.com/gerbera/gerbera/archive/v1.3.0.tar.gz
+	source = gerbera-1.3.1.tar.gz::https://github.com/gerbera/gerbera/archive/v1.3.1.tar.gz
 	source = gerbera.sysusers
 	source = gerbera.tmpfiles
-	sha256sums = 5e40971c519eb322fe0111754cafa12d99c47c2ae7d0f9f1aebb19b06e74a912
+	sha256sums = 9c4509189eab6bff0fe183e1dd54ea8cb17d7fb0bc6e21bb5b1a8ccaaf6c60d9
 	sha256sums = 0b55a4e1886f7aad0528446658433327815fd3f4d06e260518423f86dbe32dcc
 	sha256sums = 452f5d4b5661e0262cb4a48d62a54f5f26d53c6d3aebf502cde072214a8b30d8
 
