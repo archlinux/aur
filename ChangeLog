@@ -1,5 +1,10 @@
 2019-04-11  Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
+	* 1.44-3 :
+	Make download of AmidstExporter.jar download to a unique filename.
+
+2019-04-11  Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+
 	* 1.44-2 :
 	Copy various changes from amidst PKGBUILD:
 	Install program icon(s) as per freedesktop.org’s Icon Theme Specification.

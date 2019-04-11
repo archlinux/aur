@@ -4,16 +4,17 @@
 pkgname=amidstexporter
 pkgver='1.44'
 _jarfile='AmidstExporter.jar'
-pkgrel=2
+_jarfile_version="${_jarfile//.jar/}-$pkgver.jar"
+pkgrel=3
 pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking; fork with location export.'
 arch=('any')
 license=('GPL3')
 url='http://www.buildingwithblocks.info/exportfromseed.html'
 depends=('java-runtime')
 optdepends=('minecraft: the game itself')
-noextract=("$_jarfile")
+noextract=("$_jarfile_version")
 changelog=ChangeLog
-source=("https://github.com/Treer/AMIDST/releases/download/v${pkgver}/${_jarfile}"
+source=("${_jarfile_version}::https://github.com/Treer/AMIDST/releases/download/v${pkgver}/${_jarfile}"
         amidstexporter.sh
         amidstexporter.desktop)
 md5sums=('9c7a369c34aaa5cc48d7456706cfc989'
@@ -24,7 +25,7 @@ prepare() {
     cd "$srcdir"
 
     # Extract icon
-    bsdcpio --quiet --extract --make-directories --insecure 'amidst/resources/icon*.png' < "$_jarfile"
+    bsdcpio --quiet --extract --make-directories --insecure 'amidst/resources/icon*.png' < "$_jarfile_version"
 }
 
 package() {
@@ -32,7 +33,7 @@ package() {
 
     install -Dm755 'amidstexporter.sh'      "$pkgdir/usr/bin/amidstexporter"
     install -Dm644 'amidstexporter.desktop' "$pkgdir/usr/share/applications/amidstexporter.desktop"
-    install -Dm644 "$_jarfile"              "$pkgdir/usr/share/java/$pkgname/$_jarfile"
+    install -Dm644 "$_jarfile_version"      "$pkgdir/usr/share/java/$pkgname/$_jarfile"
 
     icon_sizes=(16 32 64)
     for s in "${icon_sizes[@]}"; do
