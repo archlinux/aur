@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdbool.h>
+#include <stdlib.h>
 #include <string.h>
 
 #define NO_FORMAT "\033[0m"
@@ -24,6 +24,9 @@ int init();
 int prompt_add_author(void);
 int add_author();
 int select_authors();
+char **read_authors();
+int set_author(char *name, char *email);
+int set_co_author(char *name, char *email);
 void print_help();
 void print_title();
 
@@ -87,13 +90,13 @@ int add_author() {
     char author_name[BUFSIZ];
     printf("%sEnter author's full name:%s ", GREEN, NO_FORMAT);
     fgets(author_name, BUFSIZ, stdin);
-    author_name[strlen(author_name) - 1] = '\0';
+    author_name[strcspn(author_name, "\n")] = '\0';
 
     // Prompt for author email.
     char author_email[BUFSIZ];
     printf("%sEnter author's email:%s ", GREEN, NO_FORMAT);
     fgets(author_email, BUFSIZ, stdin);
-    author_email[strlen(author_email) - 1] = '\0';
+    author_email[strcspn(author_email, "\n")] = '\0';
 
     if (author_name == NULL || author_email == NULL) {
         printf("%sNo author added - exiting.%s", RED, NO_FORMAT);
@@ -120,18 +123,78 @@ int add_author() {
  * @return 0 if an author was selected successfully.
  */
 int select_authors() {
+    // Read info and parse.
+    int length = 0;
+    char **authors = read_authors(&length);
+
+    // Display authors on each line to select for author, then co-author.
+    for (int i = 0; i < length; i++) {
+        printf("%s[%d]%s: %s\n", GREEN, i, NO_FORMAT, authors[i]);
+    }
+
+    printf("%sSelect the author:%s ", GREEN, NO_FORMAT);
+
+    char *input;
+    char *ptr;
+    fgets(input, 255, stdin);
+    // TODO: Seg fault here.
+    long index = strtol(input, &ptr, 10);
+
+    char *name = authors[index];
+    char *email = authors[index];
+
+    printf("Selected: %s", name);
+
+    /*
+
+    if (set_author(name, email) != 0) {
+        return -1;
+    }
+
+    // TODO: Set co-author via commit-template
+
+    */
+
+   free(authors);
+   return 0;
+}
+
+/**
+ * @return All author entries in the authors file.
+ */
+char **read_authors(int *length) {
     FILE *authors_file = fopen(authors_file_name, "r");
-    
     // Check if authors file exists.
     if (authors_file == NULL) {
         printf("%sFile %s not in directory.\n", RED, authors_file_name);
         printf("Run with the init parameter to create the file and add code authors.%s\n", NO_FORMAT);
-        return -1;
+        exit(1);
     }
 
-    // TODO: Display authors on each line to select for author, then co-author.
+    // Store all authors in array.
+    char **authors = malloc(255 * sizeof(char*));
+    char buff[255];
+    int i;
+    for (i = 0; fgets(buff, 255, authors_file); i++) {
+        buff[strcspn(buff, "\n")] = '\0';
+        authors[i] = malloc(strlen(buff) + 1);
+        strcpy(authors[i], buff);
+        
+        // TODO: If i >= 255, realloc authors to be size + 255.
+    }
+    *length = i;
     fclose(authors_file);
-    return -1;
+    return authors;
+}
+
+int set_author(char *name, char *email) {
+    // TODO: Set author via git config user.name and git config user.email
+    return 0;
+}
+
+int set_co_author(char *name, char *email) {
+    // TODO: Set co-author via commit.template
+    return 0;
 }
 
 void print_help() {
@@ -140,6 +203,7 @@ void print_help() {
     printf("   %sinit%s         - Initiate the setup for git pair\n", GREEN, NO_FORMAT);
     printf("   %sadd%s          - Add an author to your %s file for selection\n", GREEN, NO_FORMAT, authors_file_name);
     printf("   %shelp%s         - Display this message\n", GREEN, NO_FORMAT);
+    printf("\n");
 }
 
 void print_title() {
