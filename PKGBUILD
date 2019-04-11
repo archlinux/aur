@@ -6,7 +6,7 @@
 # - Desktop entries are ran through desktop-file-validate.
 
 pkgname='lucas-simpsons-hit-and-run-mod-launcher'
-pkgver='1.19'
+pkgver='1.22.3'
 pkgrel='1'
 pkgdesc="Mod launcher for The Simpsons: Hit & Run."
 arch=(
@@ -51,11 +51,9 @@ package() {
   # Install the Windows executable to /usr/lib/lucas-simpsons-hit-and-run-mod-launcher/ because it's
   # an executable, but not meant to be ran as-is.
   install -Dm644 "Lucas Simpsons Hit & Run Mod Launcher.exe" "$pkgdir/usr/lib/$pkgname/$pkgname.exe"
-  # Install the default hacks to /usr/lib/lucas-simpsons-hit-and-run-mod-launcher/hacks/ because
-  # they are, in a sense, shared objects injected into the game, just in a format for the launcher
-  # Despite this, the permissions for group and other are still set to non-executable because
-  # are techincally not ordinary shared objects.
-  install -Dm644 -t "$pkgdir/usr/lib/$pkgname/hacks/" Hacks/*.lmlh
+  # Install the default hacks to /usr/lib/lucas-simpsons-hit-and-run-mod-launcher/dlls for the same
+  # reason.
+  install -Dm644 -t "$pkgdir/usr/lib/$pkgname/dlls/" DLLs/*
   # Install the default mods to /usr/share/lucas-simpsons-hit-and-run-mod-launcher/mods/ because
   # they aren't really shared objects, but just data like textures and models.
   install -Dm644 -t "$pkgdir/usr/share/$pkgname/mods/" Mods/*.lmlm
