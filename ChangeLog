@@ -1,3 +1,8 @@
+2019-04-?? Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+
+	* 4.?-? :
+	Make output from `install` no longer be verbose.
+
 2019-04-11 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
 	* 4.1-3 :

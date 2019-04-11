@@ -33,10 +33,10 @@ build() {
 package() {
     cd "$srcdir"
 
-    install -vDm755 'amidst.sh'                 "$pkgdir/usr/bin/amidst"
-    install -vDm644 'icon.png'                  "$pkgdir/usr/share/icons/hicolor/128x128/apps/amidst.png"
-    install -vDm644 'amidst.desktop'            "$pkgdir/usr/share/applications/amidst.desktop"
-    install -vDm644 "$_jarfile"                 "$pkgdir/usr/share/java/$pkgname/AMIDST.jar"
+    install -Dm755 'amidst.sh'                 "$pkgdir/usr/bin/amidst"
+    install -Dm644 'icon.png'                  "$pkgdir/usr/share/icons/hicolor/128x128/apps/amidst.png"
+    install -Dm644 'amidst.desktop'            "$pkgdir/usr/share/applications/amidst.desktop"
+    install -Dm644 "$_jarfile"                 "$pkgdir/usr/share/java/$pkgname/AMIDST.jar"
 }
 
 # vim:set ts=4 sw=4 et:
