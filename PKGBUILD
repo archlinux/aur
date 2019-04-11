@@ -2,7 +2,7 @@
 pkgname='noaa-apt'
 pkgdesc='NOAA APT image decoder with GUI'
 pkgver=1.0.0
-pkgrel=2 
+pkgrel=3
 arch=('x86_64') 
 url="https://github.com/martinber/${pkgname}"
 license=('GPL3')
@@ -22,6 +22,6 @@ package()
     cd "${srcdir}/${pkgname}-${pkgver}/"
     install -Dm755 "target/release/${pkgname}" "$pkgdir/usr/bin/${pkgname}"
     install -Dm644 "debian/ar.com.mbernardi.noaa-apt.desktop" "$pkgdir/usr/bin/usr/share/applications"
-    install -Dm644 "debian/noaa-apt.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps"
-    install -Dm644 "debian/noaa-apt.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+    #install -Dm644 "debian/noaa-apt.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps"
+    #install -Dm644 "debian/noaa-apt.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps"
 }
