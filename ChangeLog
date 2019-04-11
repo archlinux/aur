@@ -1,3 +1,8 @@
+2019-04-11 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+
+	* 4.1-2 :
+	Now installs program icon as per freedesktop.org’s Icon Theme Specification.
+
 2016-06-23 CubeTheThird <cubethethird@gmail.com>
 
 	* 4.1-1 :

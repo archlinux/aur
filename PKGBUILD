@@ -6,7 +6,7 @@ _version='4.1'
 pkgver=${_version//_/-}
 _jarver="v${_version}"
 _jarfile="${pkgname}-${_jarver/./-}.jar"
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking'
 arch=('any')
 license=('GPL3')
@@ -34,7 +34,7 @@ package() {
     cd "$srcdir"
 
     install -vDm755 'amidst.sh'                 "$pkgdir/usr/bin/amidst"
-    install -vDm644 'icon.png'                  "$pkgdir/usr/share/pixmaps/amidst.png"
+    install -vDm644 'icon.png'                  "$pkgdir/usr/share/icons/hicolor/128x128/apps/amidst.png"
     install -vDm644 'amidst.desktop'            "$pkgdir/usr/share/applications/amidst.desktop"
     install -vDm644 "$_jarfile"                 "$pkgdir/usr/share/java/$pkgname/AMIDST.jar"
 }
