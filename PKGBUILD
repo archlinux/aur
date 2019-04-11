@@ -3,26 +3,20 @@
 _pkgorg=bus1
 _pkgname=dbus-broker
 pkgdesc='Linux D-Bus Message Broker'
-pkgver=r1344.034b3ec
+pkgver=r1358.ced4d83
 pkgrel=1
 
 pkgname=$_pkgname-git
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/$_pkgorg/$_pkgname"
 license=('Apache')
-depends=('libsystemd' 'expat')
+depends=('audit' 'expat' 'systemd-libs')
 makedepends=('git' 'meson' 'systemd' 'python-docutils')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 source=("$pkgname::git+https://github.com/$_pkgorg/$_pkgname"
-        "git+https://github.com/c-util/c-dvar"
-        "git+https://github.com/c-util/c-ini"
-        "git+https://github.com/c-util/c-list"
-        "git+https://github.com/c-util/c-rbtree"
-        "git+https://github.com/c-util/c-shquote"
-        "git+https://github.com/c-util/c-stdaux"
-        "git+https://github.com/c-util/c-utf8")
+        git+https://github.com/c-util/c-{dvar,ini,list,rbtree,shquote,stdaux,utf8})
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -43,13 +37,12 @@ prepare() {
   cd $pkgname
 
   git submodule init
-  git config --local submodule.subprojects/c-dvar.url   "$srcdir/c-dvar"
-  git config --local submodule.subprojects/c-ini.url   "$srcdir/c-ini"
-  git config --local submodule.subprojects/c-list.url   "$srcdir/c-list"
-  git config --local submodule.subprojects/c-rbtree.url "$srcdir/c-rbtree"
-  git config --local submodule.subprojects/c-shquote.url "$srcdir/c-shquote"
-  git config --local submodule.subprojects/c-stdaux.url "$srcdir/c-stdaux"
-  git config --local submodule.subprojects/c-utf8.url   "$srcdir/c-utf8"
+
+  local sm
+  for sm in c-{dvar,ini,list,rbtree,shquote,stdaux,utf8}; do
+    git config --local submodule.subprojects/$sm.url "$srcdir/$sm"
+  done
+
   git submodule update
 }
 
@@ -57,7 +50,7 @@ build() {
   cd build
   CFLAGS="$CFLAGS -Wno-unused-parameter"
   CFLAGS="$CFLAGS -Wno-maybe-uninitialized"
-  arch-meson -Ddocs=true ../$pkgname
+  arch-meson -Ddocs=true -Daudit=true "." "../$pkgname"
   ninja
 }
 
@@ -68,7 +61,7 @@ check() {
 
 package() {
   cd build
-  DESTDIR="$pkgdir" ninja install
+  DESTDIR="$pkgdir" meson install
 }
 
 # vim:set sw=2 et:
