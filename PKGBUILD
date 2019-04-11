@@ -2,7 +2,7 @@
 
 _pkgname=exceptions4c
 pkgname=${_pkgname}-git
-pkgver=3930c9f
+pkgver=cce5399 
 pkgrel=1
 pkgdesc="Bring the power of exceptions to your C applications with this tiny, portable library."
 arch=('any')
