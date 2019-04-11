@@ -1,13 +1,16 @@
 pkgbase = pingg-git
 	pkgdesc = Ping latency graphical CLI.
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = http://gitlab.com/thann/pingg/
 	arch = any
 	license = UNLICENSE
 	makedepends = git
 	makedepends = npm
+	makedepends = python2
+	makedepends = gcc
 	depends = nodejs
+	depends = traceroute
 	provides = pingg
 	conflicts = pingg
 	source = pingg-git::git+https://gitlab.com/thann/pingg.git

@@ -3,14 +3,14 @@
 # Upstream: https://gitlab.com/thann/pingg
 
 pkgname=pingg-git
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='Ping latency graphical CLI.'
 arch=('any')
 url='http://gitlab.com/thann/pingg/'
 license=('UNLICENSE')
-depends=('nodejs')
-makedepends=('git' 'npm')
+depends=('nodejs' 'traceroute')
+makedepends=('git' 'npm' 'python2' 'gcc')
 provides=('pingg')
 conflicts=('pingg')
 source=("$pkgname::git+https://gitlab.com/thann/pingg.git")
