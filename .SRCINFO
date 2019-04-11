@@ -1,0 +1,18 @@
+pkgbase = parcellite-git
+	pkgdesc = Lightweight GTK+ clipboard manager (git version)
+	pkgver = 1.2.1.r11.fa54161
+	pkgrel = 1
+	url = https://github.com/rickyrockrat/parcellite
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	makedepends = git
+	depends = gtk2
+	optdepends = xdotool: auto-paste support
+	provides = parcellite
+	conflicts = parcellite
+	source = parcellite-git::git://github.com/rickyrockrat/parcellite
+	sha256sums = SKIP
+
+pkgname = parcellite-git
+
