@@ -1,18 +1,19 @@
 # Maintainer: theflameemperor <un.own.cry@gmail.com>
 pkgname=ygopro-koishipro
-pkgver=2019.3.30
+pkgver=2019.4.11
 pkgrel=1
 _pkgrel=1
-zipFile=KoishiPro-linux-full-${pkgver}.zip
+name="$pkgver-Test"
+zipFile=KoishiPro-linux-full-${pkgver}-Test.zip
 pkgdesc="Link compatable ygopro client with AI"
 arch=('x86_64')
 url='https://github.com/purerosefallen/ygopro'
 license=('GPL2')
 depends=('mono' 'libevent')
 makedepends=('patchelf')
-source=("https://github.com/purerosefallen/ygopro/releases/download/$pkgver/$zipFile")
+source=("https://github.com/purerosefallen/ygopro/releases/download/$name/$zipFile")
 noextract=($zipFile)
-sha256sums=('073b68fb199269f2219a72506c4b59bb66cf2c433146379fbad11c21f710ddec')
+sha256sums=('3840dc18a4472e3f2e455a83f2a72b35e153c10a7d8b776b8631c0aff1b3bab5')
 options=('!strip' 'emptydirs')
 
 prepare(){
@@ -25,6 +26,7 @@ prepare(){
     patchelf --add-needed libevent_pthreads.so ./$pkgname/ygopro
     patchelf --remove-needed libevent-2.0.so.5 ./$pkgname/ygopro
     patchelf --add-needed libevent.so ./$pkgname/ygopro
+    patchelf --set-rpath '$ORIGIN' ./$pkgname/ygopro
 }
 
 package(){
