@@ -1,6 +1,6 @@
 pkgbase = python-mbed-cli
 	pkgdesc = ARM mbed Command Line Interface
-	pkgver = 1.8.2
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://developer.mbed.org
 	arch = any
@@ -24,8 +24,8 @@ pkgbase = python-mbed-cli
 	optdepends = python-mbed-greentea: Test automation
 	optdepends = python-mbed-ls: Automatic device detection
 	options = !emptydirs
-	source = https://github.com/ARMmbed/mbed-cli/archive/1.8.2.tar.gz
-	sha256sums = 431616c1cfe953bbd15676160cac4196eaa54987adcaa40cd63cc07548dadd16
+	source = https://github.com/ARMmbed/mbed-cli/archive/1.10.0.tar.gz
+	sha256sums = b071b28049a1015a27006fa0430d5577ae1a7b6428fdaf241c867a62b5d38ada
 
 pkgname = python-mbed-cli
 
