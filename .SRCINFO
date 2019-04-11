@@ -1,0 +1,18 @@
+pkgbase = logcat-color3
+	pkgdesc = A colorful and highly configurable alternative to the standard "adb logcat" command from the Android SDK
+	pkgver = 0.9.0
+	pkgrel = 2
+	url = https://github.com/yan12125/logcat-color3
+	arch = any
+	license = Apache
+	makedepends = python-setuptools-scm
+	depends = python-colorama
+	conflicts = logcat-color
+	source = https://files.pythonhosted.org/packages/source/l/logcat-color3/logcat-color3-0.9.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/l/logcat-color3/logcat-color3-0.9.0.tar.gz.asc
+	validpgpkeys = 481C4474AF1572165AE4C6AF3FDDD575826C5C30
+	sha256sums = 57471841b59d0a456f6d3a971bb3701ca2fc9a8319735e9515c9de3cd2062c92
+	sha256sums = SKIP
+
+pkgname = logcat-color3
+
