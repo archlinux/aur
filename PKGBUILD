@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dhcpcd-git
-pkgver=7.0.0.rc3.r16.gef53a17e
+pkgver=7.1.1.r31.gf1713f60
 pkgrel=1
 pkgdesc="A DHCP and DHCPv6 client"
 arch=('i686' 'x86_64')
 url="https://roy.marples.name/projects/dhcpcd"
 license=('BSD')
-depends=('glibc')
+depends=('glibc' 'sh' 'systemd-libs')
 makedepends=('git')
 optdepends=('openresolv: resolvconf support')
 provides=('dhcpcd' 'dhcp-client')
@@ -31,8 +31,13 @@ pkgver() {
 build() {
   cd "dhcpcd"
 
-  ./configure --prefix="/usr" --sysconfdir="/etc" --sbindir="/usr/bin" \
-      --libexecdir="/usr/lib/dhcpcd" --dbdir="/var/lib/dhcpcd" --rundir="/run"
+  ./configure \
+    --prefix="/usr" \
+    --sysconfdir="/etc" \
+    --sbindir="/usr/bin" \
+    --libexecdir="/usr/lib/dhcpcd" \
+    --dbdir="/var/lib/dhcpcd" \
+    --rundir="/run"
   make
 }
 
