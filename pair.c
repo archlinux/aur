@@ -24,6 +24,9 @@ int init();
 int prompt_add_author(void);
 int add_author();
 int select_authors();
+int select_author_index(int author_count);
+void display_available_authors(char **authors, int author_count);
+void free_authors(char **authors, int author_count);
 char **read_authors();
 int set_author(char *name, char *email);
 int set_co_author(char *name, char *email);
@@ -43,7 +46,8 @@ int main(int argc, char *argv[]) {
         } else if (strcmp("help", param) == 0) {
             print_help();
         } else {
-            printf("%sInvalid input - run the help command to see parameter options.%s", RED, NO_FORMAT);
+            printf("%sInvalid input ", RED);
+            printf("- run the `help` command to see parameter options.%s\n", NO_FORMAT);
         }
     }
     return 0;
@@ -57,7 +61,6 @@ int init() {
 
     // Add authors.
     if (prompt_add_author() > 0) {
-        // Select authors if any were added.
         return select_authors();
     }
     return -1;
@@ -107,7 +110,7 @@ int add_author() {
     FILE *authors_file = fopen(authors_file_name, "a+");
 
     // Create entry format.
-    char *entry = strcat(author_name, " <");
+    char *entry = strcat(author_name, ":<");
     strcat(entry, author_email);
     strcat(entry,  ">\n");
 
@@ -123,29 +126,21 @@ int add_author() {
  * @return 0 if an author was selected successfully.
  */
 int select_authors() {
-    // Read info and parse.
-    int length = 0;
-    char **authors = read_authors(&length);
+    int author_count = 0;
+    char **authors = read_authors(&author_count);
 
-    // Display authors on each line to select for author, then co-author.
-    for (int i = 0; i < length; i++) {
-        printf("%s[%d]%s: %s\n", GREEN, i, NO_FORMAT, authors[i]);
+    // Show available authors.
+    display_available_authors(authors, author_count);
+
+    int index = select_author_index(author_count);
+    if (index > author_count - 1) {
+        printf("%sIndex out of bounds - exiting.%s\n", RED, NO_FORMAT);
+        exit(1);
     }
 
-    printf("%sSelect the author:%s ", GREEN, NO_FORMAT);
-
-    char *input;
-    char *ptr;
-    fgets(input, 255, stdin);
-    // TODO: Seg fault here.
-    long index = strtol(input, &ptr, 10);
-
-    char *name = authors[index];
-    char *email = authors[index];
-
-    printf("Selected: %s", name);
-
-    /*
+    char *entry = strdup(authors[index]);
+    char *name = strsep(&entry, ":");
+    char *email = entry;
 
     if (set_author(name, email) != 0) {
         return -1;
@@ -153,10 +148,44 @@ int select_authors() {
 
     // TODO: Set co-author via commit-template
 
-    */
 
-   free(authors);
-   return 0;
+    free_authors(authors, author_count);
+    return 0;
+}
+
+/**
+ * TODO:
+ */
+int select_author_index(int author_count) {
+    int index, item_count;
+    do {
+        printf("%sSelect the author:%s ", GREEN, NO_FORMAT);
+        item_count = scanf("%d", &index);
+        if (item_count == EOF) {
+            exit(1);
+        }
+    } while (item_count == 0);
+    return index;
+}
+
+/**
+ * Displays all authors in the authors file.
+ */
+void display_available_authors(char **authors, int author_count) {
+    // Display authors on each line to select for author, then co-author.
+    for (int i = 0; i < author_count; i++) {
+        printf("%s[%d]%s: %s\n", GREEN, i, NO_FORMAT, authors[i]);
+    }
+}
+
+/**
+ * Frees the authors array.
+ */
+void free_authors(char **authors, int author_count) {
+    for (int i = 0; i < author_count; i++) {
+        free(authors[i]);
+    }
+    free(authors);
 }
 
 /**
@@ -166,8 +195,8 @@ char **read_authors(int *length) {
     FILE *authors_file = fopen(authors_file_name, "r");
     // Check if authors file exists.
     if (authors_file == NULL) {
-        printf("%sFile %s not in directory.\n", RED, authors_file_name);
-        printf("Run with the init parameter to create the file and add code authors.%s\n", NO_FORMAT);
+        printf("%sFile %s not in directory.%s\n", RED, authors_file_name, NO_FORMAT);
+        printf("Run with the init parameter to create the file and add code authors.\n");
         exit(1);
     }
 
@@ -189,7 +218,8 @@ char **read_authors(int *length) {
 
 int set_author(char *name, char *email) {
     // TODO: Set author via git config user.name and git config user.email
-    return 0;
+    printf("name: %s email: %s\n", name, email);
+    return -1;
 }
 
 int set_co_author(char *name, char *email) {
