@@ -1,7 +1,7 @@
 pkgbase = mdesigner
 	pkgdesc = Extended emulation of metalic gear based toy, creates curved line designs.
 	pkgver = 1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.akatz712.com/
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = mdesigner
 	depends = fltk>=1.3.3
 	depends = libharu
 	source = https://sourceforge.net/projects/complexshapes/files/mdesigner-1.0.tar.gz/download
-	md5sums = f4696ea143923c7a265af91640f4fe7e
+	md5sums = 4d61c7bff3a7b5cfa4a20f723607a261
 
 pkgname = mdesigner
 
