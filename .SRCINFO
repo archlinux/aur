@@ -1,10 +1,16 @@
 pkgbase = openbook-desktop-bin
 	pkgdesc = Desktop client for Openbook
 	pkgver = 0.0.34_4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/999eagle/openbook-desktop
 	arch = x86_64
 	license = AGPL3
+	depends = libxcursor
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxxf86vm
+	depends = sqlite
+	depends = bash
 	provides = openbook-desktop
 	conflicts = openbook-desktop
 	source = openbook-desktop-0.0.34-4.zip::https://gitlab.com/999eagle/openbook-desktop/-/jobs/artifacts/0.0.34-4/download?job=release-linux

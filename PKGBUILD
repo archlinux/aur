@@ -4,14 +4,14 @@ _pkgname=openbook-desktop
 _pkgver=0.0.34-4
 pkgname="${_pkgname}-bin"
 pkgver="${_pkgver//-/_}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for Openbook"
 arch=('x86_64')
 url="https://gitlab.com/999eagle/openbook-desktop"
 license=('AGPL3')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-optdepends=()
+depends=('libxcursor' 'libxinerama' 'libxrandr' 'libxxf86vm' 'sqlite' 'bash')
 source=("${_pkgname}-${_pkgver}.zip::https://gitlab.com/999eagle/openbook-desktop/-/jobs/artifacts/${_pkgver}/download?job=release-linux")
 sha256sums=('369dee27e4e9a8587db6e7ff4afbec8fbbcffbe8688e8ac905f6bd96b5f1273e')
 
