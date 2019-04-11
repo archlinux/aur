@@ -1,0 +1,21 @@
+post_install() {
+    cat << EOP
+
+    If you have not done so already, read the README file and the FAQ file. Additional
+    documentation is in the /usr/share/docs/kismet directory.  You MUST edit
+    /etc/kismet/kismet.conf and configure Kismet for your system, or it will NOT run
+    properly!
+
+    Kismet has been installed with a SUID ROOT CAPTURE HELPER executeable by
+    users in the group 'kismet'.  This WILL ALLOW USERS IN THIS GROUP
+    TO ALTER YOUR NETWORK INTERFACE STATES, but is more secure than running
+    all of Kismet as root.  ONLY users in this group will be able to
+    run Kismet and capture from physical network devices.
+
+    Use 'sudo usermod -a -G kismet foouser' to add yourself to the kismet
+    group. You will need to log out and back in before your user will have access.
+    Check the output of the 'groups' command to make sure your user has the proper group!
+
+EOP
+}
+

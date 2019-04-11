@@ -1,0 +1,9 @@
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!kismet.install
+!kismet.install.sig
+!kismet-sysusers.conf
+!kismet-sysusers.conf.sig
