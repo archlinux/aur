@@ -3,12 +3,12 @@
 
 pkgname=minecraft-technic-launcher
 pkgver=4.402
-pkgrel=1
+pkgrel=2
 pkgdesc='Choose from thousands of community-made Minecraft modpacks.'
 arch=('any')
 license=('custom')
 url='http://www.technicpack.net/'
-depends=('java-runtime' 'xorg-xrandr' 'hicolor-icon-theme')
+depends=('java-runtime=8' 'xorg-xrandr' 'hicolor-icon-theme')
 makedepends=('icoutils')
 # bsdtar would fail with "can't replace existing directory with non-directory"
 noextract=('TechnicLauncher.jar')

@@ -1,12 +1,12 @@
 pkgbase = minecraft-technic-launcher
 	pkgdesc = Choose from thousands of community-made Minecraft modpacks.
 	pkgver = 4.402
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.technicpack.net/
 	arch = any
 	license = custom
 	makedepends = icoutils
-	depends = java-runtime
+	depends = java-runtime=8
 	depends = xorg-xrandr
 	depends = hicolor-icon-theme
 	noextract = TechnicLauncher.jar
