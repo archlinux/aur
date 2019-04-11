@@ -1,7 +1,7 @@
 pkgbase = mpv-acestream
 	pkgdesc = Lua script that adds AceStream protocol handler to mpv player
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Digitalone1/mpv-acestream
 	install = mpv-acestream.install
 	arch = any
