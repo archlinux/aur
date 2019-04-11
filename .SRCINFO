@@ -1,0 +1,16 @@
+pkgbase = dina-font-bdf
+	pkgdesc = A monospace bitmap font, primarily aimed at programmers, in bdf format
+	pkgver = 2.92
+	pkgrel = 7
+	url = https://www.dcmembers.com/jibsen/download/61/
+	arch = any
+	license = custom
+	depends = xorg-font-utils
+	depends = fontconfig
+	conflicts = dina-font
+	conflicts = dina-powerline
+	source = dina-2.92-new.zip::https://www.dcmembers.com/jibsen/download/61/?wpdmdl=61
+	md5sums = SKIP
+
+pkgname = dina-font-bdf
+
