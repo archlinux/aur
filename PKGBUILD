@@ -14,7 +14,7 @@ license=('custom')
 depends=('xorg-font-utils' 'fontconfig')
 conflicts=('dina-font' 'dina-powerline')
 source=("dina-$pkgver-new.zip::https://www.dcmembers.com/jibsen/download/61/?wpdmdl=61")
-md5sums=('SKIP')
+md5sums=('028424baac750e9fd0f54df03202e5d0')
 
 _ex_pt() {
     _pt=${1%.bdf}
