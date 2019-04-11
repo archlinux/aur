@@ -1,12 +1,13 @@
 pkgbase = realmd-git
 	pkgdesc = DBus service for joining hosts to Active Directory and FreeIPA realms
-	pkgver = 0.16.3.r9.g2cab2d4
+	pkgver = 0.16.3.r26.gb6753bd
 	pkgrel = 1
 	url = https://freedesktop.org/software/realmd/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = docbook-xsl
+	makedepends = git
 	makedepends = intltool
 	makedepends = python
 	makedepends = xmlto
@@ -16,7 +17,7 @@ pkgbase = realmd-git
 	depends = openldap
 	depends = packagekit
 	depends = polkit
-	provides = realmd=0.16.3.r9.g2cab2d4
+	provides = realmd=0.16.3.r26.gb6753bd
 	conflicts = realmd
 	source = git+https://gitlab.freedesktop.org/realmd/realmd.git
 	sha256sums = SKIP
