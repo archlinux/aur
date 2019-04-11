@@ -2,12 +2,12 @@
 # Contributor: Geyslan G. Bem <geyslan@gmail.com>
 pkgname=safesignidentityclient
 pkgver=3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Smart card PKCS#11 provider and token manager"
 arch=('x86_64')
 url="https://pronova.com.br/download-tokens"
 license=('custom:copyright')
-depends=('pcsclite' 'gdbm' 'wxgtk2' 'openssl-1.0' 'xdg-utils' 'libmspack' 'ccid')
+depends=('pcsclite' 'gdbm183' 'wxgtk2' 'openssl-1.0' 'xdg-utils' 'libmspack' 'ccid')
 optdepends=('acsccid: ACS CCID PC/SC driver',
             'scmccid: binary driver for the SCM Smart Card Readers')
 source_x86_64=("http://www.pronova-usa.com/downloads/aet/SafeSign_3_5_Ubuntu_1604LTS_x86_x64.zip")
