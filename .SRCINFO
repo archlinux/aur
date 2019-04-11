@@ -1,6 +1,6 @@
 pkgbase = r-tibble
 	pkgdesc = Provides a 'tbl_df' class (the 'tibble') that provides stricter checking and better formatting than the traditional data frame.
-	pkgver = 2.0.1
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://CRAN.R-project.org/package=tibble
 	arch = i686
@@ -23,8 +23,8 @@ pkgbase = r-tibble
 	optdepends = r-rmarkdown
 	optdepends = r-testhat
 	optdepends = r-withr
-	source = http://cran.r-project.org/src/contrib/tibble_2.0.1.tar.gz
-	md5sums = 1c00f14fa05507df47de4e38263d2773
+	source = http://cran.r-project.org/src/contrib/tibble_2.1.1.tar.gz
+	md5sums = ef3e099946643032d2ed94ea132dadfb
 
 pkgname = r-tibble
 
