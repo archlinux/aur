@@ -1,16 +1,18 @@
 pkgbase = idnkit
 	pkgdesc = Provides functionalities about Internationalized Domain Name processing
-	pkgver = 1.0
-	pkgrel = 4
+	pkgver = 2.3
+	pkgrel = 1
 	url = https://www.nic.ad.jp/ja/idn/idnkit/download/
 	arch = x86_64
 	license = custom:BSD
 	depends = glibc
 	options = !makeflags
 	backup = etc/idnalias.conf
-	backup = etc/idn.conf
-	source = https://www.nic.ad.jp/ja/idn/idnkit/download/sources/idnkit-1.0-src.tar.gz
-	sha1sums = 7d843ffcf9843b7af02079e5a160520f28c75048
+	backup = etc/idn2.conf
+	source = http://jprs.co.jp/idn/idnkit-2.3.tar.bz2
+	source = http://jprs.co.jp/idn/idnkit-doc-2.3.tar.bz2
+	sha1sums = ec256455d801af3b666d65eb7c01b6086ab6a743
+	sha1sums = abf032cde1bef9dbd0bfddd85ee525c7f1012ac2
 
 pkgname = idnkit
 
