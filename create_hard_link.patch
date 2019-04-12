@@ -1,0 +1,18 @@
+diff --git a/src/util.c b/src/util.c
+index 4973181..32900f7 100644
+--- a/src/util.c
++++ b/src/util.c
+@@ -465,10 +465,10 @@ lilv_symlink(const char* oldpath, const char* newpath)
+        int ret = 0;
+        if (strcmp(oldpath, newpath)) {
+ #ifdef _WIN32
+-               ret = !CreateSymbolicLink(newpath, oldpath, 0);
+-               if (ret) {
++               /*ret = !CreateSymbolicLink(newpath, oldpath, 0);*/
++               /*if (ret) {*/
+                        ret = !CreateHardLink(newpath, oldpath, 0);
+-               }
++               /*}*/
+ #else
+                ret = symlink(oldpath, newpath);
+ #endif

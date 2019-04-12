@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-lilv
 	pkgdesc = A C library interface to the LV2 plug-in standard
 	pkgver = 0.24.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://drobilla.net/software/lilv/
 	arch = any
 	license = custom:ISC
