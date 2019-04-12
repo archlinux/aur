@@ -1,0 +1,17 @@
+pkgbase = perl-moox-strictconstructor
+	pkgdesc = Make your Moo-based object constructors blow up on unknown attributes.
+	pkgver = 0.010
+	pkgrel = 1
+	url = https://metacpan.org/pod/MooX::StrictConstructor
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-moo
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/H/HA/HARTZELL/MooX-StrictConstructor-0.010.tar.gz
+	md5sums = d4a71e6e874bf8dfb6cb1856f6a37b8f
+	sha512sums = 17748ee05c1679d3cbade89b40a6f884bafc45244298f1dfcc5441dc81ab807394e6aafce483e302da8441ccb954aa1c7438b4449fcc373ecdcf81ad9e7cd864
+
+pkgname = perl-moox-strictconstructor
+
