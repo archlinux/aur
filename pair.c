@@ -9,6 +9,7 @@
 #define YELLOW "\033[38;5;226m"
 
 const char *authors_file_name = ".gitauthors";
+const char *commit_template_path = ".git/commit-template";
 
 const char *title =
 "           _ _                 _\n"
@@ -24,16 +25,17 @@ int init();
 int prompt_add_author(void);
 int add_author();
 int select_authors();
-int select_author_index(int author_count);
+int select_author_index(int author_count, char *prompt);
 void display_available_authors(char **authors, int author_count);
 void free_authors(char **authors, int author_count);
 char **read_authors();
 
-int set_git_author(char *name, char *email);
-int set_git_author_name(char *name);
-int set_git_author_email(char *email);
-
+int set_author(char *name, char *email);
+int set_author_name(char *name);
+int set_author_email(char *email);
 int set_co_author(char *name, char *email);
+int set_commit_template();
+
 void print_help();
 void print_title();
 
@@ -136,7 +138,9 @@ int select_authors() {
     // Show available authors.
     display_available_authors(authors, author_count);
 
-    int index = select_author_index(author_count);
+    // Set the author.
+
+    int index = select_author_index(author_count, "%sSelect the author:%s ");
     if (index > author_count - 1) {
         printf("%sIndex out of bounds - exiting.%s\n", RED, NO_FORMAT);
         exit(1);
@@ -145,14 +149,29 @@ int select_authors() {
     char *entry = strdup(authors[index]);
     char *name = strsep(&entry, ":");
     char *email = entry;
+    if (set_author(name, email) != 0) {
+        return -1;
+    }
+    printf("%sSet git user and email as %s %s%s\n\n", GREEN, name, email, NO_FORMAT);
+    
+    // Set the co-author.
+    index = select_author_index(author_count, "%sSelect the co-author:%s ");
+    if (index > author_count - 1) {
+        printf("%sIndex out of bounds - exiting.%s\n", RED, NO_FORMAT);
+        exit(1);
+    }
 
-    if (set_git_author(name, email) != 0) {
+    entry = strdup(authors[index]);
+    name = strsep(&entry, ":");
+    email = entry;
+    if (set_co_author(name, email) != 0) {
         return -1;
     }
 
-    printf("%sSet git user and email as %s %s%s\n", GREEN, name, email, NO_FORMAT);
-    
-    // TODO: Set co-author via commit-template
+    if (set_commit_template() != 0) {
+        return -1;
+    }
+    printf("%sSet co-author as: %s %s%s\n", GREEN, name, email, NO_FORMAT);
 
     free_authors(authors, author_count);
     return 0;
@@ -162,10 +181,10 @@ int select_authors() {
  * Prompts the user for an index to select,
  * which is associated with a git author.
  */
-int select_author_index(int author_count) {
+int select_author_index(int author_count, char *prompt) {
     int index, item_count;
     do {
-        printf("%sSelect the author:%s ", GREEN, NO_FORMAT);
+        printf(prompt, YELLOW, NO_FORMAT);
         item_count = scanf("%d", &index);
         if (item_count == EOF) {
             exit(1);
@@ -180,7 +199,7 @@ int select_author_index(int author_count) {
 void display_available_authors(char **authors, int author_count) {
     // Display authors on each line to select for author, then co-author.
     for (int i = 0; i < author_count; i++) {
-        printf("%s[%d]%s: %s\n", GREEN, i, NO_FORMAT, authors[i]);
+        printf("\t%s[%d]%s: %s\n", GREEN, i, NO_FORMAT, authors[i]);
     }
 }
 
@@ -224,16 +243,16 @@ char **read_authors(int *length) {
 
 /**
  * Sets the author via git config.
- * @see set_git_author_name
- * @see set_git_author_email
+ * @see set_author_name
+ * @see set_author_email
  */
-int set_git_author(char *name, char *email) {
-    set_git_author_name(name);
-    set_git_author_email(email);
+int set_author(char *name, char *email) {
+    set_author_name(name);
+    set_author_email(email);
     return 0;
 }
 
-int set_git_author_name(char *name) {
+int set_author_name(char *name) {
     char *cmd_prefix = "git config user.name \"";
     int command_length = strlen(cmd_prefix) + strlen(name);
     char git_cmd[command_length];
@@ -244,7 +263,7 @@ int set_git_author_name(char *name) {
     return 0;
 }
 
-int set_git_author_email(char *email) {
+int set_author_email(char *email) {
     char *cmd_prefix = "git config user.email \"";
     int command_length = strlen(cmd_prefix) + strlen(email);
     char git_cmd[command_length];
@@ -255,8 +274,27 @@ int set_git_author_email(char *email) {
     return 0;
 }
 
+int set_commit_template() {
+    char *cmd_prefix = "git config commit.template \"";
+    int command_length = strlen(cmd_prefix) + strlen(commit_template_path);
+    char git_cmd[command_length];
+    strcpy(git_cmd, cmd_prefix);
+    strcat(git_cmd, commit_template_path);
+    strcat(git_cmd, "\"");
+    system(git_cmd);
+    return 0;
+}
+
 int set_co_author(char *name, char *email) {
-    // TODO: Set co-author via commit.template
+    FILE *template = fopen(commit_template_path, "w");
+
+    char entry[BUFSIZ];
+    strcat(entry, "\n\nCo-authored-by: ");
+    strcat(entry, name);
+    strcat(entry, " ");
+    strcat(entry, email);
+    fputs(entry, template);
+    fclose(template);
     return 0;
 }
 
