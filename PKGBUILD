@@ -1,7 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=hunter-evil-git
-pkgver=1.0.1+evil
+pkgver=1.0.3+evil+7+g74a1684
 pkgrel=1
 pkgdesc='ranger-like file browser written in Rust (evil branch, git)'
 arch=(i686 x86_64)
