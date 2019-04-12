@@ -17,12 +17,12 @@
 
 pkgname=baudline-bin
 pkgver=1.08
-pkgrel=3
+pkgrel=4
 pkgdesc="Time-frequency browser designed for scientific visualization of the spectral domain."
 arch=('i686' 'x86_64')
 url="http://www.baudline.com/"
 license=('custom')
-depends=('libxp' 'jack' 'libxmu' 'libxxf86vm' 'xorg-fonts-75dpi' 'xorg-fonts-100dpi')
+depends=('libxp' 'jack' 'libxmu' 'libxxf86vm' 'xorg-fonts-misc')
 makedepends=('imagemagick')
 optdepends=('gzip' 'bzip2' 'flac' 'sox' 'mpg123' 'vorbis-tools')
 provides=('baudline')
