@@ -8,7 +8,7 @@ pkgbase = step-cli-bin
 	source = https://github.com/smallstep/cli/releases/download/v0.9.2/step_0.9.2_linux_amd64.tar.gz
 	source = https://github.com/smallstep/cli/raw/v0.9.2/autocomplete/bash_autocomplete
 	source = https://github.com/smallstep/cli/raw/v0.9.2/autocomplete/zsh_autocomplete
-	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+	sha256sums = f8642d02b6dd21d89883ac5e507b347a14beb5b609a8cbb50485b3b99b154932
 	sha256sums = add3e078e394e265f6b6a3bf12af81cc7897410ae5e6a0d4ee7714a5b856a7be
 	sha256sums = 5f5e5bc5cdd96109a82f91e61b8cdffb8695aee201d3bd61ca3874471819372e
 
