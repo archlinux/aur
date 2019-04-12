@@ -17,10 +17,6 @@ sha256sums=('40b955cd9573a3ad8c598e56d2f34207a3e21611b4465635a9e72f6a6369dc2d'
             '019f90a6bb3ec816a2ac8224b85792025e2885ef7cb451e2d2c70fdd68255acc'
             '2f58dd2b70e6867bfddc216c25f704c4ebd9a427bdcbe4de92b0a2ed06407569')
 
-prepare(){
-    bsdcpio -i -m --quiet --make-directories 'app/*icon*.png' < "irccloud-${pkgver}.tar.gz"
-}
-
 package(){
 	cd "${srcdir}/irccloud-desktop-${pkgver}"
 	npm install --production
