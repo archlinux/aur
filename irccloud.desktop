@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=IRCCloud
-Comment=Chat on IRC from anywhere, and never miss a message
-Exec=/usr/bin/irccloud
-Icon=irccloud
-Type=Application
-StartupNotify=true
-Categories=Communication
-Terminal=false
