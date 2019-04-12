@@ -1,7 +1,7 @@
 pkgbase = irccloud
 	pkgdesc = Chat on IRC from anywhere, and never miss a message
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://irccloud.com
 	arch = arm
 	arch = i686
@@ -12,11 +12,9 @@ pkgbase = irccloud
 	source = irccloud-0.4.0.tar.gz::https://github.com/irccloud/irccloud-desktop/archive/v0.4.0.tar.gz
 	source = irccloud
 	source = irccloud.desktop
-	source = irccloud.png
 	sha256sums = 994edff685111359b51884cdf565fdfd1e47e08ab756217b9a6b366ad0932aee
 	sha256sums = 019f90a6bb3ec816a2ac8224b85792025e2885ef7cb451e2d2c70fdd68255acc
 	sha256sums = 2f58dd2b70e6867bfddc216c25f704c4ebd9a427bdcbe4de92b0a2ed06407569
-	sha256sums = d95945490c9728dee963fd98b441293a1e6d664e7a760e610f4622239b26a4d8
 
 pkgname = irccloud
 
