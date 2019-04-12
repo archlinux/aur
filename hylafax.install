@@ -10,7 +10,7 @@ _print_install() {
   echo '  The device to configure is usually ttyS0, ttyUSB0, or ttyACM0'
   echo '  The number of pages to accept to more than 25'
   echo '  The country code and area code'
-  echo '  The Fax Class to 2.0'
+  echo '  The Fax Class to 1 or 1.0' # I can find no modem reliable at Class 2*
   echo '  Most other defaults are OK'
   echo -e '\n'
 }

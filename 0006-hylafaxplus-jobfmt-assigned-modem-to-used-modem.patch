@@ -1,0 +1,21 @@
+--- hfaxd/Jobs.c++.Arch	2018-06-27 18:15:01.000000000 -0400
++++ hfaxd/Jobs.c++	2019-03-29 20:57:09.408205318 -0400
+@@ -2240,11 +2240,17 @@ HylaFAXServer::Jprintf(FILE* fd, const c
+ 		break;
+ 	    case 'l':
+ 		fprintf(fd, fspec, job.pagelength);
+ 		break;
+ 	    case 'm':
+-		fprintf(fd, fspec, (const char*) job.modem);
++		{
++		const char *p=job.modemused;
++		if (*p == '\0') p=job.modem;
++		if (0==strcmp(p,"any")) p="";
++		if ( p[0]=='t' && p[1]=='t' && p[2]=='y') p+=3;
++		fprintf(fd, fspec, (const char*) p);
++		}
+ 		break;
+ 	    case 'n':
+ 		fprintf(fd, fspec, " DQA"[job.notify]);
+ 		break;
+ 	    case 'o':

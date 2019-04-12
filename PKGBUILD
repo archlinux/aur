@@ -23,6 +23,10 @@
 # TODO: Improve systemd code now that it's out of sed and in patch
 # TODO: Remove hfaxd.service and faxq.service symlinks
 
+# TODO: log/c* modem and phone statistics script
+# TODO: doneq/q* extended connection info awk script
+# TODO: automatic requeue script
+
 # Setting these skel defaults will make adding modems easier.
 
 _opt_AreaCode="517"
@@ -81,15 +85,18 @@ _opt_pagesize="Letter" # A4, Letter, Legal
 
 # Enable one of the modems with some of the following commands.
 
-# sudo systemctl enable faxgetty@ttyUSB0.service
-# sudo systemctl start faxgetty@ttyUSB0.service
-# sudo systemctl enable faxgetty@ttyACM0.service
-# sudo systemctl start faxgetty@ttyACM0.service
+# sudo systemctl enable --now faxgetty@ttyUSB0.service
+# sudo systemctl enable --now faxgetty@ttyACM0.service
 
 # You only need to enable the first faxgetty service manually. faxsetup will 
 # detect that faxgetty is in use and automatically enable and start all 
 # configured modems. When all modems are added run faxsetup again to restart 
 # the servers and enable all modems.
+# Note that all modems are enabled including those that were manually
+# disabled 'systemctl disable --now'. To permanently disable a modem
+# you must 'rm /var/spool/hylafax/etc/config.tty...'
+# To prevent faxsetup from enabling a modem and keep the config:
+#   mv /var/spool/hylafax/etc/config.ttyACM1 /var/spool/hylafax/etc/config.disabled.ttyACM1
 
 # sudo faxsetup
 
@@ -173,28 +180,33 @@ _opt_pagesize="Letter" # A4, Letter, Legal
 set -u
 pkgname='hylafaxplus'
 _pkgnick='hylafax'
-pkgver='5.6.1'
-pkgrel='2'
+pkgver='7.0.0'
+pkgrel='1'
 _sendfaxvsicommit='18fabc74490362cd26690331d546d727c727db25'
 pkgdesc='Enterprise Fax Server'
 arch=('i686' 'x86_64')
 url='http://hylafax.sourceforge.net/'
 license=('custom')
-depends=('dash' 'libtiff' 'pam' 'ghostscript' 'sharutils' 'jbigkit' 'lcms2' 'smtp-server' 'gsfonts-type1') # 'cron'
+depends=('dash' 'libtiff' 'pam' 'ghostscript' 'sharutils' 'jbigkit' 'lcms2' 'gsfonts-type1') # 'cron'
 # BASE64 is the default so HylaFAX+ doesn't need uuencode but I put it in anyways to placate configure and the bin finder in faxsetup!
-optdepends=('avantfax: manage HylaFAX+ through web browser'
-            #'HERMESfax: manage HylaFAX+ through web browser' # Way too old
-            't38modem: sip/voip fax modem pool interface'
-            'fax4cups: CUPS fax printer'     # http://vigna.di.unimi.it/fax4CUPS/
-            'faxfrontend: CUPS fax printer'  # https://www.vitki.net/book/page/integrating-hylafax-cups
-            '2Fax: ascii to fax generator including pictures and fonts'  # http://www.atbas.org/2fax/ascii.php
-            #'cypheus: (Windows) manage HylaFAX+' # Pretty old
+optdepends=(
+  'smtp-server: email support' # this must be configured if installed or Hylafax will spam the process table with orphaned sendmail processes
+  'avantfax: manage HylaFAX+ through web browser'
+  #'HERMESfax: manage HylaFAX+ through web browser' # Way too old
+  't38modem: sip/voip fax modem pool interface'
+  'fax4cups: CUPS fax printer'     # http://vigna.di.unimi.it/fax4CUPS/
+  'faxfrontend: CUPS fax printer'  # https://www.vitki.net/book/page/integrating-hylafax-cups
+  '2Fax: ascii to fax generator including pictures and fonts'  # http://www.atbas.org/2fax/ascii.php
+  #'cypheus: (Windows) manage HylaFAX+' # Pretty old
 # Too ad like and will show in red as not found packages... We'll leave them here for avid readers.
-            #'Winprint-HylaFAX-Reloaded: (Windows) print to fax' # http://nerdvittles.com/?p=738 Incredible Fax: Free Faxing Returns to Incredible PBX 1.8
-            #'WinPrint-Hylafax-for-Windows: (Windows) print to fax'
-            #'Hylafax-support: iFax Solutions can help configure your fax system'
+  #'Winprint-HylaFAX-Reloaded: (Windows) print to fax' # http://nerdvittles.com/?p=738 Incredible Fax: Free Faxing Returns to Incredible PBX 1.8
+  #'WinPrint-Hylafax-for-Windows: (Windows) print to fax'
+  #'Hylafax-support: iFax Solutions can help configure your fax system'
 # 'sambafax'
 # 'gfax: fax from Gnome (X)'
+  'yajhfc: hylafax client in Java'
+  'mainpine-rfuser: reset utility for MainPine modems'
+  'tgif: Cover Page Customization'
 )
 provides=("hylafax=${pkgver}")
 conflicts=('hylafax')
@@ -213,8 +225,10 @@ source=(
   '0004-hylafaxplus-systemd.patch'
   '0004a-hylafaxplus-systemd.patch'
   '0005-hylafaxplus-faxsetup.patch'
+  '0006-hylafaxplus-jobfmt-assigned-modem-to-used-modem.patch'
+  '1000-hylafaxplus-modem-support.patch'
 )
-sha256sums=('419b8376f36a0a7bc685f083cd5230d4cc28581c4a8c035d2ae611e2a6651280'
+sha256sums=('9e69bef1afc2e9c943c6ee176b435305a5f6f8c743c9e9fb35a348c52a6ad8e7'
             '0aed186ab30fdb7cf36895a0ff50b03bd4a68db63cf4f19763995dabd9caffb0'
             '466ab17cdaa1eb1f1f0b5bdc444a90df5835a1896b1363584264920bbc3929f2'
             '80d2e28ee7a7d8f93501e32c96e9895e242409da1326761d36dbf28e5a0e3677'
@@ -223,7 +237,10 @@ sha256sums=('419b8376f36a0a7bc685f083cd5230d4cc28581c4a8c035d2ae611e2a6651280'
             'b4b93c149164ed7c96f4f04373c32198c1e19c89ca9e2ab6e92e17c0a48bd1af'
             '989d6f71a8cfe99a3ca983981f8d8e9368776e2fc7667a809755d8d7292d52ad'
             '528f267805203b792741423f46114fee7b48664f1aab35a0edff7d519555ccc2'
-            'e2b43c19705ce112dd3a08ecd0cae4c5558910366291524566cdd5890b2c6095')
+            'e2b43c19705ce112dd3a08ecd0cae4c5558910366291524566cdd5890b2c6095'
+            '96d106278ac68b95f0d1916f76066904c2108a2bb0c97651c22d025d989f4acb'
+            'd1671cf26e10858c5e1debc4c1bbb4d0091b982ce7d01c867dc9781b4b3e84b4')
+
 # The HylaFAX binaries work very well. The scripts need major fixes!
 # HylaFAX+ is pretty much completely broken for any Linux install,
 # and some parts are broken for other Unix too. The original HylaFAX
@@ -244,7 +261,7 @@ sha256sums=('419b8376f36a0a7bc685f083cd5230d4cc28581c4a8c035d2ae611e2a6651280'
 
 _pkginit() {
   if [ "${SOURCEONLY:-0}" -ne 0 ]; then # see makepkg -S if this var changes
-    if [ "${_opt_FAXNumber}" != '+1.517.555.0113' ] || [ "${_opt_LocalIdentifier}" != 'ArchLinuxFAX' ]; then
+    if [ "${_opt_FAXNumber}" != '+1.517.555.0101' ] || [ "${_opt_LocalIdentifier}" != 'ArchLinuxFAX' ]; then
       echo 'Our fax info must be removed from the PKGBUILD' 1>&2
       echo 'to produce a source package.' 1>&2
       exit 1
@@ -289,7 +306,7 @@ prepare() {
   test ! -s 'etc/faxsetup.sh.in.Arch' || echo "${}"
 
   #cp -p 'etc/faxsetup.sh.in'{,.Arch}
-  # diff -pNau5 'faxsetup.sh.in'{.orig,} > '0005-hylafaxplus-faxsetup.patch'
+  # diff -pNau5 'faxsetup.sh.in'{.Arch,} > '0005-hylafaxplus-faxsetup.patch'
   patch -Nbup0 -i "${srcdir}/0005-hylafaxplus-faxsetup.patch"
   sed -Ee "# Remove ' for mcedit syntax highlighter" \
       -e "s:([dD]on)'t:"'\1t:g' \
@@ -297,6 +314,16 @@ prepare() {
       -e 's:^(Note "Setup program for HylaFAX (tm) \$VERSION)."$:\1-Arch Linux.":g' \
      -i 'etc/faxsetup.sh.in'
   test ! -s 'etc/faxsetup.sh.in.Arch' || echo "${}"
+
+  #cp -p 'hfaxd/Jobs.c++'{,.Arch}
+  # diff -pNau5 'hfaxd/Jobs.c++'{.Arch,} > '0006-hylafaxplus-jobfmt-assigned-modem-to-used-modem.patch'
+  patch -Nbup0 -i "${srcdir}/0006-hylafaxplus-jobfmt-assigned-modem-to-used-modem.patch"
+  test ! -s 'hfaxd/Jobs.c++.Arch' || echo "${}"
+
+  #cp -pr 'config'{,.Arch}
+  # diff -pNaru5 'config'{.Arch,} > '1000-hylafaxplus-modem-support.patch'
+  patch -Nup0 -i "${srcdir}/1000-hylafaxplus-modem-support.patch"
+  test ! -d 'config.Arch' || echo "${}"
 
   # Var $TTY clashes with the Arch Linux environment and likely all other Linux 
   # too. $TTY contains the terminal device from `tty`. With this already set 
@@ -347,6 +374,12 @@ prepare() {
   # Provide clear instructions to remove and replace the SGI logo
   # diff -pNau5 cover.templ{.default,} > '0003-graphic.logo.instructions.patch'
   patch -d 'util' -Nup0 -i "${srcdir}/0003-graphic.logo.instructions.patch"
+
+  # Add Include to all of the config files. The initial include is blank so it won't change anything.
+  local _cfg
+  for _cfg in $(grep -le '^ModemType:' config/*); do
+    printf '#\nInclude:\t\t"etc/config-modems"\n' >> "${_cfg}"
+  done
 
   set +u
 
@@ -495,6 +528,111 @@ EOF
     echo "${_host}" >> "${_outfile}"
   done
 
+  # The usage of config include files needs to be standardized
+  touch "${pkgdir}/var/spool/hylafax/etc/config-modems.default"
+
+  # Lengthen retries to minimize failed jobs on high volume fax servers
+  install -Dm644 <(cat << EOF
+# The delay in seconds to wait before retrying a job whose
+# dialing attempt failed with a BUSY status result.
+# 12 dials over two hours: (2*60*60)/12
+JobReqBusy:       600
+
+# The delay in seconds to wait before retrying a job whose
+# dialing attempt failed with a NO ANSWER status result.
+# 2 dials over 2 hours: (2*60*60)/2
+JobReqNoAnswer:   3600
+
+# The delay in seconds to wait before retrying a job whose
+# dialing attempt failed with a NO CARRIER status result.
+# 2 dials over 2 hours: (2*60*60)/2
+JobReqNoCarrier:  3600
+
+# Delay in seconds for a Fax protocol error.
+JobReqProto: 180
+
+# rings to wait before answering phone
+# 0 for send only modems
+RingsBeforeAnswer: 0
+EOF
+  ) "${pkgdir}/var/spool/hylafax/etc/config-modems.sample"
+
+  # faxaddmodem destroys some things we'd like to add to etc/config
+  install -Dm644 <(cat << EOF
+# faxaddmodem destroys some lines we add to etc/config
+# so we add them here and use Include which isn't destroyed.
+# To use this, etc/config must contain the line
+# Include:<------><------>etc/config-local
+# Hylafax does not automatically detect changes to included files
+# touch etc/config to signal a change
+
+#FAXNumber:		+1.000.000.0000
+#PageMargins:		l=0.40in,r=0.40in,t=0.1in,b=0.1in
+#JobControlCmd:		etc/jobcontrol-local
+#ModemGroup:		"any:0:.*"
+##ModemGroup:		"any:0:(ttyACM.*|ttyUSB[0123456])"
+#ModemGroup:		"Rockwell:0:ttyUSB[067]"
+#ModemGroup:		"Lucent:0:ttyACM.*"
+#ModemGroup:		"Courier:0:ttyUSB3"
+EOF
+  ) "${pkgdir}/var/spool/hylafax/etc/config-local.default"
+
+  # It's difficult to set up job control from the scant information in man pages and the Internet
+  install -Dm644 <(cat << EOF
+#!/usr/bin/bash
+
+set -u
+set -e
+
+# man jobcontrol
+
+if [ -x "\${0##*/}" ]; then
+  self="\$(readlink -m "\$0")"
+  cd ..
+  self="\${self##\${PWD}/}"
+  if ! grep -q "^JobControlCmd:\s\+\${self}" 'etc/config-local'; then
+    echo "JobControlCmd not installed"
+    echo "Try:"
+    echo "  printf 'JobControlCmd:\t\t%s\n' '\${self}' >> 'config-local'"
+  fi
+  echo "DEMO!" 1>&2
+  if [ "\$#" -ne 1 ]; then
+    echo "Usage \$0 JID"
+    exit 1
+  fi
+fi
+
+source etc/setup.cache
+source bin/common-functions
+
+QFILE="sendq/q\$1"
+if [ -s "\${QFILE}" ]; then
+  HYLAFAX_TMPDIR=''
+  TMPDIR=''
+  SetupPrivateTmp
+  parseQfile '' "\${QFILE}"
+  case "\$number-\$owner-\$tottries" in
+  #5551212-lee-3) echo "Class1ECMSupport: no";;
+  #*-sam-*) echo "LocalIdentifier: +1.800.555.1224";;
+  911-*|???555*) echo 'RejectNotice: "Calls to 911 and directory assistance are not permitted"';;
+  [0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]*) echo "RejectNotice: \"Invalid number (\${#number} digits)\"";;
+  [0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]-*) echo "RejectNotice: \"Invalid number (\${#number} digits)\"";;
+  ???111*|000*|111*|???000*) echo 'RejectNotice: "Invalid number"';;
+  #5175551214-*) echo 'ModemGroup: "Rockwell"';; # not compatible with Lucent
+  #2705551214-*) # bad lines at this location won't let the fax complete
+  #  # man sendq
+  #  echo 'DesiredBR: 0' # 0 for 2400 bps, 1 for 4800 bps, 2 for 7200 bps, 3 for 9600 bps, 4 for 12000 bps, 5 for 14400 bps, 6 for 16800 bps, 7 for 19200 bps, 8 for 21600 bps, 9 for 24000 bps, 10 for 26400 bps, 11 for 28800 bps, 12 for 31200 bps, and 13 for 33600 bps (default).
+  #  echo 'DesiredEC: 0' # 0 to disable, 1 for 64-byte ECM, 2 for 256-byte ECM (default).
+  #  echo 'DesiredDF: 0' # 0 for 1-D MH, 1 for 2-D MR, 3 for 2-D MR with uncompressed data, and 4 for 2-D MMR (default).
+  #  ;;
+  esac
+else
+  echo "This only works with files in the sendq. Don't try JID in the doneq." 1>&2
+fi
+exit 0
+EOF
+  ) "${pkgdir}/var/spool/hylafax/etc/jobcontrol-local.default"
+
   # Add dial rules for USA 7 and 10 digit numbers. The posted examples have them in the wrong order.
   # diff -pNau5 dialrules{.default,} > '0001-dialrules.7-10.digits.USA.patch'
   patch -d "${pkgdir}/var/spool/hylafax/etc" -Nup0 -i "${srcdir}/0001-dialrules.7-10.digits.USA.patch"
@@ -552,6 +690,7 @@ Documentation=man:faxq(8)
 [Service]
 Type=forking
 ExecStart=/usr/bin/faxq
+Nice=-10
 ExecReload=/bin/kill -HUP \$MAINPID
 
 [Install]
@@ -577,6 +716,7 @@ After=faxq.service hfaxd.service
 
 [Service]
 ExecStart=/usr/bin/faxgetty %i
+Nice=-10
 Type=simple
 Restart=always
 RestartSec=0
@@ -617,7 +757,7 @@ Documentation=man:faxqclean(8) man:faxcron(8)
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/faxqclean
+ExecStart=/usr/bin/faxqclean -a -j 1209600
 ExecStart=/usr/bin/faxcron -rcv 30
 Nice=19
 IOSchedulingClass=best-effort

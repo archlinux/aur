@@ -1,0 +1,83 @@
+diff -pNaru5 config.Arch/conexant-1.0 config/conexant-1.0
+--- config.Arch/conexant-1.0	2015-07-26 20:46:06.000000000 -0400
++++ config/conexant-1.0	2019-04-12 14:06:33.818743062 -0400
+@@ -7,13 +7,17 @@
+ # support "Class 1.0" which means that they have "adaptive receive"
+ # (AT+FAR=1), but not V.34.
+ #
+ #    Comtrol RocketModem II/III/IV
+ #    MultiTech MT5600ZDX
++#    MultiTech MT5656ZDX
++#    MultiTech MT5600BA
+ #    Zoltrix FMVSP56i3
+ #
+ # CONFIG:CLASS1.0:56000:.*:.*: Manufacturer=Rockwell/Conexant Model=AC/K56
++# CONFIG:CLASS1.0:MT5600BA-V92:.*:.*: Manufacturer=MultiTech Model=MT5600BA-V92
++# CONFIG:CLASS1.0:MT5600BA:.*:.*: Manufacturer=MultiTech Model=MT5600BA-V90
+ # CONFIG:CLASS1.0:MT5600ZDX:.*:.*: Manufacturer=MultiTech Model=MT5600ZDX
+ # CONFIG:CLASS1.0:MT5656ZDX*:.*:.*: Manufacturer=MultiTech Model=MT5656ZDX
+ # CONFIG:CLASS1.0:.*:.*LEONARDO.*:.*: Manufacturer=Digicom Model=Leonardo
+ #
+ # BEGIN-SERVER
+diff -pNaru5 config.Arch/lucent config/lucent
+--- config.Arch/lucent	2015-07-26 20:46:06.000000000 -0400
++++ config/lucent	2019-04-12 14:05:09.188228149 -0400
+@@ -46,10 +46,12 @@
+ # CONFIG:CLASS1:Zoom V.90 Serial*:.*:.*: Manufacturer=Zoom Model=2949L
+ # CONFIG:CLASS1:EFM560 VER*:.*:.*: Manufacturer=AboCom Model=EFM560
+ # CONFIG:CLASS1:Mainpine Venus V.92*:.*:.*: Manufacturer=Mainpine Model=RockForce
+ # CONFIG:CLASS1:Mainpine CFAX34*:.*:.*: Manufacturer=Mainpine Model='IQ Express'
+ # CONFIG:CLASS1:.*:Mainpine CFAX34*:.*: Manufacturer=Mainpine Model='IQ Express'
++# CONFIG:CLASS1:LT 33.6 MT3334ZDX*:.*:.*: Manufacturer=Lucent Model='MT3334ZDX'
++# CONFIG:CLASS1:Agere OCM V.92 MT9234ZBA*:.*:.*: Manufacturer=MultiTech Model=MT9234ZBA
+ # CONFIG:CLASS1:Agere OCM V.92*:.*:.*: Manufacturer=Agere Model=OCM
+ # CONFIG:CLASS1:AGERE OCM V.92*:.*:.*: Manufacturer=Agere Model=OCM
+ #
+ # BEGIN-SERVER
+ # END-SERVER
+diff -pNaru5 config.Arch/lucent-mt-10 config/lucent-mt-10
+--- config.Arch/lucent-mt-10	2015-07-26 20:46:06.000000000 -0400
++++ config/lucent-mt-10	2019-04-12 14:05:09.188228149 -0400
+@@ -10,10 +10,11 @@
+ # CONFIG:CLASS1.0:LT V.90 1.0 MT5634ZBA*:.*:.*: Manufacturer=MultiTech Model=MT5634ZBA
+ # CONFIG:CLASS1.0:LT V.92 1.0 MT5634ZBA*:.*:.*: Manufacturer=MultiTech Model=MT5634ZBA
+ # CONFIG:CLASS1.0:LT V.90 1.0 ISI5634PCI*:.*:.*: Manufacturer=MultiTech Model=ISI5634PCI
+ # CONFIG:CLASS1.0:LT V.92 1.0 ISI5634PCI*:.*:.*: Manufacturer=MultiTech Model=ISI5634PCI
+ # CONFIG:CLASS1.0:LT V.92 1.0 MT5634SMI*:.*:.*: Manufacturer=MultiTech Model=MT5634SMI
++# CONFIG:CLASS1.0:Agere OCM V.92 MT9234ZBA*:.*:.*: Manufacturer=MultiTech Model=MT9234ZBA
+ # CONFIG:CLASS1.0:Agere OCM V.92*:.*:.*: Manufacturer=Agere Model=OCM
+ # CONFIG:CLASS1.0:AGERE OCM V.92*:.*:.*: Manufacturer=Agere Model=OCM
+ #
+ # BEGIN-SERVER
+ # END-SERVER
+diff -pNaru5 config.Arch/lucent-mt-2 config/lucent-mt-2
+--- config.Arch/lucent-mt-2	2015-07-26 20:46:06.000000000 -0400
++++ config/lucent-mt-2	2019-04-12 14:05:09.188228149 -0400
+@@ -9,10 +9,11 @@
+ #
+ 
+ #
+ # CONFIG: CLASS2:"Multi-Tech Systems"-"MT5634ZPX-PCI"-*
+ # CONFIG: CLASS2:"Multi-Tech Systems"-"MT5634ZBA"-*
++# CONFIG: CLASS2:"Multi-Tech Systems"-*"MT3334ZDX"*
+ # CONFIG: CLASS2:*-"ISI5634PCI"-*
+ # CONFIG: CLASS2:*-"MT5634SMI-V92"-*
+ #
+ # BEGIN-SERVER
+ # END-SERVER
+diff -pNaru5 config.Arch/rc288dpi-1 config/rc288dpi-1
+--- config.Arch/rc288dpi-1	2015-07-26 20:46:06.000000000 -0400
++++ config/rc288dpi-1	2019-04-12 14:06:52.938859444 -0400
+@@ -38,10 +38,12 @@
+ # switches to XON/XOFF (testing host was too fast to see).
+ #
+ # CONFIG:CLASS1:28800:.*:.*: Manufacturer=ROCKWELL Model=RC288DPi
+ # CONFIG:CLASS1:33600:.*:.*: Manufacturer=Rockwell Model=33600
+ # CONFIG:CLASS1:56000:.*:.*: Manufacturer=Rockwell/Conexant Model=AC/K56
++# CONFIG:CLASS1:MT5600BA-V92:.*:.*: Manufacturer=MultiTech Model=MT5600BA-V92
++# CONFIG:CLASS1:MT5600BA:.*:.*: Manufacturer=MultiTech Model=MT5600BA
+ # CONFIG:CLASS1:MT5600ZDX:.*:.*: Manufacturer=MultiTech Model=MT5600ZDX
+ # CONFIG:CLASS1:MT5656ZDX*:.*:.*: Manufacturer=MultiTech Model=MT5656ZDX
+ #
+ # BEGIN-SERVER
+ # END-SERVER
