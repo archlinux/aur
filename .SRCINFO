@@ -6,7 +6,6 @@ pkgbase = mingw-w64-serd
 	arch = any
 	license = custom:ISC
 	makedepends = mingw-w64-python
-	depends = mingw-w64-glibc
 	source = https://download.drobilla.net/serd-0.30.0.tar.bz2
 	source = https://download.drobilla.net/serd-0.30.0.tar.bz2.sig
 	validpgpkeys = 907D226E7E13FA337F014A083672782A9BF368F3
