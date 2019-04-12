@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -eu
+
+LD_LIBRARY_PATH=/usr/lib/compressonator-cli-bin \
+ /usr/lib/compressonator-cli-bin/CompressonatorCLI-bin $@
