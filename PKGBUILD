@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-passenger
 pkgver=6.0.2
-pkgrel=1
+pkgrel=2
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.15.9
+_nginxver=1.15.11
 
 pkgdesc="Fast and robust web server and application server for Ruby, Python and Node.js (module for mainline nginx)"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ validpgpkeys=(
 	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
-sha256sums=('e4cfba989bba614cd53f3f406ac6da9f05977d6b1296e5d20a299f10c2d7ae43'
+sha256sums=('d5eb2685e2ebe8a9d048b07222ffdab50e6ff6245919eebc2482c1f388e3f8ad'
             'SKIP'
             '32a2e4d78cdf782c52172020d016297a3065ee85eef7cdbe8422bb7bb3741887')
 
