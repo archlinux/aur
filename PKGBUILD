@@ -2,7 +2,7 @@
 # Contributor: Kevin MacMartin <prurigro@gmail.com>
 
 pkgname=exomizer
-pkgver=2.0.11
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='Compresses files in a way that tries to be as efficient as possible but still allows them to be decompressed in environments where CPU speed and RAM are limited'
 url='https://bitbucket.org/magli143/exomizer/wiki/Home'
@@ -16,9 +16,8 @@ source=(
 )
 
 sha512sums=(
-  #'290952aab8c9b0b566107af96bdb0453ba8c8fc9f3ebc4ff8cad5da1c922d9d1a11d2b34cd111e6a02ff01bc01aa9e9550be163ec65afeabbeadee9857b3e262'
-  '44bbea0892b74523bc0fb8bb81c6e6a0021a0455e61ab446ba7fa07a29e35f138b26e8030c59b4f25b45043c4714c01929d586f83b58fb697adf1a7dcb7e776f'
-  '89fc74104df3b5dba39d0e31add3486e2c2b2177b4362e822092f5acec70b5bc59ea3713faca1cfeab426748f8ae0e75c2a3c7387a4f6be136014783f7db3a46'
+    '7d5d5ff3d2acfcf941b60e6b0d65d28f918611f1a03b636272eb9acd3c393c66483b114259b5638204341625a583a496e92c74ed28fc800237d60890b99fe4e5'
+    '03d1bf3687622be3c305f9dd7ebe7b2b9930cadc4ed74696ac585f66e005df39ec07a7b083dd412ba8d230926d636b0562512ee6da0d2b608489a552d5471b2c'
 )
 
 prepare() {
@@ -36,7 +35,7 @@ build() {
 package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  for txt in exo20info.txt exobasic10b2.txt; do
+  for txt in exo20info.txt exobasic10b2.txt exo30info.txt; do
     install -Dm644 "$txt" "$pkgdir/usr/share/$pkgname/$txt"
   done
 
