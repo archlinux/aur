@@ -42,7 +42,7 @@ build() {
 package(){
   make -C build DESTDIR="${pkgdir}" install
   cp -R "${_plug}/Waifu2x-w2xc/models" ${pkgdir}/usr/lib/vapoursynth/models
-  chmod -R a+w ${pkgdir}/usr/lib/vapoursynth/models
+  chmod -R a+w "${pkgdir}/usr/lib/vapoursynth/models"
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
 }
