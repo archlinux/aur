@@ -28,7 +28,11 @@ int select_author_index(int author_count);
 void display_available_authors(char **authors, int author_count);
 void free_authors(char **authors, int author_count);
 char **read_authors();
-int set_author(char *name, char *email);
+
+int set_git_author(char *name, char *email);
+int set_git_author_name(char *name);
+int set_git_author_email(char *email);
+
 int set_co_author(char *name, char *email);
 void print_help();
 void print_title();
@@ -142,19 +146,21 @@ int select_authors() {
     char *name = strsep(&entry, ":");
     char *email = entry;
 
-    if (set_author(name, email) != 0) {
+    if (set_git_author(name, email) != 0) {
         return -1;
     }
 
+    printf("%sSet git user and email as %s %s%s\n", GREEN, name, email, NO_FORMAT);
+    
     // TODO: Set co-author via commit-template
-
 
     free_authors(authors, author_count);
     return 0;
 }
 
 /**
- * TODO:
+ * Prompts the user for an index to select,
+ * which is associated with a git author.
  */
 int select_author_index(int author_count) {
     int index, item_count;
@@ -216,10 +222,37 @@ char **read_authors(int *length) {
     return authors;
 }
 
-int set_author(char *name, char *email) {
-    // TODO: Set author via git config user.name and git config user.email
-    printf("name: %s email: %s\n", name, email);
-    return -1;
+/**
+ * Sets the author via git config.
+ * @see set_git_author_name
+ * @see set_git_author_email
+ */
+int set_git_author(char *name, char *email) {
+    set_git_author_name(name);
+    set_git_author_email(email);
+    return 0;
+}
+
+int set_git_author_name(char *name) {
+    char *cmd_prefix = "git config user.name \"";
+    int command_length = strlen(cmd_prefix) + strlen(name);
+    char git_cmd[command_length];
+    strcpy(git_cmd, cmd_prefix);
+    strcat(git_cmd, name);
+    strcat(git_cmd, "\"");
+    system(git_cmd);
+    return 0;
+}
+
+int set_git_author_email(char *email) {
+    char *cmd_prefix = "git config user.email \"";
+    int command_length = strlen(cmd_prefix) + strlen(email);
+    char git_cmd[command_length];
+    strcpy(git_cmd, cmd_prefix);
+    strcat(git_cmd, email);
+    strcat(git_cmd, "\"");
+    system(git_cmd);
+    return 0;
 }
 
 int set_co_author(char *name, char *email) {
