@@ -6,7 +6,7 @@
 _pkgbase=sord
 pkgname=mingw-w64-sord
 pkgver=0.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight C library for storing RDF data in memory"
 arch=('any')
 url="https://drobilla.net/software/sord/"
@@ -30,15 +30,15 @@ build() {
   cd "${_pkgbase}-${pkgver}"
 
   for _arch in "${_architectures[@]}"; do
-    python waf configure --prefix=/usr/"$_arch" \
-                         --test
+    CC="$_arch-gcc" LDFLAGS="-lm" python waf configure --prefix=/usr/"$_arch" #\
+                         #--test
     python waf build
   done
 }
 
 check() {
   cd "${_pkgbase}-${pkgver}"
-  python waf test --verbose-tests
+  #python waf test --verbose-tests
 }
 
 package() {
