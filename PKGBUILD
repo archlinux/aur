@@ -1,8 +1,11 @@
-# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Maintainer: Lone_Wolf <lonewolf@xs4all.nl>
+# Contributor: yurikoles <root@yurikoles.com>
+# Contributor: bearoso <bearoso@gmail.com>
 # Contributor: Luchesar V. ILIEV <luchesar%2eiliev%40gmail%2ecom>
 # Contributor: Anders Bergh <anders@archlinuxppc.org>
 # Contributor: Armin K. <krejzi at email dot com>
 # Contributor: Christian Babeux <christian.babeux@0x80.ca>
+# Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Hesiod (https://github.com/hesiod)
 # Contributor: Roberto Alsina <ralsina@kde.org>
@@ -10,192 +13,183 @@
 # Contributor: Tomas Lindquist Olsen <tomas@famolsen.dk>
 # Contributor: Tomas Wilhelmsson <tomas.wilhelmsson@gmail.com>
 
-pkgname=llvm-git
-_pkgname='llvm'
-pkgver=9.0.0_r313660.af1cbdd3bac
-pkgrel=1
-arch=('i686' 'x86_64')
-url='https://llvm.org/'
+
+pkgname=('llvm-git' 'llvm-libs-git')
+pkgver=9.0.0_r314109.3dc7c7ca311
+pkgrel=2
+_ocaml_ver=4.07.1
+arch=('x86_64')
+url="https://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
-makedepends=(
-  'cmake'
-  'doxygen'
-  'gcc'
-  'gcc-libs'
-  'git'
-  'graphviz'
-  'jsoncpp'
-  'libelf'
-  'libevent'
-  'libffi'
-  'mathjax'
-  'ncurses'
-  'ninja'
-  'python-recommonmark'
-  'python-requests'
-  'python-sphinx'
-  'swig'
-  'valgrind')
-depends=(
-  'libedit'
-  'libxml2'
-  'python')
-depends_x86_64=('lib32-gcc-libs')
-pkgdesc="Collection of modular and reusable compiler and toolchain technologies (git)"
-optdepends=('openmp: OpenMP support in clang with -fopenmp')
-provides=(
-    'clang'
-    "clang=$pkgver"
-    "clang-analyzer=$pkgver"
-    "clang-analyzer-svn"
-    'clang-compiler-rt'
-    'clang-compiler-rt-svn'
-    'clang-svn'
-    "clang-tools-extra=$pkgver"
-    'clang-tools-extra-svn'
-    'compiler-rt'
-    'compiler-rt-svn'
-    'lld'
-    'lldb'
-    'lldb-svn'
-    'lld-svn'
-    'llvm'
-    'llvm-libs'
-    'llvm-libs-svn'
-    'llvm-svn')
-conflicts=(
-    'clang'
-    'clang-analyzer'
-    'clang-compiler-rt'
-    'clang-tools-extra'
-    'compiler-rt'
-    'lld'
-    'lldb'
-    'llvm'
-    'llvm-libs')
-replaces=(
-    'clang-analyzer'
-    'clang-analyzer-svn'
-    'clang-compiler-rt'
-    'clang-compiler-rt-svn'
-    'clang-tools-extra'
-    'clang-tools-extra-svn')
-# this is always the latest git so debug info can be useful
-options=('staticlibs' '!strip')
-source=("${_pkgname}::git+https://github.com/llvm/llvm-project.git"
-        'llvm-config.h')
+makedepends=(   'git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'python-sphinx'
+                            "ocaml=$_ocaml_ver" 'ocaml-ctypes' 'ocaml-findlib'
+                            'python-sphinx' 'python-recommonmark' 'swig' 'python')
+
+options=('staticlibs')
+source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
+              llvm-config.h
+              enable-SSP-and-PIE-by-default.patch)
 sha256sums=('SKIP'
-            '844408b3cb84b4757e3c096dc89e24694f852bfc11a9cec295bc888748f4e10d')
+            '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
+            '58f86da25eb230ed6d423b5b61870cbf3bef88f38103ca676a2c7f34b2372171')
+
+_python_optimize() {
+  python -m compileall "$@"
+  python -O -m compileall "$@"
+  python -OO -m compileall "$@"
+}
+
 pkgver() {
-    cd "${srcdir}/${_pkgname}/${_pkgname}"
+    cd llvm-project/llvm
 
     # This will almost match the output of `llvm-config --version` when the
     # LLVM_APPEND_VC_REV cmake flag is turned on. The only difference is
     # dash being replaced with underscore because of Pacman requirements.
-    local _pkgver=$(awk -F 'MAJOR |MINOR |PATCH |SUFFIX |)' \
+    local _pkgver=$(awk -F 'MAJOR |MINOR |PATCH |)' \
             'BEGIN { ORS="." ; i=0 } \
              /set\(LLVM_VERSION_/ { print $2 ; i++ ; if (i==2) ORS="" } \
              END { print "\n" }' \
              CMakeLists.txt)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-    echo "${_pkgver//svn}"
+    echo "$_pkgver"
+}
+
+prepare() {
+    if [  -d _build ]; then
+        rm -rf _build
+    fi
+    mkdir _build
+    cd llvm-project
+    pushd clang
+    patch -Np1 -i "$srcdir"/enable-SSP-and-PIE-by-default.patch
+    popd
+    mv clang llvm/tools/clang
+    mv clang-tools-extra llvm/tools/clang/tools/extra
+    mv compiler-rt llvm/projects/compiler-rt
+    mv lld llvm/tools/lld
+    mv lldb llvm/tools/lldb
+    mv polly llvm/tools/polly
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}"
-    mkdir -p "${srcdir}/build"
-    cd "${srcdir}/build"
 
-    export PKG_CONFIG_PATH='/usr/lib/pkgconfig'
-
-    cmake -G Ninja \
-    -DLLVM_ENABLE_PROJECTS='clang;lldb;compiler-rt;lld' \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DPYTHON_EXECUTABLE=/usr/bin/python \
-    -DLLVM_HOST_TRIPLE=$CHOST \
-    -DLLVM_BUILD_LLVM_DYLIB=ON \
-    -DLLVM_LINK_LLVM_DYLIB=ON \
-    -DLLVM_INSTALL_UTILS=ON \
-    -DLLVM_ENABLE_BINDINGS=OFF \
-    -DLLVM_ENABLE_RTTI=ON \
-    -DLLVM_ENABLE_FFI=ON \
-    -DLLVM_BUILD_TESTS=OFF \
-    -DLLVM_BUILD_DOCS=ON \
-    -DLLVM_ENABLE_SPHINX=ON \
-    -DLLVM_ENABLE_DOXYGEN=OFF \
-    -DLLVM_LINK_LLVM_DYLIB=ON \
-    -DSPHINX_WARNINGS_AS_ERRORS=OFF \
-    -DLLDB_USE_SYSTEM_SIX=1 \
-    -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
-    -DLLVM_BINUTILS_INCDIR=/usr/include \
-    "../${_pkgname}/${_pkgname}" \
-
-  ninja all
-}
-
-package() {
-  cd "${srcdir}/build"
-
-  DESTDIR="$pkgdir" ninja install
-
-  if [[ $CARCH == x86_64 ]]; then
-    # Needed for multilib (https://bugs.archlinux.org/task/29951)
-    # Header stub is taken from Fedora
-    mv "$pkgdir/usr/include/llvm/Config/llvm-config"{,-64}.h
-    cp "$srcdir/llvm-config.h" "$pkgdir/usr/include/llvm/Config/llvm-config.h"
-  fi
-
-  _install_licenses "${srcdir}/clang"
-  _install_licenses "${srcdir}/compiler-rt"
-  _install_licenses "${srcdir}/lld"
-  _install_licenses "${srcdir}/lldb"
-  _install_licenses "${srcdir}/llvm"
-
-  python3 -m compileall "$pkgdir"
-  python3 -O -m compileall "$pkgdir"
-  python3 -OO -m compileall "$pkgdir"
-
-  rm -rf "$pkgdir/usr/libexec"
-  sed -i 's|libexec|lib/clang|' "$pkgdir/usr/bin/scan-build"
+    cd _build
+    cmake "$srcdir"/llvm-project/llvm  -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DLLVM_APPEND_VC_REV=ON \
+        -DLLVM_HOST_TRIPLE=$CHOST \
+        -DLLVM_ENABLE_RTTI=ON \
+        -DLLVM_ENABLE_FFI=ON \
+        -DFFI_INCLUDE_DIR:PATH="$(pkg-config --variable=includedir libffi)" \
+        -DLLVM_BUILD_LLVM_DYLIB=ON \
+        -DLLVM_LINK_LLVM_DYLIB=ON \
+        -DLLVM_INSTALL_UTILS=ON \
+        -DLLVM_BUILD_TESTS=ON \
+        -DLLVM_BUILD_DOCS=ON \
+        -DLLVM_ENABLE_DOXYGEN=OFF \
+        -DLLVM_ENABLE_SPHINX=ON \
+        -DSPHINX_OUTPUT_HTML:BOOL=OFF \
+        -DSPHINX_WARNINGS_AS_ERRORS=OFF \
+        -DLLVM_BINUTILS_INCDIR=/usr/include \
+        -DLLVM_VERSION_SUFFIX="" \
+        -DPOLLY_ENABLE_GPGPU_CODEGEN=ON \
+        -DLINK_POLLY_INTO_TOOLS=ON 
+    ninja all ocaml_doc
 }
 
 check() {
-  cd "${srcdir}/build"
-  ninja check
+    cd _build
+    # Dirty fix for unittests failing because the shared lib is not in the library path.
+    # Also, disable the LLVM tests on i686 as they seem to fail too often there.
+    [[ "$CARCH" == "i686" ]] || LD_LIBRARY_PATH="$srcdir"/_build/lib ninja check
+    ninja check-clang
+    ninja check-polly
+    ninja check-lld
+    ninja check-lldb
 }
 
-#
-# BEGIN INTERNAL VARIABLES AND FUNCTIONS
-#
+package_llvm-git() {
+    pkgdesc="LLVM development version. includes clang and many other tools"
+    depends=('llvm-libs-git' 'perl')
+    optdepends=( 'python: for scripts'
+                            'python-setuptools: for using lit (LLVM Integrated Tester)'
+                            'ocaml: for ocaml support')
+    # yes, I know polly is not in official repos
+    provides=('llvm' 'compiler-rt' 'clang' 'lld' 'lldb' 'polly' 'llvm-ocaml')
+    conflicts=('llvm' 'compiler-rt' 'clang' 'lld' 'lldb' 'polly' 'llvm-ocaml')
+    
+    pushd _build
 
-# Install the license files for a package
-# Arguments: source_directory_to_install_from
-# Notes: We prune some directories that are inserted into the tree in prepare()
-#        in order to eliminate possible duplicates. We also use NULL-terminated
-#        strings, just in case we have paths including spaces. Finally, we opt
-#        for a flat directory structure, so all license files in subdirectories
-#        get their names from the relative path with '/'s replaced by dashes.
-#        Not the most elegant solution, but should be working well enough.
-_install_licenses() {
-    find "${1}" \
-        \( \
-            -path "${srcdir}/${_pkgname}/tools/lld" -o \
-            -path "${srcdir}/${_pkgname}/tools/clang" -o \
-            -path "${srcdir}/${_pkgname}/tools/lldb" -o \
-            -path "${srcdir}/${_pkgname}/projects/compiler-rt" \
-        \) -prune -o \
-        \( \
-            -iname 'license*' -o \
-            -iname 'credits*' -o \
-            -iname 'copyright*' \
-        \) -printf '%P\0' \
-        | while read -d $'\0' license_file; do
-            install -D -m 0644 \
-                "${1}/${license_file}" \
-                "${pkgdir}/usr/share/licenses/${pkgname}/${license_file//\//-}"
-        done
+    DESTDIR="$pkgdir" ninja install
+    
+    popd
+    # Clean up conflicting files
+    # TODO: This should probably be discussed with upstream.
+    rm -rf "${pkgdir}/usr/lib/python3.7/site-packages/six.py"
+    # Include lit for running lit-based tests in other projects
+    pushd llvm-project/llvm/utils/lit
+    python setup.py install --root="$pkgdir" -O1
+    popd
+
+    
+    # Move analyzer scripts out of /usr/libexec
+    mv "$pkgdir"/usr/libexec/{ccc,c++}-analyzer "$pkgdir"/usr/lib/clang/
+    rmdir "$pkgdir"/usr/libexec
+    sed -i 's|libexec|lib/clang|' "$pkgdir"/usr/bin/scan-build
+
+    # The runtime libraries go into llvm-libs
+    mv -f "$pkgdir"/usr/lib/lib{LLVM,LTO}*.so* "$srcdir"
+    mv -f "$pkgdir"/usr/lib/LLVMgold.so "$srcdir"
+
+    if [[ $CARCH == x86_64 ]]; then
+        # Needed for multilib (https://bugs.archlinux.org/task/29951)
+        # Header stub is taken from Fedora
+        mv "$pkgdir"/usr/include/llvm/Config/llvm-config{,-64}.h
+        cp "$srcdir"/llvm-config.h "$pkgdir"/usr/include/llvm/Config/llvm-config.h
+    fi
+
+    cd llvm-project/llvm
+    # Install Python bindings and optimize them
+    cp -a bindings/python/llvm  "$pkgdir"/usr/lib/python3.7/site-packages/
+    cp -a tools/clang/bindings/python/clang  "$pkgdir"/usr/lib/python3.7/site-packages/
+    _python_optimize "$pkgdir"/usr/lib/python3.7/site-packages
+
+    #optimize other python files except 2 problem cases
+    _python_optimize "$pkgdir"/usr/share -x 'clang-include-fixer|run-find-all-symbols'
+  
+    install -Dm644 LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/llvm-LICENSE
+    install -Dm644 tools/clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-LICENSE
+    install -Dm644 tools/clang/tools/extra/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-tools-extra-LICENSE
+    install -Dm644 projects/compiler-rt/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/compiler-rt-LICENSE
+    install -Dm644 tools/lld/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lld-LICENSE
+    install -Dm644 tools/lldb/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lldb-LICENSE
+    install -Dm644 tools/polly/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/polly-LICENSE
 }
 
-#
-# END INTERNAL VARIABLES AND FUNCTIONS
-#
+package_llvm-libs-git() {
+    pkgdesc="runtime libraries for llvm-git"
+    depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2')
+    provides=('llvm-libs')
+
+    install -d "$pkgdir"/usr/lib
+    cp -P \
+        "$srcdir"/lib{LLVM,LTO}*.so* \
+        "$srcdir"/LLVMgold.so \
+        "$pkgdir"/usr/lib/
+
+    # Symlink LLVMgold.so from /usr/lib/bfd-plugins
+    # https://bugs.archlinux.org/task/28479
+    install -d "$pkgdir"/usr/lib/bfd-plugins
+    ln -s ../LLVMgold.so "$pkgdir"/usr/lib/bfd-plugins/LLVMgold.so
+
+    cd llvm-project/llvm
+    install -Dm644 LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/llvm-LICENSE
+    install -Dm644 tools/clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-LICENSE
+    install -Dm644 tools/clang/tools/extra/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-tools-extra-LICENSE
+    install -Dm644 projects/compiler-rt/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/compiler-rt-LICENSE
+    install -Dm644 tools/lld/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lld-LICENSE
+    install -Dm644 tools/lldb/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lldb-LICENSE
+    install -Dm644 tools/polly/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/polly-LICENSE
+}
+
+# vim:set ts=2 sw=2 et:
