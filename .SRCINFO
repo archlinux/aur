@@ -1,0 +1,14 @@
+pkgbase = container-structure-test
+	pkgdesc = Validate the structure of your container images
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/GoogleContainerTools/container-structure-test
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	optdepends = docker: run tests with the docker driver
+	source = container-structure-test::https://storage.googleapis.com/container-structure-test/v1.8.0/container-structure-test-linux-amd64
+	sha256sums = cfdfedd77c04becff0ea16a4b8ebc3b57bf404c56e5408b30d4fbb35853db67c
+
+pkgname = container-structure-test
+
