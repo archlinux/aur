@@ -1,8 +1,10 @@
 # Maintainer Pol Marcet Sardà <polmarcetsarda@gmail.com>
 
 pkgname=k8vavoom-git
-pkgver=r8207.7f8ece48c
+_pkgver_base=build540410
+pkgver=build540410.r8815.f3f118621
 pkgrel=1
+epoch=1
 pkgdesc="Source port of Doom"
 arch=(x86_64)
 url="https://repo.or.cz/k8vavoom.git"
@@ -12,7 +14,7 @@ depends=("zlib" "bzip2" "libpng" "libjpeg" "sdl2" "sdl2_mixer" "openal")
 makedepends=("cmake" "git")
 optdepends=("libmad")
 
-source=("$pkgname"::"git+https://repo.or.cz/k8vavoom.git#tag=build540227"
+source=("$pkgname"::"git+$url#tag=$_pkgver_base"
         "arch.patch")
 
 sha256sums=('SKIP'
@@ -20,7 +22,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "$_pkgver_base.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -44,4 +46,3 @@ package() {
     cd "$srcdir/$pkgname"
     make DESTDIR=$pkgdir install
 }
-
