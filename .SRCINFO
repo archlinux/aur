@@ -14,7 +14,7 @@ pkgbase = protontricks
 	provides = protontricks
 	conflicts = protontricks-git
 	source = https://github.com/Matoking/protontricks/archive/1.2.1.tar.gz
-	sha512sums = 026885ba3c6c145e54292b7b806395533bf2a818a9c2a9c4a912664c5bc7f7220bf5cffbac7957985887535962672b796ec8ecddc12ad3c9c08342f67338c8e7
+	sha512sums = 386f7161f6c364d3420fd1b4d0e21f6e3af51d27f9e558c574695168b79f37548e695a3f1c2a773eb1f1feee9b601a7044b6a339f21338cf6fc0272dba865499
 
 pkgname = protontricks
 
