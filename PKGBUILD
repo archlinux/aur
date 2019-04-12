@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=qdigidoc4
 pkgver=4.2.1.48
-pkgrel=1
+pkgrel=2
 pkgdesc="DigiDoc4 Client is an application for digitally signing and encrypting documents; the software includes functionality to manage Estonian ID-card - change pin codes, update certificates etc."
 arch=('x86_64' 'i686')
 url="http://www.id.ee/"
@@ -17,7 +17,7 @@ sha256sums=('bd143f2ca779449c965be4f023dd00c1cc6fc8a90d7045b3ab0a0ced4aa84198')
 prepare() {
   [[ -d "$pkgname-build" ]] && rm -r "$pkgname-build"
   mkdir "$pkgname-build"
-  sed -i 's|#{ENV\["BUILD_NUMBER"\]}|43|g' cmake/modules/VersionInfo.cmake
+  sed -i 's|#{ENV\["BUILD_NUMBER"\]}|48|g' cmake/modules/VersionInfo.cmake
 }
 
 build() {
