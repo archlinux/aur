@@ -1,8 +1,8 @@
 pkgbase = irccloud
 	pkgdesc = Chat on IRC from anywhere, and never miss a message
 	pkgver = 0.4.0
-	pkgrel = 3
-	url = http://irccloud.com
+	pkgrel = 4
+	url = https://www.irccloud.com/
 	arch = arm
 	arch = i686
 	arch = x86_64
