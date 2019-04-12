@@ -1,0 +1,26 @@
+diff -crB lilv-0.24.4/wscript lilv-0.24.4_patched/wscript
+*** lilv-0.24.4/wscript	2019-04-12 05:44:40.484443350 +0100
+--- lilv-0.24.4_patched/wscript	2019-04-12 05:45:16.317775629 +0100
+***************
+*** 427,436 ****
+          obj = build_util(bld, 'utils/lv2apply', defines, 'SNDFILE')
+  
+      # lv2bench (less portable than other utilities)
+!     if bld.is_defined('HAVE_CLOCK_GETTIME') and not bld.env.STATIC_PROGS:
+!         obj = build_util(bld, 'utils/lv2bench', defines)
+!         if not bld.env.MSVC_COMPILER and not bld.env.DEST_OS == 'darwin':
+!             obj.lib = ['rt']
+  
+      # Documentation
+      autowaf.build_dox(bld, 'LILV', LILV_VERSION, top, out)
+--- 427,436 ----
+          obj = build_util(bld, 'utils/lv2apply', defines, 'SNDFILE')
+  
+      # lv2bench (less portable than other utilities)
+!     # if bld.is_defined('HAVE_CLOCK_GETTIME') and not bld.env.STATIC_PROGS:
+!         # obj = build_util(bld, 'utils/lv2bench', defines)
+!         # if not bld.env.MSVC_COMPILER and not bld.env.DEST_OS == 'darwin':
+!             # obj.lib = ['rt']
+  
+      # Documentation
+      autowaf.build_dox(bld, 'LILV', LILV_VERSION, top, out)

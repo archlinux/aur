@@ -6,7 +6,7 @@
 _pkgbase=lilv
 pkgname=mingw-w64-lilv
 pkgver=0.24.4
-pkgrel=4
+pkgrel=5
 pkgdesc="A C library interface to the LV2 plug-in standard"
 arch=('any')
 url="https://drobilla.net/software/lilv/"
@@ -29,6 +29,7 @@ prepare() {
   sed -i "/ldconfig/d" wscript
 
   patch src/util.c < "${srcdir}/../lilv_symlink.patch"
+  patch wscript < "${srcdir}/../lilv_nobench.patch"
 }
 
 build() {
