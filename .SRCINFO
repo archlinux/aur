@@ -8,10 +8,24 @@ pkgbase = liblinear
 	license = BSD
 	makedepends = gcc
 	depends = gcc-libs
-	optdepends = python: bindings for latest python version
-	optdepends = python2: bindings for python 2
 	source = https://www.csie.ntu.edu.tw/~cjlin/liblinear/liblinear-2.30.tar.gz
+	source = fix-import-module.diff
 	sha256sums = 881c7039c6cf93119c781fb56263de91617b3eca8c3951f2c19a3797de95c6ac
+	sha256sums = c595cbf378ca2e781a63cb7127880c8d4bd8b118d1aef1b7b5a4324ba065e6b0
 
 pkgname = liblinear
+
+pkgname = python-liblinear
+	pkgdesc = Python bindings for liblinear
+	depends = gcc-libs
+	depends = liblinear
+	depends = python
+	optdepends = python-scipy: sparse matrix support
+
+pkgname = python2-liblinear
+	pkgdesc = Python2 bindings for liblinear
+	depends = gcc-libs
+	depends = liblinear
+	depends = python2
+	optdepends = python2-scipy: sparse matrix support
 
