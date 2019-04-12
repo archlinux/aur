@@ -1,7 +1,7 @@
 pkgbase = ant-nebula-theme-git
 	pkgdesc = Nebula variant of the Ant theme
-	pkgver = r61.d705a1b
-	pkgrel = 2
+	pkgver = r62.07702d0
+	pkgrel = 1
 	url = https://github.com/EliverLara/Ant-Nebula
 	arch = any
 	license = GPL
