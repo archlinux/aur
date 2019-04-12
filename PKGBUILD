@@ -21,8 +21,15 @@ optdepends=(
     'python: bindings for latest python version'
     'python2: bindings for python 2'
 )
-source=("https://www.csie.ntu.edu.tw/~cjlin/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('881c7039c6cf93119c781fb56263de91617b3eca8c3951f2c19a3797de95c6ac')
+source=("https://www.csie.ntu.edu.tw/~cjlin/$pkgname/$pkgname-$pkgver.tar.gz"
+        "fix-import-module.diff")
+sha256sums=('881c7039c6cf93119c781fb56263de91617b3eca8c3951f2c19a3797de95c6ac'
+            'c595cbf378ca2e781a63cb7127880c8d4bd8b118d1aef1b7b5a4324ba065e6b0')
+
+prepare() {
+    cd "${pkgname}-${pkgver}"
+    patch -p1 < ../fix-import-module.diff
+}
 
 build() {
     printf '%s\n' '  -> Building library and CLI binaries...'
