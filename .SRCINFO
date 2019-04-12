@@ -1,0 +1,16 @@
+pkgbase = perl-parse-mime
+	pkgdesc = Parse mime-types, match against media ranges
+	pkgver = 1.005
+	pkgrel = 1
+	url = https://metacpan.org/pod/Parse::MIME
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/A/AR/ARISTOTLE/Parse-MIME-1.005.tar.gz
+	md5sums = b767c6eaddaa7402b8810f0ea5c19bc9
+	sha512sums = e07caf6ada43c24f3db85fa713088214fcd1c8a5fb3dd6e95764291c69060ffc12e3c8053f6950aea1d85bae01bec786ca27172e392d833d6b3335cbc0dd4777
+
+pkgname = perl-parse-mime
+
