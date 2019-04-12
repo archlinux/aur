@@ -1,7 +1,7 @@
 pkgbase = pdfbox
 	pkgdesc = An open source Java tool for working with PDF documents. (pdfbox, fontbox, jempbox)
 	pkgver = 2.0.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pdfbox.apache.org
 	arch = any
 	license = Apache 2

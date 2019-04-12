@@ -4,7 +4,7 @@
 
 pkgname=pdfbox
 pkgver=2.0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source Java tool for working with PDF documents. (pdfbox, fontbox, jempbox)"
 arch=(any)
 url="https://pdfbox.apache.org"
