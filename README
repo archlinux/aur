@@ -8,6 +8,7 @@ To updated version:
 - Update PKGBUILD pkgver
 - Run `makepkg -g` and copy MD5 sum to PKGBUILD
 - Run `makepkg`
+- Run `mksrcinfo`
 - `git commit`
 - `git release`, which does:
 

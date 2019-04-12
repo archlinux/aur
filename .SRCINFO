@@ -1,7 +1,7 @@
 pkgbase = nagios-nrpe-plugin
 	pkgdesc = The Nagios Server NRPE plugin (install on the monitoring machine).
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nagios.org
 	install = nagios-nrpe-plugin.install
 	arch = any
