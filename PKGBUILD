@@ -2,12 +2,13 @@
 
 pkgname=stf
 pkgver=3.4.0
-pkgrel=2
-pkgdesc='Web application for debugging Android devices'
+pkgrel=3
+pkgdesc='Web application for controlling and managing Android devices'
 arch=(i686 x86_64)
 url=https://openstf.io
 license=(Apache)
-depends=(nodejs-lts-carbon
+depends=(nodejs
+         android-tools
          rethinkdb
          graphicsmagick
          zeromq
@@ -18,6 +19,6 @@ makedepends=(npm)
 options=(!strip)
 
 package() {
-  npm install -g --prefix="$pkgdir"/usr stf@$pkgver
+  npm i -g --prefix="$pkgdir"/usr stf@$pkgver
   find "$pkgdir"/usr -type d -exec chmod 755 {} +
 }
