@@ -2,12 +2,12 @@
 
 pkgname=webtorrent-desktop
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Streaming torrent client."
 arch=('i686' 'x86_64')
 url="https://webtorrent.io/desktop"
 license=('MIT')
-depends=('gconf' 'electron' 'libnotify')
+depends=('gconf' 'electron2' 'libnotify')
 makedepends=('npm')
 conflicts=('webtorrent-desktop-git' 'webtorrent-desktop-bin')
 options=(!strip)
@@ -16,9 +16,9 @@ source=("https://github.com/feross/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "traysupport.patch")
 sha256sums=('2eec644337f2e8a47187c54d702491e3b4c1f1236dae48cb494c4e99ba0a9796'
-            '4ebe403535a6552333f56e6087355c85fbb1904b06908d62127337c7c593135c'
+            '2c5e3e19b9bb3899fe244df0d285876beeee0b0dc6bf587febd698a50ccc277a'
             '6af365f47ca47b33cca65f62c3a662218ba38af7d3d52bb891ce3e73bbb60539'
-            '111d9eea78a64932b0c0d20e07bca39ccbf372fbe59977255c7a9ae1b39f7d79')
+            'dbeff65a109489ce8ce4e89d0b4ad3bc1768d03707bc1a0845db852049296deb')
 
 [ "$CARCH" = "i686" ]   && _platform=ia32
 [ "$CARCH" = "x86_64" ] && _platform=x64

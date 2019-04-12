@@ -1,14 +1,14 @@
 pkgbase = webtorrent-desktop
 	pkgdesc = Streaming torrent client.
 	pkgver = 0.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://webtorrent.io/desktop
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = npm
 	depends = gconf
-	depends = electron
+	depends = electron2
 	depends = libnotify
 	conflicts = webtorrent-desktop-git
 	conflicts = webtorrent-desktop-bin
@@ -18,9 +18,9 @@ pkgbase = webtorrent-desktop
 	source = webtorrent-desktop.desktop
 	source = traysupport.patch
 	sha256sums = 2eec644337f2e8a47187c54d702491e3b4c1f1236dae48cb494c4e99ba0a9796
-	sha256sums = 4ebe403535a6552333f56e6087355c85fbb1904b06908d62127337c7c593135c
+	sha256sums = 2c5e3e19b9bb3899fe244df0d285876beeee0b0dc6bf587febd698a50ccc277a
 	sha256sums = 6af365f47ca47b33cca65f62c3a662218ba38af7d3d52bb891ce3e73bbb60539
-	sha256sums = 111d9eea78a64932b0c0d20e07bca39ccbf372fbe59977255c7a9ae1b39f7d79
+	sha256sums = dbeff65a109489ce8ce4e89d0b4ad3bc1768d03707bc1a0845db852049296deb
 
 pkgname = webtorrent-desktop
 
