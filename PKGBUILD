@@ -2,7 +2,7 @@
 pkgname=compressonator-cli-bin
 pkgver=3.1.307
 pkgrel=1
-pkgdesc="CLI for texture compression, decompression, format transcoding, and more"
+pkgdesc="CLI for GPU texture compression, decompression, format transcoding, and more"
 arch=('any')
 url="https://github.com/GPUOpen-Tools/Compressonator"
 license=('MIT')
