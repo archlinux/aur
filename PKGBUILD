@@ -2,8 +2,8 @@
 
 pkgname=mingw-w64-http-parser
 _pkgname=http-parser
-pkgver=2.9.0
-pkgrel=4
+pkgver=2.9.1
+pkgrel=1
 pkgdesc="Parser for HTTP Request/Response written in C (mingw-w64)"
 arch=('any')
 license=('MIT')
@@ -12,7 +12,7 @@ makedepends=('mingw-w64-gcc')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/nodejs/http-parser/archive/v${pkgver}.tar.gz")
-sha512sums=('40acecbf71b9f0b4ae857c74c3ec0784d7f341a0cb83cf82b308387d0c5b56d38b282241aaf8ca93816970f2a9e67989f3d9d456459f3986c29fe51ab520155e')
+sha512sums=('110a1861666cdd45857c3ab0e9bf8a3eb9d98f86fe001f7c620009e13186377de805d295f7751921cd5c9d4c2781807b3ae00f939af04d7365a3a45aa20b5052')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
