@@ -1,14 +1,15 @@
-# Maintainer: Mees Valkenburg <`echo Zmx1ZmZ5QGdvZG90LnVrLnRvCg== | base64 -d`>
+# Maintainer: Mees Valkenburg <`echo bWVlc3J1ZGlnZXJhcmRAbGl2ZS5ubAo= | base64 -d`>
 # Contributor: Kaiting Chen <kaitocracy@gmail.com>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: rabyte <rabyte*gmail>
 
 pkgname='dtrx'
 pkgver='7.1'
-pkgrel='3'
+pkgrel='4'
+commit='671ccf7d1b7ea90a6e6e6cc44234ef14874d59bf'
 pkgdesc='An intelligent archive extraction tool'
 arch=('any')
-url='http://brettcsmith.org/2007/dtrx/'
+url='http://github.com/brettcs/dtrx'
 license=('GPL3')
 depends=('python2')
 optdepends=(
@@ -27,10 +28,10 @@ optdepends=(
   'lha: to extract lzh archives'
 )
 
-md5sums=('4be207724b75aea3e9f93374298b2174')
-source=("$url$pkgname-$pkgver.tar.gz")
+md5sums=('SKIP')
+source=("git+http://github.com/brettcs/dtrx#commit=$commit")
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   python2 setup.py install --root="$pkgdir"
 }
