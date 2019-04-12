@@ -1,8 +1,11 @@
 pkgbase = pivy
+	pkgdesc = Tools for using PIV smartcards/Yubikeys with ssh-agent and encryption
 	pkgver = 0.1.0
 	pkgrel = 1
+	url = https://github.com/arekinath/pivy
 	arch = x86
 	arch = x86_64
+	license = MPL2
 	depends = libbsd
 	depends = pcsclite
 	depends = libedit
