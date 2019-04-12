@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-naxsi
 pkgver=0.56
-pkgrel=7
+pkgrel=8
 
 _modname=naxsi
-_nginxver=1.15.10
+_nginxver=1.15.11
 
 pkgdesc='Nginx Anti XSS & SQL Injection (module for mainline nginx)'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ validpgpkeys=(
 	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
-sha256sums=('b865743abd52bce4745d0f7e7fedde3cafbaaab617b022c105e3e4e456537c3c'
+sha256sums=('d5eb2685e2ebe8a9d048b07222ffdab50e6ff6245919eebc2482c1f388e3f8ad'
             'SKIP'
             '0a66dcadd32432460fab180be9f2efe24e911e3798917b2787ee710e02901eb4')
 
