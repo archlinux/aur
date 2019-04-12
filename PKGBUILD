@@ -1,7 +1,7 @@
 # Maintainer: nerflad (nerflad@gmail.com)
 
 pkgname=gapi-ocaml
-pkgver=0.3.9
+pkgver=0.3.10
 pkgrel=1
 pkgdesc="A simple OCaml client for Google Services."
 arch=("x86_64" "i686" "armv7h")
@@ -20,11 +20,11 @@ depends=(
 )
 source=(https://github.com/astrada/$pkgname/archive/v$pkgver.tar.gz)
 options=('!strip' 'staticlibs')
-sha256sums=('77f15524a8ad35dbde0480bf82bcd26f764a50ae65d8027de93821f256969982')
+sha256sums=('217c69aa2c9e871a2731ae1bfdb8953d1e3d8831b3cbe0da92014119c1afa07c')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  jbuilder build @install
+  dune build @install
   sed -i '/doc:\s\[/,$d' _build/default/gapi-ocaml.install
 }
 
@@ -33,5 +33,5 @@ package() {
   export OCAMLFIND_DESTDIR="$pkgdir/$(ocamlfind printconf destdir)"
   install -dm755 "$OCAMLFIND_DESTDIR"
 
-  jbuilder install
+  dune install
 }
