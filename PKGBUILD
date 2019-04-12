@@ -16,7 +16,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=66.0.2
+pkgver=66.0.3
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
