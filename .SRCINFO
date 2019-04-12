@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-sratom
 	pkgdesc = An LV2 Atom RDF serialisation library
 	pkgver = 0.6.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://drobilla.net/software/sratom/
 	arch = any
 	license = custom:ISC

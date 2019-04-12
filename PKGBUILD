@@ -6,7 +6,7 @@
 _pkgbase=sratom
 pkgname=mingw-w64-sratom
 pkgver=0.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="An LV2 Atom RDF serialisation library"
 arch=('any')
 url="https://drobilla.net/software/sratom/"
@@ -37,7 +37,7 @@ build() {
 
     CC="$_arch-gcc" python waf configure --prefix=/usr/"$_arch" #\
                          #--test
-    python2 waf build
+    python waf build
 
     popd
   done
