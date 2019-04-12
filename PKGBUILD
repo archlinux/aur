@@ -2,6 +2,9 @@
 pkgname=pivy
 pkgver=0.1.0
 pkgrel=1
+pkgdesc="Tools for using PIV smartcards/Yubikeys with ssh-agent and encryption"
+url="https://github.com/arekinath/pivy"
+license=('MPL2')
 source=(
 	"https://github.com/arekinath/pivy/archive/v0.1.0.tar.gz"
 	"https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.7.4.tar.gz")
