@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-sord
+	pkgdesc = A lightweight C library for storing RDF data in memory
+	pkgver = 0.16.2
+	pkgrel = 1
+	url = https://drobilla.net/software/sord/
+	arch = any
+	license = custom:ISC
+	makedepends = mingw-w64-python
+	depends = mingw-w64-serd
+	depends = mingw-w64-pcre
+	source = https://download.drobilla.net/sord-0.16.2.tar.bz2
+	source = https://download.drobilla.net/sord-0.16.2.tar.bz2.sig
+	validpgpkeys = 907D226E7E13FA337F014A083672782A9BF368F3
+	sha512sums = fe143c07ed18c15ffaf2461ca587df76e365a075f5d93f5eaa4c26196e0b1dd59d24d16e176de3664a2658377a2934083af5742c80884e8e7dd201dcaccb9698
+	sha512sums = SKIP
+
+pkgname = mingw-w64-sord
+
