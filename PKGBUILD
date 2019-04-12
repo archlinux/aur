@@ -30,7 +30,7 @@ build() {
   cd "${_pkgbase}-${pkgver}"
 
   for _arch in "${_architectures[@]}"; do
-    python waf configure --prefix=/usr/"$_arch" \
+    CC="$_arch-gcc" python waf configure --prefix=/usr/"$_arch" \
                          --mandir=/usr/share/man \
                          --test
     python waf
