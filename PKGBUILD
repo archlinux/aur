@@ -8,7 +8,7 @@
 _pkgbase=libsmf
 pkgname=mingw-w64-libsmf
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A BSD-licensed C library for handling SMF ("*.mid") files.'
 arch=('x86_64')
 url="https://sourceforge.net/projects/libsmf/"
@@ -17,6 +17,8 @@ depends=('mingw-w64-glib2')
 options=('!libtool' '!strip' '!buildflags' '!makeflags')
 source=("https://downloads.sourceforge.net/project/${_pkgbase}/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.gz")
 sha512sums=('3c383ec8f2fbe48ddab1008b3ecfe6941c38e33cfd963eabdf07f09c8c04c1b8758c8774b25672f70c29b570f2c250c795979d19b39c5027810b54b07035497d')
+
+_architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
 build() {
   cd "${srcdir}"
