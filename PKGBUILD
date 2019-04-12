@@ -1,15 +1,15 @@
 # Maintainer: Bruno Renié <brutasse@gmail.com>
 pkgname=vaudtax
 pkgver=2018
-_pkgver=1.0.1-production
-pkgrel=1
+_pkgver=1.1.6-production
+pkgrel=2
 pkgdesc="VaudTax"
 url="https://www.vd.ch/themes/etat-droit-finances/impots/impots-pour-les-individus/remplir-ma-declaration-dimpot/vaudtax-2018/"
 depends=('webkitgtk2' 'jre8-openjdk' 'gnome-vfs')
-arch=(i686 x86_64)
+arch=(x86_64)
 license=('custom')
-source=("$pkgname-$pkgver-$_pkgver.tar.gz::https://vaudtax-dl.vd.ch/vaudtax$pkgver/telechargement/linux/VaudTax_$pkgver.tar.gz" 'vaudtax')
-_dirname="VaudTax_$pkgver-$_pkgver"
+source=("$pkgname-$pkgver-$_pkgver.tar.gz::https://vaudtax-dl.vd.ch/vaudtax$pkgver/telechargement/linux/64bit/VaudTax_$pkgver.tar.gz" 'vaudtax')
+_dirname="VaudTax_$pkgver-$_pkgver-64bit"
 
 prepare() {
 	cd "$_dirname"
@@ -34,5 +34,5 @@ package() {
 	install -m755 ${srcdir}/${pkgname} "${pkgdir}"${_app_home}/bin/${pkgname}
 	ln -s ${_app_home}/bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }
-md5sums=('52f439b6e519643a91a3c980b0d21a61'
+md5sums=('e81bbd4d563ff338aa9daa39418bb6c0'
          '1b797df588e1d3851c67c7aee1f3f844')
