@@ -17,7 +17,7 @@ source=($_pkgname-$_pkgver.tar.gz::https://github.com/marktext/marktext/releases
         icon128.png::https://github.com/marktext/marktext/raw/master/resources/icons/128x128/marktext.png
         icon256.png::https://github.com/marktext/marktext/raw/master/resources/icons/256x256/marktext.png
         icon512.png::https://github.com/marktext/marktext/raw/master/resources/icons/512x512/marktext.png
-        marktext.desktop::https://raw.githubusercontent.com/marktext/marktext/master/resources/linux/marktext.desktop
+        $_pkgname.desktop::https://raw.githubusercontent.com/marktext/marktext/master/resources/linux/marktext.desktop
         )
 sha256sums=('05675e228a71c366774410db24af582f7fc4bc0e535e870268199de09fc21200'
             'e2f07abbbed4bc6f146cef52958ebec5ec8ed6e606a884934430d3525a2bbae7'
