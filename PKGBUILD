@@ -1,14 +1,14 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=zap-desktop-git
-pkgver=0.2.1.beta.160.gcf53d926
+pkgver=0.4.1.beta
 pkgrel=1
 pkgdesc="Lightning wallet focused on user experience and ease of use"
 arch=('x86_64')
 url="https://github.com/LN-Zap/zap-desktop"
 license=('MIT')
-makedepends=('npm' 'yarn')
-install="$pkgname.install"
+depends=('gtk3' 'nss' 'libxss')
+makedepends=('npm' 'yarn' 'git' 'python2' 'lib32-glibc' 'gcc-libs' 'lib32-gcc-libs')
 source=("$pkgname::git+https://github.com/LN-Zap/zap-desktop.git"
         "zap-desktop.desktop")
 sha256sums=('SKIP'
@@ -38,10 +38,10 @@ package() {
   ln -s "/opt/$pkgname/zap-desktop" "$pkgdir/usr/bin/zap-desktop"
 
   # Symlink licenses
-  ln -s "/opt/$pkgname/LICENSES.electron.txt" "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/opt/$pkgname/LICENSE.electron.txt" "$pkgdir/usr/share/licenses/$pkgname"
   ln -s "/opt/$pkgname/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname"
 
   # Desktop icon
   install -D -m644 "$srcdir/zap-desktop.desktop" "${pkgdir}/usr/share/applications/zap-desktop.desktop"
-  install -D -m644 "$srcdir/$pkgname/resources/icons/icon.png" "${pkgdir}/usr/share/pixmaps/zap-desktop.png"
+  install -D -m644 "$srcdir/$pkgname/resources/icon.png" "${pkgdir}/usr/share/pixmaps/zap-desktop.png"
 }
