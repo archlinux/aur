@@ -1,44 +1,51 @@
-# Maintainer: Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
+# Maintainer: Jean Lucas <jean@4ray.co
+# Contributor: Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
 
 pkgname=kpatch-git
-pkgver=r1095.4e1a596
+pkgver=0.6.3
 pkgrel=1
-pkgdesc="dynamic kernel patching tool"
+pkgdesc="Live kernel patching (git)"
+arch=(i686 x86_64)
+url=https://github.com/dynup/kpatch
+license=(GPL2)
+depends=(elfutils)
+makedepends=(git gcc)
+provides=(kpatch)
+conflicts=(kpatch)
+source=(git+$url)
+sha512sums=('SKIP')
 
-arch=('x86_64')
-url="https://github.com/dynup/kpatch"
-license=('GPL')
-
-depends=('elfutils')
-makedepends=('gcc' 'git')
-source=("git+https://github.com/dynup/kpatch.git")
-md5sums=('SKIP')
+pkgver() {
+  cd kpatch
+  git describe --tags | sed 's/v//;s/-/+/g'
+}
 
 prepare() {
-	sed -i 's/libexec/lib/g' "$srcdir/kpatch/kpatch-build/kpatch-build"
+  # Fix search structure
+  sed -i 's/libexec/lib/g' kpatch/kpatch-build/kpatch-build
 }
 
 build() {
-	cd "kpatch"
-	make 
+  cd kpatch
+  make
 }
 
 package() {
-	cd "kpatch"
-	make DESTDIR="$pkgdir/" install
+  cd kpatch
+  make DESTDIR="$pkgdir" install
 
-	# That's what the guideline says.
-	mv $pkgdir/usr/local/* $pkgdir/usr
-	mv $pkgdir/usr/sbin/* $pkgdir/usr/bin/
-	mv $pkgdir/usr/libexec/kpatch/* $pkgdir/usr/lib/kpatch/
-	
-	rm -fr $pkgdir/usr/libexec $pkgdir/usr/local $pkgdir/usr/sbin $pkgdir/usr/libexec
-}
+  cd "$pkgdir"
 
-pkgver() {
-    cd $srcdir/kpatch
-    ( set -o pipefail
-        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+  # Remove incompatible init system file
+  rm etc/init/kpatch.conf
+  rmdir -p etc/init
+
+  cd usr
+
+  # Fix directory structure
+  mv local/* .
+  rmdir local
+  mv lib{exec/kpatch/*,/kpatch}
+  mv {s,}bin/kpatch
+  rmdir -p libexec/kpatch sbin
 }
