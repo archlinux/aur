@@ -1,14 +1,14 @@
 pkgbase = nodejs-vulcanize
 	pkgdesc = Process Web Components into one output file
-	pkgver = 1.14.0
+	pkgver = 1.16.0
 	pkgrel = 1
-	url = https://github.com/Polymer/vulcanize
+	url = https://github.com/Polymer/vulcanize#readme
 	arch = any
 	makedepends = npm
 	depends = nodejs
-	noextract = vulcanize-1.14.0.tgz
-	source = https://registry.npmjs.org/vulcanize/-/vulcanize-1.14.0.tgz
-	sha1sums = 94da4765df53c0ce181ba4ce32330312825290b8
+	noextract = vulcanize-1.16.0.tgz
+	source = https://registry.npmjs.org/vulcanize/-/vulcanize-1.16.0.tgz
+	sha1sums = b0ce3b0044d194ad4908ae4f1a6c6110a6e4d5e6
 
 pkgname = nodejs-vulcanize
 
