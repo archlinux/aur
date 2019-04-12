@@ -1,10 +1,10 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=opencorsairlink-testing
-pkgver=0+187+3c0374c
-_commit=3c0374c25676210bc5cfb9f53a600d721a8824b3
+pkgver=0+200+d0504cf
+_commit=d0504cf331098981ef54f63de42c4fc38c6a386a
 pkgrel=1
-pkgdesc="Utility for controlling the Corsair H100i and variants (testing branch)"
+pkgdesc="Status and control utility for Corsair Link products (testing branch)"
 arch=(i686 x86_64)
 url=https://github.com/audiohacked/OpenCorsairLink
 license=(GPL2)
@@ -28,6 +28,6 @@ build() {
 package() {
   cd OpenCorsairLink
   install -D OpenCorsairLink.elf "$pkgdir"/usr/bin/opencorsairlink
-  install -Dm 644 -t "$pkgdir"/usr/share/doc/opencorsairlink README.md
-  install -Dm 644 -t "$pkgdir"/usr/share/licenses/opencorsairlink LICENSE
+  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/opencorsairlink
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/opencorsairlink
 }
