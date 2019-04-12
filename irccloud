@@ -1,2 +1,2 @@
-#!/bin/bash
-NODE_PATH=/usr/lib/irccloud/node_modules /usr/bin/electron /usr/lib/irccloud
+#!/bin/sh
+exec electron /usr/lib/irccloud/app.asar "$@"

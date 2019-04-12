@@ -2,39 +2,34 @@
 
 pkgname=irccloud
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Chat on IRC from anywhere, and never miss a message"
 
 arch=('arm' 'i686' 'x86_64')
 license=('Apache')
 url='https://www.irccloud.com/'
 depends=('electron')
-makedepends=('npm')
+makedepends=('yarn')
 source=("irccloud-${pkgver}.tar.gz::https://github.com/irccloud/irccloud-desktop/archive/v${pkgver}.tar.gz"
-        "irccloud"
-        "irccloud.desktop")
+        "irccloud")
 sha256sums=('40b955cd9573a3ad8c598e56d2f34207a3e21611b4465635a9e72f6a6369dc2d'
-            '019f90a6bb3ec816a2ac8224b85792025e2885ef7cb451e2d2c70fdd68255acc'
-            '2f58dd2b70e6867bfddc216c25f704c4ebd9a427bdcbe4de92b0a2ed06407569')
+            '20d71c6232b4479bbb33fa4eca96aed8202a75d28c2325906253150c66888a63')
+
+build(){
+	cd "${srcdir}/irccloud-desktop-${pkgver}"
+
+	export SHELL=sh  # Workaround for https://github.com/electron-userland/electron-builder/issues/3494
+	make node_modules
+	yarn run electron-builder --linux pacman -c.electronDist /usr/lib/electron -c.electronVersion $(sed s/^v// /usr/lib/electron/version)
+}
 
 package(){
 	cd "${srcdir}/irccloud-desktop-${pkgver}"
-	npm install --production
 
-	install -d "${pkgdir}/usr/lib/irccloud"
-	cp -a package.json app node_modules "${pkgdir}/usr/lib/irccloud"
-	install -Dm644 "${srcdir}/irccloud.desktop" "${pkgdir}/usr/share/applications/irccloud.desktop"
-	install -Dm755 "${srcdir}/irccloud" "${pkgdir}/usr/lib/irccloud/irccloud"
+	tar -xJf "./dist/irccloud-desktop-${pkgver}.pacman" -C "${pkgdir}" {usr,opt/IRCCloud/resources/app.asar}
+	install -Dm644 "${pkgdir}/opt/IRCCloud/resources/app.asar" "${pkgdir}/usr/lib/irccloud/app.asar"
+	rm -rf "${pkgdir}/opt"
+	sed -i -E 's|Exec="/opt/IRCCloud/irccloud-desktop"|Exec=/usr/bin/electron /usr/lib/irccloud/app.asar|' "${pkgdir}/usr/share/applications/irccloud-desktop.desktop"
 
-	install -Dm644 './app/tray-icon.png' "$pkgdir/usr/share/icons/hicolor/32x32/apps/irccloud.png"
-	install -Dm644 './app/tray-icon@2x.png' "$pkgdir/usr/share/icons/hicolor/64x64/apps/irccloud.png"
-	install -Dm644 './app/tray-icon@4x.png' "$pkgdir/usr/share/icons/hicolor/128x128/apps/irccloud.png"
-	install -Dm644 './app/icon.png' "$pkgdir/usr/share/icons/hicolor/256x256/apps/irccloud.png"
-
-	install -d "${pkgdir}/usr/bin"
-	ln -s "/usr/lib/irccloud/irccloud" "${pkgdir}/usr/bin/irccloud"
-
-	# npm leaves a bunch of directories as world writable; this is a workaround
-	# to ensure these don’t enter the file system.
-	chmod -R go-w "$pkgdir"
+	install -Dm755 "${srcdir}/irccloud" "${pkgdir}/usr/bin/irccloud"
 }
