@@ -1,20 +1,25 @@
 pkgbase = systemd_mon
 	pkgdesc = Monitor systemd units and trigger alerts for failed states.
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/joonty/systemd_mon
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = ruby-bundler
+	makedepends = ruby-rake
+	depends = ruby
 	depends = ruby-dbus
 	optdepends = ruby-mail: email notifier support
 	optdepends = ruby-slack-notifier: slack notifier support
 	optdepends = ruby-hipchat: hipchat notifier support
-	noextract = systemd_mon-0.1.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/systemd_mon-0.1.0.gem
+	source = git+https://github.com/joonty/systemd_mon#tag=v0.1.0
+	source = ruby-dbus-version.patch
 	source = systemd_mon.service
 	source = sample-config.yml
-	sha256sums = 1d1e981ffb2ad10c6542eb580b758ebf0d1fb4bd2a3921ea0614e61c695b386c
+	sha256sums = SKIP
+	sha256sums = ef4530ff57194f4738a2ddf90433c4ecc4566649c04f2df110487594304b0933
 	sha256sums = c23f5a4fb346e4294e5764ae8544b3f00fe40c5f8adbba0ffc5accfb3e5171b6
 	sha256sums = 402b42e7b76385137541cdf397b32886116c6a975568556c87de7dd25fe670ed
 

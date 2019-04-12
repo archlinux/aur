@@ -2,27 +2,41 @@
 
 pkgname=systemd_mon
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Monitor systemd units and trigger alerts for failed states.'
 arch=('any')
 url='https://github.com/joonty/systemd_mon'
 license=('MIT')
-depends=('ruby-dbus')
+depends=('ruby' 'ruby-dbus')
 optdepends=('ruby-mail: email notifier support'
             'ruby-slack-notifier: slack notifier support'
             'ruby-hipchat: hipchat notifier support')
+makedepends=('git' 'ruby-bundler' 'ruby-rake')
 options=(!emptydirs)
-source=("https://rubygems.org/downloads/${pkgname}-${pkgver}.gem"
+source=("git+https://github.com/joonty/${pkgname}#tag=v${pkgver}"
+        "ruby-dbus-version.patch"
         "${pkgname}.service"
         "sample-config.yml")
-sha256sums=('1d1e981ffb2ad10c6542eb580b758ebf0d1fb4bd2a3921ea0614e61c695b386c'
+sha256sums=('SKIP'
+            'ef4530ff57194f4738a2ddf90433c4ecc4566649c04f2df110487594304b0933'
             'c23f5a4fb346e4294e5764ae8544b3f00fe40c5f8adbba0ffc5accfb3e5171b6'
             '402b42e7b76385137541cdf397b32886116c6a975568556c87de7dd25fe670ed')
-noextract=("${pkgname}-${pkgver}.gem")
+
+prepare() {
+	cd "${pkgname}"
+
+	patch < "${srcdir}/ruby-dbus-version.patch"
+}
+
+build() {
+	cd "${pkgname}"
+
+	rake build
+}
 
 package() {
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"
-	gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" "${pkgname}-${pkgver}.gem"
+	gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" "${pkgname}/pkg/${pkgname}-${pkgver}.gem"
 	rm "${pkgdir}/${_gemdir}/cache/${pkgname}-${pkgver}.gem"
 
 	install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"

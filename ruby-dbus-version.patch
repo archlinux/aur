@@ -1,0 +1,11 @@
+--- systemd_mon.gemspec	2015-03-19 11:23:35.000000000 +0100
++++ systemd_mon.gemspec	2019-04-12 12:34:25.680700168 +0200
+@@ -18,7 +18,7 @@
+   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+   spec.require_paths = ["lib"]
+ 
+-  spec.add_dependency "ruby-dbus", "~> 0.11.0"
++  spec.add_dependency "ruby-dbus", ">= 0.11.0"
+   spec.add_development_dependency "bundler", "~> 1.6"
+   spec.add_development_dependency "rake"
+ end
