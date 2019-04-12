@@ -1,0 +1,14 @@
+pkgbase = clr-wallpapers
+	pkgdesc = Custom wallpapers for clearlinux
+	pkgver = 7
+	pkgrel = 1
+	url = https://github.com/clearlinux/clr-wallpapers
+	arch = any
+	license = custom:Distributable
+	makedepends = autogen
+	options = !strip
+	source = clr-wallpapers-7.tar.gz::https://github.com/clearlinux/clr-wallpapers/archive/v7.tar.gz
+	sha256sums = c812d6bbaac69f3483f3f3b1fd6cffe63aafad7786c63e5ac0e11059626e0a51
+
+pkgname = clr-wallpapers
+
