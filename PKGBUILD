@@ -1,6 +1,6 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=rhythmbox-plugin-listenbrainz
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Rhythmbox plugin to submit your listens to ListenBrainz "
 arch=('any')
