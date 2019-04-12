@@ -2,8 +2,8 @@
 
 pkgname=ant-bloody-theme-git
 _pkgname=Ant-Bloody
-pkgver=r53.60fce70
-pkgrel=2
+pkgver=r54.a2cba51
+pkgrel=1
 pkgdesc="Bloody variant of the Ant theme"
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
