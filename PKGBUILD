@@ -4,7 +4,7 @@
 
 pkgname=notion-app
 pkgver=1.0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="The all-in-one workspace for your notes and tasks"
 arch=('i686' 'x86_64')
 url="https://www.notion.so/desktop"
@@ -13,7 +13,7 @@ depends=('electron')
 makedepends=('dmg2img' 'p7zip' 'libicns' 'gendesk')
 source=("https://desktop-release.notion-static.com/Notion-"${pkgver}".dmg" 'notion-app')
 md5sums=('e742641e62819e7ffe48c5cae09c4ee1'
-         'c6e87309eebe3dfdd206e4c399fffebb')
+         'a8931f48231137e3acb1541cd38c99f4')
 
 build() {
   msg "Converting dmg image..."
