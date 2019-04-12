@@ -140,38 +140,50 @@ int select_authors() {
 
     // Set the author.
 
-    int index = select_author_index(author_count, "%sSelect the author:%s ");
-    if (index > author_count - 1) {
+    int index = select_author_index(author_count, "\n%sSelect the author:%s ");
+    if (index < -1 || index > author_count - 1) {
         printf("%sIndex out of bounds - exiting.%s\n", RED, NO_FORMAT);
         exit(1);
     }
 
-    char *entry = strdup(authors[index]);
-    char *name = strsep(&entry, ":");
-    char *email = entry;
-    if (set_author(name, email) != 0) {
-        return -1;
+    char *entry, *name, *email;
+    if (index == -1) {
+        set_author("", "");
+        printf("%sRemoved author.%s\n", RED, NO_FORMAT);
+    } else {
+        entry = index == -1 ? "" : strdup(authors[index]);
+        name = index == -1 ? "" : strsep(&entry, ":");
+        email = entry;
+        if (set_author(name, email) != 0) {
+            return -1;
+        }
+        printf("%sSet git user and email as %s %s%s\n\n", GREEN, name, email, NO_FORMAT);
     }
-    printf("%sSet git user and email as %s %s%s\n\n", GREEN, name, email, NO_FORMAT);
+    
     
     // Set the co-author.
     index = select_author_index(author_count, "%sSelect the co-author:%s ");
-    if (index > author_count - 1) {
+    if (index < -1 || index > author_count - 1) {
         printf("%sIndex out of bounds - exiting.%s\n", RED, NO_FORMAT);
         exit(1);
     }
 
-    entry = strdup(authors[index]);
-    name = strsep(&entry, ":");
-    email = entry;
-    if (set_co_author(name, email) != 0) {
-        return -1;
-    }
+    if (index == -1) {
+        set_co_author("", "");
+        printf("%sRemoved co-author.%s\n", RED, NO_FORMAT);
+    } else {
+        entry = strdup(authors[index]);
+        name = strsep(&entry, ":");
+        email = entry;
+        if (set_co_author(name, email) != 0) {
+            return -1;
+        }
 
-    if (set_commit_template() != 0) {
-        return -1;
+        if (set_commit_template() != 0) {
+            return -1;
+        }
+        printf("%sSet co-author as: %s %s%s\n", GREEN, name, email, NO_FORMAT);
     }
-    printf("%sSet co-author as: %s %s%s\n", GREEN, name, email, NO_FORMAT);
 
     free_authors(authors, author_count);
     return 0;
@@ -190,7 +202,7 @@ int select_author_index(int author_count, char *prompt) {
             exit(1);
         }
     } while (item_count == 0);
-    return index;
+    return index - 1;
 }
 
 /**
@@ -198,8 +210,9 @@ int select_author_index(int author_count, char *prompt) {
  */
 void display_available_authors(char **authors, int author_count) {
     // Display authors on each line to select for author, then co-author.
+    printf("\t%s[%d]%s: %s%s%s\n", GREEN, 0, NO_FORMAT, RED, "Remove current author from role", NO_FORMAT);
     for (int i = 0; i < author_count; i++) {
-        printf("\t%s[%d]%s: %s\n", GREEN, i, NO_FORMAT, authors[i]);
+        printf("\t%s[%d]%s: %s\n", GREEN, i + 1, NO_FORMAT, authors[i]);
     }
 }
 
@@ -233,8 +246,6 @@ char **read_authors(int *length) {
         buff[strcspn(buff, "\n")] = '\0';
         authors[i] = malloc(strlen(buff) + 1);
         strcpy(authors[i], buff);
-        
-        // TODO: If i >= 255, realloc authors to be size + 255.
     }
     *length = i;
     fclose(authors_file);
@@ -287,13 +298,14 @@ int set_commit_template() {
 
 int set_co_author(char *name, char *email) {
     FILE *template = fopen(commit_template_path, "w");
-
-    char entry[BUFSIZ];
-    strcat(entry, "\n\nCo-authored-by: ");
-    strcat(entry, name);
-    strcat(entry, " ");
-    strcat(entry, email);
-    fputs(entry, template);
+    if (strlen(name) > 0 || strlen(email) > 0) {
+        char entry[BUFSIZ];
+        strcat(entry, "\n\nCo-authored-by: ");
+        strcat(entry, name);
+        strcat(entry, " ");
+        strcat(entry, email);
+        fputs(entry, template);
+    }
     fclose(template);
     return 0;
 }
