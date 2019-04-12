@@ -1,0 +1,15 @@
+pkgbase = kaufman
+	pkgdesc = Clean caches and temporary files from a Linux system - Early beta stage
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/adjutant/kaufman
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	source = kaufman-0.1.tar.gz::https://github.com/annguyenfoss/kaufman/archive/0.1.tar.gz
+	sha256sums = 30e499eae84ff2ae9946a5159d7441d2560c42c49a32935629b98098a0b6d600
+
+pkgname = kaufman
+
