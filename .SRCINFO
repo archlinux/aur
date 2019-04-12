@@ -1,6 +1,6 @@
 pkgbase = mod_auth_cas-git
 	pkgdesc = Apache CAS Authentication Module for the JASIG/Apereo CAS Server.
-	pkgver = r350.ac7147b
+	pkgver = r373.eb3537a
 	pkgrel = 1
 	url = https://github.com/apereo/mod_auth_cas
 	arch = x86_64

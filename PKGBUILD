@@ -1,6 +1,6 @@
 pkgname=mod_auth_cas-git
 _gitname=${pkgname%-git}
-pkgver=r350.ac7147b
+pkgver=r373.eb3537a
 pkgrel=1
 pkgdesc="Apache CAS Authentication Module for the JASIG/Apereo CAS Server."
 arch=('x86_64')
@@ -18,6 +18,7 @@ pkgver() {
 
 build() {
     cd "$_gitname"
+    autoreconf -ivf
     ./configure --prefix=/usr
     make
 }
