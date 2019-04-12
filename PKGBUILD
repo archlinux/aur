@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=75.0.3753.4
+pkgver=75.0.3759.4
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -84,8 +84,6 @@ source=(
         # Patch from crbug (chromium bugtracker) or Arch chromium package.
         'chromium-widevine-r4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium'
         'chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
-        'nullptr.patch.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1552864/revisions/2/patch?download'
-        'libcpp.patch.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1546066/revisions/4/patch?download'
         )
 sha256sums=(
             #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -99,8 +97,6 @@ sha256sums=(
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
-            '9a8fc71db40d2749819906041fc0eead2b9326521be898cc150b967b936fcbd3'
-            '84a34c48df06ea3cc52bb9ad8e056e68e83a0068c9fce420c3e704091c7203fa'
             )
 install=chromium-dev.install
 
@@ -239,6 +235,7 @@ _keeplibs=(
            'third_party/pdfium/third_party/libtiff'
            'third_party/pdfium/third_party/skia_shared'
            'third_party/perfetto'
+           'third_party/pffft'
            'third_party/ply'
            'third_party/polymer'
            'third_party/protobuf'
@@ -486,12 +483,6 @@ prepare() {
   sed 's|/dri/|/|g' -i media/gpu/vaapi/vaapi_wrapper.cc
 
   # Patch from crbug (chromium bugtracker) or Arch chromium package.
-
-  # https://crbug.org/819294.
-  base64 --decode "${srcdir}/nullptr.patch.base64" | patch -p1 -i -
-
-  # https://crbug.org/947527.
-  base64 --decode "${srcdir}/libcpp.patch.base64" | patch -p1 -i -
 
   # https://crbug.com/skia/6663#c10.
   patch -p0 -i "${srcdir}/chromium-skia-harmony.patch"
