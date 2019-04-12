@@ -2,12 +2,13 @@
 
 pkgname=stf-git
 pkgver=3.4.0+12+gcdb607a8
-pkgrel=1
-pkgdesc='Web application for debugging Android devices (git)'
+pkgrel=2
+pkgdesc='Web application for controlling and managing Android devices (git)'
 arch=(i686 x86_64)
 url=https://openstf.io
 license=(Apache)
-depends=(nodejs-lts-carbon
+depends=(nodejs
+         android-tools
          rethinkdb
          graphicsmagick
          zeromq
