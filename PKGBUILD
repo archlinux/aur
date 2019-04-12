@@ -1,8 +1,8 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=checkdmarc
-pkgver=0+186+fb7de98
-_commit=fb7de9807df152a1a592de04f27db000779135e4
+pkgver=0+289+1ccb575
+_commit=1ccb575187ebbded606b322a2d048ff3264f720a
 pkgrel=1
 pkgdesc='Parser for SPF and DMARC DNS records'
 arch=(any)
@@ -12,10 +12,13 @@ depends=(python-dnspython
          python-pyleri
          python-publicsuffix
          python-wheel
-         python-nose)
+         python-nose
+         python-timeout-decorator
+         python-publicsuffix2
+         python-expiringdict)
 makedepends=(git python-setuptools)
 source=(git+https://github.com/domainaware/checkdmarc#commit=$_commit)
-sha512sums=(SKIP)
+sha512sums=('SKIP')
 
 pkgver() {
   cd checkdmarc
@@ -25,5 +28,5 @@ pkgver() {
 package() {
   cd checkdmarc
   python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm 644 -t "$pkgdir"/usr/share/licenses/checkdmarc LICENSE
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/checkdmarc
 }
