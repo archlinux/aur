@@ -3,7 +3,7 @@
 
 pkgname=electron-ssr
 pkgver=0.2.6
-pkgrel=3
+pkgrel=4
 pkgdesc='Shadowsocksr client using electron.'
 arch=('x86_64')
 conflicts=("electron-ssr-git")
@@ -19,17 +19,13 @@ options=('!strip')
 source=('https://raw.githubusercontent.com/erguotou520/electron-ssr/master/LICENSE'
         'electron-ssr.desktop'
         'build.patch'
-        'argv.patch'
-        'path.patch'
         'electron-ssr.sh')
 
 source_x86_64=("$pkgname-$pkgver.tar.gz::https://github.com/erguotou520/electron-ssr/archive/v$pkgver.tar.gz")
 
 sha256sums=('87561b47486c2485c76136172c87f0df16ee9dc4cb85be7d77ce274328f92735'
             'f96b27d2f826bf4e1c96f0154516c1e2cf07536f745128a9c2e5ec113cea6446'
-            '8600908031ef96c9bd4a989ab351db02668a3ce7f322e21b398ce042d1967309'
-            '5eafcfd21666d63fe19875a0e3d05761bd2ce1ee5f938255ea048de117f2d942'
-            '0f0f4b93e86351044f3eab49967d22b7bff458e9eaaf112e7877458d1f0427be'
+            '4be4d68ab9cf76ca8c4b7d8ce361a1054db65602eca69c50a9eab597d03fdef1'
             '5dfe00e15a2dbf461d0b48107b4a994ef9444801e5f9b7083a4b020e634db67f')
 sha256sums_x86_64=('9f2b0bdec4aa1fe9916981694f922b6e93e7fb80d2b2d5bda80c25d837c3fdda')
 
@@ -38,8 +34,6 @@ prepare() {
     dir=$srcdir/$pkgname-$pkgver/
     cd $dir
     patch -Np1 -i "$srcdir/build.patch"
-    patch -Np1 -i "$srcdir/argv.patch"
-    patch -Np1 -i "$srcdir/path.patch"
     sed -i '/\"electron\":/d' package.json
 }
 
