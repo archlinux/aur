@@ -1,7 +1,7 @@
 # Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
 
 pkgname=jcloisterzone
-pkgver=4.3.0
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="A Java version of the Carcassonne board game."
 arch=('any')
@@ -12,7 +12,7 @@ source=("http://play.jcloisterzone.com/builds/JCloisterZone-${pkgver}.tgz"
         'jcloisterzone.sh'
         'jcloisterzone.desktop'
         'ico.png')
-sha256sums=('19ba815f2057b36ff9359fe17852a710db58aedb16b43c68adaf20ab53f0f311'
+sha256sums=('a91ece1d750391694e9ec3cff99c92a215702dfb9c52e0d94db5fd96c561c307'
             '47f628afde304e1e6f090cd093f7b5b3027d339a085f129c1c8201b64a17fe9d'
             '7b25dfcdcb9ec286555a5f03e7b16bbc9c71f117f10aefc79b7e4537a72f4253'
             '012a090df7f1fa30fe3ede444eab92cb2f6fd3c37e1b6786f04da9feb3f7cf38')
