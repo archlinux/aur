@@ -5,7 +5,7 @@
 pkgname=xf86-video-intel-git
 _pkgname=xf86-video-intel
 pkgver=2.99.917+863+g6afed33b
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=(x86_64)
 url="https://01.org/linuxgraphics"
@@ -38,7 +38,7 @@ pkgver() {
   git describe --tags | sed 's/-/+/g'
 }
 
-prepare() {
+build() {
   cd $pkgname
 
   # fix external monitor - FS#58895
@@ -47,11 +47,6 @@ prepare() {
 
   NOCONFIGURE=1 ./autogen.sh
 
-#  mkdir build
-}
-
-build() {
-  cd $pkgname
 
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
   # With them, module fail to load with undefined symbol.
