@@ -11,10 +11,10 @@ pkgname=davinci-resolve
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
 pkgver=15.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 arch=('any')
-url="https://www.blackmagicdesign.com/products/davinciresolve"
+url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 license=('Commercial')
 depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'lib32-libpng12' 'ocl-icd' 'openssl-1.0'
          'opencl-driver' 'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets')
@@ -32,7 +32,7 @@ if [ ! -f ${PWD}/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
 		ln -sfn $DOWNLOADS_DIR/DaVinci_Resolve_${pkgver}_Linux.zip ${PWD}
 	else
 		msg2 ""
-		msg2 "The package can be downloaded here: https://www.blackmagicdesign.com/products/davinciresolve/"
+		msg2 "The package can be downloaded here: https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 		msg2 "Please remember to put a downloaded package DaVinci_Resolve_${pkgver}_Linux.zip into the build directory ${PWD} or $DOWNLOADS_DIR"
 		msg2 ""
 	fi
@@ -64,7 +64,7 @@ package()
 	mkdir -p "${pkgdir}/etc/xdg/menus"
 
 	msg2 "Extracting from bundle..."
-	msg "Please wait, this take a while"
+	msg "Please wait, this take a while..."
 	cd "${srcdir}" || exit
 	bsdtar x -f DaVinci_Resolve_${pkgver}_Linux.run -C "${pkgdir}/opt/${_pkgname}"
 
