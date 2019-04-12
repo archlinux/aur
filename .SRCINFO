@@ -1,0 +1,19 @@
+pkgbase = alda-git
+	pkgdesc = A music programming language for musicians.
+	pkgver = 1.2.0.r17.g2203edf
+	pkgrel = 1
+	url = https://github.com/alda-lang/alda
+	arch = x86_64
+	license = EPL
+	makedepends = boot
+	makedepends = launch4j
+	provides = alda
+	conflicts = alda
+	options = docs
+	options = !strip
+	options = debug
+	source = git://github.com/alda-lang/alda
+	sha1sums = SKIP
+
+pkgname = alda-git
+
