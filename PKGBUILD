@@ -6,7 +6,7 @@ pkgver=4.10.1303.2
 _chrome_ver=73.0.3683.103
 _license_date=$(curl -sI https://www.google.com/intl/en/chrome/privacy/eula_text.html | sed -n '/^last-modified/ s/.*: //p' | date +"%Y%m%d" -f -)
 _license_last=20190307
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('x86_64')
 url='https://www.widevine.com/'
@@ -31,5 +31,7 @@ pkgver() {
 
 package() {
   install -Dm644 libwidevinecdm.so -t "$pkgdir/usr/lib/chromium/"
+  install -d "$pkgdir/usr/lib/chromium-dev/"
+  ln -s ../chromium/libwidevinecdm.so "$pkgdir/usr/lib/chromium-dev/libwidevinecdm.so"
   install -Dm644 chrome-eula_text-$_license_date.html "$pkgdir/usr/share/licenses/$pkgname/eula_text.html"
 }
