@@ -63,18 +63,30 @@ diff -ura electron-ssr-0.2.6/src/main/logger.js electron-ssr-0.2.6-new/src/main/
  ensureDirSync(logFolder)
 
 diff -ura electron-ssr-0.2.6/src/main/index.js electron-ssr-0.2.6-new/src/main/index.js
---- electron-ssr-0.2.6/src/main/index.js        2019-04-12 14:42:05.591574100 +0800
-+++ electron-ssr-0.2.6-new/src/main/index.js    2019-04-12 14:43:48.209798254 +0800
-@@ -17,8 +17,11 @@
+--- electron-ssr-0.2.6/src/main/index.js        2019-04-12 15:05:00.420443178 +0800
++++ electron-ssr-0.2.6-new/src/main/index.js    2019-04-12 15:06:38.004324260 +0800
+@@ -17,7 +17,8 @@
  import { loadConfigsFromString } from '../shared/ssr'
  import { isMac, isWin } from '../shared/env'
  
 -const isSecondInstance = app.makeSingleInstance((argv, workingDirectory) => {
-+let isSecondInstance = false
 +app.requestSingleInstanceLock()
 +app.on('second-instance', (event, argv, workingDirectory) => {
    // Someone tried to run a second instance, we should focus our window.
-+  isSecondInstance = true
    const _window = getWindow()
    if (_window) {
-     if (_window.isMinimized()) {
+@@ -38,13 +39,8 @@
+       addConfigs(configs)
+     }
+   }
+-})
+-
+-if (isSecondInstance) {
+-  // cannot find module '../dialog'
+-  // https://github.com/electron/electron/issues/8862#issuecomment-294303518
+   app.exit()
+-}
++})
+ 
+ bootstrap.then(() => {
+   createWindow()
