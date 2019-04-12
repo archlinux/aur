@@ -1,10 +1,13 @@
 pkgbase = python-hickle
 	pkgdesc = Hickle - a HDF5 based version of pickle
 	pkgver = 3.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/telegraphic/hickle
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-scipy
+	checkdepends = python-pandas
 	depends = python
 	depends = python-h5py
 	source = https://github.com/telegraphic/hickle/archive/3.4.3.tar.gz
