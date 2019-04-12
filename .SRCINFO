@@ -1,0 +1,16 @@
+pkgbase = nodejs-madoko
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://www.madoko.net/
+	arch = any
+	license = Apache-2
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	noextract = madoko-1.1.4.tgz
+	source = https://registry.npmjs.org/madoko/-/madoko-1.1.4.tgz
+	sha256sums = 0ac4e5a22016dc697a6e1f9a3bbd410ee7b003161c22cd04dded1e7ded18bce9
+
+pkgname = nodejs-madoko
+
