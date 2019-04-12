@@ -6,7 +6,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=2.18.3
+pkgver=2.20.19.r13605.ab13d57bf
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -65,7 +65,7 @@ makedepends=('python-paver'
 provides=('flexget')
 conflicts=('flexget')
 
-source=("git+https://github.com/Flexget/Flexget/#tag=$pkgver"
+source=("git+https://github.com/Flexget/Flexget/"
         'flexget.service'
         'flexget@.service'
         )
@@ -74,10 +74,10 @@ sha256sums=('SKIP'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             '5fca3a1b6be282c0914754bbfdeef21005d936fba3d2698801bba18369e1321a')
 
-#pkgver() {
-#  cd Flexget
-#  printf "%s.r%s.%s" "$(grep __version__ flexget/_version.py | sed -r "s/.*([0-9].*\.[0-9].*\.[0-9].*)\.dev.*/\1/g")" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-#}
+pkgver() {
+  cd Flexget
+  printf "%s.r%s.%s" "$(grep __version__ flexget/_version.py | sed -r "s/.*([0-9].*\.[0-9].*\.[0-9].*)\.dev.*/\1/g")" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   cd "${_pkgname}"
