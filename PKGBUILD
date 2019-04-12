@@ -11,7 +11,7 @@ url="http://www.swig.org/"
 license=('custom')
 depends=('pcre' 'gcc-libs')
 checkdepends=('ruby' 'python2' 'java-environment' 'tcl' 'php' 'lua' 'ocaml' 'r' 'go' 'python2-cffi' 'camlp4')
-source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz)
+source=(https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz)
 sha1sums=('5cc1af41d041e4cc609580b99bb3dcf720effa25')
 
 build() {
