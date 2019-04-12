@@ -7,7 +7,7 @@
 
 
 pkgname=kdenlive-testing-git
-pkgver=18.11.70.r10139.1c1a142f8
+pkgver=19.03.70.r10665.4fc2f242e
 pkgrel=1
 pkgdesc="A non-linear video editor. Following the refactoring timeline branch in git."
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ provides=('kdenlive')
 conflicts=('kdenlive')
 #source=(${pkgname}::git://anongit.kde.org/kdenlive)
 #source=(git://anongit.kde.org/kdenlive) 
-source=('git://anongit.kde.org/kdenlive#branch=refactoring_timeline')
+source=('git://anongit.kde.org/kdenlive#branch=refactoring_track_producers')
 sha1sums=('SKIP')
 install=$pkgname.install
 options=(debug !strip)
