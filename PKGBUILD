@@ -1,13 +1,13 @@
 # Maintainer: awe00 < awe00 AT hotmail DOT fr>
 pkgname=perl-asciio
 pkgver=1.51.3
-pkgrel=1
+pkgrel=2
 pkgdesc='It has always been painful to do ASCII diagrams by hand. This perl application allows you to draw ASCII diagrams in a modern (but simple) graphical interface.'
 _dist=App-Asciio
 arch=('any')
 url="https://metacpan.org/release/$_dist"
 license=('GPL' 'PerlArtistic')
-depends=(perl gtk2-perl perl-file-slurp perl-readonly perl-module-util perl-data-compare perl-text-diff perl-treedumper perl-compress-bzip2 perl-list-moreutils perl-eval-context perl-hash-slice perl-data-treedumper-renderer-gtk)
+depends=(perl gtk2-perl perl-file-slurp perl-readonly perl-module-util perl-data-compare perl-text-diff perl-treedumper perl-compress-bzip2 perl-list-moreutils perl-eval-context perl-hash-slice perl-data-treedumper-renderer-gtk perl-clone)
 makedepends=('perl-module-build' perl-test-most)
 checkdepends=(perl-carp-clan)
 options=('!emptydirs' purge)
