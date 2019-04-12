@@ -2,17 +2,17 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=nextcloud-app-jsxc
-pkgver=3.3.2
+pkgver=3.4.3
 pkgrel=1
 pkgdesc="XMPP chat for nextcloud"
 arch=('any')
-url="https://apps.nextcloud.com/apps/ojsxc"
+url="https://github.com/nextcloud/jsxc.nextcloud"
 license=('GPL')
 depends=('nextcloud')
 makedepends=()
 options=('!strip')
 source=("$pkgname-$pkgver.tgz::https://github.com/nextcloud/jsxc.nextcloud/releases/download/v$pkgver/ojsxc-$pkgver.tar.gz")
-sha256sums=('63a45851dc20cdde60a60f065bc8f0b9668a38462e4aec10cdb0c39d8090d2d5')
+sha256sums=('7ed1accc266cde7c7a952a00a0161f600e0816fd140a8658e2eaa684446988ee')
 
 package() {
   install -d ${pkgdir}/usr/share/webapps/nextcloud/apps
