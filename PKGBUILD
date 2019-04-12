@@ -11,16 +11,16 @@ pkgname=davinci-resolve-beta
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
 pkgver=16.0b1
-pkgrel=1
+pkgrel=2
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 arch=('any')
-url="https://www.blackmagicdesign.com/products/davinciresolve"
+url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 license=('Commercial')
 depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'lib32-libpng12' 'ocl-icd' 'openssl-1.0'
          'opencl-driver' 'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets')
 makedepends=('libarchive' 'xdg-user-dirs')
 options=('!strip')
-conflicts=('davinci-resolve-beta' 'davinci-resolve-studio' 'davinci-resolve-studio-beta')
+conflicts=('davinci-resolve' 'davinci-resolve-studio' 'davinci-resolve-studio-beta')
 install=${pkgname}.install
 
 # Trying to make the user's life easier ;o)
@@ -32,7 +32,7 @@ if [ ! -f ${PWD}/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
 		ln -sfn $DOWNLOADS_DIR/DaVinci_Resolve_${pkgver}_Linux.zip ${PWD}
 	else
 		msg2 ""
-		msg2 "The package can be downloaded here: https://www.blackmagicdesign.com/products/davinciresolve/"
+		msg2 "The package can be downloaded here: https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 		msg2 "Please remember to put a downloaded package DaVinci_Resolve_${pkgver}_Linux.zip into the build directory ${PWD} or $DOWNLOADS_DIR"
 		msg2 ""
 	fi
