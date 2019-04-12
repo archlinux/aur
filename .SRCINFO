@@ -1,0 +1,18 @@
+pkgbase = sratom
+	pkgdesc = An LV2 Atom RDF serialisation library
+	pkgver = 0.6.2
+	pkgrel = 2
+	url = https://drobilla.net/software/sratom/
+	arch = any
+	license = custom:ISC
+	makedepends = mingw-w64-python
+	depends = mingw-w64-lv2
+	depends = mingw-w64-sord
+	source = https://download.drobilla.net/sratom-0.6.2.tar.bz2
+	source = https://download.drobilla.net/sratom-0.6.2.tar.bz2.sig
+	validpgpkeys = 907D226E7E13FA337F014A083672782A9BF368F3
+	sha512sums = 356e1dfde07fcc3eff99186ff79501557572f5d73338fd096bf639a82d1d4fe3c0e790627c8eb088053e4a2aeed4e548aca0a5572d1ab26316cfdb13374f10ac
+	sha512sums = SKIP
+
+pkgname = sratom
+
