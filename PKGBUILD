@@ -6,7 +6,7 @@
 _pkgbase=serd
 pkgname=mingw-w64-serd
 pkgver=0.30.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Lightweight C library for RDF syntax supporting reading/ writing Turtle and NTriples."
 arch=('any')
 url="https://drobilla.net/software/serd/"
@@ -44,12 +44,17 @@ check() {
 
 package() {
   cd "${_pkgbase}-${pkgver}"
-  python waf install --destdir="${pkgdir}"
-  # license
-  install -vDm 644 COPYING \
-    "$pkgdir/usr/share/licenses/${_pkgbase}/LICENSE"
-  # docs
-  install -t "$pkgdir/usr/share/doc/${_pkgbase}" \
-    -vDm 644 {AUTHORS,NEWS,README.md}
+
+  for _arch in "${_architectures[@]}"; do
+    python waf install --destdir="${pkgdir}"
+    # license
+    install -vDm 644 COPYING \
+      "$pkgdir/usr/$_arch/share/licenses/${_pkgbase}/LICENSE"
+    # docs
+    install -t "$pkgdir/usr/$_arch/share/doc/${_pkgbase}" \
+      -vDm 644 {AUTHORS,NEWS,README.md}
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+  done
 }
 # vim:set ts=2 sw=2 et:
