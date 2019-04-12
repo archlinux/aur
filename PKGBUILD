@@ -11,8 +11,8 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
 # Can be from either systemd or systemd-stable
-_commit='cbf14c9500d5e6820fd7d96166ca0bf75c6850df'
-pkgver=241.67
+_commit='3d835d09f29151c97af7cb1116e192df711587ab'
+pkgver=241.93
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -269,7 +269,7 @@ package_systemd-libs-selinux() {
   provides=('libsystemd' 'libsystemd.so' 'libudev.so'
             'libsystemd-selinux'
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
-  conflicts=("${pkgname/-selinux}")
+  conflicts=('libsystemd' 'libsystemd-selinux' "${pkgname/-selinux}")
   replaces=('libsystemd-selinux')
 
   install -d -m0755 "$pkgdir"/usr

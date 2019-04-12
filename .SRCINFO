@@ -1,5 +1,5 @@
 pkgbase = systemd-selinux
-	pkgver = 241.67
+	pkgver = 241.93
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -111,9 +111,9 @@ pkgname = systemd-selinux
 	optdepends = polkit: allow administration as unprivileged user
 	optdepends = curl: machinectl pull-tar and pull-raw
 	provides = nss-myhostname
-	provides = systemd-tools=241.67
-	provides = udev=241.67
-	provides = systemd=241.67-1
+	provides = systemd-tools=241.93
+	provides = udev=241.93
+	provides = systemd=241.93-1
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -146,7 +146,9 @@ pkgname = systemd-libs-selinux
 	provides = libsystemd.so
 	provides = libudev.so
 	provides = libsystemd-selinux
-	provides = systemd-libs=241.67-1
+	provides = systemd-libs=241.93-1
+	conflicts = libsystemd
+	conflicts = libsystemd-selinux
 	conflicts = systemd-libs
 	replaces = libsystemd-selinux
 
@@ -156,16 +158,16 @@ pkgname = systemd-resolvconf-selinux
 	depends = systemd-selinux
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=241.67-1
+	provides = systemd-resolvconf=241.93-1
 	conflicts = openresolv
-	conflicts = systemd-resolvconf=241.67-1
+	conflicts = systemd-resolvconf=241.93-1
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=241.67-1
-	provides = selinux-systemd-sysvcompat=241.67-1
+	provides = systemd-sysvcompat=241.93-1
+	provides = selinux-systemd-sysvcompat=241.93-1
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
