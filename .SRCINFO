@@ -1,9 +1,9 @@
 pkgbase = libnetconf2
 	pkgdesc = A NETCONF library in C intended for building NETCONF clients and servers.
-	pkgver = 0.10r1
+	pkgver = 0.12r1
 	pkgrel = 1
 	url = https://github.com/CESNET/libnetconf2
-	arch = x86_64
+	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = doxygen
@@ -11,8 +11,8 @@ pkgbase = libnetconf2
 	depends = libyang
 	depends = openssl
 	conflicts = libnetconf2-git
-	source = libnetconf2-0.10-r1.tar.gz::https://github.com/CESNET/libnetconf2/archive/v0.10-r1.tar.gz
-	md5sums = 449c3c8260aee96fd62eb753aa49670a
+	source = https://github.com/CESNET/libnetconf2/archive/v0.12-r1.tar.gz
+	sha256sums = 86269d3f1bc85bb17d8823d214f9a676ee3b14ee18a0b87a230380df8503e8f5
 
 pkgname = libnetconf2
 
