@@ -1,7 +1,7 @@
 # Maintainer: David Rodriguez <dissonant.tech@gmail.com>
 
 pkgname=kubebox
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Kubebox - Terminal and Web console for Kubernetes"
 arch=('x86_64')

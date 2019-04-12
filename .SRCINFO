@@ -1,11 +1,11 @@
 pkgbase = kubebox
 	pkgdesc = Kubebox - Terminal and Web console for Kubernetes
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/kubernetes/kops
 	arch = x86_64
 	license = Apache
-	source = kubebox-linux-0.3.2::https://github.com/astefanutti/kubebox/releases/download/v0.3.2/kubebox-linux
+	source = kubebox-linux-0.4.0::https://github.com/astefanutti/kubebox/releases/download/v0.4.0/kubebox-linux
 	sha1sums = 6c4bd77cb1993933674efb62173bd1d8c9f4ed09
 
 pkgname = kubebox
