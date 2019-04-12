@@ -11,6 +11,8 @@ pkgbase = chromium-widevine
 	depends = glibc
 	depends = nspr
 	depends = nss
+	provides = chromium-widevine-dev=4.10.1303.2
+	conflicts = chromium-widevine-dev
 	options = !strip
 	source = chrome-eula_text-20190307.html::https://www.google.com/intl/en/chrome/privacy/eula_text.html
 	source = https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_73.0.3683.103-1_amd64.deb
