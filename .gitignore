@@ -1,0 +1,7 @@
+v*.tar.gz
+mkinitcpio-tor-*-any.pkg.tar.xz
+mkinitcpio-tor-*.tar.gz
+develop.*
+pkg/*
+src/*
+*.log

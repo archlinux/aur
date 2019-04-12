@@ -1,0 +1,16 @@
+pkgbase = mkinitcpio-tor
+	pkgdesc = Arch Linux mkinitcpio hook for running tor on the initramfs
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/grazzolini/mkinitcpio-tor
+	arch = any
+	license = BSD
+	depends = tor
+	optdepends = mkinitcpio-netconf: Network interface configuration
+	optdepends = mkinitcpio-tinyssh: For remote unlocking using tinyssh
+	optdepends = mkinitcpio-dropbear: For remote unlocking using dropbear
+	source = mkinitcpio-tor-0.0.1.tar.gz::https://github.com/grazzolini/mkinitcpio-tor/archive/v0.0.1.tar.gz
+	md5sums = d744541eba96a62f575d0e054f258703
+
+pkgname = mkinitcpio-tor
+
