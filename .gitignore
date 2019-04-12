@@ -1,0 +1,7 @@
+pkg
+src
+peasy
+peasy-git-*.src.tar.gz
+peasy-git-*.pkg.tar.xz
+.AURINFO
+
