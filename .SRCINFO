@@ -1,0 +1,20 @@
+pkgbase = perl-plack-test-agent
+	pkgdesc = OO interface for testing low-level Plack/PSGI apps
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://metacpan.org/pod/Plack::Test::Agent
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-http-message
+	depends = perl-plack
+	depends = perl-test-tcp
+	depends = perl-test-www-mechanize
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/O/OA/OALDERS/Plack-Test-Agent-1.4.tar.gz
+	md5sums = c80719269653dabb64d3603f4be97add
+	sha512sums = 20593f0e7f789198ea28eb1df250b4950c42a0c5e74ecbd620452261fd2a2cd895300deefaabf82a595efbe00ffb13145ba8875b908594ce7a489b737f7b0613
+
+pkgname = perl-plack-test-agent
+
