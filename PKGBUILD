@@ -2,7 +2,7 @@
 
 pkgname=yubikey-oath-dmenu
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="dmenu interface for getting OATH codes from a YubiKey"
 url="https://github.com/emlun/yubikey-oath-dmenu"
 license=('GPL3')
@@ -22,7 +22,7 @@ sha256sums=('60a4a3444e8c24ecc3a6c04fc7ca0e98260ed414a64e09b97f0daf3627c3786a'
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" PREFIX=/usr/bin install
+  make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
 
 # vim:set ts=2 sw=2 sts=2 et
