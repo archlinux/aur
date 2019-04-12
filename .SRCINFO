@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-gtktitlebar-git
 	pkgdesc = A GNOME Shell extension that GTK Title Bar - Remove Title Bar for non-GTK Software
-	pkgver = r3.dce6fe6
+	pkgver = 2.0.r0.gdce6fe6
 	pkgrel = 1
 	url = https://github.com/velitasali/GTKTitleBar
 	arch = any

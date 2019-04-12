@@ -1,7 +1,7 @@
 # Maintainer: Térence Clastres <t.clastres@gmail.com>
 
 pkgname=gnome-shell-extension-gtktitlebar-git
-pkgver=r3.dce6fe6
+pkgver=2.0.r0.gdce6fe6
 pkgrel=1
 pkgdesc="A GNOME Shell extension that GTK Title Bar - Remove Title Bar for non-GTK Software"
 arch=('any')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
