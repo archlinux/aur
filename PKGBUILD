@@ -6,7 +6,7 @@
 _pkgbase=sord
 pkgname=mingw-w64-sord
 pkgver=0.16.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight C library for storing RDF data in memory"
 arch=('any')
 url="https://drobilla.net/software/sord/"
@@ -57,9 +57,9 @@ package() {
     python waf install --destdir="$pkgdir"
     # license
     install -vDm 644 COPYING \
-      "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
+      "$pkgdir/usr/$_arch/share/licenses/$_pkgbase/LICENSE"
     # docs
-    install -t "$pkgdir/usr/share/doc/${_pkgbase}" \
+    install -t "$pkgdir/usr/$_arch/share/doc/${_pkgbase}" \
       -vDm 644 {AUTHORS,NEWS,README}
 
     # move DLL to bin directory
