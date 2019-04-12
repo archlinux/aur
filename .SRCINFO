@@ -1,6 +1,6 @@
 pkgbase = zap-desktop-bin
 	pkgdesc = Lightning wallet focused on user experience and ease of use
-	pkgver = 0.4.0_beta
+	pkgver = 0.4.1_beta
 	pkgrel = 1
 	url = https://github.com/LN-Zap/zap-desktop
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = zap-desktop-bin
 	depends = libxss
 	provides = zap-desktop
 	conflicts = zap-desktop-git
-	source_x86_64 = https://github.com/LN-Zap/zap-desktop/releases/download/v0.4.0-beta/Zap-linux-amd64-v0.4.0-beta.deb
-	sha256sums_x86_64 = 53ed11899d431483c1da43a030cd9078d55e87ee6f2943e7ddd6aa8cb0ab1ea2
+	source_x86_64 = https://github.com/LN-Zap/zap-desktop/releases/download/v0.4.1-beta/Zap-linux-amd64-v0.4.1-beta.deb
+	sha256sums_x86_64 = cd1f640379c2429f099131d1d7883c5e16e2957bfc2e1d74c2f98a1fbed04b1c
 
 pkgname = zap-desktop-bin
 

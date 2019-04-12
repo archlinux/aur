@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=zap-desktop-bin
-pkgver=0.4.0_beta
+pkgver=0.4.1_beta
 # Actual version used by project
 _ver=${pkgver//_/-}
 pkgrel=1
@@ -11,7 +11,7 @@ url="https://github.com/LN-Zap/zap-desktop"
 license=('MIT')
 depends=('gtk3' 'nss' 'libxss')
 source_x86_64=("https://github.com/LN-Zap/zap-desktop/releases/download/v${_ver}/Zap-linux-amd64-v${_ver}.deb")
-sha256sums_x86_64=('53ed11899d431483c1da43a030cd9078d55e87ee6f2943e7ddd6aa8cb0ab1ea2')
+sha256sums_x86_64=('cd1f640379c2429f099131d1d7883c5e16e2957bfc2e1d74c2f98a1fbed04b1c')
 conflicts=("zap-desktop-git")
 provides=("zap-desktop")
 
