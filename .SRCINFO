@@ -9,6 +9,7 @@ pkgbase = pulsejoin
 	depends = pulseaudio
 	depends = pavucontrol-qt
 	depends = yad
+	depends = pavucontrol
 	source = pulsejoin::git+https://gitlab.com/mikhailnov/pulsejoin.git#tag=v2.3
 	sha256sums = SKIP
 

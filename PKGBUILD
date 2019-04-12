@@ -9,7 +9,7 @@ pkgdesc='GUI for making a virtual PulseAudio microphone, from which sound from b
 arch=('any')
 url='https://gitlab.com/mikhailnov/pulsejoin'
 license=('GPL3')
-depends=('pulseaudio' 'pavucontrol-qt' 'yad')
+depends=('pulseaudio' 'pavucontrol-qt' 'yad' 'pavucontrol')
 makedepends=('git')
 source=("$_srcname::git+https://gitlab.com/mikhailnov/pulsejoin.git#tag=v$pkgver")
 sha256sums=('SKIP')
