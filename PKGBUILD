@@ -1,8 +1,8 @@
 # Maintainer: Maximilian Luz <luzmaximilian@gmail.com>
 
 pkgname=libwacom-surface
-pkgver=0.32
-pkgrel=2
+pkgver=0.33
+pkgrel=1
 pkgdesc="Patched libwacom for Microsoft Surface devices"
 arch=('x86_64')
 url="https://github.com/geoffholden/libwacom"
@@ -18,12 +18,10 @@ source=(
     '01_surface-tablet-data.patch'
     "https://github.com/linuxwacom/libwacom/releases/download/libwacom-${pkgver}/libwacom-${pkgver}.tar.bz2"{,.sig}
 )
-sha256sums=(
-    'faf69fa3795a5147665b285f28d82c0977a3870522c98ffccaf819730089599e'
-    '9b7f8d681bf12e81e21cde33b7d77b10b4f2a78f3d0c46c5efe147c278c24bf9'
-    '6b9dab8bce0471b839c89d34a1b30839de2c24db03796fa8d572817830f85380'
-    'SKIP'
-)
+sha256sums=('faf69fa3795a5147665b285f28d82c0977a3870522c98ffccaf819730089599e'
+            '9b7f8d681bf12e81e21cde33b7d77b10b4f2a78f3d0c46c5efe147c278c24bf9'
+            '94f8a3371f30f4a38d6d2290f5160d5f5ba7a7cd6e63bee95686a67a3c19dbf2'
+            'SKIP')
 
 prepare() {
     cd "libwacom-${pkgver}"

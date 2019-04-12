@@ -1,7 +1,7 @@
 pkgbase = libwacom-surface
 	pkgdesc = Patched libwacom for Microsoft Surface devices
-	pkgver = 0.32
-	pkgrel = 2
+	pkgver = 0.33
+	pkgrel = 1
 	url = https://github.com/geoffholden/libwacom
 	arch = x86_64
 	license = MIT
@@ -10,16 +10,16 @@ pkgbase = libwacom-surface
 	depends = glib2
 	depends = systemd
 	depends = libgudev
-	provides = libwacom=0.32
+	provides = libwacom=0.33
 	conflicts = libwacom
 	source = 00_mei-bus.patch
 	source = 01_surface-tablet-data.patch
-	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.32/libwacom-0.32.tar.bz2
-	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.32/libwacom-0.32.tar.bz2.sig
+	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.33/libwacom-0.33.tar.bz2
+	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.33/libwacom-0.33.tar.bz2.sig
 	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
 	sha256sums = faf69fa3795a5147665b285f28d82c0977a3870522c98ffccaf819730089599e
 	sha256sums = 9b7f8d681bf12e81e21cde33b7d77b10b4f2a78f3d0c46c5efe147c278c24bf9
-	sha256sums = 6b9dab8bce0471b839c89d34a1b30839de2c24db03796fa8d572817830f85380
+	sha256sums = 94f8a3371f30f4a38d6d2290f5160d5f5ba7a7cd6e63bee95686a67a3c19dbf2
 	sha256sums = SKIP
 
 pkgname = libwacom-surface
