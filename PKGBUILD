@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=pyright
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="Type checker for the Python language"
 arch=('any')
@@ -11,18 +11,13 @@ depends=('nodejs')
 makedepends=('npm')
 source=(
   "https://github.com/Microsoft/pyright/archive/${pkgver}.tar.gz"
-  01-fixed-print-compatible-in-python3.patch
 )
 sha256sums=(
-  '9ba5b4d5697ad1fd84f659b7cf034c8e062a72e43af557a56bb25299394d3149'
-  '05fd7c1f123bff3cd507e5a3c2272bef42fa67303aca6a03c9dd79c2626b68bc'
+  'cf7fa20c77ce59e0210df8018b8d07c831d2f94378eecaffa9e845927514af61'
 )
 
 prepare() {
   rm -rf "${pkgdir}/usr/lib/node_modules/${pkgname}"
-
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p0 -i ../01-fixed-print-compatible-in-python3.patch
 }
 
 build() {
