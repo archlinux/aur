@@ -1,0 +1,18 @@
+pkgbase = perl-text-simpletable-autowidth
+	pkgdesc = Simple eyecandy ASCII tables with auto-width selection
+	pkgver = 0.09
+	pkgrel = 1
+	url = https://metacpan.org/pod/Text::SimpleTable::AutoWidth
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-moo
+	depends = perl-text-simpletable
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/C/CU/CUB/Text-SimpleTable-AutoWidth-0.09.tar.gz
+	md5sums = 2ee9ee49bfcb8a2acd8516dfadb47d0e
+	sha512sums = b35d80ee1040ab744b53d29381034ea7ac67c5a6973516efda67b2ab34412bbadec6397d91a452488dd99158b2a4ee84115f3a52c12cb0e771f77fdc05cfb9ab
+
+pkgname = perl-text-simpletable-autowidth
+
