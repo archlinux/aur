@@ -6,7 +6,7 @@
 _pkgbase=serd
 pkgname=mingw-w64-serd
 pkgver=0.30.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight C library for RDF syntax supporting reading/ writing Turtle and NTriples."
 arch=('any')
 url="https://drobilla.net/software/serd/"
