@@ -2,14 +2,14 @@
 
 _pkgname=castero
 pkgname=$_pkgname-git
-pkgver=0.4.0.r0.g8a1ac98
+pkgver=0.5.3.r11.gd06eed7
 pkgrel=1
 pkgdesc="Podcast client for the command line"
 arch=('any')
 url="https://xgi.github.io/castero"
 license=('MIT')
-depends=('python-cjkwrap' 'python-pympv' 'python-requests' 'python-vlc')
-#checkdepends=('python-codecov' 'python-coverage' 'python-pytest')
+depends=('python-beautifulsoup4' 'python-cjkwrap' 'python-mpv' 'python-requests' 'python-vlc')
+#checkdepends=('python-codacy-coverage' 'python-coverage' 'python-pytest')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
