@@ -7,7 +7,7 @@ pkgbase = kubernetes-helmfile-bin
 	license = MIT
 	depends = kubernetes-helm-bin
 	source = helmfile_linux_amd64_0.54.0::https://github.com/roboll/helmfile/releases/download/v0.54.0/helmfile_linux_amd64
-	sha256sums = 6dbcb1a12bf2f9be7542361779348bfbd95882e9e8eeb78c06de9d5031e28b57
+	sha256sums = c105bba7bdf44319afeee9540c5f3090c9a077b9a5b6eeb03ecf825cb74a67b6
 
 pkgname = kubernetes-helmfile-bin
 

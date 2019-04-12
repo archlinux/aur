@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=('kubernetes-helm-bin')
 
 source=("helmfile_linux_amd64_$pkgver::https://github.com/roboll/helmfile/releases/download/v$pkgver/helmfile_linux_amd64")
-sha256sums=('6dbcb1a12bf2f9be7542361779348bfbd95882e9e8eeb78c06de9d5031e28b57')
+sha256sums=('c105bba7bdf44319afeee9540c5f3090c9a077b9a5b6eeb03ecf825cb74a67b6')
 package() {
   cd "$srcdir"
   install -d "$pkgdir/usr/bin"
