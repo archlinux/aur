@@ -1,0 +1,16 @@
+pkgbase = ocaml-dolog
+	pkgdesc = A dumb OCaml logger
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/UnixJunkie/dolog
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = ocaml
+	depends = ocaml
+	options = staticlibs
+	source = https://github.com/UnixJunkie/dolog/archive/v3.0.tar.gz
+	sha256sums = b0efb70e5e29cae47a571940b84645029da32ca36ede7032bf9e491fd7e2e877
+
+pkgname = ocaml-dolog
+
