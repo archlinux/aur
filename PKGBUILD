@@ -6,7 +6,7 @@
 _pkgbase=sratom
 pkgname=mingw-w64-sratom
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An LV2 Atom RDF serialisation library"
 arch=('any')
 url="https://drobilla.net/software/sratom/"
@@ -30,21 +30,21 @@ build() {
   cd "${_pkgbase}-${pkgver}"
 
   for _arch in "${_architectures[@]}"; do
-    python2 waf configure --prefix=/usr/"$_arch" \
-                         --test
+    CC="$_arch-gcc" LDFLAGS="-lm" python waf configure --prefix=/usr/"$_arch" #\
+                         #--test
     python2 waf build
   done
 }
 
 check() {
   cd "${_pkgbase}-${pkgver}"
-  python2 waf test --verbose-tests
+  #python waf test --verbose-tests
 }
 
 
 package() {
   cd "${_pkgbase}-${pkgver}"
-  python2 waf install --destdir="${pkgdir}"
+  python waf install --destdir="${pkgdir}"
   # license
   install -vDm 644 COPYING \
     "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSE"
