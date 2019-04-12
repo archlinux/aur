@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-srcache
 pkgver=0.31
-pkgrel=23
+pkgrel=24
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.15.10
+_nginxver=1.15.11
 
 pkgdesc='Transparent subrequest-based caching layout for arbitrary nginx locations (module for mainline nginx)'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ validpgpkeys=(
 	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
-sha256sums=('b865743abd52bce4745d0f7e7fedde3cafbaaab617b022c105e3e4e456537c3c'
+sha256sums=('d5eb2685e2ebe8a9d048b07222ffdab50e6ff6245919eebc2482c1f388e3f8ad'
             'SKIP'
             '3f9729e73a8340926fa9d9fc15707c2f287cd27b6a9fe42e83f660ca48a5972d')
 
