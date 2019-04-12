@@ -6,7 +6,7 @@
 # Maintainer: David Strawn <isomarcte a__t gmail d__o__t c__o__m>
 pkgname='metals'
 pkgver='0.5.0'
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='Language Server For Scala'
 url='https://scalameta.org/metals/'
@@ -65,10 +65,10 @@ sha512sums=('21d6bd645ad35b749374b76015e7019375e2723b4e4e1b25dc0a983591f475c5466
 validpgpkeys=()
 
 build() {
-    export COURSIER_CACHE="${srcdir}/.cache/coursier/v1"
+    export COURSIER_CACHE="./.cache/coursier/v1"
 
-    local -r _SBT_DIR="${srcdir}/.sbt"
-    local -r _SBT_IVY="${srcdir}/.ivy2"
+    local -r _SBT_DIR="./.sbt"
+    local -r _SBT_IVY="./.ivy2"
 	  cd "$pkgname-$pkgver"
 
     # When run with some AUR helpers, in particular `yay`, for a
@@ -82,10 +82,10 @@ build() {
 }
 
 check() {
-    export COURSIER_CACHE="${srcdir}/.cache/coursier/v1"
+    export COURSIER_CACHE="./.cache/coursier/v1"
 
-    local -r _SBT_DIR="${srcdir}/.sbt"
-    local -r _SBT_IVY="${srcdir}/.ivy2"
+    local -r _SBT_DIR="./.sbt"
+    local -r _SBT_IVY="./.ivy2"
 	  cd "$pkgname-$pkgver"
     ## Tests on most recent release currently fail
     # sbt test
