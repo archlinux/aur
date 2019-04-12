@@ -2,12 +2,15 @@
 
 pkgname=systemd_mon
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Monitor systemd units and trigger alerts for failed states.'
 arch=('any')
 url='https://github.com/joonty/systemd_mon'
 license=('MIT')
 depends=('ruby-dbus')
+optdepends=('ruby-mail: email notifier support'
+            'ruby-slack-notifier: slack notifier support'
+            'ruby-hipchat: hipchat notifier support')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${pkgname}-${pkgver}.gem"
         "${pkgname}.service"
