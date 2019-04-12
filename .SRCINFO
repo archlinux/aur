@@ -1,0 +1,19 @@
+pkgbase = archlinuxarm-installer
+	pkgdesc = Universal, automatic installer for ArchLinux ARM
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/adjutant/archlinuxarm-installer
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = e2fsprogs
+	depends = dosfstools
+	depends = coreutils
+	depends = util-linux
+	depends = libarchive
+	source = archlinuxarm-installer-1.0.tar.gz::https://github.com/adjutant/archlinuxarm-installer/archive/1.0.tar.gz
+	sha256sums = 805f9e5dd87f2b7215d076317dbb5b10476ff825ca7e601ff36e98fd5ad3950a
+
+pkgname = archlinuxarm-installer
+
