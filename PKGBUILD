@@ -1,13 +1,13 @@
 # Maintainer: Katie Wolfe <katie@dnaf.moe>
 pkgname=igdm
 pkgver=2.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop application for Instagram DMs"
 arch=('x86_64' 'i686')
 url="https://github.com/ifedapoolarewaju/igdm"
 license=('MIT')
 groups=()
-depends=('glibc' 'gtk3' 'nss')
+depends=('glibc' 'gtk3' 'nss' 'gconf')
 makedepends=('libarchive')
 checkdepends=()
 optdepends=()

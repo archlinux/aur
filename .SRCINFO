@@ -1,7 +1,7 @@
 pkgbase = igdm
 	pkgdesc = Desktop application for Instagram DMs
 	pkgver = 2.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ifedapoolarewaju/igdm
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = igdm
 	depends = glibc
 	depends = gtk3
 	depends = nss
+	depends = gconf
 	provides = igdm
 	conflicts = igdm
 	noextract = IGdm-2.6.4.zip
