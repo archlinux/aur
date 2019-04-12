@@ -9,7 +9,7 @@ ExecStart=/usr/bin/flexget daemon start
 ExecStop=/usr/bin/flexget daemon stop
 ExecReload=/usr/bin/flexget daemon reload
 KillMode=process
-User=%I
+User=%i
 
 [Install]
 WantedBy=multi-user.target

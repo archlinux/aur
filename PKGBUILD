@@ -3,6 +3,7 @@
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 # Contributor: Andrea Repetto <andrea.repetto85@gmail.com>
 # Contributor: Bogdan Szczurek <thebodzio@gmail.com>
+# Contributor: redfish <redfish@galactica.pw>
 
 pkgname=flexget-git
 _pkgname=Flexget
@@ -72,7 +73,7 @@ source=("git+https://github.com/Flexget/Flexget/"
 
 sha256sums=('SKIP'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
-            '5fca3a1b6be282c0914754bbfdeef21005d936fba3d2698801bba18369e1321a')
+            'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a')
 
 pkgver() {
   cd Flexget
@@ -110,6 +111,9 @@ prepare() {
 
 package() {
   cd "${_pkgname}"
+
+  # Cleanup a previous builds if any, since setuptools doesn't do it
+  rm -rf build
 
   # Python setup
   python setup.py install --root="${pkgdir}"/ --prefix=/usr --optimize=1 || return 1
