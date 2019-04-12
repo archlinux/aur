@@ -1,6 +1,6 @@
 pkgbase = blkar
 	pkgdesc = Archive with forward error correction and sector level recoverability
-	pkgver = 5.0.0
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://github.com/darrenldl/blockyarchive
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = blkar
 	checkdepends = cargo
 	makedepends = cargo
 	depends = gcc-libs
-	source = https://github.com/darrenldl/blockyarchive/archive/v5.0.0.tar.gz
-	sha256sums = 5b282d65b6f571a514896277aab004beeca3bca27beac443886c13897a16d791
+	source = https://github.com/darrenldl/blockyarchive/archive/v6.0.0.tar.gz
+	sha256sums = 60dc143da4f21be74a0cab857ab5edd29273fd3a174accd08ada41bf7ae531eb
 
 pkgname = blkar
 
