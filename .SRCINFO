@@ -1,0 +1,18 @@
+pkgbase = perl-uri-query
+	pkgdesc = class providing URI query string manipulation
+	pkgver = 0.16
+	pkgrel = 1
+	url = https://metacpan.org/pod/URI::Query
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-clone
+	depends = perl-uri
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/G/GA/GAVINC/URI-Query-0.16.tar.gz
+	md5sums = 0f219d21b94320e2a7696b8f67fc9c14
+	sha512sums = fd355e55051533b5c47833f7009801b3e3c54cc82c2821ab4a77b390468ed5b92bb0e1d99ea516754c8c5dc67fa2ee967c0cf9094b1920d774fc48c6f87f54a2
+
+pkgname = perl-uri-query
+
