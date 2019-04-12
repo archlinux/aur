@@ -4,13 +4,13 @@
 
 pkgname=nted
 pkgver=1.10.18
-pkgrel=4
+pkgrel=5
 pkgdesc="A free music score editor for Linux."
 arch=('i686' 'x86_64')
 depends=('harfbuzz' 'gdk-pixbuf2' 'pango' 'gtk2' 'alsa-lib')
 makedepends=('gcc49')
 license=('GPL')
-url="http://vsr.informatik.tu-chemnitz.de/staff/jan/nted/nted.xhtml"
+url="http://http.debian.net/debian/pool/main/n/nted/"
 options=('!libtool' '!strip' '!makeflags')
 source=("http://urchlay.naptime.net/~urchlay/src/nted-$pkgver.tar.gz"
 	"http://http.debian.net/debian/pool/main/n/nted/nted_$pkgver-12.debian.tar.xz")
