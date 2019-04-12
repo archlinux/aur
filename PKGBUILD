@@ -3,7 +3,7 @@
 
 pkgname=jlink-systemview
 pkgver=2.52d
-pkgrel=4
+pkgrel=5
 epoch=5
 pkgdesc="Segger SystemView for Linux"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source_i686=("SystemView_Linux_V${pkgver/./}_i686.tgz::https://www.segger.com/do
 source=("https://www.segger.com/downloads/jlink/systemview_target_src")
 md5sums_i686=('116c8041209e4a126d3f5231762471cd')
 md5sums_x86_64=('f658d0b77ffe522a34e53c496859dae4')
-md5sums=('4761ecda94a8f89eaa7389e1ab87beaa')
+md5sums=('0ad42cd8d21129c0d43664e689046a9d')
 url="https://www.segger.com/downloads/jlink/"
 
 package(){
