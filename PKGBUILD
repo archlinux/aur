@@ -6,7 +6,7 @@
 _pkgbase=lilv
 pkgname=mingw-w64-lilv
 pkgver=0.24.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A C library interface to the LV2 plug-in standard"
 arch=('any')
 url="https://drobilla.net/software/lilv/"
@@ -28,7 +28,7 @@ prepare() {
   # don't run local ldconfig
   sed -i "/ldconfig/d" wscript
 
-  patch --forward --strip=1 --input="${srcdir}/create_hard_link.patch"
+  patch src/util.c < "${srcdir}/../lilv_symlink.patch"
 }
 
 build() {
@@ -40,9 +40,9 @@ build() {
     pushd build-${_arch}
 
     CC="$_arch-gcc" CXX="$_arch-g++" python waf configure --prefix=/usr/"$_arch" \
-                          #--bindings \
                           --no-bash-completion \
                           --dyn-manifest #\
+                          #--bindings \
                           #--test
     python waf build
 

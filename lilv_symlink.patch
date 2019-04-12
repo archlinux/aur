@@ -1,0 +1,26 @@
+diff -crB lilv-0.24.4/src/util.c lilv-0.24.4_patched/src/util.c
+*** lilv-0.24.4/src/util.c	2018-07-21 09:10:18.000000000 +0100
+--- lilv-0.24.4_patched/src/util.c	2019-04-12 05:10:21.891170609 +0100
+***************
+*** 465,474 ****
+  	int ret = 0;
+  	if (strcmp(oldpath, newpath)) {
+  #ifdef _WIN32
+! 		ret = !CreateSymbolicLink(newpath, oldpath, 0);
+! 		if (ret) {
+  			ret = !CreateHardLink(newpath, oldpath, 0);
+! 		}
+  #else
+  		ret = symlink(oldpath, newpath);
+  #endif
+--- 465,474 ----
+  	int ret = 0;
+  	if (strcmp(oldpath, newpath)) {
+  #ifdef _WIN32
+! 		/*ret = !CreateSymbolicLink(newpath, oldpath, 0);*/
+! 		/*if (ret) {*/
+  			ret = !CreateHardLink(newpath, oldpath, 0);
+! 		/*}*/
+  #else
+  		ret = symlink(oldpath, newpath);
+  #endif
