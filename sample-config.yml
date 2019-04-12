@@ -1,0 +1,28 @@
+verbose: true # Default is off
+notifiers:
+  email:
+    to: "team@mydomain.com"
+    from: "systemdmon@mydomain.com"
+    # These are options passed to the 'mail' gem
+    smtp:
+        address: smtp.gmail.com
+        port: 587
+        domain: mydomain.com
+        user_name: "user@mydomain.com"
+        password: "supersecr3t"
+        authentication: "plain"
+        enable_starttls_auto: true
+  slack:
+    webhook_url: https://hooks.slack.com/services/super/secret/tokenthings
+    channel: mychannel
+    username: doge
+    icon_emoji: ":computer"
+    icon_url: "http://example.com/icon"
+  hipchat:
+    token: bigsecrettokenhere
+    room: myroom
+    username: doge
+units:
+- unicorn.service
+- nginx.service
+- sidekiq.service

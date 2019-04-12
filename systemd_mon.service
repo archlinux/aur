@@ -1,0 +1,10 @@
+[Unit]
+Description=SystemdMon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/systemd_mon /etc/systemd_mon/config.yml
+
+[Install]
+WantedBy=multi-user.target
