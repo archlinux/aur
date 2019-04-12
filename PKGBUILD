@@ -2,18 +2,18 @@
 # Contributor: danitool <dgcbueu_AT_gmail_DOT_com>
 
 pkgname=amulegui-upnp
-pkgver=10990
+pkgver=11004
 pkgrel=1
 pkgdesc="Remote GUI for the aMule Daemon, an eMule-like client for the ed2k p2p network"
 arch=('i686' 'x86_64')
 url="http://www.amule.org/"
 license=('GPL')
-depends=('wxgtk>=2.8.0' 'gd>=2.0.34' 'binutils>=2.17.50.0.18' 'geoip>=1.4.4' 'libupnp>=1.6.6')
+depends=('wxgtk3' 'gd>=2.0.34' 'binutils>=2.17.50.0.18' 'geoip>=1.4.4' 'libupnp>=1.6.6')
 makedepends=('crypto++')
 conflicts=('amule' 'amule-svn' 'amule-noupnp-svn' 'amule-noupnp')
 provides=("amulegui=${pkgver}")
 source=(http://amule.sourceforge.net/tarballs/aMule-SVN-r${pkgver}.tar.bz2)
-md5sums=('429d5531a38ead5992fe5e410d167f88')
+md5sums=('ae18e08ee4e08034dcc829a2cd7ced3e')
 
 build() {
   cd ${srcdir}/aMule-SVN-r${pkgver}
