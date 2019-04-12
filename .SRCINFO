@@ -1,0 +1,16 @@
+pkgbase = perl-string-trim
+	pkgdesc = trim whitespace from your strings
+	pkgver = 0.005
+	pkgrel = 1
+	url = https://metacpan.org/pod/String::Trim
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DO/DOHERTY/String-Trim-0.005.tar.gz
+	md5sums = 87f4beb20804b5ce2bae083d98f619f1
+	sha512sums = 74530f7a69cd71d38b86742e5cd5bf4c8fe2675dcafe58ebde032ab7ac2b82fea098a831f51d4d80b8eea6cfd58a3362f27037145ed1b0b4744fe1ab5b8913f9
+
+pkgname = perl-string-trim
+
