@@ -1,10 +1,10 @@
-# sMaintainer: Bernhard Landauer <bernhard@manjaro.org>
-# Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
+# Maintainer: Bernhard Landauer <bernhard@manjaro.org>
+# Contributor: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 _pkgname=AppImageLauncher
 pkgname=appimagelauncher
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A Helper application for running and integrating AppImages."
 arch=('x86_64')
 url="https://github.com/TheAssassin/AppImageLauncher"
@@ -42,6 +42,8 @@ package() {
   install -Dm644 -t $pkgdir/usr/share/libalpm/hooks *.hook
 
   cd $_pkgname
+  # re-run CMake to populate list of library files to bundle
+  cmake .
   make DESTDIR="$pkgdir" install
   install -Dm644 LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
