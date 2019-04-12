@@ -1,0 +1,16 @@
+pkgbase = alda-bin
+	pkgdesc = A music programming language for musicians.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/alda-lang/alda
+	arch = x86_64
+	license = EPL
+	provides = alda
+	conflicts = alda
+	noextract = alda
+	options = !strip
+	source = https://github.com/alda-lang/alda/releases/download/1.2.0/alda
+	sha256sums = 9c24d2c5791674cac3bd8b40ff67b17a132713a5d1c32d5e3e944a988e24f142
+
+pkgname = alda-bin
+
