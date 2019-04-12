@@ -1,11 +1,15 @@
 pkgbase = mingw-w64-serd
 	pkgdesc = Lightweight C library for RDF syntax supporting reading/ writing Turtle and NTriples.
 	pkgver = 0.30.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://drobilla.net/software/serd/
 	arch = any
 	license = custom:ISC
 	makedepends = mingw-w64-python
+	options = !libtool
+	options = !strip
+	options = !buildflags
+	options = !makeflags
 	source = https://download.drobilla.net/serd-0.30.0.tar.bz2
 	source = https://download.drobilla.net/serd-0.30.0.tar.bz2.sig
 	validpgpkeys = 907D226E7E13FA337F014A083672782A9BF368F3

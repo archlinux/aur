@@ -6,13 +6,14 @@
 _pkgbase=serd
 pkgname=mingw-w64-serd
 pkgver=0.30.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Lightweight C library for RDF syntax supporting reading/ writing Turtle and NTriples."
 arch=('any')
 url="https://drobilla.net/software/serd/"
 license=('custom:ISC')
 depends=()
 makedepends=('mingw-w64-python')
+options=('!libtool' '!strip' '!buildflags' '!makeflags')
 source=("https://download.drobilla.net/${_pkgbase}-${pkgver}.tar.bz2"{,.sig})
 sha512sums=('23ff30f2d3dd622bdd65deee36cb92ae5f4a0c539cf32a1bd9802f2d7cf4aa3e96f25d2fe579277d1ab943f6d25c0be68d7b4863f83d4733f489462620a4c1bb'
             'SKIP')
@@ -30,7 +31,7 @@ build() {
   cd "${_pkgbase}-${pkgver}"
 
   for _arch in "${_architectures[@]}"; do
-    CC="$_arch-gcc" python waf configure --prefix=/usr/"$_arch" \
+    CC="$_arch-gcc" LDFLAGS="-lm" python waf configure --prefix=/usr/"$_arch" \
                          --mandir=/usr/share/man #\
                          #--test
     python waf
@@ -53,6 +54,12 @@ package() {
     # docs
     install -t "$pkgdir/usr/$_arch/share/doc/${_pkgbase}" \
       -vDm 644 {AUTHORS,NEWS,README.md}
+
+    # move DLL to bin directory
+    mkdir -p "$pkgdir"/usr/${_arch}/bin
+    find "$pkgdir"/usr/${_arch}/lib -iname '*.dll' -exec mv --target-directory="$pkgdir"/usr/${_arch}/bin {} \;
+
+    # strip
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
