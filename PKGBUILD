@@ -4,7 +4,7 @@
 # Contributor: James Duley <jagduley gmail>
 
 pkgname=xflr5
-pkgver=6.43
+pkgver=6.45
 pkgrel=1
 pkgdesc="An analysis tool for airfoils, wings and planes operating at low Reynolds Numbers."
 arch=('i686' 'x86_64')
@@ -12,18 +12,18 @@ url="http://www.xflr5.com/xflr5.htm"
 license=('GPL')
 depends=('qt5-base')
 source=("https://downloads.sourceforge.net/project/xflr5/${pkgver}/xflr5_${pkgver}_src.tar.gz")
-sha256sums=('81ff2a166b4cc52b5215a54d16b08741b40ed709b1d1d2da9777579689ca01a7')
+sha256sums=('b138572ed59a575b5c9b46a44386bfd12b632baf721a5d4a8b7ebce15d6e4174')
 
 
 build() {
-  cd $srcdir/$pkgname
+  cd $pkgname
   
   qmake-qt5 PREFIX=/usr
   make
 }
 
 package() {
-  cd $srcdir/$pkgname
+  cd $pkgname
 
   make INSTALL_ROOT="$pkgdir" install
 }

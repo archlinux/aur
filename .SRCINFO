@@ -1,14 +1,14 @@
 pkgbase = xflr5
 	pkgdesc = An analysis tool for airfoils, wings and planes operating at low Reynolds Numbers.
-	pkgver = 6.43
+	pkgver = 6.45
 	pkgrel = 1
 	url = http://www.xflr5.com/xflr5.htm
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = qt5-base
-	source = https://downloads.sourceforge.net/project/xflr5/6.43/xflr5_6.43_src.tar.gz
-	sha256sums = 81ff2a166b4cc52b5215a54d16b08741b40ed709b1d1d2da9777579689ca01a7
+	source = https://downloads.sourceforge.net/project/xflr5/6.45/xflr5_6.45_src.tar.gz
+	sha256sums = b138572ed59a575b5c9b46a44386bfd12b632baf721a5d4a8b7ebce15d6e4174
 
 pkgname = xflr5
 
