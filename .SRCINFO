@@ -1,0 +1,25 @@
+pkgbase = netactview
+	pkgdesc = A graphical network connections viewer similar in functionality to netstat
+	pkgver = 0.6.4
+	pkgrel = 5
+	url = http://netactview.sourceforge.net/index.html
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = polkit
+	depends = libglade
+	depends = libgtop
+	optdepends = polkit: restart the application as root
+	source = https://downloads.sourceforge.net/netactview/netactview-0.6.4.tar.bz2
+	source = drop-libgnome.patch
+	source = drop-gconf.patch
+	source = netactview_polkit
+	source = org.archlinux.pkexec.netactview.policy
+	sha256sums = 0cfe68e90862b10a19ab2cc4977a079887eeda00e4069a819c13ece90843fb4a
+	sha256sums = e5359685c785427c812fd285b1eda3465e27120c186eae35a926881be1985df9
+	sha256sums = 0f07529a186dbdb553dd37465ba4904969b3fb03df42fe4f7c90c3a32a4055e4
+	sha256sums = 8d5319635ce05be5e5f3a426e81db34e0c2613010575bb7b3682bb2ae34fdd36
+	sha256sums = 467aa93ad28849061bfd1ea07698cc0154bef0a5a98e4c384260fc53e03b877c
+
+pkgname = netactview
+
