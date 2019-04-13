@@ -1,0 +1,26 @@
+pkgbase = openttd-version
+	pkgdesc = An engine for running Transport Tycoon Deluxe (multiple versions of side by side)
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = http://openttd.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libpng
+	depends = sdl
+	depends = icu
+	depends = fontconfig
+	depends = lzo
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = xz
+	optdepends = openttd-opengfx: free graphics
+	optdepends = openttd-opensfx: free soundset
+	optdepends = timidity++: for in-game music
+	optdepends = allegro4: to launch the game with -v allegro
+	source = openttd::git+https://github.com/OpenTTD/OpenTTD.git#tag=1.9.1
+	sha256sums = SKIP
+
+pkgname = openttd-version
+
