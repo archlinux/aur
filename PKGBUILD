@@ -412,9 +412,6 @@ _package-docs() {
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
-  msg2 "Removing doctrees..."
-  rm -r "$builddir/Documentation/output/.doctrees"
-
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
