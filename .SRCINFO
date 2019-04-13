@@ -1,0 +1,14 @@
+pkgbase = qutepart
+	pkgdesc = Code editor component for PyQt and Pyside
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/hlamer/qutepart
+	arch = x86_64
+	license = LGPL
+	makedepends = python-setuptools
+	depends = python-pyqt5
+	source = qutepart-3.2.0.tar.gz::https://github.com/hlamer/qutepart/archive/v3.2.0.tar.gz
+	sha256sums = 1e58699b3306077b9faa18baa30cff3edc63eb2058c33f11f4b5aed8bbf3e599
+
+pkgname = qutepart
+
