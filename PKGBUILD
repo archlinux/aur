@@ -3,9 +3,10 @@
 # Adapted from the PKGBUILD of openttd-git by McModder <mcmodder@mcmodder.ru>
 
 # list of available versions: https://github.com/OpenTTD/OpenTTD/tags
-pkgver=1.9.1
-pkgrel=1
-pkgname="openttd-$pkgver"
+gittag=1.9.1
+pkgver=${gittag//[^0-9.a-zA-Z]/_}
+pkgrel=2
+pkgname="openttd-$gittag"
 pkgdesc='An engine for running Transport Tycoon Deluxe (multiple versions of side by side)'
 arch=('i686' 'x86_64')
 url='http://openttd.org'
@@ -21,7 +22,7 @@ makedepends=('git')
 
 reponame='openttd'
 
-source=("$reponame::git+https://github.com/OpenTTD/OpenTTD.git#tag=${pkgver}")
+source=("$reponame::git+https://github.com/OpenTTD/OpenTTD.git#tag=${gittag}")
 sha256sums=('SKIP')
 
 build() {
@@ -52,9 +53,4 @@ package() {
 	fi
 
 	make install
-}
-
-post_install() {
-	echo "Command: ${pkgname}"
-	echo "Personal config directory: ~/.${pkgname} (can be replaced by a symlink but proceed with caution as different versions differ)"
 }
