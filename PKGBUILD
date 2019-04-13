@@ -11,14 +11,22 @@ arch=("i686" "x86_64")
 url="http://${pkgname}-editor.sourceforge.net/"
 license=("GPL2")
 depends=("fltk")
-source=("https://download.sourceforge.net/${pkgname}-editor/${pkgname}-${pkgver/\./}-source.tar.gz"
-        "${pkgname}.patch")
-md5sums=("690d64ea32b2b4bbe081e2c079936c1f"
-         "d54b67edf77c3f9c14a30f5b17862cbb")
-sha1sums=("78754c63bda8296627b185f62a6ec57e5c618a15"
-          "dd0bdca256d4225b80addc9eb5ee333fc495b05a")
-sha256sums=("3bb5a272b53a275f09c7fa5a29f417e257a7dc89d6689de45055a71fad6c91f4"
-            "4ae5f645ffa9fe422a3a3f3c2892f2935815bf4d77d82481992f06ff3ac72946")
+source=(
+  "https://download.sourceforge.net/${pkgname}-editor/${pkgname}-${pkgver/\./}-source.tar.gz"
+  "${pkgname}.patch"
+)
+md5sums=(
+  "690d64ea32b2b4bbe081e2c079936c1f"
+  "d54b67edf77c3f9c14a30f5b17862cbb"
+)
+sha1sums=(
+  "78754c63bda8296627b185f62a6ec57e5c618a15"
+  "dd0bdca256d4225b80addc9eb5ee333fc495b05a"
+)
+sha256sums=(
+  "3bb5a272b53a275f09c7fa5a29f417e257a7dc89d6689de45055a71fad6c91f4"
+  "4ae5f645ffa9fe422a3a3f3c2892f2935815bf4d77d82481992f06ff3ac72946"
+)
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}-source"
