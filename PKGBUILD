@@ -63,11 +63,11 @@ _major=4.20
 pkgver=4.20.17
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
-makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'graphviz')
+makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
@@ -254,7 +254,7 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  make bzImage modules htmldocs
+  make bzImage modules
 }
 
 _package() {
@@ -414,15 +414,6 @@ _package-docs() {
 
   msg2 "Removing doctrees..."
   rm -r "$builddir/Documentation/output/.doctrees"
-
-  msg2 "Moving HTML docs..."
-  local src dst
-  while read -rd '' src; do
-    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    mkdir -p "${dst%/*}"
-    mv "$src" "$dst"
-    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  done < <(find "$builddir/Documentation/output" -type f -print0)
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
