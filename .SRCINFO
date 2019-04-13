@@ -1,6 +1,6 @@
 pkgbase = emacs-clojure-mode-git
 	pkgdesc = Emacs major mode for the clojure language
-	pkgver = 5.8.2
+	pkgver = 5.10.0.r20.ge2c6a4a
 	pkgrel = 1
 	url = https://github.com/clojure-emacs/clojure-mode
 	install = emacs-clojure-mode.install

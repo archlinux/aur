@@ -5,7 +5,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-clojure-mode-git
-pkgver=5.8.2
+pkgver=5.10.0.r20.ge2c6a4a
 pkgrel=1
 arch=('any')
 pkgdesc="Emacs major mode for the clojure language"
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  echo $(git describe --tags|tr - .)
+  echo $(git describe --tags|sed 's+-+.r+'|tr - .)
 }
 
 build() {
