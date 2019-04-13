@@ -1,0 +1,27 @@
+From ab15c6d7af0fa8bcb7da4e7932455bf36ad8e810 Mon Sep 17 00:00:00 2001
+From: redfish <redfish@galactica.pw>
+Date: Sat, 13 Apr 2019 12:52:14 -0400
+Subject: [PATCH] setup.py: exclude tests from installation
+
+Otherwise 'tests' package ends up in site-packages/tests,
+which is no good.
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 9c8b83c..25fffb2 100755
+--- a/setup.py
++++ b/setup.py
+@@ -26,7 +26,7 @@ setup(
+     author='Eder Santana',
+     keywords='merkle tree, blockchain, tierion',
+     license="MIT",
+-    packages=find_packages(),
++    packages=find_packages(exclude=['tests']),
+     include_package_data=False,
+     zip_safe=False,
+     install_requires=install_requires
+-- 
+2.21.0
+
