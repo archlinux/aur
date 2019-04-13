@@ -1,32 +1,39 @@
 # git-pair
 Pair Programming git Management Tool
 
-## Build Instructions
+# Installation
+
+## Arch Linux based
+
+[Install from the AUR](https://aur.archlinux.org/packages/git-pair/)
+
+## Build from source
 
 ```sh
-$ gcc pair.c -o pair
+$ gcc pair.c -o git-pair
 ```
 
-## Usage
+# Usage
 
-Run `./pair help` to see available commands.
+Run `./git-pair help` to see available commands.
 
 <hr>
 
-Initialize your workspace by adding and selecting git authors:
+## Initialize your workspace by adding and selecting git authors
+
 ```sh
-$ ./pair init
+$ ./git-pair init
 ``` 
 
-To select or change the current author/co-author, execute without parameters:
+## To select or change the current author/co-author, execute without parameters
 
 ```sh
-$ ./pair
+$ ./git-pair
 ```
 
-Add new authors:
+## Add new authors
 
 ```sh
-$ ./pair add
+$ ./git-pair add
 ```
 
