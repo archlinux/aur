@@ -15,20 +15,20 @@ source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name
 sha256sums=('44add3ef9016c85ac4b0291b45286a657d0df309b31528ca8d0a9c6d0aa68186')
 
 build() {
-	cd "$_name-$pkgver"
+  cd "$_name-$pkgver"
 
-    python2 setup.py build
+  python2 setup.py build
 }
 
 check() {
-	cd "$_name-$pkgver"
+  cd "$_name-$pkgver"
 
-	python2 setup.py test
+  python2 setup.py test
 }
 
 package() {
-	cd "$_name-$pkgver"
+  cd "$_name-$pkgver"
 
-    python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -D -m644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -D -m644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
