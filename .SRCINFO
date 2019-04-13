@@ -1,0 +1,15 @@
+pkgbase = python2-inputscope
+	pkgdesc = Mouse and keyboard input heatmap visualizer and statistics.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/suurjaak/inputscope
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-bottle
+	depends = python2-pyuserinput-git>=86.9fd2879-1
+	source = https://github.com/suurjaak/InputScope/archive/v1.1.tar.gz
+	sha256sums = 80fcd548d66012703d8996782c625f20d1fd39b91266dba16a4fdd52a11120e9
+
+pkgname = python2-inputscope
+
