@@ -1,14 +1,14 @@
 pkgbase = python-pynrrd
 	pkgdesc = Simple pure-python module for reading and writing nrrd files
-	pkgver = 0.3.6
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/mhe/pynrrd
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-numpy
-	source = https://github.com/mhe/pynrrd/archive/v0.3.6.tar.gz
-	sha256sums = 7eeed1b0774520d503ea60ac0e1c0ae4ee985b7b6b1850836caabd94e0563ff7
+	source = https://github.com/mhe/pynrrd/archive/v0.4.0.tar.gz
+	sha256sums = 6cd42e6a4417672011b8ca419276814f271a6acf261c4a2dbbc3627685cda7ce
 
 pkgname = python-pynrrd
 
