@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Lesser <blitzrakete [at] gmail [dot] com>
 pkgname=cppcoro-git
 pkgver=r362.99bb7f8
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ coroutine abstractions for the coroutines TS"
 arch=(any)
 url="https://github.com/lewissbaker/cppcoro"
@@ -45,11 +45,11 @@ check() {
 }
 
 package() {
-	cd "${srcdir}/cppcoro"
+  cd "${srcdir}/cppcoro"
   mkdir -p "${pkgdir}/usr/include"
 
   cp -r "include/cppcoro" "${pkgdir}/usr/include/"
   chmod -R 644 "${pkgdir}/usr/include/cppcoro/"
   install -D -m644 "build/linux_x64_clang8.0.0_optimised/lib/libcppcoro.a" -t "${pkgdir}/usr/lib/"
-  install -D -m644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/cppcoro"
+  install -D -m644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/cppcoro-git"
 }
