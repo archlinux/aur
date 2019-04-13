@@ -1,10 +1,11 @@
-# Maintainer: Fredrick Brennan <copypaste@kittens.ph>
-# Contributor: Jean Lucas <jean@4ray.co>
+# Maintainer: Jean Lucas <jean@4ray.co>
+# Contributor: Fredrick Brennan <copypaste@kittens.ph>
 
 pkgname=mastodon
-pkgver=2.7.0
+pkgver=2.8.0
+_node=10.15.3
 pkgrel=1
-pkgdesc='Free software social-network server based on ActivityPub and OStatus'
+pkgdesc='Self-hosted social media and network server based on ActivityPub and OStatus'
 arch=(x86_64)
 url=https://joinmastodon.org
 license=(AGPL3)
@@ -14,41 +15,71 @@ depends=(ffmpeg
          libpqxx
          libxml2
          libxslt
+         libyaml
          nodejs
          postgresql
          redis
          ruby-bundler
          protobuf
          yarn)
-makedepends=(git npm python2)
+makedepends=(npm)
 conflicts=(mastodon-git)
-backup=(etc/mastodon/environment)
+backup=(etc/mastodon.conf)
 install=mastodon.install
-options=('!strip')
 source=(https://github.com/tootsuite/mastodon/archive/v$pkgver.tar.gz
-        mastodon-web.service
-        mastodon-sidekiq.service
-        mastodon-streaming.service
-        mastodon.target)
-sha512sums=('1829f16a5f98d1815168c8ecfd80b75bb3489e7b3e5eb06a858b0d35bdecc5a4542f2a11276cc935f4f1f42a492ba14b96e045f09ea3092aacaac486e0756762'
-            '532929aeeda9a0ccf72de0695a3381547cc389344e1e67f05ef1d7ce5c1ad57278b647423bb52d4a87069ad85479452533fbe3786e5e5c4b62730c6ef72ff267'
-            '603a7877288c762855a29fd2399d3ff7d218a7f1b7d6378cad7f30048cdbfe2a13f2ed2b5c94cb683bdcaead8cd47243e564a2ae70d7f21fa33f295c5396f4f7'
-            '90a0761b7709659bec6f29c366c503fdd348226cbb585cf4f6eaa065854e2027d08ab3b352eb13ad7c0e327d662f13bc00fb4163ea0c583ef55b1795ab2e0b31'
-            'c9820c2a83d08bd5d842a78e924682db97ebd5c7291b682603ad30dafcdcc5816c13e717ad39554f042b9d9ed71ab902ce3f604952264a900a72612ee8060acb')
+        https://nodejs.org/dist/v$_node/node-v$_node-linux-x64.tar.xz
+        mastodon.target
+        mastodon.sysusers.d
+        mastodon.tmpfiles.d)
+sha512sums=('247e5b8402b77d128fd990e251686237188305084c1893d77cdad20f265ce49750b1c2a10c9a40549d80406c37c4e515c763933ea01fb09f4e51d0a54965b6b0'
+            '1348147885ecaa6c25a0e97a47f79ca5e44f1a0829d3cb0ebecf9db0be4a89f23c3b16fa572c4d0b5f5d0b2624a7b66ebd912ff12144fc5469f2f342124190c2'
+            'c9820c2a83d08bd5d842a78e924682db97ebd5c7291b682603ad30dafcdcc5816c13e717ad39554f042b9d9ed71ab902ce3f604952264a900a72612ee8060acb'
+            '4ee4210bde391e6dc782cb7c14f2cb968c95ad541aa0efcf843a811f8cc5f0d1067ee3c8346bb412aa9fd1dd5a8bd05a4524df7dc4a106957009853dd237074a'
+            '73493680845e690d0cfd769fbbe68978c0a615602375078aea945ca1f1011404eb4b64972aec7a6e5efa720fb425d91b3f30025391c38ccf77e070ccb391e710')
+
+prepare() {
+  cd mastodon-$pkgver
+
+  # Allow use of any bundler
+  sed -i -e '/BUNDLED/,+1d' Gemfile.lock
+
+  # Allow use of higher Node minor versions
+  sed -i 's/"node": "/&^/' package.json
+}
 
 build() {
   cd mastodon-$pkgver
-  rm Gemfile.lock
-  bundle lock --update
-  bundle install --deployment --without development test
-  yarn config set ignore-engines true
+  bundle install \
+    -j$(getconf _NPROCESSORS_ONLN) \
+    --deployment --without development test
   yarn install --pure-lockfile
 }
 
 package() {
-  install -d "$pkgdir"/{var/lib,etc/mastodon}
+  install -d "$pkgdir"/{var/lib,etc}
   cp -a mastodon-$pkgver "$pkgdir"/var/lib/mastodon
-  ln -s /etc/mastodon/environment "$pkgdir"/var/lib/mastodon/.env
-  touch "$pkgdir"/etc/mastodon/environment
-  install -Dm 644 -t "$pkgdir"/usr/lib/systemd/system mastodon-{web,sidekiq,streaming}.service mastodon.target
+
+  # Put the config file in /etc and link to it
+  touch "$pkgdir"/etc/mastodon.conf
+  ln -s /etc/mastodon.conf "$pkgdir"/var/lib/mastodon/.env.production
+  
+  # Add stable Node binary for use with mastodon-streaming
+  cp node-v$_node-linux-x64/bin/node "$pkgdir"/var/lib/mastodon
+
+  install -Dm 644 mastodon.target -t "$pkgdir"/usr/lib/systemd/system
+  install -Dm 644 mastodon.sysusers.d "$pkgdir"/usr/lib/sysusers.d/mastodon.conf
+  install -Dm 644 mastodon.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/mastodon.conf
+
+  cd mastodon-$pkgver/dist
+
+  # Fix path discrepancies
+  for f in mastodon-*.service; do
+    sed -e '0,/home/s/home/var\/lib/' \
+      -e 's/\/live//' \
+      -e 's/=\/usr\/bin/=\/var\/lib\/mastodon/' \
+      -e 's/home\/mastodon\/.rbenv\/shims/usr\/bin/' \
+      -i $f
+  done
+
+  install -Dm 644 mastodon-*.service -t "$pkgdir"/usr/lib/systemd/system
 }

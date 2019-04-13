@@ -1,12 +1,8 @@
 post_install() {
-  getent passwd mastodon > /dev/null ||
-    useradd -rd /var/lib/mastodon mastodon
-  chown -R mastodon:mastodon /var/lib/mastodon
-
   echo "To setup Mastodon, enable and start PostgreSQL and Redis:
 # systemctl enable --now postgresql redis
 Create the Mastodon PostgreSQL user and grant it the ability to create databases with:
-# su - postgres -s /bin/sh -c \"createdb -d mastodon\"
+# su - postgres -s /bin/sh -c \"createuser -d mastodon\"
 Then, run:
 # su - mastodon -s /bin/sh -c \"cd '/var/lib/mastodon'; RAILS_ENV=production bundle exec rails mastodon:setup\"
 Finally, enable and start all the required services:
@@ -14,14 +10,8 @@ Finally, enable and start all the required services:
 }
 
 post_upgrade() {
-  chown -R mastodon:mastodon /var/lib/mastodon
-
   echo "To upgrade the database schema, run:
 # su - mastodon -s /bin/sh -c \"RAILS_ENV=production bundle exec rails db:migrate\"
 To pre-compile assets, run:
 # su - mastodon -s /bin/sh -c \"RAILS_ENV=production bundle exec rails assets:precompile\""
-}
-
-post_remove() {
-  echo 'You may want to remove the Mastodon user.'
 }
