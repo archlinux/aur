@@ -1,7 +1,7 @@
 pkgbase = cppcoro-git
 	pkgdesc = C++ coroutine abstractions for the coroutines TS
 	pkgver = r362.99bb7f8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lewissbaker/cppcoro
 	arch = any
 	license = MIT
