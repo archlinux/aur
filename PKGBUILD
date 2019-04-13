@@ -1,7 +1,7 @@
 # Maintainer: Nanda Okitavera <codeharuka.yusa@gmail.com>
 pkgname=clearine-git
-pkgver=0.5.r0.g1032bed
-pkgrel=4
+pkgver=0.5.r4.g97021c2
+pkgrel=5
 pkgdesc="Beautiful Logout UI for X11 window manager"
 arch=('any')
 url="https://github.com/okitavera/clearine"
@@ -19,6 +19,8 @@ pkgver() {
 
 package() {
   cd $pkgname
-  make DESTDIR="$pkgdir" install
+  python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
+  install -d -m755 $pkgdir/etc/
+  install -S -m644 $pkgdir/usr/share/clearine/clearine.conf $pkgdir/etc/
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/clearine/LICENSE.md"
 }
