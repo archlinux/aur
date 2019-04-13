@@ -1,7 +1,7 @@
 pkgbase = gnudatalanguage
 	pkgdesc = An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)
 	pkgver = 0.9.8
-	pkgrel = 5
+	pkgrel = 6
 	url = http://gnudatalanguage.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gnudatalanguage
 	makedepends = cmake
 	depends = python2
 	depends = python2-numpy
-	depends = plplot510
+	depends = plplot
 	depends = gsl
 	depends = readline
 	depends = hdf4
