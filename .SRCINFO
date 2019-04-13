@@ -1,0 +1,19 @@
+pkgbase = gespeaker
+	pkgdesc = A GTK+ frontend for espeak and mbrola to speech the read text.
+	pkgver = 0.8.6
+	pkgrel = 2
+	url = http://www.muflone.com/gespeaker/
+	arch = any
+	license = GPL2
+	depends = espeak
+	depends = librsvg
+	depends = pygtk
+	depends = python2-dbus
+	depends = python2-xdg
+	depends = alsa-utils
+	optdepends = libpulse: PulseAudio output
+	source = gespeaker-0.8.6.tar.gz::https://github.com/muflone/gespeaker/archive/0.8.6.tar.gz
+	sha512sums = 8449994d818e4ab833fccea2e595c4be6f3ed436b8f4f7d7bd824c948ddb3f477d6a87bcf56276b80b7da16a3ddc9cf524587df2b722c413a4ff3727724c648a
+
+pkgname = gespeaker
+
