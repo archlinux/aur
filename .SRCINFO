@@ -1,0 +1,13 @@
+pkgbase = ttf-electroharmonix
+        pkgdesc = An old and weird http server that uses only dd and sh.
+        pkgver = 1.0
+        pkgrel = 1
+        url = https://www.youtube.com/channel/UCpDvds5zXZVcQAxKaVA7xwA
+        install = ddshttpd.install
+        arch = any
+        license = GPL
+        depends = sh
+        source = https://git.syskiller.io/Stykers/fonts/raw/master/ddshttpd.sh
+        md5sums = 1bc4cf0b6f3045a05cad9e32fe35a435
+
+pkgname = ddshttpd
