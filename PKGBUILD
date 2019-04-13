@@ -94,7 +94,7 @@ check() {
     cd "fred"
 
     # these tests use alot of memory and can cause OOM's
-    rm -f test/freenet/client/async/{*Storage,ClientRequestSelector}Test.java
+    #rm -f test/freenet/client/async/{*Storage,ClientRequestSelector}Test.java
     gradle test
 }
 
