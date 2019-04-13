@@ -1,0 +1,20 @@
+pkgbase = android-google-apis-x86-system-image
+	pkgdesc = Android with Google APIs x86 Atom System Image, latest API
+	pkgver = 28_r08
+	pkgrel = 1
+	url = https://software.intel.com/en-us/android/tools
+	arch = any
+	license = custom
+	depends = android-platform
+	optdepends = qemu
+	optdepends = libvirt
+	provides = android-google-apis-x86-system-image-28
+	conflicts = android-google-apis-x86-system-image-28
+	options = !strip
+	source = http://dl-ssl.google.com/android/repository/sys-img/google_apis/x86-28_r08.zip
+	source = package.xml
+	sha256sums = 1f8c647ef7d5b6e53fcbc8528e008ad86a7128b2d072eec8681c2ff2a5bda7c7
+	sha256sums = e033df09c06a5764439fa00be3e4577fd47d237fa6565ac38eb2a51968518b26
+
+pkgname = android-google-apis-x86-system-image
+
