@@ -1,0 +1,17 @@
+pkgbase = perl-mojolicious-plugin-i18n
+	pkgdesc = Internationalization Plugin for Mojolicious
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://metacpan.org/pod/Mojolicious::Plugin::I18N
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-mojolicious>=4.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/S/SH/SHARIFULN/Mojolicious-Plugin-I18N-1.6.tar.gz
+	md5sums = 4002f7a7da4c90973ad6eedfb0fcfa16
+	sha512sums = 9915d106699eec534d440add20e6138876ac6eb2408217a19a027706950fd18d0d46c5daef31e3446be5d748098b10c81a2c4b3ababc3c5bd5964e5177c1c831
+
+pkgname = perl-mojolicious-plugin-i18n
+
