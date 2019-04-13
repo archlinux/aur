@@ -1,13 +1,14 @@
 pkgbase = python-pystache
 	pkgdesc = The mustache template engine written in python
 	pkgver = 0.5.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://github.com/defunkt/pystache
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = python
 	source = python-pystache-0.5.4.tar.gz::https://github.com/defunkt/pystache/archive/v0.5.4.tar.gz
-	sha256sums = f7bbc265fb957b4d6c7c042b336563179444ab313fb93a719759111eabd3b85a
+	sha256sums = 163f5b8fb45f6be3a5074a53a47e79ef51ec015ee43f3ec34b16be279147c96f
 
 pkgname = python-pystache
 
