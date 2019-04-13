@@ -3,8 +3,8 @@
 pkgname='yabddnsd'
 _pkgverUpstream="0.6.0"
 pkgver="${_pkgverUpstream//-/.}"
-pkgrel=1
-pkgdesc="DNS record updater for freedns.afraid.org domains written in bash"
+pkgrel=2
+pkgdesc="Yet another bash dynamic DNS daemon"
 arch=('any')
 url='http://eomanis.mooo.com/permshare/yabddnsd/index.xhtml'
 license=('GPL3')

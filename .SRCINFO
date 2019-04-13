@@ -1,7 +1,7 @@
 pkgbase = yabddnsd
-	pkgdesc = DNS record updater for freedns.afraid.org domains written in bash
+	pkgdesc = Yet another bash dynamic DNS daemon
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://eomanis.mooo.com/permshare/yabddnsd/index.xhtml
 	arch = any
 	license = GPL3
