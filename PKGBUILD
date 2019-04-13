@@ -10,9 +10,8 @@ url="https://github.com/grammatech/gtirb"
 license=('MIT')
 optdepends=('boost: build against system boost')
 depends=()
-# python2 --- to build the docs
 # graphviz -- to build the docs
-makedepends=('git' 'cmake' 'python2' 'graphviz')
+makedepends=('git' 'cmake' 'graphviz')
 provides=('gtirb')
 source=('git://github.com/grammatech/gtirb.git')
 sha512sums=('SKIP')
