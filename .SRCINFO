@@ -1,7 +1,7 @@
 pkgbase = perl-plack-test-agent
 	pkgdesc = OO interface for testing low-level Plack/PSGI apps
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/pod/Plack::Test::Agent
 	arch = any
 	license = PerlArtistic
@@ -12,7 +12,7 @@ pkgbase = perl-plack-test-agent
 	checkdepends = perl-modern-perl
 	checkdepends = perl-plack
 	checkdepends = perl-test-memory-cycle
-	checkdepends = perl-test-more
+	checkdepends = perl-test-simple
 	checkdepends = perl-test-requires
 	depends = perl
 	depends = perl-http-message

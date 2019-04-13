@@ -2,7 +2,7 @@
 
 pkgname='perl-plack-test-agent'
 pkgver='1.4'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="OO interface for testing low-level Plack/PSGI apps"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -76,7 +76,7 @@ checkdepends=(
   'perl-modern-perl'
   'perl-plack'
   'perl-test-memory-cycle'
-  'perl-test-more'
+  'perl-test-simple'
   'perl-test-requires'
 )
 makedepends=()
