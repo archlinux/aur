@@ -45,8 +45,6 @@ package() {
   rsync -rpt wordlist/* "$pkgdir/usr/share/${pkgname/-git}/wordlists/"
 
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
-  PATH=/usr/bin/ find "$pkgdir/usr/lib/python3.7/site-packages/${pkgname/-git}" \
-          -name *.pyc -execdir rm '{}' +
 }
 
 # vi: ts=2 sw=2 et:
