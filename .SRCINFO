@@ -11,6 +11,7 @@ pkgbase = gtirb-git
 	makedepends = doxygen
 	makedepends = graphviz
 	optdepends = boost: build against system boost
+	optdepends = protobuf: multi-language access to serialized GTIRB
 	provides = gtirb
 	source = git://github.com/grammatech/gtirb.git
 	sha512sums = SKIP

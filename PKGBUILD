@@ -8,7 +8,9 @@ pkgdesc="GrammaTech Intermediate Representation for Binaries"
 arch=('x86_64')
 url="https://github.com/grammatech/gtirb"
 license=('MIT')
-optdepends=('boost: build against system boost')
+optdepends=('boost: build against system boost'
+            # Installed protobuf package also dramatically reduces build time.
+            'protobuf: multi-language access to serialized GTIRB')
 depends=()
 # graphviz -- to build the docs
 makedepends=('git' 'cmake' 'python' 'doxygen' 'graphviz')
