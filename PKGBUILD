@@ -11,6 +11,7 @@ depends=('bzip2' 'cairo' 'libpng' 'libjpeg-turbo' 'python' 'python-astropy' 'pyt
 backup=(etc/astrometry.cfg)
 install=astrometry.net.install
 source=("http://astrometry.net/downloads/astrometry.net-${pkgver}.tar.gz")
+_pyver=$(python -V | cut -c 8-10)
 
 prepare() {
     cd astrometry.net-${pkgver}
@@ -31,8 +32,8 @@ package() {
          DOC_INSTALL_DIR="${pkgdir}/usr/share/doc/astrometry" \
          EXAMPLE_INSTALL_DIR="${pkgdir}/usr/share/astrometry/examples" \
          DATA_INSTALL_DIR="${pkgdir}/usr/share/astrometry/data" \
-         PY_BASE_INSTALL_DIR="${pkgdir}/usr/lib/python3.7/site-packages/astrometry" \
-         PY_BASE_LINK_DIR="../lib/python3.7/site-packages/astrometry" \
+         PY_BASE_INSTALL_DIR="${pkgdir}/usr/lib/python${_pyver}/site-packages/astrometry" \
+         PY_BASE_LINK_DIR="../lib/python${_pyver}/site-packages/astrometry" \
          install
 
     sed -e "s|${pkgdir}/usr/data|/usr/share/astrometry/data|" -i ${pkgdir}/etc/astrometry.cfg
