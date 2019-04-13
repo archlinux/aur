@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=aarchup-git
-pkgver=1.8.1.5.g32fe8c7
+pkgver=1.8.3.r1.g598d1e5
 pkgrel=1
 pkgdesc="Fork of archup a small and lightweight update-notifier for archlinux."
 url="https://github.com/aericson/aarchup"
@@ -22,7 +22,7 @@ install=aarchup.install
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags | sed 's+-+.+g'
+  git describe --tags | sed 's+-+.r+' |tr - .
 }
 
 build() {
