@@ -5,30 +5,35 @@
 # Maintainer: jooch <jooch AT gmx DOT com>
 
 pkgname=freefilesync
-pkgver=10.10
+pkgver=10.11
 pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
-url="http://www.freefilesync.org/"
+url="https://www.freefilesync.org"
 license=('GPLv3')
 depends=(wxgtk webkit2gtk boost-libs)
 makedepends=(boost unzip)
 source=(
-	"FreeFileSync_${pkgver}_Source.zip::https://freefilesync.org/download/FreeFileSync_${pkgver}_Source.zip"		#ffs
+	"FreeFileSync_${pkgver}_Source.zip::${url}/download/FreeFileSync_${pkgver}_Source.zip"		#ffs
 	revert_resources_path.patch
 	revert_xdg_config_path.patch
 	FreeFileSync.desktop
 	RealTimeSync.desktop
 	)
 
-sha256sums=('f411fbad8e22a319473c1f21065b373b927f22f522d80b3807cf2eef5613e93c' #ffs source
+sha256sums=('ed322ef285d85b1cfaa7d4e6fd4dbcb00c4aaf57003a3cbd35126eaef95a1d37' #ffs source
             '052ef5bf5eb11730499f4b81cd7e70f990fff3cfcc2f7059b84981e7ededc361' #revert_resources_path.patch
             'fef8aa099a27c277b76f1229651ed2324355528482c8f115e09c39269bbf4bdd' #revert_xdg_config_path.patch
             'd492d71c722340a1e6ee8dbbbf1ea24e052b473c38ef2d64d7338131bf417adc' #FreeFileSync.desktop
             '1321f3af06f0bc9c37dac369ca5960cba00961af7e2ceb76f18d16ca607ffa73' #RealTimeSync.desktop
 )
 	 
-DLAGENTS=('https::/usr/bin/curl -fLC - --retry 5 --retry-delay 3 -A Mozilla -o %o')
+DLAGENTS=("https::/usr/bin/curl -fLC - --retry 5 --retry-delay 3 -A Mozilla -o %o %u")
+
+_auth_request="$(\
+    echo "Authenticating for download ..." >&2; \
+    /usr/bin/curl -fsSL -A Mozilla "$url/cookie/load-consent.php" \
+)"
 
 prepare() {
 # wxgtk < 3.1.0
