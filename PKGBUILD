@@ -23,7 +23,7 @@ backup=(etc/nginx/fastcgi.conf
         etc/logrotate.d/nginx)
 install=nginx.install
 source=(https://nginx.org/download/nginx-$_nginx_ver.tar.gz
-        "nginx-rtmp-module-$_rtmp_commit_id::https://github.com/sergey-dryabzhinsky/nginx-rtmp-module#commit=$_rtmp_commit_id"
+        "nginx-rtmp-module-$_rtmp_commit_id::git+https://github.com/sergey-dryabzhinsky/nginx-rtmp-module#commit=$_rtmp_commit_id"
         service
         logrotate)
 provides=('nginx')
@@ -115,7 +115,7 @@ package() {
   install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
   install -Dm644 ../service "$pkgdir"/usr/lib/systemd/system/nginx.service
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
-  install -Dm644 ../nginx-rtmp-module-$_rtmp_commit_id/LICENSE "$pkgdir"/usr/share/licenses/nginx-rtmp-module/LICENSE
+  install -Dm644 ../nginx-rtmp-module-$_rtmp_commit_id/LICENSE "$pkgdir"/usr/share/licenses/nginx-rtmp-sergey-git/LICENSE
 
   rmdir "$pkgdir"/run
 

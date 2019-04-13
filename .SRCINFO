@@ -1,13 +1,35 @@
-pkgbase = pkgbase
-	pkgdesc = Refreshed new Adwaita theme with creamy colors and minor changes. 
-	pkgver = 0.1
-	pkgrel = 1
-	url = https://github.com/murat-cileli/adwaita-creamy
+pkgbase = nginx-rtmp-sergey-git
+	pkgdesc = NGINX-based Media Streaming Server, forked by Sergey Dryabzhinsky.
+	pkgver = 1.15.8_a5ac72c274
+	pkgrel = 0
+	url = https://github.com/sergey-dryabzhinsky/nginx-rtmp-module
+	install = nginx.install
 	arch = x86_64
-	license = MIT
-	provides = adwaita-creamy
-	source = git+https://github.com/murat-cileli/adwaita-creamy.git
-	sha256sums = SKIP
+	license = custom
+	depends = pcre
+	depends = zlib
+	depends = openssl
+	depends = geoip
+	depends = mailcap
+	provides = nginx
+	conflicts = nginx
+	backup = etc/nginx/fastcgi.conf
+	backup = etc/nginx/fastcgi_params
+	backup = etc/nginx/koi-win
+	backup = etc/nginx/koi-utf
+	backup = etc/nginx/nginx.conf
+	backup = etc/nginx/scgi_params
+	backup = etc/nginx/uwsgi_params
+	backup = etc/nginx/win-utf
+	backup = etc/logrotate.d/nginx
+	source = https://nginx.org/download/nginx-1.15.8.tar.gz
+	source = nginx-rtmp-module-a5ac72c274::git+https://github.com/sergey-dryabzhinsky/nginx-rtmp-module#commit=a5ac72c274
+	source = service
+	source = logrotate
+	md5sums = 49eecc51a45bdcc8cc147f6747ef8a4c
+	md5sums = SKIP
+	md5sums = ef491e760e7c1ffec9ca25441a150c83
+	md5sums = 6a01fb17af86f03707c8ae60f98a2dc2
 
-pkgname = adwaita-creamy
+pkgname = nginx-rtmp-sergey-git
 
