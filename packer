@@ -335,7 +335,7 @@ aurinstall() {
     makepkg $MAKEPKGOPTS -f
   fi
 
-  [[ $? -ne 0 ]] && echo "The build failed." && return 1
+  [[ $? -ne 0 ]] && err "The build failed."
   pkgtarfiles=""
   for i in "${pkgname[@]}"; do
     pkgtarfiles="$pkgtarfiles $i-*$PKGEXT"

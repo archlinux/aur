@@ -1,0 +1,10 @@
+#!/bin/sh
+if [ `whoami` != root ]; then
+    echo "Only root can do that"
+    exit 1
+fi
+pacman --noconfirm -Syy && env MAKEPKGOPTS="--ignorearch --nocheck $MAKEPKGOPTS" packer-user --noconfirm --needed --noedit -S $@
+retval=$?
+pacman --noconfirm -Sc
+rm -rf /tmp/packer*
+exit $retval

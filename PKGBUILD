@@ -2,7 +2,7 @@
 
 pkgname=packer-kit
 pkgver=20190413
-pkgrel=2
+pkgrel=3
 pkgdesc="Bash wrapper for pacman and AUR (fork of github.com/keenerd/packer)"
 url="http://github.com/pi-kvm/packer"
 license=(GPL3)
@@ -10,8 +10,8 @@ arch=(any)
 depends=(jshon expac)
 optdepends=(sudo customizepkg)
 install=$pkgname.install
-source=(packer packer.8)
-md5sums=(SKIP SKIP)
+source=(packer pkg-install packer.8)
+md5sums=(SKIP SKIP SKIP)
 
 
 build() {
@@ -28,5 +28,6 @@ package() {
 	cd $srcdir
 	install -D -m755 packer "$pkgdir/usr/bin/packer"
 	install -D -m755 packer-user "$pkgdir/usr/bin/packer-user"
+	install -D -m755 pkg-install "$pkgdir/usr/bin/pkg-install"
 	install -D -m644 packer.8 "$pkgdir/usr/share/man/man8/packer.8"
 }
