@@ -1,0 +1,228 @@
+'\" t
+.\"     Title: packer
+.\"    Author: [see the "Authors" section]
+.\" Generator: DocBook XSL Stylesheets v1.75.2 <http://docbook.sf.net/>
+.\"      Date: 03/27/2010
+.\"    Manual: Pacman Manual
+.\"    Source: Pacman
+.\"  Language: English
+.\"
+.TH "PACKER" "8" "03/27/2010" "Packer" "Packer Manual"
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+packer \- package manager utility for pacman repositories and the AUR
+.SH "SYNOPSIS"
+.sp
+\fIpacman\fR <operation> [options] [packages]
+.SH "DESCRIPTION"
+.sp
+Packer is a bash wrapper for pacman and the AUR\&. It was designed to be a simple and very fast replacement for the basic functionality of yaourt\&. It allows you to install, update, search, and show information for any package in the main repositories and in the AUR\&. For other commands, such as removing packages, use pacman\&.
+.SH "OPERATIONS"
+.PP
+\fB\-Ss\fR
+.RS 4
+Search for a package\&.
+.RE
+.PP
+\fB\-S\fR
+.RS 4
+Install a package\&.
+.RE
+.PP
+\fB\-Syu\fR
+.RS 4
+Sync with repositories\&.
+.RE
+.PP
+\fB\-Si\fR
+.RS 4
+Show information for a package\&.
+.RE
+.PP
+\fB\-G\fR
+.RS 4
+Download and extract AUR package tarballs, but don\(cqt install anything\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Show packer usage\&.
+.RE
+.SH "OPTIONS"
+.PP
+\fB\-\-ignore\fR <\'package\'>
+.RS 4
+Ignore packages\&. Separate package names with a comma\&.
+.RE
+.PP
+\fB\-\-noconfirm\fR
+.RS 4
+Perform commands without confirmation from the user\&.
+.RE
+.PP
+\fB\-\-noedit\fR
+.RS 4
+Perform commands without asking if the user wants to edit any installation files\&.
+.RE
+.PP
+\fB\-\-quickcheck\fR
+.RS 4
+Check for updates and exit\&.
+.RE
+.PP
+\fB\-\-auronly\fR
+.RS 4
+Only perform commands for the AUR\&.
+.RE
+.PP
+\fB\-\-devel\fR
+.RS 4
+Update development packages\&. (cvs, git\&...)
+.RE
+.PP
+\fB\-\-skipinteg\fR
+.RS 4
+Skip the integrity check by ignoring AUR package MD5 sums\&.
+.RE
+.PP
+\fB\-\-preview\fR
+.RS 4
+Always offer to edit the pkgbuild before sourcing it.  To always force preview, 'alias packer="packer --preview"'
+.RE
+.SH "INTERACTIVE MODE"
+.sp
+Use packer without any operations or options to use the interactive mode\&. Packer will show a numbered list of search results\&. To install a package, enter the corresponding number\&.
+.SH "EXAMPLE USAGE"
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+Sync and update all packages:
+packer \-Syu
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+Update only AUR packages:
+packer \-Syu \-\-auronly
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+Update, and reinstall packages that were installed from a revision control source:
+packer \-Syu \-\-devel
+.RE
+.sp
+For a package called \fIname\fR:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+Search:
+packer \-Ss \fIname\fR
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+Install:
+packer \-S \fIname\fR
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+Install without confirmations:
+packer \-S \-\-noconfirm \fIname\fR
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+Get information about a package:
+packer \-Si \fIname\fR
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+Search and install in interactive mode:
+packer \fIname\fR
+.RE
+.SH "CONFIGURATION"
+.sp
+Packer uses these settings in /etc/pacman\&.conf:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+IgnorePkg
+.RE
+.sp
+Packer output will be colorized unless the environmental variable COLOR is set to `NO'.
+.sp
+To manually edit files, packer uses the EDITOR variable\&. If EDITOR is not set then the default editor is vi\&.
+.sp
+Packages are built in the TMPDIR path\&. If the TMPDIR variable is not set then the default path is /tmp
+.SH "SEE ALSO"
+.sp
+\fBpacman\fR(8)
+.SH "AUTHORS"
+.sp
+Matthew Bruenig <matthewbruenig@gmail\&.com>
