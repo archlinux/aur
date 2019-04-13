@@ -17,6 +17,7 @@ pkgbase = lidarr-develop
 	optdepends = rtorrent: torrent downloader
 	optdepends = jackett: torrent indexer proxy
 	optdepends = libgdiplus: provides a gdi+ compatible api
+	optdepends = chromaprint: audio fingerprinting for track identificaton
 	provides = lidarr
 	conflicts = lidarr
 	source = https://ci.appveyor.com/api/buildjobs/x0v7r33cqj72to7l/artifacts/Lidarr.develop.0.6.0.816.linux.tar.gz

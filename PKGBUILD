@@ -18,7 +18,8 @@ optdepends=('sabnzbd: usenet downloader'
             'deluge: torrent downloader'
             'rtorrent: torrent downloader'
             'jackett: torrent indexer proxy'
-            'libgdiplus: provides a gdi+ compatible api')
+            'libgdiplus: provides a gdi+ compatible api'
+            'chromaprint: audio fingerprinting for track identificaton')
 
 provides=('lidarr')
 conflicts=('lidarr')
