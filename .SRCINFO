@@ -4,6 +4,7 @@ pkgbase = nginx-mod-ipscrub
 	pkgrel = 3
 	url = https://github.com/masonicboom/ipscrub
 	arch = i686
+	arch = pentium4
 	arch = x86_64
 	arch = armv7h
 	license = custom
