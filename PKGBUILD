@@ -5,7 +5,7 @@ _gituser="magnars"
 _gitrepo="dash.el"
 
 pkgname=emacs-dash-git
-pkgver=2.15.0r4.gf1ffdf7
+pkgver=2.15.0.r12.g1549860
 pkgrel=1
 pkgdesc='A modern list API for Emacs. No cl required'
 arch=('any')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_gitrepo}"
-  git describe --tags | sed 's+-+r+' | tr - .
+  git describe --tags | sed 's+-+.r+' | tr - .
 }
 
 build() {
