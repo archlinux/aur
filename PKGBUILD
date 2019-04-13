@@ -4,7 +4,7 @@
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 pkgname=icaclient
 pkgver=19.03
-pkgrel=1
+pkgrel=2
 pkgdesc="Citrix Workspace App for x86_64 (64bit) Linux (ICAClient, Citrix Receiver)"
 arch=('x86_64' 'i686' 'armv7h')
 url='https://www.citrix.com/downloads/workspace-app/linux/'
@@ -110,6 +110,8 @@ package() {
     install -Dm755 wfica_assoc.sh "${pkgdir}$ICAROOT"
 
     # make certificates available
-    ln -s /usr/share/ca-certificates/trust-source/* "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts/"
-    c_rehash "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts/"
+	rm -r "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts"
+	ln -s /etc/ssl/certs "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts"
+    #ln -s /usr/share/ca-certificates/trust-source/* "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts/"
+    #c_rehash "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts/"
 }
