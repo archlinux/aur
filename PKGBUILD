@@ -1,7 +1,7 @@
 # Maintainer: Nanda Okitavera <codeharuka.yusa@gmail.com>
 pkgname=clearine-git
-pkgver=0.5.r4.g97021c2
-pkgrel=5
+pkgver=0.6.r0.g6b481fa
+pkgrel=1
 pkgdesc="Beautiful Logout UI for X11 window manager"
 arch=('any')
 url="https://github.com/okitavera/clearine"
