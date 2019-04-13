@@ -9,12 +9,15 @@ url="https://web.${pkgname%-nativefier}.com"
 license=("custom")
 depends=("gtk3" "libxss" "nss")
 makedepends=("imagemagick" "nodejs-nativefier")
-source=("${pkgname}.png"
-        "${pkgname}.desktop"
-        "${pkgname}-inject.js")
-sha256sums=("3899581abcfed9b40b7208bbbca8bdbfe3ae9655980dbf55f04dec9cb3309f27"
-            "a4ea20639ea570d2f9ec6040b8873136fa507e0aa2341fd98aad25aa6bb66e2e"
-            "e1051cf02ab194073370cce0f0e8226e58df03e8e55fa310cfa998b17ff1a52e")
+source=(
+  "${pkgname}.png"
+  "${pkgname}.desktop"
+  "${pkgname}-inject.js")
+sha256sums=(
+  "3899581abcfed9b40b7208bbbca8bdbfe3ae9655980dbf55f04dec9cb3309f27"
+  "a4ea20639ea570d2f9ec6040b8873136fa507e0aa2341fd98aad25aa6bb66e2e"
+  "e1051cf02ab194073370cce0f0e8226e58df03e8e55fa310cfa998b17ff1a52e"
+)
 
 build() {
   cd "${srcdir}"
@@ -44,4 +47,3 @@ package() {
     convert "${srcdir}/${pkgname}.png" -resize "${_size}" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/${pkgname}.png"
   done
 }
-
