@@ -1,17 +1,17 @@
 # Maintainer: JC Francois <jc.francois@gmail.com>
 pkgname=etcetera
-pkgver=0.92
+pkgver=1.0
 pkgrel=1
 pkgdesc="Simple command line tool to keep track of changes to config files of a linux system"
 arch=("x86_64" "armv6h")
 url="https://gitlab.com/jeancf/etcetera"
 license=("GPL3")
 depends=("python")
-optdepends=()
+optdepends=("python-cysystemd")
 options=()
 backup=("etc/etcetera.conf")
 source=("https://gitlab.com/jeancf/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('57fedaf8650930fa1afd34eb1447dc82')
+md5sums=('abd13d4acd151f8923c154d36ce9dc3c')
 
 package() {
     cd ${srcdir}/${pkgname}-${pkgver}
