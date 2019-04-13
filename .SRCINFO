@@ -1,6 +1,6 @@
 pkgbase = ddnet-git
 	pkgdesc = DDraceNetwork, a cooperative racing mod of Teeworlds
-	pkgver = 12.1.r13.g11127f934
+	pkgver = 12.1.r32.g826a7781a
 	pkgrel = 1
 	url = https://ddnet.tw
 	arch = x86_64

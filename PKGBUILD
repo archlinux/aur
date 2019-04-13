@@ -1,7 +1,7 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=ddnet-git
-pkgver=12.1.r13.g11127f934
+pkgver=12.1.r32.g826a7781a
 pkgrel=1
 pkgdesc="DDraceNetwork, a cooperative racing mod of Teeworlds"
 arch=('x86_64')
@@ -45,8 +45,10 @@ prepare() {
     convert ../ddnet/other/icons/DDNet.ico        ddnet.png
 
       # Generate .desktop files
-    gendesk --pkgname="DDNet" --pkgdesc="DDNet" \
-            --icon="ddnet" --categories="Game;ArcadeGame"
+    gendesk --pkgname="DDNet" --pkgdesc="DDNet"           \
+            --icon="ddnet" --categories="Game;ArcadeGame" \
+            --mimetypes="x-scheme-handler/ddnet"          \
+            --exec="DDNet %u"
     gendesk --pkgname="DDNet-Server" --name="DDNet Server"          \
             --pkgdesc="DDNet Server" --terminal=true                \
             --icon="ddnet-server"    --categories="Game;ArcadeGame" \
@@ -95,6 +97,6 @@ package() {
     done
 
       # Install license file
-    install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
+    install -dvm755 "$pkgdir/usr/share/licenses/$pkgname/"
     install -vm644 ddnet/license.txt  "$pkgdir/usr/share/licenses/$pkgname/"
 }
