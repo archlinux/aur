@@ -1,37 +1,34 @@
-# Contributor: Vladimir Keleshev <vladimir [at] keleshev [dot] com>
-# Maintainer: Mikhail felixoid Shiryaev <mr dot felixoid at gmail dot com>
+# Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
 
 _name=schema
-pkgbase=python2-${_name}
-pkgname=python2-${_name}
-#pkgname=(python2-${_name} python-${_name})
-pkgver=0.6.5
-pkgrel=1
-pkgdesc='Python library for validating Python data structures.'
-arch=('i686' 'x86_64')
-url="https://github.com/keleshev/${_name}"
-license=('MIT')
-makedepends=('python2-setuptools' 'python2-pytest')
-#makedepends=('python-setuptools' 'python-pytest' 'python2-setuptools' 'python2-pytest')
-source=("https://files.pythonhosted.org/packages/source/s/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('b7494da450ce247fe8c7f2a8f9a73fbe5f1a634f64f734ce62aaba0708d76f0f')
+pkgname="python2-$_name"
+pkgver=0.7.0
+pkgrel=2
+pkgdesc='Python module to validate and convert data structures.'
+arch=(any)
+url="https://github.com/keleshev/$_name"
+depends=(python2 python2-contextlib2)
+makedepends=(python2-setuptools)
+checkdepends=(python2-mock python2-pytest)
+license=(MIT)
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+sha256sums=('44add3ef9016c85ac4b0291b45286a657d0df309b31528ca8d0a9c6d0aa68186')
+
+build() {
+	cd "$_name-$pkgver"
+
+    python2 setup.py build
+}
 
 check() {
-  cd ${_name}-${pkgver}
-  python2 setup.py test
-  # python setup.py test
+	cd "$_name-$pkgver"
+
+	python2 setup.py test
 }
 
-package_python2-schema() {
-  depends=('python2')
-  cd "${srcdir}/${_name}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
-  install -Dm644 LICENSE-MIT ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT
-}
+package() {
+	cd "$_name-$pkgver"
 
-#package_python-schema() {
-#  depends=('python')
-#  cd "${srcdir}/${_name}-${pkgver}"
-#  python setup.py install --root="${pkgdir}" --optimize=1
-#  install -Dm644 LICENSE-MIT ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT
-#}
+    python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -D -m644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
