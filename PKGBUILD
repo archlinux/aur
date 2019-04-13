@@ -29,7 +29,7 @@ package() {
   cp -rf "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/lospec-editor.desktop"
   cp -rf "${srcdir}/lospec-pixel-editor-linux-x64" "${pkgdir}/opt/"
 
-  ln -sf "/opt/lospec-pixel-editor-linux-x64/microsoft-office-online" "${pkgdir}/usr/bin/lospec-pixel-editor"
+  ln -sf "/opt/lospec-pixel-editor-linux-x64/lospec-pixel-editor" "${pkgdir}/usr/bin/lospec-pixel-editor"
   ln -sf "/opt/lospec-pixel-editor-linux-x64/resources/app/icon.png" "${pkgdir}/usr/share/pixmaps/lospec-pixel-editor.png"
 
   chmod 777 "${pkgdir}/opt/lospec-pixel-editor-linux-x64/resources/app/nativefier.json"
