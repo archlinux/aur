@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=flex-git
-pkgver=2.6.4.88.g98018e3
+pkgver=2.6.4.r88.g98018e3
 pkgrel=1
 pkgdesc="A tool for generating text-scanning programs - from git"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  echo $(git describe --tags|tr - .|cut -c2-)
+  echo $(git describe --tags|sed 's+-+.r+' | tr - .|cut -c2-)
 }
 
 build() {
@@ -35,11 +35,8 @@ check() {
 
 package() {
   cd ${pkgname%-git}
-
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
   ln -s flex "$pkgdir"/usr/bin/lex
-
-  install -Dm644 COPYING \
-  	"$pkgdir"/usr/share/licenses/$pkgname/license.txt
+  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/license.txt
 }
 

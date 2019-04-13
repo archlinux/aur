@@ -1,6 +1,6 @@
 pkgbase = flex-git
 	pkgdesc = A tool for generating text-scanning programs - from git
-	pkgver = 2.6.4.88.g98018e3
+	pkgver = 2.6.4.r88.g98018e3
 	pkgrel = 1
 	url = https://github.com/westes/flex
 	arch = i686
