@@ -5,7 +5,7 @@ pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-cuda")
 _pkgname="pytorch"
 pkgver=1.0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -14,6 +14,10 @@ depends=('python' 'python-yaml' 'python-numpy' 'opencv' 'nccl')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'cudnn' 'git')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver")
 sha256sums=('SKIP')
+
+get_pyver () {
+    python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
+}
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
@@ -63,6 +67,23 @@ package_python-pytorch() {
   cd "$srcdir/${_pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir"/ --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+  # put CMake files in correct place
+  install -d "${pkgdir}/usr/lib/cmake"
+  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/share/cmake"/* \
+     "${pkgdir}/usr/lib/cmake/"
+  # put C++ API in correct place
+  install -d "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/usr/include"
+  install -d "${pkgdir}/usr/lib"
+  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib/include"/* \
+     "${pkgdir}/usr/include/"
+  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib/THCUNN.h" \
+     "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib/THNN.h" \
+     "${pkgdir}/usr/include/"
+  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib"/*.so \
+     "${pkgdir}/usr/lib/"
+  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib"/torch_shm_manager \
+     "${pkgdir}/usr/bin/"
 }
 
 package_python-pytorch-cuda() {
@@ -72,6 +93,23 @@ package_python-pytorch-cuda() {
   cd "$srcdir/${_pkgname}-${pkgver}-cuda"
   python setup.py install --root="$pkgdir"/ --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+  # put CMake files in correct place
+  install -d "${pkgdir}/usr/lib/cmake"
+  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/share/cmake"/* \
+     "${pkgdir}/usr/lib/cmake/"
+  # put C++ API in correct place
+  install -d "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/usr/include"
+  install -d "${pkgdir}/usr/lib"
+  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib/include"/* \
+     "${pkgdir}/usr/include/"
+  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib/THCUNN.h" \
+     "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib/THNN.h" \
+     "${pkgdir}/usr/include/"
+  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib"/*.so \
+     "${pkgdir}/usr/lib/"
+  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib"/torch_shm_manager \
+     "${pkgdir}/usr/bin/"
 }
 
 # vim:set ts=2 sw=2 et:
