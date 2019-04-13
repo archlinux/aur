@@ -1,0 +1,27 @@
+pkgbase = python-efb-telegram-master-git
+	pkgdesc = EFB Telegram Master, a channel for EH Forwarder Bot.
+	pkgver = r134.7d4648d
+	pkgrel = 1
+	url = https://github.com/blueset/efb-telegram-master
+	arch = any
+	groups = efb
+	license = AGPL-3
+	makedepends = git
+	depends = python-yaml
+	depends = python-ehforwarderbot
+	depends = python-telegram-bot
+	depends = python-magic-ahupp
+	depends = python-moviepy
+	depends = python-imageio-ffmpeg
+	depends = python-peewee
+	depends = python-requests
+	depends = python-pydub
+	depends = python-retrying
+	depends = python-language-tags
+	provides = python-efb-telegram-master
+	conflicts = python-efb-telegram-master
+	source = python-efb-telegram-master::git+https://github.com/blueset/efb-telegram-master.git
+	md5sums = SKIP
+
+pkgname = python-efb-telegram-master-git
+
