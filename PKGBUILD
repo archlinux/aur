@@ -71,7 +71,7 @@ build() {
         export GRADLE_USER_HOME="$srcdir"
 
     msg "Building Freenet..."
-    gradle --no-daemon copyRuntimeLibs
+    gradle --no-build-cache copyRuntimeLibs
 
     build_plugins
 }
