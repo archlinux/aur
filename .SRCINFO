@@ -1,7 +1,7 @@
 pkgbase = ddnet
 	pkgdesc = DDraceNetwork, a cooperative racing mod of Teeworlds
 	pkgver = 12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ddnet.tw
 	arch = x86_64
 	license = custom:BSD
