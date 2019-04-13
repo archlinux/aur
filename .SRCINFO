@@ -1,7 +1,7 @@
 pkgbase = writefreely
 	pkgdesc = Federated blogging from write.as
-	pkgver = 0.8.1
-	pkgrel = 2
+	pkgver = 0.9.0
+	pkgrel = 1
 	url = https://writefreely.org/
 	install = writefreely.install
 	arch = x86_64
@@ -19,12 +19,12 @@ pkgbase = writefreely
 	source = writefreely.service
 	source = config.ini
 	source = 64.patch
-	source = https://github.com/writeas/writefreely/archive/v0.8.1.tar.gz
+	source = https://github.com/writeas/writefreely/archive/v0.9.0.tar.gz
 	sha256sums = 6c74c81e27165851daf20d4bcf958227342f063aa3ec53b1cb86a56dac565f10
 	sha256sums = 60d4b49872523a2aed3e0e6a55513dfefe5ae6cbec43f2fcc65db894fb3bd2a3
 	sha256sums = e357b687bd0eab95996711276216b6f2dc534ba9214ae094172d6d7a6b1fdae5
 	sha256sums = 009c083488511d92b489337f7feb8bd17631a104907959d21b1f9b5df3ce0a70
-	sha256sums = 33e4f27e4fd64d16358d739c2b5a6316c543e8bcb6ae9a56f1b24d304123442d
+	sha256sums = 9bc7a8355cb940ed9ac004d0763c51b60dd77e2e739ced33db658c4708502153
 
 pkgname = writefreely
 
