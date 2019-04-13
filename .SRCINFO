@@ -1,6 +1,6 @@
 pkgbase = ddisasm-git
 	pkgdesc = A fast and accurate disassembler
-	pkgver = v0.1.0.r1.ge70761a
+	pkgver = v0.1.0.r2.g71cd81b
 	pkgrel = 1
 	url = https://github.com/grammatech/ddisasm
 	arch = x86_64
@@ -9,7 +9,8 @@ pkgbase = ddisasm-git
 	makedepends = cmake
 	makedepends = souffle-git
 	makedepends = mcpp
-	depends = gtirb
+	makedepends = gtirb
+	makedepends = gtirb-pprinter
 	depends = capstone
 	optdepends = boost: build against system boost
 	provides = ddisasm
