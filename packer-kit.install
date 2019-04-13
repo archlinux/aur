@@ -1,5 +1,5 @@
 post_install() {
-	id packer &>/dev/null || useradd -r -c "Packer build user" -s /sbin/nologin packer
+	id packer &>/dev/null || useradd -r -c "Packer build user" -m -d /var/packer -s /sbin/nologin packer
 	echo "==> Ensure that the 'Color' option is enabled in '/etc/pacman.conf' as well"
 }
 
