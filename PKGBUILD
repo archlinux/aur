@@ -1,35 +1,41 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=flutter-git
-pkgver=0.11.13.r2.a226c0f0d9
+pkgver=1.4.19.r2.27b058a414
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
 url="https://${pkgname%-git}.io"
 license=("custom" "BSD" "CCPL")
 depends=("glu" "java-environment" "lib32-libglvnd")
-optdepends=("android-sdk"
-            "android-studio"
-            "bash"
-            "dart"
-            "git"
-            "intellij-idea-community-edition"
-            "intellij-idea-ultimate-edition"
-            "perl"
-            "python"
-            "sh")
+optdepends=(
+  "android-sdk"
+  "android-studio"
+  "bash"
+  "dart"
+  "git"
+  "intellij-idea-community-edition"
+  "intellij-idea-ultimate-edition"
+  "perl"
+  "python"
+  "sh"
+)
 makedepends=("git" "python" "unzip")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=("opt/${pkgname%-git}/packages/${pkgname%-git}_test/pubspec.yaml" "opt/${pkgname%-git}/packages/${pkgname%-git}/pubspec.yaml")
 options=("!emptydirs")
 install="${pkgname%-git}.install"
-source=("${pkgname%-git}::git+https://github.com/${pkgname%-git}/${pkgname%-git}"
-        "${pkgname%-git}.sh"
-        "${pkgname%-git}.csh")
-sha256sums=("SKIP"
-            "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
-            "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f")
+source=(
+  "${pkgname%-git}::git+https://github.com/${pkgname%-git}/${pkgname%-git}"
+  "${pkgname%-git}.sh"
+  "${pkgname%-git}.csh"
+)
+sha256sums=(
+  "SKIP"
+  "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
+  "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f"
+)
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
@@ -42,7 +48,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
-  "bin/${pkgname%-git}" doctor
+  "${srcdir}/${pkgname%-git}/bin/${pkgname%-git}" doctor
 }
 
 package() {
