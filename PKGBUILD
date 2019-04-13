@@ -1,10 +1,10 @@
 # Maintainer: Julien Nicoulaud <julien DOT nicoulaud AT gmail DOT com>
 pkgname=ffmpeg-normalize
 pkgver=1.3.10
-pkgrel=1
-pkgdesc="Audio normalization using ffmpeg ."
+pkgrel=2
+pkgdesc="Audio normalization using ffmpeg."
 arch=(any)
-url="https://github.com/nicoulaj/rainbow"
+url="https://github.com/slhck/ffmpeg-normalize"
 license=(MIT)
 depends=(ffmpeg python python-tqdm)
 makedepends=(python-setuptools python-pypandoc)

@@ -1,8 +1,8 @@
 pkgbase = ffmpeg-normalize
-	pkgdesc = Audio normalization using ffmpeg .
+	pkgdesc = Audio normalization using ffmpeg.
 	pkgver = 1.3.10
-	pkgrel = 1
-	url = https://github.com/nicoulaj/rainbow
+	pkgrel = 2
+	url = https://github.com/slhck/ffmpeg-normalize
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
