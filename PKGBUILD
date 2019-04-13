@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
  
 pkgname=emacs-org-mode-git
-pkgver=9.2.1r188.g2d88cfbc0
+pkgver=9.2.3.r339.gab311b85a
 pkgrel=1
 epoch=1
 pkgdesc="Emacs Org Mode from git"
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags | sed 's+-+r+' | cut -c9- | tr - .
+  git describe --tags | sed 's+-+.r+' | cut -c9- | tr - .
 }
 
  build() {
