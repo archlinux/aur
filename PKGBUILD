@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=cpprestsdk
-pkgver=2.10.10
+pkgver=2.10.12
 pkgrel=1
 pkgdesc="A cross-platform, modern, and asynchronous library that enables developers to access and author connected applications"
 arch=('i686' 'x86_64' 'armv7h')
@@ -11,7 +11,7 @@ depends=('boost' 'websocketpp' 'openssl>=1.0.0')
 makedepends=('cmake>=2.6.0')
 conflicts=('casablanca' 'casablanca-git' 'cpprestsdk-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Microsoft/cpprestsdk/archive/v${pkgver}.tar.gz")
-sha512sums=('6169d0907aead80a4e0a3f6a25fb71ab13a46a10a9700974c629b91948a83ee3c841a4ac7dfac8155ea3731c0eedee594c07ec37050d57770faf4eee608660e5')
+sha512sums=('a0839c11f71271464632095c1b91bd555220d1c87c4e7637d8424a51739e5abcd91e9257d1171d06470427ba48defd2be12bb34f5352c9590219b9f54292e3a8')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}/
