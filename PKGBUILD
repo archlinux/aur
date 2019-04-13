@@ -1,21 +1,21 @@
 # Maintainer: eomanis at web dot de
 
 pkgname='freedns-maintain-ip'
-pkgverUpstream="0.5.2"
-pkgver="${pkgverUpstream//-/.}"
-pkgrel=1
+_pkgverUpstream="0.5.2"
+pkgver="${_pkgverUpstream//-/.}"
+pkgrel=2
 pkgdesc="DNS record updater for freedns.afraid.org domains written in bash"
 arch=('any')
-url='http://eomanis.mooo.com/permshare/freedns-maintain-ip/index.xhtml'
+url='http://eomanis.mooo.com/permshare/yabddnsd/index.xhtml'
 license=('GPL3')
 depends=('bash>=4.4' 'grep' 'sed' 'wget' 'bind-tools' 'coreutils' 'iproute2' 'bc')
 optdepends=('miniupnpc: Detection of public IPv4 address using UPnP')
-source=("http://eomanis.mooo.com/permshare/freedns-maintain-ip/freedns-maintain-ip-${pkgverUpstream}.tar.gz")
+source=("http://eomanis.mooo.com/permshare/yabddnsd/freedns-maintain-ip-${_pkgverUpstream}.tar.gz")
 sha384sums=('5b4465329252468e4f8a38db0d4fed6de4d22526e94ec14950e1a8ede2eb06ac95f46db404ce95500f7ff43f31620515')
 
 package() {
     
-    srcRootDir="${srcdir}/${pkgname}-${pkgverUpstream}"
+    srcRootDir="${srcdir}/${pkgname}-${_pkgverUpstream}"
     
     # Place the main bash script into /usr/bin
     mkdir -p "${pkgdir}/usr/bin"
