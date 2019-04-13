@@ -10,8 +10,7 @@ url="http://www.libssh.org/"
 license=("LGPL")
 makedepends=("cmake" "cmocka" "doxygen" "python")
 source=("https://www.libssh.org/files/${pkgver%.*}/${pkgname%-gnutls}-${pkgver}.tar.xz"{,.asc})
-sha256sums=("43304ca22f0ba0b654e14b574a39816bc70212fdea5858a6637cc26cade3d592"
-            "SKIP")
+sha256sums=("43304ca22f0ba0b654e14b574a39816bc70212fdea5858a6637cc26cade3d592" "SKIP")
 validpgpkeys=("8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D") # Andreas Schneider <asn@cryptomilk.org>
 
 prepare() {
