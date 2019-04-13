@@ -1,5 +1,5 @@
 pkgname="lospec-editor-nativefier"
-pkgver="0.1"
+pkgver="0.2"
 pkgrel="1"
 pkgdesc="The Lospec Pixel Editor is a free, easy to use tool for creating pixel art"
 arch=("x86_64")
