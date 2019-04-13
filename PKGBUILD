@@ -3,15 +3,18 @@
 _pkgname=SimpleITK
 pkgname=simpleitk
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simplified layer built on top of ITK"
 arch=('x86_64')
 url="http://www.simpleitk.org/"
 license=('Apache')
+provides=('python-simpleitk')
+conflicts=('python-simpleitk')
 depends=('gcc-libs' 'insight-toolkit>=4.13')
 makedepends=(
 	'cmake'
 	'git'
+	'openjpeg2'
 	'python'
 	'python-numpy'
 	'python-pip'

@@ -1,12 +1,13 @@
 pkgbase = simpleitk
 	pkgdesc = A simplified layer built on top of ITK
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.simpleitk.org/
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	makedepends = git
+	makedepends = openjpeg2
 	makedepends = python
 	makedepends = python-numpy
 	makedepends = python-pip
@@ -30,6 +31,8 @@ pkgbase = simpleitk
 	optdepends = ruby: Ruby bindings
 	optdepends = tcl: Tcl/TK bindings
 	optdepends = tk: Tcl/TK bindings
+	provides = python-simpleitk
+	conflicts = python-simpleitk
 	source = git+https://github.com/SimpleITK/SimpleITK#tag=v1.2.0
 	md5sums = SKIP
 
