@@ -6,7 +6,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=1.6.3
+pkgver=1.6.7
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
@@ -115,6 +115,8 @@ package() {
 
     install -d "$pkgdir/usr/share/kservices5"
     install -m644 "$srcdir/tdesktop/lib/xdg/tg.protocol" "$pkgdir/usr/share/kservices5/tg.protocol"
+    install -d "$pkgdir/usr/share/kde4/services"
+    ln -s "/usr/share/kservices5/tg.protocol" "$pkgdir/usr/share/kde4/services"
 
     local icon_size icon_dir
     for icon_size in 16 32 48 64 128 256 512; do
