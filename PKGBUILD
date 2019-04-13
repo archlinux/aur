@@ -1,9 +1,9 @@
-# Maintainer: Jeff Henson <jeff at henson dot io>
+# Maintainer: Jeff Henson <jeff@henson.io>
 
 pkgname=origin-client
 pkgdesc="Openshift client"
 pkgver=3.11.0
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/openshift/origin"
 license=('Apache')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/origin"
-
+  unset GOPATH
   make WHAT=cmd/oc
   hack/generate-docs.sh
 }
