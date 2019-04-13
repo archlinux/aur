@@ -9,6 +9,7 @@ pkgbase = gtirb-pprinter-git
 	makedepends = cmake
 	makedepends = gtirb
 	makedepends = capstone
+	makedepends = graphviz
 	optdepends = boost: build against system boost
 	provides = gtirb-pprinter
 	source = git://github.com/grammatech/gtirb-pprinter.git

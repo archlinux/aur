@@ -10,9 +10,8 @@ url="https://github.com/grammatech/gtirb-pprinter"
 license=('MIT')
 optdepends=('boost: build against system boost')
 depends=()
-# python2 --- to build the docs
 # graphviz -- to build the docs
-makedepends=('git' 'cmake' 'gtirb' 'capstone' 'python2' 'graphviz')
+makedepends=('git' 'cmake' 'gtirb' 'capstone' 'graphviz')
 provides=('gtirb-pprinter')
 source=('git://github.com/grammatech/gtirb-pprinter.git')
 sha512sums=('SKIP')
