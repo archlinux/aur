@@ -9,11 +9,11 @@ post_install() {
     }
     chown -R freenet:freenet /opt/freenet /run/freenet
     echo
-    echo "Freenet will be slow at first startup while it discovers the network."
-    echo "You may see Data Not Found or Route Not Found errors, this is normal."
+    echo "Freenet will be slow during first startup while it discovers the network."
+    echo "You may see 'Data Not Found' or 'Route Not Found' errors, this is normal."
     echo "For best performance Freenet should be run 24/7 as much as possible."
-    echo "Your node's configuration WebUI will be located at http://127.0.0.1:8888/ "
-    echo " https://freenetproject.org/faq.html"
+    echo "Your node's configuration WebUI is located at http://127.0.0.1:8888/ "
+    echo "https://freenetproject.org/faq.html"
     echo
 }
 
