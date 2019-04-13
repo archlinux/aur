@@ -1,7 +1,7 @@
 # Maintainer: Stykers <stykers at stykers dot moe>
 
 pkgname=vagrant-vmware-utility
-pkgver=1.0
+pkgver=1.0.7
 pkgrel=3
 pkgdesc="Proprietary plugin for vagrant vmware provider."
 arch=('x86_64')
