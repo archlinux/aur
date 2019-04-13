@@ -49,9 +49,6 @@ _use_current=
 ### Disable MUQSS
 _muqss_disable=
 
-### Enable htmldocs (increases compile time)
-_htmldocs_enable=
-
 ### Do not edit below this line unless you know what you're doing
 
 # pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
@@ -62,16 +59,12 @@ _lqxpatchrel=6
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=5.0.7_1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://liquorix.net/"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
-
-if [ -n "$_htmldocs_enable" ]; then
-    makedepends+=('python-sphinx' 'graphviz')
-fi
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
@@ -201,12 +194,7 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  local params=(bzImage modules)
-  if [ -n "$_htmldocs_enable" ]; then
-    params+=(htmldocs)
-  fi
-
-  make ${params[*]}
+  make bzImage modules
 }
 
 _package() {
@@ -362,20 +350,6 @@ _package-docs() {
   msg2 "Installing documentation..."
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
-
-  if [ -n "$_htmldocs_enable" ]; then
-    msg2 "Removing doctrees..."
-    rm -r "$builddir/Documentation/output/.doctrees"
-
-    msg2 "Moving HTML docs..."
-    local src dst
-    while read -rd '' src; do
-        dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-        mkdir -p "${dst%/*}"
-        mv "$src" "$dst"
-        rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-    done < <(find "$builddir/Documentation/output" -type f -print0)
-  fi
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
