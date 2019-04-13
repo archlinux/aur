@@ -1,10 +1,12 @@
 pkgbase = brlaser
 	pkgdesc = CUPS driver for the Brother DCP-7065DN
 	pkgver = 4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pdewacht/brlaser
 	arch = x86_64
+	arch = armv7h
 	license = GPL2
+	makedepends = cmake
 	depends = cups
 	source = https://github.com/pdewacht/brlaser/archive/v4.tar.gz
 	sha512sums = 1e08091adc371a35f75c245fd86f132aae7811a00bd7e9d194c47038dc9aa29296fbf8769cef6b8ea42d82467857195ba8024a9d6de8048174ecc44e0bb76067
