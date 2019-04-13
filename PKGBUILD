@@ -17,10 +17,12 @@ provides=('cloudcompare')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git"
         CloudCompare.desktop
         ccViewer.desktop
+        constexpr.patch
         )
 md5sums=('SKIP'
          '379e09f6996b2b397429c0661c409bd0'
-         'b6dcb0dee15cc67011166a2fc774c5ef')
+         'b6dcb0dee15cc67011166a2fc774c5ef'
+         'c1ea23f8a38cf1326196bb42de07e020')
 
 prepare() {
   cd ${srcdir}/${name}
