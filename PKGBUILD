@@ -9,26 +9,32 @@ arch=("x86_64")
 url="https://${pkgname}.io"
 license=("custom" "BSD" "CCPL")
 depends=("glu" "java-environment" "lib32-libglvnd")
-optdepends=("android-sdk"
-            "android-studio"
-            "bash"
-            "dart"
-            "git"
-            "intellij-idea-community-edition"
-            "intellij-idea-ultimate-edition"
-            "perl"
-            "python"
-            "sh")
+optdepends=(
+  "android-sdk"
+  "android-studio"
+  "bash"
+  "dart"
+  "git"
+  "intellij-idea-community-edition"
+  "intellij-idea-ultimate-edition"
+  "perl"
+  "python"
+  "sh"
+)
 makedepends=("git" "python")
 backup=("opt/${pkgname}/packages/${pkgname}_test/pubspec.yaml" "opt/${pkgname}/packages/${pkgname}/pubspec.yaml")
 options=("!emptydirs")
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/stable/linux/${pkgname}_linux_v${pkgver}-stable.tar.xz"
-        "${pkgname}.sh"
-        "${pkgname}.csh")
-sha256sums=("e5f9e8a641854a2b598083fd9d733d56bc9b77346b79777c19127992cbf6be51"
-            "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
-            "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f")
+source=(
+  "${pkgname}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/stable/linux/${pkgname}_linux_v${pkgver}-stable.tar.xz"
+  "${pkgname}.sh"
+  "${pkgname}.csh"
+)
+sha256sums=(
+  "e5f9e8a641854a2b598083fd9d733d56bc9b77346b79777c19127992cbf6be51"
+  "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
+  "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f"
+)
 
 build() {
   cd "${srcdir}/${pkgname}"
