@@ -1,0 +1,24 @@
+pkgbase = enki-editor
+	pkgdesc = A text editor for programmers
+	pkgver = 18.08.0
+	pkgrel = 1
+	url = http://enki-editor.org/
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python-markdown
+	depends = python-pyqtwebengine
+	depends = python-qtconsole
+	depends = desktop-file-utils
+	depends = qutepart
+	optdepends = ctags: For navigation in file
+	optdepends = flake8: To lint your Python code.
+	optdepends = python-docutils: For reStructuredText preview
+	optdepends = python-regex: For preview synchronization
+	optdepends = python-sphinx: To build Sphinx documentation.
+	optdepends = python-code-chat-git: For source code to HTML translation (literate programming)
+	source = https://github.com/andreikop/enki/archive/v18.08.0.tar.gz
+	sha256sums = 1a943a9f5144324ce3bbf9d71de495b24b6a608f20b512cad72597a644a1fc91
+
+pkgname = enki-editor
+
