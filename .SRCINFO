@@ -12,6 +12,7 @@ pkgbase = linphone-desktop-all
 	makedepends = ladspa
 	makedepends = nasm
 	makedepends = python-pystache
+	makedepends = python-setuptools
 	makedepends = yasm
 	depends = alsa-utils
 	depends = desktop-file-utils
