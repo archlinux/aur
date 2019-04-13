@@ -1,0 +1,17 @@
+pkgbase = lospec-editor-nativefier
+	pkgdesc = The Lospec Pixel Editor is a free, easy to use tool for creating pixel art
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://lospec.com/pixel-editor/app
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = nodejs-nativefier
+	source = lospec-editor-nativefier.png
+	source = lospec-editor-nativefier.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lospec-editor-nativefier
+

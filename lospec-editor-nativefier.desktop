@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Lospec Pixel Editor
+Comment=The Lospec Pixel Editor is a free, easy to use tool for creating pixel art
+Exec=lospec-pixel-editor
+Icon=lospec-pixel-editor
+Terminal=false
+Categories=Art;Creativity;Drawing;Development
