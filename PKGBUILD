@@ -3,7 +3,7 @@
 # Contributor: flu
 
 pkgname=flvlc
-pkgver=3.0
+pkgver=3.2
 pkgrel=1
 pkgdesc='FLTK media player by libvlc'
 arch=('x86_64')
