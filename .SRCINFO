@@ -8,6 +8,7 @@ pkgbase = gtirb-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = python
+	makedepends = doxygen
 	makedepends = graphviz
 	optdepends = boost: build against system boost
 	provides = gtirb

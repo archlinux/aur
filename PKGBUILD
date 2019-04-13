@@ -11,7 +11,7 @@ license=('MIT')
 optdepends=('boost: build against system boost')
 depends=()
 # graphviz -- to build the docs
-makedepends=('git' 'cmake' 'python' 'graphviz')
+makedepends=('git' 'cmake' 'python' 'doxygen' 'graphviz')
 provides=('gtirb')
 source=('git://github.com/grammatech/gtirb.git')
 sha512sums=('SKIP')
@@ -36,8 +36,7 @@ build() {
     make -Cbuild
     # Build Docs
     cmake doc/doxy/ -Bbuild-doc
-    cd build-doc
-    cmake --build . --target doc
+    cmake --build build-doc --target doc
 }
 
 package() {
