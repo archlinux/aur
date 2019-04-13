@@ -1,7 +1,7 @@
 # Maintainer: Ke Liu <spcter119@gmail.com>
 
 pkgname=python-ehforwarderbot-git
-pkgver=r385.c1af67e
+pkgver=r386.59c52e6
 pkgrel=1
 pkgdesc='An extensible message tunneling chat bot framework. Delivers messages to and from multiple platforms and remotely control your accounts.'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/blueset/ehForwarderBot'
 license=('AGPL-3')
 groups=('efb')
 depends=('python-ruamel-yaml' 'python-asciimatics' 'python-cjkwrap' 'python-typing-extensions')
-makedepends=('git' 'sed')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}"::"git+${url}.git"
@@ -24,8 +24,6 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	sed -i '/^typing$/d' "$srcdir/${pkgname%-git}/requirements.txt"
-	sed -i '/"typing",/d' "$srcdir/${pkgname%-git}/setup.py"
 	python setup.py clean --all
 	python setup.py build
 }
