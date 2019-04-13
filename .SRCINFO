@@ -1,6 +1,6 @@
 pkgbase = linux-rt-bfq
 	pkgver = 4.19.31.rt18
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Algodev-github/bfq-mq/
 	arch = x86_64
 	license = GPL2
@@ -8,8 +8,6 @@ pkgbase = linux-rt-bfq
 	makedepends = inetutils
 	makedepends = bc
 	makedepends = libelf
-	makedepends = python-sphinx
-	makedepends = graphviz
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.31.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.31.tar.sign
