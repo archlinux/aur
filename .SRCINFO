@@ -1,0 +1,23 @@
+pkgbase = wfuzz-git
+	pkgdesc = Web application fuzzer - python3 build of the dev branch
+	pkgver = 2.3.4.dev94
+	pkgrel = 1
+	url = https://github.com/xmendez/wfuzz
+	arch = any
+	license = GPL
+	makedepends = python-mock
+	makedepends = python-netaddr
+	makedepends = python-pip
+	makedepends = python-sphinx
+	makedepends = git
+	makedepends = rsync
+	depends = python-pycurl
+	depends = python-future
+	depends = python-chardet
+	provides = wfuzz
+	conflicts = wfuzz
+	source = git+https://github.com/xmendez/wfuzz.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = wfuzz-git
+
