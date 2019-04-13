@@ -6,7 +6,7 @@
 
 pkgname=freefilesync
 pkgver=10.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="https://www.freefilesync.org"
@@ -85,11 +85,11 @@ package() {
     cd "${srcdir}/FreeFileSync/Build"
     install -t "${bindir}" -Dm755 Bin/FreeFileSync Bin/RealTimeSync
     install -t "${appsharedir}" -Dm644 \
-        ding.wav \
-        gong.wav \
-        harp.wav \
+        Misc/ding.wav \
+        Misc/gong.wav \
+        Misc/harp.wav \
         Resources.zip \
-        styles.gtk_rc
+        Misc/styles.gtk_rc
     install -t "${appsharedir}/Languages" -Dm644 Languages/*.lng
 
     cd "${srcdir}"
