@@ -13,12 +13,16 @@ url="https://chrome.google.com/webstore/detail/gbchcmhmhahfdphkhkmpfmihenigjmpp"
 license=("BSD")
 depends=("gtk3" "libxss" "nss" "python2-psutil" "xorg-server-xvfb" "xorg-setxkbmap" "xorg-xauth" "xorg-xdpyinfo" "xorg-xrandr")
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.deb::http://dl.google.com/linux/direct/${pkgname}_current_amd64.deb"
-        "${pkgname}.service" 
-        "crd")
-sha256sums=("08a85ecff0acb80e71b35e15e28314cd6b0ed16fdf3b2da269b3335b22d4f263"
-            "e5da5ae89b5bc599f72f415d1523341b25357931b0de46159fce50ab83615a4b"
-            "27dee2d383e6bd993fe0557d5c222fa80ab6d16d43775dedff6218713c7a1c06")
+source=(
+  "${pkgname}-${pkgver}.deb::http://dl.google.com/linux/direct/${pkgname}_current_amd64.deb"
+  "${pkgname}.service"
+  "crd"
+)
+sha256sums=(
+  "08a85ecff0acb80e71b35e15e28314cd6b0ed16fdf3b2da269b3335b22d4f263"
+  "e5da5ae89b5bc599f72f415d1523341b25357931b0de46159fce50ab83615a4b"
+  "27dee2d383e6bd993fe0557d5c222fa80ab6d16d43775dedff6218713c7a1c06"
+)
 
 build() {
   cd "${srcdir}"
