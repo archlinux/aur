@@ -1,8 +1,8 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=parsedmarc
-pkgver=0+159+4853537
-_commit=485353776573fd0a5860b53aa5d97fdbcf7a4456
+pkgver=0+584+536b94f
+_commit=536b94ff9056c20cec846e41b7ca7853b7cc678f
 pkgrel=1
 pkgdesc='Python package and CLI for parsing aggregate and forensic DMARC reports'
 arch=(any)
@@ -11,7 +11,7 @@ license=(Apache)
 depends=(python-dnspython
          python-requests
          python-publicsuffix
-         python-xmltodict
+         'python-xmltodict>=0.12.0'
          python-pygeoip
          python-dnspython
          python-imapclient
@@ -24,10 +24,14 @@ depends=(python-dnspython
          python-sphinx_rtd_theme
          python-collective-checkdocs
          python-wheel
-         rstcheck)
+         rstcheck
+         'python-tqdm>=4.31.1'
+         'python-kafka>=1.4.4'
+         'python-elasticsearch-dsl<7.0.0'
+         'python-elasticsearch<7.0.0')
 makedepends=(git python-setuptools)
 source=(git+https://github.com/domainaware/parsedmarc#commit=$_commit)
-sha512sums=(SKIP)
+sha512sums=('SKIP')
 
 pkgver() {
   cd parsedmarc
@@ -37,5 +41,5 @@ pkgver() {
 package() {
   cd parsedmarc
   python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm 644 -t "$pkgdir"/usr/share/licenses/parsedmarc LICENSE
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/parsedmarc
 }
