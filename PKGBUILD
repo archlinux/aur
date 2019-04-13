@@ -1,5 +1,3 @@
-# Maintainer: Murat Çileli <murat.cileli@gmail.com>
-
 pkgname="ms-office-online-nativefier"
 pkgver="0.1"
 pkgrel="1"
