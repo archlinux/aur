@@ -1,7 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=python-mail-parser
-pkgver=3.4.1
+pkgver=3.9.3
 pkgrel=1
 pkgdesc='Tokenizer for raw mails'
 arch=(any)
@@ -11,11 +11,10 @@ depends=(python-ipaddress
          python-simplejson
          python-six)
 makedepends=(python-setuptools)
-source=(https://github.com/SpamScope/mail-parser/archive/v$pkgver.tar.gz)
-sha512sums=('43771aa6948dd2b761aba99ccb36e8d0667a2545f835aa0a8c9222b5e66f07c5e992ada02e766102de6d23f785ac01152872550efe79be570fe07262621c069b')
+source=(https://pypi.python.org/packages/source/m/mail-parser/mail-parser-$pkgver.tar.gz)
+sha512sums=('14b7e6116bd4941b09e2f53769786adf519ffd5c4c5bee4d6916b8810ba21b1dee60785019d932767460a7b4f0b55abf40a24cdd141365c175372ade720f410c')
 
 package() {
   cd mail-parser-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm 644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
