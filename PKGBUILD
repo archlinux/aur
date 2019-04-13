@@ -16,7 +16,8 @@ optdepends=("sabnzbd: usenet downloader"
             "deluge: torrent downloader"
             "rtorrent: torrent downloader"
             "jackett: torrent indexer proxy"
-            "libgdiplus: provides a gdi+ compatible api")
+            "libgdiplus: provides a gdi+ compatible api"
+            "chromaprint: audio fingerprinting for track identificaton")
 
 source=("https://github.com/lidarr/Lidarr/releases/download/v${pkgver}/Lidarr.develop.${pkgver}.linux.tar.gz"
         "lidarr.service"

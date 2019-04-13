@@ -17,6 +17,7 @@ pkgbase = lidarr
 	optdepends = rtorrent: torrent downloader
 	optdepends = jackett: torrent indexer proxy
 	optdepends = libgdiplus: provides a gdi+ compatible api
+	optdepends = chromaprint: audio fingerprinting for track identificaton
 	source = https://github.com/lidarr/Lidarr/releases/download/v0.6.0.815/Lidarr.develop.0.6.0.815.linux.tar.gz
 	source = lidarr.service
 	source = lidarr.tmpfiles
