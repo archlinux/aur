@@ -13,5 +13,9 @@ install=${pkgname}.install
 md5sums=('248101f9de76df92bf8ac80be9338312')
 
 package() {
-  install -Dm755 ${srcdir}/ddshttpd.sh ${pkgdir}/usr/bin/ddshttpd
+  tar xlvf ${srcdir}/*.tar.xz -C ${pkgdir}
+  rm ${pkgdir}/.INSTALL
+  rm ${pkgdir}/.BUILDINFO
+  rm ${pkgdir}/.MTREE
+  rm ${pkgdir}/.PKGINFO
   }
