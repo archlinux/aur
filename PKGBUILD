@@ -6,7 +6,7 @@
 
 pkgname='cplex'
 pkgdesc="A commercial solver for mathematical optimization problems."
-pkgver=12.8
+pkgver=12.9
 pkgrel=2
 arch=('x86_64')
 url='https://www.ibm.com/software/products/de/ibmilogcpleoptistud'
@@ -24,7 +24,7 @@ _installer="${_basename}.bin"
 _archdir="${arch/_/-}_linux"
 _python_min_version=$(python --version | awk '{ print $2 }' | awk -F "." '{ print $2 }')
 
-source=("file://${_installer}" installer.properties.template)
+source=("local://${_installer}" installer.properties.template)
 
 prepare() {
 	chmod +x "${_installer}"
@@ -86,16 +86,9 @@ package() {
 	cd "../../../../"
 
 	# Install Python bindings.
-	if [[ "${_python_min_version}" > 6 ]]; then
-		echo -ne "\033[0;31m\033[1mWARNING\033[0m "
-		echo "Skipping the installation of Python bindings."
-		echo "CPLEX 12.8.0 only supports Python 3.5 and 3.6; later versions of Python are not supported."
-		echo "Downgrade to Python 3.6 if you need Python bindings."
-	else
-		cd "./cplex/python/3.7/${_archdir}/"
-		python3 setup.py install --root="${pkgdir}/" --optimize=1
-		cd "../../../../"
-	fi
+	cd "./cplex/python/3.7/${_archdir}/"
+	python3 setup.py install --root="${pkgdir}/" --optimize=1
+	cd "../../../../"
 
 	# Install license.
 	install -dm755 "${pkgdir}/usr/share/licenses/cplex"
@@ -109,5 +102,5 @@ package() {
 	chmod -R 644 "${pkgdir}/usr/share/doc/cplex"
 }
 
-md5sums=('1cb4b29131433491a95efd73b145b821'
+md5sums=('7d6523476edd4a245d28d6f095739497'
          'f295f6c4ecd0f3a6d2fdca21788efd0f')
