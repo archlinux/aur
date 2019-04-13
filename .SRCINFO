@@ -10,6 +10,7 @@ pkgbase = gtirb-pprinter-git
 	makedepends = gtirb
 	makedepends = capstone
 	makedepends = python
+	makedepends = doxygen
 	makedepends = graphviz
 	optdepends = boost: build against system boost
 	provides = gtirb-pprinter

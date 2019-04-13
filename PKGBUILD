@@ -10,7 +10,7 @@ url="https://github.com/grammatech/gtirb-pprinter"
 license=('MIT')
 optdepends=('boost: build against system boost')
 depends=()
-makedepends=('git' 'cmake' 'gtirb' 'capstone' 'python' 'graphviz')
+makedepends=('git' 'cmake' 'gtirb' 'capstone' 'python' 'doxygen' 'graphviz')
 provides=('gtirb-pprinter')
 source=('git://github.com/grammatech/gtirb-pprinter.git')
 sha512sums=('SKIP')
@@ -35,8 +35,7 @@ build() {
     make -Cbuild
     # Build Docs
     cmake doc/doxy/ -Bbuild-doc
-    cd build-doc
-    cmake --build . --target doc
+    make -Cbuild-doc doc
 }
 
 package() {
