@@ -6,8 +6,8 @@ pkgdesc="Auto-install osu! on Linux"
 arch=('any')
 url='https://github.com/yurisuki/osu-install'
 depends=('winetricks' 'wine-mono' 'lib32-gnutls' 'lib32-alsa-plugins' 'lib32-libpulse' 'lib32-openal' 'p7zip' 'dialog' 'curl')
-source=('osu-install.sh')
-sha512sums=('c0d1de26711de8abc5f3220e1e03f281f4663298ae4846fe8ef3534d7ec79ff93c46d306f70b0973e26df322d12bddb617c74c1b0b05728afcc402c5a8da9a04')
+source=('osu-install::https://raw.githubusercontent.com/yurisuki/osu-install/master/osu-installonarch.sh')
+sha512sums=('464ce05980203b4bdead16f9d6d0da5613b9b2c00208209a74828e3d30ce747800004d2c493c6dec0197d145264407508f8fa0f01983f54fef1f03bbbe1cb30b')
 
 prepare() {
 	chmod +x "$srcdir/osu-install.sh"
