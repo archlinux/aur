@@ -2,18 +2,18 @@
 # Author: Maxim Devaev <mdevaev@gmail.com>
 
 
-[ -n "$_PLATFORMS" ] || _PLATFORMS="v1-vga v1-hdmi"
-[ -n "$_BOARDS" ] || _BOARDS="rpi2 rpi3"
+[ -n "$PIKVM_PLATFORM" ] || PIKVM_PLATFORM="v1-vga v1-hdmi"
+[ -n "$PIKVM_BOARD" ] || PIKVM_BOARD="rpi2 rpi3"
 
 
 pkgname=(kvmd)
-for _platform in $_PLATFORMS; do
-	for _board in $_BOARDS; do
+for _platform in $PIKVM_PLATFORM; do
+	for _board in $PIKVM_BOARD; do
 		pkgname+=(kvmd-platform-$_platform-$_board)
 	done
 done
 pkgbase=kvmd
-pkgver=0.151
+pkgver=0.152
 pkgrel=1
 pkgdesc="The main Pi-KVM daemon"
 url="https://github.com/pi-kvm/kvmd"
@@ -94,8 +94,8 @@ package_kvmd() {
 }
 
 
-for _platform in $_PLATFORMS; do
-	for _board in $_BOARDS; do
+for _platform in $PIKVM_PLATFORM; do
+	for _board in $PIKVM_BOARD; do
 		eval "package_kvmd-platform-$_platform-$_board() {
 			pkgdesc=\"Pi-KVM platform configs - $_platform for $_board\"
 
