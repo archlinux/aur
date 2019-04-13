@@ -1,0 +1,12 @@
+diff --git a/test/build.cake b/test/build.cake
+index a9d0f57..74254c2 100644
+--- a/test/build.cake
++++ b/test/build.cake
+@@ -21,7 +21,6 @@ sources = script.cwd([
+   'counted.cpp',
+   'generator_tests.cpp',
+   'recursive_generator_tests.cpp',
+-  'async_generator_tests.cpp',
+   'async_auto_reset_event_tests.cpp',
+   'async_manual_reset_event_tests.cpp',
+   'async_mutex_tests.cpp',

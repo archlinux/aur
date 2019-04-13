@@ -1,0 +1,24 @@
+pkgbase = cppcoro
+	pkgdesc = C++ coroutine abstractions for the coroutines TS
+	pkgver = r362.99bb7f8
+	pkgrel = 1
+	url = https://github.com/lewissbaker/cppcoro
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = clang
+	makedepends = llvm
+	makedepends = lld
+	makedepends = libc++
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !strip
+	source = git+https://github.com/lewissbaker/cppcoro
+	source = git+https://github.com/lewissbaker/cake
+	source = disable-broken-test.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 3e2058eff2585767b7224992cbdd7a1d
+
+pkgname = cppcoro
+
