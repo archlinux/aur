@@ -64,6 +64,7 @@ usage() {
   echo '    --quiet      - only output package name for searches'
   echo '    --ignore     - takes a comma-separated list of packages to ignore'
   echo '    --noconfirm  - do not prompt for any confirmation'
+  echo '    --needed     - do not reinstall repo packages'
   echo '    --noedit     - do not prompt to edit files'
   echo '    --quickcheck - check for updates and exit'
   echo '    --auronly    - only do actions for aur'
@@ -526,6 +527,7 @@ while [[ $1 ]]; do
     '--quiet') quiet='1' ;;
     '--ignore') ignorearg="$2" ; PACOPTS+=("--ignore" "$2") ; shift ;;
     '--noconfirm') noconfirm='1' PACOPTS+=("--noconfirm");;
+    '--needed') PACOPTS+=("--needed");;
     '--noedit') noedit='1' ;;
     '--auronly') auronly='1' ;;
     '--quickcheck') quickcheck='1' ;;
