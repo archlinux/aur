@@ -1,6 +1,6 @@
 pkgbase = linux-bfq-mq-git
 	pkgver = 4.18.0.g8687d94c3344
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -9,8 +9,6 @@ pkgbase = linux-bfq-mq-git
 	makedepends = bc
 	makedepends = git
 	makedepends = libelf
-	makedepends = python-sphinx
-	makedepends = graphviz
 	options = !strip
 	source = git+https://github.com/Algodev-github/bfq-mq
 	source = https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch

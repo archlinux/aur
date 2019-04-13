@@ -61,11 +61,11 @@ _mq_enable=
 pkgbase=linux-bfq-mq-git
 _srcname=bfq-mq
 pkgver=4.18.0.g8687d94c3344
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
-makedepends=('kmod' 'inetutils' 'bc' 'git' 'libelf' 'python-sphinx' 'graphviz')
+makedepends=('kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
 _bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.17"
@@ -244,9 +244,9 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  make bzImage modules htmldocs
+  make bzImage modules
 }
-
+ 
 _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the BFQ-MQ scheduler"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
@@ -404,18 +404,6 @@ _package-docs() {
   msg2 "Installing documentation..."
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
-
-  msg2 "Removing doctrees..."
-  rm -r "$builddir/Documentation/output/.doctrees"
-
-  msg2 "Moving HTML docs..."
-  local src dst
-  while read -rd '' src; do
-    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    mkdir -p "${dst%/*}"
-    mv "$src" "$dst"
-    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  done < <(find "$builddir/Documentation/output" -type f -print0)
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
