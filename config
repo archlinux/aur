@@ -12,7 +12,7 @@ export USER_LANGUAGE=en
 # Do you want e-mail notification? (y/n) [y]:
 export USER_ENABLE_EMAIL=y
 # What's your e-mail address?
-export USER_EMAIL_ADDRESS=foo@example.com
+export USER_EMAIL_ADDRESS=ossecm@localhost
 #  What's your SMTP server ip/host?
 export USER_EMAIL_SMTP=localhost
 

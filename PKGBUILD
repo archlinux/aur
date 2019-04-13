@@ -1,6 +1,6 @@
 # Maintainer: TC <crt@archlinux.email>
 pkgname=ossec-hids
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Open Source Host-based Intrusion Detection System"
 arch=('any')
@@ -16,9 +16,10 @@ options=('emptydirs')
 source=(https://github.com/ossec/$pkgname/archive/$pkgver.tar.gz \
         ossec.service
         config)
-sha256sums=('e0e2987751badb95c2bf618531c7853b2289c910f796da85ff394c0faea43f50'
+sha256sums=('b36cc4db73c265f5fd65f2b5450d69e332316612b5602a3e310ae8907e9d2548'
             'be5f6fe7e10603a0897c2502e0e6913fbb544a66f59674aaaef87d0f31d09eb9'
-            '2700c08962a64009ab65b72282141244cdfd7d327c8e8bdde6f5fcc623fdf1b4')
+            'c919180fd99a7918aa9877802acf6dc4e7769a1b7b156630329f01ff57e87240')
+
 _instdir=/var/ossec
 
 _preparevars() {
