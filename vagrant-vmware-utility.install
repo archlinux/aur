@@ -1,11 +1,17 @@
 post_install() {
-  echo -n "Thank you for installing my package!"
+  /opt/vagrant-vmware-desktop/bin/vagrant-vmware-utility certificate generate
+  /opt/vagrant-vmware-desktop/bin/vagrant-vmware-utility service install
+}
+
+pre_upgrade() {
+  /opt/vagrant-vmware-desktop/bin/vagrant-vmware-utility service uninstall
 }
 
 post_upgrade() {
-  post_install
+  /opt/vagrant-vmware-desktop/bin/vagrant-vmware-utility certificate generate
+  /opt/vagrant-vmware-desktop/bin/vagrant-vmware-utility service install
 }
 
 post_remove() {
-  post_install
+  /opt/vagrant-vmware-desktop/bin/vagrant-vmware-utility service uninstall
 }
