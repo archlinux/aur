@@ -16,3 +16,5 @@ package() {
 installosu() {
 	bash osu-install
 }
+
+installosu
