@@ -338,7 +338,8 @@ aurinstall() {
   [[ $? -ne 0 ]] && err "The build failed."
   pkgtarfiles=""
   for i in "${pkgname[@]}"; do
-    pkgtarfiles="$pkgtarfiles $i-$pkgver-$pkgrel-*$PKGEXT"
+    [ -z "$epoch" ] || epoch_prefix="$epoch:"
+    pkgtarfiles="$pkgtarfiles $i-$epoch_prefix$pkgver-$pkgrel-*$PKGEXT"
   done
   if  [[ $2 = dependency ]]; then
     runasroot $PACMAN ${PACOPTS[@]} --asdeps -U $pkgtarfiles
