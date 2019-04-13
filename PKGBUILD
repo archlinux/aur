@@ -10,10 +10,14 @@ url="https://github.com/IsmaelMartinez/${pkgname}"
 license=("GPL3")
 depends=("gtk3" "libxss" "nss")
 makedepends=("node-gyp" "python2" "yarn")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/IsmaelMartinez/${pkgname}/archive/v${pkgver}.tar.gz"
-        "${pkgname}.desktop")
-sha256sums=("11790851a576c135dcfec1fa5c1935ac5793929ab19442a7c5fac75cae09b121"
-            "f33ab4997c329567bbe172fe77ee6cbced5c5d4354e12ef52a89dd702422fded")
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/IsmaelMartinez/${pkgname}/archive/v${pkgver}.tar.gz"
+  "${pkgname}.desktop"
+)
+sha256sums=(
+  "11790851a576c135dcfec1fa5c1935ac5793929ab19442a7c5fac75cae09b121"
+  "f33ab4997c329567bbe172fe77ee6cbced5c5d4354e12ef52a89dd702422fded"
+)
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
