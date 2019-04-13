@@ -2,8 +2,8 @@
 # Contributor: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
 
 pkgname=ats2-postiats
-_pkgname=ATS2-Postiats
-pkgver=0.3.11
+_pkgname=ATS2-Postiats-gmp
+pkgver=0.3.13
 pkgrel=1
 pkgdesc="Statically typed programming language"
 arch=('i686' 'x86_64')
@@ -14,13 +14,13 @@ options=('staticlibs' '!emptydirs' '!makeflags')
 install="${pkgname}.install"
 source=("https://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-${pkgver}/${_pkgname}-${pkgver}.tgz")
 
-sha1sums=('c4df38d0ae759be4294c8a9d90f8bad7800dac50')
+sha1sums=('969fcaf9e2c11ca3b89d5b21aaff70f7b126a960')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	# NOTE: Before update a version check if has been correctly packaged
 	# sed -i "s/0.2.11/${pkgver}/g" VERSION
-	sed -i "49s/0.3.9/${pkgver}/g" configure.ac
+	# sed -i "49s/0.3.9/${pkgver}/g" configure.ac
 	autoconf
 	./configure --prefix=/usr
 	make all
