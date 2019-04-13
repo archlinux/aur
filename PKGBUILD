@@ -2,7 +2,7 @@
 
 pkgname='perl-http-cookiemonster'
 pkgver='0.09'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Easy read/write access to your jar of HTTP::Cookies"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -14,6 +14,7 @@ depends=(
 makedepends=()
 checkdepends=(
   'perl-data-serializer'
+  'perl-safe-isa'
 )
 url='https://metacpan.org/pod/HTTP::CookieMonster'
 source=('https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-CookieMonster-0.09.tar.gz')

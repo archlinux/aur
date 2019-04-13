@@ -1,12 +1,13 @@
 pkgbase = perl-http-cookiemonster
 	pkgdesc = Easy read/write access to your jar of HTTP::Cookies
 	pkgver = 0.09
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/HTTP::CookieMonster
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	checkdepends = perl-data-serializer
+	checkdepends = perl-safe-isa
 	depends = perl
 	depends = perl-http-cookies
 	options = !emptydirs
