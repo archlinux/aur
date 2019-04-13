@@ -1,7 +1,7 @@
 pkgbase = vagrant-vmware-utility
         pkgdesc = Proprietary plugin for vagrant vmware provider.
         pkgver = 1.0.7
-        pkgrel = 3
+        pkgrel = 4
         url = https://www.vagrantup.com/vmware/
         install = vagrant-vmware-utility.install
         arch = x86_64

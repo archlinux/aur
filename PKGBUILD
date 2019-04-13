@@ -2,7 +2,7 @@
 
 pkgname=vagrant-vmware-utility
 pkgver=1.0.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Proprietary plugin for vagrant vmware provider."
 arch=('x86_64')
 url="https://www.vagrantup.com/vmware/"
