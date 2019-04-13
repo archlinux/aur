@@ -1,6 +1,6 @@
 # Maintainer: Nichlas Severinsen <ns@nsz.no>
 pkgname=signet
-pkgver=0.9.11
+pkgver=0.9.13
 pkgrel=1
 pkgdesc="Desktop Client for Signet"
 arch=('x86_64')
@@ -12,16 +12,16 @@ source_x86_64=("https://nthdimtech.com/downloads/signet-releases/${pkgver}/gnu-l
                "https://nthdimtech.com/downloads/signet-releases/${pkgver}/gnu-linux/signet-${pkgver}.sig"
                "https://nthdimtech.com/downloads/signet-releases/${pkgver}/gnu-linux/50-signet.rules"
                "https://www.gnu.org/licenses/gpl.txt"
-               "https://github.com/nthdimtech/signet-desktop-client/raw/master/client/images/signet.iconset/icon_16x16.png"
-               "https://github.com/nthdimtech/signet-desktop-client/raw/master/client/images/signet.iconset/icon_32x32.png"
-               "https://github.com/nthdimtech/signet-desktop-client/raw/master/client/images/signet.iconset/icon_64x64.png"
-               "https://github.com/nthdimtech/signet-desktop-client/raw/master/client/images/signet.iconset/icon_128x128.png"
-               "https://github.com/nthdimtech/signet-desktop-client/raw/master/client/images/signet.iconset/icon_256x256.png"
-               "https://github.com/nthdimtech/signet-desktop-client/raw/master/client/images/signet.iconset/icon_512x512.png"
+               "https://raw.githubusercontent.com/nthdimtech/signet-client/v${pkgver}/client/images/signet.iconset/icon_16x16.png"
+               "https://raw.githubusercontent.com/nthdimtech/signet-client/v${pkgver}/browser-plugins/firefox/icons/icon-32.png"               
+               "https://raw.githubusercontent.com/nthdimtech/signet-client/v${pkgver}/client/images/signet.iconset/icon_64x64.png"
+               "https://raw.githubusercontent.com/nthdimtech/signet-client/v${pkgver}/client/images/signet.iconset/icon_128x128.png"
+               "https://raw.githubusercontent.com/nthdimtech/signet-client/v${pkgver}/client/images/signet.iconset/icon_256x256.png"
+               "https://raw.githubusercontent.com/nthdimtech/signet-client/v${pkgver}/client/images/signet.iconset/icon_512x512.png"
                "${pkgname}.desktop")
 validpgpkeys=('D47581AE98C17249915387BE0E47D2FA6E50979D') # Neils Nesse
-sha256sums_x86_64=('9ac89cd53f9b2e7c3893b0d1026c0765306e5ce0528e687f92b933fe83d3d083'
-                   'b11f301590b94c53f171acb673d378ea0ef664d7904189e9ee4d0a41e2a924d9'
+sha256sums_x86_64=('eaf442f9ae6fb15de0b0f9a0c93f97f2344d32bcbaa76e476c90da5552639c7d'
+                   '6c6aab6ab009f5063650f83938b43f24a7041f2ac0cd3a885660519e1b289b90'
                    'af34a217fee566de4c149429459e4cd13f38435857ff8c9f5fd7bb0199e86820'
                    '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
                    '420da6b48346cfb2f726722a799c4fad70bdd2fcc0d5cb5753ecd129cf7ee35e'
@@ -39,7 +39,7 @@ package() {
   install -Dm644 "${srcdir}/gpl.txt" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 "${srcdir}/icon_16x16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/$pkgname.png"
-  install -Dm644 "${srcdir}/icon_32x32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
+  install -Dm644 "${srcdir}/icon-32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
   install -Dm644 "${srcdir}/icon_64x64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/$pkgname.png"
   install -Dm644 "${srcdir}/icon_128x128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
   install -Dm644 "${srcdir}/icon_256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
