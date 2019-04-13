@@ -1,25 +1,39 @@
 # Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
-pkgname=python2-internetarchive
-_pkgname=internetarchive
-pkgver=1.8.1
-pkgrel=2
-pkgdesc="A python interface to archive.org"
+# Contributor: Florian Pritz <bluewind@xinu.at>
+# Contributor: David McInnis <dave@dave3.xyz>
+# Contributor: jyantis <yantis@yantis.net>
+
+_name=internetarchive
+pkgname=python2-$_name
+pkgver=1.8.4
+pkgrel=1
+pkgdesc="Wrapper for the various Internet Archive APIs (IA-S3, Metadata API, etc)"
 arch=('any')
 url="https://github.com/jjjake/internetarchive"
 license=('AGPL3')
-depends=('python2' 'python2-requests' 'python2-jsonpatch' 'python2-docopt' 'python2-clint' 'python2-six' 'python2-schema' 'python2-backports.csv')
+depends=('python2' 'python2-backports.csv' 'python2-clint' 'python2-docopt' 'python2-jsonpatch' 'python2-requests' 'python2-schema' 'python2-six')
 makedepends=('python2-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jjjake/internetarchive/archive/v${pkgver}.tar.gz")
-md5sums=('76dc29fdc8cea59d11090a0b7be7eb1f')
+optdepends=('python2-ujson: faster json parsing'
+            'python2-gevent: concurrent downloads'
+            'cython2: speedups')
+checkdepends=('python2-responses' 'python2-pytest')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jjjake/internetarchive/archive/v$pkgver.tar.gz")
+sha256sums=('8825285164e1ccd33bbd4bcb04411f360c3023adff3359adcf658b37441de6a8')
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$_name-$pkgver"
 
   python2 setup.py build
 }
 
+check() {
+  cd "$_name-$pkgver"
+
+  python2 setup.py test
+}
+
 package() {
-  cd "$_pkgname-$pkgver"
+  cd "$_name-$pkgver"
 
   python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
