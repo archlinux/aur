@@ -4,6 +4,7 @@ pkgbase = python-postpic
 	pkgrel = 1
 	url = https://github.com/skuschel/postpic
 	arch = i686
+	arch = pentium4
 	arch = x86_64
 	license = GPL3
 	makedepends = python>=3.7
