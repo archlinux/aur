@@ -22,4 +22,5 @@ package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    rm -r ${pkgdir}/usr/lib/python3.7/site-packages/tests/
 }
