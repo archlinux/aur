@@ -2,7 +2,7 @@
 
 pkgname='perl-plack-test-agent'
 pkgver='1.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="OO interface for testing low-level Plack/PSGI apps"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -69,7 +69,7 @@ depends=(
 #     ---------- -------- --------
 #     CPAN::Meta 2.120900 2.150010
 
-checkdepens=(
+checkdepends=(
   'perl'
   'perl-http-cookies'
   'perl-http-server-simple-psgi'
