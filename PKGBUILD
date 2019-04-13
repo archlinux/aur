@@ -1,8 +1,9 @@
 # Maintainer: Nathaniel Maia <natemaia10@gmail.com>
 # Contributor: Marcus Shaetzle
 # Contributor: Eric Vidal <eric@obarun.org>
+
 pkgname=kickshaw
-pkgver=0.6.5
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='A menu editor for freedesktop standard menus'
 url='https://bitbucket.org/natemaia/kickshaw'
@@ -15,18 +16,14 @@ depends=('gtk3')
 
 build()
 {
-	cd kickshaw/source || return
+	cd kickshaw/source || exit 1
 	make
 }
 
 package()
 {
-	cd kickshaw/source || return
-	install -Dm755 kickshaw $pkgdir/usr/bin/kickshaw
-	install -Dm644 kickshaw.desktop $pkgdir/usr/share/applications/kickshaw.desktop
-
-	# COPYING & README
-	cd .. || return
-	install -Dm644 README.md $pkgdir/usr/share/licenses/kickshaw/README.md
-	install -Dm644 COPYING $pkgdir/usr/share/licenses/kickshaw/COPYING
+	install -Dm755 kickshaw/source/kickshaw $pkgdir/usr/bin/kickshaw
+	install -Dm644 kickshaw/source/kickshaw.desktop $pkgdir/usr/share/applications/kickshaw.desktop
+	install -Dm644 kickshaw/README.md $pkgdir/usr/share/licenses/kickshaw/README.md
+	install -Dm644 kickshaw/COPYING $pkgdir/usr/share/licenses/kickshaw/COPYING
 }
