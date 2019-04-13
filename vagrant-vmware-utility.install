@@ -1,0 +1,11 @@
+post_install() {
+  echo -n "Thank you for installing my package!"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}

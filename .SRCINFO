@@ -1,0 +1,13 @@
+pkgbase = vagrant-vmware-utility
+        pkgdesc = Proprietary plugin for vagrant vmware provider.
+        pkgver = 1.0.7
+        pkgrel = 3
+        url = https://www.vagrantup.com/vmware/
+        install = vagrant-vmware-utility.install
+        arch = x86_64
+        license = GPL
+        depends = vagrant
+        source = https://releases.hashicorp.com/vagrant-vmware-utility/1.0.7/vagrant-vmware-utility_1.0.7_x86_64.tar.xz
+        md5sums = 248101f9de76df92bf8ac80be9338312
+
+pkgname = vagrant-vmware-utility
