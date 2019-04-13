@@ -1,13 +1,15 @@
 # Maintainer: Alim Gokkaya <alimgokkaya at gmail dot com>
 
 pkgname=librdkafka-git
-pkgver=r2605.d0f001df
+pkgver=r3072.d3ff4bb5
 pkgrel=1
 pkgdesc='Apache Kafka C driver library'
 url="https://github.com/edenhill/librdkafka"
 license=('BSD')
 source=(git+https://github.com/edenhill/librdkafka)
 arch=(i686 x86_64 armv7h)
+provides=(librdkafka)
+conflicts=(librdkafka)
 depends=(glibc zlib)
 optdepends=(openssl libsasl lz4)
 makedepends=(git python)
