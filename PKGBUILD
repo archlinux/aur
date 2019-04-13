@@ -67,8 +67,8 @@ prepare() {
 build() {
     cd "fred"
 
-    export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/default}"
-    export GRADLE_USER_HOME="$srcdir"
+    [[ -r "$HOME/.gradle" ]] ||
+        export GRADLE_USER_HOME="$srcdir"
 
     msg "Building Freenet..."
     gradle --no-daemon copyRuntimeLibs
@@ -86,9 +86,6 @@ build_plugins() {
         ant dist \
             -Dfreenet-cvs-snapshot.location=../fred/build/output/freenet.jar \
             -Dfreenet-ext.location=../fred/build/output/freenet-ext-29.jar \
-            -Dbcprov.location=../fred/build/output/bcprov-jdk15on-1.59.jar \
-            -Djna.location=../fred/build/output/jna-4.2.2.jar \
-            -Djunit.location=/usr/share/java/junit.jar \
             -Dtest.skip=true
     done
 }
@@ -104,9 +101,6 @@ check() {
 package() {
     cd "fred"
 
-    # delete bundled wrapper
-    zip -qd build/output/freenet-ext-29.jar "org/tanukisoftware/*"
-
     # freenet
     install -dm755 "$pkgdir"/usr/bin
     install -dm700 "$pkgdir"/run/freenet
@@ -117,6 +111,9 @@ package() {
     install -m640  "$srcdir"/freenet.ini                             "$pkgdir"/opt/freenet/conf
     install -m640  "$srcdir"/seednodes/seednodes.fref                "$pkgdir"/opt/freenet/noderef
     install -m640  "$srcdir"/fred/build/output/*.jar                 "$pkgdir"/opt/freenet/lib
+
+    # delete bundled wrapper
+    zip -qd "$pkgdir"/opt/freenet/lib/freenet-ext-29.jar "org/tanukisoftware/*"
 
     # plugins
     for plugin in ${_plugins[@]}; do
