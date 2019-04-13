@@ -2,7 +2,7 @@
 
 pkgname=packer-kit
 pkgver=20190413
-pkgrel=3
+pkgrel=4
 pkgdesc="Bash wrapper for pacman and AUR (fork of github.com/keenerd/packer)"
 url="http://github.com/pi-kvm/packer"
 license=(GPL3)
