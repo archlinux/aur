@@ -2,7 +2,7 @@
 # Maintainer: Eric Schulte <eschulte@grammatech.com>
 _srcname=gtirb
 pkgname=gtirb-git
-pkgver=v0.1.0.r115.g8e9c4f3
+pkgver=v0.1.0.r118.g94f7146
 pkgrel=1
 pkgdesc="GrammaTech Intermediate Representation for Binaries"
 arch=('x86_64')
@@ -10,7 +10,9 @@ url="https://github.com/grammatech/gtirb"
 license=('MIT')
 optdepends=('boost: build against system boost')
 depends=()
-makedepends=('git' 'cmake')
+# python2 --- to build the docs
+# graphviz -- to build the docs
+makedepends=('git' 'cmake' 'python2' 'graphviz')
 provides=('gtirb')
 source=('git://github.com/grammatech/gtirb.git')
 sha512sums=('SKIP')
