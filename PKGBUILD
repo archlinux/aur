@@ -4,13 +4,14 @@ pkgname=python-merkletools
 _pkgname=merkletools
 _reponame=pymerkletools
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Python tools for creating and verifying Merkle trees and proofs'
 arch=('any')
 url="https://github.com/Tierion/pymerkletools"
 license=('GPL')
 depends=('python')
 makedepends=('python-setuptools')
+checkdepends=('python-nose')
 source=("https://pypi.io/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
 	"0001-setup.py-exclude-tests-from-installation.patch") # PR #17
 #source=("https://github.com/Tierion/${_reponame}/archive/${pkver}.tar.gz")
@@ -24,6 +25,11 @@ prepare() {
 build() {
     cd "$_pkgname-$pkgver"
     python setup.py build
+}
+
+check() {
+    cd "$_pkgname-$pkgver"
+    nosetests
 }
 
 package() {
