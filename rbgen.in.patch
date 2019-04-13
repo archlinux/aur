@@ -1,0 +1,56 @@
+diff --git a/rbgen.in b/rbgen.in
+index 7387b3a..3fdb1f4 100644
+--- a/rbgen.in
++++ b/rbgen.in
+@@ -6,7 +6,7 @@
+ #
+ # $Log: rbgen.in,v $
+ # Revision 1.3  2003/10/24 01:31:21  damo
+-# Patches from Eric Raymond: %prefix is implemented.  Various other small
++# Patches from Eric Raymond: %prefix is implemented. Various other small
+ # changes avoid stepping on global namespaces and improve the documentation.
+ #
+ # Revision 1.2  2003/10/23 04:18:47  damo
+@@ -78,7 +78,7 @@ def redblack(filename, lines):
+                 if line[0] == "\n":
+                     continue
+                 elif startswith(line, "%%rbgen"):
+-		    fpout.write("#define RB_CUSTOMIZE\n")
++                    fpout.write("#define RB_CUSTOMIZE\n")
+                     if not rb_type:
+                         error("%type directive is required.")
+                     else:
+@@ -124,9 +124,9 @@ def redblack(filename, lines):
+                         else:
+                             error("unknown access type")
+                     elif tokens[0] == "%omit":
+-                        omittable = ("destroy", "search", "find", 
++                        omittable = ("destroy", "search", "find",
+                                      "delete", "walk", "readlist",
+-                                     "lookup", "destroy", "delete", 
++                                     "lookup", "destroy", "delete",
+                                      "readlist")
+                         rb_omit = tokens[1:]
+                         for func in rb_omit:
+@@ -153,9 +153,9 @@ if __name__ == "__main__":
+     lines = 1;
+     skelpath = [".", "@prefix@/share/@PACKAGE@" "/share/redblack"]
+     for (switch, val) in options:
+-	if (switch == '-l'):
+-	    lines = 0
+-	elif (switch == '-S'):
++        if (switch == '-l'):
++            lines = 0
++        elif (switch == '-S'):
+             skeldir = val
+ 
+     for skeldir in skelpath:
+@@ -172,7 +172,7 @@ if __name__ == "__main__":
+             raise SystemExit, 0
+         except SyntaxError:
+             raise SystemExit, 1
+-        
++
+ # The following sets edit modes for GNU EMACS
+ # Local Variables:
+ # mode:python

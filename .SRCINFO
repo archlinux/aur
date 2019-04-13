@@ -1,0 +1,17 @@
+pkgbase = libredblack
+	pkgdesc = RedBlack balance tree searching and sorting library
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://libredblack.sourceforge.net/
+	arch = any
+	license = LGPL
+	makedepends = gcc
+	makedepends = make
+	makedepends = python2
+	source = libredblack-1.3.tar.gz::https://sourceforge.net/projects/libredblack/files/libredblack/1.3/libredblack-1.3.tar.gz/download
+	source = rbgen.in.patch
+	sha256sums = a0ecc59b0aae2df01558a6950532c711a782a099277b439a51d270003092f44f
+	sha256sums = 15df219b5b472299198b67405d5ea2431ae82ac307ff9625a9ea381b50ef6f82
+
+pkgname = libredblack
+
