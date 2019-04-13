@@ -7,9 +7,10 @@ pkgbase = etcetera
 	arch = armv6h
 	license = GPL3
 	depends = python
-	depends = python-cysytemd
+	optdepends = python-cysystemd
 	backup = etc/etcetera.conf
 	source = https://gitlab.com/jeancf/etcetera/-/archive/1.0/etcetera-1.0.tar.gz
 	md5sums = abd13d4acd151f8923c154d36ce9dc3c
 
 pkgname = etcetera
+
