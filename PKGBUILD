@@ -1,7 +1,7 @@
 # Maintainer: Alex Wilson <alex@cooperi.net>
 
 pkgname=libva-vdpau-driver-shadow
-pkgver=0.7.4a
+pkgver=0.7.4b
 pkgrel=1
 pkgdesc="VDPAU backend for VA API. (special version for shadow-beta)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ replaces=('vdpau-video')
 provides=('libva-vdpau-driver')
 conflicts=('libva-vdpau-driver')
 source=("https://github.com/arekinath/libva-vdpau-driver/releases/download/v${pkgver}/libva-vdpau-driver-${pkgver}.tar.bz2")
-sha256sums=('3acfe9daad53503adfa320d48aec68044f799020b96bc9548c911ad6445b2f3e')
+sha256sums=('290950b118689b6797f5ede418569f96317b88d6b9d077755b92c237c9182451')
 
 prepare() {
   mkdir -p build
