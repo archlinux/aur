@@ -11,3 +11,6 @@ cleanall: clean
 docker:
 	sudo docker build --pull -t guayadeque_git .
 
+devdocker:
+	sudo docker build --pull -t guayadeque_git -f dev.Dockerfile .
+
