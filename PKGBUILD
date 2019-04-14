@@ -3,8 +3,8 @@
 # Contributor: flu
 
 pkgname=flvlc
-pkgver=3.3.1
-pkgrel=2
+pkgver=3.4
+pkgrel=1
 pkgdesc='FLTK media player by libvlc'
 arch=('x86_64')
 url='https://github.com/spycapitan/flvlc'
