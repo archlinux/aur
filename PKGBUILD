@@ -1,13 +1,13 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=scantools
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="scantools is a library and a matching set of command line applications for graphics manipulation, written with a view towards the handling of scanned documents and generation of high-quality PDF files."
 arch=('x86_64')
 url="https://cplx.vm.uni-freiburg.de/scantools/"
 license=('GPL')
-depends=('qt5-imageformats')
-makedepends=('cmake' 'doxygen' 'gcc' 'git' 'graphviz' 'jbig2dec' 'libjpeg-turbo' 'libtiff' 'openjpeg2' 'tesseract' 'qpdf' 'qt5-base' 'zlib')
+depends=('qpdf' 'qt5-imageformats' 'gcc' 'graphviz' 'jbig2dec' 'libjpeg-turbo' 'libtiff' 'openjpeg2' 'tesseract' 'qpdf' 'qt5-base' 'zlib')
+makedepends=('cmake' 'doxygen' 'git')
 source=("https://gitlab.com/kebekus/scantools/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('154b9c4da5f4d08bdaac5bf740f07fcb20e19028fd0c429d85636cbba7ed4071')
 
