@@ -1,7 +1,7 @@
 pkgbase = squarely
 	pkgdesc = Puzzle game written in Python using the pyglet library
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwg-piotr/squarely
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = squarely
 	source = https://github.com/nwg-piotr/squarely/raw/master/dist/squarely
 	source = https://github.com/nwg-piotr/squarely/raw/master/dist/squarely.svg
 	source = https://github.com/nwg-piotr/squarely/raw/master/dist/squarely.desktop
-	md5sums = 4b6cfbf3983bbbb23c14679c7be74f7a
+	md5sums = d067a66d3105bb8034d6e89d379f409f
 	md5sums = 8a910f0a5ecf156cc6856bd9b636143d
 	md5sums = a87a406cab2e66a0efaba87deffa2175
 	md5sums = 795bf57c86be1a38812ec7b4716d8729
