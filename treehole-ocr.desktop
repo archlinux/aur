@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=1.1.0
+Name=Treehole OCR
+GenericName=OCR
+Comment=A Cross-Platform OCR Tool
+Name[zh_CN]=树洞 OCR
+GenericName[zh_CN]=OCR
+Comment[zh_CN]=跨平台的 OCR 工具
+Name[zh_TW]=樹洞 OCR
+GenericName[zh_TW]=OCR
+Comment[zh_TW]=跨平臺的 OCR 工具
+Exec=treehole-ocr
+Type=Application
+StartupNotify=true
+Icon=treehole-ocr
+Categories=Application;Utility;OCR;
