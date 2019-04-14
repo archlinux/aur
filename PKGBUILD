@@ -8,7 +8,7 @@ pkgdesc="Mob Framework Mod (former animals mod) provides a framework for creatin
 arch=('any')
 url="https://forum.minetest.net/viewtopic.php?id=2155"
 license=('WTFPL')
-depends=('minetest-common>=0.4.13')
+depends=('minetest-common')
 optdepends=('mesecons-git')
 makedepends=()
 provides=("$_gitname")
