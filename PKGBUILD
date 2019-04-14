@@ -2,7 +2,7 @@
 
 pkgname=libnetconf-git
 _pkgname=libnetconf
-pkgver=r2231.6351e224
+pkgver=r2232.159e155f
 pkgrel=1
 pkgdesc='a NETCONF library in C intended for building NETCONF clients and servers.'
 url="https://github.com/CESNET/$_pkgname"
@@ -28,6 +28,7 @@ prepare() {
 
 build() {
   cd $pkgname
+  autoreconf --install --force
   ./configure --prefix=/usr
   make
 }
