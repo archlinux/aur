@@ -18,11 +18,11 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  qmake Olivia.pro PREFIX="$pkgdir/" -spec linux-g++ CONFIG+=release
+  qmake Olivia.pro PREFIX="$pkgdir/usr" -spec linux-g++ CONFIG+=release
   make
 }
 
 package() {
   cd "$pkgname"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/usr" install
 }
