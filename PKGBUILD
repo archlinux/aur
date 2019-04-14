@@ -1,6 +1,6 @@
-# Maintainer: Avinash Ananth Narayan R <nashpapa@gmail.com>
+# Maintainer: Mikael Chevalier <micha1305@live.fr>
 pkgname=cpod
-pkgver=1.27.0
+pkgver=1.27.1
 pkgrel=1
 pkgdesc="A simple, beautiful podcast app."
 arch=("x86_64")
@@ -11,7 +11,7 @@ makedepends=()
 provides=()
 replaces=(cumulonimbus)
 source=("https://github.com/z-------------/cumulonimbus/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb")
-sha256sums=("71151359b9650d6ee4d421f45a41c7d5537a38163d09048fbdfc7c9ee06be43f")
+sha256sums=("0c07b055619fe88e33079aa663ee6ef7cee833884e4a77327b3d34893a1db69b")
 
 prepare() {
 	[ ! -d ${pkgname}-${pkgver} ] && mkdir "${pkgname}-${pkgver}" > /dev/null
