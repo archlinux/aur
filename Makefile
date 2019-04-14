@@ -9,5 +9,5 @@ cleanall: clean
 	rm -rf guayadeque-git-*.pkg.tar.xz
 
 docker:
-	docker build -t guayadeque_git .
+	sudo docker build --pull -t guayadeque_git .
 
