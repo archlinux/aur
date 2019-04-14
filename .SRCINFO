@@ -1,0 +1,24 @@
+pkgbase = d9vk-winelib-git
+	pkgdesc = A d3d9 to vk layer based off DXVK's codebase. Winelib version
+	pkgver = 0.r2513.b91f6e21
+	pkgrel = 1
+	url = https://github.com/Joshua-Ashton/d9vk
+	arch = x86_64
+	license = zlib/libpng
+	makedepends = ninja
+	makedepends = meson>=0.43
+	makedepends = glslang
+	makedepends = git
+	makedepends = wine
+	depends = vulkan-icd-loader
+	depends = wine>=4.0rc1
+	depends = lib32-vulkan-icd-loader
+	provides = d9vk
+	conflicts = d9vk
+	source = git+https://github.com/Joshua-Ashton/d9vk.git
+	source = setup_d9vk
+	sha256sums = SKIP
+	sha256sums = 7147644664ef33d04f7b18683c47be95b5664c57cf6d63fdc019d915deebd37a
+
+pkgname = d9vk-winelib-git
+
