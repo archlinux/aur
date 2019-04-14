@@ -1,14 +1,14 @@
 # Maintainer: fakeD <jose-henrique-ivan@hotmail.com>
 
 pkgname=random
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Random number generator."
 arch=("any")
-url="https://github.com/fakeDeathBRX/random"
+url="https://github.com/joseivanchechen/random"
 license=('MIT')
 depends=('gcc')
-source=("${pkgname}::git+https://github.com/fakeDeathBRX/random")
+source=("${pkgname}::git+https://github.com/joseivanchechen/random")
 sha1sums=('SKIP')
 
 package(){
