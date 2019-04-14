@@ -38,7 +38,7 @@ _enabled_modules=(xml_int/mod_xml_curl
                   xml_int/mod_xml_cdr
                   formats/mod_shout
                   applications/mod_callcenter
-          languages/mod_lua)
+                  languages/mod_lua)
 
 # DISABLED MODULES
 # Remove from _disabled_modules if you want to build these
@@ -47,14 +47,16 @@ _enabled_modules=(xml_int/mod_xml_curl
 # languages/mod_lua - server-side lua
 # say/mod_say_ru - Russian phrases
 # dialplans/mod_dialplan_asterisk - Legacy dialplan
+# applications/mod_signalwire - https://freeswitch.org/confluence/display/FREESWITCH/mod_signalwire (requires libks which isn't even packaged)
 _disabled_modules=(languages/mod_spidermonkey
                    say/mod_say_ru
-                   dialplans/mod_dialplan_asterisk)
+                   dialplans/mod_dialplan_asterisk
+                   applications/mod_signalwire)
 # BUILD CONFIGURATION ENDS                     #
 
-pkgname='freeswitch'
-pkgver='1.6.17'
-pkgrel=2
+pkgname=freeswitch
+pkgver=1.8.5
+pkgrel=1
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
@@ -100,7 +102,7 @@ install=freeswitch.install
 backup=('etc/freeswitch/private/passwords.xml'
         'etc/freeswitch/vars.xml')
 #source=("git+https://stash.freeswitch.org/scm/fs/freeswitch.git#tag=v${pkgver}"
-source=("git+https://stash.freeswitch.org/scm/fs/freeswitch.git#tag=v${pkgver}"
+source=("git+https://freeswitch.org/stash/scm/fs/freeswitch.git/#tag=v${pkgver}"
         'freeswitch.conf.d'
          'README.freeswitch'
          'run.freeswitch'
@@ -115,7 +117,6 @@ source=("git+https://stash.freeswitch.org/scm/fs/freeswitch.git#tag=v${pkgver}"
          'conf_log.freeswitch.sig'
          'freeswitch.service.sig'
 	 'freeswitch-arch.patch.sig')  # required for 1.6.17
-changelog='ChangeLog'
 _pkgname="freeswitch"
 sha512sums=('SKIP'
             'a9c0f8397e9375b26f8c3950c07fff9ce2c60684bd99cfb371cd19cce2bfb2f042a5380a38751bcd212096611d38731a2613a93d037b53f0c1cf356180b98912'
@@ -170,7 +171,11 @@ prepare() {
 
   # CONFIGURE
   # We need to override some things for the ./configure for 1.6.17
-  PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig ./configure \
+  #./configure \
+  export CFLAGS="${CFLAGS} -Wno-error -D__alloca=alloca"
+  export CXXFLAGS="${CFLAGS}"
+  PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
+  ./configure \
     --prefix=/var/lib/freeswitch \
     --with-python=/usr/bin/python2 \
     --bindir=/usr/bin \
@@ -191,13 +196,16 @@ prepare() {
     --with-certsdir=/etc/freeswitch/certs \
     --with-rundir=/run/freeswitch
 
-    patch -Np1 < ../freeswitch-arch.patch  # needed for 1.6.17
+    #patch -Np1 < ../freeswitch-arch.patch  # needed for 1.6.17
 }
 
 build() {
   cd ${srcdir}/${_pkgname}
 
   # COMPILE
+  # https://freeswitch.org/jira/browse/FS-11345
+  export CFLAGS="${CFLAGS} -Wno-error -D__alloca=alloca"
+  export CXXFLAGS="${CFLAGS}"
   make
 
 }
