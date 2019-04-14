@@ -1,6 +1,6 @@
 pkgbase = guayadeque-git
 	pkgdesc = Lightweight music player
-	pkgver = 0.4.5.r2082.55efd993
+	pkgver = 0.4.5.r2112.dfc4acb6
 	pkgrel = 1
 	url = http://guayadeque.org/
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = guayadeque-git
 	depends = curl
 	depends = libgpod
 	depends = taglib
+	depends = wxgtk3
 	depends = wxsqlite3
 	depends = gst-plugins-base
 	optdepends = gst-plugins-good: Support for PulseAudio and additional file formats
