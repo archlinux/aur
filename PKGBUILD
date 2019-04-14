@@ -2,7 +2,7 @@
 # Contributer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=ucsc-kent-genome-tools
-pkgver=353
+pkgver=379
 pkgrel=1
 pkgdesc="UCSC Kent bioinformatics utilities: kent source utilities"
 arch=('x86_64')
@@ -15,11 +15,9 @@ source=(
   "${pkgname}".sh
   "${pkgname}"-"${pkgver}".src.tgz::http://hgdownload.soe.ucsc.edu/admin/exe/userApps.v"${pkgver}".src.tgz
 )
-sha256sums=(
-  '359db5b022847d3d674f21821fa08a363d2183379d59a2b63129fcf90954d674'
-  '5ccec9d5e4de9be22746fab1591127b61176c8c4d586c0dd1df13ee5e52a5367'
-  'f3e7609069b195ef5219e39e0181ced1988f8d3843579d36549fc47e808b27a1'
-)
+sha256sums=('359db5b022847d3d674f21821fa08a363d2183379d59a2b63129fcf90954d674'
+            '5ccec9d5e4de9be22746fab1591127b61176c8c4d586c0dd1df13ee5e52a5367'
+            '19dc9ac1234a7d76f5fc0ca6afb22ddc98aca1cf4257d68dad299f5e903b7678')
 
 prepare() {
   cd "${srcdir}"/userApps
