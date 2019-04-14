@@ -1,15 +1,15 @@
 pkgbase = coyim
 	pkgdesc = A safe and secure chat client
-	pkgver = 0.3.8
-	pkgrel = 3
+	pkgver = 0.3.11
+	pkgrel = 1
 	url = https://coy.im
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = go-pie
 	depends = gtk3
-	source = coyim-0.3.8.tar.gz::https://codeload.github.com/coyim/coyim/tar.gz/v0.3.8
-	sha256sums = 30a86c6c83a8b2d8e0e7966a41fd20e8dcdf3a27ff819d9e363771f867f804ef
+	source = coyim-0.3.11.tar.gz::https://codeload.github.com/coyim/coyim/tar.gz/v0.3.11
+	sha256sums = 4717901462f027578369358c8772eb5b14e22f053fc30e4c9dbcc2b053374a41
 
 pkgname = coyim
 
