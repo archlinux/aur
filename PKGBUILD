@@ -1,6 +1,6 @@
 # Maintainer: milk on freenode
 pkgname=moddownloaderr
-pkgver=r43.bacfe72
+pkgver=v0.4.r0.gf5d8c70
 pkgrel=1
 pkgdesc="moddownloaderr - forked Bash script to download module music from The Mod Archive"
 arch=('i686' 'x86_64')
