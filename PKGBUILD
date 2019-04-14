@@ -12,7 +12,7 @@ source=()
 depends=('bash' 'openssl')
 optdepends=()
 conflicts=('perl-supergenpass')
-provides='supergenpass'
+provides=('supergenpass')
 makedepends=()
 
 _gitname="bash-supergenpass"
