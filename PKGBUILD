@@ -1,19 +1,18 @@
 # Maintainer: Hokuto <abrahamhokuto@outlook.com>
 
+pkgver=20190414
 pkgrel=1
-pkgver=20180508
-_commit='b26d826fafa8ad0164fce493848efcafe351de58'
-
 pkgname=windows-xp-themes-git
+_pkgname=Windows-XP-master
 pkgdesc='All 7 of Windows XP themes available for Linux'
 arch=('any')
 url='https://github.com/B00merang-Project/WinXP-themes'
 license=('GPL')
-source=("https://github.com/B00merang-Project/WinXP-themes/archive/$_commit.zip")
-sha256sums=('2dc3452a8b02052d05115a3a829b72448593e3826184eb5701b2aa9baa67a815')
+source=("https://github.com/B00merang-Project/Windows-XP/archive/master.zip")
+sha256sums=('6d9e17a482ab837e456494400b3810d986eac58509b59a738d03032d61a91724')
 
 package() {
-	cd $srcdir/WinXP-themes-$_commit
+	cd $srcdir/$_pkgname
 	mkdir -p $pkgdir/usr/share/themes
 	cp -r \
 		'Windows XP Embedded' \

@@ -1,12 +1,12 @@
 pkgbase = windows-xp-themes-git
 	pkgdesc = All 7 of Windows XP themes available for Linux
-	pkgver = 20180508
+	pkgver = 20190414
 	pkgrel = 1
 	url = https://github.com/B00merang-Project/WinXP-themes
 	arch = any
 	license = GPL
-	source = https://github.com/B00merang-Project/WinXP-themes/archive/b26d826fafa8ad0164fce493848efcafe351de58.zip
-	sha256sums = 2dc3452a8b02052d05115a3a829b72448593e3826184eb5701b2aa9baa67a815
+	source = https://github.com/B00merang-Project/Windows-XP/archive/master.zip
+	sha256sums = 6d9e17a482ab837e456494400b3810d986eac58509b59a738d03032d61a91724
 
 pkgname = windows-xp-themes-git
 
