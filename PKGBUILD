@@ -1,7 +1,7 @@
 # Contributor: Hy Goldsher <hyness-at-freshlegacycode-dot-org>                
 # Maintainer: Hy Goldsher <hyness-at-freshlegacycode-dot-org>
 pkgname=squirrel-sql
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=1
 pkgdesc="A Java SQL client for any JDBC compliant database"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('java-runtime')
 arch=('i686' 'x86_64')
 source=(http://downloads.sourceforge.net/squirrel-sql/squirrelsql-$pkgver-optional.zip $pkgname $pkgname.desktop)
 install=$pkgname.install
-md5sums=('59f3f9d3bf304c4e0b4e456b7ef58f71'
+md5sums=('d1d8cec94f4b1b23a5b459762c59ea5e'
          '13fcedb38028ddafae5d5d4526dad5a3'
          '14f0b383472e67040112c446cd2dc3d4')
 package() {
