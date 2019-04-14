@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=nyacc 
-pkgver=0.91.0
+pkgver=0.92.0
 pkgrel=1
 pkgdesc="Not Yet Another Compiler Compiler"
 url="http://www.nongnu.org/nyacc"
@@ -10,14 +10,13 @@ license=('GPL' 'LGPL' 'FDL')
 depends=('guile')
 makedepends=()
 source=("http://download-mirror.savannah.gnu.org/releases/nyacc/$pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('5c54781c5b5e9bb986b2dce0d8cdb9b8a4d1cabe9d1937085b1fb0f1657ba624'
+sha256sums=('af4119c0116a6918b1fa32a3a4146006ddc1c7d5b5180f7ff8e90a80a5300d71'
             'SKIP')
 validpgpkeys=('7C9EDA8DCE5DC8AE2C675EC9EE4F2A40097B7C03') # Marc Wette
 
 build() {
   cd $pkgname-$pkgver
-  GUILD=/usr/bin/guild ./configure --site_scm_dir=/usr/share/guile/2.2 \
-       --site_scm_go_dir=/usr/lib/guile/2.2/ccache 
+  GUILD=/usr/bin/guild ./configure 
   make
 }
  
