@@ -1,0 +1,6 @@
+post_install() {
+    echo -e "\n%open matlab, type
+run /usr/share/matconvnet/matlab/vl_setupnn
+vl_testnn('gpu', true)
+%24 tests create dir in root, should fail\n" 
+}
