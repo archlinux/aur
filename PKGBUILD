@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('git')
 makedepends=('gcc')
 source=("$url/archive/v$pkgver.tar.gz")
-md5sums=('9426a1ca1a1f8f0294eae51819c04638')
+md5sums=('10b852babbc8c8140b2ba990bf38a467')
 
 build() {
     cd "$pkgname-$pkgver" 
