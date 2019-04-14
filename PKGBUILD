@@ -15,8 +15,8 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git')
-pkgver=9.0.0_r314109.3dc7c7ca311
-pkgrel=2
+pkgver=9.0.0_r314159.065480daf2e
+pkgrel=1
 _ocaml_ver=4.07.1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -27,8 +27,8 @@ makedepends=(   'git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'py
 
 options=('staticlibs')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
-              llvm-config.h
-              enable-SSP-and-PIE-by-default.patch)
+              'llvm-config.h'
+              'enable-SSP-and-PIE-by-default.patch')
 sha256sums=('SKIP'
             '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
             '58f86da25eb230ed6d423b5b61870cbf3bef88f38103ca676a2c7f34b2372171')
@@ -62,6 +62,11 @@ prepare() {
     pushd clang
     patch -Np1 -i "$srcdir"/enable-SSP-and-PIE-by-default.patch
     popd
+    # llvm-project contains a lot of stuff, remove parts that aren't used by this package
+    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind llgo openmp parallel-libs pstl
+    
+    # llvm cmake uses things automagickally when they're at certain places in the sourcetree
+    # TODO try building as external projects to avoid moving sourcetree around
     mv clang llvm/tools/clang
     mv clang-tools-extra llvm/tools/clang/tools/extra
     mv compiler-rt llvm/projects/compiler-rt
@@ -94,7 +99,7 @@ build() {
         -DLLVM_VERSION_SUFFIX="" \
         -DPOLLY_ENABLE_GPGPU_CODEGEN=ON \
         -DLINK_POLLY_INTO_TOOLS=ON 
-    ninja all ocaml_doc
+    ninja "$MAKEFLAGS" all ocaml_doc
 }
 
 check() {
