@@ -1,11 +1,13 @@
 pkgbase = realmofthemadgod
 	pkgdesc = A simple desktop entry for flashplayer-standalone that loads Realm of The Mad God
-	pkgver = X31.1.2
+	pkgver = X31.5.2
 	pkgrel = 1
-	url = https://realmofthemadgod.com/
+	url = https://www.realmofthemadgod.com/
 	arch = x86_64
 	license = unknown
 	depends = flashplayer-standalone
+	source = realmofthemadgod.tar.gz
+	sha256sums = 3d40dc280240793c42cfb15b77a0a74d398b8dac91287575e7e539127bfeaa55
 
 pkgname = realmofthemadgod
 
