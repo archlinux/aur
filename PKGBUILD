@@ -20,8 +20,12 @@ makedepends=('git'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/VFR-maniac/L-SMASH-Works.git")
-sha256sums=('SKIP')
+source=("${_plug}::git+https://github.com/VFR-maniac/L-SMASH-Works.git"
+        'patch.patch'
+        )
+sha256sums=('SKIP'
+            'cb9603da5bd264ae5a1917490069d5dd564714bc0bd8aa5c46ad5b7f269170e1'
+            )
 
 pkgver() {
   cd "${_plug}"
@@ -33,6 +37,8 @@ prepare() {
   cd "${_plug}"
 
   rm -fr VapourSynth/VapourSynth.h
+
+  patch --binary -p1 -i "${srcdir}/patch.patch"
 }
 
 build() {
@@ -42,7 +48,7 @@ build() {
     --extra-cflags="${CFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth)" \
     --extra-ldflags="${LDFLAGS}"
 
-  make
+  LC_ALL=C make
 }
 
 package(){
