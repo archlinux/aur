@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=vkd3d-git
-pkgver=1.1.344.gf1bfb13
+pkgver=1.1.406.g3b83ccc
 pkgrel=1
 pkgdesc="D3D12 to Vulkan translation library. (GIT version)"
 arch=('x86_64')
