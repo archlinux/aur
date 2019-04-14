@@ -1,18 +1,16 @@
 #!/bin/sh
 set -e
 
-[ "$1" = "live-updated" ] || exit 42
-[ "$ACME_STATE_DIR" ] || ACME_STATE_DIR="/var/lib/acme"
 [ "$TELNETD_PEM_FILE" ] || TELNETD_PEM_FILE="/etc/telnetd-ssl/telnetd.pem"
 [ "$TELNETD_CERT_NAME" ] || TELNETD_CERT_NAME="$(hostname -f)"
-[ -e "$TELNETD_PEM_FILE.acmetool" ] || exit 0
+[ -e "$TELNETD_PEM_FILE.certbot" ] || exit 0
 
 umask 0077
-while read name; do
+for name in $RENEWED_DOMAINS; do
 	[ "$name" = "$TELNETD_CERT_NAME" ] || continue
 
-	cert="$ACME_STATE_DIR/live/$name/fullchain"
-	pkey="$ACME_STATE_DIR/live/$name/privkey"
+	cert="$RENEWED_LINEAGE/fullchain.pem"
+	pkey="$RENEWED_LINEAGE/privkey.pem"
 
 	[ -f "$cert" ] && [ -f "$pkey" ] || continue
 
