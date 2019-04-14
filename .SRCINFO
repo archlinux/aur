@@ -1,6 +1,6 @@
 pkgbase = sxiv-cdown-git
 	pkgdesc = Simple X Image Viewer, cdown personalisations
-	pkgver = 2019.04.14
+	pkgver = 0.r755.4772390
 	pkgrel = 1
 	url = https://github.com/cdown/sxiv
 	arch = i686

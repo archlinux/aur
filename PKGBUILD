@@ -6,7 +6,7 @@
 
 _name=sxiv
 pkgname="${_name}-cdown-git"
-pkgver=2019.04.14
+pkgver=0.r755.4772390
 pkgrel=1
 pkgdesc="Simple X Image Viewer, cdown personalisations"
 arch=('i686' 'x86_64')
@@ -21,7 +21,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_name}"
-  git log -1 --format="%cd" --date=short | sed 's/-/./g'
+  printf '0.r%s.%s' \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
