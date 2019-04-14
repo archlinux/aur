@@ -3,7 +3,7 @@
 _gitname=CoreFreq
 pkgname=corefreq-git
 realname=corefreq
-pkgver=1.44
+pkgver=1.46
 pkgrel=1
 pkgdesc="CoreFreq, a processor monitoring software with a kernel module inside."
 arch=('x86_64')
