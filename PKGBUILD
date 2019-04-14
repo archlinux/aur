@@ -6,7 +6,7 @@
 pkgname=lib32-systemd-git
 _pkgname=lib32-systemd
 _pkgbasename=systemd
-pkgver=242.44
+pkgver=242.104
 pkgrel=1
 pkgdesc='system and service manager (32-bit, git version)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=('gcc-multilib' 'git' 'gperf' 'intltool' 'lib32-acl' 'lib32-bzip2'
              'lib32-curl' 'lib32-dbus' 'lib32-gcc-libs' 'lib32-glib2'
              'lib32-gnutls' 'lib32-libelf' 'lib32-libidn2' 'lib32-pcre2'
              'libxslt' 'meson')
-options=('strip' '!distcc' '!ccache')
+options=('!strip')
 source=('git+https://github.com/systemd/systemd')
 sha512sums=('SKIP')
 
@@ -28,10 +28,10 @@ pkgver() {
 
   cd "$_pkgbasename"
 
-  version="$(git describe --abbrev=0 --tags)"
-  count="$(git rev-list --count ${version}..)"
-  version="$(echo ${version}| sed 's/-/./')"
-  printf '%s.%s' "${version#v}" "${count}"
+  local _version _count
+  _version="$(git describe --abbrev=0 --tags)"
+  _count="$(git rev-list --count ${_version}..)"
+  printf '%s.%s' "${_version#v}" "${_count}"
 }
 
 build() {
@@ -94,9 +94,9 @@ build() {
   ninja -C build
 }
 
-#check() {
-#  meson test -C build
-#}
+check() {
+  meson test -C build
+}
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
