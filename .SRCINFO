@@ -1,12 +1,12 @@
 pkgbase = random
 	pkgdesc = Random number generator.
-	pkgver = 1.2
+	pkgver = 1.2.2
 	pkgrel = 1
-	url = https://github.com/fakeDeathBRX/random
+	url = https://github.com/joseivanchechen/random
 	arch = any
 	license = MIT
 	depends = gcc
-	source = random::git+https://github.com/fakeDeathBRX/random
+	source = random::git+https://github.com/joseivanchechen/random
 	sha1sums = SKIP
 
 pkgname = random
