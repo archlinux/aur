@@ -1,7 +1,7 @@
 pkgbase = osu-install
 	pkgdesc = Auto-install osu! on Linux
 	pkgver = 1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/yurisuki/osu-install
 	arch = any
 	depends = winetricks

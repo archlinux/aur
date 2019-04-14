@@ -1,7 +1,7 @@
 # Maintainer: yurisuki
 pkgname=osu-install
 pkgver=1
-pkgrel=0
+pkgrel=1
 pkgdesc="Auto-install osu! on Linux"
 arch=('any')
 url='https://github.com/yurisuki/osu-install'
