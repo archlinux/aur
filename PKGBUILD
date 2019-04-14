@@ -2,6 +2,7 @@
 # Contributor: Pablo Lezaeta <prflr88@gmail.com>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Tobias Kieslich <tobias (at) archlinux.org>
+# Maintainer: andym <andrew dot myers at wanadoo dot fr>
 
 pkgname=xfce4-quicklauncher-plugin
 pkgver=1.9.4
