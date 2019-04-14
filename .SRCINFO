@@ -1,6 +1,6 @@
 pkgbase = kvmd-webterm
 	pkgdesc = Pi-KVM Web Terminal (GoTTY)
-	pkgver = 0.17
+	pkgver = 0.18
 	pkgrel = 1
 	url = https://github.com/pi-kvm/kvmd-webterm
 	install = kvmd-webterm.install
