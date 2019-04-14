@@ -3,7 +3,7 @@
 
 pkgname=gam
 pkgver=4.70
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tool for Google GSuite admins to manage settings quickly and easily."
 arch=('any')
 url="https://github.com/jay0lee/GAM"
