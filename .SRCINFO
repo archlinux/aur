@@ -7,8 +7,8 @@ pkgbase = git-pair
 	license = GPL2
 	makedepends = gcc
 	depends = git
-	source = https://github.com/avahe-kellenberger/git-pair/archive/v1.0.0.tar.gz
-	md5sums = fdd3927d2b52656f13e736ae559f3ca9
+	source = https://github.com/avahe-kellenberger/git-pair/archive/v1.0.1.tar.gz
+	md5sums = 595758d454dfb75b26d463f0b5f01f16
 
 pkgname = git-pair
 
