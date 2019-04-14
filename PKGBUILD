@@ -5,7 +5,7 @@
 pkgbase='python-colorlog'
 pkgname=('python-colorlog' 'python2-colorlog')
 _name=${pkgname#python-}
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Log formatting with colors"
 arch=('any')
@@ -13,7 +13,7 @@ url='https://pypi.org/project/colorlog/'
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("$pkgbase-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('c015387d4d9cfc853555e066949806102431e6aec946b0fe8bb5cbef3ae42e5f')
+sha256sums=('3cf31b25cbc8f86ec01fef582ef3b840950dea414084ed19ab922c8b493f9b42')
 
 package_python-colorlog() {
     depends=('python')
