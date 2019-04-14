@@ -6,7 +6,7 @@ post_install() {
 	done
 
 	# Create the link to the binary
-	ln -sf '/opt/Shadow Beta/shadow-preprod' '/usr/bin/shadow-beta'
+	ln -sf '/opt/Shadow Beta/shadow-dev' '/usr/bin/shadow-beta'
 }
 
 post_remove() {
@@ -28,6 +28,10 @@ post_remove() {
 		if [ -d /home/$user/.config/shadow-preprod ]; then
 			rm -R /home/$user/.config/shadow-preprod
 		fi
+
+		if [ -d /home/$user/.config/shadow-dev ]; then
+			rm -R /home/$user/.config/shadow-dev
+		fi
 	done
 }
 
@@ -45,5 +49,5 @@ pre_upgrade(){
 
 post_upgrade(){
 	# Replace current shortcut with the new one
-	ln -sf '/opt/Shadow Beta/shadow-preprod' '/usr/bin/shadow-beta'
+	ln -sf '/opt/Shadow Beta/shadow-dev' '/usr/bin/shadow-beta'
 }

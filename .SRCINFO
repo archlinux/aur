@@ -1,7 +1,7 @@
 pkgbase = shadow-beta
-	pkgdesc = A cloud computing application
-	pkgver = 4.1.17
-	pkgrel = 2
+	pkgdesc = Shadow launcher
+	pkgver = 4.2.1
+	pkgrel = 1
 	url = http://shadow.tech
 	install = shadow-beta.install
 	arch = x86_64
@@ -33,6 +33,7 @@ pkgbase = shadow-beta
 	depends = libsndio-61-compat
 	provides = shadow-beta
 	source = https://shadow.tech/linux/shadow-beta.zip
-	md5sums = cd15030c5b51a04e85ee1a4aa477323b
+	md5sums = d47e22482755a2fc73061860c09d41ac
 
 pkgname = shadow-beta
+
