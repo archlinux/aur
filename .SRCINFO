@@ -1,7 +1,7 @@
 pkgbase = wwwoffle-svn
 	pkgdesc = Simple caching proxy server with special features (request, recursive fetch, subscription, modify HTML, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd.
 	pkgver = 2.9j+svn2250
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.gedanken.org.uk/software/wwwoffle/
 	install = wwwoffle.install
@@ -10,6 +10,7 @@ pkgbase = wwwoffle-svn
 	arch = arm
 	arch = arm64
 	license = GPL
+	makedepends = subversion
 	depends = zlib
 	depends = gnutls
 	depends = libgcrypt

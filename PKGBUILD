@@ -7,12 +7,13 @@ pkgname="${_pkgname}-svn"
 # _pkgver=2.9j
 epoch=1
 pkgver=2.9j+svn2250
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, subscription, modify HTML, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=('i686' 'x86_64' 'arm' 'arm64')
 url="http://www.gedanken.org.uk/software/wwwoffle/"
 license=('GPL')
 depends=('zlib' 'gnutls' 'libgcrypt')
+makedepends=('subversion')
 
 provides=(
   "${_pkgname}=${pkgver}"
