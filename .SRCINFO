@@ -5,7 +5,14 @@ pkgbase = python-gmusicapi
 	url = https://github.com/simon-weber/gmusicapi
 	arch = any
 	license = BSD
+	makedepends = python2-setuptools
 	makedepends = python-setuptools
+	provides = python-gmusicapi
+	conflicts = python-gmusicapi-git
+	source = https://github.com/simon-weber/gmusicapi/archive/12.0.0.tar.gz
+	md5sums = e04f4c44ce8ca501ab29c4a85a8c669b
+
+pkgname = python-gmusicapi
 	depends = python-validictory
 	depends = python-decorator
 	depends = python-requests
@@ -19,11 +26,5 @@ pkgbase = python-gmusicapi
 	depends = python-mechanicalsoup
 	depends = python-six
 	depends = python-future
-	depends = mutagen
-	provides = python-gmusicapi
-	conflicts = python-gmusicapi-git
-	source = https://github.com/simon-weber/gmusicapi/archive/12.0.0.tar.gz
-	md5sums = e04f4c44ce8ca501ab29c4a85a8c669b
-
-pkgname = python-gmusicapi
+	depends = python-mutagen
 
