@@ -4,17 +4,19 @@
 
 pkgname=mnemosyne
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A flash-card tool with a sophisticated card review algorithm"
 arch=('i686' 'x86_64')
 url='http://www.mnemosyne-proj.org'
 license=('GPL')
 depends=('python-pyqt5' 'qt5-webengine'
-         'python-pillow' 'python-matplotlib' 'python-cherrypy' 'python-webob')
+         'python-pillow' 'python-matplotlib' 'python-cherrypy' 'python-webob'
+         'python-pyqtwebengine')
 makedepends=('python-setuptools')
 optdepends=('texlive-core: support for mathematical formulae in cards'
             'ttf-ms-fonts: support for non-latin labels on statistic plots'
-            'python-cheroot: support for starting a sync server')
+            'python-cheroot: support for starting a sync server'
+            'python-opengl: mentioned in a non-fatal warning')
 conflicts=('mnemosyne-bzr')
 install='mnemosyne.install'
 
