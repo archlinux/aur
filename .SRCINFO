@@ -1,0 +1,26 @@
+pkgbase = scantools
+	pkgdesc = scantools is a library and a matching set of command line applications for graphics manipulation, written with a view towards the handling of scanned documents and generation of high-quality PDF files.
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://cplx.vm.uni-freiburg.de/scantools/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = gcc
+	makedepends = git
+	makedepends = graphviz
+	makedepends = jbig2dec
+	makedepends = libjpeg-turbo
+	makedepends = libtiff
+	makedepends = openjpeg2
+	makedepends = tesseract
+	makedepends = qpdf
+	makedepends = qt5-base
+	makedepends = zlib
+	depends = qt5-imageformats
+	source = https://gitlab.com/kebekus/scantools/-/archive/0.6.4/scantools-0.6.4.tar.gz
+	sha256sums = 154b9c4da5f4d08bdaac5bf740f07fcb20e19028fd0c429d85636cbba7ed4071
+
+pkgname = scantools
+
