@@ -3,14 +3,14 @@
 # Contributor: flu
 
 pkgname=flvlc
-pkgver=3.3
-pkgrel=1
+pkgver=3.3.1
+pkgrel=2
 pkgdesc='FLTK media player by libvlc'
 arch=('x86_64')
 url='https://github.com/spycapitan/flvlc'
 license=('GPL3')
 depends=('fltk' 'vlc')
-makedepends=('git' 'cmake')
+makedepends=('git' 'make' 'pkg-config')
 options=('!buildflags')
 source=("git+${url}.git?signed#tag=v${pkgver}"
         "flvlc.desktop"
@@ -26,7 +26,7 @@ validpgpkeys=('51479755D90A2AACFA90A6551DD242462908D08B')
 
 
 build() {
-  cd "$srcdir/flvlc" &&  cmake -DCMAKE_BUILD_TYPE=Release && make
+  cd "$srcdir/flvlc" && make release
 }
 
 package() {
