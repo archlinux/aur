@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.crx::${url}/releases/download/${pkgver}/browserpas
         "${pkgname}-${pkgver}.crx.asc::${url}/releases/download/${pkgver}/browserpass-github-${pkgver}.crx.asc"
         "https://raw.githubusercontent.com/browserpass/browserpass-extension/master/LICENSE")
 noextract=("${pkgname}-${pkgver}.crx")
-sha256sums=('14bf7e18d57b6529164113aee02b111421cee0924e14110911e1abe11127b180'
+sha256sums=('782cd40ffdaeebc43e03e791150d4171f514f1691e0d1e850dd067b9a0527c5f'
             'SKIP'
             'ea8738ea89deaa31df9477e4f6cba90cb40d01e3e1e39b36afdcab763cf54dee')
 validpgpkeys=('EB4F9E5A60D32232BB52150C12C87A28FEAC6B20')

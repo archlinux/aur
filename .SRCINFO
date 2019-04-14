@@ -11,7 +11,7 @@ pkgbase = browserpass-chrome
 	source = browserpass-chrome-3.0.10.crx.asc::https://github.com/browserpass/browserpass-extension/releases/download/3.0.10/browserpass-github-3.0.10.crx.asc
 	source = https://raw.githubusercontent.com/browserpass/browserpass-extension/master/LICENSE
 	validpgpkeys = EB4F9E5A60D32232BB52150C12C87A28FEAC6B20
-	sha256sums = 14bf7e18d57b6529164113aee02b111421cee0924e14110911e1abe11127b180
+	sha256sums = 782cd40ffdaeebc43e03e791150d4171f514f1691e0d1e850dd067b9a0527c5f
 	sha256sums = SKIP
 	sha256sums = ea8738ea89deaa31df9477e4f6cba90cb40d01e3e1e39b36afdcab763cf54dee
 
