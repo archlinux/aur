@@ -4,12 +4,12 @@
 _pkgname='phantomjs'
 pkgname="$_pkgname-beta-bin"
 pkgver="2.5.0"
-pkgrel=1
-pkgdesc='Headless WebKit with JavaScript API (official beta static binary)'
+pkgrel=2
+pkgdesc='Headless WebKit with JavaScript API (official beta binaries)'
 url='http://www.phantomjs.org/'
 license=('BSD')
 arch=('x86_64')
-depends=('fontconfig' 'freetype2' 'libpng')
+depends=('fontconfig' 'freetype2' 'libpng' 'libpng12')
 conflicts=('phantomjs' 'phantomjs-bin')
 provides=('phantomjs')
 _path="phantomjs-$pkgver-beta-ubuntu-xenial"
