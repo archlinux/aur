@@ -1,7 +1,7 @@
 pkgbase = metals
 	pkgdesc = Language Server For Scala
 	pkgver = 0.5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://scalameta.org/metals/
 	arch = any
 	license = Apache
@@ -64,4 +64,3 @@ pkgbase = metals
 	sha512sums = b4a4eb0bde4045de411b639e16cf41b95e3e50d8950c3a48008d42b60751541e4957c463f4f817320f15488c702d52fb977d3fe63d8832d55f259907f7e0afcf
 
 pkgname = metals
-

@@ -6,7 +6,7 @@
 # Maintainer: David Strawn <isomarcte a__t gmail d__o__t c__o__m>
 pkgname='metals'
 pkgver='0.5.0'
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc='Language Server For Scala'
 url='https://scalameta.org/metals/'
@@ -71,7 +71,7 @@ sha512sums=('21d6bd645ad35b749374b76015e7019375e2723b4e4e1b25dc0a983591f475c5466
 validpgpkeys=()
 
 prepare() {
-	  cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
 
     # The build currently does not set the correct version unless
     # built from git with the environment variable CI set. See
@@ -85,7 +85,7 @@ build() {
 
     local -r _SBT_DIR="./.sbt"
     local -r _SBT_IVY="./.ivy2"
-	  cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
 
     # When run with some AUR helpers, in particular `yay`, for a
     # reason I do not understand `sbt` will regularly attempt to
@@ -103,18 +103,18 @@ check() {
 
     local -r _SBT_DIR="./.sbt"
     local -r _SBT_IVY="./.ivy2"
-	  cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     ## Tests on most recent release currently fail
     # sbt test
 }
 
 package() {
-    export COURSIER_CACHE='../.cache/coursier/v1'
+    export COURSIER_CACHE='./.cache/coursier/v1'
     export CI="TRUE" # Needed so the build will not think it is a SNAPSHOT
 
     ## Constants ##
-    local -r _SBT_DIR='../.sbt'
-    local -r _SBT_IVY='../.ivy2'
+    local -r _SBT_DIR='./.sbt'
+    local -r _SBT_IVY='./.ivy2'
     local -r _TARGET_DIR='/usr/share/java/metals'
     local -r _DEST_DIR="${pkgdir}${_TARGET_DIR}"
     local -r _BIN_DEST_DIR="${_DEST_DIR}/bin"
@@ -124,11 +124,8 @@ package() {
     local -r _TEMP_FILE="$(mktemp)"
     local -r _LAUNCHER_SCRIPTS=('metals-client.sh' 'metals-emacs.sh' 'metals-vim.sh' 'metals-vscode.sh' 'metals-sublime.sh')
 
-    ## Variables ##
-    local LIB_NAME
-
     ## Change Into Correct Directory ##
-	  pushd "$pkgname-$pkgver"
+    pushd "$pkgname-$pkgver"
 
     ## Create lib And bin Directories ##
     install -d "$_LIB_DEST_DIR"
