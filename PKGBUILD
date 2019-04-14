@@ -1,6 +1,6 @@
 # Maintainer: Avahe Kellenberger <avahe@protonmail.ch>
 pkgname='git-pair'
-pkgver='1.0.1'
+pkgver='1.0.2'
 pkgrel='1'
 pkgdesc="Pair programming tool to define co-authors in git commits."
 arch=('x86_64')
@@ -20,3 +20,4 @@ package() {
     install -Dt "$pkgdir/usr/bin" "$pkgname-$pkgver/$pkgname"
 }
 
+md5sums=('595758d454dfb75b26d463f0b5f01f16')
