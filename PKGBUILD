@@ -19,7 +19,7 @@ install=servicewall.install
 backup=("etc/servicewall/realms.json" "etc/servicewall/config.json")
 
 # Sources for git repos :
-source=("${pkgname%-git}::git+https://github.com/lafleurdeboum/${_pkgname}.git")
+source=("${pkgname%-git}::git://localhost/")
 
 # Sources for non-git repos :
 #options=(!emptydirs)
