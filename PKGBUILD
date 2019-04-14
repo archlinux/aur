@@ -11,7 +11,7 @@ url='http://guayadeque.org/'
 license=('GPL3')
 provides=(${pkgname%-*})
 conflicts=(${pkgname%-*})
-depends=('curl' 'libgpod' 'taglib' 'wxgtk3' 'wxsqlite3' 'gst-plugins-base')
+depends=('curl' 'gst-plugins-base' 'libgpod' 'taglib' 'webkit2gtk' 'wxgtk3' 'wxsqlite3')
 makedepends=('cmake' 'git')
 optdepends=('gst-plugins-good: Support for PulseAudio and additional file formats'
             'gst-plugins-bad: Support for additional file formats'
