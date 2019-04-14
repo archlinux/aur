@@ -1,7 +1,7 @@
 pkgbase = baiduexporter-git
 	pkgdesc = Assistant for Baidu to export download links to aria2/aria2-rpc
 	pkgver = r436.7723f32
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/acgotaku/BaiduExporter
 	install = baiduexporter-git.install
 	arch = x86_64
