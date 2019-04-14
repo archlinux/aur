@@ -4,7 +4,7 @@
 # Contributor: Rafał Michalski <plum.michalski at gmail dot com>
 pkgname="burp-backup-dev"
 _pkgname="burp"
-pkgver=2.2.16
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="A next generation experimental version of the burp backup and restore program."
 arch=('i686' 'x86_64')
@@ -18,6 +18,8 @@ url='http://burp.grke.org/burp2.html'
 
 source=(
   "https://github.com/grke/burp/archive/${pkgver}.tar.gz"
+  "https://salsa.debian.org/debian/burp/raw/debian/debian/logrotate"
+  "https://salsa.debian.org/debian/burp/raw/debian/debian/burp.cron.d"
   "burp.install"
   "burp-server.service"
   "burp-client.service"
@@ -26,7 +28,9 @@ source=(
   "readme-archlinux.txt"
 )
 
-sha256sums=('56a4c7fdc679365d3fdb5b1046a277d6cf1c44003f3bdc38921984b496d6c3c9'
+sha256sums=('d06c1d672849a38e5e184312a9c679bd51b59426225cd518f5e8791e7519e2ba'
+            '97cf07c75b4ff26b64436eb053bfa01c6f148579e36802ffd7e162557c7f8ce0'
+            '3e8b619248cf6c1f094f075a36e4cf2df0f497f6e06746d4e9dbd60b8de7ff4c'
             '1d2c97471494dd5924bd0676e817ebfac54465c4ec0e23b49ad1c3c91d36460f'
             '94e1b5f8cf61c44f84675f685279e0d3376abd61ac1e6e4f5da0dd6b922c481f'
             '7908970e23cfb08554cbf53da1f8f3193a6b6ee076584f797644efab8431bfe3'
@@ -66,11 +70,11 @@ package() {
 
   # Setup logrotate
   mkdir -p "$pkgdir/etc/logrotate.d"
-  cp debian/logrotate "$pkgdir/etc/logrotate.d/burp"
+  cp "$srcdir/logrotate" "$pkgdir/etc/logrotate.d/burp"
 
   # Copy useful user setup files
   mkdir -p "$pkgdir/usr/share/burp/"
-  cp debian/burp.cron.d "$pkgdir/usr/share/burp/"
+  cp "$srcdir/burp.cron.d" "$pkgdir/usr/share/burp/"
   mkdir -p "$pkgdir/usr/lib/systemd/system/"
   cp "$srcdir/burp-server.service" "$pkgdir/usr/lib/systemd/system/"
   cp "$srcdir/burp-client.service" "$pkgdir/usr/lib/systemd/system/"
