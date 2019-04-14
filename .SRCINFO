@@ -1,0 +1,22 @@
+pkgbase = brscan5
+	pkgdesc = SANE drivers from Brother for brscan5 compatible models
+	pkgver = 1.1.0_0
+	pkgrel = 1
+	url = http://support.brother.com
+	install = brscan5.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom:Brother
+	depends = sane
+	depends = libusb-compat
+	optdepends = gtk2: for running brscan_gnetconfig
+	source = https://download.brother.com/welcome/dlf104036/brscan5-1.1.0-0.x86_64.rpm
+	source = http://www.brother.com/agreement/English_sane/agree.html
+	source = mk-udev-rules
+	md5sums = 5453ba052048780120a37d319cef1ce8
+	md5sums = ccffb9a6f6d436b21be25b0241068981
+	md5sums = ca07cab058b704b7b12ba076d00be2f0
+
+pkgname = brscan5
+
