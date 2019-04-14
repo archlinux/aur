@@ -1,7 +1,7 @@
 # Maintainer: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
 # Contributor: Mike WB2FKO <mph at sportscliche dot com>
 pkgname=quisk
-pkgver=4.1.36
+pkgver=4.1.37
 pkgrel=1
 pkgdesc="Software defined radio (SDR)"
 arch=('i686' 'x86_64')
@@ -9,21 +9,15 @@ url="http://james.ahlstrom.name/quisk/"
 license=('GPL')
 depends=('python2' 'fftw' 'portaudio' 'wxpython')
 optdepends=('codec2: Enable digital voice communication with FreeDV')
-source=(https://files.pythonhosted.org/packages/a0/0e/4b29f1da73bf48b83324836f3ff45d013147126adfa24be5788c3f9bce88/quisk-4.1.36.tar.gz
+source=(https://files.pythonhosted.org/packages/05/ab/087dfa8acd5381c415362651820d8861dcee7c63fcab1028320084551d0d/quisk-4.1.37.tar.gz
         $pkgname
-        $pkgname.desktop
-        $pkgname.patch)
-sha512sums=('f595ab1664b1867c165ac6af1e55a3597e6f5c9bced223829cf9598c0d03ef15b828a6c4ce947adb021f2b316fb823346684b028e0cf7ee0e9b3a8ca90ad3bfc'
+        $pkgname.desktop)
+sha512sums=('8f0707a75d13b973031ad81f2c98d02f62c9d78257a6bc553022d6224ca3ecba645b9ce3716ae908d43d550004980e6e30017f7f1701dcbcb58d07be186b7902'
             '94f09cc0e847e308ca66bf90c8f729924273f66524fed8bc63565c8060113ae8dcae6ed3f14075e03a7168da182059b3279c0315a1d2d00cf4292e4d68cf7871'
-            '3ad02f730b4a4033b86a2ce510865c13c2f2e228304283cae0bb389442f7ab49a5d530cd94e32460e19b53da24037abc855027ce34c93fdabcd1faf8a91852b1'
-            '716af9ee6bf13a6344a13a5150a37b207c1497eddcf1fc9fa7693868bad589de4724cf1f6822ad2bd371368ba8ca9f87b73594c78667931b94a113cb18904d55')
+            '3ad02f730b4a4033b86a2ce510865c13c2f2e228304283cae0bb389442f7ab49a5d530cd94e32460e19b53da24037abc855027ce34c93fdabcd1faf8a91852b1')
 build() {
-  # use python2 instead python for compilation
-  cd $srcdir
-  patch -p1 < $pkgname.patch
-
   cd "$srcdir/$pkgname-$pkgver"
-  make
+  python2 setup.py build_ext --force --inplace
 }
 
 package() {
