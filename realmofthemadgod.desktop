@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Realm Of The Mad God (ROTMG)
+Comment=Realm of the Mad God is a massively multiplayer online shooter
+Path=
+Exec=/usr/bin/flashplayer https://www.realmofthemadgod.com/client
+Icon=realmofthemadgod.png
+Terminal=false
+Categories=Game;Application;
