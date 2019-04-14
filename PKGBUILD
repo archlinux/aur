@@ -1,8 +1,8 @@
-# Maintainer: archibald869 at web dot de
+# Maintainer: archibald869 <archibald869 at web dot de>
 
 pkgname=freefilesync-bin
 _pkgname=freefilesync
-pkgver=10.10
+pkgver=10.11
 pkgrel=1
 pkgdesc="Folder comparison and synchronization"
 arch=("i686" "x86_64")
@@ -19,7 +19,7 @@ source=(
     RealTimeSync.png
 )
 sha256sums=(
-    "f9f2e8ecb1226ace538c99a74348eca00df938a6fa890b4707829bcb6b84b124"
+    "c71f821909e79baa03fc175b20c50f4f5a21b8fc4d638391dcaa6e0f00ffff85"
     "d46ae777a53c6e1d8e4baa088af4ad2eb798ff9064c2b4bc3768b7192d400eea"
     "b2fac3b8c0badfbbbcf605ecad5b184f2c9918bd0dd14596e6c43df3f2a76a30"
     "11315b1735c4f6af91f3aaaf3b37800c54ce24f10a3e674d94f88048605e4da8"
