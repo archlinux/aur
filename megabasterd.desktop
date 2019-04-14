@@ -6,4 +6,4 @@ TryExec=megabasterd
 Exec=megabasterd
 Terminal=false
 Categories=Application;Network;
-StartupWMClass=jd-Main
+StartupWMClass=com-tonikelope-megabasterd-MainPanel
