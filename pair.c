@@ -21,23 +21,23 @@ const char *title =
 "   -------------------------------------\n\n"
 ;
 
-int init();
+int init(void);
 int prompt_add_author(void);
-int add_author();
-int select_authors();
+int add_author(void);
+int select_authors(void);
 int select_author_index(int author_count, char *prompt);
 void display_available_authors(char **authors, int author_count);
 void free_authors(char **authors, int author_count);
-char **read_authors();
+char **read_authors(int *length);
 
 int set_author(char *name, char *email);
 int set_author_name(char *name);
 int set_author_email(char *email);
 int set_co_author(char *name, char *email);
-int set_commit_template();
+int set_commit_template(void);
 
-void print_help();
-void print_title();
+void print_help(void);
+void print_title(void);
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
 /**
  * 
  */
-int init() {
+int init(void) {
     print_title();
 
     // Add authors.
@@ -94,7 +94,7 @@ int prompt_add_author(void) {
  * Adds an author entry to the authors file.
  * @return 0 if an author was added successfully.
  */
-int add_author() {
+int add_author(void) {
     // Prompt for author name.
     char author_name[BUFSIZ];
     printf("%sEnter author's full name:%s ", GREEN, NO_FORMAT);
@@ -116,9 +116,8 @@ int add_author() {
     FILE *authors_file = fopen(authors_file_name, "a+");
 
     // Create entry format.
-    char *entry = strcat(author_name, ":<");
-    strcat(entry, author_email);
-    strcat(entry,  ">\n");
+    char entry[BUFSIZ];
+    snprintf(entry, BUFSIZ, "%s:<%s>\n", author_name, author_email);
 
     // Write entry to the file.
     fputs(entry, authors_file);
@@ -131,7 +130,7 @@ int add_author() {
  * Selects the author and (options) co-author of future commits.
  * @return 0 if an author was selected successfully.
  */
-int select_authors() {
+int select_authors(void) {
     int author_count = 0;
     char **authors = read_authors(&author_count);
 
@@ -239,7 +238,7 @@ char **read_authors(int *length) {
     }
 
     // Store all authors in array.
-    char **authors = malloc(255 * sizeof(char*));
+    char **authors = malloc(255 * sizeof(*authors));
     char buff[255];
     int i;
     for (i = 0; fgets(buff, 255, authors_file); i++) {
@@ -258,59 +257,38 @@ char **read_authors(int *length) {
  * @see set_author_email
  */
 int set_author(char *name, char *email) {
-    set_author_name(name);
-    set_author_email(email);
-    return 0;
+    return set_author_name(name) && set_author_email(email);
 }
 
 int set_author_name(char *name) {
-    char *cmd_prefix = "git config user.name \"";
-    int command_length = strlen(cmd_prefix) + strlen(name);
-    char git_cmd[command_length];
-    strcpy(git_cmd, cmd_prefix);
-    strcat(git_cmd, name);
-    strcat(git_cmd, "\"");
-    system(git_cmd);
-    return 0;
+    char git_cmd[BUFSIZ];
+    snprintf(git_cmd, BUFSIZ, "git config user.name \"%s\"", name);
+    return system(git_cmd);
 }
 
 int set_author_email(char *email) {
-    char *cmd_prefix = "git config user.email \"";
-    int command_length = strlen(cmd_prefix) + strlen(email);
-    char git_cmd[command_length];
-    strcpy(git_cmd, cmd_prefix);
-    strcat(git_cmd, email);
-    strcat(git_cmd, "\"");
-    system(git_cmd);
-    return 0;
+    char git_cmd[BUFSIZ];
+    snprintf(git_cmd, BUFSIZ, "git config user.email \"%s\"", email);
+    return system(git_cmd);
 }
 
-int set_commit_template() {
-    char *cmd_prefix = "git config commit.template \"";
-    int command_length = strlen(cmd_prefix) + strlen(commit_template_path);
-    char git_cmd[command_length];
-    strcpy(git_cmd, cmd_prefix);
-    strcat(git_cmd, commit_template_path);
-    strcat(git_cmd, "\"");
-    system(git_cmd);
-    return 0;
+int set_commit_template(void) {
+    char git_cmd[BUFSIZ];
+    snprintf(git_cmd, BUFSIZ, "git config commit.template \"%s\"", commit_template_path);
+    return system(git_cmd);
 }
 
 int set_co_author(char *name, char *email) {
     FILE *template = fopen(commit_template_path, "w");
     if (strlen(name) > 0 || strlen(email) > 0) {
         char entry[BUFSIZ];
-        strcat(entry, "\n\nCo-authored-by: ");
-        strcat(entry, name);
-        strcat(entry, " ");
-        strcat(entry, email);
+        snprintf(entry, BUFSIZ, "\n\nCo-authored-by: %s %s", name, email);
         fputs(entry, template);
     }
-    fclose(template);
-    return 0;
+    return fclose(template);
 }
 
-void print_help() {
+void print_help(void) {
     printf("%s%sCommands:%s\n\n", RED, BOLD, NO_FORMAT);
     printf("   %s<no command>%s - Select an author and optional co-author which exists in %s\n", GREEN, NO_FORMAT, authors_file_name);
     printf("   %sinit%s         - Initiate the setup for git pair\n", GREEN, NO_FORMAT);
@@ -319,6 +297,6 @@ void print_help() {
     printf("\n");
 }
 
-void print_title() {
+void print_title(void) {
     printf("%s%s%s", YELLOW, title, NO_FORMAT);
 }

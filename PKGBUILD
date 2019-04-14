@@ -1,6 +1,6 @@
 # Maintainer: Avahe Kellenberger <avahe@protonmail.ch>
 pkgname='git-pair'
-pkgver='1.0.0'
+pkgver='1.0.1'
 pkgrel='1'
 pkgdesc="Pair programming tool to define co-authors in git commits."
 arch=('x86_64')
