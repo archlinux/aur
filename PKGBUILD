@@ -1,6 +1,6 @@
 # Maintainer: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=blender-2.8-bin
-pkgver=2.80.190301.795effcbc815
+pkgver=2.80.190413.14884cda1ff5
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 # use different url per version to trigger rebuilds when package updates.
 # using $pkgver instead of $_inc is not possible (see comments on AUR-website)
-_inc=1903
+_inc=1904
 source=("download$_inc::https://builder.blender.org/download/")
 md5sums=('SKIP')
 
