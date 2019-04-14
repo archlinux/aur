@@ -33,5 +33,5 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   make -j1 DESTDIR="$pkgdir" install
-  install -D -m755 pjsip-apps/bin/pjsua-*gnu "$pkgdir"/usr/bin/pjsua
+  install -D -m755 pjsip-apps/bin/pjsua-*gnu* "$pkgdir"/usr/bin/pjsua
 }
