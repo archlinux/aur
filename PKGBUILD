@@ -15,7 +15,7 @@ depends=('python-cryptography'
 	 'python-requests'
 	 'python-six')
 options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/00/a6/677563dc39553b116b528c96d94e3e17ec1218d415e5337dc50f0ee924f4/${_pkgname}-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha256sums=('8c33bbf69750f75a9240c8e9d6bbfb9b6db8c3c62f8527481df0d8bf8c6bbadb')
 
 package() {
