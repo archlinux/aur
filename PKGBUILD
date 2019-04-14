@@ -5,7 +5,7 @@
 
 pkgname=pjproject
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source SIP stack and media stack'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://www.pjsip.org/'
@@ -18,7 +18,7 @@ sha256sums=('503d0bd7f9f13dc1492ac9b71b761b1089851fbb608b9a13996edc3c42006f79')
 
 build() {
   cd "$pkgname-$pkgver"
-  export CXXFLAGS="$CXXFLAGS -fPIC -march=native"
+  export CXXFLAGS="$CXXFLAGS -fPIC"
   export CFLAGS="$CXXFLAGS -DNDEBUG"
   ./configure --prefix=/usr --with-external-speex --with-external-srtp --with-external-pa --with-external-gsm --disable-oss --enable-shared --disable-opencore-amr --disable-v4l2 --disable-video --disable-sound
   echo "#define PJ_HAS_IPV6 1" >> "$srcdir/$pkgname-$pkgver/pjlib/include/pj/config_site.h"
