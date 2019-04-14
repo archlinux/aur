@@ -3,7 +3,7 @@
 
 _pkgname=nginx
 pkgname=$_pkgname-rtmp-sergey-git
-_nginx_ver=1.15.8
+_nginx_ver=1.15.11
 _rtmp_commit_id=a5ac72c274
 pkgver=$_nginx_ver"_"$_rtmp_commit_id
 pkgrel=0
