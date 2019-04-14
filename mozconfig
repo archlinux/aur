@@ -23,7 +23,8 @@ ac_add_options --enable-hardening
 ac_add_options --prefix=/usr
 ac_add_options --libdir=/opt
 
-ac_add_options --enable-rust-simd # on x86 requires SSE2
+# currently broken in rust 1.33
+ac_add_options --disable-rust-simd # on x86 requires SSE2
 
 ac_add_options --enable-release
 ac_add_options --enable-application=browser
@@ -62,6 +63,7 @@ ac_add_options --enable-system-pixman
 ac_add_options --enable-default-toolkit=cairo-gtk3
 
 # Features
+ac_add_options --disable-stylo
 ac_add_options --disable-libproxy
 ac_add_options --disable-crashreporter
 ac_add_options --disable-eme
@@ -80,6 +82,5 @@ ac_add_options --disable-debug
 ac_add_options --disable-debug-symbols
 ac_add_options --disable-profiling
 ac_add_options --disable-signmar
-ac_add_options --disable-stylo
 
 # vim:set ft=sh:
