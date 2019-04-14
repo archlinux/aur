@@ -1,10 +1,10 @@
 pre_install() {
-  getent group freeswitch > /dev/null
+  getent group freeswitch > /dev/null 2>&1
   if [ $? -ne 0 ];then
     echo 'Adding group freeswitch'
     groupadd  -r freeswitch
   fi
-  id freeswitch > /dev/null 2>&1
+  id freeswitch > /dev/null
   if [ $? -ne 0 ];then
     echo 'Adding user freeswitch'
     useradd -d /usr/share/freeswitch -r -g freeswitch freeswitch
@@ -40,8 +40,8 @@ post_upgrade() {
 }
 
 post_remove() {
-  #rm  -rf /etc/freeswitch
-  #echo 'Not removing /usr/share/freeswitch/conf/ config directories!!  If you do not want to keep them, rm -rf them away'
+  #rm  -rf /etc/freeswitch  # uncommend for /etc path fix
+  #echo 'Not removing /usr/share/freeswitch/conf/ config directories!!  If you do not want to keep them, rm -rf them away'  # ""
   userdel -rf freeswitch
   getent group freeswitch &> /dev/null && groupdel freeswitch
   true
