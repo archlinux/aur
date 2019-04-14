@@ -3,7 +3,7 @@
 
 pkgbase=mp-5
 pkgname=(mp-5-gtk mp-5-nc mp-5-qt5)
-pkgver=5.31
+pkgver=5.32
 pkgrel=1
 arch=('x86_64')
 url="http://www.triptico.com/software/mp.html"
@@ -11,12 +11,13 @@ license=('GPL')
 #'mp_doccer' 'perl-grutatxt'
 makedepends=('gtk3' 'ncurses' 'qt5-base')
 options=(!makeflags)
-source=(http://triptico.com/download/mp/mp-$pkgver.tar.gz
-		MinimumProfit.desktop)
-md5sums=('91fa68d6391e359b88106629956847c7'
-         '7eae413ded2d6f69fba8347240b8b875')
+source=(http://triptico.com/download/mp/mp-$pkgver.tar.gz)
+md5sums=('2c82a29af4500c9c6971428d5b77d24c')
 
 prepare() {
+  # Patch hard-coded install paths
+  sed -i 's| /usr| $(PREFIX)|g' mp-$pkgver/makefile.in
+
   rm -rf mp-5-gtk
   cp -a mp-$pkgver mp-5-gtk
 
@@ -49,11 +50,9 @@ package_mp-5-gtk() {
   provides=($_pkgname)
   conflicts=($_pkgname)
 
-  install -Dm644 MinimumProfit.desktop "$pkgdir/usr/share/applications/MinimumProfit.desktop"
-
   cd mp-5-gtk
-  install -Dm644 mp.png "$pkgdir/usr/share/pixmaps/mp.png"
-  install -dm755 "$pkgdir/usr/bin"
+  #install -Dm644 mp.png "$pkgdir/usr/share/pixmaps/mp.png"
+  install -dm755 "$pkgdir"{/usr/bin,/usr/share/applications,/usr/share/icons/hicolor/48x48/apps}
   make DESTDIR="$pkgdir" install
 }
 
@@ -64,11 +63,9 @@ package_mp-5-nc() {
   provides=($_pkgname)
   conflicts=($_pkgname)
 
-  install -Dm644 MinimumProfit.desktop "$pkgdir/usr/share/applications/MinimumProfit.desktop"
-
   cd mp-5-nc
-  install -Dm644 mp.png "$pkgdir/usr/share/pixmaps/mp.png"
-  install -dm755 "$pkgdir/usr/bin"
+  #install -Dm644 mp.png "$pkgdir/usr/share/pixmaps/mp.png"
+  install -dm755 "$pkgdir"{/usr/bin,/usr/share/applications,/usr/share/icons/hicolor/48x48/apps}
   make DESTDIR="$pkgdir" install
 }
 
@@ -79,11 +76,9 @@ package_mp-5-qt5() {
   provides=($_pkgname)
   conflicts=($_pkgname)
 
-  install -Dm644 MinimumProfit.desktop "$pkgdir/usr/share/applications/MinimumProfit.desktop"
-
   cd mp-5-qt5
-  install -Dm644 mp.png "$pkgdir/usr/share/pixmaps/mp.png"
-  install -dm755 "$pkgdir/usr/bin"
+  #install -Dm644 mp.png "$pkgdir/usr/share/pixmaps/mp.png"
+  install -dm755 "$pkgdir"{/usr/bin,/usr/share/applications,/usr/share/icons/hicolor/48x48/apps}
   make DESTDIR="$pkgdir" install
 }
 
