@@ -3,7 +3,7 @@
 pkgname=olivia
 pkgver=r182.517136a
 pkgrel=1
-pkgdesc="Deadass music player for Linux"
+pkgdesc="Elegant Cloud Music Player for Linux Desktop"
 arch=('i686' 'x86_64')
 url="https://github.com/keshavbhatt/olivia"
 license=('MIT')

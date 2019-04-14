@@ -1,5 +1,5 @@
 pkgbase = olivia
-	pkgdesc = Deadass music player for Linux
+	pkgdesc = Elegant Cloud Music Player for Linux Desktop
 	pkgver = r182.517136a
 	pkgrel = 1
 	url = https://github.com/keshavbhatt/olivia
