@@ -1,0 +1,16 @@
+pkgbase = stcflash-git
+	pkgdesc = A command line programmer for STC 8051 microcontroller.
+	pkgver = r34.791d246
+	pkgrel = 1
+	url = https://github.com/laborer/stcflash
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python-pyserial
+	provides = stcflash
+	conflicts = stcflash
+	source = stcflash::git+https://github.com/laborer/stcflash.git
+	md5sums = SKIP
+
+pkgname = stcflash-git
+
