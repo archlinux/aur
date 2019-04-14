@@ -1,7 +1,7 @@
 # Maintainer: Denys Pavlov <me at denys dot me>
 pkgname=1pass-git
 _pkgname=1pass
-pkgver=r62.06c834a
+pkgver=r68.93e14d8
 pkgrel=1
 pkgdesc="A caching wrapper for the 1Password CLI"
 arch=('any')
