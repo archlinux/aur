@@ -21,6 +21,7 @@ source=("git://github.com/OpenBoard-org/OpenBoard.git${_fragment}"
 source+=(quazip.diff)
 source+=(poppler.patch)
 source+=(drop_ThirdParty_repo.patch)
+source+=(30fps.patch)
 md5sums=('SKIP'
          'bf2c524f3897cfcfb4315bcd92d4206e'
          '60f64db6bf627015f4747879c4b30fd3'
@@ -29,7 +30,8 @@ md5sums=('SKIP'
          '21d1749400802f8fc0669feaf77de683'
          '30a7928f696f958d5e8f06e02c49639f'
          '8b774d204501bb8515ee224651a7d624'
-         '879116c683374b2dde291014e44a29fe')
+         '879116c683374b2dde291014e44a29fe'
+         '79afac7031634bf9e46ba67cbf2a2d0c')
 
 pkgver() {
   cd $srcdir/OpenBoard

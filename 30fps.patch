@@ -1,0 +1,36 @@
+diff -Naur OpenBoard-1.5.2/src/podcast/ffmpeg/UBFFmpegVideoEncoder.cpp OpenBoard-1.5.2-fps/src/podcast/ffmpeg/UBFFmpegVideoEncoder.cpp
+--- OpenBoard-1.5.2/src/podcast/ffmpeg/UBFFmpegVideoEncoder.cpp	2019-01-08 16:58:50.000000000 +0100
++++ OpenBoard-1.5.2-fps/src/podcast/ffmpeg/UBFFmpegVideoEncoder.cpp	2019-04-08 17:03:57.266838721 +0200
+@@ -393,7 +393,7 @@
+ 
+         c = mAudioStream->codec;
+ 
+-        c->bit_rate = 96000;
++        c->bit_rate = 128000;
+         c->sample_fmt  = audioCodec->sample_fmts ? audioCodec->sample_fmts[0] : AV_SAMPLE_FMT_FLTP;// FLTP by default for AAC
+         c->sample_rate = mAudioSampleRate;
+         c->channel_layout = AV_CH_LAYOUT_STEREO;
+diff -Naur OpenBoard-1.5.2/src/podcast/UBAbstractVideoEncoder.cpp OpenBoard-1.5.2-fps/src/podcast/UBAbstractVideoEncoder.cpp
+--- OpenBoard-1.5.2/src/podcast/UBAbstractVideoEncoder.cpp	2019-01-08 16:58:50.000000000 +0100
++++ OpenBoard-1.5.2-fps/src/podcast/UBAbstractVideoEncoder.cpp	2019-04-08 17:03:57.266838721 +0200
+@@ -33,7 +33,7 @@
+ 
+ UBAbstractVideoEncoder::UBAbstractVideoEncoder(QObject *pParent)
+     : QObject(pParent)
+-    , mFramesPerSecond(10)
++    , mFramesPerSecond(30)
+     , mVideoSize(640, 480)
+     , mVideoBitsPerSecond(1700000) // 1.7 Mbps
+ {
+diff -Naur OpenBoard-1.5.2/src/podcast/UBPodcastController.cpp OpenBoard-1.5.2-fps/src/podcast/UBPodcastController.cpp
+--- OpenBoard-1.5.2/src/podcast/UBPodcastController.cpp	2019-01-08 16:58:50.000000000 +0100
++++ OpenBoard-1.5.2-fps/src/podcast/UBPodcastController.cpp	2019-04-08 17:03:57.266838721 +0200
+@@ -81,7 +81,7 @@
+     , mVideoEncoder(0)
+     , mIsGrabbing(false)
+     , mInitialized(false)
+-    , mVideoFramesPerSecondAtStart(10)
++    , mVideoFramesPerSecondAtStart(30)
+     , mVideoFrameSizeAtStart(1024, 768)
+     , mVideoBitsPerSecondAtStart(1700000)
+     , mSourceWidget(0)
