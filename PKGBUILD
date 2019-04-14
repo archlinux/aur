@@ -4,7 +4,7 @@
 
 pkgname=flvlc
 pkgver=3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='FLTK media player by libvlc'
 arch=('x86_64')
 url='https://github.com/spycapitan/flvlc'
@@ -31,6 +31,7 @@ build() {
 
 package() {
   install -Dm755 "$srcdir/flvlc/flvlc" "$pkgdir/usr/bin/flvlc"
+  install -Dt "$pkgdir/usr/share/doc/flvlc/" -m644 "$srcdir/flvlc/README.md"
   install -Dt "$pkgdir/usr/share/applications" -m644 "flvlc.desktop" 
   install -Dt "$pkgdir/usr/share/pixmaps" -m644 "flvlc.png"
 }
