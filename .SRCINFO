@@ -2,12 +2,12 @@ pkgbase = python-colorlog
 	pkgdesc = Log formatting with colors
 	pkgver = 4.0.1
 	pkgrel = 1
-	url = https://github.com/borntyping/python-colorlog
+	url = https://pypi.org/project/colorlog/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = python-colorlog-4.0.1.tar.gz::https://github.com/borntyping/python-colorlog/archive/v4.0.1.tar.gz
+	source = python-colorlog-4.0.1.tar.gz::https://files.pythonhosted.org/packages/source/c/colorlog/colorlog-4.0.1.tar.gz
 	sha256sums = c015387d4d9cfc853555e066949806102431e6aec946b0fe8bb5cbef3ae42e5f
 
 pkgname = python-colorlog
