@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git')
-pkgver=9.0.0_r314159.065480daf2e
+pkgver=9.0.0_r314160.12886f04eae
 pkgrel=1
 _ocaml_ver=4.07.1
 arch=('x86_64')
@@ -25,7 +25,6 @@ makedepends=(   'git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'py
                             "ocaml=$_ocaml_ver" 'ocaml-ctypes' 'ocaml-findlib'
                             'python-sphinx' 'python-recommonmark' 'swig' 'python')
 
-options=('staticlibs')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
               'llvm-config.h'
               'enable-SSP-and-PIE-by-default.patch')
@@ -98,7 +97,8 @@ build() {
         -DLLVM_BINUTILS_INCDIR=/usr/include \
         -DLLVM_VERSION_SUFFIX="" \
         -DPOLLY_ENABLE_GPGPU_CODEGEN=ON \
-        -DLINK_POLLY_INTO_TOOLS=ON 
+        -DLINK_POLLY_INTO_TOOLS=ON \
+        -DCMAKE_POLICY_DEFAULT_CMP0075=NEW
     ninja "$MAKEFLAGS" all ocaml_doc
 }
 
@@ -119,8 +119,12 @@ package_llvm-git() {
     optdepends=( 'python: for scripts'
                             'python-setuptools: for using lit (LLVM Integrated Tester)'
                             'ocaml: for ocaml support')
-    # yes, I know polly is not in official repos
-    provides=('llvm' 'compiler-rt' 'clang' 'lld' 'lldb' 'polly' 'llvm-ocaml')
+    # yes, I know polly is not in official repos. It just feels cleaner to list it
+    provides=('llvm' 'compiler-rt' 'clang' 'lld' 'lldb' 'polly' 'llvm-ocaml'
+                      'compiler-rt-git' 'clang-git' 'lld-git' 'lldb-git' 'polly-git' 'llvm-ocaml-git'
+                      # legacy provides
+                      'llvm-svn' 'compiler-rt-svn' 'clang-svn' 'lld-svn' 'lldb-svn' 'polly-svn' 'llvm-ocaml-svn' 
+                      )
     conflicts=('llvm' 'compiler-rt' 'clang' 'lld' 'lldb' 'polly' 'llvm-ocaml')
     
     pushd _build
@@ -174,7 +178,8 @@ package_llvm-git() {
 package_llvm-libs-git() {
     pkgdesc="runtime libraries for llvm-git"
     depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2')
-    provides=('llvm-libs')
+    provides=('llvm-libs' 'llvm-libs-svn')
+    conflicts=('llvm-libs')
 
     install -d "$pkgdir"/usr/lib
     cp -P \
