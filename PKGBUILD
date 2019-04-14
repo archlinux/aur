@@ -1,8 +1,8 @@
 # Maintainer: basxto <archlinux basxto de>
 
 pkgname=gbm
-pkgver=1.1.7
-pkgrel=1 
+pkgver=1.1.8
+pkgrel=1
 pkgdesc="Game Backup Monitor monitors games and backs up their savegames"
 url="https://mikemaximus.github.io/gbm-web/linux.html"
 license=('GPL3')
@@ -11,7 +11,7 @@ makedepends=('imagemagick')
 depends=('mono-basic' 'sqlite' 'p7zip')
 optdepends=('libnotify')
 source=("https://github.com/MikeMaximus/gbm/releases/download/v${pkgver}/GBM.v${pkgver}.32-bit.7z")
-sha256sums=('386deec3b9a18bd1f9fbed12fdcf93f9cd05f890ef5f9eebba8f64c54b1144e1')
+sha256sums=('bf4cb1155381f25f5e9539b8dc2ecaad948e649946d5e269fbe978ec04aab8d1')
 
 package() {
   #fix new lines
