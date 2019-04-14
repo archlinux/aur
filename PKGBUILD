@@ -13,7 +13,6 @@ url="https://www.mozilla.org/firefox/"
 provides=('firefox' 'libvpx=1.7')
 conflicts=('firefox' 'libvpx=1.7')
 options=(!emptydirs !strip)
-makedepends=(sed)
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg nss hunspell-en_US sqlite ttf-font libpulse libvpx icu libjpeg6-turbo pipewire)
 optdepends=('networkmanager: Location detection via available WiFi networks'

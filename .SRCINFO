@@ -7,7 +7,6 @@ pkgbase = fedora-firefox-wayland-bin
 	license = MPL
 	license = GPL
 	license = LGPL
-	makedepends = sed
 	depends = gtk3
 	depends = mozilla-common
 	depends = libxt
