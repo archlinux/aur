@@ -1,0 +1,16 @@
+pkgbase = pkgproxy
+	pkgdesc = pkgproxy is a caching proxy server for usage with pacman
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/buckket/pkgproxy
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = go-pie
+	source = https://github.com/buckket/pkgproxy/archive/v1.0.0.tar.gz
+	source = pkgproxy.service
+	sha256sums = 3a166f13815d8e47ed771678da2cf060232134478683540fadbe98007467a095
+	sha256sums = 2c8ca0036aa5dd42d66605cb3a9e02abd33500840be5536579b522592881e7fb
+
+pkgname = pkgproxy
+

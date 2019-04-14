@@ -1,0 +1,10 @@
+[Unit]
+Description=pkgproxy
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/pkgproxy
+
+[Install]
+WantedBy=default.target
+
