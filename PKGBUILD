@@ -8,7 +8,7 @@ pkgdesc="Technic mod for Minetest"
 arch=('any')
 url="https://forum.minetest.net/viewtopic.php?t=2538"
 license=('LGPLv2')
-depends=('minetest-common>=0.4.14' 'minetest-mod-moreblocks-git' 'minetest-mod-pipeworks-git')
+depends=('minetest-common' 'minetest-mod-moreblocks-git' 'minetest-mod-pipeworks-git')
 optdepends=('mesecons-git: required only for some recipes') # 'minetest-mod-moreores: required only for some recipes')
 makedepends=()
 provides=("$_gitname")
