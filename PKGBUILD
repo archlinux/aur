@@ -2,16 +2,16 @@
 
 pkgname=include-what-you-use
 epoch=1
-pkgver=0.11
+pkgver=0.12
 pkgrel=1
-_clang_major=7
+_clang_major=8
 _clang_minor=0
 _clang_ver="${_clang_major}.${_clang_minor}"
 pkgdesc="A tool for use with clang to analyze #includes in C and C++ source files"
 url="http://include-what-you-use.org"
 license=('LLVM Release License')
 source=("https://github.com/${pkgname}/${pkgname}/archive/clang_${_clang_ver}.tar.gz")
-sha512sums=('50d186b2e09c3595cc2dc7513e5db74da0038987158c2c45ef4279c67c50de621ca6499b07894ee203f25566aafaddde4b05840946f921678499d2efc131575a')
+sha512sums=('e75e91ce198b1ec446ed34afcf9fdbcb0534c5edc5346e4884f0f589c73512d778c428aa71c1b109d45a45543a952438610ab21e32ef1f03ff1a014823ed8425')
 arch=('x86_64')
 _min="${_clang_ver}"
 _max=$((_clang_major+1)).0
