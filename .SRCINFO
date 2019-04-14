@@ -1,7 +1,7 @@
 pkgbase = faq
 	pkgdesc = faq is a tool intended to be a more flexible "jq", supporting additional formats.
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jzelinskie/faq
 	arch = any
 	license = Apache
