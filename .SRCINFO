@@ -1,6 +1,6 @@
 pkgbase = systemd-git
 	pkgdesc = systemd (git version)
-	pkgver = 241.1086
+	pkgver = 242.104
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = systemd-git
 	makedepends = kexec-tools
 	makedepends = libxkbcommon
 	makedepends = bash-completion
-	options = strip
+	options = !strip
 	source = git+https://github.com/systemd/systemd
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = initcpio-hook-udev
@@ -105,10 +105,10 @@ pkgname = systemd-git
 	optdepends = systemd-sysvcompat-git: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	optdepends = curl: machinectl pull-tar and pull-raw
-	provides = systemd=241.1086
+	provides = systemd=242.104
 	provides = nss-myhostname
-	provides = systemd-tools=241.1086
-	provides = udev=241.1086
+	provides = systemd-tools=242.104
+	provides = udev=242.104
 	conflicts = systemd
 	conflicts = nss-myhostname
 	conflicts = systemd-tools

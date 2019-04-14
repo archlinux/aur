@@ -7,7 +7,7 @@ pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc="systemd (git version)"
-pkgver=241.1086
+pkgver=242.104
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -17,7 +17,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion')
-options=('strip')
+options=('!strip')
 source=('git+https://github.com/systemd/systemd'
         '0001-Use-Arch-Linux-device-access-groups.patch'
         'initcpio-hook-udev'
@@ -64,14 +64,12 @@ prepare() {
 }
 
 pkgver() {
-  local version count
-
   cd "$_pkgbase"
 
-  version="$(git describe --abbrev=0 --tags)"
-  count="$(git rev-list --count ${version}..)"
-  version="$(echo ${version}| sed 's/-/./')"
-  printf '%s.%s' "${version#v}" "${count}"
+  local _version _count
+  _version="$(git describe --abbrev=0 --tags)"
+  _count="$(git rev-list --count ${_version}..)"
+  printf '%s.%s' "${_version#v}" "${_count}"
 }
 
 build() {
@@ -115,9 +113,9 @@ build() {
   ninja -C build
 }
 
-# check() {
-#   meson test -C build
-# }
+check() {
+  meson test -C build
+}
 
 package_systemd-git() {
   pkgdesc="system and service manager (git version)"
@@ -222,7 +220,7 @@ package_systemd-libs-git() {
 package_systemd-resolvconf-git() {
   pkgdesc='systemd resolvconf replacement (for use with systemd-resolved, git version)'
   license=('LGPL2.1')
-  depends=('systemd-git')
+  depends=("${pkgbase}")
   provides=('systemd-resolvconf' 'openresolv' 'resolvconf')
   conflicts=('systemd-resolvconf' 'openresolv')
 
@@ -237,7 +235,7 @@ package_systemd-resolvconf-git() {
 package_systemd-sysvcompat-git() {
   pkgdesc='sysvinit compat for systemd (git version)'
   license=('GPL2')
-  depends=('systemd-git')
+  depends=("${pkgbase}")
   provides=('systemd-sysvcompat')
   conflicts=('systemd-sysvcompat' 'sysvinit')
 
