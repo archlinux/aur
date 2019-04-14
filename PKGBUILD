@@ -1,48 +1,51 @@
-# $Id$
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-pkgname=jdk11-openj9-bin
-_openj9ver=0.12.1
-_majorver=11.0.2
-_buildver=9_openj9-${_openj9ver}
+# Maintainer: Davide Depau <davide@depau.eu>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+
+pkgname=jdk12-openj9-bin
+_jdkver=12
+_openj9ver=0.13.0
+_majorver=${_jdkver}
+_buildvershort=33
+_buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_majorver}b${_buildver//-/_}
 pkgrel=1
-pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk11"
+pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk${_jdkver}"
 arch=('x86_64')
-url="https://adoptopenjdk.net/index.html?variant=openjdk11&jvmVariant=openj9"
+url="https://adoptopenjdk.net/index.html?variant=openjdk${_jdkver}&jvmVariant=openj9"
 license=('GPL2')
 depends=('java-environment-common' 'ca-certificates-utils' 'nss')
 provides=(
-  "java-environment=11"
-  "java-environment-openjdk=11"
-  "java-runtime=11"
-  "java-runtime-openjdk=11"
-  "java-runtime-headless=11"
-  "java-runtime-headless-openjdk=11"
+  "java-environment=${_jdkver}"
+  "java-environment-openjdk=${_jdkver}"
+  "java-runtime=${_jdkver}"
+  "java-runtime-openjdk=${_jdkver}"
+  "java-runtime-headless=${_jdkver}"
+  "java-runtime-headless-openjdk=${_jdkver}"
 )
-source=("https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-${_majorver}%2B${_buildver}/OpenJDK11U-jdk_x64_linux_openj9_${_majorver}_${_buildver}_openj9-${_openj9ver}.tar.gz")
-sha256sums=('a9b298391dc0baf49e935683fb13b1b18ef5fd5b1d0e1a1318c8e425ffdbcbcd')
+source=("https://github.com/AdoptOpenJDK/openjdk${_jdkver}-binaries/releases/download/jdk-${_majorver}%2B${_buildver}/OpenJDK${_jdkver}U-jdk_x64_linux_openj9_${_majorver}_${_buildver}.tar.gz")
+sha256sums=('d61a7a211b314aab9d79bc003b8ce86d5651e705912a24e369a44ae5206afed5')
 
-_jvmdir=usr/lib/jvm/java-11-j9
+_jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 
 package() {
   # Install
   install -d "${pkgdir}/${_jvmdir}"
-  cd jdk-${_majorver}+${_buildver}
+  cd jdk-${_majorver}+${_buildvershort}
   cp -a bin demo include jmods lib release "${pkgdir}/${_jvmdir}/"
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"
   ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}/${_jvmdir}/lib/security/cacerts"
   # Legal
-  install -d "${pkgdir}/usr/share/licenses/java11-j9"
-  cp -a legal "${pkgdir}/usr/share/licenses/java11-j9/"
-  ln -s /usr/share/licenses/java11-j9 "${pkgdir}/${_jvmdir}/legal"
+  install -d "${pkgdir}/usr/share/licenses/java${_jdkver}-j9"
+  cp -a legal "${pkgdir}/usr/share/licenses/java${_jdkver}-j9/"
+  ln -s /usr/share/licenses/java${_jdkver}-j9 "${pkgdir}/${_jvmdir}/legal"
   # Conf
   install -d "${pkgdir}/etc"
-  cp -r conf "${pkgdir}/etc/java11-j9"
-  ln -s /etc/java11-j9 "${pkgdir}/${_jvmdir}/conf"
+  cp -r conf "${pkgdir}/etc/java${_jdkver}-j9"
+  ln -s /etc/java${_jdkver}-j9 "${pkgdir}/${_jvmdir}/conf"
   # Man pages
-  for f in man/man1/* man/ja/man1/*; do
-    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-openjdk11-j9.1}"
+  for f in man/man1/*; do
+    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-openjdk12-j9.1}"
   done
   ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
 }

@@ -1,21 +1,21 @@
-pkgbase = jdk11-openj9-bin
-	pkgdesc = Eclipse (former IBM) OpenJ9 with openjdk11
-	pkgver = 11.0.2b9_openj9_0.12.1
+pkgbase = jdk12-openj9-bin
+	pkgdesc = Eclipse (former IBM) OpenJ9 with openjdk12
+	pkgver = 12b33_openj9_0.13.0
 	pkgrel = 1
-	url = https://adoptopenjdk.net/index.html?variant=openjdk11&jvmVariant=openj9
+	url = https://adoptopenjdk.net/index.html?variant=openjdk12&jvmVariant=openj9
 	arch = x86_64
 	license = GPL2
 	depends = java-environment-common
 	depends = ca-certificates-utils
 	depends = nss
-	provides = java-environment=11
-	provides = java-environment-openjdk=11
-	provides = java-runtime=11
-	provides = java-runtime-openjdk=11
-	provides = java-runtime-headless=11
-	provides = java-runtime-headless-openjdk=11
-	source = https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.2%2B9_openj9-0.12.1/OpenJDK11U-jdk_x64_linux_openj9_11.0.2_9_openj9-0.12.1_openj9-0.12.1.tar.gz
-	sha256sums = a9b298391dc0baf49e935683fb13b1b18ef5fd5b1d0e1a1318c8e425ffdbcbcd
+	provides = java-environment=12
+	provides = java-environment-openjdk=12
+	provides = java-runtime=12
+	provides = java-runtime-openjdk=12
+	provides = java-runtime-headless=12
+	provides = java-runtime-headless-openjdk=12
+	source = https://github.com/AdoptOpenJDK/openjdk12-binaries/releases/download/jdk-12%2B33_openj9-0.13.0/OpenJDK12U-jdk_x64_linux_openj9_12_33_openj9-0.13.0.tar.gz
+	sha256sums = d61a7a211b314aab9d79bc003b8ce86d5651e705912a24e369a44ae5206afed5
 
-pkgname = jdk11-openj9-bin
+pkgname = jdk12-openj9-bin
 
