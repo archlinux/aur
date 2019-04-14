@@ -1,19 +1,33 @@
 # Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
-pkgname=python2-backports.csv
-pkgver=1.0.6
+
+_name=backports.csv
+pkgname=python2-$_name
+pkgver=1.0.7
 pkgrel=1
-pkgdesc="Backport of Python 3 csv module"
+pkgdesc='Backport of Python 3 csv module'
 arch=('any')
-url="https://github.com/ryanhiebert/backports.csv"
+url="https://github.com/ryanhiebert/$_name"
 license=('Python')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ryanhiebert/backports.csv/archive/${pkgver}.tar.gz")
-md5sums=('bfd394e05017f15b335facc4fd9b2b59')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('fffd46b8b1acb123f55abca18e5954a614fafe9806b3d0ab44aff36b65f01ac4')
+
+build() {
+  cd "$_name-$pkgver"
+
+  python2 setup.py build
+}
+
+check() {
+  cd "$_name-$pkgver"
+
+  python2 setup.py test
+}
 
 package() {
-  cd "backports.csv-$pkgver"
+  cd "$_name-$pkgver"
 
-  python2 setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 LICENSE.rst "$pkgdir/usr/share/licenses/$pkgname/license.txt"
+  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm644 LICENSE.rst "$pkgdir/usr/share/licenses/$pkgname/LICENSE.rst"
 }
