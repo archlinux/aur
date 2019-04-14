@@ -1,7 +1,8 @@
-# Maintainer: Hokuto <abrahamhokuto@outlook.com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Hokuto <abrahamhokuto@outlook.com>
 
 pkgname=windows-xp-icons-git
-pkgver=r16.7b37b0d
+pkgver=r21.c6c00dd
 pkgrel=1
 pkgdesc="Remake of classic YlmfOS theme with some mods for icons to scale right"
 arch=('any')
