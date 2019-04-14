@@ -1,12 +1,11 @@
 pkgbase = linux-sgx-driver-dkms-git
 	pkgdesc = Intel® SGX Linux module - dkms
-	pkgver = 1.9_rhel7.4.r17.g2a509c2
+	pkgver = 2.5
 	pkgrel = 1
 	url = https://01.org/intel-softwareguard-extensions
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = linux-headers>=4.12
 	depends = dkms
 	optdepends = linux-headers: Build the module for Arch kernel
 	optdepends = linux-lts-headers: Build the module for LTS Arch kernel

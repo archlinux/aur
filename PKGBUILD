@@ -3,7 +3,7 @@
 
 pkg=linux-sgx-driver
 pkgname=$pkg-dkms-git
-pkgver=1.9_rhel7.4.r17.g2a509c2
+pkgver=2.5
 pkgrel=1
 pkgdesc="Intel® SGX Linux module - dkms"
 arch=('i686' 'x86_64')
@@ -11,44 +11,43 @@ url="https://01.org/intel-softwareguard-extensions"
 license=('GPL2')
 depends=('dkms')
 optdepends=('linux-headers: Build the module for Arch kernel'
-            'linux-lts-headers: Build the module for LTS Arch kernel')
-makedepends=('linux-headers>=4.12')
+'linux-lts-headers: Build the module for LTS Arch kernel')
 source=("$pkg::git+https://github.com/01org/linux-sgx-driver.git"
-	dkms.conf)
+dkms.conf)
 
 pkgver() {
-  cd $srcdir/$pkg
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c 12-
+    cd $srcdir/$pkg
+    git describe --tags | cut -c 12-
 }
 
 package() {
-  installDir="$pkgdir/usr/src/$pkg-$pkgver"
+    installDir="$pkgdir/usr/src/$pkg-$pkgver"
 
-  install -dm755 "$installDir"
+    install -dm755 "$installDir"
 
-# Copy dkms .conf
-  install -Dm644 ../dkms.conf "$installDir/dkms.conf"
+    # Copy dkms .conf
+    install -Dm644 ../dkms.conf "$installDir/dkms.conf"
 
-# Set name and version
-  sed -e "s/@PKG@/${pkg}/" \
-      -e "s/@PKGVER@/${pkgver}/" \
-      -i "$installDir/dkms.conf"
+    # Set name and version
+    sed -e "s/@PKG@/${pkg}/" \
+        -e "s/@PKGVER@/${pkgver}/" \
+        -i "$installDir/dkms.conf"
 
-# Copy sources
-  cd $srcdir/$pkg
+    # Copy sources
+    cd $srcdir/$pkg
 
-  for d in `find . -type d`
+    for d in `find . -type d`
     do
-      install -dm755  "${installDir}/$d"
+        install -dm755  "${installDir}/$d"
     done
-  for f in `find . -type f ! -name 'README.md' ! -name '.gitignore'`
+    for f in `find . -type f ! -name 'README.md' ! -name '.gitignore'`
     do
-      install -m644 "$f" "${installDir}/$f"
+        install -m644 "$f" "${installDir}/$f"
     done
 
-  sed -e "s/-O0//" \
-      -i "$installDir/Makefile"
+    sed -e "s/-O0//" \
+        -i "$installDir/Makefile"
 }
 
 md5sums=('SKIP'
-         '620201f62a773287ddfa6e9b0ffde1f8')
+'620201f62a773287ddfa6e9b0ffde1f8')
