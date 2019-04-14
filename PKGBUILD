@@ -6,8 +6,8 @@
 # Contributor: Gregor Ibic <gregor.ibic@intelicom.si>
 
 pkgname=snort
-pkgver=2.9.12
-pkgrel=2
+pkgver=2.9.13
+pkgrel=1
 pkgdesc='A lightweight network intrusion detection system.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64' 'arm')
 url='http://www.snort.org'
@@ -15,45 +15,45 @@ license=('GPL')
 depends=('dbus' 'libdaq' 'libdnet' 'libgcrypt' 'libgpg-error' 'libnghttp2' 'libnl' 'libpcap' 'luajit' 'lz4' 'openssl' 'pcre' 'xz' 'zlib')
 makedepends=('libtirpc')
 backup=('etc/snort/snort.conf'
-	'etc/snort/threshold.conf'
-	'etc/snort/reference.config'
-	'etc/snort/classification.config'
+    'etc/snort/threshold.conf'
+    'etc/snort/reference.config'
+    'etc/snort/classification.config'
 'etc/snort/rules/emerging.conf')
 options=('!makeflags' '!libtool')
 install='snort.install'
 source=("https://www.snort.org/downloads/snort/${pkgname}-${pkgver}.tar.gz"
-	"http://rules.emergingthreats.net/open/${pkgname}-2.9.0/emerging.rules.tar.gz"
+    "http://rules.emergingthreats.net/open/${pkgname}-2.9.0/emerging.rules.tar.gz"
 'snort@.service')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	./configure --prefix=/usr --sysconfdir=/etc/snort --with-libpcap-includes=/usr/include/pcap \
-		--with-daq-includes=/usr/include --with-daq-libraries=/usr/lib/daq/ \
-		--disable-static-daq \
-		CPPFLAGS="$CPPFLAGS -I/usr/include/tirpc/"
-	make
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    ./configure --prefix=/usr --sysconfdir=/etc/snort --with-libpcap-includes=/usr/include/pcap \
+        --with-daq-includes=/usr/include --with-daq-libraries=/usr/lib/daq/ \
+        --disable-static-daq \
+        CPPFLAGS="$CPPFLAGS -I/usr/include/tirpc/"
+    make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
-	make DESTDIR="${pkgdir}" install
+    make DESTDIR="${pkgdir}" install
 
-	mkdir -p "${pkgdir}/"{etc/rc.d,etc/snort/rules}
+    mkdir -p "${pkgdir}/"{etc/rc.d,etc/snort/rules}
 
-	install -d -m755 "${pkgdir}/var/log/snort"
-	install -D -m644 etc/{*.conf*,*.map} "${pkgdir}/etc/snort/"
+    install -d -m755 "${pkgdir}/var/log/snort"
+    install -D -m644 etc/{*.conf*,*.map} "${pkgdir}/etc/snort/"
 
-	# init service file
-	install -D -m644 ../snort@.service $pkgdir/usr/lib/systemd/system/snort@.service
+    # init service file
+    install -D -m644 ../snort@.service $pkgdir/usr/lib/systemd/system/snort@.service
 
-	sed -i 's#/usr/local/lib/#/usr/lib/#' "${pkgdir}/etc/snort/snort.conf"
+    sed -i 's#/usr/local/lib/#/usr/lib/#' "${pkgdir}/etc/snort/snort.conf"
 
-	# emerginthreats rules
-	echo 'include $RULE_PATH/emerging.conf' >> "${pkgdir}/etc/snort/snort.conf"
-	cp ${srcdir}/rules/* "${pkgdir}/etc/snort/rules"
+    # emerginthreats rules
+    echo 'include $RULE_PATH/emerging.conf' >> "${pkgdir}/etc/snort/snort.conf"
+    cp ${srcdir}/rules/* "${pkgdir}/etc/snort/rules"
 }
 
-md5sums=('3a305d9c44bd0319aa50783a60c8947f'
-         'SKIP'
-         'a847030a34396e6b2d1cacd272ad42da')
+md5sums=('b61ae846af022018b05511076baad60c'
+    'SKIP'
+'a847030a34396e6b2d1cacd272ad42da')

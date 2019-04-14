@@ -1,7 +1,7 @@
 pkgbase = snort
 	pkgdesc = A lightweight network intrusion detection system.
-	pkgver = 2.9.12
-	pkgrel = 2
+	pkgver = 2.9.13
+	pkgrel = 1
 	url = http://www.snort.org
 	install = snort.install
 	arch = i686
@@ -33,10 +33,10 @@ pkgbase = snort
 	backup = etc/snort/reference.config
 	backup = etc/snort/classification.config
 	backup = etc/snort/rules/emerging.conf
-	source = https://www.snort.org/downloads/snort/snort-2.9.12.tar.gz
+	source = https://www.snort.org/downloads/snort/snort-2.9.13.tar.gz
 	source = http://rules.emergingthreats.net/open/snort-2.9.0/emerging.rules.tar.gz
 	source = snort@.service
-	md5sums = 3a305d9c44bd0319aa50783a60c8947f
+	md5sums = b61ae846af022018b05511076baad60c
 	md5sums = SKIP
 	md5sums = a847030a34396e6b2d1cacd272ad42da
 
