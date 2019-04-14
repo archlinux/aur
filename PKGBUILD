@@ -54,7 +54,7 @@ _disabled_modules=(languages/mod_spidermonkey
                    applications/mod_signalwire)
 # BUILD CONFIGURATION ENDS                     #
 
-pkgname='freeswitch-git'
+pkgname=freeswitch-git
 pkgver=1.7.0.r33467.a5858c8b9f
 pkgrel=1
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk (git version)."
@@ -72,7 +72,7 @@ depends=('curl'
          'postgresql-libs'
 	 'libshout'
 	 'lua'
-	 'openssl-1.0'
+	 'openssl'
 	 'opus'
 	 'freetype2')
 # per https://wiki.freeswitch.org/wiki/FreeSwitch_Dependencies, dependencies are downloaded and built *from upstream*, so thankfully the deps are pretty minimal.
@@ -173,7 +173,6 @@ build() {
   sleep 5
 
   # CONFIGURE
-  #./configure \
   # We need to override some things for the ./configure for 1.6.17
   #PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
   #CFLAGS+=" -I/usr/include/openssl-1.0" \
