@@ -1,0 +1,14 @@
+pkgbase = faq
+	pkgdesc = faq is a tool intended to be a more flexible "jq", supporting additional formats.
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/jzelinskie/faq
+	arch = any
+	license = Apache
+	makedepends = go
+	depends = jq
+	source = https://github.com/jzelinskie/faq/archive/0.0.6.tar.gz
+	md5sums = 1c7e2a8bb060d36dcf07df39ea006fb4
+
+pkgname = faq
+
