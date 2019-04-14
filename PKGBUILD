@@ -4,7 +4,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 # Past Maintainer: Matthew Ellison <seglberg+aur@gmail.com>
 pkgname=python-pyroute2
-pkgver=0.5.3
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="A pure Python netlink and Linux network configuration library"
 arch=('any')
@@ -18,7 +18,7 @@ changelog=
 noextract=()
 source=("https://files.pythonhosted.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "${_pkgname}-${pkgver}.tar.gz.sig")
-sha512sums=('1a9d466e60d3884ae5d187554c2d01f587210f4af9b644efd8ec1e029de35145253938be35c2355b110c59a7299b833c49c0ea256060549d2d3df2c49f165872'
+sha512sums=('c7166e667b6fd21eefd34a01a0bba8467f3ae4d9526af32d5a6e96747c8aac7590da1097f1ca9b12390158e90ddfd6ff9f68c85765abbe179e8761658dda6b86'
             'SKIP')
 
 package_python-pyroute2() {
