@@ -1,30 +1,36 @@
-# Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
-# Package Repository: https://github.com/mij-aur-packages/android-x86-64-system-image
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
+# Contributor: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 
-_rev=r07
-_apilevel=24
 pkgname=android-x86-64-system-image
-pkgver=${_apilevel}_${_rev}
+pkgver=28_r04
 pkgrel=1
-pkgdesc="Android x86-64 System Image, latest API"
+pkgdesc='Android x86_64 Atom System Image, latest API'
 arch=('any')
 url='https://software.intel.com/en-us/android/tools'
 license=('custom')
-depends=("android-platform")
+depends=('android-platform')
 optdepends=('qemu' 'libvirt')
-provides=("${pkgname}-${_apilevel}" "${pkgname/x86-64/x86_64}-${_apilevel}")
-conflicts=("${pkgname}-${_apilevel}" "${pkgname/x86-64/x86_64}-${_apilevel}")
+provides=("${pkgname}-${pkgver/_*/}")
+conflicts=("${pkgname}-${pkgver/_*/}")
 options=('!strip')
-source=("http://dl-ssl.google.com/android/repository/sys-img/android/x86_64-24_r07.zip"
-        "source.properties")
-sha1sums=('a379932395ced0a8f572b39c396d86e08827a9ba'
-          '50a14dedd03146ed1b7cde12cf83b9691ce22a5c')
+source=("http://dl-ssl.google.com/android/repository/sys-img/android/x86_64-${pkgver}.zip"
+        "package.xml")
+sha256sums=('ff6ce81aa1424951a214da5f392f8e12382de46d33c08aeaa5d21caba6a39b62'
+            'e2b2a2cfaaafeb8c314a7cae52f94b3c024888f3980033cf7c29ece986b0a842')
+
+prepare() {
+  # Fix permissions
+  cd 'x86_64'
+  find . -type f -print0 | xargs --null chmod -R u=rw,go=r
+  find . -type d -print0 | xargs --null chmod -R u=rwx,go=rx
+}
 
 package() {
-  _destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/default"
-  mkdir -p "${_destdir}"
-  mv "${srcdir}/x86_64" "${_destdir}"
-  install -Dm644 "${srcdir}/source.properties" "${_destdir}/x86_64"
-
-  chmod -R ugo+rX "${pkgdir}/opt"
+  # Install files
+  install -d -m 755 "${pkgdir}/opt/android-sdk/system-images/android-${pkgver/_*/}/default"
+  cp -r 'x86_64' "${pkgdir}/opt/android-sdk/system-images/android-${pkgver/_*/}/default/"
+  # Install license
+  install -D -m 644 "package.xml" "${pkgdir}/usr/share/licenses/${pkgname}/package.xml"
+  ln -s "/usr/share/licenses/${pkgname}/package.xml" \
+    "${pkgdir}/opt/android-sdk/system-images/android-${pkgver/_*/}/default/x86_64/"
 }
