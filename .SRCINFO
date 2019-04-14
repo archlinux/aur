@@ -11,7 +11,7 @@ pkgbase = megabasterd-bin
 	source = megabasterd.desktop
 	md5sums = 65570970c468539b09e990dc99e2dcb5
 	md5sums = f4112d02ba321fbb769be50679d35357
-	md5sums = b746134d9f4c90ae2458177c85041df8
+	md5sums = a61fc0026a70f2508514eb2107a1f79f
 
 pkgname = megabasterd-bin
 
