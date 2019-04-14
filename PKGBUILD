@@ -1,8 +1,8 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=hexyl-bin
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="A command-line hex viewer"
 arch=('x86_64')
 url="https://github.com/sharkdp/hexyl"
@@ -11,7 +11,7 @@ provides=('hexyl')
 conflicts=('hexyl')
 
 source=("${url}/releases/download/v${pkgver}/hexyl-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
-sha256sums=('88411b12bf430c18b1111dc1234d87bceaffd267b938ef7172587dba99af58f8')
+sha256sums=('dc38b1deabdf4ffd194c56ea469fa40b172c05e645d5d97e60eb72a4630b65c3')
 
 package() {
   cd "${srcdir}/hexyl-v${pkgver}-x86_64-unknown-linux-musl/"
