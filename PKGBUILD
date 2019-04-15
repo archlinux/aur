@@ -26,8 +26,8 @@ prepare() {
   cd "${_plug}"
 
   echo "all:
-	  gcc -c -fPIC  ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o main.o src/main.c
-	  gcc -c -fPIC  ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o processplane.o src/processplane.c
+	  gcc -c -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o main.o src/main.c
+	  gcc -c -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o processplane.o src/processplane.c
 	  gcc -shared -fPIC ${LDFLAGS} -o lib${_plug}.so main.o processplane.o" > Makefile
 }
 
