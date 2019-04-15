@@ -6,8 +6,8 @@
 
 pkgbase=python-numpy-openblas
 pkgname=("python-numpy-openblas" "python2-numpy-openblas")
-pkgver=1.16.1
-pkgrel=2
+pkgver=1.16.2
+pkgrel=1
 pkgdesc="Scientific tools for Python - built with openblas"
 arch=("i686" "x86_64")
 license=("custom")
@@ -17,7 +17,7 @@ makedepends=('cblas' 'lapack' 'python' 'python2' 'python-setuptools' 'python2-se
 checkdepends=('python-pytest' 'python2-pytest')
 options=('staticlibs')
 source=("python-numpy-$pkgver.tar.gz::https://github.com/numpy/numpy/archive/v$pkgver.tar.gz") 
-sha256sums=('59485e2d172c4c3e27307969ef2c1220b98efcf59cbf373bec41da19f7b69b92')
+sha256sums=('88835849921a970dae7705b0ea4a144d6b22f5e28148e17f25723c492a74a3c0')
 
 prepare() {
   cp -a numpy-$pkgver{,-py2}
