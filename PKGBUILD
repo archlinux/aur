@@ -3,16 +3,14 @@
 
 pkgname=cheese
 pkgver=3.32.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://wiki.gnome.org/Apps/Cheese"
 arch=(x86_64)
 license=(GPL)
 depends=(gtk3 gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good clutter-gst clutter-gtk
-         libcanberra librsvg gnome-desktop libgudev dconf)
-makedepends=(intltool gobject-introspection itstool vala gnome-common git appstream-glib
-             gnome-video-effects)
-optdepends=('gnome-video-effects: Camera effects')
+         libcanberra librsvg gnome-desktop libgudev dconf gnome-video-effects)
+makedepends=(intltool gobject-introspection itstool vala gnome-common git appstream-glib)
 groups=(gnome)
 options=(!emptydirs)
 _commit=f968f45985a93a75ce20236615bf8ff5586174ce  # gnome-3-32
