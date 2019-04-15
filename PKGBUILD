@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-company-mode
-pkgver=0.9.9
+pkgver=0.9.10
 pkgrel=1
 pkgdesc="Modular in-buffer completion framework for Emacs"
 url="http://company-mode.github.io"
