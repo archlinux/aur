@@ -6,14 +6,14 @@
 # Contributor: Michael Seiwald <michael@mseiwald.at>
 
 pkgname=davical
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="A server for calendar sharing"
 arch=('any')
 url="https://gitlab.com/davical-project/davical"
 license=('GPL' 'LGPL')
-depends=('php>=5.1' 'awl>=0.57-6' 'php-pgsql' 'perl-dbd-pg' 'perl-yaml' 'perl-dbi')
-makedepends=('phpdocumentor2' 'python2-rst2pdf')
+depends=('php>=5.1' 'awl>=0.57-6' 'php-sqlite' 'php-pgsql' 'perl-dbd-pg' 'perl-yaml' 'perl-dbi')
+makedepends=('phpdocumentor2' 'python2-rst2pdf' 'doxygen')
 optdepends=('postgresql: run postgresql locally'
             'apache: Web server to run davical'
             'nginx: Web server to run davical'
@@ -23,7 +23,7 @@ install="$pkgname.install"
 source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/davical-project/${pkgname}/repository/archive.tar.bz2?ref=r${pkgver}"
         httpd-davical.conf
         README.archlinux)
-sha512sums=('ac63a41634707fc7e388719a978b6cff9eb2b9ceb8524e5826331bd5a7cb45c4af2808de57adc3725207bf0c455619687b7cb0da9e33a2e501ccecfc02712b31'
+sha512sums=('c3cfc0709c3aab9c8bdb572f58bbe74e4c3a02f7642a20931b42c38e6a2f1000b2152d0bc0ab2acd79ec8f5a8fd10a0a0d70c5c9406a75db557c762def4bbead'
             'b4466049d9ba116cdbe3951a7a4cf004a423b59f197f78765151c656cf4f16f30a2bcc302bd643be0548818a67611654f95deb95113fa7f581394af78cb17109'
             'd7ffe40a87e4752f1cd148bcc0a39285d81d9a717357207a114c1fc8384431ac07e673c84fd152865d47a1291b2c00dfd95237a973f3b6069a97ba5d0940ca84')
 
