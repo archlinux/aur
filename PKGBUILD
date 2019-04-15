@@ -8,8 +8,8 @@ else
 _arch="x86"
 fi
 
-_major="11.0.2"
-_minor=90813
+_major="11.1.1"
+_minor=91089
 
 pkgname="komodo-ide"
 _bigname="Komodo-IDE"
@@ -30,8 +30,8 @@ source_x86_64=("${_srcbase}/${_major}/${_bigname}-${_major}-${_minor}-linux-x86_
 
 sha256sums=('beb35ae529bffd998784bc1e51468bf5bf64e5d8f84e3eb2c4af07c8807b101a'
             '7f6efb3d3b8959b9a85aa7056094932686b3aea60880a06a559cf12e1f2e6231')
-sha256sums_i686=('638e3866ec3c0c3114f261be8a607df5b1482a8519bd266e0d2a2cc0ec80c1c2')
-sha256sums_x86_64=('218c5f05a80d8bb9049ead32f4480c2794e5257dc8a5846ea775155e9319f3a3')
+sha256sums_i686=('8cb1acff71138d6a57f1cc51f409a4799d458dd04637d64d122bb838a4cc607d')
+sha256sums_x86_64=('c0ac7d936f36d20d0be304d32dec8880c4fadc8b13bb581b7687860df4fed827')
 
 prepare() {
   cd ${srcdir}/${_bigname}-${_major}-${_minor}-linux-${_arch}
