@@ -1,6 +1,6 @@
 pkgbase = python-kubernetes
 	pkgdesc = Python client for the kubernetes API
-	pkgver = 8.0.1
+	pkgver = 9.0.0
 	pkgrel = 1
 	url = https://github.com/kubernetes-client/python
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = python-kubernetes
 	depends = python-requests
 	depends = python-requests-oauthlib
 	depends = python-adal
-	source = https://files.pythonhosted.org/packages/source/k/kubernetes/kubernetes-8.0.1.tar.gz
-	sha256sums = 25928c6067dd47fd45c2960ecc3199d901cd9faeb9ff511ba7eeced3ecf30a78
+	source = https://files.pythonhosted.org/packages/source/k/kubernetes/kubernetes-9.0.0.tar.gz
+	sha256sums = a8b0aed55ba946faea660712595a52ae53a8854df773d96f47a63fa0c9d4e3bf
 
 pkgname = python-kubernetes
 
