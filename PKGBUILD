@@ -2,8 +2,8 @@
 # Contributor: Eric Griffis <dedbox at gmail dot com>
 
 pkgname=twinejs-standalone
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.3.0
+pkgrel=3
 pkgdesc="an open-source tool for telling interactive, nonlinear stories"
 arch=('x86_64')
 url="http://twinery.org/"
