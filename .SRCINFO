@@ -1,7 +1,7 @@
 pkgbase = python-cheat
 	pkgdesc = Cheat allows you to create and view interactive cheatsheets on the command-line.
 	pkgver = 2.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chrisallenlane/cheat
 	arch = any
 	license = GPL3
