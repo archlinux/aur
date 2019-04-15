@@ -1,6 +1,6 @@
 # Maintainer: Tyler Witten <turtlewit@live.com>
 pkgname=piskel
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A free online editor for animated sprites & pixel art."
 arch=('x86_64')
@@ -9,9 +9,9 @@ license=('Apache')
 depends=('gconf' 'gtk2' 'alsa-lib' 'libxss' 'nss' 'libxtst')
 makedepends=('nodejs-grunt' 'imagemagick')
 options=(!strip)
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/piskelapp/piskel/archive/v0.14.0.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/piskelapp/piskel/archive/v${pkgver}.tar.gz"
 				"Piskel.desktop")
-md5sums=('18fcdaad58efc6f45e85bb474d17607d'
+md5sums=('d36081154a7db582016a5ccad8409425'
          '05e4a9868ef86770de487436a6c42a52')
 
 build() {

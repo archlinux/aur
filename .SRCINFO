@@ -1,6 +1,6 @@
 pkgbase = piskel
 	pkgdesc = A free online editor for animated sprites & pixel art.
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/piskelapp/piskel
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = piskel
 	depends = nss
 	depends = libxtst
 	options = !strip
-	source = piskel-0.14.0.tar.gz::https://github.com/piskelapp/piskel/archive/v0.14.0.tar.gz
+	source = piskel-0.15.0.tar.gz::https://github.com/piskelapp/piskel/archive/v0.15.0.tar.gz
 	source = Piskel.desktop
-	md5sums = 18fcdaad58efc6f45e85bb474d17607d
+	md5sums = d36081154a7db582016a5ccad8409425
 	md5sums = 05e4a9868ef86770de487436a6c42a52
 
 pkgname = piskel
