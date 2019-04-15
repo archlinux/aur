@@ -1,0 +1,17 @@
+pkgbase = goautolock
+	pkgdesc = Killable autolocker for X11
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/mrvik/goautolock
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = go
+	depends = libxss
+	optdepends = jdrive: JDrive main package
+	provides = goautolock
+	source = https://gitlab.com/mrvik/goautolock/-/archive/v1.0.0/goautolock-v1.0.0.tar.gz
+	sha512sums = 045cbc8a8edd60d453fc3df6eceabcb3ed8f812d431e9cc433bd50ddfabc900d75ffe3089a5c6fca983edafaaa96da7f2f0002a30a70f3f451cab11bb19280ce
+
+pkgname = goautolock
+
