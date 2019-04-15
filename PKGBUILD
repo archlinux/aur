@@ -1,33 +1,31 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=wingide
-_wingver=6.1.5
-_wingrel=1
-_wing_patch_lvl=2 #bump this when adding a patch
-pkgver=$_wingver.$_wingrel.$_wing_patch_lvl
+_wingver=7.0.0.11
+_wing_patch_lvl=1 #bump this when adding a patch
+pkgver=$_wingver.$_wing_patch_lvl
 pkgrel=1
 pkgdesc="Wing IDE Professional is the full-featured Python IDE for professional programmers."
 url="http://www.wingware.com"
 license=('custom')
 arch=('x86_64')
-_wingpatch=("fix-pep8-line-format-6.1.5p1-all.tar")
-_patch_url_prefix=http://wingware.com/pub/$pkgname/$_wingver/patches/
-_wingpatch=( "${_wingpatch[@]/#/$_patch_url_prefix}" )
-source=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_wingrel-x86_64-linux.tar.bz2" ${_wingpatch[*]})
+_wingpatch=("")
+_patch_url_prefix=https://wingware.com/pub/wingpro/$_wingver/patches/
+#_wingpatch=( "${_wingpatch[@]/#/$_patch_url_prefix}" )
+source=("https://wingware.com/pub/wingpro/$_wingver/wingpro-$_wingver-linux-x64.tar.bz2" ${_wingpatch[*]})
 depends=('hicolor-icon-theme' 'libpng' 'python2' 'xdg-utils')
 options=(!strip !emptydirs)
-md5sums=('7ff11809aa41aaaf75d7c1c30c5e44ce'
-         'a1893ea754ab80fd5be4dca7dde230ff')
+md5sums=('6d20bc54d6bb83866d2f3d39085e93c2')
 
 install=${pkgname}.install
 
 prepare() {
-    cd "$srcdir/$pkgname-$_wingver-$_wingrel-x86_64-linux"
+    cd "$srcdir/wingpro-$_wingver-linux-x64"
     sed -i 's/python/python2/' wing-install.py
 }
 
 package() {
-    cd "$srcdir/$pkgname-$_wingver-$_wingrel-x86_64-linux"
+    cd "$srcdir/wingpro-$_wingver-linux-x64"
     ./wing-install.py \
         --install-binary \
         --winghome "${pkgdir}/opt/${pkgname}" \
@@ -38,9 +36,9 @@ package() {
     sed -i "s|${pkgdir}||" ${pkgdir}/opt/${pkgname}/wing
 
     # Correct ARCH environment variable
-    sed -i 's|ARCH=`arch`|ARCH=`uname -m`|' ${pkgdir}/opt/wingide/run-wing.sh
+    sed -i 's|ARCH=`arch`|ARCH=`uname -m`|' ${pkgdir}/opt/wingide/bootstrap/run-wing.sh
     # Fix a bug in the script
-    sed -i "s|'x86_64'\]|'x86_64' \]|" ${pkgdir}/opt/wingide/run-wing.sh
+    sed -i "s|'x86_64'\]|'x86_64' \]|" ${pkgdir}/opt/wingide/bootstrap/run-wing.sh
 
     # Copy over patch (if any)
     if [ -d ../patches ]; then
