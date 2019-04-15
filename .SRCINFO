@@ -9,7 +9,7 @@ pkgbase = comma-ide-community
 	depends = java-runtime
 	optdepends = rakudo-star
 	optdepends = rakudo
-	provides = _pkgname
+	provides = comma-ide
 	source = https://commaide.com/download/community/linux
 	sha512sums = 972b7c722622e1184c224d2a405ecda8018ee04789d0b74fab0978a2f14f4b8bb92e41dfdab78176d729951e68064446bdba140c936fa05919b968cead161d77
 
