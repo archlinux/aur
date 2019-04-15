@@ -10,8 +10,9 @@ pkgdesc="A high-level cross-protocol url-grabber and Python library"
 url="http://urlgrabber.baseurl.org/"
 license=('LGPL')
 arch=(any)
-depends=(python2 python2-pycurl)
-source=(http://$pkgname.baseurl.org/download/$pkgname-$pkgver.tar.gz)
+depends=('python2' 'python2-pycurl' 'python2-six')
+makedepends=('python2-setuptools')
+source=("http://$pkgname.baseurl.org/download/$pkgname-$pkgver.tar.gz")
 sha256sums=('d152d10c7decce45ce5b44f8ee8ee5fd0047217f4152eebb8e0c552ca5137af0')
 
 package() {
