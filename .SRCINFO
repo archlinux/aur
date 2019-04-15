@@ -1,0 +1,19 @@
+pkgbase = hipipe
+	pkgdesc = Super fast C++17 data transformation pipeline (with Python interface).
+	pkgver = 0.6.0
+	pkgrel = 0
+	url = https://github.com/iterait/hipipe
+	arch = any
+	license = custom
+	makedepends = cmake
+	makedepends = git
+	depends = boost
+	depends = opencv
+	depends = python
+	depends = python-numpy
+	depends = range-v3
+	source = https://github.com/iterait/hipipe/archive/v0.6.0.tar.gz
+	sha512sums = 97758f39e0973d6c8c402d6980c253059652e0e2bd4b509852f8f7d2ca7ec8cbf80c07b0ae9ba759ffbba160bbe206fd05a494b8354bda1718132dcac6aecf66
+
+pkgname = hipipe
+
