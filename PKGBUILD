@@ -1,9 +1,7 @@
 # Maintainer: robertfoster
 # Contributor: Robert Booster > booster.devel@gmail.com
 pkgbase=python-gmusicapi
-pkgname=(
-#'python2-gmusicapi'
-'python-gmusicapi')
+pkgname=('python2-gmusicapi' 'python-gmusicapi')
 pkgver="12.0.0"
 pkgrel=1
 pkgdesc="An unofficial client library for Google Music"
