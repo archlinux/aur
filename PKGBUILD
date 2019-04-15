@@ -7,7 +7,7 @@
 pkgbase=awl
 pkgname=('awl' 'awl-docs')
 pkgver=0.60
-pkgrel=2
+pkgrel=3
 pkgdesc="Andrew's Web Libraries"
 arch=('any')
 url="https://gitlab.com/davical-project/awl/"
@@ -28,7 +28,15 @@ package_awl() {
     cd "${srcdir}/${pkgbase}-r${pkgver}-"*
 
     # create directory
-    install -D -dm755 "${pkgdir}/usr/share/${pkgbase}"
+    mkdir -p "${pkgdir}/usr/share/${pkgbase}"
+
+    # update package version
+    sed -s \
+      "/^ *.c->awl_library_version *=.*$/ s/^ *.c->awl_library_version *=.*$/\$c->awl_library_version = ${pkgver};/" \
+      inc/AWLUtilities.php.in > inc/AWLUtilities.php
+
+    # remove template
+    rm -f inc/AWLUtilities.php.in
 
     # install package
     cp -ra dba inc "${pkgdir}/usr/share/${pkgbase}"
@@ -42,10 +50,13 @@ package_awl-docs() {
     cd "${srcdir}/${pkgbase}-r${pkgver}-"*
 
     # create directory
-    install -D -dm755 "${pkgdir}/usr/share/doc/${pkgbase}"
+    mkdir -p "${pkgdir}/usr/share/doc/${pkgbase}"
 
     # build documentation
-    sed 's/^STRIP_FROM_PATH.*/STRIP_FROM_PATH = ..\//' docs/Doxyfile | doxygen -
+    sed \
+      -e 's/^STRIP_FROM_PATH.*/STRIP_FROM_PATH = ..\//' \
+      -e "s/^PROJECT_NUMBER.*/PROJECT_NUMBER = ${pkgver}/" \
+      docs/Doxyfile | doxygen -
 
     # install package documentation
     cp -ra docs/api/* "${pkgdir}/usr/share/doc/${pkgbase}"
