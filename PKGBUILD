@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/iterait/hipipe'
 license=('custom')
 depends=('boost' 'opencv' 'python' 'python-numpy' 'range-v3')
-makedepends=('cmake' 'git')
+makedepends=('cmake')
 source=("https://github.com/iterait/hipipe/archive/v${pkgver}.tar.gz")
 sha512sums=('97758f39e0973d6c8c402d6980c253059652e0e2bd4b509852f8f7d2ca7ec8cbf80c07b0ae9ba759ffbba160bbe206fd05a494b8354bda1718132dcac6aecf66')
 
