@@ -7,7 +7,7 @@
 
 pkgname=caddy-git
 _pkgname=caddy
-pkgver=20190311.e6a3e5e1
+pkgver=20190412.605787f6
 pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 url='https://caddyserver.com/'
@@ -34,31 +34,20 @@ pkgver() {
 }
 
 prepare() {
-	cd "${srcdir}"
-
-	_cargo=build/src
-	_gopkg=github.com/mholt/caddy
-	export GOPATH="${srcdir}/build"
-
-	git clone caddy "${_cargo}/${_gopkg}"
-#	sed '/^import/a\
-#_ "github.com/jung-kurt/caddy-cgi"\
-#_ "github.com/captncraig/caddy-realip"\
-#' \
-#	-i "${_cargo}/${_gopkg}/caddy/caddymain/run.go"
-	go get -v -d "${_gopkg}/caddy/caddymain"
+	cd "${srcdir}/caddy"
+	go get -v -d
 }
 
 build() {
-	cd "${srcdir}"
-	export GOPATH="${srcdir}/build"
-	go build -v -o build/caddy github.com/mholt/caddy/caddy
+	cd "${srcdir}/caddy"
+	cd caddy
+	go run build.go
 }
 
 package() {
-	cd "${srcdir}"
-	install -D -m 0755 build/caddy "${pkgdir}/usr/bin/caddy"
-	install -D -m 0644 tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/caddy.conf"
-	install -D -m 0644 service "${pkgdir}/usr/lib/systemd/system/caddy.service"
-	install -D -m 0644 conf "${pkgdir}/etc/caddy.conf"
+	cd "${srcdir}/caddy"
+	install -D -m 0755 caddy/caddy "${pkgdir}/usr/bin/caddy"
+	install -D -m 0644 ../tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/caddy.conf"
+	install -D -m 0644 ../service "${pkgdir}/usr/lib/systemd/system/caddy.service"
+	install -D -m 0644 ../conf "${pkgdir}/etc/caddy.conf"
 }
