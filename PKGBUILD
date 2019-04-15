@@ -34,7 +34,7 @@ prepare() {
 	  g++ -c -std=gnu++11 -I. -fPIC ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o Backend.o Backend.cpp
 	  g++ -c -std=gnu++11 -I. -fPIC ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o VSFrontend.o VSFrontend.cpp
 	  g++ -c -std=gnu++11 -I. -fPIC ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o AVSrontend.o AVSFrontend.cpp
-	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so *.o" > Makefile
+	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so Backend.o VSFrontend.o AVSrontend.o" > Makefile
 }
 
 build() {
