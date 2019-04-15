@@ -31,7 +31,7 @@ prepare() {
 	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o IsCombedTIVTCport.o IsCombedTIVTCport.cpp
 	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o PlaneDifferenceFromPrevious.o PlaneDifferenceFromPrevious.cpp
 	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o PluginInit.o PluginInit.cpp
-	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so *.o" > Makefile
+	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so IsCombedTIVTCport.o PlaneDifferenceFromPrevious.o PluginInit.o" > Makefile
 }
 
 build() {
