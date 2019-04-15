@@ -1,13 +1,13 @@
 pkgbase = r-colorspace
 	pkgdesc = A Toolbox for Manipulating and Assessing Colors and Palettes
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/colorspace/index.html
 	arch = x86_64
 	license = GPL3
 	depends = r
-	source = http://cran.r-project.org/src/contrib/colorspace_1.4-0.tar.gz
-	md5sums = 121120c1686dddd41f7fe4c176565216
+	source = http://cran.r-project.org/src/contrib/colorspace_1.4-1.tar.gz
+	md5sums = 58844479445679a47b5baf227d2a0186
 
 pkgname = r-colorspace
 
