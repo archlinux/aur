@@ -1,7 +1,7 @@
 pkgbase = spotifyd
 	pkgdesc = A spotify playing daemon
 	pkgver = 0.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Spotifyd/spotifyd
 	arch = x86_64
 	arch = armv7h
@@ -27,6 +27,12 @@ pkgname = spotifyd-dbus-mpris
 	pkgdesc = A spotify playing daemon, with D-Bus MPRIS
 	depends = alsa-lib
 	depends = libogg
+	depends = dbus
+	conflicts = spotifyd
+
+pkgname = spotifyd-full
+	pkgdesc = A spotify playing daemon, with all Linux features enabled
+	depends = libpulse
 	depends = dbus
 	conflicts = spotifyd
 

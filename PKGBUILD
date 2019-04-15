@@ -3,9 +3,9 @@
 # Contributor: Florian Klink <flokli@flokli.de>
 
 pkgbase=spotifyd
-pkgname=('spotifyd' 'spotifyd-pulseaudio' 'spotifyd-dbus-mpris')
+pkgname=('spotifyd' 'spotifyd-pulseaudio' 'spotifyd-dbus-mpris' 'spotifyd-full')
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('GPL3')
 depends=('alsa-lib' 'libogg' 'gcc-libs')
@@ -14,6 +14,11 @@ pkgdesc="A spotify playing daemon"
 url="https://github.com/Spotifyd/$pkgbase"
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/Spotifyd/$pkgbase/archive/v$pkgver.tar.gz")
 sha256sums=('88d1e5ab60688b5505240b32a1a933e657cc239168057800c838f5fcd0e12c22')
+_features=(''
+  'pulseaudio_backend'
+  'dbus_mpris'
+  'pulseaudio_backend,dbus_mpris,dbus_keyring'
+)
 
 prepare() {
   cd "$srcdir/spotifyd-$pkgver"
@@ -23,7 +28,7 @@ build() {
   cd "$srcdir/spotifyd-$pkgver"
   # Compile all variants. Compilation for later features can reuse
   # previous build artifacts, so little overhead.
-  for feature in "" pulseaudio_backend dbus_mpris; do
+  for feature in "${_features[@]}"; do
     cargo build --release --locked --features "$feature"
   done
 }
@@ -51,4 +56,11 @@ package_spotifyd-dbus-mpris() {
   conflicts=(spotifyd)
   pkgdesc="$pkgdesc, with D-Bus MPRIS"
   _package_feature dbus_mpris
+}
+
+package_spotifyd-full() {
+  depends=(libpulse dbus)
+  conflicts=(spotifyd)
+  pkgdesc="$pkgdesc, with all Linux features enabled"
+  _package_feature "${_features[3]}"
 }
