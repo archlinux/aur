@@ -1,26 +1,20 @@
-
-# Maintainer: kryptxy <kryptxy@protonmail.com>
-
+# Maintainer: Ashley Stewart <a.stewart.au@gmail.com>
 pkgname=torrench
-pkgver=1.0.61
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="A simple command-line torrent search program"
+pkgdesc="Command-line torrent search tool"
+url="https://github.com/astewartau/torrench"
+license=('GPL-3.0')
 arch=('any')
-url="https://github.com/kryptxy/torrench"
-license=('GPL')
-depends=("python-tabulate" "python-setuptools" "python-beautifulsoup4" "python-lxml" "python-requests" 
-"python-colorama" "python-pyperclip" "xclip")
+depends=('python-requests' 'python-beautifulsoup4' 'python-lxml' 'python-tabulate' 'python-termcolor')
 provides=("torrench")
 conflicts=("torrench")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('SKIP')
-
-build() {
-	cd "${pkgname}-${pkgver}"
-	python setup.py build	
-}
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/v$pkgver.tar.gz")
+md5sums=('5ecea4e6e6f85567413f3625c72d9154')
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	python setup.py install --root="${pkgdir}" --optimize=1
+  mkdir -p "$pkgdir/opt"
+  cp -r "torrench-$pkgver" "$pkgdir/opt/torrench"
+  mkdir -p "$pkgdir/usr/local/bin"
+  ln -s "/opt/torrench/data/torrench.py" "$pkgdir/usr/local/bin/torrench"
 }
