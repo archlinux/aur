@@ -1,5 +1,5 @@
 pkgname=workbox
-pkgver=4.1.1
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Utility to help create Progressive Web Apps"
 arch=(any)
@@ -9,7 +9,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/workbox-cli/-/workbox-cli-$pkgver.tgz)
 noextract=(workbox-cli-$pkgver.tgz)
-sha512sums=(f7a7fa24e45517c51050e3cfbdddcbc00027547ef6c73d129fcd83b83f67dbe4b2a229e46fc1895b51a0b298c897cc159b37e9733b5311db556129468fb1011a)
+sha512sums=(29c2c33b4199457a54e0de945ea9daef4b6216e77a02036a698ecf2dae8977e40dbb154861508971b4765d17ab38bbddb0a147a099bf278df8fca1ef5180a6a3)
 
 package() {
   cd $srcdir
