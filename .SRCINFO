@@ -1,0 +1,30 @@
+pkgbase = sysrepo
+	pkgdesc = YANG-based configuration and operational state data store for Unix/Linux applications
+	pkgver = 0.7.7
+	pkgrel = 1
+	url = http://www.sysrepo.org/
+	arch = any
+	license = Apache
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = doxygen
+	makedepends = swig
+	depends = libyang
+	depends = protobuf-c
+	depends = libev
+	depends = libredblack
+	depends = libssh
+	optdepends = netopeer2: for remote management via NETCONF
+	provides = sysrepo
+	conflicts = sysrepo
+	source = https://github.com/sysrepo/sysrepo/archive/v0.7.7.tar.gz
+	source = 000-disable-lua-bindings.patch
+	source = 001-sysrepoctl-install-yang.patch
+	sha256sums = 2bf8cb4d810d19231eba1e549f58f3a0ce068d170a5e7b212b927396098560e4
+	sha256sums = 6b8b4e6fb9b9ca1818720b01ebdcd291a7db8436a0a1f953ae360e6e1f6dbecd
+	sha256sums = c5ff55779fb64e271dee2b873f304de18126717649d64b89681bc1cbe1e51aab
+
+pkgname = sysrepo
+

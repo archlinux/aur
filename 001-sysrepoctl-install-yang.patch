@@ -1,0 +1,57 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a14e409..68a2b5c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -310,7 +310,7 @@ install (FILES ${INTERNAL_YANGS} DESTINATION ${INTERNAL_SCHEMA_SEARCH_DIR})
+ 
+ # install NACM YANG module
+ if(ENABLE_NACM)
+-    INSTALL_YANG("ietf-netconf-acm" "@2018-02-14" "644")
++    #INSTALL_YANG("ietf-netconf-acm" "@2018-02-14" "644")
+ endif(ENABLE_NACM)
+ 
+ find_package(PkgConfig QUIET)
+@@ -334,9 +334,9 @@ if(WITH_SYSTEMD)
+         FILES_MATCHING PATTERN "*.service")
+ endif()
+ 
+-INSTALL_YANG("ietf-netconf-notifications" "" "666")
+-INSTALL_YANG("nc-notifications" "" "666")
+-INSTALL_YANG("notifications" "" "666")
++#INSTALL_YANG("ietf-netconf-notifications" "" "666")
++#INSTALL_YANG("nc-notifications" "" "666")
++#INSTALL_YANG("notifications" "" "666")
+ 
+ # uninstall
+ add_custom_target(uninstall "${CMAKE_COMMAND}" -P "${CMAKE_MODULE_PATH}/uninstall.cmake")
+diff --git a/examples/CMakeLists.txt b/examples/CMakeLists.txt
+index e5916ca..50c3b8d 100644
+--- a/examples/CMakeLists.txt
++++ b/examples/CMakeLists.txt
+@@ -49,7 +49,7 @@ macro(INSTALL_EXAMPLE_YANG MODULE_NAME REVISION)
+     EXEC_AT_INSTALL_TIME(${CMD})
+ endmacro(INSTALL_EXAMPLE_YANG)
+ 
+-INSTALL_EXAMPLE_YANG("turing-machine" "")
+-INSTALL_EXAMPLE_YANG("iana-if-type" "")
+-INSTALL_EXAMPLE_YANG("ietf-ip" "@2014-06-16")
+-INSTALL_EXAMPLE_YANG("ietf-interfaces" "@2014-05-08")
++#INSTALL_EXAMPLE_YANG("turing-machine" "")
++#INSTALL_EXAMPLE_YANG("iana-if-type" "")
++#INSTALL_EXAMPLE_YANG("ietf-ip" "@2014-06-16")
++#INSTALL_EXAMPLE_YANG("ietf-interfaces" "@2014-05-08")
+diff --git a/swig/CMakeLists.txt b/swig/CMakeLists.txt
+index 50121d8..664ad76 100644
+--- a/swig/CMakeLists.txt
++++ b/swig/CMakeLists.txt
+@@ -148,8 +148,8 @@ if(GEN_CPP_BINDINGS)
+                 VERBATIM)
+             endmacro(INSTALL_YANG)
+ 
+-            INSTALL_YANG("swig-test-cpp-changes"    "2017-03-09")
+-            INSTALL_YANG("swig-test-cpp-operations" "2017-03-09")
++            #INSTALL_YANG("swig-test-cpp-changes"    "2017-03-09")
++            #INSTALL_YANG("swig-test-cpp-operations" "2017-03-09")
+         endif()
+     endif()
+ endif()
