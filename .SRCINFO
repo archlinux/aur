@@ -1,10 +1,11 @@
 pkgbase = ndt
 	pkgdesc = The Network Diagnostic Tool (NDT) is a client/server program that provides network configuration and performance testing
 	pkgver = 3.7.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.internet2.edu/performance/ndt/index.html
 	arch = x86_64
 	license = BSD
+	makedepends = i2util
 	depends = jopenchart
 	depends = openssl
 	depends = jansson
