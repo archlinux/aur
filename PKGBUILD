@@ -5,7 +5,7 @@ _pkgsrcname=cider
 _pkgmaintainer=clojure-emacs
 _pkgdestdirname=cider
 _versionprefix=v
-pkgver=0.21.0r11.g62134b4f
+pkgver=0.21.0.r47.gd5b4bfcb
 pkgrel=1
 pkgdesc="The Clojure Interactive Development Environment that Rocks for Emacs"
 pkgname=emacs-${_pkgdestdirname}-git
@@ -21,7 +21,7 @@ install=${pkgname%-git}.install
 
 pkgver() {
   cd ${_pkgsrcname}
-  git describe --tags|sed 's+-+r+'|tr - .|cut -c2-
+  git describe --tags|sed 's+-+.r+'|tr - .|cut -c2-
 }
 
 build() {
