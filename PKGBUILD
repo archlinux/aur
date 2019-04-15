@@ -1,27 +1,27 @@
 # Maintainer: Sven Frenzel <aur@frenzel.dk>
 
-pkgname="lidarr"
-pkgver="0.6.0.815"
+pkgname='lidarr'
+pkgver='0.6.0.815'
 pkgrel=1
-pkgdesc="Music downloader for usenet and torrents."
+pkgdesc='Music downloader for usenet and torrents.'
 arch=(any)
-url="https://github.com/lidarr/Lidarr"
-license=("GPL3")
-depends=("mono" "libmediainfo" "sqlite" 'chromaprint')
-optdepends=("sabnzbd: usenet downloader"
-            "nzbget: usenet downloader"
-            "transmission-cli: torrent downloader (CLI and daemon)"
-            "transmission-gtk: torrent downloader (GTK+)"
-            "transmission-qt: torrent downloader (Qt)"
-            "deluge: torrent downloader"
-            "rtorrent: torrent downloader"
-            "jackett: torrent indexer proxy"
-            "libgdiplus: provides a gdi+ compatible api")
+url='https://github.com/lidarr/Lidarr'
+license=('GPL3')
+depends=('mono' 'libmediainfo' 'sqlite' 'chromaprint')
+optdepends=('sabnzbd: usenet downloader'
+            'nzbget: usenet downloader'
+            'transmission-cli: torrent downloader (CLI and daemon)'
+            'transmission-gtk: torrent downloader (GTK+)'
+            'transmission-qt: torrent downloader (Qt)'
+            'deluge: torrent downloader'
+            'rtorrent: torrent downloader'
+            'jackett: torrent indexer proxy'
+            'libgdiplus: provides a gdi+ compatible api')
 
 source=("https://github.com/lidarr/Lidarr/releases/download/v${pkgver}/Lidarr.develop.${pkgver}.linux.tar.gz"
-        "lidarr.service"
-        "lidarr.tmpfiles"
-        "lidarr.sysusers")
+        'lidarr.service'
+        'lidarr.tmpfiles'
+        'lidarr.sysusers')
 
 sha512sums=('fc3e810cab8a2960794b9c7b2faec0fa7fa361eae1a5eead5b5cc1f7f58383471129474f282deedf990d8db7389b3c4e5913a3eea1cb52c908a2f91627c89e39'
             'e339ad3fe7d7569d65346309ffa69ea5f68001a45ae6e1a494e786fc4711a189f38cd73bb4d9bafdb3e5315a625f1c25301804473830418d8284192cb0c04c84'
