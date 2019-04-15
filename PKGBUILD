@@ -8,7 +8,7 @@ pkgname=android-${_android_arch}-libvorbis
 pkgver=1.3.6
 pkgrel=1
 pkgdesc="Vorbis codec library (android)"
-arch=(any)
+arch=('any')
 url="http://xiph.org"
 license=('custom')
 depends=("android-${_android_arch}-libogg")
@@ -50,6 +50,6 @@ package() {
 
     make DESTDIR="$pkgdir" install
     rm -r "${pkgdir}"/${ANDROID_LIBS}/share/doc
-    ${ANDROID_STRIP} "${pkgdir}"/${ANDROID_LIBS}/lib/*.so
-    ${ANDROID_STRIP} "$pkgdir"/${ANDROID_LIBS}/lib/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_LIBS}/lib/*.so
+    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_LIBS}/lib/*.a
 }
