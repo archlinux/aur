@@ -21,21 +21,21 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_plug}/src"
+  cd "${_plug}"
 
   echo "all:
-	  gcc -c -fPIC -Wall -Wextra -Wno-unused-parameter ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o wwxd.o wwxd.c
-	  gcc -c -fPIC -Wall -Wextra -Wno-unused-parameter ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o detection.o detection.c
+	  gcc -c -fPIC -Wall -Wextra -Wno-unused-parameter ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o wwxd.o src/wwxd.c
+	  gcc -c -fPIC -Wall -Wextra -Wno-unused-parameter ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o detection.o src/detection.c
 	  gcc -shared -fPIC ${LDFLAGS} -o lib${_plug}.so wwxd.o detection.o" > Makefile
 }
 
 build() {
-  make -C "${_plug}/src"
+  make -C "${_plug}"
 }
 
 package(){
   cd "${_plug}"
-  install -Dm755 "src/lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
+  install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
 
   install -Dm644 readme "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme"
 }
