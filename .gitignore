@@ -3,4 +3,5 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-
+!setup.patch
+!setup.patch.sig

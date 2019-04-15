@@ -1,0 +1,10 @@
+--- old/setup.py	2019-04-15 19:51:29.139350421 +0200
++++ new/setup.py	2019-04-15 19:52:19.150320715 +0200
+@@ -24,7 +24,6 @@
+     'pyparsing',
+     'future',
+     'six',
+-    'configparser',
+     'chardet',
+ ]
+ 

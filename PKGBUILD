@@ -23,13 +23,24 @@ makedepends=('python-mock' 'python-netaddr' 'python-pip' 'python-sphinx' 'git' '
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-source=("git+$url.git#branch=dev")
-sha256sums=('SKIP')
+source=("git+$url.git#branch=dev"
+        'setup.patch.sig'
+        'setup.patch')
+sha256sums=('SKIP'
+            'SKIP'
+            'fe63e8013e4fb647decd53e7c625798df74d0d6163b26c5e2a4bc77e3245727b')
+validpgpkeys=('7A194E3F7A8F867BEA8A5339023F078862ACFE50')
+
+prepare() {
+  cd "${pkgname/-git}"
+  # since configparser is included in CPython 3, we don't require it any longer
+  patch -Np1 -i ../setup.patch
+}
 
 build() {
   cd "${pkgname/-git}/docs"
   python conf.py
-  make man html
+  make SPHINXOPTS='-Q -j auto' man html
 }
 
 package() {
