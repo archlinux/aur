@@ -1,13 +1,13 @@
 pkgbase = pact
 	pkgdesc = Interpreter for the Pact Smart Contract Language.
 	pkgver = 2.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kadena.io/pact
 	arch = x86_64
 	license = BSD 3-Clause
 	depends = gmp
 	depends = z3
-	source = https://kadena.io/pact/builds/2.6.1/ubuntu-1204/pact-2.6.1-linux.zip
+	source = https://install.kadena.io/pact/builds/2.6.1/ubuntu-1204/pact-2.6.1-linux.zip
 	md5sums = 6e03975b9f524527c3a320e9aa2b1d13
 
 pkgname = pact
