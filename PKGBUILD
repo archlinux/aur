@@ -12,7 +12,7 @@ depends=('emacs')
 makedepends=('git')
 provides=('emacs-company-mode')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/company-mode/company-mode/archive/${pkgver}.tar.gz")
-sha256sums=('fc9a6fb2328ce5017386ff9888ee11ba6d1bcaadf6e13b07e47c355edb612d96')
+sha256sums=('2308632ad0936dcf8bedc5748f97965348ca285b0a6248bd4c3ac9c9b29d8e82')
 
 build() {
   cd company-mode-${pkgver}
