@@ -1,3 +1,17 @@
+ChangeLog
+
+version 1.6 / 17-Aug-2015
+
+	* tcllauncher::demonize when invoked with the -noclose option will still
+	  redirect any stdio files (stdin, stdout, stderr) to/from /dev/null if
+	  the corresponding stdio handle does not exist.
+
+	* clean and distclean make targets fixed/improved
+
+	* configure script now included in distribution
+
+	* remove all reference to Windows
+
 version 1.5 / 3-Oct-2014
 
 	* tcllauncher no longer generates or references a shared library.
@@ -90,4 +104,3 @@ version 1.0 / 18-Mar-2008
 
 	* Using $(COMPILE) instead of $(CC) for compiling the main routine
 	  makes it work on FreeBSD as well as the Mac.
-
