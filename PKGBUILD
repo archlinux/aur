@@ -1,7 +1,8 @@
 # Maintainer: Stephen Cox: stephencoxmail -at- gmail com
 # Contributor: Ignat Harczuk: ignathe -at- gmail com
 # Contributor: Mark Wells: mwellsa -at- gmail com
-# Contributor: simone riva: siomone.rva -a- gmail com
+# Contributor: Simone Riva: siomone.rva -a- gmail com
+# Contributor: Hamada Badr: hamada.s.badr -a- gmail com
 # Intel Parallel Studio XE 2019 for Linux - ( Intel compiler icc suite )
 ##########################################################################
 # this PKGBUILD splits the main Parallel Studio XE package in 9 sub-packages:
@@ -53,33 +54,33 @@ _remove_static_objects_ipp=false
 ########################################
 
 _year='2019'
-_v_a='2'
-_v_b='187'
+_v_a='3'
+_v_b='199'
 # year, version a and version b found in /opt/intel/compilers_and_libraries_YEAR_A_B
 
-_update='2'
+_update='3'
 
 pkgrel=1
 
 
 _sp='cluster_edition'
-_icc_ver='19.0.2'
-_mpi_ver='2019.2.187'
-_mkl_ver='2019.2.187'
-_tbb_ver='2019.2.187'
-_vtune_ver='2019.2.0.588069'
-_inspector_ver='2019.2.0.588057'
-_advisor_ver='2019.2.0.588361'
+_icc_ver='19.0.3'
+_mpi_ver='2019.3.199'
+_mkl_ver='2019.3.199'
+_tbb_ver='2019.3.199'
+_vtune_ver='2019.3.0.590814'
+_inspector_ver='2019.3.0.590798'
+_advisor_ver='2019.3.0.591264'
 
-_vtune_man_ver='2019.2.0.588069'
-_inspector_man_ver='2019.2.0.588057'
-_advisor_man_ver='2019.2.0.588361'
+_vtune_man_ver='2019.3.0.590814'
+_inspector_man_ver='2019.3.0.590798'
+_advisor_man_ver='2019.3.0.591264'
 
 
 pkgver=${_year}.${_v_a}.${_v_b}
 
-_dir_nr='15088'
-_mpi_dir_nr='15040'
+_dir_nr='15268'
+_mpi_dir_nr='15260'
 
 options=(strip libtool staticlibs)
 
@@ -113,8 +114,8 @@ source=(
 )
 
 
-sha256sums=('8c526bdd95d1da454e5cada00f7a2353089b86d0c9df2088ca7f842fe3ff4cae'
-            '6a3305933b5ef9e3f7de969e394c91620f3fa4bb815a4f439577739d04778b20'
+sha256sums=('b5b022366d6d1a98dbb63b60221c62bc951c9819653ad6f5142192e89f78cf63'
+            '5304346c863f64de797250eeb14f51c5cfc8212ff20813b124f20e7666286990'
             '75fcdfc246949341afddcf51b2037f606f25612a04c199ac1a743247aa7c4ea5'
             '278f9545d14c1fbec737bbfbcafb1b9090d35aab0dfeddc99d4c6e296b56057b'
             'e3103fb1c5e2ec9f0cc4090abb7e273563e735d88e185f527c66b2aebd52e733'
