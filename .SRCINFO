@@ -1,6 +1,6 @@
 pkgbase = helmsman-git
 	pkgdesc = Helmsman upstream
-	pkgver = v1.4.0.rc.r0.d7d3aa8
+	pkgver = 1.8.1.r8.gbe24069
 	pkgrel = 1
 	url = https://github.com/Praqma/helmsman
 	arch = x86_64

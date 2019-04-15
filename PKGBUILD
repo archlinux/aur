@@ -1,6 +1,6 @@
 # Maintainer: Javier Domingo Cansino <javierdo1@gmail.com>
 pkgname=helmsman-git
-pkgver=v1.4.0.rc.r0.d7d3aa8
+pkgver=1.8.1.r8.gbe24069
 pkgrel=1
 pkgdesc="Helmsman upstream"
 arch=('x86_64')
@@ -15,7 +15,7 @@ _gourl=github.com/Praqma/helmsman
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 prepare() {
