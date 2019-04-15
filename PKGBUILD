@@ -5,12 +5,12 @@ pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-cuda")
 _pkgname="pytorch"
 pkgver=1.0.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
-depends=('python' 'python-yaml' 'python-numpy' 'opencv' 'nccl')
+depends=('opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'python-numpy')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'cudnn' 'git')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver")
 sha256sums=('SKIP')
@@ -69,21 +69,38 @@ package_python-pytorch() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
   # put CMake files in correct place
   install -d "${pkgdir}/usr/lib/cmake"
-  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/share/cmake"/* \
+  pytorchpath="usr/lib/python$(get_pyver)/site-packages/torch"
+  mv "${pkgdir}/${pytorchpath}/share/cmake"/* \
      "${pkgdir}/usr/lib/cmake/"
   # put C++ API in correct place
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/include"
-  install -d "${pkgdir}/usr/lib"
-  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib/include"/* \
-     "${pkgdir}/usr/include/"
-  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib/THCUNN.h" \
-     "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib/THNN.h" \
-     "${pkgdir}/usr/include/"
-  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib"/*.so \
-     "${pkgdir}/usr/lib/"
-  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib"/torch_shm_manager \
-     "${pkgdir}/usr/bin/"
+  install -d "${pkgdir}/usr/lib/pytorch"
+  torchlibpath="${pytorchpath}/lib"
+  mv "${pkgdir}/${torchlibpath}/include"/* "${pkgdir}/usr/include/"
+  mv "${pkgdir}/${torchlibpath}/THCUNN.h" "${pkgdir}/usr/include/"
+  mv "${pkgdir}/${torchlibpath}/THNN.h" "${pkgdir}/usr/include/"
+  mv "${pkgdir}/${torchlibpath}"/*.so* "${pkgdir}/usr/lib/pytorch/"
+  mv "${pkgdir}/${torchlibpath}/torch_shm_manager" "${pkgdir}/usr/bin/"
+  # clean up duplicates
+  # TODO: move towards direct shared library dependecy of:
+  #   c10, caffe2, libcpuinfo, CUDA RT, gloo, GTest, Intel MKL,
+  #   NVRTC, ONNX, protobuf, libthreadpool, QNNPACK
+  rm -rf "${pkgdir}/${pytorchpath}/share/cmake"
+  rm -rf "${pkgdir}/${torchlibpath}/include"
+  rm -rf "${pkgdir}/usr/include/pybind11"
+  rm -rf "${pkgdir}/usr/lib/pytorch/libiomp5.so"  # remove openmp lib
+  # python module is hardcoded to look there at runtime
+  ln -s /usr/include/THCUNN.h "${pkgdir}/${torchlibpath}/"
+  ln -s /usr/include/THNN.h "${pkgdir}/${torchlibpath}/"
+  ln -s /usr/include "${pkgdir}/${torchlibpath}/include"
+  find "${pkgdir}"/usr/lib/pytorch -type f -name "*.so*" -print0 | while read -rd '' _lib; do
+    ln -s ${_lib#"$pkgdir"} "${pkgdir}/${torchlibpath}/"
+  done
+  ln -s /usr/bin/torch_shm_manager "${pkgdir}/${torchlibpath}/torch_shm_manager"
+  # ldconfig
+  install -d "${pkgdir}/etc/ld.so.conf.d"
+  echo '/usr/lib/pytorch' > "${pkgdir}/etc/ld.so.conf.d/pytorch.conf"
 }
 
 package_python-pytorch-cuda() {
@@ -95,21 +112,38 @@ package_python-pytorch-cuda() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
   # put CMake files in correct place
   install -d "${pkgdir}/usr/lib/cmake"
-  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/share/cmake"/* \
+  pytorchpath="usr/lib/python$(get_pyver)/site-packages/torch"
+  mv "${pkgdir}/${pytorchpath}/share/cmake"/* \
      "${pkgdir}/usr/lib/cmake/"
   # put C++ API in correct place
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/include"
-  install -d "${pkgdir}/usr/lib"
-  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib/include"/* \
-     "${pkgdir}/usr/include/"
-  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib/THCUNN.h" \
-     "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib/THNN.h" \
-     "${pkgdir}/usr/include/"
-  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib"/*.so \
-     "${pkgdir}/usr/lib/"
-  mv "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/torch/lib"/torch_shm_manager \
-     "${pkgdir}/usr/bin/"
+  install -d "${pkgdir}/usr/lib/pytorch"
+  torchlibpath="${pytorchpath}/lib"
+  mv "${pkgdir}/${torchlibpath}/include"/* "${pkgdir}/usr/include/"
+  mv "${pkgdir}/${torchlibpath}/THCUNN.h" "${pkgdir}/usr/include/"
+  mv "${pkgdir}/${torchlibpath}/THNN.h" "${pkgdir}/usr/include/"
+  mv "${pkgdir}/${torchlibpath}"/*.so* "${pkgdir}/usr/lib/pytorch/"
+  mv "${pkgdir}/${torchlibpath}/torch_shm_manager" "${pkgdir}/usr/bin/"
+  # clean up duplicates
+  # TODO: move towards direct shared library dependecy of:
+  #   c10, caffe2, libcpuinfo, CUDA RT, gloo, GTest, Intel MKL,
+  #   NVRTC, ONNX, protobuf, libthreadpool, QNNPACK
+  rm -rf "${pkgdir}/${pytorchpath}/share/cmake"
+  rm -rf "${pkgdir}/${torchlibpath}/include"
+  rm -rf "${pkgdir}/usr/include/pybind11"
+  rm -rf "${pkgdir}/usr/lib/pytorch/libiomp5.so"  # remove openmp lib
+  # python module is hardcoded to look there at runtime
+  ln -s /usr/include/THCUNN.h "${pkgdir}/${torchlibpath}/"
+  ln -s /usr/include/THNN.h "${pkgdir}/${torchlibpath}/"
+  ln -s /usr/include "${pkgdir}/${torchlibpath}/include"
+  find "${pkgdir}"/usr/lib/pytorch -type f -name "*.so*" -print0 | while read -rd '' _lib; do
+    ln -s ${_lib#"$pkgdir"} "${pkgdir}/${torchlibpath}/"
+  done
+  ln -s /usr/bin/torch_shm_manager "${pkgdir}/${torchlibpath}/torch_shm_manager"
+  # ldconfig
+  install -d "${pkgdir}/etc/ld.so.conf.d"
+  echo '/usr/lib/pytorch' > "${pkgdir}/etc/ld.so.conf.d/pytorch.conf"
 }
 
 # vim:set ts=2 sw=2 et:
