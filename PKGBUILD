@@ -2,9 +2,9 @@
 # Contributor: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-plumed
-pkgver=2018.4
-_gromacsver=2018.4
-_plumedver=2.5.0
+pkgver=2018.6
+_gromacsver=2018.6
+_plumedver=2.5.1
 pkgrel=1
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)'
 url='http://www.gromacs.org/'
@@ -14,19 +14,10 @@ depends=('lapack' 'zlib' "plumed>=${_plumedver}")
 optdepends=('cuda: Nvidia GPU support'
             'opencl-mesa: OpenCL support for AMD GPU'
 	    'opencl-nvidia: OpenCL support for Nvidia GPU')
-makedepends=('cmake' 'libxml2' 'hwloc' 'gcc7')
+makedepends=('cmake' 'libxml2' 'hwloc')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-sha1sums=('2ee68c3ef3176991238bb36445de0f48c34af78b')
-
-# Comment the following lines if no gromacs with CUDA support is needed 
-# In order to use CUDA 10 we need to use gcc7.
-export CC=gcc-7
-export CXX=g++-7
-export CFLAGS="-march=native -O2 -pipe -fstack-protector-strong"
-export CXXFLAGS="${CFLAGS}"
-# ! For machines requiring CUDA 8 use gcc5 instead
-
+sha1sums=('2d47ff8fa96e8efd7a9cfae2776af7cd587ee92f')
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
@@ -48,6 +39,7 @@ build() {
         -DBUILD_SHARED_LIBS=OFF \
         -DGMX_PREFER_STATIC_LIBS=ON \
         -DGMX_BUILD_MDRUN_ONLY=ON
+        #-DGMX_SIMD=AVX2_256 \
   make
 }
 
