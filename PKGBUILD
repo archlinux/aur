@@ -4,8 +4,8 @@
 
 pkgname="aptana-studio"
 pkgver="3.7.2.201807301111"
-pkgrel=1
-pkgdesc="Aptana Studio 3.6.1 is code base and complete eclipse-based environment that includes extensive capabilities to build Ruby and Rails, PHP, and Python applications, along with complete HTML, CSS and JavaScript editing. "
+pkgrel=2
+pkgdesc="Aptana Studio is code base and complete eclipse-based environment that includes extensive capabilities to build Ruby and Rails, PHP, and Python applications, along with complete HTML, CSS and JavaScript editing. "
 arch=('i686' 'x86_64')
 url="http://www.aptana.com/products/studio3/download.html"
 license=('GPL3')
@@ -30,7 +30,8 @@ noextract=()
 
 build() {
   cd $srcdir
-  bsdtar -xf *.zip
+  mkdir -p Aptana_Studio_3
+  bsdtar -xf *.zip -C Aptana_Studio_3
   mkdir -p $srcdir/usr/bin/
   echo 'exec /usr/lib/aptana/AptanaStudio3' > $srcdir/usr/bin/aptana-studio
 }
@@ -43,6 +44,7 @@ package() {
   mv Aptana_Studio_3/* aptana
   rm -rf Aptana_Studio_3
   mkdir -p $pkgdir/usr/bin/
+  install -m775 $srcdir/AptanaStudio3 $pkgdir/usr/lib/aptana/AptanaStudio3
   install -m775 $srcdir/usr/bin/aptana-studio $pkgdir/usr/bin/aptana-studio
   install -Dm644 $srcdir/aptana-studio.desktop "${pkgdir}/usr/share/applications/aptana-studio.desktop"
 }
