@@ -1,8 +1,8 @@
 pkgbase = gnome-screencast-git
 	pkgdesc = Miracast implementation for GNOME
-	pkgver = r78.82d604e
+	pkgver = r87.0fe0831
 	pkgrel = 1
-	url = https://blogs.gnome.org/benzea/2019/01/30/gnome-screencast
+	url = https://github.com/benzea/gnome-screencast
 	arch = any
 	license = GPL3
 	makedepends = git
