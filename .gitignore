@@ -1,0 +1,6 @@
+# directories
+pkg
+src
+
+# files
+*.tar*
