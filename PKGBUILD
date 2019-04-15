@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-mew-git
-pkgver=6.8.11.g91a78fd
+pkgver=6.8.r30.g70d6da0
 pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="Messaging in the  Emacs World"
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 pkgver() {
   cd ${pkgname#emacs-}
   # Git tag
-  echo $(git describe --tags|sed 's/-/./g'|tr -d v)
+  echo $(git describe --tags|sed 's/-/.r/'|tr - .|cut -c2-)
 }
 
 build() {
