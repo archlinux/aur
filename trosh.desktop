@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1
 Type=Application
-Icon=gnome-mime-application-x-love-game
+Icon=trosh
 Exec=trosh
 Terminal=false
 StartupNotify=false
