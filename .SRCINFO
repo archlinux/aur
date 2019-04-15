@@ -1,0 +1,17 @@
+pkgbase = comma-ide-community
+	pkgdesc = The Integrated Development Environment for Perl 6.
+	pkgver = 2019.3.0.1
+	pkgrel = 1
+	url = https://commaide.com/
+	install = comma-ide.install
+	arch = any
+	license = APACHE
+	depends = java-runtime
+	optdepends = rakudo-star
+	optdepends = rakudo
+	provides = _pkgname
+	source = https://commaide.com/download/community/linux
+	sha512sums = 972b7c722622e1184c224d2a405ecda8018ee04789d0b74fab0978a2f14f4b8bb92e41dfdab78176d729951e68064446bdba140c936fa05919b968cead161d77
+
+pkgname = comma-ide-community
+
