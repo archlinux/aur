@@ -1,10 +1,11 @@
-# Maintainer: Niklas <dev@n1klas.net>
+# Maintainer: Jan Peter Koenig <public@janpeterkoenig.com>
+# Contributor: Niklas <dev@n1klas.net>
 
 pkgname=qt5-mqtt
 _name=qtmqtt
-pkgver=5.12.1
+pkgver=5.12.2
 pkgrel=1
-pkgdesc="Module to implement MQTT protocol v3.1/3.1.1"
+pkgdesc="Module to implement MQTT protocol v3.1/3.1.1/5.0"
 arch=('i386' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://qt-project.org/"
 license=('GPL3' 'custom')
