@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="Agent-less configuration management"
 arch=('any')
 url='https://bundlewrap.org/'
-license=('GPLv3')
+license=('GPL3')
 depends=('python-cryptography'
 	 'python-jinja'
 	 'python-mako'
