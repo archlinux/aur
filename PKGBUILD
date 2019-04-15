@@ -22,6 +22,7 @@ pkgver() {
 
 prepare() {
   cd "${_plug}"
+
   echo "all:
 	  g++ -c -std=c++11 -Wall -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o autocrop.o autocrop.cpp
 	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so autocrop.o" > Makefile
