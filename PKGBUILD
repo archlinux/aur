@@ -22,6 +22,7 @@ pkgver() {
 
 prepare() {
   cd "${_plug}"
+
   echo "all:
 	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o continuity.o continuity.cpp
 	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so continuity.o" > Makefile
