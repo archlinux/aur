@@ -2,13 +2,13 @@
 
 pkgname=kbd-neo
 pkgver=3
-pkgrel=2
+pkgrel=3
 pkgdesc="NEO 2 terminal keyboard layout"
 arch=('any')
 url="http://www.neo-layout.org/"
 license=('CC-BY-SA')
 depends=('kbd')
-source=(https://svn.neo-layout.org/linux/console/neo.map)
+source=(https://raw.githubusercontent.com/neo-layout/neo-layout/master/linux/console/neo.map)
 
 build() {
     cd $srcdir
