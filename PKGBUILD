@@ -3,12 +3,13 @@
 # vim:set ts=2 sw=2 et:
 pkgname=ndt
 pkgver=3.7.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Network Diagnostic Tool (NDT) is a client/server program that provides network configuration and performance testing"
 arch=('x86_64')
 url="http://www.internet2.edu/performance/ndt/index.html"
 license=('BSD')
 depends=('jopenchart' 'openssl' 'jansson' 'zlib')
+makedepends=('i2util')
 source=(http://software.internet2.edu/sources/ndt/$pkgname-$pkgver.tar.gz)
 md5sums=('30cddd43f76a2be1b3764904d5a9e0c1')
 
