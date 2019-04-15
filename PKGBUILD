@@ -9,7 +9,7 @@ pkgdesc="Music downloader for usenet and torrents."
 arch=(any)
 url="https://github.com/lidarr/Lidarr"
 license=("GPL3")
-depends=('mono' 'libmediainfo' 'sqlite')
+depends=('mono' 'libmediainfo' 'sqlite' 'chromaprint')
 optdepends=('sabnzbd: usenet downloader'
             'nzbget: usenet downloader'
             'transmission-cli: torrent downloader (CLI and daemon)'
@@ -18,8 +18,7 @@ optdepends=('sabnzbd: usenet downloader'
             'deluge: torrent downloader'
             'rtorrent: torrent downloader'
             'jackett: torrent indexer proxy'
-            'libgdiplus: provides a gdi+ compatible api'
-            'chromaprint: audio fingerprinting for track identificaton')
+            'libgdiplus: provides a gdi+ compatible api')
 
 provides=('lidarr')
 conflicts=('lidarr')
