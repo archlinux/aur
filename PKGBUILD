@@ -1,7 +1,7 @@
 # Maintainer: Mikkel Oscar Lyderik <mikkeloscar at gmail dot com>
 
 pkgname=scaleway-cli
-pkgver=1.18
+pkgver=1.19
 pkgrel=1
 pkgdesc="Manage BareMetal Servers from Command Line"
 arch=('i686' 'x86_64')
@@ -9,32 +9,30 @@ url="https://scaleway.com"
 license=('MIT')
 makedepends=('go' 'git')
 source=("https://github.com/scaleway/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('a6c0e6d3ca785fe86804e89cc86e252761f3dace0884ac172b2635daf6783969')
+sha256sums=('307bb2a67cd8b8a7fb58524dfe3f65bbba476496c051e289e76f11d0508a0ab7')
 
 prepare() {
   # setup local gopath
-  mkdir -p "$srcdir/src/github.com/scaleway/"
-  ln -s "$srcdir/$pkgname-$pkgver" "$srcdir/src/github.com/scaleway/$pkgname"
-
-  cd "$srcdir/src/github.com/scaleway/$pkgname"
-
-  GOPATH="$srcdir" go get -v -d
-}
-
-check() {
-  cd "$srcdir/src/github.com/scaleway/$pkgname"
-  GOPATH="$srcdir" \
-    go test -ldflags \
-    "-X github.com/scaleway/scaleway-cli/pkg/scwversion.GITCOMMIT=nogit" \
-    -i .//cmd/scw
+  export GOPATH="$srcdir/.gopath"
+  mkdir -p "$GOPATH/src/github.com/scaleway/"
+  ln -s "$srcdir/$pkgname-$pkgver" "$GOPATH/src/github.com/scaleway/$pkgname"
 }
 
 build() {
-  cd "$srcdir/src/github.com/scaleway/$pkgname"
-  GOPATH="$srcdir" \
-    go build -ldflags \
+  cd "$GOPATH/src/github.com/scaleway/$pkgname"
+  go build \
+    -buildmode=pie \
+    -gcflags "all=-trimpath=${PWD}" \
+    -asmflags "all=-trimpath=${PWD}" \
+    -ldflags "-X github.com/scaleway/scaleway-cli/pkg/scwversion.GITCOMMIT=nogit -extldflags ${LDFLAGS}" \
+    -o scw ./cmd/scw
+}
+
+check() {
+  cd "$GOPATH/src/github.com/scaleway/$pkgname"
+  go test -ldflags \
     "-X github.com/scaleway/scaleway-cli/pkg/scwversion.GITCOMMIT=nogit" \
-    -o scw .//cmd/scw
+    -i ./cmd/scw
 }
 
 package() {
