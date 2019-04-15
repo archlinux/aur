@@ -1,9 +1,9 @@
 # Maintainer: David Santiago <demanuel@ymail.com>
 pkgname=newsup-git
 _pkgname=newsup
-pkgrel=1
+pkgrel=2
 pkgver=r443.b4ea158
-provides=(_pkgname)
+provides=(${_pkgname})
 pkgdesc="NewsUP - A usenet binary uploader"
 arch=('any')
 url="https://github.com/demanuel/NewsUP"
