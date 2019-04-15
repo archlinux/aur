@@ -12,7 +12,7 @@ makedepends=('yarn' 'npm')
 source=("https://github.com/betaflight/${_reponame}/archive/$pkgver.tar.gz"        
         "$pkgname.sh"
         "$pkgname.desktop")
-sha512sums=('0b915e971798c7548730111f3510aae424571920789030bce9b2b0ca7f47b378fcc0a08e385ec040093c9f9b1dbd2e2d9b739242b6ddae4a523db03efc0b547e'
+sha512sums=('cd8a6f63c02e9d4ee8f4ed08092b22d5449e6791450e84749d8fedaa60bd4547d9ceeb2b72bbed9da6944a8402dad0edbf8c87a118f97572979fca945520ce57'
             'd5e10ddba597043b75e7a5e02bf23d4bf1c6c64907c9b187e2e48bed045e001abaaec062b39bd9040222d1693758a54112d56d92538cb8b717d2b60d41175fa4'
             'c06b498dfa438002ee9f5f4e90276b051762a936057b6b513e207106f727978fd301d8c131ab320cedc50eb86e46f1f8905b867caf1e6d550fda54985a2529ae')
 options=(!strip)
