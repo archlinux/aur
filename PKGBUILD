@@ -1,10 +1,10 @@
 # Maintainer: theflameemperor <un.own.cry@gmail.com>
 pkgname=ygopro-koishipro
-pkgver=2019.4.11
+pkgver=2019.4.15
 pkgrel=1
 _pkgrel=1
-name="$pkgver-Test"
-zipFile=KoishiPro-linux-full-${pkgver}-Test.zip
+name="$pkgver"
+zipFile=KoishiPro-linux-full-${pkgver}.zip
 pkgdesc="Link compatable ygopro client with AI"
 arch=('x86_64')
 url='https://github.com/purerosefallen/ygopro'
@@ -13,7 +13,7 @@ depends=('mono' 'libevent')
 makedepends=('patchelf')
 source=("https://github.com/purerosefallen/ygopro/releases/download/$name/$zipFile")
 noextract=($zipFile)
-sha256sums=('3840dc18a4472e3f2e455a83f2a72b35e153c10a7d8b776b8631c0aff1b3bab5')
+sha256sums=('0ec0b34578e5897c20e704cb390ce6c1d63ea2647163c7522868c069d5e4c001')
 options=('!strip' 'emptydirs')
 
 prepare(){
