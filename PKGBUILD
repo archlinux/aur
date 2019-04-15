@@ -5,19 +5,20 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=digikam
-_pkgver=6.0.0
+_pkgver=6.1.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=2
+pkgrel=1
 pkgdesc="An advanced digital photo management application"
 arch=(x86_64)
 license=(GPL)
 url="https://www.digikam.org/"
-depends=(liblqr lensfun opencv akonadi-contacts knotifyconfig libksane kfilemetadata qtav marble-common threadweaver kcalcore
-         qt5-xmlpatterns libkvkontakte libmediawiki)
-makedepends=(extra-cmake-modules doxygen eigen boost kdoctools)
-optdepends=('hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)')
+depends=(lensfun opencv akonadi-contacts knotifyconfig libksane kfilemetadata qtav marble-common threadweaver kcalcore
+         qt5-xmlpatterns libmagick)
+makedepends=(extra-cmake-modules doxygen eigen boost kdoctools libkvkontakte)
+optdepends=('hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)'
+            'libkvkontakte: VKontakte plugin')
 source=("https://download.kde.org/stable/$pkgname/$_pkgver/$pkgname-$_pkgver.tar.xz"{,.sig})
-sha256sums=('6e4f0ee52772ea2baef38fc9b96f18ca10f165f0c5bda71d8161a4eded26fb47'
+sha256sums=('c487be4047d73f179cddff26355b6f3b270f407f73009d14b37f2c12039fffe7'
             'SKIP')
 validpgpkeys=(D1CF2444A7858C5F2FB095B74A77747BC2386E50) # digiKam.org (digiKam project) <digikamdeveloper@gmail.com>
 
