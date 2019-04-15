@@ -8,7 +8,7 @@
 # https://bugs.archlinux.org/task/50548
 
 pkgname=zenity-git
-pkgver=3.32.0.r0.g1c2a6b1
+pkgver=3.32.0.r5.gcd63631
 pkgrel=1
 pkgdesc="Display graphical dialog boxes from shell scripts. Webkit-free version."
 url="https://gitlab.gnome.org/GNOME/zenity"
