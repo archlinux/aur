@@ -1,13 +1,13 @@
 # Maintainer: robertfoster
 
 pkgname=openbazaar-git
-pkgver=v2.3.1.rc4.r3.g70e07d27
+pkgver=v2.3.2.r30.g8d8ba5e9
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon (Latest devel version)"
 arch=(any)
 url="https://github.com/OpenBazaar/openbazaar-desktop"
 license=('MIT')
-depends=('electron2')
+depends=('electron')
 makedepends=('git' 'npm')
 conflicts=('openbazaar')
 source=("${pkgname%%-git}::git+https://github.com/OpenBazaar/openbazaar-desktop.git"
@@ -57,5 +57,5 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-         '6d2e87f99126f791e2ebd770c4b147de'
-         'a278f17aa965510cadb534df49b245dd')
+	'446ad1e41acd07468c3750a9027dc8f8'
+'a278f17aa965510cadb534df49b245dd')
