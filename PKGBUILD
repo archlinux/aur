@@ -1,11 +1,11 @@
 # Maintainer: Erik Wallström <erik.wallstrom@live.com>
 pkgname=pop-gtk-theme-git
 _pkgname=pop-gtk-theme
-pkgver=3.0.0.b4.r96.g2dcbce9
+pkgver=4.0.0.b2.r143.gdcee6b3b
 pkgrel=1
-pkgdesc="An adaptive Gtk+ theme based on the Materia GTK+ theme."
+pkgdesc="A GTK+ theme for Pop!_OS"
 arch=("any")
-url="https://github.com/system76/pop-gtk-theme"
+url="https://github.com/pop-os/gtk-theme"
 license=('GPL2' 'CCPL')
 depends=(
 	"gtk3>=3.18.9"
@@ -37,22 +37,22 @@ optdepends=(
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+https://github.com/system76/pop-gtk-theme.git")
+source=("git+https://github.com/pop-os/gtk-theme.git")
 sha256sums=("SKIP")
 
 build() {
-  	cd "${_pkgname}"
+  	cd "gtk-theme"
 	make clean
 	make
 }
 
 package() {
-  	cd "${_pkgname}"
+  	cd "gtk-theme"
 	make DESTDIR="${pkgdir}" install
 }
 
 pkgver() {
-  	cd "${_pkgname}"
+  	cd "gtk-theme"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
