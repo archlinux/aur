@@ -1,8 +1,9 @@
-# Maintainer: Adriaan Zonnenberg <amz@adriaan.xyz>
+# Maintainer: Brad Erhart <brae.04+aur@gmail.com>
+# Contributor: Adriaan Zonnenberg <amz@adriaan.xyz>
 
 pkgname=musixmatch-bin
 _pkgname=musixmatch
-pkgver=0.21.4
+pkgver=0.21.26
 pkgrel=1
 pkgdesc='Lyrics platform where users can search and share lyrics'
 arch=('x86_64')
