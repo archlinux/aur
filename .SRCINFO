@@ -1,6 +1,6 @@
 pkgbase = r-cli
 	pkgdesc = Create Compact Hash Digests of R Objects
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/cli/index.html
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = r-cli
 	depends = r
 	depends = r-crayon
 	depends = r-assertthat
-	source = http://cran.r-project.org/src/contrib/cli_1.0.1.tar.gz
-	md5sums = 737e643ea7443bfafc4463e1557e98a3
+	source = http://cran.r-project.org/src/contrib/cli_1.1.0.tar.gz
+	md5sums = cc16412dbe255fdd7beae222d2753132
 
 pkgname = r-cli
 
