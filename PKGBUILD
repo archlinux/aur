@@ -28,7 +28,7 @@ source=(https://nginx.org/download/nginx-$_nginx_ver.tar.gz
         logrotate)
 provides=('nginx')
 conflicts=('nginx')
-md5sums=('49eecc51a45bdcc8cc147f6747ef8a4c'
+md5sums=('db2e39efc4cff854a887ee5bbeb27fb9'
          SKIP
          'ef491e760e7c1ffec9ca25441a150c83'
          '6a01fb17af86f03707c8ae60f98a2dc2')
