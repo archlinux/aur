@@ -1,14 +1,14 @@
 pkgname=python2-gertty
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="console-based interface to the Gerrit Code Review system"
 arch=('any')
 url='https://pypi.python.org/pypi/gertty'
 license=('Apache2')
-source=("https://pypi.python.org/packages/9e/ed/dd19a67c287fede452473a685ae3e30dba48a5b280173872450c73a4f94d/gertty-1.4.0.tar.gz")
-md5sums=('579416c212dd2bc089f3340d804da8d5')
+source=("https://pypi.io/packages/source/g/gertty/gertty-$pkgver.tar.gz")
+sha256sums=('290e4dc688b2f4d6886f0493b861c01a8c0419dd6c49a925fba0b936d3f28b23')
 makedepends=('python2' 'python2-setuptools' 'python2-sphinx')
-depends=('python2-git' 'python2-sqlalchemy' 'python2-urwid' 'python2-dateutil' 'python2-requests' 'python2-ordereddict' 'python2-alembic' 'python2-yaml' 'python2-ply' 'python2-voluptuous' 'python2-pbr' 'python2-six')
+depends=('python2-gitpython' 'python2-sqlalchemy' 'python2-urwid' 'python2-dateutil' 'python2-requests' 'python2-ordereddict' 'python2-alembic' 'python2-yaml' 'python2-ply' 'python2-voluptuous' 'python2-pbr' 'python2-six')
 conflicts=('python2-gertty-git')
 
 package() {
