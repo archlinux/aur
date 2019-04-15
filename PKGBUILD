@@ -10,12 +10,12 @@ pkgdesc="The standard for customising cloud instances"
 arch=('any')
 url="https://cloud-init.io"
 license=('GPL3')
-depends=('systemd' 'sudo' 'python-yaml' 'python-cheetah3' 'python-prettytable'
-         'python-boto' 'python-configobj'
-         'python-jsonschema' 'python-jsonpatch' 'python-jsonpointer' 'net-tools'
+depends=('systemd' 'sudo' 'python-yaml' 'python-configobj'
+         'python-jsonschema' 'python-jsonpatch' 'net-tools'
          'python-requests' 'python-argparse' 'python-oauthlib'
          'python-jinja' 'dhclient')
 makedepends=('python' 'python-setuptools' 'pkgconf')
+optdepends=('python-cheetah3: support for cheetah templates')
 backup=('etc/cloud/cloud.cfg' 'etc/cloud/cloud.cfg.d/05_logging.cfg')
 source=("https://launchpad.net/$pkgname/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz"
         fix-lib.patch
