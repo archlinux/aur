@@ -2,7 +2,7 @@
 pkgname=python-bundlewrap
 _pkgname=bundlewrap
 pkgver=3.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Agent-less configuration management"
 arch=('any')
 url='https://bundlewrap.org/'
