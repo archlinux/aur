@@ -1,5 +1,5 @@
 pkgbase = bspwmbar
-	pkgver = 0.0.2
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/odknt/bspwmbar
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = bspwmbar
 	depends = alsa-lib
 	depends = libxft
 	depends = fontconfig
-	source = https://github.com/odknt/bspwmbar/archive/v0.0.2.tar.gz
+	source = https://github.com/odknt/bspwmbar/archive/v0.1.0.tar.gz
 	source = config.h
-	sha256sums = 19bd68c4024bbb67b28f9d15d7f2c9500517a26bc41de81d632915d4c8cf153e
+	sha256sums = 9f0695e7fd79e5a0f20e2bf9b0bbd10f0caf241cb979badd97c3671a2eb551e6
 	sha256sums = SKIP
 
 pkgname = bspwmbar
