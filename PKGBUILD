@@ -9,8 +9,8 @@ url="http://invisible-island.net/cproto/cproto.html"
 license=('custom:public domain')
 depends=()
 makedepends=()
-source=("ftp://ftp.invisible-island.net/pub/cproto/cproto-4.7m.tgz")
-sha256sums=('4b482e80f1b492e94f8dcda74d25a7bd0381c870eb500c18e7970ceacdc07c89')
+source=("ftp://ftp.invisible-island.net/pub/cproto/cproto-4.7o.tgz")
+sha256sums=('c76b0b72064e59709459bb7d75d6ec929f77ce5ae7f2610d169ba0fa20ccb44f')
 
 build() {
   cd "$pkgname-$pkgver"
