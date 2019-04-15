@@ -1,14 +1,14 @@
 pkgbase = trust-dns-server
 	pkgdesc = Safe and secure DNS server
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = http://trust-dns.org
 	arch = x86_64
 	license = Apache
 	makedepends = rust
 	depends = openssl
-	source = trust-dns-server-0.15.0.tar.gz::https://crates.io/api/v1/crates/trust-dns-server/0.15.0/download
-	sha512sums = c45eb9e0dddcbe73f784a9334a4c8ae7bc4235b55897fc1b439296d792399d27c1e6d973ac88f295f67d7000a8d34e3e1abb3d90b582d3d8e820bfe5d288d978
+	source = trust-dns-server-0.16.0.tar.gz::https://crates.io/api/v1/crates/trust-dns-server/0.16.0/download
+	sha512sums = a39ad5c76f81881b8f051831da760a95526e2a831c9a1a43b26f2973b405693ce68683d0a48ddcee0bef961dbec84ce898f65f538e8650fdba90e2fa632685c5
 
 pkgname = trust-dns-server
 
