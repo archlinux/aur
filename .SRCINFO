@@ -1,17 +1,17 @@
 pkgbase = trosh
 	pkgdesc = Trosh: The Movie: The Game
-	pkgver = 1
-	pkgrel = 2
+	pkgver = 1.2
+	pkgrel = 1
 	url = http://stabyourself.net/trosh/
 	arch = any
 	license = custom
-	depends = love08
+	depends = love
 	source = trosh.sh
 	source = trosh.desktop
-	source = http://stabyourself.net/dl.php?file=trosh/trosh-linux.zip
-	sha256sums = d2c71f94f9d240fbc2dd25e5d55a9d0863b350ebacbec72cd5ffccc2d591b67a
-	sha256sums = dec272d585d62de4daafa0c22e587a2b64cd92ac3eae5e45b03c1b98c1ce06e6
-	sha256sums = 585342c1fd835017f83704be10a02151cfaafdae836ab89a5ffd0d7206b34465
+	source = https://github.com/M0Rf30/trosh/archive/1.2.tar.gz
+	md5sums = 928f9bf3f51f4142dfb56d31fcf32df0
+	md5sums = 4b5fd880746ad8818f7bdfaeeb11714b
+	md5sums = 7d4b82f2eb3db0a437f2397eecfadbac
 
 pkgname = trosh
 
