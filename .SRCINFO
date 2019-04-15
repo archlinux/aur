@@ -1,12 +1,15 @@
 pkgbase = lcd-image-converter
 	pkgdesc = Tool to create bitmaps and fonts for embedded applications
-	pkgver = r1521.bf3294d
+	pkgver = r1689.030b30d
 	pkgrel = 1
 	url = http://www.riuson.com/lcd-image-converter
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = qt4
+	depends = qt5-declarative
+	depends = hicolor-icon-theme
+	depends = qt5-xmlpatterns
+	depends = qt5-svg
 	source = lcd-image-converter::git+https://github.com/riuson/lcd-image-converter.git
 	source = lcd-image-converter.desktop
 	sha1sums = SKIP

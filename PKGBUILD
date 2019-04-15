@@ -1,18 +1,18 @@
 # Maintainer: Patrik Bachan  <patrikbachan@gmail.com>
 pkgname=lcd-image-converter
-pkgver=r1521.bf3294d
+pkgver=r1689.030b30d
 pkgrel=1
 pkgdesc="Tool to create bitmaps and fonts for embedded applications"
 arch=('i686' 'x86_64')
 url="http://www.riuson.com/lcd-image-converter"
 license=('GPL')
 #groups=()
-depends=('qt4')
+depends=('qt5-declarative' 'hicolor-icon-theme' 'qt5-xmlpatterns' 'qt5-svg')
 makedepends=()
 source=("$pkgname::git+https://github.com/riuson/lcd-image-converter.git"
-	"$pkgname.desktop")
+        "$pkgname.desktop")
 sha1sums=('SKIP'
-	  'd64776983303a5defd3ee667d87a53c6b2995bbb')
+          'd64776983303a5defd3ee667d87a53c6b2995bbb')
 
 pkgver() {
 	cd "$pkgname"
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	qmake-qt4
+	qmake
 	make
 }
 
