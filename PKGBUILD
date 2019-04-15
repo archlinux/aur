@@ -1,7 +1,7 @@
 # Maintainer: Kazuki Yamaguchi <k@rhe.jp>
 
 pkgname=cproto
-pkgver=4.7m
+pkgver=4.7o
 pkgrel=1
 pkgdesc="Cproto is a program that generates function prototypes and variable declarations from C source code."
 arch=('i686' 'x86_64')
