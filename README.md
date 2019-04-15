@@ -13,5 +13,5 @@ This package is avaliable on [AUR](https://aur.archlinux.org/packages/mint/)
 Install this package using:
 
 ```
-yaourt -S mint-lang
+trizen -S mint-lang
 ```
