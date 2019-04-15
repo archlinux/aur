@@ -2,7 +2,7 @@
 
 _pkgname=freetds
 pkgname=${_pkgname}-krb5
-pkgver=1.00.110
+pkgver=1.1.4
 pkgrel=1
 pkgdesc='Library for accessing Sybase and MS SQL Server databases with kerberos support.'
 url='http://www.freetds.org'
@@ -15,12 +15,12 @@ backup=('etc/freetds/freetds.conf'
         'etc/freetds/locales.conf'
         'etc/freetds/pool.conf')
 source=("ftp://ftp.freetds.org/pub/freetds/stable/${_pkgname}-$pkgver.tar.bz2")
-md5sums=('290b00b7daf1a7402228ab1e85eb40b6')
+md5sums=('5433c7cf57fe399cc655029b7e21575b')
 
 build() {
   cd ${_pkgname}-$pkgver
   ./configure --prefix=/usr --sysconfdir=/etc/freetds --enable-msdblib \
-    --with-tdsver=7.0 --with-unixodbc=/usr --with-openssl --enable-krb5
+    --with-tdsver=7.4 --with-unixodbc=/usr --with-openssl --enable-krb5
   make 
 }
 
