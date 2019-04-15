@@ -17,12 +17,12 @@ if [ -z "${ANDROID_MINIMUM_PLATFORM}" ]; then
     export ANDROID_MINIMUM_PLATFORM=22
 fi
 
-if [ -z "${ANDROID_NDK_ROOT}" ]; then
-    export ANDROID_NDK_ROOT=/opt/android-ndk
+if [ -z "${ANDROID_HOME}" ]; then
+    export ANDROID_HOME=/opt/android-sdk
 fi
 
-if [ -z "${ANDROID_SDK_ROOT}" ]; then
-    export ANDROID_SDK_ROOT=/opt/android-sdk
+if [ -z "${ANDROID_NDK_HOME}" ]; then
+    export ANDROID_NDK_HOME=/opt/android-ndk
 fi
 
 get_last() {
@@ -30,7 +30,7 @@ get_last() {
 }
 
 if [ -z "${ANDROID_BUILD_TOOLS_REVISION}" ]; then
-    export ANDROID_BUILD_TOOLS_REVISION=$(get_last ${ANDROID_SDK_ROOT}/build-tools)
+    export ANDROID_BUILD_TOOLS_REVISION=$(get_last ${ANDROID_HOME}/build-tools)
 fi
 
 if [ -z "${ANDROID_API_VERSION}" ]; then
@@ -41,8 +41,8 @@ if [ -z "${ANDROID_NDK_PLATFORM}" ]; then
     export ANDROID_NDK_PLATFORM=android-$ANDROID_MINIMUM_PLATFORM
 fi
 
-export ANDROID_PLATFORM=${ANDROID_NDK_ROOT}/platforms/$ANDROID_NDK_PLATFORM
-export ANDROID_TOOLCHAIN=${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64
+export ANDROID_PLATFORM=${ANDROID_NDK_HOME}/platforms/$ANDROID_NDK_PLATFORM
+export ANDROID_TOOLCHAIN=${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64
 export ANDROID_SYSROOT=${ANDROID_TOOLCHAIN}/sysroot
 export ANDROID_CROSS_PREFIX=$ANDROID_TOOLCHAIN/bin/
 export ANDROID_PKGCONFIG=android-${_android_arch}-pkg-config
@@ -69,6 +69,7 @@ esac
 export ANDROID_CC=${ANDROID_TOOLS_COMPILER_PREFIX}clang
 export ANDROID_CXX=${ANDROID_TOOLS_COMPILER_PREFIX}clang++
 export ANDROID_AR=${ANDROID_TOOLS_PREFIX}ar
+export ANDROID_AS=${ANDROID_TOOLS_PREFIX}as
 export ANDROID_NM=${ANDROID_TOOLS_PREFIX}nm
 export ANDROID_RANLIB=${ANDROID_TOOLS_PREFIX}ranlib
 export ANDROID_STRIP=${ANDROID_TOOLS_PREFIX}strip
@@ -77,10 +78,10 @@ export PKG_CONFIG_SYSROOT_DIR=${ANDROID_LIBS}
 export PKG_CONFIG_LIBDIR=${PKG_CONFIG_SYSROOT_DIR}/lib/pkgconfig:${PKG_CONFIG_SYSROOT_DIR}/share/pkgconfig
 
 ndk_version() {
-    grep 'Pkg.Revision' ${ANDROID_NDK_ROOT}/source.properties | awk '{print $3}'
+    grep 'Pkg.Revision' ${ANDROID_NDK_HOME}/source.properties | awk '{print $3}'
 }
 
-ndk_version_ge_than() {
+check_ndk_version_ge_than() {
     version=$1
     ndk_ver=$(ndk_version)
 
@@ -91,6 +92,8 @@ ndk_version_ge_than() {
     older_ver=$(printf "${version}\n${ndk_ver}" | sort -V | head -n 1)
 
     if [ "${older_ver}" = "${ndk_ver}" ]; then
+        echo "ERROR: NDK version >= $version required."
+
         return 1
     fi
 

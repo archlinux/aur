@@ -5,39 +5,42 @@ _android_arch=x86-64
 source android-env.sh ${_android_arch}
 
 pkgname=android-${_android_arch}-ffmpeg
-pkgver=4.1.2
-pkgrel=3
+pkgver=4.1.3
+pkgrel=1
 pkgdesc="Complete solution to record, convert and stream audio and video (android)"
 arch=('any')
 url="http://ffmpeg.org/"
 license=('GPL3')
-depends=("android-${_android_arch}-libvorbis")
+depends=("android-${_android_arch}-libvorbis"
+         "android-${_android_arch}-libvpx"
+         "android-${_android_arch}-opus")
 options=(!strip !buildflags staticlibs !emptydirs)
-makedepends=('android-pkg-config' 'git' 'yasm')
-source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
+makedepends=('android-pkg-config' 'yasm')
+source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         'configure.patch')
-sha256sums=('SKIP'
+sha256sums=('0c3020452880581a8face91595b239198078645e7d7184273b8bcc7758beb63d'
             '574f234bd6e09c47e8435faffd464a3fe01dcfdfd939889e6608451f795a1701')
 
 prepare() {
-    cd ffmpeg
+    cd "${srcdir}"/ffmpeg-${pkgver}
+    check_ndk_version_ge_than 18.0
     patch -Np1 -i ../configure.patch
 }
 
 build() {
-    cd ffmpeg
+    cd "${srcdir}"/ffmpeg-${pkgver}
 
     unset CC
     unset CXX
     unset CFLAGS
     unset CXXFLAGS
-    unset LDFLAGS
     unset CHOST
     unset CARCH
 
     case "$_android_arch" in
         aarch64)
             target_arch=aarch64
+            export LDFLAGS="-L${ANDROID_LIBS}/lib -lm -logg -lvorbis"
             ;;
         armv7a-eabi)
             target_arch=arm
@@ -77,7 +80,10 @@ build() {
         --disable-libv4l2
         --disable-v4l2-m2m
         --disable-indev=v4l2
-        --disable-outdev=v4l2"
+        --disable-outdev=v4l2
+        --enable-libvorbis
+        --enable-libvpx
+        --enable-libopus"
 
     # Platform specific patches
     case "$_android_arch" in
@@ -89,23 +95,14 @@ build() {
             ;;
     esac
 
-    case "$_android_arch" in
-        aarch64)
-            ;;
-        *)
-            configue_opts+="
-                --enable-libvorbis"
-            ;;
-    esac
-
     ./configure ${configue_opts}
     make $MAKEFLAGS
 }
 
 package() {
-    cd ffmpeg
+    cd "${srcdir}"/ffmpeg-${pkgver}
     make DESTDIR="$pkgdir" install
 
-    ${ANDROID_STRIP} "${pkgdir}"/${ANDROID_LIBS}/lib/*.a
-    ${ANDROID_STRIP} "${pkgdir}"/${ANDROID_LIBS}/lib/*.so
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_LIBS}/lib/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}"/${ANDROID_LIBS}/lib/*.a
 }
