@@ -1,13 +1,13 @@
 pkgbase = r-r6
 	pkgdesc = Create Compact Hash Digests of R Objects
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/R6/index.html
 	arch = x86_64
 	license = GPL3
 	depends = r
-	source = http://cran.r-project.org/src/contrib/R6_2.3.0.tar.gz
-	md5sums = 92c91e7bc5c0309108ba9b0f54f9ed9b
+	source = http://cran.r-project.org/src/contrib/R6_2.4.0.tar.gz
+	md5sums = f8e4f293f95efd44b5a2a77f4446318e
 
 pkgname = r-r6
 
