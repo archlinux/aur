@@ -6,14 +6,14 @@
 pkgbase=ddccontrol
 pkgname=(ddccontrol gddccontrol)
 pkgver=0.4.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Control your monitor by software using the DDC/CI protocol"
 arch=('i686' 'x86_64')
 url="https://github.com/ddccontrol/ddccontrol"
 license=('GPL')
 depends=('pciutils' 'ddccontrol-db-git' 'perl-xml-parser' 'libxml2' 'icu')
 makedepends=('gtk2' 'autoconf' 'intltool')
-source=("https://github.com/ddccontrol/ddccontrol/archive/${pkgver}.tar.gz"
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/ddccontrol/ddccontrol/archive/${pkgver}.tar.gz"
         "org.ddccontrol.pkexec.gddccontrol.policy")
 options=('!libtool')
 sha256sums=('aafbb16ac4f4edfe3fcc5feec1eb5729aaf86e3b0f31f9d707ba1406bb404817'
