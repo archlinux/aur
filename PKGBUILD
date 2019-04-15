@@ -10,6 +10,7 @@ url='https://marktext.app'
 license=('MIT')
 provides=('marktext')
 conflicts=('marktext')
+depends=('gtk3' 'libxss' 'nss')
 
 _source() {
   _github=https://github.com/marktext/marktext
@@ -46,14 +47,10 @@ package() {
     install -Dm644 $srcdir/$pkgname-${s}x${s}.png \
     $pkgdir/usr/share/icons/hicolor/${s}x${s}/apps/$_pkgname.png
   done
-  install -Dm644 $srcdir/$pkgname-512x512.png \
-  $pkgdir/usr/share/pixmaps/$_pkgname.png
 
   # Install licenses
-  for i in LICENSE LICENSE.electron.txt LICENSES.chromium.html; do
-    install -Dm644 $srcdir/$_pkgname-$pkgver-x64/$i \
-    $pkgdir/usr/share/licenses/$_pkgname/$i
-  done
+  install -Dt $pkgdir/usr/share/licenses/$_pkgname -m644 \
+  $srcdir/$_pkgname-$pkgver-x64/{LICENSE,LICENSE.electron.txt,LICENSES.chromium.html}
 }
 
 sha512sums=('8e485ac0c599d149ab4a04666b8ba58f77c5576d2cf70b5e81d2748d69b3c9d79a92ca9b3d3d7ea6d643f7ef12145ccd4c3a8f093436962161fd73c9704e6ae3'
