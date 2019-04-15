@@ -1,14 +1,14 @@
 # Maintainer: cyrant <cyrant at tuta dot io>
 
 pkgname=scenarist
-pkgver=0.7.2.rc5
+pkgver=0.7.2.rc6
 pkgrel=1
-pkgdesc='Screenwriting software, which developed in Russia.'
-url='https://kitscenarist.ru'
+pkgdesc='A professional screenwriting software.'
+url='https://kitscenarist.ru/en/'
 arch=('x86_64')
 license=('GPL3')
-depends=('qt5-multimedia' 'qt5-svg' 'qt5-webengine')
-makedepends=('git')
+depends=('desktop-file-utils' 'qt5-multimedia' 'qt5-webengine')
+makedepends=('git' 'qt5-svg')
 source=(
   "${pkgname}::git+https://github.com/dimkanovikov/KITScenarist.git#tag=${pkgver}"
   'mime.xml'
