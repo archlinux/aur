@@ -3,13 +3,14 @@ _cranname=scales
 _cranver=1.0.0
 pkgname=r-$_cranname
 pkgver=${_cranver}
-pkgrel=2
+pkgrel=3
 pkgdesc="Tools for Splitting, Applying and Combining Data"
 url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('r' 'r-rcolorbrewer' 'r-dichromat' 'r-plyr'
-             'r-munsell' 'r-labeling' 'r-rcpp' 'r-r6' 'r-viridislite')
+depends=('r>=3.1' 'r-rcolorbrewer' 'r-plyr'
+             'r-munsell>=0.5' 'r-labeling' 'r-rcpp' 'r-r6' 'r-viridislite')
+optdepends=('r-dichromat')
 provides=("r-cran-${_cranname}")
 conflicts=("r-cran-${_cranname}")
 replaces=("r-cran-${_cranname}")

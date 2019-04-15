@@ -1,20 +1,20 @@
 pkgbase = r-scales
 	pkgdesc = Tools for Splitting, Applying and Combining Data
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cran.r-project.org/web/packages/scales/index.html
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = r
+	depends = r>=3.1
 	depends = r-rcolorbrewer
-	depends = r-dichromat
 	depends = r-plyr
-	depends = r-munsell
+	depends = r-munsell>=0.5
 	depends = r-labeling
 	depends = r-rcpp
 	depends = r-r6
 	depends = r-viridislite
+	optdepends = r-dichromat
 	provides = r-cran-scales
 	conflicts = r-cran-scales
 	replaces = r-cran-scales
