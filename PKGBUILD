@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz-bin
 _vendorname=cliqz
-pkgver=1.26.0
+pkgver=1.26.3
 _cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/release/$pkgver/lastbuildid")
 pkgrel=1
 pkgdesc="Firefox-based privacy aware web browser, repackaged from debian official cliqz repository"
@@ -12,11 +12,12 @@ provides=('cliqz')
 conflicts=('cliqz')
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
          nss hunspell ttf-font libpulse)
-source=("http://repository.cliqz.com.s3.amazonaws.com/dist/release/$pkgver/${_cqzbuildid}/${_vendorname}-${pkgver}-release.${_cqzbuildid}.x86_64.deb"
+source=("http://repository.cliqz.com.s3.amazonaws.com/dist/debian-release/pool/main/c/cliqz/${_vendorname}-${pkgver}-release.${_cqzbuildid}.x86_64.deb"
+        # "http://repository.cliqz.com.s3.amazonaws.com/dist/release/$pkgver/${_cqzbuildid}/${_vendorname}-${pkgver}-release.${_cqzbuildid}.x86_64.deb"
         "https://raw.githubusercontent.com/cliqz-oss/browser-f/master/LICENSE")
 
 deb_sha=$(curl -s http://repository.cliqz.com.s3.amazonaws.com/dist/debian-release/dists/stable/main/binary-amd64/Packages | sed -n 's/^SHA256: \(.*\)$/\1/p')
-sha256sums=('395e6cae1b4c899bae65761d9bb409de7e88bc9f34f439d81f1cd8055202e651'
+sha256sums=("$deb_sha"
             '7827ad0dcea64dde261a0def466acf701ace81c5b31b4f2f69403c6502411581')
 
 prepare() {
