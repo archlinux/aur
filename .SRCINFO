@@ -1,13 +1,10 @@
 pkgbase = gogitver-bin
 	pkgdesc = gogitver: semantic versioning through git history
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/annymsMthd/gogitver
 	arch = x86_64
 	license = MIT
-	makedepends = go
-	makedepends = git
-	makedepends = sed
 	depends = glibc
 	source = gogitver-bin-0.6.2.tar.gz::https://github.com/annymsMthd/gogitver/releases/download/0.6.2/linux.tar.gz
 	md5sums = caa95ba39039d24bbd965c28aa2c3d78
