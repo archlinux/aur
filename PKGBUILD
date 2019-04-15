@@ -1,6 +1,6 @@
 # Maintainer: ccat3z <c0ldcat3z@gmail.com>
 
-_kernver_base=4.17.9
+_kernver_base=5.0.7
 _pkgbase=btintel-default-address
 pkgname=${_pkgbase}-dkms
 url=https://github.com/c0ldcat
@@ -40,7 +40,7 @@ package() {
 md5sums=("d4023861ba05ecb47380354511ac798f"
          "b90eb0a51c82feb590bfd5647d3ecbd2"
          "5263f3baa5ef312a6ee6f3923f9ee78f"
-         "245932596b83cb44c9aed7141e77fecb"
-         "426f74d0a911b92bdaefdf28d02250d5"
+         "407f5d49e4440bf2f009c3be1935ed36"
+         "f7a3ed12a2b7540186a0547865533420"
          "e4b14fff2acadf13a33cc3bc2c08c949"
-         "ed7b0912a2e3507068c0d173ed9338fa")
+         "25301b23397463669195bf659bc4e0f8")

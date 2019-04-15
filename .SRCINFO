@@ -1,6 +1,6 @@
 pkgbase = btintel-default-address-dkms
 	pkgdesc = Allow default address when setup intel bluetooth device
-	pkgver = 4.17.9
+	pkgver = 5.0.7
 	pkgrel = 1
 	url = https://github.com/c0ldcat
 	arch = i686
@@ -10,18 +10,18 @@ pkgbase = btintel-default-address-dkms
 	depends = dkms
 	source = Makefile
 	source = dkms.conf
-	source = btintel.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btintel.c?id=refs/tags/v4.17.9
-	source = btusb.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btusb.c?id=refs/tags/v4.17.9
-	source = btbcm.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btbcm.h?id=refs/tags/v4.17.9
-	source = btintel.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btintel.h?id=refs/tags/v4.17.9
-	source = btrtl.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btrtl.h?id=refs/tags/v4.17.9
+	source = btintel.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btintel.c?id=refs/tags/v5.0.7
+	source = btusb.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btusb.c?id=refs/tags/v5.0.7
+	source = btbcm.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btbcm.h?id=refs/tags/v5.0.7
+	source = btintel.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btintel.h?id=refs/tags/v5.0.7
+	source = btrtl.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btrtl.h?id=refs/tags/v5.0.7
 	md5sums = d4023861ba05ecb47380354511ac798f
 	md5sums = b90eb0a51c82feb590bfd5647d3ecbd2
 	md5sums = 5263f3baa5ef312a6ee6f3923f9ee78f
-	md5sums = 245932596b83cb44c9aed7141e77fecb
-	md5sums = 426f74d0a911b92bdaefdf28d02250d5
+	md5sums = 407f5d49e4440bf2f009c3be1935ed36
+	md5sums = f7a3ed12a2b7540186a0547865533420
 	md5sums = e4b14fff2acadf13a33cc3bc2c08c949
-	md5sums = ed7b0912a2e3507068c0d173ed9338fa
+	md5sums = 25301b23397463669195bf659bc4e0f8
 
 pkgname = btintel-default-address-dkms
 
