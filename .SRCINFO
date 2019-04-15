@@ -12,7 +12,6 @@ pkgbase = wolf-spectrum-git
 	makedepends = libx11
 	makedepends = liblo
 	makedepends = libgl
-	makedepends = freetype2
 	provides = wolf-spectrum
 	conflicts = wolf-spectrum
 	source = wolf-spectrum::git://github.com/pdesaulniers/wolf-spectrum
