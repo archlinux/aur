@@ -6,7 +6,6 @@ pkgbase = hipipe
 	arch = any
 	license = custom
 	makedepends = cmake
-	makedepends = git
 	depends = boost
 	depends = opencv
 	depends = python
