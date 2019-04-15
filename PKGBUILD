@@ -1,7 +1,7 @@
 # Maintainer: Cookie Engineer <@cookiengineer>
 
 pkgname=hydroxide-git
-pkgver=r1.05d0806
+pkgver=r143.ba96d88
 pkgrel=1
 pkgdesc="A third-party, open-source ProtonMail CardDAV, IMAP and SMTP bridge"
 arch=('x86_64')
