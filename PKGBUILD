@@ -10,13 +10,12 @@ source android-env.sh ${_android_arch}
 
 pkgname=android-${_android_arch}-qt5
 pkgver=5.12.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Qt 5 for Android"
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL')
-makedepends=('android-pkg-config'
-             'libgl'
+makedepends=('libgl'
              'sqlite'
              'zlib'
              'python2'
@@ -24,13 +23,22 @@ makedepends=('android-pkg-config'
              'gperf'
              'libxslt'
              'fontconfig')
-depends=('java-runtime-headless-openjdk<=8'
-         'apache-ant'
-         'android-ndk>=r18.b'
-         "android-platform-$ANDROID_MINIMUM_PLATFORM"
-         'android-sdk-25.2.5'
-         'android-sdk-build-tools'
-         'android-sdk-platform-tools')
+
+if [ -z "${ANDROID_NO_DEPS}" ]; then
+    depends=('java-runtime-headless-openjdk<=8'
+            'apache-ant'
+            'android-pkg-config'
+            'android-ndk'
+            "android-platform-$ANDROID_MINIMUM_PLATFORM"
+            'android-sdk'
+            'android-sdk-build-tools'
+            'android-sdk-platform-tools')
+else
+    depends=('java-runtime-headless-openjdk<=8'
+             'apache-ant'
+             'android-pkg-config')
+fi
+
 groups=('android-qt5')
 
 case "$_android_arch" in
@@ -66,6 +74,7 @@ md5sums=('99c2eb46e533371798b4ca2d1458e065'
 
 prepare() {
     cd ${_pkgfqn}
+    check_ndk_version_ge_than 18.0
 
     # Platform specific patches.
 
@@ -117,8 +126,8 @@ build() {
         -xplatform android-clang
         -nomake tests
         -nomake examples
-        -android-ndk ${ANDROID_NDK_ROOT}
-        -android-sdk ${ANDROID_SDK_ROOT}
+        -android-sdk ${ANDROID_HOME}
+        -android-ndk ${ANDROID_NDK_HOME}
         -android-ndk-host linux-x86_64
         -android-toolchain-version 4.9
         -skip qttranslations
@@ -153,11 +162,11 @@ package() {
     cd ${_pkgfqn}
 
     make INSTALL_ROOT=${pkgdir} install
-    STRIP=${ANDROID_NDK_ROOT}/toolchains/${toolchain}/prebuilt/linux-x86_64/${stripFolder}/bin/strip
-    find ${pkgdir}/${ANDROID_LIBS}/bin -type f ! -name '*.pl' -exec strip {} \;
-    find ${pkgdir}/${ANDROID_LIBS}/lib -type f -name 'lib*.so' -exec ${ANDROID_STRIP} {} \;
-#    find ${pkgdir}/${ANDROID_LIBS}/lib -type f \( -name 'lib*.a' ! -name 'libQt5Bootstrap.a' ! -name 'libQt5QmlDevTools.a' \) -exec ${ANDROID_STRIP} {} \;
-    find ${pkgdir}/${ANDROID_LIBS}/plugins -type f -name 'lib*.so' -exec ${ANDROID_STRIP} {} \;
-    find ${pkgdir}/${ANDROID_LIBS}/qml -type f -name 'lib*.so' -exec ${ANDROID_STRIP} {} \;
+    STRIP=${ANDROID_NDK_HOME}/toolchains/${toolchain}/prebuilt/linux-x86_64/${stripFolder}/bin/strip
+    find ${pkgdir}/${ANDROID_LIBS}/bin -type f ! -name '*.pl' -exec strip -s {} \;
+    find ${pkgdir}/${ANDROID_LIBS}/lib -type f -name 'lib*.so' -exec ${ANDROID_STRIP} -g --strip-unneeded {} \;
+#    find ${pkgdir}/${ANDROID_LIBS}/lib -type f \( -name 'lib*.a' ! -name 'libQt5Bootstrap.a' ! -name 'libQt5QmlDevTools.a' \) -exec ${ANDROID_STRIP} -g {} \;
+    find ${pkgdir}/${ANDROID_LIBS}/plugins -type f -name 'lib*.so' -exec ${ANDROID_STRIP} -g --strip-unneeded {} \;
+    find ${pkgdir}/${ANDROID_LIBS}/qml -type f -name 'lib*.so' -exec ${ANDROID_STRIP} -g --strip-unneeded {} \;
     sed -i '/QMAKE_PRL_BUILD_DIR/d' ${pkgdir}/${ANDROID_LIBS}/lib/lib*.prl
 }
