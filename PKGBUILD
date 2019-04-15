@@ -9,8 +9,6 @@ pkgdesc='A powerful desktop app for creating responsive websites using the Boots
 url='https://bootstrapstudio.io/'
 arch=('x86_64')
 source=($pkgname-$pkgver.deb::'https://bootstrapstudio.io/releases/desktop/4/Bootstrap%20Studio%204%20(64bit).deb')
-sha512sums=('ddcfcf6e19de5e1a02931829f6f25982c9cabc6e3995cf133f2fbceaef9736b8ce88af234029ea46a59fa46e886887f2489347778ae71d475edee3c1704a475d')
-
 
 prepare() {
 	# Extract files
@@ -48,3 +46,5 @@ package() {
 	# Fix permission
 	chmod -R go-w "$pkgdir"
 }
+
+sha512sums=('ddcfcf6e19de5e1a02931829f6f25982c9cabc6e3995cf133f2fbceaef9736b8ce88af234029ea46a59fa46e886887f2489347778ae71d475edee3c1704a475d')
