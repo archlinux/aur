@@ -29,7 +29,7 @@ prepare() {
 	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o EntryPoint.o EntryPoint.cpp
 	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o SpatialSoften.o SpatialSoften.cpp
 	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o TemporalSoften.o TemporalSoften.cpp
-	  g++ -shared -L. -fPIC ${LDFLAGS} -o libvs${_plug}.so EntryPoint.o SpatialSoften.o TemporalSoften.o"> Makefile
+	  g++ -shared -fPIC ${LDFLAGS} -o libvs${_plug}.so EntryPoint.o SpatialSoften.o TemporalSoften.o"> Makefile
 }
 
 build() {
