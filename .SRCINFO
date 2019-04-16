@@ -1,0 +1,41 @@
+pkgbase = system76-driver-git
+	pkgdesc = System76 Driver for System76 computers
+	pkgver = 19.04.7.r3.gd5d0ae7
+	pkgrel = 1
+	url = https://github.com/pop-os/system76-driver
+	install = system76-driver-git.install
+	arch = any
+	license = GPL
+	depends = python>=3.6
+	depends = python-cffi
+	depends = python-dbus
+	depends = python-evdev
+	depends = python-gobject
+	depends = python-pynacl
+	depends = python-systemd
+	depends = python-xlib
+	depends = dmidecode
+	depends = at
+	depends = system76-dkms
+	depends = system76-io-dkms
+	depends = system76-firmware-daemon
+	optdepends = pm-utils: For power management features
+	optdepends = gtk3: To launch System76 driver and firmware GUI
+	optdepends = grub: To apply kernel boot time parameters
+	optdepends = polkit: Run System76 Driver GUI from application menu
+	optdepends = pulseaudio: To apply microphone fix
+	optdepends = xorg-xhost: To enable GUI applications on Wayland
+	optdepends = xorg-xbacklight: To use the backlight service
+	source = system76-driver-git::git+https://github.com/pop-os/system76-driver.git
+	source = galu1.patch
+	source = gtk.patch
+	source = cli.patch
+	source = wayland.patch
+	sha256sums = SKIP
+	sha256sums = 2ccf53ec0ffdeea00930d218253f5b3db2bdc7d3405e8353caabc36107f3ab26
+	sha256sums = 14c6d669b5a4a5b4a306978ebdad7e26d939e8e559de52274aec26cd5b2ea853
+	sha256sums = ef027346c439561dc01f906ae7bd961100aedf9125fd86bb0eb89a87b683fdc3
+	sha256sums = fc3cccb25c7b570c69db987f4ed6a0558db7fd0046d5dbd46dbd243d8e85e611
+
+pkgname = system76-driver-git
+

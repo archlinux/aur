@@ -1,0 +1,19 @@
+--- a/system76-driver-cli	2016-03-05 15:53:48.000000000 -0500
++++ b/system76-driver-cli	2016-03-05 18:03:49.068840665 -0500
+@@ -27,6 +27,7 @@
+ import logging
+ 
+ import system76driver
++from system76driver import daemon
+ from system76driver.products import PRODUCTS
+ from system76driver.actions import ActionRunner
+ 
+@@ -55,7 +56,7 @@
+     sys.exit(0)
+ 
+ 
+-product_version = args.model or system76driver.get_product_version()
++product_version = args.model or daemon.load_json_conf('/etc/system76-daemon.json').get('model') or system76driver.get_product_version()
+ try:
+     product = PRODUCTS[product_version]
+     log.info('product_version: %r', product_version)

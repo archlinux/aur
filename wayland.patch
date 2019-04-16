@@ -1,0 +1,27 @@
+--- a/system76-driver-pkexec	2018-10-18 14:55:38.000000000 -0400
++++ b/system76-driver-pkexec	2018-11-05 20:58:58.839653271 -0500
+@@ -1,2 +1,10 @@
+ #!/bin/sh
++if [ "$XDG_SESSION_TYPE" == "wayland" ] && command -v xhost; then
++  xhost +si:localuser:root
++fi
++
+ pkexec "/usr/bin/system76-driver" --home $HOME
++
++if [ "$XDG_SESSION_TYPE" == "wayland" ] && command -v xhost; then
++  xhost -si:localuser:root
++fi
+diff -Naur system76-driver-18.10.2/system76-firmware-pkexec system76-driver-18.10.2.patched/system76-firmware-pkexec
+--- a/system76-firmware-pkexec	2018-10-18 14:55:38.000000000 -0400
++++ b/system76-firmware-pkexec	2018-11-05 21:00:02.253796899 -0500
+@@ -1,2 +1,10 @@
+ #!/bin/sh
++if [ "$XDG_SESSION_TYPE" == "wayland" ] && command -v xhost; then
++  xhost +si:localuser:root
++fi
++
+ pkexec "/usr/bin/system76-firmware" --reinstall
++
++if [ "$XDG_SESSION_TYPE" == "wayland" ] && command -v xhost; then
++  xhost -si:localuser:root
++fi
