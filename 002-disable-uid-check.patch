@@ -1,0 +1,21 @@
+diff --git a/src/connection_manager.c b/src/connection_manager.c
+index b4fe587..714daeb 100755
+--- a/src/connection_manager.c
++++ b/src/connection_manager.c
+@@ -1318,16 +1318,6 @@ cm_server_watcher_cb(struct ev_loop *loop, ev_io *w, int revents)
+                 close(clnt_fd);
+                 continue;
+             }
+-            /* check uid in case of local (library) mode */
+-            if (CM_MODE_LOCAL == cm_ctx->mode) {
+-                if (connection->uid != geteuid()) {
+-                    SR_LOG_ERR("Peer's uid=%d does not match with local uid=%d "
+-                            "(required by local mode).", connection->uid, geteuid());
+-                    sm_connection_stop(cm_ctx->sm_ctx, connection);
+-                    close(clnt_fd);
+-                    continue;
+-                }
+-            }
+             /* start watching this fd */
+             rc = cm_conn_watcher_init(cm_ctx, connection);
+             if (SR_ERR_OK != rc) {
