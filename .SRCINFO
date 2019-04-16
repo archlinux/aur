@@ -1,6 +1,6 @@
 pkgbase = sqlcl
 	pkgdesc = SQL Developer command line interface for Oracle
-	pkgver = 18.3.0.259.2029
+	pkgver = 19.1.0.094.1619
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/developer-tools/sqlcl/overview/index.html
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = sqlcl
 	license = custom:OTN
 	depends = java-runtime>=8
 	source = LICENSE
-	source = manual://sqlcl-18.3.0.259.2029.zip
+	source = manual://sqlcl-19.1.0.094.1619.zip
 	source = sqlcl.sh
 	sha256sums = f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2
-	sha256sums = 5a0c34544878d1fac333ca71b33ecebd711877477669d7bf7056ee6bcc7fb336
+	sha256sums = 8e2c02f92846d72aadd74cac7869506d281e45061447887ba1098ace2694c267
 	sha256sums = 4a0469c0adc964d91c611a643075087235dc2de8332e87297abe9865d19c2a14
 
 pkgname = sqlcl
