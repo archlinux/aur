@@ -1,9 +1,10 @@
 # Maintainer: Excitable Snowball <excitablesnowball@gmail.com>
+# Contributor: robertfoster
 
 pkgname=webplotdigitizer-bin
 pkgver=4.2
 _name=WebPlotDigitizer-$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to extract numerical data from plot images'
 url='https://automeris.io/WebPlotDigitizer/'
 arch=('x86_64')
