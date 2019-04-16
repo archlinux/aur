@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-qsv
 	pkgdesc = Complete solution to record, convert and stream audio and video (including qsv and libfdk-aac)
-	pkgver = 4.1.2
+	pkgver = 4.1.3
 	pkgrel = 1
 	url = https://www.ffmpeg.org/
 	arch = x86_64
@@ -87,7 +87,7 @@ pkgbase = ffmpeg-qsv
 	conflicts = ffmpeg-full-git
 	conflicts = ffmpeg-semifull-git
 	conflicts = ffmpeg-qsv-git
-	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=n4.1.2
+	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=n4.1.3
 	source = LICENSE
 	sha256sums = SKIP
 	sha256sums = 04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36
