@@ -1,0 +1,15 @@
+pkgbase = ytt
+	pkgdesc = YAML templating tool that works on YAML structure instead of text
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://get-ytt.io/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go-pie
+	depends = glibc
+	source = ytt-0.6.0.tar.gz::https://github.com/k14s/ytt/archive/v0.6.0.tar.gz
+	sha256sums = abcf564ab90cf68e98b03d7c24100008dd1d6e2153459c0e1d6f7ea512ddc2bc
+
+pkgname = ytt
+
