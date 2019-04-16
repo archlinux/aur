@@ -1,7 +1,7 @@
 pkgbase = pypy2-revdb
 	pkgdesc = PyPy2 compiled with revdb
 	pkgver = 7.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypy.org
 	arch = any
 	license = MIT
