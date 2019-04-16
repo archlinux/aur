@@ -1,7 +1,7 @@
 pkgbase = filegdb-api
 	pkgdesc = ESRI File Geodatabase (FileGDB) API
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Esri/file-geodatabase-api
 	changelog = filegdb-api.changelog
 	arch = i686

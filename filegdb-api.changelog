@@ -1,3 +1,7 @@
+2018-05-16 SaultDon <sault.don gmail>
+    * 1.5.1-2 :
+     - removed sed command to build against old ABI
+
 2018-04-16 SaultDon <sault.don gmail>
     * 1.5.1-1 :
      - updated to latest release

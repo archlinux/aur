@@ -2,7 +2,7 @@
 pkgname=filegdb-api
 _pkgname=FileGDB_API
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ESRI File Geodatabase (FileGDB) API"
 arch=('i686' 'x86_64')
 url="https://github.com/Esri/file-geodatabase-api"
@@ -36,8 +36,8 @@ build() {
 	export LD_LIBRARY_PATH=$srcdir/${pkgname}/lib:$LD_LIBRARY_PATH
     
     #Modify make.include to use old ABI
-    cd "$srcdir/${pkgname}/include"
-    sed -i '/-D_LARGEFILE64_SOURCE/ s/$/ -D_GLIBCXX_USE_CXX11_ABI=0/' make.include
+    # cd "$srcdir/${pkgname}/include"
+    # sed -i '/-D_LARGEFILE64_SOURCE/ s/$/ -D_GLIBCXX_USE_CXX11_ABI=0/' make.include
 
     #Building all samples
 	cd "$srcdir/${pkgname}/samples"
