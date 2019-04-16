@@ -1,10 +1,10 @@
 pkgbase = pypy2-revdb
-	pkgdesc = RevDB, the Reverse Debugger
+	pkgdesc = PyPy2 compiled with revdb
 	pkgver = 7.1.0
 	pkgrel = 1
 	url = https://pypy.org
 	arch = any
-	license = UNKNOWN
+	license = MIT
 	makedepends = pypy
 	makedepends = python2-cffi
 	makedepends = python2-setuptools
