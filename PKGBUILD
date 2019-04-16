@@ -2,12 +2,24 @@
 
 pkgname=perl-cpanel-json-xs
 pkgver=4.11
-pkgrel=1
+pkgrel=2
 pkgdesc="cPanel fork of JSON::XS, fast and correct serializing"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
+checkdepends=(
+  'perl-common-sense>=3.5'
+  'perl-json'
+  'perl-json-xs'
+  'perl-mojolicious>=6.11'
+  'perl-perl-minimumversion>=1.20'
+  'perl-test-cpan-meta>=0.12'
+  'perl-test-leaktrace'
+  'perl-test-minimumversion>=0.008'
+  'perl-test-pod-coverage>=1.04'
+  'perl-test-pod>=1.00'
+)
 url='https://metacpan.org/release/Cpanel-JSON-XS'
 source=("https://cpan.metacpan.org/authors/id/R/RU/RURBAN/Cpanel-JSON-XS-$pkgver.tar.gz")
 sha512sums=('a14fe211b769184c28d946b9e88d9a380331d6a16c67a0f286fb4bf0f25e2a3b80f3df907bdf1a7eceaa8a34e69f13b3296cc135bc1ea2d2fcba6355dcf88579')
@@ -34,5 +46,5 @@ check() {
 package() {
   cd "$_distdir"
   make install 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete 
 }
