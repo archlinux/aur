@@ -1,6 +1,6 @@
 pkgbase = openocd-esp32
 	pkgdesc = Fork of OpenOCD that has ESP32 support
-	pkgver = .00778.g256cc646
+	pkgver = v0.10.0.esp32.20190313.2.g4a4e0076
 	pkgrel = 2
 	url = https://github.com/espressif/openocd-esp32
 	arch = i686
