@@ -1,7 +1,7 @@
 pkgbase = gromacs-plumed
 	pkgdesc = GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)
 	pkgver = 2018.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gromacs.org/
 	arch = i686
 	arch = x86_64

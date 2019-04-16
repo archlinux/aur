@@ -1,11 +1,10 @@
-# $Id: PKGBUILD 57440 2011-10-27 20:16:15Z lcarlier $
 # Contributor: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-plumed
 pkgver=2018.6
 _gromacsver=2018.6
 _plumedver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -23,6 +22,10 @@ export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
                             #trajectory file format that can be read by
                             #VMD installation (e.g. AMBER's DCD format).
+
+#Plumed
+export PLUMED_KERNEL=/usr/lib/libplumedKernel.so
+
 prepare() {
   msg2 "Patching plumed for gromacs"
   cd ${srcdir}/gromacs-${pkgver}
