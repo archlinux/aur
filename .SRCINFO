@@ -6,6 +6,7 @@ pkgbase = mkp224o
 	arch = i686
 	arch = x86_64
 	license = CC0
+	depends = libsodium
 	provides = mkp224o
 	source = https://github.com/cathugger/mkp224o/archive/v1.3.0.tar.gz
 	sha256sums = 6c7e43381158ae3527225f03859ceda7ca50ede518182d239440b4c2573b486b
