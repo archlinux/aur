@@ -8,7 +8,6 @@ pkgbase = barrier-git
 	makedepends = python-setuptools
 	depends = hicolor-icon-theme
 	depends = qt5-base
-	depends = barrier-headless-git
 	depends = cmake
 	provides = barrier
 	conflicts = barrier
