@@ -1,8 +1,8 @@
 # Maintainer: Gabriel Guldner <gabriel at guldner dot eu>
 
 pkgname=git-interactive-rebase-tool
-pkgver=0.7.0
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='Native cross platform full feature terminal based sequence editor for git interactive rebase. Written in Rust using ncurses.'
 arch=('x86_64')
 url='https://github.com/MitMaro/git-interactive-rebase-tool'
