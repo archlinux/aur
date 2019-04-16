@@ -1,0 +1,37 @@
+#!/bin/sh
+set -eu
+
+if [ $# -lt 3 ]; then
+    echo "Error: arguments base_url, file_url and target_file required." >&2
+    exit 1
+fi
+
+base_url="$1"
+file_url="$2"
+target_file="$3"
+success=false
+
+rm -f "$target_file"
+
+for i in 1 2 3; do
+    echo "Authenticating for download ..." >&2
+    curl -fsSL -A Mozilla "$base_url/cookie/load-consent.php" > /dev/null
+
+    echo "Downloading ..." >&2
+    curl -fLC - --retry 5 --retry-delay 3 -A Mozilla -o "$target_file" "$file_url"
+
+    echo "Checking ..." >&2
+    if gunzip -c "$target_file" | tar t > /dev/null; then
+        success=true
+        break
+    fi
+
+    if [ $i -lt 3 ]; then
+        rm -f "$target_file"
+        echo "Warning: invalid tarball - retrying." >&2
+    else
+        echo "Error: invalid tarball." >&2
+    fi
+done
+
+[ "$success" = "true" ] && exit 0 || exit 1
