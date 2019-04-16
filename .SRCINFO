@@ -1,6 +1,6 @@
 pkgbase = mythplugins
 	pkgver = 30.0
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = http://www.mythtv.org
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = mythplugins
 	makedepends = python2-pycurl
 	makedepends = python2-oauth
 	makedepends = gdb
-	makedepends = libmariadbclient
+	makedepends = mariadb-libs
 	makedepends = minizip
 	makedepends = python2-lxml
 	makedepends = mysql-python
@@ -34,8 +34,12 @@ pkgbase = mythplugins
 	makedepends = perl-xml-xpath
 	source = mythtv-30.0.tar.gz::https://github.com/MythTV/mythtv/archive/v30.0.tar.gz
 	source = mythweb-30.0.tar.gz::https://github.com/MythTV/mythweb/archive/v30.0.tar.gz
+	source = 001-mythwebcount.patch
+	source = 002-mythweb.patch
 	sha256sums = 7f7ae9b8927659616f181afc12d7ddc26b0a4b0d13982e2586985f4770640b43
 	sha256sums = b0569bdd6f5e6fed959d98ff883912142da42e3ee6ea3984ece116f09a5dc01c
+	sha256sums = 5761623dfcd36ecde723ca1b350f650c13a7d58f8107d4a88f6b0e3888df41d3
+	sha256sums = 86792ef1249df2b679431466312b3654f276aabb96791edf87ba41946cea67c1
 
 pkgname = mythplugins-mytharchive
 	pkgdesc = Create DVDs or archive recorded shows in MythTV
@@ -94,6 +98,6 @@ pkgname = mythplugins-mythweb
 pkgname = mythplugins-mythzoneminder
 	pkgdesc = View CCTV footage from zoneminder in MythTV
 	depends = mythtv
-	depends = libmariadbclient
+	depends = mariadb-libs
 	depends = zoneminder
 
