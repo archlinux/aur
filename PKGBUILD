@@ -3,7 +3,7 @@
 
 _pkgname=py3exiv2
 pkgname=python-exiv2
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="py3exiv2 is a Python3 binding to exiv2, the C++ library for manipulation of EXIF, IPTC and XMP image metadata."
 url="https://launchpad.net/py3exiv2"
@@ -11,15 +11,8 @@ arch=('i686' 'x86_64')
 depends=('python>=3.7' 'boost-libs' 'exiv2')
 makedepends=('boost')
 license=('GPL3')
-source=("http://www.py3exiv2.tuxfamily.org/releases/python3-exiv2-${pkgver}.tar.gz"
-        'undefined-symbol.patch')
-sha512sums=('605200f4676797c588ccb1af1514a91e76452277a71d34c3d91c6429b094fc23cf51b0d891c7bdcfa46f7e4c9f8abee639beed594c3122c5c3cea495b370a978'
-            '74a36f445b1c904e07fa294ee425b8015c58b5e424ba9883345b4808b5d1903892ca7169be07f5b208019622bbc5a017e3bae7dfb3448516c04d85a22377026a')
-
-prepare() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    patch -p1 < ../undefined-symbol.patch
-}
+source=("http://www.py3exiv2.tuxfamily.org/releases/python3-exiv2-${pkgver}.tar.gz")
+sha512sums=('17bd83fe96c836daf01137c99a2e5bfdf7a506e27570b680cf967469963c161c0ef90d7185801128512ed79f6b64b7fe8f720c00db8ecf00e59c29f6e8766b71')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
