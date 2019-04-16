@@ -2,7 +2,7 @@
 pkgname=comma-ide-community
 _pkgname=comma-ide
 _tarname=comma-community
-pkgrel=1
+pkgrel=2
 pkgver=2019.3.0.1
 provides=(${_pkgname})
 pkgdesc="The Integrated Development Environment for Perl 6."

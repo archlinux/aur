@@ -1,7 +1,7 @@
 pkgbase = comma-ide-community
 	pkgdesc = The Integrated Development Environment for Perl 6.
 	pkgver = 2019.3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://commaide.com/
 	install = comma-ide.install
 	arch = any
