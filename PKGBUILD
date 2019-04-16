@@ -9,7 +9,7 @@
 pkgname=mpd-lightest
 pkgver=0.21.7
 _majorver=0.21
-pkgrel=1
+pkgrel=2
 pkgdesc='"Lightest" mpd version with everything disabled. Modify PKGBUILD and enable the features and flags you need'
 url='https://www.musicpd.org/'
 license=('GPL')
@@ -31,6 +31,7 @@ install=mpd.install
 prepare() {
 	cd "${srcdir}/mpd-${pkgver}"
 	patch --input="${srcdir}/../meson.patch"
+	patch -p0 -R --input="${srcdir}/../ffmpeg.patch"
 
 	install -d build
 }
