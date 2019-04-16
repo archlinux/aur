@@ -22,6 +22,11 @@ pkgver () {
   echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git log -1 --format="%h")"
 }
 
+prepare() {
+    cd ${srcdir}/libconnman-qt
+    patch -p1 < ${startdir}/0001-Don-t-use-MeeGo-as-prefix-in-order-to-make-this-a-co.patch
+}
+
 build() {
     cd ${srcdir}/libconnman-qt
     qmake
