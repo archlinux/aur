@@ -3,12 +3,12 @@
 
 pkgname=ssr2json
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A series of scripts for converting SSR links into JSON profiles for shadowsocksr."
-arch=('i386' 'x86_64' 'arm' 'armv7' 'aarch64')
+arch=('i386' 'x86_64' 'arm' 'armv7h' 'aarch64')
 url="https://github.com/fkxxyz/ssr2json"
 license=('GPL3')
-depends=('curl')
+depends=('curl' 'shadowsocksr')
 source=("${pkgname}::git+${url}.git")
 md5sums=('SKIP')
 
