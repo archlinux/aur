@@ -1,7 +1,7 @@
 pkgbase = git-interactive-rebase-tool
 	pkgdesc = Native cross platform full feature terminal based sequence editor for git interactive rebase. Written in Rust using ncurses.
-	pkgver = 0.7.0
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/MitMaro/git-interactive-rebase-tool
 	install = git-interactive-rebase-tool.install
 	arch = x86_64
