@@ -22,16 +22,16 @@ set -xv
 
   cat <<EOF > $pkgdir/usr/share/applications/${_pkgname}.desktop
 [Desktop Entry]
+Version=1.0
+Type=Application
 Exec=/usr/bin/comma %f
 Icon=${_pkgname}
 Terminal=false
 Type=Application
-Name=Comma IDE
-Comment=The Integrated Development Environment for Perl 6
-Categories=Development;IDE;TextEditor;
-MimeType=text/plain;inode/directory;
-StartupNotify=true
-StartupWMClass=code
+Name=Comma Community Edition
+Comment=The Drive to Develop
+Categories=Development;IDE;
+StartupWMClass=jetbrains-comma-ce
 EOF
 
   ln -s /opt/${_tarname}-${pkgver:0:6}/bin/comma.png ${pkgdir}/usr/share/icons/${_pkgname}.png
