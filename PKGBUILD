@@ -7,7 +7,7 @@
 
 pkgname=mythtv
 pkgver=30.0
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
@@ -32,14 +32,29 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/MythTV/$pkgname/archive/v$p
         'mythbackend.service'
         '99-mythbackend.rules'
         'sysusers.d'
+        '001-timezone.patch'
+        '002-in_progress.patch'
+        '003-mythcount.patch'
 )
 sha256sums=('7f7ae9b8927659616f181afc12d7ddc26b0a4b0d13982e2586985f4770640b43'
             '086f573884e4df1ff6e6e8de5a423a9ff900166acfe085abe65b62f32730e4a3'
             'ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333'
-            '470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae')
+            '470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae'
+            '965b279c2a5c51229f0cf42b37e1df0413e22375c9796f85d10f7a5921478a42'
+            'ca0084165572f679bee7813653dd67fdb7eba528e1add56d6bd6ba5394d571ea'
+            '64575e3bf452d473970b1c752152b2404397012c7eb6ba64c0d445234135b5d2')
 
 prepare() {
   cd $pkgname-$pkgver/$pkgname
+
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    msg2 "Applying patch $src..."
+    patch -Np1 < "../../$src"
+  done
 
   find 'bindings/python' 'contrib' 'programs/scripts' -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
 }
