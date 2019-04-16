@@ -1,0 +1,7 @@
+/i3-env/
+/i3-env-*-any.pkg.tar.xz
+/pkg/i3-env/usr/bin/i3-env
+/src/i3-env/
+/pkg/i3-env/.BUILDINFO
+/pkg/i3-env/.MTREE
+/pkg/i3-env/.PKGINFO

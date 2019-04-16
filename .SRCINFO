@@ -1,0 +1,10 @@
+pkgbase = i3-env
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	depends = emuto
+	source = git://github.com/kantord/i3-env.git
+	md5sums = SKIP
+
+pkgname = i3-env
+
