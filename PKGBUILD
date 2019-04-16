@@ -3,7 +3,7 @@
 pkgname=pypy2-revdb
 pkgver=7.1.0
 pkgrel=1
-pkgdesc="RevDB, the Reverse Debugger"
+pkgdesc="PyPy2 compiled with revdb"
 arch=(any)
 url="https://pypy.org"
 license=('MIT')
