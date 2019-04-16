@@ -3,9 +3,7 @@
 #ifndef BSPWMBAR_CONFIG_H_
 #define BSPWMBAR_CONFIG_H_
 
-#define THERMAL_PATH "/sys/class/thermal/thermal_zone0/temp"
-/* k10temp */
-/* #define THERMAL_PATH "/sys/class/hwmon/hwmon1/temp1_input" */
+#define THERMAL_PATH "/sys/class/hwmon/hwmon1/temp1_input"
 
 #define NAME_MAXSZ  32
 #define TITLE_MAXSZ 50
@@ -32,10 +30,7 @@ static const char *colors[] = {
 	"#555555", /* dark gray */
 };
 
-static const char *font_names[] = {
-	"sans-serif:size=10",
-	"emoji:size=10",
-};
+static const char *fontname = "sans-serif:size=10";
 
 /* for modules on the right (float: right;) */
 static Module modules[] = {
