@@ -1,6 +1,6 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=majsoul-plus-bin
-pkgver=1.12.0b3
+pkgver=1.12.0b4
 _pkgver=${pkgver/b/-beta.}
 pkgrel=1
 pkgdesc="Majsoul browser (Binary)"
@@ -22,8 +22,8 @@ source_i686=(
 	"$pkgname-$pkgver-i686.zip::https://github.com/MajsoulPlus/majsoul-plus/releases/download/v$_pkgver/Majsoul_Plus-linux-ia32.zip"
 )
 sha256sums=('be6005b9ae4238d53fcd9fe728a4985502c660adb670d3047b17da4a35f6fe31')
-sha256sums_i686=('b99633465af425362f04f504f062f6854035a697098fca5fb9a3200a111bb9cb')
-sha256sums_x86_64=('137ac7f10c4449ca7ee9e48a3abadd007998dab50d399a5f5d216f62ceb90cd5')
+sha256sums_i686=('5a7b8765a351543359a3f14327e4ff1657b8a1a4a9a41e4105cb8e3b01ada4cf')
+sha256sums_x86_64=('d84278e105d80be95fe087c03cae0bffd6fcf9384bce7494fa9bfd89b4ea9053')
 
 package() {
 	targetarch="x64"

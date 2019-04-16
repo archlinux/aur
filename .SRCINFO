@@ -1,6 +1,6 @@
 pkgbase = majsoul-plus-bin
 	pkgdesc = Majsoul browser (Binary)
-	pkgver = 1.12.0b3
+	pkgver = 1.12.0b4
 	pkgrel = 1
 	url = https://github.com/MajsoulPlus/majsoul-plus
 	arch = i686
@@ -23,10 +23,10 @@ pkgbase = majsoul-plus-bin
 	conflicts = majsoul-plus
 	source = https://github.com/MajsoulPlus/majsoul-plus/raw/master/bin/icons/icon.png
 	sha256sums = be6005b9ae4238d53fcd9fe728a4985502c660adb670d3047b17da4a35f6fe31
-	source_i686 = majsoul-plus-bin-1.12.0b3-i686.zip::https://github.com/MajsoulPlus/majsoul-plus/releases/download/v1.12.0-beta.3/Majsoul_Plus-linux-ia32.zip
-	sha256sums_i686 = b99633465af425362f04f504f062f6854035a697098fca5fb9a3200a111bb9cb
-	source_x86_64 = majsoul-plus-bin-1.12.0b3-x86_64.zip::https://github.com/MajsoulPlus/majsoul-plus/releases/download/v1.12.0-beta.3/Majsoul_Plus-linux-x64.zip
-	sha256sums_x86_64 = 137ac7f10c4449ca7ee9e48a3abadd007998dab50d399a5f5d216f62ceb90cd5
+	source_i686 = majsoul-plus-bin-1.12.0b4-i686.zip::https://github.com/MajsoulPlus/majsoul-plus/releases/download/v1.12.0-beta.4/Majsoul_Plus-linux-ia32.zip
+	sha256sums_i686 = 5a7b8765a351543359a3f14327e4ff1657b8a1a4a9a41e4105cb8e3b01ada4cf
+	source_x86_64 = majsoul-plus-bin-1.12.0b4-x86_64.zip::https://github.com/MajsoulPlus/majsoul-plus/releases/download/v1.12.0-beta.4/Majsoul_Plus-linux-x64.zip
+	sha256sums_x86_64 = d84278e105d80be95fe087c03cae0bffd6fcf9384bce7494fa9bfd89b4ea9053
 
 pkgname = majsoul-plus-bin
 
