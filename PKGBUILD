@@ -2,12 +2,14 @@
 
 pkgname=system76-driver-git
 pkgver=19.04.7.r3.gd5d0ae7
-pkgrel=1
+pkgrel=2
 pkgdesc="System76 Driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
 license=('GPL')
 install=system76-driver-git.install
+conflicts=("system76-driver")
+provides=("system76-driver")
 depends=(
 	'python>=3.6'
 	'python-cffi'

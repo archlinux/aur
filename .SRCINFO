@@ -1,7 +1,7 @@
 pkgbase = system76-driver-git
 	pkgdesc = System76 Driver for System76 computers
 	pkgver = 19.04.7.r3.gd5d0ae7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/system76-driver
 	install = system76-driver-git.install
 	arch = any
@@ -26,6 +26,8 @@ pkgbase = system76-driver-git
 	optdepends = pulseaudio: To apply microphone fix
 	optdepends = xorg-xhost: To enable GUI applications on Wayland
 	optdepends = xorg-xbacklight: To use the backlight service
+	provides = system76-driver
+	conflicts = system76-driver
 	source = system76-driver-git::git+https://github.com/pop-os/system76-driver.git
 	source = galu1.patch
 	source = gtk.patch
