@@ -1,0 +1,27 @@
+pkgbase = mpd-lightest
+	pkgdesc = "Lightest" mpd version with everything disabled. Modify PKGBUILD and enable the features and flags you need
+	pkgver = 0.21.7
+	pkgrel = 1
+	url = https://www.musicpd.org/
+	install = mpd.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	makedepends = boost
+	makedepends = meson
+	makedepends = python-sphinx
+	provides = mpd=0.21.7
+	conflicts = mpd
+	replaces = mpd
+	backup = etc/mpd.conf
+	source = https://www.musicpd.org/download/mpd/0.21/mpd-0.21.7.tar.xz
+	source = mpd.tmpfile
+	source = mpd.conf
+	sha256sums = 512062bc529bee04d4ccfaa2c6e720afc85bb071e49850a096b5ed518b3b412c
+	sha256sums = c1683ba35774c85e16c70e89f7e2ed1c09619512b1a273daabbd5e34d40439bd
+	sha256sums = e213c108cd0e076b5cc07091707ef75d74d9ac8c779d0c0128cd0aa69617f8a0
+
+pkgname = mpd-lightest
+

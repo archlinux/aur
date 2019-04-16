@@ -1,0 +1,13 @@
+diff --unified --recursive --text mpd.old/mpd-0.21.7/meson.build mpd.new/mpd-0.21.7/meson.build
+--- mpd.old/mpd-0.21.7/meson.build	2019-04-15 20:59:22.702665429 +0300
++++ mpd.new/mpd-0.21.7/meson.build	2019-04-15 20:58:46.029169900 +0300
+@@ -368,6 +368,9 @@
+ if enable_database
+   subdir('src/storage')
+   subdir('src/db')
++else
++  db_glue_dep=dependency('', required: false)
++  storage_glue_dep=dependency('', required: false)
+ endif
+ 
+ if neighbor_glue_dep.found()
