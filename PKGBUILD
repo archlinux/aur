@@ -1,6 +1,6 @@
 # Maintainer: agilob <archlinux@agilob.net>
 pkgname=tutanota-desktop-linux
-pkgver=3.50.3
+pkgver=3.50.4
 pkgrel=1
 pkgdesc='Official Tutanota email client'
 arch=('x86_64')
