@@ -9,6 +9,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/cathugger/mkp224o"
 license=('CC0')
 provides=('mkp224o')
+# To build and run in clean chroot
+depends=('libsodium')
 
 source=(https://github.com/cathugger/${pkgname}/archive/v${pkgver}.tar.gz)
 
