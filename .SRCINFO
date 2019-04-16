@@ -1,13 +1,13 @@
 pkgbase = debian-whois-mkpasswd
 	pkgdesc = A features-rich front end to the password encryption function crypt(3).
-	pkgver = 5.4.1
+	pkgver = 5.4.2
 	pkgrel = 1
 	url = http://packages.debian.org/sid/whois
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://ftp.de.debian.org/debian/pool/main/w/whois/whois_5.4.1.tar.xz
-	sha256sums = 3ee6591fb14c103791430a8e6eb3d4c38a9f52aad799ea58c94250bd6985ec50
+	source = http://ftp.de.debian.org/debian/pool/main/w/whois/whois_5.4.2.tar.xz
+	sha256sums = eee33a3b3a56912fbf115a7dd24ed60314e2707a3ad6aa604ca2752c1ed01f57
 
 pkgname = debian-whois-mkpasswd
 
