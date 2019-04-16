@@ -1,0 +1,20 @@
+pkgbase = libbacktrace-git
+	pkgdesc = Library to produce symbolic backtraces
+	pkgver = r21.5a99ff7
+	pkgrel = 1
+	url = https://github.com/ianlancetaylor/libbacktrace
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = libunwind
+	depends = gcc-libs
+	depends = zlib
+	provides = libbacktrace
+	conflicts = libbacktrace
+	options = staticlibs
+	source = git+https://github.com/ianlancetaylor/libbacktrace.git
+	sha256sums = SKIP
+
+pkgname = libbacktrace-git
+
