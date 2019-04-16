@@ -1,54 +1,50 @@
-# Maintainer: Francisco Soto <ebobby(at)ebobby(dot)org>
+# Maintainer: Tony Lambiris <tony@criticalstack.com>
 
-_pkgname=system76
-_pkgbase=system76-power
 pkgname=system76-power-git
-pkgver=113
+pkgver=r160.1c347b8
 pkgrel=1
 pkgdesc="System76 Power Management"
 arch=('any')
 url="https://github.com/pop-os/system76-power"
 license=('GPL')
-install="${pkgname}.install"
+install=system76-power-git.install
 conflicts=("system76-power")
-makedepends=('git')
-depends=(
-  'dbus'
-  'systemd'
-  'system76-dkms'
-)
-makedepends=('rust')
-source=(
-  'system76::git+https://github.com/pop-os/system76-power.git#branch=master'
-  'graphics.patch'
-  )
-sha1sums=(
-  'SKIP'
-  'e486644709099b6348dc96d5f468ae289840dade'
-)
+provides=("system76-power")
+makedepends=('git' 'rust')
+depends=('dbus' 'systemd' 'system76-dkms')
+source=("${pkgname}::git+https://github.com/pop-os/system76-power.git"
+        "graphics.patch")
+sha256sums=('SKIP'
+            'c951b97d420bd3e26178b404a24ae334cae54f96ca4930f53ce1d0bc8f83d1dc')
 
 pkgver() {
-  cd ${srcdir}/${_pkgname}
-  git rev-list --count HEAD
+    cd ${pkgname}
+
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd ${pkgname}
+
+    patch -p1 -i ${srcdir}/graphics.patch
 }
 
 build() {
-  cd ${startdir}
-  patch -p0 < ${startdir}/graphics.patch
+    cd ${pkgname}
 
-  cd ${srcdir}/${_pkgname}
+    #patch -p0 < ${srcdir}/graphics.patch
 
-  # Build and install base package
-  cargo build --release
+    # Build and install base package
+    cargo build --release
 }
 
 package() {
-  # Install daemons
-  install -Dm755 ${srcdir}/${_pkgname}/target/release/system76-power ${pkgdir}/usr/bin/system76-power
+    # Install daemons
+    install -Dm755 ${srcdir}/${pkgname}/target/release/system76-power ${pkgdir}/usr/bin/system76-power
 
-  # Install systemd unit files
-  install -Dm644 ${srcdir}/${_pkgname}/debian/system76-power.service ${pkgdir}/usr/lib/systemd/system/system76-power.service
+    # Install systemd unit files
+    install -Dm644 ${srcdir}/${pkgname}/debian/system76-power.service ${pkgdir}/usr/lib/systemd/system/system76-power.service
 
-  # Install scripts and configuration
-  install -Dm755 ${srcdir}/${_pkgname}/data/system76-power.conf ${pkgdir}/usr/share/dbus-1/system.d/system76-power.conf
+    # Install scripts and configuration
+    install -Dm755 ${srcdir}/${pkgname}/data/system76-power.conf ${pkgdir}/usr/share/dbus-1/system.d/system76-power.conf
 }

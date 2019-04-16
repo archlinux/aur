@@ -1,21 +1,25 @@
---- src/system76/src/graphics.rs	2018-09-11 20:08:40.269995504 -0700
-+++ src/system76/src/graphics.rs.new	2018-09-11 20:10:14.403327798 -0700
-@@ -12,10 +12,10 @@
+diff --git a/src/graphics.rs b/src/graphics.rs
+index 6ff9020..e9a44ad 100644
+--- a/src/graphics.rs
++++ b/src/graphics.rs
+@@ -14,11 +14,11 @@ blacklist nouveau
  blacklist nvidia
  blacklist nvidia-drm
  blacklist nvidia-modeset
+-alias i2c_nvidia_gpu off
 -alias nouveau off
 -alias nvidia off
 -alias nvidia-drm off
 -alias nvidia-modeset off
++#alias i2c_nvidia_gpu off
 +#alias nouveau off
 +#alias nvidia off
 +#alias nvidia-drm off
 +#alias nvidia-modeset off
  "#;
  
- pub struct Graphics {
-@@ -135,12 +135,12 @@
+ pub struct GraphicsDevice {
+@@ -204,12 +204,12 @@ impl Graphics {
                  }
              }
  
