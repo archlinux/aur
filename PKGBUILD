@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libsoup
-pkgver=2.66.0
+pkgver=2.66.1
 pkgrel=1
 pkgdesc="HTTP client/server library (mingw-w64)"
 arch=(any)
@@ -10,15 +10,15 @@ depends=('mingw-w64-glib2' 'mingw-w64-glib-networking' 'mingw-w64-sqlite' 'mingw
 makedepends=('mingw-w64-meson')
 options=(!strip !buildflags staticlibs)
 source=("http://download.gnome.org/sources/libsoup/${pkgver%.*}/libsoup-$pkgver.tar.xz"
-  "https://gitlab.gnome.org/GNOME/libsoup/merge_requests/52.diff")
-sha256sums=('51adc2ad6c8c670cf6339fcfa88190a3b58135a9cddd21f623a0f80fdb9c8921'
-  'c167afadbf9fdca57b1d211fd6b3a357c9290f0f85b067b955f6a56af7dbf660')
+  "https://gitlab.gnome.org/GNOME/libsoup/merge_requests/60.diff")
+sha256sums=('4a2cb6c1174540af13661636035992c2b179dfcb39f4d3fa7bee3c7e355c43ff'
+  '23430cd0a5dd30e3b41fde67e0c815cf06276324147603417bb480f1d3094106')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "libsoup-$pkgver"
-  patch -Np1 -i "$srcdir/52.diff"
+  patch -Np1 -i "$srcdir/60.diff"
 }
 
 build() {
