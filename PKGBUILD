@@ -1,6 +1,6 @@
 # maintainer: odknt <oda.kenta.hj at gmail.com>
 pkgname=bspwmbar
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 arch=(x86_64)
 license=('ISC')
@@ -8,7 +8,7 @@ url='https://github.com/odknt/bspwmbar'
 depends=(bspwm alsa-lib libxft fontconfig)
 source=("https://github.com/odknt/bspwmbar/archive/v${pkgver}.tar.gz"
         'config.h')
-sha256sums=('a232b9e95825895a5ccee34c2e36a5931d47b9f6c9d627d0fe9b1773d056d08e'
+sha256sums=('7c29713e33213a940d8b41a2579356c112744e166bef8c9f0fa9cb615948c916'
             'SKIP')
 
 prepare() {
