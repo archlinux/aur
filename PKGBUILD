@@ -2,7 +2,7 @@
 
 pkgname=system76-driver-git
 pkgver=19.04.7.r3.gd5d0ae7
-pkgrel=2
+pkgrel=3
 pkgdesc="System76 Driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
@@ -64,6 +64,9 @@ prepare() {
 
 	# Use xhost for GUI apps on Wayland
 	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/wayland.patch
+
+    # Fix-up locations of daemon paths in service files
+    find . -type f -name '*.service' -exec sed -i -re "/^ExecStart/s/system76-driver/system76-driver-git/g" "{}" \;
 }
 
 package() {

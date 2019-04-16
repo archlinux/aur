@@ -1,7 +1,7 @@
 pkgbase = system76-driver-git
 	pkgdesc = System76 Driver for System76 computers
 	pkgver = 19.04.7.r3.gd5d0ae7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pop-os/system76-driver
 	install = system76-driver-git.install
 	arch = any
