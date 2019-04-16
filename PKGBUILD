@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=netcap-git
-pkgver=v0.3.9.r10.g9261ff0
+pkgver=v0.3.9.r13.g03fb8db
 pkgrel=1
 pkgdesc='A framework for secure and scalable network traffic analysis'
 url="https://github.com/dreadl0ck/netcap"
