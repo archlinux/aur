@@ -1,7 +1,7 @@
 # Maintainer: fenuks
 
 _pkgver=0.22
-_pkgrel=01
+_pkgrel=04
 pkgname=gwc
 pkgver=${_pkgver}_${_pkgrel}
 pkgrel=1
@@ -18,7 +18,7 @@ conflicts=("${pkgname}")
 # install=$pkgname.install
 source=("https://github.com/AlisterH/gwc/archive/${_pkgver}-${_pkgrel}.tar.gz")
 
-sha256sums=('97b1cb38640ec866b0b1be73f074296e1ddb7d4749bb288bea61f0813e2d2529')
+sha256sums=('2e1bb6d839a683d36c1d64775c847dba77222dca1c1205350d34196a20527022')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${_pkgver}-${_pkgrel}"
