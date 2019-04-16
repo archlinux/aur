@@ -6,6 +6,7 @@ pkgrel=0
 pkgdesc="ln -s /var/lib/snapd/snap /snap"
 arch=(any)
 license=(MIT)
+url='https://github.com/KSXGitHub/snapd-fs.pkgbuild'
 depends=(snapd)
 source=(LICENSE.md)
 sha512sums=(SKIP)
