@@ -2,7 +2,7 @@
 
 pkgname=neru-icon-classic-theme
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Classic theme icons Neru"
 arch=('any')
 url="https://github.com/chistota/neru-icon-classic-theme"
@@ -32,6 +32,15 @@ prepare() {
 	ln -s edit-find.svg neru-classic-light/32x32/apps/gtk-find.svg
 	ln -s applications-multimedia.svg neru-classic-light/32x32/apps/gmtpicon.svg
 	ln -s fontforge.svg neru-classic-light/32x32/apps/org.fontforge.FontForge.svg
+
+	ln -s system-file-manager.svg neru-classic-light/32x32/apps/Insight-FileManager.svg
+	ln -s system-file-manager.svg neru-classic-light/32x32/apps/WorkerIcon48.svg
+	ln -s system-file-manager.svg neru-classic-light/32x32/apps/file-manager.svg
+	ln -s system-file-manager.svg neru-classic-light/32x32/apps/filerunner.svg
+	ln -s system-file-manager.svg neru-classic-light/32x32/apps/kfm.svg
+	ln -s system-file-manager.svg neru-classic-light/32x32/apps/nautilus-actions-config-tool.svg
+	ln -s system-file-manager.svg neru-classic-light/32x32/apps/redhat-filemanager.svg
+	ln -s system-file-manager.svg neru-classic-light/32x32/apps/user-file-manager.svg
 
 
 	gtk-update-icon-cache neru-classic-light/
