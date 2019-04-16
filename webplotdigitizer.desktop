@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=WebPlotDigitizer
+Comment=Web based tool to extract data from plots, images, and maps
+GenericName=Web Plot Digitizer
+Exec=webplotdigitizer %U
+Icon=webplotdigitizer
+Type=Application
+StartupNotify=true
+Categories=Education;
+StartupWMClass=webplotdigitizer
+X-Desktop-File-Install-Version=0.24
