@@ -19,7 +19,6 @@ pkgver() {
 
 package() {
     cd "$srcdir/$_pkgname"
-    echo "***** \$srcdir/\$_pkgname is $(pwd)"
     autoconf
     ./configure
     sed -i 's/LDLIBS = $(LIBS) -ltermcap -lm -lpthread/LDLIBS = $(LIBS) -ltermcap -lm -lpthread -lcurses/' Makefile
@@ -28,18 +27,12 @@ package() {
     make install PREFIX="$pkgdir/"
 
     # Move bin to usr/bin
-    echo "***** \$pkgdir is ${pkgdir}"
-    echo "***** moving /bin"
     mkdir -p "${pkgdir}/usr/bin"
-    find "$pkgdir/bin" -type f
     find "$pkgdir/bin" -type f -exec mv '{}' "$pkgdir/usr/bin/" \;
     rm -r "$pkgdir/bin"
 
     # Move share to usr/share
-    echo "***** \$pkgdir is ${pkgdir}"
-    echo "***** moving /share"
     mkdir -p "${pkgdir}/usr/share/man/man1"
-    find "$pkgdir/share" -type f
     find "$pkgdir/share" -type f -exec mv '{}' "$pkgdir/usr/share/man/man1" \;
     rm -r "$pkgdir/share"
 }
