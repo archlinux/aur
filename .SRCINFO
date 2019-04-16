@@ -1,0 +1,17 @@
+pkgbase = python2-revdb-hg
+	pkgdesc = RevDB, the Reverse Debugger
+	pkgver = r48.f34e846835e3
+	pkgrel = 1
+	url = https://bitbucket.org/pypy/revdb
+	arch = any
+	license = UNKNOWN
+	makedepends = python2-setuptools
+	makedepends = mercurial
+	depends = pypy2-revdb
+	provides = python2-revdb
+	conflicts = python2-revdb
+	source = python2-revdb-hg::hg+https://bitbucket.org/pypy/revdb
+	md5sums = SKIP
+
+pkgname = python2-revdb-hg
+
