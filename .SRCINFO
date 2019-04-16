@@ -1,4 +1,5 @@
 pkgbase = soundfonts-aur-meta
+	pkgdesc = Installs all the soundfont packages in the AUR
 	pkgver = 0.0.1
 	pkgrel = 1
 	arch = any

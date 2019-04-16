@@ -1,7 +1,7 @@
 pkgname=soundfonts-aur-meta
 pkgver=0.0.1
 pkgrel=1
-description="Installs various soundfont AUR packages"
+pkgdesc="Installs all the soundfont packages in the AUR"
 arch=('any')
 url=""
 license=('custom:unknown')
