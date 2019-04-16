@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Type = Package
+Target = zeebe-modeler
+
+[Action]
+Description = Registering XDG entries for Zeebe Modeler
+When = PostTransaction
+Depends = xdg-utils
+Exec = /bin/sh -c "/opt/zeebe-modeler/support/xdg_register.sh"

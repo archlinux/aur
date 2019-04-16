@@ -1,0 +1,12 @@
+diff --unified --recursive --text zeebe-modeler-0.6.2-linux-x64.orig/support/xdg_register.sh zeebe-modeler-0.6.2-linux-x64.new/support/xdg_register.sh
+--- zeebe-modeler-0.6.2-linux-x64.orig/support/xdg_register.sh	2019-03-05 19:06:32.000000000 +0600
++++ zeebe-modeler-0.6.2-linux-x64.new/support/xdg_register.sh	2019-04-15 00:13:34.344283959 +0600
+@@ -25,7 +25,7 @@
+ 
+ ICON_NAME=zeebe-modeler
+ TMP_DIR=`mktemp --directory`
+-DESKTOP_FILE=$TMP_DIR/zeeber-modeler.desktop
++DESKTOP_FILE=$TMP_DIR/zeebe-modeler.desktop
+ cat << EOF > $DESKTOP_FILE
+ [Desktop Entry]
+ Version=1.0
