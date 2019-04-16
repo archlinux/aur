@@ -1,19 +1,12 @@
-pkgbase = ipfs-fuse-daemon
-	pkgdesc = systemd daemon to mount ipfs as a fuse
-	pkgver = 0.0.2
+pkgbase = snapd-fs
+	pkgdesc = ln -s /var/lib/snapd/snap /snap
+	pkgver = 0.0.0
 	pkgrel = 0
-	url = https://github.com/KSXGitHub/ipfs-fuse-daemon.pkgbuild
 	arch = any
 	license = MIT
-	depends = bash
-	depends = go-ipfs
-	depends = fuse2
-	source = start-ipfs-fuse-daemon.sh
-	source = ipfs-fuse.service
+	depends = snapd
 	source = LICENSE.md
 	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
 
-pkgname = ipfs-fuse-daemon
+pkgname = snapd-fs
 
