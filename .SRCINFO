@@ -1,0 +1,24 @@
+pkgbase = perl-app-prt
+	pkgdesc = Command line tool for Perl code refactoring
+	pkgver = 0.20
+	pkgrel = 1
+	url = https://metacpan.org/release/App-PRT
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-class
+	checkdepends = perl-test-mock-guard
+	makedepends = perl-module-build
+	depends = perl
+	depends = perl-class-load
+	depends = perl-file-find-rule
+	depends = perl-io-interactive
+	depends = perl-path-class
+	depends = perl-ppi
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/H/HI/HITODE/App-PRT-0.20.tar.gz
+	md5sums = 8719ccd7a7c431014dcf6dbbae87c9fb
+	sha512sums = d6ca9354610f75cc5dd691c2a8bce988f7b96f487272b68e76c1d75c10ef2f424996cf27541c97a0c305fc791029434002410a5dd301376f317d530d739a976f
+
+pkgname = perl-app-prt
+
