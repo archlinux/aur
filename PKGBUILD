@@ -3,7 +3,7 @@
 _prefix=/opt/Unity
 
 pkgname=unity-editor-windows
-pkgver=2018.3.12f1
+pkgver=2019.1.0f2
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the Windows platform"
 arch=('x86_64')
@@ -11,8 +11,8 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor')
 makedepends=('cpio')
-source=("2018.3.12f1.3.12f1.pkg::https://download.unity3d.com/download_unity/8afd630d1f5b/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-2018.3.12f1.pkg")
-md5sums=("be16e811ffd10b46fe84e26b6fa6566f")
+source=("2019.1.0f2.1.0f2.pkg::https://beta.unity3d.com/download/292b93d75a2c/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-2019.1.0f2.pkg")
+md5sums=("5cff0c9540d7f552273bf7abaf4befec")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
