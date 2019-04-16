@@ -1,7 +1,7 @@
 # Maintainer: Marcin Mielniczuk <marmistrz dot dev at zoho dot eu>
 
 pkgname=ibus-libzhuyin
-pkgver=1.8.93
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="New Zhuyin engine based on libzhuyin for IBus"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/libzhuyin/ibus-libzhuyin"
 depends=('ibus' 'opencc' 'python-xdg')
 makedepends=('git' 'intltool' 'gnome-common')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/libzhuyin/ibus-libzhuyin/archive/$pkgver.tar.gz")
-sha512sums=('2eddbb9227a303fb33ad6d5ade1eba38a8dc87bcf305fe13f11a16b4256c4952c71e24bd182d333eff1b9d2bd6b0bd320e7c8898de0ffd7c40baaf33c6cd11c4')
+sha512sums=('6ad2d4768e0f5d605b66dd5133b55940972a9f92c8257f09b53a84cf80a07eabb9f2f9c354de66d4544321f0bdbb763b7401d28d468934b12a20fdbc7dd75b55')
 
 build() {
   cd $pkgname-$pkgver
