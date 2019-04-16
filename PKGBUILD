@@ -2,7 +2,7 @@
 
 pkgname=system76-power-git
 pkgver=r160.1c347b8
-pkgrel=1
+pkgrel=2
 pkgdesc="System76 Power Management"
 arch=('any')
 url="https://github.com/pop-os/system76-power"
@@ -26,13 +26,14 @@ pkgver() {
 prepare() {
     cd ${pkgname}
 
-    patch -p1 -i ${srcdir}/graphics.patch
+    patch --no-backup-if-mismatch -Np1 -i ${srcdir}/graphics.patch
+
+    # Fix-up locations of daemon paths in service files
+    find . -type f -name '*.service' -exec sed -i -re "/^ExecStart/s/system76-driver/system76-power-git/g" "{}" \;
 }
 
 build() {
     cd ${pkgname}
-
-    #patch -p0 < ${srcdir}/graphics.patch
 
     # Build and install base package
     cargo build --release
