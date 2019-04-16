@@ -7,8 +7,8 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt       # Build kernel with a different name
-_pkgver=5.0.5
-_rtpatchver=rt3
+_pkgver=5.0.7
+_rtpatchver=rt5
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=(x86_64)
@@ -27,7 +27,6 @@ source=(
   90-${pkgbase}.hook  # pacman hook for initramfs regeneration
   ${pkgbase}.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0001-nf_tables-fix-set-double-free-in-abort-path.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -37,16 +36,15 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('5fbd807bf2aa0a80a0bf165692d89aaf3463d03043419b0a9b104f55f12c94d0'
+sha256sums=('16e177662b9fc7255bfc51018513979f6effcbe52e459c543aa83a5b15ef54ec'
             'SKIP'
-            '4b4e2ac4c77c2780215dcbb96c00b3c6cab01e4cd9be06dd4bae11b5831b4b9f'
+            '3d8dd432da73196488991d7f289a6e96e3c36df4d46ec76c468e30593e93ac14'
             'SKIP'
-            '9e4a6f0233fb9721b5cafff7e95f59149f14acbc958a7956bcfda0c9c5db7fd4'
+            'fee121cf51bfe83544aa7705b985b0204c814b19b3e3423de4d859ca58b9c2f8'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '75aa8dd708ca5a0137fbf7cddc9cafefe6aac6b8e0638c06c156d412d05af4bc'
-            '1ad551e3ef276c3ee9c9ebb5f0475d5f5fce0f13fed8ab083a1daf5fe0577e41')
+            '75aa8dd708ca5a0137fbf7cddc9cafefe6aac6b8e0638c06c156d412d05af4bc')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -83,7 +81,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules htmldocs
+  make bzImage modules
 }
 
 _package() {
@@ -233,18 +231,6 @@ _package-docs() {
   msg2 "Installing documentation..."
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
-
-  msg2 "Removing doctrees..."
-  rm -r "$builddir/Documentation/output/.doctrees"
-
-  msg2 "Moving HTML docs..."
-  local src dst
-  while read -rd '' src; do
-    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    mkdir -p "${dst%/*}"
-    mv "$src" "$dst"
-    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  done < <(find "$builddir/Documentation/output" -type f -print0)
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
