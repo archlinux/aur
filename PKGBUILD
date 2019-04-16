@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/jim-easterbrook/pywws"
 license=('GPL')
 makedepends=('python-pip')
-depends=('python-tzlocal' 'python-libusb')
+depends=('python-tzlocal' 'python-libusb1')
 options=(!emptydirs)
 source=(https://pypi.io/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz
 'service')
