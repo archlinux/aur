@@ -1,14 +1,14 @@
 # Maintainer: Tomas Kral <tomas.kral@gmail.com>
 
 pkgname=rememberthemilk
-pkgver=1.1.10
+pkgver=1.1.12
 pkgrel=1
 pkgdesc="The smart to-do app for busy people."
 arch=('x86_64')
 url="https://www.rememberthemilk.com"
 license=('custom:none' 'MIT' 'Apache')
 source=("https://www.rememberthemilk.com/download/linux/debian/pool/main/r/rememberthemilk/rememberthemilk_${pkgver}_amd64.deb")
-sha256sums=('bca3ec91d8a780719e92bd18ab310f8b0c63bbf48df4ecc1db4e4db07c3fbfb4')
+sha256sums=('18101529e5e9819ff76ec7f85b7c5a0ba0dcb4f40e3a2f33ba13e9c3d8805a1f')
 depends=('gconf' 'gtk2' 'gtk3' 'nss')
 
 prepare() {
