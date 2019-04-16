@@ -1,6 +1,6 @@
 ;;; phreeqc.el --- Phreeqe code editing commands for Emacs
 
-;; Copyright (C) 2000,2015 dr. thomas baumann
+;; Copyright (C) 2000,2017 dr. thomas baumann
 ;; Author: Dr. Thomas Baumann
 ;; Keywords: languages
 
@@ -29,7 +29,7 @@
 ;; for automated loading add
 ;;
 ;; (autoload 'phreeqc-mode "phreeqc" "PhreeqC editing mode" t)
-;; (setq auto-mode-alist (append '(("\\.phrq$" . phreeqc-mode)) auto-mode-alist))
+;; (setq auto-mode-alist (append '(("\\.\\(phrq\\|pqi\\)$" . phreeqc-mode)) auto-mode-alist))
 ;;
 ;; to your .emacs file
 
@@ -53,7 +53,7 @@
 	:group 'phreeqc)
 
 (defcustom phreeqc-manual-fn "/usr/share/doc/phreeqc/Phreeqc_3_2013_manual.pdf"
-	"Name and path of the default thermodynamic database."
+	"Name and path of the PhreeqC manual."
 	:type 'string
 	:group 'phreeqc)
 
@@ -61,8 +61,6 @@
 	"Name of the debug buffer. If 0 then process runs asychronously" 
 	:type 'string
 	:group 'phreeqc)
-
-
 
 (defcustom phreeqc-indent 4
   "*This variable gives the indentation in Phreeqc-Mode."
@@ -397,12 +395,12 @@ with no args, if that value is non-nil."
                                      (phreeqc-goto-error)
                                    (font-lock-fontify-buffer)
 ;;                                   (folding-mode t)
-;;                                   (folding-shift-in)
+;;                                   (folding-shift-in t)
                                    )
                                  (font-lock-fontify-buffer)) t)
 
   (read-only-mode t)
-  (auto-revert-mode t)
+;;  (auto-revert-mode t)
   (if (phreeqc-run-fail-p)
       (phreeqc-goto-error)
     ;;    (folding-mode t)
@@ -445,7 +443,7 @@ with no args, if that value is non-nil."
   "Move to next simulation in folded output mode."
   (interactive)
   (if folding-stack
-      (folding-shift-out))
+      (folding-shift-out t))
   (next-line)
   (folding-next-visible-heading)
   (folding-shift-in))
@@ -454,9 +452,9 @@ with no args, if that value is non-nil."
   "Move to previous simulation in folded output mode."
   (interactive)
   (if folding-stack
-      (folding-shift-out))
+      (folding-shift-out t))
   (folding-next-visible-heading 1)
-  (folding-shift-in))
+  (folding-shift-in t))
   
 
 (defun phreeqc-compile ()
