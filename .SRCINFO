@@ -1,0 +1,16 @@
+pkgbase = perl-file-zglob
+	pkgdesc = Extended globs for perl
+	pkgver = 0.11
+	pkgrel = 1
+	url = https://metacpan.org/pod/File::Zglob
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/File-Zglob-0.11.tar.gz
+	md5sums = fca426b60326cb8465e54a1ed82dc8cf
+	sha512sums = 19d0f40c4dd9ca46b92acb0ffc75dc357f21fae6f4b6927d107985d5427d0f5b7264f5052931377b27eab61a13eba404f2129dccabb4f5a140ee02c726b98701
+
+pkgname = perl-file-zglob
+
