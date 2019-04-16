@@ -1,15 +1,16 @@
 pkgbase = ssr2json
 	pkgdesc = A series of scripts for converting SSR links into JSON profiles for shadowsocksr.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fkxxyz/ssr2json
 	arch = i386
 	arch = x86_64
 	arch = arm
-	arch = armv7
+	arch = armv7h
 	arch = aarch64
 	license = GPL3
 	depends = curl
+	depends = shadowsocksr
 	source = ssr2json::git+https://github.com/fkxxyz/ssr2json.git
 	md5sums = SKIP
 
