@@ -1,23 +1,31 @@
-# Contributor: masutu <masutu dot arch at googlemail dot com>
-# Maintainer: masutu <masutu dot arch at googlemail dot com>
+# Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=dino
-pkgver=0.2.8
+pkgver=0.0+433+g76c7dec
+_commit=76c7dec75f052cfaf9c3b469ba9d658a71075b6b
 pkgrel=1
-pkgdesc="A MIDI sequencer for GNU/Linux."
-arch=('i686' 'x86_64')
-url="http://dino.nongnu.org/"
-license=('GPL')
-depends=(libglademm libxml++ lash)
-source=(http://download.savannah.nongnu.org/releases-noredirect/dino/$pkgname-$pkgver.tar.gz)
-md5sums=('299d72ec0dbf66eb207bedf0bc19f9ee')
+pkgdesc='Modern XMPP client written in GTK+/Vala'
+arch=(i686 x86_64)
+url=https://dino.im
+license=(GPL3)
+depends=(glib2 glib-networking gtk3 gpgme libgee libgcrypt qrencode libsoup sqlite)
+makedepends=(git cmake gettext ninja vala)
+conflicts=(dino-git)
+source=(git+https://github.com/dino/dino#commit=$_commit)
+sha512sums=('SKIP')
+
+pkgver() {
+  cd dino
+  git describe --tags | sed 's#-#+#g'
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd dino
   ./configure --prefix=/usr
   make
 }
+
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
-} 
+  cd dino
+  make DESTDIR="$pkgdir" install
+}
