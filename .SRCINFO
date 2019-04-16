@@ -1,11 +1,12 @@
 pkgbase = plumed
 	pkgdesc = An open source plugin for free energy calculations in molecular systems which works together with some of the most popular molecular dynamics engines.
 	pkgver = 2.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.plumed.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = vim
 	depends = lapack
 	depends = zlib
 	depends = gsl
