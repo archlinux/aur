@@ -1,66 +1,73 @@
-
+#Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 pkgname=shaderc-git
-pkgver=r540.94f21e8.glslang_r3151
+pkgver=v2018.0.62.g59a49bc
 pkgrel=1
-pkgdesc="A collection of tools, libraries and tests for shader compilation"
-url="https://github.com/google/shaderc"
-license=("Apache")
+pkgdesc="A collection of tools, libraries and tests for shader compilation. (GIT version)"
+url='https://github.com/google/shaderc'
+license=('Apache')
+arch=('x86_64')
+depends=('glslang'
+         'spirv-tools'
+         )
+makedepends=('git'
+             'ninja'
+             'cmake'
+             'python'
+             'asciidoctor'
+             )
+conflicts=('shaderc')
+provides=('shaderc'
+          'shaderc-git'
+          'libshaderc_shared.so'
+          )
 
-arch=("x86_64")
-makedepends=("git" "ninja" "cmake" "python2" "asciidoctor")
-depends=("gcc-libs")
-conflicts=("shaderc")
-provides=("shaderc" "glslc" "libshaderc_shared.so")
+source=('git+https://github.com/google/shaderc.git'
+        'fix-glslang-link-order.patch::https://patch-diff.githubusercontent.com/raw/google/shaderc/pull/463.patch'
+        )
 
-source=("shaderc::git+https://github.com/google/shaderc.git"
-        "glslang::git+https://github.com/KhronosGroup/glslang.git"
-        "spirv-tools::git+https://github.com/KhronosGroup/SPIRV-Tools.git"
-        "spirv-headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git")
-
-sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
+sha256sums=('SKIP'
+            'SKIP'
+            )
 
 pkgver() {
-  cd "$srcdir/glslang"
-  glslang_rev="$(git rev-list --count HEAD)"
-
-  cd "$srcdir/shaderc"
-  printf "r%s.%s.glslang_r$glslang_rev" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd shaderc
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 prepare() {
-  cd "$srcdir/shaderc"
+  mkdir -p build
 
-  ln -s -f "$srcdir/glslang" third_party/
-  ln -s -f "$srcdir/spirv-tools" third_party/
-  ln -s -f "$srcdir/spirv-headers" third_party/
+  cd shaderc
+  patch -p1 -i "${srcdir}/fix-glslang-link-order.patch"
+
+  # de-vendor libs and disable git versioning
+  sed '/examples/d;/third_party/d' -i CMakeLists.txt
+  sed '/build-version/d' -i glslc/CMakeLists.txt
+  cat <<- EOF > glslc/src/build-version.inc
+"${pkgver}\\n"
+"$(pacman -Q spirv-tools|cut -d \  -f 2|sed 's/-.*//')\\n"
+"$(pacman -Q glslang|cut -d \  -f 2|sed 's/-.*//')\\n"
+EOF
 }
 
 build() {
-  mkdir -p "$srcdir/build"
-  cd "$srcdir/build"
-
-  cmake "$srcdir/shaderc" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
-    -DCMAKE_INSTALL_LIBDIR="lib" \
-    -DSHADERC_ENABLE_SPVC=off \
-    -DSHADERC_SKIP_TESTS=on \
-    -DSKIP_GLSLANG_INSTALL=on \
-    -DSKIP_SPIRV_TOOLS_INSTALL=on \
-    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-    -DPYTHON_EXE=/usr/bin/python2 \
+  cd build
+  cmake ../shaderc \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DSHADERC_SKIP_TESTS=ON \
+    -DBUILD_SHARED_LIBS=ON \
     -GNinja
 
   ninja
 
-  cd "$srcdir/shaderc/glslc"
+  cd "${srcdir}/shaderc/glslc"
   asciidoctor -b manpage README.asciidoc -o glslc.1
 }
 
 package() {
-  cd "$srcdir/build"
+  DESTDIR="${pkgdir}" ninja -C build  install
 
-  ninja install
-
-  install -D -m644 -t "${pkgdir}/usr/share/man/man1/" "$srcdir/shaderc/glslc/glslc.1"
+  install -Dm644 -t "${pkgdir}/usr/share/man/man1/" "$srcdir/shaderc/glslc/glslc.1"
 }
