@@ -3,7 +3,7 @@
 
 _pkgname=hydrogen
 pkgname="${_pkgname}-git"
-pkgver=1.0.0.beta1.r3298.e9bd3c7c
+pkgver=1.0.0.beta1.r3380.51cddb05
 pkgrel=1
 pkgdesc="An advanced drum machine (git version)"
 arch=('i686' 'x86_64')
@@ -60,6 +60,7 @@ build() {
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DWANT_LASH=OFF \
     -DWANT_LRDF=ON \
     -DWANT_DEBUG=OFF \
@@ -80,7 +81,7 @@ package() {
 
   # install docs
   install -t "${pkgdir}/usr/share/doc/${pkgname}" \
-    -vDm644 ../{ChangeLog,DEVELOPERS,INSTALL.txt,README.txt}
+    -vDm644 ../{ChangeLog,DEVELOPERS,INSTALL.md,README.txt}
   # install html manual & tutorial
   cd "${srcdir}/${_pkgname}/data/doc"
   install -Dm644 *.html -t "${pkgdir}/usr/share/${_pkgname}/data/doc"
