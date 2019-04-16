@@ -1,6 +1,6 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=majsoul-plus
-pkgver=1.12.0b3
+pkgver=1.12.0b4
 _pkgver=${pkgver/b/-beta.}
 pkgrel=1
 pkgdesc="Majsoul browser, with more features"
@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('electron')
 makedepends=('npm' 'imagemagick' 'gulp')
 source=("https://github.com/MajsoulPlus/majsoul-plus/archive/v$_pkgver.tar.gz")
-sha256sums=('3dde01fb24e025485ff4bb95bee7e23d01b13b9712a0b4e2e83d9e0f7ffd57fd')
+sha256sums=('537f5bb4c20ed957d536f0240c513529a44fef519e72dde66e4fdd68c131006b')
 conflicts=("majsoul-plus-bin")
 
 prepare() {
