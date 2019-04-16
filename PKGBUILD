@@ -12,10 +12,10 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.1.0_devel.109912.9e0c744f07a
+pkgver=19.1.0_devel.110021.c4478889b71
 pkgrel=1
 arch=('x86_64')
-makedepends=('git' 'python-mako' 'llvm-git'   'xorgproto'
+makedepends=('git' 'python-mako' 'llvm-git' 'clang-git'  'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio' 'libxrandr'
               'ocl-icd' 'vulkan-icd-loader' 'libgcrypt'  'wayland' 'wayland-protocols' 'meson')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
@@ -75,7 +75,7 @@ build () {
        -D vulkan-overlay-layer=true \
        -D tools=[]
     meson configure _build
-    ninja -C _build
+    ninja  "$MAKEFLAGS" -C _build 
 }
 
 
