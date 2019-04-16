@@ -1,7 +1,6 @@
-# Maintainer: Aetf <aetf@unlimitedcodeworks.xyz>
 pkgname=globus-connect-personal
 _pkgname=globusconnectpersonal
-pkgver=2.3.5
+pkgver=2.3.6
 pkgrel=1
 pkgdesc="Globus Connect Personal turns your laptop or other personal computer into a Globus endpoint with a just a few clicks."
 arch=('x86_64' 'i686')
@@ -17,7 +16,7 @@ source=("https://downloads.globus.org/globus-connect-personal/linux/stable/globu
         "$pkgname.service"
         "$pkgname@.service"
         "globusconnect")
-sha256sums=('78fff2676866fd6a9966f7b7049ceec3b60bfacbf26934380271c842136d9933'
+sha256sums=('71f84e46cf1b0607d0db45ee98542dd1ffd6745fdc49ce0fa8b7bd9a264088ca'
             'e02212562b046dbe6d92e9a0ecd9aead22c6fec85a525a4e7c05451b1d76aec1'
             '211cca27d2e2fa963606d1d29ceb2d71b333cc33de9a85821d5c85aac36a4a9e'
             'a33e11761644011264a467d3ecf90147fed308b33e8915569cc4d65b2089ff2b'
