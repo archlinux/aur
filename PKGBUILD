@@ -36,6 +36,10 @@ package() {
   # Make Arch vim packages work
   mkdir -p "${pkgdir}"/usr/share/vim
   echo "set runtimepath+=/usr/share/vim/vimfiles" > "${pkgdir}"/usr/share/nvim/sysinit.vim
+
+  # Remove nvim-linux64.tar.gz
+  rm ../nvim-linux64.tar.gz
+  rm ../../nvim-linux64.tar.gz
 }
 
 # vim:set sw=2 sts=2 et:
