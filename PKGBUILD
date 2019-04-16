@@ -1,6 +1,6 @@
 # Maintainer: Lex Childs <lexchilds@gmail.com>
 pkgname=leftwm
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 epoch=1
 pkgdesc="Leftwm - A tiling window manager for the adventurer"
@@ -26,6 +26,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   mv "target/release/leftwm" "$pkgdir/usr/bin"
   mv "target/release/leftwm-worker" "$pkgdir/usr/bin"
+  mv "target/release/leftwm-state" "$pkgdir/usr/bin"
 
   mkdir -p "$pkgdir/usr/share/leftwm"
   cp -R "$srcdir/$pkgname/themes" "$pkgdir/usr/share/leftwm"
