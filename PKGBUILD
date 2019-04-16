@@ -1,8 +1,8 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: ordoban <dirk.langer@vvovgonik.de>
 
 pkgname=perl-cpanel-json-xs
 pkgver=4.11
-pkgrel=2
+pkgrel=3
 pkgdesc="cPanel fork of JSON::XS, fast and correct serializing"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
