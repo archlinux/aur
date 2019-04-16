@@ -14,7 +14,7 @@ optdepends=('cups: required for remote printing'
             'python2-ldap: auth against ldap')
 
 source=('tlclient.desktop' 'tlclient.png')
-sha256sums=('3db307225f95453eeac89f4fcd4618efd01a977cc66998ba11fc22f97c194004'
+sha256sums=('caa7417fa2f6a530bef2c6ca05f4c8a219ec85add7884fbb7368c0bf18be2988'
             'bb7cdf717ba1ee425be21d6bce245a17f2ba798b7202d9189fc964a408e3208a')
 sha256sums_i686=('ec5f4634de3aa58d07fb6aa136fb2ada8d3ebae62dcd0ec1cc4ca4e43aff9203')
 sha256sums_x86_64=('1a98602f8d749d4f47003bd7764253f02d478becee8be06747829479addb4aac')
