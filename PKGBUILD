@@ -1,29 +1,29 @@
 # Maintainer: SaultDon <sault.don gmail>
 pkgname=filegdb-api
 _pkgname=FileGDB_API
-pkgver=1.4
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="ESRI File Geodatabase (FileGDB) API"
 arch=('i686' 'x86_64')
-url="http://www.esri.com/apps/products/download/#File_Geodatabase_API_1.3"
-license=('custom:"ESRI - User Restrictions"')
-makedepends=('libxml2' 'gcc>=3.4.6')
+url="https://github.com/Esri/file-geodatabase-api"
+license=('APACHE')
+makedepends=('libxml2' 'clang>=3.7.0')
 optdepends=('gdal-filegdb: wrapper')
 changelog=$pkgname.changelog
 case $CARCH in
 i686)
-  source=($pkgname-$pkgver.tar.gz::http://downloads2.esri.com/Software/${_pkgname}_${pkgver//./_}-32.tar.gz)
-  md5sums=('e6eae3f612b7001ae3b1313d9797f3ef')
+  source=($pkgname-$pkgver.tar.gz::http://downloads2.esri.com/Software/${_pkgname}_${pkgver//./_}-32gcc51.tar.gz)
+  md5sums=('145f760871892b822b5f26442e2e8255')
   ;; 
 x86_64)
-  source=($pkgname-$pkgver.tar.gz::http://downloads2.esri.com/Software/${_pkgname}_${pkgver//./_}-64.tar.gz)
-  md5sums=('40c3e48e080947c1b6890063fa9f64c5')
+  source=($pkgname-$pkgver.tar.gz::http://downloads2.esri.com/Software/${_pkgname}_${pkgver//./_}-64gcc51.tar.gz)
+  md5sums=('10a18003adaa6ccf0c4d8e6bb8da1e4f')
   ;; 
 esac
 
 prepare() {
     cd $srcdir
-    mv FileGDB_API-* $pkgname
+    mv ${_pkgname}-* $pkgname
 }
 
 build() {
@@ -68,7 +68,6 @@ package() {
 	mkdir -p $pkgdir/usr/{lib,share/{doc,licenses}/$pkgname}
 	mkdir -p $pkgdir/usr/include
 
-    install -Dm644 $srcdir/${pkgname}/license/* "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 $srcdir/${pkgname}/lib/* "$pkgdir/usr/lib/"
 	install -Dm644 $srcdir/${pkgname}/include/* "$pkgdir/usr/include/"
 

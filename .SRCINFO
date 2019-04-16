@@ -1,17 +1,17 @@
 pkgbase = filegdb-api
 	pkgdesc = ESRI File Geodatabase (FileGDB) API
-	pkgver = 1.4
-	pkgrel = 2
-	url = http://www.esri.com/apps/products/download/#File_Geodatabase_API_1.3
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/Esri/file-geodatabase-api
 	changelog = filegdb-api.changelog
 	arch = i686
 	arch = x86_64
-	license = custom:"ESRI - User Restrictions"
+	license = APACHE
 	makedepends = libxml2
-	makedepends = gcc>=3.4.6
+	makedepends = clang>=3.7.0
 	optdepends = gdal-filegdb: wrapper
-	source = filegdb-api-1.4.tar.gz::http://downloads2.esri.com/Software/FileGDB_API_1_4-64.tar.gz
-	md5sums = 40c3e48e080947c1b6890063fa9f64c5
+	source = filegdb-api-1.5.1.tar.gz::http://downloads2.esri.com/Software/FileGDB_API_1_5_1-64gcc51.tar.gz
+	md5sums = 10a18003adaa6ccf0c4d8e6bb8da1e4f
 
 pkgname = filegdb-api
 

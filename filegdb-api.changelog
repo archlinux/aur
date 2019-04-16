@@ -1,3 +1,10 @@
+2018-04-16 SaultDon <sault.don gmail>
+    * 1.5.1-1 :
+     - updated to latest release
+     - added clang makedepends
+     - removed gcc makedepends as it's part of base-devel
+     - license updated to APACHE
+
 2015-08-19 SaultDon <sault.don gmail>
     * 1.4-2 :
      - incorporated patch from @striges1111, thanks!
@@ -7,17 +14,14 @@
      - updated to new release
 
 2013-03-18 SaultDon <sault.don gmail>
-
     * 1.3-2 :
      - added CPPFLAGS export for linux builds, thanks marcelhuber
 
 2013-14-09 Saultdon <sault.don gmail>
-
 	* 1.3-0.143 :
 	 - updated pkgrel to match API "Build Version" found in README
 	 - added gcc to makedepends
 
 2013-12-09 SaultDon <sault.don gmail>
-
 	* 1.3-0 :
 	 - sources updated to ESRI FileGDB API 1.3
