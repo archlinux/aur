@@ -11,8 +11,8 @@ url="https://www.luxcorerender.org/"
 license=('Apache')
 depends=(oidn openimageio boost blosc embree glfw-x11 gtk3 opencl-icd-loader)
 optdepends=("opencl-driver: for gpu acceleration"
-            "python-pyside: for pyluxcoretools gui")
-makedepends=(git doxygen cmake python-pyside-tools opencl-headers)
+            "pyside2: for pyluxcoretools gui")
+makedepends=(git doxygen cmake pyside2-tools opencl-headers)
 conflicts=(luxrays-hg)
 provides=(luxrays)
 source=("https://github.com/LuxCoreRender/LuxCore/archive/${pkgname}_v${_pkgver}.tar.gz"
