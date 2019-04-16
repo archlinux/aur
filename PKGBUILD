@@ -2,9 +2,9 @@
 pkgname=brp-pacu
 _upstreamname=BRP_PACU
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross platform dual channel FFT based Acoustic Analysis Tool to help engineers analyze live professional sound systems using the transfer function. One feature is the ability to capture four sample plots, average them, and invert to aid in final EQ."
-url=('http://sourceforge.net/projects/brp-pacu/')
+url='http://sourceforge.net/projects/brp-pacu/'
 arch=('i686' 'x86_64')
 license=('gpl')
 depends=('gtk2' 'gtkdatabox' 'jack' 'fftw2')
