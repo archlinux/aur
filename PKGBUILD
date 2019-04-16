@@ -6,19 +6,17 @@
 
 pkgbase=bind-rl
 pkgname=(bind-rl bind-rl-tools)
-_pkgver=9.13.5
+_pkgver=9.14.0
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 url='https://www.isc.org/software/bind/'
 license=('MPL2')
 arch=('x86_64')
 options=('!emptydirs')
 makedepends=('libcap' 'libxml2' 'zlib' 'krb5' 'e2fsprogs' 'openssl' 'readline'
- 'idnkit' 'geoip' 'dnssec-anchors' 'python' 'json-c' 'python-ply' 'libseccomp')
-validpgpkeys=('2B48A38AE1CF9886435F89EE45AC7857189CDBC5'
-              'ADBE9446286C794905F1E0756FA6EBC9911A4C02' #ISC, Inc)
-              'BE0E9748B718253A28BB89FFF1B11BF05CF02E57' #Internet Systems Consortium, Inc.
-              )
+  'libidn2' 'geoip' 'dnssec-anchors' 'python' 'json-c' 'python-ply' 'lmdb'
+  'zlib' 'icu' 'xz')
+validpgpkeys=('AE3FAC796711EC59FC007AA474BB6B9A4CBB3D38') #ISC Code Signing Key 2019 – 2020 (codesign@isc.org)
 source=("https://ftp.isc.org/isc/bind9/${_pkgver}/bind-${_pkgver}.tar.gz"{,.asc}
         'tmpfiles.conf'
         'sysusers.conf'
@@ -27,9 +25,8 @@ source=("https://ftp.isc.org/isc/bind9/${_pkgver}/bind-${_pkgver}.tar.gz"{,.asc}
         'localhost.zone'
         'localhost.ip6.zone'
         '127.0.0.zone'
-        'empty.zone'
-        '01-fs60913.patch')
-sha1sums=('8c01018e6928e9117cd8e0cdd464efe3b68894c5'
+        'empty.zone')
+sha1sums=('8807e4736732300b75193885149807ce3ce99cd4'
           'SKIP'
           'c5a2bcd9b0f009ae71f3a03fbdbe012196962a11'
           '9537f4835a1f736788d0733c7996a10db2d4eee4'
@@ -38,8 +35,7 @@ sha1sums=('8c01018e6928e9117cd8e0cdd464efe3b68894c5'
           '6704303a6ed431a29b1d8fe7b12decd4d1f2f50f'
           '52da8f1c0247a11b16daa4e03d920e8f09315cbe'
           '9c33726088342207ad06d33b2c13408290a0c8ad'
-          '4f4457b310cbbeadca2272eced062a9c2b2b42fe'
-          'a71c39b6073be96589e3c0a8cc7430f0e22ebe9c')
+          '4f4457b310cbbeadca2272eced062a9c2b2b42fe')
 
 prepare() {
   msg2 'Getting a fresh version of root DNS'
@@ -66,18 +62,17 @@ build() {
     --sbindir=/usr/bin \
     --localstatedir=/var \
     --disable-static \
-    --enable-ipv6 \
-    --enable-filter-aaaa \
     --enable-fixed-rrset \
-    --enable-seccomp \
     --enable-full-report \
+    --enable-dnsrps \
     --enable-rrl \
     --with-python=/usr/bin/python \
     --with-geoip \
-    --with-idn \
     --with-openssl \
+    --with-libidn2 \
     --with-libjson \
     --with-libxml2 \
+    --with-lmdb \
     --with-libtool
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
@@ -120,8 +115,9 @@ package_bind-rl() {
 
 package_bind-rl-tools() {
   pkgdesc='The ISC DNS tools'
-  depends=('glibc' 'libcap' 'libseccomp' 'libxml2' 'zlib' 'krb5' 'e2fsprogs'
-           'openssl' 'readline' 'geoip' 'idnkit' 'dnssec-anchors' 'json-c')
+  depends=('glibc' 'libcap' 'libxml2' 'zlib' 'krb5' 'e2fsprogs' 'python' 'bash'
+           'openssl' 'readline' 'geoip' 'libidn2' 'dnssec-anchors' 'json-c'
+           'lmdb' 'xz' 'icu')
   optdepends=('python: for python scripts')
   conflicts=('dnsutils' 'bind-tools')
   replaces=('dnsutils' 'host' 'bind-tools')
