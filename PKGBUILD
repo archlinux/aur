@@ -2,7 +2,7 @@
 
 pkgname=pypy2-revdb
 pkgver=7.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PyPy2 compiled with revdb"
 arch=(any)
 url="https://pypy.org"
@@ -16,14 +16,12 @@ md5sums=('d412f762092fc200c94dcad477f8571f')
 
 build() {
     cd "$srcdir/pypy2.7-v${pkgver}-src/pypy/goal"
-    pypy ../../rpython/bin/rpython -O2 --revdb
+    # pypy ../../rpython/bin/rpython -O2 --revdb
 }
 
 package() {
     cd "$srcdir/pypy2.7-v${pkgver}-src/"
 
-    # Replace include directives to use python2.* headers
-    find . \( -name "*.c" -o -name "*.h" \) -exec sed -i -E 's!include <(pyconfig.h|Python.h)>!include <python2.7/\1>!g' {} \;
     python2 pypy/tool/release/package.py --rename_pypy_c pypy2-revdb --targetdir "$srcdir"
 
     cd "$srcdir"
