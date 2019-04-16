@@ -31,7 +31,6 @@ install=mpd.install
 prepare() {
 	cd "${srcdir}/mpd-${pkgver}"
 	patch --input="${srcdir}/../meson.patch"
-	patch -p0 -R --input="${srcdir}/../ffmpeg.patch"
 
 	install -d build
 }
@@ -67,6 +66,7 @@ build() {
 	       '-Dsmbclient=disabled'
 	       '-Dnfs=disabled'
 	       '-Dcdio_paranoia=disabled'
+	       '-Dcurl=disabled'
 	       '-Dmms=disabled'
 
 	       # cloud
@@ -88,6 +88,7 @@ build() {
 	       '-Dmodplug=disabled'
 	       '-Dsidplay=disabled' # unclear why but disabled in the past
 	       '-Dwavpack=disabled'
+	       '-Dffmpeg=disabled'
 	       '-Daudiofile=disabled'
 	       '-Dfaad=disabled'
 	       '-Dflac=disabled'
@@ -119,6 +120,7 @@ build() {
 	       '-Dhttpd=false'
 	       '-Drecorder=false'
 	       '-Doss=disabled'
+	       '-Dalsa=disabled'
 	       '-Dopenal=disabled'
 	       '-Dpulse=disabled'
 	       '-Dshout=disabled'
