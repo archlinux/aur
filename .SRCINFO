@@ -1,6 +1,6 @@
 pkgbase = drawio-batch
 	pkgdesc = Command line converter for draw.io diagrams
-	pkgver = 10.0.22
+	pkgver = 10.6.3
 	pkgrel = 1
 	url = https://github.com/languitar/drawio-batch
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = drawio-batch
 	makedepends = git
 	makedepends = npm
 	options = !strip
-	source = https://github.com/languitar/drawio-batch/archive/10.0.22.tar.gz
-	md5sums = 93cdf8141d422c6d73279a120a4ce8eb
+	source = https://github.com/languitar/drawio-batch/archive/10.6.3.tar.gz
+	md5sums = cf4a1dbd7e8e178ad05db7e7765a2a97
 
 pkgname = drawio-batch
 
