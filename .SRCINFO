@@ -1,7 +1,7 @@
 pkgbase = breezy
 	pkgdesc = A version control system forked from the dead Bazaar (bzr)
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.breezy-vcs.org/
 	arch = x86_64
 	license = GPL2
