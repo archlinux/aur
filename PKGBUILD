@@ -6,11 +6,11 @@
 pkgname=flightgear
 pkgver=2018.3.2
 _pkgver=${pkgver%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, multi-platform flight simulator"
 arch=(x86_64)
 depends=('libxmu' 'libxi' 'zlib' 'openscenegraph34' 'libxrandr' 'glu' 'openal')
-makedepends=('boost' 'cmake' 'mesa' 'sharutils' 'simgear' 'qt5-base' 'qt5-declarative')
+makedepends=('boost' 'cmake' 'mesa' 'sharutils' 'simgear' 'qt5-base' 'qt5-declarative' 'qt5-svg')
 optdepends=('qt5-base: fgfs --launcher'
 	        'qt5-declarative: fgfs --launcher'
             'flightgear-data')
