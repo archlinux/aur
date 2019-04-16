@@ -3,7 +3,7 @@
 # Contributor: mezcal
 
 pkgname=rspamd
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
@@ -106,7 +106,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/a
 		"fixes-${pkgver}.diff"
 		)
 
-sha256sums=('a4509294ca565e0a86424ae67ab49f282349b5fa3bfc9aeb16c1c03cbe422aa5'
+sha256sums=('69a39cb83a4d28da2fc2fc2dc7c8e07435557e50e19cfdf73bd1ebd964da80f9'
             'f89edae5436a3c14e58210fb5c1d5bdd2f8a6f98c03dbc150ea9ff1a3fcfe441'
             '59646874a5036f3f26cac2898a2f60713fe6147b3c60ee964494f07b6acc313f'
             'e705cc908a8e081e4a830cfec5acfc38f00125c5281bb074c939ba3b4a7a8c8b'
