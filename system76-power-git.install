@@ -36,6 +36,8 @@ cat << EOF
 
         system76-power                     System76 power CLI interface
 
+    To run system76-power as a normal user, add them to the "adm" group.
+
 EOF
 }
 

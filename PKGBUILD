@@ -2,7 +2,7 @@
 
 pkgname=system76-power-git
 pkgver=r160.1c347b8
-pkgrel=3
+pkgrel=4
 pkgdesc="System76 Power Management"
 arch=('any')
 url="https://github.com/pop-os/system76-power"
