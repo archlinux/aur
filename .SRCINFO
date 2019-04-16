@@ -1,7 +1,7 @@
 pkgbase = editra
 	pkgdesc = Multi-platform text editor with features that aid in code development
 	pkgver = 0.7.20
-	pkgrel = 1
+	pkgrel = 2
 	url = http://editra.org/
 	arch = any
 	license = custom:wxWindows
@@ -10,8 +10,8 @@ pkgbase = editra
 	depends = desktop-file-utils
 	source = http://editra.org/uploads/src/Editra-0.7.20.tar.gz
 	source = editra.desktop
-	md5sums = a52c6b3d703f98e0390aa7b44f991616
-	md5sums = 43efe17af89dc701a0a3add517fa5cb8
+	sha256sums = ed515bca58d87d9a2b3085f322a9fe7c6d1407a3b05db1434f80ea8f7e42ccc0
+	sha256sums = 99e5e2800ea2306b02e4176eaab61963d651f132e0489ec4a9c2eceda0424031
 
 pkgname = editra
 
