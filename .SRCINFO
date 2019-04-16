@@ -8,7 +8,6 @@ pkgbase = python-mcipc-git
 	makedepends = git
 	makedepends = python
 	depends = python
-	depends = python-pyzmq
 	optdepends = python-docopt: for scripts
 	provides = python-mcipc
 	conflicts = python-mcipc
