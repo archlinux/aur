@@ -1,7 +1,7 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=cdetect
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='Detect which compiler version was used for compiling an ELF file'
 arch=('x86_64')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 build() {
   cd "$pkgname"
 
-  go build
+  go build -gcflags "all=-trimpath=${PWD}" -asmflags "all=-trimpath=${PWD}" -ldflags "-extldflags ${LDFLAGS}"
 }
 
 package() {
