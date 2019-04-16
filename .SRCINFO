@@ -1,0 +1,17 @@
+pkgbase = ytt-git
+	pkgdesc = YAML templating tool that works on YAML structure instead of text
+	pkgver = r33.878facd
+	pkgrel = 1
+	url = https://get-ytt.io/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go-pie
+	depends = glibc
+	provides = ytt
+	conflicts = ytt
+	source = git+https://github.com/k14s/ytt/
+	sha256sums = SKIP
+
+pkgname = ytt-git
+
