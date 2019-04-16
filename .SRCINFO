@@ -1,7 +1,7 @@
 pkgbase = neovim-nightly
 	pkgdesc = Fork of Vim aiming to improve user experience, plugins, and GUIs - Nightly Builds
 	pkgver = 0.4.0+gd81b510
-	pkgrel = 1
+	pkgrel = 2
 	url = https://neovim.io
 	install = neovim.install
 	arch = x86_64
