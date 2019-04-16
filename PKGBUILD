@@ -2,7 +2,7 @@
 
 pkgname=snapd-fs
 pkgver=0.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc="ln -s /var/lib/snapd/snap /snap"
 arch=(any)
 license=(MIT)

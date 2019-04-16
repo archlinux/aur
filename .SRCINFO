@@ -1,7 +1,7 @@
 pkgbase = snapd-fs
 	pkgdesc = ln -s /var/lib/snapd/snap /snap
 	pkgver = 0.0.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/KSXGitHub/snapd-fs.pkgbuild
 	arch = any
 	license = MIT
