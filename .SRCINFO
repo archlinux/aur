@@ -9,7 +9,6 @@ pkgbase = soundfonts-aur-meta
 	depends = soundfont-generaluser
 	depends = soundfont-zelda3sf2
 	depends = soundfont-zeldamcsf2
-	depends = soundfont-toh
 	depends = soundfont-sso-sf2
 	depends = soundfont-arachno
 	depends = soundfont-personalcopy
