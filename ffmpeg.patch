@@ -1,0 +1,13 @@
+diff --git origin/mpd-0.21.7/src/input/plugins/FfmpegInputPlugin.cxx new/mpd-0.21.7/src/input/plugins/FfmpegInputPlugin.cxx
+index 198f4bd17..58686bf47 100644
+--- origin/mpd-0.21.7/src/input/plugins/FfmpegInputPlugin.cxx
++++ new/mpd-0.21.7/src/input/plugins/FfmpegInputPlugin.cxx
+@@ -118,6 +118,8 @@ static constexpr const char *ffmpeg_prefixes[] = {
+ 	"rtmp://",
+ 	"rtmpt://",
+ 	"rtmps://",
++	"http://",
++	"https://",
+ 	nullptr
+ };
+ 
