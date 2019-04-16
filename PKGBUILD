@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'arm')
 url="https://github.com/SpotlightKid/python-rtmidi"
 license=('MIT')
 depends=('jack')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('cython' 'cython2' 'python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgbase::1}/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
 sha256sums=('61e9d1c1f1202a1577f06644948af985427030984ff956970a22b50f080d4c2d')
 
@@ -29,7 +29,6 @@ build() {
 package_python-rtmidi() {
   pkgdesc="Python bindings for the cross-platform MIDI I/O library RtMidi"
   depends+=('python')
-  makedepends+=('cython')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
   python setup.py install --root="$pkgdir" --skip-build --optimize=1
@@ -41,7 +40,6 @@ package_python-rtmidi() {
 package_python2-rtmidi() {
   pkgdesc="Python 2 bindings for the cross-platform MIDI I/O library RtMidi"
   depends+=('python2')
-  makedepends+=('cython2')
 
   cd "${srcdir}/python2-${_pkgbase}-$pkgver"
   python2 setup.py install --root="$pkgdir" --skip-build --optimize=1
