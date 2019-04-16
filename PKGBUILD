@@ -16,7 +16,6 @@ prepare() {
 	rm -rf "${srcdir}/src/k14s/${pkgname}"
 	mkdir -p "${srcdir}/src/k14s/${pkgname}"
 	mv -T "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/src/k14s/${pkgname}"
-	
 }
 
 build() {
