@@ -15,18 +15,19 @@
 
 pkgname='soundfont-titanic'
 pkgver='1.2'
-pkgrel=2
+pkgrel=3
 pkgdesc='A public domain, high quality MIDI soundfont by Luke Sena'
 arch=('any')
 license=('custom: public domain')
 url='http://www.titanicsf.com'
-md5sums=('06da89576208a6384492afa7f934ffc4' 'a2c2f33d92f54e62e25da9bc647c8b35')
-source=('https://www.dropbox.com/s/g0yxy0326jgar34/titanic.sf2' 'LICENSE')
+sha1sums=('8941d35771b56f3c6abd2b0bbb5085fd0a2b1e0d')
+source=('https://www.dropbox.com/s/5yzhvlrkf7s3tb2/titanic.sf2')
 
 # This is an AUR script. Do not compress the package.
 PKGEXT='.pkg.tar'
 
 package() {
-  install -Dm644 titanic.sf2 "${pkgdir}/usr/share/soundfonts/titanic.sf2"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    pwd
+    install -Dm644 titanic.sf2 "${pkgdir}/usr/share/soundfonts/titanic.sf2"
+    install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
