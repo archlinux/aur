@@ -1,0 +1,18 @@
+pkgbase = pypy2-revdb
+	pkgdesc = RevDB, the Reverse Debugger
+	pkgver = 7.1.0
+	pkgrel = 1
+	url = https://pypy.org
+	arch = any
+	license = UNKNOWN
+	makedepends = pypy
+	makedepends = python2-cffi
+	makedepends = python2-setuptools
+	depends = python2-cffi
+	provides = pypy2-revdb
+	conflicts = pypy2-revdb
+	source = pypy2-revdb::https://bitbucket.org/pypy/pypy/downloads/pypy2.7-v7.1.0-src.tar.bz2
+	md5sums = d412f762092fc200c94dcad477f8571f
+
+pkgname = pypy2-revdb
+
