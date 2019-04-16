@@ -2,33 +2,36 @@
 
 _pkgname=scanpy
 pkgname=$_pkgname-git
-pkgver=0.2.9.1+38.g9f36c3d
+pkgver=1.4+321.g5a2003a
 pkgrel=1
-pkgdesc='Efficient tools for analyzing and simulating large-scale single-cell data'
+pkgdesc='Single-Cell Analysis in Python'
 arch=(any)
 provides=(scanpy python-scanpy)
 conflicts=(scanpy)
 url='https://github.com/theislab/scanpy'
-license=(GPL3)
+license=(BSD)
 depends=(
-	cython
-	python-anndata
-	python-matplotlib
-	python-pandas
+	'python-anndata>=0.6.15'
+	'python-matplotlib>=2.2'
+	'python-pandas>=0.21'
 	python-scipy
 	python-seaborn
-	python-psutil
-	python-xlrd
 	python-h5py
-	python-scikit-learn
+	python-pytables
+	'python-scikit-learn>=0.19.1'
 	python-statsmodels
+	python-patsy
 	python-networkx
-	python-igraph
-	python-louvain-igraph
 	python-natsort
 	python-joblib
-	python-profilehooks
-	python-tqdm)
+	'python-numba>=0.40.0'
+)
+optdepends=(
+	'python-bbknn: Batch balanced KNN (batch correction)'
+	'python-leidenalg: leiden community detection'
+	'python-multicoretsne: Fast t-SNE'
+	'python-louvain-igraph: Louvain clustering'
+)
 source=($_pkgname::git://github.com/theislab/scanpy.git)
 md5sums=(SKIP)
 
@@ -39,7 +42,6 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_pkgname"
-	python setup.py build_ext
 	python setup.py build
 }
 

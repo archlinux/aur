@@ -1,28 +1,28 @@
 pkgbase = scanpy-git
-	pkgdesc = Efficient tools for analyzing and simulating large-scale single-cell data
-	pkgver = 0.2.9.1+38.g9f36c3d
+	pkgdesc = Single-Cell Analysis in Python
+	pkgver = 1.4+321.g5a2003a
 	pkgrel = 1
 	url = https://github.com/theislab/scanpy
 	arch = any
-	license = GPL3
-	depends = cython
-	depends = python-anndata
-	depends = python-matplotlib
-	depends = python-pandas
+	license = BSD
+	depends = python-anndata>=0.6.15
+	depends = python-matplotlib>=2.2
+	depends = python-pandas>=0.21
 	depends = python-scipy
 	depends = python-seaborn
-	depends = python-psutil
-	depends = python-xlrd
 	depends = python-h5py
-	depends = python-scikit-learn
+	depends = python-pytables
+	depends = python-scikit-learn>=0.19.1
 	depends = python-statsmodels
+	depends = python-patsy
 	depends = python-networkx
-	depends = python-igraph
-	depends = python-louvain-igraph
 	depends = python-natsort
 	depends = python-joblib
-	depends = python-profilehooks
-	depends = python-tqdm
+	depends = python-numba>=0.40.0
+	optdepends = python-bbknn: Batch balanced KNN (batch correction)
+	optdepends = python-leidenalg: leiden community detection
+	optdepends = python-multicoretsne: Fast t-SNE
+	optdepends = python-louvain-igraph: Louvain clustering
 	provides = scanpy
 	provides = python-scanpy
 	conflicts = scanpy
