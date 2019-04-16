@@ -1,0 +1,21 @@
+pkgbase = freemol-svn
+	pkgdesc = FreeMOL is an assembly of free and open source programs forming a framework for computational chemistry, informatics, structural biology and graphics
+	pkgver = r158
+	pkgrel = 1
+	url = http://www.bioinformatics.org/freemol
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = svn
+	makedepends = gcc
+	makedepends = patch
+	depends = python2>=2.7
+	source = freemol-svn::svn://bioinformatics.org/svnroot/freemol/trunk
+	source = freemol.patch
+	source = freemol.sh
+	md5sums = SKIP
+	md5sums = edd96be3ae195bdf622a59aacb9e8bbd
+	md5sums = 878093e656397ff192b39dcc8b41231f
+
+pkgname = freemol-svn
+

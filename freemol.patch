@@ -1,0 +1,11 @@
+--- Makefile	2019-04-16 20:37:13.097101735 +0300
++++ Makefile	2019-04-16 21:05:02.210988116 +0300
+@@ -22,7 +22,7 @@
+ # destination dir; set this for your setup
+ #BIN_DIR = /usr/local/bin
+ 
+-DST = mengine.exe
++DST = mengine
+ 
+ SRCS = \
+ active.c	angles.c	attach.c 	asnsym.c	datastat.c 	dipmom.c	draw.c \
