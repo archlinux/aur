@@ -2,10 +2,9 @@
 
 pkgname=scanpy-scripts
 pkgver=0.1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Scripts for using scanpy from the command line'
 arch=(any)
-provides=(scanpy python-scanpy)
 url='https://github.com/ebi-gene-expression-group/scanpy-scripts'
 license=(MIT)
 depends=(scanpy python-louvain-igraph)

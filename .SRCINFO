@@ -1,15 +1,13 @@
 pkgbase = scanpy-scripts
 	pkgdesc = Scripts for using scanpy from the command line
 	pkgver = 0.1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ebi-gene-expression-group/scanpy-scripts
 	arch = any
 	license = MIT
 	makedepends = install-wheel-scripts
 	depends = scanpy
 	depends = python-louvain-igraph
-	provides = scanpy
-	provides = python-scanpy
 	noextract = scanpy_scripts-0.1.0.1-py3-none-any.whl
 	source = https://files.pythonhosted.org/packages/py3/s/scanpy-scripts/scanpy_scripts-0.1.0.1-py3-none-any.whl
 	sha256sums = a46e5cc76f40b0ce281d982a75d3c0030e276bb1645b931e5fc3e5cbde5625e5
