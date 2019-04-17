@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=system76-driver-git
-pkgver=19.04.7.r3.gd5d0ae7
-pkgrel=4
+pkgver=19.04.7.r7.g1090881
+pkgrel=1
 pkgdesc="System76 Driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
@@ -42,7 +42,7 @@ sha256sums=('SKIP'
             '2ccf53ec0ffdeea00930d218253f5b3db2bdc7d3405e8353caabc36107f3ab26'
             '14c6d669b5a4a5b4a306978ebdad7e26d939e8e559de52274aec26cd5b2ea853'
             'ef027346c439561dc01f906ae7bd961100aedf9125fd86bb0eb89a87b683fdc3'
-            'fc3cccb25c7b570c69db987f4ed6a0558db7fd0046d5dbd46dbd243d8e85e611')
+            '20c9ee9420fd23cd719dfb8a35cb57c434df0d7e6a1ca8c79c8b900eec2f3dd0')
 
 pkgver() {
 	cd ${pkgname}

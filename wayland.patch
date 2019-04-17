@@ -6,7 +6,7 @@
 +  xhost +si:localuser:root
 +fi
 +
- pkexec "/usr/bin/system76-driver" --home $HOME
+ pkexec "/usr/bin/system76-driver" --home "$HOME"
 +
 +if [ "$XDG_SESSION_TYPE" == "wayland" ] && command -v xhost; then
 +  xhost -si:localuser:root
