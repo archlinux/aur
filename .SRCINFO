@@ -13,6 +13,7 @@ pkgbase = formatter-git
 	depends = gtk3
 	depends = granite
 	depends = debhelper
+	optdepends = hfsprogs
 	provides = formatter
 	conflicts = formatter
 	source = git+https://github.com/djaler/formatter.git
