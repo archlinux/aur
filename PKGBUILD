@@ -1,6 +1,6 @@
 # Maintainer: Milk Brewster (milk on freenode irc)
 pkgname=bsequencer-git
-pkgver=6.1
+pkgver=r56.4663b6d
 pkgrel=1
 epoch=
 pkgdesc="Multi channel MIDI step sequencer LV2 plugin."
@@ -26,6 +26,15 @@ validpgpkeys=()
 
 # prepare() {
 # }
+
+pkgver() {
+  cd "$srcdir"/BSEQuencer
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+ }
+
 
 build() {
   cd "$srcdir"/BSEQuencer
