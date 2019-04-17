@@ -1,0 +1,25 @@
+pkgbase = datadog-agent
+	pkgdesc = Datadog Agent: collect metrics and events from your systems and apps
+	pkgver = 6.11.0
+	pkgrel = 1
+	url = https://datadoghq.com
+	arch = x86_64
+	license = Apache
+	depends = sysstat
+	options = !strip
+	source = datadog-agent-6.11.0-1-Release::https://apt.datadoghq.com/dists/stable/Release
+	source = datadog-agent-6.11.0-1-Release.sig::https://apt.datadoghq.com/dists/stable/Release.gpg
+	source = datadog-agent-6.11.0-1-Packages::https://apt.datadoghq.com/dists/stable/6/binary-amd64/Packages
+	source = https://apt.datadoghq.com/pool/d/da/datadog-agent_6.11.0-1_amd64.deb
+	source = datadog-agent.sysusers
+	source = datadog-agent.tmpfiles
+	validpgpkeys = A2923DFF56EDA6E76E55E492D3A80E30382E94DE
+	sha512sums = d7c9e60e8eea5d53094420ec8cbc111f0ac01648cdcf0883dbbdc38f81df6eabf6350552952a9122e9e9eb70e684dc6c09ce9760ff4b5eb8602ce5af98f3dbac
+	sha512sums = SKIP
+	sha512sums = 65e598607edba46bc017d1a3f015b5efc3c9b40c6d49cc8d82144b52dfa6f4b7be5d17bca9c3122308d594407a8bacffd2f45ef3b390aa30a128ce41e8a0b628
+	sha512sums = cc0557fc600390c3541b8a6103976c92fd587d3c48028758eba8d18ec0c1ee91a5a664d79ea511f1a9863f589f7aa8aa6b85b3fc49c917732e4634ca5ed3eb63
+	sha512sums = 20cacea9611af70f3a8802dfd545313cf40fe7784cc44555cfe50602676d624072caf3803193e23d38d9a24f5a2c2a7ee336f9a9ca87562326b21b5ed677032f
+	sha512sums = 2a3e873d88b8f3a5d90591f955894273eb28d0f9b352e54be4f1125d4229a8f1d7eece8bf6ad41b85ee194390821e9c851393fb36ac249069cfdf7470925ce21
+
+pkgname = datadog-agent
+

@@ -1,0 +1,3 @@
+d /var/log/datadog 0755 dd-agent dd-agent
+Z /etc/datadog-agent 0755 dd-agent dd-agent
+Z /opt/datadog-agent 0755 dd-agent dd-agent
