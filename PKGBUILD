@@ -1,8 +1,8 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=itk-snap
 pkgver=3.6.0
-pkgrel=4
-pkgdesc='ITK-SNAP is a software application used to segment structures in 3D medical images'
+pkgrel=5
+pkgdesc='Software to segment structures in 3D medical images'
 arch=('x86_64')
 url='http://www.itksnap.org'
 license=('GPL3')
@@ -12,6 +12,7 @@ depends=(
 	'gdal'
 	'glew'
 	'insight-toolkit'
+	'jsoncpp'
 	'libogg'
 	'libtheora'
 	'netcdf'
