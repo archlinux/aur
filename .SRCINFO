@@ -1,7 +1,7 @@
 pkgbase = popcorntime
 	pkgdesc = Stream movies from torrents. Skip the downloads. Launch, click, watch.
 	pkgver = 0.3.10
-	pkgrel = 15
+	pkgrel = 16
 	url = https://popcorntime.sh/
 	arch = i686
 	arch = x86_64
