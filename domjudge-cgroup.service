@@ -1,0 +1,11 @@
+[Unit]
+Description=Cgroup setup script for domjudge
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/create_cgroups
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,11 @@
+clear_cache(){
+    rm -rf /var/lib/domjudge/webapp/var/cache/*
+}
+
+pre_remove(){
+    clear_cache
+}
+
+pre_update(){
+    clear_cache
+}

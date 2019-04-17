@@ -1,10 +1,10 @@
 [Unit]
-Description=Domjudge judgehost daemon
+Description=Domjudge judgehost daemon at cpu %i
 After=network.target domjudge-cgroup.service
 Requires= domjudge-cgroup.service
 
 [Service]
-ExecStart=/usr/bin/judgedaemon
+ExecStart=/usr/bin/judgedaemon -n %i
 Restart=on-failure
 User=domjudge
 KillSignal=SIGINT
