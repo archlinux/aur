@@ -1,6 +1,6 @@
 # Maintainer: desbma
 pkgname=r128gain
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='Fast audio loudness (ReplayGain / R128) scanner & tagger'
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/desbma/${pkgname}"
 license=('LGPL')
 depends=('python' 'python-setuptools' 'python-mutagen' 'python-crcmod' 'ffmpeg')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/desbma/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('8fb50e7e497b85cfadfc9bfee1296e4caae5c7dab05f84a32f7a44ce0828fa317a7d5eb7b7cfc667b2c15e3601af774fdee4a9e83c84b36c4bd5f8f629ffc429')
+sha512sums=('138dfebed978bab4a9a173d4b98ef3318b88ef3f19be535a9aa759910a4ba285888da37236a6a4211dfc5c4de89e80f49da04da70c885596961a5adf966e037e')
 
 package() {
     cd "${pkgname}-${pkgver}"
