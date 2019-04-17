@@ -1,6 +1,6 @@
 pkgbase = shr-moe-screenshot-git
 	pkgdesc = This is a command-line tool that takes a regular screenshot using either PNG, JPG, or a video capture using MP4, WebM, APNG and uploads it to shr.moe
-	pkgver = 1.0.1.r0.gfee0ca1
+	pkgver = 1.0.1.r0.2f860053
 	pkgrel = 1
 	url = https://git.sr.ht/~loli/shr-moe-screenshot
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = shr-moe-screenshot-git
 	depends = slop
 	depends = curl
 	depends = xsel
+	depends = bc
 	optdepends = torsocks: Upload images through Tor
 	optdepends = ffmpeg: Upload animated screenshots
 	optdepends = mozjpeg: Better jpeg compresion. Highly recomended
