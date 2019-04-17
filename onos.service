@@ -4,8 +4,11 @@ After=network-online.target
 After=local-fs.target
 
 [Service]
-Type=simple
-ExecStart=/opt/onos/bin/onos-service -server
+Type=exec
+Environment="JAVA_HOME=/usr/lib/jvm/default"
+ExecStart=/opt/onos/bin/onos-service server
+ExecStop=/opt/onos/bin/onos-service stop
+SuccessExitStatus=143
 Restart=always
 RestartSec=1s
 User=sdn
