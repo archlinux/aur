@@ -1,0 +1,12 @@
+pkgbase = soundfont-sunshine-perc
+	pkgver = 1
+	pkgrel = 1
+	url = http://mugglinworks.com/soundfonts/
+	arch = any
+	groups = soundfonts
+	license = custom
+	source = git+https://github.com/mxmilkb/sunshine-drums-sf2
+	sha1sums = SKIP
+
+pkgname = soundfont-sunshine-perc
+
