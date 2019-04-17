@@ -1,5 +1,5 @@
 pkgbase = minecraft-overviewer
-	pkgver = 0.13.10
+	pkgver = 0.13.73
 	pkgrel = 1
 	url = https://github.com/overviewer/Minecraft-Overviewer
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = minecraft-overviewer
 	depends = python2
 	depends = python2-pillow
 	depends = python2-numpy
-	source = https://github.com/overviewer/Minecraft-Overviewer/archive/7f63dfe315c6a50926738241d12518a3d0ee3310.tar.gz
-	sha512sums = eccf68554176b636c50a8ef19f00f52cdb30d1db72835bf3357d6b25fadff4e84f8cbaca51d848911b5ddb9fe7a753206484bb3b62b855157ecf45cb27c5067c
+	source = https://github.com/overviewer/Minecraft-Overviewer/archive/134d6063bf887c45e671639c60b49104a912df45.tar.gz
+	sha512sums = 3035040f1e4a6a7d9b2c4c3354a42e23fc3560aa0974c20ef077031d3baa0fe076c0bf55987d82ae67baf254b935e58a6d57559e9272ed7c0932703f27208d2a
 
 pkgname = minecraft-overviewer
 
