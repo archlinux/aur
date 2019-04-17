@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ufw-git
-pkgver=r1620.gcbfd469
+pkgver=r1765.g1e5cc76
 pkgrel=1
 pkgdesc="Uncomplicated firewall"
 arch=('any')
@@ -50,6 +50,9 @@ pkgver() {
 package() {
   cd "ufw"
 
-  python setup.py install --root="$pkgdir"
+  python "setup.py" install \
+    --optimize 1 \
+    --root "$pkgdir"
+
   install -Dm644 "$srcdir/ufw.service" "$pkgdir/usr/lib/systemd/system/ufw.service"
 }

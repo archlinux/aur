@@ -1,6 +1,6 @@
 pkgbase = ufw-git
 	pkgdesc = Uncomplicated firewall
-	pkgver = r1620.gcbfd469
+	pkgver = r1765.g1e5cc76
 	pkgrel = 1
 	url = https://launchpad.net/ufw
 	arch = any
