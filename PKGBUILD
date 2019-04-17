@@ -3,14 +3,14 @@
 # Contributor: Leo von Klenze <leo.vonklenze@tngtech.com>
 
 pkgname=atlassian-plugin-sdk
-pkgver=6.3.12
-pkgrel=2
+pkgver=8.0.7
+pkgrel=1
 pkgdesc="Atlassian plugin software developer kit"
 arch=('i686' 'x86_64')
 url="https://marketplace.atlassian.com/plugins/atlassian-plugin-sdk-tgz"
 license=('Apache License 2.0')
 source=("https://maven.atlassian.com/public/com/atlassian/amps/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('c0da709fcbcceb315e07d070a327e124a1bf1fc68b83871900cc2fce9c3f77e4')
+sha256sums=('0e9a5f313c1fe502bc8f5ed05b129d6d3ae0eeaa3184b0589eaf31b058f8c053')
 depends=('java-environment')
 
 package() {
@@ -20,7 +20,9 @@ package() {
   cp -r "$srcdir"/atlassian-plugin-sdk-$pkgver/* opt/atlassian/plugin-sdk
 
   # remove executable flag from .bat in bin
-  chmod -x opt/atlassian/plugin-sdk/apache-maven-*/bin/*.bat
+  if [[ -n $(find opt/atlassian/plugin-sdk/apache-maven-*/bin/ -type f -name "*.bat") ]]; then
+    chmod -x opt/atlassian/plugin-sdk/apache-maven-*/bin/*.bat
+  fi
 
   # add executable flag for every user
   chmod -R +X opt/atlassian/plugin-sdk
