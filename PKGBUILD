@@ -5,8 +5,8 @@
 # Contributor: Scott Lawrence <bytbox@gmail.com>
 # Contributor: Guillaume ALAUX <guillaume at alaux dot net>
 pkgname=zookeeper
-pkgver=3.4.13
-pkgrel=0
+pkgver=3.4.14
+pkgrel=1
 pkgdesc='Open-source server which enables highly reliable distributed coordination'
 arch=('any')
 url='https://zookeeper.apache.org/'
@@ -26,7 +26,7 @@ source=(${_closest}/${_app_path}
         systemd_sysusers.d_zookeeper.conf
         systemd_tmpfiles.d_zookeeper.conf)
 
-sha256sums=('7ced798e41d2027784b8fd55c908605ad5bd94a742d5dab2506be8f94770594d'
+sha256sums=('b14f7a0fece8bd34c7fffa46039e563ac5367607c612517aa7bd37306afbd1cd'
             'b59e0641de1951ad149ca39df5b5ec37dc6229f1aa987b0ed9d7e82e570be9ed'
             'a3fd2566648f57c0cdd75cd48b7b60fa55eb59ee67dd716de1e1aa6a57823b88'
             'e863b63650c15a8823cfb2b507c375c999a71cda24805062de36af0250de5daa'
@@ -54,7 +54,9 @@ package() {
   rm -rf "${pkgdir}"/usr/share/java/${pkgname}/{jdiff,cobertura}
   ln -s ../java/${pkgname} "${pkgdir}${_app_home}/lib"
 
-  cp -r recipes "${pkgdir}/usr/share/${pkgname}"
+### As of 3.4.14, recipes are no longer held in a separate directory
+#  cp -r recipes "${pkgdir}/usr/share/${pkgname}"
+
   install -m 644 ${pkgname}-${pkgver}.jar \
     "${pkgdir}/usr/share/java/${pkgname}/${pkgname}-${pkgver}.jar"
   ln -s ${pkgname}-${pkgver}.jar \
