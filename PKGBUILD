@@ -1,7 +1,7 @@
 #Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname="mongodb-tools-bin"
-pkgver="4.0.8"
+pkgver="4.0.9"
 basever="4.0"
 pkgrel="1"
 pkgdesc="The MongoDB tools provide import, export, and diagnostic capabilities."
@@ -14,7 +14,7 @@ depends=("openssl")
 optdepends=("mongodb-compass: The MongoDB GUI")
 source=("https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/${basever}/multiverse/binary-amd64/mongodb-org-tools_${pkgver}_amd64.deb")
 
-sha256sums=("2d5d369335245e5d3fa7dce563fb77e5a5b5ca2412697830bee56f1d35ff14e0")
+sha256sums=("9284530d8655981ed943f4ab32051223d4360993c001dfac43e9e92408deeae4")
 
 prepare() {
   cd "${srcdir}"

@@ -1,16 +1,16 @@
 pkgbase = mongodb-tools-bin
 	pkgdesc = The MongoDB tools provide import, export, and diagnostic capabilities.
-	pkgver = 4.0.8
+	pkgver = 4.0.9
 	pkgrel = 1
 	url = https://github.com/mongodb/mongo-tools
 	arch = x86_64
 	license = Apache
 	depends = openssl
 	optdepends = mongodb-compass: The MongoDB GUI
-	provides = mongodb-tools=4.0.8
+	provides = mongodb-tools=4.0.9
 	conflicts = mongodb-tools
-	source = https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.0/multiverse/binary-amd64/mongodb-org-tools_4.0.8_amd64.deb
-	sha256sums = 2d5d369335245e5d3fa7dce563fb77e5a5b5ca2412697830bee56f1d35ff14e0
+	source = https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.0/multiverse/binary-amd64/mongodb-org-tools_4.0.9_amd64.deb
+	sha256sums = 9284530d8655981ed943f4ab32051223d4360993c001dfac43e9e92408deeae4
 
 pkgname = mongodb-tools-bin
 
