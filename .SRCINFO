@@ -1,18 +1,18 @@
 pkgbase = protobuf-static
 	pkgdesc = Protocol Buffers - Google's data interchange format
-	pkgver = 3.6.1
+	pkgver = 3.7.1
 	pkgrel = 1
 	url = https://developers.google.com/protocol-buffers/
 	arch = x86_64
 	license = BSD
 	depends = gcc-libs
 	depends = zlib
-	provides = protobuf=3.6.1
+	provides = protobuf=3.7.1
 	conflicts = protobuf
 	options = staticlibs
-	source = protobuf-3.6.1.tgz::https://github.com/google/protobuf/archive/v3.6.1.tar.gz
+	source = protobuf-3.7.1.tgz::https://github.com/google/protobuf/archive/v3.7.1.tar.gz
 	source = no-thirdparty.patch
-	sha256sums = 3d4e589d81b2006ca603c1ab712c9715a76227293032d05b26fca603f90b3f5b
+	sha256sums = f1748989842b46fa208b2a6e4e2785133cfcc3e4d43c17fecb023733f0f5443f
 	sha256sums = 6fc836196e69b872794e821111df64effe69f984d46d83c902a9df8953a868b3
 
 pkgname = protobuf-static
