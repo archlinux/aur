@@ -1,14 +1,11 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 # Contributor: jtmb <packaging at technologicalwizardry dot com>
-pkgname=msbuild
+pkgbase=msbuild
+pkgname=('msbuild' 'msbuild-sdkresolver')
 pkgver=16.0+xamarinxplat.2019.04.08.19.19
-pkgrel=2
-pkgdesc="Xamarin implementation of the Microsoft build system"
+pkgrel=3
 arch=('x86_64')
-depends=('mono>=5.0.0')
 makedepends=('libcurl-gnutls')
-provides=('msbuild')
-conflicts=('msbuild')
 url="https://github.com/mono/msbuild"
 license=('MIT')
 source=("https://download.mono-project.com/sources/msbuild/msbuild-${pkgver}.tar.xz"
@@ -21,11 +18,26 @@ prepare() {
     patch --forward --strip=1 --input="${srcdir}/fix-install.patch"
 }
 
-package() {
+build() {
     cd "${pkgname}-${pkgver%+*}"
     make
-    ./install-mono-prefix.sh "/usr" /p:StagingDir="${pkgdir}/usr" /p:TargetMSBuildToolsVersion="15.0"
-    find $pkgdir/usr/lib/mono/ -name Microsoft.DiaSymReader.Native.*dll -delete
-    find $pkgdir/usr/lib/mono/ -name *.dylib -delete
+    ./install-mono-prefix.sh "/usr" /p:StagingDir="${srcdir}/target/usr" /p:TargetMSBuildToolsVersion="15.0"
+    find $srcdir/target/usr/lib/mono/ -name Microsoft.DiaSymReader.Native.*dll -delete
+    find $srcdir/target/usr/lib/mono/ -name *.dylib -delete
+}
+
+package_msbuild() {
+    pkgdesc="Xamarin implementation of the Microsoft build system"
+    depends=('mono>=5.0.0')
+
+    cp -dr --no-preserve='ownership' $srcdir/target/usr "${pkgdir}"
     rm -rf $pkgdir/usr/lib/mono/msbuild/15.0/bin/SdkResolvers/Microsoft.DotNet.MSBuildSdkResolver
+}
+
+package_msbuild-sdkresolver() {
+    pkgdesc="Xamarin implementation of the Microsoft build system (SDK resolver)"
+    depends=('msbuild')
+
+    mkdir -p "${pkgdir}"/usr/lib/mono/msbuild/15.0/bin/SdkResolvers/
+    cp -dr --no-preserve='ownership' $srcdir/target/usr/lib/mono/msbuild/15.0/bin/SdkResolvers/Microsoft.DotNet.MSBuildSdkResolver "${pkgdir}"/usr/lib/mono/msbuild/15.0/bin/SdkResolvers/
 }

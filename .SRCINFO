@@ -1,18 +1,20 @@
 pkgbase = msbuild
-	pkgdesc = Xamarin implementation of the Microsoft build system
 	pkgver = 16.0+xamarinxplat.2019.04.08.19.19
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mono/msbuild
 	arch = x86_64
 	license = MIT
 	makedepends = libcurl-gnutls
-	depends = mono>=5.0.0
-	provides = msbuild
-	conflicts = msbuild
 	source = https://download.mono-project.com/sources/msbuild/msbuild-16.0+xamarinxplat.2019.04.08.19.19.tar.xz
 	source = fix-install.patch
 	sha256sums = 0d425603281ae84d3cf560ea4f9e2b2159e7764f71406035070a7fe27878ec49
 	sha256sums = 8780925e01d4e5bdf8f93c439fe92da7a64f14099b60382499b477a512b56dca
 
 pkgname = msbuild
+	pkgdesc = Xamarin implementation of the Microsoft build system
+	depends = mono>=5.0.0
+
+pkgname = msbuild-sdkresolver
+	pkgdesc = Xamarin implementation of the Microsoft build system (SDK resolver)
+	depends = msbuild
 
