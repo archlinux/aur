@@ -11,12 +11,16 @@ pkgbase = brscan5
 	depends = sane
 	depends = libusb-compat
 	optdepends = gtk2: for running brscan_gnetconfig
-	source = https://download.brother.com/welcome/dlf104036/brscan5-1.1.0-0.x86_64.rpm
 	source = http://www.brother.com/agreement/English_sane/agree.html
 	source = mk-udev-rules
-	md5sums = 5453ba052048780120a37d319cef1ce8
+	source = brother5.conf
 	md5sums = ccffb9a6f6d436b21be25b0241068981
 	md5sums = ca07cab058b704b7b12ba076d00be2f0
+	md5sums = 90bf4aa2e87b68ba2ea1aa7e43b019d9
+	source_i686 = https://download.brother.com/welcome/dlf104035/brscan5-1.1.0-0.i386.rpm
+	md5sums_i686 = 18988663fc0c958d12668ddee9e36bd5
+	source_x86_64 = https://download.brother.com/welcome/dlf104036/brscan5-1.1.0-0.x86_64.rpm
+	md5sums_x86_64 = 5453ba052048780120a37d319cef1ce8
 
 pkgname = brscan5
 
