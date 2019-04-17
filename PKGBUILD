@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=codespell-git
-pkgver=1.14.0.r13.g85670dc
+pkgver=1.14.0.r258.g3743efc1
 pkgrel=1
 pkgdesc="Tool for fixing common misspellings in text files"
 arch=('any')
@@ -25,12 +25,14 @@ pkgver() {
 build() {
   cd "codespell"
 
-  python setup.py build
+  python "setup.py" build
   make
 }
 
 package() {
   cd "codespell"
 
-  python setup.py install --root="$pkgdir" --optimize=1
+  python "setup.py" install \
+    --optimize 1 \
+    --root "$pkgdir"
 }

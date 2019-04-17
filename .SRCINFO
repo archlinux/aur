@@ -1,6 +1,6 @@
 pkgbase = codespell-git
 	pkgdesc = Tool for fixing common misspellings in text files
-	pkgver = 1.14.0.r13.g85670dc
+	pkgver = 1.14.0.r258.g3743efc1
 	pkgrel = 1
 	url = https://github.com/codespell-project/codespell
 	arch = any
