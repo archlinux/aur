@@ -1,6 +1,0 @@
-post_upgrade() {
-	echo " >> You'll need the respective terminal for your DE for gui to open."
-	echo " >> Mate for example uses xterm to open a terminal=true set .desktop."
-	echo " >> XFCE uses xfce4-terminal."
-	echo " >> Check what does your respective DE uses and install it."
-}

@@ -1,0 +1,7 @@
+post_upgrade() {
+	echo " >> fuse-3ds-git was renamed and moved to ninfs-git"
+	echo " >> This is just a stub package to redirect you to it."
+	echo " >> It will be deleted out of AUR in the future."
+	echo " >> For now, it serves as a small grace period to inform."
+	echo " >> You may uninstall fuse-3ds-git and fuse-3ds-gui-git packages."
+}

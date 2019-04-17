@@ -1,28 +1,14 @@
 pkgbase = fuse-3ds-git
-	pkgdesc = FUSE Filesystem Python scripts for Nintendo 3DS files
-	pkgver = 1.3.1.r0.gd45e106
+	pkgver = 1.4
 	pkgrel = 1
-	url = https://github.com/ihaveamac/fuse-3ds
-	arch = x86_64
+	url = https://github.com/ihaveamac/ninfs
+	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	makedepends = python-pycryptodomex
-	makedepends = git
-	options = !strip
-	source = git+https://github.com/ihaveamac/fuse-3ds.git
-	sha256sums = SKIP
 
 pkgname = fuse-3ds-git
-	depends = python>=3.6.1
-	depends = python-pycryptodomex
-	depends = fuse2
-	provides = fuse-3ds=1.3.1.r0.gd45e106-1
-	conflicts = fuse-3ds
+	install = Fuse3DSMoved.install
+	depends = ninfs-git
 
 pkgname = fuse-3ds-gui-git
-	install = Fuse3DSGUI.install
-	depends = fuse-3ds-git=1.3.1.r0.gd45e106-1
-	depends = python-appjar
-	provides = fuse-3ds-gui=1.3.1.r0.gd45e106-1
-	conflicts = fuse-3ds-gui
+	depends = ninfs-gui-git
 

@@ -1,43 +1,16 @@
 pkgbase=fuse-3ds-git
 pkgname=(fuse-3ds-git fuse-3ds-gui-git)
-pkgver=1.3.1.r0.gd45e106
+pkgver=1.4
 pkgrel=1
-pkgdesc="FUSE Filesystem Python scripts for Nintendo 3DS files"
-arch=($CARCH)
+arch=(any)
 license=(MIT)
-url='https://github.com/ihaveamac/fuse-3ds'
-makedepends=('python-setuptools' 'python-pycryptodomex' 'git')
-options=(!strip)
-source=("git+https://github.com/ihaveamac/fuse-3ds.git")
-sha256sums=('SKIP')
-
-pkgver() {
-	cd fuse-3ds
-	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
-}
-
-build() {
-	cd "${srcdir}/fuse-3ds"
-	python setup.py build
-}
+url='https://github.com/ihaveamac/ninfs'
 
 package_fuse-3ds-git() {
-	depends=("python>=3.6.1" "python-pycryptodomex" "fuse2")
-	conflicts=(fuse-3ds)
-	provides=("fuse-3ds=$pkgver-$pkgrel")
-	cd "${srcdir}/fuse-3ds"
-	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
-	rm "$pkgdir/usr/bin/fuse3ds"
+	depends=("ninfs-git")
+	install="Fuse3DSMoved.install"
 }
 
 package_fuse-3ds-gui-git() {
-	depends=("fuse-3ds-git=$pkgver-$pkgrel" "python-appjar")
-	conflicts=(fuse-3ds-gui)
-	provides=("fuse-3ds-gui=$pkgver-$pkgrel")
-	install="Fuse3DSGUI.install"
-	cd "${srcdir}/fuse-3ds"
-	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
-	rm "$pkgdir/usr/bin/mount_"*
-	rm -r "$pkgdir/usr/lib"
-	PYTHONPATH="$pkgdir/usr:$PYTHONPATH" python -mfuse3ds --install-desktop-entry "$pkgdir/usr/share"
+	depends=("ninfs-gui-git")
 }
