@@ -1,6 +1,6 @@
 pkgname="google-keep-nativefier"
-pkgver="0.1"
-pkgrel="3"
+pkgver="0.2"
+pkgrel="1"
 pkgdesc="Quickly capture what's on your mind and get a reminder later at the right place or time. Speak a voice memo on the go and have it automatically transcribed."
 arch=("x86_64")
 license=("MIT")
@@ -22,19 +22,17 @@ build() {
 }
 
 package() {
-  cd $pkgdir
+  install -dm644 "$pkgdir/opt/"
+  install -dm644 "$pkgdir/usr/bin"
+  install -dm644 "$pkgdir/usr/share/pixmaps"
+  install -dm644 "$pkgdir/usr/share/applications"
 
-  install -dm755 "opt/"
-  install -dm755 "usr/bin"
-  install -dm755 "usr/share/pixmaps"
-  install -dm755 "usr/share/applications"
+  install -m644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$instname.desktop"
+  cp -rL "$srcdir/$instname-linux-"* "$pkgdir/opt/$pkgname"
 
-  install -m644 "$srcdir/$pkgname.desktop" "usr/share/applications/${instname}.desktop"
-  install -m644 "$srcdir/$instname-linux-x64" "opt/"
+  ln -sf "/opt/$pkgname/$instname" "$pkgdir/usr/bin/$instname"
+  ln -sf "/opt/$pkgname/resources/app/icon.png" "$pkgdir/usr/share/pixmaps/$instname.png"
 
-  ln -sf "/opt/${instname}-linux-x64/${instname}" "usr/bin/${instname}"
-  ln -sf "/opt/${instname}-linux-x64/resources/app/icon.png" "usr/share/pixmaps/${instname}.png"
-
-  chmod 777 "opt/${instname}-linux-x64/resources/app/nativefier.json"
+  chmod 777 "$pkgdir/opt/$pkgname/resources/app/nativefier.json"
 }
 
