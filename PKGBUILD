@@ -2,12 +2,13 @@
 
 pkgname=ibus-libzhuyin
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="New Zhuyin engine based on libzhuyin for IBus"
 arch=('x86_64')
 license=('GPL2')
 url="https://github.com/libzhuyin/ibus-libzhuyin"
-depends=('ibus' 'opencc' 'python-xdg')
+# libpinyin provides both libpinyin.so and libzhuyin.so
+depends=('ibus' 'opencc' 'python-xdg' 'libpinyin')
 makedepends=('git' 'intltool' 'gnome-common')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/libzhuyin/ibus-libzhuyin/archive/$pkgver.tar.gz")
 sha512sums=('6ad2d4768e0f5d605b66dd5133b55940972a9f92c8257f09b53a84cf80a07eabb9f2f9c354de66d4544321f0bdbb763b7401d28d468934b12a20fdbc7dd75b55')
