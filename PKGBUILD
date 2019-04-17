@@ -1,6 +1,6 @@
 # Maintainer: JP Cimalando <jp-dev inbox.ru>
 pkgname=adljack
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 epoch=
 pkgdesc="OPL3/OPN2 synthesizer using ADLMIDI, for Jack and cross-platform audio"
@@ -19,8 +19,8 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/jpcima/adljack/files/1995071/$pkgname-$pkgver.tar.gz")
-md5sums=('3ec1892386358fe7e1f76c667ae42e20')
+source=("https://github.com/jpcima/adljack/releases/download/v$pkgver/adljack-$pkgver.tar.gz")
+md5sums=('e928468d7b369f38b71bcedc5e6b7cfd')
 noextract=()
 validpgpkeys=()
 
