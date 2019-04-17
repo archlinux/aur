@@ -1,0 +1,20 @@
+pkgbase = gvls-git
+	pkgdesc = GNOME Vala Language Server
+	pkgver = 0.10.2+42+g065a4bc
+	pkgrel = 1
+	url = https://gitlab.gnome.org/esodan/gvls
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = vala
+	makedepends = git
+	makedepends = meson
+	depends = glib2
+	depends = libgee
+	provides = gvls
+	conflicts = gvls
+	source = git+https://gitlab.gnome.org/esodan/gvls.git
+	sha256sums = SKIP
+
+pkgname = gvls-git
+
