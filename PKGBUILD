@@ -67,10 +67,10 @@ _rev_override="n"
 _major=5.0
 _minor=8
 _srcname=linux-${_major}
-_clr=${_major}.7-731
+_clr=${_major}.8-734
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -130,6 +130,8 @@ CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
         sed -i "s|# CONFIG_ACPI_REV_OVERRIDE_POSSIBLE is not set|CONFIG_ACPI_REV_OVERRIDE_POSSIBLE=y|g" ./.config
         fi
 
+        make olddefconfig
+
     ### Copying i915 firmware and intel-ucode
         msg2 "Copying i915 firmware and intel-ucode-${_ucode}..."
         cp -a /usr/lib/firmware/i915 firmware/
@@ -167,6 +169,9 @@ CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
             make localmodconfig
             fi
         fi
+
+    ### do not run `make olddefconfig` as it sets default options
+        yes "" | make config >/dev/null
 
     ### Running make nconfig
 
