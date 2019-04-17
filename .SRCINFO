@@ -1,0 +1,16 @@
+pkgbase = krew-bin
+	pkgdesc = Package manager for kubectl plugins
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/GoogleContainerTools/krew/
+	arch = x86_64
+	license = Apache
+	provides = krew
+	provides = krew-bin
+	source = https://storage.googleapis.com/krew/v0.2.1/krew.tar.gz
+	source = https://storage.googleapis.com/krew/v0.2.1/krew.yaml
+	sha256sums = dc2f2e1ec8a0acb6f3e23580d4a8b38c44823e948c40342e13ff6e8e12edb15a
+	sha256sums = e7be8f3aa4d8d7e66f6c707f7c67007e29ba0ecd80bbfd3b5ec8c0f25d2bb672
+
+pkgname = krew-bin
+
