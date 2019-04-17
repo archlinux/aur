@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Meyer <mail@bastimeyer.de>
 # Former maintainer: Ben Fox-Moore <ben.foxmoore@gmail.com>
 pkgname=streamlink-twitch-gui
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="A multi platform Twitch.tv browser for Streamlink"
 arch=("i686" "x86_64")
@@ -26,8 +26,8 @@ source=("https://raw.githubusercontent.com/streamlink/streamlink-twitch-gui/v${p
 source_i686=("https://github.com/streamlink/streamlink-twitch-gui/releases/download/v${pkgver}/streamlink-twitch-gui-v${pkgver}-linux32.tar.gz")
 source_x86_64=("https://github.com/streamlink/streamlink-twitch-gui/releases/download/v${pkgver}/streamlink-twitch-gui-v${pkgver}-linux64.tar.gz")
 sha256sums=('a3f70e2c1fabdc05bde59f20d77863362d127b1c231c735a0422fa079c40415f')
-sha256sums_i686=('f06633403824801dd2ab4a319d2a5ff74511aae66ae779b809828c10f310b3a0')
-sha256sums_x86_64=('7c4a70b23b93a89308b798fa816149cc52a7ac9ed9a96b60ace8cd794145da14')
+sha256sums_i686=('e924f227decf3c44ee3d0e2a3708f3b340555df831e7669fbe5db8e0c605226e')
+sha256sums_x86_64=('9391b1b736344e836b295a2fcefe9f85bdb8b27449df182bacc6ae12fbd17d39')
 
 package() {
 	cd "${srcdir}/${pkgname}"
