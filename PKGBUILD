@@ -41,7 +41,9 @@ check() {
 package() {
   cd "hg"
 
-  python "setup.py" install -O1 --root="$pkgdir"
+  python "setup.py" install \
+    --optimize 1 \
+    --root "$pkgdir"
 
   make DESTDIR="$pkgdir" PREFIX="/usr" -C "contrib/chg" install
 
