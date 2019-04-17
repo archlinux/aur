@@ -3,7 +3,7 @@
 pkgbase=brotli-git
 pkgname=('brotli-git' 'python-brotli-git')
 pkgver=1.0.7.r5.g4b2b2d4
-pkgrel=1
+pkgrel=2
 pkgdesc="Brotli compression library"
 arch=('i686' 'x86_64')
 url="https://github.com/google/brotli"
@@ -57,5 +57,8 @@ package_python-brotli-git() {
 
   cd "brotli"
 
-  python "setup.py" install --skip-build --root="$pkgdir"
+  python "setup.py" install \
+    --optimize 1 \
+    --skip-build \
+    --root "$pkgdir"
 }
