@@ -1,8 +1,8 @@
-# $Id$
-# Maintainer: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
+# Maintainer: Taijian <taijian@posteo.de>
+# Contributor: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
 
 pkgname=gnome-shell-extension-window-corner-preview-git
-pkgver=2.r19.g9c1e97c
+pkgver=2.r35.a95bb13
 pkgrel=1
 pkgdesc='Extension for GNOME shell to show a video preview on the corner of the screen.'
 arch=(any)
@@ -13,12 +13,14 @@ makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install='gnome-shell-extension.install'
-source=("git+${url}.git")
+# source=("git+${url}.git")
+source=("git+${url}"#branch=feat-ES6-porting)
 sha256sums=('SKIP')
 
 pkgver() {
   cd "window-corner-preview"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  # git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 package() {

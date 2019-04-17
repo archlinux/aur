@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-window-corner-preview-git
 	pkgdesc = Extension for GNOME shell to show a video preview on the corner of the screen.
-	pkgver = 2.r19.g9c1e97c
+	pkgver = 2.r35.a95bb13
 	pkgrel = 1
 	url = https://github.com/medenagan/window-corner-preview
 	install = gnome-shell-extension.install
@@ -10,7 +10,7 @@ pkgbase = gnome-shell-extension-window-corner-preview-git
 	depends = gnome-shell>=3.10
 	provides = gnome-shell-extension-window-corner-preview
 	conflicts = gnome-shell-extension-window-corner-preview
-	source = git+https://github.com/medenagan/window-corner-preview.git
+	source = git+https://github.com/medenagan/window-corner-preview#branch=feat-ES6-porting
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-window-corner-preview-git
