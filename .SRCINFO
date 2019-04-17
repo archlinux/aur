@@ -9,7 +9,7 @@ pkgbase = tinyssh-keyconvert
 	provides = tinyssh-keyconvert
 	conflicts = tinyssh-keyconvert
 	source = https://github.com/ansemjo/tinyssh-keyconvert/archive/0.3.0/tinyssh-keyconvert-0.3.0.tar.gz
-	sha256sums = cca03f528b7ea3ab23faec1e76633369bbb022818fa3a6252fddd5bfc317ebf9
+	sha256sums = dcadd049383473af446085a5a505be900799d5991876c47a603c0cc38009f0c8
 
 pkgname = tinyssh-keyconvert
 
