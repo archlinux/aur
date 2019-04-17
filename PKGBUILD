@@ -1,6 +1,6 @@
 # Maintainer: Dmitry Barker Medvedev <dimon@bitel.ru>
 pkgname=bgbillingclient72
-pkgver=7.2.1901091804
+pkgver=7.2.1903251819
 pkgrel=2
 pkgdesc='Client runner for billing system BGBilling 7.2'
 arch=('i686' 'x86_64')
@@ -41,19 +41,24 @@ _rename_var_file() {
 }
 
 pkgver() {
-	wget --no-remove-listing ftp://ftp.bgbilling.ru/pub/bgbilling/${_vermajor}/${_achivename}_${_vermajor}_*.zip
+	wget --no-remove-listing ftp://ftp.bgbilling.ru/pub/bgbilling/${_vermajor}/${_achivename}_*.zip
 	# lrwxrwxrwx    1 0        0              34 Jan 09 18:48 BGBillingRunner_7.2.zip -> BGBillingRunner_7.2_1901091804.zip
 	# -rw-rw-r--    1 0        0           81124 Jan 09 18:04 BGBillingRunner_7.2_1901091804.zip
-	_ver=$(grep -o -P --max-count=1 "${_achivename}_(\d+)\.(\d+)_(\d+)" .listing)
+	# _ver=$(grep -o -P --max-count=1 "${_achivename}_(\d+)\.(\d+)_(\d+)" .listing)
+	# потом стало: BGBillingRunner_1903251819.zip
+	_ver=$(grep -o -P --max-count=1 "${_achivename}_(\d+)" .listing)
 	# BGBillingRunner_7.2_1901091804
-	_v1=$(echo ${_ver}|cut -d'_' -f2)
-	_v2=$(echo ${_ver}|cut -d'_' -f3)
-	echo "${_v1}.${_v2}"
+	# _v1=$(echo ${_ver}|cut -d'_' -f2)  # 7.2
+	# _v2=$(echo ${_ver}|cut -d'_' -f3)  # 1901091804
+	# echo "${_v1}.${_v2}"
+	# потом стало: BGBillingRunner_1901091804
+	_v2=$(echo ${_ver}|cut -d'_' -f2)  # 1901091804
+	echo "${_vermajor}.${_v2}"
 }
 
 package() {
 	msg2 "unzip distributive"
-	unzip -o ./${_achivename}_${_vermajor}_${_verbuild}.zip
+	unzip -o ./${_achivename}_${_verbuild}.zip
 
 	msg2 "create structure"
 	mkdir $pkgdir/opt
