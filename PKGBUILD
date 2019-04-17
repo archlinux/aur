@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@tellus.space>
 
 pkgname=jx
-pkgver=2.0.1
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="Command line tool for working with Jenkins X: automated CI/CD for Kubernetes"
 arch=("x86_64")
@@ -9,7 +9,7 @@ url="https://github.com/jenkins-x/jx"
 license=('Apache')
 depends=('go>=1.11.4')
 source=("https://github.com/jenkins-x/jx/archive/v${pkgver}.tar.gz")
-sha256sums=('73f9323ebdbee114fa069c2e1c456f575961b16c586f656a70904a247104ef7d')
+sha256sums=('250c801e90daf8babb78f6d066ad6012364d774ab6508c71d1aa13aea27ddd2f')
 
 prepare() {
     # Clean up any extracted files from previous installation
