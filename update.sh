@@ -2,7 +2,7 @@
 
 AUR_NAME=rst2beamer3k
 PROJ_NAME=rst2beamer3k
-DESCRIPTION="msmtp wrapper allowing for offline use"
+DESCRIPTION="This is an unofficial fork of rst2beamer that runs on both Python 2 and 3."
 URL=https://github.com/myint/rst2beamer
 DEPENDS=()
 LICENSE='GPL'
