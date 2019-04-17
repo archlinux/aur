@@ -1,7 +1,7 @@
 pkgbase = sac-core
 	pkgdesc = Safenet Authentication Client for Alladin eToken, stripped core package
-	pkgver = 9.1.7
-	pkgrel = 10
+	pkgver = 10.0.37
+	pkgrel = 11
 	install = sac-core.install
 	arch = x86_64
 	license = custom
@@ -12,8 +12,8 @@ pkgbase = sac-core
 	depends = nss
 	source = eToken.conf
 	sha256sums = 85b850b820610e029428e577ca0e48f6fb7b4148ae8d702ca20b191963046c6c
-	source_x86_64 = http://packages.mirohost.net/etoken/Linux/Core/SafenetAuthenticationClient-core-9.1.7-0_amd64.deb
-	sha256sums_x86_64 = bafd836ade7524ce5634525b7fc89b99c7ba4b2d0b908d21d960e11714204300
+	source_x86_64 = https://storage.spidlas.cz/public/soft/safenet/SafenetAuthenticationClient-core-10.0.37-0_amd64.deb
+	sha256sums_x86_64 = b4f8ffd030363693540bd494c3825ebd901937565cdd1c6455f95005571a27e5
 
 pkgname = sac-core
 
