@@ -23,18 +23,17 @@ index 01f53974..2ee9e1dc 100644
  
  #include "libinput.h"
  #include "libinput-private.h"
-@@ -720,6 +722,16 @@ libinput_event_pointer_get_axis_value(struct libinput_event_pointer *event,
+@@ -720,6 +722,15 @@ libinput_event_pointer_get_axis_value(struct libinput_event_pointer *event,
  	return value;
  }
  
-+static char *multiplier;
++static char *multiplier="1";
 +static void libinput_discrete_deltay_multiplier(void) {
 +  int fd;
 +  char *file = "/tmp/libinput_discrete_deltay_multiplier";
-+  if ((fd = open(file, O_RDWR | O_CREAT, 0666)) == -1) exit(1);
-+  if (write(fd, "1", sizeof(char)) == -1) exit(1);
-+  if ((multiplier = mmap(NULL, 1024, PROT_READ, MAP_SHARED, fd, 0)) ==
-+      MAP_FAILED) exit(1);
++  if ((fd = open(file, O_RDWR | O_CREAT, 0666)) == -1) return;
++  if (write(fd, "1", sizeof(char)) == -1) return;
++  multiplier = mmap(NULL, 1024, PROT_READ, MAP_SHARED, fd, 0);
 +}
 +
  LIBINPUT_EXPORT double
