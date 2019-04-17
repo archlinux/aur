@@ -2,8 +2,8 @@
 # Maintainer: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs
-pkgver=2019.1
-pkgrel=3
+pkgver=2019.2
+pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -17,7 +17,7 @@ optdepends=('cuda: Nvidia GPU support'
 makedepends=('cmake' 'libxml2' 'hwloc')
 options=('!libtool')
 source=(http://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-sha1sums=('f9abf82ecbe67b8dfe66874b828c4da2bb780376')
+sha1sums=('6d638441221b829f13bd721f79ea7db1be84757f')
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
@@ -36,6 +36,7 @@ build() {
         -DGMX_DOUBLE=ON \
         -DGMX_BUILD_OWN_FFTW=ON \
         -DREGRESSIONTEST_DOWNLOAD=ON
+        #-DGMX_SIMD=AVX2_256 \
   make
 
   msg2 "Building the single precision files"
@@ -45,6 +46,7 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=lib\
         -DGMX_BUILD_OWN_FFTW=ON \
         -DREGRESSIONTEST_DOWNLOAD=ON
+        #-DGMX_SIMD=AVX2_256 \
   make
 }
 
