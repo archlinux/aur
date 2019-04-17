@@ -1,6 +1,6 @@
 pkgbase = nuitka-git
 	pkgdesc = A Python compiler
-	pkgver = 0.6.2.r0.g18a0ab3e
+	pkgver = 0.6.3.r0.g3cf363c2
 	pkgrel = 1
 	url = https://nuitka.net/
 	arch = any

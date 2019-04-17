@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=nuitka-git
-pkgver=0.6.2.r0.g18a0ab3e
+pkgver=0.6.3.r0.g3cf363c2
 pkgrel=1
 pkgdesc="A Python compiler"
 arch=('any')
@@ -26,5 +26,7 @@ pkgver() {
 package() {
   cd "Nuitka"
 
-  python "setup.py" install --root="$pkgdir" --optimize=1
+  python "setup.py" install \
+    --optimize 1 \
+    --root "$pkgdir"
 }
