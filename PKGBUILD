@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cython-git
-pkgver=0.29.4.r213.g0ed473f9f
+pkgver=0.29.7.r371.g1a1087bd6
 pkgrel=1
 pkgdesc="C-Extensions for Python"
 arch=('i686' 'x86_64')
@@ -24,13 +24,15 @@ pkgver() {
 build() {
   cd "cython"
 
-  python setup.py build
+  python "setup.py" build
 }
 
 package() {
   cd "cython"
 
-  python setup.py install --root="$pkgdir" --optimize=1
+  python "setup.py" install \
+    --optimize 1 \
+    --root "$pkgdir"
 
   for f in cygdb cython cythonize; do
     mv "$pkgdir/usr/bin"/$f "$pkgdir/usr/bin"/${f}3

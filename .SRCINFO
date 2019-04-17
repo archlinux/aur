@@ -1,6 +1,6 @@
 pkgbase = cython-git
 	pkgdesc = C-Extensions for Python
-	pkgver = 0.29.4.r213.g0ed473f9f
+	pkgver = 0.29.7.r371.g1a1087bd6
 	pkgrel = 1
 	url = https://cython.org/
 	arch = i686
