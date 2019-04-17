@@ -14,16 +14,17 @@ diff --git a/src/libinput.c b/src/libinput.c
 index 01f53974..2ee9e1dc 100644
 --- a/src/libinput.c
 +++ b/src/libinput.c
-@@ -33,6 +33,8 @@
+@@ -33,6 +33,9 @@
  #include <sys/epoll.h>
  #include <unistd.h>
  #include <assert.h>
 +#include <fcntl.h>
 +#include <sys/mman.h>
++#include <sys/stat.h>
  
  #include "libinput.h"
  #include "libinput-private.h"
-@@ -720,6 +722,15 @@ libinput_event_pointer_get_axis_value(struct libinput_event_pointer *event,
+@@ -720,6 +722,16 @@ libinput_event_pointer_get_axis_value(struct libinput_event_pointer *event,
  	return value;
  }
  
@@ -32,6 +33,7 @@ index 01f53974..2ee9e1dc 100644
 +  int fd;
 +  char *file = "/tmp/libinput_discrete_deltay_multiplier";
 +  if ((fd = open(file, O_RDWR | O_CREAT, 0666)) == -1) return;
++  fchmod(fd,S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP|S_IROTH|S_IWOTH);
 +  if (write(fd, "1", sizeof(char)) == -1) return;
 +  multiplier = mmap(NULL, 1024, PROT_READ, MAP_SHARED, fd, 0);
 +}

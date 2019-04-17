@@ -1,7 +1,7 @@
 pkgbase = libinput-multiplier
 	pkgdesc = scroll patch, discrete deltay multiplier
 	pkgver = 1.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://freedesktop.org/wiki/Software/libinput
 	arch = x86_64
 	license = custom
@@ -19,7 +19,7 @@ pkgbase = libinput-multiplier
 	source = https://freedesktop.org/software/libinput/libinput-1.13.1.tar.xz
 	source = multiplier.patch
 	sha512sums = a19deec802e704038df0901c103a82a3370f56e0299f4cc1b6aa84c1832a66fb638e6f9d0fa708b51df6c3b939cdc1271e4ff547c645c566be03dce0bc9ff7e0
-	sha512sums = c47b99a7d415f0560854d86aa445473bc6485a41a7062e9c12996d0b7bad146ea674e3488da620eefc9f3cc705be07c213b1b37a6df2ad0b215b3a3d617daa0d
+	sha512sums = bf31c78c40b568f3a4de029c596c2cee05b6d9dd0ee174259aac34dd87ea84a858ef5fd2ffdd753075da54a310480a9e1ed511cc49ca5edec6769b517bff41f9
 
 pkgname = libinput-multiplier
 
