@@ -1,6 +1,0 @@
-arch=('any')
-pkgname=('tlp-git' 'tlp-rdw-git')
-
-check_git $packagedir/tlp-git/tlp
-
-# vim: ts=2 sw=2 et:
