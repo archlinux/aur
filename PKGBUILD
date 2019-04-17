@@ -32,11 +32,11 @@ sha256sums=(
 )
 
 package() {
-  cd "${srcdir}"
-  install -dm755 "${pkgdir}/usr/share/fonts/TTF"
+  cd "$srcdir"
+  install -dm755 "$pkgdir/usr/share/fonts/TTF"
   for font in $(find *.ttf)
   do
-    install -m644 "${pkgdir}/usr/share/fonts/TTF"
+    install -m644 "$srcdir/$font" "$pkgdir/usr/share/fonts/TTF/$font"
   done
 }
 
