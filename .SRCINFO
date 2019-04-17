@@ -1,16 +1,16 @@
 pkgbase = virtualbox-modules-uksm
-	pkgver = 6.0.4
+	pkgver = 6.0.6
 	pkgrel = 1
 	url = http://virtualbox.org
 	arch = x86_64
 	license = GPL
 	makedepends = linux-uksm-headers
-	makedepends = virtualbox-host-dkms>=6.0.4
+	makedepends = virtualbox-host-dkms>=6.0.6
 	makedepends = dkms
 
 pkgname = virtualbox-host-modules-uksm
 	pkgdesc = Host kernel modules for VirtualBox running under linux-uksm.
-	depends = linux-uksm>=4.20
-	depends = linux-uksm<5.0
+	depends = linux-uksm>=5.0
+	depends = linux-uksm<5.1
 	provides = VIRTUALBOX-HOST-MODULES
 
