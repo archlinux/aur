@@ -1,0 +1,38 @@
+--- old_opt/dell/Printers/E514dw/cupswrapper/dell_lpdwrapper_E514dw	2019-04-117 07:20:21
++++ opt/dell/Printers/E514dw/cupswrapper/dell_lpdwrapper_E514dw	2019-04-17 07:24:03
+@@ -43,15 +43,7 @@
+ $width=-1;
+ $height=-1;
+ 
+-#my $basedir = Cwd::realpath ($0);
+-my $basedir = `readlink $0`;
+-if ( $basedir eq '' ){
+-    $basedir = `realpath $0`;
+-}
+-chomp($basedir);
+-
+-$basedir =~ s/$PRINTER\/cupswrapper\/.*$/$PRINTER\//g;
+-
++my $basedir = "/usr/share/dell/E514dw/";
+ 
+ %units = ( pt   => \&pt2dot, 
+ 	   mm   => \&mm2dot, 
+@@ -77,17 +69,12 @@
+ 
+ my $cmdoptions=$ARGV[4];
+ my $PPD = $ENV{PPD};
+-my $PRINTER=$basedir;
++my $PRINTER="E514dw";
+ my $CUPSINPUT='';
+ if ( @ARGV >= 6 ){
+     $CUPSINPUT=$ARGV[7];
+ }
+ 
+-
+-$PRINTER =~ s/^\/opt\/.*\/Printers\///g;
+-$PRINTER =~ s/\/cupswrapper//g;
+-$PRINTER =~ s/\///g;
+-
+ for  (my $i = 0 ; $i < @ARGV ; $i ++){
+     logprint( 0 , "ARG$i      = $ARGV[$i]\n");
+ }

@@ -1,0 +1,21 @@
+pkgbase = dell-e514dw
+	pkgdesc = CUPS driver for the Dell Laser Printer E514dw
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://www.dell.com/support/home/de/de/debsdt1/Drivers/DriversDetails?driverId=FV8XM
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = unknown
+	depends = perl
+	depends = cups
+	depends = psutils
+	options = emptydirs
+	source = dell_lpdwrapper_E514dw.patch
+	source = https://downloads.dell.com/FOLDER03040876M/1/Printer_E514dw_Driver_Dell_A00_LINUX.zip
+	md5sums = 1e5dc53bbb9beb917723e764014e5c19
+	md5sums = 961ef3d745b0f9ee3987401abcfa29e2
+	depends_x86_64 = lib32-glibc
+
+pkgname = dell-e514dw
+
