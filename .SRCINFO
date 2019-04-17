@@ -1,7 +1,7 @@
 pkgbase = google-keep-nativefier
 	pkgdesc = Quickly capture what's on your mind and get a reminder later at the right place or time. Speak a voice memo on the go and have it automatically transcribed.
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://keep.google.com/
 	arch = x86_64
 	license = MIT

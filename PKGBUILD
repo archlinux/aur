@@ -1,6 +1,6 @@
 pkgname="google-keep-nativefier"
 pkgver="0.1"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Quickly capture what's on your mind and get a reminder later at the right place or time. Speak a voice memo on the go and have it automatically transcribed."
 arch=("x86_64")
 license=("MIT")
@@ -27,8 +27,8 @@ package() {
   install -dm755 "${pkgdir}/usr/share/pixmaps"
   install -dm755 "${pkgdir}/usr/share/applications"
 
-  cp "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${instname}.desktop"
-  cp "${srcdir}/${instname}-linux-x64" "${pkgdir}/opt/"
+  cp -f "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${instname}.desktop"
+  cp -f "${srcdir}/${instname}-linux-x64" "${pkgdir}/opt/"
 
   ln -sf "/opt/${instname}-linux-x64/${instname}" "${pkgdir}/usr/bin/${instname}"
   ln -sf "/opt/${instname}-linux-x64/resources/app/icon.png" "${pkgdir}/usr/share/pixmaps/${instname}.png"
