@@ -3,10 +3,10 @@
 
 pkgname='pop-icon-theme-bin'
 pkgver='2.0.0'
-pkgrel=3
+pkgrel=4
 pkgdesc='A free and open source SVG icon theme for Linux, based on Paper Icon Set and Papirus.'
 arch=('any')
-url='https://github.com/system76/pop-icon-theme'
+url='https://github.com/pop-os/icon-theme'
 license=('LGPL3')
 conflicts=('pop-icon-theme')
 provides=('pop-icon-theme')

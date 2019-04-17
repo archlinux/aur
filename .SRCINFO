@@ -1,8 +1,8 @@
 pkgbase = pop-icon-theme-bin
 	pkgdesc = A free and open source SVG icon theme for Linux, based on Paper Icon Set and Papirus.
 	pkgver = 2.0.0
-	pkgrel = 3
-	url = https://github.com/system76/pop-icon-theme
+	pkgrel = 4
+	url = https://github.com/pop-os/icon-theme
 	arch = any
 	license = LGPL3
 	optdepends = pop-gtk-theme-bin: Recommended gtk theme
