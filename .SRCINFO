@@ -10,7 +10,7 @@ pkgbase = virtualbox-modules-lqx
 
 pkgname = virtualbox-host-modules-lqx
 	pkgdesc = Host kernel modules for VirtualBox running under linux-lqx.
-	depends = linux-lqx>=4.20
-	depends = linux-lqx<5.0
+	depends = linux-lqx>=5.0
+	depends = linux-lqx<5.1
 	provides = VIRTUALBOX-HOST-MODULES
 
