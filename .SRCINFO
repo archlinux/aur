@@ -1,0 +1,26 @@
+pkgbase = diplib-git
+	pkgdesc = Quantitative Image Analysis in C++, MATLAB and Python
+	pkgver = r1522.37b06c70
+	pkgrel = 1
+	url = http://www.diplib.org/
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	depends = freeglut
+	depends = glfw
+	depends = glew
+	optdepends = java-runtime=8: DIPjavaio
+	optdepends = python: PyDIP
+	optdepends = matlab: DIPimage
+	optdepends = doxygen: documentation
+	optdepends = pandoc: documentation
+	optdepends = pandoc-crossref: documentation
+	optdepends = texlive-bin: documentation
+	provides = diplib
+	conflicts = diplib
+	source = git+https://github.com/DIPlib/diplib.git
+	md5sums = SKIP
+
+pkgname = diplib-git
+
