@@ -1,13 +1,14 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=svgo
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for optimizing SVG files'
 arch=(any)
 url=https://github.com/svg/svgo
 license=(MIT)
 depends=(nodejs)
 makedepends=(npm)
+provides=(nodejs-svgo)
 replaces=(nodejs-svgo)
 conflicts=(nodejs-svgo)
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)

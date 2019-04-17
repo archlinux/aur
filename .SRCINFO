@@ -1,12 +1,13 @@
 pkgbase = svgo
 	pkgdesc = Tool for optimizing SVG files
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/svg/svgo
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
+	provides = nodejs-svgo
 	conflicts = nodejs-svgo
 	replaces = nodejs-svgo
 	noextract = svgo-1.2.2.tgz
