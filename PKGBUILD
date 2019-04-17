@@ -1,49 +1,87 @@
-# Maintainer: Anselmo L. S. Melo <anselmo.melo@intel.com>
+# Maintainer: K. Morton <pryre.dev@outlook.com>
+# Contributor: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=qgroundcontrol-git
-pkgver=r10597.08f54ff7a
+pkgver=r14118.0871b019d
 pkgrel=1
 pkgdesc="Micro air vehicle ground control station."
 arch=('x86_64')
 url="http://qgroundcontrol.org/"
 license=('GPL3')
-depends=(\
-  'espeak'  # optional but you have to decide if you want it at built-time\
+depends=( \
+		  'bzip2' \
+		  'dbus' \
+		  'flac' \
+		  'gst-plugins-base-libs' \
+		  'libasyncns' \
+		  'libffi' \
+		  'libgcrypt' \
+		  'libgpg-error' \
+		  'libogg' \
+		  'libsndfile' \
+		  'libsystemd' \
+		  'libunwind' \
+		  'libx11' \
+		  'libxau' \
+		  'libxcb' \
+		  'libxdmcp' \
+		  'libxext' \
+		  'lz4' \
+		  'orc' \
+		  'pcre' \
+		  'sdl2' \
+		  'xz' \
+		  'zlib' \
+		  'qt5-speech' \
+		  'qt5-multimedia' \
+		  'qt5-serialport' \
+		  'qt5-charts' \
+		  'qt5-quickcontrols' \
+		  'qt5-quickcontrols2' \
 )
   
-makedepends=('git')
+makedepends=('git' 'qt5-base')
 
-source=('qgroundcontrol::git+https://github.com/mavlink/qgroundcontrol.git'
-        'https://s3-us-west-2.amazonaws.com/qgroundcontrol/dependencies/Qt5.7.1-linux-min.tar.bz2')
-md5sums=('SKIP'
-         'ec8a27edd22f3d1bdf2e53f9e8153923')
+source=('qgroundcontrol::git+https://github.com/mavlink/qgroundcontrol.git')
+md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/${pkgname%-git}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir"
-  tar xf Qt5.7.1-linux-min.tar.bz2
-  cd "$srcdir/${pkgname%-git}"
-  git submodule update --init --recursive
-  mkdir -p build
+	cd "$srcdir"
+	cd "$srcdir/${pkgname%-git}"
+	git submodule update --init --recursive
+	mkdir -p "$srcdir/${pkgname%-git}/build"
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}/build"
-  export PKG_CONFIG_PATH="${srcdir}/Qt5.7-linux/5.7/gcc_64/lib/pkgconfig"
-  "${srcdir}/Qt5.7-linux/5.7/gcc_64/bin/qmake" ../qgroundcontrol.pro
-  make
+	cd "$srcdir/${pkgname%-git}/build"
+	qmake ../qgroundcontrol.pro
+	make
+	
+	echo "[Desktop Entry]
+Type=Application
+Name=QGroundControl Development
+Comment=Ground control for unmanned vehicles
+Path=/opt/${pkgname}/
+Exec=/usr/bin/${pkgname}
+Icon=/opt/${pkgname}/qgroundcontrol.png
+Terminal=false
+Categories=Qt;Utility;" > "$srcdir/${pkgname}.desktop"
 }
 
 package() {
-  mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/bin"
-  cp -R "$srcdir/${pkgname%-git}/build/release" "${pkgdir}/opt/qgroundcontrol-git"
-  mkdir -p "${pkgdir}/opt/qgroundcontrol-git/Qt"
-  cp "$srcdir/qgroundcontrol/deploy/qgroundcontrol-start.sh" "${pkgdir}/opt/qgroundcontrol-git/"
-  cp "$srcdir/qgroundcontrol/resources/icons/qgroundcontrol.png" "${pkgdir}/opt/qgroundcontrol-git/"
-  #ln -s "/opt/qgroundcontrol-git/qgroundcontrol-start.sh" "${pkgdir}/usr/bin/qgroundcontrol-git"
+	mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/bin" "${pkgdir}/usr/share/applications"
+	cp -R "$srcdir/${pkgname%-git}/build/release" "${pkgdir}/opt/${pkgname}"
+	cp "$srcdir/${pkgname%-git}/resources/icons/qgroundcontrol.png" "${pkgdir}/opt/${pkgname}"
+	cp "$srcdir/${pkgname%-git}/deploy/qgroundcontrol-start.sh" "${pkgdir}/opt/${pkgname}"
+	cp "$srcdir/${pkgname}.desktop" "${pkgdir}/opt/${pkgname}"
+
+	ln -s "/opt/${pkgname}/qgroundcontrol-start.sh" "${pkgdir}/usr/bin/${pkgname}"
+	ln -s "/opt/${pkgname}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
 }
 
 # vim:set ts=2 sw=2 et:
