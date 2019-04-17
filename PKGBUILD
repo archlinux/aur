@@ -22,17 +22,19 @@ build() {
 }
 
 package() {
-  install -dm755 "${pkgdir}/opt/"
-  install -dm755 "${pkgdir}/usr/bin"
-  install -dm755 "${pkgdir}/usr/share/pixmaps"
-  install -dm755 "${pkgdir}/usr/share/applications"
+  cd $pkgdir
 
-  cp -f "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${instname}.desktop"
-  cp -f "${srcdir}/${instname}-linux-x64" "${pkgdir}/opt/"
+  install -dm755 "opt/"
+  install -dm755 "usr/bin"
+  install -dm755 "usr/share/pixmaps"
+  install -dm755 "usr/share/applications"
 
-  ln -sf "/opt/${instname}-linux-x64/${instname}" "${pkgdir}/usr/bin/${instname}"
-  ln -sf "/opt/${instname}-linux-x64/resources/app/icon.png" "${pkgdir}/usr/share/pixmaps/${instname}.png"
+  install -m644 "$srcdir/$pkgname.desktop" "usr/share/applications/${instname}.desktop"
+  install -m644 "$srcdir/$instname-linux-x64" "opt/"
 
-  chmod 777 "${pkgdir}/opt/${instname}-linux-x64/resources/app/nativefier.json"
+  ln -sf "/opt/${instname}-linux-x64/${instname}" "usr/bin/${instname}"
+  ln -sf "/opt/${instname}-linux-x64/resources/app/icon.png" "usr/share/pixmaps/${instname}.png"
+
+  chmod 777 "opt/${instname}-linux-x64/resources/app/nativefier.json"
 }
 
