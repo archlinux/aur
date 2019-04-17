@@ -1,0 +1,14 @@
+pkgbase = dindent
+	pkgdesc = PHP library and CLI for indenting HTML for development and testing.
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/gajus/dindent
+	arch = any
+	license = BSD
+	makedepends = composer
+	depends = php
+	source = dindent-.tar.gz::https://github.com/gajus/dindent/archive/2.3.0.tar.gz
+	sha256sums = bd4203bb1a89b6d49d4c2d56a20a4d80f19833986bb5e6f44c6437cc1b3f1222
+
+pkgname = dindent
+
