@@ -1,5 +1,5 @@
 pkgname="ms-office-online-nativefier"
-pkgver="0.1"
+pkgver="0.2"
 pkgrel="1"
 pkgdesc="Microsoft Office Online is an Office suite that is offered as a free web application and is part of the Microsoft Office family."
 arch=("x86_64")
@@ -20,13 +20,13 @@ build() {
 }
 
 package() {
-  install -dm755 "${pkgdir}/opt/"
-  install -dm755 "${pkgdir}/usr/bin"
-  install -dm755 "${pkgdir}/usr/share/pixmaps"
-  install -dm755 "${pkgdir}/usr/share/applications"
+  install -dm644 "${pkgdir}/opt/"
+  install -dm644 "${pkgdir}/usr/bin"
+  install -dm644 "${pkgdir}/usr/share/pixmaps"
+  install -dm644 "${pkgdir}/usr/share/applications"
 
-  cp -rf "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/microsoft-office-online.desktop"
-  cp -rf "${srcdir}/microsoft-office-online-linux-x64" "${pkgdir}/opt/"
+  install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/microsoft-office-online.desktop"
+  cp -rL "${srcdir}/microsoft-office-online-linux-x64" "${pkgdir}/opt/"
 
   ln -sf "/opt/microsoft-office-online-linux-x64/microsoft-office-online" "${pkgdir}/usr/bin/microsoft-office-online"
   ln -sf "/opt/microsoft-office-online-linux-x64/resources/app/icon.png" "${pkgdir}/usr/share/pixmaps/microsoft-office-online.png"

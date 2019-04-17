@@ -1,6 +1,6 @@
 pkgbase = ms-office-online-nativefier
 	pkgdesc = Microsoft Office Online is an Office suite that is offered as a free web application and is part of the Microsoft Office family.
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/jiahaog/nativefier
 	arch = x86_64
