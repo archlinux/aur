@@ -13,7 +13,7 @@ provides=('libdvdcss'
           'libdvdcss.so'
           )
 conflicts=('libdvdcss')
-source=('git+https://code.videolan.org/videolan/libdvdcss.git')
+source=('git+https://code.videolan.org/videolan//libdvdcss.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -26,7 +26,6 @@ prepare() {
 
   cd libdvdcss
   autoreconf -vif
-
 }
 
 build() {
