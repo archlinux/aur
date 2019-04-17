@@ -4,7 +4,7 @@
 _gitname=vala-tester
 _author=bartzaalberg
 pkgname=("${_gitname}-git")
-pkgver=latest
+pkgver=r10.9f2ca25
 pkgrel=1
 pkgdesc="A Vala application to test Vala snippets without the hassle."
 arch=('i686' 'x86_64')

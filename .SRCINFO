@@ -1,6 +1,6 @@
 pkgbase = vala-tester-git
 	pkgdesc = A Vala application to test Vala snippets without the hassle.
-	pkgver = latest
+	pkgver = r10.9f2ca25
 	pkgrel = 1
 	url = https://github.com/bartzaalberg/vala-tester
 	arch = i686
