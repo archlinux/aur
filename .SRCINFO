@@ -1,7 +1,7 @@
 pkgbase = tinyssh-keyconvert
 	pkgdesc = Convert OpenSSH ed25519 / ecdsa-nistp256 secret keys to binary format for TinySSH
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/ansemjo/tinyssh-keyconvert
 	arch = any
 	license = GPL-3.0
