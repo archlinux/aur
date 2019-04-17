@@ -5,7 +5,7 @@ set -u
 _pkgname='jdk'
 _major='8'
 pkgname="${_pkgname}${_major}"
-_minor='202'; _build='b08'; _hash='1961070e4c9b4e26a04e7f5a083f551e'
+_minor='212'; _build='b10'; _hash='59066701cf1a433da9770636fbc4c9aa'
 pkgver="${_major}u${_minor}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Development Kit"
@@ -53,13 +53,13 @@ source=(
   "policytool-${_jname}.desktop"
 )
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         '0029351f7a946f6c05b582100c7d45b7'
+         '62d57a7550c97b534343443475d9afd9'
          '8a66f50efdc867ffd6a27168bc93b210'
          '1cbde70639abd98db4bace284dbf2bc4'
          'f0b39865361437f3778ecbe6ffbc0a06'
          '89704501aff8efe859c31968d8d168e6')
 sha256sums=('f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
-            '9a5c32411a6a06e22b69c495b7975034409fa1652d03aeb8eb5b6f59fd4594e0'
+            '3160c50aa8d8e081c8c7fe0f859ea452922eca5d2ae8f8ef22011ae87e6fedfb'
             '65282603bd0804d162f3f7da47bc7f3c91373e87504297d6a6fd6f2f8a1ec4ee'
             '8f865b52946a9ab98556c56306c7e70ae7aa432b4d005c70df0bba9d2c3111b1'
             '144e6651fcea08d95f3148d3a8ad17deb93fec4dd9236d37d27d7c648230b870'
