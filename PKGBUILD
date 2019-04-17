@@ -1,8 +1,8 @@
 # Maintainer: Tony Garcia <tony dot garcia at rackspace dot com>
 
 pkgname='recap'
-pkgdesc="System status reporting"
-pkgver=2.0.2
+pkgdesc="Generates reports of various system information"
+pkgver=2.1.0
 pkgrel=1
 arch=('any')
 url="https://github.com/rackerlabs/${pkgname}"
@@ -11,7 +11,7 @@ provides=(${pkgname})
 conflicts=(${pkgname%-*})
 depends=('coreutils' 'elinks' 'gawk' 'grep' 'iotop' 'procps-ng' 'sysstat' 'iproute2')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('be1128882f1f2e5b33c61fd0885892ea1521cba675e11095363039e07e02705c')
+sha256sums=('f8d473a4f383d8972c0f077c7b5c490f561b5afa10d0f20b0816cc067f038635')
 
 package() {
   cd "${pkgname}-${pkgver}"
