@@ -3,7 +3,7 @@
 # Contributor: Nathan Dyer <https://github.com/nathandyer>
 
 pkgname=vocal
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Powerful, beautiful and simple podcast client for the modern free desktop'
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=(GPL3)
 depends=(clutter-gst clutter-gtk granite gst-plugins-good gst-libav libnotify)
 makedepends=(cmake vala webkit2gtk)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/needle-and-thread/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('af5fa7e75871189a46a2738d98ed799c9880f4168a6274ca1991f59a2b83a80091313935e6f6953756d0063d4a2c0a90e7ddb456be892397025130e565c86fa9')
+sha512sums=('56265b46b6dc67a3d9041298677b775494b6d7127ff084483874c853042361305b10a59682f6ef66139814794afc0fdd1ff5c7cc410133763d2ff88e300dcb11')
 
 build() {
   cd $pkgname-$pkgver
