@@ -1,8 +1,8 @@
 pkgbase = ddwarf
-	pkgdesc = Digger Dwarf is a console-based gopher client
+	pkgdesc = Digger Dwarf is a console-based Gopher client
 	pkgver = 0.83
-	pkgrel = 3
-	url = http://mateusz.viste.fr/software/ddwarf/
+	pkgrel = 4
+	url = http://mateusz.viste.fr/software/ddwarf
 	arch = i686
 	arch = x86_64
 	license = GPL
