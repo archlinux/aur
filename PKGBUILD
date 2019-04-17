@@ -1,8 +1,8 @@
 # Maintainer: basigur
 
 pkgname=papirus-folders-nordic
-pkgver=1.1.0
-pkgrel=4
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Icons themes papirus color folder nordic."
 arch=('any')
 url="https://github.com/basigur/papirus-folders"
@@ -10,24 +10,10 @@ license=("LGPL3")
 conflicts=()
 replaces=('papirus-folders-nordic' 'papirus-icon-theme')
 depends=('gtk-update-icon-cache' 'papirus-icon-theme')
-source=("https://github.com/basigur/papirus-folders/releases/download/$pkgver/papirus-folders-nordic-v$pkgver.tar.gz")
+source=("https://github.com/basigur/papirus-folders/releases/download/v$pkgver/papirus-folders-nordic-v$pkgver.tar.gz")
 
-sha512sums=('cd6f3d42cda88b395248c3278f3ed55c95219bed8eb97f03aa786c40c94ee56afa6f44ce457c0ee2428c3b4e11f0ad79a5167534013a1cf0807cb74747acb244')
+sha512sums=('131DBACAEA0CE1AC1F00EFE659F532AB7B63DFCD97D2FC3669C176BDACB5A006E76C493AB4B8CBB374274F5B7B44745F58F2C197597C50D9DF14F5EDC1C00AA5')
 
-prepare() {
-  ln -s ../../../Papirus/22x22/apps/system-file-manager.svg Papirus-nordic/22x22/places/file-manager.svg
-  ln -s ../../../Papirus/24x24/apps/system-file-manager.svg Papirus-nordic/24x24/places/file-manager.svg
-  ln -s ../../../Papirus/32x32/apps/system-file-manager.svg Papirus-nordic/32x32/places/file-manager.svg
-  ln -s ../../../Papirus/48x48/apps/system-file-manager.svg Papirus-nordic/48x48/places/file-manager.svg
-  ln -s ../../../Papirus/64x64/apps/system-file-manager.svg Papirus-nordic/64x64/places/file-manager.svg
-
-  ln -s ../../../Papirus/22x22/apps/system-file-manager.svg Papirus-nordic-folders/22x22/places/file-manager.svg
-  ln -s ../../../Papirus/24x24/apps/system-file-manager.svg Papirus-nordic-folders/24x24/places/file-manager.svg
-  ln -s ../../../Papirus/32x32/apps/system-file-manager.svg Papirus-nordic-folders/32x32/places/file-manager.svg
-  ln -s ../../../Papirus/48x48/apps/system-file-manager.svg Papirus-nordic-folders/48x48/places/file-manager.svg
-  ln -s ../../../Papirus/64x64/apps/system-file-manager.svg Papirus-nordic-folders/64x64/places/file-manager.svg
-
-}
 
 package() {
   install -d "$pkgdir/usr/share/licenses/$pkgname"
