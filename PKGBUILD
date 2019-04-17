@@ -3,11 +3,11 @@
 
 pkgname=blender-2.8-git
 _fragment="#branch=master"
-pkgver=2.8.r83821.0d736d68967
+pkgver=2.8.r86737.c3a11a56711
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
-url="http://blender.org/"
+url="https://blender.org/"
 depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-utils' 'hicolor-icon-theme'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
@@ -36,8 +36,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'cd108dca1c77607c6a7cc45aa284ea97'
-         '9454ff7e994f72ead5027356e227cbd2'
-          )
+         '2f1b08655352e70c7c74d4957d481dc8')
 
 # determine whether we can precompile CUDA kernels
 _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
@@ -55,7 +54,7 @@ prepare() {
   cd "$srcdir/blender"
   # update the submodules
   git submodule update --init --recursive --remote
-  git apply ${srcdir}/SelectCudaComputeArch.patch
+  git apply -v ${srcdir}/SelectCudaComputeArch.patch
 }
 
 build() {
