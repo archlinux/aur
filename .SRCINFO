@@ -1,0 +1,22 @@
+pkgbase = vala-tester-git
+	pkgdesc = A Vala application to test Vala snippets without the hassle.
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/bartzaalberg/vala-tester
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = gtk3
+	depends = granite
+	depends = gtksourceview3
+	provides = vala-tester
+	conflicts = vala-tester
+	source = git+https://github.com/bartzaalberg/vala-tester.git
+	md5sums = SKIP
+
+pkgname = vala-tester-git
+
