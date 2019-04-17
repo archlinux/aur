@@ -1,25 +1,25 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=pyhoca-cli
-pkgver=0.5.0.2
-pkgrel=2
+pkgver=0.6.0.1
+pkgrel=1
 pkgdesc="Command line X2Go client written in Python"
 url="http://www.x2go.org/"
 arch=('any')
 license=('AGPL')
-makedepends=('python2-setuptools')
-depends=('python2-x2go' 'python2-setproctitle')
+makedepends=('python-setuptools')
+depends=('python-x2go' 'python-setproctitle')
 source=("http://code.x2go.org/releases/source/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('8261fedff24553217eba269a3c57e30b9953b37f58b09038f487637d83203d5e')
+sha256sums=('8ad4e711fe4f34f7177e6ea1a54f72b82da11cf729292b3f608e71e56afdd875')
 
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i 's@^#!.*python$@#!/usr/bin/env python2@' "${pkgname}"
+build() {
+  cd "${pkgname}-${pkgver}"
+  python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+  cd "${pkgname}-${pkgver}"
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
   # Install executable
   install -m 755 -d "${pkgdir}/usr/bin"
   install -m 755 -t "${pkgdir}/usr/bin" "${pkgname}"
