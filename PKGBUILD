@@ -3,7 +3,7 @@
 pkgname=deconz
 arch=('x86_64' 'armv6h' 'armv7h')
 pkgver=2.05.63
-pkgrel=1
+pkgrel=2
 pkgdesc="A generic ZigBee monitoring and control tool"
 url="http://www.dresden-elektronik.de"
 license=('custom:"Copyright (c) dresden elektronik ingenieurtechnik GmbH"')
