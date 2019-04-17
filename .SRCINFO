@@ -1,0 +1,15 @@
+pkgbase = bslizr-git
+	pkgdesc = Sequenced audio slicing effect LV2 plugin with a step sequencer effect.
+	pkgver = r104.4dd8fbd
+	pkgrel = 1
+	url = https://github.com/sjaehn/BSlizr
+	arch = x86_64
+	license = GPL
+	depends = xorg-server
+	depends = cairo
+	depends = lv2
+	source = git+https://github.com/sjaehn/BSlizr
+	md5sums = SKIP
+
+pkgname = bslizr-git
+
