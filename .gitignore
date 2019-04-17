@@ -1,4 +1,5 @@
 *.xz
+*.pkg.tar*
 src/
 pkg/
 filebot/

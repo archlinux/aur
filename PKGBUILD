@@ -8,7 +8,7 @@
 
 pkgname=filebot
 pkgver=4.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The ultimate TV and Movie Renamer"
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
 url="https://www.filebot.net/"
@@ -33,7 +33,7 @@ source=(#"https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-po
         #$pkgname.desktop
         )
 
-md5sums=('91827d5a16358316c475e58ee86b552e'
+md5sums=('67567ae0fd2ab5b18fea3442362ac7f4'
          '7c1128f94fcd9f4e29225a12eac83704')
 
 optdepends=('libzen: Required by libmediainfo'
