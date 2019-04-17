@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mercurial-hg
-pkgver=r33866+.4e8a46c25fac+
+pkgver=r42137.d086ba387ae8
 pkgrel=1
 pkgdesc="Distributed source control management tool"
 arch=('i686' 'x86_64')
 url="https://www.mercurial-scm.org/"
 license=('GPL2')
-depends=('glibc' 'python2')
+depends=('glibc' 'python')
 optdepends=('tk: for the hgk GUI')
-makedepends=('mercurial' 'python2-docutils')
+makedepends=('mercurial' 'python-docutils')
 provides=('mercurial')
 conflicts=('mercurial')
 backup=('etc/mercurial/hgrc')
@@ -18,12 +18,6 @@ source=("hg+https://www.mercurial-scm.org/repo/hg"
 sha256sums=('SKIP'
             'SKIP')
 
-
-prepare() {
-  cd "hg"
-
-  sed -i 's/PYTHON=python/PYTHON=python2/' "doc/Makefile"
-}
 
 pkgver() {
   cd "hg"
@@ -47,15 +41,15 @@ check() {
 package() {
   cd "hg"
 
-  python2 setup.py install --root="$pkgdir"
+  python "setup.py" install -O1 --root="$pkgdir"
 
-  make DESTDIR="$pkgdir" PREFIX="/usr" -C "$srcdir/hg/contrib/chg" install
+  make DESTDIR="$pkgdir" PREFIX="/usr" -C "contrib/chg" install
 
   install -d "$pkgdir/usr/share/man"/{man1,man5}
   install -m644 "doc/hg.1" "$pkgdir/usr/share/man/man1"
   install -m644 doc/{hgrc.5,hgignore.5} "$pkgdir/usr/share/man/man5"
 
-  install -m755 "contrib/hgk" "$pkgdir/usr/bin"
+  install -m755 contrib/{hgk,hg-ssh} "$pkgdir/usr/bin"
   install -Dm644 "contrib/bash_completion" "$pkgdir/usr/share/bash-completion/completions/hg"
   install -Dm644 "contrib/zsh_completion" "$pkgdir/usr/share/zsh/site-functions/_hg"
 
