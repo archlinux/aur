@@ -1,6 +1,6 @@
 pkgbase = flamerobin-git
 	pkgdesc = A tool to handle Firebird database management
-	pkgver = 0.9.2.r498.g0afb018
+	pkgver = 0.9.3.1
 	pkgrel = 1
 	url = http://www.flamerobin.org/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = flamerobin-git
 	depends = boost
 	provides = flamerobin
 	conflicts = flamerobin
-	source = flamerobin-git::git://git.code.sf.net/p/flamerobin/flamerobin-git.git
+	source = flamerobin-git::git+https://github.com/mariuz/flamerobin.git
 	md5sums = SKIP
 
 pkgname = flamerobin-git

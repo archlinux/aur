@@ -1,9 +1,10 @@
-# Maintainer: libernux <dutchman55@gmx.com>
+# Maintainer: fuan_k <rrkay@posteo.net>
+# Contributor: libernux <dutchman55@gmx.com>
 # Contributor: Jonny Gerold <jonny@fsk141.com>
 # Contributor: Tetsumaki <http://goo.gl/YMBdA>
 
 pkgname=flamerobin-git
-pkgver=0.9.3.1.r6.gc75f8618
+pkgver=0.9.3.1
 pkgrel=1
 pkgdesc='A tool to handle Firebird database management'
 arch=('i686' 'x86_64')
@@ -13,7 +14,7 @@ depends=('wxgtk' 'libfbclient' 'boost')
 makedepends=('git')
 provides=('flamerobin')
 conflicts=('flamerobin')
-source=("$pkgname"::'git://git.code.sf.net/p/flamerobin/flamerobin-git.git')
+source=("$pkgname"::'git+https://github.com/mariuz/flamerobin.git')
 md5sums=('SKIP')
 
 pkgver() {
