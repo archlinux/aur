@@ -6,7 +6,7 @@
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 pkgname=dbschema
 pkgver=8.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Relational Data Browse, Query Builder, SQL Editor, schema deployment and synchronization.'
 arch=('i686' 'x86_64')
 url='http://www.dbschema.com/'

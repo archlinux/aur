@@ -1,7 +1,7 @@
 pkgbase = dbschema
 	pkgdesc = Relational Data Browse, Query Builder, SQL Editor, schema deployment and synchronization.
 	pkgver = 8.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dbschema.com/
 	install = dbschema.install
 	arch = i686
