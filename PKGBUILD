@@ -1,9 +1,10 @@
 # Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
+# Contributor: 
 
 _gitname=aesop
 _author=lainsce
 pkgname=("${_gitname}-git")
-pkgver=latest
+pkgver=r38.0364b3d
 pkgrel=1
 pkgdesc="The simplest PDF viewer around designed for Pantheon Shell"
 arch=('i686' 'x86_64')

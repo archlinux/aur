@@ -1,6 +1,6 @@
 pkgbase = aesop-git
 	pkgdesc = The simplest PDF viewer around designed for Pantheon Shell
-	pkgver = latest
+	pkgver = r38.0364b3d
 	pkgrel = 1
 	url = https://github.com/lainsce/aesop
 	arch = i686
