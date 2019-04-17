@@ -1,6 +1,6 @@
 pkgbase = vala-lint-git
 	pkgdesc = Check code-style of Vala code files
-	pkgver = latest
+	pkgver = r38.ba98020
 	pkgrel = 1
 	url = https://github.com/elementary/vala-lint
 	arch = i686
