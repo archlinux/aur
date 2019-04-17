@@ -2,9 +2,10 @@
 
 pkgname="pagemon"
 pkgver="0.01.14"
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive memory/page monitoring tool"
 url="https://kernel.ubuntu.com/~cking/pagemon/"
+depends=('ncurses')
 license=('GPL2')
 arch=('x86_64')
 source=("https://github.com/ColinIanKing/pagemon/archive/V${pkgver}.tar.gz")
