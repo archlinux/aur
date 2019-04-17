@@ -4,7 +4,7 @@ pkgbase=python2-x2go
 pkgname=(python-x2go python2-x2go python-x2go-docs)
 _pkgbase=python-x2go
 pkgver=0.6.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Python module providing X2Go client API"
 url="http://www.x2go.org/"
 arch=('any')
@@ -30,7 +30,7 @@ build() {
 
 package_python-x2go() {
   pkgdesc="Python 3.x module providing X2Go client API"
-  depends=('python-gevent' 'python-requests'
+  depends=('python-gevent' 'python-paramiko' 'python-requests'
            'python-simplejson' 'python-xlib' 'nxproxy')
   cd "${pkgname}-${pkgver}"
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1

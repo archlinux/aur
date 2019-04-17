@@ -1,7 +1,7 @@
 pkgbase = python2-x2go
 	pkgdesc = Python module providing X2Go client API
 	pkgver = 0.6.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.x2go.org/
 	arch = any
 	license = AGPL
@@ -17,6 +17,7 @@ pkgbase = python2-x2go
 pkgname = python-x2go
 	pkgdesc = Python 3.x module providing X2Go client API
 	depends = python-gevent
+	depends = python-paramiko
 	depends = python-requests
 	depends = python-simplejson
 	depends = python-xlib
