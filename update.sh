@@ -2,7 +2,7 @@
 
 AUR_NAME=rst2beamer
 PROJ_NAME=rst2beamer
-DESCRIPTION="msmtp wrapper allowing for offline use"
+DESCRIPTION="A docutils script converting restructured text into Beamer-flavoured LaTeX."
 URL=www.agapow.net/software/rst2beamer
 DEPENDS=()
 LICENSE='GPL'
