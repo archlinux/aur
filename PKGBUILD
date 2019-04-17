@@ -5,7 +5,7 @@
 
 pkgname=gerbera
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="UPnP Media Server (Based on MediaTomb)"
 arch=(i686 x86_64 armv7h)
 url="https://github.com/gerbera/gerbera"
@@ -25,7 +25,7 @@ sha256sums=('9c4509189eab6bff0fe183e1dd54ea8cb17d7fb0bc6e21bb5b1a8ccaaf6c60d9'
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	sed -i 's/libupnp-1.8 libupnp/libupnp-1.8/g' cmake/FindLibUpnp.cmake
+	sed -i 's/${PC_UPNP_LIBRARIES}//g' cmake/FindLibUpnp.cmake
 	# Gerbera build options can be found here: https://github.com/gerbera/gerbera/blob/master/CMakeLists.txt
 	# use sqlite backend
 	cmake -DCMAKE_INSTALL_PREFIX=/usr -DWITH_AVCODEC=1 -DWITH_FFMPEGTHUMBNAILER=1 .
