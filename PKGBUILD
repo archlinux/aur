@@ -1,16 +1,17 @@
-# Maintainer: Franklyn Tackitt <franklyn@tackitt.net>
+# Maintainer: Philipp A. <flying-sheep@web.de>
+# Contributor: Franklyn Tackitt <franklyn@tackitt.net>
 
 pkgname=v8-3.14-bin
 pkgver=3.14.5.8
-pkgrel=3
+pkgrel=4
 pkgdesc='v8 3.14 binary package from ubuntu xenial'
 url='https://github.com/v8/v8'
 arch=('x86_64')
 license=('BSD')
 depends=()
 makedepends=()
-conflicts=('v8-3.14')
-provides=('v8-3.14')
+conflicts=('v8-3.14' 'v8')
+provides=('v8-3.14' 'v8')
 
 source=("https://mirrors.kernel.org/ubuntu/pool/universe/libv/libv8-3.14/libv8-3.14.5_${pkgver}-5ubuntu2_amd64.deb"
         "https://mirrors.kernel.org/ubuntu/pool/universe/libv/libv8-3.14/libv8-dev_${pkgver}-5ubuntu2_amd64.deb")
@@ -27,7 +28,7 @@ prepare() {
 }
 
 package() {
-  install -Dm755 "${srcdir}/usr/lib/libv8.so.3.14.5"        -t "${pkgdir}/usr/lib/"
+  install -Dm755 "${srcdir}/usr/lib/libv8.so"{,.3.14.5}     -t "${pkgdir}/usr/lib/"
   install -Dm644 "${srcdir}/usr/share/doc/libv8-dev/copyright" "${pkgdir}/usr/share/licenses/v8-3.14/LICENSE"
 
   for file in "${srcdir}/usr/share/doc/libv8-dev/examples/"* "${srcdir}/usr/include/"*; do

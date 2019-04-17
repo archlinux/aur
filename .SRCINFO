@@ -1,12 +1,14 @@
 pkgbase = v8-3.14-bin
 	pkgdesc = v8 3.14 binary package from ubuntu xenial
 	pkgver = 3.14.5.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/v8/v8
 	arch = x86_64
 	license = BSD
 	provides = v8-3.14
+	provides = v8
 	conflicts = v8-3.14
+	conflicts = v8
 	noextract = libv8-3.14.5_3.14.5.8-5ubuntu2_amd64.deb
 	noextract = libv8-dev_3.14.5.8-5ubuntu2_amd64.deb
 	source = https://mirrors.kernel.org/ubuntu/pool/universe/libv/libv8-3.14/libv8-3.14.5_3.14.5.8-5ubuntu2_amd64.deb
