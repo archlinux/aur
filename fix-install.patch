@@ -1,0 +1,74 @@
+diff --unified --recursive --text msbuild.orig/install-mono-prefix.sh msbuild.new/install-mono-prefix.sh
+--- msbuild.orig/install-mono-prefix.sh	2019-04-09 01:19:48.000000000 +0200
++++ msbuild.new/install-mono-prefix.sh	2019-04-17 14:25:43.891524294 +0200
+@@ -19,4 +19,4 @@
+ MONO_PREFIX=$1
+ shift
+ 
+-msbuild mono/build/install.proj /p:MonoInstallPrefix=$MONO_PREFIX /p:Configuration=$CONFIG "$@"
++artifacts/mono-msbuild/msbuild mono/build/install.proj /p:MonoInstallPrefix=$MONO_PREFIX /p:Configuration=$CONFIG "$@"
+diff --unified --recursive --text msbuild.orig/mono/build/install.proj msbuild.new/mono/build/install.proj
+--- msbuild.orig/mono/build/install.proj	2019-04-09 01:19:48.000000000 +0200
++++ msbuild.new/mono/build/install.proj	2019-04-17 15:08:05.452683170 +0200
+@@ -4,16 +4,17 @@
+ 
+     <Target Name="Install">
+         <Error Text="%24(MonoInstallPrefix) cannot be empty. Set with /p:MonoInstallPrefix=&lt;directory&gt;" Condition="'$(MonoInstallPrefix)' == ''" />
++        <Error Text="%24(StagingDir) cannot be empty. Set with /p:StagingDir=&lt;directory&gt;" Condition="'$(StagingDir)' == ''" />
+         <Error Text="%24(Configuration) cannot be empty. Set with /p:Configuration=&lt;Debug-MONO|Release-MONO&gt;" Condition="'$(Configuration)' == ''" />
+         <Error Text="%24(TargetMSBuildToolsVersion) cannot be empty." Condition="'$(TargetMSBuildToolsVersion)' == ''" />
+ 
+         <PropertyGroup>
+-            <MSBuildInstallBinDir>$(MonoInstallPrefix)\lib\mono\msbuild\$(TargetMSBuildToolsVersion)\bin</MSBuildInstallBinDir>
++            <MSBuildInstallBinDir>$(StagingDir)\lib\mono\msbuild\$(TargetMSBuildToolsVersion)\bin</MSBuildInstallBinDir>
+ 
+             <!-- Roslyn still installs to 15.0 -->
+-            <RoslynInstallBinDir>$(MonoInstallPrefix)\lib\mono\msbuild\15.0\bin\Roslyn</RoslynInstallBinDir>
++            <RoslynInstallBinDir>$(StagingDir)\lib\mono\msbuild\15.0\bin\Roslyn</RoslynInstallBinDir>
+ 
+-            <XBuildDir>$(MonoInstallPrefix)\lib\mono\xbuild</XBuildDir>
++            <XBuildDir>$(StagingDir)\lib\mono\xbuild</XBuildDir>
+ 
+             <MSBuildBinSrcDir>$(RepoRoot)artifacts\2\bin\MSBuild.Bootstrap\$(Configuration)\net472\</MSBuildBinSrcDir>
+ 
+@@ -100,13 +101,13 @@
+ 
+         <Exec
+             WorkingDirectory="$(XBuildDir)"
+-            Command="ln -sfh Current 15.0" />
++            Command="ln -sfn $(TargetMSBuildToolsVersion) Current" />
+         <Exec
+-            WorkingDirectory="$(MonoInstallPrefix)\lib\mono\msbuild"
+-            Command="ln -s Current 15.0" />
++            WorkingDirectory="$(StagingDir)\lib\mono\msbuild"
++            Command="ln -s $(TargetMSBuildToolsVersion) Current" />
+         <ItemGroup>
+-            <CopiedFiles Include="$(MonoInstallPrefix)\bin\msbuild\15.0" />
+-            <CopiedFiles Include="$(XBuildDir)\15.0" />
++            <CopiedFiles Include="$(StagingDir)\bin\msbuild\Current" />
++            <CopiedFiles Include="$(XBuildDir)\Current" />
+         </ItemGroup>
+ 
+         <Copy SourceFiles="@(MSBuildFiles)" DestinationFolder="$(MSBuildInstallBinDir)">
+@@ -157,17 +158,17 @@
+             <CopiedFiles Include="$(MSBuildInstallBinDir)\System.Reflection.Metadata.dll" />
+         </ItemGroup>
+ 
+-        <Exec Command="$(RepoRoot)\mono\build\gen_msbuild_wrapper.sh $(MonoInstallPrefix) $(MonoInstallPrefix)\bin" />
++        <Exec Command="$(RepoRoot)\mono\build\gen_msbuild_wrapper.sh $(MonoInstallPrefix) $(StagingDir)\bin" />
+         <ItemGroup>
+-            <CopiedFiles Include="$(MonoInstallPrefix)\bin\msbuild" />
++            <CopiedFiles Include="$(StagingDir)\bin\msbuild" />
+         </ItemGroup>
+ 
+-        <Copy SourceFiles="$(RepoRoot)\mono\msbuild.1" DestinationFolder="$(MonoInstallPrefix)\share\man\man1">
++        <Copy SourceFiles="$(RepoRoot)\mono\msbuild.1" DestinationFolder="$(StagingDir)\share\man\man1">
+             <Output TaskParameter="CopiedFiles" ItemName="CopiedFiles" />
+         </Copy>
+ 
+         <ItemGroup>
+-            <_CopiedFiles_Relative_Tmp Include="@(CopiedFiles -> '$([MSBuild]::MakeRelative('$(MonoInstallPrefix)', %(CopiedFiles.Identity)))' )" />
++            <_CopiedFiles_Relative_Tmp Include="@(CopiedFiles -> '$([MSBuild]::MakeRelative('$(StagingDir)', %(CopiedFiles.Identity)))' )" />
+             <CopiedFiles_Relative Include="@(_CopiedFiles_Relative_Tmp -> Distinct())" />
+         </ItemGroup>
+ 
