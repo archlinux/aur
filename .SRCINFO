@@ -1,7 +1,7 @@
 pkgbase = mu
 	pkgdesc = Maildir indexer/searcher and Emacs client (mu4e)
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.djcbsoftware.nl/code/mu
 	arch = x86_64
 	license = GPL
