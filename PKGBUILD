@@ -6,14 +6,14 @@
 # Contributor: Jonhoo <jon at thesquareplanet.com>
 # Contributor: torvic9 <vic999 at mailbox.org>
 pkgname=signal
-pkgver=1.23.2
+pkgver=1.24.0
 pkgrel=1
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
 depends=('electron' 'openssl-1.0')
 makedepends=('python' 'python2' 'npm' 'yarn' 'git' 'nodejs-lts-dubnium')
 provides=('signal')
-conflicts=('signal-desktop' 'signal-desktop-beta' 'signal-desktop-bin')
+conflicts=('signal-desktop-beta-bin' 'signal-desktop-bin')
 arch=("i686" "x86_64")
 url='https://github.com/signalapp/Signal-Desktop'
 source=("${pkgname}-git-repo::git+https://github.com/signalapp/Signal-Desktop.git#tag=v${pkgver}"
@@ -51,7 +51,7 @@ build() {
 
   # Build Signal
   yarn generate
-  yarn build-release --dir
+  SIGNAL_ENV=production yarn build-release --dir
 }
 
 package() {
