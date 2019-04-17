@@ -3,7 +3,7 @@
 
 
 pkgname=ustreamer
-pkgver=0.68
+pkgver=0.69
 pkgrel=1
 pkgdesc="Lightweight and fast MJPG-HTTP streamer"
 url="https://github.com/pi-kvm/ustreamer"
@@ -19,7 +19,7 @@ md5sums=(SKIP)
 build() {
 	cd $srcdir
 	rm -rf $pkgname-build
-	cp -r ustreamer-$pkgver $pkgname-build
+	cp -r $pkgname-$pkgver $pkgname-build
 	cd $pkgname-build
 	make CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" $MAKEFLAGS
 }
