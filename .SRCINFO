@@ -7,7 +7,7 @@ pkgbase = 389-adminutil
 	arch = x86_64
 	license = GPL
 	depends = 389-ds-base
-	source = http://directory.fedoraproject.org/sources/389-adminutil-1.1.23.tar.bz2
+	source = https://fedorapeople.org/groups/389ds/binaries/389-adminutil-1.1.23.tar.bz2
 	sha256sums = d5844b95a8bec9fb5e677e4b5c78489959386fd73d061f13b2096159c0726fec
 
 pkgname = 389-adminutil

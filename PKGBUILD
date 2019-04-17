@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://directory.fedoraproject.org/"
 license=('GPL')
 depends=('389-ds-base')
-source=("http://directory.fedoraproject.org/sources/$pkgname-$pkgver.tar.bz2")
+source=("https://fedorapeople.org/groups/389ds/binaries/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('d5844b95a8bec9fb5e677e4b5c78489959386fd73d061f13b2096159c0726fec')
 
 build() {
