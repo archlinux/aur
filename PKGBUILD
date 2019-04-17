@@ -64,8 +64,11 @@ sha256sums=('f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
             '8f865b52946a9ab98556c56306c7e70ae7aa432b4d005c70df0bba9d2c3111b1'
             '144e6651fcea08d95f3148d3a8ad17deb93fec4dd9236d37d27d7c648230b870'
             '635433e9c78ff58af65c316232ac9907d289a324428923788ea0f82ae7f8083b')
+#PKGEXT='.pkg.tar.gz'
 ## Alternative mirror, if your local one is throttled:
-#source[0]=("http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/${_pkgname}-${pkgver}-linux-x64.gz")
+## Posting new sites does no good. They get taken down by the admin
+## from too much traffic or complaints from Oracle.
+#source[1]="http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/${_pkgname}-${pkgver}-linux-x64.gz"
 
 package() {
   set -u
@@ -119,6 +122,11 @@ package() {
   # Move .desktops + icons to /usr/share
   mv 'jre/lib/desktop'/* "${pkgdir}/usr/share/"
   install -m644 "${srcdir}"/*.desktop "${pkgdir}/usr/share/applications/"
+
+  # Enable context menu launch (Austcool)
+  sed -e 's:^NoDisplay=true:#&:g' \
+      -e 's:^Exec=/usr.*$:& -F:g' \
+    -i "${pkgdir}/usr/share/applications/sun-java-jdk8.desktop"
 
   # Move confs to /etc and link back to /usr: /usr/lib/jvm/java-${_jname}/jre/lib -> /etc
   local _new_etc_path
