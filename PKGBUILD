@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('squarely')
 pkgver=0.9
-pkgrel=4
+pkgrel=5
 pkgdesc="Puzzle game written in Python using the pyglet library"
 arch=('i686' 'x86_64')
 url="https://github.com/nwg-piotr/squarely"
@@ -13,7 +13,7 @@ source=("https://github.com/nwg-piotr/squarely/raw/master/dist/squarely-0.9.tar.
         "https://github.com/nwg-piotr/squarely/raw/master/dist/squarely.svg"
         "https://github.com/nwg-piotr/squarely/raw/master/dist/squarely.desktop")
 
-md5sums=('e4bdff5c193b998afcd8097b7d713ded'
+md5sums=('273bb1283748a946d96baaacd0e348e8'
          '8a910f0a5ecf156cc6856bd9b636143d'
          'a87a406cab2e66a0efaba87deffa2175'
          '795bf57c86be1a38812ec7b4716d8729')
