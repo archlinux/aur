@@ -2,7 +2,7 @@
 # Contributor: jtmb <packaging at technologicalwizardry dot com>
 pkgname=msbuild
 pkgver=16.0+xamarinxplat.2019.04.08.19.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Xamarin implementation of the Microsoft build system"
 arch=('x86_64')
 depends=('mono>=5.0.0')
@@ -25,4 +25,7 @@ package() {
     cd "${pkgname}-${pkgver%+*}"
     make
     ./install-mono-prefix.sh "/usr" /p:StagingDir="${pkgdir}/usr" /p:TargetMSBuildToolsVersion="15.0"
+    find $pkgdir/usr/lib/mono/ -name Microsoft.DiaSymReader.Native.*dll -delete
+    find $pkgdir/usr/lib/mono/ -name *.dylib -delete
+    rm -rf $pkgdir/usr/lib/mono/msbuild/15.0/bin/SdkResolvers/Microsoft.DotNet.MSBuildSdkResolver
 }
