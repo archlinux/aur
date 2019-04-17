@@ -1,6 +1,6 @@
 pkgbase = miniupnpd-nft-git
 	pkgdesc = Lightweight UPnP IGD daemon with nftables support
-	pkgver = 2.1.r72.ge7d99e6
+	pkgver = 2.1.r109.g41f5475
 	pkgrel = 1
 	url = http://miniupnp.free.fr
 	arch = i686

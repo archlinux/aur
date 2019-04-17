@@ -1,5 +1,5 @@
 pkgname=miniupnpd-nft-git
-pkgver=2.1.r72.ge7d99e6
+pkgver=2.1.r109.g41f5475
 pkgrel=1
 pkgdesc="Lightweight UPnP IGD daemon with nftables support"
 arch=('i686' 'x86_64')
@@ -37,11 +37,6 @@ package() {
 
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/miniupnpd/LICENSE"
   install -Dm644 "$srcdir/miniupnpd.service" "$pkgdir/usr/lib/systemd/system/miniupnpd.service"
-  rm "$pkgdir/etc/miniupnpd/miniupnpd_functions.sh"
-  rm "$pkgdir/etc/miniupnpd/iptables_init.sh"
-  rm "$pkgdir/etc/miniupnpd/iptables_removeall.sh"
-  rm "$pkgdir/etc/miniupnpd/ip6tables_init.sh"
-  rm "$pkgdir/etc/miniupnpd/ip6tables_removeall.sh"
   install -Dm755 "netfilter_nft/scripts/nft_init.sh" "$pkgdir/etc/miniupnpd/nft_init.sh"
   install -Dm755 "netfilter_nft/scripts/nft_flush.sh" "$pkgdir/etc/miniupnpd/nft_flush.sh"
   install -Dm755 "netfilter_nft/scripts/nft_delete_chain.sh" "$pkgdir/etc/miniupnpd/nft_delete_chain.sh"
