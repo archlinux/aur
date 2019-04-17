@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libaacs-git
-pkgver=0.9.0.20.ga31f175
+pkgver=0.9.0.22.gf154d7e
 pkgrel=1
 pkgdesc="Advanced Access Content System. (GIT version)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('libaacs'
           'libaacs.so'
           )
 conflicts=('libaacs')
-source=('git+https://git.videolan.org/git/libaacs.git')
+source=('git+https://code.videolan.org/videolan/libaacs.git')
 sha256sums=('SKIP')
 
 pkgver() {
