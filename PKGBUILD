@@ -9,7 +9,7 @@ pkgname=('eiskaltdcpp-core-git'
          'eiskaltdcpp-cli-git'
          'eiskaltdcpp-data-git'
          )
-pkgver=v2.2.10.394.g3c85c56c
+pkgver=v2.2.10.520.gd4c52a37
 pkgrel=1
 pkgdesc="EiskaltDC++: DC and ADC client based on dcpp core. (GIT Version)"
 license=('GPL3')
@@ -34,7 +34,7 @@ makedepends=('git'
              'qt5-multimedia'
              'qt5-tools'
              'qt5-script'
-             'qt5-quick1'
+#              'qt5-quick1'
              'qt5-xmlpatterns'
              'gtk3'
              'libnotify'
@@ -50,9 +50,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  # Fix php dependency
-  find . -type f -name '*.php' -exec sed 's|php5|php|g' -i '{}' \;
 }
 
 build() {
@@ -62,12 +59,11 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_QT5=ON \
-    -DUSE_QT_QML=ON \
+    -DUSE_QT_QML=OFF \
     -DUSE_QT_SQLITE=ON \
     -DUSE_GTK3=ON \
     -DLUA_SCRIPT=ON \
     -DUSE_MINIUPNP=ON \
-    -DLOCAL_MINIUPNP=OFF \
     -DUSE_ASPELL=ON \
     -DUSE_LIBNOTIFY=ON \
     -DWITH_LUASCRIPTS=ON \
@@ -115,7 +111,7 @@ package_eiskaltdcpp-qt-git() {
            "eiskaltdcpp-data-git=${pkgver}"
            'aspell'
            'qt5-multimedia'
-           'qt5-quick1'
+#            'qt5-quick1'
            'desktop-file-utils'
            )
   optdepends=('php: needed for some scripts')
