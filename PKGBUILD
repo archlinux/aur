@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libudfread-git
-pkgver=1.0.0.31.g1316299
+pkgver=1.0.0.32.g09059bb
 pkgrel=1
 pkgdesc="UDF reader. (GIT version)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('libudfread'
           'libudfread.so'
           )
 conflicts=('libudfread')
-source=('git+https://git.videolan.org/git/libudfread.git')
+source=('git+https://code.videolan.org/videolan/libudfread.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,13 +22,15 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p build
+
   cd libudfread
   ./bootstrap
 }
 
 build() {
-  cd libudfread
-  ./configure \
+  cd build
+  ../libudfread/configure \
     --prefix=/usr \
     --disable-static
 
@@ -36,5 +38,5 @@ build() {
 }
 
 package() {
-  make -C libudfread DESTDIR="${pkgdir}" install
+  make -C build DESTDIR="${pkgdir}" install
 }
