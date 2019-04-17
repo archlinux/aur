@@ -2,7 +2,7 @@
 
 pkgbase="ttf-op-slate"
 pkgname="ttf-op-slate"
-pkgver="0.4"
+pkgver="0.5"
 pkgrel="1"
 pkgdesc="The font that comes with OnePlus Phones"
 arch=("x86_64")
@@ -37,7 +37,7 @@ package() {
   for font in $(find *.ttf)
   do
     dest=$(echo $font | grep -P -o "(?<=For).*$")
-    echo $dest
+    echo "Installing $font -> /usr/share/fonts/TTF/$dest"
     install -m644 "$font" "$pkgdir/usr/share/fonts/TTF/$dest"
   done
 }
