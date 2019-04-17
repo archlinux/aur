@@ -1,6 +1,6 @@
 pkgbase = ttf-op-slate
 	pkgdesc = The font that comes with OnePlus Phones
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://drive.google.com/folderview?id=0B9UzADWnkrLHM0UtZWZTa0poTTA
 	arch = x86_64

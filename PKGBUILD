@@ -2,7 +2,7 @@
 
 pkgbase="ttf-op-slate"
 pkgname="ttf-op-slate"
-pkgver="0.1"
+pkgver="0.2"
 pkgrel="1"
 pkgdesc="The font that comes with OnePlus Phones"
 arch=("x86_64")
@@ -34,6 +34,9 @@ sha256sums=(
 package() {
   cd "${srcdir}"
   install -dm755 "${pkgdir}/usr/share/fonts/TTF"
-  cp -r $(find *.ttf) "${pkgdir}/usr/share/fonts/TTF"
+  for font in $(find *.ttf)
+  do
+    install -m644 "${pkgdir}/usr/share/fonts/TTF"
+  done
 }
 
