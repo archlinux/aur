@@ -1,7 +1,7 @@
 # Maintainer: mdraw.gh at gmail dot com
 
 pkgname='python-markovify'
-pkgver='0.6.0'
+pkgver='0.7.1'
 pkgrel=1
 pkgdesc="A simple, extensible Markov chain generator."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-unidecode')
 makedepends=('python-setuptools')
 source=("https://github.com/jsvine/markovify/archive/v${pkgver}.tar.gz")
-sha256sums=('7b0e88ded6e9b2aa0ab10d41bb45176aa81c3bbc37079e2b48403dd40484a240')
+sha256sums=('230ad17627dc1adb9b867895e6669894f190eac36961546e8ed0ebe2c9c46beb')
 
 package() {
     cd "${srcdir}/markovify-${pkgver}"
