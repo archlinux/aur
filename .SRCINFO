@@ -1,0 +1,15 @@
+pkgbase = mod_sass-git
+	pkgdesc = Automatic on-the-fly SASS compilation to CSS. Also features minifying and caching.
+	pkgver = r14.ecc51a0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = https://raw.githubusercontent.com/kjdev/apache-mod-sass/master/LICENSE
+	depends = apr
+	depends = apache
+	depends = libsass
+	source = mod-sass::git+https://github.com/kjdev/apache-mod-sass.git
+	sha256sums = SKIP
+
+pkgname = mod_sass-git
+
