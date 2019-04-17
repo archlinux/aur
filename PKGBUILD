@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgbase=brotli-git
-pkgname=('brotli-git' 'python-brotli-git' 'python2-brotli-git')
-pkgver=1.0.7.r4.g9cd01c0
+pkgname=('brotli-git' 'python-brotli-git')
+pkgver=1.0.7.r5.g4b2b2d4
 pkgrel=1
 pkgdesc="Brotli compression library"
 arch=('i686' 'x86_64')
 url="https://github.com/google/brotli"
 license=('MIT')
-makedepends=('git' 'cmake' 'python-setuptools' 'python2-setuptools')
+makedepends=('git' 'cmake' 'python-setuptools')
 source=("git+https://github.com/google/brotli.git")
 sha256sums=('SKIP')
 
@@ -23,14 +23,12 @@ build() {
   cd "brotli"
 
   python "setup.py" build
-  python2 "setup.py" build
 
-  mkdir -p "_build"
-  cd "_build"
+  mkdir -p "_build" && cd "_build"
   cmake \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
-    -DCMAKE_BUILD_TYPE=Release \
     ../
   make
 }
@@ -60,14 +58,4 @@ package_python-brotli-git() {
   cd "brotli"
 
   python "setup.py" install --skip-build --root="$pkgdir"
-}
-
-package_python2-brotli-git() {
-  depends=('python2')
-  provides=('python2-brotli')
-  conflicts=('python2-brotli')
-
-  cd "brotli"
-
-  python2 "setup.py" install --skip-build --root="$pkgdir"
 }
