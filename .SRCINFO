@@ -1,7 +1,7 @@
 pkgbase = perl-cpanel-json-xs
 	pkgdesc = cPanel fork of JSON::XS, fast and correct serializing
 	pkgver = 4.11
-	pkgrel = 3
+	pkgrel = 5
 	url = https://metacpan.org/release/Cpanel-JSON-XS
 	arch = i686
 	arch = x86_64
@@ -14,9 +14,10 @@ pkgbase = perl-cpanel-json-xs
 	checkdepends = perl-perl-minimumversion>=1.20
 	checkdepends = perl-test-cpan-meta>=0.12
 	checkdepends = perl-test-leaktrace
-	checkdepends = perl-test-minimumversion>=0.008
+	checkdepends = perl-test-minimumversion>=0.101082
 	checkdepends = perl-test-pod-coverage>=1.04
 	checkdepends = perl-test-pod>=1.00
+	checkdepends = perl-test-simple>=1.302162
 	depends = perl
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/R/RU/RURBAN/Cpanel-JSON-XS-4.11.tar.gz
