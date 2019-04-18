@@ -1,0 +1,17 @@
+pkgbase = ninjas-git
+	pkgdesc = Ninjas Is Not Just Another Slicer. Standalone, lv2, vst.
+	pkgver = r252.089b776
+	pkgrel = 1
+	url = https://github.com/rghvdberg/ninjas
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = mesa
+	depends = xorg-server
+	depends = libsndfile
+	depends = libsamplerate
+	source = git+https://github.com/rghvdberg/ninjas
+	md5sums = SKIP
+
+pkgname = ninjas-git
+
