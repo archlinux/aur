@@ -1,14 +1,13 @@
 pkgbase = fuse-3ds-git
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ihaveamac/ninfs
 	arch = any
 	license = MIT
 
 pkgname = fuse-3ds-git
 	install = Fuse3DSMoved.install
-	depends = ninfs-git
 
 pkgname = fuse-3ds-gui-git
-	depends = ninfs-gui-git
+	install = Fuse3DSMoved.install
 
