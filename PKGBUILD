@@ -3,7 +3,7 @@
 
 pkgname=irssi-python
 pkgver=test4
-pkgrel=11
+pkgrel=12
 pkgdesc="Provides Python scripting support for Irssi"
 url="http://irssi.org/"
 arch=('x86_64' 'i686')
@@ -11,9 +11,10 @@ install='irssi-python.install'
 makedepends=('git')
 depends=('python2')
 license=('GPL2')
+version="1.2.0"
 
-source=('https://github.com/irssi/irssi/releases/download/1.1.0/irssi-1.1.0.tar.gz')	
-md5sums=('9645afa3dba668e5ac8db0bf6ab52578')
+source=('https://github.com/irssi/irssi/releases/download/1.2.0/irssi-1.2.0.tar.gz')	
+md5sums=('28a6705b9c64db40072fac31ecf75372')
 
 build() {  
     # The following line makes "configure" look for python2 instead of python,
@@ -23,11 +24,11 @@ build() {
     # Get irssi-python with git
     git clone https://github.com/irssi-import/irssi-python
     # Extract irssi sources and generate ./configure file
-    tar xvf irssi-1.1.0.tar.gz
+    tar xvf irssi-1.2.0.tar.gz
     cd "irssi-python"
     autoreconf -ivf -I.
     # Build
-    ./configure --with-irssi=../irssi-1.1.0 --prefix=/usr
+    ./configure --with-irssi=../irssi-1.2.0 --prefix=/usr
     make -C src constants
     make
     libtool --finish /usr/lib/irssi/modules
