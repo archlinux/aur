@@ -8,7 +8,7 @@
 
 _pack=dicom
 pkgname=octave-$_pack
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Digital communications in medicine (DICOM) file io.   Depends on Grassroots DICOM (GDCM). This package is not available  in repos for all distros. Contributors: Judd Storrs, Kris Thielemans,  John Donoghue"
 arch=(any)
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-sha256sums=('7bc3c2b9ccef470bf00ab06fa643b0fcd375e0347d908e0b7494ef635248d31b')
+sha256sums=('1e8ced348553b10fe75ea7ccf50ff61cd812d17bf232cfa1ba4837ae65c3867f')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
