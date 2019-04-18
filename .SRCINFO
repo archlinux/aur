@@ -1,0 +1,25 @@
+pkgbase = irrlamb-git
+	pkgdesc = 3D game that probably involves a lot of physics and frustrating gameplay.
+	pkgver = r585
+	pkgrel = 1
+	url = https://github.com/jazztickets/irrlamb
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = gcc-libs
+	depends = freetype2
+	depends = sqlite
+	depends = lua
+	depends = openal
+	depends = libvorbis
+	depends = libogg
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = zlib
+	conflicts = irrlamb
+	source = irrlamb-git::git+https://github.com/jazztickets/irrlamb
+	sha256sums = SKIP
+
+pkgname = irrlamb-git
+
