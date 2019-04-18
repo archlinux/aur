@@ -12,6 +12,7 @@ cat "${LOCAL_TEMP_DIR}/PKGBUILD" |
         match($0, /(https[^'"'"'"]*)/, a)
         inkscape_upstream = a[1]
     }
+    /pkgname/ {$1="pkgname=inkscape-shallow-git"}
     !/gitlab/ {print} 
     /prepare()/ {
         print "  git clone --depth 1 " inkscape_upstream " \"$_gitname\""

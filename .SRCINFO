@@ -1,4 +1,4 @@
-pkgbase = inkscape-git
+pkgbase = inkscape-shallow-git
 	pkgdesc = An Open Source vector graphics editor, using SVG file format, from git master
 	pkgver = 1.0+devel.r4321.g083f7eab9b
 	pkgrel = 1
@@ -44,5 +44,5 @@ pkgbase = inkscape-git
 	options = !buildflags
 	sha1sums = SKIP
 
-pkgname = inkscape-git
+pkgname = inkscape-shallow-git
 

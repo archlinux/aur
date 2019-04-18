@@ -2,7 +2,7 @@
 # Contributor: Splex
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=inkscape-git
+pkgname=inkscape-shallow-git
 pkgver=1.0+devel.r4321.g083f7eab9b
 pkgrel=1
 epoch=1
