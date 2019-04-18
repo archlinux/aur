@@ -16,6 +16,7 @@ pkgbase = soundfonts-aur-meta
 	depends = soundfont-realfont
 	depends = soundfont-jeux
 	depends = soundfont-fatboy
+	depends = soundfont-sunshine-perc
 
 pkgname = soundfonts-aur-meta
 
