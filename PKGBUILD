@@ -7,12 +7,15 @@ set -u
 _pkgname='jre'
 _major='8'
 pkgname="${_pkgname}${_major}"
-_minor='201'; _build='b09'; _hash='42970487e3af4f5aa5bca3f542482c60'
+_minor='211'; _build='b12'; _bundleid='238719'; _hash='478a62b7d4e34b78b671c754eaaf38ab'
+#_minor='212'; _build='b10'; _bundleid='??????'; _hash='59066701cf1a433da9770636fbc4c9aa'
+#  https://download.oracle.com/otn/java/jdk/8u212-b10/59066701cf1a433da9770636fbc4c9aa/jre-8u212-linux-x64.tar.gz
 pkgver="${_major}u${_minor}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Runtime Environment"
 arch=('x86_64')
-url='http://www.oracle.com/technetwork/java/javase/downloads/index.html'
+#url='http://www.oracle.com/technetwork/java/javase/downloads/index.html'
+url='https://www.java.com/en/download/manual.jsp'
 license=('custom:Oracle')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java-runtime-common' 'nss' 'xdg-utils')
 optdepends=('alsa-lib: for basic sound support'
@@ -45,17 +48,18 @@ options=('!strip')
 install="${pkgname}.install"
 source=(
   "https://download.oracle.com/otn-pub/java/jce/${_major}/jce_policy-${_major}.zip"
-  "https://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash}/${_pkgname}-${pkgver}-linux-x64.tar.gz"
+  "${_pkgname}-${pkgver}-linux-x64.tar.gz::https://javadl.oracle.com/webapps/download/AutoDL?BundleId=${_bundleid}_${_hash}"
+  #"https://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash}/${_pkgname}-${pkgver}-linux-x64.tar.gz" # Now /otn/, Oracle sso required
   "policytool-${_jname}.desktop"
 )
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         '2514535d8bca385cc349c5d8a8cf9957'
+         'e7a6b33deb17c66d46beb42f1b8cf3bc'
          'ef3ff483db5d38ed106e0b819006bdae')
 sha256sums=('f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
-            '12c745fbb8735bf450b8c6ba6f649bebe19915f05742975e443bdc8566170352'
+            'db3ba91c78b950269380d8f6872befed94176f619cefbcd7877e3624512e0218'
             '614b2a74b53728b7914c1407126a7ecfed781a79fb11e9963528c7cad39dbca8')
 ## Alternative mirror, if your local one is throttled:
-#source[0]=("http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/${_pkgname}-${pkgver}-linux-x64.gz")
+#source[1]="http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/${_pkgname}-${pkgver}-linux-x64.gz"
 
 package() {
   set -u
