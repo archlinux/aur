@@ -1,35 +1,36 @@
-# Maintainer: Taran Lynn <taranlynn0@gmail.com>
+# Maintainer: Alan Witkowski <alan.witkowski+aur@gmail.com>
+# Co-Maintainer: Taran Lynn <taranlynn0@gmail.com>
 pkgname=choria-git
-pkgver=v0.4.2.r1305.g87ee046d
-pkgrel=2
+pkgver=r1578
+pkgrel=1
 pkgdesc="A 2D MMORPG that's all about grinding and doing chores (development version)."
 arch=('i686' 'x86_64')
 url="https://github.com/jazztickets/choria"
 license=('GPL3')
-depends=('gcc-libs' 'irrlicht' 'sqlite' 'glm' 'sdl2_image')
+depends=('gcc-libs' 'sdl2' 'sdl2_image' 'openal' 'libvorbis' 'libogg' 'freetype2' 'lua' 'glm' 'sqlite' 'jsoncpp' 'tinyxml2' 'zlib')
 conflicts=('choria')
 makedepends=('cmake')
 source=("${pkgname}::git+https://github.com/jazztickets/choria")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$pkgname"
+	git log --oneline | wc -l | sed 's/^/r/'
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
-  git submodule init
-  git submodule update
+	cd "$srcdir/$pkgname"
+	git submodule init
+	git submodule update
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
-  make
+	cd "$srcdir/$pkgname"
+	cmake -DCMAKE_INSTALL_PREFIX=/usr .
+	make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir/" install
+	cd "$srcdir/$pkgname"
+	make DESTDIR="$pkgdir/" install
 }
