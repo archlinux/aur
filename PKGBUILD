@@ -1,8 +1,8 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=dino
-pkgver=0.0+433+g76c7dec
-_commit=76c7dec75f052cfaf9c3b469ba9d658a71075b6b
+pkgver=0.0+435+gb0dde02
+_commit=b0dde02bc9e5ff29025ff5fc70fd46d56df5d2ec
 pkgrel=1
 pkgdesc='Modern XMPP (Jabber) chat client written in GTK+/Vala'
 arch=(i686 x86_64)
@@ -21,8 +21,21 @@ pkgver() {
 
 build() {
   cd dino
-  ./configure --prefix=/usr
+
+  # Uncomment/modify either of the following variables as desired
+  _enable="--enable-plugin='notification-sound'"
+  #_disable="--disable-plugin='omemo;openpgp;http-files'"
+
+  ./configure --prefix=/usr --with-tests $_enable $_disable
   make
+}
+
+check() {
+  cd dino/build
+  msg2 'Running xmpp-vala-test...'
+  ./xmpp-vala-test
+  msg2 'Running signal-protocol-vala-test...'
+  ./signal-protocol-vala-test
 }
 
 package() {
