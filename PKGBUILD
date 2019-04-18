@@ -13,7 +13,7 @@ optdepends=()
 makedepends=('cmake' 'cython')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz"
   "tensorflow-abi.patch")
-sha256sums=('6ff9952edb1fab9e344653d8180ecec22bedcf1f8388da4d917ae5f2ddc8138e'
+sha256sums=('380fcc51f0bf98e13148300c87833e734cbcd7b74dddc4bce93829e7f7e4208b'
             '3be393fc0a65dc167b1b6127da0d716d965c3e178a05eb4cdf44a92f7dcc36f4')
 
 prepare(){
