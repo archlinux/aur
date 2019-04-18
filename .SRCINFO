@@ -1,16 +1,16 @@
 pkgbase = octave-struct
 	pkgdesc = Additional Structure manipulations functions.
-	pkgver = 1.0.15
+	pkgver = 1.0.16
 	pkgrel = 1
 	url = https://octave.sourceforge.io/struct/
 	install = octave-struct.install
 	arch = any
 	groups = octave-forge
 	license = GPL3
-	depends = octave>=2.9.7
-	noextract = struct-1.0.15.tar.gz
-	source = https://downloads.sourceforge.net/octave/struct-1.0.15.tar.gz
-	sha256sums = d9123792291233af037f8d6b9eedc9a7170cc8534b8c8d580f30105cddaababb
+	depends = octave>=4.0.0
+	noextract = struct-1.0.16.tar.gz
+	source = https://downloads.sourceforge.net/octave/struct-1.0.16.tar.gz
+	sha256sums = f56dc248aff469562bd82e74a60874e89e13fb10e852e709650c38234206a23f
 
 pkgname = octave-struct
 
