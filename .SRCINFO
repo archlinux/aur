@@ -1,14 +1,14 @@
 pkgbase = roll
 	pkgdesc = A tool to roll a user-defined dice sequence and display the result
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = http://matteocorti.github.io/roll/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = glibc
-	source = https://github.com/matteocorti/roll/releases/download/v2.4.0/roll-2.4.0.tar.gz
-	sha256sums = 1c927908bce0b83477edca60d1da983b9d39646b5ece7574d33d8063422e7d5b
+	source = https://github.com/matteocorti/roll/releases/download/v2.5.0/roll-2.5.0.tar.gz
+	sha256sums = a06b9782225442c71347eaf745e47684a9227d55575e865f503266c06454586c
 
 pkgname = roll
 
