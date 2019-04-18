@@ -17,7 +17,7 @@ pkgbase = non-mixer-lv2-git
 	conflicts = non-mixer
 	conflicts = non-mixer-git
 	conflicts = non-mixer-lv2-git
-	source = git+https://github.com/milkmiruku/non.git
+	source = git+https://github.com/mxmilkb/non.git
 	md5sums = SKIP
 
 pkgname = non-mixer-lv2-git

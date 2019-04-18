@@ -11,7 +11,7 @@ provides=('non-mixer' 'non-mixer-lv2-git')
 conflicts=('non-mixer' 'non-mixer-git' 'non-mixer-lv2-git')
 depends=('ntk-git' 'jack' 'liblo' 'ladspa' 'liblrdf')
 makedepends=('git')
-source=('git+https://github.com/milkmiruku/non.git')
+source=('git+https://github.com/mxmilkb/non.git')
 md5sums=('SKIP')
 
 pkgver() {
