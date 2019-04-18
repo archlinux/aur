@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-nordvpn-connect-git
 	pkgdesc = An unoffical interface for the 'nordvpn connect' command as a gnome-shell extension
-	pkgver = r47.fce793f
+	pkgver = r67.2d7b828
 	pkgrel = 1
 	url = https://github.com/AlexPoilrouge/NordVPN-connect
 	arch = any
