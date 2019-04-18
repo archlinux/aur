@@ -14,7 +14,7 @@ provides=('parquet-cpp')
 conflicts=('parquet-cpp')
 makedepends=('apache-orc' 'boost' 'cmake' 'flatbuffers-static' 'python-numpy' 'thrift-static' 'snappy-static')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz")
-sha256sums=('6ff9952edb1fab9e344653d8180ecec22bedcf1f8388da4d917ae5f2ddc8138e')
+sha256sums=('380fcc51f0bf98e13148300c87833e734cbcd7b74dddc4bce93829e7f7e4208b')
 
 build(){
   cd "$srcdir"
