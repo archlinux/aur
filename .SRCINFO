@@ -1,0 +1,21 @@
+pkgbase = nyancoin-daemon
+	pkgdesc = NyanCoin daemon
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://reddit.com/r/NyanCoins
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = boost
+	depends = boost-libs
+	depends = libdb-4.8
+	depends = openssl
+	depends = miniupnpc
+	source = git+https://github.com/Nyancoins/nyancoin-client.git
+	md5sums = SKIP
+
+pkgname = nyancoin-daemon
+
