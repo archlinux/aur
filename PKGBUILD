@@ -5,34 +5,34 @@ pkgname=textql-git
 pkgver=2.0.3
 pkgrel=1
 pkgdesc="Execute SQL against structured text like CSV or TSV"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://github.com/dinedal/textql"
 license=('MIT')
 depends=('go-pie')
-makedepends=('dep')
 options=('!strip' '!emptydirs')
-source=("textql-git::git+https://github.com/dinedal/textql")
+source=("$pkgname::git+https://github.com/dinedal/textql")
 
 prepare(){
   mkdir -p gopath/src/github.com
   ln -rTsf $pkgname $srcdir/gopath/src/github.com/$pkgname
   export GOPATH="$srcdir"/gopath
   cd $GOPATH/src/github.com/$pkgname
-  dep ensure
+  go get -d ./...
 }
 
 build(){
-  export GOPATH=$srcdir/gopath
-  cd gopath/src/github.com/$pkgname
-  go install \
-    -gcflags "all=-trimpath=$GOPATH" \
-    -asmflags "all=-trimpath=$GOPATH" \
-    -ldflags "-extldflags $LDFLAGS" \
-    -v ./...
+  export GOPATH="$srcdir"/gopath
+  cd $GOPATH/src/github.com/$pkgname
+  go build textql/main.go
+    #-gcflags "all=-trimpath=$GOPATH" \
+    #-asmflags "all=-trimpath=$GOPATH" \
+    #-ldflags "-extldflags $LDFLAGS" \
+    #-v ./...
 }
 
 package() {
-  install -Dm755 gopath/bin/$pkgname "$pkgdir"/usr/bin/$pkgname
+  export GOPATH="$srcdir"/gopath
+  install -Dm755 "$GOPATH"/src/github.com/$pkgname/main "$pkgdir"/usr/bin/textql
 
   for f in LICENSE COPYING LICENSE.* COPYING.*; do
     if [ -e "$srcdir/src/$_gourl/$f" ]; then
