@@ -1,7 +1,7 @@
 # Maintainer: Alex Gentilucci <alexander.gentilucci@gmail.com>
 pkgname=zilf
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A set of tools for working with the ZIL interactive fiction language, including a compiler, assembler, disassembler, and game library."
 arch=(any)
@@ -18,7 +18,9 @@ sha512sums=('15ac5054b64a7a9a1674a85a82d30d7599c446f5cdf47cebb9a48c5b0488ffd61d7
 
 package() {
 	install -d -m 755 "${pkgdir}/usr/lib/zilf"
+	install -d -m 755 "${pkgdir}/usr/lib/zilf/library"
 	cp -dpr --no-preserve=ownership "${srcdir}/$pkgname-$pkgver/bin/"* "${pkgdir}/usr/lib/zilf"
+	cp -dpr --no-preserve=ownership "${srcdir}/$pkgname-$pkgver/library/"* "${pkgdir}/usr/lib/zilf/library/"
 	install -D -m755 "${srcdir}/zilf.sh" "${pkgdir}/usr/bin/zilf"
 	install -D -m755 "${srcdir}/zapf.sh" "${pkgdir}/usr/bin/zapf"
 }

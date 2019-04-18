@@ -1,7 +1,7 @@
 pkgbase = zilf
 	pkgdesc = A set of tools for working with the ZIL interactive fiction language, including a compiler, assembler, disassembler, and game library.
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/jmcgrew/zilf
 	arch = any
 	license = GPL
