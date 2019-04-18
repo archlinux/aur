@@ -4,7 +4,7 @@
 pkgbase=python-dask
 pkgname=('python-dask' 'python2-dask')
 _pkgname=dask
-pkgver=1.1.4
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Minimal task scheduling abstraction"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=('python-bcolz'
   'python-gcsfs: Google Cloud Storage fs support')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/dask/dask/archive/$pkgver.tar.gz")
-sha256sums=('eda610259772fdf6f271c907957bbead5aa85138e3ca5620fd4e747751a79fb5')
+sha256sums=('d86eb82b656485e7c11e64d89b679b9b65cb27a74fe8498d6ddcd7581d49a628')
 
 prepare() {
   cp -a $_pkgname-$pkgver{,-py2}
@@ -47,7 +47,7 @@ package_python2-dask(){
 
 check(){
   cd "$srcdir/$_pkgname-$pkgver"
-  py.test dask/tests
+  python setup.py test 
   #cd "$srcdir/$_pkgname-pkgver-py2"
   #py.test2 dask/tests
 }
