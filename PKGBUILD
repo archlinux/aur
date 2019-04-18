@@ -1,7 +1,7 @@
 # Maintainer: Sondre Nilsen <echo "bmlsc2VuLnNvbmRyZUBnbWFpbC5jb20K" | base64 -d>
 
 pkgname=git-ignore-bin
-pkgver=1.0.0-pre
+pkgver=1.0.0_pre
 pkgrel=1
 pkgdesc="Quickly and easily list and fetch .gitignore templates from www.gitignore.io"
 url="https://github.com/sondr3/git-ignore"
