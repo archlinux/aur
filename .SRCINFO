@@ -1,6 +1,6 @@
 pkgbase = purism-chatty-git
 	pkgdesc = XMPP and SMS messaging via libpurple and Modemmanager
-	pkgver = 0.0.4.r0.g1ffe759
+	pkgver = 0.0.7.r1.ga22c183
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/chatty
 	arch = i686
