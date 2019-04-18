@@ -3,8 +3,8 @@
 pkgname=alpine
 pkgver=2.21
 pkgrel=1
-pkggit=08fcd1b
-arch=("i686" "x86_64")
+pkggit=3443fe5
+arch=("x86_64")
 pkgdesc="Apache licensed PINE mail user agent"
 url="http://repo.or.cz/alpine.git"
 license=("APACHE")
@@ -16,7 +16,7 @@ provides=("pine")
 conflicts=("pine" "re-alpine")
 replaces=("pine")
 options=("!makeflags")
-source=(https://repo.or.cz/alpine.git/snapshot/08fcd1b86979b422eb586e56459d6fe15333e500.tar.gz)
+source=(https://repo.or.cz/alpine.git/snapshot/3443fe5fcfcb33d3a2510111855e619632de57df.tar.gz)
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkggit}"
@@ -40,4 +40,4 @@ package() {
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-md5sums=('8a47d3bb58a7528a2e457055e66914f8')
+md5sums=('59360da211af2c6c06241ea560e912f8')
