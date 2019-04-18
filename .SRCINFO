@@ -1,6 +1,6 @@
 pkgbase = download-with-kget-native-git
 	pkgdesc = KGet extension native handler
-	pkgver = 0.3
+	pkgver = v0.2.r1.g21c7b6a
 	pkgrel = 1
 	url = https://github.com/Takios/download-with-kget
 	arch = x86_64
