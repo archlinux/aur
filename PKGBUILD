@@ -2,7 +2,7 @@
 
 pkgname=growlight
 pkgver=1.0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Disk manipulation and system preparation tool"
 url="https://nick-black.com/dankwiki/index.php/Growlight"
 license=('GPL3')
