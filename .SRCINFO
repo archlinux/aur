@@ -1,0 +1,22 @@
+pkgbase = ldns-git
+	pkgdesc = C library for DNS programming
+	pkgver = 1.7.0.r92.g9b8fa9db
+	pkgrel = 1
+	url = https://www.nlnetlabs.nl/projects/ldns/about/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = libpcap
+	depends = glibc
+	depends = dnssec-anchors
+	depends = openssl
+	optdepends = libpcap: ldns-dpa tool
+	provides = ldns
+	conflicts = ldns
+	options = staticlibs
+	source = git+https://git.nlnetlabs.nl/ldns
+	sha256sums = SKIP
+
+pkgname = ldns-git
+
