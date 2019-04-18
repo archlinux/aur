@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=cri-o
-pkgver=1.13.3
+pkgver=1.13.6
 pkgrel=1
 pkgdesc='Open Container Initiative-based implementation of Kubernetes Container Runtime Interface'
 arch=(x86_64)
