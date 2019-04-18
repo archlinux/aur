@@ -8,6 +8,7 @@ pkgbase = icglue
 	license = GPL
 	makedepends = make
 	makedepends = gcc
+	makedepends = inkscape
 	depends = glib2
 	depends = tcl
 	depends = pkg-config
