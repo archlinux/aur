@@ -1,6 +1,6 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=otii
-pkgver=2.5.0
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="Energy consumption analysis software by Qoitech"
 arch=('x86_64')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://www.qoitech.com/downloads/${pkgname}_${pkgver}.deb"
         "LICENSE")
-sha256sums=('a582cfbf2d1327bd0464dcbda276974eb0f4b3071bcb2770062ca5c721cd3853'
+sha256sums=('35eb40855bbc19ae08a7ac9225728d3191137524a86045741c1821c805215d98'
             '6613e04098c77b408e006653f114156e9c8d1f21d73ddd24375c5599848502f1')
 
 validpgpkeys=()
