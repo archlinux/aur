@@ -1,15 +1,15 @@
 # Maintainer: Craig Barnes <cr@igbarn.es>
 
 pkgname='dte'
-pkgver='1.7'
-pkgrel='2'
+pkgver='1.8'
+pkgrel='1'
 pkgdesc='A small and easy to use console text editor'
 url='https://craigbarnes.gitlab.io/dte/'
 arch=('x86_64' 'i686' 'armv7l' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('glibc' 'ncurses')
 source=("https://craigbarnes.gitlab.io/dist/dte/dte-$pkgver.tar.gz")
-sha256sums=('6cd070037d9c6f4b4f3b5bedd78183dde5f8e79811ccdf04b0e7abafe5fdc33d')
+sha256sums=('49316028e91428d7ee699cc289650dacf12854513544d884fae568a8da957981')
 
 build() {
     cd "$pkgname-$pkgver"
