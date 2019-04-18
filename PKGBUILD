@@ -2,7 +2,7 @@
 # Maintainer: arti.zirk <arti.zirk@gmail.com>
 
 pkgname=debootstrap-git
-pkgver=1.0.103.r18.g95713fa
+pkgver=1.0.114.r0.g67a3c1c
 pkgrel=1
 pkgdesc="Bootstrap a basic Debian system"
 conflicts=('debootstrap')
@@ -11,6 +11,7 @@ arch=('any')
 license=('GPL')
 url="https://tracker.debian.org/pkg/debootstrap"
 depends=('wget' 'binutils')
+makedepends=('git')
 source=("$pkgname::git+https://salsa.debian.org/installer-team/debootstrap.git"
         arch-detect.patch)
 optdepends=('gnupg: check release signatures'

@@ -1,10 +1,11 @@
 pkgbase = debootstrap-git
 	pkgdesc = Bootstrap a basic Debian system
-	pkgver = 1.0.103.r18.g95713fa
+	pkgver = 1.0.114.r0.g67a3c1c
 	pkgrel = 1
 	url = https://tracker.debian.org/pkg/debootstrap
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = wget
 	depends = binutils
 	optdepends = gnupg: check release signatures
