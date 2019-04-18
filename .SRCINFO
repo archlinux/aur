@@ -1,0 +1,21 @@
+pkgbase = om7-bin
+	pkgdesc = A new implementation of the OpenMusic language and environment
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://openmusic-project.github.io/om7/
+	arch = x86_64
+	license = GPL
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = portmidi
+	depends = libsndfile
+	optdepends = jack: JACK audio support
+	optdepends = libsamplerate: speed up audio-waveform drawing
+	provides = om7
+	conflicts = om7
+	options = !strip
+	source = https://github.com/openmusic-project/om7/releases/download/v0.1.8-Linux-alpha/om7_alpha.tar.bz2
+	sha256sums = 36b20191c2bdf56f2778eb27dfad0194c0f094a6505182544b2630a3c19ccce1
+
+pkgname = om7-bin
+
