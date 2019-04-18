@@ -6,7 +6,7 @@ pkgbase=librealsense-git
 pkgname=(librealsense-git python-pyrealsense2-git)
 _pkgname=librealsense
 pkgver=v2.20.0.r10.g9c750f46
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® RealSense™ depth cameras (D400 series and the SR300)"
 arch=('x86_64')
 url="https://github.com/IntelRealSense/librealsense"
@@ -62,7 +62,7 @@ package_python-pyrealsense2-git() {
   python find_librs_version.py "${srcdir}/${_pkgname}" pyrealsense2
   cp -L ${srcdir}/${_pkgname}/build/wrappers/python/*.so pyrealsense2
   python setup.py install --root="${pkgdir}/" --optimize=1
-  mkdir -p ${pkgdir}/usr/share/${_pkgname}
-  find "${pkgdir}/usr/bin" -type f -print0 | xargs -0 mv -t "${pkgdir}/usr/share/${_pkgname}" # move python examples
+  mkdir -p ${pkgdir}/usr/share/${_pkgname}2
+  find "${pkgdir}/usr/bin" -type f -print0 | xargs -0 mv -t "${pkgdir}/usr/share/${_pkgname}2" # move python examples
   rmdir "${pkgdir}/usr/bin"
 }
