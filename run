@@ -1,0 +1,18 @@
+#!/bin/bash
+
+export WINEPREFIX=~/.wine-thunder-mini
+export WINEARCH=win32
+export WINEDEBUG=-all
+
+apphome="$(dirname "$(readlink -f "$0")")"
+workhome="$WINEPREFIX/drive_c/thunder-mini"
+
+if [ ! -e "${workhome}" ]; then
+  mkdir -p "$WINEPREFIX/drive_c"
+  ln -s "/usr/share/thunder-mini" "${workhome}"
+fi
+
+shellexe="$1"
+shift
+exec wine "C:\\thunder-mini\\Bin\\ThunderMini.exe" "$@"
+

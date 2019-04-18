@@ -1,0 +1,18 @@
+pkgbase = thunder-mini
+	pkgdesc = Xunlei Product Center provides free download services for the latest products of Xunlei.
+	pkgver = 2.2.1
+	pkgrel = 0
+	url = https://dl.xunlei.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = wine
+	source = http://down.sandai.net/mini/ThunderMini_dl1.5.3.288.exe
+	source = license.html::https://www.xunlei.com/xieyi/xl9.html
+	source = file://run
+	md5sums = 95118524fa7d7e457c7bed4abcb5bbfc
+	md5sums = 381254665d06cdd2c9493a8892e32bc5
+	md5sums = 3c57bb9d9375bf00c11230caaf12ed5f
+
+pkgname = thunder-mini
+
