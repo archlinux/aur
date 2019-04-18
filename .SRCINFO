@@ -1,0 +1,15 @@
+pkgbase = victory-gtk-theme-git
+	pkgdesc = A flat, minimalistic, and bright gtk theme.
+	pkgver = ba88eb9
+	pkgrel = 1
+	url = https://github.com/newhoa/victory-gtk-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = victory-gtk-theme-git
+	conflicts = victory-gtk-theme-git
+	source = git+https://github.com/newhoa/victory-gtk-theme.git
+	md5sums = SKIP
+
+pkgname = victory-gtk-theme-git
+
