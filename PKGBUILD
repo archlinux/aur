@@ -3,15 +3,15 @@
 
 pkgbase=python-pefile
 pkgname=('python-pefile' 'python2-pefile')
-pkgver=2018.8.8
+pkgver=2019.4.14
 pkgrel=1
 pkgdesc="Python PE parsing module"
 arch=('any')
 url="https://github.com/erocarrera/pefile"
 license=('MIT')
 makedepends=('python' 'python2' 'python-future' 'python2-future')
-source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/erocarrera/pefile/archive/v${pkgver}.tar.gz")
-sha512sums=('b8c0aab1d197533e48d70d81066b0dc6ec0171cec8153debaf54ed1a8f07ea9fed749ee4b2f5b460d12a92c34e74d16c6da99d9305255eaeb503e74a148724e5')
+source=(https://github.com/erocarrera/pefile/releases/download/v${pkgver}/pefile-$pkgver.tar.gz)
+sha512sums=('6529638feb2f749024acaa428982f77616408f3d5b0924be947490a11b460957bcc03b8c7bf4520778cb277e304be587ca729990724fcec95c8ad99015174751')
 
 prepare() {
   cd "${srcdir}"
@@ -19,13 +19,13 @@ prepare() {
 }
 
 # currently disabled because of missing files in the tarball
-#check() {
-#  cd "${srcdir}/pefile-${pkgver}"
-#  LC_CTYPE=en_US.UTF-8 python setup.py test
+# check() {
+#   cd "${srcdir}/pefile-${pkgver}"
+#   LC_CTYPE=en_US.UTF-8 python setup.py test
 #
-#  cd "${srcdir}/pefile2-${pkgver}"
-#  LC_CTYPE=en_US.UTF-8 python2 setup.py test
-#}
+#   cd "${srcdir}/pefile2-${pkgver}"
+#   LC_CTYPE=en_US.UTF-8 python2 setup.py test
+# }
 
 package_python-pefile() {
   depends=('python' 'python-future')
