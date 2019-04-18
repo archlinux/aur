@@ -1,7 +1,7 @@
 pkgbase = vim-clang-format-git
 	pkgdesc = Plugin which uses clang for formatting C and C++ code. Git version.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rhysd/vim-clang-format
 	install = vim-clang-format-git.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = vim-clang-format-git
 	depends = vim
 	depends = clang
 	conflicts = vim-clang-format
-	source = git://github.com/rhysd/vim-clang-format
+	source = git+https://github.com/rhysd/vim-clang-format
 	md5sums = SKIP
 
 pkgname = vim-clang-format-git
