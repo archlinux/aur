@@ -17,7 +17,7 @@ sha512sums=('SKIP'
 
 pkgver() {
 	cd "${pkgname%-git}"
-	printf '%s' "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
