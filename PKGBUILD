@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tang-git
-pkgver=7.r0.4e9a06e
+pkgver=7.r1.00fc856
 pkgrel=1
 pkgdesc='Server for binding data to network presence'
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname%-git}"
-	printf '%s' "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {

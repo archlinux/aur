@@ -1,6 +1,6 @@
 pkgbase = tang-git
 	pkgdesc = Server for binding data to network presence
-	pkgver = 7.r0.4e9a06e
+	pkgver = 7.r1.00fc856
 	pkgrel = 1
 	url = https://github.com/latchset/tang
 	arch = x86_64
