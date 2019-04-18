@@ -7,12 +7,12 @@ pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('x86_64')
 url="https://arrow.apache.org"
 license=('Apache')
-depends=('boost-libs' 'brotli' 'double-conversion' 'gflags' 'grpc' 'google-glog' 'lz4' 'protobuf' 'rapidjson' 'zstd')
+depends=('boost-libs' 'brotli' 'double-conversion' 'gflags' 'grpc' 'google-glog' 'lz4' 'protobuf' 'rapidjson' 'thrift' 'zstd')
 checkdepends=('gtest')
 optdepends=()
 provides=('parquet-cpp')
 conflicts=('parquet-cpp')
-makedepends=('apache-orc' 'boost' 'cmake' 'flatbuffers-static' 'python-numpy' 'thrift-static' 'snappy-static')
+makedepends=('apache-orc' 'boost' 'cmake' 'flatbuffers' 'python-numpy' 'snappy-static')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz")
 sha256sums=('380fcc51f0bf98e13148300c87833e734cbcd7b74dddc4bce93829e7f7e4208b')
 
@@ -28,10 +28,10 @@ build(){
                                       -DARROW_ALTIVEC=OFF \
                                       -DCMAKE_INSTALL_PREFIX="/usr" \
                                       -DCMAKE_INSTALL_LIBDIR="lib" \
-                                      -DARROW_JEMALLOC=ON \
-                                      -DARROW_ORC=OFF \
-                                      -DARROW_PARQUET=ON \
+                                      -DARROW_IPC=ON \
+                                      -DARROW_JEMALLOC=OFF \
                                       -DARROW_ORC=ON \
+                                      -DARROW_PARQUET=ON \
                                       -DARROW_PLASMA=ON \
                                       -DARROW_TENSORFLOW=ON \
                                       -DARROW_USE_SIMD=ON \
@@ -39,7 +39,8 @@ build(){
                                       -DARROW_GANDIVA=OFF \
                                       -DARROW_PROTOBUF_USE_SHARED=ON \
                                       -DARROW_GFLAGS_USE_SHARED=ON \
-                                      -DARROW_USE_GLOG=ON
+                                      -DARROW_USE_GLOG=ON \
+                                      -DGTest_SOURCE=BUNDLED
   make
 }
 
