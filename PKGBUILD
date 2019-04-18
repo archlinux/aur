@@ -1,8 +1,9 @@
 # Maintainer: Michael Kuc <michaelkuc6 at gmail dot com>
 # Contributor: Fabian Niepelt <Takios at github dot com>
 
-pkgname=download-with-kget-native-git
-pkgver=0.3
+_pkgname="download-with-kget"
+pkgname="${_pkgname}-native-git"
+pkgver=v0.2.r1.g21c7b6a
 pkgrel=1
 epoch=
 pkgdesc="KGet extension native handler"
@@ -17,7 +18,7 @@ depends=(
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=('download-with-kget')
+provides=("${_pkgname}")
 conflicts=()
 replaces=()
 backup=()
@@ -31,8 +32,13 @@ sha256sums=("SKIP"
 	    "af886b2595d917054933f8936f2c83f236ee4c56e4994eb5778cc9c51ccc7c05"
 )
 
+pkgver() {
+  cd "${_pkgname}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
-	patch download-with-kget/src/native/Makefile Makefile.patch
+	patch "${_pkgname}/src/native/Makefile" Makefile.patch
 }
 
 build() {
@@ -44,6 +50,6 @@ check() {
 }
 
 package() {
-	cd "$srcdir/download-with-kget/src/native"
+	cd "${_pkgname}/src/native"
 	make DESTDIR="${pkgdir}/" install
 }
