@@ -1,6 +1,6 @@
 pkgbase = onos
 	pkgdesc = Open Network Operating System
-	pkgver = 1.15.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://onosproject.org
 	install = onos.install
@@ -8,9 +8,9 @@ pkgbase = onos
 	license = Apache
 	depends = jdk8-openjdk
 	depends = curl
-	source = https://repo1.maven.org/maven2/org/onosproject/onos-releases/1.15.0/onos-1.15.0.tar.gz
+	source = https://repo1.maven.org/maven2/org/onosproject/onos-releases/2.0.0/onos-2.0.0.tar.gz
 	source = onos.service
-	sha256sums = 3bba44078745c8f6382ea00f898d2df8bc4edff717ab73415ad2ffc7c15c9031
+	sha256sums = 20f4d6cb88a912939ee628629a35e7870026264d178937c5f82947d3f9045fbe
 	sha256sums = 4837f3e924c5806a0095f013099e2f8c959389d1c3c57820c512cfe7d2e14fbd
 
 pkgname = onos
