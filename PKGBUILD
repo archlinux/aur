@@ -1,8 +1,8 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
-pkgname="growlight"
-pkgver="1.0.6.1"
-pkgrel=1
+pkgname=growlight
+pkgver=1.0.6.1
+pkgrel=2
 pkgdesc="Disk manipulation and system preparation tool"
 url="https://nick-black.com/dankwiki/index.php/Growlight"
 license=('GPL3')
@@ -15,7 +15,7 @@ optdepends=('jfsutils: JFS manipulation'
             'xfsprogs: XFS manipulation'
             'mdadm: Linux MDRAID manipulation'
             'btrfs-progs: Btrfs manipulation'
-            'hfsprofs: HFS (MacOS) manipulation'
+            'hfsprogs: HFS (MacOS) manipulation'
             'ntfs-3g: NTFS (Windows) manipulation'
             'f2fs-tools: F2FS manipulation')
 source=("https://github.com/dankamongmen/growlight/archive/v${pkgver}.tar.gz")
