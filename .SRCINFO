@@ -1,0 +1,20 @@
+pkgbase = smoldyn
+	pkgdesc = A particle-based biochemical simulator for modeling molecular diffusion, surface interactions, and chemical reactions
+	pkgver = 2.58
+	pkgrel = 1
+	url = http://www.smoldyn.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-base
+	makedepends = mesa
+	makedepends = libtiff
+	depends = qt5-base
+	depends = mesa
+	depends = libtiff
+	provides = smoldyn
+	source = smoldyn::http://www.smoldyn.org/smoldyn-2.58.tgz
+	md5sums = SKIP
+
+pkgname = smoldyn
+
