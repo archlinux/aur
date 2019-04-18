@@ -1,7 +1,7 @@
 # Maintainer: Kyle De'Vir (QuartzDragon) <kyle.devir.mykolab.com>
 
 pkgname=bcachefs-tools-git
-pkgver=441
+pkgver=444
 pkgrel=1
 pkgdesc="BCacheFS filesystem utilities"
 url="https://github.com/koverstreet/bcachefs-tools"
@@ -26,33 +26,31 @@ makedepends=(
 _reponame="bcachefs-tools"
 _repo_url="https://github.com/koverstreet/${_reponame}"
 
-source=(
-    "git+${_repo_url}"
-    "add-mkinitcpio-hook-for-Arch.patch"
-)
+source=("git+${_repo_url}"
+        "add-mkinitcpio-hook-for-Arch.patch")
 sha256sums=('SKIP'
             'b4d6bc483b417ceaa5c628c686a613e568e64a699288da0388d508a481c710e9')
 
 pkgver() {
-    cd "${_reponame}"
+    cd "${srcdir}/${_reponame}"
 
     echo "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-    cd "${_reponame}"
+    cd "${srcdir}/${_reponame}"
     
     patch -Np1 -i "../add-mkinitcpio-hook-for-Arch.patch"
 }
 
 build() {
-    cd "${_reponame}"
+    cd "${srcdir}/${_reponame}"
 
     make
 }
 
 package() {
-    cd "${_reponame}"
+    cd "${srcdir}/${_reponame}"
 
     make DESTDIR="${pkgdir}" PREFIX="/usr" ROOT_SBINDIR="/usr/bin" INITRAMFS_DIR="/etc/initcpio" install
     
