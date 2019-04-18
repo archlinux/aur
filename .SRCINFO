@@ -1,0 +1,15 @@
+pkgbase = emacs-pelican-mode-git
+	pkgdesc = minor mode for editing articles and pages in Pelican sites
+	pkgver = v20170808.r12.g65d7caf
+	pkgrel = 1
+	url = https://git.korewanetadesu.com/pelican-mode.git
+	install = emacs-pelican-mode.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	source = emacs-pelican-mode-git::git+https://git.korewanetadesu.com/pelican-mode.git
+	sha512sums = SKIP
+
+pkgname = emacs-pelican-mode-git
+
