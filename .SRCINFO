@@ -1,0 +1,16 @@
+pkgbase = xdebug-zts
+	pkgdesc = PHP debugging extension (for ZTS enabled PHP)
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = https://www.xdebug.org
+	arch = x86_64
+	license = GPL
+	depends = php-zts
+	backup = etc/php/conf.d/xdebug.ini
+	source = https://xdebug.org/files/xdebug-zts-2.7.1.tgz
+	source = xdebug.ini
+	sha256sums = b7e9d1453975e0217667c82a9e68d4aabb307b18e8f2f70432f70d75907f24c3
+	sha256sums = 7c66883dc2ade69069ef84e30188b25630748aa9c8b0dd123727c00505421205
+
+pkgname = xdebug-zts
+
