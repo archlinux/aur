@@ -1,0 +1,16 @@
+[Unit]
+Description=Varken Service
+After=network.target grafana.service influxdb.service
+Requires=grafana.service influxdb.service
+
+[Service]
+User=varken
+Group=varken
+Type=simple
+WorkingDirectory=/usr/lib/varken
+ExecStart=/usr/bin/python /usr/lib/varken/Varken.py --debug --data-folder /var/lib/varken
+Restart=always
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

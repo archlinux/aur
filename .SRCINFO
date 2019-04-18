@@ -1,0 +1,27 @@
+pkgbase = varken
+	pkgdesc = Manage and download subtitles for Sonarr and Radarr.
+	pkgver = 1.6.7
+	pkgrel = 1
+	url = https://github.com/morpheus65535/varken
+	arch = any
+	license = GPL3
+	depends = python
+	depends = grafana
+	depends = influxdb
+	depends = python-requests
+	depends = python-geoip2
+	depends = python-influxdb
+	depends = python-schedule
+	depends = python-distro
+	depends = python-urllib3
+	source = varken-1.6.7.tar.gz::https://github.com/Boerderij/Varken/archive/1.6.7.tar.gz
+	source = varken.service
+	source = varken.sysusers
+	source = varken.tmpfiles
+	sha256sums = 1240cfcf89e2da5aa8c9ca3ba2b170467c5f89f5dc411afa9685f38bcb8d40c8
+	sha256sums = f84a734ea7a7bc29a6d789ed7251fc7285c401bad09446152f965fd7b483c9ae
+	sha256sums = ba43aebc95499e93a03d7abf1e1671d72d734725e8a0f2c35ccce3f5ec9b72e2
+	sha256sums = 75805db8a147673b0b3ea11fe46cc9e8b96b76e7877bc17878d4fc6d57ae014c
+
+pkgname = varken
+

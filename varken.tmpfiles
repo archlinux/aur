@@ -1,0 +1,5 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/varken 0755 varken varken
+Z /var/lib/varken - varken varken
+Z /usr/lib/varken - varken varken
+L /var/log/varken - - - - /var/lib/varken/log
