@@ -1,6 +1,6 @@
 # Maintainer: Sam Linnfer <littlelightlittlefire@gmail.com>
 pkgname=souffle-git
-pkgver=r1407.96a4907
+pkgver=r3910.7ce84469
 pkgrel=1
 pkgdesc="Soufflé is a translator of declarative Datalog programs into the C++ language"
 arch=('any')
@@ -31,9 +31,11 @@ build() {
     ./configure --prefix=/usr
 
     make -j
+}
 
-    # Disable tests since some of them don't compile
-    make check
+check() {
+    cd "$srcdir/${pkgname%-git}"
+    TESTSUITEFLAGS=-j8 make check
 }
 
 package() {
