@@ -1,0 +1,14 @@
+pkgbase = pdfmerger
+	pkgdesc = A simple Qt frontend for poppler's pdfunite
+	pkgver = 0.2.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	depends = poppler
+	depends = qt5-base
+	source = pdfmerger::git+https://gitlab.com/gBischof/pdfmerger.git
+	md5sums = SKIP
+
+pkgname = pdfmerger
+
