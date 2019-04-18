@@ -1,6 +1,6 @@
 pkgbase = code-git
 	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor - git latest
-	pkgver = 1.16.0.r23741.g6da595150d
+	pkgver = 1.16.0.r25587.g7d39e805fb
 	pkgrel = 1
 	url = https://github.com/Microsoft/vscode
 	arch = i686
@@ -27,8 +27,8 @@ pkgbase = code-git
 	sha256sums = SKIP
 	sha256sums = 64aca444a714dd67da6d5b71ab8d0255e767cb265918d556b3bf8194fca0a7ef
 	sha256sums = df452e6f64f62081aa4a8da69a071b2c122095eea48dca409a7a851243b9ff36
-	sha256sums = ab3b08aac7e311d9bf5a0985067f2875bb3a1a0802bfa736489941887a0f05ba
-	sha256sums = 69d5c743fad5466583eba81411792ef5f3cbb6d721de1ebd584ea4a5e2079065
+	sha256sums = b42df6bbf1160f9602f10245b5442295d6e3a86731a799281dd4b77083aa00bc
+	sha256sums = d3eb8c0e5ddc2b0a6089cec2f34346bf8080048ce3b3eb6918467eedd741cae0
 
 pkgname = code-git
 
