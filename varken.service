@@ -1,7 +1,6 @@
 [Unit]
 Description=Varken Service
 After=network.target grafana.service influxdb.service
-Requires=grafana.service influxdb.service
 
 [Service]
 User=varken

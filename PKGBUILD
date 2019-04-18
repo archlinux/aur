@@ -8,8 +8,6 @@ arch=('any')
 url="https://github.com/morpheus65535/varken"
 license=('GPL3')
 depends=('python'
-         'grafana'
-         'influxdb'
          'python-requests'
          'python-geoip2'
          'python-influxdb'
@@ -17,13 +15,17 @@ depends=('python'
          'python-distro'
          'python-urllib3')
 
+optdepend=('grafana: display of pretty graphs'
+           'influxdb: storage of data')
+
+
 source=("varken-${pkgver}.tar.gz::https://github.com/Boerderij/Varken/archive/${pkgver}.tar.gz"
         'varken.service'
         'varken.sysusers'
         'varken.tmpfiles')
 
 sha256sums=('1240cfcf89e2da5aa8c9ca3ba2b170467c5f89f5dc411afa9685f38bcb8d40c8'
-            'f84a734ea7a7bc29a6d789ed7251fc7285c401bad09446152f965fd7b483c9ae'
+            '87557de0d204223d5fa74c3d8da79dbe13be739e57d20c027291f1a487c34bb6'
             'ba43aebc95499e93a03d7abf1e1671d72d734725e8a0f2c35ccce3f5ec9b72e2'
             '75805db8a147673b0b3ea11fe46cc9e8b96b76e7877bc17878d4fc6d57ae014c')
 
