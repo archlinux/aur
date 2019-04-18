@@ -10,30 +10,28 @@ license=("unknown")
 makedepends=("git")
 depends=("glibc")
 source=(
-  "${_pkgname}-${pkgver}::git+https://github.com/onmomo/superdrive-enabler.git"
+  "${_pkgname}::git+https://github.com/onmomo/superdrive-enabler.git"
   "50-apple-superdrive.rules"
   )
 sha256sums=(
   "SKIP"
   "5c0e6d95cc38c10111af59097a24dd36ee3789d0dceeef50355f3b293e129b95"
 )
-backup=("usr/lib/udev/rules.d/50-apple-superdrive.rules")
 provides=("superdrive-enabler")
 
+pkgver() {
+  cd "${_pkgname}"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
 build() {
-  cd "${_pkgname}-$pkgver"
+  cd "${_pkgname}"
   gcc -o "${_pkgname}" src/superdriveEnabler.c
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/lib/udev/rules.d/"
-  cp 50-apple-superdrive.rules "$pkgdir/usr/lib/udev/rules.d/50-apple-superdrive.rules"
+  install -D 50-apple-superdrive.rules "$pkgdir/usr/lib/udev/rules.d/"
 
-  cd "${_pkgname}-$pkgver"
+  cd "${_pkgname}"
   install -D -m755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-}
-
-pkgver() {
-  cd "${_pkgname}-$pkgver"
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
