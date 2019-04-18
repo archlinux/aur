@@ -1,5 +1,5 @@
 pkgbase = switch-lan-play
-	pkgdesc = A program for connecting to switch-lan-play servers-see url for more info
+	pkgdesc = A program for connecting to fanmade Nintendo Switch servers--see url for more info
 	pkgver = v0.1.0.r4.f62bf0c
 	pkgrel = 1
 	epoch = 0
