@@ -1,6 +1,6 @@
 # Maintainer: Ultracoolguy <dummyd241 at gmaildotcom>
 pkgname="switch-lan-play"
-pkgver=v0.1.0.r4.f62bf0c
+pkgver=git
 pkgrel=1
 epoch=0
 pkgdesc="A program for connecting to fanmade Nintendo Switch servers--see url for more info"
