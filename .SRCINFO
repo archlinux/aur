@@ -1,0 +1,20 @@
+pkgbase = postman6-bin
+	pkgdesc = Build, test, and document your APIs faster. (Compatible with v6 team collections)
+	pkgver = 6.7.4
+	pkgrel = 1
+	url = https://learning.getpostman.com/docs/postman_pro/managing_postman_pro/migrating_to_v7/#team-user-on-v7
+	arch = x86_64
+	license = custom
+	depends = gconf
+	depends = libxss
+	depends = gtk2
+	depends = libxtst
+	depends = nss
+	depends = alsa-lib
+	source = postman6-bin-6.7.4.tar.gz::https://dl.pstmn.io/download/version/6.7.4/linux64
+	source = postman6.desktop
+	md5sums = 86d8b577e90a61949750b393097577c8
+	md5sums = fb0374754495c7c8c61b25dec799b3e2
+
+pkgname = postman6-bin
+

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Postman 6
+Comment=Build, test, and document your APIs faster
+Path=/opt/postman6
+Exec=postman6 %U
+Icon=postman6
+Type=Application
+StartupNotify=true
+Categories=Development;Utility;
+StartupWMClass=postman
+MimeType=x-scheme-handler/postman
+
