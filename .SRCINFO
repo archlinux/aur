@@ -1,0 +1,22 @@
+pkgbase = libdb-4.8
+	pkgdesc = Oracle Berkeley DB version 4.8.30
+	pkgver = 4.8.30
+	pkgrel = 1
+	url = https://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html
+	arch = x86_64
+	arch = i686
+	license = custom:Berkeley database license
+	options = libtool
+	options = staticlibs
+	source = http://download.oracle.com/berkeley-db/db-4.8.30.tar.gz
+	source = 01_gcc8-atomic_compare_exchange.patch
+	validpgpkeys = 9337E0FFC604A322352A55606253B09AEA6AE9E1
+	md5sums = f80022099c5742cd179343556179aa8c
+	md5sums = 4f493a3ccab85f0d4e4efb5a5d09370b
+	sha1sums = ab36c170dda5b2ceaad3915ced96e41c6b7e493c
+	sha1sums = c6e0db69bde739d6f3c454136653d648accdd615
+	sha256sums = e0491a07cdb21fb9aa82773bbbedaeb7639cbd0e7f96147ab46141e0045db72a
+	sha256sums = e381aebd56fb5a7a6767fdbe841dffbacde0b0cb406467eb4100955e8e952fa3
+
+pkgname = libdb-4.8
+
