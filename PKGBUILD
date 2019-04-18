@@ -17,19 +17,17 @@
 #
 pkgbase="zfs-linux-rc"
 pkgname=("zfs-linux-rc" "zfs-linux-rc-headers")
-_zfsver="0.8.0_rc3"
-_kernelver="4.20.13.arch1-1"
-_extramodules="4.20.13-arch1-1-ARCH"
+_zfsver="0.8.0_rc4"
+_kernelver="5.0.7.arch1-1"
+_extramodules="5.0.7-arch1-1-ARCH"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
 makedepends=("linux-headers=${_kernelver}" "python")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver/_/-}/zfs-${_zfsver/_/-}.tar.gz"
-        "upstream-4f981f6-additional-fixes-for-current_kernel_time-in-4.20.patch")
-sha256sums=("5c344d6ff876d4c5286d83745700127054858cea379d31741fe96589ac40baff"
-            "6f27c3dae57c424e06aec31df6c1e1a821e547aa4e933f2f9b894b5e6762b52d")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver/_/-}/zfs-${_zfsver/_/-}.tar.gz")
+sha256sums=("2a006686c0cf4360fbc1352cbf82ecd69a5029555bb038d23fbf5ad5d49359ba")
 license=("CDDL")
 depends=("kmod" "zfs-utils-rc=${_zfsver}" "linux=${_kernelver}")
 
