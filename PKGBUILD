@@ -11,7 +11,7 @@ arch=('x86_64' 'i686' 'armv7h')
 url="https://git.matrix.org/git/olm/about/"
 license=('Apache')
 depends=('gcc-libs')
-source=("https://git.matrix.org/git/$_pkgname/snapshot/$_pkgname-$pkgver.tar.bz2")
+source=("https://gitlab.matrix.org/matrix-org/$_pkgname/-/archive/$pkgver/$_pkgname-$pkgver.tar.bz2")
 sha512sums=('4d83d7222f9fbc238a97156e4d22a6215e922c3e2567751b84243fb5081a9dd20d176fc7f187ccf92139a8fd7f36e851785def7fd448374c971964e4ba674dd6')
 
 build() {
