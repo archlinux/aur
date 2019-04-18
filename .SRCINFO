@@ -1,6 +1,6 @@
 pkgbase = flrig
 	pkgdesc = Amateur (Ham) Radio Transceiver Control Program
-	pkgver = 1.3.42
+	pkgver = 1.3.43
 	pkgrel = 1
 	url = http://www.w1hkj.com/flrig-help/index.html
 	arch = armv7h
@@ -13,9 +13,9 @@ pkgbase = flrig
 	optdepends = fldigi: for digital mode interface
 	provides = flrig
 	conflicts = flrig-git
-	source = http://downloads.sourceforge.net/project/fldigi/flrig/flrig-1.3.42.tar.gz
-	md5sums = 9648ba99fddfe211e94ebde4bf7eeba8
-	sha256sums = e07e7841dbb91e96e15dcdf9eaea2db0f6e7ad13dfacdf05fe85045d41381683
+	source = http://downloads.sourceforge.net/project/fldigi/flrig/flrig-1.3.43.tar.gz
+	md5sums = 3ba9f806675fe6a5baa64098d922075c
+	sha256sums = 61c29f71e44a417f7a6b0ec35d465a585acda6c57dacddff83edfc25b73e24c7
 
 pkgname = flrig
 
