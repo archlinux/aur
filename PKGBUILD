@@ -23,7 +23,8 @@ build() {
     cd build
     cmake .. \
         -DHIPIPE_BUILTIN_RANGEV3=OFF \
-        -DHIPIPE_BUILD_TEST=OFF
+        -DHIPIPE_BUILD_TEST=OFF \
+        -DCMAKE_BUILD_TYPE=Release
     make -j8
 }
 
