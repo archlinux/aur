@@ -3,10 +3,11 @@
 pkgname=gotify-server-bin
 _pkgname=gotify-server
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple server for sending and receiving messages'
 arch=('x86_64')
 url='https://github.com/gotify/server'
+depends=('glibc')
 license=('MIT')
 provides=('gotify-server')
 conflicts=('gotify-server')
