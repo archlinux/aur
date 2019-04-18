@@ -21,10 +21,20 @@ pkgname = ninfs
 	depends = python-pycryptodomex
 	depends = fuse2
 	depends = openssl>=1.1
+	provides = fuse-3ds
+	conflicts = fuse-3ds
+	conflicts = fuse-3ds-git
+	conflicts = ninfs-git
+	replaces = fuse-3ds
 
 pkgname = ninfs-gui
 	install = NinFSGUI.install
 	depends = ninfs=1.4-1
 	depends = python-appjar
 	depends = tk
+	provides = fuse-3ds-gui
+	conflicts = fuse-3ds-gui-git
+	conflicts = fuse-3ds-gui
+	conflicts = ninfs-gui-git
+	replaces = fuse-3ds-gui
 

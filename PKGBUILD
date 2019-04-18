@@ -23,6 +23,9 @@ build() {
 
 package_ninfs() {
 	depends=("python>=3.6.1" "python-pycryptodomex" "fuse2" "openssl>=1.1")
+	conflicts=("fuse-3ds" "fuse-3ds-git" "ninfs-git")
+	replaces=("fuse-3ds")
+	provides=("fuse-3ds")
 	cd "${srcdir}/ninfs"
 	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 	rm -f "$pkgdir/usr/bin/ninfs"
@@ -31,6 +34,9 @@ package_ninfs() {
 
 package_ninfs-gui() {
 	depends=("ninfs=$pkgver-$pkgrel" "python-appjar" "tk")
+	conflicts=("fuse-3ds-gui-git" "fuse-3ds-gui" "ninfs-gui-git")
+	replaces=("fuse-3ds-gui")
+	provides=("fuse-3ds-gui")
 	install="NinFSGUI.install"
 	cd "${srcdir}/ninfs"
 	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
