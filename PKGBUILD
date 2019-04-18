@@ -1,5 +1,4 @@
 # Maintainer: Alan Witkowski <alan.witkowski+aur@gmail.com>
-# Co-Maintainer: Taran Lynn <taranlynn0@gmail.com>
 pkgname=choria-git
 pkgver=r1578
 pkgrel=1
