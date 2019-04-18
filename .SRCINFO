@@ -1,6 +1,6 @@
 pkgbase = tinyssh-keyconvert
 	pkgdesc = Convert OpenSSH ed25519 / ecdsa-nistp256 secret keys to binary format for TinySSH
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/ansemjo/tinyssh-keyconvert
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = tinyssh-keyconvert
 	makedepends = python-setuptools
 	provides = tinyssh-keyconvert
 	conflicts = tinyssh-keyconvert
-	source = https://github.com/ansemjo/tinyssh-keyconvert/archive/0.3.1/tinyssh-keyconvert-0.3.1.tar.gz
-	sha256sums = f4ce69e8d32ad290ea9a97e765853a443e6a01d821454b1cd04cb9e7c0fdacc6
+	source = https://github.com/ansemjo/tinyssh-keyconvert/archive/0.3.2/tinyssh-keyconvert-0.3.2.tar.gz
+	sha256sums = 289a8e679e63ba2e67ac8e5f6c300213604c2f1a557f885d4638e8a0bd200fef
 
 pkgname = tinyssh-keyconvert
 

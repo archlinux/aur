@@ -3,7 +3,7 @@
 pkgname="tinyssh-keyconvert"
 pkgdesc="Convert OpenSSH ed25519 / ecdsa-nistp256 secret keys to binary format for TinySSH"
 
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 
 arch=('any')
@@ -17,7 +17,7 @@ provides=($pkgname)
 conflicts=($pkgname)
 
 source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f4ce69e8d32ad290ea9a97e765853a443e6a01d821454b1cd04cb9e7c0fdacc6')
+sha256sums=('289a8e679e63ba2e67ac8e5f6c300213604c2f1a557f885d4638e8a0bd200fef')
 
 build() {
   cd "${pkgname}-${pkgver}"
