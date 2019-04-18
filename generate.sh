@@ -9,10 +9,19 @@ cat "${LOCAL_TEMP_DIR}/PKGBUILD" |
     'BEGIN {
         print "# Maintainer: Lucas Lugao <lugaosmurf@gmail.com>"
     }
-    /^# Maintainer:/ {$2 = "Contributor:"}
-    /gitlab/{
+    /^# Maintainer:/ {
+        $2 = "Contributor:"
+    }
+    /gitlab/ {
         match($0, /(https[^'"'"'"]*)/, a)
         inkscape_upstream = a[1]
+    }
+    /^pkgver=/ {
+        match($0, /^pkgver=(.*)/, a)
+        inkscape_version = a[1]
+    }
+    /CMakeLists/ {
+        $0 = sprintf("  %s \"%s\"", "printf %s", inkscape_version)
     }
     /^pkgdesc/ {
         gsub("\""," (shallow clone)\"", $NF)

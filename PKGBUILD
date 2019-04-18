@@ -26,7 +26,7 @@ _gitname="inkscape.git"
 
 pkgver() {
   cd "$_gitname"
-  printf %s.%s+devel.r%s.g%s $(grep -oP -e "INKSCAPE_VERSION_(MAJOR|MINOR) +\K[0-9]+" CMakeLists.txt) $(git rev-list $(git describe --tag --abbrev=0)..HEAD --count) $(git log --pretty=format:'%h' -n 1)
+  printf %s "1.0+devel.r4321.g083f7eab9b"
 }
 
 prepare() {
