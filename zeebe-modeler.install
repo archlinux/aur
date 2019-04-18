@@ -1,0 +1,10 @@
+post_install() {
+	echo 'Registering XDG entries for Zeebe Modeler...'
+	/bin/sh -c "/opt/zeebe-modeler/support/xdg_register.sh"
+}
+
+pre_remove() {
+	echo 'Unregistering XDG entries for Zeebe Modeler...'
+	/bin/sh -c "/opt/zeebe-modeler/support/xdg_unregister.sh"
+}
+

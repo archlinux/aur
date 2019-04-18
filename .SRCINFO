@@ -1,8 +1,9 @@
 pkgbase = zeebe-modeler
 	pkgdesc = Desktop Application for modeling Zeebe Workflows with BPMN
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zeebe-io/zeebe-modeler
+	install = zeebe-modeler.install
 	arch = x86_64
 	license = MIT
 	makedepends = tar
@@ -10,12 +11,10 @@ pkgbase = zeebe-modeler
 	depends = xdg-utils
 	source = zeebe-modeler-0.6.2.tar.gz::https://github.com/zeebe-io/zeebe-modeler/releases/download/v0.6.2/zeebe-modeler-0.6.2-linux-x64.tar.gz
 	source = zeebe-modeler.patch
-	source = zeebe-modeler-install.hook
-	source = zeebe-modeler-uninstall.hook
+	source = zeebe-modeler.install
 	md5sums = 892b48eacdc2693180f731f484d12470
 	md5sums = d997b6d6c3831e0eb8a87b0ae59aa730
-	md5sums = 7beb4a8cdb2deb5ddc55aaf71378f25d
-	md5sums = c84de27741e18024b942bfbc2b3a9a27
+	md5sums = 615f2fe722cc5b3eea9c9ea9d22bdafd
 
 pkgname = zeebe-modeler
 
