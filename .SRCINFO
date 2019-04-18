@@ -1,7 +1,7 @@
 pkgbase = torrench
 	pkgdesc = Command-line torrent search tool
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/astewartau/torrench
 	arch = any
 	license = GPL-3.0
@@ -12,8 +12,8 @@ pkgbase = torrench
 	depends = python-termcolor
 	provides = torrench
 	conflicts = torrench
-	source = torrench-v1.0.0.tar.gz::https://github.com/astewartau/torrench/archive/v1.0.0.tar.gz
-	md5sums = 5ecea4e6e6f85567413f3625c72d9154
+	source = torrench-v1.0.1.tar.gz::https://github.com/astewartau/torrench/archive/v1.0.1.tar.gz
+	md5sums = 32b63bcc1eb197e3f51b255c2bc96c69
 
 pkgname = torrench
 
