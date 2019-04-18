@@ -1,7 +1,7 @@
 # Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=reproc
-pkgver=4.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc='Cross-platform library that simplifies working with external CLI applications from C and C++'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="${_url}/reproc"
 license=('MIT')
 makedepends=('cmake' 'gcc')
 source=("${url}/archive/v${pkgver}".tar.gz)
-sha256sums=('6fc5bca7757a3253d73bc265a7577764fce1496415a1e04f49135c0e35c3f2cb')
+sha256sums=('d52f9c29968f745c223d59f2d462c6cc9fc3618c804c12ba8b8faf992fe72865')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -32,7 +32,7 @@ build() {
 }
 
 check() {
-  cmake --build "${pkgname}-${pkgver}/build" --target reproc-run-tests
+  cmake --build "${pkgname}-${pkgver}/build" --target reproc-tests
 }
 
 package() {

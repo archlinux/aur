@@ -1,14 +1,14 @@
 pkgbase = reproc
 	pkgdesc = Cross-platform library that simplifies working with external CLI applications from C and C++
-	pkgver = 4.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://github.com/DaanDeMeyer/reproc
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = gcc
-	source = https://github.com/DaanDeMeyer/reproc/archive/v4.0.0.tar.gz
-	sha256sums = 6fc5bca7757a3253d73bc265a7577764fce1496415a1e04f49135c0e35c3f2cb
+	source = https://github.com/DaanDeMeyer/reproc/archive/v5.0.1.tar.gz
+	sha256sums = d52f9c29968f745c223d59f2d462c6cc9fc3618c804c12ba8b8faf992fe72865
 
 pkgname = reproc
 
