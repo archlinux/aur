@@ -1,11 +1,12 @@
 pkgbase = python-arch
 	pkgdesc = ARCH models in Python.
-	pkgver = 4.7.0
+	pkgver = 4.8.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/arch/4.1
 	arch = x86_64
 	license = custom:University of Illinois/NCSA Open Source License
 	checkdepends = python-pytest
+	checkdepends = python-seaborn
 	makedepends = cython
 	makedepends = python-setuptools
 	depends = python
@@ -13,8 +14,8 @@ pkgbase = python-arch
 	depends = python-pandas
 	depends = python-scipy
 	depends = python-statsmodels
-	source = https://github.com/bashtage/arch/archive/4.7.0.tar.gz
-	sha256sums = ec692a1c629f6df9c18da5967edc2e1cd84661c2b3a0809b7fa6d2757baec79b
+	source = https://github.com/bashtage/arch/archive/4.8.1.tar.gz
+	sha256sums = 0f86ee3da9c023155816680027238a82fedf25c79a1eb12be19f1f025eaaa3e3
 
 pkgname = python-arch
 
