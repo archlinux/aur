@@ -2,7 +2,7 @@
 
 pkgname=dovecot-fts-xapian
 _reponame=fts-xapian
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="Dovecot FTS plugin based on Xapian"
@@ -11,12 +11,12 @@ url="https://github.com/grosjo/fts-xapian"
 license=(LGPL)
 depends=(dovecot xapian-core icu)
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/grosjo/${_reponame}/releases/download/v${pkgver}/${_reponame}-${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/grosjo/${_reponame}/archive/${_reponame}-${pkgver}.tar.gz")
 
-sha256sums=('6f4fb29c9f2285de2a1ef0c74f16577d9ef17cd867471653d1a893f2f227f74f')
+sha256sums=('e1945ff8293c9355def79066882fc049e795ba3851e7a0066908fac197753274')
 
 build() {
-	cd "${_reponame}-${pkgver}"
+	cd "${_reponame}-${_reponame}-${pkgver}"
 
 	autoreconf -vi
 	PANDOC=false ./configure \
@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-	cd "${_reponame}-${pkgver}"
+	cd "${_reponame}-${_reponame}-${pkgver}"
 
 	make DESTDIR="${pkgdir}" install
 }
