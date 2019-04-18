@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 # Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=tpm2-tools-git
-pkgver=3.0.2.r882.7305ac48
+pkgver=3.0.2.r1005.c782e7cc
 pkgrel=1
 pkgdesc='Trusted Platform Module 2.0 tools based on tpm2-tss'
 arch=('x86_64')
@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname%-git}"
-	printf '%s' "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
