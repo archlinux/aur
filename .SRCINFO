@@ -1,5 +1,5 @@
 pkgbase = higan-bsnes
-	pkgdesc = Nintendo SNES emulator, faster flavor of higan
+	pkgdesc = Nintendo SNES emulator, faster official flavor of higan
 	pkgver = 107.2
 	pkgrel = 1
 	url = http://byuu.org/
