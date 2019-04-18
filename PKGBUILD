@@ -12,7 +12,7 @@ depends=('python' 'python-numpy' 'python-matplotlib' 'python-pyserial' 'python-h
 makedepends=('python-setuptools')
 backup=('etc/gpib.conf' 'usr/etc/gpib.conf')
 source=("https://github.com/mutovis/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('e8a3ceee9f7cbbe66f9a59080a70a28da57c18952020f83695a82404816fe246')
+sha256sums=('c7bc172e511bcebe2a9f45191c55a85572e4eeb4006d63d287e73068988d83dc')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
