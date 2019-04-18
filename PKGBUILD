@@ -92,16 +92,13 @@ options=("!strip")
 PKGEXT='.pkg.tar'
 
 prepare() {
-    if df "${srcdir}" | grep -q tmpfs; then
-        warning "Building Mathematica takes more than 8GB of space."
-        warning "Building in a tmpfs (e.g. /tmp when mounted into RAM) may not work."
-    fi
+    warning "Building Mathematica takes more than 8GB of space."
+    warning "Building in a tmpfs (e.g. /tmp when mounted into RAM) may not work."
 
     if [ $(echo "${srcdir}" | wc -w) -ne 1 ]; then
         msg2 "ERROR: The Mathematica installer doesn't support directory names with spaces."
-        msg2 "Try building from a directory without spaces."
         msg2 "Current build directory: ${srcdir}"
-        false
+        exit 1
     fi
 
     chmod +x ${srcdir}/Mathematica_${pkgver}_LINUX.sh
