@@ -1,22 +1,27 @@
 pkgbase = eolie-git
 	pkgdesc = Simple web browser for GNOME
-	pkgver = 0.9.r1.ge5a7d6f
+	pkgver = 0.9.60+19+gd9c3ad4
 	pkgrel = 1
 	url = https://gnumdk.github.io/eolie-web/
 	arch = x86_64
 	arch = i686
 	license = GPL3
+	makedepends = git
 	makedepends = gobject-introspection
-	makedepends = intltool
-	makedepends = itstool
+	makedepends = meson
 	depends = gtkspell3
-	depends = python-beautifulsoup4
 	depends = python-cairo
+	depends = python-dateutil
 	depends = python-gobject
 	depends = webkit2gtk
-	provides = eolie=0.9.r1.ge5a7d6f
+	optdepends = python-beautifulsoup4: Import html bookmarks
+	optdepends = python-crypto: Firefox Sync support
+	optdepends = python-fxa: Firefox Sync support
+	optdepends = python-pyopenssl: Show SSL certificates
+	optdepends = python-requests-hawk: Firefox Sync support
+	provides = eolie=0.9.60+19+gd9c3ad4
 	conflicts = eolie
-	source = git+https://github.com/gnumdk/eolie.git
+	source = git+https://gitlab.gnome.org/World/eolie.git
 	sha256sums = SKIP
 
 pkgname = eolie-git

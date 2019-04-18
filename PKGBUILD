@@ -1,34 +1,36 @@
 # $Id$
-# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Maintainer: Cedric Bellegarde <cedric.bellegarde @t adishatz.org>
 
 pkgname=eolie-git
 _gitname=eolie
-pkgver=0.9.r1.ge5a7d6f
+pkgver=0.9.60+19+gd9c3ad4
 pkgrel=1
 pkgdesc="Simple web browser for GNOME"
 arch=('x86_64' 'i686')
 url="https://gnumdk.github.io/eolie-web/"
 license=('GPL3')
-depends=('gtkspell3' 'python-beautifulsoup4' 'python-cairo' 'python-gobject' 'webkit2gtk')
-makedepends=('gobject-introspection' 'intltool' 'itstool')
-source=("git+https://github.com/gnumdk/${_gitname}.git")
+depends=('gtkspell3' 'python-cairo' 'python-dateutil' 'python-gobject' 'webkit2gtk')
+makedepends=('git' 'gobject-introspection' 'meson')
+optdepends=('python-beautifulsoup4: Import html bookmarks'
+            'python-crypto: Firefox Sync support' 
+            'python-fxa: Firefox Sync support'
+            'python-pyopenssl: Show SSL certificates'
+            'python-requests-hawk: Firefox Sync support')
+source=("git+https://gitlab.gnome.org/World/eolie.git")
 sha256sums=('SKIP')
 conflicts=('eolie')
 provides=("eolie=$pkgver")
 
-prepare() {
+pkgver() {
 	cd "${_gitname}"
- 	git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-	cd "$srcdir/${_gitname}"
-	./autogen.sh --prefix=/usr --disable-schemas-compile
-	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-	make
+	arch-meson "${_gitname}" build
+	ninja -C build
 }
 
 package() {
-	cd "$srcdir/${_gitname}"
-	make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" meson install -C build
 }
