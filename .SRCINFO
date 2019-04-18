@@ -1,8 +1,9 @@
 pkgbase = throttled
 	pkgdesc = Workaround for Intel throttling issues in Linux.
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/erpalma/throttled
+	install = package.install
 	arch = x86_64
 	license = MIT
 	depends = python-dbus

@@ -2,7 +2,7 @@
 
 pkgname=throttled
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Workaround for Intel throttling issues in Linux."
 arch=('x86_64')
 url="https://github.com/erpalma/throttled"
@@ -10,6 +10,7 @@ license=('MIT')
 depends=('python-dbus' 'python-psutil' 'python-gobject')
 provides=('lenovo-throttling-fix' 'throttled')
 conflicts=('lenovo-throttling-fix-git' 'lenovo-throttling-fix')
+install="package.install"
 backup=('etc/lenovo_fix.conf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/erpalma/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('93d11b78d35b99ce345e41291f0268e4c21d0ccb2a80922839e51ec2fe3ae0c1')

@@ -1,0 +1,8 @@
+## arg 1:  the new package version
+post_install() {
+  # Remind user to enable the systemd service
+  echo -------------------------------------------------------------
+  echo 'After customizing the configuration in /etc/lenovo_fix.conf,'
+  echo 'enable the service by running: systemctl enable lenovo_fix'
+  echo -------------------------------------------------------------
+}
