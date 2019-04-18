@@ -1,0 +1,7 @@
+d /var/lib/gotify 0750
+d /var/lib/gotify/images 0750
+d /var/lib/gotify/plugins 0750
+d /var/lib/gotify/certs 0750
+Z /var/lib/gotify - gotify gotify
+z /etc/gotify 0755 root gotify
+z /etc/gotify/config.yml 0660 root gotify
