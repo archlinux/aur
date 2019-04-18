@@ -1,0 +1,38 @@
+Chunk 1-2:	Correct prefix/dirs for Arch
+Chunk 3:	Enable libbsd TAILQ_.*_SAFE macros
+diff -ura docbook2mdoc-1.0.0-old/Makefile docbook2mdoc-1.0.0-new/Makefile
+--- docbook2mdoc-1.0.0-old/Makefile	2019-04-18 04:31:23.000000000 +1000
++++ docbook2mdoc-1.0.0-new/Makefile	2019-04-18 21:30:56.454641858 +1000
+@@ -1,7 +1,7 @@
+ VERSION = 1.0.0
+ CFLAGS += -g -W -Wall -Wstrict-prototypes -Wno-unused-parameter -Wwrite-strings
+ WWWPREFIX = /var/www/vhosts/mdocml.bsd.lv/htdocs/docbook2mdoc
+-PREFIX = /usr/local
++PREFIX = /usr
+ 
+ HEADS =	node.h parse.h macro.h format.h
+ SRCS =	node.c parse.c macro.c docbook2mdoc.c tree.c main.c
+@@ -20,9 +20,9 @@
+ 
+ install: all
+ 	mkdir -p $(DESTDIR)$(PREFIX)/bin
+-	mkdir -p $(DESTDIR)$(PREFIX)/man/man1
++	mkdir -p $(DESTDIR)$(PREFIX)/share/man/man1
+ 	install -m 0755 docbook2mdoc $(DESTDIR)$(PREFIX)/bin
+-	install -m 0444 docbook2mdoc.1 $(DESTDIR)$(PREFIX)/man/man1
++	install -m 0444 docbook2mdoc.1 $(DESTDIR)$(PREFIX)/share/man/man1
+ 
+ installwww: www
+ 	mkdir -p $(WWWPREFIX)/snapshots
+diff -ura docbook2mdoc-1.0.0-old/node.h docbook2mdoc-1.0.0-new/node.h
+--- docbook2mdoc-1.0.0-old/node.h	2019-04-18 04:31:23.000000000 +1000
++++ docbook2mdoc-1.0.0-new/node.h	2019-04-18 21:17:26.519395568 +1000
+@@ -15,7 +15,7 @@
+  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  */
+-#include <sys/queue.h>
++#include <bsd/sys/queue.h>
+ 
+ /*
+  * The interface of the DocBook syntax tree.

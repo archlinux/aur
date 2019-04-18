@@ -1,0 +1,18 @@
+pkgbase = docbook2mdoc
+	pkgdesc = DocBook refentry to mdoc(7) converter
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://mandoc.bsd.lv/docbook2mdoc/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = custom: ISC
+	makedepends = libbsd
+	source = https://mandoc.bsd.lv/docbook2mdoc//snapshots/docbook2mdoc-1.0.0.tgz
+	source = docbook2mdoc.patch
+	sha256sums = 940b774abfc9fb60c8d9cf46cecbf704c5a60fbb4f6ca85073fdfda26706629c
+	sha256sums = c2570e46266fe64d6493095ec29da1b77919bc7fcc314e1d40e9a383e3a7a796
+
+pkgname = docbook2mdoc
+
