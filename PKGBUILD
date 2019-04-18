@@ -2,7 +2,7 @@
 # Contributor: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=kore
-pkgver=3.2.0
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="An easy to use web platform for writing scalable web APIs in C."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('ISC')
 depends=('openssl' 'postgresql-libs' 'python>=3.6')
 provides=('kore')
 source=("https://kore.io/releases/kore-${pkgver}.tar.gz")
-sha256sums=('24b7a0e0d7f07e1f5a60984feedd37c1aa19a9a5e2c97cccce061b689f8345f8')
+sha256sums=('b10c3739487427419a760ae97ca688ccf47e68cf7e1f401c2076f0c56b2a6b34')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
