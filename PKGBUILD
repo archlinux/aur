@@ -23,12 +23,12 @@
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
-pkgver=18.2rc1
-_major=18.2
+pkgver=18.2pre2
+_major=18.2rc1
 pkgrel=1
 _codename=Leia
-_tag="$pkgver-$_codename"
-#_tag="$_major-$_codename"
+#_tag="$pkgver-$_codename"
+_tag="$_major-$_codename"
 # Found on their respective github release pages. One can check them against
 # what is pulled down when not specifying them in the cmake step.
 # $CHROOT/build/kodi-devel/src/kodi-build/build/download
@@ -73,6 +73,8 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   cpuinfo
   000-fix.building.with.mariadb.patch::https://github.com/wsnipex/xbmc/commit/cd20c8eb8a0394db1f028b118c4ca9b91b7e746a.patch
+  001-PR15931.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15931.patch
+  002-PR15926.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15926.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -94,7 +96,9 @@ sha256sums=('da9f4b9be427031665ac736319aa60d4463b9cb8b27daf35c11d91fb16761422'
             'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
             '5ca5491e4260cacae30f1a5786d109230db3f3a6e5a0eb45d0d0608293d247e3'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
-            '849daf1d5b081ef6d0e428bbc7d448799fc43a8ac9e79cd7513de0eb5a91b0bb')
+            '849daf1d5b081ef6d0e428bbc7d448799fc43a8ac9e79cd7513de0eb5a91b0bb'
+            'f3406518bff0974eaf722bb158274833ef9f908bafe2231c2f33d35dc9be4f45'
+            'dc2dcaa8e618ef1ad71528b4d4d70460480eaab6dd1f3591942749bf65f7f796')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
