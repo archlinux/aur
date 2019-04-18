@@ -1,6 +1,6 @@
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 pkgname=tikv-pd
-pkgver=2.1.7
+pkgver=2.1.8
 pkgrel=1
 pkgdesc='Manage and schedule the TiKV cluster.'
 makedepends=('go' 'make')
@@ -14,7 +14,7 @@ source=(pd-${pkgver}.tar.gz::https://github.com/pingcap/pd/archive/v${pkgver}.ta
         pd-sysusers.conf
         pd-tmpfiles.conf
         pd.toml)
-sha256sums=('e094d509cf171e3517abf0d3f40de679ebcf568dc70b2a9f81e2cb7f9ed38d5f'
+sha256sums=('f628dbc0802695d0cadc214c29dc91ce3e2231ba043672d10cf0e4597c20c4a8'
             'b03d12f2f8d6eb2e9d654d6258ca39000225cdf1418840f7e35081631bc4d924'
             '5edd250ba9e70a4f8d27581ed658f0fbfeca58ca62429dec12bb5fffc0919b67'
             '15633aaa2d7726375112a1b5af88105878f09c176a542cde6d0e5f0c4eee4495'
