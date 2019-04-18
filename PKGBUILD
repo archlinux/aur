@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tpm2-totp-git
-pkgver=0.1.0.r5.ed86a39
+pkgver=0.1.0.r7.04ca7a6
 pkgrel=1
 pkgdesc='Attest the trustworthiness of a device against a human using time-based one-time passwords'
 arch=('x86_64')
@@ -22,7 +22,7 @@ BUILDENV+=('!check') # see warning below before enabling tests
 
 pkgver() {
 	cd "${pkgname%-git}"
-	printf '%s' "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+	git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
