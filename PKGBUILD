@@ -30,11 +30,11 @@ build() {
   autoreconf -fi
   ./configure \
     --prefix="/usr" \
-		--sysconfdir="/etc" \
-		--localstatedir="/var" \
-		--with-drill \
-		--with-examples \
-		--with-trust-anchor="/etc/trusted-key.key"
+    --sysconfdir="/etc" \
+    --localstatedir="/var" \
+    --with-drill \
+    --with-examples \
+    --with-trust-anchor="/etc/trusted-key.key"
   make
 }
 
