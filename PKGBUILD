@@ -1,10 +1,10 @@
 # Maintainer: Andrew Steinke <rkcf@rkcf.me>
 
 pkgname=python-arabic-reshaper
-pkgrel=1
+pkgrel=2
 pkgver=2.0.14
 pkgdesc="Reconstruct Arabic sentences to be used in applications that don't support Arabic"
-depends=('python')
+depends=('python' 'python-future' 'python2-configparser')
 makedepends=('python-setuptools')
 url="https://github.com/mpcabd/python-arabic-reshaper"
 license=('GPL3')
