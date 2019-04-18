@@ -17,6 +17,7 @@ pkgbase = arrow
 	depends = brotli
 	depends = double-conversion
 	depends = gflags
+	depends = grpc
 	depends = google-glog
 	depends = lz4
 	depends = protobuf
