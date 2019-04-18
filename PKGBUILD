@@ -6,7 +6,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 
 pkgname=python-validators
-pkgver=0.12.4
+pkgver=0.12.5
 pkgrel=1
 pkgdesc="Python data validation for humans"
 arch=( 'i686' 'x86_64' )
@@ -21,7 +21,7 @@ changelog=
 noextract=()
 source=("https://files.pythonhosted.org/packages/source/v/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "${_pkgname}-${pkgver}.tar.gz.sig")
-sha512sums=('bf900c6d33f170a3fe30ffcdbc24aef2d7803545cb076264c48ab33e40ae068ef649ea5d8025548abdf9723387ed89e5b5c23de4ef376fa2306da55504145e11'
+sha512sums=('d2320cf985d9b655d7c8537ea5555d2d0134d668dcccf6c5e878dbc0ac47bcea1a5975c970a36d64dfb669194ec9de1bb9f601779dc0feb073cc1eed55088211'
             'SKIP')
 
 build() {
