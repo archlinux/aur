@@ -1,0 +1,19 @@
+Description: Work around test-luksmeta fail when running as non-root
+Author: Christoph Biedl <debian.axhn@manchmal.in-ulm.de>
+Date: 2019-03-01
+Forwarded: no
+
+    The cryptsetup luksFormat program now fails when running as
+    non-root, see #923513
+
+--- a/test-luksmeta
++++ b/test-luksmeta
+@@ -11,7 +11,7 @@
+ trap 'onexit' EXIT
+ 
+ truncate -s 4M $tmp
+-echo -n foo | cryptsetup luksFormat $tmp -
++echo -n foo | cryptsetup luksFormat --type luks1 $tmp -
+ 
+ ! ./luksmeta test -d $tmp
+ 
