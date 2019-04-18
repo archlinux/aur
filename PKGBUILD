@@ -2,18 +2,25 @@
 
 pkgname=4kslideshowmaker
 pkgver=1.7.1.978
-pkgrel=1
+pkgrel=2
 pkgdesc="A straightforward and easy-to-use app to create slideshows from music and photos, with Instagram support."
 arch=('x86_64')
 url="http://www.4kdownload.com/products/product-slideshowmaker"
 license=('custom:eula')
 depends=('qt5-script' 'qt5-quickcontrols' 'libexif' 'portaudio' 'ffmpeg2.8' 'libjpeg9')
+makedepends=('chrpath')
 source=("${pkgname}_${pkgver}_amd64.tar.bz2"::"https://dl.4kdownload.com/app/${pkgname}_${pkgver%.*}_amd64.tar.bz2"
         "${pkgname}.desktop"
         "${pkgname}.png")
 sha256sums=('449aa7c621ae18759d766542fad98771e63c9670f015adab34c7a40e2f1402d3'
             'e77851c895f713a7f615010c0b62d0749254dac5178f9853ae45a915ac1f84f0'
             '8e14e4f39f5b794b56dfe7246723e62b59ab9d664330065847cc90654aee3468')
+
+prepare() {
+  cd "${pkgname}"
+  # Remove insecure RPATH
+  chrpath --delete "${pkgname}-bin"
+}
 
 package() {
   # Install desktop file
