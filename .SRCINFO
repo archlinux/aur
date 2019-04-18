@@ -1,6 +1,6 @@
 pkgbase = openbook-desktop-bin
 	pkgdesc = Desktop client for Openbook
-	pkgver = 0.0.34_6_rc2
+	pkgver = 0.0.34_6_rc3
 	pkgrel = 1
 	url = https://gitlab.com/999eagle/openbook-desktop
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = openbook-desktop-bin
 	depends = gtk3
 	provides = openbook-desktop
 	conflicts = openbook-desktop
-	source = openbook-desktop-0.0.34-6-rc2.zip::https://gitlab.com/999eagle/openbook-desktop/-/jobs/artifacts/0.0.34-6-rc2/download?job=release-linux
-	sha256sums = 1a43d1ca26d31cd8ff8454a60a520f3ab5dfc1ad7a34af94d6e84e84d5c6b573
+	source = openbook-desktop-0.0.34-6-rc3.zip::https://gitlab.com/999eagle/openbook-desktop/-/jobs/artifacts/0.0.34-6-rc3/download?job=release-linux
+	sha256sums = 8efb485bdfb985ad97e2f01ef0c25f540ed86198bb392c15cf87d20317d046de
 
 pkgname = openbook-desktop-bin
 
