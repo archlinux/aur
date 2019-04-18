@@ -1,6 +1,6 @@
 pkgbase = latex-media9
 	pkgdesc = Embed video/sound (SWF, MP4, FLV, MP3) files in PDFs
-	pkgver = 0.94
+	pkgver = 0.96
 	pkgrel = 1
 	url = http://www.ctan.org/pkg/media9
 	install = latex-media9.install
@@ -8,8 +8,8 @@ pkgbase = latex-media9
 	license = LPPL
 	depends = texlive-core
 	noextract = media9.tds.zip
-	source = http://tug.ctan.org/tex-archive/install/macros/latex/contrib/media9.tds.zip
-	sha256sums = 62ad2680886594ad0421c4eaecacae344e08b1575af31c2d142d611ff9c9f5af
+	source = media9-0.96.zip::http://tug.ctan.org/tex-archive/install/macros/latex/contrib/media9.tds.zip
+	sha256sums = 311e0760b4b0880ef7ca312fbff32f535007bb262cd2048ee7ee943d8099521e
 
 pkgname = latex-media9
 
