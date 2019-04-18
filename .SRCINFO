@@ -1,5 +1,5 @@
 pkgbase = inkscape-shallow-git
-	pkgdesc = An Open Source vector graphics editor, using SVG file format, from git master
+	pkgdesc = An Open Source vector graphics editor, using SVG file format, from git master (shallow clone)
 	pkgver = 1.0+devel.r4321.g083f7eab9b
 	pkgrel = 1
 	epoch = 1
