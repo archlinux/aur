@@ -3,15 +3,16 @@
 
 pkgname=signal-desktop-bin
 pkgver=1.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Private messaging from your desktop'
 arch=('x86_64')
 url='https://github.com/signalapp/Signal-Desktop'
 license=('GPL3')
+depends=('gconf' 'gtk3' 'libnotify' 'nss' 'xdg-utils' 'libxss')
+optdepends=('hunspell-en_US: US English hunspell dictionaries')
 provides=('signal-desktop')
 conflicts=('signal')
 options=('!strip')
-depends=('gconf' 'gtk3' 'libnotify' 'nss' 'xdg-utils' 'libxss')
 source=("https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_${pkgver}_amd64.deb")
 sha256sums=('392a8ce97b8a41ee9f55d39b07ce7a6c7b591c5cc607d5b22d323ed849e7b9a4')
 
@@ -30,4 +31,10 @@ package() {
   sed -e 's,^\(Name=.*\),\1 (Start in Tray),' -e 's,^\(Exec=.*\)%U,\1--start-in-tray %U,' \
       "${pkgdir}"/usr/share/applications/signal-desktop.desktop \
       > "${pkgdir}"/usr/share/applications/signal-desktop-tray.desktop
+
+  # use native Hunspell dictionaries
+  # unfortunately only US-English is supported, see https://github.com/signalapp/Signal-Desktop/issues/1659
+  rm -r "${pkgdir}"/opt/Signal/resources/app.asar.unpacked/node_modules/spellchecker/vendor/hunspell_dictionaries
+  ln -s /usr/share/hunspell \
+     "${pkgdir}"/opt/Signal/resources/app.asar.unpacked/node_modules/spellchecker/vendor/hunspell_dictionaries
 }

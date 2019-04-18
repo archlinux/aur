@@ -1,7 +1,7 @@
 pkgbase = signal-desktop-bin
 	pkgdesc = Private messaging from your desktop
 	pkgver = 1.24.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/signalapp/Signal-Desktop
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = signal-desktop-bin
 	depends = nss
 	depends = xdg-utils
 	depends = libxss
+	optdepends = hunspell-en_US: US English hunspell dictionaries
 	provides = signal-desktop
 	conflicts = signal
 	options = !strip
