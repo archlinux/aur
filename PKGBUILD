@@ -10,8 +10,10 @@ depends=('cryptsetup')
 makedepends=('git' 'asciidoc')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url.git")
-sha512sums=('SKIP')
+source=("git+$url.git"
+        'fix.test-luksmeta.patch')
+sha512sums=('SKIP'
+            '674574292ecc9912d63b90db9ffa7c3f862226424d308a6612d769943edde44086268bdcb7a8f8d26b954b881189090520400d49cb14b454537e9f9ea8c3f560')
 
 pkgver() {
 	cd "${pkgname%-git}"
@@ -20,6 +22,10 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname%-git}"
+
+	# https://github.com/latchset/luksmeta/issues/9
+	patch --strip=1 --input="$srcdir/fix.test-luksmeta.patch"
+
 	autoreconf --install --force
 }
 
