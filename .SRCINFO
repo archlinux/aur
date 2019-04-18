@@ -1,5 +1,5 @@
 pkgbase = ninjas-git
-	pkgdesc = Ninjas Is Not Just Another Slicer. Standalone, lv2, vst.
+	pkgdesc = Ninjas Is Not Just Another Slicer. Standalone, LV2, VST.
 	pkgver = r252.089b776
 	pkgrel = 1
 	url = https://github.com/rghvdberg/ninjas
