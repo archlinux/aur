@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.3.2
+Type=Application
+Name=Nyancoin
+Comment=NyanCoin wallet
+Exec=Nyancoin-qt
+Icon=nyancoin-qt
+Terminal=false
+StartupNotify=false
+Categories=Network;Finance;Qt
