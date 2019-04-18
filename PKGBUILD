@@ -22,7 +22,6 @@ makedepends=('cmake' 'boost' 'intltool' 'git' 'gettext' 'pango' 'python' 'python
 provides=('inkscape')
 conflicts=('inkscape')
 options=('!libtool' '!buildflags')
-sha1sums=('SKIP')
 _gitname="inkscape.git"
 
 pkgver() {

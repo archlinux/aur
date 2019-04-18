@@ -42,7 +42,6 @@ pkgbase = inkscape-shallow-git
 	conflicts = inkscape
 	options = !libtool
 	options = !buildflags
-	sha1sums = SKIP
 
 pkgname = inkscape-shallow-git
 
