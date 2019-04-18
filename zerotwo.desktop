@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ZeroTwo
+Comment=AniList anime tracker
+Exec=zerotwo
+Terminal=false
+Type=Application
+Icon=zerotwo
+StartupWMClass=ZeroTwo
+Categories=Network;
