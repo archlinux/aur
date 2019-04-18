@@ -2,7 +2,7 @@
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Pablo Lezaeta <(prflr 88) (arro'a) (gmail) (puntocom)>
 pkgname=shim-efi-git
-pkgver=15.r53.cd20ce4
+pkgver=15.r55.a4a1fbe
 pkgrel=1
 pkgdesc='UEFI shim loader'
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd shim
-	printf '%s' "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
