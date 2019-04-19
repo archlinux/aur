@@ -8,7 +8,7 @@ pkgdesc="Xunlei officially released a compact download tool with dedicated downl
 arch=("i686" "x86_64")
 url="https://dl.xunlei.com/"
 license=('custom')
-makedepends=('icoutils')
+makedepends=('p7zip' 'icoutils')
 depends=('wine')
 source=(
   "http://down.sandai.net/mini/ThunderMini_dl1.5.3.288.exe"
