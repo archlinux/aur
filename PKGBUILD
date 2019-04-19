@@ -28,7 +28,7 @@ prepare() {
 
   for _arch in "${_architectures[@]}"; do
     rm -rf build-${_arch}
-    cp -r "${_pkgbase}-${pkgver}" build-${_arch}
+    cp -r "${_pkgbase}" build-${_arch}
     pushd build-${_arch}
 
     NOCONFIGURE=1 ./autogen.sh
