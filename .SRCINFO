@@ -1,0 +1,20 @@
+pkgbase = dex-protecto-git
+	pkgdesc = Program to generate and execute DesktopEntry files of type Application, protecto's fork
+	pkgver = r84.bd85b78
+	pkgrel = 1
+	url = https://github.com/protecto/dex
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = python-sphinx
+	depends = python
+	provides = dex
+	conflicts = dex
+	conflicts = dex-git
+	source = git+https://github.com/protecto/dex.git
+	source = fix-dex-version.patch
+	md5sums = SKIP
+	md5sums = f2be2e9ea5f6317f89bd07af1cfe5565
+
+pkgname = dex-protecto-git
+

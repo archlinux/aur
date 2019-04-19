@@ -1,0 +1,11 @@
+--- /usr/bin/dex	2017-06-19 02:43:55.415177617 +0200
++++ dex.new	2017-06-19 02:46:55.251836314 +0200
+@@ -35,7 +35,7 @@
+ import subprocess
+ import sys
+ 
+-__version__ = "0.8.0"
++__version__ = "protecto-git"
+ 
+ 
+ # DesktopEntry exceptions
