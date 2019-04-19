@@ -1,0 +1,14 @@
+pkgbase = lazy-git
+	pkgdesc = Git plugin suite for lazy developers
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/jbernsie/lazy-git
+	arch = any
+	license = BSD
+	makedepends = stack
+	depends = git
+	source = https://github.com/jbernsie/lazy-git/archive/v0.5.tar.gz
+	md5sums = 2013e20bc4a7d656b68c0f4ed98f3c9e
+
+pkgname = lazy-git
+
