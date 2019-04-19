@@ -1,0 +1,266 @@
+patch -u -l -b -F 5 -N --suffix=.preplumed "./Makefile" << \EOF_EOF
+--- ./Makefile.preplumed
++++ ./Makefile
+@@ -432,10 +432,14 @@
+ CXXFLAGS = $(CXXBASEFLAGS) $(CXXOPTS)
+ CXXMICFLAGS = $(CXXBASEFLAGS) $(CXXOPTS) $(CXXMICOPTS)
+ CXXTHREADFLAGS = $(CXXBASEFLAGS) $(CXXTHREADOPTS)
+ CXXSIMPARAMFLAGS = $(CXXBASEFLAGS) $(CXXSIMPARAMOPTS)
+ CXXNOALIASFLAGS = $(CXXBASEFLAGS) $(CXXNOALIASOPTS)
++include .rootdir/Plumed.inc
++PLUMED_PREFIX=-Wl,
++PLUMED_LOAD1=$(patsubst "%.so",$(PLUMED_PREFIX)"%.so",$(PLUMED_LOAD))
++PLUMED_LOAD2=$(patsubst "%.dylib",$(PLUMED_PREFIX)"%.dylib",$(PLUMED_LOAD1))
+ COLVARSCXXFLAGS = $(CXXBASEFLAGS) $(CXXCOLVAROPTS) $(COPTI)$(LEPTONINCDIR) -DLEPTON -DLEPTON_USE_STATIC_LIBRARIES
+ GXXFLAGS = $(CXXBASEFLAGS) -DNO_STRSTREAM_H
+ CFLAGS = $(COPTI)$(SRCDIR) $(TCL) $(COPTS) $(RELEASE) $(EXTRADEFINES) $(TRACEOBJDEF)
+ PLUGINGCCFLAGS = $(COPTI)$(PLUGINSRCDIR) $(COPTI)$(PLUGININCDIR) $(COPTD)STATIC_PLUGIN
+ PLUGINCFLAGS = $(PLUGINGCCFLAGS) $(COPTS)
+@@ -479,10 +483,11 @@
+ 	$(CUDALIB) \
+ 	$(DPMTALIB) \
+ 	$(DPMELIB) \
+ 	$(FMMLIB) \
+ 	$(TCLLIB) \
++	$(PLUMED_LOAD2) \
+ 	$(PYTHONLIB) \
+ 	$(FFTLIB) \
+ 	$(PLUGINLIB) \
+ 	$(SBLIB) \
+ 	$(COLVARSLIB) \
+EOF_EOF
+patch -u -l -b -F 5 -N --suffix=.preplumed "./src/ComputeMgr.C" << \EOF_EOF
+--- ./src/ComputeMgr.C.preplumed
++++ ./src/ComputeMgr.C
+@@ -91,12 +91,135 @@
+ #include "GlobalMasterSMD.h"
+ #include "GlobalMasterTMD.h"
+ #include "GlobalMasterSymmetry.h"
+ #include "GlobalMasterEasy.h"
+ #include "GlobalMasterMisc.h"
++// PLUMED
++#include "../Plumed.h"
++// END PLUMED
+ #include "GlobalMasterFreeEnergy.h"
+ #include "GlobalMasterColvars.h"
++class GlobalMasterPlumed:
++  public  GlobalMasterEasy,
++  private PLMD::Plumed
++{
++  std::vector<int> index;
++  std::vector<double> positions;
++  std::vector<double> forces;
++  std::vector<double> masses;
++  std::vector<double> charges;
++  double box[3][3];
++  SimParameters *spar;
++public:
++  GlobalMasterPlumed():
++    GlobalMasterEasy("plumedScript")
++  {
++    easy_init(config);
++  }
++  void easy_init(const char* config)
++  {
++    int realPrecision=sizeof(double);
++    cmd("setRealPrecision",&realPrecision);
++    spar=Node::Object()->simParameters;
++
++    double energyUnits=4.184;
++    double lengthUnits=0.1;
++    double timeUnits=0.001;
++    cmd("setMDEnergyUnits",&energyUnits);
++    cmd("setMDLengthUnits",&lengthUnits);
++    cmd("setMDTimeUnits",&timeUnits);
++
++    cmd("setPlumedDat",spar->plumedFilename);
++
++    int natoms=Node::Object()->molecule->numAtoms;
++    cmd("setNatoms",&natoms);
++
++    cmd("setMDEngine","namd");
++
++    cmd("setLog",stdout);
++
++    double dt=spar->dt;
++    cmd("setTimestep",&dt);
++    cmd("setNoVirial");
++    cmd("init");
++
++    int s=step+1;
++    cmd("setStep",&s);
++    share();
++
++  }
++
++  void share(){
++    int* p;
++    int n;
++    bool redo=false;
++    cmd("prepareDependencies");
++    cmd("createFullList",&n);
++    cmd("getFullList",&p);
++    if(index.size()!=n)redo=true;
++    if(!redo) for(int i=0;i<n;i++) if(index[i]!=p[i]) { redo=true; break;};
++    if(redo){
++      index.resize(n);
++      masses.resize(n);
++      modifyRequestedAtoms().resize(0);
++      for(int i=0;i<n;i++){
++        requestAtom(p[i]);
++        masses[i]=getMass(p[i]);  
++        index[i]=p[i];
++      };
++      positions.resize(3*n);
++      forces.resize(3*n);
++      charges.resize(n);
++      
++      cmd("setAtomsNlocal",&n);
++      cmd("setAtomsGatindex",&index[0]);
++    }
++    cmd("clearFullList");
++  }
++
++  void easy_calc(){
++
++    for(int i=0;i<index.size();i++){
++      Vector coord;
++      getPosition(index[i],coord);
++      positions[3*i+0]=coord.x;
++      positions[3*i+1]=coord.y;
++      positions[3*i+2]=coord.z;
++      masses[i]=Node::Object()->molecule->atommass(index[i]);
++      charges[i]=Node::Object()->molecule->atomcharge(index[i]);
++    };
++
++    if(spar->lattice.volume()>0.0){
++      for(int i=0;i<3;i++) box[0][i]=spar->lattice.a()[i];
++      for(int i=0;i<3;i++) box[1][i]=spar->lattice.b()[i];
++      for(int i=0;i<3;i++) box[2][i]=spar->lattice.c()[i];
++      cmd("setBox",&box[0][0]);
++    } 
++
++    for(int i=0;i<forces.size();i++) forces[i]=0.0;
++
++    cmd("setMasses",&masses[0]); cmd("setCharges",&charges[0]);
++    cmd("setPositions",&positions[0]);
++    cmd("setForces",&forces[0]);
++
++    cmd("shareData");
++    cmd("performCalc");
++
++    for(int i=0;i<index.size();i++){
++      Vector f;
++      f.x=forces[3*i+0];
++      f.y=forces[3*i+1];
++      f.z=forces[3*i+2];
++      int j=addForce(index[i],f);
++    };
++
++    int s=step+1;
++    cmd("setStep",&s);
++    share();
++ 
++  }
++};
+ 
+ #include "ComputeNonbondedMICKernel.h"
+ 
+ #include "DeviceCUDA.h"
+ #ifdef NAMD_CUDA
+@@ -1042,10 +1165,15 @@
+             masterServerObject->addClient(new GlobalMasterSymmetry());    
+         if (simParams->TMDOn)
+             masterServerObject->addClient(new GlobalMasterTMD());
+         if (simParams->miscForcesOn)
+             masterServerObject->addClient(new GlobalMasterMisc());
++     // PLUMED
++        if (simParams->plumedOn){
++          masterServerObject->addClient(new GlobalMasterPlumed());
++        }
++     // END PLUMED
+         if ( simParams->freeEnergyOn )
+             masterServerObject->addClient(new GlobalMasterFreeEnergy());
+ 		if ( simParams->colvarsOn )
+ 			masterServerObject->addClient(new GlobalMasterColvars());
+ 
+EOF_EOF
+patch -u -l -b -F 5 -N --suffix=.preplumed "./src/SimParameters.C" << \EOF_EOF
+--- ./src/SimParameters.C.preplumed
++++ ./src/SimParameters.C
+@@ -1701,10 +1701,17 @@
+    opts.optionalB("main", "GBIS", "Use GB implicit solvent?",
+       &GBISOn, FALSE);
+    opts.optionalB("main", "GBISSer", "Use GB implicit solvent?",
+       &GBISserOn, FALSE);
+ 
++
++     // PLUMED
++     //// plumed
++     opts.optionalB("main", "plumed", "Is PLUMED active?",&plumedOn,FALSE);
++     opts.require("plumed", "plumedfile","PLUMED script",PARSE_STRING);
++     // END PLUMED
++
+    opts.optional("GBIS", "solventDielectric",
+       "Solvent Dielectric", &solvent_dielectric, 78.5);
+    opts.optional("GBIS", "intrinsicRadiusOffset",
+       "Coulomb Radius Offset", &coulomb_radius_offset, 0.09);
+    opts.optional("GBIS", "ionConcentration",
+@@ -5334,11 +5341,11 @@
+    
+    // Global forces configuration
+ 
+    globalForcesOn = ( tclForcesOn || freeEnergyOn || miscForcesOn ||
+                       (IMDon && ! (IMDignore || IMDignoreForces)) || SMDOn || TMDOn || 
+-                      colvarsOn || symmetryOn || qmForcesOn );
++                      colvarsOn || symmetryOn || qmForcesOn || plumedOn );
+ 
+ 
+    if (tclForcesOn)
+    {
+      iout << iINFO << "TCL GLOBAL FORCES ACTIVE\n";
+@@ -5419,10 +5426,25 @@
+      }
+ 
+      iout << endi;
+    }
+ 
++   // PLUMED
++   if (plumedOn)
++   {
++       iout << iINFO << "PLUMED ACTIVE\n";
++
++       current = config->find("plumedfile");
++       iout << iINFO << "PLUMED CONFIG FILE   "<< current->data << "\n" << endi;
++       strcpy(plumedFilename,current->data);
++
++       ifstream plumedFile(current->data);
++       if ( ! plumedFile ) NAMD_die("Error reading PLUMED config file.\n");
++
++   }
++   // END PLUMED
++
+    if (IMDon)
+    {
+      iout << iINFO << "INTERACTIVE MD ACTIVE\n";
+      iout << iINFO << "INTERACTIVE MD PORT    " << IMDport << "\n";
+      iout << iINFO << "INTERACTIVE MD FREQ    " << IMDfreq << "\n";
+EOF_EOF
+patch -u -l -b -F 5 -N --suffix=.preplumed "./src/SimParameters.h" << \EOF_EOF
+--- ./src/SimParameters.h.preplumed
++++ ./src/SimParameters.h
+@@ -545,10 +545,13 @@
+ 	char tclBCArgs[128];		//  Extra args for calcforces command
+ 	Bool freeEnergyOn;		//  Doing free energy perturbation?
+ 	Bool miscForcesOn;		//  Using misc forces?
+ 	Bool colvarsOn;         //  Using the colvars module?
+ 
++        Bool plumedOn;                  //  Using Plumed?
++        char plumedFilename[1024];      // Plumed filename
++
+ 	Bool fixedAtomsOn;		//  Are there fixed atoms?
+ 	Bool fixedAtomsForces;		//  Calculate forces anyway?
+ 	Bool fixedAtomsForceOutput; // Output fixed forces?
+ 
+ 	Bool langevinOnAtStartup;	//  Ensure that langevin is set up properly
+EOF_EOF
