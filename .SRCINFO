@@ -1,6 +1,6 @@
 pkgbase = zrythm-git
 	pkgdesc = An highly automated, intuitive, Digital Audio Workstation (DAW)
-	pkgver = 0.3.006.r2.gdb59418a
+	pkgver = 0.4.027
 	pkgrel = 1
 	url = https://git.zrythm.org/zrythm/zrythm
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = zrythm-git
 	depends = libsamplerate
 	depends = alsa-lib
 	depends = ffmpeg
+	depends = libgtop
 	provides = zrythm
 	conflicts = zrythm
 	source = zrythm::git+https://git.zrythm.org/zrythm/zrythm.git
