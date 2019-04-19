@@ -1,11 +1,12 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
+# Contributor: Danny Bautista <pyrolagus@gmail.com>
 
 pkgname=ghidra-git
-pkgver=9.0.2+10+g49c2010
+pkgver=9.0.2+78+g030cf8e9
 _d2j=2.0
 _yajsw=12.12
 _hfsx=0.21
-pkgrel=2
+pkgrel=1
 pkgdesc='Software reverse engineering framework (git)'
 arch=(x86_64)
 url=https://github.com/NationalSecurityAgency/ghidra
@@ -84,8 +85,10 @@ build() {
 package() {
   cd ghidra
   install -d "$pkgdir"/{opt,usr/bin}
-  unzip -u build/dist/ghidra_${pkgver:0:5}_PUBLIC_`date +"%Y%m%d"`_$_platform.zip -d "$pkgdir"/opt
-  mv "$pkgdir"/opt/ghidra{_${pkgver:0:5},}
+  _appver=$(grep -oP '(?<=^application.version=).*$' Ghidra/application.properties)
+  _relname=$(grep -oP '(?<=^application.release.name=).*$' Ghidra/application.properties)
+  unzip -u build/dist/ghidra_${_appver}_${_relname}_`date +"%Y%m%d"`_$_platform.zip -d "$pkgdir"/opt
+  mv "$pkgdir"/opt/ghidra{_$_appver,}
   ln -s /opt/ghidra/ghidraRun "$pkgdir"/usr/bin/ghidra
-  install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/ghidra/LICENSE
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/ghidra
 }
