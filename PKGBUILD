@@ -7,7 +7,7 @@ pkgdesc="Xilinx ISE Design Suite"
 url="https://www.xilinx.com/products/design-tools/ise-design-suite.html"
 arch=('i686' 'x86_64')
 license=('custom')
-depends=('ncurses5-compat-libs' 'qt4')
+depends=('libstdc++5' 'ncurses5-compat-libs' 'openmotif' 'qt4' 'rpcbind' 'xorg-fonts-75dpi' 'xorg-fonts-100dpi')
 optdepends=('fxload: Firmware loader for some programmer dongles'
             'digilent.adept.utilities: Digilent programmer support')
 options=('!strip')
@@ -49,6 +49,8 @@ package() {
 		ln -s /usr/lib/libstdc++.so ${_dir}/libstdc++.so
 		ln -s libstdc++.so ${_dir}/libstdc++.so.6
 		ln -s libstdc++.so ${_dir}/libstdc++.so.6.0.8
+		ln -s /usr/lib/libstdc++.so.5 ${_dir}/libstdc++.so.5
+		ln -s /usr/lib/libXm.so.4 ${_dir}/libXm.so.3
 	done
 
 	# Fix for the license configuration manager
