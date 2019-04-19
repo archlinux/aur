@@ -2,7 +2,7 @@
 
 _srcname=littleutils
 pkgname=littleutils-full
-pkgver=1.0.39
+pkgver=1.0.41
 pkgrel=1
 pkgdesc='Utilities for compression, file manipulation, text cleanup, and images/PDF optimization (with all features and extras)'
 arch=('i686' 'x86_64')
@@ -16,9 +16,9 @@ depends=(
         'lzma_alone'
 )
 provides=('littleutils')
-conflicts=('littleutils')
+conflicts=('littleutils' 'file-rename-utils')
 source=("https://sourceforge.net/projects/littleutils/files/littleutils-source/${pkgver}/littleutils-${pkgver}.tar.xz")
-sha256sums=('c24185a0752140f38b1c295bfad3f038fbeda2f1643cd83d7496130cc3a03160')
+sha256sums=('c2bdfb295afdf4c13b0ba16bce23f32ccc1c1ca077396f2e6c8e9deb2572a33b')
 
 build() {
     cd "${_srcname}-${pkgver}"
