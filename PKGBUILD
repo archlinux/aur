@@ -1,7 +1,7 @@
 # Contributor: Figue <ffigue at gmail dot com>
 
 pkgname=abrowser-bin
-pkgver=66.0.2
+pkgver=66.0.3
 pkgrel=1
 pkgdesc="Binary version of Abrowser, safe and easy web browser from Mozilla"
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ build=build1
 ubuntu_ver=16.04.1
 trisquel_ver=8.0trisquel61
 
-sha256sums_i686=('8a98aaf9f6f6581343b682ce54ffa45e7852953bb5cdfb50796b120b31a14373')
-sha256sums_x86_64=('e9432ccf988cc724916f6fbb35168291019f35486355e5ddc5b5ebcadfe4ef29')
+sha256sums_i686=('bf3cd8985d761793832e6232b9e0686f2f70bca631826728e55c1ac7c305f529')
+sha256sums_x86_64=('babe648c4a86f2808c8a3d44705ea5bdeb23346ece16f5ff927d8435addd635a')
 source_x86_64=("http://archive.trisquel.info/trisquel/pool/main/f/firefox/${s_pkgname}_${pkgver}+${build}-0ubuntu0.${ubuntu_ver}+${trisquel_ver}_amd64.deb")
 source_i686=("http://archive.trisquel.info/trisquel/pool/main/f/firefox/${s_pkgname}_${pkgver}+${build}-0ubuntu0.${ubuntu_ver}+${trisquel_ver}_i386.deb")
 
