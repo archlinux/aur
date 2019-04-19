@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Xilinx ISE 14.7
+Comment=Xilinx ISE Design Suite
+Categories=Development;
+Exec=/usr/bin/sh -c "unset LANG && unset QT_PLUGIN_PATH && source /opt/Xilinx/14.7/ISE_DS/settings64.sh && ise"
+Icon=/opt/Xilinx/14.7/ISE_DS/ISE/data/images/pn-ise.png
+StartupWMClass=_pn
