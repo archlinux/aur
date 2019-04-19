@@ -1,5 +1,5 @@
 # Maintainer: Martynas Mickevičius <self at 2m dot lt>
-_version=1.1.0-M10
+_version=1.1.0-M14
 
 pkgname=coursier
 pkgver="${_version/-/_}"
