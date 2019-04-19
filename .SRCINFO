@@ -1,7 +1,7 @@
 pkgbase = factorio-dl
 	pkgdesc = Factorio downloader script for UNIX(-like) systems
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/moviuro/factorio-dl
 	install = factorio-dl.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = factorio-dl
 	source = factorio-dl-0.1.3.tar.gz::https://gitlab.com/moviuro/factorio-dl/repository/0.1.3/archive.tar.gz
 	source = factorio-dl.install
 	sha256sums = 0d6f806b8240463f91455d1647dfb9dd1aa319b2f5d1bfce386b3f6ac36f5585
-	sha256sums = ae4ea5d2a613364ee7884a39c5a9e032ff7fa175b5cfb4182abf83261086ce89
+	sha256sums = 1a44e9c458d2a31686ec0371432c631883be6807ed29b68e80aee59d88a48137
 
 pkgname = factorio-dl
 

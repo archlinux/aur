@@ -15,6 +15,9 @@ yellow="${bold}$(tput setaf 3)"
 
 post_install() {
   note "Make sure to read the README.md file to add the factorio DL agent to makepkg.conf(5)"
+  printf '%s\n' "  DLAGENTS=([...]" \
+   "+           'factorio::/usr/bin/factorio-dl -t linux64 -o %o %u'"\
+   "            [...])"
 }
 
 post_remove() {
