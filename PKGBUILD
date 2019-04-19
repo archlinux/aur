@@ -2,7 +2,7 @@
 
 pkgname=git-ignore-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly and easily list and fetch .gitignore templates from www.gitignore.io"
 url="https://github.com/sondr3/git-ignore"
 arch=('x86_64')
