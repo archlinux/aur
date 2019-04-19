@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=75.0.3759.4
+pkgver=75.0.3766.2
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -81,6 +81,8 @@ source=(
 
         # Misc Patches.
         'enable-vaapi.patch' # Use Saikrishna Arcot patch again :https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/4d40b58013b518373b2544d486d3de40796edd36/debian/patches/enable_vaapi_on_linux_2.diff'
+        'https://raw.githubusercontent.com/chromium/crashpad/master/third_party/lss/BUILD.gn'
+        'https://raw.githubusercontent.com/chromium/crashpad/master/third_party/lss/lss.h'
         # Patch from crbug (chromium bugtracker) or Arch chromium package.
         'chromium-widevine-r4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium'
         'chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
@@ -94,6 +96,8 @@ sha256sums=(
 
             # Misc Patches
             '4b785aeee1cab89bf410de063b7769ef4eb99130888ece60a38a584019747b9f'
+            '56e516480b2f0ff6806068df2a77ebb2cabe211c7d3e7d390396e66df3d40a09'
+            '986e5bd28abcc5f7d0c0587bb850f3b4edb8a91eeebf82b3c329752455fa1606'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
@@ -463,6 +467,9 @@ prepare() {
   msg2 "Patching the sources"
 
   # Misc patches.
+  # turn back lss.h. see https://chromium-review.googlesource.com/c/crashpad/crashpad/+/1559309
+  cp ${srcdir}/BUILD.gn third_party/lss/BUILD.gn
+  cp ${srcdir}/lss.h third_party/lss/lss.h
 
   # Pats to chromium dev's about why always they forget add/remove missing build rules.
   # Not this time (?).
