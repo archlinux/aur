@@ -1,6 +1,6 @@
 pkgbase = kwin-scripts-krohnkite-git
 	pkgdesc = A dynamic tiling extension for KWin
-	pkgver = r291.97b8028
+	pkgver = r299.5a7b64d
 	pkgrel = 1
 	url = https://github.com/esjeon/krohnkite.git
 	arch = any
