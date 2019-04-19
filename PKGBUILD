@@ -4,7 +4,7 @@
 _pkgbase=libgtop
 pkgname=mingw-w64-libgtop
 pkgver=2.40.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for collecting system monitoring data"
 url="https://gitlab.gnome.org/GNOME/libgtop"
 arch=(x86_64)
@@ -19,8 +19,15 @@ sha256sums=('SKIP')
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
 pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/-/+/g'
+  cd "${srcdir}"
+
+  for _arch in "${_architectures[@]}"; do
+    pushd "build-${_arch}"
+
+    git describe --tags | sed 's/-/+/g'
+
+    popd
+  done
 }
 
 prepare() {
