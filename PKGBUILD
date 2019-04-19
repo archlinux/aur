@@ -1,42 +1,72 @@
-# Maintainer: Joel Teichroeb <joel@teichroeb.net>
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Contributor: Joel Teichroeb <joel@teichroeb.net>
 # Contributor: Scimmia
 
-pkgname=wayland-git
-pkgver=1.13.90.2010.9b78be6
+pkgbase=wayland-git
+pkgname=('wayland-git' 'wayland-docs-git')
+pkgver=1.17.0.r6.gb77cf86
 pkgrel=1
-pkgdesc='A computer display server protocol.'
-arch=(i686 x86_64)
-url='http://wayland.freedesktop.org'
-provides=("wayland=${pkgver}")
+pkgdesc='A computer display server protocol'
+arch=('x86_64')
+url='https://wayland.freedesktop.org/'
 license=('MIT')
-depends=('libffi' 'libxml2' 'expat')
-makedepends=('git')
-conflicts=('wayland')
-source=(git://anongit.freedesktop.org/wayland/wayland)
-sha1sums=('SKIP')
+depends=('glibc' 'libffi' 'expat' 'libxml2')
+makedepends=('git' 'libxslt' 'doxygen' 'xmlto' 'graphviz' 'docbook-xsl')
+source=('git+https://gitlab.freedesktop.org/wayland/wayland.git')
+sha256sums=('SKIP')
 
-pkgver() {
-	cd wayland
-
-	for i in major_version minor_version micro_version; do
-		local _$i=$(grep -m 1 $i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
-	done
-
-	echo $_major_version.$_minor_version.$_micro_version.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+prepare() {
+    mkdir -p docs/share
 }
 
+pkgver() {
+    cd wayland
+    
+    # git, tags available
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
 
 build() {
     cd wayland
-
-    ./autogen.sh --prefix=/usr \
-				 --disable-documentation \
-				 --disable-static
+    
+    ./autogen.sh \
+        --prefix='/usr' \
+        --disable-static
+        
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+    
     make
 }
 
-package() {
+check() {
     cd wayland
-    make DESTDIR="${pkgdir}" install
-    install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    
+    make check
+}
+
+package_wayland-git() {
+    provides=("wayland=${pkgver}")
+    conflicts=('wayland')
+    
+    cd wayland
+    
+    make DESTDIR="$pkgdir" install
+    
+    mv "$pkgdir"/usr/share/{doc,man} "${srcdir}/docs/share"
+    
+    install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_wayland-docs-git() {
+    pkgdesc+=' (documentation)'
+    arch=('any')
+    depends=()
+    provides=("wayland-docs=${pkgver}")
+    conflicts=('wayland-docs')
+    
+    cd wayland
+    
+    mv "${srcdir}/docs" "${pkgdir}/usr"
+    
+    install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
