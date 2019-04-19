@@ -1,15 +1,15 @@
 # Maintainer: Doron Behar <doron.behar@gmail.com>
 
 pkgname=gnuastro
-pkgver=0.8
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc='Various programs and library functions for the manipulation and analysis of astronomical data'
 arch=('x86_64')
 license=('GPL3')
 depends=('gsl' 'cfitsio' 'wcslib' 'libgit2' 'ghostscript' 'libtiff' 'libtool' 'libjpeg')
 url='https://www.gnu.org/software/gnuastro/'
 source=("http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('1f9fe021bf153ac7291af95c95e2d716')
+md5sums=('126ce3f3610a83208dbbfd6ef36342fa')
 
 prepare() {
   cd $pkgname-$pkgver
