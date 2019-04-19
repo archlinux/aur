@@ -1,7 +1,7 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname=writefreely
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Federated blogging from write.as'
 arch=('x86_64')
@@ -26,7 +26,7 @@ sha256sums=('6c74c81e27165851daf20d4bcf958227342f063aa3ec53b1cb86a56dac565f10'
             '60d4b49872523a2aed3e0e6a55513dfefe5ae6cbec43f2fcc65db894fb3bd2a3'
             'e357b687bd0eab95996711276216b6f2dc534ba9214ae094172d6d7a6b1fdae5'
             '009c083488511d92b489337f7feb8bd17631a104907959d21b1f9b5df3ce0a70'
-            '9bc7a8355cb940ed9ac004d0763c51b60dd77e2e739ced33db658c4708502153')
+            '547261d5ad015dfae079dbd197b7b17e365d23611c8ae60e0e554c34202df9e6')
 
 prepare() {
   export GO111MODULE=on
