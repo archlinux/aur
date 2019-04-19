@@ -5,9 +5,9 @@
 # Contributor: M0Rf30
 
 pkgname=virtualbox-bin
-pkgver=6.0.4
-_build=128413
-_rev=75085
+pkgver=6.0.6
+_build=130049
+_rev=78150
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('x86_64')
@@ -39,18 +39,18 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         'dkms.conf'
         '009-include-path.patch')
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
-sha256sums=('a04454161150e2f387177b4a3b688292ea4a516c915d859782742e8137393ba5'
-            '618ee3fd3eb64b4dd6f11bd80f1116cad7a5f9308a65536ce257cd2dbbb68dd7'
-            '23e3e0e6abfaa69bf0aa046c0ee070d19435b97cb4bfbb16bba65a2783502154'
-            '815f6e2e3ab687356aad0e6f59eef6e266514fb12a6b569d239d834e0a480f37'
-            '99deff35d8a600f20223b96ba409451834e58ac21a589a989dd82a2d6fe006ae'
+sha256sums=('4e721f4a1c07bec4b81af0cfc6b15ba06b974e34909532b7a79de8c4b0b36719'
+            'c418865976c518e2c60bc66f9b6479850b432f4e58ab4be4b36a41078efec845'
+            '584f02a2a1e83b9cabd7b7e3b00a0515b118e040160eb46c014ea6fd3a16586e'
+            '600df773fca199dc21acde10c95a4733b03b3efd8ffaef3a9fb9da363a9cd114'
+            '452351c15d97aeda29e45dbcb0da69412dc3a615c9aece43a424af3639368d49'
             '0aebe22abab402ea6b6573af637a99d8056a904920a52d84fb97729219219c23'
             '69417a9e8855cab8e4878886abe138f559fd17ae487d4cd19c8a24974a8bbec2'
             '656905de981ffa24f6f921c920538854a235225053f44baedacc07b46ca0cf56'
             '12dbba3b59991f2b68cddeeeda20236aeff63e11b7e2d1b08d9d6a82225f6651'
             'cc1c0500ab07bc13563d99037f776bf64bdc90bb521e31e2e0b04e42ea5bb36a'
             'e9df0fff15184d0a90abe17707bdbe1931582433bbc14ded4fb3b0252653c801'
-            '5112f0e1ba3bd0bd92ef2edb2d21024e265abb02841aa29aa05410526adc273f')
+            'f3aa4efcee92868867876728b6e3b0b828593e26e6eefc2dd4adb0d5e78e2776')
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}"
@@ -77,8 +77,8 @@ package() {
     
     # apply patch 009-include-path (thanks to Christian Hesse)
     printf '%s\n' "  -> Applying patch '009-includepath.patch'..."
-    cd "${pkgdir}/${_installdir}/src/vboxhost/"
-    patch -Np5 -i "${srcdir}/009-include-path.patch"
+    cd "${pkgdir}/${_installdir}"
+    patch -Np1 -i "${srcdir}/009-include-path.patch"
     
     # hardened build: mark binaries suid root, and make sure the
     # directory is only writable by the user
