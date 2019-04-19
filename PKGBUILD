@@ -12,7 +12,7 @@ _srcname=${pkgbase}
 _kernel_rel=5.2
 _branch=drm-next-${_kernel_rel}
 _kernelname=${pkgbase#linux}
-pkgver=5.2.826043.fe6382cd69de
+pkgver=5.2.826149.f55be0be5b72
 pkgrel=1
 arch=(x86_64)
 url='https://cgit.freedesktop.org/~agd5f/linux/'
@@ -26,7 +26,7 @@ source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            'fd3e34737d74f3c435ee6a89d2601c98f529c32a996d1eb5ab2d9c7334cce1cd'
+            'e97214ca11ce893d31791c05c9f2cad3533dbb20d2358d599ab96d961444308a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -66,7 +66,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules htmldocs
+  make bzImage modules #htmldocs
 }
 
 _package() {
@@ -217,17 +217,17 @@ _package-docs() {
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
-  msg2 "Removing doctrees..."
-  rm -r "$builddir/Documentation/output/.doctrees"
+  # msg2 "Removing doctrees..."
+  # rm -r "$builddir/Documentation/output/.doctrees"
 
-  msg2 "Moving HTML docs..."
-  local src dst
-  while read -rd '' src; do
-    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    mkdir -p "${dst%/*}"
-    mv "$src" "$dst"
-    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  done < <(find "$builddir/Documentation/output" -type f -print0)
+  # msg2 "Moving HTML docs..."
+  # local src dst
+  # while read -rd '' src; do
+  #   dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+  #   mkdir -p "${dst%/*}"
+  #   mv "$src" "$dst"
+  #   rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  # done < <(find "$builddir/Documentation/output" -type f -print0)
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
