@@ -4,13 +4,13 @@
 
 pkgname=kismet-ng
 pkgver=2019.04.R1
-pkgrel=1
+pkgrel=2
 _pkgname=${pkgname%-ng}
 _srcname="$(sed 's/\./-/g' <<<"$_pkgname-$pkgver")"
 
 pkgdesc='WiFi detector, sniffer, and intrusion detection framework - major rewrite'
 arch=('x86_64')
-url='https://www.kismetwireless.net/'
+url='https://www.kismetwireless.net'
 license=('GPL' 'custom')
 
 depends=('libelf' 'libmicrohttpd' 'libnm' 'libpcap' 'pkg-config' 'protobuf-c' 'lm_sensors')
@@ -30,7 +30,7 @@ source=("$url/code/$_srcname.tar.xz"
         "$_pkgname-sysusers.conf")
 
 sha256sums=('60575e3473abc2a60c583a10b3e386c547f54e720140ab9de6130de5590a7790'
-            'f14dc11b8dee1b9b06ae43c77fcecf8aae15a6f9855933d73dc0d87b88324181'
+            'cfcd27c46ee08bd783e5b6a81e430c24d9737bad34e15d801e365285cbc71a5f'
             '8b5b25bb6d9c611589ce0200da3cfeed2194bfa45aeed88e10c980c668383806')
 validpgpkeys=('7A194E3F7A8F867BEA8A5339023F078862ACFE50')
 
