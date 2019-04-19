@@ -1,7 +1,7 @@
 # Maintainer: Robin Krahl <robin.krahl@ireas.org>
 pkgname=nitrocli
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line interface for Nitrokey devices"
 arch=('x86_64')
 url="https://github.com/d-e-s-o/nitrocli"
@@ -24,7 +24,7 @@ EOF
 build() {
 	cd "$pkgname-$pkgver/nitrocli"
 	export USE_SYSTEM_LIBNITROKEY=1
-	cargo build --release --frozen
+	cargo build --release
 }
 
 package() {
