@@ -2,4 +2,4 @@
 
 set -e
 
-_METALS_CLIENT=vim-lsc metals-client "$@"
+_METALS_CLIENT=vim-lsc exec metals-client "$@"

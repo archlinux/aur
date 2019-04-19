@@ -2,4 +2,4 @@
 
 set -e
 
-_METALS_CLIENT=sublime metals-client "$@"
+_METALS_CLIENT=sublime exec metals-client "$@"
