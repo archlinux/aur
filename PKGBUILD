@@ -4,7 +4,7 @@
 _pkgbase=libgtop
 pkgname=mingw-w64-libgtop
 pkgver=2.40.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A library for collecting system monitoring data"
 url="https://gitlab.gnome.org/GNOME/libgtop"
 arch=(x86_64)
@@ -50,8 +50,8 @@ build() {
   for _arch in "${_architectures[@]}"; do
     pushd "build-${_arch}"
 
-    ${_arch}-configure . --prefix=/usr --sysconfdir=/etc \
-        --localstatedir=/var --disable-static
+    ${_arch}-configure --prefix=/usr --sysconfdir=/etc \
+        --localstatedir=/var --disable-static .
     make
 
     popd
