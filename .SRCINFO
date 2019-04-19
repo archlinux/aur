@@ -1,6 +1,6 @@
 pkgbase = servicewall-git
 	pkgdesc = The firewall that remembers the different networks you connect to.
-	pkgver = 0.4.2.r8.b3be6ea
+	pkgver = 0.4.2.r8.a00f04a
 	pkgrel = 1
 	url = https://github.com/lafleurdeboum/servicewall
 	install = servicewall.install
@@ -20,7 +20,7 @@ pkgbase = servicewall-git
 	optdepends = networkmanager
 	backup = etc/servicewall/realms.json
 	backup = etc/servicewall/config.json
-	source = servicewall::git://localhost/#branch=systray
+	source = servicewall::git://localhost/#branch=master
 	md5sums = SKIP
 
 pkgname = servicewall-git
