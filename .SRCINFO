@@ -1,6 +1,6 @@
 pkgbase = jdk
 	pkgdesc = Oracle Java Development Kit
-	pkgver = 12
+	pkgver = 12.0.1
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	install = jdk.install
@@ -13,13 +13,13 @@ pkgbase = jdk
 	depends = hicolor-icon-theme
 	provides = java-environment=12
 	provides = java-environment-jdk=12
-	source = https://download.oracle.com/otn-pub/java/jdk/12+33/312335d836a34c7c8bba9d963e26dc23/jdk-12_linux-x64_bin.tar.gz
+	source = https://download.oracle.com/otn-pub/java/jdk/12.0.1+12/69cfe15208a647278a19ef0990eea691/jdk-12.0.1_linux-x64_bin.tar.gz
 	source = java.desktop
 	source = jconsole.desktop
 	source = jshell.desktop
 	source = java_16.png
 	source = java_48.png
-	sha256sums = 183d4d897bbf47bdae43b2bb4fc0465a9178209b5250555ac7fdb8fab6cc43a6
+	sha256sums = 9fd6dcdaf2cfca7da59e39b009a0f5bcd53bec2fb16105f7ca8d689cdab68d75
 	sha256sums = 7b348c5f6b6ce7df7f849a90f0bdbbdb5a2d6236ec05e96e0b160755cf87fd69
 	sha256sums = 74d52ebc46e1d6b104130c04209a9cf318163de022034239042a1981a6ffd60f
 	sha256sums = d207bb3f4a55e329546d084d8b82b6c217177ff11ebcc85e6420b14b011b3cd1
