@@ -1,7 +1,7 @@
 pkgbase = zrythm
 	pkgdesc = An highly automated, intuitive, Digital Audio Workstation (DAW)
 	pkgver = 0.4.027
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.zrythm.org/zrythm/zrythm
 	arch = x86_64
 	license = GPL3
@@ -21,9 +21,10 @@ pkgbase = zrythm
 	depends = libsamplerate
 	depends = alsa-lib
 	depends = ffmpeg
+	depends = libgtop
 	conflicts = zrythm-git
 	source = https://git.zrythm.org/zrythm/zrythm/-/archive/v0.4.027/zrythm-v0.4.027.tar.gz
-	md5sums = 9366c277c18bf391d44e29b2107c6b1a
+	md5sums = b5eff2aa129f61116688e606d1ed861f
 
 pkgname = zrythm
 
