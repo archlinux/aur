@@ -6,13 +6,13 @@ _gitname=vte
 _realname=vte3
 pkgname=$_realname-git
 
-pkgver=0.55.1.4490.53690d5c
+pkgver=0.57.0.4525.bc983ed0
 pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget for use with GTK3"
 arch=('i686' 'x86_64')
 license=('LGPL')
 options=('!emptydirs')
-makedepends=('intltool' 'gobject-introspection' 'vala' 'gtk-doc' 'gperf')
+makedepends=('intltool' 'gobject-introspection' 'vala' 'gtk-doc' 'gperf' 'meson>=0.49.0')
 url="http://www.gnome.org"
 depends=('gtk3' 'vte-common' 'glibc' 'pcre2')
 
@@ -22,31 +22,27 @@ conflicts=($_realname vte-common)
 source=("git+https://gitlab.gnome.org/GNOME/$_gitname.git")
 md5sums=("SKIP")
 
-subver() {
-  PREFIX="m4_define(\[version_$1\],"
-  echo $(grep $PREFIX configure.ac | eval sed "'s/$PREFIX//'" | sed 's/)//')
+prepare() {
+  cd $_gitname
+  meson setup --prefix=/usr --sysconfdir=/etc \
+      --libexecdir=/usr/lib/vte --localstatedir=/var \
+      builddir
 }
 
 pkgver() {
   cd $_gitname
-  major=$(subver major)
-  minor=$(subver minor)
-  micro=$(subver micro)
+  version=$(grep "\#define VERSION " builddir/config.h | sed 's/\#define VERSION //' | sed 's/\"//g')
   hash=$(git log --pretty=format:'%h' -n 1)
   revision=$(git rev-list --count HEAD)
-  echo $major.$minor.$micro.$revision.$hash
+  echo $version.$revision.$hash
 }
 
 build() {
   cd $_gitname
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc \
-      --libexecdir=/usr/lib/vte \
-      --localstatedir=/var --disable-static \
-      --enable-introspection
-  make
+  ninja -C builddir
 }
 
 package() {
   cd $_gitname
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C builddir
 }
