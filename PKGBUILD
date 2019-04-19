@@ -72,7 +72,7 @@ pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
 pkgrel=1
 arch=('x86_64')
-url="https://github.com/clearlinux-pkgs/linux-clear-lts2018"
+url="https://github.com/clearlinux-pkgs/linux-lts2018"
 license=('GPL2')
 makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'linux-firmware' 'xmlto')
 options=('!strip')
@@ -115,6 +115,11 @@ prepare() {
     ### Setting config
         msg2 "Setting config..."
         cp -Tf $srcdir/${pkgbase}/config ./.config
+        
+    ### Bluez package on arch needs this module for bluetooth to work
+        # https://bugs.archlinux.org/task/55880
+        msg2 "Enabling crypto_user module..."
+        sed -i "s|# CONFIG_CRYPTO_USER is not set|CONFIG_CRYPTO_USER=m|g" ./.config
 
     ### Compress modules
         msg2 "Enabling XZ compressed modules..."
