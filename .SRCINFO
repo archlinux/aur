@@ -1,17 +1,16 @@
 pkgbase = mrsh-git
 	pkgdesc = A minimal POSIX shell
-	pkgver = r314.e73e175
-	pkgrel = 1
+	pkgver = r342.7f363b2
+	pkgrel = 2
 	url = https://git.sr.ht/~emersion/mrsh
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
-	license = MIT
-	makedepends = meson
+	license = custom: MIT
 	makedepends = git
+	makedepends = meson
 	provides = mrsh
-	conflicts = mrsh
 	source = mrsh::git+https://git.sr.ht/~emersion/mrsh
 	sha256sums = SKIP
 
