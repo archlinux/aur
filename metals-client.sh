@@ -3,13 +3,13 @@
 set -e
 
 declare -r _INSTALL_DIR='/usr/share/java/metals'
-declare _CP="${_INSTALL_DIR}/lib:${_INSTALL_DIR}/metals"
+declare _CP="$_INSTALL_DIR/lib:$_INSTALL_DIR/metals"
 
 function build_cp {
-    for name in $(find ${_INSTALL_DIR}/jars -regex '.*\.jar')
+    while read -r name
     do
-        _CP="${name}:${_CP}"
-    done
+        _CP="$name:$_CP"
+    done <<< "$(find "$_INSTALL_DIR"/jars -regex '.*\.jar')"
 }
 
 function main {
@@ -17,7 +17,7 @@ function main {
 
     # Java options taken from metals-emacs documentation
     # https://scalameta.org/metals/docs/editors/emacs.HTML
-    java -XX:+UseG1GC -XX:+UseStringDeduplication -Xss4m -Xms100m -Dmetals.client="${_METALS_CLIENT}" -cp "$_CP" scala.meta.metals.Main $@
+    java -XX:+UseG1GC -XX:+UseStringDeduplication -Xss4m -Xms100m -Dmetals.client="$_METALS_CLIENT" -cp "$_CP" scala.meta.metals.Main "$@"
 }
 
-main $@
+main "$@"

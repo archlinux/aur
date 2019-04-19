@@ -2,4 +2,4 @@
 
 set -e
 
-_METALS_CLIENT=vscode metals-client $@
+_METALS_CLIENT=vscode metals-client "$@"
