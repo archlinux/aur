@@ -2,7 +2,7 @@
 
 pkgname=zerotwo
 pkgver=0.6.2+beta
-pkgrel=2
+pkgrel=3
 pkgdesc='AniList anime tracker written with Electron & Vue.js'
 arch=(i686 x86_64)
 url=https://www.zerotwo.org
@@ -18,8 +18,13 @@ build() {
   cd zerotwo-${pkgver/+/-}
 
   # You must generate an API client ID and secret on AniList in order to use the login function
+  # Generate them at https://anilist.co/settings/developer
   _api_id=
   _api_secret=
+  if [ -z $_api_id ] || [ -z $_api_secret ] ; then
+    echo "AniList API client ID and secret must be manually set for ZeroTwo to function properly. Quitting..."
+    exit
+  fi
   echo -e CLIENT_ID=${_api_id}'\n'CLIENT_SECRET=${_api_secret} > .env
 
   npm i
