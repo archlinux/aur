@@ -1,6 +1,6 @@
 pkgbase = linux-amd-git
 	pkgdesc = Linux kernel with AMDGPU DC patches
-	pkgver = 5.1.813440.59d3191f14dc
+	pkgver = 5.2.826043.fe6382cd69de
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/~agd5f/linux/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = linux-amd-git
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = linux-amd-git::git://people.freedesktop.org/~agd5f/linux#branch=drm-next-5.1
+	source = linux-amd-git::git://people.freedesktop.org/~agd5f/linux#branch=drm-next-5.2
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
