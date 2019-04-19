@@ -10,7 +10,7 @@ license=('GPL3')
 provides=('git-ignore')
 conflicts=('git-ignore')
 source_x86_64=("https://github.com/sondr3/git-ignore/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
-sha1sums_x86_64=('27be177b769d1f40cdd2628ebb6961279d7f2762')
+sha1sums_x86_64=('c11cdba8675c129142e9cb2fb3451b61f8f67320')
 
 package() {
   install -Dm755 git-ignore "$pkgdir/usr/bin/git-ignore"
