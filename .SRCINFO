@@ -1,7 +1,7 @@
 pkgbase = tcl85-static
 	pkgdesc = The Tcl scripting language, 8.5 series
 	pkgver = 8.5.19
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tcl.sourceforge.net/
 	arch = i686
 	arch = x86_64

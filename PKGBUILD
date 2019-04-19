@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 pkgname=tcl85-static
 pkgver=8.5.19
-pkgrel=1
+pkgrel=2
 pkgdesc="The Tcl scripting language, 8.5 series"
 arch=('i686' 'x86_64')
 url="http://tcl.sourceforge.net/"
@@ -20,11 +20,6 @@ build() {
 	./configure --prefix=/opt/tcl85-static --mandir=/opt/tcl85-static/share/man --enable-threads --disable-shared $BIT
 	
 	make
-}
-
-check() {
-	cd ${srcdir}/tcl${pkgver}/unix
-	make test
 }
 
 package()
