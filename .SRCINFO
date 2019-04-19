@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-libgtop
+	pkgdesc = A library for collecting system monitoring data
+	pkgver = 2.40.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/libgtop
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = gtk-doc
+	depends = mingw-w64-glib2
+	depends = mingw-w64-libxau
+	options = !libtool
+	options = !strip
+	options = !buildflags
+	options = !makeflags
+	source = git+https://gitlab.gnome.org/GNOME/libgtop.git#commit=abccaf488a929de1e95e6a748485575dec52c998
+	sha256sums = SKIP
+
+pkgname = mingw-w64-libgtop
+
