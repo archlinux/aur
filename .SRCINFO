@@ -1,7 +1,7 @@
 pkgbase = webdis
 	pkgdesc = REST server for Redis data
-	pkgver = 0.1.4
-	pkgrel = 2
+	pkgver = 0.1.5
+	pkgrel = 1
 	url = https://webd.is/
 	install = webdis.install
 	arch = x86_64
