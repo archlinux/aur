@@ -1,14 +1,14 @@
 # Maintainer: Matthias De Bie <mattydebie@gmail.com>
 pkgname=bitwarden-rofi-git
-pkgver=VERSION
+pkgver=0.3.r3.8eda64d
 pkgrel=1
 pkgdesc="Wrapper for Bitwarden bitwarden/cli and Rofi"
 arch=('any')
 url="https://github.com/mattydebie/bitwarden-rofi"
 license=('GPL3')
-depends=('rofi' 'jq' 'bitwarden-cli' 'xdotool')
+depends=('rofi' 'jq' 'bitwarden-cli')
 makedepends=('git')
-optdepends=('xsel: copy to clipboard' 'xclip: copy to clipboard')
+optdepends=('xsel: copy to clipboard' 'xclip: copy to clipboard' 'wl-clipboard' 'xdotool')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=("${pkgname%-git}")
