@@ -1,0 +1,23 @@
+pkgbase = st-luke-git
+	pkgdesc = Simple virtual terminal emulator for X
+	pkgver = 0.8.1.r1048
+	pkgrel = 1
+	epoch = 1
+	url = http://st.suckless.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	makedepends = libxext
+	makedepends = git
+	depends = libxft
+	provides = st-luke
+	provides = st
+	conflicts = st-luke
+	conflicts = st
+	options = zipman
+	source = st-luke::git+https://github.com/LukeSmithxyz/st.git
+	sha256sums = SKIP
+
+pkgname = st-luke-git
+
