@@ -1,7 +1,7 @@
 pkgbase = git-ignore-bin
         pkgdesc = Quickly and easily list and fetch .gitignore templates from www.gitignore.io
         pkgver = 1.0.0
-        pkgrel = 3
+        pkgrel = 4
         url = https://github.com/sondr3/git-ignore
         arch = x86_64
         license = GPL3
