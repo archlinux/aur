@@ -10,7 +10,7 @@ pkgbase = nodejs-gatsby-cli
 	depends = nodejs
 	noextract = gatsby-cli-2.5.9.tgz
 	source = https://registry.npmjs.org/gatsby-cli/-/gatsby-cli-2.5.9.tgz
-	md5sums = 77158e4a330ca90627ae55daea76b6dc
+	md5sums = b530a86caea2f853aa023b9adf1c7409
 
 pkgname = nodejs-gatsby-cli
 
