@@ -1,7 +1,7 @@
 # Maintainer: Tom <reztho@archlinux.org>
 # Based on a contribution of: bitwave
 pkgname=textadept
-pkgver=9.6
+pkgver=10.3
 pkgrel=1
 pkgdesc="A fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('mercurial' 'wget' 'unzip')
 provides=("$pkgname")
 conflicts=('textadept-bin')
 replaces=('textadept-bin')
-source=("hg+http://foicica.com/hg/textadept#revision=ee3f0315e62d"
+source=("hg+http://foicica.com/hg/textadept#revision=e7c3dfab62a7"
         "http://foicica.com/textadept/download/textadept_${pkgver}.modules.zip")
 
 build() {
@@ -29,7 +29,6 @@ build() {
   unset CXXFLAGS
   unset CFLAGS
   make deps
-  install -m644 "$srcdir/$pkgname/src/lua.sym" "$srcdir/$pkgname/src/luajit/src/lua.sym"
   make
   make curses
 }
@@ -54,4 +53,4 @@ package() {
 }
 
 md5sums=('SKIP'
-         '98c1dac04082c0a0f784c8a86e1662f9')
+         'e8e2b0c5323fafb9802969f207ce5ff6')
