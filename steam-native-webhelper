@@ -1,0 +1,10 @@
+#!/bin/bash
+
+WEBHELPER_SHA256=($(sha256sum "$HOME/.local/share/Steam/ubuntu12_64/steamwebhelper.sh"))
+WEBHELPER_SHA256="${WEBHELPER_SHA256[0]}"
+
+if [[ $WEBHELPER_SHA256 == "f60cb3818ca4cb716a8adf09ed7f1454aa6cdf775d8321f6ab1944db424d8790" ]]; then
+	cp /usr/lib/steam/steamwebhelper.sh.override "$HOME/.local/share/Steam/ubuntu12_64/steamwebhelper.sh"
+fi
+
+exec steam-native "$@"
