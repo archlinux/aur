@@ -1,0 +1,28 @@
+pkgbase = uboot-rockpro64
+	pkgdesc = U-Boot for RockPro64
+	pkgver = 2019.04
+	pkgrel = 1
+	url = http://www.denx.de/wiki/U-Boot/WebHome
+	install = uboot-rockpro64.install
+	arch = aarch64
+	license = GPL
+	makedepends = bc
+	makedepends = git
+	makedepends = rockchip-tools
+	backup = boot/boot.txt
+	backup = boot/boot.scr
+	source = ftp://ftp.denx.de/pub/u-boot/u-boot-2019.04.tar.bz2
+	source = git+https://github.com/rockchip-linux/rkbin.git#commit=587600675cb8cc77d559e9c506d250ce17d9e2b1
+	source = rk3399trust.ini
+	source = boot.txt
+	source = mkscr
+	source = 0001-board-rockchip-rk3399-add-Rockpro64-board-support.patch
+	sha256sums = 76b7772d156b3ddd7644c8a1736081e55b78828537ff714065d21dbade229bef
+	sha256sums = SKIP
+	sha256sums = dd5c56c6957f670e7e52d145aa66238b17a54edd87b787bfda050abb1d22d2db
+	sha256sums = d7e5c78aac58f0628405de70f92c72c3281bb3d8bb8cfe005644edaa2086ab50
+	sha256sums = a4fc8b6b92bc364d6542670d294aa618a8501fb8729f415cc0a3eed776ef0c8e
+	sha256sums = 2c0ac7700c589d030aa810bff1c9dbea2c71d4a8e09d03632a6627b59464ff35
+
+pkgname = uboot-rockpro64
+
