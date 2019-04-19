@@ -3,7 +3,6 @@ pkgbase = carla-bridges
 	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://kxstudio.sf.net/carla
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
