@@ -1,7 +1,7 @@
 # Maintainer: Oirio Joshi <joshirio@protonmail.com>
 pkgname=megacmd-bin
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="MEGA Command Line Interactive and Scriptable Application"
 arch=('x86_64')
 url="http://mega.nz/cmd"

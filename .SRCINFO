@@ -1,7 +1,7 @@
 pkgbase = megacmd-bin
 	pkgdesc = MEGA Command Line Interactive and Scriptable Application
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = http://mega.nz/cmd
 	arch = x86_64
 	license = custom
