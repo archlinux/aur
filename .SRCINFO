@@ -1,0 +1,45 @@
+pkgbase = linux-asus-aura
+	pkgver = 5.0.7.arch1
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = libelf
+	options = !strip
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.0.7-arch1
+	source = config
+	source = config.x86_64
+	source = linux-asus-aura.preset
+	source = patch.diff
+	sha256sums = SKIP
+	sha256sums = fd9bdf18b05c412eea4714e275fb5635c1177199b8140f29800150474921d737
+	sha256sums = 465c4495bec3741ac3099ff5a1332eb842a3583369daaf89e520402259a5070b
+	sha256sums = 95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7
+	sha256sums = d764703db8e24d52ed91ff842f7959cf2ffaa46d755e26d859a131d1f08c681f
+
+pkgname = linux-asus-aura
+	pkgdesc = The Linux kernel and modules (arch version with aura sync i2c patch)
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux
+	backup = etc/mkinitcpio.d/linux-asus-aura.preset
+
+pkgname = linux-asus-aura-headers
+	pkgdesc = Header files and scripts for building modules for Linux kernel (arch version with aura sync i2c patch)
+	provides = linux-headers
+
+pkgname = linux-asus-aura-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (arch version with aura sync patch)
+	provides = linux-docs
+
