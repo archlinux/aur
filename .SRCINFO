@@ -1,0 +1,24 @@
+pkgbase = vserver-git
+	pkgdesc = Simple HTTP server made in vala
+	pkgver = r52.74b3e3b
+	pkgrel = 1
+	url = https://github.com/bcedu/ValaSimpleHTTPServer
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = gtk3
+	depends = granite
+	depends = glib2
+	depends = libsoup
+	depends = libgee
+	provides = ValaSimpleHTTPServer
+	conflicts = ValaSimpleHTTPServer
+	source = git+https://github.com/bcedu/ValaSimpleHTTPServer.git
+	md5sums = SKIP
+
+pkgname = vserver-git
+
