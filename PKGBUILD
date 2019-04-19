@@ -1,5 +1,5 @@
 # Maintainer: Ultracoolguy <dummyd241 at gmaildotcom>
-pkgname="switch-lan-play-git"
+pkgname="switch-lan-play"
 pkgver=v0.1.0.r4.f62bf0c
 pkgrel=1.2
 epoch=0

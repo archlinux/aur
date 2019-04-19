@@ -1,4 +1,4 @@
-pkgbase = switch-lan-play-git
+pkgbase = switch-lan-play
 	pkgdesc = A program for connecting to fanmade Nintendo Switch servers--see url for more info
 	pkgver = v0.1.0.r4.f62bf0c
 	pkgrel = 1.2
@@ -10,5 +10,5 @@ pkgbase = switch-lan-play-git
 	source = switch-lan-play::git+https://github.com/spacemeowx2/switch-lan-play.git
 	md5sums = SKIP
 
-pkgname = switch-lan-play-git
+pkgname = switch-lan-play
 
