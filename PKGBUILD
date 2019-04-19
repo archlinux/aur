@@ -2,12 +2,18 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 
-# noudev: udev support is only kept in initramfs
+# noudev changes:
+# - disable eudev dependency
+# - disable udev in _CONFIGUREOPTS
+# - explicitly disable all udev options when building lvm2
+# - enable options only for udev rules
+# - add 'provides' and 'conflicts' fields for packages
+# - lvm2_hook: add vgchange command
 
 pkgbase=lvm2-noudev
 pkgname=('lvm2-noudev' 'device-mapper-noudev')
-pkgver=2.02.183
-pkgrel=2
+pkgver=2.02.184
+pkgrel=4
 arch=('x86_64')
 url='https://sourceware.org/lvm2/'
 license=('GPL2' 'LGPL2.1')
@@ -21,7 +27,7 @@ source=("git+https://sourceware.org/git/lvm2.git#tag=v${pkgver//./_}?signed"
         '11-dm-initramfs.rules')
 sha256sums=('SKIP'
             'cc51940a8437f3c8339bb9cec7e929b2cc0852ffc8a0b2463e6f67ca2b9950f6'
-            '97d7c92e4954bc0108e7cd183b2eb5fe7ecc97e6f56369669e6537cb6ed45d80'
+            '2ecaabfa13dd09d0e3d7b3439147fbd93e3c87a418b676fa55647f9319ada667'
             'e10f24b57582d6e2da71f7c80732a62e0ee2e3b867fe84591ccdb53e80fa92e0')
 
 build() {
@@ -78,7 +84,7 @@ package_device-mapper-noudev() {
 
 package_lvm2-noudev() {
   pkgdesc="Logical Volume Manager 2 utilities"
-  depends=('bash' "device-mapper>=${pkgver}" 'libutil-linux' 'readline' 'thin-provisioning-tools')
+  depends=('bash' "device-mapper>=${pkgver}" 'libeudev' 'libutil-linux' 'readline' 'thin-provisioning-tools')
   conflicts=('lvm' 'mkinitcpio<0.7' 'lvm2')
   provides=('lvm2')
   backup=('etc/lvm/lvm.conf'

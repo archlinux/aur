@@ -5,6 +5,9 @@ run_earlyhook() {
     lvmetad
 }
 
+run_hook() {
+    lvm vgchange -a y
+}
 # We are suffering a race condition in non-systemd initramfs: If lvmetad is
 # killed before pvscan processes finish we have stale processes and
 # uninitialized physical volumes. So wait for pvscan processes to finish.
