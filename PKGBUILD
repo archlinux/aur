@@ -21,11 +21,11 @@ depends=(
         'v4l-utils' 'vid.stab' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so'
         'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
         'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth' 'libxv' 'libx11'
-        'libxext' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
+        'libxext' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau' 'dav1d'
     # AUR:
-        'chromaprint-fftw' 'codec2' 'dav1d-git' 'davs2' 'flite1-patched' 'libilbc'
+        'chromaprint-fftw' 'codec2' 'davs2' 'flite1-patched' 'libilbc'
         'libklvanc-git' 'kvazaar' 'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc'
-        'xavs' 'xavs2' 'ndi-sdk' 'libmysofa-git'
+        'xavs' 'xavs2' 'libmysofa-git'
 )
 makedepends=(
     # official repositories:
@@ -61,15 +61,12 @@ pkgver() {
 build() {
     cd "$_srcname"
     
-    # set x86_64 specific options
-
     printf '%s\n' '  -> Running ffmpeg configure script...'
     
     ./configure \
         --prefix='/usr' \
         --extra-cflags="$_cflags" \
         --extra-ldflags="$_ldflags" \
-        \
         --disable-rpath \
         --enable-gpl \
         --enable-version3 \
@@ -79,7 +76,6 @@ build() {
         --disable-stripping \
         --enable-gray \
         --enable-avresample \
-        \
         --enable-alsa \
         --enable-avisynth \
         --enable-bzlib \
@@ -162,7 +158,6 @@ build() {
         --enable-libzvbi \
         --enable-lv2 \
         --enable-lzma \
-        --enable-libndi_newtek \
         --disable-mbedtls \
         --enable-libmysofa \
         --enable-openal \
@@ -174,7 +169,6 @@ build() {
         --enable-vapoursynth \
         --enable-xlib \
         --enable-zlib \
-        \
         --enable-libdrm \
         --enable-omx \
         --enable-omx-rpi \
