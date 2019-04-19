@@ -3,8 +3,8 @@
 
 pkgname=monodevelop-stable-bin
 _pkgname=monodevelop
-pkgver=7.8.0.1471
-pkgrel=2
+pkgver=7.8.3.2
+pkgrel=1
 pkgdesc="An IDE primarily designed for C# and other .NET languages"
 arch=('x86_64' 'i686')
 url="http://www.monodevelop.com"
@@ -17,7 +17,7 @@ conflicts=('monodevelop')
 options=(!makeflags)
 optdepends=('xsp: To run ASP.NET pages directly from monodevelop')
 source=(https://github.com/TechtonicSoftware/archlinux-monodevelop-stable-bin/archive/$pkgver.tar.gz)
-sha256sums=('7b5f25141d5a483b3ab33fbe8832e9d8adbf58d74107da765aa17b2bf3c4f833')
+sha256sums=('34a2bda34c14070b7568861b5c67c4d7c77994fbc7ab9007e8dc377d59e06094')
 
 package() {
     cp -R "$srcdir/archlinux-$pkgname-$pkgver/usr" "$pkgdir";
