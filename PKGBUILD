@@ -2,7 +2,7 @@
 
 pkgname='lego-git'
 _pkgname="${pkgname%-git}"
-pkgver=r788.55572c26
+pkgver=r798.f0cfdff3
 pkgrel=1
 pkgdesc='Lets Encrypt client and ACME library written in Go (master branch / unstable)'
 url='https://go-acme.github.io/lego/'
