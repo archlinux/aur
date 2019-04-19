@@ -1,0 +1,5 @@
+post_install() {
+    cat <<EOF
+For shell integration, add "source /usr/share/funky/funky.sh" to your .zshrc or .bashrc.
+EOF
+}
