@@ -10,8 +10,8 @@ url="https://gitlab.gnome.org/GNOME/libgtop"
 arch=(x86_64)
 license=(LGPL)
 options=('!libtool' '!strip' '!buildflags' '!makeflags')
-depends=(mingw-w64-glib2 mingw-w64-libxau)
-makedepends=(gobject-introspection git gtk-doc)
+depends=(mingw-w64-glib2)
+makedepends=(gobject-introspection git)
 _commit=abccaf488a929de1e95e6a748485575dec52c998  # tags/2.40.0^0
 source=("git+https://gitlab.gnome.org/GNOME/libgtop.git#commit=$_commit")
 sha256sums=('SKIP')
@@ -44,7 +44,7 @@ build() {
     pushd "build-${_arch}"
 
     ${_arch}-configure . --prefix=/usr --sysconfdir=/etc \
-        --localstatedir=/var --disable-static --enable-gtk-doc
+        --localstatedir=/var --disable-static
     make
 
     popd
