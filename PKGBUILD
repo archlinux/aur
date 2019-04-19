@@ -12,7 +12,7 @@ url="https://www.waterfoxproject.org/"
 depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
          'nss>=3.34' 'hunspell' 'sqlite' 'ttf-font' 'icu' 'kwaterfoxhelper' 'nspr>=4.15' 'hicolor-icon-theme' 'jemalloc')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf' 'inetutils' 'xorg-server-xvfb'
-             'autoconf2.13' 'rust<=1:1.32.0-2' 'clang' 'llvm')
+             'autoconf2.13' 'rust' 'clang' 'llvm')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -141,14 +141,17 @@ ac_add_options --disable-webrtc
 # If you want to have gamepad support, comment this line:
 ac_add_options --disable-gamepad
 
+ac_add_options --disable-stylo # you can comment this if you've rust<=1.33
+
 # Enable wanted features
 ac_add_options --enable-jemalloc
-ac_add_options --enable-stylo=build
+#ac_add_options --enable-stylo=build # you can enable it if you've rust<=1.33
 ac_add_options --with-pthreads
 ac_add_options --enable-strip
 ac_add_options --enable-startup-notification
 ac_add_options --enable-release
-ac_add_options --enable-rust-simd # on x86 requires SSE2
+#ac_add_options --enable-rust-simd # you can enable it if you've rust<=1.33
+
 ac_add_options --enable-application=browser
 ac_add_options --enable-eme=widevine
 
