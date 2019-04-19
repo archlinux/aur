@@ -1,6 +1,6 @@
 pkgbase = pic32prog
 	pkgdesc = Flash programming utility for Microchip PIC32 microcontrollers
-	pkgver = 2.0.147
+	pkgver = 2.0.204
 	pkgrel = 1
 	url = https://github.com/sergev/pic32prog
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = pic32prog
 	provides = pic32prog-svn
 	conflicts = pic32prog-git
 	conflicts = pic32prog-svn
-	source_x86_64 = https://github.com/sergev/pic32prog/raw/master/linux64/pic32prog
-	sha512sums_x86_64 = 1804f21388b20e92d04830d12a76b5ce9413202ba067c08b4d902e761f22754ae3bf5ab6ffc45483f6f13334a58d2e4f9b28229e0b66523c84986f0c17155f27
+	source_x86_64 = https://github.com/sergev/pic32prog/raw/e5258f410c2757d6e4952cecc825d63a3c22adb6/linux64/pic32prog
+	sha512sums_x86_64 = b8d9a775cd61ed9cea8e079a8f0d0ae58dacde93a380895c2024bcc79bec19688a67678fefde1d2f538baaf261ae85c9c7d805b84c70facf9e003602866b9a15
 
 pkgname = pic32prog
 
