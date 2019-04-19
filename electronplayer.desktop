@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=ElectronPlayer
+GenericName=ElectronPlayer
+Comment=Web Video Player
+Exec=electronplayer %u
+Icon=electronplayer.xpm
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Network;Application
+StartupWMClass=ElectronPlayer
