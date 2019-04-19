@@ -24,7 +24,7 @@ source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
 sha256sums=('76b7772d156b3ddd7644c8a1736081e55b78828537ff714065d21dbade229bef'
 	    'SKIP'
 	    'dd5c56c6957f670e7e52d145aa66238b17a54edd87b787bfda050abb1d22d2db'
-	    'd7e5c78aac58f0628405de70f92c72c3281bb3d8bb8cfe005644edaa2086ab50'
+	    '5698bcfbf2fca73daff77d1ca490ce187b65a8b574c7500ea63a9ffd0e6d28e1'
 	    'a4fc8b6b92bc364d6542670d294aa618a8501fb8729f415cc0a3eed776ef0c8e'
 	    '2c0ac7700c589d030aa810bff1c9dbea2c71d4a8e09d03632a6627b59464ff35')
 

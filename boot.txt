@@ -11,7 +11,7 @@ if load ${devtype} ${devnum}:${bootpart} ${kernel_addr_r} /boot/Image; then
   if load ${devtype} ${devnum}:${bootpart} ${fdt_addr_r} /boot/dtbs/${fdtfile}; then
     fdt addr ${fdt_addr_r}
     fdt resize
-    fdt set /ethernet@ff540000 local-mac-address "[${macaddr}]"
+    fdt set /ethernet@fe300000 local-mac-address "[${macaddr}]"
     if load ${devtype} ${devnum}:${bootpart} ${ramdisk_addr_r} /boot/initramfs-linux.img; then
       # This upstream Uboot doesn't support compresses cpio initrd, use kernel option to
       # load initramfs
