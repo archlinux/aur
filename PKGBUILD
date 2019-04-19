@@ -1,9 +1,9 @@
 # $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=jdk11-openj9-bin
-_openj9ver=0.12.1
-_majorver=11.0.2
-_buildver=9_openj9-${_openj9ver}
+_openj9ver=0.14.0
+_majorver=11.0.3
+_buildver=7_openj9-${_openj9ver}
 pkgver=${_majorver}b${_buildver//-/_}
 pkgrel=1
 pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk11"
@@ -19,8 +19,8 @@ provides=(
   "java-runtime-headless=11"
   "java-runtime-headless-openjdk=11"
 )
-source=("https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-${_majorver}%2B${_buildver}/OpenJDK11U-jdk_x64_linux_openj9_${_majorver}_${_buildver}_openj9-${_openj9ver}.tar.gz")
-sha256sums=('a9b298391dc0baf49e935683fb13b1b18ef5fd5b1d0e1a1318c8e425ffdbcbcd')
+source=("https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-${_majorver}%2B${_buildver}/OpenJDK11U-jdk_x64_linux_openj9_${_majorver}_${_buildver}.tar.gz")
+sha256sums=('7012edd56fc958070bc4747073de14ea08eb43081eb6ea19bdbf4763186e2d17')
 
 _jvmdir=usr/lib/jvm/java-11-j9
 
