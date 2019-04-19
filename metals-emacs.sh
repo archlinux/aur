@@ -2,4 +2,4 @@
 
 set -e
 
-_METALS_CLIENT=emacs metals-client $@
+_METALS_CLIENT=emacs metals-client "$@"
