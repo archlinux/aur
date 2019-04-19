@@ -40,8 +40,7 @@ function ensure_java_8 {
                 fi
             fi
         done
-        echo 'Unable to find local Java 8 Runtime. This is probably a bug with the Arch Linux launcher script. Please report it at https://aur.archlinux.org/packages/metals' 1>&2
-        exit 1
+        echo 'Unable to find a Java 8 environment with certainty. Attempt to use the current environment.' 1>&2
     fi
 }
 
