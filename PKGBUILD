@@ -11,14 +11,14 @@
 pkgbase=linux-asus-aura
 _srcver=5.0.7-arch1
 pkgver=${_srcver//-/.}
-_srcname=archlinux-linux
+_srcname=5.0.7-arch1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
-source=("$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=v$_srcver"
+source=("https://git.archlinux.org/linux.git/snapshot/$_srcver.tar.gz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk

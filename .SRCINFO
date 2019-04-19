@@ -13,7 +13,7 @@ pkgbase = linux-asus-aura
 	makedepends = git
 	makedepends = libelf
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.0.7-arch1
+	source = https://git.archlinux.org/linux.git/snapshot/5.0.7-arch1.tar.gz
 	source = config
 	source = config.x86_64
 	source = linux-asus-aura.preset
