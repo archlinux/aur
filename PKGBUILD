@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tpm2-tss-engine-git
 pkgver=1.0.0.r8.a063e24
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenSSL engine for Trusted Platform Module 2.0 devices'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-tss-engine'
@@ -23,6 +23,10 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname%-git}"
+
+	# https://github.com/tpm2-software/tpm2-tss-engine/issues/106
+	git cherry-pick --no-commit 4c770f836c916abe968901ff9f06bb611812cb4a
+
 	autoreconf --install --force
 }
 
