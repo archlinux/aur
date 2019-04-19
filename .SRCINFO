@@ -1,0 +1,16 @@
+pkgbase = kr-bin
+	pkgdesc = SSH using a key stored in Krypton (binary)
+	pkgver = 2.4.13
+	pkgrel = 1
+	url = https://github.com/kryptco/kr
+	arch = x86_64
+	license = custom
+	provides = kr
+	conflicts = kr
+	source = https://kryptco.github.io/yum/kr-2.4.13-1.el7.centos.x86_64.rpm
+	source = https://github.com/kryptco/kr/blob/2.4.13/LICENSE
+	sha256sums = e808ce3dbbe8ba80158c86c9e5b6dcb7834445024cb7f3369c95cdf70d077d6b
+	sha256sums = 6f2395d5afc6d8dbadacb7aa8415089b414ad1e86df5bb070b82ed95e89d808d
+
+pkgname = kr-bin
+
