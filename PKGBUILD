@@ -1,6 +1,6 @@
 # Maintainer: nroi <nroi@mailbox.org>
 pkgname=cpcache-git
-pkgver=r299.0e7405b
+pkgver=r340.546868c
 pkgrel=1
 pkgdesc="central pacman cache"
 arch=('x86_64')
@@ -27,7 +27,7 @@ pkgver() {
 
 package() {
   TMP="$(mktemp -d)"
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${srcdir}/${pkgname%-git}/cpcache"
   HOME="$TMP" /usr/bin/mix local.hex --force
   HOME="$TMP" /usr/bin/mix local.rebar --force
   HOME="$TMP" /usr/bin/mix deps.get
@@ -36,10 +36,10 @@ package() {
   mkdir -p "${pkgdir}/var/lib/${pkgname%-git}"
   mkdir -p "${pkgdir}/etc/cpcache"
   cd "${pkgdir}/usr/share/${pkgname%-git}"
-  tar xf "${srcdir}/${pkgname%-git}/_build/prod/rel/${pkgname%-git}/releases/0.1.0/${pkgname%-git}.tar.gz"
+  tar xf "${srcdir}/${pkgname%-git}/cpcache/_build/prod/rel/${pkgname%-git}/releases/0.1.0/${pkgname%-git}.tar.gz"
   ln -s "/var/lib/${pkgname%-git}" var
   install -Dm644 "${srcdir}/cpcache.service" "${pkgdir}/usr/lib/systemd/system/cpcache.service"
   install -Dm644 "${srcdir}/sysuser.conf" "${pkgdir}/usr/lib/sysusers.d/cpcache.conf"
-  install -Dm644 "${srcdir}/cpcache/conf/cpcache.toml" "${pkgdir}/etc/cpcache/cpcache.toml"
+  install -Dm644 "${srcdir}/cpcache/cpcache/conf/cpcache.toml" "${pkgdir}/etc/cpcache/cpcache.toml"
   rm -rf "$TMP"
 }
