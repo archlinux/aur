@@ -1,18 +1,20 @@
 pkgbase = nordvpn-bin
 	pkgdesc = NordVPN CLI tool for Linux
-	pkgver = 2.2.0_3
+	pkgver = 3.0.0_4
 	pkgrel = 1
 	url = https://nordvpn.com/download/linux/
+	install = nordvpn-bin.install
 	arch = x86_64
 	license = custom
 	depends = net-tools
 	depends = libxslt
 	depends = iptables
 	depends = procps
+	depends = iproute2
 	provides = nordvpn
 	conflicts = openvpn-nordvpn
-	source = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_2.2.0-3_amd64.deb
-	sha256sums = 84fbb3cf9c4c73f3158987e51ea7e9a73bac2ec4e0bafaecec70997bdee07763
+	source = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.0.0-4_amd64.deb
+	sha256sums = a4a9602a9ecc1b29eb4ef9667993bd68999f42fc1962588951845a797d31ecfa
 
 pkgname = nordvpn-bin
 

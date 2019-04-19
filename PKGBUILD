@@ -3,26 +3,23 @@
 # Maintainer: Martoko <mbastholm at gmail dot com>
 
 pkgname=nordvpn-bin
-pkgver=2.2.0_3
+pkgver=3.0.0_4
 pkgrel=1
 pkgdesc="NordVPN CLI tool for Linux"
 arch=('x86_64')
 url="https://nordvpn.com/download/linux/"
 license=('custom')
-depends=('net-tools' 'libxslt' 'iptables' 'procps')
+depends=('net-tools' 'libxslt' 'iptables' 'procps' 'iproute2')
 provides=('nordvpn')
 conflicts=('openvpn-nordvpn')
+install=nordvpn-bin.install
 source=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_amd64.deb")
-sha256sums=('84fbb3cf9c4c73f3158987e51ea7e9a73bac2ec4e0bafaecec70997bdee07763')
+sha256sums=('a4a9602a9ecc1b29eb4ef9667993bd68999f42fc1962588951845a797d31ecfa')
 
 package() {
     bsdtar -O -xf "nordvpn_${pkgver//_/-}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
 
-    mv "${pkgdir}/usr/sbin/nordvpnd" "${pkgdir}/usr/bin"
+    mv "${pkgdir}/usr/sbin/nordvpnsd" "${pkgdir}/usr/bin"
+    mv "${pkgdir}/usr/sbin/nordvpnud" "${pkgdir}/usr/bin"
     rm -r "${pkgdir}/usr/sbin"
-
-    mkdir -p "${pkgdir}/usr/lib/systemd/system/"
-    mv "${pkgdir}/etc/systemd/system/nordvpnd.socket" "${pkgdir}/usr/lib/systemd/system/"
-    mv "${pkgdir}/etc/systemd/system/nordvpnd.service" "${pkgdir}/usr/lib/systemd/system/"
-    rm -r "${pkgdir}/etc"
 }
