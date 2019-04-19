@@ -4,7 +4,7 @@
 # Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 
 pkgname=tor-browser-dev
-pkgver=8.5a9
+pkgver=8.5a11
 _language='en-US'
 pkgrel=1
 pkgdesc="Tor Browser is +1 for privacy and -1 for mass surveillance"
@@ -28,9 +28,9 @@ source+=(${pkgname}.desktop
 sha256sums=('13d2e1fe85a9a08e9f66116f3c2d6f1e5d37e07d2ad8b08ae4f01890e864a722'
             '4f01e363738e36dc41ca431fbbf5a00b014dc37e2c9a3cfaf2ce182103a1d068'
             'ce19dd89a8ecd9289136f97f0122b7301bdda9bcf0208f4277817e23ea9a95d8')
-sha256sums_i686=('7cf7066c6836fc0a6e07ce1c1ebcc21730d1cf986f0627a083a604b6c0227227'
+sha256sums_i686=('190e2969d2e485372592348223d1109cf0778a77a018a6f15b70ca00d215c233'
                  'SKIP')
-sha256sums_x86_64=('c6af3cc69ef18498853cae5447e6d6f89fa43fbf7f6a846bb960971b2c8a04b1'
+sha256sums_x86_64=('5b9d7d93d9ac4612b74c3e95f4ae94b8faa2329d6409e90a633dcb9516090db5'
                    'SKIP')
 validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290'
 	      'A4300A6BC93C0877A4451486D1483FA6C3C07136')
