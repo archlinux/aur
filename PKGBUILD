@@ -16,6 +16,7 @@ source=(
   "file://run"
   "file://${pkgname}.desktop"
 )
+noextract=('ThunderMini_dl1.5.3.288.exe')
 
 prepare() {
   cd "${srcdir}"
