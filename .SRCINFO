@@ -1,6 +1,6 @@
 pkgbase = mruby
 	pkgdesc = Lightweight Ruby
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/mruby/mruby
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = mruby
 	makedepends = ruby
 	depends = readline
 	options = staticlibs
-	source = mruby-2.0.0.zip::https://github.com/mruby/mruby/archive/2.0.0.zip
-	sha1sums = da5932fa902885bc97edb2dde694a331313d35b1
+	source = mruby-2.0.1.zip::https://github.com/mruby/mruby/archive/2.0.1.zip
+	sha1sums = 571fd2d57d158bb8c592c87a0fd9f1c1c1d36b40
 
 pkgname = mruby
 
