@@ -4,29 +4,40 @@
 pkgbase=sentry
 pkgname=('sentry')
 pkgver=9.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python-based realtime logging and aggregation server."
 arch=(any)
 url="http://pypi.python.org/pypi/sentry"
 license=(BSD)
 makedepends=(
     'clang'
+    'llvm'
     'python2-pip'
     'python2-setuptools'
     'python2-virtualenv'
 )
 install='sentry.install'
+
 depends=(
     'jansson'
     'libjpeg-turbo'
     'libxml2'
     'libxslt'
-    'llvm'
     'ncurses5-compat-libs'
     'python2'
-    'postgresql'
-    'redis'
+    'postgresql-libs'
 )
+
+# Redis is declared in the `optdepends` array because it is a "soft"
+# dependency. sentry-celery requires it for background task processing and
+# pub/sub, but it need not run on the same server as Sentry. As of 9.1.0-2,
+# Redis has been removed from `depends` to ease the dependency requiresments
+# of users running Sentry on a separate server or container.
+optdepends=(
+    'minio: self-hosted S3-compatible file storage backend'
+    'redis: required by sentry-celery but need not run on the same server'
+)
+
 options=(!strip)
 source=(
     "sentry.install"
