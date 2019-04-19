@@ -1,6 +1,6 @@
 pkgbase = jre
 	pkgdesc = Oracle Java Runtime Environment
-	pkgver = 12
+	pkgver = 12.0.1
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	install = jre.install
@@ -31,8 +31,8 @@ pkgbase = jre
 	backup = etc/java12-jre/logging.properties
 	backup = etc/java12-jre/net.properties
 	backup = etc/java12-jre/sound.properties
-	source = https://download.oracle.com/otn-pub/java/jdk/12+33/312335d836a34c7c8bba9d963e26dc23/jdk-12_linux-x64_bin.tar.gz
-	sha256sums = 183d4d897bbf47bdae43b2bb4fc0465a9178209b5250555ac7fdb8fab6cc43a6
+	source = https://download.oracle.com/otn-pub/java/jdk/12.0.1+12/69cfe15208a647278a19ef0990eea691/jdk-12.0.1_linux-x64_bin.tar.gz
+	sha256sums = 9fd6dcdaf2cfca7da59e39b009a0f5bcd53bec2fb16105f7ca8d689cdab68d75
 
 pkgname = jre
 
