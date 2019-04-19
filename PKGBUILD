@@ -4,16 +4,14 @@ pkgname='pic32prog'
 _gitname="${pkgname}"
 _gitbranch='master'
 _gitauthor='sergev'
-pkgver=2.0.147
+pkgver=2.0.204
 pkgrel=1
 pkgdesc="Flash programming utility for Microchip PIC32 microcontrollers"
 url="https://github.com/${_gitauthor}/${_gitname}"
 license=('GPL')
-source_x86_64=("https://github.com/${_gitauthor}/${_gitname}/raw/master/linux64/${pkgname}")
-source_i686=("https://github.com/${_gitauthor}/${_gitname}/raw/master/linux32/${pkgname}")
-sha512sums_x86_64=('1804f21388b20e92d04830d12a76b5ce9413202ba067c08b4d902e761f22754ae3bf5ab6ffc45483f6f13334a58d2e4f9b28229e0b66523c84986f0c17155f27')
-sha512sums_i686=('')
-arch=('x86_64') # arch=('i686' 'x86_64')
+source_x86_64=("https://github.com/${_gitauthor}/${_gitname}/raw/e5258f410c2757d6e4952cecc825d63a3c22adb6/linux64/${pkgname}")
+sha512sums_x86_64=('b8d9a775cd61ed9cea8e079a8f0d0ae58dacde93a380895c2024bcc79bec19688a67678fefde1d2f538baaf261ae85c9c7d805b84c70facf9e003602866b9a15')
+arch=('x86_64')
 depends=('libusb' 'libusb-compat')
 # makedepends=('git')
 optdepends=('ejtagproxy-git: GDB for PIC32'
@@ -29,8 +27,8 @@ pkgver() {
 
 package() {
   cd "${srcdir}/"
-  mkdir -p "${pkgdir}/usr/local/bin/"
-  cp "${srcdir}/pic32prog" "${pkgdir}/usr/local/bin/"
+  mkdir -p "${pkgdir}/usr/bin/"
+  cp "${srcdir}/pic32prog" "${pkgdir}/usr/bin/"
 }
 
 # vim:set et sw=2 sts=2 tw=80:
