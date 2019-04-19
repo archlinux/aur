@@ -50,7 +50,7 @@ build() {
   for _arch in "${_architectures[@]}"; do
     pushd "build-${_arch}"
 
-    ${_arch}-configure --prefix=/usr --sysconfdir=/etc \
+    ${_arch}-configure --prefix=/usr \
         --localstatedir=/var --disable-static .
     make
 
