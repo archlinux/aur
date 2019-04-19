@@ -31,6 +31,7 @@ source=("git+https://github.com/freenet/fred.git${_fred}"
         "git+https://github.com/freenet/plugin-WebOfTrust.git${_wot}"
         "IpToCountry.dat::http://software77.net/geo-ip/?DL=4"
         "https://github.com/freenet/seedrefs/files/1609768/seednodes.zip"
+        '0001-strip-non-compile-deps.patch'
         'run.sh' 'freenet.service' 'freenet.ini' 'wrapper.config')
 
 sha256sums=('SKIP'
@@ -39,6 +40,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '0d91d2462f36d35235cc86cbdee11890cadec91a0a01b89d96010924f6c2be99'
+            'd3d2f43e2bdaa93bfaa60fa2c82f6b42fb50539db2ad48e03664b537a4aa8071'
             'a6581d33448c2989ef9f7e888e7e47a8784b0159e76bf8f6bc97eec1d7d55769'
             '434f67e2e86edb555b7dfb572a52d7ff719373989e1f1830f779bfccc678539f'
             'c0ce093a098d91dee6be294f8a2fc929aabad95612f994933194d0da5c4cdd25'
@@ -54,7 +56,8 @@ prepare() {
     cd "fred"
 
     # Gradle 5.3 and Java 11 support
-    git pull origin pull/657/head
+    git pull origin pull/658/head
+    git apply -v "$srcdir/0001-strip-non-compile-deps.patch"
 
     sed -i "$srcdir/plugin-WebOfTrust/build.xml" \
         -e 's:value="7":value="1.8":'
@@ -62,13 +65,14 @@ prepare() {
         -e 's:value="1.5":value="1.8":'
     sed -i "$srcdir/plugin-KeyUtils/build.xml" \
         -e 's:value="1.6":value="1.8":'
+    sed -i "gradle.properties" \
+        -e "s:targetJavaVersion.*:targetJavaVersion=$(javac -version 2>&1 |awk '{print $2}'):"
 }
 
 build() {
     cd "fred"
 
-    [[ -r "$HOME/.gradle" ]] ||
-        export GRADLE_USER_HOME="$srcdir"
+    export GRADLE_USER_HOME="$srcdir/.gradle"
 
     msg "Building Freenet..."
     gradle --no-build-cache copyRuntimeLibs
