@@ -3,7 +3,7 @@
 pkgname=gotify-server-bin
 _pkgname=gotify-server
 pkgver=2.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple server for sending and receiving messages'
 arch=('x86_64')
 url='https://github.com/gotify/server'
@@ -30,7 +30,7 @@ prepare() {
 
 package() {
   install -Dm755 gotify-linux-amd64 "${pkgdir}/usr/bin/${_pkgname}"
-  install -D config.example.yml "${pkgdir}/etc/gotify/config.yml"
+  install -Dm644 config.example.yml "${pkgdir}/etc/gotify/config.example.yml"
   install -Dm644 ${_pkgname}.service -t "${pkgdir}"/usr/lib/systemd/system/
   install -Dm644 ${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
   install -Dm644 ${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${_pkgname}.conf

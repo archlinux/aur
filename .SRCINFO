@@ -1,7 +1,7 @@
 pkgbase = gotify-server-bin
 	pkgdesc = A simple server for sending and receiving messages
 	pkgver = 2.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gotify/server
 	arch = x86_64
 	license = MIT
