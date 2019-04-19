@@ -1,0 +1,14 @@
+pkgbase = btcpayserver
+	pkgdesc = https://github.com/btcpayserver
+	pkgver = stable
+	pkgrel = 1
+	url = https://github.com/btcpayserver/btcpayserver
+	arch = any
+	license = MIT
+	makedepends = dotnet-sdk
+	source = https://github.com/btcpayserver/btcpayserver/archive/stable.tar.gz
+	validpgpkeys = DE08F924EEE93832DABC642CA8DC761B1C0C0CFC
+	sha256sums = SKIP
+
+pkgname = btcpayserver
+
