@@ -1,4 +1,8 @@
 */
 *.pkg*
 *.sw*
+*.zip
+*.tar*
 *.log
+*.patch
+*.deb
