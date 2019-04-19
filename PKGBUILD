@@ -2,8 +2,8 @@
 pkgname=comma-ide-community
 _pkgname=comma-ide
 _tarname=comma-community
-pkgrel=2
-pkgver=2019.3.0.1
+pkgrel=1
+pkgver=2019.4.0.1
 provides=(${_pkgname})
 pkgdesc="The Integrated Development Environment for Perl 6."
 arch=('any')
@@ -12,7 +12,7 @@ license=('APACHE')
 depends=('java-runtime')
 optdepends=('rakudo-star' 'rakudo')
 source=("https://commaide.com/download/community/linux")
-sha512sums=('972b7c722622e1184c224d2a405ecda8018ee04789d0b74fab0978a2f14f4b8bb92e41dfdab78176d729951e68064446bdba140c936fa05919b968cead161d77')
+sha512sums=('8922da4e92127cfac7a645e9724122250e0d5656f31725a7021ddbeb8e3fefae9020959cdbcfeaad34f9caf9a933f86351bc8f32cead5684f3a0c41b6d5bcea8')
 install=comma-ide.install
 
 package() {
