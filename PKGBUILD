@@ -7,7 +7,7 @@
 # Contributor: TDY <tdy@gmx.com>
 
 pkgname=parole-git
-pkgver=1.0.1.130.gd6e5380
+pkgver=1.0.2.r2.g2b7151e
 pkgrel=1
 pkgdesc="A modern simple media player based on the GStreamer framework"
 arch=(i686 x86_64)
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd $pkgname/
-    git describe | sed 's/^parole-//;s/-/./g'
+    git describe | sed 's/^parole-//;;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
