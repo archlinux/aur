@@ -1,0 +1,21 @@
+pkgbase = cameramonitor-quiet
+	pkgdesc = A little monitor to check if your Webcam is On.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/YanDoroshenko/cameramonitor
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = pygtk
+	depends = python2
+	depends = python2-dbus
+	depends = python2-gconf
+	depends = python2-notify
+	depends = python2-pyinotify
+	provides = cameramonitor
+        conflicts = cameramonitor
+	source = https://github.com/YanDoroshenko/cameramonitor/raw/master/cameramonitor-0.3.2.tar.bz2
+	sha256sums = 5a672b2c955db7f001e06d35770e8a73a69efdbf3f44dcda55f9d83b92e55f26
+
+pkgname = cameramonitor-quiet
+
