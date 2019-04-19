@@ -5,7 +5,7 @@
 
 pkgname=discord
 pkgver=0.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
 url='https://discordapp.com/'
@@ -18,13 +18,10 @@ optdepends=(
   'noto-fonts-cjk: Font for special characters such as /shrug face.'
 )
 
-install="Discord.install"
 source=(LICENSE
 "https://dl.discordapp.net/apps/linux/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('26b3229c74488c64d94798e48bc49fcd'
          '3fc3bd78302f4a27dc730e82089b99d9')
-
-#This is always latest build, right now I do not know of a version param.
 
 package() {
   # Install the main files.
@@ -35,19 +32,17 @@ package() {
   chmod 755 "${pkgdir}/opt/${pkgname}/Discord"
 
   # Desktop Entry
-  install -d "${pkgdir}/usr/share/applications"
-  install "${pkgdir}/opt/${pkgname}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
+  install -Dm 644 "${pkgdir}/opt/${pkgname}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   sed -i s%/usr/share%/opt% ${pkgdir}/usr/share/applications/${pkgname}.desktop
 
   # Main binary
-  #install "${srcdir}/Discord.sh" "${pkgdir}/usr/bin/discord"
-  mkdir -p ${pkgdir}/usr/bin
+  install -d "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/Discord" "${pkgdir}/usr/bin/${pkgname}"
 
   # Create symbolic link to the icon
   install -d "${pkgdir}/usr/share/pixmaps"
   ln -s "/opt/${pkgname}/discord.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  
+
   # License
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
