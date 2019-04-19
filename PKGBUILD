@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=varken
-pkgver=1.6.7
+pkgver=1.6.8
 pkgrel=1
 pkgdesc="Manage and download subtitles for Sonarr and Radarr."
 arch=('any')
@@ -24,7 +24,7 @@ source=("varken-${pkgver}.tar.gz::https://github.com/Boerderij/Varken/archive/${
         'varken.sysusers'
         'varken.tmpfiles')
 
-sha256sums=('1240cfcf89e2da5aa8c9ca3ba2b170467c5f89f5dc411afa9685f38bcb8d40c8'
+sha256sums=('2071f65eff3fc84bbc30570d40634d4beeae2e201bbe3d52a9a8dc79db596608'
             '87557de0d204223d5fa74c3d8da79dbe13be739e57d20c027291f1a487c34bb6'
             'ba43aebc95499e93a03d7abf1e1671d72d734725e8a0f2c35ccce3f5ec9b72e2'
             '75805db8a147673b0b3ea11fe46cc9e8b96b76e7877bc17878d4fc6d57ae014c')
