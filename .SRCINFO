@@ -1,0 +1,17 @@
+pkgbase = wofftools-git
+	pkgdesc = A library for working with WOFF files.
+	pkgver = r138.964fe63
+	pkgrel = 1
+	url = https://github.com/typesupply/woffTools
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2-fonttools
+	depends = python2-numpy
+	provides = wofftools=r138.964fe63
+	conflicts = wofftools
+	source = git://github.com/typesupply/woffTools.git
+	md5sums = SKIP
+
+pkgname = wofftools-git
+
