@@ -1,14 +1,14 @@
 pkgbase = orchent
 	pkgdesc = Orchestrator Command Line Client
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/indigo-dc/orchent
 	arch = x86
 	arch = x86_64
 	license = Apache
 	depends = go>=1.5
-	source = https://github.com/indigo-dc/orchent/archive/1.2.4.tar.gz
-	md5sums = 9d37318f15e48ea8ae29d2f818e360cb
+	source = https://github.com/indigo-dc/orchent/archive/1.2.5.tar.gz
+	md5sums = 60f04d15e29abfe12ce49b72370f247c
 
 pkgname = orchent
 
