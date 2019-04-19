@@ -1,0 +1,18 @@
+pkgbase = r-egg
+	pkgdesc = Miscellaneous functions to help customise 'ggplot2' objects
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=egg
+	arch = any
+	license = GPL3
+	depends = r
+	depends = r-gridextra
+	depends = r-ggplot2
+	depends = r-gtable
+	optdepends = r-knitr
+	optdepends = r-png
+	source = http://cran.r-project.org/src/contrib/egg_0.4.2.tar.gz
+	md5sums = ae853d174480abb3da36667f0a60ed14
+
+pkgname = r-egg
+
