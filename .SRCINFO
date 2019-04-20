@@ -1,0 +1,24 @@
+pkgbase = remid.lv2-git
+	pkgdesc = An lv2 port of the midi controlled implementation of the MOS8580 6581 SID chip used in the Commodore 64.
+	pkgver = r84.7427f1b
+	pkgrel = 1
+	url = https://github.com/ssj71/reMID.lv2
+	arch = i686
+	arch = x86_64
+	groups = lv2-plugins
+	license = GPL
+	makedepends = cmake
+	makedepends = pkgconfig
+	depends = glib2
+	depends = jack
+	depends = lv2
+	depends = alsa-lib
+	provides = remid.lv2
+	provides = remid.lv2-git
+	conflicts = remid.lv2
+	conflicts = remid.lv2-git
+	source = remid.lv2::git+https://github.com/ssj71/reMID.lv2
+	sha256sums = SKIP
+
+pkgname = remid.lv2-git
+
