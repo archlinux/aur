@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://arrow.apache.org"
 license=('Apache')
 depends=('arrow')
-checkdepends=('python-pytest')
+checkdepends=('python-hypothesis' 'python-pytest')
 optdepends=()
 makedepends=('cmake' 'cython')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz"
@@ -37,8 +37,8 @@ package(){
   install --root=$pkgdir
 }
 
-#check(){
-#  cd "$srcdir/arrow-apache-arrow-$pkgver/python"
-#  py.test
-#}
+check(){
+  cd "$srcdir/arrow-apache-arrow-$pkgver/python"
+  py.test
+}
 # vim:ts=2:sw=2:et:
