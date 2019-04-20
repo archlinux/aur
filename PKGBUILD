@@ -9,6 +9,7 @@ license=('MIT')
 depends=(
 	'mono>=5.18'
 	'java-environment=8'
+	'gtk-sharp-2' 'libzip' 'referenceassemblies-pcl' 'unzip' 'zip'
 	# these should be reused, but it looks like makefile doesn't care
 	#'android-ndk' 'android-sdk'
  	#"android-platform-"{} 
@@ -19,8 +20,9 @@ depends=(
 	)
 makedepends=(
 	'git'
-	'cmake' 'gdk-pixbuf2' 'wget' 'msbuild'
+	'cmake' 'gdk-pixbuf2' 'wget'
 	'lsb-release' 'openssh'
+	'nuget' 'msbuild'
 	# these should be also reused, but the same happens
 	#'llvm' 'nuget'
 	)

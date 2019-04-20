@@ -9,11 +9,17 @@ pkgbase = xamarin-android-git
 	makedepends = cmake
 	makedepends = gdk-pixbuf2
 	makedepends = wget
-	makedepends = msbuild
 	makedepends = lsb-release
 	makedepends = openssh
+	makedepends = nuget
+	makedepends = msbuild
 	depends = mono>=5.18
 	depends = java-environment=8
+	depends = gtk-sharp-2
+	depends = libzip
+	depends = referenceassemblies-pcl
+	depends = unzip
+	depends = zip
 	source = xamarin-android::git+https://github.com/xamarin/xamarin-android.git
 	source = ext_debugger-libs::git+git://github.com/mono/debugger-libs.git
 	source = ext_dlfcn-win32::git+https://github.com/dlfcn-win32/dlfcn-win32.git#tag=v1.1.1
