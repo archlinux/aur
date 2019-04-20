@@ -1,20 +1,21 @@
 pkgname=beautifuldnsd
-pkgver=0.5
+pkgver=0.7
 pkgrel=1
 pkgdesc="Quick and clean DNS proxy, especially useful for users with poor ISPs"
 arch=('any')
 url="https://github.com/programmervy/beautifuldnsd"
-license=("public domain")
-depends=('python>=3.4' 'python-dnslib' 'python-yaml')
+license=("custom:PublicDomain")
+depends=('python>=3.7' 'python-dnslib' 'python-yaml')
 optdepends=(
   'dnsmasq: DNS cache'
+  'systemd-resovled: DNS cache'
   'python-pygeoip: China only DNS configuration'
   'geoip-database: provides a database for geoip lookups'
 )
 backup=("etc/${pkgname}.yaml")
 install=beautifuldnsd.install
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('1bbb68b3ff02160acc5cde7330e4c6e2dd7e96cc1cef3b5f3bff0df5f04b2157f0c08541b59332db5f27176fed42f10bf31e92b3924f097fb9246c616b27d2f9')
+sha512sums=('1516c34da9b66e492cd85b9a71c01682a0ffe90c00b1e8aaf6eacbc2aad2e8482653042eb476438aa92a837ced6d123bd695bab0a55cce1d292bd50de5668b46')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -22,5 +23,6 @@ package() {
   install -D -m644 systemd/tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
   install -D -m644 beautifuldnsd.yaml "${pkgdir}/etc/${pkgname}.yaml"
   install -D -m755 beautifuldnsd "${pkgdir}/usr/bin/${pkgname}"
+  install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/READEMD.md"
 }
 
