@@ -25,21 +25,21 @@ makedepends=(
 	)
 source=(
 	"${_pkgname}::git+${url}.git"
-	"ext_debugger-libs::git+git://github.com/mono/debugger-libs.git#branch=master"
-	"ext_dlfcn-win32::git+https://github.com/dlfcn-win32/dlfcn-win32.git#branch=v1.1.1"
-	"ext_Java.Interop::git+https://github.com/xamarin/java.interop.git#branch=master"
-	"ext_libzip::git+https://github.com/nih-at/libzip.git#branch=rel-1-5-1"
-	"ext_LibZipSharp::git+https://github.com/grendello/LibZipSharp.git#branch=master"
+	"ext_debugger-libs::git+git://github.com/mono/debugger-libs.git"
+	"ext_dlfcn-win32::git+https://github.com/dlfcn-win32/dlfcn-win32.git#tag=v1.1.1"
+	"ext_Java.Interop::git+https://github.com/xamarin/java.interop.git"
+	"ext_libzip::git+https://github.com/nih-at/libzip.git#tag=rel-1-5-1"
+	"ext_LibZipSharp::git+https://github.com/grendello/LibZipSharp.git"
 	"ext_llvm::git+https://github.com/mono/llvm.git#branch=release_60"
-	"ext_mman-win32::git+https://github.com/witwall/mman-win32.git#branch=master"
+	"ext_mman-win32::git+https://github.com/witwall/mman-win32.git"
 	"ext_mono::git+https://github.com/mono/mono.git#branch=2018-10"
 	"ext_mxe::git+https://github.com/xamarin/mxe.git#branch=xamarin"
-	"ext_nrefactory::git+git://github.com/icsharpcode/NRefactory.git#branch=master"
-	"ext_opentk::git+https://github.com/mono/opentk.git#branch=master"
-	"ext_proguard::git+https://github.com/xamarin/proguard.git#branch=master"
+	"ext_nrefactory::git+git://github.com/icsharpcode/NRefactory.git"
+	"ext_opentk::git+https://github.com/mono/opentk.git"
+	"ext_proguard::git+https://github.com/xamarin/proguard.git"
 	"ext_sqlite::git+https://github.com/xamarin/sqlite.git#branch=3.27.1"
-	"ext_xamarin-android-api-compatibility::git+https://github.com/xamarin/xamarin-android-api-compatibility.git#branch=master"
-	"ext_xamarin-android-tools::git+https://github.com/xamarin/xamarin-android-tools#branch=master"
+	"ext_xamarin-android-api-compatibility::git+https://github.com/xamarin/xamarin-android-api-compatibility.git"
+	"ext_xamarin-android-tools::git+https://github.com/xamarin/xamarin-android-tools"
 	)
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')

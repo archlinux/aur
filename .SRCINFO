@@ -15,21 +15,21 @@ pkgbase = xamarin-android-git
 	depends = mono>=5.18
 	depends = java-environment=8
 	source = xamarin-android::git+https://github.com/xamarin/xamarin-android.git
-	source = ext_debugger-libs::git+git://github.com/mono/debugger-libs.git#branch=master
-	source = ext_dlfcn-win32::git+https://github.com/dlfcn-win32/dlfcn-win32.git#branch=v1.1.1
-	source = ext_Java.Interop::git+https://github.com/xamarin/java.interop.git#branch=master
-	source = ext_libzip::git+https://github.com/nih-at/libzip.git#branch=rel-1-5-1
-	source = ext_LibZipSharp::git+https://github.com/grendello/LibZipSharp.git#branch=master
+	source = ext_debugger-libs::git+git://github.com/mono/debugger-libs.git
+	source = ext_dlfcn-win32::git+https://github.com/dlfcn-win32/dlfcn-win32.git#tag=v1.1.1
+	source = ext_Java.Interop::git+https://github.com/xamarin/java.interop.git
+	source = ext_libzip::git+https://github.com/nih-at/libzip.git#tag=rel-1-5-1
+	source = ext_LibZipSharp::git+https://github.com/grendello/LibZipSharp.git
 	source = ext_llvm::git+https://github.com/mono/llvm.git#branch=release_60
-	source = ext_mman-win32::git+https://github.com/witwall/mman-win32.git#branch=master
+	source = ext_mman-win32::git+https://github.com/witwall/mman-win32.git
 	source = ext_mono::git+https://github.com/mono/mono.git#branch=2018-10
 	source = ext_mxe::git+https://github.com/xamarin/mxe.git#branch=xamarin
-	source = ext_nrefactory::git+git://github.com/icsharpcode/NRefactory.git#branch=master
-	source = ext_opentk::git+https://github.com/mono/opentk.git#branch=master
-	source = ext_proguard::git+https://github.com/xamarin/proguard.git#branch=master
+	source = ext_nrefactory::git+git://github.com/icsharpcode/NRefactory.git
+	source = ext_opentk::git+https://github.com/mono/opentk.git
+	source = ext_proguard::git+https://github.com/xamarin/proguard.git
 	source = ext_sqlite::git+https://github.com/xamarin/sqlite.git#branch=3.27.1
-	source = ext_xamarin-android-api-compatibility::git+https://github.com/xamarin/xamarin-android-api-compatibility.git#branch=master
-	source = ext_xamarin-android-tools::git+https://github.com/xamarin/xamarin-android-tools#branch=master
+	source = ext_xamarin-android-api-compatibility::git+https://github.com/xamarin/xamarin-android-api-compatibility.git
+	source = ext_xamarin-android-tools::git+https://github.com/xamarin/xamarin-android-tools
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
