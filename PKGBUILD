@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/dask/dask"
 license=('BSD')
 #checkdepends=('ipython' 'python-bcolz' 'python2-bcolz' 'python-cachey' 'python2-cachey' 'python-graphviz' 'python2-graphviz' 'python-sparse' 'python2-sparse' 'python-pytest' 'python2-pytest')
-checkdepends=('ipython' 'python-bcolz' 'python-cachey' 'python2-cachey' 'python-graphviz' 'python2-graphviz' 'python-sparse' 'python2-sparse' 'python-pytest' 'python2-pytest')
+checkdepends=('ipython' 'python-bcolz' 'python-cachey' 'python-graphviz' 'python-sparse' 'python-pytest')
 optdepends=('python-bcolz'
   'python-bokeh'
   'python-cachey'
@@ -19,6 +19,8 @@ optdepends=('python-bcolz'
   'python-fastparquet: Parquet support'
   'python-graphviz'
   'python-psutil'
+  'python-pyarrow: Parquet support'
+  'python-pytables: hdf5 support'
   'python-sparse: sparse data support'
   'python-s3fs: S3 support'
   'python-gcsfs: Google Cloud Storage fs support')
@@ -48,7 +50,5 @@ package_python2-dask(){
 check(){
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py test 
-  #cd "$srcdir/$_pkgname-pkgver-py2"
-  #py.test2 dask/tests
 }
 # vim:ts=2:sw=2:et:
