@@ -1,0 +1,13 @@
+pkgbase = clop
+	pkgdesc = Confident Local Optimization for Noisy Black-Box Parameter Tuning
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.remi-coulom.fr/CLOP/
+	arch = any
+	license = GPL3
+	depends = qt4
+	source = https://www.remi-coulom.fr/CLOP/CLOP-0.0.9.tar.bz2
+	md5sums = 902d566fc0ff00f69476a7386081444a
+
+pkgname = clop
+
