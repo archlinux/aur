@@ -22,7 +22,7 @@ makedepends=('git'
              'gcc')
 provides=('c2ffi')
 conflicts=('c2ffi')
-source=('git+https://github.com/rpav/c2ffi#branch=llvm-7.0.0')
+source=('git+https://github.com/rpav/c2ffi#branch=llvm-8.0.0')
 md5sums=('SKIP')
 
 pkgver() {
