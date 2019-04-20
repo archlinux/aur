@@ -1,0 +1,14 @@
+pkgbase = neovim-surround-opt-git
+	pkgdesc = Provides mappings to easily delete, change, and add paired "surroundings."
+	pkgver = 109.5970688
+	pkgrel = 1
+	url = https://github.com/tpope/vim-surround
+	arch = any
+	license = custom:vim
+	makedepends = git
+	depends = neovim
+	source = git+https://github.com/tpope/vim-surround.git
+	sha256sums = SKIP
+
+pkgname = neovim-surround-opt-git
+
