@@ -1,4 +1,4 @@
-pkgbase = deepin-baidu-pan
+pkgbase = deepin-wine-baidupan
 	pkgdesc = Baidu net disk client on Deepin Wine
 	pkgver = 5.7.3deepin0
 	pkgrel = 1
@@ -9,8 +9,9 @@ pkgbase = deepin-baidu-pan
 	depends = deepin-wine
 	depends = xorg-xwininfo
 	depends = xdotool
+	depends = wqy-microhei
 	source = https://mirrors.tuna.tsinghua.edu.cn/deepin/pool/non-free/d/deepin.com.baidu.pan/deepin.com.baidu.pan_5.7.3deepin0_i386.deb
 	sha1sums = 6fac6f2e01e394a909dd077c3dcc78892c4f114f
 
-pkgname = deepin-baidu-pan
+pkgname = deepin-wine-baidupan
 
