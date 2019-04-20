@@ -1,11 +1,13 @@
 # Maintainer: s7hoang <s7hoang at gmail dot com>
-pkgname=anki-sync-server
-pkgver=r259.7ef3d4f
+pkgname=anki-sync-server-git
+pkgver=r258.b9a1203
 pkgrel=1
 pkgdesc="A sync server for anki using a forked version from github.com/tsudoko (orig:dsnopek)"
 arch=('any')
 url="https://github.com/tsudoko/anki-sync-server"
 license=('GPL')
+provides=('anki-sync-server')
+conflicts=('anki-sync-server')
 depends=('python' 'python-pip')
 makedepends=('portaudio')
 optdepends=('python-pyqt5: dependency of bundled anki client' 
@@ -23,20 +25,20 @@ source=('git+https://github.com/tsudoko/anki-sync-server')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   # move plugins and systemd file to src package
-  mkdir -p "${pkgname}/plugins/anki2.0"
-  mkdir -p "${pkgname}/plugins/anki2.1/ankisyncd"
-  mkdir -p "${pkgname}/plugins/systemd"
-  cp ../anki-sync-server.py "${pkgname}/plugins/anki2.0"
-  cp ../__init__.py "${pkgname}/plugins/anki2.1/ankisyncd"
-  cp ../anki-sync-server.service "${pkgname}/plugins/systemd"
+  mkdir -p "${pkgname%-git}/plugins/anki2.0"
+  mkdir -p "${pkgname%-git}/plugins/anki2.1/ankisyncd"
+  mkdir -p "${pkgname%-git}/plugins/systemd"
+  cp ../anki-sync-server.py "${pkgname%-git}/plugins/anki2.0"
+  cp ../__init__.py "${pkgname%-git}/plugins/anki2.1/ankisyncd"
+  cp ../anki-sync-server.service "${pkgname%-git}/plugins/systemd"
 
-  cd "${pkgname}"
+  cd "${pkgname%-git}"
   # set plugins to use current ip address as plugins' target address
   sed -i "2s/0\.0\.0\.0/$(ip route get 1.2.3.4 | awk '{print $7}')/" \
   plugins/anki2.0/anki-sync-server.py
@@ -50,13 +52,13 @@ prepare() {
 
   # set user and directory information for systemd service file
   # the user is going to be named the same thing as the package name
-  sed "10s/changeme/${pkgname}/" plugins/systemd/anki-sync-server.service -i
-  sed "11s/changeme/${pkgname}/" plugins/systemd/anki-sync-server.service -i
-  sed "12s|changeme|/opt/${pkgname}|" plugins/systemd/anki-sync-server.service -i
+  sed "10s/changeme/${pkgname%-git}/" plugins/systemd/anki-sync-server.service -i
+  sed "11s/changeme/${pkgname%-git}/" plugins/systemd/anki-sync-server.service -i
+  sed "12s|changeme|/opt/${pkgname%-git}|" plugins/systemd/anki-sync-server.service -i
 }
 
 build() {
-  cd "${pkgname}"/anki-bundled
+  cd "${pkgname%-git}"/anki-bundled
 
   #initialize anki-bundled
   git submodule update --init
@@ -72,7 +74,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname%-git}"
   mkdir "${pkgdir}"/opt
-  cp -R "${srcdir}/${pkgname}" "${pkgdir}"/opt
+  cp -R "${srcdir}/${pkgname%-git}" "${pkgdir}"/opt
 }
