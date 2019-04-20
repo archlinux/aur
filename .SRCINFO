@@ -10,9 +10,9 @@ pkgbase = geany-plugin-markdown
 	makedepends = vala
 	makedepends = gdb
 	makedepends = cppcheck
-	depends = geany>=1.30
+	depends = geany>=1.34
 	depends = discount
-	depends = webkitgtk2
+	depends = webkit2gtk
 	source = http://plugins.geany.org/geany-plugins/geany-plugins-1.34.tar.bz2
 	sha256sums = 244417c681636e82a63cf6f9901b5b7f3889168f7d9b5ba9b45601767a589c3b
 
