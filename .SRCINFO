@@ -1,0 +1,14 @@
+pkgbase = neovim-lion-opt-git
+	pkgdesc = A simple alignment operator for (neo)vim.
+	pkgver = 56.75306ac
+	pkgrel = 1
+	url = https://github.com/tommcdo/vim-lion
+	arch = any
+	license = custom:vim
+	makedepends = git
+	depends = neovim
+	source = git+https://github.com/tommcdo/vim-lion.git
+	sha256sums = SKIP
+
+pkgname = neovim-lion-opt-git
+
