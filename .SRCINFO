@@ -1,0 +1,28 @@
+pkgbase = guymager-svn
+	pkgdesc = A forensic imager for media acquisition, with user-friendly Qt interface.
+	pkgver = 0.8.8.r42
+	pkgrel = 1
+	url = https://guymager.sourceforge.io/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = qt5-base
+	depends = zlib
+	depends = hdparm
+	depends = udisks2
+	depends = libewf
+	depends = smartmontools
+	depends = parted
+	depends = polkit
+	depends = libguytools
+	depends = libbfio
+	depends = openssl
+	provides = guymager
+	conflicts = guymager
+	source = guymager-svn::svn+https://svn.code.sf.net/p/guymager/code/
+	source = https://mirrors.kernel.org/debian/pool/main/g/guymager/guymager_0.8.8-3.debian.tar.xz
+	sha512sums = SKIP
+	sha512sums = 89b42743ff86192ad102a41c1b539d6868beb63954d38b1a450c9e0b77000c61d35a9678be1651be2872b172e9b85711f400407e8fccfd5c152bb54820a8442d
+
+pkgname = guymager-svn
+
