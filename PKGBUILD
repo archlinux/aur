@@ -15,7 +15,7 @@ depends=(
 makedepends=('git'
 	'cmake' 'gdk-pixbuf2' 'wget' 'msbuild'
 	'lsb-release'
-	'llvm'
+	'llvm' 'ssh'
 	)
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')

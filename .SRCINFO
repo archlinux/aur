@@ -13,6 +13,7 @@ pkgbase = xamarin-android-git
 	makedepends = msbuild
 	makedepends = lsb-release
 	makedepends = llvm
+	makedepends = ssh
 	depends = mono>=5.18
 	depends = java-environment=8
 	depends = android-ndk
