@@ -3,7 +3,7 @@
 pkgname=camotics-git
 pkgver=r822.8d1c8fb
 pkgrel=1
-pkgdesc="Open-Source Simulation & Computer Aided Machining"
+pkgdesc="3-axis NC machining simulation software"
 arch=('x86_64')
 url="http://camotics.org/"
 license=('GPL2')
