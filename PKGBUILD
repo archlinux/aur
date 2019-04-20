@@ -2,7 +2,7 @@
 
 pkgname=cbang
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="a library of cross-platform C++ utilities"
 arch=('x86_64')
 url="https://github.com/CauldronDevelopmentLLC/cbang"
@@ -16,7 +16,6 @@ depends=(
   'zlib'
   'bzip2'
   'expat'
-  'mariadb-libs'
 )
 makedepends=(
   'git'
@@ -24,6 +23,9 @@ makedepends=(
 )
 checkdepends=(
   'python2'
+)
+optdepends=(
+  'mariadb-libs: MariaDB database support'
 )
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/CauldronDevelopmentLLC/cbang/archive/$pkgver.tar.gz"
