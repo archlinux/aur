@@ -6,10 +6,11 @@
 
 pkgname=tor-browser-dev
 pkgver=8.5a11
-_language='en-US'
-pkgrel=1
-pkgdesc="Tor Browser Bundle (alpha version)"
+pkgrel=2
+pkgdesc="Tor Browser Bundle (alpha version; locale-aware international PKGBUILD)"
 arch=('i686' 'x86_64')
+_idstr32='linux32'
+_idstr64='linux64'
 url="https://www.torproject.org/download/alpha/"
 license=('GPL')
 depends=('gtk3' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
@@ -21,22 +22,95 @@ optdepends=('zenity: simple dialog boxes'
             'gst-libav: H.264 video'
             'libpulse: PulseAudio audio driver'
             'libnotify: Gnome dialog boxes')
-source_i686=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-linux32-${pkgver}_${_language}.tar.xz"{,.asc})
-source_x86_64=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-linux64-${pkgver}_${_language}.tar.xz"{,.asc})
+
+_archstr=$([[ "${CARCH}" == 'x86_64' ]] && echo -n "${_idstr64}" || echo -n "${_idstr32}")
+
+
+_localetor() {
+  #
+  # Checking if a `tor-browser` package exists for current locale; a different language can be
+  # chosen by giving a `TORBROWSER_PKGLANG` environment variable to `makepkg`, for instance:
+  #
+  #  TORBROWSER_PKGLANG='en-US' makepkg
+  #
+
+  if [[ -n "${TORBROWSER_PKGLANG}" ]]; then
+    echo -n "${TORBROWSER_PKGLANG}"
+    return 0
+  fi
+
+  local _urlbase="https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-${_archstr}-${pkgver}"
+  local _fulllocale="$(locale | grep LANG | cut -d= -f2 | cut -d. -f1 | sed s/_/\-/)"
+  local _shortlocale="$(locale | grep LANG | cut -d= -f2 | cut -d_ -f1)"
+
+  if curl --output /dev/null --silent --head --fail "${_urlbase}_${_fulllocale}.tar.xz"; then
+    echo -n "${_fulllocale}"
+  elif curl --output /dev/null --silent --head --fail "${_urlbase}_${_shortlocale}.tar.xz"; then
+    echo -n "${_shortlocale}"
+  else
+    echo -n 'en-US'
+  fi
+
+}
+
+_language="$(_localetor)"
+
+source_i686=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-${_idstr32}-${pkgver}_${_language}.tar.xz"{,.asc})
+source_x86_64=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-${_idstr64}-${pkgver}_${_language}.tar.xz"{,.asc})
 source+=(${pkgname}.desktop
          ${pkgname}.png
          ${pkgname}.sh)
 sha256sums=('13d2e1fe85a9a08e9f66116f3c2d6f1e5d37e07d2ad8b08ae4f01890e864a722'
             '4f01e363738e36dc41ca431fbbf5a00b014dc37e2c9a3cfaf2ce182103a1d068'
             'ce19dd89a8ecd9289136f97f0122b7301bdda9bcf0208f4277817e23ea9a95d8')
-sha256sums_i686=('190e2969d2e485372592348223d1109cf0778a77a018a6f15b70ca00d215c233'
+sha256sums_i686=('SKIP'
                  'SKIP')
-sha256sums_x86_64=('5b9d7d93d9ac4612b74c3e95f4ae94b8faa2329d6409e90a633dcb9516090db5'
+sha256sums_x86_64=('SKIP'
                    'SKIP')
-validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290'
-	      'A4300A6BC93C0877A4451486D1483FA6C3C07136')
-noextract=("tor-browser-linux32-${pkgver}_${_language}.tar.xz"
-	   "tor-browser-linux64-${pkgver}_${_language}.tar.xz")
+# skip checksumming the tor-provided release package, since we dynamically
+# select the package for the user locale. we'll just rely on GPG sig.
+#pub   rsa4096 2014-12-15 [C] [expires: 2020-08-24]
+#     EF6E286DDA85EA2A4BA7DE684E2C6E8793298290
+#uid           Tor Browser Developers (signing key) <torbrowser@torproject.org>
+validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
+noextract=("tor-browser-${_idstr32}-${pkgver}_${_language}.tar.xz"
+     "tor-browser-${_idstr64}-${pkgver}_${_language}.tar.xz")
+
+
+
+prepare() {
+  # only using this for notifying user about TORBROWSER_PKGLANG and
+  # sanity-checking our config
+
+  # use colors only if we have them
+  if [[ $(which tput > /dev/null 2>&1 && tput -T "${TERM}" colors || echo -n '0') -ge 8 ]] ; then
+    local _COL_YELLOW_='\e[0;33m'
+    local _COL_LIGHTGREY_='\e[0;37m'
+    local _COL_BRED_='\e[1;31m'
+    local _COL_BBLUE_='\e[1;34m'
+    local _COL_BWHITE_='\e[1;37m'
+    local _COL_DEFAULT_='\e[0m'
+  fi
+
+  msg "Packaging ${pkgname} (language: ${_language})..."
+
+  if [[ -z "${TORBROWSER_PKGLANG}" ]]; then
+    echo -e "\n  ${_COL_BBLUE_}->${_COL_DEFAULT_} ${_COL_BRED_}NOTE:${_COL_DEFAULT_} If you want to package ${_COL_BWHITE_}${pkgname}${_COL_DEFAULT_} in a different language, please"
+    echo -e "     set a \`${_COL_YELLOW_}TORBROWSER_PKGLANG${_COL_DEFAULT_}\` environment variable before running makepkg.\n"
+    echo '     For instance:'
+    echo -e "\n        ${_COL_LIGHTGREY_}TORBROWSER_PKGLANG='en-US' makepkg${_COL_DEFAULT_}\n"
+    echo -e '     Available locales can be found at:\n'
+    echo -e '        https://www.torproject.org/download/alpha/\n'
+  fi
+
+  # we search and replace using sed with / as delimiter below so don't allow slashes in these vars.
+  # makepkg already enforces that there're no slashes in ${pkgname}, so we don't check that again here.
+  if [[ ${pkgver} = */* || ${_language} = */* || ${pkgdesc} = */* ]]; then
+    error '${pkgver}, ${_language} and ${pkgdesc} for this package are not allowed to contain /' >&2
+    return 1
+  fi
+
+}
 
 package() {
   cd ${srcdir}
@@ -59,11 +133,6 @@ package() {
     ${pkgdir}/usr/share/pixmaps/${pkgname}.png
   install -Dm 0755 ${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
 
-  if [ "$CARCH" == "i686" ]; then
-    install -Dm 0644 tor-browser-linux32-${pkgver}_${_language}.tar.xz \
-      ${pkgdir}/opt/${pkgname}/tor-browser-linux32-${pkgver}_${_language}.tar.xz
-  else
-    install -Dm 0644 tor-browser-linux64-${pkgver}_${_language}.tar.xz \
-      ${pkgdir}/opt/${pkgname}/tor-browser-linux64-${pkgver}_${_language}.tar.xz
-  fi
+  install -Dm 0644 tor-browser-${_archstr}-${pkgver}_${_language}.tar.xz \
+    ${pkgdir}/opt/${pkgname}/tor-browser-${_archstr}-${pkgver}_${_language}.tar.xz
 }
