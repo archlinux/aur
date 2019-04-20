@@ -1,3 +1,0 @@
-#!/usr/bin/bash
-export QUEX_PATH=/usr/share/quex/
-python2 $QUEX_PATH/quex-exe.py $*
