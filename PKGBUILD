@@ -2,13 +2,13 @@
 
 pkgname=writefreely
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Federated blogging from write.as'
 arch=('x86_64')
 url='https://writefreely.org/'
 license=('AGPL3')
 depends=('glibc')
-makedepends=('go>=1.11'
+makedepends=('go'
              'go-bindata'
              'sqlite'
              'nodejs-less'

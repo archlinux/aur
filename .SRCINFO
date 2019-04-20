@@ -1,12 +1,12 @@
 pkgbase = writefreely
 	pkgdesc = Federated blogging from write.as
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://writefreely.org/
 	install = writefreely.install
 	arch = x86_64
 	license = AGPL3
-	makedepends = go>=1.11
+	makedepends = go
 	makedepends = go-bindata
 	makedepends = sqlite
 	makedepends = nodejs-less
