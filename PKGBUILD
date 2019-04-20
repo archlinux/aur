@@ -26,6 +26,14 @@ pkgver() {
   	$(git rev-parse --short HEAD)
 }
 
+prepare() {
+  cd "$srcdir/$_name"
+
+  # Fix infinite refresh Issue #18
+  git remote add up https://github.com/garbados/dat-gateway.git
+  git pull --no-edit up refs/pull/19/head
+}
+
 package(){
   npm install --user root --prefix "${pkgdir}/usr" -g $(npm pack ${srcdir}/$_name | tail -1)
   find ${pkgdir} -type d -exec chmod 0755  {} \; # npm creates 777 dirs, causes warnings
