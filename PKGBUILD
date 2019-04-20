@@ -8,6 +8,7 @@ arch=('x86_64')
 url="http://git.fuzzle.org/cgit/jm2cv.git/"
 license=('GPL')
 depends=('jack')
+makedepends=('git' 'cmake')
 provides=('jm2cv')
 conflicts=('jm2cv')
 source=("$_pkgname::git+http://git.fuzzle.org/cgit/jm2cv.git")
