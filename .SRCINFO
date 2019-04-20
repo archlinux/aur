@@ -1,0 +1,19 @@
+pkgbase = brother-mfc-j6530dw
+	pkgdesc = Brother MFC-J6530DW CUPS driver.
+	pkgver = 1.0.1
+	pkgrel = 0
+	url = http://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=mfcj6530dw_us_eu_as
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = lib32-glibc
+	depends = lib32-libstdc++5
+	depends = cups>=2.1.2
+	depends = ghostscript
+	source = https://download.brother.com/welcome/dlf103007/mfcj6530dwlpr-1.0.1-0.i386.rpm
+	source = https://download.brother.com/welcome/dlf103031/mfcj6530dwcupswrapper-1.0.1-0.i386.rpm
+	md5sums = 51a985d64540af2e0df6343513eb72a6
+	md5sums = 0f183df0e9e183d56f51fd3ae4a13299
+
+pkgname = brother-mfc-j6530dw
+
