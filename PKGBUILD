@@ -2,12 +2,13 @@
 
 pkgname=writeas-cli
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Write.as command line interface"
 arch=('x86_64')
 url='https://write.as/apps/cli'
 license=('GPL3')
 depends=('glibc')
+makedepends=('go')
 source=("https://code.as/writeas/writeas-cli/archive/v${pkgver}.tar.gz")
 sha256sums=('9c1a352000770c78005af78e698a89bf70951151b0231c81219778a2b483bd30')
 
@@ -19,7 +20,11 @@ prepare() {
 
 build() {
 	cd ${pkgname}
-	go build ./cmd/writeas/
+	go build \
+		-gcflags "all=-trimpath=${PWD}" \
+		-asmflags "all=-trimpath=${PWD}" \
+		-ldflags "-extldflags ${LDFLAGS}" \
+		./cmd/writeas/
 }
 
 package() {
