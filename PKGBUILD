@@ -95,17 +95,8 @@ source=(
 	"${_android_repo}/sys-img/android/x86-28_r04.zip"
 	"${_apache_repo}/apache-ant-1.9.9-bin.zip"
 	)
-sha256sums=(
-	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-
-	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-
-	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-	'SKIP' 'SKIP' 'SKIP'
-	)
+sha256sums=()
+for i in "$source[:@]"; do sha256sums+=('SKIP'); done
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
