@@ -2,7 +2,7 @@
 
 _name="julia"
 pkgname="python-${_name}"
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="python interface to julia"
 arch=('any')
@@ -10,8 +10,8 @@ url="https://github.com/JuliaPy/pyjulia"
 license=('MIT')
 depends=('python')
 makedepends=('python-pypandoc' 'pandoc')
-source=("https://files.pythonhosted.org/packages/35/d2/98ccbb45f2511c1b7d16ad2c83bf7858e1b53b46a37ff052bfa09d0dce81/$_name-$pkgver.tar.gz")
-sha256sums=("a4443c2927b2edc92da580052077c6b307256827e56d8df50679c6f6935b0b9e")
+source=("https://files.pythonhosted.org/packages/bc/a9/2395806544d00050f4d6da4c53649563fd914054df6c2f59734067318f08/$_name-$pkgver.tar.gz")
+sha256sums=("937c7f7908faa16a695b79f347571bdbd16c3aa79f224e8dbbc6a6e67d3a26ad")
 
 build() {
   cd "${srcdir}/$_name-$pkgver"
