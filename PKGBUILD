@@ -28,7 +28,6 @@ prepare() {
     patch < alt/ll2.diff
     patch < alt/td1.diff
 
-    # add powerline symbols and figure out coloring in TTY?
 }
 
 build() { 
