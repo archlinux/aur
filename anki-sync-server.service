@@ -1,20 +1,16 @@
 [Unit]
-Description=Anki Sync Server
+Description=A sync server for anki
+After=network.target
+StartLimitIntervalSec=1
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/paster serve --quiet /etc/webapps/anki-sync-server/production.ini
-Restart=on-failure
-
-User=anki-sync-server
-Group=anki-sync-server
-CapabilityBoundingSet=
-PrivateTmp=true
-PrivateDevices=true
-ProtectSystem=full
-ProtectHome=true
-NoNewPrivileges=true
+Restart=always
+RestartSec=5
+User=changeme
+Group=changeme
+WorkingDirectory=changeme
+ExecStart=python -m ankisyncd
 
 [Install]
 WantedBy=multi-user.target
-

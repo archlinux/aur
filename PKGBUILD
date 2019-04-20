@@ -1,55 +1,78 @@
-# Maintainer: Janne Heß <jannehess@gmail.com>
-
-pkgname=anki-sync-server-git
-pkgver=2.0.6.g4391731
+# Maintainer: s7hoang <s7hoang at gmail dot com>
+pkgname=anki-sync-server
+pkgver=r259.7ef3d4f
 pkgrel=1
-pkgdesc='A personal Anki sync server (so you can sync against your own server rather than AnkiWeb)'
-url='https://github.com/dsnopek/anki-sync-server'
-license=('GPL')
-provides=('anki-sync-server')
-conflicts=('anki-sync-server')
-depends=('python2' 'python2-webob' 'python2-sqlalchemy' 'python2-simplejson' 'python2-paste-script' 'anki') # TODO Replace anki with libanki
-makedepends=('patch' 'python2-setuptools')
-backup=('etc/webapps/anki-sync-server/production.ini' 'etc/webapps/anki-sync-server/logging.conf')
-source=("git://github.com/dsnopek/${pkgname%-git}"
-        'ankiserverctl.py.patch'
-        "${pkgname%-git}.service")
-sha512sums=('SKIP'
-            'f247d0b64a8d9df9b636e1e8f9fe8894982f3a26e0cf9297cebcb8bf51b7526e451e495e15c7f1cc1c250c265d44723f710c8a13d5cabeede4ebe222d3e3dff0'
-            '1d0666f17c181b4946fd37cc5d323a53d674b0b7e330eac515f4bea74e726162bd357b51e00bf162de7f2229aabec6859363f8c4aa7ce5e8e1974d72661b2860')
+pkgdesc="A sync server for anki using a forked version from github.com/tsudoko (orig:dsnopek)"
 arch=('any')
-install="${pkgname%-git}.install"
+url="https://github.com/tsudoko/anki-sync-server"
+license=('GPL')
+depends=('python' 'python-pip')
+makedepends=('portaudio')
+optdepends=('python-pyqt5: dependency of bundled anki client' 
+'python-pyqtwebengine: dependency of bundled anki client'
+'libvpx>=1.8.0-1: dependency of bundled anki client'
+'double-conversion>=3.1.4-1: dependency of bundled anki client'
+'qt5-base>=5.12.2-1.1: dependency of bundled anki client'
+'qt5ct>=0.38-1: dependency of bundled anki client'
+'qt5-svg>=5.12.2-1: dependency of bundled anki client'
+'portaudio: dependency of pyaudio which is a dependency of bundled anki'
+'mpv: optional dependency of bundled anki client'
+)
+install=anki-sync-server.install
+source=('git+https://github.com/tsudoko/anki-sync-server')
+md5sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname%-git}"
-	git describe --tags --always | sed 's/-[[:digit:]]*-/./g'
+  cd "${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "${srcdir}/${pkgname%-git}"
-	patch -p0 -i "${srcdir}/ankiserverctl.py.patch"
+  # move plugins and systemd file to src package
+  mkdir -p "${pkgname}/plugins/anki2.0"
+  mkdir -p "${pkgname}/plugins/anki2.1/ankisyncd"
+  mkdir -p "${pkgname}/plugins/systemd"
+  cp ../anki-sync-server.py "${pkgname}/plugins/anki2.0"
+  cp ../__init__.py "${pkgname}/plugins/anki2.1/ankisyncd"
+  cp ../anki-sync-server.service "${pkgname}/plugins/systemd"
+
+  cd "${pkgname}"
+  # set plugins to use current ip address as plugins' target address
+  sed -i "2s/0\.0\.0\.0/$(ip route get 1.2.3.4 | awk '{print $7}')/" \
+  plugins/anki2.0/anki-sync-server.py
+  sed -i "3s/0\.0\.0\.0/$(ip route get 1.2.3.4 | awk '{print $7}')/" \
+  plugins/anki2.0/anki-sync-server.py
+  sed -i "3s/0\.0\.0\.0/$(ip route get 1.2.3.4 | awk '{print $7}')/" \
+  plugins/anki2.1/ankisyncd/__init__.py
+
+  # set current ip address as the server's ip address
+  sed "3s/0\.0\.0\.0/$(ip route get 1.2.3.4 | awk '{print $7}')/" ankisyncd.conf -i
+
+  # set user and directory information for systemd service file
+  # the user is going to be named the same thing as the package name
+  sed "10s/changeme/${pkgname}/" plugins/systemd/anki-sync-server.service -i
+  sed "11s/changeme/${pkgname}/" plugins/systemd/anki-sync-server.service -i
+  sed "12s|changeme|/opt/${pkgname}|" plugins/systemd/anki-sync-server.service -i
+}
+
+build() {
+  cd "${pkgname}"/anki-bundled
+
+  #initialize anki-bundled
+  git submodule update --init
+
+  # get anki-bundled working
+  if [ -z "$(echo 'python-pyqt5 python-pyqtwebengine qt5-base>=5.12.2-1.1 libvpx>=1.8.0-1
+    double-conversion>=3.1.4-1 qt5ct>=0.38-1 qt5-svg>=5.12.2-1' | xargs pacman -T)" ]; then
+    echo "found prerequisites to use bundled anki, setting up bundled anki"
+    pip install --upgrade setuptools --user
+    pip install -r requirements.txt --user
+    bash tools/build_ui.sh
+  fi
 }
 
 package() {
-	cd "${srcdir}/${pkgname%-git}"
-
-	python2 setup.py install --root="${pkgdir}/" --optimize=1
-
-	install -dm755 "${pkgdir}/etc/webapps/anki-sync-server"
-	install -dm755 "${pkgdir}/var/lib/anki-sync-server"
-	install -Dm644 "${srcdir}/anki-sync-server.service" "${pkgdir}/usr/lib/systemd/system/anki-sync-server.service"
-	# Sanatize paths
-	mv "${pkgdir}/usr/bin/ankiserverctl.py" "${pkgdir}/usr/bin/ankiserverctl"
-	mv "${pkgdir}/usr/examples/example.ini" "${pkgdir}/etc/webapps/anki-sync-server/production.ini"
-	mv "${pkgdir}/usr/examples/logging.conf" "${pkgdir}/etc/webapps/anki-sync-server/"
-	# Remove useless files and directories
-	rm -r "${pkgdir}/usr/examples" "${pkgdir}/usr/anki-bundled"
-	# Fix paths
-	sed -i \
-		-e 's:logging.conf$:/etc/webapps/anki-sync-server/logging.conf:g' \
-		-e 's:./collections:/var/lib/anki-sync-server/collections:g' \
-		-e 's:./session.db:/var/lib/anki-sync-server/session.db:g' \
-		-e 's:./auth.db:/var/lib/anki-sync-server/auth.db:g' \
-		"${pkgdir}/etc/webapps/anki-sync-server/production.ini"
+  cd "${pkgname}"
+  mkdir "${pkgdir}"/opt
+  cp -R "${srcdir}/${pkgname}" "${pkgdir}"/opt
 }
-

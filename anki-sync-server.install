@@ -1,16 +1,95 @@
-#!/bin/bash
-
 post_install() {
-	getent passwd anki-sync-server &>/dev/null || useradd -Mrc 'Anki Sync Server user' -d /var/lib/anki-sync-server -s /usr/bin/nologin anki-sync-server
-	chown -R anki-sync-server: /var/lib/anki-sync-server
-	chown anki-sync-server /usr/bin/ankiserverctl
+  # create user and set ownership
+  useradd -d /opt/anki-sync-server -r -s /sbin/nologin anki-sync-server
+  chown -R anki-sync-server /opt/anki-sync-server
+  chgrp -R anki-sync-server /opt/anki-sync-server
+
+  # link systemd service file
+  ln -s /opt/anki-sync-server/plugins/systemd/anki-sync-server.service /etc/systemd/system/
+  systemctl enable anki-sync-server
+  systemctl start anki-sync-server
+
+  # install prerequisites as stated on the website
+  sudo -u anki-sync-server pip install -r /opt/anki-sync-server/anki-bundled/requirements.txt --user 
+  sudo -u anki-sync-server pip install webob --user
+
+  # post installation instructions
+  cat << EOF 
+=======================================================================
+------------------
+Post Installation:
+------------------
+You'll need to go to:
+
+    /opt/anki-sync-server
+
+and run:
+
+    sudo -u anki-sync-server ./ankisyncctl.py adduser <username>
+
+to add a new user to the anki database.
+
+--------------------
+Plugin Installation:
+--------------------
+To have anki interface with the server, you'll need to copy the plugin
+from /opt/anki-sync-server/plugins to the relevant directory.
+
+Anki 2.1: ~/.local/share/Anki2/addons21/
+    ln -s /opt/anki-sync-server/plugins/anki2.1/ankisyncd \\
+        ~/.local/share/Anki2/addons21/
+
+Anki 2.0: ~/Anki/addons
+    ln -s /opt/anki-sync-server/plugins/anki2.0/anki-sync-server.py \\
+        ~/Anki/addons
+
+or your OS equivalent.
+
+---------------
+Run The Server:
+---------------
+To just run the server, go to:
+
+    /opt/anki-sync-server/
+
+then run:
+
+    python -m ankisyncd
+
+The server is set to auto start on boot.
+See:
+
+    systemctl status anki-sync-server
+
+for details.
+
+------------------------
+Run Bundled Anki Client:
+------------------------
+execute:
+
+    /opt/anki-sync-server/anki-bundled/runanki
+=======================================================================
+EOF
 }
 
-post_remove() {
-	getent passwd anki-sync-server &>/dev/null && userdel anki-sync-server || true
-	getent group anki-sync-server &>/dev/null && groupdel anki-sync-server || true
+post_remove(){
+  # stop service (and remove systemd files)
+  systemctl stop anki-sync-server
+  systemctl disable anki-sync-server
+  echo "Executing systemctl daemon-reload"
+  systemctl daemon-reload
+
+  # remove user (& group)
+  getent passwd anki-sync-server &>/dev/null && userdel anki-sync-server || true
+  getent group anki-sync-server &>/dev/null && groupdel anki-sync-server || true
+
+  echo "==================================================================="
+  echo "rm -rf /opt/anki-sync-server to remove the database and cache files"
+  echo "==================================================================="
 }
 
-post_upgrade() {
-	post_install
+post_upgrade(){
+  chown -R anki-sync-server /opt/anki-sync-server
+  chgrp -R anki-sync-server /opt/anki-sync-server
 }
