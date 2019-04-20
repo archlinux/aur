@@ -1,0 +1,16 @@
+pkgbase = libbfio
+	pkgdesc = Library for providing a basic file input/output abstraction layer
+	pkgver = 20190112
+	pkgrel = 1
+	url = https://github.com/libyal/libbfio
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	depends = glibc
+	provides = libbfio
+	conflicts = libbfio-git
+	source = https://github.com/libyal/libbfio/releases/download/20190112/libbfio-alpha-20190112.tar.gz
+	sha512sums = 3bf8c4fec6a283c6e03cc25e33737b28fc747655b720b44e621b402f6f3181e9b1778555db45ca4d7d10f36996cb7f2e5d379d0cf958c5aae5579cbc0705e310
+
+pkgname = libbfio
+
