@@ -2,7 +2,7 @@
 # Contributor: greyltc
 
 pkgname=cbang-git
-pkgver=1.3.1.r5.g9ac7a2b
+pkgver=1.3.2.r10.g89a48d3
 pkgrel=1
 pkgdesc="A library of cross-platform C++ utilities"
 arch=('x86_64')
@@ -25,6 +25,9 @@ makedepends=(
 )
 checkdepends=(
   'python2'
+)
+optdepends=(
+  'mariadb-libs: MariaDB database support'
 )
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
