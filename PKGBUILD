@@ -1,6 +1,6 @@
 pkgname=beautifuldnsd
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Quick and clean DNS proxy, especially useful for users with poor ISPs"
 arch=('any')
 url="https://github.com/programmervy/beautifuldnsd"
@@ -8,7 +8,6 @@ license=("custom:PublicDomain")
 depends=('python>=3.7' 'python-dnslib' 'python-yaml')
 optdepends=(
   'dnsmasq: DNS cache'
-  'systemd-resovled: DNS cache'
   'python-pygeoip: China only DNS configuration'
   'geoip-database: provides a database for geoip lookups'
 )
