@@ -54,7 +54,7 @@ _major=5.0
 _minor=9
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -62,10 +62,9 @@ options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
-#_uksm_path="https://raw.githubusercontent.com/dolohow/uksm/master/v4.x"
-_uksm_path="https://raw.githubusercontent.com/zaza42/uksm/master"
-_uksm_ver=5.0.1
-_uksm_patch="uksm-${_uksm_ver}.patch"
+_uksm_path="https://raw.githubusercontent.com/dolohow/uksm/master/v5.x"
+#_uksm_path="https://raw.githubusercontent.com/zaza42/uksm/master"
+_uksm_patch="uksm-${_major}.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
 
@@ -370,7 +369,7 @@ done
 sha512sums=('915397cb24c12c87c96caf264bccf08176632090ce8fe77c899659af274f16f58e160fa607b9d863a42951c75581f1ede594dd73f0486194ccd3e39dbda2e28e'
             'SKIP'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
-            'c6e27e572de970d0a0a92bf71ec68bdf60329cb0e638455fec722fceb53cb1d614ccc78bec2d66283b494087a0e69a7cf00a9a0a8503758516c335c3ce498437'
+            'a0bd443f50e5a743e8ffd00bb07c934fdfbc2f1e219a908c1713955aaf11f4751dfef87a5eb1e1a4596eb6ad01951ccde94bf875dc6a8bfc79da1c56165f51fb'
             '1e8a1deb7a0100627b928b588a9419b58aa42ac1b33d974b83c24dcd4e5f59ace694959e30df2692a96de329d8bab61cd42bb59578f7814845391203416d7364'
             'e6cae518ab26a15c52a720108b906adc4e08b59973d1b4cdf63d07e86bb06301bb3eb84f7a21596f074b82356c92ab5bef681883dcdae942e843f0093e24e199'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
