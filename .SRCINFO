@@ -1,0 +1,17 @@
+pkgbase = libguytools-svn
+	pkgdesc = A library developed for guymager
+	pkgver = 2.0.5.r13
+	pkgrel = 1
+	url = https://guymager.sourceforge.io/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = svn
+	depends = qt5-base
+	provides = libguytools
+	conflicts = libguytools
+	source = libguytools-svn::svn+https://svn.code.sf.net/p/libguytools/code/
+	sha512sums = SKIP
+
+pkgname = libguytools-svn
+
