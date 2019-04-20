@@ -1,0 +1,17 @@
+pkgbase = python-jclib-git
+	pkgdesc = The core of the jabbercat XMPP client
+	pkgver = v0.1.0.r223.d34055ea0110
+	pkgrel = 1
+	url = https://jabbercat.org
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-hsluv
+	provides = python-jclib
+	conflicts = python-jclib
+	source = python-jclib-git::git+https://github.com/jabbercat/jclib.git
+	sha256sums = SKIP
+
+pkgname = python-jclib-git
+

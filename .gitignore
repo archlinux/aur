@@ -1,0 +1,6 @@
+pkg/
+python-jclib-git/
+src/
+*.tar.gz
+*.tar.xz
+*.zip
