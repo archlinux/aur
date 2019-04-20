@@ -1,4 +1,5 @@
-# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Maintainer: Mike Tigas <mike at tig dot as>
+# Ex-Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Ex-Maintainer: end222 <pabloorduna98 at gmail dot com>
 # Ex-Maintainer: Jean Lucas <jean at 4ray dot co>
 # Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
@@ -7,9 +8,9 @@ pkgname=tor-browser-dev
 pkgver=8.5a11
 _language='en-US'
 pkgrel=1
-pkgdesc="Tor Browser is +1 for privacy and -1 for mass surveillance"
+pkgdesc="Tor Browser Bundle (version)"
 arch=('i686' 'x86_64')
-url="https://www.torproject.org/projects/torbrowser.html.en"
+url="https://www.torproject.org/download/alpha/"
 license=('GPL')
 depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
