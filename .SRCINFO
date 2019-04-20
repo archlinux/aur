@@ -1,6 +1,6 @@
 pkgbase = vim-vimwiki
 	pkgdesc = A personal wiki for Vim
-	pkgver = 2.4
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/vimwiki/vimwiki
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = vim-vimwiki
 	license = MIT
 	depends = vim
 	depends = python2
-	source = https://github.com/vimwiki/vimwiki/archive/v2.4.tar.gz
-	sha256sums = dc251fcf10d3475af4434a22081fe271dd6113805cef4f579c5b3bf090608726
+	source = https://github.com/vimwiki/vimwiki/archive/v2.4.1.tar.gz
+	sha256sums = ccae0b8865bd3aea5f0834e888af294c654238f1d472390c1606f0588f01213a
 
 pkgname = vim-vimwiki
 
