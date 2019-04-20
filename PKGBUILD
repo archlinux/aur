@@ -2,7 +2,7 @@
 # Contributor: Sergey Mastykov <smastykov at gmail dot com>
 
 pkgname=python-pyramid
-pkgver=1.10.1
+pkgver=1.10.4
 pkgrel=1
 pkgdesc='A very general open source Python web framework.'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=('python-pyramid-debugtoolbar: development mode'
             'python-waitress: pserve/pcreate')
 
 source=($url/archive/${pkgver}.tar.gz)
-sha256sums=('a7763ddd8851a1ee031bde995551dcbc81ff6c88e2da744fefbea082e2193746')
+sha256sums=('7dd0aa9233baa258ef32206900e46a16de792ee1457cfe2f09264edd95bdc088')
 
 build() {
   cd pyramid-$pkgver

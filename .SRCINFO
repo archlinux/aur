@@ -1,6 +1,6 @@
 pkgbase = python-pyramid
 	pkgdesc = A very general open source Python web framework.
-	pkgver = 1.10.1
+	pkgver = 1.10.4
 	pkgrel = 1
 	url = https://github.com/Pylons/pyramid
 	arch = any
@@ -23,8 +23,8 @@ pkgbase = python-pyramid
 	optdepends = python-pastedeploy: pserve/pcreate
 	optdepends = python-chameleon: pserve/pcreate
 	optdepends = python-waitress: pserve/pcreate
-	source = https://github.com/Pylons/pyramid/archive/1.10.1.tar.gz
-	sha256sums = a7763ddd8851a1ee031bde995551dcbc81ff6c88e2da744fefbea082e2193746
+	source = https://github.com/Pylons/pyramid/archive/1.10.4.tar.gz
+	sha256sums = 7dd0aa9233baa258ef32206900e46a16de792ee1457cfe2f09264edd95bdc088
 
 pkgname = python-pyramid
 
