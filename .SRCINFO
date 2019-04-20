@@ -1,0 +1,17 @@
+pkgbase = haskell-titlecase
+	pkgdesc = Convert English words to title case
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/peti/titlecase#readme
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-tasty
+	depends = haskell-tasty-hunit
+	depends = haskell-tasty-quickcheck
+	source = https://hackage.haskell.org/package/titlecase-1.0.1/titlecase-1.0.1.tar.gz
+	sha512sums = 9cc6af3b836eb0d07c7de83c224875469971f757ca8f14029d9a198eba4f49ddbb18e03882f0aeec6eb66c065e9822af909d960b1f33744a235fc4dea76869a8
+
+pkgname = haskell-titlecase
+
