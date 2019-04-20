@@ -5,7 +5,7 @@
  
      unsigned rate;
 -    unsigned freq;
-+#ifdef __ARM_ARCH_ISA_A64
++#ifdef __ARM_ARCH_ISA_ARM
 +    long long unsigned freq;
 +#elif defined(__x86_64)
 +    long unsigned freq;
