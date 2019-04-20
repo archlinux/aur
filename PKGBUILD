@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.29.0.118.gf2e7e81bda
+pkgver=v0.29.0.306.g4e9dc60d9e
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -36,7 +36,7 @@ depends=(
          'rsound'
          'rubberband'
          'sdl2'
-         'shaderc-git'
+         'shaderc'
          'smbclient'
          'uchardet'
          'v4l-utils'
