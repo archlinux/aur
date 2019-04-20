@@ -5,7 +5,7 @@ pkgver=56.2.9
 pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
-url="https://www.waterfoxproject.org/"
+url="https://www.waterfox.net/"
 license=('MPL')
 depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
          'hunspell' 'ttf-font' 'hicolor-icon-theme' 'kwaterfoxhelper')
