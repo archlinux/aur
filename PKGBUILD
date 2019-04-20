@@ -6,7 +6,7 @@
 
 pkgbase=linux-lts-tomoyo
 _srcname=linux-4.19
-pkgver=4.19.27
+pkgver=4.19.35
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -27,7 +27,7 @@ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '477e37ea3b4d5a84c59f25fa614dbf57e464b51a10ef7a4e72afbcbc0b0f3839'
+            '5124dcab41a075ffc2e9c9197e8caca04aeaaf4ad572d77a84308ac9aee8ba84'
             '2dbe737dd5d186ca0b3b1753ad3d7a4a722b3eb03ec224dc24b49dd491c18cf1'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -97,7 +97,7 @@ _package() {
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("${pkgbase}=${pkgver}" 'linux-tomoyo')
+  provides=("${pkgbase}=${pkgver}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux-lts.install
 
