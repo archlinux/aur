@@ -10,7 +10,7 @@ pkgbase = music-dl
 	depends = python-pycryptodome
 	depends = python-prettytable
 	source = music-dl-2.2.1.tar.gz::https://github.com/0xHJK/music-dl/archive/v2.2.1.tar.gz
-	sha512sums = b6b393a986656e064501f81b5424b603fc19ea479249fb5c17a3ab9b5604c604d6b1d657355935864d3fe10610490b4aa8964d2dd1efa05f80f579f5816f5a6a
+	sha512sums = 74a8c31b341d9da7d997138f743c383fb7b5994dc340dcd4b8ff5d319b8e86f74fcb796a611be316eaa8f62bad26dd0e553dcf003c8ffd288ebd270f697546eb
 
 pkgname = music-dl
 
