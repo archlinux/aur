@@ -12,7 +12,7 @@ pkgdesc="Tor Browser Bundle (alpha version)"
 arch=('i686' 'x86_64')
 url="https://www.torproject.org/download/alpha/"
 license=('GPL')
-depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
+depends=('gtk3' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
 optdepends=('zenity: simple dialog boxes'
