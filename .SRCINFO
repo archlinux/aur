@@ -1,0 +1,14 @@
+pkgbase = neovim-commentary-opt-git
+	pkgdesc = Comment stuff out.
+	pkgver = 52.141d9d3
+	pkgrel = 1
+	url = https://github.com/tpope/vim-commentary
+	arch = any
+	license = custom:vim
+	makedepends = git
+	depends = neovim
+	source = git+https://github.com/tpope/vim-commentary.git
+	sha256sums = SKIP
+
+pkgname = neovim-commentary-opt-git
+
