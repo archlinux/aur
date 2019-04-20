@@ -4,7 +4,7 @@
 
 _name="caddy"
 pkgname="$_name-bin"
-pkgver=1.0.0_beta1
+pkgver=1.0.0_beta2
 pkgrel=1
 pkgdesc='HTTP/2 web server with automatic HTTPS'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("https://github.com/mholt/caddy/releases/download/v${pkgver//_/-}/caddy_
         'caddy.service'
         'caddy.tmpfiles'
         'caddy.conf')
-sha512sums=('3dba176d8c06a2ef0d8b9b16890cdfefdff25e13149324828f768efe19950db6f089aac74a1eb9a2fa0562a30667176ce3aa2d8c1ebb926f7cb30bf885fe8439'
+sha512sums=('59c011075a2dd95ec8fa6ce5609e378c2b5c59ff1977dd69f264cbac856d81711cd7cbf6b19d01048e6b04443a2a9686ae99371535cd6a1ea19eb77cd3a9ae9c'
             'fbe0a5bf505c414d9f7dc15b89efa3e03abeecd6e4674bac1db1d3ae6302977a0a605b9b9bc4b7a969f62c5dfa9aeeb0a0b7c705f1a8e793443ee51061d0a4c9'
             '7d8d308c9e262f0a2d6b84e996858ce4c7bb4816660c6ad1bbdafbf01d0eb35720cdccb12cc3418547e0dad6dbe87a0e6a3d15d519fb7d44d32f03f126a15117'
             'fa249c1fe22bd02cb7e6fbeaa5d31cf11cb61e89065597d17709425b1009b0bb9eb76de6a0ee5ec5c601712976a1b8819dd60e34c76eeb1e8f339f6363633e71'
