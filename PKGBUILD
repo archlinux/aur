@@ -4,7 +4,7 @@
 
 pkgname='pass-parcellite'
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely (Parcellite history removal support)'
 arch=('any')
 url='https://www.passwordstore.org/'
@@ -20,7 +20,7 @@ conflicts=('passmenu' 'pass')
 source=("https://git.zx2c4.com/password-store/snapshot/password-store-${pkgver}.tar.xz"
 	"pass-parcellite.patch")
 sha256sums=('2b6c65846ebace9a15a118503dcd31b6440949a30d3b5291dfb5b1615b99a3f4'
-            'f37dcc73d214fc9435e499f4b4c153fa93e923bd9dc7fe3d8fc1821119054fb1')
+            '451a0e4b09cb56fa57382a6ee30f646fe7734658c709dbe6e2411cafe75af155')
 
 prepare() {
   cd "${srcdir}/password-store-$pkgver/"
