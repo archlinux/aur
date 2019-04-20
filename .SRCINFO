@@ -1,21 +1,21 @@
 pkgbase = pop-gnome-shell-theme-bin
 	pkgdesc = System76 Pop GNOME Shell Theme
 	pkgver = 4.0.12
-	pkgrel = 4
-	url = https://github.com/pop-os/gtk-theme
+	pkgrel = 5
+	url = https://github.com/pop-os/gnome-shell-theme
 	arch = any
 	license = GPL2
 	license = CCPL:by-sa
 	depends = gnome-shell>=3.18.3
-	depends = pop-gtk-theme
-	optdepends = pop-icon-theme: Recommended icon theme
+	depends = pop-gtk-theme-bin
+	optdepends = pop-icon-theme-bin: Recommended icon theme
 	optdepends = ttf-fira-sans: Recommended font for window titles and interface
 	optdepends = ttf-fira-mono: Recommended monospace font
 	optdepends = ttf-roboto-slab: Recommended font for documents
 	provides = pop-gnome-shell-theme
 	conflicts = pop-gnome-shell-theme
-	source = http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gnome-shell-theme/pop-gnome-shell-theme_4.0.12~1554738698~19.04~12c776a_all.deb
-	sha256sums = a5ac6986dcf234ab13b0dfe2e942d3df7ad2e1e4ed4c01efc20b2387f1cc0b7c
+	source = http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gnome-shell-theme/pop-gnome-shell-theme_4.0.12~1555462879~19.04~b2719ce_all.deb
+	sha256sums = 32769852a3b87b7d523a48ff2d63e82a5132ac6dbb11d5a3ceea0e9a5fcc0fcc
 
 pkgname = pop-gnome-shell-theme-bin
 
