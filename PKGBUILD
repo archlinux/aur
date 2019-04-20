@@ -7,7 +7,7 @@ pkgdesc="Open protocol for distributed peer-to-peer data exchange"
 arch=(any)
 url="https://datproject.org"
 license=('BSD')
-depends=('nodejs')
+depends=('nodejs' 'npm')
 source=(https://github.com/datproject/dat/archive/v$pkgver.tar.gz)
 
 options=(!strip)
