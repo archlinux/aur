@@ -18,7 +18,7 @@ makedepends=(
   'scons'
   'python2-six'
   'qt5-tools'
-  'cbang>=1.3.1'
+  'cbang'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/CauldronDevelopmentLLC/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('f5203d2bbd32c4e347a8f79122e57b2deea68e6c5bd4f0be4087c4d62a31c8a4')
