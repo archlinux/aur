@@ -6,8 +6,22 @@ pkgdesc="Installs all the soundfont packages in the AUR"
 arch=('any')
 url=""
 license=('custom:unknown')
-depends=('soundfont-unison' 'soundfont-sgm' 'soundfont-generaluser' 'soundfont-zelda3sf2' 'soundfont-zeldamcsf2' 'soundfont-sso-sf2' 'soundfont-arachno' 'soundfont-personalcopy' 'soundfont-opl3-fm-128m' 'soundfont-realfont' 'soundfont-jeux' 'soundfont-fatboy' 'soundfont-sunshine-perc')
-# 'soundfont-titanic''soundfont-toh'
+depends=('soundfont-unison' #GM
+'soundfont-sgm' # GM
+'soundfont-generaluser' GM+GS
+'soundfont-zelda3sf2' # Legend of Zelda: Link to the Past
+'soundfont-zeldamcsf2' # Legend of Zelda: Minish Cap
+'soundfont-sso-sf2' # Sonatina Symphonic Orchestra
+'soundfont-arachno' # GM+GS
+'soundfont-personalcopy' # large
+'soundfont-opl3-fm-128m' # SB16/YM262
+'soundfont-realfont' # GM
+'soundfont-jeux' # organ
+'soundfont-fatboy' # GM+GS
+'soundfont-sunshine-perc' # hand drum+perc
+)
+# 'soundfont-titanic' # source unavailable
+# 'soundfont-toh' # source unavailable
 package() {
   true
 }

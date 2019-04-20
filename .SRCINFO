@@ -7,6 +7,7 @@ pkgbase = soundfonts-aur-meta
 	depends = soundfont-unison
 	depends = soundfont-sgm
 	depends = soundfont-generaluser
+	depends = GM+GS
 	depends = soundfont-zelda3sf2
 	depends = soundfont-zeldamcsf2
 	depends = soundfont-sso-sf2
