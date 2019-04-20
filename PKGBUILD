@@ -1,7 +1,7 @@
 # Maintainer: Marc Tiehuis <marctiehuis at gmail.com>
 
 pkgname=zig-git
-pkgver=0.3.0r3806.3f13a59c
+pkgver=0.4.0.r83.g1030cc97
 pkgrel=1
 pkgdesc="a programming language prioritizing robustness, optimality, and clarity"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'git')
 provides=(zig)
 conflicts=(zig)
 source=("git://github.com/zig-lang/zig.git" 'force_dynamic_llvm.patch' 'no_stage2_artifacts.patch')
-md5sums=('SKIP' '9a935ede50ab8f1a789349fc3b760c1c' 'cb0bbf9c19971a48eff41e8c764ac990')
+md5sums=('SKIP' '9a935ede50ab8f1a789349fc3b760c1c' '84fdaa44cae56d85ee4604a95fa2ccd7')
 
 prepare() {
     cd "$srcdir/$provides"
@@ -22,7 +22,7 @@ prepare() {
 
 pkgver() {
     cd "$srcdir/$provides"
-    printf "0.3.0r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

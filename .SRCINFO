@@ -1,6 +1,6 @@
 pkgbase = zig-git
 	pkgdesc = a programming language prioritizing robustness, optimality, and clarity
-	pkgver = 0.3.0r3806.3f13a59c
+	pkgver = 0.4.0.r83.g1030cc97
 	pkgrel = 1
 	url = http://ziglang.org
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = zig-git
 	source = no_stage2_artifacts.patch
 	md5sums = SKIP
 	md5sums = 9a935ede50ab8f1a789349fc3b760c1c
-	md5sums = cb0bbf9c19971a48eff41e8c764ac990
+	md5sums = 84fdaa44cae56d85ee4604a95fa2ccd7
 
 pkgname = zig-git
 
