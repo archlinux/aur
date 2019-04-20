@@ -1,6 +1,6 @@
 # Maintainer: jerry73204 <jerry73204@gmail.com>
 pkgname=libesedb
-pkgver=20170121
+pkgver=20181229
 pkgrel=1
 pkgdesc='Library and tools to access the Extensible Storage Engine (ESE) Database File (EDB) format.'
 url='https://github.com/libyal/libesedb'
@@ -14,7 +14,7 @@ replaces=()
 backup=()
 install=''
 source=("https://github.com/libyal/libesedb/releases/download/${pkgver}/libesedb-experimental-${pkgver}.tar.gz")
-sha1sums=('6b29b7e634953885c0716f144b278e7b2c64e9e3')
+sha256sums=('fa84b43179755241003f5b76a5193c2c1793a36f4566ed09ff564deaff5b7e63')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
