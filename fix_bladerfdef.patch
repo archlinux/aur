@@ -1,0 +1,15 @@
+--- sdr_bladerf.c.orig	2019-04-19 23:30:59.632979281 -0700
++++ sdr_bladerf.c	2019-04-19 23:32:39.647920562 -0700
+@@ -102,7 +102,11 @@
+     int status;
+ 
+     unsigned rate;
+-    unsigned freq;
++#ifdef __ARM_ARCH_ISA_A64
++    long long unsigned freq;
++#elif defined(__x86_64)
++    long unsigned freq;
++#endif
+     bladerf_lpf_mode lpf_mode;
+     unsigned lpf_bw;
+     bladerf_lna_gain lna_gain;
