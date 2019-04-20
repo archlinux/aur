@@ -1,14 +1,15 @@
 pkgbase = writeas-cli-git
 	pkgdesc = Write.as command line interface
 	pkgver = v1.2_2_ge05f5bd94323
-	pkgrel = 2
+	pkgrel = 3
 	url = https://write.as/apps/cli
 	arch = x86_64
 	license = GPL3
+	makedepends = go
 	depends = glibc
 	provides = writeas-cli
 	conflicts = writeas-cli
-	source = writeas-cli-git::git+https://code.as/writeas/writeas-cli.git
+	source = git+https://github.com/writeas/writeas-cli.git
 	sha256sums = SKIP
 
 pkgname = writeas-cli-git
