@@ -1,0 +1,25 @@
+pkgbase = terminus-font-gq2-ll2-td1
+	pkgdesc = Terminus patched with gq2, ll2, and td1.
+	pkgver = 4.47
+	pkgrel = 1
+	url = http://terminus-font.sourceforge.net/
+	arch = any
+	license = custom:SIL Open Font License, Version 1.1
+	makedepends = xorg-bdftopcf
+	makedepends = fontconfig
+	makedepends = xorg-mkfontscale
+	makedepends = xorg-mkfontdir
+	makedepends = python3
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	optdepends = xorg-fonts-alias
+	provides = terminus-font
+	conflicts = terminus-font
+	source = https://downloads.sourceforge.net/project/terminus-font/terminus-font-4.47/terminus-font-4.47.tar.gz
+	source = fix-75-yes-terminus.patch
+	md5sums = d95f0914e31b838bd54edf8389fdc6cd
+	md5sums = dd9fe762af012c731c866ee9d29e09f0
+
+pkgname = terminus-font-gq2-ll2-td1
+
