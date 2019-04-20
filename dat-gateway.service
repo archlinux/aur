@@ -1,0 +1,16 @@
+[Unit]
+Description="In-memory Dat to HTTP gateway"
+After=network.target
+
+[Service]
+User=dat-gateway
+Group=dat-gateway
+#RuntimeDirectory=dat-gateway
+#RuntimeDirectoryMode=0700
+#WorkingDirectory=/run/dat-gateway
+CacheDirectory=dat-gateway
+ExecStart=/usr/bin/dat-gateway -d $CACHE_DIRECTORY
+#Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

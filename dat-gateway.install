@@ -1,0 +1,9 @@
+USER=dat-gateway
+
+post_install() {
+    getent passwd ${USER} &>/dev/null || {
+        echo -n ">>> Creating ${USER} user... "
+        useradd --system --user-group ${USER}
+        echo "done"
+    }
+}

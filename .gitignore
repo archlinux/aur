@@ -1,0 +1,5 @@
+pkg/
+src/
+dat-gateway/
+*.pkg.tar.xz
+*.tar.gz
