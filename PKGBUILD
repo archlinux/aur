@@ -11,9 +11,10 @@ depends=(
 	'java-environment=8'
 	# these should be reused, but it looks like makefile doesn't care
 	#'android-ndk' 'android-sdk'
- 	#"android-platform-"{15,24,26} 
-	#'android-x86-64-system-image-22'
+ 	#"android-platform-"{} 
+	#"android-x86-64-system-image-"{}
 	#'android-support-repository'
+	#'apache-ant'
 	#base-devel: autoconf (autotools)
 	)
 makedepends=(
@@ -23,26 +24,65 @@ makedepends=(
 	# these should be also reused, but the same happens
 	#'llvm' 'nuget'
 	)
+_android_repo='https://dl.google.com/android/repository'
+_apache_repo='https://archive.apache.org/dist/ant/binaries'
+_ndk="android-ndk-r${_ndk_ver}-linux-x86_64"
+_build_ver='28.0.3'
+_plat_ver='28.0.2'
+_emu_ver='5395263'
+_cmake_ver='3.10.2'
 source=(
 	"${_pkgname}::git+${url}.git"
-	"ext_debugger-libs::git+git://github.com/mono/debugger-libs.git"
-	"ext_dlfcn-win32::git+https://github.com/dlfcn-win32/dlfcn-win32.git#tag=v1.1.1"
-	"ext_Java.Interop::git+https://github.com/xamarin/java.interop.git"
-	"ext_libzip::git+https://github.com/nih-at/libzip.git#tag=rel-1-5-1"
-	"ext_LibZipSharp::git+https://github.com/grendello/LibZipSharp.git"
-	"ext_llvm::git+https://github.com/mono/llvm.git#branch=release_60"
-	"ext_mman-win32::git+https://github.com/witwall/mman-win32.git"
-	"ext_mono::git+https://github.com/mono/mono.git#branch=2018-10"
-	"ext_mxe::git+https://github.com/xamarin/mxe.git#branch=xamarin"
-	"ext_nrefactory::git+git://github.com/icsharpcode/NRefactory.git"
-	"ext_opentk::git+https://github.com/mono/opentk.git"
-	"ext_proguard::git+https://github.com/xamarin/proguard.git"
-	"ext_sqlite::git+https://github.com/xamarin/sqlite.git#branch=3.27.1"
-	"ext_xamarin-android-api-compatibility::git+https://github.com/xamarin/xamarin-android-api-compatibility.git"
-	"ext_xamarin-android-tools::git+https://github.com/xamarin/xamarin-android-tools"
+	'ext_debugger-libs::git+git://github.com/mono/debugger-libs.git'
+	'ext_dlfcn-win32::git+https://github.com/dlfcn-win32/dlfcn-win32.git#tag=v1.1.1'
+	'ext_Java.Interop::git+https://github.com/xamarin/java.interop.git'
+	'ext_libzip::git+https://github.com/nih-at/libzip.git#tag=rel-1-5-1'
+	'ext_LibZipSharp::git+https://github.com/grendello/LibZipSharp.git'
+	'ext_llvm::git+https://github.com/mono/llvm.git#branch=release_60'
+	'ext_mman-win32::git+https://github.com/witwall/mman-win32.git'
+	'ext_mono::git+https://github.com/mono/mono.git#branch=2018-10'
+	'ext_mxe::git+https://github.com/xamarin/mxe.git#branch=xamarin'
+	'ext_nrefactory::git+git://github.com/icsharpcode/NRefactory.git'
+	'ext_opentk::git+https://github.com/mono/opentk.git'
+	'ext_proguard::git+https://github.com/xamarin/proguard.git'
+	'ext_sqlite::git+https://github.com/xamarin/sqlite.git#branch=3.27.1'
+	'ext_xamarin-android-api-compatibility::git+https://github.com/xamarin/xamarin-android-api-compatibility.git'
+	'ext_xamarin-android-tools::git+https://github.com/xamarin/xamarin-android-tools'
+	
+	"${_android_repo}/build-tools_r${_build_ver}-linux.zip"
+	"${_android_repo}/platform-tools_r${_plat_ver}-linux.zip"
+	"${_android_repo}/sdk-tools-linux-4333796.zip"
+	"${_android_repo}/emulator-linux-${_emu_ver}.zip"
+	"${_android_repo}/cmake-${_cmake_ver}-linux-x86_64.zip"
+	"${_android_repo}/android-2.3.3_r02-linux.zip"
+	"${_android_repo}/android-15_r03.zip"
+	"${_android_repo}/android-16_r04.zip"
+	"${_android_repo}/android-17_r02.zip"
+	"${_android_repo}/android-18_r02.zip"
+	"${_android_repo}/android-19_r03.zip"
+	"${_android_repo}/android-20_r02.zip"
+	"${_android_repo}/android-21_r02.zip"
+	"${_android_repo}/android-22_r02.zip"
+	"${_android_repo}/platform-23_r03.zip"
+	"${_android_repo}/platform-24_r02.zip"
+	"${_android_repo}/platform-25_r03.zip"
+	"${_android_repo}/platform-26_r02.zip"
+	"${_android_repo}/platform-27_r03.zip"
+	"${_android_repo}/platform-28_r04.zip"
+	"${_android_repo}/platform-Q_r02.zip"
+	"${_android_repo}/docs-24_r01.zip"
+	"${_android_repo}/android_m2repository_r16.zip"
+	"${_android_repo}/x86-28_r04.zip"
+	"${_apache_repo}/apache-ant-1.9.9-bin.zip"
 	)
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=(
+	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+
+	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+	'SKIP' 'SKIP' 'SKIP'
+	)
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -70,12 +110,23 @@ prepare() {
 	git config submodule.external/xamarin-android-tools.url "$srcdir/ext_xamarin-android-tools"
 	git submodule update
 
-	make prepare MSBUILD=msbuild
+cat <<EOF > Configuration.Override.props
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <AndroidToolchainCacheDirectory>${srcdir}</AndroidToolchainCacheDirectory>
+    <AndroidToolchainDirectory>${srcdir}\android-toolchain</AndroidToolchainDirectory>
+    <AndroidMxeInstallPrefix>\$(AndroidToolchainDirectory)\mxe</AndroidMxeInstallPrefix>
+  </PropertyGroup>
+</Project>
+EOF
+
+	NO_SUDO=true make prepare MSBUILD=msbuild
 }
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	make MSBUILD=msbuild all
+	NO_SUDO=true make MSBUILD=msbuild all
 }
 
 package() {
