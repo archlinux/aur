@@ -4,13 +4,13 @@
 
 _pkgname=yoshimi
 pkgname=$_pkgname-git
-pkgver=r1777.d790386d
+pkgver=r1956.de477d1b
 pkgrel=1
 pkgdesc="a fork of the ZynAddSubFX software systhesizer"
 arch=('x86_64')
 url="https://yoshimi.github.io/"
 license=('GPL')
-depends=('alsa-lib' 'jack' 'fltk' 'fftw' 'mxml' 'cairo')
+depends=('jack' 'fltk' 'fftw' 'mxml')
 makedepends=('cmake' 'lv2' 'mesa' 'git')
 provides=('yoshimi')
 conflicts=('yoshimi')
