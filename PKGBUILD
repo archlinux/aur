@@ -1,6 +1,6 @@
 # Maintainer : aji <43468383+aji-prod@users.noreply.github.com>
 pkgname=tomato
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="AUR local repository manager"
 arch=('any')
@@ -10,7 +10,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz"::https://github.com/aji-prod/tomato/archive/v"${pkgver}".tar.gz
 )
 
-md5sums=('370bbd91976eecb94d7cc8fbf6b2404e')
+md5sums=('5b185fb54227d8a761d1a88834ab4419')
 
 depends=(
 	'docker'
