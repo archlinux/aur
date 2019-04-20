@@ -96,7 +96,7 @@ source=(
 	"${_apache_repo}/apache-ant-1.9.9-bin.zip"
 	)
 sha256sums=()
-for i in "$source[:@]"; do sha256sums+=('SKIP'); done
+for i in "${source[@]}"; do sha256sums+=('SKIP'); done
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
