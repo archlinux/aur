@@ -4,7 +4,7 @@
 pkgname=qt5-location
 _qtver=5.12.3
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
