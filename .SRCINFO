@@ -8,7 +8,6 @@ pkgbase = tapeutape
 	makedepends = scons
 	depends = fltk
 	depends = jack
-	depends = libsamplerate
 	source = http://www.hitmuri.net/uploads/Software/tapeutape-0.1.1.tar.gz
 	source = sconstruct_tapeutape.diff
 	md5sums = ac1168e2b93a2ae1a18d583f904c9dd1
