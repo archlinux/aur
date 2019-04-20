@@ -5,13 +5,13 @@
 _name=luajson
 pkgname=lua-${_name}
 pkgver=1.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="JSON parser/encoder for Lua"
 url="http://luaforge.net/projects/luajson/"
 arch=(any)
 license=(MIT)
 depends=(lua-lpeg)
-source=(https://github.com/harningt/$pkgbase/archive/$pkgver.tar.gz)
+source=(https://github.com/harningt/${_name}/archive/$pkgver.tar.gz)
 sha1sums=('2ea25e4147ad661ff3b6d0427439bf99c06eb46d')
 
 package() {
