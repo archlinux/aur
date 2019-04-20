@@ -5,7 +5,7 @@
 
 _realname=mutter
 pkgname=$_realname-catalyst
-pkgver=3.32.0
+pkgver=3.32.1
 pkgrel=1
 pkgdesc="A window manager for GNOME with patches for catalyst compatibility"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -38,12 +38,14 @@ checkdepends=('xorg-server-xvfb')
 conflicts=('mutter' "gnome-shell>1:${pkgver:0:6}+999")
 provides=("mutter=${pkgver}")
 groups=('gnome')
-_commit=efb1ee97308653a28ed4448b0c405e6faf2c4f40  # tags/3.32.0^0
+_commit=e3f3274bbf631c57f9a01b7bead6ebf6374f5be4  # tags/3.32.1^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
+        0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
         216.patch
         "catalyst-workaround-v2.patch"
         "catalyst mutter cogl.patch")
 sha256sums=('SKIP'
+            '842162bf8cec5d69fdb80c85fd152ddd3db6a9179d11d6f81d486f79814838c0'
             'ed4f3cf738a3cffdf8a6e1a352bf24d74078c3b26fb9262c5746e0d95b9df756'
             '2564846288ea55262d681d38f7e43609c63e94990df1cb0a6b99e16e2c073d14'
             '55079a9daddedc22d9fe4dcfe2e87607345dfafb370f8e7fb6a98c0acae3348a')
@@ -55,6 +57,9 @@ pkgver() {
 
 prepare() {
   cd "$_realname"
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1534089
+  patch -Np1 -i ../0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
 
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/216
   git apply -3 ../216.patch
