@@ -1,0 +1,17 @@
+pkgbase = haskell-pdfinfo
+	pkgdesc = Just a wrapper around the pdfinfo command
+	pkgver = 1.5.4
+	pkgrel = 1
+	url = https://github.com/chrisdone/pdfinfo
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-process-extras
+	depends = haskell-old-locale
+	depends = haskell-time-locale-compat
+	source = https://hackage.haskell.org/package/pdfinfo-1.5.4/pdfinfo-1.5.4.tar.gz
+	sha512sums = 37a6c2b8a5b873124e747a3058931d7538f061671b267c9d29837316425b9ef04a5d6ac6fabd7b07b28b634f9db890f84434bda523821cb973a560266e462d56
+
+pkgname = haskell-pdfinfo
+
