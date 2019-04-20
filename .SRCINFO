@@ -1,0 +1,28 @@
+pkgbase = pass-parcellite
+	pkgdesc = Stores, retrieves, generates, and synchronizes passwords securely (Parcellite history removal support)
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = https://www.passwordstore.org/
+	arch = any
+	license = GPL2
+	checkdepends = git
+	depends = xclip
+	depends = bash
+	depends = gnupg
+	depends = tree
+	depends = parcellite-git
+	optdepends = git: for Git support
+	optdepends = dmenu: for passmenu
+	optdepends = qrencode: for QR code support
+	provides = passmenu
+	provides = pass
+	conflicts = passmenu
+	conflicts = pass
+	replaces = passmenu
+	source = https://git.zx2c4.com/password-store/snapshot/password-store-1.7.3.tar.xz
+	source = pass-parcellite.patch
+	sha256sums = 2b6c65846ebace9a15a118503dcd31b6440949a30d3b5291dfb5b1615b99a3f4
+	sha256sums = f37dcc73d214fc9435e499f4b4c153fa93e923bd9dc7fe3d8fc1821119054fb1
+
+pkgname = pass-parcellite
+
