@@ -1,0 +1,25 @@
+pkgbase = paperboy
+	pkgdesc = A small .pdf management utility
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/2mol/pboy
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-brick
+	depends = haskell-config-ini
+	depends = haskell-either
+	depends = haskell-microlens
+	depends = haskell-microlens-th
+	depends = haskell-path
+	depends = haskell-path-io
+	depends = haskell-pdfinfo
+	depends = haskell-titlecase
+	depends = haskell-vector
+	depends = haskell-vty
+	source = paperboy-1.1.tar.gz::https://github.com/2mol/pboy/archive/1.1.tar.gz
+	sha512sums = d94768d0244c93eaba831338859cbfc671eec88d8e1dde7a38587c15ff77c7898043abcf449a7db73d0efbcb6c630a17587706fa9b87f4c24b9d44425383c939
+
+pkgname = paperboy
+
