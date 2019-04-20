@@ -1,47 +1,60 @@
-# Maintainer: Justin R. St-Amant <jstamant24 at gmail dot  com>
+# Maintainer: Paul Hentschel <aur at hpminc dot com>
+
 pkgname=camotics-git
-pkgver=1.1.0.r0.g9460571
+pkgver=r822.8d1c8fb
 pkgrel=1
-pkgdesc="3-axis NC machining simulation software"
-arch=('i686' 'x86_64')
+pkgdesc="Open-Source Simulation & Computer Aided Machining"
+arch=('x86_64')
 url="http://camotics.org/"
 license=('GPL2')
-depends=('bzip2'
-         'cairo'
-         'expat'
-         'glu'
-         'libffi'
-         'libgl'
-         'libmariadbclient'
-         'libunwind'
-         'openssl'
-         'qt4'
-         'sqlite'
-         'zlib')
-makedepends=('boost' 'cbang-git' 'chakracore-cauldron-git' 'scons')
+depends=(
+  'v8-3.14'
+  'qt5-websockets'
+  'cairo'
+  'desktop-file-utils'
+)
+makedepends=(
+  'git'
+  'scons'
+  'python2-six'
+  'qt5-tools'
+  'cbang-git'
+)
 provides=('camotics')
-replaces=('openscam')
-source=("$pkgname::git+https://github.com/CauldronDevelopmentLLC/CAMotics.git"
-        "camotics.desktop")
-md5sums=('SKIP' 'bca9df64570c6c6e6773e8428e27cfb8')
+conflicts=('camotics')
+source=(
+  "${pkgname%-*}::git+https://github.com/CauldronDevelopmentLLC/CAMotics.git"
+)
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --long --tags | sed 's/-debug-/.r/;s/-/./'
+	cd "${pkgname%-*}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "${pkgname%-*}"
+  sed -i '24 i env.Append(LINKFLAGS = os.environ.get("LDFLAGS"))' SConstruct
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  export CHAKRA_CORE_HOME=/opt/chakracore-cauldron-git
-  export CBANG_HOME=/opt/cbang-git
-  scons qt_version=4
+  cd "${pkgname%-*}"
+  CBANG_HOME=/opt/cbang scons
 }
 
 package() {
-  cd "$srcdir"
-  install -Dm644 "camotics.desktop" \
-          "$pkgdir/usr/share/applications/camotics.desktop"
-  cd "$srcdir/$pkgname"
-  install -Dm644 "images/camotics.png" "$pkgdir/usr/share/pixmaps/camotics.png"
-  scons install compiler=gnu install_prefix="$pkgdir/usr" qt_version=4
+  cd "${pkgname%-*}"
+  CBANG_HOME=/opt/cbang scons install install_prefix="$pkgdir/usr"
+  
+  install -d "$pkgdir/usr/share/${pkgname%-*}"/tpl_lib
+  cp -a tpl_lib/ "$pkgdir/usr/share/${pkgname%-*}"
+  install -Dm644 -t "$pkgdir"/usr/share/applications CAMotics.desktop
+  install -Dm644 -t "$pkgdir"/usr/share/pixmaps images/camotics.png
+  install -Dm644 -t "$pkgdir/usr/share/doc/${pkgname%-*}" README.md CHANGELOG.md COPYING LICENSE
+
+  # install examples and machines
+  install -d "$pkgdir/usr/share/doc/${pkgname%-*}"/{examples,machines}
+  cp -a {examples/,machines/} "$pkgdir/usr/share/doc/${pkgname%-*}"
 }
+
+# vim:set ts=2 sw=2 et:
