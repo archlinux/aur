@@ -31,6 +31,21 @@ pkgbase = xamarin-android-git
 	source = ext_xamarin-android-api-compatibility::git+https://github.com/xamarin/xamarin-android-api-compatibility.git#branch=master
 	source = ext_xamarin-android-tools::git+https://github.com/xamarin/xamarin-android-tools#branch=master
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = xamarin-android-git
 

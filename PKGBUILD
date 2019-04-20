@@ -41,7 +41,8 @@ source=(
 	"ext_xamarin-android-api-compatibility::git+https://github.com/xamarin/xamarin-android-api-compatibility.git#branch=master"
 	"ext_xamarin-android-tools::git+https://github.com/xamarin/xamarin-android-tools#branch=master"
 	)
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
