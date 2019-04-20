@@ -6,8 +6,8 @@
 
 pkgname='electron-cash-git'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=ios_4.0.2_build_200.r5.gb17cdd667
-pkgrel=2
+pkgver=4.0.2.r1.g1e5e144a9
+pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
