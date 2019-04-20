@@ -5,8 +5,8 @@ _gituser="tigersoldier"
 _gitrepo="company-lsp"
 
 pkgname=emacs-company-lsp-git
-pkgver=2.1.0r0.g4eb6949
-pkgrel=2
+pkgver=2.1.0.r9.gafef816
+pkgrel=1
 pkgdesc="Company completion backend for lsp-mod"
 url="https://github.com/${_gituser}/${_gitrepo}"
 arch=('any')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  git describe --tags --long | sed 's+-+r+' | tr - .
+  git describe --tags --long | sed 's+-+.r+' | tr - .
 }
 
 build() {
