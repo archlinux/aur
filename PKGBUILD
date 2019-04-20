@@ -13,8 +13,8 @@ _revert=
 
 
 pkgname=mutter-781835-workaround
-pkgver=3.32.0+49+gb2d0184c6
-pkgrel=2
+pkgver=3.32.1
+pkgrel=1
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -27,10 +27,10 @@ checkdepends=(xorg-server-xvfb)
 provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
-_commit=b2d0184c6efa164ad5dd7a2ca8b10cf13acf5b4c  # master
+_commit=e3f3274bbf631c57f9a01b7bead6ebf6374f5be4 # tags/3.32.1^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
-         216.patch
+        216.patch
         revert.patch)
 sha256sums=('SKIP'
             '842162bf8cec5d69fdb80c85fd152ddd3db6a9179d11d6f81d486f79814838c0'
@@ -60,7 +60,9 @@ prepare() {
   # clutter-stage-cogl: Reduce output latency and reduce missed frames too [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/281
   # first commit replaced by !363
-  git cherry-pick -n f5a1ec1c
+  hash=$(git log --oneline --all | grep 'clutter-stage-cogl: Reschedule update on present' | head -n 1 | awk '{print $1}') # Sorry guys
+  echo "Found $hash for MR281"
+  git cherry-pick -n $hash
 
   # Consolidate all frame throttling into clutter-stage-cogl [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/363
@@ -87,7 +89,7 @@ prepare() {
 
   # cogl: Enable EGL_IMG_context_priority
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/454
-  git cherry-pick -n 6474593e^..966e062d
+  git cherry-pick -n 3f29b478^..7df86fb2
 
   # WIP: renderer-native: Accept frames without ever blocking
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/73
