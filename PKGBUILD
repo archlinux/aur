@@ -1,9 +1,9 @@
 # Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=python-plaster-pastedeploy
-pkgver=0.6
+pkgver=0.7
 _distname=plaster_pastedeploy-$pkgver
-pkgrel=2
+pkgrel=1
 pkgdesc="A loader interface around multiple config file formats."
 arch=('any')
 url="https://github.com/Pylons/plaster_pastedeploy"
@@ -12,7 +12,7 @@ depends=('python-plaster' 'python-pastedeploy')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest-runner')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('6259d32c427bec456b0179835cba35ebb42dd171701d8cc4974ce386cf595bdd')
+sha256sums=('afe2da1f67a1450a739e32eedb3d69d976c8352bf3da1edc7672a99050e5f6ad')
 
 build(){
     cd $_distname
