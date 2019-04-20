@@ -1,8 +1,8 @@
-# Maintainer: Silvio Ankermann <silvio@booq.org>
-# Contributer: Tanguy ALEXIS <tanguy@metatux.fr>
-# Contributer: Shaun Hammill <plloi.pllex@gmail.com>
-# Contributer: Travis Lyons <travis.lyons@gmail.com>
-# Contributer: Lukas Morawietz <lukas.morawietz@gmail.com>
+# Maintainer: Lukas Morawietz <lukas.morawietz@gmail.com>
+# Contributor: Silvio Ankermann <silvio@booq.org>
+# Contributor: Tanguy ALEXIS <tanguy@metatux.fr>
+# Contributor: Shaun Hammill <plloi.pllex@gmail.com>
+# Contributor: Travis Lyons <travis.lyons@gmail.com>
 
 pkgname=magicassistant-gtk
 pkgver=1.5.1.201904160221
