@@ -1,0 +1,16 @@
+diff -ruN ntpsec-1.1.2.old/etc/ntp.d/use-pool ntpsec-1.1.2/etc/ntp.d/use-pool
+--- ntpsec-1.1.2.old/etc/ntp.d/use-pool	2018-09-16 21:36:46.765346436 -0400
++++ ntpsec-1.1.2/etc/ntp.d/use-pool	2018-09-16 21:38:01.871168699 -0400
+@@ -28,7 +28,11 @@
+ # Alternatively, if you are running Linux your distribution may have
+ # a designated pool disparcher, e.g. ubuntu.pool.ntp.org
+ #
+-pool pool.ntp.org iburst
++pool 0.arch.pool.ntp.org iburst
++pool 1.arch.pool.ntp.org iburst
++pool 2.arch.pool.ntp.org iburst
++pool 3.arch.pool.ntp.org iburst
++
+ 
+ # The following sets edit modes for GNU EMACS
+ # Local Variables:

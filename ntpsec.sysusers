@@ -1,0 +1,2 @@
+g ntp 212
+u ntp 212 "NTP system user" /var/lib/ntp

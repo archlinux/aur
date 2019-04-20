@@ -1,7 +1,7 @@
 pkgbase = ntpsec-git
 	pkgdesc = Security-hardened Network Time Protocol implementation (Git HEAD)
 	pkgver = 1.1.3.r478.31d756bcb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ntpsec.org/
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = ntpsec-git
 	makedepends = pps-tools
 	makedepends = w3m
 	depends = avahi
+	depends = libbsd
 	depends = libseccomp
 	depends = python
 	optdepends = gnuplot: for ntpviz
@@ -25,8 +26,9 @@ pkgbase = ntpsec-git
 	provides = ntpsec
 	conflicts = ntp
 	conflicts = ntpsec
+	backup = etc/ntp.d/default.conf
+	backup = etc/ntp.d/use-pool
 	source = git+https://gitlab.com/NTPsec/ntpsec.git
-	validpgpkeys = DA3FDF774CC70FA64729EC4505D9B371477C7528
 	sha512sums = SKIP
 
 pkgname = ntpsec-git
