@@ -48,6 +48,26 @@ source=(
 	'ext_sqlite::git+https://github.com/xamarin/sqlite.git#branch=3.27.1'
 	'ext_xamarin-android-api-compatibility::git+https://github.com/xamarin/xamarin-android-api-compatibility.git'
 	'ext_xamarin-android-tools::git+https://github.com/xamarin/xamarin-android-tools'
+
+	'ext_aspnetwebstack::git+git://github.com/mono/aspnetwebstack.git'
+	'ext_Newtonsoft.Json::git+git://github.com/mono/Newtonsoft.Json.git'
+	'ext_cecil::git+git://github.com/mono/cecil.git'
+	'ext_rx::git+git://github.com/mono/rx.git#branch=rx-oss-v2.2'
+	'ext_ikvm::git+git://github.com/mono/ikvm-fork.git'
+	'ext_ikdasm::git+git://github.com/mono/ikdasm.git'
+	'ext_reference-assemblies::git+git://github.com/mono/reference-assemblies.git'
+	'ext_nunit-lite::git+git://github.com/mono/NUnitLite.git'
+	'ext_nuget-buildtasks::git+git://github.com/mono/NuGet.BuildTasks'
+	'ext_cecil-legacy::git+git://github.com/mono/cecil.git#branch=mono-legacy-0.9.5'
+	'ext_boringssl::git+git://github.com/mono/boringssl.git#branch=mono'
+	'ext_corefx::git+git://github.com/mono/corefx.git'
+	'ext_bockbuild::git+git://github.com/mono/bockbuild.git'
+	'ext_linker::git+git://github.com/mono/linker.git'
+	'ext_roslyn-binaries::git+git://github.com/mono/roslyn-binaries.git'
+	'ext_corert::git+git://github.com/mono/corert.git'
+	'ext_xunit-binaries::git+git://github.com/mono/xunit-binaries.git'
+	'ext_api-doc-tools::git+git://github.com/mono/api-doc-tools.git'
+	'ext_api-snapshot::git+git://github.com/mono/api-snapshot.git'
 	
 	"${_android_repo}/build-tools_r${_build_ver}-linux.zip"
 	"${_android_repo}/platform-tools_r${_plat_ver}-linux.zip"
@@ -72,12 +92,15 @@ source=(
 	"${_android_repo}/platform-Q_r02.zip"
 	"${_android_repo}/docs-24_r01.zip"
 	"${_android_repo}/android_m2repository_r16.zip"
-	"${_android_repo}/x86-28_r04.zip"
+	"${_android_repo}/sys-img/android/x86-28_r04.zip"
 	"${_apache_repo}/apache-ant-1.9.9-bin.zip"
 	)
 sha256sums=(
 	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+
+	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 
 	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
@@ -120,6 +143,30 @@ cat <<EOF > Configuration.Override.props
   </PropertyGroup>
 </Project>
 EOF
+
+	pushd 'external/mono'
+	git submodule init
+	git config submodule.external/aspnetwebstack.url "$srcdir/ext_aspnetwebstack"
+	git config submodule.external/Newtonsoft.Json.url "$srcdir/ext_Newtonsoft.Json"
+	git config submodule.external/cecil.url "$srcdir/ext_cecil"
+	git config submodule.external/rx.url "$srcdir/ext_rx"
+	git config submodule.external/ikvm.url "$srcdir/ext_ikvm"
+	git config submodule.external/ikdasm.url "$srcdir/ext_ikdasm"
+	git config submodule.external/reference-assemblies.url "$srcdir/ext_reference-assemblies"
+	git config submodule.external/nunit-lite.url "$srcdir/ext_nunit-lite"
+	git config submodule.external/nuget-buildtasks.url "$srcdir/ext_nuget-buildtasks"
+	git config submodule.external/cecil-legacy.url "$srcdir/ext_cecil-legacy"
+	git config submodule.external/boringssl.url "$srcdir/ext_boringssl"
+	git config submodule.external/corefx.url "$srcdir/ext_corefx"
+	git config submodule.external/bockbuild.url "$srcdir/ext_bockbuild"
+	git config submodule.external/linker.url "$srcdir/ext_linker"
+	git config submodule.external/roslyn-binaries.url "$srcdir/ext_roslyn-binaries"
+	git config submodule.external/corert.url "$srcdir/ext_corert"
+	git config submodule.external/xunit-binaries.url "$srcdir/ext_xunit-binaries"
+	git config submodule.external/api-doc-tools.url "$srcdir/ext_api-doc-tools"
+	git config submodule.external/api-snapshot.url "$srcdir/ext_api-snapshot"
+	git submodule update
+	popd
 
 	NO_SUDO=true make prepare MSBUILD=msbuild
 }
