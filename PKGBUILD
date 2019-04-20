@@ -7,12 +7,12 @@ pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('x86_64')
 url="https://arrow.apache.org"
 license=('Apache')
-depends=('boost-libs' 'brotli' 'double-conversion' 'gflags' 'grpc' 'google-glog' 'lz4' 'protobuf' 'rapidjson' 'thrift' 'zstd')
-checkdepends=('gtest')
+depends=('boost-libs' 'brotli' 'double-conversion' 'gflags' 'grpc' 'google-glog' 'lz4' 'protobuf' 'rapidjson' 'snappy' 'thrift' 'zstd')
+checkdepends=()
 optdepends=()
 provides=('parquet-cpp')
 conflicts=('parquet-cpp')
-makedepends=('apache-orc' 'boost' 'cmake' 'flatbuffers' 'python-numpy' 'snappy-static')
+makedepends=('apache-orc' 'boost' 'cmake' 'flatbuffers' 'python-numpy')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz")
 sha256sums=('380fcc51f0bf98e13148300c87833e734cbcd7b74dddc4bce93829e7f7e4208b')
 
