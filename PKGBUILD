@@ -37,8 +37,8 @@ package() {
   cd "${_pkgname}/build"
 
   # Fix insecure rpath
-  chrpath -d Bonzomatic
+  chrpath -d bonzomatic
 
-  install -Dm755 Bonzomatic "${pkgdir}/usr/bin/Bonzomatic"
+  install -Dm755 bonzomatic "${pkgdir}/usr/bin/bonzomatic"
   install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
