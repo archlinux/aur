@@ -1,13 +1,14 @@
 pkgbase = nl-filter
 	pkgdesc = LADSPA implementation of the Dobson-Ffitch non-linear filter
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.skynet.ie/~jmmcd/development.html
 	arch = x86_64
 	license = GPL
+	makedepends = ladspa
 	depends = glibc
 	options = !libtool
-	source = http://www.skynet.ie/~jmmcd/software/nl-filter-0.1.0.tar.gz
+	source = nl-filter-0.1.0.tar.gz::http://www.skynet.ie/~jmmcd/software/nl-filter.tar.gz
 	md5sums = 0d6211f4b802b29317b068951dece2e7
 
 pkgname = nl-filter
