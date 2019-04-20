@@ -1,0 +1,14 @@
+pkgbase = wait-online-git
+	pkgdesc = Tools to wait for Internet reachability (HTTP 204), useful if behind a captive portal
+	pkgver = 0.r14.2ba4f71
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-systemd
+	conflicts = wait-online
+	source = git+https://github.com/lilydjwg/wait-online.git
+	sha512sums = SKIP
+
+pkgname = wait-online-git
+
