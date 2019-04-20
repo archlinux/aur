@@ -5,7 +5,7 @@ _install_dir="opt/$_pkg_name"
 _symlink_dir="usr/bin"
 
 pkgname="$_pkg_name"
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc="A utility to automatically perform Arch Linux system maintenance"
 arch=('x86_64')
@@ -33,7 +33,7 @@ backup=("$_install_dir/settings.sh")
 
 source=("https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/pkg/$pkgname-$pkgver.tar.xz")
 
-md5sums=('8930461ab1d7da45e78d197d618ed4b9')
+md5sums=('ea0c7ed793689097dec8fe0097a437cb')
 
 prepare() {
     umask 022
@@ -44,7 +44,7 @@ prepare() {
 build() {
     install -m 755 "$srcdir/$pkgname/other/archNews.py" "$_install_dir/other"
     install -m 755 "$srcdir/$pkgname/ui/cli.sh" "$_install_dir/ui"
-    install -m 755 "$srcdir/$pkgname/ui/nCurses.sh" "$_install_dir/ui"
+    install -m 755 "$srcdir/$pkgname/ui/dialog.sh" "$_install_dir/ui"
     install -m 755 "$srcdir/$pkgname/logic.sh" "$_install_dir"
     install -m 755 "$srcdir/$pkgname/menu.sh" "$_install_dir"
     install -m 755 "$srcdir/$pkgname/run.sh" "$_install_dir"
