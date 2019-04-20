@@ -7,7 +7,6 @@ pkgbase = tranches
 	license = GPL
 	makedepends = scons
 	depends = fltk
-	depends = alsa-lib
 	depends = jack
 	source = http://www.hitmuri.net/uploads/Software/tranches-0.1.1.tar.gz
 	source = sconstruct_tranches.diff
