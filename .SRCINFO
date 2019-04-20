@@ -1,0 +1,14 @@
+pkgbase = neovim-ale-opt-git
+	pkgdesc = Asynchronous linting/fixing engine for (neo)vim.
+	pkgver = 2966.80ef7ea2
+	pkgrel = 1
+	url = https://github.com/w0rp/ale
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = neovim
+	source = git+https://github.com/w0rp/ale.git
+	sha256sums = SKIP
+
+pkgname = neovim-ale-opt-git
+
