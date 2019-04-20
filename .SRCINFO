@@ -1,0 +1,16 @@
+pkgbase = python-d2l
+	pkgdesc = Dive into Deep Learning Book Utilities
+	pkgver = 0.8.7
+	pkgrel = 1
+	url = http://d2l.ai/
+	arch = any
+	license = Apache
+	depends = python
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = jupyter
+	source = https://files.pythonhosted.org/packages/source/d/d2l/d2l-0.8.7.tar.gz
+	sha256sums = 7e921ed7a29b9f5966149a4e55089688c1d5d9a77f93940da292a6017d4799c2
+
+pkgname = python-d2l
+
