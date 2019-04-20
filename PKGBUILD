@@ -1,6 +1,6 @@
 # Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 pkgname=bashtuner
-pkgver=2018.10.31
+pkgver=v2019.04.20
 pkgrel=1
 pkgdesc="A guitar tuner written in bash with several tunings, and support for some other stringed instruments"
 arch=('any')
@@ -10,7 +10,7 @@ license=('unlicense')
 depends=('dialog' 'sox')
 provides=("$pkgname")
 conflicts=("$pkgname")
-md5sums=('0e932c9bfb02268ab5b477e0ab099b89')
+sha512sums=('cbe158e8d872a93815df63fa359f8b5ea5ea3397d603e65358562a6ce5d79b038e244f2a1b8bf7276770f3707d7fe1ca439541268bdca087d20a8a9f9dd8cdb5')
 
 package()
  {
