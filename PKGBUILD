@@ -14,7 +14,7 @@ pkgrel=1
 pkgdesc="Oracle Java Development Kit (v8) for ARMv7, ARMv6 and ARMv8 (64-bit)"
 arch=('armv6h' 'armv7h' 'aarch64')
 url=http://www.oracle.com/technetwork/java/javase/downloads/index.html
-license=('custom')
+license=('custom:Oracle')
 depends=('ca-certificates-java' 'java-environment-common' 'java-runtime-common')
 optdepends=('alsa-lib: for basic sound support' 'ttf-font: fonts')
 makedepends=('pacman>=4.2.0')
@@ -70,16 +70,15 @@ sha256sums_armv7h=('dd6a8666dd340ae240c6431235d32e2ef218cb3b39aa1c63ada8373ca91a
 sha256sums_aarch64=('4c640dd74af0612c99daa89d91dc8a8a169d739523e903e2213523aad96e8b6d')
 
 package() {
-    cd ${_pkgname}1.${_major}.0_${_minor} || exit 1
+    cd "${_pkgname}1.${_major}.0_${_minor}" || exit 1
 
     msg2 "Creating directory structure..."
-    install -d "$pkgdir"/etc/.java/.systemPrefs
-    install -d "$pkgdir"/usr/lib/jvm/java-$_major-$_pkgname/bin
-    install -d "$pkgdir"/usr/lib/mozilla/plugins
-    install -d "$pkgdir"/usr/share/licenses/java$_major-$_pkgname
+    install -d "$pkgdir/etc/.java/.systemPrefs"
+    install -d "$pkgdir/usr/lib/jvm/java-$_major-$_pkgname/bin"
+    install -d "$pkgdir/usr/lib/mozilla/plugins"
+    install -d "$pkgdir/usr/share/licenses/java$_major-$_pkgname"
 
     msg2 "Removing redundancies..."
-    #rm    db/bin/*.bat
     rm    jre/lib/fontconfig.*.bfc
     rm    jre/lib/fontconfig.*.properties.src
     rm    jre/*.txt
@@ -89,10 +88,10 @@ package() {
     rm    man/ja
 
     msg2 "Moving contents..."
-    mv ./* "$pkgdir"/$_jvmdir
+    mv ./* "$pkgdir/$_jvmdir"
 
     # Cd to the new playground
-    cd "$pkgdir"/$_jvmdir || exit 1
+    cd "$pkgdir/$_jvmdir" || exit 1
 
     msg2 "Fixing directory structure..."
     # Replace duplicate binaries in bin/ with links to jre/bin/
@@ -111,7 +110,7 @@ package() {
     done
 
     # Replace JKS keystore with 'ca-certificates-java'
-    ln -sf /etc/ssl/certs/java/cacerts jre/lib/security/cacerts
+    ln -sf "/etc/ssl/certs/java/cacerts jre/lib/security/cacerts"
 
     # Suffix man pages
     find man/ -type f -print0 | while IFS= read -r -d '' i; do
@@ -120,30 +119,30 @@ package() {
 
     # Move man pages
     mv man/ja_JP.UTF-8/ man/ja
-    mv man/ "$pkgdir"/usr/share
+    mv "man/" "$pkgdir/usr/share"
 
     # Move/link licenses
-    mv COPYRIGHT LICENSE ./*.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
-    ln -sf /usr/share/licenses/java$_major-$_pkgname/ "$pkgdir"/usr/share/licenses/$_pkgname
+    mv "COPYRIGHT" "LICENSE" ./*.txt "$pkgdir/usr/share/licenses/java$_major-$_pkgname/"
+    ln -sf "/usr/share/licenses/java$_major-$_pkgname/" "$pkgdir/usr/share/licenses/$_pkgname"
 
     msg2 "Installing Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files..."
     # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
     # things like 256-bit AES. Enabled by default in OpenJDK:
     # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
     # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
-    install -m644 "$srcdir"/UnlimitedJCEPolicyJDK$_major/*.jar jre/lib/security/
-    install -Dm644 "$srcdir"/UnlimitedJCEPolicyJDK$_major/README.txt \
-        "$pkgdir"/usr/share/doc/$_pkgname/README_-_Java_JCE_Unlimited_Strength.txt
+    install -m644 "$srcdir/UnlimitedJCEPolicyJDK$_major/"*.jar "jre/lib/security/"
+    install -Dm644 "$srcdir/UnlimitedJCEPolicyJDK$_major/README.txt" \
+        "$pkgdir/usr/share/doc/$_pkgname/README_-_Java_JCE_Unlimited_Strength.txt"
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
     # - https://blogs.oracle.com/kyle/entry/copy_and_paste_in_java
     # - http://slightlyrandombrokenthoughts.blogspot.com/2011/03/oracle-java-applet-clipboard-injection.html
-    _line=$(awk '/permission/{a=NR}; END{print a}' "$pkgdir"/etc/java-$_jname/security/java.policy)
+    _line=$(awk '/permission/{a=NR}; END{print a}' "$pkgdir/etc/java-$_jname/security/java.policy")
     sed "$_line a\\\\n \
         // (AUR) Allow unsigned applets to read system clipboard, see:\n \
         // - https://blogs.oracle.com/kyle/entry/copy_and_paste_in_java\n \
         // - http://slightlyrandombrokenthoughts.blogspot.com/2011/03/oracle-java-applet-clipboard-injection.html\n \
         permission java.awt.AWTPermission \"accessClipboard\";" \
-        -i "$pkgdir"/etc/java-$_jname/security/java.policy
+        -i "$pkgdir/etc/java-$_jname/security/java.policy"
 }
