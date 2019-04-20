@@ -2,6 +2,8 @@
 # Author: Maxim Devaev <mdevaev@gmail.com>
 
 
+# CUSTOMIZEPKG_PIKVM
+
 [ -n "$PIKVM_PLATFORM" ] || PIKVM_PLATFORM="v1-vga v1-hdmi"
 [ -n "$PIKVM_BOARD" ] || PIKVM_BOARD="rpi2 rpi3"
 
