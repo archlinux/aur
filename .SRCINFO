@@ -1,6 +1,6 @@
 pkgbase = regal
 	pkgdesc = a simple regular alarm for terminal
-	pkgver = 5.9699978
+	pkgver = 3.16c7ab3
 	pkgrel = 1
 	url = https://github.com/yoarch/regal
 	arch = any
