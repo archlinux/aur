@@ -2,8 +2,6 @@
 # Author: Maxim Devaev <mdevaev@gmail.com>
 
 
-# CUSTOMIZEPKG_PIKVM
-
 [ -n "$PIKVM_PLATFORM" ] || PIKVM_PLATFORM="v1-vga v1-hdmi"
 [ -n "$PIKVM_BOARD" ] || PIKVM_BOARD="rpi2 rpi3"
 
@@ -15,7 +13,7 @@ for _platform in $PIKVM_PLATFORM; do
 	done
 done
 pkgbase=kvmd
-pkgver=0.153
+pkgver=0.154
 pkgrel=1
 pkgdesc="The main Pi-KVM daemon"
 url="https://github.com/pi-kvm/kvmd"
