@@ -3,13 +3,13 @@
 _pkgname=nekobee
 pkgname=$_pkgname-git
 pkgver=0.1.8.r2.593d4be
-pkgrel=1
+pkgrel=2
 pkgdesc="a DSSI softsynth recreation of a classic single-oscillator bass monosynth"
 arch=('x86_64')
 url="https://github.com/gordonjcp/nekobee"
 license=('GPL')
 depends=('gtk2' 'liblo')
-makedepends=('git' 'dssi') 
+makedepends=('git' 'dssi' 'python2' 'ladspa') 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(git+https://github.com/gordonjcp/nekobee.git)
