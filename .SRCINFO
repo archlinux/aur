@@ -1,14 +1,14 @@
 pkgbase = klfc-bin
 	pkgdesc = Tool to create advanced keyboard layouts in various formats (binary version)
-	pkgver = 1.5.4
+	pkgver = 1.5.5
 	pkgrel = 1
 	url = https://github.com/39aldo39/klfc
 	arch = x86_64
 	license = GPL3
 	provides = klfc
 	conflicts = klfc
-	source = https://github.com/39aldo39/klfc/releases/download/v1.5.4/klfc-linux-amd64-v1.5.4.tar.xz
-	md5sums = c3121db0c7c8a9518f59395a07606c45
+	source = https://github.com/39aldo39/klfc/releases/download/v1.5.5/klfc-linux-amd64-v1.5.5.tar.xz
+	md5sums = 076b26d213e09a28279e6172480d3d7f
 
 pkgname = klfc-bin
 
