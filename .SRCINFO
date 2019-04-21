@@ -1,12 +1,12 @@
 pkgbase = treeform
 	pkgdesc = Linguistic Syntax/Semantics tree drawing editor
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/treeform/
 	arch = any
 	license = GPL2
 	makedepends = unzip
-	depends = java-runtime
+	depends = jre8-openjdk
 	source = https://downloads.sourceforge.net/project/treeform/TreeForm%20Unified/TreeForm%201.0.3/TreeForm_1_0_3.zip
 	source = treeform.sh
 	md5sums = 5c560fc47936a6b620ecfc74d18bd4b6
