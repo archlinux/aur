@@ -99,7 +99,7 @@ source=(
 	"${_apache_repo}/apache-ant-1.9.9-bin.zip"
 	)
 noextract=(
-	"android-ndk-r${_ndk_ver}-linux-x86_64"
+	"android-ndk-r${_ndk_ver}-linux-x86_64.zip"
 	"build-tools_r${_build_ver}-linux.zip"
 	"platform-tools_r${_plat_ver}-linux.zip"
 	'sdk-tools-linux-4333796.zip'
