@@ -1,7 +1,7 @@
 pkgbase = jevois-inventor
 	pkgdesc = An easy to use GUI for programming the Jevois smart camera
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jevois/jevois-inventor
 	arch = i686
 	arch = x86_64
