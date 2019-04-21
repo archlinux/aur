@@ -1,6 +1,6 @@
 pkgname=xava-git
 _pkgname=xava
-pkgver=0.6.1.2.r56.g6d2e1d0
+pkgver=0.6.1.1.r56.g6d2e1d0
 pkgrel=1
 pkgdesc='X11 Audio Visualizer for Alsa/Pulseaudio'
 arch=('any')
@@ -19,7 +19,7 @@ pkgver() {
 build() {
   mkdir -p $_pkgname/build
   cd $_pkgname/build
-  cmake ..
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
   make
 }
 
