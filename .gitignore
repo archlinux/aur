@@ -1,0 +1,4 @@
+*.7z
+*.pkg.tar.xz
+pkg
+src
