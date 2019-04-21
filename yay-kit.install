@@ -1,0 +1,8 @@
+post_install() {
+	id yay &>/dev/null || useradd -r -c "yay installer user" -m -d /var/yay -s /sbin/nologin yay
+	echo "==> Ensure that the 'Color' option is enabled in '/etc/pacman.conf' as well"
+}
+
+post_remove() {
+	userdel yay &>/dev/null
+}

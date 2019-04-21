@@ -1,0 +1,17 @@
+pkgbase = yay-kit
+	pkgdesc = Bash wrapper for pacman and YAY
+	pkgver = 20190421
+	pkgrel = 1
+	url = http://github.com/pi-kvm/yay-kit
+	install = yay-kit.install
+	arch = any
+	license = GPL3
+	depends = yay
+	depends = sudo
+	source = pkg-install
+	source = sudoers
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = yay-kit
+

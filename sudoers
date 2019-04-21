@@ -1,0 +1,1 @@
+yay ALL=(root) NOPASSWD: /sbin/pacman

@@ -1,0 +1,10 @@
+#!/bin/sh
+if [ `whoami` != root ]; then
+	echo "Only root can do that"
+	exit 1
+fi
+pacman --noconfirm -Syy && sudo -u yay yay --noconfirm --mflags="--ignorearch --nocheck" -S $@
+retval=$?
+pacman --noconfirm -Sc
+rm -rf /var/yay/.cache
+exit $retval
