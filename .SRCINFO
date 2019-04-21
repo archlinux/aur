@@ -1,6 +1,6 @@
 pkgbase = nginx-rtmp-sergey-git
 	pkgdesc = NGINX-based Media Streaming Server, forked by Sergey Dryabzhinsky.
-	pkgver = 1.15.11_a5ac72c274
+	pkgver = 1.15.12_a5ac72c274
 	pkgrel = 0
 	url = https://github.com/sergey-dryabzhinsky/nginx-rtmp-module
 	install = nginx.install
@@ -22,11 +22,11 @@ pkgbase = nginx-rtmp-sergey-git
 	backup = etc/nginx/uwsgi_params
 	backup = etc/nginx/win-utf
 	backup = etc/logrotate.d/nginx
-	source = https://nginx.org/download/nginx-1.15.11.tar.gz
+	source = https://nginx.org/download/nginx-1.15.12.tar.gz
 	source = nginx-rtmp-module-a5ac72c274::git+https://github.com/sergey-dryabzhinsky/nginx-rtmp-module#commit=a5ac72c274
 	source = service
 	source = logrotate
-	md5sums = db2e39efc4cff854a887ee5bbeb27fb9
+	md5sums = 3f4d4f1d3a5c3c4f1cbc0e353c9cd9df
 	md5sums = SKIP
 	md5sums = ef491e760e7c1ffec9ca25441a150c83
 	md5sums = 6a01fb17af86f03707c8ae60f98a2dc2
