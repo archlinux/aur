@@ -1,6 +1,15 @@
 post_install() {
     getent passwd cloudflared &>/dev/null || useradd --system --user-group -m --home /var/lib/cloudflared cloudflared
     chown cloudflared.cloudflared /etc/cloudflared
+    touch /var/log/cloudflared.log
+    chown cloudflared.cloudflared /var/log/cloudflared.log
+}
+
+post_upgrade() {
+    getent passwd cloudflared &>/dev/null || useradd --system --user-group -m --home /var/lib/cloudflared cloudflared
+    chown cloudflared.cloudflared /etc/cloudflared
+    touch /var/log/cloudflared.log
+    chown cloudflared.cloudflared /var/log/cloudflared.log
 }
 
 # vim: ts=2 sw=2 et:
