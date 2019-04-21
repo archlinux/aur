@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=cloudflared-bin
-pkgver=2019.4.0
+pkgver=2019.4.1
 pkgrel=1
 pkgdesc="An Argo Tunnel client which proxies any local webserver through the Cloudflare network"
 arch=("x86_64" "i686" "armv6h" "armv7h")
@@ -23,10 +23,10 @@ sha256sums=('6a486a0f6c00e87cce1caf0aa8db45ea9fefd0bf91d9be6fc44460160dc0dbda'
             '4e06eb54143d872f73707ed2bba2ba2198649d3066df741bd0cfda5d1a5f334d'
             '407ff5e3f3fdfa3440bac2d4c8cb191493be37fa3bad388e7ab49ffd07c83f21'
             'bc40e3f7e1b21b93a949a1b1c05639584943d9ce9cc7ccb96612688eeb9fd206')
-sha256sums_x86_64=('efed0746f107d20d3a8c2be720ad7522a7b963d338bc22c264851291caa709d0')
-sha256sums_i686=('830d468baabdea6965f5443e91329a040d7cabbaa72551247a6dc0264f30b2a8')
-sha256sums_armv6h=('5ce59d11bc8900d315a625a39a45b92ef0b3d967c7b0219df66978139ec7f296')
-sha256sums_armv7h=('5ce59d11bc8900d315a625a39a45b92ef0b3d967c7b0219df66978139ec7f296')
+sha256sums_x86_64=('6e762d64a839406bf94bd4815212f4d5e028143fa4e7eed3419453d2c6192cf6')
+sha256sums_i686=('64a85a7971a4c232a3c8bc0c107005b4215aa309f124a05d4d41a1cd64d484ce')
+sha256sums_armv6h=('823e23790864087ff640ce4d0966e23a5613d8cda30ebefdd663a35e14d374ba')
+sha256sums_armv7h=('823e23790864087ff640ce4d0966e23a5613d8cda30ebefdd663a35e14d374ba')
 
 package() {
     # Install License
