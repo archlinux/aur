@@ -8,7 +8,7 @@ pkgdesc="SYS PC Tool is a software for downloading flights recorded inside Syrid
 arch=('x86_64')
 url="https://www.syride.com/"
 license=('unknown')
-depends=('glibc>=2.17' 'krb5>=1.10' 'libldap' 'gtk2' 'libusb' 'libxml2' 'p11-kit' 'openssl')
+depends=('glibc>=2.17' 'krb5>=1.10' 'libldap' 'gtk2' 'libusb' 'libxml2' 'p11-kit' 'openssl' 'libcurl-gnutls')
 #install=
 source=("https://www.syride.com/downloads/$pkgname-$pkgver-$pkgrel""_amd64.deb")
 md5sums=('d89f77649a1cf094a5f6821b4170de03')
