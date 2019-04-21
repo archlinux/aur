@@ -7,8 +7,8 @@
 # Contributor: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=redshift-wlr-gamma-control-git
-pkgver=1.12.r45.g420d0d5
-pkgrel=2
+pkgver=1.12.r25.geecbfed
+pkgrel=1
 pkgdesc="Adjusts the color temperature of your screen according to your surroundings with Wayland wlr-gamma-control protocol support. (development version)"
 arch=('i686' 'x86_64')
 url='https://github.com/minus7/redshift/tree/wayland'
