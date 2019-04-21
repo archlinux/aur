@@ -1,4 +1,5 @@
-# Maintainer: mdraw.gh@gmail.com
+# Maintainer: ber532k@gmx.de
+# Previous maintainer: mdraw.gh@gmail.com
 
 # This is currently based on Python 2 because of the hard dependency on
 # unicodecsv. Once this is resolved, I will migrate it to Python 3.
