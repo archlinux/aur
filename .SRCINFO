@@ -1,6 +1,6 @@
 pkgbase = keyleds
 	pkgdesc = ➤ Advanced RGB LED animation driver for G213, G410, G513, G610, G810, G910 and GPro
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/spectras/keyleds
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = keyleds
 	depends = luajit
 	depends = systemd
 	backup = etc/keyledsd.conf
-	source = https://github.com/spectras/keyleds/archive/v1.0.0/keyleds-1.0.0.tar.gz
-	md5sums = 1b8c831406f85852c745b7f7e53d3292
+	source = https://github.com/spectras/keyleds/archive/v1.1.0/keyleds-1.1.0.tar.gz
+	md5sums = 7b79f2d3daed5953e05f4b57d7808433
 
 pkgname = keyleds
 

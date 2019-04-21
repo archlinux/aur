@@ -1,6 +1,6 @@
 # Maintainer: Julien Hartmann <juli1.hartmann@gmail.com>
 pkgname=keyleds
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="➤ Advanced RGB LED animation driver for G213, G410, G513, G610, G810, G910 and GPro"
 arch=('i686' 'x86_64')
@@ -47,4 +47,4 @@ package() {
   install -m 644 -D build/keyledsctl.1.gz "$pkgdir/usr/share/man/man1/keyledsctl.1"
 }
 
-md5sums=('1b8c831406f85852c745b7f7e53d3292')
+md5sums=('7b79f2d3daed5953e05f4b57d7808433')
