@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Thunder Mini
+Comment=Extremely compact download function-specific download tools.
+Name[zh_CN]=迅雷精简版
+Comment[zh_CN]=体积极度小巧下载功能专一的下载工具。
+Exec=thunder-mini %u
+Type=Application
+StartupNotify=true
+Categories=Network;FileTransfer;
+Keywords=filetransfer;download files;download manager;
+Icon=thunder-mini
+StartupWMClass=thundermini.exe
