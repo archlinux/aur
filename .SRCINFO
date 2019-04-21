@@ -6,7 +6,6 @@ pkgbase = python-oxd-git
 	arch = any
 	license = MIT
 	depends = python
-	depends = python-requests
 	source = git+https://github.com/mpolidori/python-oxd.git
 	md5sums = SKIP
 
