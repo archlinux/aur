@@ -1,0 +1,16 @@
+pkgbase = pacman-hooks-desbma-git
+	pkgdesc = Various personal Pacman hooks
+	pkgver = r3.4cf2dc4
+	pkgrel = 1
+	url = https://github.com/desbma/pacman-hooks
+	arch = x86_64
+	license = GPL
+	makedepends = rust
+	depends = pacman-contrib
+	depends = patch
+	depends = reflector
+	source = git+https://github.com/desbma/pacman-hooks
+	md5sums = SKIP
+
+pkgname = pacman-hooks-desbma-git
+
