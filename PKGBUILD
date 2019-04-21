@@ -5,13 +5,13 @@
 # Contributor: userwithuid <userwithuid@gmail.com>
 
 _pkgname=rust
-_date=2019-01-17
-_rustc=1.32.0
-_cargo=0.33.0
+_date=2019-02-28
+_rustc=1.33.0
+_cargo=0.34.0
 
 pkgname=mingw-w64-rust
 _prefix=opt/rust
-pkgver=1.33.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
@@ -31,22 +31,22 @@ makedepends=('gdb'
              'cmake')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
-        "https://static.rust-lang.org/dist/${_date}/rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.gz"{,.asc}
-        "https://static.rust-lang.org/dist/${_date}/rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.gz"{,.asc}
-        "https://static.rust-lang.org/dist/${_date}/cargo-${_cargo}-x86_64-unknown-linux-gnu.tar.gz"{,.asc}
+        "https://static.rust-lang.org/dist/${_date}/rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
+        "https://static.rust-lang.org/dist/${_date}/rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
+        "https://static.rust-lang.org/dist/${_date}/cargo-${_cargo}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
         "mingw-config.toml")
-noextract=("rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.gz"
-           "rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.gz"
-           "cargo-${_cargo}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('f4b1a72f1a29b23dcc9d7be5f60878f0434560513273906aa93dcd5c0de39b71'
+noextract=("rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
+           "rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
+           "cargo-${_cargo}-x86_64-unknown-linux-gnu.tar.xz")
+sha256sums=('a510b3b7ceca370a4b395065039b2a70297e3fb4103b7ff67b1eff771fd98504'
             'SKIP'
-            '9f2705a3ed3217c13fd55569406c52f590030752f57520312e135223ae930caf'
+            '6f20343ed73faf5fdfc423bec38a9bb1910a0a962af6f2dddd7184407543ed0e'
             'SKIP'
-            '75c31f32e19548c1608611d08b82b87560e02f15caac7b2663a8189a4609977c'
+            '57c5ced1a826d34f26e50adf041528dd0000f2a59e8be32d2359386843382ce1'
             'SKIP'
-            '9dd7f79a0ab882ed7c892731514a4aed6435f7bc8a20381a8346b471c8a14209'
+            '1730c8ebcacc1327eb28b328cb9f5a2c612bb3d9efff9c350647adf19f304e15'
             'SKIP'
-            '1a37480895c4f127a8710138c7f28c5410945a334d092439ca2754fdb712b2c1')
+            '4a6a05ee25e07797314ea01710a1a8e5602838489fff7c108e518965128c8291')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/rust/cargo/config")
@@ -58,12 +58,13 @@ prepare() {
   cp "${srcdir}"/mingw-config.toml config.toml
   sed -i "s|\@PREFIX\@|/${_prefix}|" config.toml
   cd "${srcdir}/rustc-${pkgver}-src/src/bootstrap"
+  sed -i "s|tar.gz|tar.xz|" bootstrap.py
 
   cd "${srcdir}"
   mkdir -p "${srcdir}/rustc-${pkgver}-src/build/cache/${_date}"
-  cp rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.gz "rustc-${pkgver}-src/build/cache/${_date}"
-  cp rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.gz "rustc-${pkgver}-src/build/cache/${_date}"
-  cp cargo-${_cargo}-x86_64-unknown-linux-gnu.tar.gz "rustc-${pkgver}-src/build/cache/${_date}"
+  cp rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.xz "rustc-${pkgver}-src/build/cache/${_date}"
+  cp rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.xz "rustc-${pkgver}-src/build/cache/${_date}"
+  cp cargo-${_cargo}-x86_64-unknown-linux-gnu.tar.xz "rustc-${pkgver}-src/build/cache/${_date}"
 }
 
 build() {
@@ -71,7 +72,7 @@ build() {
 
   export CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
   export CXXFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
-  python2 ./x.py build
+  python ./x.py build
 }
 
 package() {
