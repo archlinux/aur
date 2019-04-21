@@ -1,7 +1,7 @@
 # Maintainer: Bakasura <bakasura@protonmail.ch>
 
 pkgname=cbftp-svn
-pkgver=r1011
+pkgver=r1015
 pkgrel=1
 pkgdesc='an advanced multi-purpose FTP/FXP client that focuses on efficient large-scale data spreading, while also supporting most regular FTP/FXP use cases in a modern way. It runs in a terminal and provides a semi-graphical user interface through ncurses.'
 arch=('x86_64')
