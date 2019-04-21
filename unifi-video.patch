@@ -1,6 +1,6 @@
---- unifi-video.orig	2018-09-24 08:26:15.494409541 -0700
-+++ unifi-video	2018-09-24 08:26:47.327743681 -0700
-@@ -263,7 +263,7 @@
+--- unifi-video.orig	2019-04-20 17:00:21.142172604 -0700
++++ unifi-video	2019-04-20 17:01:04.763373991 -0700
+@@ -275,7 +275,7 @@
  		 -Dcom.sun.management.jmxremote.authenticate=false \
  		 -Dcom.sun.management.jmxremote.port=${JVM_JMXREMOTE_PORT}"
  	[ -z "${JVM_JMXREMOTE_HOST}" ] && \
@@ -9,7 +9,7 @@
  	[ -z "${JVM_JMXREMOTE_HOST}" ] || \
  		JVM_OPTS="${JVM_OPTS} -Djava.rmi.server.hostname=${JVM_JMXREMOTE_HOST}"
  
-@@ -319,7 +319,6 @@
+@@ -335,7 +335,6 @@
  	start)
  	require_root
      update_limits
@@ -17,11 +17,11 @@
          echo 0x10 > /proc/self/coredump_filter
  		if is_service_running "${PIDFILE}" >/dev/null; then
  			log_verbose "${NAME} is already running..."
-@@ -335,7 +334,6 @@
+@@ -352,7 +351,6 @@
  		;;
  	stop)
   	require_root
 -        ulimit -H -c 200
-         
+
          log_verbose "Backing up ${DATADIR}/system.properties in ${BASEDIR}/etc/system.properties"
          cp -f "${DATADIR}/system.properties" "${BASEDIR}/etc/system.properties"
