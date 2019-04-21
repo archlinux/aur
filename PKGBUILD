@@ -71,7 +71,7 @@ source=(
 	'ext_api-doc-tools::git+git://github.com/mono/api-doc-tools.git'
 	'ext_api-snapshot::git+git://github.com/mono/api-snapshot.git'
 	
-	"${_android_repo}/android-ndk-r$(_ndk_ver)-linux-x86_64.zip"
+	"${_android_repo}/android-ndk-r${_ndk_ver}-linux-x86_64.zip"
 	"${_android_repo}/build-tools_r${_build_ver}-linux.zip"
 	"${_android_repo}/platform-tools_r${_plat_ver}-linux.zip"
 	"${_android_repo}/sdk-tools-linux-4333796.zip"
