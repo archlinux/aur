@@ -1,6 +1,6 @@
 [Unit]
 Description=EH Forwarder Bot Service
-Documentation=https://ehforwarderbot.readthedocs.io/zh_CN/latest/
+Documentation=https://ehforwarderbot.readthedocs.io/
 Wants=network-online.target systemd-networkd-wait-online.service
 After=network-online.target
 

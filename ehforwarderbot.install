@@ -1,0 +1,31 @@
+# Thanks aur#cow-proxy
+post_install() {
+    post_upgrade
+}
+
+post_upgrade() {
+
+    cat << EOF
+  Configuration document can be found at : https://ehforwarderbot.readthedocs.io/
+
+  Running ehforwarderbot system instance for user account:
+
+        To reload system systemd modules, execute
+
+                systemctl daemon-reload
+
+        To start ehforwarderbot, execute:
+
+                systemctl start ehforwarderbot@user
+
+        To autostart ehforwarderbot on system start, execute
+
+                systemctl enable ehforwarderbot@user
+
+        To view the full log of ehforwarderbot, execute;
+
+                journalctl -u ehforwarderbot@user
+
+EOF
+
+}
