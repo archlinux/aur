@@ -4,8 +4,8 @@
 PLASMA=false
 
 pkgname=optimus-manager-qt
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="A Qt interface for Optimus Manager that allows to configure and switch GPUs on Optimus laptops using the tray menu"
 arch=('x86_64')
 url="https://github.com/Shatur95/optimus-manager-qt"
@@ -14,7 +14,7 @@ depends=('qt5-base' 'optimus-manager>=0.8')
 makedepends=('qt5-tools')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/Shatur95/optimus-manager-qt/archive/$pkgver.tar.gz"
         SingleApplication-submodule.tar.gz::"https://github.com/itay-grudev/SingleApplication/archive/3.0.14.tar.gz")
-sha256sums=('3a98888c6401ca887923288cb353d34a18cf27683a432f6835361a835b564280'
+sha256sums=('9299dc05fccb1bdc226fcfd8f106b6be2549a9d1760019768a58598641d003f9'
             '898aa58cebceb07a3b9af65011c0eef23e9789f930a021037dd7e05d2910f318')
 
 if [ ${PLASMA} == true ]; then
