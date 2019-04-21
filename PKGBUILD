@@ -1,14 +1,14 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=kicad-git
-pkgver=r12473.16b3c80a7
+pkgver=r12823.223e24f42
 pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
 url="http://kicad-pcb.org/"
 license=('GPL')
 depends=('glew' 'wxgtk3' 'desktop-file-utils' 'boost-libs' 'python'
-         'glm-git' 'curl' 'swig' 'python-wxpython' 'opencascade' 'ngspice>=27')
+         'glm' 'curl' 'swig' 'python-wxpython' 'opencascade' 'ngspice>=27')
 makedepends=('cmake' 'git' 'zlib' 'mesa' 'boost')
 optdepends=('kicad-library: for footprints')
 conflicts=('kicad' 'kicad-bzr')
