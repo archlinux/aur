@@ -1,6 +1,6 @@
 pkgbase = zyn-fusion
 	pkgdesc = ZynAddSubFX with a new interactive UI
-	pkgver = 3.0.4
+	pkgver = 3.0.5
 	pkgrel = 1
 	url = http://zynaddsubfx.sourceforge.net/zyn-fusion.html
 	arch = i686
@@ -23,10 +23,12 @@ pkgbase = zyn-fusion
 	depends = portaudio
 	provides = zynaddsubfx
 	conflicts = zynaddsubfx
-	source = git+https://github.com/zynaddsubfx/zynaddsubfx.git#tag=3.0.4
-	source = git+https://github.com/mruby-zest/mruby-zest-build.git#commit=3f112eeb6a0d7b6ce65c1be3f591e02fde965923
+	source = git+https://github.com/zynaddsubfx/zynaddsubfx.git#tag=3.0.5
+	source = git+https://github.com/mruby-zest/mruby-zest-build.git#tag=3.0.5
+	source = BashCompletion.cmake
 	sha512sums = SKIP
 	sha512sums = SKIP
+	sha512sums = 178a6e87ecac891f2b321123fc433a45a49b3c266b86c9fbe0c109e5c5ced447898ea55612e65a9689ff406fe5510efb1013dd12c7d2b10594b972154aceebbc
 
 pkgname = zyn-fusion
 

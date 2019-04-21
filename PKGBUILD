@@ -1,6 +1,6 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=zyn-fusion
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc="ZynAddSubFX with a new interactive UI"
 arch=('i686' 'x86_64')
@@ -14,12 +14,17 @@ makedepends=('git' 'wget' 'cmake' 'python' 'ruby-rake'
 provides=('zynaddsubfx')
 conflicts=('zynaddsubfx')
 source=("git+https://github.com/zynaddsubfx/zynaddsubfx.git#tag=$pkgver"
-        'git+https://github.com/mruby-zest/mruby-zest-build.git#commit=3f112eeb6a0d7b6ce65c1be3f591e02fde965923')
-sha512sums=('SKIP' 'SKIP')
+        "git+https://github.com/mruby-zest/mruby-zest-build.git#tag=$pkgver"
+        'BashCompletion.cmake')
+sha512sums=('SKIP'
+            'SKIP'
+            '178a6e87ecac891f2b321123fc433a45a49b3c266b86c9fbe0c109e5c5ced447898ea55612e65a9689ff406fe5510efb1013dd12c7d2b10594b972154aceebbc')
 
 prepare() {
 	cd zynaddsubfx
 	git submodule update --init
+	# The original script does not honor DESTDIR. Replace it with a much more straightforward implementation.
+	cp "$srcdir"/BashCompletion.cmake cmake/BashCompletion.cmake
 
 	cd ../mruby-zest-build
 	git submodule update --init
