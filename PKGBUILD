@@ -1,7 +1,7 @@
 # Maintainer: Bakasura <bakasura@protonmail.ch>
 
 pkgname=kawanime-git
-pkgver=0.2.3.r15.ge662f7e
+pkgver=0.3.1.r211.g1546acd
 pkgrel=1
 pkgdesc='Desktop app for anime fans'
 arch=('x86_64')
