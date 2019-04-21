@@ -1,6 +1,6 @@
 pkgname=linvst-stable
-pkgver=2.4
-pkgrel=2
+pkgver=2.5
+pkgrel=1
 provides=('linvst')
 conflicts=('linvst')
 pkgdesc="Bridge that allows Windows vst's to be used as Linux vst's in Linux vst capable DAW's"
@@ -14,7 +14,7 @@ install="linvst-stable.install"
 _pkgname=LinVst
 
 source=("https://github.com/osxmidi/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('8d569804b5d0bbc305283d1f2d8ff7c04f9150bd7208a6d86feabbd17bdd34d7')
+sha256sums=('e4c55be6239c55be864b8a88ffb6307588c05d9e0d477694227d521f0fb69816')
 
 
 build() {
@@ -30,4 +30,5 @@ package() {
 	make -f Makefile-embed-6432 DESTDIR="${pkgdir}" VST_DIR="${pkgdir}/usr/share/linvst"  install
 	install -m 755 "convert/linvstconvert" "${pkgdir}/usr/bin/"
 	install -m 755 "convert/linvstconverttree" "${pkgdir}/usr/bin/"
+	install -m 755 "convert/pylinvstconvert" "${pkgdir}/usr/bin/"
 }
