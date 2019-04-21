@@ -102,7 +102,7 @@ link-shared = false
 use-libcxx = false
 
 # The value specified here will be passed as `-DLLVM_USE_LINKER` to CMake.
-use-linker = "lld"
+#use-linker = "lld"
 
 
 # =============================================================================
