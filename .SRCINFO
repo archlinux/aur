@@ -10,7 +10,7 @@ pkgbase = epson-printer-utility
 	depends = qt4
 	depends = ld-lsb=3
 	options = strip
-	source = https://download3.ebz.epson.net/dsc/f/03/00/09/21/60/838b1e3869384ee250fff60d3099fb3d9d92695c/epson-printer-utility_1.0.2-1lsb3.2_amd64.deb
+	source = https://download3.ebz.epson.net/dsc/f/03/00/09/29/08/90ab29409115acd8d77ec370842628fa4c023f88/epson-printer-utility_1.0.2-1lsb3.2_amd64.deb
 	source = ecbd.service
 	source = LICENSE
 	source = AVASYSPL.en.txt
