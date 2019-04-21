@@ -1,6 +1,6 @@
 pkgbase = pyls-mypy
 	pkgdesc = A Mypy plugin for the python language server
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/tomv564/pyls-mypy
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = pyls-mypy
 	depends = python-language-server
 	depends = mypy
 	depends = python-future
-	source = git+https://github.com/tomv564/pyls-mypy.git#tag=0.1.5
-	sha256sums = SKIP
+	source = https://github.com/tomv564/pyls-mypy/archive/0.1.6.tar.gz
+	md5sums = 0b0a4f64133a7489d359ea20d1a36dcf
 
 pkgname = pyls-mypy
 
