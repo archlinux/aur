@@ -1,7 +1,7 @@
 pkgbase = ddnet
 	pkgdesc = DDraceNetwork, a cooperative racing mod of Teeworlds
-	pkgver = 12.1
-	pkgrel = 2
+	pkgver = 12.2
+	pkgrel = 1
 	url = https://ddnet.tw
 	arch = x86_64
 	license = custom:BSD
@@ -22,7 +22,7 @@ pkgbase = ddnet
 	depends = pnglite
 	optdepends = ddnet-skins: more skins for your tee
 	optdepends = ddnet-maps-git: have all DDNet maps available offline
-	source = https://ddnet.tw/downloads/DDNet-12.1.tar.xz
+	source = https://ddnet.tw/downloads/DDNet-12.2.tar.xz
 	sha256sums = 50517d2a5b16ec23ee5e126e5d4185da0f3b4bbfb88d01ff1f41b6bef534e1cf
 
 pkgname = ddnet
