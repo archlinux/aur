@@ -1,6 +1,6 @@
 # Maintainer: Paul Knopf <pauldotknopf@gmail.com>
 pkgname=darch
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 epoch=
 pkgdesc="A utility to that uses containerd to build stateless operating system images that can be booted bare-metal."
@@ -18,7 +18,7 @@ options=()
 install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/godarch/darch/archive/v$pkgver.tar.gz")
-md5sums=('9b2105f33612c07ef51208d7840abd92')
+md5sums=('aaee7bfe4df3be93a6c13c43eeeced52')
 noextract=()
 validpgpkeys=()
 build() {
