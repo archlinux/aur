@@ -11,7 +11,7 @@ url="http://www.hidglobal.com/"
 license=('custom:HID_OK_Drivers_EULA')
 depends=('libusb' 'pcsclite')
 conflicts=('omnikey_ifdokccid-git')
-source=("https://www.hidglobal.fr/sites/default/files/drivers/omnikey_ccid_driver_for_8051_controller_based_readers_v.${pkgver}.zip")
+source=("https://www.hidglobal.com/sites/default/files/drivers/omnikey_ccid_driver_for_8051_controller_based_readers_v.${pkgver}.zip")
 md5sums=('441670be336df12167652a751ba5a08e')
 
 prepare() {
