@@ -4,17 +4,16 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=aarchup-git
-pkgver=1.8.3.r1.g598d1e5
+pkgver=2.1.0.r1.ga8e4cf5
 pkgrel=1
 pkgdesc="Fork of archup a small and lightweight update-notifier for archlinux."
-url="https://github.com/aericson/aarchup"
+url="https://github.com/inglor/aarchup"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libnotify' 'gtk2')
-makedepends=('git')
-source=("git+https://github.com/stefanhusmann/aarchup.git")
+makedepends=('git' 'cmake' 'ninja')
+source=("git+https://github.com/inglor/aarchup.git")
 md5sums=('SKIP')
-backup=('usr/lib/systemd/system/aarchup.timer')
 conflicts=('aarchup')
 provides=('aarchup')
 optdepends=('auracle: AUR support(--aur)')
@@ -27,12 +26,13 @@ pkgver() {
 
 build() {
   cd ${pkgname%-git}/src
-  autoconf
-  ./configure --prefix=/usr
-  make
+  cmake .. -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr
+  ninja all
 }
 
 package() {
   cd ${pkgname%-git}/src
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir/" ninja install
 }
