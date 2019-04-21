@@ -1,15 +1,15 @@
-# Maintainer: Sam Burgos < sam dot burgos1089 at gmail dot com >
+# Maintainer: Sam Burgos < santiago dot burgos1089 at gmail dot com >
 
 pkgname=gnome-calendar-linuxmint
 _pkgname=gnome-calendar
-pkgver=3.32.0
-pkgrel=2
+pkgver=3.32.0+4+g64362206
+pkgrel=1
 pkgdesc="Simple and beautiful calendar application designed to perfectly fit the GNOME desktop. With Linux Mint patches"
 url="https://wiki.gnome.org/Apps/Calendar"
 arch=('x86_64')
 license=('GPL')
 depends=('evolution-data-server'
-    'geoclue' 
+    'geoclue2' 
     'gsettings-desktop-schemas'
     'libdazzle')
 makedepends=('appstream-glib' 
@@ -20,7 +20,7 @@ makedepends=('appstream-glib'
     'python')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-_commit=f1b5d70be3d1cddb2683346834b49b3c74ed77d7  # tags/3.32.0^0
+_commit=643622069d939529eafb7aa94d95905795e6fb94  # master
 source=("git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=$_commit"
         "null-icaltime.diff"
         "add_cinnamon_settings_online_support.patch"
@@ -61,4 +61,3 @@ check() {
 package() {
   DESTDIR="$pkgdir" meson install -C build
 }
-
