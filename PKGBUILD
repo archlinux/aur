@@ -1,37 +1,40 @@
 pkgname=mingw-w64-mesa
-pkgver=17.3.5
+pkgver=19.0.2
 pkgrel=1
-pkgdesc="an open-source implementation of the OpenGL specification (mingw-w64) (WIP) "
+pkgdesc="An open-source implementation of the OpenGL specification (mingw-w64)"
 arch=('any')
 url="https://www.mesa3d.org/"
 license=("custom")
-makedepends=('mingw-w64-configure' 'mingw-w64-llvm')
+makedepends=('mingw-w64-gcc' 'scons' 'python2-mako' 'mingw-w64-meson')
 depends=('mingw-w64-crt')
 options=('staticlibs' '!strip' '!buildflags')
-source=("https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz")
-sha256sums=('eb9228fc8aaa71e0205c1481c5b157752ebaec9b646b030d27478e25a6d7936a')
+validpgpkeys=('71C4B75620BC75708B4BDB254C95FAAB3EB073EC') # Dylan Baker <dylan@pnwbakers.com>
+source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig})
+sha256sums=('1a2edc3ce56906a676c91e6851298db45903df1f5cb9827395a922c1452db802' SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-# https://wiki.qt.io/Cross_compiling_Mesa_for_Windows
-# https://www.mesa3d.org/install.html
+prepare () {
+  cd "${srcdir}"/mesa-${pkgver}
+  # os_memory_stdc.h:58:7: error: implicit declaration of function ‘posix_memalign’
+  sed -i "s|'mkostemp', 'posix_memalign'|'mkostemp'|g" meson.build
+}
+
 
 build() {
   cd "${srcdir}"/mesa-${pkgver}
   for _arch in ${_architectures}; do
-    export LLVM=/usr
-    cp -r "${srcdir}"/mesa-${pkgver} "${srcdir}"/build-${_arch} && pushd "${srcdir}"/build-${_arch}
-#     mkdir -p build-${_arch} && pushd build-${_arch}
-    LDFLAGS="-static -s" CC=/usr/bin/${_arch}-clang scons build=release platform=windows toolchain=crossmingw llvm=yes machine=x86 libgl-gdi 
-    make
+    mkdir -p build-${_arch} && pushd build-${_arch}
+    ${_arch}-meson -Dplatforms=surfaceless -Dglx=disabled -Dllvm=false ..
+    ninja
     popd
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/build-${_arch}"
-    make DESTDIR="$pkgdir" install
+    cd "${srcdir}/mesa-${pkgver}/build-${_arch}"
+    DESTDIR="${pkgdir}" ninja install
     rm -r "$pkgdir/usr/${_arch}/share"
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
