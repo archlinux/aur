@@ -99,7 +99,7 @@ source=(
 	"${_apache_repo}/apache-ant-1.9.9-bin.zip"
 	)
 noextract=(
-	"android-ndk-r$(_ndk_ver)-linux-x86_64"
+	"android-ndk-r${_ndk_ver}-linux-x86_64"
 	"build-tools_r${_build_ver}-linux.zip"
 	"platform-tools_r${_plat_ver}-linux.zip"
 	'sdk-tools-linux-4333796.zip'
@@ -138,33 +138,7 @@ prepare() {
 	cd "${srcdir}"
 	
 	mkdir -p cache
-	mv "android-ndk-r$(_ndk_ver)-linux-x86_64.zip" \
-		"build-tools_r${_build_ver}-linux.zip" \
-		"platform-tools_r${_plat_ver}-linux.zip" \
-		'sdk-tools-linux-4333796.zip' \
-		"emulator-linux-${_emu_ver}.zip" \
-		"cmake-${_cmake_ver}-linux-x86_64.zip" \
-		'android-2.3.3_r02-linux.zip' \
-		'android-15_r03.zip' \
-		'android-16_r04.zip' \
-		'android-17_r02.zip' \
-		'android-18_r02.zip' \
-		'android-19_r03.zip' \
-		'android-20_r02.zip' \
-		'android-21_r02.zip' \
-		'android-22_r02.zip' \
-		'platform-23_r03.zip' \
-		'platform-24_r02.zip' \
-		'platform-25_r03.zip' \
-		'platform-26_r02.zip' \
-		'platform-27_r03.zip' \
-		'platform-28_r04.zip' \
-		'platform-Q_r02.zip' \
-		'docs-24_r01.zip' \
-		'android_m2repository_r16.zip' \
-		'x86-28_r04.zip' \
-		'apache-ant-1.9.9-bin.zip' \
-		./cache/
+	mv ${noextract[@]} ./cache/
 
 	cd "${_pkgname}"
 	git submodule init
