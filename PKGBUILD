@@ -10,7 +10,7 @@ depends=('jre8-openjdk')
 makedepends=('unzip')
 source=('https://downloads.sourceforge.net/project/treeform/TreeForm%20Unified/TreeForm%201.0.3/TreeForm_1_0_3.zip' 'treeform.sh')
 md5sums=('5c560fc47936a6b620ecfc74d18bd4b6'
-         '761bd78e154111804073be5d57f56ce2')
+         'c99add5f11fe94e65d5b49658d00c79f')
 
 prepare() {
     cd "$srcdir/"
