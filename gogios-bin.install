@@ -1,50 +1,55 @@
 post_install() {
-        if [ ! -f /etc/gingertechengine/checks.json ]; then
-                echo "Making default check file"
-                mv /etc/gingertechengine/example.json /etc/gingertechengine/checks.json
-        fi
-
-        if id "gogios" >/dev/null 2>&1; then
-                echo "gogios user already exists"
-        else
-                useradd --system --no-create-home --shell /sbin/nologin gogios
-        fi
-
-        chown gogios:gogios -R /var/log/gingertechnology
-        chown gogios:gogios -R /var/lib/gingertechengine
-        chown gogios:gogios -R /etc/gingertechengine
-        
-        echo "Start gogios and gogios-web for the system to run."
+    if [ ! -f /etc/gingertechengine/checks.json ]; then
+        echo "Making default check file"
+        mv /etc/gingertechengine/example.json /etc/gingertechengine/checks.json
+    fi
+    
+    if id "gogios" >/dev/null 2>&1; then
+        echo "gogios user already exists"
+    else
+        useradd --system --no-create-home --shell /sbin/nologin gogios
+    fi
+    
+    chown gogios:gogios -R /var/log/gingertechnology
+    chown gogios:gogios -R /var/lib/gingertechengine
+    chown gogios:gogios -R /etc/gingertechengine
+    chown gogios:gogios -R /opt/gingertechengine
+    
+    echo "Start gogios for the system to run."
+    echo "You will need to install and a webserver and have it point to /opt/gingertechengine"
 }
 
 post_upgrade() {
-        post_install
+    post_install
+    
+    if systemctl is-enabled gogios.service; then
+        echo "Temporarily disabling gogios"
+        systemctl disable gogios.service
+        rm /etc/systemd/system/gogios.service
+        systemctl enable gogios.service
+    fi
+    
+    if systemctl is-enabled gogios-web.service; then
+        echo "Disabling gogios-web"
+        systemctl disable gogios-web.service
+        systemctl stop gogios-web.service
+    fi
 
-        if systemctl is-enabled gogios.service; then
-                echo "Temporarily disabling gogios"
-                systemctl disable gogios.service
-                rm /etc/systemd/system/gogios.service
-                systemctl enable gogios.service
-        fi
-
-        if systemctl is-enabled gogios-web.service; then
-                echo "Temporarily disabling gogios-web"
-                systemctl disable gogios-web.service
-                rm /etc/systemd/system/gogios-web.service
-                systemctl enable gogios-web.service
-        fi
-
-        systemctl stop gogios-web
-        systemctl stop gogios
-        systemctl start gogios-web
-        systemctl start gogios
+    if [ ! -f /opt/site/wwwroot/js/current.json ]; then
+        mv /opt/site/wwwroot/js/current.json /opt/gingertechengine/js/current.json
+    fi
+    
+    systemctl stop gogios-web
+    systemctl stop gogios
+    systemctl start gogios-web
+    systemctl start gogios
 }
 
 pre_remove() {
-        systemctl stop gogios-web
-        systemctl stop gogios
-        systemctl disable gogios-web
-        systemctl disable gogios
-
-        userdel gogios
+    systemctl stop gogios-web
+    systemctl stop gogios
+    systemctl disable gogios-web
+    systemctl disable gogios
+    
+    userdel gogios
 }
