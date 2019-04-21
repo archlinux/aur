@@ -57,8 +57,8 @@ md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          '8f0ebcead2aecad67fbd12ef8ced1503'
          'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
          '98245ddb13914a74f0cc5a028fffddca')
-md5sums_armv6h=('519fd3db9a5c6fc92d8cafb46e3b1610')
-md5sums_armv7h=('519fd3db9a5c6fc92d8cafb46e3b1610')
+md5sums_armv6h=('519fd3db9a5c6fc92d8cafb46e3b165b')
+md5sums_armv7h=('519fd3db9a5c6fc92d8cafb46e3b165b')
 md5sums_aarch64=('50646a13584bf0ecdce4e0a61264d15a')
 sha256sums=('f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
             '105bac73e3b028a3502379e8f51e6c3ecf21e520d85b2b10d4a1103a0dd4cf4b'
