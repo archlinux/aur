@@ -1,6 +1,6 @@
 #Maintainer: Sam Bazley <sambazley@protonmail.com>
 pkgname=blockbar-git
-pkgver=20190322015753
+pkgver=20190421204709
 pkgrel=1
 pkgdesc="Blocks based status bar for X window managers"
 arch=("i686" "x86_64")
@@ -10,6 +10,7 @@ makedepends=()
 depends=("cairo" "pango" "libxrandr" "ujson-git")
 source=("git+https://gitlab.com/sambazley/blockbar.git")
 md5sums=("SKIP")
+provides=("blockbar")
 
 pkgver() {
     cd blockbar
@@ -18,7 +19,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/blockbar"
-    PREFIX=/usr make
+    make
 }
 
 package() {
