@@ -1,13 +1,13 @@
 pkgbase = emacs-evil-git
 	pkgdesc = The extensible vi layer for Emacs.
-	pkgver = r2099.3d9f76f
+	pkgver = 1.2.14.r3.g297b8f3
 	pkgrel = 1
 	url = https://github.com/emacs-evil/evil
+	install = emacs-evil.install
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = emacs
-	depends = emacs-goto-chg
 	depends = emacs-undo-tree
 	provides = emacs-evil
 	conflicts = emacs-evil
