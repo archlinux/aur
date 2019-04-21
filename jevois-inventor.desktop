@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Jevois Inventor
+Comment=Develop for the Jevois Camera
+GenericName=IDE
+Exec=/usr/bin/jevois-inventor
+Icon=jevois-inventor
+Type=Application
+Categories=Development
+Keywords=Jevois;Inventor;Develop;Configure
