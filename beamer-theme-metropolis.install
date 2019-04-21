@@ -3,5 +3,5 @@ post_install() {
 }
 
 post_remove(){
-    post_install
+    texhash
 }

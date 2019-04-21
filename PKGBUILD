@@ -1,15 +1,15 @@
-# Maintainer: Bennett Piater <bennett at piater dot name>
+# Maintainer: Stunkymonkey
 pkgname=beamer-theme-metropolis
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A modern LaTeX Beamer theme"
 url="https://github.com/matze/mtheme"
 arch=("any")
 license=("custom:cc-by-sa-4.0")
-depends=("texlive-core" "texlive-pictures" "otf-fira-fonts")
+depends=("texlive-core" "texlive-pictures" "ttf-fira-sans")
 source=("https://github.com/matze/mtheme/archive/v${pkgver}.tar.gz")
-install=metropolis-theme.install
-sha512sums=('36eb3778e0acf75539e2d8d930ebc81202a4a6648d485963010459f25424a334c4bdf5d10f9619415908564faa282f726913ba3eba8a498f0ec9e286181540d2')
+install=${pkgname}.install
+sha512sums=('61e921a425f16b3fd12961533a5e2ec790d7d80e06d98a837156693082dd8254dfb9840498ce8e561924fb8c5241e9934e9cb1e7b7f1f8caef3cbd8edfae4af7')
 
 build() {
     # Generate the style files.
@@ -22,3 +22,4 @@ package() {
     cd "$srcdir"/mtheme-"${pkgver}"
     make DESTDIR="$pkgdir/$TEXMFDIST" install
 }
+
