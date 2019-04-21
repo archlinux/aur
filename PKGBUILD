@@ -1,7 +1,7 @@
 # Maintainer: Trevor Bramble <inbox@trevorbramble.com>
 
 pkgname=chef-workstation
-pkgver=0.2.43
+pkgver=0.2.53
 pkgrel=1
 _ubunturel=18
 _ubuntuver=04
@@ -12,7 +12,7 @@ license=('Apache')
 depends=()
 conflicts=(chef-dk chef chef-solo chef-client)
 source=("https://packages.chef.io/files/stable/${pkgname}/${pkgver}/ubuntu/${_ubunturel}.${_ubuntuver}/${pkgname}_${pkgver}-1_amd64.deb")
-sha256sums=('bfa180707eaa5ca6b539a005d3e4189f3f9b243d7fc5c145c1587850f592cfd1')
+sha256sums=('1de642d5d3a2e135edff05ff7c9a0d3b76496c35f9ea23f95d88e4b34df50f63')
 
 package() {
   cd "$srcdir"
