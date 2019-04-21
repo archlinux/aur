@@ -1,6 +1,6 @@
 pkgbase = onedrive-abraunegg-git
 	pkgdesc = Free OneDrive client written in D - abraunegg's fork
-	pkgver = 2.2.0.r4.gc24e4b0
+	pkgver = 2.3.3.r1.gc8e47a4
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/abraunegg/onedrive
@@ -13,7 +13,8 @@ pkgbase = onedrive-abraunegg-git
 	depends = gcc-libs
 	depends = glibc
 	depends = sqlite
-	provides = onedrive=2.2.0.r4.gc24e4b0
+	depends = libnotify
+	provides = onedrive=2.3.3.r1.gc8e47a4
 	conflicts = onedrive
 	source = git+https://github.com/abraunegg/onedrive.git
 	sha256sums = SKIP
