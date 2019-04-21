@@ -1,13 +1,22 @@
 # Maintainer: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Woof <woofy1231@hotmail.com>
 # Contributor: catwell <catwell@archlinux.us>
+# Contributor: Joan Bruguera Micó <joanbrugueram@gmail.com>
 
 pkgname=ltsa
 pkgver=3.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Labelled Transition System Analyser, a verification tool for concurrent systems"
 arch=('any')
 url="http://www.doc.ic.ac.uk/ltsa/"
+# NB: (Joan Bruguera, 2019-04-21) I have send an e-mail to the authors (Robert
+#     Chatley & Jeff Magee), and they have agreed to license this software under
+#     the GPL.license. At this moment, this package still bundles the prebuilt
+#     JAR, but since it's available, ideally, it should be built from source,
+#     and then the license field should be changed to GPL
+# PS: I haven't got the source at this moment or checked everything thorough yet.
+#     If it's of any interest, I found the source of some unnamed version online at:
+#     https://github.com/gabrielsr/ltsa/tree/master/ltsa/src/main/java/ic/doc/ltsa
 license=('unknown')
 depends=('java-runtime' 'bash' 'libcups')
 install=ltsa.install
@@ -21,7 +30,7 @@ build() {
   cd "$srcdir"
   gendesk -n
   setconf "$pkgname.desktop" Categories "Education;Java;"
-  msg2 "Generating $pkgname.png..."
+  echo "Generating $pkgname.png..."
   convert "${pkgname}tool/$pkgname.ico" "$pkgname.png"
 }
 
@@ -29,12 +38,12 @@ package() {
   cd "$srcdir/${pkgname}tool"
 
   mkdir -p "$pkgdir/usr/share/$pkgname" "$pkgdir/usr/share/doc/$pkgname"
-  msg2 "Packaging application..."
+  echo "Packaging application..."
   cp -r *.jar "$pkgdir/usr/share/$pkgname"
-  install -DTm755 "$startdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-  msg2 "Packaging examples..."
+  install -DTm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+  echo "Packaging examples..."
   cp -r Chapter_examples "$pkgdir/usr/share/doc/$pkgname/examples"
-  msg2 "Packaging icon and desktop shortcut..."
+  echo "Packaging icon and desktop shortcut..."
   cd "$srcdir"
   install -DTm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -DTm644 "$pkgname.desktop" \
