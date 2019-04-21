@@ -1,0 +1,15 @@
+pkgbase = sentencepiece-git
+	pkgdesc = Unsupervised text tokenizer for Neural Network-based text generation
+	pkgver = r492.ffa2c82
+	pkgrel = 1
+	url = https://github.com/google/sentencepiece
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = gcc
+	optdepends = gperftools
+	source = git+https://github.com/google/sentencepiece.git
+	md5sums = SKIP
+
+pkgname = sentencepiece-git
+
