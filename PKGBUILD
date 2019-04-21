@@ -2,7 +2,7 @@
 
 pkgname=jevois-inventor
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An easy to use GUI for programming the Jevois smart camera"
 arch=('i686' 'x86_64')
 url="https://github.com/jevois/jevois-inventor"
@@ -37,9 +37,5 @@ package() {
 	install -D -m644 "$srcdir/TgKOknB.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
 	install -D -m644 "$srcdir/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -D -m755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-	#make INSTALL_ROOT="$pkgdir/" install
-
-	# Install GPLv3 license
-	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
