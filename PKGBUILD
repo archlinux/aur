@@ -3,7 +3,7 @@
 pkgname=kubeval-bin
 pkgver=0.7.3
 pkgrel=1
-pkgdesc="Tool for validating a Kubernetes YAML or JSON configuration files"
+pkgdesc="Tool for validating Kubernetes YAML or JSON configuration files"
 arch=('x86_64')
 url="https://github.com/garethr/kubeval"
 license=('apache')
