@@ -14,7 +14,6 @@ depends=('libxml2'
 makedepends=('git'
              'apache-ant'
              'java-environment<=11'
-             'libaacs'
              )
 optdepends=('libaacs: Enable AACS decryption'
             'java-runtime<=11: BD-J library'
