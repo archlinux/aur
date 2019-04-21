@@ -1,6 +1,6 @@
 pkgbase = zoom
 	pkgdesc = Video Conferencing and Web Conferencing Service
-	pkgver = 2.7.162522.0121
+	pkgver = 2.8.183302.0415
 	pkgrel = 1
 	url = https://zoom.us/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = zoom
 	depends = xcb-util-image
 	depends = xcb-util-keysyms
 	options = !strip
-	source = zoom-2.7.162522.0121_orig_x86_64.pkg.tar.xz::https://zoom.us/client/2.7.162522.0121/zoom_x86_64.pkg.tar.xz
-	sha512sums = 5b86c8ee2db67a7afce1bb398acd8ab46e63dd0bec387267e1ee70110cfdd59facef595dd5be94a06cc7b15e7251fa5d4f595cd2325c923bb3ea159ecbb07b49
+	source = zoom-2.8.183302.0415_orig_x86_64.pkg.tar.xz::https://zoom.us/client/2.8.183302.0415/zoom_x86_64.pkg.tar.xz
+	sha512sums = 8bb49122b55babfbf0740f6d86b8be6bf0549ee320976b88d6e78c5dcffcfe22e6469ef7db6a7037a7abbaf88c40023878918d21b18742f573a4bb8cdbc74845
 
 pkgname = zoom
