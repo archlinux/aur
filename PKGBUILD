@@ -4,7 +4,7 @@
 
 pkgname=glib2-patched-thumbnailer
 pkgver=2.60.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy911/d199759b46a79782cc1b301649dec8a5"
 arch=(x86_64)
@@ -65,7 +65,7 @@ package() {
   python -O -m compileall -d /usr/share/glib-2.0/codegen "$pkgdir/usr/share/glib-2.0/codegen"
 
   # Remove installed tests
-  rm -r "$pkgdir/usr/lib/installed-tests"
+  rm -fr "$pkgdir/usr/lib/installed-tests"
 
   # Split docs
   mv "$pkgdir/usr/share/gtk-doc" "$srcdir"
