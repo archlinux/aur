@@ -28,7 +28,7 @@ makedepends=(
 	)
 _android_repo='https://dl.google.com/android/repository'
 _apache_repo='https://archive.apache.org/dist/ant/binaries'
-_ndk="android-ndk-r${_ndk_ver}-linux-x86_64"
+_ndk_ver='19c'
 _build_ver='28.0.3'
 _plat_ver='28.0.2'
 _emu_ver='5395263'
@@ -71,6 +71,7 @@ source=(
 	'ext_api-doc-tools::git+git://github.com/mono/api-doc-tools.git'
 	'ext_api-snapshot::git+git://github.com/mono/api-snapshot.git'
 	
+	"${_android_repo}/android-ndk-r$(_ndk_ver)-linux-x86_64.zip"
 	"${_android_repo}/build-tools_r${_build_ver}-linux.zip"
 	"${_android_repo}/platform-tools_r${_plat_ver}-linux.zip"
 	"${_android_repo}/sdk-tools-linux-4333796.zip"
@@ -97,6 +98,34 @@ source=(
 	"${_android_repo}/sys-img/android/x86-28_r04.zip"
 	"${_apache_repo}/apache-ant-1.9.9-bin.zip"
 	)
+noextract=(
+	"android-ndk-r$(_ndk_ver)-linux-x86_64"
+	"build-tools_r${_build_ver}-linux.zip"
+	"platform-tools_r${_plat_ver}-linux.zip"
+	'sdk-tools-linux-4333796.zip'
+	"emulator-linux-${_emu_ver}.zip"
+	"cmake-${_cmake_ver}-linux-x86_64.zip"
+	'android-2.3.3_r02-linux.zip'
+	'android-15_r03.zip'
+	'android-16_r04.zip'
+	'android-17_r02.zip'
+	'android-18_r02.zip'
+	'android-19_r03.zip'
+	'android-20_r02.zip'
+	'android-21_r02.zip'
+	'android-22_r02.zip'
+	'platform-23_r03.zip'
+	'platform-24_r02.zip'
+	'platform-25_r03.zip'
+	'platform-26_r02.zip'
+	'platform-27_r03.zip'
+	'platform-28_r04.zip'
+	'platform-Q_r02.zip'
+	'docs-24_r01.zip'
+	'android_m2repository_r16.zip'
+	'x86-28_r04.zip'
+	'apache-ant-1.9.9-bin.zip'
+	)
 sha256sums=()
 for i in "${source[@]}"; do sha256sums+=('SKIP'); done
 
@@ -106,8 +135,38 @@ pkgver() {
 }
 
 prepare() {
-	cd "${srcdir}/${_pkgname}"
-	# Submodules are hell
+	cd "${srcdir}"
+	
+	mkdir -p cache
+	mv "android-ndk-r$(_ndk_ver)-linux-x86_64.zip" \
+		"build-tools_r${_build_ver}-linux.zip" \
+		"platform-tools_r${_plat_ver}-linux.zip" \
+		'sdk-tools-linux-4333796.zip' \
+		"emulator-linux-${_emu_ver}.zip" \
+		"cmake-${_cmake_ver}-linux-x86_64.zip" \
+		'android-2.3.3_r02-linux.zip' \
+		'android-15_r03.zip' \
+		'android-16_r04.zip' \
+		'android-17_r02.zip' \
+		'android-18_r02.zip' \
+		'android-19_r03.zip' \
+		'android-20_r02.zip' \
+		'android-21_r02.zip' \
+		'android-22_r02.zip' \
+		'platform-23_r03.zip' \
+		'platform-24_r02.zip' \
+		'platform-25_r03.zip' \
+		'platform-26_r02.zip' \
+		'platform-27_r03.zip' \
+		'platform-28_r04.zip' \
+		'platform-Q_r02.zip' \
+		'docs-24_r01.zip' \
+		'android_m2repository_r16.zip' \
+		'x86-28_r04.zip' \
+		'apache-ant-1.9.9-bin.zip' \
+		./cache/
+
+	cd "${_pkgname}"
 	git submodule init
 	git config submodule.external/debugger-libs.url "$srcdir/ext_debugger-libs"
 	git config submodule.external/dlfcn-win32.url "$srcdir/ext_dlfcn-win32"
@@ -130,8 +189,8 @@ cat <<EOF > Configuration.Override.props
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <AndroidToolchainCacheDirectory>${srcdir}</AndroidToolchainCacheDirectory>
-    <AndroidToolchainDirectory>${srcdir}\android-toolchain</AndroidToolchainDirectory>
+    <AndroidToolchainCacheDirectory>${srcdir}\cache</AndroidToolchainCacheDirectory>
+    <AndroidToolchainDirectory>${srcdir}\cache\toolchain</AndroidToolchainDirectory>
     <AndroidMxeInstallPrefix>\$(AndroidToolchainDirectory)\mxe</AndroidMxeInstallPrefix>
   </PropertyGroup>
 </Project>
