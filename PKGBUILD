@@ -1,4 +1,5 @@
-# Maintainer: masutu <masutu dot arch at gmail dot com>
+# Maintainer: Storm Dragon <stormdragon2976@gmail.com>
+# Contributer: masutu <masutu dot arch at gmail dot com>
 # Contributor: Ali Gündüz <gndz.ali@gmail.com>
 pkgname=tnote
 pkgver=0.2.1
