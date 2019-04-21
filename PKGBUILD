@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=pikaur-git
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay."
 arch=('any')
@@ -20,6 +20,7 @@ depends=(
 )
 optdepends=(
 	'asp: for ABS support in -G/--getpkgbuild operation'
+	'python-pysocks: for socks5 proxy support'
 )
 conflicts=('pikaur')
 
@@ -37,7 +38,7 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}" || exit 2
-	python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+	python3 setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
 	for langmo in $(cd ./locale && ls ./*.mo); do
 		lang=$(sed -e 's/.mo$//' <<< "${langmo}")
 		install -Dm644 "locale/${langmo}" "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/pikaur.mo"
