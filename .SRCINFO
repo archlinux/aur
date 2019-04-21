@@ -1,6 +1,6 @@
 pkgbase = pacman-hooks-desbma-git
 	pkgdesc = Various personal Pacman hooks
-	pkgver = r3.4cf2dc4
+	pkgver = r4.87860c3
 	pkgrel = 1
 	url = https://github.com/desbma/pacman-hooks
 	arch = x86_64
