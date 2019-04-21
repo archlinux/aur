@@ -1,7 +1,7 @@
 pkgbase = ltsa
 	pkgdesc = Labelled Transition System Analyser, a verification tool for concurrent systems
 	pkgver = 3.0
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.doc.ic.ac.uk/ltsa/
 	install = ltsa.install
 	arch = any
