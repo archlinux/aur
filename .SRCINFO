@@ -1,0 +1,15 @@
+pkgbase = flauncher
+	pkgdesc = universal file launcher for terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/yoarch/flauncher
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python>=3
+	source = https://files.pythonhosted.org/packages/source/f/flauncher/flauncher-1.0.0.tar.gz
+	sha256sums = 8181afd3704acfd3266504fc9ef162acf5281c2f4bd68cd08eef108835586793
+
+pkgname = flauncher
+
