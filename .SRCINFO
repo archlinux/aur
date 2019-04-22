@@ -1,0 +1,16 @@
+pkgbase = libxtrxdsp-git
+	pkgdesc = DSP specific function for SDR in general and XTRX in specific
+	pkgver = r8.b166ad69493e
+	pkgrel = 1
+	url = https://github.com/xtrx-sdr/libxtrxdsp
+	arch = any
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	source = git+https://github.com/xtrx-sdr/libxtrxdsp
+	source = fix-cmake.patch
+	md5sums = SKIP
+	md5sums = 286caa8cd9a01b1bd0c667d7c3b9eb3c
+
+pkgname = libxtrxdsp-git
+
