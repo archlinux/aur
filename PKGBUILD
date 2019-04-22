@@ -1,39 +1,60 @@
-# Maintainer: Paul Oppenheimer <redg3ar@airmail.cc>
+# Maintainer: Modelmat <modelmat@outlook.com.au>
+# Contributor: Paul Oppenheimer <redg3ar@airmail.cc>
+# Contributor: David Naramski <david.naramski@gmail.com>
 pkgname=ao-git
-_pkgname=ao
-pkgver=v5.2.0.r2.g94eac0c
+_pkgname=${pkgname%%-git}
+pkgver=6.8.0.r6.gf3fe9b0
+_pkgver=6.8.0
 pkgrel=1
-pkgdesc="An Electron wrapper for Microsoft Todo"
+pkgdesc="An Electron wrapper for Microsoft To-Do"
 arch=('x86_64')
-url="https://klauscfhq.github.io/ao/"
+url="https://github.com/klaussinani/ao"
 license=('MIT')
-groups=()
-depends=('nodejs')
-makedepends=('nodejs' 'electron' 'git')
-install=
-changelog=
-source=(
-  git+https://github.com/klauscfhq/$_pkgname.git
-  $_pkgname.desktop
-  $_pkgname.sh
-) 
-sha256sums=('SKIP'
-            'f0704b8b0a39cabacdc8a9294855f41923f9cd29d5607ceafb189dd7f6522c4b'
-            'e36cb7ed66e0c1f4f45be133d5b63ddad37687a8f5ae25889b88dc69ad4183be')
+depends=('gconf' 'libnotify' 'libappindicator' 'libxtst' 'nss' 'libxss')
+makedepends=('npm' 'electron' 'git')
+provides=('ao-git')
+conflicts=('ao')
+source=(git+$url.git) 
+md5sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $_pkgname
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
+_pkgver() {
+  cd $_pkgname
+  echo ${git describe --abbrev=0:1}
+}
+
 build() {
   cd ao
   npm install
-  npm run pack
+  npx electron-builder --linux deb
 }
+
 package() {
-  install -D "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -D "${srcdir}/ao/static/Icon.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
-  install -d "${pkgdir}/usr/share/${_pkgname}"
-  cp -r --preserve=mode $srcdir/ao/dist/linux-unpacked/* "${pkgdir}/usr/share/${_pkgname}/"
-  install -Dm=0755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+  bsdtar -xf "${srcdir}/ao/dist/${_pkgname}_${_pkgver}_amd64.deb" \
+   -C "${srcdir}" --include data.tar.xz
+  tar xfJ ${srcdir}/data.tar.xz -C ${pkgdir}
+  install -d ${pkgdir}/usr/bin/
+  ln -s /opt/Ao/ao-app ${pkgdir}/usr/bin/ao
 }
+
+# package() {
+
+# }
+
+# 
+# build() {
+#   cd ao
+#   npm install
+#   npm run pack
+# }
+# package() {
+#   install -D "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+#   install -D "${srcdir}/ao/static/Icon.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
+#   install -d "${pkgdir}/usr/share/${_pkgname}"
+#   cp -r --preserve=mode $srcdir/ao/dist/linux-unpacked/* "${pkgdir}/usr/share/${_pkgname}/"
+#   install -Dm=0755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+# }
