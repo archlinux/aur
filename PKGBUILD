@@ -2,15 +2,16 @@
 
 _pkgname=unarelith
 pkgname="${_pkgname}-git"
-pkgver=r27.d547af0
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="Unarelith's website"
 arch=("i686" "x86_64")
 url="https://git.unarelith.net/Unarelith/unarelith.net"
-depends=("python" "python-virtualenv")
+depends=("python" "python-pip" "python-virtualenv")
 provides=("unarelith")
 source=("${_pkgname}::git+${url}.git")
 md5sums=("SKIP")
+install=('unarelith-git.install')
 
 pkgver() {
 	cd "${_pkgname}"
