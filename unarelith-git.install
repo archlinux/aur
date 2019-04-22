@@ -20,3 +20,11 @@ post_install() {
 	echo "==>"
 }
 
+post_upgrade() {
+	cd /usr/share/webapps/unarelith
+
+	bash update_prod.sh
+
+	sudo systemctl restart httpd
+}
+
