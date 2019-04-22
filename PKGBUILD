@@ -4,7 +4,7 @@
 pkgname=gmt
 pkghashver=7c87ef9ab4e5acbaa2a5a6ed5a40537fbac9da63
 pkgver=6.0.0_${pkghashver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic Mapping Tools: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps."
 arch=(i686 x86_64)
 url="http://gmt.soest.hawaii.edu/"
@@ -44,8 +44,8 @@ build() {
     -DGMT_DOCDIR=share/doc/gmt \
     -DCMAKE_BUILD_TYPE=Release \
     ..
-  export MAKEFLAGS="-j1"
-  make -j$(nproc) || return 1
+  export MAKEFLAGS="-j$(nproc)"
+  make || return 1
 }
 
 package() {
