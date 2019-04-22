@@ -1,4 +1,4 @@
-# Maintainer: ber532k <ber532k@gmx.de>
+# Maintainer: Frank Seifferth <frankseifferth@posteo.net>
 # Contributor: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=sc-im-git
