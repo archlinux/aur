@@ -1,10 +1,12 @@
-# Maintainer: sballert <sballert@posteo.de>
+# Maintainer: LinRs <LinRs AT users.noreply.github.com>
+# Contributor: sballert <sballert@posteo.de>
 
 _gituser="jwiegley"
 _gitrepo="emacs-async"
 
 pkgname=emacs-async-git
-pkgver=r272.d17c11e
+_pkgname=async
+pkgver=v1.9.3.r12.g81dc034
 pkgrel=1
 pkgdesc="Asynchronous processing in Emacs"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -19,16 +21,19 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  ( set -o pipefail
+  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
   cd "$_gitrepo"
-  emacs -q --no-splash -batch -L . -f batch-byte-compile *.el
+  make
 }
 
 package() {
   cd "$_gitrepo"
-  install -d  "$pkgdir"/usr/share/emacs/site-lisp/async/
-  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/async/
+  install -d  "$pkgdir/usr/share/emacs/site-lisp/${_pkgname}/"
+  make install DESTDIR="${pkgdir}/usr/share/emacs/site-lisp/${_pkgname}"
 }
