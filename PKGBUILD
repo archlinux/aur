@@ -1,4 +1,4 @@
-# Maintainer: ber532k <ber532k@gmx.de>
+# Maintainer: Frank Seifferth <frankseifferth@posteo.net>
 
 pkgname=tmux-xpanes
 pkgver=4.1.0
