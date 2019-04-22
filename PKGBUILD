@@ -3,14 +3,14 @@
 
 pkgname=perl-latexml-git
 _realname=LaTeXML
-pkgver=0.8.2.445.g38fc034e
+pkgver=0.8.3.112.ga3a0f218
 pkgrel=1
 pkgdesc="LaTeX to XML converter"
 arch=('any')
 license=('custom')
 url="http://dlmf.nist.gov/LaTeXML/"
 depends=('perl' 'perl-parse-recdescent' 'perl-text-unidecode'
-    'imagemagick6' 'perl-xml-libxml' 
+    'imagemagick' 'perl-xml-libxml' 
     'perl-xml-libxslt' 'db' 'texlive-core'
     'perl-image-size' 'perl-file-which'
     'perl-libwww' 'perl-io-string' 'perl-archive-zip')
