@@ -13,6 +13,8 @@ source=("git+$url"
         'fix-include-lms.patch')
 md5sums=('SKIP'
          '16fd9bed32278a3eea1f1545bfc40334')
+provides=('libxtrx')
+conflicts=('libxtrx')
 
 pkgver() {
   cd "$srcdir"/$_gitname
