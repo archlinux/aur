@@ -3,6 +3,7 @@ pkgbase = xfce4-whiskermenu-plugin-button
 	pkgver = 1.0.0
 	pkgrel = 0
 	url = https://github.com/fkxxyz/archlinux-config/xfce4-whiskermenu-plugin-button
+	install = xfce4-whiskermenu-plugin-button.install
 	arch = any
 	license = GPL3
 	depends = xfce4-whiskermenu-plugin

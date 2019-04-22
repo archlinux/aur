@@ -12,6 +12,7 @@ depends=('xfce4-whiskermenu-plugin')
 source=()
 conflicts=('xfce4-session' 'xfce4-settings')
 md5sums=()
+install=${pkgname}.install
 backup=(etc/xdg/xfce4/whiskermenu/{xflock4,xfce4-session-logout,xfce4-settings-manager})
 
 package() {
