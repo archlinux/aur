@@ -1,0 +1,15 @@
+pkgbase = editorconfig-core-lua-git
+	pkgdesc = EditorConfig Core bindings for Lua
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/editorconfig/editorconfig-core-lua
+	arch = any
+	license = custom:BSD
+	makedepends = git
+	depends = lua
+	depends = editorconfig-core-c
+	source = editorconfig-core-lua-git::git+https://github.com/editorconfig/editorconfig-core-lua
+	md5sums = SKIP
+
+pkgname = editorconfig-core-lua-git
+
