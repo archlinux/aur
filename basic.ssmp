@@ -1,0 +1,17 @@
+CC          = gcc
+CXX         = g++
+CPP         =
+AR          = ar -r
+FC          = gfortran
+LD          = gfortran
+#
+DFLAGS      = -D__FFTW3 
+#
+WFLAGS      = -Werror=aliasing -Werror=ampersand -Werror=c-binding-type -Werror=intrinsic-shadow -Werror=intrinsics-std -Werror=line-truncation -Werror=tabs -Werror=target-lifetime -Werror=underflow -Werror=unused-but-set-variable -Werror=unused-variable -Werror=unused-dummy-argument -Werror=conversion -Werror=zerotrip -Wno-maybe-uninitialized -Wuse-without-only 
+#
+FCDEBFLAGS  = -ffree-form -std=f2003 -fimplicit-none 
+CFLAGS      = -march=native -fno-omit-frame-pointer -g -O3 -funroll-loops -ffast-math $(PROFOPT) -fopenmp -I'/usr/include' $(DFLAGS) 
+FCFLAGS     = -march=native -fno-omit-frame-pointer -g -O3 -funroll-loops -ffast-math $(PROFOPT) -fopenmp -I'/usr/include' $(FCDEBFLAGS) $(WFLAGS) $(DFLAGS) 
+#
+LDFLAGS     = $(FCFLAGS) -llapack -lblas -Wl,--enable-new-dtags -L'/usr/lib' -Wl,-rpath='/usr/lib' 
+LIBS        = -lfftw3 -lfftw3_omp -lstdc++ 
