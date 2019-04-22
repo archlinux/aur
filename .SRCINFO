@@ -1,6 +1,6 @@
 pkgbase = sile-git
 	pkgdesc = Modern typesetting system inspired by TeX
-	pkgver = 0.9.5.1.r1.g6533566
+	pkgver = 0.9.5.1.r33.g1d3b28c
 	pkgrel = 1
 	url = http://www.sile-typesetter.org/
 	arch = any
