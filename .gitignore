@@ -2,3 +2,4 @@ src
 pkg
 v*.tar.gz
 *pkg.tar.xz
+tags
