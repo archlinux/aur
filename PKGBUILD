@@ -1,14 +1,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=maxima-git
-pkgver=5.42.1.279.ge2a275d4d
+pkgver=5.42.1.569.g88fa7ff50
 pkgrel=1
 pkgdesc="Sophisticated computer algebra system - git-version"
 arch=('i686' 'x86_64')
 url="http://maxima.sourceforge.net"
 license=('GPL')
-depends=('sbcl' 'sh')
-makedepends=('git' 'cl-ppcre' 'perl' 'python' 'texlive-core' 'texinfo')
+depends=('sbcl' 'sh' 'shared-mime-info')
+makedepends=('git' 'perl' 'python' 'texlive-core' 'texinfo')
 optdepends=('gnuplot: plotting capabilities'
 	    'rlwrap: readline support via /usr/bin/rmaxima'
 	    'tk: graphical xmaxima interface')
@@ -29,7 +29,7 @@ build() {
   ./bootstrap
   ./configure --prefix=/usr --mandir=/usr/share/man \
     --infodir=/usr/share/info  --libexecdir=/usr/lib \
-    --enable-sbcl-exec --with-default-lisp=sbcl
+    --enable-sbcl --with-default-lisp=sbcl
   make
 }
 
