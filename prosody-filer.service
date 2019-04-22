@@ -7,7 +7,7 @@ ExecStart=/usr/bin/prosody-filer -config /etc/prosody-filer.toml
 Restart=always
 WorkingDirectory=/var/lib/prosody-filer
 User=prosody-filer
-Group=nginx  # in case the files should get served by nginx directly:
+Group=http  # in case the files should get served by nginx directly:
 
 [Install]
 WantedBy=multi-user.target
