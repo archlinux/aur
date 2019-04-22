@@ -1,14 +1,14 @@
 pkgbase = sensu-go-agent
 	pkgdesc = Sensu Go Agent
-	pkgver = 5.5.0
-	pkgrel = 2
+	pkgver = 5.5.1
+	pkgrel = 1
 	url = https://sensu.io
 	arch = x86_64
 	license = MIT
-	source = sensu-go-agent-5.5.0-1362_amd64.deb::https://packagecloud.io/sensu/stable/packages/ubuntu/cosmic/sensu-go-agent_5.5.0-1362_amd64.deb/download.deb
+	source = sensu-go-agent-5.5.1-1756_amd64.deb::https://packagecloud.io/sensu/stable/packages/ubuntu/cosmic/sensu-go-agent_5.5.1-1756_amd64.deb/download.deb
 	source = sensu.sysusers
 	source = sensu.tmpfiles
-	sha1sums = 597f9476fd138dae2d3b5a71b01b517f9a34b97a
+	sha1sums = 2de6e42533b87b026d0bbd6eab26e1bba1b4b27d
 	sha1sums = 054c2cfb7b2c4e6900fe79620b40fd060dbc0d8a
 	sha1sums = 9cca06fcbb23d5618382cc14e4ab4cc73c1f91fa
 
