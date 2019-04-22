@@ -1,0 +1,29 @@
+pkgbase = cryptopro-csp-k1
+	pkgdesc = CryptoPro CSP 4.0
+	pkgver = 4.0.9963
+	pkgrel = 0
+	url = https://cryptopro.ru/products/cryptopro-csp
+	install = cryptopro-csp-k1.install
+	arch = x86_64
+	license = proprietary
+	makedepends = libarchive
+	depends = glibc
+	depends = gcc-libs
+	depends = gtk2
+	depends = gdk-pixbuf2
+	depends = pango
+	depends = atk
+	depends = glib2
+	depends = curl
+	depends = pcsclite
+	depends = libxml2
+	depends = ccid
+	depends = acsccid
+	options = !strip
+	source = linux-amd64.tgz
+	source = cades_linux_amd64.tar.gz
+	md5sums = eba649ae2c974a8c9d0cd69d2b508ae7
+	md5sums = 31672759fe0eddb89484c18c3e1676e1
+
+pkgname = cryptopro-csp-k1
+

@@ -1,0 +1,266 @@
+post_install() {
+    /sbin/ldconfig
+    PATH=$PATH:/opt/cprocsp/sbin/amd64
+
+    # lsb-cprocsp-rdr-64
+    cpconfig -ini '\config\apppath' -add string libcapi10.so /opt/cprocsp/lib/amd64/libcapi10.so
+    cpconfig -ini '\config\apppath' -add string librdrfat12.so /opt/cprocsp/lib/amd64/librdrfat12.so
+    cpconfig -ini '\config\apppath' -add string librdrrdr.so /opt/cprocsp/lib/amd64/librdrrdr.so
+    cpconfig -ini '\config\apppath' -add string librdrrndm.so /opt/cprocsp/lib/amd64/librdrrndm.so
+    cpconfig -ini '\config\apppath' -add string librdrdsrf.so /opt/cprocsp/lib/amd64/librdrdsrf.so
+    cpconfig -ini '\config\apppath' -add string libcpui.so /opt/cprocsp/lib/amd64/libcpui.so
+    cpconfig -ini '\config\apppath' -add string libcurl.so /usr/lib/libcurl.so
+    cpconfig -ini '\config\apppath' -add string mount_flash.sh /opt/cprocsp/sbin/amd64/mount_flash.sh
+    cpconfig -ini '\config\KeyDevices\FLASH' -add string DLL librdrfat12.so
+    cpconfig -ini '\config\KeyDevices\FLASH' -add string Script mount_flash.sh
+    cpconfig -hardware reader -add FLASH -name FLASH
+    cpconfig -hardware rndm -add CPSD -name 'КПИМ' -level 3 > /dev/null
+    cpconfig -ini '\config\Random\CPSD\Default' -add string '/db1/kis_1' /var/opt/cprocsp/dsrf/db1/kis_1
+    cpconfig -ini '\config\Random\CPSD\Default' -add string '/db2/kis_1' /var/opt/cprocsp/dsrf/db2/kis_1
+    cpconfig -license -view > /dev/null 2> /dev/null
+    test $? = 0 || cpconfig -license -set 4040E-G0037-EK8R3-C6K4U-HCXQG
+
+    # lsb-cprocsp-kc1-64
+    cpconfig -ini '\config\apppath' -add string librdrrndmbio_tui.so /opt/cprocsp/lib/amd64/librdrrndmbio_tui.so
+    cpconfig -ini '\config\apppath' -add string libcsp.so /opt/cprocsp/lib/amd64/libcsp.so
+    cpconfig -ini '\config\Random\Bio_tui' -add string DLL librdrrndmbio_tui.so
+    cpconfig -hardware reader -add hdimage -name 'Структура дискеты на жестком диске' > /dev/null
+    cpconfig -hardware rndm -add bio_tui -name 'Биологический текстовый' -level 5 > /dev/null
+    cpconfig -defprov -setdef -provtype 75 -provname 'Crypto-Pro GOST R 34.10-2001 KC1 CSP'
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2001 KC1 CSP' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2001 KC1 CSP' -add string 'Function Table Name' CPCSP_GetFunctionTable
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2001 KC1 CSP' -add long Type 75
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2001 Cryptographic Service Provider' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2001 Cryptographic Service Provider' -add string 'Function Table Name' CPCSP_GetFunctionTable
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2001 Cryptographic Service Provider' -add long Type 75
+    cpconfig -defprov -setdef -provtype 80 -provname 'Crypto-Pro GOST R 34.10-2012 KC1 CSP'
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 KC1 CSP' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 KC1 CSP' -add string 'Function Table Name' CPCSP_GetFunctionTable
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 KC1 CSP' -add long Type 80
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 Cryptographic Service Provider' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 Cryptographic Service Provider' -add string 'Function Table Name' CPCSP_GetFunctionTable
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 Cryptographic Service Provider' -add long Type 80
+    cpconfig -defprov -setdef -provtype 81 -provname 'Crypto-Pro GOST R 34.10-2012 KC1 Strong CSP'
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 KC1 Strong CSP' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 KC1 Strong CSP' -add string 'Function Table Name' CPCSP_GetFunctionTable
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 KC1 Strong CSP' -add long Type 81
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 Strong Cryptographic Service Provider' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 Strong Cryptographic Service Provider' -add string 'Function Table Name' CPCSP_GetFunctionTable
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 Strong Cryptographic Service Provider' -add long Type 81
+    cpconfig -ini '\cryptography\Defaults\Provider Types\Type 075' -add string 'TypeName' "GOST R 34.10-2001 Signature with Diffie-Hellman Key Exchange"
+    cpconfig -ini '\cryptography\Defaults\Provider Types\Type 080' -add string 'TypeName' "GOST R 34.10-2012 (256) Signature with Diffie-Hellman Key Exchange"
+    cpconfig -ini '\cryptography\Defaults\Provider Types\Type 081' -add string 'TypeName' "GOST R 34.10-2012 (512) Signature with Diffie-Hellman Key Exchange"
+
+    # lsb-cprocsp-capilite-64
+    cpconfig -ini '\config\apppath' -add string libcapi20.so /opt/cprocsp/lib/amd64/libcapi20.so
+    # create several local machine stores if they don't exist
+    /opt/cprocsp/bin/amd64/certmgr -list -crl -store mMy > /dev/null 2>&1
+    /opt/cprocsp/bin/amd64/certmgr -list -crl -store mCryptoProTrustedStore > /dev/null 2>&1
+    # update all stores to Windows-compatible format. we don't want to silence
+    # stderr because user should be notified about errors
+    find '/var/opt/cprocsp/users/' -name '*.sto' -type f \
+         -exec /opt/cprocsp/bin/amd64/certmgr -updatestore -crl -file {} \; > /dev/null
+    find '/var/opt/cprocsp/users/' -name '*.sto' -type f \
+         -exec /opt/cprocsp/bin/amd64/certmgr -updatestore -cert -file {} \; > /dev/null
+
+    # lsb-cprocsp-ca-certs
+    ls -d /var/opt/cprocsp/tmpcerts/root/* \
+        | xargs -n 1 /opt/cprocsp/bin/amd64/certmgr -install -store mroot -file 1>/dev/null \
+        || printf "Failed to install root certificates!\n"
+    ls -d /var/opt/cprocsp/tmpcerts/ca/* \
+        | xargs -n 1 /opt/cprocsp/bin/amd64/certmgr -install -store mca -file 1>/dev/null \
+        || printf "Failed to install intermediate certificates!\n"
+
+    # cprocsp-rdr-gui-gtk-64
+    cpconfig -ini '\config\apppath' -add string librdrrndmbio_gui_fgtk.so /opt/cprocsp/lib/amd64/librdrrndmbio_gui_fgtk.so
+    cpconfig -ini '\config\apppath' -add string libxcpui.so /opt/cprocsp/lib/amd64/libfgcpui.so
+    cpconfig -ini '\config\apppath' -add string xcpui_app /opt/cprocsp/sbin/amd64/xcpui_app
+    cpconfig -ini '\config\apppath' -add string fgtk_rndm_app /opt/cprocsp/sbin/amd64/fgtk_rndm_app
+    cpconfig -ini '\config\Random\Bio_gui' -add string DLL librdrrndmbio_gui_fgtk.so
+    cpconfig -hardware rndm -add bio_gui -name 'rndm GUI gtk+2.0' -level 4 > /dev/null
+
+    # cprocsp-rdr-pgsc-64
+    cpconfig -ini '\config\apppath' -add string libpcsclite.so libpcsclite.so.1
+    cpconfig -ini '\config\apppath' -add string librdrpcsc.so /opt/cprocsp/lib/amd64/librdrpcsc.so
+    cpconfig -ini '\config\apppath' -add string librdrric.so /opt/cprocsp/lib/amd64/librdrric.so
+    cpconfig -ini '\config\KeyDevices\PCSC' -add string DLL librdrpcsc.so
+    cpconfig -ini '\config\KeyDevices\PCSC' -add long Group 1
+    cpconfig -ini '\config\KeyDevices\PCSC\PNP PCSC\Default' -add string Name 'All PC/SC readers'
+    cpconfig -ini '\config\KeyCarriers\OSCAR' -add string DLL librdrric.so
+    cpconfig -ini '\config\KeyCarriers\OSCAR2' -add string DLL librdrric.so
+    cpconfig -ini '\config\KeyCarriers\TRUST' -add string DLL librdrric.so
+    cpconfig -ini '\config\KeyCarriers\TRUSTS' -add string DLL librdrric.so
+    cpconfig -ini '\config\KeyCarriers\TRUSTD' -add string DLL librdrric.so
+
+    cpconfig -hardware media -add oscar -name 'Оскар' > /dev/null
+    cpconfig -hardware media -configure oscar -add hex atr 0000000000000043525950544f5052
+    cpconfig -hardware media -configure oscar -add hex mask 00000000000000ffffffffffffffff
+    cpconfig -hardware media -configure oscar -add string folders 0B00
+    cpconfig -hardware media -add oscar2 -connect CSP -name 'Оскар CSP 2.0' > /dev/null
+    cpconfig -hardware media -configure oscar2 -connect CSP -add hex atr 000000000000004350435350010102
+    cpconfig -hardware media -configure oscar2 -connect CSP -add hex mask 00000000000000ffffffffffffffff
+    cpconfig -hardware media -configure oscar2 -connect CSP -add string folders 0B00
+    cpconfig -hardware media -configure oscar2 -connect CSP -add long size_1 60
+    cpconfig -hardware media -configure oscar2 -connect CSP -add long size_2 70
+    cpconfig -hardware media -configure oscar2 -connect CSP -add long size_4 60
+    cpconfig -hardware media -configure oscar2 -connect CSP -add long size_5 70
+    cpconfig -hardware media -configure oscar2 -connect CSP -add long size_6 62
+    cpconfig -hardware media -add oscar2 -connect KChannel -name 'Канал К' > /dev/null
+    cpconfig -hardware media -configure oscar2 -connect KChannel -add hex atr 000000000000004350435350010101
+    cpconfig -hardware media -configure oscar2 -connect KChannel -add hex mask 00000000000000ffffffffffffffff
+    cpconfig -hardware media -configure oscar2 -connect KChannel -add string folders 0B00
+    cpconfig -hardware media -configure oscar2 -connect KChannel -add long size_1 56
+    cpconfig -hardware media -configure oscar2 -connect KChannel -add long size_2 36
+    cpconfig -hardware media -configure oscar2 -connect KChannel -add long size_4 56
+    cpconfig -hardware media -configure oscar2 -connect KChannel -add long size_5 36
+    cpconfig -hardware media -configure oscar2 -connect KChannel -add long size_6 62
+
+    cpconfig -hardware media -add TRUST -name 'Magistra' > /dev/null
+    cpconfig -hardware media -configure TRUST -add hex atr 3b9e00008031c0654d4700000072f7418107
+    cpconfig -hardware media -configure TRUST -add hex mask ffff0000ffffffffffff300000ffffffffff
+    cpconfig -hardware media -configure TRUST -add string folders "A\\B\\C\\D\\E\\F\\G\\H"
+
+    cpconfig -hardware media -add TRUSTS -name 'Magistra SocCard' > /dev/null
+    cpconfig -hardware media -configure TRUSTS -add hex atr 3b9a00008031c0610072f7418107
+    cpconfig -hardware media -configure TRUSTS -add hex mask ffff0000ffffffff30ffffffffff
+    cpconfig -hardware media -configure TRUSTS -add string folders "A\\B\\C\\D"
+
+    cpconfig -hardware media -add TRUSTD -name 'Magistra Debug' > /dev/null
+    cpconfig -hardware media -configure TRUSTD -add hex atr 3b9800008031c072f7418107
+    cpconfig -hardware media -configure TRUSTD -add hex mask ffff0000ffffffffffffffff
+    cpconfig -hardware media -configure TRUSTD -add string folders "A\\B\\C\\D\\E\\F\\G\\H"
+
+    not_solaris=1
+    if test ! -z "$not_solaris"; then
+        search_dirs=''
+        for d in `echo /usr/lib*/pcsc /usr/local/lib*/pcsc /usr/libexec/SmartCardServices/*`; do
+            if echo $d|grep -v '*'; then
+                search_dirs="$d $search_dirs";
+            fi;
+        done
+        if test ! -z "$search_dirs"; then
+            folder=`find -L $search_dirs -name "*ccid.bundle"`
+            if test ! -z "$folder"; then
+                pList_files=`find -L $folder -name "Info.plist"`
+                if test ! -z "$pList_files"; then
+                    for pList in $pList_files; do
+                        ccid_reg.sh -add $pList 0x072F 0x90CC "ACS ACR 38U-CCID - CP"
+                        ccid_reg.sh -add $pList 0x072F 0x1204 "ACS ACR101 ICC Reader - CP"
+                        ccid_reg.sh -add $pList 0x072F 0x8201 "ACS APG8201 PINhandy 1 - CP"
+                        ccid_reg.sh -add $pList 0x072F 0x8202 "ACS APG8201 USB Reader - CP"
+                        ccid_reg.sh -add $pList 0x072F 0x90DB "ACS CryptoMate64 - CP"
+                        ccid_reg.sh -add $pList 0x0483 0xACD1 "Ancud Crypton SCR/RNG - CP"
+                        ccid_reg.sh -add $pList 0x0A89 0x0025 "Aktiv Rutoken lite - CP"
+                        ccid_reg.sh -add $pList 0x0A89 0x0030 "Aktiv Rutoken ECP - CP"
+                        ccid_reg.sh -add $pList 0x0A89 0x0080 "Aktiv PINPad Ex - CP"
+                        ccid_reg.sh -add $pList 0x0A89 0x0081 "Aktiv PINPad In - CP"
+                        ccid_reg.sh -add $pList 0x0A89 0x0060 "Aktiv Co., ProgramPark Rutoken Magistra - CP"
+                        ccid_reg.sh -add $pList 0x072f 0x90de "ACS Token - CP"
+                        ccid_reg.sh -add $pList 0x24dc 0x0102 "ARDS ZAO JaCarta LT - CP"
+                        ccid_reg.sh -add $pList 0x2a0c 0x0001 "MultiSoft ltd. SCR2 - CP"
+                        ccid_reg.sh -add $pList 0x1fc9 0x7479 "ISBC ESMART reader - CP"
+                        ccid_reg.sh -add $pList 0x2ce4 0x7479 "ESMART Token - CP"
+                        ccid_reg.sh -add $pList 0x2fb0 0x0006 "Infocrypt Token++ lite"
+                        ccid_reg.sh -add $pList 0x2fb0 0x0008 "Infocrypt Token++ lite"
+                        ccid_reg.sh -add $pList 0x2fb0 0x003a "Infocrypt Token++ lite"
+                    done
+                fi
+            fi
+        fi
+    fi
+
+    # cprocsp-rdr-jacarta-64
+    cpconfig -ini '\config\apppath' -add string librdrjacarta.so.3.6.408 /opt/cprocsp/lib/amd64/librdrjacarta.so.3.6.408
+    cpconfig -ini '\config\KeyDevices\PCSC\AKS ifdh 00 00\Default' -add string Name "AKS ifdh 0"
+    cpconfig -ini '\config\KeyDevices\PCSC\AKS ifdh 01 00\Default' -add string Name "AKS ifdh 1"
+    cpconfig -ini '\config\KeyDevices\PCSC\ARDS JaCarta 00 00\Default' -add string Name "ARDS JaCarta 0"
+    cpconfig -ini '\config\KeyDevices\PCSC\ARDS JaCarta 01 00\Default' -add string Name "ARDS JaCarta 1"
+    cpconfig -ini '\config\KeyDevices\PCSC\Aladdin eToken PRO USB 72K Java 00 00\Default' -add string Name "Aladdin Token JC 0"
+    cpconfig -ini '\config\KeyDevices\PCSC\Aladdin eToken PRO USB 72K Java 01 00\Default' -add string Name "Aladdin Token JC 1"
+    cpconfig -ini '\config\KeyDevices\PCSC\ARDS ZAO JaCarta LT 00 00\Default' -add string Name "ARDS JaCarta LT 0"
+    cpconfig -ini '\config\KeyDevices\PCSC\ARDS ZAO JaCarta LT 01 00\Default' -add string Name "ARDS JaCarta LT 1"
+    cpconfig -ini '\config\KeyDevices\PCSC\ARDS ZAO JaCarta Flash 00 00\Default' -add string Name "ARDS JaCarta Flash 0"
+    cpconfig -ini '\config\KeyDevices\PCSC\ARDS ZAO JaCarta Flash 01 00\Default' -add string Name "ARDS JaCarta Flash 1"
+    cpconfig -ini '\config\KeyCarriers\eToken_PRO16' -add string DLL librdrjacarta.so.3.6.408
+    cpconfig -ini '\config\KeyCarriers\eToken_PRO32' -add string DLL librdrjacarta.so.3.6.408
+    cpconfig -ini '\config\KeyCarriers\eToken_PRO_M420' -add string DLL librdrjacarta.so.3.6.408
+    cpconfig -ini '\config\KeyCarriers\eToken_PRO_M420B' -add string DLL librdrjacarta.so.3.6.408
+    cpconfig -ini '\config\KeyCarriers\eToken_JAVA_10' -add string DLL librdrjacarta.so.3.6.408
+    cpconfig -ini '\config\KeyCarriers\eToken_JAVA_10B' -add string DLL librdrjacarta.so.3.6.408
+    cpconfig -ini '\config\KeyCarriers\JaCarta' -add string DLL librdrjacarta.so.3.6.408
+    cpconfig -ini '\config\KeyCarriers\JaCarta_LT' -add string DLL librdrjacarta.so.3.6.408
+    cpconfig -hardware media -add eToken_PRO16 -name 'etoken_pro16' >&-
+    cpconfig -hardware media -configure eToken_PRO16 -add hex atr 3be200ffc11031fe55c8029c
+    cpconfig -hardware media -configure eToken_PRO16 -add hex mask ffffffffffffffffffffffff
+    cpconfig -hardware media -configure eToken_PRO16 -add string folders "CC00\\CC01\\CC02\\CC03\\CC04\\CC05\\CC06\\CC07\\CC08\\CC09"
+    cpconfig -hardware media -add eToken_PRO32 -name 'etoken_pro32' >&-
+    cpconfig -hardware media -configure eToken_PRO32 -add hex atr 3bf29800ffc11031fe55c80315
+    cpconfig -hardware media -configure eToken_PRO32 -add hex mask ffffffffffffffffffffffffff
+    cpconfig -hardware media -configure eToken_PRO32 -add string folders "CC00\\CC01\\CC02\\CC03\\CC04\\CC05\\CC06\\CC07\\CC08\\CC09"
+    cpconfig -hardware media -add eToken_PRO_M420 -name 'etoken_pro_m420' >&-
+    cpconfig -hardware media -configure eToken_PRO_M420 -add hex atr 3bf2180000c10a31fe55c80600
+    cpconfig -hardware media -configure eToken_PRO_M420 -add hex mask ffffffff00ffffffffffffff00
+    cpconfig -hardware media -configure eToken_PRO_M420 -add string folders "CC00\\CC01\\CC02\\CC03\\CC04\\CC05\\CC06\\CC07\\CC08\\CC09"
+    cpconfig -hardware media -add eToken_PRO_M420B -name 'etoken_pro_m420b' >&-
+    cpconfig -hardware media -configure eToken_PRO_M420B -add hex atr 3bf2180002c10a31fe58c80975
+    cpconfig -hardware media -configure eToken_PRO_M420B -add hex mask ffffffffffffffffffffffffff
+    cpconfig -hardware media -configure eToken_PRO_M420B -add string folders "CC00\\CC01\\CC02\\CC03\\CC04\\CC05\\CC06\\CC07\\CC08\\CC09"
+    cpconfig -hardware media -add eToken_JAVA_10 -name 'etoken_java_10' >&-
+    cpconfig -hardware media -configure eToken_JAVA_10 -add hex atr 3bd518008131fe7d8073c82110f4
+    cpconfig -hardware media -configure eToken_JAVA_10 -add hex mask ffffffffffffffffffffffffffff
+    cpconfig -hardware media -configure eToken_JAVA_10 -add string folders "CC00\\CC01\\CC02\\CC03\\CC04\\CC05\\CC06\\CC07\\CC08\\CC09"
+    cpconfig -hardware media -add eToken_JAVA_10B -name 'etoken_java_10b' >&-
+    cpconfig -hardware media -configure eToken_JAVA_10B -add hex atr 3bd5180081313a7d8073c8211030
+    cpconfig -hardware media -configure eToken_JAVA_10B -add hex mask ffffffffffffffffffffffffffff
+    cpconfig -hardware media -configure eToken_JAVA_10B -add string folders "CC00\\CC01\\CC02\\CC03\\CC04\\CC05\\CC06\\CC07\\CC08\\CC09"
+    cpconfig -hardware media -add JaCarta -name 'jacarta' >&-
+    cpconfig -hardware media -configure JaCarta -add hex atr 3bdc18ff8191fe1fc38073c821136601061159000128
+    cpconfig -hardware media -configure JaCarta -add hex mask ffffffffffffffffffffffffffffffffffffffffffff
+    cpconfig -hardware media -configure JaCarta -add string folders "CC00\\CC01\\CC02\\CC03\\CC04\\CC05\\CC06\\CC07\\CC08\\CC09"
+    cpconfig -hardware media -add JaCarta_LT -name 'jacarta_lt' >&-
+    cpconfig -hardware media -configure JaCarta_LT -add hex atr 3bdc18ff8111fe8073c82113660106013080018d
+    cpconfig -hardware media -configure JaCarta_LT -add hex mask ffffffffffffffffffffffffffffffffffffffff
+    cpconfig -hardware media -configure JaCarta_LT -add string folders "CC00\\CC01\\CC02\\CC03\\CC04\\CC05\\CC06\\CC07\\CC08\\CC09"
+
+    bash /opt/cprocsp/tmp/PLIST-csp/Linux/update_all_plists.sh
+
+    # cprocsp-pki-2.0.0-amd64-cades
+    /opt/cprocsp/bin/amd64/ocsputil license -s 0A202-U0030-00ECW-RRLMF-UU2WK
+    /opt/cprocsp/bin/amd64/tsputil license -s TA200-G0030-00ECW-RRLNE-BTDVV
+
+    cpconfig -ini '\config\apppath' -add string libcades.so /opt/cprocsp/lib/amd64/libcades.so.2
+    cpconfig -ini '\config\apppath' -add string libpkivalidator.so /opt/cprocsp/lib/amd64/libpkivalidator.so.2
+    cpconfig -ini '\config\apppath' -add string librevprov.so /opt/cprocsp/lib/amd64/librevprov.so.2
+    cpconfig -ini '\config\policy\OIDs' -add string '{A4CC781E-04E9-425C-AAFD-1D74DA8DFAF6}' 'libpkivalidator.so OCSPSigningImpl'
+    cpconfig -ini '\config\policy\OIDs' -add string '{AF74EE92-A059-492F-9B4B-EAD239B22A1B}' 'libpkivalidator.so TimestampSigningImpl'
+    cpconfig -ini '\config\policy\OIDs' -add string '{B52FF66F-13A5-402C-B958-A3A6B5300FB6}' 'libpkivalidator.so SignatureImpl'
+    cpconfig -ini '\config\policy\OIDs' -add string '5' 'libpkivalidator.so BasicConstraintsImpl'
+    cpconfig -ini '\config\OID\EncodingType 1\CertDllVerifyRevocation\DEFAULT' -add string 'DLL' 'librevprov.so'
+
+    # cprocsp-pki-2.0.0-amd64-plugin
+    cpconfig -ini '\config\apppath' -add string libnpcades.so /opt/cprocsp/lib/amd64/libnpcades.so.2
+
+    [ -d /usr/lib/mozilla/plugins ] && cp -rvf /opt/cprocsp/lib/amd64/libnpcades.so.2.0.0 /usr/lib/mozilla/plugins/libnpcades.so
+    [ -d /usr/lib64/mozilla/plugins ] && cp -rvf /opt/cprocsp/lib/amd64/libnpcades.so.2.0.0 /usr/lib64/mozilla/plugins/libnpcades.so
+    [ -d /usr/lib/browser-plugins ] && cp -rvf /opt/cprocsp/lib/amd64/libnpcades.so.2.0.0 /usr/lib/browser-plugins/libnpcades.so
+    [ -d /usr/lib64/browser-plugins ] && cp -rvf /opt/cprocsp/lib/amd64/libnpcades.so.2.0.0 /usr/lib64/browser-plugins/libnpcades.so
+
+    #if we have clean CSP install, users will not have my.sto. Plugin can open only existed stores. Create empty stores for all users with id above 1000
+    USERNAMES=( `cat /etc/passwd | cut -d ":" -f 1` )
+    USERIDS=( `cat /etc/passwd | cut -d ":" -f 3` )
+    USERGROUPS=( `cat /etc/passwd | cut -d ":" -f 4` )
+    total=${#USERNAMES[*]}
+    for (( i=0; i<=$(( $total -1 )); i++ ))
+    do
+        if (( ${USERIDS[$i]}>=1000 )) && (( ${USERIDS[$i]}<65000 )) ; then
+            if [[ ! -f /var/opt/cprocsp/users/${USERNAMES[$i]}/stores/my.sto ]]; then
+                mkdir -p /var/opt/cprocsp/users/${USERNAMES[$i]}/stores
+                touch /var/opt/cprocsp/users/${USERNAMES[$i]}/stores/my.sto
+                chmod -R 744 /var/opt/cprocsp/users/${USERNAMES[$i]}
+                chown -R ${USERNAMES[$i]} /var/opt/cprocsp/users/${USERNAMES[$i]}
+                chgrp -R ${USERGROUPS[$i]} /var/opt/cprocsp/users/${USERNAMES[$i]}
+            fi
+        fi
+    done
+
+}
