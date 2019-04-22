@@ -8,7 +8,7 @@
 # https://www.kernel.org/category/releases.html
 # 4.19 Greg Kroah-Hartman 2018-10-22 2020-12
 _LLL_VER=4.19
-_LLL_SUBVER=25
+_LLL_SUBVER=36
 
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU can actually run slower with NUMA enabled.
@@ -54,6 +54,8 @@ source=(
         #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         ${_CK_PATCH}
         'ck-patch-for-4.19.7+.patch'
+        'ck-patch-for-4.19.33+.patch'
+        'ck-patch-for-4.19.34+.patch'
         ${_UKSM_PATCH}
         ${_CJKTTY_PATCH}
         'config'         # the main kernel config file
@@ -68,12 +70,14 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '4f6f3466394966fbff4e32ca3c33ccb07e008157c9288762d44722ae3ccf41ac'
+            '0703078d84261d098492abaab813a0bab2b408f923d96e66c980f2cdb8d326a8'
             '77863d16a08e1b3c726b6c965f1bb7c672bd7317776810121062b73f9ea26780'
             '58b81803f8f81d18bef9fe3c5101851ca770ca103da114b8d1460ed74d920efa'
+            'fb338209c3b3d00ae2e3706eb3b874d5d9391f84120ff5197f95824be76f86e1'
+            '0aafe8360e9a3b9b801ca1327fbfd15b950840d9ddaccd3e7bfc71749e9e3a0c'
             'ec617b1718e6cadfad02c75aca9c4b0e6b6f944bc1a93b7e4d82c847c04b5653'
             '72be48252f30bc644071bbce2607b773f789c6f19e281b89ab7e16a3d8161ed3'
-            '35dd18e779a82731f9dfbbd696a10ac5a6037f9a06e9d22f1ba3d72e79a0665b'
+            'c804c47ecb6d01f29ed4af5bd9c50fa3bb2545ebe9d1c3b560bc6c61a72966f5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -95,6 +99,8 @@ prepare() {
   msg "Patching source with ck${_CK_VER} including BFS"
   cp "../patch-${_LLL_VER}-ck${_CK_VER}" "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
   patch -i ../ck-patch-for-4.19.7+.patch "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
+  patch -i ../ck-patch-for-4.19.33+.patch "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
+  patch -i ../ck-patch-for-4.19.34+.patch "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
   patch -Np1 -i "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
 
   msg "Patching source with uksm ${_UKSM_VER} patches"
