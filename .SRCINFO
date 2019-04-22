@@ -1,0 +1,19 @@
+pkgbase = vbar
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/vbextreme/vbar
+	arch = x86_64
+	license = GPLv3
+	makedepends = gperf
+	makedepends = meson
+	source = git+https://github.com/vbextreme/vbar.git
+	sha256sums = SKIP
+
+pkgname = vbar-i3wm
+	pkgdesc = Another i3 status bar
+	depends = i3-wm
+
+pkgname = vbar-dwm
+	pkgdesc = Another dwm status bar
+	depends = dwm
+
