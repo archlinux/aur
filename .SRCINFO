@@ -1,16 +1,16 @@
 pkgbase = ttf-iosevka-cc
 	pkgdesc = A slender monospace typeface. Shape: default
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = https://be5invis.github.io/Iosevka/
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
 	depends = xorg-font-utils
 	conflicts = ttf-iosevka-pack
-	source = https://github.com/be5invis/Iosevka/releases/download/v2.2.0/04-iosevka-cc-2.2.0.zip
-	source = ttf-iosevka-cc-2.2.0-2-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
-	sha256sums = 309551d53e37e163149ba5aa15680d52f85955275661f42c089cd1f084cbb13f
+	source = https://github.com/be5invis/Iosevka/releases/download/v2.2.1/04-iosevka-cc-2.2.1.zip
+	source = ttf-iosevka-cc-2.2.1-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
+	sha256sums = 97ea14ba26cbcaa832d44b9049e40e3f0a88c0891102b429bad8fcea53089c33
 	sha256sums = ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000
 
 pkgname = ttf-iosevka-cc
