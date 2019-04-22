@@ -1,4 +1,4 @@
-# Maintainer: ber532k <ber532k@gmx.de>
+# Maintainer: Frank Seifferth <frankseifferth@posteo.net>
 pkgname=mkpdf
 pkgver=0.3.2
 pkgrel=1
