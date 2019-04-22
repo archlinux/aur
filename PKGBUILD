@@ -1,7 +1,4 @@
-# Maintainer: Bruno Pagani <archange@archlinux.org>
-# Contributor: Spyros Stathopoulos <foucault.online@gmail.com>
-# Contributor: richli <rich at dranek dot com>
-# Contributor: rememberthemer <rememberthemer@_GMAIL_DOT_COM_>
+# Maintainer: Sean Ho <sean.li.shin.ho@gmail.com>
 
 _pkg=pygmt
 pkgbase=python-${_pkg,,}
