@@ -1,12 +1,12 @@
 pkgbase = genact
 	pkgdesc = A nonsense activity generator
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/svenstaro/genact
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	source = https://github.com/svenstaro/genact/archive/0.6.0.tar.gz
+	source = https://github.com/svenstaro/genact/archive/0.7.0.tar.gz
 	sha512sums = 7cc21e019d63c448b5c70bf66cca82852910da59759f18058f479d7cf473e6f1f5e46f5c36634c8d6d661dfb0ca049a9791c1406fb98984c27ab4ef7f86b315a
 
 pkgname = genact
