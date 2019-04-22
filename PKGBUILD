@@ -1,5 +1,5 @@
 # Maintainer: goetzc
-# Contributor: ber532k <ber532k@gmx.de>
+# Contributor: Frank Seifferth <frankseifferth@posteo.net>
 pkgname=gcsvedit
 pkgver=0.6.0
 pkgrel=2
