@@ -4,16 +4,16 @@
 # Contributor: dcraven <dcraven@gmail.com>
 
 pkgname=bless
-pkgver=0.6.1
-pkgrel=3
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="High-quality, full-featured hex editor"
 arch=('any')
 url="https://web.archive.org/web/20170503150524/http://home.gna.org/bless/"
 license=('GPL')
 depends=('gtk-sharp-2')
 makedepends=('rarian' 'automake')
-source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/afrantzis/bless/archive/v0.6.1.tar.gz")
-sha256sums=('5f82e43e22e48080ea8e24668197f79dc8bddfcbf3b5f631dbe17f952e7b0f0e')
+source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/afrantzis/bless/archive/v${pkgver}.tar.gz")
+sha256sums=('1a9a38ec8d29e4cd3991413087a11a935577419ae9d5469edafc18cba157f827')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
