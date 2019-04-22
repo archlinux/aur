@@ -1,12 +1,12 @@
 # Maintainer: Sauyon Lee <sauyon@mari>
 pkgname=losslessaudiochecker
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc=""
+pkgdesc="A utility to check whether a WAVE or FLAC file is truly lossless or not."
 arch=('i686' 'x86_64')
-url=""
-license=('GPL')
+url="http://losslessaudiochecker.com/"
+license=('custom')
 groups=()
 depends=()
 makedepends=()
@@ -30,6 +30,7 @@ package() {
   cd "$srcdir/"
 
   install -Dm755 LAC "$pkgdir/usr/bin/LAC"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
