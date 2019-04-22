@@ -2,7 +2,7 @@
 
 pkgname=onos
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Open Network Operating System'
 arch=('any')
 url='https://onosproject.org'
@@ -19,7 +19,10 @@ package() {
     mv "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/$pkgname"
     install -Dm 644 "$srcdir/onos.service" -t "$pkgdir/usr/lib/systemd/system"
     install -dm 755 "$pkgdir/usr/bin"
-    ln -s "/opt/$pkgname/bin/onos" "$pkgdir/usr/bin/onos"
+    for bin in "$pkgdir/opt/$pkgname/bin"/*; do
+        ln -s "/opt/$pkgname/bin/$(basename $bin)" \
+            "$pkgdir/usr/bin/$(basename $bin)"
+    done
 }
 
 # vim: set ts=4 sw=4 et:
