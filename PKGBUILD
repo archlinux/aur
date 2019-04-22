@@ -18,8 +18,8 @@
 # intel-inspector:              Intel Inspector
 ###########################################################################
 
-# Parallel Studio XE
-# Copyright (C) 2016       Ignat Harczuk
+# Parallel Studio XE PKGBUILD script
+# Copyright (C) 2016-2019       Ignat Harczuk and contibutors
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
