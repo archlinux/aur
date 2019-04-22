@@ -2,7 +2,7 @@
 # Contributor: Andras Czigany <andras dot czigany dot 'thirteen with digits' at gmail dot com>
 
 pkgname=qtcreator-cppcheck-plugin-git
-pkgver=r99.dee404f
+pkgver=r154.dbd8725
 pkgrel=1
 pkgdesc="QtCreator plugin using cppcheck"
 groups=('qt' 'qt5')
@@ -33,7 +33,8 @@ build() {
         "lrelease.output=\${QMAKE_FILE_PATH}/\${QMAKE_FILE_BASE}.qm" \
         "lrelease.commands=\$\$[QT_INSTALL_BINS]/lrelease \${QMAKE_FILE_IN} -qm \${QMAKE_FILE_PATH}/\${QMAKE_FILE_BASE}.qm" \
         "lrelease.CONFIG+=no_link" \
-        "PRE_TARGETDEPS+=compiler_lrelease_make_all"
+        "PRE_TARGETDEPS+=compiler_lrelease_make_all" \
+        "KSYNTAXHIGHLIGHTING_LIB_DIR=/usr/lib" "KSYNTAXHIGHLIGHTING_INCLUDE_DIR=/usr/include/KF5/KSyntaxHighlighting"
 
     make
 }

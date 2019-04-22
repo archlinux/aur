@@ -1,6 +1,6 @@
 pkgbase = qtcreator-cppcheck-plugin-git
 	pkgdesc = QtCreator plugin using cppcheck
-	pkgver = r99.dee404f
+	pkgver = r154.dbd8725
 	pkgrel = 1
 	url = https://github.com/OneMoreGres/qtc-cppcheck
 	arch = i686
