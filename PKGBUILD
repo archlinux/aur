@@ -1,64 +1,67 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+
 pkgname=namd
-pkgver=2.12
+pkgver=2.13
+_charmver=6.8.2
 pkgrel=1
 pkgdesc="Scalable molecular dynamic engine"
 url="http://www.ks.uiuc.edu/Research/namd/"
 license=('custom')
 arch=('x86_64')
-depends=('openmpi' 'cuda-8.0' 'plumed' 'plumed-namd' 'fftw-static' 'tcl85-static' 'fakeroot' 'gsl' 'zlib' 'lapack' 'blas' 'gcc-libs')
-makedepends=('make' 'gcc')
-md5sums=('2a1191909b1ab03bf0205971ad4d8ee9'
-         'cdec864324573d6a16a09d6503ae3f3e'
-         'a1291b5f794008ce5b1912c9b806739c')
-options=('staticlibs')
+depends=('gcc7' 'gcc7-libs')
+makedepends=('make' 'patch' 'fftw-static' 'tcl85-static')
+md5sums=('a887a34b638a5b2f7fcf7ff3c262496d'
+         '9e3323ed856e36e34d5c17a7b0341e38'
+         '835ce380b799d847347999e62966b411'
+         'fed5c77446090c38d8811b82737d4539')
+options=(staticlibs !buildflags)
 
-# You should download the source package from the VMD site and put it in the PKGBUILD folder
-source=("local://NAMD_${pkgver}_Source.tar.gz"
-        "charm++.patch"
-        "namd.patch")
+# You MUST download the package from the NAMD url and put it in the PKGBUILD folder!
+source=("http://charm.cs.illinois.edu/distrib/charm-${_charmver}.tar.gz"
+        "local://NAMD_${pkgver}_Source.tar.gz"
+        "namd.patch"
+        "namd2")
 
 prepare() {
-  cd ${srcdir}/NAMD_2.12_Source
+  cd ${srcdir}/NAMD_${pkgver}_Source
 
-  # patch NAMD
+  # move Charm++ in place
+  mv ${srcdir}/charm-v${_charmver} ${srcdir}/NAMD_${pkgver}_Source/charm-${_charmver}
+
+  # apply patch
   patch -Np0 -i "${srcdir}/namd.patch"
-
-  # patch and build Charm++
-  tar -xf charm-6.7.1.tar
-  cd charm-6.7.1
-
-  patch -Np0 -i "${srcdir}/charm++.patch"
-
-  MPICXX=mpicxx
-  ./build charm++ mpi-linux-x86_64 --with-production
-
-  # little test
-  cd mpi-linux-x86_64/tests/charm++/megatest
-  make pgm
-  mpirun -n 2 ./pgm
 }
 
 build() {
-  cd ${srcdir}/NAMD_2.12_Source
+  # build Charm++
+  cd ${srcdir}/NAMD_${pkgver}_Source/charm-${_charmver}
 
-  # configure build and apply Plumed patch
-  ./config Linux-x86_64-g++ --charm-arch mpi-linux-x86_64 --with-fftw3 --with-cuda
-  plumed patch -p -e namd-2.12
+  CC=gcc-7 CXX=g++-7 ./build charm++ multicore-linux64 --with-production
 
+  # go to the NAMD build
+  cd ${srcdir}/NAMD_${pkgver}_Source
+
+  # configure and build NAMD
+  ./config Linux-x86_64-g++ --charm-arch multicore-linux64 --with-fftw3 --cc gcc-7 --cxx g++-7
   cd Linux-x86_64-g++
   make
 }
 
 package() {
-  cd ${srcdir}/NAMD_2.12_Source/Linux-x86_64-g++
+  cd ${srcdir}/NAMD_${pkgver}_Source/Linux-x86_64-g++
 
   make release
 
-  mkdir ${pkgdir}/opt
-  cp -ar NAMD_2.12_Linux-x86_64-MPI-CUDA ${pkgdir}/opt/namd
+  # prepare directories
+  mkdir -p ${pkgdir}/opt
+  mkdir -p ${pkgdir}/usr/bin
+
+  # install stuff
+  mv NAMD_${pkgver}_Linux-x86_64-multicore ${pkgdir}/opt/${pkgname}
 
   # install license
-  install -Dm644 NAMD_2.12_Linux-x86_64-MPI-CUDA/license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
+  install -Dm644 ${pkgdir}/opt/${pkgname}/license.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
+  # install wrappers
+  install -Dm755 ${srcdir}/namd2 ${pkgdir}/usr/bin/namd2
+}

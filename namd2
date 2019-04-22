@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+export LD_LIBRARY_PATH="/usr/lib/gcc/x86_64-pc-linux-gnu/7.4.1:$LD_LIBRARY_PATH"
+/opt/namd/namd2 "$@"
+
+exit 0
