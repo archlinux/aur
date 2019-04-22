@@ -300,29 +300,12 @@ build() {
   echo -e ""
 
 
-  cd ${xe_build_dir}/opt/intel
-  ln -s ./${_composer_xe_dir} composerxe
-
-  ln -s ./composerxe/linux/bin/${_i_arch} bin
-  ln -s ./composerxe/linux/pkg_bin pkg_bin
-
-  ln -s ./composerxe/linux/ipp/ ipp
-  ln -s ./composerxe/linux/compiler/lib/${_i_arch} lib
-  # ln -s ./composerxe/linux/debugger/lib/${_i_arch} debugger_lib
-  # ln -s ./composerxe/linux/man/ man
-  ln -s ./composerxe/linux/mkl/ mkl
-  ln -s ./composerxe/linux/tbb/ tbb
-
-  _current_dir=`pwd`
   if [ -d ${pkgdir}/opt ] ; then
-    cd ${pkgdir}
-    rm -rf opt
-    cd $_current_dir
+    rm -rf ${pkgdir}/opt
   fi ;
 
   cd  ${srcdir}/${_parallel_studio_xe_dir}/rpm
   rm -v -f *.${_not_arch2}.rpm
-  cd $_current_dir
 }
 
 
@@ -359,11 +342,11 @@ package_intel-compiler-base() {
 
   for f in *.sh ; do
     sed -i 's/<PRODDIR>/\/opt\/intel/g' $f
-    sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/linux/g' $f
+    sed -i "s/<INSTALLDIR>/\/opt\/intel\/${_composer_xe_dir}\/linux/g" $f
   done
 
   cd $_i_arch
-  sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/linux/g' loopprofileviewer.sh
+  sed -i "s/<INSTALLDIR>/\/opt\/intel\/${_composer_xe_dir}\/linux/g" loopprofileviewer.sh
   chmod a+x loopprofileviewer.sh
   rm loopprofileviewer.csh
 
@@ -382,12 +365,19 @@ package_intel-compiler-base() {
     gzip $f
   done
 
-  cd ${xe_build_dir}
-
   echo -e " # intel_compiler-base: Move package"
   mv ${xe_build_dir}/opt ${pkgdir}
   mv ${xe_build_dir}/etc ${pkgdir}
   mv ${xe_build_dir}/usr ${pkgdir}
+
+  cd ${pkgdir}/opt/intel
+  ln -s ./${_composer_xe_dir} composerxe
+  ln -s ./${_composer_xe_dir}/linux/bin/${_i_arch} bin
+  ln -s ./${_composer_xe_dir}/linux/pkg_bin pkg_bin
+
+  ln -s ./${_composer_xe_dir}/linux/compiler/lib/${_i_arch} lib
+  #ln -s ./${_composer_xe_dir}/linux/debugger/lib/${_i_arch} debugger_lib
+  #ln -s ./${_composer_xe_dir}/linux/man/ man
 }
 
 package_intel-fortran-compiler() {
@@ -483,7 +473,7 @@ package_intel-ipp() {
   echo -e " # intel-ipp: Editing variables"
   cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/ipp/bin
   rm ippvars.csh
-  sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/linux/g' ippvars.sh
+  sed -i "s/<INSTALLDIR>/\/opt\/intel\/${_composer_xe_dir}\/linux/g" ippvars.sh
 
   if ${_remove_docs} ; then
     echo -e " # intel-ipp: Remove documentation"
@@ -500,6 +490,8 @@ package_intel-ipp() {
   echo -e " # intel-ipp: Move package"
   mv ${xe_build_dir}/opt ${pkgdir}
   mv ${xe_build_dir}/etc ${pkgdir}
+
+  ln -s ./${_composer_xe_dir}/linux/ipp/ ${pkgdir}/opt/intel/ipp
 }
 
 package_intel-mkl() {
@@ -536,7 +528,7 @@ package_intel-mkl() {
   echo -e " # intel-mkl: Editing variables"
   cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mkl/bin
   rm mklvars.csh
-  sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/linux/g' mklvars.sh
+  sed -i "s/<INSTALLDIR>/\/opt\/intel\/${_composer_xe_dir}\/linux/g" mklvars.sh
 
   rm -rf ./${_not_arch}
 
@@ -555,6 +547,8 @@ package_intel-mkl() {
   echo -e " # intel-mkl: Move package"
   mv ${xe_build_dir}/opt ${pkgdir}
   mv ${xe_build_dir}/etc ${pkgdir}
+
+  ln -s ./${_composer_xe_dir}/linux/mkl/ ${pkgdir}/opt/intel/mkl
 }
 
 package_intel-mpi() {
@@ -589,7 +583,7 @@ package_intel-mpi() {
   #for i in mpd* mpi*    no mpd longer since 2017?
   for i in mpi*
   do
-    sed -i 's/I_MPI_SUBSTITUTE_INSTALLDIR/\/opt\/intel\/composerxe\/linux\/mpi/g' $i
+    sed -i "s/I_MPI_SUBSTITUTE_INSTALLDIR/\/opt\/intel\/${_composer_xe_dir}\/linux\/mpi/g" $i
   done
 
   chmod a+x mpivars.sh
@@ -600,6 +594,8 @@ package_intel-mpi() {
   echo -e " # intel-mpi: Move package "
   mv ${xe_build_dir}/opt ${pkgdir}
   mv ${xe_build_dir}/etc ${pkgdir}
+
+  ln -s ./${_composer_xe_dir}/linux/mpi/ ${pkgdir}/opt/intel/mpi
 }
 
 package_intel-tbb_psxe() {
@@ -617,11 +613,10 @@ package_intel-tbb_psxe() {
 
   if [ "$CARCH" = "i686" ]; then
     sed 's/<arch>/ia32/' < ${srcdir}/intel-tbb.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
-    sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
   else
     sed 's/<arch>/intel64/' < ${srcdir}/intel-tbb.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
-    sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
   fi
+  sed -i "s/<INSTALLDIR>/\/opt\/intel\/${_composer_xe_dir}/g" ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
 
   cd ${xe_build_dir}
 
@@ -633,7 +628,7 @@ package_intel-tbb_psxe() {
   cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/tbb/bin
   rm tbbvars.csh
 
-  sed -i 's/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/composerxe\/linux\/tbb/g' tbbvars.sh
+  sed -i "s/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/${_composer_xe_dir}\/linux\/tbb/g" tbbvars.sh
 
   chmod a+x tbbvars.sh
 
@@ -650,6 +645,8 @@ package_intel-tbb_psxe() {
   echo -e " # intel-tbb: Move package "
   mv ${xe_build_dir}/opt ${pkgdir}
   mv ${xe_build_dir}/etc ${pkgdir}
+
+  ln -s ./${_composer_xe_dir}/linux/tbb/ ${pkgdir}/opt/intel/tbb
 }
 
 package_intel-vtune-amplifier() {
