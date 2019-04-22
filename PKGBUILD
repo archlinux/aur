@@ -6,8 +6,8 @@
 pkgname=mumps-seq-shared
 _pkgname=mumps
 _PKGNAME=MUMPS
-pkgver=5.1.2
-pkgrel=3
+pkgver=5.2.0
+pkgrel=1
 pkgdesc="Sparse solver library using Gaussian elimination (sequential version, shared library version)"
 url="http://mumps.enseeiht.fr"
 license=('custom')
@@ -20,11 +20,11 @@ source=("http://mumps.enseeiht.fr/${_PKGNAME}_${pkgver}.tar.gz"
         "shared-libseq.patch"
         "shared-pord.patch"
         "shared-mumps.patch")
-sha256sums=('eb345cda145da9aea01b851d17e54e7eef08e16bfa148100ac1f7f046cd42ae9'
+sha256sums=('41f2c7cb20d69599fb47e2ad6f628f3798c429f49e72e757e70722680f70853f'
             '82c19aa304ddc4cf14df7b3ad025306a8cb6a2b990e59cddac01d60bf9b388b9'
-            '90741c5b9c6888a86a929cc29df87dd580872d4c930d084e4a308299ecfcda27'
-            '17bc8b1b901db1bd801e53676b821a7c4b7cc7a17f6f335fa1e89e2159480366'
-            'e8634b66dfeb78343b607eb7587dadab1273ea4dc7eaedd84f6f552e65613291')
+            'e2c800e95a6f6806899e7ae77c3cea1e538146aba20670ea847611b4ee838e0f'
+            '99b138efd705f42c6b41543c9d26be2f6633d2c6a858b3081d12c89a34afe0d9'
+            '0f0e10b2d76caf0884ad94863e1a961803be8eac4dde1d20e9a052d4b0ea669c')
 
 prepare(){
   cd "${srcdir}/${_PKGNAME}_${pkgver}"
