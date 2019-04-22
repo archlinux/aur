@@ -1,15 +1,15 @@
 pkgbase = ttf-iosevka-term-ss03
 	pkgdesc = A slender monospace typeface. Shape: Consolas
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = https://be5invis.github.io/Iosevka/
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = https://github.com/be5invis/Iosevka/releases/download/v2.2.0/iosevka-term-ss03-2.2.0.zip
-	source = ttf-iosevka-term-ss03-2.2.0-2-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
-	sha256sums = 974c958d9e982389c04d34a7ac048e7a0a076357ff053a905545853ec2b8348c
+	source = https://github.com/be5invis/Iosevka/releases/download/v2.2.1/iosevka-term-ss03-2.2.1.zip
+	source = ttf-iosevka-term-ss03-2.2.1-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
+	sha256sums = 157295f991c11a664e2b3636e3c830c453cf666a113e69814bdcedc5e6405c56
 	sha256sums = ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000
 
 pkgname = ttf-iosevka-term-ss03
