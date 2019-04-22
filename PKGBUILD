@@ -2,7 +2,7 @@
 
 pkgname=rememberthemilk
 pkgver=1.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="The smart to-do app for busy people."
 arch=('x86_64')
 url="https://www.rememberthemilk.com"
@@ -19,6 +19,12 @@ prepare() {
 package() {
   cp -r ${srcdir}/opt ${pkgdir}
   cp -r ${srcdir}/usr ${pkgdir}
+
+  # add symlink to usr/bin
+  mkdir -p ${pkgdir}/usr/bin
+  ln -s "/opt/Remember The Milk/rememberthemilk" ${pkgdir}/usr/bin
+
+  # Install licenses
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 "${srcdir}/opt/Remember The Milk"/LICENSE* "${pkgdir}/usr/share/licenses/${pkgname}"
 }
