@@ -8,6 +8,8 @@ arch=(x86_64)
 license=(MIT)
 url='https://wasmer.io/'
 depends=()
+conflicts=(wasmer)
+provides=(wasmer)
 source=(
   "https://github.com/wasmerio/wasmer/releases/download/${pkgver}/wasmer-linux-amd64.tar.gz"
   "https://raw.githubusercontent.com/wasmerio/wasmer/0.3.0/LICENSE"
