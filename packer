@@ -324,6 +324,7 @@ aurinstall() {
 
   # Allow user to edit .install
   unset install
+  unset epoch
   . PKGBUILD
   confirm_edit "${COLOR6}Edit $install with \$EDITOR? [Y/n]${ENDCOLOR} " "$install"
 
