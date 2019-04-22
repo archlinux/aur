@@ -1,0 +1,18 @@
+pkgbase = plujain-ramp-git
+	pkgdesc = Mono rhythmic tremolo LV2 plugin with no GUI
+	pkgver = r47.9568cc9
+	pkgrel = 1
+	url = https://github.com/Houston4444/plujain-ramp
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = lv2
+	provides = plujain-ramp
+	provides = plujain-ramp-git
+	conflicts = plujain-ramp
+	conflicts = plujain-ramp-git
+	source = git+https://github.com/Houston4444/plujain-ramp
+	md5sums = SKIP
+
+pkgname = plujain-ramp-git
+
