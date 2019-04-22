@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/python-driver"
-  python setup.py build
+  CASS_DRIVER_BUILD_CONCURRENCY=$(nproc) python setup.py build
 }
 
 package() {
