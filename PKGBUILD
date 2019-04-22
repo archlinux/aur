@@ -1,4 +1,4 @@
-# Maintainer: ber532k@gmx.de
+# Maintainer: Frank Seifferth <frankseifferth@posteo.net>
 # Previous maintainer: mdraw.gh@gmail.com
 
 # This is currently based on Python 2 because of the hard dependency on
