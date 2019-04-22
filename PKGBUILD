@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=rofi-calc
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Do calculations in rofi"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(rofi libqalculate)
 install=$pkgname.install
 source=(https://github.com/svenstaro/rofi-calc/archive/v${pkgver}.tar.gz)
-sha512sums=('e937beb00e4b22f0c7065304104b984eb8fb67abbae1da560100c3ee94cf0c76f4d1313443364cf3ca6d45e8572058bf2137005bd2103d04818728f7f438a2ed')
+sha512sums=('7c00b69c623cff4a9f1b37820bbfbc13f52a172f8ac19dfba3309629760a1833ab8f604e1137d2e655d42f32c623e169cf3539c2d5d34b36ac862655f4f43ad7')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
