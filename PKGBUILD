@@ -1,53 +1,53 @@
-# Maintainer: John Jenkins <twodopeshaggy@gmail.com>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Former maintainer: John Jenkins <twodopeshaggy@gmail.com>
 # Contributor: Mateusz Loskot <mateusz@loskot.net>
-pkgname=colormake-git
-_pkgname=colormake
-pkgver=r33.05688ab
-pkgrel=1
-pkgdesc="A simple wrapper around make to make it's output more readable"
-arch=('i686' 'x86_64')
-url="https://github.com/pagekite/Colormake"
-license=('GPL')
-conflicts=('colormake')
-depends=('perl')
-makedepends=('git')
-source=("${pkgname}::git+https://github.com/pagekite/Colormake.git")
-md5sums=('SKIP')
 
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+pkgname=colormake-git
+pkgver=0.9.20140503.r19.g93dd19b
+pkgrel=1
+pkgdesc="Colorize the output of make"
+arch=('any')
+url="http://bre.klaki.net/programs/colormake/"
+license=('GPL2')
+depends=('perl' 'bash')
+makedepends=('git')
+provides=('colormake')
+conflicts=('colormake')
+source=("git+https://github.com/pagekite/Colormake.git")
+sha256sums=('SKIP')
+
 
 prepare() {
-	cd $srcdir/$pkgname
+  cd "Colormake"
 
 	# adjust scripts to colormake.pl path
-	sed -i 's#colormake.pl#/usr/share/colormake/colormake.pl#g' colormake
+	sed -i 's#colormake.pl#/usr/share/colormake/colormake.pl#g' "colormake"
 }
 
-package() { 
-	cd $srcdir/$pkgname
+pkgver() {
+  cd "Colormake"
+
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+package() {
+  cd "Colormake"
 
 	# executables
-	install -dm755 $pkgdir/usr/bin
-	install -m755 colormake colormake-short clmake clmake-short $pkgdir/usr/bin
+  install -dm755 "$pkgdir/usr/bin"
+  cp -r {clmake,clmake-short,colormake,colormake-short} "$pkgdir/usr/bin"
 
-	install -Dm755 colormake.pl $pkgdir/usr/share/$_pkgname/colormake.pl
+	install -Dm755 "colormake.pl" "$pkgdir/usr/share/colormake/colormake.pl"
 
 	# man page
-	install -Dm644 colormake.1 $pkgdir/usr/share/man/man1/colormake.1
+	install -Dm644 "colormake.1" "$pkgdir/usr/share/man/man1/colormake.1"
 
 	# documentation
-	install -dm755 $pkgdir/usr/share/doc/$_pkgname
+	install -dm755 "$pkgdir/usr/share/doc/colormake"
 	install -m644 \
 		AUTHORS \
 		BUGS \
 		ChangeLog \
 		README.md \
-		$pkgdir/usr/share/doc/$_pkgname
+		"$pkgdir/usr/share/doc/colormake"
 }
-
-
-
-# vim:set ts=2 sw=2 et:
