@@ -1,15 +1,15 @@
 pkgbase = ttf-iosevka-term-ss11
 	pkgdesc = A slender monospace typeface. Shape: X Windows Fixed
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = https://be5invis.github.io/Iosevka/
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = https://github.com/be5invis/Iosevka/releases/download/v2.2.0/iosevka-term-ss11-2.2.0.zip
-	source = ttf-iosevka-term-ss11-2.2.0-2-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
-	sha256sums = 193ba5fbe71d1093431af661bec921137d61314a0654bd43b1ec2683cbfefb0b
+	source = https://github.com/be5invis/Iosevka/releases/download/v2.2.1/iosevka-term-ss11-2.2.1.zip
+	source = ttf-iosevka-term-ss11-2.2.1-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
+	sha256sums = 85098f884b15ea956d112548e12cbf5744aed409d001a41a0b417f05afd0b014
 	sha256sums = ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000
 
 pkgname = ttf-iosevka-term-ss11
