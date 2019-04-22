@@ -1,21 +1,23 @@
 pkgbase = igv
-	pkgdesc = High-performance visualization tool for interactive exploration of large, integrated genomic datasets.
-	pkgver = 2.4.11
-	pkgrel = 2
+	pkgdesc = High-performance visualization tool for interactive exploration of large, integrated genomic datasets. From Broad Institute.
+	pkgver = 2.5.1
+	pkgrel = 1
 	url = http://www.broadinstitute.org/software/igv/home
 	arch = any
 	license = LGPL
-	depends = java-environment=8
+	depends = jre-openjdk
 	depends = archlinux-java-run
 	depends = sh
-	source = http://data.broadinstitute.org/igv/projects/downloads/2.4/IGV_2.4.11.zip
-	source = http://www.broadinstitute.org/software/igv/sites/cancerinformatics.org.igv/files/images/tools.png
+	source = http://data.broadinstitute.org/igv/projects/downloads/2.5/IGV_Linux_2.5.1.zip
 	source = igv.sh
+	source = igv_hidpi.sh
 	source = igv.desktop
-	sha512sums = d3f7c0e3a4b090fe3ae1d21375be0285c026dcf284fdefdaa02bd0247bd27515e9c2dc14798ebad2f0273bd70bbdad2aaff3dc91ecfd9cc74993246ae0b10a98
-	sha512sums = e71a0dc70c717b3db00268632500b5723b8cddb1ecfbd8ce48b77ffad59bf93a8d275cc5ebd18b9eb1025200438ac55ec348def343b1b5f72a2c982b5dc4cc90
-	sha512sums = 1f0cdbb8467de2a4b287da3fc366f8b5b967f744dab28ffb613a88257caa326b7a1332c8b656ec8fd69ef00114a8d658db6a73fde89b55e7918be094cc6f56ff
-	sha512sums = 5ba8666c9c0568f11baf79242c4853964a4061269c0b84529b71a02a106e142bc559ccb97a6a51801dbccacf5f2061cead315b5ece60fc4564c3c38b02d733e7
+	source = igv_hidpi.desktop
+	sha512sums = 7933b20d7e06b9c50f8bae9ecc8dd0e9723b887576bb2ccf50358cc53e7ffac19990a79f2ee4f8e6e8b7dbc7e298c037ce8e9781cc8179c7ca7ef1f5ac985d41
+	sha512sums = 70de493d5188d6eedbd0bf7c74d41ce4829efab75e3a79b56f998326c209d0184f5d3624d6b85d01ad93f0462e785c314322ef4a9260ead6d747f1791ecbe649
+	sha512sums = 60c9c8c6f66259a4edafd1d58d1f1ebcda4450f7620d4c0fc987d5875c2fd531bc2a3159fcdb77975bf07002036e3544f4d301a31d1085ab24d576eea1f8adcb
+	sha512sums = c6bd4fc8bb7e43ee0fe9a4709e716d015c678bdd8bcb897876c267ec48441e2383aebb26b80457d2238f79546537af3409aa698544dc0043ff2c921f18126662
+	sha512sums = 0d52cbd6adc2bf36f8b80acdb6d72b30d52e920b301e7af75ddee8d942c9f3467f7aa98129984ee269c6aaaacc703fb054ba2917e0d7dbce5620050623383e5b
 
 pkgname = igv
 
