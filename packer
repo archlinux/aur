@@ -340,6 +340,7 @@ aurinstall() {
   for i in "${pkgname[@]}"; do
     [ -z "$epoch" ] || epoch_prefix="$epoch:"
     pkgtarfiles="$pkgtarfiles $i-$epoch_prefix$pkgver-$pkgrel-*$PKGEXT"
+    unset epoch_prefix
   done
   if  [[ $2 = dependency ]]; then
     runasroot $PACMAN ${PACOPTS[@]} --asdeps -U $pkgtarfiles
