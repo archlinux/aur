@@ -1,13 +1,13 @@
 pkgbase = regal
 	pkgdesc = a simple regular alarm for terminal
-	pkgver = 3.16c7ab3
+	pkgver = 4.aff138c
 	pkgrel = 1
-	url = https://github.com/yoarch/regal
+	url = https://github.com/yoarch/refgal
 	arch = any
 	license = MIT
 	depends = bash
 	depends = mpv
-	source = git://github.com/yoarch/regal.git
+	source = https://github.com/yoarch/regal.git
 	sha256sums = SKIP
 
 pkgname = regal

@@ -5,18 +5,20 @@ pkgver=4.aff138c
 pkgrel=1
 pkgdesc='a simple regular alarm for terminal'
 arch=('any')
-url='https://github.com/yoarch/regal'
+url='https://github.com/yoarch/refgal'
 license=('MIT')
 depends=('bash' 'mpv')
 makedepends=('')
 
-source=("git://github.com/yoarch/regal.git")
+#source#=("git://github.com/yoarch/regal.git")
+source=("https://github.com/yoarch/regal.git")
+#source#=("file:///$MHOME/dev/aur/regal/regal.tar.gz")
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
 	echo "$(git rev-list --count HEAD).$(git describe --always)"
-}
+} # '
 
 package() {
 	cd "$srcdir/$pkgname"
