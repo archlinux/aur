@@ -1,7 +1,7 @@
 pkgbase = agda-git
 	pkgdesc = A dependently typed functional programming language and proof assistant: development version
-	pkgver = 2.5.1.r5471.51914041f
-	pkgrel = 2
+	pkgver = 2.6.0.r0.g16eb89fb0
+	pkgrel = 1
 	url = http://wiki.portal.chalmers.se/agda/
 	arch = x86_64
 	license = custom

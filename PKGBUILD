@@ -1,7 +1,8 @@
 # Maintainer: John Gowers <wjg27 AT bath DOT ac DOT uk>
+# Patch to v2.6.0 supplied by Sean Anderson <seanga2 AT gmail DOT com>
 # See also the 'agda' package in the 'community' repository.
 pkgname=agda-git
-pkgver=2.5.1.r5471.51914041f
+pkgver=2.6.0.r0.g16eb89fb0
 pkgrel=1
 pkgdesc="A dependently typed functional programming language and proof assistant: development version"
 arch=('x86_64')
@@ -28,17 +29,14 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	mkdir -p lib-target
-	cp -a ${pkgname%-git}/src/data/lib lib-target/lib
-	sed -e "s|rawSystem agda \\[|rawSystem \"env\" [\"Agda_datadir=$PWD/lib-target\", \"LD_LIBRARY_PATH=$PWD/${pkgname%-git}/dist/build\", agda,|" \
-		-e "s|(ms, datadir dirs|(ms, \"$PWD/lib-target\"|" \
-		-i ${pkgname%-git}/Setup.hs
-	# Temporary workaround to problem where Sigma.agdai is not built.
-	sed 's/"Reflection", "Size"/"Reflection", "Sigma", "Size"/' -i ${pkgname%-git}/Setup.hs
+	sed -e "s|(\"Agda_datadir\", agda_datadir) : e|[(\"Agda_datadir\",agda_datadir), (\"LD_LIBRARY_PATH\", \"$PWD/${pkgname%-git}/dist/build\")] ++ e|" \
+		-i "${pkgname%-git}/Setup.hs"
+
+	sed -i 's/== 0.5/>= 0.5/' "${pkgname%-git}/Agda.cabal"
 }
 
 build() {
@@ -63,9 +61,4 @@ package() {
 	runhaskell Setup copy --destdir="${pkgdir}"
 	install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 	rm -f "${pkgdir}/usr/share/doc/${pkgname%-git}/LICENSE"
-
-	install -m644 "$srcdir"/lib-target/lib/prim/Agda/Primitive.agdai "$pkgdir"/usr/share/agda/lib/prim/Agda/Primitive.agdai
-        install -m644 "$srcdir"/lib-target/lib/prim/Agda/Primitive/*.agdai "$pkgdir"/usr/share/agda/lib/prim/Agda/Primitive/
-	install -m644 "$srcdir"/lib-target/lib/prim/Agda/Builtin/*.agdai "$pkgdir"/usr/share/agda/lib/prim/Agda/Builtin/
-	install -m644 "$srcdir"/lib-target/lib/prim/Agda/Builtin/Cubical/*.agdai "$pkgdir"/usr/share/agda/lib/prim/Agda/Builtin/Cubical/
 }
