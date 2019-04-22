@@ -1,6 +1,6 @@
 pkgbase = rocksdb-release
 	pkgdesc = Embedded key-value store for fast storage
-	pkgver = 5.18.3
+	pkgver = 6.0.1
 	pkgrel = 1
 	url = http://rocksdb.org
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = rocksdb-release
 	depends = gflags
 	provides = rocksdb
 	conflicts = rocksdb
-	source = https://github.com/facebook/rocksdb/archive/v5.18.3.zip
-	sha256sums = 4d86973cd9f034b95f7b03fe513feee5cf089ebbe34d4a83f59fdbb7c59f3ae3
+	source = https://github.com/facebook/rocksdb/archive/v6.0.1.zip
+	sha256sums = d2d0f7e5975a5c8e8ff265020191c3b48100226271d3dc6748b467726105b114
 
 pkgname = rocksdb-release
 
