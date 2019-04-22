@@ -24,7 +24,7 @@ build() {
 
 package() {
     install -Dm 755 "$srcdir/$pkgname/editorconfig.so" \
-                    "$pkgdir/usr/lub/lua/5.3"
+                    "$pkgdir/usr/lib/lua/5.3"
     install -Dm 644 "$srcdir/$pkgname/LICENSE" \
                     "$pkgdir/usr/share/licenses/editorconfig-core-lua/LICENSE"
 }
