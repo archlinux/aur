@@ -1,25 +1,27 @@
-# Maintainer: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Contributor: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
+
 pkgname=jmtpfs
 pkgver=0.5
 pkgrel=2
 license=('GPL3')
-pkgdesc="mtpfs with better support for Android"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://research.jacquette.com/jmtpfs-exchanging-files-between-android-devices-and-linux/"
+pkgdesc='FUSE and libmtp based filesystem for accessing MTP (Media Transfer Protocol) devices'
+arch=('x86_64')
+url=https://github.com/JasonFerrara/jmtpfs
 depends=('fuse' 'libmtp')
-source=("https://github.com/JasonFerrara/jmtpfs/archive/v${pkgver}.tar.gz")
-sha256sums=('c0cacc4751c586a3b2b0fcd9c98dae4810a5d44f3eb9d2870868a15eeb696883')
+source=("$url/archive/v$pkgver/jmtpfs-v$pkgver.tar.gz")
+sha512sums=('1997d202199af59ae2138701855864e4dab624fff4feac08ea98e3e4ed6c39e4181d8f9fec35db0e83570f48de204f3d00e1b0d2244ec677f77a99b1dc9c38b3')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    ./configure CXXFLAGS=-lpthread --prefix=/usr
-    make
+  cd jmtpfs-$pkgver
+  ./configure CXXFLAGS=-lpthread --prefix=/usr
+  make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}" install
+  cd jmtpfs-$pkgver
+  make DESTDIR="$pkgdir" install
 
-    ln -s jmtpfs "${pkgdir}/usr/bin/mount.jmtpfs"
-    ln -s jmtpfs "${pkgdir}/usr/bin/mount.fuse.jmtpfs"
+  ln -s jmtpfs "$pkgdir"/usr/bin/mount.jmtpfs
+  ln -s jmtpfs "$pkgdir"/usr/bin/mount.fuse.jmtpfs
 }
