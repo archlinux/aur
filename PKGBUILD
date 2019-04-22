@@ -19,8 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://losslessaudiochecker.com/dl/LAC-Linux-64bit.tar.gz")
-md5sums=('85f1925ffa24b963549a8bb7049b75e5')
+source=("http://losslessaudiochecker.com/dl/LAC-Linux-64bit.tar.gz" "LICENSE")
+md5sums=('85f1925ffa24b963549a8bb7049b75e5'
+         '2065545ba17fb023761f33b80d4805b3')
 
 
 
