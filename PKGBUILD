@@ -11,6 +11,7 @@ makedepends=('git' 'cmake')
 depends=('libusb')
 source=("git+$url")
 md5sums=('SKIP')
+provides=('libusb3380')
 
 pkgver() {
   cd "$srcdir"/$_gitname
