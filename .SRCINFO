@@ -1,0 +1,16 @@
+pkgbase = xcursor-breeze-adapta
+	pkgdesc = Popular Breeze Cursor modified for Adapta theme.
+	pkgver = 1.0.0
+	pkgrel = 0
+	epoch = 0
+	url = https://github.com/gabrielmoura/Breeze-Adapta-Cursor
+	arch = any
+	license = GPL
+	depends = libxcursor
+	provides = breeze-adapta
+	conflicts = breeze-adapta
+	source = xcursor-breeze-adapta::git+https://github.com/gabrielmoura/Breeze-Adapta-Cursor
+	sha512sums = SKIP
+
+pkgname = xcursor-breeze-adapta
+
