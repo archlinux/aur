@@ -1,0 +1,15 @@
+pkgbase = unarelith-git
+	pkgdesc = Unarelith's website
+	pkgver = r27.d547af0
+	pkgrel = 1
+	url = https://git.unarelith.net/Unarelith/unarelith.net
+	arch = i686
+	arch = x86_64
+	depends = python
+	depends = python-virtualenv
+	provides = unarelith
+	source = unarelith::git+https://git.unarelith.net/Unarelith/unarelith.net.git
+	md5sums = SKIP
+
+pkgname = unarelith-git
+
