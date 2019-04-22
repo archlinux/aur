@@ -10,7 +10,7 @@ url="http://gtkextra.sourceforge.net/"
 depends=('gtk2')
 makedepends=('python')
 license=('LGPL')
-source=(http://downloads.sourceforge.net/project/gtkextra/${pkgver%.*}/gtkextra-$pkgver.tar.gz)
+source=(https://downloads.sourceforge.net/project/gtkextra/${pkgver%.*}/gtkextra-$pkgver.tar.gz)
 sha256sums=('651b738a78edbd5d6ccb64f5a256c39ec35fbbed898e54a3ab7e6cf8fd82f1d6')
 
 build() {
