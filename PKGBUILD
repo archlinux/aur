@@ -1,6 +1,6 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@poste.it>
 pkgname=metview
-pkgver=5.3.0
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="ECMWF interactive meteorological application"
 arch=(i686 x86_64)
@@ -15,18 +15,15 @@ replaces=()
 backup=()
 options=()
 install=
-source=(https://software.ecmwf.int/wiki/download/attachments/3964985/Metview-${pkgver}-Source.tar.gz qtpatch.patch)
+source=(https://software.ecmwf.int/wiki/download/attachments/3964985/Metview-${pkgver}-Source.tar.gz)
 noextract=()
-md5sums=('9da7bb4f1eaebc5930d83df8afcb3e17'
-         '75a0ea34147b5df93ea9442e80878ffd')
+md5sums=('72c6c22325b25692dc0b55433384fa3e')
 
 build() {
   cd Metview-${pkgver}-Source
   # Fix problem for libc deprived of rpc. I will use tirpc package.
-  ln -sf /usr/include/tirpc/rpc src/libMarsClient
-  ln -sf /usr/include/tirpc/netconfig.h src/libMarsClient
-  # Add an include file.
-  patch -p0 -i ${srcdir}/qtpatch.patch
+  ln -sf /usr/include/tirpc/rpc mars-client/src
+  ln -sf /usr/include/tirpc/netconfig.h mars-client/src
   mkdir -p build && cd build
   cmake -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CC_COMPILER=/usr/bin/gcc \
     -Dmagics_DIR=/usr/share/magics/cmake \
@@ -34,9 +31,6 @@ build() {
     -DCMAKE_INSTALL_DATADIR=/usr/share \
     -DPYTHON_EXECUTABLE=/usr/bin/python2 \
     -DCMAKE_CXX_STANDARD_LIBRARIES="-ltirpc" ..
-  # Kludge to fix compilation. Not much time to find real solution.
-  sed -i src/PottF/CMakeFiles/PottF.dir/link.txt \
-      -e 's!-ltirpc!-ltirpc ../../lib/libMvMars.so!'
   make || return 1
 }
 
