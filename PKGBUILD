@@ -9,7 +9,7 @@ url="https://sourceforge.net/projects/unicon/"
 license=('GPLv2')
 groups=()
 depends=()
-makedepends=()
+makedepends=('subversion')
 checkdepends=()
 optdepends=()
 provides=()
@@ -32,7 +32,7 @@ prepare() {
 build() {
     cd unicon-code/unicon
 	./configure --prefix=/usr
-	make
+	make -j8
 }
 
 package() {
