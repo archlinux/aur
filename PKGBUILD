@@ -17,14 +17,16 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-# build() {
-# 	cd "${_pkgname}"
-# 	ls -la
-# }
-
 package() {
+	# Copy files to package
 	mkdir -p "${pkgdir}/usr/share/webapps/unarelith/"
 	cp -r "${_pkgname}"/* "${pkgdir}/usr/share/webapps/unarelith/"
-	ls -la
+	cd "${pkgdir}/usr/share/webapps/unarelith/"
+
+	# Set permissions
+	chown http:http .
+	chown http:http -R static
+
+	bash setup_prod.sh
 }
 
