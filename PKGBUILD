@@ -3,7 +3,7 @@
 
 pkgname=perl-latexml-git
 _realname=LaTeXML
-pkgver=0.8.3.112.ga3a0f218
+pkgver=0.8.3.r112.ga3a0f218
 pkgrel=1
 pkgdesc="LaTeX to XML converter"
 arch=('any')
@@ -22,7 +22,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${_realname}
-  printf "%s" $(git describe | cut -c2-| tr - .) 
+  printf "%s" $(git describe | cut -c2- | sed 's+-+.r+' | tr - .) 
 }
 
 build() {

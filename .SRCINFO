@@ -1,6 +1,6 @@
 pkgbase = perl-latexml-git
 	pkgdesc = LaTeX to XML converter
-	pkgver = 0.8.3.112.ga3a0f218
+	pkgver = 0.8.3.r112.ga3a0f218
 	pkgrel = 1
 	url = http://dlmf.nist.gov/LaTeXML/
 	arch = any
