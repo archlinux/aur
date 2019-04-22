@@ -8,6 +8,7 @@ pkgbase = libusb3380-git
 	makedepends = git
 	makedepends = cmake
 	depends = libusb
+	provides = libusb3380
 	source = git+https://github.com/xtrx-sdr/libusb3380
 	md5sums = SKIP
 
