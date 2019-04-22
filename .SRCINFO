@@ -1,6 +1,6 @@
 pkgbase = breeze-adapta-cursor-theme-git
 	pkgdesc = Popular Breeze Cursor modified for Adapta theme.
-	pkgver = r26.c364525
+	pkgver = r28.32f6e0d
 	pkgrel = 1
 	url = https://github.com/mustafaozhan/Breeze-Adapta-Cursor
 	arch = any

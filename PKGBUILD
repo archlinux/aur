@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 pkgname=breeze-adapta-cursor-theme-git
 _pkgname=Breeze-Adapta-Cursor
-pkgver=r26.c364525
+pkgver=r28.32f6e0d
 pkgrel=1
 pkgdesc="Popular Breeze Cursor modified for Adapta theme."
 arch=('any')
