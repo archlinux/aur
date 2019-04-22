@@ -25,21 +25,25 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir"/$pkgbase-i3wm
+    cd "$srcdir"/$pkgbase-i3wm/build
     ninja
     
-    cd "$srcdir"/$pkgbase-dwm
+    cd "$srcdir"/$pkgbase-dwm/build
     ninja
 }
 
 package_vbar-i3wm() {
     pkgdesc="Another i3 status bar"
     depends=('i3-wm')
+    
+    cd "$srcdir"/$pkgbase-i3wm/build
     DESTDIR="$pkgdir" ninja install
 }
 
 package_vbar-dwm() {
     pkgdesc="Another dwm status bar"
     depends=('dwm')
+    
+    cd "$srcdir"/$pkgbase-dwm/build
     DESTDIR="$pkgdir" ninja install
 }
