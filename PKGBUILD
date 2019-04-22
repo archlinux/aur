@@ -20,8 +20,8 @@ sha256sums=('SKIP')
 prepare() {
   cd "Colormake"
 
-	# adjust scripts to colormake.pl path
-	sed -i 's#colormake.pl#/usr/share/colormake/colormake.pl#g' "colormake"
+  # adjust scripts to colormake.pl path
+  sed -i 's#colormake.pl#/usr/share/colormake/colormake.pl#g' "colormake"
 }
 
 pkgver() {
@@ -33,21 +33,21 @@ pkgver() {
 package() {
   cd "Colormake"
 
-	# executables
+  # executables
   install -dm755 "$pkgdir/usr/bin"
   cp -r {clmake,clmake-short,colormake,colormake-short} "$pkgdir/usr/bin"
 
-	install -Dm755 "colormake.pl" "$pkgdir/usr/share/colormake/colormake.pl"
+  install -Dm755 "colormake.pl" "$pkgdir/usr/share/colormake/colormake.pl"
 
-	# man page
-	install -Dm644 "colormake.1" "$pkgdir/usr/share/man/man1/colormake.1"
+  # man page
+  install -Dm644 "colormake.1" "$pkgdir/usr/share/man/man1/colormake.1"
 
-	# documentation
-	install -dm755 "$pkgdir/usr/share/doc/colormake"
-	install -m644 \
-		AUTHORS \
-		BUGS \
-		ChangeLog \
-		README.md \
-		"$pkgdir/usr/share/doc/colormake"
+  # documentation
+  install -dm755 "$pkgdir/usr/share/doc/colormake"
+  install -m644 \
+    AUTHORS \
+    BUGS \
+    ChangeLog \
+    README.md \
+    "$pkgdir/usr/share/doc/colormake"
 }
