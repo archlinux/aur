@@ -1,7 +1,7 @@
 # Maintainer: Tony <tony@criticalstack.com>
 
 pkgname=rocksdb-static
-pkgver=5.18.3
+pkgver=6.0.1
 pkgrel=1
 pkgdesc='Embedded key-value store for fast storage (static library)'
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('gperftools' 'zlib' 'bzip2' 'lz4' 'snappy' 'gcc-libs')
 checkdepends=('python2')
 source=("https://github.com/facebook/rocksdb/archive/v${pkgver}.tar.gz")
-sha256sums=('7fb6738263d3f2b360d7468cf2ebe333f3109f3ba1ff80115abd145d75287254')
+sha256sums=('9a9aca15bc3617729d976ceb98f6cbd64c6c25c4d92f374b4897aa2d2faa07cf')
 
 prepare() {
   cd "${srcdir}/rocksdb-${pkgver}"
