@@ -13,8 +13,10 @@ post_install() {
 
 	cp unarelith/settings.py{,prod}
 
-	echo -e "======================================================="
-	echo -e " Check /usr/share/webapps/unarelith/misc/apache.conf   "
-	echo -e "======================================================="
+	echo "==>"
+	echo "==>"
+	echo "==> Check /usr/share/webapps/unarelith/misc/apache.conf"
+	echo "==>"
+	echo "==>"
 }
 
