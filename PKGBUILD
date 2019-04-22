@@ -1,13 +1,13 @@
 # Maintainer : Kenneth Stier <kenny@trenta.io>
 
 pkgname=rainier-ui-icons-git
-pkgver=0.r424.9f4b08e
-pkgrel=1
+pkgver=0.r426.f5ea2d3
+pkgrel=1.2
 pkgdesc='A crisp, modern icon theme for Trenta OS.'
 arch=('any')
 url='https://github.com/trenta-io/rainier-UI-icons/'
 license=('GPL3')
-depends=('bash')
+depends=('bash' 'elementary-icon-theme-git')
 makedepends=('git')
 provides=('rainier-ui-icons')
 conflicts=('rainier-ui-icons')
