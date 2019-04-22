@@ -40,21 +40,3 @@ package() {
   install -d ${pkgdir}/usr/bin/
   ln -s /opt/Ao/ao-app ${pkgdir}/usr/bin/ao
 }
-
-# package() {
-
-# }
-
-# 
-# build() {
-#   cd ao
-#   npm install
-#   npm run pack
-# }
-# package() {
-#   install -D "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-#   install -D "${srcdir}/ao/static/Icon.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
-#   install -d "${pkgdir}/usr/share/${_pkgname}"
-#   cp -r --preserve=mode $srcdir/ao/dist/linux-unpacked/* "${pkgdir}/usr/share/${_pkgname}/"
-#   install -Dm=0755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
-# }
