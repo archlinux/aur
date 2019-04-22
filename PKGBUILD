@@ -11,7 +11,7 @@ depends=('qt5-base' 'qt5-webengine' 'qt5-multimedia' 'qt5-x11extras' 'qt5-quickc
 source=("https://qt.qunar.com/win_2_0/downloads/qtalk_linux_laster.run"
   "com.qunar.QTalk.desktop"
 )
-sha256sums=('c255774b09a555bf9cbf273faf42efb28ebe05342cfa4c35ceb302eec2402530'
+sha256sums=("SKIP"
   "45985693f51e58c95ea723b18eaa0ea83c40dde4ff4e661ee0916bd52bedfccb"
 )
 
