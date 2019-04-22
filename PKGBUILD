@@ -16,19 +16,19 @@ prepare() {
     cp -a $pkgbase{,-dwm}
     
     cd "$srcdir"/$pkgbase-i3wm
-    meson configure -Dwm=i3wm --prefix /usr
     meson build
     
     cd "$srcdir"/$pkgbase-dwm
-    meson configure -Dwm=dwm --prefix /usr
     meson build
 }
 
 build() {
     cd "$srcdir"/$pkgbase-i3wm/build
+    meson configure -Dwm=i3wm --prefix /usr
     ninja
     
     cd "$srcdir"/$pkgbase-dwm/build
+    meson configure -Dwm=dwm --prefix /usr
     ninja
 }
 
