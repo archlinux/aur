@@ -1,0 +1,9 @@
+post_install() {
+	cd /usr/share/webapps/unarelith
+
+	# Set permissions
+	chown http:http .
+	chown http:http -R static
+
+	bash setup_prod.sh
+}

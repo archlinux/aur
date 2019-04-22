@@ -21,12 +21,5 @@ package() {
 	# Copy files to package
 	mkdir -p "${pkgdir}/usr/share/webapps/unarelith/"
 	cp -r "${_pkgname}"/* "${pkgdir}/usr/share/webapps/unarelith/"
-	cd "${pkgdir}/usr/share/webapps/unarelith/"
-
-	# Set permissions
-	chown http:http .
-	chown http:http -R static
-
-	bash setup_prod.sh
 }
 
