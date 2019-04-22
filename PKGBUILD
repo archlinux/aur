@@ -4,13 +4,13 @@
 pkgname=perl-latexml
 _realname=LaTeXML
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="LaTeX to XML converter"
 arch=('any')
 license=('custom')
 url="http://dlmf.nist.gov/LaTeXML/"
 depends=('perl' 'perl-parse-recdescent' 'perl-text-unidecode'
-	 'imagemagick6' 'perl-xml-libxml' 'perl-json-xs' 'perl-xml-libxslt'
+	 'imagemagick' 'perl-xml-libxml' 'perl-json-xs' 'perl-xml-libxslt'
 	 'db' 'texlive-core' 'perl-image-size' 'perl-file-which'
 	 'perl-libwww' 'perl-io-string' 'perl-archive-zip')
 options=('!emptydirs')
