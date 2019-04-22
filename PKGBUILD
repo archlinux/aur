@@ -3,7 +3,7 @@
 
 pkgname=python2-cassandra-driver-git
 pkgdesc="DataStax Python Driver for Apache Cassandra"
-pkgver=3.16.0
+pkgver=3.17.0
 provides=('python2-cassandra-driver')
 pkgrel=1
 arch=('any')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/python-driver"
-  python2 setup.py build
+  CASS_DRIVER_BUILD_CONCURRENCY=$(nproc) python2 setup.py build
 }
 
 package() {
