@@ -1,7 +1,8 @@
 # Maintainer: Evan M Jones <evanjones4040@gmail.com> 
+
 pkgname=unicon
 pkgver=latest
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A modern descendant of the Icon programming language."
 arch=(x86_64)
@@ -39,3 +40,4 @@ package() {
     cd unicon-code/unicon
 	make DESTDIR="$pkgdir/" install
 }
+
