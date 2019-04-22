@@ -1,8 +1,8 @@
 # Author: Tom Payne <twpayne@gmail.com>
 # Maintainer:  <godeater@gmail.com>
 pkgname=chezmoi
-pkgver=1.4.1
-pkgrel=6
+pkgver=1.4.2
+pkgrel=7
 epoch=
 pkgdesc="Multi-machine dotfile management system"
 arch=('i686' 'x86_64')
@@ -14,13 +14,13 @@ makedepends=(
   'go-pie'
 )
 source=("$url/archive/v${pkgver}.tar.gz")
-sha256sums=('3f7af3da51bfc9aaa6745dbb608040a1a1f9005c8d99ec11cdde91722269c536')
+sha256sums=('682de45f4a17d2d1d691c99a2e422d2180f3b4b6feb01ace27168f96ab9359b2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  extraldflags=" -X github.com/twpayne/chezmoi/cmd.version=1.4.1 \
-  		   -X github.com/twpayne/chezmoi/cmd.commit=433cc21 \
-		   -X github.com/twpayne/chezmoi/cmd.date=20190320"
+  extraldflags=" -X github.com/twpayne/chezmoi/cmd.version=1.4.2 \
+  		   -X github.com/twpayne/chezmoi/cmd.commit=31d5fea \
+		   -X github.com/twpayne/chezmoi/cmd.date=20190414"
 
   go build \
      -gcflags "all=-trimpath=$PWD" \
