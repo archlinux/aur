@@ -9,7 +9,7 @@ url="http://freshmeat.net/projects/imlib/"
 license=('GPL')
 depends=('giflib' 'libpng' 'libtiff' 'libxext')
 makedepends=('libxt')
-source=(http://ftp.gnome.org/pub/GNOME/sources/imlib/1.9/${pkgname}-${pkgver}.tar.bz2
+source=(https://ftp.gnome.org/pub/GNOME/sources/imlib/1.9/${pkgname}-${pkgver}.tar.bz2
         debian-bug448360.patch CAN-2004-1026.patch aclocal-fixes.patch 
         imlib-1.9.15-libpng15.patch imlib-giflib51.patch imlib-gtk.patch)
 sha512sums=('f50d9141b3c54b44921aa09c0a5ea848aefaa904efdd6da132dace42604671f8dbd3e4b71a596f054f0db4525ba2002864b5e5b21f8805cf1b5514b661ac254a'
