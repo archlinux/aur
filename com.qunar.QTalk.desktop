@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name[zh_CN]=QTalk
+Name=QTalk
+Comment[zh_CN]=QTalk 2.0 在线沟通工具. 
+Comment=QTalk 2.0 group communication.
+GenericName[zh_CN]=QTalk 2.0
+GenericName=QTalk 2.0
+Exec=/opt/qtalk/run.sh
+# Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+Icon=com.qunar.QTalk
+Type=Application
+StartupNotify=true
+X-GNOME-UsesNotifications=true
+Categories=QT;Network;InstantMessaging;
+# Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+Keywords[zh_CN]=qtalk;qunar;chat;QTalk;
+Keywords=qtalk;qunar;chat;QTalk;
