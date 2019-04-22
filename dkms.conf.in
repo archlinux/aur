@@ -1,0 +1,9 @@
+PACKAGE_NAME="nct6775-master-dkms-git"
+PACKAGE_VERSION="@PACKAGE_VERSION@"
+AUTOINSTALL="yes"
+
+BUILT_MODULE_NAME[0]="nct6775"
+DEST_MODULE_LOCATION[0]="/updates"
+MAKE[0]="make TARGET=${kernelver} KERNEL_BUILD=${kernel_source_dir}"
+
+#POST_REMOVE="rmdir /usr/lib/modules/${kernelver}/updates"

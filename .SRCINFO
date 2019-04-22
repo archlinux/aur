@@ -1,0 +1,17 @@
+pkgbase = nct6775-master-dkms-git
+	pkgdesc = Nuvoton module for nct67xx chips synced with latest upstream kernel.
+	pkgver = r159.a2a48f2
+	pkgrel = 1
+	url = https://github.com/tonylambiris/nct6775
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	depends = dkms
+	source = nct6775-master-dkms-git::git://github.com/tonylambiris/nct6775.git
+	source = dkms.conf.in
+	sha256sums = SKIP
+	sha256sums = 991980f5e5d4b0c45d3b8ef823d983c1fe6059ad4f9ea462900a6d11e137ae74
+
+pkgname = nct6775-master-dkms-git
+
