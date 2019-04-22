@@ -52,6 +52,7 @@ makedepends=(
              'python2-simplejson'
              'python'
              'yasm'
+             'nasm'
              'git'
              'hwids'
              'nodejs'
