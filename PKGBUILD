@@ -1,7 +1,7 @@
 # Maintainer: Stefan Sielaff <aur AT stefan-sielaff DOT de>
 
 pkgname=logitechmediaserver-git
-pkgver=20181107.e5c860d
+pkgver=20190422.91bab34
 _gitver=7.9
 pkgrel=1
 pkgdesc='Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server. (Git-Version, if you prefer stability consider using logitechmediaserver instead)'
@@ -53,7 +53,7 @@ install=install
 source=("slimserver.tar.gz::${url}/archive/public/${_gitver}.tar.gz"
         "slimserver-vendor.tar.gz::${url}-vendor/archive/public/${_gitver}.tar.gz"
         'service')
-sha256sums=('aa511c7cc6cb55aaac5c7c5645200b860f625f0dfa3f95b6a3a403f1b3dc0573'
+sha256sums=('82a074da0756ba8f761dbf07a0958cc5fb320644a6a43a5b8db4cd388373e1b8'
             '2b7ae498284c970405bf053501e4a7308aa7890d84b2ca29c0b84b6a3a7692c6'
             'f5c64f2a066914dbab9a1dd4a8ec33895645a72bde3bdbeb83c49e4624a997cb')
 
