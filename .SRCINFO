@@ -6,6 +6,7 @@ pkgbase = q2vkpt-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = glslang
 	makedepends = vulkan-headers
 	depends = glibc
 	depends = zlib
