@@ -1,0 +1,9 @@
+post_install() {
+	useradd -d /var/lib/prosody-filer -m -s /bin/nologin prosody-filer &>/dev/null
+	echo "Config installed at /etc/prosody-filer.toml"
+	echo "Consult https://github.com/ThomasLeister/prosody-filer for instructions"
+}
+
+post_remove() {
+	userdel prosody-filer &>/dev/null
+}
