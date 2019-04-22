@@ -1,7 +1,7 @@
 pkgbase = python-cassandra-driver-git
 	pkgdesc = DataStax Python Driver for Apache Cassandra
 	pkgver = 3.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/datastax/python-driver
 	arch = any
 	license = Apache
