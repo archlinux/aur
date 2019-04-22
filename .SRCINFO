@@ -1,0 +1,13 @@
+pkgbase = qtalk
+	pkgdesc = QTalk (Window/Linux) 2.0 by Qunar
+	pkgver = 1.999
+	pkgrel = 1
+	url = https://qt.qunar.com/win_2_0/index.html
+	arch = x86_64
+	license = custom
+	depends = qt5
+	source = https://qt.qunar.com/win_2_0/downloads/qtalk_linux_laster.run
+	sha256sums = SKIP
+
+pkgname = qtalk
+
