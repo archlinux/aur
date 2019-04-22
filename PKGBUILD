@@ -1,7 +1,7 @@
 # Maintainer: Sauyon Lee <sauyon@mari>
 pkgname=losslessaudiochecker
 pkgver=2.0.5
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A utility to check whether a WAVE or FLAC file is truly lossless or not."
 arch=('i686' 'x86_64')
