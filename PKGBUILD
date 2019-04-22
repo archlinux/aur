@@ -2,7 +2,8 @@
 # Contributor: Rich Li <rich@dranek.com>
 
 pkgname=gmt
-pkgver=5.4.5
+pkghashver=7c87ef9ab4e5acbaa2a5a6ed5a40537fbac9da63
+pkgver=6.0.0_${pkghashver}
 pkgrel=1
 pkgdesc="Generic Mapping Tools: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps."
 arch=(i686 x86_64)
@@ -22,16 +23,17 @@ install='gmt.install'
 #source=("ftp://ftp.star.nesdis.noaa.gov/pub/sod/lsa/gmt/${pkgname}-${pkgver}-src.tar.xz")
 #source=("ftp://ftp.iris.washington.edu/pub/gmt/${pkgname}-${pkgver}-src.tar.xz")
 #source=("ftp://ftp.iag.usp.br/pub/gmt/${pkgname}-${pkgver}-src.tar.xz")
-source=("https://mirrors.ustc.edu.cn/gmt/${pkgname}-${pkgver}-src.tar.xz")
-md5sums=('846c7717ca8a6e2c76cc5538331ff59e')
+#source=("https://mirrors.ustc.edu.cn/gmt/${pkgname}-${pkgver}-src.tar.xz")
+source=("https://github.com/GenericMappingTools/${pkgname}/archive/${pkghashver}.tar.gz")
+md5sums=('1842197d5e759c5f034e680d728c1006')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkghashver}"
   rm -fr build && mkdir build
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/${pkgname}-${pkghashver}/build"
   # -DLICENSE_RESTRICTED=off \
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DGSHHG_ROOT=/usr/share/gmt/coast \
@@ -43,11 +45,11 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     ..
   export MAKEFLAGS="-j1"
-  make || return 1
+  make -j$(nproc) || return 1
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/${pkgname}-${pkghashver}/build"
   make "DESTDIR=${pkgdir}" install || return 1
 }
 
