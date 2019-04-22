@@ -2,8 +2,8 @@
 
 pkgname=macterial-theme-git
 _pkgname=macterial
-pkgver=r26.4311b24
-pkgrel=2
+pkgver=r28.9ce4429
+pkgrel=1
 pkgdesc="A mac inspired Gtk+ theme based on Material design"
 arch=("any")
 url="https://github.com/mythio/${_pkgname}"
