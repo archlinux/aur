@@ -1,0 +1,26 @@
+pkgbase = python-pygmt
+	pkgdesc = Python/NumPy interface to the netCDF C library
+	pkgver = 0.0.1a0
+	pkgrel = 1
+	url = https://www.pygmt.org
+	arch = x86_64
+	license = 3-BSD
+	makedepends = cython
+	makedepends = python-setuptools
+	makedepends = python-numpy
+	makedepends = python-pandas
+	makedepends = python-xarray
+	makedepends = python-netcdf4
+	makedepends = python-packaging
+	makedepends = gmt
+	source = https://files.pythonhosted.org/packages/77/72/5dfc13ff2be531366a735047892f8c99d709f1289c1eb5f4d0f656b35ce6/pygmt-0.0.1a0.tar.gz
+	sha256sums = 0bba865dea5cedcbac52ece31775ddf9b1c2bf1629e585cd6bc1fce848b09add
+
+pkgname = python-pygmt
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-xarray
+	depends = python-netcdf4
+	depends = python-packaging
+	depends = gmt
+
