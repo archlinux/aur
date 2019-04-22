@@ -1,6 +1,6 @@
 # Maintainer: theflameemperor <un.own.cry@gmail.com>
 pkgname=ygopro-koishipro
-pkgver=2019.4.15
+pkgver=2019.4.22
 pkgrel=1
 _pkgrel=1
 name="$pkgver"
@@ -13,7 +13,7 @@ depends=('mono' 'libevent')
 makedepends=('patchelf')
 source=("https://github.com/purerosefallen/ygopro/releases/download/$name/$zipFile")
 noextract=($zipFile)
-sha256sums=('0ec0b34578e5897c20e704cb390ce6c1d63ea2647163c7522868c069d5e4c001')
+sha256sums=('77acc955fdfd5e9ad1def7876bb476559a389cc565a2db66be859a01bfad742d')
 options=('!strip' 'emptydirs')
 
 prepare(){
