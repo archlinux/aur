@@ -2,20 +2,18 @@
 # Contributor: kappa <kappacurve@gmail.com>
 
 pkgname=wings3d
-pkgver=2.1.7
-pkgrel=4
+pkgver=2.2.4
+pkgrel=1
 pkgdesc='3D modeler using the winged edge data structure'
-arch=('x86_64')
+arch=(x86_64)
 url='http://www.wings3d.com/'
-license=('GPL')
-depends=('erlang' 'erlang-cl' 'erlang-sdl')
-makedepends=('gendesk' 'imagemagick')
+license=(GPL)
+depends=(erlang erlang-cl erlang-sdl)
+makedepends=(gendesk imagemagick)
 optdepends=('povray: render scenes with POV-Ray')
 source=("https://downloads.sourceforge.net/project/wings/wings/$pkgver/wings-$pkgver.tar.bz2"
-        "wayland.patch::https://github.com/dgud/wings/commit/db074161e.patch"
         "$pkgname.sh")
-sha256sums=('c2f4787ac2f8c874cdbb57c87a3e267a54e7f7f90082c9885e96290d1102ff24'
-            'ab3da436b0f5be55b44569a7a9e7a2587981a0282ec380191cc75be97e7cb286'
+sha256sums=('4325a4c58df77a2b109cbd0046b427e2d3f151d5526f8c2f0848e04db48b95f5'
             '8e5e8f31d47ea55a0e9d311b7cc0eaac4e6050ac40506d3548b6ebae5d3618be')
 _p=${pkgname%3d}-$pkgver
 
@@ -35,9 +33,6 @@ prepare() {
   ln -s "$_p" wings
 
   sed -i 's/-Werror//' "$_p"/{src,e3d,plugins_src/import_export}/Makefile
-
-  # Make the 3D grid work with Wayland
-  patch -d "$_p" -p1 -i ../wayland.patch
 }
 
 build() {
