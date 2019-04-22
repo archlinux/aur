@@ -1,6 +1,6 @@
 pkgbase = wing-personal
 	pkgdesc = A free Python IDE designed for students and hobbyists. It omits many features found in Wing Pro.
-	pkgver = 7.0.1.2 
+	pkgver = 7.0.1.2
 	pkgrel = 1
 	url = http://www.wingware.com/
 	install = wing-personal.install
@@ -9,7 +9,7 @@ pkgbase = wing-personal
 	depends = python2
 	options = !strip
 	options = !emptydirs
-	source = http://wingware.com/pub/wing-personal/7.0.1.2/wing-personal-7.0.1.2-linux-x64.tar.bz2
+	source = https://wingware.com/pub/wing-personal/7.0.1.2/wing-personal-7.0.1.2-linux-x64.tar.bz2
 	md5sums = 747834a7128f8c116d946b1961aaaef7
 
 pkgname = wing-personal
