@@ -3,7 +3,7 @@
 # Contributor: Nicolas Quiénot <niQo @ aur>
 # Contributor: Martin Schrodt <martin@schrodt.org>
 pkgname=nvme-cli
-pkgver=1.7
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="NVM-Express user space tooling for Linux"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ license=('GPL')
 depends=('systemd')
 makedepends=('git')
 conflicts=('nvme-cli-git')
-source=("https://github.com/linux-nvme/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('3a139d40ffff48d2f0b06339fd3be3ed219241ce6838f0ea173d7459c9984ea2')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linux-nvme/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('93b9134b7a4cc36c9444b9ee52ef016be6e3e2f2ece50fab1f4a56ebe1e3612b')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
