@@ -1,12 +1,12 @@
 [Desktop Entry]
 Type=Application
 Version=2.5.1
-Name=IGV
+Name=IGV (High Resolution Screen mode)
 GenericName=Integrative Genomics Viewer
 X-GNOME-FullName=Integrative Genomics Viewer
 Comment=Integrative Genomics Viewer (Broad Institute)
 Keywords=genome;
-Exec=igv
+Exec=igv_hidpi
 Icon=igv
 Terminal=false
 Categories=Science
