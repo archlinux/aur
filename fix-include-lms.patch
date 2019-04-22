@@ -1,0 +1,13 @@
+Index: libxtrx/xtrx_fe_octorx0.c
+===================================================================
+--- libxtrx.orig/xtrx_fe_octorx0.c
++++ libxtrx/xtrx_fe_octorx0.c
+@@ -7,7 +7,7 @@
+ #include <assert.h>
+ #include <stdarg.h>
+ 
+-#include "../liblms7002m/liblms7002m.h"
++#include <liblms7002m.h>
+ 
+ #include "xtrx_api.h"
+ #include "xtrx_fe_nlms7.h"
