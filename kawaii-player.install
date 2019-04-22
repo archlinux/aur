@@ -1,12 +1,14 @@
 post_install() {    
     echo
-    echo "If you are upgrading from Kawaii Player v2.9 or earlier, you are"
-    echo "advised to backup and then remove the following configuration files:"
+    echo "There is now experimental support for using libmpv as the backend instead of the mpv binary."
     echo
-    echo "~/.config/kawaii-player/other_options.txt"
-    echo "~/.config/kawaii-player/config.txt"
-    echo "~/.config/kawaii-player/src/input.conf"
+    echo "If you wish to use it, you will have to manually enable it in the application's settings. For"
+    echo "best results, consider also installing python-pympv in order for libmpv to be able to utilize"
+    echo "its own opengl-render API, instead of the deprecated opengl-cb API that is hardcoded in OpenGL"
+    echo "and used by default."
     echo
+    echo "NOTE: For the time being, some (minor) features of Kawaii Player may not work properly when"
+    echo "using libmpv as the backend."
     echo
     echo "Visit the project's GitHub page for more info on features and proper configuration."
     echo

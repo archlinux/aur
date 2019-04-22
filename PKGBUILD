@@ -1,23 +1,25 @@
 # Maintainer: Nocifer <apmichalopoulos at gmail dot com>
 pkgname=kawaii-player
 _pkgname=kawaii_player
-pkgver=3.9.0
+pkgver=4.0.0
 pkgrel=1
 _pkgrel=1
-pkgdesc="Multimedia player, media library manager and portable media server with PC-To-PC casting feature"
+pkgdesc="Multimedia player, media library manager and portable media server with PC-to-PC casting feature"
 arch=(any)
 url="https://github.com/kanishka-linux/kawaii-player"
 license=('GPL3')
-depends=('ffmpegthumbnailer' 'libnotify' 'mpv' 'python-beautifulsoup4' 'python-certifi' 'python-dbus'
-         'python-lxml' 'python-mutagen' 'python-pillow' 'python-pycurl' 'python-pyqt5' 'qt5-webengine' 'sqlite')
-optdepends=('libtorrent-rasterbar: torrent videos streaming'
-            'youtube-dl: YouTube videos streaming'
+depends=('libnotify' 'mpv' 'sqlite'
+         'python-beautifulsoup4' 'python-certifi' 'python-dbus' 'python-lxml' 'python-mutagen' 'python-opengl'
+         'python-pillow' 'python-pycurl' 'python-pyqtwebengine')
+optdepends=('python-pympv: modern opengl-render API for libmpv'
+            'libtorrent-rasterbar: torrent streaming'
+            'youtube-dl: YouTube streaming'
             'xorg-server-xvfb: run in headless mode')
 makedepends=('git')
 conflicts=('kawaii-player-git')
 install=$pkgname.install
 source=("https://github.com/kanishka-linux/${pkgname}/releases/download/v${pkgver}-${_pkgrel}/${pkgname}-${pkgver}-${_pkgrel}.tar.bz2")
-sha256sums=('3a6ff7195936908513e56941371a8e24b3c51d1c87bda46030beabc0339b0781')
+sha256sums=('9cd2e6bc66b3e56e546e5dbb0f23f6ca644d540b463cb9a72a67a1cf4814f12a')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}-${_pkgrel}
