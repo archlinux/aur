@@ -23,10 +23,8 @@ pkgver() {
 # }
 
 package() {
-	cd "${pkgdir}"
-	mkdir -p usr/share/webapps/unarelith
-	cd usr/share/webapps/unarelith
-	cp -r "${_pkgname}"/* .
+	mkdir -p "${pkgdir}/usr/share/webapps/unarelith/"
+	cp -r "${_pkgname}"/* "${pkgdir}/usr/share/webapps/unarelith/"
 	ls -la
 }
 
