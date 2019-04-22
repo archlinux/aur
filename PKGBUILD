@@ -4,18 +4,20 @@
 pkgname=shadowrunreturns-gog
 # This is the 1.2.7 version
 pkgver=2.0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Harebrained Schemes' first Shadowrun cRPG"
 arch=("i686" "x86_64")
 url="https://www.gog.com/game/shadowrun_returns"
 license=("custom:commercial")
 depends_x86_64=("lib32-gcc-libs" "lib32-glibc" "lib32-glu" "lib32-libx11" "lib32-libxau" "lib32-libxcb" "lib32-libxcursor" "lib32-libxdmcp" "lib32-libxext" "lib32-libxfixes" "lib32-libxrender" "lib32-libgl" "lib32-gtk2" "lib32-libpulse")
 depends_i686=("gcc-libs" "glibc" "glu" "libx11" "libxau" "libxcb" "libxcursor" "libxdmcp" "libxext" "libxfixes" "libxrender" "libgl" "gtk2" "libpulse")
-# For ShadowrunEditor
-depends_x86_64+=("lib32-bzip2" "lib32-expat" "lib32-fontconfig" "lib32-freetype2" "lib32-gcc-libs" "lib32-glib2" "lib32-glibc" "lib32-harfbuzz" "lib32-libffi" "lib32-libice" "lib32-libpng" "lib32-libsm" "lib32-libx11" "lib32-libxau" "lib32-libxcb" "lib32-libxdmcp" "lib32-libxext" "lib32-libxrender" "lib32-openssl" "lib32-pcre" "lib32-qt4" "lib32-util-linux" "lib32-zlib")
-depends_i686+=("bzip2" "expat" "fontconfig" "freetype2" "gcc-libs" "glib2" "glibc" "harfbuzz" "libffi" "libice" "libpng" "libsm" "libx11" "libxau" "libxcb" "libxdmcp" "libxext" "libxrender" "openssl" "pcre" "qt4" "util-linux" "zlib")
+# More dependencies for ShadowrunEditor, but didn't check; please contact me
+#depends_x86_64+=("lib32-bzip2" "lib32-expat" "lib32-fontconfig" "lib32-freetype2" "lib32-gcc-libs" "lib32-glib2" "lib32-glibc" "lib32-harfbuzz" "lib32-libffi" "lib32-libice" "lib32-libpng" "lib32-libsm" "lib32-libx11" "lib32-libxau" "lib32-libxcb" "lib32-libxdmcp" "lib32-libxext" "lib32-libxrender" "lib32-openssl" "lib32-pcre" "lib32-qt4" "lib32-util-linux" "lib32-zlib")
+#depends_i686+=("bzip2" "expat" "fontconfig" "freetype2" "gcc-libs" "glib2" "glibc" "harfbuzz" "libffi" "libice" "libpng" "libsm" "libx11" "libxau" "libxcb" "libxdmcp" "libxext" "libxrender" "openssl" "pcre" "qt4" "util-linux" "zlib")
+# requires aur/lgogdownloader or the game file directly next to the PKGBUILD
+#DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 source=("${pkgname}.desktop"
-        "gog_shadowrun_returns_${pkgver}.sh::file://gog_shadowrun_returns_${pkgver}.sh")
+        "gog_shadowrun_returns_${pkgver}.sh::gogdownloader://shadowrun_returns/en3installer3")
 sha256sums=("076ea0dd69e2db5e4e7be4a0d65b6962d7f81a8096b6e6d71b5577c9cf7ed776"
             "94030db95ee681224033bce3cc00d7ea61b10ff00a93e1d29c2459a35bd45121")
 
