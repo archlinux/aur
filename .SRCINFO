@@ -1,0 +1,16 @@
+pkgbase = wasmer-bin
+	pkgdesc = Universal WebAssembly runtime
+	pkgver = 0.3.0
+	pkgrel = 0
+	url = https://wasmer.io/
+	arch = x86_64
+	license = MIT
+	source = https://github.com/wasmerio/wasmer/releases/download/0.3.0/wasmer-linux-amd64.tar.gz
+	source = https://raw.githubusercontent.com/wasmerio/wasmer/0.3.0/LICENSE
+	source = logo.sh
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = wasmer-bin
+
