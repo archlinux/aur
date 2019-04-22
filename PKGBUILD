@@ -1,4 +1,4 @@
-# Maintainer: ber532k <ber532k@gmx.de>
+# Maintainer: Frank Seifferth <frankseifferth@posteo.net>
 pkgname=treeform
 pkgver=1.0.3
 pkgrel=2
