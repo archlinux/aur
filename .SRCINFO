@@ -1,0 +1,19 @@
+pkgbase = gleam
+	pkgdesc = A statically typed language for the Erlang VM
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://alpaca-lang.org/
+	arch = any
+	license = Apache2
+	makedepends = rust
+	depends = erlang-nox
+	provides = gleam
+	options = strip
+	options = !docs
+	options = !libtool
+	options = !staticlibs
+	source = https://github.com/lpil/gleam/archive/v0.1.0.tar.gz
+	md5sums = 1ccf850e03ca2d967688b76d2e6d4ff2
+
+pkgname = gleam
+
