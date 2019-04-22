@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/editorconfig/editorconfig-core-lua"
 license=('custom:BSD')
 depends=('lua' 'editorconfig-core-c')
-makedepends=('git')
+makedepends=('git' 'cmake')
 source=("$pkgname::git+https://github.com/editorconfig/editorconfig-core-lua")
 md5sums=('SKIP')
 
