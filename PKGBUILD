@@ -12,6 +12,8 @@ source=("git+$url"
         "fix-cmake.patch")
 md5sums=('SKIP'
          '286caa8cd9a01b1bd0c667d7c3b9eb3c')
+provides=('libxtrxdsp')
+conflicts=('libxtrxdsp')
 
 pkgver() {
   cd "$srcdir"/$_gitname
