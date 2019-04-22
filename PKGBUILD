@@ -2,7 +2,7 @@
 
 pkgname=onos
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Network Operating System'
 arch=('any')
 url='https://onosproject.org'
@@ -13,11 +13,6 @@ source=("https://repo1.maven.org/maven2/org/onosproject/onos-releases/${pkgver}/
         "onos.service")
 sha256sums=('20f4d6cb88a912939ee628629a35e7870026264d178937c5f82947d3f9045fbe'
             '4837f3e924c5806a0095f013099e2f8c959389d1c3c57820c512cfe7d2e14fbd')
-
-prepare() {
-    sed -i "$srcdir/$pkgname-$pkgver/bin/onos" \
-        -e 's/localhost/onos@localhost/'
-}
 
 package() {
     mkdir -p "$pkgdir/opt"
