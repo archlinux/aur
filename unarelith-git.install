@@ -5,5 +5,8 @@ post_install() {
 	chown http:http .
 	chown http:http -R static
 
-	bash setup_prod.sh
+	sudo -u http bash setup_prod.sh
+
+	echo "Please change your secret key with this one (/usr/share/webapps/unarelith/unarelith/settings.py):"
+	python -c 'import random; result = "".join([random.choice("abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)") for i in range(50)]); print(result)'
 }
