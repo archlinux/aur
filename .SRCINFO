@@ -1,11 +1,15 @@
 pkgbase = unarelith-git
 	pkgdesc = Unarelith's website
-	pkgver = r27.d547af0
+	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://git.unarelith.net/Unarelith/unarelith.net
+	install = unarelith-git.install
 	arch = i686
 	arch = x86_64
+	depends = apache
+	depends = mod_wsgi
 	depends = python
+	depends = python-pip
 	depends = python-virtualenv
 	provides = unarelith
 	source = unarelith::git+https://git.unarelith.net/Unarelith/unarelith.net.git
