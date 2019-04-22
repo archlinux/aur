@@ -1,6 +1,6 @@
 # Maintainer: Bjoern Franke <bjo@nord-west.org>
 pkgname=vorta
-pkgver=0.6.18
+pkgver=0.6.19
 pkgrel=1
 pkgdesc="A GUI for BorgBackup"
 arch=('any')
@@ -12,9 +12,10 @@ options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/borgbase/$pkgname/archive/v$pkgver.zip"
         "vorta32.png"
         "vorta.desktop")
-sha256sums=('43b607b9fc91652b8ca35c184c9810770a6b0767693855a5ed4ad730f27375d8'
+sha256sums=('3089db19b202c2ad1faaf6478cc334a8a21218b3be07900f73c02066c18ae64a'
             'ff944c741a291f4d38cac97906376e4afa851f54f46d6de00f6fd92c4ad273f9'
             '6bd09fed495b0173c2fc0bdb42dde417c3ed3f2d4025927afa3826cf1205372d')
+
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1
