@@ -6,7 +6,7 @@
 
 pkgname=tor-browser-dev
 pkgver=8.5a11
-pkgrel=2
+pkgrel=3
 pkgdesc="Tor Browser Bundle (alpha version; locale-aware international PKGBUILD)"
 arch=('i686' 'x86_64')
 _idstr32='linux32'
@@ -61,7 +61,7 @@ source+=(${pkgname}.desktop
          ${pkgname}.png
          ${pkgname}.sh)
 sha256sums=('13d2e1fe85a9a08e9f66116f3c2d6f1e5d37e07d2ad8b08ae4f01890e864a722'
-            '4f01e363738e36dc41ca431fbbf5a00b014dc37e2c9a3cfaf2ce182103a1d068'
+            '13267084e2b6dd1dbbb93f685d61da4cb48184a76a1c06a42ecc575855e24c57'
             'ce19dd89a8ecd9289136f97f0122b7301bdda9bcf0208f4277817e23ea9a95d8')
 sha256sums_i686=('SKIP'
                  'SKIP')
