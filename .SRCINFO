@@ -12,7 +12,7 @@ pkgbase = python-pygmt
 	makedepends = python-xarray
 	makedepends = python-netcdf4
 	makedepends = python-packaging
-	makedepends = gmt
+	makedepends = gmt>=6.0.0
 	source = https://files.pythonhosted.org/packages/77/72/5dfc13ff2be531366a735047892f8c99d709f1289c1eb5f4d0f656b35ce6/pygmt-0.0.1a0.tar.gz
 	sha256sums = 0bba865dea5cedcbac52ece31775ddf9b1c2bf1629e585cd6bc1fce848b09add
 
@@ -22,5 +22,5 @@ pkgname = python-pygmt
 	depends = python-xarray
 	depends = python-netcdf4
 	depends = python-packaging
-	depends = gmt
+	depends = gmt>=6.0.0
 
