@@ -11,7 +11,7 @@ depends=("python" "python-pip" "python-virtualenv")
 provides=("unarelith")
 source=("${_pkgname}::git+${url}.git")
 md5sums=("SKIP")
-install=('unarelith-git.install')
+install=unarelith-git.install
 
 pkgver() {
 	cd "${_pkgname}"
