@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 1df9aa41..24bc26b7 100644
+index 1bbcc6bc..8a527828 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -82,7 +82,7 @@ else()
@@ -11,3 +11,18 @@ index 1df9aa41..24bc26b7 100644
  find_package(Protobuf REQUIRED)
  # FindProtobuf requires only the libraries to be present
  if(NOT PROTOBUF_PROTOC_EXECUTABLE)
+diff --git a/src/config.hpp b/src/config.hpp
+index a2c47c34..06ba6678 100644
+--- a/src/config.hpp
++++ b/src/config.hpp
+@@ -4,10 +4,7 @@
+ 
+ #include "common.hpp"
+ 
+-#undef PROTOBUF_DEPRECATED
+-#define PROTOBUF_DEPRECATED __attribute__((deprecated))
+ #include "config.pb.h"
+-#undef PROTOBUF_DEPRECATED
+ 
+ extern cfg::TConfig &config();
+ int ReadConfigs(bool silent = false);

@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=porto
-pkgver=4.13.10
-pkgrel=4
+pkgver=4.20.8
+pkgrel=1
 pkgdesc='Yet another Linux container management system'
 arch=('i686' 'x86_64')
 url='https://github.com/yandex/porto'
