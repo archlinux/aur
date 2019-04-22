@@ -2,16 +2,18 @@
 
 pkgname=dungeons-2-gog
 pkgver=2.0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Dungeon Lord is back – and this time he’s serious!"
 arch=("x86_64")
 url="http://www.gog.com/game/dungeons_2"
 license=("custom:commercial")
 depends=("libx11" "libxcursor" "libxrandr" "libglvnd" "libxext" "libxcb"
          "libxrender" "libxfixes" "libxau" "libxdmcp")
+# requires aur/lgogdownloader or the game file directly next to the PKGBUILD
+#DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 source=("${pkgname}.desktop"
         "${pkgname}.in"
-        "gog_dungeons_2_${pkgver}.sh::file://gog_dungeons_2_${pkgver}.sh")
+        "gog_dungeons_2_${pkgver}.sh::gogdownloader://dungeons_2/en3installer1")
 sha256sums=("e28ce7cacca9d7585b557f8f946696d93f2640924e74770f82d2841e039310ea"
             "ce8cd95969a904b55ec3626fe0b01d89510a26fece6043eefa4331127d9169f8"
             "e9ab64e2f428201e22b1ee445e559898746b9249335d1c4765b50a40597559aa")

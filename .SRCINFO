@@ -1,7 +1,7 @@
 pkgbase = dungeons-2-gog
 	pkgdesc = The Dungeon Lord is back – and this time he’s serious!
 	pkgver = 2.0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gog.com/game/dungeons_2
 	arch = x86_64
 	license = custom:commercial
@@ -17,7 +17,7 @@ pkgbase = dungeons-2-gog
 	depends = libxdmcp
 	source = dungeons-2-gog.desktop
 	source = dungeons-2-gog.in
-	source = gog_dungeons_2_2.0.0.1.sh::file://gog_dungeons_2_2.0.0.1.sh
+	source = gog_dungeons_2_2.0.0.1.sh::gogdownloader://dungeons_2/en3installer1
 	sha256sums = e28ce7cacca9d7585b557f8f946696d93f2640924e74770f82d2841e039310ea
 	sha256sums = ce8cd95969a904b55ec3626fe0b01d89510a26fece6043eefa4331127d9169f8
 	sha256sums = e9ab64e2f428201e22b1ee445e559898746b9249335d1c4765b50a40597559aa
