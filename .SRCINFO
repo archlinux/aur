@@ -1,0 +1,10 @@
+pkgbase = unicon
+	pkgdesc = A modern descendant of the Icon programming language.
+	pkgver = latest
+	pkgrel = 1
+	url = https://sourceforge.net/projects/unicon/
+	arch = x86_64
+	license = GPLv2
+
+pkgname = unicon
+
