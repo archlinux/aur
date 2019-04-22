@@ -1,8 +1,10 @@
 # Maintainer: Stephen Cox: stephencoxmail -at- gmail com
+# Maintainer: Alexey Stukalov: astukalov -t- gmail com
 # Contributor: Ignat Harczuk: ignathe -at- gmail com
 # Contributor: Mark Wells: mwellsa -at- gmail com
 # Contributor: Simone Riva: siomone.rva -a- gmail com
 # Contributor: Hamada Badr: hamada.s.badr -a- gmail com
+
 # Intel Parallel Studio XE 2019 for Linux - ( Intel compiler icc suite )
 ##########################################################################
 # this PKGBUILD splits the main Parallel Studio XE package in 9 sub-packages:
@@ -37,7 +39,6 @@
 pkgbase="intel-parallel-studio-xe"
 pkgname=('intel-compiler-base' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-mpi' 'intel-tbb_psxe' 'intel-advisor' 'intel-vtune-amplifier' 'intel-inspector')
 PKGEXT='.pkg.tar.lzo'
-packager="Stephen Cox"
 
 ########################################
 #OPTIONS begin
