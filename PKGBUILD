@@ -11,10 +11,10 @@ license=('custom')
 groups=()
 depends=('ghc-libs' 'haskell-async' 'haskell-blaze-html' 'haskell-boxes'
          'haskell-cpphs' 'haskell-data-hash' 'haskell-edisonapi' 'haskell-edisoncore'
-         'haskell-edit-distance' 'haskell-equivalence' 'haskell-geniplate-mirror' 'haskell-gitrev'
-         'haskell-hashable' 'haskell-hashtables' 'haskell-ieee754' 'haskell-murmur-hash'
-         'haskell-regex-tdfa' 'haskell-strict' 'haskell-unordered-containers' 'haskell-uri-encode'
-         'haskell-zlib')
+         'haskell-edit-distance' 'haskell-equivalence' 'haskell-filemanip' 'haskell-aeson'
+         'haskell-geniplate-mirror' 'haskell-gitrev' 'haskell-hashable' 'haskell-hashtables'
+         'haskell-ieee754' 'haskell-murmur-hash' 'haskell-regex-tdfa' 'haskell-strict'
+         'haskell-unordered-containers' 'haskell-uri-encode' 'haskell-zlib')
 makedepends=('git' 'alex' 'happy' 'ghc')
 optdepends=('agda-stdlib: for standard library')
 provides=("${pkgname%-git}")
