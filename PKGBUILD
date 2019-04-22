@@ -8,14 +8,14 @@
 
 pkgname=firefox-wayland-hg
 _pkgname=firefox
-pkgver=r510977.4470bbd6ad9d
+pkgver=r525597.b21620648d31
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Wayland build of mozilla-unified hg"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
-         ffmpeg nss sqlite ttf-font libpulse libvpx icu xorg-server-xwayland)
+         ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
              python nodejs python2-psutil cbindgen nasm)
@@ -31,7 +31,7 @@ provides=('firefox')
 source=("hg+$_repo"
         $_pkgname.desktop $_pkgname-symbolic.svg)
 sha256sums=('SKIP'
-            '677e1bde4c6b3cff114345c211805c7c43085038ca0505718a11e96432e9811a'
+            '4a783dca1f88e003c72f32d22719a0915f3fa576adbc492240e7cc250246ce10'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -86,23 +86,18 @@ ac_add_options --enable-official-branding
 ac_add_options --enable-update-channel=release
 ac_add_options --with-distribution-id=org.archlinux
 export MOZILLA_OFFICIAL=1
+export MOZ_APP_REMOTINGNAME=${_pkgname//-/}
 export MOZ_TELEMETRY_REPORTING=1
 export MOZ_REQUIRE_SIGNING=1
 
 # Keys
-ac_add_options --with-google-api-keyfile=${PWD@Q}/google-api-key
+ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
+ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 # System libraries
-ac_add_options --enable-system-ffi
-ac_add_options --enable-system-sqlite
-ac_add_options --with-system-bz2
-ac_add_options --with-system-icu
-ac_add_options --with-system-jpeg
-ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --with-system-zlib
 
 # Features
 ac_add_options --enable-alsa
