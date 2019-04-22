@@ -10,7 +10,7 @@ url="http://kchmviewer.sourceforge.net/"
 license=('GPL')
 depends=('chmlib' 'libzip' 'qt5-webkit')
 changelog=$pkgname.changelog
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
+source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
         $pkgname-$pkgver-underlinking.patch
         fix-qt5-build.patch)
 sha256sums=('27cbac45c786b1718550a87e6f86010e161302b426c6396ff2a3091b913b17dd'
