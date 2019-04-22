@@ -46,7 +46,19 @@ pkgname=('intel-compiler-base'
          'intel-advisor'
          'intel-vtune-amplifier'
          'intel-inspector')
+
 PKGEXT='.pkg.tar.lzo'
+msg "Overriding PKGEXT with PKGEXT='${PKGEXT}'"
+
+if [ "$PKGEXT" = ".pkg.tar.xz" ]; then
+  plain   "--------------------------------------------------------------------"
+  warning "This PKGBUILD may need up to 20 minutes when XZ compressor is used!"
+  warning "  - The packaging of intel-mkl and intel-ipp is particularly slow"
+  warning "  - Change PKGEXT in PKGBUILD to use a faster compressor,"
+  warning "    e.g. .pkg.tar.lzo"
+  plain   "--------------------------------------------------------------------"
+fi
+
 
 ########################################
 #OPTIONS begin
@@ -260,15 +272,6 @@ build() {
   echo -e " - conditions of the Intel license before installing the packages. "
   echo -e "-----------------------------------------------------------------------------------"
   plain ""
-
-  if [ "$PKGEXT" = ".pkg.tar.xz" ]; then
-    plain   "-------------------------------------------------------------------------------"
-    warning "  This PKGBUILD may need up to 20 minutes if you use XZ as a compressor!"
-    warning "    - The build of the packages: intel-mkl and intel-ipp is particularly slow"
-    warning "    - Change PKGEXT in the PKGBUILD to use a faster compressor."
-    plain   "-------------------------------------------------------------------------------"
-    plain ""
-  fi
 
   plain "-------------------------------------------------------------------------------"
   warning "This PKGBUILD works with yaourt, but consumes a lot of RAM!"
