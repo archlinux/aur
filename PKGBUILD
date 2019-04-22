@@ -1,6 +1,6 @@
 pkgname=gog-heroes-of-might-and-magic-3-complete-edition
-pkgver=4.0.25024
-pkgrel=2
+pkgver=4.0.28740
+pkgrel=1
 _gamename=${pkgname#gog-}
 _gamename=${_gamename//-/_}
 _gamehdpatchname="HoMM3%20HD%20Latest.exe"
@@ -21,8 +21,8 @@ source=("setup_homm3_complete_${pkgver}.exe::gogdownloader://${_gamename}/en1ins
         "${pkgname}-campaign-editor"
         "${pkgname}-map-editor"
         "${pkgname}.install")
-sha256sums=('76af0bfa9ddb1889ff0fe516599f21e3f2a696dd5baaf74333b5b58cc425a0e1'
-            'a7b6d9f13bc6924d515eaa39430b290b80fd4253b2d1c40e9d936c4d242a466f'
+sha256sums=('eaf75707911b16850ec770a551c59e594abba60c7a879fb0c171fc442b1299b3'
+            '044f62c74067188ec0e52fb0db460109bcd23951acb9cfd424267a22c0f0d4f1'
             # 'SKIP'
             'ab14524f06cb213ee0b1e5bcd5d9089da9e66057794430347d32a60a86a945fd'
             'de064d9bc819403dc5990fd70d81c88d63d708ba5b4e02015cc616e77338c478'
