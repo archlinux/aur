@@ -1,4 +1,4 @@
-From 7b26289a1e7fafff7da844cdaac26b997febbc94 Mon Sep 17 00:00:00 2001
+From 9a22842c6ec7d34b1edba1a18411e73bf90a1567 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 18:30:51 +0100
 Subject: [PATCH 01/34] Adjust win32-g++ profile for cross compilation with
@@ -143,7 +143,7 @@ index 4630ec4602..3f9fdc72b1 100644
  
  QMAKE_LINK              = $${CROSS_COMPILE}clang++
 diff --git a/mkspecs/win32-g++/qmake.conf b/mkspecs/win32-g++/qmake.conf
-index ed131c6823..b8e08df0be 100644
+index 5e9923357f..67805c29a7 100644
 --- a/mkspecs/win32-g++/qmake.conf
 +++ b/mkspecs/win32-g++/qmake.conf
 @@ -12,11 +12,11 @@ include(../common/g++-win32.conf)
