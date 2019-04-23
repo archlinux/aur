@@ -2,7 +2,7 @@
 
 pkgname=hunter-git
 pkgver=1.0.10+3+g2974d74
-pkgrel=1
+pkgrel=2
 pkgdesc='ranger-like file browser written in Rust (git)'
 arch=(i686 x86_64)
 url=https://github.com/rabite0/hunter
@@ -10,7 +10,7 @@ license=(WTFPL)
 depends=(file)
 makedepends=(git rust)
 provides=(hunter)
-conflicts=(hunter hunter-evil hunter-evil-git)
+conflicts=(hunter hunter-holy hunter-holy-git)
 source=(git+$url)
 sha512sums=(SKIP)
 
