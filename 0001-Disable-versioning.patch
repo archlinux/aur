@@ -1,0 +1,43 @@
+--- a/configure	2016-12-31 15:06:40.000000000 -0300
++++ b/configure	2019-04-23 19:55:16.720869239 -0300
+@@ -346,7 +346,7 @@
+
+ # destination names for shared library if not defined above
+ SHAREDLIB=${SHAREDLIB-"libz$shared_ext"}
+-SHAREDLIBV=${SHAREDLIBV-"libz$shared_ext.$VER"}
++SHAREDLIBV=libz.so
+ SHAREDLIBM=${SHAREDLIBM-"libz$shared_ext.$VER1"}
+
+ echo >> configure.log
+
+--- a/Makefile.in	2017-01-15 14:29:40.000000000 -0300
++++ b/Makefile.in	2019-04-23 19:46:02.358708291 -0300
+@@ -32,7 +32,7 @@
+
+ STATICLIB=libz.a
+ SHAREDLIB=libz.so
+-SHAREDLIBV=libz.so.1.2.11
++SHAREDLIBV=libz.so
+ SHAREDLIBM=libz.so.1
+ LIBS=$(STATICLIB) $(SHAREDLIBV)
+
+@@ -280,9 +280,6 @@
+
+ placebo $(SHAREDLIBV): $(PIC_OBJS) libz.a
+ 	$(LDSHARED) $(SFLAGS) -o $@ $(PIC_OBJS) $(LDSHAREDLIBC) $(LDFLAGS)
+-	rm -f $(SHAREDLIB) $(SHAREDLIBM)
+-	ln -s $@ $(SHAREDLIB)
+-	ln -s $@ $(SHAREDLIBM)
+ 	-@rmdir objs
+
+ example$(EXE): example.o $(STATICLIB)
+@@ -319,9 +316,6 @@
+ 	  echo "cp $(SHAREDLIBV) $(DESTDIR)$(sharedlibdir)"; \
+ 	  chmod 755 $(DESTDIR)$(sharedlibdir)/$(SHAREDLIBV); \
+ 	  echo "chmod 755 $(DESTDIR)$(sharedlibdir)/$(SHAREDLIBV)"; \
+-	  rm -f $(DESTDIR)$(sharedlibdir)/$(SHAREDLIB) $(DESTDIR)$(sharedlibdir)/$(SHAREDLIBM); \
+-	  ln -s $(SHAREDLIBV) $(DESTDIR)$(sharedlibdir)/$(SHAREDLIB); \
+-	  ln -s $(SHAREDLIBV) $(DESTDIR)$(sharedlibdir)/$(SHAREDLIBM); \
+ 	  ($(LDCONFIG) || true)  >/dev/null 2>&1; \
+ 	fi
+ 	rm -f $(DESTDIR)$(man3dir)/zlib.3
