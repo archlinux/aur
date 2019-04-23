@@ -2,7 +2,7 @@
 
 pkgname=wasmer-bin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Universal WebAssembly runtime'
 arch=(x86_64)
 license=(MIT)
