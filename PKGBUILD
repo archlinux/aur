@@ -2,7 +2,7 @@
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=git-buildpackage
-pkgver=0.9.13
+pkgver=0.9.14
 pkgrel=1
 pkgdesc="Tools from Debian to integrate the package build system with Git"
 arch=(any)
@@ -18,7 +18,8 @@ makedepends=('python-distribute'
              'python-coverage'
 	     'python-mock'
 	     'python-nose'
-	     'python-nosexcover')
+	     'python-nosexcover'
+	     'dpkg')
 #checkdepends=('devscripts'
 #              'pristine-tar'
 #	      'cpio'
