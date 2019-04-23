@@ -3,7 +3,7 @@
 
 pkgname=electron-ssr
 pkgver=0.2.6
-pkgrel=5
+pkgrel=6
 pkgdesc='Shadowsocksr client using electron.'
 arch=('x86_64')
 conflicts=("electron-ssr-git")
@@ -12,7 +12,7 @@ url='https://github.com/erguotou520/electron-ssr'
 license=('MIT')
 depends=('gtk2' 'gconf' 'alsa-lib' 
          'libxss' 'nss' 'libxtst' 'electron')
-makedepends=('yarn' 'npm' 'hicolor-icon-theme')
+makedepends=('yarn' 'hicolor-icon-theme')
 optdepends=('libsodium: sodium crypto support')
 options=('!strip')
 
@@ -25,8 +25,8 @@ source_x86_64=("$pkgname-$pkgver.tar.gz::https://github.com/erguotou520/electron
 
 sha256sums=('87561b47486c2485c76136172c87f0df16ee9dc4cb85be7d77ce274328f92735'
             'f96b27d2f826bf4e1c96f0154516c1e2cf07536f745128a9c2e5ec113cea6446'
-            'd70d66809bfa2e253b964209a9eedd862f3c13dad373be28ec351dc51f1b4f28'
-            '5dfe00e15a2dbf461d0b48107b4a994ef9444801e5f9b7083a4b020e634db67f')
+            'e4dff411a6196ad0189a3102ac10aff024e189c350895c4a74c15588ea834723'
+            'ae121e8a6995358b7e23881102e22b011a520f859b62675c129b5f99800bea0e')
 sha256sums_x86_64=('9f2b0bdec4aa1fe9916981694f922b6e93e7fb80d2b2d5bda80c25d837c3fdda')
 
 prepare() {
@@ -34,7 +34,6 @@ prepare() {
     dir=$srcdir/$pkgname-$pkgver/
     cd $dir
     patch -Np1 -i "$srcdir/build.patch"
-    sed -i '/\"electron\":/d' package.json
 }
 
 build() {
@@ -42,29 +41,27 @@ build() {
 
     # Build Package
     yarn
-    npm run build
+    yarn run build
 }
 
 package() {
-    # Install 
-    cd $srcdir/$pkgname-$pkgver/dist/electron
-    find * -type f -exec install -Dm644 {} "${pkgdir}/opt/electron-ssr/{}" \;
-    install -Dm755 $srcdir/electron-ssr.sh $pkgdir/opt/$pkgname/electron-ssr
-    mkdir -p $pkgdir/usr/bin
-    ln -s /opt/$pkgname/electron-ssr $pkgdir/usr/bin/electron-ssr
+    # Make dirs
+    mkdir -p "$pkgdir/usr/share/applications"
+    mkdir -p "$pkgdir/usr/share/electron-ssr"
+    mkdir -p "$pkgdir/usr/bin"
+    mkdir -p "$pkgdir/usr/share/icons/hicolor"
 
-    # Install modules
-    cd $srcdir/$pkgname-$pkgver/node_modules
-    find * -type f -exec install -Dm644 {} "${pkgdir}/opt/electron-ssr/node_modules/{}" \;
-    cd "${pkgdir}/opt/electron-ssr/node_modules"
-    [ -e ./electron ] && rm -r ./electron
+    # Install 
+    cd "$srcdir/$pkgname-$pkgver/build/linux-unpacked/resources"
+    install -Dm644 app.asar "$pkgdir/usr/share/electron-ssr/app.asar"
+    install -Dm755 "$srcdir/electron-ssr.sh" "$pkgdir/usr/bin/electron-ssr"
 
     # Install Other things
-    install -Dm644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-    install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
     # Install icons
     for i in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256; do
-        install -Dm644 $srcdir/$pkgname-$pkgver/build/icons/$i.png $pkgdir/usr/share/icons/hicolor/$i/apps/$pkgname.png
+        install -Dm644 "$srcdir/$pkgname-$pkgver/build/icons/$i.png" "$pkgdir/usr/share/icons/hicolor/$i/apps/$pkgname.png"
     done
 }
