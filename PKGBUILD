@@ -1,7 +1,7 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=librepcb-git
 _fullname=LibrePCB
-pkgver=r1541.8ab5fd924
+pkgver=r1645.c14084c44
 pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards (git version)."
 arch=('x86_64' 'i686')
