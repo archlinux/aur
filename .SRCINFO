@@ -7,8 +7,7 @@ pkgbase = regal
 	license = MIT
 	depends = bash
 	depends = mpv
-	source = https://github.com/yoarch/regal.git
-	sha256sums = SKIP
+	source = git://github.com/yoarch/regal.git
 
 pkgname = regal
 
