@@ -5,8 +5,6 @@ pkgbase = waybar-git
 	url = https://github.com/Alexays/Waybar/
 	arch = x86_64
 	license = MIT
-	provides = waybar
-	conflicts = waybar
 	makedepends = meson
 	makedepends = git
 	depends = gtkmm3
@@ -22,10 +20,12 @@ pkgbase = waybar-git
 	depends = wlroots
 	optdepends = sway: Sway modules support
 	optdepends = otf-font-awesome: Icons in the default configuration
+	provides = waybar
+	conflicts = waybar
 	source = waybar-git::git://github.com/Alexays/Waybar
 	source = meson.build.patch
 	sha1sums = SKIP
-	sha1sums = 48f912d7765d1ecc851254a282215f2981dd5792
+	sha1sums = ec12c4c2a5af2f92f35da8d57115e01f7ecf490d
 
 pkgname = waybar-git
 
