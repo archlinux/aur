@@ -1,4 +1,4 @@
-# Maintainer :       Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
+# Maintainer      :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
 # Upstream author :  Luke Smith <lukesmithxyz on git(hub|lab).com>
 
 pkgname='mutt-wizard-git'
