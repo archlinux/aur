@@ -1,6 +1,6 @@
 pkgbase = nodejs-pulp
 	pkgdesc = A build system and package manager for PureScript projects.
-	pkgver = 12.4.0
+	pkgver = 12.4.2
 	pkgrel = 1
 	url = https://github.com/purescript-contrib/pulp
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = nodejs-pulp
 	makedepends = jq
 	depends = nodejs
 	depends = bower
-	noextract = pulp-12.4.0.tgz
-	source = https://registry.npmjs.org/pulp/-/pulp-12.4.0.tgz
+	noextract = pulp-12.4.2.tgz
+	source = https://registry.npmjs.org/pulp/-/pulp-12.4.2.tgz
 	source = LICENSE
-	sha256sums = 76bfddbea81aaf85259f5837e05e9d21638cd03f5dad57ed2733ed860ac69074
+	sha256sums = 456571013a9cd81bfb7405a9865d867ad5f0e77658382f79d24e04716a727048
 	sha256sums = f67583c638fab1468c13e230cf928dbdee18f3315e3452228eb7cfcd05eee4b8
 
 pkgname = nodejs-pulp

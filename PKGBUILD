@@ -3,7 +3,7 @@
 
 _npmname=pulp
 pkgname=nodejs-$_npmname
-pkgver=12.4.0
+pkgver=12.4.2
 pkgrel=1
 pkgdesc='A build system and package manager for PureScript projects.'
 arch=('any')
@@ -14,9 +14,6 @@ depends=('nodejs' 'bower')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz"
         "LICENSE")
 noextract=($_npmname-$pkgver.tgz)
-
-sha256sums=('76bfddbea81aaf85259f5837e05e9d21638cd03f5dad57ed2733ed860ac69074'
-            'f67583c638fab1468c13e230cf928dbdee18f3315e3452228eb7cfcd05eee4b8')
 
 package() {
     npm install -g --user root --prefix="$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
@@ -31,3 +28,5 @@ package() {
     chown root:root "$srcdir/LICENSE"
     install -Dm 644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+sha256sums=('456571013a9cd81bfb7405a9865d867ad5f0e77658382f79d24e04716a727048'
+            'f67583c638fab1468c13e230cf928dbdee18f3315e3452228eb7cfcd05eee4b8')
