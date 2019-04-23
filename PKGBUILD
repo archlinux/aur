@@ -1,21 +1,24 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Maintainer: Rafael Ascensão <rafa dot almas at gmail dot com>
 
 _pkgname=git-bug
 pkgname=git-bug-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Distributed bug tracker embedded in Git"
 arch=('x86_64' 'i686' 'arm')
 url='https://github.com/MichaelMure/git-bug'
-license=('GPLv3')
+license=('GPL3')
+provides=('git-bug')
+conflicts=('git-bug')
 source_x86_64=("$url/releases/download/$pkgver/git-bug_linux_amd64")
 source_i686=("$url/releases/download/$pkgver/git-bug_linux_386")
 source_arm=("$url/releases/download/$pkgver/git-bug_linux_arm")
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('5ab14e8528556862c1991bd8f0cd73f25367d85c5c72d38d0f9556de58d86311')
-sha256sums_x86_64=('0787fe0eeae2de0c9c99f56f98bec7b4845b91b5a29f9af29059beffed858460')
-sha256sums_i686=('550ca201ab90fec8533023d4d9d0f4c4b99d639ba0a7731b7f8897f011f5744c')
-sha256sums_arm=('f4da587e814aa9a6da395c8e40dfb1025d4940aad5a8c8c20cc253dc62bb426b')
+sha256sums=('b8f0033e00f3e667c6c26cceb33c73af46b24fdea15ce8e894195ef9c298726e')
+sha256sums_x86_64=('d43fa0931f6051707432ed78aeaa95ca8657d209d63e8e55024ce70d827a165f')
+sha256sums_i686=('cd2e65a81c5ab098b215f4bdf51cacd2696ed0eea9fbf4073a8a1338ca335e3c')
+sha256sums_arm=('4f0c90173d376bbfdadf55668c0e128581c964cc5039f08050b8c18745246c34')
 
 package() {
   local _source_bin=source_$CARCH
