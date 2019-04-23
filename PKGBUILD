@@ -1,9 +1,9 @@
 #Maintainer: Aaron Miller <aaronm@cldtk.com>
 pkgname=dynamodb
-pkgver=20180411
+pkgver=20190207
 pkgrel=1
 pkgdesc="Amazon DynamoDB Local instance. Amazon DynamoDB is a fast and flexible NoSQL database service for all applications that need consistent, single-digit millisecond latency at any scale."
-_upstreamver=2018-04-11
+_upstreamver=2019-02-07
 pkgver=${_upstreamver//-/_}
 arch=('any')
 url="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tools.DynamoDBLocal.html"
@@ -14,12 +14,12 @@ source=('config.cfg' 'dynamodb' 'dynamodb.service' "http://dynamodb-local.s3-web
 sha256sums=('6a2d271d62de9e4e48bd4bd866a72283dec6bacc097c2f6262ab19fc0feb34d9'
             '2c4d4840735b2dd8b73c3a3132d23dc1e586a758cb699ea0ccf74943657bda69'
             '4024db91c14087290fbce707cadead1ea013dc845216e9758a485b7d2f67c3ca'
-            '4afae454157256e3525df91b5ae2c6b6683ce05f92284e79335b2ac8e2e53762')
+            '3281b5403d0d397959ce444b86a83b44bc521e8b40077a3c2094fa17c9eb3c43')
 
 package() {
   cd "$pkgdir"
-  mkdir -p "usr/share/dynamodb" "usr/share/licenses/dynamodb" "usr/lib/systemd/system" "usr/bin" "etc/dynamodb" "var/lib/dynamodb"
 
+  mkdir -p "usr/share/dynamodb" "usr/share/licenses/dynamodb" "usr/lib/systemd/system" "usr/bin" "etc/dynamodb" "var/lib/dynamodb"
 
   cp -dr --no-preserve=ownership "$srcdir/DynamoDBLocal_lib/" "./usr/share/dynamodb"
 
