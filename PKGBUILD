@@ -1,5 +1,7 @@
+# Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
+
 pkgname=d9vk-winelib-git
-pkgver=0.r2513.b91f6e21
+pkgver=0.r2533.9678ca5e
 pkgrel=1
 pkgdesc="A d3d9 to vk layer based off DXVK's codebase. Winelib version"
 arch=('x86_64')
@@ -11,17 +13,32 @@ provides=("d9vk")
 conflicts=("d9vk")
 source=(
     "git+https://github.com/Joshua-Ashton/d9vk.git"
+    "git+https://github.com/doitsujin/dxvk.wiki.git"
     "setup_d9vk"
+    "extraopts.patch"
 )
 sha256sums=(
     "SKIP"
+    "SKIP"
     "7147644664ef33d04f7b18683c47be95b5664c57cf6d63fdc019d915deebd37a"
+    "19eff57042936e89b941fd8655ea1ed15d6399cd1c78ed0729b7206a2fcf47ee"
 )
 
 pkgver() {
     cd d9vk
     printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    #git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+}
+
+prepare() {
+    cd d9vk
+    patch -p1 -i ../extraopts.patch
+    CFLAGS="$CPPFLAGS $CFLAGS"
+    sed -i build-win64.txt \
+        -e "s|@CARGS@|\'${CFLAGS// /\',\'}\'|g" \
+        -e "s|@LDARGS@|\'${LDFLAGS// /\',\'}\'|g"
+    sed -i build-win32.txt \
+        -e "s|@CARGS@|\'${CFLAGS// /\',\'}\'|g" \
+        -e "s|@LDARGS@|\'${LDFLAGS// /\',\'}\'|g"
 }
 
 build() {
@@ -31,7 +48,7 @@ build() {
         --bindir "" --libdir "" \
         --buildtype "release" \
         --strip \
-        -D enable_tests=false
+        -Denable_tests=false
     ninja -C "build/x64" -v
 
     meson d9vk "build/x32" \
@@ -40,14 +57,19 @@ build() {
         --bindir "" --libdir "" \
         --buildtype "release" \
         --strip \
-        -D enable_tests=false
+        -Denable_tests=false
     ninja -C "build/x32" -v
+
+    cat dxvk.wiki/Configuration.md | \
+        sed -n '/```/,/```/p' | \
+        sed -e '/^##/d' -e '/^```/d' -e '/^[a-zA-Z`]/d' > dxvk.conf.sample
 }
 
 package() {
     DESTDIR="$pkgdir" ninja -C "build/x32" install
     DESTDIR="$pkgdir" ninja -C "build/x64" install
     install -Dm 755 -t "$pkgdir/usr/share/d9vk" d9vk/setup_dxvk.sh
+    install -Dm 644 -t "$pkgdir/usr/share/d9vk" dxvk.conf.sample
     install -Dm 644 -t "$pkgdir/usr/share/$pkgname" d9vk/LICENSE
     install -Dm 755 -t "$pkgdir/usr/bin" setup_d9vk
 }
