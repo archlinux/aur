@@ -57,10 +57,9 @@ pkgname = imagemagick-fftw
 	optdepends = imagemagick-doc: manual and API docs
 	provides = libmagick
 	provides = libmagick-fftw
+	provides = imagemagick=7.0.8.41
 	conflicts = imagemagick6
 	conflicts = imagemagick
-	replaces = imagemagick6
-	replaces = libmagick
 	replaces = libmagick-fftw
 	options = !emptydirs
 	options = libtool

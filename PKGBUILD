@@ -94,8 +94,8 @@ package_imagemagick-fftw() {
   options=(!emptydirs libtool)
   backup=(etc/$_relname/{colors,delegates,log,mime,policy,quantization-table,thresholds,type,type-{dejavu,ghostscript}}.xml)
   conflicts=(imagemagick6 imagemagick)
-  provides=(libmagick libmagick-fftw)
-  replaces=(imagemagick6 libmagick libmagick-fftw)
+  provides=(libmagick libmagick-fftw imagemagick=$pkgver)
+  replaces=(libmagick-fftw)
 
   cd $_tarname
   make DESTDIR="$pkgdir" install
