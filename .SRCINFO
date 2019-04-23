@@ -1,4 +1,4 @@
-pkgbase = mlt
+pkgbase = mlt-python2-bindings
 	pkgdesc = python2 bindings for mlt
 	pkgver = 6.14.0
 	pkgrel = 1

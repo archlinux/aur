@@ -1,6 +1,5 @@
 # Maintainer: Bernhard Landauer <bernhard@manjaro.org>
 
-pkgbase=mlt
 pkgname=(mlt-python2-bindings)
 pkgver=6.14.0
 pkgrel=1
@@ -18,7 +17,7 @@ sha256sums=('d387350f7bb7dd01efce3933c5ab7987b596e98bef7cc9c2349524d55a808b5e'
             'e770eaa39337cbbeb7d03357c11013e62ea355696023d1bd2d0fca6d1812b627')
 
 prepare() {
-  cd $pkgbase-$pkgver
+  cd mlt-$pkgver
   patch -p1 -i ../mlt-opencv4.patch # Fix build with openCV 4
 }
 
