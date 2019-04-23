@@ -5,6 +5,7 @@ pkgbase = arrow
 	url = https://arrow.apache.org
 	arch = x86_64
 	license = Apache
+	checkdepends = git
 	makedepends = apache-orc
 	makedepends = boost
 	makedepends = cmake
@@ -25,7 +26,9 @@ pkgbase = arrow
 	provides = parquet-cpp
 	conflicts = parquet-cpp
 	source = https://github.com/apache/arrow/archive/apache-arrow-0.13.0.tar.gz
+	source = fix_test.patch
 	sha256sums = 380fcc51f0bf98e13148300c87833e734cbcd7b74dddc4bce93829e7f7e4208b
+	sha256sums = 9c6d50bb5fb7a343861e7deb4e62e501faea6a6056b260184820aa5a5be0f106
 
 pkgname = arrow
 
