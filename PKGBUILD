@@ -1,8 +1,8 @@
 # Maintainer: Yann Orieult <yo.managements@gmail.com>
 
 pkgname=regal
-pkgver='7.66a2608'
-pkgrel='1'
+pkgver=9.496a354
+pkgrel=1
 pkgdesc='a simple regular alarm for terminal'
 arch=('any')
 url='https://github.com/yoarch/regal'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('bash' 'mpv')
 makedepends=('')
 
-source=("https://github.com/yoarch/regal.git")
+source=("git://github.com/yoarch/regal.git")
 #source#=("file:///$MHOME/dev/aur/regal/regal.tar.gz")
 sha256sums=('SKIP')
 
