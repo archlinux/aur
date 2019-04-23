@@ -1,5 +1,5 @@
 pkgbase = python-pygmt
-	pkgdesc = Python/NumPy interface to the netCDF C library
+	pkgdesc = Python interface to the Generic Mapping Tools C library
 	pkgver = 0.0.1a0
 	pkgrel = 2
 	url = https://www.pygmt.org
