@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=wasmer
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Universal Binaries Powered by WebAssembly"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/wasmerio/wasmer"
 license=(MIT)
 makedepends=(cargo cmake python)
 source=(https://github.com/wasmerio/wasmer/archive/${pkgver}.tar.gz)
-sha512sums=('ca3ee4e7c893d7d3b66072b8ed5e8e38ce0a52d36bd3a9d68957f9c8fd7acaa23424258978bee32357118c9deec2ec1bdf4025d380b2ea95b70dc985da8fc2db')
+sha512sums=('eed84cd314c14448b7eceb11778c4695ebdd665c3cdad66c3dd4b4abee415d7da7e388ebe4d149de15df9992ac93c4131b88a7f85be4d519dde07c8f8853ec33')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
