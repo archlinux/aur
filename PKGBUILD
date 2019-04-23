@@ -8,7 +8,7 @@ pkgdesc="Control the computer usage of users. You can limit daily usage based on
 arch=('any')
 url='https://launchpad.net/timekpr-next'
 license=('GPL')
-depends=('python-gobject' 'gtk3>=3.4' 'polkit' 'python-dbus' 'python-gobject' 'libappindicator3' 'dbus>=1.10.1')
+depends=('python-gobject' 'gtk3>=3.4' 'polkit' 'python-dbus' 'python-gobject' 'libappindicator3' 'dbus>=1.10.1' 'python-psutil')
 optdepends=('lxqt-policykit: to start the Control Panel like in LXQT'
             'mate-polkit: to start the Control Panel like in Mate'
             'polkit-kde-agent: to start the Control Panel like in Plasma'

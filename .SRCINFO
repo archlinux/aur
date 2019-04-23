@@ -14,6 +14,7 @@ pkgbase = timekpr-next-git
 	depends = python-gobject
 	depends = libappindicator3
 	depends = dbus>=1.10.1
+	depends = python-psutil
 	optdepends = lxqt-policykit: to start the Control Panel like in LXQT
 	optdepends = mate-polkit: to start the Control Panel like in Mate
 	optdepends = polkit-kde-agent: to start the Control Panel like in Plasma
