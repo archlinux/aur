@@ -1,0 +1,15 @@
+pkgbase = tweetdeck-desktop
+	pkgdesc = An unofficial tweetdeck desktop app
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mikebell/tweetdeck-desktop
+	arch = x86_64
+	license = MIT
+	makedepends = yarn
+	depends = electron
+	provides = tweetdeck
+	source = tweetdeck-desktop-1.0.0.tar.gz::https://github.com/mikebell/tweetdeck-desktop/archive/1.0.0.tar.gz
+	sha256sums = e33823086d8cb2bc8f7027bcf1b8d6f3bec3d7a054dd81e386c69721b1386dee
+
+pkgname = tweetdeck-desktop
+
