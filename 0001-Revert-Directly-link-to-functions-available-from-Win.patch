@@ -1,4 +1,4 @@
-From 4dfb6bb558968399aeef98dd95407bd805a2375c Mon Sep 17 00:00:00 2001
+From 4d26ac133607b152cbabd30c499281889fa2f930 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 27 May 2018 14:23:11 +0200
 Subject: [PATCH] Revert "Directly link to functions available from Windows 7
