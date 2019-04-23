@@ -2,7 +2,7 @@
 # Based on the python-pillow package (Maintainer: Kyle Keen <keenerd@gmail.com>, Contributor: minder)
 
 pkgname=python-pillow-simd
-pkgver=5.3.0.post0
+pkgver=6.0.0
 pkgrel=1
 _appname=pillow-simd
 _py3basever=3.7m
@@ -17,7 +17,7 @@ optdepends=('freetype2: for the ImageFont module'
             'tk: for the ImageTK module')
 makedepends=('python-setuptools' 'freetype2' 'libraqm' 'libwebp' 'tk')
 checkdepends=('python-pytest')
-source=("https://github.com/uploadcare/$_appname/archive/v$pkgver.tar.gz")
+source=("https://github.com/uploadcare/$_appname/archive/$pkgver.tar.gz")
 conflicts=('python-pillow')
 provides=('python-pillow')
 
@@ -34,4 +34,4 @@ package() {
   install -m644 -t "$pkgdir/usr/include/python$_py3basever/" src/libImaging/*.h
 }
 
-sha256sums=('0086cea17590587e8041fe35a2c0c8680975198d798c2b39cdf277354b3b16c8')
+sha256sums=('d9483c523fd86b48fdadacde219d3ecbddfbde0543d4a36a3a0600cd2e319f18')
