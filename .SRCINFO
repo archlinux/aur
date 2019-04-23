@@ -15,21 +15,6 @@ pkgbase = python-pygmt
 	makedepends = gmt>=6.0.0
 	makedepends = gmt-coast
 	makedepends = gmt-dcw
-	makedepends = ipython
-	makedepends = python-matplotlib
-	makedepends = jupyter
-	makedepends = python-pytest
-	makedepends = python-pytest-cov
-	makedepends = python-pytest-mpl
-	makedepends = python-coverage
-	makedepends = python-black
-	makedepends = python-pylint
-	makedepends = flake8
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
-	makedepends = python-sphinx-gallery
-	makedepends = python-nbsphinx
-	makedepends = python-numpydoc
 	source = https://files.pythonhosted.org/packages/77/72/5dfc13ff2be531366a735047892f8c99d709f1289c1eb5f4d0f656b35ce6/pygmt-0.0.1a0.tar.gz
 	sha256sums = 0bba865dea5cedcbac52ece31775ddf9b1c2bf1629e585cd6bc1fce848b09add
 

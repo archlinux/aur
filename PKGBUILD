@@ -10,9 +10,10 @@ arch=('x86_64')
 url="https://www.pygmt.org"
 license=('3-BSD')
 #numpy, pandas, xarray, netCDF4, packaging
-makedepends=('cython' 'python-setuptools' 'python-numpy' 'python-pandas' 'python-xarray' 'python-netcdf4' 'python-packaging' 'gmt>=6.0.0' 'gmt-coast' 'gmt-dcw'
-             'ipython' 'python-matplotlib' 'jupyter' 'python-pytest' 'python-pytest-cov' 'python-pytest-mpl' 'python-coverage' 'python-black' 'python-pylint' 'flake8' 'python-sphinx'
-             'python-sphinx_rtd_theme' 'python-sphinx-gallery' 'python-nbsphinx' 'python-numpydoc')
+makedepends=('cython' 'python-setuptools' 'python-numpy' 'python-pandas' 'python-xarray' 'python-netcdf4' 'python-packaging' 'gmt>=6.0.0' 'gmt-coast' 'gmt-dcw')
+#makedepends=('cython' 'python-setuptools' 'python-numpy' 'python-pandas' 'python-xarray' 'python-netcdf4' 'python-packaging' 'gmt>=6.0.0' 'gmt-coast' 'gmt-dcw'
+#             'ipython' 'python-matplotlib' 'jupyter' 'python-pytest' 'python-pytest-cov' 'python-pytest-mpl' 'python-coverage' 'python-black' 'python-pylint' 'flake8' 'python-sphinx'
+#             'python-sphinx_rtd_theme' 'python-sphinx-gallery' 'python-nbsphinx' 'python-numpydoc')
 source=("https://files.pythonhosted.org/packages/77/72/5dfc13ff2be531366a735047892f8c99d709f1289c1eb5f4d0f656b35ce6/pygmt-${pkgver}.tar.gz")
 sha256sums=('0bba865dea5cedcbac52ece31775ddf9b1c2bf1629e585cd6bc1fce848b09add')
 
