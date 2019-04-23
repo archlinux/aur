@@ -1,6 +1,6 @@
 pkgbase = rooster
 	pkgdesc = A simple password manager for geeks
-	pkgver = 2.8.0
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://github.com/conradkdotcom/rooster
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = rooster
 	depends = libsodium
 	depends = openssl
 	depends = xsel
-	source = rooster-2.8.0.tar.gz::https://github.com/conradkdotcom/rooster/archive/v2.8.0.tar.gz
-	sha256sums = 49647992eb48ef7df4ffee897aeb8f651e403c86d08c5dac92bb96547951a68a
+	source = rooster-2.8.1.tar.gz::https://github.com/conradkdotcom/rooster/archive/v2.8.1.tar.gz
+	sha256sums = c9e79f936e230c4812ffe8fdbf019c53e1aed5633bd83a0a507c1b680ac0a681
 
 pkgname = rooster
 
