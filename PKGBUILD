@@ -3,14 +3,14 @@
 
 _basename=imagemagick
 pkgname=lib32-imagemagick
-pkgver=7.0.8.39
+pkgver=7.0.8.41
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (32-bit)"
 url="https://www.imagemagick.org/"
 arch=(x86_64)
 license=(custom)
-depends=(lib32-libheif lib32-liblqr lib32-libltdl lib32-libraqm lib32-libraw lib32-librsvg lib32-libwebp
-         lib32-libwmf lib32-openexr lib32-openjpeg2 imagemagick)
+depends=(lib32-libheif lib32-liblqr lib32-libltdl lib32-libraqm lib32-libraw lib32-librsvg
+         lib32-libwebp lib32-libwmf lib32-openexr lib32-openjpeg2 imagemagick)
 makedepends=(ghostpcl ghostscript ghostxps lib32-glu lib32-jbigkit lib32-ocl-icd opencl-headers)
 checkdepends=(ttf-dejavu)
 _relname=ImageMagick-${pkgver%%.*}
@@ -18,7 +18,7 @@ _tarname=ImageMagick-${pkgver%.*}-${pkgver##*.}
 source=(https://www.imagemagick.org/download/releases/$_tarname.tar.xz{,.asc}
         arch-fonts.diff
         IM7-GS-policy.patch)
-sha256sums=('e6964b764bf90e9f41619f198f28207cc73efe2e309ec2275134f449f5b6a0a7'
+sha256sums=('b5b36cc2aacb3dd3905f057be14858a9ce9bf0bbd1c8fd1c9b59ca22a81a1446'
             'SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73'
             'f20c09860da65a4259ec9627ceeca7d993949b7460fa199c5ffd874633814cf6')
