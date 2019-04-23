@@ -1,8 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=d9vk-winelib-git
-pkgver=0.r2533.9678ca5e
-pkgrel=1
+pkgver=0.r2646.a262dcd1
+pkgrel=2
 pkgdesc="A d3d9 to vk layer based off DXVK's codebase. Winelib version"
 arch=('x86_64')
 url="https://github.com/Joshua-Ashton/d9vk"
@@ -21,7 +21,7 @@ sha256sums=(
     "SKIP"
     "SKIP"
     "7147644664ef33d04f7b18683c47be95b5664c57cf6d63fdc019d915deebd37a"
-    "19eff57042936e89b941fd8655ea1ed15d6399cd1c78ed0729b7206a2fcf47ee"
+    "d73f948fd39da218141cc72c7373f59e6fc289630e155b6e51d18597455d0040"
 )
 
 pkgver() {
@@ -33,10 +33,10 @@ prepare() {
     cd d9vk
     patch -p1 -i ../extraopts.patch
     CFLAGS="$CPPFLAGS $CFLAGS"
-    sed -i build-win64.txt \
+    sed -i build-wine64.txt \
         -e "s|@CARGS@|\'${CFLAGS// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${LDFLAGS// /\',\'}\'|g"
-    sed -i build-win32.txt \
+    sed -i build-wine32.txt \
         -e "s|@CARGS@|\'${CFLAGS// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${LDFLAGS// /\',\'}\'|g"
 }

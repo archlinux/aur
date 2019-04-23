@@ -47,7 +47,7 @@ index ba8d34a8..ecec2eb4 100644
 -cpp_link_args=['-m32', '-mwindows']
 +c_args=['-m32', '-msse', '-msse2', @CARGS@]
 +cpp_args=['-m32', '--no-gnu-unique', '-msse', '-msse2', @CARGS@]
-+cpp_link_args=['-m32', '-mwindows', '@LDARGS@]
++cpp_link_args=['-m32', '-mwindows', @LDARGS@]
  
  [host_machine]
  system = 'linux'
