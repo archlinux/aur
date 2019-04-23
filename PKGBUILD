@@ -1,9 +1,8 @@
 # Maintainer: Giusy Digital <kurmikon AT libero DOT it>
 
 _pkgbasename=mediainfo-gui
-_pkghash=977dcc4e18353938d1ca435c562db0c111c18795
 pkgname=mediainfo-gui-qt
-pkgver=18.12
+pkgver=19.04
 pkgrel=1
 pkgdesc="Supplies technical and tag information about a video or audio file (Qt GUI interface)"
 arch=("i686" "x86_64")
@@ -14,16 +13,14 @@ makedepends=("glibc")
 provides=("$_pkgbasename")
 conflicts=("$_pkgbasename")
 source=(
-    #"$pkgname-$pkgver.tar.gz::https://github.com/MediaArea/MediaInfo/archive/v18.12.tar.gz"
-    "$pkgname-$pkgver.zip::https://github.com/MediaArea/MediaInfo/archive/977dcc4e18353938d1ca435c562db0c111c18795.zip"
+    "$pkgname-$pkgver.tar.gz::https://github.com/MediaArea/MediaInfo/archive/v$pkgver.tar.gz"
     "kde4-service.desktop" "konqueror-service.desktop" "kservices5.desktop")
 md5sums=(
-    "0efba87875d67fea82caf1f8dd87ad02" 
+    "548a5e3797e17757e56cbe3bc8132c33"
     "SKIP" "SKIP" "SKIP")
 
 build() {
-    #cd "$srcdir/MediaInfo-$pkgver/Project/QMake/GUI"
-    cd "$srcdir/MediaInfo-$_pkghash/Project/QMake/GUI"
+    cd "$srcdir/MediaInfo-$pkgver/Project/QMake/GUI"
     qmake "MediaInfoQt.pro"
     make
 }
@@ -37,18 +34,13 @@ package() {
     install -Dm644 "kservices5.desktop" \
         "$pkgdir/usr/share/kservices5/ServiceMenus/$_pkgbasename.desktop"
     
-    cd "MediaInfo-$_pkghash" #cd "MediaInfo-$pkgver"
+    cd "MediaInfo-$pkgver"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgbasename/LICENSE"
-    install -Dm644 "Source/Resource/Image/MediaInfo.png" \
-        "$pkgdir/usr/share/icons/hicolor/256x256/apps/mediainfo.png"
     install -Dm644 "Source/Resource/Image/MediaInfo.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/mediainfo.svg"
-    install -Dm644 "Source/Resource/Image/MediaInfo.xpm" \
-        "$pkgdir/usr/share/pixmaps/mediainfo.xpm"
     install -Dm644 "Project/GNU/GUI/$_pkgbasename.desktop" \
         "$pkgdir/usr/share/applications/$_pkgbasename.desktop"
         
     cd "Project/QMake/GUI"
     make INSTALL_ROOT="$pkgdir" install
 }
- 
