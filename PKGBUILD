@@ -3,16 +3,18 @@
 pkgbase=ttf-twcns-fonts
 pkgname=("$pkgbase" "$pkgbase"-doc)
 pkgdesc='Chinese TrueType fonts by Ministry of Education of Taiwan government, support CNS11643 standard, including Kai and Sung fontface.'
-pkgver=20181012
+pkgver=20190411
 pkgrel=1
 arch=('any')
 url='http://data.gov.tw/node/5961'
 license=('custom')
 makedepends=(dos2unix convmv)
 source=('http://www.cns11643.gov.tw/AIDB/Open_Data.zip'
+        '53-twcns.conf' # grab from older version of rpm
         'LICENSE-zh_TW'
         'LICENSE')
-sha1sums=('9655b20ddfce2daa135e173b299e5d0898dc4474'
+sha1sums=('80965a47245257e1eceff5a7b1de3cd14121dc3b'
+          'e9a1bf83c957966941a1a3bb7e406169d47facde'
           '08c5ee06a2248340613d9bd7314a824883851bd1'
           '6be77081aa46e90e417ec73027e0477c3297a1c9')
 
@@ -31,6 +33,10 @@ package_ttf-twcns-fonts() {
     install -dm755 $pkgdir/usr/share/fonts/TTF
     mv -v Fonts/TW-Kai* $pkgdir/usr/share/fonts/TTF/
     mv -v Fonts/TW-Sung* $pkgdir/usr/share/fonts/TTF/
+    msg 'Installing configuration'
+    install -dm755 $pkgdir/etc/fonts/conf.{avail,d}
+    install -Dm644 $srcdir/53-twcns.conf $pkgdir/etc/fonts/conf.avail/53-twcns.conf
+    ln -sf $pkgdir/etc/fonts/conf.{avail,d}/53-twcns.conf
     msg 'Installing the license'
     install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     install -Dm644 ${srcdir}/LICENSE-zh_TW ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-zh_TW
