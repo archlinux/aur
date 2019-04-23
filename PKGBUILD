@@ -10,7 +10,7 @@
 
 _qt_module=qtquickcontrols2
 pkgname="mingw-w64-qt5-quickcontrols2"
-pkgver=5.12.2
+pkgver=5.12.3
 pkgrel=1
 arch=('any')
 pkgdesc="Reusable Qt Quick based UI controls to create classic desktop-style user interfaces (mingw-w64)"
