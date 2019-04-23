@@ -16,10 +16,11 @@ sha256sums=("SKIP")
 package() {
     install -dm755 "$pkgdir/usr/share/themes"
     cd "$srcdir/Yaru-Colors/Themes"
-
+    mv "Yaru-MATE -dark" "Yaru-MATE-dark"
 
     for themeVariant in $(ls)
     do
-        cp -rL "$srcdir/Yaru-Colors/Themes/$themeVariant" "$pkgdir/usr/share/themes/$themeVariant"
+        echo "Installing -> $themeVariant"
+        cp -rL "$srcdir/Yaru-Colors/Themes/$themeVariant" "$pkgdir/usr/share/themes/"
     done
 }
