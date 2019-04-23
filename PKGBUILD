@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  gcc -o "${_pkgname}" src/superdriveEnabler.c
+  gcc $CPPFLAGS $CFLAGS $LDFLAGS -o "${_pkgname}" src/superdriveEnabler.c
 }
 
 package() {
