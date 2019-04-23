@@ -1,4 +1,4 @@
-From cf9f7a67dedc858d1f8b1e16747a31747787cb4e Mon Sep 17 00:00:00 2001
+From 83340c970109edc6400a8f74f1728affec4024c5 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:26:18 +0200
 Subject: [PATCH 20/34] Use *.dll.a as import lib extension
@@ -11,10 +11,10 @@ mingw-w64 specific mkspec
  2 files changed, 14 insertions(+), 6 deletions(-)
 
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index e67917cc96..2a94964b49 100644
+index 74a9160628..7694d1c7ae 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
-@@ -238,8 +238,9 @@ mac {
+@@ -240,8 +240,9 @@ mac {
              CMAKE_PRL_FILE_LOCATION_DEBUG = lib$${CMAKE_QT_STEM}d.prl
              CMAKE_PRL_FILE_LOCATION_RELEASE = lib$${CMAKE_QT_STEM}.prl
          } else {
@@ -27,7 +27,7 @@ index e67917cc96..2a94964b49 100644
      } else {
          CMAKE_WINMAIN_FILE_LOCATION_DEBUG = qtmain$${QT_LIBINFIX}d.lib
 diff --git a/qmake/generators/win32/winmakefile.cpp b/qmake/generators/win32/winmakefile.cpp
-index 87157f31ae..4592fed7b2 100644
+index 5a37b218de..29bf9441f7 100644
 --- a/qmake/generators/win32/winmakefile.cpp
 +++ b/qmake/generators/win32/winmakefile.cpp
 @@ -80,9 +80,13 @@ Win32MakefileGenerator::parseLibFlag(const ProString &flag, ProString *arg)
@@ -45,9 +45,9 @@ index 87157f31ae..4592fed7b2 100644
 +      impexts.append(project->values("QMAKE_EXTENSION_STATICLIB"));
 +    }
      QList<QMakeLocalFileName> dirs;
+     int libidx = 0;
      for (const ProString &dlib : project->values("QMAKE_DEFAULT_LIBDIRS"))
-         dirs.append(QMakeLocalFileName(dlib.toQString()));
-@@ -255,9 +259,12 @@ void Win32MakefileGenerator::fixTargetExt()
+@@ -257,9 +261,12 @@ void Win32MakefileGenerator::fixTargetExt()
      if (!project->values("QMAKE_APP_FLAG").isEmpty()) {
          project->values("TARGET_EXT").append(".exe");
      } else if (project->isActiveConfig("shared")) {

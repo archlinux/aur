@@ -1,4 +1,4 @@
-From 1e421ad10dfb855e5a8626124854fb6e9ab568ca Mon Sep 17 00:00:00 2001
+From c05b912a91f424375d6b44cb0cebdec7c44c967c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:41:38 +0200
 Subject: [PATCH 03/34] Use external ANGLE library
@@ -12,7 +12,7 @@ Subject: [PATCH 03/34] Use external ANGLE library
  5 files changed, 6 insertions(+), 12 deletions(-)
 
 diff --git a/src/gui/Qt5GuiConfigExtras.cmake.in b/src/gui/Qt5GuiConfigExtras.cmake.in
-index 07869efd7d..2e32911a64 100644
+index 84dbbfebd4..46a8696ff3 100644
 --- a/src/gui/Qt5GuiConfigExtras.cmake.in
 +++ b/src/gui/Qt5GuiConfigExtras.cmake.in
 @@ -2,9 +2,9 @@

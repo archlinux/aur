@@ -1,4 +1,4 @@
-From 7fc63fcd9c5e8a2c864c7de9fa14338ce3e82969 Mon Sep 17 00:00:00 2001
+From 52682db5b750289cdd3dc68682861da8507db2b3 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 4 Dec 2016 20:35:47 +0100
 Subject: [PATCH 26/34] Fix macro invoking moc, rcc and uic
