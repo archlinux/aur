@@ -1,8 +1,9 @@
-# Maintainer: Samuel Damashek <samuel.damashek@gmail.com>
+# Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Contributor: Samuel Damashek <samuel.damashek@gmail.com>
 # Based on python33 PKGBUILD (g.schulz)
 
 pkgname=python35
-pkgver=3.5.6
+pkgver=3.5.7
 pkgrel=1
 _pybasever=3.5
 pkgdesc="Next generation of the python high-level scripting language"
@@ -14,7 +15,7 @@ makedepends=('tk' 'sqlite' 'valgrind')
 optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
 source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
-sha256sums=('f55cde04f521f273c7cba08912921cc5642cfc15ca7b22d5829f0aff4371155f')
+sha256sums=('285892899bf4d5737fd08482aa6171c6b2564a45b9102dfacfb72826aebdc7dc')
 
 build() {
   cd "${srcdir}/Python-${pkgver}"
