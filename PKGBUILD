@@ -6,7 +6,7 @@ arch=('any')
 url="https://www.mesa3d.org/"
 license=("custom")
 makedepends=('mingw-w64-gcc' 'scons' 'python2-mako' 'mingw-w64-meson')
-depends=('mingw-w64-crt')
+depends=('mingw-w64-dlfcn')
 options=('staticlibs' '!strip' '!buildflags')
 validpgpkeys=('71C4B75620BC75708B4BDB254C95FAAB3EB073EC') # Dylan Baker <dylan@pnwbakers.com>
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig})
@@ -25,7 +25,7 @@ build() {
   cd "${srcdir}"/mesa-${pkgver}
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-meson -Dplatforms=surfaceless -Dglx=disabled -Dllvm=false ..
+    ${_arch}-meson -Dplatforms=surfaceless -Dglx=disabled -Dllvm=false --includedir=/usr/${_arch}/include/mesa ..
     ninja
     popd
   done
