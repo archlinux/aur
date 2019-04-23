@@ -38,7 +38,7 @@ pkgbase = poppler-lcd
 	sha256sums = 370f5fcfe2bbf0c76fc394d338cd72ed7f2044b67f4eb4b115eb074ccfc70d63
 	sha256sums = SKIP
 
-pkgname = poppler
+pkgname = poppler-lcd
 	pkgdesc = PDF rendering library based on xpdf 3.0
 	depends = libjpeg
 	depends = gcc-libs
@@ -52,12 +52,12 @@ pkgname = poppler
 	conflicts = poppler-qt3<0.76.0
 	conflicts = poppler-qt4<0.76.0
 
-pkgname = poppler-glib
+pkgname = poppler-glib-lcd
 	pkgdesc = Poppler glib bindings
 	depends = poppler=0.76.0
 	depends = glib2
 
-pkgname = poppler-qt5
+pkgname = poppler-qt5-lcd
 	pkgdesc = Poppler Qt5 bindings
 	depends = poppler=0.76.0
 	depends = qt5-base

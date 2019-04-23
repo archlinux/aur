@@ -1,2 +1,4 @@
 *.xz
 /poppler-lcd-patch/
+/src/
+/pkg/

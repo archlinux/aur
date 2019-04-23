@@ -1,7 +1,7 @@
 # Maintainer: Jeffrey Feng <galago1992@gmail.com>
 
 pkgbase=poppler-lcd
-pkgname=('poppler' 'poppler-glib' 'poppler-qt5')
+pkgname=('poppler-lcd' 'poppler-glib-lcd' 'poppler-qt5-lcd')
 pkgver=0.76.0
 pkgrel=1
 pkgdesc="PDF rendering library based on xpdf 3.0 with subpixel patch on LCD display"
@@ -39,7 +39,7 @@ build() {
   make
 }
 
-package_poppler() {
+package_poppler-lcd() {
   pkgdesc="PDF rendering library based on xpdf 3.0"
   depends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'lcms2' 'nss' 'curl')
   optdepends=('poppler-data: encoding data to display PDF documents containing CJK characters')
@@ -56,7 +56,7 @@ package_poppler() {
   rm -vrf "${pkgdir}"/usr/share/gtk-doc
 }
 
-package_poppler-glib() {
+package_poppler-glib-lcd() {
   pkgdesc="Poppler glib bindings"
   depends=("poppler=${pkgver}" 'glib2')
 
@@ -69,7 +69,7 @@ package_poppler-glib() {
   rm -vf "${pkgdir}/usr/bin/poppler-glib-demo"
 }
 
-package_poppler-qt5() {
+package_poppler-qt5-lcd() {
   pkgdesc="Poppler Qt5 bindings"
   depends=("poppler=${pkgver}" 'qt5-base')
 
