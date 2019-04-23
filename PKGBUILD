@@ -8,7 +8,7 @@
 
 _qt_module=qtconnectivity
 pkgname="mingw-w64-qt5-connectivity"
-pkgver=5.12.2
+pkgver=5.12.3
 pkgrel=1
 arch=('any')
 pkgdesc="Provides access to Bluetooth hardware (mingw-w64)"
