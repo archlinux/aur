@@ -1,0 +1,14 @@
+pkgbase = python-pyrepl
+	pkgdesc = A library for building flexible command line interfaces
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = http://bitbucket.org/pypy/pyrepl/
+	arch = any
+	license = MIT
+	license = X11
+	license = style
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-pyrepl
+
