@@ -1,7 +1,7 @@
 pkgbase = flowblade
 	pkgdesc = a multitrack non-linear video editor for Linux
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jliljebl/flowblade
 	arch = any
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = flowblade
 	depends = gtk3
 	depends = librsvg
 	depends = mlt
-	depends = mlt-python-bindings
+	depends = mlt-python2-bindings
 	depends = movit
 	depends = pygtk
 	depends = python2-dbus
