@@ -1,4 +1,4 @@
-From 33cf02040a4933927da94fd1eed3fe1e7bac1d8e Mon Sep 17 00:00:00 2001
+From 0f04b0d5deb92eb7a12bb190ccc9d59fec0e2b6f Mon Sep 17 00:00:00 2001
 From: Marius Kittler <mkittler@suse.de>
 Date: Wed, 12 Dec 2018 18:16:54 +0100
 Subject: [PATCH] Hardcode linker flags for platform plugin
