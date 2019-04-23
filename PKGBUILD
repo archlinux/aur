@@ -8,7 +8,7 @@
 
 pkgname=firefox-wayland-hg
 _pkgname=firefox
-pkgver=r525597.b21620648d31
+pkgver=r525913.43a6ba47356a
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Wayland build of mozilla-unified hg"
 arch=(x86_64)
@@ -72,7 +72,6 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
-
 ac_add_options --enable-lto
 export MOZ_PGO=1
 export CC=clang
