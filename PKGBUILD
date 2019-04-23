@@ -8,7 +8,7 @@
 
 _qt_module=qtcanvas3d
 pkgname="mingw-w64-qt5-canvas3d"
-pkgver=5.12.2
+pkgver=5.12.3
 pkgrel=1
 arch=('any')
 pkgdesc="A JavaScript 3D rendering API for Qt Quick (mingw-w64)"
