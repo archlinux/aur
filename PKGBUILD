@@ -8,7 +8,7 @@
 
 _qt_module=qtremoteobjects
 pkgname="mingw-w64-qt5-remoteobjects"
-pkgver=5.12.2
+pkgver=5.12.3
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Inter-process communication (IPC) module developed for Qt (mingw-w64)"
