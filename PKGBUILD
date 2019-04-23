@@ -208,11 +208,7 @@ build() {
   cd ${xe_build_dir}
   mkdir -p ${xe_build_dir}/etc/profile.d
 
-  if [ "$CARCH" = "i686" ]; then
-    sed 's/<arch>/ia32/' < ${srcdir}/intel_compilers.sh > ${xe_build_dir}/etc/profile.d/intel_compilers.sh
-  else
-    sed 's/<arch>/intel64/' < ${srcdir}/intel_compilers.sh > ${xe_build_dir}/etc/profile.d/intel_compilers.sh
-  fi
+  sed "s/<arch>/${_i_arch}/" < ${srcdir}/intel_compilers.sh > ${xe_build_dir}/etc/profile.d/intel_compilers.sh
 
   chmod a+x ${xe_build_dir}/etc/profile.d/intel_compilers.sh
 
@@ -396,11 +392,7 @@ package_intel-fortran-compiler() {
   mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
   mkdir -p ${_man_dir}
 
-  if [ "$CARCH" = "i686" ]; then
-    sed 's/<arch>/ia32/' < ${srcdir}/intel-fortran.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-fortran.conf
-  else
-    sed 's/<arch>/intel64/' < ${srcdir}/intel-fortran.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-fortran.conf
-  fi
+  sed "s/<arch>/${_i_arch}/" < ${srcdir}/intel-fortran.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-fortran.conf
 
   cd ${xe_build_dir}
 
@@ -459,11 +451,7 @@ package_intel-ipp() {
 
   mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
 
-  if [ "$CARCH" = "i686" ]; then
-    sed 's/<arch>/ia32/' < ${srcdir}/intel-ipp.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-ipp.conf
-  else
-    sed 's/<arch>/intel64/' < ${srcdir}/intel-ipp.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-ipp.conf
-  fi
+  sed "s/<arch>/${_i_arch}/" < ${srcdir}/intel-ipp.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-ipp.conf
 
   cd ${xe_build_dir}
   echo -e " # intel-ipp: Extracting RPMS"
@@ -514,11 +502,7 @@ package_intel-mkl() {
 
   cp ${srcdir}/intel-mkl-th.conf ${xe_build_dir}/etc/
 
-  if [ "$CARCH" = "i686" ]; then
-    sed 's/<arch>/ia32/' < ${srcdir}/intel-mkl.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-mkl.conf
-  else
-    sed 's/<arch>/intel64/' < ${srcdir}/intel-mkl.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-mkl.conf
-  fi
+  sed "s/<arch>/${_i_arch}/" < ${srcdir}/intel-mkl.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-mkl.conf
 
   cd ${xe_build_dir}
 
@@ -564,11 +548,7 @@ package_intel-mpi() {
   mkdir -p ${xe_build_dir}/bin
   mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
 
-  if [ "$CARCH" = "i686" ]; then
-    sed 's/<arch>/ia32/' < ${srcdir}/intel-mpi.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-mpi.conf
-  else
-    sed 's/<arch>/intel64/' < ${srcdir}/intel-mpi.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-mpi.conf
-  fi
+  sed "s/<arch>/${_i_arch}/" < ${srcdir}/intel-mpi.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-mpi.conf
 
   cd ${xe_build_dir}
 
@@ -611,11 +591,7 @@ package_intel-tbb_psxe() {
   mkdir -p ${xe_build_dir}/opt
   mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
 
-  if [ "$CARCH" = "i686" ]; then
-    sed 's/<arch>/ia32/' < ${srcdir}/intel-tbb.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
-  else
-    sed 's/<arch>/intel64/' < ${srcdir}/intel-tbb.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
-  fi
+  sed "s/<arch>/${_i_arch}/" < ${srcdir}/intel-tbb.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
   sed -i "s/<INSTALLDIR>/\/opt\/intel\/${_composer_xe_dir}/g" ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
 
   cd ${xe_build_dir}
