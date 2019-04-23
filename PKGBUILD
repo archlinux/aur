@@ -1,7 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=hunter
-pkgver=1.0.3
+pkgver=1.0.10
 pkgrel=1
 pkgdesc='ranger-like file browser written in Rust'
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=(file)
 makedepends=(rust)
 conflicts=(hunter-git hunter-evil hunter-evil-git)
 source=($url/archive/v$pkgver.tar.gz)
-sha512sums=('66f8059643994058c539bc1ff93e8bc194238554c767436d40aa730f01398d7b81d9f7f24e6e91b82133742285224f3b3c9a4b62b059ad57a85b36049d35d0b2')
+sha512sums=('8e7f8050c8b26791c9e0039f6e59a4f3d80e9ccd2cce86fa8034692af29b24badc5d488eeb5af9da3c88032e4eee9bf0cf44618702bf43699306df141a4cfbeb')
 
 build() {
   cd hunter-$pkgver
