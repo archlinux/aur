@@ -2,7 +2,7 @@
 
 pkgname=hunter-git
 pkgver=1.0.10+3+g2974d74
-pkgrel=2
+pkgrel=3
 pkgdesc='ranger-like file browser written in Rust (git)'
 arch=(i686 x86_64)
 url=https://github.com/rabite0/hunter
@@ -27,5 +27,6 @@ build() {
 package() {
   cd hunter
   install -D target/release/hunter -t "$pkgdir"/usr/bin
+  install -Dm 644 README.md -t "$pkgdir"/usr/share/hunter-holy
   install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/hunter
 }
