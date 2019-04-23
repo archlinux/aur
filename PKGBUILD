@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.29.0.r306.g4e9dc60d9e
+pkgver=0.29.0.r317.gedbc199914
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -46,6 +46,7 @@ depends=(
          'libiec61883'
          'libmodplug'
          'libomxil-bellagio'
+         'libplacebo'
          'libpng'
          'libpulse'
          'librsvg'
@@ -324,6 +325,7 @@ prepare() {
     '--enable-libavdevice'
     '--enable-libbluray'
     '--enable-libmpv-shared'
+    '--enable-libplacebo'
     '--enable-libsmbclient'
     '--enable-libv4l2'
     '--enable-lua'
