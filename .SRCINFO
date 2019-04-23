@@ -7,7 +7,7 @@ pkgbase = timer
 	license = MIT
 	depends = bash
 	depends = mpv
-	source = git://github.com/yoarch/timer.git
+	source = https://github.com/yoarch/timer.git
 	sha256sums = SKIP
 
 pkgname = timer

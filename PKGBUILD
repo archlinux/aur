@@ -10,7 +10,8 @@ license=('MIT')
 depends=('bash' 'mpv')
 makedepends=('')
 
-source=("git://github.com/yoarch/timer.git")
+source=("https://github.com/yoarch/timer.git")
+#source#=("file:///$MHOME/dev/aur/timer/timer.tar.gz")
 sha256sums=('SKIP')
 
 pkgver() {
