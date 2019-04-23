@@ -8,7 +8,8 @@ pkgdesc='A platform for collaboration and project management'
 arch=('x86_64')
 url='https://zenkit.com'
 license=('Commercial')
-provides=('zenkit')
+depends=('gconf')
+provides=('zenki')
 options=('!strip')
 source=("https://static.zenkit.com/downloads/zenkit-linux.tar.gz"
         'zenkit.desktop')
