@@ -1,4 +1,4 @@
-From 25d470f26ed0dd8390d7554f0a52a0bbd7a62efa Mon Sep 17 00:00:00 2001
+From a41cc5047fadb1a20779ca2094f8f9c51246f237 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 23 Oct 2016 01:18:13 +0200
 Subject: [PATCH 2/3] Ensure static plugins are exported
