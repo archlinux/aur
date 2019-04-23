@@ -1,6 +1,6 @@
 # Maintainer: nroi <nroi@mailbox.org>
 pkgname=cpcache-git
-pkgver=r340.546868c
+pkgver=0.1.0.r0.g9249d15
 pkgrel=1
 pkgdesc="central pacman cache"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('erlang-nox' 'elixir')
 install="${pkgname%-git}.install"
 backup=('etc/cpcache/cpcache.toml')
-source=('git+https://github.com/nroi/cpcache.git'
+source=('git+https://github.com/nroi/cpcache.git#tag=0.1.0'
         'sysuser.conf'
         'cpcache.install'
         'cpcache.service'
@@ -17,12 +17,12 @@ source=('git+https://github.com/nroi/cpcache.git'
 sha256sums=('SKIP'
             '0098e749b19617c0f7d619d47a3bc3015bab62e9ad0916087502daff672fb309'
             '3a2c1155a6fc50be959be17f9c2339455c30bb85939263b29bb2ae5792d69037'
-            'c4007bd6dd055e5edf09d54a840c957b7e5dab45ae85be4b26b41e34e9f63f19'
+            'a5d891b7d5cd282a3e7db445d8bbe14b230af7cb1a1e9536130e2f0e514d69bd'
 )
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
