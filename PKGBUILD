@@ -150,20 +150,20 @@ else
   _not_arch2='i486'
 fi
 
+extract_rpm() {
+  echo -e "    Extracting: ${1##*/}"
+  bsdtar -xf $1 -C $2
+}
 
 extract_rpms() {
-  cd $2
   for rpm_file in ${rpm_dir}/$1 ; do
-    echo -e "    Extracting: ${rpm_file}"
-    bsdtar -xf ${rpm_file}
+    extract_rpm ${rpm_file} $2
   done
 }
 
 extract_mpi_rpms() {
-  cd $2
   for rpm_file in ${mpi_rpm_dir}/$1 ; do
-    echo -e "    Extracting: ${rpm_file}"
-    bsdtar -xf ${rpm_file}
+    extract_rpm ${rpm_file} $2
   done
 }
 
