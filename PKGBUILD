@@ -1,7 +1,7 @@
 # Maintainer: Yann Orieult <yo.managements@gmail.com>
 
 pkgname=timer
-pkgver=6.df24881
+pkgver=7.56a2511
 pkgrel=1
 pkgdesc='a simple timer/minutor for terminal with audio alarm'
 arch=('any')
