@@ -4,7 +4,7 @@
 
 _pkgname=terminus-font
 pkgname=${_pkgname}-ll2
-pkgver=4.46
+pkgver=4.47
 pkgrel=1
 pkgdesc='A superb, monospace bitmap font (for X11 and console) with ll2 patch (pass the il1I test)'
 arch=(any)
@@ -15,7 +15,7 @@ conflicts=(terminus-font)
 provides=(terminus-font)
 install=terminus-font.install
 source=(http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz)
-md5sums=('368f512a88b5855fe2f12a9262da52f2')
+md5sums=('d95f0914e31b838bd54edf8389fdc6cd')
 
 build() { 
   cd "${srcdir}/${_pkgname}-${pkgver}"
