@@ -30,7 +30,7 @@ source=("${pkgname}::git://github.com/Alexays/Waybar"
         'meson.build.patch')
 
 sha1sums=('SKIP'
-          '48f912d7765d1ecc851254a282215f2981dd5792')
+          'ec12c4c2a5af2f92f35da8d57115e01f7ecf490d')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
