@@ -6,28 +6,26 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-rt
-pkgver=384.59
-_extramodules=extramodules-4.9-rt
+pkgver=418.56
+_extramodules=extramodules-5.0-rt
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux-rt"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-rt>=4.9' "nvidia-utils=$pkgver" 'libgl')
-makedepends=('linux-rt-headers>=4.8' 'linux-rt-headers<4.9')
+depends=('linux-rt>=5.0' "nvidia-utils=$pkgver" 'libgl')
+makedepends=('linux-rt-headers>=5.0' 'linux-rt-headers<5.1')
 license=('custom')
 options=(!strip)
 install=$pkgname.install
-source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
-source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
-md5sums_i686=('8d2a2049d0509875c5dc0d9a0275aee4')
-md5sums_x86_64=('778318b0fd2d5d511474a8987cc7dbe5')
+source_x86_64=("http://download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver.run")
+md5sums_x86_64=('d1cf6dc33af48b53edbae5d6f31a6f89')
 
-[[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-$pkgver"
-[[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32"
+_pkg="NVIDIA-Linux-x86_64-$pkgver"
 
 prepare() {
     sh "$_pkg.run" --extract-only
     cd "$_pkg"
+    sed -i -e 's|PREEMPT_RT_PRESENT=1|PREEMPT_RT_PRESENT=0|g' kernel/conftest.sh
 }
 
 build() {
