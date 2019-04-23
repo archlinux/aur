@@ -1,4 +1,4 @@
-From 96aabcf9e88901120924310bafd817de44e94ec3 Mon Sep 17 00:00:00 2001
+From 3cc8bd09cba19956e473e0444949745406936799 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 24 Sep 2018 20:10:19 +0200
 Subject: [PATCH 3/3] Link directshow plugin against libamstrmid
