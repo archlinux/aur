@@ -4,7 +4,6 @@ pkgbase=poppler-lcd
 pkgname=('poppler-lcd' 'poppler-glib-lcd' 'poppler-qt5-lcd')
 pkgver=0.76.0
 pkgrel=1
-pkgdesc="PDF rendering library based on xpdf 3.0 with subpixel patch on LCD display"
 arch=(x86_64)
 license=('GPL')
 makedepends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'gtk3' 'pkgconfig' 'lcms2' 
@@ -12,9 +11,6 @@ makedepends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'gtk3' 'pkgco
              'cmake' 'python') 
 options=('!emptydirs')
 url="https://poppler.freedesktop.org/"
-conflicts=('poppler' 'poppler-glib' 'poppler-qt5')
-provides=('poppler' 'poppler-glib' 'poppler-qt5')
-replaces=('poppler' 'poppler-glib' 'poppler-qt5')
 source=(https://poppler.freedesktop.org/poppler-${pkgver}.tar.xz
         git+https://github.com/jonathanffon/poppler-lcd-patch.git)
 sha256sums=('370f5fcfe2bbf0c76fc394d338cd72ed7f2044b67f4eb4b115eb074ccfc70d63'
@@ -40,10 +36,12 @@ build() {
 }
 
 package_poppler-lcd() {
-  pkgdesc="PDF rendering library based on xpdf 3.0"
+  pkgdesc="PDF rendering library based on xpdf 3.0 with subpixel patch on LCD display"
   depends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'lcms2' 'nss' 'curl')
   optdepends=('poppler-data: encoding data to display PDF documents containing CJK characters')
-  conflicts=("poppler-qt3<${pkgver}" "poppler-qt4<${pkgver}")
+  conflicts=('poppler' "poppler-qt3<${pkgver}" "poppler-qt4<${pkgver}")
+  provides=('poppler')
+  replaces=('poppler')
 
   cd build
   make DESTDIR="${pkgdir}" install
@@ -57,8 +55,11 @@ package_poppler-lcd() {
 }
 
 package_poppler-glib-lcd() {
-  pkgdesc="Poppler glib bindings"
+  pkgdesc="Poppler glib bindings with subpixel patch on LCD display"
   depends=("poppler=${pkgver}" 'glib2')
+  conflicts=('poppler-glib')
+  provides=('poppler-glib')
+  replaces=('poppler-glib')
 
   cd build
 
@@ -70,9 +71,12 @@ package_poppler-glib-lcd() {
 }
 
 package_poppler-qt5-lcd() {
-  pkgdesc="Poppler Qt5 bindings"
+  pkgdesc="Poppler Qt5 bindings with subpixel patch on LCD display"
   depends=("poppler=${pkgver}" 'qt5-base')
-
+  conflicts=('poppler-qt5')
+  provides=('poppler-qt5')
+  replaces=('poppler-qt5')
+  
   cd build
   make -C qt5 DESTDIR="${pkgdir}" install
   install -m755 -d "${pkgdir}/usr/lib/pkgconfig"
