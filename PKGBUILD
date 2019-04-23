@@ -2,7 +2,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=cogl
-pkgver=1.22.2+22+ge023a361
+pkgver=1.22.4
 pkgrel=1
 pkgdesc="An object oriented GL/GLES Abstraction/Utility Layer"
 url="https://blogs.gnome.org/clutter/"
@@ -10,7 +10,7 @@ arch=(x86_64)
 license=(GPL2)
 depends=(mesa libdrm libxext libxdamage libxcomposite gdk-pixbuf2 pango libxrandr)
 makedepends=(gobject-introspection git gtk-doc)
-_commit=e023a361e213d5d34f3cb49577788db05f645361  # cogl-1.22
+_commit=60015d7d9756a89fb608887b52fa6b6a5a7db18d  # tags/1.22.4^0
 source=("git+https://gitlab.gnome.org/GNOME/cogl.git#commit=$_commit")
 sha256sums=('SKIP')
 
