@@ -1,0 +1,40 @@
+Index: xamarin-pkg-msbuild/src/Build.OM.UnitTests/Definition/ProjectCollection_Tests.cs
+===================================================================
+--- xamarin-pkg-msbuild.orig/src/Build.OM.UnitTests/Definition/ProjectCollection_Tests.cs
++++ xamarin-pkg-msbuild/src/Build.OM.UnitTests/Definition/ProjectCollection_Tests.cs
+@@ -1422,10 +1422,14 @@ namespace Microsoft.Build.UnitTests.OM.D
+         [Fact]
+         public void ProjectCollectionVersionIsCorrect()
+         {
++            ProjectCollection.Version.ShouldNotBe(new Version(0, 0, 0, 0));
++
++#if THISASSEMBLY
+             Version expectedVersion = new Version(ThisAssembly.AssemblyFileVersion);
+ 
+             ProjectCollection.Version.Major.ShouldBe(expectedVersion.Major);
+             ProjectCollection.Version.Minor.ShouldBe(expectedVersion.Minor);
++#endif
+         }
+ 
+         /// <summary>
+Index: xamarin-pkg-msbuild/src/Directory.Build.targets
+===================================================================
+--- xamarin-pkg-msbuild.orig/src/Directory.Build.targets
++++ xamarin-pkg-msbuild/src/Directory.Build.targets
+@@ -107,6 +107,16 @@
+ 
+   <Import Project="$([System.IO.Path]::Combine('$(RepoRoot)', 'eng', 'GetBuildVersionStub.proj'))" Condition="'$(DisableNerdbankVersioning)' == 'true'" />
+ 
++  <Target Name="OverrideRepoToolsetVersions"
++          AfterTargets="_InitializeAssemblyVersion"
++          Condition="'$(DisableNerdbankVersioning)' == 'true'">
++    <PropertyGroup>
++      <AssemblyVersion>15.1.0.0</AssemblyVersion>
++      <FileVersion>16.0.0.0</FileVersion>
++      <InformationalVersion>$(FileVersion)-mono</InformationalVersion>
++    </PropertyGroup>
++  </Target>
++
+   <Target Name="GetNuGetPackageVersionEx"
+     BeforeTargets="GenerateNuspec"
+     DependsOnTargets="GetBuildVersion"
