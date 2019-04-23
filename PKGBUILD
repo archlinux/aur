@@ -5,36 +5,43 @@
 # Contributor: Federico Quagliata <quaqo@despammed.com>
 
 pkgname=lib32-cracklib
-pkgver=2.9.6
-pkgrel=2
+pkgver=2.9.7
+pkgrel=1
 pkgdesc='Password Checking Library'
-arch=('x86_64')
-url='https://github.com/cracklib/cracklib'
-license=('GPL')
-depends=('cracklib' 'lib32-zlib')
-makedepends=('gcc-multilib')
-source=("https://github.com/cracklib/cracklib/releases/download/cracklib-${pkgver}/cracklib-${pkgver}.tar.gz")
-sha256sums=('17cf76943de272fd579ed831a1fd85339b393f8d00bf9e0d17c91e972f583343')
+arch=(x86_64)
+url=https://github.com/cracklib/cracklib
+license=(GPL)
+depends=(
+  cracklib
+  lib32-zlib
+)
+makedepends=(git)
+source=(git+https://github.com/cracklib/cracklib.git#tag=v${pkgver})
+sha256sums=(SKIP)
+
+prepare() {
+  cd cracklib/src
+
+  ./autogen.sh
+}
 
 build() {
-  cd cracklib-${pkgver}
+  cd cracklib/src
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
   ./configure \
-    --prefix='/usr' \
-    --libdir='/usr/lib32' \
-    --sbindir='/usr/bin' \
+    --prefix=/usr \
+    --libdir=/usr/lib32 \
+    --sbindir=/usr/bin \
     --without-python
   make
 }
 
 package() {
-  cd cracklib-${pkgver}
-
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" -C cracklib/src install
   rm -rf "${pkgdir}"/usr/{include,bin,share}
 }
 
