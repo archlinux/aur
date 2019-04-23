@@ -4,7 +4,7 @@
 
 _pkgname=icu
 pkgname=${_pkgname}63
-pkgver=63.1
+pkgver=63.2
 pkgrel=1
 pkgdesc="International Components for Unicode library"
 arch=('i686' 'x86_64')
@@ -12,19 +12,11 @@ url="http://www.icu-project.org/"
 license=('custom:icu')
 depends=('gcc-libs' 'sh')
 makedepends=('clang' 'make' 'patch')
-source=(https://ssl.icu-project.org/files/${_pkgname}4c/${pkgver}/${_pkgname}4c-${pkgver//./_}-src.tgz
-        icu-63.1-checkImpl.patch::https://github.com/unicode-org/icu/commit/9ec2c332c1.patch)
-sha512sums=('9ab407ed840a00cdda7470dcc4c40299a125ad246ae4d019c4b1ede54781157fd63af015a8228cd95dbc47e4d15a0932b2c657489046a19788e5e8266eac079c'
-            'ce1ec3c14f80658dad6127a037dfc0b21b4bff578240e7c8d8ca8c86cd8a5fe06b527e6a61db0aa303b708f1224f1401a59ad2b175c9640c375d37f138b4c523')
-
-prepare() {
-  cd ${_pkgname}/source
-  
-  patch -Np3 -i ${srcdir}/icu-63.1-checkImpl.patch
-}
+source=(https://github.com/unicode-org/icu/releases/download/release-63-2/icu4c-63_2-src.tgz)
+sha512sums=('5fa9092efd8d6da6dfc8d498e4026167fda43423eaafc754d1789cf8fd4f6e76377878ebcaa32e14f314836136b764873511a93bfbcc5419b758841cc6df8f32')
 
 build() {
-  cd ${_pkgname}/source
+  cd ${srcdir}/${_pkgname}/source
   
   ./configure --prefix=/usr \
 	--sysconfdir=/etc \
@@ -34,7 +26,7 @@ build() {
 }
 
 package() {
-  cd ${_pkgname}/source
+  cd ${srcdir}/${_pkgname}/source
   
   make -j1 DESTDIR=${pkgdir} install
   rm -r "${pkgdir}"/usr/{bin,include,share,lib/*so,lib/icu/{Makefile.inc,current,pkgdata.inc}}
