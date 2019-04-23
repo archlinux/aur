@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=wasmer-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Universal WebAssembly runtime'
 arch=(x86_64)
@@ -12,7 +12,7 @@ conflicts=(wasmer)
 provides=(wasmer)
 source=(
   "https://github.com/wasmerio/wasmer/releases/download/${pkgver}/wasmer-linux-amd64.tar.gz"
-  "https://raw.githubusercontent.com/wasmerio/wasmer/0.3.0/LICENSE"
+  "https://raw.githubusercontent.com/wasmerio/wasmer/${pkgver}/LICENSE"
   logo.sh
 )
 sha512sums=(SKIP SKIP SKIP)
