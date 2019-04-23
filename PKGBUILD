@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-  install -D 50-apple-superdrive.rules "$pkgdir/usr/lib/udev/rules.d/"
+  install -D 50-apple-superdrive.rules -t "$pkgdir/usr/lib/udev/rules.d/"
 
   cd "${_pkgname}"
   install -D -m755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
