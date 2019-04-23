@@ -1,9 +1,9 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 # PGP key is on keyservers
 pkgname=librepcb-appimage
-pkgver=0.1.0_rc2
+pkgver=0.1.1
 _pkgver=${pkgver/_/-}
-pkgrel=2
+pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards (binary AppImage version)."
 arch=('x86_64')
 url="http://librepcb.org/"
@@ -19,7 +19,7 @@ source=(
   "https://download.librepcb.org/releases/${_pkgver}/${_appimage}.asc"
 )
 sha256sums=(
-  'ee21d7defc78737d430d43b8848131e8c618822623355958285aaa74d964c8a5'
+  'c682ba518bd4ecec265c707c5bb2ac5edd6fbc7974f3bc8180b913ccfc8eaf52'
   'SKIP'
 )
 validpgpkeys=('D6F9AF572228C5BCD6B538407EF3061F5C8D5E25')
