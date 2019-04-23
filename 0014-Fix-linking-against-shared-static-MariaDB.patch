@@ -1,4 +1,4 @@
-From 697338ba4c3626e99aa3a501c0942a411ce55a5f Mon Sep 17 00:00:00 2001
+From b35664794a3658470c900c4a7c1b8dbf436359ca Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:56:55 +0200
 Subject: [PATCH 14/34] Fix linking against shared/static MariaDB

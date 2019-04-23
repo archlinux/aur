@@ -1,4 +1,4 @@
-From 53eb02bb30a316f3562e5886cd3fae8ad02af7a0 Mon Sep 17 00:00:00 2001
+From ff46ecb2fdcfc203d55e9fcef8b29c62742c61ae Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:25:40 +0200
 Subject: [PATCH 16/34] Rename qtmain to qt5main
@@ -25,10 +25,10 @@ index 07e2b6a88e..5bfbcfdca6 100644
  QMAKE_IDL               = $${CROSS_COMPILE}widl
  QMAKE_LIB               = $${CROSS_COMPILE}ar -rc
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index 2ed708e085..e67917cc96 100644
+index 6bf1380716..74a9160628 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
-@@ -227,8 +227,8 @@ mac {
+@@ -229,8 +229,8 @@ mac {
      CMAKE_LIB_FILE_LOCATION_RELEASE = $${CMAKE_QT_STEM}.dll
  
      mingw {
