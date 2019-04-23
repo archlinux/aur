@@ -9,7 +9,7 @@
 
 _qt_module=qt3d
 pkgname="mingw-w64-qt5-3d"
-pkgver=5.12.2
+pkgver=5.12.3
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="C++ and QML APIs for easy inclusion of 3D graphics (mingw-w64)"
