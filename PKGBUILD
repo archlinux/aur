@@ -2,13 +2,12 @@
 
 pkgname=(mlt-python2-bindings)
 pkgver=6.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="python2 bindings for mlt"
 arch=(x86_64)
 url="https://www.mltframework.org"
 license=(GPL)
 depends=(python2 mlt)
-conflicts=(python-mlt)
 makedepends=(ladspa frei0r-plugins libdv sdl_image libsamplerate sox ffmpeg vid.stab qt5-svg
              jack libexif python2 swig movit eigen opencv libebur128 gtk2)
 source=($pkgname-$pkgver.tar.gz::"https://github.com/mltframework/mlt/archive/v$pkgver.tar.gz"
