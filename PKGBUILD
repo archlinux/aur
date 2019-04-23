@@ -86,7 +86,7 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/subm
         '0032-Fix-linking-against-static-plugins-with-qmake.patch'
         '0033-Disable-hardware-randomizer-for-32-bit.patch'
         '0034-Prevent-static-build-to-prefer-dynamic-libraries.patch')
-sha256sums=('562c095a59c95f393762ec53bc05c0d80fad1758fd5ff7a5231967d1a98d56c1'
+sha256sums=('fddfd8852ef7503febeed67b876d1425160869ae2b1ae8e10b3fb0fedc5fe701'
             '813332969dbfd7fcc8af3d23457eea0ce3b3a54ed9b9eae62b431529b8f60b22'
             '96b9e2fb177de9c8cfe8c8cd601705981d4c223eef9fc582ec0f45d26c6b6d7f'
             'b1aa13e0e6e28718edb11520660954101c662f6b6945a83cb4e84ff7de5c0922'
