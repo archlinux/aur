@@ -2,7 +2,7 @@
 
 pkgname=d9vk-mingw-git
 pkgver=0.r2645.21ab453f
-pkgrel=1
+pkgrel=2
 pkgdesc="A d3d9 to vk layer based off DXVK's codebase. Mingw version"
 arch=('x86_64')
 url="https://github.com/Joshua-Ashton/d9vk"
@@ -21,7 +21,7 @@ sha256sums=(
     "SKIP"
     "SKIP"
     "7147644664ef33d04f7b18683c47be95b5664c57cf6d63fdc019d915deebd37a"
-    "19eff57042936e89b941fd8655ea1ed15d6399cd1c78ed0729b7206a2fcf47ee"
+    "d73f948fd39da218141cc72c7373f59e6fc289630e155b6e51d18597455d0040"
 )
 
 pkgver() {
