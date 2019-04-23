@@ -1,26 +1,26 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=scrumplexweb
-pkgver=19.04.3
-pkgrel=2
+pkgver=19.04.5
+pkgrel=1
 pkgdesc="Static website of Sefa Eyeoglu"
 arch=("any")
 url="https://scrumplex.net"
 license=("GPL")
-makedepends=("npm")
+makedepends=("nodejs-pnpm")
 
 source=("https://gitlab.com/Scrumplex/scrumplex.net/-/archive/${pkgver}/scrumplex.net-${pkgver}.tar.bz2")
 # automatically generated with updpkgsums
-sha512sums=('73aedd64b2d9c4e7cc9eb5b947e279e2af10a354d664f28ad5cbad5264a52aedd38b36ec298d0f8f48d47966d3c37db2bf604297ee8bf197de696f07be485996')
+sha512sums=('66ed74b2c43be765a0474f512653a66f74c83170d112e33e2a556dab9613f5aa047018c8989dca35df668c15e80e5a53ecd059bbd717112963b5a507ed49ca24')
 
 prepare() {
     cd "${srcdir}/scrumplex.net-${pkgver}"
-    npm install --cache "${srcdir}/npm-cache"
+    pnpm install --cache "${srcdir}/npm-cache"
 }
 
 build() {
     cd "${srcdir}/scrumplex.net-${pkgver}"
-    npm run build-prod --cache "${srcdir}/npm-cache"
+    npm run build:prod --cache "${srcdir}/npm-cache"
 }
 
 package() {
