@@ -1,6 +1,6 @@
 pkgbase = terminus-font-ll2
 	pkgdesc = A superb, monospace bitmap font (for X11 and console) with ll2 patch (pass the il1I test)
-	pkgver = 4.46
+	pkgver = 4.47
 	pkgrel = 1
 	url = http://sourceforge.net/projects/terminus-font/
 	install = terminus-font.install
@@ -13,8 +13,8 @@ pkgbase = terminus-font-ll2
 	depends = fontconfig
 	provides = terminus-font
 	conflicts = terminus-font
-	source = http://downloads.sourceforge.net/project/terminus-font/terminus-font-4.46/terminus-font-4.46.tar.gz
-	md5sums = 368f512a88b5855fe2f12a9262da52f2
+	source = http://downloads.sourceforge.net/project/terminus-font/terminus-font-4.47/terminus-font-4.47.tar.gz
+	md5sums = d95f0914e31b838bd54edf8389fdc6cd
 
 pkgname = terminus-font-ll2
 
