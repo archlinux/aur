@@ -17,10 +17,28 @@ source=(
 )
 sha512sums=(SKIP SKIP SKIP)
 
+build() {
+  cd "$srcdir"
+
+  # wapm completions
+  ./bin/wapm completions bash > wapm-bash-completions
+  ./bin/wapm completions zsh > wapm-zsh-completions
+}
+
 package() {
   cd "$srcdir"
+
+  # display logo
   source logo.sh
+
+  # executable commands
   install -Dm755 bin/wasmer "$pkgdir"/usr/bin/wasmer
   install -Dm755 bin/wapm "$pkgdir"/usr/bin/wapm
+
+  # wapm completions
+  install -Dm644 wapm-bash-completions "$pkgdir"/usr/share/bash-completion/completions/wapm
+  install -Dm644 wapm-zsh-completions "$pkgdir"/usr/share/zsh/site-functions/_wapm
+
+  # license
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
