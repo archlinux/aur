@@ -1,0 +1,26 @@
+pkgbase = mutt-wizard-git
+	pkgdesc = A simple interface to auto-configure neomutt and isync with safe passwords
+	pkgver = r463.g426e637
+	pkgrel = 1
+	url = https://github.com/lukesmithxyz/mutt-wizard
+	install = mutt-wizard.install
+	changelog = CHANGELOG.md
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = neomutt
+	depends = isync
+	depends = msmtp
+	depends = pass
+	optdepends = w3m: view HTML email and images inside of neomutt’s TUI
+	optdepends = abook: contact store and tab completion
+	optdepends = cronie: auto-sync mails (alt.: fcron)
+	optdepends = fcron: auto-sync mails (alt.: cronie)
+	provides = mutt-wizard
+	conflicts = mutt-wizard
+	options = zipman
+	source = git+https://github.com/lukesmithxyz/mutt-wizard
+	sha256sums = SKIP
+
+pkgname = mutt-wizard-git
+
