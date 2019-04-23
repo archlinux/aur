@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$pkgname"
 	echo "$(git rev-list --count HEAD).$(git describe --always)"
-} # '
+}
 
 package() {
 	cd "$srcdir/$pkgname"
