@@ -17,7 +17,7 @@ sha512sums=('464629933fcf2b2fe92201a96fe893baa111ff980dee1440245b5bba26fe15b2c7d
 
 package() {
 	install -Dpm755 "${_srcimage}" "${pkgdir}/opt/${pkgname}/${_destimage}"
-	install -d "${pkgdir}/usr/bin"
-	ln -s "${pkgdir}/opt/${pkgname}/${_destimage}" "${pkgdir}/usr/bin/criptext"
+	install -d "${pkgdir}/usr/local/bin"
+	ln -s "../../../opt/${pkgname}/${_destimage}" "${pkgdir}/usr/local/bin/criptext"
 }
 
