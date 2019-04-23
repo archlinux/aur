@@ -1,6 +1,6 @@
 pkgbase = hplip-minimal
 	pkgdesc = The HP printer drivers, and not much else
-	pkgver = 3.18.9
+	pkgver = 3.19.3
 	pkgrel = 1
 	url = http://hplipopensource.com
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = hplip-minimal
 	optdepends = libusb: for advanced usb support
 	conflicts = hplip
 	options = !docs
-	source = http://downloads.sourceforge.net/hplip/hplip-3.18.9.tar.gz
-	md5sums = b5f4a27668a16e41f279f44ef0bedf1d
+	source = http://downloads.sourceforge.net/hplip/hplip-3.19.3.tar.gz
+	md5sums = 31ad7a812c2a8ce59c73b6c2178eee6b
 
 pkgname = hplip-minimal
 

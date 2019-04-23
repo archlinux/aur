@@ -3,7 +3,7 @@
 # Based on hplip from [extra]
 
 pkgname=hplip-minimal
-pkgver=3.18.9
+pkgver=3.19.3
 pkgrel=1
 pkgdesc="The HP printer drivers, and not much else"
 arch=('i686' 'x86_64' 'armv6h')
@@ -15,7 +15,7 @@ optdepends=('cups: for printing support' 'libusb: for advanced usb support')
 conflicts=('hplip')
 options=('!docs')
 source=("http://downloads.sourceforge.net/hplip/hplip-$pkgver.tar.gz")
-md5sums=('b5f4a27668a16e41f279f44ef0bedf1d')
+md5sums=('31ad7a812c2a8ce59c73b6c2178eee6b')
 
 prepare() {
   cd "$srcdir/hplip-$pkgver"
