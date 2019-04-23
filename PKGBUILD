@@ -1,5 +1,5 @@
 pkgname=ocaml-ocplib-simplex-git
-pkgver=r38.g5bee435
+pkgver=0.4.r4.gd52771f
 pkgrel=1
 
 pkgdesc='simplex algorithm implementation for solving systems of linear inequalities and optimizing linear objective functions'
@@ -13,21 +13,13 @@ makedepends=('ocaml-findlib' 'git')
 provides=('ocaml-ocplib-simplex')
 conflicts=('ocaml-ocplib-simplex')
 
-source=('git+https://github.com/OCamlPro-Iguernlala/ocplib-simplex'
-        'fix-makefile-install-target.diff')
+source=('git+https://github.com/OCamlPro-Iguernlala/ocplib-simplex')
 
-sha256sums=('SKIP'
-            '273455a20fd9a291956904fe48734d2e602ab07211d6833968f5ca0ecc271a31')
-
-prepare() {
-    cd ocplib-simplex
-    # https://github.com/OCamlPro-Iguernlala/ocplib-simplex/issues/6
-    patch -Np1 -i "$srcdir"/fix-makefile-install-target.diff
-}
+sha256sums=('SKIP')
 
 pkgver() {
     cd ocplib-simplex
-    printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed -r 's/^v//; s/([^-]*-g)/r\1/; s/-/./g'
 }
 
 build() {
@@ -45,5 +37,5 @@ check() {
 
 package() {
     cd ocplib-simplex
-    make DESTDIR="$pkgdir" install
+    make LIBDIR="$(ocamlc -where)" DESTDIR="$pkgdir" install
 }
