@@ -1,7 +1,7 @@
 # Maintainer: Yann Orieult <yo.managements@gmail.com>
 
 pkgname=regal
-pkgver=4.aff138c
+pkgver=7.66a2608
 pkgrel=1
 pkgdesc='a simple regular alarm for terminal'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('bash' 'mpv')
 makedepends=('')
 
-source=("git://github.com/yoarch/regal.git")
+source=("https://github.com/yoarch/regal.git")
 #source#=("file:///$MHOME/dev/aur/regal/regal.tar.gz")
 sha256sums=('SKIP')
 
@@ -21,6 +21,8 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$pkgname"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE    "
+	install -Dm644 README.md "$pkgdir/usr/lib/$pkgname/README.md"
 	install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
 	mkdir -p "$pkgdir/usr/share/sounds/$pkgname"
 	install -Dm644 audio/duck.wav "$pkgdir/usr/share/sounds/$pkgname/"
