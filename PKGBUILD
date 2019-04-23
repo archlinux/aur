@@ -2,7 +2,7 @@
 
 pkgname=regal
 pkgver='7.66a2608'
-pkgrel=1
+pkgrel='1'
 pkgdesc='a simple regular alarm for terminal'
 arch=('any')
 url='https://github.com/yoarch/regal'
