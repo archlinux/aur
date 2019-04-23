@@ -6,7 +6,7 @@ pkgver() {
   cd "$srcdir/${pkgname%-git}"
   printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r463.g426e637
+pkgver=r465.gc64b2e8
 pkgrel=1
 
 pkgdesc='A simple interface to auto-configure neomutt and isync with safe passwords'
@@ -34,8 +34,7 @@ sha256sums=('SKIP')
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  make DESTDIR="$pkgdir/" PREFIX='/usr' install
-  install -Dm644 -t "$pkgdir/usr/share/licenses/${pkgname%-git}/" LICENSE
+  make DESTDIR="$pkgdir/" install
   install -Dm644 -t "$pkgdir/usr/share/doc/${pkgname%-git}/" README.md
 }
 
