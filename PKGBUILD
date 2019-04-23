@@ -3,16 +3,16 @@
 # Contributor : Martin Wimpress <code@flexion.org>
 # Contributor : Jingbei Li <i@jingbei.li>
 pkgname=miniconda3
-pkgver=4.5.12
-pkgrel=2
+pkgver=4.6.14
+pkgrel=1
 pkgdesc="Mini version of Anaconda Python distribution."
 arch=('x86_64')
-url="https://conda.io/miniconda"
+url="https://conda.io/en/latest/miniconda.html"
 license=("custom")
 source=("https://repo.continuum.io/miniconda/Miniconda3-${pkgver}-Linux-x86_64.sh"
         "$pkgname.install")
 options=(!strip libtool staticlibs)
-sha256sums=('e5e5b4cd2a918e0e96b395534222773f7241dc59d776db1b9f7fedfcb489157a'
+sha256sums=('0d6b23895a91294a4924bd685a3a1f48e35a17970a073cd2f684ffe2c31fc4be'
             '6d6d8b5f4d2e9ca3c69464e903e292fa020c10ea6920aff5c32ebb021b84d865')
 install="$pkgname.install"
 
