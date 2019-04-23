@@ -1,7 +1,7 @@
 # Maintainer: Valentijn V. <deepnavy at waifu dot club>
 pkgname=gb-studio-git # '-bzr', '-git', '-hg' or '-svn'
 _pkgname=gb-studio
-pkgver=v1.0.0.r4.11124d5
+pkgver=1.0.0.r4.g11124d5
 pkgrel=1
 pkgdesc="Visual retro game maker"
 arch=('x86_64')
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
