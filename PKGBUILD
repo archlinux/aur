@@ -4,7 +4,7 @@
 
 pkgname=idnkit
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides functionalities about Internationalized Domain Name processing'
 url='https://www.nic.ad.jp/ja/idn/idnkit/download/'
 license=('custom:BSD')
@@ -12,8 +12,8 @@ arch=('x86_64')
 depends=('glibc')
 backup=('etc/idnalias.conf' 'etc/idn2.conf')
 options=('!makeflags')
-source=("http://jprs.co.jp/idn/${pkgname}-${pkgver}.tar.bz2"
-        "http://jprs.co.jp/idn/${pkgname}-doc-${pkgver}.tar.bz2")
+source=("https://jprs.co.jp/idn/${pkgname}-${pkgver}.tar.bz2"
+        "https://jprs.co.jp/idn/${pkgname}-doc-${pkgver}.tar.bz2")
 sha1sums=('ec256455d801af3b666d65eb7c01b6086ab6a743'
           'abf032cde1bef9dbd0bfddd85ee525c7f1012ac2')
 
