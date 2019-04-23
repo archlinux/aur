@@ -1,6 +1,6 @@
 pkgbase = plymouth-git
 	pkgdesc = A graphical boot splash screen with kernel mode-setting support (Development version)
-	pkgver = 0.9.4.r44.gc8f1256
+	pkgver = 0.9.4.r105.gb9f2aac
 	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/Plymouth/
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = plymouth-git
 	license = GPL
 	makedepends = git
 	makedepends = docbook-xsl
+	makedepends = intltool
 	depends = libdrm
 	depends = pango
 	depends = systemd

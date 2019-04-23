@@ -1,10 +1,10 @@
-# Maintainer: Sebastian Lau <lauseb644 _at_ gmail .dot. com>
+# Maintainer: Taijian <taijian@posteo.de>
 # Contributors: Patrick Burroughs (Celti), Abbradar, Zephyr, Christian Autermann, Biginoz, Martin Lee, Ricardo Funke,
 #               PirateJonno, lh, Cilyan Olowen, Shaffer, Brcha, Lyle Putnam, Det, Boohbah,
-#               Lara Maia, Padfoot, Jorge Barroso, carstene1ns
+#               Lara Maia, Padfoot, Jorge Barroso, carstene1ns, Sebastian Lau
 
 pkgname=plymouth-git
-pkgver=0.9.4.r44.gc8f1256
+pkgver=0.9.4.r105.gb9f2aac
 pkgrel=1
 pkgdesc="A graphical boot splash screen with kernel mode-setting support (Development version)"
 url="http://www.freedesktop.org/wiki/Software/Plymouth/"
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 
 depends=('libdrm' 'pango' 'systemd')
-makedepends=('git' 'docbook-xsl')
+makedepends=('git' 'docbook-xsl' 'intltool')
 optdepends=('ttf-dejavu')
 provides=('plymouth')
 conflicts=('plymouth' 'plymouth-legacy' 'plymouth-nosystemd')
