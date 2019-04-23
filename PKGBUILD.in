@@ -4,8 +4,7 @@ define(`SRC_DIR', `src/GIT_NAME')dnl
 define(`ADDON_XML', `SRC_DIR/GIT_NAME/addon.xml.in')dnl
 define(`HTS_VERSION', `esyscmd(sed -e s/@PLATFORM@/dummy/g ADDON_XML | xmllint --xpath "string(/addon/@version)" - || echo 0)')dnl
 # Maintainer: Daniel Albers <daniel@lbe.rs>
-# Contributor: dhead666 <myfoolishgames@gmail.com>
-# https://github.com/AlD/archlinux
+# https://github.com/AlD/archlinux/tree/master/pkgbuilds/kodi-addon-pvr-hts
 
 pkgname=kodi-addon-pvr-hts
 pkgbase=${pkgname}
@@ -18,7 +17,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/$_gitname"
 license=('GPL')
 groups=('kodi-addons')
-makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev>=18.0')
+makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
 source=("git+https://github.com/kodi-pvr/${_gitname}.git#${_gitver}")
 md5sums=('SKIP')
