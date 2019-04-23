@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 _name=kaptan
 pkgname=python-kaptan
-pkgver=0.5.11
+pkgver=0.5.12
 pkgrel=1
 pkgdesc="Configuration manager in your pocket"
 arch=('any')
@@ -10,10 +10,8 @@ license=('BSD')
 depends=('python-yaml')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
-# pypi sdist doesn't have the tests (yet): https://github.com/emre/kaptan/issues/93
-#source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-source=("${_name}-${pkgver}.tar.gz::https://github.com/emre/${_name}/archive/v${pkgver}.tar.gz")
-sha512sums=('5be93b47d4d98de1d1979174856db33fd39c763adec2bd6a2709553c4f332cf330a42a64ced9d68aadb3fbf698b3df9379a0255fb2f4aa03321c5b6140d2a66a')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha512sums=('fccf767749e9473947bd7cb493ddb30f7dc1b2e10ce932ca327ae3423bc023fa9c76910ac249269ee546eb9162e4ce151e2ad0b9685d888854a7185c855ae143')
 
 build() {
   cd "${_name}-${pkgver}"
@@ -34,6 +32,6 @@ package_python-kaptan() {
   # license
   install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   # docs
-  install -vDm 644 {AUTHORS,CHANGES,README.rst,TODO} \
+  install -vDm 644 {AUTHORS,README.rst} \
     -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
