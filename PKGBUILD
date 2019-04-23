@@ -1,18 +1,19 @@
-# Contributor: Andrew Chen <andrew.chuanye.chen@gmail.com>
+# Contributor: Andrew Chen <xor.tux@gmail.com>
 # Contributor: Vladimir Kutyavin <vlkut@bk.ru>
 
 pkgname=pxlib
 pkgver=0.6.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Library to read and write Paradox DB files"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://pxlib.sourceforge.net/"
 depends=('libgsf')
+makedepends=('intltool')
 source=(http://downloads.sourceforge.net/sourceforge/pxlib/${pkgname}-${pkgver}.tar.gz
         enable-iconv-support.patch)
-md5sums=('a5ff1b5a0dd7ae38313e7479e651ad08'
-         'e6d4bace465bdfd01d4964d1cf0181a6')
+sha256sums=('fb3866f505f8b11f133411433ccd6e37183a8baa592ec0c54f0fb8ea5a5f4f09'
+            'a91725bcf1f414ed0226635c406ef54bfce5350561412281fa399af59a8d4747')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
