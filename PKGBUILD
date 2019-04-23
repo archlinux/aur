@@ -2,7 +2,7 @@
 
 pkgname=cri-o
 pkgver=1.13.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Container Initiative-based implementation of Kubernetes Container Runtime Interface'
 arch=(x86_64)
 url='https://github.com/kubernetes-sigs/cri-o'
@@ -27,8 +27,11 @@ build() {
 	sed -i 's/$(GO) build -i/$(GO) build/' Makefile
 	sed -i 's#../bin/conmon: config.h $(obj) | ../bin#../bin/conmon: $(obj) | config.h ../bin#' conmon/Makefile
 
-	export GOPATH="${srcdir}/go"
-	make all
+
+	export GOPATH="${srcdir}/go" PATH="${srcdir}/go/bin:${PATH}"
+
+	make install.tools
+	make
 
 	./bin/crio --selinux=true \
 		--storage-driver=overlay \
