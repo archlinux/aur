@@ -5,7 +5,7 @@
 
 pkgname=pdfbeads
 pkgver=1.1.2.pre.beta
-pkgrel=6
+pkgrel=7
 pkgdesc="A small utility written in Ruby which takes scanned page images and converts them into a single PDF file"
 arch=('any')
 url='https://github.com/boredland/pdfbeads'
@@ -14,7 +14,7 @@ license=('GPL')
 depends=(
 'ruby'
 'openjpeg2'
-'imagemagick6'
+'libmagick6'
 'ruby-rmagick>=2.0.0'
 'ruby-rdoc'
 )
