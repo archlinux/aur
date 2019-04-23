@@ -159,7 +159,7 @@ else
 fi
 
 extract_rpm() {
-  echo -e "    Extracting: ${1##*/}"
+  msg2 "  ${1##*/}"
   bsdtar -xf $1 -C $2
 }
 
@@ -181,7 +181,7 @@ set_build_vars() {
   rpm_dir=${srcdir}/${_parallel_studio_xe_dir}/rpm
   mpi_rpm_dir=${srcdir}/l_mpi_${_year}.${_v_a}.${_v_b}/rpm
   xe_build_dir=${srcdir}/cxe_build
-  base_dir=${srcdir}/..
+  base_dir=`realpath ${srcdir}/..`
   _man_dir=${xe_build_dir}/usr/share/man/man1
 }
 
@@ -229,26 +229,25 @@ build() {
   done
 
 
-  echo -e ""
-  echo -e "-----------------------------------------------------------------------------------"
+  plain ""
+  plain "-----------------------------------------------------------------------------------"
   mkdir -p ${xe_build_dir}/opt/intel/licenses
   if [ -f "${_lic_file[0]}" ]; then
     cp ${base_dir}/*.lic ${xe_build_dir}/opt/intel/licenses
-    echo -e "\e[1mFound license files in ${base_dir}."
-    echo -e "These will be installed into /opt/intel/licenses ...\e[0m"
+    msg "Found Intel license files in ${base_dir}"
+    msg "These will be installed into /opt/intel/licenses"
   else
-    echo -e "\e[1mNo license files found in ${base_dir}."
-    echo -e "Remember to place license files in one of these locations:"
-    echo -e "    /opt/intel/licenses"
-    echo -e "    ~/Licenses"
-    echo -e "Or the compiler will not work!\e[0m"
+    warning "No Intel license files found in ${base_dir}"
+    warning "Remember to place license files in one of these locations:"
+    warning "    /opt/intel/licenses"
+    warning "    ~/Licenses"
+    warning "Or the Intel compiler will not work!\e[0m"
   fi
-  echo -e "-----------------------------------------------------------------------------------"
-  echo -e ""
+  plain "-----------------------------------------------------------------------------------"
+  plain ""
 
   cp ${srcdir}/${_parallel_studio_xe_dir}/license.txt ${xe_build_dir}/opt/intel/license.txt
 
-  echo -e ""
   echo -e "-----------------------------------------------------------------------------------"
   echo -e "\e[1mIMPORTANT - READ BEFORE COPYING, INSTALLING, OR USING.\e[0m"
   echo -e ""
@@ -260,48 +259,44 @@ build() {
   echo -e " - A copy of the EULA has been copied in the PKGBUILD directory; plase read carefully the terms and "
   echo -e " - conditions of the Intel license before installing the packages. "
   echo -e "-----------------------------------------------------------------------------------"
-  echo -e ""
-  echo -e "-----------------------------------------------------------------------------------"
-  echo -e " ATTENTION: This PKGBUILD may need up to 20 minutes if you use XZ as a compressor!"
-  echo -e "    - The build of the packages: intel-mkl and intel-ipp is particularly slow - "
-  echo -e "-----------------------------------------------------------------------------------"
-  echo -e ""
-  echo -e ""
-  echo -e "-----------------------------------------------------------------------------------"
-  echo -e " \e[1m\e[5mATTENTION: \e[0m \e[1m\e[31mThis PKGBUILD works with yaourt, "
-  echo -e "but consumes a lot of RAM! \e[0m "
-  echo -e " Using the makepkg command for building this package is recommended."
-  echo -e "-----------------------------------------------------------------------------------"
-  echo -e ""
-  echo -e ""
-  echo -e "-----------------------------------------------------------------------------------"
-  echo -e "\e[1m #################### \e[0m"
-  echo -e "\e[1m ##### Options: ##### \e[0m"
+  plain ""
+
+  if [ "$PKGEXT" = ".pkg.tar.xz" ]; then
+    plain   "-------------------------------------------------------------------------------"
+    warning "  This PKGBUILD may need up to 20 minutes if you use XZ as a compressor!"
+    warning "    - The build of the packages: intel-mkl and intel-ipp is particularly slow"
+    warning "    - Change PKGEXT in the PKGBUILD to use a faster compressor."
+    plain   "-------------------------------------------------------------------------------"
+    plain ""
+  fi
+
+  plain "-------------------------------------------------------------------------------"
+  warning "This PKGBUILD works with yaourt, but consumes a lot of RAM!"
+  warning "Using the makepkg command for building this package is recommended."
+  plain "-------------------------------------------------------------------------------"
+  plain ""
+
+  msg "Packaging Options:"
   if  ${_remove_docs} ; then
-    echo -e " Remove Documentation: YES "
+    msg2 "Remove Documentation: YES"
   else
-    echo -e " Remove Documentation: NO "
+    msg2 "Remove Documentation: NO"
   fi
 
   if  ${_remove_static_objects_mkl} ; then
-    echo -e ""
-    echo -e "\e[1m Remove Static Objects from MKL: YES \e[0m \e[1m\e[5m\e[31m ATTENTION !!!! \e[0m "
-    echo -e "\e[1m If your software is based on the static objects edit the option at the line 50 of this PKGBUILD \e[0m "
+    msg2 "Remove Static Objects from MKL: YES"
+    warning "If your software is based on the static MKL objects, edit"
+    warning "the _remove_static_objects_mkl option at the line 50 of this PKGBUILD"
   else
-    echo -e " Remove Static Objects: NO "
+    msg2 "Remove Static Objects from MKL: NO"
   fi
-  echo -e "-----------------------------------------------------------------------------------"
-  echo -e ""
   if  ${_remove_static_objects_ipp} ; then
-    echo -e ""
-    echo -e "\e[1m Remove Static Objects from IPP: YES \e[0m \e[1m\e[5m\e[31m ATTENTION !!!! \e[0m "
-    echo -e "\e[1m If your software is based on the static objects edit the option at the line 50 of this PKGBUILD \e[0m "
+    msg2 "Remove Static Objects from IPP: YES"
+    warning "If your software is based on the static IPP objects, edit"
+    warning "the _remove_static_objects_ipp option at the line 50 of this PKGBUILD"
   else
-    echo -e " Remove Static Objects: NO "
+    msg2 "Remove Static Objects from IPP: NO"
   fi
-  echo -e "-----------------------------------------------------------------------------------"
-  echo -e ""
-  echo -e ""
 
 
   if [ -d ${pkgdir}/opt ] ; then
@@ -321,8 +316,6 @@ package_intel-compiler-base() {
   pkgver=${_pkg_ver}
   install=intel-composer.install
 
-  echo -e " # intel_compiler-base: Start Building"
-
   mkdir -p ${xe_build_dir}/opt
   mkdir -p ${xe_build_dir}/etc/profile.d
   mkdir -p ${_man_dir}
@@ -330,15 +323,14 @@ package_intel-compiler-base() {
 
   cp ${srcdir}/intel-compiler-base.conf ${xe_build_dir}/etc/ld.so.conf.d
   cd ${xe_build_dir}
-  echo -e " # intel_compiler-base: Extracting RPMS"
-
-  extract_rpms 'intel-icc*.rpm'  $xe_build_dir
+  msg2 "Extracting RPMS"
+  extract_rpms 'intel-icc*.rpm' $xe_build_dir
   extract_rpms 'intel-comp*.rpm'  $xe_build_dir
-  extract_rpms 'intel-openmp*.rpm'  $xe_build_dir
-  extract_rpms 'intel-c-*.rpm'  $xe_build_dir
+  extract_rpms 'intel-openmp*.rpm' $xe_build_dir
+  extract_rpms 'intel-c-*.rpm' $xe_build_dir
 
 
-  echo -e " # intel_compiler-base: Editing variables"
+  msg2 "Updating scripts"
   cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/bin
 
   #rm uninstall.sh
@@ -355,13 +347,13 @@ package_intel-compiler-base() {
   rm loopprofileviewer.csh
 
   if $_remove_docs ; then
-    echo -e " # intel_compiler-base: Remove docs"
+    msg2 "Removing documentation"
     rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/documentation
     rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/Documentation
     rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/Samples
   fi
 
-  echo -e " # intel_compiler-base: Coping man pages"
+  msg2 "Copying man pages"
   mv ${xe_build_dir}/opt/intel/documentation_${_year}/en/man/common/man1/*.1 ${_man_dir}
 
   cd ${_man_dir}
@@ -369,7 +361,7 @@ package_intel-compiler-base() {
     gzip $f
   done
 
-  echo -e " # intel_compiler-base: Move package"
+  msg2 "Moving package files"
   mv ${xe_build_dir}/opt ${pkgdir}
   mv ${xe_build_dir}/etc ${pkgdir}
   mv ${xe_build_dir}/usr ${pkgdir}
@@ -393,8 +385,6 @@ package_intel-fortran-compiler() {
   depends=("intel-compiler-base=${_pkg_ver}")
   install=intel-composer.install
 
-  echo -e " # intel-fortran-compiler: Start Building"
-
   mkdir -p ${xe_build_dir}/opt
   mkdir -p ${xe_build_dir}/etc/profile.d
   mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
@@ -404,11 +394,10 @@ package_intel-fortran-compiler() {
 
   cd ${xe_build_dir}
 
-  echo -e " # intel-fortran-compiler: Extracting RPMS"
-
+  msg2 "Extracting RPMS"
   extract_rpms 'intel-ifort*.rpm'  $xe_build_dir
 
-  echo -e " # intel-fortran-compiler: Editing variables"
+  msg2 "Updating scripts"
   cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/bin
 
   rm *.csh
@@ -418,13 +407,13 @@ package_intel-fortran-compiler() {
   rm ${xe_build_dir}/opt/intel/documentation_${_year}/en/compiler_f/ps${_year}/resources/intel_logo.png
 
   if $_remove_docs ; then
-    echo -e " # intel-fortran-compiler: Remove documentation"
+    msg2 "Removing documentation"
     rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/documentation
     rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/Documentation
     rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/Samples
   fi
 
-  echo -e " # intel-fortran-compiler: Coping man pages"
+  msg2 "Copying man pages"
   mv ${xe_build_dir}/opt/intel/documentation_${_year}/en/man/common/man1/*.1 ${_man_dir}
 
 
@@ -439,7 +428,7 @@ package_intel-fortran-compiler() {
   rm ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/compiler/include/intel64/omp_lib_kinds.mod
   cd ${xe_build_dir}
 
-  echo -e " # intel-fortran-compiler: Move package"
+  msg2 "Moving package files"
   mv ${xe_build_dir}/opt ${pkgdir}
   mv ${xe_build_dir}/etc ${pkgdir}
   mv ${xe_build_dir}/usr ${pkgdir}
@@ -453,8 +442,6 @@ package_intel-ipp() {
   pkgver=${_pkg_ver}
   install=intel-composer.install
 
-  echo -e " # intel-ipp: Start Building"
-
   mkdir -p ${xe_build_dir}/opt
 
   mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
@@ -462,28 +449,27 @@ package_intel-ipp() {
   sed "s/<arch>/${_i_arch}/" < ${srcdir}/intel-ipp.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-ipp.conf
 
   cd ${xe_build_dir}
-  echo -e " # intel-ipp: Extracting RPMS"
-
+  msg2 "Extracting RPMS"
   extract_rpms 'intel-ipp-*.rpm'  $xe_build_dir
 
-  echo -e " # intel-ipp: Editing variables"
+  msg2 "Updating scripts"
   cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/ipp/bin
   rm ippvars.csh
   sed -i "s/<INSTALLDIR>/\/opt\/intel\/${_composer_xe_dir}\/linux/g" ippvars.sh
 
   if ${_remove_docs} ; then
-    echo -e " # intel-ipp: Remove documentation"
+    msg2 "Removing documentation"
     rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/Documentation
   fi
 
   if ${_remove_static_objects_ipp} ; then
-    echo -e " # intel-ipp: Remove static objects"
+    msg2 "Removing static objects"
     rm -f ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/ipp/lib/${_i_arch}/libipp*.a
     rm -f ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/ipp/lib/${_i_arch}/nonpic/libipp*.a
     rmdir ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/ipp/lib/${_i_arch}/nonpic/
   fi
 
-  echo -e " # intel-ipp: Move package"
+  msg2 "Moving package files"
   mv ${xe_build_dir}/opt ${pkgdir}
   mv ${xe_build_dir}/etc ${pkgdir}
 
@@ -500,8 +486,6 @@ package_intel-mkl() {
   install=intel-mkl.install
   backup=('etc/intel-mkl-th.conf')
 
-  echo -e " # intel-mkl: Start Building"
-
   mkdir -p ${xe_build_dir}/opt
   mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
   mkdir -p ${xe_build_dir}/etc/profile.d
@@ -515,10 +499,10 @@ package_intel-mkl() {
 
   cd ${xe_build_dir}
 
-  echo -e " # intel-mkl: Extracting RPMS"
+  msg2 "Extracting RPMS"
   extract_rpms 'intel-mkl-*.rpm'  $xe_build_dir
 
-  echo -e " # intel-mkl: Editing variables"
+  msg2 "Updating scripts"
   cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mkl/bin
   rm mklvars.csh
   sed -i "s/<INSTALLDIR>/\/opt\/intel\/${_composer_xe_dir}\/linux/g" mklvars.sh
@@ -526,18 +510,18 @@ package_intel-mkl() {
   rm -rf ./${_not_arch}
 
   if ${_remove_docs} ; then
-    echo -e " # intel-mkl: remove documentation"
+    msg2 "Removing documentation"
     rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mkl/examples
     rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mkl/benchmarks
   fi
 
   if ${_remove_static_objects_mkl} ; then
-    echo -e " # intel-mkl: remove static objects"
+    msg2 "Removing static objects"
     rm -f ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mkl/lib/${_i_arch}/libmkl_*.a
     rm -f ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mkl/lib/mic/libmkl_*.a
   fi
 
-  echo -e " # intel-mkl: Move package"
+  msg2 "Moving package files"
   mv ${xe_build_dir}/opt ${pkgdir}
   mv ${xe_build_dir}/etc ${pkgdir}
 
@@ -551,8 +535,6 @@ package_intel-mpi() {
   pkgdesc="Intel MPI library $_mpi_ver"
   pkgver=${_pkg_ver}
 
-  echo -e " # intel-mpi: Start Building "
-
   mkdir -p ${xe_build_dir}/opt
   mkdir -p ${xe_build_dir}/bin
   mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
@@ -561,11 +543,11 @@ package_intel-mpi() {
 
   cd ${xe_build_dir}
 
-  echo -e " # intel-mpi: Extracting RPMS "
+  msg2 "Extracting RPMS"
   extract_rpms 'intel-mpi-*.rpm'  $xe_build_dir
   extract_mpi_rpms 'intel-mpi-sdk-*.rpm'  $xe_build_dir
 
-  echo -e " # intel-mpi: Editing variables "
+  msg2 "Updating scripts"
   cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mpi/${_i_arch}/bin
   rm mpivars.csh
 
@@ -580,7 +562,7 @@ package_intel-mpi() {
   rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mpi_2019
   rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/licensing/mpi_2019
 
-  echo -e " # intel-mpi: Move package "
+  msg2 "Moving package files"
   mv ${xe_build_dir}/opt ${pkgdir}
   mv ${xe_build_dir}/etc ${pkgdir}
 
@@ -595,8 +577,6 @@ package_intel-tbb_psxe() {
   pkgver=${_pkg_ver}
   install=intel-tbb.install
 
-  echo -e " # intel-tbb: Start Building "
-
   mkdir -p ${xe_build_dir}/opt
   mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
 
@@ -605,11 +585,11 @@ package_intel-tbb_psxe() {
 
   cd ${xe_build_dir}
 
-  echo -e " # intel-tbb: Extracting RPMS "
+  msg2 "Extracting RPMS"
   extract_rpms 'intel-tbb-*.rpm'  $xe_build_dir
 
 
-  echo -e " # intel-tbb: Editing variables "
+  msg2 "Updating scripts"
   cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/tbb/bin
   rm tbbvars.csh
 
@@ -617,17 +597,17 @@ package_intel-tbb_psxe() {
 
   chmod a+x tbbvars.sh
 
-  echo -e " # intel-tbb: Remove unneeded libs and bin "
+  msg2 "Removing unneeded libs and bin"
   rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/tbb/bin/${_not_arch}
   rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/tbb/lib/${_not_arch}
 
   if $_remove_docs ; then
-    echo -e " # intel-tbb: remove documentation "
+    msg2 "Removing documentation"
     rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/Documentation
     rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/tbb/examples
   fi
 
-  echo -e " # intel-tbb: Move package "
+  msg2 "Moving package files"
   mv ${xe_build_dir}/opt ${pkgdir}
   mv ${xe_build_dir}/etc ${pkgdir}
 
@@ -642,13 +622,12 @@ package_intel-vtune-amplifier() {
   pkgver=${_pkg_ver}
   depends=('pangox-compat')
 
-  echo -e " # intel-vtune-amplifier: Start building"
   mkdir -p ${xe_build_dir}/opt
   mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
   mkdir -p ${xe_build_dir}/etc/profile.d
   mkdir -p ${_man_dir}
 
-  echo -e " # intel-vtune-amplifier: Editing variables "
+  msg2 "Updating scripts"
   if [ "$CARCH" = "i686" ]; then
     sed -i 's/<arch>/bin32/g' ${srcdir}/intel_vtune-amplifier.sh
   else
@@ -658,10 +637,10 @@ package_intel-vtune-amplifier() {
   chmod a+x ${xe_build_dir}/etc/profile.d/intel_vtune-amplifier.sh
 
   cd ${xe_build_dir}
-  echo -e " # intel-vtune-amplifier: Extracting RPMS "
+  msg2 "Extracting RPMS"
   extract_rpms 'intel-vtune-amplifier-*.rpm'  $xe_build_dir
 
-  echo -e " # intel-vtune-amplifier: Coping man pages"
+  msg2 "Copying man pages"
   if [[ -d ${xe_build_dir}/opt/intel/vtune_amplifier_xe_${_year}.${_vtune_man_ver}/man/man1 ]]
   then
     mv ${xe_build_dir}/opt/intel/vtune_amplifier_xe_${_year}.${_vtune_man_ver}/man/man1/*.1 ${_man_dir}
@@ -673,12 +652,12 @@ package_intel-vtune-amplifier() {
 
 
   if $_remove_docs ; then
-    echo -e " # intel-vtune-amplifier: remove documentation "
+    msg2 "Removing documentation"
     rm -rf ${xe_build_dir}/opt/intel/vtune_amplifier_xe_${_year}.${_vtune_ver}/samples
     rm -rf ${xe_build_dir}/opt/intel/vtune_amplifier_xe_${_year}.${_vtune_ver}/documentation
   fi
 
-  echo -e " # intel-vtune-amplifier: Move package"
+  msg2 "Moving package files"
   mv ${xe_build_dir}/opt ${pkgdir}
   mv ${xe_build_dir}/etc ${pkgdir}
   mv ${xe_build_dir}/usr ${pkgdir}
@@ -692,13 +671,12 @@ package_intel-advisor() {
   pkgver=${_pkg_ver}
   conflicts=( 'intel-advisor-xe' )
 
-  echo -e " # intel-advisor: Start building"
   mkdir -p ${xe_build_dir}/opt
   mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
   mkdir -p ${xe_build_dir}/etc/profile.d
   mkdir -p ${_man_dir}
 
-  echo -e " # intel-advisor: Editing variables "
+  msg2 "Updating scripts"
   if [ "$CARCH" = "i686" ]; then
     sed -i 's/<arch>/bin32/g' ${srcdir}/intel_advisor.sh
   else
@@ -708,11 +686,10 @@ package_intel-advisor() {
   chmod a+x ${xe_build_dir}/etc/profile.d/intel_advisor.sh
 
   cd ${xe_build_dir}
-  echo -e " # intel-advisor: Extracting RPMS "
+  msg2 "Extracting RPMS"
   extract_rpms 'intel-advisor-*.rpm'  $xe_build_dir
 
-  echo -e " # intel-advisor: Coping man pages"
-
+  msg2 "Copying man pages"
   if [[ -d ${xe_build_dir}/opt/intel/advisor_${_year}.${_advisor_man_ver}/man/man1 ]]
   then
     mv ${xe_build_dir}/opt/intel/advisor_${_year}.${_advisor_man_ver}/man/man1/*.1 ${_man_dir}
@@ -724,12 +701,12 @@ package_intel-advisor() {
 
 
   if $_remove_docs ; then
-    echo -e " # intel-vtune-amplifier: remove documentation "
+    msg2 "Removing documentation"
     rm -rf ${xe_build_dir}/opt/intel/advisor_${_year}.${_advisor_ver}/samples
     rm -rf ${xe_build_dir}/opt/intel/advisor_${_year}.${_advisor_ver}/documentation
   fi
 
-  echo -e " # intel-advisor: Move package"
+  msg2 "Moving package files"
   mv ${xe_build_dir}/opt ${pkgdir}
   mv ${xe_build_dir}/etc ${pkgdir}
   mv ${xe_build_dir}/usr ${pkgdir}
@@ -741,13 +718,12 @@ package_intel-inspector() {
   pkgver=${_pkg_ver}
   conflicts=('intel-inspector-xe')
 
-  echo -e " # intel-inspector: Start building"
   mkdir -p ${xe_build_dir}/opt
   mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
   mkdir -p ${xe_build_dir}/etc/profile.d
   mkdir -p ${_man_dir}
 
-  echo -e " # intel-inspector: Editing variables "
+  msg2 "Updating scripts"
   if [ "$CARCH" = "i686" ]; then
     sed -i 's/<arch>/bin32/g' ${srcdir}/intel_inspector.sh
   else
@@ -757,10 +733,10 @@ package_intel-inspector() {
   chmod a+x ${xe_build_dir}/etc/profile.d/intel_inspector.sh
 
   cd ${xe_build_dir}
-  echo -e " # intel-inspector: Extracting RPMS "
+  msg2 "Extracting RPMS"
   extract_rpms 'intel-inspector-*.rpm'  $xe_build_dir
 
-  echo -e " # intel-inspector: Coping man pages"
+  msg2 "Copying man pages"
   if [[ -d ${xe_build_dir}/opt/intel/inspector_${_year}.${_inspector_man_ver}/man/man1 ]]
   then
     mv ${xe_build_dir}/opt/intel/inspector_${_year}.${_inspector_man_ver}/man/man1/*.1 ${_man_dir}
@@ -772,12 +748,12 @@ package_intel-inspector() {
 
 
   if $_remove_docs ; then
-    echo -e " # intel-vtune-amplifier: remove documentation "
+    msg2 "Removing documentation"
     rm -rf ${xe_build_dir}/opt/intel/inspector_${_year}.${_inspector_ver}/samples
     rm -rf ${xe_build_dir}/opt/intel/inspector_${_year}.${_inspector_ver}/documentation
   fi
 
-  echo -e " # intel-inspector: Move package"
+  msg2 "Moving package files"
   mv ${xe_build_dir}/opt ${pkgdir}
   mv ${xe_build_dir}/etc ${pkgdir}
   mv ${xe_build_dir}/usr ${pkgdir}
