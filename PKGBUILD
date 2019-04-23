@@ -3,7 +3,7 @@
 
 _basename=libwmf
 pkgname=lib32-libwmf
-pkgver=0.2.10
+pkgver=0.2.12
 pkgrel=1
 pkgdesc="A library for reading vector images in Microsoft's native Windows Metafile Format (WMF) (32-bit)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('lib32-gtk2' 'lib32-libxt')
 options=('!docs' '!emptydirs')
 source=($_basename-$pkgver.tar.gz::https://github.com/caolanm/libwmf/archive/v$pkgver.tar.gz
         libwmf-freetype.patch)
-sha1sums=('1cd3044efbdcdcde11ddf79d3428167374ff3283'
+sha1sums=('490a26175ad667fbc0c009d390bf56644919bed6'
           'ef4d452cd5e7fcb36751771c6f44b4b7a3f8693a')
 
 prepare() {
@@ -47,7 +47,7 @@ build() {
 package() {
     cd ${_basename}-${pkgver}
 
-    make DESTDIR="${pkgdir}" install
+    make DESTDIR="${pkgdir}" install -j1
 
     rm -r "${pkgdir}/usr/bin"
     rm -r "${pkgdir}/usr/include"
