@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-notification-center-git 
 pkgver=r129.131befd
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNOME Shell extension that eables notification center indicator on top panel and customizations."
 arch=('any')
 url="https://github.com/Selenium-H/Notification-Center"
