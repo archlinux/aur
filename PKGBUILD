@@ -12,7 +12,7 @@ makedepends=('')
 
 source=("git://github.com/yoarch/regal.git")
 #source#=("file:///$MHOME/dev/aur/regal/regal.tar.gz")
-#sha256sums#=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
