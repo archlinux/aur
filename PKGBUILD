@@ -10,7 +10,7 @@
 
 _qt_module=qtscript
 pkgname="mingw-w64-qt5-script"
-pkgver=5.12.2
+pkgver=5.12.3
 pkgrel=1
 arch=('any')
 pkgdesc="Classes for making Qt applications scriptable. Provided for Qt 4.x compatibility (mingw-w64)"
