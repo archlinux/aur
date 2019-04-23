@@ -1,6 +1,6 @@
 pkgbase = lib32-cogl
 	pkgdesc = An object oriented GL/GLES Abstraction/Utility Layer (32-bit)
-	pkgver = 1.22.2+22+ge023a361
+	pkgver = 1.22.4
 	pkgrel = 1
 	url = https://blogs.gnome.org/clutter/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = lib32-cogl
 	depends = lib32-libxrandr
 	depends = cogl
 	options = !emptydirs
-	source = git+https://gitlab.gnome.org/GNOME/cogl.git#commit=e023a361e213d5d34f3cb49577788db05f645361
+	source = git+https://gitlab.gnome.org/GNOME/cogl.git#commit=60015d7d9756a89fb608887b52fa6b6a5a7db18d
 	sha256sums = SKIP
 
 pkgname = lib32-cogl
