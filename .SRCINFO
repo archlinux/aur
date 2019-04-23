@@ -1,7 +1,7 @@
 pkgbase = nvidia-rt
 	pkgdesc = NVIDIA drivers for linux-rt
 	pkgver = 418.56
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	install = nvidia-rt.install
 	arch = x86_64

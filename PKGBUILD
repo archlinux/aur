@@ -7,8 +7,8 @@
 
 pkgname=nvidia-rt
 pkgver=418.56
-_extramodules=extramodules-5.0-rt
-pkgrel=1
+_extramodules=extramodules-rt
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux-rt"
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -26,6 +26,7 @@ prepare() {
     sh "$_pkg.run" --extract-only
     cd "$_pkg"
     sed -i -e 's|PREEMPT_RT_PRESENT=1|PREEMPT_RT_PRESENT=0|g' kernel/conftest.sh
+    export IGNORE_CC_MISMATCH=1
 }
 
 build() {
