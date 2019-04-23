@@ -46,7 +46,6 @@ depends=(
          'libiec61883'
          'libmodplug'
          'libomxil-bellagio'
-         'libplacebo-git'
          'libpng'
          'libpulse'
          'librsvg'
@@ -142,7 +141,8 @@ optdepends=(
             'mpv-bash-completion-git: Additional completion definitions for Bash users'
             'nvidia-utils: for hardware accelerated video decoding with CUDA'
             'youtube-dl: Another way to view youtuve videos with mpv'
-            'zsh-completions: Additional completion definitions for Zsh users'
+            'zsh-completions: Additional completion definitions for Zsh users'            
+            'libplacebo-git: Addition GPU-accelerated rendering primitives'
             )
 provides=('mpv' 'mpv-git' 'mpv-build-git')
 conflicts=('mpv' 'mpv-git' 'mpv-build-git')
@@ -325,7 +325,6 @@ prepare() {
     '--enable-libavdevice'
     '--enable-libbluray'
     '--enable-libmpv-shared'
-    '--enable-libplacebo'
     '--enable-libsmbclient'
     '--enable-libv4l2'
     '--enable-lua'
@@ -360,6 +359,7 @@ prepare() {
     '--enable-zsh-comp'
     )
 
+    # '--enable-libplacebo'
     # '--enable-libdav1d'
     # '--enable-libsmbclient'
     # '--enable-avresample'
