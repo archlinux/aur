@@ -51,15 +51,22 @@ pkgname=('intel-common-libs'
          'intel-vtune-amplifier'
          'intel-inspector')
 
-PKGEXT='.pkg.tar.lzo'
-msg "Overriding PKGEXT with PKGEXT='${PKGEXT}'"
+if [ -z "$FORCE_PKGEXT" ]; then
+  PKGEXT='.pkg.tar.lzo'
+  msg "Overriding the default PKGEXT with '${PKGEXT}' to save compression time"
+  msg "(change PKGEXT in the PKGBUILD or use FORCE_PKGEXT on the command line"
+  msg " to override PKGEXT set by the package)."
+else
+  msg "Overriding PKGEXT with FORCE_PKGEXT='${FORCE_PKGEXT}'"
+  PKGEXT=$FORCE_PKGEXT
+fi
 
 if [ "$PKGEXT" = ".pkg.tar.xz" ]; then
   plain   "--------------------------------------------------------------------"
   warning "This PKGBUILD may need up to 20 minutes when XZ compressor is used!"
   warning "  - The packaging of intel-mkl and intel-ipp is particularly slow"
-  warning "  - Change PKGEXT in PKGBUILD to use a faster compressor,"
-  warning "    e.g. .pkg.tar.lzo"
+  warning "  - Change PKGEXT in PKGBUILD or define FORCE_PKGEXT on the"
+  warning "    command line to use a faster compressor, e.g. .pkg.tar.lzo"
   plain   "--------------------------------------------------------------------"
 fi
 
