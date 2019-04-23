@@ -9,7 +9,7 @@
 
 _qt_module=qtxmlpatterns
 pkgname="mingw-w64-qt5-xmlpatterns"
-pkgver=5.12.2
+pkgver=5.12.3
 pkgrel=1
 arch=('any')
 pkgdesc="Support for XPath, XQuery, XSLT and XML schema validation (mingw-w64)"
