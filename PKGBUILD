@@ -7,28 +7,17 @@ pkgname=brother-dcp7030
 pkgver=2.0.2
 pkgrel=4
 pkgdesc="Brother cupd and lpd driver for DCP-7030"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://support.brother.com/g/b/downloadlist.aspx?c=de&lang=de&prod=dcp7030_all&os=128&flang=English"
 license=('custom')
-
-if [ "$(uname -m)" = "x86_64" ]; then
- depends=('lib32-glibc' 'psutils')
-else
- depends=('psutils')
-fi
-
+depends=('lib32-glibc' 'psutils' 'cups')
+optdepends=('system-config-printer')
 source=(http://www.brother.com/pub/bsc/linux/dlf/cupswrapperDCP7030-$pkgver-1.i386.deb
         http://www.brother.com/pub/bsc/linux/dlf/brdcp7030lpr-$pkgver-1.i386.deb
         brlpdwrapperDCP7030
         DCP7030.ppd.gz
         cupswrapper-systemd.patch)
 noextract=(DCP7030.ppd.gz)
-
-md5sums=('73919884cb19f9fb1a462c77aaa3477e'
-         '26b48edf27afe34d9847579cd81eb206'
-         '993574b2c9e9052ae8d823d5414d8585'
-         '7cb25cc78f001c18e591504db90fe20f'
-         '567b9004776ab376f273181256165479')
 sha256sums=('a9a4e0ec5f941cf17fcc7156febf8aff21673bc78a6313176527a0423847627d'
             'cd4e6c4b16c5e734721068134699c65b2eca0584bc86031ee7eef7af05b36d8c'
             '0320e1f19c3be746442b7c6324f0732b17928d2bb611ef143007f6ca0882765b'
