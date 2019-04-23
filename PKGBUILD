@@ -27,7 +27,7 @@ check() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  install -Dm755 target/release/wasmer "$pkgdir"/usr/bin/wasmer
+  cargo install --root "$pkgdir"/usr --path .
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
