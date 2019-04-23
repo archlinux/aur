@@ -37,7 +37,15 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 pkgbase="intel-parallel-studio-xe"
-pkgname=('intel-compiler-base' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-mpi' 'intel-tbb_psxe' 'intel-advisor' 'intel-vtune-amplifier' 'intel-inspector')
+pkgname=('intel-compiler-base'
+         'intel-fortran-compiler'
+         'intel-ipp'
+         'intel-mkl'
+         'intel-mpi'
+         'intel-tbb_psxe'
+         'intel-advisor'
+         'intel-vtune-amplifier'
+         'intel-inspector')
 PKGEXT='.pkg.tar.lzo'
 
 ########################################
@@ -382,7 +390,7 @@ package_intel-fortran-compiler() {
 
   pkgdesc="Intel Fortran compiler $_icc_ver"
   pkgver=${_pkg_ver}
-  depends=('intel-compiler-base')
+  depends=("intel-compiler-base=${_pkg_ver}")
   install=intel-composer.install
 
   echo -e " # intel-fortran-compiler: Start Building"
@@ -488,6 +496,7 @@ package_intel-mkl() {
 
   pkgdesc="Intel Math Kernel Library (Intel® MKL) $_mkl_ver"
   pkgver=${_pkg_ver}
+  depends=("intel-compiler-base=${_pkg_ver}")
   install=intel-mkl.install
   backup=('etc/intel-mkl-th.conf')
 
