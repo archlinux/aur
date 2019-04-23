@@ -1,7 +1,7 @@
 # Maintainer: Harms <thotro at lyse dot net>
 pkgname=forticlient
-pkgver=6.0.4.0091
-pkgrel=2
+pkgver=6.0.5.0106
+pkgrel=1
 epoch=
 pkgdesc="FortiClient"
 arch=("x86_64")
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://repo.fortinet.com/repo/ubuntu/pool/multiverse/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
 noextract=()
-sha256sums=('dc13718d112f77096d4036a6dac98f1ab5458d42d6aa325566d2d6bc6cc31dad')
+sha256sums=('a746cff347992813a7448ac578039ab8e86501123664e22565a38f1a91e3fa29')
 validpgpkeys=()
 
 prepare() {
