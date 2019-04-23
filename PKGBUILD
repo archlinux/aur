@@ -58,6 +58,7 @@ source=(
         'ck-patch-for-4.19.34+.patch'
         ${_UKSM_PATCH}
         ${_CJKTTY_PATCH}
+        'doc-sphinx-2.patch'
         'config'         # the main kernel config file
         '60-linux.hook'  # pacman hook for depmod
         '90-linux.hook'  # pacman hook for initramfs regeneration
@@ -77,6 +78,7 @@ sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             '0aafe8360e9a3b9b801ca1327fbfd15b950840d9ddaccd3e7bfc71749e9e3a0c'
             'ec617b1718e6cadfad02c75aca9c4b0e6b6f944bc1a93b7e4d82c847c04b5653'
             '72be48252f30bc644071bbce2607b773f789c6f19e281b89ab7e16a3d8161ed3'
+            'b2704cb2a90b48df0d9aac1d16e9a3ead41e2bf2e00562526c5b90eff5eecef4'
             'c804c47ecb6d01f29ed4af5bd9c50fa3bb2545ebe9d1c3b560bc6c61a72966f5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -110,6 +112,9 @@ prepare() {
   msg "Patching source with Gentoo-zh/linux-cjktty patches"
   cp "../${_CJKTTY_PATCH_FILE}" "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
   patch -Np1 -i "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
+
+   msg "Patching source with Sphinx-2.0 Documentation build patch"
+   patch -Np1 -i ../doc-sphinx-2.patch
 
   cp -Tf ../config .config
 
