@@ -46,7 +46,7 @@ depends=(
          'libiec61883'
          'libmodplug'
          'libomxil-bellagio'
-         'libplacebo'
+         'libplacebo-git'
          'libpng'
          'libpulse'
          'librsvg'
