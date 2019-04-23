@@ -1,0 +1,31 @@
+pkgbase = timekpr-next-git
+	pkgdesc = Control the computer usage of users. You can limit daily usage based on a timed access duration and configure periods of day when they can log in. Beta branch.
+	pkgver = r119.6dab84d
+	pkgrel = 1
+	url = https://launchpad.net/timekpr-next
+	install = timekpr-next-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python-gobject
+	depends = gtk3>=3.4
+	depends = polkit
+	depends = python-dbus
+	depends = python-gobject
+	depends = libappindicator3
+	depends = dbus>=1.10.1
+	optdepends = lxqt-policykit: to start the Control Panel like in LXQT
+	optdepends = mate-polkit: to start the Control Panel like in Mate
+	optdepends = polkit-kde-agent: to start the Control Panel like in Plasma
+	optdepends = polkit-gnome: to start the Control Panel like in Gnome (legacy)
+	optdepends = xfce-polkit: to start the Control Panel like in XFCE
+	provides = timekpr
+	conflicts = timekpr
+	conflicts = timekpr-next-beta
+	conflicts = timekpr-beta
+	conflicts = timekpr-revived-bzr
+	source = timekpr::git+https://git.launchpad.net/timekpr-next#branch=beta
+	md5sums = SKIP
+
+pkgname = timekpr-next-git
+
