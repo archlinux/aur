@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='libstoragemgmt'
-pkgver='1.7.3'
+pkgver='1.8.0'
 pkgrel='1'
 pkgdesc='A library for storage management'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('libxml2' 'icu' 'sqlite' 'openssl')
 makedepends=('check' 'chrpath' 'valgrind' 'python-pywbem')
 optdepends=('arcconf: support for Microsemi (Adaptec) controllers')
 source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('18e36665b645c1c41ad39fe8034e8f691104d72325881fb141e4bef97538ce80')
+sha256sums=('27706d6dacad134602fe97248932372a160c15b4a8514f3f93bc379023d0ca31')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
