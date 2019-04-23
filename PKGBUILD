@@ -1,7 +1,7 @@
 # Maintainer: Yann Orieult <yo.managements@gmail.com>
 
 pkgname=regal
-pkgver=7.66a2608
+pkgver='7.66a2608'
 pkgrel=1
 pkgdesc='a simple regular alarm for terminal'
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$pkgname"
 	echo "$(git rev-list --count HEAD).$(git describe --always)"
-}
+} # '
 
 package() {
 	cd "$srcdir/$pkgname"
