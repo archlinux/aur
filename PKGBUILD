@@ -2,7 +2,7 @@
 # Contributor: David Vogt <d@408.ch>
 
 pkgname=git-bug
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Distributed bug tracker embedded in Git'
 arch=('x86_64' 'i686')
@@ -11,10 +11,8 @@ license=('GPL3')
 depends=('git')
 makedepends=('go-pie' 'dep')
 optdepends=('xdg-utils: open bugs in browser')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-        '0001-tests-configure-user-ident-in-repos-used-by-tests.patch')
-sha256sums=('5ab14e8528556862c1991bd8f0cd73f25367d85c5c72d38d0f9556de58d86311'
-            '1a9b881913a0396e563a7798a6b7b41d8d559586e8d2f31d3696e9b79dca8ed4')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('b8f0033e00f3e667c6c26cceb33c73af46b24fdea15ce8e894195ef9c298726e')
 
 _gitbugsrc="gopath/src/${url#*://}"
 
@@ -24,7 +22,6 @@ prepare() {
 
     export GOPATH="${srcdir}/gopath"
     cd "${srcdir}/${_gitbugsrc}"
-    patch -Np1 -i "${srcdir}/0001-tests-configure-user-ident-in-repos-used-by-tests.patch"
     dep ensure
 }
 
