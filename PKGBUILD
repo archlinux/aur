@@ -15,7 +15,7 @@ source=(
   )
 sha256sums=(
   "SKIP"
-  "5c0e6d95cc38c10111af59097a24dd36ee3789d0dceeef50355f3b293e129b95"
+  "70be9a88177c1b39b0ebc4f1fe0a1d4d913089df211ebf54836d4769b14fa92f"
 )
 provides=("superdrive-enabler")
 
