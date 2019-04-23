@@ -3,15 +3,13 @@
 
 pkgbase=sentry
 pkgname=('sentry')
-pkgver=9.1.0
-pkgrel=2
+pkgver=9.1.1
+pkgrel=1
 pkgdesc="Python-based realtime logging and aggregation server."
 arch=(any)
 url="http://pypi.python.org/pypi/sentry"
 license=(BSD)
 makedepends=(
-    'clang'
-    'llvm'
     'python2-pip'
     'python2-setuptools'
     'python2-virtualenv'
@@ -23,7 +21,6 @@ depends=(
     'libjpeg-turbo'
     'libxml2'
     'libxslt'
-    'ncurses5-compat-libs'
     'python2'
     'postgresql-libs'
 )
@@ -34,6 +31,7 @@ depends=(
 # Redis has been removed from `depends` to ease the dependency requiresments
 # of users running Sentry on a separate server or container.
 optdepends=(
+    'llvm: required for dsym support'
     'minio: self-hosted S3-compatible file storage backend'
     'redis: required by sentry-celery but need not run on the same server'
 )
@@ -49,7 +47,7 @@ source=(
     "sentry-sysusers.conf"
 )
 sha256sums=(
-    f546dfbb4c3dac72a9588f18c7dca668b680ddc4d8878f54b174756acc6de2bf # sentry.install
+    3be04bc47f4f037bf157da9986874c343e6c7d1af9e30269b4f0aabf303d3291 # sentry.install
     d60b097721ec4acbc5b1232a0f29ef9d21d60228d17db655848a8e2a5c9a5281 # sentry-celery.service
     d22b9bde7c39d9d0f031ba1b01c955c9dbe4ffe3f3f083875fe557f75f0050f7 # sentry-cron.service
     3c471417a279ac6605d3bb82b7377eaab0e24efe9cf582a11eef0d9e4c89428e # sentry.service

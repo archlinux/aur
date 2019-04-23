@@ -37,6 +37,37 @@ If you wish to run Sentry manually, e.g. to test your configuration:
 
     sudo -u sentry /opt/sentry/bin/sentry --config=/etc/sentry run web
 
+REDIS
+
+In order to facilitate installing Sentry on a containerized system (e.g.
+systemd-nspawn), we have removed Redis from the "depends" array in the
+PKGBUILD. Redis is still REQUIRED and sentry-celery will not run without it;
+however, for users where the installation of extra services and daemons may be
+an issue, we've been experimenting with trimming down hard dependencies. If
+you find sentry-celery fails to run, you will need to configure a Redis
+instance either locally or remotely.
+
+OPTIONAL DEPENDENCIES
+
+We've removed LLVM from the "depends" array as part of our dependency cleanup
+to make life a little bit easier for those who have been requesting reduced
+dependency builds for quite some time. Now, you should no longer need to
+modify the PKGBUILD prior to build or installation. Please note that projects
+making use of dsym (symsynd) still require the presence of LLVM. It has been
+moved to "optdepends" for this reason.
+
+IF THE INSTALL FAILS DURING DATABASE MIGRATIONS
+
+By default, Sentry wants to run as the PostgreSQL super user "postgres". This
+is probably undesirable, but Sentry will not install otherwise. As a
+workaround, you have two options: 1) Configure the user running Sentry as
+a user temporarily for installation (removing super user access afterwards) or
+2) perform the installation with the "postgres" user and change the database
+permissions after the migrations have completed. For information on changing
+table and sequence permissions, see the Stack Overflow answer here:
+
+    https://stackoverflow.com/a/2686185
+
 EXTRAS
 
 To install additional plugins, you'll need to use Sentry's local copy of pip:
@@ -45,15 +76,20 @@ To install additional plugins, you'll need to use Sentry's local copy of pip:
 
 REMOVAL
 
-As of Sentry 7.1.4, this package will no longer remove the Sentry user by
-default. You must perform this step manually.
+This package does not remove the Sentry user by default. You will be required
+to perform this set manually.
 
 THANKS
 
-I appreciate the tips and suggestions I've received since converting this
-package to a (mostly) pure virtualenv installation. Please report any issues
-related to the PKGBUILD on the AUR page or open a ticket on my Github
-project page:
+I appreciate all of the comments and help I've received from users like you on
+the AUR. Over the years of maintaining this package, I've had a tremendous
+amount of help and encouragement that's produced a highly usable build.
+Together, we've resolved many confounding issues, and several of you have
+isolated bugs in the upstream package.
+
+I would like to thank each and every one of you for your help and
+participation. Please report any issues related to this PKGBUILD on the AUR or
+open a ticket on my GitHub project page:
 
 https://aur.archlinux.org/packages/sentry/
 https://github.com/zancarius/archlinux-pkgbuilds
@@ -75,14 +111,14 @@ cat << EOF
 
 UPGRADE STEPS
 
-1) Stop Sentry and its related services (and reload systemd)
+1) Stop Sentry and its related services (and reload systemd):
 
     sudo systemctl stop sentry
     sudo systemctl daemon-reload
 
-2) If you're upgrading from a Sentry version < 8.0, you'll need to update the
-configuration by hand. Sentry's configuration setup has changed dramatically
-and increasingly more options are being moved to Sentry's YAML-based configs:
+2) BACK-UP YOUR DATABASE!
+
+3) Update Sentry's configuration files:
 
     sudo -u sentry mkdir /etc/sentry/temp
     sudo -u sentry /opt/sentry/bin/sentry init /etc/sentry/temp
@@ -101,13 +137,13 @@ and increasingly more options are being moved to Sentry's YAML-based configs:
     See here:
     https://docs.getsentry.com/on-premise/server/config/
 
-3) Run the database migrations:
+4) Run the database migrations:
 
 !!! ALWAYS BACK-UP YOUR DATABASE PRIOR TO UPGRADING SENTRY !!!
 
     sudo -u sentry /opt/sentry/bin/sentry --config=/etc/sentry upgrade
 
-4) Start Sentry:
+5) Start Sentry:
 
     sudo systemctl start sentry
 
@@ -127,51 +163,72 @@ To install additional plugins, you'll need to use Sentry's local copy of pip:
 
     sudo -u sentry /opt/sentry/bin/pip install <package>
 
-IMPORTANT 8.0 UPGRADE NOTICE
+REDIS
 
-If you're upgrading from an earlier version of Sentry, the Sentry team has
-deprecated MySQL support. You will need to plan for one of the following
-options: 1) Manage schema migration manually, 2) consider migrating your data
-away from MySQL (there may be some tools to assist, linked below), or 3)
-reinstall from scratch with PostgreSQL.
+In order to facilitate installing Sentry on a containerized system (e.g.
+systemd-nspawn), we have removed Redis from the "depends" array in the
+PKGBUILD. Redis is still REQUIRED and sentry-celery will not run without it;
+however, for users where the installation of extra services and daemons may be
+an issue, we've been experimenting with trimming down hard dependencies. If
+you find sentry-celery fails to run, you will need to configure a Redis
+instance either locally or remotely.
 
-SENTRY WON'T START?
+OPTIONAL DEPENDENCIES
 
-Recent versions of Sentry included a configuration for specifying large integers
-for certain ID columns, most notably sentry_project.id. If your migrations fail
-and SENTRY_USE_BIG_INTS is enabled, try disabling it and restart the migration.
-While this is unlikely to bite you unless you've migrated from a much earlier
-version of Sentry (version 6 or early 7), it is one of the most likely blockers
-that may prevent you from updating.
+We've removed LLVM from the "depends" array as part of our dependency cleanup
+to make life a little easier for those who have been requesting reduced
+dependency builds for quite some time. Now, you should no longer need to
+modify the PKGBUILD prior to build or installation. Please note that projects
+making use of dsym (symsynd) still require the presence of LLVM. It has been
+moved to "optdepends" for this reason.
+
+I'VE UPGRADED AND SENTRY WON'T START!
+
+Verify that you have some of the installation requirements available either on
+the system Sentry is installed or remotely. In particular:
+
+ - Check that you have Redis installed somewhere and Sentry is configured to
+   use it (sentry-celery requires this for background task handling, among
+   others).
+
+ - Make sure you've run the appropriate migrations. Sentry isn't likely to
+   start without this.
+
+ - Check database permissions. Out of the box, Sentry expects the database
+   connection to run as the "postgres" user. This isn't desirable on non-
+   containerized installs; if you've changed database permissions at some
+   point, you may need to see which user Sentry is connecting as and
+   temporarily change it to "postgres."
+
+UPGRADE FAILS WITH DATABASE ERRORS
+
+Sentry expects database migrations to be performed by the super user
+"postgres" and may occasionally install plugins or other features that require
+super user access. There are two choices: 1) Temporarily set the configured
+database user to super user or 2) run the migrations as "postgres". When doing
+the latter, you may wish to change table and sequence permissions to a more
+sane state for greater security. If you need assistance doing so, please
+consult the Stack Overflow answer:
+
+    https://stackoverflow.com/a/2686185
 
 THANKS
 
-I appreciate the tips and suggestions I've received since converting this
-package to a (mostly) pure virtualenv installation. Please report any issues
-related to the PKGBUILD on the AUR page or open a ticket on my Github
-project page:
+I appreciate all of the comments and help I've received from users like you on
+the AUR. Over the years of maintaining this package, I've had a tremendous
+amount of help and encouragement that's produced a highly usable build.
+Together, we've resolved many confounding issues, and several of you have
+isolated bugs in the upstream package.
+
+I would like to thank each and every one of you for your help and
+participation. Please report any issues related to this PKGBUILD on the AUR or
+open a ticket on my GitHub project page:
 
 https://aur.archlinux.org/packages/sentry/
 https://github.com/zancarius/archlinux-pkgbuilds
 
-SENTRY 8.9.0 UPGRADE NOTICE
-
-dsym support has been integrated into Sentry directly and is no longer a
-plugin. If you've been relying on the sentry-dsym package, you may notice that
-this package is no longer built. Instead, symsynd is installed automatically
-as part of Sentry's "install_requires" dependencies. You will encounter an
-error during Sentry's install as a consequence of this; that's normal. Remove
-your sentry-dsym package first.
-
-If you haven't previously required dsym support, this means that Sentry now
-requires that you also install LLVM for symsynd. It may be possible to remove
-LLVM from the package dependencies, but the build may fail if it's not
-installed. As a workaround if you cannot have LLVM installed for whatever
-reason, try removing "llvm" from the "depends" array, build Sentry on a machine
-that has LLVM installed, and then copy the package to your target server. This
-will cause problems if you use something that requires dsym support, but it's
-presently the easiest way to install Sentry on a target host without LLVM
-installed.
+DON'T FORGET TO CREATE A BACKUP OF YOUR SENTRY DATABASE BEFORE RUNNING
+MIGRATIONS!
 
 EOF
 
