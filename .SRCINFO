@@ -26,9 +26,9 @@ pkgbase = private-internet-access-vpn
 	source = pia.8.gz
 	source = git+https://github.com/flamusdiu/python-pia.git#tag=v3.3.3
 	source = git+https://github.com/masterkorp/openvpn-update-resolv-conf.git
-	sha256sums = 79033607c2c17972644aac95ffd12f64b9febb395e3bf10c54f176f952d5f988
-	sha256sums = 391516aa82e76d6ad4b24513ecc4246a94e1e75d7b54fdec321f8a1515feea3f
-	sha256sums = b6df224f5d23f27c8b14cc62c2c87602133edba65c850656de7652d980e97dca
+	sha256sums = 72911c67d8d0dd38e9e5f5eb798ae4fd97b43b05a0f6d934a20669ebcac156d9
+	sha256sums = 27f4b8987b0e9e8be937c750e7d44c2d39d4e59913df2dad6e23d68362fb8908
+	sha256sums = a93388771d2096b8c068c86a68606357300bdf0332f850c031f61cdbc5423237
 	sha256sums = 4322a2a4bc3e206c6ab7e1df87a8805032b76c177c1ed9dd3501260ed32ccb30
 	sha256sums = 797dbdb6e3aadc86f97262e26d61cf4847caf85dda4b7a97cac59088cb912b27
 	sha256sums = 246fc4dc3218f56b4c70014df6801b10fc2a573d6545962b7fce05f16908c54e
