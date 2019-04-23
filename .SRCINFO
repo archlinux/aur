@@ -21,7 +21,7 @@ pkgbase = intel-parallel-studio-xe
 	source = intel_advisor.sh
 	source = intel_inspector.sh
 	source = intel-composer.install
-	source = intel-compiler-base.conf
+	source = intel-common-libs.conf
 	source = intel-fortran.conf
 	source = intel-openmp.conf
 	source = intel-mkl.conf
@@ -53,14 +53,23 @@ pkgbase = intel-parallel-studio-xe
 	sha256sums = fde83eb0071a5bd2887de127b56cc573a254e30131ec7b2d956987512c3e90c2
 	sha256sums = 228ac25e147adb9b872e1a562e522d2fd48809ccae89b765112009896a6d55a5
 
+pkgname = intel-common-libs
+	pkgdesc = Intel Common Libraries 19.0.3
+
+pkgname = intel-openmp
+	pkgdesc = Intel OpenMP Implementation 19.0.3
+	depends = intel-common-libs=
+
 pkgname = intel-compiler-base
 	pkgdesc = Intel C/C++ 19.0.3
 	install = intel-composer.install
+	depends = intel-common-libs=
+	depends = intel-openmp=
 
 pkgname = intel-fortran-compiler
 	pkgdesc = Intel Fortran compiler 19.0.3
 	install = intel-composer.install
-	depends = intel-compiler-base
+	depends = intel-compiler-base=
 
 pkgname = intel-ipp
 	pkgdesc = Intel Integrated Performance Primitives
@@ -69,6 +78,8 @@ pkgname = intel-ipp
 pkgname = intel-mkl
 	pkgdesc = Intel Math Kernel Library (Intel® MKL) 2019.3.199
 	install = intel-mkl.install
+	depends = intel-common-libs=
+	optdepends = intel-openmp: Intel OpenMP Implementation
 	backup = etc/intel-mkl-th.conf
 
 pkgname = intel-mpi

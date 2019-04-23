@@ -9,6 +9,8 @@
 ##########################################################################
 # this PKGBUILD splits the main Parallel Studio XE package in 9 sub-packages:
 #
+# intel-common-libs:            Intel Common Libraries
+# intel-openmp:                 Intel OpenMP Implementation
 # intel-compiler-base:          Intel C/C++ compiler and base libs
 # intel-fortran-compiler:       Intel Fortran compiler and base libs"
 # intel-ipp:                    Intel Integrated Performance Primitives
@@ -37,7 +39,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 pkgbase="intel-parallel-studio-xe"
-pkgname=('intel-compiler-base'
+pkgname=('intel-common-libs'
+         'intel-openmp'
+         'intel-compiler-base'
          'intel-fortran-compiler'
          'intel-ipp'
          'intel-mkl'
@@ -120,7 +124,7 @@ source=(
   'intel_advisor.sh'
   'intel_inspector.sh'
   'intel-composer.install'
-  'intel-compiler-base.conf'
+  'intel-common-libs.conf'
   'intel-fortran.conf'
   'intel-openmp.conf'
   'intel-mkl.conf'
@@ -310,6 +314,47 @@ build() {
   rm -v -f *.${_not_arch2}.rpm
 }
 
+package_intel-common-libs() {
+  set_build_vars
+
+  pkgdesc="Intel Common Libraries $_icc_ver"
+  pkgver=${_pkg_ver}
+
+  mkdir -p ${xe_build_dir}/opt
+  mkdir -p ${xe_build_dir}/etc/profile.d
+
+
+  cp ${srcdir}/intel-common-libs.conf ${xe_build_dir}/etc/ld.so.conf.d
+  cd ${xe_build_dir}
+  msg2 "Extracting RPMS"
+  extract_rpms 'intel-comp-ps-ss-bec*.rpm'  $xe_build_dir
+  extract_rpms 'intel-c-*.rpm'  $xe_build_dir
+
+  msg2 "Moving package files"
+  mv ${xe_build_dir}/opt ${pkgdir}
+  mv ${xe_build_dir}/etc ${pkgdir}
+
+  cd ${pkgdir}/opt/intel
+
+  ln -s ./${_composer_xe_dir}/linux/compiler/lib/${_i_arch}_lin lib
+}
+
+package_intel-openmp() {
+  set_build_vars
+
+  pkgdesc="Intel OpenMP Implementation ${_icc_ver}"
+  pkgver=${_pkg_ver}
+  depends=("intel-common-libs=${_pkg_ver}")
+
+  mkdir -p ${xe_build_dir}/opt
+
+  cd ${xe_build_dir}
+  msg2 "Extracting RPMS"
+  extract_rpms 'intel-openmp*.rpm'  $xe_build_dir
+
+  msg2 "Moving package files"
+  mv ${xe_build_dir}/opt ${pkgdir}
+}
 
 package_intel-compiler-base() {
 
@@ -317,6 +362,8 @@ package_intel-compiler-base() {
 
   pkgdesc="Intel C/C++ $_icc_ver"
   pkgver=${_pkg_ver}
+  depends=("intel-common-libs=${_pkg_ver}"
+           "intel-openmp=${_pkg_ver}")
   install=intel-composer.install
 
   mkdir -p ${xe_build_dir}/opt
@@ -324,14 +371,12 @@ package_intel-compiler-base() {
   mkdir -p ${_man_dir}
 
 
-  cp ${srcdir}/intel-compiler-base.conf ${xe_build_dir}/etc/ld.so.conf.d
   cd ${xe_build_dir}
   msg2 "Extracting RPMS"
   extract_rpms 'intel-icc*.rpm' $xe_build_dir
-  extract_rpms 'intel-comp*.rpm'  $xe_build_dir
-  extract_rpms 'intel-openmp*.rpm' $xe_build_dir
-  extract_rpms 'intel-c-*.rpm' $xe_build_dir
-
+  for rpm_file in `find ${rpm_dir} -iname 'intel-comp-*.rpm' ! -iname 'intel-comp-ps-ss-bec-*.rpm' -print` ; do
+    extract_rpm $rpm_file $xe_build_dir
+  done
 
   msg2 "Updating scripts"
   cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/bin
@@ -374,7 +419,6 @@ package_intel-compiler-base() {
   ln -s ./${_composer_xe_dir}/linux/bin/${_i_arch} bin
   ln -s ./${_composer_xe_dir}/linux/pkg_bin pkg_bin
 
-  ln -s ./${_composer_xe_dir}/linux/compiler/lib/${_i_arch} lib
   #ln -s ./${_composer_xe_dir}/linux/debugger/lib/${_i_arch} debugger_lib
   #ln -s ./${_composer_xe_dir}/linux/man/ man
 }
@@ -485,7 +529,8 @@ package_intel-mkl() {
 
   pkgdesc="Intel Math Kernel Library (Intel® MKL) $_mkl_ver"
   pkgver=${_pkg_ver}
-  depends=("intel-compiler-base=${_pkg_ver}")
+  depends=("intel-common-libs=${_pkg_ver}")
+  optdepends=("intel-openmp: Intel OpenMP Implementation")
   install=intel-mkl.install
   backup=('etc/intel-mkl-th.conf')
 
