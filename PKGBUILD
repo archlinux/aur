@@ -3,13 +3,13 @@
 pkgname='lego-git'
 _pkgname="${pkgname%-git}"
 pkgver=r798.f0cfdff3
-pkgrel=1
+pkgrel=2
 pkgdesc='Lets Encrypt client and ACME library written in Go (master branch / unstable)'
 url='https://go-acme.github.io/lego/'
 arch=('x86_64' 'i686')
 license=('MIT')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}" "${pkgname}")
+conflicts=("${_pkgname}")
 
 _url='https://github.com/go-acme/lego'
 _goacmepath=github.com/go-acme
