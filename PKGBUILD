@@ -3,8 +3,8 @@
 _jdkname=zulu-12
 pkgname="${_jdkname}-bin"
 _java_ver=12
-_zulu_build=12.1.3-ca
-pkgver=12.0.0
+_zulu_build=12.2.3-ca
+pkgver=12.0.1
 pkgrel=1
 pkgdesc='Zulu is a certified build of OpenJDK that is fully compliant with the Java SE standard.'
 arch=('x86_64')
@@ -24,10 +24,9 @@ provides=(
   "java-environment-openjdk=$_java_ver"
 )
 install="$pkgname.install"
-#_tarballname="zulu${_zulu_build}-jdk${pkgver}-linux_x64"
-_tarballname="zulu${_zulu_build}-jdk12-linux_x64"
+_tarballname="zulu${_zulu_build}-jdk${pkgver}-linux_x64"
 source=("http://cdn.azul.com/zulu/bin/${_tarballname}.tar.gz")
-md5sums=('ac440ed1afb02ba30c7820df8aaa1b37')
+md5sums=('772a8d0b5f2e610d9061ed448c9221a8')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
