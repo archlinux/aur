@@ -1,0 +1,35 @@
+pkgbase = mlt
+	pkgdesc = python2 bindings for mlt
+	pkgver = 6.14.0
+	pkgrel = 1
+	url = https://www.mltframework.org
+	arch = x86_64
+	license = GPL
+	makedepends = ladspa
+	makedepends = frei0r-plugins
+	makedepends = libdv
+	makedepends = sdl_image
+	makedepends = libsamplerate
+	makedepends = sox
+	makedepends = ffmpeg
+	makedepends = vid.stab
+	makedepends = qt5-svg
+	makedepends = jack
+	makedepends = libexif
+	makedepends = python2
+	makedepends = swig
+	makedepends = movit
+	makedepends = eigen
+	makedepends = opencv
+	makedepends = libebur128
+	makedepends = gtk2
+	depends = python2
+	depends = mlt
+	conflicts = python-mlt
+	source = mlt-python2-bindings-6.14.0.tar.gz::https://github.com/mltframework/mlt/archive/v6.14.0.tar.gz
+	source = mlt-opencv4.patch
+	sha256sums = d387350f7bb7dd01efce3933c5ab7987b596e98bef7cc9c2349524d55a808b5e
+	sha256sums = e770eaa39337cbbeb7d03357c11013e62ea355696023d1bd2d0fca6d1812b627
+
+pkgname = mlt-python2-bindings
+
