@@ -1,4 +1,4 @@
-From 701a4e8a49e6aa78eba9debb2ccedbb4f5f26609 Mon Sep 17 00:00:00 2001
+From c04c2c96edd9a2922fbef4c6bf7c1dfa0de7fb0a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 22 Dec 2016 22:30:59 +0100
 Subject: [PATCH] Ensure static 3rdparty libs are linked correctly
