@@ -8,10 +8,10 @@ pkgver=4.99.11
 pkgrel=1
 arch=('x86_64')
 makedepends=('libgda' 'libsigc++' 'glibmm' 'glibmm-docs')
-url="http://www.gtkmm.org/"
+url="https://www.gtkmm.org/"
 license=('LGPL')
 options=('!emptydirs')
-source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgbase/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
+source=(https://ftp.gnome.org/pub/GNOME/sources/$pkgbase/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
 sha256sums=('e9820070a1b258fbdfa9b6583d97dfdb1340c90bb353c5f5e21522375609d0bb')
 
 build() {
