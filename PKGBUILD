@@ -2,7 +2,7 @@
 
 pkgname=domain-expiration-git
 pkgver=r4.75c369c
-pkgrel=1
+pkgrel=2
 pkgdesc="Checks the expiration dates of domains."
 arch=('any')
 url="https://gitnet.fr/deblan/domain-expiration"
