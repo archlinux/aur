@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-coin-or-clp
 	pkgdesc = COIN-OR linear programming solver (mingw-w64)
-	pkgver = 1.17.0
+	pkgver = 1.17.2
 	pkgrel = 1
 	url = https://projects.coin-or.org/Clp
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = mingw-w64-coin-or-clp
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = http://www.coin-or.org/download/source/Clp/Clp-1.17.0.tgz
-	sha256sums = e92cda578075289a2b70c90f2461c985523c5331c65c2a4f16abfc6da2a77adc
+	source = http://www.coin-or.org/download/source/Clp/Clp-1.17.2.tgz
+	sha256sums = ff87d399926141e29d3c3d4b2f347bafcbc774ce3a0e6d62f52aab0fec7d75ba
 
 pkgname = mingw-w64-coin-or-clp
 
