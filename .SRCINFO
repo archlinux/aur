@@ -1,12 +1,12 @@
 pkgbase = meshconv
 	pkgdesc = Converts to and from several popular 3D file formats
-	pkgver = 1.26
-	pkgrel = 2
+	pkgver = 1.28
+	pkgrel = 1
 	url = http://www.patrickmin.com/meshconv/
 	arch = x86_64
 	license = GPL
 	source = http://www.patrickmin.com/meshconv/linux64/meshconv
-	md5sums = e0702cef80bd2e57a466600845122249
+	md5sums = e991474cbfabf10346eb927f682f57bf
 
 pkgname = meshconv
 
