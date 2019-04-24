@@ -1,0 +1,25 @@
+pkgbase = perl-test-kit
+	pkgdesc = Build custom test packages with only the features you want
+	pkgver = 2.15
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-Kit
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-hook-lexwrap>=0
+	depends = perl-import-into>=0
+	depends = perl-module-runtime>=0
+	depends = perl-sub-delete>=0
+	depends = perl-test-exception>=0
+	depends = perl-test-nowarnings>=0
+	depends = perl-test-output>=0
+	depends = perl-test-pod>=0
+	depends = perl-test-warn>=0
+	depends = perl>=5.010
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAORU/Test-Kit-2.15.tar.gz
+	md5sums = 12f326522549597442149669a315716b
+	sha512sums = ef798307e44c214f3b312b1bde3b48a39948c72c683a17b0e0ab7b097cbc991408a6382d06a94bbfa8cd0e6d92a4ba5339245463c249660f987dd8a5aef4691e
+
+pkgname = perl-test-kit
+
