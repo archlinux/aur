@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-passenger
 	pkgdesc = Fast and robust web server and application server for Ruby, Python and Node.js (module for mainline nginx)
 	pkgver = 6.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.phusionpassenger.com
 	arch = i686
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = nginx-mainline-mod-passenger
 	makedepends = ruby-rake
 	depends = nginx-mainline
 	depends = ruby
-	source = https://nginx.org/download/nginx-1.15.11.tar.gz
-	source = https://nginx.org/download/nginx-1.15.11.tar.gz.asc
+	source = https://nginx.org/download/nginx-1.15.12.tar.gz
+	source = https://nginx.org/download/nginx-1.15.12.tar.gz.asc
 	source = https://github.com/phusion/passenger/archive/release-6.0.2/passenger-6.0.2.tar.gz
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = d5eb2685e2ebe8a9d048b07222ffdab50e6ff6245919eebc2482c1f388e3f8ad
+	sha256sums = 3d5b90aa17de1700709ae4ec6c4d73d87c888b06c510391bf7104b006fdb2abe
 	sha256sums = SKIP
 	sha256sums = 32a2e4d78cdf782c52172020d016297a3065ee85eef7cdbe8422bb7bb3741887
 
