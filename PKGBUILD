@@ -6,19 +6,15 @@ source android-env.sh ${_android_arch}
 
 pkgname=android-${_android_arch}-libogg
 pkgver=1.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Ogg bitstream and framing library (android)"
 arch=('any')
 url="http://xiph.org"
 license=('BSD')
-
-if [ -z "${ANDROID_NO_DEPS}" ]; then
-    depends=('android-ndk')
-fi
-
+depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-pkg-config')
-source=(http://downloads.xiph.org/releases/ogg/libogg-${pkgver}.tar.gz)
+source=("http://downloads.xiph.org/releases/ogg/libogg-${pkgver}.tar.gz")
 sha256sums=('c2e8a485110b97550f453226ec644ebac6cb29d1caef2902c007edab4308d985')
 
 prepare() {
@@ -49,7 +45,7 @@ package() {
     cd "${srcdir}"/libogg-${pkgver}
 
     make DESTDIR="$pkgdir" install
-    rm -r "${pkgdir}"/${ANDROID_LIBS}/share/doc
+    rm -r "${pkgdir}"/${ANDROID_LIBS}/share
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_LIBS}/lib/*.so
     ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_LIBS}/lib/*.a
 }
