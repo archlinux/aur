@@ -3,8 +3,8 @@
 # Contributor: Jesus Jerez <jerezmoreno@gmail.com>
 
 pkgname=eclipse-pde
-pkgver=4.7.3
-_buildTime=201803010715
+pkgver=4.11
+_buildTime=201903070500
 pkgrel=1
 pkgdesc='Plug-in Development Environment Binary for Eclipse IDE'
 url="http://www.eclipse.org/pde/"
@@ -16,7 +16,7 @@ options=(!strip)
 source=(
 	"http://www.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/eclipse/downloads/drops4/R-${pkgver}-${_buildTime}/org.eclipse.pde-${pkgver}.zip"
 )
-sha256sums=('418f596a27a8346f807467a2b46707fc4fc5c8c241791956b4b7f60e0e671770')
+sha256sums=('a5a33cb24ed05fbc4d79fe39ac962b1636b5cb9a481bc5836f892f8d09307dba')
 
 package() {
   _dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
