@@ -1,0 +1,18 @@
+pkgbase = xtrx-xc3sprog-git
+	pkgdesc = xc3sprog is a suite of utilities for programming Xilinx FPGAs, CPLDs, and EEPROMs with the Xilinx Parallel Cable and other JTAG adapters under Linux. Special branch for XTRX over USB3 adapter
+	pkgver = r813.d97d672
+	pkgrel = 1
+	url = https://github.com/xtrx-sdr/xc3sprog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = libftdi-compat
+	depends = libusb3380-git
+	provides = xtrx-xc3sprog
+	source = git+https://github.com/xtrx-sdr/xc3sprog.git
+	md5sums = SKIP
+
+pkgname = xtrx-xc3sprog-git
+
