@@ -2,4 +2,4 @@ pkg
 src
 *.tar.xz
 *.tar.gz
-ffmpeg
+*.tar.bz2
