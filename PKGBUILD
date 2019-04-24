@@ -3,12 +3,12 @@
 pkgname=maptool
 _pkgname=MapTool
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
 url="https://rptools.net/tools/maptool"
 license=('AGPL3')
-makedepends=('git' 'gradle' 'jdk10')
+makedepends=('git' 'gradle' 'dpkg' 'jdk10')
 provides=('maptool')
 conflicts=('maptool')
 source=("git+https://github.com/RPTools/maptool.git#tag=${pkgver}")
@@ -35,7 +35,7 @@ package() {
     ar vx "${pkgname}-${pkgver}.deb"
     tar -C "${pkgdir}" -xf data.tar.xz
 
-    install -Dm644 "${pkgdir}/opt/${_pkgname}/runtime/legal/jdk.zipfs/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-    install -Dm644 "${pkgdir}/opt/${_pkgname}/runtime/legal/jdk.zipfs/COPYRIGHT" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 "${pkgdir}/opt/${_pkgname}/app/COPYING.AFFERO" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 "${pkgdir}/opt/${_pkgname}/app/COPYING.LESSER" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 "${pkgdir}/opt/${_pkgname}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
 }
