@@ -1,8 +1,8 @@
 pkgbase = filament
 	pkgdesc = A real-time physically based engine
-	pkgver = 1.1.0
-	pkgrel = 4
-	url = https://github.com/google/filament/tree/v1.1.0
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/google/filament/tree/v1.2.0
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
@@ -12,10 +12,8 @@ pkgbase = filament
 	depends = mesa
 	depends = libxi
 	conflicts = mono
-	source = package-fix.patch
-	source = https://github.com/google/filament/archive/v1.1.0.tar.gz
-	sha256sums = db215b3f5d8f5b4e305d6e082822df2371b8f225b9d5d937a36fc4ba42ff1943
-	sha256sums = 7b56e0f5924d206ff8596e5a10a11b7793e14b4757ea09b1945601229215ba22
+	source = https://github.com/google/filament/archive/v1.2.0.tar.gz
+	sha256sums = d03f47f29f35cd58d1fee3cc183543021c8f7ec33dfe368af19db9f72f6dbea9
 
 pkgname = filament
 

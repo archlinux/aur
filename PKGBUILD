@@ -2,8 +2,8 @@
 # Contributor: Azrael <charles.gueunet+aur@gmail.com>
 
 pkgname=filament
-pkgver=1.1.0
-pkgrel=4
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='A real-time physically based engine'
 arch=('x86_64')
 url="https://github.com/google/${pkgname}/tree/v${pkgver}"
@@ -11,15 +11,8 @@ license=('Apache')
 depends=('libc++' 'libc++abi' 'mesa' 'libxi')
 makedepends=('cmake' 'clang')
 conflicts=('mono') # because of /usr/bin/cmgen
-source=("package-fix.patch"
-        "https://github.com/google/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('db215b3f5d8f5b4e305d6e082822df2371b8f225b9d5d937a36fc4ba42ff1943'
-            '7b56e0f5924d206ff8596e5a10a11b7793e14b4757ea09b1945601229215ba22')
-
-prepare() {
-    cd "${pkgname}-${pkgver}"
-    patch -p1 < ../package-fix.patch
-}
+source=("https://github.com/google/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('d03f47f29f35cd58d1fee3cc183543021c8f7ec33dfe368af19db9f72f6dbea9')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -36,7 +29,7 @@ build() {
           -DDIST_DIR="." \
           -DCMAKE_EXE_LINKER_FLAGS="-Wl,-z,relro,-z,now" \
           ..
-    make filament
+    make
 }
 
 package() {
