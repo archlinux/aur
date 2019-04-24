@@ -3,7 +3,7 @@
 # Contributor: Morris Jobke <hey AT morrisjobke DOT de>
 
 pkgname=dokku
-pkgver=0.14.6
+pkgver=0.15.5
 pkgrel=1
 pkgdesc="Docker powered mini-Heroku in around 100 lines of Bash."
 arch=(any)
@@ -17,6 +17,7 @@ depends=(
   'herokuish'
   'net-tools'
   'nginx'
+  'openbsd-netcat'
   'plugn'
   'procfile-util'
   'rsyslog'
@@ -26,7 +27,7 @@ source=(
   "https://github.com/dokku/dokku/archive/v${pkgver}.zip"
   "${pkgname}.install"
 )
-sha256sums=('c33115a138c780f95c5cc0fbdba2576f18d007361ef6adbba444185625f7eea1'
+sha256sums=('f7c9d6945908a3ab0dc17ca9f83df774892212ce33d84b5721f0615d87eeecd3'
             'c2d7561e5e9931b13421af629672fe417ab36db0f803cadacbf3614507cc0601')
 install="${pkgname}.install"
 
