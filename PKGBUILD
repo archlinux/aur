@@ -9,10 +9,10 @@ _android_arch=x86-64
 source android-env.sh ${_android_arch}
 
 pkgname=android-${_android_arch}-qt5
-pkgver=5.12.2
-pkgrel=4
+pkgver=5.12.3
+pkgrel=1
 pkgdesc="Qt 5 for Android"
-arch=('x86_64')
+arch=('any')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL')
 makedepends=('libgl'
@@ -23,22 +23,14 @@ makedepends=('libgl'
              'gperf'
              'libxslt'
              'fontconfig')
-
-if [ -z "${ANDROID_NO_DEPS}" ]; then
-    depends=('java-runtime-headless-openjdk<=8'
-            'apache-ant'
-            'android-pkg-config'
-            'android-ndk'
-            "android-platform-$ANDROID_MINIMUM_PLATFORM"
-            'android-sdk'
-            'android-sdk-build-tools'
-            'android-sdk-platform-tools')
-else
-    depends=('java-runtime-headless-openjdk<=8'
-             'apache-ant'
-             'android-pkg-config')
-fi
-
+depends=('java-runtime-headless-openjdk<=8'
+        'apache-ant'
+        'android-pkg-config'
+        'android-ndk'
+        "android-platform-$ANDROID_MINIMUM_PLATFORM"
+        'android-sdk'
+        'android-sdk-build-tools'
+        'android-sdk-platform-tools')
 groups=('android-qt5')
 
 case "$_android_arch" in
@@ -68,7 +60,7 @@ install="${pkgname}.install"
 source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkgver}/single/${_pkgfqn}.tar.xz"
         "0001-Fix-clang-build.patch"
         "0002-Disable-mapbox.patch")
-md5sums=('99c2eb46e533371798b4ca2d1458e065'
+md5sums=('38017e0ed88b9baba063bd723d9ca8b2'
          '0b19ddef193baddb656d3170635e6de6'
          '20d8bdd24102e9011b561b7361394728')
 
