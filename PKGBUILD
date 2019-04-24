@@ -1,7 +1,9 @@
 # Maintainer: Jonas Gierer <jgierer12@gmail.com>
 pkgname=pocket-casts-linux-bin
+provides=('pocket-casts-linux')
+conflicts=('pocket-casts-linux')
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Electron wrapper around the Pocket Casts web app with support for MPRIS (media controls)"
 arch=('x86_64')
 license=('MIT')
@@ -19,7 +21,6 @@ md5sums=('be21aa678337da7d4a2f62c9b89dcf8c'
          '04bf690e790df16c6404870cdea950bc')
 
 package() {
-  mv "${srcdir}/usr" "${pkgdir}/usr"
-  mv "${srcdir}/opt" "${pkgdir}/opt"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cp --recursive $srcdir/{usr,opt} $pkgdir
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
