@@ -13,7 +13,7 @@
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
 _srcbasever=5.0-gnu
-_srcver=5.0.5-gnu
+_srcver=5.0.6-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -23,28 +23,36 @@ _srcname=linux-${_srcbasever%-*}
 _archpkgver=${_srcver%-*}
 pkgver=${_srcver//-/_}
 pkgrel=1
-rcnrel=armv7-x6
+rcnrel=armv7-x8
 arch=(i686 x86_64 armv7h)
 url='https://linux-libre.fsfla.org/'
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf python-sphinx graphviz)
+makedepends=(xmlto kmod inetutils bc libelf)
 makedepends_armv7h=(uboot-tools vboot-utils dtc) # for linux-libre-chromebook
 options=('!strip')
 source=(
   "https://linux-libre.fsfla.org/pub/linux-libre/releases/$_srcbasever/linux-libre-$_srcbasever.tar.xz"{,.sign}
   "https://linux-libre.fsfla.org/pub/linux-libre/releases/$_srcver/patch-$_srcbasever-$_srcver.xz"{,.sign}
-  "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm"{,.sig}
-  "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm"{,.sig}
-  "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm"{,.sig}
-  # the main kernel config files
-  config.i686 config.x86_64 config.armv7h
-  # pacman hooks for depmod and initramfs regeneration
-  60-linux.hook 90-linux.hook
-  # standard config files for mkinitcpio ramdisk
-  linux.preset
-  # files for signing Chromebooks kernels
-  kernel.its kernel.keyblock kernel_data_key.vbprivk
-  # armv7h patches
+  "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_"{clut224.ppm,vga16.ppm,mono.pbm}{,.sig}
+  config.i686 config.x86_64 config.armv7h    # the main kernel config files
+  60-linux.hook                              # pacman hook for depmod
+  90-linux.hook                              # pacman hook for initramfs regeneration
+  linux.preset                               # standard config files for mkinitcpio ramdisk
+  "kernel"{.its,.keyblock,_data_key.vbprivk} # files for signing Chromebooks kernels
+
+  # maintain the TTY over USB disconnects
+  # http://www.coreboot.org/EHCI_Gadget_Debug
+  0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch
+  # fix Atmel maXTouch touchscreen support
+  # https://labs.parabola.nu/issues/877
+  # http://www.fsfla.org/pipermail/linux-libre/2015-November/003202.html
+  0002-fix-Atmel-maXTouch-touchscreen-support.patch
+
+  # Arch's custom linux patches
+  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+)
+source_armv7h=(
+  # armv7h patches, put in the source_armv7h variable just for a more comfortable loop patching
   "https://repo.parabola.nu/other/rcn-libre/patches/${_srcver%-*}/rcn-libre-${_srcver%-*}-$rcnrel.patch"{,.sig}
   0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch
   0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch
@@ -55,11 +63,6 @@ source=(
   0007-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch
   0008-ARM-dove-enable-ethernet-on-D3Plug.patch
   0009-media-s5p-mfc-fix-incorrect-bus-assignment-in-virtua.patch
-  # other patches
-  0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch
-  0002-fix-Atmel-maXTouch-touchscreen-support.patch
-  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-netfilter-nf_tables-fix-set-double-free-in-abort-pat.patch
 )
 validpgpkeys=(
   '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
@@ -67,13 +70,13 @@ validpgpkeys=(
 )
 sha512sums=('56b8e77eb445c92c3e0ec0dc45fa5fb09641cad18003b79991652b83cf1d96cc1651750dfa9eec15652108a1b8aff1781c4f8ec5f92784b8542e59e0605922d9'
             'SKIP'
-            '5331dacd07dca625cebb3a05cf9779fd2d9260d78cec072508a360506c2fcc23a8783b3961c8438849d0155ab9f00d2f907fe2329d5734fac9cba637ce06529c'
+            'c015da00812cfc9cb16e408807338d2e09270e3b33deb85c5cab36e9c2e6155dbc2a3653d744de272032d524bbb59b428984debf1369e42b788b51caf4591526'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
-            '267295aa0cea65684968420c68b32f1a66a22d018b9d2b2c1ef14267bcf4cb68aaf7099d073cbfefe6c25c8608bdcbbd45f7ac8893fdcecbf1e621abdfe9ecc1'
-            'SKIP'
             '7a3716bfe3b9f546da309c7492f3e08f8f506813afeb1c737a474c83313d5c313cf4582b65215c2cfce3b74d9d1021c96e8badafe8f6e5b01fe28d2b5c61ae78'
+            'SKIP'
+            '267295aa0cea65684968420c68b32f1a66a22d018b9d2b2c1ef14267bcf4cb68aaf7099d073cbfefe6c25c8608bdcbbd45f7ac8893fdcecbf1e621abdfe9ecc1'
             'SKIP'
             '7fc366487ad4083a6595046dfbbf2cf100962ebe452da1b5b42019b33fb962714e9aff128bf16a0d3743e0916218e337aa46a93871b6d6afe9e5afd828bb3ae1'
             '4a6fe5cadd58ae3bdc35e739fe8691e3ab7609f6220c5aeb9db7ac1997b613422fb30e007e2f4c15040568c4a0b06e58da0dd65e1b043883c548fea828a632d8'
@@ -84,21 +87,20 @@ sha512sums=('56b8e77eb445c92c3e0ec0dc45fa5fb09641cad18003b79991652b83cf1d96cc165
             '167bc73c6c1c63931806238905dc44c7d87c5a5c0f6293159f2133dfe717fb44081018d810675716d1605ec7dff5e8333b87b19e09e2de21d0448e447437873b'
             'bb6718984a7357c9b00c37e4788480e5b8b75018c172ecc1441bc3fc5d2d42444eb5d8c7f9d2e3a7d6fed6d03acb565e3c0559486e494c40a7fe6bd0570c9ede'
             '143dea30c6da00e504c99984a98a0eb2411f558fcdd9dfa7f607d6c14e9e7dffff9cb00121d9317044b07e3e210808286598c785ee854084b993ec9cb14d8232'
-            '86efeee41eff41928ce2ce8926dc11d34799437d415cf51239ee7e9cf04b82a20cbb6d11b89af2ae7c6c0464afb57369133093653acaf3a0e0ff9d7630d00834'
-            'SKIP'
-            '6e2eed5e047d95a825241bf30bd09e3edad7787f1f742ca5cf3cf53f4f1383ca7ede306f12cf522fa1175930b3dde550994ef085bf6d93761babfe976dc94ca2'
-            '32a185f7d8b93e8cb70bee0d32eb6876ac0a976abe550ec83de1fc57963b0879872831c671f4aa5281b4def9bf81660c92809047eda9a9ada939bdf5b7d32dbc'
-            'b523cc0978f6426162d8ef82dc44763fca7ca57c8bf3b2b27549d7ed7d873389ba3acf00dfe5576ceef991d31ba39613c3203195cb5a91900330c997c9b0efff'
-            'd85f97025f21c26b438afb599af13939bae3ff769c1d1055bdcf9130a1449703a26ecf04ce715390570c14d6b91b693e7b220e7cff0576f9775990ee2fe75113'
-            'a3b846c5a79afdfc5233ba5020cb8fc91bad0864bd811204f29191f8b2e7dd76cb19d8fa38cac55ad3adbbd4126f3b2102b03016fe9423bd7d0d252ed1b4c460'
-            'd547f6ef7f876690092622c7b7de6995b972e46f25b34fac92b301d90ad7b04f993341346bbc54284e5338e5bbf76ccdfa42485842ed0a0b4a8414cf8a16412a'
-            'b3cc320e6414c6a9a287df405cc6768cbc204bd859189c4c3f6902e55fd425ad7f05743ea6db3996c99a49f6b3a175d83c8fb05fd4314c2b1a3df52e8b1b16f3'
-            'bed58fede674b139e470a2593c3d07f61f7f771d86ce137a5cf7e1b5cc53a8c2127439f7ef2bee9daaf554555f6cb9bb80cf35bbe6a6adf10a04cb5a93d0cc8f'
-            '17b09c80b0c235a5395c350c2b1acfda1c549c5bb6017f6a7056a84686fe23d7983a40f416cfc1da075523ad87d39ff4ff7b4057a275705679830db15b621991'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '0016e750127728458ab23ef445f92a8b52064806f235c03dd92e699a8bfb397d6274f6ba484a99af19ed729f6c63bab714bd350c7e7ed82c30a4b62b29857ff7'
-            '8348ecfeec519a41c68f1a97ec4b6007b3ed5ed61c271733d562ae22c6c85e4e217eb6c367bb53f3c53ad72f311360bd3aa57d09fba7cda358748c2bdd0416c2')
+            '7748427819372a27b5aa9b3ce8cc8c75397bc3a76ac4fddd06f497ce5a1b34c2e15b6301e764e6e007ad66a49bb3f9c49e906c179875e115d213d2682ddb2576')
+sha512sums_armv7h=('4f185601aa569db7ee2033d6360f284aede970ea02093fdbfe25e2a3bc7463b55180678192974ce38e425ea3ecb8193a58cb7442c9390429c1dabd13afc9be8e'
+                   'SKIP'
+                   '6e2eed5e047d95a825241bf30bd09e3edad7787f1f742ca5cf3cf53f4f1383ca7ede306f12cf522fa1175930b3dde550994ef085bf6d93761babfe976dc94ca2'
+                   '32a185f7d8b93e8cb70bee0d32eb6876ac0a976abe550ec83de1fc57963b0879872831c671f4aa5281b4def9bf81660c92809047eda9a9ada939bdf5b7d32dbc'
+                   'b523cc0978f6426162d8ef82dc44763fca7ca57c8bf3b2b27549d7ed7d873389ba3acf00dfe5576ceef991d31ba39613c3203195cb5a91900330c997c9b0efff'
+                   'd85f97025f21c26b438afb599af13939bae3ff769c1d1055bdcf9130a1449703a26ecf04ce715390570c14d6b91b693e7b220e7cff0576f9775990ee2fe75113'
+                   'a3b846c5a79afdfc5233ba5020cb8fc91bad0864bd811204f29191f8b2e7dd76cb19d8fa38cac55ad3adbbd4126f3b2102b03016fe9423bd7d0d252ed1b4c460'
+                   'd547f6ef7f876690092622c7b7de6995b972e46f25b34fac92b301d90ad7b04f993341346bbc54284e5338e5bbf76ccdfa42485842ed0a0b4a8414cf8a16412a'
+                   'b3cc320e6414c6a9a287df405cc6768cbc204bd859189c4c3f6902e55fd425ad7f05743ea6db3996c99a49f6b3a175d83c8fb05fd4314c2b1a3df52e8b1b16f3'
+                   'bed58fede674b139e470a2593c3d07f61f7f771d86ce137a5cf7e1b5cc53a8c2127439f7ef2bee9daaf554555f6cb9bb80cf35bbe6a6adf10a04cb5a93d0cc8f'
+                   '17b09c80b0c235a5395c350c2b1acfda1c549c5bb6017f6a7056a84686fe23d7983a40f416cfc1da075523ad87d39ff4ff7b4057a275705679830db15b621991')
 
 _kernelname=${pkgbase#linux-libre}
 _replacesarchkernel=("${_replacesarchkernel[@]/\%/${_kernelname}}")
@@ -118,46 +120,38 @@ prepare() {
     patch -p1 -i ../patch-$_srcbasever-$_srcver
   fi
 
-  if [ "$CARCH" = "armv7h" ]; then
-    # RCN patch (CM3 firmware deblobbed and AUFS/WireGuard removed)
-    # Note: For stability reasons, AUFS has been removed in the RCN patch.
-    # We are supporting AUFS in linux-libre-pck through PCK patch.
-    # See https://wiki.parabola.nu/PCK for further details.
-    patch -p1 -i ../rcn-libre-${_srcver%-*}-$rcnrel.patch
-
-    # ALARM patches
-    patch -p1 -i ../0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch
-    patch -p1 -i ../0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch
-    patch -p1 -i ../0003-SMILE-Plug-device-tree-file.patch
-    patch -p1 -i ../0004-fix-mvsdio-eMMC-timing.patch
-    patch -p1 -i ../0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
-    patch -p1 -i ../0006-set-default-cubietruck-led-triggers.patch
-    patch -p1 -i ../0007-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch
-    patch -p1 -i ../0008-ARM-dove-enable-ethernet-on-D3Plug.patch
-    patch -p1 -i ../0009-media-s5p-mfc-fix-incorrect-bus-assignment-in-virtua.patch
-  fi
-
   # add freedo as boot logo
   install -m644 -t drivers/video/logo \
     ../logo_linux_{clut224.ppm,vga16.ppm,mono.pbm}
-
-  # add Arch patches
-  patch -p1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  patch -p1 -i ../0002-netfilter-nf_tables-fix-set-double-free-in-abort-pat.patch
-
-  # maintain the TTY over USB disconnects
-  # http://www.coreboot.org/EHCI_Gadget_Debug
-  patch -p1 -i ../0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch
-
-  # fix Atmel maXTouch touchscreen support
-  # https://labs.parabola.nu/issues/877
-  # http://www.fsfla.org/pipermail/linux-libre/2015-November/003202.html
-  patch -p1 -i ../0002-fix-Atmel-maXTouch-touchscreen-support.patch
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "$_kernelname" > localversion.20-pkgname
+
+  if [ "$CARCH" = "armv7h" ]; then
+    # RCN patch (CM3 firmware deblobbed and AUFS/WireGuard removed)
+    # Note: For stability reasons, AUFS has been removed in the RCN patch.
+    # We are supporting AUFS in linux-libre-pck through PCK patch.
+    # See https://wiki.parabola.nu/PCK for further details.
+    local src_armv7h
+    for src_armv7h in "${source_armv7h[@]}"; do
+      src_armv7h="${src_armv7h%%::*}"
+      src_armv7h="${src_armv7h##*/}"
+      [[ $src_armv7h = *.patch ]] || continue
+      msg2 "Applying patch $src_armv7h..."
+      patch -Np1 < "../$src_armv7h"
+    done
+  fi
+
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    msg2 "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
 
   msg2 "Setting config..."
   cp ../config.$CARCH .config
@@ -170,9 +164,9 @@ prepare() {
 build() {
   cd $_srcname
   if [ "$CARCH" = "armv7h" ]; then
-    make zImage modules dtbs htmldocs
+    make zImage modules dtbs
   elif [ "$CARCH" = "x86_64" ] || [ "$CARCH" = "i686" ]; then
-    make bzImage modules htmldocs
+    make bzImage modules
   fi
 }
 
@@ -365,18 +359,6 @@ _package-docs() {
   msg2 "Installing documentation..."
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
-
-  msg2 "Removing doctrees..."
-  rm -r "$builddir/Documentation/output/.doctrees"
-
-  msg2 "Moving HTML docs..."
-  local src dst
-  while read -rd '' src; do
-    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    mkdir -p "${dst%/*}"
-    mv "$src" "$dst"
-    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  done < <(find "$builddir/Documentation/output" -type f -print0)
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
