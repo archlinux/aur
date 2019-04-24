@@ -1,0 +1,17 @@
+pkgbase = xtrx-linux-pcie-drv-git
+	pkgdesc = XTRX PCI driver for linux
+	pkgver = r17.5ae3a3e
+	pkgrel = 1
+	url = https://github.com/xtrx-sdr/xtrx_linux_pcie_drv
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = dkms
+	provides = xtrx-linux-pcie-drv
+	conflicts = xtrx-linux-pcie-drv
+	source = git+https://github.com/xtrx-sdr/xtrx_linux_pcie_drv
+	md5sums = SKIP
+
+pkgname = xtrx-linux-pcie-drv-git
+
