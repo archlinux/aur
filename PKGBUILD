@@ -3,8 +3,8 @@
 # long time.
 pkgname=python-pyrepl-hg
 _realpkg=pyrepl
-pkgver=r263+.9401662c4e6c+
-pkgrel=2
+pkgver=r271+.6e190161f8b1+
+pkgrel=1
 pkgdesc="A Python library for building flexible command line interfaces"
 url="http://pypi.python.org/pypi/pyrepl"
 arch=("any")
@@ -17,7 +17,7 @@ source=("hg+https://bitbucket.org/pypy/pyrepl"
         "py3fixes.patch")
 md5sums=('SKIP'
          '14f1a9fd02693f9d05d25fd9d1214070'
-         '7c5479c079bf68e91d8117a5b9bd2bd8')
+         '09b2308d4d1094786d6a8bd7e545a0c8')
 makedepends=('mercurial' 'python')
 
 pkgver() {

@@ -190,7 +190,7 @@ diff -r 9401662c4e6c pyrepl/readline.py
 @@ -199,7 +205,9 @@
          except _error:
              return _old_raw_input(prompt)
-         reader.ps1 = prompt
+         reader.ps1 = prompt            
 -        return reader.readline(startup_hook=self.startup_hook)
 +        # Unicode/str is required for Python 3 (3.5.2).
 +        return unicode(reader.readline(startup_hook=self.startup_hook),
