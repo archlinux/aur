@@ -1,6 +1,6 @@
 pkgbase = r-broom
 	pkgdesc = Convert statistical analysis objects into tidy data frames.
-	pkgver = 0.5.0
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://CRAN.R-project.org/package=broom
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = r-broom
 	depends = r>=3.1
 	depends = r-backports
 	depends = r-dplyr
+	depends = r-generics>=0.0.2
 	depends = r-purrr
 	depends = r-reshape2
 	depends = r-stringr
@@ -21,6 +22,7 @@ pkgbase = r-broom
 	optdepends = r-betareg
 	optdepends = r-biglm
 	optdepends = r-bingroup
+	optdepends = r-boot
 	optdepends = r-brms
 	optdepends = r-btergm
 	optdepends = r-car
@@ -53,11 +55,13 @@ pkgbase = r-broom
 	optdepends = r-lsmeans
 	optdepends = r-maps
 	optdepends = r-maptools
+	optdepends = r-matrix
 	optdepends = r-mclust
 	optdepends = r-mgcv
 	optdepends = r-muhaz
 	optdepends = r-multcomp
 	optdepends = r-network
+	optdepends = r-nnet
 	optdepends = r-orcutt
 	optdepends = r-ordinal
 	optdepends = r-plm
@@ -79,8 +83,8 @@ pkgbase = r-broom
 	optdepends = r-tseries
 	optdepends = r-xergm
 	optdepends = r-zoo
-	source = http://cran.r-project.org/src/contrib/broom_0.5.0.tar.gz
-	md5sums = 9ac7d592c175e334b5f28fe4a2ebf930
+	source = http://cran.r-project.org/src/contrib/broom_0.5.2.tar.gz
+	md5sums = 1234d0cb7c470eb9be7e2a8ca17c9a28
 
 pkgname = r-broom
 
