@@ -1,4 +1,5 @@
-# Maintainer: Alex Wiggins <alex.d.wiggins@gmail.com>
+# Maintainer: Yuuki Galaxy <galaxy001@gmail.com>
+# Contributor: Alex Wiggins <alex.d.wiggins@gmail.com>
 # Contributor: Damian Nowak <damian.nowak@atlashost.eu>
 # Contributor: Julian Rother <julian@toksik.org>
 # Contributor: Sebastian Schwarz <seschwar@gmail.com>
