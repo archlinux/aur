@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-pytest-mpl
-pkgver=0.9
-pkgrel=2
+pkgver=0.10
+pkgrel=1
 pkgdesc="Pytest plugin to help with testing figures output from Matplotlib"
 arch=('i686' 'x86_64')
 url="https://github.com/matplotlib/pytest-mpl"
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('python>=3.3' 'python-pytest' 'python-matplotlib' 'python-nose')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/p/pytest-mpl/pytest-mpl-${pkgver}.tar.gz")
-md5sums=('c13853b85dbe5c50ba9b7e8f9dc96439')
+md5sums=('eaf812561972f3aa3d4e1f1c077ba848')
 
 package() {
     cd ${srcdir}/pytest-mpl-${pkgver}
