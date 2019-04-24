@@ -1,12 +1,45 @@
 Version history
 ===============
 
+0.9.26
+------
+
+2019-04-24
+
+Added 24 singleplayer levels in misc/lemforum-outtakes. These levels were
+once part of out flagship pack lemforum, but have been taken out over time.
+They're all proven solvable with 0.9 physics.
+
+Fixed #301: Separated the ping-exit functionality from show-splat-ruler.
+In multiplayer, there are now two buttons. Both have much clearer icons
+(an exit with beams, a ruler) instead of the generic cool shades.
+
+Fixed #293: Savestate icon, don't use floppy disk (means: write file).
+Now, the icon to save state is a flag, and the icon to load state is
+a flag with an arrow pointing towards it. Once a savestate exists,
+the load icon (default hotkey F2) is to the left of the save icon
+(default hotkey F3), to have their default hotkeys (F2, F3) in ascending
+order. (Before, load appeared to the right of save).
+
+Renamed the level folder "Community Collab Project" to "Collab"
+for concise breadcrumb navigation captions, preventing abbreviation.
+
+Attributed correct authors (Rubix/Simon, Simon/Wuzzy) on two tutorials.
+
+Rewrote screen options functions, to rule out a possible source of a crash
+on macOS (no more try-return-catch, always return outside of try/catch).
+See issue #381: macOS 10.14: Black screen then crash.
+
+Rewrote internal graphics code to get already-cached images more efficiently.
+
+
+
 0.9.25
 ------
 
 2019-02-04
 
-Added 43 singleplayer levels in levels/single/misc: 17 miniatures by Simon and
+Added 44 singleplayer levels in levels/single/misc: 17 miniatures by Simon and
 geoo, 13 levels by mobius (originally called leftovers and non-tutorials), 10
 levels by Nessy, 4 non-miniatures by Simon. These levels were released around
 2017 and 2018 on Lemmings Forums and are now part of the main download.
@@ -23,6 +56,8 @@ to allow a warning-free building with the current compiler DMD 2.084.
 Refactored code for clarity: Alcol constructors -> al_map_rgba_f, magic
 numbers in EffectManager -> enums. Split ScoreBoard into two classes and
 moved to the GUI code, to decouple from gameplay.
+
+
 
 0.9.24
 ------
