@@ -8,3 +8,8 @@ Also added patch from seawright [commented on 2018-07-23 00:08](https://aur.arch
 
 See also: <https://forums.gentoo.org/viewtopic-t-1039602-start-0.html>.
 
+## Notes
+
+```bash
+makepkg --printsrcinfo > .SRCINFO
+```
