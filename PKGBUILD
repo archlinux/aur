@@ -1,4 +1,4 @@
-# Maintainer: Nicolas Cornu <ncornu@aldebaran-robotics.com>
+# Maintainer: navigaid <navigaid@gmail.com>
 
 pkgname=proot
 _pkgname=proot
