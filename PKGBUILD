@@ -7,7 +7,7 @@
 
 pkgname=caddy-git
 _pkgname=caddy
-pkgver=20190412.605787f6
+pkgver=20190424.15fecbc1
 pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 url='https://caddyserver.com/'
@@ -41,7 +41,7 @@ prepare() {
 build() {
 	cd "${srcdir}/caddy"
 	cd caddy
-	go run build.go
+	go build -v
 }
 
 package() {
