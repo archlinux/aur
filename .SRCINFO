@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-coin-or-csdp
+	pkgdesc = A C library for Semidefinite Programming (mingw-w64)
+	pkgver = 6.2.0
+	pkgrel = 1
+	url = https://projects.coin-or.org/Csdp
+	arch = any
+	groups = coin-or
+	license = EPL
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-lapack
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = https://www.coin-or.org/download/source/Csdp/Csdp-6.2.0.tgz
+	source = CMakeLists.txt
+	sha256sums = 7f202a15f33483ee205dcfbd0573fdbd74911604bb739a04f8baa35f8a055c5b
+	sha256sums = SKIP
+
+pkgname = mingw-w64-coin-or-csdp
+
