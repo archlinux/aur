@@ -27,7 +27,7 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/subm
         '0001-Ensure-QML-dev-tools-is-built-as-static-library.patch'
         '0002-Ensure-static-plugins-are-exported.patch'
         '0003-Prevent-exporting-QML-parser-symbols-on-static-build.patch')
-sha256sums=('470568745602e7fa21cdca42b1641162e4257cfeb7a2dcf8af24538c9516cc5b'
+sha256sums=('839881cd6996e35c351bc7d560372ebb91e61f3688957c33248c4f31ea007fa7'
             'a21b730e650a9ebe3cdb72fccef909da783df3dc45fbd063e8c37f3618b3655d'
             'b0c26b559483e740dae038d630b5994805642ef8673edacad7b244019c5b83ab'
             '747db2313fc5759c913ebb920b717c990361075622fff11d242843526ea75fa8')
