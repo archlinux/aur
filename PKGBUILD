@@ -1,17 +1,15 @@
 # Maintainer: Alexander Couzens <lynxis@fe80.eu>
 pkgname=libxtrxdsp-git
 _gitname=libxtrxdsp
-pkgver=r8.b166ad69493e
-pkgrel=1
+pkgver=r10.614f52694ac0
+pkgrel=2
 pkgdesc="DSP specific function for SDR in general and XTRX in specific"
 arch=('any')
 url="https://github.com/xtrx-sdr/libxtrxdsp"
 license=('LGPL')
 makedepends=('git' 'cmake')
-source=("git+$url"
-        "fix-cmake.patch")
-md5sums=('SKIP'
-         '286caa8cd9a01b1bd0c667d7c3b9eb3c')
+source=("git+$url")
+md5sums=('SKIP')
 provides=('libxtrxdsp')
 conflicts=('libxtrxdsp')
 
@@ -22,7 +20,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  patch -Np1 -i "$srcdir/fix-cmake.patch"
   mkdir -p build
   cd build
 
@@ -39,4 +36,3 @@ package() {
 
   make DESTDIR="$pkgdir" install
 }
-
