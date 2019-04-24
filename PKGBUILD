@@ -1,4 +1,4 @@
-# Maintainer: Fabio Loli <loli_fabio@protonmail.com> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Ali Ukani <ali.ukani@gmail.com>
 
 pkgname=voltra
@@ -16,7 +16,7 @@ depends=('gtk2'
          'libxtst')
 provides=('voltra')
 #changelog=https://docs.voltra.co/desktop/release.html
-source=("https://s3.amazonaws.com/download.voltra.co/Voltra-${pkgver}.tar.gz"
+source=("https://github.com/FabioLolix/archives/raw/master/Voltra-${pkgver}.tar.gz"
         'voltra.png'
         'voltra.desktop'
         'COPYRIGHT'
