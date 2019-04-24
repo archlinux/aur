@@ -12,12 +12,10 @@ url='https://github.com/PowerShell/PowerShell'
 license=('MIT')
 makedepends=('git' 'cmake' 'dotnet-sdk>=2.0')
 depends=('icu' 'openssl-1.0')
-source=($pkgname::git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver
-        powershell-native::git+https://github.com/PowerShell/PowerShell-Native.git
-        googletest::git+https://github.com/google/googletest.git
-        "Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets")
+source=($pkgname::"git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver"
+        'powershell-native::git+https://github.com/PowerShell/PowerShell-Native.git'
+        'Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets')
 md5sums=('SKIP'
-         'SKIP'
          'SKIP'
          '56f02557575a6022b60be609951eee78')
 install=powershell.install
@@ -86,14 +84,14 @@ package() {
   chmod 755 "$pkgdir/usr/lib/$pkgname/linux-x64/$binaryname"
 
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  cp ../../LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cp "../../LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   mkdir -p "$pkgdir/usr/bin"
   ln -s "/usr/lib/$pkgname/linux-x64/$binaryname" "$pkgdir/usr/bin/$binaryname"
 
   chmod 644 \
-    $pkgdir/usr/lib/powershell/linux-x64/libhostfxr.so \
-    $pkgdir/usr/lib/powershell/linux-x64/libhostpolicy.so \
-    $pkgdir/usr/lib/powershell/linux-x64/en-US/default.help.txt \
-    $pkgdir/usr/lib/powershell/linux-x64/Modules/PSDesiredStateConfiguration/PSDesiredStateConfiguration.psm1
+    "$pkgdir/usr/lib/powershell/linux-x64/libhostfxr.so" \
+    "$pkgdir/usr/lib/powershell/linux-x64/libhostpolicy.so" \
+    "$pkgdir/usr/lib/powershell/linux-x64/en-US/default.help.txt" \
+    "$pkgdir/usr/lib/powershell/linux-x64/Modules/PSDesiredStateConfiguration/PSDesiredStateConfiguration.psm1"
 }

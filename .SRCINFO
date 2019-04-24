@@ -13,9 +13,7 @@ pkgbase = powershell
 	depends = openssl-1.0
 	source = powershell::git+https://github.com/PowerShell/PowerShell.git#tag=v6.2.0
 	source = powershell-native::git+https://github.com/PowerShell/PowerShell-Native.git
-	source = googletest::git+https://github.com/google/googletest.git
 	source = Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets
-	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 56f02557575a6022b60be609951eee78
