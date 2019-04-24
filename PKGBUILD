@@ -3,8 +3,8 @@
 
 pkgname=asbru-cm-git
 _pkgname=${pkgname%-git}
-pkgver=5.1.0
-pkgrel=2
+pkgver=5.2.0
+pkgrel=1
 arch=('any')
 license=('GPL3')
 pkgdesc="A free and open-source connection manager. GIT version"
