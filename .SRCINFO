@@ -1,0 +1,37 @@
+pkgbase = anydesk-5
+	pkgdesc = Anydesk is an remote Control and view Software
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://anydesk.de
+	arch = i686
+	arch = x86_64
+	license = custom:Freeware
+	depends = fakeroot
+	depends = python-shiboken2
+	depends = gtkglext
+	depends = libglvnd
+	depends = gtk2
+	depends = libx11
+	depends = glibc
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = libxcb
+	depends = cairo
+	depends = pango
+	depends = libxi
+	depends = libxrandr
+	depends = libxtst
+	depends = libxext
+	depends = libxfixes
+	depends = libxdamage
+	depends = gcc-libs
+	optdepends = libpulse
+	conflicts = anydesk-test
+	conflicts = anydesk
+	source_i686 = https://download.anydesk.com/linux/anydesk_5.0.0-1_i386.deb
+	sha256sums_i686 = bb680cf99fc9a5e88721b833d34c0aed82b5cb5953685c0e8ddcf8b2398128eb
+	source_x86_64 = https://download.anydesk.com/linux/anydesk_5.0.0-1_amd64.deb
+	sha256sums_x86_64 = 4339c58c228ce7518f72dd3ab3a0cebf8ac012061a11633d8caacda461f06499
+
+pkgname = anydesk-5
+
