@@ -13,7 +13,7 @@ depends=('talloc')
 makedepends=('python-docutils' 'libxslt')
 source=(${pkgname}-v${pkgver}.tar.gz::https://github.com/cedric-vincent/${_pkgname}/archive/v${pkgver}.tar.gz
         0001-Fix-use-of-size.patch)
-sha1sums=('7aaffddb8f955dc1015402846768a5e755294579'
+sha1sums=('e80b088e0bade515d8ccb8ce04155c892dc9f992'
           '32de528010837ba7bc4d828f6e4b8f29570ec96e')
 
 prepare() {
