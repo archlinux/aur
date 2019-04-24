@@ -1,4 +1,9 @@
 
+commands to update system:
+
+sudo pacman -Syy
+sudo pacman -Su
+
 command for chroot build:
 
 extra-x86_64-build

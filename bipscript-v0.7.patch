@@ -1,0 +1,24 @@
+--- ./src/bipscript-0.7/src/midifile.cpp	2018-12-11 08:50:57.000000000 -0800
++++ ../bipscript/src/midifile.cpp	2019-02-02 16:46:39.819996298 -0800
+@@ -2,7 +2,7 @@
+ #include <cstring>
+ #include <iostream>
+ #include <fstream>
+-#include <portSMF/allegro.h>
++#include <portsmf/allegro.h>
+ 
+ namespace bipscript {
+ namespace midi {
+--- ./src/bipscript-0.7/CMakeLists.txt	2019-04-24 14:43:21.803333329 -0700
++++ ../bipscript/CMakeLists.txt	2019-04-22 16:55:17.000000000 -0700
+@@ -10,8 +10,8 @@
+     set(VERSION_COMMAND "git")
+     set(VERSION_ARG "describe")
+ else()
+-    set(VERSION_COMMAND "cat")
+-    set(VERSION_ARG "version")
++    set(VERSION_COMMAND "echo")
++    set(VERSION_ARG "${BIPSCRIPT_VERSION}")
+ endif()
+ message(STATUS "create version.h from ${VERSION_COMMAND} ${VERSION_ARG}")
+ execute_process(COMMAND ${VERSION_COMMAND} ${VERSION_ARG}

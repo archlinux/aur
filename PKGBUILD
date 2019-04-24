@@ -1,6 +1,6 @@
 # Maintainer: John Hammen <jhammen@j2page.com>
 pkgname=bipscript
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="A scripting language for interactive music"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ provides=("bipscript")
 conflicts=("bipscript")
 source=("https://github.com/bipscript/$pkgname/archive/v$pkgver.tar.gz"
 	"$pkgname-v$pkgver.patch")
-md5sums=('085193d085486b9b641ea52ca8e8230e'
-         'c775c269b2b654289b93e34858a85699')
+md5sums=('ccbf7ce80d8ef19c55d15b226d7b8cef'
+         '38886856c32d00d420bdf07e7469cfd5')
 
 prepare() {
         cd "$pkgname-$pkgver"
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr .
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DBIPSCRIPT_VERSION=v$pkgver .
 	make
 }
 
