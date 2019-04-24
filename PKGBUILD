@@ -4,7 +4,7 @@
 # Based on nvidia-beta: https://aur.archlinux.org/packages/nvidia-beta/
 
 pkgname=nvidia-beta-all
-pkgver=418.56
+pkgver=430.09
 pkgrel=1
 pkgdesc='NVIDIA drivers for all kernels on the system (beta)'
 arch=('x86_64')
@@ -16,10 +16,8 @@ provides=("nvidia=${pkgver}" "nvidia-beta=${pkgver}")
 conflicts=('nvidia')
 options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
-source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
-        'linux-4.16.patch')
-sha256sums=('5e5cfcc6a392ceee156d3a55fc1c1cdebd5831b371163c6028fe409cefbf9d43'
-            '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
+source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run")
+sha256sums=('247e127fcf1f1902193104f22ca69e1974f834b3c4502a0eba42312b8d6c88b9')
 
 prepare() {
     local _kernel
@@ -36,14 +34,13 @@ prepare() {
     do
         cp -a kernel "kernel-${_kernel}"
         
-        printf '%s\n' "  -> Applying patch(es) for kernel ${_kernel}..."
-        cd "kernel-${_kernel}"
+        #printf '%s\n' "  -> Applying patch(es) for kernel ${_kernel}..."
+        #cd "kernel-${_kernel}"
         
-        # restore phys_to_dma support
-        # https://bugs.archlinux.org/task/58074
-        patch -Np2 -i "${srcdir}/linux-4.16.patch"
+        # apply patches(es) here:
+        #patch -Np2 -i "${srcdir}/<patch>"
         
-        cd ..
+        #cd ..
     done
 }
 
