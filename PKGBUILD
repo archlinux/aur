@@ -3,7 +3,7 @@
 
 pkgname=epubcheck
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to validate epub files."
 arch=('any')
 url="https://github.com/IDPF/epubcheck"
@@ -13,7 +13,7 @@ makedepends=('maven')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/w3c/epubcheck/archive/v${pkgver}.tar.gz"
         "epubcheck.1")
 sha512sums=('79b2cd9ece1f78b492f8d4b3b6e0a206d795515513aa0b0c6e3f5dd1ca812b01e5a00c69e83600318d9857b200fd3f65ce1b00ac8a26bb317dc37de1653f1c6e'
-            'f15527b6283053d3ae8e03679ed011b75b52e1d14b765a49565d17bb7d2aad785d57db477a692a3df89bfcacf80b03c7c98d652946d03ceb343edc48f40a635d')
+            '9aa8537908a866019195cb6456a8a8c187d8fe2ef8d79b4322ceeccffdd84aeea314706277ee535241052d4d8048279c5f6e3576a2420651cbb4d8483946febb')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
