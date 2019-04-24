@@ -1,9 +1,9 @@
 # Maintainer: ugjka <esesmu@protonmail.com>
 
 pkgname=calendar
-pkgver=6.4_20180603
+pkgver=6.4_20190201
 _pkgverbase=6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Reminder utility (OpenBSD)"
 url="http://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/calendar"
 arch=('x86_64')
@@ -17,9 +17,10 @@ source=("git+https://github.com/ugjka/calendar.latvia.git"
         "LICENSE")
 sha256sums=('SKIP'
             '1ea1e8f11ddb9cc7c7b72d52d74ecc8e5ecdf0b05335a7e77e1c1ac98c822305'
-            '792b22f398ccf78364c1eb45cb0353599e126b6028b9afa7117e8114444b6f69'
+            '9b5bf0927e89ee8f3000a40a8715e6a1b5c3cfed31b3fc156db01f51a0005e46'
             'e29cd94c128ecf76cb5224bd5dea4a2b199773f27226484b17804b83f6e8462a'
             '95112fa05d9b7204808ede37b1c77469826c8c3875e4b1523307b5050d966564')
+
 TAG="OPENBSD_${_pkgverbase/./_}"
 
 pkgver(){
