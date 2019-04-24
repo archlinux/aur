@@ -1,14 +1,14 @@
 pkgname=pijul
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Patch-based distributed version control system"
 url='https://pijul.org'
 makedepends=('cargo')
-depends=('gcc-libs')
+depends=('gcc-libs' 'libsodium' 'clang')
 arch=('i686' 'x86_64')
 license=('GPL')
 source=("${url}/releases/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('e60793ab124e9054c1d5509698acbae507ebb2fab5364d964067bc9ae8b6b5e5')
+sha256sums=('987820fa2a6fe92a9f516f5e9b41ad59a597973e72cb0c7a44ca0f38e741a7e6')
 
 build() {
   cd $srcdir/"$pkgname-$pkgver"
