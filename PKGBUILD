@@ -13,7 +13,7 @@
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
 _srcbasever=5.0-gnu
-_srcver=5.0.2-gnu
+_srcver=5.0.5-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -23,7 +23,7 @@ _srcname=linux-${_srcbasever%-*}
 _archpkgver=${_srcver%-*}
 pkgver=${_srcver//-/_}
 pkgrel=1
-rcnrel=armv7-x2
+rcnrel=armv7-x6
 arch=(i686 x86_64 armv7h)
 url='https://linux-libre.fsfla.org/'
 license=(GPL2)
@@ -67,7 +67,7 @@ validpgpkeys=(
 )
 sha512sums=('56b8e77eb445c92c3e0ec0dc45fa5fb09641cad18003b79991652b83cf1d96cc1651750dfa9eec15652108a1b8aff1781c4f8ec5f92784b8542e59e0605922d9'
             'SKIP'
-            '2eee919805705709ef5493e0a0e1f7baeb71fed20da7ee06c09546c8976046568447422fc4f0b70178a645840a5a3d46946b4573ea42c025182916cb13bb849a'
+            '5331dacd07dca625cebb3a05cf9779fd2d9260d78cec072508a360506c2fcc23a8783b3961c8438849d0155ab9f00d2f907fe2329d5734fac9cba637ce06529c'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -77,7 +77,7 @@ sha512sums=('56b8e77eb445c92c3e0ec0dc45fa5fb09641cad18003b79991652b83cf1d96cc165
             'SKIP'
             '7fc366487ad4083a6595046dfbbf2cf100962ebe452da1b5b42019b33fb962714e9aff128bf16a0d3743e0916218e337aa46a93871b6d6afe9e5afd828bb3ae1'
             '4a6fe5cadd58ae3bdc35e739fe8691e3ab7609f6220c5aeb9db7ac1997b613422fb30e007e2f4c15040568c4a0b06e58da0dd65e1b043883c548fea828a632d8'
-            '9f528e1549eb3acf46efa58ff24f00d76e26d4656e0472ab1fa950c7afec1b1f5f097874eb19a5b6ef4c53f0d6bdf527414cec664ebbdd0bb1611be895f337a7'
+            '4b9e98e440426036fd9330b5a2408ceb9a871b14e9686933c43678bc9f55020df48d177bbd1c4333fe84dc95db095cc6043cfe421b4e2ea954d6ffbe2b8c7dda'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
