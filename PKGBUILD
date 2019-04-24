@@ -11,8 +11,7 @@ pkgname=davinci-resolve-studio-beta
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
 pkgver=16.0b1
-pkgrel=1
-pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
+pkgrel=2
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 license=('Commercial')
@@ -20,26 +19,46 @@ depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'lib32-libpng12' 'ocl-icd' 'openssl
          'opencl-driver' 'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets')
 makedepends=('libarchive' 'xdg-user-dirs')
 options=('!strip')
-conflicts=('davinci-resolve' 'davinci-resolve-beta' 'davinci-resolve-studio')
-install=${pkgname}.install
+provides=('davinci-resolve')
+install=davinci-resolve.install
+
+if [ ${pkgname} == "davinci-resolve-studio-beta" ]; then
+# Variables for STUDIO edition
+	pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
+	_archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
+	sha256sums=('29c9a2d5fb94168e4bcbeee6b7c7f192ab471f3e04bf4c75631932d6b3907165')
+	conflicts=('davinci-resolve-beta' 'davinci-resolve' 'davinci-resolve-studio')
+	
+else
+# Variables for FREE edition
+	pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
+	_archive_name=DaVinci_Resolve_${pkgver}_Linux
+	sha256sums=('7f4517cc08dde962e515ec1bdfbc65b0f1e55368f8d82d31987590e62a6be9c0')
+	conflicts=('davinci-resolve' 'davinci-resolve-studio' 'davinci-resolve-studio-beta')
+	
+fi
+
+
+_archive=${_archive_name}.zip
+_installer_binary=${_archive_name}.run
 
 # Trying to make the user's life easier ;o)
 msg2 "Trying to fetch the archive file if available..."
 DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
 
-if [ ! -f ${PWD}/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
-	if [ -f $DOWNLOADS_DIR/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
-		ln -sfn $DOWNLOADS_DIR/DaVinci_Resolve_${pkgver}_Linux.zip ${PWD}
+if [ ! -f ${PWD}/${_archive} ]; then
+	if [ -f $DOWNLOADS_DIR/${_archive} ]; then
+		ln -sfn $DOWNLOADS_DIR/${_archive} ${PWD}
 	else
 		msg2 ""
 		msg2 "The package can be downloaded here: https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
-		msg2 "Please remember to put a downloaded package DaVinci_Resolve_${pkgver}_Linux.zip into the build directory ${PWD} or $DOWNLOADS_DIR"
+		msg2 "Please remember to put a downloaded package ${_archive}into the build directory ${PWD} or $DOWNLOADS_DIR"
 		msg2 ""
 	fi
 fi
 
-source=("local://DaVinci_Resolve_${pkgver}_Linux.zip")
-sha256sums=('SKIP')
+source=("local://${_archive}")
+
 
 prepare()
 {
@@ -66,7 +85,7 @@ package()
 	msg2 "Extracting from bundle..."
 	msg "Please wait, this take a while..."
 	cd "${srcdir}" || exit
-	bsdtar x -f DaVinci_Resolve_${pkgver}_Linux.run -C "${pkgdir}/opt/${_pkgname}"
+	bsdtar x -f ${_installer_binary} -C "${pkgdir}/opt/${_pkgname}"
 
 	msg2 "Add lib symlinks..."
 	cd "${pkgdir}/opt/${_pkgname}/" || exit
