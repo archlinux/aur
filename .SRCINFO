@@ -1,7 +1,7 @@
 pkgbase = sharexin-git
 	pkgdesc = ShareX for Linux and BSD
 	pkgver = 0.7.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ShareXin/ShareXin
 	arch = any
 	license = GPL3
@@ -20,7 +20,7 @@ pkgbase = sharexin-git
 	optdepends = scrot: Screenshot support with general X11
 	provides = sharexin
 	conflicts = sharexin
-	source = git+https://github.com/ShareXin/sharexin-git.git
+	source = git+https://github.com/ShareXin/ShareXin.git
 	md5sums = SKIP
 
 pkgname = sharexin-git

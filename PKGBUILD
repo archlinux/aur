@@ -2,7 +2,7 @@
 pkgname=sharexin-git
 _pkgname=ShareXin
 pkgver=0.7.2
-pkgrel=3
+pkgrel=4
 pkgdesc="ShareX for Linux and BSD"
 arch=('any')
 url="https://github.com/ShareXin/ShareXin"
@@ -28,7 +28,7 @@ optdepends=(
 )
 provides=('sharexin')
 conflicts=('sharexin')
-source=(git+https://github.com/ShareXin/$pkgname.git)
+source=(git+https://github.com/$_pkgname/$_pkgname.git)
 md5sums=('SKIP')
 
 build() {
