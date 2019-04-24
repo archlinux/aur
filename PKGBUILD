@@ -3,7 +3,7 @@
 
 pkgname=signal-desktop-bin
 pkgver=1.24.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Private messaging from your desktop'
 arch=('x86_64')
 url='https://github.com/signalapp/Signal-Desktop'
@@ -27,10 +27,13 @@ package() {
   install -d -m755 "${pkgdir}/usr/bin"
   ln -s /opt/Signal/signal-desktop "${pkgdir}/usr/bin"
 
-  # second desktop entry for starting in tray only
-  sed -e 's,^\(Name=.*\),\1 (Start in Tray),' -e 's,^\(Exec=.*\)%U,\1--start-in-tray %U,' \
-      "${pkgdir}"/usr/share/applications/signal-desktop.desktop \
-      > "${pkgdir}"/usr/share/applications/signal-desktop-tray.desktop
+  # add action for starting in tray only
+  cat << EOD >> "${pkgdir}/usr/share/applications/signal-desktop.desktop"
+Actions=Tray;
+[Desktop Action Tray]
+Exec="/opt/Signal/signal-desktop" --start-in-tray %U
+Name=Start in Tray
+EOD
 
   # use native Hunspell dictionaries
   # unfortunately only US-English is supported, see https://github.com/signalapp/Signal-Desktop/issues/1659
