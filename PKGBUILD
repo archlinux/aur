@@ -7,7 +7,7 @@
 # Contributor: Pavlo <pavlofreemen(at)gmail(dot)com>
 
 pkgname=font-manager
-pkgver=0.7.3.1
+pkgver=0.7.5
 _pkgver=${pkgver%\.1}
 pkgrel=1
 pkgdesc="A simple font management application for GTK+ Desktop Environments"
@@ -15,19 +15,19 @@ url="http://fontmanager.github.io/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libgee' 'libxml2' 'sqlite' 'gucharmap' 'file-roller')
-makedepends=('intltool' 'yelp-tools' 'gobject-introspection' 'vala')
-source=("https://github.com/FontManager/master/releases/download/${pkgver}/${pkgname}-${_pkgver}.tar.bz2")
-sha256sums=('a037078c735375a24d2943ef3b61e4b3244bcc2b2ee94a0672aabd07b434611c')
+makedepends=('intltool' 'yelp-tools' 'gobject-introspection' 'vala' 'meson' 'ninja')
+source=("https://github.com/FontManager/master/releases/download/${pkgver}/${pkgname}-${_pkgver}.tar.xz")
+sha256sums=('9795212bdbf765e48662b2e8cb20bd232384c96f15a4c21dbc37643b2319cb30')
 
 build() {
   cd ${srcdir}/${pkgname}-${_pkgver}
 
-  ./configure --prefix=/usr --with-file-roller
-  make -j1
+  meson --prefix /usr --buildtype=debugoptimized build_dir
+  ninja -v -C build_dir
 }
 
 package() {
   cd ${srcdir}/${pkgname}-${_pkgver}
 
-  make DESTDIR=${pkgdir} install
+  DESTDIR=${pkgdir} ninja -C build_dir install
 }
