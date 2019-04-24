@@ -23,7 +23,7 @@ _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Don-t-require-windows.h-when-using-native-Linux-gcc.patch'
         '0002-Handle-win64-in-dumpcpp-and-MetaObjectGenerator-read.patch')
-sha256sums=('281ec22e43c5e8385ed7da0ad7f317cf200bc6c2b72e6980e7c1c318635c636b'
+sha256sums=('15a5fde0a069f402bea9f422d8d2c46af440d202122c6307c2a6be642d20dc0f'
             '5b111b064fcb4d9cb72c52b71e9bc852ccb87983e5396edf6db8f8e923cb0c30'
             '1cc9636f58d4f393d936a5b64e0fb2ae1115edf8599df15203c1e98f30e6d96f')
 
