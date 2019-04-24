@@ -1,8 +1,8 @@
 # Maintainer: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 
 pkgname=python2-sortedcontainers
-_pkgname=sorted_containers
-pkgver=0.9.6
+_pkgname=python-sortedcontainers
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Library providing sorted container types for Python.'
 arch=(any)
@@ -11,7 +11,7 @@ license=('custom:Apache2')
 depends=(python2)
 makedepends=(python2-setuptools)
 source=(https://github.com/grantjenks/${_pkgname}/archive/v${pkgver}.tar.gz)
-md5sums=(04b9c905258533a580c235e99c4e282d)
+md5sums=('1aa2d4cef402341fdeea75bc51311e59')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
