@@ -1,16 +1,28 @@
 pkgbase = python-arabic-reshaper
 	pkgdesc = Reconstruct Arabic sentences to be used in applications that don't support Arabic
 	pkgver = 2.0.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mpcabd/python-arabic-reshaper
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
-	depends = python
-	depends = python-future
-	depends = python2-configparser
+	makedepends = python2-setuptools
+	makedepends = python-future
+	makedepends = python2-future
+	makedepends = python2-configparser
 	source = https://github.com/mpcabd/python-arabic-reshaper/archive/v2.0.14.tar.gz
 	md5sums = 96c0bf23cbf5396f2bb8e564f4b90739
 
 pkgname = python-arabic-reshaper
+	depends = python
+	depends = python-future
+	depends = python-setuptools
+	provides = python-arabic-reshaper
+
+pkgname = python2-arabic-reshaper
+	depends = python2
+	depends = python2-configparser
+	depends = python2-future
+	depends = python2-setuptools
+	provides = python2-arabic-reshaper
 
