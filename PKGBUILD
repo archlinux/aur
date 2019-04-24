@@ -8,27 +8,24 @@ url="https://github.com/ofek/privy"
 license=('dual')
 depends=('python-cryptography' 'python-argon2_cffi')
 makedepends=('python-setuptools')
-provides=('python-privy')
-source=("$pkgname"::'git+https://github.com/ofek/privy.git'
-        "https://raw.githubusercontent.com/ofek/privy/master/LICENSE-MIT"
-        "https://raw.githubusercontent.com/ofek/privy/master/LICENSE-APACHE")
-sha256sums=('SKIP'
-            'd502748a33db7ade1318e37f0b5f219f478330ed74a673e387756e53fb516715'
-            'cebfb5eab4eff50df87c3c5e7eb11a634d0fa32bb4b6380800f82fae606599ae')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+https://github.com/ofek/privy.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname}"
+	cd "$srcdir/${pkgname%-git}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/${pkgname}"
+	cd "$srcdir/${pkgname%-git}"
     python setup.py build
 }
 
 package() {
-	cd "$srcdir/${pkgname}"
+	cd "$srcdir/${pkgname%-git}"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -Dm644 "$srcdir/LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
-    install -Dm644 "$srcdir/LICENSE-APACHE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
+    install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE-MIT"
+    install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE-APACHE"
 }
