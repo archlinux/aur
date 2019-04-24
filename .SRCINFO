@@ -1,7 +1,7 @@
 pkgbase = musique
 	pkgdesc = A finely crafted music player
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flavio.tordini.org/musique
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = musique
 	makedepends = qt5-tools
 	depends = phonon-qt5
 	depends = taglib
-	depends = hicolor-icon-theme
+	depends = mpv
 	source = git+https://github.com/flaviotordini/musique.git#tag=1.6
 	source = git+https://github.com/flaviotordini/http.git
 	source = git+https://github.com/flaviotordini/idle.git

@@ -6,16 +6,19 @@
 
 pkgname=musique
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A finely crafted music player'
 arch=('x86_64')
 url='https://flavio.tordini.org/musique'
 _giturl='https://github.com/flaviotordini'
 license=('GPL3')
-depends=('phonon-qt5' 'taglib' 'hicolor-icon-theme')
+depends=('phonon-qt5' 'taglib' 'mpv')
 makedepends=('git' 'qt5-tools')
 source=("git+${_giturl}/musique.git#tag=${pkgver}" "git+${_giturl}/http.git" "git+${_giturl}/idle.git" "git+${_giturl}/media.git")
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
   mkdir -p build
