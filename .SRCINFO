@@ -1,0 +1,13 @@
+pkgbase = wapm
+	pkgdesc = WebAssembly Package Manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://wapm.io
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = https://github.com/wasmerio/wapm-cli/archive/v0.1.0.tar.gz
+	sha512sums = 727846ff658ce067b7db0e790530ef8af7cd99c80e117d57ab833d5585fb56d6bd68bfb4ca5091b2816bef827bf5edbbedacc7d6cf12c27606d92bf11076629e
+
+pkgname = wapm
+
