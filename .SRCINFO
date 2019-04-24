@@ -1,7 +1,7 @@
 pkgbase = gobeansdb
 	pkgdesc = Yet anonther distributed key-value storage system from Douban Inc.
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/douban/gobeansdb
 	arch = x86_64
 	license = BSD-3-Clause
@@ -9,8 +9,8 @@ pkgbase = gobeansdb
 	conflicts = gobeansdb-git
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/douban/gobeansdb/archive/v1.0.1.tar.gz
-	sha256sums = 8edcfb64efbdd43f581e7d8288df512238aec5bb107b8470ef0fea34ef881e3a
+	source = https://github.com/douban/gobeansdb/archive/v1.1.0.tar.gz
+	sha256sums = 3fd3648b837db31627762b72054330004824f6d967bc42a43d5683e3ae58f648
 
 pkgname = gobeansdb
 

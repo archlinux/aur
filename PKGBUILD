@@ -1,8 +1,8 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=gobeansdb
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Yet anonther distributed key-value storage system from Douban Inc.'
 url='https://github.com/douban/gobeansdb'
 makedepends=('go>=1.11')
@@ -11,7 +11,7 @@ arch=('x86_64')
 license=('BSD-3-Clause')
 conflicts=('gobeansdb-git')
 source=("https://github.com/douban/gobeansdb/archive/v${pkgver}.tar.gz")
-sha256sums=('8edcfb64efbdd43f581e7d8288df512238aec5bb107b8470ef0fea34ef881e3a')
+sha256sums=('3fd3648b837db31627762b72054330004824f6d967bc42a43d5683e3ae58f648')
 
 prepare() {
   cd "${srcdir}"
