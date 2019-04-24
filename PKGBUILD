@@ -1,8 +1,8 @@
 # Maintainer: Aidan Coward <aidan -dot- coward -at- gmail -dot- com>
 
 pkgname=xmage
-pkgver=1.4.34V0.1
-pkgrel=3
+pkgver=1.4.35V1
+pkgrel=0
 _java_version=8u201
 _java_dir=jre1.8.0_201
 
@@ -21,34 +21,16 @@ optdepends=('wmname: change window manager name for compatibility with certain W
 # depends=('jre8-openjdk')
 
 source=("http://xmage.de/files/xmage_${pkgver}.zip"
+	"http://xmage.today/java/jre-8u201-linux-x64.tar.gz"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt')
 
-sha256sums=("0f731af1cfa07faae133afff7ec5d9c039c18829f8cb67587a49d82bf683d158" 
+sha256sums=("eab48bc123d899449ff55cf2777a94074f5f392f941cd23001d807b5891afb9d" 
+	"12c745fbb8735bf450b8c6ba6f649bebe19915f05742975e443bdc8566170352"
 	"SKIP")
 
 package() {
 
 	cd "${srcdir}"
-
-	
-	# check if compatible java for xmage has already been downloaded,
-	# if so, skip the download 
-	msg2 "checking if a previously installed xmage java version exists..."
-	if [ -e /usr/share/xmage/${_java_dir} ] 
-
-	then
-	msg2 "java version exists, skipping download..."
-
-	else
-	msg2 "no dedicated java installation found..."
-	msg2 "downloading dedicated java version..."
-
-	wget -c --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jre-8u201-linux-x64.tar.gz
-	
-	msg2 "decompressing java tar.gz..."
-	tar -xzvf jre-${_java_version}-linux-x64.tar.gz
-	fi
-
 
 	# clean up filenames
 	detox -r -v ./* &> /dev/null
