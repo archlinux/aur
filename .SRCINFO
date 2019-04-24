@@ -1,0 +1,12 @@
+pkgbase = gnome-shell-extension-stealmyfocus
+	pkgdesc = Removes the annoying 'Window is ready' notification and focus window immediately.
+	pkgver = 2018_05_17
+	pkgrel = 1
+	url = https://github.com/tak0kada/gnome-shell-extension-stealmyfocus
+	arch = any
+	conflicts = gnome-shell-extension-stealmyfocus-git
+	source = https://github.com/tak0kada/gnome-shell-extension-stealmyfocus/archive/2d163feaa0ab5efabba3a3daa14243216c1775a8.tar.gz
+	sha256sums = 47eb7ada104b760e8240e17ad6590b4ee3dd963d5f382e5f263b3b373bfa9d9a
+
+pkgname = gnome-shell-extension-stealmyfocus
+
