@@ -2,7 +2,7 @@
 pkgname=sharexin-git
 _pkgname=ShareXin
 pkgver=0.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="ShareX for Linux and BSD"
 arch=('any')
 url="https://github.com/ShareXin/ShareXin"
@@ -26,6 +26,8 @@ optdepends=(
     'spectacle: Screenshot support with KDE'
     'scrot: Screenshot support with general X11'
 )
+provides=('sharexin')
+conflicts=('sharexin')
 source=(git+https://github.com/ShareXin/$pkgname.git)
 md5sums=('SKIP')
 
