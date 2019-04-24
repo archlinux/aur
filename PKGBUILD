@@ -22,7 +22,7 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Hardcode-linker-flags-for-platform-plugin.patch')
-sha256sums=('0ecf9c0cb123dd89c4360dc946957a7527a2fb1c334e1bcf124cc740ca2f9bba'
+sha256sums=('23da63013101e97c4e663bb4f6dbb1c7b4386679c634680d3b8d79bcc59d26b3'
             '72d908a2c89a5577fe6723bf76af1799d28e2377bc6bfa7ff8969193ee79f89d')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
