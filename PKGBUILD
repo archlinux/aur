@@ -15,6 +15,12 @@ conflicts=('emacs-helm')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
+prepare() {
+    cd "${srcdir}/${pkgname}"
+    sed -i 's/ln -fs/ln -frs/g' Makefile
+    sed -i "s/BIN\}helm/BIN\}emacs-helm/g" Makefile
+}
+
 pkgver() {
     cd "${srcdir}/${pkgname}"
     ( set -o pipefail
@@ -31,7 +37,6 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}"
     install -d "${pkgdir}/usr/share/emacs/site-lisp/${_pkgname}"
+    install -d "${pkgdir}/usr/bin"
     make install PREFIX="${pkgdir}/usr/"
-    # delete soft link to your chroot directory
-    rm "${pkgdir}/usr/bin/helm" -Iv
 }
