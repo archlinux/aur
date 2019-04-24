@@ -2,12 +2,13 @@
 pkgname=sharexin-git
 _pkgname=ShareXin
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ShareX for Linux and BSD"
 arch=('any')
 url="https://github.com/ShareXin/ShareXin"
 license=('GPL3')
 depends=(
+    'cairo'
     'curl'
     'gtk3'
     'gdk-pixbuf2'
@@ -17,7 +18,7 @@ depends=(
     'xcb-util'
 )
 makedepends=(
-    'cairo'
+    'cargo'
     'clang'
 )
 optdepends=(
