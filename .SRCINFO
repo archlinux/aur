@@ -11,6 +11,8 @@ pkgbase = xtrx-xc3sprog-git
 	depends = libftdi-compat
 	depends = libusb3380-git
 	provides = xtrx-xc3sprog
+	conflicts = xc3sprog
+	conflicts = xc3sprog-svn
 	source = git+https://github.com/xtrx-sdr/xc3sprog.git
 	md5sums = SKIP
 
