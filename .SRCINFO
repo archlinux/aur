@@ -8,7 +8,7 @@ pkgbase = emacs-helm-git
 	makedepends = git
 	depends = emacs
 	depends = emacs-async
-	provides = emacs-helm=${pkgver}
+	provides = emacs-helm=v3.2.r18.g1424ee4c
 	conflicts = emacs-helm
 	source = emacs-helm-git::git+https://github.com/emacs-helm/helm.git
 	sha256sums = SKIP
