@@ -1,7 +1,7 @@
 # Maintainer: Alexander Couzens <lynxis@fe80.eu>
 pkgname=libxtrx-git
-pkgver=r51.4f1eb7b5f77c
-pkgrel=2
+pkgver=r53.9af1c458b567
+pkgrel=1
 pkgdesc="High level API for the xtrx SDR"
 _gitname=libxtrx
 arch=('any')
@@ -13,10 +13,8 @@ depends=('liblms7002m-xtrx'
          'libxtrxll'
          'qcustomplot-qt5'
          'soapysdr')
-source=("git+$url"
-        'fix-include-lms.patch')
-md5sums=('SKIP'
-         '16fd9bed32278a3eea1f1545bfc40334')
+source=("git+$url")
+md5sums=('SKIP')
 provides=('libxtrx')
 conflicts=('libxtrx')
 
@@ -27,7 +25,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  patch -Np1 -i "$srcdir/fix-include-lms.patch"
   mkdir -p build
   cd build
 
