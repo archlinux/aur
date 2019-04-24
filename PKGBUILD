@@ -1,6 +1,6 @@
 # Maintainer: LambdAurora <aurora42lambda@gmail.com>
 pkgname=lambdacommon-git
-pkgver=20181121
+pkgver=20190424
 pkgrel=1
 pkgdesc="A library written in C++ with common features."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -21,6 +21,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
+    git submodule update --init
 }
 
 build() {
@@ -41,3 +42,4 @@ package() {
 	install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 	make DESTDIR="$pkgdir/" install
 }
+
