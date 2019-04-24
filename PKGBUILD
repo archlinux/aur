@@ -92,7 +92,7 @@ _v_b='199'
 
 _update='3'
 
-pkgrel=1
+pkgrel=2
 
 
 _sp='cluster_edition'

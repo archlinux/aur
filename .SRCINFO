@@ -1,7 +1,7 @@
 pkgbase = intel-parallel-studio-xe
 	pkgdesc = Intel C++ C and FORTRAN compiler - Intel Parallel Studio XE - Cluster Edition - icc icpc ifort ipp mkl
 	pkgver = 2019.3.199
-	pkgrel = 1
+	pkgrel = 2
 	url = http://software.intel.com/en-us/articles/non-commercial-software-download/
 	arch = x86_64
 	license = custom
@@ -58,18 +58,18 @@ pkgname = intel-common-libs
 
 pkgname = intel-openmp
 	pkgdesc = Intel OpenMP Implementation 19.0.3
-	depends = intel-common-libs=
+	depends = intel-common-libs=2019.3.199
 
 pkgname = intel-compiler-base
 	pkgdesc = Intel C/C++ 19.0.3
 	install = intel-composer.install
-	depends = intel-common-libs=
-	depends = intel-openmp=
+	depends = intel-common-libs=2019.3.199
+	depends = intel-openmp=2019.3.199
 
 pkgname = intel-fortran-compiler
 	pkgdesc = Intel Fortran compiler 19.0.3
 	install = intel-composer.install
-	depends = intel-compiler-base=
+	depends = intel-compiler-base=2019.3.199
 
 pkgname = intel-ipp
 	pkgdesc = Intel Integrated Performance Primitives
@@ -78,7 +78,7 @@ pkgname = intel-ipp
 pkgname = intel-mkl
 	pkgdesc = Intel Math Kernel Library (Intel® MKL) 2019.3.199
 	install = intel-mkl.install
-	depends = intel-common-libs=
+	depends = intel-common-libs=2019.3.199
 	optdepends = intel-openmp: Intel OpenMP Implementation
 	backup = etc/intel-mkl-th.conf
 
