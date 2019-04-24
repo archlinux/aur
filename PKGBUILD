@@ -6,7 +6,7 @@ source android-env.sh ${_android_arch}
 
 pkgname=android-${_android_arch}-libvorbis
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Vorbis codec library (android)"
 arch=('any')
 url="http://xiph.org"
@@ -49,7 +49,7 @@ package() {
     cd "${srcdir}"/libvorbis-${pkgver}
 
     make DESTDIR="$pkgdir" install
-    rm -r "${pkgdir}"/${ANDROID_LIBS}/share/doc
+    rm -r "${pkgdir}"/${ANDROID_LIBS}/share
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_LIBS}/lib/*.so
     ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_LIBS}/lib/*.a
 }
