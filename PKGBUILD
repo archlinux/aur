@@ -21,7 +21,7 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 groups=('mingw-w64-qt5')
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('8eb9cff9492937daa1bf5d001e39afec68c310ce5596807345e2a555dcc80b8e')
+sha256sums=('72d1620bcc94e14caa91ddf344c84cd1288aa9479e00b1bb3b5e51f92efe088a')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
