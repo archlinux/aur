@@ -1,5 +1,5 @@
 pkgbase = cups-git
-	pkgver = 2.3b7.r149.gab8fab615
+	pkgver = 2.3b7.r152.gb13a9a963
 	pkgrel = 1
 	url = https://www.cups.org/
 	arch = x86_64
@@ -52,7 +52,7 @@ pkgname = libcups-git
 	depends = krb5
 	depends = avahi
 	depends = libusb
-	provides = libcups=2.3b7.r149.gab8fab615
+	provides = libcups=2.3b7.r152.gb13a9a963
 	conflicts = libcups
 
 pkgname = cups-git
