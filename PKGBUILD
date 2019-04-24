@@ -1,39 +1,57 @@
-# Maintainer: John Lane <archlinux at jelmail dot com>
+# Maintainer: Jan Peter Koenig <public@janpeterkoenig.com>
+# Contributor: John Lane <archlinux at jelmail dot com>
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 
 pkgname=dcc
-pkgver=1.3.162
+pkgver=1.3.163
 pkgrel=1
 pkgdesc="Distributed Checksum Clearinghouse spam tool"
-url="http://www.rhyolite.com/anti-spam/dcc/"
-arch=('i686' 'x86_64')
+url="http://www.rhyolite.com/anti-spam/dcc"
+arch=('x86_64')
 license=('custom')
 depends=('sh')
-source=(http://www.rhyolite.com/anti-spam/dcc/source/old/$pkgname-$pkgver.tar.Z)
-sha256sums=('f98413df06d1c25a56cafc016adf9e3348ccce6bc575ea5b7d12556b8e83bc91')
+
+source=(
+	"https://www.dcc-servers.net/dcc/source/old/${pkgname}-${pkgver}.tar.Z"
+)
+
+sha256sums=(
+	'195195b79ee15253c4caf48d4ca3bf41b16c66a8cb9a13984a1dc4741d7f6735'
+)
+
+_dstdir="/var/lib/${pkgname}"
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  CPPFLAGS="$CPPFLAGS -O2" # https://bbs.archlinux.org/viewtopic.php?id=182812
-  ./configure --with-installroot=${pkgdir} \
-  --mandir=/usr/share/man --homedir=/opt/dcc \
-  --bindir=/usr/bin --libexecdir=/usr/lib/dcc
-  make
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	
+	# Following fix is no longer needed
+	# CPPFLAGS="$CPPFLAGS -O2" # https://bbs.archlinux.org/viewtopic.php?id=182812
+
+	./configure \
+		--with-installroot="${pkgdir}" \
+		--mandir="/usr/share/man" \
+		--homedir="${_dstdir}" \
+		--bindir="/usr/bin" \
+		--libexecdir="/usr/lib/${pkgname}"
+
+	make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  MAKEFLAGS="$MAKEFLAGS -j1" # AUR comment zmeYski 2014-10-14 17:57
-  make DESTDIR=${pkgdir}/ install
-  install -d $pkgdir/usr/share/licenses/$pkgname
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  
-  #Fix file permissions
-  find $pkgdir/ -group bin -exec chgrp root {} \;
-  find $pkgdir/ -user bin -exec chown root {} \;
-  find $pkgdir/opt/dcc -type f -exec chmod 644 {} \;
-  chmod 755 $pkgdir/opt/dcc/log	
-    
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
+	# AUR comment zmeYski 2014-10-14 17:57
+	MAKEFLAGS="$MAKEFLAGS -j1"
+
+	make DESTDIR="${pkgdir}/" install
+	
+	# License
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	# Fix file and dir permissions
+	chown -R root:root "${pkgdir}/"
+
+	# Fix libraries not being stripped
+	find "${pkgdir}/" -exec file {} \; | grep -i elf|grep "not stripped"|awk -F: '{ print $1 }'|xargs strip
 }
 
