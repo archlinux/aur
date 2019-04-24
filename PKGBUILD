@@ -5,7 +5,7 @@ _gituser="emacs-lsp"
 _gitrepo="lsp-ui"
 
 pkgname=emacs-lsp-ui-git
-pkgver=6.0r1.g6cf16cc
+pkgver=6.0.r19.g7c5c8a6
 pkgrel=1
 pkgdesc="UI modules for lsp-mode"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  git describe --tags | sed 's+-+r+' | tr - .
+  git describe --tags | sed 's+-+.r+' | tr - .
 }
 
 build() {
