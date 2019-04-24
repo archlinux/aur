@@ -1,36 +1,55 @@
 #!/usr/bin/env sh
 
-appver="7.6-1"
-pkgdir="/usr/share/notepadpp"
-localdir="$HOME/.local/share/notepadpp"
+app_name='notepadpp'
+app_ver='SED_APPVER'
 
-curr_ver="$(cat "$localdir/notepadpp.ver")"
+pkgdir="/usr/share/${app_name}"
+localdir="${HOME}/.local/share/${app_name}"
+verfile="${localdir}/${app_name}.ver"
 
 unset WINEPREFIX
 
-if [ ! -d "$localdir" ]; then
-    mkdir -p "$localdir" || { echo "Can't create directory"; exit 1; }
-
-    cp "$pkgdir/contextMenu.xml" "$localdir/contextMenu.xml"
-    cp "$pkgdir/doLocalConf.xml" "$localdir/doLocalConf.xml"
-    cp "$pkgdir/functionList.xml" "$localdir/functionList.xml"
-    cp "$pkgdir/langs.model.xml" "$localdir/langs.model.xml"
-    cp "$pkgdir/shortcuts.xml" "$localdir/shortcuts.xml"
-    cp "$pkgdir/stylers.model.xml" "$localdir/stylers.model.xml"
-
-    ln -s "$pkgdir/notepad++.exe" "$localdir/notepadpp"
-    ln -s "$pkgdir/SciLexer.dll" "$localdir/SciLexer.dll"
-
-    ln -s "$pkgdir/change.log" "$localdir/change.log"
-    ln -s "$pkgdir/readme.txt" "$localdir/readme.txt"
-    touch "$localdir/notepadpp.ver"
+if [ ! "${verfile}" ]; then
+    mkdir -p "${localdir}"
+    touch "${verfile}"
 fi
 
-if [ ! "$appver" = "$curr_ver" ]; then
-    cp -rs "$pkgdir/plugins" "$localdir/plugins"
-    cp -rs "$pkgdir/themes" "$localdir/themes"
-    cp -rs "$pkgdir/localization" "$localdir/localization"
-    echo "$appver" > "$localdir/notepadpp.ver"
+if [ ! "$(cat "${verfile}")" = "${app_ver}" ]; then
+    # Delete broken symlinks and empty dirs
+    find "${localdir}" -xtype l -delete
+    find "${localdir}" -type d -empty -delete
+
+    # Copy if file does not exists
+    [ -e "${localdir}/contextMenu.xml" ] || 
+        cp "${pkgdir}/contextMenu.xml"   "${localdir}/contextMenu.xml"
+
+    [ -e "${localdir}/doLocalConf.xml" ] || 
+        cp "${pkgdir}/doLocalConf.xml"   "${localdir}/doLocalConf.xml"
+
+    [ -e "${localdir}/functionList.xml" ] || 
+        cp "${pkgdir}/functionList.xml"  "${localdir}/functionList.xml"
+
+    [ -e "${localdir}/langs.model.xml" ] || 
+        cp "${pkgdir}/langs.model.xml"   "${localdir}/langs.model.xml"
+
+    [ -e "${localdir}/shortcuts.xml" ] || 
+        cp "${pkgdir}/shortcuts.xml"     "${localdir}/shortcuts.xml"
+
+    [ -e "${localdir}/stylers.model.xml" ] || 
+        cp "${pkgdir}/stylers.model.xml" "${localdir}/stylers.model.xml"
+
+    ln -s "${pkgdir}/notepad++.exe" "${localdir}/notepadpp"
+    ln -s "${pkgdir}/SciLexer.dll"  "${localdir}/SciLexer.dll"
+    ln -s "${pkgdir}/change.log"    "${localdir}/change.log"
+    ln -s "${pkgdir}/readme.txt"    "${localdir}/readme.txt"
+
+    cp -rs "${pkgdir}/autoCompletion"  "${localdir}"
+    cp -rs "${pkgdir}/localization"    "${localdir}"
+    cp -rs "${pkgdir}/plugins"         "${localdir}"
+    cp -rs "${pkgdir}/themes"          "${localdir}"
+    cp -rs "${pkgdir}/userDefineLangs" "${localdir}"
+
+    echo "${app_ver}" > "${verfile}"
 fi
 
-WINEDEBUG=-all wine "$HOME/.local/share/notepadpp/notepadpp" "$@"
+WINEDEBUG=-all wine "${localdir}/${app_name}" "$@"
