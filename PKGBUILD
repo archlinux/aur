@@ -27,7 +27,7 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Ensure-static-3rdparty-libs-are-linked-correctly.patch')
-sha256sums=('a31f27f457ac57e7203ae808b95ba0053d182e22425de03840af761e343d8bef'
+sha256sums=('52d589be2852ada0c000b06cc411b61e521cd0797470be567fd1625bcc9d75c6'
             'f67989072e3f7628dc9e5dd7a47574e31c95bd7a0352de5be0bfd25d97be5a63')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
