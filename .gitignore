@@ -2,6 +2,6 @@ googletest/
 pester/
 pkg/
 *.pkg.tar
-*.gz
 powershell/
+powershell-native/
 src/

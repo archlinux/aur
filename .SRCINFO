@@ -1,6 +1,6 @@
 pkgbase = powershell-git
 	pkgdesc = A cross-platform automation and configuration tool/framework (git version)
-	pkgver = 6.2.0.preview.2.60.gb55dc807c
+	pkgver = 6.2.0.rc.1.197.gceed73d73
 	pkgrel = 1
 	url = https://github.com/PowerShell/PowerShell
 	install = powershell.install
@@ -15,13 +15,11 @@ pkgbase = powershell-git
 	provides = powershell
 	conflicts = powershell
 	source = powershell::git+https://github.com/PowerShell/PowerShell.git
-	source = pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop
-	source = googletest::git+https://github.com/google/googletest.git
-	source = build.sh
+	source = powershell-native::git+https://github.com/PowerShell/PowerShell-Native.git
+	source = Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = 70d89b489a4ae0198b9f8dbeb7bb9c40
+	md5sums = 56f02557575a6022b60be609951eee78
 
 pkgname = powershell-git
 
