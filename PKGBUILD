@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-full-git
 _srcname=ffmpeg
-pkgver=4.2.r93521.g0e1ea034d8
+pkgver=4.2.r93657.g7c2ee8d43d
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -85,9 +85,14 @@ build() {
         # on systems with legacy nvidia drivers
         if pacman -Qs '^nvidia-340xx-utils' >/dev/null 2>&1
         then
-            _ldflags="${_ldflags} -L/usr/lib/nvidia"
+            _ldflags+=' -L/usr/lib/nvidia'
         fi
     fi
+    
+    # fix tensorflow include dir
+    ## upstream ffmpeg excects : /usr/include/tensorflow/
+    ## tensorflow package ships: /usr/include/tensorflow/tensorflow/
+    _cflags+=' -I/usr/include/tensorflow'
     
     printf '%s\n' '  -> Running ffmpeg configure script...'
     
