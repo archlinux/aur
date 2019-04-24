@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-coin-or-mp
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="C-API library that supports most of the functionality of CLP (Coin LP), CBC (Coin Branch-and-Cut), and CGL (Cut Generation Library) projects (mingw-w64)"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(mingw-w64-coin-or-cbc)
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=(https://www.coin-or.org/download/source/CoinMP/CoinMP-$pkgver.tgz)
-sha256sums=('a1a665db36c7fd69c1e53fffbd108cae1bf22f08acf81c394cd454b8168f22f7')
+sha256sums=('3459fb0ccbdd39342744684338984ac4cc153fb0434f4cae8cf74bd67490a38d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
