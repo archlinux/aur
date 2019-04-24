@@ -2,7 +2,7 @@
 pkgname=xtrx-xc3sprog-git
 pkgver=r813.d97d672
 pkgrel=1
-pkgdesc="xc3sprog is a suite of utilities for programming Xilinx FPGAs, CPLDs, and EEPROMs with the Xilinx Parallel Cable and other JTAG adapters under Linux. Special branch for XTRX over USB3 adapter"
+pkgdesc="Suite of utilities for programming Xilinx FPGAs, CPLDs, and EEPROMs with the Xilinx Parallel Cable and other JTAG adapters under Linux. Special branch for XTRX over USB3 adapter"
 provides=("${pkgname%-git}")
 conflicts=()
 arch=('i686' 'x86_64')
