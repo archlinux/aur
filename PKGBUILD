@@ -4,6 +4,7 @@
 pkgname=('visual-sfm')
 pkgver=0.5.26
 pkgrel=4
+#options=(debug !strip !makeflags)
 pkgdesc='A Visual Structure from Motion System; create 3d models from photos.'
 arch=('x86_64')
 url='http://ccwu.me/vsfm/'
@@ -24,7 +25,7 @@ md5sums=(
   'c063c0236d8649b2281b334ecde73784'
   '672f5cd6c1b4c08517409809b819c547'
 )
-options=(debug !strip !makeflags)
+
 build() {
  
   msg "building Multicore Bundle Adjustment"
@@ -41,7 +42,11 @@ build() {
   sed -i 's:$(LIB_DIR)/blas.a:-lblas:' makefile
   sed -i 's:$(LIB_DIR)/libf2c.a:-lf2c:' makefile
   sed -i 's:g++:g++-5:' makefile
-#  sed -i 's:$(LIB_DIR)/libjpeg.a:-ljpeg:' makefile
+# sed -i 's:$(LIB_DIR)/libjpeg.a:-ljpeg:' makefile
+# Won't work with system libjpeg
+#Thread 56 "VisualSFM" received signal SIGSEGV, Segmentation fault.
+#[Switching to Thread 0x7fff72ffd700 (LWP 31903)]
+#0x00007ffff5bdb566 in jpeg_CreateDecompress () from /usr/lib/libjpeg.so.8
   make
 }
  
