@@ -6,14 +6,17 @@ source android-env.sh ${_android_arch}
 
 pkgname=android-${_android_arch}-ffmpeg
 pkgver=4.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete solution to record, convert and stream audio and video (android)"
 arch=('any')
 url="http://ffmpeg.org/"
 license=('GPL3')
-depends=("android-${_android_arch}-libvorbis"
+depends=("android-${_android_arch}-bzip2"
+         "android-${_android_arch}-libtheora"
+         "android-${_android_arch}-libvorbis"
          "android-${_android_arch}-libvpx"
-         "android-${_android_arch}-opus")
+         "android-${_android_arch}-opus"
+         "android-${_android_arch}-zlib")
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-pkg-config' 'yasm')
 source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
@@ -44,12 +47,15 @@ build() {
             ;;
         armv7a-eabi)
             target_arch=arm
+            export LDFLAGS="-L${ANDROID_LIBS}/lib -ltheoraenc -ltheoradec -logg"
             ;;
         x86)
             target_arch=x86_32
+            export LDFLAGS="-L${ANDROID_LIBS}/lib -ltheoraenc -ltheoradec -logg"
             ;;
         x86-64)
             target_arch=x86_64
+            export LDFLAGS="-L${ANDROID_LIBS}/lib -ltheoraenc -ltheoradec -logg"
             ;;
     esac
 
@@ -69,9 +75,9 @@ build() {
         --nm=${ANDROID_NM}
         --disable-debug
         --enable-static
+        --enable-shared
         --disable-stripping
         --enable-gpl
-        --enable-shared
         --enable-version3
         --enable-pic
         --disable-doc
@@ -81,9 +87,11 @@ build() {
         --disable-v4l2-m2m
         --disable-indev=v4l2
         --disable-outdev=v4l2
+        --enable-libtheora
         --enable-libvorbis
         --enable-libvpx
-        --enable-libopus"
+        --enable-libopus
+        --enable-zlib"
 
     # Platform specific patches
     case "$_android_arch" in
