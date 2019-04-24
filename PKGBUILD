@@ -1,34 +1,56 @@
 # Maintainer: Seth Murphy <seth.murphy18@gmail.com>
 # PGP ID: 1DB95DC235C2C613
 
-pkgname="expandrive-bin"
-pkgver="7.0.5"
-pkgrel="1"
-pkgdesc="A utility for managing multiple cloud storage services"
-arch=("x86_64")
-url="https://www.expandrive.com/"
-license=("custom:proprietary")
+pkgname='expandrive-bin'
+pkgver='7.0.8'
+pkgrel='1'
+pkgdesc='A utility for managing multiple cloud storage services'
+arch=('x86_64')
+url='https://www.expandrive.com/'
+license=('custom:proprietary')
 depends=(
-    "gconf>=2"
-    "libnotify"
-    "libappindicator-gtk3"
-    "libxtst"
-    "nss"
-    "libxss"
+    'fuse2'
+    'gtk3'
+    'nss'
+    'libxss'
 )
 
-source=("https://packages.expandrive.com/pool/stable/e/ex/ExpanDrive_${pkgver}_amd64.deb")
-sha256sums=("7676526f6655605a3c0774a639b154d865678e8e7b07d889e16bc080e7bd632b")
+source=('LICENSE'
+    "https://packages.expandrive.com/pool/stable/e/ex/ExpanDrive_${pkgver}_amd64.deb")
+sha256sums=('dd77a86c9319a5e12b066688a0c804f942fd358b096ad1981eba04426dd16781'
+    '17aab387629ebe365d8352d12a04c2926fdaaf7ba65be125f8994590899d7c47')
+
+prepare() {
+    # Create the package directory, if it doesn't already exist
+    if [ ! -d "$srcdir/data" ]; then
+        mkdir "$srcdir/data"
+    else
+        # If the directory exists, wipe its contents
+        rm -rf "$srcdir/data"
+        mkdir "$srcdir/data"
+    fi
+
+    tar -xf "$srcdir/data.tar.xz" -C "$srcdir/data"
+
+    # Remove unnecessary files from the package
+    rm -rf "$srcdir/data/opt/ExpanDrive/resources/app.asar.unpacked"
+}
 
 package() {
-  tar -xf data.tar.xz -C "${pkgdir}"
+    # Copy the source files to the package directory
+    cp -R "$srcdir/data/opt/" "$pkgdir/opt/"
+    cp -R "$srcdir/data/usr/" "$pkgdir/usr/"
+
+    # Install the LICENSE file in the correct place
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 post_install() {
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # Link the ExpanDrive binary to /usr/local/bin
     ln -sf '/opt/ExpanDrive/expandrive' '/usr/local/bin/expandrive'
 }
 
-post_remove() {
+pre_remove() {
+    # Remove ExpanDrive from /usr/local/bin
     rm -f '/usr/local/bin/expandrive'
 }

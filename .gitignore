@@ -50,3 +50,9 @@ src/
 
 # Ignore any deb file that gets downloaded (for testing)
 *.deb*
+
+# Ignore build directory. This is just some utilities I use when pushing changes
+build/
+
+# Ignore .vscode
+.vscode
