@@ -5,9 +5,9 @@ pkgbase = domain-expiration-git
 	url = https://gitnet.fr/deblan/domain-expiration
 	arch = any
 	license = GPL
-	makedepends = composer
 	depends = php>=7.3
 	depends = whois
+	depends = composer
 	source = domain-expiration-git::git+https://gitnet.fr/deblan/domain-expiration
 	md5sums = SKIP
 
