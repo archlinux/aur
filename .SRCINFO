@@ -1,0 +1,14 @@
+pkgbase = upsm
+	pkgdesc = Qt-based ups monitor (front-end for upsc from Network UPS Tools).
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/psemiletov/upsm
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = gcc-libs
+	source = https://github.com/psemiletov/upsm/archive/2.2.0.tar.gz
+	md5sums = 9b367d9eb3816e819eea7d633c410e72
+
+pkgname = upsm
+
