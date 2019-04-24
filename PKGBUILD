@@ -3,7 +3,7 @@
 
 pkgname=powershell
 binaryname=pwsh
-_pkgver=6.1.3
+_pkgver=6.2.0
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (latest release)'
@@ -13,33 +13,79 @@ license=('MIT')
 makedepends=('git' 'cmake' 'dotnet-sdk>=2.0')
 depends=('icu' 'openssl-1.0')
 source=($pkgname::git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver
-        googletest::git+https://github.com/google/googletest.git
-        build.sh)
+        powershell-native::git+https://github.com/PowerShell/PowerShell-Native.git
+        googletest::git+https://github.com/google/googletest.git)
 md5sums=('SKIP'
          'SKIP'
-         '2ddd2c3b33c7df1c85f49fa6f7763566')
+         'SKIP')
 install=powershell.install
 
 prepare() {
-  cd $pkgname
+  cd $srcdir/powershell-native
   git submodule init
-  git config submodule.src/libpsl-native/test/googletest.url $srcdir/googletest
   git submodule update
-  git clean -dfx
 
+  cd $srcdir/$pkgname
   rm global.json
 }
 
 build() {
   cd $pkgname
-  TERM=xterm $srcdir/build.sh
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
+
+  ## Restore
+  dotnet restore src/powershell-unix
+  dotnet restore src/ResGen
+  dotnet restore src/TypeCatalogGen
+
+  ## Setup the build target to gather dependency information
+  targetFile="src/Microsoft.PowerShell.SDK/obj/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets"
+  cat > $targetFile <<-"EOF"
+  <Project>
+      <Target Name="_GetDependencies"
+              DependsOnTargets="ResolveAssemblyReferencesDesignTime">
+          <ItemGroup>
+              <_RefAssemblyPath Include="%(_ReferencesFromRAR.HintPath)%3B"  Condition=" '%(_ReferencesFromRAR.NuGetPackageId)' != 'Microsoft.Management.Infrastructure' "/>
+          </ItemGroup>
+          <WriteLinesToFile File="$(_DependencyFile)" Lines="@(_RefAssemblyPath)" Overwrite="true" />
+      </Target>
+  </Project>
+EOF
+  dotnet msbuild src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj /t:_GetDependencies "/property:DesignTimeBuild=true;_DependencyFile=$(pwd)/src/TypeCatalogGen/powershell.inc" /nologo
+
+  ## Generate 'powershell.version'
+  git --git-dir="$(pwd)/.git" describe --dirty --abbrev=60 > "$(pwd)/powershell.version"
+
+  ## create the telemetry flag file
+  touch "$(pwd)/DELETE_ME_TO_DISABLE_CONSOLEHOST_TELEMETRY"
+
+  ## Generate resource binding C# files
+  pushd src/ResGen
+  dotnet run
+  popd
+
+  ## Generate 'CorePsTypeCatalog.cs'
+  pushd src/TypeCatalogGen
+  dotnet run ../System.Management.Automation/CoreCLR/CorePsTypeCatalog.cs powershell.inc
+  popd
+
+  ## Build native component
+  pushd $srcdir/powershell-native/src/libpsl-native
+  cmake -DCMAKE_BUILD_TYPE=Debug .
+  make -j
+  popd
+
+  ## Build powershell core
+  dotnet publish --configuration Linux "src/powershell-unix/" --output bin --runtime "linux-x64"
 }
 
-# TODO: pester has moved, and the testing process has changed
-# check() {
-#   cd $pkgname/src/libpsl-native
-#   make test
-# }
+check() {
+  cd $srcdir/powershell-native/src/libpsl-native
+  make test
+
+  cd $srcdir/powershell/test/xUnit
+  dotnet test
+}
 
 package() {
   cd "$pkgname/src/powershell-unix"
