@@ -1,8 +1,8 @@
-# Maintainer: Hans-Nikolai Viessmann <hv15 AT hw.ac.uk>
+# Maintainer: Hans-Nikolai Viessmann <hans AT viess.mn>
 
 _pkgname='autodl-irssi'
 pkgname="${_pkgname}-community"
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='Community fork of the plugin for irssi which monitors IRC announce channels and downloads torrents based on user defined filters.'
 arch=('any')
@@ -23,7 +23,7 @@ provides=("${_pkgname}")
 replaces=("autodl-irssi-svn")
 conflicts=("autodl-irssi-svn")
 source=("https://github.com/autodl-community/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('c7c235d64e91b27d2a0902c3a80ff119')
+md5sums=('693c4f677b2400283ac536e96506c3d2')
 
 package() {
   cd "$srcdir/${_pkgname}-${pkgver}"

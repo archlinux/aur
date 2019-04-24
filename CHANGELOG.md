@@ -3,6 +3,15 @@
 Notable changes for [autodl-irssi](https://github.com/autodl-community/autodl-irssi).
 
 
+## [v2.5.0](https://github.com/autodl-community/autodl-irssi/releases/tag/v2.5.0) (2019-02-06)
+
+[Commits](https://github.com/autodl-community/autodl-irssi/compare/v2.4.0...v2.5.0)
+
+### Added
+
+* UHD Blu-Ray constant.
+
+
 ## [v2.4.0](https://github.com/autodl-community/autodl-irssi/releases/tag/v2.4.0) (2018-09-08)
 
 [Commits](https://github.com/autodl-community/autodl-irssi/compare/v2.3.0...v2.4.0)
