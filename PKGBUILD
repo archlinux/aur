@@ -1,30 +1,31 @@
-# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
-pkgname=git-pw-git
-pkgver=1.5.0.1+ged39855379
+_pkgname=git-pw
+pkgname=${_pkgname}-git
+pkgver=1.5.1.r2.g0e4a1fd
 pkgrel=1
-pkgdesc="Git integration for Patchwork, the web-based patch tracking system"
-arch=(any)
-url="https://github.com/getpatchwork/git-pw"
-license=(MIT)
-source=("git+$url")
-sha256sums=(SKIP)
-depends=(python python-{pbr,click,requests,tabulate,arrow})
-makedepends=(python-setuptools)
-conflicts=(git-pw)
-provides=("git-pw=${pkgver%+*}")
+pkgdesc="A tool for integrating Git with Patchwork, the web-based patch tracking system"
+url='https://github.com/getpatchwork/git-pw'
+license=('MIT')
+arch=('any')
+depends=(
+  'python-requests'
+  'python-click'
+  'python-pbr'
+  'python-arrow'
+  'python-tabulate'
+)
+makedepends=('python-setuptools')
+source=("${_pkgname}::git+https://github.com/getpatchwork/git-pw.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd git-pw
-  git describe --long --abbrev=10 | sed 's/-/./; s/-/+/; s/-/./'
-}
-
-build() {
-  cd git-pw
-  python setup.py build
+  cd ${_pkgname}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd git-pw
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd ${_pkgname}
+  python setup.py install --root="${pkgdir}" --optimize=1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

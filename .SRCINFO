@@ -1,20 +1,17 @@
 pkgbase = git-pw-git
-	pkgdesc = Git integration for Patchwork, the web-based patch tracking system
-	pkgver = 1.5.0.1+ged39855379
+	pkgdesc = A tool for integrating Git with Patchwork, the web-based patch tracking system
+	pkgver = 1.5.1.r2.g0e4a1fd
 	pkgrel = 1
 	url = https://github.com/getpatchwork/git-pw
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
-	depends = python-pbr
-	depends = python-click
 	depends = python-requests
-	depends = python-tabulate
+	depends = python-click
+	depends = python-pbr
 	depends = python-arrow
-	provides = git-pw=1.5.0.1
-	conflicts = git-pw
-	source = https://github.com/getpatchwork/git-pw
+	depends = python-tabulate
+	source = git-pw::git+https://github.com/getpatchwork/git-pw.git
 	sha256sums = SKIP
 
 pkgname = git-pw-git
