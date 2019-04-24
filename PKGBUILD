@@ -1,7 +1,7 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="8.0.330.0"
-pkgrel="2"
+pkgver="8.0.331.0"
+pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
 arch=('x86_64')
@@ -13,7 +13,7 @@ _x64file="EditorV8.x64.msi"
 _installdir="/usr/lib"
 
 source=($_downloadsource/$_x64file)
-sha256sums=('d2234c4c823ec8df34db7a9f8efe2cee75e7c07295ce04f71d7e74376a7e80c9')
+sha256sums=('7dc2d941f140ca295717213d1cc9b75e72d23eda99a1f23355539f9268e72f84')
 
 prepare()
 {
@@ -584,7 +584,7 @@ package()
  install -Dm644 "$srcdir/FID_HelpStub" "$pkgdir${_installdir}/$pkgname/PDF Editor/Help/PDFXVE8Sm.pdf"
  install -Dm644 "$srcdir/FID_IEPlugin64" "$pkgdir${_installdir}/$pkgname/PDF Editor/iePDFXEditPlugin.x64.dll"
  install -Dm644 "$srcdir/FID_NPPlugin64" "$pkgdir${_installdir}/$pkgname/PDF Editor/npPDFXEditPlugin.x64.dll"
- install -Dm644 "$srcdir/FID_EditorEXE" "$pkgdir${_installdir}/$pkgname/PDF Editor/PDFXEdit.exe"
+ install -Dm755 "$srcdir/FID_EditorEXE" "$pkgdir${_installdir}/$pkgname/PDF Editor/PDFXEdit.exe"
  install -Dm644 "$srcdir/FID_ViewerDLL64" "$pkgdir${_installdir}/$pkgname/PDF Editor/PDFXEditCore.x64.dll"
  install -Dm644 "$srcdir/FID_Bookmarks64" "$pkgdir${_installdir}/$pkgname/PDF Editor/Plugins.x64/Bookmarks.pvp"
  install -Dm644 "$srcdir/FID_Box64" "$pkgdir${_installdir}/$pkgname/PDF Editor/Plugins.x64/BoxFileSys.pvp"
