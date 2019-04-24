@@ -1,40 +1,25 @@
 # This is based on https://aur.archlinux.org/packages/pyrepl/, and modified
 # to use the Mercurial repository, since there has not been a release for a
 # long time.
-pkgname=python-pyrepl-hg
+pkgname=python-pyrepl-git
 _realpkg=pyrepl
-pkgver=r271+.6e190161f8b1+
+pkgver=0.9.0.16.g9df1fcb
 pkgrel=1
 pkgdesc="A Python library for building flexible command line interfaces"
-url="http://pypi.python.org/pypi/pyrepl"
+url="https://github.com/blueyed/pyrepl"
 arch=("any")
 license=('MIT')
 depends=('python')
-conflicts=('python-pyrepl')
-provides=('python-pyrepl')
-source=("hg+https://bitbucket.org/pypy/pyrepl"
-        "fix-curses-_find_clib.patch"
-        "py3fixes.patch")
-md5sums=('SKIP'
-         '14f1a9fd02693f9d05d25fd9d1214070'
-         '09b2308d4d1094786d6a8bd7e545a0c8')
-makedepends=('mercurial' 'python')
+conflicts=('python-pyrepl' 'python-pyrepl-hg')
+provides=('python-pyrepl' 'python-pyrepl-hg')
+source=("git+https://github.com/blueyed/pyrepl")
+md5sums=('SKIP')
+makedepends=('git' 'python')
 
 pkgver() {
   cd "$_realpkg"
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  git describe --tags | sed 's/^v//;s/-/./g'
 }
-
-prepare() {
-  cd "$srcdir/$_realpkg"
-  patch -Np1 < ../fix-curses-_find_clib.patch
-  patch -p1 < ../py3fixes.patch
-}
-
-# check() {
-#   cd "$srcdir/$_realpkg"
-#   tox -e py35 -- --tb=short
-# }
 
 package() {
   cd "$srcdir/$_realpkg"

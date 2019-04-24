@@ -1,21 +1,19 @@
-pkgbase = python-pyrepl-hg
+pkgbase = python-pyrepl-git
 	pkgdesc = A Python library for building flexible command line interfaces
-	pkgver = r271+.6e190161f8b1+
+	pkgver = 0.9.0.16.g9df1fcb
 	pkgrel = 1
-	url = http://pypi.python.org/pypi/pyrepl
+	url = https://github.com/blueyed/pyrepl
 	arch = any
 	license = MIT
-	makedepends = mercurial
+	makedepends = git
 	makedepends = python
 	depends = python
 	provides = python-pyrepl
+	provides = python-pyrepl-hg
 	conflicts = python-pyrepl
-	source = hg+https://bitbucket.org/pypy/pyrepl
-	source = fix-curses-_find_clib.patch
-	source = py3fixes.patch
+	conflicts = python-pyrepl-hg
+	source = git+https://github.com/blueyed/pyrepl
 	md5sums = SKIP
-	md5sums = 14f1a9fd02693f9d05d25fd9d1214070
-	md5sums = 09b2308d4d1094786d6a8bd7e545a0c8
 
-pkgname = python-pyrepl-hg
+pkgname = python-pyrepl-git
 
