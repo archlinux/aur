@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-ladspa
 	pkgdesc = Linux Audio Developer's Simple Plugin API (LADSPA)
 	pkgver = 1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ladspa.org/
 	arch = x86_64
 	license = LGPL
