@@ -1,6 +1,6 @@
 pkgbase = python-pdbpp
 	pkgdesc = pdb++, a drop-in replacement for pdb
-	pkgver = 0.9.14
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/antocuni/pdb
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-pdbpp
 	depends = python-pygments
 	optdepends = python-pyrepl-hg
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/p/pdbpp/pdbpp-0.9.14.tar.gz
-	md5sums = cf7994181e01ac6a0afc5665fb557eb1
+	source = https://pypi.python.org/packages/source/p/pdbpp/pdbpp-0.10.0.tar.gz
+	md5sums = 2833ad812c473dd6c40bbcff3171bd49
 
 pkgname = python-pdbpp
 
