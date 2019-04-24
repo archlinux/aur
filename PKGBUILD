@@ -7,8 +7,7 @@ pkgdesc="Checks the expiration dates of domains."
 arch=('any')
 url="https://gitnet.fr/deblan/domain-expiration"
 license=('GPL')
-depends=('php>=7.3' 'whois')
-makedepends=('composer')
+depends=('php>=7.3' 'whois' 'composer')
 source=("$pkgname::git+https://gitnet.fr/deblan/domain-expiration")
 md5sums=('SKIP')
 
