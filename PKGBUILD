@@ -1,6 +1,6 @@
 # Maintainer: wolftankk <wolftankk@gmail.com>
 pkgname=php-zephir-parser
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="The Zephir Parser delivered as a C extension for the PHP language."
 url="https://github.com/phalcon/php-zephir-parser"
@@ -18,7 +18,7 @@ source=(
     "https://github.com/phalcon/php-zephir-parser/archive/v${pkgver}.tar.gz"
 )
 
-sha256sums=('4a8801b69fd7b9ec075177238fcabce7d78cc2b83383353802b4c3ffb7656ffb')
+sha256sums=('3b3ec08d668fae62ea34c95ea4d3f7ee8c0aba792ca79f5ca7aae3c2aef8054f')
 
 #get php version
 PHP_FULL_VERSION=`php-config --version`
@@ -30,60 +30,6 @@ fi
 
 #build zephir-parser
 build() {
-  cd "$srcdir/php-zephir-parser-$pkgver"
-
-  export CC=gcc
-  export CFLAGS="-march=native -mtune=native -O2 -fomit-frame-pointer"
-
-  echo "int main() {}" > t.c
-  gcc ${CFLAGS} t.c -o t 2> t.t
-  if [ $? != 0 ]; then
-      chmod +x gcccpuopt
-      BFLAGS=`./gcccpuopt`
-      export CFLAGS="-O2 -fomit-frame-pointer $BFLAGS"
-      gcc ${CFLAGS} t.c -o t 2> t.t
-      if [ $? != 0 ]; then
-          export CFLAGS="-O2"
-      fi
-  fi
-
-  if [ $(gcc -dumpversion | cut -f1 -d.) -ge 4 ]; then
-      gcc ${CFLAGS} -fvisibility=hidden t.c -o t 2> t.t && export CFLAGS="$CFLAGS -fvisibility=hidden"
-  fi
-
-  gcc ${CFLAGS} -flto t.c -o t 2> t.t && { export CFLAGS="$CFLAGS -flto"; export LDFLAGS="$LDFLAGS $CFLAGS"; }
-
-  rm -f t.t t.c t
-
-  cd "$srcdir/php-zephir-parser-$pkgver/parser"
-
-  rm -f \
-	*.o \
-	*.lo \
-	lemon \
-	scanner.c \
-	parser.c \
-	parser.php5.c \
-	parser.php5.h \
-	parser.php5.out \
-	parser.php7.c \
-	parser.php7.h \
-	parser.php7.out \
-	config.h.in~
-
-  re2c -o scanner.c scanner.re
-
-  $CC lemon.c -o lemon
-
-  ./lemon -s parser.${PHP_VERSION}.lemon
-
-  echo "#include <php.h>" > parser.c
-  cat parser.${PHP_VERSION}.c >> parser.c
-  cat base.c >> parser.c
-
-  sed s/"\#line"/"\/\/"/g scanner.c > xx && mv -f xx scanner.c
-  sed s/"#line"/"\/\/"/g parser.c > xx && mv -f xx parser.c
-
   cd "$srcdir/php-zephir-parser-$pkgver"
   if [ -f Makefile ]; then
       make clean
