@@ -5,7 +5,7 @@
 # Based on [extra]'s nvidia: https://www.archlinux.org/packages/extra/x86_64/nvidia/
 
 pkgname=nvidia-beta
-pkgver=418.56
+pkgver=430.09
 pkgrel=1
 pkgdesc="NVIDIA drivers for Arch's official 'linux' package (beta version)"
 arch=('x86_64')
@@ -17,10 +17,8 @@ provides=("nvidia=${pkgver}")
 conflicts=('nvidia')
 options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
-source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
-        'linux-4.16.patch')
-sha256sums=('5e5cfcc6a392ceee156d3a55fc1c1cdebd5831b371163c6028fe409cefbf9d43'
-            '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
+source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run")
+sha256sums=('247e127fcf1f1902193104f22ca69e1974f834b3c4502a0eba42312b8d6c88b9')
 _extramodules=extramodules-ARCH
 
 prepare() {
@@ -28,11 +26,6 @@ prepare() {
     [ -d "$_pkg" ] && rm -rf "$_pkg"
     printf '%s\n' "  -> Self-Extracting ${_pkg}.run..."
     sh "${_pkg}.run" --extract-only
-    
-    # restore phys_to_dma support
-    # https://bugs.archlinux.org/task/58074
-    cd "$_pkg"
-    patch -Np1 -i "${srcdir}/linux-4.16.patch"
 }
 
 build() {
