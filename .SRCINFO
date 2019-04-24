@@ -1,0 +1,20 @@
+pkgbase = qrk-git
+	pkgdesc = A graphical cash register for small companies
+	pkgver = 1.10.3
+	pkgrel = 0
+	url = https://www.ckvsoft.at
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = qt5-declarative
+	depends = crypto++
+	depends = qrencode
+	depends = pcsclite
+	provides = qrk
+	conflicts = qrk
+	source = qrk-git::git://git.code.sf.net/p/qrk-registrier-kasse/code
+	sha1sums = SKIP
+
+pkgname = qrk-git
+
