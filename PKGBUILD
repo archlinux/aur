@@ -29,7 +29,7 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Fix-linguist-macro.patch')
-sha256sums=('4aa3a089794ab1c629b666fffb5da4371351a9e85ea691d5d988c2ff63586005'
+sha256sums=('c9e92d2f0d369e44bb1a60e9fa6d970f8d9893d653212305e04be5e6daec2cd8'
             'e82c4ff19e429fa7cd74f44f748b0fa3b080129eb48305de2951eb33bf13f491')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
