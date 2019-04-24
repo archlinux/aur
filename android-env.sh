@@ -12,7 +12,7 @@ fi
 
 # Minimum Android platform based on:
 #
-# https://developer.android.com/about/dashboards/
+# http://gs.statcounter.com/os-version-market-share/android/mobile-tablet/worldwide
 if [ -z "${ANDROID_MINIMUM_PLATFORM}" ]; then
     export ANDROID_MINIMUM_PLATFORM=22
 fi
