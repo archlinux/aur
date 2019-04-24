@@ -1,6 +1,6 @@
 pkgbase = dico
 	pkgdesc = GNU Dictionary Server
-	pkgver = 2.8
+	pkgver = 2.9
 	pkgrel = 1
 	url = http://puszcza.gnu.org.ua/software/dico
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = dico
 	depends = wordnet-common
 	depends = guile
 	depends = pam
-	source = ftp://download.gnu.org.ua/pub/release/dico/dico-2.8.tar.xz
-	source = ftp://download.gnu.org.ua/pub/release/dico/dico-2.8.tar.xz.sig
+	source = ftp://download.gnu.org.ua/pub/release/dico/dico-2.9.tar.xz
+	source = ftp://download.gnu.org.ua/pub/release/dico/dico-2.9.tar.xz.sig
 	validpgpkeys = 325F650C4C2B6AD58807327A3602B07F55D0C732
-	sha1sums = 0fa2da347c01da380508c8004b05a420f7e66168
+	sha1sums = 17551191f83350e5ca7f2272ac791a3da13bbc0a
 	sha1sums = SKIP
 
 pkgname = dico
