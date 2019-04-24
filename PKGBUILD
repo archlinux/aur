@@ -2,7 +2,7 @@
 
 pkgname="python-flake8-import-order"
 _pkgname="flake8-import-order"
-pkgver=0.18
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="Plugin that checks import order against various Python Style Guides."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('flake8' 'python-asttokens')
 provides=('flake8-import-order')
 replaces=('flake8-import-order')
 source=("https://github.com/PyCQA/flake8-import-order/archive/$pkgver.tar.gz")
-md5sums=('17d0b2299db05bb8be102c3eadc38dc8')
+md5sums=('ff46b947f3c9fe52530ad71ed79f86d0')
 
 build() {
     cd "${_pkgname}-${pkgver}"
