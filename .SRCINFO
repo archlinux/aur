@@ -5,7 +5,7 @@ pkgbase = python-mediainfodll
 	url = https://github.com/MediaArea/MediaInfoLib
 	arch = any
 	license = BSD 2-Clause
-	source = MediaInfoLib-19.04.tar.gz::https://github.com/MediaArea/MediaInfoLib/archive/v19.04.tar.gz
+	source = python-mediainfodll-19.04.tar.gz::https://github.com/MediaArea/MediaInfoLib/archive/v19.04.tar.gz
 	sha256sums = bd992bad71438cb3a353c102fd8c823391eeec406c6a420996fed95bf3d1f685
 
 pkgname = python-mediainfodll
