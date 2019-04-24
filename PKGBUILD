@@ -5,7 +5,7 @@
 _pkgbase=ladspa
 pkgname=mingw-w64-ladspa
 pkgver=1.15
-pkgrel=3
+pkgrel=4
 pkgdesc="Linux Audio Developer's Simple Plugin API (LADSPA)"
 arch=('x86_64')
 license=('LGPL')
@@ -19,8 +19,8 @@ sha512sums=('a521622e23d988284244003e4ccfc3b42f6ddc7944cb00e7949b87e09d7f39a0cbb
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
 prepare() {
-  mv -v ${_pkgbase}_sdk_${pkgver} ${pkgname}-${pkgver}
-  cd "${pkgname}-${pkgver}"
+  mv -v ${_pkgbase}_sdk_${pkgver} ${_pkgbase}-${pkgver}
+  cd "${_pkgbase}-${pkgver}"
   patch -Np0 -i "../fix-memleak-in-plugin-scanning.patch"
   # add LDFLAGS for full RELRO
   sed -e "s#-O2#${CFLAGS} ${LDFLAGS}#" -i src/Makefile
