@@ -18,7 +18,7 @@ pkgbase = mingw-w64-qt5-svg
 	options = !buildflags
 	options = staticlibs
 	source = https://download.qt.io/official_releases/qt/5.12/5.12.3/submodules/qtsvg-everywhere-src-5.12.3.tar.xz
-	sha256sums = ed9f2118a6d33f53e5d9ed18dcd36f252a4fbaf68382a1c4a663ba75b25ae7bd
+	sha256sums = f666438dbf6816b7534e539b95e3fa4405f11d7e2e2bbcde34f2db5ae0f27dc2
 
 pkgname = mingw-w64-qt5-svg
 
