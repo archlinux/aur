@@ -28,6 +28,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   cargo install --root "$pkgdir"/usr --path .
+  rm "$pkgdir"/usr/.crates.toml
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
