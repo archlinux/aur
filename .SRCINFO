@@ -1,0 +1,17 @@
+pkgbase = python-adafruit-nrfutil-git
+	pkgdesc = Modified version of Nordic's nrfutil 0.5.x for use with the Adafruit Feather nRF52
+	pkgver = 20181018.7a327fd
+	pkgrel = 1
+	url = https://github.com/adafruit/Adafruit_nRF52_nrfutil
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python-pyserial>=2.7
+	depends = python-click>=5.1
+	depends = python-ecdsa>=0.13
+	depends = python-behave
+	source = Adafruit_nRF52_nrfutil::git://github.com/adafruit/Adafruit_nRF52_nrfutil
+	md5sums = SKIP
+
+pkgname = python-adafruit-nrfutil-git
+
