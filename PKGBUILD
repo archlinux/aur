@@ -10,7 +10,7 @@ _lib32=0
 
 pkgbase=nvidia-full-beta-all
 pkgname=('nvidia-full-beta-all' 'nvidia-utils-full-beta-all' 'nvidia-egl-wayland-full-beta-all' 'nvidia-libgl-full-beta-all' 'opencl-nvidia-full-beta-all')
-pkgver=418.56
+pkgver=430.09
 pkgrel=1
 pkgdesc='Full NVIDIA driver package for all kernels on the system (drivers, utilities and libraries) (beta version)'
 arch=('x86_64')
@@ -30,13 +30,11 @@ fi
 # source
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'nvidia-drm-outputclass.conf'
-        'nvidia-utils-full-beta-all.sysusers'
-        'linux-4.16.patch')
-sha256sums=('5e5cfcc6a392ceee156d3a55fc1c1cdebd5831b371163c6028fe409cefbf9d43'
+        'nvidia-utils-full-beta-all.sysusers')
+sha256sums=('247e127fcf1f1902193104f22ca69e1974f834b3c4502a0eba42312b8d6c88b9'
             '089d6dc247c9091b320c418b0d91ae6adda65e170934d178cdd4e9bd0785b182'
-            'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
-            '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
-[ "$_pkg" = "NVIDIA-Linux-${CARCH}-${pkgver}" ] && sha256sums[0]='c45500db69ff66b55612904d3c5d2beabf52f29799367f1fcf81d6f28e48e7b1'
+            'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167')
+[ "$_pkg" = "NVIDIA-Linux-${CARCH}-${pkgver}" ] && sha256sums[0]='2565e5f0b0da5f16f1675f67bb05e2fa397d581d8ed9acb23248282f2954a94c'
 
 _eglver=1.1.2
 
@@ -75,14 +73,13 @@ prepare() {
     do
         cp -a kernel "kernel-${_kernel}"
         
-        printf '%s\n' "  -> Applying patch(es) for kernel ${_kernel}..."
-        cd "kernel-${_kernel}"
+        #printf '%s\n' "  -> Applying patch(es) for kernel ${_kernel}..."
+        #cd "kernel-${_kernel}"
         
-        # restore phys_to_dma support
-        # https://bugs.archlinux.org/task/58074
-        patch -Np2 -i "${srcdir}/linux-4.16.patch"
+        # apply patches(es) here:
+        #patch -Np2 -i "${srcdir}/<patch>"
         
-        cd ..
+        #cd ..
     done
 }
 
