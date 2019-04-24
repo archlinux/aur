@@ -3,12 +3,13 @@
  
 pkgname=('visual-sfm')
 pkgver=0.5.26
-pkgrel=4
+pkgrel=5
 #options=(debug !strip !makeflags)
 pkgdesc='A Visual Structure from Motion System; create 3d models from photos.'
 arch=('x86_64')
 url='http://ccwu.me/vsfm/'
-depends=('gcc5' 'lapack' 'blas' 'f2c' 'libjpeg' 'gtk2' 'glu' 'cmvs-pmvs-git' 'siftgpu' 'cuda')
+depends=('lapack' 'blas' 'f2c' 'gtk2' 'glu' 'cmvs-pmvs-git' 'siftgpu')
+makedepends=('gcc5' 'cuda')
 optdepends=(
   'opencl-nvidia: nvidia gpu support'
   'opencl-mesa: amd gpu support (mesa)'
@@ -32,6 +33,8 @@ build() {
   cd ${srcdir}/pba
   # adjust cuda path
   sed -i 's:CUDA_INSTALL_PATH = /usr/local/cuda:CUDA_INSTALL_PATH = /opt/cuda:' makefile
+  # use static libcudart those pruning cuda from dependencies
+  sed -i 's:-lcudart:/opt/cuda/targets/x86_64-linux/lib/libcudart_static.a:g' makefile
   make pba
   cp bin/libpba.so ../vsfm/bin
  
