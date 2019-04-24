@@ -1,0 +1,21 @@
+pkgbase = perl-dist-zilla-plugin-readmefrompod
+	pkgdesc = dzil plugin to generate README from POD
+	pkgver = 0.37
+	pkgrel = 1
+	url = https://metacpan.org/release/Dist-Zilla-Plugin-ReadmeFromPod
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-dist-zilla>=6.000
+	depends = perl-io-string>=0
+	depends = perl-moose>=0
+	depends = perl-path-tiny>=0.004
+	depends = perl-pod-readme>=1.2.0
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FA/FAYLAND/Dist-Zilla-Plugin-ReadmeFromPod-0.37.tar.gz
+	md5sums = 48cb81600a62e5aad90bd53a32a21fa8
+	sha512sums = 3dd828b02a406581a78b318a704ef946e8f623674e6ee6eca8e9998010d337b7671fe4651230d3805ba2c2edc2c870e4e820a6a5ebf7e9e44bc3408ca00049f1
+
+pkgname = perl-dist-zilla-plugin-readmefrompod
+
