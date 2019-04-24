@@ -5,7 +5,7 @@
 
 pkgname=tusk
 pkgver=0.22.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Refined Evernote desktop app"
 arch=('x86_64')
 url="https://github.com/klaussinani/tusk"
@@ -35,15 +35,17 @@ build() {
 }
 
 package() {
-
 	# licenses
-	cd "${srcdir}/$pkgname-${pkgver}"
-	install -Dm644 "./license.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	cd "$srcdir/$pkgname-${pkgver}/dist/linux-unpacked"
+	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/license.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/LICENSE"*
-
+	
+	# binary
 	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/resources/app.asar" "${pkgdir}/usr/lib/${pkgname}/${pkgname}.asar"
+	
+	# shell wrapper
 	install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	
+	# desktop and image
 	install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
