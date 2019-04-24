@@ -351,7 +351,7 @@ package_intel-openmp() {
 
   pkgdesc="Intel OpenMP Implementation ${_icc_ver}"
   pkgver=${_pkg_ver}
-  depends=("intel-common-libs=${_pkg_ver}")
+  depends=("intel-common-libs=$pkgver")
 
   mkdir -p ${xe_build_dir}/opt
 
@@ -369,8 +369,8 @@ package_intel-compiler-base() {
 
   pkgdesc="Intel C/C++ $_icc_ver"
   pkgver=${_pkg_ver}
-  depends=("intel-common-libs=${_pkg_ver}"
-           "intel-openmp=${_pkg_ver}")
+  depends=("intel-common-libs=$pkgver"
+           "intel-openmp=$pkgver")
   install=intel-composer.install
 
   mkdir -p ${xe_build_dir}/opt
@@ -436,7 +436,7 @@ package_intel-fortran-compiler() {
 
   pkgdesc="Intel Fortran compiler $_icc_ver"
   pkgver=${_pkg_ver}
-  depends=("intel-compiler-base=${_pkg_ver}")
+  depends=("intel-compiler-base=$pkgver")
   install=intel-composer.install
 
   mkdir -p ${xe_build_dir}/opt
@@ -536,7 +536,7 @@ package_intel-mkl() {
 
   pkgdesc="Intel Math Kernel Library (Intel® MKL) $_mkl_ver"
   pkgver=${_pkg_ver}
-  depends=("intel-common-libs=${_pkg_ver}")
+  depends=("intel-common-libs=$pkgver")
   optdepends=("intel-openmp: Intel OpenMP Implementation")
   install=intel-mkl.install
   backup=('etc/intel-mkl-th.conf')
