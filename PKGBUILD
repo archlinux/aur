@@ -1,5 +1,5 @@
 pkgname=nix-bin
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="A purely functional package manager - /nix/store multi-user edition"
 arch=('i686' 'x86_64')
@@ -11,15 +11,12 @@ install=nix.install
 source_x86_64=("https://nixos.org/releases/nix/nix-$pkgver/nix-$pkgver-x86_64-linux.tar.bz2")
 source_i686=("https://nixos.org/releases/nix/nix-$pkgver/nix-$pkgver-i686-linux.tar.bz2")
 source=(nix.install nix.tmpfiles nix.conf nix-channels)
-sha256sums_x86_64=('e229e28f250cad684c278c9007b07a24eb4ead239280c237ed2245871eca79e0')
-sha256sums_i686=('223c141b7ce322aacd4003dfc79b969ee813396d2ac586cf44c0e787233b1666')
-sha256sums=(SKIP SKIP SKIP SKIP)
 backup=('etc/nix/nix.conf' 'root/.nix-channels')
 options=('!strip' 'staticlibs' 'libtool' 'emptydirs')
 SOURCE_DATE_EPOCH=1
 
-NIX_STORE_NIX=5hdmx9yk7gr71b98j4vh9271k0zg5jis-nix-2.2.1
-NIX_STORE_CACERT=fna8lggi520pgvdwi8p1xyzcj9706j04-nss-cacert-3.40.1
+NIX_STORE_NIX=hbhdjn5ik3byg642d1m11k3k3s0kn3py-nix-2.2.2
+NIX_STORE_CACERT=rikxx4wdaj7b4qp1lizzmn7884hh537k-nss-cacert-3.42
 NIX_SRC=nix-$pkgver-$CARCH-linux
 
 build() {
@@ -70,3 +67,6 @@ package() {
     ln -s /nix/store/$(basename $f) $pkgdir/nix/var/nix/gcroots/pacman/
   done
 }
+sha256sums=(SKIP SKIP SKIP SKIP)
+sha256sums_i686=('b055b9ac5e65d43cb6b1d1fe99eb106371a6b5782c3522209a73f473dc7b8779')
+sha256sums_x86_64=('7ce46548509837d4bc8d01b63973f8fb8972fbbe8ba6a9b5e929cf5954c3d85e')
