@@ -14,10 +14,12 @@ makedepends=('git' 'cmake' 'dotnet-sdk>=2.0')
 depends=('icu' 'openssl-1.0')
 source=($pkgname::git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver
         powershell-native::git+https://github.com/PowerShell/PowerShell-Native.git
-        googletest::git+https://github.com/google/googletest.git)
+        googletest::git+https://github.com/google/googletest.git
+        "Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets")
 md5sums=('SKIP'
          'SKIP'
-         'SKIP')
+         'SKIP'
+         '56f02557575a6022b60be609951eee78')
 install=powershell.install
 
 prepare() {
@@ -39,18 +41,7 @@ build() {
   dotnet restore src/TypeCatalogGen
 
   ## Setup the build target to gather dependency information
-  targetFile="src/Microsoft.PowerShell.SDK/obj/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets"
-  cat > $targetFile <<-"EOF"
-  <Project>
-      <Target Name="_GetDependencies"
-              DependsOnTargets="ResolveAssemblyReferencesDesignTime">
-          <ItemGroup>
-              <_RefAssemblyPath Include="%(_ReferencesFromRAR.HintPath)%3B"  Condition=" '%(_ReferencesFromRAR.NuGetPackageId)' != 'Microsoft.Management.Infrastructure' "/>
-          </ItemGroup>
-          <WriteLinesToFile File="$(_DependencyFile)" Lines="@(_RefAssemblyPath)" Overwrite="true" />
-      </Target>
-  </Project>
-EOF
+  cp "$srcdir/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets" "src/Microsoft.PowerShell.SDK/obj/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets"
   dotnet msbuild src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj /t:_GetDependencies "/property:DesignTimeBuild=true;_DependencyFile=$(pwd)/src/TypeCatalogGen/powershell.inc" /nologo
 
   ## Generate 'powershell.version'

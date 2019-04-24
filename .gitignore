@@ -3,4 +3,5 @@ pester/
 pkg/
 *.pkg.tar
 powershell/
+powershell-native/
 src/
