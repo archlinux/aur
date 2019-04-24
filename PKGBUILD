@@ -26,7 +26,7 @@ license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('1ea757728f205deb6b3f5873f5c7c3129cded5993077500a9fb249559bee7a9c')
+sha256sums=('db5a9e784f9c327c1e6830b1550311024cc91202d3b8dde82cd0944164298be2')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \

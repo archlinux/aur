@@ -18,7 +18,7 @@ pkgbase = mingw-w64-qt5-imageformats
 	options = !buildflags
 	options = staticlibs
 	source = https://download.qt.io/official_releases/qt/5.12/5.12.3/submodules/qtimageformats-everywhere-src-5.12.3.tar.xz
-	sha256sums = 1ea757728f205deb6b3f5873f5c7c3129cded5993077500a9fb249559bee7a9c
+	sha256sums = db5a9e784f9c327c1e6830b1550311024cc91202d3b8dde82cd0944164298be2
 
 pkgname = mingw-w64-qt5-imageformats
 
