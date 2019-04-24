@@ -1,0 +1,19 @@
+pkgbase = buck-git
+	pkgdesc = A fast build system that encourages the creation of small, \ reusable modules over a variety of platforms and languages.
+	pkgver = 2019.01.10.01.r1058.ga02f4c9fc4
+	pkgrel = 1
+	url = https://buckbuild.com
+	arch = any
+	license = Apache
+	makedepends = java-environment=8
+	makedepends = ant
+	makedepends = git
+	depends = python2
+	optdepends = watchman: prevent Buck from parsing all of your build files every time
+	provides = buck
+	conflicts = buck
+	source = git+https://github.com/facebook/buck.git
+	sha256sums = SKIP
+
+pkgname = buck-git
+
