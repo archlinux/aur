@@ -18,7 +18,7 @@ pkgbase = mingw-w64-qt5-quickcontrols
 	options = !buildflags
 	options = staticlibs
 	source = https://download.qt.io/official_releases/qt/5.12/5.12.3/submodules/qtquickcontrols-everywhere-src-5.12.3.tar.xz
-	sha256sums = 9b5c87605d08849927dd09bf9b03a939511461372b7e20004abe1116cf9fc73e
+	sha256sums = 68ae03b35eaa44a24c3f663b842252053c9f2b00b18841fd39ff7d2150986f46
 
 pkgname = mingw-w64-qt5-quickcontrols
 
