@@ -21,7 +21,7 @@ pkgbase = mingw-w64-qt5-winextras
 	options = staticlibs
 	source = https://download.qt.io/official_releases/qt/5.12/5.12.3/submodules/qtwinextras-everywhere-src-5.12.3.tar.xz
 	source = 0001-Revert-Directly-link-to-functions-available-from-Win.patch
-	sha256sums = 3141027c4f7dbb2bcef8a35fd60d673adfff0e4fb20c36f73930570252136787
+	sha256sums = 2b6319f7dd19fc19b028685c163a69f0a10e610d7554411d4660c1b5e42ada3b
 	sha256sums = 9ea3e7f25059a7a896cd7a73a0d94f817dcedf4787e1ecbf037f67f49996d3d5
 
 pkgname = mingw-w64-qt5-winextras
