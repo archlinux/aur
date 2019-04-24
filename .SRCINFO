@@ -1,0 +1,24 @@
+pkgbase = sharexin
+	pkgdesc = ShareX for Linux and BSD
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/ShareXin/ShareXin
+	arch = any
+	license = GPL3
+	makedepends = cairo
+	makedepends = clang
+	depends = curl
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = openssl
+	depends = dbus
+	depends = xcb-util
+	optdepends = gnome-screenshot: Screenshot support with Gnome
+	optdepends = spectacle: Screenshot support with KDE
+	optdepends = scrot: Screenshot support with general X11
+	source = https://github.com/ShareXin/ShareXin/archive/0.7.2.tar.gz
+	md5sums = fe8e5d9235aa1efc0b37bec19d9ab3ce
+
+pkgname = sharexin
+
