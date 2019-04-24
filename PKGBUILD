@@ -56,7 +56,7 @@ package_poppler-lcd() {
 
 package_poppler-glib-lcd() {
   pkgdesc="Poppler glib bindings with subpixel patch on LCD display"
-  depends=("poppler=${pkgver}" 'glib2')
+  depends=("poppler-lcd=${pkgver}" 'glib2')
   conflicts=('poppler-glib')
   provides=('poppler-glib')
   replaces=('poppler-glib')
@@ -72,7 +72,7 @@ package_poppler-glib-lcd() {
 
 package_poppler-qt5-lcd() {
   pkgdesc="Poppler Qt5 bindings with subpixel patch on LCD display"
-  depends=("poppler=${pkgver}" 'qt5-base')
+  depends=("poppler-lcd=${pkgver}" 'qt5-base')
   conflicts=('poppler-qt5')
   provides=('poppler-qt5')
   replaces=('poppler-qt5')
