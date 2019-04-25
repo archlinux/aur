@@ -1,7 +1,7 @@
 pkgname=usbasp-udev
 pkgver=0.1
-pkgrel=2
-pkgdesc="udev rules for USBasp Atmel AVR programmer."
+pkgrel=3
+pkgdesc="udev rules for USBasp Atmel AVR programmer"
 arch=('any')
 url="http://www.fischl.de/usbasp/"
 license=('custom')
