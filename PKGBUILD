@@ -7,7 +7,7 @@
 _gopkgname='github.com/mholt/caddy'
 
 pkgname=caddy
-pkgver=0.11.5
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -23,7 +23,7 @@ source=("https://$_gopkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         'caddy.tmpfiles'
         'caddy.conf'
         'plugins.go')
-sha256sums=('ab2dc210bc7089fa7d041e702663e592b480945aa99f14b348090091103b7ec5'
+sha256sums=('1c8b435a79e21b9832c7a8a88c44e70bc80434ca3719853d2b1092ffbbbbff7d'
             'e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85'
             '6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
             '5f899f3d72bd815ba67a2fbd95144f7ff5d83ae47d1c4bee8297ce4e5d2ed400'
@@ -44,23 +44,20 @@ patch_plugins() {
 }
 
 prepare() {
-    export GOPATH="$srcdir/build"
-    rm -rf "$GOPATH/src/$_gopkgname"
-    mkdir --parents `dirname "$GOPATH/src/$_gopkgname"`
-    mv -Tv "$srcdir/$pkgname-$pkgver" "$GOPATH/src/$_gopkgname"
+    cd "$srcdir/$pkgname-$pkgver"
 
     if [ ${#plugins[@]} -gt 0 ]; then
         echo enabled plugins: ${plugins[@]}
-        cd $GOPATH/src/$_gopkgname/caddy/caddymain/
+        cd caddy/caddymain/
         patch_plugins < run.go > run1.go
         mv run1.go run.go
-        go get -v -d $_gopkgname/caddy/caddymain
     fi
 }
 
 build() {
-    export GOPATH="$srcdir/build"
-    go build -v -o $srcdir/caddy -ldflags "-X $_gopkgname/caddy/caddymain.gitTag=v$pkgver" $_gopkgname/caddy
+    cd "$srcdir/$pkgname-$pkgver/caddy"
+    export GOPATH="$srcdir"
+    go build -v -o "$srcdir/caddy"
 }
 
 package() {
@@ -120,6 +117,7 @@ plugins=(
 #    'tls.dns.dnsimple'
 #    'tls.dns.dnsmadeeasy'
 #    'tls.dns.dnspod'
+#    'tls.dns.duckdns'
 #    'tls.dns.dyn'
 #    'tls.dns.exoscale'
 #    'tls.dns.gandi'
@@ -129,6 +127,7 @@ plugins=(
 #    'tls.dns.lightsail'
 #    'tls.dns.linode'
 #    'tls.dns.namecheap'
+#    'tls.dns.namedotcom'
 #    'tls.dns.ns1'
 #    'tls.dns.otc'
 #    'tls.dns.ovh'
