@@ -74,6 +74,7 @@ source=(
   cpuinfo
   000-fix.building.with.mariadb.patch::https://github.com/wsnipex/xbmc/commit/cd20c8eb8a0394db1f028b118c4ca9b91b7e746a.patch
   001-PR15957.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15957.patch
+  002-PR15972.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15972.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -96,7 +97,8 @@ sha256sums=('07b8cffc396473523a51354dc95dfffb54a6a456b82cda7ad67dc2c052d99f64'
             '5ca5491e4260cacae30f1a5786d109230db3f3a6e5a0eb45d0d0608293d247e3'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
             '849daf1d5b081ef6d0e428bbc7d448799fc43a8ac9e79cd7513de0eb5a91b0bb'
-            'e0c0a22227db846efb0ee91c6bbe70f892e5f0802715f831b5cdc08c280fd3ae')
+            'e0c0a22227db846efb0ee91c6bbe70f892e5f0802715f831b5cdc08c280fd3ae'
+            'e406ef082d751de376a55fbafd983f62712fb73c0020cf5ed354df58c0c869c6')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
