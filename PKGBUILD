@@ -328,18 +328,18 @@ package_intel-common-libs() {
   pkgver=${_pkg_ver}
 
   mkdir -p ${xe_build_dir}/opt
-  mkdir -p ${xe_build_dir}/etc/profile.d
 
-
-  cp ${srcdir}/intel-common-libs.conf ${xe_build_dir}/etc/ld.so.conf.d
+  cp ${srcdir}/intel-common-libs.conf ${xe_build_dir}/etc/ld.so.conf.d/
   cd ${xe_build_dir}
   msg2 "Extracting RPMS"
   extract_rpms 'intel-comp-ps-ss-bec*.rpm'  $xe_build_dir
   extract_rpms 'intel-c-*.rpm'  $xe_build_dir
 
   msg2 "Moving package files"
+  mkdir -p ${pkgdir}/etc
   mv ${xe_build_dir}/opt ${pkgdir}
-  mv ${xe_build_dir}/etc ${pkgdir}
+  # move ld.so configs, but keep profile.d (should be in intel-compiler-base)
+  mv ${xe_build_dir}/etc/ld.so.conf.d ${pkgdir}/etc/
 
   cd ${pkgdir}/opt/intel
 
