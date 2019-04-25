@@ -5,6 +5,7 @@ pkgbase = wasmer-bin
 	url = https://wasmer.io/
 	arch = x86_64
 	license = MIT
+	depends = bash
 	provides = wasmer
 	provides = wapm
 	conflicts = wasmer
