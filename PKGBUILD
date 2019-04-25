@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 #             adapted from package python2-scikit-rf-git
 pkgname="python-scikit-rf-git"
-pkgver=0.14.8.r78.gceb4831
+pkgver=0.14.8.r80.g36f7cbd
 pkgrel=1
 pkgdesc="Scikit-rf (aka skrf) is a python package for RF/Microwave engineering"
 arch=(any)
@@ -22,7 +22,7 @@ source=("git+https://github.com/scikit-rf/scikit-rf.git")
 
 pkgver() {
 	cd "$srcdir/scikit-rf"
-	git describe | sed 's/^v//; s/-/.r/; s/-/./'
+	git describe --tags | sed 's/^v//; s/-/.r/; s/-/./'
 }
 
 build () {
