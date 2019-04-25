@@ -1,6 +1,6 @@
 pkgbase = 6cord
 	pkgdesc = Discord, TUI and SIXEL.
-	pkgver = 6.2
+	pkgver = 7.0
 	pkgrel = 1
 	url = https://gitlab.com/diamondburned/6cord
 	arch = x86_64
