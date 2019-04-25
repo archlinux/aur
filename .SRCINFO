@@ -13,6 +13,7 @@ pkgbase = i3lock-color
 	depends = libxkbcommon-x11
 	depends = libjpeg-turbo
 	depends = xcb-util-xrm
+	depends = pkgconf
 	provides = i3lock
 	provides = i3lock-color
 	conflicts = i3lock
