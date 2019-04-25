@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Dag Odenhall <dag.odenhall@gmail.com>
 
 pkgname=swarp
@@ -8,12 +8,12 @@ pkgrel=4
 pkgdesc="Simple pointer warp"
 license=('MIT')
 arch=(x86_64)
-url="http://tools.suckless.org/"
+url="https://tools.suckless.org/x/swarp/"
 depends=(glibc libx11)
 source=(http://dl.suckless.org/tools/swarp-$pkgver.tar.gz
 	config.mk)
-md5sums=('b674dd2f33c45cbd789e4b6e09b7b55e'
-         '6fccb02af362a7284df689eea053a154')
+sha512sums=('c44fee2e01cfdd8f02f29bfb917a82f05459c9d5db2a0eb18a9c75f60aa73547f7f6cd32557fd4cf94963e2e30a5f02806925e42a57d6eaaff41daf1866fd09d'
+            'cde162bd97d2dc7e1a4e5d9b8b2b85dd1d3401f937e86b4d0b277931515429606a23fd1f0ba5adbe364660985e20050afed00b6c92d650faa744ede4bae57998')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver

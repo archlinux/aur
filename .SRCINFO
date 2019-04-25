@@ -2,15 +2,15 @@ pkgbase = swarp
 	pkgdesc = Simple pointer warp
 	pkgver = 0.1
 	pkgrel = 4
-	url = http://tools.suckless.org/
+	url = https://tools.suckless.org/x/swarp/
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	depends = libx11
 	source = http://dl.suckless.org/tools/swarp-0.1.tar.gz
 	source = config.mk
-	md5sums = b674dd2f33c45cbd789e4b6e09b7b55e
-	md5sums = 6fccb02af362a7284df689eea053a154
+	sha512sums = c44fee2e01cfdd8f02f29bfb917a82f05459c9d5db2a0eb18a9c75f60aa73547f7f6cd32557fd4cf94963e2e30a5f02806925e42a57d6eaaff41daf1866fd09d
+	sha512sums = cde162bd97d2dc7e1a4e5d9b8b2b85dd1d3401f937e86b4d0b277931515429606a23fd1f0ba5adbe364660985e20050afed00b6c92d650faa744ede4bae57998
 
 pkgname = swarp
 
