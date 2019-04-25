@@ -5,16 +5,16 @@
 
 pkgname=lazyman
 pkgver=2.4.0.20181101
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple program that lets you stream every NHL and MLB game"
 arch=('any')
-url="https://github.com/StevensNJD4/LazyMan"
+url='https://github.com/StevensNJD4/LazyMan'
 license=('GPL2')
 depends=('java-runtime>=8' 'streamlink')
-optdepends=('vlc: requires a video player - choose one' 'mpv: requires a video player - choose one')
+optdepends=('vlc: video player - choose one' 'mpv: video player - choose one')
 backup=('usr/share/java/lazyman/config.properties')
 
-source=("https://github.com/StevensNJD4/LazyMan/releases/download/${pkgver}/Mac_Linux.zip"
+source=("${url}/releases/download/${pkgver}/Mac_Linux.zip"
 	"config.properties"
 	"${pkgname}.sh"
 	"${pkgname}.desktop"
@@ -26,11 +26,6 @@ package() {
 
     install -dm755 "${pkgdir}/usr/bin"
     install -dm755 "${pkgdir}/usr/share/applications"
-    install -dm755 "${pkgdir}/usr/share/icons"
-    install -dm755 "${pkgdir}/usr/share/icons/Numix-Circle/16/apps"
-    install -dm755 "${pkgdir}/usr/share/icons/Numix-Circle/22/apps"
-    install -dm755 "${pkgdir}/usr/share/icons/Numix-Circle/24/apps"
-    install -dm755 "${pkgdir}/usr/share/icons/Numix-Circle/48/apps"
     install -dm777 "${pkgdir}/usr/share/java/lazyman"
 
     install -Dm755 lazyman.sh        "${pkgdir}/usr/bin/lazyman"
