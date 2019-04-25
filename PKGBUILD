@@ -2,15 +2,14 @@
 pkgname=librepcb-git
 _fullname=LibrePCB
 pkgver=r1645.c14084c44
-pkgrel=1
-pkgdesc="A free EDA software to develop printed circuit boards (git version)."
+pkgrel=2
+pkgdesc="A free EDA software to develop printed circuit boards (git master)"
 arch=('x86_64' 'i686')
 url="http://librepcb.org/"
 license=('GPL')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'qt5-base')
-makedepends=('git' 'qt5-tools')
+makedepends=('git')
 provides=('librepcb')
-conflicts=('librepcb' 'librepcb-appimage')
 source=('git+https://github.com/LibrePCB/LibrePCB')
 md5sums=('SKIP')
 
@@ -23,7 +22,7 @@ build() {
   # Prepare
   cd "$srcdir/$_fullname-build"
   mkdir build && cd build
-  qmake -r ../librepcb.pro PREFIX=${pkgdir}/usr
+  qmake -r ../librepcb.pro PREFIX="${pkgdir}/usr"
 
   # Compile
   make
