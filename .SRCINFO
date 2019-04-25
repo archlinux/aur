@@ -3,6 +3,7 @@ pkgbase = nwjs-ffmpeg-codecs-bin
 	pkgver = 0.37.4
 	pkgrel = 1
 	url = https://github.com/iteufel/nwjs-ffmpeg-prebuilt
+	install = codecs-preload.install
 	arch = x86_64
 	license = LGPL2.1
 	depends = nwjs-bin
