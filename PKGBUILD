@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="Alibaba Cloud SDK for Python"
 arch=('any')
 makedepends=('python-setuptools')
+depends=('python-aliyun-python-sdk-core')
 url="https://github.com/aliyun/aliyun-openapi-python-sdk"
 license=('Apache License 2.0')
 options=(!emptydirs)
