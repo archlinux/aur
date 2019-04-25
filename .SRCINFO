@@ -1,0 +1,19 @@
+pkgbase = diembox
+	pkgdesc = DiEM toolbox
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/githaff/diembox
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = extopts
+	depends = glibc
+	provides = diembox
+	conflicts = diembox
+	source = git+https://github.com/githaff/diembox.git#tag=v1.2.1
+	md5sums = SKIP
+
+pkgname = diembox
+
