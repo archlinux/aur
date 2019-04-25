@@ -1,10 +1,10 @@
 #Maintainer: Raimar Buehmann <raimar _at_ buehmann _dot_ de>
 
 pkgname=eclipse-spotbugs
-pkgver=3.1.11
-_buildtime=201812210434-554d102
+pkgver=3.1.13
+_buildtime=201903011226-5013623
 pkgrel=2
-pkgdesc='SpotBugs plugin for Eclipse IDE to look for bugs in Java code by static code analysis'
+pkgdesc='SpotBugs plugin for Eclipse IDE to look for bugs in Java programs by static code analysis, a successor of FindBugs.'
 arch=('any')
 url='https://github.com/spotbugs/spotbugs/'
 license=('LGPL')
@@ -15,8 +15,8 @@ source=(
 	"plugin.jar::https://spotbugs.github.io/eclipse-stable-latest/plugins/com.github.spotbugs.plugin.eclipse_${pkgver}.${_buildtime}.jar"
 )
 noextract=(feature.jar plugin.jar)
-sha256sums=('ed197bcba2685dd4dabf9bc421cee7a26de8ad4bbe2069fe09b0c562aa1e3bc6'
-            '653cd15370db01244bc00c1521fedc8019a09befd1be8d5c4a1b556d7fa54a32')
+sha256sums=('a13b500c971c1926afad4982b0be550423dc540f62ccbd869a59ee043cb81cf5'
+            '373c7cc4c2a00b3ffd8678251f2d31fc907ee4c202474e3f318969a1838f0daf')
 
 package() {
 	_dest=$pkgdir/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
