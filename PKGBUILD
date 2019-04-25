@@ -1,7 +1,7 @@
 pkgname=fairphone-udev
 pkgver=0.2
-pkgrel=2
-pkgdesc="udev rules for Fairphone 1 and 2."
+pkgrel=3
+pkgdesc="udev rules for Fairphone 1 and 2"
 arch=('any')
 url="http://www.fairphone.com/"
 license=('custom')
