@@ -1,8 +1,8 @@
 # Maintainer: Danilo Bargen <mail at dbrgn dot ch>
 pkgname=ocr-fonts
 pkgver=0.2
-pkgrel=2
-pkgdesc="Free versions of OCR-friendly sans-serif monospace TTF/OTF fonts (OCR-A and OCR-B) described in 'ISO 1073-1' and 'ISO 1073-2' standards"
+pkgrel=3
+pkgdesc="Free versions of OCR-A and OCR-B fonts"
 arch=('any')
 license=('other')
 url="https://ansuz.sooke.bc.ca/page/fonts#ocrb"
