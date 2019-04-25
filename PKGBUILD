@@ -16,6 +16,8 @@ pkgname=${_pkg}-opt
 #-${_mpi}
 pkgver=5.6.0
 pkgrel=5
+provides=(${_pkg})
+conflicts=(${_pkg})
 pkgdesc="Parallel Visualization application using VTK (${_mpi} version): installed to /opt/"
 arch=('x86_64')
 url="https://www.paraview.org"
