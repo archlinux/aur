@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-core
-pkgver=4.0.6
+pkgver=4.0.7
 pkgrel=1
 pkgdesc="Core DNF Plugins"
 arch=('any')
@@ -8,7 +8,8 @@ license=('GPL2')
 depends=('dnf>=4.2.1' 'python')
 makedepends=('cmake' 'python-sphinx')
 checkdepends=('python-nose')
-optdepends=('createrepo_c: for local plugin')
+optdepends=('python-dateutil: for changelog plugin'
+            'createrepo_c: for local plugin')
 backup=('etc/dnf/plugins/copr.conf'
         'etc/dnf/plugins/debuginfo-install.conf'
         'etc/dnf/plugins/local.conf'
@@ -16,7 +17,7 @@ backup=('etc/dnf/plugins/copr.conf'
         'etc/dnf/plugins/versionlock.list')
 options=(!emptydirs)
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('e2afbe7f5d46b2825c04bd4970ed39ba')
+md5sums=('7216c4db5a4bbf0913bfe501300bf8c7')
 
 prepare() {
 	cd "$pkgname-$pkgver"
