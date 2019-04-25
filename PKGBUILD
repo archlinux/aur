@@ -1,15 +1,16 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=intel-media-stack-bin
-pkgver=2018.4.1
+pkgver=2019.1.0
 _srcver="${pkgver:2}"
-pkgrel=2
+pkgrel=1
 pkgdesc='Tools and libraries for developing media solutions on Intel products. Includes MediaSDK, Media Driver, libva and libva-utils.'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
 license=('MIT')
-depends=('gcc-libs' 'libpciaccess' 'intel-gmmlib' 'libdrm' 'libgl' 'libx11'
-         'libxext' 'libxfixes' 'ocl-icd' 'wayland')
+depends=('gcc-libs' 'libpciaccess' 'libx11' 'libxext' 'libxfixes' 'wayland')
+optdepends=('ocl-icd: for rotate_opencl plugin'
+            'intel-compute-runtime: for rotate_opencl plugin')
 makedepends=('lsb-release')
 provides=('intel-media-sdk' 'libmfx' 'intel-media-driver' 'libva' 'libva-utils')
 conflicts=('intel-media-sdk')
@@ -23,9 +24,9 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/Media
         "https://raw.githubusercontent.com/Intel-Media-SDK/MediaSDK/intel-mediasdk-${_srcver}/LICENSE"
         'intel-media-stack-bin-fix-install.patch')
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f053e19fc39d08c35705fadfb90098b2c50b6ac0f37bf89dc18099deb86f93b9'
+sha256sums=('863f837b156a66208adb1b4f0b977e2b8f2c6075d6ab93c147e15e1c8781c588'
             'dfd67773578903698f9ff4a61eb8f2d84810cbecd56f3f3cee8c649f813b6ea6'
-            '2e432be94fb765fad3ea03a65377cbdd57074eb358815f8eb2354635b2f4746d')
+            '5dabda9fbe6c26270c675ede993b395789d1d50be725b8bb8dbb6e206ee54fb1')
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}"
@@ -34,6 +35,7 @@ prepare() {
     bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" -s'|[^/]*/||'
     
     patch -Np1 -i "${srcdir}/intel-media-stack-bin-fix-install.patch"
+    sed -i "/^pkgdir=/s|$|${pkgdir}|" install_media.sh
 }
 
 package() {

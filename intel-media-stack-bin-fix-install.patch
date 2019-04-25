@@ -1,7 +1,16 @@
 diff -Naurp a/install_media.sh b/install_media.sh
---- a/install_media.sh	2018-04-05 20:29:26.000000000 +0000
-+++ b/install_media.sh	2019-03-05 13:49:34.000000000 +0000
-@@ -87,10 +87,10 @@ fi
+--- a/install_media.sh	2019-03-27 20:53:54.000000000 +0000
++++ b/install_media.sh	2019-04-25 02:22:52.094655835 +0000
+@@ -21,6 +21,8 @@
+ # this notice or any other notice embedded in Materials by Intel or Intel's
+ # suppliers or licensors in any way.
+ 
++pkgdir=
++
+ # Set Bash color
+ ECHO_PREFIX_INFO="\033[1;32;40mINFO...\033[0;0m"
+ ECHO_PREFIX_ERROR="\033[1;31;40mError...\033[0;0m"
+@@ -87,10 +89,10 @@ fi
  
  # Install MSDK
  if [ -d $MEDIASDK_DIR ]; then
@@ -9,14 +18,14 @@ diff -Naurp a/install_media.sh b/install_media.sh
 -    try_command mkdir -p /$MEDIASDK_DIR
 -    try_command cp -dfr $MEDIASDK_DIR/* /$MEDIASDK_DIR
 -    echo -e $ECHO_PREFIX_INFO "MediaSDK installed successfully in /$MEDIASDK_DIR!"
-+    try_command rm -fr /storage/linux/abs/intel-media-stack-bin/pkg/intel-media-stack-bin/$MEDIASDK_DIR
-+    try_command mkdir -p /storage/linux/abs/intel-media-stack-bin/pkg/intel-media-stack-bin/$MEDIASDK_DIR
-+    try_command cp -dfr $MEDIASDK_DIR/* /storage/linux/abs/intel-media-stack-bin/pkg/intel-media-stack-bin/$MEDIASDK_DIR
-+    echo -e $ECHO_PREFIX_INFO "MediaSDK installed successfully in /storage/linux/abs/intel-media-stack-bin/pkg/intel-media-stack-bin/$MEDIASDK_DIR!"
++    try_command rm -fr ${pkgdir}/$MEDIASDK_DIR
++    try_command mkdir -p ${pkgdir}/$MEDIASDK_DIR
++    try_command cp -dfr $MEDIASDK_DIR/* ${pkgdir}/$MEDIASDK_DIR
++    echo -e $ECHO_PREFIX_INFO "MediaSDK installed successfully in ${pkgdir}/$MEDIASDK_DIR!"
  else
      echo -e $ECHO_PREFIX_ERROR "MediaSDK missed in this package!"
  fi
-@@ -98,33 +98,33 @@ fi
+@@ -98,33 +100,33 @@ fi
  # Install MDF Runtime
  MDF_DIR=opt/intel/common/mdf
  if [ -d $MDF_DIR ]; then
@@ -24,10 +33,10 @@ diff -Naurp a/install_media.sh b/install_media.sh
 -    try_command mkdir -p /$MDF_DIR
 -    try_command cp -dfr $MDF_DIR/* /$MDF_DIR
 -    echo -e $ECHO_PREFIX_INFO "MDF Runtime installed successfully in /$MDF_DIR!"
-+    try_command rm -fr /storage/linux/abs/intel-media-stack-bin/pkg/intel-media-stack-bin/$MDF_DIR
-+    try_command mkdir -p /storage/linux/abs/intel-media-stack-bin/pkg/intel-media-stack-bin/$MDF_DIR
-+    try_command cp -dfr $MDF_DIR/* /storage/linux/abs/intel-media-stack-bin/pkg/intel-media-stack-bin/$MDF_DIR
-+    echo -e $ECHO_PREFIX_INFO "MDF Runtime installed successfully in /storage/linux/abs/intel-media-stack-bin/pkg/intel-media-stack-bin/$MDF_DIR!"
++    try_command rm -fr ${pkgdir}/$MDF_DIR
++    try_command mkdir -p ${pkgdir}/$MDF_DIR
++    try_command cp -dfr $MDF_DIR/* ${pkgdir}/$MDF_DIR
++    echo -e $ECHO_PREFIX_INFO "MDF Runtime installed successfully in ${pkgdir}/$MDF_DIR!"
  else
      echo -e $ECHO_PREFIX_ERROR "MDF Runtime missed in this package!"
  fi
@@ -36,12 +45,12 @@ diff -Naurp a/install_media.sh b/install_media.sh
  if [ -f etc/profile.d/intel-mediasdk.sh ]; then
 -    try_command cp -f etc/profile.d/intel-mediasdk.* /etc/profile.d/
 -    echo -e  $ECHO_PREFIX_INFO "The LIBVA_DRIVERS_PATH/LIBVA_DRIVER_NAME will be exported through /etc/profile.d/intel-mediasdk.(c)sh for intel media solution. Please reboot to make it effective."
-+    try_command cp -f etc/profile.d/intel-mediasdk.* /storage/linux/abs/intel-media-stack-bin/pkg/intel-media-stack-bin/etc/profile.d/
-+    echo -e  $ECHO_PREFIX_INFO "The LIBVA_DRIVERS_PATH/LIBVA_DRIVER_NAME will be exported through /storage/linux/abs/intel-media-stack-bin/pkg/intel-media-stack-bin/etc/profile.d/intel-mediasdk.(c)sh for intel media solution."
++    try_command cp -f etc/profile.d/intel-mediasdk.* ${pkgdir}/etc/profile.d/
++    echo -e  $ECHO_PREFIX_INFO "The LIBVA_DRIVERS_PATH/LIBVA_DRIVER_NAME will be exported through ${pkgdir}/etc/profile.d/intel-mediasdk.(c)sh for intel media solution."
  fi
  if [ -f etc/profile.d/intel-mediasdk-devel.sh ]; then
 -    try_command cp -f etc/profile.d/intel-mediasdk-devel.* /etc/profile.d/
-+    try_command cp -f etc/profile.d/intel-mediasdk-devel.* /storage/linux/abs/intel-media-stack-bin/pkg/intel-media-stack-bin/etc/profile.d/
++    try_command cp -f etc/profile.d/intel-mediasdk-devel.* ${pkgdir}/etc/profile.d/
  fi
  
  # !!! IMPORTANT !!!
@@ -55,8 +64,8 @@ diff -Naurp a/install_media.sh b/install_media.sh
 -    echo -e $ECHO_PREFIX_INFO "Calling ldconfig after all user-space drivers and config files are in place..."
 -    try_command ldconfig
 -    echo -e $ECHO_PREFIX_INFO "Calling to ldconfig is done."
-+    try_command mkdir -p /storage/linux/abs/intel-media-stack-bin/pkg/intel-media-stack-bin/etc/ld.so.conf.d
-+    try_command cp -dfr etc/ld.so.conf.d/* /storage/linux/abs/intel-media-stack-bin/pkg/intel-media-stack-bin/etc/ld.so.conf.d/
++    try_command mkdir -p ${pkgdir}/etc/ld.so.conf.d
++    try_command cp -dfr etc/ld.so.conf.d/* ${pkgdir}/etc/ld.so.conf.d/
 +#    echo -e $ECHO_PREFIX_INFO "Calling ldconfig after all user-space drivers and config files are in place..."
 +#    try_command ldconfig
 +#    echo -e $ECHO_PREFIX_INFO "Calling to ldconfig is done."
