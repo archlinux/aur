@@ -2,24 +2,24 @@
 # Contributor: Artyom Olshevskiy <siasia@siasia>
 
 pkgname=java-service-wrapper
-pkgver=3.5.37
+pkgver=3.5.38
 pkgrel=1
 pkgdesc="Enables a Java Application to be run as a Windows Service or Unix Daemon"
 url="https://wrapper.tanukisoftware.com/doc/english/introduction.html"
 arch=('i686' 'x86_64' 'aarch64' 'armv6h' 'armv7h')
 license=('GPL2' 'custom:tanuki-community')
-makedepends=('apache-ant' 'java-environment>=7')
+makedepends=('apache-ant' 'java-environment>=8')
 source=("https://wrapper.tanukisoftware.com/download/${pkgver}/wrapper_${pkgver}_src.tar.gz"
         'java10.patch')
-sha256sums=('a2a27e65904688da3e84f5745d3a71371a6ecba43675d8d824c3774e879281c9'
-            'f5dbf6150278f09a0e3269ace9f3e38a4361d2f3e3c72c3649bb78ad9f1e1499')
+sha256sums=('89210b7b3582e2bb3c56d9eba0da0e92dcd2cc4429f2ca379430a153a13c73d6'
+            '474fd0bde328eff7b5f25cda48b5ca978a23b7a95ba08c83a7894ccf4e589a25')
 
 prepare() {
     cd "wrapper_${pkgver}_src"
 
     _ver=$(javac -version 2>&1 |awk '{print $2}')
     #msg "Detected Java $_ver"
-    [[ "$_ver" =~ ^1[0-2]\. ]] &&
+    [[ "$_ver" =~ ^1[0-4]\. ]] &&
         patch -Np0 -i "$srcdir/java10.patch"
 
     # Prevent building the testsuite on the x64, this requires the cunit pkg
@@ -34,8 +34,8 @@ build() {
     export ANT_OPTS="-Dfile.encoding=UTF-8"
     export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/default}"
 
-    [[ "$(javac -version 2>&1 |awk '{print $2}')" =~ ^1[0-2]\. ]] &&
-                                          _target=10  || _target=7
+    [[ "$(javac -version 2>&1 |awk '{print $2}')" =~ ^1[0-4]\. ]] &&
+                                          _target=11  || _target=8
     [[ "$CARCH" = @(x86_64|aarch64) ]] && _bits=64    || _bits=32
     [[ "$CARCH" = arm*              ]] && _arch=armhf || _arch=x86
 
