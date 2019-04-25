@@ -1,14 +1,14 @@
 pkgbase = paperspace-node
 	pkgdesc = The Paperspace API is the official devkit for automating your Paperspace account
-	pkgver = 0.1.14
+	pkgver = 0.1.17
 	pkgrel = 1
 	url = https://github.com/Paperspace/paperspace-node
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	source = paperspace-node-0.1.14.tar.gz::https://github.com/Paperspace/paperspace-node/archive/0.1.14.tar.gz
-	sha256sums = 79fb9e74182c49209868cf587a19debbeee0ca4fa0affb38b7015a24eda64c0d
+	source = paperspace-node-0.1.17.tar.gz::https://github.com/Paperspace/paperspace-node/archive/v0.1.17.tar.gz
+	sha256sums = 3cdd31cc242ac7f260388d64076f37197203cd075a81f0f321d1c2f8523db9fd
 
 pkgname = paperspace-node
 
