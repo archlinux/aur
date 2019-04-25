@@ -9,7 +9,7 @@
 
 pkgname=intel-media-sdk-git
 _srcname=MediaSDK
-pkgver=2018.4.pre0.r97.ge9a39271
+pkgver=2019.1.pre3.r81.ga94e220e
 pkgrel=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
@@ -17,11 +17,14 @@ url='https://github.com/Intel-Media-SDK/MediaSDK/'
 license=('MIT')
 depends=(
     # official repositories:
-        'gcc-libs' 'libdrm' 'wayland' 'gmock' 'intel-media-driver'
+        'gcc-libs' 'libdrm' 'wayland' 'intel-media-driver'
     # AUR:
         'libva-git'
 )
-makedepends=('git' 'git-lfs' 'cmake' 'libpciaccess' 'libx11' 'libxcb')
+optdepends=('ocl-icd: for rotate_opencl plugin'
+            'intel-compute-runtime: for rotate_opencl plugin')
+makedepends=('git' 'git-lfs' 'cmake' 'libpciaccess' 'libx11' 'libxcb'
+             'python' 'opencl-headers' 'ocl-icd' 'intel-compute-runtime')
 provides=('intel-media-sdk' 'libmfx')
 conflicts=('intel-media-sdk')
 install="${pkgname}.install"
@@ -56,16 +59,9 @@ build() {
     
     cmake \
         -DBUILD_ALL:BOOL='ON' \
-        -DBUILD_DISPATCHER:BOOL='ON' \
-        -DBUILD_RUNTIME:BOOL='ON' \
-        -DBUILD_SAMPLES:BOOL='ON' \
-        -DBUILD_TESTS:BOOL='ON' \
         -DBUILD_TOOLS:BOOL='ON' \
-        -DENABLE_ALL:BOOL='ON' \
         -DENABLE_ITT:BOOL='OFF' \
         -DENABLE_OPENCL:BOOL='ON' \
-        -DENABLE_STAT:BOOL='OFF' \
-        -DENABLE_TEXTLOG:BOOL='OFF' \
         -DENABLE_WAYLAND:BOOL='ON' \
         -DENABLE_X11_DRI3:BOOL='ON' \
         -Wno-dev \
