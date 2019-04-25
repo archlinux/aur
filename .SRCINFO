@@ -1,0 +1,14 @@
+pkgbase = python-aliyun-python-sdk-core
+	pkgdesc = Alibaba Cloud SDK for Python
+	pkgver = 2.13.4
+	pkgrel = 1
+	url = https://github.com/aliyun/aliyun-openapi-python-sdk
+	arch = any
+	license = Apache License 2.0
+	makedepends = python-setuptools
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/b5/02/b9237a788248b80925832b17a0839d7a46edb7ec7c9c88128191581ea50f/aliyun-python-sdk-core-2.13.4.tar.gz
+	sha256sums = 3df9dcab300312212c7bd603c463c6472d17bb7e272a0a2d276dc2676c8ee1c3
+
+pkgname = python-aliyun-python-sdk-core
+
