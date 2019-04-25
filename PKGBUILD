@@ -10,12 +10,12 @@ pkgdesc="A general purpose cross-platform C++ library designed using contract pr
 arch=('any')
 url="http://www.dlib.net"
 license=('custom')
-depends=('mingw-w64-crt')
-optdepends=('mingw-w64-giflib: for GIF support'
-            'mingw-w64-lapack: for BLAS and LAPACK support'
-            'mingw-w64-libjpeg: for JPEG support'
-            'mingw-w64-libpng: for PNG support'
-            'mingw-w64-sqlite: for sqlite support')
+depends=('mingw-w64-crt'
+         'mingw-w64-giflib'
+         'mingw-w64-lapack'
+         'mingw-w64-libjpeg'
+         'mingw-w64-libpng'
+         'mingw-w64-sqlite')
 makedepends=('mingw-w64-cmake')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://downloads.sourceforge.net/project/dclib/${_pkgname}/v${pkgver}/${_pkgname}-${pkgver}.tar.bz2")
@@ -28,9 +28,6 @@ build() {
     mkdir -p "${_pkgname}-build-${_arch}-shared" && pushd "${_pkgname}-build-${_arch}-shared"
     ${_arch}-cmake \
       -DBUILD_SHARED_LIBS:BOOL=ON \
-      -DUSE_AVX_INSTRUCTIONS:BOOL=ON \
-      -DUSE_SSE2_INSTRUCTIONS:BOOL=ON \
-      -DUSE_SSE4_INSTRUCTIONS:BOOL=ON \
       "../${_pkgname}-${pkgver}"
     make
     popd
@@ -38,9 +35,6 @@ build() {
     mkdir -p "${_pkgname}-build-${_arch}-static" && pushd "${_pkgname}-build-${_arch}-static"
     ${_arch}-cmake \
       -DBUILD_SHARED_LIBS:BOOL=OFF \
-      -DUSE_AVX_INSTRUCTIONS:BOOL=ON \
-      -DUSE_SSE2_INSTRUCTIONS:BOOL=ON \
-      -DUSE_SSE4_INSTRUCTIONS:BOOL=ON \
       "../${_pkgname}-${pkgver}"
     make
     popd
