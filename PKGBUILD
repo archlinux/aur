@@ -8,15 +8,14 @@ pkgdesc="A general purpose cross-platform C++ library designed using contract pr
 arch=('x86_64')
 url="http://www.dlib.net"
 license=('custom')
-optdepends=('blas: for BLAS support'
-            'cuda: for CUDA support'
-            'cudnn: for CUDNN support'
-            'giflib: for GIF support'
-            'lapack: for LAPACK support'
-            'libjpeg-turbo: for JPEG support'
-            'libpng: for PNG support'
-            'neon: for neon support'
-            'sqlite: for sqlite support')
+depends=('blas'
+         'giflib'
+         'lapack'
+         'libjpeg-turbo'
+         'libpng'
+         'sqlite')
+optdepends=('cuda: for CUDA support'
+            'cudnn: for CUDNN support')
 makedepends=('cmake')
 source=("https://downloads.sourceforge.net/project/dclib/${pkgname}/v${pkgver}/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('24772f9b2b99cf59a85fd1243ca1327cbf7340d83395b32a6c16a3a16136327b')
@@ -28,16 +27,13 @@ build() {
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
     -DBUILD_SHARED_LIBS:BOOL=ON \
-    -DUSE_AVX_INSTRUCTIONS:BOOL=ON \
-    -DUSE_SSE2_INSTRUCTIONS:BOOL=ON \
-    -DUSE_SSE4_INSTRUCTIONS:BOOL=ON \
     -DCUDA_HOST_COMPILER='/opt/cuda/bin/gcc' \
     -DCMAKE_BUILD_TYPE=Release \
     "../${pkgname}-${pkgver}"
   if [[ -f "/usr/lib/ccache/bin/nvcc-ccache" ]] ; then
     cmake \
       -DCUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache \
-      -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/gcc-7 \
+      -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/gcc \
       "../${pkgname}-${pkgver}"
   fi
   make
