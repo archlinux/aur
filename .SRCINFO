@@ -6,6 +6,7 @@ pkgbase = surfshark-vpn
 	arch = x86_64
 	license = custom:surfshark
 	depends = glibc
+	depends = openvpn
 	options = libtool
 	options = staticlibs
 	source = https://ocean.surfshark.com/debian/pool/main/s/surfshark-vpn/surfshark-vpn_0.4.8_amd64.deb
