@@ -2,7 +2,7 @@
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
 pkgname=coreboot-utils-git
-pkgver=4.8.r2370.gaaced4a932d
+pkgver=4.9.r1437.g74f9fe6e58f
 pkgrel=1
 pkgdesc='Tools and utilities to work with coreboot firmware'
 url='https://www.coreboot.org/'
@@ -12,10 +12,26 @@ depends=(pciutils)
 optdepends=("python: me_cleaner support")
 makedepends=(git)
 source=(git+https://review.coreboot.org/coreboot
+	    git+https://review.coreboot.org/blobs
+	    git+https://review.coreboot.org/nvidia-cbootimage
+	    git+https://review.coreboot.org/vboot
+	    git+https://review.coreboot.org/arm-trusted-firmware
+	    git+https://review.coreboot.org/chrome-ec
+	    git+https://review.coreboot.org/libhwbase
+	    git+https://review.coreboot.org/libgfxinit
+	    git+https://review.coreboot.org/fsp
+	    git+https://review.coreboot.org/opensbi
         # vboot provides vb2_api.h needed by cbfstool
-        git+https://review.coreboot.org/vboot
         autoport-tool-paths.patch)
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             '5136f8ae6c690501b483243a33b91dc978971cf23bcf48c27bdca845db53bdb1')
 
@@ -33,10 +49,20 @@ pkgver() {
 prepare() {
   cd coreboot
 
-  git submodule init
+  # coreboot repo seems screwed https://stackoverflow.com/questions/4185365/no-submodule-mapping-found-in-gitmodule-for-a-path-thats-not-a-submodule
+  git rm -rf coreboot
+
+  git config -f .gitmodules 'submodule.3rdparty/blobs.url' "$srcdir/blobs"
+  git config -f .gitmodules 'submodule.util/nvidia-cbootimage.url' "$srcdir/nvidia-cbootimage"
   git config -f .gitmodules 'submodule.vboot.url' "$srcdir/vboot"
-  git submodule sync -- 3rdparty/vboot
-  git submodule update -- 3rdparty/vboot
+  git config -f .gitmodules 'submodule.arm-trusted-firmware.url' "$srcdir/arm-trusted-firmware"
+  git config -f .gitmodules 'submodule.3rdparty/chromeec.url' "$srcdir/chrome-ec"
+  git config -f .gitmodules 'submodule.libhwbase.url' "$srcdir/libhwbase"
+  git config -f .gitmodules 'submodule.libgfxinit.url' "$srcdir/libgfxinit"
+  git config -f .gitmodules 'submodule.3rdparty/fsp.url' "$srcdir/fsp"
+  git config -f .gitmodules 'submodule.opensbi.url' "$srcdir/opensbi"
+
+  git submodule update --init
 
   patch -p1 -i "$srcdir/autoport-tool-paths.patch"
 }
