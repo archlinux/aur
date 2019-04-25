@@ -3,12 +3,12 @@
 
 pkgname=dlib
 pkgver=19.17
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques"
 arch=('x86_64')
 url="http://www.dlib.net"
 license=('custom')
-depends=('blas'
+depends=('cblas'
          'lapack'
          'libjpeg-turbo'
          'libpng'
