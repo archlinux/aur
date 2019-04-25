@@ -1,19 +1,20 @@
-# Maintainer: Håvard Pettersson <mail@haavard.me>
+# Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Contributor: Håvard Pettersson <mail@haavard.me>
 # Contributor: Andrew Stubbs <andrew.stubbs@gmail.com>
 
 pkgname=etcher
-pkgver=1.5.19
+pkgver=1.5.30
 pkgrel=1
-pkgdesc='Burn images to SD cards & USB drives, safe & easy'
+pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
 arch=(x86_64)
-url='https://www.balena.io/etcher/'
-license=(apache)
+url='https://etcher.io'
+license=(Apache)
 depends=(electron gtk2 libxtst libxss gconf nss alsa-lib)
 makedepends=(npm python2 git jq)
 optdepends=('libnotify: for notifications'
             'speech-dispatcher: for text-to-speech')
 options=('!strip')
-source=("$pkgname::git+https://github.com/balena-io/$pkgname.git#tag=v$pkgver"
+source=("${pkgname}::git+https://github.com/balena-io/${pkgname}.git#tag=v${pkgver}"
         'git+https://github.com/balena-io/scripts.git'
         'etcher-electron'
         'etcher-electron.desktop')
@@ -23,14 +24,14 @@ sha256sums=('SKIP'
             '89291532fb6e6c5555b43d61c9ba3df103bca0eace040483884b86fd30dca3e4')
 
 prepare() {
-  cd "$pkgname"
+  cd "${pkgname}"
   git submodule init
-  git config submodule.scripts/resin.url "$srcdir/scripts"
+  git config submodule.scripts/resin.url "${srcdir}/scripts"
   git submodule update
 }
 
 build() {
-  cd "$pkgname"
+  cd "${pkgname}"
   export NPM_VERSION=$(npm --version)
   make electron-develop
   make webpack
@@ -38,23 +39,23 @@ build() {
 }
 
 package() {
-  cd "$pkgname"
+  cd "${pkgname}"
 
-  _appdir="$pkgdir"/usr/lib/$pkgname
-  install -d "$_appdir"
+  _appdir="${pkgdir}"/usr/lib/${pkgname}
+  install -d "${_appdir}"
 
-  install package.json "$_appdir"
-  cp -a {lib,generated,node_modules} "$_appdir"
-  install -D assets/icon.png "$_appdir"/assets/icon.png
-  install -D lib/gui/app/index.html "$_appdir"/lib/gui/app/index.html
+  install package.json "${_appdir}"
+  cp -a {lib,generated,node_modules} "${_appdir}"
+  install -D assets/icon.png "${_appdir}"/assets/icon.png
+  install -D lib/gui/app/index.html "${_appdir}"/lib/gui/app/index.html
 
-  install -Dm755 "$srcdir"/etcher-electron "$pkgdir"/usr/bin/etcher-electron
-  install -Dm644 "$srcdir"/etcher-electron.desktop \
-    "$pkgdir"/usr/share/applications/etcher-electron.desktop
+  install -Dm755 "${srcdir}"/etcher-electron "${pkgdir}"/usr/bin/etcher-electron
+  install -Dm644 "${srcdir}"/etcher-electron.desktop \
+    "${pkgdir}"/usr/share/applications/etcher-electron.desktop
 
   for size in 16x16 32x32 48x48 128x128 256x256 512x512; do
-    install -Dm644 assets/iconset/$size.png \
-      "$pkgdir"/usr/share/icons/hicolor/$size/apps/etcher-electron.png
+    install -Dm644 assets/iconset/${size}.png \
+      "${pkgdir}"/usr/share/icons/hicolor/${size}/apps/etcher-electron.png
   done
 }
 
