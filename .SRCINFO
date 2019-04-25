@@ -7,7 +7,7 @@ pkgbase = unity-editor-ios
 	license = custom
 	depends = unity-editor
 	options = !strip
-	source = 2019.1.0f2.1.0f2.tar.xz::https://beta.unity3d.com/download/292b93d75a2c/LinuxEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-2019.1.0f2.tar.xz
+	source = 2019.1.0f2.1.0f2.tar.xz::https://download.unity3d.com/download_unity/292b93d75a2c/LinuxEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-2019.1.0f2.tar.xz
 	md5sums = 4a6628b549c12a944ac1924b00570b59
 
 pkgname = unity-editor-ios
