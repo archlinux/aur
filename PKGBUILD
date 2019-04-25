@@ -8,7 +8,7 @@
 # update the dependencies based on dynamic libraries when packaging..
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.28.2.r638.g08a6827b3d
+pkgver=0.29.1.r317.gedbc199914
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
@@ -22,10 +22,10 @@ depends=(
 'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
 'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive' 'smbclient'
-'zlib' 'sndio' 'openal' 'vulkan-icd-loader' "${_undetected_depends[@]}"
+'zlib' 'sndio' 'openal' 'vulkan-icd-loader' 'shaderc' "${_undetected_depends[@]}"
 
 # AUR:
-'ffmpeg-full-git' 'mujs' 'rsound' 'shaderc-git' 'crossc' 'vapoursynth-git'
+'ffmpeg-full-git' 'mujs' 'rsound' 'crossc' 'vapoursynth-git' 'libplacebo-git'
 )
 
 optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
