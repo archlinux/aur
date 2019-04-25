@@ -58,6 +58,7 @@ build() {
     cd "$srcdir/$pkgname-$pkgver/caddy"
     export GOPATH="$srcdir"
     go build -v -o "$srcdir/caddy"
+    go clean --modcache
 }
 
 package() {
