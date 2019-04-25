@@ -1,5 +1,5 @@
-pkgbase = paraview
-	pkgdesc = Parallel Visualization application using VTK (openmpi version)
+pkgbase = paraview-opt
+	pkgdesc = Parallel Visualization application using VTK (openmpi version): installed to /opt/
 	pkgver = 5.6.0
 	pkgrel = 5
 	url = https://www.paraview.org
@@ -50,5 +50,5 @@ pkgbase = paraview
 	sha256sums = 5b49cb96ab78eee0427e25200530ac892f9a3da7725109ce1790f8010cb5b377
 	sha256sums = ed1d597139473f24441e5c10038e988d64ab1d904e0c5ecaf24069734989bff4
 
-pkgname = paraview
+pkgname = paraview-opt
 

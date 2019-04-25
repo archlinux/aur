@@ -12,7 +12,7 @@
 
 _pkg=paraview
 _mpi=openmpi
-pkgname=${_pkg}
+pkgname=${_pkg}-opt
 #-${_mpi}
 pkgver=5.6.0
 pkgrel=5
