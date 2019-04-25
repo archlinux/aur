@@ -1,0 +1,17 @@
+pkgbase = linuxed-git
+	pkgdesc = Installer for EnhancedDiscord
+	pkgver = 0.r81.af0524f
+	pkgrel = 1
+	url = https://github.com/Cr3atable/LinuxED
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	optdepends = discord: Discord itself
+	provides = linuxed
+	conflicts = linuxed
+	source = git+https://github.com/Cr3atable/LinuxED.git
+	md5sums = SKIP
+
+pkgname = linuxed-git
+
