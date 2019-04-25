@@ -2,7 +2,7 @@
 
 pkgname=python-aliyun-python-sdk-push
 pkgver=3.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Alibaba Cloud SDK for Python"
 arch=('any')
 makedepends=('python-setuptools')
