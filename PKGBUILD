@@ -1,3 +1,5 @@
+# Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
+
 pkgname=pick-colour-picker
 pkgver=1.5
 pkgrel=3
