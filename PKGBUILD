@@ -4,26 +4,26 @@
 
 pkgname=code-git
 pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - git latest'
-pkgver=1.16.0.r25587.g7d39e805fb
+pkgver=1.16.0.r25714.g2328356959
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/Microsoft/vscode'
 license=('MIT')
 depends=('electron' 'libsecret' 'libxkbfile' 'ripgrep')
-makedepends=('npm' 'gulp' 'python2' 'git' 'yarn' 'nodejs-lts-carbon')
+makedepends=('npm' 'gulp' 'python2' 'git' 'yarn' 'nodejs-lts-dubnium')
 conflicts=('visual-studio-code-git')
 provides=('visual-studio-code-git')
 
 source=("git+https://github.com/Microsoft/vscode"
         "${pkgname}.js"
         "${pkgname}.sh"
-        "code-liveshare.patch"
-        "product_json.patch")
-sha256sums=('SKIP'
-            '64aca444a714dd67da6d5b71ab8d0255e767cb265918d556b3bf8194fca0a7ef'
-            'df452e6f64f62081aa4a8da69a071b2c122095eea48dca409a7a851243b9ff36'
-            'b42df6bbf1160f9602f10245b5442295d6e3a86731a799281dd4b77083aa00bc'
-            'd3eb8c0e5ddc2b0a6089cec2f34346bf8080048ce3b3eb6918467eedd741cae0')
+        "product_json.diff"
+        "code-liveshare.diff")
+sha512sums=('SKIP'
+            '889ca4d4b810b4a67319cece0e1bfeae61b33905adef64f9b27152e43e112dc53a94b1875fe0a810f0d0192dec0107aed2d01c12d6a17427db4261858f96a02a'
+            '5d1cf747d365da2e12250079ba986ad5a7e70a7966900ee77a557b5989978cb24a6a8682342e87f19ffe3666d7a91bfd9004b1fc0c1da08d2ba9241e7a808ff5'
+            '8ec47e497287d67f37e7b669af416f43d5cdbd4574892867d7b95996ef5de53640b5bc919b06b177e1fd91cb005579d6ed0c17325117b9914ba7cf28f5f06e40'
+            '0bd10ca06dea22854e47fc45d833756ee8d7bf714c88f63feef44e0b0b5da052fba3c27d001865e3389f391cd7b888d92dc0ba44029fa5c736225da3cf2f9a46')
 
 case "$CARCH" in
     i686)
@@ -51,14 +51,14 @@ prepare() {
 
     # This patch no longer contains proprietary modifications.
     # See https://github.com/Microsoft/vscode/issues/31168 for details.
-    patch -p1 -i "${srcdir}/product_json.patch"
+    patch -p0 -i "${srcdir}/product_json.diff"
     local _commit=$(cd "${srcdir}/vscode" && git rev-parse HEAD)
     local _datestamp=$(date -u -Is | sed 's/\+00:00/Z/')
     sed -e "s/@COMMIT@/${_commit}/" -e "s/@DATE@/${_datestamp}/" \
         -i product.json
 
     # See https://github.com/MicrosoftDocs/live-share/issues/262 for details
-    patch -p1 -i "${srcdir}/code-liveshare.patch"
+    patch -p1 -i "${srcdir}/code-liveshare.diff"
 
     # Build native modules for system electron
     local _target=$(</usr/lib/electron/version)
@@ -72,6 +72,11 @@ prepare() {
             s|@@ICON@@|code-git|g
             s|@@LICENSE@@|MIT|g
             s|inode/directory;||' resources/linux/code.{appdata.xml,desktop}
+
+    # Fix bin path
+    sed -i "s|return path.join(path.dirname(execPath), 'bin', \`\${product.applicationName}\`);|return '/usr/bin/${pkgname}';|g
+            s|return path.join(appRoot, 'scripts', 'code-cli.sh');|return '/usr/bin/${pkgname}';|g" \
+        src/vs/platform/environment/node/environmentService.ts
 }
 
 build() {
