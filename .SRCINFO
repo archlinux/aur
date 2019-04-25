@@ -7,13 +7,14 @@ pkgbase = dlib
 	license = custom
 	makedepends = cmake
 	depends = blas
-	depends = giflib
 	depends = lapack
 	depends = libjpeg-turbo
 	depends = libpng
-	depends = sqlite
+	depends = libx11
 	optdepends = cuda: for CUDA support
 	optdepends = cudnn: for CUDNN support
+	optdepends = giflib: for GIF support
+	optdepends = sqlite: for sqlite support
 	source = https://downloads.sourceforge.net/project/dclib/dlib/v19.17/dlib-19.17.tar.bz2
 	sha256sums = 24772f9b2b99cf59a85fd1243ca1327cbf7340d83395b32a6c16a3a16136327b
 

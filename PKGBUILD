@@ -9,13 +9,14 @@ arch=('x86_64')
 url="http://www.dlib.net"
 license=('custom')
 depends=('blas'
-         'giflib'
          'lapack'
          'libjpeg-turbo'
          'libpng'
-         'sqlite')
+         'libx11')
 optdepends=('cuda: for CUDA support'
-            'cudnn: for CUDNN support')
+            'cudnn: for CUDNN support'
+            'giflib: for GIF support'
+            'sqlite: for sqlite support')
 makedepends=('cmake')
 source=("https://downloads.sourceforge.net/project/dclib/${pkgname}/v${pkgver}/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('24772f9b2b99cf59a85fd1243ca1327cbf7340d83395b32a6c16a3a16136327b')
