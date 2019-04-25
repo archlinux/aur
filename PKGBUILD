@@ -137,11 +137,12 @@ makedepends=(
              'ffnvcodec-headers'
              )
 optdepends=(
+            'cuda: mpv ffmpeg nvcc and libnpp support'
+            'libplacebo-git: Addition GPU-accelerated rendering primitives'
             'mpv-bash-completion-git: Additional completion definitions for Bash users'
             'nvidia-utils: for hardware accelerated video decoding with CUDA'
             'youtube-dl: Another way to view youtuve videos with mpv'
-            'zsh-completions: Additional completion definitions for Zsh users'            
-            'libplacebo-git: Addition GPU-accelerated rendering primitives'
+            'zsh-completions: Additional completion definitions for Zsh users'
             'tensorflow: mpv ffmpeg DNN module backend'
             )
 provides=('mpv' 'mpv-git' 'mpv-build-git')
@@ -164,15 +165,15 @@ backup=('etc/mpv/encoding-profiles.conf')
 if [ -f /usr/lib/libvapoursynth.so ]; then
   depends+=('vapoursynth')
 fi
-if [ -f /usr/lib/libvapoursynth.so ]; then
-  depends+=('vapoursynth')
-fi
 if [ -f /usr/lib/libtensorflow.so ]; then
   depends+=('tensorflow')
 fi
-
+if [ -f /usr/lib/libplacebo.so ]; then
+  depends+=('libplacebo-git')
+fi
 if [ -d /opt/cuda ]; then
   makedepends+=('cuda')
+  depends+=('cuda')
 fi
 
 pkgver() {
@@ -382,6 +383,7 @@ prepare() {
   fi
   if [ -d /opt/cuda ]; then
     _ffmpeg_options+=('--enable-cuda-nvcc')
+    _ffmpeg_options+=('--enable-libnpp')
     _ffmpeg_options+=('--extra-cflags=-I/opt/cuda/include')
     _ffmpeg_options+=('--extra-ldflags=-L/opt/cuda/lib64')
   fi
@@ -400,6 +402,9 @@ prepare() {
 
 build() {
   cd mpv-build
+  if [ -d /opt/cuda ]; then
+    sed -i 's|scripts/mpv-config|sed \-i "s\|-lavfilter\|-L/opt/cuda/targets/x86_64-linux/lib/ -lavfilter\|" build_libs/lib/pkgconfig/libavfilter.pc\nscripts/mpv-config|' "${srcdir}/mpv-build/build"
+  fi
   ./build
 }
 
