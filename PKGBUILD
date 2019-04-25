@@ -1,6 +1,6 @@
 # Maintainer: KingofToasters <dev at sgregoratto dot me>
 pkgname=cointop
-pkgver=1.1.3
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="An interactive, real-time cryptocurrency monitor"
 url="https://github.com/miguelmota/cointop"
@@ -8,11 +8,11 @@ license=('APACHE')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 makedepends=('go-pie' 'git')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('a9438b1a924a4c685c6c5102cf64988ff9ce773a0abb60009409a426a7112ad0')
+sha256sums=('a7f11576080fe04215785b81caec05e8a49e5ed2a8f529b1ce13b064e21e80c0')
 
 build() {
   cd "$pkgname-$pkgver"
-   go build \
+  go build \
     -gcflags "all=-trimpath=$PWD" \
     -asmflags "all=-trimpath=$PWD" \
     -ldflags "-extldflags $LDFLAGS" \
@@ -21,7 +21,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-   go test ./...
+  go test ./...
 }
 
 package() {
