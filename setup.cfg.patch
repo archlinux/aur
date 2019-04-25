@@ -1,0 +1,25 @@
+--- setup.cfg	2019-03-29 03:49:03.000000000 -0700
++++ setup.cfg.new	2019-04-18 16:32:24.259724316 -0700
+@@ -50,12 +50,11 @@
+     pyyaml
+     gevent
+     msgpack-numpy
+-    msgpack-python
++    msgpack
+     psutil
+     tables
+     pyzmq
+     moviepy
+-    opencv-python
+     python-gitlab
+     gitpython
+     astunparse
+@@ -69,7 +68,7 @@
+     pyWinhook; platform_system == "Windows"
+     pyqmix >= 2018.12.13; platform_system == "Windows"
+     pyqt5; python_version >= "3"
+-    wxPython != 4.0.2, != 4.0.3; platform_system != "Linux"
++    wxPython
+     pypiwin32; platform_system == "Windows"
+     pyobjc-core; platform_system == "Darwin"
+     pyobjc-framework-Quartz; platform_system == "Darwin"
