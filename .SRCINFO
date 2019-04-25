@@ -1,6 +1,6 @@
 pkgbase = diembox
 	pkgdesc = DiEM toolbox
-	pkgver = 1.2.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/githaff/diembox
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = diembox
 	depends = glibc
 	provides = diembox
 	conflicts = diembox
-	source = git+https://github.com/githaff/diembox.git#tag=v1.2.1
+	source = git+https://github.com/githaff/diembox.git#tag=v2.0.0
 	md5sums = SKIP
 
 pkgname = diembox

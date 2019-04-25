@@ -1,7 +1,7 @@
-# Maintainer: Dmitry Lavnikevich <haff.at.midgard.by>
+# Maintainer: Dmitry Lavnikevich <haff@midgard.by>
 
 pkgname=diembox
-pkgver=1.2.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="DiEM toolbox"
 arch=('i686' 'x86_64')
