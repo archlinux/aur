@@ -10,12 +10,12 @@ _pymajver=3
 pkgdesc="Major release 3.8 of the Python high-level programming language"
 arch=('i686' 'x86_64')
 license=('custom')
-url="http://www.python.org/"
+url="https://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
-source=(http://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz)
+source=(https://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz)
 sha256sums=('2c5bcc2596e1dd14ab8c5292f6c2421cbb5e295d7e7a8039e22c604248c351f5')
 
 prepare() {
