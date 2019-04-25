@@ -14,7 +14,7 @@ source=("http://battlescribe.net/files/BattleScribe_$pkgver""_Multi.zip"
 		"$pkgname.desktop"
 		"$pkgname.png"
 		'BattleScribe.sh')
-md5sums=('97fd054cbe0df2295114e519cf529db5'
+md5sums=('02bc68073f6bc7df9f51d718d15f7db3'
          '33aafcfc46f7f1ada23015a830413763'
          'd0fef06c5b080003f84a0e148fbe9261'
          'cf0f2351b3241aa80cd80854fd73045f')
