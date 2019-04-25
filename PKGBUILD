@@ -1,7 +1,7 @@
 # Maintainer: sasvari
 name=camelot
 pkgname=python-$name-git
-pkgver=0.2.0.r185.g934065a
+pkgver=0.7.2.r10.g934065a
 pkgrel=1
 pkgdesc="Camelot: PDF Table Extraction for Humans"
 arch=(any)
@@ -15,7 +15,7 @@ source=("git+https://github.com/socialcopsdev/$name.git")
 
 pkgver() {
 	cd "$srcdir/$name"
-	git describe | sed 's/^v//; s/-/.r/; s/-/./'
+	git describe --tags | sed 's/^v//; s/-/.r/; s/-/./'
 }
 
 build () {
