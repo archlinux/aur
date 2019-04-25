@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=kcheckers
