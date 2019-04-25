@@ -12,7 +12,7 @@ makedepends=('apache-ant' 'java-environment>=8')
 source=("https://wrapper.tanukisoftware.com/download/${pkgver}/wrapper_${pkgver}_src.tar.gz"
         'java10.patch')
 sha256sums=('89210b7b3582e2bb3c56d9eba0da0e92dcd2cc4429f2ca379430a153a13c73d6'
-            '474fd0bde328eff7b5f25cda48b5ca978a23b7a95ba08c83a7894ccf4e589a25')
+            '75ad8377c824d3fcd03b919c5744706b74fec5a35c32fe7d1f76f4cc8c1f9b98')
 
 prepare() {
     cd "wrapper_${pkgver}_src"
