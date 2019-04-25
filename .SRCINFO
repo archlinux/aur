@@ -1,7 +1,7 @@
 pkgbase = mathics
 	pkgdesc = A general-purpose computer algebra system.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mathics.github.io/
 	arch = any
 	license = GPL3
