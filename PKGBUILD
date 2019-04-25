@@ -35,7 +35,7 @@ optdepends=("${pkgname}-doc"
             "unityhub"
             "jq: needed for UnityHub integration helpers --register/--deregister")
 install=${pkgname}.install
-source=("2019.1.0f2.tar.xz::https://beta.unity3d.com/download/292b93d75a2c/LinuxEditorInstaller/Unity.tar.xz"
+source=("2019.1.0f2.tar.xz::https://download.unity3d.com/download_unity/292b93d75a2c/LinuxEditorInstaller/Unity.tar.xz"
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}-icon.png"
