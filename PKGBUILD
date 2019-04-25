@@ -1,4 +1,4 @@
-# Maintainer: Vivien Maisonneuve <v dot maisonneuve at gmail dot com>
+# Maintainer: Gerry Demaret <oss plus archlinux at x-net dot be>
 # Category: system
 pkgname='vncdotool-git'
 pkgver=0.12.0.r0.g7b6c661
