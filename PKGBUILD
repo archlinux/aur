@@ -170,12 +170,14 @@ sha256sums=('b5b022366d6d1a98dbb63b60221c62bc951c9819653ad6f5142192e89f78cf63'
 if [ "$CARCH" = "i686" ]; then
   _i_arch='ia32'
   _i_arch2='i486'
+  _bin_dir='bin32'
 
   _not_arch='intel64'
   _not_arch2='x86_64'
 else
   _i_arch='intel64'
   _i_arch2='x86_64'
+  _bin_dir='bin64'
 
   _not_arch='ia32'
   _not_arch2='i486'
@@ -683,12 +685,8 @@ package_intel-vtune-amplifier() {
   mkdir -p ${_man_dir}
 
   msg2 "Updating scripts"
-  if [ "$CARCH" = "i686" ]; then
-    sed -i 's/<arch>/bin32/g' ${srcdir}/intel_vtune-amplifier.sh
-  else
-    sed -i 's/<arch>/bin64/g' ${srcdir}/intel_vtune-amplifier.sh
-  fi
-  cp ${srcdir}/intel_vtune-amplifier.sh ${xe_build_dir}/etc/profile.d/
+  sed -e "s/<arch>/${_bin_dir}/g" \
+    < ${srcdir}/intel_vtune-amplifier.sh > ${xe_build_dir}/etc/profile.d/intel_vtune-amplifier.sh
   chmod a+x ${xe_build_dir}/etc/profile.d/intel_vtune-amplifier.sh
 
   cd ${xe_build_dir}
@@ -732,12 +730,8 @@ package_intel-advisor() {
   mkdir -p ${_man_dir}
 
   msg2 "Updating scripts"
-  if [ "$CARCH" = "i686" ]; then
-    sed -i 's/<arch>/bin32/g' ${srcdir}/intel_advisor.sh
-  else
-    sed -i 's/<arch>/bin64/g' ${srcdir}/intel_advisor.sh
-  fi
-  cp ${srcdir}/intel_advisor.sh ${xe_build_dir}/etc/profile.d/
+  sed -e "s/<arch>/${_bin_dir}/g" \
+    < ${srcdir}/intel_advisor.sh > ${xe_build_dir}/etc/profile.d/intel_advisor.sh
   chmod a+x ${xe_build_dir}/etc/profile.d/intel_advisor.sh
 
   cd ${xe_build_dir}
@@ -779,12 +773,8 @@ package_intel-inspector() {
   mkdir -p ${_man_dir}
 
   msg2 "Updating scripts"
-  if [ "$CARCH" = "i686" ]; then
-    sed -i 's/<arch>/bin32/g' ${srcdir}/intel_inspector.sh
-  else
-    sed -i 's/<arch>/bin64/g' ${srcdir}/intel_inspector.sh
-  fi
-  cp ${srcdir}/intel_inspector.sh ${xe_build_dir}/etc/profile.d/
+  sed -e "s/<arch>/${_bin_dir}/g" \
+    < ${srcdir}/intel_inspector.sh > ${xe_build_dir}/etc/profile.d/intel_inspector.sh
   chmod a+x ${xe_build_dir}/etc/profile.d/intel_inspector.sh
 
   cd ${xe_build_dir}
