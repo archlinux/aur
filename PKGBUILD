@@ -3,14 +3,12 @@
 pkgname=librepcb
 pkgver=0.1.1
 _pkgver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="A free EDA software to develop printed circuit boards."
 arch=('x86_64' 'i686')
 url="http://librepcb.org/"
 license=('GPL')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'qt5-base')
-provides=('librepcb')
-conflicts=('librepcb-git' 'librepcb-appimage')
 source=(
   "https://download.librepcb.org/releases/${_pkgver}/librepcb-${_pkgver}-source.zip"
   "https://download.librepcb.org/releases/${_pkgver}/librepcb-${_pkgver}-source.zip.asc"
@@ -24,7 +22,7 @@ validpgpkeys=('D6F9AF572228C5BCD6B538407EF3061F5C8D5E25')
 build() {
   cd "${srcdir}/librepcb-${_pkgver}/"
   mkdir -p build && cd build
-  qmake -r ../librepcb.pro PREFIX=${pkgdir}/usr
+  qmake -r ../librepcb.pro PREFIX="${pkgdir}/usr"
   make
 }
 
