@@ -4,7 +4,7 @@
 # Contributor: Frikilinux <frikilinux at gmail dot com>
 
 pkgname=gnome-shell-extension-appindicator-git
-pkgver=27+2+ga72f8be
+pkgver=29+0+gaadd60b
 pkgrel=1
 epoch=1
 pkgdesc='Integrates AppIndicators into GNOME Shell'
