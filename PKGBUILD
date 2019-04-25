@@ -413,10 +413,7 @@ package_intel-compiler-base() {
   msg2 "Copying man pages"
   mv ${xe_build_dir}/opt/intel/documentation_${_year}/en/man/common/man1/*.1 ${_man_dir}
 
-  cd ${_man_dir}
-  for f in *.1 ; do
-    gzip $f
-  done
+  gzip ${_man_dir}/*.1
 
   msg2 "Moving package files"
   mv ${xe_build_dir}/opt ${pkgdir}
@@ -472,11 +469,7 @@ package_intel-fortran-compiler() {
   msg2 "Copying man pages"
   mv ${xe_build_dir}/opt/intel/documentation_${_year}/en/man/common/man1/*.1 ${_man_dir}
 
-
-  cd ${_man_dir}
-  for f in *.1 ; do
-    gzip $f
-  done
+  gzip ${_man_dir}/*.1
 
   # Remove duplicate headers found in intel base
   rm ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/compiler/include/omp_lib.f90
@@ -697,10 +690,7 @@ package_intel-vtune-amplifier() {
   if [[ -d ${xe_build_dir}/opt/intel/vtune_amplifier_xe_${_year}.${_vtune_man_ver}/man/man1 ]]
   then
     mv ${xe_build_dir}/opt/intel/vtune_amplifier_xe_${_year}.${_vtune_man_ver}/man/man1/*.1 ${_man_dir}
-    cd ${_man_dir}
-    for f in *.1 ; do
-      gzip $f
-    done
+    gzip ${_man_dir}/*.1
   fi
 
 
@@ -742,10 +732,7 @@ package_intel-advisor() {
   if [[ -d ${xe_build_dir}/opt/intel/advisor_${_year}.${_advisor_man_ver}/man/man1 ]]
   then
     mv ${xe_build_dir}/opt/intel/advisor_${_year}.${_advisor_man_ver}/man/man1/*.1 ${_man_dir}
-    cd ${_man_dir}
-    for f in *.1 ; do
-      gzip $f
-    done
+    gzip ${_man_dir}/*.1
   fi
 
 
@@ -785,10 +772,7 @@ package_intel-inspector() {
   if [[ -d ${xe_build_dir}/opt/intel/inspector_${_year}.${_inspector_man_ver}/man/man1 ]]
   then
     mv ${xe_build_dir}/opt/intel/inspector_${_year}.${_inspector_man_ver}/man/man1/*.1 ${_man_dir}
-    cd ${_man_dir}
-    for f in *.1 ; do
-      gzip $f
-    done
+    gzip ${_man_dir}/*.1
   fi
 
 
