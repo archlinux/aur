@@ -1,7 +1,7 @@
 # Maintainer: Ricardo Vieira <ricardo.vieira@tecnico.ulisboa.pt>
 
 pkgname=budgie-desktop-git
-pkgver=v10.4.r42.g298b9ae4
+pkgver=10.5.r13.g48d1bc4b
 pkgrel=1
 pkgdesc="Simple GTK3 desktop experience"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
         cd "$srcdir/$pkgname"
-        git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+        git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
