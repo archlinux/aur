@@ -1,6 +1,6 @@
 pkgbase = linux-gpib-svn
 	pkgdesc = A support package for GPIB (IEEE 488) hardware -- built from the svn source tree
-	pkgver = r1809
+	pkgver = r1810
 	pkgrel = 1
 	url = http://linux-gpib.sourceforge.net/
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = linux-gpib-svn
 	conflicts = linux-gpib
 	conflicts = linux-gpib-dkms
 	conflicts = python-linux-gpib
-	backup = etc/gpib.conf
 	backup = usr/etc/gpib.conf
 	source = linux-gpib::svn://svn.code.sf.net/p/linux-gpib/code/trunk
 	md5sums = SKIP
