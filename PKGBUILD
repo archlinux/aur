@@ -1,6 +1,6 @@
 # Maintainer: Philipp Kühn <p dot kuehn at posteo dot de>
 pkgname=python-dictcc
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="commandline tool for dict.cc"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python'
          'python-beautifulsoup4'
          'python-tabulate')
 source=("dictcc.py")
-md5sums=('2dc893d1c2f690b35465785c20fe88d8')
+md5sums=('19ce7950292a7f1d80dabdb1840fa67f')
 provides=("python-dictcc=$pkgver-$pkgrel")
 source=("https://github.com/randomn4me/${pkgname#python-}/archive/${pkgver}.tar.gz")
 
