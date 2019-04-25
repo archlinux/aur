@@ -1,8 +1,7 @@
 # Maintainer: Toby Jones <quoth.the.server@gmail.com>
-# This PKGBUILD will grab the development version of Etterna - if you want the stable version, uncomment the line in build()
 
 pkgname=etterna-git
-pkgver=0.61.1
+pkgver=0.65.1
 pkgrel=1
 pkgdesc="Etterna: an advanced cross-platform rhythm game focused on keyboard play"
 arch=('i686' 'x86_64')
@@ -29,9 +28,7 @@ pkgver() {
 build() {
     cd "etterna"
 
-    # UNCOMMENT THE BELOW LINE FOR STABLE ETTERNA 
-    # git checkout v$(pkgver)
-    git checkout develop
+    git checkout v$(pkgver)
     git submodule update --init
 
     mkdir "build"
