@@ -8,14 +8,14 @@
 pkgname='emacs-llvm-mode'
 pkgdesc="Emacs syntax highlighting mode for LLVM IR"
 install=emacs-llvm-mode.install
-pkgver=7.0.1
+pkgver=8.0.0
 pkgrel=1
 arch=('any')
 depends=('emacs')
 url="https://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
 source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz)
-sha256sums=('a38dfc4db47102ec79dcc2aa61e93722c5f6f06f0a961073bd84b78fb949419b')
+sha256sums=('8872be1b12c61450cacc82b3d153eab02be2546ef34fa3580ed14137bb26224c')
 
 package() {
     cd "$srcdir/llvm-$pkgver.src/utils/emacs"
