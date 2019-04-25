@@ -2,7 +2,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=rsyslog
-pkgver=8.1903.0
+pkgver=8.1904.0
 pkgrel=1
 pkgdesc="An enhanced multi-threaded syslogd with a focus on security and reliability"
 url="http://www.rsyslog.com/"
@@ -23,7 +23,7 @@ source=("http://www.rsyslog.com/files/download/rsyslog/rsyslog-$pkgver.tar.gz"
 	'rsyslog.conf'
         'rsyslog.service')
 
-sha256sums=('d0d23a493dcec64c7b6807a1bb8ee864ed0f3760c2ff3088008bb661d304056f'
+sha256sums=('7098b459dfc3f8bfc35d5b114c56e7945614ba76efa4e513b1db9c38b0ff9c3d'
             '0f5bea3fd4dff2c9f097bf95768b2e1f6e9cfd9a08eab98bc3b3b4d2ed44119a'
             'bc7ea11a697c20cdaa6730cfa0b4465cef0fec0e3f6b39aeff8deae9756aafbb'
             '81b9f9b78395405b679849143a6709911d00e9317928fdb2a2540f52965847c2')
