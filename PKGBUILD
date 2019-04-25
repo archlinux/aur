@@ -3,7 +3,7 @@
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts-standardassets
-pkgver=2017.4.25f1
+pkgver=2017.4.26f1
 pkgrel=1
 pkgdesc="Unity Standard Assets for easily getting started building projects in Unity."
 arch=('x86_64')
@@ -11,8 +11,8 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-lts')
 makedepends=('cpio')
-source=("2017.4.25f1.pkg::https://download.unity3d.com/download_unity/9cba1c3a94f1/MacStandardAssetsInstaller/StandardAssets.pkg")
-md5sums=("0824ff8871d1691ea6bc1f86f2dce870")
+source=("2017.4.26f1.pkg::https://download.unity3d.com/download_unity/3b349d10f010/MacStandardAssetsInstaller/StandardAssets.pkg")
+md5sums=("5c64526ab17f6f66e036ae9c5053ec6c")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
