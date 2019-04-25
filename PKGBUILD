@@ -3,7 +3,7 @@
 pkgname=intel-media-stack-bin
 pkgver=2019.1.0
 _srcver="${pkgver:2}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools and libraries for developing media solutions on Intel products. Includes MediaSDK, Media Driver, libva and libva-utils.'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
@@ -12,7 +12,8 @@ depends=('gcc-libs' 'libpciaccess' 'libx11' 'libxext' 'libxfixes' 'wayland')
 optdepends=('ocl-icd: for rotate_opencl plugin'
             'intel-compute-runtime: for rotate_opencl plugin')
 makedepends=('lsb-release')
-provides=('intel-media-sdk' 'libmfx' 'intel-media-driver' 'libva' 'libva-utils')
+provides=('intel-media-sdk' 'libmfx' 'intel-gmmlib' 'intel-media-driver' 'libva'
+          'libva-utils')
 conflicts=('intel-media-sdk')
 backup=('etc/profile.d/intel-mediasdk-devel.sh'
         'etc/profile.d/intel-mediasdk-devel.csh'
