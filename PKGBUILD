@@ -15,7 +15,7 @@ depends=('unity-editor'
          'android-udev')
 makedepends=('cpio')
 optdepends=('android-ndk-16b: needed for IL2CPP builds')
-source=("2019.1.0f2.1.0f2.pkg::https://beta.unity3d.com/download/292b93d75a2c/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2019.1.0f2.pkg")
+source=("2019.1.0f2.1.0f2.pkg::https://download.unity3d.com/download_unity/292b93d75a2c/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2019.1.0f2.pkg")
 md5sums=("82dc6749dd6418c7f01043e2d8ae3787")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
