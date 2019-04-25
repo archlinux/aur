@@ -1,0 +1,3 @@
+post_install() {
+  install -dm770 -g url-bot-rs -o url-bot-rs /{etc,var/lib}/url-bot-rs
+}

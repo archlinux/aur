@@ -1,0 +1,13 @@
+[Unit]
+Description=url-bot-rs
+After=network.target
+Requires=network.target
+
+[Service]
+User=url-bot-rs
+ExecStart=/usr/bin/url-bot-rs -c /etc/url-bot-rs/config.toml
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
