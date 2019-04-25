@@ -5,7 +5,6 @@ pkgver=2.13.4
 pkgrel=1
 pkgdesc="Alibaba Cloud SDK for Python"
 arch=('any')
-#depends=('python-flask')
 makedepends=('python-setuptools')
 url="https://github.com/aliyun/aliyun-openapi-python-sdk"
 license=('Apache License 2.0')
