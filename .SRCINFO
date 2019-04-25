@@ -8,7 +8,7 @@ pkgbase = unity-editor-facebook
 	makedepends = cpio
 	depends = unity-editor
 	options = !strip
-	source = 2019.1.0f2.1.0f2.pkg::https://beta.unity3d.com/download/292b93d75a2c/MacEditorTargetInstaller/UnitySetup-Facebook-Games-Support-for-Editor-2019.1.0f2.pkg
+	source = 2019.1.0f2.1.0f2.pkg::https://download.unity3d.com/download_unity/292b93d75a2c/MacEditorTargetInstaller/UnitySetup-Facebook-Games-Support-for-Editor-2019.1.0f2.pkg
 	md5sums = f7a2333ac6959f8e323dc2b0511c5a4e
 
 pkgname = unity-editor-facebook
