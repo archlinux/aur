@@ -11,6 +11,7 @@ depends=('glibc')
 makedepends=('git' 'cmake')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
+options=('staticlibs')
 source=("git+https://github.com/githaff/extopts.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
