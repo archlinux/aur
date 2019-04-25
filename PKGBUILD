@@ -1,7 +1,7 @@
 # Contributor: Jishnu Mohan jishnu7 at gmail dot com
 
 pkgname=quilter
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="Focus on your writing for any kind of story, even longer ones."
 arch=(any)
@@ -13,7 +13,7 @@ install=quilter.install
 source=(
   "https://github.com/lainsce/quilter/archive/${pkgver}.zip"
 )
-sha256sums=('bd4c8b5f319d98b10c06dd2fb6dc7bebd4aaf964c55543bb48da14034e4d6f4a')
+sha256sums=('a943b70971599fa166cbec4e92aafbe78daeedbcb4ce856bae9ec968d757a783')
 
 build () {
   cd $srcdir/$pkgname-$pkgver
