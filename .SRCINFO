@@ -6,12 +6,16 @@ pkgbase = pngout
 	arch = i686
 	arch = x86_64
 	license = custom
+	depends = glibc
 	source = http://static.jonof.id.au/dl/kenutils/pngout-20150319-linux.tar.gz
 	source = pngout.completion
 	source = LICENSE
 	md5sums = a48761bb753622c846b4846be60c7e4b
 	md5sums = 99a75d19ff6278f04c66358ce67e8eed
 	md5sums = 6aca04829b82718d2cb26c9b45f9a570
+	sha256sums = 078a9ec068cc4d79ceca332b9e2117151c4584ee0e917e253d4fe80703499b47
+	sha256sums = 8952df609f738751d5830f431d3da23f7551b8796d773665baa8d10b5ea11074
+	sha256sums = eb52d51be70d26eb7dfca460fafe50f8e5e36937b9e9bce68a5a079d4951a592
 
 pkgname = pngout
 
