@@ -1,4 +1,4 @@
-# Maintainer: Philipp Jonczyk <p dot jonczyk at posteo dot de>
+# Maintainer: Philipp Kühn <p dot kuehn at posteo dot de>
 pkgname=python-dictcc
 pkgver=1.2
 pkgrel=1
