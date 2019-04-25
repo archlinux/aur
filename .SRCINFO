@@ -1,0 +1,16 @@
+pkgbase = python-github-webhook
+	pkgdesc = A very simple, but powerful, microframework for writing GitHub webhooks in Python
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/bloomberg/python-github-webhook
+	arch = any
+	license = Apache
+	makedepends = python
+	makedepends = python-pip
+	depends = python-flask
+	depends = python-six
+	source = https://github.com/bloomberg/python-github-webhook/archive/1.0.2.tar.gz
+	md5sums = c7278ff9848aee19be90e46f29344f0f
+
+pkgname = python-github-webhook
+
