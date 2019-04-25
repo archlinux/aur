@@ -23,6 +23,7 @@ depends=('gtkmm3'
 makedepends=('meson'
              'git')
 optdepends=('sway: Sway modules support'
+            'libmpdclient: Mpd module support'
             'otf-font-awesome: Icons in the default configuration')
 
 # source=("${pkgname}::git://github.com/Alexays/Waybar#commit=28c65c64"

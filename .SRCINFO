@@ -19,6 +19,7 @@ pkgbase = waybar-git
 	depends = libpulse
 	depends = wlroots
 	optdepends = sway: Sway modules support
+	optdepends = libmpdclient: Mpd module support
 	optdepends = otf-font-awesome: Icons in the default configuration
 	provides = waybar
 	conflicts = waybar
