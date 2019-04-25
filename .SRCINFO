@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-kvazaar
 	pkgdesc = An open-source HEVC encoder (mingw-w64)
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ultravideo.cs.tut.fi/#encoder
 	arch = any
 	license = LGPL
