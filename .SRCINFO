@@ -1,0 +1,21 @@
+pkgbase = protonmail-desktop-unofficial
+	pkgdesc = Unofficial app that emulates a native client for the ProtonMail e-mail service
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/protonmail-desktop/application
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = electron
+	provides = protonmail-desktop
+	conflicts = protonmail-desktop
+	options = !strip
+	source = protonmail-desktop-unofficial-1.0.0.tar.gz::https://github.com/protonmail-desktop/application/archive/v1.0.0.tar.gz
+	source = protonmail-desktop-unofficial.sh
+	source = protonmail-desktop-unofficial.desktop
+	sha256sums = 488e1a6221bf10ae2ead04b0d5157033f945b7d371623cab85fffcf4fd423632
+	sha256sums = f830633b18a59b7d2a7787e9f0b4d8de802522e0c7732d1032ced354ab861532
+	sha256sums = 4482041b9daabaf1ad4225e775cdb694078f1e17d026a3f9dbe72731b3bbec0d
+
+pkgname = protonmail-desktop-unofficial
+
