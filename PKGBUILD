@@ -3,8 +3,8 @@
 pkgname=librepcb
 pkgver=0.1.1
 _pkgver=${pkgver/_/-}
-pkgrel=2
-pkgdesc="A free EDA software to develop printed circuit boards."
+pkgrel=3
+pkgdesc="A free EDA software to develop printed circuit boards"
 arch=('x86_64' 'i686')
 url="http://librepcb.org/"
 license=('GPL')
