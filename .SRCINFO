@@ -1,8 +1,8 @@
 pkgbase = pam_p11
 	pkgdesc = PAM module for using crpytographic tokens such as smart cards and usb crypto tokens for authentication
-	pkgver = 0.1.5
+	pkgver = 0.3.0
 	pkgrel = 1
-	url = http://www.opensc-project.org/pam_p11
+	url = https://github.com/OpenSC/pam_p11
 	arch = x86_64
 	arch = i686
 	license = LGPL
