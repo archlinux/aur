@@ -5,17 +5,18 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-dlib
 pkgver=19.17
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques (mingw-w64)"
 arch=('any')
 url="http://www.dlib.net"
 license=('custom')
 depends=('mingw-w64-crt'
-         'mingw-w64-giflib'
+         'mingw-w64-cblas'
          'mingw-w64-lapack'
          'mingw-w64-libjpeg'
-         'mingw-w64-libpng'
-         'mingw-w64-sqlite')
+         'mingw-w64-libpng')
+optdepends=('mingw-w64-giflib: for GIF support'
+            'mingw-w64-sqlite: for sqlite support')
 makedepends=('mingw-w64-cmake')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://downloads.sourceforge.net/project/dclib/${_pkgname}/v${pkgver}/${_pkgname}-${pkgver}.tar.bz2")
