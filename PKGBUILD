@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-crypto++
 _pkgname=crypto++
-pkgver=7.0.0
+pkgver=8.1.0
 _srcver=${pkgver//./}
 pkgrel=1
 pkgdesc="A free C++ class library of cryptographic schemes (mingw-w64)"
@@ -14,34 +14,32 @@ makedepends=('mingw-w64-cmake' 'unzip' 'dos2unix')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://www.cryptopp.com/cryptopp${pkgver//./}.zip"
         libcrypto++.pc
-        cryptopp-5.6.5-cmake.patch
-        fix-test-linking.patch)
-sha256sums=('a4bc939910edd3d29fb819a6fc0dfdc293f686fa62326f61c56d72d0a366ceb0'
-            'baea2372d9f490fa79d0431cd4f8eea515501b5553c6b4ed4a1cbbf3879ca5f3'
-            '0486178005a7fe8a0659f59d3c4fafafa39d870f6e9f812bcf9131ce4758c914'
-            '99e5bb3ba211c6155a19a170b7e498b904bf821f7d2aa46be06d08a87846fa17')
+        cryptopp-5.6.5-cmake.patch)
+sha256sums=('f609b453e42abbab7163191dfe060964121f04da212e2e4f2f0ebe94b7e806ae'
+            '5d1ad79b050553cc1b2d5e2a9a4946e24afa4f4ced8d57aed74eadfdfb97d671'
+            '2c588cb085749b76adc28be5075b4978c8822f1e0327ccc06d823a1d436f56e9')
 noextract=(cryptopp${pkgver//./}.zip)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 
 prepare() {
-  cd ${srcdir}
-  unzip cryptopp${pkgver//./}.zip -d ${_pkgname}
+  [[ -d ${srcdir}/cryptopp ]] && rm -rf ${srcdir}/cryptopp
+  unzip ${srcdir}/cryptopp${pkgver//./}.zip -d ${srcdir}/cryptopp
 
-  cd ${_pkgname}
+  cd ${srcdir}/cryptopp
   find . -type f -exec dos2unix {} \;
   sed -i -e 's/^CXXFLAGS/#CXXFLAGS/' GNUmakefile
   patch -p1 -i ${srcdir}/cryptopp-5.6.5-cmake.patch
-  patch -p1 -i ${srcdir}/fix-test-linking.patch
 }
 
 build() { 
-  cd "${srcdir}/${_pkgname}/"
+  cd "${srcdir}/cryptopp"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DDISABLE_SSSE3=ON \
+      -DDISABLE_ASM=ON \
       ..
     make
     popd
@@ -50,14 +48,15 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/${_pkgname}/build-${_arch}"
+    cd "${srcdir}/cryptopp/build-${_arch}"
     make DESTDIR="${pkgdir}" install
     
     # pkgconfig file
     mkdir -p "${pkgdir}/usr/${_arch}/lib/pkgconfig"
     install -m644 "${srcdir}/libcrypto++.pc" "${pkgdir}/usr/${_arch}/lib/pkgconfig/libcrypto++.pc"
-    sed -s "s|/usr|/usr/${_arch}|g" -i "${pkgdir}/usr/${_arch}/lib/pkgconfig/libcrypto++.pc"
-    
+    sed -s "s|@PREFIX@|/usr/${_arch}|g" -i "${pkgdir}/usr/${_arch}/lib/pkgconfig/libcrypto++.pc"
+    sed -s "s|@VERSION@|${pkgver}|g" -i "${pkgdir}/usr/${_arch}/lib/pkgconfig/libcrypto++.pc"
+
     # Remove cryptest.exe and test files, only needed for check() and bloats the package
     # because cryptest.exe is linked statically.
     rm "${pkgdir}/usr/${_arch}/bin/cryptest.exe"
