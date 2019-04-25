@@ -83,7 +83,6 @@ depends=(
          'sndio'
          'speex'
          'srt'
-         'tensorflow'
          'tesseract'
          'twolame'
          'uchardet'
@@ -143,6 +142,7 @@ optdepends=(
             'youtube-dl: Another way to view youtuve videos with mpv'
             'zsh-completions: Additional completion definitions for Zsh users'            
             'libplacebo-git: Addition GPU-accelerated rendering primitives'
+            'tensorflow: mpv ffmpeg DNN module backend'
             )
 provides=('mpv' 'mpv-git' 'mpv-build-git')
 conflicts=('mpv' 'mpv-git' 'mpv-build-git')
@@ -164,10 +164,20 @@ backup=('etc/mpv/encoding-profiles.conf')
 if [ -f /usr/lib/libvapoursynth.so ]; then
   depends+=('vapoursynth')
 fi
+if [ -f /usr/lib/libvapoursynth.so ]; then
+  depends+=('vapoursynth')
+fi
+if [ -f /usr/lib/libtensorflow.so ]; then
+  depends+=('tensorflow')
+fi
+
+if [ -d /opt/cuda ]; then
+  makedepends+=('cuda')
+fi
 
 pkgver() {
   cd mpv
-  git describe --tags | sed 's/v\(.*\)/\1/;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/^v\(.*\)/\1/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -242,7 +252,6 @@ prepare() {
     '--enable-libspeex'
     '--enable-libsrt'
     '--enable-libssh'
-    '--enable-libtensorflow'
     '--enable-libtesseract'
     '--enable-libtheora'
     '--enable-libtwolame'
@@ -286,7 +295,7 @@ prepare() {
     '--enable-version3'
     '--enable-xlib'
     '--enable-zlib'
-    )
+  )
   _mpv_options=(
     '--prefix=/usr'
     '--confdir=/etc/mpv'
@@ -357,16 +366,29 @@ prepare() {
     '--enable-xv'
     '--enable-zlib'
     '--enable-zsh-comp'
-    )
+  )
 
-    # '--enable-libplacebo'
     # '--enable-libdav1d'
     # '--enable-libsmbclient'
     # '--enable-avresample'
 
-if [ -f /usr/lib/libvapoursynth.so ]; then
-  _mpv_options+=('--enable-vapoursynth')
-fi
+  local _ffmpeg_cflags=''
+  local _ffmpeg_ldflags=''
+  if [ -f /usr/lib/libplacebo.so ]; then
+    _mpv_options+=('--enable-libplacebo')
+  fi
+  if [ -f /usr/lib/libvapoursynth.so ]; then
+    _mpv_options+=('--enable-vapoursynth')
+  fi
+  if [ -d /opt/cuda ]; then
+    _ffmpeg_options+=('--enable-cuda-nvcc')
+    _ffmpeg_options+=('--extra-cflags=-I/opt/cuda/include')
+    _ffmpeg_options+=('--extra-ldflags=-L/opt/cuda/lib64')
+  fi
+  if [ -f /usr/lib/libtensorflow.so ]; then
+    _ffmpeg_options+=('--enable-libtensorflow')
+    _ffmpeg_options+=('--extra-cflags=-I/usr/include/tensorflow')
+  fi
 
   echo ${_ffmpeg_options[@]} > ffmpeg_options
   echo ${_mpv_options[@]} > mpv_options
