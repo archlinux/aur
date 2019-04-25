@@ -1,0 +1,14 @@
+pkgbase = python-aliyun-python-sdk-push
+	pkgdesc = Alibaba Cloud SDK for Python
+	pkgver = 3.10.1
+	pkgrel = 1
+	url = https://github.com/aliyun/aliyun-openapi-python-sdk
+	arch = any
+	license = Apache License 2.0
+	makedepends = python-setuptools
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/90/80/3ec341d025957426e5a1dd763a3d14e78103babcaf15f3da8a5c34b94e16/aliyun-python-sdk-push-3.10.1.tar.gz
+	sha256sums = b341a90e80ee9f063f7ff5df6e4cf03eff9330eb11911f25bfb43852a5605cdd
+
+pkgname = python-aliyun-python-sdk-push
+
