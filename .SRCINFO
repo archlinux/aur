@@ -11,6 +11,7 @@ pkgbase = caddy
 	arch = aarch64
 	license = Apache
 	makedepends = go>=2:1.12
+	makedepends = git
 	backup = etc/caddy/caddy.conf
 	source = https://github.com/mholt/caddy/archive/v1.0.0/caddy-1.0.0.tar.gz
 	source = https://caddyserver.com/resources/images/brand/caddy-at-your-service-white.svg

@@ -15,7 +15,7 @@ url='https://caddyserver.com'
 license=('Apache')
 backup=('etc/caddy/caddy.conf')
 install='caddy.install'
-makedepends=('go>=2:1.12')
+makedepends=('go>=2:1.12' 'git')
 source=("https://$_gopkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         'https://caddyserver.com/resources/images/brand/caddy-at-your-service-white.svg'
         'index.html'
