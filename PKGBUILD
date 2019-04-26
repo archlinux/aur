@@ -17,7 +17,7 @@ depends=('cups' 'ghostscript')
 source=('https://download3.ebz.epson.net/dsc/f/03/00/09/29/93/91d20550336b7a0350d6c5ac2fe460ec0125612b/epson-inkjet-printer-escpr-1.6.40-1lsb3.2.tar.gz'
         'bug_x86_64.patch')
 sha512sums=('51eb5efd1538daa3508f00e58e3adfbbdc532e3a4b3afd1bc2217964a728f19db7d9f97a01d8231b723daafd1f0410e9d112fa3a5794f7dee887d33d83882643'
-            'ff4f736ec884c4d2354a83c89ee535732cb414ef0c6443bdc8ec869f889f486b242d76e143ad59d61b182231697dfe3bdf68122cb8aae873a9776ce109a07dab')
+            'e278cf3db482aed862c2343a2ee5147fa0e53b14d80b9fdf6907e35eae0235a440b2dfe480cbae28dc4e00c0e7cf119e6b870480a69759a6df4e0c676aec5229')
 
 prepare() {
   cd $pkgname-$pkgver
