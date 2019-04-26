@@ -9,7 +9,7 @@ pkgname=oracle-${_pkgname}
 pkgver=18.3.0.0.0
 pkgrel=1
 pkgdesc="SQL*Plus for Oracle Instant Client"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.oracle.com/technetwork/database/features/instant-client/"
 license=('custom:OTN')
 depends=(oracle-instantclient-basic=$pkgver)
@@ -20,23 +20,12 @@ options=(!strip)
 DLAGENTS+=('manual::/usr/bin/false');
 
 # These are the only files we want to include in the source package
-source=(LICENSE)
-md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d')
-sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2')
-
-# Add the main file, depending on which architecture we're building for
-case "$CARCH" in
-	i686)
-		source[1]="manual://${_pkgname}-linux-${pkgver}dbru.zip"
-		md5sums[1]='b5243e7d5af06ef016ccd195994477fe'
-		sha256sums[1]='205332cd195025dec17f08e1e422ea57b843461609a448685311f71207629395'
-		;;
-	x86_64)
-		source[1]="manual://${_pkgname}-linux.x64-${pkgver}dbru.zip"
-		md5sums[1]='a84ec277d237eed38ac51b7cc4372794'
-		sha256sums[1]='2984881b856399ae4e7231c184790499c0d9b5d7e508beb579cc68ef036f3162'
-		;;
-esac
+source=(LICENSE
+        "manual://${_pkgname}-linux.x64-${pkgver}dbru.zip")
+md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
+         'a84ec277d237eed38ac51b7cc4372794')
+sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
+            '2984881b856399ae4e7231c184790499c0d9b5d7e508beb579cc68ef036f3162')
 
 msg "Warning: This software cannot be downloaded automatically."
 plain "You will need to sign up for an Oracle account and download the software from"
@@ -45,8 +34,7 @@ plain "PKGBUILD and re-run makepkg."
 plain ""
 plain "The source .zip files can be downloaded from:"
 plain ""
-plain "i686   - http://www.oracle.com/technetwork/topics/linuxsoft-082809.html"
-plain "x86_64 - http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html"
+plain "  http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html"
 plain ""
 plain "Alternatively, unofficial prebuilt Arch packages are available by adding the"
 plain "following lines to /etc/pacman.conf, if you agree to the Oracle licence[1]:"
