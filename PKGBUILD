@@ -2,7 +2,7 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=vue-cli
-pkgver=3.5.5
+pkgver=3.6.3
 pkgrel=1
 pkgdesc='Standard tooling for Vue.js development'
 arch=(i686 x86_64)
