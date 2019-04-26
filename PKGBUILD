@@ -4,15 +4,15 @@
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}-git"
-pkgver=1.6.5
-_pkgver="${pkgver}-linux6"
+pkgver=1.6.6
+_pkgver="${pkgver}-linux2"
 gitname="release-${_pkgver}"
 pkgrel=1
 pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
 url="https://desktop.github.com"
 license=('MIT')
-depends=('gnome-keyring' 'git' 'curl' 'libxss' 'gconf')
+depends=('gnome-keyring' 'libsecret' 'git' 'curl' 'libxss' 'gconf')
 optdepends=('hub: CLI interface for GitHub.')
 makedepends=('xorg-server-xvfb' 'nodejs-lts-carbon' 'yarn' 'python2')
 provides=(${_pkgname})
