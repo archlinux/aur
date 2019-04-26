@@ -6,7 +6,7 @@
 
 _pkgname=instantclient-odbc
 pkgname=oracle-${_pkgname}
-pkgver=18.5.0.0.0
+pkgver=19.3.0.0.0
 pkgrel=1
 pkgdesc="Additional libraries for enabling ODBC applications with Instant Client"
 arch=('x86_64')
@@ -23,9 +23,9 @@ DLAGENTS+=('manual::/usr/bin/false');
 source=(LICENSE
         "manual://${_pkgname}-linux.x64-${pkgver}dbru.zip")
 md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
-         'dbb45441c8d4d12dcce317215e3b6818')
+         'f19950d9cadf4b26185ad309912ff138')
 sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
-            '76f4b7f1822280c33d26237fc42cb806d388da0ab0af0ed84843c3323d775822')
+            '90edd98581c264ed8a31b1f5cd48ff4a3e2723aa3711e80021b79963db353fbc')
 
 msg "Warning: This software cannot be downloaded automatically."
 plain "You will need to sign up for an Oracle account and download the software from"
@@ -49,7 +49,7 @@ plain "[1]: http://www.oracle.com/technetwork/licenses/instant-client-lic-152016
 plain ""
 
 package() {
-	local basedir="$srcdir/instantclient_18_5"
+	local basedir="$srcdir/instantclient_19_3"
 
 	install -d "$pkgdir/usr/lib"
 	# Copy files but not symlinks
