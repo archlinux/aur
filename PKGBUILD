@@ -1,19 +1,16 @@
-# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI_Jack <iGI_Jack@hackermail.com>
 pkgname=mkinitcpio-liveusb-units
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="mkinitcpio minimal block hooks for live usb sticks"
 arch=('any')
 license=('GPLv3')
-url=('http://archlinux.org')
+url='http://archlinux.org'
 depends=('mkinitcpio>=0.12')
 source=('live_usb' 'live_mmc' 'live_firewire')
-md5sums=('fe23d065b1232be3e73ae94b3e619acf'
-         'b3bd45266897d51e43e4e747793e54b4'
-         '47331e58b269d9a6b955fcfbc3855f89')
-sha1sums=('1c925edb76ed9ed0b6c9949e7589757b5bab17c5'
-          'c28c3a42d34762adf799dcea69aa484f86b2781e'
-          '3178105ed08fe5b76b6d93006d5fab7117c48df5')
+sha256sums=('9a3e21cf18cdcec6e9e7e63ea3037d4914900916dbd8c7106a8ac7208d036d2c'
+            '2d7f49c80b4230a62adf004a24187cc6aeac75788c70761a178b9ae4ca6fc978'
+            '4a681d345e55303fc7a9669d644c4dffc9fcad46a2a6dd98075ed281a28662e4')
 
 package() {
   install -dm755 "${pkgdir}/usr/lib/initcpio/install"
