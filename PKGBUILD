@@ -6,7 +6,7 @@
 
 pkgname=font-manager-git
 _branch=master
-pkgver=0.7.4.r0.gc202c8c
+pkgver=0.7.5.r0.gdaf9d39
 pkgrel=1
 pkgdesc='A simple font management application for GTK+ Desktop Environments'
 url='http://fontmanager.github.io'
@@ -14,7 +14,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libxml2' 'sqlite')
 optdepends=('file-roller')
-makedepends=('git' 'gnome-common' 'yelp-tools' 'gobject-introspection' 'vala')
+makedepends=('git' 'yelp-tools' 'gobject-introspection' 'vala' 'meson' 'ninja')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git://github.com/FontManager/master.git#branch=$_branch")
@@ -27,11 +27,12 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  ./autogen.sh --prefix=/usr --disable-schemas-compile
-  make -j1
+
+  meson --prefix /usr --buildtype=debugoptimized build_dir
+  ninja -v -C build_dir
 }
 
 package() {
   cd "$pkgname"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir}" ninja -C build_dir install
 }
