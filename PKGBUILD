@@ -24,6 +24,8 @@ pkgver() {
 
 package_python2-adminapi-git() {
 	depends=('python2' 'python2-ipaddress' 'python2-netaddr')
+    provides=("python2-${_name}")
+    conflicts=("python2-${_name}")
 	cd "${srcdir}/${_name}"
 	python2 setup.py install --root="${pkgdir}" --optimize=1
 	mv "${pkgdir}/usr/bin/${_name}"  "${pkgdir}/usr/bin/${_name}2"
@@ -32,6 +34,8 @@ package_python2-adminapi-git() {
 
 package_python-adminapi-git() {
 	depends=('python' 'python-ipaddress' 'python-netaddr')
+    provides=("python2-${_name}")
+    conflicts=("python2-${_name}")
 	cd "${srcdir}/${_name}"
 	python setup.py install --root="${pkgdir}" --optimize=1
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"LICENSE

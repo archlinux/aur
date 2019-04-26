@@ -14,9 +14,13 @@ pkgname = python-adminapi-git
 	depends = python
 	depends = python-ipaddress
 	depends = python-netaddr
+	provides = python2-adminapi
+	conflicts = python2-adminapi
 
 pkgname = python2-adminapi-git
 	depends = python2
 	depends = python2-ipaddress
 	depends = python2-netaddr
+	provides = python2-adminapi
+	conflicts = python2-adminapi
 
