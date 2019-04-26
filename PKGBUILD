@@ -8,12 +8,12 @@
 
 pkgname=bluej
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An integrated Java environment specifically designed for introductory teaching"
 arch=('any')
 url="https://www.${pkgname}.org"
 license=('GPL2' 'Apache' 'BSD' 'CPL' 'LGPL2.1' 'MIT' 'custom')
-depends=('java-runtime' "java-environment>=11" "java-openjfx>=11")
+depends=('java-runtime>=11' "java-environment>=11" "java-openjfx>=11")
 source=("https://www.${pkgname}.org/download/files/BlueJ-linux-${pkgver//.}.deb"
         "${pkgname}"
         "${pkgname}.desktop")

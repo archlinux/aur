@@ -1,7 +1,7 @@
 pkgbase = bluej
 	pkgdesc = An integrated Java environment specifically designed for introductory teaching
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bluej.org
 	arch = any
 	license = GPL2
@@ -11,7 +11,7 @@ pkgbase = bluej
 	license = LGPL2.1
 	license = MIT
 	license = custom
-	depends = java-runtime
+	depends = java-runtime>=11
 	depends = java-environment>=11
 	depends = java-openjfx>=11
 	noextract = BlueJ-linux-420.deb
