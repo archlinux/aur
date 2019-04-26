@@ -1,0 +1,18 @@
+pkgbase = amethyst
+	pkgdesc = A lightweight source code editor with tree-view navigation
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://byuu.org
+	arch = x86_64
+	license = ISC
+	license = GPL3
+	depends = gtksourceview2
+	source = https://files.byuu.org/releases/amethyst_v3r2.tar.xz
+	source = amethyst-release.patch
+	source = LICENSE
+	sha256sums = 11dee5ed719d41f5e776eeae09d20a52608d773177adabe1bdecc4b4644a6116
+	sha256sums = a4f36370a32ab4624b8d58f5058f3c10578170cbdb8ebb5c100d348697e472a0
+	sha256sums = 9af7b9ec6c5c74a0421acb9e2755fe5b92fcce28a3c3a0300ecbe7002269b7f6
+
+pkgname = amethyst
+
