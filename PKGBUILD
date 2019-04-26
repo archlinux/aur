@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/docker/app"
 license=('Apache')
 conflicts=('docker-app')
+replaces=('docker-app')
 depends=('docker')
 source=("docker-app-bin-${pkgver//_/-}::https://github.com/docker/app/releases/download/v${pkgver//_/-}/docker-app-linux.tar.gz")
 sha512sums=('9478e0c5529a37cd3ef43e49c0843a2c1d6de24e5e82c063a03fee3556d5141fd958465cd9e645e2ae00e7b43de954fd7b2e787c08e93283817bae612abfe2bc')
