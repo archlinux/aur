@@ -1,5 +1,9 @@
 #!/bin/sh
+JAVA_MAJORVERSION=$(archlinux-java get | cut -d'-' -f2)
+JAVAFX_HOME=/usr/lib/jvm/java-$JAVA_MAJORVERSION-openjdk/lib
+JAVAFX_CP="$JAVAFX_HOME/javafx.base.jar:$JAVAFX_HOME/javafx.controls.jar:$JAVAFX_HOME/javafx.fxml.jar:$JAVAFX_HOME/javafx.graphics.jar:$JAVAFX_HOME/javafx.media.jar:$JAVAFX_HOME/javafx.swing.jar:$JAVAFX_HOME/javafx-swt.jar:$JAVAFX_HOME/javafx.web.jar"
+
 java -Djavafx.embed.singleThread=true \
         -Dawt.useSystemAAFontSettings=on \
-        -cp /opt/bluej/bluej.jar:/usr/lib/jvm/default/lib/tools.jar bluej.Boot \
+        -cp /opt/bluej/bluej.jar:/usr/lib/jvm/default/lib/tools.jar:$JAVAFX_CP bluej.Boot \
         "$@"

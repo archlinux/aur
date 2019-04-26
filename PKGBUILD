@@ -7,19 +7,19 @@
 # Contributor: zerathidune <zerathidune @ gmail . com>
 
 pkgname=bluej
-pkgver=4.1.4
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="An integrated Java environment specifically designed for introductory teaching"
 arch=('any')
 url="https://www.${pkgname}.org"
 license=('GPL2' 'Apache' 'BSD' 'CPL' 'LGPL2.1' 'MIT' 'custom')
-depends=('java-runtime' 'java-environment' 'java-openjfx')
+depends=('java-runtime' "java-environment>=11" "java-openjfx>=11")
 source=("https://www.${pkgname}.org/download/files/BlueJ-linux-${pkgver//.}.deb"
         "${pkgname}"
         "${pkgname}.desktop")
 noextract=("BlueJ-linux-${pkgver//.}.deb")
-sha256sums=('d67bcda302accf8f96a2efd9cbeed9d982adfec55825d956562b2b7e25956f26'
-            'f67443827cd8cb90922e63c139154661cd8f390ef8886e143fd2359644e9bd63'
+sha256sums=('efbaa3e95c2fd00cea16e6c7bc208fa543faaa72136b022796a136825b3cfcec'
+            '39cd3ef6f7253ba162ab17ccddf50b58d95dc27016cb7185ed941f2b6308e968'
             'd48f47e2a16cef483ded299e37016a5172829303fc6ac43cab486049e9f61711')
 
 package() {
