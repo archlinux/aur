@@ -1,0 +1,37 @@
+post_install() {
+	local BASE_URL=lpd://printepfl1.epfl.ch
+	local BASE_MODELDIR=/usr/share/cups/model
+	readonly BASE_URL BASE_MODELDIR
+
+	# common options:
+	set -- \
+		-o sides=one-sided \
+		-o media=iso_a4_210x297mm \
+		-L 'EPFL Print Pool' \
+		-o printer-is-shared=false
+
+	lpadmin \
+		-p EPFL-Color \
+		-D 'Canon imageRUNNER ADVANCE C5560i' \
+		-E -v "$BASE_URL"/SecurePrint-Color \
+		-P "$BASE_MODELDIR"/PPD-C5560i-color.ppd \
+		"$@"
+
+	lpadmin \
+		-p EPFL-BW \
+		-D 'Canon imageRUNNER ADVANCE 6555i' \
+		-E -v "$BASE_URL"/SecurePrint-BW \
+		-P "$BASE_MODELDIR"/PPD-6555i-bw.ppd \
+		"$@"
+
+	cat <<- EOF
+	 The printers have not been configured to use any GASPAR account by default.
+	 If you wish to use a graphical interface for printing (or not specify the
+	 username for lp each time), please configure the printers accordingly.
+	EOF
+}
+
+pre_remove() {
+	lpadmin -x EPFL-Color
+	lpadmin -x EPFL-BW
+}

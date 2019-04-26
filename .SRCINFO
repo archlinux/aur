@@ -1,0 +1,21 @@
+pkgbase = epfl-printers
+	pkgdesc = Printer setup for EPFL
+	pkgver = 2019.04.26
+	pkgrel = 1
+	url = https://www.epfl.ch/campus/services/en/it-services/myprint/
+	install = epfl-printers.install
+	arch = any
+	license = custom
+	makedepends = coreutils
+	source = https://migration-wp.epfl.ch/myprint/wp-content/uploads/2018/07/PPD-C5560i-color.ppd
+	source = https://migration-wp.epfl.ch/myprint/wp-content/uploads/2018/07/PPD-6555i-bw.ppd
+	source = COPYRIGHT.C5560i
+	source = COPYRIGHT.6555i
+	sha256sums = fad83023f361bdf9485dfe26ffe921a91ade0dac0e937f5e5ef1c2c643505159
+	sha256sums = d1ce58bd74c5878ddf49dc4f629d9b7c80b368e29d43e6a28dd6c4a298a11697
+	sha256sums = 1e9f4b26375de3df78bc55883987dcd416ed34d46d286e2ec16d8ad67ddc61bb
+	sha256sums = 150a844b74ed93b3f63233c2c9a1619f0c85d7930c49a8be22a867cc435d9a82
+
+pkgname = epfl-printers
+	depends = cups
+
