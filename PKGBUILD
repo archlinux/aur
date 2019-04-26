@@ -1,10 +1,9 @@
-# Maintainer: Emre Hasegeli emre<at>hasegeli<dot>com
-# Contributor: Mikhail felixoid Shiryaev mr<dot>felixoid<at>gmail<dot>com
+# Maintainer: Mikhail felixoid Shiryaev mr<dot>felixoid<at>gmail<dot>com
 
 _name=adminapi
 pkgbase="python-${_name}-git"
 pkgname=("python-${_name}-git" "python2-${_name}-git")
-pkgver=1.2.r1849.381b8b4
+pkgver=1.4.3.r1996.17ad381
 pkgrel=1
 pkgdesc='Adminapi is a python module which can be used to talk to the open source serveradmin project by Innogames'
 arch=('any')
