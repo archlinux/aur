@@ -1,3 +1,4 @@
 post_install() {
+  useradd -c 'url-bot-rs user' -d / -r -s /sbin/login url-bot-rs
   install -dm770 -g url-bot-rs -o url-bot-rs /{etc,var/lib}/url-bot-rs
 }

@@ -13,10 +13,9 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=$pkgname.install
 source=("git+$url.git"
-        "${pkgname%-git}".{service,sysusers.conf})
+        "${pkgname%-git}.service")
 sha512sums=('SKIP'
-            '5b2ef73ab44fffc2b4119b77d2fa2566eec0e217f19ace50d23abcf4120b195a9dd93f3ee5bb20d49cc5f60aa27a8589a077433290906644adb1a9833a1eb037'
-            'ea4e28aa8e0f565d09329b831bcdd865c91c32f2f21281b9faebe6757a5e2fb2202cbf4c6140868b4fce470221cc3b4786ec2dd63b311ea4a74a9af882361054')
+            '5b2ef73ab44fffc2b4119b77d2fa2566eec0e217f19ace50d23abcf4120b195a9dd93f3ee5bb20d49cc5f60aa27a8589a077433290906644adb1a9833a1eb037')
 
 pkgver() {
   cd ${pkgname%-git}
@@ -37,7 +36,6 @@ package() {
   cd ${pkgname%-git}
   install -Dt "$pkgdir"/usr/bin target/release/url-bot-{get,rs}
   install -Dm644 -t "$pkgdir"/usr/lib/systemd/system ../url-bot-rs.service
-  install -Dm644 ../url-bot-rs.sysusers.conf "$pkgdir"/usr/lib/sysusers.d/url-bot-rs.conf
   install -Dm644 -t "$pkgdir"/usr/share/doc/url-bot-rs example.config.toml
   install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname COPYING
   install -Dm644 -t "$pkgdir"/usr/share/man/man1 url-bot-rs.1
