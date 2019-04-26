@@ -7,20 +7,19 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=gstm
-pkgver=1.2
-pkgrel=4
-pkgdesc="Gnome front-end to ssh tunneling"
+pkgver=1.3.3
+pkgrel=1
+pkgdesc="Gnome SSH Tunnel Manager - Gtk3 Edition"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/gstm/"
+url="https://github.com/dallenwilson/gstm"
 license=('GPL')
 depends=('libgnomeui' 'openssh')
 makedepends=('intltool')
-source=(http://downloads.sourceforge.net/sourceforge/gstm/gstm-${pkgver}.tar.gz)
-md5sums=('7fa71b86969d8d695c3b062780a5694e')
+source=(https://github.com/dallenwilson/gstm/releases/download/1.3.3/gstm-${pkgver}.tar.gz)
+sha256sums=('84d982763589b22be4dff593de2cb2e2e907093b9bcca70dbb1fe6859043852a')
 
 build() {
    cd ${srcdir}/gstm-${pkgver}
-   sed -i "s/gstm_LDADD = /& -lxml2 -lX11 /" src/Makefile.in
    ./configure --prefix=/usr
    make || return 1
 }
