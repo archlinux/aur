@@ -1,7 +1,7 @@
 pkgbase = intel-parallel-studio-xe
 	pkgdesc = Intel C++ C and FORTRAN compiler - Intel Parallel Studio XE - Cluster Edition - icc icpc ifort ipp mkl
 	pkgver = 2019.3.199
-	pkgrel = 2
+	pkgrel = 3
 	url = http://software.intel.com/en-us/articles/non-commercial-software-download/
 	arch = x86_64
 	license = custom
@@ -36,9 +36,9 @@ pkgbase = intel-parallel-studio-xe
 	sha256sums = b5b022366d6d1a98dbb63b60221c62bc951c9819653ad6f5142192e89f78cf63
 	sha256sums = 5304346c863f64de797250eeb14f51c5cfc8212ff20813b124f20e7666286990
 	sha256sums = 0704025fdfe40e4fce08e88b641128310c3a3b51332668aab60fb815b424f52b
-	sha256sums = 278f9545d14c1fbec737bbfbcafb1b9090d35aab0dfeddc99d4c6e296b56057b
-	sha256sums = e3103fb1c5e2ec9f0cc4090abb7e273563e735d88e185f527c66b2aebd52e733
-	sha256sums = 3978b721722db7e3127828caf00e6e98539724daffd0a0bdaa287b27bc61b97a
+	sha256sums = 58bced75693b2f73480b89242b33c9a0ce565d6a12a17f84067bab351bde9be7
+	sha256sums = 63b12c66d9c8c2310a7bbd5206c82ba9667fb6ffb3dc7e3f9304a17ed8c8fbcd
+	sha256sums = fd24842f29d50bc53779dd918fbc548ebf165ff664114e59195773ad04076b5d
 	sha256sums = 3f96dec03111e69d16bb363acf4d0570e8a9526c09e5e542a7558f1b26d043ef
 	sha256sums = 31ac4d0f30a93fe6393f48cb13761d7d1ce9719708c76a377193d96416bed884
 	sha256sums = 6151bc273b6f741a4ce93d8160b6f167c8ad499dbc6e8e3f6e08d48571d6a52a
@@ -76,28 +76,28 @@ pkgname = intel-ipp
 	install = intel-composer.install
 
 pkgname = intel-mkl
-	pkgdesc = Intel Math Kernel Library (Intel® MKL) 2019.3.199
+	pkgdesc = Intel Math Kernel Library (Intel® MKL)
 	install = intel-mkl.install
 	depends = intel-common-libs=2019.3.199
 	optdepends = intel-openmp: Intel OpenMP Implementation
 	backup = etc/intel-mkl-th.conf
 
 pkgname = intel-mpi
-	pkgdesc = Intel MPI library 2019.3.199
+	pkgdesc = Intel MPI library
 
 pkgname = intel-tbb_psxe
-	pkgdesc = Intel Threading Building Blocks (TBB) 2019.3.199
+	pkgdesc = Intel Threading Building Blocks (TBB)
 	install = intel-tbb.install
 
 pkgname = intel-advisor
-	pkgdesc = Threading design and prototyping tool for software architects 2019.3.0.591264
+	pkgdesc = Threading design and prototyping tool for software architects 2019.3.0.591490
 	conflicts = intel-advisor-xe
 
 pkgname = intel-vtune-amplifier
-	pkgdesc = Performance profiler for serial and parallel performance analysis 2019.3.0.590814
+	pkgdesc = Performance profiler for serial and parallel performance analysis 2019.3.0.591499
 	depends = pangox-compat
 
 pkgname = intel-inspector
-	pkgdesc = Memory and thread debugger 2019.3.0.590798
+	pkgdesc = Memory and thread debugger 2019.3.0.591484
 	conflicts = intel-inspector-xe
 

@@ -92,25 +92,18 @@ _v_b='199'
 
 _update='3'
 
-pkgrel=2
+pkgrel=3
 
 
 _sp='cluster_edition'
 _icc_ver='19.0.3'
-_mpi_ver='2019.3.199'
-_mkl_ver='2019.3.199'
-_tbb_ver='2019.3.199'
-_vtune_ver='2019.3.0.590814'
-_inspector_ver='2019.3.0.590798'
-_advisor_ver='2019.3.0.591264'
-
-_vtune_man_ver='2019.3.0.590814'
-_inspector_man_ver='2019.3.0.590798'
-_advisor_man_ver='2019.3.0.591264'
-
+_vtune_ver='2019.3.0.591499'
+_inspector_ver='2019.3.0.591484'
+_advisor_ver='2019.3.0.591490'
 
 pkgver=${_year}.${_v_a}.${_v_b}
 
+# package download folders
 _dir_nr='15268'
 _mpi_dir_nr='15260'
 
@@ -149,9 +142,9 @@ source=(
 sha256sums=('b5b022366d6d1a98dbb63b60221c62bc951c9819653ad6f5142192e89f78cf63'
             '5304346c863f64de797250eeb14f51c5cfc8212ff20813b124f20e7666286990'
             '0704025fdfe40e4fce08e88b641128310c3a3b51332668aab60fb815b424f52b'
-            '278f9545d14c1fbec737bbfbcafb1b9090d35aab0dfeddc99d4c6e296b56057b'
-            'e3103fb1c5e2ec9f0cc4090abb7e273563e735d88e185f527c66b2aebd52e733'
-            '3978b721722db7e3127828caf00e6e98539724daffd0a0bdaa287b27bc61b97a'
+            '58bced75693b2f73480b89242b33c9a0ce565d6a12a17f84067bab351bde9be7'
+            '63b12c66d9c8c2310a7bbd5206c82ba9667fb6ffb3dc7e3f9304a17ed8c8fbcd'
+            'fd24842f29d50bc53779dd918fbc548ebf165ff664114e59195773ad04076b5d'
             '3f96dec03111e69d16bb363acf4d0570e8a9526c09e5e542a7558f1b26d043ef'
             '31ac4d0f30a93fe6393f48cb13761d7d1ce9719708c76a377193d96416bed884'
             '6151bc273b6f741a4ce93d8160b6f167c8ad499dbc6e8e3f6e08d48571d6a52a'
@@ -487,7 +480,7 @@ package_intel-ipp() {
 
   set_build_vars
 
-  pkgdesc="Intel Integrated Performance Primitives $_ipp_ver"
+  pkgdesc="Intel Integrated Performance Primitives"
   pkgver=${_pkg_ver}
   install=intel-composer.install
 
@@ -529,7 +522,7 @@ package_intel-mkl() {
 
   set_build_vars
 
-  pkgdesc="Intel Math Kernel Library (Intel® MKL) $_mkl_ver"
+  pkgdesc="Intel Math Kernel Library (Intel® MKL)"
   pkgver=${_pkg_ver}
   depends=("intel-common-libs=$pkgver")
   optdepends=("intel-openmp: Intel OpenMP Implementation")
@@ -582,7 +575,7 @@ package_intel-mpi() {
 
   set_build_vars
 
-  pkgdesc="Intel MPI library $_mpi_ver"
+  pkgdesc="Intel MPI library"
   pkgver=${_pkg_ver}
 
   mkdir -p ${xe_build_dir}/opt
@@ -623,7 +616,7 @@ package_intel-tbb_psxe() {
 
   set_build_vars
 
-  pkgdesc="Intel Threading Building Blocks (TBB) $_tbb_ver"
+  pkgdesc="Intel Threading Building Blocks (TBB)"
   pkgver=${_pkg_ver}
   install=intel-tbb.install
 
@@ -678,7 +671,7 @@ package_intel-vtune-amplifier() {
   mkdir -p ${_man_dir}
 
   msg2 "Updating scripts"
-  sed -e "s/<arch>/${_bin_dir}/g" \
+  sed -e "s/<arch>/${_bin_dir}/g" -e "s/<ver>/${_vtune_ver}/g" \
     < ${srcdir}/intel_vtune-amplifier.sh > ${xe_build_dir}/etc/profile.d/intel_vtune-amplifier.sh
   chmod a+x ${xe_build_dir}/etc/profile.d/intel_vtune-amplifier.sh
 
@@ -687,17 +680,17 @@ package_intel-vtune-amplifier() {
   extract_rpms 'intel-vtune-amplifier-*.rpm'  $xe_build_dir
 
   msg2 "Copying man pages"
-  if [[ -d ${xe_build_dir}/opt/intel/vtune_amplifier_xe_${_year}.${_vtune_man_ver}/man/man1 ]]
+  if [[ -d ${xe_build_dir}/opt/intel/vtune_amplifier_${_vtune_ver}/man/man1 ]]
   then
-    mv ${xe_build_dir}/opt/intel/vtune_amplifier_xe_${_year}.${_vtune_man_ver}/man/man1/*.1 ${_man_dir}
+    mv ${xe_build_dir}/opt/intel/vtune_amplifier_${_vtune_ver}/man/man1/*.1 ${_man_dir}
     gzip ${_man_dir}/*.1
   fi
 
 
   if $_remove_docs ; then
     msg2 "Removing documentation"
-    rm -rf ${xe_build_dir}/opt/intel/vtune_amplifier_xe_${_year}.${_vtune_ver}/samples
-    rm -rf ${xe_build_dir}/opt/intel/vtune_amplifier_xe_${_year}.${_vtune_ver}/documentation
+    rm -rf ${xe_build_dir}/opt/intel/vtune_amplifier_${_vtune_ver}/samples
+    rm -rf ${xe_build_dir}/opt/intel/vtune_amplifier_${_vtune_ver}/documentation
   fi
 
   msg2 "Moving package files"
@@ -720,7 +713,7 @@ package_intel-advisor() {
   mkdir -p ${_man_dir}
 
   msg2 "Updating scripts"
-  sed -e "s/<arch>/${_bin_dir}/g" \
+  sed -e "s/<arch>/${_bin_dir}/g" -e "s/<ver>/${_advisor_ver}/g" \
     < ${srcdir}/intel_advisor.sh > ${xe_build_dir}/etc/profile.d/intel_advisor.sh
   chmod a+x ${xe_build_dir}/etc/profile.d/intel_advisor.sh
 
@@ -729,17 +722,17 @@ package_intel-advisor() {
   extract_rpms 'intel-advisor-*.rpm'  $xe_build_dir
 
   msg2 "Copying man pages"
-  if [[ -d ${xe_build_dir}/opt/intel/advisor_${_year}.${_advisor_man_ver}/man/man1 ]]
+  if [[ -d ${xe_build_dir}/opt/intel/advisor_${_advisor_ver}/man/man1 ]]
   then
-    mv ${xe_build_dir}/opt/intel/advisor_${_year}.${_advisor_man_ver}/man/man1/*.1 ${_man_dir}
+    mv ${xe_build_dir}/opt/intel/advisor_${_advisor_ver}/man/man1/*.1 ${_man_dir}
     gzip ${_man_dir}/*.1
   fi
 
 
   if $_remove_docs ; then
     msg2 "Removing documentation"
-    rm -rf ${xe_build_dir}/opt/intel/advisor_${_year}.${_advisor_ver}/samples
-    rm -rf ${xe_build_dir}/opt/intel/advisor_${_year}.${_advisor_ver}/documentation
+    rm -rf ${xe_build_dir}/opt/intel/advisor_${_advisor_ver}/samples
+    rm -rf ${xe_build_dir}/opt/intel/advisor_${_advisor_ver}/documentation
   fi
 
   msg2 "Moving package files"
@@ -760,7 +753,7 @@ package_intel-inspector() {
   mkdir -p ${_man_dir}
 
   msg2 "Updating scripts"
-  sed -e "s/<arch>/${_bin_dir}/g" \
+  sed -e "s/<arch>/${_bin_dir}/g" -e "s/<ver>/${_inspector_ver}/g" \
     < ${srcdir}/intel_inspector.sh > ${xe_build_dir}/etc/profile.d/intel_inspector.sh
   chmod a+x ${xe_build_dir}/etc/profile.d/intel_inspector.sh
 
@@ -769,17 +762,17 @@ package_intel-inspector() {
   extract_rpms 'intel-inspector-*.rpm'  $xe_build_dir
 
   msg2 "Copying man pages"
-  if [[ -d ${xe_build_dir}/opt/intel/inspector_${_year}.${_inspector_man_ver}/man/man1 ]]
+  if [[ -d ${xe_build_dir}/opt/intel/inspector_${_inspector_ver}/man/man1 ]]
   then
-    mv ${xe_build_dir}/opt/intel/inspector_${_year}.${_inspector_man_ver}/man/man1/*.1 ${_man_dir}
+    mv ${xe_build_dir}/opt/intel/inspector_${_inspector_ver}/man/man1/*.1 ${_man_dir}
     gzip ${_man_dir}/*.1
   fi
 
 
   if $_remove_docs ; then
     msg2 "Removing documentation"
-    rm -rf ${xe_build_dir}/opt/intel/inspector_${_year}.${_inspector_ver}/samples
-    rm -rf ${xe_build_dir}/opt/intel/inspector_${_year}.${_inspector_ver}/documentation
+    rm -rf ${xe_build_dir}/opt/intel/inspector_${_inspector_ver}/samples
+    rm -rf ${xe_build_dir}/opt/intel/inspector_${_inspector_ver}/documentation
   fi
 
   msg2 "Moving package files"
