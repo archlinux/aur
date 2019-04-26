@@ -1,7 +1,7 @@
 # Maintainer: twilinx <twilinx@mesecons.net>
 
 pkgname=gtk3-typeahead
-pkgver=3.24.7+25+g17665f06e3
+pkgver=3.24.8
 pkgrel=1
 conflicts=(gtk3)
 provides=("gtk3=$pkgver" gtk3-print-backends)
@@ -16,7 +16,7 @@ depends=(atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2 d
          cantarell-fonts colord rest libcups libcanberra fribidi)
 makedepends=(gobject-introspection gtk-doc git glib2-docs sassc)
 license=(LGPL)
-_commit=17665f06e352d2c9ea3c9c9392a026d9b3d6cf98 # gtk-3-24
+_commit=5428379fad31f1637c920d97a3d0303f606bfb6e # tags/3.24.8^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         settings.ini
         gtk-query-immodules-3.0.hook
@@ -28,9 +28,6 @@ sha256sums=('SKIP'
 
 prepare() {
     cd gtk
-
-    # https://gitlab.gnome.org/GNOME/gtk/issues/1761
-    git cherry-pick -n 2d3936cbe6bf19bc39e400e1d9660538e42f4341
 
     # Typeahead-specific changes
     patch gtk/gtkfilechooserwidget.c -i $srcdir/typeahead.patch
