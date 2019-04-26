@@ -6,7 +6,7 @@
 
 _pkgname=instantclient-sqlplus
 pkgname=oracle-${_pkgname}
-pkgver=18.3.0.0.0
+pkgver=18.5.0.0.0
 pkgrel=1
 pkgdesc="SQL*Plus for Oracle Instant Client"
 arch=('x86_64')
@@ -23,9 +23,9 @@ DLAGENTS+=('manual::/usr/bin/false');
 source=(LICENSE
         "manual://${_pkgname}-linux.x64-${pkgver}dbru.zip")
 md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
-         'a84ec277d237eed38ac51b7cc4372794')
+         '318650becd079a4d718c0b99983e15f7')
 sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
-            '2984881b856399ae4e7231c184790499c0d9b5d7e508beb579cc68ef036f3162')
+            '4e91d4880f7a20208e9211409252815f1b26afb9638c2350a98fc52996036624')
 
 msg "Warning: This software cannot be downloaded automatically."
 plain "You will need to sign up for an Oracle account and download the software from"
@@ -49,7 +49,7 @@ plain "[1]: http://www.oracle.com/technetwork/licenses/instant-client-lic-152016
 plain ""
 
 package() {
-	local basedir="$srcdir/instantclient_18_3"
+	local basedir="$srcdir/instantclient_18_5"
 	install -d "$pkgdir/usr/bin"
 	install -d "$pkgdir/usr/lib"
 	install -m 755 -t "$pkgdir/usr/bin" "$basedir/sqlplus"
