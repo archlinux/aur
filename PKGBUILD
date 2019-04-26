@@ -2,12 +2,14 @@
 # Contributor: Det
 # Contributor: josephgbr
 
-_pkgname=jre
-pkgname=bin32-jre
+_build=b12
+_bundleid=238717
+_hash=478a62b7d4e34b78b671c754eaaf38ab
 _major=8
-_minor=202
-_build=b08
-_hash=1961070e4c9b4e26a04e7f5a083f551e
+_minor=211
+_pkgname=jre
+
+pkgname=bin32-jre
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java $_major Runtime Enviroment (32-bit)"
@@ -33,7 +35,7 @@ provides=("java32-runtime=$_major"
           "java32-openjfx=$_major")
 
 # Variables
-DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
+DLAGENTS=("${DLAGENTS[@]//curl -/curl --retry 3 --retry-delay 3 -fL -b 'oraclelicense=a' -}")
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib32/jvm/java32-$_major-$_pkgname/jre
 
@@ -53,14 +55,19 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/psfontj2d.properties"
         "etc/java32-$_jname/sound.properties")
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_hash/$_pkgname-$pkgver-linux-i586.tar.gz"
-        "http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
-        "policytool32-$_jname.desktop")
-md5sums=('8622893d3af9a1431afd0eb8f3e2be9c'
-         'b3c7031bc65c28c2340302065e7d00d3'
-         '271b97a9b95d809a99999ec5fb74313c')
+source=(
+  # "http://download.oracle.com/otn/java/jdk/${pkgver}-${_build}/${_hash}/${_pkgname}-${pkgver}-linux-i586.tar.gz"
+  "${_pkgname}-${pkgver}-linux-i586.tar.gz::https://javadl.oracle.com/webapps/download/AutoDL?BundleId=${_bundleid}_${_hash}"
+  "http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
+  "policytool32-$_jname.desktop"
+)
+sha256sums=('c6828bc0da206c2d380219649e68d6d5ed1178c048df1d61e877a2473991a04f'
+            'f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
+            'b92df5151b7b21fbdce2be8717b3b83e58bd290111b47c8c81c657ab2ccb0db8')
 
 package() {
+    echo http://download.oracle.com/otn/java/jdk/$pkgver-$_build/$_hash/$_pkgname-$pkgver-linux-i586.tar.gz
+    pwd
     cd ${_pkgname}1.${_major}.0_${_minor}
 
     msg2 "Creating directory structure..."
