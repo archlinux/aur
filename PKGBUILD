@@ -3,18 +3,18 @@
 
 _pyname=nbstripout
 pkgname=python-$_pyname
-pkgver=0.3.3
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='Strips outputs from Jupyter and IPython notebooks'
 url="https://pypi.python.org/pypi/$_pyname/"
-depends=('git' 'jupyter-nbformat')
-checkdepends=('python-pytest' 'python-pytest-flake8')
+depends=('jupyter-nbformat')
+#checkdepends=('git' 'hg' 'python-pytest' 'python-pytest-cram')
 license=('MIT')
 arch=('any')
 source=("https://pypi.org/packages/source/${_pyname:0:1}/$_pyname/$_pyname-$pkgver.tar.gz"
 "https://raw.githubusercontent.com/kynan/nbstripout/master/LICENSE.txt")
-sha256sums=('d84659e2778ee2f90c16664e93ba0749ef414149cb607f5f36f2a91deba2ace4'
-            '9842167c4bf9aa4662a669e8638d299a2460f6015ef0a98d4745871938bc1cd4')
+sha256sums=('814efbe00988445b2c3f3d1944c9f296a556e2b14a060f7b25372881c2e497d4'
+            'cceb6581e12b4e46f8291d138b15731e8b77e6e1eee9dca23be2297e2c48fe29')
 
 build() {
   cd $srcdir/$_pyname-$pkgver
@@ -26,3 +26,7 @@ package() {
   cd $srcdir/$_pyname-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
 }
+
+#check() {
+  #python setup.py test
+#}
