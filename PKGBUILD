@@ -6,15 +6,16 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
-pkgname=gstm
+pkgname=gstm-gtk2
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Gnome front-end to ssh tunneling"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/gstm/"
 license=('GPL')
 depends=('libgnomeui' 'openssh')
 makedepends=('intltool')
+conflicts=('gstm')
 source=(http://downloads.sourceforge.net/sourceforge/gstm/gstm-${pkgver}.tar.gz)
 md5sums=('7fa71b86969d8d695c3b062780a5694e')
 
