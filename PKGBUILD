@@ -6,7 +6,7 @@ pkgdesc="A 21 century R console"
 url="https://github.com/randy3k/radian"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('r>=3.4.0' 'python-lineedit>=0.1.1' 'python-rchitect>=0.2.3' 'python-six')
+depends=('r>=3.4.0' 'python-lineedit>=0.1.1' 'python-rchitect>=0.2.3' 'python-rchitect<0.3.0' 'python-six')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-pyte' 'python-pexpect' 'python-ptyprocess')
 replaces=('rtichoke')

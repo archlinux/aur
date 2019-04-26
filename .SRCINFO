@@ -14,6 +14,7 @@ pkgbase = radian
 	depends = r>=3.4.0
 	depends = python-lineedit>=0.1.1
 	depends = python-rchitect>=0.2.3
+	depends = python-rchitect<0.3.0
 	depends = python-six
 	replaces = rtichoke
 	source = radian-0.3.4.tar.gz::https://github.com/randy3k/radian/archive/v0.3.4.tar.gz
