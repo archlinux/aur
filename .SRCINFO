@@ -1,12 +1,11 @@
 pkgbase = ceres-solver
 	pkgdesc = Solver for nonlinear least squares problems
 	pkgver = 1.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ceres-solver.org/
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = gcc-libs
 	makedepends = cmake
 	depends = google-glog>=0.3.4
 	depends = eigen>=3.3.0
