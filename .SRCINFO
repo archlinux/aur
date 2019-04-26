@@ -1,7 +1,7 @@
 pkgbase = lib32-freetype2-old-hinting
 	pkgdesc = TrueType font rendering library (including the old hinting engine; 32-bit)
 	pkgver = 2.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freetype.org/
 	arch = x86_64
 	license = GPL
@@ -12,18 +12,20 @@ pkgbase = lib32-freetype2-old-hinting
 	depends = lib32-harfbuzz
 	depends = freetype2
 	provides = libfreetype.so
-	provides = lib32-freetype2=2.10.0-1
+	provides = lib32-freetype2=2.10.0-2
 	conflicts = lib32-freetype2
 	source = https://download.savannah.gnu.org/releases/freetype/freetype-2.10.0.tar.bz2
 	source = https://download.savannah.gnu.org/releases/freetype/freetype-2.10.0.tar.bz2.sig
 	source = 0001-Enable-table-validation-modules.patch
 	source = 0002-Enable-infinality-subpixel-hinting.patch
 	source = 0003-Enable-long-PCF-family-names.patch
+	source = 0004-pcf-Fix-handling-of-undefined-glyph-56067.patch
 	sha1sums = f6abf03e0e3189a0de883981c57d3861b5d314f5
 	sha1sums = SKIP
 	sha1sums = 46fd67e6a594f6c2c473b9321ba64913984ba42f
 	sha1sums = 4bf0c0749db09878b918cc404300f0d3e9091607
 	sha1sums = af76172be8135e74391b7ad1b82c2124ae0ad86c
+	sha1sums = 74d0ae26620a22c03002ecfffd7bd4c8130d6f6c
 
 pkgname = lib32-freetype2-old-hinting
 
