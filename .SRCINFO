@@ -1,6 +1,6 @@
 pkgbase = sway-git
 	pkgdesc = i3-compatible Wayland compositor
-	pkgver = r5747.9032be4f
+	pkgver = r5893.e6fbb3c6
 	pkgrel = 1
 	url = https://swaywm.org
 	arch = i686
@@ -18,6 +18,7 @@ pkgbase = sway-git
 	depends = gdk-pixbuf2
 	depends = pam
 	depends = xorg-server-xwayland
+	depends = swaybg-git
 	optdepends = rxvt-unicode: Default terminal emulator.
 	optdepends = dmenu: Default for launching applications.
 	optdepends = i3status: To display system information with a bar.

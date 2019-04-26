@@ -1,14 +1,14 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-git
 _pkgname=sway
-pkgver=r5747.9032be4f
+pkgver=r5893.e6fbb3c6
 pkgrel=1
 license=("MIT")
 pkgdesc="i3-compatible Wayland compositor"
 makedepends=("meson" "git" "scdoc" "wayland-protocols")
 depends=(
 	"json-c" "pcre" "wlroots-git" "cairo" "pango" "gdk-pixbuf2" "pam"
-	"xorg-server-xwayland"
+	"xorg-server-xwayland" "swaybg-git"
 )
 optdepends=(
 	"rxvt-unicode: Default terminal emulator."
