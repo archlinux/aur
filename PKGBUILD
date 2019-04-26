@@ -322,19 +322,21 @@ package_intel-common-libs() {
   pkgdesc="Intel Common Libraries $_icc_ver"
   pkgver=${_pkg_ver}
 
-  mkdir -p ${xe_build_dir}/opt
-
-  cp ${srcdir}/intel-common-libs.conf ${xe_build_dir}/etc/ld.so.conf.d/
+  mkdir -p ${xe_build_dir}
   cd ${xe_build_dir}
+  mkdir -p ./opt
+  mkdir -p ./etc/ld.so.conf.d
+
+  cp ${srcdir}/intel-common-libs.conf ./etc/ld.so.conf.d/
   msg2 "Extracting RPMS"
   extract_rpms 'intel-comp-ps-ss-bec*.rpm'  $xe_build_dir
   extract_rpms 'intel-c-*.rpm'  $xe_build_dir
 
   msg2 "Moving package files"
   mkdir -p ${pkgdir}/etc
-  mv ${xe_build_dir}/opt ${pkgdir}
+  mv ./opt ${pkgdir}
   # move ld.so configs, but keep profile.d (should be in intel-compiler-base)
-  mv ${xe_build_dir}/etc/ld.so.conf.d ${pkgdir}/etc/
+  mv ./etc/ld.so.conf.d ${pkgdir}/etc/
 
   cd ${pkgdir}/opt/intel
 
@@ -348,14 +350,15 @@ package_intel-openmp() {
   pkgver=${_pkg_ver}
   depends=("intel-common-libs=$pkgver")
 
-  mkdir -p ${xe_build_dir}/opt
-
+  mkdir -p ${xe_build_dir}
   cd ${xe_build_dir}
+  mkdir -p ./opt
+
   msg2 "Extracting RPMS"
   extract_rpms 'intel-openmp*.rpm'  $xe_build_dir
 
   msg2 "Moving package files"
-  mv ${xe_build_dir}/opt ${pkgdir}
+  mv ./opt ${pkgdir}/
 }
 
 package_intel-compiler-base() {
@@ -368,12 +371,12 @@ package_intel-compiler-base() {
            "intel-openmp=$pkgver")
   install=intel-composer.install
 
-  mkdir -p ${xe_build_dir}/opt
-  mkdir -p ${xe_build_dir}/etc/profile.d
+  mkdir -p ${xe_build_dir}
+  cd ${xe_build_dir}
+  mkdir -p ./opt
+  mkdir -p ./etc/profile.d
   mkdir -p ${_man_dir}
 
-
-  cd ${xe_build_dir}
   msg2 "Extracting RPMS"
   extract_rpms 'intel-icc*.rpm' $xe_build_dir
   for rpm_file in `find ${rpm_dir} -iname 'intel-comp-*.rpm' ! -iname 'intel-comp-ps-ss-bec-*.rpm' -print` ; do
@@ -381,7 +384,7 @@ package_intel-compiler-base() {
   done
 
   msg2 "Updating scripts"
-  cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/bin
+  cd ./opt/intel/${_composer_xe_dir}/linux/bin
 
   #rm uninstall.sh
   rm *.csh
@@ -396,11 +399,12 @@ package_intel-compiler-base() {
   chmod a+x loopprofileviewer.sh
   rm loopprofileviewer.csh
 
+  cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux
   if $_remove_docs ; then
     msg2 "Removing documentation"
-    rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/documentation
-    rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/Documentation
-    rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/Samples
+    rm -rf ./documentation
+    rm -rf ./Documentation
+    rm -rf ./Samples
   fi
 
   msg2 "Copying man pages"
@@ -409,9 +413,9 @@ package_intel-compiler-base() {
   gzip ${_man_dir}/*.1
 
   msg2 "Moving package files"
-  mv ${xe_build_dir}/opt ${pkgdir}
-  mv ${xe_build_dir}/etc ${pkgdir}
-  mv ${xe_build_dir}/usr ${pkgdir}
+  mv ${xe_build_dir}/opt ${pkgdir}/
+  mv ${xe_build_dir}/etc ${pkgdir}/
+  mv ${xe_build_dir}/usr ${pkgdir}/
 
   cd ${pkgdir}/opt/intel
   ln -s ./${_composer_xe_dir} composerxe
@@ -431,32 +435,30 @@ package_intel-fortran-compiler() {
   depends=("intel-compiler-base=$pkgver")
   install=intel-composer.install
 
-  mkdir -p ${xe_build_dir}/opt
-  mkdir -p ${xe_build_dir}/etc/profile.d
-  mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
+  mkdir -p ${xe_build_dir}
+  cd ${xe_build_dir}
+  mkdir -p ./opt
+  mkdir -p ./etc/profile.d
+  mkdir -p ./etc/ld.so.conf.d
   mkdir -p ${_man_dir}
 
-  sed "s/<arch>/${_i_arch}/" < ${srcdir}/intel-fortran.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-fortran.conf
-
-  cd ${xe_build_dir}
+  sed "s/<arch>/${_i_arch}/" < ${srcdir}/intel-fortran.conf > ./etc/ld.so.conf.d/intel-fortran.conf
 
   msg2 "Extracting RPMS"
   extract_rpms 'intel-ifort*.rpm'  $xe_build_dir
 
   msg2 "Updating scripts"
-  cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/bin
-
-  rm *.csh
+  rm ./opt/intel/${_composer_xe_dir}/linux/bin/*.csh
 
   #Remove duplicate logo and .css found in intel base
-  rm ${xe_build_dir}/opt/intel/documentation_${_year}/en/compiler_f/ps${_year}/resources/intel_gsp_styles.css
-  rm ${xe_build_dir}/opt/intel/documentation_${_year}/en/compiler_f/ps${_year}/resources/intel_logo.png
+  rm ${xe_build_dir}/opt/intel/documentation_${_year}/en/compiler_f/ps${_year}/resources/{intel_gsp_styles.css,intel_logo.png}
 
+  cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux
   if $_remove_docs ; then
     msg2 "Removing documentation"
-    rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/documentation
-    rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/Documentation
-    rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/Samples
+    rm -rf ./documentation
+    rm -rf ./Documentation
+    rm -rf ./Samples
   fi
 
   msg2 "Copying man pages"
@@ -465,15 +467,14 @@ package_intel-fortran-compiler() {
   gzip ${_man_dir}/*.1
 
   # Remove duplicate headers found in intel base
-  rm ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/compiler/include/omp_lib.f90
-  rm ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/compiler/include/intel64/omp_lib.mod
-  rm ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/compiler/include/intel64/omp_lib_kinds.mod
-  cd ${xe_build_dir}
+  rm ./compiler/include/omp_lib.f90
+  rm ./compiler/include/intel64/omp_lib.mod
+  rm ./compiler/include/intel64/omp_lib_kinds.mod
 
   msg2 "Moving package files"
-  mv ${xe_build_dir}/opt ${pkgdir}
-  mv ${xe_build_dir}/etc ${pkgdir}
-  mv ${xe_build_dir}/usr ${pkgdir}
+  mv ${xe_build_dir}/opt ${pkgdir}/
+  mv ${xe_build_dir}/etc ${pkgdir}/
+  mv ${xe_build_dir}/usr ${pkgdir}/
 }
 
 package_intel-ipp() {
@@ -484,13 +485,13 @@ package_intel-ipp() {
   pkgver=${_pkg_ver}
   install=intel-composer.install
 
-  mkdir -p ${xe_build_dir}/opt
-
-  mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
-
-  sed "s/<arch>/${_i_arch}/" < ${srcdir}/intel-ipp.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-ipp.conf
-
+  mkdir -p ${xe_build_dir}
   cd ${xe_build_dir}
+  mkdir -p ./opt
+  mkdir -p ./etc/ld.so.conf.d
+
+  sed "s/<arch>/${_i_arch}/" < ${srcdir}/intel-ipp.conf > ./etc/ld.so.conf.d/intel-ipp.conf
+
   msg2 "Extracting RPMS"
   extract_rpms 'intel-ipp-*.rpm'  $xe_build_dir
 
@@ -499,21 +500,22 @@ package_intel-ipp() {
   rm ippvars.csh
   sed -i "s/<INSTALLDIR>/\/opt\/intel\/${_composer_xe_dir}\/linux/g" ippvars.sh
 
+  cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/
   if ${_remove_docs} ; then
     msg2 "Removing documentation"
-    rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/Documentation
+    rm -rf ./Documentation
   fi
 
   if ${_remove_static_objects_ipp} ; then
     msg2 "Removing static objects"
-    rm -f ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/ipp/lib/${_i_arch}/libipp*.a
-    rm -f ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/ipp/lib/${_i_arch}/nonpic/libipp*.a
-    rmdir ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/ipp/lib/${_i_arch}/nonpic/
+    rm -f ./ipp/lib/${_i_arch}/libipp*.a
+    rm -f ./ipp/lib/${_i_arch}/nonpic/libipp*.a
+    rmdir ./ipp/lib/${_i_arch}/nonpic/
   fi
 
   msg2 "Moving package files"
-  mv ${xe_build_dir}/opt ${pkgdir}
-  mv ${xe_build_dir}/etc ${pkgdir}
+  mv ${xe_build_dir}/opt ${pkgdir}/
+  mv ${xe_build_dir}/etc ${pkgdir}/
 
   ln -s ./${_composer_xe_dir}/linux/ipp/ ${pkgdir}/opt/intel/ipp
 }
@@ -529,44 +531,45 @@ package_intel-mkl() {
   install=intel-mkl.install
   backup=('etc/intel-mkl-th.conf')
 
-  mkdir -p ${xe_build_dir}/opt
-  mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
-  mkdir -p ${xe_build_dir}/etc/profile.d
-
-  cp ${srcdir}/intel-mkl.sh ${xe_build_dir}/etc/profile.d/
-  chmod a+x ${xe_build_dir}/etc/profile.d/intel-mkl.sh
-
-  cp ${srcdir}/intel-mkl-th.conf ${xe_build_dir}/etc/
-
-  sed "s/<arch>/${_i_arch}/" < ${srcdir}/intel-mkl.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-mkl.conf
-
+  mkdir -p ${xe_build_dir}
   cd ${xe_build_dir}
+  mkdir -p ./opt
+  mkdir -p ./etc/ld.so.conf.d
+  mkdir -p ./etc/profile.d
+
+  cp ${srcdir}/intel-mkl.sh ./etc/profile.d/
+  chmod a+x ./etc/profile.d/intel-mkl.sh
+
+  cp ${srcdir}/intel-mkl-th.conf ./etc/
+
+  sed "s/<arch>/${_i_arch}/" < ${srcdir}/intel-mkl.conf > ./etc/ld.so.conf.d/intel-mkl.conf
 
   msg2 "Extracting RPMS"
   extract_rpms 'intel-mkl-*.rpm'  $xe_build_dir
 
+  cd ./opt/intel/${_composer_xe_dir}/linux/mkl
+
   msg2 "Updating scripts"
-  cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mkl/bin
-  rm mklvars.csh
-  sed -i "s/<INSTALLDIR>/\/opt\/intel\/${_composer_xe_dir}\/linux/g" mklvars.sh
+  rm ./bin/mklvars.csh
+  sed -i "s/<INSTALLDIR>/\/opt\/intel\/${_composer_xe_dir}\/linux/g" ./bin/mklvars.sh
 
   rm -rf ./${_not_arch}
 
   if ${_remove_docs} ; then
     msg2 "Removing documentation"
-    rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mkl/examples
-    rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mkl/benchmarks
+    rm -rf ./examples
+    rm -rf ./benchmarks
   fi
 
   if ${_remove_static_objects_mkl} ; then
     msg2 "Removing static objects"
-    rm -f ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mkl/lib/${_i_arch}/libmkl_*.a
-    rm -f ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mkl/lib/mic/libmkl_*.a
+    rm -f ./lib/${_i_arch}/libmkl_*.a
+    rm -f ./lib/mic/libmkl_*.a
   fi
 
   msg2 "Moving package files"
-  mv ${xe_build_dir}/opt ${pkgdir}
-  mv ${xe_build_dir}/etc ${pkgdir}
+  mv ${xe_build_dir}/opt ${pkgdir}/
+  mv ${xe_build_dir}/etc ${pkgdir}/
 
   ln -s ./${_composer_xe_dir}/linux/mkl/ ${pkgdir}/opt/intel/mkl
 }
@@ -578,25 +581,24 @@ package_intel-mpi() {
   pkgdesc="Intel MPI library"
   pkgver=${_pkg_ver}
 
-  mkdir -p ${xe_build_dir}/opt
-  mkdir -p ${xe_build_dir}/bin
-  mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
-
-  sed "s/<arch>/${_i_arch}/" < ${srcdir}/intel-mpi.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-mpi.conf
-
+  mkdir -p ${xe_build_dir}
   cd ${xe_build_dir}
+  mkdir -p ./opt
+  mkdir -p ./bin
+  mkdir -p ./etc/ld.so.conf.d
+
+  sed "s/<arch>/${_i_arch}/" < ${srcdir}/intel-mpi.conf > ./etc/ld.so.conf.d/intel-mpi.conf
 
   msg2 "Extracting RPMS"
   extract_rpms 'intel-mpi-*.rpm'  $xe_build_dir
   extract_mpi_rpms 'intel-mpi-sdk-*.rpm'  $xe_build_dir
 
   msg2 "Updating scripts"
-  cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mpi/${_i_arch}/bin
+  cd ./opt/intel/${_composer_xe_dir}/linux/mpi/${_i_arch}/bin
   rm mpivars.csh
 
   #for i in mpd* mpi*    no mpd longer since 2017?
-  for i in mpi*
-  do
+  for i in mpi* ; do
     sed -i "s/I_MPI_SUBSTITUTE_INSTALLDIR/\/opt\/intel\/${_composer_xe_dir}\/linux\/mpi/g" $i
   done
 
@@ -620,39 +622,37 @@ package_intel-tbb_psxe() {
   pkgver=${_pkg_ver}
   install=intel-tbb.install
 
-  mkdir -p ${xe_build_dir}/opt
-  mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
-
-  sed "s/<arch>/${_i_arch}/" < ${srcdir}/intel-tbb.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
-  sed -i "s/<INSTALLDIR>/\/opt\/intel\/${_composer_xe_dir}/g" ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
-
+  mkdir -p ${xe_build_dir}
   cd ${xe_build_dir}
+  mkdir -p ./opt
+  mkdir -p ./etc/ld.so.conf.d
+
+  sed "s/<arch>/${_i_arch}/" < ${srcdir}/intel-tbb.conf > ./etc/ld.so.conf.d/intel-tbb.conf
+  sed -i "s/<INSTALLDIR>/\/opt\/intel\/${_composer_xe_dir}/g" ./etc/ld.so.conf.d/intel-tbb.conf
 
   msg2 "Extracting RPMS"
   extract_rpms 'intel-tbb-*.rpm'  $xe_build_dir
 
-
   msg2 "Updating scripts"
-  cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/tbb/bin
-  rm tbbvars.csh
+  cd ./opt/intel/${_composer_xe_dir}/linux
+  rm ./tbb/bin/tbbvars.csh
+  sed -i "s/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/${_composer_xe_dir}\/linux\/tbb/g" ./tbb/bin/tbbvars.sh
 
-  sed -i "s/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/${_composer_xe_dir}\/linux\/tbb/g" tbbvars.sh
-
-  chmod a+x tbbvars.sh
+  chmod a+x ./tbb/bin/tbbvars.sh
 
   msg2 "Removing unneeded libs and bin"
-  rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/tbb/bin/${_not_arch}
-  rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/tbb/lib/${_not_arch}
+  rm -rf ./tbb/bin/${_not_arch}
+  rm -rf ./tbb/lib/${_not_arch}
 
   if $_remove_docs ; then
     msg2 "Removing documentation"
-    rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/Documentation
-    rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/tbb/examples
+    rm -rf ./Documentation
+    rm -rf ./tbb/examples
   fi
 
   msg2 "Moving package files"
-  mv ${xe_build_dir}/opt ${pkgdir}
-  mv ${xe_build_dir}/etc ${pkgdir}
+  mv ${xe_build_dir}/opt ${pkgdir}/
+  mv ${xe_build_dir}/etc ${pkgdir}/
 
   ln -s ./${_composer_xe_dir}/linux/tbb/ ${pkgdir}/opt/intel/tbb
 }
@@ -665,38 +665,40 @@ package_intel-vtune-amplifier() {
   pkgver=${_pkg_ver}
   depends=('pangox-compat')
 
-  mkdir -p ${xe_build_dir}/opt
-  mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
-  mkdir -p ${xe_build_dir}/etc/profile.d
+  mkdir -p ${xe_build_dir}
+  cd ${xe_build_dir}
+  mkdir -p ./opt
+  mkdir -p ./etc/ld.so.conf.d
+  mkdir -p ./etc/profile.d
   mkdir -p ${_man_dir}
 
   msg2 "Updating scripts"
   sed -e "s/<arch>/${_bin_dir}/g" -e "s/<ver>/${_vtune_ver}/g" \
-    < ${srcdir}/intel_vtune-amplifier.sh > ${xe_build_dir}/etc/profile.d/intel_vtune-amplifier.sh
-  chmod a+x ${xe_build_dir}/etc/profile.d/intel_vtune-amplifier.sh
+    < ${srcdir}/intel_vtune-amplifier.sh > etc/profile.d/intel_vtune-amplifier.sh
+  chmod a+x ./etc/profile.d/intel_vtune-amplifier.sh
 
-  cd ${xe_build_dir}
   msg2 "Extracting RPMS"
   extract_rpms 'intel-vtune-amplifier-*.rpm'  $xe_build_dir
 
+  cd ${xe_build_dir}/opt/intel/vtune_amplifier_${_vtune_ver}
+
   msg2 "Copying man pages"
-  if [[ -d ${xe_build_dir}/opt/intel/vtune_amplifier_${_vtune_ver}/man/man1 ]]
-  then
-    mv ${xe_build_dir}/opt/intel/vtune_amplifier_${_vtune_ver}/man/man1/*.1 ${_man_dir}
+  if [[ -d ./man/man1 ]]; then
+    mv ./man/man1/*.1 ${_man_dir}/
     gzip ${_man_dir}/*.1
   fi
 
 
   if $_remove_docs ; then
     msg2 "Removing documentation"
-    rm -rf ${xe_build_dir}/opt/intel/vtune_amplifier_${_vtune_ver}/samples
-    rm -rf ${xe_build_dir}/opt/intel/vtune_amplifier_${_vtune_ver}/documentation
+    rm -rf ./samples
+    rm -rf ./documentation
   fi
 
   msg2 "Moving package files"
-  mv ${xe_build_dir}/opt ${pkgdir}
-  mv ${xe_build_dir}/etc ${pkgdir}
-  mv ${xe_build_dir}/usr ${pkgdir}
+  mv ${xe_build_dir}/opt ${pkgdir}/
+  mv ${xe_build_dir}/etc ${pkgdir}/
+  mv ${xe_build_dir}/usr ${pkgdir}/
 }
 
 package_intel-advisor() {
@@ -707,38 +709,40 @@ package_intel-advisor() {
   pkgver=${_pkg_ver}
   conflicts=( 'intel-advisor-xe' )
 
-  mkdir -p ${xe_build_dir}/opt
-  mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
-  mkdir -p ${xe_build_dir}/etc/profile.d
+  mkdir -p ${xe_build_dir}
+  cd ${xe_build_dir}
+  mkdir -p ./opt
+  mkdir -p ./etc/ld.so.conf.d
+  mkdir -p ./etc/profile.d
   mkdir -p ${_man_dir}
 
   msg2 "Updating scripts"
   sed -e "s/<arch>/${_bin_dir}/g" -e "s/<ver>/${_advisor_ver}/g" \
-    < ${srcdir}/intel_advisor.sh > ${xe_build_dir}/etc/profile.d/intel_advisor.sh
-  chmod a+x ${xe_build_dir}/etc/profile.d/intel_advisor.sh
+    < ${srcdir}/intel_advisor.sh > etc/profile.d/intel_advisor.sh
+  chmod a+x ./etc/profile.d/intel_advisor.sh
 
-  cd ${xe_build_dir}
   msg2 "Extracting RPMS"
   extract_rpms 'intel-advisor-*.rpm'  $xe_build_dir
 
+  cd ${xe_build_dir}/opt/intel/advisor_${_advisor_ver}
+
   msg2 "Copying man pages"
-  if [[ -d ${xe_build_dir}/opt/intel/advisor_${_advisor_ver}/man/man1 ]]
-  then
-    mv ${xe_build_dir}/opt/intel/advisor_${_advisor_ver}/man/man1/*.1 ${_man_dir}
+  if [[ -d ./man/man1 ]]; then
+    mv ./man/man1/*.1 ${_man_dir}/
     gzip ${_man_dir}/*.1
   fi
 
 
   if $_remove_docs ; then
     msg2 "Removing documentation"
-    rm -rf ${xe_build_dir}/opt/intel/advisor_${_advisor_ver}/samples
-    rm -rf ${xe_build_dir}/opt/intel/advisor_${_advisor_ver}/documentation
+    rm -rf ./samples
+    rm -rf ./documentation
   fi
 
   msg2 "Moving package files"
-  mv ${xe_build_dir}/opt ${pkgdir}
-  mv ${xe_build_dir}/etc ${pkgdir}
-  mv ${xe_build_dir}/usr ${pkgdir}
+  mv ${xe_build_dir}/opt ${pkgdir}/
+  mv ${xe_build_dir}/etc ${pkgdir}/
+  mv ${xe_build_dir}/usr ${pkgdir}/
 }
 
 package_intel-inspector() {
@@ -747,38 +751,40 @@ package_intel-inspector() {
   pkgver=${_pkg_ver}
   conflicts=('intel-inspector-xe')
 
-  mkdir -p ${xe_build_dir}/opt
-  mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
-  mkdir -p ${xe_build_dir}/etc/profile.d
+  mkdir -p ${xe_build_dir}
+  cd ${xe_build_dir}
+  mkdir -p ./opt
+  mkdir -p ./etc/ld.so.conf.d
+  mkdir -p ./etc/profile.d
   mkdir -p ${_man_dir}
 
   msg2 "Updating scripts"
   sed -e "s/<arch>/${_bin_dir}/g" -e "s/<ver>/${_inspector_ver}/g" \
-    < ${srcdir}/intel_inspector.sh > ${xe_build_dir}/etc/profile.d/intel_inspector.sh
-  chmod a+x ${xe_build_dir}/etc/profile.d/intel_inspector.sh
+    < ${srcdir}/intel_inspector.sh > ./etc/profile.d/intel_inspector.sh
+  chmod a+x ./etc/profile.d/intel_inspector.sh
 
-  cd ${xe_build_dir}
   msg2 "Extracting RPMS"
   extract_rpms 'intel-inspector-*.rpm'  $xe_build_dir
 
+  cd ${xe_build_dir}/opt/intel/inspector_${_inspector_ver}
+
   msg2 "Copying man pages"
-  if [[ -d ${xe_build_dir}/opt/intel/inspector_${_inspector_ver}/man/man1 ]]
-  then
-    mv ${xe_build_dir}/opt/intel/inspector_${_inspector_ver}/man/man1/*.1 ${_man_dir}
+  if [[ -d ./man/man1 ]]; then
+    mv ./man/man1/*.1 ${_man_dir}/
     gzip ${_man_dir}/*.1
   fi
 
 
   if $_remove_docs ; then
     msg2 "Removing documentation"
-    rm -rf ${xe_build_dir}/opt/intel/inspector_${_inspector_ver}/samples
-    rm -rf ${xe_build_dir}/opt/intel/inspector_${_inspector_ver}/documentation
+    rm -rf ./samples
+    rm -rf ./documentation
   fi
 
   msg2 "Moving package files"
-  mv ${xe_build_dir}/opt ${pkgdir}
-  mv ${xe_build_dir}/etc ${pkgdir}
-  mv ${xe_build_dir}/usr ${pkgdir}
+  mv ${xe_build_dir}/opt ${pkgdir}/
+  mv ${xe_build_dir}/etc ${pkgdir}/
+  mv ${xe_build_dir}/usr ${pkgdir}/
 }
 pkgdesc="Intel C++ C and FORTRAN compiler - Intel Parallel Studio XE - Cluster Edition - icc icpc ifort ipp mkl"
 depends=('bash' 'gcc')
