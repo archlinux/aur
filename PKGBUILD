@@ -2,31 +2,28 @@
 # Maintainer: Danilo Bargen <mail at dbrgn dot ch>
 pkgname=siftgpu
 pkgver=0.5.400
-pkgrel=8
+pkgrel=9
 pkgdesc="Sift Features over GPU using GLSL or CUDA"
 arch=('i686' 'x86_64')
 url="http://ccwu.me/"
 license=('custom')
 depends=('glew>=1.8' 'freeglut>=2.7' 'devil>=1.7')
-optdepends=('cuda')
-makedepends=(git)
+optdepends=('opencl-nvidia')
+makedepends=('git' 'cuda')
 source=("${pkgname}::git+https://github.com/pitzer/SiftGPU"
-        'makefile-cuda.patch')
+        'makefile-cuda.patch'
+)
 sha256sums=('SKIP'
-            'fc9325f3692589318133538b6301e645003737894723abacc431b1105c221773')
+            '5d5cd327bf156f91f81ea6ce3d5d2a7ab99f8e1df705007ac6126fb75c13cbdb')
 
 
 prepare() {
   cd ${srcdir}/${pkgname}
   git apply ${srcdir}/makefile-cuda.patch
-  #sed -i 's:g++:g++-5:' makefile
 }
 
 build() {
   cd ${srcdir}/${pkgname}
-  #mkdir -p build
-  #cd build
-  #cmake -DSIFTGPU_ENABLE_CUDA=TRUE -DSIFTGPU_ENABLE_OPENCL=TRUE -DBUILD_SHARED_LIBS=TRUE ../${pkgname}
   make -j1
 }
 

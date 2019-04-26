@@ -1,22 +1,33 @@
 diff --git a/makefile b/makefile
-index 2059b92..6ced58f 100644
+index 2059b92..be7656d 100644
 --- a/makefile
 +++ b/makefile
-@@ -7,14 +7,14 @@ siftgpu_enable_server = 0
+@@ -7,14 +7,15 @@ siftgpu_enable_server = 0
  siftgpu_enable_opencl = 0
  #------------------------------------------------------------------------------------------------
  # enable CUDA-based SiftGPU?
 -simple_find_cuda = $(shell locate libcudart.so)
-+simple_find_cuda = $(shell locate /opt/cuda/lib64/libcudart.so)
- ifneq ($(simple_find_cuda), )
+-ifneq ($(simple_find_cuda), )
 - 	siftgpu_enable_cuda = 0
++simple_find_cuda = $(wildcard /opt/cuda/lib/libcudart.so)
++ifneq ($(simple_find_cuda),)
 + 	siftgpu_enable_cuda = 1
  else
  	siftgpu_enable_cuda = 0
  endif
++$(info "enable_cuda=$(siftgpu_enable_cuda)")
  
 -CUDA_INSTALL_PATH = /usr/local/cuda
 +CUDA_INSTALL_PATH = /opt/cuda
  #change  additional  settings, like SM version here if it is not 1.0 (eg. -arch sm_13 for GTX280)
  #siftgpu_cuda_options = -Xopencc -OPT:unroll_size=200000
  #siftgpu_cuda_options = -arch sm_10
+@@ -119,7 +120,7 @@ ifneq ($(siftgpu_enable_cuda), 0)
+ 	endif
+ 
+ 	CFLAGS += -DCUDA_SIFTGPU_ENABLED -I$(CUDA_INC_PATH) -L$(CUDA_LIB_PATH)
+-	LIBS_SIFTGPU += -lcudart
++	LIBS_SIFTGPU += $(CUDA_INSTALL_PATH)/lib/libcudart_static.a -ldl -lrt
+ 	_OBJ_SIFTGPU += CuTexImage.o PyramidCU.o SiftMatchCU.o
+ 	_HEADER_SIFTGPU += CuTexImage.h ProgramCU.h PyramidCU.h
+ endif
