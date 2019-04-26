@@ -3,3 +3,4 @@ src/
 gitsrc/
 *.tar.xz
 *.log
+qt5-mqtt/
