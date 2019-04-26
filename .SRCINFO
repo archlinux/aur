@@ -1,20 +1,19 @@
 pkgbase = coffee-git
 	pkgdesc = Keep up with current news and weather with Coffee
-	pkgver = 1.1.0.r0.g5b43105
+	pkgver = 1.1.0.r13.gf765072
 	pkgrel = 1
 	url = https://nick92.github.io/coffee/
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = meson
 	makedepends = vala
-	depends = geocode-glib
+	depends = geoclue
 	depends = libgee
 	depends = webkit2gtk
 	provides = coffee
 	conflicts = coffee
-	source = git+https://github.com/nick92/coffee.git
+	source = coffee::git+https://github.com/nick92/coffee.git
 	sha256sums = SKIP
 
 pkgname = coffee-git

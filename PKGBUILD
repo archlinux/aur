@@ -2,32 +2,29 @@
 # Contributor:
 
 pkgname=coffee-git
-pkgver=1.1.0.r0.g5b43105
+pkgver=1.1.0.r13.gf765072
 pkgrel=1
 pkgdesc="Keep up with current news and weather with Coffee"
-arch=('i686' 'x86_64')
-url="https://nick92.github.io/coffee/"
+arch=('x86_64')
+url='https://nick92.github.io/coffee/'
 license=('GPL3')
-depends=('geocode-glib' 'libgee' 'webkit2gtk')
+depends=('geoclue' 'libgee' 'webkit2gtk')
 makedepends=('git' 'meson' 'vala')
 provides=('coffee')
 conflicts=('coffee')
-source=('git+https://github.com/nick92/coffee.git')
+source=('coffee::git+https://github.com/nick92/coffee.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd coffee
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    cd coffee
+    git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd coffee
-  rm -rf _build
-  meson _build --prefix=/usr
-  ninja -C _build
+    arch-meson coffee build
+    ninja -C build
 }
 
 package() {
-  cd coffee
-  env DESTDIR="$pkgdir" ninja -C _build install
+    DESTDIR="$pkgdir" ninja -C build install
 }
