@@ -1,7 +1,7 @@
 pkgbase = poppler-lcd
 	pkgver = 0.76.0
 	pkgrel = 1
-	url = https://poppler.freedesktop.org/
+	url = https://github.com/jonathanffon/poppler-lcd-patch
 	arch = x86_64
 	license = GPL
 	makedepends = libjpeg

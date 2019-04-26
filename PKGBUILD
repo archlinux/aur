@@ -10,7 +10,7 @@ makedepends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'gtk3' 'pkgco
              'gobject-introspection' 'icu' 'qt5-base' 'git' 'nss' 'gtk-doc' 'curl' 'poppler-data'
              'cmake' 'python') 
 options=('!emptydirs')
-url="https://poppler.freedesktop.org/"
+url="https://github.com/jonathanffon/poppler-lcd-patch"
 source=(https://poppler.freedesktop.org/poppler-${pkgver}.tar.xz
         git+https://github.com/jonathanffon/poppler-lcd-patch.git)
 sha256sums=('370f5fcfe2bbf0c76fc394d338cd72ed7f2044b67f4eb4b115eb074ccfc70d63'
