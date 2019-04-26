@@ -4,14 +4,14 @@
 # Contributor: Bruno Pagani <archange at archlinux dot org>
 
 pkgname=mattermost
-pkgver=5.8.0
+pkgver=5.10.0
 pkgrel=1
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://mattermost.com'
 license=('AGPL' 'Apache')
 
-makedepends=('git' 'go-pie' 'libpng' 'npm' 'python2')
+makedepends=('git' 'go-pie' 'libpng' 'npm' 'python2' 'curl' 'wget')
 # Experiencing issues with gifsicle and mozjpeg on non x64 architectures.
 if [ "$CARCH" != 'x86_64' ]; then
     makedepends+=('gifsicle' 'mozjpeg')
@@ -30,8 +30,8 @@ source=(
     "${pkgname}.sysusers"
     "${pkgname}.tmpfiles"
 )
-sha512sums=('1dd576556053820b00b53409a27aa058b5eb315f9f1bed3f419489339dab9a36559dda24da0e63423eeab5b2c36ad91c1e2c6679339d7cc9ea6eff7e7e0b0a3d'
-            '4583883d386fb5661fca57316fbac85e43e1882d4cb6603faa13be2e94ce90aa666e8b79049d2d330a9127d491cbe9362fd147ce04ffb0c1632d967ae39dd021'
+sha512sums=('24594d4074dc5bc996338b47827d45cdc00e10f92c187ef3e8b3bf3d0f51f687427879f962e1b54b4af98f0599df93a3076a6ba35ac03f7c271dac0600596302'
+            '3a324381b882b55712ad0a103b29e51dbc7b50b81d0f83447724320302a23cdc8dd7c1e2776f35b9b465dd4779deef1a6d9a61a228d38f48ad9bf4c7e096e419'
             'ac952eae873aa09ba7bdf1e7abc618f0dc6982fa85df298261ab71ccf71f66c95846dade400e05d731f2c5ee2c6f4332d6f78d737026c9f098f1e03f419bee00'
             'cd02b3da86869117554c3c53a657a4b46989ea533b7b47c24fb642ffbd182ce6ecfb16a8ddde3af4d5e8cff0ab41a932753129662e126994e1ad5912545e6eb4'
             'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
@@ -74,6 +74,7 @@ prepare() {
 
     # The configuration isn't available at this time yet, modify the default.
     sed -r -i build/release.mk \
+        -e  's!config/config.json!config/default.json!' \
         -e 's/\$\(DIST_PATH\)\/config\/config.json/\$\(DIST_PATH\)\/config\/default.json/'
 
     # The Go programming language only supports 8 instruction sets, therefore
@@ -115,7 +116,7 @@ prepare() {
         gifsicleSystem="$(which gifsicle)"
         gifsicleSystem="${gifsicleSystem//\//\\/}"
         sed -r -i Makefile \
-            -e "s/(\t*)npm install(.*)/\0\n\1rm \"$gifsicleNpm\"\n\tln -s \"$gifsicleSystem\" \"$gifsicleNpm\"/"
+            -e "s/(\t*)npm install(.*)/\0\n\trm \"$gifsicleNpm\"\n\tln -s \"$gifsicleSystem\" \"$gifsicleNpm\"/"
     fi
 }
 
