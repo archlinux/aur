@@ -18,7 +18,7 @@ license=('GPL')
 depends=('libxml2' 'sqlite')
 optdepends=('file-roller')
 makedepends=('intltool' 'yelp-tools' 'gobject-introspection' 'vala' 'meson' 'ninja')
-source=("https://github.com/FontManager/master/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz")
+source=("https://github.com/FontManager/master/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
 sha256sums=('9795212bdbf765e48662b2e8cb20bd232384c96f15a4c21dbc37643b2319cb30')
 
 build() {
@@ -31,5 +31,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  DESTDIR="${pkgdir}" ninja -C build_dir install
+  DESTDIR="$pkgdir" ninja -C build_dir install
 }
