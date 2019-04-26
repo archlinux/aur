@@ -1,6 +1,6 @@
 pkgbase = pandoc-crossref-bin
 	pkgdesc = Pandoc Cross References - executable only, without 750MB Haskell depends/makedepends
-	pkgver = 0.3.4.0c
+	pkgver = 0.3.4.1
 	pkgrel = 1
 	url = https://hackage.haskell.org/package/pandoc-crossref
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = pandoc-crossref-bin
 	conflicts = pandoc-crossref
 	replaces = pandoc-crossref-static
 	replaces = pandoc-crossref-lite
-	source = pandoc-crossref-0.3.4.0c-ghc86.tar.gz::https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.4.0c/linux-pandoc_2_6.tar.gz
-	sha256sums = fb7fb47f6892b02150f3e4bf1610d3ea1e02ce23562b374e3617139ce5758ace
+	source = pandoc-crossref-0.3.4.1.tar.gz::https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.4.1/linux-pandoc_2_7_2.tar.gz
+	sha256sums = 6424c97656b4f9bd888cc8778fd64731f254a570632e2609a157ef21d212d4fe
 
 pkgname = pandoc-crossref-bin
 
