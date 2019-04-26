@@ -1,18 +1,18 @@
 # Maintainer: David Birks <david@tellus.space>
 
-pkgname=docker-app
-pkgver=0.6.0
+pkgname=docker-app-bin
+pkgver=0.8.0_beta2
 pkgrel=1
 pkgdesc="A utility to help make Compose files more reusable and sharable"
-arch=(x86_64)
+arch=('x86_64')
 url="https://github.com/docker/app"
-license=(Apache)
+license=('Apache')
+conflicts=('docker-app')
 depends=('docker')
-optdepends=()
-source=(https://github.com/docker/app/releases/download/v$pkgver/$pkgname-linux.tar.gz)
-sha512sums=('75fe1d8c3df0a909c77a7985f05ea92876289a790fc781fcb535e97a463b5c9e0eb8c31c93c1508e98ae0296cd38a96e1f5a6ac52de45fd2e235423de44a0f2c')
+source=("docker-app-bin-${pkgver//_/-}::https://github.com/docker/app/releases/download/v${pkgver//_/-}/docker-app-linux.tar.gz")
+sha512sums=('9478e0c5529a37cd3ef43e49c0843a2c1d6de24e5e82c063a03fee3556d5141fd958465cd9e645e2ae00e7b43de954fd7b2e787c08e93283817bae612abfe2bc')
 
 package() {
   cd $srcdir
-  install -Dm755 "$pkgname-linux" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 755 "docker-app-bin-${pkgver//_/-}" "$pkgdir/usr/bin/docker-app"
 }
