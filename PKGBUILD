@@ -1,8 +1,8 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 
 pkgname=libpdfium-nojs
-pkgver=3626.r0.5a88d16b87
-pkgrel=4
+pkgver=3729.r2.67bce04caa
+pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
 url="https://pdfium.googlesource.com/pdfium/"
@@ -16,14 +16,12 @@ source=("git+https://pdfium.googlesource.com/pdfium"
 	"git+https://chromium.googlesource.com/chromium/src/build.git"
 	"git+https://chromium.googlesource.com/chromium/buildtools.git"
 	"libpdfium.pc"
-	"openjpeg.patch"
 	)
 
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         '7fbbe2baf9a1fed80ad74278e901fa0e'
-         '30fb763082245a1368aa6c68d61660ab')
+         '7fbbe2baf9a1fed80ad74278e901fa0e')
 
 pkgver() {
 
@@ -71,22 +69,10 @@ prepare() {
   curl https://chromium.googlesource.com/chromium/src/+/master/tools/generate_shim_headers/generate_shim_headers.py?format=TEXT \
     | base64 --decode > "$srcdir/pdfium/tools/generate_shim_headers/generate_shim_headers.py"
   echo "Done."
-
-  # Unbundle openjpeg
-  cd "$srcdir"
-  patch -p2 < "$srcdir/openjpeg.patch"
-  
-  # Unbundle zlib in image_diff target (we don't even build this, but gn will complain)
-  cd "$srcdir/pdfium/testing/image_diff"
-  sed -i 's\//third_party/zlib\../../third_party:zlib\g' BUILD.gn
   
   # Patch BUILD.gn to build a shared library
   cd "$srcdir/pdfium"
   sed -i 's/jumbo_static_library("pdfium")/shared_library("pdfium")/g' BUILD.gn
-
-  # 'source_set' builds faster and is more reliable for shared libraries
-  sed -i 's/static_library/source_set/g' BUILD.gn
-  sed -i 's/static_library/source_set/g' third_party/BUILD.gn
 
   # Patch pdfium headers to enable symbol export
   sed -i 's/\#define FPDF_EXPORT/\#define FPDF_EXPORT __attribute__ ((visibility ("default")))/g'\
@@ -115,8 +101,9 @@ build() {
       'use_system_lcms2=true'
       'use_system_libpng=true'
       'use_custom_libcxx=false'
-      'use_gio=false'
       'pdf_is_standalone = true'
+      'use_jumbo_build = true'
+      'use_system_libopenjpeg2 = true'
   )
   gn gen out/Release --script-executable=/usr/bin/python2 --args="${_flags[*]}"
   ninja -C out/Release pdfium
