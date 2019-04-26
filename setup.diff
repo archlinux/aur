@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index 833534d..b92766e 100644
+--- a/setup.py
++++ b/setup.py
+@@ -301,7 +301,7 @@ else:
+ arch = 'x64' if is_64bit else 'arm' if is_arm else 'ia32'
+ mode = 'debug' if DEBUG else 'release'
+ 
+-libraries += ['v8_base.' + arch, 'v8_snapshot' if V8_SNAPSHOT_ENABLED else ('v8_nosnapshot.' + arch)]
++libraries += ['v8_libbase']
+ 
+ if is_winnt:
+     library_path = icu_path = "%s/build/%s/lib/" % (V8_HOME, mode)

@@ -1,0 +1,18 @@
+pkgbase = python2-v8
+	pkgdesc = A Libemu Cython wrapper
+	pkgver = 19632
+	pkgrel = 2
+	url = https://github.com/buffer/pyv8.git
+	arch = x86_64
+	license = GPL2
+	makedepends = python2
+	makedepends = python-setuptools
+	depends = python2
+	depends = boost-libs
+	source = git+https://github.com/buffer/pyv8.git#commit=b5b0407
+	source = setup.diff
+	sha256sums = SKIP
+	sha256sums = 2eff2eeb95d14885e2309409d4e1150c93612a135445a486876d72cb1e91ee61
+
+pkgname = python2-v8
+
