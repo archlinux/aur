@@ -1,13 +1,13 @@
 # Maintainer: Taran Lynn <taranlynn0gmail.com>
 pkgname=swaybg-git
 _pkgname=swaybg
-pkgver=r91.34e4a47
+pkgver=r92.ec9fb9a
 pkgrel=1
 license=("MIT")
 pkgdesc="Wallpaper tool for Wayland compositors"
 makedepends=("meson" "git" "scdoc" "wayland-protocols")
 depends=(
-    "wayland" "libxkbcommon" "cairo"
+    "wayland" "cairo"
 )
 optdepends=(
     "gdk-pixbuf2: For background images other than PNG"

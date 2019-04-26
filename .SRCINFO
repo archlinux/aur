@@ -1,6 +1,6 @@
 pkgbase = swaybg-git
 	pkgdesc = Wallpaper tool for Wayland compositors
-	pkgver = r91.34e4a47
+	pkgver = r92.ec9fb9a
 	pkgrel = 1
 	url = https://swaywm.org
 	arch = i686
@@ -11,7 +11,6 @@ pkgbase = swaybg-git
 	makedepends = scdoc
 	makedepends = wayland-protocols
 	depends = wayland
-	depends = libxkbcommon
 	depends = cairo
 	optdepends = gdk-pixbuf2: For background images other than PNG
 	provides = swaybg
