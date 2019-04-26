@@ -47,7 +47,7 @@ onlinebestmatch() {
     echo "$fullname"
   else
     local json="$(npm view --json "$package@$semverspec")"
-    if [ $(echo "$json" | jq -r '.version?//"INVALID"') = "INVALID" ]; then
+    if [ $(echo "$json" | jq -r '.version? // "INVALID"') = "INVALID" ]; then
       json=$(echo "$json" | jq '.[0]')
     fi
     local version="$(echo "$json" | jq -r '.version' | head -n1)"
@@ -112,7 +112,6 @@ downloaddeps() {
     local target="$(onlinebestmatch "$package" "$semverspec")"
     recursivedownloaddeps "$target"
   done
-  recursivedownloaddeps "babel-core-6.26.0.tgz"
 }
 
 createlist() {
