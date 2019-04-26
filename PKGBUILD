@@ -7,7 +7,7 @@
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
 pkgver=4.1.3
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ url="http://ffmpeg.org/"
 license=('GPL3')
 depends=("$_pkgbasename"
       'lib32-alsa-lib'
-#      'lib32-aom'
+      'lib32-aom'
       'lib32-bzip2'
       'lib32-fontconfig'
       'lib32-fribidi'
@@ -95,8 +95,10 @@ build() {
     --enable-gnutls \
     --enable-gpl \
     --enable-ladspa \
+    --enable-libaom \
     --enable-libass \
     --enable-libbluray \
+    --enable-libdrm \
     --enable-libfreetype \
     --enable-libfribidi \
     --enable-libgsm \
@@ -126,12 +128,8 @@ build() {
     --enable-shared \
     --enable-version3
 
-#    --enable-libdrm \ ## We would like to use it, but it seems to be broken for now. There is a problem with a va function.
-
-
-#    --enable-libsoxr \
-#    --enable-libaom \ ## Not available under 32bit
-#    --enable-libssh \  ## not available under 32bit
+#    --enable-libsoxr \ ## not available under 32bit
+#    --enable-libssh \ ## not available under 32bit
 #    --enable-libvidstab \ ## not available under 32bit
 
   make
@@ -143,5 +141,3 @@ package() {
   make DESTDIR="${pkgdir}" install
   rm -rf "$pkgdir"/usr/{include,share,bin}
 }
-
-# vim:set ts=2 sw=2 et:
