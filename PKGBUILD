@@ -18,17 +18,11 @@ package()
     cd $pkgname-$pkgver
     mkdir -p $pkgdir/opt/${pkgname}
     mkdir -p $pkgdir/usr/bin
-    #mkdir -m 1777 -p $pkgdir/var/log/drill
-    
+
     cp -r -t $pkgdir/opt/${pkgname}/ bin/ conf/ jars/ sample-data/ KEYS LICENSE NOTICE README.md
     rm -f $pkgdir/opt/${pkgname}/bin/sqlline.bat
     chmod o+r $pkgdir/opt/${pkgname}/conf/*
-    
+
     cp $srcdir/drill-sqlline.sh $pkgdir/usr/bin/drill-sqlline
     chmod 755 $pkgdir/usr/bin/drill-sqlline
-    
-    #ln -s /opt/${pkgname}/bin/drill-embedded $pkgdir/usr/bin/drill-embedded
-    #ln -s /opt/${pkgname}/bin/drill-localhost $pkgdir/usr/bin/drill-localhost
-    #ln -s /opt/${pkgname}/bin/drillbit.sh $pkgdir/usr/bin/drillbit
-    #ln -s /opt/${pkgname}/bin/sqlline $pkgdir/usr/bin/sqlline
 }
