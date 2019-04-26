@@ -10,7 +10,7 @@ pkgname=oracle-${_pkgname}
 pkgver=18.3.0.0.0
 pkgrel=1
 pkgdesc="Light replacement for the Oracle client (files to run OCI, OCCI and JDBC-OCI programs)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.oracle.com/technetwork/database/features/instant-client/"
 license=('custom:OTN')
 depends=('gcc-libs' 'libaio')
@@ -21,25 +21,15 @@ options=(!strip)
 DLAGENTS+=('manual::/usr/bin/false');
 
 # These are the only files we want to include in the source package
-source=(LICENSE oracle.sh)
+source=(LICENSE
+        oracle.sh
+        "manual://${_pkgname}-linux.x64-${pkgver}dbru.zip")
 md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
-         '784005aa31cb56bb2303179d98fccd8e')
+         '784005aa31cb56bb2303179d98fccd8e'
+         '8c888729c2d65019498a35395c0595b9')
 sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
-            '36b5ab97950f1667403dd9b59c3cad25d8f9e457702feaece835d1bff7c971c9')
-
-# Add the main file, depending on which architecture we're building for
-case "$CARCH" in
-	i686)
-		source[2]="manual://${_pkgname}-linux-${pkgver}dbru.zip"
-		md5sums[2]='bb339d8385202356a33c100f46fa3214'
-		sha256sums[2]='81232ff25843dca58778f7ab9e6b842292dc5ef88db2c51a5eb5ef841c1cefbd'
-		;;
-	x86_64)
-		source[2]="manual://${_pkgname}-linux.x64-${pkgver}dbru.zip"
-		md5sums[2]='8c888729c2d65019498a35395c0595b9'
-		sha256sums[2]='093e660cdaba970a0d6c9951ea435aa1abe71898aaea7ff5ffee4d15b6642f87'
-		;;
-esac
+            '36b5ab97950f1667403dd9b59c3cad25d8f9e457702feaece835d1bff7c971c9'
+            '093e660cdaba970a0d6c9951ea435aa1abe71898aaea7ff5ffee4d15b6642f87')
 
 msg "Warning: This software cannot be downloaded automatically."
 plain "You will need to sign up for an Oracle account and download the software from"
@@ -48,8 +38,7 @@ plain "PKGBUILD and re-run makepkg."
 plain ""
 plain "The source .zip files can be downloaded from:"
 plain ""
-plain "i686   - http://www.oracle.com/technetwork/topics/linuxsoft-082809.html"
-plain "x86_64 - http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html"
+plain "  http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html"
 plain ""
 plain "Alternatively, unofficial prebuilt Arch packages are available by adding the"
 plain "following lines to /etc/pacman.conf, if you agree to the Oracle licence[1]:"
