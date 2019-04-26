@@ -3,7 +3,7 @@
 pkgname=xandikos-git
 pkgver=0.0.11.r22.g7ae6ecd
 pkgrel=1
-pkgdesc='Lightweight yet complete CardDAV/CalDAV server that backs onto a Git repository (Git version)'
+pkgdesc='Lightweight yet complete CardDAV/CalDAV server that backs onto a Git repository'
 arch=('any')
 url=https://www.xandikos.org/
 license=('GPL3')
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd xandikos
-  git describe --long --tags --match v\* | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --match v\* | sed 's/v//;s/-/.r/;s/-/./'
 }
 
 build() {

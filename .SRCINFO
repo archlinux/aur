@@ -1,5 +1,5 @@
 pkgbase = xandikos-git
-	pkgdesc = Lightweight yet complete CardDAV/CalDAV server that backs onto a Git repository (Git version)
+	pkgdesc = Lightweight yet complete CardDAV/CalDAV server that backs onto a Git repository
 	pkgver = 0.0.11.r22.g7ae6ecd
 	pkgrel = 1
 	url = https://www.xandikos.org/
