@@ -19,6 +19,7 @@ prepare() {
 }
 
 build() {
+  export GOPATH="$srcdir/.gopath"
   cd "$GOPATH/src/github.com/scaleway/$pkgname"
   go build \
     -buildmode=pie \
@@ -29,6 +30,7 @@ build() {
 }
 
 check() {
+  export GOPATH="$srcdir/.gopath"
   cd "$GOPATH/src/github.com/scaleway/$pkgname"
   go test -ldflags \
     "-X github.com/scaleway/scaleway-cli/pkg/scwversion.GITCOMMIT=nogit" \
