@@ -1,4 +1,5 @@
-# Maintainer:  VirtualTam <virtualtam@flibidi.net>
+# Maintainer: Milk Brewster (milk/milkii on Freenode)
+# Contributor:  VirtualTam <virtualtam@flibidi.net>
 pkgname=openav-luppp-git
 pkgver=1.1.1.r15.gbe14f40
 pkgrel=1
@@ -7,9 +8,10 @@ arch=('i686' 'x86_64')
 url="http://openavproductions.com/luppp/"
 license=('GPL3')
 groups=('openav')
-depends=('jack2' 'liblo' 'ntk-git')
+depends=('jack' 'liblo' 'ntk-git')
 makedepends=('cmake' 'git')
-provides=('openav-luppp')
+provides=('openav-luppp-git' 'luppp')
+conflicts=('openav-luppp-git' 'luppp')
 _gitname="openAV-Luppp"
 source=(git://github.com/harryhaaren/${_gitname}.git)
 sha256sums=(SKIP)
