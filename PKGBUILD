@@ -1,6 +1,6 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=radian
-pkgver=0.3.2
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A 21 century R console"
 url="https://github.com/randy3k/radian"
@@ -11,14 +11,14 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-pyte' 'python-pexpect' 'python-ptyprocess')
 replaces=('rtichoke')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/randy3k/radian/archive/v$pkgver.tar.gz")
-sha256sums=('2e3daf8a9fe579995a69c1bdaec5c6a0ffccc3372e15376b4a4a811e2b4b814e')
+sha256sums=('dc7c8b58d7d5b0a553d3a24ff46912d2e3748b5fbe8a435569b3c8a9cb2ee729')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py build
 }
 
-check_disabled() { # ImportError: '_true' from 'prompt_toolkit.shortcuts.prompt'
+check() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py test
 }
