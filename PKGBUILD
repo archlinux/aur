@@ -2,23 +2,25 @@
 # Contributor:
 
 pkgname=photoflare-git
-pkgver=1.5.6.1.r4.gc352ba5
+pkgver=1.5.9.r709.g0f815c4
 pkgrel=1
 pkgdesc="Quick, simple but powerful Cross Platform image editor."
 arch=('x86_64')
 url="http://photoflare.io/"
 license=('GPL3')
 depends=('desktop-file-utils' 'graphicsmagick' 'hicolor-icon-theme' 'qt5-base')
+optdepends=('qt5-imageformats: support for tiff, webp, and more image formats')
 makedepends=('git' 'qt5-tools')
 conflicts=("${pkgname%-*}")
 provides=("${pkgname%-*}")
 replaces=('photofiltrelx')
-source=("git+https://github.com/PhotoFlare/photoflare.git")
+source=("${pkgname%-*}::git+https://github.com/PhotoFlare/photoflare.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-*}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  #git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  echo $(cat ./versions/dev.json).r$(git rev-list --count HEAD).g$(git describe --always)
 }
 
 build() {
