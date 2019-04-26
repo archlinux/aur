@@ -1,0 +1,17 @@
+post_install() {
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  update-desktop-database -q
+  echo "To use, per user:"
+  echo "	mkdir ~/.config/android-x86 &&"
+  echo "		cp /usr/share/android-x86/config ~/.config/android-x86"
+  echo "And then edit the config file to taste."
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
+
