@@ -11,7 +11,9 @@ clear: ## Clear files
 	rm -rf ./src
 	rm -f ./*.deb
 	rm -f ./shadow-beta-*.pkg.tar
+	rm -f ./shadow-beta-*.pkg.tar.xz
 	rm -f ./*~
+	rm -f shadow-beta.zip
 
 install:build ## Install package with pacman
 	sudo pacman -U shadow-beta-*.pkg.tar
