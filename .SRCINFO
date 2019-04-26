@@ -1,4 +1,4 @@
-pkgbase = macbook-lighter-git
+pkgbase = macbook-lighter
 	pkgdesc = Macbook screen/keyboard backlight CLI and auto-adjust on ambient light
 	pkgver = v0.0.2.1.g4441c81
 	pkgrel = 1
@@ -16,5 +16,5 @@ pkgbase = macbook-lighter-git
 	source = git+https://github.com/harttle/macbook-lighter.git
 	md5sums = SKIP
 
-pkgname = macbook-lighter-git
+pkgname = macbook-lighter
 
