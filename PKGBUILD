@@ -11,7 +11,7 @@ url='http://treetop.rubyforge.org/'
 license=('MIT')
 depends=('ruby-polyglot')
 options=('!emptydirs')
-source=("http://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem")
+source=("https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem")
 noextract=("${pkgname#*-}-$pkgver.gem")
 sha256sums=('67df9f52c5fdeb7b2b8ce42156f9d019c1c4eb643481a68149ff6c0b65bc613c')
 
