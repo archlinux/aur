@@ -1,0 +1,18 @@
+pkgbase = cargo-update-git
+	pkgdesc = A cargo subcommand for checking and applying updates to installed executables
+	pkgver = v1.7.0.r5.8d758b004
+	pkgrel = 1
+	url = https://github.com/nabijaczleweli/cargo-update
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = libgit2
+	makedepends = libssh2
+	makedepends = openssl
+	provides = cargo-update
+	source = cargo-update-git::git+https://github.com/nabijaczleweli/cargo-update
+	md5sums = SKIP
+
+pkgname = cargo-update-git
+
