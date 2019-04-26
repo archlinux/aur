@@ -1,7 +1,7 @@
 pkgbase = discord
 	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
 	pkgver = 0.0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://discordapp.com/
 	arch = x86_64
 	license = custom
@@ -13,7 +13,7 @@ pkgbase = discord
 	depends = alsa-lib
 	depends = nspr
 	depends = nss
-	depends = libc++
+	depends = xdg-utils
 	optdepends = libpulse: For pulseaudio support
 	optdepends = noto-fonts-emoji: Google font for emoji support.
 	optdepends = ttf-symbola: Font for emoji support.
