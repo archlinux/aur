@@ -18,6 +18,7 @@ pkgbase = openturns
 	depends = nlopt
 	depends = cminpack
 	depends = ceres-solver
+	depends = optpp
 	backup = etc/openturns/openturns.conf
 	source = https://github.com/openturns/openturns/archive/v1.13rc1.tar.gz
 	sha256sums = ce643c8037d3324866868cfcedff1e192e3a42d056d96648c1ef932bba065ce0
