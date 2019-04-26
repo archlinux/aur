@@ -6,7 +6,7 @@
 
 _pkgname=instantclient-tools
 pkgname=oracle-${_pkgname}
-pkgver=18.3.0.0.0
+pkgver=18.5.0.0.0
 pkgrel=1
 pkgdesc="Data Pump, SQL*Loader and Workload Replay Client for Oracle Instant Client"
 arch=('x86_64')
@@ -23,9 +23,9 @@ DLAGENTS+=('manual::/usr/bin/false');
 source=(LICENSE
         "manual://${_pkgname}-linux.x64-${pkgver}dbru.zip")
 md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
-         'd7ef79307e34a7f835a67ee1e0bf828d')
+         '86f11ba5e5baa627ba183b1d0604236f')
 sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
-            '9fa19fd3b41d73e4220950418c38efdb1d362c95953ead442ec564be9abef9f3')
+            'f82a1e592c0e9a7ac0c0d2befa9c1cdc50190338ba55f7d574ffcc19fb3de212')
 
 msg "Warning: This software cannot be downloaded automatically."
 plain "You will need to sign up for an Oracle account and download the software from"
@@ -49,7 +49,7 @@ plain "[1]: http://www.oracle.com/technetwork/licenses/instant-client-lic-152016
 plain ""
 
 package() {
-	cd "$srcdir/instantclient_18_3/"
+	cd "$srcdir/instantclient_18_5/"
 	install -d "$pkgdir/usr/bin"
 	install -d "$pkgdir/usr/lib"
 	install -d "$pkgdir/usr/share/doc/oracle"
