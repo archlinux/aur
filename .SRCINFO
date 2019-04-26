@@ -1,6 +1,6 @@
 pkgbase = pacman-contrib-git
-	pkgdesc = pacman contributions (Git version)
-	pkgver = 1.1.0.r10.g0c260d3
+	pkgdesc = pacman contributions
+	pkgver = 1.1.0.r24.g4e2273e
 	pkgrel = 1
 	url = https://git.archlinux.org/pacman-contrib.git
 	arch = x86_64

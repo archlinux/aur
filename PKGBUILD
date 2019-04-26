@@ -3,9 +3,9 @@
 
 _gitname=pacman-contrib
 pkgname=pacman-contrib-git
-pkgver=1.1.0.r10.g0c260d3
+pkgver=1.1.0.r24.g4e2273e
 pkgrel=1
-pkgdesc='pacman contributions (Git version)'
+pkgdesc='pacman contributions'
 url=https://git.archlinux.org/pacman-contrib.git
 arch=('x86_64')
 license=('GPL')
@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  git describe --long --tags | sed -r 's/^v//; s/([^-]*-g)/r\1/; s/-/./g'
+  git describe --long --tags | sed -r 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
