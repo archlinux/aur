@@ -15,5 +15,11 @@ sha512sums=('9478e0c5529a37cd3ef43e49c0843a2c1d6de24e5e82c063a03fee3556d5141fd95
 
 package() {
   cd $srcdir
-  install -Dm 755 "docker-app-bin-${pkgver//_/-}" "$pkgdir/usr/bin/docker-app"
+  install -Dm 755 "docker-app-standalone-linux" "$pkgdir/usr/bin/docker-app"
+
+  # Add command completion
+  install -dm 755 "$pkgdir/usr/share/bash-completion/completions"
+  install -dm 755 "$pkgdir/usr/share/zsh/site-functions"
+  "$pkgdir/usr/bin/docker-app" completion bash > "$pkgdir/usr/share/bash-completion/completions/docker-app"
+  "$pkgdir/usr/bin/docker-app" completion zsh >  "$pkgdir/usr/share/zsh/site-functions/_docker-app"
 }
