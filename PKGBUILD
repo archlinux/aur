@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=labplot-git
-pkgver=2.5.0.693.g4feea557
+pkgver=2.6.0.r8.g136b252d
 pkgrel=1
 arch=('x86_64')
 pkgdesc="KDE Application for interactive graphing and analysis of scientific data, build from git"
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --always | tr - .
+  git describe --always | sed 's+-+.r+' | tr - .
 }
 
 build() {

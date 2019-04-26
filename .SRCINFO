@@ -1,6 +1,6 @@
 pkgbase = labplot-git
 	pkgdesc = KDE Application for interactive graphing and analysis of scientific data, build from git
-	pkgver = 2.5.0.693.g4feea557
+	pkgver = 2.6.0.r8.g136b252d
 	pkgrel = 1
 	url = https://labplot.kde.org/
 	arch = x86_64
