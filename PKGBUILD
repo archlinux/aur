@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Kotta <jpkotta AT gmail DOT com>
 
 pkgname=commit-patch
-pkgver=2.5.2
+pkgver=2.6
 pkgrel=1
 pkgdesc="Commit partial patches to version control"
 arch=('any')
@@ -12,14 +12,10 @@ optdepends=('git' 'mercurial' 'subversion' 'cvs' 'darcs' 'bzr' 'monotone')
 conflicts=()
 provides=()
 source=(http://www.porkrind.org/commit-patch/commit-patch-${pkgver}.tar.gz)
-md5sums=('cedddd82eb0b6f0f1639d6b503f8e31c')
-
-prepare() {
-  sed -i s%PREFIX=.*%PREFIX="$pkgdir"/usr% "$srcdir"/commit-patch-${pkgver}/Makefile
-}
+md5sums=('c5d8f9dc93676716445f3217a7ed25ee')
 
 package() {
   cd "$srcdir"/commit-patch-${pkgver}
-  
-  make install
+
+  make PREFIX="$pkgdir"/usr install
 }
