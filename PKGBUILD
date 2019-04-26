@@ -2,15 +2,15 @@
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}-bin"
-pkgver=1.6.5
-_pkgver="${pkgver}-linux6"
+pkgver=1.6.6
+_pkgver="${pkgver}-linux2"
 gitname="release-${_pkgver}"
 pkgrel=1
 pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
 url="https://desktop.github.com"
 license=('MIT')
-depends=('gnome-keyring' 'git' 'curl' 'libxss' 'gconf')
+depends=('gnome-keyring' 'libsecret' 'git' 'curl' 'libxss' 'gconf')
 optdepends=('hub: CLI interface for GitHub.')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
@@ -19,7 +19,7 @@ source=(
     ${_pkgname}.desktop
 )
 sha256sums=(
-    d5c94909309fb40fac5e3f71e18f49df6942af6ddfa85e0204f915bddc604f91
+    3e359658578e1b6f385de20f62d1139bd27447db58b380d721a1c33b4e3f671e
     2758e15659f5770ae2ac948250372135029e7ac2d4b6bf431a112dfdbcc681d1
 )
 package() {
