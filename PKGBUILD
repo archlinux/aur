@@ -69,7 +69,7 @@ install -Dm644 /dev/stdin "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
     MAKEFLAGS="-j1" make DESTDIR="${pkgdir}" install
     #install -D -m644 "${srcdir}/${_userDir}/util/templates/gpib.conf" \
     # "${pkgdir}/usr/etc/gpib.conf"
-    #rm "${pkgdir}/usr/etc/gpib.conf"
+    mv "${pkgdir}/usr/etc/gpib.conf" "${pkgdir}/usr/etc/gpib.conf.svn"
 
     mkdir -p "${pkgdir}/etc/udev/rules.d" 
     echo 'KERNEL=="gpib[0-9]*", MODE="0660", GROUP="gpib"' > "${pkgdir}/etc/udev/rules.d/31-gpib.rules"
