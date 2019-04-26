@@ -2,7 +2,7 @@
 # Contributor: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
 
 _npmname=browser-sync
-_npmver=2.26.3
+_npmver=2.26.5
 pkgname="nodejs-${_npmname}"
 pkgver="${_npmver}"
 pkgrel=1
@@ -12,7 +12,7 @@ url="https://www.browsersync.io/"
 license=('Apache')
 depends=('nodejs' 'npm')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-sha1sums=('1b59bd5935938a5b0fa73b3d78ef1050bd2bf912')
+sha1sums=('c11353ffd4694be88a34b9a5d2a5a0ba789587d0')
 noextract=("${_npmname}-${_npmver}.tgz")
 
 package() {
