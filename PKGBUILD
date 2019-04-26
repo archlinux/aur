@@ -1,6 +1,6 @@
 # Maintainer: Matthias De Bie <mattydebie@gmail.com>
 pkgname=bitwarden-rofi-git
-pkgver=0.3.r3.8eda64d
+pkgver=0.4.r0.7c34d3c
 pkgrel=1
 pkgdesc="Wrapper for Bitwarden bitwarden/cli and Rofi"
 arch=('any')

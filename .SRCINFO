@@ -1,6 +1,6 @@
 pkgbase = bitwarden-rofi-git
 	pkgdesc = Wrapper for Bitwarden bitwarden/cli and Rofi
-	pkgver = 0.3.r3.8eda64d
+	pkgver = 0.4.r0.7c34d3c
 	pkgrel = 1
 	url = https://github.com/mattydebie/bitwarden-rofi
 	arch = any
