@@ -1,11 +1,11 @@
 # Maintainer: Omar Roth <omarroth@hotmail.com>
 
 pkgname=urbit
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="An operating function"
 arch=('i686' 'x86_64')
-url="https://urbit.org/"
+url="https://github.com/urbit/urbit"
 license=('MIT')
 depends=('libsigsegv' 'gmp' 'openssl' 'ncurses' 'curl' 'libuv' 'python')
 makedepends=('gcc' 'automake' 'autoconf' 'ragel' 'cmake' 're2c' 'libtool' 'meson' 'ninja')
