@@ -1,0 +1,15 @@
+pkgbase = apache-drill
+	pkgdesc = Schema-free SQL Query Engine for Hadoop, NoSQL and Cloud Storage
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = https://drill.apache.org
+	arch = any
+	license = Apache
+	depends = java-runtime
+	source = https://www-eu.apache.org/dist/drill/drill-1.15.0/apache-drill-1.15.0.tar.gz
+	source = drill-sqlline.sh
+	sha256sums = 188c1d0df28e50f0265f4bc3c5871b4e7abc9450a4e5a7dbe7f0b23146bec76b
+	sha256sums = cb8fad4535629658654f083c1c323feb4a92b19ed0c4cce2411e23f6910456d3
+
+pkgname = apache-drill
+
