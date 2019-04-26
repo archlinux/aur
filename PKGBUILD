@@ -4,11 +4,11 @@
 
 pkgname=idnkit
 pkgver=2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Provides functionalities about Internationalized Domain Name processing'
 url='https://www.nic.ad.jp/ja/idn/idnkit/download/'
 license=('custom:BSD')
-arch=('x86_64')
+arch=('any')
 depends=('glibc')
 backup=('etc/idnalias.conf' 'etc/idn2.conf')
 options=('!makeflags')
