@@ -9,7 +9,7 @@ pkgbase = python-ovh
 	makedepends = python-sphinx
 	depends = python
 	source = https://github.com/ovh/python-ovh/archive/v0.5.0.tar.gz
-	sha256sums = fe62e7a75d563d9e8e784a8b648bc3fc0ea33bd6b31fddf16687daa277b8dc1391504e3fa7c1a35026a23c3243654e18579269c3904ccb360f56a1921585fc1b
+	sha256sums = 169f7481cfb85f140885abe616f9d626421961e83e82810b53f93ae7b6ece368
 
 pkgname = python-ovh
 
