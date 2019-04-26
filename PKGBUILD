@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-nim-mode-git
-pkgver=0.4.1r68.ga508b4b
+pkgver=0.4.1.r70.gfdd6f7a
 pkgrel=1
 pkgdesc="Emacs mode for the nim programming language - from git"
 arch=('any')
@@ -18,7 +18,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd ${pkgname}
-  git describe --tags --long | sed 's+-+r+'|tr - .|cut -c2-
+  git describe --tags --long | sed 's+-+.r+'|tr - .|cut -c2-
 }
 
 prepare() {
