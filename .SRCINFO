@@ -13,7 +13,6 @@ pkgbase = discord-canary
 	depends = alsa-lib
 	depends = nspr
 	depends = nss
-	depends = libc++
 	depends = xdg-utils
 	depends = libcups
 	optdepends = libpulse: For pulseaudio support
