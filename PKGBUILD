@@ -3,7 +3,7 @@
 pkgname=openav-luppp-git
 pkgver=1.1.1.r15.gbe14f40
 pkgrel=1
-pkgdesc="Luppp is a live performance tool, created by OpenAV productions"
+pkgdesc="Luppp is a live performance tool, created by OpenAV productions (unstable development package)"
 arch=('i686' 'x86_64')
 url="http://openavproductions.com/luppp/"
 license=('GPL3')
