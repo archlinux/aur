@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <jan at cholasta net>
 
 pkgname=nblood
-pkgver=1.0
+pkgver=1.01
 pkgrel=1
 pkgdesc='Blood port based on EDuke32'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ makedepends=('imagemagick')
 makedepends_i686=('nasm')
 source=("https://github.com/nukeykt/NBlood/archive/v${pkgver}.tar.gz"
         'nblood.desktop')
-sha256sums=('c6bbde98ba2512e82a8b0a8f4bbc87f23f43278b6dc7ac2d175d16d94b9bfe1d'
+sha256sums=('02dcbf123d5962f13ed0e33f6b4ea5627b0089e21e5bee5c5f2983c606ff86ee'
             '58807697e95e071a6354f87e8e2fdae9f32af0e08dad1a510a0089845df42184')
 
 prepare() {

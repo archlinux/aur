@@ -1,6 +1,6 @@
 pkgbase = nblood
 	pkgdesc = Blood port based on EDuke32
-	pkgver = 1.0
+	pkgver = 1.01
 	pkgrel = 1
 	url = http://nukeykt.retrohost.net/
 	arch = i686
@@ -17,9 +17,9 @@ pkgbase = nblood
 	depends = sdl2
 	depends = sdl2_mixer
 	depends = timidity++
-	source = https://github.com/nukeykt/NBlood/archive/v1.0.tar.gz
+	source = https://github.com/nukeykt/NBlood/archive/v1.01.tar.gz
 	source = nblood.desktop
-	sha256sums = c6bbde98ba2512e82a8b0a8f4bbc87f23f43278b6dc7ac2d175d16d94b9bfe1d
+	sha256sums = 02dcbf123d5962f13ed0e33f6b4ea5627b0089e21e5bee5c5f2983c606ff86ee
 	sha256sums = 58807697e95e071a6354f87e8e2fdae9f32af0e08dad1a510a0089845df42184
 	makedepends_i686 = nasm
 
