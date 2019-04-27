@@ -1,20 +1,20 @@
 pkgbase = bytecode-viewer
 	pkgdesc = A Java decompiler, editor, debugger, and more
-	pkgver = 2.9.11
+	pkgver = 2.9.18
 	pkgrel = 1
 	url = https://bytecodeviewer.com
 	arch = any
 	license = GPL3
 	depends = java-runtime>=8
-	noextract = Bytecode-Viewer-2.9.11.jar
+	noextract = Bytecode-Viewer-2.9.18.jar
 	source = bytecodeviewer
 	source = bytecodeviewer.png
 	source = bytecodeviewer.desktop
-	source = https://github.com/Konloch/bytecode-viewer/releases/download/2.9.11/Bytecode-Viewer-2.9.11.jar
+	source = https://github.com/Konloch/bytecode-viewer/releases/download/v2.9.18/Bytecode-Viewer-2.9.18.jar
 	sha256sums = 6c40ed470b3fc9aa0ee585ef71d86c8a822877e832d406ea365ce3b279e9f95c
 	sha256sums = 380fbc2d958fc5e0c3f7c05b21de83e3d7e956b00ab476439f893f1d10a61a3e
 	sha256sums = 8db5427005732dfe6d590d31209ee0108d6ebf62f084e4bd67bdd175b7dc47d7
-	sha256sums = 3ff445b8ded26c8870c4cfc1e3c0e4368e19bc6e80567b79d5d34cd42e63db51
+	sha256sums = e6228076c9401d0556b8cb4b3d42e930a8962f578aa6d27f47e5f7703e903dcd
 
 pkgname = bytecode-viewer
 
