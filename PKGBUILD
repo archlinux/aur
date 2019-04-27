@@ -9,22 +9,22 @@
 #                                                                             #
 # API changes between different Kodi versions make it necessary to specify    #
 # the version of Kodi you want to build this package for. You can choose      #
-# between Krypton (17), Leia (18) and git master (99). Do so in the following #
-# line.                                                                       #
+# between Krypton (17), Leia (18), Matrix (19) and git master (99). Do so in  #
+# the following line.                                                         #
 #                                                                             #
 ###############################################################################
 
 API=18
 
 pkgname=kodi-addon-pvr-vdr-vnsi-git
-pkgver=r613.9e4d93a
+pkgver=r614.4909f69
 pkgrel=1
 pkgdesc='VDR VNSI PVR client addon for Kodi'
 arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/kodi-pvr/pvr.vdr.vnsi"
 license=('GPL')
-makedepends=('cmake' 'git' 'kodi-platform-git' 'kodi-dev')
-depends=('kodi')
+makedepends=('cmake' 'git' 'kodi-dev')
+depends=('kodi' 'kodi-platform')
 provides=('kodi-addon-pvr-vdr-vnsi')
 conflicts=('kodi-addon-pvr-vdr-vnsi' 'kodi-pvr-addons')
 source=("${pkgname}::git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git")
@@ -32,7 +32,8 @@ md5sums=('SKIP')
 
 case "$API" in
   17)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#branch=Krypton" ;;
-  18)  ;; #source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#branch=Leia" ;;
+  18)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#branch=Leia" ;;
+  19)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#branch=Matrix" ;;
   99)  ;;
   *)   echo "Unknown API version. Follow instructions in PKGBUILD." && false
 esac
