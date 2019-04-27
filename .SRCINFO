@@ -1,6 +1,6 @@
 pkgbase = emacs-tablist-git
 	pkgdesc = Extended tabulated-list-mode
-	pkgver = 0.70r8.g389730e
+	pkgver = 1.0.r1.g8079801
 	pkgrel = 1
 	url = https://github.com/politza/tablist
 	arch = any

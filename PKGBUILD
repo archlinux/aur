@@ -5,7 +5,7 @@ _gituser="politza"
 _gitrepo="tablist"
 
 pkgname=emacs-tablist-git
-pkgver=0.70r8.g389730e
+pkgver=1.0.r1.g8079801
 pkgrel=1
 pkgdesc="Extended tabulated-list-mode"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  git describe --tags|sed 's+-+r+'|tr - .|cut -c2-
+  git describe --tags|sed 's+-+.r+'|tr - .|cut -c2-
 }
 
 build() {
