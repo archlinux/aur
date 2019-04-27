@@ -12,14 +12,14 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.1.0_devel.110021.c4478889b71
+pkgver=19.1.0_devel.110426.07745f94948
 pkgrel=1
 arch=('x86_64')
-makedepends=('git' 'python-mako' 'llvm-git' 'clang-git'  'xorgproto'
+makedepends=('git' 'python-mako' 'llvm-lw-git' 'clang-lw-git'  'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio' 'libxrandr'
               'ocl-icd' 'vulkan-icd-loader' 'libgcrypt'  'wayland' 'wayland-protocols' 'meson')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libomxil-bellagio' 'llvm-libs-git' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'glslang')
+         'libomxil-bellagio' 'llvm-libs-lw-git' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'glslang')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=('mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-mesa' 'opengl-driver' 'opencl-driver')
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau')
@@ -75,7 +75,11 @@ build () {
        -D vulkan-overlay-layer=true \
        -D tools=[]
     meson configure _build
-    ninja  "$MAKEFLAGS" -C _build 
+    if [[ ! $MAKEFLAGS ]]; then
+        ninja  "$MAKEFLAGS" -C _build 
+    else
+        ninja  "$MAKEFLAGS" -C _build
+    fi
 }
 
 
