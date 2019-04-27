@@ -1,0 +1,29 @@
+pkgbase = transmission-qt-git
+	pkgdesc = Fast, easy, and free BitTorrent client (Qt GUI)
+	pkgver = 2.94
+	pkgrel = 1
+	url = http://www.transmissionbt.com/
+	arch = x86_64
+	license = MIT
+	makedepends = gtk3
+	makedepends = intltool
+	makedepends = curl
+	makedepends = qt5-base
+	makedepends = libevent
+	makedepends = systemd
+	makedepends = qt5-tools
+	depends = curl
+	depends = qt5-base
+	depends = libevent
+	optdepends = transmission-cli: daemon and web support
+	provides = transmission-qt
+	conflicts = transmission-qt
+	source = git+https://github.com/transmission/transmission.git
+	source = transmission-cli.sysusers
+	source = transmission-cli.tmpfiles
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = transmission-qt-git
+
