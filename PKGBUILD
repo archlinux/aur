@@ -9,7 +9,7 @@ url="https://gitlab.com/diamondburned/6cord"
 license=('MPL-2.0')
 makedepends=('go')
 source=("https://gitlab.com/diamondburned/6cord/-/archive/stable-$pkgver/6cord-stable-$pkgver.tar.gz")
-sha256sums=('b311fad07b1b6b88334b3ab8600e99b7427aa72f26d881f29c216a9d01a45214')
+sha256sums=('a0594b2af37f56e68dc492f6098278756e92be44e913ef55f36bb868849320da')
 conflicts=('6cord-git')
 
 build() {
