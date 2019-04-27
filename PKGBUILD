@@ -2,6 +2,8 @@
 
 pkgname=boost-di-git
 _pkgname="${pkgname%-git}"
+provides=('boost-di')
+conflicts=('boost-di')
 pkgver=1.0.1.r418.g388364952
 pkgrel=1
 pkgdesc="Boost (experimental) c++14 dependency injection library (developmental version)"
