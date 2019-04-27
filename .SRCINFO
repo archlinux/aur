@@ -1,15 +1,15 @@
 pkgbase = elasticdump
 	pkgdesc = Import and export tools for Elasticsearch
-	pkgver = 4.1.2
+	pkgver = 4.7.0
 	pkgrel = 1
 	url = https://github.com/taskrabbit/elasticsearch-dump
 	arch = any
 	license = Apache
 	makedepends = npm
 	depends = nodejs>=8.0
-	noextract = elasticdump-4.1.2.tgz
-	source = http://registry.npmjs.org/elasticdump/-/elasticdump-4.1.2.tgz
-	sha256sums = 1979a0851138a42de4980858fdf59dc5093809b1b1199a223544fe2b97817384
+	noextract = elasticdump-4.7.0.tgz
+	source = http://registry.npmjs.org/elasticdump/-/elasticdump-4.7.0.tgz
+	sha256sums = bbbdc403d9ea9d094ac822bc39da3d2968948c4e2259e5865947ec70856a8acc
 
 pkgname = elasticdump
 
