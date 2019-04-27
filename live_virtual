@@ -1,13 +1,14 @@
 #!/bin/bash
+
 build(){
-    # mmc
-    map add_module mmc_block?
-    add_checked_modules '/(mmc|tifm_)'
+    map add_module virtio_blk? sd_mod?
+    # virtio
+    add_checked_modules 'virtio'
 }
 
 help() {
     cat <<HELPEOF
-This hook loads the necessary modules for most block devices using mmc.
+This hook loads the necessary modules for virtual machine block devices.
 Detection will take place at runtime. To minimize the modules in the image, add
 the autodetect hook too.
 HELPEOF

@@ -1,21 +1,23 @@
 # Maintainer: GI_Jack <iGI_Jack@hackermail.com>
 pkgname=mkinitcpio-liveusb-units
-pkgver=1
-pkgrel=3
+pkgver=2
+pkgrel=1
 pkgdesc="mkinitcpio minimal block hooks for live usb sticks"
 arch=('any')
 license=('GPLv3')
 url='http://archlinux.org'
 depends=('mkinitcpio>=0.12')
-source=('live_usb' 'live_mmc' 'live_firewire')
-sha256sums=('9a3e21cf18cdcec6e9e7e63ea3037d4914900916dbd8c7106a8ac7208d036d2c'
-            '2d7f49c80b4230a62adf004a24187cc6aeac75788c70761a178b9ae4ca6fc978'
-            '4a681d345e55303fc7a9669d644c4dffc9fcad46a2a6dd98075ed281a28662e4')
+source=('live_usb' 'live_mmc' 'live_firewire' 'live_virtual')
+sha256sums=('3f559343cb070ccb77f03fcf54cc2f6a85b763909173dedd2c0aef3394adc7ee'
+            '5b4d182584adfc6ec65c9e5c93cf5fff999de08550e3e4ce1483a2e3699bff7c'
+            'f749ed0ce887f0f59f03c451c5eaa381168c59f389beca8b745fb103c8b13248'
+            'd6602fae1bdc8981c5121cc8635df10e9e6f99e8ba6bcd20d9af86cf5fd3cf0a')
 
 package() {
   install -dm755 "${pkgdir}/usr/lib/initcpio/install"
   install -m644 "${srcdir}/live_firewire" "${pkgdir}/usr/lib/initcpio/install/live_firewire"
   install -m644 "${srcdir}/live_usb" "${pkgdir}/usr/lib/initcpio/install/live_usb"
   install -m644 "${srcdir}/live_mmc" "${pkgdir}/usr/lib/initcpio/install/live_mmc"
+  install -m644 "${srcdir}/live_virtual" "${pkgdir}/usr/lib/initcpio/install/live_virtual"
 }
 
