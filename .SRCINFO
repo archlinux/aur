@@ -1,0 +1,18 @@
+pkgbase = python-jwcrypto
+	pkgdesc = Python implementation of JWK, JWS, JWE specifications
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/latchset/jwcrypto
+	arch = any
+	license = LGPL3
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = jwcrypto::git+https://github.com/latchset/jwcrypto.git#commit=5d991eb808571ab463694ee1ec31b22c8b753c34
+	sha256sums = SKIP
+
+pkgname = python-jwcrypto
+	depends = python-cryptography
+
+pkgname = python2-jwcrypto
+	depends = python2-cryptography
+
