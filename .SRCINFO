@@ -1,6 +1,6 @@
 pkgbase = nagstamon-beta
 	pkgdesc = Nagios status monitor for the desktop
-	pkgver = 3.3.0.20190208
+	pkgver = 3.3.0.20190415
 	pkgrel = 1
 	url = https://nagstamon.ifw-dresden.de/
 	arch = any
@@ -17,9 +17,9 @@ pkgbase = nagstamon-beta
 	depends = python-dbus
 	provides = nagstamon
 	conflicts = nagstamon
-	source = https://nagstamon.ifw-dresden.de/files/unstable/nagstamon-3.3.20190208.fedora29-1.src.rpm
-	md5sums = aa083b69857ea1f6f894ee5488ab5bc9
-	sha256sums = 1680d78e09a9e0177443a3d5abc112b4b50a9947408c4e4e97aa88323d21775c
+	source = https://nagstamon.ifw-dresden.de/files/unstable/nagstamon-3.3.20190415.fedora29-1.src.rpm
+	md5sums = 2163867f09de7ce5b20a5bf9ca3bcdfe
+	sha256sums = a90b5bcbc5e35b8f63dbfaeb916d7a6673c9e644275d6627abb2eb988ecc30db
 
 pkgname = nagstamon-beta
 
