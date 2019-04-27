@@ -1,0 +1,15 @@
+pkgbase = libint
+	pkgdesc = High-performance library for computing Gaussian integrals
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/evaleev/libint
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = mpfr
+	depends = boost-libs
+	source = https://github.com/evaleev/libint/archive/release-1-2-1.tar.gz
+	sha256sums = fe5900c98d6adfeadb69cecee9895548ef69b5464f9c2cfb85bd315cf349f3a4
+
+pkgname = libint
+
