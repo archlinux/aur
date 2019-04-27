@@ -3,19 +3,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-devel-cover'
-pkgver='1.31'
+pkgver='1.32'
 pkgrel='1'
 pkgdesc="Perl/CPAN Module Devel::Cover: Code coverage metrics for Perl"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-html-parser')
+depends=('perl' 'perl-b-debug-cpan>=1.26' 'perl-html-parser')
 makedepends=()
-checkdepends=('perl-b-debug-cpan>=1.26')
+checkdepends=()
 url='https://metacpan.org/release/Devel-Cover'
 source=("http://search.cpan.org/CPAN/authors/id/P/PJ/PJCJ/Devel-Cover-$pkgver.tar.gz")
-md5sums=('61b5635a9792f3b74ca66087b043c870')
-sha512sums=('e2e63c8296e90fa953bd5998ce47365e66c3aedeef27bbd2506fc4b15a50aa0dd4efc48ca22c47348a6986561b921aa97f3cdbfa94b7e3b22b79b28b4522b4e9')
+md5sums=('9d305982512ccfae9e9417bdad233f8e')
+sha512sums=('1b3d726346168016e69263e671a90cbb88cf0948ed7ac0dfc19301b52eaa6a069a9362b7ee54e53f09b1cd2e432039267b577607de5bfdf375026b9498bacb21')
 _distdir="Devel-Cover-$pkgver"
 
 build() {
