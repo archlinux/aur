@@ -1,8 +1,8 @@
 pkgbase = eel-language
 	pkgdesc = A scripting and programming language
 	pkgver = 0.3.6
-	pkgrel = 4
-	url = http://www.olofson.net
+	pkgrel = 5
+	url = http://eelang.org
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -10,7 +10,7 @@ pkgbase = eel-language
 	options = !libtool
 	options = staticlibs
 	source = http://eelang.org/download/EEL-0.3.6.tar.bz2
-	md5sums = 03a1ebefd68bd5c8bcb545a87f1b886e
+	sha256sums = 2fe71de4643dbe2be6edba09a5de96c8664c398b3cb496a5bf18c1a0a5c679bf
 
 pkgname = eel-language
 

@@ -3,22 +3,22 @@
 
 pkgname=eel-language
 pkgver=0.3.6
-pkgrel=4
+pkgrel=5
 pkgdesc="A scripting and programming language"
 arch=('i686' 'x86_64')
-url="http://www.olofson.net"
+url="http://eelang.org"
 license=('LGPL')
 depends=('bash')
 source=("http://eelang.org/download/EEL-$pkgver.tar.bz2")
-md5sums=('03a1ebefd68bd5c8bcb545a87f1b886e')
+sha256sums=('2fe71de4643dbe2be6edba09a5de96c8664c398b3cb496a5bf18c1a0a5c679bf')
 options=('!libtool' 'staticlibs')
 
 build() {
-  cd $srcdir/EEL-$pkgver
+  cd EEL-$pkgver
   ./configure --prefix=/usr
   make
 }
 package() {
-  cd $srcdir/EEL-$pkgver
-  make DESTDIR=$pkgdir install
+  cd EEL-$pkgver
+  make DESTDIR="$pkgdir" install
 }
