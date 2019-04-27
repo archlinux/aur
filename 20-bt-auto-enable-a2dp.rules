@@ -1,1 +1,3 @@
-SUBSYSTEM=="bluetooth", ACTION=="add", RUN+="/usr/local/bin/bt-auto-enable-a2dp"
+# /etc/udev/rules.d/20-bt-auto-enable-a2dp.rules
+# hxss
+SUBSYSTEM=="bluetooth", ACTION=="add", RUN+="/home/replace-it/bt-auto-enable-a2dp.sh"

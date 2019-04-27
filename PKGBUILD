@@ -1,14 +1,14 @@
 # Maintainer: saren@wtako.net
 pkgname=pulseaudio-bt-auto-enable-a2dp
-pkgver=15
-pkgrel=2
+pkgver=19
+pkgrel=1
 pkgdesc="Udev service for temporary solve bug 92102 https://bugs.freedesktop.org/show_bug.cgi?id=92102"
 url="https://gist.github.com/EHfive/c4f1218a75f95b076f0387403246de78"
 arch=(any)
 license=('unknown')
 depends=('bluez-tools' 'expect' 'perl')
 source=('20-bt-auto-enable-a2dp.rules' 'bt-auto-enable-a2dp')
-sha256sums=('2a7cf2b8570e75cabdc39ea50f6f9b49977e27bb75a48be9fb68a0af15cc0db5' 'e36a9247bc3dd72899cc5a6ed12bbc4721f0472449acf27168a44c2af3e31544')
+sha256sums=('14a13177e3012f364d99264417c6792637e20e28a21ac03e697f5c2708e64f15' 'e37a779389144294fd42d7dcb97d825763e5abde8c1e93c189aa3b38bb65e006')
  
 package() {
 	user=$(basename $HOME)
