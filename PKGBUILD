@@ -2,10 +2,10 @@
 pkgname=compcert
 _dirname=CompCert
 pkgver=3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The formally verified C compiler"
 arch=('x86_64')
-url="http://compcert.inria.fr/download.html"
+url="http://compcert.inria.fr"
 license=('custom:INRIA Non-Commercial License Agreement')
 depends=('gcc')
 makedepends=('coq>=8.6.1' 'ocaml>=4.0.2'
