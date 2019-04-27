@@ -1,14 +1,14 @@
 # Maintainer: Markus Kalb <mk@filmkreis.tu-darmstadt.de>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libquickmail
-pkgver=0.1.28
-pkgrel=4
+pkgver=0.1.29
+pkgrel=1
 pkgdesc="A library intended to give C/C++ developers a quick and easy way to send email from their applications"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/libquickmail"
 license=('GPL3')
 source=("${pkgname}-${pkgver}.tar.xz::https://sourceforge.net/projects/${pkgname}/files/${pkgname}-${pkgver}.tar.xz/download")
-sha256sums=('45ac1e6fa28da33e28beefc5bf4cbd9e6311880997a7f2ae04fd49130eba3040')
+sha256sums=('fb507087392ecd8b9a5f9f6e95af0e2bc8d547640bd1a32b0958b4b5cbf2e847')
 
 
 build() {
