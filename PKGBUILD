@@ -1,11 +1,12 @@
 pkgname=cp2k
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A quantum chemistry and solid state physics software package for atomistic simulations of solid state, liquid, molecular, periodic, material, crystal, and biological systems."
 arch=("x86_64")
 url="https://www.cp2k.org"
 license=("GPL2")
-depends=('lapack' 'blas' 'fftw' 'gcc-libs' 'glibc')
+depends=('lapack' 'blas' 'fftw' 'gcc-libs' 'glibc'
+         'libxc>=4.0.4' 'libint>=1.1.4')
 makedepends=('gcc' 'gcc-fortran' 'python2' 'make')
 optdepends=('cuda: GPU calculations support'
             'plumed: enhanced sampling support')
@@ -14,11 +15,11 @@ source=("https://github.com/cp2k/cp2k/archive/v${pkgver}.tar.gz"
         "basic_cuda.ssmp"
         "basic_plumed.ssmp"
         "basic_cuda_plumed.ssmp")
-md5sums=('071d4e0716f3b646911522f6a72aae2d'
-         '214e5ccb988fb2603168d3eb73e84cce'
-         '3aae24738a4841d5ff4f367d310edb72'
-         '8affc94195f762c3b8dd5e636d6c98e2'
-         '82dee44b58d0f108d736574221c59ec5')
+md5sums=('d7dd5f164e1e51d2dcb8c7d927b99f6ac1d0f8de4a665bd9daee1a14864c30ae'
+         'dd91990853df6aa45719c6b991db19beb1a8dce556a25149e90bb562e7ba9ff9'
+         '961ff801e2f4de80faffb84b6c46a457f2c149f32d88daeda5afd992841741b0'
+         'c30512606e0d3857cba7f29febebfc71ea6e658b56784ab5befb2aaeb2dfb006'
+         '39e3ef335cf51d4cfe436bd4cb1d21a4b9b33af3718bcaf737fbf307c85945fb')
 _buildmode=0
 _version="basic"
 
@@ -52,11 +53,20 @@ case $_buildmode in
     ;;
 esac
 
+prepare() {
+  cd $srcdir/$pkgname-$pkgver
+  
+  mv ../${_version}.ssmp arch/
+  # A fix for Kepler GPUs
+  sed -i 's/P100/K20X/g' src/dbcsr/libsmm_acc/libcusmm/generate.py
+  sed -i 's/largeDB(/largeDB1(/g' src/dbcsr/libsmm_acc/libcusmm/parameters_K20X.txt
+  sed -i 's/triples += combinations(6,7,8)/#triples += combinations(6,7,8)/g' src/dbcsr/libsmm_acc/libcusmm/generate.py
+  sed -i 's/triples += combinations(13,14,25,26,32)/#triples += combinations(13,14,25,26,32)/g' src/dbcsr/libsmm_acc/libcusmm/generate.py
+}
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-
-  cp ${srcdir}/${_version}.ssmp arch/
+  
   cd makefiles
   make ARCH=$_version VERSION=ssmp
 }

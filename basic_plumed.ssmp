@@ -1,19 +1,33 @@
 CC          = gcc
 CXX         = g++
-CPP         =
-AR          = ar -r
+CPP         = 
 FC          = gfortran
 LD          = gfortran
+NVCC        = nvcc
 #
-DFLAGS      = -D__FFTW3 -D__PLUMED2 
+AR          = ar -r
 #
-WFLAGS      = -Werror=aliasing -Werror=ampersand -Werror=c-binding-type -Werror=intrinsic-shadow -Werror=intrinsics-std -Werror=line-truncation -Werror=tabs -Werror=target-lifetime -Werror=underflow -Werror=unused-but-set-variable -Werror=unused-variable -Werror=unused-dummy-argument -Werror=conversion -Werror=zerotrip -Wno-maybe-uninitialized -Wuse-without-only 
+DFLAGS      = -D__FFTW3                                                             \
+              -D__LIBINT -D__LIBINT_MAX_AM=6 -D__LIBDERIV_MAX_AM1=5 -D__MAX_CONTR=4 \
+              -D__LIBXC                                                             \
+              -D__PLUMED2
 #
-FCDEBFLAGS  = -ffree-form -std=f2003 -fimplicit-none 
-CFLAGS      = -march=native -fno-omit-frame-pointer -g -O3 -funroll-loops -ffast-math $(PROFOPT) -fopenmp -I'/usr/include' $(DFLAGS) 
-FCFLAGS     = -march=native -fno-omit-frame-pointer -g -O3 -funroll-loops -ffast-math $(PROFOPT) -fopenmp -I'/usr/include' $(FCDEBFLAGS) $(WFLAGS) $(DFLAGS) 
+INCS        = -I/usr/include
 #
-LDFLAGS     = $(FCFLAGS) -llapack -lblas -Wl,--enable-new-dtags -L'/usr/lib' -Wl,-rpath='/usr/lib' 
-LIBS        = -lfftw3 -lfftw3_omp -lstdc++ -lz -ldl -lplumed 
+OPTFLAGS    = -O3 -march=native -fopenmp
+#
+CFLAGS      = $(DFLAGS) $(INCS) $(OPTFLAGS)
+CXXFLAGS    = $(DFLAGS) $(INCS) $(OPTFLAGS) -std=c++11
+CPPFLAGS    = 
+FCFLAGS     = $(DFLAGS) $(INCS) $(OPTFLAGS) -ffree-form -ffree-line-length-none
+#
+LDFLAGS     = $(FCFLAGS)
+#
+LIBS        = -lblas -llapack                                                       \
+              -lfftw3 -lfftw3_threads                                               \
+              /usr/lib/libderiv.a                                                   \
+              /usr/lib/libint.a                                                     \
+              -lplumed                                                              \
+              -lstdc++ -lpthread -lm -ldl -lz
 #
 include /usr/lib/plumed/src/lib/Plumed.inc

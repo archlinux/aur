@@ -1,22 +1,52 @@
 CC          = gcc
 CXX         = g++
-CPP         =
-AR          = ar -r
+CPP         = 
 FC          = gfortran
 LD          = gfortran
+NVCC        = nvcc
 #
-DFLAGS      = -D__FFTW3 -D__ACC -D__DBCSR_ACC -D__PW_CUDA -D__PLUMED2
+GPUVER      = K20X
 #
-WFLAGS      = -Werror=aliasing -Werror=ampersand -Werror=c-binding-type -Werror=intrinsic-shadow -Werror=intrinsics-std -Werror=line-truncation -Werror=tabs -Werror=target-lifetime -Werror=underflow -Werror=unused-but-set-variable -Werror=unused-variable -Werror=unused-dummy-argument -Werror=conversion -Werror=zerotrip -Wno-maybe-uninitialized -Wuse-without-only 
+AR          = ar -r
 #
-FCDEBFLAGS  = -ffree-form -std=f2003 -fimplicit-none 
-CFLAGS      = -march=native -fno-omit-frame-pointer -g -O3 -funroll-loops -ffast-math $(PROFOPT) -fopenmp -I'/usr/include' $(DFLAGS) 
-FCFLAGS     = -march=native -fno-omit-frame-pointer -g -O3 -funroll-loops -ffast-math $(PROFOPT) -fopenmp -I'/usr/include' $(FCDEBFLAGS) $(WFLAGS) $(DFLAGS) 
+DFLAGS      = -D__FFTW3                                                             \
+              -D__LIBINT -D__LIBINT_MAX_AM=6 -D__LIBDERIV_MAX_AM1=5 -D__MAX_CONTR=4 \
+              -D__LIBXC                                                             \
+              -D__ACC -D__DBCSR_ACC -D__PW_CUDA                                     \
+              -D__PLUMED2
 #
-LDFLAGS     = $(FCFLAGS) -llapack -lblas -Wl,--enable-new-dtags -L'/usr/lib' -Wl,-rpath='/usr/lib' -L'/opt/cuda/lib' 
-LIBS        = -lfftw3 -lfftw3_omp -lstdc++ -lcudart -lcublas -lcufft -lnvrtc -lrt -lz -ldl -lplumed 
+INCS        = -I/usr/include                                                        \
+              -I/opt/cuda/include
 #
-NVCC        = nvcc -Xcompiler=--std=c++11
-NVFLAGS     = -gencode arch=compute_30,code=sm_30 -gencode arch=compute_32,code=sm_32 -gencode arch=compute_35,code=sm_35 -gencode arch=compute_50,code=sm_50 -gencode arch=compute_52,code=sm_52 -gencode arch=compute_53,code=sm_53 -gencode arch=compute_60,code=sm_60 -gencode arch=compute_61,code=sm_61 -gencode arch=compute_62,code=sm_62 -gencode arch=compute_70,code=sm_70 -gencode arch=compute_72,code=sm_72 -gencode arch=compute_75,code=sm_75 $(DFLAGS) 
+OPTFLAGS    = -O3 -march=native -fopenmp
+#
+CFLAGS      = $(DFLAGS) $(INCS) $(OPTFLAGS)
+CXXFLAGS    = $(DFLAGS) $(INCS) $(OPTFLAGS) -std=c++11
+CPPFLAGS    = 
+FCFLAGS     = $(DFLAGS) $(INCS) $(OPTFLAGS) -ffree-form -ffree-line-length-none
+NVFLAGS     = $(DFLAGS) -O3 -Xcompiler="-fopenmp"                                   \
+              -gencode arch=compute_30,code=sm_30                                   \
+              -gencode arch=compute_32,code=sm_32                                   \
+              -gencode arch=compute_35,code=sm_35                                   \
+              -gencode arch=compute_50,code=sm_50                                   \
+              -gencode arch=compute_52,code=sm_52                                   \
+              -gencode arch=compute_53,code=sm_53                                   \
+              -gencode arch=compute_60,code=sm_60                                   \
+              -gencode arch=compute_61,code=sm_61                                   \
+              -gencode arch=compute_62,code=sm_62                                   \
+              -gencode arch=compute_70,code=sm_70                                   \
+              -gencode arch=compute_72,code=sm_72                                   \
+              -gencode arch=compute_75,code=sm_75
+#
+LDFLAGS     = $(FCFLAGS)
+#
+LIBS        = -L/opt/cuda/lib64 -lcudart -lcublas -lcufft -lrt -lnvrtc              \
+              -lblas -llapack                                                       \
+              -lfftw3 -lfftw3_threads                                               \
+              /usr/lib/libderiv.a                                                   \
+              /usr/lib/libint.a                                                     \
+              -lxcf03 -lxc                                                          \
+              -lplumed                                                              \
+              -lstdc++ -lpthread -lm -ldl -lz
 #
 include /usr/lib/plumed/src/lib/Plumed.inc
