@@ -2,7 +2,7 @@
 
 _pkgname=ytt
 pkgname=${_pkgname}-git
-pkgver=r33.878facd
+pkgver=r40.32ed30c
 pkgrel=1
 pkgdesc="YAML templating tool that works on YAML structure instead of text"
 url="https://get-ytt.io/"
