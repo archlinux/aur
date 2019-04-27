@@ -20,7 +20,7 @@ build() {
   for _arch in $_architectures; do
     mkdir -p "build-${_arch}" && pushd build-${_arch}
     ${_arch}-meson \
-      -D gtkdoc=disabled ..
+      -D gtk_doc=disabled ..
     ninja
     popd
   done
