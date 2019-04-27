@@ -1,6 +1,6 @@
 pkgbase = bind-stable
-	pkgver = 9.12.4
-	pkgrel = 6
+	pkgver = 9.14.1
+	pkgrel = 1
 	url = https://www.isc.org/software/bind/
 	arch = x86_64
 	license = MPL2
@@ -22,8 +22,8 @@ pkgbase = bind-stable
 	makedepends = icu
 	makedepends = xz
 	options = !emptydirs
-	source = https://ftp.isc.org/isc/bind9/9.12.4/bind-9.12.4.tar.gz
-	source = https://ftp.isc.org/isc/bind9/9.12.4/bind-9.12.4.tar.gz.asc
+	source = https://ftp.isc.org/isc/bind9/9.14.1/bind-9.14.1.tar.gz
+	source = https://ftp.isc.org/isc/bind9/9.14.1/bind-9.14.1.tar.gz.asc
 	source = tmpfiles.conf
 	source = sysusers.conf
 	source = named.conf
@@ -33,7 +33,7 @@ pkgbase = bind-stable
 	source = 127.0.0.zone
 	source = empty.zone
 	validpgpkeys = AE3FAC796711EC59FC007AA474BB6B9A4CBB3D38
-	sha1sums = b0078a9fdb1ff31627b9a765566d12853af248a9
+	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = c5a2bcd9b0f009ae71f3a03fbdbe012196962a11
 	sha1sums = 9537f4835a1f736788d0733c7996a10db2d4eee4
@@ -82,7 +82,7 @@ pkgname = bind-stable-tools
 	depends = lmdb
 	depends = xz
 	depends = icu
-	provides = dnsutils=9.12.4
+	provides = dnsutils=9.14.1
 	conflicts = dnsutils
 	replaces = dnsutils
 	replaces = host
