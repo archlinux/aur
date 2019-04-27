@@ -1,0 +1,13 @@
+pkgbase = boost-di
+	pkgdesc = Boost (experimental) c++14 dependency injection library
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/boost-experimental/di
+	arch = any
+	license = Boost
+	makedepends = cmake
+	source = boost-di.tar.gz::https://github.com/boost-experimental/di/archive/v1.1.0.tar.gz
+	sha256sums = 2bb52ed621c36e4e301ed7fbe4197980e9110bd4afc4208841637ce112c0d443
+
+pkgname = boost-di
+
