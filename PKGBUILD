@@ -1,6 +1,6 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
-pkgname=hqplayer
+pkgname=hqplayer4
 _debpkgver=4.0.0-1
 pkgver=4.0.0
 pkgrel=1

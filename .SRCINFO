@@ -1,4 +1,4 @@
-pkgbase = hqplayer
+pkgbase = hqplayer4
 	pkgdesc = The high-end upsampling multichannel software HD-audio player
 	pkgver = 4.0.0
 	pkgrel = 1
@@ -22,5 +22,5 @@ pkgbase = hqplayer
 	source = http://www.signalyst.com/bins/hqplayer4desktop_4.0.0-1_amd64.deb
 	sha256sums = SKIP
 
-pkgname = hqplayer
+pkgname = hqplayer4
 
