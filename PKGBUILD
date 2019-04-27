@@ -8,7 +8,7 @@ _gopkgname='github.com/mholt/caddy'
 _name="caddy"
 
 pkgname="${_name}-no-telemetry"
-pkgver=0.11.5
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS. Telemetry disabled in source'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -26,17 +26,15 @@ source=("https://$_gopkgname/archive/v$pkgver/$_name-$pkgver.tar.gz"
         'caddy.tmpfiles'
         'caddy.conf'
         'plugins.go'
-        '01-disable-telemetry.patch'
-        '02-disable-telemetry-collection.patch')
-sha256sums=('ab2dc210bc7089fa7d041e702663e592b480945aa99f14b348090091103b7ec5'
+        '0001-disable-telemetry.patch')
+sha256sums=('1c8b435a79e21b9832c7a8a88c44e70bc80434ca3719853d2b1092ffbbbbff7d'
             'e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85'
             '6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
             '0466a41290db84402ca41cf32c0fc5b66b112a9d85b71d1619ae97b5a3dd2740'
             'c8f002f5ba59985a643600dc3c871e18e110903aa945ef3f2da7c9edd39fbd7a'
             '80520b80ccabf077a3269f6a1bf55faa3811ef5adce115131b35ef2044d37b64'
             'f5a0fbb961e7c9ecf99e88d0959a3164cbea54660c1c08c3ba3cdf1d45563929'
-            '1e6fcfb06704babdf5a5fea52d94bb9055182f48114999662c449d3cc3090cab'
-            '4fe4cc982322e7eec8ff187c22ff8a58db8a894da8aba038697e15a49b36fc52')
+            'e0183ff5631283e259dffe92d64974cf1d17c9f7d758fb24b9dcb4cf1d2586d4')
 
 patch_plugins() {
     IFS=''
@@ -65,13 +63,16 @@ prepare() {
     fi
 
     # Disable telemetry collection
-    patch -Np1 -i "${srcdir}/01-disable-telemetry.patch" "${srcdir}/build/src/github.com/mholt/caddy/telemetry/telemetry.go"
-    patch -Np1 -i "${srcdir}/02-disable-telemetry-collection.patch" "${srcdir}/build/src/github.com/mholt/caddy/telemetry/collection.go"
+    cd "${srcdir}/build/src/$_gopkgname"
+    patch -p1 < "${srcdir}/0001-disable-telemetry.patch"
 }
 
 build() {
+    export GO111MODULE=on
     export GOPATH="$srcdir/build"
+    cd "${srcdir}/build/src/$_gopkgname"
     go build -v -o $srcdir/caddy -ldflags "-X $_gopkgname/caddy/caddymain.gitTag=v$pkgver" $_gopkgname/caddy
+    go clean --modcache
 }
 
 package() {
