@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-rtsp-server-git
-pkgver=1.14.0.r24.89e6ee7
+pkgver=1.16.0.r7.abf6be1
 pkgrel=1
 _gitname=gst-rtsp-server
 pkgdesc="RTSP server library based on GStreamer (mingw-w64)"
@@ -12,7 +12,7 @@ options=('!strip' '!buildflags' 'staticlibs')
 makedepends=('mingw-w64-meson' 'git')
 conflicts=('mingw-w64-gst-rtsp-server')
 
-source=("${_gitname}::git://anongit.freedesktop.org/gstreamer/${_gitname}")
+source=("${_gitname}::git+https://gitlab.freedesktop.org/gstreamer/${_gitname}/")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -37,7 +37,6 @@ build() {
 
 package() {
   cd "${srcdir}/${_gitname}"
-
   for _arch in ${_architectures}; do
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/${_gitname}/build-${_arch}" install
   done
