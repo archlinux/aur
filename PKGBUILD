@@ -11,6 +11,7 @@ pkgdesc="User agent parser module for mainline nginx"
 arch=('i686' 'x86_64')
 makedepends=("nginx-mainline=$_nginxver")
 depends=('nginx-mainline' 'uap-cpp-git')
+provides=('nginx-mainline-mod-uaparser')
 url="https://github.com/clarfon/nginx-uaparser-module"
 license=('CC0')
 

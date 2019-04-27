@@ -9,6 +9,7 @@ pkgbase = nginx-mainline-mod-uaparser-git
 	makedepends = nginx-mainline=1.15.12
 	depends = nginx-mainline
 	depends = uap-cpp-git
+	provides = nginx-mainline-mod-uaparser
 	source = https://nginx.org/download/nginx-1.15.12.tar.gz
 	source = https://nginx.org/download/nginx-1.15.12.tar.gz.asc
 	source = git+https://github.com/clarfon/nginx-uaparser-module.git
