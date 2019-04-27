@@ -14,14 +14,15 @@
 # Contributor: Tomas Wilhelmsson <tomas.wilhelmsson@gmail.com>
 
 pkgname=compiler-rt-lw-git
-pkgver=9.0.0_r313655.2ea8dbf5642
+pkgver=9.0.0_r315148.03c4e2663ce
 pkgrel=1
 pkgdesc="Compiler runtime libraries for clang"
 arch=('x86_64')
 url="https://compiler-rt.llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
 depends=('gcc-libs')
-makedepends=('git' 'llvm-lw-git' 'llvm-libs-lw-git' 'cmake' 'ninja' 'python')
+makedepends=('git' 'llvm-lw-git' 'llvm-libs-lw-git' 'cmake' 'ninja' 'python' 'llvm-libs')
+# llvm-libs is needed for llvm gold linker
 # Build 32-bit compiler-rt libraries on x86_64 (FS#41911)
 makedepends_x86_64=('lib32-gcc-libs')
 options=('staticlibs')
@@ -29,7 +30,7 @@ source=(llvm-project::git+https://github.com/llvm/llvm-project.git)
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/llvm-project/llvm"
+    cd llvm-project/llvm
 
     # This will almost match the output of `llvm-config --version` when the
     # LLVM_APPEND_VC_REV cmake flag is turned on. The only difference is
@@ -42,26 +43,32 @@ pkgver() {
     echo "${_pkgver}"
 }
 
-prepare() {
-  cd "$srcdir/llvm-project/compiler-rt"
-  mkdir build
-}
 
 build() {
-  cd "$srcdir/llvm-project/compiler-rt/build"
-
-  cmake .. -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  ninja
+    if [  -d _build ]; then
+        rm -rf _build
+    fi
+    mkdir _build
+    cd _build
+  
+    cmake "$srcdir"/llvm-project/compiler-rt/ -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr
+    if [[ ! $MAKEFLAGS ]]; then
+        ninja
+    else
+        ninja "$MAKEFLAGS"
+    fi
 }
 
 package() {
-  provides=(compiler-rt-lw-git compiler-rt-git)
-  cd "$srcdir/llvm-project/compiler-rt/build"
+  conflicts=('compiler-rt')
+  provides=('compiler-rt-git')
+
+  cd _build 
 
   DESTDIR="$pkgdir" ninja install
-  install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir"/llvm-project/compiler-rt/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
   mkdir -p "$pkgdir"/usr/lib/clang/$pkgver/{lib,share}
   mv "$pkgdir"/usr/lib/{linux,clang/$pkgver/lib/}
