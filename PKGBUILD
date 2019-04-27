@@ -5,11 +5,11 @@ pkgname=lib32-procps-ng
 pkgver=3.3.15
 pkgrel=1
 pkgdesc='Utilities for monitoring your system and its processes (32-bit)'
-url='http://sourceforge.net/projects/procps-ng/'
+url='https://sourceforge.net/projects/procps-ng/'
 license=(GPL LGPL)
 arch=(x86_64)
 depends=(procps-ng lib32-glibc)
-source=("http://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-${pkgver}.tar.xz")
+source=("https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-${pkgver}.tar.xz")
 sha1sums=('2929bc64f0cf7b2db997eef79b7187658e47230d')
 
 build() {
