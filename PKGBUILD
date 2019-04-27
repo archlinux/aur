@@ -3,8 +3,8 @@
 # Maintainer: Alberto Fanjul <albertofanjul@gmail.com>
 
 pkgname=todotxt-git
-pkgver=2.10
-pkgrel=3
+pkgver=v2.11.0.r5.gd589fd0
+pkgrel=1
 pkgdesc="lifehacker.com's todo.sh script for maintaining a todo.txt file"
 url="https://github.com/todotxt/todo.txt-cli"
 depends=('bash')
@@ -14,6 +14,11 @@ source=("${pkgname}"::"git+https://github.com/todotxt/todo.txt-cli")
 sha256sums=('SKIP')
 arch=('any')
 license=("GPL")
+
+pkgver() {
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
   cd $srcdir/$pkgname
