@@ -1,14 +1,14 @@
 _name=python-crontab
 pkgname=('python-crontab' 'python2-crontab')
-pkgver=2.3.5
-pkgrel=2
+pkgver=2.3.6
+pkgrel=1
 pkgdesc='Crontab module for read and writing crontab files and accessing the system cron automatically and simply using a direct API.'
 arch=('any')
 url='https://pypi.python.org/pypi/python-crontab'
 license=('LGPLv3')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('675e7287b7a7984980954a472c6f15ab')
+sha256sums=('91ce4b245ee5e5c117aa0b21b485bc43f2d80df854a36e922b707643f50d7923')
 
 build_python-crontab() {
     cd "$srcdir/${pkgname}-$pkgver"
