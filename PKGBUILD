@@ -1,5 +1,5 @@
 pkgname=renderdoc
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="OpenGL and Vulkan debugging tool"
 arch=(i686 x86_64)
@@ -7,8 +7,11 @@ url="https://github.com/baldurk/renderdoc"
 license=("MIT")
 makedepends=("cmake")
 depends=("libx11" "libxcb" "mesa" "libgl" "qt5-base" "qt5-svg" "qt5-x11extras" "xcb-util-keysyms")
-source=("https://github.com/baldurk/renderdoc/archive/v${pkgver}.tar.gz")
-sha384sums=("9b16425f61f4d44678528c2963996f61bb50568ed8901f2826f7dc3b308eb95e6acf12b2ff4bbbd959685330eee40ec5")
+source=("https://github.com/baldurk/renderdoc/archive/v${pkgver}.tar.gz"
+        "https://github.com/baldurk/renderdoc/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc")
+validpgpkeys=('1B039DB9A4718A2D699DE031AC612C3120C34695')
+sha384sums=("fd88d13ba352cc1d6190efe34aa5b6a0a5f0d30de235d7944a31d5302349ecb088742a2e6ea73c4a62c0444651295348"
+            "SKIP")
 
 build() {
   cmake -DCMAKE_BUILD_TYPE=Release \
