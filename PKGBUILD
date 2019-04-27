@@ -1,20 +1,22 @@
 # Maintainer: Diego Nieto Cid <dnietoc@gmail.com>
 
-_module="github3.py"
+pkgbase="python-github3.py"
+pkgname=("python-github3.py" "python2-github3.py")
 
-pkgname=("python-${_module}" "python2-${_module}")
-pkgver="1.2.0"
-pkgrel="2"
-pkgdesc="a comprehensive wrapper around the GitHub API (v3)"
+_commit="e586949a4dbed22f169afaffe25cb07e5a60a606"
+pkgver="1.3.0"
+pkgrel="1"
+
+pkgdesc="A comprehensive wrapper around the GitHub API (v3)"
 arch=("any")
-url="https://github.com/sigmavirus24/${_module}"
+url="https://github.com/sigmavirus24/github3.py"
 license=("custom:Modified BSD")
 makedepends=("python-setuptools" "python2-setuptools")
-source=("https://pypi.io/packages/source/${_module:0:1}/${_module}/${_module}-${pkgver}.tar.gz")
-md5sums=('148630f610c7a2dbcc9c91e8102c7e36')
+source=(github3::"git+https://github.com/sigmavirus24/github3.py.git#commit=${_commit}")
+sha256sums=('SKIP')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
+    cd "${srcdir}/github3"
     python setup.py build
     python2 setup.py build
 }
@@ -29,14 +31,16 @@ check() {
 
 package_python-github3.py() {
     depends=("python" "python-requests" "python-uritemplate" "python-dateutil" "python-jwcrypto")
-    cd "${srcdir}/${_module}-${pkgver}"
+
+    cd "${srcdir}/github3"
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
 }
 
 package_python2-github3.py() {
     depends=("python2" "python2-requests" "python2-uritemplate" "python-dateutil" "python-jwcrypto")
-    cd "${srcdir}/${_module}-${pkgver}"
+
+    cd "${srcdir}/github3"
     python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
 }
