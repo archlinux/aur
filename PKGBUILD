@@ -10,7 +10,7 @@ url="https://speex.org/"
 license=(BSD)
 depends=(lib32-libogg lib32-speexdsp $_pkgbasename)
 makedepends=(gcc-multilib)
-source=(http://downloads.us.xiph.org/releases/$_pkgbasename/$_pkgbasename-$pkgver.tar.gz)
+source=(https://downloads.us.xiph.org/releases/$_pkgbasename/$_pkgbasename-$pkgver.tar.gz)
 sha256sums=('eaae8af0ac742dc7d542c9439ac72f1f385ce838392dc849cae4536af9210094')
 
 build() {
