@@ -96,3 +96,4 @@ diff -Naur epson-inkjet-printer-escpr-1.6.9/src/mem.c epson-inkjet-printer-escpr
  
  void *
  mem_malloc (unsigned int size, bool_t crit)
+
