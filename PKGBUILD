@@ -6,14 +6,14 @@
 
 pkgname=asymptote-git
 epoch=2
-pkgver=2.48git123.g4997b77e
+pkgver=2.50.git4.g43b43ae8
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
 url="http://asymptote.sourceforge.net/"
 license=('LGPL3')
 depends=('gc' 'python' 'freeglut' 'glew' 'gsl' 'fftw' 'libsigsegv')
-makedepends=('git' 'flex' 'ghostscript' 'imagemagick6' 'texlive-plainextra' 'glm')
+makedepends=('git' 'flex' 'ghostscript' 'imagemagick' 'glm' 'texlive-plainextra')
 optdepends=('python-pyqt5:      for the xasy GUI'
             'python-imaging:    for the xasy GUI'
             'tix:               for the xasy GUI')
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags|sed s+git-+git+|tr - .
+  git describe --tags|sed s+git-+.git+|tr - .
 }
 
 prepare() {
