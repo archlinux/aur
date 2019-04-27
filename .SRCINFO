@@ -1,7 +1,7 @@
 pkgbase = taglib-git
 	pkgdesc = A Library for reading and editing the meta-data of several popular audio formats
 	pkgver = v1.11.1.r152.6455671e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://taglib.github.io/
 	arch = x86_64
 	license = LGPL

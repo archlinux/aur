@@ -2,7 +2,7 @@
 
 pkgname=taglib-git
 pkgver=v1.11.1.r152.6455671e
-pkgrel=1
+pkgrel=2
 pkgdesc="A Library for reading and editing the meta-data of several popular audio formats"
 arch=(x86_64)
 url="https://taglib.github.io/"
@@ -30,7 +30,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=ON \
     -DWITH_MP4=ON \
-    -DWITH_ASF=ON \
+    -DWITH_ASF=ON
   make
 }
 
