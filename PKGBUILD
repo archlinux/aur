@@ -1,29 +1,30 @@
-#Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
+#Maintainer: Mohammad Taha Jahangir (taha_jahangir)
+#Maintainer of mongodb-bin: Ali Molaei <ali dot molaei at protonmail dot com>
 
-pkgname="mongodb-bin"
-pkgver="4.0.9"
-basever="4.0"
+pkgname="mongodb-bin-3.6"
+pkgver="3.6.12"
+basever="3.6"
 pkgrel="1"
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
 url="https://www.mongodb.com/"
 license=("SSPLv1")
 provides=("mongodb=$pkgver")
-conflicts=("mongodb")
+conflicts=("mongodb" "mongodb-bin")
 optdepends=("mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.")
 source=(
-    "https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/${basever}/multiverse/binary-amd64/mongodb-org-shell_${pkgver}_amd64.deb"
-    "https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/${basever}/multiverse/binary-amd64/mongodb-org-server_${pkgver}_amd64.deb"
-    "https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/${basever}/multiverse/binary-amd64/mongodb-org-mongos_${pkgver}_amd64.deb"
+    "https://repo.mongodb.org/apt/debian/dists/jessie/mongodb-org/${basever}/main/binary-amd64/mongodb-org-shell_${pkgver}_amd64.deb"
+    "https://repo.mongodb.org/apt/debian/dists/jessie/mongodb-org/${basever}/main/binary-amd64/mongodb-org-server_${pkgver}_amd64.deb"
+    "https://repo.mongodb.org/apt/debian/dists/jessie/mongodb-org/${basever}/main/binary-amd64/mongodb-org-mongos_${pkgver}_amd64.deb"
     "mongodb.service"
     "mongodb.conf"
     "mongodb.sysusers"
     "mongodb.tmpfiles"
     "LICENSE")
 
-sha256sums=("2641dfb47e5c79bb03c2adc7df0993901c6f8a0f9722a43076f0c222a0324673"
-	    "7f5834943b9869ac395e5713a654680876f6eb4fa8abc813aa0e9f6f69503612"
-            "25765030ac6441185d3a20e6e95bc9401158b723586e759cfd635127ed7f2b79"
+sha256sums=("4e6e575d850d0f0f238c8fb159c552ce107f895f4049c4fca05efd366545c490"
+            "85da8f5a2a30a336212e3574f1fedd4fe8757b17e710fd53561f8ab1204ad3e3"
+            "ce66b8e216ced21e7e5d2387209c6b14805cc755c87a9733e2a760ee8cd4c52b"
             "19f55ab28652b3817e98fc3f15cc2f6f3255a5e1dfd7b0d5a27c9ba22fd2703e"
             "8010ce728d657524cd76b5afda7ffbc1cc389642336b12b89cec5df2b09fc0e4"
             "47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b"
