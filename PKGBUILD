@@ -2,7 +2,7 @@
 
 pkgname=pkgbuild-introspection-git
 _pkgname=pkgbuild-introspection
-pkgver=6.4.ga135f86
+pkgver=9
 pkgrel=1
 pkgdesc='Tools for generating .SRCINFO files and PKGBUILD data extraction (mkaurball)'
 url="https://github.com/falconindy/$_pkgname"
@@ -10,6 +10,7 @@ license=('MIT')
 arch=('any')
 depends=('bash' 'pacman')
 makedepends=('git')
+checkdepends=('python-srcinfo')
 provides=('pkgbuild-introspection')
 conflicts=('pkgbuild-reflection-git' 'pkgbuild-introspection')
 source=("git://github.com/falconindy/$_pkgname.git")
@@ -25,6 +26,12 @@ build() {
   cd "$_pkgname"
 
   make
+}
+
+check() {
+  cd "$_pkgname"
+
+  make check
 }
 
 package() {
