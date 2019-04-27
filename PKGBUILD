@@ -15,11 +15,11 @@ source=("https://github.com/cp2k/cp2k/archive/v${pkgver}.tar.gz"
         "basic_cuda.ssmp"
         "basic_plumed.ssmp"
         "basic_cuda_plumed.ssmp")
-md5sums=('d7dd5f164e1e51d2dcb8c7d927b99f6ac1d0f8de4a665bd9daee1a14864c30ae'
-         'dd91990853df6aa45719c6b991db19beb1a8dce556a25149e90bb562e7ba9ff9'
-         '961ff801e2f4de80faffb84b6c46a457f2c149f32d88daeda5afd992841741b0'
-         'c30512606e0d3857cba7f29febebfc71ea6e658b56784ab5befb2aaeb2dfb006'
-         '39e3ef335cf51d4cfe436bd4cb1d21a4b9b33af3718bcaf737fbf307c85945fb')
+sha256sums=('d7dd5f164e1e51d2dcb8c7d927b99f6ac1d0f8de4a665bd9daee1a14864c30ae'
+            'dd91990853df6aa45719c6b991db19beb1a8dce556a25149e90bb562e7ba9ff9'
+            '961ff801e2f4de80faffb84b6c46a457f2c149f32d88daeda5afd992841741b0'
+            'c30512606e0d3857cba7f29febebfc71ea6e658b56784ab5befb2aaeb2dfb006'
+            '39e3ef335cf51d4cfe436bd4cb1d21a4b9b33af3718bcaf737fbf307c85945fb')
 _buildmode=0
 _version="basic"
 

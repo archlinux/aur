@@ -23,11 +23,11 @@ pkgbase = cp2k
 	source = basic_cuda.ssmp
 	source = basic_plumed.ssmp
 	source = basic_cuda_plumed.ssmp
-	md5sums = d7dd5f164e1e51d2dcb8c7d927b99f6ac1d0f8de4a665bd9daee1a14864c30ae
-	md5sums = dd91990853df6aa45719c6b991db19beb1a8dce556a25149e90bb562e7ba9ff9
-	md5sums = 961ff801e2f4de80faffb84b6c46a457f2c149f32d88daeda5afd992841741b0
-	md5sums = c30512606e0d3857cba7f29febebfc71ea6e658b56784ab5befb2aaeb2dfb006
-	md5sums = 39e3ef335cf51d4cfe436bd4cb1d21a4b9b33af3718bcaf737fbf307c85945fb
+	sha256sums = d7dd5f164e1e51d2dcb8c7d927b99f6ac1d0f8de4a665bd9daee1a14864c30ae
+	sha256sums = dd91990853df6aa45719c6b991db19beb1a8dce556a25149e90bb562e7ba9ff9
+	sha256sums = 961ff801e2f4de80faffb84b6c46a457f2c149f32d88daeda5afd992841741b0
+	sha256sums = c30512606e0d3857cba7f29febebfc71ea6e658b56784ab5befb2aaeb2dfb006
+	sha256sums = 39e3ef335cf51d4cfe436bd4cb1d21a4b9b33af3718bcaf737fbf307c85945fb
 
 pkgname = cp2k
 
