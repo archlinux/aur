@@ -1,5 +1,5 @@
 pkgbase = llvm-lw-git
-	pkgver = 9.0.0_r313655.2ea8dbf5642
+	pkgver = 9.0.0_r315148.03c4e2663ce
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -24,11 +24,11 @@ pkgbase = llvm-lw-git
 
 pkgname = llvm-lw-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies
-	depends = llvm-libs
+	depends = llvm-libs-lw-git
 	depends = perl
 	optdepends = python-setuptools: for using lit (LLVM Integrated Tester)
-	provides = llvm
-	provides = llvm-svn
+	provides = llvm-git
+	conflicts = llvm
 
 pkgname = llvm-libs-lw-git
 	pkgdesc = LLVM runtime libraries
@@ -38,14 +38,13 @@ pkgname = llvm-libs-lw-git
 	depends = libedit
 	depends = ncurses
 	depends = libxml2
-	provides = llvm-libs
-	provides = llvm-libs-svn
+	provides = llvm-libs-git
 
 pkgname = llvm-ocaml-lw-git
 	pkgdesc = OCaml bindings for LLVM
 	depends = llvm
 	depends = ocaml=4.07.1
 	depends = ocaml-ctypes
-	provides = llvm-ocaml
-	provides = llvm-ocaml-svn
+	provides = llvm-ocaml-git
+	conflicts = llvm-ocaml
 
