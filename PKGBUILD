@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-ugly-git
-pkgver=1.14.0.r17.71a35e7c
+pkgver=1.16.0.r3.e778c559
 pkgrel=1
 _gitname=gst-plugins-ugly
 pkgdesc="GStreamer Multimedia Framework Ugly Plugins (mingw-w64)"
@@ -16,7 +16,7 @@ optdepends=(
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('mingw-w64-gst-plugins-ugly')
 
-source=("$_gitname::git://anongit.freedesktop.org/gstreamer/$_gitname")
+source=("${_gitname}::git+https://gitlab.freedesktop.org/gstreamer/${_gitname}/")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -40,7 +40,6 @@ build() {
 
 package() {
   cd "${srcdir}/${_gitname}"
-
   for _arch in ${_architectures}; do
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/${_gitname}/build-${_arch}" install
   done
