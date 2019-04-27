@@ -2,7 +2,7 @@
 
 pkgname=ham-radio-meta
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Meta package for ham radio packages."
 arch=('any')
 groups=('ham-radio')
@@ -25,4 +25,6 @@ depends=(
         'gqrx'
         'trustedqsl'
         'sunclock'
+        'js8call'
+        'freedv'
         )
