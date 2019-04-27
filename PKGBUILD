@@ -6,7 +6,7 @@ pkgver() {
   cd "$srcdir/${pkgname%-git}"
   printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r465.gc64b2e8
+pkgver=r522.g6faf224
 pkgrel=1
 
 pkgdesc='A simple interface to auto-configure neomutt and isync with safe passwords'
@@ -19,7 +19,10 @@ conflicts=("${pkgname%-git}")
 
 depends=('neomutt' 'isync' 'msmtp' 'pass')
 optdepends=('w3m: view HTML email and images inside of neomutt’s TUI'
-           #'notmuch: index and search mail'  ##(neomutt depends on notmuch-runtime)
+            'lynx: view HTML email and images inside of neomutt’s TUI'
+            'links: view HTML email and images inside of neomutt’s TUI'
+            'elinks: view HTML email and images inside of neomutt’s TUI'
+            'urlview: list URLs found in mails to open them in a browser'
             'abook: contact store and tab completion'
             'cronie: auto-sync mails (alt.: fcron)'
             'fcron: auto-sync mails (alt.: cronie)')
