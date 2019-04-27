@@ -51,10 +51,10 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=5.0
-_minor=9
+_minor=10
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -62,15 +62,19 @@ options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
-_uksm_path="https://raw.githubusercontent.com/dolohow/uksm/master/v5.x"
+_uksm_path="https://raw.githubusercontent.com/sirlucjan/uksm/master/v5.x"
+#_uksm_path="https://raw.githubusercontent.com/dolohow/uksm/master/v5.x"
 #_uksm_path="https://raw.githubusercontent.com/zaza42/uksm/master"
-_uksm_patch="uksm-${_major}.patch"
+#_uksm_patch="uksm-${_major}.patch"
+#_uksm_patch="0001-UKSM-for-5.0.10.patch"
+_uksm_patch="uksm-5.0.10.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_gcc_path}/${_gcc_patch}"
+        #"${_lucjanpath}/uksm-dev/${_uksm_patch}"
         "${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
          # the main kernel config files
@@ -366,10 +370,10 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('915397cb24c12c87c96caf264bccf08176632090ce8fe77c899659af274f16f58e160fa607b9d863a42951c75581f1ede594dd73f0486194ccd3e39dbda2e28e'
+sha512sums=('fc3ba5504dc2cb745f9074ed65b8c7b6d9cdbe829c7ab79f82ef505379660a127ae743dc09faa0cded55dbc0a3c3a8c94265ca4ee8f6427d1838b38ba5b3845d'
             'SKIP'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
-            'a0bd443f50e5a743e8ffd00bb07c934fdfbc2f1e219a908c1713955aaf11f4751dfef87a5eb1e1a4596eb6ad01951ccde94bf875dc6a8bfc79da1c56165f51fb'
+            'adf7f7195b0811c13b950b147f24b51874f072c02005ab312f9937dedd9d2356e92dd7537d5603cfaea2e3d1eb0d6872e81af57496d9b42b7f2ec271ec181a77'
             '1e8a1deb7a0100627b928b588a9419b58aa42ac1b33d974b83c24dcd4e5f59ace694959e30df2692a96de329d8bab61cd42bb59578f7814845391203416d7364'
             'e6cae518ab26a15c52a720108b906adc4e08b59973d1b4cdf63d07e86bb06301bb3eb84f7a21596f074b82356c92ab5bef681883dcdae942e843f0093e24e199'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
