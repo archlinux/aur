@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-editing-services-git
-pkgver=1.14.0.r44.6a806a0d
+pkgver=1.16.0.r2.63ee4262
 pkgrel=1
 _gitname=gst-editing-services
 pkgdesc="GStreamer editing services (mingw-w64)"
@@ -12,7 +12,7 @@ makedepends=('mingw-w64-meson')
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('mingw-w64-gst-editing-services')
 
-source=("$_gitname::git://anongit.freedesktop.org/gstreamer/$_gitname")
+source=("${_gitname}::git+https://gitlab.freedesktop.org/gstreamer/${_gitname}/")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -35,11 +35,9 @@ build() {
 
 package() {
   cd "${srcdir}/${_gitname}"
-
   for _arch in ${_architectures}; do
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/${_gitname}/build-${_arch}" install
   done
 }
-
 
 # vim: ts=2 sw=2 et:
