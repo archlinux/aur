@@ -18,19 +18,18 @@
 
 
 pkgname=('lib32-llvm-lw-git' 'lib32-llvm-libs-lw-git')
-pkgver=9.0.0_r313659.ec28615f7fc
+pkgver=9.0.0_r315148.03c4e2663ce
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
 makedepends=('git' 'cmake' 'ninja' 'lib32-libffi' 'lib32-zlib' 'python' 'lib32-gcc-libs'
              'lib32-libxml2')
-options=('staticlibs')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/llvm-project/llvm"
+    cd llvm-project/llvm
 
     # This will almost match the output of `llvm-config --version` when the
     # LLVM_APPEND_VC_REV cmake flag is turned on. The only difference is
@@ -43,88 +42,80 @@ pkgver() {
     echo "${_pkgver}"
 }
 
-prepare() {
-  cd "$srcdir/llvm-project/llvm"
-  mkdir build
-}
-
 build() {
-  cd "$srcdir/llvm-project/llvm/build"
+    if [  -d _build ]; then
+        rm -rf _build
+    fi
+    mkdir _build
+    cd _build
+  
+    export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-
-  cmake .. -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLLVM_LIBDIR_SUFFIX=32 \
-    -DCMAKE_C_FLAGS:STRING=-m32 \
-    -DCMAKE_CXX_FLAGS:STRING=-m32 \
-    -DLLVM_TARGET_ARCH:STRING=i686 \
-    -DLLVM_HOST_TRIPLE=$CHOST \
-    -DLLVM_DEFAULT_TARGET_TRIPLE="i686-pc-linux-gnu" \
-    -DLLVM_BUILD_LLVM_DYLIB=ON \
-    -DLLVM_LINK_LLVM_DYLIB=ON \
-    -DLLVM_ENABLE_RTTI=ON \
-    -DLLVM_ENABLE_FFI=ON \
-    -DLLVM_BUILD_DOCS=OFF \
-    -DLLVM_ENABLE_SPHINX=OFF \
-    -DLLVM_ENABLE_DOXYGEN=OFF \
-    -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
-    -DLLVM_BINUTILS_INCDIR=/usr/include \
-    -DLLVM_VERSION_SUFFIX=""
-
-  ninja all
+    cmake "$srcdir"/llvm-project/llvm -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DLLVM_LIBDIR_SUFFIX=32 \
+        -DCMAKE_C_FLAGS:STRING=-m32 \
+        -DCMAKE_CXX_FLAGS:STRING=-m32 \
+        -DLLVM_TARGET_ARCH:STRING=i686 \
+        -DLLVM_HOST_TRIPLE=$CHOST \
+        -DLLVM_DEFAULT_TARGET_TRIPLE="i686-pc-linux-gnu" \
+        -DLLVM_BUILD_LLVM_DYLIB=ON \
+        -DLLVM_LINK_LLVM_DYLIB=ON \
+        -DLLVM_ENABLE_RTTI=ON \
+        -DLLVM_ENABLE_FFI=ON \
+        -DLLVM_BUILD_DOCS=OFF \
+        -DLLVM_ENABLE_SPHINX=OFF \
+        -DLLVM_ENABLE_DOXYGEN=OFF \
+        -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
+        -DLLVM_BINUTILS_INCDIR=/usr/include \
+        -DLLVM_VERSION_SUFFIX=""
+    if [[ ! $MAKEFLAGS ]]; then
+        ninja all
+    else
+        ninja "$MAKEFLAGS" all
+    fi
 }
 
 package_lib32-llvm-lw-git() {
-  pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit)"
-  depends=('lib32-llvm-libs-lw-git' 'llvm-lw-git')
-  provides=('lib32-llvm' 'lib32-llvm-svn' 'lib32-llvm-git')
+    pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit)"
+    depends=('lib32-llvm-libs-lw-git' 'llvm-lw-git')
+    provides=('lib32-llvm-git')
 
-  cd "$srcdir/llvm-project/llvm/build"
+    cd _build
+    DESTDIR="$pkgdir" ninja install
 
-  DESTDIR="$pkgdir" ninja install
+    # The runtime library goes into lib32-llvm-libs
+    mv "$pkgdir"/usr/lib32/lib{LLVM,LTO}*.so* "$srcdir"
+    rm "$pkgdir"/usr/lib32/LLVMgold.so
 
-  # The runtime library goes into lib32-llvm-libs
-  mv "$pkgdir"/usr/lib32/lib{LLVM,LTO}*.so* "$srcdir"
-  mv -f "$pkgdir"/usr/lib32/LLVMgold.so "$srcdir"
+    mv "$pkgdir"/usr/bin/llvm-config "$pkgdir"/usr/lib32/llvm-config
+    mv "$pkgdir"/usr/include/llvm/Config/llvm-config.h \
+        "$pkgdir"/usr/lib32/llvm-config-32.h
 
-  # Fix permissions of static libs
-  chmod -x "$pkgdir"/usr/lib32/*.a
+    rm -rf "$pkgdir"/usr/{bin,include,share/{doc,man,llvm,opt-viewer}}
 
-  mv "$pkgdir/usr/bin/llvm-config" "$pkgdir/usr/lib32/llvm-config"
-  mv "$pkgdir/usr/include/llvm/Config/llvm-config.h" \
-    "$pkgdir/usr/lib32/llvm-config-32.h"
+    # Needed for multilib (https://bugs.archlinux.org/task/29951)
+    # Header stub is taken from Fedora
+    install -d "$pkgdir/usr/include/llvm/Config"
+    mv "$pkgdir/usr/lib32/llvm-config-32.h" "$pkgdir/usr/include/llvm/Config/"
 
-  rm -rf "$pkgdir"/usr/{bin,include,share/{doc,man,llvm,opt-viewer}}
+    mkdir "$pkgdir"/usr/bin
+    mv "$pkgdir"/usr/lib32/llvm-config "$pkgdir"/usr/bin/llvm-config32
 
-  # Needed for multilib (https://bugs.archlinux.org/task/29951)
-  # Header stub is taken from Fedora
-  install -d "$pkgdir/usr/include/llvm/Config"
-  mv "$pkgdir/usr/lib32/llvm-config-32.h" "$pkgdir/usr/include/llvm/Config/"
-
-  mkdir "$pkgdir"/usr/bin
-  mv "$pkgdir/usr/lib32/llvm-config" "$pkgdir/usr/bin/llvm-config32"
-
-  install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 package_lib32-llvm-libs-lw-git() {
   pkgdesc="Low Level Virtual Machine (runtime library)(32-bit) "
   depends=('lib32-libffi' 'lib32-zlib' 'lib32-ncurses' 'lib32-libxml2' 'lib32-gcc-libs')
-  provides=('lib32-llvm-libs' 'lib32-llvm-libs-svn' 'lib32-llvm-libs-git')
+  provides=('lib32-llvm-libs-git')
 
   install -d "$pkgdir/usr/lib32"
 
   cp -P \
     "$srcdir"/lib{LLVM,LTO}*.so* \
-    "$srcdir"/LLVMgold.so \
     "$pkgdir/usr/lib32/"
-
-  # Symlink LLVMgold.so from /usr/lib/bfd-plugins
-  # https://bugs.archlinux.org/task/28479
-  install -d "$pkgdir/usr/lib32/bfd-plugins"
-  ln -s ../LLVMgold.so "$pkgdir/usr/lib32/bfd-plugins/LLVMgold.so"
 
   install -Dm644 "$srcdir/llvm-project/llvm/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,5 +1,5 @@
 pkgbase = lib32-llvm-lw-git
-	pkgver = 9.0.0_r313659.ec28615f7fc
+	pkgver = 9.0.0_r315148.03c4e2663ce
 	pkgrel = 1
 	url = http://llvm.org/
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = lib32-llvm-lw-git
 	makedepends = python
 	makedepends = lib32-gcc-libs
 	makedepends = lib32-libxml2
-	options = staticlibs
 	source = llvm-project::git+https://github.com/llvm/llvm-project.git
 	sha256sums = SKIP
 
@@ -20,8 +19,6 @@ pkgname = lib32-llvm-lw-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit)
 	depends = lib32-llvm-libs-lw-git
 	depends = llvm-lw-git
-	provides = lib32-llvm
-	provides = lib32-llvm-svn
 	provides = lib32-llvm-git
 
 pkgname = lib32-llvm-libs-lw-git
@@ -31,7 +28,5 @@ pkgname = lib32-llvm-libs-lw-git
 	depends = lib32-ncurses
 	depends = lib32-libxml2
 	depends = lib32-gcc-libs
-	provides = lib32-llvm-libs
-	provides = lib32-llvm-libs-svn
 	provides = lib32-llvm-libs-git
 
