@@ -1,0 +1,14 @@
+pkgbase = boost-di-git
+	pkgdesc = Boost (experimental) c++14 dependency injection library (developmental version)
+	pkgver = 1.0.1.r418.g388364952
+	pkgrel = 1
+	url = https://github.com/boost-experimental/di
+	arch = any
+	license = Boost
+	makedepends = git
+	makedepends = cmake
+	source = boost-di::git+https://github.com/boost-experimental/di
+	sha256sums = SKIP
+
+pkgname = boost-di-git
+
