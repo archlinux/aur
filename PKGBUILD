@@ -1,6 +1,6 @@
 # Maintainer: Sean Enck <enckse@gmail.com>
 pkgname=sit
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Serverless (offline-first, merge-friendly) Information Tracker"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://sit.fyi"
 license=('MIT')
 makedepends=('rust' 'cmake')
 source=("https://github.com/sit-fyi/sit/archive/v$pkgver.tar.gz")
-sha256sums=('8439637a175aea5303650355f7ce2fb44b2a6b9ce92e68a0887fbb680f1b4a36')
+sha256sums=('ff78edeaf6e1831d0063e000209aed5d9d76461c455b3e7b4f3fb1dda9117cff')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
