@@ -1,6 +1,6 @@
 pkgbase = evince-lcd-standalone
-	pkgdesc = Document viewer (PDF, Postscript, djvu, etc.) with built-in LCD subpixel rendering support
-	pkgver = 3.31.91
+	pkgdesc = Document viewer (PDF, Postscript, djvu, etc.) with built-in LCD subpixel rendering
+	pkgver = 3.32.0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Evince
 	arch = x86_64
@@ -21,7 +21,6 @@ pkgbase = evince-lcd-standalone
 	makedepends = gcc-libs
 	makedepends = cairo
 	makedepends = fontconfig
-	makedepends = openjpeg
 	makedepends = gtk2
 	makedepends = qt4
 	makedepends = qt5-base
@@ -44,20 +43,16 @@ pkgbase = evince-lcd-standalone
 	depends = libsynctex
 	optdepends = texlive-bin: DVI support
 	optdepends = gvfs: bookmark support and session saving
-	provides = evince=3.31.91
+	provides = evince=3.32.0
 	conflicts = evince
 	conflicts = evince-lcdfilter
 	options = !emptydirs
-	source = git+https://git.gnome.org/browse/evince#commit=ae8a46449c65aa274c6a1ebd4b1f057e552517a3
-	source = https://poppler.freedesktop.org/poppler-0.43.0.tar.xz
-	source = 01-evince-subpixel-rendering-by-poppler.patch
-	source = 02-subpixel-rendering-for-poppler-and-glib.patch
-	source = 03-cairo-backend-for-poppler-qt5.patch
+	source = git+https://gitlab.gnome.org/GNOME/evince.git#commit=10da4bcec1cdd535a267e4b8e971668a47f0138b
+	source = https://poppler.freedesktop.org/poppler-0.76.0.tar.xz
+	source = git+https://github.com/jonathanffon/poppler-lcd-patch.git
 	sha256sums = SKIP
+	sha256sums = 370f5fcfe2bbf0c76fc394d338cd72ed7f2044b67f4eb4b115eb074ccfc70d63
 	sha256sums = SKIP
-	sha256sums = 65c35d86787021cccee99082ad15cb06e0e865384f9a05aa3523a8aec1229af6
-	sha256sums = 73c0fb71877633cefc37b13bcd7896263dc63b91fe13fa97c2c240292a2bc338
-	sha256sums = c554b9411764ffcad7a91e22f78a594ca9851e631c70ec15a2b0d52bada0573c
 
 pkgname = evince-lcd-standalone
 
