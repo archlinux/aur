@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-libnice
+	pkgdesc = An implementation of the IETF's draft ICE (for p2p UDP data streams) (mingw-w64)
+	pkgver = 0.1.15
+	pkgrel = 1
+	url = https://nice.freedesktop.org
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-meson
+	makedepends = git
+	makedepends = mingw-w64-gstreamer
+	depends = mingw-w64-glib2
+	depends = mingw-w64-gnutls
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = git+https://gitlab.freedesktop.org/libnice/libnice.git#commit=e25c3e5113c7b7002a78bcca2ecf058bbf7de6d4
+	sha256sums = SKIP
+
+pkgname = mingw-w64-libnice
+
