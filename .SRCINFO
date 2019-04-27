@@ -1,0 +1,14 @@
+pkgbase = num2f11
+	pkgdesc = remap numlock to f11 in X
+	pkgver = 0.0.1
+	pkgrel = 1
+	install = num2f11.install
+	arch = x86_64
+	license = custom
+	provides = num2f11
+	conflicts = num2f11
+	source = num2f11
+	sha512sums = 0922ee5d195d66003059112dfcdcd948eaa171463c0cf5c4c0aa46e55030a9a6dcb55ea6e2ef211a195e661599dcc7c53aed328b4c26ec388f21e41cd2958b85
+
+pkgname = num2f11
+

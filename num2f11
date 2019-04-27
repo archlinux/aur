@@ -1,0 +1,3 @@
+xkb_symbols "num2f11" {
+    key <NMLK> { [ F11 ] };
+};
