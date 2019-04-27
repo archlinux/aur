@@ -11,7 +11,7 @@ arch=('x86_64')
 url="http://libdv.sourceforge.net/"
 license=('LGPL')
 depends=("$_pkgname" 'lib32-popt')
-source=("http://downloads.sourceforge.net/$_pkgname/$_pkgname-${pkgver}.tar.gz")
+source=("https://downloads.sourceforge.net/$_pkgname/$_pkgname-${pkgver}.tar.gz")
 sha512sums=('19887a6f452fa7da8924901ad841f5c4a434a3bde56c932ddb43717592aa744281e3a8ad220231e11d7e6bc3b0e704952a8324e5f85d4e088675edceeeca7dc8')
 
 build() {
