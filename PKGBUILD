@@ -3,7 +3,7 @@
 pkgname=ueyed
 pkgdesc="IDS uEye camera daemon (USB and ethernet)"
 pkgver=4.92.0
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 license=(custom)
 url='https://en.ids-imaging.com'
@@ -31,7 +31,7 @@ sha512sums=('3dcb73451ebb96273ce422c5a68818bacf18012f063c69f8fd0b7381c3c6d3d9fd0
             '9e4156ecfc687b895ecf5055cd97e748760c675e8478caa46c2d19a49f1e2b31000e85a394198b9ab6da40d3b9ede4ffde4f960fc9f8ba7b1a44cffe69b77dbc'
             '3e5d357f43e68a143b9da9c712043224304e30699618da9d17f0916297c48d4865d7af2a040561f1b13c6bdef7c613bc441549f152ce0669f67001f0d401fb5a'
             'fe1901eb22210e7c3f23171197e9316c2a400d68e62d32b52c3900d1d30c38654c90cf101db483dc140103a1c36c2de28b28e6d8a135564c382b0d3e70d37549'
-            'c366ec985d541155f66e7ee0d97e0410b42d54136d8848398768a2b375b93dfe0d30bc1d8249ebbdab82a40db0aa26714b11c220fdbbfc69655e0d303df430f0'
+            '8069b0b2c07d7ad3d283bea903f38676db8b6402b5a2830335ef14586cb5c1176bca4eeba94aadb534c02a3383c85feec7a048de818edac575543d6fb9ca193e'
             'a65feca40b879b3f9b84bf1a58c0dfd8a891444e39caf48c77a7565efbb4426a57b37e202f4ccf19f724711b96674bf98bb0797317bfc2b008b9f4898d53cb78'
             '05b961501a56b1827986aabc2a5ea8320b711fb0089615b212711814906c52af51205f04ffd9df436510362b185911797176bb6ed71bec4e35db8b1cd4d1f408'
             '74b18f11d7946d2cc90097dc537b03fda77a5aece9ec999bc48ac6648f7948eba4039c12518bf8f5b1bcb6d7822152374f6f80bf631362104743842a77ba3a65'
@@ -61,10 +61,10 @@ __install_dir() {
 package() {
 	cd "$srcdir"
 
-	__install_dir     "$srcdir/usr/share"        "$pkgdir/usr/share"               644
-	__install_dir     "$srcdir/usr/include"      "$pkgdir/usr/include"             644
-	__install_dir     "$srcdir/usr/lib"          "$pkgdir/usr/lib"                 644
-	__install_dir     "$srcdir/lib/firmware/ids" "$pkgdir/usr/lib/ueyed/firmware"  644
+	__install_dir     "$srcdir/usr/share"             "$pkgdir/usr/share"               644
+	__install_dir     "$srcdir/usr/include"           "$pkgdir/usr/include"             644
+	__install_dir     "$srcdir/usr/lib"               "$pkgdir/usr/lib"                 644
+	__install_dir     "$srcdir/lib/firmware/ids/ueye" "$pkgdir/usr/lib/ueyed/firmware"  644
 
 	install -D -m 755 -t "$pkgdir/usr/bin" "$srcdir/usr/bin/idscameramanager"
 	install -D -m 755 -t "$pkgdir/usr/bin" "$srcdir/usr/bin/ueyedemo"
