@@ -1,7 +1,8 @@
 [Desktop Entry]
-Categories=Utility;Game
-Exec=mymc-gui
-GenericName=PS2 Memory Card Editor
+Type=Application
 Name=MyMC
+GenericName=PS2 Memory Card Editor
+Comment=Edit your PS2 Memory Cards
 Icon=mymc
-Type=Application 
+Exec=mymc-gui.sh %f
+Categories=Utility;Game;

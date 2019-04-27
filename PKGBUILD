@@ -1,6 +1,6 @@
 pkgname=mymc
 pkgver=2.6
-pkgrel=10
+pkgrel=11
 pkgdesc="A public domain utility for working with PlayStation 2 memory card images"
 arch=(any)
 url="http://www.csclub.uwaterloo.ca:11068/mymc"
@@ -16,7 +16,7 @@ source=("mymc-$pkgver.zip::https://github.com/Ben0mega/mymc/archive/$_commit.zip
 sha256sums=('511639be6b9cadcea45461e33612b7a26a0af54ba123f059e338e21da078cb04'
             'd10616d21e04c0d3b63d3dd995279107b20306e2d70690c06328683714312792'
             'dea7982ca8d9c95441aec91846c4d6e14c248c939b828c35a991bebb43050838'
-            'cdab5b592469259d75a11ec32801ee33ec2975d69b4ebf7cb18b1c5438d8b02b'
+            '84013f3ce49cf5b4d42152dd9d0f9548c3766b2026bc2cb623051c3ca43fc0da'
             '27e07106eb41c719a870821fd38804ba3f11740742e30bb4e032b4b346738fae')
 
 prepare() {

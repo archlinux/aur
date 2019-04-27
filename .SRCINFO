@@ -1,7 +1,7 @@
 pkgbase = mymc
 	pkgdesc = A public domain utility for working with PlayStation 2 memory card images
 	pkgver = 2.6
-	pkgrel = 10
+	pkgrel = 11
 	url = http://www.csclub.uwaterloo.ca:11068/mymc
 	arch = any
 	license = custom:public domain
@@ -15,7 +15,7 @@ pkgbase = mymc
 	sha256sums = 511639be6b9cadcea45461e33612b7a26a0af54ba123f059e338e21da078cb04
 	sha256sums = d10616d21e04c0d3b63d3dd995279107b20306e2d70690c06328683714312792
 	sha256sums = dea7982ca8d9c95441aec91846c4d6e14c248c939b828c35a991bebb43050838
-	sha256sums = cdab5b592469259d75a11ec32801ee33ec2975d69b4ebf7cb18b1c5438d8b02b
+	sha256sums = 0069776d2c03e9afce6f327d1cf35219b6fa2d781bbc99a3f28e77919d198937
 	sha256sums = 27e07106eb41c719a870821fd38804ba3f11740742e30bb4e032b4b346738fae
 
 pkgname = mymc
