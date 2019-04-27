@@ -16,6 +16,7 @@ package() {
 	install -Dm755 ./git-fresh $pkgdir/usr/bin/git-fresh
 
 	install -dm655 $pkgdir/usr/share/licenses/git-fresh
-	cp ./LICENSE $pkgdir/usr/share/licenses/git-fresh
-	cp ./README.md $pkgdir/usr/share/licenses/git-fresh
+	install -Dm644 ./LICENSE $pkgdir/usr/share/licenses/git-fresh/LICENSE
+	install -Dm644 ./README.md $pkgdir/usr/share/licenses/git-fresh/README.md
+	install -Dm644 ./README.md $pkgdir/usr/share/licenses/git-fresh/README.md
 }
