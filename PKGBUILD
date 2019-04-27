@@ -1,3 +1,6 @@
+# Maintainer: Jack Dähn <jack.daehn at gmail dot com>
+# Contributor: Matthew Prenger <matt at prenger dot co>
+
 pkgname=bytecode-viewer
 pkgver=2.9.18
 pkgrel=1
