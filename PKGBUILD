@@ -1,14 +1,14 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-good-git
-pkgver=1.14.0.r197.fd0afe033
+pkgver=1.16.0.r7.0c7c31d19
 pkgrel=1
 _gitname=gst-plugins-good
 pkgdesc="GStreamer Multimedia Framework Good Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
-depends=('mingw-w64-gst-plugins-base-git' 'mingw-w64-orc')
-makedepends=('git' 'python' 'mingw-w64-meson' 'mingw-w64-libsoup' 'mingw-w64-cairo' 'mingw-w64-gdk-pixbuf2' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libpng' 'mingw-w64-libvpx' 'mingw-w64-bzip2' 'mingw-w64-speex' 'mingw-w64-flac' 'mingw-w64-wavpack' 'mingw-w64-mpg123' 'mingw-w64-lame')
+depends=('mingw-w64-gst-plugins-base-git' 'mingw-w64-orc' 'mingw-w64-bzip2')
+makedepends=('git' 'mingw-w64-meson' 'mingw-w64-libsoup' 'mingw-w64-cairo' 'mingw-w64-gdk-pixbuf2' 'mingw-w64-libvpx' 'mingw-w64-speex' 'mingw-w64-flac' 'mingw-w64-wavpack' 'mingw-w64-mpg123' 'mingw-w64-lame')
 optdepends=(
   "mingw-w64-libsoup: libsoup HTTP client source/sink plugin"
   "mingw-w64-cairo: Cairo overlay plugin"
@@ -25,7 +25,7 @@ optdepends=(
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('mingw-w64-gst-plugins-good')
 
-source=("$_gitname::git://anongit.freedesktop.org/gstreamer/$_gitname")
+source=("${_gitname}::git+https://gitlab.freedesktop.org/gstreamer/${_gitname}/")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -49,7 +49,6 @@ build() {
 
 package() {
   cd "${srcdir}/${_gitname}"
-
   for _arch in ${_architectures}; do
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/${_gitname}/build-${_arch}" install
   done
