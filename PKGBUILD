@@ -11,9 +11,9 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
 # Can be from either systemd or systemd-stable
-_commit='3d835d09f29151c97af7cb1116e192df711587ab'
-pkgver=241.93
-pkgrel=1
+_commit='1e5d2d656420d0e755dbcf72aeba3c3aba54e956'
+pkgver=242.0
+pkgrel=3
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -78,6 +78,17 @@ sha512sums=('SKIP'
             '209b01b044877cc986757fa4009a92ea98f480306c2530075d153203c3cd2b3afccab6aacc1453dee8857991e04270572f1700310705d7a0f4d5bed27fab8c67')
 
 _backports=(
+  # socket-util: make sure accept_flush() doesn't hang on EOPNOTSUPP
+  'f3d75364fbebf2ddb6393e54db5e10b6f6234e14'
+  # basic/socket-util: put a limit on the loop to flush connections
+  '67962036f6c6cfd34828c1f1f1fbdc0018fb9898'
+
+  # network: logs link state change
+  '0beb9542e90ab1c5d1507a1046a326fbcf73861c'
+  # network: prevent interfaces to be initialized multiple times
+  'bd08ce56156751d58584a44e766ef61340cdae2d'
+  # network: fix ref/unref logic for Link object
+  '5f707e1280d7c66d3adcffd47a23ad446257f355'
 )
 
 _reverts=(
@@ -94,9 +105,11 @@ prepare() {
 
   local _c
   for _c in "${_backports[@]}"; do
+    git log --oneline -1 "${_c}"
     git cherry-pick -n "${_c}"
   done
   for _c in "${_reverts[@]}"; do
+    git log --oneline -1 "${_c}"
     git revert -n "${_c}"
   done
 
