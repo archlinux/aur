@@ -11,7 +11,7 @@ license=('GPL-3.0')
 depends=('python' 'python-numpy' 'python-matplotlib' 'python-scipy' 'python-h5py' 'python-sympy' 'python-mpmath' 'python-lmfit' 'python-dill' 'python-pyqt5' 'python-uncertainties')
 makedepends=('python-setuptools')
 source=("https://github.com/mutovis/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('45a4ba90e72805d57c291bfdc14329a7841ca0877f54a27d0fd5799ce79170d9')
+sha256sums=('a771d6b38e71104fa09e622ce94de9fa7dac8338aac21389e51f9c77ee1401fb')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
