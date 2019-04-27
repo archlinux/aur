@@ -22,7 +22,7 @@ optdepends=(
   "mingw-w64-srt: Secure, Reliable, Transport client/server network source/sink plugin"
   "mingw-w64-curl: cURL network source and sink plugin"
   "mingw-w64-bzip2: bz2 stream encoder and decoder plugin"
-  "mingw-w64-libice: WebRTC audio/video network bin plugin"
+  "mingw-w64-libnice: WebRTC audio/video network bin plugin"
 )
 options=('!strip' '!buildflags' 'staticlibs')
 
