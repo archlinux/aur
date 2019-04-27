@@ -2,7 +2,7 @@
 
 pkgname=git-fresh
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Keep your repo fresh with one command.'
 arch=('any')
 url='https://github.com/imsky/git-fresh'
