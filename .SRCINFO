@@ -39,7 +39,7 @@ pkgbase = netease-cloud-music
 	source = http://packages.deepin.com/deepin/pool/main/n/netease-cloud-music/netease-cloud-music_1.2.0.2-1_amd64.deb
 	source = http://music.163.com/html/web2/service.html
 	md5sums = 408ee3d039d3f886dac286dbeac6a149
-	md5sums = a8bda1128eee0f6da45f37767a4bba29
+	md5sums = SKIP
 
 pkgname = netease-cloud-music
 

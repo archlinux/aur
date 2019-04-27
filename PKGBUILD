@@ -24,7 +24,7 @@ source=(
 	"http://music.163.com/html/web2/service.html"
 )
 md5sums=('408ee3d039d3f886dac286dbeac6a149'
-         'a8bda1128eee0f6da45f37767a4bba29')
+         'SKIP')
 
 package() {
   cd ${srcdir}
