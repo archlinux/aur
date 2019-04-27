@@ -1,0 +1,21 @@
+pkgbase = cmark-git
+	pkgdesc = CommonMark parsing and rendering library
+	pkgver = 0.29.0.r4.ga61c490
+	pkgrel = 1
+	url = https://github.com/commonmark/cmark
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = python
+	depends = glibc
+	provides = cmark
+	conflicts = cmark
+	options = staticlibs
+	source = git+https://github.com/commonmark/cmark.git
+	sha256sums = SKIP
+
+pkgname = cmark-git
+
