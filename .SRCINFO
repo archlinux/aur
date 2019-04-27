@@ -1,6 +1,6 @@
 pkgbase = gmt
 	pkgdesc = Generic Mapping Tools: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps.
-	pkgver = 6.0.0_7c87ef9ab4e5acbaa2a5a6ed5a40537fbac9da63
+	pkgver = 6.0.0_123089bc70fc8da992a88b7f0ee23cde86562362
 	pkgrel = 1
 	url = http://gmt.soest.hawaii.edu/
 	install = gmt.install
@@ -17,8 +17,8 @@ pkgbase = gmt
 	optdepends = gmt-coast: coastlines
 	optdepends = gmt-dcw: digital chart of the world polygon map
 	conflicts = gmt4
-	source = https://github.com/GenericMappingTools/gmt/archive/7c87ef9ab4e5acbaa2a5a6ed5a40537fbac9da63.tar.gz
-	md5sums = 1842197d5e759c5f034e680d728c1006
+	source = https://github.com/GenericMappingTools/gmt/archive/123089bc70fc8da992a88b7f0ee23cde86562362.tar.gz
+	md5sums = ef84e3ce3587418286dae78f731bbcb2
 
 pkgname = gmt
 
