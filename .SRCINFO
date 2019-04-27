@@ -1,12 +1,11 @@
 pkgbase = mingw-w64-gst-plugins-good
 	pkgdesc = GStreamer Multimedia Framework Good Plugins (mingw-w64)
-	pkgver = 1.14.4
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = any
 	license = LGPL
-	makedepends = python
-	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-meson
 	makedepends = mingw-w64-libsoup
 	makedepends = mingw-w64-cairo
 	makedepends = mingw-w64-gdk-pixbuf2
@@ -33,8 +32,8 @@ pkgbase = mingw-w64-gst-plugins-good
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://gstreamer.freedesktop.org//src/gst-plugins-good/gst-plugins-good-1.14.4.tar.xz
-	sha256sums = 5f8b553260cb0aac56890053d8511db1528d53cae10f0287cfce2cb2acc70979
+	source = http://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.16.0.tar.xz
+	sha256sums = 654adef33380d604112f702c2927574cfc285e31307b79e584113858838bb0fd
 
 pkgname = mingw-w64-gst-plugins-good
 

@@ -1,13 +1,13 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-good
-pkgver=1.14.4
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Good Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
 depends=('mingw-w64-gst-plugins-base' 'mingw-w64-orc' 'mingw-w64-bzip2')
-makedepends=('python' 'mingw-w64-configure' 'mingw-w64-libsoup' 'mingw-w64-cairo' 'mingw-w64-gdk-pixbuf2' 'mingw-w64-libvpx' 'mingw-w64-speex' 'mingw-w64-flac' 'mingw-w64-wavpack' 'mingw-w64-mpg123' 'mingw-w64-lame')
+makedepends=('mingw-w64-meson' 'mingw-w64-libsoup' 'mingw-w64-cairo' 'mingw-w64-gdk-pixbuf2' 'mingw-w64-libvpx' 'mingw-w64-speex' 'mingw-w64-flac' 'mingw-w64-wavpack' 'mingw-w64-mpg123' 'mingw-w64-lame')
 optdepends=(
   "mingw-w64-libsoup: libsoup HTTP client source/sink plugin"
   "mingw-w64-cairo: Cairo overlay plugin"
@@ -24,47 +24,30 @@ optdepends=(
 
 options=('!strip' '!buildflags' 'staticlibs')
 
-source=(${url}/src/gst-plugins-good/gst-plugins-good-${pkgver}.tar.xz)
-sha256sums=('5f8b553260cb0aac56890053d8511db1528d53cae10f0287cfce2cb2acc70979')
+source=(${url}src/gst-plugins-good/gst-plugins-good-${pkgver}.tar.xz)
+sha256sums=('654adef33380d604112f702c2927574cfc285e31307b79e584113858838bb0fd')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 
 build() {
   cd "${srcdir}/gst-plugins-good-${pkgver}"
+
   for _arch in $_architectures; do
-    mkdir -p "build-${_arch}"
-    cd "build-${_arch}"
-    ${_arch}-configure \
-      --with-package-name="GStreamer Good Plugins (Arch Linux)" \
-      --with-package-origin="http://www.archlinux.org/" \
-      --disable-examples --disable-oss4 --disable-oss --disable-dv1394 \
-      --disable-aalib --disable-libcaca --disable-jack --disable-shout2
-
-    # https://bugzilla.gnome.org/show_bug.cgi?id=655517
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-    make
-    cd ..
+    mkdir -p "build-${_arch}" && pushd build-${_arch}
+    ${_arch}-meson \
+      -D package-name="GStreamer (Arch Linux)" \
+      -D package-origin="http://www.archlinux.org/" ..
+    ninja
+    popd
   done
 }
 
 
 package() {
   cd "${srcdir}/gst-plugins-good-${pkgver}"
-
   for _arch in ${_architectures}; do
-    cd "build-${_arch}"
-    make DESTDIR="${pkgdir}" install
-
-    rm "$pkgdir"/usr/$_arch/lib/gstreamer-1.0/*.a
-    rm "$pkgdir"/usr/$_arch/lib/gstreamer-1.0/*.la
-    rm -rf "$pkgdir"/usr/${_arch}/share/{aclocal,man,locale}
-
-    find "$pkgdir" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
-    find "$pkgdir" -name '*.dll' -o -name '*.a' -exec ${_arch}-strip -g {} \;
-
-    cd ..
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}/gst-plugins-good-${pkgver}/build-${_arch}" install
   done
 }
 
