@@ -1,6 +1,6 @@
 pkgname=('alacritty-git' 'alacritty-terminfo-git')
 _pkgname="alacritty"
-pkgver=0.3.0.1170.g5174f9b
+pkgver=0.3.2.1190.g9c6d12e
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/jwilm/alacritty"
@@ -42,5 +42,5 @@ package_alacritty-terminfo-git() {
 	cd $_pkgname/extra
 
 	install -dm 755 "$pkgdir/usr/share/terminfo/a/"
-	tic -o "$pkgdir/usr/share/terminfo" alacritty.info
+	tic -o "$pkgdir/usr/share/terminfo" -xe alacritty,alacritty-direct alacritty.info
 }
