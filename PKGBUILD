@@ -1,8 +1,8 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=jriver-media-center25
-_debpkgver=25.0.15
-pkgver=25.0.15
+_debpkgver=25.0.31
+pkgver=25.0.31
 pkgrel=1
 pkgdesc="The Most Comprehensive Media Software"
 arch=('x86_64')
