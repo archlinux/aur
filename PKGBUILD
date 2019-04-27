@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-base-git
-pkgver=1.14.0.r261.f1272e547
+pkgver=1.16.0.r12.7095b7c47
 pkgrel=1
 _gitname=gst-plugins-base
 pkgdesc="GStreamer Multimedia Framework Base Plugins (mingw-w64)"
@@ -19,7 +19,7 @@ optdepends=(
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('mingw-w64-gst-plugins-base')
 
-source=("${_gitname}::git://anongit.freedesktop.org/gstreamer/${_gitname}")
+source=("${_gitname}::git+https://gitlab.freedesktop.org/gstreamer/${_gitname}/")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -45,7 +45,6 @@ build() {
 
 package() {
   cd "${srcdir}/${_gitname}"
-
   for _arch in ${_architectures}; do
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/${_gitname}/build-${_arch}" install
   done
