@@ -28,6 +28,8 @@ package_python-jwcrypto() {
     depends=("python-cryptography")
     cd "${srcdir}/jwcrypto"
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
+
+    rm -Rf "${pkgdir}/usr/share/doc"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
@@ -35,5 +37,7 @@ package_python2-jwcrypto() {
     depends=("python2-cryptography")
     cd "${srcdir}/jwcrypto"
     python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
+
+    rm -Rf "${pkgdir}/usr/share/doc"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
