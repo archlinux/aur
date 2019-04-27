@@ -2,13 +2,13 @@
 
 pkgname=xplayer-plparser-git
 _pkgbasename=xplayer-plparser
-pkgver=1.0.2.r1.ga5380e4
+pkgver=master.lmde3.r0.g600ec3d
 pkgrel=1
 pkgdesc="Playlist parser for xplayer. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('gmime' 'libsoup' 'libarchive' 'libquvi')
-makedepends=('git' 'gnome-common' 'gtk-doc' 'gobject-introspection')
+makedepends=('git' 'meson' 'gtk-doc' 'gobject-introspection')
 provides=($pkgname $_pkgbasename)
 conflicts=("${_pkgbasename}")
 url='https://github.com/linuxmint/xplayer-plparser'
@@ -22,14 +22,17 @@ pkgver() {
 }
 
 build() {
-    cd ${srcdir}/${pkgname}
-    ./autogen.sh --prefix="/usr" \
-         --localstatedir="/var" \
-         --libexecdir="/usr/lib/${_pkgbasename}"
-    make
+    mkdir -p "${srcdir}/${pkgname}/build"
+    cd "${srcdir}/${pkgname}/build"
+
+    meson --prefix=/usr \
+          --libexecdir=lib/${pkgname} \
+          --buildtype=plain \
+          ..
+    ninja
 }
 
 package(){
-    cd ${srcdir}/${pkgname}
-    make DESTDIR="$pkgdir/" install
+    cd ${srcdir}/${pkgname}/build
+    DESTDIR="$pkgdir/" ninja install
 }
