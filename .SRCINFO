@@ -1,6 +1,6 @@
 pkgbase = okular-lcd-standalone
-	pkgdesc = KDE Document viewer (PDF, Postscript, djvu, etc.) with built-in LCD subpixel rendering support
-	pkgver = 18.12.3
+	pkgdesc = Document viewer (PDF, Postscript, djvu, etc.) with built-in LCD subpixel rendering
+	pkgver = 19.04.0
 	pkgrel = 1
 	url = https://kde.org/applications/graphics/okular/
 	arch = x86_64
@@ -26,7 +26,6 @@ pkgbase = okular-lcd-standalone
 	makedepends = gcc-libs
 	makedepends = cairo
 	makedepends = fontconfig
-	makedepends = openjpeg
 	makedepends = pkgconfig
 	makedepends = lcms2
 	makedepends = gobject-introspection
@@ -58,16 +57,14 @@ pkgbase = okular-lcd-standalone
 	replaces = kdegraphics-okular
 	replaces = okular
 	replaces = okular-git
-	source = git+https://github.com/KDE/okular#commit=cdac709ed710b8240a22e103c83c258e228b6cbc
-	source = https://poppler.freedesktop.org/poppler-0.43.0.tar.xz
+	source = https://download.kde.org/stable/applications/19.04.0/src/okular-19.04.0.tar.xz
+	source = https://poppler.freedesktop.org/poppler-0.76.0.tar.xz
+	source = git+https://github.com/jonathanffon/poppler-lcd-patch.git
 	source = 01-okular-subpixel-rendering-by-poppler.patch
-	source = 02-subpixel-rendering-for-poppler-and-glib.patch
-	source = 03-cairo-backend-for-poppler-qt5.patch
+	sha256sums = 1947b394dfd8da9c7cc4234e308e2476ffa44dc58542d246eafc8397d8991b6e
+	sha256sums = 370f5fcfe2bbf0c76fc394d338cd72ed7f2044b67f4eb4b115eb074ccfc70d63
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = 4d44bfc0f34a3e26f2d1cc6f5a99cf4199c7a13ae5e1ed57c4b875703328d525
-	sha256sums = 73c0fb71877633cefc37b13bcd7896263dc63b91fe13fa97c2c240292a2bc338
-	sha256sums = c554b9411764ffcad7a91e22f78a594ca9851e631c70ec15a2b0d52bada0573c
+	sha256sums = 7d9c083519cb6239b8cde57413ec02f6d48afd6c692757fef6feeb9498fcb787
 
 pkgname = okular-lcd-standalone
 
