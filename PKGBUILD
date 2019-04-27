@@ -9,8 +9,8 @@
 #                                                                             #
 # API changes between different Kodi versions make it necessary to specify    #
 # the version of Kodi you want to build this package for. You can choose      #
-# between Krypton (17), Leia (18) and git master (99). Do so in the following #
-# line.                                                                       #
+# between Krypton (17), Leia (18), Matrix (19) and git master (99). Do so in  #
+# the following line.                                                         #
 #                                                                             #
 ###############################################################################
 
@@ -35,6 +35,7 @@ md5sums=('SKIP')
 case "$API" in
   17)  source[0]="${pkgname}::git+https://github.com/xbmc/kodi-platform.git#commit=c8188d826" ;;
   18)  source[0]="${pkgname}::git+https://github.com/xbmc/kodi-platform.git#commit=e8574b883" ;;
+  19)  ;;
   99)  ;;
   *)   echo "Unknown API version. Follow instructions in PKGBUILD." && false
 esac
