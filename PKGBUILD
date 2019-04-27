@@ -1,13 +1,13 @@
 # Maintainer: Erik Wallström <erik.wallstrom@live.com>
 pkgname=pop-icon-theme-git
 _pkgname=pop-icon-theme
-pkgver="r2148.b1b46e861"
+pkgver=r2326.27be527bda
 pkgrel=1
-pkgdesc="A free and open source SVG icon theme for Linux, based on Paper Icon Set and Papirus."
+pkgdesc="An icon theme for Pop!_OS"
 arch=("any")
-url="https://github.com/system76/pop-icon-theme"
-license=('GPL2' 'CCPL')
-makedepends=("git")
+url="https://github.com/pop-os/icon-theme"
+license=('CCPL')
+makedepends=("git" "meson" "ninja")
 optdepends=(
 	"gnome-shell"
 	"gnome-flashback"
@@ -21,18 +21,21 @@ optdepends=(
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+https://github.com/system76/pop-icon-theme.git")
+source=("${_pkgname}::git+https://github.com/pop-os/icon-theme.git")
 sha256sums=("SKIP")
 
-#build() { }
-
-package() {
-  	cd "${_pkgname}"
-	make DESTDIR="${pkgdir}" install
-	make DESTDIR="${pkgdir}" post-install
+pkgver() {
+  	cd ${srcdir}/${_pkgname}
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-pkgver() {
-  	cd "${_pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+build() { 
+  	cd ${srcdir}/${_pkgname}
+	meson --prefix='/usr' build
+	ninja -C build
+}
+
+package() {
+  	cd ${srcdir}/${_pkgname}
+	DESTDIR="${pkgdir}" ninja -C build install
 }
