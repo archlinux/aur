@@ -1,6 +1,6 @@
 # Maintainer: Josh Hoffer <hoffer dot joshua at gmail dot com >
 # Contributor: Jack Rosenthal
-# Contributor: David Florness <edwargix@gmail.com>
+# Contributor: David Florness <edwargix at gmail dot com>
 pkgname=threelayout
 _keymap=3l
 pkgver=45.d3c9798
