@@ -2,7 +2,7 @@
 
 _pkgname=electronplayer
 pkgname=$_pkgname
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="An Electron-based web video player, supporting multiple services"
 url="https://github.com/oscartbeaumont/ElectronPlayer"
@@ -39,8 +39,8 @@ source=(
     "https://github.com/oscartbeaumont/ElectronPlayer/archive/v${pkgver}.tar.gz"
     "${_pkgname}.desktop"
 )
-sha512sums=("20f8033b849d897ecf05ac354b057d1d599aa63de2f5a98cef347cde7e091f2aa436e01efdddb2b764423b084021c3ba6f512b6b285ddeb8d696dd308dffd710"
-            "280a252895e641f4bd009b4acf7f9f42959f0b9d51424ea71bf564600533de3867a652efd9d982643c34907bb5e57fa677e6c73315cb69a2f12dfd52e6f09f03")
+sha512sums=('d0e29f3290a2eb5a54a245c3dd87139b7758772320ab5efd0d93d3ca90904b43549c58635b1e352c16c161b68f26a09e1b11c98eae68c273db300236bca490a4'
+            '280a252895e641f4bd009b4acf7f9f42959f0b9d51424ea71bf564600533de3867a652efd9d982643c34907bb5e57fa677e6c73315cb69a2f12dfd52e6f09f03')
 
 prepare() {
     cd "ElectronPlayer-$pkgver"
