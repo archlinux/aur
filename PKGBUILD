@@ -50,7 +50,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20190412.r0.gbcb67f0fbce9
+pkgver=20190426.r0.g3ddfa8af5dc9
 _srcname=linux-next
 pkgrel=1
 arch=('x86_64')
@@ -358,7 +358,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
-            '307d748dad8eca8d776bdfb154181259fad33d539ab4d02fd6f531d749b10acae7de879c80275e84059fad5dc201ad42ccc058103b0eadd43fc91dfb288cb78c'
+            '69a69b1d805f547e3b4aac051d03bd0de71bcf11bff71d83015ec16397d207e7d46c06d115779497e92053e91e81a5368dd5c8532a0be2b44bd2d162d66bf57b'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'
