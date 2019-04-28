@@ -1,6 +1,6 @@
 # Maintainer: GI_Jack <iGI_Jack@hackermail.com>
 pkgname=mkinitcpio-liveusb-units
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="mkinitcpio minimal block hooks for live usb sticks"
 arch=('any')
