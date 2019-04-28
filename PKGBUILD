@@ -6,7 +6,7 @@
 SUMO_HOME='/usr/share/sumo'
 pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
-pkgver=1.1.0
+pkgver=1.2.0
 _pkgver="${pkgver//./_}"
 pkgrel=2
 pkgdesc="Traffic simulation modelling road vehicles, public transport and pedestrians."
@@ -19,7 +19,7 @@ source=("https://github.com/eclipse/sumo/archive/v${_pkgver}.tar.gz"
         "${pkgbase}.desktop"
         "0001-Properly-use-DESTDIR-prefix-and-root.patch")
 
-sha256sums=('11aeaa8abaa8008e4f13f82cd77797ffd803d20e345c741966a70a3dc1f55c2e'
+sha256sums=('2f749ece251ca1e0c9b77535faaadd77efcf8aa14e0eb9c72fe0e29a4ab16d50'
             'd9ec82a1b56ebeaf31c6382f6d903baf0767e440b640a713e587d7e09f72d213'
             '2dc86272997f898908afab9136bb423e378f60c34bfa92cdbd2fbb2a6b0d6c25')
 
