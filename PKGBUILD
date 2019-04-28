@@ -4,7 +4,8 @@
 
 pkgname=st-luke-git
 _pkgname=st-luke
-pkgver=0.8.1.r1048
+_pkgver=0.8.1
+pkgver=0.8.1.r1051
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X'
 url='http://st.suckless.org/'
@@ -13,7 +14,7 @@ license=('MIT')
 options=('zipman')
 depends=('libxft')
 makedepends=('ncurses' 'libxext' 'git')
-epoch=1
+
 # include config.h and any patches you want to have applied here
 source=("${_pkgname}::git+https://github.com/LukeSmithxyz/st.git")
 sha256sums=('SKIP')
@@ -22,12 +23,13 @@ conflicts=("${_pkgname}" 'st')
 
 pkgver() {
   cd "${_pkgname}"
-  echo "0.8.1.r$(git rev-list --count HEAD)"
+  echo "$_pkgver.r$(git rev-list --count HEAD)"
 }
 
 prepare() {
   cd "${_pkgname}"
-  sed -i '8s+mono:Pixelsize?16+Luxi Mono:Pixelsize?10+' config.h
+  # skip terminfo which conflicts with nsurses
+  sed -i '/tic /d' Makefile
 }
 
 build() {

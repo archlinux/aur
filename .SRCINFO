@@ -1,8 +1,7 @@
 pkgbase = st-luke-git
 	pkgdesc = Simple virtual terminal emulator for X
-	pkgver = 0.8.1.r1048
+	pkgver = 0.8.1.r1051
 	pkgrel = 1
-	epoch = 1
 	url = http://st.suckless.org/
 	arch = i686
 	arch = x86_64
