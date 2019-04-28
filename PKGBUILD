@@ -1,8 +1,8 @@
 # Maintainer: robertfoster
 
 pkgname=iortcw-data
-pkgver=1.51b
-pkgrel=2
+pkgver=1.51c
+pkgrel=1
 pkgdesc="Return to Castle Wolfenstein Single Player pk3s files (shared use)"
 arch=('any')
 url="ftp://ftp.internat.freebsd.org/pub/FreeBSD/distfiles/"
