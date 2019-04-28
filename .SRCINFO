@@ -6,29 +6,33 @@ pkgbase = git-nautilus-icons-git
 	arch = i686
 	license = BSD 2-Clause "Simplified"
 	source = git+https://github.com/chrisjbillington/git_nautilus_icons.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = git-nautilus-icons-git
 	pkgdesc = A Nautilus Python 3 extension to overlay icons on files in git repositories
 	depends = python-gobject
 	depends = python-nautilus
 	provides = git-nautilus-icons
+	conflicts = git-nautilus-icons
 
 pkgname = git-nautilus-icons-py2-git
 	pkgdesc = A Nautilus Python 2 extension to overlay icons on files in git repositories
 	depends = python2-gobject
 	depends = python2-nautilus
 	provides = git-nautilus-icons
+	conflicts = git-nautilus-icons
 
 pkgname = git-nemo-icons-git
 	pkgdesc = A Nemo Python extension to overlay icons on files in git repositories
 	depends = python-gobject
 	depends = nemo-python
 	provides = git-nemo-icons
+	conflicts = git-nemo-icons
 
 pkgname = git-caja-icons-git
 	pkgdesc = A Caja Python extension to overlay icons on files in git repositories
 	depends = python2-gobject
 	depends = python2-caja
 	provides = git-caja-icons
+	conflicts = git-caja-icons
 
