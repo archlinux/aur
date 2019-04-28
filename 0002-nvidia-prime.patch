@@ -1,0 +1,154 @@
+From: Tim Lunn <tim@feathertop.org>
+Date: Sat, 22 Mar 2014 00:23:12 +0100
+Subject: Add hooks to run prime scripts (as root) before and after a
+ gdm-session
+
+This allows enabling and disabling the dGPU on log out.
+---
+ common/gdm-common.c    |  2 +-
+ daemon/gdm-session.c   |  6 ++++++
+ daemon/gdm-x-session.c |  5 +++++
+ data/Makefile.am       | 28 ++++++++++++++++++++++++++--
+ data/Prime             |  6 ++++++
+ data/PrimeOff          |  6 ++++++
+ 6 files changed, 50 insertions(+), 3 deletions(-)
+ create mode 100644 data/Prime
+ create mode 100644 data/PrimeOff
+
+diff --git a/common/gdm-common.c b/common/gdm-common.c
+index 373d5b8..02a6044 100644
+--- a/common/gdm-common.c
++++ b/common/gdm-common.c
+@@ -721,7 +721,7 @@ gdm_run_script (const char *dir,
+                 goto out;
+         }
+ 
+-        env = gdm_get_script_environment (username,
++        env = gdm_get_script_environment ((g_strcmp0 (username, "root") == 0)?NULL:username,
+                                           display_name,
+                                           display_hostname,
+                                           display_x11_authority_file);
+diff --git a/daemon/gdm-session.c b/daemon/gdm-session.c
+index 6a116a8..1792bfd 100644
+--- a/daemon/gdm-session.c
++++ b/daemon/gdm-session.c
+@@ -2970,6 +2970,12 @@ gdm_session_close (GdmSession *self)
+ 
+         g_list_free_full (self->outside_connections, g_object_unref);
+         self->outside_connections = NULL;
++
++        /* Run PrimeOff after the session is closed */
++        gdm_run_script (GDMCONFDIR "/PrimeOff", "root",
++                        NULL,
++                        NULL,
++                        NULL);
+ }
+ 
+ void
+diff --git a/daemon/gdm-x-session.c b/daemon/gdm-x-session.c
+index 3b2fcef..9a57300 100644
+--- a/daemon/gdm-x-session.c
++++ b/daemon/gdm-x-session.c
+@@ -614,6 +614,11 @@ spawn_session (State        *state,
+ 
+         g_debug ("Running X session");
+ 
++        gdm_run_script (GDMCONFDIR "/Prime", "root",
++                        state->display_name,
++                        NULL, /* hostname */
++                        state->auth_file);
++
+         launcher = g_subprocess_launcher_new (G_SUBPROCESS_FLAGS_NONE);
+ 
+         if (state->environment != NULL) {
+diff --git a/data/Makefile.am b/data/Makefile.am
+index 210bf5d..7bca5e4 100644
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -10,6 +10,8 @@ SUBDIRS =			\
+ initdir = $(gdmconfdir)/Init
+ postdir = $(gdmconfdir)/PostSession
+ predir = $(gdmconfdir)/PreSession
++primedir = $(gdmconfdir)/Prime
++primeoffdir = $(gdmconfdir)/PrimeOff
+ postlogindir = $(gdmconfdir)/PostLogin
+ workingdir = $(GDM_WORKING_DIR)
+ xauthdir = $(GDM_XAUTH_DIR)
+@@ -174,6 +176,8 @@ EXTRA_DIST +=			\
+ 	Xsession.in 		\
+ 	Init.in 		\
+ 	PreSession.in 		\
++	Prime			\
++	PrimeOff      		\
+ 	PostSession.in 		\
+ 	PostLogin 		\
+ 	$(NULL)
+@@ -237,6 +241,8 @@ uninstall-hook:
+ 	$(DESTDIR)$(initdir)/Default \
+ 	$(DESTDIR)$(postlogindir)/Default.sample \
+ 	$(DESTDIR)$(predir)/Default \
++	$(DESTDIR)$(primedir)/Default \
++	$(DESTDIR)$(primeoffdir)/Default \
+ 	$(DESTDIR)$(postdir)/Default \
+ 	$(DESTDIR)$(sysconfdir)/dconf/db/gdm \
+ 	$(DESTDIR)$(sysconfdir)/dconf/profile/gdm \
+@@ -281,7 +287,25 @@ endif
+ 	-if test -f $(DESTDIR)$(predir)/Default; then \
+ 		cp -f $(DESTDIR)$(predir)/Default $(DESTDIR)$(predir)/Default.orig; \
+ 	fi
+-	$(INSTALL_SCRIPT) PreSession $(DESTDIR)$(predir)/Default
++	$(INSTALL_SCRIPT) $(builddir)/PreSession $(DESTDIR)$(predir)/Default
++
++	if test '!' -d $(DESTDIR)$(primedir); then \
++		$(mkinstalldirs) $(DESTDIR)$(primedir); \
++		chmod 755 $(DESTDIR)$(primedir); \
++	fi
++	-if test -f $(DESTDIR)$(primedir)/Default; then \
++		cp -f $(DESTDIR)$(primedir)/Default $(DESTDIR)$(primedir)/Default.orig; \
++	fi
++	$(INSTALL_SCRIPT) $(srcdir)/Prime $(DESTDIR)$(primedir)/Default
++
++	if test '!' -d $(DESTDIR)$(primeoffdir); then \
++		$(mkinstalldirs) $(DESTDIR)$(primeoffdir); \
++		chmod 755 $(DESTDIR)$(primeoffdir); \
++	fi
++	-if test -f $(DESTDIR)$(primeoffdir)/Default; then \
++		cp -f $(DESTDIR)$(primeoffdir)/Default $(DESTDIR)$(primeoffdir)/Default.orig; \
++	fi
++	$(INSTALL_SCRIPT) $(srcdir)/PrimeOff $(DESTDIR)$(primeoffdir)/Default
+ 
+ 	if test '!' -d $(DESTDIR)$(postdir); then \
+ 		$(mkinstalldirs) $(DESTDIR)$(postdir); \
+@@ -290,7 +314,7 @@ endif
+ 	-if test -f $(DESTDIR)$(postdir)/Default; then \
+ 		cp -f $(DESTDIR)$(postdir)/Default $(DESTDIR)$(postdir)/Default.orig; \
+ 	fi
+-	$(INSTALL_SCRIPT) PostSession $(DESTDIR)$(postdir)/Default
++	$(INSTALL_SCRIPT) $(builddir)/PostSession $(DESTDIR)$(postdir)/Default
+ 
+ 	if test '!' -d $(DESTDIR)$(logdir); then \
+ 		$(mkinstalldirs) $(DESTDIR)$(logdir); \
+diff --git a/data/Prime b/data/Prime
+new file mode 100644
+index 0000000..30caf03
+--- /dev/null
++++ b/data/Prime
+@@ -0,0 +1,6 @@
++#!/bin/sh
++
++primeoffload=/sbin/prime-offload
++if [ -f "$primeoffload" ]; then
++    $primeoffload
++fi
+diff --git a/data/PrimeOff b/data/PrimeOff
+new file mode 100644
+index 0000000..5a61c3c
+--- /dev/null
++++ b/data/PrimeOff
+@@ -0,0 +1,6 @@
++#!/bin/sh
++
++primeswitch=/sbin/prime-switch
++if [ -f "$primeswitch" ]; then
++    $primeswitch
++fi

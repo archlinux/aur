@@ -1,0 +1,55 @@
+pkgbase = gdm-prime
+	pkgdesc = Display manager and login screen - patched with Prime support for Optimus laptops
+	pkgver = 3.32.0+2+g820f90f5
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/GDM
+	arch = x86_64
+	license = GPL
+	checkdepends = check
+	makedepends = yelp-tools
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = docbook-xsl
+	depends = gnome-shell
+	depends = gnome-session
+	depends = upower
+	depends = xorg-xrdb
+	depends = xorg-server
+	depends = xorg-xhost
+	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=820f90f5a78b81b2e4610da14627266c2135c8b0
+	source = 0001-Xsession-Don-t-start-ssh-agent-by-default.patch
+	source = 0002-nvidia-prime.patch
+	sha256sums = SKIP
+	sha256sums = 3412f7da0205409f08a126a1d166b644fe0f1d0444f7cdebdce8e59cea2d672c
+	sha256sums = f2ac60c8e4d62805dc2f441a8754f1c15e12c64ec0dbb1031dbd91dd47df52d9
+
+pkgname = gdm-prime
+	groups = gnome
+	depends = gnome-shell
+	depends = gnome-session
+	depends = upower
+	depends = xorg-xrdb
+	depends = xorg-server
+	depends = xorg-xhost
+	depends = libgdm
+	optdepends = fprintd: fingerprint authentication
+	provides = gdm
+	conflicts = gdm
+	backup = etc/pam.d/gdm-autologin
+	backup = etc/pam.d/gdm-fingerprint
+	backup = etc/pam.d/gdm-launch-environment
+	backup = etc/pam.d/gdm-password
+	backup = etc/pam.d/gdm-smartcard
+	backup = etc/gdm/custom.conf
+	backup = etc/gdm/Xsession
+	backup = etc/gdm/PostSession/Default
+	backup = etc/gdm/PreSession/Default
+
+pkgname = libgdm-prime
+	pkgdesc = GDM support library
+	depends = systemd
+	depends = glib2
+	depends = dconf
+	provides = libgdm
+	conflicts = libgdm
+
