@@ -4,7 +4,7 @@
 pkgname=octave-hg
 epoch=5
 pkgrel=1
-pkgver=6.0.0r27056.64461ccf3039
+pkgver=6.0.0.r27070.726d945f23de
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ pkgver() {
   cd ${_hgrepo}
 #  _appver=$(awk -F", " '/bugs.html/ {print $2}' configure.ac|tr -d []|tr - _)
   _appver=6.0.0
-  printf "%sr%s.%s" "${_appver}" "$(hg identify -n)" "$(hg identify -i)"
+  printf "%s.r%s.%s" "${_appver}" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 prepare () {
