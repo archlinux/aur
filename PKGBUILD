@@ -1,7 +1,7 @@
 # Maintainer: Luca CPZ <luca.cpz [at] gmail [dot] com>
 
 pkgname=lain-git
-pkgcom=1694
+pkgcom=1695; /pkgsha=/cpkgsha=724c7b9
 pkgsha=85db468
 pkgver=$pkgcom.$pkgsha
 pkgrel=1
