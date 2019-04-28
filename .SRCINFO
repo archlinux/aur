@@ -1,0 +1,15 @@
+pkgbase = gedit-source-code-browser-git
+	pkgdesc = A source code class and function browser plugin for Gedit 3.
+	pkgver = r21.71ed19f
+	pkgrel = 1
+	url = https://github.com/ywwg/gedit-source-code-browser
+	arch = any
+	license = BSD
+	depends = gedit
+	provides = gedit-source-code-browser
+	conflicts = gedit-source-code-browser
+	source = git+https://github.com/ywwg/gedit-source-code-browser.git
+	sha256sums = SKIP
+
+pkgname = gedit-source-code-browser-git
+
