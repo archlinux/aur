@@ -2,47 +2,50 @@
 # Contributor: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=qgroundcontrol-git
 pkgver=r14118.0871b019d
-pkgrel=1
+pkgrel=2
 pkgdesc="Micro air vehicle ground control station."
 arch=('x86_64')
 url="http://qgroundcontrol.org/"
 license=('GPL3')
-depends=( \
-		  'bzip2' \
-		  'dbus' \
-		  'flac' \
-		  'gst-plugins-base-libs' \
-		  'libasyncns' \
-		  'libffi' \
-		  'libgcrypt' \
-		  'libgpg-error' \
-		  'libogg' \
-		  'libsndfile' \
-		  'libsystemd' \
-		  'libunwind' \
-		  'libx11' \
-		  'libxau' \
-		  'libxcb' \
-		  'libxdmcp' \
-		  'libxext' \
-		  'lz4' \
-		  'orc' \
-		  'pcre' \
-		  'sdl2' \
-		  'xz' \
-		  'zlib' \
-		  'qt5-speech' \
-		  'qt5-multimedia' \
-		  'qt5-serialport' \
-		  'qt5-charts' \
-		  'qt5-quickcontrols' \
-		  'qt5-quickcontrols2' \
+
+depends=('bzip2'
+		 'dbus'
+		 'flac'
+		 'gst-plugins-base-libs'
+		 'libasyncns'
+		 'libffi'
+		 'libgcrypt'
+		 'libgpg-error'
+		 'libogg'
+		 'libsndfile'
+		 'libsystemd'
+		 'libunwind'
+		 'libx11'
+		 'libxau'
+		 'libxcb'
+		 'libxdmcp'
+		 'libxext'
+		 'lz4'
+		 'orc'
+		 'pcre'
+		 'sdl2'
+		 'xz'
+		 'zlib'
+		 'qt5-speech'
+		 'qt5-multimedia'
+		 'qt5-serialport'
+		 'qt5-charts'
+		 'qt5-quickcontrols'
+		 'qt5-quickcontrols2'
+		 'qt5-location'
+		 'qt5-svg'
 )
-  
+
 makedepends=('git' 'qt5-base')
 
 source=('qgroundcontrol::git+https://github.com/mavlink/qgroundcontrol.git')
-md5sums=('SKIP')
+
+sah256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -50,7 +53,6 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir"
 	cd "$srcdir/${pkgname%-git}"
 	git submodule update --init --recursive
 	mkdir -p "$srcdir/${pkgname%-git}/build"
@@ -60,7 +62,7 @@ build() {
 	cd "$srcdir/${pkgname%-git}/build"
 	qmake ../qgroundcontrol.pro
 	make
-	
+
 	echo "[Desktop Entry]
 Type=Application
 Name=QGroundControl Development

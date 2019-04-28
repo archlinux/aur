@@ -1,7 +1,7 @@
 pkgbase = qgroundcontrol-git
 	pkgdesc = Micro air vehicle ground control station.
 	pkgver = r14118.0871b019d
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qgroundcontrol.org/
 	arch = x86_64
 	license = GPL3
@@ -36,8 +36,9 @@ pkgbase = qgroundcontrol-git
 	depends = qt5-charts
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
+	depends = qt5-location
+	depends = qt5-svg
 	source = qgroundcontrol::git+https://github.com/mavlink/qgroundcontrol.git
-	md5sums = SKIP
 
 pkgname = qgroundcontrol-git
 
