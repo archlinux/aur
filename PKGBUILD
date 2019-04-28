@@ -389,18 +389,18 @@ package_intel-compiler-base() {
   chmod a+x loopprofileviewer.sh
   rm loopprofileviewer.csh
 
+  msg2 "Copying man pages"
+  mv ${xe_build_dir}/opt/intel/documentation_${_year}/en/man/common/man1/*.1 ${_man_dir}
+  gzip ${_man_dir}/*.1
+
   cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux
   if $_remove_docs ; then
     msg2 "Removing documentation"
     rm -rf ./documentation
     rm -rf ./Documentation
     rm -rf ./Samples
+    rm -rf ${xe_build_dir}/opt/intel/documentation_${_year}
   fi
-
-  msg2 "Copying man pages"
-  mv ${xe_build_dir}/opt/intel/documentation_${_year}/en/man/common/man1/*.1 ${_man_dir}
-
-  gzip ${_man_dir}/*.1
 
   msg2 "Moving package files"
   mv ${xe_build_dir}/opt ${pkgdir}/
@@ -443,6 +443,10 @@ package_intel-fortran-compiler() {
   #Remove duplicate logo and .css found in intel base
   rm ${xe_build_dir}/opt/intel/documentation_${_year}/en/compiler_f/ps${_year}/resources/{intel_gsp_styles.css,intel_logo.png}
 
+  msg2 "Copying man pages"
+  mv ${xe_build_dir}/opt/intel/documentation_${_year}/en/man/common/man1/*.1 ${_man_dir}
+  gzip ${_man_dir}/*.1
+
   cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux
   if $_remove_docs ; then
     msg2 "Removing documentation"
@@ -450,11 +454,6 @@ package_intel-fortran-compiler() {
     rm -rf ./Documentation
     rm -rf ./Samples
   fi
-
-  msg2 "Copying man pages"
-  mv ${xe_build_dir}/opt/intel/documentation_${_year}/en/man/common/man1/*.1 ${_man_dir}
-
-  gzip ${_man_dir}/*.1
 
   # Remove duplicate headers found in intel base
   rm ./compiler/include/omp_lib.f90
@@ -549,6 +548,7 @@ package_intel-mkl() {
     msg2 "Removing documentation"
     rm -rf ./examples
     rm -rf ./benchmarks
+    rm -rf $xe_build_dir/opt/intel/documentation_${_year}
   fi
 
   if ${_remove_static_objects_mkl} ; then
@@ -595,6 +595,11 @@ package_intel-mpi() {
 
   rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mpi_2019
   rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/licensing/mpi_2019
+
+  if $_remove_docs ; then
+    msg2 "Removing documentation"
+    rm -rf ${xe_build_dir}/opt/intel/documentation_${_year}
+  fi
 
   msg2 "Moving package files"
   mv ${xe_build_dir}/opt ${pkgdir}
