@@ -1,4 +1,4 @@
-pkgbase = ykdl
+pkgbase = ykdl-git
 	pkgdesc = a video downloader focus on China mainland video sites.
 	pkgver = 1.6.3.r73.e47c5a5
 	pkgrel = 1
@@ -20,5 +20,5 @@ pkgbase = ykdl
 	source = ykdl::git://github.com/zhangn1985/ykdl.git
 	sha256sums = SKIP
 
-pkgname = ykdl
+pkgname = ykdl-git
 

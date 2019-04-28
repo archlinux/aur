@@ -1,5 +1,5 @@
 # Maintainer: Bruce Zhang
-pkgname=ykdl
+pkgname=ykdl-git
 pkgver=1.6.3.r73.e47c5a5
 pkgrel=1
 pkgdesc="a video downloader focus on China mainland video sites."
