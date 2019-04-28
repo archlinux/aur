@@ -1,6 +1,6 @@
 pkgbase = iortcw-git
 	pkgdesc = Merge of ioquake3 features and fixes into Return to Castle Wolfenstein
-	pkgver = 1.51b.r111.gae0e2dbe
+	pkgver = 1.51c.r9.gb81ddf50
 	pkgrel = 1
 	url = https://github.com/iortcw/iortcw
 	install = iortcw-git.install
