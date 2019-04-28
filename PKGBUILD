@@ -1,7 +1,7 @@
 # Maintainer: midgard <arch dot midgard "at symbol" janmaes "youknowwhat" com>
 
 pkgname=peppercarrot-fonts
-pkgver=5.1
+pkgver=5.2
 pkgrel=1
 pkgdesc="Fonts required to correctly view and edit Pepper&Carrot SVGs"
 arch=('any')
@@ -17,12 +17,12 @@ conflicts=('peppercarrot-fonts-git')
 provides=('peppercarrot-fonts-git')
 
 source=("https://www.peppercarrot.com/0_sources/0ther/tools/zip/peppercarrot-fonts-$pkgver.zip")
-sha256sums=('47df774ce2a2a0756eb9c0ef57a79f155fa42f88a904d565fbaf1ad2ed5aec7d')
+sha256sums=('7c745ba80e9402159a275ff8a58104e8d53f9c09aed154dc180303f82ee4e484')
 
 package() {
   local i
   for i in "${srcdir}"/fonts/*/*; do
-    filename=${i##*/}
+    filename="${i##*/}"
 
     case "${filename,,}" in
       pecita*|yanonekaffeesatz*)  ;; # Already packaged OTF
@@ -43,7 +43,7 @@ package() {
                    "${pkgdir}/usr/share/fonts/TTF/${filename}"; ;;
 
       *.copyright|*.license) install -Dm644 "$i" \
-                             "${pkgdir}/usr/share/licenses/${pkgname}/${filename}"
+                             "${pkgdir}/usr/share/licenses/${pkgname}/${filename}"; ;;
     esac
   done
 }
