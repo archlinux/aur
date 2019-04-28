@@ -41,7 +41,6 @@ package_poppler-lcd() {
   optdepends=('poppler-data: encoding data to display PDF documents containing CJK characters')
   conflicts=('poppler' "poppler-qt3<${pkgver}" "poppler-qt4<${pkgver}")
   provides=('poppler')
-  replaces=('poppler')
 
   cd build
   make DESTDIR="${pkgdir}" install
@@ -59,7 +58,6 @@ package_poppler-glib-lcd() {
   depends=("poppler-lcd=${pkgver}" 'glib2')
   conflicts=('poppler-glib')
   provides=('poppler-glib')
-  replaces=('poppler-glib')
 
   cd build
 
@@ -75,7 +73,6 @@ package_poppler-qt5-lcd() {
   depends=("poppler-lcd=${pkgver}" 'qt5-base')
   conflicts=('poppler-qt5')
   provides=('poppler-qt5')
-  replaces=('poppler-qt5')
   
   cd build
   make -C qt5 DESTDIR="${pkgdir}" install

@@ -43,7 +43,6 @@ pkgname = poppler-lcd
 	conflicts = poppler
 	conflicts = poppler-qt3<0.76.0
 	conflicts = poppler-qt4<0.76.0
-	replaces = poppler
 
 pkgname = poppler-glib-lcd
 	pkgdesc = Poppler glib bindings with subpixel patch on LCD display
@@ -51,7 +50,6 @@ pkgname = poppler-glib-lcd
 	depends = glib2
 	provides = poppler-glib
 	conflicts = poppler-glib
-	replaces = poppler-glib
 
 pkgname = poppler-qt5-lcd
 	pkgdesc = Poppler Qt5 bindings with subpixel patch on LCD display
@@ -59,5 +57,4 @@ pkgname = poppler-qt5-lcd
 	depends = qt5-base
 	provides = poppler-qt5
 	conflicts = poppler-qt5
-	replaces = poppler-qt5
 
