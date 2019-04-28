@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lsi-lsa
-pkgver=004.057.000.000
+pkgver=007.009.011.000
 pkgrel=1
 pkgdesc="LSI Storage Authority Software Suite"
 arch=('x86_64')
@@ -12,19 +12,18 @@ depends=('openslp'
          'curl'
          )
 makedepends=('chrpath')
+DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b "agreement=true" -o %o %u')
 source=('LSI_Storage_Authority_Lightweight_Monitor_User_Guide.pdf::https://docs.broadcom.com/docs-and-downloads/raid-controllers/pub-005092_2015-11-25_LSI_Storage_Authority_Lightweight_Monitor_User_Guide.pdf'
         'LSI_Storage_Authority_Software_User_Guide.pdf::https://docs.broadcom.com/docs-and-downloads/raid-controllers-common-files/DB15-001161-10_LSI%20Storage%20Authority%20Software%20User%20Guide.pdf'
         'lsi_lsa.service'
         'lsa_launcher.sh'
-        'https://trac.nginx.org/nginx/export/HEAD/nginx/docs/html/50x.html'
-        "${pkgver}_LSA_Linux.zip::https://docs.broadcom.com/docs-and-downloads//docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_LSA_Linux-x64.zip"
+        "${pkgver}_LSA_Linux.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_LSA_Linux-x64.zip"
         )
 sha256sums=('5196f542b52457abb94bce4e069005543a7e748270b7b673e5afa669e7af2e03'
             'aea22917f5f3680fb19b9b219ac4775434f500946f579a58242a07bc1e66f209'
             '5d65b855b7d38192ef8fd0ce34cab567efd5f9af922c080876a10e96a62b0b17'
             '05bdeae736b4b06546ea669a5b2764f2410ec8f20873505fee9a8205eccf4190'
-            '3c264d74770fd706d59c68d90ca1eb893ac379a666ff136f9acc66ca01daec02'
-            '3d88c0adc1e7d6fbdf2f3e8365885eb87af811c7eee3c44dd974b8b0e8a15f8c'
+            'be81c22d3bee377cf8495c567396889fd24d5d51205101c14f3f5a4f3c99dca9'
             )
 install=lsi-lsa.install
 backup=('opt/lsi/LSIStorageAuthority/installtype'
@@ -63,9 +62,6 @@ package() {
 
   # Install Service
   install -Dm644 "${srcdir}/lsi_lsa.service" usr/lib/systemd/system/lsi_lsa.service
-
-  # Missing html file
-  install -Dm644 "${srcdir}/50x.html" opt/lsi/LSIStorageAuthority/server/html/50x.html
 
   # LSA launcher
   install -Dm755 ${srcdir}/lsa_launcher.sh opt/lsi/LSIStorageAuthority/bin/lsa_launcher.sh
