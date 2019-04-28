@@ -8,10 +8,11 @@
 # https://github.com/michaellass/AUR
 
 _majorver=12
-_updatever=33
+_completever=12.0.1
+_updatever=12
 pkgrel=1
-pkgver=${_majorver}.u${_updatever}
-_tag_ver=${_majorver}+${_updatever}
+pkgver=${_completever}.u${_updatever}
+_tag_ver=${_completever}+${_updatever}
 
 pkgname=jdk-adoptopenjdk
 pkgdesc="OpenJDK Java ${_majorver} development kit (AdoptOpenJDK build)"
@@ -56,12 +57,10 @@ install=install_jdk-adoptopenjdk.sh
 source=(https://github.com/AdoptOpenJDK/openjdk${_majorver}-binaries/releases/download/jdk-${_tag_ver/+/%2B}/OpenJDK${_majorver}U-jdk_x64_linux_hotspot_${_tag_ver/+/_}.tar.gz
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
-        freedesktop-policytool.desktop
         freedesktop-jshell.desktop)
-sha256sums=('4739064dc439a05487744cce0ba951cb544ed5e796f6c699646e16c09da5dd6a'
+sha256sums=('dd3fdf3771a05a010029c1cf1aef516928eab55d6f5eb019008875e9ccbc8337'
             '9b11bbaf5834748fc9a30cb887c129b32f34a81535dc512ff47b26ae72c91927'
             '16551b98abbd5cbb9da14157df60afd2a608602c6e3734e979d9574e0780f8da'
-            '59ecc9542661f169020867cacba7d8e3723a57ab0b6ccd02c5c1a2fbb898a866'
             '7d46b5ffcb2528f039b4534dddeab4b87de92106c25ff17e175570edde52f1c9')
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-adoptopenjdk
@@ -96,7 +95,7 @@ package() {
   ln -sf /etc/ssl/certs/java/cacerts lib/security/cacerts
 
   # Desktop files
-  for f in jconsole policytool java jshell; do
+  for f in jconsole java jshell; do
     install -Dm 644 \
       "${srcdir}/freedesktop-${f}.desktop" \
       "${pkgdir}/usr/share/applications/${f}-${pkgname}.desktop"

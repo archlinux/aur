@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=AdoptOpenJDK Java 12 Policy Tool
-Comment=AdoptOpenJDK Java 12 Policy Tool
-Keywords=java;security;policytool
-Exec=/usr/lib/jvm/java-12-adoptopenjdk/bin/policytool
-Terminal=false
-Type=Application
-Categories=Settings;
