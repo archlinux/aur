@@ -8,7 +8,7 @@ pkgbase=qemu-git
 _gitname=qemu
 pkgname=(qemu-git qemu-headless-git qemu-arch-extra-git qemu-headless-arch-extra-git qemu-block-{iscsi-git,rbd-git,gluster-git} qemu-guest-agent-git)
 pkgdesc="A generic and open source machine emulator and virtualizer. Git version."
-pkgver=v4.0.0.r51.g3284aa1281
+pkgver=v4.0.0.r89.gdb7f1c3faf
 pkgrel=1
 epoch=7
 arch=(i686 x86_64)
@@ -54,7 +54,7 @@ build() {
     --disable-gtk \
     --disable-vte \
     --disable-opengl \
-    --disable-virglrenderer 
+    --disable-virglrenderer
 }
 
 _build() (
@@ -74,6 +74,7 @@ _build() (
     --python=/usr/bin/python2 \
     --smbd=/usr/bin/smbd \
     --enable-modules \
+    --enable-sdl \
     --enable-jemalloc \
     --disable-werror \
     "${@:2}"
