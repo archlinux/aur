@@ -1,31 +1,31 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
 
-pkgname=ib-controller
-pkgver=3.6.0
+pkgname=ibc
+pkgver=3.7.5
 pkgrel=1
-pkgdesc='Manages headless Interactive Brokers IB Gateway instances (IBC fork)'
+pkgdesc='Manages headless Interactive Brokers IB Gateway instances (formerly known as IB Controller)'
+replaces=('ib-controller')
 arch=('any')
 url="https://github.com/IbcAlpha/IBC"
 license=('GPL3')
 depends=(ib-tws xorg-server-xvfb xorg-server gtk2 libxrender libxtst gsettings-desktop-schemas ttf-dejavu)
 
-backup=('etc/ibcontroller/fdemo.ini'
-        'etc/ibcontroller/edemo.ini')
-source=('https://github.com/IbcAlpha/IBC/releases/download/3.6.0/IBCLinux-3.6.0.zip'
-        'https://github.com/IbcAlpha/IBC/raw/master/resources/IBC.jar'
-        'fdemo.ini'
+backup=('etc/ibc/fdemo.ini'
+        'etc/ibc/edemo.ini')
+source=("https://github.com/IbcAlpha/IBC/releases/download/${pkgver}/IBCLinux-${pkgver}.zip"
+        "https://github.com/IbcAlpha/IBC/raw/${pkgver}/resources/IBC.jar"
         'edemo.ini'
-        'ibcontroller@.service')
-md5sums=('055c4fab1a8ceeb9c70cca9e2fb43eda'
-         'c9d9756004a08358b3861b591900f782'
-         '981aa279128e5638f649ca9e7ab23011'
-         '547d187f535c8230a2d4cff4d2d899f2'
-         'cb2808018dba2880b2b4882d81fe8ac2')
-
+        'fdemo.ini'
+        'ibc@.service')
+md5sums=('0f3889c105ebb679e186ff593d2fad3c'
+         'dd29abc1db10ea9bfbdec1cb3abe3550'
+         '630e17a3776f0795b929603a6b35316d'
+         '1bd30d4fe0a778c4d5fef526e52a9150'
+         'e4cc6b5177719502cbcd9ea3a0152eab')
 
 package() {
-	install -Dm644 ${srcdir}/IBC.jar ${pkgdir}/usr/share/java/ibcontroller/IBC.jar
-	install -Dm600 ${srcdir}/fdemo.ini ${pkgdir}/etc/ibcontroller/fdemo.ini
-	install -Dm600 ${srcdir}/edemo.ini ${pkgdir}/etc/ibcontroller/edemo.ini
-	install -Dm644 ${srcdir}/ibcontroller@.service ${pkgdir}/usr/lib/systemd/system/ibcontroller@.service
+	install -Dm644 ${srcdir}/IBC.jar ${pkgdir}/usr/share/java/ibc/IBC.jar
+	install -Dm600 ${srcdir}/fdemo.ini ${pkgdir}/etc/ibc/fdemo.ini
+	install -Dm600 ${srcdir}/edemo.ini ${pkgdir}/etc/ibc/edemo.ini
+	install -Dm644 ${srcdir}/ibc@.service ${pkgdir}/usr/lib/systemd/system/ibc@.service
 }

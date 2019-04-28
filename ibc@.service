@@ -1,0 +1,17 @@
+[Unit]
+Description=IBC
+After=network.target
+
+[Service]
+Type=simple
+TimeoutSec=0
+User=root
+Group=root
+
+KillMode=control-group
+
+ExecStartPre=/bin/sh -c "mkdir -p /var/run/xvfb"
+ExecStart=/usr/sbin/xvfb-run --auto-servernum -f /var/run/xvfb/%I /usr/share/ib-tws/jre/bin/java -cp /usr/share/ib-tws/jars/*:/usr/share/java/ibc/IBC.jar -Xmx512M ibcalpha.ibc.IbcGateway /etc/ibc/%I.ini
+
+[Install]
+WantedBy=multi-user.target
