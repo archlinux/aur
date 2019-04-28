@@ -2,7 +2,7 @@
 # Original repo: https://github.com/recolic/vivado-wrapper
 
 pkgname=vivado-wrapper
-pkgver=1.4
+pkgver=1.5
 pkgrel=0
 pkgdesc="Wrap vivado as a simple project manager, which works in linux command line natively."
 url="https://github.com/recolic/$pkgname"
