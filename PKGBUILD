@@ -3,7 +3,7 @@
 
 _pkgname=nginx
 pkgname=$_pkgname-rtmp-sergey-git
-_nginx_ver=1.15.12
+_nginx_ver=1.16.0
 _rtmp_commit_id=a5ac72c274
 pkgver=$_nginx_ver"_"$_rtmp_commit_id
 pkgrel=0
@@ -28,8 +28,8 @@ source=(https://nginx.org/download/nginx-$_nginx_ver.tar.gz
         logrotate)
 provides=('nginx')
 conflicts=('nginx')
-md5sums=('3f4d4f1d3a5c3c4f1cbc0e353c9cd9df'
-         SKIP
+md5sums=('97207283f30cd90cdba638c3ea30323a'
+         'SKIP'
          'ef491e760e7c1ffec9ca25441a150c83'
          '6a01fb17af86f03707c8ae60f98a2dc2')
 
