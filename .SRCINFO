@@ -1,5 +1,4 @@
 pkgbase = gdm-prime
-	pkgdesc = Display manager and login screen - patched with Prime support for Optimus laptops
 	pkgver = 3.32.0+2+g820f90f5
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GDM
@@ -24,6 +23,7 @@ pkgbase = gdm-prime
 	sha256sums = f2ac60c8e4d62805dc2f441a8754f1c15e12c64ec0dbb1031dbd91dd47df52d9
 
 pkgname = gdm-prime
+	pkgdesc = Display manager and login screen - patched with Prime support for Optimus laptops
 	groups = gnome
 	depends = gnome-shell
 	depends = gnome-session
@@ -46,7 +46,7 @@ pkgname = gdm-prime
 	backup = etc/gdm/PreSession/Default
 
 pkgname = libgdm-prime
-	pkgdesc = GDM support library
+	pkgdesc = GDM support library - patched with Prime support for Optimus laptops
 	depends = systemd
 	depends = glib2
 	depends = dconf

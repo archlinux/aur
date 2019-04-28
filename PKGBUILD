@@ -6,7 +6,6 @@ pkgbase=gdm-prime
 pkgname=(gdm-prime libgdm-prime)
 pkgver=3.32.0+2+g820f90f5
 pkgrel=1
-pkgdesc="Display manager and login screen - patched with Prime support for Optimus laptops"
 url="https://wiki.gnome.org/Projects/GDM"
 arch=(x86_64)
 license=(GPL)
@@ -62,6 +61,7 @@ check() {
 package_gdm-prime() {
   provides=(gdm)
   conflicts=(gdm)
+  pkgdesc="Display manager and login screen - patched with Prime support for Optimus laptops"
   depends+=(libgdm)
   optdepends=('fprintd: fingerprint authentication')
   backup=(etc/pam.d/gdm-autologin etc/pam.d/gdm-fingerprint etc/pam.d/gdm-launch-environment
@@ -91,7 +91,7 @@ END
 package_libgdm-prime() {
   provides=(libgdm)
   conflicts=(libgdm)
-  pkgdesc="GDM support library"
+  pkgdesc="GDM support library - patched with Prime support for Optimus laptops"
   depends=(systemd glib2 dconf)
   mv libgdm "$pkgdir/usr"
 }
