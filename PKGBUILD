@@ -1,7 +1,7 @@
 # Maintainer: Max Beck <rytonemail@gmail.com>
 pkgname=mpd-sidplay
 _pkgname=mpd
-pkgver=0.21.7
+pkgver=0.21.8
 pkgrel=2
 pkgdesc="Flexible, powerful, server-side application for playing music - built with sidplay support"
 url="https://www.musicpd.org/"
@@ -55,7 +55,7 @@ source=(
     "sysusers.d"
     "mpd.conf"
 )
-sha256sums=('512062bc529bee04d4ccfaa2c6e720afc85bb071e49850a096b5ed518b3b412c'
+sha256sums=('23e083f11356c66bfb4a53c00568d370f57707df56496b299c414aaae59a9757'
             'SKIP'
             'e09e38ab5fd6e8b3b3e6e5a48d837c164ad37aec7e6762a78810c34fe9abf3a1'
             '2679014448e9352e20e85d8d76b021aeebe27bdf6100b24577afee2f37522a95'
