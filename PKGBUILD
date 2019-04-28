@@ -1,8 +1,9 @@
-# Maintainer: Gabriel Cavallo <gabrielcavallo@mail.com>
+# Maintainer: Gabriel Cavallo <contact@gcavallo.ca>
+# Maintainer: Oleg Vas'kovskii <oleg.vs220@gmail.com>
 
 pkgname=libfm-directory_thumbnails
-pkgver=1.2.5
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc='Library for file management. Patched to allow directory thumbnails.'
 depends=('gtk2' 'libexif' "libfm-extra=$pkgver" 'menu-cache')
 makedepends=('intltool' 'vala')
@@ -14,7 +15,8 @@ license=('GPL2')
 source=("https://downloads.sourceforge.net/pcmanfm/libfm-$pkgver.tar.xz"
         'https://sourceforge.net/p/pcmanfm/bugs/1020/attachment/directory_thumbnails.patch'
         'https://gist.githubusercontent.com/gcavallo/8367304d725c6da03277500d4edb57ff/raw/8487492b4f6a30c924e5d77627bd49998e7da22d/fm-file-info.patch')
-sha256sums=('c706bb1020cf5f2d6f5a9226f692ce1985947134dcf2bde64278bd0420779b5a'
+
+sha256sums=('96b1244bde41ca0eef0332cfb5c67bb16725dfd102128f3e6f74fadc13a1cfe4'
             '7065c345ae29762a6e3d75c6757b999c5d609a967f61522c15f6e85d8b4bc9ef'
             'f1fc131318b1b87bc5614738ad864f44b389da004ea7afd57be88f72f1a7d698')
 
