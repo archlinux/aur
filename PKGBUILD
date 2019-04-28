@@ -1,4 +1,5 @@
-# Maintainer: Alex Whitt <alex.joseph.whitt@gmail.com>
+# Maintainer: LinRs <LinRs at users.noreply.github.com>
+# Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
 
 pkgname=emacs-smex
 pkgver=3.0
