@@ -16,7 +16,7 @@ source=('msm_profile.sh'
         'lsi_mrdsnmpd.service'
         'ld.so.lsi-msm.conf'
         'ld.so.lsi-msm-snmp.conf'
-        'https://www.broadcom.com/docs-and-downloads/advanced-software/advanced-software-common-files/SLA_AdvancedSoftware.pdf'
+        'https://docs.broadcom.com/docs-and-downloads/advanced-software/advanced-software-common-files/SLA_AdvancedSoftware.pdf'
         'MegaRAID_SAS_SW_UserGd.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/51530-00_RevP_MegaRAID_SAS_SW_UserGd.zip'
         "${pkgver}_Linux-x64_MSM.gz::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_Linux-64_MSM.gz"
         )
