@@ -1,6 +1,6 @@
 post_install() {
-  echo "Setting Aether as your default login theme."
+  echo "Setting Osmos as your default login theme."
 
-  sed -i 's/^webkit_theme\s*=\s*\(.*\)/webkit_theme = lightdm-webkit-theme-osmos/g' /etc/lightdm/lightdm-webkit2-greeter.conf
   sed -i 's/^\(#\?greeter\)-session\s*=\s*\(.*\)/greeter-session = lightdm-webkit2-greeter/g' /etc/lightdm/lightdm.conf
+  sed -i 's/^webkit_theme\s*=\s*\(.*\)/webkit_theme = lightdm-webkit-theme-osmos/g' /etc/lightdm/lightdm-webkit2-greeter.conf
 }
