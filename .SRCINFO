@@ -1,7 +1,7 @@
 pkgbase = xplayer
 	pkgdesc = Simple media player. X-Apps Project.
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = https://github.com/linuxmint/xplayer
 	arch = i686
 	arch = x86_64
@@ -29,8 +29,8 @@ pkgbase = xplayer
 	optdepends = python2-xdg: Subtitle downloader plugin
 	provides = xplayer
 	conflicts = xplayer-git
-	source = xplayer-2.0.0.tar.gz::https://github.com/linuxmint/xplayer/archive/2.0.0.tar.gz
-	md5sums = cbcba4e6e5e3ea312799ba10e250fc66
+	source = xplayer-2.0.2.tar.gz::https://github.com/linuxmint/xplayer/archive/2.0.2.tar.gz
+	md5sums = 46526042743d6b0af60bbbb7a4388d66
 
 pkgname = xplayer
 

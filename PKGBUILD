@@ -1,8 +1,8 @@
 # Maintainer: Nate Simon <aurpkg (at natesimon.net)>
 
 pkgname=xplayer
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="Simple media player. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
@@ -21,7 +21,7 @@ conflicts=('xplayer-git')
 url='https://github.com/linuxmint/xplayer'
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('cbcba4e6e5e3ea312799ba10e250fc66')
+md5sums=('46526042743d6b0af60bbbb7a4388d66')
 
 
 build() {
