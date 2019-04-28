@@ -1,37 +1,39 @@
 # Maintainer: Kye Morton <pryre.dev@outlook.com>
 pkgname=qgroundcontrol-bin
-pkgver=3.5.0
-pkgrel=1
+pkgver=3.5.1
+pkgrel=0
 pkgdesc="Ground control for unmanned vehicles."
 arch=('x86_64')
 url="http://qgroundcontrol.org/"
 license=('GPL3')
-depends=( 'bzip2' \
-		  'dbus' \
-		  'flac' \
-		  'gst-plugins-base-libs' \
-		  'libasyncns' \
-		  'libffi' \
-		  'libgcrypt' \
-		  'libgpg-error' \
-		  'libogg' \
-		  'libsndfile' \
-		  'libsystemd' \
-		  'libunwind' \
-		  'libx11' \
-		  'libxau' \
-		  'libxcb' \
-		  'libxdmcp' \
-		  'libxext' \
-		  'lz4' \
-		  'orc' \
-		  'pcre' \
-		  'sdl2' \
-		  'xz' \
+
+depends=( 'bzip2'
+		  'dbus'
+		  'flac'
+		  'gst-plugins-base-libs'
+		  'libasyncns'
+		  'libffi'
+		  'libgcrypt'
+		  'libgpg-error'
+		  'libogg'
+		  'libsndfile'
+		  'libsystemd'
+		  'libunwind'
+		  'libx11'
+		  'libxau'
+		  'libxcb'
+		  'libxdmcp'
+		  'libxext'
+		  'lz4'
+		  'orc'
+		  'pcre'
+		  'sdl2'
+		  'xz'
 		  'zlib')
 
-source=('qgroundcontrol-'${pkgver}'-'${pkgrel}'::https://github.com/mavlink/qgroundcontrol/releases/download/v'${pkgver}'/qgroundcontrol.tar.bz2')
-sha256sums=('fc2bed2d25a44b2848e7c836779d9cc7746d4c8eb884971b1c5e92699858e1ca')
+source=('qgroundcontrol-'${pkgver}'-'${pkgrel}'.tar.bz2::https://github.com/mavlink/qgroundcontrol/releases/download/v'${pkgver}'/qgroundcontrol.tar.bz2')
+
+sha256sums=('4bb2a83d75b79faa40bcdff8624b3c19ec57929fd5edbdb9c7a2c03b0596385e')
 
 build() {
 	echo "[Desktop Entry]
