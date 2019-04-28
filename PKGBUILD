@@ -13,7 +13,7 @@ for _platform in $PIKVM_PLATFORM; do
 	done
 done
 pkgbase=kvmd
-pkgver=0.156
+pkgver=0.157
 pkgrel=1
 pkgdesc="The main Pi-KVM daemon"
 url="https://github.com/pi-kvm/kvmd"
@@ -79,7 +79,7 @@ package_kvmd() {
 	find "$pkgdir" -name ".gitignore" -delete
 	sed -i -e "s/^#PROD//g" "$_cfgdir/nginx/nginx.conf"
 	find "$_cfgdir" -type f -exec chmod 444 '{}' \;
-	chmod 440 "$_cfgdir/kvmd/htpasswd"
+	chmod 440 "$_cfgdir/kvmd/*passwd"
 
 	mkdir -p "$pkgdir/etc/kvmd/nginx/ssl"
 	chmod 750 "$pkgdir/etc/kvmd/nginx/ssl"
@@ -88,7 +88,7 @@ package_kvmd() {
 	done
 	rm "$pkgdir/etc/kvmd"/{auth.yaml,meta.yaml}
 	cp "$_cfgdir/kvmd"/{auth.yaml,meta.yaml} "$pkgdir/etc/kvmd"
-	cp -a "$_cfgdir/kvmd/htpasswd" "$pkgdir/etc/kvmd"
+	cp -a "$_cfgdir/kvmd/*passwd" "$pkgdir/etc/kvmd"
 	for path in "$_cfgdir/nginx"/*.conf; do
 		ln -sf "/usr/share/kvmd/configs.default/nginx/`basename $path`" "$pkgdir/etc/kvmd/nginx"
 	done
