@@ -37,7 +37,7 @@
  ;   '/path/to/unix/socket' - to listen on a unix socket.
  ; Note: This value is mandatory.
 -listen = 127.0.0.1:9000
-+listen = /run/php70-fpm/php-fpm.sock
++listen = /run/php71-fpm/php-fpm.sock
  
  ; Set listen(2) backlog.
  ; Default Value: 511 (-1 on FreeBSD and OpenBSD)
