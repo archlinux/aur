@@ -2,8 +2,8 @@
 # Contributor: Chris Kitching <chriskitching@linux.com>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 pkgname=mingw-w64-cairo-bootstrap
-pkgver=1.16.0
-pkgrel=3
+pkgver=1.17.2
+pkgrel=1
 pkgdesc="Cairo vector graphics library (mingw-w64 bootstrap)"
 arch=(any)
 url="http://cairographics.org/"
@@ -13,16 +13,14 @@ depends=(mingw-w64-pixman mingw-w64-glib2 mingw-w64-fontconfig mingw-w64-libpng 
 options=(!strip !buildflags staticlibs)
 provides=(${pkgname%-bootstrap}=$pkgver)
 conflicts=(${pkgname%-bootstrap})
-source=("https://cairographics.org/releases/cairo-${pkgver}.tar.xz"
+source=("https://cairographics.org/snapshots/cairo-${pkgver}.tar.xz"
         "0009-standalone-headers.mingw.patch"
         "0026-create-argb-fonts.all.patch"
-        "0027-win32-print-fix-unbounded-surface-assertion.patch"
-        "0001-ft-Use-FT_Done_MM_Var-instead-of-free-when-available.patch")
-sha256sums=('5e7b29b3f113ef870d1e3ecf8adf21f923396401604bda16d44be45e66052331'
+        "0027-win32-print-fix-unbounded-surface-assertion.patch")
+sha256sums=('6b70d4655e2a47a22b101c666f4b29ba746eda4aa8a0f7255b32b2e9408801df'
             '234de8c5d4c28b03c19e638a353e8defb2de0367a634c002b0ea7d2877bd0756'
             '6db6c44fbdb4926d09afa978fe80430186c4b7b7d255059602b1f94c6a079975'
-            '7e244c20eec8c7b287dbee1d34de178d9b0c419dc4c2b11c90eaf626c92bf781'
-            '52ab418058076ad01e046ebbbdc834f390305516c222d07de91a93a4dcebe921')
+            '7e244c20eec8c7b287dbee1d34de178d9b0c419dc4c2b11c90eaf626c92bf781')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -30,8 +28,6 @@ prepare() {
   patch -p1 -i ${srcdir}/0009-standalone-headers.mingw.patch
   patch -p1 -i ${srcdir}/0026-create-argb-fonts.all.patch
   patch -p1 -i ${srcdir}/0027-win32-print-fix-unbounded-surface-assertion.patch
-  # CVE-2018-19876
-  patch -p1 -i ${srcdir}/0001-ft-Use-FT_Done_MM_Var-instead-of-free-when-available.patch
   autoreconf -fi
 }
 
