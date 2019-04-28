@@ -1,11 +1,11 @@
 # Maintainer: Maarten de Vries <maarten@de-vri.es>
-# Contributor: Maurice Bos <m-ou.se@m-ou.se>
+# Contributor: Mara Bos <m-ou.se@m-ou.se>
 # Contributor: Maarten de Vries <maarten@de-vri.es>
 
 pkgbase=cloudabi-linux
 _cloudabi_ver=0.2
 pkgver=4.7.0rc1cloudabi$_cloudabi_ver
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="https://nuxi.nl"
 license=('GPL2')
