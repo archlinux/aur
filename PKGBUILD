@@ -9,8 +9,8 @@
 
 _majorver=11
 _minorver=0
-_securityver=2
-_updatever=9
+_securityver=3
+_updatever=7
 pkgrel=1
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 _tag_ver=${_majorver}.${_minorver}.${_securityver}+${_updatever}
@@ -57,12 +57,10 @@ install=install_jdk11-adoptopenjdk.sh
 source=(https://github.com/AdoptOpenJDK/openjdk${_majorver}-binaries/releases/download/jdk-${_tag_ver/+/%2B}/OpenJDK${_majorver}U-jdk_x64_linux_hotspot_${_tag_ver/+/_}.tar.gz
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
-        freedesktop-policytool.desktop
         freedesktop-jshell.desktop)
-sha256sums=('d02089d834f7702ac1a9776d8d0d13ee174d0656cf036c6b68b9ffb71a6f610e'
+sha256sums=('23cded2b43261016f0f246c85c8948d4a9b7f2d44988f75dad69723a7a526094'
             '734aab5e8fca5360fd996142a0c0ff23434da56f83c21b26cfbcbf31556230eb'
             '53b7da18785675438d1d7cfa776be419a313c11049c48f791c7426224fe51025'
-            'a0cca82e4ebe103d90399911164c17bee61022c67633f55b83d2fc9de15ccd68'
             'bc4305c5870fa8e050c0a2cbc629a8f84e366200b436429c789038596a4259f6')
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-adoptopenjdk
@@ -97,7 +95,7 @@ package() {
   ln -sf /etc/ssl/certs/java/cacerts lib/security/cacerts
 
   # Desktop files
-  for f in jconsole policytool java jshell; do
+  for f in jconsole java jshell; do
     install -Dm 644 \
       "${srcdir}/freedesktop-${f}.desktop" \
       "${pkgdir}/usr/share/applications/${f}-${pkgname}.desktop"
