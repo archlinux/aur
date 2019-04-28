@@ -413,7 +413,6 @@ package_intel-compiler-base() {
 
   msg2 "Copying man pages"
   mv ${xe_build_dir}/opt/intel/documentation_${_year}/en/man/common/man1/*.1 ${_man_dir}
-  gzip ${_man_dir}/*.1
 
   cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux
   if $_remove_docs ; then
@@ -467,7 +466,6 @@ package_intel-fortran-compiler() {
 
   msg2 "Copying man pages"
   mv ${xe_build_dir}/opt/intel/documentation_${_year}/en/man/common/man1/*.1 ${_man_dir}
-  gzip ${_man_dir}/*.1
 
   cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux
   if $_remove_docs ; then
@@ -695,7 +693,6 @@ package_intel-vtune-amplifier() {
   msg2 "Copying man pages"
   if [[ -d ./man/man1 ]]; then
     mv ./man/man1/*.1 ${_man_dir}/
-    gzip ${_man_dir}/*.1
   fi
 
 
@@ -739,7 +736,6 @@ package_intel-advisor() {
   msg2 "Copying man pages"
   if [[ -d ./man/man1 ]]; then
     mv ./man/man1/*.1 ${_man_dir}/
-    gzip ${_man_dir}/*.1
   fi
 
 
@@ -781,7 +777,6 @@ package_intel-inspector() {
   msg2 "Copying man pages"
   if [[ -d ./man/man1 ]]; then
     mv ./man/man1/*.1 ${_man_dir}/
-    gzip ${_man_dir}/*.1
   fi
 
 
