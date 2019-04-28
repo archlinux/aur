@@ -1,14 +1,10 @@
 pkgbase = python-olm
 	pkgdesc = python bindings for the olm cryptographic ratchet library
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.matrix.org/matrix-org/olm
 	arch = any
 	license = Apache
-	checkdepends = python-pytest
-	checkdepends = python-hypothesis
-	checkdepends = python-pytest-benchmark
-	checkdepends = python-pytest-cov
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	makedepends = python-cffi
