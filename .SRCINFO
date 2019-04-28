@@ -1,0 +1,17 @@
+pkgbase = cantarell-fonts-0.100
+	pkgdesc = Cantarell font family. Version 0.100
+	pkgver = 0.100
+	pkgrel = 1
+	epoch = 1
+	url = https://git.gnome.org/browse/cantarell-fonts
+	arch = any
+	license = custom:SIL
+	makedepends = meson
+	makedepends = appstream-glib
+	provides = cantarell-fonts=0.100
+	conflicts = cantarell-fonts
+	source = https://download.gnome.org/sources/cantarell-fonts/0.100/cantarell-fonts-0.100.tar.xz
+	sha256sums = 01ad69e855b81af7d6752d374301b8a55576f375a7a46eb58935d7f343cf0689
+
+pkgname = cantarell-fonts-0.100
+
