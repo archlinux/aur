@@ -1,6 +1,6 @@
 pkgbase = context-minimals-git
 	pkgdesc = A standalone ConTeXt distribution
-	pkgver = 2016.06.16
+	pkgver = 2019.04.25
 	pkgrel = 1
 	url = http://www.contextgarden.net
 	install = context-minimals-git.install
