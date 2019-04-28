@@ -216,7 +216,7 @@ set_build_vars() {
   _composer_xe_dir="compilers_and_libraries_${_year}.${_v_a}.${_v_b}"
   rpm_dir=${srcdir}/${_parallel_studio_xe_dir}/rpm
   xe_build_dir=${srcdir}/cxe_build
-  base_dir=`realpath ${srcdir}/..`
+  base_dir=$(realpath ${srcdir}/..)
   _man_dir=${xe_build_dir}/usr/share/man/man1
 }
 
@@ -352,9 +352,7 @@ package_intel-common-libs() {
   # move ld.so configs, but keep profile.d (should be in intel-compiler-base)
   mv ./etc/ld.so.conf.d ${pkgdir}/etc/
 
-  cd ${pkgdir}/opt/intel
-
-  ln -s ./${_composer_xe_dir}/linux/compiler/lib/${_i_arch}_lin lib
+  ln -s ./${_composer_xe_dir}/linux/compiler/lib/${_i_arch}_lin ${pkgdir}/opt/intel/lib
 }
 
 package_intel-openmp() {
@@ -393,7 +391,7 @@ package_intel-compiler-base() {
 
   msg2 "Extracting RPMS"
   extract_rpms 'intel-icc*.rpm' $xe_build_dir
-  for rpm_file in `find ${rpm_dir} -iname 'intel-comp-*.rpm' ! -iname 'intel-comp-ps-ss-bec-*.rpm' -print` ; do
+  for rpm_file in `find ${rpm_dir} -name 'intel-comp-*.rpm' ! -name 'intel-comp-ps-ss-bec-*.rpm' -print` ; do
     extract_rpm $rpm_file $xe_build_dir
   done
 
@@ -479,10 +477,10 @@ package_intel-fortran-compiler() {
     rm -rf ./Samples
   fi
 
-  # Remove duplicate headers found in intel base
+  msg2 "Removing duplicate headers found in intel-compiler-base"
   rm ./compiler/include/omp_lib.f90
-  rm ./compiler/include/intel64/omp_lib.mod
-  rm ./compiler/include/intel64/omp_lib_kinds.mod
+  rm ./compiler/include/${_i_arch}/omp_lib.mod
+  rm ./compiler/include/${_i_arch}/omp_lib_kinds.mod
 
   msg2 "Moving package files"
   mv ${xe_build_dir}/opt ${pkgdir}/
