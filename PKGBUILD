@@ -1,7 +1,8 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=python-nose-timer
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc='Timer plugin for nosetests'
 arch=(any)
@@ -10,18 +11,16 @@ license=(MIT)
 depends=(python-nose)
 makedepends=(git python-setuptools)
 source=("git+$url#tag=v$pkgver")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 build() {
-  cd nose-timer
-
+  cd ${srcdir}/nose-timer
   python setup.py build
 }
 
 package() {
-  cd nose-timer
-
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd ${srcdir}/nose-timer
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
