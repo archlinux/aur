@@ -2,7 +2,7 @@
 pkgname=majsoul-plus
 pkgver=1.12.0b4
 _pkgver=${pkgver/b/-beta.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Majsoul browser, with more features"
 arch=('x86_64' 'i686')
 url="https://github.com/MajsoulPlus/majsoul-plus"
@@ -15,31 +15,43 @@ conflicts=("majsoul-plus-bin")
 
 prepare() {
 	cd "$pkgname-$_pkgver"
-	sed -i '/\"electron/d' package.json
+	electronV=$(electron --version)
+	electronVer=${electronV#v}
+	targetArch="x64"
+	if [ "$CARCH" == "i686" ]; then
+		targetArch="ia32"
+	fi
+	sed -i "/\"electron\": \"/c\\\"electron\": \"$electronVer\"," package.json
+	sed -i "/\"build-linux\": \"/c\\\"build-linux\": \"gulp sass && electron-packager . Majsoul_Plus  --platform=linux --arch=$targetArch --asar --out ./build/unpacked --ignore=build --overwrite --icon=bin/icons/icon.png\"," package.json
 }
 
 build() {
 	cd "$pkgname-$_pkgver"
 	npm install
-	gulp sass
+	npm run build-linux
 }
 
 package() {
+	targetArch="x64"
+	if [ "$CARCH" == "i686" ]; then
+		targetArch="ia32"
+	fi
+
 	cd "$pkgname-$_pkgver"
-	mkdir -p "$pkgdir/opt/majsoul-plus"
+	mkdir -p "$pkgdir/usr/share/majsoul-plus"
 	mkdir -p "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/usr/share/applications"
 
-	find * -type f -exec install -Dm644 {} "$pkgdir/opt/majsoul-plus/{}" \;
+	install -Dm644 "build/unpacked/Majsoul_Plus-linux-$targetArch/resources/app.asar" "$pkgdir/usr/share/majsoul-plus/app.asar"
 
 	for size in 16 24 32 48 64 72 128 256; do
         target="$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/"
-        mkdir -p $target
+        mkdir -p "$target"
         convert bin/icons/icon.png -resize ${size}x${size} "$target/majsoul-plus.png"
     done
 
 	echo "#!/usr/bin/env bash
-exec electron --enable-logging /opt/majsoul-plus" > "$srcdir/majsoul-plus.sh"
+exec electron --enable-logging /usr/share/majsoul-plus/app.asar" > "$srcdir/majsoul-plus.sh"
 	install -Dm755 "$srcdir/majsoul-plus.sh" "$pkgdir/usr/bin/majsoul-plus"
 
 	echo "[Desktop Entry]
