@@ -8,14 +8,14 @@
 
 pkgname=firefox-hg
 _pkgname=firefox
-pkgver=r510977.4470bbd6ad9d
+pkgver=r525913.43a6ba47356a
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
-         ffmpeg nss sqlite ttf-font libpulse libvpx icu)
+         ffmpeg nss-hg ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
              python nodejs python2-psutil cbindgen nasm)
@@ -31,9 +31,9 @@ provides=('firefox')
 source=("hg+$_repo"
         $_pkgname.desktop
         $_pkgname-symbolic.svg)
-sha512sums=('SKIP'
-            'a690cd649ff0700468ae99372fc1dc52f2dd27fb0cb14d3378c6701f2f05f473866fed1a4266a6574049df891b27d5c9025ed90daa56830532142ca3f2ef7716'
-            'ba7db9a7c95a051bcd84e4c09c802fc55ee3c0d1d06ec1b169b04e414259b75bbe92fe584aee41a1e3f71e71c160df8bedf5393449e5024110ed27dbc0579ea8')
+sha256sums=('SKIP'
+            '4a783dca1f88e003c72f32d22719a0915f3fa576adbc492240e7cc250246ce10'
+            '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -73,7 +73,6 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
-
 ac_add_options --enable-lto
 export MOZ_PGO=1
 export CC=clang
@@ -87,24 +86,18 @@ ac_add_options --enable-official-branding
 ac_add_options --enable-update-channel=release
 ac_add_options --with-distribution-id=org.archlinux
 export MOZILLA_OFFICIAL=1
+export MOZ_APP_REMOTINGNAME=${_pkgname//-/}
 export MOZ_TELEMETRY_REPORTING=1
 export MOZ_REQUIRE_SIGNING=1
 
 # Keys
-ac_add_options --with-google-api-keyfile=${PWD@Q}/google-api-key
+ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
+ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 # System libraries
-ac_add_options --enable-system-ffi
-ac_add_options --enable-system-sqlite
-ac_add_options --with-system-bz2
-ac_add_options --with-system-icu
-ac_add_options --with-system-jpeg
-ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --with-system-zlib
-#ac_add_options --with-lto=full
 
 # Features
 ac_add_options --enable-alsa
@@ -189,3 +182,5 @@ END
   ln -srf "$pkgdir/usr/bin/$_pkgname" \
     "$pkgdir/usr/lib/$_pkgname/firefox-bin"
 }
+
+# vim:set sw=2 et:
