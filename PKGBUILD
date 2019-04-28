@@ -2,7 +2,7 @@
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
 pkgname=coreboot-utils-git
-pkgver=4.9.r1437.g74f9fe6e58f
+pkgver=4.9.r1447.ge54c15aa729
 pkgrel=1
 pkgdesc='Tools and utilities to work with coreboot firmware'
 url='https://www.coreboot.org/'
@@ -49,8 +49,9 @@ pkgver() {
 prepare() {
   cd coreboot
 
-  # coreboot repo seems screwed https://stackoverflow.com/questions/4185365/no-submodule-mapping-found-in-gitmodule-for-a-path-thats-not-a-submodule
-  git rm -rf coreboot
+  # for some reason 'git submodule ...' fails with 'No url found for submodule path 'coreboot' in .gitmodules'
+  # here is workaround that seems fixes the issue
+  git rm -rf coreboot || true
 
   git config -f .gitmodules 'submodule.3rdparty/blobs.url' "$srcdir/blobs"
   git config -f .gitmodules 'submodule.util/nvidia-cbootimage.url' "$srcdir/nvidia-cbootimage"
