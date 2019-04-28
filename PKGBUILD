@@ -159,23 +159,44 @@ sha256sums=('b5b022366d6d1a98dbb63b60221c62bc951c9819653ad6f5142192e89f78cf63'
 #_archive=l_ccompxe${_comp}_p_${pkgver}
 if [ "$CARCH" = "i686" ]; then
   _i_arch='ia32'
-  _i_arch2='i486'
   _bin_dir='bin32'
 
   _not_arch='intel64'
-  _not_arch2='x86_64'
 else
   _i_arch='intel64'
-  _i_arch2='x86_64'
   _bin_dir='bin64'
 
   _not_arch='ia32'
-  _not_arch2='i486'
 fi
 
 extract_rpm() {
-  msg2 "  ${1##*/}"
-  bsdtar -xf $1 -C $2
+  # filter out rpms for incompatible arch 
+  local extract=true
+  if [[ "$1" =~ .noarch.rpm$ ]]; then
+    if [[ "$1" =~ -doc ]]; then
+      if $_remove_docs ; then
+        # don't skip doc rpms because they contain man pages
+        #extract=false
+        extract=true
+      fi
+    fi
+  else
+    if [[ "$1" =~ (-32bit.+\.x86_64|\.i486)\.rpm$ ]]; then
+      if [[ "$CARCH" != 'i686' ]]; then
+        extract=false
+      fi
+    else
+      if [[ "$CARCH" == 'i686' ]]; then
+        extract=false
+      fi
+    fi
+  fi
+  if $extract ; then
+    msg2 "  ${1##*/}"
+    bsdtar -xf $1 -C $2
+  else
+    plain "skipped ${1##*/}"
+  fi
 }
 
 extract_rpms() {
@@ -301,9 +322,6 @@ build() {
   if [ -d ${pkgdir}/opt ] ; then
     rm -rf ${pkgdir}/opt
   fi ;
-
-  cd  ${srcdir}/${_parallel_studio_xe_dir}/rpm
-  rm -v -f *.${_not_arch2}.rpm
 }
 
 package_intel-common-libs() {
@@ -542,8 +560,6 @@ package_intel-mkl() {
   rm ./bin/mklvars.csh
   sed -i "s/<INSTALLDIR>/\/opt\/intel\/${_composer_xe_dir}\/linux/g" ./bin/mklvars.sh
 
-  rm -rf ./${_not_arch}
-
   if ${_remove_docs} ; then
     msg2 "Removing documentation"
     rm -rf ./examples
@@ -633,10 +649,6 @@ package_intel-tbb_psxe() {
   sed -i "s/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/${_composer_xe_dir}\/linux\/tbb/g" ./tbb/bin/tbbvars.sh
 
   chmod a+x ./tbb/bin/tbbvars.sh
-
-  msg2 "Removing unneeded libs and bin"
-  rm -rf ./tbb/bin/${_not_arch}
-  rm -rf ./tbb/lib/${_not_arch}
 
   if $_remove_docs ; then
     msg2 "Removing documentation"
