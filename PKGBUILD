@@ -6,8 +6,8 @@ _pkgver=17.05.00-02
 pkgver="${_pkgver//-/.}"
 pkgrel=3
 pkgdesc="LSI Logic MegaRAID Storage Manager and SNMP providers"
-arch=('i686' 'x86_64')
-url='http://www.avagotech.com/products/server-storage'
+arch=('x86_64')
+url='https://www.broadcom.com/products/storage'
 license=('custom:LSI')
 makedepends=('setconf')
 source=('msm_profile.sh'
@@ -18,9 +18,8 @@ source=('msm_profile.sh'
         'ld.so.lsi-msm-snmp.conf'
         'https://www.broadcom.com/docs-and-downloads/advanced-software/advanced-software-common-files/SLA_AdvancedSoftware.pdf'
         'MegaRAID_SAS_SW_UserGd.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/51530-00_RevP_MegaRAID_SAS_SW_UserGd.zip'
+        "${pkgver}_Linux-x64_MSM.gz::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_Linux-64_MSM.gz"
         )
-source_i686=("${pkgver}_Linux-x86_MSM.gz::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_Linux-32_MSM.gz")
-source_x86_64=("${pkgver}_Linux-x64_MSM.gz::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_Linux-64_MSM.gz")
 sha256sums=('aff9c7ed8e55eb3441911183db1b0912cf74f24ce3027b3aebe3560db69d3a1d'
             '605adcb662fb457609e81fb8916da7e88541e81dd0c112a8bb569d84df189bff'
             '207a40086b9d575cb49d4bdc906899c4f1fbcd861a3db6fb486a0d729053146a'
@@ -29,10 +28,8 @@ sha256sums=('aff9c7ed8e55eb3441911183db1b0912cf74f24ce3027b3aebe3560db69d3a1d'
             '9b1065325731a1711d6dce3ecbf2cccc6fbe524b60e0eb5c0f1fdba315222c95'
             '9be6a8818ea1dccec65d48b86dd0cc62009dc3886229e3dce41192a241bd55c3'
             'bb25efb9894cc16961d0a982d1ccc51f4bfa173d3049af2a4277aa38dbb95110'
+            '63f0d87feba33a7602cdd7488317519edc33442037e1bbaef9f55ce9bd5ea3dd'
             )
-sha256sums_i686=('1a61f3e0099aa962d07303555cfdb1265b2dd83348d3e1b3f1d6c36d53babd36')
-sha256sums_x86_64=('63f0d87feba33a7602cdd7488317519edc33442037e1bbaef9f55ce9bd5ea3dd')
-
 options=('!strip')
 
 _create_links() {
@@ -51,23 +48,14 @@ depends=('lsi-openpegasus'
          'unixodbc'
          'xdg-utils'
          'java-environment=8'
+         'lib32-libxi'
+         'lib32-libxft'
+         'lib32-libpng12'
+         'lib32-libxinerama'
+         'lib32-libjpeg6-turbo'
+         'lib32-libxxf86vm'
+         # 'lib32-xerces-c'
          )
-depends_i686=('libxi'
-              'libxft'
-              'libpng12'
-              'libxinerama'
-              'libjpeg6-turbo'
-              'libxxf86vm'
-              # 'xerces-c'
-              )
-depends_x86_64=('lib32-libxi'
-                'lib32-libxft'
-                'lib32-libpng12'
-                'lib32-libxinerama'
-                'lib32-libjpeg6-turbo'
-                'lib32-libxxf86vm'
-                # 'lib32-xerces-c'
-                )
 backup=('usr/share/MegaRAID_Storage_Manager/debugschema.xsd'
         'usr/share/MegaRAID_Storage_Manager/debugcfg.xml'
         'usr/share/MegaRAID_Storage_Manager/msm.properties'
@@ -214,7 +202,7 @@ install=lsi-msm-snmp.install
   for i in $(find "${srcdir}/disk" -type f -name 'sas_*.rpm'); do bsdtar -xf "${i}"; done &> /dev/null
 
   # Move to correct place
-  [ "${CARCH}" = "x86_64" ] && mv usr/lib64 usr/lib
+  mv usr/lib64 usr/lib
 
   # Remove unused files
   rm -fr etc/lsi_mrdsnmp/lsi_mrdsnmpd.{rh,suse} \
