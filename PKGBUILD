@@ -2,7 +2,7 @@
 
 _pkgbase=8192eu
 pkgname=8192eu-dkms
-pkgver=54.6315416
+pkgver=59.0a7199b
 pkgrel=1
 pkgdesc="Driver for the Realtek 8192eu chipset (DKMS)"
 arch=('x86_64' 'i686' 'armv7h')
