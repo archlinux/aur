@@ -32,6 +32,7 @@ depends=(
 	python-systemd
 	python-dbus
 	python-pygments
+	python-pyghmi
 	psmisc
 	v4l-utils
 	nginx-mainline
