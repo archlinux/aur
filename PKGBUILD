@@ -2,7 +2,7 @@
 
 pkgname=catatonit
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A container init that is so simple it's effectively brain-dead."
 arch=('x86_64')
 url="http://github.com/openSUSE/catatonit/"
@@ -24,6 +24,8 @@ package() {
   cd "$pkgname-$pkgver"
 
   make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -d "${pkgdir}/usr/libexec/podman/"
+  ln -s /usr/bin/$pkgname "${pkgdir}/usr/libexec/podman/"
 }
 
 # vim: ft=sh syn=sh

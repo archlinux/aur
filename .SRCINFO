@@ -1,7 +1,7 @@
 pkgbase = catatonit
 	pkgdesc = A container init that is so simple it's effectively brain-dead.
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/openSUSE/catatonit/
 	arch = x86_64
 	license = GPL3
