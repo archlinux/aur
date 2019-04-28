@@ -1,7 +1,7 @@
 # Maintainer: Martin Kröning <m dot kroening at hotmail dot de>
 # Contributor: Jan-Erik Rediger <badboy at archlinux dot us>
 pkgname=sync-my-l2p
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Sync the L2P and moodle instance of RWTH Aachen University"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('LGPL3')
 depends=('hicolor-icon-theme' 'qt5-base')
 options=('!strip')
 source=("$url/releases/download/v$pkgver/SyncMyL2P-$pkgver-linux.AppImage")
-sha256sums=('4cd7e7b75a1b6b3d186171553610ab3bf89633270ecafe6dbb19369109223ee2')
+sha256sums=('a84527eadedea94144452f300883eef87880ee0608957dc44094cbd66e6d02c1')
 
 prepare() {
 	# Extract binary, desktop entry and icons from the AppImage
