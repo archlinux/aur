@@ -15,12 +15,12 @@ makedepends=('icu'
              'setconf'
              )
 source=('https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
-        'https://src.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.7.0-PIE.patch'
-        'https://src.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.9.0-no-rpath.patch'
-        'https://src.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.13.0-gcc5-build.patch'
-        'https://src.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.14.1-build-fixes.patch'
-        'https://src.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.14.1-ssl-include.patch'
-        'https://src.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.14.1-openssl-1.1-fix.patch'
+        'https://src.fedoraproject.org/rpms/tog-pegasus/raw/master/f/pegasus-2.7.0-PIE.patch'
+        'https://src.fedoraproject.org/rpms/tog-pegasus/raw/master/f/pegasus-2.9.0-no-rpath.patch'
+        'https://src.fedoraproject.org/rpms/tog-pegasus/raw/master/f/pegasus-2.13.0-gcc5-build.patch'
+        'https://src.fedoraproject.org/rpms/tog-pegasus/raw/master/f/pegasus-2.14.1-build-fixes.patch'
+        'https://src.fedoraproject.org/rpms/tog-pegasus/raw/master/f/pegasus-2.14.1-ssl-include.patch'
+        'https://src.fedoraproject.org/rpms/tog-pegasus/raw/master/f/pegasus-2.14.1-openssl-1.1-fix.patch'
         )
 sha256sums=('9f2f13a35da218f3cb6e8478246ff7c4d3010560bb4d5de9cbf4272d48e353fb'
             'e3924bdb81a4dd2cedfb9c7ba669cb01b32f4c4e16b3af4c06f9a2426a9274d1'
@@ -52,8 +52,10 @@ prepare() {
   patch -p1 -i "${srcdir}/pegasus-2.14.1-ssl-include.patch"
   patch -p1 -i "${srcdir}/pegasus-2.14.1-openssl-1.1-fix.patch"
 
+  # Fix sqlite and snmp detection
   sed 's|lib64/|\$libbase/|g' -i configure
 
+  # set lib output directory
   setconf configure libbase lib
 
   export PEGASUS_EXTRA_C_FLAGS="${CFLAGS}"
@@ -65,7 +67,7 @@ prepare() {
 
 build() {
   cd pegasus
-  make -j$(nproc) -f GNUmakefile
+  make -f GNUmakefile
 }
 
 package() {
@@ -93,4 +95,3 @@ package() {
 
   install -Dm644 "${srcdir}/pegasus/OpenPegasusNOTICE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/OpenPegasusNOTICE.txt"
 }
-
