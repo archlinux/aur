@@ -16,7 +16,7 @@ source=(
 )
 validpgpkeys=("8A260D8ABBEBEF75855FEFDF7C3D13CDCA5C947F")
 sha256sums=(
-    "3519d7cbec49cd80e68672e14ef063f8a981e563c9b4d862ebb2c65d3dd20b43"
+    "e01ed4f4dcf70ff99b308e88ae064b4086a1f9ce1e816a6521649f495fecc05c"
     "SKIP"
 )
 
