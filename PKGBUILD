@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=bash-completion-git
-pkgver=2.8.r20.gd664aebf
+pkgver=2.9.r2.g483968cd
 pkgrel=1
 pkgdesc="Programmable completion functions for bash"
 arch=('any')
@@ -26,14 +26,10 @@ build() {
   cd "bash-completion"
 
   autoreconf -fi
-  ./configure --prefix="/usr" --sysconfdir="/etc"
+  ./configure \
+    --prefix="/usr" \
+    --sysconfdir="/etc"
   make
-}
-
-check() {
-  cd "bash-completion"
-
-  make check
 }
 
 package() {
@@ -41,6 +37,9 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
+  # bash-completion is sourced in /etc/bash.bashrc so that non-bash shell don't source it
   rm "$pkgdir/etc/profile.d/bash_completion.sh"
+
+  # remove Slackware's makepkg completion
   rm "$pkgdir/usr/share/bash-completion/completions/makepkg"
 }

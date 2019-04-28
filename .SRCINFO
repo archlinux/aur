@@ -1,6 +1,6 @@
 pkgbase = bash-completion-git
 	pkgdesc = Programmable completion functions for bash
-	pkgver = 2.8.r20.gd664aebf
+	pkgver = 2.9.r2.g483968cd
 	pkgrel = 1
 	url = https://github.com/scop/bash-completion
 	arch = any
