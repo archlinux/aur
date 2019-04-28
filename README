@@ -1,10 +1,23 @@
-WHAT - These are mkinitcpio book hooks derived from the "block" hook, which is the new catch all, for all block devices. MMC, USB, and Firewire have been taken out and repacked invidually into their own hooks, meant to be used one at a time, as it was before.
+Live Units
+==========
+These are mkinitcpio hooks that are split up from the "block" hook, and designed
+for use for live, or other lightweight or specialty systems where this might
+improve performance. This is the way that Arch did things eons ago. Chances are
+you probably don't need this.
 
-WHY - using "block" as opposed to only using USB increases the boot time, and added some ambiguity over which device got to be /dev/sda. The amount of boot time that was increased by the move was only 3 seconds. Considering previous boot time was around 26 seconds, its more than a %10 increase.
+This is done for a handful of reasons. In a LiveOS we can save loading time, by
+only loading drivers we absolutely need. We can also ensure that the internal
+hard disk is kept out of early user space by not including the drivers. We can
+fine tune what devices are in fact allowed in early user space
 
-If you need other drivers, just use block. This is specificly for booting live USB sticks faster. If your NOT using a Live USB stick SPECIFICLY(or firewire?), you don't need this package.
+hooks:
 
-It should also be noted that most mmc flash card readers are USB and only need USB drivers.(cell phones, and embedded devices use mmc when booting natively, your computer uses usb when connecting to the cellphone)
+live_usb - loads USB storage devices
 
-HOW - after installing you may use the live_firewire, live_usb and live_mmc HOOKS= in mkinitcpio.conf.
+live_mmc - loads SD card. NOTE that most sd card readers, but not all enumerate
+	   as USB block devices. This was done early on for compatibility,
+	   and licensing.(/dev/mmcblk* devices need this, /dev/sd* does not)
 
+live_firewire - ieee1394 devices
+
+live_virtual - virtualmachines use this
