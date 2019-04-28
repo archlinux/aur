@@ -1,2 +1,4 @@
 *.pkg*
 gedit-source-code-browser/*
+src/*
+pkg/*
