@@ -1,7 +1,7 @@
 pkgbase = cloudabi-utils
 	pkgdesc = a number of libraries and utilities that can be used to easily start CloudABI programs
 	pkgver = 0.38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NuxiNL/cloudabi-utils
 	arch = x86_64
 	arch = aarch64

@@ -1,10 +1,10 @@
 # Maintainer: Maarten de Vries <maarten@de-vri.es>
-# Contributor: Maurice Bos <m-ou.se@m-ou.se>
+# Contributor: Mara Bos <m-ou.se@m-ou.se>
 # Contributor: Maarten de Vries <maarten@de-vri.es>
 
 pkgname=cloudabi-utils
 pkgver=0.38
-pkgrel=1
+pkgrel=2
 pkgdesc="a number of libraries and utilities that can be used to easily start CloudABI programs"
 arch=('x86_64' 'aarch64')
 url='https://github.com/NuxiNL/cloudabi-utils'
