@@ -5,7 +5,7 @@
 _pkgname=onedrive
 pkgname=$_pkgname-abraunegg-git
 pkgver=2.3.3.r4.gfbad4b4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Free OneDrive client written in D - abraunegg's fork"
 arch=('i686' 'x86_64')
@@ -32,10 +32,10 @@ build() {
   cd $_pkgname
 
   ./configure --enable-notifications --enable-completions --prefix=/usr
-  make
+  make COMPLETIONS=1 NOTIFICATIONS=1 PREFIX=/usr
 }
 
 package() {
-  make DESTDIR="$pkgdir" -C $_pkgname install
+  make COMPLETIONS=1 NOTIFICATIONS=1 PREFIX=/usr DESTDIR="$pkgdir" -C $_pkgname install
   install -Dm644 $_pkgname/config "$pkgdir/usr/share/onedrive/config.default"
 }
