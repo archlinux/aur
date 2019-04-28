@@ -1,6 +1,6 @@
 pkgbase = libindy-crypto
 	pkgdesc = Shared crypto library for Hyperledger Indy components
-	pkgver = 0.1.6
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/hyperledger/indy-crypto
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = libindy-crypto
 	license = APACHE
 	makedepends = rust
 	depends = libsodium
-	source = https://github.com/hyperledger/indy-crypto/archive/master.zip
-	md5sums = SKIP
+	source = indy-crypto-0.5.1.tar.gz::https://static.crates.io/crates/indy-crypto/indy-crypto-0.5.1.crate'
+	md5sums = 226d7a818179e012c5bf602bed0e67e6
 
 pkgname = libindy-crypto
 
