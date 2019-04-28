@@ -1,7 +1,7 @@
 # Maintainer: Stephen Argent <steve [at] tuxcon [dot] com>
 
 pkgname=('byteball')
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Byteball cryptocurrency wallet client."
 arch=('x86_64')
@@ -27,15 +27,15 @@ depends=('binutils'
 	 'libcups'
 	 'gtk2'
 	 'libexif')
-source=(https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/byteball-linux64.zip)
-sha256sums=('b841e4bdc33868c661863c28b9ce36071ef045f60dd30c453d901904266d1f6d')
+source=(https://github.com/${pkgname}/obyte-gui-wallet/releases/download/v${pkgver}/obyte-linux64.zip)
+sha256sums=('f8d286bfb0247a730c4797128712b10c67a19ec4c5e6312c30e903de507b8b83')
 install="$pkgname.install"
 package() {
-	unzip -o "${srcdir}/byteball-linux64.zip"
-	install -dm755 "$pkgdir/usr/share/byteball"
+	unzip -o "${srcdir}/obyte-linux64.zip"
+	install -dm755 "$pkgdir/usr/share/obyte"
 	install -dm755 "$pkgdir/usr/share/applications"
-	install -Dm644 "$srcdir/byteball-linux64/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	cp -R ${srcdir}/byteball-linux64/* ${pkgdir}/usr/share/byteball/
+	install -Dm644 "$srcdir/obyte-linux64/obyte.desktop" "$pkgdir/usr/share/applications/obyte.desktop"
+	cp -R ${srcdir}/obyte-linux64/* ${pkgdir}/usr/share/obyte/
 	chmod -R o+r "$pkgdir/usr/share/"
-	chmod 755 "$pkgdir/usr/share/byteball/Byteball"
+	chmod 755 "$pkgdir/usr/share/obyte/Obyte"
 }
