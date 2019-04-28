@@ -16,8 +16,10 @@ depends=('python' 'python-gevent>=1.1.0' 'python-gevent-websocket'
 	'python-bencode.py' 'python-coincurve'
 	'python-bitcoinlib' 'python-maxminddb'
 	'geoip2-database')
-optdepends=('tor: anonymity')
+optdepends=('tor: anonymity'
+	    'namecoin-core: local name resolution')
 makedepends=('git')
+checkdepends=('python-pytest' 'python-mock')
 license=('GPL2')
 pkgdesc="Decentralized websites using Bitcoin crypto and the BitTorrent network."
 provides=(zeronet)
