@@ -1,7 +1,7 @@
 pkgbase = github-desktop
 	pkgdesc = GUI for managing Git and GitHub.
 	pkgver = 1.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://desktop.github.com
 	arch = x86_64
 	license = MIT
@@ -15,6 +15,8 @@ pkgbase = github-desktop
 	depends = curl
 	depends = libxss
 	depends = gconf
+	depends = nss
+	depends = nspr
 	optdepends = hub: CLI interface for GitHub.
 	source = git+https://github.com/shiftkey/desktop.git#tag=release-1.6.6-linux2
 	source = github-desktop.desktop
