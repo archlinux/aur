@@ -18,12 +18,6 @@ sha256sums=('6424c97656b4f9bd888cc8778fd64731f254a570632e2609a157ef21d212d4fe')
 
 package() {
     cd "${srcdir}"
-
-    # To avoid having to download over a gigabyte of haskell makedepends (400-ish for ghc, plus 750 in libs), we
-    # just yoink the binary from static compiled binary distributed by pandoc:
-    tar -zxf "pandoc-crossref-${pkgver}.tar.gz"
-    mkdir -p "${pkgdir}/usr/bin"
-    cp pandoc-crossref "${pkgdir}/usr/bin/"
-    mkdir -p "${pkgdir}/usr/share/man/man1/"
-    cp pandoc-crossref.1 "${pkgdir}/usr/share/man/man1/"
+    install -Dm755 pandoc-crossref "${pkgdir}/usr/bin/pandoc-crossref"
+    install -Dm644 pandoc-crossref.1 "${pkgdir}/usr/share/man/man1/pandoc-crossref.1"
 }
