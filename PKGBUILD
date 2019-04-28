@@ -9,6 +9,7 @@ url="https://notabug.org/RemixDevs/${_pkgname}"
 license=('GPL3')
 makedepends=('git' 'npm')
 # depends=('electron')
+conflicts=('deezloader-remix-bin')
 source=("git+https://notabug.org/RemixDevs/${_pkgname}"
         "${_pkgname}.desktop")
 md5sums=('SKIP'
