@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 pkgname=context-minimals-git
-pkgver=2016.06.16
+pkgver=2019.04.25
 pkgrel=1
 pkgdesc="A standalone ConTeXt distribution"
 url="http://www.contextgarden.net"
@@ -23,6 +23,7 @@ backup=()
 install=context-minimals-git.install
 
 PKGEXT=".pkg.tar.gz"
+options=(!strip)
 
 # ConTeXt minimals uses a different naming convention for architectures
 
@@ -64,25 +65,41 @@ prepare() {
  $srcdir/bin/texlua $srcdir/bin/mtxrun --script $srcdir/bin/mtx-update.lua  \
       --platform=$_platform --texroot=$srcdir/tex --engine=all --modules=all \
       --flags="-rpztl --info=progress2" \
-      --context=beta  --update  --force --make || return 1
+      --context=beta  --update  --force || return 1
 
  # The setuptex that comes with minimals does not work in a multi-user
  # environment. So, we modify it appropriately.
+ # Generate a setuptex file
+ cat <<- _EOF_ > $srcdir/tex/setuptex
+	_OLD_PS1=\$PS1
+	_OLD_PATH=\$PATH
+	TEXMFOS=${_dest}/texmf-${_platform}
+	export TEXMFOS
+	
+	TEXMFCACHE=\$HOME/.cache/context-minimals
+	export TEXMFCACHE
+	
+	PATH=\$TEXMFOS/bin:\$PATH
+	export PATH
+	
+	PS1="(ctx) \$PS1"
+	export PS1
+	
+	OSFONTDIR="$_userfontdir;$_osfontdir;" 
+	export OSFONTDIR
+	resettex () {
+	    PATH=\$_OLD_PATH
+	    export PATH
+	    unset _OLD_PATH
+	    
+	    PS1=\$_OLD_PS1
+	    export PS1
+	    unset _OLD_PS1
+	    
+	    unset -f resettex
+}
+_EOF_
 
- echo "TEXMFOS=${_dest}/texmf-${_platform}"   > $srcdir/tex/setuptex
- echo "export TEXMFOS"                       >> $srcdir/tex/setuptex
- echo ""                                     >> $srcdir/tex/setuptex
- echo "TEXMFCACHE=\$HOME/texmf-cache"        >> $srcdir/tex/setuptex
- echo "export TEXMFCACHE"                    >> $srcdir/tex/setuptex
- echo ""                                     >> $srcdir/tex/setuptex
- echo "unset TEXINPUTS MPINPUTS MFINPUTS"    >> $srcdir/tex/setuptex
- echo ""                                     >> $srcdir/tex/setuptex
- echo "PATH=\$TEXMFOS/bin:\$PATH"            >> $srcdir/tex/setuptex
- echo "export PATH"                          >> $srcdir/tex/setuptex
- echo ""                                     >> $srcdir/tex/setuptex
- echo "OSFONTDIR=\"$_userfontdir;$_osfontdir;\"" \
-                                            >> $srcdir/tex/setuptex
- echo "export OSFONTDIR"                    >> $srcdir/tex/setuptex
  # If texlive exists, use fonts from texlive
  if [ -d $_texlivefontdir ]
  then
