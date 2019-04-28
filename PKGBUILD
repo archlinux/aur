@@ -1,14 +1,15 @@
-# Maintainer: mar77i <mar77i at mar77i dot ch>
-# Past Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: mar77i <mar77i at mar77i dot ch>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Scytrin dai Kinthra <scytrin@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=st-luke-git
 _pkgname=st-luke
 _pkgver=0.8.1
 pkgver=0.8.1.r1051
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple virtual terminal emulator for X'
-url='http://st.suckless.org/'
+url='https://github.com/LukeSmithxyz/st.git'
 arch=('i686' 'x86_64')
 license=('MIT')
 options=('zipman')
@@ -16,7 +17,7 @@ depends=('libxft')
 makedepends=('ncurses' 'libxext' 'git')
 
 # include config.h and any patches you want to have applied here
-source=("${_pkgname}::git+https://github.com/LukeSmithxyz/st.git")
+source=("${_pkgname}::git+$url")
 sha256sums=('SKIP')
 provides=("${_pkgname}" 'st')
 conflicts=("${_pkgname}" 'st')
