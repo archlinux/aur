@@ -1,25 +1,24 @@
+# Maintainer: JP Cimalando <jp-dev@inbox.ru>
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=appimage-git
 _gitname=AppImageKit
 pkgdesc="Package desktop applications as AppImages that run on common Linux-based operating systems, such as RHEL, CentOS, Ubuntu, Fedora, debian and derivatives."
-pkgver=r982.3f74bcd
+pkgver=r1587.ce61b83
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://appimage.org"
 license=('MIT')
-depends=('fuse' 'glib2' 'glibc' 'binutils' 'coreutils' 'zlib' 'lz4' 'zsync' 'inotify-tools' 'openssl' 'libarchive' 'xz')
-makedepends=('git' 'cmake' 'wget' 'vim')
+depends=('fuse' 'glib2' 'glibc' 'binutils' 'coreutils' 'zlib' 'lz4' 'zsync' 'inotify-tools' 'openssl' 'libarchive' 'xz' 'cairo')
+makedepends=('git' 'cmake' 'wget' 'vim' 'desktop-file-utils')
 provides=('appimage')
 conflicts=('appimage')
 options=('!strip')
-install="$pkgname.install"
-source=(
-  'git://github.com/probonopd/AppImageKit'
-)
-md5sums=(
-  'SKIP'
-)
+install=
+source=('git://github.com/probonopd/AppImageKit'
+        'https://patch-diff.githubusercontent.com/raw/AppImage/AppImageKit/pull/952.diff')
+md5sums=('SKIP'
+         '608c5ead3266d58da38b4d7eb3a83c4a')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -36,19 +35,9 @@ prepare() {
 
   ./build.sh --clean
 
-  sed -i "s/ctest -V/echo 'Skip Tests...'/g" build.sh
+  patch -p1 -i "${srcdir}"/952.diff
 
-  # Generate appimaged.service file
-  echo "[Unit]" > appimaged.service
-  echo "Description=AppImage daemon" >> appimaged.service
-  echo "After=display-manager.service" >> appimaged.service
-  echo "[Service]" >> appimaged.service
-  echo "ExecStart=/usr/bin/appimaged" >> appimaged.service
-  echo "Restart=always" >> appimaged.service
-  echo "RestartSec=5s" >> appimaged.service
-  echo "StartLimitInterval=0" >> appimaged.service
-  echo "[Install]" >> appimaged.service
-  echo "WantedBy=default.target" >> appimaged.service
+  sed -i "s/ctest -V/echo 'Skip Tests...'/g" build.sh
 }
 
 build() {
@@ -57,29 +46,24 @@ build() {
 
   # Copy metainfo files
   mkdir -p appimagetool.AppDir/usr/share/metainfo/
-  mkdir -p appimaged.AppDir/usr/share/metainfo/
 
   cp resources/usr/share/metainfo/appimagetool.appdata.xml appimagetool.AppDir/usr/share/metainfo/
-  cp resources/usr/share/metainfo/appimaged.appdata.xml appimaged.AppDir/usr/share/metainfo/
 
   # Generate appimage files
   cd build/out
   appimagetool.AppDir/AppRun -n appimagetool.AppDir appimagetool
-  appimagetool.AppDir/AppRun -n appimaged.AppDir appimaged
 }
 
 package(){
   cd "$srcdir/${_gitname}"
 
-  mkdir -p $pkgdir/usr/bin
-  mkdir -p $pkgdir/usr/share/appimage
-  mkdir -p $pkgdir/usr/lib/systemd/user/
+  mkdir -p "$pkgdir"/usr/bin
+  mkdir -p "$pkgdir"/usr/share/appimage
 
-  cp build/out/appimagetool $pkgdir/usr/bin/
-  cp build/out/appimaged $pkgdir/usr/bin/
+  cp build/out/appimagetool "$pkgdir"/usr/bin/
 
-  cp src/AppRun.c $pkgdir/usr/share/appimage/
-  cp README.md $pkgdir/usr/share/appimage/
+  cp src/AppRun.c "$pkgdir"/usr/share/appimage/
+  cp README.md "$pkgdir"/usr/share/appimage/
 
-  cp appimaged.service $pkgdir/usr/lib/systemd/user/
+  install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
