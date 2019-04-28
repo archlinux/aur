@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libnice
 	pkgdesc = An implementation of the IETF's draft ICE (for p2p UDP data streams) (mingw-w64)
 	pkgver = 0.1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nice.freedesktop.org
 	arch = any
 	license = LGPL
@@ -14,7 +14,9 @@ pkgbase = mingw-w64-libnice
 	options = !buildflags
 	options = staticlibs
 	source = git+https://gitlab.freedesktop.org/libnice/libnice.git#commit=e25c3e5113c7b7002a78bcca2ecf058bbf7de6d4
+	source = 0001-nicesrc-spin-the-agent-mainloop-in-a-separate-thread.patch
 	sha256sums = SKIP
+	sha256sums = 9413dc1b9b681b6e5c274db0267aa4c3bf88b360d0f58edf73f1bad365243f30
 
 pkgname = mingw-w64-libnice
 
