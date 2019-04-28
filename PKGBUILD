@@ -48,24 +48,24 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 pkgver() {
-  cd mozilla-unified
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+    cd mozilla-unified
+    printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 prepare() {
-  mkdir -p mozbuild
-  cd mozilla-unified
+    mkdir -p mozbuild
+    cd mozilla-unified
 
-  echo -n "$_google_api_key" >google-api-key
-  echo -n "$_mozilla_api_key" >mozilla-api-key
+    echo -n "$_google_api_key" >google-api-key
+    echo -n "$_mozilla_api_key" >mozilla-api-key
 
-  #
-  # If you want to disable LTO/PGO (compile too long, it needs working
-  # xorg-server-xvfb), delete the lines below beginning with
-  # `ac_add_options --enable-lto' and ending with 'export RANLIB=llvm-ranlib`
-  #
+    #
+    # If you want to disable LTO/PGO (compile too long, it needs working
+    # xorg-server-xvfb), delete the lines below beginning with
+    # `ac_add_options --enable-lto' and ending with 'export RANLIB=llvm-ranlib`
+    #
 
-  cat >.mozconfig <<END
+    cat >.mozconfig <<END
 ac_add_options --enable-application=browser
 
 ac_add_options --prefix=/usr
@@ -110,26 +110,26 @@ END
 }
 
 build() {
-  cd mozilla-unified
+    cd mozilla-unified
 
-  export MOZ_SOURCE_REPO="$_repo"
-  export MOZ_NOSPAM=1
-  export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
+    export MOZ_SOURCE_REPO="$_repo"
+    export MOZ_NOSPAM=1
+    export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
 
-  # LTO/PGO needs more open files
-  ulimit -n 4096
+    # LTO/PGO needs more open files
+    ulimit -n 4096
  
-  ./mach build
-  ./mach buildsymbols
+    ./mach build
+    ./mach buildsymbols
 }
 
 package() {
-  cd mozilla-unified
-  DESTDIR="$pkgdir" ./mach install
-  find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
+    cd mozilla-unified
+    DESTDIR="$pkgdir" ./mach install
+    find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 
-  _vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
-  install -Dm644 /dev/stdin "$_vendorjs" <<END
+    _vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
+    install -Dm644 /dev/stdin "$_vendorjs" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
@@ -144,8 +144,8 @@ pref("extensions.autoDisableScopes", 11);
 pref("extensions.shownSelectionUI", true);
 END
 
-  _distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
-  install -Dm644 /dev/stdin "$_distini" <<END
+    _distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
+    install -Dm644 /dev/stdin "$_distini" <<END
 [Global]
 id=archlinux
 version=1.0
@@ -157,30 +157,30 @@ app.distributor.channel=$_pkgname
 app.partner.archlinux=archlinux
 END
 
-  for i in 16 22 24 32 48 64 128 256; do
-    install -Dm644 browser/branding/official/default$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
-  done
-  install -Dm644 browser/branding/official/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$_pkgname.png"
-  install -Dm644 browser/branding/official/content/about-logo@2x.png \
-    "$pkgdir/usr/share/icons/hicolor/384x384/apps/$_pkgname.png"
-  install -Dm644 ../firefox-symbolic.svg \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$_pkgname-symbolic.svg"
+    for i in 16 22 24 32 48 64 128 256; do
+        install -Dm644 browser/branding/official/default$i.png \
+            "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
+    done
+    install -Dm644 browser/branding/official/content/about-logo.png \
+        "$pkgdir/usr/share/icons/hicolor/192x192/apps/$_pkgname.png"
+    install -Dm644 browser/branding/official/content/about-logo@2x.png \
+        "$pkgdir/usr/share/icons/hicolor/384x384/apps/$_pkgname.png"
+    install -Dm644 ../firefox-symbolic.svg \
+        "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$_pkgname-symbolic.svg"
 
-  install -Dm644 ../$_pkgname.desktop \
-    "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    install -Dm644 ../$_pkgname.desktop \
+        "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
-  # Install a wrapper to avoid confusion about binary path
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
+    # Install a wrapper to avoid confusion about binary path
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
 #!/bin/sh
 exec /usr/lib/$_pkgname/firefox "\$@"
 END
 
-  # Replace duplicate binary with wrapper
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srf "$pkgdir/usr/bin/$_pkgname" \
-    "$pkgdir/usr/lib/$_pkgname/firefox-bin"
+    # Replace duplicate binary with wrapper
+    # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
+    ln -srf "$pkgdir/usr/bin/$_pkgname" \
+        "$pkgdir/usr/lib/$_pkgname/firefox-bin"
 }
 
 # vim:set sw=2 et:
