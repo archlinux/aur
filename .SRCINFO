@@ -1,0 +1,13 @@
+pkgbase = adwaita-creamy
+	pkgdesc = Refreshed new Adwaita theme with creamy colors and minor changes.
+	pkgver = 3.24.8
+	pkgrel = 1
+	url = https://github.com/murat-cileli/adwaita-creamy
+	arch = x86_64
+	license = MIT
+	provides = adwaita-creamy
+	source = adwaita-creamy-3.24.8::https://github.com/murat-cileli/adwaita-creamy/archive/3.24.8.tar.gz
+	sha256sums = SKIP
+
+pkgname = adwaita-creamy
+
