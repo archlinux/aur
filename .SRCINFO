@@ -1,0 +1,12 @@
+pkgbase = catatonit
+	pkgdesc = A container init that is so simple it's effectively brain-dead.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = http://github.com/openSUSE/catatonit/
+	arch = x86_64
+	license = GPL3
+	source = https://github.com/openSUSE/catatonit/releases/download/v0.1.4/catatonit.tar.xz
+	sha256sums = 5b6dab80839b4246484ca861764899cbc21eecaff4740d2cb6a0463bc70bf63b
+
+pkgname = catatonit
+
