@@ -200,7 +200,13 @@ extract_rpm() {
 }
 
 extract_rpms() {
-  for rpm_file in ${rpm_dir}/$1 ; do
+  # select binary files of specific arch
+  if [ -z "$3" ]; then
+    _rpm_dir="${rpm_dir}"
+  else
+    _rpm_dir="$3"
+  fi
+  for rpm_file in ${_rpm_dir}/$1 ; do
     extract_rpm ${rpm_file} $2
   done
 }
