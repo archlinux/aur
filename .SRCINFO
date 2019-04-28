@@ -1,0 +1,15 @@
+pkgbase = lightdm-webkit-theme-osmos
+	pkgdesc = A sleek, customizable Archlinux theme for lightdm.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Warinyourself/lightdm-webkit-theme-osmos
+	install = lightdm-webkit-theme-osmos.install
+	arch = any
+	license = GPL3
+	depends = lightdm
+	depends = lightdm-webkit2-greeter>=2.2.3
+	source = https://github.com/Warinyourself/lightdm-webkit-theme-osmos/releases/download/1.0.0/lightdm-webkit-theme-osmos-1.0.0.tar.gz
+	md5sums = b75da2c38e9f44aea8815dbd61f5b803
+
+pkgname = lightdm-webkit-theme-osmos
+
