@@ -1,4 +1,4 @@
-pkgbase = adwaita-creamy
+pkgbase = pkgbase
 	pkgdesc = Refreshed new Adwaita theme with creamy colors and minor changes.
 	pkgver = 3.24.8
 	pkgrel = 1
