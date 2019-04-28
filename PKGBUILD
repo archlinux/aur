@@ -1,10 +1,10 @@
 # Maintainer: Maarten de Vries <maarten@de-vri.es>
-# Contributor: Maurice Box <m-ou.se@m-ou.se>
+# Contributor: Mara Bos <m-ou.se@m-ou.se>
 # Contributor: Maarten de Vries <maarten@de-vri.es>
 
 pkgname=cloudabi-clang
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc="Symlinks for the clang toolchain for CloudABI."
 url='http://clang.llvm.org/'
 arch=('any')
