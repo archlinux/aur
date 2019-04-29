@@ -37,9 +37,15 @@ pkgver() {
 prepare() {
   cd $pkgname
 
+  git remote add verde https://gitlab.gnome.org/verdre/gnome-shell.git || true
+  git fetch verde
+
   # https://gitlab.gnome.org/GNOME/gnome-shell/issues/1084
   patch -Np1 -i ../nvidia-background-workaround.patch
 
+  #Fixes and performance improvements to the extension system
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/96
+  git cherry-pick -n 07506a72^..570b947f
 
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
