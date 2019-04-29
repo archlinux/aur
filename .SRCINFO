@@ -1,6 +1,6 @@
 pkgbase = rocksdb-lite
 	pkgdesc = Embedded key-value store for fast storage (lite version)
-	pkgver = 6.0.1
+	pkgver = 6.0.2
 	pkgrel = 1
 	url = http://rocksdb.org
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = rocksdb-lite
 	depends = gcc-libs
 	provides = rocksdb
 	conflicts = rocksdb
-	source = https://github.com/facebook/rocksdb/archive/v6.0.1.tar.gz
-	sha256sums = 9a9aca15bc3617729d976ceb98f6cbd64c6c25c4d92f374b4897aa2d2faa07cf
+	source = https://github.com/facebook/rocksdb/archive/v6.0.2.tar.gz
+	sha256sums = 89e0832f1fb00ac240a9438d4bbdae37dd3e52f7c15c3f646dc26887da16f342
 
 pkgname = rocksdb-lite
 
