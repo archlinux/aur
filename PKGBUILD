@@ -8,9 +8,10 @@ arch=('any')
 url="https://github.com/maateen/battery-monitor"
 license=('GPL3')
 depends=('acpi' 'python' 'python-gobject' 'libnotify' 'libappindicator-gtk3')
-provides=('battery-monitor')
+provides=("$_gitname")
+conflicts=("$_gitname")
 source=('git+https://github.com/maateen/battery-monitor.git#branch=devel')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
  	cd "$srcdir/$_gitname"
