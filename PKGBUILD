@@ -21,6 +21,6 @@ pkgver() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -d "$pkgdir/etc"
-	cp -r "${pkgname%-git}/viper4linux/" "$pkgdir/etc"
-	install -Dm755 "${pkgname%-git}/viper" "$pkgdir/usr/bin/viper"
+	cp -r "${pkgname%-git}/" "$pkgdir/etc"
+	install -Dm755 viper "$pkgdir/usr/bin/viper"
 }
