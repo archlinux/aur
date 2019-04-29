@@ -4,16 +4,23 @@
 # Contributor: György Balló <ballogy@freestart.hu>
 
 pkgname=gparted-git
-pkgver=0.33.0.r60.g0b5cfd34
-pkgrel=2
+pkgver=0.33.0.r123.gad6d2b38
+pkgrel=1
 pkgdesc="A Partition Magic clone, frontend to GNU Parted"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686'
+      'x86_64'
+      'armv6h'
+      'armv7h')
 url="http://gparted.sourceforge.net"
 license=('GPL')
 provides=('gparted')
 conflicts=('gparted')
 depends=('parted' 'gtkmm3')
-makedepends=('intltool' 'pkg-config' 'gnome-doc-utils' 'polkit')
+makedepends=('intltool'
+             'gnome-common'
+             'pkg-config'
+             'gnome-doc-utils'
+             'polkit')
 optdepends=('dosfstools: for FAT16 and FAT32 partitions'
             'jfsutils: for jfs partitions'
             'f2fs-tools: for Flash-Friendly File System'
