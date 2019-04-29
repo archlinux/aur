@@ -4,7 +4,7 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-performance
-pkgver=3.32.1
+pkgver=3.32.1+10+g059c729da
 pkgrel=1
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -20,8 +20,7 @@ optdepends=('gnome-control-center: System settings'
 groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver)
 conflicts=(gnome-shell)
-_commit=9090b7dc3ddbc2ff6d0445d071a07eae525000b4 # tags/3.32.1^0
-source=("$pkgname::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
+source=("$pkgname::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#branch=gnome-3-32"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
          https://github.com/endlessm/gnome-shell/commit/11ddabfb22aedb3c35abe06d2cf0205f223cca03.diff)
 sha256sums=('SKIP'
@@ -60,4 +59,3 @@ package() {
   # https://bugs.archlinux.org/task/37412
   mkdir "$pkgdir/usr/share/gnome-shell/modes"
 }
-
