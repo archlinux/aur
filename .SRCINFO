@@ -1,0 +1,15 @@
+pkgbase = nordconnect
+	pkgdesc = Connect to a NordVPN server
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/ranisalt/nordconnect
+	arch = any
+	license = GPL3
+	depends = openvpn
+	optdepends = nordselect: select the ideal server
+	optdepends = openvpn-update-systemd-resolved: use NordVPN DNS servers with systemd-resolved
+	source = nordconnect
+	sha256sums = fcbece552d66bc97073e6578e27417bdc95a89c7b768ee82c606c996c3998915
+
+pkgname = nordconnect
+

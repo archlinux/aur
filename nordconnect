@@ -1,0 +1,190 @@
+#!/usr/bin/env sh
+
+CONFIG="${XDG_CONFIG_HOME:-${HOME}/.config}/nordconnect"
+CREDENTIALS="${CONFIG}/credentials"
+FILES_FOLDER="${CONFIG}/files"
+
+die() {
+  echo "$@" >&2; exit 1
+}
+
+connect() {
+  PORT="$1"
+  SERVER="$2"
+
+  echo "Connecting to server ${SERVER} on port ${PORT}"
+
+  [ -f "$CREDENTIALS" ] || die "Please run ${0} --init before connecting for the first time."
+
+  CONFIG_FILE="${FILES_FOLDER}/ovpn_${PORT}/${SERVER}.nordvpn.com.${PORT}.ovpn"
+  [ -f "$CONFIG_FILE" ] || update
+
+  LOGS_FOLDER="${CONFIG}/logs"
+  [ -d "$LOGS_FOLDER" ] || mkdir -p "$LOGS_FOLDER"
+  touch "${LOGS_FOLDER}/openvpn.log" "${LOGS_FOLDER}/status.log"
+
+  set -- \
+    --redirect-gateway \
+    --auth-retry nointeract \
+    --config "$CONFIG_FILE" \
+    --auth-user-pass "$CREDENTIALS" \
+    --log "${LOGS_FOLDER}/openvpn.log" \
+    --status "${LOGS_FOLDER}/status.log" \
+    --syslog "$0"
+
+  UPDATE_SYSTEMD_RESOLVED=/etc/openvpn/scripts/update-systemd-resolved
+  [ -f "$UPDATE_SYSTEMD_RESOLVED" ] && {
+    set -- "$@" \
+    --dhcp-option DOMAIN-ROUTE . \
+    --script-security 2 \
+    --setenv PATH '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' \
+    --up "$UPDATE_SYSTEMD_RESOLVED" \
+    --down "$UPDATE_SYSTEMD_RESOLVED" \
+    --down-pre
+  }
+
+  echo "Check log files at $LOGS_FOLDER if errors occur."
+  unset CONFIG_FILE LOGS_FOLDER PORT SERVER UPDATE_SYSTEMD_RESOLVED
+  exec sudo openvpn "${@}"
+}
+
+init() {
+  [ -d "$CONFIG" ] || mkdir -p "$CONFIG"
+
+  printf 'Enter your username for NordVPN, i.e. youremail@yourmail.com: '; read -r USERNAME
+  stty -echo 2>/dev/null
+  printf 'Enter the password for NordVPN: '; read -r PASSWORD
+  stty echo 2>/dev/null
+
+  printf '%s\n%s' "$USERNAME" "$PASSWORD" > "$CREDENTIALS"
+  unset USERNAME PASSWORD
+  chmod 600 "$CREDENTIALS"
+}
+
+update() {
+  CACHE="${HOME}/.cache/nordconnect"
+  [ -d "$CACHE" ] || mkdir -p "$CACHE"
+
+  # shamelessly stolen from winetricks
+  case "$NORDCONNECT_DOWNLOADER" in
+    aria2c|curl|wget|fetch) DOWNLOADER="$NORDCONNECT_DOWNLOADER";;
+    '')
+      if [ -x "$(command -v aria2c 2>/dev/null)" ]; then
+        DOWNLOADER=aria2c
+      elif [ -x "$(command -v wget 2>/dev/null)" ]; then
+        DOWNLOADER=wget
+      elif [ -x "$(command -v curl 2>/dev/null)" ]; then
+        DOWNLOADER=curl
+      elif [ -x "$(command -v fetch 2>/dev/null)" ]; then
+        DOWNLOADER=fetch
+      else
+        die 'Please install aria2c, wget, curl or fetch'
+      fi;;
+    *) die "Invalid value ${NORDCONNECT_DOWNLOADER} given for NORDCONNECT_DOWNLOADER. Possible values: aria2c, curl, wget, fetch."
+  esac
+
+  # Common values for aria2c/curl/fetch/wget
+  # Number of retry attempts (not supported by fetch):
+  DOWNLOADER_RETRIES=${NORDCONNECT_DOWNLOADER_RETRIES:-3}
+  # Connection timeout time (in seconds):
+  DOWNLOADER_TIMEOUT=${NORDCONNECT_DOWNLOADER_TIMEOUT:-15}
+
+  URL='https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip'
+  FILE=$(basename "$URL")
+  OUTPUT_FILE="${CACHE}/${FILE}"
+
+  echo "Downloading ${URL}"
+  case "$DOWNLOADER" in
+    aria2c)
+      aria2c \
+        --connect-timeout="$DOWNLOADER_TIMEOUT" \
+        --continue \
+        --daemon=false \
+        --dir="$CACHE" \
+        --enable-rpc=false \
+        --input-file='' \
+        --max-connection-per-server=5 \
+        --max-tries="$DOWNLOADER_RETRIES" \
+        --out="$FILE" \
+        --save-session='' \
+        --stream-piece-selector=geom \
+        "$URL";;
+    wget)
+      wget \
+        -O "$OUTPUT_FILE" \
+        -nd \
+        -c \
+        --read-timeout 300 \
+        --retry-connrefused \
+        --timeout "$DOWNLOADER_TIMEOUT" \
+        --tries "$DOWNLOADER_RETRIES" \
+        "$URL";;
+    curl)
+      curl \
+        --connect-timeout "$DOWNLOADER_TIMEOUT" \
+        -L \
+        -o "$OUTPUT_FILE" \
+        -C - \
+        --retry "$DOWNLOADER_RETRIES" \
+        "$URL";;
+    fetch)
+      fetch \
+        -T "$DOWNLOADER_TIMEOUT" \
+        -o "$OUTPUT_FILE" \
+        "$URL";;
+    *) die 'Here be dragons';;
+  esac
+
+  [ -d "$FILES_FOLDER" ] || mkdir -p "$FILES_FOLDER"
+
+  echo "Extracting ${OUTPUT_FILE}"
+  unzip -oqu "$OUTPUT_FILE" -d "$FILES_FOLDER"
+  unset DOWNLOADER DOWNLOADER_RETRIES DOWNLOADER_TIMEOUT FILE CACHE OUTPUT_FILE URL
+}
+
+usage() {
+  echo "\
+usage: ${0} [-h] [--init | --update | server]
+
+positonal arguments:
+  server
+
+optional arguments:
+  -h --help    show this help message and exit
+  -i --init    initialise and store/change credentials
+  -u --update  download/update VPN config files
+"
+}
+
+TEMP=$(getopt -s 'sh' -o 'hiu' -l 'help,init,tcp,udp,update' -n "$0" -- "$@")
+eval set -- "$TEMP"
+
+while true; do
+  case "$1" in
+    -h|--help) ACTION=usage;;
+    -i|--init) ACTION=${ACTION:-init};;
+    -u|--update) ACTION=${ACTION:-update};;
+
+    --tcp) PORT=tcp;;
+    --udp) PORT=udp;;
+
+    --) shift; break;;
+  esac; shift
+done
+
+[ -z "$ACTION" ] && [ -n "$1" ] && {
+  ACTION=connect
+  SERVER="$1"
+}
+
+case "${ACTION:-usage}" in
+  usage) usage;;
+  init) init;;
+  update) update;;
+  connect) connect "${PORT:-udp}" "$SERVER";;
+  *) usage;;
+esac
+
+unset ACTION CONFIG CREDENTIALS FILES_FOLDER PORT SERVER TEMP
+
+# vim:set ts=2 sw=2 et:
