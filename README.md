@@ -5,6 +5,8 @@
 
 ## 安装
 
+> 安装的目录为 `/opt/wechat-devtool`。
+
 ```shell
 $ git clone https://aur.archlinux.org/wechat-devtool.git
 $ cd wechat-devtool
@@ -15,6 +17,12 @@ $ makepkg -si
 
 ```shell
 $ aurman -S wechat-devtool
+```
+
+安装后，可以通过快捷方式启动，也可以命令行启动：
+
+```
+$ /opt/wechat-devtool/bin/wxdt
 ```
 
 ## 卸载
