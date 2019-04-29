@@ -1,8 +1,8 @@
 # Maintainer: Aaron Blair <aaron@aaronpb.me>
 
 pkgname=subfinder
-pkgver=1.0
-pkgrel=1
+pkgver=1.2
+pkgrel=2
 pkgdesc="A subdomain discovery tool that discovers valid subdomains for websites."
 arch=('x86_64')
 url="https://github.com/subfinder/subfinder"
@@ -11,7 +11,7 @@ depends=()
 makedepends=('go>=1.10' 'git')
 optdepends=()
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/subfinder/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('74a4dda65c695d35b5d146862a6c2de444819932dca4e4a39b87f028b0a79af4')
+sha256sums=('2b8a09506466baa04c10404d38e0da6a2066a79e8b5c69a720d939804375ba2c')
 
 prepare() {
   cd "${srcdir}"/${pkgname}-${pkgver}
