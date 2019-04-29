@@ -6,8 +6,8 @@
 pkgname=st-luke-git
 _pkgname=st-luke
 _pkgver=0.8.1
-pkgver=0.8.1.r1051
-pkgrel=2
+pkgver=0.8.1.r1053
+pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X'
 url='https://github.com/LukeSmithxyz/st.git'
 arch=('i686' 'x86_64')
