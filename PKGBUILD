@@ -10,7 +10,7 @@ pkgver=1.5.2_r1800
 pkgrel=2
 pkgdesc="multitrack guitar tablature editor and player"
 arch=('any')
-url="http://sourceforge.net/projects/tuxguitar"
+url="https://sourceforge.net/projects/tuxguitar/"
 license=('LGPL')
 depends=('java-runtime>=8' 'alsa-lib' 'libxtst')
 makedepends=('unzip' 'zip' 'ant' 'jack' 'fluidsynth' 'java-environment>=8' 'maven' 'subversion')
