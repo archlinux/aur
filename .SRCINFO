@@ -1,5 +1,5 @@
 pkgbase = python2-pythia8
-	pkgdesc = High-energy physics events generator (Python2 bindings).
+	pkgdesc = High-energy physics events generator (Python2 bindings)
 	pkgver = 8.2.40
 	pkgrel = 7
 	url = http://home.thep.lu.se/Pythia/
@@ -23,7 +23,7 @@ pkgbase = python2-pythia8
 	sha256sums = 4eb15725cfb5e287fdd9520cb4211b88ebc38a690b7522690ba0664d50bc8669
 
 pkgname = python2-pythia8
-	pkgdesc = Python2 bindings for Pythia.
+	pkgdesc = Python2 bindings for Pythia
 	depends = python2
 	depends = pythia8
 

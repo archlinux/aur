@@ -7,7 +7,7 @@ pkgname=python2-pythia8
 pkgver=8.2.40
 _pkgid="${_pkgbase:0:-1}${pkgver//./}"
 pkgrel=7
-pkgdesc="High-energy physics events generator (Python2 bindings)."
+pkgdesc="High-energy physics events generator (Python2 bindings)"
 arch=('x86_64')
 url="http://home.thep.lu.se/Pythia/"
 license=('GPL')
@@ -89,7 +89,7 @@ build() {
 }
 
 package() {
-    pkgdesc="Python2 bindings for Pythia."
+    pkgdesc="Python2 bindings for Pythia"
     depends=('python2' 'pythia8')
     cd "${srcdir}/${_pkgid}"
 
