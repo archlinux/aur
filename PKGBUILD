@@ -3,7 +3,7 @@
 pkgbase=kodi-standalone-service
 pkgname=(kodi-standalone-service kodi-standalone-gbm-service)
 pkgver=1.95
-pkgrel=2
+pkgrel=3
 pkgdesc="Systemd service to run kodi in stand-alone mode without a DE"
 # Do NOT attempt to use this package on Arch ARM! This is only for x86_64.
 # You have been warned.
@@ -23,7 +23,7 @@ package_kodi-standalone-service() {
 }
 
 package_kodi-standalone-gbm-service() {
-  depends=('kodi-gbm' 'polkit' 'libxkbcommon')
+  depends=('kodi-gbm' 'polkit' 'libinput')
   install -Dm644 "$srcdir/$pkgbase-$pkgver/init/kodi-gbm.service" \
     "$pkgdir/usr/lib/systemd/system/kodi-gbm.service"
   install -dm 700 "$pkgdir"/var/lib/kodi
