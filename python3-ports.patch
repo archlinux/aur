@@ -1,0 +1,127 @@
+diff --git a/others/basicblocks.C.py b/others/basicblocks.C.py
+index 5428fb4..8d06519 100755
+--- a/others/basicblocks.C.py
++++ b/others/basicblocks.C.py
+@@ -1,6 +1,5 @@
+ #!/usr/bin/env python
+ 
+-import exceptions;
+ import sys;
+ import re;
+ import os;
+@@ -8,7 +7,7 @@ import os;
+ def tonum (s):
+ 	try:
+ 		return int(s)
+-	except exceptions.ValueError:
++	except ValueError:
+ 		return int(0)
+ 
+ def decode1(line, what):
+@@ -27,7 +26,7 @@ def decode2(line, what1, what2):
+ 
+ envvars = os.environ
+ if not ('FOLDING_CLANG_BIN' in envvars):
+-	print "Cannot obtain clang binary through FOLDING_CLANG_BIN env variable";
++	print("Cannot obtain clang binary through FOLDING_CLANG_BIN env variable");
+ 	os._exit(1)
+ 
+ CLANGBIN = envvars['FOLDING_CLANG_BIN'];
+@@ -62,6 +61,6 @@ if maxline > 0:
+ if len(lines) > 0:
+ 	s = sorted(lines)
+ 	for r in s:
+-		print r;
++		print(r);
+ 	
+ 
+diff --git a/others/basicblocks.F90.py b/others/basicblocks.F90.py
+index 0f38b7a..90a9e28 100755
+--- a/others/basicblocks.F90.py
++++ b/others/basicblocks.F90.py
+@@ -40,6 +40,6 @@ if currentline > 0:
+ if len(lines) > 0:
+ 	s = sorted(lines)
+ 	for r in s:
+-		print r;
++		print(r);
+ 	
+ 
+diff --git a/others/folding-gnuplot-compare.py b/others/folding-gnuplot-compare.py
+index e4cdc2e..5e98af4 100755
+--- a/others/folding-gnuplot-compare.py
++++ b/others/folding-gnuplot-compare.py
+@@ -1,6 +1,5 @@
+ #!/usr/bin/env python
+ 
+-import exceptions;
+ import sys;
+ import re;
+ import os;
+@@ -8,7 +7,7 @@ import os;
+ def tofloat (s):
+ 	try:
+ 		return float(s)
+-	except exceptions.ValueError:
++	except ValueError:
+ 		return float(0)
+ 
+ contents = {}
+@@ -19,7 +18,7 @@ pX_LIMIT = re.compile ("^X_LIMIT=.* # Do not touch this");
+ pFACTOR = re.compile ("^FACTOR=.* # Do not touch this");
+ 
+ if len (sys.argv) < 2: 
+-	print 'Error! Command ' + sys.argv[0] + ' requires multiple gnuplots as a paremeter'
++	print('Error! Command ' + sys.argv[0] + ' requires multiple gnuplots as a paremeter')
+ 	sys.exit (-1)
+ 
+ elif len (sys.argv) >= 2:
+@@ -46,33 +45,33 @@ elif len (sys.argv) >= 2:
+ 				if durations[f] > maxduration:
+ 					maxduration = durations[f]
+ 		if not found:
+-			print 'Error! File '+f+' does not contain X_LIMIT';
++			print('Error! File '+f+' does not contain X_LIMIT');
+ 			dsys.exit (-1);
+ 
+ 	# Generate the output combined file
+ 
+ 	# Emit header first
+-	print "# set term postscript eps solid color size 3,", str (1.5*(len(sys.argv)-1))
+-	print "# set term pdfcairo solid color lw 2 font \",9\" size 3,", str (1.5*(len(sys.argv)-1))
+-	print "# set term png size 800,",str(300*(len(sys.argv)-1))
+-	print "# set term x11 size 800,",str(300*(len(sys.argv)-1))
+-	print "# set term wxt size 800,",str(300*(len(sys.argv)-1))
+-	print ""
+-	print "set multiplot layout ",str(len(sys.argv)-1), ",1"
+-	print ""
++	print("# set term postscript eps solid color size 3,", str (1.5*(len(sys.argv)-1)))
++	print("# set term pdfcairo solid color lw 2 font \",9\" size 3,", str (1.5*(len(sys.argv)-1)))
++	print("# set term png size 800,",str(300*(len(sys.argv)-1)))
++	print("# set term x11 size 800,",str(300*(len(sys.argv)-1)))
++	print("# set term wxt size 800,",str(300*(len(sys.argv)-1)))
++	print("")
++	print("set multiplot layout ",str(len(sys.argv)-1), ",1")
++	print("")
+ 
+ 	# Emit bodies after
+ 	for f in sys.argv[1:]:
+-		print ""
+-		print "# Contents of file "+f
+-		print ""
++		print("")
++		print("# Contents of file "+f)
++		print("")
+ 		lines = contents[f]
+ 		for l in lines:
+ 			if pFACTOR.match(l):
+-				print "FACTOR="+str(durations[f])+"/"+str(maxduration)+ " # Do not touch this"
++				print("FACTOR="+str(durations[f])+"/"+str(maxduration)+ " # Do not touch this")
+ 			else:
+-				print l.strip()
++				print(l.strip())
+ 
+ 	# Finish multiplot 
+-	print "unset multiplot;"
++	print("unset multiplot;")
+ 
