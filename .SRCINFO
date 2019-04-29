@@ -1,0 +1,14 @@
+pkgbase = goxel-git
+	pkgdesc = Download accelerator written in Go (inspired by axel)
+	pkgver = r124.1b8cbbf
+	pkgrel = 1
+	url = https://github.com/m1ck43l/goxel
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = go
+	source = goxel-git::git+https://github.com/m1ck43l/goxel
+	sha256sums = SKIP
+
+pkgname = goxel-git
+
