@@ -3,7 +3,7 @@
 _pkgname=electronplayer
 pkgname=$_pkgname
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron-based web video player, supporting multiple services"
 url="https://github.com/oscartbeaumont/ElectronPlayer"
 license=("MIT" "custom")
@@ -27,7 +27,10 @@ depends=(
     "glibc"
     "alsa-lib"
 )
-makedepends=("yarn")
+makedepends=(
+    "yarn"
+    "npm"
+)
 optdepends=(
     "libpulse: For pulseaudio support"
 )
