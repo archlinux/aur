@@ -8,7 +8,7 @@
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
-### Revert offending commit, recommanded to disable if not using NVIDIA
+### Revert offending commit, recommanded to leave disable if not using NVIDIA
 _revert=
 
 
@@ -65,11 +65,6 @@ prepare() {
   # Consolidate all frame throttling into clutter-stage-cogl [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/363
   git cherry-pick -n fd8a2de8^..265772a4
-
-  # clutter-actor: Add detail to captured-event signal [performance]
-  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/283
-  # requires gnome-shell-performance with the patch manually enabled there as well
-  # git cherry-pick -n a20a0d7a
 
   # clutter: Deliver events sooner when possible
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/168
