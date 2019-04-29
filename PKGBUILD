@@ -2,7 +2,7 @@
 
 pkgname=sccache
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc='ccache with cloud storage'
 arch=(i686 x86_64)
 url=https://github.com/mozilla/sccache
@@ -26,6 +26,6 @@ package() {
   cd sccache-$pkgver
   cargo install --root "$pkgdir"/usr
   rm "$pkgdir"/usr/.crates.toml
-  install -Dm 644 README.md "$pkgdir"/usr/share/doc/sccache
-  install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/sccache
+  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/sccache
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/sccache
 }
