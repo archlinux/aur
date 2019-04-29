@@ -1,10 +1,11 @@
-# Maintainer: Shawn Nock <nock@nocko.se>
+# Maintainer: Mike Tigas <mike AT tig DOT as>
+# Contributor: Shawn Nock <nock@nocko.se>
 # Contributor: Nicolas Pouillard <nicolas.pouillard@gmail.com>
 # Contributor: Lukas Fleischer <archlinux at cryptocrack dot de>
 # Contributor: simo <simo@archlinux.org>
 
 pkgname=tor-unstable
-pkgver=0.3.1.4_alpha
+pkgver=0.4.0.4_rc
 pkgrel=1
 pkgdesc='Anonymizing overlay network.'
 arch=('i686' 'x86_64' 'armv7h')
@@ -21,10 +22,10 @@ install='tor.install'
 source=("https://www.torproject.org/dist/${pkgname/-unstable/}-${pkgver/_/-}.tar.gz"{,.asc}
         'torrc'
         'tor.service')
-sha256sums=('36ba88bd62f6f630bdba02c6bc348e8176224cec44281f6dacd86c46426c79d1'
-         'SKIP'
-         '44093eaf790c6c1cad8690ee002829481fb9b22ca58663f524f5792521222406'
-         '05383ab3c9879b7d77eadeeb8e9824c471ff7a5a7501996efaa573a7547fa4da')
+sha256sums=('9ebac95bc9eed602d439ca3232e7ee74df338e643f1568fac798945de64ae963'
+            'SKIP'
+            '44093eaf790c6c1cad8690ee002829481fb9b22ca58663f524f5792521222406'
+            '05383ab3c9879b7d77eadeeb8e9824c471ff7a5a7501996efaa573a7547fa4da')
 validpgpkeys=('2133BC600AB133E1D826D173FE43009C4607B1FB')
 build() {
   cd "${srcdir}/${pkgname/-unstable/}-${pkgver/_/-}"
