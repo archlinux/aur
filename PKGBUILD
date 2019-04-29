@@ -7,9 +7,9 @@ pkgname=puddletag
 pkgver=1.2.0
 pkgrel=3
 pkgdesc='An audio tag editor for GNU/Linux'
-url='https://docs.puddletag.net/'
+url="https://docs.puddletag.net/"
 license=('GPL3')
-arch=('x86_64')
+arch=('any')
 depends=('chromaprint' 'python2-mutagen' 'python2-configobj' 'python2-musicbrainz2'
          'python2-pyparsing' 'python2-pyqt4')
 optdepends=('python2-pillow: FLAC cover art'
