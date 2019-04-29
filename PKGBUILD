@@ -1,6 +1,6 @@
 # Maintainer: max-k <max-kATpostDOTcom>
 pkgname=sonar-scanner
-pkgver="3.2.0.1227"
+pkgver="3.3.0.1492"
 pkgrel=1
 pkgdesc="Default launcher to analyze a project with SonarQube"
 arch=('any')
@@ -13,7 +13,7 @@ install="$pkgname.install"
 source=("https://binaries.sonarsource.com/Distribution/$pkgname-cli/$pkgname-cli-$pkgver.zip"
         "$pkgname.sh"
         "$pkgname.install")
-sha256sums=('f0e05102a3e98aceb141577c08896c49e3bff9520d1e2f75a688a0ce0d099bc0'
+sha256sums=('0fabd3fa2e10bbfc5cdf64765ff35e88e7937e48aad51d84401b9f36dbde3678'
             '2438839809633e1d4a46a8fa5ab02063bb3b530a90059c5dc9325e2d4b0cc4e0'
             '58dcb9b51bb5d1148a62ee6ce60a937d64647993b67ab2c0a4eb2752171e9160')
 
