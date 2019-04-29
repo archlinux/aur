@@ -14,8 +14,8 @@
 # Contributor: Tomas Wilhelmsson <tomas.wilhelmsson@gmail.com>
 
 pkgname=clang-lw-git
-pkgver=9.0.0_r315148.03c4e2663ce
-pkgrel=2
+pkgver=9.0.0_r315268.eb14dc7585b
+pkgrel=1
 pkgdesc="C language family frontend for LLVM"
 arch=('x86_64')
 url="https://clang.llvm.org/"
@@ -72,10 +72,10 @@ build() {
         -DLLVM_EXTERNAL_LIT=/usr/bin/lit \
         -DLLVM_MAIN_SRC_DIR="$srcdir"/llvm-project/llvm \
         -DLLVM_VERSION_SUFFIX=""
-    if [[ ! $MAKEFLAGS ]]; then
+    if [[ ! $NINJAFLAGS ]]; then
         ninja
     else
-        ninja "$MAKEFLAGS"
+        ninja "$NINJAFLAGS"
     fi
 }
 
@@ -91,7 +91,7 @@ _python_optimize() {
 }
 
 package() {
-    provides=(clang-git clang-tools-extra-git)
+    provides=(clang=$pkgver-$pkgrel clang-tools-extra=$pkgver-$pkgrel clang-git=$pkgver-$pkgrel clang-tools-extra-git=$pkgver-$pkgrel)
     cd _build
 
     DESTDIR="$pkgdir" ninja install
