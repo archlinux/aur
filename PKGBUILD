@@ -15,7 +15,7 @@ source=("file://pgilinux-${_REL_VERSION}-${_release//./}-x86-64.tar.gz"
         "https://www.pgroup.com/doc/LICENSE.txt"
         "pgi-compilers.sh")
 md5sums=('0e1598c05aa8faeb84e351c0f68274c3'
-         '6ce643d0145bf318cddbc186b8da40d2'
+         '4b126b6494c776016accd8ffbd0be51d'
          '5591f7344c4ec974db4be9ad35a80b3b')
 options=(!strip)
 
