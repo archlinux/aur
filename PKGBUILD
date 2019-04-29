@@ -14,7 +14,7 @@
 # Contributor: Tomas Wilhelmsson <tomas.wilhelmsson@gmail.com>
 
 pkgname=compiler-rt-lw-git
-pkgver=9.0.0_r315148.03c4e2663ce
+pkgver=9.0.0_r315265.6c9f6fd11b6
 pkgrel=1
 pkgdesc="Compiler runtime libraries for clang"
 arch=('x86_64')
@@ -54,16 +54,16 @@ build() {
     cmake "$srcdir"/llvm-project/compiler-rt/ -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr
-    if [[ ! $MAKEFLAGS ]]; then
+    if [[ ! $NINJAFLAGS ]]; then
         ninja
     else
-        ninja "$MAKEFLAGS"
+        ninja "$NINJAFLAGS"
     fi
 }
 
 package() {
   conflicts=('compiler-rt')
-  provides=('compiler-rt-git')
+  provides=(compiler-rt=$pkgver-$pkgrel compiler-rt-git=$pkgver-$pkgrel)
 
   cd _build 
 

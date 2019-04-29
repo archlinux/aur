@@ -1,6 +1,6 @@
 pkgbase = compiler-rt-lw-git
 	pkgdesc = Compiler runtime libraries for clang
-	pkgver = 9.0.0_r315148.03c4e2663ce
+	pkgver = 9.0.0_r315265.6c9f6fd11b6
 	pkgrel = 1
 	url = https://compiler-rt.llvm.org/
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = compiler-rt-lw-git
 	makedepends_x86_64 = lib32-gcc-libs
 
 pkgname = compiler-rt-lw-git
-	provides = compiler-rt-git
+	provides = compiler-rt=9.0.0_r315265.6c9f6fd11b6-1
+	provides = compiler-rt-git=9.0.0_r315265.6c9f6fd11b6-1
 	conflicts = compiler-rt
 
