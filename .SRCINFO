@@ -1,0 +1,15 @@
+pkgbase = vpk-fuse-git
+	pkgdesc = FUSE filesystem to read Valve VPK files.
+	pkgver = r8.10247a4
+	pkgrel = 1
+	url = https://github.com/ElementW/vpk_fuse
+	arch = x86_64
+	license = GPL3
+	depends = fuse
+	provides = vpk-fuse
+	conflicts = vpk-fuse
+	source = git+https://github.com/ElementW/vpk_fuse.git
+	sha256sums = SKIP
+
+pkgname = vpk-fuse-git
+
