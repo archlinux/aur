@@ -3,7 +3,7 @@
 # Contributor: Timothée Ravier <tim@siosm.fr>
 
 pkgname=multipath-tools-git
-pkgver=2747.eb688e18
+pkgver=2785.ebbb56f2
 pkgrel=1
 pkgdesc="Tools to drive the Device Mapper multipathing driver (contains kpartx)"
 url="http://christophe.varoqui.free.fr/"
@@ -13,10 +13,8 @@ depends=('libaio' 'device-mapper' 'liburcu' 'ceph')
 makedepends=('git' 'setconf')
 conflicts=('multipath-tools')
 options=(!emptydirs)
-source=("${pkgname}::git+http://git.opensvc.com/multipath-tools/.git"
-		'systemd.patch')
-md5sums=('SKIP'
-         '4e354195b0cdcfeb3173ff6f10f0948e')
+source=("${pkgname}::git+http://git.opensvc.com/multipath-tools/.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
@@ -29,8 +27,6 @@ prepare() {
   sed -i 's|${prefix}/lib/udev|${prefix}/usr/lib/udev|g' Makefile.inc
   sed -i 's|$(prefix)/lib/systemd/system|$(prefix)/usr/lib/systemd/system|g' Makefile.inc
   sed -i 's|/etc/udev/|/usr/lib/udev/|g' kpartx/Makefile
-
-  patch -p0 < ${srcdir}/systemd.patch
 }
 
 build() {
