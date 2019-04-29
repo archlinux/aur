@@ -8,7 +8,8 @@ pkgbase = viper4linux-git
 	depends = gst-plugin-viperfx
 	depends = gst-plugins-good
 	provides = viper4linux
-	source = viper4linux-git::git+https://github.com/L3vi47h4N/Viper4Linux.git
+	conflicts = viper4linux
+	source = git+https://github.com/L3vi47h4N/Viper4Linux.git
 	sha256sums = SKIP
 
 pkgname = viper4linux-git
