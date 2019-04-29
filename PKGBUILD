@@ -4,11 +4,12 @@ _bundlepkgname='ompss'
 pkgdesc='Mercurium is a C/C++/Fortran source-to-source compilation infrastructure aimed at fast prototyping developed by the Programming Models group at the Barcelona Supercomputing Center.'
 pkgver='2.1.0'
 _bundlepkgver='17.12.1'
-pkgrel='5'
+pkgrel='6'
 arch=('i686' 'x86_64')
 url='https://pm.bsc.es/ompss'
 license=('GPL3')
-depends=(nanox python2 gcc-fortran gperf sqlite3)
+depends=(nanox gcc-fortran gperf sqlite3)
+makedepends=(python2)
 source=("https://pm.bsc.es/ftp/${_bundlepkgname}/releases/${_bundlepkgname}-${_bundlepkgver}.tar.gz"
         "https://github.com/bsc-pm/mcxx/commit/26fb7dffbaa06a5389acb1138717b14ce7d350a1.patch"
         "https://github.com/bsc-pm/mcxx/commit/0f2c80f40f1e452fd450aef20838667eef801475.patch"
