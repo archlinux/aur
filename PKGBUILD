@@ -1,6 +1,6 @@
 # Maintainer: frichtlm <frichtlm@gmail.com>
 _cranname=tidyr
-_cranver=0.8.2
+_cranver=0.8.3
 pkgname=r-$_cranname
 pkgver=${_cranver}
 pkgrel=1
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('r>=3.1.0' 'r-dplyr>=0.7.0' 'r-glue' 'r-magrittr' 'r-purrr' 'r-rcpp' 'r-rlang' 'r-stringi' 'r-tibble' 'r-tidyselect>=0.2.5')
 optdepends=('r-covr' 'r-gapminder' 'r-knitr' 'r-markdown' 'r-testthat')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('66a557684b7e58dd711c1fe5828bf174') 
+md5sums=('c6ba9a7b19f830eca482b42c3ee2ef43') 
 
 package() {
     mkdir -p ${pkgdir}/usr/lib/R/library
