@@ -7,8 +7,10 @@ pkgbase = nemo-deja-dup-git
 	license = GPL
 	depends = nemo
 	depends = deja-dup
+	provides = nemo-deja-dup
+	conflicts = nemo-deja-dup
 	source = git+https://github.com/erickj/nemo-actions.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = nemo-deja-dup-git
 
