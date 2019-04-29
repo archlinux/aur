@@ -39,8 +39,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd $pkgname
-
-  git describe --tags | sed "s/-/+/g"
+  git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
@@ -106,10 +105,6 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1534089
   patch -Np1 -i ../0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
-
-  # cogl-winsys-glx: Fix frame notification race/leak [performance]
-  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/216
-  git apply -3 ../216.patch
 }
 
 build() {
