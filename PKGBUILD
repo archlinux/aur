@@ -8,7 +8,7 @@
 _localepurge=
 
 pkgname=sigil-git
-pkgver=0.9.12.r5.g61d2703a
+pkgver=0.9.13.r68.g4d98db2c
 pkgrel=1
 pkgdesc="A WYSIWYG ebook editor"
 arch=('i686' 'x86_64')
@@ -62,6 +62,7 @@ build() {
         -DINSTALL_BUNDLED_DICTS=0 \
         -DMATHJAX_DIR=/usr/share/mathjax \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
         -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
         -DCMAKE_SKIP_RPATH=ON ..
