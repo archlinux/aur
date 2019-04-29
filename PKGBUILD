@@ -4,14 +4,14 @@
 pkgname=lhapdf
 pkgver=6.2.1
 pkgrel=4
-pkgdesc="A particle physics tool for evaluating PDFs from discretised data files."
+pkgdesc="A particle physics tool for evaluating PDFs from discretised data files"
 arch=('x86_64')
-url="http://lhapdf.hepforge.org/"
+url="https://lhapdf.hepforge.org/"
 license=('GPL3')
 makedepends=('cython')
 depends=('python' 'python2')
 # install=lhapdf.install
-source=("http://www.hepforge.org/archive/lhapdf/LHAPDF-${pkgver}.tar.gz")
+source=("https://www.hepforge.org/archive/lhapdf/LHAPDF-${pkgver}.tar.gz")
 sha256sums=('6d57ced88592bfd0feca4b0b50839110780c3a1cd158091c075a155c5917202e')
 
 prepare() {
