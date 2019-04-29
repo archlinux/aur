@@ -1,4 +1,5 @@
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Firmicus <francois.archlinux.org>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 
