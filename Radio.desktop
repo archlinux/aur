@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=AudioVideo;Audio;Player;GTK;
+Exec=zvvradio
+#Icon=/usr/share/icons/hicolor/scalable/apps/zvvradio.png
+Icon=/usr/share/pixmaps/zvvradio.png
+Name=ZVVRadio
+Type=Application
+X-Deepin-Vendor=user-custom
