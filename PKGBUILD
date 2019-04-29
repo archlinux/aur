@@ -12,7 +12,7 @@ arch=(x86_64)
 license=(GPL2)
 depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session gnome-settings-daemon
          gnome-themes-extra gsettings-desktop-schemas libcanberra-pulse libcroco libgdm libsecret
-         mutter nm-connection-editor unzip gstreamer libibus)
+         mutter-781835-workaround nm-connection-editor unzip gstreamer libibus)
 makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspection git meson
              sassc)
 optdepends=('gnome-control-center: System settings'
@@ -41,9 +41,6 @@ prepare() {
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/276
   # Requires mutter MR283/commit "clutter-actor: Add detail to captured-event signal [performance]"
   # git cherry-pick -n 297a18f2
-
-  # Hack to fix topicon-* extensions  making gnome-shell CPU usage > 50%
-  patch -Np1 -i ../11ddabfb22aedb3c35abe06d2cf0205f223cca03.diff
 
   # https://gitlab.gnome.org/GNOME/gnome-shell/issues/1084
   patch -Np1 -i ../nvidia-background-workaround.patch
