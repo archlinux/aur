@@ -1,15 +1,16 @@
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=fonts-tlwg
 pkgver=0.7.1
 pkgrel=1
 pkgdesc='Collection of scalable Thai fonts'
-url='https://linux.thai.net/projects/fonts-tlwg'
+url='https://github.com/tlwg/fonts-tlwg/'
 arch=('any')
 license=('GPL' 'custom')
 makedepends=('fontforge')
 depends=('xorg-fonts-encodings' 'xorg-fonts-alias' 'xorg-font-utils' 'fontconfig')
-source=("https://linux.thai.net/pub/thailinux/software/${pkgname}/${pkgname}-${pkgver}.tar.xz")
+source=("https://github.com/tlwg/fonts-tlwg/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
 sha1sums=('5a2c2090e92c382170808f5bb7d1518c57b8894e')
 
 conflicts=('ttf-tlwg')
@@ -30,9 +31,9 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
-  mkdir -p "$pkgdir"/etc/fonts
-  mv "$pkgdir"/usr/share/fontconfig/conf.avail "$pkgdir"/etc/fonts
-  rm -r "$pkgdir"/usr/share/fontconfig
+  mkdir -p "${pkgdir}"/etc/fonts
+  mv "${pkgdir}"/usr/share/fontconfig/conf.avail "${pkgdir}"/etc/fonts
+  rm -r "${pkgdir}"/usr/share/fontconfig
 
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
