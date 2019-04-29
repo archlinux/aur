@@ -2,7 +2,7 @@
 
 pkgname=madgraph-pythia8-interface
 pkgver=1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="MadGraph Pythia8 interface"
 url="http://madgraph.hep.uiuc.edu/"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=('6467dcc5539796f8fd81b9a74288bf8e9b33378bb0507b2771d5c86696c7a32e'
             '632adc73e951df4341709adeafd3a7c72da1752f8af61037eae2b87a08ca9a64'
-            '09bfa3f3335c533e9962a958409cd8e807924a5c4cc9482e5a2c09b2ff004543')
+            'e506dad2224ed639a83537b21eadeda0ee244e9b5d5ee2770e536564f1e41491')
 
 prepare() {
     msg2 "Fixing python references for python2"
