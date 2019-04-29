@@ -7,7 +7,7 @@
 _pkgname=focuswriter
 pkgname=focuswriter-git
 epoch=1
-pkgver=1.7.0.1.g50ca22a
+pkgver=1.7.0.r12.g972da0d
 pkgrel=1
 pkgdesc="A simple fullscreen word processor"
 arch=('i686' 'x86_64')
@@ -24,8 +24,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}
-  #  printf %s.%s $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
-  git describe | tr - .|cut -c2-
+  git describe | sed 's+-+.r+'|tr - .|cut -c2-
 }
 
 build() {
