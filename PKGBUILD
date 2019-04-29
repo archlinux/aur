@@ -6,8 +6,8 @@
 
 pkgname=aide-selinux
 _srcname=aide
-pkgver=0.16
-pkgrel=4
+pkgver=0.16.1
+pkgrel=1
 pkgdesc='A file integrity checker and intrusion detection program.'
 arch=('i686' 'x86_64')
 url="http://aide.sourceforge.net/"
@@ -19,7 +19,7 @@ provides=('aide')
 backup=('etc/aide.conf')
 source=(http://downloads.sourceforge.net/sourceforge/$_srcname/$_srcname-$pkgver.tar.gz{,.asc} \
         aide.conf)
-md5sums=('25c616f67c667acd4088747ae7f6a9a3'
+md5sums=('1bb877023500451cbad76c8ab1f3ec55'
          'SKIP'
          'd029f9796de01dc8a791f89ac931d7fb')
 validpgpkeys=('2BBBD30FAAB29B3253BCFBA6F6947DAB68E7B931') # Hannes von Haugwitz <hannes@vonhaugwitz.com>
