@@ -2,6 +2,8 @@
 pkgname=wechat-devtool
 pkgver=1.02.1902010
 pkgrel=1
+pkgdesc=微信开发者工具
+url=https://github.com/razonyang/archlinux-pkg-wechat-devtool
 arch=('any')
 depends=(
     'wine'
@@ -13,11 +15,11 @@ md5sums=(
     'cdc1c88e3dd187d06d9b51b5a321755f'
 )
 package() {
+    # copy files to /opt
     mkdir -p "$pkgdir/opt"
     cp -r "$srcdir/wechat_web_devtools-$pkgver" "$pkgdir/opt/$pkgname"
     cd "$pkgdir/opt/$pkgname/bin"
     "$pkgdir/opt/$pkgname/bin/wxdt" install
-    mkdir -p "$pkgdir/usr/bin/$pkgname"
     
     # desktop entry
     mkdir -p "$pkgdir/usr/share/applications"
