@@ -1,0 +1,10 @@
+pkgbase = wechat-devtool
+	pkgver = 1.02.1902010
+	pkgrel = 1
+	arch = any
+	depends = wine
+	source = https://github.com/cytle/wechat_web_devtools/archive/v1.02.1902010.tar.gz
+	md5sums = cdc1c88e3dd187d06d9b51b5a321755f
+
+pkgname = wechat-devtool
+
