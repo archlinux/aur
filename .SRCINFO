@@ -1,9 +1,9 @@
 pkgbase = puddletag
 	pkgdesc = An audio tag editor for GNU/Linux
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://docs.puddletag.net/
-	arch = any
+	arch = x86_64
 	license = GPL3
 	depends = chromaprint
 	depends = python2-mutagen
