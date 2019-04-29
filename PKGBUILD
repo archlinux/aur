@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Thanos Apostolou <thanosapostolou@outlook.com>
+# Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Contributor: Thanos Apostolou <thanosapostolou@outlook.com>
 # Contributor: Alexandre Moine <alexandre@moine.me>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: |AhIoRoS| < ahioros@gmail.com >
@@ -9,7 +9,7 @@ pkgname=(tuxguitar tuxguitar-common tuxguitar-gtk2)
 pkgver=1.5.2_r1800
 pkgrel=2
 pkgdesc="multitrack guitar tablature editor and player"
-arch=('x86_64')
+arch=('any')
 url="http://sourceforge.net/projects/tuxguitar"
 license=('LGPL')
 depends=('java-runtime>=8' 'alsa-lib' 'libxtst')
