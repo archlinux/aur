@@ -10,14 +10,14 @@ pkgver=0.16.1
 pkgrel=1
 pkgdesc='A file integrity checker and intrusion detection program.'
 arch=('i686' 'x86_64')
-url="http://aide.sourceforge.net/"
+url="http://aide.github.io/"
 license=('GPL')
 groups=('selinux')
 depends=('acl' 'audit' 'libelf' 'libselinux' 'mhash')
 conflicts=('aide')
 provides=('aide')
 backup=('etc/aide.conf')
-source=(http://downloads.sourceforge.net/sourceforge/$_srcname/$_srcname-$pkgver.tar.gz{,.asc} \
+source=(https://github.com/$_srcname/$_srcname/releases/download/v$pkgver/$_srcname-$pkgver.tar.gz{,.asc} \
         aide.conf)
 md5sums=('1bb877023500451cbad76c8ab1f3ec55'
          'SKIP'
