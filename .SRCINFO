@@ -1,8 +1,8 @@
 pkgbase = root-py2
-	pkgdesc = C++ data analysis framework and interpreter from CERN.
+	pkgdesc = C++ data analysis framework and interpreter from CERN
 	pkgver = 6.16.00
 	pkgrel = 2
-	url = http://root.cern.ch
+	url = https://root.cern.ch
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = ccache
@@ -107,7 +107,7 @@ pkgname = root-py2
 	conflicts = python-pyroot
 
 pkgname = root-cuda-py2
-	pkgdesc = C++ data analysis framework and interpreter from CERN with GPU (CUDA) features enabled.
+	pkgdesc = C++ data analysis framework and interpreter from CERN with GPU (CUDA) features enabled
 	depends = blas
 	depends = desktop-file-utils
 	depends = fcgi

@@ -9,9 +9,9 @@ pkgname=('root-py2' 'root-cuda-py2')
 _pkgbase=root
 pkgver=6.16.00
 pkgrel=2
-pkgdesc='C++ data analysis framework and interpreter from CERN.'
+pkgdesc='C++ data analysis framework and interpreter from CERN'
 arch=('x86_64')
-url='http://root.cern.ch'
+url='https://root.cern.ch'
 license=('LGPL2.1')
 makedepends=('ccache'
              'cern-vdt'
@@ -189,7 +189,7 @@ package_root-py2() {
 }
 
 package_root-cuda-py2() {
-    pkgdesc='C++ data analysis framework and interpreter from CERN with GPU (CUDA) features enabled.'
+    pkgdesc='C++ data analysis framework and interpreter from CERN with GPU (CUDA) features enabled'
     provides=('root' 'python2-pyroot')
     conflicts=('root' 'python2-pyroot')
     depends+=('cuda')
