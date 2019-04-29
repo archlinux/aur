@@ -3,9 +3,9 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=franz
-_pkgver=5.0.1
+_pkgver=5.1.0
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 # Due to the previous "_beta" naming
 epoch=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
