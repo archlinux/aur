@@ -1,8 +1,8 @@
 CC          = gcc
 CXX         = g++
 CPP         = 
-FC          = gfortran
-LD          = gfortran
+FC          = mpifort
+LD          = mpifort
 NVCC        = nvcc
 #
 GPUVER      = K20X
@@ -11,6 +11,7 @@ AR          = ar -r
 #
 DFLAGS      = -D__FFTW3                                                             \
               -D__LIBINT -D__LIBINT_MAX_AM=6 -D__LIBDERIV_MAX_AM1=5 -D__MAX_CONTR=4 \
+              -D__parallel -D__SCALAPACK                                            \
               -D__LIBXC                                                             \
               -D__ACC -D__DBCSR_ACC -D__PW_CUDA                                     \
               -D__PLUMED2
@@ -41,7 +42,7 @@ NVFLAGS     = $(DFLAGS) -O3 -Xcompiler="-fopenmp"                               
 LDFLAGS     = $(FCFLAGS)
 #
 LIBS        = -L/opt/cuda/lib64 -lcudart -lcublas -lcufft -lrt -lnvrtc              \
-              -lblas -llapack                                                       \
+              -lscalapack -lblas -llapack                                           \
               -lfftw3 -lfftw3_threads                                               \
               /usr/lib/libderiv.a                                                   \
               /usr/lib/libint.a                                                     \

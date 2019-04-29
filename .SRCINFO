@@ -1,7 +1,7 @@
 pkgbase = cp2k
-	pkgdesc = A quantum chemistry and solid state physics software package for atomistic simulations of solid state, liquid, molecular, periodic, material, crystal, and biological systems.
+	pkgdesc = A quantum chemistry and solid state physics software package
 	pkgver = 6.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.cp2k.org
 	arch = x86_64
 	license = GPL2
@@ -9,25 +9,28 @@ pkgbase = cp2k
 	makedepends = gcc-fortran
 	makedepends = python2
 	makedepends = make
+	makedepends = sed
 	depends = lapack
 	depends = blas
 	depends = fftw
 	depends = gcc-libs
 	depends = glibc
+	depends = cp2k-data
+	depends = openmpi
+	depends = scalapack
 	depends = libxc>=4.0.4
 	depends = libint>=1.1.4
 	optdepends = cuda: GPU calculations support
-	optdepends = plumed: enhanced sampling support
+	optdepends = plumed-mpi: enhanced sampling support
 	source = https://github.com/cp2k/cp2k/archive/v6.1.0.tar.gz
-	source = basic.ssmp
-	source = basic_cuda.ssmp
-	source = basic_plumed.ssmp
-	source = basic_cuda_plumed.ssmp
-	sha256sums = d7dd5f164e1e51d2dcb8c7d927b99f6ac1d0f8de4a665bd9daee1a14864c30ae
-	sha256sums = dd91990853df6aa45719c6b991db19beb1a8dce556a25149e90bb562e7ba9ff9
-	sha256sums = 961ff801e2f4de80faffb84b6c46a457f2c149f32d88daeda5afd992841741b0
-	sha256sums = c30512606e0d3857cba7f29febebfc71ea6e658b56784ab5befb2aaeb2dfb006
-	sha256sums = 39e3ef335cf51d4cfe436bd4cb1d21a4b9b33af3718bcaf737fbf307c85945fb
+	source = basic.psmp
+	source = cuda_plumed.psmp
+	source = cuda.psmp
+	source = plumed.psmp
+	sha256sums = f11714771bf7abf162559e7a7d0c9bb8d3bca7286e3381d2d0a586d51af316bb
+	sha256sums = 1c7ec39e9c6f8499ae52352a77dee36b7acd71aa9d5db6cfc7ecb4c430e410b6
+	sha256sums = c44269f40c73f15061fd855412507b8d7c0b158ffb3ba6b9d498f67b68756e0c
+	sha256sums = e1310d0afecbaed27fb44ebd15000f1fd43ff1955241c2d21e7ed86a2c582541
 
 pkgname = cp2k
 

@@ -1,15 +1,16 @@
 CC          = gcc
 CXX         = g++
 CPP         = 
-FC          = gfortran
-LD          = gfortran
-NVCC        = nvcc
+FC          = mpifort
+LD          = mpifort
 #
 AR          = ar -r
 #
 DFLAGS      = -D__FFTW3                                                             \
               -D__LIBINT -D__LIBINT_MAX_AM=6 -D__LIBDERIV_MAX_AM1=5 -D__MAX_CONTR=4 \
-              -D__LIBXC
+              -D__parallel -D__SCALAPACK                                            \
+              -D__LIBXC                                                             \
+              -D__PLUMED2
 #
 INCS        = -I/usr/include
 #
@@ -22,8 +23,12 @@ FCFLAGS     = $(DFLAGS) $(INCS) $(OPTFLAGS) -ffree-form -ffree-line-length-none
 #
 LDFLAGS     = $(FCFLAGS)
 #
-LIBS        = -lblas -llapack                                                       \
+LIBS        = -lscalapack -lblas -llapack                                           \
               -lfftw3 -lfftw3_threads                                               \
               /usr/lib/libderiv.a                                                   \
               /usr/lib/libint.a                                                     \
+              -lxcf03 -lxc                                                          \
+              -lplumed                                                              \
               -lstdc++ -lpthread -lm -ldl -lz
+#
+include /usr/lib/plumed/src/lib/Plumed.inc
