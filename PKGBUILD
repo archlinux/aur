@@ -4,8 +4,8 @@
 # Contributor: Thomas Kowaliczek-Schmer <thomas.kowaliczek@posteo.de>
 
 pkgname=unknown-horizons-git
-pkgver=2017.2.373.g8319a4773
-pkgrel=2
+pkgver=2019.1.r43.gc2eee6a20
+pkgrel=1
 pkgdesc="Open source real-time strategy game with the comfy Anno1602 feeling."
 arch=('any')
 url="http://www.unknown-horizons.org"
@@ -19,12 +19,14 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	git describe  --tags --match "[0-9][0-9][0-9][0-9]\.[0-9]" | sed 's/-/./g'
+	printf "%s.%s" \
+		"$(egrep -o 'RELEASE_VERSION=[0-9]+\.[0-9]+' < development/create_release_tarball.sh | sed -r 's/RELEASE_VERSION=//g')" \
+		"$(git describe --long --tags | awk -F '-' '{print "r" $(NF-1) "." $(NF)}')"
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}"
-    HOME=. python setup.py build
+	cd "$srcdir/${pkgname%-git}"
+	HOME=. python setup.py build
 }
 
 package() {

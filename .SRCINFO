@@ -1,7 +1,7 @@
 pkgbase = unknown-horizons-git
 	pkgdesc = Open source real-time strategy game with the comfy Anno1602 feeling.
-	pkgver = 2017.2.373.g8319a4773
-	pkgrel = 2
+	pkgver = 2019.1.r43.gc2eee6a20
+	pkgrel = 1
 	url = http://www.unknown-horizons.org
 	arch = any
 	license = GPL
