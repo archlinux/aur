@@ -17,40 +17,25 @@ source=("OpenBLAS-v${pkgver}.tar.gz::http://github.com/xianyi/OpenBLAS/archive/v
 sha256sums=('e64c8fe083832ffbc1459ab6c72f71d53afd3b36e8497c922a15a06b72e9002f')
 options=('!emptydirs')
 
-# prepare() {
-#   mkdir -p build
-# }
+prepare() {
+  mkdir -p build
+}
 
 build() {
-#   cd build
-#   cmake ../"OpenBLAS-${pkgver}" \
-#     -DCMAKE_BUILD_TYPE=None \
-#     -DCMAKE_INSTALL_PREFIX=/usr \
-#     -DCMAKE_INSTALL_LIBDIR=lib \
-#     -DCMAKE_INSTALL_INCLUDEDIR=include/openblas
-# 
-#   make
+  cd build
+  cmake ../"OpenBLAS-${pkgver}" \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_INCLUDEDIR=include/openblas \
+    -DBUILD_SHARED_LIBS=ON
 
-  cd "OpenBLAS-${pkgver}"
-
-  make \
-    libs \
-    netlib \
-    shared
-
-
+  make
 }
 
 package() {
-#   make -C build DESTDIR="${pkgdir}" install
+  make -C build DESTDIR="${pkgdir}" install
   cd "OpenBLAS-${pkgver}"
 
-  make \
-    PREFIX=/usr \
-    OPENBLAS_INCLUDE_DIR="\$(PREFIX)/include/openblas" \
-    DESTDIR="${pkgdir}" \
-    install
-
-#  install -Dm644 "OpenBLAS-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
