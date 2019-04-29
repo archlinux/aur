@@ -1,8 +1,8 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=hunter-holy
-pkgver=1.0.10
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='ranger-like file browser written in Rust (holy branch)'
 arch=(i686 x86_64)
 url=https://github.com/rabite0/hunter
@@ -12,7 +12,7 @@ makedepends=(rust)
 provides=(hunter)
 conflicts=(hunter hunter-git hunter-holy-git)
 source=($url/archive/v$pkgver-holy.tar.gz)
-sha512sums=('dd8d51651e882e711657fdc92e7068b6c5964fa4220ede09f2033b64b4b06a5063853a14a80585d1315ce34d5e04406649a50217e72f38647f451e22b81f724b')
+sha512sums=('8f9b907b062065b289b7481b0ff4a00fc58a533ca56261a9576801a4a22e225caacecce65780f4fd5a41f757fb3854e7452587e5b736c3946bec0100c7527616')
 
 build() {
   cd hunter-$pkgver-holy
