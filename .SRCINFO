@@ -27,7 +27,6 @@ pkgbase = root5
 	optdepends = tcsh: Legacy CSH support
 	optdepends = xrootd: XRootD data access support
 	provides = root
-	provides = root5
 	conflicts = root
 	options = !emptydirs
 	source = https://root.cern.ch/download/root_v5.34.38.source.tar.gz
