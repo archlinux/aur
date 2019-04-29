@@ -3,13 +3,13 @@
 
 pkgname=python-pyghmi
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A Pure python IPMI library"
 url="https://github.com/openstack/pyghmi"
 license=("Apache 2.0")
 arch=(any)
 depends=(python-cryptography)
-makedepends=(python-distribute python-pbr)
+makedepends=(python-distribute)
 source=(${pkgname}::"git+https://github.com/openstack/pyghmi#commit=${pkgver}")
 md5sums=(SKIP)
 
