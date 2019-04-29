@@ -1,11 +1,11 @@
 pkgbase = skribilo
 	pkgdesc = The Ultimate Document Programming Framework
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nongnu.org/skribilo/
 	arch = any
 	license = GPL
-	makedepends = guile2.0
+	makedepends = guile
 	makedepends = guile-reader
 	makedepends = ploticus
 	depends = bash
@@ -15,7 +15,7 @@ pkgbase = skribilo
 	optdepends = guile-lib: to be able to use the RSS-2-reader
 	options = !makeflags
 	source = http://download.savannah.gnu.org/releases/skribilo/skribilo-0.9.4.tar.gz
-	md5sums = 6213dac3adbdad6f4eac6fe19f9e9228
+	sha256sums = ced67fe89f5a0b83273195a5501e40c318f1becfbaacafdbcf5d27e5a4b3dc1b
 
 pkgname = skribilo
 
