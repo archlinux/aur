@@ -10,7 +10,7 @@ license=('GPL')
 depends=('gst-plugin-viperfx' 'gst-plugins-good')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://github.com/L3vi47h4N/Viper4Linux.git")
+source=("${pkgname%-git}::git+https://github.com/L3vi47h4N/Viper4Linux.git")
 sha256sums=('SKIP')
 
 pkgver() {
