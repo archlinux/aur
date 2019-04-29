@@ -2,7 +2,7 @@
 # Contributor: max.bra <max dot bra at alice dot it>
 
 pkgname=gnome-gmail
-pkgver=2.6
+pkgver=2.6.1
 _pkgbranch=master
 pkgrel=1
 pkgdesc="It allows desktop mail actions, such as 'Send File as Email' or web 'mailto' links, to be handled by the Gmail web client."
@@ -13,7 +13,7 @@ depends=('python-gobject' 'python2-gnomekeyring' 'desktop-file-utils' 'python-se
 optdepends=('nautilus-sendto: automatically upload an email with a file attachment from nautilus')
 makedepends=('python-distutils-extra')
 source=(https://github.com/davesteele/gnome-gmail/archive/master/$pkgver.tar.gz)
-md5sums=('c7a807b36c9fc7635e9461deea26cc39')
+md5sums=('6e0fddaa3b857bb74cd7e783c4b974ec')
 install=$pkgname.install
 
 #prepare() {
