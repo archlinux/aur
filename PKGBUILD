@@ -1,4 +1,5 @@
 # Maintainer: Fahad Hossain <8bit.demoncoder AT gmail.com>
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=vivaldi-codecs-ffmpeg-extra-bin
 pkgver=73.0.3683.86
 pkgver2=0ubuntu0
