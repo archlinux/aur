@@ -18,7 +18,7 @@
 
 
 pkgname=('lib32-llvm-lw-git' 'lib32-llvm-libs-lw-git')
-pkgver=9.0.0_r315148.03c4e2663ce
+pkgver=9.0.0_r315269.2ac6aca8af7
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
@@ -70,17 +70,17 @@ build() {
         -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
         -DLLVM_BINUTILS_INCDIR=/usr/include \
         -DLLVM_VERSION_SUFFIX=""
-    if [[ ! $MAKEFLAGS ]]; then
+    if [[ ! $NINJAFLAGS ]]; then
         ninja all
     else
-        ninja "$MAKEFLAGS" all
+        ninja "$NINJAFLAGS" all
     fi
 }
 
 package_lib32-llvm-lw-git() {
     pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit)"
     depends=('lib32-llvm-libs-lw-git' 'llvm-lw-git')
-    provides=('lib32-llvm-git')
+    provides=(lib32-llvm=$pkgver-$pkgrel lib32-llvm-git=$pkgver-$pkgrel)
 
     cd _build
     DESTDIR="$pkgdir" ninja install
@@ -109,7 +109,7 @@ package_lib32-llvm-lw-git() {
 package_lib32-llvm-libs-lw-git() {
   pkgdesc="Low Level Virtual Machine (runtime library)(32-bit) "
   depends=('lib32-libffi' 'lib32-zlib' 'lib32-ncurses' 'lib32-libxml2' 'lib32-gcc-libs')
-  provides=('lib32-llvm-libs-git')
+  provides=(lib32-llvm-libs-git=$pkgver-$pkgrel)
 
   install -d "$pkgdir/usr/lib32"
 
