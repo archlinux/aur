@@ -1,6 +1,6 @@
 # Maintainer: Luis Sarmiento < Luis.Sarmiento-ala-nuclear.lu.se >
 pkgname='geant4'
-pkgver=10.5
+pkgver=10.5.1
 _pkgver=10.05.p01
 pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions."
