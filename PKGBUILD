@@ -1,4 +1,4 @@
-# Maintainer: GI_Jack <iGI_Jack@hackermail.com>
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
 pkgname=mkinitcpio-liveusb-units
 pkgver=3
 pkgrel=1
@@ -11,7 +11,7 @@ source=('live_usb' 'live_mmc' 'live_firewire' 'live_virtual')
 sha256sums=('3f559343cb070ccb77f03fcf54cc2f6a85b763909173dedd2c0aef3394adc7ee'
             '5b4d182584adfc6ec65c9e5c93cf5fff999de08550e3e4ce1483a2e3699bff7c'
             'f749ed0ce887f0f59f03c451c5eaa381168c59f389beca8b745fb103c8b13248'
-            'd6602fae1bdc8981c5121cc8635df10e9e6f99e8ba6bcd20d9af86cf5fd3cf0a')
+            'db0fe129ab73b7be995d4298be4ae318772f7b2ee719bd0c35ec89373cd6f102')
 
 package() {
   install -dm755 "${pkgdir}/usr/lib/initcpio/install"
