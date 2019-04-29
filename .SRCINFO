@@ -1,0 +1,19 @@
+pkgbase = pdfmted-git
+	pkgdesc = View and modify PDF metadata on Linux graphically
+	pkgver = r6.a5d363d
+	pkgrel = 1
+	url = https://github.com/glutanimate/PDFMtEd
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = perl-image-exiftool
+	depends = python2
+	depends = qpdf
+	depends = yad
+	depends = xdg-utils
+	optdepends = java-sejda
+	source = pdfmted-git::git+https://github.com/glutanimate/pdfmted
+	sha256sums = SKIP
+
+pkgname = pdfmted-git
+
