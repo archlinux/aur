@@ -1,5 +1,5 @@
 pkgname=reaper
-pkgver=5.941
+pkgver=5.975rc1
 pkgrel=1
 pkgdesc="digital audio workstation"
 arch=('x86_64')

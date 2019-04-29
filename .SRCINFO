@@ -1,13 +1,13 @@
 pkgbase = reaper
 	pkgdesc = digital audio workstation
-	pkgver = 5.941
+	pkgver = 5.975rc1
 	pkgrel = 1
 	url = http://www.reaper.fm
 	arch = x86_64
 	license = custom
 	depends = gdk-pixbuf2
 	depends = jack
-	source = https://www.reaper.fm/files/5.x/reaper5941_linux_x86_64.tar.xz
+	source = https://www.reaper.fm/files/5.x/reaper5975rc1_linux_x86_64.tar.xz
 	source = https://stash.reaper.fm/30638/reaper-desktop-support.zip
 	sha256sums = cbdd47a945a984cc99d3ca781a7cbe1a7bfb51c49a7a434c835cdb9e0a8fc820
 	sha256sums = c16c8d8d66502852f4948d0c2d3f48f7fd17e598d1f14b05cec54e6cfd8c01b7
