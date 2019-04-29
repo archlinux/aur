@@ -57,7 +57,7 @@ esac
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  module load cuda
+  
   mv ../${_arch}.${_version} arch/
   # Changing the location of the data directory
   sed -i 's#$(CP2KHOME)/data/#/usr/share/cp2k/data/#g' makefiles/Makefile
