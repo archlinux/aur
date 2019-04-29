@@ -3,7 +3,7 @@
 pkgname=vale
 pkgver=1.4.0
 pkgrel=1
-pkgdesc="A customizable, syntax-aware linter for prose."
+pkgdesc="A customizable, syntax-aware linter for prose"
 arch=('i686' 'x86_64')
 url="https://github.com/errata-ai/vale"
 license=('MIT')
