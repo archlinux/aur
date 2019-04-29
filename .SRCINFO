@@ -1,0 +1,16 @@
+pkgbase = v4l2ucp
+	pkgdesc = A universal control panel for Video for Linux Two (V4L2) devices
+	pkgver = 2.0.2
+	pkgrel = 5
+	url = http://v4l2ucp.sourceforge.net/
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = qt4
+	depends = v4l-utils
+	optdepends = mplayer: video preview
+	source = https://downloads.sourceforge.net/sourceforge/v4l2ucp/v4l2ucp-2.0.2.tar.bz2
+	sha512sums = 4c1e4e9fa5f8388a179632918edda2f5b84737370bf6eb67fe4b05215f0fc67f59df4749d7e86aa4da288da0eedf646978e0c84332054ec561a7c814b079fefc
+
+pkgname = v4l2ucp
+
