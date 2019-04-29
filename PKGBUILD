@@ -60,7 +60,7 @@ build() {
 package() {
   cd "${srcdir}/arrayfire-full-${pkgver}"
 
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 
   cd build
 
