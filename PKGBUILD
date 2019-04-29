@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git')
-pkgver=9.0.0_r315155.fb9a5307a94
+pkgver=9.0.0_r315202.bc4d3c43a37
 pkgrel=1
 _ocaml_ver=4.07.1
 arch=('x86_64')
@@ -99,10 +99,10 @@ build() {
         -DPOLLY_ENABLE_GPGPU_CODEGEN=ON \
         -DLINK_POLLY_INTO_TOOLS=ON \
         -DCMAKE_POLICY_DEFAULT_CMP0075=NEW
-    if [[ ! $MAKEFLAGS ]]; then
+    if [[ ! $NINJAFLAGS ]]; then
         ninja all ocaml_doc
     else
-        ninja "$MAKEFLAGS" all ocaml_doc
+        ninja "$NINJAFLAGS" all ocaml_doc
     fi
 }
 
