@@ -3,7 +3,7 @@
 pkgname=hepmc
 pkgver=2.06.09
 pkgrel=4
-pkgdesc="A particle physics package for storing collision events from Monte Carlo generators."
+pkgdesc="A particle physics package for storing collision events from Monte Carlo generators"
 arch=('x86_64')
 url="http://lcgapp.cern.ch/project/simu/HepMC/"
 license=('GPL2')
