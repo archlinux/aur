@@ -3,7 +3,7 @@
 
 pkgname=sdfat-dkms
 pkgver=2.1.8.1
-pkgrel=2
+pkgrel=1
 pkgdesc='FAT12/16/32(VFAT)/64(exFAT) filesytems kernel module - use with DKMS'
 arch=('any')
 url='https://github.com/tbk/kernel-sdfat'
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('dkms')
 optdepends=('exfat-utils-nofuse: Tools for managening Exfat')
 makedepends=('linux-headers')
-conflicts=('vfat' 'exfat' 'exfat-dkms-git' 'sdfat-dkms-git' 'exfat-utils')
+conflicts=('vfat' 'exfat' 'exfat-dkms-git' 'sdfat-dkms-git')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TBK/kernel-sdfat/archive/$pkgver.tar.gz"
         dkms.conf
