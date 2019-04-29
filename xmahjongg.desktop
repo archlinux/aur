@@ -1,0 +1,18 @@
+[Desktop Entry]
+Type=Application
+Name=xmahjongg
+Name[bg_BG.UTF-8]=Маджонг (xmahjongg)
+Comment=A colorful solitaire Mah Jongg game
+Comment[bg_BG.UTF-8]=Премахване на купчина плочки чрез групирането им по двойки
+TryExec=/usr/bin/xmahjongg
+Exec=xmahjongg
+Categories=Game;CardGame;
+StartupNotify=false
+X-AppInstall-Package=xmahjongg
+X-AppInstall-Section=extra
+X-Arch-Package-Repository=extra
+X-Arch-Package-Name=xmahjongg
+X-Arch-Package-Version=3.7-9
+X-Arch-Package-Description=Mahjongg game for X-Window
+X-Arch-Package-Groups=None
+X-Arch-Package-URL=http://www.lcdf.org/xmahjongg/
