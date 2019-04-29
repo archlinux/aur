@@ -19,7 +19,8 @@ source=("https://github.com/cp2k/cp2k/archive/v${pkgver}.tar.gz"
         "cuda_plumed.${_version}"
         "cuda.${_version}"
         "plumed.${_version}")
-sha256sums=('f11714771bf7abf162559e7a7d0c9bb8d3bca7286e3381d2d0a586d51af316bb'
+sha256sums=('d7dd5f164e1e51d2dcb8c7d927b99f6ac1d0f8de4a665bd9daee1a14864c30ae'
+            'f11714771bf7abf162559e7a7d0c9bb8d3bca7286e3381d2d0a586d51af316bb'
             '1c7ec39e9c6f8499ae52352a77dee36b7acd71aa9d5db6cfc7ecb4c430e410b6'
             'c44269f40c73f15061fd855412507b8d7c0b158ffb3ba6b9d498f67b68756e0c'
             'e1310d0afecbaed27fb44ebd15000f1fd43ff1955241c2d21e7ed86a2c582541')
