@@ -2,7 +2,7 @@
 # Contributor: Dave Blair <mail@dave-blair.de>
 
 pkgname=autokey
-pkgver=0.95.6
+pkgver=0.95.7
 pkgrel=1
 pkgdesc="AutoKey, a desktop automation utility for Linux and X11, updated to run on Python 3"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ optdepends=('kdialog: for Qt interface'
 replaces=('autokey-py3')
 license=('GPL3')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/autokey-py3/autokey/archive/v${pkgver}.tar.gz")
-sha256sums=('d02aa25107c652d6eb960be0e7722bcc07d997a41fbf06b29babc0389ce3ee0d')
+sha256sums=('b126fe4db8327e9575bd689d57c5e09236f3c08e9ac571b7cc257baf6c3a9d68')
 
 package() {
     cd "$srcdir/autokey-${pkgver}"
