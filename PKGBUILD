@@ -1,35 +1,44 @@
-# Maintainer: Mantas Mikulėnas <grawity@gmail.com>
+# Maintainer: Fina Wilke <fina at felinira dot net>
 pkgname=libcloudproviders
-_pkgname=libcloudproviders
-pkgver=0.1.0.r44.g94b55c6
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="foo"
-arch=(i686 x86_64)
-url="https://github.com/juliushaertl/libcloudproviders"
-license=(GPL3)
-depends=('glib2>=2.51.2')
-makedepends=(meson)
-#provides=("$_pkgname=$pkgver")
-#conflicts=("$_pkgname")
+pkgdesc="DBus API that allows cloud storage sync clients to expose their services."
+arch=(x86_64)
+url="https://gitlab.gnome.org/World/libcloudproviders"
+license=('LGPL')
+groups=()
+depends=(glib2)
+makedepends=(git meson ninja)
+provides=("$pkgname=$pkgver")
 provides+=("dbus-org.freedesktop.CloudProviderManager.service")
-source=("git+https://gitlab.gnome.org/External/libcloudproviders.git")
-sha256sums=('SKIP')
+conflicts=("$_pkgname")
+replaces=()
+backup=()
+options=()
+install=
+_commit="79d1652a0aadab39648bc30db853cdb1d6e2bf95"
+source=("git+https://gitlab.gnome.org/World/libcloudproviders.git#commit=$_commit")
+noextract=()
+md5sums=('SKIP')
 
-pkgver() {
-  cd "$_pkgname"
-  git describe | sed 's/-/.r/; s/-/./g'
+prepare() {
+	cd "$srcdir/$pkgname"
+	rm -r build 2>/dev/null || true
 }
 
 build() {
-  cd "$_pkgname"
-  rm -rf build
-  meson build -Dprefix=/usr
-  ninja -C build
+	cd "$srcdir/$pkgname"
+	meson build --prefix /usr
+	cd build
+	ninja
+}
+
+check() {
+    cd "$srcdir/$pkgname/build"
+    meson test
 }
 
 package() {
-  cd "$_pkgname"
-  DESTDIR="$pkgdir" ninja -C build install
+	cd "$srcdir/$pkgname/build"
+	DESTDIR=$pkgdir ninja install
 }
-
-# vim: ts=2:sw=2:et
