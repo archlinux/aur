@@ -1,8 +1,8 @@
 # Maintainer: Amiad Bareli <amiad@hatul.info>
 
 pkgname=ravkavonline
-pkgver="1.4.0"
-pkgrel=3
+pkgver="2.4.1"
+pkgrel=1
 pkgdesc="Ravkav Online client - unofficial package"
 arch=('x86_64')
 url="https://ravkavonline.co.il/"
@@ -11,12 +11,12 @@ depends=('pcsclite' 'ccid')
 optdepends=('scmccid: additional support for some card readers')
 
 source=("https://ravkavonline.co.il/releases/linux/${pkgname}_${pkgver}_amd64.deb" $pkgname.install)
-sha256sums=('88aa9ce366f3c3e4bff8dd90e5f6ca612b25c44c1dac50bd4e7580bfc7eeee4f'
+sha256sums=('d61ed57fe520fb4a921d62a0158d56296c7051b15c66d30088be95f76a0155c2'
 		'91373cde0ef5a269db942aaabe53bb553748306e9d7ef5aedf05183bd42f8447')
 install=$pkgname.install
 
 prepare() {
-	tar -xf data.tar.xz
+	tar -xf data.tar.gz
 }
 
 package() {
