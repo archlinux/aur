@@ -13,7 +13,7 @@ makedepends=('git')
 source=('git+https://github.com/EtiennePerot/parcimonie.sh'
         'pgp-key::https://perot.me/pgp-minimal.asc')
 sha512sums=('SKIP'
-            'c5aaa5de31174ee0d1d8937aa5ec17fab3784688f65d7046210b37f9c3a55eee97c1c5dc7ee43c34f961fb043e59cdfd1788ea7dbca1a0e94b3fa996952bc286')
+            '563e341607135f9c1971a6be1ce526af9ac218f4a63cb532ed4b849d360104c60e013429daf5d44b4123d87608238555c7e867f7375d19f743a0cfb2bc5575e8')
 
 pkgver() {
 	cd "${srcdir}/parcimonie.sh"
