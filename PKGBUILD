@@ -37,11 +37,6 @@ pkgver() {
 prepare() {
   cd $pkgname
 
-  # js/ui: Use captured-event::nonmotion [performance]
-  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/276
-  # Requires mutter MR283/commit "clutter-actor: Add detail to captured-event signal [performance]"
-  # git cherry-pick -n 297a18f2
-
   # https://gitlab.gnome.org/GNOME/gnome-shell/issues/1084
   patch -Np1 -i ../nvidia-background-workaround.patch
 
