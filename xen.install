@@ -32,11 +32,11 @@ __EOF__
 
 upgrade_msg() {
 	cat << __EOF__
-Xen 4.11
+Xen 4.12
 Release notes
-http://wiki.xen.org/wiki/Xen_Project_4.11_Release_Notes
+http://wiki.xen.org/wiki/Xen_Project_4.12_Release_Notes
 Feature list
-http://wiki.xen.org/wiki/Xen_Project_4.11_Feature_List
+http://wiki.xen.org/wiki/Xen_Project_4.12_Feature_List
 __EOF__
 
 	if [ "$(vercmp 4.8.0-4 "$1")" -lt 0 ]; then

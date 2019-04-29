@@ -12,8 +12,8 @@ _build_stubdom=${build_stubdom:-false}
 
 pkgbase="xen"
 pkgname=("xen" "xen-docs")
-pkgver="4.11.0"
-pkgrel="2"
+pkgver="4.12.0"
+pkgrel="1"
 arch=("x86_64") # TODO What about ARM?
 url="http://www.xenproject.org/"
 license=("GPL2")
@@ -62,7 +62,7 @@ makedepends=(
 source=(
   "https://downloads.xenproject.org/release/xen/${pkgver}/${pkgbase}-${pkgver}.tar.gz"
   "https://downloads.xenproject.org/release/xen/${pkgver}/${pkgbase}-${pkgver}.tar.gz.sig"
-  "ipxe-git.tar.gz::http://xenbits.xen.org/xen-extfiles/ipxe-git-356f6c1b64d7a97746d1816cef8ca22bdd8d0b5d.tar.gz"
+  "ipxe-git.tar.gz::http://xenbits.xen.org/xen-extfiles/ipxe-git-d2063b7693e0e35db97b2264aa987eb6341ae779.tar.gz"
 
   # Helper and config files.
   "grub-mkconfig-helper"
@@ -74,12 +74,11 @@ source=(
   # XSA patches.
 
   # Compile fixes.
-  "ipxe-git-use-no-pie-on-newer-versions-of-gcc.patch::https://git.ipxe.org/ipxe.git/patch/7c395b0e21806b946fe944a27fc273407f357ea1"
 )
 sha256sums=(
-  "826e3a9f6d0eac94a825d272cc2c1294e22640ae75af906eb13920f9ad667643"
+  "6e5455e4a58dcb2339bfcd2a89842728068b530aa62501843793f7cf743c4d64"
   "SKIP"
-  "251e5516d7de470c434ae5c393aacca2b61fb24d93770592a4a20add60b785c4"
+  "38061598a5147ebcda8ae41c356396cce59f087cf27253b6bf8fb50ae0919ca1"
 
   # Helper and config files.
   "23c3b0eab4cb06260bd07324d2060356560c9bc52270aaaf6130e1c130fc6e5e"
@@ -91,7 +90,6 @@ sha256sums=(
   # XSA patches.
 
   # Compile fixes.
-  "51ff22b2d0f7e9d7a13666adb2c32321e725e9c0bf0f434b3cc7c760d88620c6"
 )
 noextract=(
   "ipxe-git.tar.gz"
@@ -157,9 +155,7 @@ prepare() {
   # Misc compile fixes (removed in future versions if not needed anymore).
   msg2 'Applying misc compile fixes...'
 
-  # Compile fix for ipxe package with gcc-8.
-  cp "${srcdir}/ipxe-git-use-no-pie-on-newer-versions-of-gcc.patch" "${srcdir}/${pkgbase}-${pkgver}/tools/firmware/etherboot/patches"
-  echo "ipxe-git-use-no-pie-on-newer-versions-of-gcc.patch" >> "${srcdir}/${pkgbase}-${pkgver}/tools/firmware/etherboot/patches/series"
+  # Compile fixes.
 
   # Fix Install Paths.
   msg2 'Fixing installation paths...'
