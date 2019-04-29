@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=18.3rc1pre4
 _major=18.2
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -38,9 +38,9 @@ makedepends=(
   'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
   'upower' 'giflib' 'rapidjson' 'ghostscript' 'git'
   # wayland
-  'wayland-protocols' 'waylandpp' 'libxkbcommon'
+  'wayland-protocols' 'waylandpp'
   # gbm
-  'libinput'
+  'libinput' 'libxkbcommon'
 )
 
 _codename=Leia
@@ -199,6 +199,7 @@ build() {
   make
   make preinstall
 
+
   msg2 "building kodi-gbm"
   cd "$srcdir/kodi-build-gbm"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
@@ -243,9 +244,8 @@ package_kodi-devel() {
     'shairplay: AirPlay support'
     'upower: Display battery level'
   )
-  provides=('xbmc')
-  conflicts=('xbmc')
-  replaces=('xbmc')
+  provides=("kodi=${pkgver}")
+  conflicts=('kodi')
 
   _components=(
     'kodi'
@@ -274,6 +274,7 @@ package_kodi-devel() {
 
 package_kodi-devel-bin() {
   pkgdesc="x11 kodi binary"
+  conflicts=('kodi-bin')
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libvdpau' 'libxrandr'
@@ -291,7 +292,8 @@ package_kodi-devel-bin() {
 
 package_kodi-devel-wayland() {
   pkgdesc="wayland kodi binary"
-  provides=('kodi-devel-bin')
+  provides=("kodi-devel-bin=${pkgver}")
+  conflicts=('kodi-wayland')
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon' 'libxslt'
@@ -308,7 +310,8 @@ package_kodi-devel-wayland() {
 
 package_kodi-devel-gbm() {
   pkgdesc="gbm kodi binary"
-  provides=('kodi-devel-bin')
+  provides=("kodi-devel-bin=${pkgver}" 'kodi-gbm')
+  conflicts=('kodi-gbm')
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libinput' 'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon'
