@@ -1,8 +1,8 @@
 # Maintainer: Lucas Malandrino <lucas.malandrino@gmail.com>
 # Co-maintainer & author of the original software: Gabriel "Squared" Saillard <squared@codebrew.fr>
 pkgname='edex-ui'
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/GitSquared/edex-ui'
@@ -15,7 +15,7 @@ makedepends=('npm')
 provides=('edex-ui')
 install="edex-ui.install"
 source=("https://github.com/GitSquared/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('f26eb98e4c2a76242a7579641fcf10ab17edc3dd9d0f3792c2d97be552dac304')
+sha256sums=('1795952533aac27b0ed3c70867bf8fb6230c2516d277f337480d01cd5f81123c')
 
 build() {
     cd "${pkgname}-${pkgver}"
