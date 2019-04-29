@@ -1,14 +1,15 @@
+# Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgbase=python-nodeenv
 pkgname=(python-nodeenv python2-nodeenv)
-pkgver=1.2.0
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Node.js virtual environment builder"
-url="https://github.com/ekalinin/nodeenv"
+url="https://ekalinin.github.io/nodeenv/"
 license=("BSD")
 arch=('any')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
-source=("https://pypi.python.org/packages/9f/0e/dd1c52f02a8ed7563da1984a5a6c740d3c752d4c6bcdb5f87dabf5c0d839/nodeenv-1.2.0.tar.gz")
-sha256sums=('98835dab727f94a713eacc7234e3db6777a55cafb60f391485011899e5c818df')
+source=("https://files.pythonhosted.org/packages/source/n/nodeenv/nodeenv-$pkgver.tar.gz")
+sha256sums=('ad8259494cf1c9034539f6cced78a1da4840a4b157e23640bc4a0c0546b0cb7a')
 
 package_python-nodeenv() {
   depends=('python')
