@@ -1,10 +1,10 @@
 #Maintainer: naruto522ru <itachi522ru@gmail.com>
 pkgname=rto-proxy-bin
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='RuTracker proxy app based at electron + angularjs'
 arch=('x86_64' 'i686')
-url='https://rutracker.cr/forum/viewtopic.php?t=5403116'
+url='https://rutracker.org/forum/viewtopic.php?t=5403116'
 license=('MIT')
 depends=('gconf' 'libnotify' 'libappindicator-gtk2' 'libxtst' 'libxss' 'nss')
 options=(!strip)
@@ -22,6 +22,7 @@ md5sums_i686=('4d7ccd828131840f15b382ce5d08ff3b'
 package() {
   msg2 "Extracting the data.tar.xz..."
   bsdtar -xf data.tar.xz -C "$pkgdir/"
+# FIX ERROR SEE ---> https://github.com/RutrackerOrg/rutracker-proxy/issues/9
   install -Dm 755 "$srcdir/app.asar" "$pkgdir/opt/rto-proxy/resources/"
 }
  msg2 "Moving stuff in place..."
