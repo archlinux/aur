@@ -8,7 +8,7 @@
 
 pkgname=epson-inkjet-printer-escpr
 pkgver=1.6.40
-pkgrel=1
+pkgrel=2
 pkgdesc='Epson Inkjet Printer Driver (ESC/P-R) for Linux'
 arch=('x86_64')
 url='http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX'
@@ -23,6 +23,8 @@ prepare() {
   cd $pkgname-$pkgver
 
   patch -p1 < ../bug_x86_64.patch
+
+  autoreconf -vif
 }
 
 build() {
