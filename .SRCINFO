@@ -12,8 +12,9 @@ pkgbase = battery-monitor-git
 	depends = libnotify
 	depends = libappindicator-gtk3
 	provides = battery-monitor
+	conflicts = battery-monitor
 	source = git+https://github.com/maateen/battery-monitor.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = battery-monitor-git
 
