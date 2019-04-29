@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=texinfo-git
-pkgver=6.6r11.g2ae3ae3e5a
+pkgver=6.6.r207.gad0a09c23a
 pkgrel=1
 pkgdesc="GNU documentation system for on-line information and printed output"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ options=('libtool')
 
 pkgver() {
   cd $pkgname
-  git describe --tags | cut -c9- | sed 's+-+r+'|tr - .
+  git describe --tags | cut -c9- | sed 's+-+.r+'|tr - .
 }
 
 build() {
