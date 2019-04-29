@@ -4,11 +4,10 @@ pkgname=simpletools
 pkgver=2.0v.e574cc8
 _commit=e574cc8
 pkgrel=6
-pkgdesc="Handy command line tools for ntuple manipulation and analysis."
+pkgdesc="Handy command line tools for ntuple manipulation and analysis"
 arch=('i686' 'x86_64')
 url="https://github.com/cofitzpa/simpletools"
 license=('GPL2')
-provides=('simpletools')
 makedepends=('boost' 'cmake' 'git' 'root')
 depends=('boost' 'root')
 source=("${pkgname}::git+https://github.com/cofitzpa/simpletools#commit=${_commit}"
