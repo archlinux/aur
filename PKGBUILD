@@ -2,13 +2,25 @@
 # Contributor:
 
 pkgname=nnn-git
-pkgver=2.1.r1.g9e974be
+pkgver=2.4.r142.g6892ba6
 pkgrel=1
 pkgdesc='A lightweight terminal file browser'
 arch=(x86_64)
 url='https://github.com/jarun/nnn'
 license=(BSD)
 depends=('bash')
+optdepends=(
+  'atool: for previews of archives'
+  'findutils: (xargs) GNU utilities to locate files'
+  'fzy: app launcher, subtree search'
+  'lftp: sophisticated command line based FTP client'
+  'mediainfo: for viewing information about media files'
+  'moreutils: (vidir) batch rename dir entries'
+  'patool: command line archive file manager'
+  'perl-image-exiftool: for viewing information about media files'
+  'sshfs: mount, unmount remote over SSHFS'
+  'xdg-utils: desktop opener'
+)
 makedepends=(git)
 provides=(nnn)
 conflicts=(nnn)
@@ -26,7 +38,7 @@ prepare() {
 
 build() {
   cd nnn
-  make
+  make nnn
 }
 
 package() {
