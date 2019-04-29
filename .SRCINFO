@@ -1,5 +1,5 @@
 pkgbase = git-nautilus-icons-git
-	pkgver = r39.2cef1d6
+	pkgver = r42.95b65d3
 	pkgrel = 1
 	url = https://github.com/chrisjbillington/git_nautilus_icons
 	arch = x86_64
