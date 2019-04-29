@@ -8,7 +8,7 @@ url="https://gitlab.gnome.org/World/libcloudproviders"
 license=('LGPL')
 groups=()
 depends=(glib2)
-makedepends=(git meson ninja)
+makedepends=(git meson ninja gobject-introspection vala)
 provides=("$pkgname=$pkgver")
 provides+=("dbus-org.freedesktop.CloudProviderManager.service")
 conflicts=("$_pkgname")
