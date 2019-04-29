@@ -8,23 +8,23 @@ url="https://gitlab.gnome.org/aviwad/organizer"
 license=('GPL3')
 depends=('python' 'gtk3' 'libhandy' 'python-gobject')
 makedepends=('git' 'meson')
-provides=('organizer')
-conflicts=('organizer')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("git+https://gitlab.gnome.org/aviwad/organizer.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname%-git}"
+	cd "$srcdir/${pkgname%-git}"
  	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "${pkgname%-git}"
+	cd "$srcdir/${pkgname%-git}"
 	meson . build --prefix /usr
 	ninja -C build
 }
 
 package() {
- 	cd "${pkgname%-git}"
+ 	cd "$srcdir/${pkgname%-git}"
 	DESTDIR="$pkgdir" ninja -C build install
 }
