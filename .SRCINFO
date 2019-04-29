@@ -1,0 +1,33 @@
+pkgbase = obyte-gui-wallet-bin
+	pkgdesc = Obyte cryptocurrency wallet client.
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = byteball.org
+	install = obyte-gui-wallet-bin.install
+	arch = x86_64
+	license = MIT
+	depends = binutils
+	depends = unzip
+	depends = freetype2
+	depends = nss
+	depends = gconf
+	depends = fontconfig
+	depends = pango
+	depends = libxi
+	depends = libxcursor
+	depends = libxss
+	depends = libxcomposite
+	depends = alsa-lib
+	depends = libxdamage
+	depends = libxtst
+	depends = atk
+	depends = libxrandr
+	depends = libcups
+	depends = gtk2
+	depends = libexif
+	options = !strip
+	source = https://github.com/byteball/obyte-gui-wallet/releases/download/v2.7.0/obyte-linux64.zip
+	sha256sums = f8d286bfb0247a730c4797128712b10c67a19ec4c5e6312c30e903de507b8b83
+
+pkgname = obyte-gui-wallet-bin
+
