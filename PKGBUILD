@@ -28,5 +28,5 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	python2 setup.py install --root="$pkgdir/" --optimize=1
+	python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
