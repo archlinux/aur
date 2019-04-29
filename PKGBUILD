@@ -18,7 +18,6 @@ package() {
     # copy files to /opt
     mkdir -p "$pkgdir/opt"
     cp -r "$srcdir/wechat_web_devtools-$pkgver" "$pkgdir/opt/$pkgname"
-    cd "$pkgdir/opt/$pkgname/bin"
     "$pkgdir/opt/$pkgname/bin/wxdt" install
     
     # desktop entry
