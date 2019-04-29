@@ -7,9 +7,9 @@
 pkgname=root5
 pkgver=5.34.38
 pkgrel=2
-pkgdesc='C++ data analysis framework and interpreter from CERN.'
+pkgdesc='C++ data analysis framework and interpreter from CERN'
 arch=('i686' 'x86_64')
-url='http://root.cern.ch'
+url='https://root.cern.ch'
 license=('LGPL2.1')
 provides=('root' 'root5')
 conflicts=('root')

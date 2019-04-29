@@ -1,8 +1,8 @@
 pkgbase = root5
-	pkgdesc = C++ data analysis framework and interpreter from CERN.
+	pkgdesc = C++ data analysis framework and interpreter from CERN
 	pkgver = 5.34.38
 	pkgrel = 2
-	url = http://root.cern.ch
+	url = https://root.cern.ch
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
