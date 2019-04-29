@@ -1,15 +1,15 @@
 pkgbase = duff
 	pkgdesc = A command-line utility for quickly finding duplicates in a given set of files
 	pkgver = 0.5.2
-	pkgrel = 1
-	url = http://duff.sourceforge.net/
+	pkgrel = 2
+	url = http://duff.dreda.org/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = glibc
 	depends = sh
-	source = http://downloads.sourceforge.net/sourceforge/duff/duff-0.5.2.tar.gz
-	md5sums = 483f9216ebea14b090e0d71dbf7077ff
+	source = duff-0.5.2.tar.gz::https://github.com/elmindreda/duff/archive/0.5.2.tar.gz
+	md5sums = e4688d2724e1990d7d36ecb89f114f9e
 
 pkgname = duff
 
