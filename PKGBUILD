@@ -1,7 +1,7 @@
 # Maintainer: Aidan Coward <aidan -dot- coward -at- gmail -dot- com>
 
 pkgname=xmage
-pkgver=1.4.35V1
+pkgver=1.4.35V2
 pkgrel=0
 _java_version=8u201
 _java_dir=jre1.8.0_201
@@ -12,7 +12,7 @@ arch=('any')
 url="http://xmage.de"
 license=('MIT')
 
-makedepends=('detox' 'wget')
+makedepends=('detox')
 optdepends=('wmname: change window manager name for compatibility with certain WMs')
 
 # Due to compatibility issues with the current version of java in the repositories,
@@ -24,7 +24,7 @@ source=("http://xmage.de/files/xmage_${pkgver}.zip"
 	"http://xmage.today/java/jre-8u201-linux-x64.tar.gz"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt')
 
-sha256sums=("eab48bc123d899449ff55cf2777a94074f5f392f941cd23001d807b5891afb9d" 
+sha256sums=("19774edc9de0975befc25deceeff8c881175cf7b312599d1dcbfe6151e273f4b" 
 	"12c745fbb8735bf450b8c6ba6f649bebe19915f05742975e443bdc8566170352"
 	"SKIP")
 
@@ -71,4 +71,3 @@ package() {
 	msg2 "installing license: ${license}..."
 	install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licences/"${pkgname}"/LICENSE.txt
 }
-
