@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-lw-git' 'llvm-libs-lw-git' 'llvm-ocaml-lw-git')
-pkgver=9.0.0_r315148.03c4e2663ce
+pkgver=9.0.0_r315265.6c9f6fd11b6
 pkgrel=1
 _ocaml_ver=4.07.1
 arch=('x86_64')
@@ -70,10 +70,10 @@ build() {
         -DLLVM_BINUTILS_INCDIR=/usr/include \
         -DLLVM_VERSION_SUFFIX="" \
         -DLLVM_APPEND_VC_REV=ON
-    if [[ ! $MAKEFLAGS ]]; then
+    if [[ ! $NINJAFLAGS ]]; then
         ninja all ocaml_doc
     else
-        ninja "$MAKEFLAGS" all ocaml_doc
+        ninja "$NINJAFLAGS" all ocaml_doc
     fi
 }
 
@@ -87,7 +87,7 @@ package_llvm-lw-git() {
   depends=('llvm-libs-lw-git' 'perl')
   optdepends=('python-setuptools: for using lit (LLVM Integrated Tester)')
   conflicts=('llvm')
-  provides=('llvm-git')
+  provides=(llvm=$pkgver-$pkgrel llvm-git=$pkgver-$pkgrel)
 
   cd _build
 
@@ -126,7 +126,7 @@ package_llvm-lw-git() {
 package_llvm-libs-lw-git() {
   pkgdesc="LLVM runtime libraries"
   depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2')
-  provides=('llvm-libs-git')
+  provides=(llvm-libs-git=$pkgver-$pkgrel)
 
   install -d "$pkgdir/usr/lib"
   cp -P \
@@ -141,7 +141,7 @@ package_llvm-ocaml-lw-git() {
   pkgdesc="OCaml bindings for LLVM"
   depends=('llvm' "ocaml=$_ocaml_ver" 'ocaml-ctypes')
   conflicts=('llvm-ocaml')
-  provides=('llvm-ocaml-git')
+  provides=(llvm-ocaml=$pkgver-$pkgrel llvm-ocaml-git=$pkgver-$pkgrel)
 
   install -d "$pkgdir"/{usr/lib,usr/share/doc/$pkgname}
   cp -a "$srcdir"/ocaml.lib "$pkgdir"/usr/lib/ocaml
