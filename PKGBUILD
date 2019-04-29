@@ -22,10 +22,12 @@ provides=(gnome-shell gnome-shell=$pkgver)
 conflicts=(gnome-shell)
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#branch=gnome-3-32"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-         https://github.com/endlessm/gnome-shell/commit/11ddabfb22aedb3c35abe06d2cf0205f223cca03.diff)
+         https://github.com/endlessm/gnome-shell/commit/11ddabfb22aedb3c35abe06d2cf0205f223cca03.diff
+         https://gitlab.gnome.org/GNOME/gnome-shell/uploads/4a083c80c81eeb0dd1be64e0e24b5c17/nvidia-background-workaround.patch)
 sha256sums=('SKIP'
             'SKIP'
-            '53fb32bfe8432e6309d5b1bcf9c2b7f36693b9141778b823f1d7e9c1d3f39425')
+            '53fb32bfe8432e6309d5b1bcf9c2b7f36693b9141778b823f1d7e9c1d3f39425'
+            '505c90290e5a867692f55d3209a22755bcffb997e7cac59e49b1a78c976d5af9')
 pkgver() {
   cd $pkgname
 
@@ -42,6 +44,10 @@ prepare() {
 
   # Hack to fix topicon-* extensions  making gnome-shell CPU usage > 50%
   patch -Np1 -i ../11ddabfb22aedb3c35abe06d2cf0205f223cca03.diff
+
+  # https://gitlab.gnome.org/GNOME/gnome-shell/issues/1084
+  patch -Np1 -i ../nvidia-background-workaround.patch
+
 
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
