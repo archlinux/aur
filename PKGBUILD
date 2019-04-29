@@ -28,7 +28,12 @@ build() {
 
 package() {
   cd oor
-  make PREFIX="/usr/bin/" DESTDIR="$pkgdir" install
+  install -dm755 "$pkgdir"/usr/lib/systemd/system
+  make \
+    DESTDIR="$pkgdir" \
+    PREFIX="/usr/bin/" \
+    SERVICEPREF="$pkgdir/usr/lib/systemd/system/" \
+    install
   install -Dm600 oor/oor.conf.example "$pkgdir"/usr/share/doc/"$pkgname"/oor.conf
   install -Dm644 "$srcdir"/oor.service "$pkgdir"/usr/lib/systemd/system/oor.service
 }
