@@ -1,0 +1,19 @@
+pkgbase = fbx2gltf-bin
+	pkgdesc = A command-line tool for the conversion of the FBX file format to the glTF file format
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://github.com/facebookincubator/fbx2gltf-bin/tree/v0.9.5
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = clang
+	depends = libc++
+	depends = libc++abi
+	depends = mesa
+	depends = libxi
+	conflicts = mono
+	source = https://github.com/facebookincubator/FBX2glTF/releases/download/v0.9.5/FBX2glTF-linux-x64
+	sha256sums = 9399b1e3ecf51c86fafc02c444f85e576318354747e9231173e88d8b5e912c43
+
+pkgname = fbx2gltf-bin
+
