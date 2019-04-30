@@ -9,7 +9,7 @@ license=('MIT')
 url="https://github.com/David-M-Nielsen/${pkgname}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 depends=('bash' 'coreutils')
-optdepends=('xclip: getting password to clipboard automatically' 'gpg2: password encryption and decryption')
+optdepends=('xclip: getting password to clipboard automatically' 'gnupg: password encryption and decryption')
 makedepends=('git')
 
 sha256sums=('bf0dbf131236d1ca260f6830ae041b3fa95a2f1116a2b37ddb0518edae2b396b')

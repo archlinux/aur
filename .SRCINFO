@@ -9,7 +9,7 @@ pkgbase = spasm
 	depends = bash
 	depends = coreutils
 	optdepends = xclip: getting password to clipboard automatically
-	optdepends = gpg2: password encryption and decryption
+	optdepends = gnupg: password encryption and decryption
 	source = spasm-0.2.5.tar.gz::https://github.com/David-M-Nielsen/spasm/archive/v0.2.5.tar.gz
 	sha256sums = bf0dbf131236d1ca260f6830ae041b3fa95a2f1116a2b37ddb0518edae2b396b
 
