@@ -1,6 +1,6 @@
 pkgbase = tr1pd-git
 	pkgdesc = tamper resistant audit log
-	pkgver = 0.2.0.r34.g687603a
+	pkgver = 0.3.1.r24.geddc242
 	pkgrel = 1
 	url = https://github.com/kpcyrd/tr1pd
 	install = tr1pd.install
