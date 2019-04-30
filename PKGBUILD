@@ -2,7 +2,7 @@
 
 pkgname=xdrfile
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for reading and writing xtc, edr and trr files'
 license=("LGPL3")
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ source=("ftp://ftp.gromacs.org/pub/contrib/$pkgname-$pkgver.tar.gz")
 build() {
     cd $srcdir/$pkgname-$pkgver
 
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --with-pic
     make
 }
 
