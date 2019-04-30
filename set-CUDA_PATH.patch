@@ -1,0 +1,14 @@
+--- bin/genn-buildmodel.sh	2019-04-16 17:59:16.000000000 +0100
++++ bin/genn-buildmodel2.sh	2019-04-30 15:16:07.374193751 +0100
+@@ -70,9 +70,8 @@
+     GENERATOR="$GENERATOR"_coverage
+ fi
+ 
+-# If CUDA path isn't set, default to standard path for (at least Ubuntu) Linux systems
+-# **NOTE** setting CUDA_PATH is a REQUIRED post-installation action when installing CUDA so this shouldn't be required
+-export CUDA_PATH=${CUDA_PATH-/usr/local/cuda} 
++# Set to default path for Arch Linux
++export CUDA_PATH=/opt/cuda
+ 
+ # generate model code
+ BASEDIR=$(dirname "$0")

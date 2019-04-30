@@ -1,15 +1,18 @@
 pkgbase = genn
 	pkgdesc = GeNN: GPU-enhanced neural networks (version 4)
 	pkgver = 4.0.0_RC1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/genn-team/genn
 	arch = x86_64
 	license = GPL
 	makedepends = doxygen
 	depends = cuda
 	options = staticlibs
+	options = !emptydirs
 	source = https://github.com/genn-team/genn/archive/4.0.0-RC1.tar.gz
+	source = set-CUDA_PATH.patch
 	sha256sums = b94c0b8c05d8525987f9d4279478dd41f68e8d9824cb5344adb5fbe257b38e99
+	sha256sums = a42059714b49bb84ec961053507aa4d2f7658b4ecfb059573a43bc101184c33a
 
 pkgname = genn
 
