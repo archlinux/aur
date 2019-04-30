@@ -3,7 +3,7 @@
 # Contributor: Andrew Stubbs <andrew.stubbs@gmail.com>
 
 pkgname=etcher
-pkgver=1.5.30
+pkgver=1.5.31
 pkgrel=1
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
 arch=(x86_64)
@@ -32,7 +32,7 @@ prepare() {
 
 build() {
   cd "${pkgname}"
-  export NPM_VERSION=$(npm --version)
+  export NPM_VERSION=6.7.0
   make electron-develop
   make webpack
   npm prune --production
