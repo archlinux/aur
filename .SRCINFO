@@ -1,5 +1,5 @@
 pkgbase = genn_cpu_only
-	pkgdesc = GeNN: GPU-enhanced neural networks (version 4)
+	pkgdesc = GeNN: GPU-enhanced neural networks (version 4, without CUDA support)
 	pkgver = 4.0.0_RC1
 	pkgrel = 1
 	url = https://github.com/genn-team/genn
