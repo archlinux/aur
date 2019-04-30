@@ -1,15 +1,15 @@
 pkgbase = circleci-cli
-	pkgdesc = The circleci commands enable you to reproduce the CircleCI environment locally and run jobs as if they were running on the hosted application
-	pkgver = 0.0.4705
+	pkgdesc = Use CircleCI from the command line
+	pkgver = 0.1.5546
 	pkgrel = 1
-	url = https://github.com/circleci/local-cli
+	url = https://github.com/CircleCI-Public/circleci-cli
 	arch = x86_64
 	license = MIT
 	depends = docker
-	source = circleci-cli-0.0.4705.tar.gz::https://github.com/circleci/local-cli/archive/v0.0.4705-deba4df.tar.gz
-	source = https://raw.githubusercontent.com/circleci/local-cli/master/LICENSE
-	md5sums = SKIP
-	md5sums = SKIP
+	source = https://github.com/CircleCI-Public/circleci-cli/releases/download/v0.1.5546/circleci-cli_0.1.5546_linux_amd64.tar.gz
+	source = https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/v0.1.5546/LICENSE
+	sha256sums = d82ebd29d6c914a280450aa1e434f35db0465c0a02b98d7c0fba2040287cbc1b
+	sha256sums = 89f336660e1dea7ea005892dc44696fb15544cbffedfbddcd4f6671a735763a9
 
 pkgname = circleci-cli
 
