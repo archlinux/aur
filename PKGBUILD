@@ -1,14 +1,14 @@
 # Maintainer: Aaron DeVore <aaron.devore@gmail.com>
 pkgbase=python-ftputil
 pkgname=('python-ftputil' 'python2-ftputil')
-pkgver=3.2
-pkgrel=3
+pkgver=3.4
+pkgrel=1
 pkgdesc="High-level FTP client library"
 arch=('any')
 url="http://ftputil.sschwarzer.net/"
 license=('BSD 3-Clause')
 source=(http://ftputil.sschwarzer.net/trac/attachment/wiki/Download/ftputil-$pkgver.tar.gz?format=raw)
-sha1sums=('c29ae759d41af3a6558f6e5ecf76a402669275a2')
+sha1sums=('0448f1323d66f62334a9b8814bdffe3f7a725289')
 
 package_python-ftputil() {
    depends=('python')
