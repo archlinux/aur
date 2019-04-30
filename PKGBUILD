@@ -7,7 +7,7 @@
 # Contributor: Anders Bennehag
 
 pkgname=nix
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="A purely functional package manager"
 arch=('i686' 'x86_64' 'armv7h')
@@ -17,7 +17,7 @@ depends=('gc' 'libsodium' 'boost' 'brotli' 'readline')
 makedepends=('bzip2' 'gc' 'openssl')
 install=nix.install
 source=("https://nixos.org/releases/nix/nix-$pkgver/nix-$pkgver.tar.xz")
-sha256sums=('85f8d3518060803e44e51b1a9ada1a39cea904b36a632ba1844043a0b63be515')
+sha256sums=('f80a1b4f9837a8d33209f0b7769d5038335459ff4303eccf3e9217a9eca8594c')
 
 
 prepare() {
