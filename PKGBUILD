@@ -4,8 +4,8 @@
 # Contributor: phi-mah
 
 pkgname=toggldesktop
-pkgver=7.4.347
-pkgrel=2
+pkgver=7.4.410
+pkgrel=1
 pkgdesc="Toggl time tracking software"
 arch=('x86_64')
 url="https://github.com/toggl/toggldesktop"
@@ -21,28 +21,28 @@ depends=('libxss'
          )
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/toggl/toggldesktop/archive/v${pkgver}.tar.gz"
-        "production.patch"
-        'jsoncpp.patch')
+        "jsoncpp.patch")
 
-sha512sums=('d6dbbef0039f9f4b0e5a560d716cb1dcfb9e4d7bb2b590b89269e3cc1625a0e58ab73bbc5a8df852e420f6422aa031b47df5b6a3bf12e01fb07d5a4aca92a09e'
-            '90ed77b0c2b6708c256e5f8fd74d37275cd85ccb81b6eeffa96f6adb22441b853386d6b16a157522d77820a032daf044917d2fb885a15502d218e3e48458e75a'
-            '1b340bf5df760c47b0a8c7ba46c783ed2821ef4336d350a346782e74f0308ec96d350a6fe7acee59441f24b42ee55904095beba1162ac49de6418a7cfd139e63')
+sha512sums=('add33909555e105f64793247476e4a2898a21d1aeaf6213dbb37db8a231a8b3c6502a1881b6e8947482256cdff68ca99a4ec48f9ea8528995ace6c1379b62cb0'
+            '05813df185163e1361d99cf24291bd44bdfefeee050b56f2923fb909c2c57d532e0a459cdaea96504ed10d27004fe3ee9f3c34ec35bcc9f9f2e064cccd8cfe77')
 
 conflicts=('toggldesktop-bin' 'toggl-bin')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
 
-    # patch to build for production
-    # https://github.com/toggl/toggldesktop/wiki/Building-Toggl-Desktop-from-source-for-usage-with-live-servers
-    patch -p1  < ../production.patch
+    # patch to build
     patch -p1  < ../jsoncpp.patch
 }
 
 build() {
   mkdir -p build
   cd build
-  cmake ../${pkgname}-${pkgver} -DCMAKE_INSTALL_PREFIX=/usr -DTOGGL_PRODUCTION_BUILD=ON
+  cmake ../${pkgname}-${pkgver}\
+    -DCMAKE_INSTALL_PREFIX=/usr\
+    -DTOGGL_PRODUCTION_BUILD=ON\
+    -DTOGGL_ALLOW_UPDATE_CHECK=OFF\
+    -DUSE_BUNDLED_LIBRARIES=OFF
   make
 }
 
