@@ -3,7 +3,7 @@
 # Contributor: thatgeek
 # Contributor: TorGuard Support <support@torguard.com>
 pkgname=torguard
-pkgver=3.94.0
+pkgver=3.95.0
 pkgrel=1
 pkgdesc="TorGuard VPN Software
  Stay private online with TorGuard's anonymous VPN software and connect to 37+ countries worldwide."
@@ -17,7 +17,7 @@ depends=('iproute2'
 license=(custom)
 source_x86_64=("https://updates.torguard.biz/Software/Linux/torguard-v${pkgver}-amd64-arch.tar.gz")
 source=('torguard.sysusers')
-sha256sums_x86_64=('e7930a06e0690484ed0362586d761088474912a47908ee15823b019c148c50bb')
+sha256sums_x86_64=('a1781d992eb6993faa3ecea97eb95c6ba04ff162b7504941de6491defabed43a')
 sha256sums=('b1f954c54725794f94009c72e12746f203ce6dd4318a19ad0c10d5d8684cd873')
 
 prepare() {
@@ -28,12 +28,12 @@ package() {
 	mkdir "$pkgdir"/opt/
 	mkdir "$pkgdir"/opt/torguard/
 	mkdir "$pkgdir"/opt/torguard/bin/
-	mkdir "$pkgdir"/opt/torguard/resources
+	mkdir "$pkgdir"/opt/torguard/doc
 
 	cp "${srcdir}/${pkgname}-v${pkgver}-amd64-arch/opt/torguard/bin/torguard" "${pkgdir}/opt/torguard/bin/"
 	cp "${srcdir}/${pkgname}-v${pkgver}-amd64-arch/opt/torguard/bin/openconnect" "${pkgdir}/opt/torguard/bin/"
 	cp "${srcdir}/${pkgname}-v${pkgver}-amd64-arch/opt/torguard/bin/vpnc-script" "${pkgdir}/opt/torguard/bin/"
-	cp -r "${srcdir}/${pkgname}-v${pkgver}-amd64-arch/opt/torguard/resources" "${pkgdir}/opt/torguard" -R
+	cp -r "${srcdir}/${pkgname}-v${pkgver}-amd64-arch/opt/torguard/doc" "${pkgdir}/opt/torguard" -R
 	cp -r "${srcdir}/${pkgname}-v${pkgver}-amd64-arch/usr" "${pkgdir}/" -R
 
 	find "$pkgdir"/opt/torguard/ -type f -exec chmod 644 {} \;
