@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=elementary-wallpapers-git
-pkgver=r102.d45586c
+pkgver=r103.4c20429
 pkgrel=1
 pkgdesc='Collection of wallpapers for elementary OS'
 arch=(any)
