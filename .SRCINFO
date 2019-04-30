@@ -1,12 +1,12 @@
 pkgbase = j7z
 	pkgdesc = An alternative 7-Zip GUI
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = http://J7Z.Xavion.name
 	install = J7Z.install
 	arch = any
 	license = LGPL3
-	depends = java-runtime>=7
+	depends = java-runtime>=8
 	depends = p7zip
 	optdepends = oxygen-gtk2: Native 'Oxygen' style
 	optdepends = gtk-kde4: KDE 4 style support
@@ -18,8 +18,8 @@ pkgbase = j7z
 	conflicts = k7z
 	replaces = q7z
 	replaces = k7z
-	source = http://prdownloads.sourceforge.net/k7z/J7Z-1.4.1-bin.tar.bz2
-	sha1sums = 134b7e0c8f6a09e593d64da1a20da291d5fa8d22
+	source = http://prdownloads.sourceforge.net/k7z/J7Z-1.4.2-bin.tar.bz2
+	sha1sums = e8380fd38f449da3dea5da1643475ae300bc3d22
 
 pkgname = j7z
 
