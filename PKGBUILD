@@ -9,25 +9,23 @@
 # Contributor: Brad McCormack <bradmccormack100 at gmail.com>
 
 pkgbase=linux-asus-aura
-_srcver=5.0.8-arch1
+_srcver=5.0.10-arch1
 pkgver=${_srcver//-/.}
 _srcname=${_srcver}
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
 source=("https://git.archlinux.org/linux.git/snapshot/$_srcver.tar.gz"
-        # the main kernel config files
-        'config' 'config.x86_64'
+        "config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux"
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
         # aura sync patch
         "patch.diff")
-sha256sums=('40570c7cc2e2d682cf62149dc4449950da5ffc3921bb637515d97e4e232f224f'
-            'fdb355884faa86a2f9725d09657c9c32573b0f1e8bb31416823d1198bcb2f80d'
-            '465c4495bec3741ac3099ff5a1332eb842a3583369daaf89e520402259a5070b'
+sha256sums=('a6515d9c94677845957e87b3fc7ef32ec2b8d4473f90ba1265056c3da337c1bf'
+            '5eb7fb6aa90386735e5d8ee9528e82e12ba89875de058ffa4bf0a844ae055d58'
             '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7'
             'd764703db8e24d52ed91ff842f7959cf2ffaa46d755e26d859a131d1f08c681f')
 
@@ -37,11 +35,7 @@ prepare() {
   cd "${_srcname}"
   patch -p1 < "../patch.diff"
 
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat "${srcdir}/config.x86_64" > ./.config
-  else
-    cat "${srcdir}/config" > ./.config
-  fi
+  cat "${srcdir}/config" > ./.config
 
   # set localversion to git commit
   sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-${pkgver##*.}\"|g" ./.config

@@ -1,8 +1,7 @@
 pkgbase = linux-asus-aura
-	pkgver = 5.0.8.arch1
+	pkgver = 5.0.10.arch1
 	pkgrel = 1
 	url = http://www.kernel.org/
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -13,14 +12,12 @@ pkgbase = linux-asus-aura
 	makedepends = git
 	makedepends = libelf
 	options = !strip
-	source = https://git.archlinux.org/linux.git/snapshot/5.0.8-arch1.tar.gz
-	source = config
-	source = config.x86_64
+	source = https://git.archlinux.org/linux.git/snapshot/5.0.10-arch1.tar.gz
+	source = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux
 	source = linux-asus-aura.preset
 	source = patch.diff
-	sha256sums = SKIP
-	sha256sums = fd9bdf18b05c412eea4714e275fb5635c1177199b8140f29800150474921d737
-	sha256sums = 465c4495bec3741ac3099ff5a1332eb842a3583369daaf89e520402259a5070b
+	sha256sums = a6515d9c94677845957e87b3fc7ef32ec2b8d4473f90ba1265056c3da337c1bf
+	sha256sums = 5eb7fb6aa90386735e5d8ee9528e82e12ba89875de058ffa4bf0a844ae055d58
 	sha256sums = 95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7
 	sha256sums = d764703db8e24d52ed91ff842f7959cf2ffaa46d755e26d859a131d1f08c681f
 
