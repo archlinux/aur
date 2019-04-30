@@ -26,7 +26,6 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 target/release/tr1pd target/release/tr1pctl -t "$pkgdir/usr/bin"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_gitname"
 
   install -Dm644 "contrib/tr1pd.service" "$pkgdir/usr/lib/systemd/system/tr1pd.service"
   install -Dm644 "contrib/tr1pd-sysuser.conf" "$pkgdir/usr/lib/sysusers.d/tr1pd.conf"
