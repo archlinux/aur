@@ -1,0 +1,11 @@
+--- configure.ac.old
++++ configure.ac
+@@ -190,7 +190,7 @@ AC_CACHE_VAL([ac_cv_path__BASH],
+ AC_CACHE_CHECK([for bash >= 3.1], [ac_cv_path__BASH],
+     [AC_PATH_PROGS_FEATURE_CHECK([_BASH], [bash],
+         [[_BASH_ver=$($ac_path__BASH --version 2>&1 \
+-                     |$EGREP '^GNU bash, version (3\.[1-9]|4)')
++                     |$EGREP '^GNU bash, version (3\.[1-9]|4|5)')
+           test -n "$_BASH_ver" && ac_cv_path__BASH=$ac_path__BASH ac_path__BASH_found=:]],
+         [AC_MSG_RESULT([no])
+          AC_MSG_ERROR([could not find bash >= 3.1])])])

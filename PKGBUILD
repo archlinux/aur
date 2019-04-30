@@ -1,7 +1,7 @@
 #Maintainer: Sam Bazley <sambazley@protonmail.com>
 pkgname=esp-open-sdk-git
 pkgver=1
-pkgrel=12
+pkgrel=13
 pkgdesc="Free and open (as much as possible) integrated SDK for ESP8266 chips"
 arch=("i686" "x86_64")
 url="https://github.com/pfalcon/esp-open-sdk"
@@ -28,6 +28,7 @@ prepare() {
     patch crosstool-config-overrides \
         < "$startdir"/crosstool-config-overrides.patch
     patch examples/blinky/Makefile < "$startdir"/blinky_Makefile.patch
+    patch crosstool-NG/configure.ac < "$startdir"/crosstool_NG_configure.patch
 }
 
 build() {
