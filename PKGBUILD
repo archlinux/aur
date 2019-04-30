@@ -1,11 +1,9 @@
-# Maintainer: VergeDX <wxy20001225@126.com>
-
 _npmname=pxder
-_npmver=2.6.3
+_npmver=2.7.1
 pkgname=nodejs-pxder # All lowercase
-pkgver=2.6.3
+pkgver=2.7.1
 pkgrel=1
-pkgdesc="Download illusts from pixiv.net"
+pkgdesc="Download illusts from pixiv.net P站插画批量下载器"
 arch=(any)
 url="https://github.com/Tsuk1ko/pxder#readme"
 license=(GPL-3.0-or-later)
@@ -13,7 +11,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(9b2613e07c47a5020bc17dea6e2115ead67e1387)
+sha1sums=(dc6685d140253132f4e883f4c96459a9e3cadb03)
 
 package() {
   cd $srcdir
