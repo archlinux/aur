@@ -2,8 +2,8 @@
 
 pkgname='godownloader-git'
 _pkgname="${pkgname%-git}"
-pkgver=r265.de35133
-pkgrel=2
+pkgver=r289.3ce8d45
+pkgrel=1
 pkgdesc='Download Go binaries as fast and easily as possible.'
 url='https://install.goreleaser.com/'
 arch=('x86_64' 'i686')
