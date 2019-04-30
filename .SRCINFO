@@ -1,7 +1,7 @@
 pkgbase = chromium-extension-reddit-enhancement-suite-git
 	pkgdesc = Chrome/Chromium extension for Reddit Enhancement Suite - git/dev
 	pkgver = v5.15.0.r0.g229e2787c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/honestbleeps/Reddit-Enhancement-Suite
 	arch = any
 	license = GPL3
