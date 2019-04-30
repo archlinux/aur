@@ -1,7 +1,7 @@
 # Maintainer: Julian Thonhauser <julthon@gmail.com>
 pkgname=mojave-ct-icon-theme
 pkgver=0.9.8
-pkgrel=1
+pkgrel=3
 pkgdesc="macOs Mojave icon pack by zayronxio"
 url="https://github.com/zayronxio/Mojave-CT"
 license=("GPL3")
