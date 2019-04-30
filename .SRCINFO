@@ -1,5 +1,5 @@
-pkgbase = fancontrol-kcm-git
-	pkgdesc = KCM for the fancontrol script and systemd service
+pkgbase = fancontrol-plasmoid-git
+	pkgdesc = Plasmoid for the fancontrol script and systemd service
 	pkgver = v0.6.r67.gad73814
 	pkgrel = 1
 	url = https://github.com/Maldela/Fancontrol-GUI
@@ -10,11 +10,11 @@ pkgbase = fancontrol-kcm-git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	depends = fancontrol-gui-git
-	depends = kcmutils
-	provides = fancontrol-kcm
-	conflicts = fancontrol-kcm
+	depends = plasma-framework
+	provides = fancontrol-plasmoid
+	conflicts = fancontrol-plasmoid
 	source = git://github.com/Maldela/fancontrol-gui.git
 	md5sums = SKIP
 
-pkgname = fancontrol-kcm-git
+pkgname = fancontrol-plasmoid-git
 

@@ -2,17 +2,17 @@
 # Maintainer: Malte Veerman <malte.veerman@gmail.com>
 
 _srcname=fancontrol-gui
-pkgname=fancontrol-kcm-git
+pkgname=fancontrol-plasmoid-git
 pkgver=v0.6.r67.gad73814
 pkgrel=1
-pkgdesc="KCM for the fancontrol script and systemd service"
+pkgdesc="Plasmoid for the fancontrol script and systemd service"
 arch=('i686' 'x86_64')
 url="https://github.com/Maldela/Fancontrol-GUI"
 license=('GPL2')
-depends=('fancontrol-gui-git' 'kcmutils')
+depends=('fancontrol-gui-git' 'plasma-framework')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
-provides=('fancontrol-kcm')
-conflicts=('fancontrol-kcm')
+provides=('fancontrol-plasmoid')
+conflicts=('fancontrol-plasmoid')
 source=('git://github.com/Maldela/fancontrol-gui.git')
 md5sums=('SKIP')
 
@@ -40,9 +40,10 @@ build() {
         -DSTANDARD_CONFIG_FILE=/etc/fancontrol \
         -DSTANDARD_SERVICE_NAME=fancontrol \
         -DBUILD_GUI=off \
-        -DBUILD_KCM=on \
+        -DBUILD_KCM=off \
         -DBUILD_HELPER=off \
         -DINSTALL_SHARED=off \
+        -DINSTALL_PLASMOID=on \
         -DKDE_INSTALL_USE_QT_SYS_PATHS=on
   make
 }
