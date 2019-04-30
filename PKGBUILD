@@ -1,8 +1,9 @@
 # Maintainer: Aidan Coward <aidan -dot- coward -at- gmail -dot- com>
 
 pkgname=xmage
-pkgver=1.4.35V2
+pkgver=1.4.35V3a
 pkgrel=0
+_pkgver_release=1.4.35
 _java_version=8u201
 _java_dir=jre1.8.0_201
 
@@ -24,7 +25,7 @@ source=("http://xmage.de/files/xmage_${pkgver}.zip"
 	"http://xmage.today/java/jre-8u201-linux-x64.tar.gz"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt')
 
-sha256sums=("19774edc9de0975befc25deceeff8c881175cf7b312599d1dcbfe6151e273f4b" 
+sha256sums=("db45155170846aa88d13b5bfb46780ed1c5a4c43a9e655d1c42223d546e5774f" 
 	"12c745fbb8735bf450b8c6ba6f649bebe19915f05742975e443bdc8566170352"
 	"SKIP")
 
@@ -60,7 +61,7 @@ package() {
 	install -Dm755 mage-server/startServer-unix-lib.sh ${pkgdir}/usr/bin/mage-server
 
 	msg2 "creating /usr/share/xmage..."
-	install -dm777 ${pkgdir}/usr/share/xmage
+	install -dm755 ${pkgdir}/usr/share/xmage
 
 	msg2 "copying files to /usr/share/xmage..."
 	cp -ra ./* ${pkgdir}/usr/share/xmage/
