@@ -1,13 +1,18 @@
 pkgbase = xdrfile
-	pkgdesc = Reads/writes compressed trajectory files.
-	pkgver = 2.1.2
-	pkgrel = 2
+	pkgdesc = Library for reading and writing xtc, edr and trr files
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = http://www.gromacs.org/Developer_Zone/Programming_Guide/XTC_Library
 	arch = i686
 	arch = x86_64
-	license = GPL
-	makedepends = cmake
-	source = https://github.com/wesbarnett/libxdrfile/archive/2.1.2.tar.gz
-	sha512sums = 1c32261df46f2762ef69aa81716e168f706c7b78d55c7c5e11632f082a3af96248f15e5a515352277ce89209ffda18b8084471ad097ecd3963c507475b724d70
+	license = LGPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = m4
+	makedepends = automake
+	makedepends = autoconf
+	source = ftp://ftp.gromacs.org/pub/contrib/xdrfile-1.1.4.tar.gz
+	md5sums = d992901d1bd7305b91d280ab85427c7b
 
 pkgname = xdrfile
 

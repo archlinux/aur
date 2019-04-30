@@ -1,27 +1,25 @@
-# Maintainer: Wes Barnett <wes AT w barnett DOT us>
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+
 pkgname=xdrfile
-pkgver=2.1.2
-pkgrel=2
-pkgdesc='Reads/writes compressed trajectory files.'
-license=("GPL")
+pkgver=1.1.4
+pkgrel=1
+pkgdesc='Library for reading and writing xtc, edr and trr files'
+license=("LGPL3")
 arch=('i686' 'x86_64')
-makedepends=('cmake')
-source=(https://github.com/wesbarnett/lib${pkgname}/archive/${pkgver}.tar.gz)
-sha512sums=('1c32261df46f2762ef69aa81716e168f706c7b78d55c7c5e11632f082a3af96248f15e5a515352277ce89209ffda18b8084471ad097ecd3963c507475b724d70')
+url="http://www.gromacs.org/Developer_Zone/Programming_Guide/XTC_Library"
+makedepends=('git' 'gcc' 'm4' 'automake' 'autoconf')
+source=("ftp://ftp.gromacs.org/pub/contrib/$pkgname-$pkgver.tar.gz")
 
 build() {
-    mkdir -p build
-    cd build
-    cmake ${srcdir}/lib${pkgname}-${pkgver} -DCMAKE_INSTALL_PREFIX=/usr
+    cd $srcdir/$pkgname-$pkgver
+
+    ./configure --prefix=/usr
     make
 }
 
-check() {
-    cd build
-    make test
-}
-
 package() {
-    cd build
+    cd $srcdir/$pkgname-$pkgver
+
     make DESTDIR=${pkgdir} install
 }
+md5sums=('d992901d1bd7305b91d280ab85427c7b')
