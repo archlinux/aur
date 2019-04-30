@@ -10,8 +10,8 @@
 
 pkgbase=networkmanager-git
 _gitname=NetworkManager
-pkgname=(networkmanager-git libnm-glib-git libnm-git)
-pkgver=1.15.2.r22048.g027ef98cd
+pkgname=(networkmanager-git libnm-git)
+pkgver=1.19.1.r23059.g19bf820de
 pkgrel=1
 pkgdesc="Network Management daemon"
 arch=(i686 x86_64)
@@ -21,8 +21,8 @@ depends=(dbus-glib libmm-glib libndp libnewt libnl libsoup libteam libutil-linux
     nss polkit wpa_supplicant)
 checkdepends=(libx11 python-dbus)
 _pppver=2.4.7
-makedepends=(dnsmasq intltool dhclient openresolv iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
-             dbus-glib iproute2 nss polkit wpa_supplicant libsoup systemd libgudev libmm-glib
+makedepends=(dnsmasq meson ninja intltool dhclient openresolv iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
+              iproute2 nss polkit wpa_supplicant libsoup systemd libgudev
              libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
              glib2-docs)
 optdepends=( 'iwd: alternative way to connect to wifi'
@@ -34,7 +34,7 @@ optdepends=( 'iwd: alternative way to connect to wifi'
     'rp-pppoe: ADSL support'
     'modemmanager: cellular network support')
 options=(!libtool !emptydirs)
-source=($pkgname::git://github.com/$_gitname/$_gitname
+source=(git://github.com/$_gitname/$_gitname
     NetworkManager.conf
     20-connectivity.conf)
 sha256sums=('SKIP'
@@ -45,7 +45,7 @@ sha512sums=('SKIP'
             'da52ba9603c279c1c865cc3bf63606e1daeeb2a22c68e4b0077e15c312e251b494c4f0c94bcb27c9f6923f8b69cd7ab9062d9b7ce499222d3d2240864ed9345f')
 
 pkgver() {
-    cd $pkgname/
+    cd NetworkManager/
     local ver=$({ echo 'changequote([,])dnl';
      sed -rn 's/^m4_(define.*nm_.*_version.*)/\1dnl/p' configure.ac;
       echo 'nm_major_version.nm_minor_version.nm_micro_version'; 
@@ -56,85 +56,67 @@ pkgver() {
   echo "$ver.r$rev.g$git"
 }
 
-prepare() {
-     mkdir -p libnm{,-glib}/usr/{include,lib/{girepository-1.0,pkgconfig},share/{gir-1.0,gtk-doc/html,vala/vapi}}
-  cd networkmanager-git
-  NOCONFIGURE=1 ./autogen.sh
-}
-
 build() {
-    cd $pkgname
-      ./configure --prefix=/usr \
-        --sysconfdir=/etc \
-        --localstatedir=/var \
-        runstatedir=/run \
-        --sbindir=/usr/bin \
-        --libexecdir=/usr/lib \
-        --disable-ifcfg-rh \
-        --disable-ifupdown \
-        --disable-lto \
-        --disable-more-logging \
-        --disable-more-warnings \
-        --disable-static \
-        --enable-bluez5-dun \
-        --enable-concheck \
-        --enable-config-plugin-ibft \
-        --enable-gtk-doc \
-        --enable-introspection \
-        --enable-json-validation \
-        --enable-ld-gc \
-        --enable-modify-system \
-        --enable-polkit \
-        --enable-polkit-agent \
-        --enable-teamdctl \
-        --enable-wifi \
-        --with-config-dhcp-default=internal \
-        --with-config-dns-rc-manager-default=symlink \
-        --with-config-logging-backend-default=journal \
-        --with-config-plugins-default=keyfile,ibft \
-        --with-crypto=nss \
-        --with-dbus-sys-dir=/usr/share/dbus-1/system.d \
-        --with-dhclient=/usr/bin/dhclient \
-        --with-dhcpcd=/usr/bin/dhcpcd \
-        --with-dnsmasq=/usr/bin/dnsmasq \
-        --with-dnssec-trigger=/usr/lib/dnssec-trigger/dnssec-trigger-script \
-        --with-hostname-persist=default \
-        --with-iptables=/usr/bin/iptables \
-        --with-kernel-firmware-dir=/usr/lib/firmware \
-        --with-libnm-glib \
-        --with-modem-manager-1 \
-        --with-nmcli \
-        --with-nmtui \
-        --with-pppd-plugin-dir=/usr/lib/pppd/$_pppver \
-        --with-pppd=/usr/bin/pppd \
-        --with-resolvconf=/usr/bin/resolvconf \
-        --with-session-tracking=systemd \
-        --with-suspend-resume=systemd \
-        --with-system-ca-path=/etc/ssl/certs \
-        --with-systemd-journal \
-        --with-systemd-logind \
-        --with-systemdsystemunitdir=/usr/lib/systemd/system \
-        --with-udev-dir=/usr/lib/udev \
-        --with-wext \
-        --without-consolekit \
-        --without-libaudit \
-        --without-more-asserts \
-        --without-netconfig \
-        --without-ofono \
-        --without-selinux
-
-      sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-              make
+    local meson_args=(
+        -D more_logging=false \
+        -D more_warnings=false \
+        -D more_asserts=no
+        -D bluez5_dun=true \
+        -D ibft=true \
+        -D docs=true \
+        -D introspection=true \
+        -D json_validation=true \
+        -D ld_gc=true \
+        -D modify_system=true \
+        -D polkit=true \
+        -D polkit_agent=true \
+        -D teamdctl=true \
+        -D wifi=true \
+        -D config_dhcp_default=internal \
+        -D config_dns_rc_manager_default=symlink \
+        -D config_logging_backend_default=journal \
+        -D config_plugins_default=keyfile,ibft \
+        -D crypto=nss \
+        -D dbus_conf_dir=/usr/share/dbus-1/system.d \
+        -D dhclient=/usr/bin/dhclient \
+        -D dhcpcd=/usr/bin/dhcpcd \
+        -D dnsmasq=/usr/bin/dnsmasq \
+        -D dnssec_trigger=/usr/lib/dnssec-trigger/dnssec-trigger-script \
+        -D hostname_persist=default \
+        -D iptables=/usr/bin/iptables \
+        -D kernel_firmware_dir=/usr/lib/firmware \
+        -D modem_manager=true \
+        -D pppd_plugin_dir=/usr/lib/pppd/$_pppver \
+        -D pppd=/usr/bin/pppd \
+        -D resolvconf=/usr/bin/resolvconf \
+        -D session_tracking=systemd \
+        -D suspend_resume=systemd \
+        -D system_ca_path=/etc/ssl/certs \
+        -D systemd_journal=true \
+        -D systemdsystemunitdir=/usr/lib/systemd/system \
+        -D udev_dir=/usr/lib/udev \
+        -D iwd=true
+        -D selinux=false
+      )
+      arch-meson NetworkManager build "${meson_args[@]}"
 }
 
 check() {
-    cd $pkgname
-    make -k check || :
+  meson test -C build --print-errorlogs
+}
+
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
 }
 
 package_networkmanager-git() {
-   depends=(libnm-glib iproute2 polkit wpa_supplicant libsoup openresolv libmm-glib libnewt libndp libteam
-           bluez-libs)
+   depends=(iproute2 polkit wpa_supplicant libsoup openresolv libnewt libndp libteam curl bluez-libs libpsl audit)
     optdepends=('dnsmasq: connection sharing'
     'bluez: Bluetooth support'
     'openresolv: resolvconf support'
@@ -145,8 +127,7 @@ package_networkmanager-git() {
     conflicts=('networkmanager')
     provides=('networkmanager')
 
-    cd $pkgname
-    make DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" meson install -C build
 
   install -dm700 "$pkgdir/etc/NetworkManager/system-connections"
   install -d "$pkgdir"/etc/NetworkManager/{conf,dnsmasq}.d
@@ -154,45 +135,21 @@ package_networkmanager-git() {
   install -Dm644 ../20-connectivity.conf \
     "$pkgdir/usr/lib/NetworkManager/conf.d/20-connectivity.conf"
 
+  _pick libnm "$pkgdir"/usr/include/libnm
+  _pick libnm "$pkgdir"/usr/lib/girepository-1.0/NM-*
+  _pick libnm "$pkgdir"/usr/lib/libnm.* 
+  _pick libnm "$pkgdir"/usr/lib/pkgconfig/libnm.pc 
+  _pick libnm "$pkgdir"/usr/share/gir-1.0/NM-* 
+  _pick libnm "$pkgdir"/usr/share/gtk-doc/html/libnm 
+  _pick libnm "$pkgdir"/usr/share/vala/vapi/libnm.*
 
-  cd  ../libnm
-  mv "$pkgdir"/usr/include/libnm usr/include
-  mv "$pkgdir"/usr/lib/girepository-1.0/NM-* usr/lib/girepository-1.0
-  mv "$pkgdir"/usr/lib/libnm.* usr/lib
-  mv "$pkgdir"/usr/lib/pkgconfig/libnm.pc usr/lib/pkgconfig
-  mv "$pkgdir"/usr/share/gir-1.0/NM-* usr/share/gir-1.0
-  mv "$pkgdir"/usr/share/gtk-doc/html/libnm usr/share/gtk-doc/html
-  mv "$pkgdir"/usr/share/vala/vapi/libnm.* usr/share/vala/vapi
-
-### Split libnm-glib
-
-  cd ../libnm-glib
-  mv "$pkgdir"/usr/include/* usr/include
-  mv "$pkgdir"/usr/lib/girepository-1.0/* usr/lib/girepository-1.0
-  mv "$pkgdir"/usr/lib/libnm-* usr/lib
-  mv "$pkgdir"/usr/lib/pkgconfig/* usr/lib/pkgconfig
-  mv "$pkgdir"/usr/share/gir-1.0/* usr/share/gir-1.0
-  mv "$pkgdir"/usr/share/gtk-doc/html/libnm-* usr/share/gtk-doc/html
-  mv "$pkgdir"/usr/share/vala/vapi/* usr/share/vala/vapi
-
-  rmdir -p --ignore-fail-on-non-empty \
-    "$pkgdir"/usr/include \
-    "$pkgdir"/usr/lib/{girepository-1.0,pkgconfig} \
-    "$pkgdir"/usr/share/{gir-1.0,vala/vapi}
 }
 
   package_libnm-git() {
   pkgdesc="NetworkManager client library"
   provides=(libnm)
   conflicts=(libnm)
-  depends=(glib2 libgudev nss libutil-linux jansson)
+  depends=(glib2 libgudev nss libutil-linux jansson systemd-libs)
   mv libnm/* "$pkgdir"
 }
 
-   package_libnm-glib-git() {
-     pkgdesc="NetworkManager client library (legacy)"
-       depends=(libgudev nss dbus-glib libutil-linux jansson)
-       conflicts=('libnm-glib')
-       provides=('libnm-glib')
-    mv libnm-glib/* "$pkgdir"
- }
