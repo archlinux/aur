@@ -1,6 +1,6 @@
 pkgbase = mig-console-git
 	pkgdesc = MIG is Mozilla InvestiGator - a tool for remote system investigation at scale
-	pkgver = 20170308.r312.g895c6104
+	pkgver = 20170308.r501.g06bf434b
 	pkgrel = 1
 	url = https://github.com/mozilla/mig
 	arch = x86_64
