@@ -6,16 +6,14 @@
 # Contributor : Patrick McCarty  <pnorcks at gmail dot com>
 
 pkgname=osc
-pkgver=0.164.2
+pkgver=0.165.0
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
 url="https://github.com/openSUSE/osc"
 license=('GPL2')
-depends=('python2'
-         'python2-m2crypto'
-         'python2-typing'
-         'urlgrabber')
+depends=('python'
+         'python-m2crypto')
 optdepends=('obs-build: required to run local builds'
             'obs-service-format_spec_file: for running the format_spec_file source service'
             'obs-service-download_files: for running the download_files source service'
@@ -25,7 +23,7 @@ conflicts=('osc-git' 'osc-bash-completion' 'zsh-completion-osc')
 replaces=('osc-bash-completion' 'zsh-completion-osc')
 source=("https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz"
         "_osc")
-sha256sums=('b2050735311278c011ff194bf78b389eef469ad918ac02fc5b520d2882b71ad4'
+sha256sums=('5595ecd326976549d597953804c630b3d93e538a6b3747aa3b8b5a095d321f71'
             '2b045e03d2fdce12683ceb9792d491a32f00b256045456412e7bc18c8726218a')
 
 prepare() {
@@ -36,12 +34,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1 --prefix=/usr
+  python setup.py install --root="${pkgdir}/" --optimize=1 --prefix=/usr
 
   cd "${pkgdir}/usr/bin"
   ln -s osc-wrapper.py osc
