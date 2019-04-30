@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=skribilo-git
 pkgver=0.9.4.r1010
-pkgrel=1
+pkgrel=2
 pkgdesc="The Ultimate Document Programming Framework from git"
 arch=('any')
 url="http://www.nongnu.org/skribilo/"
@@ -14,7 +14,7 @@ source=("git://git.sv.gnu.org/skribilo.git" makevars.diff Makefile.in.in)
 md5sums=('SKIP'
          'fdefd9d3a084f4d48f57df699fb7cdf0'
          '287083fa96f70fd28c8b19aae1c97b6d')
-options=("!makeflags")
+options=('!strip')
 
 pkgver() {
   cd "${pkgname%-git}"

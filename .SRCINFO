@@ -1,7 +1,7 @@
 pkgbase = skribilo-git
 	pkgdesc = The Ultimate Document Programming Framework from git
 	pkgver = 0.9.4.r1010
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nongnu.org/skribilo/
 	arch = any
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = skribilo-git
 	depends = bash
 	provides = skribilo
 	conflicts = skribilo
-	options = !makeflags
+	options = !strip
 	source = git://git.sv.gnu.org/skribilo.git
 	source = makevars.diff
 	source = Makefile.in.in
