@@ -3,8 +3,8 @@
 # Contributor: Aurelien Foret <orelien@chez.com>
 
 pkgname=xfce4-datetime-plugin
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="A date and time display plugin for the Xfce panel"
 arch=('x86_64')
 license=('GPL2')
@@ -13,7 +13,7 @@ groups=('xfce4-goodies')
 depends=('xfce4-panel')
 makedepends=('intltool')
 source=(https://archive.xfce.org/src/panel-plugins/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2)
-sha256sums=('297f3077f7aee52a237449fbd8595e232267bc600b5b9e7ddc5baab306ed67b9')
+sha256sums=('e0c7321346ded2539c4688c593f650696ed0ddca0a5f9d4e404d0e7fc42ae256')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
