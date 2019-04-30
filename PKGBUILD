@@ -28,4 +28,10 @@ build() {
 
 package() {
   install -Dm 755 "$srcdir/gopath/src/github.com/docker/app/bin/$pkgname-standalone" "$pkgdir/usr/bin/$pkgname"
+
+  # Add command completion
+  install -dm 755 "$pkgdir/usr/share/bash-completion/completions"
+  install -dm 755 "$pkgdir/usr/share/zsh/site-functions"
+  "$pkgdir/usr/bin/docker-app" completion bash > "$pkgdir/usr/share/bash-completion/completions/docker-app"
+  "$pkgdir/usr/bin/docker-app" completion zsh >  "$pkgdir/usr/share/zsh/site-functions/_docker-app"
 }
