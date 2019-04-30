@@ -10,8 +10,8 @@ arch=(i686 x86_64)
 depends=('lapack' 'zlib' 'gsl' 'openmpi')
 optdepends=('vmd-molfile-plugins: add capability to read vmd compatible trajectories'
             'xdrfile: GROMACS trajectory format support'
-            'python-setuptools: Python module support'
-            'cython: Python module support'
+#            'python-setuptools: Python module support'
+#            'cython: Python module support'
             'graphviz: diagrams in manual')
 makedepends=('vim')
 source=( https://github.com/plumed/plumed2/releases/download/v${pkgver}/plumed-${pkgver}.tgz)
@@ -26,7 +26,7 @@ fi
 
 build() {
   cd ${srcdir}/${pkgname%-mpi}-${pkgver}
-  ./configure --prefix=/usr --enable-mpi --program-suffix=-mpi
+  ./configure --prefix=/usr --enable-mpi --program-suffix=-mpi --disable-python
   make
 }
 
