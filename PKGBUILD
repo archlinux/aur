@@ -3,12 +3,13 @@
 
 pkgname=mhddfs
 pkgver=0.1.39
-pkgrel=4
+pkgrel=5
 pkgdesc="fuse filesystem that combines several mount points into a single one."
 arch=('i686' 'x86_64')
 url="http://mhddfs.uvw.ru/"
 license=('GPL3')
-depends=('fuse')
+depends=('fuse'
+         'fuse3')
 makedepends=('uthash')
 source=("http://mhddfs.uvw.ru/downloads/${pkgname}_${pkgver}.tar.gz"
 	'pthreads.patch'
