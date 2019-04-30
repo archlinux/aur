@@ -2,7 +2,7 @@
 
 _gitname=deen
 pkgname="${_gitname}-git"
-pkgver=1.7.1.bc45c07
+pkgver=2.0.0b5.1685b40
 pkgrel=1
 pkgdesc='Generic data encoding/decoding application built with PyQt5'
 url='https://github.com/takeshixx/deen'
@@ -27,8 +27,12 @@ pkgver() {
 package() {
   cd ${_gitname}
   python3 setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 "deen/media/${_gitname}.desktop" "${pkgdir}/usr/share/applications/${_gitname}.desktop"
-  install -Dm644 "deen/media/icon.png" "${pkgdir}/usr/share/pixmaps/deen.png"
+
+  install -dm 755 "$pkgdir/usr/share/bash-completion/completions"
+
+  install -Dm 644 "deen/media/${_gitname}.desktop" "${pkgdir}/usr/share/applications/${_gitname}.desktop"
+  install -Dm 644 "deen/media/icon.png" "${pkgdir}/usr/share/pixmaps/deen.png"
+  install -Dm 644 deen-completion.sh "$pkgdir/usr/share/bash-completion/completions/deen"
 }
 
 # vim: ts=2 sw=2

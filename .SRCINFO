@@ -1,6 +1,6 @@
 pkgbase = deen-git
 	pkgdesc = Generic data encoding/decoding application built with PyQt5
-	pkgver = 1.7.1.bc45c07
+	pkgver = 2.0.0b5.1685b40
 	pkgrel = 1
 	url = https://github.com/takeshixx/deen
 	arch = any
