@@ -2,7 +2,7 @@
 # Author: Vladimir Yakovlev <desktop-app@protonmail.ch>
 pkgname=electronmail-bin
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial desktop app for several E2E encrypted email providers"
 arch=('x86_64')
 url="https://github.com/vladimiry/ElectronMail"
