@@ -2,10 +2,10 @@
 # Former Maintainer: Govind Gopakumar < govind.93 at gmail dot com>
 # Former Maintainer: Daniel Wallace <danielwallace at gtmanfred dot com>
 pkgname=mlpack
-pkgver=3.0.4
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='a scalable c++ machine learning library'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.mlpack.org"
 license=('BSD')
 depends=(
@@ -24,7 +24,7 @@ makedepends=(
   'python-pytest-runner'
 )
 source=("http://www.mlpack.org/files/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d02a84fdc7a3b07064f2dcb925b6a1d109f5e99eed990a4552c50ab7a9fd69cc')
+sha256sums=('ace5e6600baea35a9fdbc16d11198da6a3ba5f065a45a06f3f8fd26289608b98')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
