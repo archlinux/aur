@@ -9,7 +9,7 @@ pkgbase = fancontrol-kcm
 	makedepends = git
 	makedepends = extra-cmake-modules
 	depends = fancontrol-gui
-	depends = kdeclarative
+	depends = kcmutils
 	source = https://github.com/Maldela/fancontrol-gui/archive/v0.7.tar.gz
 	md5sums = 873ed029f2d2099092ed46398df59988
 
