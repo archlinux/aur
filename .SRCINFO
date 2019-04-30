@@ -1,13 +1,15 @@
 pkgbase = circleci-cli
 	pkgdesc = Use CircleCI from the command line
-	pkgver = 0.1.4005
+	pkgver = 0.1.5546
 	pkgrel = 1
 	url = https://github.com/CircleCI-Public/circleci-cli
 	arch = x86_64
-	license = Apache
+	license = MIT
 	depends = docker
-	source = https://github.com/CircleCI-Public/circleci-cli/releases/download/v0.1.4005/circleci-cli_0.1.4005_linux_amd64.tar.gz
-	md5sums = 08f58c1a3db8c2629afa1d3788f6d7c0
+	source = https://github.com/CircleCI-Public/circleci-cli/releases/download/v0.1.5546/circleci-cli_0.1.5546_linux_amd64.tar.gz
+	source = https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/v0.1.5546/LICENSE
+	sha256sums = d82ebd29d6c914a280450aa1e434f35db0465c0a02b98d7c0fba2040287cbc1b
+	sha256sums = 89f336660e1dea7ea005892dc44696fb15544cbffedfbddcd4f6671a735763a9
 
 pkgname = circleci-cli
 
