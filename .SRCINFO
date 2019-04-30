@@ -8,7 +8,7 @@ pkgbase = othellox
 	makedepends = clang
 	depends = ncurses
 	source = https://framagit.org/Arkhist/othellox/-/archive/master/othellox-master.zip
-	sha256sums = 24d34055f1d8f6468b467ea05a860fcf547735cc7aaf414825afe18031219278
+	sha256sums = 60e6f253c581b37f57b97a25c0127abea310aa18ae0eed8181623577fe97acd8
 
 pkgname = othellox
 
