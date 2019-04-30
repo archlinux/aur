@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 # Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=tpm2-tss-git
-pkgver=2.0.0.r292.e341d5db
+pkgver=2.0.0.r309.acf79cd6
 pkgrel=1
 pkgdesc='Implementation of the TCG Trusted Platform Module 2.0 Software Stack (TSS2)'
 arch=('x86_64')
@@ -23,11 +23,6 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname%-git}"
-
-	# Temporary fix for a regression in Linux kernel 5.0, see
-	# https://github.com/tpm2-software/tpm2-tools/issues/1356#issuecomment-471641297
-	sed --in-place 's/ | O_NONBLOCK//' src/tss2-tcti/tcti-device.c
-
 	./bootstrap
 }
 
