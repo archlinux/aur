@@ -10,6 +10,15 @@ chown root:root /opt/ElectronMail/chrome-sandbox
 chmod 4755 /opt/ElectronMail/chrome-sandbox
 
 }
+post_upgrade() {
+    :
+#!/bin/bash
+
+# Fix chrome-sandbox permissions
+chown root:root /opt/ElectronMail/chrome-sandbox
+chmod 4755 /opt/ElectronMail/chrome-sandbox
+
+}
 post_remove() {
     :
 #!/bin/bash

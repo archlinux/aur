@@ -1,7 +1,7 @@
 pkgbase = electronmail-bin
 	pkgdesc = Unofficial desktop app for several E2E encrypted email providers
 	pkgver = 3.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vladimiry/ElectronMail
 	install = electronmail-bin.install
 	arch = x86_64
