@@ -2,7 +2,7 @@
 
 pkgname=docker-app
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility to help make Compose files more reusable and sharable"
 arch=(x86_64)
 url="https://github.com/docker/app"

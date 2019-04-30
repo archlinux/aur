@@ -1,7 +1,7 @@
 pkgbase = docker-app
 	pkgdesc = A utility to help make Compose files more reusable and sharable
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/docker/app
 	arch = x86_64
 	license = Apache
