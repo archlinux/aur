@@ -6,7 +6,7 @@
 #   french pkgbuild here: https://git.deparis.io/pkgbuilds/tree/cliqz_work/PKGBUILD?id=17ec1716c90dd08
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.26.3
+pkgver=1.26.4
 pkgrel=1
 _cqzchannel=release
 _cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
@@ -24,7 +24,7 @@ optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
         '0001-bz-1468911.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-bz-1468911.patch?h=packages/firefox&id=3d978bec03d20c51d60844ac29a769f4fff1ec5e')
-sha256sums=('8fda1840c82b78547f4a070c578148f1dbbfc9ed06988a4ac4e1d37368cc6ac0'
+sha256sums=('50a0afc1d6c2b2a3d66163b1e1c67c467157dd5f45854204e4e96afa8f522e87'
             '821f858bac2e13ce02b8c20d5387d4ecc8ab2d0e4ebe0a517cbf935da6aeb31b')
 options=(!emptydirs !makeflags)
 
