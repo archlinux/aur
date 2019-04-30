@@ -607,18 +607,20 @@ index ce1e668..8b978e8 100644
      except ImportError:
          sys.exit(PYWX_ERROR)
 diff --git a/phatch/core/config.py b/phatch/core/config.py
-index 7f1d670..51a7fa9 100644
+index 7f1d670..2ea39ad 100644
 --- a/phatch/core/config.py
 +++ b/phatch/core/config.py
-@@ -214,7 +214,7 @@ def init_config_paths(config_paths=None):
+@@ -214,8 +214,8 @@ def init_config_paths(config_paths=None):
      phatch_path = fix_python_path(config_paths.get('PHATCH_PYTHON_PATH', None))
      #patches for pil <= 1.1.6 (ImportError=skip during build process)
      try:
 -        import Image
+-        if Image.VERSION < '1.1.7':
 +        from PIL import Image
-         if Image.VERSION < '1.1.7':
++        if Image.__version__ < '1.1.7':
              fix_python_path(os.path.join(phatch_path, 'other', 'pil_1_1_6'))
      except ImportError:
+         pass
 diff --git a/phatch/core/models.py b/phatch/core/models.py
 index 2404ec3..f331714 100644
 --- a/phatch/core/models.py
@@ -672,7 +674,7 @@ index 6efa1b4..f2a8b3d 100644
      pil_credits['name'] += ' %s' % Image.VERSION
      if not (pil_credits in CREDITS['libraries']):
 diff --git a/phatch/lib/imtools.py b/phatch/lib/imtools.py
-index ae22acc..0a21c5e 100644
+index ae22acc..4f8c6fe 100644
 --- a/phatch/lib/imtools.py
 +++ b/phatch/lib/imtools.py
 @@ -20,10 +20,10 @@ from cStringIO import StringIO
@@ -690,6 +692,15 @@ index ae22acc..0a21c5e 100644
  
  import system
  
+@@ -475,7 +475,7 @@ def has_transparency(image):
+             has_alpha(image)
+ 
+ 
+-if Image.VERSION == '1.1.7':
++if Image.__version__ == '1.1.7':
+ 
+     def split(image):
+         """Work around for bug in Pil 1.1.7
 diff --git a/phatch/lib/metadata.py b/phatch/lib/metadata.py
 index ec4b76d..c666fd1 100644
 --- a/phatch/lib/metadata.py
@@ -740,7 +751,7 @@ index ec4b76d..c666fd1 100644
      >>> list(InfoExtract.get_vars_by_info(['mode'])[0].values())
      [['mode', 'orientation']]
 diff --git a/phatch/lib/openImage.py b/phatch/lib/openImage.py
-index 2d2b07d..8e09232 100644
+index 2d2b07d..17e5f75 100644
 --- a/phatch/lib/openImage.py
 +++ b/phatch/lib/openImage.py
 @@ -18,7 +18,7 @@
@@ -752,6 +763,15 @@ index 2d2b07d..8e09232 100644
  
  import imtools
  import system
+@@ -53,7 +53,7 @@ def open(uri):
+     except IOError, message:
+         ok = False
+     # interlaced png
+-    if ok and not(Image.VERSION < '1.1.7' and
++    if ok and not(Image.__version__ < '1.1.7' and
+             image.format == 'PNG' and 'interlace' in image.info):
+         return image
+     # png, tiff (which pil can only handle partly)
 diff --git a/phatch/lib/pyWx/dialogsInspector.py b/phatch/lib/pyWx/dialogsInspector.py
 index 8ff3511..02fd820 100644
 --- a/phatch/lib/pyWx/dialogsInspector.py

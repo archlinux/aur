@@ -5,7 +5,7 @@
 pkgname=phatch
 pkgver=0.2.7.1
 pkgmajorv=0.2.7
-pkgrel=10
+pkgrel=11
 pkgdesc="A simple to use cross-platform GUI Photo Batch Processor."
 arch=('i686' 'x86_64')
 url="http://photobatch.stani.be"
@@ -16,8 +16,8 @@ provides=(phatch="$pkgver")
 install="$pkgname.install"
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.orig.tar.gz"
         'phatch.patch')
-md5sums=('c0638bcc6510d340c03c40ddfb0a0c2f'
-         '2716d5d4aa241a4d45fd9e1fec486fad')
+sha256sums=('ba602095f6a78b53fe71825dd6b9786babf6e226dddcab6d72db012ff1e8d91d'
+            '78bfc00ae82e7a5825949e5dfd5f9f1cdb966bb03fbe5be4ef871b5fd17b0256')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgmajorv"
