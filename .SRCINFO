@@ -1,6 +1,6 @@
 pkgbase = rocketchat-client-bin
 	pkgdesc = The Ultimate Open Source Web Chat Platform
-	pkgver = 2.15.2
+	pkgver = 2.15.3
 	pkgrel = 1
 	url = https://rocket.chat
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = rocketchat-client-bin
 	depends = gconf
 	depends = libxss
 	optdepends = libnotify: For sending desktop notifications
-	source = https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/2.15.2/rocketchat_2.15.2_amd64.deb
+	source = https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/2.15.3/rocketchat_2.15.3_amd64.deb
 	source = LICENSE
-	sha256sums = eb180cf7c9b7f9ead2e1812ceed3aa9b6d8df6bc23d854ad62f93df638622090
+	sha256sums = 1a09d31301c0b2e81b1fff29fc6c4eb163588d86160fc5bb4190dd88a7ca2274
 	sha256sums = 362e3ce451a4aa3e51e5728a2102b01135827d3a4af0a450b672c54540dec5c5
 
 pkgname = rocketchat-client-bin
