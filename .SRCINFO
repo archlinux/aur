@@ -10,6 +10,7 @@ pkgbase = cargo-debstatus
 	license = GPL3
 	makedepends = cargo
 	depends = openssl
+	depends = curl
 	source = cargo-debstatus-0.2.0.tar.gz::https://github.com/kpcyrd/cargo-debstatus/archive/v0.2.0.tar.gz
 	sha512sums = 68770be752ff06e53b8264471b9a0fa724eec4dd5fae2785d1e2a9da0eafd41542f79daa3b8b56fbf40372da8aa30664d6f119ca71396628c70670519c5f0f65
 
