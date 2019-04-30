@@ -3,8 +3,8 @@
 
 _gemname=net-http-persistent
 pkgname=ruby-${_gemname}
-pkgver=3.0.0
-pkgrel=4
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8"
 arch=('any')
 url="https://github.com/drbrain/net-http-persistent"
@@ -14,7 +14,7 @@ makedepends=('ruby-rdoc')
 options=(!emptydirs)
 noextract=(${_gemname}-${pkgver}.gem)
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
-sha1sums=('239d6a0be13c68b171301b146d0c8e0390e28903')
+sha1sums=('59b0f6b766afbe671773bb278816b243cb09bea3')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
