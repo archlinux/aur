@@ -2,11 +2,11 @@
 _npmname=node-pre-gyp
 pkgname=nodejs-node-pre-gyp
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Node.js tool for easy binary deployment of C++ addons "
 arch=('any')
 url="https://github.com/mapbox/node-pre-gyp"
-license=('GPL')
+license=('BSD')
 depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
@@ -27,6 +27,6 @@ package() {
 	chmod 644 "$pkgjson"
 
 	# Install LICENSE in a more findable spot.
-	install -Dm644 -t "$pkgdir/usr/share/licences/$pkgname" \
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
 		"$pkgdir/usr/lib/node_modules/$_npmname/LICENSE"
 }
