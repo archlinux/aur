@@ -1,7 +1,7 @@
 # Maintainer: Nanda Okitavera <codeharuka.yusa@gmail.com>
 pkgname=clearine-git
-pkgver=0.6.r0.g90bae22
-pkgrel=2
+pkgver=0.6.r4.g18e6172
+pkgrel=1
 pkgdesc="Beautiful Logout UI for X11 window manager"
 arch=('any')
 url="https://github.com/okitavera/clearine"
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags | sed "s/-/.r/;s/-/./g"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
