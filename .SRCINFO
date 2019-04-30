@@ -1,0 +1,18 @@
+pkgbase = amdgpu-tweakd-git
+	pkgdesc = amdgpu fan speed control and power limit tweak
+	pkgver = 0.1.dev39+g6dd3cb0
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools-scm
+	depends = python-jeepney
+	depends = python-pyudev
+	provides = amdgpu-tweakd
+	conflicts = amdgpu-tweakd
+	backup = etc/amdgpu-tweakd
+	source = amdgpu-tweakd-git::git+https://github.com/amezin/amdgpu-tweakd.git
+	md5sums = SKIP
+
+pkgname = amdgpu-tweakd-git
+
