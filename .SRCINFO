@@ -1,6 +1,6 @@
 pkgbase = sn0int-git
-	pkgdesc = OSINT framework and package manager
-	pkgver = 0.5.1.r0.gcb97809
+	pkgdesc = Semi-automatic OSINT framework and package manager
+	pkgver = 0.11.1.r1.g0dcf5f4
 	pkgrel = 1
 	url = https://github.com/kpcyrd/sn0int
 	install = sn0int.install
