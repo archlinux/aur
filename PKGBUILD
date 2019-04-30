@@ -3,13 +3,13 @@
 
 pkgsubn=Reddit-Enhancement-Suite
 pkgname=chromium-extension-reddit-enhancement-suite-git
-pkgver=v5.13.3.r24.g4fff1e72e
+pkgver=v5.15.0.r0.g229e2787c
 pkgrel=1
 pkgdesc="Chrome/Chromium extension for Reddit Enhancement Suite - git/dev"
 arch=('any')
 url='https://github.com/honestbleeps/Reddit-Enhancement-Suite'
 license=('GPL3')
-makedepends=(git nodejs)
+makedepends=(git nodejs npm)
 source=("git+https://github.com/honestbleeps/Reddit-Enhancement-Suite.git")
 sha512sums=('SKIP')
 
