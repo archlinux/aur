@@ -1,0 +1,12 @@
+rmh52csv(){
+	rm -f /usr/bin/h52csv
+}
+
+pre_install(){
+	rmh52csv
+}
+
+pre_upgrade(){
+	rmh52csv
+}
+
