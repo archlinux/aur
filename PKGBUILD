@@ -2,7 +2,7 @@
 # Co-maintainer & author of the original software: Gabriel "Squared" Saillard <squared@codebrew.fr>
 pkgname='edex-ui-git'
 _pkgname='edex-ui'
-pkgver=2.0.1.r5.g39bb32e
+pkgver=2.2.1.r0.fc5b8d9
 pkgrel=1
 pkgdesc="A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
