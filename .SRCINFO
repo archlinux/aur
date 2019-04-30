@@ -1,13 +1,14 @@
 pkgbase = docker-app
 	pkgdesc = A utility to help make Compose files more reusable and sharable
-	pkgver = 0.6.0
-	pkgrel = 2
+	pkgver = 0.8.0_beta2
+	pkgrel = 1
 	url = https://github.com/docker/app
 	arch = x86_64
 	license = Apache
+	makedepends = go
 	depends = docker
-	source = https://github.com/docker/app/releases/download/v0.6.0/docker-app-linux.tar.gz
-	sha512sums = 75fe1d8c3df0a909c77a7985f05ea92876289a790fc781fcb535e97a463b5c9e0eb8c31c93c1508e98ae0296cd38a96e1f5a6ac52de45fd2e235423de44a0f2c
+	source = https://github.com/docker/app/archive/v0.8.0-beta2.tar.gz
+	sha512sums = 8987462f125e91355e02a34e8f82ec019975c7e7bb1fd37f52aab058dc81a7c27f781ab2c608e6739abd6caed27e08407739fc5acb346ed3fa4a5c9cf810d31b
 
 pkgname = docker-app
 
