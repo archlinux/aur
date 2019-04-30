@@ -1,7 +1,7 @@
 # Maintainer: Dominik Schrempf <dominik.schrempf@gmail.com>
 pkgname=nextcloud-systemd-timers
-pkgver=0.5
-pkgrel=2
+pkgver=0.6
+pkgrel=1
 epoch=
 pkgdesc="Systemd services and timers for Nextcloud background jobs (see Nextcloud Arch Wiki entry)."
 arch=('any')
@@ -27,14 +27,14 @@ source=("nextcloud-cron.service"
         "nextcloud-preview-generate-all.timer"
         "nextcloud-files-scan-all.service"
         "nextcloud-files-scan-all.timer")
-md5sums=('53a5345c92f56045c59cb3ffd91b20fc'
-         '15826e34b6d24b9fe7d1eaa8df27c026'
-         '4d6a98593b90f9aed1bdcb186bc4ca5c'
-         'b986c3d1a3ca1243a0c25ea0b835598c'
-         '979a3979fa0fa2fba3a3fe94d877f3d9'
-         '05faa4afcc1705a8c03f0d197e0e763f'
-         '01ff280f5a1ca4d4f49cce54d72e7cb9'
-         '67dff9d43283939a02c3779266e2c3d3')
+sha256sums=('7fe27aa2ef2a034cf19a02571cefd1f6b40dd64fa48abda3ed0c82e2181f12c1'
+            'b6ab6077a56e38b03e2ba669750aedc9cb84685f4cca7e9f3e9067f76d80c2a8'
+            'bfaa2602d78f097c95e76d150423f83779384a737d41502bd8067b8f663b436f'
+            '56e3cab181040101be05d4b7723825f7b0c082c34403e42c6f0934c6474a6a43'
+            '18913873bf889f8b4d8bc2109d313fed02e523c86519ca96285640bf965732d5'
+            'bd4bbd01a9d68e0217c3b48c977dda881fd956b53f981a6e32af0357d2e0b716'
+            '86918017daa8f20208e1943fc53becdae5b96e7a15104bbedfdb7139d7c5dc66'
+            '2f191059b619141ba883ae132af56460212c84eb208f087b87b79b0a3b9e4900')
 noextract=()
 
 # prepare() {
@@ -56,7 +56,7 @@ noextract=()
 package() {
   # cd "$srcdir/$pkgname-$pkgver"
   # make DESTDIR="$pkgdir/" install
-  install -D -t $pkgdir/etc/systemd/system -m 644 \
+  install -D -t $pkgdir/usr/lib/systemd/system -m 644 \
           nextcloud-cron.service \
           nextcloud-cron.timer \
           nextcloud-files-scan-all.service \
