@@ -5,7 +5,7 @@
 
 pkgname=toggldesktop
 pkgver=7.4.410
-pkgrel=1
+pkgrel=2
 pkgdesc="Toggl time tracking software"
 arch=('x86_64')
 url="https://github.com/toggl/toggldesktop"
@@ -41,7 +41,7 @@ build() {
   cmake ../${pkgname}-${pkgver}\
     -DCMAKE_INSTALL_PREFIX=/usr\
     -DTOGGL_PRODUCTION_BUILD=ON\
-    -DTOGGL_ALLOW_UPDATE_CHECK=OFF\
+    -DTOGGL_ALLOW_UPDATE_CHECK=ON\
     -DUSE_BUNDLED_LIBRARIES=OFF
   make
 }
