@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-crypto++
 _pkgname=crypto++
-pkgver=8.1.0
+pkgver=8.2.0
 _srcver=${pkgver//./}
 pkgrel=1
 pkgdesc="A free C++ class library of cryptographic schemes (mingw-w64)"
@@ -15,7 +15,7 @@ options=('!strip' '!buildflags' 'staticlibs')
 source=("https://www.cryptopp.com/cryptopp${pkgver//./}.zip"
         libcrypto++.pc
         cryptopp-5.6.5-cmake.patch)
-sha256sums=('f609b453e42abbab7163191dfe060964121f04da212e2e4f2f0ebe94b7e806ae'
+sha256sums=('03f0e2242e11b9d19b28d0ec5a3fa8ed5cc7b27640e6bed365744f593e858058'
             '5d1ad79b050553cc1b2d5e2a9a4946e24afa4f4ced8d57aed74eadfdfb97d671'
             '2c588cb085749b76adc28be5075b4978c8822f1e0327ccc06d823a1d436f56e9')
 noextract=(cryptopp${pkgver//./}.zip)

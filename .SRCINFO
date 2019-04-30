@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-crypto++
 	pkgdesc = A free C++ class library of cryptographic schemes (mingw-w64)
-	pkgver = 8.1.0
+	pkgver = 8.2.0
 	pkgrel = 1
 	url = https://www.cryptopp.com/
 	arch = any
@@ -9,14 +9,14 @@ pkgbase = mingw-w64-crypto++
 	makedepends = unzip
 	makedepends = dos2unix
 	depends = mingw-w64-crt
-	noextract = cryptopp810.zip
+	noextract = cryptopp820.zip
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://www.cryptopp.com/cryptopp810.zip
+	source = https://www.cryptopp.com/cryptopp820.zip
 	source = libcrypto++.pc
 	source = cryptopp-5.6.5-cmake.patch
-	sha256sums = f609b453e42abbab7163191dfe060964121f04da212e2e4f2f0ebe94b7e806ae
+	sha256sums = 03f0e2242e11b9d19b28d0ec5a3fa8ed5cc7b27640e6bed365744f593e858058
 	sha256sums = 5d1ad79b050553cc1b2d5e2a9a4946e24afa4f4ced8d57aed74eadfdfb97d671
 	sha256sums = 2c588cb085749b76adc28be5075b4978c8822f1e0327ccc06d823a1d436f56e9
 
