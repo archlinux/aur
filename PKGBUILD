@@ -5,7 +5,7 @@
 # Contributor(s): IC-Parc, Imperial College London
 
 _major_version=7.0
-_minor_version=45
+_minor_version=46
 
 pkgname=eclipse-clp
 pkgver=${_major_version}.${_minor_version}
@@ -16,26 +16,24 @@ url="http://eclipseclp.org/"
 license=('CMPL 1.1')
 depends=('tk')
 optdepends=('java-runtime: jvm support'
-            'rlwrap: readline support')
+  'rlwrap: readline support')
 
 install=eclipse-clp.install
 
-
-
 source_x86_64=("http://eclipseclp.org/Distribution/Builds/${_major_version}_${_minor_version}/x86_64_linux/eclipse_basic.tgz")
 
-md5sums_x86_64=('f6a8e39dc95ab386ad33ed564d225a48')
+md5sums_x86_64=('SKIP')
 
 package() {
-  cd ${srcdir}
+  cd "${srcdir}"
 
   rm eclipse_basic.tgz
 
-  targetDir=${pkgdir}/opt/eclipse-clp
+  targetDir="${pkgdir}"/opt/eclipse-clp
 
-  mkdir -p ${targetDir}
+  mkdir -p "${targetDir}"
 
-  cp -dR ./* ${targetDir}
+  cp -dR ./* "${targetDir}"
   mkdir -p "${pkgdir}/usr/bin"
 
   if [ "${CARCH}" = 'x86_64' ]; then
