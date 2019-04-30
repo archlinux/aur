@@ -39,8 +39,11 @@ post_install() {
 pre_upgrade() {
     if [[ "$1" == "0.6-1" ]]
     then
+        echo
 	      echo "The systemd unit directory has changed from"
         echo "/etc/systemd/system to /usr/lib/systemd/system."
+        echo "Please ensure that your timers work after the upgrade."
+        echo
     fi
 }
 
