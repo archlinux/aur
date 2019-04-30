@@ -9,23 +9,24 @@ depends=('gcc-libs')
 makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 license=('MIT' 'Apache')
-source=("https://github.com/tailhook/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/tailhook/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('c296fbf0b5308f921eb4ee0f4201ccdcf5899cc38d89bd90559aca16190a1d69')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
+  # lockfile is outdated
   cargo build --release
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
   cargo test --release
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 "target/release/graphql" -t "$pkgdir/usr/bin"
-  install -Dm644 LICENSE-MIT LICENSE-APACHE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "${pkgname}-${pkgver}"
+  install -Dm755 "target/release/graphql" -t "${pkgdir}/usr/bin"
+  install -Dm644 LICENSE-MIT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
