@@ -3,14 +3,14 @@
 
 pkgname=duff
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A command-line utility for quickly finding duplicates in a given set of files"
 arch=('i686' 'x86_64')
 url="http://duff.dreda.org/"
 license=('custom')
 depends=('glibc' 'sh')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/elmindreda/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('e4688d2724e1990d7d36ecb89f114f9e')
+source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('15b721f7e0ea43eba3fd6afb41dbd1be63c678952bf3d80350130a0e710c542e')
 
 build() {
   cd ${pkgname}-${pkgver}
