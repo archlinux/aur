@@ -8,7 +8,7 @@ url="https://github.com/genn-team/genn"
 license=('GPL')
 depends=(cuda)
 makedepends=(doxygen)
-options=(staticlibs)
+options=(staticlibs !emptydirs)
 source=("$url/archive/${pkgver//_/-}.tar.gz")
 sha256sums=('b94c0b8c05d8525987f9d4279478dd41f68e8d9824cb5344adb5fbe257b38e99')
 
