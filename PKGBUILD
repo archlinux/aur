@@ -4,6 +4,7 @@ pkgver=1.02.1902010
 pkgrel=1
 pkgdesc=微信开发者工具
 url=https://github.com/razonyang/archlinux-pkg-wechat-devtool
+license=('MIT')
 arch=('any')
 depends=(
     'wine'

@@ -4,6 +4,7 @@ pkgbase = wechat-devtool
 	pkgrel = 1
 	url = https://github.com/razonyang/archlinux-pkg-wechat-devtool
 	arch = any
+	license = MIT
 	depends = wine
 	source = https://github.com/cytle/wechat_web_devtools/archive/v1.02.1902010.tar.gz
 	md5sums = cdc1c88e3dd187d06d9b51b5a321755f
