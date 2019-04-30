@@ -10,21 +10,21 @@ url='http://rakudo.org/'
 license=(PerlArtistic)
 groups=('perl6')
 depends=("nqp>=2019.03")
-makedepends=('perl>=5.8')
+makedepends=('perl>=5.8' 'git')
 provides=('rakudo-moarvm' 'perl6')
 replaces=('rakudo-moarvm')
 conflicts=('rakudo-moarvm')
 options=('!makeflags')
-source=("http://rakudo.org/downloads/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('2c4ee2e7034fc9e1768dffa6a1ed363ffeb58b6bb395cfdbd4a3db0cfeec9b549d0482686fc1aabeff022084a23c09db913d8b25377c826b320440cb1374f126')
+source=("git+https://github.com/rakudo/rakudo.git#tag=$pkgver")
+sha512sums=('SKIP')
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	perl Configure.pl --prefix=/usr --backends=moar
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	make DESTDIR="$pkgdir" install
 }
