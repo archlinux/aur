@@ -5,7 +5,6 @@ pkgbase = nextcloud-systemd-timers
 	install = nextcloud-systemd-timers.install
 	arch = any
 	license = GPL
-	conflicts = nextcloud-systemd-cron
 	source = nextcloud-cron.service
 	source = nextcloud-cron.timer
 	source = nextcloud-preview-pre-generate.service

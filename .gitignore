@@ -1,1 +1,4 @@
 /update
+/pkg/
+/src/
+/*.pkg.tar.xz

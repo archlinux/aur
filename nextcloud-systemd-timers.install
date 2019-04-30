@@ -34,11 +34,16 @@ post_install() {
     echo '$ systemctl list-timers'
 }
 
-## arg 1:  the new package version
-## arg 2:  the old package version
-#pre_upgrade() {
-	# do something here
-#}
+# arg 1:  the new package version
+# arg 2:  the old package version
+pre_upgrade() {
+    if [[ $1 == 0.6 ]]
+    then
+	      echo "The systemd unit directory has changed from"
+        echo "/etc/systemd/system to /usr/lib/systemd/system."
+        echo "Please deactivate the old units, and activate the new ones after the upgrade."
+    fi
+}
 
 ## arg 1:  the new package version
 ## arg 2:  the old package version
