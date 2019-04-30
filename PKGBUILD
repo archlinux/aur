@@ -13,7 +13,7 @@ _revert=
 
 
 pkgname=mutter-781835-workaround
-pkgver=3.32.1+2+gabc3fdcc6
+pkgver=3.32.1+3+g9a795d3d0
 pkgrel=1
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -55,22 +55,26 @@ prepare() {
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/189
   git cherry-pick -n d774fb22
 
+  # Consolidate all frame throttling into clutter-stage-cogl [performance]
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/363
+  # Conflict!
+  # h_first=$(git log --oneline --all | grep 'clutter/stage-cogl: Remove magic numbers' | tail -n 1 | awk '{print $1}') # Sorry guys
+  # h_last=$(git log --oneline --all | grep 'clutter/master-clock: Remove fallback throttles' | tail -n 1 | awk '{print $1}') # Sorry guys
+  # echo "Found $h_first^$h_last for MR363"
+  # git cherry-pick -n $h_first^..$h_last || zsh
+
   # clutter-stage-cogl: Reduce output latency and reduce missed frames too [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/281
   # first commit replaced by !363
-  hash=$(git log --oneline --all | grep 'clutter-stage-cogl: Reschedule update on present' | head -n 1 | awk '{print $1}') # Sorry guys
-  echo "Found $hash for MR281"
-  git cherry-pick -n $hash
-
-  # Consolidate all frame throttling into clutter-stage-cogl [performance]
-  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/363
-  git cherry-pick -n fd8a2de8^..265772a4
+  # Conflict!
+  # hash=$(git log --oneline --all | grep 'clutter-stage-cogl: Reschedule update on present' | head -n 1 | awk '{print $1}') # Sorry guys
+  # echo "Found $hash for MR281"
+  # git cherry-pick -n $hash
 
   # clutter: Deliver events sooner when possible
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/168
   # still has issues with 1000Hz mice
   # git cherry-pick -n ae8fc614
-
 
   # Resource scale computation optimizations
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/493
