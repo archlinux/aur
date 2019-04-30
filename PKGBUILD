@@ -1,8 +1,8 @@
 # Maintainer: silvermight <silver@silvermight.com>
 pkgname=python-discord-git
-pkgver=r1450.8ba7816
+pkgver=r1919.91e00d84
 pkgrel=1
-pkgdesc="Rewrite version of discord.py, an API wrapper for Discord"
+pkgdesc="A modern, easy to use, feature-rich, and async ready API wrapper for Discord"
 arch=('any')
 url="https://github.com/Rapptz/discord.py"
 license=('MIT')
@@ -10,7 +10,7 @@ depends=('python' 'python-websockets' 'python-aiohttp')
 optdepends=('python-pynacl: Voice support'
             'libffi: Voice support')
 makedepends=('git')
-source=("python-discord-git::git+https://github.com/Rapptz/discord.py.git#branch=rewrite")
+source=("python-discord-git::git+https://github.com/Rapptz/discord.py.git")
 provides=('python-discord')
 conflicts=('python-discord')
 md5sums=('SKIP')
