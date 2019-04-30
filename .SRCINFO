@@ -1,6 +1,6 @@
 pkgbase = fancontrol-kcm
 	pkgdesc = KDE control module for the fancontrol script and systemd service
-	pkgver = v0.6
+	pkgver = v0.7
 	pkgrel = 1
 	url = https://github.com/Maldela/Fancontrol-GUI
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = fancontrol-kcm
 	makedepends = extra-cmake-modules
 	depends = fancontrol-gui
 	depends = kdeclarative
-	source = https://github.com/Maldela/fancontrol-gui/archive/v0.6.tar.gz
-	md5sums = 5088db3b423c098b56d2b0bc73f27aa1
+	source = https://github.com/Maldela/fancontrol-gui/archive/v0.7.tar.gz
+	md5sums = 873ed029f2d2099092ed46398df59988
 
 pkgname = fancontrol-kcm
 
