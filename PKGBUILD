@@ -18,30 +18,29 @@ sha256sums=('0192a9882bb9800f2177fcdb31cda8031bbc3895db9fe4a0966ebdd771b66915'
             '3208e111fb44e0799272429b6d87544a2a54a6f48ef640524a19a8c0a37d3d00')
 
 prepare() {
-  rm -rf recon-ng-$pkgver
-  mv LaNMaSteR53-recon-ng-* recon-ng-$pkgver
-  cd ${pkgname}-${pkgver}
+  rm -rf "recon-ng-${pkgver}"
+  mv LaNMaSteR53-recon-ng-* "recon-ng-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   # change analytics from opt-out to opt-in
   patch -Np1 -i ../opt-in-analytics.patch
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
 
   install -d "${pkgdir}/opt/${pkgname}"
   cp -ra --no-preserve=owner . "${pkgdir}/opt/${pkgname}"
 
   install -d "${pkgdir}/usr/bin"
   for bin in recon-ng recon-cli recon-rpc recon-web; do
-    cat > "${pkgdir}/usr/bin/$bin" << EOF
+    cat > "${pkgdir}/usr/bin/${bin}" << EOF
 #!/bin/sh
 cd /opt/recon-ng
-exec python2 $bin "\$@"
+exec python2 ${bin} "\$@"
 EOF
-    chmod +x "${pkgdir}/usr/bin/$bin"
+    chmod +x "${pkgdir}/usr/bin/${bin}"
   done
 
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
