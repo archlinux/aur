@@ -1,11 +1,12 @@
-# Maintainer: Håvard Pettersson <mail@haavard.me>
+# Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Contributor: Håvard Pettersson <mail@haavard.me>
 # Contributor: Andrew Stubbs <andrew.stubbs@gmail.com>
 
 _pkgname=etcher
 pkgname=etcher-git
-pkgver=1.5.19.r0.ga21a82c6
+pkgver=1.5.31.r0.gf40c0f6b
 pkgrel=1
-pkgdesc='Burn images to SD cards & USB drives, safe & easy (git version)'
+pkgdesc='Flash OS images to SD cards & USB drives, safely and easily. (git version)'
 arch=(x86_64)
 url='https://www.balena.io/etcher/'
 license=(apache)

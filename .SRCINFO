@@ -1,6 +1,6 @@
 pkgbase = etcher-git
-	pkgdesc = Burn images to SD cards & USB drives, safe & easy (git version)
-	pkgver = 1.5.19.r0.ga21a82c6
+	pkgdesc = Flash OS images to SD cards & USB drives, safely and easily. (git version)
+	pkgver = 1.5.31.r0.gf40c0f6b
 	pkgrel = 1
 	url = https://www.balena.io/etcher/
 	arch = x86_64
