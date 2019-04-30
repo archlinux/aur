@@ -2,7 +2,7 @@
 
 pkgname=lmms-beta-bin
 _basever=1.2.0
-_rc=rc7
+_rc=rc8
 pkgver=${_basever}_${_rc}
 pkgrel=1
 pkgdesc='Beta version of the Linux MultiMedia Studio.'
@@ -20,7 +20,7 @@ options=('!strip')
 source=("lmms.AppImage::https://github.com/LMMS/lmms/releases/download/v${_basever}-${_rc}/lmms-${_basever}-${_rc}-linux-x86_64.AppImage"
         "lmms-beta"
         "lmms-beta.desktop")
-sha256sums=('f1abd0722c3b1d96e700324805f11e2f448d02960f492dc2fa95f2ee2452e0c3'
+sha256sums=('a0446330e227778fb929bd882b4c0bf6bd5c14f6729d8977a008bd4d1fd22dc4'
             '784119511992d86354edd1b1a39e32adb5168dd63af0eb44838e9aa579270bed'
             '804266e15b21d4c5d003897a29f75e03927898bf17255ff4da6c0468cd56adc4')
 
