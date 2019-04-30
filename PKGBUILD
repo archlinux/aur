@@ -4,7 +4,7 @@
 
 pkgname=etcher
 pkgver=1.5.31
-pkgrel=1
+pkgrel=2
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
 arch=(x86_64)
 url='https://etcher.io'
@@ -32,7 +32,7 @@ prepare() {
 
 build() {
   cd "${pkgname}"
-  export NPM_VERSION=6.7.0
+  export NPM_VERSION=$(npm --version)
   make electron-develop
   make webpack
   npm prune --production
