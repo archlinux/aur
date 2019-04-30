@@ -1,3 +1,10 @@
+2019-04-29 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.0.6:
+	- Implement verification of the post MBR gap where grub state 1.5 is located
+	- Implement verification of BIOS Boot partition when using GPT with MBR
+	- Add a call to resolve_device to make sure the ESP partition can be properly found
+
 2015-08-13 Giancarlo Razzolini <grazzolini@gmail.com>
 
 	* 0.0.5:
