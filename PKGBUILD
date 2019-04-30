@@ -1,8 +1,8 @@
 # Maintainer: Peyrille Benjamin <peyrille.benjamin@gmail.com>
 # Contributor : Rogalle Quentin <quentin.rogalle@etudiant.univ-perp.fr>
 pkgname=othellox
-pkgver=0_2
-pkgrel=1
+pkgver=0_3
+pkgrel=2
 pkgdesc="Reversi game in C allowing AI-vs-AI automation"
 arch=('any')
 url="https://framagit.org/Arkhist/othellox"

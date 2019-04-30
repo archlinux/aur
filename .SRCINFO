@@ -1,7 +1,7 @@
 pkgbase = othellox
 	pkgdesc = Reversi game in C allowing AI-vs-AI automation
-	pkgver = 0_2
-	pkgrel = 1
+	pkgver = 0_3
+	pkgrel = 2
 	url = https://framagit.org/Arkhist/othellox
 	arch = any
 	license = MIT
