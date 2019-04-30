@@ -2,22 +2,22 @@
 
 pkgname=rtl8821cu-dkms-git
 _pkgbase=rtl8821cu
-pkgver=5.2.5.3_24795.20171031.r15.g0c0f555
+pkgver=5.4.13969ab281
 pkgrel=1
 pkgdesc="rtl8821cu chipset driver"
 arch=('i686' 'x86_64')
-url="https://github.com/whitebatman2/rtl8821CU"
+url="https://github.com/brektrou/rtl8821CU"
 license=('GPL2')
 depends=('dkms' 'bc')
 makedepends=('git')
 conflicts=("${_pkgbase}")
-source=("git+https://github.com/whitebatman2/rtl8821CU"
+source=("git+https://github.com/brektrou/rtl8821CU"
         'dkms.conf')
 sha256sums=('SKIP'
-	    '52eabdd7b4aaecaf3489877d79758129c39703110b803db70872d19b2e88947e')
+	    '6863d28cbb525eab0be7b5244a5b924302516142a1925fc6521ce49a2800b03d')
 pkgver() {
     cd ${srcdir}/rtl8821CU
-    printf '%s.r%s.g%s' '5.2.5.3_24795.20171031' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf '%s' '5.4.1' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
