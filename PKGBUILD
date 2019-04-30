@@ -8,22 +8,22 @@ arch=('any')
 url='https://github.com/perl6/nqp#readme'
 license=(PerlArtistic)
 depends=('bash' "moarvm>=$pkgver")
-makedepends=('perl>=5.8')
+makedepends=('perl>=5.8' 'git')
 provides=('nqp-moarvm')
 replaces=('nqp-moarvm')
 conflicts=('nqp-moarvm')
 options=('!makeflags')
-source=(http://rakudo.org/downloads/$pkgname/$pkgname-$pkgver.tar.gz)
-sha512sums=('248768c1b1c0f5e5bd19183404e2a1aa28ab488b05db0b1ed0f0bcceca8b9830885762e763ea38cdd2b54d975d2663e1defe236907096aabc5b668818d293533')
+source=("git+https://github.com/perl6/nqp.git#tag=$pkgver")
+sha512sums=('SKIP')
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 
 	perl Configure.pl --backends=moar --prefix=/usr
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	make DESTDIR="$pkgdir/" install
 }

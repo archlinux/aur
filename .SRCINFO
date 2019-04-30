@@ -6,14 +6,15 @@ pkgbase = nqp
 	arch = any
 	license = PerlArtistic
 	makedepends = perl>=5.8
+	makedepends = git
 	depends = bash
 	depends = moarvm>=2019.03
 	provides = nqp-moarvm
 	conflicts = nqp-moarvm
 	replaces = nqp-moarvm
 	options = !makeflags
-	source = http://rakudo.org/downloads/nqp/nqp-2019.03.tar.gz
-	sha512sums = 248768c1b1c0f5e5bd19183404e2a1aa28ab488b05db0b1ed0f0bcceca8b9830885762e763ea38cdd2b54d975d2663e1defe236907096aabc5b668818d293533
+	source = git+https://github.com/perl6/nqp.git#tag=2019.03
+	sha512sums = SKIP
 
 pkgname = nqp
 
