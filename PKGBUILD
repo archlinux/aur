@@ -3,25 +3,29 @@
 # Contributor: Lukas Weber <laochailan@web.de>
 
 pkgname=taisei
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Open source Touhou clone"
 arch=('i686' 'x86_64')
 url="https://taisei-project.org/"
 license=('MIT')
-depends=('sdl2_mixer' 'sdl2_ttf' 'libzip' 'hicolor-icon-theme')
+depends=('opengl-driver' 'sdl2_mixer' 'freetype2' 'libpng' 'libwebp' 'libzip' 'hicolor-icon-theme')
 makedepends=('meson' 'python-docutils')
-source=($pkgname-$pkgver.tar.gz::"https://github.com/taisei-project/taisei/archive/v$pkgver.tar.gz")
-sha256sums=('8d2d682eeeb6284bc726b8ae52c355848b007957d2dc6bdd973f6384ae075ea3')
+source=("https://github.com/taisei-project/taisei/releases/download/v$pkgver/taisei-v$pkgver.tar.xz")
+sha256sums=('4d6ede1e8a512eedec76cc9105022b0f5a361d23841ec1607d06a22c170b843a')
+
+prepare() {
+  cd $pkgname-v$pkgver
+  arch-meson build
+}
 
 build() {
-  cd $pkgname-$pkgver
-  arch-meson . build
+  cd $pkgname-v$pkgver
   ninja -C build
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname-v$pkgver
 
   DESTDIR="$pkgdir/" ninja -C build install
 
