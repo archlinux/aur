@@ -1,0 +1,19 @@
+pkgbase = keepassx
+	pkgdesc = Password manager
+	pkgver = 0.4.4
+	pkgrel = 3
+	url = http://www.keepassx.org
+	arch = x86_64
+	license = GPL2
+	makedepends = optipng
+	depends = libxtst
+	depends = qt4
+	depends = shared-mime-info
+	source = https://www.keepassx.org/releases/0.4.4/keepassx-0.4.4.tar.gz
+	source = https://www.keepassx.org/releases/0.4.4/keepassx-0.4.4.tar.gz.sig
+	validpgpkeys = 164C70512F7929476764AB56FE22C6FD83135D45
+	sha256sums = 3e27068ca85e68705347f0921c6b3c9248d7c5a84c79c0483daf22d141c0adc4
+	sha256sums = SKIP
+
+pkgname = keepassx
+
