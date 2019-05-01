@@ -1,7 +1,7 @@
 # Maintainer: Igor Moura <imp2@cin.ufpe.br>
 
 pkgname=freecad-appimage
-pkgver=0.17.13541.9948ee4
+pkgver=0.18_16110
 pkgrel=1
 pkgdesc="A general purpose 3D CAD modeler (binary AppImage version)"
 arch=('x86_64')
@@ -9,14 +9,14 @@ url='http://www.freecadweb.org/'
 license=('LGPL')
 provides=('freecad')
 conflicts=('freecad')
-source=("https://github.com/FreeCAD/FreeCAD/releases/download/0.17/FreeCAD-${pkgver}.glibc2.17-${arch}.AppImage"
+source=("https://github.com/FreeCAD/FreeCAD/releases/download/0.18.1/FreeCAD_${pkgver//_/-}-Linux-Conda_Py3Qt5_glibc2.12-${arch}.AppImage"
         freecad.desktop.patch
         freecad.sh)
-sha256sums=('ffbe93609f26ea38bcb019c17baa74264995d8b6b692e81ad07e73c7f763aa17'
+sha256sums=('a22812f9ad66f22cae843998994f23d54191d623b4a7c7f05cc7fa0293e69f63'
          '7e3755f477d24f869408ac67ae75379b727464cc646b0a69ce86afe6e3ca9fef'
          '9bfca97e1e633601ddfbd74f32501050f50378cfd6b30f5bf91d978e7ce33436')
 options=(!strip)
-_filename=./FreeCAD-${pkgver}.glibc2.17-${arch}.AppImage
+_filename=./FreeCAD_${pkgver//_/-}-Linux-Conda_Py3Qt5_glibc2.12-${arch}.AppImage
 
 prepare() {
   cd "${srcdir}"
