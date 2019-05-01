@@ -1,12 +1,12 @@
 
 pkgname=('mingw-w64-llvm')
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (mingw-w64)"
 arch=('any')
 url="http://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
-depends=('mingw-w64-crt')
+depends=('mingw-w64-zlib')
 makedepends=('mingw-w64-cmake' 'llvm' 'python2')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz")

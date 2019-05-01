@@ -1,14 +1,14 @@
 pkgbase = mingw-w64-llvm
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (mingw-w64)
 	pkgver = 8.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://llvm.org/
 	arch = any
 	license = custom:University of Illinois/NCSA Open Source License
 	makedepends = mingw-w64-cmake
 	makedepends = llvm
 	makedepends = python2
-	depends = mingw-w64-crt
+	depends = mingw-w64-zlib
 	options = !strip
 	options = !buildflags
 	options = staticlibs
