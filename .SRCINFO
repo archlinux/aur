@@ -1,0 +1,15 @@
+pkgbase = lua51-checks
+	pkgdesc = Easy, terse, readable and fast function arguments type checking
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/SierraWireless/luasched
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = luarocks
+	depends = lua51
+	source = https://luarocks.org/checks-1.0-1.src.rock
+	sha256sums = 3f56ab82bd1e6e58304f833fd142d77964dcf9392ef0d6df11bb19612e37fb33
+
+pkgname = lua51-checks
+
