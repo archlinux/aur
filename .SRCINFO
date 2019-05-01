@@ -30,6 +30,7 @@ pkgbase = qgroundcontrol
 	depends = sdl2
 	depends = xz
 	depends = zlib
+	depends = icu
 	depends = qt5-speech
 	depends = qt5-multimedia
 	depends = qt5-serialport
