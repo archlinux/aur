@@ -18,7 +18,7 @@ source=(
 sha256sums=(
      'SKIP'
      'da2722bfcf0d15d8acc308fcd9b2e5cd65420eb92d11a6a8d33f6aefd1e07da6'     
-     '3643a656b7c35b87deba5dc6eaf5ac53c11d0f0ae5861f15ec3d3798ebbe61e6'
+     '02a0aa1205374d417e6b148a73476ced0f77bfb0918e6138eb48982676bc2940'
 )
 
 backup=('etc/conf.d/mtg')
