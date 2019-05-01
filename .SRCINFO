@@ -1,0 +1,13 @@
+pkgbase = misspell
+	pkgdesc = Correct commonly misspelled English words in source files
+	pkgver = v0.3.4
+	pkgrel = 1
+	url = https://github.com/client9/misspell/
+	arch = any
+	license = MIT
+	makedepends = go
+	source = misspell-src::git+https://github.com/client9/misspell.git#tag=v0.3.4
+	sha256sums = SKIP
+
+pkgname = misspell
+
