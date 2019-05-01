@@ -31,7 +31,7 @@ pkgver() {
 build() {
   cd $_pkgname
 
-  ./configure --enable-notifications --enable-completions --prefix=/usr
+  ./configure --enable-notifications --enable-completions --prefix=/usr --sysconfdir=/etc
   make COMPLETIONS=1 NOTIFICATIONS=1 PREFIX=/usr
 }
 
