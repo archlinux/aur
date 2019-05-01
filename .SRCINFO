@@ -1,0 +1,15 @@
+pkgbase = lua51-metalua-parser
+	pkgdesc = Metalua's parser: converting Lua source strings and files into AST
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://luarocks.org/modules/luarocks/metalua-parser
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = luarocks
+	depends = lua51
+	source = https://luarocks.org/metalua-parser-0.7.3-2.src.rock
+	sha256sums = 3a2556a999c215641bc6e443a6a3d3a61238ee67b5abd9f706737b125a3a2ef6
+
+pkgname = lua51-metalua-parser
+
