@@ -1,36 +1,48 @@
 # Maintainer: Ashwin <ashuwish+arch@gmail.com>
 
-pkgname=python2-fluiddyn-hg
-pkgver=0.0.12a
-pkgrel=0
-pkgdesc="FluidDyn project | Framework for studying fluid dynamics."
 _hgproj=fluiddyn
 _hgrepo=fluiddyn
+_hgver=0.2.4
+pkgname=python2-fluiddyn-hg
+pkgver=0.2.4.r406.ff507350df1f
+pkgrel=1
+pkgdesc="FluidDyn project | Framework for studying fluid dynamics."
 arch=('any')
 url="https://bitbucket.org/${_hgproj}/${_hgrepo}"
 license=('custom:"CeCILL-B"')
-depends=('python2' 'python2-numpy' 'python2-psutil' 
-	 'python2-matplotlib')
-makedepends=('mercurial' 'python2-setuptools' 'python2-six' 'python2-ptyprocess')
+depends=(
+  'python2' 'python2-numpy' 'python2-matplotlib' 'python2-h5py' 'python2-psutil' 'python2-future'
+)
+optdepends=(
+  'python2-h5netcdf: Read and write netcdf4 files'
+  'python2-pyfftw: Calculate FFT'
+  'python2-pillow: Image I/O'
+)
+makedepends=('mercurial' 'python2-setuptools')
 provides=('python2-fluidsim-hg')
 
 source=("hg+${url}")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "${srcdir}/${_hgrepo}/${_hgrepo}"
-  python2 -c "from _version import __version__; print __version__"
+prepare() {
+  cd "${srcdir}/${_hgrepo}"
+  hg update ${_hgver}
 }
 
-pkgrel() {
+pkgver() {
   cd "${srcdir}/${_hgrepo}"
-  hg identify -ni | awk 'BEGIN{OFS=".";} {print $2,$1}'
+  echo $(hg parents --template '{word(-1,latesttag,":")}').r$(hg identify -n).$(hg identify -i)
 }
 
 build() {
   cd "${srcdir}/${_hgrepo}"
   python2 setup.py build
 }
+
+# check() {
+#   cd "${srcdir}/${_hgrepo}"
+#   python2 -m unittest discover
+# }
 
 package() {
   cd "${srcdir}/${_hgrepo}"
