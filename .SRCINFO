@@ -1,7 +1,7 @@
 pkgbase = qsyncthingtray-lite
 	pkgdesc = tray app for syncthing - without the default embedded web interface
-	pkgver = 0.5.8.r12.gc7ed486
-	pkgrel = 2
+	pkgver = 0.5.8.r13.g3168f48
+	pkgrel = 1
 	url = https://github.com/sieren/QSyncthingTray
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = qsyncthingtray-lite
 	makedepends = cmake
 	makedepends = git
 	depends = qt5-base
-	provides = qsyncthingtray=0.5.8.r12.gc7ed486
+	provides = qsyncthingtray=0.5.8.r13.g3168f48
 	conflicts = qsyncthingtray
-	source = git+https://github.com/sieren/QSyncthingTray#commit=c7ed486603072db444589386b385cd0577f4c13c
+	source = git+https://github.com/sieren/QSyncthingTray#commit=3168f48188591624c4972881889249a715981ea2
 	source = qsyncthingtray-lite.desktop
 	sha256sums = SKIP
 	sha256sums = 36227ff042cd290c5a5165e63aefa759b08524d508fb5d81558ea2e88f7c731d
