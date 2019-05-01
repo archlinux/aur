@@ -1,12 +1,11 @@
 pkgbase = python-fluiddyn
 	pkgdesc = FluidDyn project | Framework for studying fluid dynamics.
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fluiddyn.readthedocs.io
 	arch = any
 	license = custom:"CeCILL-B"
 	checkdepends = python-pytest
-	makedepends = mercurial
 	makedepends = python-setuptools
 	depends = python
 	depends = python-numpy

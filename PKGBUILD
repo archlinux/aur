@@ -4,7 +4,7 @@ _proj=fluiddyn
 _name=fluiddyn
 pkgname=python-${_name}
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="FluidDyn project | Framework for studying fluid dynamics."
 arch=('any')
 url="https://${_name}.readthedocs.io"
@@ -17,7 +17,7 @@ optdepends=(
   'python-pyfftw: Calculate FFT'
   'python-pillow: Image I/O'
 )
-makedepends=('mercurial' 'python-setuptools')
+makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 provides=(python-${_name})
 conflicts=(python2-${_name}-hg)
