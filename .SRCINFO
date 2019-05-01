@@ -1,6 +1,6 @@
 pkgbase = tuijam-git
 	pkgdesc = A fancy TUI client for Google Play Music
-	pkgver = r102.82e7656
+	pkgver = r105.65e91c2
 	pkgrel = 1
 	url = https://github.com/cfangmeier/tuijam
 	arch = any

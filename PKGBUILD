@@ -1,7 +1,7 @@
 # Maintainer: t1meshift <kurlykster@mail.ru>
 
 pkgname=tuijam-git
-pkgver=r102.82e7656
+pkgver=r105.65e91c2
 pkgrel=1
 pkgdesc="A fancy TUI client for Google Play Music"
 url="https://github.com/cfangmeier/tuijam"
