@@ -1,41 +1,49 @@
-# Maintainer: Michael Laß <bevan@bi-co.net>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Michael Laß <bevan@bi-co.net>
 # Contributor: Marat "Morion" Talipov <morion.self@gmail.com>
 
-# This PKGBUILD is maintained on github:
-# https://github.com/michaellass/AUR
-
 pkgname=keepassx2
-pkgver=2.0
-pkgrel=1
-pkgdesc="Crossplatform port of Windows' application  ''KeePass Password Safe''"
-arch=('i686' 'x86_64')
-url="https://www.keepassx.org/dev/"
+pkgver=2.0.3
+pkgrel=2
+pkgdesc="Cross platform password manager"
+url="https://www.keepassx.org"
+arch=('x86_64')
 license=('GPL2' 'GPL3')
-depends=('shared-mime-info' 'libxtst' 'qt4')
-makedepends=('intltool' 'cmake')
-conflicts=('keepassx' 'keepassx2-git')
-options=(!emptydirs)
-install=keepassx2.install
-source=("https://www.keepassx.org/releases/${pkgver}/keepassx-${pkgver}.tar.gz")
-sha256sums=('0eb40fac3a44d8283dfc1ee28cc6de5c660b22ab975472de82c2b04675c822e6')
+depends=('libxtst' 'qt4' 'shared-mime-info')
+makedepends=('intltool' 'cmake' 'optipng')
+options=('!emptydirs')
+source=(https://www.keepassx.org/releases/${pkgver}/keepassx-${pkgver}.tar.gz{,.sig})
+sha512sums=('bf1a4ffa49fc4a6b7a27e6292981c9c13920712b4cd86759a99976f7e0593a243ea14575c57d664ba7e55d2449b5d83bc3d43a64a9a6972335e52234da79d773'
+            'SKIP')
+validpgpkeys=('164C70512F7929476764AB56FE22C6FD83135D45') # Felix Geyer <felix@fobos.de>
 
-_cmake_keys="-DCMAKE_INSTALL_PREFIX=/usr
-             -DCMAKE_INSTALL_LIBDIR=/usr/lib
-             -DCMAKE_BUILD_TYPE=Release"
+prepare() {
+  cd keepassx-${pkgver}
+  mkdir build
+  sed -r 's|(keepassx)|\12|g' -i CMakeLists.txt share/linux/keepassx.desktop
+  sed -r 's|(keepassx)(\.desktop\|\.xml)|\12\2|g' -i share/CMakeLists.txt
+  sed -r 's|(KeePassX)|\1 2|g' -i share/linux/keepassx.desktop
+  rename 'keepassx' 'keepassx2' share/linux/keepassx.{desktop,xml}
+  find -name '*.png' -exec optipng -quiet -force -fix {} \;
+}
 
 build() {
-	cd "${srcdir}/keepassx-${pkgver}"
+  cd keepassx-${pkgver}/build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DCMAKE_BUILD_TYPE=Release ..
+  make
+}
 
-	if [[ -d build ]]; then
-		rm -rf build
-	fi
-	mkdir build && cd build
-
-	cmake $_cmake_keys ..
-	make
+check() {
+  cd keepassx-${pkgver}/build
+  make test
 }
 
 package() {
-	cd "${srcdir}/keepassx-${pkgver}/build"
-	make DESTDIR="${pkgdir}" install
+  cd keepassx-${pkgver}/build
+  make DESTDIR="${pkgdir}" install
+  rename 'keepassx' 'keepassx2' "${pkgdir}"/usr/share/icons/hicolor/*/*/keepassx.png
 }
+
+# vim: ts=2 sw=2 et:
