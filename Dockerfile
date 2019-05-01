@@ -1,5 +1,7 @@
-FROM pritunl/archlinux:latest
-RUN pacman -S --noconfirm --needed base-devel pkgbuild-introspection
+FROM archlinux/base:latest
+
+RUN pacman -Sy --noconfirm --needed base-devel
 
 RUN mkdir /src
+
 WORKDIR /src

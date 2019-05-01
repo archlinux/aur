@@ -23,9 +23,9 @@ vagrant up
 vagrant ssh
 # Install dev dependencies
 sudo pacman -Syu
-sudo pacman -S --needed base-devel pkgbuild-introspection
+sudo pacman -S --needed base-devel
 cd /vagrant
-mksrcinfo
+makepkg --printsrcinfo > .SRCINFO
 ```
 
 ## Push to multiple origins

@@ -5,4 +5,4 @@
 #
 
 id=$(docker build -q .)
-docker run -ti --rm --volume "$(pwd):/src" "$id" /usr/sbin/mksrcinfo
+docker run -ti --rm --volume "$(pwd):/src" --user="$(id -u):$(id -g)" "$id" makepkg --printsrcinfo > .SRCINFO
