@@ -1,7 +1,7 @@
-# Maintainer: Tinu Weber <martin.weber@epfl.ch>
+# Maintainer: Tinu Weber <https://gnugen.ch/~mtweber>
 
 pkgname=epfl-scripts-git
-pkgver=r64.6f19292
+pkgver=r68.86eb50d
 pkgrel=1
 arch=(any)
 
@@ -25,14 +25,12 @@ pkgver() {
 }
 
 package() {
-  depends+=(curl bash file openconnect perl-html-tree perl-io-stringy
-            perl-lwp-protocol-https perl-html-treebuilder-xpath
+  depends+=(curl bash file openconnect perl-file-mimeinfo perl-html-tree
+            perl-io-stringy perl-lwp-protocol-https perl-html-treebuilder-xpath
             perl-www-mechanize perl-xml-xpathengine sh)
 
   cd epfl-scripts
-  install -Dm 755 bin/epfl-vpn "$pkgdir"/usr/bin/epfl-vpn
-  install -Dm 755 bin/gnupaste "$pkgdir"/usr/bin/gnupaste
-  install -Dm 755 bin/pastegnugen.pl "$pkgdir"/usr/bin/pastegnugen.pl
-  install -Dm 755 bin/tl.pl "$pkgdir"/usr/bin/tl.pl
-  install -Dm 755 bin/velo.pl "$pkgdir"/usr/bin/velo.pl
+  for s in epfl-vpn gnupaste pastegnugen.pl tl.pl velo.pl; do
+    install -Dm 755 bin/"$s" "$pkgdir"/usr/bin/"$s"
+  done
 }

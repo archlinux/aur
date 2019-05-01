@@ -1,6 +1,6 @@
 pkgbase = epfl-scripts-git
 	pkgdesc = Collection of scripts for simplifying one's life at EPFL
-	pkgver = r64.6f19292
+	pkgver = r68.86eb50d
 	pkgrel = 1
 	url = https://gitlab.gnugen.ch/gnugen/epfl-scripts
 	arch = any
@@ -19,6 +19,7 @@ pkgname = epfl-scripts-git
 	depends = bash
 	depends = file
 	depends = openconnect
+	depends = perl-file-mimeinfo
 	depends = perl-html-tree
 	depends = perl-io-stringy
 	depends = perl-lwp-protocol-https
