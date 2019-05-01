@@ -8,7 +8,8 @@ pkgdesc="Linux Driver for ITE LPC chips"
 arch=('x86_64' 'i686')
 url="https://github.com/bbqlinux/it87"
 license=('GPL')
-depends=('dkms')
+depends=('make' 'gcc' 'linux' 'dkms')
+makedepends=('git' 'linux-headers')
 provides=('it87')
 
 source=("$_pkgbase::git+https://github.com/bbqlinux/it87.git"
