@@ -1,7 +1,7 @@
 pkgbase = psychopy
 	pkgdesc = An experiment builder for neuroscience, psychology and psychophysics
 	pkgver = 3.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.psychopy.org
 	arch = any
 	license = GPL3

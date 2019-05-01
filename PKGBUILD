@@ -4,7 +4,7 @@
 
 pkgname=psychopy
 pkgver=3.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="An experiment builder for neuroscience, psychology and psychophysics"
 arch=('any')
 url="http://www.psychopy.org"
@@ -46,7 +46,7 @@ package() {
   # desktop files
   cd "$pkgname/app/Resources"
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$psychopy.png"
+  install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm644 "$pkgname.xml" "$pkgdir/usr/share/mime/packages/$pkgname.xml"
 }
 
