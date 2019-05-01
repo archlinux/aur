@@ -1,0 +1,17 @@
+pkgbase = emacs-libvterm-git
+	pkgdesc = Emacs libvterm integration
+	pkgver = r201.6adcedf
+	pkgrel = 1
+	url = https://github.com/akermu/emacs-libvterm
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL3
+	depends = emacs
+	provides = emacs-libvterm
+	conflicts = emacs-libvterm
+	source = git+https://github.com/akermu/emacs-libvterm.git
+	sha256sums = SKIP
+
+pkgname = emacs-libvterm-git
+
