@@ -6,7 +6,7 @@
 
 pkgname=chromium-ozone
 pkgver=73.0.3683.86
-pkgrel=2
+pkgrel=3
 _launcher_ver=6
 _release_sha=5fe448ea2471245e64adf805d93b358dd9478fa2
 _igalia_sha=9acc2112d690af6caf4c5b8d4152b5724a760639
@@ -50,7 +50,7 @@ sha256sums=('9ebb731576d25901cee5505f3458cf7780b0a39243743d7779f66514716bbfa3'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
             'fcb58a760e2dc6c4b2746c12832edd8dfe54dc37113e01b3b5bc108fbeec4c8a'
-            '5662e88f7bd1a36848d3ecf166e9a282b7fa3858bd1261d582c97654af0c1348'
+            '97b9662947460343dd208779e4bb33b3ad955edd4bc84c4fd87edd51e6064e86'
             '4ed0ac74fef8b63fa5dfd0de02a02cc4a7667898a90ec5365651645777934c14')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py

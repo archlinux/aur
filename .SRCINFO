@@ -1,7 +1,7 @@
 pkgbase = chromium-ozone
 	pkgdesc = Chromium built with patches for wayland support via Ozone
 	pkgver = 73.0.3683.86
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.chromium.org/Home
 	install = chromium.install
 	arch = x86_64
@@ -79,7 +79,7 @@ pkgbase = chromium-ozone
 	sha256sums = d081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b
 	sha256sums = 5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3
 	sha256sums = fcb58a760e2dc6c4b2746c12832edd8dfe54dc37113e01b3b5bc108fbeec4c8a
-	sha256sums = 5662e88f7bd1a36848d3ecf166e9a282b7fa3858bd1261d582c97654af0c1348
+	sha256sums = 97b9662947460343dd208779e4bb33b3ad955edd4bc84c4fd87edd51e6064e86
 	sha256sums = 4ed0ac74fef8b63fa5dfd0de02a02cc4a7667898a90ec5365651645777934c14
 
 pkgname = chromium-ozone
