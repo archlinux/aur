@@ -1,25 +1,28 @@
-# Maintainer: Joshua Leahy <jleahy@gmail.com>
+# Maintainer: Andrew Steinke <rkcf@rkcf.me>
+# Contributor: Joshua Leahy <jleahy@gmail.com>
 
 pkgname=python-freetype-py
-pkgver=1.2.1
+_pkgname=freetype-py
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="FreeType Python bindings"
 arch=('any')
 url="https://github.com/rougier/freetype-py/"
 license=('BSD')
-groups=()
 depends=('python' 'freetype2')
-makedepends=('python-setuptools')
-options=(!emptydirs)
-install=
-source=("https://github.com/rougier/freetype-py/archive/${pkgver}.tar.gz")
-sha1sums=('ab2a8c09e1f34aa262f3a5bdcce2d692bc086155')
+makedepends=('python-setuptools' 'python-setuptools-scm')
+source=("https://files.pythonhosted.org/packages/source/f/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha1sums=('3849229fe378526542edc52dff5b55bdb240fc38')
+
+build() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py build
+}
 
 package() {
-  cd "$srcdir/freetype-py-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname"
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py install --root="$pkgdir/" --skip-build --optimize=1
+  install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et ft=sh:
