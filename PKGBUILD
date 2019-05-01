@@ -1,13 +1,14 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=advancedgenieeditor-git
-pkgver=r688.cbcc581
+pkgver=r692.1fc9098
 pkgrel=1
+_abiver=2
 pkgdesc='A program for editing data of genie files.'
 arch=('x86_64' 'i686')
 url='http://aok.heavengames.com/blacksmith/showfile.php?fileid=11002'
 license=('GPL3')
-depends=('genieutils-git' 'sfml' 'wxgtk2')
+depends=("genieutils-git>=${_abiver}" 'sfml' 'wxgtk2')
 makedepends=('git')
 conflicts=(advancedgenieeditor)
 provides=(advancedgenieeditor)
