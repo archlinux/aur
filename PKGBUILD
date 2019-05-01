@@ -1,6 +1,6 @@
 # Maintainer: Joseph Lansdowne <J49137@gmail.com>
 pkgname=jsession
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Simple X session manager"
 arch=(any)
@@ -9,7 +9,7 @@ license=(BSD)
 depends=(bash grep dbus run-parts)
 backup=(etc/jsession/conf etc/jsession/init)
 source=(http://ikn.org.uk/files/desktop/$pkgname/$pkgname-$pkgver.tar.gz)
-sha1sums=(97eec895dd25a46055723ff4d7d2bf86065b74b3)
+sha1sums=('ebb4e26e1ac7146b2c5c2f313427155debb2bd33')
 
 build () {
     cd "$srcdir/$pkgname-$pkgver"
