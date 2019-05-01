@@ -1,0 +1,24 @@
+pkgbase = python2-fluidfft-hg
+	pkgdesc = FluidDyn project | FluidFFT | Common API for Fast Fourier Transforms
+	pkgver = 0.2.7.r468.5621e335733d
+	pkgrel = 1
+	url = https://bitbucket.org/fluiddyn/fluidfft
+	arch = any
+	license = custom:"CeCILL"
+	makedepends = cython2
+	makedepends = mercurial
+	makedepends = python2-setuptools
+	makedepends = python2-mako
+	depends = python2
+	depends = python2-fluiddyn
+	depends = python2-pyfftw
+	optdepends = fftw-mpi: parallelized FFT
+	optdepends = openmpi: parallelized FFT
+	optdepends = python2-mpi4py: parallelized FFT
+	optdepends = python2-pythran: optimized operators
+	provides = python2-fluidfft
+	source = hg+https://bitbucket.org/fluiddyn/fluidfft
+	sha256sums = SKIP
+
+pkgname = python2-fluidfft-hg
+
