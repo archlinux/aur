@@ -1,6 +1,6 @@
 pkgname=rippled
 pkgrel=1
-pkgver=1.2.2
+pkgver=1.2.4
 pkgdesc="Ripple peer-to-peer network daemon"
 arch=('x86_64')
 url="https://github.com/ripple/rippled"
@@ -9,7 +9,7 @@ backup=("etc/opt/ripple/rippled.cfg" "etc/opt/ripple/validators.txt")
 depends=('protobuf' 'boost-libs<1.69')
 makedepends=('git' 'cmake' 'boost<1.69' 'clang' 'doxygen')
 source=("https://github.com/ripple/rippled/archive/$pkgver.zip")
-sha256sums=('3e686061ee1821f417ff8e2afa6b036454a39e8a73435b70ffa89a320c83f11b')
+sha256sums=('bd5300774eae731f1863ca06688bf06d4499e231531b2bcda01aa1f488faaafc')
 
 build() {
 	cmake -Dtarget=clang.release.unity -Dstatic=OFF "$srcdir/$pkgname-$pkgver"
