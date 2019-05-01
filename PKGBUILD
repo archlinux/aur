@@ -2,7 +2,7 @@
 # Contributor: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=qgroundcontrol-git
 pkgver=r14118.0871b019d
-pkgrel=2
+pkgrel=3
 pkgdesc="Micro air vehicle ground control station."
 arch=('x86_64')
 url="http://qgroundcontrol.org/"
@@ -31,6 +31,7 @@ depends=('bzip2'
 		 'sdl2'
 		 'xz'
 		 'zlib'
+		 'icu'
 		 'qt5-speech'
 		 'qt5-multimedia'
 		 'qt5-serialport'
