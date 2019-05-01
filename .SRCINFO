@@ -1,7 +1,7 @@
 pkgbase = archisomydrive
 	pkgdesc = GUI utility to copy an ISO file to a USB disk.
 	pkgver = 1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/daltomi/ArchIsoMyDrive
 	arch = x86_64
 	license = GPL3
