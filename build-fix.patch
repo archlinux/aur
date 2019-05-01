@@ -1,0 +1,21 @@
+diff -wbBur FreeMat-4.2-Source/CMakeLists.txt FreeMat-4.2-Source.q/CMakeLists.txt
+--- FreeMat-4.2-Source/CMakeLists.txt	2013-07-28 01:27:12.000000000 +0400
++++ FreeMat-4.2-Source.q/CMakeLists.txt	2014-05-29 21:13:35.263893395 +0400
+@@ -250,17 +250,6 @@
+ ######################################################################
+ OPTION(USE_LLVM "Build with LLVM support?" ON)
+ 
+-FIND_PACKAGE(LLVM)
+-FIND_PACKAGE(CLANG)
+-
+-IF (LLVM_FOUND AND CLANG_FOUND)
+-  add_definitions(-DHAVE_LLVM)
+-  include_directories(${LLVM_INCLUDE_DIRS})
+-  link_directories(${LLVM_LIBRARY_DIRS})
+-  llvm_map_components_to_libraries(REQ_LLVM_LIBRARIES jit interpreter nativecodegen asmparser bitreader bitwriter codegen ipo linker selectiondag instrumentation)
+-  set(OPTIONAL_LIBS ${OPTIONAL_LIBS} ${CLANG_LIBRARIES} ${REQ_LLVM_LIBRARIES})
+-ENDIF()
+-
+ ##############################################################################
+ #Extra libraries
+ IF(NOT WIN32)

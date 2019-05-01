@@ -1,0 +1,138 @@
+Description: Remove qwebkit dependencies.
+ This is bad patch, because it disables the functionality
+ of help-menu. But it can only be fixed, when FreeMat will
+ be ported on Qt5. Qt4-Webkit will be removed soon, so we
+ do not have any choice.
+Author: Anton Gladky <gladk@debian.org>
+Last-Update: 2016-01-22
+
+Index: FreeMat-4.2-Source/libs/libCore/helpwidget.cpp
+===================================================================
+--- FreeMat-4.2-Source.orig/libs/libCore/helpwidget.cpp
++++ FreeMat-4.2-Source/libs/libCore/helpwidget.cpp
+@@ -85,7 +85,6 @@ void HelpWindow::activateModule(QListWid
+   QRegExp modname_pattern("^\\s*(\\b\\w+\\b)\\s*\\((\\b\\w+\\b)\\)");
+   if (modname_pattern.indexIn(name_and_section) < 0)
+     return;
+-  tb->load(QUrl::fromLocalFile(m_initial+"/"+modname_pattern.cap(2) + "_" + modname_pattern.cap(1)+".html"));
+ }
+ 
+ void HelpWindow::activateModuleSearch(QListWidgetItem* item) {
+@@ -93,11 +92,6 @@ void HelpWindow::activateModuleSearch(QL
+   QRegExp modname_pattern("^\\s*(\\b\\w+\\b)\\s*\\((\\b\\w+\\b)\\)");
+   if (modname_pattern.indexIn(name_and_section) < 0)
+     return;
+-  tb->load(QUrl::fromLocalFile(m_initial+"/"+modname_pattern.cap(2) + "_" + modname_pattern.cap(1)+".html"));
+-
+-  /* Highlight search text*/
+-  if (!searchString.isEmpty())
+-    tb->findText(searchString,QWebPage::HighlightAllOccurrences);
+ }
+ 
+ void HelpWindow::activateModule(QTreeWidgetItem* item, int) {
+@@ -106,7 +100,6 @@ void HelpWindow::activateModule(QTreeWid
+   if (modname.indexIn(fulltext) < 0)
+     return;
+   QString module(modname.cap(1).toLower());
+-  tb->load(QUrl::fromLocalFile(m_initial+"/"+item->text(1)+"_"+module+".html"));
+ }
+ 
+ void HelpWindow::helpText(QString fulltext) {
+@@ -122,7 +115,6 @@ void HelpWindow::helpText(QString fullte
+   QRegExp modname_pattern("^\\s*(\\b\\w+\\b)\\s*\\((\\b\\w+\\b)\\)");
+   if (modname_pattern.indexIn(name_and_section) < 0)
+     return;
+-  tb->load(QUrl::fromLocalFile(m_initial+"/"+modname_pattern.cap(2) + "_" + modname_pattern.cap(1)+".html"));
+   m_helpwidget->m_flist->setCurrentItem(item);
+ }
+ 
+@@ -156,9 +148,6 @@ HelpWindow::HelpWindow(QString url) {
+   setWindowIcon(QPixmap(":/images/freemat_help_small_mod_64.png"));
+   setWindowTitle(QString(Interpreter::getVersionString()) + " Online Help");
+   m_initial = url;
+-  tb = new QWebView(this);
+-  tb->load(QUrl::fromLocalFile(m_initial+"/index.html"));
+-  setCentralWidget(tb);
+   m_helpwidget = new HelpWidget(url,this);
+   addDockWidget(Qt::LeftDockWidgetArea,m_helpwidget);
+   createActions();
+@@ -196,29 +185,23 @@ void HelpWindow::createActions() {
+ 
+   zoominAct = new QAction(QIcon(":/images/zoomin.png"),"Zoom &In",this);
+   zoominAct->setShortcut(Qt::Key_Plus | Qt::CTRL); 
+-  connect(zoominAct,SIGNAL(triggered()),tb,SLOT(zoomIn()));
+   zoomoutAct = new QAction(QIcon(":/images/zoomout.png"),"Zoom &Out",this);
+   zoomoutAct->setShortcut(Qt::Key_Minus | Qt::CTRL); 
+-  connect(zoomoutAct,SIGNAL(triggered()),tb,SLOT(zoomOut()));
+   copyAct = new QAction(QIcon(":/images/copy.png"),"&Copy Selection",this);
+   stemp.clear();
+   stemp.push_back(QKeySequence(Qt::Key_C | Qt::CTRL));
+   stemp.push_back(QKeySequence(Qt::Key_Insert | Qt::CTRL));
+   copyAct->setShortcuts(stemp);
+ 
+-  connect(copyAct,SIGNAL(triggered()),tb,SLOT(copy()));
+   exitAct = new QAction(QIcon(":/images/quit.png"),"&Exit Help",this);
+   exitAct->setShortcut(Qt::Key_Q | Qt::CTRL); 
+   connect(exitAct,SIGNAL(triggered()),this,SLOT(close()));
+   forwardAct = new QAction(QIcon(":/images/next.png"),"&Next",this);
+   forwardAct->setShortcut(Qt::Key_Right | Qt::Key_Alt); 
+-  connect(forwardAct,SIGNAL(triggered()),tb,SLOT(forward()));
+   backAct = new QAction(QIcon(":/images/previous.png"),"&Previous",this);
+   backAct->setShortcut(Qt::Key_Left | Qt::Key_Alt); 
+-  connect(backAct,SIGNAL(triggered()),tb,SLOT(back()));
+   homeAct = new QAction(QIcon(":/images/home.png"),"&Home",this);
+   homeAct->setShortcut(Qt::Key_Home | Qt::CTRL); 
+-  connect(homeAct,SIGNAL(triggered()),tb,SLOT(home()));
+   executeSelectionAct = new QAction(QIcon(":/images/player_playselection.png"),"&Execute Selection",this);
+   executeSelectionAct->setShortcut(Qt::Key_F9); 
+   connect(executeSelectionAct,SIGNAL(triggered()),this,SLOT(execSelected()));
+@@ -226,9 +209,7 @@ void HelpWindow::createActions() {
+   helpOnSelectionAct->setShortcut(Qt::Key_F2);
+   connect(helpOnSelectionAct,SIGNAL(triggered()),this,SLOT(helpOnSelection()));
+   
+-  connect(tb,SIGNAL(forwardAvailable(bool)),forwardAct,SLOT(setEnabled(bool)));
+   forwardAct->setEnabled(false);
+-  connect(tb,SIGNAL(backwardAvailable(bool)),backAct,SLOT(setEnabled(bool)));
+   backAct->setEnabled(false);
+ }
+ 
+@@ -267,19 +248,9 @@ void HelpWindow::createStatusBar() {
+ }
+ 
+ void HelpWindow::execSelected() {
+-  QString executeText = tb->selectedText();
+-  executeText.remove("--> ");
+-  executeText.remove("-> ");
+-  executeText = executeText.trimmed();
+-  if (!executeText.isEmpty())
+-    emit EvaluateText(executeText + "\n");
+ }
+ 
+ void HelpWindow::helpOnSelection() {
+-  QString executeText = tb->selectedText();
+-  executeText = executeText.trimmed();
+-  if (!executeText.isEmpty())
+-    helpText(executeText);
+ }
+ 
+ 
+Index: FreeMat-4.2-Source/libs/libCore/helpwidget.hpp
+===================================================================
+--- FreeMat-4.2-Source.orig/libs/libCore/helpwidget.hpp
++++ FreeMat-4.2-Source/libs/libCore/helpwidget.hpp
+@@ -23,7 +23,6 @@
+ #include <QObject>
+ #include <QMainWindow>
+ #include <QDockWidget>
+-#include <QWebView>
+ #include <QMenu>
+ #include <QToolBar>
+ #include <QAction>
+@@ -80,7 +79,6 @@ private:
+   void readSettings();
+   void closeEvent(QCloseEvent* ce);
+ 
+-  QWebView *tb;
+   HelpWidget *m_helpwidget;
+   QMenu *fileMenu, *editMenu, *goMenu, *helpMenu;
+   QToolBar *editToolBar;

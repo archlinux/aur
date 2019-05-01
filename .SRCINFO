@@ -1,0 +1,28 @@
+pkgbase = freemat
+	pkgdesc = A free environment for rapid engineering, scientific prototyping and data processing
+	pkgver = 4.2
+	pkgrel = 9
+	url = http://freemat.sourceforge.net
+	install = freemat.install
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = python2
+	makedepends = suitesparse
+	makedepends = doxygen
+	makedepends = gcc-fortran
+	depends = arpack
+	depends = fftw
+	depends = glu
+	depends = portaudio
+	depends = qt4
+	depends = libffi
+	source = https://downloads.sourceforge.net/project/freemat/FreeMat4/FreeMat-4.2-Source.tar.gz
+	source = build-fix.patch
+	source = remove-qwebkit.patch
+	md5sums = ace147e49273ae935d363da8e2a56d4d
+	md5sums = 042f43dcae863e3fc4c9a10b46761344
+	md5sums = 5e37816fafe46a79cc157549f5bec554
+
+pkgname = freemat
+
