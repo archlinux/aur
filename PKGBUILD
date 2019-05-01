@@ -4,7 +4,7 @@
 
 _pkgname=etcher
 pkgname=etcher-git
-pkgver=1.5.31.r0.gf40c0f6b
+pkgver=1.5.33.r0.g1145cbc7
 pkgrel=1
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily. (git version)'
 arch=(x86_64)
