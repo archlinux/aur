@@ -6,7 +6,7 @@
 pkgbase='transgui'
 pkgname=("${pkgbase}-qt" "${pkgbase}-gtk")
 pkgver='5.16.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A feature rich cross platform Transmission BitTorrent client. Faster and has more functionality than the built-in web GUI.'
 arch=('i686' 'x86_64')
 url="https://github.com/transmission-remote-gui/${pkgbase}"
@@ -23,7 +23,7 @@ prepare() {
 }
 
 package_transgui-qt() {
-  depends=('qt4pas')
+  depends=('qt5pas')
   conflicts=('transgui-gtk2-git' 'transgui-qt4-git' 'transmission-remote-gui-qt4'
 	    'transmission-remote-gui-gtk2' 'transmission-remote-gui-bin' 'transgui-gtk')
 
@@ -32,7 +32,7 @@ package_transgui-qt() {
 
   lazbuild "${pkgbase}.lpi" \
   --lazarusdir="/usr/lib/lazarus" \
-  --widgetset="qt" \
+  --widgetset="qt5" \
   --primary-config-path=../build-qt
 
   install -Dm755 "units/${pkgbase}" "${pkgdir}/usr/bin/${pkgbase}"
@@ -47,7 +47,7 @@ package_transgui-qt() {
 }
 
 package_transgui-gtk() {
-  depends=('gtk2')
+  depends=('gtk')
   conflicts=('transgui-gtk2-git' 'transgui-qt4-git' 'transmission-remote-gui-qt4'
 	    'transmission-remote-gui-gtk2' 'transmission-remote-gui-bin' 'transgui-qt')
 
@@ -56,7 +56,7 @@ package_transgui-gtk() {
 
   lazbuild "${pkgbase}.lpi" \
   --lazarusdir="/usr/lib/lazarus" \
-  --widgetset="gtk2" \
+  --widgetset="gtk3" \
   --primary-config-path=../build-gtk
 
   install -Dm755 "units/${pkgbase}" "${pkgdir}/usr/bin/${pkgbase}"
