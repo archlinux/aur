@@ -1,0 +1,15 @@
+pkgbase = qmpdclient
+	pkgdesc = A Qt4 client for MPD
+	pkgver = 1.2.2
+	pkgrel = 7
+	url = https://bitcheese.net/wiki/QMPDClient
+	changelog = qmpdclient.changelog
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = qt4
+	source = https://dump.bitcheese.net/files/qmpdclient-1.2.2.tar.bz2
+	sha256sums = ed65705eaae8fb10fdce34ce20e010757a87423c2874479e1466e4368a866289
+
+pkgname = qmpdclient
+
