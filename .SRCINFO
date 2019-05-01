@@ -1,7 +1,7 @@
 pkgbase = apache-drill
 	pkgdesc = Schema-free SQL Query Engine for Hadoop, NoSQL and Cloud Storage
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://drill.apache.org
 	arch = any
 	license = Apache
