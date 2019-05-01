@@ -5,7 +5,7 @@ pkgname=cockroachdb-bin
 conflicts=('cockroachdb')
 provides=('cockroachdb')
 pkgver=19.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source, survivable, strongly consistent, scale-out SQL database"
 arch=('x86_64')
 url="https://www.cockroachlabs.com/"
@@ -39,9 +39,11 @@ sha256sums=('4ddeca598404f6e99ecc3528c3af409184a78849552c85aa9d8d85aa72e2c994'
             'SKIP')
 
 build() {
-    # generate bash completion
+    # generate shell completion
     "${srcdir}/cockroach-v${pkgver}.linux-amd64/cockroach" \
-        gen autocomplete --out "${srcdir}/cockroach.bash"
+        gen autocomplete bash --out "${srcdir}/cockroach.bash"
+    "${srcdir}/cockroach-v${pkgver}.linux-amd64/cockroach" \
+        gen autocomplete zsh --out "${srcdir}/cockroach.zsh"
 
     # generate man pages
     "${srcdir}/cockroach-v${pkgver}.linux-amd64/cockroach" \
@@ -65,8 +67,9 @@ package() {
   install -d "${pkgdir}/usr/share/man/man1/"
   install -m644 "${srcdir}"/man/*.1 "${pkgdir}/usr/share/man/man1/"
 
-  # bash completion
+  # shell completion
   install -Dm644 cockroach.bash "${pkgdir}/usr/share/bash-completion/completions/cockroach"
+  install -Dm644 cockroach.zsh  "${pkgdir}/usr/share/zsh/site-functions/_cockroach"
 
   # licenses
   install -Dm644 "${srcdir}/LICENSE"        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
