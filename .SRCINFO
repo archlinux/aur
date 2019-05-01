@@ -1,7 +1,7 @@
 pkgbase = python2-fluiddyn-hg
 	pkgdesc = FluidDyn project | Framework for studying fluid dynamics.
 	pkgver = 0.2.4.r406.ff507350df1f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bitbucket.org/fluiddyn/fluiddyn
 	arch = any
 	license = custom:"CeCILL-B"
