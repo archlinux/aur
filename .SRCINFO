@@ -1,6 +1,6 @@
 pkgbase = hipipe
 	pkgdesc = Super fast C++17 data transformation pipeline (with Python interface).
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 0
 	url = https://github.com/iterait/hipipe
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = hipipe
 	depends = python
 	depends = python-numpy
 	depends = range-v3
-	source = https://github.com/iterait/hipipe/archive/v0.6.0.tar.gz
-	sha512sums = 97758f39e0973d6c8c402d6980c253059652e0e2bd4b509852f8f7d2ca7ec8cbf80c07b0ae9ba759ffbba160bbe206fd05a494b8354bda1718132dcac6aecf66
+	source = https://github.com/iterait/hipipe/archive/v0.6.1.tar.gz
+	sha512sums = 7efa5bf09e2d16f481b94c475e2ad7b5bff8b2174c65c828f2439c1d0a29056b01e7237fd57469562fe758ef3177185379450ad0a0bca4b98d39a4e87c02c5a1
 
 pkgname = hipipe
 
