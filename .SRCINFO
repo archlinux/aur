@@ -1,13 +1,13 @@
 pkgbase = speculum
 	pkgdesc = Yet another mirror list optimization tool
-	pkgver = 1.4.4
+	pkgver = 1.4.5
 	pkgrel = 2
 	url = https://github.com/coNQP/speculum
 	arch = any
 	license = GPLv3
 	makedepends = git
 	depends = python
-	source = git+https://github.com/coNQP/speculum.git#tag=1.4.4
+	source = git+https://github.com/coNQP/speculum.git#tag=1.4.5
 	md5sums = SKIP
 
 pkgname = speculum
