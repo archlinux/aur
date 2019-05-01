@@ -78,7 +78,7 @@ LAUNCHER="$EVEDIR/Launcher"
 SETUPDIR="/opt/evesetup"
 WINEPATH="/usr/bin"
 
-source $SETUPDIR/lib/evelauncher.shlib 2>/dev/null || . $SETUPDIR/lib/evelauncher.shlib
+. $SETUPDIR/lib/evelauncher.shlib
 
 check_env
 check_wine
