@@ -5,13 +5,13 @@
 
 pkgname=qjoypad
 pkgver=4.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Program with a QT interface that converts gamepad/joystick events into key strokes and mouse actions in XWindows'
 arch=('i686' 'x86_64')
 url='https://github.com/panzi/qjoypad'
 license=('GPL')
-depends=('qt5-base' 'libxtst')
-makedepends=('qt5-tools' 'cmake' 'qt5-x11extras')
+depends=('qt5-base' 'libxtst' 'qt5-x11extras')
+makedepends=('qt5-tools' 'cmake')
 install=${pkgname}.install
 source=("https://github.com/panzi/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('1e8084db56dacdb863ca5e5e40f0d640')
