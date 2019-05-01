@@ -3,7 +3,7 @@
 pkgbase=archisomydrive
 pkgname=$pkgbase
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 _remotepkgrel=2
 _gitname=ArchIsoMyDrive
 _gittag="v${pkgver}"
