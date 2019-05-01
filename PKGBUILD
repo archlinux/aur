@@ -4,7 +4,7 @@
 
 pkgname=libolm
 _pkgname=olm
-pkgver=3.1.0
+pkgver=3.1.2
 pkgrel=1
 pkgdesc='An implementation of the Double Ratchet cryptographic ratchet in C++'
 arch=('x86_64' 'i686' 'armv7h')
@@ -13,7 +13,7 @@ license=('Apache')
 depends=('gcc-libs')
 makedepends=('cmake')
 source=("https://gitlab.matrix.org/matrix-org/$_pkgname/-/archive/$pkgver/$_pkgname-$pkgver.tar.bz2")
-sha512sums=('9ee234902889ecbb816ce3fa7f1de7e438a4dfdbd0f55112c44fec75482a4cbe6614e2c81ec2e685046337ac53a444cbb46fdb899f43026cd6cda3f00f1242d2')
+sha512sums=('3b2d18a36a3445e799adcda0fe026e22a05ad71ded29f27a6eb172d86e6914412b4745be5067e1818c8f2885e1715092101f4a7ab076d02f76c4b59302a5a910')
 
 prepare() {
   mkdir -p build
