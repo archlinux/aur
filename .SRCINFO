@@ -1,0 +1,14 @@
+pkgbase = ttf-air-americana
+	pkgdesc = A font by Tiago Sá inspired by the Air America logo.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://airamericana.i-am-tiago.com/
+	arch = any
+	license = custom:OFL
+	makedepends = unrar
+	noextract = ttf-air-americana.rar
+	source = ttf-air-americana.rar::http://airamericana.i-am-tiago.com/Air_Americana.rar
+	sha256sums = f76ddf6efb50ae7921cd63a3f632df3cb6e1a4b08c440f910764ad260641a28a
+
+pkgname = ttf-air-americana
+
