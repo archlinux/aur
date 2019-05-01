@@ -1,7 +1,7 @@
 # Maintainer: Katie Wolfe <katie@dnaf.moe>
 pkgname=igdm
 pkgver=2.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop application for Instagram DMs"
 arch=('x86_64' 'i686')
 url="https://github.com/ifedapoolarewaju/igdm"
