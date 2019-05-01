@@ -1,7 +1,7 @@
 # Maintainer: Marc Tiehuis <marctiehuis at gmail.com>
 
 pkgname=zig-git
-pkgver=0.4.0.r83.g1030cc97
+pkgver=0.4.0.r184.g40fe6afd
 pkgrel=1
 pkgdesc="a programming language prioritizing robustness, optimality, and clarity"
 arch=('i686' 'x86_64')
@@ -11,13 +11,12 @@ depends=('clang' 'llvm')
 makedepends=('cmake' 'git')
 provides=(zig)
 conflicts=(zig)
-source=("git://github.com/zig-lang/zig.git" 'force_dynamic_llvm.patch' 'no_stage2_artifacts.patch')
-md5sums=('SKIP' '9a935ede50ab8f1a789349fc3b760c1c' '84fdaa44cae56d85ee4604a95fa2ccd7')
+source=("git://github.com/zig-lang/zig.git" 'force_dynamic_llvm.patch')
+md5sums=('SKIP' '9a935ede50ab8f1a789349fc3b760c1c')
 
 prepare() {
     cd "$srcdir/$provides"
     patch -Np1 -i "$srcdir/force_dynamic_llvm.patch"
-    patch -Np1 -i "$srcdir/no_stage2_artifacts.patch"
 }
 
 pkgver() {
