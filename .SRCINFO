@@ -1,0 +1,18 @@
+pkgbase = ibus-qt
+	pkgdesc = IBus qt library and IBus qt input method plugin
+	pkgver = 1.3.3
+	pkgrel = 13
+	url = http://ibus.googlecode.com
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	depends = qt4
+	depends = ibus
+	depends = icu
+	source = git+https://github.com/ibus/ibus-qt.git#tag=1.3.3
+	md5sums = SKIP
+
+pkgname = ibus-qt
+
