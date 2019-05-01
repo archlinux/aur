@@ -6,7 +6,7 @@
 
 pkgname=suru-plus-pack-git
 pkgver=25
-pkgrel=3
+pkgrel=4
 pkgdesc="The complete collection of Suru++ icons themes, based on Sam Hewitt's Suru Icons"
 arch=('any')
 license=('GPL3')
@@ -45,16 +45,7 @@ package()
   find "${pkgdir}"/usr -type f -exec chmod 644 {} \;
   find "${pkgdir}"/usr -type d -exec chmod 755 {} \;
 
-  # Deleting unneeded files from Suru++ Dark icon
-  rm -r "$pkgdir"/usr/share/icons/Suru++-Dark/.git
-  rm -r "$pkgdir"/usr/share/icons/Suru++-Dark/.github
-  rm -r "$pkgdir"/usr/share/icons/Suru++-Dark/.gitattributes
-  rm -r "$pkgdir"/usr/share/icons/Suru++-Dark/.gitignore
-  rm -r "$pkgdir"/usr/share/icons/Suru++-Dark/*.md
-  rm -r "$pkgdir"/usr/share/icons/Suru++-Dark/*.svg
-  rm -r "$pkgdir"/usr/share/icons/Suru++-Dark/*.png
-
   # Deleting unneeded files from Suru++ Telinkrin icon
-  rm -r "$pkgdir"/usr/share/icons/Suru++-Telinkrin/.git
-  rm -r "$pkgdir"/usr/share/icons/Suru++-Telinkrin/*.md
+  rm -rf "$pkgdir"/usr/share/icons/Suru++-Telinkrin/.git
+  rm -rf "$pkgdir"/usr/share/icons/Suru++-Telinkrin/*.md
 }
