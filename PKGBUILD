@@ -5,7 +5,7 @@ _hgrepo=fluiddyn
 _hgver=0.2.4
 pkgname=python2-fluiddyn-hg
 pkgver=0.2.4.r406.ff507350df1f
-pkgrel=1
+pkgrel=2
 pkgdesc="FluidDyn project | Framework for studying fluid dynamics."
 arch=('any')
 url="https://bitbucket.org/${_hgproj}/${_hgrepo}"
@@ -19,7 +19,7 @@ optdepends=(
   'python2-pillow: Image I/O'
 )
 makedepends=('mercurial' 'python2-setuptools')
-provides=('python2-fluidsim-hg')
+provides=(python2-${_hgrepo})
 
 source=("hg+${url}")
 sha256sums=('SKIP')
