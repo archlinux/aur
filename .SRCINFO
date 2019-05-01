@@ -1,7 +1,7 @@
 pkgbase = libayatana-appindicator
 	pkgdesc = Ayatana Application Indicators Shared Library
 	pkgver = 0.5.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://ayatana-indicators.org
 	arch = x86_64
 	license = LGPL2.1
@@ -11,6 +11,7 @@ pkgbase = libayatana-appindicator
 	makedepends = dbus-glib
 	makedepends = gobject-introspection
 	makedepends = gtk-sharp-2
+	makedepends = perl-xml-libxml
 	makedepends = libayatana-indicator-gtk2
 	makedepends = libayatana-indicator-gtk3
 	makedepends = libdbusmenu-gtk2

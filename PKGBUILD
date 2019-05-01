@@ -2,12 +2,12 @@
 pkgbase=libayatana-appindicator
 pkgname=("${pkgbase}-gtk"{2,3} "${pkgbase}-sharp" "python2-${pkgbase}")
 pkgver=0.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Ayatana Application Indicators Shared Library'
 url='https://ayatana-indicators.org'
 arch=('x86_64')
 license=('LGPL2.1' 'LGPL3')
-makedepends=('mate-common' 'gtk-doc' 'dbus-glib' 'gobject-introspection' 'gtk-sharp-2'
+makedepends=('mate-common' 'gtk-doc' 'dbus-glib' 'gobject-introspection' 'gtk-sharp-2' 'perl-xml-libxml'
              'libayatana-indicator-gtk'{2,3} 'libdbusmenu-gtk'{2,3} 'mono' 'pygtk' 'vala' 'python2')
 options=('!emptydirs')
 source=(http://releases.ayatana-indicators.org/source/${pkgbase}/${pkgbase}-${pkgver}.tar.gz)
@@ -27,7 +27,7 @@ build() {
     ./autogen.sh --prefix=/usr \
       --enable-introspection \
       --enable-gtk-doc=no \
-      --disable-{scrollkeeper,tests,mono-test} \
+      --disable-{tests,mono-test} \
       --with-gtk=3
     make
   )
@@ -37,7 +37,7 @@ build() {
     ./autogen.sh --prefix=/usr \
       --enable-introspection \
       --enable-gtk-doc \
-      --disable-{scrollkeeper,tests,mono-test} \
+      --disable-{tests,mono-test} \
       --with-gtk=2
     make
   )
@@ -47,7 +47,7 @@ build() {
     ./autogen.sh --prefix=/usr \
       --enable-introspection \
       --enable-gtk-doc \
-      --disable-{scrollkeeper,tests,mono-test} \
+      --disable-{tests,mono-test} \
       --with-gtk=2
     make
   )
