@@ -2,16 +2,17 @@
 # Ex-Maintainer: Max Falk <gmdfalk at gmail dot com>
 
 pkgname=rocketchat-server
-pkgver=0.74.3
+pkgver=1.0.2
 pkgrel=1
-pkgdesc="An open source web chat platform"
+pkgdesc="The Ultimate Open Source WebChat Platform"
 arch=("any")
 url="https://rocket.chat"
 license=("MIT")
-depends=("npm" "nodejs" "mongodb" "graphicsmagick" "curl" "python2")
+depends=("npm" "nodejs" "mongodb" "graphicsmagick" "curl" "python2" "gcc")
 makedepends=()
 optdepends=()
 backup=("etc/rocketchat/${pkgname}.conf")
+CFLAGS=-std=gnu11
 
 install="${pkgname}.install"
 source=("rocketchat-${pkgver}::https://releases.rocket.chat/latest/download"
@@ -19,7 +20,7 @@ source=("rocketchat-${pkgver}::https://releases.rocket.chat/latest/download"
     "rocketchat-server.conf"
     "rocketchat-user.conf"
 "rocketchat.service")
-sha512sums=('1a4abcc9c377680377174aec43a2e7f31f580045715524c1b0fa5f38bc092a64bef00bfb6ff4d13b447246c914b5b2d50428549ec236d106d70fc9b62c057d29'
+sha512sums=('00e737402837f22342fe1b6612fefc285065b83e198f0d519f96f7a7c04929335e63985218e2bc6d8622ddbd328ed2d3f09229d16d24cf8a0337fae858f1b58e'
     '6700fae043f59881c0c8821db176a8d9cbbf7f047bd48750dbcd7abd7c531831436f910a28745b40d4d2fcbb7d2081b5512a5ee23ea6355bb065fde3b0672edc'
     '4ff8899a47612a81f73c1c6449fb30a7ddfb0b199756db7f73e0a3078cf818b88e481fd828296b148a348d137ae529ce591d6c2bd6b57ae9278188e715086b59'
     '0086f72f16a594116586d4b6783b104f7bba779e4f8e31e5988c7fa67e1c7d9fc95215d0a04c4f24c72b4183774a9768a29b05c828990125dd4a3379a69aa648'
@@ -28,11 +29,11 @@ sha512sums=('1a4abcc9c377680377174aec43a2e7f31f580045715524c1b0fa5f38bc092a64bef
 package() {
     install -dm755 "${pkgdir}/usr/share/${pkgname}"
     cp -dr --no-preserve=ownership ${srcdir}/bundle/* "${pkgdir}/usr/share/${pkgname}"
-    
+
     pushd "${pkgdir}/usr/share/${pkgname}/programs/server"
     npm install --cache "${srcdir}/npm-cache"
     popd
-    
+
     install -Dm644 ${pkgname}.conf "${pkgdir}/etc/rocketchat/${pkgname}.conf"
     install -Dm644 rocketchat.service "${pkgdir}/usr/lib/systemd/system/rocketchat.service"
     install -Dm644 rocketchat-user.conf "${pkgdir}/usr/lib/sysusers.d/rocketchat.conf"
