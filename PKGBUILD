@@ -1,0 +1,45 @@
+# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Contributor: pfm <nl081130@yahoo.de>
+
+pkgname=gebabbel
+pkgver=0.4
+pkgrel=9
+pkgdesc="GUI for gpsbabel"
+arch=('x86_64')
+url="http://gebabbel.sourceforge.net/"
+license=('GPL2')
+depends=('qt4' 'gpsbabel')
+changelog=$pkgname.changelog
+source=(https://sources.archlinux.org/other/$pkgname/Gebabbel-$pkgver-Src.tar.gz
+        http://$pkgname.sourceforge.net/GebabbelLogo.png
+        $pkgname.desktop
+        $pkgname-$pkgver.patch)
+sha512sums=('96750cf1d3e627b8071d1693c7b31a2fb056f533c6e9de09e4de3550d7a923388c6b8f9634695d19708fd509ec9da537a0b1d477554d7249204754b55dd684f2'
+            'e26cb843f7c92eb603ff950803fb99f93b1ca297af55d14ef7b3ec699f0ae44c85738126d00abb3bcfbf5f6e4d5dcf2c3e4f54a1821efbe7e6ff42b88c1c2e71'
+            '425aa6c586968f4b20f528e623686e87ea76b6d81324277a1e964138d7327de75a2e2fa237168bd5c8fa082443decf4e50a241df264ccd9eeb78ed5831f6615a'
+            '71da26a82ea8f94b1e274ffb57b8629956c1fae19d9d6056d22060aa64e3249530c4f8c132ad5a00f595ac3598ce360557059fcfa1fe4bcb4af68c07fce6e170')
+
+build() {
+  cd ${srcdir}/Gebabbel-$pkgver
+
+  patch -Np0 -i ${srcdir}/$pkgname-$pkgver.patch
+
+  qmake-qt4
+  make
+}
+
+package() {
+  cd ${srcdir}/Gebabbel-$pkgver
+
+  install -D -m755 ${srcdir}/Gebabbel-$pkgver/bin/$pkgname \
+    ${pkgdir}/usr/bin/$pkgname
+  install -D -m644 ${srcdir}/GebabbelLogo.png \
+    ${pkgdir}/usr/share/pixmaps/$pkgname.png 
+  install -D -m644 ${srcdir}/$pkgname.desktop \
+    ${pkgdir}/usr/share/applications/$pkgname.desktop
+
+  #localization
+  install -d ${pkgdir}/usr/share/$pkgname/locale
+  install -t ${pkgdir}/usr/share/$pkgname/locale/ \
+    ${srcdir}/Gebabbel-$pkgver/binincludes/translations/*.qm
+}

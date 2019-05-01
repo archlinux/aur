@@ -1,0 +1,7 @@
+--- src/MyMainWindow.cpp	2007-09-18 22:26:49.000000000 +0200
++++ src/MyMainWindow.cpp	2011-01-30 13:23:02.000000000 +0100
+@@ -221,3 +221,3 @@
+ 		MainToolBar = addToolBar( tr( "Main Toolbar" ) );
+-		MainToolBar->setIconSize( QSize::QSize( 16, 16 ) );
++		MainToolBar->setIconSize( QSize( 16, 16 ) );
+ 		MainToolBar->setAllowedAreas( Qt::TopToolBarArea );

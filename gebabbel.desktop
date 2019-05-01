@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Gebabbel
+Exec=gebabbel
+Icon=gebabbel
+Type=Application
+Comment=GUI for gpsbabel
+Categories=Utility;Education;
