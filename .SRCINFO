@@ -9,6 +9,7 @@ pkgbase = mingw-w64-mesa
 	makedepends = scons
 	makedepends = python2-mako
 	depends = mingw-w64-dlfcn
+	depends = mingw-w64-llvm
 	options = staticlibs
 	options = !strip
 	options = !buildflags
