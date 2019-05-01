@@ -7,7 +7,7 @@ pkgver=0.3.1
 pkgrel=1
 pkgdesc="FluidDyn project | Framework for studying fluid dynamics."
 arch=('any')
-url="https://${_name}/readthedocs.io"
+url="https://${_name}.readthedocs.io"
 license=('custom:"CeCILL-B"')
 depends=(
   'python' 'python-numpy' 'python-matplotlib' 'python-h5py' 'python-psutil'
