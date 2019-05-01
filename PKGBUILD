@@ -49,8 +49,6 @@ sha256sums=('1c8b435a79e21b9832c7a8a88c44e70bc80434ca3719853d2b1092ffbbbbff7d'
 
 prepare() {
 	export GO111MODULE=on
-	go mod download
-	go mod verify
 	mv -Tv "$srcdir/caddy-cgi-$_cgiver" "$srcdir/$_pkgbase-$pkgver/caddy-cgi"
 	cd "$srcdir/$_pkgbase-$pkgver"
 	patch -p0 -i "$srcdir/plugins.patch"
@@ -61,6 +59,8 @@ prepare() {
 	then
 		patch -p1 -i "$srcdir/noquic_aesni.patch"
 	fi
+	go mod download
+	go mod verify
 }
 
 build() {
