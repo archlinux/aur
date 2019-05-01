@@ -1,8 +1,9 @@
 pkgbase = criptext-bin
 	pkgdesc = Official Criptext encrypted email client
 	pkgver = 0.17.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://criptext.com/
+	install = criptext-bin.install
 	arch = x86_64
 	license = GPL2
 	provides = criptext-bin
