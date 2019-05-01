@@ -1,6 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=paymo-widget
-pkgver=6.5.1
+pkgver=6.6.13
 pkgrel=1
 pkgdesc="An app that allows you to track work time via a stopwatch or manually add bulk time for paymo"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=()
 makedepends=()
 optdepends=()
 source=("paymo-widget-${pkgver}-x86_64.AppImage::https://www.paymoapp.com/widget?os=linux")
-sha512sums=('4b8ab52c26b6d4718e9181d9e4fab1a0f1bf1f47bda900bafcfbe527a4235ab82546d431b492c808344c1b0801b0763a8ebd68d610c5d631dc7b36c173f77676')
+sha512sums=('47d17cb6e4bfed255f52f2381ae5eb68f27ba0fd023ff1da92ff23d8619c2cc8996e7a09d4334d441c6915f715fd1996efeb4c4c6280bb4d550a66754ba99fd0')
 
 prepare() {
   chmod +x "$srcdir"/paymo-widget-${pkgver}-x86_64.AppImage
@@ -23,7 +23,7 @@ package() {
   mkdir -p "$pkgdir"/opt/$pkgname
   mkdir -p "$pkgdir"/usr/bin
   cp -r usr/share "$pkgdir"/usr/share
-  cp -r app/* "$pkgdir"/opt/$pkgname
+  cp -r *.so paymo-widget resources locales *.dat *.bin *.pak "$pkgdir"/opt/$pkgname
   install -Dm644 paymo-widget.desktop "$pkgdir"/usr/share/applications/$pkname.desktop
   ln -s /opt/$pkgname/paymo-widget "$pkgdir"/usr/bin/$pkgname
 
@@ -32,4 +32,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
