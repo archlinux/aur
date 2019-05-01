@@ -1,7 +1,7 @@
 # Mantainer: 32th System
 
 pkgname=dosbox-x-sdl2
-pkgver=0.82.17
+pkgver=0.82.18
 pkgrel=1
 pkgdesc="x86 emulator with builtin DOS, with patches and more features"
 arch=(i686 x86_64)
@@ -31,6 +31,6 @@ package() {
 	"$pkgdir/usr/share/applications/dosbox-x.desktop"
 }
 
-md5sums=('39b8ffbdeb5e731ac37d98b0f978811a'
+md5sums=('b33dddf87a777ab26d3b04953275f784'
          '3dcfe45c5ed0433316eaea51e3620b36'
 	 '0805320c602969deaa682915308e9c21')
