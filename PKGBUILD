@@ -16,7 +16,7 @@ fi
 
 pkgname=caddy-with-cgi
 _pkgbase=caddy
-pkgver=0.11.5
+pkgver=1.0.0
 _cgiver=1.10
 pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS, with caddy-cgi plugin and gcc-go support'
@@ -37,7 +37,7 @@ source=("https://$_gopkgname/archive/v$pkgver/$_pkgbase-$pkgver.tar.gz"
 	'caddy.conf'
 	'noquic_aesni.patch'
 	'plugins.patch')
-sha256sums=('ab2dc210bc7089fa7d041e702663e592b480945aa99f14b348090091103b7ec5'
+sha256sums=('1c8b435a79e21b9832c7a8a88c44e70bc80434ca3719853d2b1092ffbbbbff7d'
 	'4cb13ce2862dbd00e4a97342d5f20bc759e2c1b7983f866aa4b6d421df65249b'
 	'e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85'
 	'6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
@@ -45,15 +45,14 @@ sha256sums=('ab2dc210bc7089fa7d041e702663e592b480945aa99f14b348090091103b7ec5'
 	'bd4d912d083be176727882ccc1bbe577a27cc160db09238e5edc05ba458aebce'
 	'80520b80ccabf077a3269f6a1bf55faa3811ef5adce115131b35ef2044d37b64'
 	'f3f9fa975a174928d727f3040fa28e2fbd073b1f4ebd3a68fa43b0aebb90eb64'
-	'c8d56b2295e04720ae8fe9493a7931bb2dba5c568fbcae469887ac143bd6b934')
+	'19aa631a55d74aba2c79749c9ae67d7465d1428a072b303aedf1194190778347')
 
 prepare() {
-	export GOPATH="$srcdir/build"
-	rm -rf "$GOPATH/src/$gopkgname" "$GOPATH/src/$_cgipkgname"
-	mkdir --parents `dirname "$GOPATH/src/$_gopkgname"` `dirname "$GOPATH/src/$_cgipkgname"`
-	mv -Tv "$srcdir/$_pkgbase-$pkgver" "$GOPATH/src/$_gopkgname"
-	mv -Tv "$srcdir/caddy-cgi-$_cgiver" "$GOPATH/src/$_cgipkgname"
-	cd "$GOPATH/src/$_gopkgname"
+	export GO111MODULE=on
+	go mod download
+	go mod verify
+	mv -Tv "$srcdir/caddy-cgi-$_cgiver" "$srcdir/$_pkgbase-$pkgver/caddy-cgi"
+	cd "$srcdir/$_pkgbase-$pkgver"
 	patch -p0 -i "$srcdir/plugins.patch"
 	# fix rewrite: rewrite the URI instead of just the path
 	# https://github.com/mholt/caddy/issues/2129
@@ -65,7 +64,8 @@ prepare() {
 }
 
 build() {
-	export GOPATH="$srcdir/build"
+	export GO111MODULE=on
+	cd "$srcdir/$_pkgbase-$pkgver/caddy"
 	go build -v -o $srcdir/caddy $GOFLAGS $_gopkgname/caddy
 }
 
