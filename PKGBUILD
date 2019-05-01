@@ -10,8 +10,8 @@ url="http://www.domjudge.org/"
 license=('GPL')
 makedepends=('boost' 'composer' 'inetutils' 'libcgroup' 'git' 'jsoncpp')
 optdepends=(
-	    'mysql: to run database on current host'
-	    'phpmyadmin: to access database in an emergency'
+        'mysql: to run database on current host'
+        'phpmyadmin: to access database in an emergency'
         'ntp: to keep judgehosts clocks in sync'
         'beep: for notification of errors')
 source=(
@@ -66,13 +66,13 @@ build() {
 }
 
 package_domjudge-submit() {
-	arch=("$CARCH")
+    arch=("$CARCH")
     depends=('curl' 'jsoncpp' 'file')
     install -Dm 755 "$srcdir/domjudge-$pkgver/submit/submit" "$pkgdir/usr/bin/submit"
 }
 
 package_domjudge-domserver() {
-	arch=('any')
+    arch=('any')
     depends=('curl' 'php' 'php-gd' 'php-intl' 'unzip' 'zip' 'apache')
     install=domjudge-domserver.install
     cd "$srcdir/domjudge-$pkgver"
@@ -81,14 +81,14 @@ package_domjudge-domserver() {
 }
 
 package_domjudge-docs() {
-	arch=('any')
-	depends=('php')
+    arch=('any')
+    depends=('php')
     cd "$srcdir/domjudge-$pkgver"
     make install-docs DESTDIR="$pkgdir"/
 }
 
 package_domjudge-judgehost() {
-	arch=("$CARCH")
+    arch=("$CARCH")
     depends=('libcgroup' 'curl' 'php' 'unzip' 'zip' 'lsof')
     cd "$srcdir/domjudge-$pkgver"
     make install-judgehost DESTDIR="$pkgdir"/
