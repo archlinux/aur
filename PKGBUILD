@@ -1,7 +1,7 @@
 # Maintainer: take100yen <take100yen at gmail dot com>
 pkgname=cnijfilter-mg7100
 pkgver=4.00
-pkgrel=3
+pkgrel=4
 pkgdesc="Canon InkJet Printer driver for MG7100 series"
 url="https://cweb.canon.jp/drv-upd/ij-mfp/linux-pd-mg7130-400.html"
 arch=('x86_64')
@@ -15,7 +15,7 @@ package()
   cd ${_filedir}
   ar -x "cnijfilter-mg7100series_$pkgver-1_amd64.deb" data.tar.gz
   tar -xzf data.tar.gz
-  mkdir -p usr/share/license/${pkgname}
+  mkdir -p usr/share/licenses/${pkgname}
   mv usr/share/doc/cnijfilter-mg7100series/LICENSE-* usr/share/licenses/${pkgname}/
   mv usr/share/doc/cnijfilter-mg7100series/copyright usr/share/licenses/${pkgname}/
   cp "${_filedir}/usr/" "${pkgdir}/usr" -r
