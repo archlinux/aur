@@ -1,8 +1,9 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=genieutils-git
-pkgver=r387.c5926df
+pkgver=2.r425.c626af7
 pkgrel=1
+_abiver=2
 pkgdesc='A library to read/write certain data and resource files of genie engine games'
 arch=('x86_64' 'i686')
 url='https://github.com/sandsmark/genieutils'
@@ -16,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd genieutils
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "${_abiver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
