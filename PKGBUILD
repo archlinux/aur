@@ -2,8 +2,8 @@
 # vim: ft=sh
 
 pkgname=baikal
-pkgver=0.4.6
-pkgrel=2
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="Lightweight CalDAV+CardDAV server"
 url="http://sabre.io/baikal/"
 arch=('any')
@@ -11,18 +11,11 @@ license=('GPL')
 depends=('php')
 optdepends=('sqlite: Database' 'mariadb: Alternate database' 'php-sqlite: To use the sqlite backend')
 source=("https://github.com/fruux/Baikal/releases/download/$pkgver/baikal-$pkgver.zip"
-        'baikal.install'
-        'https://patch-diff.githubusercontent.com/raw/fruux/Baikal/pull/686.patch')
-sha1sums=('bc2850281223da9cc7471a157de754f8feb03783'
-          'af1ac68cd5194d24525a2eafee2122aaf3fcbb43'
-          '102cd0df5eaddc6860d5244a16b4594970e02740')
+        'baikal.install')
+sha1sums=('58c241be61889589395b207ff2187656ff3a9691'
+          'af1ac68cd5194d24525a2eafee2122aaf3fcbb43')
 options=('!strip')
 install=baikal.install
-
-prepare() {
-  cd "${srcdir}/baikal"
-  patch -p1 -i "$srcdir/686.patch"
-}
 
 package() {
   cd "${srcdir}/baikal"
