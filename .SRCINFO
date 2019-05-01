@@ -2,6 +2,7 @@ pkgbase = amdgpu-tweakd-git
 	pkgdesc = amdgpu fan speed control and power limit tweak
 	pkgver = 0.1.dev39+g6dd3cb0
 	pkgrel = 1
+	url = https://github.com/amezin/amdgpu-tweakd
 	arch = any
 	license = GPL3
 	makedepends = git

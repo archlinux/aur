@@ -12,6 +12,7 @@ source=("${pkgname}::git+https://github.com/amezin/amdgpu-tweakd.git")
 md5sums=('SKIP')
 backup=('etc/amdgpu-tweakd')
 license=('GPL3')
+url='https://github.com/amezin/amdgpu-tweakd'
 
 pkgver() {
     cd $pkgname
