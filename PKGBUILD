@@ -3,7 +3,7 @@
 pkgbase=archisomydrive
 pkgname=$pkgbase
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 _remotepkgrel=1
 _gitname=ArchIsoMyDrive
 _gittag="v${pkgver}"
@@ -13,9 +13,13 @@ url="https://github.com/daltomi/$_gitname"
 license=('GPL3')
 depends=('gtk2' 'udev' 'polkit')
 
-source=("$url/raw/master/Install/archisomydrive-$pkgver-$_remotepkgrel-x86_64.pkg.tar.xz")
+source=("$url/raw/master/Install/archisomydrive-$pkgver-$_remotepkgrel-x86_64.pkg.tar.xz"{,.sig})
 
-sha256sums=('12eb7e8456d81d2845be44baf54ca14345903fb126857fa9875b4f8790dd224f')
+sha256sums=('12eb7e8456d81d2845be44baf54ca14345903fb126857fa9875b4f8790dd224f'
+            'SKIP'
+           )
+
+validpgpkeys=('51479755D90A2AACFA90A6551DD242462908D08B')
 
 package() {
         install -Dm644 "$srcdir/usr/share/applications/archisomydrv.desktop" "$pkgdir/usr/share/applications/archisomydrv.desktop"
