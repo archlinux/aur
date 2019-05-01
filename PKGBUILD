@@ -1,51 +1,42 @@
-# Maintainer: Ashwin <ashuwish+arch@gmail.com>
+# Maintainer: Ashwin <ashwinvis+arch_@t_Pr0t0nM4il_c0m>
 
-_hgproj=fluiddyn
-_hgrepo=fluiddyn
-_hgver=0.2.4
-pkgname=python2-fluiddyn-hg
-pkgver=0.2.4.r406.ff507350df1f
-pkgrel=3
+_proj=fluiddyn
+_name=fluiddyn
+pkgname=python-${_name}
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="FluidDyn project | Framework for studying fluid dynamics."
 arch=('any')
-url="https://bitbucket.org/${_hgproj}/${_hgrepo}"
+url="https://${_name}/readthedocs.io"
 license=('custom:"CeCILL-B"')
 depends=(
-  'python2' 'python2-numpy' 'python2-matplotlib' 'python2-h5py' 'python2-psutil' 'python2-future'
+  'python' 'python-numpy' 'python-matplotlib' 'python-h5py' 'python-psutil'
+  'python-cached-property' 'python-h5netcdf'
 )
 optdepends=(
-  'python2-h5netcdf: Read and write netcdf4 files'
-  'python2-pyfftw: Calculate FFT'
-  'python2-pillow: Image I/O'
+  'python-pyfftw: Calculate FFT'
+  'python-pillow: Image I/O'
 )
-makedepends=('mercurial' 'python2-setuptools')
-provides=(python2-${_hgrepo})
+makedepends=('mercurial' 'python-setuptools')
+checkdepends=('python-pytest')
+provides=(python-${_name})
+conflicts=(python2-${_name}-hg)
 
-source=("hg+${url}")
-sha256sums=('SKIP')
-
-prepare() {
-  cd "${srcdir}/${_hgrepo}"
-  hg update ${_hgver}
-}
-
-pkgver() {
-  cd "${srcdir}/${_hgrepo}"
-  echo $(hg parents --template '{word(-1,latesttag,":")}').r$(hg identify -n).$(hg identify -i)
-}
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('488dcc8cd1660fd6eed939defeb21250114b5de9c94cc1d979136ea439789b33')
 
 build() {
-  cd "${srcdir}/${_hgrepo}"
-  python2 setup.py build
+  cd "${srcdir}/${_name}-${pkgver}"
+  python setup.py build
 }
 
-# check() {
-#   cd "${srcdir}/${_hgrepo}"
-#   python2 -m unittest discover
-# }
+check() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  pytest
+}
 
 package() {
-  cd "${srcdir}/${_hgrepo}"
-  python2 setup.py install --root=$pkgdir --optimize 1
+  cd "${srcdir}/${_name}-${pkgver}"
+  python setup.py install --root=$pkgdir --optimize=1 --skip-build
   install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
