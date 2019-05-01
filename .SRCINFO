@@ -1,6 +1,6 @@
 pkgbase = linux-bfq-mq-git
-	pkgver = 4.18.0.g8687d94c3344
-	pkgrel = 2
+	pkgver = 4.19.0.g9bd41485507c
+	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -12,7 +12,8 @@ pkgbase = linux-bfq-mq-git
 	options = !strip
 	source = git+https://github.com/Algodev-github/bfq-mq
 	source = https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.17/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch
+	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.19/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch
+	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.19/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -21,6 +22,7 @@ pkgbase = linux-bfq-mq-git
 	sha256sums = SKIP
 	sha256sums = 9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178
 	sha256sums = eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531
+	sha256sums = 1bc55e0c12f1ea9bf4b823fc78b91e12cf1cf1972f778484fbd5fa0d9e8264f2
 	sha256sums = 353fad0d0363c32c343dde215de4a22c38fbc748df70560b98c2f2c2e98b3c1c
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
@@ -36,19 +38,19 @@ pkgname = linux-bfq-mq-git
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-bfq-mq-git=4.18.0.g8687d94c3344
-	provides = linux=4.18.0.g8687d94c3344
+	provides = linux-bfq-mq-git=4.19.0.g9bd41485507c
+	provides = linux=4.19.0.g9bd41485507c
 	backup = etc/mkinitcpio.d/linux-bfq-mq-git.preset
 
 pkgname = linux-bfq-mq-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bfq-mq-git kernel
-	depends = linux-bfq-mq-git=4.18.0.g8687d94c3344
-	provides = linux-bfq-mq-git-headers=4.18.0.g8687d94c3344
-	provides = linux-headers=4.18.0.g8687d94c3344
+	depends = linux-bfq-mq-git=4.19.0.g9bd41485507c
+	provides = linux-bfq-mq-git-headers=4.19.0.g9bd41485507c
+	provides = linux-headers=4.19.0.g9bd41485507c
 
 pkgname = linux-bfq-mq-git-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bfq-mq-git kernel
-	depends = linux-bfq-mq-git=4.18.0.g8687d94c3344
-	provides = linux-bfq-mq-git-docs=4.18.0.g8687d94c3344
-	provides = linux-docs=4.18.0.g8687d94c3344
+	depends = linux-bfq-mq-git=4.19.0.g9bd41485507c
+	provides = linux-bfq-mq-git-docs=4.19.0.g9bd41485507c
+	provides = linux-docs=4.19.0.g9bd41485507c
 

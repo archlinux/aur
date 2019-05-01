@@ -60,16 +60,17 @@ _mq_enable=
 
 pkgbase=linux-bfq-mq-git
 _srcname=bfq-mq
-pkgver=4.18.0.g8687d94c3344
-pkgrel=2
+_major=4.19
+pkgver=4.19.0.g9bd41485507c
+pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
 _bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
-_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.17"
-#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.17"
+_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
+#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
@@ -78,6 +79,7 @@ source=(# bfq-mq repository
         'git+https://github.com/Algodev-github/bfq-mq'
         "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
+        "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -92,6 +94,7 @@ source=(# bfq-mq repository
 sha256sums=('SKIP'
             '9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
+            '1bc55e0c12f1ea9bf4b823fc78b91e12cf1cf1972f778484fbd5fa0d9e8264f2'
             '353fad0d0363c32c343dde215de4a22c38fbc748df70560b98c2f2c2e98b3c1c'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
