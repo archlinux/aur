@@ -5,10 +5,10 @@
 
 pkgname=spotify-dev
 _pkgname=spotify
-pkgver=1.1.0.237
-_commit=g378f6f25
-_epoch=11
-pkgrel=2
+pkgver=1.1.5.153
+_commit=gf614956d
+_epoch=16
+pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
@@ -27,7 +27,7 @@ source=("${_pkgname}-Release::http://repository.spotify.com/dists/testing/Releas
 	'LICENSE')
 sha512sums=('SKIP'
 	'SKIP'
-	'a1fcbf3463eea13a4ff38f4b40ae999c8e138abc8adf6988b4d764e597f166ef894baf449a6506a6b9b69ba3ed92c83dcb1a1eda23ab843c0441d2b71bbb0d51'
+	'db354f161c35b5f1a2d633282fad8fccf565e0061e7d258012f28422d766630391d47d4dafe22448fb60f850bf4ccbfdf82443cf107e03727c077b2c62e524be'
 	'SKIP'
 	'2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615')
 validpgpkeys=('931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90')
