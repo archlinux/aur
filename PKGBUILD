@@ -1,7 +1,7 @@
 # Maintainer: K. Morton <pryre.dev@outlook.com>
 # Contributor: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=qgroundcontrol
-pkgver=3.5.1
+pkgver=3.5.2
 pkgrel=0
 pkgdesc="Micro air vehicle ground control station."
 arch=('x86_64')
@@ -52,7 +52,7 @@ source=("qgroundcontrol-${pkgver}.tar.gz::https://github.com/mavlink/qgroundcont
 		"gps-drivers-qgc${pkgver}.zip::https://github.com/PX4/GpsDrivers/archive/${pkgver_gps}.zip"
 )
 
-sha256sums=('00937e67d3b2fe22beef270c0a4fc24a3247be831380f6b367c2b9b12b45b590'
+sha256sums=('195e1749cabbc69589df401a6af03f86796c3953ef78055418d8c734448d7685'
 			'65c0fc60be9435375f74990a5c83fb0cdef6d15c100245759d2465d480a5b9b5'
 			'1ab58c633edcfff9288bd868bf33e2c9990afa27fa5df8f1731675d98a4ce6e4'
 )
