@@ -5,7 +5,7 @@
 
 pkgbase=network-manager-applet-git
 pkgname=(network-manager-applet-git nm-connection-editor-git libnm-gtk-git libnma-git)
-pkgver=1.8.19.dev.r65.gd7a03bb4
+pkgver=1.8.21.dev.r47.ga0c31ed5
 pkgrel=1
 pkgdesc="Applet for managing network connections"
 arch=('i686' 'x86_64')
