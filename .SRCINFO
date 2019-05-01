@@ -1,7 +1,7 @@
 pkgbase = shadow-beta
 	pkgdesc = Shadow launcher
-	pkgver = 0.8.62
-	pkgrel = 3
+	pkgver = 4.3.1
+	pkgrel = 1
 	url = http://shadow.tech
 	install = shadow-beta.install
 	arch = x86_64
@@ -30,15 +30,10 @@ pkgbase = shadow-beta
 	depends = gcc7-libs
 	depends = ttf-dejavu
 	depends = libxss
+	depends = libsndio-61-compat
 	provides = shadow-beta
-	source = https://macosx.update.blade-group.fr/mpl/linux/beta/bionic/shadow-alpha-bionic.zip
-	source = https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/084a22e1de394060b60a621db790f87062e9544a/AppImage/wrapper.pl
-	source = https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/084a22e1de394060b60a621db790f87062e9544a/AppImage/report.pl
-	source = https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/084a22e1de394060b60a621db790f87062e9544a/shadow-beta.desktop
-	md5sums = bb5adca354d043b10bc5aca0a5afb37a
-	md5sums = acc9366ee43a7f4300969009b688bb0c
-	md5sums = 65b5ab84660ceddac9068765243ba432
-	md5sums = f933f6568441e1a211c836c235e572f4
+	source = https://update.shadow.tech/launcher/preprod/linux/ubuntu_18.04/ShadowBeta.zip
+	md5sums = 5f31366f35fbdee9b56ad4c56ebcbe5f
 
 pkgname = shadow-beta
 
