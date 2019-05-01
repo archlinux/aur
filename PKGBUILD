@@ -4,7 +4,7 @@ pkgdesc="ROS - Low-level build system macros and infrastructure for ROS."
 url='http://www.ros.org/wiki/catkin'
 
 pkgname='ros-melodic-catkin'
-pkgver='0.7.15'
+pkgver='0.7.17'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,9 +35,9 @@ depends=(
 	python
 )
 
-_dir="catkin-release-release-melodic-catkin-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/catkin-release/archive/release/melodic/catkin/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5f33035a608757197a2eb8293ea9d707d58e1da826e3902a10b68059679ecd04')
+_dir="catkin-${pkgver}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros/catkin/archive/${pkgver}.tar.gz")
+sha256sums=('71a735bee28e4132350fae55c14324ff7cb7c6d0548ee08e5f6d588985001541')
 
 build() {
 	# Use ROS environment variables.
