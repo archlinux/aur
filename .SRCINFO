@@ -1,0 +1,17 @@
+pkgbase = lua51-metalua-compiler
+	pkgdesc = compiles a superset of Lua 5.1 into bytecode
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://luarocks.org/modules/luarocks/metalua-compiler
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = luarocks
+	depends = lua51
+	depends = lua51-filesystem
+	depends = lua51-metalua-parser
+	source = https://luarocks.org/metalua-compiler-0.7.3-1.src.rock
+	sha256sums = 8fa73a111c44012292e66a769f6779a4adc18a02388479f703ea86e787510579
+
+pkgname = lua51-metalua-compiler
+
