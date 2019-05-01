@@ -1,16 +1,16 @@
 pkgbase = synology-cloud-station-drive
 	pkgdesc = An application which sync files between your computers and Synology NAS
-	pkgver = 4.2.8.4421
+	pkgver = 4.3.1.4437
 	pkgrel = 1
 	url = https://www.synology.com/en-global/releaseNote/CloudStationDrive
 	arch = i686
 	arch = x86_64
 	license = custom
 	optdepends = nautilus: Nautilus integration
-	source_i686 = https://global.download.synology.com/download/Tools/CloudStationDrive/4.2.8-4421/Ubuntu/Installer/i686/synology-cloud-station-drive-4421.i686.deb
-	sha512sums_i686 = daea19fa7f63e38350ff9c50910599eaec749b431b1eb54bbd7d0b118d49efd0232f47cfe83a1d26b60e9f36b80968f25b8b9eb881b4e59ca2de3895a791d53a
-	source_x86_64 = https://global.download.synology.com/download/Tools/CloudStationDrive/4.2.8-4421/Ubuntu/Installer/x86_64/synology-cloud-station-drive-4421.x86_64.deb
-	sha512sums_x86_64 = 5b46eec7a2f965aa7d35518064acaece067a6d42940631b93d672c83f0afac0ba5057d76112d76e51c32d74a2f8c33342e527d92f3c910e9e3006d8fb1938ac7
+	source_i686 = https://global.download.synology.com/download/Tools/CloudStationDrive/4.3.1-4437/Ubuntu/Installer/i686/synology-cloud-station-drive-4437.i686.deb
+	md5sums_i686 = 46587b7625c0858b4818ca3dc0da7fa6
+	source_x86_64 = https://global.download.synology.com/download/Tools/CloudStationDrive/4.3.1-4437/Ubuntu/Installer/x86_64/synology-cloud-station-drive-4437.x86_64.deb
+	md5sums_x86_64 = 16373d158e162bd03f90f2c9739b073d
 
 pkgname = synology-cloud-station-drive
 
