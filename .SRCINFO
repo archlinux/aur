@@ -1,0 +1,15 @@
+pkgbase = enlightenment-arc-theme
+	pkgdesc = A flat theme for Enlightenment
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/lightdot/enlightenment-arc-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = efl
+	depends = efl
+	source = enlightenment-arc-theme-0.5.2.tar.gz::https://github.com/lightdot/enlightenment-arc-theme/archive/0.5.2.tar.gz
+	sha256sums = 6eb1cc688120b91c7478ddc0c09c46bcdd92ac047c0f2e224ea25741f6a0e15d
+
+pkgname = enlightenment-arc-theme
+
