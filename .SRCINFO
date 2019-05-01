@@ -1,0 +1,19 @@
+pkgbase = libdnet-git
+	pkgdesc = A simplified, portable interface to several low-level networking routines
+	pkgver = 1.12.r20.g54a0c14
+	pkgrel = 1
+	url = https://github.com/dugsong/libdnet
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = glibc
+	depends = sh
+	provides = libdnet
+	conflicts = libdnet
+	options = staticlibs
+	source = git+https://github.com/dugsong/libdnet.git
+	sha256sums = SKIP
+
+pkgname = libdnet-git
+
