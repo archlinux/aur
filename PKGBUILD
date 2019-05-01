@@ -8,6 +8,7 @@ arch=('i686' 'x86_64' 'armv7h')
 url=https://github.com/akermu/${_pkgname}
 license=('GPL3')
 depends=('emacs')
+makedepends=('cmake')
 provides=('emacs-libvterm')
 conflicts=('emacs-libvterm')
 source=(git+${url}.git)

@@ -7,6 +7,7 @@ pkgbase = emacs-libvterm-git
 	arch = x86_64
 	arch = armv7h
 	license = GPL3
+	makedepends = cmake
 	depends = emacs
 	provides = emacs-libvterm
 	conflicts = emacs-libvterm
