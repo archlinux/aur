@@ -1,13 +1,14 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=freeaoe-git
-pkgver=r399.331551a
+pkgver=r637.0038d41
 pkgrel=1
+_abiver=2
 pkgdesc='A free engine capable of running Age of Kings.'
 arch=('x86_64' 'i686')
 url='https://github.com/sandsmark/freeaoe'
 license=('GPL3')
-depends=('genieutils-git' 'sfml' 'mini_al-git')
+depends=("genieutils-git>=${_abiver}" 'sfml' 'mini_al-git')
 makedepends=('git')
 conflicts=(freeaoe)
 provides=(freeaoe)
