@@ -2,8 +2,8 @@
 
 _gemname=asciidoctor-pdf
 pkgname=asciidoctor-pdf
-pkgver=1.5.0.alpha.16
-pkgrel=2
+pkgver=1.5.0.alpha.17
+pkgrel=1
 pkgdesc='translate asciidoctor directly to pdf'
 arch=(any)
 url='https://asciidoctor.org/'
@@ -12,7 +12,7 @@ depends=(asciidoctor)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('0f6b2a1533577dfba218de5dd886771447e4d1cb670b81d2c3bf3a180e6029a1')
+sha256sums=('3d8214bda0299973d126b7430cfcd49d96748f11f43bff10476899cb6f52b4af')
 package() {
     local _gemdir="$(ruby -e 'puts Gem.default_dir')"
 
