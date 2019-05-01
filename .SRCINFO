@@ -1,0 +1,17 @@
+pkgbase = python2-matrix-nio
+	pkgdesc = A Python Matrix client library, designed according to sans I/O principles
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/poljar/matrix-nio
+	arch = any
+	license = custom:ISC
+	makedepends = tar
+	makedepends = gzip
+	depends = python2
+	provides = python2-matrix-nio
+	conflicts = python2-matrix-nio-git
+	source = matrix-nio-0.2.tar.gz::https://github.com/poljar/matrix-nio/archive/0.2.tar.gz
+	md5sums = 7ae5f6cd1cb9110e121732a5de3a5048
+
+pkgname = python2-matrix-nio
+
