@@ -4,13 +4,12 @@
 pkgbase=python-dask
 pkgname=('python-dask' 'python2-dask')
 _pkgname=dask
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Minimal task scheduling abstraction"
 arch=('any')
 url="https://github.com/dask/dask"
 license=('BSD')
-#checkdepends=('ipython' 'python-bcolz' 'python2-bcolz' 'python-cachey' 'python2-cachey' 'python-graphviz' 'python2-graphviz' 'python-sparse' 'python2-sparse' 'python-pytest' 'python2-pytest')
 checkdepends=('ipython' 'python-bcolz' 'python-cachey' 'python-graphviz' 'python-sparse' 'python-pytest')
 optdepends=('python-bcolz'
   'python-bokeh'
@@ -23,10 +22,11 @@ optdepends=('python-bcolz'
   'python-pytables: hdf5 support'
   'python-sparse: sparse data support'
   'python-s3fs: S3 support'
-  'python-gcsfs: Google Cloud Storage fs support')
+  'python-gcsfs: Google Cloud Storage fs support'
+  'python-zarr')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/dask/dask/archive/$pkgver.tar.gz")
-sha256sums=('d86eb82b656485e7c11e64d89b679b9b65cb27a74fe8498d6ddcd7581d49a628')
+sha256sums=('fbea1e5f0a21a99471255d57cad4fc856818a53ed5b9405fb9940a37e46c498c')
 
 prepare() {
   cp -a $_pkgname-$pkgver{,-py2}
