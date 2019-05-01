@@ -1,24 +1,23 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=('python-sqlalchemy-git' 'python2-sqlalchemy-git')
-pkgver=1.2.9rc11496.45b22c9c3
+pkgver=1.4.0b1.rc11996.ae14861a3
 pkgrel=1
 pkgdesc="Python SQL toolkit and Object Relational Mapper"
 arch=('i686' 'x86_64')
 url="http://www.sqlalchemy.org"
 license=('custom:MIT')
 makedepends=('git' 'python' 'python2' 'python-setuptools')
-source=("git+https://bitbucket.org/zzzeek/sqlalchemy.git")
+source=("git+https://github.com/sqlalchemy/sqlalchemy.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd sqlalchemy
-  printf %src%s.%s "$(awk '/\:version\:/ {print $2}' doc/build/changelog/changelog_*|sort|tail -1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf %s.rc%s.%s "$(awk '/\:version\:/ {print $2}' doc/build/changelog/changelog_*|sort|tail -1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cp -r sqlalchemy sqlalchemy2
-  sed -i '1s+python$+python2+' sqlalchemy2/lib/sqlalchemy/testing/runner.py
 }
 
 build() {
