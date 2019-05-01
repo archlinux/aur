@@ -3,7 +3,7 @@
 pkgbase=archisomydrive
 pkgname=$pkgbase
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 _remotepkgrel=1
 _gitname=ArchIsoMyDrive
 _gittag="v${pkgver}"
@@ -11,7 +11,7 @@ pkgdesc="Copy an ISO file to a USB drive."
 arch=('x86_64')
 url="https://github.com/daltomi/$_gitname"
 license=('GPL3')
-depends=('gtk2' 'udev')
+depends=('gtk2' 'udev' 'polkit')
 
 source=("$url/raw/master/Install/archisomydrive-$pkgver-$_remotepkgrel-x86_64.pkg.tar.xz")
 

@@ -1,12 +1,13 @@
 pkgbase = archisomydrive
 	pkgdesc = Copy an ISO file to a USB drive.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/daltomi/ArchIsoMyDrive
 	arch = x86_64
 	license = GPL3
 	depends = gtk2
 	depends = udev
+	depends = polkit
 	source = https://github.com/daltomi/ArchIsoMyDrive/raw/master/Install/archisomydrive-1.0-1-x86_64.pkg.tar.xz
 	sha256sums = 12eb7e8456d81d2845be44baf54ca14345903fb126857fa9875b4f8790dd224f
 
