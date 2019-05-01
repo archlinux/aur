@@ -3,7 +3,7 @@
 pkgbase=python-pipx
 pkgname=python-pipx
 _name=pipx
-pkgver=0.13.0.0
+pkgver=0.13.1.0
 pkgrel=1
 pkgdesc='Execute binaries from Python packages in isolated environments'
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=(python-setuptools)
 #source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 source=("https://github.com/cs01/${_name}/archive/${pkgver}.tar.gz")
-sha512sums=('022b5f9bffca10cc3fe0b3ba31d0635e69f73a3a8ed9602ec52a965f014b3362765a2e995311f18a9a2036150326ba90f29bf29fe54b441a68ed929e246b3b6c')
+sha512sums=('23aa179348cb5a24e20d8d68bccdffb4a4088c93847fd3772a887943dd4493dffd0f8ef335b65b0abb45479dc6367f59e8be322fd9c8a24b7ab764a5bb889d31')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
@@ -35,6 +35,5 @@ package_python-pipx() {
   # license
   install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   # docs
-  install -t "${pkgdir}/usr/share/doc/${pkgname}" \
-    -vDm644 {CHANGELOG.md,README.md}
+  install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
