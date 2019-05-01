@@ -1,37 +1,32 @@
 pkgname=desktime
-pkgver=1.47
+pkgver=5.1.21
 pkgrel=0
-pkgdesc="Desktime client for Linux (beta)"
+pkgdesc="Desktime client for Linux"
 arch=('i686' 'x86_64')
-url="http://desktime.com"
+url="https://desktime.com"
 license=(custom)
 depends=(desktop-file-utils hicolor-icon-theme libappindicator-gtk2 libxss)
 install=$pkgname.install
 
 if [[ $CARCH == 'i686' ]]; then
-    source=("https://desktime.com/storage/updates/linux/beta/desktime-linux_1.47_i386.deb")
-    md5sums=('9dceea027779ae6869199ce8c2bd63a5')
+    source=("$pkgname-$pkgver.deb::https://desktime.com/updates/linux/update/?i386")
+    md5sums=('d621182e7e8486392a7ce7b2c58fc8d5')
 else
-    source=("https://desktime.com/storage/updates/linux/beta/desktime-linux_1.47_x64.deb")
-    md5sums=('ba5aaf966a204e64789f8c1107f33061')
+    source=("$pkgname-$pkgver.deb::https://desktime.com/updates/linux/update/?x64")
+    md5sums=('69799a789d01d0f667e15abc3d1f6e9b')
 fi
-
-prepare()
-{
-    echo
-}
 
 package()
 {
     cd "$srcdir"
     bsdtar -xf data.tar.xz -C "$srcdir/"
 
-    install -Dm755 "$srcdir/"usr/bin/desktime-linux "$pkgdir/"usr/bin/desktime-linux
-    install -Dm644 "$srcdir/"usr/share/applications/desktime.desktop "$pkgdir/"usr/share/applications/desktime.desktop
-    install -Dm644 "$srcdir/"usr/share/doc/desktime-linux/changelog.gz "$pkgdir/"usr/share/doc/desktime-linux/changelog.gz
-    install -Dm644 "$srcdir/"usr/share/doc/desktime-linux/copyright "$pkgdir/"usr/share/doc/desktime-linux/copyright
-    install -Dm644 "$srcdir/"usr/share/icons/desktime.png "$pkgdir/"usr/share/icons/desktime.png
+    mkdir -p "$pkgdir"/usr
+    cp -a "$srcdir/usr/lib" "$pkgdir/usr/"
+    cp -a "$srcdir/usr/share" "$pkgdir/usr/"
 
+    mkdir -p "$pkgdir/usr/bin"
+    ln -s "$srcdir/usr/lib/desktime-linux/desktime-linux" "$pkgdir/usr/bin/desktime-linux"
 }
 
 # vim:et:sw=4:sts=4

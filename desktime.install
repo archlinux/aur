@@ -1,8 +1,6 @@
 post_install() {
     gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-    if which update-icon-caches >/dev/null 2>&1 ; then
-    	update-icon-caches /usr/share/icons/desktime.png
-    fi
+
     update-desktop-database -q
 }
 
@@ -12,8 +10,6 @@ post_upgrade() {
 
 post_remove() {
     gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-    if which update-icon-caches >/dev/null 2>&1 ; then
-    	update-icon-caches /usr/share/icons/desktime.png
-    fi
+
     update-desktop-database -q
 }
