@@ -1,16 +1,18 @@
 pkgbase = stm32cubeide
 	pkgdesc = Integrated Development Environment for STM32
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://my.st.com/content/my_st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-ides/stm32cubeide.html
 	arch = x86_64
 	license = Commercial
+	depends = java-runtime
+	depends = jlink-software-and-documentation
 	optdepends = stlink
-	optdepends = jlink-software-and-documentation
-	conflicts = truestudio
 	options = !strip
 	source = local://en.st-stm32cubeide_1.0.0_2872_20190423_2022_amd64.sh.zip
+	source = stm32cubeide.desktop
 	sha256sums = 28929f7260e9be6350e4a45ce53c590f85a3096891dc80a4657c022c42a3949a
+	sha256sums = 9f034695b98dd8aec59aec9f51e78a7daffd601aacf9a302b5f46de84c7ad9f1
 
 pkgname = stm32cubeide
 
