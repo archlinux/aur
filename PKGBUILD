@@ -8,7 +8,7 @@ pkgdesc='Toolkit for Encryption, Signatures and Certificates Based on OpenSSL'
 arch=('x86_64')
 url='https://cran.r-project.org/package=openssl'
 license=('MIT')
-depends=('r' )
+depends=('r' 'r-askpass')
 optdepends=('r-testthat' 'r-digest' 'r-knitr' 'r-rmarkdown' 'r-jsonlite' 'r-jose')
 source=("https://cran.r-project.org/src/contrib/openssl_"$_cranver".tar.gz")
 md5sums=('b87ae13050afc27eca05785860b5e9db')
