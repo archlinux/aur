@@ -23,7 +23,7 @@ pkgbase = r-rmarkdown
 	optdepends = r-digest
 	optdepends = r-dygraphs
 	optdepends = r-tibble
-	source = https://cran.r-project.org/src/contrib/rmarkdown_1.10.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/rmarkdown/rmarkdown_1.10.tar.gz
 	md5sums = 1c923705dc968e04455b72723bd9fdb1
 
 pkgname = r-rmarkdown

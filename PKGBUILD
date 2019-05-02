@@ -15,7 +15,7 @@ depends=('r' 'r-knitr>=1.18' 'r-yaml>=2.1.5' 'r-htmltools>=0.3.5' 'r-evaluate>=0
 
 optdepends=('pandoc' 'r-shiny' 'r-tufte' 'r-testthat' 'r-digest' 'r-dygraphs' 'r-tibble')
 
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
+source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
 md5sums=('1c923705dc968e04455b72723bd9fdb1')
 
 build(){
