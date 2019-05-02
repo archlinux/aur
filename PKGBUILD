@@ -11,13 +11,8 @@ license=('GPL3')
 
 makedepends=('git')
 
-<<<<<<< HEAD
 provides=("${_pkgname}-git")
 conflicts=("${_pkgname}-git")
-=======
-provides=("${pkgname}")
-conflicts=("${pkgname}")
->>>>>>> 3bf6bf84ccf3d8d29e3724514101c3fe9f9a24fe
 
 source=("${_pkgname}::git+https://github.com/B00merang-Artwork/Windows-10.git")
 sha256sums=('SKIP')
