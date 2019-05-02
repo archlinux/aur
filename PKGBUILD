@@ -8,7 +8,7 @@ arch=(any)
 url="https://txacme.readthedocs.io"
 license=('MIT')
 makedepends=("python-setuptools" "python2-setuptools")
-source=("https://github.com/twisted/$_pkgname/archive/$pkgver.tar.gz")
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/twisted/$_pkgname/archive/$pkgver.tar.gz")
 md5sums=('ec9591dd60cc64b4504df1c9b8785e98')
 
 prepare() {
