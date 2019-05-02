@@ -1,13 +1,13 @@
 # Maintainer: François Guerraz <kubrick@fgv6.net>
 pkgname=payetools-rti
 pkgver=19.0.19063.1355
-pkgrel=1
+pkgrel=2
 pkgdesc="UK HMRC Basic PAYE Tools for Linux"
 arch=('x86_64')
 url="https://www.gov.uk/basic-paye-tools"
 license=('custom')
 groups=()
-depends=('lib32-fontconfig' 'lib32-krb5' 'lib32-libxext' 'lib32-libxrender' 'lib32-libpng12' 'lib32-sqlite' )
+depends=('lib32-fontconfig' 'lib32-krb5' 'lib32-libxext' 'lib32-libxrender' 'lib32-libpng12' 'lib32-sqlite' 'lib32-libxml2')
 makedepends=('unzip' 'lib32-fakeroot' 'chrpath')
 optdepends=()
 provides=()
@@ -43,4 +43,7 @@ package() {
   install -D -t ${pkgdir}/usr/share/applications/ ${pkgdir}/tmp/.local/share/applications/*.desktop
   rm -fr ${pkgdir}/tmp
   mv opt/HMRC/basic-paye-tools/rti.cfg opt/HMRC/basic-paye-tools/rti.cfg.template
+# Remove shipped glibc libraries
+  rm opt/HMRC/basic-paye-tools/libm.so.6
+  rm opt/HMRC/basic-paye-tools/libutil.so.1
 }
