@@ -1,0 +1,9 @@
+post_install() {
+  echo "Refer to i3volume-alsa.conf and i3volume-pulseaudio.conf in /usr/share/doc/i3-volume for initial configuration"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+# vim:set ts=2 sw=2 et:
