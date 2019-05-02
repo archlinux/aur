@@ -3,9 +3,9 @@
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-cdown-mmots-git               # Build stock -ARCH kernel
-_srcver=5.0.0-mmots1
+_srcver=5.1.0-mmots1
 pkgver=${_srcver//-/.}
-pkgrel=2
+pkgrel=1
 arch=(x86_64)
 url="https://github.com/cdown/linux-mmots"
 license=(GPL2)
@@ -53,9 +53,7 @@ prepare() {
   msg2 "Setting config..."
   cp ../config .config
   echo "$PWD"
-  cp .config /tmp/beforeolddefconfig
-  make olddefconfig
-  cp .config /tmp/beforelocalmodconfig
+  yes '' | make olddefconfig
   yes '' | make localmodconfig
 
   make -s kernelrelease > ../version
@@ -64,7 +62,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules htmldocs
+  make bzImage modules
 }
 
 _package() {

@@ -1,6 +1,6 @@
 pkgbase = linux-cdown-mmots-git
-	pkgver = 5.0.0.mmots1
-	pkgrel = 2
+	pkgver = 5.1.0.mmots1
+	pkgrel = 1
 	url = https://github.com/cdown/linux-mmots
 	arch = x86_64
 	license = GPL2
