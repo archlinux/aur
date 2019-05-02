@@ -1,4 +1,5 @@
 # Maintainer: Stefan Cocora <stefan dot cocora at gmail dot com>
+# Maintainer: Ian Emnace <igemnace at gmail dot com >
 # Contributor:
 
 _pkgauthor=CircleCI-Public
