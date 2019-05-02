@@ -1,14 +1,18 @@
 pkgbase = linux-firmware-surface
 	pkgdesc = Firmware files for Linux, with Microsoft Surface related files replaced from https://github.com/jakeday/linux-surface/
-	pkgver = 20190313.efd2c1c.20190313.5c2a64030
+	pkgver = 20190501.4b6cf2b.2b206b56e
 	pkgrel = 1
 	url = https://github.com/jakeday/linux-surface/
 	arch = any
+	license = GPL2
+	license = GPL3
 	license = custom
 	makedepends = git
+	makedepends = unzip
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#commit=efd2c1cc375cff1c17b4259d99a7fee240c3b510
-	source = git+https://github.com/jakeday/linux-surface.git
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#commit=4b6cf2bd1a9d53caa087403d943e7695009c1d0c?signed
+	source = git+https://github.com/jakeday/linux-surface.git#commit=2b206b56e125c9fda4661dbcc91095e9bf993d28
+	validpgpkeys = 4CDE8575E547BF835FE15807A31B6BD72486CFD6
 	md5sums = SKIP
 	md5sums = SKIP
 

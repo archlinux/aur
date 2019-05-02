@@ -1,5 +1,6 @@
 # Maintainer: Frans-Willem Hardijzer <fw@hardijzer.nl>
 
+_orig_pkgname=linux-firmware
 pkgbase=linux-firmware-surface
 pkgname=(
   linux-firmware-surface-pro-3
@@ -15,17 +16,19 @@ pkgname=(
   linux-firmware-surface-go
 )
 _commit=4b6cf2bd1a9d53caa087403d943e7695009c1d0c # master
+_jakeday_commit=2b206b56e125c9fda4661dbcc91095e9bf993d28
+pkgver=20190501.4b6cf2b.2b206b56e
 pkgrel=1
 pkgdesc="Firmware files for Linux, with Microsoft Surface related files replaced from https://github.com/jakeday/linux-surface/"
-makedepends=('git')
+makedepends=('git' 'unzip')
 arch=('any')
 url="https://github.com/jakeday/linux-surface/"
-license=('custom')
+license=('GPL2' 'GPL3' 'custom')
 options=(!strip)
 validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@fedoraproject.org>
 source=(
   "git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#commit=${_commit}?signed"
-  "git+https://github.com/jakeday/linux-surface.git"
+  "git+https://github.com/jakeday/linux-surface.git#commit=${_jakeday_commit}"
 )
 md5sums=(
   'SKIP'
@@ -37,22 +40,37 @@ prepare() {
 }
 
 pkgver() {
-  cd "${srcdir}/linux-firmware"
+  cd "${srcdir}/${_orig_pkgname}"
+  _date_orig=$(TZ=UTC git show -s --pretty=%cd --date=format-local:%Y%m%d HEAD)
+  cd "${srcdir}/linux-surface"
+  _date_jakeday=$(TZ=UTC git show -s --pretty=%cd --date=format-local:%Y%m%d HEAD)
 
-  # Commit date + short rev
-  echo -n $(TZ=UTC git show -s --pretty=%cd --date=format-local:%Y%m%d HEAD).$(git rev-parse --short HEAD)
+  # Print highest of the two dates
+  [ $_date_orig -gt $_date_jakeday ] && echo -n "$_date_orig" || echo -n "$_date_jakeday"
+
+  # short rev from original linux-firmware
+  echo -n "."
+  cd "${srcdir}/${_orig_pkgname}"
+  echo -n $(git rev-parse --short HEAD)
 
 
-  # Commit date + short rev
+  # short rev from jakeday repository
   echo -n "."
   cd "${srcdir}/linux-surface"
+  echo $(git rev-parse --short HEAD)
+}
+
+pkgver_orig() {
+  cd "${srcdir}/${_orig_pkgname}"
+
+  # Commit date + short rev
   echo $(TZ=UTC git show -s --pretty=%cd --date=format-local:%Y%m%d HEAD).$(git rev-parse --short HEAD)
 }
 
 package_linux-firmware() {
-  groups=('base')
-  conflicts=('linux-firmware-git'
-             'linux-firmware'
+  provides=("linux-firmware=$(pkgver_orig)")
+  conflicts=('linux-firmware'
+             'linux-firmware-git'
              'kernel26-firmware'
              'ar9170-fw'
              'iwlwifi-1000-ucode'
@@ -64,31 +82,19 @@ package_linux-firmware() {
              'rt2870usb-fw'
              'rt2x00-rt61-fw'
              'rt2x00-rt71w-fw')
-  replaces=('kernel26-firmware'
-            'ar9170-fw'
-            'iwlwifi-1000-ucode'
-            'iwlwifi-3945-ucode'
-            'iwlwifi-4965-ucode'
-            'iwlwifi-5000-ucode'
-            'iwlwifi-5150-ucode'
-            'iwlwifi-6000-ucode'
-            'rt2870usb-fw'
-            'rt2x00-rt61-fw'
-            'rt2x00-rt71w-fw')
-  provides='linux-firmware'
 
-  cd "${srcdir}/linux-firmware"
+  cd "${srcdir}/${_orig_pkgname}"
 
   make DESTDIR="${pkgdir}" FIRMWAREDIR=/usr/lib/firmware install
   rm "${pkgdir}/usr/lib/firmware/"{Makefile,README,configure,GPL-3}
 
-  install -d "${pkgdir}/usr/share/licenses/linux-firmware"
+  install -d "${pkgdir}/usr/share/licenses/${_orig_pkgname}"
   install -Dm644 LICEN* WHENCE "${pkgdir}/usr/share/licenses/linux-firmware/"
 
   # Trigger a microcode reload for configurations not using early updates
   install -d "${pkgdir}/usr/lib/tmpfiles.d"
   echo 'w /sys/devices/system/cpu/microcode/reload - - - - 1' \
-    >"${pkgdir}/usr/lib/tmpfiles.d/linux-firmware.conf"
+    >"${pkgdir}/usr/lib/tmpfiles.d/${_orig_pkgname}.conf"
 }
 
 package_linux-firmware-surface-common() {
