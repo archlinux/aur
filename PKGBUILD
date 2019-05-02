@@ -14,7 +14,7 @@ depends=('r' )
 
 
 
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
+source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
 md5sums=('0f476dacdd11a3e0ad56d13f5bc2f190')
 
 build(){
