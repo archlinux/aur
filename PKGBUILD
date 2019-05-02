@@ -14,7 +14,7 @@ depends=('r' 'r-digest' 'r-rcpp')
 
 optdepends=('r-markdown' 'r-testthat')
 
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
+source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
 md5sums=('336419c2143f958862e01ef1bbc9c253')
 
 build(){
