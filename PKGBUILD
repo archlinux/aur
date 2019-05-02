@@ -8,10 +8,10 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/GitSquared/edex-ui'
 license=('GPL3')
 depends=('gtk3'
-         'gconf'
          'libxss'
          'nss')
-makedepends=('npm')
+makedepends=('npm'
+             'rsync')
 provides=('edex-ui')
 install="edex-ui.install"
 source=("https://github.com/GitSquared/${pkgname}/archive/v${pkgver}.tar.gz")
