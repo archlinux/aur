@@ -1,0 +1,13 @@
+pkgbase = r-askpass
+	pkgdesc = Cross-platform utilities for prompting the user for credentials or a passphrase.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=askpass
+	arch = x86_64
+	license = MIT
+	depends = r
+	source = https://cran.r-project.org/src/contrib/askpass_1.1.tar.gz
+	md5sums = a00d6599ff99f501534c1d965a1fd3b4
+
+pkgname = r-askpass
+
