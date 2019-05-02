@@ -2,7 +2,7 @@
 
 pkgname=imdb-rename-git
 _pkgname=imdb-rename
-pkgver=0.1.0.r9.g3c4e327
+pkgver=r26.92a7801
 pkgrel=1
 makedepends=('rust' 'cargo' 'git')
 depends=('openssl')
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -36,8 +36,8 @@ package() {
     install -Dm755 "target/release/imdb-eval" "${pkgdir}/usr/bin/imdb-eval"
 
     # licenses and documentation
-    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-    install -Dm644 "LICENSE-MIT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
-    install -Dm644 "UNLICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/UNLICENSE"
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+    install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
+    install -Dm644 "LICENSE-MIT" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-MIT"
+    install -Dm644 "UNLICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/UNLICENSE"
 }
