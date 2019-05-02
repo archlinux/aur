@@ -1,0 +1,19 @@
+pkgbase = r-rustinr
+	pkgdesc = Rust and R Integration.
+	pkgver = r214.9996184
+	pkgrel = 1
+	url = https://github.com/rustr/rustinr
+	arch = any
+	license = Apache License 2.0
+	makedepends = git
+	makedepends = r-develtools
+	depends = r
+	depends = rustup
+	optdepends = r-testthat
+	provides = r-rustinr
+	conflicts = r-rustinr
+	source = r-rustinr::git+https://github.com/rustr/rustinr.git
+	md5sums = SKIP
+
+pkgname = r-rustinr
+
