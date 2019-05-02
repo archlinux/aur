@@ -9,7 +9,7 @@ pkgbase = r-mime
 	makedepends = gcc-fortran>=8.3.0
 	depends = r>=3.5.0
 	provides = r-mime
-	source = https://cran.r-project.org/src/contrib/mime_0.6.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/mime/mime_0.6.tar.gz
 	md5sums = a033d88ac9bc733868d145fdc44f8c96
 
 pkgname = r-mime
