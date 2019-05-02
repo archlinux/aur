@@ -1,6 +1,6 @@
 pkgbase = zbectl-git
 	pkgdesc = Utility for managing ZFS Boot Environments in Arch Linux
-	pkgver = v1.0.r22.gc6c7d69
+	pkgver = v2.0.r0.gb0ad491
 	pkgrel = 1
 	url = https://github.com/Finic8/zbectl
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = zbectl-git
 	makedepends = git
 	depends = zfs
 	depends = grub
-	depends = efibootmgr
+	optdepends = efibootmgr: EFI support
 	provides = zbectl
 	source = zbectl-git::git+https://github.com/Finic8/zbectl
 	md5sums = SKIP

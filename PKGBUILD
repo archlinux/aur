@@ -1,19 +1,20 @@
 # Maintainer: Nicolai <Finic8@protonmail.com>
 pkgname=zbectl-git
-pkgver=v1.0.r22.gc6c7d69
+pkgver=v2.0.r0.gb0ad491
 pkgrel=1
 pkgdesc="Utility for managing ZFS Boot Environments in Arch Linux"
 arch=(any)
 url="https://github.com/Finic8/zbectl"
 license=('GPL')
-depends=('zfs' 'grub' 'efibootmgr')
+depends=('zfs' 'grub' )
+optdepends=('efibootmgr: EFI support')
 makedepends=('git')
 provides=('zbectl')
 source=($pkgname::git+https://github.com/Finic8/zbectl)
 md5sums=('SKIP')
 pkgver() {
 	cd "$pkgname"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 package() {
 	cd "$pkgname"
