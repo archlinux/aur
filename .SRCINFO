@@ -1,6 +1,6 @@
 pkgbase = pacaudit
 	pkgdesc = This package audits installed packages against known vulnerabilities. Use after pacman -Syu.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/steffenfritz/pacaudit
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = pacaudit
 	license = GPL3
 	makedepends = go
 	options = !strip
-	source = https://github.com/steffenfritz/pacaudit/archive/v1.0.0.tar.gz
-	sha256sums = ff7983cf99f8654749a642ed7c4a0a41522768d9030d3496c1efe262a9309a90
+	source = https://github.com/steffenfritz/pacaudit/archive/v1.0.1.tar.gz
+	sha256sums = 7b8a2f236596fcff86b824ccac5b1a0124726690ec9c6746c407cbb5c5c2c380
 
 pkgname = pacaudit
 
