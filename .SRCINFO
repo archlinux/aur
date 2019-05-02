@@ -1,6 +1,6 @@
 pkgbase = qtws-base
 	pkgdesc = Standalone web-app container based on qt5-webengine
-	pkgver = 0.9
+	pkgver = 0.91
 	pkgrel = 1
 	url = https://github.com/intersimone999/qtws
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = qtws-base
 	license = GPL3
 	makedepends = git
 	depends = xdg-utils
-	depends = qt5-webengine-widevine
+	depends = qt5-webengine
 	source = git+https://github.com/intersimone999/qtws.git
 	sha256sums = SKIP
 

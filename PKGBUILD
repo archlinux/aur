@@ -2,14 +2,14 @@
 
 pkgname=qtws-base
 _gitname=qtws
-_gittag=0.9
+_gittag=0.91
 pkgver=$_gittag
 pkgrel=1
 pkgdesc='Standalone web-app container based on qt5-webengine'
 arch=('i686' 'x86_64')
 url='https://github.com/intersimone999/qtws'
 license=('GPL3')
-depends=('xdg-utils' 'qt5-webengine-widevine')
+depends=('xdg-utils' 'qt5-webengine')
 makedepends=('git')
 source=("git+${url}.git")
 sha256sums=('SKIP')
