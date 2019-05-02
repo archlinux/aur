@@ -4,9 +4,9 @@ pkgdesc="High performance software library for parallel computing with an easy-t
 url='https://arrayfire.com'
 pkgver=3.6.3
 arch=('x86_64')
-pkgrel=1
+pkgrel=2
 license=('BSD')
-depends=('cblas' 'fftw' 'boost-libs' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew' 'glbinding')
+depends=('cblas' 'fftw' 'boost-libs' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew')
 makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'boost' 'python' 'ocl-icd' 'cuda' 'git')
 optdepends=('cuda: Required for using CUDA backend'
             'nvidia-utils: Required for using CUDA backend'
@@ -30,14 +30,15 @@ build() {
 
   cd build
   cmake .. \
+      -DCMAKE_POLICY_DEFAULT_CMP0063=NEW \
+      -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
+      -DGOOGLETEST_VERSION=1.9.0 \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-      -DAF_USE_SYSTEM_FORGE=ON \
       -DAF_WITH_IMAGEIO=ON \
-      -DAF_WITH_GRAPHICS=ON \
       -DAF_BUILD_CPU=ON \
       -DAF_BUILD_OPENCL=ON \
-      -DAF_BUILD_NONFREE=ON \
+      -DAF_WITH_NONFREE=ON \
       -DAF_BUILD_EXAMPLES=ON \
       -DAF_BUILD_DOCS=ON \
       -DCUDA_architecture_build_targets="3.0;3.2;3.5;3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5" \
