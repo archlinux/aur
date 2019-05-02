@@ -14,7 +14,7 @@ depends=('r>=3.5.0')
 makedepends=('gcc-fortran>=8.3.0')
 provides=("${pkgname}")
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('4c494f6159b9f3a67e876044f521c3be')
+md5sums=('a033d88ac9bc733868d145fdc44f8c96')
 
 build(){
     R CMD INSTALL ${_pkgtar} -l $srcdir

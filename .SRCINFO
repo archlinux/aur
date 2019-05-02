@@ -10,7 +10,7 @@ pkgbase = r-mime
 	depends = r>=3.5.0
 	provides = r-mime
 	source = https://cran.r-project.org/src/contrib/mime_0.6.tar.gz
-	md5sums = 4c494f6159b9f3a67e876044f521c3be
+	md5sums = a033d88ac9bc733868d145fdc44f8c96
 
 pkgname = r-mime
 
