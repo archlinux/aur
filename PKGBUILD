@@ -1,6 +1,8 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Alex Branham <alex.branham@gmail.com>
 _cranver=1.7
+_cranname=commonmark
+_pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-commonmark
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
