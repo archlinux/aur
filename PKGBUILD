@@ -15,7 +15,7 @@ depends=('r' )
 
 optdepends=('curl' 'r-spelling' 'r-testthat' 'r-knitr' 'r-jsonlite' 'r-rmarkdown' 'r-magrittr' 'r-httpuv' 'r-webutils')
 
-source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
+source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('5dc0ba314900d339583a73bec13979e7')
 
 build(){
