@@ -9,7 +9,7 @@ pkgbase = r-sys
 	depends = r-unix
 	depends = r-spelling
 	depends = r-testthat
-	source = https://cran.r-project.org/src/contrib/Archive/sys/sys_3.2.tar.gz
+	source = https://cran.r-project.org/src/contrib/sys_3.2.tar.gz
 	md5sums = 190fca32f95385aef9869793c4f6c5c3
 
 pkgname = r-sys
