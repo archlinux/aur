@@ -1,0 +1,23 @@
+pkgbase = r-hunspell
+	pkgdesc = Low level spell checker and morphological analyzer based on the famous hunspell library <https://hunspell.github.io>.
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=hunspell
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-digest
+	depends = r-rcpp
+	optdepends = r-testthat
+	optdepends = r-spelling
+	optdepends = r-pdftools
+	optdepends = r-janeaustenr
+	optdepends = r-wordcloud2
+	optdepends = r-knitr
+	optdepends = r-stopwords
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/hunspell_3.0.tar.gz
+	md5sums = de549396ea2812d351667fe0272bd098
+
+pkgname = r-hunspell
+
