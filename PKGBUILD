@@ -5,7 +5,7 @@
 
 pkgname=home-assistant
 pkgdesc='Open-source home automation platform running on Python 3'
-pkgver=0.91.1
+pkgver=0.92.1
 pkgrel=1
 url="https://home-assistant.io/"
 license=('APACHE')
@@ -22,17 +22,17 @@ depends=('python'
          'python-bcrypt>=3.1.6'
          'python-certifi>=2018.04.16'
          'python-chardet>=3.0.4'
-         'python-cryptography>=2.5'
+         'python-cryptography>=2.6.1'
          'python-distro>=1.3.0'
 	 'python-idna>=2.7'
          'python-jinja>=2.10'
-         'python-pyjwt>=1.6.4'
+         'python-pyjwt>=1.7.1'
          'python-netifaces'
          'python-pip>=8.0.3'
-         'python-pytz>=2018.07'
+         'python-pytz>=2019.1'
          'python-requests>=2.21.0'
-	 'python-ruamel-yaml>=0.15.89'
-	 'python-slugify>=1.2.6'
+	 'python-ruamel-yaml>=0.15.91'
+	 'python-slugify>=3.0.2'
          'python-sqlalchemy>=1.2.11'
          'python-vincenty'
          'python-voluptuous>=0.11.5'
@@ -48,7 +48,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/a
         "home-assistant.sysusers"
         "home-assistant-tmpfile.conf"
         "hass.install")
-sha512sums=('40e14d63160074d623405d6ad9365f04e5aef34034f51008006ffe9af1cdf245478491c3cbe50e5d38b7bfbf3c9fc67b81cf586ae45928a22987bee5c941d6df'
+sha512sums=('ae554f32d004bc8e9d97cd2adb2d4628c453023f4537548717103f4edd85e2ee669fcbd2fd205e47bbeee29d33c15ba316745ae20ecff8f9385908f48fe742c3'
             'fe96bd3df3ba666fd9f127c466d1dd1dd7314db2e57826a2b319c8a0bfad7aedeac398e748f93c6ecd9c2247ebbae196b8b0e7263b8681e2b7aeab6a8bfeab80'
             '100665ac35370c3ccec65d73521568de21cebf9e46af364124778861c94e338e32ad9abb675d3917f97d351dd7867e3ab2e80c26616330ae7cf0d9dc3f13369b'
             '3e93118c84954f829767dc71ce534c5d02c1c95fc8748714c7a2df28a3a297f59962f8fb7cddf721987eb97d62feabb25acda5d38209e365646ca4a4ef4356e3'
