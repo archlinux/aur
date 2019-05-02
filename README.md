@@ -36,11 +36,3 @@ git clone ssh://aur@aur.archlinux.org/direnv.git direnv-archlinux
 cd direnv-archlinux
 git remote set-url --add github https://github.com/direnv/direnv-archlinux.git
 ```
-
-## Another way...
-
-```bash
-bash -c "updpkgsums && makepkg --printsrcinfo > .SRCINFO"
-git push aur
-git push github
-```
