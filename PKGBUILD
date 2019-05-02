@@ -14,7 +14,7 @@ license=('GPL-2' 'GPL-3')
 depends=('r>=3.5.0')
 makedepends=('gcc-fortran>=8.3.0')
 provides=("${pkgname}")
-source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
+source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('a033d88ac9bc733868d145fdc44f8c96')
 
 build(){
