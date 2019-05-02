@@ -1,6 +1,6 @@
 pkgbase = compton-blackcapcoder-git
 	pkgdesc = BlackCapCoder's patched fork of compton
-	pkgver = 0.1_beta2.118.g37e48fd
+	pkgver = 0.1_beta2.120.gdd5837b
 	pkgrel = 1
 	url = https://github.com/BlackCapCoder/compton
 	arch = i686

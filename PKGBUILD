@@ -1,8 +1,8 @@
-# Maintainer: VerruckteFuchs <derverrucktefuchs@gmail.com>
+# Maintainer: VerruckteFuchs <derverrucktefuchs@protonmail.ch>
 # Original compton-git PKGBUILD and aur package maintained by WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=compton-blackcapcoder-git
 _gitname=compton
-pkgver=0.1_beta2.118.g37e48fd
+pkgver=0.1_beta2.120.gdd5837b
 pkgrel=1
 pkgdesc="BlackCapCoder's patched fork of compton"
 arch=(i686 x86_64)
