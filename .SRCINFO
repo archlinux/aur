@@ -15,7 +15,7 @@ pkgbase = r-jsonlite
 	optdepends = r-r.rsp
 	optdepends = r-sp
 	source = https://cran.r-project.org/src/contrib/jsonlite_1.6.tar.gz
-	md5sums = 2a81c261a702fccbbd5d2b32df108f76
+	md5sums = a9cd554c212dd8db93b157932fcb4f8d
 
 pkgname = r-jsonlite
 
