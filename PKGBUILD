@@ -51,15 +51,17 @@ build() {
   ## waybridge is disabled on VIDEO_PLATFORM=sdl
   ## leddec and ltui are missing install rules, so build with install RPATH
   for tool in acfgfs aclip aloadimage leddec ltui shmmon vrbridge; do
-    env -C "src/tools/$tool" \
-      cmake \
+    mkdir -p "build-$tool"
+    env -C "build-$tool" cmake \
       -DCMAKE_INSTALL_PREFIX=/usr \
-      -DARCAN_SHMIF_INCLUDE_DIR=../../shmif \
-      -DARCAN_SHMIF_LIBRARY=../../../build/shmif/libarcan_shmif.so \
-      -DARCAN_TUI_INCLUDE_DIR=../../shmif \
-      -DARCAN_TUI_LIBRARY=../../../build/shmif/libarcan_tui.so \
-      -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON
-    make -C "src/tools/$tool"
+      -DARCAN_SHMIF_INCLUDE_DIR=../src/shmif \
+      -DARCAN_SHMIF_LIBRARY=../build/shmif/libarcan_shmif.so \
+      -DARCAN_SHMIF_EXT_LIBRARY=../build/shmif/libarcan_shmif_ext.so \
+      -DARCAN_TUI_INCLUDE_DIR=../src/shmif \
+      -DARCAN_TUI_LIBRARY=../build/shmif/libarcan_tui.so \
+      -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+      "../src/tools/$tool"
+    make -C "build-$tool"
   done
 }
 
@@ -84,7 +86,7 @@ package_arcan-acfgfs() {
 
   cd "$pkgbase-$pkgver"
 
-  make -C src/tools/acfgfs DESTDIR="$pkgdir" install
+  make -C build-acfgfs DESTDIR="$pkgdir" install
 }
 
 package_arcan-aclip() {
@@ -93,7 +95,7 @@ package_arcan-aclip() {
 
   cd "$pkgbase-$pkgver"
 
-  make -C src/tools/aclip DESTDIR="$pkgdir" install
+  make -C build-aclip DESTDIR="$pkgdir" install
 }
 
 package_arcan-aloadimage() {
@@ -102,7 +104,7 @@ package_arcan-aloadimage() {
 
   cd "$pkgbase-$pkgver"
 
-  make -C src/tools/aloadimage DESTDIR="$pkgdir" install
+  make -C build-aloadimage DESTDIR="$pkgdir" install
 }
 
 package_arcan-shmmon() {
@@ -111,7 +113,7 @@ package_arcan-shmmon() {
 
   cd "$pkgbase-$pkgver"
 
-  make -C src/tools/shmmon DESTDIR="$pkgdir" install
+  make -C build-shmmon DESTDIR="$pkgdir" install
 }
 
 package_arcan-vrbridge() {
@@ -120,7 +122,7 @@ package_arcan-vrbridge() {
 
   cd "$pkgbase-$pkgver"
 
-  make -C src/tools/vrbridge DESTDIR="$pkgdir" install
+  make -C build-vrbridge DESTDIR="$pkgdir" install
 }
 
 package_arcan-leddec() {
@@ -129,7 +131,7 @@ package_arcan-leddec() {
 
   cd "$pkgbase-$pkgver"
 
-  install -Dm755 src/tools/leddec/leddec "$pkgdir/usr/bin/arcan_leddec"
+  install -Dm755 build-leddec/leddec "$pkgdir/usr/bin/arcan_leddec"
 }
 
 package_arcan-ltui() {
@@ -138,5 +140,5 @@ package_arcan-ltui() {
 
   cd "$pkgbase-$pkgver"
 
-  install -Dm755 src/tools/ltui/ltui "$pkgdir/usr/bin/arcan_ltui"
+  install -Dm755 build-ltui/ltui "$pkgdir/usr/bin/arcan_ltui"
 }
