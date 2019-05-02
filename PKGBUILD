@@ -11,7 +11,7 @@ url='https://cran.r-project.org/package=rstudioapi'
 license=('MIT')
 depends=('r' )
 optdepends=('r-testthat' 'r-knitr' 'r-rmarkdown')
-source=("https://cran.r-project.org/src/contrib/rstudioapi_"$_cranver".tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
 md5sums=('7601abbffcade9bdba3aa982c2c2625a')
 
 build(){
