@@ -1,0 +1,13 @@
+pkgbase = r-unix
+	pkgdesc = to system utilities found in most Unix systems.
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=unix
+	arch = x86_64
+	license = MIT
+	depends = r
+	source = https://cran.r-project.org/src/contrib/unix_1.5.tar.gz
+	md5sums = c2964321773cb7f98c0fb37cc6d169a6
+
+pkgname = r-unix
+
