@@ -2,7 +2,7 @@
 
 pkgname=berry
 pkgbase=berry-rel
-pkgver=0.0.5
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="A healthy, bite-sized window manager written over the XLib Library"
 url="https://github.com/JLErvin/berry"
@@ -14,7 +14,7 @@ source=(
 	"https://github.com/JLErvin/berry/archive/${pkgver}.tar.gz"
 )
 sha256sums=(
-	'fe0732f047e5f0be043b456407e7a95aa8bce2597e1af781d63d8f756ba60885'
+	'8ac594be059147bedf3e5624261c4954f803d8b0a59ed764c61d895e899f1a37'
 )
 
 # For later.
