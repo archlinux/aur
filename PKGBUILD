@@ -1,7 +1,7 @@
 # Maintainer: degreeme <suratovvlad@gmail.com>
 
 pkgname=qbittorrent-dark-git
-pkgver=4.1.5.r578.g15298b4b8
+pkgver=4.1.5.r804.gd42fedc6d
 pkgrel=1
 pkgdesc="A dark version of bittorrent client powered by C++, Qt5 and the good libtorrent library (development version)"
 arch=('i686' 'x86_64')
