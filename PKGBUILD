@@ -1,6 +1,6 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Alex Branham <alex.branham@gmail.com>
-_cranver=1.6
+_cranver=1.7
 pkgname=r-commonmark
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,7 +11,7 @@ license=('BSD_2_clause + file LICENSE')
 depends=('r' )
 optdepends=('r-curl')
 source=("https://cran.r-project.org/src/contrib/commonmark_"$_cranver".tar.gz")
-md5sums=('a593fa53ddc7194b0053e1a11fec73d9')
+md5sums=('48bf2251862a494d8ee3acde02dce385')
 
 build(){
     R CMD INSTALL commonmark_"$_cranver".tar.gz -l "$srcdir"
