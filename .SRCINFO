@@ -9,7 +9,7 @@ pkgbase = r-markdown
 	depends = r-mime>=0.3
 	optdepends = r-knitr
 	optdepends = r-rcurl
-	source = https://cran.r-project.org/src/contrib/markdown_0.9.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/markdown/markdown_0.9.tar.gz
 	md5sums = eecc5cce41ffaa3bb0fbede85d59d769
 
 pkgname = r-markdown

@@ -15,7 +15,7 @@ depends=('r' 'r-mime>=0.3')
 
 optdepends=('r-knitr' 'r-rcurl')
 
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
+source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
 md5sums=('eecc5cce41ffaa3bb0fbede85d59d769')
 
 build(){
