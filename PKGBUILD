@@ -1,4 +1,5 @@
-# Maintainer: klardotsh <josh@klar.sh>
+# Maintainer: Caleb Fangmeier <caleb@fangmeier.tech>
+# Contributor: klardotsh <josh@klar.sh>
 
 pkgname=tuijam
 pkgver=0.3.10
