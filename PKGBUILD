@@ -3,7 +3,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 _cranname=jsonlite
 _cranver=1.5
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+_pkgtar=${_cranname}_${_cranver}.zip
 pkgname=r-jsonlite
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
