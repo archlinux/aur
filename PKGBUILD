@@ -1,5 +1,4 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
-# Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Alex Branham <branham@utexas.edu>
 _cranname=markdown
 _cranver=0.9
@@ -15,7 +14,7 @@ depends=('r' 'r-mime>=0.3')
 
 optdepends=('r-knitr' 'r-rcurl')
 
-source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
+source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('eecc5cce41ffaa3bb0fbede85d59d769')
 
 build(){
