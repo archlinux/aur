@@ -2,7 +2,7 @@
 
 pkgname=clickhouse-static
 pkgver=19.5.3.8
-pkgrel=3
+pkgrel=4
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time. Static binary'
 arch=('i686' 'x86_64')
 url='https://clickhouse.yandex/'
@@ -99,7 +99,7 @@ package() {
   cp debian/clickhouse-server.service "${pkgdir}/usr/lib/systemd/system/"
   local ch_binaries="benchmark client compressor copier extract-from-config format local obfuscator performance-test server"
   for bin in $ch_binaries; do
-    ln -s clickhouse "${pkgdir}/usr/bin/${bin}"
+    ln -s clickhouse "${pkgdir}/usr/bin/clickhouse-${bin}"
   done
 }
 
