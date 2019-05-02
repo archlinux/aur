@@ -4,7 +4,7 @@ _cranver=1.1
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-askpass
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform utilities for prompting the user for credentials or a passphrase.'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
