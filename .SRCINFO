@@ -13,7 +13,7 @@ pkgbase = r-xfun
 	optdepends = r-markdown
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/xfun_0.3.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive//
 	md5sums = bd8bac6a329a1c99dd1f9ddb7e80917a
 
 pkgname = r-xfun

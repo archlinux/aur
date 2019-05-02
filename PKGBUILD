@@ -10,7 +10,7 @@ url='https://cran.r-project.org/package=xfun'
 license=('MIT')
 depends=('r' )
 optdepends=('r-testit' 'r-rstudioapi' 'r-tinytex' 'r-mime' 'r-markdown' 'r-knitr' 'r-rmarkdown')
-source=("https://cran.r-project.org/src/contrib/xfun_"$_cranver".tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
 md5sums=('bd8bac6a329a1c99dd1f9ddb7e80917a')
 
 build(){
