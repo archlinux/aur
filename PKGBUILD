@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
 depends=('r' 'r-commonmark' 'r-xml2' 'r-hunspell>=3.0' 'r-knitr')
 optdepends=('r-pdftools')
-source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
+source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('e7758038652a039fc3404f7ba6930a21')
 
 build(){
