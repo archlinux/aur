@@ -4,7 +4,7 @@
 # Based on the PKGBUILD for R
 
 pkgname=r-mkl
-pkgver=3.5.3
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Language and environment for statistical computing and graphics, linked to the Intel(R) MKL."
 arch=('x86_64')
@@ -13,30 +13,29 @@ url='http://www.r-project.org/'
 provides=("r=${pkgver}")
 conflicts=('r' 'microsoft-r-open')
 depends=('intel-mkl'
-        'intel-compiler-base'
-        'intel-fortran-compiler'
-        'bzip2'
-        'desktop-file-utils'
-        'gcc-libs'
-        'gcc-fortran'
-        'icu'
-        'libjpeg'
-        'libpng'
-        'libtiff'
-        'libxmu'
-        'libxt'
-        'ncurses'
-        'openmp'
-        'pango'
-        'pcre'
-        'perl'
-        'readline'
-        'unzip'
-        'xz'
-        'zip'
-        'zlib')
+         'intel-common-libs'
+         'bzip2'
+         'curl'
+         'gcc-libs'
+         'gcc-fortran'
+         'icu'
+         'libjpeg'
+         'libpng'
+         'libtiff'
+         'libxmu'
+         'libxt'
+         'ncurses'
+         'openmp'
+         'pango'
+         'pcre'
+         'perl'
+         'readline'
+         'unzip'
+         'xz'
+         'zip'
+         'zlib')
 makedepends=('java-environment'
-            'tk')
+             'tk')
 optdepends=('texlive-bin: LaTeX sty files'
             'tk: tcl-tk interface')
 backup=('etc/R/Makeconf'
@@ -44,7 +43,7 @@ backup=('etc/R/Makeconf'
         'etc/R/ldpaths'
         'etc/R/repositories'
         'etc/R/javaconf')
-options=('!makeflags' '!emptydirs')
+options=('!emptydirs')
 install=r-mkl.install
 
 source=("http://cran.r-project.org/src/base/R-${pkgver%%.*}/R-${pkgver}.tar.gz"
@@ -52,18 +51,26 @@ source=("http://cran.r-project.org/src/base/R-${pkgver%%.*}/R-${pkgver}.tar.gz"
         'r.png'
         'R.conf')
 
-md5sums=('525e902dd331c387f271692a1537aff8'
-         '44ca875140b148543148b7749c7d6f5e'
+md5sums=('65601eac6d353f7efb5b48c29097c2fb'
+         '2dd24e473eb837016b63a45b638af167'
          '8e0c51650b8a63f110fa7b09e699e9c4'
          '1dfa62c812aed9642f6e4ac34999b9fe')
-sha512sums=('077cbd4bc9f19a3a2485afbd4d8e08e0754ddcb9a10164cbc8478f239d5ed0ffaf6796929f154cce1c8aea549c32d460049fc036dc326174d1dbb0a1ddb5f5ef'
-            '1a90aed5411d72dd3e7708db0cb92c518e656e1a510ece02ad934131e05b8e683b4a36da8d37198263dc19fb2f3f19656c19c01f9b67974f0d7755974076d0b7'
+sha512sums=('b2e17b909b6387abb964492e2e9370f913295ca7ac99bab0e965c43ed3c4635e27468c326fb2bca3c529b03c731b0170d9e777a194ad4d6c5a983c050223d8c8'
+            '658793de80f905f790ef3f8205ce4d78c69eb27eafaf6579056743df7af921824ce2e07561a5c14706a9d6520bbbde0c0ee70c10eccf2d11f7626b00c567562d'
             '1491b01d3d14b86d26c383e00e2305858a52ddd498158c9f7f6b33026ee01f246408b1676cffea73f7783c8c4cf546285705c43c0286adbd75ad77706918b5fe'
             'aae388c5b6c02d9fb857914032b0cd7d68a9f21e30c39ba11f5a29aaf1d742545482054b57ce18872eabb6605bbb359b2fc1e9be5ce6881443fdbdf6b67fab3b')
 
 # Build with the Intel Compiler Suite or GCC/GFortran.
 # Comment the following line to build the package with GCC
 # _CC="icc"
+
+# update dependencies w.r.t the compiler used
+if [[ $_CC = "icc" ]]; then
+  depends+=('intel-compiler-base'
+            'intel-fortran-compiler'
+            'intel-openmp')
+fi
+
 
 prepare() {
   cd R-${pkgver}
@@ -72,6 +79,7 @@ prepare() {
   # DEPRECATED: Fix the config script to look in Makeconf for LDFLAGS
   # sed -i '/LIBS=`eval $query VAR=LIBS`/a\LDFLAGS=`eval $query VAR=LDFLAGS`' src/scripts/config
 }
+
 
 build() {
   cd R-${pkgver}
@@ -113,16 +121,16 @@ build() {
     export FFLAGS="${_intel_cc_opt}"
     export FCFLAGS="${_intel_cc_opt}"
   else
-    _gcc_opt=" -O3 -m64 -march=native -I${MKLROOT}/include"
+    _gcc_opt=" -m64 -I${MKLROOT}/include"
     # export LDFLAGS=" -fopenmp"
 
     # Dynamic Linking
     _mkllibs=" -L${MKLROOT}/lib/${_intel_arch} \
       -Wl,--no-as-needed \
       -l${_gfortran_lib} \
-      -lmkl_intel_thread \
+      -lmkl_gnu_thread \
       -lmkl_core \
-      -liomp5 \
+      -lgomp \
       -lpthread \
       -lm \
       -ldl"
@@ -133,10 +141,10 @@ build() {
     export LD="ld"
     export F77="gfortran"
     export FC="gfortran"
-    export CFLAGS="${_gcc_opt}"
-    export CXXFLAGS="${_gcc_opt}"
-    export FFLAGS="${_gcc_opt}"
-    export FCFLAGS="${_gcc_opt}"
+    export CFLAGS="${_gcc_opt} $CFLAGS"
+    export CXXFLAGS="${_gcc_opt} $CXXFLAGS"
+    export FFLAGS="${_gcc_opt} $FFLAGS"
+    export FCFLAGS="${_gcc_opt} $FCFLAGS"
   fi
 
   ./configure  --prefix=/usr \
@@ -163,10 +171,12 @@ build() {
   make shared
 }
 
+
 check() {
   cd R-${pkgver}
   make check-recommended
 }
+
 
 package() {
   cd R-${pkgver}
