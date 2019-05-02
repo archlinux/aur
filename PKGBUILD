@@ -1,28 +1,32 @@
 # Maintainer: Pedro Henrique <pedro00dk@gmail.com>
 pkgname=overgrive
-pkgver=3.2.3
-pkgrel=2
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="A complete Google Drive™ desktop client solution for Linux"
 arch=('x86_64')
 url="https://www.thefanclub.co.za/overgrive"
 license=("unknown")
 depends=(
-    libnotify libappindicator-gtk3 python2 python2-pyinotify python2-gobject python2-virtualenv
+    # original overgrive dependencies
+    # libnotify python3 python-oauth2client python-pyinotify python-pip python-gobject libappindicator-gtk3
+    #
+    # I removed python-pip package not to have any global python package that isn't a system package
+    libnotify python3 python-oauth2client python-pyinotify python-gobject libappindicator-gtk3
 )
 provides=("overgrive")
 conflicts=("overgrive")
 install="overgrive.install"
 changelog=
 source=(
-    "https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.2.3-0-any.pkg.tar.xz"
+    "https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.3.0-0-any.pkg.tar.xz"
 )
-noextract=("overgrive-3.2.3-0-any.pkg.tar.xz")
-md5sums=("6d7cc554e39b6ea399ff88358a58eb78")
+noextract=("overgrive-3.3.0-0-any.pkg.tar.xz")
+md5sums=("6304942914a53af282f0ac27e285275b")
 prepare() {
-    tar --extract --file='./overgrive-3.2.3-0-any.pkg.tar.xz'
-    rm -- './overgrive-3.2.3-0-any.pkg.tar.xz'
+    tar --extract --file='./overgrive-3.3.0-0-any.pkg.tar.xz'
+    rm -- './overgrive-3.3.0-0-any.pkg.tar.xz'
     sed --in-place -- \
-        's+Exec=python2+Exec=/opt/thefanclub/overgrive/venv/bin/python2+g' \
+        's+Exec=python3+Exec=/opt/thefanclub/overgrive/venv/bin/python3+g' \
         './usr/share/applications/overgrive.desktop'
 }
 package() {

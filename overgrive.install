@@ -1,15 +1,32 @@
 post_install() {
-    virtualenv2 --system-site-packages /opt/thefanclub/overgrive/venv
-    /opt/thefanclub/overgrive/venv/bin/python2 -m pip install --upgrade google-api-python-client
-    /opt/thefanclub/overgrive/venv/bin/python2 -m pip install --upgrade oauth2client
-	sudo glib-compile-schemas /usr/share/glib-2.0/schemas
+    python3 -m venv --system-site-packages /opt/thefanclub/overgrive/venv
+    
+    # Install Google API Client for Python3 (for the virtualenv)
+    /opt/thefanclub/overgrive/venv/bin/pip3 install --upgrade google-api-python-client
+
+    # Recomplie Schemas for good measure
+    if [ -f /usr/bin/glib-compile-schemas ]
+    then
+        /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
+    fi
+
+    # Choose cpython interpreter for overgrive and copy correct compiled version and remove folder
+    if [ -d /opt/thefanclub/overgrive/__pycache__ ]
+    then
+        cp /opt/thefanclub/overgrive/__pycache__/$(ls /opt/thefanclub/overgrive/__pycache__ |  grep $(python3 -V | cut -d' ' -f2 | cut -d'.' -f1-2 | sed 's/\.//g')) /opt/thefanclub/overgrive/overgrive
+        rm -R /opt/thefanclub/overgrive/__pycache__
+        chmod 0755 /opt/thefanclub/overgrive/overgrive
+    fi
 }
+
 post_upgrade() {
 	post_install
 }
+
 post_remove() {
     sudo rm -rf /opt/thefanclub/overgrive/
-    if [ -z "$(ls -A /opt/thefanclub/)" ]; then
+    if [ -z "$(ls -A /opt/thefanclub/)" ]
+    then
         sudo rmdir /opt/thefanclub/
     fi
 }
