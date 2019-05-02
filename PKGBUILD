@@ -2,16 +2,16 @@
 
 pkgname=mendeleydesktop-dev
 pkgshortname=mendeleydesktop
-pkgver=1.19.4_dev2
+pkgver=1.19.5 #1.19.4_dev2
 pkgrel=1
 pkgdesc="Academic software for managing and sharing research papers (desktop client)"
 url=https://www.mendeley.com/release-notes/development/
 arch=(x86_64)
-depends=(qt5-webengine qt5-svg qt5-webkit)
+depends=(qt5-svg qt5-webkit)
 conflicts=(mendeleydesktop)
 license=(custom:mendeley_eula)
 install=mendeleydesktop.install
-sha256sums=('0309b90a1630ee015abd393e2b39267a3e74346647ddc2c17e08afb2ef4ac03b' '4603511767b23ba44820b1742e82043a667822146bcd3ebc8e9bdcfdb87ed050')
+sha256sums=('5212c9ce9485f2eb4f429f0cf00cb4af5ac95323885bca4c942a7b400228271c' '4603511767b23ba44820b1742e82043a667822146bcd3ebc8e9bdcfdb87ed050')
 
 if which gconftool-2 &>/dev/null;then
   depends=(${depends[@]} gconf)

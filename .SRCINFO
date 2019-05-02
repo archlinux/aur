@@ -1,19 +1,18 @@
 pkgbase = mendeleydesktop-dev
 	pkgdesc = Academic software for managing and sharing research papers (desktop client)
-	pkgver = 1.19.4_dev2
+	pkgver = 1.19.5
 	pkgrel = 1
 	url = https://www.mendeley.com/release-notes/development/
 	install = mendeleydesktop.install
 	arch = x86_64
 	license = custom:mendeley_eula
-	depends = qt5-webengine
 	depends = qt5-svg
 	depends = qt5-webkit
 	depends = gconf
 	conflicts = mendeleydesktop
-	source = http://desktop-download.mendeley.com/download/linux/mendeleydesktop-1.19.4-dev2-linux-x86_64.tar.bz2
+	source = http://desktop-download.mendeley.com/download/linux/mendeleydesktop-1.19.5-linux-x86_64.tar.bz2
 	source = mendeleydesktop.install
-	sha256sums = 0309b90a1630ee015abd393e2b39267a3e74346647ddc2c17e08afb2ef4ac03b
+	sha256sums = 5212c9ce9485f2eb4f429f0cf00cb4af5ac95323885bca4c942a7b400228271c
 	sha256sums = 4603511767b23ba44820b1742e82043a667822146bcd3ebc8e9bdcfdb87ed050
 
 pkgname = mendeleydesktop-dev
