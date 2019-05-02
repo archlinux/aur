@@ -29,8 +29,5 @@ package() {
             perl-io-stringy perl-lwp-protocol-https perl-html-treebuilder-xpath
             perl-www-mechanize perl-xml-xpathengine sh)
 
-  cd epfl-scripts
-  for s in epfl-vpn gnupaste pastegnugen.pl tl.pl velo.pl; do
-    install -Dm 755 bin/"$s" "$pkgdir"/usr/bin/"$s"
-  done
+  install -Dm755 -t "$pkgdir"/usr/bin epfl-scripts/bin/*
 }
