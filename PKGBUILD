@@ -5,7 +5,7 @@
 pkgname=conky-lua-archers
 _pkgname=conky
 pkgver=1.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, light-weight system monitor for X with lua enabled for Arch based distros"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky"
@@ -25,6 +25,7 @@ depends=(
 	'libxinerama'
 	'libxml2'
 	'libxnvctrl'
+	'lua'
 	'lua51'
 	'tolua++'
 	'wireless_tools'
