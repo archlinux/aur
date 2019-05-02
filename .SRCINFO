@@ -8,7 +8,7 @@ pkgbase = r-highr
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-testit
-	source = https://cran.r-project.org/src/contrib/highr_0.8.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/highr/highr_0.8.tar.gz
 	md5sums = 59544c43d895df8ef8e6cbdfa5be9f73
 
 pkgname = r-highr
