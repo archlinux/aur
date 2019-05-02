@@ -5,7 +5,7 @@
 
 pkgname=slack-desktop-dark
 pkgver=3.3.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Slack Desktop (Beta) for Linux, with dark theme patch"
 arch=('x86_64')
 url="https://slack.com/downloads"
@@ -15,12 +15,12 @@ depends=('alsa-lib' 'gconf' 'gtk3' 'libcurl-compat' 'libsecret' 'libxss'
 optdepends=('gnome-keyring')
 conflicts=('slack-desktop')
 source=("https://downloads.slack-edge.com/linux_releases/${pkgname%-dark}-${pkgver}-amd64.deb"
-        "https://raw.githubusercontent.com/laCour/slack-night-mode/56d2007b5ba9f1628a44af6edf5dbdf74cf92278/css/raw/black.css"
+		"https://raw.githubusercontent.com/Nockiro/slack-black-theme/13a638fe11e58b4d5aad9dc4f38c904b2f8a600e/black.css"
 		"darkify_slack.js"
     	"${pkgname}.patch")
 noextract=("${pkgname%-dark}-${pkgver}-amd64.deb")
 sha256sums=('37042b2172edf1af02cbe48660800c355e0b16f8f8f5d1257525657ff72f8308'
-            'aa0571363a23d1398c7b4014dd892bd90b153c979eb9b33efab1b5e46e2546ec'
+            '0b83569f2a4ac6f033f1c20fb8c1aef2a5c526da192299bb47289f9468a4ffcc'
             '4e25e00be82bf2809f4157e17a969109d3c0241efe9a37a960a055aa6b52fd32'
             'c952eb32dd59beff9fc5374853b04acde4a60ed8c39934fcd0b66829455d594d')
 
