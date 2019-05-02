@@ -16,7 +16,7 @@ pkgbase = r-hunspell
 	optdepends = r-knitr
 	optdepends = r-stopwords
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/hunspell_3.0.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/hunspell/hunspell_3.0.tar.gz
 	md5sums = de549396ea2812d351667fe0272bd098
 
 pkgname = r-hunspell

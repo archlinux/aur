@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
 depends=('r' 'r-digest' 'r-rcpp')
 optdepends=('r-testthat' 'r-spelling' 'r-pdftools' 'r-janeaustenr' 'r-wordcloud2' 'r-knitr' 'r-stopwords' 'r-rmarkdown')
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
+source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
 md5sums=('de549396ea2812d351667fe0272bd098')
 
 build(){
