@@ -10,7 +10,7 @@ url='https://cran.r-project.org/package=tinytex'
 license=('MIT')
 depends=('r' 'r-xfun>=0.3')
 optdepends=('r-testit' 'r-rstudioapi')
-source=("https://cran.r-project.org/src/contrib/tinytex_"$_cranver".tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
 md5sums=('d0dacfe98b6d0e06cbcb5b22216f0469')
 
 build(){

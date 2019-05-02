@@ -9,7 +9,7 @@ pkgbase = r-tinytex
 	depends = r-xfun>=0.3
 	optdepends = r-testit
 	optdepends = r-rstudioapi
-	source = https://cran.r-project.org/src/contrib/tinytex_0.8.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive//
 	md5sums = d0dacfe98b6d0e06cbcb5b22216f0469
 
 pkgname = r-tinytex
