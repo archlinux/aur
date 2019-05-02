@@ -1,7 +1,7 @@
 # Maintainer: degreeme <suratovvlad@gmail.com>
 
 pkgname=keepassx-dark-git
-pkgver=2.0.3.r82.gd78300d
+pkgver=2.0.3.r84.g0d0c630
 pkgrel=1
 pkgdesc="It is an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
