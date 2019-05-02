@@ -1,6 +1,6 @@
 pkgbase = linux-cdown-mmots-git
 	pkgver = 5.1.0.rc6.mm1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cdown/linux-mmots
 	arch = x86_64
 	license = GPL2
@@ -12,6 +12,7 @@ pkgbase = linux-cdown-mmots-git
 	makedepends = git
 	makedepends = python-sphinx
 	makedepends = graphviz
+	makedepends = python-sphinx_rtd_theme
 	options = !strip
 	source = archlinux-linux::git+https://github.com/cdown/linux-mmots#branch=dogfooding
 	source = config

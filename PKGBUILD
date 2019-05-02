@@ -5,11 +5,11 @@
 pkgbase=linux-cdown-mmots-git               # Build stock -ARCH kernel
 _srcver=5.1.0-rc6-mm1
 pkgver=${_srcver//-/.}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/cdown/linux-mmots"
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
+makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz python-sphinx_rtd_theme)
 options=('!strip')
 _srcname=archlinux-linux
 source=(
