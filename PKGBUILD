@@ -1,6 +1,8 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Alex Branham <branham@utexas.edu>
+_cranname=devtools
 _cranver=2.2.0
+_pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-yaml
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,7 +12,7 @@ url='https://cran.r-project.org/package=yaml'
 license=('BSD')
 depends=('r' )
 optdepends=('r-runit')
-source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
+source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('245c28af4248974a445e8a79b7ea2f0f')
 
 build(){
