@@ -1,4 +1,5 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
+# Contributor: Kibouo <csonka.mihaly@hotmail.com>
+# Contributor: Alex Branham <branham@utexas.edu>
 _cranname=highr
 _cranver=0.7
 _pkgtar=${_cranname}_${_cranver}.tar.gz
