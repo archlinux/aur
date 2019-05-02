@@ -11,7 +11,7 @@ url='https://cran.r-project.org/package=git2r'
 license=('GPL2')
 depends=('r' )
 optdepends=('r-getpass')
-source=("https://cran.r-project.org/src/contrib/git2r_"$_cranver".tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/git2r/git2r_"$_cranver".tar.gz")
 md5sums=('81d1d98a00d111807471e43513599939')
 
 build(){
