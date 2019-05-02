@@ -1,4 +1,5 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
+# Contributor: Kibouo <csonka.mihaly@hotmail.com>
+# Contributor: Alex Branham <branham@utexas.edu>
 _cranver=2.2.0
 pkgname=r-yaml
 pkgver=${_cranver//[:-]/.}
