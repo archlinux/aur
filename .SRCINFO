@@ -1,7 +1,7 @@
 pkgbase = tuijam
 	pkgdesc = A fancy TUI client for Google Play Music
-	pkgver = 0.3.4
-	pkgrel = 2
+	pkgver = 0.3.10
+	pkgrel = 1
 	url = https://github.com/cfangmeier/tuijam
 	arch = any
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = tuijam
 	depends = pygobject-devel
 	provides = tuijam
 	conflicts = tuijam-git
-	source = tuijam-0.3.4.tar.gz::https://github.com/cfangmeier/tuijam/archive/4baed0da39c2db2ebb1e1d1ff1ca3e608c9aa05d.tar.gz
+	source = tuijam-0.3.10.tar.gz::https://github.com/cfangmeier/tuijam/archive/8426f1a5c428e76b58783fdf3634ee70ed827702.tar.gz
 	md5sums = SKIP
 
 pkgname = tuijam
