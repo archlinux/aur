@@ -1,31 +1,29 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
-pkgorg=stack-of-tasks
 pkgname=pinocchio
-_pkgver=2.0.0-alpha
-pkgver=2.0.0_alpha
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
-url="https://github.com/$pkgorg/$pkgname/"
-license=('LGPL3')
-depends=('eigen' 'hpp-fcl' 'eigenpy' 'urdfdom')
-optdepends=('metapod-git' 'lua52' 'cppad' 'cppadcodegen')
-makedepends=('cmake')
-source=("$url/releases/download/v$_pkgver/$pkgname-$_pkgver.tar.gz")
-sha1sums=('618de8a439e3cdc482680269f0b0e30147ace01b')
+url="https://github.com/stack-of-tasks/$pkgname"
+license=('BSD')
+depends=('hpp-fcl' 'eigenpy' 'urdfdom')
+optdepends=('doxygen' 'lua52' 'cppad' 'cppadcodegen')
+makedepends=('cmake' 'eigen')
+source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
+sha256sums=('SKIP' 'SKIP')
+validpgpkeys=('A031AD35058955293D54DECEC45D22EF408328AD')
 
 build() {
-    cd "$pkgname-$_pkgver-dirty"
+    cd "$pkgname-$pkgver"
 
-    # use python3
-    sed -i 's/BOOST_OPTIONAL_COMPONENTS} python/BOOST_OPTIONAL_COMPONENTS} python3'/ CMakeLists.txt
-
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
+        -DBUILD_WITH_AUTODIFF_SUPPORT=ON -DBUILD_WITH_COLLISION_SUPPORT=ON .
     make
 }
 
 package() {
-    cd "$pkgname-$_pkgver-dirty"
+    cd "$pkgname-$pkgver"
     make DESTDIR="$pkgdir/" install
+    install -Dm644 COPYING.LESSER "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
