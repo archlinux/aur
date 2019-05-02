@@ -13,7 +13,7 @@ optdepends=('passed-git: change fieldnames in password files'
             'pass-otp: for OTP support')
 conflicts=('rofi-pass-git')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/carnager/${pkgname}/archive/${pkgver}.tar.gz)
-sha512sums=('f32e96d186bbd32a84e43974628efb9d')
+sha512sums=('28f59696911089c31b3f17bde281e3d79c3f757ecc4da61386719c6cff9b31c0944a2ac549d7838f06c249d4535c0dc107ba684115f15db42a24bfdb2f575437')
 
 
 package() {
