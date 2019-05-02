@@ -19,7 +19,7 @@ pkgver() {
 }
 build(){
     R CMD build r-rustinr
-    R CMD INSTALL r-rustinr_*.tar.gz -l $srcdir
+    R CMD INSTALL rustinr_*.tar.gz -l $srcdir
 }    
 package() {
     install -d "$pkgdir/usr/lib/R/library"
