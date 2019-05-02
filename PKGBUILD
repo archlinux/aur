@@ -1,4 +1,6 @@
-# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer:  Andrew Shelyakov <andrew.shelyakov@ya.ru>
+# Maintainer:  Iliya Ivanov <aur@proforge.org>
+# Contributor: Aleksey Vasilenko <aleksey.vasilenko@gmail.com>
 
 _pkgbase='php'
 pkgbase="${_pkgbase}-zts"
@@ -22,18 +24,18 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 
-pkgver=7.3.4
+pkgver=7.3.5
 pkgrel=1
 arch=('x86_64')
 license=('PHP')
-url='http://www.php.net'
+url='https://secure.php.net'
 makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libsodium' 'libxslt' 'libzip' 'net-snmp'
-             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre' 'libnsl')
+             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre2' 'libnsl')
 checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
         'enchant-2.patch' 'freetype.patch')
-sha256sums=('6fe79fa1f8655f98ef6708cde8751299796d6c1e225081011f4104625b923b83'
+sha256sums=('e1011838a46fd4a195c8453b333916622d7ff5bce4aca2d9d99afac142db2472'
             'SKIP'
             '54d9e3682c6b4621ee654e5c8df4ad95d790a3bccdd284afcff83e5bb7043fb1'
             '80c00b40b0de794d87fb0183cdce2f3c93869c849f7534e8ced42ca6c625f2f7'
@@ -184,7 +186,7 @@ check() {
 
 package_php-zts() {
 	pkgdesc='PHP with ZTS enabled'
-	depends=('libxml2' 'curl' 'libzip' 'pcre' 'argon2')
+	depends=('libxml2' 'curl' 'libzip' 'pcre2' 'argon2')
 	replaces=("${_pkgbase}" 'php-ldap')
 	conflicts=("${_pkgbase}" 'php-ldap')
 	provides=("${_pkgbase}=${pkgver}" "php-ldap=${pkgver}")
@@ -216,7 +218,7 @@ package_php-zts-cgi() {
 
 package_php-zts-apache() {
 	pkgdesc='Apache SAPI for PHP'
-	depends=("${pkgbase}" 'apache')
+	depends=("${pkgbase}" 'apache' 'libnsl')
 	replaces=("${_pkgbase}-apache")
 	conflicts=("${_pkgbase}-apache")
 	provides=("${_pkgbase}-apache=${pkgver}")
@@ -243,7 +245,7 @@ package_php-zts-fpm() {
 
 package_php-zts-embed() {
 	pkgdesc='Embedded PHP SAPI library'
-	depends=("${pkgbase}" 'libsystemd')
+	depends=("${pkgbase}" 'systemd-libs' 'libnsl')
 	replaces=("${_pkgbase}-embed")
 	conflicts=("${_pkgbase}-embed")
 	provides=("${_pkgbase}-embed=${pkgver}")
