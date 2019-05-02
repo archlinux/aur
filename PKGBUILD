@@ -1,4 +1,5 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
+# Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Alex Branham <branham@utexas.edu>
 _cranname=markdown
 _cranver=0.9
