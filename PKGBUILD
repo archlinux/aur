@@ -1,6 +1,6 @@
 # Maintainer: Pierre-Alain TORET <pierre-alain.toret@protonmail.com>
 pkgname=commento
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="A privacy-focused and bloat-free Disqus alternative"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("MIT")
 source=("https://gitlab.com/commento/commento/-/archive/v$pkgver/commento-v$pkgver.tar.gz"
         "commento.sysusers")
 
-sha256sums=('28728b24c6b5c19dce492cc751f48193129ec1160472abcdaac599719362fa61'
+sha256sums=('65396c85358b16d53aec545feefc31a7379d70ace796da27d6133f2821137fc7'
             'ea958a8d23c2a0a10165662a938a085fae475fcedc768617c9b60511a1f71370')
 
 prepare() {
@@ -34,6 +34,7 @@ package() {
 	install -Dm644 etc/linux-systemd/${pkgname}.service "$pkgdir/usr/lib/systemd/system/${pkgname}.service"
 
 	install -Dm755 build/prod/${pkgname} "$pkgdir/usr/bin/${pkgname}"
+	rm -f build/prod/${pkgname}
 
 	mkdir -p "$pkgdir/usr/share"
 	mv build/prod "$pkgdir/usr/share/${pkgname}"
