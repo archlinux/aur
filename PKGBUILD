@@ -1,7 +1,7 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Alex Branham <branham@utexas.edu>
 _cranname=highr
-_cranver=0.7
+_cranver=0.8
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-highr
 pkgver=${_cranver//[:-]/.}
@@ -15,7 +15,7 @@ depends=('r' )
 optdepends=('r-knitr' 'r-testit')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('034dc7c3e699bb3125c0d817dc6479da')
+md5sums=('59544c43d895df8ef8e6cbdfa5be9f73')
 
 build(){
     R CMD INSTALL ${_pkgtar} -l $srcdir
