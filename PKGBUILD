@@ -2,7 +2,7 @@
 # Contributor: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <branham@utexas.edu>
 _cranname=jsonlite
-_cranver=1.5
+_cranver=1.6
 _pkgtar=${_cranname}_${_cranver}.zip
 pkgname=r-jsonlite
 pkgver=${_cranver//[:-]/.}
@@ -15,7 +15,7 @@ depends=('r' )
 
 optdepends=('r-httr' 'r-curl' 'r-plyr' 'r-testthat' 'r-knitr' 'r-rmarkdown' 'r-r.rsp' 'r-sp')
 
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
+source=("https://cran.r-project.org/src/contrib/3.6/${_pkgtar}")
 md5sums=('2a81c261a702fccbbd5d2b32df108f76')
 
 build(){
