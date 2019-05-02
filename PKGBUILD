@@ -3,7 +3,7 @@
 # Contributor: Jochen Schalanda <jochen+aur (-AT-) schalanda.name>
 # Contributor: Ichimonji10 <Ichimonji10@gmail.com>
 pkgname=rbenv
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Simple Ruby version manager"
 arch=('any')
@@ -15,7 +15,7 @@ conflicts=('rbenv-git')
 install="rbenv.install"
 noextract=("v${pkgver}")
 source=("https://github.com/rbenv/rbenv/tarball/v${pkgver}")
-md5sums=('c95109ee20e70bf2955cf1cfffbcde75')
+md5sums=('0788baac70465ed609700834b5826a6c')
 
 build() {
     cd $srcdir
