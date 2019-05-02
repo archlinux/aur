@@ -1,4 +1,5 @@
-# Maintainer: Alex Branham <alex.branham@gmail.com>
+# Contributor: Kibouo <csonka.mihaly@hotmail.com>
+# Contributor: Alex Branham <alex.branham@gmail.com>
 _cranver=1.6
 pkgname=r-commonmark
 pkgver=${_cranver//[:-]/.}
