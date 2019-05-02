@@ -1,7 +1,7 @@
 # Maintainer: Pierre Choffet <peuc@wanadoo.fr>
 
 pkgname=return-to-the-roots-git
-pkgver=r3949.2d1e2c02
+pkgver=r4319.fbaa134b
 pkgrel=1
 pkgdesc="Free/libre implementation of The Settlers II game engine"
 arch=("x86_64")
@@ -71,11 +71,11 @@ build() {
 	cd s25client
 
 	# Force use of system LUA library
-	sed -i 's/set(_contrib_lua_libpath ${_contrib_lua_path}\/lin64)/set(_contrib_lua_libpath \/usr\/lib\/)/' src/libGamedata/CMakeLists.txt
+	sed -i 's/set(_contrib_lua_libpath ${_contrib_lua_path}\/lin64)/set(_contrib_lua_libpath \/usr\/lib\/)/' libs/libGamedata/CMakeLists.txt
 
 	# Build
 	mkdir -p build && cd build
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -RTTR_BINDIR="bin" -DRTTR_DATADIR="share/s25rttr" -DRTTR_LIBDIR="lib/s25rttr" -DRTTR_EXTRA_BINDIR="bin" ..
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -DBUILD_TESTING=Off -RTTR_BINDIR="bin" -DRTTR_DATADIR="share/s25rttr" -DRTTR_LIBDIR="lib/s25rttr" -DRTTR_EXTRA_BINDIR="bin" ..
 	make
 }
 
@@ -93,8 +93,8 @@ package() {
 
 	# Get additional files
 	mkdir -p ${pkgdir}/usr/share/applications
-	cp "${srcdir}/s25client/debian/s25rttr.desktop" "${pkgdir}/usr/share/applications/"
+	cp "${srcdir}/s25client/tools/release/debian/s25rttr.desktop" "${pkgdir}/usr/share/applications/"
 
 	mkdir -p ${pkgdir}/usr/share/pixmaps
-	cp "${srcdir}/s25client/debian/s25rttr.png" "${pkgdir}/usr/share/pixmaps/"
+	cp "${srcdir}/s25client/tools/release/debian/s25rttr.png" "${pkgdir}/usr/share/pixmaps/"
 }

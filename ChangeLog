@@ -1,3 +1,7 @@
+2019-05-02 Pierre Choffet <peuc@wanadoo.fr>
+	* r4319.fbaa134b-1 :
+	Update build after upstream changes
+
 2018-08-31 Pierre Choffet <peuc@wanadoo.fr>
 	* r3949.2d1e2c02-1 :
 	Add siedler2-data package as optional dependency
