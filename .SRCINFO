@@ -1,7 +1,7 @@
 pkgbase = clickhouse-static
 	pkgdesc = An open-source column-oriented database management system that allows generating analytical data reports in real time. Static binary
 	pkgver = 19.5.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://clickhouse.yandex/
 	install = clickhouse-static.install
 	arch = i686

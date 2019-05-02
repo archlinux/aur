@@ -2,7 +2,7 @@
 
 pkgname=clickhouse-static
 pkgver=19.5.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time. Static binary'
 arch=('i686' 'x86_64')
 url='https://clickhouse.yandex/'
@@ -77,6 +77,12 @@ prepare() {
     local contrib_dst="${contrib,,}"
     cp -a "$contrib-"*/. "ClickHouse-$pkgver-stable/contrib/$contrib_dst"
   done
+
+  # Work around new clang release
+  cd ClickHouse-$pkgver-stable || exit
+  if [ -d dbms/programs/clang/Compiler-8.0.0 ]; then
+    cp -a dbms/programs/clang/Compiler-7.0.0 dbms/programs/clang/Compiler-8.0.0
+  fi
 }
 
 build() {
