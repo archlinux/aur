@@ -1,4 +1,5 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
+# Contributor: Kibouo <csonka.mihaly@hotmail.com>
 _cranname=mime
 _cranver=0.6
 _pkgtar=${_cranname}_${_cranver}.tar.gz
