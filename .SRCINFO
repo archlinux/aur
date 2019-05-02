@@ -1,0 +1,15 @@
+pkgbase = r-mvtnorm
+	pkgdesc = Computes multivariate normal and t probabilities, quantiles, random deviates and densities.
+	pkgver = 1.0.10
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mvtnorm
+	arch = any
+	license = GPL-2
+	makedepends = gcc-fortran>=8.3.0
+	depends = r>=3.5.0
+	provides = r-mvtnorm
+	source = https://cran.r-project.org/src/contrib/mvtnorm_1.0-10.tar.gz
+	md5sums = a76285dab2ea61aef7cc8a96340e0fd6
+
+pkgname = r-mvtnorm
+
