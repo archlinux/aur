@@ -1,7 +1,7 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <alex.branham@gmail.com>
-_cranver=2.0.1
+_cranver=2.1.1
 _cranname=testthat
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-testthat
