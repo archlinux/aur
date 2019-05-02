@@ -2,7 +2,7 @@
 # Contributor: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <branham@utexas.edu>
 _cranname=curl
-_cranver=3.2
+_cranver=3.3
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-curl
 pkgver=${_cranver//[:-]/.}
