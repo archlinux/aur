@@ -1,0 +1,18 @@
+pkgbase = funkwhale-cli-git
+	pkgdesc = CLI tool for interacting with funkwhale instances
+	pkgver = v0.5.0+5+g2802466
+	pkgrel = 1
+	url = https://github.com/RodrigoLeiteF/funkwhale-cli
+	arch = x86_64
+	license = GPLv2
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = openssl
+	provides = funkwhale-cli
+	conflicts = funkwhale-cli
+	source = git+https://github.com/RodrigoLeiteF/funkwhale-cli
+	md5sums = SKIP
+
+pkgname = funkwhale-cli-git
+
