@@ -1,6 +1,6 @@
 pkgbase = linux-cdown-mmots-git
 	pkgver = 5.1.0.rc6.mm1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cdown/linux-mmots
 	arch = x86_64
 	license = GPL2
@@ -12,7 +12,6 @@ pkgbase = linux-cdown-mmots-git
 	makedepends = git
 	makedepends = python-sphinx
 	makedepends = graphviz
-	makedepends = python-sphinx_rtd_theme
 	options = !strip
 	source = archlinux-linux::git+https://github.com/cdown/linux-mmots#branch=dogfooding
 	source = config
@@ -40,7 +39,4 @@ pkgname = linux-cdown-mmots-git
 
 pkgname = linux-cdown-mmots-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux-cdown-mmots-git kernel
-
-pkgname = linux-cdown-mmots-git-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-cdown-mmots-git kernel
 
