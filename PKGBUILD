@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=yaloco
-pkgver=1.2.0
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Yet Another Log Colorizer'
 arch=(x86_64)
