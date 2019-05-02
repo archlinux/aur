@@ -1,8 +1,8 @@
 # Maintainer: Philipp Claßen <philipp.classen@posteo.de>
 
 pkgbase="gcc-multilib-trunk-git"
-pkgname=('gcc-multilib-git' 'gcc-libs-multilib-git' 'lib32-gcc-libs-git' 'gcc-objc-multilib-git')
-pkgver=10.0.0.r168552.ade32724c83
+pkgname=('gcc-multilib-git' 'gcc-libs-multilib-git' 'lib32-gcc-libs-git' 'gcc-objc-multilib-git' 'gcc-fortran-multilib-git')
+pkgver=10.0.0.r168586.9766cefe693
 _pkgver_base=10.0.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection developmental snapshot"
@@ -63,7 +63,7 @@ build() {
         --libdir=/usr/lib --libexecdir=/usr/lib \
         --mandir=/usr/share/man --infodir=/usr/share/info \
         --with-bugurl=https://bugs.archlinux.org/ \
-        --enable-languages=c,c++,lto,objc,obj-c++ \
+        --enable-languages=c,c++,fortran,lto,objc,obj-c++ \
         --enable-shared --enable-threads=posix \
         --with-system-zlib --enable-__cxa_atexit \
         --disable-libunwind-exceptions --enable-clocale=gnu \
@@ -202,6 +202,28 @@ EOF
         ln -s ../gcc-libs-multilib/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/gcc-multilib/
 }
 
+package_gcc-fortran-multilib-git() {
+  pkgdesc='Fortran front-end for GCC for multilib'
+  depends=("gcc-multilib-git=$pkgver-$pkgrel")
+  provides=("gcc-fortran-multilib=${pkgver}-${pkgrel}" "gcc-fortran=${pkgver}-${pkgrel}")
+  conflicts=('gcc-fortran')
+  options=('!emptydirs' '!strip')
+
+  cd "${srcdir}/gcc-build"
+  make -C $CHOST/libgfortran DESTDIR="$pkgdir" install-cafexeclibLTLIBRARIES \
+    install-{toolexeclibDATA,nodist_fincludeHEADERS}
+  make -C $CHOST/32/libgfortran DESTDIR=$pkgdir install-cafexeclibLTLIBRARIES \
+    install-{toolexeclibDATA,nodist_fincludeHEADERS}
+  make -C $CHOST/libgomp DESTDIR="$pkgdir" install-nodist_fincludeHEADERS
+  make -C gcc DESTDIR="$pkgdir" fortran.install-{common,man,info}
+  install -Dm755 gcc/f951 "$pkgdir/${_libdir}/f951"
+
+  ln -s gfortran "$pkgdir/usr/bin/f95"
+
+  # Install Runtime Library Exception
+  install -d "$pkgdir/usr/share/licenses/gcc-fortran-multilib/"
+  ln -s ../gcc-libs-multilib/RUNTIME.LIBRARY.EXCEPTION "$pkgdir/usr/share/licenses/gcc-fortran-multilib/"
+}
 
 package_gcc-libs-multilib-git()
 {
