@@ -1,7 +1,7 @@
 # Maintainer: Samuel Walladge <samuel at swalladge dot id dot au>
 
 pkgname=imdb-rename
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 makedepends=('rust' 'cargo')
 depends=('openssl')
@@ -10,7 +10,7 @@ pkgdesc="A command line utility for searching IMDb and renaming your media files
 url="https://github.com/BurntSushi/imdb-rename"
 license=('Unlicense/MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BurntSushi/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('54cbc5db14dea8c84a9e1285b5cad0d7752d8a20577c40aabbf2192998132d6a2ec556b50ee99c9822f7e517736083aebf56809ecb90dfe1bd7100da03fe9dc9')
+sha512sums=('e83e7965062b7407f909ce3688eb1f1ef5d4d9fefc3825176f3615b625e44bbd8292be827708d6dd93e174c806f9229b284e732b55491ec88e50f9589bfbadf4')
 conflicts=('imdb-rename-git')
 
 
