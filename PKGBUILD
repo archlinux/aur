@@ -4,14 +4,19 @@
 _pkgname="lazr.restfulclient"
 pkgname=("python-lazr-restfulclient")
 pkgver="0.14.2"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A programmable client library that takes advantage of the commonalities among lazr.restful web services to provide added functionality on top of wadllib."
 arch=('any')
 url="https://launchpad.net/$_pkgname"
 license=('LGPL3')
 makedepends=('python-setuptools')
-depends=('python-lazr-uri' 'python-zope-interface' 'python-setuptools'
-		 'python-httplib2' 'python-simplejson' 'python-wadllib' 'python-oauth')
+depends=('python-lazr-uri' 
+         'python-six' 
+         'python-distro' 
+         'python-setuptools'
+		 'python-httplib2>=0.7.7' 
+         'python-wadllib>=1.1.4' 
+         'python-oauthlib')
 source=("${pkgname}-${pkgver}.tar.gz::https://launchpad.net/$_pkgname/trunk/$pkgver/+download/$_pkgname-$pkgver.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::https://launchpad.net/$_pkgname/trunk/$pkgver/+download/$_pkgname-$pkgver.tar.gz.asc")
 sha256sums=('1ee3acf3bb38861546251f2f158a5e5df403d93b4b040b08c3f297e24b3a035a'

@@ -1,18 +1,18 @@
 pkgbase = python-lazr-restfulclient
 	pkgdesc = A programmable client library that takes advantage of the commonalities among lazr.restful web services to provide added functionality on top of wadllib.
 	pkgver = 0.14.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/lazr.restfulclient
 	arch = any
 	license = LGPL3
 	makedepends = python-setuptools
 	depends = python-lazr-uri
-	depends = python-zope-interface
+	depends = python-six
+	depends = python-distro
 	depends = python-setuptools
-	depends = python-httplib2
-	depends = python-simplejson
-	depends = python-wadllib
-	depends = python-oauth
+	depends = python-httplib2>=0.7.7
+	depends = python-wadllib>=1.1.4
+	depends = python-oauthlib
 	source = python-lazr-restfulclient-0.14.2.tar.gz::https://launchpad.net/lazr.restfulclient/trunk/0.14.2/+download/lazr.restfulclient-0.14.2.tar.gz
 	source = python-lazr-restfulclient-0.14.2.tar.gz.asc::https://launchpad.net/lazr.restfulclient/trunk/0.14.2/+download/lazr.restfulclient-0.14.2.tar.gz.asc
 	validpgpkeys = AC0A4FF12611B6FCCF01C111393587D97D86500B
