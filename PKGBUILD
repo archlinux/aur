@@ -1,4 +1,5 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
+# Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <branham@utexas.edu>
 _cranname=knitr
