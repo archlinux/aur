@@ -51,6 +51,11 @@ will be attempted with each set of banks.
 
 The first PCR bank spec may be used to indicate a PCR to extend after
 unsealing the key.
+
+If the 'tpmprompt' command line parameter is set, the user will be
+prompted for the parent encryption key password during boot. This password
+will be used while loading the sealed key. This option has no effect when
+the key is stored in NVRAM. Ex: tpmprompt=1
 HELPEOF
 }
 

@@ -3,7 +3,7 @@
 run_hook() {
     local ckeyfile tpmkeypub tpmkeypriv tpmkeyparent tpmkeyindex tpmkeyoffset tpmkeysize
     local tkdev tkarg1 tkarg2 tkarg3 resolved extendargs pcrbanklist pcrextendnum pcrextendalg
-    local tpmload pcrbank unseal unsealout tpmok noop
+    local tpmload parentkey pcrbank unseal unsealout tpmok noop
 
     # This file will be loaded by the encrypt hook
     ckeyfile="/crypto_keyfile.bin"
@@ -100,8 +100,20 @@ EOF
         # Load key object if stored on disk
         tpmload=0
         if [ -z "$tpmkeyindex" ]; then
-            tpm2_load -Q -H "$tpmkeyparent" -r "$tpmkeypriv" -u "$tpmkeypub" -C /tpmobject.ctx >/dev/null 2>&1
-            tpmload=$?
+            if [ -n "$tpmprompt" ]; then
+                echo
+                read -s -p "Enter TPM object password: " parentkey
+                echo
+            fi
+
+            if [ -n "$parentkey" ]; then
+                tpm2_load -Q -H "$tpmkeyparent" -P "$parentkey" -r "$tpmkeypriv" -u "$tpmkeypub" -C /tpmobject.ctx >/dev/null 2>&1
+                tpmload=$?
+                parentkey=""
+            else
+                tpm2_load -Q -H "$tpmkeyparent" -r "$tpmkeypriv" -u "$tpmkeypub" -C /tpmobject.ctx >/dev/null 2>&1
+                tpmload=$?
+            fi
         fi
 
         # Format nvram arguments
@@ -146,9 +158,7 @@ EOF
             err "Could not unseal TPM keyfile"
         fi
 
-        if [ $tpmok -gt 0 ]; then
-            msg ":: LUKS key successfully decrypted by TPM"
-        else
+        if [ $tpmok -eq 0 ]; then
             rm -f "$ckeyfile"
             msg ":: TPM Could not decrypt LUKS key"
         fi

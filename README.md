@@ -13,9 +13,9 @@ kernel at boot or may be stored in TPM non-volatile memory (NVRAM). For example,
 assuming your unencrypted keyfile is at `/root/mykey` and a primary TPM key has
 been persisted to `0x81000001`:
 
-    # tpm2_createpolicy -P -L sha1:0,2,4,7 -f pcr.pol -T device:/dev/tpmrm0
+    # tpm2_createpolicy -P -L sha1:0,2,4,7 -f pcr.pol
     # tpm2_create -H 0x81000001 -g sha256 -G keyedhash -A 0x492 -I /root/mykey \
-      -L pcr.pol -r /boot/mykey.priv -u /boot/mykey.pub -T device:/dev/tpmrm0
+      -L pcr.pol -r /boot/mykey.priv -u /boot/mykey.pub
 
 After generating a TPM-sealed key, both `tpmkey` and `tpmpcr` should be specified
 on the kernel command line.
@@ -60,6 +60,13 @@ Where `[pcrnum]` is the PCR number to extend and `[alg]` is the bank algorithm.
 For example, to extend PCR 8 in the sha1 bank:
 
     tpmpcr=extend:8:sha1|sha1:0,2,7
+
+If the `tpmprompt` command line parameter is set, the user will be prompted for
+the parent encryption key password during boot. This password will be used while
+loading the sealed key. This option has no effect when the key is stored in
+NVRAM.
+
+    tpmprompt=1
 
 You may also need to add the `vfat` file system driver to the `MODULES` array:
 

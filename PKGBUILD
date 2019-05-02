@@ -1,7 +1,7 @@
 # Maintainer: Corey Hinshaw <coreyhinshaw(at)gmail(dot)com>
 
 pkgname=mkinitcpio-tpm2-encrypt
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="mkinitcpio hook that decrypts a TPM2-sealed LUKS keyfile"
 url="https://aur.archlinux.org/packages/mkinitcpio-tpm2-encrypt/"
@@ -11,9 +11,9 @@ depends=('mkinitcpio' 'tpm2-tools')
 source=('install_tpm2'
         'hook_tpm2'
         'README.md')
-sha256sums=('baf4e8d7a5385bdc5dda1a4b8148da510c35d632f27470951ab84c8c82b2e554'
-            'b7a27d9a2e645091b42ba430b30e9bba709129bb7fd90763be99f67d73f4bf56'
-            '153e368c88f6ad45befc6593c7b00995f1656674149d8ec55659ebd6a91a1a51')
+sha256sums=('cb5c9acca16a5ad8d2dbee8aa70f590d57236a0e5ccd0869b770b4535018b2ae'
+            '6886463391529bd42d391cbaa4b202535c44302c6971597dcfbd9371844c3638'
+            '2342a3330b08cf4825c33bc4c26358ee6ef15bfddd9ce517b02a9538dab381a3')
 
 package() {
     install -Dm644 install_tpm2 "${pkgdir}/usr/lib/initcpio/install/tpm2"
