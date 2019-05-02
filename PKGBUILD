@@ -2,7 +2,7 @@
 
 _name=gzdoom
 pkgname=${_name}-git
-pkgver=g4.1pre+7+g3c07485d1
+pkgver=g4.2pre+20+gd1554aed3
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support (git version)'
 arch=('i686' 'x86_64')
@@ -39,6 +39,8 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'square1-wad: The Adventures of Square, Episode 1 game data'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
             'xorg-xmessage: crash dialog (other)')
+optdepends_x86_64=('vulkan-driver: Vulkan renderer'
+                   'vulkan-icd-loader: Vulkan renderer')
 provides=("${_name}")
 conflicts=("${_name}")
 replaces=("${_name}1-git")
