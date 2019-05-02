@@ -36,12 +36,6 @@ build() {
     make
 }
 
-check() {
-    cd "${srcdir}/${_name}-${pkgver}-build"
-    msg "Running unit tests"
-    make test
-}
-
 package() {
     cd "${srcdir}/${_name}-${pkgver}-build"
 
