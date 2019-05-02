@@ -27,7 +27,8 @@ checkdepends=(xorg-server-xvfb)
 provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
-source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#branch=gnome-3-32"
+_commit=e3f3274bbf631c57f9a01b7bead6ebf6374f5be4 # tags/3.32.1^0
+source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
         216.patch
         revert.patch)
