@@ -1,7 +1,7 @@
 # Maintainer: Giusy Margarita <kurmikon at libero dot it>
 
 pkgname=korla-icon-theme
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Korla icon theme suitable for every desktop environment, dark and light versions"
 arch=("any")
@@ -14,7 +14,7 @@ optdepends=(
     "gnome-icon-theme: fallback Gnome icon theme")
 install="$pkgname.install"
 source=("https://github.com/bikass/korla/archive/v$pkgver.tar.gz")
-md5sums=("6be69d8df202dee5db612240608dfb17")
+md5sums=("9fbc297ddb4d983faa1aeedd81183e55")
 
 _iconpath=usr/share/icons
 _iconcache=icon-theme.cache
@@ -29,7 +29,6 @@ package() {
     rm -f "korla-light/$_iconcache"
 
     install -dm755 "$pkgdir/$_iconpath"
-    install -dm755 "$pkgdir/usr/share/doc/$pkgname"
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
     
     # The following --no-preserve=mode option is necessary since the creator works with 
@@ -45,7 +44,4 @@ package() {
     touch -a "$pkgdir/$_iconpath/korla-light/$_iconcache"
     
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 "im1.png" "$pkgdir/usr/share/doc/$pkgname/im1.png"
-    install -Dm644 "im2.png" "$pkgdir/usr/share/doc/$pkgname/im2.png"
 }
