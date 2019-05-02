@@ -1,12 +1,12 @@
 # Maintainer      :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
-# Upstream author :  Luke Smith <lukesmithxyz on git(hub|lab).com>
+# Upstream author :  Luke Smith <https://git{hub,lab}.com/lukesmithxyz/>
 
 pkgname='mutt-wizard-git'
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
   printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r522.g6faf224
+pkgver=r549.g2ddfceb
 pkgrel=1
 
 pkgdesc='A simple interface to auto-configure neomutt and isync with safe passwords'
@@ -17,16 +17,17 @@ license=('GPL3')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
+makedepends=('git')
 depends=('neomutt' 'isync' 'msmtp' 'pass')
 optdepends=('w3m: view HTML email and images inside of neomutt’s TUI'
-            'lynx: view HTML email and images inside of neomutt’s TUI'
-            'links: view HTML email and images inside of neomutt’s TUI'
-            'elinks: view HTML email and images inside of neomutt’s TUI'
+            'lynx: view HTML email inside of neomutt’s TUI'
+            'links: view HTML email inside of neomutt’s TUI'
+            'elinks: view HTML email inside of neomutt’s TUI'
             'urlview: list URLs found in mails to open them in a browser'
             'abook: contact store and tab completion'
-            'cronie: auto-sync mails (alt.: fcron)'
-            'fcron: auto-sync mails (alt.: cronie)')
-makedepends=('git')
+            'cronie: auto-sync mails - alt.: fcron'
+            'fcron: auto-sync mails - alt.: cronie'
+            'pam-gnupg: automatically unlock gpg keys at session login')
 
 options=('zipman')
 
