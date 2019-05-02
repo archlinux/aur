@@ -7,7 +7,7 @@ pkgbase = r-askpass
 	license = MIT
 	depends = r
 	depends = r-sys
-	source = https://cran.r-project.org/src/contrib/askpass_1.1.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/askpass/askpass_1.1.tar.gz
 	md5sums = a00d6599ff99f501534c1d965a1fd3b4
 
 pkgname = r-askpass
