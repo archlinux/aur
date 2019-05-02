@@ -1,7 +1,7 @@
 # Maintainer: Kibouo <csonka.mihaly@hotmail.com>
 pkgname=r-rustinr
 pkgver=r214.9996184
-pkgrel=2
+pkgrel=3
 pkgdesc='Rust and R Integration.'
 arch=('any')
 url='https://github.com/rustr/rustinr'

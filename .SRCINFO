@@ -1,7 +1,7 @@
 pkgbase = r-rustinr
 	pkgdesc = Rust and R Integration.
 	pkgver = r214.9996184
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rustr/rustinr
 	arch = any
 	license = Apache License 2.0
