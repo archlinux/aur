@@ -1,6 +1,6 @@
 pkgbase = libdart
 	pkgdesc = Dynamic Animation and Robotics Toolkit
-	pkgver = 6.7.3
+	pkgver = 6.8.3
 	pkgrel = 1
 	url = https://dartsim.github.io
 	arch = i686
@@ -10,21 +10,22 @@ pkgbase = libdart
 	makedepends = doxygen
 	depends = assimp
 	depends = boost
-	depends = eigen>=3
+	depends = eigen
 	depends = fcl
-	depends = flann
-	depends = glut
 	depends = libccd
-	depends = libgl
-	depends = urdfdom
-	depends = octomap
+	depends = freeglut
 	optdepends = bullet: Bullet collision detection support
-	optdepends = ode: ODE collision detection support
 	optdepends = coin-or-ipopt: Ipopt optimizer support
+	optdepends = flann: planning module support
 	optdepends = nlopt: NLopt optimizer support
+	optdepends = octomap: voxel grid shape support
+	optdepends = ode: ODE collision detection support
 	optdepends = openscenegraph: required for dart-gui-osg
-	source = https://github.com/dartsim/dart/archive/v6.7.3.tar.gz
-	sha256sums = bacee34f6c848f6bf777d2ea0c85d2000f0a831c6f5827d3d6a5b922bc48fcf8
+	optdepends = pagmo: pagmo optimizer support
+	optdepends = tinyxml2: parser support
+	optdepends = urdfdom: urdf parser support
+	source = https://github.com/dartsim/dart/archive/v6.8.3.tar.gz
+	sha256sums = 0d335fb84ccaf375752c9e04121af1fcae201afe3da41b87550906f6a13f7cca
 
 pkgname = libdart
 

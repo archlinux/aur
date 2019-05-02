@@ -1,3 +1,2 @@
-/src/
-/pkg/
-/*.tar.xz
+# Exclude all files
+/*
