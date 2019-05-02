@@ -11,6 +11,7 @@ pkgbase = edex-ui-git
 	license = GPL3
 	makedepends = npm
 	makedepends = git
+	makedepends = rsync
 	depends = gtk3
 	depends = libxss
 	depends = nss
