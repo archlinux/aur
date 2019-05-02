@@ -14,7 +14,7 @@ depends=('r' )
 
 optdepends=('r-knitr' 'r-testit')
 
-source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
+source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('59544c43d895df8ef8e6cbdfa5be9f73')
 
 build(){
