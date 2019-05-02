@@ -2,13 +2,13 @@
 pkgname="stm32cubeide"
 pkgver=1.0.0
 _pkgver_ext="$pkgver"_2872_20190423_2022
-pkgrel=2
+pkgrel=3
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 depends=('java-runtime' 'jlink-software-and-documentation')
 optdepends=('stlink')
 conflicts=()
-url="https://my.st.com/content/my_st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-ides/stm32cubeide.html"
+url="https://www.st.com/en/development-tools/stm32cubeide.html"
 license=('Commercial')
 options=(!strip)
 
@@ -72,7 +72,10 @@ package() {
         msg2 'Installing desktop shortcuts'
 	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	
-	msg2 'Cleaning build folder'
-	rm -rf "${srcdir}/build"
+	#msg2 'Cleaning build folder'
+	#rm -rf "${srcdir}/build"
+	
+	msg2 'Prevent automatical *.desktop file replacement by not functional one'
+	mv ${pkgdir}/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ide_1.0.0.201904231240/resources/project_importer/linux/mimetype/stm32cubeide.desktop.template ${pkgdir}/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ide_1.0.0.201904231240/resources/project_importer/linux/mimetype/stm32cubeide.desktop.template.old
 }
 
