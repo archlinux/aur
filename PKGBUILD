@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
 depends=('r' 'r-unix' 'r-spelling' 'r-testthat')
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
+source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
 md5sums=('190fca32f95385aef9869793c4f6c5c3')
 
 build(){
