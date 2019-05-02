@@ -16,7 +16,7 @@ depends=('r' )
 optdepends=('curl' 'r-spelling' 'r-testthat' 'r-knitr' 'r-jsonlite' 'r-rmarkdown' 'r-magrittr' 'r-httpuv' 'r-webutils')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('c2d9d8634409a92c3092b79a54d53a10')
+md5sums=('5dc0ba314900d339583a73bec13979e7')
 
 build(){
     R CMD INSTALL ${_pkgtar} -l $srcdir
