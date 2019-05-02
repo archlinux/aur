@@ -1,29 +1,50 @@
-# Maintainer: McNoggins
+# Previous Maintainer: McNoggins
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=pagmo2
-pkgver=2.6
+pkgver=2.10
 pkgrel=1
 pkgdesc="Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model (version 2)"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/esa/pagmo2"
 license=('GPLv3')
 depends=('boost')
-optdepends=('gsl: Mathematical operations (symbolic)'
-	    'blas: GSL CBLAS functions'
-	    'nlopt: Nonlinear optimization algorithms'
-	    'python: PyGMO support')
+optdepends=('eigen: library for matrix math'
+            'coin-or-ipopt: Ipopt optimizer support'
+            'nlopt: NLopt optimizer support')
 makedepends=('cmake')
-source=(https://github.com/esa/pagmo2/archive/v${pkgver}.tar.gz)
-sha512sums=('fb6d3b3bc5b0d34ea630be4517c3587f0aeb47ba46bfaf8b6926612fef04295b164d4f9a930a468a0251220e8f886a6cfa483f52b1ef542f29c431932801291d')
+_name=pagmo2
+source=(https://github.com/esa/${_name}/archive/v${pkgver}.tar.gz)
+sha512sums=('87417c105bc887439a7a089d3569e7df942584bf4af4c3fe2df738498bf17be99e450e02ef3d0bf1fdfab5d37cd7a2218aed39492215ed49d9a029a19d143794')
+
+_buildtype="Release"
 
 build() {
+    cd "${srcdir}/${_name}-${pkgver}"
 
-cd "${srcdir}/$pkgname-$pkgver"
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .
-  make
+    msg "Starting CMake (build type: ${_buildtype})"
+
+    # Create a build directory
+    mkdir -p "${srcdir}/${_name}-${pkgver}-build"
+    cd "${srcdir}/${_name}-${pkgver}-build"
+
+    cmake \
+        -DCMAKE_BUILD_TYPE="${buildtype}" \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        "${srcdir}/${_name}-${pkgver}"
+
+    msg "Building the project"
+    make
+}
+
+check() {
+    cd "${srcdir}/${_name}-${pkgver}-build"
+    msg "Running unit tests"
+    make test
 }
 
 package() {
-  cd "${srcdir}/$pkgname-$pkgver"
-  make DESTDIR="${pkgdir}" install
-  install -D -m644 COPYING.gpl3 "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.gpl3"
+    cd "${srcdir}/${_name}-${pkgver}-build"
+
+    msg "Installing files"
+    make DESTDIR="${pkgdir}/" install
 }
