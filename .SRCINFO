@@ -1,13 +1,13 @@
 pkgbase = cppad
 	pkgdesc = A C++ Algorithmic Differentiation Package
-	pkgver = 20180000.0
+	pkgver = 20190200.1
 	pkgrel = 1
 	url = https://github.com/coin-or/CppAD
 	arch = any
 	license = GPL2
 	makedepends = cmake
-	source = https://github.com/coin-or/CppAD/archive/20180000.0.tar.gz
-	sha1sums = 962308a5ea77254f7af8f6b50ab6807dfe6d1122
+	source = https://github.com/coin-or/CppAD/archive/20190200.1.tar.gz
+	sha256sums = 0951cfdf6b1ec4c525f1df61b535057a859c1faf580cfef71cb3170b02cfcb21
 
 pkgname = cppad
 
