@@ -12,7 +12,7 @@ depends=('desktop-file-utils' 'gconf' 'hicolor-icon-theme' 'libappindicator-gtk2
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("http://releases.obins.net/occ/linux/deb/ObinslabStarter_${pkgver}_x64.deb")
-sha256sums_x86_64=('d5ad0f5dd9fd26c469fe6c6b229ac1a6081c019dd37096a1104da92f56b64c98')
+sha256sums_x86_64=('c112f5c5ce3aafd82cd1269888a2a7bebf90c6fefa244ef696d2e04bbf432174')
 
 
 package(){
