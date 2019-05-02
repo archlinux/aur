@@ -1,0 +1,16 @@
+pkgbase = r-sys
+	pkgdesc = Drop-in replacements for the base system2() function with fine control and consistent behavior across platforms.
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=sys
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-unix
+	depends = r-spelling
+	depends = r-testthat
+	source = https://cran.r-project.org/src/contrib/sys_3.2.tar.gz
+	md5sums = 190fca32f95385aef9869793c4f6c5c3
+
+pkgname = r-sys
+
