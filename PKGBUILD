@@ -1,8 +1,8 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Alex Branham <branham@utexas.edu>
 _cranname=xfun
-_pkgtar=${_cranname}_${_cranver}.tar.gz
 _cranver=0.6
+_pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-xfun
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
