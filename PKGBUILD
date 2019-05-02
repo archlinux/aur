@@ -11,7 +11,7 @@ _cargo=0.34.0
 
 pkgname=mingw-w64-rust
 _prefix=opt/rust
-pkgver=1.34.0
+pkgver=1.34.1
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
@@ -38,7 +38,7 @@ source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
 noextract=("rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "cargo-${_cargo}-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=('a510b3b7ceca370a4b395065039b2a70297e3fb4103b7ff67b1eff771fd98504'
+sha256sums=('e0efb1e6aba0d4900de57bd2db64e32e7c5b440a95a675d5303839c9a2c3328f'
             'SKIP'
             '6f20343ed73faf5fdfc423bec38a9bb1910a0a962af6f2dddd7184407543ed0e'
             'SKIP'
