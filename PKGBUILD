@@ -11,7 +11,7 @@ url='https://cran.r-project.org/package=testthat'
 license=('MIT')
 depends=('r' 'r-cli' 'r-crayon' 'r-digest' 'r-magrittr' 'r-praise' 'r-r6>=2.2.0' 'r-rlang' 'r-withr>=2.0.0')
 optdepends=('r-covr' 'r-devtools' 'r-knitr' 'r-rmarkdown' 'r-usethis' 'r-xml2')
-source=("https://cran.r-project.org/src/contrib/testthat_"$_cranver".tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
 md5sums=('d35da4e4c876c444058f7d26a10600be')
 
 build(){
