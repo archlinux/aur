@@ -13,7 +13,7 @@ _revert=
 
 
 pkgname=mutter-781835-workaround
-pkgver=3.32.1+3+g9a795d3d0
+pkgver=3.32.1+5+g668c44e66
 pkgrel=1
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -27,7 +27,7 @@ checkdepends=(xorg-server-xvfb)
 provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
-_commit=e3f3274bbf631c57f9a01b7bead6ebf6374f5be4 # tags/3.32.1^0
+_commit=668c44e66bf681ff50c62766ea9d1ca1d0762ec4 # tags/3.32.1^5
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
         216.patch
