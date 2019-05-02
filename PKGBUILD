@@ -1,7 +1,7 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 pkgname=eigenpy
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Bindings between numpy and eigen using boost::python"
 arch=('i686' 'x86_64')
@@ -10,14 +10,12 @@ license=('LGPL3')
 depends=('boost-libs')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen' 'boost' 'python-numpy')
-source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha1sums=('d69a2f5528749973a7cc4b39583ac3b20c34b92b')
+source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
+sha256sums=('SKIP' 'SKIP')
+validpgpkeys=('A031AD35058955293D54DECEC45D22EF408328AD')
 
 build() {
     cd "$pkgname-$pkgver"
-
-    # use python3
-    sed -i 's/BOOST_COMPONENTS python/BOOST_COMPONENTS python3'/ CMakeLists.txt
 
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
     make
