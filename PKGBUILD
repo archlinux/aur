@@ -11,7 +11,7 @@ url='https://cran.r-project.org/package=evaluate'
 license=('MIT')
 depends=('r' )
 optdepends=('r-testthat' 'r-ggplot2')
-source=("https://cran.r-project.org/src/contrib/evaluate_"$_cranver".tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
 md5sums=('c46bc0303c00f1763e0ad6b70108119b')
 
 build(){
