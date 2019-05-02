@@ -6,7 +6,7 @@ pkgbase = r-xfun
 	arch = any
 	license = MIT
 	depends = r
-	source = https://cran.r-project.org/src/contrib/
+	source = https://cran.r-project.org/src/contrib/xfun_.tar.gz
 	md5sums = ac7d495eb47ee60cb954bb046469737e
 
 pkgname = r-xfun
