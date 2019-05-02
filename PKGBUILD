@@ -8,14 +8,14 @@
 
 pkgname=tt-rss-git
 epoch=1
-pkgver=r8329.03c56b04
+pkgver=r9521.ae376bdfb
 pkgrel=1
 pkgdesc='Web-based news feed (RSS/Atom) aggregator (Git version)'
 arch=(any)
 url='http://tt-rss.org/'
 license=(GPL)
 backup=(etc/webapps/tt-rss/config.php)
-depends=(php)
+depends=(php php-intl)
 conflicts=('tt-rss')
 provides=('tt-rss')
 optdepends=('mysql'
