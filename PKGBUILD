@@ -2,8 +2,8 @@
 
 pkgbase="gcc-multilib-trunk-git"
 pkgname=('gcc-multilib-git' 'gcc-libs-multilib-git' 'lib32-gcc-libs-git' 'gcc-objc-multilib-git')
-pkgver=9.0.1.r167730.883c09dd968
-_pkgver_base=9.0.1
+pkgver=10.0.0.r168552.ade32724c83
+_pkgver_base=10.0.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection developmental snapshot"
 arch=('any')
