@@ -1,7 +1,7 @@
 pkgbase = r-openssl
 	pkgdesc = Toolkit for Encryption, Signatures and Certificates Based on OpenSSL
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=openssl
 	arch = x86_64
 	license = MIT
