@@ -2,6 +2,8 @@
 # Contributor: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <alex.branham@gmail.com>
 _cranver=0.13
+_cranname=evaluate
+_pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-evaluate
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,7 +13,7 @@ url='https://cran.r-project.org/package=evaluate'
 license=('MIT')
 depends=('r' )
 optdepends=('r-testthat' 'r-ggplot2')
-source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
+source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('c46bc0303c00f1763e0ad6b70108119b')
 
 build(){
