@@ -1,6 +1,6 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Alex Branham <branham@utexas.edu>
-_cranver=0.3
+_cranver=0.6
 pkgname=r-xfun
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -9,9 +9,8 @@ arch=('any')
 url='https://cran.r-project.org/package=xfun'
 license=('MIT')
 depends=('r' )
-optdepends=('r-testit' 'r-rstudioapi' 'r-tinytex' 'r-mime' 'r-markdown' 'r-knitr' 'r-rmarkdown')
-source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
-md5sums=('bd8bac6a329a1c99dd1f9ddb7e80917a')
+source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
+md5sums=('ac7d495eb47ee60cb954bb046469737e')
 
 build(){
     R CMD INSTALL xfun_"$_cranver".tar.gz -l "$srcdir"
