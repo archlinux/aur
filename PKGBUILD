@@ -1,126 +1,50 @@
-# Maintainer: Joey Dumont <joey.dumont@gmail.com>
+# Previous Maintainer: Joey Dumont <joey.dumont@gmail.com>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=pagmo
-pkgver=1.1.7
-pkgrel=2
-pkgdesc="Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model."
+pkgver=2.10
+pkgrel=1
+pkgdesc="Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model"
 arch=('i686' 'x86_64')
-url="https://github.com/esa/pagmo"
+url="https://github.com/esa/pagmo2"
 license=('GPLv3')
 depends=('boost')
-optdepends=('gsl: Mathematical operations (symbolic)'
-	    'blas: GSL CBLAS functions'
-	    'ipopt: Nonlinear optimization algorithms'
-	    'nlopt: Nonlinear optimization algorithms'
-	    'python: PyGMO support'
-	    'openmpi: MPI Support')
+optdepends=('eigen: library for matrix math'
+            'coin-or-ipopt: Ipopt optimizer support'
+            'nlopt: NLopt optimizer support')
 makedepends=('cmake')
-source=(https://github.com/esa/pagmo/archive/${pkgver}.tar.gz
-        gcc7.patch)
-sha512sums=('502705b9b87bf2607472347bb6d04571b132f1df9864a18448586f03befc86511ca445c78aad7f20a24630bc5671f3c22c3d61a40f7257791759fb996c0fe551'
-            'd070d454bde9e289a1d2d1ee2f08b6a698fb70308949336f5475326cda05d586b0caa9aeba8e5cd75cfa3ff5fd7612f810040bfc71859ee703637c34ba3ac1b2')
+_name=pagmo2
+source=(https://github.com/esa/${_name}/archive/v${pkgver}.tar.gz)
+sha512sums=('87417c105bc887439a7a089d3569e7df942584bf4af4c3fe2df738498bf17be99e450e02ef3d0bf1fdfab5d37cd7a2218aed39492215ed49d9a029a19d143794')
 
-# Build type
-_buildtype="RelWithDebInfo"
+_buildtype="Release"
 
-# Build directory
-_builddir="${pkgname}-build"
-
-_cmake_options=(
-  -D BUILD_MAIN=OFF
-  -D BUILD_EXAMPLES=OFF
-  -D ENABLE_TESTS=OFF
-  -D INSTALL_HEADERS=ON
-  -DCMAKE_CXX_FLAGS='-std=c++11'
-  -DCMAKE_C_FLAGS='-std=c11'
-)
-
-check_optdepends() {
-    # Check if gsl is installed
-    if (pacman -Qqs gsl >/dev/null) ; then
-        msg "Enabling GSL support"
-        _cmake_options=(${_cmake_options[@]} -D ENABLE_GSL=ON)
-    else
-        msg "Disabling GSL support"
-    fi
-
-    # Check if ipopt is installed
-    if (pacman -Qqs ipopt >/dev/null) ; then
-        msg "Enabling Ipopt support"
-        _cmake_options=(${_cmake_options[@]} -D ENABLE_IPOPT=ON)
-    else
-        msg "Disabling Ipopt support"
-    fi
-
-    # Check if NLopt is installed
-    if (pacman -Qqs nlopt >/dev/null) ; then
-        msg "Enabling NLopt support"
-        _cmake_options=(${_cmake_options[@]} -D ENABLE_NLOPT=ON)
-    else
-        msg "Disabling NLopt support"
-    fi
-
-    # Check if OpenMPI is installed.
-    if (pacman -Qqs openmpi >/dev/null); then
-       msg "Enabling OpenMPI support"
-       _cmake_options=(${_cmake_options[@]} -D ENABLE_MPI=ON)
-    else
-	msg "Disabling OpenMPI support"
-    fi
-
-    # Check if Python 3 is installed
-    if (pacman -Qqs python >/dev/null) ; then
-        msg "Enabling PyGMO build"
-        _cmake_options=(${_cmake_options[@]} -D BUILD_PYGMO=ON 
-	                                     -D PYGMO_PYTHON_VERSION=3
-					     -D PYTHON_INCLUDE_DIR=`python-config --includes | sed 's/\s.*$//' | sed 's/-I//'` 
-					     -D PYTHON_EXECUTABLE=/usr/bin/python)
-    else
-        msg "Disabling PyGMO build"
-    fi
-}
-
-prepare() {
-    cd $srcdir/$pkgname-$pkgver
-
-    # Patch based off this:
-    # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=853453#19
-    patch -p1 -i ../gcc7.patch
-}
-
-# Build the project
 build() {
-    # Check optional dependencies
-    check_optdepends
+    cd "${srcdir}/${_name}-${pkgver}"
 
-    msg "Starting CMake (build type = ${_buildtype})"
+    msg "Starting CMake (build type: ${_buildtype})"
 
     # Create a build directory
-    cd "${srcdir}"
-    mkdir -p "${_builddir}"
-    cd "${_builddir}"
+    mkdir -p "${srcdir}/${_name}-${pkgver}-build"
+    cd "${srcdir}/${_name}-${pkgver}-build"
 
-    # Run CMake in release
-    cmake -DCMAKE_BUILD_TYPE="${_buildtype}" \
-	  -DCMAKE_INSTALL_PREFIX="/usr" \
-          ${_cmake_options[@]} \
-	  ${srcdir}/${pkgname}-${pkgver}
+    cmake \
+        -DCMAKE_BUILD_TYPE="${buildtype}" \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        "${srcdir}/${_name}-${pkgver}"
 
-    # Compile the library
     msg "Building the project"
     make
 }
 
-# Run unit tests
 check() {
+    cd "${srcdir}/${_name}-${pkgver}-build"
     msg "Running unit tests"
-    cd "${srcdir}/${_builddir}"
     make test
 }
 
-# Create the package
 package() {
-    cd "${srcdir}/${_builddir}"
+    cd "${srcdir}/${_name}-${pkgver}-build"
 
     msg "Installing files"
-    make --silent DESTDIR="${pkgdir}/" install
+    make DESTDIR="${pkgdir}/" install
 }
