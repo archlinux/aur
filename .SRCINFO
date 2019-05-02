@@ -32,7 +32,7 @@ pkgbase = r-knitr
 	optdepends = r-dbi
 	optdepends = r-showtext
 	optdepends = r-tibble
-	source = https://cran.r-project.org/src/contrib/knitr_1.22.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/knitr/knitr_1.22.tar.gz
 	md5sums = da6b7c721871d7b079fb5f279f00fe5b
 
 pkgname = r-knitr
