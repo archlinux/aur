@@ -18,8 +18,8 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build(){
-    R CMD build rustinr
-    R CMD INSTALL rustinr_*.tar.gz -l $srcdir
+    R CMD build r-rustinr
+    R CMD INSTALL r-rustinr_*.tar.gz -l $srcdir
 }    
 package() {
     install -d "$pkgdir/usr/lib/R/library"
