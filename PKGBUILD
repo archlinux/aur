@@ -4,14 +4,14 @@
 
 _pkgname=netsed
 pkgname=${_pkgname}-opt
-pkgver=1.3
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Optionally alter the contents of packets forwarded through network in real time"
 arch=('x86_64')
 url='https://gitlab.com/Scrumplex/netsed-opt'
 license=('GPL')
 source=("https://gitlab.com/Scrumplex/netsed-opt/-/archive/${pkgver}/netsed-opt-${pkgver}.tar.gz")
-sha512sums=('150619161c00a9d2e3efda6f332a124bb239ebbda06bb99ca6ed160b7529ae1a059b2a84bf999e20f5a287e349ba12339f9d5f59a9e5522e1c6c84f356703865')
+sha512sums=('8de9f95d244a86628be091058ed6cd6e143916dff4176bbb1acf3951e648b43bd6780e2a1a49578ec1b82c970d389eb3094f0ee8859f350badb4aeef976c634b')
 
 conflicts=('netsed')
 provides=('netsed')
