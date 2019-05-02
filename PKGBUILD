@@ -12,7 +12,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
 depends=('r' 'r-askpass')
 optdepends=('r-testthat' 'r-digest' 'r-knitr' 'r-rmarkdown' 'r-jsonlite' 'r-jose')
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
+source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
 md5sums=('b87ae13050afc27eca05785860b5e9db')
 
 build(){
