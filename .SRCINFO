@@ -1,0 +1,60 @@
+pkgbase = linux-ck-reiser4
+	pkgver = 5.0.10
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Reiser4
+	arch = x86_64
+	license = GPL2
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	makedepends = git
+	makedepends = lz4
+	makedepends = gzip
+	makedepends = xz
+	makedepends = lzop
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.0.10.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.0.10.tar.sign
+	source = config
+	source = config-dell
+	source = reiser4-for-5.0.0.patch.gz::https://downloads.sourceforge.net/project/reiser4/reiser4-for-linux-5.x/reiser4-for-5.0.0.patch.gz
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux.preset
+	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
+	source = http://ck.kolivas.org/patches/5.0/5.0/5.0-ck1/patch-5.0-ck1.xz
+	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = ea1c1323c2c7e70bebf5463619b543f9bc353730b44ac62d9efadd4fe5625e76
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 4b799d175ee37d0210685cd0625fef51b19e91f88e6cc0f17bcb9a1ca7fb5668
+	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
+	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
+	sha256sums = 1156e8a7c9494af9b197669c2f300ed44edda7202d2367e627564673400e73f7
+	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
+	sha256sums = 661f64bbd8bf49afcc7c760c4148b2e2108511a1eadcae917cfe6056a83d8476
+	sha256sums = 91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3
+
+pkgname = linux-ck-reiser4
+	pkgdesc = The Linux-ck-reiser4 kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.190 and Reiser4 filesystem patches
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = reiser4progs: Utilities for creating/checking/debugging Reiser4 filesystems
+	provides = linux-ck=5.0.10
+	provides = linux-headers=5.0.10
+	backup = etc/mkinitcpio.d/linux-ck-reiser4.preset
+
+pkgname = linux-ck-reiser4-headers
+	pkgdesc = Headers for building modules for the Linux-ck-reiser4 kernel
+	depends = linux-ck-reiser4
+	provides = linux-ck-headers=5.0.10
+	provides = linux-headers=5.0.10
+
