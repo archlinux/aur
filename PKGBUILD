@@ -14,8 +14,7 @@ pkgname=(
   linux-firmware-surface-book-2-1793
   linux-firmware-surface-go
 )
-_commit=efd2c1cc375cff1c17b4259d99a7fee240c3b510 # master
-pkgver=20190313.efd2c1c.20190313.5c2a64030
+_commit=4b6cf2bd1a9d53caa087403d943e7695009c1d0c # master
 pkgrel=1
 pkgdesc="Firmware files for Linux, with Microsoft Surface related files replaced from https://github.com/jakeday/linux-surface/"
 makedepends=('git')
@@ -23,8 +22,9 @@ arch=('any')
 url="https://github.com/jakeday/linux-surface/"
 license=('custom')
 options=(!strip)
+validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@fedoraproject.org>
 source=(
-  "git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#commit=${_commit}"
+  "git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#commit=${_commit}?signed"
   "git+https://github.com/jakeday/linux-surface.git"
 )
 md5sums=(
