@@ -14,10 +14,10 @@ source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('a00d6599ff99f501534c1d965a1fd3b4')
 
 build(){
-    R CMD INSTALL openssl_"$_cranver".tar.gz -l "$srcdir"
+    R CMD INSTALL ${_pkgtar} -l $srcdir        
 }
 package() {
-    install -dm0755 "$pkgdir"/usr/lib/R/library
-    cp -a --no-preserve=ownership openssl "$pkgdir"/usr/lib/R/library
+    install -d "$pkgdir/usr/lib/R/library"
+    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
 }
 
