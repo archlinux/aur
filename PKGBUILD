@@ -1,7 +1,7 @@
 # Maintainer: Felipe Morales <hel.sheep@gmail.com>
 pkgname=neovim-gnome-terminal-wrapper
 pkgver=2
-pkgrel=12
+pkgrel=13
 pkgdesc="A wrapper for running neovim in a separate instance of gnome-terminal"
 arch=(any)
 url="http://github.com/fmoralesc/"
@@ -11,7 +11,7 @@ depends=('python-dbus' 'neovim' 'gnome-terminal')
 source=('neovim.desktop'
         'nvim-wrapper'
         'neovim.svg')
-md5sums=('c5b9b5db24db814376b6925ce0f9ad52'
+md5sums=('bdbdb94b1db741c62dd55961c012f276'
          'afc12c8bb06cbfda3c174ed3e994501d'
          '2b271742492f200bcac78dbfe33caa3c')
 

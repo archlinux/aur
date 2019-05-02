@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Neovim
+Name=Neovim (gnome-terminal)
 Icon=neovim
 Exec=nvim-wrapper %F
 NoDisplay=false
