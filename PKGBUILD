@@ -1,4 +1,5 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
+# Contributor: Kibouo <csonka.mihaly@hotmail.com>
+# Contributor: Alex Branham <branham@utexas.edu>
 _cranver=1.0.2
 pkgname=r-openssl
 pkgver=${_cranver//[:-]/.}
