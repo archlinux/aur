@@ -13,7 +13,7 @@ pkgbase = r-openssl
 	optdepends = r-rmarkdown
 	optdepends = r-jsonlite
 	optdepends = r-jose
-	source = https://cran.r-project.org/src/contrib/Archive/openssl/openssl_1.3.tar.gz
+	source = https://cran.r-project.org/src/contrib/openssl_1.3.tar.gz
 	md5sums = b87ae13050afc27eca05785860b5e9db
 
 pkgname = r-openssl
