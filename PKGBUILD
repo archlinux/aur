@@ -2,7 +2,7 @@
 
 pkgname=python-mutovis-control
 _pkgname=control-software
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc="Software for collecting electrical characterization data for solar cells"
 arch=('any')
@@ -13,7 +13,7 @@ install=python-mutovis-control.install
 makedepends=('python-setuptools' 'python-setuptools-scm-git-archive' 'python-setuptools-scm')
 backup=('etc/gpib.conf' 'usr/etc/gpib.conf')
 source=("https://github.com/mutovis/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('fdc5518bd8337e81872c5491e7f813a4b408abff28f23ef22cb30ae6c20d63c7')
+sha256sums=('05778d43265257c9064c96cdf834c130f989f69bc814bb0f0a2064355ca38175')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
