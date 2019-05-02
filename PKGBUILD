@@ -1,6 +1,6 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Alex Branham <branham@utexas.edu>
-_cranver=1.0.2
+_cranver=1.3
 pkgname=r-openssl
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('r' )
 optdepends=('r-testthat' 'r-digest' 'r-knitr' 'r-rmarkdown' 'r-jsonlite' 'r-jose')
 source=("https://cran.r-project.org/src/contrib/openssl_"$_cranver".tar.gz")
-md5sums=('8029dd723bd745a7d0bfbe3c562b169d')
+md5sums=('b87ae13050afc27eca05785860b5e9db')
 
 build(){
     R CMD INSTALL openssl_"$_cranver".tar.gz -l "$srcdir"
