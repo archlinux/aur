@@ -11,7 +11,9 @@ license=('GPL3')
 depends=('gtk3'
          'libxss'
          'nss')
-makedepends=('npm' 'git')
+makedepends=('npm'
+             'git'
+             'rsync')
 conflicts=('edex-ui')
 provides=('edex-ui')
 install="edex-ui.install"
