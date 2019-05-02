@@ -1,7 +1,7 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Alex Branham <branham@utexas.edu>
 _cranname=markdown
-_cranver=0.8
+_cranver=0.9
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-markdown
 pkgver=${_cranver//[:-]/.}
@@ -15,7 +15,7 @@ depends=('r' 'r-mime>=0.3')
 optdepends=('r-knitr' 'r-rcurl')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('5dde829a865ad65bab37a2b9d243b071')
+md5sums=('eecc5cce41ffaa3bb0fbede85d59d769')
 
 build(){
     R CMD INSTALL ${_pkgtar} -l $srcdir
