@@ -1,88 +1,71 @@
 pkgbase = caffe2
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework
-	pkgver = 0.8.2.pytorch.1.0.1
+	pkgver = 0.8.2_1.1.0
 	pkgrel = 1
 	url = https://caffe2.ai/
-	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = cmake
+	makedepends = gtest
+	makedepends = snappy
+	makedepends = cuda
+	makedepends = cudnn
+	makedepends = nccl
 	depends = google-glog
 	depends = protobuf
-	depends = lapack
 	depends = python
 	depends = python-numpy
 	depends = python-protobuf
-	depends = gflags
-	depends = gtest
-	depends = openmp
-	depends = leveldb
-	depends = lmdb
-	depends = numactl
-	depends = openmpi
-	depends = snappy
-	depends = zeromq
-	depends = hiredis
-	depends = gtk3
-	depends = ffmpeg
-	depends = python-flask
-	depends = python-future
-	depends = graphviz
-	depends = python-hypothesis
-	depends = python-jupyter_core
-	depends = python-matplotlib
-	depends = python-pydot
 	depends = python-yaml
-	depends = python-requests
-	depends = python-scipy
-	depends = python-setuptools
-	depends = python-six
-	depends = python-tornado
-	depends = python-gflags
-	depends = python-pyzmq
-	depends = rdma-core
-	depends = python-nvd3
-	depends = python-scikit-image
-	depends = python-glog
-	depends = python-leveldb
-	depends = python-lmdb
-	provides = caffe2-cpu
-	conflicts = caffe2-cpu
-	conflicts = python-pytorch
-	replaces = caffe2-cpu
+	depends = blas
+	depends = lapack
+	depends = gflags
+	optdepends = python-flask
+	optdepends = graphviz
+	optdepends = python-hypothesis
+	optdepends = python-matplotlib
+	optdepends = python-pydot
+	optdepends = python-nvd3
+	optdepends = python-yaml
+	optdepends = python-requests
+	optdepends = python-scikit-image
+	optdepends = python-scipy
+	optdepends = python-setuptools
+	optdepends = python-future
+	optdepends = python-tornado
+	optdepends = python-six
+	optdepends = python-lmdb
 	options = !emptydirs
-	source = pytorch-1.0.1.tar.gz::https://github.com/pytorch/pytorch/archive/v1.0.1.tar.gz
-	source = git+https://github.com/pybind/pybind11.git#commit=5c8746ff135abb390bf95944be593e895a586a50
-	source = git+https://github.com/NVlabs/cub.git#commit=285aeebaa34b0e8a7670867a2e66c1a52d998d6a
-	source = git+https://github.com/eigenteam/eigen-git-mirror.git#commit=f59336cee358f92b959de6a0daf07c4ab2318022
-	source = git+https://github.com/google/googletest.git#commit=2fe3bd994b3189899d93f1d5a881e725e046fdc2
-	source = git+https://github.com/google/benchmark.git#commit=505be96ab23056580a3a2315abba048f4428b04e
-	source = git+https://github.com/google/protobuf.git#commit=2761122b810fe8861004ae785cc3ab39f384d342
-	source = git+https://github.com/Yangqing/ios-cmake.git#commit=8abaed637d56f1337d6e1d2c4026e25c1eade724
-	source = git+https://github.com/Maratyszcza/NNPACK.git#commit=1e005b0c2777f39972a4ac15bea03e0e315a3d92
-	source = git+https://github.com/facebookincubator/gloo.git#commit=670b4d4aa46886cc66874e2a4dc846f5cfc2a285
-	source = git+https://github.com/Maratyszcza/pthreadpool.git#commit=13da0b4c21d17f94150713366420baaf1b5a46f4
-	source = git+https://github.com/Maratyszcza/FXdiv.git#commit=b742d1143724d646cd0f914646f1240eacf5bd73
-	source = git+https://github.com/Maratyszcza/FP16.git#commit=34d4bf01bbf7376f2baa71b8fa148b18524d45cf
-	source = git+https://github.com/Maratyszcza/psimd.git#commit=90a938f30ba414ada2f4b00674ee9631d7d85e19
-	source = git+https://github.com/facebook/zstd.git#commit=aec56a52fbab207fc639a1937d1e708a282edca8
-	source = git+https://github.com/Maratyszcza/cpuinfo.git#commit=89fe1695edf9ee14c22f815f24bac45577a4f135
-	source = git+https://github.com/PeachPy/enum34.git#commit=4cfedc426c4e2fc52e3f5c2b4297e15ed8d6b8c7
-	source = git+https://github.com/Maratyszcza/PeachPy.git#commit=07d8fde8ac45d7705129475c0f94ed8925b93473
-	source = git+https://github.com/benjaminp/six.git#commit=15e31431af97e5e64b80af0a3f598d382bcdd49a
-	source = git+https://github.com/ARM-software/ComputeLibrary.git#commit=292227986edb37b01061afcad6df18ba9d6ccbeb
-	source = git+https://github.com/onnx/onnx.git#commit=42804705bdbf179d1a98394008417e1392013547
-	source = git+https://github.com/bddppq/onnx-tensorrt.git#commit=fa0964e8477fc004ee2f49ee77ffce0bf7f711a9
-	source = git+https://github.com/zdevito/sleef.git#commit=6ff7a135a1e31979d1e1844a2e7171dfbd34f54f
-	source = git+https://github.com/intel/ideep.git#commit=7b8f9d025a675522305a1c5d1328d83f11f205e8
-	source = git+https://github.com/NVIDIA/nccl.git#commit=3c6e25210bb1b544748937e5db74db0b9679b95e
-	source = git+https://github.com/google/gemmlowp.git#commit=8416bab644641a5c0a81ecf91a5cda804af0aee1
-	source = git+https://github.com/pytorch/QNNPACK.git#commit=ef05e87cef6b8e719989ce875b5e1c9fdb304c05
-	source = git+https://github.com/intel/ARM_NEON_2_x86_SSE.git#commit=97a126f08ce318023be604d03f88bf0820a9464a
-	source = git+https://github.com/pytorch/fbgemm.git#commit=79333308f5e2fc242727879dcd3de3536b6ffc39
-	source = git+https://github.com/asmjit/asmjit.git#commit=1e550aa568da993acb742ac19f2ab691a2806ad5
-	sha256sums = 210561583378132d07287518710251bcf861f9b7d625eb67258ed2e9d567cea1
+	source = git+https://github.com/pytorch/pytorch.git#tag=v1.1.0
+	source = git+https://github.com/pybind/pybind11
+	source = git+https://github.com/NVlabs/cub
+	source = git+https://github.com/eigenteam/eigen-git-mirror
+	source = git+https://github.com/google/googletest
+	source = git+https://github.com/google/benchmark
+	source = git+https://github.com/google/protobuf
+	source = git+https://github.com/Yangqing/ios-cmake
+	source = git+https://github.com/Maratyszcza/NNPACK
+	source = git+https://github.com/facebookincubator/gloo
+	source = git+https://github.com/Maratyszcza/pthreadpool
+	source = git+https://github.com/Maratyszcza/FXdiv
+	source = git+https://github.com/Maratyszcza/FP16
+	source = git+https://github.com/Maratyszcza/psimd
+	source = git+https://github.com/facebook/zstd
+	source = git+https://github.com/Maratyszcza/cpuinfo
+	source = git+https://github.com/PeachPy/enum34
+	source = git+https://github.com/Maratyszcza/PeachPy
+	source = git+https://github.com/benjaminp/six
+	source = git+https://github.com/onnx/onnx
+	source = git+https://github.com/onnx/onnx-tensorrt
+	source = sleef-zdevito::git+https://github.com/zdevito/sleef
+	source = git+https://github.com/intel/ideep
+	source = git+https://github.com/NVIDIA/nccl.git
+	source = git+https://github.com/google/gemmlowp
+	source = git+https://github.com/pytorch/QNNPACK
+	source = git+https://github.com/intel/ARM_NEON_2_x86_SSE
+	source = git+https://github.com/pytorch/fbgemm
+	source = git+https://github.com/houseroad/foxi
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -114,4 +97,25 @@ pkgbase = caffe2
 	sha256sums = SKIP
 
 pkgname = caffe2
+	pkgdesc = A new lightweight, modular, and scalable deep learning framework (cpu only)
+	provides = caffe2-cpu
+	conflicts = caffe2-cpu
+	replaces = caffe2-cpu
+
+pkgname = caffe2-cuda
+	pkgdesc = A new lightweight, modular, and scalable deep learning framework (with cuda support)
+	depends = google-glog
+	depends = protobuf
+	depends = python
+	depends = python-numpy
+	depends = python-protobuf
+	depends = python-yaml
+	depends = blas
+	depends = lapack
+	depends = gflags
+	depends = cuda
+	depends = cudnn
+	depends = nccl
+	provides = caffe2
+	conflicts = caffe2
 
