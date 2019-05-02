@@ -1,0 +1,16 @@
+pkgbase = aniadd-bin
+	pkgdesc = A very simple to use AniDB client (GUI)
+	pkgver = 04.06.14
+	pkgrel = 1
+	url = https://anidb.net/perl-bin/animedb.pl?show=software
+	arch = any
+	license = unknown
+	depends = java-runtime
+	noextract = AniAdd.jar
+	source = https://static.anidb.net/files/AniAdd.jar
+	source = aniadd.sh
+	sha256sums = 19fbfec796de1c381797969cd085468e21cb8c41bdb67ee18f02a825ee08af6f
+	sha256sums = SKIP
+
+pkgname = aniadd-bin
+
