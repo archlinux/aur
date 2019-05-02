@@ -58,19 +58,18 @@ prepare() {
 
   # Consolidate all frame throttling into clutter-stage-cogl [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/363
-  # Conflict!
-  # h_first=$(git log --oneline --all | grep 'clutter/stage-cogl: Remove magic numbers' | tail -n 1 | awk '{print $1}') # Sorry guys
-  # h_last=$(git log --oneline --all | grep 'clutter/master-clock: Remove fallback throttles' | tail -n 1 | awk '{print $1}') # Sorry guys
-  # echo "Found $h_first^$h_last for MR363"
-  # git cherry-pick -n $h_first^..$h_last || zsh
+  h_first=$(git log --oneline --all | grep "clutter/stage-cogl: Don't skip over the next frame" | tail -n 1 | awk '{print $1}') # Sorry guys
+  h_last=$(git log --oneline --all | grep 'clutter/master-clock: Remove fallback throttles' | tail -n 1 | awk '{print $1}') # Sorry guys
+  echo "Found $h_first^$h_last for MR363"
+  git cherry-pick -n $h_first^..$h_last || zsh
 
   # clutter-stage-cogl: Reduce output latency and reduce missed frames too [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/281
   # first commit replaced by !363
   # Conflict!
-  # hash=$(git log --oneline --all | grep 'clutter-stage-cogl: Reschedule update on present' | head -n 1 | awk '{print $1}') # Sorry guys
-  # echo "Found $hash for MR281"
-  # git cherry-pick -n $hash
+  hash=$(git log --oneline --all | grep 'clutter-stage-cogl: Reschedule update on present' | head -n 1 | awk '{print $1}') # Sorry guys
+  echo "Found $hash for MR281"
+  git cherry-pick -n $hash -Xtheirs
 
   # clutter: Deliver events sooner when possible
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/168
