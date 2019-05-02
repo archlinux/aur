@@ -7,7 +7,7 @@ pkgbase = r-commonmark
 	license = BSD_2_clause + file LICENSE
 	depends = r
 	optdepends = r-curl
-	source = https://cran.r-project.org/src/contrib/commonmark_1.7.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive//
 	md5sums = 48bf2251862a494d8ee3acde02dce385
 
 pkgname = r-commonmark

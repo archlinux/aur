@@ -10,7 +10,7 @@ url='https://cran.r-project.org/package=commonmark'
 license=('BSD_2_clause + file LICENSE')
 depends=('r' )
 optdepends=('r-curl')
-source=("https://cran.r-project.org/src/contrib/commonmark_"$_cranver".tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
 md5sums=('48bf2251862a494d8ee3acde02dce385')
 
 build(){
