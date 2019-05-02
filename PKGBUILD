@@ -10,6 +10,7 @@ arch=('x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('MIT')
 depends=('r')
+optdepends=('r-testthat')
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 md5sums=('c2964321773cb7f98c0fb37cc6d169a6')
 
