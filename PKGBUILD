@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Bindings between numpy and eigen using boost::python"
 arch=('i686' 'x86_64')
 url="https://github.com/stack-of-tasks/$pkgname"
-license=('BSD 2-clause')
+license=('BSD')
 depends=('boost-libs')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen' 'boost' 'python-numpy')
@@ -24,4 +24,5 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     make DESTDIR="$pkgdir/" install
+    install -Dm644 COPYING.LESSER "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
