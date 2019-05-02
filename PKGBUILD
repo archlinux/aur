@@ -3,7 +3,7 @@
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-cdown-mmots-git               # Build stock -ARCH kernel
-_srcver=5.1.0-mmots1
+_srcver=5.1.0-rc6-mm1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -62,7 +62,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules
+  make bzImage modules htmldocs
 }
 
 _package() {
