@@ -2,22 +2,24 @@
 
 _pkgname=cpod
 pkgname=$_pkgname-git
-pkgver=1.27.0.r42.g98c1a1b
+pkgver=1.27.1.r6.g2f4e7e3
 pkgrel=1
 pkgdesc="A simple, beautiful podcast app"
 arch=('x86_64')
-url="https://github.com/z-------------/cumulonimbus"
+url="https://github.com/z-------------/CPod"
 license=('Apache')
-depends=('gconf' 'gtk-update-icon-cache')
+depends=('gconf')
 makedepends=('git' 'gulp' 'nvm' 'python2' 'yarn')
 provides=($_pkgname)
 conflicts=($_pkgname)
 replaces=('cumulonimbus')
-source=($pkgname::git+https://github.com/z-------------/cumulonimbus.git)
+source=($pkgname::git+https://github.com/z-------------/CPod.git)
 sha256sums=('SKIP')
 
-# Latest of a supported major version
-_nodejsver=9.11.2
+# For the Node.js version used by CPod, see: .travis.yml (dist: and node_js:)
+# For a list of all Node.js versions, run: source /usr/share/nvm/init-nvm.sh ; nvm ls-remote
+#_nodejsver=0.10.25
+_nodejsver=8.16.0
 
 pkgver() {
   cd $pkgname

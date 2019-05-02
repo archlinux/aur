@@ -1,8 +1,8 @@
 pkgbase = cpod-git
 	pkgdesc = A simple, beautiful podcast app
-	pkgver = 1.27.0.r42.g98c1a1b
+	pkgver = 1.27.1.r6.g2f4e7e3
 	pkgrel = 1
-	url = https://github.com/z-------------/cumulonimbus
+	url = https://github.com/z-------------/CPod
 	arch = x86_64
 	license = Apache
 	makedepends = git
@@ -11,11 +11,10 @@ pkgbase = cpod-git
 	makedepends = python2
 	makedepends = yarn
 	depends = gconf
-	depends = gtk-update-icon-cache
 	provides = cpod
 	conflicts = cpod
 	replaces = cumulonimbus
-	source = cpod-git::git+https://github.com/z-------------/cumulonimbus.git
+	source = cpod-git::git+https://github.com/z-------------/CPod.git
 	sha256sums = SKIP
 
 pkgname = cpod-git
