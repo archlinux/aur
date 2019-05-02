@@ -4,7 +4,7 @@
 _gitname=zuluCrypt
 _build=build
 pkgname=zulucrypt-git
-pkgver=5.4.0
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="a cli and gui frontend to cryptsetup."
 arch=('x86_64' 'i686')
