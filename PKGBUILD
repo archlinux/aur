@@ -1,7 +1,7 @@
 # Maintainer: degreeme <suratovvlad@gmail.com>
 
 pkgname=libqdark-git
-pkgver=0.5.1.r0.g38d11fd
+pkgver=0.5.2.r0.gf3c0290
 pkgrel=1
 pkgdesc="Plugin for Qt applications. Choose the dark side of the style."
 arch=('i686' 'x86_64')
