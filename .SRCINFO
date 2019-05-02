@@ -11,7 +11,7 @@ pkgbase = r-spelling
 	depends = r-hunspell>=3.0
 	depends = r-knitr
 	optdepends = r-pdftools
-	source = https://cran.r-project.org/src/contrib/spelling_2.1.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/spelling/spelling_2.1.tar.gz
 	md5sums = e7758038652a039fc3404f7ba6930a21
 
 pkgname = r-spelling
