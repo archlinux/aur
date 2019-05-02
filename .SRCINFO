@@ -1,0 +1,17 @@
+pkgbase = tcpcopy-git
+	pkgdesc = TCPCopy is a TCP stream replay tool to support real testing of Internet server applications.
+	pkgver = v1.2.0.r4.g4aebb48
+	pkgrel = 1
+	url = https://github.com/session-replay-tools/tcpcopy.git
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	provides = tcpcopy
+	options = strip
+	source = tcpcopy::git+https://github.com/session-replay-tools/tcpcopy.git
+	source = fix-error-log-path.patch
+	sha256sums = SKIP
+	sha256sums = 5d744d1fd93a46c111f7731882e06a982ed32611c15af2080c8a9fb7fc15d054
+
+pkgname = tcpcopy-git
+

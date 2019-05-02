@@ -1,0 +1,16 @@
+diff --git a/src/core/tc_log.c b/src/core/tc_log.c
+index f0c82a4..8bce0bd 100644
+--- a/src/core/tc_log.c
++++ b/src/core/tc_log.c
+@@ -69,6 +69,11 @@ tc_log_init(const char *file)
+             return -1;
+         }
+         strncpy(default_file_path, TC_PREFIX, len);
++
++        /* absolute path */
++        if ('/' == TC_ERROR_LOG_PATH[0]) {
++            len = 0;
++        }
+         p = default_file_path + len;
+         len += strlen(TC_ERROR_LOG_PATH);
+         if (len >= 256) {
