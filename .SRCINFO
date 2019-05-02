@@ -1,0 +1,8 @@
+pkgbase = lone_wolf-compiler-rt-git
+	pkgdesc = placeholder to reserve pkgbase/name for me, will become real package soon
+	pkgver = 1
+	pkgrel = 1
+	arch = x86_64
+
+pkgname = lone_wolf-compiler-rt-git
+
