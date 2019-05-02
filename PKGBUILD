@@ -2,6 +2,8 @@
 # Contributor: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <alex.branham@gmail.com>
 _cranver=0.8
+_cranname=rstudioapi
+_pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-rstudioapi
 pkgver=${_cranver//[:-]/.}
 pkgrel=1

@@ -9,7 +9,7 @@ pkgbase = r-rstudioapi
 	optdepends = r-testthat
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/Archive//
+	source = https://cran.r-project.org/src/contrib/Archive/rstudioapi/rstudioapi_0.8.tar.gz
 	md5sums = 7601abbffcade9bdba3aa982c2c2625a
 
 pkgname = r-rstudioapi
