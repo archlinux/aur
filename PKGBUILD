@@ -1,6 +1,6 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Alex Branham <branham@utexas.edu>
-_cranname=devtools
+_cranname=yaml
 _cranver=2.2.0
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-yaml
