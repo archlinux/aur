@@ -6,7 +6,7 @@ arch=('any')
 license=('BSD')
 depends=('git')
 makedepends=('stack')
-source=('https://github.com/jbernsie/lazy-git/archive/v0.6.tar.gz')
+source=('https://github.com/jbernsie/lazy-git/archive/0.7.tar.gz')
 md5sums=('ded33503d8181e09b43b6ebbf0c46d28')
 
 _distname="lazy-git"
