@@ -1,7 +1,7 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <alex.branham@gmail.com>
-_cranver=0.12
+_cranver=0.13
 pkgname=r-evaluate
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('r' )
 optdepends=('r-testthat' 'r-ggplot2')
 source=("https://cran.r-project.org/src/contrib/evaluate_"$_cranver".tar.gz")
-md5sums=('82823438e6010cf1319fd2f61295bac2')
+md5sums=('c46bc0303c00f1763e0ad6b70108119b')
 
 build(){
     R CMD INSTALL evaluate_"$_cranver".tar.gz -l "$srcdir"
