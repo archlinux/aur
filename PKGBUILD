@@ -10,7 +10,7 @@ url='https://cran.r-project.org/package=yaml'
 license=('BSD')
 depends=('r' )
 optdepends=('r-runit')
-source=("https://cran.r-project.org/src/contrib/yaml_"$_cranver".tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
 md5sums=('245c28af4248974a445e8a79b7ea2f0f')
 
 build(){
