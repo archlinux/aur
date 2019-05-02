@@ -5,15 +5,15 @@
 
 pkgname=knossos4
 pkgver=4.1.2
-pkgrel=10
-arch=('x86_64')
+pkgrel=11
+arch=("x86_64")
 pkgdesc="A software tool for the visualization and annotation of 3D image data. It was developed for the rapid reconstruction of neural morphology and connectivity."
-url="http://www.knossostool.org/"
+url="https://knossos.app"
 license=("GPL2")
 depends=("curl"
 	"glu"
 	"glut"
-	"qt5-python27"
+	"qt5-python27-git" # qt5-python27
 	"qt5-tools"
 	"quazip-qt5"
 	"snappy"
@@ -28,25 +28,28 @@ source=("https://github.com/knossos-project/knossos/archive/v$pkgver.tar.gz"
 	"knossos4.desktop"
 	"qt-5.7.patch"
 	"quazip.patch"
+	"GCC8-combat-K4.patch"
 )
 md5sums=('c648b510bcec05a914540eea7f577bfa'
          '07e9b7ac1ed5ecd0185ae92e61e97bbb'
          '67a3dfea8d64d8b9eb999f16096819ee'
          '10ac71de3331013293518da4be88cde6'
-         'be06cd6e91c80b63b9bfe4184b537d7e')
+         'be06cd6e91c80b63b9bfe4184b537d7e'
+         '9e6daa1198b3f819379995d37178e3d1')
 
 prepare() {
 	cd "knossos-$pkgver"
 	patch -p 1 -i ../curl.patch
 	patch -p 1 -i ../quazip.patch
 	patch -p 1 -i ../qt-5.7.patch
+	patch -p 1 -i ../GCC8-combat-K4.patch
 }
 
 build() {
 	mkdir -p "build-$CHOST-$pkgname-$pkgver"
 	cd "build-$CHOST-$pkgname-$pkgver"
 	cmake -G Ninja ../knossos-$pkgver
-	ninja
+	cmake --build .
 }
 
 package() {
