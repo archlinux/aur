@@ -1,19 +1,19 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Rodrigo S. Wanderley <rodrigoswanderley@gmail.com>
 
-pkgname=netsed
-pkgver=1.2
-pkgrel=3
-pkgdesc="Alter the contents of packets forwarded through network in real time"
-arch=('i686' 'x86_64')
-url='http://silicone.homelinux.org/projects/netsed/'
+pkgname=netsed-opt
+pkgver=1.3
+pkgrel=1
+pkgdesc="Optionally alter the contents of packets forwarded through network in real time"
+arch=('x86_64')
+url='https://gitlab.com/Scrumplex/netsed-opt'
 license=('GPL')
-source=("http://silicone.homelinux.org/release/netsed/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0a7f12bac83d02c6fc837055bf4ff02c1bdfc8ea478227afcc762e92d1661c80')
+source=("https://gitlab.com/Scrumplex/netsed-opt/-/archive/${pkgver}/netsed-opt-${pkgver}.tar.gz")
+sha512sums=('150619161c00a9d2e3efda6f332a124bb239ebbda06bb99ca6ed160b7529ae1a059b2a84bf999e20f5a287e349ba12339f9d5f59a9e5522e1c6c84f356703865')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
-
 	make
 }
 
@@ -27,4 +27,3 @@ package() {
 	install -D -m 0644 README ${pkgdir}/usr/share/doc/${pkgname}/README
 	install -D -m 0644 TODO ${pkgdir}/usr/share/doc/${pkgname}/TODO
 }
-
