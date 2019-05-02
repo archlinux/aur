@@ -7,7 +7,6 @@ pkgdesc='CLI tool for interacting with funkwhale instances'
 arch=('x86_64')
 url="https://github.com/RodrigoLeiteF/funkwhale-cli"
 license=('GPLv2')
-depends=('openssl')
 makedepends=('rust' 'cargo' 'git')
 provides=('funkwhale-cli')
 conflicts=('funkwhale-cli')
