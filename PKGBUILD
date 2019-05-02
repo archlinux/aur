@@ -7,7 +7,7 @@
 
 pkgname=osc
 pkgver=0.165.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
 url="https://github.com/openSUSE/osc"
@@ -18,6 +18,7 @@ optdepends=('obs-build: required to run local builds'
             'obs-service-format_spec_file: for running the format_spec_file source service'
             'obs-service-download_files: for running the download_files source service'
             'python-keyring: keyring support'
+            'python-progressbar: progressbar support for operations like uploading and services'
             )
 conflicts=('osc-git' 'osc-bash-completion' 'zsh-completion-osc')
 replaces=('osc-bash-completion' 'zsh-completion-osc')
