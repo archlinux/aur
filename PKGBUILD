@@ -5,7 +5,7 @@
 
 _reponame=gnome-shell-system-monitor-applet
 pkgname=gnome-shell-extension-system-monitor-git
-pkgver=902.c569027
+pkgver=933.c1af510
 pkgrel=1
 pkgdesc="System monitor extension for Gnome-Shell (display mem swap cpu usage)"
 arch=('any')
@@ -22,10 +22,6 @@ sha1sums=('SKIP')
 
 package() {
   cd "$srcdir/$_reponame"
-
-  # Apply PR #510 for gnome3.32 support
-  git fetch origin pull/510/head:gnome-shell-3.32
-  git checkout gnome-shell-3.32
 
   # Install the extension
   install -d "$pkgdir/usr/share/gnome-shell/extensions/"
