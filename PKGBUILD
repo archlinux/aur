@@ -1,4 +1,5 @@
 # Maintainer: Alexandre Teles <ateles.1@gmail.com>
+# Maintainer: Jobs Bai <jobsbai@hotmail.com>
 pkgname=deepin-crossover
 provides=('crossover-deepin' 'crossover')
 pkgver=16.0.6
@@ -11,7 +12,7 @@ license=('custom:CrossOver Linux License Grant')
 conflicts=(crossover)
 install=${pkgname}.install
 
-source=("http://mirrors.deepin.com/deepin/pool/non-free/c/crossover-deepin/crossover-deepin_${pkgver}-${_pkgdebrel}_i386.deb")
+source=("http://packagess.deepin.com:8081/deepin/pool/non-free/c/crossover-deepin/crossover-deepin_${pkgver}-${_pkgdebrel}_i386.deb")
 noextract=("crossover-deepin_${pkgver}-${_pkgdebrel}_i386.deb")
 sha256sums=('a3cbec7ad524cf87acf9b880b1134821bca5c36b14dd8151dbe9041d7e0c10a6')
 
