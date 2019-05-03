@@ -2,7 +2,7 @@
 # Contributor: Jan Holthuis <holthuis.jan@googlemail.com>
 
 pkgname=nzbget-git
-pkgver=21.0.r2302
+pkgver=21.0.r2304
 pkgrel=1
 epoch=1
 pkgdesc="Download from Usenet using .nzb files"
@@ -41,8 +41,8 @@ package() {
 
   make DESTDIR="$pkgdir/" install
 
-  install -d "${pkgdir}/usr/share/$pkgname"
-  install -m 644 -t "${pkgdir}/usr/share/$pkgname" README
+  install -d "${pkgdir}/usr/share/nzbget"
+  install -m 644 -t "${pkgdir}/usr/share/nzbget" README
 
   cd "$srcdir"
 
