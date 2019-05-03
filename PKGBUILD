@@ -2,7 +2,7 @@
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=byond
 _pkgvermajor=512
-_pkgverminor=1466
+_pkgverminor=1467
 pkgver="$_pkgvermajor.$_pkgverminor"
 pkgrel=1
 pkgdesc="Game server based on the 'Byond' language [Build your own net dream]."
@@ -11,7 +11,7 @@ url="https://secure.byond.com/"
 license=('unknown')
 depends=('libpng' 'libstdc++5' 'ncurses' 'gcc-libs')
 source=("https://secure.byond.com/games/download/build/${_pkgvermajor}/${pkgver}_byond_linux.zip")
-md5sums=('dead8b946177d05ec2761351d074c358')
+md5sums=('8ef48eab90cdffd6053803111a86d2f3')
 build() {
     cd "${srcdir}/${pkgname}"
     chmod 644 man/man6/DreamDaemon.6
