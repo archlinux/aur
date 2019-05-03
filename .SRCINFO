@@ -36,7 +36,7 @@ pkgbase = gnome-shell-performance
 	provides = gnome-shell
 	provides = gnome-shell=3.32.1+10+g059c729da
 	conflicts = gnome-shell
-	source = gnome-shell-performance::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#branch=gnome-3-32
+	source = gnome-shell-performance::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=059c729da0c4deaf71caa7a61a8fb91f7bf882d6
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	source = https://github.com/endlessm/gnome-shell/commit/11ddabfb22aedb3c35abe06d2cf0205f223cca03.diff
 	source = https://gitlab.gnome.org/GNOME/gnome-shell/uploads/4a083c80c81eeb0dd1be64e0e24b5c17/nvidia-background-workaround.patch
