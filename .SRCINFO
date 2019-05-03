@@ -1,6 +1,6 @@
 pkgbase = nextcloud-systemd-timers
 	pkgdesc = Systemd services and timers for Nextcloud background jobs (see Nextcloud Arch Wiki entry).
-	pkgver = 0.6
+	pkgver = 0.6.1
 	pkgrel = 1
 	install = nextcloud-systemd-timers.install
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = nextcloud-systemd-timers
 	sha256sums = 56e3cab181040101be05d4b7723825f7b0c082c34403e42c6f0934c6474a6a43
 	sha256sums = 18913873bf889f8b4d8bc2109d313fed02e523c86519ca96285640bf965732d5
 	sha256sums = bd4bbd01a9d68e0217c3b48c977dda881fd956b53f981a6e32af0357d2e0b716
-	sha256sums = 86918017daa8f20208e1943fc53becdae5b96e7a15104bbedfdb7139d7c5dc66
+	sha256sums = d81ebf8ad4a25293c0b7a80a4aa784848cfdc894eb9b799dd535bbb085713afd
 	sha256sums = 2f191059b619141ba883ae132af56460212c84eb208f087b87b79b0a3b9e4900
 
 pkgname = nextcloud-systemd-timers

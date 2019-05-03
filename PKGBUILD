@@ -1,6 +1,6 @@
 # Maintainer: Dominik Schrempf <dominik.schrempf@gmail.com>
 pkgname=nextcloud-systemd-timers
-pkgver=0.6
+pkgver=0.6.1
 pkgrel=1
 epoch=
 pkgdesc="Systemd services and timers for Nextcloud background jobs (see Nextcloud Arch Wiki entry)."
@@ -33,7 +33,7 @@ sha256sums=('7fe27aa2ef2a034cf19a02571cefd1f6b40dd64fa48abda3ed0c82e2181f12c1'
             '56e3cab181040101be05d4b7723825f7b0c082c34403e42c6f0934c6474a6a43'
             '18913873bf889f8b4d8bc2109d313fed02e523c86519ca96285640bf965732d5'
             'bd4bbd01a9d68e0217c3b48c977dda881fd956b53f981a6e32af0357d2e0b716'
-            '86918017daa8f20208e1943fc53becdae5b96e7a15104bbedfdb7139d7c5dc66'
+            'd81ebf8ad4a25293c0b7a80a4aa784848cfdc894eb9b799dd535bbb085713afd'
             '2f191059b619141ba883ae132af56460212c84eb208f087b87b79b0a3b9e4900')
 noextract=()
 
