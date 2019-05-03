@@ -3,8 +3,8 @@
 # Contributor: Michael S. Walker <barrucadu@localhost>
 
 pkgname=ack
-pkgver=2.24
-pkgrel=2
+pkgver=2.28
+pkgrel=1
 pkgdesc="A Perl-based grep replacement, aimed at programmers with large trees of heterogeneous source code"
 arch=('any')
 url="http://betterthangrep.com/"
@@ -12,7 +12,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl-file-next')
 options=('!emptydirs')
 source=(http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/$pkgname-$pkgver.tar.gz)
-md5sums=('92246556c479018b32828cbc5e0ce5cb')
+md5sums=('5c363d701cb40cbc3806441b2a887b43')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
