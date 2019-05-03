@@ -14,7 +14,7 @@ _revert=
 
 pkgname=mutter-781835-workaround
 pkgver=3.32.1+5+g668c44e66
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -61,7 +61,7 @@ prepare() {
   h_first=$(git log --oneline --all | grep "clutter/stage-cogl: Don't skip over the next frame" | tail -n 1 | awk '{print $1}') # Sorry guys
   h_last=$(git log --oneline --all | grep 'clutter/master-clock: Remove fallback throttles' | tail -n 1 | awk '{print $1}') # Sorry guys
   echo "Found $h_first^$h_last for MR363"
-  git cherry-pick -n $h_first^..$h_last || zsh
+  git cherry-pick -n $h_first^..$h_last
 
   # clutter-stage-cogl: Reduce output latency and reduce missed frames too [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/281
@@ -82,7 +82,10 @@ prepare() {
 
   # Add experimental key for RT scheduling
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/460
-  git cherry-pick -n b49640c4^..a18d6901
+  h_first=$(git log --oneline --all | grep 'core: Drop all capabilities before running the main loop' | tail -n 1 | awk '{print $1}') # Sorry guys
+  h_last=$(git log --oneline --all | grep 'backends/native: Add rt-scheduler experimental key to set RT scheduling' | tail -n 1 | awk '{print $1}') # Sorry guys
+  echo "Found $h_first^$h_last for MR460"
+  git cherry-pick -n $h_first^..$h_last -Xtheirs
 
   # cogl: Enable EGL_IMG_context_priority
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/454
