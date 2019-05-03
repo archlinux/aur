@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-performance
 pkgver=3.32.1+10+g059c729da
-pkgrel=2
+pkgrel=3
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
@@ -46,7 +46,7 @@ prepare() {
 
   # Fixes and performance improvements to the extension system
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/96
-  git cherry-pick -n 07506a72^..570b947f
+  git cherry-pick -n 39f10eaa^..6e704ee1
 
   # Mild performance improvements on style changes
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/524
