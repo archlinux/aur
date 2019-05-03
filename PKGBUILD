@@ -1,39 +1,20 @@
+# Maintainer: Qirui Wang <wqr.prg@gmail.com>
+
 pkgbase=wxgtk-dev
 pkgname=(wxgtk2-dev wxgtk3-dev wxgtk-common-dev)
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 arch=('x86_64')
 url="https://wxwidgets.org"
 license=('custom:wxWindows')
 makedepends=('gst-plugins-base' 'gconf' 'glu' 'webkit2gtk' 'libnotify' 'gtk2')
 options=('!emptydirs')
-source=(https://github.com/wxWidgets/wxWidgets/releases/download/v$pkgver/wxWidgets-$pkgver.tar.bz2
-        make-abicheck-non-fatal.patch wxgtk-webkit2gtk.patch::"https://github.com/wxWidgets/wxWidgets/commit/ec6e54bc.patch"
-        wxgtk2-fix-webview.patch::"https://github.com/wxWidgets/wxWidgets/commit/fd247cca.patch"
-        wxgtk-filezilla-assert.patch::"https://github.com/wxWidgets/wxWidgets/commit/ce1dce11.patch")
-sha1sums=('f999c3cf1887c0a60e519214c14b15cb9bb5ea6e'
-          'dfe38650c655395b90bf082b5734c4093508bfa3'
-          'd2bd62d0852f3647782780565849692e7837c10c'
-          '550c368a68eec8b6c32c61da289df76e4dd5a798'
-          '1da8af91ef6c590da9c43dd115f52d605730f16a')
+source=("https://github.com/wxWidgets/wxWidgets/releases/download/v$pkgver/wxWidgets-$pkgver.tar.bz2")
+sha1sums=('29cbbba946d2a7b4d28ca1db12315810cc8de74d')
+sha256sums=('4cb8d23d70f9261debf7d6cfeca667fc0a7d2b6565adb8f1c484f9b674f1f27a')
 
 prepare() {
-  cd wxWidgets-${pkgver}
-
-  # C++ ABI check is too strict and breaks with GCC 5.1
-  # https://bugzilla.redhat.com/show_bug.cgi?id=1200611
-  #patch -Np1 -i ../make-abicheck-non-fatal.patch
-
-  # Support webkit2gtk
-  #sed -e 's|setup0.h|setup.h|g' -i ../wxgtk-webkit2gtk.patch
-  #patch -p1 -i ../wxgtk-webkit2gtk.patch
-  # fix webview after webkit2gtk port
-  #patch -p1 -i ../wxgtk2-fix-webview.patch
-  # fix assert in FileZilla
-  #patch -p1 -i ../wxgtk-filezilla-assert.patch
-
-  cd ..
-  cp -r wxWidgets-${pkgver} wxWidgets-${pkgver}-gtk3
+  cp -a wxWidgets-${pkgver} wxWidgets-${pkgver}-gtk3
 }
 
 build() {

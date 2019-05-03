@@ -1,5 +1,5 @@
 pkgbase = wxgtk-dev
-	pkgver = 3.1.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://wxwidgets.org
 	arch = x86_64
@@ -11,16 +11,9 @@ pkgbase = wxgtk-dev
 	makedepends = libnotify
 	makedepends = gtk2
 	options = !emptydirs
-	source = https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.1/wxWidgets-3.1.1.tar.bz2
-	source = make-abicheck-non-fatal.patch
-	source = wxgtk-webkit2gtk.patch::https://github.com/wxWidgets/wxWidgets/commit/ec6e54bc.patch
-	source = wxgtk2-fix-webview.patch::https://github.com/wxWidgets/wxWidgets/commit/fd247cca.patch
-	source = wxgtk-filezilla-assert.patch::https://github.com/wxWidgets/wxWidgets/commit/ce1dce11.patch
-	sha1sums = f999c3cf1887c0a60e519214c14b15cb9bb5ea6e
-	sha1sums = dfe38650c655395b90bf082b5734c4093508bfa3
-	sha1sums = d2bd62d0852f3647782780565849692e7837c10c
-	sha1sums = 550c368a68eec8b6c32c61da289df76e4dd5a798
-	sha1sums = 1da8af91ef6c590da9c43dd115f52d605730f16a
+	source = https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.2/wxWidgets-3.1.2.tar.bz2
+	sha1sums = 29cbbba946d2a7b4d28ca1db12315810cc8de74d
+	sha256sums = 4cb8d23d70f9261debf7d6cfeca667fc0a7d2b6565adb8f1c484f9b674f1f27a
 
 pkgname = wxgtk2-dev
 	pkgdesc = GTK+2 implementation of wxWidgets API for GUI
