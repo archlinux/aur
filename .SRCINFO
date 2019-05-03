@@ -1,0 +1,17 @@
+pkgbase = python-torchfile
+	pkgdesc = Deserialize torch-serialized objects from Python
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = https://github.com/bshillingford/python-torchfile
+	arch = any
+	license = BSD
+	checkdepends = python-flaky
+	checkdepends = python-numpy
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = python-setuptools
+	source = python-torchfile-0.1.0.tar.gz::https://github.com/bshillingford/python-torchfile/archive/0.1.0.tar.gz
+	sha512sums = feaab6dafe859d188a121c90f7a6c53cd1521ec76b674c4b01cec630cf159a357c244d294eff9870c06b2c93a0d94e9fc77fba292637b8a39e87672cdaa031ec
+
+pkgname = python-torchfile
+
