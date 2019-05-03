@@ -2,14 +2,14 @@
 pkgbase=python-distributed
 pkgname=('python-distributed' 'python2-distributed')
 _pkgname=distributed
-pkgver=1.25.1
+pkgver=1.27.1
 pkgrel=1
 pkgdesc="A python library for distributed computation."
 arch=('any')
 url="http://distributed.readthedocs.org/en/stable/"
 license=('BSD-3-clause')
 source=(https://codeload.github.com/dask/distributed/tar.gz/$pkgver)
-sha256sums=('139b630f697a7463c0acb7d730e9cdcf2ab44177e63150ac887788dbe533f97e')
+sha256sums=('94209abe84bbcd02dab633fdb5bee2df5995a4a6353623c18c7ac1a68239c2f7')
 
 prepare() {
   cp -a $_pkgname-$pkgver{,-py2}
@@ -19,7 +19,7 @@ package_python-distributed() {
   depends=('python>=3.5' 'python-click>=6.6' 'python-cloudpickle>=0.2.2' 
     'python-dask>=0.18.0' 'python-msgpack' 'python-psutil>=5.0' 'python-six'
     'python-sortedcontainers>2.0.1' 'python-tblib' 'python-toolz>=0.7.4'
-    'python-tornado>=4.5.1' 'python-zict>=0.1.3' 'python-yaml')
+    'python-tornado>=5' 'python-zict>=0.1.3' 'python-yaml')
   # For supporting older versions of python 3:
   # singledispatch; python_version < '3.4'
   optdepends=(
@@ -42,7 +42,7 @@ package_python2-distributed() {
   depends=('python2' 'python2-click>=6.6' 'python2-cloudpickle>=0.2.2' 
     'python2-dask>=0.18.0' 'python2-msgpack' 'python2-psutil>=5.0' 'python2-six'
     'python2-sortedcontainers>2.0.1' 'python2-tblib' 'python2-toolz>=0.7.4'
-    'python2-tornado>=4.5.1' 'python2-zict>=0.1.3' 'python2-yaml'
+    'python2-tornado>=5' 'python2-zict>=0.1.3' 'python2-yaml'
     'python2-futures' 'python2-singledispatch')
   optdepends=(
     # dev-requirements.txt
