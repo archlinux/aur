@@ -8,7 +8,7 @@
 # Contributor: Tobias Hunger <tobias dot hunger at gmail dot com>
 
 pkgname=qtcreator-git
-pkgver=v4.9.0.rc1.r328.ged87b74a59
+pkgver=v4.9.0.r473.g1de548d1cb
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('x86_64')
@@ -36,7 +36,7 @@ source=('git+https://code.qt.io/qt-creator/qt-creator.git'
         'qtcreator-clang-plugins.patch')
 sha256sums=('SKIP'
             'SKIP'
-            '955e2ec0de1ea0fd2994d04dfb9a04e74513e4f3fe189e76dd4a256fd9c864eb')
+            '26382c282c36aa6716af2deadae864ed21ffba0dd568f9b8f8f8048ce304f436')
 
 pkgver() {
     cd qt-creator
