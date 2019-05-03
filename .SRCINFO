@@ -1,8 +1,9 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches
 	pkgver = 3.32.1+10+g059c729da
-	pkgrel = 4
+	pkgrel = 5
 	url = https://wiki.gnome.org/Projects/GnomeShell
+	install = gnome-shell-performance.install
 	arch = x86_64
 	groups = gnome
 	license = GPL2
@@ -40,10 +41,12 @@ pkgbase = gnome-shell-performance
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	source = https://github.com/endlessm/gnome-shell/commit/11ddabfb22aedb3c35abe06d2cf0205f223cca03.diff
 	source = https://gitlab.gnome.org/GNOME/gnome-shell/uploads/4a083c80c81eeb0dd1be64e0e24b5c17/nvidia-background-workaround.patch
+	source = gnome-shell-performance.install
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 53fb32bfe8432e6309d5b1bcf9c2b7f36693b9141778b823f1d7e9c1d3f39425
 	sha256sums = 505c90290e5a867692f55d3209a22755bcffb997e7cac59e49b1a78c976d5af9
+	sha256sums = 63761e63722ed3ef0aea17fe7c458391ff43b7238790e84213d45dd128ede250
 
 pkgname = gnome-shell-performance
 

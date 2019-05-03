@@ -1,0 +1,8 @@
+post_install() {
+  setcap CAP_SYS_NICE=+ep usr/bin/gnome-shell
+}
+
+post_upgrade() {
+  post_install
+}
+
