@@ -3,8 +3,8 @@
 # Contributor: Martin Corley <Martin.Corley@ed.ac.uk>
 
 pkgname=psychopy
-pkgver=3.0.7
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="An experiment builder for neuroscience, psychology and psychophysics"
 arch=('any')
 url="http://www.psychopy.org"
@@ -22,7 +22,7 @@ makedepends=('python-wheel' 'python-setuptools')
 optdepends=('python-seaborn: For nice graphs')
 source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
         "setup.cfg.patch")
-md5sums=('6edaaeea126f58b6e73cc2baba07b88c'
+md5sums=('a5c254a43df3675505d9e4e7fffaabe8'
          '51eae5ff98af0e0f83ca7187ff81e055')
 
 prepare() {
