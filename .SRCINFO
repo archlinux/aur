@@ -1,0 +1,20 @@
+pkgbase = vimix-kde-git
+	pkgdesc = Vimix kde is a flat Design theme for KDE Plasma desktop
+	pkgver = 3.1d6476b
+	pkgrel = 1
+	url = https://github.com/vinceliuice/vimix-kde
+	arch = any
+	license = GPL3
+	options = !strip
+	source = git+https://github.com/vinceliuice/vimix-kde.git
+	md5sums = SKIP
+
+pkgname = vimix-kde-git
+	optdepends = vimix-gtk-themes: Matching GTK theme
+	optdepends = kvantum-theme-vimix: Vimix theme for Kvantum
+	optdepends = vimix-icon-theme: Matching icon theme
+
+pkgname = kvantum-theme-vimix-git
+	pkgdesc = Vimix theme for Kvantum
+	depends = kvantum-qt5
+
