@@ -14,15 +14,8 @@ pkgdesc="CircleCI's new command-line application."
 arch=('x86_64')
 _goos="linux"
 _goarch="amd64"
-groups=()
-depends=()
-makedepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
+provides=(circleci-cli)
+conflicts=(circleci-cli)
 url="https://github.com/${_pkgauthor}/${_upstream_pkgname}"
 license=("MIT")
 ### https://github.com/CircleCI-Public/circleci-cli/releases/download/v0.1.4427/circleci-cli_0.1.4427_linux_amd64.tar.gz
