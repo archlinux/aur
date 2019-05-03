@@ -1,0 +1,16 @@
+pkgbase = python-torchstat
+	pkgdesc = Model analyzer in PyTorch
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/Swall0w/torchstat
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-pytorch
+	source = python-torchstat-0.0.7.tar.gz::https://github.com/Swall0w/torchstat/archive/0.0.7.tar.gz
+	sha512sums = eb5f25fcf211114a67ec7a6f87c941f02b7d8a051d05e0e7d7c085017ec98eecf7afb8136c60a7fc7c8396e65c68e06ecc2cc0936239fb3cade71a3df42ddcb5
+
+pkgname = python-torchstat
+
