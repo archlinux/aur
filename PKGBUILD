@@ -7,8 +7,8 @@ arch=(x86_64)
 url="https://gitlab.gnome.org/World/libcloudproviders"
 license=('LGPL')
 groups=()
-depends=(glib2)
-makedepends=(git meson ninja gobject-introspection vala)
+depends=(glib2 gobject-introspection vala)
+makedepends=(git meson ninja)
 provides=("$pkgname=$pkgver")
 provides+=("dbus-org.freedesktop.CloudProviderManager.service")
 conflicts=("$_pkgname")
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname"
-	meson build --prefix /usr
+	meson build --buildtype=debugoptimized --prefix /usr
 	cd build
 	ninja
 }
