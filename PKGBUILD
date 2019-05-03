@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Weisgerber <sweisgerber.dev@gmail.com>
 pkgname=synology-note-station
 pkgver=2.1.5_259
-pkgrel=1
+pkgrel=3
 pkgdesc="Note Station for desktop connects you with Note Station on your Synology NAS. You can manage all the notes/to-do list offline, right from your local computer."
 arch=('i686' 'x86_64')
 url="https://www.synology.com/support/download/"
