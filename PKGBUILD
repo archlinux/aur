@@ -14,7 +14,7 @@ _revert=
 
 pkgname=mutter-781835-workaround
 pkgver=3.32.1+5+g668c44e66
-pkgrel=2
+pkgrel=3
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -66,8 +66,7 @@ prepare() {
   # clutter-stage-cogl: Reduce output latency and reduce missed frames too [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/281
   # first commit replaced by !363
-  # Conflict!
-  hash=$(git log --oneline --all | grep 'clutter-stage-cogl: Reschedule update on present' | head -n 1 | awk '{print $1}') # Sorry guys
+  hash=$(git log --oneline --all | grep 'clutter/stage-cogl: Reschedule update on present' | head -n 1 | awk '{print $1}') # Sorry guys
   echo "Found $hash for MR281"
   git cherry-pick -n $hash -Xtheirs
 
