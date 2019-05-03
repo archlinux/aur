@@ -1,6 +1,6 @@
 pkgbase = grumpy-irc-git
 	pkgdesc = Modern, yet oldschool IRC client with distributed core, written in C++
-	pkgver = v1.0.0.alpha.r206.gd0fca9e
+	pkgver = v1.0.0.alpha.r250.g2c98a36
 	pkgrel = 1
 	url = https://github.com/grumpy-irc/grumpy
 	arch = i686
