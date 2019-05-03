@@ -16,14 +16,14 @@
 # Maintainer: Samuel Littley <samuellittley@google.com>
 
 pkgname=('google-compute-engine' 'google-compute-engine-oslogin')
-pkgver=20190315
+pkgver=20190416
 pkgrel=1
 arch=('any' 'x86_64')
 url='https://github.com/GoogleCloudPlatform/compute-image-packages'
 license=('Apache')
 makedepends=('curl' 'json-c' 'pam' 'python-boto' 'python-distro' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/compute-image-packages/archive/$pkgver.tar.gz")
-sha256sums=('8ba134f6adf1490eb02782148586cf6a19ae7e5c779331d2e972ccff9734146a')
+sha256sums=('cef65af726b7c32db9035266804e0393b54196fabd1007026554bae2d9540de4')
 
 build() {
 	cd "compute-image-packages-$pkgver/packages"
@@ -47,14 +47,13 @@ package_google-compute-engine() {
 	popd
 
 	pushd google-compute-engine/src
-	install -d "$pkgdir/etc/dhcp/dhclient-exit-hooks.d"
-	# Use cp to install symbolic links.
-	cp -d etc/dhcp/dhclient-exit-hooks.d/* "$pkgdir/etc/dhcp/dhclient-exit-hooks.d"
 	install -m644 -Dt "$pkgdir/etc/modprobe.d" etc/modprobe.d/*
 	install -m644 -Dt "$pkgdir/etc/sysctl.d" etc/sysctl.d/*
 	install -m644 -Dt "$pkgdir/usr/lib/systemd/system/" lib/systemd/system/*
 	install -m644 -Dt "$pkgdir/usr/lib/udev/rules.d" lib/udev/rules.d/*
 	install -m755 -Dt "$pkgdir/usr/bin" usr/bin/*
+	# Use cp to install symbolic links.
+	cp -d etc/dhcp/dhclient-exit-hooks "$pkgdir/etc/dhclient-exit-hooks"
 	popd
 }
 
