@@ -1,5 +1,5 @@
 pkgname=libmodulemd
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="C Library for manipulating module metadata files"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ depends=('glib2' 'libyaml')
 makedepends=('gobject-introspection' 'gtk-doc' 'meson>=0.47' 'python-gobject')
 optdepends=('python-gobject: for python bindings')
 source=("$url/releases/download/$pkgname-$pkgver/${pkgname#lib}-$pkgver.tar.xz")
-md5sums=('7c8ec6440a1cf002f28853bb373fd2c3')
+md5sums=('061be67e72ad8d5d1dc2a624560609d4')
 
 prepare() {
 	mv "${pkgname#lib}-$pkgver" "$pkgname-$pkgver"
@@ -19,6 +19,10 @@ build() {
 	cd "$pkgname-$pkgver"
 	arch-meson build -Ddeveloper_build=false -Dbuild_api_v1=true
 	ninja -C build
+
+	# Trick to be able to link binaries against either v1 or v2 API
+	sed -e '/Libs:/ s/-lmodulemd/&-2.0/' \
+	    -i build/meson-private/modulemd-2.0.pc
 }
 
 check() {
@@ -30,8 +34,9 @@ package() {
 	cd "$pkgname-$pkgver"
 	DESTDIR="$pkgdir/" ninja -C build install
 
-	# Defaults to libmodulemd API v1 until more software are ported to API v2
+	# Trick to be able to link binaries against either v1 or v2 API
 	ln -sf "$pkgname.so.1" "$pkgdir/usr/lib/$pkgname.so"
+	ln -sf "$pkgname.so.2" "$pkgdir/usr/lib/$pkgname-2.0.so"
 
 	install -Dp -m644 COPYING   "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 	install -Dp -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
