@@ -1,7 +1,7 @@
 # Maintainer: PAPPY <pappy _AT_ a s c e l i o n _DOT_ com>
 
-_version=3.16.0
-_patch=01
+_version=3.16.1
+_patch=02
 
 pkgname=nexus-oss
 pkgver=${_version}.${_patch}
@@ -26,7 +26,7 @@ source=("https://download.sonatype.com/nexus/3/nexus-$_version-$_patch-unix.tar.
 		"$pkgname.vmoptions"
 		"pref_jre.cfg"
 		)
-sha256sums=('6bddd8de5854e414f17afd39c4304f66f73166a8748435032edefcd28e71e52e'
+sha256sums=('961e29d7242626fdeebf3a1c429ae0bc6468544a2c80df328fd3fb7596becc59'
             '3d2ebc2a796dbdc7e7e3b97e4c3272292169c898776e111f503f0517e434caff'
             '0c8003d478cf12115e236e7e25ce86cd9f1a6f9c8d1c8e41ed17156c8f6d2d08'
             'dcdef5614db12f38b3da0b9de1b52fb7fa402af6621a825981c6168a34a6ad9b'
