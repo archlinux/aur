@@ -1,0 +1,7 @@
+post_install() {
+	echo "-- For customizations you can : "
+	echo " - Add your patches to PKBUILD 
+	echo " - Edit config.h to your needs"
+	echo " - Rebuild the package"
+	echo "-- Don't forget to add 'xcompmgr &' to your .xinitrc"
+}

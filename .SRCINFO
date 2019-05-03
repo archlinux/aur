@@ -1,0 +1,23 @@
+pkgbase = st-custom
+	pkgdesc = A simple virtual terminal emulator for X - easily customizable version
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://st.suckless.org
+	install = st.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	depends = libxft
+	depends = libxext
+	depends = xorg-fonts-misc
+	depends = xcompmgr
+	provides = st
+	conflicts = st
+	source = https://dl.suckless.org/st/st-0.8.2.tar.gz
+	source = https://st.suckless.org/patches/alpha/st-alpha-0.8.2.diff
+	sha256sums = aeb74e10aa11ed364e1bcc635a81a523119093e63befd2f231f8b0705b15bf35
+	sha256sums = 9c5b4b4f23de80de78ca5ec3739dc6ce5e7f72666186cf4a9c6b614ac90fb285
+
+pkgname = st-custom
+
