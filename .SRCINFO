@@ -1,6 +1,6 @@
 pkgbase = qbittorrent-dark-git
 	pkgdesc = A dark version of bittorrent client powered by C++, Qt5 and the good libtorrent library (development version)
-	pkgver = 4.1.5.r804.gd42fedc6d
+	pkgver = 4.1.5.r805.g2c438e9d1
 	pkgrel = 1
 	url = http://www.qbittorrent.org/
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = qbittorrent-dark-git
 	makedepends = qt5-tools
 	depends = libtorrent-rasterbar
 	depends = qt5-base
+	depends = libqdark-git
 	optdepends = python: needed for torrent search tab
 	provides = qbittorrent
 	conflicts = qbittorrent

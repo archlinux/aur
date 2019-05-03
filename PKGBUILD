@@ -1,13 +1,13 @@
 # Maintainer: degreeme <suratovvlad@gmail.com>
 
 pkgname=qbittorrent-dark-git
-pkgver=4.1.5.r804.gd42fedc6d
+pkgver=4.1.5.r805.g2c438e9d1
 pkgrel=1
 pkgdesc="A dark version of bittorrent client powered by C++, Qt5 and the good libtorrent library (development version)"
 arch=('i686' 'x86_64')
 url="http://www.qbittorrent.org/"
 license=('custom' 'GPL')
-depends=('libtorrent-rasterbar' 'qt5-base')
+depends=('libtorrent-rasterbar' 'qt5-base' 'libqdark-git')
 makedepends=('boost' 'git' 'qt5-tools')
 optdepends=('python: needed for torrent search tab')
 conflicts=('qbittorrent' 'qbittorrent-git' 'qbittorrent-stable-git')
