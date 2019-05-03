@@ -1,0 +1,15 @@
+pkgbase = texlab-git
+	pkgdesc = An implementation of the Language Server Protocol for LaTeX
+	pkgver = r254.0d1575f
+	pkgrel = 1
+	url = https://github.com/latex-lsp/texlab
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = gradle
+	depends = java-runtime
+	source = texlab-git::git+https://github.com/latex-lsp/texlab.git
+	md5sums = SKIP
+
+pkgname = texlab-git
+
