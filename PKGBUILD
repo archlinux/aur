@@ -1,6 +1,6 @@
 # Maintainer: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
-pkgver=1.32.18
+pkgver=1.32.19
 pkgrel=1
 pkgdesc=".NET development platform based on on Roslyn workspaces."
 arch=('x86_64')
