@@ -1,0 +1,17 @@
+pkgbase = batify-git
+	pkgdesc = One udevrules file triggering plug and battery level notifications (multi-X sessions support).
+	pkgver = 1.0.r15.g691dc5b
+	pkgrel = 1
+	url = https://github.com/Ventto/batify.git
+	arch = any
+	license = MIT
+	depends = libnotify
+	depends = xpub
+	optdepends = notification-daemon
+	provides = batify
+	conflicts = batify
+	source = git+https://github.com/Ventto/batify.git
+	sha256sums = SKIP
+
+pkgname = batify-git
+
