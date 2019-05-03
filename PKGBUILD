@@ -7,7 +7,7 @@
 
 pkgname=nestopia-git
 _pkgname=nestopia
-pkgver=1.49.r42.ga12b967
+pkgver=1.49.r43.g44800c5
 pkgrel=1
 pkgdesc='An NES emulator featuring cycle exact emulation, a ridiculous number of mappers, and lots of custom sound chips.'
 url='http://0ldsk00l.ca/nestopia/'
