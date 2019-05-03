@@ -1,6 +1,6 @@
 pkgname=grumpy-irc-git
 _pkgname=grumpy-irc
-pkgver=v1.0.0.alpha.r250.g2c98a36
+pkgver=v1.0.0.alpha.r206.gd0fca9e
 pkgrel=1
 pkgdesc="Modern, yet oldschool IRC client with distributed core, written in C++"
 arch=('i686' 'x86_64')
@@ -26,6 +26,7 @@ prepare(){
  cd src/sqlite
  unzip sqlite-amalgamation-3220000.zip
  mv sqlite-amalgamation-3220000/* .
+ 
 }
 
 build() {
