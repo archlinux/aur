@@ -2,7 +2,7 @@
 # Contributor: gue5t <gue5t@aur.archlinux.org>
 _name=Mastodon.py
 pkgname=python-mastodon
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="python bindings for the Mastodon RPC API"
 arch=('any')
@@ -17,7 +17,7 @@ depends=(python
          python-http-ece
          python-cryptography)
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('3f000f34e2740a90fdadd923d1a7dd100dd62d56906c026ae725ce43301f30f6')
+sha256sums=('9d0d469a46cc28ed4d8450422cd868973c330978bab3680b643ebb28ec7d3ffa')
 
 build() {
   cd ${_name}-${pkgver}
