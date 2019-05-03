@@ -1,0 +1,67 @@
+diff --git a/configure.ac b/configure.ac
+index 164ec055..384396f0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -168,7 +168,7 @@ AS_IF([test "$enable_debug" = yes -a -n "$with_poco_libs"],
+ 
+ ENABLE_DEBUG=
+ LOOLWSD_LOGLEVEL="warning"
+-LOOLWSD_LOG_TO_FILE="false"
++LOOLWSD_LOG_TO_FILE="true"
+ LOOLWSD_LOGFILE="/var/log/loolwsd.log"
+ LOOLWSD_ANONYMIZE_FILENAMES=false
+ LOOLWSD_ANONYMIZE_USERNAMES=false
+diff --git a/loolwsd.xml.in b/loolwsd.xml.in
+index 0ea2abd8..89578d98 100644
+--- a/loolwsd.xml.in
++++ b/loolwsd.xml.in
+@@ -6,12 +6,12 @@
+     <allowed_languages desc="List of supported languages of Writing Aids (spell checker, grammar checker, thesaurus, hyphenation) on this instance. Allowing too many has negative effect on startup performance." default="de_DE en_GB en_US es_ES fr_FR it nl pt_BR pt_PT ru">de_DE en_GB en_US es_ES fr_FR it nl pt_BR pt_PT ru</allowed_languages>
+ 
+     <tile_cache_path desc="Path to a directory where to keep the tile cache." type="path" relative="false" default="@LOOLWSD_CACHEDIR@"></tile_cache_path>
+-    <sys_template_path desc="Path to a template tree with shared libraries etc to be used as source for chroot jails for child processes." type="path" relative="true" default="systemplate"></sys_template_path>
++    <sys_template_path desc="Path to a template tree with shared libraries etc to be used as source for chroot jails for child processes." type="path" relative="false" default="/var/lib/libreoffice-online/systemplate"></sys_template_path>
+     <lo_template_path desc="Path to a LibreOffice installation tree to be copied (linked) into the jails for child processes. Should be on the same file system as systemplate." type="path" relative="false" default="@LO_PATH@"></lo_template_path>
+-    <child_root_path desc="Path to the directory under which the chroot jails for the child processes will be created. Should be on the same file system as systemplate and lotemplate. Must be an empty directory." type="path" relative="true" default="jails"></child_root_path>
++    <child_root_path desc="Path to the directory under which the chroot jails for the child processes will be created. Should be on the same file system as systemplate and lotemplate. Must be an empty directory." type="path" relative="false" default="/var/lib/libreoffice-online/jails">/var/lib/libreoffice-online/jails</child_root_path>
+ 
+     <server_name desc="Hostname:port of the server running loolwsd. If empty, it's derived from the request." type="string" default=""></server_name>
+-    <file_server_root_path desc="Path to the directory that should be considered root for the file server. This should be the directory containing loleaflet." type="path" relative="true" default="loleaflet/../"></file_server_root_path>
++    <file_server_root_path desc="Path to the directory that should be considered root for the file server. This should be the directory containing loleaflet." type="path" relative="false" default="/usr/share/libreoffice-online">/usr/share/libreoffice-online</file_server_root_path>
+ 
+     <memproportion desc="The maximum percentage of system memory consumed by all of the LibreOffice Online, after which we start cleaning up idle documents" type="double" default="80.0"></memproportion>
+     <num_prespawn_children desc="Number of child processes to keep started in advance and waiting for new clients." type="uint" default="1">1</num_prespawn_children>
+@@ -42,7 +42,7 @@
+         <level type="string" desc="Can be 0-8, or none (turns off logging), fatal, critical, error, warning, notice, information, debug, trace" default="@LOOLWSD_LOGLEVEL@">@LOOLWSD_LOGLEVEL@</level>
+         <file enable="@LOOLWSD_LOG_TO_FILE@">
+             <property name="path" desc="Log file path.">@LOOLWSD_LOGFILE@</property>
+-            <property name="rotation" desc="Log file rotation strategy. See Poco FileChannel.">never</property>
++            <property name="rotation" desc="Log file rotation strategy. See Poco FileChannel.">weekly</property>
+             <property name="archive" desc="Append either timestamp or number to the archived log filename.">timestamp</property>
+             <property name="compress" desc="Enable/disable log file compression.">true</property>
+             <property name="purgeAge" desc="The maximum age of log files to preserve. See Poco FileChannel.">10 days</property>
+@@ -83,8 +83,8 @@
+     </net>
+ 
+     <ssl desc="SSL settings">
+-        <enable type="bool" desc="Controls whether SSL encryption is enable (do not disable for production deployment). If default is false, must first be compiled with SSL support to enable." default="@ENABLE_SSL@">@ENABLE_SSL@</enable>
+-        <termination desc="Connection via proxy where loolwsd acts as working via https, but actually uses http." type="bool" default="true">false</termination>
++        <enable type="bool" desc="Controls whether SSL encryption is enable. If default is false, must first be compiled with SSL support to enable." default="@ENABLE_SSL@">false</enable>
++        <termination desc="Connection via proxy where loolwsd acts as working via https, but actually uses http." type="bool" default="true">true</termination>
+         <cert_file_path desc="Path to the cert file" relative="false">/etc/loolwsd/cert.pem</cert_file_path>
+         <key_file_path desc="Path to the key file" relative="false">/etc/loolwsd/key.pem</key_file_path>
+         <ca_file_path desc="Path to the ca file" relative="false">/etc/loolwsd/ca-chain.cert.pem</ca_file_path>
+diff --git a/tools/Config.cpp b/tools/Config.cpp
+index 2c257c60..68370cf4 100644
+--- a/tools/Config.cpp
++++ b/tools/Config.cpp
+@@ -337,7 +337,7 @@ int Config::main(const std::vector<std::string>& args)
+     }
+     else if (args[0] == "update-system-template")
+     {
+-        const char command[] = "su lool --shell=/bin/sh -c 'loolwsd-systemplate-setup /opt/lool/systemplate " LO_PATH " >/dev/null 2>&1'";
++        const char command[] = "su lool --shell=/bin/sh -c 'loolwsd-systemplate-setup /var/lib/libreoffice-online/systemplate  " LO_PATH " >/dev/null 2>&1'";
+         std::cout << "Running the following command:" << std::endl
+                   << command << std::endl;
+ 
+

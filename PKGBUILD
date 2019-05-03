@@ -4,56 +4,71 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=libreoffice-online
-pkgver=5.4.2.2
+pkgver=6.2.3.2
 pkgrel=1
 pkgdesc="HTML5-based/cloud-based version of the office suite"
 arch=('x86_64')
-url="https://cgit.freedesktop.org/libreoffice/online/"
+url="https://www.libreoffice.org/download/libreoffice-online/"
 license=("MPL")
-makedepends=("cppunit" "poco" "libreoffice-fresh-sdk>=5.4" "jake" "npm" "chrpath" "python-polib")
-depends=("libpng12" "poco" "pcre" "cpio" "libreoffice" "openssl-1.0")
+makedepends=("poco" "libreoffice-fresh-sdk>=6.2" "nodejs" "python-polib" "cppunit" "npm")
+depends=("poco" "libreoffice" "cpio")
 backup=("etc/libreoffice-online/loolwsd.xml")
-install="libreoffice-online.install"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LibreOffice/online/archive/libreoffice-${pkgver}.tar.gz"
-	"loolwsd.service"
-	"build-fix.patch"
-	"hack-annoying-errors.patch")
-sha512sums=('0f49884e5e7ddea9cf1c97565f38e50b790da5c81486580dd77556995f6078be25c981b1496dcf488482bedbfe0fcffed9d45f52bb51e51f67f4527842025d47'
-            '4a809d8420f42eef99a831b32c94d9ce336b5aa5ccac3c44b99346b94e9d7a6ae8b4e06760057f20e844837c3ab2175146bef63ba99e1a50d016a890704cc2c9'
-            '049036898f59f1a7f18c6f186042b7ecee84b010256c813c633e0854b206b1b94343972cc8a374990eb22919a223429de4db712f70a89851f266e6500b67c2b1'
-            '530dad9becee9504d1e2fff5c7e5115daf62ac48312c5cf42f9b44dc0f21665a05f5788606d988f631d3b6dc4dfcf866d564ac1f8bf087c4efe3c197b3206f2d')
+source=("${pkgname}::git+https://git.libreoffice.org/online#tag=libreoffice-${pkgver}"
+        "disable-fc-cache.patch"
+        "loolwsd-config.patch"
+        "loolwsd.service"
+        "libreoffice-online.install"
+        "libreoffice-online.sysusers"
+        "libreoffice-online.tmpfiles")
+
+sha512sums=('SKIP'
+            'a7bf2f594be83cee242ca1172edb0f5de33640beee58eef71e1dd476a4b0efafe565e6816f034a91022c415a0755e3a553bc260fc8648163ad6f7a355f996054'
+            '5a3abbfea165527ec97e469e588de77772f138bdb566a4fc69c58999401af0b7569854e35e02dbd27c64ad7f22eaa7a7ecedda0967eb879ca0236f68dd1ddb9c'
+            '76ec4fe0bfc8d856dc82c3fc993b612b9dd0ad7399bf733d4d4afe89ce393f3651c9734fef044ec4e80f3d2c20d94fe8b68cd6a23dfa3dbd267697b04e9ca73e'
+            '76f6487fedc801e054d75a52fc5204048d4260adf30033d7a38963296cdf7b68255ddfa3aada842340c18f26ae49d7be1551930a714d8ad7c082fdf4640ef3ce'
+            'b85929da722e548f5c970c7a15a09d42c7e6b1aceeb4ad6138ade31888a2261155d6f5a187acb930c79ec00988531a3828e983c6b9ed3bd5a42ad62f5ff3b0d2'
+            '7764aa3c62ea4fba492a32135c2a1ddbc1686e0e3665c839d40ffbcba7a7a4a3481b54ee5c6640a71de74ecd7a0f6f5f228f9d08f3a82b1b8aca121f4dbd1dc7')
+
+install=libreoffice-online.install
 
 prepare() {
-  cd "${srcdir}/online-libreoffice-${pkgver}"
-  patch -p1 <"$srcdir"/build-fix.patch
-  patch -p1 <"$srcdir"/hack-annoying-errors.patch
+  cd "${srcdir}/${pkgname}"
+  patch -p1 < "${srcdir}/disable-fc-cache.patch"
+  patch -p1 < "${srcdir}/loolwsd-config.patch"
 }
 
 build() {
-  cd "${srcdir}/online-libreoffice-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   ./autogen.sh
-  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
-  CPPFLAGS="-I/usr/include/openssl-1.0 -Wno-implicit-fallthrough -Wno-format-truncation" \
-  CFLAGS="-I/usr/include/openssl-1.0" \
-  LDFLAGS="-L/usr/lib/openssl-1.0" \
-      ./configure --enable-silent-rules \
-	--with-lokit-path=/usr/include/libreoffice \
-	--with-lo-path=/usr/lib/libreoffice \
-	--prefix=/usr \
-	--sysconfdir=/etc
-  BUILDING_FROM_RPMBUILD=yes make
+
+  ./configure \
+      --prefix=/usr \
+      --mandir=/usr/share/man \
+      --infodir=/usr/share/info \
+      --datadir=/usr/share \
+      --sysconfdir=/etc \
+      --localstatedir=/var/lib \
+      --disable-dependency-tracking \
+      --disable-silent-rules \
+      --docdir=/usr/share/doc/libreoffice-online \
+      --htmldir=/usr/share/doc/libreoffice-online/html \
+      --with-sysroot=/ \
+      --libdir=/usr/lib64 \
+      --with-logfile=/var/log/libreoffice-online/loolwsd.log \
+      --disable-setcap \
+      --disable-werror \
+      --enable-anonymize-usernames \
+      --enable-anonymize-filenames
+
+      make
 }
 
 package() {
-  cd "${srcdir}/online-libreoffice-${pkgver}"
-  BUILDING_FROM_RPMBUILD=yes make DESTDIR=${pkgdir} install
-  install -Dm644 "${srcdir}/loolwsd.service" "${pkgdir}/usr/lib/systemd/system/loolwsd.service"
-  mkdir -p "${pkgdir}/var/lib/lool"
-  mkdir -p "${pkgdir}/var/cache/libreoffice-online"
-  mkdir -p "${pkgdir}/var/lib/lool/child-roots"
-  chmod u+w "${pkgdir}/var/lib/lool/child-roots"
-  sed -i 's|/usr/var/cache/libreoffice-online|/var/cache/libreoffice-online|g' ${pkgdir}/etc/libreoffice-online/loolwsd.xml
-  mkdir -p "${pkgdir}/usr/share/libreoffice-online/loleaflet"
-  cp -r "loleaflet/dist" "${pkgdir}/usr/share/libreoffice-online/loleaflet/"
-  chrpath -d "$pkgdir/usr/bin/"{loolmount,loolforkit}
+  cd "${srcdir}/${pkgname}"
+  make DESTDIR=${pkgdir} install
+  mkdir -p "${pkgdir}/var/log" "${pkgdir}/var/lib/{,cache}/libreoffice-online"
+
+  install -Dm644 "${srcdir}/loolwsd.service"     "${pkgdir}/usr/lib/systemd/system/loolwsd.service"
+  install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 }

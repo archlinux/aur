@@ -1,21 +1,6 @@
-post_install() {
-  getent group lool > /dev/null || \
-    groupadd -r lool > /dev/null
-  getent passwd lool > /dev/null || \
-    useradd -r -g lool -s /sbin/nologin -d /var/lib/lool -c "Libreoffice Online" lool > /dev/null
-  post_upgrade
-}
 
 post_upgrade() {
-  loolwsd-systemplate-setup /var/lib/lool/systemplate /usr/lib/libreoffice
-  chown -R lool:lool /var/cache/libreoffice-online \
-                     /var/lib/lool/child-roots \
-                     /var/lib/lool/systemplate
-  chmod u+w /var/lib/lool/child-roots
-  setcap cap_fowner,cap_mknod,cap_sys_chroot=ep /usr/bin/loolforkit
-  setcap cap_sys_admin=ep /usr/bin/loolmount
+     loolconfig update-system-template
+     setcap cap_fowner,cap_mknod,cap_sys_chroot=ep /usr/bin/loolforkit
 }
 
-post_remove() {
-  echo "You may want to remove /var/lib/lool and loop user/group"
-}
