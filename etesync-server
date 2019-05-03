@@ -1,9 +1,9 @@
 #!/bin/sh
 
-if [ "$USER" != "etesync" ];
+if [ "$(id -un)" != "etesync" ];
 then
 	echo "Please run this script as user etesync"
 	exit 0
 fi
 
-ETESYNC_DB_PATH=/var/lib/etesync-server/db.sqlite3 /usr/share/etesync-server/manage.py \$@
+ETESYNC_DB_PATH=/var/lib/etesync-server/db.sqlite3 /usr/share/etesync-server/manage.py $@

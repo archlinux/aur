@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Alain TORET <pierre-alain.toret@protonmail.com>
 pkgname=('etesync-server')
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A self-hostable EteSync server"
 arch=(any)
 depends=('python-django'
@@ -23,7 +23,7 @@ source=('https://github.com/etesync/server-skeleton/archive/v0.1.0.tar.gz'
 sha256sums=('9ab6ac6d3517023ad6702843e855dc2f89edf32388a058439d6248c2d6f1ae52'
 			'8737998b58b9a101f33e911e4f1f413399a0bfa6b72533ddf00eb7dd963e8ddd'
 			'7363b065206a40e067675d072c5ff269b32704ec89c4eed98e5d3edd71fca122'
-			'823c0ed67e81795fc130c0ce9ed12e5b9b7bdbaa45739e7b2dc380936e6df043')
+			'd822ce24a223016f4576ea46c86d912721eb423ebc6c54f0db5f0c9cff1613e7')
 install=$pkgname.install
 
 package() {
