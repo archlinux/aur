@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-performance
 pkgver=3.32.1+10+g059c729da
-pkgrel=3
+pkgrel=4
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
@@ -50,7 +50,7 @@ prepare() {
 
   # Mild performance improvements on style changes
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/524
-  git cherry-pick -n fb04dafb^..94995e9c
+  # git cherry-pick -n fb04dafb^..94995e9c
 
   # keyboard: Destroy old layout actors when regenerating keyboard groups
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/523
