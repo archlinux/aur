@@ -1,6 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=libint2
+_pkgname=libint
 pkgver=2.5.0
 pkgrel=1
 pkgdesc='A library for the evaluation of molecular integrals of many-body operators over Gaussian functions'
@@ -14,7 +15,7 @@ sha1sums=('ab49e3c3691bbeb32310d81f0bfff315db4213f2')
 options=(!strip)
 
 build() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd ${srcdir}/${_pkgname}-${pkgver}
 
     ./autogen.sh
     
@@ -26,7 +27,7 @@ build() {
 }
 
 package() {
-    cd ${srcdir}/${pkgname}-${pkgver}/build
+    cd ${srcdir}/${_pkgname}-${pkgver}/build
 
     make DESTDIR="$pkgdir" install
 }
