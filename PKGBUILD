@@ -19,9 +19,10 @@ pkgver() {
 }
 
 package_vimix-kde-git() {
-	optdepends=('vimix-gtk-themes: Matching GTK theme'
-				'kvantum-theme-vimix: Vimix theme for Kvantum'
-				'vimix-icon-theme: Matching icon theme')
+	optdepends=('vimix-gtk-themes-git: Matching GTK theme'
+				'kvantum-theme-vimix-git: Vimix theme for Kvantum'
+				'vimix-icon-theme-git: Matching icon theme'
+				'tela-icon-theme-git: Recommended icon theme')
 	
 	cd "${srcdir}/${_gitname}"
 	install -d "${pkgdir}/"usr/share
