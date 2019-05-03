@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=('python-pickle5')
 _pkgname='pickle5'
-pkgver='0.0.6'
+pkgver='0.0.7'
 pkgrel=1
 pkgdesc="Experimental backport of the pickle 5 protocol (PEP 574)"
 url="https://github.com/pitrou/pickle5-backport"
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 license=('custom')
 arch=('any')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('ae0022ad79930cf8cd190eade903ec5041c36a0237bab8ac38a50d2c9d3fc3cb')
+sha256sums=('4aab3fefd665257c16b95ff158c38bedf26595aebcbf11d264e653866579b175')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
