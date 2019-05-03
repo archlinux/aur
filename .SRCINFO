@@ -1,11 +1,12 @@
 pkgbase = intercept-git
 	pkgdesc = An auxiliary tool for tcpcopy and tcpburn.
 	pkgver = 1.0.0.r9.g185c3b8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/session-replay-tools/intercept.git
 	arch = x86_64
 	license = BSD
 	makedepends = git
+	depends = libpcap
 	provides = intercept
 	options = strip
 	source = intercept::git+https://github.com/session-replay-tools/intercept.git
