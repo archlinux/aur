@@ -4,8 +4,8 @@
 pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-cuda")
 _pkgname="pytorch"
-pkgver=1.0.1
-pkgrel=8
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -37,7 +37,7 @@ prepare() {
 build() {
   export CC=gcc
   export CXX=g++
-  export PYTORCH_BUILD_VERSION=${pkgver}
+  export PYTORCH_BUILD_VERSION="${pkgver}"
   export PYTORCH_BUILD_NUMBER=1
 
   echo "Building without cuda"
@@ -46,7 +46,7 @@ build() {
   export USE_OPENCV=1
   export BUILD_BINARY=1
 
-  cd "$srcdir/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py build
 
   echo "Building with cuda"
@@ -59,13 +59,13 @@ build() {
   export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
   export TORCH_CUDA_ARCH_LIST="3.0;3.2;3.5;3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5"
 
-  cd "$srcdir/${_pkgname}-${pkgver}-cuda"
+  cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
   python setup.py build
 }
 
 package_python-pytorch() {
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir"/ --optimize=1 --skip-build
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
   # put CMake files in correct place
   install -d "${pkgdir}/usr/lib/cmake"
@@ -73,31 +73,24 @@ package_python-pytorch() {
   mv "${pkgdir}/${pytorchpath}/share/cmake"/* \
      "${pkgdir}/usr/lib/cmake/"
   # put C++ API in correct place
-  install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/include"
   install -d "${pkgdir}/usr/lib/pytorch"
-  torchlibpath="${pytorchpath}/lib"
-  mv "${pkgdir}/${torchlibpath}/include"/* "${pkgdir}/usr/include/"
-  mv "${pkgdir}/${torchlibpath}/THCUNN.h" "${pkgdir}/usr/include/"
-  mv "${pkgdir}/${torchlibpath}/THNN.h" "${pkgdir}/usr/include/"
-  mv "${pkgdir}/${torchlibpath}"/*.so* "${pkgdir}/usr/lib/pytorch/"
-  mv "${pkgdir}/${torchlibpath}/torch_shm_manager" "${pkgdir}/usr/bin/"
+  mv "${pkgdir}/${pytorchpath}/bin"/* "${pkgdir}/usr/bin/"
+  mv "${pkgdir}/${pytorchpath}/include"/* "${pkgdir}/usr/include/"
+  mv "${pkgdir}/${pytorchpath}/lib"/*.so* "${pkgdir}/usr/lib/pytorch/"
   # clean up duplicates
   # TODO: move towards direct shared library dependecy of:
   #   c10, caffe2, libcpuinfo, CUDA RT, gloo, GTest, Intel MKL,
   #   NVRTC, ONNX, protobuf, libthreadpool, QNNPACK
   rm -rf "${pkgdir}/${pytorchpath}/share/cmake"
-  rm -rf "${pkgdir}/${torchlibpath}/include"
-  rm -rf "${pkgdir}/usr/include/pybind11"
-  rm -rf "${pkgdir}/usr/lib/pytorch/libiomp5.so"  # remove openmp lib
+  rm -rf "${pkgdir}/${pytorchpath}/include"
+  rm -rf "${pkgdir}/${pytorchpath}/bin"
   # python module is hardcoded to look there at runtime
-  ln -s /usr/include/THCUNN.h "${pkgdir}/${torchlibpath}/"
-  ln -s /usr/include/THNN.h "${pkgdir}/${torchlibpath}/"
-  ln -s /usr/include "${pkgdir}/${torchlibpath}/include"
+  ln -s /usr/bin "${pkgdir}/${pytorchpath}/bin"
+  ln -s /usr/include "${pkgdir}/${pytorchpath}/include"
   find "${pkgdir}"/usr/lib/pytorch -type f -name "*.so*" -print0 | while read -rd '' _lib; do
-    ln -s ${_lib#"$pkgdir"} "${pkgdir}/${torchlibpath}/"
+    ln -s ${_lib#"$pkgdir"} "${pkgdir}/${pytorchpath}/lib/"
   done
-  ln -s /usr/bin/torch_shm_manager "${pkgdir}/${torchlibpath}/torch_shm_manager"
   # ldconfig
   install -d "${pkgdir}/etc/ld.so.conf.d"
   echo '/usr/lib/pytorch' > "${pkgdir}/etc/ld.so.conf.d/pytorch.conf"
@@ -107,8 +100,8 @@ package_python-pytorch-cuda() {
   depends+=('cuda' 'cudnn')
   provides=('python-pytorch')
   conflicts=('python-pytorch')
-  cd "$srcdir/${_pkgname}-${pkgver}-cuda"
-  python setup.py install --root="$pkgdir"/ --optimize=1 --skip-build
+  cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
+  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
   # put CMake files in correct place
   install -d "${pkgdir}/usr/lib/cmake"
@@ -116,31 +109,25 @@ package_python-pytorch-cuda() {
   mv "${pkgdir}/${pytorchpath}/share/cmake"/* \
      "${pkgdir}/usr/lib/cmake/"
   # put C++ API in correct place
-  install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/include"
   install -d "${pkgdir}/usr/lib/pytorch"
-  torchlibpath="${pytorchpath}/lib"
-  mv "${pkgdir}/${torchlibpath}/include"/* "${pkgdir}/usr/include/"
-  mv "${pkgdir}/${torchlibpath}/THCUNN.h" "${pkgdir}/usr/include/"
-  mv "${pkgdir}/${torchlibpath}/THNN.h" "${pkgdir}/usr/include/"
-  mv "${pkgdir}/${torchlibpath}"/*.so* "${pkgdir}/usr/lib/pytorch/"
-  mv "${pkgdir}/${torchlibpath}/torch_shm_manager" "${pkgdir}/usr/bin/"
+  mv "${pkgdir}/${pytorchpath}/bin"/* "${pkgdir}/usr/bin/"
+  mv "${pkgdir}/${pytorchpath}/include"/* "${pkgdir}/usr/include/"
+  mv "${pkgdir}/${pytorchpath}/lib"/*.so* "${pkgdir}/usr/lib/pytorch/"
+  # mv "${pkgdir}/${pytorchpath}/bin/torch_shm_manager" "${pkgdir}/usr/bin/"
   # clean up duplicates
   # TODO: move towards direct shared library dependecy of:
   #   c10, caffe2, libcpuinfo, CUDA RT, gloo, GTest, Intel MKL,
   #   NVRTC, ONNX, protobuf, libthreadpool, QNNPACK
   rm -rf "${pkgdir}/${pytorchpath}/share/cmake"
-  rm -rf "${pkgdir}/${torchlibpath}/include"
-  rm -rf "${pkgdir}/usr/include/pybind11"
-  rm -rf "${pkgdir}/usr/lib/pytorch/libiomp5.so"  # remove openmp lib
+  rm -rf "${pkgdir}/${pytorchpath}/include"
+  rm -rf "${pkgdir}/${pytorchpath}/bin"
   # python module is hardcoded to look there at runtime
-  ln -s /usr/include/THCUNN.h "${pkgdir}/${torchlibpath}/"
-  ln -s /usr/include/THNN.h "${pkgdir}/${torchlibpath}/"
-  ln -s /usr/include "${pkgdir}/${torchlibpath}/include"
+  ln -s /usr/bin "${pkgdir}/${pytorchpath}/bin"
+  ln -s /usr/include "${pkgdir}/${pytorchpath}/include"
   find "${pkgdir}"/usr/lib/pytorch -type f -name "*.so*" -print0 | while read -rd '' _lib; do
-    ln -s ${_lib#"$pkgdir"} "${pkgdir}/${torchlibpath}/"
+    ln -s ${_lib#"$pkgdir"} "${pkgdir}/${pytorchpath}/lib/"
   done
-  ln -s /usr/bin/torch_shm_manager "${pkgdir}/${torchlibpath}/torch_shm_manager"
   # ldconfig
   install -d "${pkgdir}/etc/ld.so.conf.d"
   echo '/usr/lib/pytorch' > "${pkgdir}/etc/ld.so.conf.d/pytorch.conf"
