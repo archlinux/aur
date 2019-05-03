@@ -1,6 +1,6 @@
 pkgbase = lib32-mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 19.1.0_devel.110426.07745f94948
+	pkgver = 19.1.0_devel.110691.e340d7beef9
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64

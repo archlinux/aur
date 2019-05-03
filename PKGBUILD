@@ -12,7 +12,7 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.1.0_devel.110426.07745f94948
+pkgver=19.1.0_devel.110691.e340d7beef9
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -82,13 +82,13 @@ build () {
        -D osmesa=gallium \
        -D shared-glapi=true \
        -D valgrind=false \
-       -D vulkan-overlay-layer=true \
        -D tools=[]
+# -D vulkan-overlay-layer=true \
     meson configure _build
-    if [[ ! $MAKEFLAGS ]]; then
-        ninja  "$MAKEFLAGS" -C _build 
+    if [[ ! $NINJAFLAGS ]]; then
+        ninja  -C _build 
     else
-        ninja  "$MAKEFLAGS" -C _build
+        ninja  "$NINJAFLAGS" -C _build
     fi
 }
 
