@@ -1,6 +1,6 @@
 pkgbase = captive-browser-git
 	pkgdesc = A dedicated Chrome instance to log into captive portals without messing with DNS settings
-	pkgver = r8.80390c5
+	pkgver = r18.0845056
 	pkgrel = 1
 	url = https://blog.filippo.io/captive-browser
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = captive-browser-git
 	makedepends = go
 	makedepends = git
 	depends = google-chrome
+	optdepends = chromium: used to log into captive portal
+	optdepends = google-chrome: used to log into captive portal
 	provides = captive-browser
 	conflicts = captive-browser
 	options = !strip
