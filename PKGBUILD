@@ -88,7 +88,7 @@ package_python-pytorch() {
   # python module is hardcoded to look there at runtime
   ln -s /usr/bin "${pkgdir}/${pytorchpath}/bin"
   ln -s /usr/include "${pkgdir}/${pytorchpath}/include"
-  find "${pkgdir}"/usr/lib/pytorch -type f -name "*.so*" -print0 | while read -rd '' _lib; do
+  find "${pkgdir}"/usr/lib/pytorch -type f -name "*.so*" -print0 | while read -rd $'\0' _lib; do
     ln -s ${_lib#"$pkgdir"} "${pkgdir}/${pytorchpath}/lib/"
   done
   # ldconfig
@@ -125,7 +125,7 @@ package_python-pytorch-cuda() {
   # python module is hardcoded to look there at runtime
   ln -s /usr/bin "${pkgdir}/${pytorchpath}/bin"
   ln -s /usr/include "${pkgdir}/${pytorchpath}/include"
-  find "${pkgdir}"/usr/lib/pytorch -type f -name "*.so*" -print0 | while read -rd '' _lib; do
+  find "${pkgdir}"/usr/lib/pytorch -type f -name "*.so*" -print0 | while read -rd $'\0' _lib; do
     ln -s ${_lib#"$pkgdir"} "${pkgdir}/${pytorchpath}/lib/"
   done
   # ldconfig
