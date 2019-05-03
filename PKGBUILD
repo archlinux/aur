@@ -1,13 +1,13 @@
 # Maintainer: Bruce Zhang
 pkgname=gridea
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="静态博客写作客户端"
 arch=('x86_64' 'i686')
 url="https://gridea.dev/"
 license=('MIT')
 depends=('electron' 'git')
-makedepends=('imagemagick')
+makedepends=('imagemagick' 'yarn')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/getgridea/gridea/archive/v$pkgver.tar.gz")
 sha256sums=('c5b3f4708d86f0f3e6e90996c44a56735e291891dd9341639e20b1667d657c6b')
 
