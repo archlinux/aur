@@ -9,7 +9,7 @@ url="https://github.com/skeeto/elfeed"
 license=('custom:unlicnese')
 depends=('emacs>=24.3')
 optdepends=('curl')
-provides=("${pkgname}={pkgver}")
+provides=("${pkgname}=${pkgver}")
 source=("$pkgname-$pkgver.tar.gz::${url}archive/${pkgver}.tar.gz")
 sha256sums=('faf7e7ade781c57e4fb5bd0a3a605b8ceca500c6225c9ae75d2b19b889197b44')
 
