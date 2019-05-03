@@ -1,2 +1,4 @@
+*.log
 *.tar.xz
+*.src.tar.gz
 tcpcopy/

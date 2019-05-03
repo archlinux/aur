@@ -2,11 +2,12 @@
 pkgname=tcpcopy-git
 _pkgname=tcpcopy
 pkgver=v1.2.0.r4.g4aebb48
-pkgrel=1
+pkgrel=2
 pkgdesc="TCPCopy is a TCP stream replay tool to support real testing of Internet server applications."
 arch=(x86_64)
 url="https://github.com/session-replay-tools/tcpcopy.git"
 license=('BSD')
+depends=('glibc')
 makedepends=('git')
 provides=($_pkgname)
 options=('strip')
@@ -32,9 +33,9 @@ build() {
     cd "$_pkgname"
     ./configure \
         --prefix=/usr \
-        --conf-path=/etc/$_pkgname/$_pkgname.conf \
+        --conf-path=/etc/$pkgname/$_pkgname.conf \
         --sbin-path=/usr/bin/$_pkgname \
-        --pid-path=/run/$_pkgname/$_pkgname.pid \
+        --pid-path=/run/$pkgname/$_pkgname.pid \
         --error-log-path=/var/log/$_pkgname.log
     make
 }
@@ -43,7 +44,10 @@ package() {
     cd "$_pkgname"
     make DESTDIR="$pkgdir/" install
 
+    # remove empty directories
+    rm -rf "$pkgdir/var" "$pkgdir/run"
+
     # install license
-    mkdir -p "$pkgdir/usr/share/licenses/$_pkgname"
-    cp LICENSE "$pkgdir/usr/share/licenses/$_pkgname"
+    mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+    cp LICENSE "$pkgdir/usr/share/licenses/$pkgname"
 }
