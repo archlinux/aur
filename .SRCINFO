@@ -1,0 +1,19 @@
+pkgbase = yacreader-bin
+	pkgdesc = Great pdf reader.(using rpm package to speed up installation.)
+	pkgver = 9.5.0
+	pkgrel = 1
+	url = https://github.com/agalwood/Motrix
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = tar
+	depends = fakeroot
+	depends = libunarr
+	conflicts = yacreader
+	conflicts = yacreader-nopdf
+	replaces = yacreader
+	source = yacreader.rpm::https://download.opensuse.org/repositories/home:/selmf:/yacreader-rpm/Fedora_Rawhide/x86_64/yacreader-9.5.0-3.88.x86_64.rpm
+	sha256sums = 8d00112a632c3bcddfd4b7278c48929ae506cfd2c004eca52b7ec7ec18346f56
+
+pkgname = yacreader-bin
+
