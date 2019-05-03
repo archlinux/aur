@@ -22,7 +22,7 @@ pkgname=(
   "$pkgbase" "$pkgbase-bin" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=18.3rc1pre10
+pkgver=18.3rc1pre11
 _major=18.2
 pkgrel=1
 arch=('x86_64')
@@ -88,6 +88,7 @@ source=(
   008-PR16037.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16037.patch
   009-PR16042.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16042.patch
   010-PR16030.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16030.patch
+  011-PR16055.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16055.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -119,7 +120,8 @@ sha256sums=('07b8cffc396473523a51354dc95dfffb54a6a456b82cda7ad67dc2c052d99f64'
             '74c80567b98685508123ce5082dd8bab5c835e46f322673c92d896c5bc5e8b5a'
             '8b17b35c6ec464eae51b31ca7b17428fa6cb81223b8d244585eb3727eec89041'
             '09948aedd11f4f10e8c88434713c3b004de2396ea0ec41197e9eef6c08650ba1'
-            '8f029aa932ef2f97438f0387bc30ade8cf6fecc0b03391d70984ff3b19dc0cac')
+            '8f029aa932ef2f97438f0387bc30ade8cf6fecc0b03391d70984ff3b19dc0cac'
+            '6f70b9ebb08f08964b586dbaeaa9bb9ed7f0d18c93c970297b48b0a11b2de91c')
 
 prepare() {
   [[ -d kodi-build-x11 ]] && rm -rf kodi-build-x11
