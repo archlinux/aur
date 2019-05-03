@@ -12,10 +12,10 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.1.0_devel.110426.07745f94948
+pkgver=19.1.0_devel.110690.80dc78407d0
 pkgrel=1
 arch=('x86_64')
-makedepends=('git' 'python-mako' 'llvm-lw-git' 'clang-lw-git'  'xorgproto'
+makedepends=('git' 'python-mako' 'clang-lw-git' 'llvm-lw-git' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio' 'libxrandr'
               'ocl-icd' 'vulkan-icd-loader' 'libgcrypt'  'wayland' 'wayland-protocols' 'meson')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
@@ -75,10 +75,10 @@ build () {
        -D vulkan-overlay-layer=true \
        -D tools=[]
     meson configure _build
-    if [[ ! $MAKEFLAGS ]]; then
-        ninja  "$MAKEFLAGS" -C _build 
+    if [[ ! $NINJAFLAGS ]]; then
+        ninja -C _build 
     else
-        ninja  "$MAKEFLAGS" -C _build
+        ninja  "$NINJAFLAGS" -C _build
     fi
 }
 
@@ -90,5 +90,5 @@ package_mesa-git() {
   # indirect rendering
   ln -s /usr/lib/libGLX_mesa.so.0 ${pkgdir}/usr/lib/libGLX_indirect.so.0
 
-  install -Dt "$pkgdir"/usr/share/licenses/$pkgbase "$srcdir"/LICENSE
+  install -Dt "$pkgdir"/usr/share/licenses/$pkgname "$srcdir"/LICENSE
 }
