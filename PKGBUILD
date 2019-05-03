@@ -2,7 +2,7 @@
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
 
 pkgname=ghidra-git
-pkgver=9.0.2+78+g030cf8e9
+pkgver=9.0.2+201+gc004a11c
 _d2j=2.0
 _yajsw=12.12
 _hfsx=0.21
@@ -11,6 +11,7 @@ pkgdesc='Software reverse engineering framework (git)'
 arch=(x86_64)
 url=https://github.com/NationalSecurityAgency/ghidra
 license=(Apache)
+provides=(ghidra)
 conflicts=(ghidra ghidra-bin)
 depends=('java-environment>=11' bash)
 makedepends=(gradle unzip)
@@ -67,7 +68,7 @@ EOF
   install -Dm 644 ../yajsw-stable-$_yajsw.zip -t Ghidra/Features/GhidraServer
 
   # Ignore lack of licensing for YAJSW zip and packed FID datasets
-  sed -i '/FileTree tree/a\\t\texclude "yajsw-stable-**.zip"\n\t\texclude "src/main/fidb/**.fidb"' gradleScripts/ip.gradle
+  sed -i '/FileTree tree/a\\t\texclude "yajsw-stable-**.zip"\n\t\texclude "src/main/fidb/**.fidb"' gradle/support/ip.gradle
 
   # Add FID datasets
   install -Dm 644 ../ghidra-data/FunctionID/*.fidb -t Ghidra/Features/FunctionID/src/main/fidb
