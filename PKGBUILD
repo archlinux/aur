@@ -1,6 +1,8 @@
 # Maintainer: Stefan Cocora <stefan dot cocora at gmail dot com>
-# Maintainer: Ian Emnace <igemnace at gmail dot com >
-# Contributor:
+# Maintainer: Ian Emnace <igemnace at gmail dot com>
+# Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
+# Contributor: rosatolen <rosatolen at gmail dot com>
+# Contributor: Alex Peltzer ("alexpe87") <alexpe dot aur at mailbox dot org>
 
 _pkgauthor=CircleCI-Public
 _upstream_pkgname=circleci-cli
