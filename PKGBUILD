@@ -2,7 +2,7 @@
 # Contributor: Adrian Sinclair <adrian@transloadit.com>
 
 pkgname=eslint-plugin-node
-pkgver=8.0.1
+pkgver=9.0.0
 pkgrel=1
 pkgdesc='Additional ESLint rules for Node.js'
 arch=('any')
@@ -12,14 +12,17 @@ depends=('eslint')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-md5sums=('f85a9a7c2e505f40aeb2e69e13e31881')
+md5sums=('e832254f16ca71496de411de47b89cb0')
 
 package() {
-  npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
+  npm install -g --user root --cache "$srcdir/npm-cache" --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
 
-  # Fix permissions
+  # Non-deterministic race in npm gives 777 permissions to random directories.
+  # See https://github.com/npm/npm/issues/9359 for details.
   find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
 
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s ../../../lib/node_modules/$pkgname/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+# vim:set ts=2 sw=2 et:
