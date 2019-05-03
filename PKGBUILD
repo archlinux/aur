@@ -6,7 +6,7 @@ _pkgbase='engauge-digitizer'
 
 pkgname=('engauge' 'engauge-samples')
 pkgbase='engauge'
-pkgver=11
+pkgver=11.2
 pkgrel=1
 url="http://markummitchell.github.io/engauge-digitizer/"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('qt5-tools' 'fftw' 'log4cpp' 'libjpeg-turbo' 'libpng' 'openjpeg2' '
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/markummitchell/$_pkgbase/archive/v$pkgver.tar.gz"
         "$pkgbase.sh"
         "$pkgbase.desktop")
-sha256sums=('f5059bf8b204b482e406986fd1cff42fa95a2215fb29129390201eefe586de60'
+sha256sums=('53e629dd534334229ac14ff00886a5dbd5aeefaabac38337c2c62a99b414602a'
             '4b36a8aa23c5a95a552d33ce1bd75aa1a0be5fdf9ef06f321a060c753298dd18'
             '1b3f2675058693d5653b5aee50fbec1530791de5fcdfbb2f86056a5d748695a4')
 install=engauge.install
@@ -24,7 +24,7 @@ build() {
   cd ${_pkgbase}-$pkgver
   export OPENJPEG_INCLUDE=/usr/include/openjpeg-2.3 OPENJPEG_LIB=/usr/lib 
   export POPPLER_INCLUDE=/usr/include/poppler/qt5 POPPLER_LIB=/usr/lib
-  qmake-qt5 engauge.pro "CONFIG+=pdf"
+  qmake-qt5 engauge.pro "CONFIG+=pdf jpeg2000"
   make -j2
   lrelease engauge.pro
 }
@@ -43,8 +43,8 @@ package_engauge() {
   install -Dm644 src/img/$_pkgbase.svg \
     "$pkgdir"/usr/share/icons/$_pkgbase.svg
   # desktop
-  install -Dm644 "$srcdir"/$pkgbase.desktop \
-	  "$pkgdir"/usr/share/applications/$pkgbase.desktop
+  install -Dm644 "$srcdir"/${pkgbase%-git}.desktop \
+	  "$pkgdir"/usr/share/applications/${pkgbase%-git}.desktop
 }
 
 package_engauge-samples() {
