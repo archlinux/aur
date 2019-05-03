@@ -11,21 +11,21 @@ pkgname=('jre8-openjdk-shenandoah-headless' 'jre8-openjdk-shenandoah' 'jdk8-open
 pkgbase=java8-openjdk-shenandoah
 _java_ver=8
 # Found @ http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-_jdk_update=172
-_jdk_build=10
+_jdk_update=181
+_jdk_build=31
 # _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgrel=1
 arch=('x86_64')
 url='http://openjdk.java.net/'
 license=('custom')
-makedepends=('jdk7-openjdk' 'ccache' 'cpio' 'unzip' 'zip' 'gcc7'
+makedepends=('java-environment=8' 'cpio' 'unzip' 'zip' 'gcc'
              'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib')
 _url_src=http://hg.openjdk.java.net/shenandoah/jdk8u
-_last_update=20180905
+_last_update=20190501
 declare -g -A _repo_versions=(
     [jdk8u]=abfdf545dc36
     [corba]=79a3151ebf00
-    [hotspot]=4f75ec139b16
+    [hotspot]=a994d7874724
     [jdk]=2a6d6dfe0a5f
     [jaxws]=987a27eef8e6
     [jaxp]=34889baf492b
@@ -44,7 +44,7 @@ source=("jdk8u-${_repo_versions[jdk8u]}.tar.gz::${_url_src}/archive/${_repo_vers
 
 sha256sums=('9c9309a92f603eba3b638baa8dcbdc66666565b131e377b0be5540ecd330a9af'
             '67ac5b1049249af5c8caafbe4ab0e415650fccdca9f05dffdb83f735be4ec6c9'
-            'aab5837c1dd47909dc3ae71e7ef2112ea433fa0c7d71ad4062df3d30d93d8b82'
+            'a03dc4642241cc6f7ec6abc9eeba261d25440b8457e4ef43978fce70e989f577'
             '95eba6158e909edee8f49a8cb79db3c3b4807402acd35a01a15bf6d508959d55'
             '172ac7cf908de094ab6eeda11c26e5c20fca6b909cbe81c2b141968b990b6a55'
             'd096661e36ea4bdc1dac008330955774ef76aa8c90002eef465cfd686edd1c22'
@@ -67,9 +67,7 @@ _nonheadless=(bin/policytool
 
 prepare() {
   cd "${srcdir}/jdk8u-${_repo_versions[jdk8u]}"
-
-  for subrepo in corba hotspot jdk jaxws jaxp langtools nashorn
-  do
+  for subrepo in corba hotspot jdk jaxws jaxp langtools nashorn; do
     ln -s "../${subrepo}-${_repo_versions[$subrepo]}" ${subrepo}
   done
 }
@@ -77,13 +75,15 @@ prepare() {
 build() {
   cd "${srcdir}/jdk8u-${_repo_versions[jdk8u]}"
 
-  unset JAVA_HOME
+  # Detecting Java version by the first line of the output
+  # of `java --version` is such a great idea
+  unset JAVA_HOME _JAVA_OPTIONS
   # http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=1346
   export MAKEFLAGS=${MAKEFLAGS/-j*}
-  # https://hydra.nixos.org/build/41230444/log
-  export CFLAGS="-Wno-error=deprecated-declarations -fno-lifetime-dse -fno-delete-null-pointer-checks"
 
-  export CC=gcc-7 CXX=g++-7
+  # We filter out -O flags so that the optimization of HotSpot is not lowered from O3 to O2
+  export CFLAGS="${CFLAGS//-O2/-O3} ${CPPFLAGS} -Wno-error=deprecated-declarations -Wno-error=stringop-overflow= -Wno-error=return-type -Wno-error=cpp -fno-lifetime-dse -fno-delete-null-pointer-checks"
+  export CXXFLAGS="${CXXFLAGS} ${CPPFLAGS}"
 
   install -d -m 755 "${srcdir}/${_prefix}/"
   sh configure \
@@ -92,18 +92,17 @@ build() {
     --with-build-number="b${_jdk_build}" \
     --with-milestone="fcs" \
     --enable-unlimited-crypto \
-    --with-zlib=system
+    --with-zlib=system \
+    --with-extra-cflags="${CFLAGS}" \
+    --with-extra-cxxflags="${CXXFLAGS}" \
+    --with-extra-ldflags="${LDFLAGS}"
 
-    # TODO OpenJDK does not want last version of giflib (add 'giflib' as dependency once fixed)
-    #--with-giflib=system \
+  # TODO OpenJDK does not want last version of giflib (add 'giflib' as dependency once fixed)
+  #--with-giflib=system \
 
-  # Without 'DEBUG_BINARIES', i686 won't build
-  # http://mail.openjdk.java.net/pipermail/core-libs-dev/2013-July/019203.html
-  make \
-    DEBUG_BINARIES=true
-  # These help to debug builds:
-  #LOG=trace HOTSPOT_BUILD_JOBS=1
-
+  # These help to debug builds: LOG=trace HOTSPOT_BUILD_JOBS=1
+  # Without 'DEBUG_BINARIES', i686 won't build: http://mail.openjdk.java.net/pipermail/core-libs-dev/2013-July/019203.html
+  make
   make docs
 
   # FIXME sadly 'DESTDIR' is not used here!
@@ -150,14 +149,13 @@ package_jre8-openjdk-shenandoah-headless() {
                etc/java-8-openjdk-shenandoah/security/java.policy
                etc/java-8-openjdk-shenandoah/security/java.security
                etc/java-8-openjdk-shenandoah/sound.properties)
-  replaces=('jre8-openjdk-headless-wm')
   backup=(${_backup_etc[@]})
   install=install_jre8-openjdk-headless.sh
 
   cd "${srcdir}/${_imgdir}/jre"
 
   install -d -m 755 "${pkgdir}${_jvmdir}/jre/"
-  cp -a bin lib "${pkgdir}${_jvmdir}/jre"
+  cp -rv --no-preserve=ownership bin lib "${pkgdir}${_jvmdir}/jre"
 
   # Set config files
   mv "${pkgdir}${_jvmdir}"/jre/lib/management/jmxremote.password{.template,}
@@ -208,12 +206,10 @@ package_jre8-openjdk-shenandoah() {
   # TODO when adding IcedTea: 'libpulse: for advanced sound support'
   provides=('java-runtime=8' 'java-runtime-openjdk=8' 'java-runtime-openjdk-shenandoah=8')
   install=install_jre8-openjdk.sh
-  replaces=('jre8-openjdk-wm')
 
   cd "${srcdir}/${_imgdir}/jre"
 
-  # TODO? Should /usr/lib/jvm/java-8-openjdk/jre/lib/sound.properties belong to jre?
-  for f in "${_nonheadless[@]}"; do
+  for f in ${_nonheadless[@]}; do
     install -D ${f} "${pkgdir}${_jvmdir}/jre/${f}"
   done
 
@@ -242,7 +238,6 @@ package_jdk8-openjdk-shenandoah() {
   pkgdesc='OpenJDK Java 8 development kit'
   depends=('java-environment-common' "jre8-openjdk-shenandoah=${pkgver}-${pkgrel}")
   provides=('java-environment=8' 'java-environment-openjdk=8' 'java-environment-openjdk-shenandoah=8')
-  replaces=('jdk8-openjdk-wm')
   install=install_jdk8-openjdk.sh
 
   cd "${srcdir}/${_imgdir}"
@@ -273,11 +268,6 @@ package_jdk8-openjdk-shenandoah() {
   # Handling 'java-rmi.cgi' separately
   install -D -m 755 bin/java-rmi.cgi "${pkgdir}${_jvmdir}/bin/java-rmi.cgi"
 
-  # Desktop files.
-  # TODO add these when switching to IcedTea
-  #install -m 644 "${srcdir}/icedtea-${_icedtea_ver}/jconsole.desktop" \
-  #  "${pkgdir}/usr/share/applications"
-
   # link license
   install -d -m 755 "${pkgdir}/usr/share/licenses/"
   ln -sf /usr/share/licenses/${pkgbase} "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -296,3 +286,5 @@ package_openjdk8-shenandoah-doc() {
   cp -r "${srcdir}"/jdk8u-${_repo_versions[jdk8u]}/build/linux-${_DOC_ARCH}-normal-server-release/docs/* \
     "${pkgdir}/usr/share/doc/${pkgbase}/"
 }
+
+# vim: ts=2 sw=2 sts=2
