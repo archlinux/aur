@@ -22,7 +22,7 @@ package() {
     cd ${srcdir}
     
     find "breeze-perfect-dark"/* -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/yakuake/skins/{}" \;
-    install -d "${pkgdir}/usr/share/doc/yakuake-skin-breeze-perfect-dark"
-    ln -s "/usr/share/yakuake/skins/breeze-perfect-dark/README.md" "${pkgdir}/usr/share/doc/yakuake-skin-breeze-perfect-dark/README.md"
-    ln -s "/usr/share/yakuake/skins/breeze-perfect-dark/LICENSE" "${pkgdir}/usr/share/doc/yakuake-skin-breeze-perfect-dark/LICENSE"
+    install -d "${pkgdir}/usr/share/doc/${pkgname}"
+    ln -s "/usr/share/yakuake/skins/breeze-perfect-dark/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    ln -s "/usr/share/yakuake/skins/breeze-perfect-dark/LICENSE" "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 }
