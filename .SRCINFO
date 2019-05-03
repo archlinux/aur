@@ -1,7 +1,7 @@
 pkgbase = dmenu-height
 	pkgdesc = Generic menu for X, with added height setting
 	pkgver = 4.9
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tools.suckless.org/dmenu/
 	arch = x86_64
 	license = MIT
@@ -13,8 +13,10 @@ pkgbase = dmenu-height
 	conflicts = dmenu
 	source = https://dl.suckless.org/tools/dmenu-4.9.tar.gz
 	source = https://tools.suckless.org/dmenu/patches/line-height/dmenu-lineheight-4.9.diff
+	source = dmenu-revert-IME-support.diff
 	sha256sums = b3971f4f354476a37b2afb498693649009b201550b0c7c88e866af8132b64945
 	sha256sums = 4f7f6f46b23cbc3f38bcc7eff24a0cb74b8bc8651c2de29aa3adc4f16b4dc06c
+	sha256sums = 433c3d66554f68258bd9140fdbbd75be8934e27cf0b2cc3becf08f3bc1c8b091
 
 pkgname = dmenu-height
 

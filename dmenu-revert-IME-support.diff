@@ -1,0 +1,30 @@
+diff --git a/dmenu.c b/dmenu.c
+index 6b8f51b..d7597c6 100644
+--- a/dmenu.c
++++ b/dmenu.c
+@@ -553,7 +553,7 @@ run(void)
+ 	XEvent ev;
+ 
+ 	while (!XNextEvent(dpy, &ev)) {
+-		if (XFilterEvent(&ev, None))
++		if (XFilterEvent(&ev, win))
+ 			continue;
+ 		switch(ev.type) {
+ 		case Expose:
+@@ -665,7 +665,6 @@ setup(void)
+ 	                XNClientWindow, win, XNFocusWindow, win, NULL);
+ 
+ 	XMapRaised(dpy, win);
+-	XSetInputFocus(dpy, win, RevertToParent, CurrentTime);
+ 	if (embed) {
+ 		XSelectInput(dpy, parentwin, FocusChangeMask);
+ 		if (XQueryTree(dpy, parentwin, &dw, &w, &dws, &du) && dws) {
+@@ -731,8 +730,6 @@ main(int argc, char *argv[])
+ 
+ 	if (!setlocale(LC_CTYPE, "") || !XSupportsLocale())
+ 		fputs("warning: no locale support\n", stderr);
+-	if (!XSetLocaleModifiers(""))
+-		fputs("warning: no locale modifiers support\n", stderr);
+ 	if (!(dpy = XOpenDisplay(NULL)))
+ 		die("cannot open display");
+ 	screen = DefaultScreen(dpy);
