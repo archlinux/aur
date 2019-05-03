@@ -1,6 +1,6 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
-pkgname=libint
+pkgname=libint2
 pkgver=2.5.0
 pkgrel=1
 pkgdesc='A library for the evaluation of molecular integrals of many-body operators over Gaussian functions'

@@ -1,4 +1,4 @@
-pkgbase = libint
+pkgbase = libint2
 	pkgdesc = A library for the evaluation of molecular integrals of many-body operators over Gaussian functions
 	pkgver = 2.5.0
 	pkgrel = 1
@@ -17,5 +17,5 @@ pkgbase = libint
 	source = https://github.com/evaleev/libint/archive/v2.5.0.tar.gz
 	sha1sums = ab49e3c3691bbeb32310d81f0bfff315db4213f2
 
-pkgname = libint
+pkgname = libint2
 
