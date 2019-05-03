@@ -2,10 +2,10 @@
 
 pkgname=nuspell
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Free and open source C++ spell checking library'
 arch=('x86_64')
-license=('MPL' 'GPL2' 'LGPL2.1')
+license=('LGPL3+')
 depends=('boost-libs' 'icu')
 makedepends=('boost')
 source=("git+https://github.com/nuspell/nuspell#tag=v${pkgver}")
