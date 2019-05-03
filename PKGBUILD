@@ -1,46 +1,32 @@
-# Maintainer: Alexander Oleynichenko <alexvoleynichenko@gmail.com>
-pkgname=libint2
-pkgver='2.3.0'
-pkgrel=2
-epoch=
-pkgdesc="A high-performance library for evaluation of molecular integrals of many-body operators over Gaussian functions"
-arch=('i686' 'x86_64')
-url="https://github.com/evaleev/libint"
-license=('GPL')
-groups=()
-depends=(boost boost-libs)
-makedepends=(gcc automake autoconf)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/evaleev/libint/archive/master.zip")
-noextract=()
-md5sums=('SKIP')
-validpgpkeys=()
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+
+pkgname=libint
+pkgver=2.5.0
+pkgrel=1
+pkgdesc='A library for the evaluation of molecular integrals of many-body operators over Gaussian functions'
+url='https://github.com/evaleev/libint'
+license=('GPL3')
+arch=('x86_64')
+depends=('boost' 'boost-libs' 'gmp')
+makedepends=('make' 'autoconf' 'doxygen' 'clang' 'texlive-bin')
+source=("https://github.com/evaleev/libint/archive/v${pkgver}.tar.gz")
+sha1sums=('ab49e3c3691bbeb32310d81f0bfff315db4213f2')
+options=(!strip)
 
 build() {
-    cd "$srcdir/libint-master"
+	cd ${srcdir}/${pkgname}-${pkgver}
+
     ./autogen.sh
+    
     mkdir build
     cd build
-    ../configure --prefix=/usr
-    make -j8
-}
 
-check() {
-    cd "$srcdir/libint-master/build"
-#   You may uncomment 'make check' line if you want;
-#   however, check is a VERY time-consuming and actually not needed
-#	make -k check
+    ../configure --prefix=/usr
+    make
 }
 
 package() {
-	cd "$srcdir/libint-master/build"
-	make DESTDIR="$pkgdir/" install
+    cd ${srcdir}/${pkgname}-${pkgver}/build
+
+    make DESTDIR="$pkgdir" install
 }
