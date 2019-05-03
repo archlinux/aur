@@ -1,7 +1,7 @@
 # Maintainer: whight
 
 pkgname="pulse-sms"
-pkgver="3.3.1"
+pkgver="3.4.3"
 pkgrel=1
 pkgdesc="A native desktop implementation of Pulse"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
     "https://github.com/klinker24/messenger-desktop/releases/download/v${pkgver}/pulse-sms-${pkgver}-amd64.deb"
 )
 sha512sums=(
-    "eaa0a1b07e86e19ea7cfac19656857e5ba6df3b4293c02be20232de3e1033fcd501af311b6b9e77d6d221a4e4fd76b5f5b28cc66bd35fe00adc1d754d5964d7b"
+    "7cbdc0941829366f9b52308c45e7b4927872a877a0c97ac79ce494ca5a8833c0bf00f98f0a4174e959640546a61e39f6bffea14b4561549ccd898d9c12b90154"
 )
 
 package() {
