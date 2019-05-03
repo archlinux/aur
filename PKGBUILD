@@ -1,7 +1,7 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 pkgname=brackets
-pkgver=1.13
-pkgrel=2
+pkgver=1.14
+pkgrel=1
 _cef_ver=3.2785.1486
 _node_ver=6.11.0
 pkgdesc="An open source code editor for the web, written in JavaScript, HTML and CSS."
@@ -39,7 +39,7 @@ md5sums=('SKIP'
          '4421e27e2e333a14b9f1dd3bea4248a6'
          '9b1364b60786a595076f9da789512685'
          'e6ade07945c32f82da184ebbcb5347dc'
-         'b0a9869cf421970ecaeaf7aa180ec008')
+         '4211ff0482eaec1754d80eebfb5c07f6')
 
 prepare() {
 	tar -xf data.tar.xz
