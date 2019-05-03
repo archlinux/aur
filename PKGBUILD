@@ -4,8 +4,8 @@
 # Contributor: Kyle Manna <kyle(at)kylemanna(dot)com>
 
 pkgname=slack-desktop-dark
-pkgver=3.3.8
-pkgrel=3
+pkgver=3.4.0
+pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux, with dark theme patch"
 arch=('x86_64')
 url="https://slack.com/downloads"
@@ -15,14 +15,15 @@ depends=('alsa-lib' 'gconf' 'gtk3' 'libcurl-compat' 'libsecret' 'libxss'
 optdepends=('gnome-keyring')
 conflicts=('slack-desktop')
 source=("https://downloads.slack-edge.com/linux_releases/${pkgname%-dark}-${pkgver}-amd64.deb"
-		"https://raw.githubusercontent.com/Nockiro/slack-black-theme/13a638fe11e58b4d5aad9dc4f38c904b2f8a600e/black.css"
+		# black.css based on "https://raw.githubusercontent.com/Nockiro/slack-black-theme/13a638fe11e58b4d5aad9dc4f38c904b2f8a600e/black.css"
+		"black.css"
 		"darkify_slack.js"
     	"${pkgname}.patch")
 noextract=("${pkgname%-dark}-${pkgver}-amd64.deb")
-sha256sums=('37042b2172edf1af02cbe48660800c355e0b16f8f8f5d1257525657ff72f8308'
-            '0b83569f2a4ac6f033f1c20fb8c1aef2a5c526da192299bb47289f9468a4ffcc'
-            '4e25e00be82bf2809f4157e17a969109d3c0241efe9a37a960a055aa6b52fd32'
-            'c952eb32dd59beff9fc5374853b04acde4a60ed8c39934fcd0b66829455d594d')
+sha256sums=('857b38862aa732a27c1cee5fcfdce490d624f22a5d8b4fd389d7ad06de1ba551'
+			'SKIP'
+            'SKIP'
+            'SKIP')
 
 package() {
     bsdtar -O -xf "slack-desktop-${pkgver}"*.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
