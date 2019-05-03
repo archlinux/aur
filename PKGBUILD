@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-performance
 pkgver=3.32.1+10+g059c729da
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
@@ -44,9 +44,17 @@ prepare() {
   # https://gitlab.gnome.org/GNOME/gnome-shell/issues/1084
   patch -Np1 -i ../nvidia-background-workaround.patch
 
-  #Fixes and performance improvements to the extension system
+  # Fixes and performance improvements to the extension system
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/96
   git cherry-pick -n 07506a72^..570b947f
+
+  # Mild performance improvements on style changes
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/524
+  git cherry-pick -n fb04dafb^..94995e9c
+
+  # keyboard: Destroy old layout actors when regenerating keyboard groups
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/523
+  git cherry-pick -n ed999ce9
 
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
