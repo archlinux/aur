@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.0.0.r2677.g133f4c47
-pkgrel=1
+pkgver=1.0.0.r2710.g1cdf56f7
+pkgrel=2
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
 url='http://www.ipxe.org/'
@@ -52,12 +52,6 @@ prepare() {
 
 	# ISO image with EFI support
 	patch -Np2 < "${srcdir}/ipxe-0003-efi-iso.patch"
-
-	# read and set keymap
-	[ -s /etc/vconsole.conf ] && source /etc/vconsole.conf
-	if [ -n "${KEYMAP}" ]; then
-		sed -i "/^#define\tKEYBOARD_MAP/c #define KEYBOARD_MAP ${KEYMAP}" config/console.h
-	fi
 
 	# change menu colors
 	sed -i "/COLOR_[A-Z]*_BG/s/COLOR_BLUE/COLOR_BLACK/" config/colour.h
