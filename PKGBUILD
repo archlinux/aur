@@ -205,7 +205,7 @@ EOF
 package_gcc-fortran-multilib-git() {
   pkgdesc='Fortran front-end for GCC for multilib'
   depends=("gcc-multilib-git=$pkgver-$pkgrel")
-  provides=("gcc-fortran-multilib=${pkgver}-${pkgrel}" "gcc-fortran=${pkgver}-${pkgrel}")
+  provides=("gcc-fortran=${pkgver}-${pkgrel}")
   conflicts=('gcc-fortran')
   options=('!emptydirs' '!strip')
 
