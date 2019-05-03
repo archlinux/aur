@@ -1,7 +1,7 @@
 # Maintainer:  JP-Ellis <josh@jpellis.me>
 pkgname=python-filetype
 _name=${pkgname#python-}
-pkgver=1.0.1
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Small and dependency free Python package to infer file type and MIME type checking the magic numbers signature of a file or buffer."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-setuptools')
 optdepends=()
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('97b4ec0974b07cbddb3e74cf323d8688749807014055cc91cdbfef5442a94dc5')
+sha256sums=('17a3b885f19034da29640b083d767e0f13c2dcb5dcc267945c8b6e5a5a9013c7')
 noextract=()
 
 build() {
