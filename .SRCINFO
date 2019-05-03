@@ -1,0 +1,42 @@
+pkgbase = mutter-topicons-cpu-use-fix
+	pkgdesc = A window manager for GNOME, with fix for TopIcons CPU issue
+	pkgver = 3.32.1
+	pkgrel = 2
+	url = https://gitlab.gnome.org/GNOME/mutter
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	checkdepends = xorg-server-xvfb
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = egl-wayland
+	makedepends = meson
+	makedepends = xorg-server
+	depends = dconf
+	depends = gobject-introspection-runtime
+	depends = gsettings-desktop-schemas
+	depends = libcanberra
+	depends = startup-notification
+	depends = zenity
+	depends = libsm
+	depends = gnome-desktop
+	depends = upower
+	depends = libxkbcommon-x11
+	depends = gnome-settings-daemon
+	depends = libgudev
+	depends = libinput
+	depends = pipewire
+	depends = xorg-server-xwayland
+	provides = mutter
+	conflicts = mutter
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=e3f3274bbf631c57f9a01b7bead6ebf6374f5be4
+	source = 0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
+	source = 216.patch
+	source = 270.patch
+	sha256sums = SKIP
+	sha256sums = 842162bf8cec5d69fdb80c85fd152ddd3db6a9179d11d6f81d486f79814838c0
+	sha256sums = ed4f3cf738a3cffdf8a6e1a352bf24d74078c3b26fb9262c5746e0d95b9df756
+	sha256sums = 5141a007bd0dd99c6727bad843f9c800a7c30c1017923f5e16364e7914429a5f
+
+pkgname = mutter-topicons-cpu-use-fix
+

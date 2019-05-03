@@ -1,0 +1,109 @@
+From eb2b7ff6130f60551521e2fdf5a9ed7d7a9cf986 Mon Sep 17 00:00:00 2001
+From: Daniel van Vugt <daniel.van.vugt@canonical.com>
+Date: Thu, 20 Sep 2018 11:35:26 +0200
+Subject: [PATCH 1/2] clutter: Avoid queue_relayout when under NO_LAYOUT
+
+Optimize `clutter_actor_set_{x,y,position}_internal` to avoid doing
+a `clutter_actor_queue_relayout` when the parent has set
+CLUTTER_ACTOR_NO_LAYOUT (like gnome-shell's uiGroup).
+
+It's unclear if the flag means we should do nothing at all in theory,
+but in practice a lot of logic already exists assuming and expecting
+`clutter_actor_queue_relayout` to incur `allocate`, and defers
+important work till the `allocate`. So we can't do "nothing", but a
+shallower `allocate` is enough to satisfy the expected allocation
+call, while avoiding an expensive full-stage reallocation.
+
+In gnome-shell this helps performance of animated children of uiGroup,
+such as the flying icons in the spring animation.
+---
+ clutter/clutter/clutter-actor.c | 23 ++++++++++++++++++++---
+ 1 file changed, 20 insertions(+), 3 deletions(-)
+
+diff --git a/clutter/clutter/clutter-actor.c b/clutter/clutter/clutter-actor.c
+index e70892308..fc8a06339 100644
+--- a/clutter/clutter/clutter-actor.c
++++ b/clutter/clutter/clutter-actor.c
+@@ -11186,6 +11186,23 @@ clutter_actor_set_height (ClutterActor *self,
+                                     height);
+ }
+ 
++static void
++_clutter_actor_maybe_queue_relayout (ClutterActor *self)
++{
++  ClutterActorPrivate *priv = self->priv;
++
++  if (priv->parent &&
++      (priv->parent->flags & CLUTTER_ACTOR_NO_LAYOUT))
++    {
++      clutter_actor_allocate_preferred_size (self, CLUTTER_ALLOCATION_NONE);
++      clutter_actor_queue_redraw (self);
++    }
++  else
++    {
++      clutter_actor_queue_relayout (self);
++    }
++}
++
+ static inline void
+ clutter_actor_set_x_internal (ClutterActor *self,
+                               float         x)
+@@ -11206,7 +11223,7 @@ clutter_actor_set_x_internal (ClutterActor *self,
+ 
+   clutter_actor_notify_if_geometry_changed (self, &old);
+ 
+-  clutter_actor_queue_relayout (self);
++  _clutter_actor_maybe_queue_relayout (self);
+ }
+ 
+ static inline void
+@@ -11229,7 +11246,7 @@ clutter_actor_set_y_internal (ClutterActor *self,
+ 
+   clutter_actor_notify_if_geometry_changed (self, &old);
+ 
+-  clutter_actor_queue_relayout (self);
++  _clutter_actor_maybe_queue_relayout (self);
+ }
+ 
+ static void
+@@ -11258,7 +11275,7 @@ clutter_actor_set_position_internal (ClutterActor       *self,
+ 
+   clutter_actor_notify_if_geometry_changed (self, &old);
+ 
+-  clutter_actor_queue_relayout (self);
++  _clutter_actor_maybe_queue_relayout (self);
+ }
+ 
+ /**
+-- 
+2.18.1
+
+
+From b1bfc49f38aa870749470fffe8acb8ae17fc8f8c Mon Sep 17 00:00:00 2001
+From: Daniel van Vugt <daniel.van.vugt@canonical.com>
+Date: Mon, 22 Oct 2018 17:07:12 +0800
+Subject: [PATCH 2/2] meta-window-group: Set flag CLUTTER_ACTOR_NO_LAYOUT
+
+So that moving a window does not trickle up and become a full stage
+relayout on every frame.
+---
+ src/compositor/meta-window-group.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/compositor/meta-window-group.c b/src/compositor/meta-window-group.c
+index 767850ecf..411c8a065 100644
+--- a/src/compositor/meta-window-group.c
++++ b/src/compositor/meta-window-group.c
+@@ -197,6 +197,9 @@ meta_window_group_class_init (MetaWindowGroupClass *klass)
+ static void
+ meta_window_group_init (MetaWindowGroup *window_group)
+ {
++  ClutterActor *actor = CLUTTER_ACTOR (window_group);
++
++  clutter_actor_set_flags (actor, CLUTTER_ACTOR_NO_LAYOUT);
+ }
+ 
+ ClutterActor *
+-- 
+2.18.1
+

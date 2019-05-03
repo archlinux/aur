@@ -1,0 +1,147 @@
+From 761000ec8f4b53d0fa06f235be2ed30b80ec5bcb Mon Sep 17 00:00:00 2001
+Message-Id: <761000ec8f4b53d0fa06f235be2ed30b80ec5bcb.1553890447.git.jan.steffens@gmail.com>
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Wed, 27 Mar 2019 00:38:02 +0100
+Subject: [PATCH] wayland/output: Report unscaled size even in logical layout
+ mode
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In physical layout mode, the size and scale of the `wl_output` matches
+the actual monitor:
+
+| Monitor      | `wl_output`  | `GdkMonitor` |
+| ------------ | ------------ | ------------ |
+| 3840×2160 @1 | 3840×2160 @1 | 3840×2160 @1 |
+| 3840×2160 @2 | 3840×2160 @2 | 1920×1080 @2 |
+
+GTK currently does not support `xdg_output`. To estimate the logical
+output size for `GdkMonitor`, it divides the output's size by its scale
+factor. There might be other legacy clients making the same assumption.
+
+In logical layout mode, mutter currently reports logical geometry for
+the `wl_output`s, but this no longer matches the monitors:
+
+| Monitor        | `wl_output`  | `GdkMonitor` |
+| -------------- | ------------ | ------------ |
+| 3840×2160 @1   | 3840×2160 @1 | 3840×2160 @1 |
+| 3840×2160 @2   | 1920×1080 @2 |  960×540  @2 |
+| 3840×2160 @1.5 | 2560×1440 @2 | 1280×720  @2 |
+
+This patch changes logical layout mode to multiply the sizes by the
+`wl_output`'s scale factor before sending them to the client. Now the
+sizes match the physical layout mode again:
+
+| Monitor        | `wl_output`  | `GdkMonitor` |
+| -------------- | ------------ | ------------ |
+| 3840×2160 @1   | 3840×2160 @1 | 3840×2160 @1 |
+| 3840×2160 @2   | 3840×2160 @2 | 1920×1080 @2 |
+| 3840×2160 @1.5 | 5120×2880 @2 | 2560×1440 @2 |
+
+Unfortunately, non-integer output scales are not representable in
+`wl_output`. Still, I believe these values are better than before, and
+the best we can do for clients that do not know about `xdg_output`: The
+size of the output will match the size that a buffer for a fullscreen
+surface should have at the indicated scale.
+
+Fixes part of https://bugzilla.mozilla.org/show_bug.cgi?id=1534089
+https://gitlab.gnome.org/GNOME/mutter/merge_requests/510
+---
+ src/wayland/meta-wayland-outputs.c | 33 +++++++++++++++++++-----------
+ 1 file changed, 21 insertions(+), 12 deletions(-)
+
+diff --git a/src/wayland/meta-wayland-outputs.c b/src/wayland/meta-wayland-outputs.c
+index 7695d86af..712a143a8 100644
+--- a/src/wayland/meta-wayland-outputs.c
++++ b/src/wayland/meta-wayland-outputs.c
+@@ -181,24 +181,36 @@ send_output_events (struct wl_resource *resource,
+   MetaLogicalMonitor *old_logical_monitor;
+   guint old_mode_flags;
+   gint old_scale;
++  gint scale;
++  MetaRectangle old_rect;
++  MetaRectangle rect;
+   float old_refresh_rate;
+   float refresh_rate;
+ 
+   old_logical_monitor = wayland_output->logical_monitor;
+   old_mode_flags = wayland_output->mode_flags;
+   old_scale = wayland_output->scale;
++  old_rect = old_logical_monitor->rect;
+   old_refresh_rate = wayland_output->refresh_rate;
+ 
++  scale = calculate_wayland_output_scale (logical_monitor);
++  rect = logical_monitor->rect;
+   monitor = pick_main_monitor (logical_monitor);
+-
+   current_mode = meta_monitor_get_current_mode (monitor);
+   refresh_rate = meta_monitor_mode_get_refresh_rate (current_mode);
+ 
++  if (meta_is_stage_views_scaled ()) {
++    old_rect.width *= old_scale;
++    old_rect.height *= old_scale;
++    rect.width *= scale;
++    rect.height *= scale;
++  }
++
+   gboolean need_done = FALSE;
+ 
+   if (need_all_events ||
+-      old_logical_monitor->rect.x != logical_monitor->rect.x ||
+-      old_logical_monitor->rect.y != logical_monitor->rect.y ||
++      old_rect.x != rect.x ||
++      old_rect.y != rect.y ||
+       is_different_rotation (old_logical_monitor, logical_monitor))
+     {
+       int width_mm, height_mm;
+@@ -229,40 +241,37 @@ send_output_events (struct wl_resource *resource,
+       transform = WL_OUTPUT_TRANSFORM_NORMAL;
+ 
+       wl_output_send_geometry (resource,
+-                               logical_monitor->rect.x,
+-                               logical_monitor->rect.y,
++                               rect.x,
++                               rect.y,
+                                width_mm,
+                                height_mm,
+                                subpixel_order,
+                                vendor,
+                                product,
+                                transform);
+       need_done = TRUE;
+     }
+ 
+   preferred_mode = meta_monitor_get_preferred_mode (monitor);
+   if (current_mode == preferred_mode)
+     mode_flags |= WL_OUTPUT_MODE_PREFERRED;
+ 
+   if (need_all_events ||
+-      old_logical_monitor->rect.width != logical_monitor->rect.width ||
+-      old_logical_monitor->rect.height != logical_monitor->rect.height ||
++      old_rect.width != rect.width ||
++      old_rect.height != rect.height ||
+       old_refresh_rate != refresh_rate ||
+       old_mode_flags != mode_flags)
+     {
+       wl_output_send_mode (resource,
+                            mode_flags,
+-                           logical_monitor->rect.width,
+-                           logical_monitor->rect.height,
++                           rect.width,
++                           rect.height,
+                            (int32_t) (refresh_rate * 1000));
+       need_done = TRUE;
+     }
+ 
+   if (version >= WL_OUTPUT_SCALE_SINCE_VERSION)
+     {
+-      int scale;
+-
+-      scale = calculate_wayland_output_scale (logical_monitor);
+       if (need_all_events ||
+           old_scale != scale)
+         {
+-- 
+2.21.0
+
