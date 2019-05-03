@@ -1,5 +1,4 @@
 # Maintainer: Petter K. <netp.kpocc6akkh AT mail DOT ru> 
-# Contributor (Linux-ck): graysky <graysky AT archlinux DOT us>
 # Thanks to: Edward Shishkin, for providing his Reiser4FS patchset to the public.
 #            graysky for providing the GCC CPU patchset and linux-ck builds.
 #            Con Kolivas for creating his -ck1 patchset and making it available.             
@@ -54,7 +53,7 @@ _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Reiser4"
 license=(GPL2)
-makedepends=(kmod inetutils bc libelf git lz4 gzip xz lzop)
+makedepends=(kmod inetutils bc libelf git)
 options=('!strip')
 _ckpatch="patch-5.0-ck${_ckpatchversion}"
 _reiser4patch="reiser4-for-5.0.0.patch.gz"
@@ -157,7 +156,7 @@ prepare() {
       ;;
       "AuthenticAMD") sed -i -e 's/# CONFIG_MNATIVE is not set/CONFIG_MNATIVE=y/' ./.config ;;
     esac
-    msg2 "Detected march=native and enabling it in kernel config.."
+    msg2 "Detected march=native and enabling it in kernel config..."
   fi
     
   # Optionally enable Reiser4 filesystem support
@@ -255,15 +254,17 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.190 and Reiser4 filesystem patches"
-  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.190 and Reiser4 filesystem patches"
+  pkgdesc="A Linux-ck based kernel and modules with the -ck1 patchset featuring MuQSS CPU scheduler v0.190 and the latest Reiser4 filesystem patches"
+  #_Kpkgdesc="A Linux-ck based kernel and modules with the -ck1 patchset featuring MuQSS CPU scheduler v0.190 and the latest Reiser4 filesystem patches"
   #pkgdesc="${_Kpkgdesc}"
   depends=(coreutils linux-firmware kmod mkinitcpio)
   optdepends=(
-  'crda: to set the correct wireless channels of your country' 
+  'crda: To set the correct wireless channels of your country' 
   'reiser4progs: Utilities for creating/checking/debugging Reiser4 filesystems'
+  'dkms: To automatically update kernel modules on upgrades'
+  'lz4: To compress the ramdisk with LZ4 compression'
   )
-  provides=("linux-ck=${pkgver}" "linux-headers=${pkgver}")
+  provides=("linux-ck-reiser4=${pkgver}" "linux=${pkgver}")
   backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=linux.install
 
@@ -318,7 +319,7 @@ _package-headers() {
   #_Hpkgdesc="Headers for building modules for the ${pkgbase/linux/Linux} kernel"
   #pkgdesc="${_Hpkgdesc}"
   depends=('linux-ck-reiser4')
-  provides=("linux-ck-headers=${pkgver}" "linux-headers=${pkgver}")
+  provides=("linux-ck-reiser4-headers=${pkgver}" "linux-headers=${pkgver}")
 
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 

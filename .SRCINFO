@@ -9,10 +9,6 @@ pkgbase = linux-ck-reiser4
 	makedepends = bc
 	makedepends = libelf
 	makedepends = git
-	makedepends = lz4
-	makedepends = gzip
-	makedepends = xz
-	makedepends = lzop
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.0.10.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.0.10.tar.sign
@@ -40,21 +36,23 @@ pkgbase = linux-ck-reiser4
 	sha256sums = 91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3
 
 pkgname = linux-ck-reiser4
-	pkgdesc = The Linux-ck-reiser4 kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.190 and Reiser4 filesystem patches
+	pkgdesc = A Linux-ck based kernel and modules with the -ck1 patchset featuring MuQSS CPU scheduler v0.190 and the latest Reiser4 filesystem patches
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio
-	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = crda: To set the correct wireless channels of your country
 	optdepends = reiser4progs: Utilities for creating/checking/debugging Reiser4 filesystems
-	provides = linux-ck=5.0.10
-	provides = linux-headers=5.0.10
+	optdepends = dkms: To automatically update kernel modules on upgrades
+	optdepends = lz4: To compress the ramdisk with LZ4 compression
+	provides = linux-ck-reiser4=5.0.10
+	provides = linux=5.0.10
 	backup = etc/mkinitcpio.d/linux-ck-reiser4.preset
 
 pkgname = linux-ck-reiser4-headers
 	pkgdesc = Headers for building modules for the Linux-ck-reiser4 kernel
 	depends = linux-ck-reiser4
-	provides = linux-ck-headers=5.0.10
+	provides = linux-ck-reiser4-headers=5.0.10
 	provides = linux-headers=5.0.10
 
