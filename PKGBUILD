@@ -1,4 +1,5 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: Ben Isenhart <bisenhar(at)uvm(dot)edu>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdesrc-build
 pkgver=18.10
