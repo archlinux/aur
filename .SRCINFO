@@ -1,6 +1,6 @@
 pkgbase = jdtls
 	pkgdesc = Eclipse Java language server
-	pkgver = 0.35.0
+	pkgver = 0.38.0
 	pkgrel = 1
 	url = https://github.com/eclipse/eclipse.jdt.ls
 	arch = any
