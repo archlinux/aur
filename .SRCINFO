@@ -1,14 +1,14 @@
 pkgbase = terrafirma
 	pkgdesc = Mapping for Terraria
-	pkgver = 3.0.18
+	pkgver = 3.0.19
 	pkgrel = 1
 	url = http://seancode.com/terrafirma
 	arch = any
 	license = BSD
 	makedepends = qt5-base
 	makedepends = qt5-tools
-	source = https://github.com/mrkite/TerraFirma/archive/3.0.18.tar.gz
-	sha256sums = e309ae7cbc691dd737e51ec3e1bf6d153fb8bac8ccef9181df66eb883e416d97
+	source = https://github.com/mrkite/TerraFirma/archive/3.0.19.tar.gz
+	sha256sums = d7d3bac506c9140baa3c622c3d61449c220ff45a58eae8465aa6dff536c09dae
 
 pkgname = terrafirma
 
