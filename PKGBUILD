@@ -3,7 +3,7 @@ pkgname=('highwayhash')
 pkgver='1.1'
 pkgrel=1
 pkgdesc="Fast strong hash functions: SipHash/HighwayHash"
-url="https://github.com/google/farmhash"
+url="https://github.com/google/highwayhash"
 depends=('gcc-libs')
 makedepends=('git')
 checkdepends=()
@@ -19,5 +19,5 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}"
-    make DESTDIR="${pkgdir}" INCDIR="usr/include" LIBDIR="usr/lib" install
+    make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
