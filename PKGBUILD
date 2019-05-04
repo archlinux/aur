@@ -7,7 +7,7 @@
 
 pkgname=calculix
 pkgver=2.15
-pkgrel=4
+pkgrel=5
 pkgdesc="CalculiX: 3D finite element solver and post-processor (executables)"
 arch=('i686' 'x86_64')
 options=(!makeflags !buildflags)
