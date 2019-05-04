@@ -5,7 +5,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=gcc-docs
-pkgver=8.3.0
+pkgver=9.1.0
 pkgrel=1
 pkgdesc="Set of HTML documentation for GCC"
 arch=('any')
@@ -14,7 +14,7 @@ license=('GPL')
 depends=()
 options=('docs' '!strip')
 source=("$pkgname-$pkgver.tar.gz::https://gcc.gnu.org/onlinedocs/gcc-${pkgver}/gcc-html.tar.gz")
-sha256sums=('db8bcc0594d92917e2110d2dea8d7d6639559943f07fa160bb03b1fe8081e9d7')
+sha256sums=('3558b4ba414b7c20e73e3a56a1d38837da06b28665e3264e0721f3a7d150dec8')
 
 package() {
   cd "$srcdir/gcc"
