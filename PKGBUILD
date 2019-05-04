@@ -11,14 +11,14 @@
 
 pkgname=lone_wolf-mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.1.0_devel.110426.07745f94948
+pkgver=19.1.0_devel.110750.68238732462
 pkgrel=1
 arch=('x86_64')
-makedepends=('git' 'python-mako' 'lone_wolf-llvm-git' 'lone_wolf-clang-git'  'xorgproto'
+makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio' 'libxrandr'
               'ocl-icd' 'vulkan-icd-loader' 'libgcrypt'  'wayland' 'wayland-protocols' 'meson' 'ninja')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libomxil-bellagio' 'lone_wolf-llvm-libs-git' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'glslang')
+         'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'glslang')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=(mesa=$pkgver-$pkgrel vulkan-intel=$pkgver-$pkgrel vulkan-radeon=$pkgver-$pkgrel libva-mesa-driver=$pkgver-$pkgrel mesa-vdpau=$pkgver-$pkgrel vulkan-driver=$pkgver-$pkgrel opencl-mesa=$pkgver-$pkgrel opengl-driver opencl-driver)
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau')
@@ -27,10 +27,48 @@ license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
         'LICENSE')
 md5sums=('SKIP'
-            'abcdef')
+         '5c65a0fe315dd347e09b1f2826a1df5a')
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
 
+# lone_wolf_use_llvm is an evironment variable used to determine which llvm package tree is used to built mesa-git against
+# 1: lone_wolf-llvm-git (aur) Default value
+# 2: llvm-git (aur)
+# 3  llvm-svn (lordheavy unoffical repo)
+# 4  llvm (stable from extra)
+# 
+if [[ ! $lone_wolf_use_llvm ]] ; then
+    lone_wolf_use_llvm=1
+fi
+
+case $lone_wolf_use_llvm in
+    1)
+        # aur lone_wolf-llvm-git
+        makedepends+=('lone_wolf-llvm-git' 'lone_wolf-clang-git')
+        depends+=('lone_wolf-llvm-libs-git')
+        ;;
+    2)
+        # aur llvm-git
+        makedepends+=('llvm-git' 'clang-git')
+        depends+=('llvm-libs-git')
+        ;;
+    3)
+        # mesa-git/llvm-svn (lordheavy unofficial repo)
+        makedepends+=('llvm-svn' 'clang-svn')
+        depends+=('llvm-libs-svn')
+        ;;
+    4)
+        # extra/llvm
+        makedepends+=('llvm' 'clang')
+        depends+=('llvm-libs')
+        ;;
+    *)
+esac
+        
+        
+        
+        
+        
 pkgver() {
     cd mesa
     read -r _ver <VERSION
