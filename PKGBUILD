@@ -5,12 +5,12 @@
 pkgbase=gdm-prime
 pkgname=(gdm-prime libgdm-prime)
 pkgver=3.32.0+2+g820f90f5
-pkgrel=1
+pkgrel=2
 url="https://wiki.gnome.org/Projects/GDM"
 arch=(x86_64)
 license=(GPL)
 depends=(gnome-shell gnome-session upower xorg-xrdb xorg-server xorg-xhost)
-makedepends=(yelp-tools gobject-introspection git docbook-xsl)
+makedepends=(yelp-tools gobject-introspection git docbook-xsl binutils make patch autoconf automake gcc)
 checkdepends=(check)
 _commit=820f90f5a78b81b2e4610da14627266c2135c8b0  # master
 source=("git+https://gitlab.gnome.org/GNOME/gdm.git#commit=$_commit"
