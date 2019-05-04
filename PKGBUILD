@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libiconv
-pkgver=1.15
+pkgver=1.16
 pkgrel=1
 arch=(any)
 pkgdesc="Provides GNU libiconv.so and libcharset.so (mingw-w64)"
@@ -9,7 +9,7 @@ options=(!strip !buildflags staticlibs)
 license=("LGPL")
 url="http://www.gnu.org/software/libiconv/"
 source=("http://ftp.gnu.org/pub/gnu/libiconv/libiconv-$pkgver.tar.gz")
-md5sums=('ace8b5f2db42f7b3b3057585e80d9808')
+md5sums=('7d2a800b952942bb2880efb00cfd524c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
