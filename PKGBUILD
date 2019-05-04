@@ -3,7 +3,7 @@
 pkgname=ghidra-bin
 pkgver=9.0.2
 _date=20190403
-pkgrel=2
+pkgrel=3
 pkgdesc='Software reverse engineering framework (bin)'
 arch=(x86_64)
 url=https://ghidra-sre.org
@@ -17,6 +17,6 @@ sha512sums=('865eb93029ca56936e444c76d442d14f71d7c3f59c2a19c67175759c918b8500e17
 
 package() {
   install -d "$pkgdir"/{opt,usr/bin}
-  cp -a ghidra-$pkgver "$pkgdir"/opt/ghidra
+  cp -a ghidra_$pkgver "$pkgdir"/opt/ghidra
   ln -s /opt/ghidra/ghidraRun "$pkgdir"/usr/bin/ghidra
 }
