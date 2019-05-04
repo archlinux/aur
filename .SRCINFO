@@ -1,13 +1,13 @@
 pkgbase = vxl
 	pkgdesc = VXL library. The geometry and imaging core libraries are turned off in order to build successfully.
-	pkgver = 1.17
+	pkgver = 2.0.2
 	pkgrel = 1
-	url = http://vxl.sourceforge.net/
+	url = https://github.com/vxl/vxl
 	arch = i686
 	arch = x86_64
 	depends = cmake
-	source = http://excellmedia.dl.sourceforge.net/project/vxl/vxl/1.17/vxl-1.17.0.tar.gz
-	md5sums = cf71031dee80f92e6649c4faa2d485b5
+	source = https://github.com/vxl/vxl/archive/v2.0.2.tar.gz
+	md5sums = 24fb616a55c885e821c9a049ae1b23ed
 
 pkgname = vxl
 
