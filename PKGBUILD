@@ -2,7 +2,7 @@
 
 pkgname=python-asgiref
 _pypi_pkgname=asgiref
-pkgver=3.0.0
+pkgver=3.1.2
 pkgrel=0
 pkgdesc="Reference ASGI adapters and channel layers"
 arch=(any)
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('python-setuptools')
 depends=('python')
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('bd5a17ca8742dd131b64b7cb67c79daec290d3feb46c9084a3a94cfbe5d62089')
+sha256sums=('60c783a7994246b2e710aa2f0a2f7fcfacf156cffc7b50f7074bfd97c9046db3')
 
 build() {
     cd "${srcdir}/asgiref-${pkgver}"
