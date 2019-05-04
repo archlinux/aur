@@ -1,29 +1,19 @@
-# Maintainer: mickele <mimocciola[at]yahoo[dot]com>
 pkgname=ifcopenshell-git
-pkgver=0.5.0.preview2.r128.gc7c5e69
-pkgrel=1
+pkgver=0.5.0.preview2.r374.g0ae1c90
+pkgrel=2
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon. GIT version."
-url="http://ifcopenshell.org/"
 arch=('x86_64' 'i686')
-license=('GPL3')
-depends=('opencascade' 'opencollada' 'boost-libs>=1.58.0' 'python')
+url="http://ifcopenshell.org/"
+license=('LGPL3')
+depends=('boost-libs>=1.58.0' 'opencascade' 'icu' 'opencollada' 'python')
 optdepends=()
 makedepends=('cmake' 'boost>=1.58.0' 'swig')
+provides=('ifcopenshell' 'ifcblender' 'IfcConvert' 'IfcGeomServer')
 conflicts=('ifcopenshell')
 replaces=()
 backup=()
 source=('IfcOpenShell::git://github.com/IfcOpenShell/IfcOpenShell.git')
 _blenderver=2.76
-
-pkgver() {
-  cd IfcOpenShell
-
-  if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-    echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
-  else
-    echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
-  fi
-}
 
 prepare(){
   cd "${srcdir}/IfcOpenShell"
@@ -40,6 +30,16 @@ prepare(){
   sed -e "s|#include <iomanip>|#include <iomanip>\n#include <unicode/unistr.h>|" -i src/ifcparse/IfcCharacterDecoder.cpp
 }
 
+pkgver() {
+  cd IfcOpenShell
+
+  if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
+    echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
+  else
+    echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+  fi
+}
+
 build() {
   cd "${srcdir}/IfcOpenShell"
   if [ -d "build" ]; then
@@ -51,8 +51,8 @@ build() {
   #	-DBUILD_IFCPYTHON=OFF \
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_CXX_STANDARD=11 \
-	-DOCC_INCLUDE_DIR=/opt/opencascade/inc \
-	-DOCC_LIBRARY_DIR=/opt/opencascade/lib \
+	-DOCC_INCLUDE_DIR=/usr/include/opencascade \
+	-DOCC_LIBRARY_DIR=/usr/lib \
 	-DOPENCOLLADA_INCLUDE_DIR=/usr/include/opencollada \
 	-DOPENCOLLADA_LIBRARY_DIR=/usr/lib/opencollada \
 	-DICU_INCLUDE_DIR=/usr/include/unicode \
