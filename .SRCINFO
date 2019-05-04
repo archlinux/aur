@@ -1,5 +1,5 @@
 pkgbase = alacritty-git
-	pkgver = 0.3.2.1190.g9c6d12e
+	pkgver = 0.3.2.1202.g34c54e7
 	pkgrel = 1
 	url = https://github.com/jwilm/alacritty
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgname = alacritty-git
 	pkgdesc = A cross-platform, GPU-accelerated terminal emulator
 	depends = freetype2
 	depends = fontconfig
-	depends = xclip
+	depends = libxcb
 	provides = alacritty
 	conflicts = alacritty
 

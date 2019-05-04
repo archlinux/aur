@@ -1,6 +1,6 @@
 pkgname=('alacritty-git' 'alacritty-terminfo-git')
 _pkgname="alacritty"
-pkgver=0.3.2.1190.g9c6d12e
+pkgver=0.3.2.1202.g34c54e7
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/jwilm/alacritty"
@@ -10,13 +10,13 @@ source=("$_pkgname::git+https://github.com/jwilm/alacritty.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $_pkgname
+	cd $_pkgname/alacritty
 	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 package_alacritty-git() {
 	pkgdesc="A cross-platform, GPU-accelerated terminal emulator"
-	depends=('freetype2' 'fontconfig' 'xclip')
+	depends=('freetype2' 'fontconfig' 'libxcb')
 	provides=('alacritty')
 	conflicts=('alacritty')
 
