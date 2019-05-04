@@ -1,6 +1,6 @@
 pkgbase = python-ftfy
 	pkgdesc = Fixes some problems with Unicode text after the fact
-	pkgver = 5.3.0
+	pkgver = 5.5.1
 	pkgrel = 1
 	url = https://github.com/LuminosoInsight/python-ftfy
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = python-ftfy
 	makedepends = python
 	makedepends = python-setuptools
 	depends = python
-	depends = python-html5lib
 	depends = python-wcwidth
-	source = python-ftfy-5.3.0.tar.gz::https://github.com/LuminosoInsight/python-ftfy/archive/v5.3.0.tar.gz
-	sha384sums = 409e18c709dba9abee414c018085f95bba965b07e0accb8429222d2fb90b20e2c21e8032518e2d7b2b8ec58a362af1c5
+	source = python-ftfy-5.5.1.tar.gz::https://github.com/LuminosoInsight/python-ftfy/archive/v5.5.1.tar.gz
+	sha512sums = 1a99d65e1895412ca17e147083e17b800d235dda6713b123d720887f27ffc4133892a671f0ad7eb6158cce8587cfb147592d19f3c71e06a4ed34a8f590f7772a
 
 pkgname = python-ftfy
 
