@@ -36,7 +36,8 @@ api_secret_path = "/var/lib/grin/main/.api_secret"
 #parameters used for mining as well as wallet output coinbase maturity. Can be:
 #AutomatedTesting - For CI builds and instant blockchain creation
 #UserTesting - For regular user testing (cuckoo 16)
-#Floonet - For the long term Floonet test network
+#Floonet - For the long term floonet test network
+#Mainnet - For mainnet
 chain_type = "Mainnet"
 
 #the chain validation mode, defines how often (if at all) we
@@ -127,7 +128,7 @@ max_pool_size = 50000
 max_stempool_size = 50000
 
 #maximum total weight of transactions that can get selected to build a block
-mineable_max_weight = 39976
+mineable_max_weight = 40000
 
 
 #########################################
@@ -188,7 +189,7 @@ stdout_log_level = "Warning"
 log_to_file = true
 
 #log level for file: Error, Warning, Info, Debug, Trace
-file_log_level = "Debug"
+file_log_level = "Info"
 
 #log file path
 log_file_path = "/var/log/grin/main/server.log"
@@ -199,4 +200,7 @@ log_file_append = true
 #maximum log file size in bytes before performing log rotation
 #comment it to disable log rotation
 log_max_size = 16777216
+
+#maximum count of the log files to rotate over
+log_max_files = 32
 
