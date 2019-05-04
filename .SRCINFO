@@ -1,0 +1,18 @@
+pkgbase = mackup-git
+	pkgdesc = a small Python utitlity to keep your application settings in sync.
+	pkgver = 0.8.24
+	pkgrel = 1
+	url = https://github.com/lra/mackup
+	arch = any
+	license = GPL3
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-docopt
+	provides = mackup
+	conflicts = mackup
+	source = git+https://github.com/lra/mackup.git
+	md5sums = SKIP
+
+pkgname = mackup-git
+
