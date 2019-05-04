@@ -1,0 +1,5 @@
+pkg/
+src/
+windows10-dark-gtk-theme/
+*.tar.xz
+*.tar.gz
