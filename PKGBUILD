@@ -2,10 +2,10 @@
 
 pkgbase=archisomydrive
 pkgname=$pkgbase
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 _remotepkgbase=$pkgbase-git
-_remotepkgver=1.1
+_remotepkgver=1.2
 _remotepkgrel=1
 _gitname=ArchIsoMyDrive
 _gittag="v${pkgver}"
@@ -18,7 +18,7 @@ depends=('gtk2' 'udev' 'polkit' 'glibc')
 source=("$url/raw/master/Install/$_remotepkgbase-$_remotepkgver-$_remotepkgrel-x86_64.pkg.tar.xz"{,.sig})
 
 
-sha256sums=('a6559947c3b4eb2ac79cf88e4e445113b15caf58400fac695bec7b95eac97743'
+sha256sums=('3b6bda84170ff2942ecffe966159bdac09f0130424250112163823e66054beb5'
             'SKIP'
            )
 
