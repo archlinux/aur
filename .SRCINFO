@@ -1,7 +1,7 @@
 pkgbase = lammps-beta
 	pkgdesc = Large-scale Atomic/Molecular Massively Parallel Simulator
-	pkgver = 20190329
-	pkgrel = 2
+	pkgver = 20190430
+	pkgrel = 1
 	url = https://lammps.sandia.gov/
 	arch = x86_64
 	license = GPL
@@ -10,10 +10,10 @@ pkgbase = lammps-beta
 	depends = openmpi
 	provides = lammps
 	conflicts = lammps
-	source = lammps-29Mar2019.tar.gz::https://github.com/lammps/lammps/archive/patch_29Mar2019.tar.gz
-	source = kim_cmake.patch::https://github.com/lammps/lammps/commit/a28ae7c2c0e4d5b179fc7d627f0e5dde8fd9a31f.patch
-	sha512sums = 7e5ba9c033a283d9e0f4f05161bf081bfec45d519f9ac0aae3114ef8cbe630de6943cd8cee4413a7c6ebf4ddde11aa5e838a96d087629a8e34b51892893bc8e9
-	sha512sums = 383796fff5e6e62c78ad719d5339319e5461beb4075a5bdd3e5fc0332fe7a13446949673142ba63e2423c89c5107d1a3a915c2fbc18d815300c8de32e19b9808
+	source = lammps-30Apr2019.tar.gz::https://github.com/lammps/lammps/archive/patch_30Apr2019.tar.gz
+	source = intel_pkg.patch::https://github.com/lammps/lammps/commit/d7da1db745128ed3c10c78d73613f88a8ed6a492.patch
+	sha512sums = dc520c70d008468555a843765f7abcf9fca74bad901b05c0d4240ba95189ee0e048e955148ada913042d5d275aa6a58ac65389835f3dbc84546c9e3f613abdd6
+	sha512sums = 3e573841275a44d3f7a4a8fdb13eb0223a02ca41eb30ba852977f3ca629490c72cef35240c2c4962974e6ff25f6a7723ec8ea52551b5493971eba12d0f363beb
 
 pkgname = lammps-beta
 

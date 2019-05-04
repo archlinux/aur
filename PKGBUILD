@@ -10,15 +10,19 @@
 _BUILD_DOC=0
 # KIM package
 _ENABLE_KIM=0
-# Intel and OpenMP packages
+# Use Intel compilers
+_ENABLE_INTEL_COMPILER=0
+# USER-INTEL package
 _ENABLE_INTEL=0
+# USER-OMP package
+_ENABLE_OMP=0
 
 _pkgname=lammps
 pkgname=${_pkgname}-beta
-pkgver=20190329
-_pkgver="29Mar2019"
+pkgver=20190430
+_pkgver="30Apr2019"
 #_pkgver=$(date -d ${pkgver} +%-d%b%Y)
-pkgrel=2
+pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
 arch=('x86_64')
@@ -28,11 +32,18 @@ makedepends=('cmake')
 conflicts=('lammps')
 provides=('lammps')
 source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/patch_${_pkgver}.tar.gz"
-        "kim_cmake.patch::https://github.com/${_pkgname}/${_pkgname}/commit/a28ae7c2c0e4d5b179fc7d627f0e5dde8fd9a31f.patch")
-sha512sums=('7e5ba9c033a283d9e0f4f05161bf081bfec45d519f9ac0aae3114ef8cbe630de6943cd8cee4413a7c6ebf4ddde11aa5e838a96d087629a8e34b51892893bc8e9'
-            '383796fff5e6e62c78ad719d5339319e5461beb4075a5bdd3e5fc0332fe7a13446949673142ba63e2423c89c5107d1a3a915c2fbc18d815300c8de32e19b9808')
+        "intel_pkg.patch::https://github.com/${_pkgname}/${_pkgname}/commit/d7da1db745128ed3c10c78d73613f88a8ed6a492.patch")
+sha512sums=('dc520c70d008468555a843765f7abcf9fca74bad901b05c0d4240ba95189ee0e048e955148ada913042d5d275aa6a58ac65389835f3dbc84546c9e3f613abdd6'
+            '3e573841275a44d3f7a4a8fdb13eb0223a02ca41eb30ba852977f3ca629490c72cef35240c2c4962974e6ff25f6a7723ec8ea52551b5493971eba12d0f363beb')
 
 # process the build settings from above
+if (( $_ENABLE_INTEL_COMPILER )); then
+    _feature_args+=('-DCMAKE_C_COMPILER=icc')
+    _feature_args+=('-DCMAKE_C_FLAGS=-xHost -O3 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias -restrict')
+    _feature_args+=('-DCMAKE_CXX_COMPILER=icpc')
+    _feature_args+=('-DCMAKE_CXX_FLAGS=-xHost -O3 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias -restrict')
+    _feature_args+=('-DCMAKE_Fortran_COMPILER=ifort')
+fi
 if (( $_BUILD_DOC )); then
     makedepends+=('python-sphinx' 'lammpsdoc')
 fi
@@ -41,19 +52,17 @@ if (( $_ENABLE_KIM )); then
     _feature_args+=('-DPKG_KIM=yes')
 fi
 if (( $_ENABLE_INTEL )); then
-    _feature_args+=('-DCMAKE_C_COMPILER=icc')
-    _feature_args+=('-DCMAKE_CXX_COMPILER=icpc')
-    _feature_args+=('-DCMAKE_CXX_FLAGS=-O2 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias')
-    _feature_args+=('-DCMAKE_Fortran_COMPILER=ifort')
-    _feature_args+=('-DPKG_USER-INTEL=yes')
     _feature_args+=('-DINTEL_ARCH=cpu')
-    _feature_args+=('-DPKG_USER-OMP=yes')
+    _feature_args+=('-DPKG_USER-INTEL=yes')
+fi
+if (( $_ENABLE_OMP )); then
     _feature_args+=('-DBUILD_OMP=yes')
+    _feature_args+=('-DPKG_USER-OMP=yes')
 fi
 
 prepare(){
   cd "${_pkgname}-patch_${_pkgver}"
-  patch --strip=1 --input="../kim_cmake.patch"
+  patch --strip=1 -i ../intel_pkg.patch
   mkdir -p build
 }
 
@@ -96,7 +105,7 @@ package() {
     install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html" "html/"*.js
     install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html/_images" "html/_images/"*
     install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html/_static" "html/_static/"*.png
-    install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html/_static" "html/_static/"*.gif
+    #install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html/_static" "html/_static/"*.gif
     install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html/_static" "html/_static/"*.js
     install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html/_static/css" "html/_static/css/"*.css
     install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html/_static/fonts" "html/_static/fonts/"*
