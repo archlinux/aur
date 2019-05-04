@@ -1,13 +1,13 @@
 pkgbase = procs
 	pkgdesc = A modern replacement for ps written by Rust
-	pkgver = 0.4.5
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/dalance/procs
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	source = procs-0.4.5.tar.gz::https://github.com/dalance/procs/archive/v0.4.5.tar.gz
-	sha256sums = 07e722daa3ee81edbb3d850ed75bbe19bd19a4675e184e45e1c0d14e20fa6cac
+	source = procs-0.8.3.tar.gz::https://github.com/dalance/procs/archive/v0.8.3.tar.gz
+	sha256sums = f4faa0a4b25dd3304344c75cf8ed4d909fd19e365c5312b6edac0984276ad978
 
 pkgname = procs
 
