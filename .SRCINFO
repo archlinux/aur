@@ -1,14 +1,18 @@
 pkgbase = libcloudproviders
 	pkgdesc = DBus API that allows cloud storage sync clients to expose their services.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/libcloudproviders
 	arch = x86_64
 	license = LGPL
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	makedepends = vala
+	makedepends = gobject-introspection
 	depends = glib2
+	depends = vala
+	depends = gobject-introspection
 	provides = libcloudproviders=0.3.0
 	provides = dbus-org.freedesktop.CloudProviderManager.service
 	source = git+https://gitlab.gnome.org/World/libcloudproviders.git#commit=79d1652a0aadab39648bc30db853cdb1d6e2bf95
