@@ -1,6 +1,6 @@
 post_install() {
   setcap CAP_SYS_NICE=+ep usr/bin/gnome-shell
-  echo "To have real-time scheduling on Wayland, run `settings set org.gnome.mutter experimental-features  "['rt-scheduler']"`
+  echo "To have real-time scheduling on Wayland, run \`gsettings set org.gnome.mutter experimental-features  \"['rt-scheduler']\"\`"
 }
 
 post_upgrade() {
