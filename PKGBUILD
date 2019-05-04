@@ -1,6 +1,6 @@
 # Maintainer: Attenuation <ouyangjun1999@gmail.com>
 pkgname=accepted
-pkgver=20190211.074029
+pkgver=20190502.165154
 pkgrel=1
 pkgdesc='A terminal text editor to be ACCEPTED'
 arch=('x86_64')
