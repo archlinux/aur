@@ -1,7 +1,112 @@
 # Maintainer: Lone_Wolf <lonewolf at xs4all dot nl>
+# Contributor: Armin K. <krejzi at email dot com>
+# Contributor: Kristian Klausen <klausenbusk@hotmail.com>
+# Contributor: Egon Ashrafinia <e.ashrafinia@gmail.com>
+# Contributor: Tavian Barnes <tavianator@gmail.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
+# Contributor: Thomas Dziedzic < gostrc at gmail >
+# Contributor: Antti "Tera" Oja <antti.bofh@gmail.com>
+# Contributor: Diego Jose <diegoxter1006@gmail.com>
 
-pkgname=lone_wolf-lib32-mesa-git
-pkgdesc="placeholder to reserve pkgbase/name for me, will become real package soon"
-pkgver=1
+pkgname=('lone_wolf-lib32-mesa-git')
+pkgdesc="an open-source implementation of the OpenGL specification, git version"
+pkgver=19.1.0_devel.110725.7f852831030
 pkgrel=1
 arch=('x86_64')
+makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
+             'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'lone_wolf-lib32-llvm-git' 'git' 'lib32-libgcrypt' 'lib32-systemd'
+             'lone_wolf-mesa-git' 'lone_wolf-lib32-llvm-libs-git' 'lib32-libglvnd' 'wayland-protocols' 'lib32-wayland' 'meson' 'lib32-libva' 'lib32-libxrandr')
+depends=('lone_wolf-mesa-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-elfutils'
+           'lone_wolf-lib32-llvm-libs-git' 'lib32-libunwind' 'lib32-lm_sensors' 'glslang')
+optdepends=('opengl-man-pages: for the OpenGL API man pages')
+provides=(lib32-mesa=$pkgver-$pkgrel lib32-vulkan-intel=$pkgver-$pkgrel lib32-vulkan-radeon=$pkgver-$pkgrel lib32-libva-mesa-driver=$pkgver-$pkgrel lib32-mesa-vdpau=$pkgver-$pkgrel 'lib32-opengl-driver')
+conflicts=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau')
+url="https://www.mesa3d.org"
+license=('custom')
+source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
+         'LICENSE'
+	'llvm32.native'
+)
+
+md5sums=('SKIP'
+         '5c65a0fe315dd347e09b1f2826a1df5a'
+         '6b4a19068a323d7f90a3d3cd315ed1f9')
+sha512sums=('SKIP'
+            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
+            'c7dbb390ebde291c517a854fcbe5166c24e95206f768cc9458ca896b2253aabd6df12a7becf831998721b2d622d0c02afdd8d519e77dea8e1d6807b35f0166fe')
+
+
+pkgver() {
+    cd mesa
+    read -r _ver <VERSION
+    echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build () {
+    export CC="gcc -m32"
+    export CXX="g++ -m32"
+    export PKG_CONFIG=/usr/bin/pkg-config-32  
+
+      if [  -d _build ]; then
+        rm -rf _build
+    fi
+    meson setup mesa _build \
+        --native-file llvm32.native \
+        -D b_ndebug=true \
+        -D buildtype=plain \
+        --wrap-mode=nofallback \
+        -D prefix=/usr \
+        -D sysconfdir=/etc \
+        --libdir=/usr/lib32 \
+        -D platforms=x11,wayland,drm,surfaceless \
+        -D dri-drivers=i915,i965,r200,r100,nouveau \
+        -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris \
+        -D vulkan-drivers=amd,intel \
+        -D dri3=true \
+        -D egl=true \
+        -D gallium-extra-hud=true \
+        -D gallium-nine=true \
+        -D gallium-omx=disabled \
+        -D gallium-opencl=disabled \
+        -D gallium-va=true \
+        -D gallium-vdpau=true \
+        -D gallium-xa=true \
+        -D gallium-xvmc=false \
+        -D gbm=true \
+        -D gles1=true \
+        -D gles2=true \
+        -D glvnd=true \
+        -D glx=dri \
+        -D libunwind=true \
+        -D llvm=true \
+        -D lmsensors=true \
+        -D osmesa=gallium \
+        -D shared-glapi=true \
+        -D valgrind=false \
+        -D tools=[] \
+#        -D vulkan-overlay-layer=true
+    meson configure _build
+    if [[ ! $NINJAFLAGS ]]; then
+        ninja  -C _build 
+    else
+        ninja  "$NINJAFLAGS" -C _build
+    fi
+}
+
+
+package() {
+
+  DESTDIR="$pkgdir" ninja -C _build install
+
+  # remove files provided by lone_wolf-mesa-git
+  rm -rf "$pkgdir"/etc
+  rm -rf "$pkgdir"/usr/include
+  rm -rf "$pkgdir"/usr/share/glvnd/
+  rm -rf "$pkgdir"/usr/share/drirc.d/
+  rm -rf "$pkgdir"/usr/share/vulkan/explicit_layer.d/
+
+  # indirect rendering
+  ln -s /usr/lib32/libGLX_mesa.so.0 "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
+  install -Dt  "$pkgdir"/usr/share/licenses/$pkgbase/ -m644 "$srcdir"/LICENSE 
+}
