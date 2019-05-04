@@ -21,9 +21,9 @@ pkgbase = oscam-git
 	source = oscam-git::svn+http://www.streamboard.tv/svn/oscam/trunk
 	source = oscam.service
 	source = oscam.sysuser
-	md5sums = SKIP
-	md5sums = 596b902e3f4a66d39e7f993437feec74
-	md5sums = be0d9d7a5fdd8cf4918c4ea91cebd989
+	sha256sums = SKIP
+	sha256sums = c3d8653531d59b61751ef26845a1cc5d78c5077353c6cf3f6d05eee425861b25
+	sha256sums = 3adbbfa4f388c6510b365719da251360dee9cc2885c5f82e06d56c246fcd26b0
 
 pkgname = oscam-git
 

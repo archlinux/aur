@@ -19,9 +19,9 @@ install='oscam.install'
 source=("$pkgname::svn+http://www.streamboard.tv/svn/oscam/trunk"
         'oscam.service'
         'oscam.sysuser')
-md5sums=('SKIP'
-         '596b902e3f4a66d39e7f993437feec74'
-         'be0d9d7a5fdd8cf4918c4ea91cebd989')
+sha256sums=('SKIP'
+         'c3d8653531d59b61751ef26845a1cc5d78c5077353c6cf3f6d05eee425861b25'
+         '3adbbfa4f388c6510b365719da251360dee9cc2885c5f82e06d56c246fcd26b0')
 
 pkgver() {
   cd "$SRCDEST/$pkgname"
