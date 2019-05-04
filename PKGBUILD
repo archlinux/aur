@@ -20,7 +20,7 @@ _ENABLE_OMP=0
 _pkgname=lammps
 pkgname=${_pkgname}-git
 pkgver=r13672.f7cbdcf99
-pkgrel=2
+pkgrel=3
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
 arch=('x86_64')
@@ -37,19 +37,19 @@ source=('git://github.com/lammps/lammps.git')
 sha512sums=('SKIP')
 
 # process the build settings from above
+if (( $_ENABLE_INTEL_COMPILER )); then
+    _feature_args+=('-DCMAKE_C_COMPILER=icc')
+    _feature_args+=('-DCMAKE_C_FLAGS=-xHost -O3 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias -restrict')
+    _feature_args+=('-DCMAKE_CXX_COMPILER=icpc')
+    _feature_args+=('-DCMAKE_CXX_FLAGS=-xHost -O3 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias -restrict')
+    _feature_args+=('-DCMAKE_Fortran_COMPILER=ifort')
+fi
 if (( $_BUILD_DOC )); then
     makedepends+=('python-sphinx' 'lammpsdoc')
 fi
 if (( $_ENABLE_KIM )); then
     depends+=('kim-api>=2.0.2')
     _feature_args+=('-DPKG_KIM=yes')
-fi
-if (( $_ENABLE_INTEL_COMPILER )); then
-    _feature_args+=('-DCMAKE_C_COMPILER=icc')
-    _feature_args+=('-DCMAKE_C_FLAGS=-xHost -O2 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias')
-    _feature_args+=('-DCMAKE_CXX_COMPILER=icpc')
-    _feature_args+=('-DCMAKE_CXX_FLAGS=-xHost -O2 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias')
-    _feature_args+=('-DCMAKE_Fortran_COMPILER=ifort')
 fi
 if (( $_ENABLE_INTEL )); then
     _feature_args+=('-DINTEL_ARCH=cpu')
@@ -110,7 +110,7 @@ package() {
     install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html" "html/"*.js
     install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html/_images" "html/_images/"*
     install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html/_static" "html/_static/"*.png
-    install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html/_static" "html/_static/"*.gif
+    #install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html/_static" "html/_static/"*.gif
     install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html/_static" "html/_static/"*.js
     install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html/_static/css" "html/_static/css/"*.css
     install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html/_static/fonts" "html/_static/fonts/"*
