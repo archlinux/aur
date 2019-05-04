@@ -1,11 +1,11 @@
 # Maintainer: James Brink <brink.james@gmail.com>
-# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
 # Contributor: James An <james@jamesan.ca>
 
 _pkgname=darling-dmg
 pkgname="$_pkgname-git"
 pkgver=v1.0.4.r73.g97a92a6
-pkgrel=3
+pkgrel=4
 pkgdesc="FUSE module for .dmg files (containing an HFS+ filesystem)"
 arch=("i686" "x86_64")
 url="https://www.darlinghq.org"
