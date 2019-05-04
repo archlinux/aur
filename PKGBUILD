@@ -23,10 +23,10 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=5.0.6-arch1
+_srcver=5.0.12-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
-_bmqversion=091
+_bmqversion=093
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
 license=(GPL2)
