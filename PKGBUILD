@@ -31,6 +31,8 @@ pkgver() {
 build() {
   cd "$SRCDEST/$pkgname"
 
+  make allyesconfig
+
   make CONF_DIR=/var/lib/oscam \
        USE_SSL=1 \
        USE_LIBUSB=1 \
