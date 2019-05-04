@@ -1,7 +1,7 @@
 pkgbase = ogmrip
 	pkgdesc = Libraries and GTK2 interface for DVD ripping using mencoder
 	pkgver = 1.0.1
-	pkgrel = 6
+	pkgrel = 7
 	url = http://ogmrip.sourceforge.net/
 	changelog = ogmrip.changelog
 	arch = x86_64
