@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=cxx
-pkgver=3.0.6
+pkgver=3.0.7
 pkgrel=1
 pkgdesc='Build system that makes modern C++ easier to deal with'
 arch=(x86_64)
