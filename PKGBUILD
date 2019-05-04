@@ -1,11 +1,11 @@
 pkgname=libsolv
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for solving packages and reading repositories"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/$pkgname"
 license=('custom:BSD')
-depends=('bzip2' 'expat' 'rpm-org' 'xz' 'zlib' 'zstd')
+depends=('bzip2' 'expat' 'rpm-org' 'xz' 'zchunk' 'zlib' 'zstd')
 makedepends=('cmake' 'perl' 'python' 'ruby' 'swig')
 optdepends=('perl: for perl bindings'
             'python: for python bindings'
@@ -51,6 +51,7 @@ build() {
 	      -DENABLE_SUSEREPO=ON \
 	      -DENABLE_TCL=OFF \
 	      -DENABLE_ZCHUNK_COMPRESSION=ON \
+	      -DWITH_SYSTEM_ZCHUNK=ON \
 	      -DENABLE_ZSTD_COMPRESSION=ON \
 	      -DMULTI_SEMANTICS=ON \
 	      -DWITH_LIBXML2=OFF \
