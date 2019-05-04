@@ -1,14 +1,15 @@
+# Maintainer Joey Dumont <joey.dumont@gmail.com>
 # Contributor: Harold Leboulanger <harold.leboulanger AT gmail DOT com>
-# Maintainer: McNoggins <gagnon88 AT gmail DOT com>
+# Contributor: McNoggins <gagnon88 AT gmail DOT com>
 pkgname=ttwatch-git
-pkgver=20160527
+pkgver=20190211
 pkgrel=1
 pkgdesc="TomTom GPS Watch Utilities"
 arch=('i686' 'x86_64')
 url="https://github.com/ryanbinns/ttwatch"
 license=('MIT')
 groups=()
-depends=('libusb' 'curl')
+depends=('libusb' 'curl' 'protobuf' 'protobuf-c')
 makedepends=('git' 'curl' 'libusb' 'openssl' 'cmake')
 source=('ttwatch-git::git+https://github.com/ryanbinns/ttwatch.git'
 	'ttwatch-git.install')
