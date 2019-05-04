@@ -20,8 +20,8 @@ pkgver() {
 package() {
 	cd "Touchpad-Indicator"
 	install -Dm755 "bin/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
-	install -Dm644 src/*.py "$pkgdir/usr/share/${pkgname%-git}"
 	install -d $pkgdir/usr/share/{touchpad-indicator/icons,glib-2.0/schemas}
+	install -Dm644 src/*.py "$pkgdir/usr/share/${pkgname%-git}"
 	install -Dm644 data/icons/*.svg "$pkgdir/usr/share/${pkgname%-git}/icons"
 	install -Dm644 data/schemas/*.xml $pkgdir/usr/share/glib-2.0/schemas
 	install -Dm755 data/00_check_touchpad_status $pkgdir/etc/pm/sleep.d/00_check_touchpad_status
