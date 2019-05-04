@@ -1,8 +1,34 @@
 pkgbase = lone_wolf-lib32-llvm-git
-	pkgdesc = placeholder to reserve pkgbase/name for me, will become real package soon
-	pkgver = 1
+	pkgver = 9.0.0_r315711.5ab41a7a055
 	pkgrel = 1
+	url = http://llvm.org/
 	arch = x86_64
+	license = custom:University of Illinois/NCSA Open Source License
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = lib32-libffi
+	makedepends = lib32-zlib
+	makedepends = python
+	makedepends = lib32-gcc-libs
+	makedepends = lib32-libxml2
+	source = llvm-project::git+https://github.com/llvm/llvm-project.git
+	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = lone_wolf-lib32-llvm-git
+	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit)
+	depends = lone_wolf-lib32-llvm-libs-git=9.0.0_r315711.5ab41a7a055-1
+	depends = lone_wolf-llvm-git
+	provides = lib32-llvm=9.0.0_r315711.5ab41a7a055-1
+	conflicts = lib32-llvm
+
+pkgname = lone_wolf-lib32-llvm-libs-git
+	pkgdesc = Low Level Virtual Machine (runtime library)(32-bit)
+	depends = lib32-libffi
+	depends = lib32-zlib
+	depends = lib32-ncurses
+	depends = lib32-libxml2
+	depends = lib32-gcc-libs
+	optdepends = llvm-libs: for LLVMgold linker
 
