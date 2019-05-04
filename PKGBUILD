@@ -1,9 +1,9 @@
 # Maintainer: David Monberg Nielsen <monbergnielsen@outlook.com>
 
 pkgname=spasm
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
-pkgdesc="A terminal-based password manager aiming to be secure and easy to use. Feel free to comment or contact me on my email if you have any suggestions for improvements or features."
+pkgdesc="A terminal-based password manager aiming to be secure and easy to use."
 arch=('any')
 license=('MIT')
 url="https://github.com/David-M-Nielsen/${pkgname}"
