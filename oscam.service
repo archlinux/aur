@@ -1,12 +1,17 @@
 [Unit]
 Description=Open Source Conditional Access Module
 Wants=pcscd.service
+After=tmp.mount network.target
 
 [Service]
-Type=simple
-ExecStart=/usr/bin/oscam --restart 2
-TimeoutStopSec=30
+Type=forking
+ExecStart=/usr/bin/oscam -b -c /var/lib/oscam
 User=oscam
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+NoNewPrivileges=yes
+ReadWritePaths=-/var/lib/oscam
 
 [Install]
 WantedBy=multi-user.target
