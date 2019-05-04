@@ -2,7 +2,7 @@
 
 pkgbase="gcc-multilib-trunk-git"
 pkgname=('gcc-multilib-git' 'gcc-libs-multilib-git' 'lib32-gcc-libs-git' 'gcc-objc-multilib-git' 'gcc-fortran-multilib-git')
-pkgver=10.0.0.r168586.9766cefe693
+pkgver=10.0.0.r168607.ee5dc49a579
 _pkgver_base=10.0.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection developmental snapshot"
@@ -143,6 +143,8 @@ package_gcc-multilib-git()
         make -C $_CHOST/libquadmath DESTDIR=${pkgdir} install-nodist_libsubincludeHEADERS
         make -C $_CHOST/libsanitizer DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
         make -C $_CHOST/libsanitizer/asan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
+        make -C $_CHOST/libsanitizer/tsan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
+        make -C $_CHOST/libsanitizer/lsan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
         make -C $_CHOST/32/libgomp DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
         make -C $_CHOST/32/libitm DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
         make -C $_CHOST/32/libsanitizer DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
