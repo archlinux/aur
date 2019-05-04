@@ -3,8 +3,8 @@
 
 # 方法来自https://github.com/cytle/wechat_web_devtools重新打包
 
-_wechat_devtools_ver="1.02.1902010"
-_wechat_devtools_url="https://dldir1.qq.com/WechatWebDev/1.2.0/201902010/wechat_devtools_1.02.1902010_x64.exe"
+_wechat_devtools_ver="1.02.1904090"
+_wechat_devtools_url="https://dldir1.qq.com/WechatWebDev/1.2.0/201904090/wechat_devtools_1.02.1904090_x64.exe"
 
 _wechat_devtools_exe="wechat_devtools_${_wechat_devtools_ver}_x64.exe"
 _nwjs_ver="0.24.4"
@@ -14,7 +14,7 @@ _node_version="v8.11.3"
 
 pkgname=wechat-devtools
 pkgver=${_wechat_devtools_ver}
-pkgrel=2
+pkgrel=1
 epoch=2
 pkgdesc="WeChat Devtools Linux version."
 arch=("x86_64")
@@ -27,7 +27,7 @@ source=("nwjs.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs_ver}/nwjs-sdk
         "wechat-devtools.desktop"
         "logo.svg")
 md5sums=(82f20fe9081201db81652eb066c29f9b
-         375035e8500e6bfe3b388583ce3fb06d
+         a6c2354204968cc5aa2b2d291d65ca3c
          c87aedb94fdb27085b00fd7851a21945
          de6f2f282e6d813100474d75d8abfeb9)
 options=('!strip')
