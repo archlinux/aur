@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=RVGL
+Comment=Re-Volt port for Linux
+Icon=rvgl
+Exec=/opt/rvgl/rvgl
+Path=/opt/rvgl
+Terminal=false
+Categories=Game;ArcadeGame;
+Keywords=re-volt;racing;rc;cars;
