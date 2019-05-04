@@ -1,0 +1,35 @@
+
+IMPORTANT
+If you do not agree to the terms of this Software License Agreement ("Agreement"), you may not use this software.
+ 
+Please read this Agreement carefully before using the software and accompanying documentation contained in the storage media ("Licensed Software"). By installing the Licensed Software, you are indicating your acceptance of these terms and conditions and this Agreement is deemed effective between you ("Licensee") and Oki Data Corporation ("Licensor").
+1.  Scope of the license
+Licensor grants, and Licensee accepts, a non-exclusive license to install the Licensed Software on multiple computers which are directly or through network connected to Licensor's printer product or MFP purchased by Licensee ("Product") and to use the Licensed Software solely in conjunction with Product. Licensee may make one copy of the Licensed Software only for backup purpose. Any copies of the Licensed Software that Licensee is permitted to make herein must contain the same copyright and other proprietary notices that appear on or in Licensed Software. Other than that, Licensee agrees not to make copies, reproduce, or allow anyone to make copies or reproduce, the Licensed Software, in whole or in part.
+2.  Ownership and Restriction
+(1) Licensor or its suppliers own all the copyright and proprietary rights in and to the Licensed Software. The structure, organization and code contained in Licensed Software are the valuable trade secrets of Licensor and its suppliers. Licensed Software is also protected by United States Copyright Law and International Treaty provisions. Licensee must treat the Licensed Software just as Licensee would treat any other copyrighted material, such as a book. 
+(2) Except as stated in Section 1, Licensee may not make copies rent, lease, distribute, transfer or reprint the Licensed Software, in whole or in part.
+(3) Licensee agrees not to modify, alter, translate, reverse engineer, decompile or disassemble the Licensed Software.
+(4) Licensee agrees not to change the file names for the Licensed Software.
+(5) Except as stated in this Agreement, Licensor does not grant Licensee any intellectual property rights in or to the Licensed Software.
+3.  Term and Termination
+(1) This Agreement is effective until terminated.
+(2) The Agreement will also terminate where Licensee chooses to terminate it by destroying the Licensed Software and its documentation together with all copies.
+(3) Licensor may terminate this Agreement if Licensee fails to comply with any of the terms and conditions of this Agreement. Upon termination, Licensee shall destroy Licensed Software and its copies in Licensee's possession and control.
+4.  Warranty
+THE LICENSED SOFTWARE IS PROVIDED "AS IS".  NEITHER LICENSOR NOR ITS SUPPLIERS WARRANT THAT THE OPERATION OF THE LICENSED SOFTWARE WILL BE UNINTERRUPTED, ERROR FREE, OR WILL MEET LICENSEE'S NEEDS.  LICENSOR AND ITS SUPPLIERS MAKE NO WARRANTY, EXPRESS OR IMPLIED, AS TO NON-INFRINGEMENT OF ANY THIRD PARTY'S RIGHTS, MERCHANTABILITY, OR FITNESS FOR ANY PARTICULAR PURPOSE.
+5.  Disclaimer of Liability
+IN NO EVENT WILL LICENSOR OR ITS SUPPLIERS BE LIABLE TO LICENSEE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES, INCLUDING, BUT NOT LIMITED TO, LOSS OF PROFITS, LOSS OF SAVINGS, OR LOSS OF DATA, EVEN IF LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE NOR FOR ANY CLAIM BY ANY THIRD PARTY(IES) IN ANY WAY ARISING OUT OF OR RELATING TO THE LICENSED SOFTWARE, WHETHER THE CLAIM ALLEGES TORTIOUS CONDUCT (INCLUDING, BUT NOT LIMITED TO, NEGLIGENCE) OR ANY OTHER LEGAL THEORY, OR FOR ANY CLAIM BY ANY THIRD PARTY.
+6.  Governing Law
+The license with respect to the Licensed Software will be governed by the laws in force in Japan.
+7.  Severability
+If any part of this Agreement is found void and unenforceable, it will not affect the validity of the balance of the Agreement, which shall remain valid and enforceable according to its terms.
+8.  Export Restriction
+Licensee agrees that the Licensed Software will not be shipped, transferred, exported or re-exported into any country or used in any manner prohibited by U.S., Japanese or any other applicable export laws or regulations.  Licensee agrees that it will not export or re-export the Licensed Software or products produced therefrom in any form without appropriate U.S., Japanese or any other governmental licenses. This Agreement shall automatically terminate upon failure by Licensee to comply with this Section 8.
+9.  Entire Agreement
+Licensee represents that Licensee reads and understands this Agreement and that this Agreement constitutes the entire understanding and agreement between Licensor and Licensee as to the license relating to the Licensed Software, and supersedes and replaces any prior agreement, written or oral.
+The Licensee's obligations in this Agreement constitute the obligations to Licensor and all owners of the right licensed to Licensee under this Agreement.
+10. Notice to U.S. Government End Users
+All Software provided to the U.S. Government pursuant to solicitations issued on or after December 1, 1995 is provided with the commercial license rights and restrictions described elsewhere herein.  All Software provided to the U.S. Government pursuant to solicitations issued prior to December 1, 1995 is provided with "Restricted Rights" as provided for in FAR, 48 CFR 52.227-14 (JUNE 1987) or DFAR, 48 CFR 252.227-7013 (OCT 1988), as applicable.
+"Software" in this section is deemed to be the Licensed Software defined in this Agreement.
+*****
+Some of the Licensed Software may include a separate software license agreement and if you agree to the separate software license agreement, the terms of such agreement shall prevail for the use of the software.
