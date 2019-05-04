@@ -1,6 +1,6 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=photobroom
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Photos managing tool"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ changelog=
 source=(https://codeload.github.com/Kicer86/$pkgname/tar.gz/v$pkgver
         cmake_modules::git+https://github.com/Kicer86/cmake_modules.git)
 noextract=()
-md5sums=('a278c637b962efb3144fc8a2da4ebb6e'
+md5sums=('18bd648b583d67984a8d88c428875c7f'
          'SKIP')
 
 prepare()
