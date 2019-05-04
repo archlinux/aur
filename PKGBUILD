@@ -6,7 +6,7 @@ pkgdesc="Auto-install osu! on Linux"
 arch=('any')
 url='https://github.com/yurisuki/osu-install'
 source=("osu-install::https://raw.githubusercontent.com/yurisuki/osu-install/master/aur/osu-install")
-sha512sums=('09d6c562f5a00137c2769d01ab6230e8d3c9ce0619adba7b182ba3eb8d28fd057b4b7560ab9c59a2b706aaebd02add2acd5632db7dc9f231056cb016ad5dcdd8')
+sha512sums=('560c61ec4a46ca478046106dd89701dcf63e57f7c9ae1d5826b5d01a3e7fb2214f3cdf04fddb9c2e704c96f90fcb43ce8871af551ffa75321f91acb95e3041fd')
 depends=('dialog' 'curl' 'bash')
 
 package() {
