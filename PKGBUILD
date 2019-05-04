@@ -2,7 +2,7 @@
 # Maintainer: Francesco Persico <francesco.persico@gmail.com>
 
 pkgname=nodenv
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Manage multiple NodeJS versions"
 arch=("any")
@@ -12,7 +12,7 @@ optdepends=("nodenv-node-build")
 conflicts=("${pkgname}-git")
 install=nodenv.install
 source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=("3f360abb82934e721b1640f0adc6e2ac")
+md5sums=("23a5f8e6a96123509c2082c4ba94b57b")
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
