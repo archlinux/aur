@@ -15,6 +15,7 @@ pkgbase = kdesrc-build
 	depends = perl-net-ssleay
 	optdepends = subversion: download source code using svn
 	optdepends = git: download source code using git
+	conflicts = kdesrc-build-git
 	source = git+https://anongit.kde.org/kdesrc-build.git#tag=v18.10
 	md5sums = SKIP
 

@@ -12,6 +12,7 @@ depends=('perl-libwww' 'perl-xml-parser' 'dialog' 'perl-json' 'perl-io-socket-ss
 makedepends=('cmake' 'git')
 optdepends=('subversion: download source code using svn'
             'git: download source code using git')
+conflicts=('kdesrc-build-git')
 source=("git+https://anongit.kde.org/kdesrc-build.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
