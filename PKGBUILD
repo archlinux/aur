@@ -1,8 +1,8 @@
 # Maintainer: Noa-Emil Nissinen <aur dot satella at spamgourmet dot org>
 
 pkgname=mingw-w64-gcc-bin
-pkgver=8.3.0
-pkgrel=3
+pkgver=9.1.0
+pkgrel=1
 pkgdesc="Cross GCC for the MinGW-w64 cross-compiler (pre-compiled)"
 arch=('x86_64')
 url="https://gcc.gnu.org/"
@@ -12,8 +12,8 @@ depends=('zlib' 'libmpc' 'mingw-w64-crt' 'mingw-w64-binutils' 'mingw-w64-winpthr
 provides=("mingw-w64-gcc=${pkgver}" "mingw-w64-gcc-base")
 conflicts=('mingw-w64-gcc')
 options=('!strip' 'staticlibs' '!emptydirs' '!buildflags')
-source=("https://sourceforge.net/projects/mingw-w64-builds/files/mingw-w64-gcc/mingw-w64-gcc-$pkgver-3.tar.xz")
-md5sums=('463437ab37a2175a322bd3649b5238b8')
+source=("https://sourceforge.net/projects/mingw-w64-builds/files/mingw-w64-gcc/mingw-w64-gcc-$pkgver.tar.xz")
+md5sums=('9508b13a2889172af985f42ba868061e')
 
 package() {
 	cd "mingw-w64-gcc/"
