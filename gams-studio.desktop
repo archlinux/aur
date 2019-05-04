@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=GAMS Studio
+Comment=Perform arithmetic, scientific or financial calculations
+Keywords=calculation;arithmetic;scientific;financial;
+Exec=gams-studio
+# Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+Icon=android-studio
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Programming;
