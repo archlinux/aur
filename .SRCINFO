@@ -1,6 +1,6 @@
 pkgbase = spasm
-	pkgdesc = A terminal-based password manager aiming to be easy to use and secure enough for most users.
-	pkgver = 0.2.5
+	pkgdesc = A terminal-based password manager aiming to be secure and easy to use.
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/David-M-Nielsen/spasm
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = spasm
 	depends = coreutils
 	optdepends = xclip: getting password to clipboard automatically
 	optdepends = gnupg: password encryption and decryption
-	source = spasm-0.2.5.tar.gz::https://github.com/David-M-Nielsen/spasm/archive/v0.2.5.tar.gz
+	source = spasm-0.3.0.tar.gz::https://github.com/David-M-Nielsen/spasm/archive/v0.3.0.tar.gz
 	sha256sums = bf0dbf131236d1ca260f6830ae041b3fa95a2f1116a2b37ddb0518edae2b396b
 
 pkgname = spasm
