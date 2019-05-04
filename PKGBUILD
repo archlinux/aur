@@ -6,7 +6,7 @@
 
 pkgname=chromium-ozone
 pkgver=73.0.3683.86
-pkgrel=3
+pkgrel=4
 _launcher_ver=6
 _release_sha=5fe448ea2471245e64adf805d93b358dd9478fa2
 _igalia_sha=9acc2112d690af6caf4c5b8d4152b5724a760639
@@ -37,6 +37,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-widevine.patch
         chromium-skia-harmony.patch
         chromium-ozone-wayland.patch::https://github.com/mirror/chromium/compare/${_release_sha}...Igalia:${_igalia_sha}.patch
+        chromium-ozone-scale.patch
         chromium-algorithm-header.patch::https://github.com/chromium/chromium/commit/6c0254a78043e32441dbc2e6d4893590dd0d1953.patch
         chromium-vaapi-build.patch::https://github.com/Igalia/chromium/commit/cdb2e638d4488936c80a2c1b506eecf95ffbee02.patch)
 sha256sums=('9ebb731576d25901cee5505f3458cf7780b0a39243743d7779f66514716bbfa3'
@@ -50,6 +51,7 @@ sha256sums=('9ebb731576d25901cee5505f3458cf7780b0a39243743d7779f66514716bbfa3'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
             'fcb58a760e2dc6c4b2746c12832edd8dfe54dc37113e01b3b5bc108fbeec4c8a'
+            '814b441cbb922e895e39b801776e2ee38bd42f6f476887c8b0fd1f6bde34e6b2'
             '97b9662947460343dd208779e4bb33b3ad955edd4bc84c4fd87edd51e6064e86'
             '4ed0ac74fef8b63fa5dfd0de02a02cc4a7667898a90ec5365651645777934c14')
 
@@ -124,6 +126,9 @@ prepare() {
 
   # https://github.com/mirror/chromium/compare/36f8ce7e1dc05b379a1de75320ebd5d50bdc2fab...Igalia:ozone-wayland-stable/72.0.3626.81.patch
   patch -Np1 -i ../chromium-ozone-wayland.patch
+
+  # https://chromium-review.googlesource.com/c/chromium/src/+/1472617
+  patch -Np1 -i ../chromium-ozone-scale.patch
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/1454356
   patch -Np1 -i ../chromium-algorithm-header.patch
