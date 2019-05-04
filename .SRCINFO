@@ -1,0 +1,16 @@
+pkgbase = perl-test-device-serialport
+	pkgdesc = Serial port mock object to be used for testing, containing the Test::Device::SerialPort module
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-Device-SerialPort
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/C/CO/COSIMO/Test-Device-SerialPort-0.05.tar.gz
+	md5sums = 0392cae3d9607e9955ec5a55f6862521
+
+pkgname = perl-test-device-serialport
+
