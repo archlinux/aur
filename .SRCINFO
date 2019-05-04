@@ -1,0 +1,14 @@
+pkgbase = python-miflora
+	pkgdesc = Library for Xiaomi Mi plant sensor
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/open-homeautomation/miflora
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-btlewrap
+	source = python-miflora-0.4.tar.gz::https://github.com/open-homeautomation/miflora/archive/v0.4.tar.gz
+	sha512sums = 8a22c98422030b02c0ec271ce9634211b71f1869fb384560394a29146de2c844a77e29c9f38ed2c9696c9185d4d0b00861f6832cb9ed5d28848e3a9aaba94de1
+
+pkgname = python-miflora
+
