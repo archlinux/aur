@@ -1,6 +1,6 @@
 pkgbase = fusee-launcher-git
 	pkgdesc = work-in-progress launcher for one of the Tegra X1 bootROM exploits
-	pkgver = r30.265e8f3
+	pkgver = 1.0.r0.g265e8f3
 	pkgrel = 1
 	url = https://github.com/Cease-and-DeSwitch/fusee-launcher
 	arch = any

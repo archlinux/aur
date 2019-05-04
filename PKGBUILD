@@ -1,6 +1,6 @@
 # Maintainer: rouhannb <rouhannb@gmail.com>
 pkgname=fusee-launcher-git
-pkgver=r30.265e8f3
+pkgver=1.0.r0.g265e8f3
 pkgrel=1
 pkgdesc='work-in-progress launcher for one of the Tegra X1 bootROM exploits'
 arch=('any')
@@ -15,7 +15,7 @@ md5sums=('SKIP' '1d81a0959d6f81c94caca58d3496ba7b')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 # This isn't truly necessary, as fusee-launcher comes with a precompiled
