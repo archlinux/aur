@@ -3,7 +3,7 @@ pkgname=golangci-lint
 pkgdesc="Linters Runner for Go. 5x faster than gometalinter."
 pkgver=1.16.0
 _commit=97ea1cb # short commit has of release
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/golangci/golangci-lint'
 license=('GPL3')
@@ -26,11 +26,11 @@ build() {
     _date=$(date -u -Iseconds -d "@${SOURCE_DATE_EPOCH}" | sed 's/+00:00/Z/')
     LDFLAGS+=" -X 'main.version=${pkgver}'"
     LDFLAGS+=" -X 'main.commit=${_commit}'"
-    LDFLAGS+=" -X 'main.date=${date}'"
+    LDFLAGS+=" -X 'main.date=${_date}'"
     go build -gcflags "all=-trimpath=${PWD}" \
              -asmflags "all=-trimpath=${PWD}" \
              -ldflags "-extldflags=${LDFLAGS}" \
-             -a -o "$pkgname" ./cmd/"$pkgname"
+             -o "$pkgname" ./cmd/"$pkgname"
 }
 
 package() {
