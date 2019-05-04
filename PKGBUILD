@@ -3,7 +3,7 @@
 pkgbase=dxvk-git
 pkgname=('dxvk-mingw-git')
 pkgver=1.1.1.r0.g37f9a7ff
-pkgrel=1
+pkgrel=2
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 10/11 which allows running 3D applications on Linux using Wine. Windows DLL version)"
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
@@ -49,4 +49,5 @@ package_dxvk-mingw-git() {
         install -Dm 644 dxvk/setup_dxvk.sh "$pkgdir/usr/share/dxvk/setup_dxvk.sh"
         mkdir -p "$pkgdir/usr/bin"
         ln -s /usr/share/dxvk/setup_dxvk.sh "$pkgdir/usr/bin/setup_dxvk"
+        chmod +x "$pkgdir/usr/share/dxvk/setup_dxvk.sh"
 }
