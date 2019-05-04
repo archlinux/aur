@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/halcy/Mastodon.py"
 license=('MIT')
 depends=(python
-	 python-magic
+	 python-magic-ahupp
          python-requests
          python-dateutil
          python-six
