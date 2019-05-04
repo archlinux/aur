@@ -1,0 +1,17 @@
+pkgbase = perl-device-inverter-aurora
+	pkgdesc = Module for communicating with Power-One Aurora inverters, containing the Device::Inverter::Aurora module
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://metacpan.org/release/Device-Inverter-Aurora
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-device-serialport
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/F/FR/FREMAN/Device-Inverter-Aurora-0.05.tar.gz
+	md5sums = e26305a788b7be148339aa60a1701b4a
+
+pkgname = perl-device-inverter-aurora
+
