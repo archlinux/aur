@@ -1,27 +1,28 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=python-cma
-pkgver=2.6.0
-pkgrel=2
+pkgver=2.7.0
+pkgrel=1
 pkgdesc='The Covariance Matrix Adaptation Evolution Strategy'
 arch=(any)
 url='https://github.com/CMA-ES/pycma'
-license=(MIT)
+license=('MIT')
 depends=(python-numpy)
 makedepends=(git python-setuptools)
 source=("git+$url#tag=r$pkgver")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 build() {
-  cd pycma
+  cd ${srcdir}/pycma
 
   python setup.py build
 }
 
 package() {
-  cd pycma
+  cd ${srcdir}/pycma
 
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
