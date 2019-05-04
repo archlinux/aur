@@ -27,13 +27,10 @@ pkgver() {
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  # remove useless files
-	rm -rf ".git"
-
   # create theme dir
   install -d -m 755 "$pkgdir/usr/share/themes/Windows10"
 
   # install theme
-  find . -type f -exec \
+  find * -type f -exec \
   install -D -m 644 '{}' "$pkgdir/usr/share/themes/Windows10/{}" \;
 }
