@@ -1,7 +1,7 @@
 # Maintainer: Fina Wilke <fina at felinira dot net>
 pkgname=libcloudproviders
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="DBus API that allows cloud storage sync clients to expose their services."
 arch=(x86_64)
 url="https://gitlab.gnome.org/World/libcloudproviders"
