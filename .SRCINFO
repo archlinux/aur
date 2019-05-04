@@ -1,0 +1,17 @@
+pkgbase = rvgl-tracks-bonus
+	pkgdesc = Additional RVGL tracks not used for official events.
+	pkgver = 19.0414
+	pkgrel = 1
+	url = https://rvgl.re-volt.io
+	arch = any
+	license = custom
+	depends = rvgl-bin
+	optdepends = rvgl-loadlevel: custom load screens
+	optdepends = rvgl-music: music for levels
+	source = https://distribute.re-volt.io/packs/io_tracks_bonus.zip
+	source = https://distribute.re-volt.io/releases/io_tracks_bonus.txt
+	sha256sums = 13376c13e0ac70b97c97a709cbfa88e668046a0fc4666738a406cb2b0316bceb
+	sha256sums = SKIP
+
+pkgname = rvgl-tracks-bonus
+
