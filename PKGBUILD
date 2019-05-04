@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-company-mode-git
-pkgver=0.9.10
+pkgver=0.9.10.r1.gad6ff0e
 pkgrel=1
 pkgdesc="Modular in-buffer completion framework for Emacs - git checkout"
 url="http://company-mode.github.io"
@@ -19,7 +19,7 @@ _gitname=${_gitname#emacs-}
 
 pkgver() {
   cd $_gitname
-  git describe --tags|sed 's+-+i.r+'|tr - .
+  git describe --tags|sed 's+-+.r+'|tr - .
 }
 
 build() {

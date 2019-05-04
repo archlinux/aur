@@ -1,6 +1,6 @@
 pkgbase = emacs-company-mode-git
 	pkgdesc = Modular in-buffer completion framework for Emacs - git checkout
-	pkgver = 0.9.10
+	pkgver = 0.9.10.r1.gad6ff0e
 	pkgrel = 1
 	url = http://company-mode.github.io
 	arch = any
