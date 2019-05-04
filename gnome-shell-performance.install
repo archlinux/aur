@@ -1,5 +1,11 @@
 post_install() {
   setcap CAP_SYS_NICE=+ep usr/bin/gnome-shell
+
+  exp_fea=$(gsettings get org.gnome.mutter experimental-features)
+  if ! echo exp_fea | grep -q "rt-scheduler"; then
+    echo "Updating mutter experimental-features gsetting to enable RT scheduling on Wayland..."
+    gsettings set org.gnome.mutter experimental-features "[${exp_fea:1:-1}, 'rt-scheduler']"
+  fi
 }
 
 post_upgrade() {
