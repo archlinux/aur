@@ -65,6 +65,8 @@ build() {
 
 package_python-pytorch() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
+  # Prevent setup.py from re-running CMake and rebuilding
+  sed -e 's/RUN_BUILD_DEPS = True/RUN_BUILD_DEPS = False/g' -i setup.py
   python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
   # put CMake files in correct place
@@ -85,6 +87,7 @@ package_python-pytorch() {
   rm -rf "${pkgdir}/${pytorchpath}/share/cmake"
   rm -rf "${pkgdir}/${pytorchpath}/include"
   rm -rf "${pkgdir}/${pytorchpath}/bin"
+  rm -rf "${pkgdir}/usr/include/pybind11"
   # python module is hardcoded to look there at runtime
   ln -s /usr/bin "${pkgdir}/${pytorchpath}/bin"
   ln -s /usr/include "${pkgdir}/${pytorchpath}/include"
@@ -101,6 +104,8 @@ package_python-pytorch-cuda() {
   provides=('python-pytorch')
   conflicts=('python-pytorch')
   cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
+  # Prevent setup.py from re-running CMake and rebuilding
+  sed -e 's/RUN_BUILD_DEPS = True/RUN_BUILD_DEPS = False/g' -i setup.py
   python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
   # put CMake files in correct place
@@ -114,7 +119,6 @@ package_python-pytorch-cuda() {
   mv "${pkgdir}/${pytorchpath}/bin"/* "${pkgdir}/usr/bin/"
   mv "${pkgdir}/${pytorchpath}/include"/* "${pkgdir}/usr/include/"
   mv "${pkgdir}/${pytorchpath}/lib"/*.so* "${pkgdir}/usr/lib/pytorch/"
-  # mv "${pkgdir}/${pytorchpath}/bin/torch_shm_manager" "${pkgdir}/usr/bin/"
   # clean up duplicates
   # TODO: move towards direct shared library dependecy of:
   #   c10, caffe2, libcpuinfo, CUDA RT, gloo, GTest, Intel MKL,
@@ -122,6 +126,7 @@ package_python-pytorch-cuda() {
   rm -rf "${pkgdir}/${pytorchpath}/share/cmake"
   rm -rf "${pkgdir}/${pytorchpath}/include"
   rm -rf "${pkgdir}/${pytorchpath}/bin"
+  rm -rf "${pkgdir}/usr/include/pybind11"
   # python module is hardcoded to look there at runtime
   ln -s /usr/bin "${pkgdir}/${pytorchpath}/bin"
   ln -s /usr/include "${pkgdir}/${pytorchpath}/include"
