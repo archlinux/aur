@@ -11,8 +11,9 @@ makedepends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'gtk3' 'pkgco
              'cmake' 'python') 
 options=('!emptydirs')
 url="https://github.com/jonathanffon/poppler-lcd-patch"
-source=(https://poppler.freedesktop.org/poppler-${pkgver}.tar.xz
-        git+https://github.com/jonathanffon/poppler-lcd-patch.git)
+_commit=14e76ddd729edebd07a97eed8d1d8fe17125d85d
+source=("https://poppler.freedesktop.org/poppler-${pkgver}.tar.xz"
+        "git+https://github.com/jonathanffon/poppler-lcd-patch#commit=${_commit}")
 sha256sums=('370f5fcfe2bbf0c76fc394d338cd72ed7f2044b67f4eb4b115eb074ccfc70d63'
             'SKIP')
 
@@ -40,7 +41,7 @@ package_poppler-lcd() {
   depends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'lcms2' 'nss' 'curl')
   optdepends=('poppler-data: encoding data to display PDF documents containing CJK characters')
   conflicts=('poppler' "poppler-qt3<${pkgver}" "poppler-qt4<${pkgver}")
-  provides=('poppler')
+  provides=("poppler=${pkgver}")
 
   cd build
   make DESTDIR="${pkgdir}" install

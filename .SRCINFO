@@ -24,7 +24,7 @@ pkgbase = poppler-lcd
 	makedepends = python
 	options = !emptydirs
 	source = https://poppler.freedesktop.org/poppler-0.76.0.tar.xz
-	source = git+https://github.com/jonathanffon/poppler-lcd-patch.git
+	source = git+https://github.com/jonathanffon/poppler-lcd-patch#commit=14e76ddd729edebd07a97eed8d1d8fe17125d85d
 	sha256sums = 370f5fcfe2bbf0c76fc394d338cd72ed7f2044b67f4eb4b115eb074ccfc70d63
 	sha256sums = SKIP
 
@@ -39,7 +39,7 @@ pkgname = poppler-lcd
 	depends = nss
 	depends = curl
 	optdepends = poppler-data: encoding data to display PDF documents containing CJK characters
-	provides = poppler
+	provides = poppler=0.76.0
 	conflicts = poppler
 	conflicts = poppler-qt3<0.76.0
 	conflicts = poppler-qt4<0.76.0
