@@ -3,7 +3,7 @@
 pkgname=python-miflora
 _pkgname=miflora
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for Xiaomi Mi plant sensor"
 url="https://github.com/open-homeautomation/miflora"
 arch=("any")
@@ -20,6 +20,7 @@ build() {
 package() {
   cd ${_pkgname}-${pkgver}
   python setup.py install --skip-build -O1 --root="${pkgdir}"
+  rm -rf "${pkgdir}/usr/lib/python3.7/site-packages/test/"
 }
 
 # vim: ts=2 sw=2 et:
