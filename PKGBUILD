@@ -2,7 +2,7 @@
 
 pkgname=swaybg
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Wallpaper tool for Wayland compositors'
 arch=('x86_64')
 url='https://github.com/swaywm/swaybg'
@@ -20,7 +20,7 @@ depends=(
 )
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/swaywm/swaybg/archive/$pkgver.tar.gz"
-    "$pkgname-$pkgver.tar.gz.sig::https://github.com/swaywm/swaybg/releases/download/1.0/swaybg-1.0.tar.gz.sig"
+    "$pkgname-$pkgver.tar.gz.sig::https://github.com/swaywm/swaybg/releases/download/$pkgver/swaybg-$pkgver.tar.gz.sig"
 )
 sha512sums=('67d0e0109b906ece51800729182940374cc59fa07d0866b57cf876d12191fe12e796b84350a849dc85183fa58a3b2d196191e48dcc03dcc3708a980ed4a8cff0'
             'SKIP')
