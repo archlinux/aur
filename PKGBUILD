@@ -15,5 +15,5 @@ prepare() {
 
 package() {
 	install -Dm 755 "$srcdir/osudownloader" "$pkgdir/usr/bin/osudownloader"
-	install "$srcdir/osudownload.jar" "$pkgdir~/osudownloader/osudownload.jar"
+	install "$srcdir/osudownload.jar" "$pkgdir/~/osudownloader/osudownload.jar"
 }
