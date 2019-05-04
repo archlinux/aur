@@ -1,6 +1,6 @@
 pkgbase = handbrake-git
 	pkgdesc = Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter
-	pkgver = 1.1.0.r342.gabe12fe7a
+	pkgver = 1.2.0.r377.ga5590df40
 	pkgrel = 1
 	epoch = 1
 	url = http://handbrake.fr/
@@ -25,6 +25,7 @@ pkgbase = handbrake-git
 	makedepends = libsamplerate
 	makedepends = libtheora
 	makedepends = nasm
+	makedepends = numactl
 	noextract = fdk-aac-0.1.5.tar.gz
 	noextract = ffmpeg-4.0.tar.bz2
 	noextract = libdvdnav-5.0.3.tar.bz2
