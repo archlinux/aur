@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$SRCDEST/$pkgname"
-  svn info | grep '^Revision:' | sed -e 's/^Revision: //'
+  LANG=C svn info | grep '^Revision:' | sed -e 's/^Revision: //'
 }
 
 build() {
