@@ -1,7 +1,7 @@
 # Maintainer: Taran Lynn <taranlynn0gmail.com>
 pkgname=swaybg-git
 _pkgname=swaybg
-pkgver=r93.cf62ace
+pkgver=r94.25c6eaf
 pkgrel=1
 license=("MIT")
 pkgdesc="Wallpaper tool for Wayland compositors"
@@ -17,8 +17,7 @@ url="https://swaywm.org"
 source=("${pkgname%-*}::git+https://github.com/swaywm/swaybg.git#branch=master")
 sha1sums=("SKIP")
 provides=("swaybg")
-# TODO: Remove sway when the main repo pushes sway 1.1.
-conflicts=("sway" "swaybg")
+conflicts=("swaybg")
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
