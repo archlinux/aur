@@ -1,5 +1,5 @@
 pkgbase = vxl
-	pkgdesc = VXL library. The geometry and imaging core libraries are turned off in order to build successfully.
+	pkgdesc = VXL (the Vision-something-Libraries): a multi-platform collection of C++ software libraries for Computer Vision and Image Understanding.
 	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/vxl/vxl
