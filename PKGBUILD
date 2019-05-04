@@ -1,14 +1,14 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 pkgname=brackets
 pkgver=1.14
-pkgrel=1
+pkgrel=2
 _cef_ver=3.2785.1486
 _node_ver=6.11.0
 pkgdesc="An open source code editor for the web, written in JavaScript, HTML and CSS."
 arch=('x86_64')
 url="http://brackets.io"
 license=('MIT')
-depends=(alsa-lib desktop-file-utils gconf libgcrypt15 libudev0-shim libxss libxtst nodejs npm nss pango)
+depends=(alsa-lib composer desktop-file-utils gconf libgcrypt15 libudev0-shim libxss libxtst nodejs npm nss pango php)
 optdepends=(
 	"google-chrome: to enable Live Preview"
 	"gnuplot: to enable node benchmarking"
