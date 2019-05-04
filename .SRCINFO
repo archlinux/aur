@@ -1,0 +1,16 @@
+pkgbase = sysupdate
+	pkgdesc = A simple script that checks for available updates and let's you install them too
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/Bettehem/sysupdate
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = pacman-contrib
+	depends = pacaur
+	provides = sysupdate
+	source = sysupdate::git+https://gitlab.com/Bettehem/sysupdate.git
+	md5sums = SKIP
+
+pkgname = sysupdate
+
