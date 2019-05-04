@@ -1,8 +1,25 @@
 pkgbase = lone_wolf-compiler-rt-git
-	pkgdesc = placeholder to reserve pkgbase/name for me, will become real package soon
-	pkgver = 1
+	pkgdesc = Compiler runtime libraries for clang
+	pkgver = 9.0.0_r315711.5ab41a7a055
 	pkgrel = 1
+	url = https://compiler-rt.llvm.org/
 	arch = x86_64
+	license = custom:University of Illinois/NCSA Open Source License
+	makedepends = git
+	makedepends = lone_wolf-llvm-git
+	makedepends = lone_wolf-llvm-libs-git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	makedepends = llvm-libs
+	source = llvm-project::git+https://github.com/llvm/llvm-project.git
+	md5sums = SKIP
+	sha512sums = SKIP
+	makedepends_x86_64 = lib32-gcc-libs
 
 pkgname = lone_wolf-compiler-rt-git
+	depends = gcc-libs
+	provides = compiler-rt=9.0.0_r315711.5ab41a7a055-1
+	provides = compiler-rt-git=9.0.0_r315711.5ab41a7a055-1
+	conflicts = compiler-rt
 
