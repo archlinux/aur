@@ -11,7 +11,7 @@ url="http://yum.baseurl.org/wiki/YumUtils"
 depends=('yum')
 makedepends=('intltool')
 source=("http://yum.baseurl.org/download/$pkgname/$pkgname-$pkgver.tar.gz"
-        "http://src.fedoraproject.org/rpms/$pkgname/raw/master/f/$pkgname-HEAD.patch")
+        "http://src.fedoraproject.org/rpms/$pkgname/raw/f30/f/$pkgname-HEAD.patch")
 md5sums=('b2859b89321b98f2581243536e1b4993'
          '139f73ae07023350d5624a18dfee892c')
 

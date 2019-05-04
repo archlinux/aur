@@ -8,7 +8,7 @@ pkgbase = yum-utils
 	makedepends = intltool
 	depends = yum
 	source = http://yum.baseurl.org/download/yum-utils/yum-utils-1.1.31.tar.gz
-	source = http://src.fedoraproject.org/rpms/yum-utils/raw/master/f/yum-utils-HEAD.patch
+	source = http://src.fedoraproject.org/rpms/yum-utils/raw/f30/f/yum-utils-HEAD.patch
 	md5sums = b2859b89321b98f2581243536e1b4993
 	md5sums = 139f73ae07023350d5624a18dfee892c
 
