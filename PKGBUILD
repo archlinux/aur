@@ -3,11 +3,11 @@
 _name="pydantic"
 pkgname="python-${_name}"
 pkgver=0.24
-pkgrel=1
+pkgrel=2
 pkgdesc="Data validation using Python type hinting"
 arch=("any")
 url="https://pydantic-docs.helpmanual.io/"
-license=("LGPL")
+license=("MIT")
 depends=("python")
 makedepends=("python-setuptools")
 source=("https://github.com/samuelcolvin/${_name}/archive/v${pkgver}.tar.gz")
@@ -23,4 +23,5 @@ package() {
 
   cd "${srcdir}/${_name}-${pkgver}"
   python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
