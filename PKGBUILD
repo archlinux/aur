@@ -5,25 +5,25 @@ pkgrel=3
 pkgdesc="A self-hostable EteSync server"
 arch=(any)
 depends=('python-django'
-		 'python-django-cors-headers' 
-		 'python-django-etesync-journal' 
-		 'python-django-rest-framework' 
-		 'python-drf-nested-routers' 
-		 'python-pytz')
+         'python-django-cors-headers' 
+         'python-django-etesync-journal' 
+         'python-django-rest-framework' 
+         'python-drf-nested-routers' 
+         'python-pytz')
 optdepends=('postgresql: storage backend'
-			'uwsgi-python: application container')
+            'uwsgi-plugin-python: application container')
 url="https://github.com/etesync/server-skeleton"
 license=('AGPLv3')
 backup=('usr/share/etesync-server/etesync_server/settings.py')
 options=(!emptydirs)
 source=('https://github.com/etesync/server-skeleton/archive/v0.1.0.tar.gz'
-		$pkgname.install
-		$pkgname.sysusers
-		$pkgname)
+        $pkgname.install
+        $pkgname.sysusers
+        $pkgname)
 sha256sums=('9ab6ac6d3517023ad6702843e855dc2f89edf32388a058439d6248c2d6f1ae52'
-			'8737998b58b9a101f33e911e4f1f413399a0bfa6b72533ddf00eb7dd963e8ddd'
-			'7363b065206a40e067675d072c5ff269b32704ec89c4eed98e5d3edd71fca122'
-			'd822ce24a223016f4576ea46c86d912721eb423ebc6c54f0db5f0c9cff1613e7')
+            '8737998b58b9a101f33e911e4f1f413399a0bfa6b72533ddf00eb7dd963e8ddd'
+            '7363b065206a40e067675d072c5ff269b32704ec89c4eed98e5d3edd71fca122'
+            'd822ce24a223016f4576ea46c86d912721eb423ebc6c54f0db5f0c9cff1613e7')
 install=$pkgname.install
 
 package() {
