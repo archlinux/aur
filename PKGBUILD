@@ -2,7 +2,7 @@
 
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-_swiftver=5.0-RELEASE
+_swiftver=5.0.1-RELEASE
 pkgver=${_swiftver//-RELEASE/}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger"
@@ -31,20 +31,20 @@ source=(
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "glibc-includes.patch"
 )
-sha256sums=('6ab32565faf2b2337c90b84b995f86ad1e96595146fce7b8981d379c8681d689'
-            '803327ba0a8ce766377fb43e02ded56e32f12f2837d5e8be75e98dad63418ebc'
-            'f57aa0a0cb40913a3ffb26df8f43d890edd88438269b744a39769d08155dbb1e'
-            'c0e5a4584b2af342d33eac12eaa7226528ebbd176e3885981d68fb57dd6f4bac'
-            'e0cb5c92e299fedb5daa16b6a12f8543a6ae35290d4c6cc1a7553dc7d70ce1c0'
-            '72d02d5dddb900975cf88ed3da84867d11bc13f3a0efe0715f935a19b95df33c'
-            '0609052b383e97bf7c248178547b6d6582822a95083c9fdc6919ded9a44de01f'
-            'bfcda4845df448c0f561b43b830f8663b35c726ca29b5e3ae2e7816d6b1a313f'
-            '5278ddeeaba1049b41500bea6060118ec1a9f3dcbfa245f5b13185e803a6e401'
-            'b314ed47a4b3b7a323736ce8fa4e0fa4d87824840a41c6c80a0d7dc393babdb7'
-            'ab4fb6de97d8b680561ea78c28bfd83ea7dd6e785151bfbecfa2c658fc72e78a'
-            'b10e9cb639680e5847f0f8f44254c2848563d67ec00aae7310d5dcfffa6d1cf6'
-            'ddc499695db766ca1b62baf7a479e035f60433d1a2074a9a71f1f7a3c3fba5cd'
-            '99efdfca72839f58941538e3b001f22a9968d56c5c641857f111feca3dba4d1d'
+sha256sums=('a28d879d4dd0b987544948ea02e0a21dd158a175572d79979214173e7ee6a244'
+            '4db5025f4c479d22af4f2bb9a6cd7aa9d5269cb095f5c814c958265fe7ea450e'
+            '36c87df8b160063b8ff8a986fba27ea276a9e2c2152a0c218409f802aded89e8'
+            '0055f015726d006e6ffaa9bf08a77e3b453229fa8cff81369a4f7046a500b640'
+            'af22995496579556b0c8345b5d4a00197d720c90b0d098f1fe4b2e1e0180c325'
+            '8481db3f163b8ace6f77dbad519da11db4c8987f96007b38e0bee8526a752ebb'
+            'e71d859c08efa23a881d943ef9eff4193dafe8b83acaf5a3baaa7fc21e0d34c2'
+            '6f98ef386d121a1ec553812996f051edf44248ca689f4e8d3681b383bf7b1c2e'
+            '881154699e0c182740dc7748c538613f001fb59cec255fe6a2873d7848d3bec1'
+            '32870c56d0b97f3041bb00b8c9f0ca817120d8edc12e2038da360e551229ad40'
+            '055f8e36b8499b259d546575bc26433023fb311cb5c01bf4784fc86759bd7753'
+            'cbd03ee59127fea448f8ee5b1bbea07b7e68266ceab5ca0aa71b128ae5f17aeb'
+            '35aa95b104afa4de7a7d0e5d4a51ce2de980cc8779c1410ea1d9524c06708c8d'
+            'e2fd13b5c013c68d78aa5e438360e09478555210b9e88289f594c131f7f3b36d'
             '6a94de9adbdc4182b297e0011a68c9387fd25864dcb4386654218c8c530032c2')
 
 prepare() {
