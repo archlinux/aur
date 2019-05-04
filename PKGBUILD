@@ -1,26 +1,26 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=scrumplexweb
-pkgver=19.04.5
+pkgver=19.05.1
 pkgrel=1
 pkgdesc="Static website of Sefa Eyeoglu"
 arch=("any")
 url="https://scrumplex.net"
 license=("GPL")
-makedepends=("nodejs-pnpm")
+makedepends=("yarn")
 
 source=("https://gitlab.com/Scrumplex/scrumplex.net/-/archive/${pkgver}/scrumplex.net-${pkgver}.tar.bz2")
 # automatically generated with updpkgsums
-sha512sums=('66ed74b2c43be765a0474f512653a66f74c83170d112e33e2a556dab9613f5aa047018c8989dca35df668c15e80e5a53ecd059bbd717112963b5a507ed49ca24')
+sha512sums=('418e531b4d1437bc65ae19781d6085a48348c868c6b5a19361e759b4cfaabee0cce2caba22ab5fc771afe57789e08c2b4faaa15aee1cca8c3ed5ad2686449042')
 
 prepare() {
     cd "${srcdir}/scrumplex.net-${pkgver}"
-    pnpm install --cache "${srcdir}/npm-cache"
+    yarn install --cache-folder "${srcdir}/yarn-cache"
 }
 
 build() {
     cd "${srcdir}/scrumplex.net-${pkgver}"
-    npm run build:prod --cache "${srcdir}/npm-cache"
+    yarn build # defaults to build:prod
 }
 
 package() {
