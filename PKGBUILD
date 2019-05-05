@@ -3,12 +3,12 @@
 
 pkgname=kdesrc-build
 pkgver=18.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A script to build KDE software from KDE's source repositories"
 url='https://kdesrc-build.kde.org/'
 arch=('any')
 license=('GPL')
-depends=('perl-libwww' 'perl-xml-parser' 'dialog' 'perl-json' 'perl-io-socket-ssl' 'perl-net-ssleay')
+depends=('perl-libwww' 'perl-xml-parser' 'dialog' 'perl-json' 'perl-io-socket-ssl' 'perl-net-ssleay' 'perl-yaml-syck')
 makedepends=('cmake' 'git')
 optdepends=('subversion: download source code using svn'
             'git: download source code using git')
