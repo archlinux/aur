@@ -1,10 +1,11 @@
---- /opt/visit/bin/visit	2013-04-02 08:40:10.000000000 -0700
-+++ visit	2013-04-02 08:57:00.055180106 -0700
-@@ -63,6 +63,8 @@
+--- frontendlauncher	2019-05-05 16:17:55.162505177 +0200
++++ frontendlauncher	2019-05-05 16:10:04.161147737 +0200
+@@ -71,6 +71,9 @@
      done
  done
  
 +export LD_LIBRARY_PATH=/opt/visit/current/linux-x86_64/lib:${LD_LIBRARY_PATH}
++export LD_PRELOAD=/usr/lib/libz.so
 +
  # Find the most recent VisIt python
  visitpython=""

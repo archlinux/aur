@@ -2,7 +2,7 @@
 # Contributor: Dmitriy Morozov <archlinux@foxcub.org>
 pkgname=visit-bin
 _pkgname=visit
-pkgver=2.13.2
+pkgver=3.0.0
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool"
@@ -11,19 +11,19 @@ arch=('x86_64')
 license=('BSD' 'custom')
 provides=('visit')
 conflicts=('visit' 'visit-build')
-depends=('libpng' 'glu')
+depends=('libpng15' 'glu' 'icu50')
 makedepends=('bash' 'cpio')
-_ver=ubuntu14
-_url="http://visit.ilight.com/svn/${_pkgname}/trunk/releases/${pkgver}"
-source=("${_url}/${_pkgname}${_pkgver}.linux-x86_64-${_ver}.tar.gz"
-        "${_url}/${_pkgname}-install${_pkgver}"
+_ver=rhel7
+_url="http://portal.nersc.gov/project/visit/releases/${pkgver}"
+source=("${_url}/visit${_pkgver}.linux-x86_64-${_ver}.tar.gz"
+        "${_url}/visit-install${_pkgver}"
         'visit.sh'
         'visit-libs.patch')
 noextract=("${_pkgname}${_pkgver}.linux-x86_64-${_ver}.tar.gz")
-sha256sums=('22bf653bc866a0a5445dfcdbe29c72116038ac9598b054992802fbd8dc6efb8c'
-            'cf49f58252f2ccc1d884a90ebdd052a7ece0ba9907cb04d6847acd6c8207ac04'
+sha256sums=('f8d73c6faa82c6887ba8f4a94cf9e3732a105eae6a4da9fea1421889deb2ed36'
+            '744b50404a80135971c418dc8535fd5f6cfbd5e6012f894949bb531f0e51730a'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
-            'abc1c05f6567281cb8654dfbe3d0ef87ec3537e8e60191ba0625d4f99feb27c7')
+            '4f0cd7507721974e3545eefb7087c3d2a7ad661945c60407f3a0455590108fef')
 
 package() {
   cd "${srcdir}"
