@@ -1,7 +1,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=auctex-git
-pkgver=12.1.161.g78c0f096
+pkgver=12.1.r176.g1b6e5136
 pkgrel=1
+epoch=1
 pkgdesc="TeX/LaTeX writing environment for Emacs - git checkout"
 arch=('any')
 url="http://savannah.gnu.org/projects/auctex"
@@ -16,19 +18,14 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags | cut -c9- | sed 's+[_-]+.+g'
-}
-
-prepare() {
-  cd ${pkgname%-git}
-  cp ChangeLog.1 ChangeLog
+  git describe --tags | cut -c9- | tr _ . | sed 's+-+.r+' |tr - .
 }
 
 build() {
   cd ${pkgname%-git}
   ./autogen.sh
   ./configure --prefix=/usr --localstatedir=/var \
-	      --with-texmf-dir=$(dirname $(kpsewhich texmf.cnf))
+	      --with-texmf-dir=$(dirname $(kpsewhich texmf.cnf)) 
   make
 }
 
