@@ -1,39 +1,38 @@
-# Maintainer: Nick Bürger <nick@nickz.org>
-
+# Maintainer: TheGoliath
+# Contributor: TheGoliath
 pkgname=squidguard
-pkgver=1.5
-pkgrel=2
-pkgdesc="SquidGuard is a URL redirector to use blacklists with the proxysoftware Squid"
-arch=('x86_64')
+pkgver=1.6.0
+pkgrel=1
+pkgdesc="Filter and redirector plugin for Squid. SquidGuard is a free, flexible and ultra fast filter, redirector and access controller plugin for squid."
+arch=('i686' 'x86_64')
 url="http://www.squidguard.org"
 license=('GPL')
-depends=('bison' 'flex' 'db' 'squid')
-backup=('etc/squidguard/squidGuard.conf')
-install='squidguard.install'
-source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/squidguard/$pkgver-5/squidguard_$pkgver.orig.tar.gz"
-	"squidguard-patch.diff")
-sha512sums=('d0daea2f47b08c5218125e914478f582a55b9cfa6c0da83f758c6f5ec80095684b9168d6dca0ed57e3ba88b409a8fab8b3baa48f49694f830bf2370e66e7a68d'
-         '961ef70a1ca0a5f291276fbcfa9650820175cd5a4f47283062e52c1532bbac1a7d620f96737577f174e1d7ed9172902f96ab69bee0872754348804b1ad95fe6f')
+groups=('')
+depends=('db' 'libldap>=2.4.7' 'bison' 'flex' 'squid')
+optdepends=('liburi-perl'
+            'openldap'
+            'perl-libwww'
+            'squid>=3.4.0'
+            'squidguard-doc')
+backup=('etc/logrotate.d/squidguard' 'etc/squidguard/squidGuard.conf.default')
+options=('!strip' '!emptydirs')
+install=${pkgname}.install
+source_i686=("http://ftp.br.debian.org/debian/pool/main/s/squidguard/squidguard_1.6.0-1_amd64.deb")
+source_x86_64=("http://ftp.br.debian.org/debian/pool/main/s/squidguard/squidguard_1.6.0-1_i386.deb")
+sha512sums_i686=('86bb1d849bd3fabc6e0cbe954bfbcbee537b6cfe225ee48436e8f6f4cb9332835ce8ef1845d6dcaae6e4145cb583a45e631463e116650786e020fe75050a78f9')
+sha512sums_x86_64=('107b4fe5630656a052da5b07e3da3294b105a9a1481bde9ff738c7bb6380c35801e0f62819cb6ec2bd014ce8695bf904838ac0bc09c203e3faac637f9cc13532')
 
-prepare() {
-  cd "squidGuard-$pkgver/src"
+package(){
 
-  patch -i "${srcdir}/squidguard-patch.diff"
-}
+	# Extract package data
+	tar xf data.tar.xz -C "${pkgdir}"
 
-build() {
-  cd "squidGuard-$pkgver"
-  sed -i '19,24 s/@[se]/$(DESTDIR)&/; /SQUIDUSER/d; 51d' Makefile.in
-  ./configure \
-	--prefix=/usr \
-	--with-sg-config=/etc/squidGuard/squidGuard.conf \
-	--with-sg-logdir=/var/log/squidGuard \
-	--with-sg-dbhome=/var/lib/squidGuard/db \
+	# Fix directories structure differencies
+	cd "${pkgdir}"
 
-  make
-}
+	install -D -m644 "/usr/share/doc/squidguard/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	mkdir usr/bin 2> /dev/null; mv usr/sbin/* usr/bin; rm -rf usr/sbin
 
-package() {
-  cd "squidGuard-$pkgver"
-  make DESTDIR="$pkgdir" install
+	cd ..
+
 }
