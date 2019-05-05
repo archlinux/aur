@@ -1,5 +1,5 @@
 FROM archlinux/base:latest
 
-RUN pacman -Syu --noconfirm --needed base-devel
+RUN pacman -Syu --noconfirm --needed base-devel pacman-contrib
 
 WORKDIR /src
