@@ -3,10 +3,8 @@
 pkgbase=archisomydrive
 pkgname=$pkgbase
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 _remotepkgbase=$pkgbase-git
-_remotepkgver=1.3
-_remotepkgrel=1
 _gitname=ArchIsoMyDrive
 _gittag="v${pkgver}"
 pkgdesc="GUI utility to copy an ISO file to a USB disk."
@@ -15,10 +13,10 @@ url="https://github.com/daltomi/$_gitname"
 license=('GPL3')
 depends=('qt5-base' 'qt5-x11extras' 'polkit' 'udev' 'glibc' 'glib2')
 
-source=("$url/raw/master/Install/$_remotepkgbase-$_remotepkgver-$_remotepkgrel-x86_64.pkg.tar.xz"{,.sig})
+source=("$url/raw/master/Install/$_remotepkgbase-$pkgver-$pkgrel-x86_64.pkg.tar.xz"{,.sig})
 
 
-sha256sums=('9ff861165be24d07adc15f4d96d962cad613be9e7e3c7ca8ddd7d1eeeec6c9e9'
+sha256sums=('47ee634fe1be773d59791be4706b4ae19cd38cb2816471aeb4069b1e6f506e88'
             'SKIP'
            )
 
