@@ -8,6 +8,8 @@ url="https://github.com/docker/docker-credential-helpers"
 license=('MIT')
 depends=('pass')
 makedepends=()
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 source=("docker-credential-helpers-$pkgver.tar.gz::${url}/releases/download/v${pkgver}/docker-credential-pass-v${pkgver}-amd64.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/docker/docker-credential-helpers/v${pkgver}/LICENSE")
 sha512sums=('299e604a910410b599cb4649ce08853348466cb4fd7c6870e41c6999f8fa2b6c7747d7b98cb687c66c7d66da0c07e3fb5c330a13d82d40d58a16160690ff4dc1'
