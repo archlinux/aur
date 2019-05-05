@@ -1,0 +1,13 @@
+pkgbase = python-dialite
+	pkgdesc = Lightweight pure-Python package to show simple dialogs.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = http://dialite.readthedocs.io/
+	arch = any
+	license = BSD
+	depends = python
+	source = python-dialite-0.5.2.tar.gz::https://github.com/flexxui/dialite/archive/v0.5.2.tar.gz
+	sha256sums = c730fdba77187a95529c88cf195e35ea8ce70ab012a98ad9b023ac39e93b62cd
+
+pkgname = python-dialite
+
