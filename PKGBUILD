@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=touchpad-indicator-git
 pkgver=r95.48ab61a
-pkgrel=1
+pkgrel=2
 pkgdesc="An indicator for the touchpad"
 arch=('any')
 url="https://github.com/atareao/Touchpad-Indicator"
 license=('GPL3')
-depends=('gtk3' 'gdk-pixbuf2' 'libappindicator-gtk3' 'libnotify' 'gconf' 'librsvg' 'python-xlib' 'python-pyudev' 'python-dbus' 'xorg-xinput')
+depends=('gtk3' 'gdk-pixbuf2' 'libappindicator-gtk3' 'libnotify' 'lsb-release' 'gconf' 'librsvg' 'python-xlib' 'python-pyudev' 'python-dbus' 'xorg-xinput')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://github.com/atareao/Touchpad-Indicator.git")
@@ -20,8 +20,9 @@ pkgver() {
 package() {
 	cd "Touchpad-Indicator"
 	install -Dm755 "bin/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
+	install -Dm644 debian/changelog "$pkgdir/usr/share/${pkgname%-git}/changelog"
+	install -Dm755 src/*.py "$pkgdir/usr/share/${pkgname%-git}"
 	install -d $pkgdir/usr/share/{touchpad-indicator/icons,glib-2.0/schemas}
-	install -Dm644 src/*.py "$pkgdir/usr/share/${pkgname%-git}"
 	install -Dm644 data/icons/*.svg "$pkgdir/usr/share/${pkgname%-git}/icons"
 	install -Dm644 data/schemas/*.xml $pkgdir/usr/share/glib-2.0/schemas
 	install -Dm755 data/00_check_touchpad_status $pkgdir/etc/pm/sleep.d/00_check_touchpad_status
