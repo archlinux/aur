@@ -1,16 +1,16 @@
 # Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 pkgname=docbook2mdoc
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.1.0
+pkgrel=0
 pkgdesc='DocBook refentry to mdoc(7) converter'
+url='https://mandoc.bsd.lv/docbook2mdoc/'
 license=('custom: ISC')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url='https://mandoc.bsd.lv/docbook2mdoc/'
-makedepends=('libbsd')
+depends=('libbsd')
 source=("$url/snapshots/$pkgname-$pkgver.tgz"
         "$pkgname.patch")
-sha256sums=('940b774abfc9fb60c8d9cf46cecbf704c5a60fbb4f6ca85073fdfda26706629c'
-            'c2570e46266fe64d6493095ec29da1b77919bc7fcc314e1d40e9a383e3a7a796')
+sha256sums=('9fc6411cf041ff10e76f19a50a142075a8df9d343f248e20d8fc98bf8e547c71'
+            'da7090a483da4a7298dedd26bf59d5ac0b749f2d445c49f831e2dd5049f471f2')
 
 prepare() {
   cd "$pkgname-$pkgver"
