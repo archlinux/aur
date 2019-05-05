@@ -17,8 +17,8 @@
 #
 pkgbase="zfs-linux-vfio-git"
 pkgname=("zfs-linux-vfio-git" "zfs-linux-vfio-git-headers")
-_commit='294fcb543e4bf8d8d36832e9071ef0f6b1c9423e'
-_zfsver="2019.04.30.r5097.g294fcb543"
+_commit='de3e0b914b28deaf9034656d8f6e0bdf9ccd7c7f'
+_zfsver="2019.05.04.r5108.gde3e0b914"
 _kernelver="5.0.4.arch1-1"
 _extramodules="5.0.4-arch1-1-vfio"
 
