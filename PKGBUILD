@@ -2,7 +2,7 @@
 
 pkgname=operator-sdk
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SDK for building Kubernetes applications. Provides high level APIs, useful abstractions, and project scaffolding."
 url="https://github.com/operator-framework/operator-sdk"
 license=('Apache')
