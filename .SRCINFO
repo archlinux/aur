@@ -1,5 +1,5 @@
 pkgbase = operator-sdk
-	pkgdesc = YAML templating tool that works on YAML structure instead of text
+	pkgdesc = SDK for building Kubernetes applications. Provides high level APIs, useful abstractions, and project scaffolding.
 	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/operator-framework/operator-sdk
