@@ -11,7 +11,7 @@ post_install() {
 	sed -i "s/^SECRET_KEY = .*$/SECRET_KEY = '$secret'/" gakuen/settings.py
 	sed -i "s/^DEBUG = .*$/DEBUG = False/" gakuen/settings.py
 
-	cp gakuen/settings.py{,prod}
+	cp gakuen/settings.py{,.prod}
 
 	echo "==>"
 	echo "==>"
@@ -24,6 +24,9 @@ post_upgrade() {
 	cd /usr/share/webapps/gakuen
 
 	bash update_prod.sh
+
+	cp gakuen/settings.py{,.old}
+	cp gakuen/settings.py{.prod,}
 
 	sudo systemctl restart httpd
 }
