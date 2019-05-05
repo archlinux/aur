@@ -8,6 +8,7 @@ pkgbase = gakuen-git
 	arch = x86_64
 	depends = apache
 	depends = mod_wsgi
+	depends = zip
 	depends = python
 	depends = python-pip
 	depends = python-virtualenv
