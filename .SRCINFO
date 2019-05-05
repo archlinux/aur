@@ -1,23 +1,29 @@
 pkgbase = mingw-w64-libarchive
 	pkgdesc = library that can create and read several streaming archive formats (mingw-w64)
 	pkgver = 3.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.libarchive.org/
 	arch = any
 	license = BSD
-	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-configure
 	depends = mingw-w64-crt
 	depends = mingw-w64-bzip2
 	depends = mingw-w64-expat
 	depends = mingw-w64-lz4
+	depends = mingw-w64-lzo
+	depends = mingw-w64-libsystre
+	depends = mingw-w64-nettle
 	depends = mingw-w64-openssl
 	depends = mingw-w64-xz
 	depends = mingw-w64-zlib
+	depends = mingw-w64-zstd
 	options = !buildflags
 	options = staticlibs
 	options = !strip
 	source = libarchive-3.3.3.tar.gz::https://github.com/libarchive/libarchive/archive/v3.3.3.tar.gz
+	source = 0001-libarchive-3.3.3-bcrypt-fix.patch
 	sha256sums = 720da414e7aebb255fcdaee106894e4d30e2472ac1390c2c15b70c84c7479658
+	sha256sums = 2c318a025029998a9389eb99ab80f733c0fcf3b4888421879f2f6b4530d7f522
 
 pkgname = mingw-w64-libarchive
 
