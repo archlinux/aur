@@ -1,6 +1,6 @@
 pkgbase = firefox-esr
 	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release
-	pkgver = 60.6.1
+	pkgver = 60.6.2
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/organizations/
 	arch = i686
@@ -43,7 +43,7 @@ pkgbase = firefox-esr
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://ftp.mozilla.org/pub/firefox/releases/60.6.1esr/source/firefox-60.6.1esr.source.tar.xz
+	source = https://ftp.mozilla.org/pub/firefox/releases/60.6.2esr/source/firefox-60.6.2esr.source.tar.xz
 	source = firefox.desktop
 	source = firefox-symbolic.svg
 	source = rust_133-part0.patch
@@ -51,7 +51,7 @@ pkgbase = firefox-esr
 	source = rust_133-part2.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046664
 	source = deny_missing_docs.patch
 	validpgpkeys = 2B90598A745E992F315E22C58AB132963A06537A
-	sha256sums = 94037fdceb83785ef6748de196eae562d9fa83ab7ec858b07ed13c1f540a04f5
+	sha256sums = cdb3d7b7648d9898e32d5fdb2eaac27d7cafa4eb0f88b39ccb1d30445ec77d3b
 	sha256sums = c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826
 	sha256sums = a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9
 	sha256sums = c10521badc262b476e844d3f3045ddf27e28d83d49b5db0d0e19431f06386e4d
