@@ -4,7 +4,6 @@ GenericName=3D Painting/Texturing Software
 Description=3D painting software for PBR model texturing and rendering
 Exec=/usr/bin/substance-painter
 Icon=substance-painter-icon
-Version=2019.1.0
 Terminal=false
 Type=Application
 StartupNotify=true
