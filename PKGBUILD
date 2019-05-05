@@ -10,19 +10,19 @@ license=('GPL')
 depends=('bison' 'flex' 'db' 'squid')
 backup=('etc/squidguard/squidGuard.conf')
 install='squidguard.install'
-source=("http://www.squidguard.org/Downloads/Devel/squidGuard-$pkgver-beta.tar.gz"
+source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/squidguard/$pkgver-5/squidguard_$pkgver.orig.tar.gz"
 	"squidguard-patch.diff")
-md5sums=('85216992d14acb29d6f345608f21f268'
-         'c3834cd2180ac8b919f9fb36327bf43c')
+sha512sums=('d0daea2f47b08c5218125e914478f582a55b9cfa6c0da83f758c6f5ec80095684b9168d6dca0ed57e3ba88b409a8fab8b3baa48f49694f830bf2370e66e7a68d'
+         '961ef70a1ca0a5f291276fbcfa9650820175cd5a4f47283062e52c1532bbac1a7d620f96737577f174e1d7ed9172902f96ab69bee0872754348804b1ad95fe6f')
 
 prepare() {
-  cd "squidGuard-$pkgver-beta/src"
+  cd "squidGuard-$pkgver/src"
 
   patch -i "${srcdir}/squidguard-patch.diff"
 }
 
 build() {
-  cd "squidGuard-$pkgver-beta"
+  cd "squidGuard-$pkgver"
   sed -i '19,24 s/@[se]/$(DESTDIR)&/; /SQUIDUSER/d; 51d' Makefile.in
   ./configure \
 	--prefix=/usr \
@@ -34,6 +34,6 @@ build() {
 }
 
 package() {
-  cd "squidGuard-$pkgver-beta"
+  cd "squidGuard-$pkgver"
   make DESTDIR="$pkgdir" install
 }
