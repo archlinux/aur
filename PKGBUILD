@@ -2,7 +2,7 @@
 # Contributor: TheGoliath
 pkgname=squidguard
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Filter and redirector plugin for Squid. SquidGuard is a free, flexible and ultra fast filter, redirector and access controller plugin for squid."
 arch=('i686' 'x86_64')
 url="http://www.squidguard.org"
@@ -30,7 +30,6 @@ package(){
 	# Fix directories structure differencies
 	cd "${pkgdir}"
 
-	install -D -m644 "/usr/share/doc/squidguard/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	mkdir usr/bin 2> /dev/null; mv usr/sbin/* usr/bin; rm -rf usr/sbin
 
 	cd ..
