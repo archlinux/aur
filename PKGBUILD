@@ -1,24 +1,27 @@
-# Maintainer: Drommer <sergey.starovoytov.94@gmail.com>
+# Maintainer: Ramon Buldó <ramon@manjaro.org>
+# Contributor: Sergey Starovoytov <sergey.starovoytov.94@gmail.com>
 
 pkgname=breath-gtk-theme
-pkgver=5.9.0
+pkgdesc="Breath GTK theme (from Manjaro)"
+_pkgname=artwork-breath-gtk
 pkgrel=1
 _gitcommit=da2706640f457f89de6c26312e391b244ff550b4
-url=https://gitlab.manjaro.org/artwork/themes/breath-gtk
+pkgver=$(echo ${_gitcommit} | cut -c1-7)
+url="https://github.com/manjaro/$_pkgname"
 arch=('any')
 license=('LGPL')
-makedepends=('extra-cmake-modules' 'plasma-framework')
-
-source=("breath-gtk-theme-$pkgver.tar.gz::$url/-/archive/master/breath-breath-gtk-$_gitcommit.tar.gz")
-sha256sums=('ff00e9c8ded97b55077771a1c33c412ea65a8a8e8a70dbc1ae680cafcc286752')
+depends=('bash')
+makedepends=('qt5-base' 'extra-cmake-modules')
+source=("$url/archive/$_gitcommit.tar.gz")
+sha256sums=('c1ea830c7add04ff76b280a888b68d972133c0cfbde3f96543c779c3b7ae669d')
 
 prepare() {
-  mv $srcdir/breath-gtk-master-$_gitcommit $srcdir/${pkgname}
-  mkdir -p $srcdir/${pkgname}/build
+  mv $srcdir/artwork-breath-gtk-$_gitcommit $srcdir/${_pkgname}
+  mkdir -p $srcdir/${_pkgname}/build
 }
 
 build() {
-  cd $srcdir/${pkgname}/build
+  cd $srcdir/${_pkgname}/build
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -27,6 +30,6 @@ build() {
 }
 
 package() {
-  cd $srcdir/${pkgname}/build
+  cd $srcdir/${_pkgname}/build
   make DESTDIR="${pkgdir}" install
 }
