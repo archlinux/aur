@@ -1,5 +1,4 @@
-# Maintainer: liberodark <liberodark@gmail.com>
-# contributor: Joan Figueras <ffigue at gmail dot com>
+# Maintainer: Joan Figueras <ffigue at gmail dot com>
 # Contributor: Torge Matthies <openglfreak at googlemail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Yoshi2889 <rick.2889 at gmail dot com>
@@ -45,7 +44,6 @@ fi
 pkgbase=linux-dragon
 _srcname=linux
 pkgver=5.1.19
-xanmod=7
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/Dragon-Team/dragon-v5"
@@ -137,9 +135,7 @@ _package() {
   pkgdesc="The Linux kernel and modules with dragon patches"
   depends=(coreutils linux-firmware kmod mkinitcpio)
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=('linux' 'linux-xanmod-git')
-  replaces=('linux-xanmod-git')
-  conflicts=('linux-xanmod-git')
+  provides=('linux')
   backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=linux.install
 
@@ -193,9 +189,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for Dragon Linux kernel"
-  provides=('linux-headers' 'linux-xanmod-git-headers')
-  replaces=('linux-xanmod-git-headers')
-  conflicts=('linux-xanmod-git-headers')
+  provides=('linux-headers')
 
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
