@@ -1,14 +1,14 @@
 # Maintainer: Kevin McCormack <harlemsquirrel@gmail.com>
 # https://code.alephobjects.com/w/cura-lulzbot/
 pkgname=cura-lulzbot
-pkgver=3.6.3
+pkgver=3.6.8
 pkgrel=1
 pkgdesc='Cura LulzBot Edition for LulzBot 3D Printers by Aleph Objects, Inc.'
 arch=('x86_64')
 url='https://www.lulzbot.com/cura'
 license=('AGPLv3')
 source=("http://download.alephobjects.com/ao/aodeb/dists/stretch/main/binary-amd64/cura-lulzbot_${pkgver}_amd64.deb")
-md5sums=('58c024624c217aa9a7a329cb2decf9c3')
+md5sums=('ef8abae342d55b1196a9ff1baa983c84')
 depends=('gcc6-fortran')
 
 prepare() {
@@ -24,7 +24,7 @@ package() {
 }
 
 # Update md5sum
-# makepkg --geninteg
+# updpkgsums
 
 ## Update .SRCINFO
 # makepkg --printsrcinfo | tee .SRCINFO
