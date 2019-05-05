@@ -1,7 +1,7 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
 pkgver="8.0.331.0"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
 arch=('x86_64')
@@ -636,16 +636,27 @@ package()
  mkdir -p "$pkgdir/usr/bin"
 
  echo '#!/bin/bash' > "$pkgdir/usr/bin/$pkgname"
- echo "program=\"${pkgname}/PDF Editor\"" >> "$pkgdir/usr/bin/$pkgname"
- echo 'if [ ! -d "$HOME/.$program/wine" ] ; then' >> "$pkgdir/usr/bin/$pkgname"
- echo '   mkdir -p "$HOME/.$program/wine"' >> "$pkgdir/usr/bin/$pkgname"
+ echo "pkgname=\"${pkgname}\"" >> "$pkgdir/usr/bin/$pkgname"
+ echo 'program="$pkgname/PDF Editor"' >> "$pkgdir/usr/bin/$pkgname"
+ echo 'if [ -z "$XDG_DATA_HOME" ]; then' >> "$pkgdir/usr/bin/$pkgname"
+ echo '   XDG_DATA_HOME="$HOME/.local/share"' >> "$pkgdir/usr/bin/$pkgname"
  echo 'fi' >> "$pkgdir/usr/bin/$pkgname"
- echo 'if [ ! -z "$1" ] ; then' >> "$pkgdir/usr/bin/$pkgname"
- echo '   document=$(WINEPREFIX="$HOME/.$program/wine" /usr/bin/winepath -w "$1")' >> "$pkgdir/usr/bin/$pkgname"
+ echo 'if [ -d "$HOME/.$pkgname" ] && [ -d "$XDG_DATA_HOME/$pkgname" ]; then' >> "$pkgdir/usr/bin/$pkgname"
+ echo '   prefix="$XDG_DATA_HOME/$program/wine"' >> "$pkgdir/usr/bin/$pkgname"   
+ echo 'else' >> "$pkgdir/usr/bin/$pkgname"
+ echo '   if [ -d "$HOME/.$pkgname" ] && [ ! -d "$XDG_DATA_HOME/$pkgname" ]; then' >> "$pkgdir/usr/bin/$pkgname"
+ echo '      prefix="$HOME/.$program/wine"' >> "$pkgdir/usr/bin/$pkgname"  
+ echo '   else' >> "$pkgdir/usr/bin/$pkgname"
+ echo '      prefix="$XDG_DATA_HOME/$program/wine"' >> "$pkgdir/usr/bin/$pkgname"
+ echo '   fi' >> "$pkgdir/usr/bin/$pkgname"
+ echo 'fi' >> "$pkgdir/usr/bin/$pkgname"
+ echo 'mkdir -p "$prefix"' >> "$pkgdir/usr/bin/$pkgname"
+ echo 'if [ -n "$1" ] ; then' >> "$pkgdir/usr/bin/$pkgname"
+ echo '   document=$(WINEPREFIX="$prefix" /usr/bin/winepath -w "$1")' >> "$pkgdir/usr/bin/$pkgname"
  echo 'else' >> "$pkgdir/usr/bin/$pkgname"
  echo '   unset document' >> "$pkgdir/usr/bin/$pkgname"
  echo 'fi' >> "$pkgdir/usr/bin/$pkgname"
- echo 'WINEPREFIX="$HOME/.$program/wine" /usr/bin/wine '\"${_installdir}'/$program/PDFXEdit.exe" "$document"' >> "$pkgdir/usr/bin/$pkgname"
+ echo 'WINEPREFIX="$prefix" /usr/bin/wine "/usr/lib/$program/PDFXEdit.exe" "$document"' >> "$pkgdir/usr/bin/$pkgname"
 
  chmod 0755 "$pkgdir/usr/bin/$pkgname"
 
