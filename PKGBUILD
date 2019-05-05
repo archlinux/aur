@@ -1,12 +1,12 @@
 # AUR/linux-lts-tomoyo PKGBUILD
-# Maintainer: dysphoria <>
+# Maintainer: TH Campbell (dysphoria) <thcampbell (at) protonmail (dot) com>
 
 # core/linux-lts PKGBUILD
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts-tomoyo
 _srcname=linux-4.19
-pkgver=4.19.36
+pkgver=4.19.40
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -27,7 +27,7 @@ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '0703078d84261d098492abaab813a0bab2b408f923d96e66c980f2cdb8d326a8'
+            '5d5c0dd3a642f16b331bcc5feffb84d8b6d2836097eba428643ce843d40ba1e1'
             'dfd03045db0fd87adeda3397ee25d6d75d22ca686ffc167161d286d5bffb38de'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
