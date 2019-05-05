@@ -2,21 +2,26 @@
 
 _npmname=sails
 pkgname=nodejs-$_npmname
-pkgver=0.12.13
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Realtime MVC Framework for Node.js."
 arch=('any')
 url="http://sailsjs.org"
 license=('MIT')
-depends=('nodejs' 'npm')
+depends=(nodejs)
+makedepends=(npm)
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('ef7edad74fc44b5d37d9ef61227affb25724779ef132ee830d0c591ad9c73ae2')
+sha256sums=('0a852bc9cde80147c3da6657a48d879f75a23aacd3e088ec6dea885e83cbc31f')
 
 package() {
-  cd "$srcdir"
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p "$_npmdir"
-  cd "$_npmdir"
-  npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$pkgver
+  npm install \
+    --user root --global \
+    --prefix "$pkgdir/usr" \
+    "$srcdir"/$_npmname-$pkgver.tgz
+
+  find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
+
+  install -Dm0644 "$pkgdir/usr/lib/node_modules/$_npmname/LICENSE.md" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
