@@ -51,10 +51,10 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=5.0
-_minor=12
+_minor=13
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -77,8 +77,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/uksm-dev/${_uksm_patch}"
         "${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
-        "${_lucjanpath}/arch-patches-v2/0001-udp-fix-GRO-reception-in-case-of-length-mismatch.patch"
-        "${_lucjanpath}/arch-patches-v2/0002-udp-fix-GRO-packet-of-death.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -372,13 +370,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('cf3b2607d9f4fac1e5724c71fdb7cbbcd86711ddad45a045f805ac9250c759ec5589e36078275e5d948c73a34ccb8f2af6f16027a5646755b8a49ca13047c810'
+sha512sums=('73111298bc5372917369da1b1de15be2a3aa6d60646ec3f0f48cebeeffce4a33f87ec118bb8b54d7095b2a222342615d44c0ed8373132049d13f1a1595784cb6'
             'SKIP'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
             'adf7f7195b0811c13b950b147f24b51874f072c02005ab312f9937dedd9d2356e92dd7537d5603cfaea2e3d1eb0d6872e81af57496d9b42b7f2ec271ec181a77'
             '1e8a1deb7a0100627b928b588a9419b58aa42ac1b33d974b83c24dcd4e5f59ace694959e30df2692a96de329d8bab61cd42bb59578f7814845391203416d7364'
-            'd3da993cbb4988c638548a2a614c43b73de46ba05ee0282355922ce1d34a38dea1aef3c3314a3bb6921a0e61a2623a741d0728f4593c0e8134b009fa68ea8bd0'
-            '033ccdff31322b2b5ccedc129ced9d8ab1dad41491a97ea2b2f1f39dd61444fe5bfb794cafcf97ff3617007c057dc4359f039a68231becbdc620a1ab8c26178f'
             'dd1cb821dafe6f292f5486eb36f4a19469d7704d050ac109a2214bc8592fa68845e16fc0800e3ee4ed52eaddba67ae8f4b2639568fa4e3f3ada7baceab047696'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
