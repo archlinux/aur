@@ -94,8 +94,9 @@ if [ -d "${target}/bin/" ] ;then
 	bootstrap_remove
 else
 #-- testing only
-#-	otarget=$(grep ^SETUPDIR= ./evelauncher.sh)
-#-	sed -i s,$otarget,SETUPDIR=\"$target\", ./evelauncher.sh
+#-	otarget=$(grep ^SETUPDIR= ./evelauncher.sh | tr -d \")
+#-	otarget=${otarget##*=}
+#-	sed -i s,$otarget,$target, ./evelauncher.sh ./evewine ./evewinetricks
 #--
     printf "\n"
     read -p 'Install EVE Online Launcher Setup? (Y/n) ' key
@@ -104,7 +105,7 @@ else
 	printf "\nYou can now start EVE Online Launcher and his " && \
 	echo "Tools from your Application menu."
 #-- testing only
-#-	sed -i s,SETUPDIR=\"$target\",$otarget, ./evelauncher.sh
+#-	sed -i s,$target,$otarget, ./evelauncher.sh ./evewine ./evewinetricks
 #--
 fi
 printf "\nDone.\n\n"
