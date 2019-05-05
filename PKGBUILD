@@ -1,8 +1,8 @@
 # Maintainer: Espen Fossen <espfos@junta.no>
 
 pkgname=mstream
-pkgver=4.0.1
-pkgrel=2
+pkgver=4.1.3
+pkgrel=1
 pkgdesc='Music player server with a web-based interface'
 arch=('any')
 url="http://mstream.io"
@@ -24,6 +24,6 @@ package() {
   install -Dm644 mstream.service "$pkgdir"/usr/lib/systemd/system/mstream.service
   install -Dm644 -g 49 -o 49 config.json "${pkgdir}/var/lib/${pkgname}/config.json"
 }
-md5sums=('edc1f3de9e2833de93ffef1123bb9bae'
+md5sums=('d1239364ad82d44edc13261cd04b0d20'
          '6640e102dd29a6da5c4c075e4c4042d7'
          '4ed71dda48801c584be9be3cb4103d45')
