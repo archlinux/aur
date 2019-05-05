@@ -2,7 +2,7 @@
 
 pkgname=rtl8192du-git
 _pkgname=rtl8192du
-pkgver=72b53f8
+pkgver=62f90cf
 pkgrel=1
 pkgdesc="Kernel module for Realtek RTL8192DU USB wireless devices."
 arch=('x86_64')
@@ -16,6 +16,8 @@ source=("git://github.com/lwfinger/$_pkgname.git")
 sha256sums=('SKIP')
 
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+# manually define if building in chroot
+#_kernver=5.0.12-arch1-1-ARCH
 
 pkgver() {
   cd "$_pkgname"
@@ -23,13 +25,10 @@ pkgver() {
 }
 
 prepare() {
-
   cd "$_pkgname"
 
-  # fixup for Arch
-  #
   # 1) reference the static kernel ver not the running one
-  # 2) remove the depmod command which we do in the postinstall
+  # 2) remove the depmod command since 60-linux.hook does this for us
   sed -i -e "/^KSRC/ s,\$(KVER),$_kernver," \
     -i -e '/depmod/d' Makefile
 }
