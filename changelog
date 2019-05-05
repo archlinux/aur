@@ -1,3 +1,12 @@
+2019-05-05 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.0.1.9-1:
+    Improvements to ASF's networking code, stability enhancements.
+    Small improvements to ASF's compatibility with Steam family sharing.
+    ASF will now wait up to a minute when you've just finished playing, to allow you switch games more easily and overcome brief network issues.
+    It's now possible to provide --cryptkey also through environment variable (ref: #1207).
+    Fixed non-intended behaviour of update process that could delete subdirectories in config and plugins folders. The fix will apply from this version onwards.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2019-04-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.0.1.4-1:
     ASF will now refuse to launch the second process for the same working directory.
