@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=virtualbox-headless
-pkgver=6.0.4
+pkgver=6.0.6
 _tarver=${pkgver}
 pkgrel=1
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use. Headless build (no GUI, no Java).'
@@ -39,7 +39,7 @@ source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${_tarv
         '012-vbglR3GuestCtrlDetectPeekGetCancelSupport.patch'
         )
 sha256sums=(
-    'f80b0c68182c946fb74ada8034960c38159ad91085b153da1277e4f191af6e1f'
+    '3419c49a90cef7f0a5781426259d47d7871457ab0fd201ec0fca83321441e552'
     '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
     '9c5238183019f9ebc7d92a8582cad232f471eab9d3278786225abc1a1c7bf66e'
     '033c597e0f5285d2ddb0490868e5b6f945f45c7b1b1152a02a9e6fea438b2c95'
@@ -51,7 +51,7 @@ sha256sums=(
     'f67674931c30187f867233e3a4ae662f93c9110fbd0bfce50dd9f391f4533bc0'
     '7d2da8fe10a90f76bbfc80ad1f55df4414f118cd10e10abfb76070326abebd46'
     '8b7f241107863f82a5b0ae336aead0b3366a40103ff72dbebf33f54b512a0cbc'
-    '1acc7014bcb3d9ca6da29eed813c3d6e91a688c43f9d93802fd4e3814f67ace4'
+    '7055014fde94a41f20d9581615c818fd1f2d249a06864585f562b0a677131e70'
     '55224cb74b54b331d691f171efc0d4c058a14f738551f1d8f559146c2908635d'
     '81900e13d36630488accd8c0bfd2ceb69563fb2c4f0f171caba1cca59d438024'
 )
