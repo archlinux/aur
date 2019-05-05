@@ -76,8 +76,8 @@ _unwanted_bundled_libs=(
 depends+=(${_system_libs[@]})
 
 prepare() {
-  _ungoogled_archlinux_repo="$srcdir/$pkgname-archlinux-${_ungoogled_archlinux_version}"
-  _ungoogled_repo="$srcdir/$pkgname-${_ungoogled_version}"
+  _ungoogled_archlinux_repo="$srcdir/$pkgname-${_ungoogled_archlinux_version}"
+  _ungoogled_repo="$srcdir/ungoogled-chromium-${_ungoogled_version}"
   _utils="${_ungoogled_repo}/utils"
 
   cd "$srcdir/chromium-${_chromium_version}"
