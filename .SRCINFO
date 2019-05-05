@@ -1,0 +1,13 @@
+pkgbase = python-pscript
+	pkgdesc = Python to JavaScript compiler
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://pscript.readthedocs.io
+	arch = any
+	license = BSD
+	depends = python
+	source = python-pscript-0.7.1.tar.gz::https://github.com/flexxui/pscript/archive/v0.7.1.tar.gz
+	sha256sums = 8539caefe6b8f97f0f80fccb57076c9a6a7fef4773dc039f3a0286c8bc962fff
+
+pkgname = python-pscript
+
