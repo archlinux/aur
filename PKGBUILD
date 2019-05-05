@@ -3,7 +3,7 @@
 
 pkgname=openbazaar-bin
 _name=${pkgname%-bin}
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="OpenBazaar Client, Decentralized Peer to Peer Marketplace for Bitcoin -- Static binaries"
 arch=('i686' 'x86_64')
@@ -50,5 +50,5 @@ package() {
 }
 
 md5sums=('e547247b5aa7cd2c195286e2ec760883')
-md5sums_i686=('9e41a2ae541ee0b35b611b7ba21dad61')
-md5sums_x86_64=('e67d9626da83d13ec6446f9c8f658a0f')
+md5sums_i686=('858c32ccccfef9e05b68986472ed49d3')
+md5sums_x86_64=('b0f48a8cc6e3a3f92ddb3c723f20b9cf')
