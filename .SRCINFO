@@ -1,0 +1,14 @@
+pkgbase = firefox-esr-ublock-origin
+	pkgdesc = Efficient blocker add-on for various browsers. Fast, potent, and lean
+	pkgver = 1.18.16
+	pkgrel = 1
+	url = https://github.com/gorhill/uBlock
+	arch = any
+	groups = firefox-esr-addons
+	license = GPL3
+	noextract = ublock_origin-1.18.16-an+fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/607454/ublock_origin-1.18.16-an+fx.xpi
+	sha256sums = d65565207ff63c6646b83bcbf434fd3a879d0dcde06b9c032f05a0d7d3ddeca1
+
+pkgname = firefox-esr-ublock-origin
+
