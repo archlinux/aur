@@ -9,13 +9,13 @@ license=("MIT")
 url="https://github.com/murat-cileli/adwaita-creamy"
 makedepends=()
 provides=("adwaita-creamy-gtk-theme")
-source=("$pkgname-$pkgver::https://github.com/murat-cileli/adwaita-creamy/archive/$pkgver.tar.gz")
+source=("https://github.com/murat-cileli/adwaita-creamy/archive/$pkgver.tar.gz")
 sha256sums=("SKIP")
 
 package() {  
     # Create directory
-    mkdir -p $pkgdir/usr/share/themes/$pkgname
+    mkdir -p $pkgdir/usr/share/themes/adwaita-creamy
 
     # Copy contents
-    cp -r "$srcdir/$pkgname-$pkgver/." "$pkgdir/usr/share/themes/$pkgname"
+    cp -r "$srcdir/adwaita-creamy-3.24.8/." "$pkgdir/usr/share/themes/adwaita-creamy"
 }

@@ -6,7 +6,7 @@ pkgbase = adwaita-creamy-gtk-theme
 	arch = x86_64
 	license = MIT
 	provides = adwaita-creamy-gtk-theme
-	source = adwaita-creamy-gtk-theme-3.24.8::https://github.com/murat-cileli/adwaita-creamy/archive/3.24.8.tar.gz
+	source = https://github.com/murat-cileli/adwaita-creamy/archive/3.24.8.tar.gz
 	sha256sums = SKIP
 
 pkgname = adwaita-creamy-gtk-theme
