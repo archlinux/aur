@@ -5,12 +5,12 @@
 _distname=Test-Perl-Critic
 pkgname=perl-test-perl-critic
 pkgver=1.04
-pkgrel=1
+pkgrel=2
 pkgdesc="Use Perl::Critic in test programs"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-mce>=1.827' 'perl-critic>=1.105')
+depends=('perl-mce>=1.827' 'perl-perl-critic>=1.105')
 makedepends=()
 url='https://metacpan.org/release/Test-Perl-Critic'
 source=("https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/$_distname-$pkgver.tar.gz")
