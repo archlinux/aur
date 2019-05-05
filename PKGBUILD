@@ -7,15 +7,15 @@
 # Contributor: Ben <ben@benmazer.net>
 
 pkgname=mpd-light-pulse
-pkgver=0.21.5
+pkgver=0.21.8
 _majorver=0.21
 pkgrel=1
-pkgdesc='Flexible, powerful, server-side application for playing music. Light version without libmpdclient, openal, ao, ffmpeg, jack, modplug, shout, sidplay, soundcloud, wavpack, fluidsynth, avahi, smbclient, zziplib support.'
+pkgdesc='Flexible, powerful, server-side application for playing music. Light version without libmpdclient, openal, ao, ffmpeg, jack, modplug, shout, sidplay, soundcloud, wavpack, fluidsynth, avahi, smbclient, zziplib, gme, mms support.'
 url='https://www.musicpd.org/'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h')
-depends=('audiofile' 'libmad' 'curl' 'faad2' 'sqlite' 'libmms' 'libid3tag' 'libpulse'
-         'icu' 'libupnp' 'libnfs' 'libsamplerate' 'libsoxr' 'libcdio-paranoia' 'libgme')
+depends=('audiofile' 'libmad' 'curl' 'faad2' 'sqlite' 'libid3tag' 'libpulse'
+         'icu' 'libupnp' 'libnfs' 'libsamplerate' 'libsoxr' 'libcdio-paranoia')
 makedepends=('boost' 'meson' 'python-sphinx')
 provides=("mpd=$pkgver")
 conflicts=('mpd')
@@ -23,7 +23,7 @@ replaces=('mpd')
 source=("https://www.musicpd.org/download/mpd/${_majorver}/mpd-${pkgver}.tar.xz"
         'mpd.tmpfile'
         'mpd.conf')
-sha256sums=('2ea9f0eb3a7bdae5d705adf4e8ec45ef38b5b9ddf133f32b8926dd4e205b0ef9'
+sha256sums=('23e083f11356c66bfb4a53c00568d370f57707df56496b299c414aaae59a9757'
             'c1683ba35774c85e16c70e89f7e2ed1c09619512b1a273daabbd5e34d40439bd'
             'e213c108cd0e076b5cc07091707ef75d74d9ac8c779d0c0128cd0aa69617f8a0')
 backup=('etc/mpd.conf')
@@ -42,10 +42,10 @@ build() {
     _opts=('-Ddocumentation=true'
            '-Dchromaprint=disabled' # appears not to be used for anything
            '-Dsidplay=disabled' # unclear why but disabled in the past
-           '-Dlibwrap=disabled' # twentieth century's over
            '-Dadplug=disabled' # not in an official repo
            '-Dsndio=disabled' # interferes with detection of alsa devices
            '-Dshine=disabled' # not in an official repo
+           '-Dtremor=disabled' # not in an official repo
            '-Dao=disabled'
            '-Dffmpeg=disabled'
            '-Djack=disabled'
@@ -60,6 +60,8 @@ build() {
            '-Dlibmpdclient=disabled'
            '-Dopenal=disabled'
            '-Dfluidsynth=disabled'
+           '-Dmms=disabled'
+           '-Dgme=disabled'
     )
     arch-meson --auto-features auto  .. ${_opts[@]}
     ninja
