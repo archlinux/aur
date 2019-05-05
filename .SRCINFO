@@ -1,0 +1,31 @@
+pkgbase = firefox-unbranded-release-bin
+	pkgdesc = Official unbranded firefox release build
+	pkgver = 66.0.3
+	pkgrel = 1
+	url = https://wiki.mozilla.org/Add-ons/Extension_Signing#Unbranded_Builds
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = dbus-glib
+	depends = gtk3
+	depends = libxt
+	depends = nss
+	depends = mime-types
+	optdepends = pulseaudio: audio support
+	optdepends = ffmpeg: h.264 video
+	optdepends = hunspell: spell checking
+	optdepends = hyphen: hyphenation
+	optdepends = libnotify: notification integration
+	optdepends = networkmanager: location detection via available WiFi networks
+	optdepends = speech-dispatcher: text-to-speech
+	optdepends = startup-notification: support for FreeDesktop Startup Notification
+	provides = firefox=66.0.3
+	conflicts = firefox
+	source = https://queue.taskcluster.net/v1/task/OY5EZrZKQKuaN2xBSaBH_g/runs/0/artifacts/public/build/target.tar.bz2
+	source = firefox.desktop
+	sha256sums = a4b0e4e7419862a57833ffd3ad289bdaf7e6e3fdecb82742ba8135db6ec72614
+	sha256sums = 4a783dca1f88e003c72f32d22719a0915f3fa576adbc492240e7cc250246ce10
+
+pkgname = firefox-unbranded-release-bin
+
