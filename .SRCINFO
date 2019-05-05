@@ -1,5 +1,5 @@
 pkgbase = alacritty-git
-	pkgver = 0.3.2.1202.g34c54e7
+	pkgver = 0.3.2.1203.gf3cc7c4
 	pkgrel = 1
 	url = https://github.com/jwilm/alacritty
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = alacritty-git
 	makedepends = git
 	makedepends = ncurses
 	makedepends = desktop-file-utils
+	makedepends = python
+	makedepends = libxcb
 	source = alacritty::git+https://github.com/jwilm/alacritty.git
 	sha256sums = SKIP
 

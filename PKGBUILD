@@ -1,11 +1,11 @@
 pkgname=('alacritty-git' 'alacritty-terminfo-git')
 _pkgname="alacritty"
-pkgver=0.3.2.1202.g34c54e7
+pkgver=0.3.2.1203.gf3cc7c4
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/jwilm/alacritty"
 license=('Apache-2.0')
-makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'freetype2' 'git' 'ncurses' 'desktop-file-utils')
+makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'freetype2' 'git' 'ncurses' 'desktop-file-utils' 'python' 'libxcb')
 source=("$_pkgname::git+https://github.com/jwilm/alacritty.git")
 sha256sums=('SKIP')
 
