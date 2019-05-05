@@ -1,6 +1,6 @@
 pkgbase = python-flask-cors
 	pkgdesc = cross origin resource sharing (CORS) support for Flask
-	pkgver = 3.0.6
+	pkgver = 3.0.7
 	pkgrel = 1
 	url = https://github.com/corydolphin/flask-cors
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = python-flask-cors
 	depends = python-flask>=0.9
 	depends = python-six
 	depends = python>=3.4
-	source = https://github.com/corydolphin/flask-cors/archive/3.0.6.tar.gz
-	md5sums = aa4ba777fd8cfce737a65944eae0d427
-	sha1sums = 2937bdd3c9f26024d3a067b41763cb911ccb841e
+	source = https://github.com/corydolphin/flask-cors/archive/3.0.7.tar.gz
+	md5sums = da02288a9734e26ef0a38afcf82ea6db
+	sha1sums = 21845aa4e9bdbd9051ab7e82a9784c72bf1e039e
 
 pkgname = python-flask-cors
 
