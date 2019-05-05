@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-pixman
 pkgver=0.38.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The pixel-manipulation library for X and cairo (mingw-w64)"
 arch=(any)
 url="http://xorg.freedesktop.org"
@@ -25,6 +25,7 @@ build() {
       -D neon=disabled \
       -D iwmmxt=disabled \
       -D mips-dspr2=disabled \
+      -D b_lto=false \
       -D gtk=disabled ..
     ninja
   done
