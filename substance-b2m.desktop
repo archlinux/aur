@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Substance B2M
+GenericName=Image to PBR material generator
+Description=Image to PBR material generator
+Exec=/usr/bin/substance-b2m
+Icon=substance-b2m-icon
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Utility;Graphics
+MimeType=application/x.allegorithmic.package;application/x.allegorithmic.substance
