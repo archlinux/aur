@@ -4,7 +4,7 @@
 
 pkgname=dcmtk
 pkgver=3.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of libraries and applications implementing large parts the DICOM standard"
 arch=('i686' 'x86_64')
 url="http://dicom.offis.de/dcmtk"
