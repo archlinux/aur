@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=AniAdd
+Comment=A very simple to use AniDB client (GUI)
+Icon=aniadd
+TryExec=aniadd
+Exec=aniadd
+Terminal=false
+Categories=AudioVideo;Video;Database;Java;

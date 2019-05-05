@@ -1,16 +1,34 @@
 pkgbase = aniadd-bin
 	pkgdesc = A very simple to use AniDB client (GUI)
 	pkgver = 04.06.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://anidb.net/perl-bin/animedb.pl?show=software
 	arch = any
 	license = unknown
 	depends = java-runtime
 	noextract = AniAdd.jar
 	source = https://static.anidb.net/files/AniAdd.jar
+	source = anidb-16x16.png::https://static.anidb.net/css/icons/touch/favicon-16x16.png
+	source = anidb-32x32.png::https://static.anidb.net/css/icons/touch/favicon-32x32.png
+	source = anidb-48x48.png::https://static.anidb.net/css/icons/touch/android-chrome-48x48.png
+	source = anidb-72x72.png::https://static.anidb.net/css/icons/touch/android-chrome-72x72.png
+	source = anidb-96x96.png::https://static.anidb.net/css/icons/touch/android-chrome-96x96.png
+	source = anidb-192x192.png::https://static.anidb.net/css/icons/touch/android-chrome-192x192.png
+	source = anidb-256x256.png::https://static.anidb.net/css/icons/touch/android-chrome-256x256.png
+	source = anidb-512x512.png::https://static.anidb.net/css/icons/touch/android-chrome-512x512.png
 	source = aniadd.sh
+	source = aniadd.desktop
 	sha256sums = 19fbfec796de1c381797969cd085468e21cb8c41bdb67ee18f02a825ee08af6f
-	sha256sums = SKIP
+	sha256sums = 6472e83d6dfe5975f2fbe811aeb39908b55fad629447159eae57bd9bd844328b
+	sha256sums = bb906cdfe418ba32146f44b8c7ae00e091db6b10a9f3d982ad9eb81f85b5b4b3
+	sha256sums = bcc777d4af19712bca7636dea9748af97ff9e5280d41956370fc1df528e37209
+	sha256sums = 3e0ffccb96a9e306013634a8d459467c587da508cb030a9ba2c2d2c44b8f1bc5
+	sha256sums = bce5f01d153f268090cf5e00cdd88bb3e9cb55199078fd190cf3fc0ec1175832
+	sha256sums = 4c93222c76561f6f92d99ec2970adaceefcd258db100f1e6a1aba160fd17c8b6
+	sha256sums = a804266132deefba9450d35881b834c0ced8312c3120ac7bb604871b62752437
+	sha256sums = 1e0ba81ccf76df99f11b7eaed1e685d3fb78798da8ecb329b6c714cf34f1416a
+	sha256sums = 0a732e65e2adbe523df87b47e632974900519a0ce86b360326c2b23e4d3af3ce
+	sha256sums = 126974fef75b181608412641fc56fefd8dc2e5fa6d4024897d1bb2a5dc1102d6
 
 pkgname = aniadd-bin
 
