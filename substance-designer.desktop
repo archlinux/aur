@@ -4,7 +4,6 @@ GenericName=Material Authoring Software
 Description=PBR material design and authoring tool
 Exec=/usr/bin/substance-designer
 Icon=substance-designer-icon
-Version=2018.3.4
 Terminal=false
 Type=Application
 StartupNotify=true
