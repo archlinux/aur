@@ -6,16 +6,18 @@ source android-env.sh ${_android_arch}
 
 pkgname=android-${_android_arch}-ffmpeg
 pkgver=4.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Complete solution to record, convert and stream audio and video (android)"
 arch=('any')
 url="http://ffmpeg.org/"
 license=('GPL3')
 depends=("android-${_android_arch}-bzip2"
+         "android-${_android_arch}-lame"
          "android-${_android_arch}-libtheora"
          "android-${_android_arch}-libvorbis"
          "android-${_android_arch}-libvpx"
          "android-${_android_arch}-opus"
+         "android-${_android_arch}-speex"
          "android-${_android_arch}-zlib")
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-pkg-config' 'yasm')
@@ -87,6 +89,8 @@ build() {
         --disable-v4l2-m2m
         --disable-indev=v4l2
         --disable-outdev=v4l2
+        --enable-libmp3lame
+        --enable-libspeex
         --enable-libtheora
         --enable-libvorbis
         --enable-libvpx
