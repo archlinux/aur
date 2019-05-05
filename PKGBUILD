@@ -50,7 +50,7 @@ pkgrel=1
 arch=(x86_64)
 url="https://dragon-kernel.pro/"
 license=(GPL3)
-#makedepends=(xmlto kmod inetutils bc libelf python-sphinx graphviz)
+makedepends=(xmlto kmod inetutils bc libelf python-sphinx graphviz)
 options=('!strip')
 _srcname="dragon-v5-${pkgver}-dragon"
 
