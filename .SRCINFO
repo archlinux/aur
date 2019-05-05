@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches
-	pkgver = 3.32.1+10+g059c729da
-	pkgrel = 9
+	pkgver = 3.32.1+11+g0539efc8d
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
 	install = gnome-shell-performance.install
 	arch = x86_64
@@ -36,9 +36,9 @@ pkgbase = gnome-shell-performance
 	optdepends = gnome-control-center: System settings
 	optdepends = evolution-data-server: Evolution calendar integration
 	provides = gnome-shell
-	provides = gnome-shell=3.32.1+10+g059c729da
+	provides = gnome-shell=3.32.1+11+g0539efc8d
 	conflicts = gnome-shell
-	source = gnome-shell-performance::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=059c729da0c4deaf71caa7a61a8fb91f7bf882d6
+	source = gnome-shell-performance::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=0539efc8df23909a5396194ca780613f21bb63d8
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	source = https://github.com/endlessm/gnome-shell/commit/11ddabfb22aedb3c35abe06d2cf0205f223cca03.diff
 	source = https://gitlab.gnome.org/GNOME/gnome-shell/uploads/4a083c80c81eeb0dd1be64e0e24b5c17/nvidia-background-workaround.patch
