@@ -44,7 +44,7 @@ pkgbase = firefox-unbranded
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = firefox=$pkgver
+	provides = firefox
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
