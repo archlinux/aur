@@ -1,4 +1,4 @@
-# PKGBUILD for android-libogg
+# PKGBUILD for android-speexdsp
 # Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
 
 _android_arch=armv7a-eabi
@@ -6,7 +6,7 @@ source android-env.sh ${_android_arch}
 
 pkgname=android-${_android_arch}-speexdsp
 pkgver=1.2rc3
-pkgrel=1
+pkgrel=2
 pkgdesc="DSP library derived from Speex (android)"
 arch=(any)
 url="http://www.speexdsp.org"
@@ -46,6 +46,13 @@ package() {
     cd "${srcdir}"/speexdsp-${pkgver}
 
     make DESTDIR="$pkgdir" install
+
+    for f in $(find "$pkgdir/${ANDROID_LIBS}/lib" -type l -name "lib*.so"); do
+        echo HOLA "$f"
+        mv -vf "$(realpath "$f")" "$f"
+    done
+
+    rm -vf "$pkgdir"/${ANDROID_LIBS}/lib/lib*.so.*
     rm -r "${pkgdir}"/${ANDROID_LIBS}/share
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_LIBS}/lib/*.so
     ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_LIBS}/lib/*.a
