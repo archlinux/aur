@@ -1,20 +1,19 @@
 pkgbase = mingw-w64-libpng
 	pkgdesc = A collection of routines used to create PNG format graphics (mingw-w64)
-	pkgver = 1.6.35
+	pkgver = 1.6.37
 	pkgrel = 1
 	url = http://www.libpng.org/pub/png/libpng.html
 	arch = any
 	license = custom
 	makedepends = mingw-w64-configure
 	depends = mingw-w64-zlib
-	depends = mingw-w64-crt
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.6.35.tar.xz
-	source = http://downloads.sourceforge.net/project/apng/libpng/libpng16/libpng-1.6.35-apng.patch.gz
-	sha256sums = 23912ec8c9584917ed9b09c5023465d71709dce089be503c7867fec68a93bcd7
-	sha256sums = 8c7b24db9d0a4c95bd663ae8f3369013520d6cee0fbea9b0c4a459a24bc530cf
+	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.6.37.tar.xz
+	source = http://downloads.sourceforge.net/project/apng/libpng/libpng16/libpng-1.6.37-apng.patch.gz
+	sha256sums = 505e70834d35383537b6491e7ae8641f1a4bed1876dbfe361201fc80868d88ca
+	sha256sums = 10d9e0cb60e2b387a79b355eb7527c0bee2ed8cbd12cf04417cabc4d6976683c
 
 pkgname = mingw-w64-libpng
 
