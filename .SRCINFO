@@ -1,0 +1,19 @@
+pkgbase = sopds
+	pkgdesc = Simple opds catalog
+	pkgver = 0.47
+	pkgrel = 1
+	url = http://www.sopds.ru/
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-django
+	depends = python-pillow
+	depends = python-apscheduler
+	depends = python-django-picklefield
+	depends = python-lxml
+	depends = python-telegram-bot
+	source = https://github.com/mitshel/sopds/archive/v0.47.tar.gz
+	sha256sums = 7a1f7785999ddc098eb23e9ffa8bf08f1a95c92afe6d37faa2d19562510f1e84
+
+pkgname = sopds
+
