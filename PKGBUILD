@@ -1,4 +1,4 @@
-# Maintainer: Marco Scarpetta <marcoscarpetta02@gmail.com>
+# Maintainer: Daniel Popov (dan93bars@gmail.com)
 
 pkgname=drivesync
 pkgver=1.4.0
@@ -9,6 +9,7 @@ url='https://github.com/MStadlmeier/drivesync'
 license=('MIT')
 depends=('ruby2.5')
 makedepends=('ruby2.5-bundler')
+provides=("drivesync")
 source=("https://github.com/MStadlmeier/$pkgname/archive/$pkgver.tar.gz"
         'drivesync')
 sha512sums=('9f08348ffeaf783832b817cda3616d9206492474767a2ffc772d6d7405af926c64f2e20c7e332d39d35156afa09d6388371469ba8c62b57642a92775a5de9a16'
