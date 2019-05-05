@@ -1,17 +1,17 @@
 pkgbase = bazel-buildtools
 	pkgdesc = Developer tools for working with Google's bazel buildtool.
-	pkgver = 0.22.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/bazelbuild/buildtools
 	arch = x86_64
 	license = Apache
 	optdepends = bazel: the build tool to work with
-	source = https://github.com/bazelbuild/buildtools/releases/download/0.11.1/buildifier
-	source = https://github.com/bazelbuild/buildtools/releases/download/0.11.1/buildozer
-	source = https://github.com/bazelbuild/buildtools/releases/download/0.11.1/unused_deps
-	md5sums = 3aa742a8364c0a55c8cf8e0d979a9e89
-	md5sums = 2521c3d6de32387113e248f0cded6ece
-	md5sums = 1c57c02cf5962b0b66292371601a6b08
+	source = https://github.com/bazelbuild/buildtools/releases/download/0.25.0/buildifier
+	source = https://github.com/bazelbuild/buildtools/releases/download/0.25.0/buildozer
+	source = https://github.com/bazelbuild/buildtools/releases/download/0.25.0/unused_deps
+	md5sums = 4d9de1f184d07d60840df9adcf7b1b63
+	md5sums = 4cdc9f9b3f4945a1e2e29a96004ca5d4
+	md5sums = d56001d3a82f412502c883ce56d85cd3
 
 pkgname = bazel-buildtools
 
