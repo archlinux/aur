@@ -1,7 +1,7 @@
 # Maintainer: Kamil Śliwak <cameel2@gmail.com>
 
 _addon_name=temporary_containers
-_addon_version=0.95
+_addon_version=0.97
 _addon_id=888648
 _addon_filename="${_addon_name}-${_addon_version}-fx.xpi"
 _gecko_id="{c607c8df-14a7-4f28-894f-29e8722976af}"
@@ -16,7 +16,7 @@ license=('MIT/X11')
 depends=("firefox")
 source=("https://addons.cdn.mozilla.net/user-media/addons/${_addon_id}/${_addon_filename}")
 noextract=("${_addon_filename}")
-sha256sums=('b596da54daafea97efbc1c46eff8708c72b48b332d0dfd8e4db0a0ac2bbcdfb5')
+sha256sums=('a5246d338725fea8a628e7f4446ad3453eeb2a195fc981679def583539b7a772')
 
 
 package() {
