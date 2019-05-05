@@ -43,7 +43,7 @@ prepare() {
   git fetch verde
 
   # https://gitlab.gnome.org/GNOME/gnome-shell/issues/1084
-  patch -Np1 -i ../nvidia-background-workaround.patch
+  #patch -Np1 -i ../nvidia-background-workaround.patch
 
   # Fixes and performance improvements to the extension system
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/96
