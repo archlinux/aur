@@ -53,8 +53,4 @@ package() {
   find "${pkgdir}" -type f -empty -exec rm -v {} \;
 
   install -dm755 "${pkgdir}/usr/lib/"
-
-  # Install ld config file
-  install -dm755 "${pkgdir}/etc/ld.so.conf.d/"
-  echo "/usr/lib/" > "${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf"
 }
