@@ -1,9 +1,12 @@
 # Maintainer: Gökberk Yaltıraklı <aur at gkbrk dot com>
+# Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
+
 pkgname=aerc2-git
-pkgver=r170.1554065285.60627c9
+_pkgname=aerc2
+pkgver=r187.a275f65
 pkgrel=1
-pkgdesc='Terminal email client'
-arch=('i686' 'x86_64')
+pkgdesc='Email Client for your Terminal'
+arch=('x86_64')
 url='https://git.sr.ht/~sircmpwn/aerc2'
 license=('MIT')
 depends=('libvterm')
@@ -14,22 +17,37 @@ source=("aerc2::git+$url")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/aerc2"
+    cd "$srcdir/$_pkgname"
 
-    printf 'r%s.%s.%s\n' \
-        "$( git rev-list --count 'HEAD' )" \
-        "$( git log --max-count='1' --pretty='format:%ct' )" \
-        "$( git rev-parse --short 'HEAD' )"
+    ( set -o pipefail
+      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
+}
+
+prepare() {
+    cd "$srcdir/$_pkgname"
+    # change filenames in example config to include package dirs
+    sed -i 's|contrib/\(.*\)|/usr/share/aerc2/\1|' config/aerc.conf
 }
 
 build() {
-    mkdir -p gopath/src/git.sr.ht/~sircmpwn/aerc2
-    rm -rf gopath/src/git.sr.ht/~sircmpwn/aerc2
-    mv aerc2 gopath/src/git.sr.ht/~sircmpwn/
-    GOPATH="$(pwd)/gopath" go get -v git.sr.ht/~sircmpwn/aerc2
-    GOPATH="$(pwd)/gopath" go build -o "$srcdir/build/aerc2" git.sr.ht/~sircmpwn/aerc2
+    cd "$srcdir/$_pkgname"
+    go build \
+        -gcflags "all=-trimpath=$PWD" \
+        -asmflags "all=-trimpath=$PWD" \
+        -ldflags "-extldflags $LDFLAGS" \
+        -o $_pkgname .
 }
 
 package() {
-    install -Dm755 "$srcdir/build/aerc2" "$pkgdir/usr/bin/aerc2"
+    cd "$srcdir/$_pkgname"
+    install -Dm755 "aerc2" "$pkgdir/usr/bin/aerc2"
+    install -Dm644 "config/accounts.conf" "$pkgdir/usr/share/doc/aerc2/accounts.conf"
+    install -Dm644 "config/aerc.conf" "$pkgdir/usr/share/doc/aerc2/aerc.conf"
+    install -Dm644 "config/binds.conf" "$pkgdir/usr/share/doc/aerc2/binds.conf"
+
+    # install contrib scripts
+    install -Dm755 -d "$pkgdir/usr/share/aerc2"
+    cp contrib/* "$pkgdir/usr/share/aerc2/"
 }
