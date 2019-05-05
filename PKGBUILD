@@ -2,7 +2,7 @@
 
 pkgname=aniadd-bin
 pkgver=04.06.14
-pkgrel=2
+pkgrel=3
 pkgdesc='A very simple to use AniDB client (GUI)'
 arch=('any')
 url='https://anidb.net/perl-bin/animedb.pl?show=software'
@@ -38,7 +38,7 @@ sha256sums=('19fbfec796de1c381797969cd085468e21cb8c41bdb67ee18f02a825ee08af6f'
 package() {
     install -D -m 644 AniAdd.jar "$pkgdir/usr/share/java/aniadd/AniAdd.jar"
     install -D -m 755 aniadd.sh "$pkgdir/usr/bin/aniadd"
-    install -D -m 644 aniadd.desktop "$pkgdir/usr/share/applications/aniadd"
+    install -D -m 644 aniadd.desktop "$pkgdir/usr/share/applications/aniadd.desktop"
 
     for size in 16x16 32x32 48x48 72x72 96x96 192x192 256x256 512x512; do
         mkdir -p "$pkgdir/usr/share/icons/hicolor/$size/apps"

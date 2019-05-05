@@ -1,7 +1,7 @@
 pkgbase = aniadd-bin
 	pkgdesc = A very simple to use AniDB client (GUI)
 	pkgver = 04.06.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://anidb.net/perl-bin/animedb.pl?show=software
 	arch = any
 	license = unknown
