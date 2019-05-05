@@ -1,0 +1,13 @@
+pkgbase = subsync
+	pkgdesc = Automagically synchronize subtitles with video
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/smacke/subsync
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	source = https://github.com/smacke/subsync/archive/master.zip
+	md5sums = 1c1bbb4ad2870194a489043eef63f8b9
+
+pkgname = subsync
+
