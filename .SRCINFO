@@ -21,9 +21,9 @@ pkgbase = squidguard
 	options = !emptydirs
 	backup = etc/logrotate.d/squidguard
 	backup = etc/squidguard/squidGuard.conf.default
-	source_i686 = http://ftp.br.debian.org/debian/pool/main/s/squidguard/squidguard_1.6.0-1_amd64.deb
+	source_i686 = http://ftp.br.debian.org/debian/pool/main/s/squidguard/squidguard_1.6.0-1_i386.deb
 	sha512sums_i686 = 86bb1d849bd3fabc6e0cbe954bfbcbee537b6cfe225ee48436e8f6f4cb9332835ce8ef1845d6dcaae6e4145cb583a45e631463e116650786e020fe75050a78f9
-	source_x86_64 = http://ftp.br.debian.org/debian/pool/main/s/squidguard/squidguard_1.6.0-1_i386.deb
+	source_x86_64 = http://ftp.br.debian.org/debian/pool/main/s/squidguard/squidguard_1.6.0-1_amd64.deb
 	sha512sums_x86_64 = 107b4fe5630656a052da5b07e3da3294b105a9a1481bde9ff738c7bb6380c35801e0f62819cb6ec2bd014ce8695bf904838ac0bc09c203e3faac637f9cc13532
 
 pkgname = squidguard
