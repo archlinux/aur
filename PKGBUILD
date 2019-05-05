@@ -1,3 +1,5 @@
+# Maintainer : Immae <ismael.bouya@normalesup.org>
+
 pkgname=openarc-git
 pkgver=v1.0.0.Beta1.r0.g355ee2a
 pkgrel=1
