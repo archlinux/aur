@@ -10,8 +10,7 @@ then
   fi
 fi
 
-
-meson setup \
+exec meson setup \
   --prefix         /usr/@TRIPLE@ \
   --libdir         /usr/@TRIPLE@/lib \
   --libexecdir     /usr/@TRIPLE@/lib \
@@ -27,8 +26,8 @@ meson setup \
   --sharedstatedir /var/lib \
   --buildtype      release \
   --wrap-mode      nofallback \
+  -D               b_lto=true \
   --strip \
   --cross-file ${CROSS_FILE} \
   --default-library shared \
-  "$@" \
-  -D               b_lto=true
+  "$@"
