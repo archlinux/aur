@@ -8,7 +8,7 @@ pkgdesc='An unofficial daemon that facilitates communication with the Signal mes
 url='https://git.callpipe.com/finn/signald'
 license=('GPL3')
 arch=('any')
-makedepends=('git' 'gradle')
+makedepends=('gradle')
 depends=('java-runtime')
 optdepends=('openbsd-netcat: interaction with signald socket'
             'qrencode: display account linking token as QR code')
