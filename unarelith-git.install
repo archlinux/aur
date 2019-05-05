@@ -25,6 +25,9 @@ post_upgrade() {
 
 	bash update_prod.sh
 
+	cp unarelith/settings.py{,.old}
+	cp unarelith/settings.py{.prod,}
+
 	sudo systemctl restart httpd
 }
 
