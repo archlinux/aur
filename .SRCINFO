@@ -1,0 +1,13 @@
+pkgbase = bukubrow
+	pkgdesc = Host application for the Bukubrow WebExtension
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/samhh/bukubrow-host/
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	source = bukubrow-4.0.0.tar.gz::https://github.com/samhh/bukubrow-host/archive/v4.0.0.tar.gz
+	md5sums = 8ef066f0a53038ae84b39ae9ebefbe25
+
+pkgname = bukubrow
+
