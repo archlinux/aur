@@ -1,0 +1,15 @@
+pkgbase = docker-credential-pass-bin
+	pkgdesc = Store docker credentials using the Standard Unix Password Manager (pass)
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/docker/docker-credential-helpers
+	arch = x86_64
+	license = MIT
+	depends = pass
+	source = docker-credential-helpers-0.6.2.tar.gz::https://github.com/docker/docker-credential-helpers/releases/download/v0.6.2/docker-credential-pass-v0.6.2-amd64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/docker/docker-credential-helpers/v0.6.2/LICENSE
+	sha512sums = 299e604a910410b599cb4649ce08853348466cb4fd7c6870e41c6999f8fa2b6c7747d7b98cb687c66c7d66da0c07e3fb5c330a13d82d40d58a16160690ff4dc1
+	sha512sums = ed166979b8cd757a3ca5e39093d8e56fe86be78e820de8da5cb9eb8e92f7b5715ce38f58548c2cb8ea6b22451ad40efc3f5bc0b811dc2d50c61c2c38c9ebc562
+
+pkgname = docker-credential-pass-bin
+
