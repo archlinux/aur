@@ -1,0 +1,14 @@
+pkgbase = dsweep
+	pkgdesc = A minesweeper clone for the terminal written in D
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/seeseemelk/dsweep
+	arch = any
+	license = MIT
+	makedepends = dub
+	makedepends = d-compiler
+	source = https://github.com/seeseemelk/dsweep/archive/v1.0.0.tar.gz
+	md5sums = 3577f474c3b253ca8948a7a90a5cff40
+
+pkgname = dsweep
+
