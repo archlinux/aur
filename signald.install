@@ -1,0 +1,22 @@
+post_install() {
+    _daemon_uid=565
+    if ! getent group signald &>/dev/null; then
+        groupadd -r -g ${_daemon_uid} signald >/dev/null
+    fi
+    if ! getent passwd signald &>/dev/null; then
+        useradd -r -u ${_daemon_uid} -g signald -d /var/lib/signald -s /bin/false -c signald signald >/dev/null
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    if getent passwd signald &>/dev/null; then
+        userdel signald >/dev/null
+    fi
+    if getent group signald &>/dev/null; then
+        groupdel signald >/dev/null
+    fi
+}
