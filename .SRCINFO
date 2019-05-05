@@ -1,16 +1,15 @@
 pkgbase = drivesync
 	pkgdesc = Google Drive synchronization for Linux
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MStadlmeier/drivesync
 	arch = any
 	license = MIT
-	makedepends = ruby2.5-bundler
-	depends = ruby2.5
+	depends = ruby>=2.5.0
 	source = https://github.com/MStadlmeier/drivesync/archive/1.4.0.tar.gz
 	source = drivesync
 	sha512sums = 9f08348ffeaf783832b817cda3616d9206492474767a2ffc772d6d7405af926c64f2e20c7e332d39d35156afa09d6388371469ba8c62b57642a92775a5de9a16
-	sha512sums = e04598797da983c07a862a9a0f7e6545e41f5a0f61673aa1b327dd1dfd7e1166a2d76b0d3548e84e2935e1a9457f9e9600351ccfbcf68dcceb10dea3206094c3
+	sha512sums = e5191b8fb8fe4659a8c1fd95def971045c00ba56cb069b83af3eb82e62baf2cb31a74b4424f6e924813eed2385014924af1149890c25ed36bb05488ff33befb0
 
 pkgname = drivesync
 
