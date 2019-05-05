@@ -16,5 +16,5 @@ pkgbase = firefox-esr-extension-https-everywhere
 	sha256sums = SKIP
 
 pkgname = firefox-esr-extension-https-everywhere
-	depends = firefox
+	depends = firefox-esr
 
