@@ -1,7 +1,7 @@
 # Maintainer: jaelpark@outlook.com
 pkgname=chamfer-git
 _pkgname=chamfer
-pkgver=r168
+pkgver=r194
 pkgrel=1
 pkgdesc="A tiling X11 window manager with Vulkan compositor."
 arch=("x86_64")
@@ -42,5 +42,7 @@ package() {
 	mkdir -p ${pkgdir}/usr/share/chamfer/{shaders,config}
 	cp build/*.spv ${pkgdir}/usr/share/chamfer/shaders/.
 	cp config/* ${pkgdir}/usr/share/chamfer/config/.
+	mkdir -p ${pkgdir}/usr/share/xsessions
+	cp share/* ${pkgdir}/usr/share/xsessions/.
 }
 

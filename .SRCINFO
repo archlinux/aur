@@ -1,6 +1,6 @@
 pkgbase = chamfer-git
 	pkgdesc = A tiling X11 window manager with Vulkan compositor.
-	pkgver = r168
+	pkgver = r194
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/chamfer-git/
 	arch = x86_64
