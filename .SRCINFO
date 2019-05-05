@@ -1,0 +1,20 @@
+pkgbase = firefox-esr-extension-https-everywhere
+	pkgdesc = Plugin for firefox which ensures you are using https whenever it's possible.
+	pkgver = 2019.5.2.1
+	pkgrel = 1
+	url = https://www.eff.org/https-everywhere
+	arch = any
+	groups = firefox-addons
+	license = GPL2
+	makedepends = unzip
+	noextract = https-everywhere-2019.5.2.1.xpi
+	source = https-everywhere-2019.5.2.1.xpi::https://www.eff.org/files/https-everywhere-2019.5.2.1-eff.xpi
+	source = https-everywhere-2019.5.2.1.xpi.sig::https://www.eff.org/files/https-everywhere-2019.5.2.1-eff.xpi.sig
+	validpgpkeys = 1073E74EB38BD6D19476CBF8EA9DBF9FB761A677
+	validpgpkeys = CE340E9D077F1DC0F4FA7B030D16CFA2BA1F7420
+	sha256sums = 895e4529f5c0f9f82a99cf412ee7bef027c42d0d73df248558fd5e50e6239c20
+	sha256sums = SKIP
+
+pkgname = firefox-esr-extension-https-everywhere
+	depends = firefox
+
