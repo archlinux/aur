@@ -1,0 +1,18 @@
+pkgbase = gitnote
+	pkgdesc = A modern note taking app based on Git.
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://gitnoteapp.com/
+	arch = x86_64
+	arch = i686
+	license = unknown
+	makedepends = p7zip
+	depends = electron2
+	depends = libappindicator-gtk2
+	depends = libnotify
+	depends = libcurl-gnutls
+	source = https://github.com/zhaopengme/gitnote/releases/download/3.1.0/GitNote_setup_3.1.0.AppImage
+	sha256sums = 3c225efabdb91f49c3ad40817877756bc8249d543f2401fc43ca2015a789fce6
+
+pkgname = gitnote
+
