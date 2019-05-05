@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Substance Alchemist
+GenericName=Experimental PBR material editor
+Description=PBR material authoring, generation, manipulation and management tool
+Exec=/usr/bin/substance-alchemist
+Icon=substance-alchemist-icon
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Utility;Graphics
+MimeType=application/x.allegorithmic.package;application/x.allegorithmic.substance
