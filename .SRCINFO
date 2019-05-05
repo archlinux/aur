@@ -1,0 +1,21 @@
+pkgbase = perl-dist-zilla-plugin-prepender
+	pkgdesc = Prepend lines at the top of your perl files
+	pkgver = 2.004
+	pkgrel = 1
+	url = https://metacpan.org/release/Dist-Zilla-Plugin-Prepender
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-deep>=0
+	depends = perl-dist-zilla>=0
+	depends = perl-module-build>=0.28
+	depends = perl-moose>=0
+	depends = perl-path-tiny>=0
+	depends = perl>=5.008
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-Prepender-2.004.tar.gz
+	md5sums = 8c99e0e31e15d5168f67a5617bc5aef9
+	sha512sums = fae3effd765b1f2f7c5f844c53cd634a964023132bce87ae9d6aed5152b13b3af919879e9b4a21c6008f57aac3cf307077e85ec0a7d2b18c9c2bb409f0ead58c
+
+pkgname = perl-dist-zilla-plugin-prepender
+
