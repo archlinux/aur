@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 
-GEM_PATH='/usr/share/drivesync/vendor/bundle/ruby/2.5.0/' ruby /usr/share/drivesync/drivesync.rb
+GEM_PATH='/usr/share/drivesync/vendor/bundle/ruby/2.5.0/' ruby-2.5 /usr/share/drivesync/drivesync.rb

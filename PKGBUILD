@@ -1,22 +1,22 @@
 # Maintainer: Marco Scarpetta <marcoscarpetta02@gmail.com>
 
 pkgname=drivesync
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Google Drive synchronization for Linux'
 arch=('any')
 url='https://github.com/MStadlmeier/drivesync'
 license=('MIT')
-depends=('ruby>=2.5.0' 'ruby<2.6.0')
-makedepends=('ruby-bundler')
+depends=('ruby2.5')
+makedepends=('ruby2.5-bundler')
 source=("https://github.com/MStadlmeier/$pkgname/archive/$pkgver.tar.gz"
         'drivesync')
-sha512sums=('c31554c1ba5c0ff48757e153860a3ce8acd050b07373c087d81ee0b15164215658341202db6211987e6c9e576756304eec4eafbbf8bdd68560ffa9cc0b60aca0'
-            'ee46c6dcff180f581bbe0f80991f5b6fc0403683fe9e28e19d2263b9f6b93e71d90a70ff2def3d79d0635477fc7ebeac585be43ec4c2696615063cdd0fcf75dd')
+sha512sums=('9f08348ffeaf783832b817cda3616d9206492474767a2ffc772d6d7405af926c64f2e20c7e332d39d35156afa09d6388371469ba8c62b57642a92775a5de9a16'
+            'e04598797da983c07a862a9a0f7e6545e41f5a0f61673aa1b327dd1dfd7e1166a2d76b0d3548e84e2935e1a9457f9e9600351ccfbcf68dcceb10dea3206094c3')
 
 build() {
     cd "$pkgname-$pkgver"
-    bundle install --no-cache --deployment
+    bundle-2.5 install --no-cache --deployment
 }
 
 package() {
