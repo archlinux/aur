@@ -7,7 +7,7 @@
 _pkgname=instantclient-tools
 pkgname=oracle-${_pkgname}
 pkgver=19.3.0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Data Pump, SQL*Loader and Workload Replay Client for Oracle Instant Client"
 arch=('x86_64')
 url="http://www.oracle.com/technetwork/database/features/instant-client/"
@@ -56,4 +56,7 @@ package() {
 	install -m 755 -t "$pkgdir/usr/bin" exp expdp imp impdp sqlldr wrc
 	install -m 755 -t "$pkgdir/usr/lib" *.so*
 	install -m 644 -t "$pkgdir/usr/share/doc/oracle" *README*
+
+	# Avoid conflict with WINE
+	mv "$pkgdir/usr/bin/wrc" "$pkgdir/usr/bin/wrc-oracle"
 }
