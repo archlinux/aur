@@ -1,6 +1,6 @@
 # Maintainer: Jerry Lin <jerry73204 at gmail dot com>
 pkgname=stage-git
-pkgver=r2323.0a7eb63f
+pkgver=r2333.0c85412d
 pkgrel=1
 pkgdesc='Stage is a robot simulator providing a virtual world populated by mobile robots and sensors, along with various objects for the robots to sense and manipulate.'
 arch=('i686' 'x86_64')
