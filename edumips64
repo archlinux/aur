@@ -1,0 +1,3 @@
+#!/bin/sh
+CP="/usr/share/java/javahelp/*.jar"
+exec /usr/bin/java -cp "$CP" -jar '/usr/share/edumips64/edumips64.jar' "$@"

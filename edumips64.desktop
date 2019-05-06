@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=EduMIPS64
+GenericName=EduMIPS64
+Exec=edumips64
+Terminal=false
+Icon=edumips64
+Type=Application
+Categories=Education;
+Comment=Cross-platform educational MIPS64 CPU simulator

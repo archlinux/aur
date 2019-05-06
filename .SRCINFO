@@ -1,0 +1,20 @@
+pkgbase = edumips64
+	pkgdesc = Cross-platform educational MIPS64 CPU simulator
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://www.edumips.org
+	arch = any
+	license = GPL
+	depends = java-runtime
+	depends = javahelp2
+	source = https://github.com/lupino3/edumips64/releases/download/v1.2.5/edumips64-1.2.5-nodeps.jar
+	source = edumips64.desktop
+	source = edumips64.png
+	source = edumips64
+	sha256sums = a9638308d2b8e784d26656ac0dbf9d0756aad03693c13458a78adbf6f218dea4
+	sha256sums = 95ac7ee775fc01c9868fcba81b89c11bd104531c4d48316721e8a2ff9ef29922
+	sha256sums = 25d07c621bd61d1153e1ebf21a2d111a46ec1d74f8c8887ddade423cadbd47d4
+	sha256sums = bdda655aa1579b0a2fe3ece83f8db5afc50cfa3adf514fae8261b46e252a3184
+
+pkgname = edumips64
+
