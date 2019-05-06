@@ -3,9 +3,9 @@
 
 pkgname=wire-desktop
 pkgver=3.9.2895
-pkgrel=2
+pkgrel=3
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
-arch=('x86_64')
+arch=('any')
 url='https://wire.com/'
 license=('GPL3')
 depends=('electron' 'xdg-utils')
