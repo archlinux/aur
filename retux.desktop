@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Retux
+Comment=Game based on the SuperTux.
+Categories=Game;ArcadeGame;
+Exec=/usr/games/retux
+Hidden=false
+Terminal=false
+Type=Application
+Icon=/usr/share/icons/retux.png
