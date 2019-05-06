@@ -1,0 +1,35 @@
+pkgbase = python-geoviews
+	pkgdesc = Simple, concise geographical visualization in Python
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/pyviz/geoviews
+	arch = any
+	groups = bokeh-ecosystem
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-coveralls
+	checkdepends = python-nose
+	checkdepends = flake8
+	makedepends = python-setuptools
+	makedepends = python-param
+	depends = python-bokeh
+	depends = python-cartopy
+	depends = python-holoviews
+	depends = python-numpy
+	depends = python-param
+	optdepends = python-datashader
+	optdepends = python-geopandas
+	optdepends = python-netcdf4
+	optdepends = python-gdal
+	optdepends = python-matplotlib>2.2
+	optdepends = python-pandas
+	optdepends = python-pyct
+	optdepends = python-scipy
+	optdepends = python-shapely
+	optdepends = python-xarray
+	optdepends = jupyter
+	source = https://github.com/pyviz/geoviews/archive/v1.6.2.tar.gz
+	sha256sums = b89c44168891fff3071e38a671a8f7806179a60733dbedc2a32143ebabc2b974
+
+pkgname = python-geoviews
+
