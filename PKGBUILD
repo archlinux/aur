@@ -1,3 +1,4 @@
+# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=viper4linux-gui-git
 pkgver=1.5.r0.6f13b51
 pkgrel=1
