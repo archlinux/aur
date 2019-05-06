@@ -1,21 +1,23 @@
 # Maintainer: basigur
 
 pkgname=papirus-folders-nordic
-pkgver=1.1.1
+pkgver=2.0
 pkgrel=1
 pkgdesc="Icons themes papirus color folder nordic."
 arch=('any')
 url="https://github.com/basigur/papirus-folders"
 license=("LGPL3")
 conflicts=()
-replaces=('papirus-folders-nordic' 'papirus-icon-theme')
+replaces=('papirus-folders-nordic')
 depends=('gtk-update-icon-cache' 'papirus-icon-theme')
-source=("https://github.com/basigur/papirus-folders/releases/download/v$pkgver/papirus-folders-nordic-v$pkgver.tar.gz")
+source=("https://github.com/basigur/papirus-folders/archive/v$pkgver.tar.gz?/papirus-folders-nordic-v$pkgver.tar.gz")
 
-sha512sums=('131DBACAEA0CE1AC1F00EFE659F532AB7B63DFCD97D2FC3669C176BDACB5A006E76C493AB4B8CBB374274F5B7B44745F58F2C197597C50D9DF14F5EDC1C00AA5')
+sha512sums=('391e4afa72cc5747caa3bff356dd9579afdc36630b7423e03d41617fb06a36928371152438018873e718b8a9d40bf71d295ab75624b229ea5de3c6f5e3c16e6a')
 
 
 package() {
+ cd papirus-folders-$pkgver/$pkgname
+
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   install -d "$pkgdir/usr/share/doc/$pkgname"
   install -d "$pkgdir/usr/share/icons"
