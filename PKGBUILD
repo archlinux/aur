@@ -7,10 +7,11 @@
 pkgbase=linux-lts-tomoyo
 _srcname=linux-4.19
 pkgver=4.19.40
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
+depends=('tomoyo-tools-25')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
