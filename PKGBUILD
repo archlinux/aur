@@ -1,10 +1,10 @@
 # Maintainer: Erikas Rudinskas <erikmnkl@gmail.com>
 
 pkgname=nbfc
-pkgver=1.6_beta2
+pkgver=1.6.3
 _pkgver=$(echo $pkgver | sed -r 's/_/-/g')
 _pkgname=nbfc-${_pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Cross-platform fan control service for notebooks (STABLE & BETA releases)"
 arch=("i686" "x86_64")
 url="https://github.com/hirschmann/nbfc"
@@ -18,7 +18,7 @@ makedepends=('nuget')
 source=("https://github.com/hirschmann/nbfc/archive/${_pkgver}.tar.gz"
         "nbfc"
         "ec-probe")
-md5sums=("d2b890d4fcee961024aa61e14a61d741"
+md5sums=("2b61dde6a98622b57d85448e611dd382"
          "2dc636f29fa935ea427e6e67bdb9f65d"
          "81686043a7fc44d620a00a171c917936")
 
