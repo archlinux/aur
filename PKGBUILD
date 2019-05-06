@@ -1,17 +1,17 @@
 # Maintainer: eomanis at web dot de
 
 pkgname='inherit-acl'
-pkgverUpstream="0.1.0"
-pkgver="${pkgverUpstream//-/.}"
-pkgrel=1
+_pkgverUpstream="0.1.0"
+pkgver="${_pkgverUpstream//-/.}"
+pkgrel=2
 pkgdesc="Tool that applies to a path its parent directory's permissions and ACL"
 arch=('any')
-url='http://eomanis.mooo.com/permshare/inherit-acl/index.xhtml'
+url='https://eomanis.duckdns.org/permshare/inherit-acl/index.xhtml'
 license=('GPL3')
 depends=('bash>=4.3' 'coreutils' 'sed' 'acl')
 optdepends=('sudo: Sudo integration')
-source=("http://eomanis.mooo.com/permshare/inherit-acl/inherit-acl-${pkgverUpstream}.tar.gz")
-sha256sums=('8df51daec1129b9d683498b797465b41d1377adc26860381dc9820c2ba68970e')
+source=("https://eomanis.duckdns.org/permshare/inherit-acl/inherit-acl-${_pkgverUpstream}.tar.gz")
+sha384sums=('f3417fa441abd1a1cc44cb0f3897fd29bb850f72688708bf7792a9f4abb67c8d12a7d2aa3b95026dfe5254b31d48e56e')
 
 package() {
     
