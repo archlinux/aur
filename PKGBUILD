@@ -3,7 +3,7 @@
 # Previous Maintainer: midgard <arch dot midgard "at symbol" janmaes "youknowwhat" com>
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=libdart
-pkgver=6.8.3
+pkgver=6.8.4
 pkgrel=1
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
@@ -12,6 +12,7 @@ license=('BSD')
 depends=('assimp' 'boost' 'eigen' 'fcl' 'libccd' 'freeglut')
 optdepends=('bullet: Bullet collision detection support'
             'coin-or-ipopt: Ipopt optimizer support'
+            'doxygen: required for building documentation'
             'flann: planning module support'
             'nlopt: NLopt optimizer support'
             'octomap: voxel grid shape support'
@@ -20,10 +21,10 @@ optdepends=('bullet: Bullet collision detection support'
             'pagmo: pagmo optimizer support'
             'tinyxml2: parser support'
             'urdfdom: urdf parser support')
-makedepends=('cmake' 'doxygen')
+makedepends=('cmake')
 _name=dart
 source=(https://github.com/dartsim/${_name}/archive/v${pkgver}.tar.gz)
-sha256sums=('0d335fb84ccaf375752c9e04121af1fcae201afe3da41b87550906f6a13f7cca')
+sha256sums=('ff6272bdfea26df1dee2a5652e7e4a4db64aa3809ddd0704c17fde8fb0b1eae3')
 
 _buildtype="Release"
 

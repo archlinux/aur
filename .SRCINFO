@@ -1,13 +1,12 @@
 pkgbase = libdart
 	pkgdesc = Dynamic Animation and Robotics Toolkit
-	pkgver = 6.8.3
+	pkgver = 6.8.4
 	pkgrel = 1
 	url = https://dartsim.github.io
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
-	makedepends = doxygen
 	depends = assimp
 	depends = boost
 	depends = eigen
@@ -16,6 +15,7 @@ pkgbase = libdart
 	depends = freeglut
 	optdepends = bullet: Bullet collision detection support
 	optdepends = coin-or-ipopt: Ipopt optimizer support
+	optdepends = doxygen: required for building documentation
 	optdepends = flann: planning module support
 	optdepends = nlopt: NLopt optimizer support
 	optdepends = octomap: voxel grid shape support
@@ -24,8 +24,8 @@ pkgbase = libdart
 	optdepends = pagmo: pagmo optimizer support
 	optdepends = tinyxml2: parser support
 	optdepends = urdfdom: urdf parser support
-	source = https://github.com/dartsim/dart/archive/v6.8.3.tar.gz
-	sha256sums = 0d335fb84ccaf375752c9e04121af1fcae201afe3da41b87550906f6a13f7cca
+	source = https://github.com/dartsim/dart/archive/v6.8.4.tar.gz
+	sha256sums = ff6272bdfea26df1dee2a5652e7e4a4db64aa3809ddd0704c17fde8fb0b1eae3
 
 pkgname = libdart
 
