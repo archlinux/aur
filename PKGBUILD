@@ -1,6 +1,6 @@
 # Maintainer: Svitozar Cherepii <razotivs@gmail.com>
 pkgname=rvgl-soundtrack
-pkgver=18.1126
+pkgver=18.0920
 pkgrel=1
 pkgdesc="RVGL community-made sountrack."
 url='https://rvgl.re-volt.io'
