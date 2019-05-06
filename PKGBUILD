@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=goxel-git
-pkgver=r124.1b8cbbf
+pkgver=r125.4f5a813
 pkgrel=1
 pkgdesc="Download accelerator written in Go (inspired by axel)"
 url="https://github.com/m1ck43l/goxel"
