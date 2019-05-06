@@ -1,14 +1,4 @@
 post_install() {
-  /usr/sbin/groupadd safekeep 2>/dev/null || true
-  /usr/sbin/useradd -s /bin/bash -g safekeep -d /var/lib/safekeep  -s /sbin/nologin \
-    -c "Used by SafeKeep to run and store backups." safekeep 2>/dev/null || true
-
-
-  if [ ! -d /var/lib/safekeep ]; then
-    mkdir /var/lib/safekeep
-  fi
-  chown -R safekeep:safekeep /var/lib/safekeep
-
   cat << _EOF
 
 	NOTE: You will have to manually take care of a number of
