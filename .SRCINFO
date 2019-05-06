@@ -1,10 +1,10 @@
 pkgbase = auctex
 	pkgdesc = An extensible package for writing and formatting TeX files in Emacs
 	pkgver = 12.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/auctex/
 	install = auctex.install
-	arch = x86_64
+	arch = any
 	license = GPL3
 	depends = emacs
 	depends = ghostscript

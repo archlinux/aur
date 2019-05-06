@@ -1,11 +1,11 @@
-# Maintainer: LinRs <20455421+LinRs AT users.noreply.github.com>
+# Maintainer: LinRs <LinRs AT users.noreply.github.com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=auctex
 pkgver=12.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An extensible package for writing and formatting TeX files in Emacs"
-arch=('x86_64')
+arch=('any')
 url="https://www.gnu.org/software/auctex/"
 license=('GPL3')
 depends=('emacs' 'ghostscript' 'texlive-core')
