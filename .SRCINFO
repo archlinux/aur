@@ -1,14 +1,16 @@
 pkgbase = rem
 	pkgdesc = portable library for real-time audio and video processing
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = http://creytiv.com/rem.html
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = re
-	source = http://creytiv.com/pub/rem-0.5.0.tar.gz
-	md5sums = 042b8951fd5da7b25eb3f9aa942cae74
+	source = http://creytiv.com/pub/rem-0.6.0.tar.gz
+	source = rem-flags.patch
+	sha256sums = 417620da3986461598aef327c782db87ec3dd02c534701e68f4c255e54e5272c
+	sha256sums = 2db9d6f0264a40ca59d7cc06855ba762e1759596f2a87a818bd72fa5a5626f41
 
 pkgname = rem
 

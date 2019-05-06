@@ -1,21 +1,31 @@
-# Maintainer: Dmitrij D. Czarkoff <czarkoff@gmail.com>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Dmitrij D. Czarkoff <czarkoff@gmail.com>
+
 pkgname=rem
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="portable library for real-time audio and video processing"
 arch=('i686' 'x86_64')
 url="http://creytiv.com/rem.html"
 license=('BSD')
 depends=('re')
-source=("http://creytiv.com/pub/$pkgname-$pkgver.tar.gz")
-md5sums=('042b8951fd5da7b25eb3f9aa942cae74')
+source=("http://creytiv.com/pub/${pkgname}-${pkgver}.tar.gz"
+        "rem-flags.patch")
+sha256sums=('417620da3986461598aef327c782db87ec3dd02c534701e68f4c255e54e5272c'
+            '2db9d6f0264a40ca59d7cc06855ba762e1759596f2a87a818bd72fa5a5626f41')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -Np1 -i "${srcdir}/rem-flags.patch"
+}
 
 build() {
-	cd "$pkgname-$pkgver"
-	make
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 docs/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
