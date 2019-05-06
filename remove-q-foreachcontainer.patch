@@ -1,0 +1,7 @@
+--- module_misc/translation.cpp  2015-07-29 12:28:12.000000000 +0200
++++ module_misc/translation.cppnew       2019-05-06 16:37:14.644894255 +0200
+@@ -1,5 +1,4 @@
+ #include <QLocale>
+-#include <QForeachContainer>
+ #include <QDebug>
+ #include <QStringList>
