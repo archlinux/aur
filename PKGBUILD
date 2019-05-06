@@ -2,7 +2,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=pagmo
 pkgver=2.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model"
 arch=('i686' 'x86_64')
 url="https://github.com/esa/pagmo2"
@@ -31,7 +31,7 @@ check_optdepends() {
     fi
 
     # Check if eigen is installed
-    if (pacman -Qqs eigen >/dev/null) ; then
+    if (pacman -Qqs eigen3 >/dev/null) ; then
         msg "Enabling eigen support"
         _cmake_options=(${_cmake_options[@]} -DPAGMO_WITH_EIGEN3=ON)
     else
