@@ -1,7 +1,7 @@
 pkgbase = disk-test
 	pkgdesc = Block device read-write test utility
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://eomanis.duckdns.org/permshare/disk-test/index.xhtml
 	arch = any
 	license = GPL3
