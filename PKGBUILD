@@ -1,8 +1,8 @@
-# Maintainer: Kelsey Maes <kelseymaes at outlook dot com>
+# Maintainer: Lukas Zimmermann <luk.zim91 at gmail dot com>
+# Contributor: Kelsey Maes <kelseymaes at outlook dot com>
 
-_name=applicationinsights
-pkgname=python-$_name
-pkgver=0.11.6
+pkgname=python-applicationinsights
+pkgver=0.11.9
 pkgrel=1
 pkgdesc="Application Insights SDK for Python"
 arch=('any')
@@ -10,14 +10,15 @@ url="https://github.com/Microsoft/ApplicationInsights-Python"
 license=('MIT')
 makedepends=('python-setuptools')
 source=("https://github.com/Microsoft/ApplicationInsights-Python/archive/v${pkgver}.tar.gz")
-sha256sums=('68fa0e65df3b1376d1efac3d035f62fe7137a3109caba548c1c4a46f6960b483')
+sha256sums=('f343ce7fcc43a4732d80b73b5730ee57ace6ff41fd98efc544af7807593a4452')
 
 build() {
-  cd "ApplicationInsights-Python-$pkgver"
+  cd "ApplicationInsights-Python-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "ApplicationInsights-Python-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd "ApplicationInsights-Python-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
+
