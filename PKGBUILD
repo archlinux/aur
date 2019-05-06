@@ -6,7 +6,7 @@ url='https://github.com/NVIDIA/enroot'
 arch=(x86_64)
 license=(BSD)
 makedepends=(git gcc make libcap libtool)
-depends=(bash coreutils curl gawk jq libbsd parallel shadow squashfs-tools grep findutils gzip glibc sed tar util-linux)
+depends=(bash coreutils curl gawk jq parallel shadow squashfs-tools grep findutils gzip glibc sed tar util-linux)
 optdepends=(pv pigz ncurses libnvidia-container-tools squashfuse fuse-overlayfs)
 source=("git+https://github.com/NVIDIA/enroot.git#tag=v${pkgver}")
 sha256sums=(SKIP)

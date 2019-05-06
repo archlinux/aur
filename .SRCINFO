@@ -16,7 +16,6 @@ pkgbase = enroot-git
 	depends = curl
 	depends = gawk
 	depends = jq
-	depends = libbsd
 	depends = parallel
 	depends = shadow
 	depends = squashfs-tools
