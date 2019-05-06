@@ -1,4 +1,5 @@
 pkgname=scannerextract
+_pkgname=scannerExtract
 pkgver=0.2.601
 pkgrel=1
 pkgdesc="Scanned Image Extractor"
@@ -6,7 +7,10 @@ depends=('liblbfgs' 'opencv2')
 license=('GPL3')
 arch=('any')
 url="http://www.dominik-ruess.de/scannerExtract/scannerExtract_help_en.html"
-source=(https://ayera.dl.sourceforge.net/project/scannedimageextractor/Version-${pkgver}/SIE-${pkgver}.tar.bz2 remove-q-foreachcontainer.patch)
+source=(
+"${pkgname}-${pkgver}::https://ayera.dl.sourceforge.net/project/scannedimageextractor/Version-${pkgver}/SIE-${pkgver}.tar.bz2"
+"remove-q-foreachcontainer.patch"
+)
 
 #https://downloads.sourceforge.net/project/scannedimageextractor/Version-0.2.601/SIE-0.2.601.tar.bz2.sha256?r=https%3A%2F%2Fsourceforge.net%2F&ts=1557152577
 sha256sums=('f2473afef1e0cf972a60eec323fc323739aa9e0e8bb14dab639a787cec007dd8'
@@ -14,7 +18,7 @@ sha256sums=('f2473afef1e0cf972a60eec323fc323739aa9e0e8bb14dab639a787cec007dd8'
 )
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$_pkgname-$pkgver"
 
 # Remove strange windows line return stopping patch from … uuhm patching.
     tr -d '\r' < module_misc/translation.cpp > module_misc/translation.cpp.new
@@ -27,6 +31,6 @@ build() {
 }
 
 package() {
-    cd "$pkgname-$pkgver"/build
+    cd "$_pkgname-$pkgver"/build
     make DESTDIR="$pkgdir/" install
 }
