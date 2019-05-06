@@ -24,7 +24,8 @@ pkgname+='-beta'
 #pkgver=14.1.3399
 #pkgver=14.1.9025
 #pkgver=14.1.18533
-pkgver=14.2.2558
+#pkgver=14.2.2558
+pkgver=14.2.8352
 pkgrel=1
 pkgdesc='All-In-One Software for Remote Support and Online Meetings'
 arch=('i686' 'x86_64' 'armv7h')
@@ -60,12 +61,12 @@ source_x86_64=("${_dl}/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver
 source_i686=("${_dl}/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_i386.deb")
 source_armv7h=("${_dl}/download/linux/version_${pkgver%%.*}x/teamviewer-host_${pkgver}_armhf.deb")
 #source_armv7h=("${_dl}/download/linux/version_${pkgver%%.*}x/teamviewer-host_13.2.13582_armhf.deb")
-md5sums_i686=('d6152c6fb68da6a70be3a1ea6e528e9c')
-md5sums_x86_64=('e65d2dd4333983a910d7fe3799887bc9')
-md5sums_armv7h=('8dc3704f14261b2c4afcedd332c08d8f')
-sha256sums_i686=('3d0c980c05c5e48e9b6ce4755baba49d2253a708500bc36fd6a3d6477561090d')
-sha256sums_x86_64=('9aa1a01e92a48349e681d1f003ee098afdaf71728b445b43cca1422781decdf1')
-sha256sums_armv7h=('c64e4c451501d6e7b8f9066349b3562dcfc1111db20b000d6fd8d8323eedf9c3')
+md5sums_i686=('aaa1d7c44347f5928b8329ccd59695c7')
+md5sums_x86_64=('4c63e75b3018d22c6d4ece1364f4b1d8')
+md5sums_armv7h=('c65ba50e947fe1dd6732d44d576a9f70')
+sha256sums_i686=('23321131a51d65b7a594599ad6fc88cc8033381bfc7eed681d1209b14ebd157e')
+sha256sums_x86_64=('5e89849b45302c12b752ee99b9aaa48c0e8dde4f756d389d078b3cf3e8804e8c')
+sha256sums_armv7h=('e3f41879ad19ee28091f8293f3449c1b74af06e81423bba87574364df4963f61')
 
 case "${_opt_Type}" in
 'R')
@@ -91,6 +92,7 @@ prepare() {
 	shopt -u nullglob
 	sed -i '/function CheckQtQuickControls()/{N;a ls /usr/lib/qt/qml/QtQuick/Controls/qmldir &>/dev/null && return # ArchLinux
 }' ./opt/teamviewer/tv_bin/script/teamviewer_setup || msg2 "Patching CheckQtQuickControls failed! Contact maintainer"
+	sed -e 's:/var/run/:/run/:g' -i 'opt/teamviewer/tv_bin/script/teamviewerd.service'
 }
 
 check() {
