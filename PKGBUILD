@@ -2,16 +2,16 @@
 _gemname=discid
 pkgname=ruby-$_gemname
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby bindings for the MusicBrainz DiscID library libdiscid."
 arch=(any)
 url="https://github.com/phw/ruby-discid"
 license=('LGPL3')
 depends=(ruby ruby-ffi libdiscid) # Full dependency information is available in the yaml specification
 makedepends=(rubygems ruby-rdoc)
-source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=(f07385b7200b7112cc91ab749cc0658e0cc2a6b7d617da7e14164b91cd22ff6b)
+sha256sums=(35bd45adad20ac50293e10926af0bac0e0f4057513d605d3908d996dfece9d01)
 
 package() {
   cd "$srcdir"

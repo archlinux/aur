@@ -1,7 +1,7 @@
 pkgbase = ruby-discid
 	pkgdesc = Ruby bindings for the MusicBrainz DiscID library libdiscid.
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/phw/ruby-discid
 	arch = any
 	license = LGPL3
@@ -11,8 +11,8 @@ pkgbase = ruby-discid
 	depends = ruby-ffi
 	depends = libdiscid
 	noextract = discid-1.4.0.gem
-	source = http://gems.rubyforge.org/gems/discid-1.4.0.gem
-	sha256sums = f07385b7200b7112cc91ab749cc0658e0cc2a6b7d617da7e14164b91cd22ff6b
+	source = https://rubygems.org/downloads/discid-1.4.0.gem
+	sha256sums = 35bd45adad20ac50293e10926af0bac0e0f4057513d605d3908d996dfece9d01
 
 pkgname = ruby-discid
 
