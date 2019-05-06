@@ -2,7 +2,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=pagmo
 pkgver=2.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model"
 arch=('i686' 'x86_64')
 url="https://github.com/esa/pagmo2"
@@ -25,7 +25,7 @@ check_optdepends() {
     # Check if coin-or-ipopt is installed
     if (pacman -Qqs coin-or-ipopt >/dev/null) ; then
         msg "Enabling ipopt support"
-        _cmake_options=(${cmake_options[@]} - D PAGMO_WITH_IPOPT=ON)
+        _cmake_options=(${_cmake_options[@]} -DPAGMO_WITH_IPOPT=ON)
     else
         msg "Disabling ipopt support"
     fi
@@ -33,7 +33,7 @@ check_optdepends() {
     # Check if eigen is installed
     if (pacman -Qqs eigen >/dev/null) ; then
         msg "Enabling eigen support"
-        _cmake_options=(${cmake_options[@]} - D PAGMO_WITH_EIGEN3=ON)
+        _cmake_options=(${_cmake_options[@]} -DPAGMO_WITH_EIGEN3=ON)
     else
         msg "Disabling eigen support"
     fi
@@ -41,7 +41,7 @@ check_optdepends() {
     # Check if nlopt is installed
     if (pacman -Qqs nlopt >/dev/null) ; then
         msg "Enabling nlopt support"
-        _cmake_options=(${cmake_options[@]} - D PAGMO_WITH_NLOPT=ON)
+        _cmake_options=(${_cmake_options[@]} -DPAGMO_WITH_NLOPT=ON)
     else
         msg "Disabling nlopt support"
     fi
