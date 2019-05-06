@@ -6,7 +6,7 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=60.6.1
+pkgver=60.6.2
 _pkgver=60.3.0
 pkgrel=1
 pkgdesc="GNU version of the Firefox browser."
@@ -16,7 +16,7 @@ license=('GPL' 'MPL' 'LGPL')
 depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'alsa-lib' 'ffmpeg'
          'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'autoconf2.13'
-             'libpulse' 'gst-plugins-base-libs' 'inetutils' 'rust' 'llvm' 'clang' 'bzr' 'wget')
+             'libpulse' 'gst-plugins-base-libs' 'inetutils' 'rust' 'llvm' 'clang' 'bzr' 'wget' 'mercurial' 'perl-rename')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
