@@ -1,14 +1,14 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=edfbrowser
 pkgver=1.67
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, opensource, multiplatform, universal viewer and toolbox intended for, but
 not limited to, timeseries storage files like EEG, EMG, ECG, BioImpedance, etc."
 arch=('i686' 'x86_64')
 url="http://www.teuniz.net/edfbrowser/"
 license=('GPL')
 groups=()
-depends=('qt4')
+depends=('qt5-base')
 makedepends=()
 optdepends=()
 provides=()
@@ -26,7 +26,7 @@ sha1sums=('f26a7ad580ac8eee7e1b4b30b5edbda1e36632d5'
 
 build() {
   cd "$srcdir/edfbrowser_167_source"
-  qmake-qt4
+  qmake
   make
 }
 
