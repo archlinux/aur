@@ -13,9 +13,6 @@ _enable_gcc_more_v="y"
 # which will cause a failure to build if using makechrootpkg. Note that the
 # generic (default) option is 26.
 #
-# Note - the march=native option is unavailable by this method, use the nconfig
-# and manually select it.
-#
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
 #  3. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10)
@@ -42,6 +39,7 @@ _enable_gcc_more_v="y"
 #  24. Intel Cannon Lake (MCANNONLAKE)
 #  25. Intel Ice Lake (MICELAKE)
 #  26. Generic-x86-64 (GENERIC_CPU)
+#  27. Native optimizations autodetected by GCC (MNATIVE)
 _subarch=
 
 # Compile ONLY probed modules
@@ -67,10 +65,10 @@ _rev_override="n"
 _major=4.19
 _minor=40
 _srcname=linux-${_major}
-_clr=${_major}.38-26
+_clr=${_major}.40-29
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2018"
 license=('GPL2')
