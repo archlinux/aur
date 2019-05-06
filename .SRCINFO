@@ -2,7 +2,7 @@ pkgbase = polybar-git
 	pkgdesc = A fast and easy-to-use status bar
 	pkgver = 3.3.0
 	pkgrel = 1
-	url = https://github.com/jaagr/polybar
+	url = https://github.com/polybar/polybar
 	install = polybar.install
 	arch = i686
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = polybar-git
 	optdepends = curl: github module support
 	provides = polybar
 	conflicts = polybar
-	source = polybar::git+https://github.com/jaagr/polybar.git
+	source = polybar::git+https://github.com/polybar/polybar.git
 	md5sums = SKIP
 
 pkgname = polybar-git
