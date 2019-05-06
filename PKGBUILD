@@ -8,9 +8,8 @@ arch=('i686' 'x86_64')
 url="http://fraqtive.mimec.org/"
 license=('GPL')
 depends=('hicolor-icon-theme' 'qt4' 'glu' 'xdg-utils')
-install=$pkgname.install
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
-sha256sums=('dbb21b5e6305cbf02c27aaedb12c5125ac873600bce10d12e88b2305a2083cd7')
+source=($pkgname-$pkgver.tar.gz::https://github.com/mimecorg/$pkgname/archive/v$pkgver.tar.gz)
+sha256sums=('3b2cbf73cd3a0743ed05f12afe168c4eb0404bb025b010e77f4d5faea4933d96')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
