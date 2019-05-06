@@ -1,15 +1,15 @@
 pkgbase = nodejs-bootlint
 	pkgdesc = HTML linter for Bootstrap projects
-	pkgver = 0.16.5
+	pkgver = 0.16.6
 	pkgrel = 1
 	url = https://github.com/twbs/bootlint
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = bootlint-0.16.5.tgz
-	source = http://registry.npmjs.org/bootlint/-/bootlint-0.16.5.tgz
-	sha256sums = 1fe41ad15e0390e5a62eb09f3643bbeb4ffb6b9d54db6a6d2d8d51d8068338d9
+	noextract = bootlint-0.16.6.tgz
+	source = http://registry.npmjs.org/bootlint/-/bootlint-0.16.6.tgz
+	sha256sums = 552ec1826d059263429b3828d8cb73b8685cf626ebefaa525008e462a254c27e
 
 pkgname = nodejs-bootlint
 
