@@ -5,11 +5,11 @@ pkgver=0.2.0+584+4501738
 pkgrel=1
 pkgdesc="Library requirements of the OpenCL C programming language"
 arch=('any')
-url="http://libclc.llvm.org/"
+url="https://libclc.llvm.org/"
 license=('MIT')
 makedepends=('clang' 'llvm' 'python2' 'git')
 options=('staticlibs')
-source=('git+http://llvm.org/git/libclc.git#commit=4501738')
+source=('git+https://llvm.org/git/libclc.git#commit=4501738')
 md5sums=('SKIP')
 
 pkgver() {
