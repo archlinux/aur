@@ -1,0 +1,12 @@
+prefix=/usr/@ARCH@
+exec_prefix=${prefix}
+libdir=/usr/@ARCH@/lib
+includedir=/usr/@ARCH@/include
+
+Name: libuv
+Version: @VERSION@
+Description: multi-platform support library with a focus on asynchronous I/O.
+URL: http://libuv.org/
+
+Libs: -L${libdir} -luv -lpthread  -lws2_32 -lpsapi -liphlpapi -lshell32 -luserenv -luser32
+Cflags: -I${includedir}
