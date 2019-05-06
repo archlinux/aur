@@ -12,10 +12,12 @@ pkgbase = vimix-kde-git
 pkgname = vimix-kde-git
 	optdepends = vimix-gtk-themes-git: Matching GTK theme
 	optdepends = kvantum-theme-vimix-git: Vimix theme for Kvantum
-	optdepends = vimix-icon-theme-git: Matching icon theme
 	optdepends = tela-icon-theme-git: Recommended icon theme
 
 pkgname = kvantum-theme-vimix-git
 	pkgdesc = Vimix theme for Kvantum
 	depends = kvantum-qt5
+	optdepends = vimix-gtk-themes-git: Matching GTK theme
+	optdepends = vimix-kde-git: Matching KDE Plasma 5 theme
+	optdepends = tela-icon-theme-git: Recommended icon theme
 

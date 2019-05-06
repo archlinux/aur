@@ -14,36 +14,39 @@ source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_gitname}"
+    cd "${srcdir}/${_gitname}"
     echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package_vimix-kde-git() {
-	optdepends=('vimix-gtk-themes-git: Matching GTK theme'
-				'kvantum-theme-vimix-git: Vimix theme for Kvantum'
-				'vimix-icon-theme-git: Matching icon theme'
-				'tela-icon-theme-git: Recommended icon theme')
+    optdepends=('vimix-gtk-themes-git: Matching GTK theme'
+        'kvantum-theme-vimix-git: Vimix theme for Kvantum'
+        'tela-icon-theme-git: Recommended icon theme')
 	
-	cd "${srcdir}/${_gitname}"
-	install -d "${pkgdir}/"usr/share
+    cd "${srcdir}/${_gitname}"
+    install -d "${pkgdir}/"usr/share
 	
-	for _dir in plasma aurorae color-schemes ; do
-		cp -r "${_dir}" "${pkgdir}/"usr/share ;
-	done
+    for _dir in plasma aurorae color-schemes ; do
+	    cp -r "${_dir}" "${pkgdir}/"usr/share ;
+    done
 	
-	for _theme in ${pkgdir}/usr/share/plasma/desktoptheme/Vimix* ; do
-		cp -r "${pkgdir}/"usr/share/plasma/desktoptheme/icons "${_theme}"
-	done
-	rm -rf "${pkgdir}/"usr/share/plasma/desktoptheme/icons
+    for _theme in Vimix Vimix-Beryl Vimix-Doder Vimix-Ruby ; do
+        cp -r "${pkgdir}/"usr/share/plasma/desktoptheme/icons "${pkgdir}/"usr/share/plasma/desktoptheme/"${_theme}"/ ;
+        mv "${pkgdir}/"usr/share/color-schemes/"${_theme}"-Dark.colors "${pkgdir}/"usr/share/plasma/desktoptheme/"${_theme}"/ ;
+    done
+    rm -rf "${pkgdir}/"usr/share/plasma/desktoptheme/icons
 }
 
 package_kvantum-theme-vimix-git() {
-	pkgdesc="Vimix theme for Kvantum"
-	depends=('kvantum-qt5')
+    pkgdesc="Vimix theme for Kvantum"
+    depends=('kvantum-qt5')
+    optdepends=('vimix-gtk-themes-git: Matching GTK theme'
+        'vimix-kde-git: Matching KDE Plasma 5 theme'
+        'tela-icon-theme-git: Recommended icon theme')
 	
-	cd "${srcdir}/${_gitname}"
-	install -d "${pkgdir}/"usr/share
+    cd "${srcdir}/${_gitname}"
+    install -d "${pkgdir}/"usr/share
 	
-	cp -r Kvantum "${pkgdir}/"usr/share
+    cp -r Kvantum "${pkgdir}/"usr/share
 }
 	
