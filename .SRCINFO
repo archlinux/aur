@@ -1,6 +1,6 @@
 pkgbase = python-xmlschema
 	pkgdesc = An XML Schema validator and decoder
-	pkgver = 1.0.10
+	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://pypi.org/project/xmlschema
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-xmlschema
 	makedepends = python-setuptools
 	depends = python
 	depends = python-elementpath
-	source = https://files.pythonhosted.org/packages/source/x/xmlschema/xmlschema-1.0.10.tar.gz
-	sha256sums = afa51626412dc75ad3daf693de13c393cfbf2bd9e4e29125e4cb575ceb31f3e3
+	source = https://files.pythonhosted.org/packages/source/x/xmlschema/xmlschema-1.0.11.tar.gz
+	sha256sums = a4f1f05892173d3f113b599bab96101b24992359fa39b929dc91bb23e8cefe2f
 
 pkgname = python-xmlschema
 

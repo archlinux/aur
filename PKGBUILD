@@ -2,7 +2,7 @@
 
 pkgname=python-xmlschema
 _name=${pkgname#python-}
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="An XML Schema validator and decoder"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-elementpath')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('afa51626412dc75ad3daf693de13c393cfbf2bd9e4e29125e4cb575ceb31f3e3')
+sha256sums=('a4f1f05892173d3f113b599bab96101b24992359fa39b929dc91bb23e8cefe2f')
 
 prepare() {
 	cd "$_name-$pkgver"
