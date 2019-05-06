@@ -1,7 +1,7 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=ksnip-git
-pkgver=v1.5.0.r26.g66effc7
+pkgver=v1.5.0.r54.gbd78ccf
 pkgrel=1
 pkgdesc='Screenshot tool inspired by Windows Snipping Tool and made with Qt for Linux'
 arch=('i686' 'x86_64')
@@ -11,6 +11,7 @@ depends=(
   qt5-x11extras
   kimageannotator-git
   kcolorpicker-git
+  kimageannotator-git
 )
 makedepends=(
   git
