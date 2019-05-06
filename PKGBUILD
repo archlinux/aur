@@ -1,7 +1,7 @@
 # Maintainer: Sergey Kasmy <SleeplessSloth79@gmail.com>
 pkgname=jump-bin
 _pkgname=jump
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Navigate faster by learning your habits"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=("$_pkgname")
 install=$_pkgname.install
 source=("$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_amd64.deb")
-md5sums=('5062c561d03c10754edd802f6e7a65d6')
+md5sums=('4fa6d9394fa18f8334005001b0016493')
 noextract=("$pkgname-$pkgver.deb")
 
 prepare() {
