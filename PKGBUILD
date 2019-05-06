@@ -5,7 +5,7 @@
 
 pkgname=buildbot
 pkgdesc='The Continuous Integration Framework'
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 arch=(any)
 url='https://buildbot.net'
@@ -28,10 +28,11 @@ optdepends=(
   'vault: to use SecretInVault provider'
 )
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.sig})
-sha256sums=('126adffe288f9b6df2d3a4eca49be757f65c01bc0c551d562681b4cf5ca460fb'
+sha256sums=('eb57afd7f8005b84bc345903211e4a3ff1a4d6a162eb55a37ab9bd445044476e'
             'SKIP')
 validpgpkeys=(
-  '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com>
+  '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
+  'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt> (@p12tic on GitHub)
 )
 
 build() {
@@ -41,10 +42,6 @@ build() {
 
 check() {
   cd buildbot-$pkgver/master
-
-  # https://github.com/spulec/moto/issues/1924
-  export AWS_SECRET_ACCESS_KEY=foobar_secret
-  export AWS_ACCESS_KEY_ID=foobar_key
 
   python setup.py install --root="$srcdir"/tmp_install
 
