@@ -1,6 +1,6 @@
 pkgbase = cpprestsdk
 	pkgdesc = A cross-platform, modern, and asynchronous library that enables developers to access and author connected applications
-	pkgver = 2.10.12
+	pkgver = 2.10.13
 	pkgrel = 1
 	url = https://github.com/Microsoft/cpprestsdk/
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = cpprestsdk
 	conflicts = casablanca
 	conflicts = casablanca-git
 	conflicts = cpprestsdk-git
-	source = cpprestsdk-2.10.12.tar.gz::https://github.com/Microsoft/cpprestsdk/archive/v2.10.12.tar.gz
-	sha512sums = a0839c11f71271464632095c1b91bd555220d1c87c4e7637d8424a51739e5abcd91e9257d1171d06470427ba48defd2be12bb34f5352c9590219b9f54292e3a8
+	source = cpprestsdk-2.10.13.tar.gz::https://github.com/Microsoft/cpprestsdk/archive/v2.10.13.tar.gz
+	sha512sums = 43e60ee1266e0009f04452736a1b5127439d54416060f81544613007a8bcc084705bedd482ec3519140e79a6f56bddba6d25e9752228595bb8f83ce560ae39b8
 
 pkgname = cpprestsdk
 
