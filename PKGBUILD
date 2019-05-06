@@ -1,10 +1,10 @@
 # Maintainer: Hiroshi Hatake <cosmo0920.wp[at]gmail.com>
 
 pkgname=snowball-c-git
-pkgver=20190505.662.d29510a
-pkgrel=2
+pkgver=20190506.662.d29510a
+pkgrel=1
 pkgdesc="Snowball compiler and stemming algorithms ."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/snowballstem/snowball"
 license=('BSD-3')
 source=("$pkgname"::"git+https://github.com/snowballstem/snowball#branch=master")
