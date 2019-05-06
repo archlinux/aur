@@ -1,16 +1,16 @@
 # Maintainer: eomanis at web dot de
 
 pkgname='getgarfield'
-pkgverUpstream="0.1.3"
-pkgver="${pkgverUpstream//-/.}"
-pkgrel=2
+_pkgverUpstream="0.1.3"
+pkgver="${_pkgverUpstream//-/.}"
+pkgrel=3
 pkgdesc="Java application that downloads all Garfield comic strips"
 arch=('any')
 url='https://eomanis.duckdns.org/permshare/getgarfield/index.xhtml'
 license=('GPL3')
 depends=('java-runtime-headless>=8' 'bash')
 makedepends=('java-environment>=8')
-source=("https://eomanis.duckdns.org/permshare/getgarfield/getgarfield-${pkgverUpstream}.tar.gz")
+source=("https://eomanis.duckdns.org/permshare/getgarfield/getgarfield-${_pkgverUpstream}.tar.gz")
 sha384sums=('02c766398513f3a1cd02dbcba348bbe5d1ec2535e91f2dc790d92cdb0ffd7f4b579daba45cac453839c926cbfe090e73')
 
 build() {
@@ -26,10 +26,10 @@ build() {
     # Populate the jar directory
     echo "Preparing temporary .jar directory" >&2
     # Copy everything from the src subdirectory into jar
-    rsync -rWtl "${pkgname}-${pkgverUpstream}/src/" jar
+    rsync -rWtl "${pkgname}-${_pkgverUpstream}/src/" jar
     # Copy all top-level items from the sources directory into jar
     # except the src subdirectory and any .hidden files
-    find "${pkgname}-${pkgverUpstream}" -mindepth 1 -maxdepth 1 -not -name 'src' -not -name '.*' -exec rsync -rWtl '{}' jar ';'
+    find "${pkgname}-${_pkgverUpstream}" -mindepth 1 -maxdepth 1 -not -name 'src' -not -name '.*' -exec rsync -rWtl '{}' jar ';'
     
     # Compile the sources to .class files into jar
     echo "Compiling java sources" >&2

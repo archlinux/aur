@@ -1,7 +1,7 @@
 pkgbase = getgarfield
 	pkgdesc = Java application that downloads all Garfield comic strips
 	pkgver = 0.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://eomanis.duckdns.org/permshare/getgarfield/index.xhtml
 	arch = any
 	license = GPL3
