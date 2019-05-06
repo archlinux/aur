@@ -1,6 +1,6 @@
 pkgbase = serialplot-hg
 	pkgdesc = Small and simple software for plotting data from serial port in realtime
-	pkgver = 796+.f5f0a29e6433+
+	pkgver = 811.5c9db4e54bbd
 	pkgrel = 1
 	url = https://bitbucket.org/hyOzd/serialplot
 	arch = i686
@@ -14,10 +14,8 @@ pkgbase = serialplot-hg
 	depends = hicolor-icon-theme
 	provides = serialplot
 	conflicts = serialplot
-	source = hg+https://bitbucket.org/hyOzd/serialplot#branch=default
-	source = update_check_disable.patch
+	source = hg+https://bitbucket.org/hyOzd/serialplot
 	sha256sums = SKIP
-	sha256sums = 116736d9471b5e0d283c264c1df8db5e4eb5e927839db7eee0022ab7b9177961
 
 pkgname = serialplot-hg
 
