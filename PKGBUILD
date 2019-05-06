@@ -1,6 +1,6 @@
 # Maintainer: Jerry Lin <jerry73204 at gmail dot com>
 pkgname=('python-av-git' 'python2-av-git')
-pkgver=r828.39567b3
+pkgver=r1026.db30136
 pkgrel=1
 pkgdesc='Pythonic bindings for FFmpeg.'
 arch=('i686' 'x86_64')
