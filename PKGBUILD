@@ -8,17 +8,16 @@
 
 pkgname=nix
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A purely functional package manager"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://nixos.org/nix"
 license=('LGPL')
-depends=('gc' 'libsodium' 'boost' 'brotli' 'readline')
-makedepends=('bzip2' 'gc' 'openssl')
+depends=('gc' 'libsodium' 'boost' 'brotli' 'editline')
+makedepends=('bzip2' 'openssl')
 install=nix.install
 source=("https://nixos.org/releases/nix/nix-$pkgver/nix-$pkgver.tar.xz")
 sha256sums=('f80a1b4f9837a8d33209f0b7769d5038335459ff4303eccf3e9217a9eca8594c')
-
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -26,8 +25,6 @@ prepare() {
 
 build () {
   cd "$pkgname-$pkgver"
-  export EDITLINE_CFLAGS="-DREADLINE"
-  export EDITLINE_LIBS="/usr/lib/libreadline.so"
   ./configure --prefix=/usr \
               --libexecdir="/usr/lib/$pkgname" \
               --sysconfdir=/etc \
