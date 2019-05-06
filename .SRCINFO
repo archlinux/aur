@@ -1,0 +1,27 @@
+pkgbase = ocenaudio
+	pkgdesc = Cross-platform, easy to use, fast and functional audio editor
+	pkgver = 3.6
+	pkgrel = 3
+	url = http://www.ocenaudio.com/
+	install = ocenaudio.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = jack
+	depends = libpulse
+	depends = openssl-1.0
+	depends = qt5-base
+	depends = shared-mime-info
+	provides = ocenaudio
+	conflicts = ocenaudio
+	source = LICENSE.txt
+	sha256sums = 056a0443fc2a8a562d193dd1acdc99933b9ceada4f8f544f89c314253b117801
+	source_i686 = ocenaudio-3.6_i686.deb::http://www.ocenaudio.com/downloads/index.php/ocenaudio_debian32.deb
+	sha256sums_i686 = f5432be44dfdadb4ea7ffe1b20e04a1c17eb1d1a55a0507296fb3464adc1487a
+	source_x86_64 = ocenaudio-3.6_x86_64.pkg.tar.xz::http://www.ocenaudio.com/downloads/index.php/ocenaudio_archlinux.pkg.tar.xz
+	sha256sums_x86_64 = c713fcdf182380bf7fbf9ea0055a1f1b160413466a00ef11b07d7c75ce19397f
+
+pkgname = ocenaudio
+
