@@ -4,7 +4,7 @@
 
 pkgname=sncli-git
 _pkgname=sncli
-pkgver=0.3.0.r1.g57bd32b
+pkgver=0.4.0.r0.ge2603ef
 pkgrel=1
 pkgdesc="Simplenote Command Line Interface"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/insanum/${_pkgname}"
 license=('MIT')
 depends=('python-urwid' 'python-requests' 'python-simperium')
 makedepends=('git' 'python-setuptools')
-source=("git://github.com/insanum/${_pkgname}.git")
+source=("git+https://github.com/insanum/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
