@@ -1,6 +1,7 @@
-# Maintainer: Jason T. Bradshaw <jasontbradshaw@gmail.com>
+# Maintainer: Nils Steinger (voidptr.de)
+# Contributor: Jason T. Bradshaw <jasontbradshaw@gmail.com>
 pkgname=zfsnap
-pkgver=2.0.0beta2
+pkgver=2.0.0beta3
 pkgrel=1
 pkgdesc='A portable, performant script to make rolling ZFS snapshots easy.'
 arch=('any')
@@ -12,12 +13,13 @@ optdepends=(
   'tcsh: for the corresponding completions',
   'zsh: for the corresponding completions'
 )
-source=(https://github.com/zfsnap/zfsnap/archive/v2.0.0-beta2.tar.gz)
-md5sums=('5a933d1f84cb880eb8463868ea1845ec')
 
 # Put the hyphen back between the end of the version and the start of the tag.
 _hyphenated_pkgver="$(echo "${pkgver}" | sed -r 's/([0-9])([a-z])/\1-\2/')"
 _pkgdirver="${pkgname}-${_hyphenated_pkgver}"
+
+source=(https://github.com/zfsnap/zfsnap/archive/v${_hyphenated_pkgver}.tar.gz)
+sha256sums=('d73be34b58d94b89010e2be6fc3d34bdc34b9675aaa2bebfe446dffb683e45d3')
 
 package() {
   cd "${srcdir}/${_pkgdirver}"
