@@ -2,12 +2,11 @@
 #
 # Contributor: satanselbow <igdfpm at gmail dot com>
 # Contributor: Artem Sereda <overmind88 at gmail dot com>
-
+#
 pkgname="flacon"
-pkgver="5.1.0"
+pkgver="5.4.0"
 pkgrel="1"
-pkgdesc="Extracts individual tracks from one big audio file containing the \
- entire album of music and saves them as separate audio files."
+pkgdesc="An Audio File Encoder. Extracts audio tracks from an audio CD image to separate tracks."
 arch=('i686' 'x86_64')
 url="https://flacon.github.io/"
 license=('LGPL2.1')
@@ -21,11 +20,12 @@ optdepends=('flac: For FLAC support'
             'lame: For MP3 support'
             'mp3gain: For MP3 Replay Gain support'
             'opus-tools: For OPUS support'
-            'vorbisgain: For OGG Replay Gain support')
+            'vorbisgain: For OGG Replay Gain support'
+)
 conflicts=('flacon-git')
 provides=("${pkgname}")
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('9844b00d354a881fdbcdbc91ab46766053f25cfbd4a06e4f2290d26d9368e11f')
+sha256sums=('000eacf4528906dfe0adc1c21aedcb57bf4300e56e37150173d3a23acc8fe19f')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -43,4 +43,4 @@ package() {
     make DESTDIR="${pkgdir}" install
 }
 
-# vim:set ts=4 sw=4 ft=sh et:
+# vim:set ts=4 sw=4 et syn=sh ft=sh:
