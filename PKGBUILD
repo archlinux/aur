@@ -1,7 +1,8 @@
-# Maintainer: Kelsey Maes <kelseymaes at outlook dot com>
+# Maintainer: Lukas Zimmermann <luk.zim91 at gmail dot com>
+# Contributor: Kelsey Maes <kelseymaes at outlook dot com>
 
 pkgname=python-msrestazure
-pkgver=0.4.33
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="The runtime library \"msrestazure\" for AutoRest generated Python clients."
 arch=('any')
@@ -10,14 +11,15 @@ license=('MIT')
 depends=('python-adal' 'python-keyring' 'python-msrest')
 makedepends=('python-setuptools')
 source=("https://github.com/Azure/msrestazure-for-python/archive/v${pkgver}.tar.gz")
-sha256sums=('af506560bd575129a65795f974c0e08176f9443b27076815f9c24480c4ee42f0')
+sha256sums=('3b392971c0b95975b185b73b6e25c502175b42a30b80ccd7f04f099fe129c36c')
 
 build() {
-  cd "msrestazure-for-python-$pkgver"
+  cd "msrestazure-for-python-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "msrestazure-for-python-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd "msrestazure-for-python-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
+
