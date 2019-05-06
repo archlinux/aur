@@ -2,7 +2,7 @@
 
 pkgname=watson
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A wonderful CLI to track your time!'
 arch=('any')
 url='https://tailordev.github.io/Watson/'
@@ -25,6 +25,7 @@ package() {
     install -D -m 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -D -m 644 watson.completion "$pkgdir/usr/share/bash-completion/completions/$pkgname"
     install -D -m 644 watson.zsh-completion "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+    install -D -m 644 watson.fish "$pkgdir/usr/share/fish/completions/$pkgname.fish"
 
     python setup.py install --root="$pkgdir" --optimize=1
 }
