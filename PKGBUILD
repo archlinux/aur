@@ -1,6 +1,6 @@
 # Maintainer: Lev Levitsky <levlev at mail dot ru>
 pkgname=python-pyteomics
-pkgver=4.1
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="A framework for proteomics data analysis."
 arch=('any')
@@ -12,10 +12,11 @@ optdepends=('python-matplotlib: for pylab_aux module'
             'python-pandas: for convenient filtering of CSV tables from search engines'
             'python-lxml: for XML parsing modules'
             'python-numpy: for most of features, highly recommended'
-            'python-dill: needed for multiprocessing when pickle is not enough')
+            'python-dill: needed for multiprocessing when pickle is not enough'
+            'python-pynumpress: for Numpress support')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/p/pyteomics/pyteomics-${pkgver}.tar.gz")
-sha256sums=('d7eaa5a1c6f25a39a42c4846e8c39e23cd3ba6f1aeeeedb730c3911c82bf6633')
+sha256sums=('384e4e5eabdbfec39d7c38369278e386a074c7066f33052d7c313af40f1aa45e')
 changelog="CHANGELOG"
 package() {
   cd "${srcdir}/pyteomics-${pkgver}"

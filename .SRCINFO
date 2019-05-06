@@ -1,6 +1,6 @@
 pkgbase = python-pyteomics
 	pkgdesc = A framework for proteomics data analysis.
-	pkgver = 4.1
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://pyteomics.readthedocs.io
 	changelog = CHANGELOG
@@ -14,9 +14,10 @@ pkgbase = python-pyteomics
 	optdepends = python-lxml: for XML parsing modules
 	optdepends = python-numpy: for most of features, highly recommended
 	optdepends = python-dill: needed for multiprocessing when pickle is not enough
+	optdepends = python-pynumpress: for Numpress support
 	options = !emptydirs
-	source = https://pypi.io/packages/source/p/pyteomics/pyteomics-4.1.tar.gz
-	sha256sums = d7eaa5a1c6f25a39a42c4846e8c39e23cd3ba6f1aeeeedb730c3911c82bf6633
+	source = https://pypi.io/packages/source/p/pyteomics/pyteomics-4.1.1.tar.gz
+	sha256sums = 384e4e5eabdbfec39d7c38369278e386a074c7066f33052d7c313af40f1aa45e
 
 pkgname = python-pyteomics
 

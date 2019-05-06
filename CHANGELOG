@@ -1,3 +1,22 @@
+4.1.1
+-----
+
+ - Add `numpress <https://dx.doi.org/10.1074%2Fmcp.O114.037879>`_ support for mzML and mzXML files.
+   To read files compressed with Numpress, install `pynumpress`
+   (`PyPI <https://pypi.org/project/pynumpress/>`_, `GitHub <https://github.com/mobiusklein/pynumpress>`_).
+
+   .. note:: There is a `known issue
+      <https://bitbucket.org/levitsky/pyteomics/issues/37/add-numpress-support-in-mzml#comment-51540079>`_
+      with `pynumpress` on Linux and Python 2.7, which is contingent on a fix in Cython.
+
+ - Bugfixes.
+
+API changes
+...........
+
+ - In :py:func:`ms1.read` and :py:func:`ms2.read`, the default value for `use_index` is now :py:const:`False`.
+   Using the indexed parsers may result in incorrect behavior if the "first" scan number in S-lines is not unique.
+
 4.1
 ---
 
