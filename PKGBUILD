@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.29.0.r317.gedbc199914
+pkgver=0.29.0.r326.g91c1691b35
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -9,6 +9,7 @@ depends=(
          # official repositories:
          'alsa-lib'
          'aom'
+         'aribb24'
          'bzip2'
          'celt'
          'dav1d'
@@ -162,18 +163,25 @@ sha256sums=('SKIP'
             )
 backup=('etc/mpv/encoding-profiles.conf')
 
-if [ -f /usr/lib/libvapoursynth.so ]; then
-  depends+=('vapoursynth')
-fi
-if [ -f /usr/lib/libtensorflow.so ]; then
-  depends+=('tensorflow')
-fi
-if [ -f /usr/lib/libplacebo.so ]; then
-  depends+=('libplacebo-git')
-fi
-if [ -d /opt/cuda ]; then
-  makedepends+=('cuda')
-  depends+=('cuda')
+# MPV_NO_CHECK_OPT_DEPEND
+# if you don't need opt dependency checked, defined this
+# for example
+# MPV_NO_CHECK_OPT_DEPEND=yes makepkg -sif
+
+if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
+  if [ -f /usr/lib/libvapoursynth.so ]; then
+    depends+=('vapoursynth')
+  fi
+  if [ -f /usr/lib/libtensorflow.so ]; then
+    depends+=('tensorflow')
+  fi
+  if [ -f /usr/lib/libplacebo.so ]; then
+    depends+=('libplacebo-git')
+  fi
+  if [ -d /opt/cuda ]; then
+    makedepends+=('cuda')
+    depends+=('cuda')
+  fi
 fi
 
 pkgver() {
@@ -212,6 +220,7 @@ prepare() {
     '--enable-iconv'
     '--enable-ladspa'
     '--enable-libaom'
+    '--enable-libaribb24'
     '--enable-libass'
     '--enable-libbluray'
     '--enable-libbs2b'
@@ -375,21 +384,23 @@ prepare() {
 
   local _ffmpeg_cflags=''
   local _ffmpeg_ldflags=''
-  if [ -f /usr/lib/libplacebo.so ]; then
-    _mpv_options+=('--enable-libplacebo')
-  fi
-  if [ -f /usr/lib/libvapoursynth.so ]; then
-    _mpv_options+=('--enable-vapoursynth')
-  fi
-  if [ -d /opt/cuda ]; then
-    _ffmpeg_options+=('--enable-cuda-nvcc')
-    _ffmpeg_options+=('--enable-libnpp')
-    _ffmpeg_options+=('--extra-cflags=-I/opt/cuda/include')
-    _ffmpeg_options+=('--extra-ldflags=-L/opt/cuda/lib64')
-  fi
-  if [ -f /usr/lib/libtensorflow.so ]; then
-    _ffmpeg_options+=('--enable-libtensorflow')
-    _ffmpeg_options+=('--extra-cflags=-I/usr/include/tensorflow')
+  if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
+    if [ -f /usr/lib/libplacebo.so ]; then
+      _mpv_options+=('--enable-libplacebo')
+    fi
+    if [ -f /usr/lib/libvapoursynth.so ]; then
+      _mpv_options+=('--enable-vapoursynth')
+    fi
+    if [ -d /opt/cuda ]; then
+      _ffmpeg_options+=('--enable-cuda-nvcc')
+      _ffmpeg_options+=('--enable-libnpp')
+      _ffmpeg_options+=('--extra-cflags=-I/opt/cuda/include')
+      _ffmpeg_options+=('--extra-ldflags=-L/opt/cuda/lib64')
+    fi
+    if [ -f /usr/lib/libtensorflow.so ]; then
+      _ffmpeg_options+=('--enable-libtensorflow')
+      _ffmpeg_options+=('--extra-cflags=-I/usr/include/tensorflow')
+    fi
   fi
 
   echo ${_ffmpeg_options[@]} > ffmpeg_options
