@@ -1,6 +1,6 @@
 pkgname=vxl
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="VXL (the Vision-something-Libraries): a multi-platform collection of C++ software libraries for Computer Vision and Image Understanding. "
 arch=('i686' 'x86_64')
 url='https://github.com/vxl/vxl'
