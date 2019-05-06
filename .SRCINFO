@@ -1,6 +1,6 @@
 pkgbase = archisomydrive
 	pkgdesc = GUI utility to copy an ISO file to a USB disk.
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/daltomi/ArchIsoMyDrive
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = archisomydrive
 	depends = udev
 	depends = glibc
 	depends = glib2
-	source = https://github.com/daltomi/ArchIsoMyDrive/raw/master/Install/archisomydrive-git-2.0-1-x86_64.pkg.tar.xz
-	source = https://github.com/daltomi/ArchIsoMyDrive/raw/master/Install/archisomydrive-git-2.0-1-x86_64.pkg.tar.xz.sig
+	source = https://github.com/daltomi/ArchIsoMyDrive/raw/master/Install/archisomydrive-git-2.1-1-x86_64.pkg.tar.xz
+	source = https://github.com/daltomi/ArchIsoMyDrive/raw/master/Install/archisomydrive-git-2.1-1-x86_64.pkg.tar.xz.sig
 	validpgpkeys = 51479755D90A2AACFA90A6551DD242462908D08B
-	sha256sums = 4841723e1c7a500647224060f77a05290a4b1d85c42cf76849f5e3a2693e4658
+	sha256sums = 14e169eef3f82f33a80ceba3bb121543e3bdeb59d6a58fa1f29ee2f75a1843dd
 	sha256sums = SKIP
 
 pkgname = archisomydrive

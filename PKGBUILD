@@ -2,7 +2,7 @@
 
 pkgbase=archisomydrive
 pkgname=$pkgbase
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 _remotepkgbase=$pkgbase-git
 _gitname=ArchIsoMyDrive
@@ -16,7 +16,7 @@ depends=('qt5-base' 'qt5-x11extras' 'polkit' 'udev' 'glibc' 'glib2')
 source=("$url/raw/master/Install/$_remotepkgbase-$pkgver-$pkgrel-x86_64.pkg.tar.xz"{,.sig})
 
 
-sha256sums=('d20e75c0e81c5c811ca3f1beb286549b795c08cfe54b7393fc4d0662291affd4'
+sha256sums=('14e169eef3f82f33a80ceba3bb121543e3bdeb59d6a58fa1f29ee2f75a1843dd'
             'SKIP'
            )
 
