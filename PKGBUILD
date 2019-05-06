@@ -4,22 +4,19 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Antonio Orefice <kokokork@gmail.com>
 
-pkgname=qt4-revert80e3108
-_pkgname=qt4
+pkgname=qt4
 pkgver=4.8.7
-pkgrel=8
-arch=('i686' 'x86_64')
-url='http://www.qt.io'
+pkgrel=29
+arch=('x86_64')
+url='https://www.qt.io'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
 pkgdesc='A cross-platform application and UI framework'
-depends=('libtiff' 'libpng' 'sqlite' 'ca-certificates' 'dbus'
-        'fontconfig' 'libgl' 'libxrandr' 'libxv' 'libxi' 'alsa-lib'
-        'xdg-utils' 'hicolor-icon-theme' 'desktop-file-utils' 'libmng')
-makedepends=('postgresql-libs' 'mariadb' 'unixodbc' 'cups' 'gtk2' 'libfbclient'
+depends=('sqlite' 'ca-certificates' 'fontconfig' 'libgl' 'libxrandr' 'libxv' 'libxi' 'alsa-lib'
+        'xdg-utils' 'hicolor-icon-theme' 'desktop-file-utils' 'libmng' 'dbus')
+makedepends=('postgresql-libs' 'mariadb-libs' 'unixodbc' 'cups' 'gtk2' 'libfbclient'
              'mesa')
-optdepends=('qtchooser: set the default Qt toolkit'
-            'postgresql-libs: PostgreSQL driver'
-            'libmariadbclient: MariaDB driver'
+optdepends=('postgresql-libs: PostgreSQL driver'
+            'mariadb-libs: MariaDB driver'
             'unixodbc: ODBC driver'
             'libfbclient: Firebird/iBase driver'
             'libxinerama: Xinerama support'
@@ -27,14 +24,10 @@ optdepends=('qtchooser: set the default Qt toolkit'
             'libxfixes: Xfixes support'
             'icu: Unicode support'
             'sni-qt: StatusNotifierItem (AppIndicators) support')
-install="${_pkgname}.install"
-
-provides=("qt4=$pkgver")
-replaces=('qt4')
-conflicts=('qt4')
-
+replaces=('qt<=4.8.4')
+conflicts=('qt')
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
-source=("http://download.qt.io/official_releases/qt/4.8/${pkgver}/${_pkgfqn}.tar.gz"
+source=("https://download.qt.io/archive/qt/4.8/${pkgver}/${_pkgfqn}.tar.gz"
         'qtconfig-qt4.desktop' 'assistant-qt4.desktop' 'designer-qt4.desktop'
         'linguist-qt4.desktop' 'qdbusviewer-qt4.desktop'
         'improve-cups-support.patch'
@@ -44,24 +37,29 @@ source=("http://download.qt.io/official_releases/qt/4.8/${pkgver}/${_pkgfqn}.tar
         'glib-honor-ExcludeSocketNotifiers-flag.diff'
         'disable-sslv3.patch'
         'l-qclipboard_fix_recursive.patch'
-        'l-qclipboard_delay.patch'
-		'revert_80e3108.patch'
-		)
-md5sums=('d990ee66bf7ab0c785589776f35ba6ad'
-         'a16638f4781e56e7887ff8212a322ecc'
-         '8a28b3f52dbeb685d4b69440b520a3e1'
-         '9727c406c240990870c905696a8c5bd1'
-         '0e384663d3dd32abe35f5331c4147569'
-         'b859c5673e5098c39f72b2252947049e'
-         'c439c7731c25387352d8453ca7574971'
-         'da387bde22ae1c446f12525d2a31f070'
-         'a523644faa8f98a73f55c4aa23c114a6'
-         '66dfea63916c8dbf47b23cb012ffdccc'
-         '85679531c8a7310317adfb7002d9f99a'
-         '1803ab6313df762d807678e58fc85f53'
-         '009de09b4e589a7770fba74405656c99'
-         'addc5e88d538ee55e17bd49ba337ca67'
-         '81d3526edfd0be9aa21f56cff7cfc10f')
+        'l-qclipboard_delay.patch' 'revert_80e3108.patch'
+        'qt4-gcc6.patch' 'qt4-gcc8.patch' 'qt4-glibc-2.25.patch' 'qt4-icu59.patch' 'qt4-openssl-1.1.patch')
+
+sha256sums=('e2882295097e47fe089f8ac741a95fef47e0a73a3f3cdf21b56990638f626ea0'
+            '157eb47865f0b43e4717819783823c569127a2e9fc48309982ca0f2b753517a1'
+            'd63f22858174489068c30a12b9115d1b4e23ade00c31c117513212e9a225c1ce'
+            'c154de65da1b81564fa68f29c773b5f1751e0ee821e858ee8f0684b8d027da58'
+            '22bd69ee3ba986448a63e41f529a7d28d0f2e6d83d6114e763eba761db302e01'
+            '915a1cb0f7328840cac742c03f5121dc6e19498952c082b46c0bf7263bf6676d'
+            '3ccfefb432015e4a4ea967b030c51b10dcdfb1f63445557908ddae5e75012d33'
+            '876c681ef8fbcc25f28cd4ad6c697abf8a4165d540bae37433bc40256dbf9d62'
+            '9fad22674c5eec835613a7f16c11b865aa793b448e90974c0f804105284a548b'
+            'ce97da195445f145d9f82df8f8e5d8716128e869ec6632db66c7125be663d813'
+            'e7f8d1c906640b836454e8202a48602352609d8e44a33a3de05dc1d20f5b1a8a'
+            '829b02ba10f208c2beba8e8a0110b6d10c63932612dabc08d536f099b9f66101'
+            '5db36cbb0686b8a503941779c821febc4a0330dc260e51d603f7aa1e4d8860ad'
+            'af3648ddb2372333b0e428788fd2ffbcfe571653fb46f898a55ae5a202f7e242'
+            'd87808d4ea2f2e3445070960999dbce4893099e851c671e50d23c3b6b8a80313'
+            '51da49e41edac66559d3ec8dd0a152995a51a53e5d1f63f09fa089a8af7e3112'
+            '0497411e54a0461f76ffa204236f5146a2ed0d272ae66afcfabd74090459208b'
+            'e6555f4a681227447e94e9f14e11626d50b7e5108aad06088311e87063bc0347'
+            '61d6bf45649c728dec5f8d22be5b496ed9d40f52c2c70102696d07133cd1750d'
+            'ff3ddb5428cd2ff243558dc0c75b35f470077e9204bbc989ddcba04c866c1b68')
 
 prepare() {
   cd ${_pkgfqn}
@@ -91,7 +89,7 @@ prepare() {
 
   # https://bugreports.qt.io/browse/QTBUG-46778
   patch -p1 -i "${srcdir}"/revert_80e3108.patch
-
+  
   sed -i "s|-O2|${CXXFLAGS}|" mkspecs/common/{g++,gcc}-base.conf
   sed -i "/^QMAKE_LFLAGS_RPATH/s| -Wl,-rpath,||g" mkspecs/common/gcc-base-unix.conf
   sed -i "/^QMAKE_LFLAGS\s/s|+=|+= ${LDFLAGS}|g" mkspecs/common/gcc-base.conf
@@ -99,6 +97,24 @@ prepare() {
   cp mkspecs/common/linux{,32}.conf
   sed -i "/^QMAKE_LIBDIR\s/s|=|= /usr/lib32|g" mkspecs/common/linux32.conf
   sed -i "s|common/linux.conf|common/linux32.conf|" mkspecs/linux-g++-32/qmake.conf
+
+  # Fix build with GCC6 (Fedora)
+  patch -p1 -i "$srcdir"/qt4-gcc6.patch
+
+  # Fix build with GCC-8.3
+  patch -Np0 -i "$srcdir"/qt4-gcc8.patch
+
+  # Fix build of Qt4 applications with glibc 2.25 (Fedora)
+  patch -p1 -i "$srcdir"/qt4-glibc-2.25.patch
+
+  # Fix build with ICU 59 (pld-linux)
+  patch -p1 -i "$srcdir"/qt4-icu59.patch
+
+  # Fix build with OpenSSL 1.1 (Debian + OpenMandriva)
+  patch -p1 -i "$srcdir"/qt4-openssl-1.1.patch
+
+  echo "QMAKE_CXXFLAGS += -std=gnu++98" >> src/3rdparty/javascriptcore/JavaScriptCore/JavaScriptCore.pri
+  echo "QMAKE_CXXFLAGS += -std=gnu++98" >> src/plugins/accessible/qaccessiblebase.pri
 }
 
 build() {
@@ -190,3 +206,5 @@ package() {
     # The TGA plugin is broken (FS#33568)
     rm "${pkgdir}"/usr/lib/qt4/plugins/imageformats/libqtga.so
 }
+
+
