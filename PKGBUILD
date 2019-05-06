@@ -1,14 +1,13 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=imposm
 _gitname=imposm3
-pkgver=0.6.0ɑ4
-_gitver=${pkgver/ɑ/-alpha.}
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Imports OpenStreetMap data into PostGIS"
 arch=('x86_64')
 url="https://github.com/omniscale/$_gitname"
 license=('Apache')
-source=("https://github.com/omniscale/$_gitname/archive/v$_gitver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/omniscale/$_gitname/archive/v$pkgver.tar.gz")
 depends=('geos' 'leveldb')
 makedepends=('go')
 
@@ -17,7 +16,7 @@ _importpath="github.com/omniscale/$_gitname"
 prepare() {
   export GOPATH="$srcdir/_go"
   mkdir -p $(dirname "$GOPATH/src/$_importpath")
-  ln --symbolic --force --no-target-directory "$srcdir/$_gitname-$_gitver" "$GOPATH/src/$_importpath"
+  ln --symbolic --force --no-target-directory "$srcdir/$_gitname-$pkgver" "$GOPATH/src/$_importpath"
   cd "$GOPATH/src/$_importpath"
 }
 
@@ -31,7 +30,10 @@ check() {
 build() {
   export GOPATH="$srcdir/_go"
   cd "$GOPATH/src/$_importpath/cmd/$pkgname"
-  go build -ldflags "-X github.com/omniscale/imposm3.Version=$_gitver"
+  go build \
+    -gcflags "all=-trimpath=$srcdir" \
+    -asmflags "all=-trimpath=$srcdir" \
+    -ldflags "-extldflags $LDFLAGS -X github.com/omniscale/imposm3.Version=$pkgver"
 }
 
 package() {
@@ -41,4 +43,4 @@ package() {
   install -m755 "$pkgname" "$pkgdir/usr/bin/imposm"
 }
 
-sha256sums=('00e996b1a7f76a9adece53550587c79601372bee78322a532dcd8bb22b9fc019')
+sha256sums=('bfff0c63898b3b081baaf594aa0efb5c94c0644d6b66d9bb534c55dcce53e2a9')
