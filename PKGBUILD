@@ -12,7 +12,7 @@ _pkgname=hdf5
 _mpi=mpich
 pkgname=${_pkgname}-${_mpi}
 _prefix=/opt/${pkgname}
-pkgver=1.10.4
+pkgver=1.10.5
 pkgrel=1
 pkgdesc="General purpose library and file format for storing scientific data (${_mpi} version) (full version including its Java Native Interfaces)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=('cmake' 'time' 'java-environment' 'gcc-fortran')
 options=('staticlibs')
 source=("https://support.hdfgroup.org/ftp/HDF5/releases/${_pkgname}-${pkgver:0:4}/${_pkgname}-${pkgver}/src/${_pkgname}-${pkgver}.tar.bz2"
         'mpi.patch')
-md5sums=('886148d0cc9ffd3c8e1fce0bd75ed07b'
+md5sums=('7c19d6b81ee2a3ba7d36f6922b2f90d3'
          '63b43e3d4a5bbea4bcecc84874e08913')
 
 prepare() {
@@ -97,9 +97,6 @@ package() {
     cd build
 
     make DESTDIR="${pkgdir}" install
-
-    # Remove leftover test files
-    rm "${pkgdir}${_prefix}"/include/tst{ds,image,lite,table}{,_tests}.mod
 
     # Move examples to a proper place
     install -dm755 "${pkgdir}${_prefix}/share/doc/${_pkgname}"
