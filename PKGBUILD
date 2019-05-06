@@ -23,9 +23,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=5.0.12-arch1
+_srcver=5.0.13-arch1
 pkgver=${_srcver%-*}
-pkgrel=2
+pkgrel=1
 _bmqversion=093
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
@@ -42,23 +42,23 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "0001_$_bmq_patch::https://gitlab.com/alfredchen/bmq/raw/master/5.0/${_bmq_patch}"
   "0002_$_uksm_patch::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.0/uksm-dolohow-dev/${_uksm_patch}"
+  "0003_enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('db30e1e3c412cafadabb1621ac712b670a3fc82c4ae14fbb8ad5eef0e9173189'
+sha256sums=('82676aff2bea1fef61fd0118d2e380c82c21cde42219448259b6c4c977c2919a'
             '41b540015ddf46eee6b5d93dfb2a2347efa48560842790aa60a26fedf2b29618'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '8e155350eefe9975149d8c9fe15d13432c0e173597928b5b1ed6e5602c115476'
-            '12a91d2a050f6849b5c4c7a66b5576e72c1cd23cb05904a9463056416bbf8a86')
+            '12a91d2a050f6849b5c4c7a66b5576e72c1cd23cb05904a9463056416bbf8a86'
+            '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
