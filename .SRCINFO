@@ -1,0 +1,20 @@
+pkgbase = listen1-desktop
+	pkgdesc = one for all free music in china (Build from source)
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = https://github.com/listen1/listen1_desktop
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	depends = electron
+	provides = listen1
+	conflicts = listen1
+	source = listen1-desktop-2.1.5.src.tar.gz::https://github.com/listen1/listen1_desktop/archive/v2.1.5.tar.gz
+	source = git://github.com/listen1/listen1_chrome_extension.git
+	sha256sums = 98ad6b76f5bce93447fa1fe8eefa278ae809249449e0f6348de3314f130d7d01
+	sha256sums = SKIP
+
+pkgname = listen1-desktop
+
