@@ -2,7 +2,7 @@
 pkgname=filegdb-api
 _pkgname=FileGDB_API
 pkgver=1.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="ESRI File Geodatabase (FileGDB) API"
 arch=('i686' 'x86_64')
 url="https://github.com/Esri/file-geodatabase-api"
@@ -12,11 +12,11 @@ optdepends=('gdal-filegdb: wrapper')
 changelog=$pkgname.changelog
 case $CARCH in
 i686)
-  source=($pkgname-$pkgver.tar.gz::http://downloads2.esri.com/Software/${_pkgname}_${pkgver//./_}-32gcc51.tar.gz)
+  source=($pkgname-$pkgver.tar.gz::https://github.com/Esri/file-geodatabase-api/blob/master/${_pkgname}_${pkgver}/${_pkgname}_${pkgver//./_}-32gcc51.tar.gz)
   md5sums=('145f760871892b822b5f26442e2e8255')
   ;; 
 x86_64)
-  source=($pkgname-$pkgver.tar.gz::http://downloads2.esri.com/Software/${_pkgname}_${pkgver//./_}-64gcc51.tar.gz)
+  source=($pkgname-$pkgver.tar.gz::https://github.com/Esri/file-geodatabase-api/blob/master/${_pkgname}_${pkgver}/${_pkgname}_${pkgver//./_}-64gcc51.tar.gz)
   md5sums=('10a18003adaa6ccf0c4d8e6bb8da1e4f')
   ;; 
 esac
