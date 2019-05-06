@@ -1,7 +1,7 @@
 # Maintainer: jerry73204 <jerry73204@gmail.com>
 pkgname=('python-cocoapi-git' 'python2-cocoapi-git')
 _pkgname='cocoapi-git'
-pkgver=r193.ed842bf
+pkgver=r195.aca78bc
 pkgrel=1
 pkgdesc='COCO is a large image dataset designed for object detection, segmentation, person keypoints detection, stuff segmentation, and caption generation.'
 arch=('x86_64')
