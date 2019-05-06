@@ -2,14 +2,14 @@
 
 pkgname=olive-community-effects-git
 _pkgname=Olive-Editor-Community-Effects
-pkgver=r57.043abef
-_commit=043abef
+pkgver=r59.65b96e0
+_commit=65b96e0
 pkgrel=2
-arch=('i686' 'x86_64')
+arch=('any')
 pkgdesc="A collection of effects for Olive made by the community"
 url="https://github.com/cgvirus/$_pkgname"
 license=('unknown')
-depends=('olive-git')
+depends=('olive')
 makedepends=('git')
 source=("git+$url#commit=$_commit")
 sha512sums=('SKIP')
