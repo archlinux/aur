@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=mpi4py-intel
 pkgname=python-$_modulename
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Python bindings for the Message Passing Interface compiled with intel mpi"
 arch=(any)
@@ -17,7 +17,8 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('77b05c836a414ca20083d6bb0e2d46c9b22940db73a822062ceb7517250b24ed')
+sha256sums=('770e8f0414addc88b36dd291fc28aaf2a2160d393f6f4b71a42511c51cbd63e7')
+
 package() {
   cd "$srcdir/mpi4py-$pkgver"
   export MPICC=mpiicc
