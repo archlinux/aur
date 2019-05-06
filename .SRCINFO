@@ -1,6 +1,6 @@
 pkgbase = go-for-it
 	pkgdesc = A stylish to-do list with built-in productivity timer.
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/mank319/Go-For-It
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = go-for-it
 	depends = gtk3
 	depends = libnotify
 	conflicts = go-for-it-git
-	source = go-for-it-1.7.1.tar.gz::https://github.com/mank319/Go-For-It/archive/1.7.1.tar.gz
-	sha256sums = c7783736dd7c1182d2c7d51ab05176588b1c09372def731d3f0b2d4fa2234540
+	source = go-for-it-1.7.2.tar.gz::https://github.com/mank319/Go-For-It/archive/1.7.2.tar.gz
+	sha256sums = 446a461b148e7df2ed81f1340adba0181ba1f0f698c0b7b539223a2ee5aa54f6
 
 pkgname = go-for-it
 
