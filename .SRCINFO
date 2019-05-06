@@ -1,0 +1,18 @@
+pkgbase = python-pyct
+	pkgdesc = Python packaging Common Tasks
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://github.com/pyviz/pyct
+	arch = any
+	groups = bokeh-ecosystem
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = flake8
+	makedepends = python-setuptools
+	makedepends = python-param
+	optdepends = python-requests
+	source = https://github.com/pyviz/pyct/archive/v0.4.6.tar.gz
+	sha256sums = d2be4b605906a63778a700b413c934855f8dd103933cf202d54b005c01a7fd31
+
+pkgname = python-pyct
+
