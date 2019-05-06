@@ -5,7 +5,8 @@ pkgbase = vxl
 	url = https://github.com/vxl/vxl
 	arch = i686
 	arch = x86_64
-	depends = cmake
+	makedepends = cmake
+	depends = libgeotiff
 	source = https://github.com/vxl/vxl/archive/v2.0.2.tar.gz
 	md5sums = 24fb616a55c885e821c9a049ae1b23ed
 
