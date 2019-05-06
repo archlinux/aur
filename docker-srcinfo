@@ -5,5 +5,4 @@
 #
 
 id=$(docker build -q .)
-docker run --rm --volume "$(pwd):/src" --user="$(id -u):$(id -g)" "$id" \
-  /bin/bash -c 'updpkgsums && makepkg --printsrcinfo > .SRCINFO'
+docker run --rm --volume "$(pwd):/src" --user="$(id -u):$(id -g)" "$id" ./update

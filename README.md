@@ -5,7 +5,7 @@
 How to update the package from Arch on any system:
 
 1. Edit the PKGBUILD and change the `pkgver` field.
-2. If you're on Arch, run `updpkgsums && makepkg --printsrcinfo > .SRCINFO`, and skip to the last step.
+2. If you're on Arch, run `./update` and skip to the last step.
 3. If you're on a different system, use the Docker or Vagrant options below to update the checksums and .SRCINFO.
 4. Commit & push
 
@@ -24,8 +24,7 @@ vagrant ssh
 # Install dev dependencies
 sudo pacman -Syu --needed base-devel pacman-contrib
 cd /vagrant
-updpkgsums
-makepkg --printsrcinfo > .SRCINFO
+./update
 ```
 
 ## Push to multiple origins
