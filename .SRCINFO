@@ -1,0 +1,18 @@
+pkgbase = python-libcharon
+	pkgdesc = File metadata and streaming library
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/Ultimaker/libCharon
+	arch = any
+	license = LGPL3
+	checkdepends = python-pytest
+	checkdepends = python-coverage
+	makedepends = python-setuptools
+	makedepends = cmake
+	depends = python
+	depends = python-typing
+	source = python-libcharon-4.0.0.tar.gz::https://github.com/Ultimaker/libCharon/archive/4.0.0.tar.gz
+	sha512sums = 0fcf40af4cb2fee85baa2e4687a0b6da45ede4237e73f65f22ff8fd65b7517d89ec52fb7343a052b1da9d4abb15b952ec6c455108d9d4de9b6a3c5e54c344d51
+
+pkgname = python-libcharon
+
