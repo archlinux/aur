@@ -2,7 +2,7 @@
 
 pkgname=microsoft-r-open
 pkgver=3.5.2
-pkgrel=1
+pkgrel=2
 _majorver=3.5
 _mrandate=2019-02-01
 pkgdesc="Language and environment for statistical computing and graphics, enhanced by Microsoft"
@@ -22,7 +22,7 @@ depends=('bzip2'
          'libtiff'
          'libxmu'
          'libxt'
-         'ncurses'
+         'ncurses5-compat-libs'
          'pango'
          'pcre'
          'perl'
