@@ -1,0 +1,22 @@
+diff --git a/divine/legacy/storage/explicit_storage.cc b/divine/legacy/storage/explicit_storage.cc
+index 7bed2db..48f1b05 100644
+--- a/divine/legacy/storage/explicit_storage.cc
++++ b/divine/legacy/storage/explicit_storage.cc
+@@ -672,7 +672,7 @@ void* explicit_storage_t::app_by_ref(state_ref_t refer)
+     {
+       errvec <<"Invalid reference used in set_app_by_ref()."
+ 	     <<psh(EXPLICIT_STORAGE_ERR_TYPE);
+-      return false;
++      return 0;
+     }
+   else
+     {
+@@ -680,7 +680,7 @@ void* explicit_storage_t::app_by_ref(state_ref_t refer)
+ 	{
+ 	  errvec <<"Invalid reference used in set_app_by_ref()."
+ 		 <<psh(EXPLICIT_STORAGE_ERR_TYPE);
+-	  return false;
++	  return 0;
+ 	}
+       else
+ 	{

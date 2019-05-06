@@ -1,0 +1,28 @@
+diff --git a/divine/algorithm/map.h b/divine/algorithm/map.h
+index ea66335..4a607dc 100644
+--- a/divine/algorithm/map.h
++++ b/divine/algorithm/map.h
+@@ -23,6 +23,14 @@ struct VertexId {
+         return ptr < other.ptr;
+     }
+ 
++    bool operator>( const VertexId other ) const {
++        if ( owner > other.owner )
++            return true;
++        if ( owner < other.owner )
++            return false;
++        return ptr > other.ptr;
++    }
++
+     bool operator!=( const VertexId other ) const {
+         return ptr != other.ptr || owner != other.owner;
+     }
+@@ -231,7 +239,7 @@ struct Map : Algorithm, DomainWorker< Map< G, _Statistics > >
+             extension( t ).map = std::max( extension( t ).map, makeId( t ) );
+         VertexId map = std::max( extension( f ).map, extension( t ).map );
+ 
+-        if ( extension( t ).map < map ) {
++        if ( map > extension( t ).map ) {
+             // we are *not* the MAP of our successors anymore, so not a
+             // candidate for elimination (shrinking), remove from set
+             if ( isAccepting( t ) && extension( t ).elim )

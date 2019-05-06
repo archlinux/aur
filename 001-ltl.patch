@@ -1,0 +1,35 @@
+diff --git a/divine/ltl2ba/ltl.cc b/divine/ltl2ba/ltl.cc
+index 8dbc895..2d7aaf7 100644
+--- a/divine/ltl2ba/ltl.cc
++++ b/divine/ltl2ba/ltl.cc
+@@ -129,7 +129,7 @@ LTL_syntax_el_t LTL_parse_t::get_syntax_el(int& i, string& pred)
+ 	while (((formule[i] == ' ') || (formule[i] == '\t') ||
+ 		(formule[i] == '\n')) && (i < delka)) i++;
+ 
+-	if (i >= delka) return(end);
++	if (i >= delka) return(ltl_end);
+ 
+ 	switch (formule[i]) {
+ 	case '(': i++; return(left_par); break;
+@@ -217,7 +217,7 @@ synt_an_el konvert_synt_el(LTL_syntax_el_t e)
+ 	case ltl_true:
+ 	case ltl_false:
+ 	case ltl_atom: return(an_atom); break;
+-	case end: return(an_end); break;
++	case ltl_end: return(an_end); break;
+ 	case unknown: return(an_unknown); break;
+         default: gerr << "Unexpected value of \"e\"" << thr();
+                  return an_unknown; //unreachable
+diff --git a/divine/ltl2ba/ltl.hh b/divine/ltl2ba/ltl.hh
+index aeb0fe9..e24c3a1 100644
+--- a/divine/ltl2ba/ltl.hh
++++ b/divine/ltl2ba/ltl.hh
+@@ -20,7 +20,7 @@ namespace divine {
+ 
+ enum LTL_syntax_el_t {ltl_box, ltl_diamond, ltl_not, ltl_next, ltl_until,
+ 	ltl_V, ltl_and, ltl_or, ltl_xor, ltl_impl, ltl_ekv, ltl_weak,
+-	ltl_true, ltl_false, ltl_atom, left_par, right_par, unknown, end};
++	ltl_true, ltl_false, ltl_atom, left_par, right_par, unknown, ltl_end};
+ /* Syntactic elements - unary operators, binary operators, true,
+ 	false, atom, parenthesis, unknown element, end of formula
+ */

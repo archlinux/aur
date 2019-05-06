@@ -1,0 +1,22 @@
+pkgbase = divine2-ltsmin
+	pkgdesc = LTSmin-enabled version of DiVinE 2
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/utwente-fmt/divine2
+	arch = any
+	license = custom
+	makedepends = gcc
+	makedepends = cmake
+	provides = divine
+	conflicts = divine
+	source = https://github.com/utwente-fmt/divine2/archive/1.3.tar.gz
+	source = 000-explicit_storage.patch
+	source = 001-ltl.patch
+	source = 002-map.patch
+	sha256sums = 596e0614bcfe8d65bd26c08a0d5b4085e310004cdaf9b5eb11f0ede8b4332a16
+	sha256sums = 5b379c10726548d20dcbe1e587fb1451d12b9eaa952b279a9fc287b90b87a615
+	sha256sums = bf688aa819f957c90e22df6584f56f2b36b6b00e3db8bcd95f6aab27d67dab6a
+	sha256sums = 2a357e606e85292141627f79e6ba510fe8b0c3814ea37785b8e1a5f0cd44f5d1
+
+pkgname = divine2-ltsmin
+
