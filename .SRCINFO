@@ -1,11 +1,12 @@
 pkgbase = emacs-libvterm-git
 	pkgdesc = Emacs libvterm integration
-	pkgver = r201.6adcedf
+	pkgver = r203.db9679d
 	pkgrel = 1
 	url = https://github.com/akermu/emacs-libvterm
 	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = pentium4
 	license = GPL3
 	makedepends = cmake
 	depends = emacs
