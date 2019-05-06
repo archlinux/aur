@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Updates .SRCINFO from within the container. Allows making a release from
+# another Linux operating system using Docker.
+#
+
+id=$(docker build -q .)
+docker run --rm --volume "$(pwd):/src" --user="$(id -u):$(id -g)" "$id" ./update

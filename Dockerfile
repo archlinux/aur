@@ -1,7 +1,5 @@
 FROM archlinux/base:latest
 
-RUN pacman -Sy --noconfirm --needed base-devel
-
-RUN mkdir /src
+RUN pacman -Syu --noconfirm --needed base-devel pacman-contrib
 
 WORKDIR /src
