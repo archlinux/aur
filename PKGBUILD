@@ -2,7 +2,7 @@
 
 pkgname=groonga
 pkgver=9.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An opensource fulltext search engine."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="http://groonga.org/"
@@ -10,8 +10,8 @@ license=('LGPL2')
 source=("http://packages.groonga.org/source/groonga/$pkgname-$pkgver.tar.gz"
         "groonga-httpd.service")
 depends=('zlib' 'lz4' 'glib2' 'libedit' 'zeromq' 'arrow' 'autoconf-archive'
-         'libevent' 'mecab' 'mecab-ipadic' 'msgpack-c')
-optdepends=('cutter-test_framework' 'ruby' 'mercurial' 'kytea' 'snowball-c')
+         'libevent' 'mecab' 'mecab-ipadic' 'msgpack-c' 'snowball-c-git')
+optdepends=('cutter-test_framework' 'ruby' 'mercurial' 'kytea')
 
 build() {
     # TODO: Enable arrow later
@@ -23,13 +23,12 @@ build() {
     --with-default-encoding=utf8 \
     --with-zlib \
     --with-lz4 \
-    --without-stemmer \
     --enable-arrow \
     --enable-message-pack \
     --enable-shared=yes \
     --enable-static=yes \
     --with-mecab \
-    --with-mruby
+    --enable-mruby
 
     make
 }
