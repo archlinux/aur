@@ -1,0 +1,4 @@
+# Ignore downloaded sources
+*.tar.xz
+*.tar.gz
+*.tar.gz.asc
