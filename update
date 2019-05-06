@@ -2,7 +2,9 @@
 #
 # Script with necessary update steps, regardless of system.
 #
+set -e
 
 updpkgsums
+
 echo 'Updating AUR package metadata...'
 makepkg --printsrcinfo > .SRCINFO
