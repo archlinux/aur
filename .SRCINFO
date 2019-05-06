@@ -1,7 +1,7 @@
 pkgbase = chromium-vaapi
 	pkgdesc = Chromium with VA-API support to enable hardware acceleration
 	pkgver = 74.0.3729.131
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	install = chromium.install
 	arch = x86_64
@@ -61,6 +61,7 @@ pkgbase = chromium-vaapi
 	source = chromium-vaapi.patch
 	source = chromium-system-icu.patch
 	source = chromium-glibc-2.29.patch
+	source = chromium-fix-the-flash-for-new-windows.patch
 	source = chromium-widevine.patch
 	source = chromium-skia-harmony.patch
 	sha256sums = d178c7842f8f858ac876d88ce866cbd2132d7ca6c73940613ebf7e9c3fada986
@@ -69,6 +70,7 @@ pkgbase = chromium-vaapi
 	sha256sums = e87ede45edf39ac19e56ac1ae49c9d1f5f5130e5838bcbb4c3d4fb16e55575c0
 	sha256sums = e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89
 	sha256sums = dd791f154b48e69cd47fd94753c45448655b529590995fd71ac1591c53a3d60c
+	sha256sums = 6d82c052eb1f1ae5644a09f7ad7a88d9e2966d1836124445ca4df93b7657c10a
 	sha256sums = d081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b
 	sha256sums = 5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3
 
