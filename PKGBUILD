@@ -1,6 +1,6 @@
 # Maintainer: jerry73204 <jerry73204@gmail.com>
 pkgname=tirex-git
-pkgver=r223.c34e18a
+pkgver=r224.154dd09
 pkgrel=1
 pkgdesc="Tirex tile queue manager. A drop-in replacement for renderd."
 arch=('i686' 'x86_64')
