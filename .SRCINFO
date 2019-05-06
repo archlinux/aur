@@ -1,0 +1,16 @@
+pkgbase = vmware-vmrc
+	pkgdesc = VMWare VMRC Client.
+	pkgver = 10.0.4
+	pkgrel = 1
+	url = https://www.vmware.com/go/download-vmrc
+	arch = x86_64
+	license = custom:vmware
+	source = file://VMware-Remote-Console-10.0.4-11818843.x86_64.bundle
+	source = bootstrap
+	source = config
+	sha256sums = 5e2b95e1b8936b3b95fae7151abf4e82ecad46e902e00c7a4072ef949ba11145
+	sha256sums = 22282e8643d8a20e63773435161e5a5d01c6acce53aa81f27a4d20f111acd228
+	sha256sums = c5643ebad140391622c57ab88d6071b91d1ea9a8379c1aec573c845a00be30d4
+
+pkgname = vmware-vmrc
+
