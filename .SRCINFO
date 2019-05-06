@@ -17,4 +17,3 @@ source = https://github.com/vsvyatski/kmeldb-ui/archive/v0.4.0.tar.gz
 sha256sums = b664be402a409089123fc6caa95b265737b2bae2822428cf327e87ac3679eebd
 
 pkgname = kmeldb-ui
-
