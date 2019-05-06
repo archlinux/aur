@@ -1,6 +1,6 @@
 pkgbase = ogr2osm-git
 	pkgdesc = A tool for converting ogr-readable files like shapefiles into .osm data
-	pkgver = r141.4f5318b
+	pkgver = r152.183e226
 	pkgrel = 1
 	url = https://github.com/pnorman/ogr2osm
 	arch = any

@@ -1,6 +1,6 @@
 # Maintainer: jerry73204 <jerry73204 at gmail dot com>
 pkgname=ogr2osm-git
-pkgver=r141.4f5318b
+pkgver=r152.183e226
 pkgrel=1
 pkgdesc='A tool for converting ogr-readable files like shapefiles into .osm data'
 arch=('any')
