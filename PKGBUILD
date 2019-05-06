@@ -3,7 +3,7 @@
 
 _basename=libraqm
 pkgname=lib32-libraqm
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A library that encapsulates the logic for complex text layout (32-bit)'
 arch=(x86_64)
@@ -11,7 +11,7 @@ url='https://github.com/HOST-Oman/libraqm/'
 license=(MIT)
 depends=(lib32-freetype2 lib32-fribidi libraqm)
 source=(https://github.com/HOST-Oman/libraqm/releases/download/v$pkgver/raqm-$pkgver.tar.gz)
-sha256sums=('a06036ad6bd0abdc656de0b4189cc7f397ec1beb17061012732e32761a02c989')
+sha256sums=('37ccb06bcedd2e1340137086841ca8929fd728627bd1d707daba448d5c7b111a')
 
 build() {
     cd raqm-$pkgver
