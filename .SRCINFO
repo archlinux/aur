@@ -1,7 +1,7 @@
 pkgbase = sview
 	pkgdesc = Stereoscopic 3D video player with OpenGL UI
-	pkgver = 17.10
-	pkgrel = 2
+	pkgver = 19.04
+	pkgrel = 1
 	url = http://www.sview.ru/en
 	arch = i686
 	arch = x86_64
@@ -15,10 +15,11 @@ pkgbase = sview
 	depends = libxext
 	depends = libxpm
 	depends = openal
-	optdepends = ttf-droid
+	depends = ttf-droid
+	depends = ttf-freefont
 	optdepends = ttf-nanum
-	source = https://github.com/gkv311/sview/archive/8be57493b851b8172dcab097fea19e18c46fcc37.tar.gz
-	sha256sums = 15418bd4be470f7399ca212869ee9c494bceab9224424b127e5260085f23afe1
+	source = https://github.com/gkv311/sview/archive/2b03b4fac40ad38a2e5e3223c09dc35ad0f9ba02.tar.gz
+	sha256sums = 68cf3fb9fd0d40fc7e3b0933f63317387a3d396cd282068a15049031be879f52
 
 pkgname = sview
 
