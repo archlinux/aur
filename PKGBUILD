@@ -6,24 +6,23 @@ pkgname=kickshaw
 pkgver=0.7.3
 pkgrel=1
 pkgdesc='A menu editor for freedesktop standard menus'
-url='https://bitbucket.org/natemaia/kickshaw'
+url='http://download.savannah.gnu.org/releases/obladi'
 arch=('x86_64')
 sha256sums=('SKIP')
 license=('GPL2')
-source=("git+$url.git")
+source=("${url}/${pkgname}_${pkgver}_GTK3_source_only.tar.bz2")
 makedepends=('gtk3' 'gcc')
 depends=('gtk3')
 
 build()
 {
-	cd kickshaw/source || exit 1
+	cd ${pkgname}_${pkgver}_GTK3_source_only/source || exit 1
 	make
 }
 
 package()
 {
-	install -Dm755 kickshaw/source/kickshaw $pkgdir/usr/bin/kickshaw
-	install -Dm644 kickshaw/source/kickshaw.desktop $pkgdir/usr/share/applications/kickshaw.desktop
-	install -Dm644 kickshaw/README.md $pkgdir/usr/share/licenses/kickshaw/README.md
-	install -Dm644 kickshaw/COPYING $pkgdir/usr/share/licenses/kickshaw/COPYING
+	install -Dm755 ${pkgname}_${pkgver}_GTK3_source_only/source/kickshaw $pkgdir/usr/bin/kickshaw
+	install -Dm644 ${pkgname}_${pkgver}_GTK3_source_only/README $pkgdir/usr/share/licenses/kickshaw/README
+	install -Dm644 ${pkgname}_${pkgver}_GTK3_source_only/COPYING $pkgdir/usr/share/licenses/kickshaw/COPYING
 }
