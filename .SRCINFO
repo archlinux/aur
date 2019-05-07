@@ -1,6 +1,6 @@
 pkgbase = flowee
 	pkgdesc = Flowee the Hub
-	pkgver = b46ad6f2b
+	pkgver = 949d9c789
 	pkgrel = 1
 	url = https://flowee.org/
 	install = flowee.install

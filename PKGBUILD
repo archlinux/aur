@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee
-pkgver=b46ad6f2b
+pkgver=949d9c789
 pkgrel=1
 pkgdesc="Flowee the Hub"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('boost' 'cmake')
 provides=('flowee-hub')
 backup=("etc/flowee/flowee.conf")
 install=flowee.install
-source=("git+https://gitlab.com/FloweeTheHub/thehub.git#branch=2019.02"
+source=("git+https://gitlab.com/FloweeTheHub/thehub.git#branch=2019.04"
     "flowee.logrotate"
     "flowee.conf"
     "logs.conf")
