@@ -5,7 +5,6 @@ url='http://ros.org/wiki/message_generation'
 
 pkgname='ros-melodic-message-generation'
 pkgver='0.4.0'
-_pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -33,9 +32,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="message_generation-release-release-melodic-message_generation-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/message_generation-release/archive/release/melodic/message_generation/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e868cdae2dcb54701e86484cb186fad8814bbd295db8a0224c4c14c3651d9303')
+_dir="message_generation-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/message_generation/archive/${pkgver}.tar.gz")
+sha256sums=('e47304c394acd6594403f10cfd52930cab6fb436213839e91bedad5b90a4c186')
 
 build() {
 	# Use ROS environment variables.
