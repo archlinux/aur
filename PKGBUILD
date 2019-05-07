@@ -10,9 +10,9 @@
 # Contributor: Lubomir 'Kuci' Kucera <kuci24-at-gmail-dot-com>
 
 pkgname=android-studio-beta
-pkgver=3.4.0.17
+pkgver=3.4.0.18
 pkgrel=1
-_build=183.5400832
+_build=183.5452501
 pkgdesc="The Official Android IDE (Beta branch)"
 arch=('i686' 'x86_64')
 url="http://tools.android.com/"
@@ -22,12 +22,12 @@ depends=('freetype2' 'libxrender' 'libxtst')
 optdepends=('gtk2: GTK+ look and feel'
             'libgl: emulator support')
 options=('!strip')
-source=("https://dl.google.com/dl/android/studio/ide-zips/$pkgver/android-studio-ide-$_build-linux.zip"
-        "$pkgname.desktop")
-sha256sums=('01fb2de2c1650d99d5f4c9a706034780e712e0af8648243fdc0a36390ebb8aec'
+source=("https://dl.google.com/dl/android/studio/ide-zips/${pkgver}/android-studio-ide-${_build}-linux.tar.gz"
+        "${pkgname}.desktop")
+sha256sums=('ad2bd4be87a55cfaeee6f28d40d925691314c11862b303d411f9776b76fa1c45'
             '368b5287efcfd2b421bdd10e1bdd39a8bffeb84500745c4a88729609c841bcf7')
 
-if [ "$CARCH" = "i686" ]; then
+if [ "${CARCH}" = "i686" ]; then
     depends+=('java-environment')
 fi
 
@@ -50,5 +50,5 @@ package() {
   install -Dm644 bin/studio.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-  chmod -R ugo+rX $pkgdir/opt
+  chmod -R ugo+rX "${pkgdir}/opt"
 }
