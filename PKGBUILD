@@ -1,3 +1,5 @@
+# Maintainer: Orestis Floros <orestisf1993@gmail.com>
+
 _name='zsh-notify'
 pkgname="${_name}-git"
 pkgver=r46.1b0ba73
