@@ -1,12 +1,13 @@
 pkgbase = kail
-	pkgdesc = kubernetes log viewer
-	pkgver = 0.7.0
+	pkgdesc = Kubernetes log viewer
+	pkgver = 0.8.0
 	pkgrel = 1
-	url = https://github.com/Versent/kail
+	url = https://github.com/boz/kail
 	arch = x86_64
 	license = MIT
-	source_x86_64 = https://github.com/boz/kail/releases/download/v0.7.0/kail_0.7.0_linux_amd64.tar.gz
-	md5sums_x86_64 = 142ad194debe29548cb048d10c812dbf
+	makedepends = go
+	source = https://github.com/boz/kail/archive/v0.8.0.tar.gz
+	sha256sums = 2bc0bfb0d15ed0f6e4adfaa38b782c5967e1c5b6fbf47f0b4911aca940a031e9
 
 pkgname = kail
 
