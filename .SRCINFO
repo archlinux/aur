@@ -1,0 +1,14 @@
+pkgbase = archlinux-nix-git
+	pkgdesc = A command-line tool for setting up Nix on Arch Linux
+	pkgver = r14.b0ed00f
+	pkgrel = 1
+	url = https://github.com/asppsa/archlinux-nix
+	arch = any
+	makedepends = git
+	provides = archlinux-nix
+	conflicts = archlinux-nix
+	source = git+https://github.com/asppsa/archlinux-nix.git
+	md5sums = SKIP
+
+pkgname = archlinux-nix-git
+
