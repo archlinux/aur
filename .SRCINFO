@@ -9,6 +9,7 @@ pkgbase = pantheon
 	source = pantheon
 	source = https://bintray.com/consensys/pegasys-repo/download_file?file_path=pantheon-1.1.0.tar.gz
 	source = https://bintray.com/consensys/pegasys-repo/download_file?file_path=pantheon-1.1.0.tar.gz.asc
+	validpgpkeys = 8756C4F765C9AC3CB6B85D62379CE192D401AB61
 	sha256sums = 97383c0098343059660aa50de27c482cca9929d03dd32dd08ba2dec43b9ea06e
 	sha256sums = d6e9202fdfce852aea83eaf20e1294c37e3cc54c05089060401d25af26cb2212
 	sha256sums = SKIP

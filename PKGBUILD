@@ -13,6 +13,7 @@ source=('pantheon'
 sha256sums=('97383c0098343059660aa50de27c482cca9929d03dd32dd08ba2dec43b9ea06e'
 	    'd6e9202fdfce852aea83eaf20e1294c37e3cc54c05089060401d25af26cb2212'
 	    'SKIP')
+validpgpkeys=('8756C4F765C9AC3CB6B85D62379CE192D401AB61')
 package() {
   cd "$pkgname-$pkgver"
   install -D -m644 -t "$pkgdir/usr/share/java/pantheon" lib/*
