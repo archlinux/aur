@@ -1,12 +1,16 @@
 # Maintainer: Aiyion <aur@aiyionpri.me>
 pkgname=python-libcharon
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="File metadata and streaming library"
 arch=('any')
 url="https://github.com/Ultimaker/libCharon"
 license=('LGPL3')
-depends=('python' 'python-typing')
+depends=('python')
+
+# the python typing extensions are not necessary anymore, unless you are using an ancient version of python and can not move away from that
+optdepends=('python-typing-extensions')
+
 makedepends=('python-setuptools' 'cmake')
 checkdepends=('python-pytest' 'python-coverage')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Ultimaker/libCharon/archive/${pkgver}.tar.gz")
