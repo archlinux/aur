@@ -5,6 +5,7 @@ pkgbase = tela-icon-theme-git
 	url = https://github.com/vinceliuice/Tela-icon-theme
 	arch = any
 	license = GPL3
+	makedepends = git
 	options = !strip
 	source = git+https://github.com/vinceliuice/Tela-icon-theme.git
 	sha256sums = SKIP

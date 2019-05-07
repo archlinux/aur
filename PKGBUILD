@@ -11,6 +11,7 @@ license=('GPL3')
 source=("git+https://github.com/vinceliuice/Tela-icon-theme.git")
 sha256sums=('SKIP')
 options=('!strip')
+makedepends=('git')
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
