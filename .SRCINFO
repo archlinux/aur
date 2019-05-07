@@ -7,6 +7,7 @@ pkgbase = rsfetch-git
 	arch = x86_64
 	license = Unlicense
 	makedepends = rust
+	conflicts = rsfetch-bin
 	source = rsfetch-git::git+https://github.com/phate6660/rsfetch#branch=master
 	sha512sums = SKIP
 

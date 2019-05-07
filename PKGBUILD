@@ -8,6 +8,7 @@ pkgdesc="Fast (0.01s - 0.2s execution time) and somewhat(?) minimal fetch progra
 url="https://github.com/phate6660/rsfetch"
 license=('Unlicense')
 depends=()
+conflicts=('rsfetch-bin')
 makedepends=("rust")
 arch=("i686" "x86_64")
 source=("rsfetch-git::git+https://github.com/phate6660/rsfetch#branch=master")
