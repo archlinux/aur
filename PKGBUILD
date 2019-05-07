@@ -2,7 +2,7 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=python-acme
-pkgver=0.34.0
+pkgver=0.34.1
 pkgrel=1
 pkgdesc="ACME protocol implementation in Python"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-setuptools' 'python-pyopenssl' 'python-pyrfc3339' 'python-pytz'
          'python-six' 'python-josepy' 'python-mock' 'python-requests-toolbelt')
 checkdepends=('python-pytest-runner')
 source=("https://pypi.io/packages/source/a/acme/acme-$pkgver.tar.gz")
-sha512sums=('d3423d65aa8dd038a824956a175031e9257890c7dc17a66b56d2584e8a610ed2c9d476b5cca75be6ea39dc13c8387e06e6a6626587c62afd84990548bc544b7b')
+sha512sums=('67111f9322ebadbbf3fb277f76d7c6904b84dd227fb1c73c11edb3b06eacd6390237de02b7a0bfc37bb74b0b09944656458654032d0d65c107e0c432dae44f60')
 
 build() {
   cd acme-$pkgver
