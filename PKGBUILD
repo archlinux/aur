@@ -1,7 +1,7 @@
 # Maintainer: robus <RobusGrobus95@gmail.com>
 _pkgname=nvidia-xrun
 pkgname=$_pkgname"-git"
-pkgver=0.3.40.gb8bd592
+pkgver=0.3.79.gaf3b734
 pkgrel=1
 epoch=
 pkgdesc="Script to run dedicated X server with discrete nvidia graphics (git version)"
@@ -32,6 +32,7 @@ pkgver() {
 
 package() {
 	cd "$_pkgname"
+	install -Dm 644 nvidia-xrun-pm.service "$pkgdir/etc/systemd/system/nvidia-xrun-pm.service"
 	install -Dm 644 config/nvidia-xrun "$pkgdir/etc/default/nvidia-xrun"
 	install -Dm 644 nvidia-xorg.conf "$pkgdir/etc/X11/nvidia-xorg.conf"
 	install -Dm 644 nvidia-xinitrc "$pkgdir/etc/X11/xinit/nvidia-xinitrc"
