@@ -6,6 +6,7 @@ pkgbase = rsfetch-bin
 	arch = i686
 	arch = x86_64
 	license = Unlicense
+	conflicts = rsfetch-git
 	source = https://github.com/rsfetch/rsfetch/releases/download/1.4.0/rsfetch
 	source = https://raw.githubusercontent.com/rsfetch/rsfetch/master/LICENSE
 	sha512sums = 5ef12a47982e07c3a9b07e286fafc55d8f74d66b32cfcafe93cd5d1dd43ff3fe3a970376f5714e951db0d32c87d2a16edd932531e1fa79cdc19bc4fe9f83dcad

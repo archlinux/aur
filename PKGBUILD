@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc="Fast (0.01s - 0.2s execution time) and somewhat(?) minimal fetch program written in Rust."
 url="https://github.com/phate6660/rsfetch"
 license=('Unlicense')
+conflicts=('rsfetch-git')
 depends=()
 makedepends=()
 arch=("i686" "x86_64")
