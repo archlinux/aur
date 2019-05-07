@@ -8,6 +8,7 @@ cat "${LOCAL_TEMP_DIR}/PKGBUILD" |
   gawk \
     'BEGIN {
         print "# Maintainer: Lucas Lugao <lugaosmurf@gmail.com>"
+        prepare_line = "git clone --depth 1 " inkscape_upstream " \"$_gitname\""
     }
     /^# Maintainer:/ {
         $2 = "Contributor:"
@@ -27,10 +28,16 @@ cat "${LOCAL_TEMP_DIR}/PKGBUILD" |
         gsub("\""," (shallow clone)\"", $NF)
     }
     /^pkgname/ {$0="pkgname=inkscape-shallow-git"}
-    /^build()/ {
-        printf("prepare(){\n  git clone --depth 1 " inkscape_upstream " \"$_gitname\"\n}\n\n")
-    }
     !/^source/ && !/^sha1sums/ && !/^#/ {print}
+    /^prepare()/ {
+        print "  " prepare_line
+        inserted_prepare = 1
+    }
+    END {
+        if(!inserted_prepare){
+            printf("\nprepare() {\n  %s\n}\n\n", prepare_line)
+        }
+    }
     ' > PKGBUILD
 makepkg --printsrcinfo > .SRCINFO
 

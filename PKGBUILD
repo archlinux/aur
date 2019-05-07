@@ -28,10 +28,6 @@ pkgver() {
 }
 
 
-prepare(){
-  git clone --depth 1 https://gitlab.com/inkscape/inkscape "$_gitname"
-}
-
 build() {
   cd "$_gitname"
   [[ -d build ]] || mkdir build
@@ -48,3 +44,8 @@ package() {
   cd "$_gitname"/build
   make DESTDIR="$pkgdir" install
 }
+
+prepare() {
+  git clone --depth 1  "$_gitname"
+}
+
