@@ -4,8 +4,7 @@ pkgdesc="ROS - Standard ROS Messages including common message types representing
 url='http://www.ros.org/wiki/std_msgs'
 
 pkgname='ros-melodic-std-msgs'
-pkgver='0.5.11'
-_pkgver_patch=0
+pkgver='0.5.12'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -29,9 +28,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="std_msgs-release-release-melodic-std_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/std_msgs-release/archive/release/melodic/std_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6d797519014ad374df53396887cf92703255f97d6faf0be22116f1162b843a13')
+_dir="std_msgs-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/std_msgs/archive/${pkgver}.tar.gz")
+sha256sums=('bdb35e40493ce5e30c9ad93d75964356a8dbfea5df3c6e6630f9ea4905dedc02')
 
 build() {
 	# Use ROS environment variables.
