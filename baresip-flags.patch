@@ -1,0 +1,45 @@
+diff -Naur baresip-0.6.2.orig/Makefile baresip-0.6.2/Makefile
+--- baresip-0.6.2.orig/Makefile	2019-05-06 19:50:16.033903247 -0400
++++ baresip-0.6.2/Makefile	2019-05-06 19:51:38.941047245 -0400
+@@ -170,7 +170,7 @@
+ 
+ $(SHARED): $(LIB_OBJS)
+ 	@echo "  LD      $@"
+-	$(HIDE)$(LD) $(LFLAGS) $(SH_LFLAGS) $^ -L$(LIBRE_SO) -lre $(LIBS) -o $@
++	$(HIDE)$(LD) $(LDFLAGS) $(LFLAGS) $(SH_LFLAGS) $^ -L$(LIBRE_SO) -lre $(LIBS) -o $@
+ 
+ $(STATICLIB): $(LIB_OBJS)
+ 	@echo "  AR      $@"
+@@ -197,9 +197,9 @@
+ $(BIN):	$(APP_OBJS)
+ 	@echo "  LD      $@"
+ ifneq ($(GPROF),)
+-	$(HIDE)$(LD) $(LFLAGS) $(APP_LFLAGS) $^ ../re/libre.a $(LIBS) -o $@
++	$(HIDE)$(LD) $(LDFLAGS) $(LFLAGS) $(APP_LFLAGS) $^ ../re/libre.a $(LIBS) -o $@
+ else
+-	$(HIDE)$(LD) $(LFLAGS) $(APP_LFLAGS) $^ \
++	$(HIDE)$(LD) $(LDFLAGS) $(LFLAGS) $(APP_LFLAGS) $^ \
+ 		-L$(LIBRE_SO) -lre $(LIBS) -o $@
+ endif
+ 
+@@ -210,7 +210,7 @@
+ 
+ $(TEST_BIN):	$(STATICLIB) $(TEST_OBJS)
+ 	@echo "  LD      $@"
+-	$(HIDE)$(CXX) $(LFLAGS) $(TEST_OBJS) \
++	$(HIDE)$(CXX) $(LDFLAGS) $(LFLAGS) $(TEST_OBJS) \
+ 		-L$(LIBRE_SO) -L. \
+ 		-l$(PROJECT) -lre $(LIBS) $(TEST_LIBS) -o $@
+ 
+diff -Naur baresip-0.6.2.orig/mk/mod.mk baresip-0.6.2/mk/mod.mk
+--- baresip-0.6.2.orig/mk/mod.mk	2019-05-06 19:50:16.037236599 -0400
++++ baresip-0.6.2/mk/mod.mk	2019-05-06 20:04:34.508833761 -0400
+@@ -33,7 +33,7 @@
+ 
+ $(MOD)$(MOD_SUFFIX): $($(MOD)_OBJS)
+ 	@echo "  LD [M]  $@"
+-	$(HIDE)$(LD) $(LFLAGS) $(SH_LFLAGS) $(MOD_LFLAGS) \
++	$(HIDE)$(LD) $(LDFLAGS) $(LFLAGS) $(SH_LFLAGS) $(MOD_LFLAGS) \
+ 		$($(basename $@)_OBJS) \
+ 		$($(basename $@)_LFLAGS) -L$(LIBRE_SO) -lre -o $@
+ 
