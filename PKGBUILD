@@ -1,15 +1,15 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=uberwriter-git
-pkgver=2.1.4.r2.g424bb7f
+pkgver=2.2.0.beta1.4.r14.gb9e2720
 pkgrel=1
 pkgdesc='A distraction free Markdown editor for GNU/Linux made with GTK+'
 arch=(any)
 url="http://uberwriter.github.io/uberwriter/"
 license=(GPL3)
 depends=(gtk3
-         pandoc
          python-pyenchant
+         python-pypandoc
          webkit2gtk)
 makedepends=(python-setuptools)
 optdepends=("texlive-core: Export as PDF files"
