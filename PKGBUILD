@@ -1,36 +1,41 @@
-# Maintainer: fatalis <fatalis@fatalis.pw>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Former maintainer: fatalis <fatalis@fatalis.pw>
+
 pkgname=lzbench-git
-pkgver=1.7.1.r13.gdf29c60
+pkgver=1.7.3.r21.g3d48788
 pkgrel=1
-pkgdesc='An in-memory benchmark of open-source LZ77/LZSS/LZMA compressors'
-arch=('x86_64')
-url='https://github.com/inikep/lzbench'
-license=('unknown')
+pkgdesc="An in-memory benchmark of open-source compressors"
+arch=('i686' 'x86_64')
+url="https://github.com/inikep/lzbench"
+license=('GPL3')
 depends=('gcc-libs')
 makedepends=('git')
 provides=('lzbench')
 conflicts=('lzbench')
-source=("${pkgname}::git+${url}.git"
-        'no-static.patch')
-sha256sums=('SKIP'
-            '0e3f1de18f9da318163a7c771a4c15fee38b16c2f26390ee61b51eef0d9eb19e')
+source=("git+https://github.com/inikep/lzbench.git")
+sha256sums=('SKIP')
+
 
 prepare() {
-  cd "${pkgname}"
-  patch -p0 < ../no-static.patch
+  cd "lzbench"
+
+  sed -i 's/LDFLAGS	+= -lrt -static/LDFLAGS	+= -lrt/' "Makefile"
 }
 
 pkgver() {
-  cd "${pkgname}"
-  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
+  cd "lzbench"
+
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${pkgname}"
+  cd "lzbench"
+
   make
 }
 
 package() {
-  cd "${pkgname}"
-  install -Dm755 lzbench "${pkgdir}/usr/bin/lzbench" 
+  cd "lzbench"
+
+  install -Dm755 "lzbench" "$pkgdir/usr/bin/lzbench"
 }
