@@ -25,7 +25,7 @@ source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox
         firefox.desktop firefox-symbolic.svg
         rust_133-part0.patch 'rust_133-part1.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046663' 'rust_133-part2.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046664' deny_missing_docs.patch)
 sha256sums=('cdb3d7b7648d9898e32d5fdb2eaac27d7cafa4eb0f88b39ccb1d30445ec77d3b'
-            'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
+            '78a920ffdd44e1d51445e7255da4863604be96a4b3cd7a7cb13ecc2efae6cb39'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'c10521badc262b476e844d3f3045ddf27e28d83d49b5db0d0e19431f06386e4d'
             '8b37332dd205946ea95c606103b5b0e1e8498819051ea1c1bce79f04fd88ebca'
