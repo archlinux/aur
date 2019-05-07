@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Unofficial electron-based desktop client for Google Chat, electron included"
 arch=('x86_64' 'i686')
 url="https://github.com/squalou/google-chat-linux.git"
-electron_version='electron@v5.0.0-beta.6'
+electron_version='electron@v5.0.1'
 license=('WTFPL')
 makedepends=('nodejs' 'npm')
 
