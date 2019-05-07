@@ -3,10 +3,11 @@
 pkgbase=msbuild
 pkgname=('msbuild' 'msbuild-sdkresolver')
 pkgver=16.0+xamarinxplat.2019.04.08.19.19
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/mono/msbuild"
 license=('MIT')
+makedepends=('unzip')
 source=("https://download.mono-project.com/sources/msbuild/msbuild-${pkgver}.tar.xz"
         'fix-install.patch'
         'fixed-build-version.patch')

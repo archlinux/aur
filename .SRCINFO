@@ -1,9 +1,10 @@
 pkgbase = msbuild
 	pkgver = 16.0+xamarinxplat.2019.04.08.19.19
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/mono/msbuild
 	arch = x86_64
 	license = MIT
+	makedepends = unzip
 	source = https://download.mono-project.com/sources/msbuild/msbuild-16.0+xamarinxplat.2019.04.08.19.19.tar.xz
 	source = fix-install.patch
 	source = fixed-build-version.patch
