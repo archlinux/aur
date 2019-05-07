@@ -1,0 +1,22 @@
+pkgbase = embree2
+	pkgdesc = A collection of high-performance ray tracing kernels. Version 2
+	pkgver = 2.17.7
+	pkgrel = 1
+	url = https://embree.github.io/
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = ispc
+	makedepends = freeglut
+	makedepends = libxmu
+	makedepends = openexr
+	depends = intel-tbb
+	provides = embree-isa=2.17.7
+	provides = embree=2.17.7
+	replaces = embree-isa=2.17.7
+	replaces = embree<=2.17.7
+	source = embree-2.17.7.tar.gz::https://github.com/embree/embree/archive/v2.17.7.tar.gz
+	sha256sums = c0694f287fa1fbb382aba3a895702e248d92f7e89c0e5f64aefee965482ec04c
+
+pkgname = embree2
+
