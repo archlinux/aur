@@ -1,0 +1,33 @@
+# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+
+pkgname=python-avocado
+pkgver=69.0
+pkgrel=1
+pkgdesc="Set of tools and libraries to help with automated testing"
+arch=('x86_64')
+url="http://avocado-framework.github.io/"
+license=('GPL2')
+source=("https://github.com/avocado-framework/avocado/archive/${pkgver}.tar.gz")
+sha256sums=('e456b2c0c730afc2fbf3442e2f1bbe04f96ed61d375ceedefb1a2f3b432a9a67')
+depends=('python' 'libvirt-python')
+makedepends=('python-setuptools')
+
+build() {
+  cd "avocado-${pkgver}"
+  python setup.py build
+  make man
+}
+
+false &&
+check() {
+  cd "avocado-${pkgver}"
+  make check-full
+}
+
+package() {
+  cd "avocado-${pkgver}"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+
+  install -d "$pkgdir/usr/share/man/man1/"
+  install -m644 man/*.1 "$pkgdir/usr/share/man/man1/"
+}
