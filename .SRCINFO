@@ -1,8 +1,8 @@
 pkgbase = kftpgrabber-svn
 	pkgdesc = A graphical FTP client for KDE
-	pkgver = r1511089
+	pkgver = r1522950
 	pkgrel = 1
-	url = http://kftp.org
+	url = https://kde.org/applications/internet/kftpgrabber/
 	arch = i686
 	arch = x86_64
 	license = GPL
