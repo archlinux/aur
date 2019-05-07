@@ -4,12 +4,12 @@
 _name=ldb
 pkgname=lib32-$_name
 pkgver=1.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A schema-less, ldap like, API and database"
 arch=('x86_64')
 url="https://ldb.samba.org/"
 license=('GPL3')
-depends=('lib32-talloc' 'lib32-tevent' 'lib32-tdb' 'lib32-popt' 'lib32-libbsd' 'ldb')
+depends=('lib32-talloc' 'lib32-tevent' 'lib32-tdb' 'lib32-popt' 'lib32-libbsd' 'ldb' 'python')
 makedepends=('lib32-cmocka')
 source=(https://samba.org/ftp/${_name}/${_name}-${pkgver}.tar.gz)
 md5sums=('24d9f18b085ba27f96d4dec643abea39')
