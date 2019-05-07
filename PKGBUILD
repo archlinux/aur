@@ -46,6 +46,6 @@ package() {
 }
 
 prepare() {
-  git clone --depth 1  "$_gitname"
+  git clone --depth 1 https://gitlab.com/inkscape/inkscape "$_gitname"
 }
 

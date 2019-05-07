@@ -8,7 +8,7 @@ cat "${LOCAL_TEMP_DIR}/PKGBUILD" |
   gawk \
     'BEGIN {
         print "# Maintainer: Lucas Lugao <lugaosmurf@gmail.com>"
-        prepare_line = "git clone --depth 1 " inkscape_upstream " \"$_gitname\""
+        
     }
     /^# Maintainer:/ {
         $2 = "Contributor:"
@@ -16,6 +16,7 @@ cat "${LOCAL_TEMP_DIR}/PKGBUILD" |
     /gitlab/ {
         match($0, /(https[^'"'"'"]*)/, a)
         inkscape_upstream = a[1]
+        prepare_line = "git clone --depth 1 " inkscape_upstream " \"$_gitname\""
     }
     /^pkgver=/ {
         match($0, /^pkgver=(.*)/, a)
