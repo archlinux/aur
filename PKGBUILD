@@ -1,5 +1,6 @@
 # $Id$
 # Maintainer: Cobalt Space <cobaltspace at protonmail dot com>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=fedora-wallpapers
 pkgver=30
 pkgrel=2
