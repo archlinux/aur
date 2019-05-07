@@ -10,7 +10,7 @@ pkgbase='nim-git'
 pkgname=('nim-git' 'nimble-git' 'nimsuggest-git' 'nimpretty-git')
 pkgdesc='Nim is a compiled, garbage-collected systems programming language with a design that focuses on efficiency, expressiveness, and elegance (in that order of priority).'
 epoch=1
-pkgver=0.19.4.r2.g7f3b686b8.r1821.d24585c49
+pkgver=0.19.4.r1821.d24585c49
 pkgrel=1
 arch=('i686' 'x86_64')
 groups=('nim')
@@ -29,8 +29,7 @@ sha256sums=(
 
 _tag() {
   # Describes the most recent tag
-  git describe --long origin/master \
-    | sed 's/\([^-]*-g\)/r\1/;s/-/./g';
+  git describe --abbrev=0 origin/master
 }
 
 _revision() {
