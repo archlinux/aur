@@ -16,6 +16,7 @@ arch=('x86_64')
 build() {
   cd $pkgname-$pkgver
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DBUILD_STATIC_LIBS=OFF .
   make
 }
