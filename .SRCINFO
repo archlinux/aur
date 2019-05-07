@@ -1,5 +1,5 @@
 pkgbase = linux-ck-reiser4
-	pkgver = 5.0.10
+	pkgver = 5.0.13
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Reiser4
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = linux-ck-reiser4
 	makedepends = libelf
 	makedepends = git
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.0.10.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.0.10.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.0.13.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.0.13.tar.sign
 	source = config
 	source = config-dell
 	source = reiser4-for-5.0.0.patch.gz::https://downloads.sourceforge.net/project/reiser4/reiser4-for-linux-5.x/reiser4-for-5.0.0.patch.gz
@@ -23,7 +23,7 @@ pkgbase = linux-ck-reiser4
 	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = ea1c1323c2c7e70bebf5463619b543f9bc353730b44ac62d9efadd4fe5625e76
+	sha256sums = bcfd52bf1faa24f5f712146a873959461e001656ad67717e80b947aa6ad53479
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -46,13 +46,13 @@ pkgname = linux-ck-reiser4
 	optdepends = reiser4progs: Utilities for creating/checking/debugging Reiser4 filesystems
 	optdepends = dkms: To automatically update kernel modules on upgrades
 	optdepends = lz4: To compress the ramdisk with LZ4 compression
-	provides = linux-ck-reiser4=5.0.10
-	provides = linux=5.0.10
+	provides = linux-ck-reiser4=5.0.13
+	provides = linux=5.0.13
 	backup = etc/mkinitcpio.d/linux-ck-reiser4.preset
 
 pkgname = linux-ck-reiser4-headers
 	pkgdesc = Headers for building modules for the Linux-ck-reiser4 kernel
 	depends = linux-ck-reiser4
-	provides = linux-ck-reiser4-headers=5.0.10
-	provides = linux-headers=5.0.10
+	provides = linux-ck-reiser4-headers=5.0.13
+	provides = linux-headers=5.0.13
 

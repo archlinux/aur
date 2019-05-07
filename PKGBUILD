@@ -8,7 +8,7 @@
 
 # Configure kernel options prior to a build via nconfig, otherwise the default config + the selected options below will be used (with -march=native)
 # Recommended for experienced users (default=)
-_makenconfig=
+_makenconfig=y
 
 # Enable AMD CPU support (default=) 
 # WARNING: If you intend to run and compile the kernel on a AMD CPU, please enable. DEFAULT IS INTEL *ONLY*.
@@ -41,7 +41,7 @@ _enable_muqss=y
 # Note that this config has disabled btrfs, tablet and touchscreen support and only supports Intel WiFi. 
 # Set _makenconfig=y to configure drivers for touchscreen and if needed, enable btrfs under "File Systems".
 # You have been warned.
-_dellconfig=
+_dellconfig=y
 
 ### Do no edit below this line.
 
