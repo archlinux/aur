@@ -41,8 +41,8 @@ ConfigurationDirectory=bitcoin
 ConfigurationDirectoryMode=0710
 
 # /var/lib/bitcoind
-StateDirectory=bitcoind
-StateDirectoryMode=0710
+#StateDirectory=bitcoind
+#StateDirectoryMode=0710
 
 # Hardening measures
 ####################
