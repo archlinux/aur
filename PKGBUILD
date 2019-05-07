@@ -2,13 +2,14 @@
 
 _name='zsh-notify'
 pkgname="${_name}-git"
-pkgver=r46.1b0ba73
+pkgver=r57.853bc94
 pkgrel=1
 pkgdesc="Desktop notifications for long-running commands in zsh."
 url="https://github.com/marzocchi/zsh-notify"
 arch=('any')
 license=('MIT')
-depends=('zsh')
+depends=('zsh' 'xdotool')
+optdepends=('wmctrl: To activate the terminal and set the urgency hint')
 makedepends=('git')
 provides=('zsh-notify')
 source=("${_name}::${url//https/git}")
