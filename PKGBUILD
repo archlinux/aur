@@ -1,4 +1,5 @@
 # Maintainer: Kied Llaentenn <@kiedtl>
+# Maintainer: ValleyKnight <valleyknight@protonmail.com>
 
 pkgname=rsfetch-git
 pkgver=1.4.0
