@@ -1,0 +1,13 @@
+pkgbase = python-djangoql
+	pkgdesc = Advanced search language for Django
+	pkgver = 0.12.6
+	pkgrel = 2
+	url = https://github.com/ivelum/djangoql/
+	arch = any
+	license = MIT
+	depends = python-django
+	source = python-djangoql-0.12.6.tar.gz::https://files.pythonhosted.org/packages/source/d/djangoql/djangoql-0.12.6.tar.gz
+	md5sums = 80eb9b42d18e04bc31041dc573df991d
+
+pkgname = python-djangoql
+
