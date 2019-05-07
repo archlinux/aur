@@ -1,13 +1,13 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.0.0.a Kernel Configuration
+# Linux/x86 5.0.12.a Kernel Configuration
 #
 
 #
-# Compiler: gcc (GCC) 8.2.1 20181127
+# Compiler: gcc (GCC) 8.3.0
 #
 CONFIG_CC_IS_GCC=y
-CONFIG_GCC_VERSION=80201
+CONFIG_GCC_VERSION=80300
 CONFIG_CLANG_VERSION=0
 CONFIG_CC_HAS_ASM_GOTO=y
 CONFIG_IRQ_WORK=y
@@ -1869,6 +1869,7 @@ CONFIG_UNIX98_PTYS=y
 # CONFIG_NOZOMI is not set
 # CONFIG_N_GSM is not set
 # CONFIG_TRACE_SINK is not set
+CONFIG_LDISC_AUTOLOAD=y
 CONFIG_DEVMEM=y
 CONFIG_DEVKMEM=y
 
@@ -1934,7 +1935,6 @@ CONFIG_HVC_XEN_FRONTEND=y
 # CONFIG_NPCM7XX_KCS_IPMI_BMC is not set
 # CONFIG_HW_RANDOM is not set
 # CONFIG_NVRAM is not set
-# CONFIG_R3964 is not set
 # CONFIG_APPLICOM is not set
 # CONFIG_MWAVE is not set
 # CONFIG_RAW_DRIVER is not set
@@ -2396,7 +2396,6 @@ CONFIG_STAGING=y
 # Gasket devices
 #
 # CONFIG_STAGING_GASKET_FRAMEWORK is not set
-# CONFIG_XIL_AXIS_FIFO is not set
 # CONFIG_EROFS_FS is not set
 # CONFIG_X86_PLATFORM_DEVICES is not set
 CONFIG_PMC_ATOM=y
