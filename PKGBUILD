@@ -6,12 +6,12 @@ _baseversion=0.0
 _debiangitsuffix=git20180827.d94f0cb
 _debianpkgrel=1
 pkgver=$_baseversion$_debiangitsuffix
-pkgrel=2
+pkgrel=3
 pkgdesc="debianize go library packages"
 arch=('x86_64' 'i686')
 url=https://github.com/Debian/dh-make-golang
 license=('BSD')
-depends=('pristine-tar')
+depends=('pristine-tar' 'git-buildpackage')
 makedepends=('go'
              'pandoc'
              'git')
