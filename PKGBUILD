@@ -1,7 +1,7 @@
 # Maintainer: William Belanger <echo d2lsbGlhbS5iZWxyQGdtYWlsLmNvbQ== | base64 -d>
 
 pkgname=obsuite-git
-pkgver=r113.9c691fd
+pkgver=r116.a77e269
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -12,8 +12,9 @@ license=("GPL3")
 depends=("python" "python-setuptools" "python-pyqt5" "qt5-svg" "qt5-multimedia")
 optdepends=('alsa-utils: sound module'
             'pulseaudio-alsa: sound module'
+            'xorg-xbacklight: brightness module'
             'systemd: lid switch inhibit'
-            'xorg-xbacklight: brightness module')
+            'upower: ac state change bus signal')
 source=("git+https://gitlab.com/william.belanger/${pkgname%-git}.git")
 md5sums=("SKIP")
 
