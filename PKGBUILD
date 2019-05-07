@@ -94,7 +94,7 @@ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
 )
 sha256sums=('SKIP'
             'SKIP'
-            '7690a1f8afc9e607f7ebecce6c0723fa4ccda6c32b0a2c0b9e6bcba2571f7b1d'
+            'd34967afc07ab013a8853da2023ff488328c4d1d4f86627f5166aaf48256b19a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
