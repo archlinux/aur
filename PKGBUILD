@@ -8,12 +8,12 @@
 
 pkgname=nix
 pkgver=2.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A purely functional package manager"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://nixos.org/nix"
 license=('LGPL')
-depends=('gc' 'libsodium' 'boost' 'brotli' 'editline')
+depends=('gc' 'libsodium' 'boost' 'brotli' 'editline' 'archlinux-nix')
 makedepends=('bzip2' 'openssl')
 install=nix.install
 source=("https://nixos.org/releases/nix/nix-$pkgver/nix-$pkgver.tar.xz")

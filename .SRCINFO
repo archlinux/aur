@@ -1,7 +1,7 @@
 pkgbase = nix
 	pkgdesc = A purely functional package manager
 	pkgver = 2.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://nixos.org/nix
 	install = nix.install
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = nix
 	depends = boost
 	depends = brotli
 	depends = editline
+	depends = archlinux-nix
 	source = https://nixos.org/releases/nix/nix-2.2.2/nix-2.2.2.tar.xz
 	sha256sums = f80a1b4f9837a8d33209f0b7769d5038335459ff4303eccf3e9217a9eca8594c
 
