@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-genpy
 	pkgdesc = ROS - Python ROS message and service generators.
-	pkgver = 0.6.7
+	pkgver = 0.6.8
 	pkgrel = 1
 	url = http://www.ros.org/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = ros-melodic-genpy
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-genmsg
 	depends = python-yaml
-	source = ros-melodic-genpy-0.6.7-0.tar.gz::https://github.com/ros-gbp/genpy-release/archive/release/melodic/genpy/0.6.7-0.tar.gz
-	sha256sums = ff7ed1300368d850485267c5e25559d2fbb274747def53c9287910b120a652f9
+	source = ros-melodic-genpy-0.6.8.tar.gz::https://github.com/ros/genpy/archive/0.6.8.tar.gz
+	sha256sums = 79dd592863a236dd9488bd9525796212730a7a520fde7e8b1f53cd9f032c4da7
 
 pkgname = ros-melodic-genpy
 
