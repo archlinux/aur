@@ -10,10 +10,12 @@ pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU accelerat
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
-depends=('opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'python-numpy')
+depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'python-numpy' 'protobuf')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'cudnn' 'git')
-source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
+        'change_default_config.patch')
+sha256sums=('SKIP'
+            '36fa08167c5a54c2ae7e5b67b750d35f7a1b3812fa90153d66f6aa2fce71f2b4')
 
 get_pyver () {
     python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
@@ -21,6 +23,9 @@ get_pyver () {
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
+
+  # Change default config manually, as setup.py filters some flags
+  patch -Np1 -i "${srcdir}/change_default_config.patch"
 
   # This is the lazy way since pytorch has sooo many submodules and they keep
   # changing them around but we've run into more problems so far doing it the
@@ -39,6 +44,7 @@ build() {
   export CXX=g++
   export PYTORCH_BUILD_VERSION="${pkgver}"
   export PYTORCH_BUILD_NUMBER=1
+  export USE_MKLDNN=0
 
   echo "Building without cuda"
   export NO_CUDA=1
@@ -77,7 +83,6 @@ package_python-pytorch() {
   # put C++ API in correct place
   install -d "${pkgdir}/usr/include"
   install -d "${pkgdir}/usr/lib/pytorch"
-  mv "${pkgdir}/${pytorchpath}/bin"/* "${pkgdir}/usr/bin/"
   mv "${pkgdir}/${pytorchpath}/include"/* "${pkgdir}/usr/include/"
   mv "${pkgdir}/${pytorchpath}/lib"/*.so* "${pkgdir}/usr/lib/pytorch/"
   # clean up duplicates
@@ -86,10 +91,8 @@ package_python-pytorch() {
   #   NVRTC, ONNX, protobuf, libthreadpool, QNNPACK
   rm -rf "${pkgdir}/${pytorchpath}/share/cmake"
   rm -rf "${pkgdir}/${pytorchpath}/include"
-  rm -rf "${pkgdir}/${pytorchpath}/bin"
   rm -rf "${pkgdir}/usr/include/pybind11"
   # python module is hardcoded to look there at runtime
-  ln -s /usr/bin "${pkgdir}/${pytorchpath}/bin"
   ln -s /usr/include "${pkgdir}/${pytorchpath}/include"
   find "${pkgdir}"/usr/lib/pytorch -type f -name "*.so*" -print0 | while read -rd $'\0' _lib; do
     ln -s ${_lib#"$pkgdir"} "${pkgdir}/${pytorchpath}/lib/"
@@ -116,7 +119,6 @@ package_python-pytorch-cuda() {
   # put C++ API in correct place
   install -d "${pkgdir}/usr/include"
   install -d "${pkgdir}/usr/lib/pytorch"
-  mv "${pkgdir}/${pytorchpath}/bin"/* "${pkgdir}/usr/bin/"
   mv "${pkgdir}/${pytorchpath}/include"/* "${pkgdir}/usr/include/"
   mv "${pkgdir}/${pytorchpath}/lib"/*.so* "${pkgdir}/usr/lib/pytorch/"
   # clean up duplicates
@@ -125,10 +127,8 @@ package_python-pytorch-cuda() {
   #   NVRTC, ONNX, protobuf, libthreadpool, QNNPACK
   rm -rf "${pkgdir}/${pytorchpath}/share/cmake"
   rm -rf "${pkgdir}/${pytorchpath}/include"
-  rm -rf "${pkgdir}/${pytorchpath}/bin"
   rm -rf "${pkgdir}/usr/include/pybind11"
   # python module is hardcoded to look there at runtime
-  ln -s /usr/bin "${pkgdir}/${pytorchpath}/bin"
   ln -s /usr/include "${pkgdir}/${pytorchpath}/include"
   find "${pkgdir}"/usr/lib/pytorch -type f -name "*.so*" -print0 | while read -rd $'\0' _lib; do
     ln -s ${_lib#"$pkgdir"} "${pkgdir}/${pytorchpath}/lib/"

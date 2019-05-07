@@ -1,0 +1,28 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 71f8b693a..07e564919 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -67,10 +67,10 @@ option(BUILD_ATEN_MOBILE "Build ATen for Android and iOS" OFF)
+ option(BUILD_ATEN_ONLY "Build only a subset focused on ATen only" OFF)
+ option(BUILD_BINARY "Build C++ binaries" OFF)
+ option(BUILD_DOCS "Build Caffe2 documentation" OFF)
+-option(BUILD_CUSTOM_PROTOBUF "Build and use Caffe2's own protobuf under third_party" ON)
++option(BUILD_CUSTOM_PROTOBUF "Build and use Caffe2's own protobuf under third_party" OFF)
+ option(BUILD_PYTHON "Build Python binaries" ON)
+ option(BUILD_CAFFE2_OPS "Build Caffe2 operators" ON)
+-option(BUILD_SHARED_LIBS "Build libcaffe2.so" ON)
++option(BUILD_SHARED_LIBS "Build libcaffe2.so" OFF)
+ cmake_dependent_option(
+     CAFFE2_LINK_LOCAL_PROTOBUF "If set, build protobuf inside libcaffe2.so." ON
+     "BUILD_SHARED_LIBS AND BUILD_CUSTOM_PROTOBUF" OFF)
+@@ -90,8 +90,8 @@ cmake_dependent_option(
+     "USE_CUDA" OFF)
+ option(USE_FBGEMM "Use FBGEMM (quantized 8-bit server operators)" OFF)
+ option(USE_FFMPEG "Use ffmpeg" OFF)
+-option(USE_GFLAGS "Use GFLAGS" OFF)
+-option(USE_GLOG "Use GLOG" OFF)
++option(USE_GFLAGS "Use GFLAGS" ON)
++option(USE_GLOG "Use GLOG" ON)
+ option(USE_LEVELDB "Use LEVELDB" OFF)
+ option(USE_LITE_PROTO "Use lite protobuf instead of full." OFF)
+ option(USE_LMDB "Use LMDB" OFF)
