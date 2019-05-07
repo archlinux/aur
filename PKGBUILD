@@ -1,9 +1,10 @@
 # $Id$
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Cobalt Space<cobaltspace at protonmail dot com>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=constantine-backgrounds
 pkgver=12.1.1
 pkgrel=4
-_rhver="${pkgver}-15.fc29"
+_rhver="${pkgver}-16.fc30"
 pkgdesc="Fedora 12 (Constantine) backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/Wallpapers#Fedora_12"
