@@ -1,6 +1,6 @@
 pkgbase = viper4linux-gui-git
 	pkgdesc = Unofficial UI for Viper4Linux
-	pkgver = 1.5.r0.6f13b51
+	pkgver = 1.5.r2.f98f249
 	pkgrel = 1
 	url = https://github.com/ThePBone/Viper4Linux-GUI
 	arch = any
@@ -13,10 +13,8 @@ pkgbase = viper4linux-gui-git
 	conflicts = viper4linux-gui
 	source = viper4linux-gui::git+https://github.com/ThePBone/Viper4Linux-GUI.git
 	source = viper4linux-gui.desktop
-	source = viper4linux-gui.png
 	sha256sums = SKIP
 	sha256sums = 012e8b24684d876240b3fd6d62741b236cd41bfbcaaf9b41bbe9f8375ca7df71
-	sha256sums = 905e9201da348e26e84c0b973a8f91383b0bcab4d642c23be5f60e21c106e8ce
 
 pkgname = viper4linux-gui-git
 
