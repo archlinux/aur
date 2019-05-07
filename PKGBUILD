@@ -4,8 +4,7 @@ pkgdesc="ROS - Standalone Python library for generating ROS message and service 
 url='http://www.ros.org/wiki/genmsg'
 
 pkgname='ros-melodic-genmsg'
-pkgver='0.5.11'
-_pkgver_patch=0
+pkgver='0.5.12'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -28,9 +27,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="genmsg-release-release-melodic-genmsg-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/genmsg-release/archive/release/melodic/genmsg/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('41cb3e7b8f528233afe03d6163e3ac96af1e509babe2a5b3cd66c547f3c321f5')
+_dir="genmsg-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/genmsg/archive/${pkgver}.tar.gz")
+sha256sums=('0e29bde730b4e114d1050998e833681fa3917f530cfab674e71fa21677d2a7ae')
 
 build() {
 	# Use ROS environment variables.
