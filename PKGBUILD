@@ -3,8 +3,8 @@
 
 pkgname=python-http-ece
 _pkgname=http_ece
-pkgver=1.0.5
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Encrypted Content Encoding for HTTP"
 arch=('any')
 url="https://pypi.org/project/http-ece"
@@ -12,7 +12,7 @@ license=('MIT')
 depends=(python)
 makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('2f31a0640c31a0c2934ab1e37005dd9a559ae854a16304f9b839e062074106cc')
+sha256sums=('932ebc2fa7c216954c320a188ae9c1f04d01e67bec9cdce1bfbc912813b0b4f8')
 
 
 build() {

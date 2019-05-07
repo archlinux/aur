@@ -1,14 +1,14 @@
 pkgbase = python-http-ece
 	pkgdesc = Encrypted Content Encoding for HTTP
-	pkgver = 1.0.5
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://pypi.org/project/http-ece
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/h/http_ece/http_ece-1.0.5.tar.gz
-	sha256sums = 2f31a0640c31a0c2934ab1e37005dd9a559ae854a16304f9b839e062074106cc
+	source = https://files.pythonhosted.org/packages/source/h/http_ece/http_ece-1.1.0.tar.gz
+	sha256sums = 932ebc2fa7c216954c320a188ae9c1f04d01e67bec9cdce1bfbc912813b0b4f8
 
 pkgname = python-http-ece
 
