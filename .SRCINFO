@@ -1,0 +1,26 @@
+pkgbase = psensor-git
+	pkgdesc = A graphical hardware temperature monitor for Linux
+	pkgver = v1.2.0.r70.gd9832db
+	pkgrel = 1
+	url = https://gitlab.com/jeanfi/psensor
+	arch = x86_64
+	license = GPL2
+	makedepends = help2man
+	depends = lm_sensors
+	depends = dconf
+	depends = gtk3
+	depends = udisks2
+	depends = curl
+	depends = libgtop
+	depends = libnotify
+	depends = libxnvctrl
+	depends = json-c
+	depends = libmicrohttpd
+	conflicts = psensor
+	source = psensor-git::git+https://gitlab.com/jeanfi/psensor.git
+	source = is_error.patch
+	sha512sums = SKIP
+	sha512sums = fa1f0a8cdbd75fba2ad980a5beb1807e533ef12154db1f0cc97c9130080584cb0251e29a56068b0400f152e540f326a7b16749bf11b1e844d1d519d7bb0e71ed
+
+pkgname = psensor-git
+
