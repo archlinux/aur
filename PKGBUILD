@@ -3,7 +3,7 @@
 
 pkgname=('sat-tmp-hg')
 _realname=sat_tmp
-pkgver=0.7.r52.2068cf3009da
+pkgver=0.7.r61.1245269f9aab
 _version=0.7
 pkgrel=1
 pkgdesc="sat_tmp aims to temporary store files needed by Salut-a-toi (sat). These monkey patchs are not merged upstream yet. For now, only wokkel is impacted."
