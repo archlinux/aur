@@ -5,7 +5,6 @@ url='http://ros.org/wiki/message_runtime'
 
 pkgname='ros-melodic-message-runtime'
 pkgver='0.4.12'
-_pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -32,9 +31,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="message_runtime-release-release-melodic-message_runtime-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/message_runtime-release/archive/release/melodic/message_runtime/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('70669611054c91c2d65ae94d5e2474198970929338cbb76411cb560902b1c800')
+_dir="message_runtime-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/message_runtime/archive/${pkgver}.tar.gz")
+sha256sums=('7863e3e9c47c57f93f8c82e3439081da07454f1e2a4d07e0c29aacc139855806')
 
 build() {
 	# Use ROS environment variables.

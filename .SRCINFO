@@ -13,8 +13,8 @@ pkgbase = ros-melodic-message-runtime
 	depends = ros-melodic-cpp-common
 	depends = ros-melodic-roscpp-serialization
 	depends = ros-melodic-rostime
-	source = ros-melodic-message-runtime-0.4.12-0.tar.gz::https://github.com/ros-gbp/message_runtime-release/archive/release/melodic/message_runtime/0.4.12-0.tar.gz
-	sha256sums = 70669611054c91c2d65ae94d5e2474198970929338cbb76411cb560902b1c800
+	source = ros-melodic-message-runtime-0.4.12.tar.gz::https://github.com/ros/message_runtime/archive/0.4.12.tar.gz
+	sha256sums = 7863e3e9c47c57f93f8c82e3439081da07454f1e2a4d07e0c29aacc139855806
 
 pkgname = ros-melodic-message-runtime
 
