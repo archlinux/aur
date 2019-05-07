@@ -2,12 +2,12 @@
 
 pkgname=oomd
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A userspace out-of-memory killer.'
 arch=('x86_64')
 url='https://github.com/facebookincubator/oomd'
 license=('GPL2')
-depends=('jsoncpp' 'systemd-libs' 'linux>=4.20')
+depends=('jsoncpp' 'systemd-libs')
 makedepends=('meson' 'ninja' 'jsoncpp' 'gcc>=8' 'gtest' 'gmock')
 checkdepends=('gtest' 'gmock')
 install="${pkgname}.install"
