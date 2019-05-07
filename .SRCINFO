@@ -1,0 +1,15 @@
+pkgbase = ericw-tools
+	pkgdesc = Quake/Hexen 2 Map compiling tools
+	pkgver = 0.18.2
+	pkgrel = 1
+	url = http://ericwa.github.io/ericw-tools
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = embree2
+	depends = groff
+	source = ericw-tools-0.18.2.tar.gz::https://github.com/ericwa/ericw-tools/archive/v0.18.2-rc1.tar.gz
+	sha256sums = 1905752a582882f587b822e4186a7126522833b32b9777dcd46fe0f3c7cedf87
+
+pkgname = ericw-tools
+
