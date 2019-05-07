@@ -10,13 +10,14 @@ _libdir='/usr/lib'
 
 pkgname=${_pkgbase}${_pkgmajor}
 pkgver=${_pkgmajor}.${_pkgminor}.${_pkgpatch}
-pkgrel=2
+pkgrel=3
 pkgdesc='International Components for Unicode library'
 url='http://site.icu-project.org/'
 license=('custom:icu')
 
 arch=('i686' 'x86_64')
 depends=('gcc-libs>=4.7.1-5' 'sh')
+makedepends=('clang' 'make' 'patch')
 source=("http://download.icu-project.org/files/${_pkgbase}4c/${pkgver}/${_pkgbase}4c-${pkgver//./_}-src.tgz"
         'icu.8198.revert.icu5431.patch'
         'icu-testtwodigityear.patch'
