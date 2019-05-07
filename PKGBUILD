@@ -2,7 +2,7 @@
 # Maintainer: ValleyKnight <valleyknight@protonmail.com>
 
 pkgname=rsfetch-bin
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Fast (0.01s - 0.2s execution time) and somewhat(?) minimal fetch program written in Rust."
 url="https://github.com/phate6660/rsfetch"
