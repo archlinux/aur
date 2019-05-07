@@ -1,24 +1,22 @@
 # Maintainer: Lucas Lugao <lugaosmurf@gmail.com>
-# Contributor: Splex
-# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-shallow-git
-pkgver=1.0+devel.r4321.g083f7eab9b
+pkgver=1.0+devel.r4386.g0a5dc27633
 pkgrel=1
 epoch=1
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master (shallow clone)"
-url="https://launchpad.net/inkscape"
+url="https://gitlab.com/inkscape/inkscape"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 depends=('double-conversion' 'gc' 'poppler-glib' 'libxslt' 'gsl' 'libyaml' 'potrace' 'gdl>=3.8.0.25'
 	 'gtkmm3' 'libcdr' 'libvisio' 'dbus-glib' 'jemalloc' 'gtkspell3' 'libsm'
 	 'libmagick6')
-optdepends=('python2-numpy: some extensions'
-            'python2-lxml: some extensions and filters'
+optdepends=('python-numpy: some extensions'
+            'python-lxml: some extensions and filters'
             'uniconvertor: reading/writing to some proprietary formats'
 	    'ruby: for simplepath extension'
-	    'imagemagick6: for some file conversions')
-makedepends=('cmake' 'boost' 'intltool' 'git' 'gettext' 'pango' 'python' 'python2' 'fontconfig')
+	    'imagemagick: for some file conversions')
+makedepends=('cmake' 'boost' 'intltool' 'git' 'gettext' 'pango' 'python' 'fontconfig')
 provides=('inkscape')
 conflicts=('inkscape')
 options=('!libtool' '!buildflags')
@@ -26,15 +24,12 @@ _gitname="inkscape.git"
 
 pkgver() {
   cd "$_gitname"
-  printf %s "1.0+devel.r4321.g083f7eab9b"
+  printf %s "1.0+devel.r4386.g0a5dc27633"
 }
 
-prepare() {
+
+prepare(){
   git clone --depth 1 https://gitlab.com/inkscape/inkscape "$_gitname"
-  cd "$_gitname"
-  find share -type f -name "*.py" -exec \
-       sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' {} \;
-  sed -i 's|"python" },|"python2" },|g' src/extension/implementation/script.cpp
 }
 
 build() {

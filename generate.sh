@@ -27,10 +27,11 @@ cat "${LOCAL_TEMP_DIR}/PKGBUILD" |
         gsub("\""," (shallow clone)\"", $NF)
     }
     /^pkgname/ {$0="pkgname=inkscape-shallow-git"}
-    !/^source/ && !/^sha1sums/ {print}
-    /prepare()/ {
-        print "  git clone --depth 1 " inkscape_upstream " \"$_gitname\""
-    }' > PKGBUILD
+    /^build()/ {
+        printf("prepare(){\n  git clone --depth 1 " inkscape_upstream " \"$_gitname\"\n}\n\n")
+    }
+    !/^source/ && !/^sha1sums/ && !/^#/ {print}
+    ' > PKGBUILD
 makepkg --printsrcinfo > .SRCINFO
 
 if [ ! -z "$(git status --porcelain)" ]; then
