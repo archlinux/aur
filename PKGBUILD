@@ -11,6 +11,7 @@ source=('git://git.kraxel.org/drminfo')
 sha256sums=('SKIP')
 depends=('libdrm' 'mesa' 'libepoxy' 'pixman' 'gtk3')
 makedepends=('meson')
+checkdepends=('python-avocado')
 conflicts=('drminfo')
 provides=("drminfo=${pkgver%+*}")
 
@@ -28,6 +29,11 @@ prepare() {
 build() {
   cd drminfo
   ninja -C build
+}
+
+check() {
+  cd drminfo/tests
+  avocado run *.py
 }
 
 package() {
