@@ -1,6 +1,6 @@
 # Maintainer: Squalou <squalou.jenkins [at] gmail [dot] com>
 pkgname=google-chat-linux-git
-pkgver=r37.2829db3
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Unofficial electron-based desktop client for Google Chat, electron included"
 arch=('x86_64' 'i686')
@@ -18,17 +18,6 @@ source=("${pkgname%}::git+${url}#branch=master"
 sha256sums=('SKIP'
         'e65b8b9b0556dded2521aa12b6d8e87c59f08a79b9e8cbee4273a7a659f72a6a'
         '8a4cbe222200bf214b817003b3598ce0e231956961bc0719b4a6a4cc32aa5b11')
-
-pkgver() {
-  cd $srcdir/${pkgname}
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    #need to tweak numbering since fork, add commits offset
-    ncom=$(git rev-list --count HEAD)
-    rev=$((ncom+7))
-    printf "r%s.%s" "$rev" "$(git rev-parse --short HEAD)"
-  )
-}
 
 build() {
   npm install --prefix $srcdir/${pkgname}/ ${electron_version}
