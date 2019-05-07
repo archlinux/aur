@@ -1,9 +1,10 @@
 # Maintainer: Robert Manner <the_manni at users.sf.net>
 
-pkgname=dict-freedict-hun-eng
-pkgver=0.3.1
+_lang=hun-eng
+pkgname=dict-freedict-${_lang}
+pkgver=0.4.1
 pkgrel=1
-pkgdesc="Hungarian - English dictionaries for dictd from Freedict.org"
+pkgdesc="Hungarian - English dictionary for dictd from Freedict.org"
 arch=('any')
 url="http://www.freedict.org"
 license=('GPL')
@@ -13,13 +14,13 @@ depends=(dictd)
 optdepends=(
   'dict-freedict-eng-hun: Dictionary for the reversed direction.'
 )
-install=freedict-hun-eng.install
-source=("https://downloads.sourceforge.net/project/freedict/Hungarian%20-%20English/$pkgver/freedict-hun-eng-$pkgver.tar.bz2")
-md5sums=('dd4098c8041eb8b4dfe59dd0934bfd1c')
+install=freedict-${_lang}.install
+source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}/freedict-${_lang}-${pkgver}.dictd.tar.xz")
+md5sums=('f429bd13a10033b0c26b1674cb02a5ad')
 
 package()
 {
-    mkdir -p "$pkgdir/usr/share/dictd"
-    mv "$srcdir/hun-eng/hun-eng.dict.dz" "$srcdir/hun-eng/hun-eng.index" "$pkgdir/usr/share/dictd"
+  install -m 755 -d "${pkgdir}/usr/share/dictd"
+  install -m 644 -t "${pkgdir}/usr/share/dictd/" \
+    ${_lang}/${_lang}.{dict.dz,index}
 }
-
