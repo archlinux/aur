@@ -5,6 +5,7 @@ pkgbase = python-fiona
 	url = https://github.com/Toblerity/Fiona
 	arch = x86_64
 	license = BSD
+	checkdepends = python-boto3
 	checkdepends = python-click-plugins
 	checkdepends = python-pytest
 	makedepends = cython
