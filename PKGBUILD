@@ -11,7 +11,7 @@ url="https://fedoraproject.org/wiki/Wallpapers#Fedora_12"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/c/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('378c2c1b7736ae307493c2f00b5ddf7cb879837645523df6d7614ce3809ca0db')
+sha256sums=('12156239480749d23e1424fcce4190f625df958ae55780a0651b94901cd5bb4e')
 
 prepare()  {
   tar -xv --lzma -f ./${pkgname}-${pkgver}.tar.lzma
