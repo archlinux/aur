@@ -1,0 +1,14 @@
+pkgbase = fast-p
+	pkgdesc = Quickly find and open a pdf among a collection of thousands of unsorted pdfs through fzf (fuzzy finder)
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/bellecp/fast-p
+	arch = x86_64
+	license = MIT
+	makedepends = go-pie
+	depends = fzf
+	source = https://github.com/bellecp/fast-p/archive/v0.2.4.tar.gz
+	sha256sums = 87e34e6b4bee5e20247e997b19c0d8c08dd6f35a6c0dd4b507224d6790e2b071
+
+pkgname = fast-p
+
