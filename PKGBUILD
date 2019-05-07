@@ -1,7 +1,7 @@
 # Maintainer: Mark Blakeney <mark dot blakeney at bullet-systems dot net>
 _PKGNAME="CSSC"
 pkgname=${_PKGNAME,,}
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A clone of the Unix SCCS tool suite."
 arch=("i686" "x86_64")
@@ -11,7 +11,7 @@ depends=("sh")
 options=("!emptydirs")
 provides=("sccs")
 source=($pkgname-$pkgver.tar.gz::http://ftp.gnu.org/gnu/$pkgname/$_PKGNAME-$pkgver.tar.gz)
-md5sums=('e1a973092577012f0c25421e7005f0f1')
+md5sums=('c9aaae7602e39b7a5d438b0cc48fcaa3')
 
 build() {
   cd "$srcdir/$_PKGNAME-$pkgver"
