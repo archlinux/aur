@@ -1,0 +1,3 @@
+#!/bin/sh -e
+
+gzdoom -config /usr/share/games/doom-remake-4-experimental/gzdoom.ini
