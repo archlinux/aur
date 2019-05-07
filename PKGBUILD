@@ -1,7 +1,7 @@
 # Maintainer: duxet <duxetlg@gmail.com>
 
 pkgname=k3s-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Lightweight Kubernetes"
 url="https://k3s.io"
@@ -14,7 +14,7 @@ source=(
   "k3s.service"
 )
 sha256sums=(
-  '4329161e98539e738469da58d99402f9b072bb7fd3e0088bbea545ff30ce7bbc'
+  'b4dba47e1bac203a4e9bcbdf4e362e026ff5d312aa9bdef9a4220b88c47151cb'
   '859b2fcb894d27afa9f0feeff8067c1a3f71d2105ad7cdfefc6cf00166a2a59f'
 )
 
