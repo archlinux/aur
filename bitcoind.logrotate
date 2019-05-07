@@ -1,4 +1,4 @@
-/srv/bitcoin/debug.log
+/var/lib/bitcoind/debug.log
 {
         rotate 5
         copytruncate

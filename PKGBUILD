@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core
-pkgver=0.17.1
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -13,29 +13,30 @@ makedepends=('autoconf' 'automake' 'binutils' 'libtool' 'm4' 'make' 'pkg-config'
 license=('MIT')
 source=(https://bitcoincore.org/bin/bitcoin-core-$pkgver/bitcoin-$pkgver.tar.gz
         bitcoin.conf
-        bitcoin.logrotate
-        bitcoin.service
-        bitcoin-reindex.service
+        bitcoind.logrotate
+        bitcoind.service
+        bitcoind-reindex.service
         bitcoin-sysusers.conf
         bitcoin-core-01-systemd-sysusers.hook
         bitcoin-core-01-userdel.hook
         bitcoin-core-02-chown.hook
         bitcoin-core-02-rm-rf.hook)
-sha256sums=('3e564fb5cf832f39e930e19c83ea53e09cfe6f93a663294ed83a32e194bda42a'
+sha256sums=('5e4e6890e07b620a93fdb24605dae2bb53e8435b2a93d37558e1db1913df405f'
             'b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35'
-            '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
-            'e56dc913b82097acdc20374a2ae1b08323af74ccbbf63c829d4d13c9cb63ad8d'
-            '4d5053ba94fa647abc6abe8b90f46d4c61d706de8fb0151f6aefed772adf317e'
+            '7bf4bdad419c1ee30b88c7e4190707c5ff250da8b23d68d5adf14043f8e2ac73'
+            '1cdef0c3e6247db69f1ba7fb14bd334809b7cc124dfbfb98ed7d513fb70f883e'
+            '1599e673c58414408d5911d1748f07dba2a093e053f87c013652a06078b186ee'
             'f126b4824e43d9760ab2021460a37d859986f07e1ac9245ee4938e832739f73a'
             '0b4f7ec41cf88aa1278d089a03f116c33bac62dec038903f4ced58da67afb980'
             'f1c3727220df06993a61cc9f4ef25c83cdaf3624179b5ead8383bc9ef7109e70'
-            'ae31040f0cc57df976c6ed41e8f69ed4b947db32ba713c7a0b7410108dbf5581'
-            'b8e574f4b56c81a05a05f5bf59b28120b782d00354b08bd43c641038704e07a5')
+            '2fc4d1b5ad05dbed9f1759951c9a96f4e00c7fd45fd45f16f73cff674e836af3'
+            '135addcc23c3b58c907618625aeb54e068fe5a6d996e14146c197e6e164027d3')
 backup=('etc/bitcoin/bitcoin.conf'
-        'etc/logrotate.d/bitcoin')
+        'etc/logrotate.d/bitcoin'
+        'etc/logrotate.d/bitcoind')
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx')
 conflicts=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-qt' 'bitcoin-tx')
-install=bitcoin.install
+install=bitcoind.install
 
 # half of available processing units or one if only one is available
 _nproc=$(($(nproc)/2))
@@ -85,7 +86,6 @@ package() {
 
   msg2 'Installing essential directories'
   install -dm 700 "$pkgdir/etc/bitcoin"
-  install -dm 755 "$pkgdir/srv/bitcoin"
 
   msg2 'Installing bitcoin...'
   make DESTDIR="$pkgdir" install
@@ -93,17 +93,17 @@ package() {
   msg2 'Installing bitcoin.conf...'
   install -Dm 600 "$srcdir/bitcoin.conf" -t "$pkgdir/etc/bitcoin"
 
-  msg2 'Installing bitcoin.service...'
-  install -Dm 644 "$srcdir/bitcoin.service" -t "$pkgdir/usr/lib/systemd/system"
-  install -Dm 644 "$srcdir/bitcoin-reindex.service" \
+  msg2 'Installing bitcoind.service...'
+  install -Dm 644 "$srcdir/bitcoind.service" -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm 644 "$srcdir/bitcoind-reindex.service" \
     -t "$pkgdir/usr/lib/systemd/system"
 
   msg2 'Installing bitcoin-sysusers.conf...'
   install -Dm 644 "$srcdir/bitcoin-sysusers.conf" \
     "$pkgdir/usr/lib/sysusers.d/bitcoin.conf"
 
-  msg2 'Installing bitcoin.logrotate...'
-  install -Dm 644 "$srcdir/bitcoin.logrotate" "$pkgdir/etc/logrotate.d/bitcoin"
+  msg2 'Installing bitcoind.logrotate...'
+  install -Dm 644 "$srcdir/bitcoind.logrotate" "$pkgdir/etc/logrotate.d/bitcoind"
 
   msg2 'Installing bash completion...'
   for _compl in bitcoin-cli bitcoin-tx bitcoind; do
