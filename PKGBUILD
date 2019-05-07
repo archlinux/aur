@@ -1,6 +1,6 @@
 # Maintainer: Kibouo <csonka.mihaly@hotmail.com>
 pkgname=matcha-gtk-theme-git
-pkgver=r214.9996184
+pkgver=r215.2225af0
 pkgrel=1
 pkgdesc='A flat design theme for GTK3, GTK2, and Gnome-Shell.'
 arch=('any')
