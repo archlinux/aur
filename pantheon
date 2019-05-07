@@ -1,0 +1,6 @@
+#!/bin/sh
+
+for name in /usr/share/java/pantheon/*.jar ; do
+  cp=$cp:$name
+done
+exec java -cp $cp $JAVA_OPTS $PANTHEON_OPTS tech.pegasys.pantheon.Pantheon "$@"
