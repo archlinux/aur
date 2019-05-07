@@ -1,0 +1,7 @@
+*
+!PKGBUILD
+!.SRCINFO
+!*.install
+!.gitignore
+!phoenix.desktop
+!package.json.patch
