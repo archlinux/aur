@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-cmake-modules
 	pkgdesc = ROS - A common repository for CMake Modules which are not distributed with CMake but are commonly used by ROS packages.
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = http://www.ros.org/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = ros-melodic-cmake-modules
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	source = ros-melodic-cmake-modules-0.4.1-0.tar.gz::https://github.com/ros-gbp/cmake_modules-release/archive/release/melodic/cmake_modules/0.4.1-0.tar.gz
-	sha256sums = f967e92480eb619fe0442ca64000a820ad3370c38648c6e2f262e1353a5246b6
+	source = ros-melodic-cmake-modules-0.4.2.tar.gz::https://github.com/ros/cmake_modules/archive/0.4.2.tar.gz
+	sha256sums = f127c91d5fed5b6fdcc4ae784702a5a10a9073e4893f60a703d263cf8342b64f
 
 pkgname = ros-melodic-cmake-modules
 

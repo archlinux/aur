@@ -4,8 +4,7 @@ pkgdesc="ROS - A common repository for CMake Modules which are not distributed w
 url='http://www.ros.org/'
 
 pkgname='ros-melodic-cmake-modules'
-pkgver='0.4.1'
-_pkgver_patch=0
+pkgver='0.4.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -27,9 +26,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="cmake_modules-release-release-melodic-cmake_modules-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/cmake_modules-release/archive/release/melodic/cmake_modules/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f967e92480eb619fe0442ca64000a820ad3370c38648c6e2f262e1353a5246b6')
+_dir="cmake_modules-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/cmake_modules/archive/${pkgver}.tar.gz")
+sha256sums=('f127c91d5fed5b6fdcc4ae784702a5a10a9073e4893f60a703d263cf8342b64f')
 
 build() {
 	# Use ROS environment variables.
