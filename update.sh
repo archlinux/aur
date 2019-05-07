@@ -6,7 +6,7 @@ if ! [ -f pkgsum.sh ]; then
 fi
 
 get_latest() {
-  wget -q -O- 'http://primesieve.org/downloads/' | \
+  wget -q -O- 'https://github.com/kimwalisch/primesieve/wiki/Downloads' | \
   sed -n 's,.*primesieve-\([0-9][^>]*\)\.tar.*,\1,p' | \
   grep -v '\(linux\|mac\|win\)' | \
   sort -r | \
