@@ -13,7 +13,7 @@ install=python-mutovis-control.install
 makedepends=('python-setuptools' 'python-setuptools-scm-git-archive' 'python-setuptools-scm')
 backup=('etc/gpib.conf' 'usr/etc/gpib.conf')
 source=("https://github.com/mutovis/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('6c0788d6228f999cbc55cef21b423e7ae146d32d490c0153f0343db95617f32c')
+sha256sums=('a1d8f86bba82329229072881ab5d8ac03d22193f474bef5ad08fd92f428acf3c')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
