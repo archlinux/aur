@@ -3,7 +3,7 @@
 
 pkgname=unicode
 pkgver=2.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Display unicode character properties on the command line'
 url='https://github.com/garabik/unicode'
 arch=('any')
@@ -13,8 +13,8 @@ source=("https://github.com/garabik/${pkgname}/archive/v${pkgver}.tar.gz"
         'http://www.unicode.org/Public/UNIDATA/UnicodeData.txt'
         'http://www.unicode.org/Public/UNIDATA/Blocks.txt')
 sha256sums=('5e61318f0f9e3746f40f85fbe9113449b5ab5bbffc36586eb91a7ab16849ed1c'
-            '57913fdb1c1271fa9fd51dea08d49370f33d5bfda6bbaba348f44d90029ea11d'
-            'a1a3ca4381eb91f7b65afe7cb7df615cdcf67993fef4b486585f66b349993a10')
+            '93ab1acd8fd9d450463b50ae77eab151a7cda48f98b25b56baed8070f80fc936'
+            'a28b205afe8625fffdb6544a5fe14cf02b91493d9900f07820fa2102a17548f7')
 
 package() {
   cd "$pkgname-$pkgver"
