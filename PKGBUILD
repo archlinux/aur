@@ -2,7 +2,7 @@
 # Contributor: Adrian Sinclair <adrian@transloadit.com>
 
 pkgname=eslint-plugin-node
-pkgver=9.0.0
+pkgver=9.0.1
 pkgrel=1
 pkgdesc='Additional ESLint rules for Node.js'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('eslint')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-md5sums=('e832254f16ca71496de411de47b89cb0')
+md5sums=('ffb38d463be2fd63ebd2c3217e064f7c')
 
 package() {
   npm install -g --user root --cache "$srcdir/npm-cache" --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
