@@ -1,4 +1,4 @@
-# Maintainer: Philipp 'TamCore' B. <philipp {at} tamcore {dot} eu>
+# Maintainer: navigaid <navigaid@gmail.com>
 pkgname=android-apktool
 pkgver=2.4.0
 pkgrel=1
@@ -7,7 +7,7 @@ arch=(i686 x86_64)
 url="http://forum.xda-developers.com/showthread.php?t=1755243"
 license=('Apache 2.0')
 depends=('java-runtime')
-source=(https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_${pkgver}.jar
+source=(https://github.com/iBotPeaches/Apktool/releases/download/v${pkgver}/apktool_${pkgver}.jar
         'http://connortumbleson.com/apktool/googlecode//apktool-install-linux-r04-brut1.tar.bz2')
 sha256sums=('a0f116e8916d6f21160e1559847bb8b8c32ee71900f321cafeadbe37b87ebcc1'
             'cffa5c0a46bab9c66da02cc5db651c3a8321bee98580815e44c802d62a696dfa')
