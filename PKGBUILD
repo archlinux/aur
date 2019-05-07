@@ -46,7 +46,7 @@ _dellconfig=
 ### Do no edit below this line.
 
 pkgbase=linux-ck-reiser4
-_srcver=5.0.10-arch1
+_srcver=5.0.13-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -74,7 +74,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('ea1c1323c2c7e70bebf5463619b543f9bc353730b44ac62d9efadd4fe5625e76'
+sha256sums=('bcfd52bf1faa24f5f712146a873959461e001656ad67717e80b947aa6ad53479'
             'SKIP'
             'SKIP'
             'SKIP'
