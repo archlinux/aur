@@ -1,0 +1,15 @@
+pkgbase = python-avocado-git
+	pkgdesc = Set of tools and libraries to help with automated testing
+	pkgver = 69.0+99.gb44609ba59
+	pkgrel = 1
+	url = http://avocado-framework.github.io/
+	arch = x86_64
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python
+	depends = libvirt-python
+	source = https://github.com/avocado-framework/avocado
+	sha256sums = SKIP
+
+pkgname = python-avocado-git
+
