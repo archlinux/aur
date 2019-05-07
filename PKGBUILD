@@ -22,7 +22,7 @@ package() {
 	mkdir -p ${pkgdir}/usr/bin
 	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
 
-	install -Dm 755 ${srcdir}/${pkgname}/target/release/fetch ${pkgdir}/usr/bin/rsfetch
+	install -Dm 755 ${srcdir}/${pkgname}/target/release/rsfetch ${pkgdir}/usr/bin/rsfetch
 	install -Dm 644 ${srcdir}/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
