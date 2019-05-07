@@ -42,6 +42,8 @@ build() {
 package() {
     install -dm755 "${pkgdir}/opt/${pkgname}"
     cp -a "${srcdir}/${pkgname}/desktop/wallet/release-builds/linux-unpacked/." "${pkgdir}/opt/${pkgname}"
+
+    # https://github.com/electron/electron/issues/17972
     cd "${pkgdir}/opt/${pkgname}"
     chmod 4755 ./chrome-sandbox
     chown root:root ./chrome-sandbox
