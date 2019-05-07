@@ -1,0 +1,13 @@
+pkgbase = rsfetch-git
+	pkgdesc = Fast (0.01s - 0.2s execution time) and somewhat(?) minimal fetch program written in Rust.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/phate6660/rsfetch
+	arch = i686
+	arch = x86_64
+	license = Unlicense
+	makedepends = rust
+	source = rsfetch-git::git+https://github.com/phate6660/rsfetch#branch=master
+	sha512sums = SKIP
+
+pkgname = rsfetch-git
