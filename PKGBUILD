@@ -4,8 +4,7 @@ pkgdesc="ROS - ROS console output library."
 url='http://www.ros.org/wiki/rosconsole'
 
 pkgname='ros-melodic-rosconsole'
-pkgver='1.13.9'
-_pkgver_patch=0
+pkgver='1.13.10'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -40,9 +39,9 @@ depends=(
 	apr-util
 )
 
-_dir="rosconsole-release-release-melodic-rosconsole-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rosconsole-release/archive/release/melodic/rosconsole/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b0e867cd1d0fb6c80fdcdb261c6e01cff3056f870c0541575392fa2ecfb10c14')
+_dir="rosconsole-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/rosconsole/archive/${pkgver}.tar.gz")
+sha256sums=('fc4376acac3c4b786fc362cb26e2d683e0687656f9cb7ad66d02464d3935e777')
 
 build() {
 	# Use ROS environment variables.
