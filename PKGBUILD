@@ -1,25 +1,26 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: Ben Isenhart <bisenhar(at)uvm(dot)edu>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Wang Jiajun <amesists@gmail.com>
 
 pkgname=kdesrc-build-git
-pkgver=v15.05.r9.g517c5b8
+pkgver=r2047.74d70de
 pkgrel=1
 pkgdesc="A script to build KDE software from KDE's source repositories"
-url='http://kdesrc-build.kde.org/'
+url='https://kdesrc-build.kde.org/'
 arch=('any')
 license=('GPL')
-depends=('perl' 'perl-libwww' 'perl-xml-parser' 'dialog' 'perl-json')
-makedepends=('git' 'cmake')
-conflicts=('kdesrc-build')
-provides=('kdesrc-build')
+depends=('perl-libwww' 'perl-xml-parser' 'dialog' 'perl-json' 'perl-io-socket-ssl' 'perl-net-ssleay' 'perl-yaml-syck')
+makedepends=('cmake' 'git')
 optdepends=('subversion: download source code using svn'
             'git: download source code using git')
-source=('git://anongit.kde.org/kdesrc-build.git')
+conflicts=('kdesrc-build')
+provides=('kdesrc-build')
+source=("git://anongit.kde.org/kdesrc-build.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd kdesrc-build
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -39,7 +40,7 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   install -d "${pkgdir}"/usr/share/doc/samples
-  install -Dm644 ../kdesrc-build/kdesrc-buildrc-{,kf5-}sample \
+  install -Dm644 ../kdesrc-build/kdesrc-buildrc-kf5-sample \
     "${pkgdir}"/usr/share/doc/samples/
   install -Dm644 ../kdesrc-build/kf5-{applications,frameworks,kdepim,qt5,workspace}-build-include \
     "${pkgdir}"/usr/share/doc/samples/
