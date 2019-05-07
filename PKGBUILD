@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-isl
-pkgver=0.20
+pkgver=0.21
 pkgrel=1
 pkgdesc="Library for manipulating sets and relations of integer points bounded by linear constraints (mingw-w64)"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('mingw-w64-gmp')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://isl.gforge.inria.fr/isl-${pkgver}.tar.xz"
         "isl-0.14.1-no-undefined.patch")
-sha256sums=('a5596a9fb8a5b365cb612e4b9628735d6e67e9178fae134a816ae195017e77aa'
+sha256sums=('777058852a3db9500954361e294881214f6ecd4b594c00da5eee974cd6a54960'
             '83655a7202f0a0dcce1782d4b365252bf1ad12a522b7ad82ab578ee5ec46433b')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
