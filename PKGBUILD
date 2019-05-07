@@ -1,7 +1,7 @@
 #Maintainer: jnanar <info [at] agayon [dot] be>
 
 pkgname=sat-cagou-hg
-pkgver=r238.7918a5668304
+pkgver=r240.f555b10712d7
 VERSION=0.7
 pkgrel=1
 pkgdesc=""
