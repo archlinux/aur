@@ -5,6 +5,7 @@ pkgbase = vimix-kde-git
 	url = https://github.com/vinceliuice/vimix-kde
 	arch = any
 	license = GPL3
+	makedepends = git
 	options = !strip
 	source = git+https://github.com/vinceliuice/vimix-kde.git
 	md5sums = SKIP

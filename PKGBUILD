@@ -12,6 +12,7 @@ license=('GPL3')
 options=('!strip')
 source=("git+${url}.git")
 md5sums=('SKIP')
+makedepends=('git')
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
