@@ -1,6 +1,6 @@
 # Maintainer: Lev Levitsky <levlev at mail dot ru>
 pkgname=python2-pyteomics
-pkgver=4.1
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="A framework for proteomics data analysis."
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('python2-matplotlib: for pylab_aux module'
             'python2-dill: needed for multiprocessing when pickle is not enough')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/p/pyteomics/pyteomics-${pkgver}.tar.gz")
-sha256sums=('d7eaa5a1c6f25a39a42c4846e8c39e23cd3ba6f1aeeeedb730c3911c82bf6633')
+sha256sums=('384e4e5eabdbfec39d7c38369278e386a074c7066f33052d7c313af40f1aa45e')
 changelog="CHANGELOG"
 package() {
   cd "${srcdir}/pyteomics-${pkgver}"
