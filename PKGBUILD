@@ -1,6 +1,6 @@
 # Maintainer: Paul Davis <paul@dangersalad.com>
 pkgname=mekhq
-pkgver=0.45.2
+pkgver=0.45.4
 _pkgver=
 pkgrel=1
 epoch=
@@ -20,7 +20,7 @@ source=("https://github.com/MegaMek/mekhq/releases/download/v${pkgver}/${pkgname
         "mekhq.sh"
         "megamek.sh")
 
-sha256sums=('92fe5fa29fea85b5156eb7ea0d364eed4dff059b8328ab9b3f70ffbc77c8a957'
+sha256sums=('999b0aef3b7defe3bff32e128b3b69206bdd5d1976be88729cfbd2bb50cb1bbd'
             'a6c0cc72c6f3ad773bdcec24c8036ae7d09dcaea4908f5b6d4e5ac6091cff772'
             'caf5bf3e7294029c7b6dec974eed0253d6caf3804a6a9fcc953edc3c9be98b16'
             'fda6e9d542062041e9d9b7f6331069d8a78b9455a290286aa8d214ed66b13fd7'
