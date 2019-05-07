@@ -1,6 +1,6 @@
 pkgbase = gin-cli
 	pkgdesc = Command line client for the G-Node Infrastructure (GIN) services
-	pkgver = 1.6
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://gin.g-node.org
 	install = gin-cli.install
@@ -8,8 +8,8 @@ pkgbase = gin-cli
 	license = BSD
 	depends = git-annex
 	depends = openssh
-	source = https://github.com/G-Node/gin-cli/releases/download/v1.6/gin-cli-1.6-linux-amd64.tar.gz
-	sha512sums = db99fa104f668b2415f1676e915eb7b8705d41687c6d0fd6f50945f3f7656174a797cec4b01199af4f1320caf8a1e0200de252093924fec17e29d03ceaaf5127
+	source = https://github.com/G-Node/gin-cli/releases/download/v1.7/gin-cli-1.7-linux-amd64.tar.gz
+	sha512sums = abb03f533e32bca956d07513b8d5eef5831bca85622a5bcfc26bd8b81aa5a6bab7ac60bddef7a959cc07055f9020ab1996b30c6a78bcc67364cf688ffc8e7c30
 
 pkgname = gin-cli
 
