@@ -11,6 +11,8 @@ source=("git+https://github.com/avocado-framework/avocado")
 sha256sums=('SKIP')
 depends=('python' 'libvirt-python')
 makedepends=('python-setuptools')
+conflicts=('python-avocado')
+provides=("python-avocado=${pkgver%+*}")
 
 pkgver() {
   cd avocado

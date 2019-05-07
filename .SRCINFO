@@ -8,6 +8,8 @@ pkgbase = python-avocado-git
 	makedepends = python-setuptools
 	depends = python
 	depends = libvirt-python
+	provides = python-avocado=69.0
+	conflicts = python-avocado
 	source = https://github.com/avocado-framework/avocado
 	sha256sums = SKIP
 
