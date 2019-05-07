@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=listen1-desktop
 pkgver=2.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="one for all free music in china (Build from source)"
 arch=('x86_64' 'i686')
 url="https://github.com/listen1/listen1_desktop"
@@ -21,6 +21,7 @@ sha256sums=(
 
 prepare() {
 	cd "${pkgname/-/_}-$pkgver"
+	sed -i '/"electron": ".*/d' package.json
 	electronDist="\/usr\/lib\/electron"
 	sed -i '/"tar.gz",/d' package.json
     sed -i '/"deb"/d' package.json

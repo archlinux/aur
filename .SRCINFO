@@ -1,7 +1,7 @@
 pkgbase = listen1-desktop
 	pkgdesc = one for all free music in china (Build from source)
 	pkgver = 2.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/listen1/listen1_desktop
 	arch = x86_64
 	arch = i686
