@@ -1,11 +1,8 @@
 # Maintainer: Iliya Ivanov <aur@proforge.org>
-# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Contributor: Jonathan Wiersma <arch aur at jonw dot org>
-# Contributor: sracker <smb.sac@gmail.com>
 
 _pkgname=xdebug
 pkgname=${_pkgname}-zts
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="PHP debugging extension (for ZTS enabled PHP)"
 arch=('x86_64')
@@ -15,7 +12,7 @@ depends=('php-zts')
 backup=('etc/php/conf.d/xdebug.ini')
 source=("https://xdebug.org/files/${_pkgname}-${pkgver/rc/RC}.tgz"
 	'xdebug.ini')
-sha256sums=('b7e9d1453975e0217667c82a9e68d4aabb307b18e8f2f70432f70d75907f24c3'
+sha256sums=('b0f3283aa185c23fcd0137c3aaa58554d330995ef7a3421e983e8d018b05a4a6'
             '7c66883dc2ade69069ef84e30188b25630748aa9c8b0dd123727c00505421205')
 
 build() {
