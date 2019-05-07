@@ -5,7 +5,6 @@ url='http://www.ros.org/wiki/roslisp'
 
 pkgname='ros-melodic-genlisp'
 pkgver='0.4.16'
-_pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -29,9 +28,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="genlisp-release-release-melodic-genlisp-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/genlisp-release/archive/release/melodic/genlisp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0da61ebbb633656062ce030fc94b5931bf3cdf3b5cf896116895608a739a520a')
+_dir="genlisp-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/genlisp/archive/${pkgver}.tar.gz")
+sha256sums=('31d3b86a0e3c0517b743a5c74dc3fe4a533ea22fdd1481b7432aa5f7b7800a0d')
 
 build() {
 	# Use ROS environment variables.
