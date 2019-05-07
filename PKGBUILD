@@ -3,9 +3,9 @@
 
 pkgname=kubernetes-helm
 pkgver=2.13.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to manage Kubernetes charts"
-arch=('any')
+arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://github.com/helm/helm"
 makedepends=('git' 'glide' 'go')
 depends=('socat')
