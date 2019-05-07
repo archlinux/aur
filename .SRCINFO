@@ -11,3 +11,4 @@ pkgbase = rsfetch-git
 	sha512sums = SKIP
 
 pkgname = rsfetch-git
+
