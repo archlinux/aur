@@ -1,10 +1,9 @@
 pkgbase = kubernetes-helm
 	pkgdesc = A tool to manage Kubernetes charts
 	pkgver = 2.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/helm/helm
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = Apache
 	makedepends = git
 	makedepends = glide
