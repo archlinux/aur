@@ -6,7 +6,7 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=60.6.2
+pkgver=60.6.3
 _pkgver=60.3.0
 pkgrel=1
 pkgdesc="GNU version of the Firefox browser."
@@ -24,7 +24,8 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 
 source=(http://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_pkgver}.tar.gz
         icecat.desktop icecat-safe.desktop
-        rust_133-part0.patch 'rust_133-part1.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046663' 'rust_133-part2.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046664' deny_missing_docs.patch disable_debian.patch)
+        rust_133-part0.patch 'rust_133-part1.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046663' 'rust_133-part2.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046664' 
+        deny_missing_docs.patch patch_makeicecat_stuff.patch)
 
 sha256sums=('a99420657f5e92ff4e03f4466d7c075061c3c2e7fe84870b957881bc1e09c249'
             'c44eab35f71dd3028a74632463710d674b2e8a0682e5e887535e3233a3b7bbb3'
@@ -33,17 +34,17 @@ sha256sums=('a99420657f5e92ff4e03f4466d7c075061c3c2e7fe84870b957881bc1e09c249'
             '8b37332dd205946ea95c606103b5b0e1e8498819051ea1c1bce79f04fd88ebca'
             '08ab4293d6008524a38e20b428c750c4c55a2f7189e9a0067871ad723c1efab5'
             'cb1116c783995b8187574f84acb8365681aedaa2c76222cf060d31fedcb063c4'
-            '359eac73ebf8a24b2a4f0c523c8d46e488a4c0a40a7def341064277a30bc9e14')
+            '947805be92124383e69e022efe62824ef6fabdaec2e9f94cc97e13f75b2e0c1b')
 
 #validpgpkeys=(A57369A8BABC2542B5A0368C3C76EED7D7E04784) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
 
 prepare() {
   cd gnuzilla-${_pkgver}
-  sed -e 's/prename/perl-rename/g' -i makeicecat
-  patch -Np1 -i ../disable_debian.patch
+  patch -Np1 -i ../patch_makeicecat_stuff.patch
   sed -e "s/^FFMAJOR.*/FFMAJOR=${pkgver:0:2}/g" -i makeicecat
   sed -e "s/^FFMINOR.*/FFMINOR=${pkgver:(-3):(-2)}/g" -i makeicecat
   sed -e "s/^FFSUB.*/FFSUB=${pkgver:(5)}/g" -i makeicecat
+  rm -rf output  # Clean output just in case is already an old build there
   sh makeicecat
   cd output/icecat-${pkgver}
 

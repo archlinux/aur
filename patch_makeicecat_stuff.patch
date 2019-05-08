@@ -1,5 +1,16 @@
---- a/makeicecat	2019-05-05 03:44:23.568839764 +0200
-+++ b/makeicecat	2019-05-05 15:19:35.058535696 +0200
+--- a/makeicecat	2018-11-09 21:46:03.000000000 +0100
++++ b/makeicecat	2019-05-08 17:31:10.841599427 +0200
+@@ -20,8 +20,8 @@
+ set -e
+ 
+ FFMAJOR=60
+-FFMINOR=3
+-FFSUB=0
++FFMINOR=6
++FFSUB=3
+ GNUVERSION=1
+ FFVERSION=$FFMAJOR.$FFMINOR.$FFSUB
+ ICECATVERSION=$FFVERSION-gnu$GNUVERSION
 @@ -112,9 +112,9 @@
  #done
  
@@ -109,6 +120,34 @@
  
  # Custom legal about pages
  
+@@ -328,12 +328,12 @@
+ ###############################################################################
+ 
+ # Replace Firefox branding
+-find -type d | grep fennec | xargs prename s/fennec/icecatmobile/
+-find -type f | grep fennec | xargs prename s/fennec/icecatmobile/
+-find -type f | grep Fennec | xargs prename s/Fennec/IceCatMobile/
+-find -type d | grep firefox | xargs prename -f s/firefox/icecat/
+-find -type f | grep firefox | xargs prename -f s/firefox/icecat/
+-find -type f | grep Firefox | xargs prename -f s/Firefox/IceCat/
++find -type d | grep fennec | xargs perl-rename s/fennec/icecatmobile/
++find -type f | grep fennec | xargs perl-rename s/fennec/icecatmobile/
++find -type f | grep Fennec | xargs perl-rename s/Fennec/IceCatMobile/
++find -type d | grep firefox | xargs perl-rename -f s/firefox/icecat/
++find -type f | grep firefox | xargs perl-rename -f s/firefox/icecat/
++find -type f | grep Firefox | xargs perl-rename -f s/Firefox/IceCat/
+ 
+ echo "Running batch rebranding"
+ SEDSCRIPT="
+@@ -395,7 +395,7 @@
+ 
+ sed 's/mozilla-bin/icecat-bin/' -i build/unix/run-mozilla.sh
+ 
+-find -type f | grep run-mozilla | xargs prename s/mozilla/icecat/
++find -type f | grep run-mozilla | xargs perl-rename s/mozilla/icecat/
+ 
+ # do not alter useragent/platform/oscpu/etc with fingerprinting countermeasure, it makes things worse
+ sed '/ShouldResistFingerprinting/,/}/s/^/\/\//' -i ./netwerk/protocol/http/nsHttpHandler.cpp
 @@ -633,8 +633,8 @@
  #sed '/972ce4c6/  s%$%\n/extensions.gnu/* @MOZ_ADDONDIR@/extensions%' -i debian/icecat.install.in
  
