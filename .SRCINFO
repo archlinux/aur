@@ -1,0 +1,17 @@
+pkgbase = rust-latest-git
+	pkgdesc = A CLI tool to determine the latest version of the Rust toolchain.
+	pkgver = 1.2.2.r1.g81ef47e
+	pkgrel = 1
+	url = https://github.com/dbeckwith/rust-latest
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = openssl
+	provides = rust-latest
+	conflicts = rust-latest
+	source = rust-latest-git::git+https://github.com/dbeckwith/rust-latest
+	sha1sums = SKIP
+
+pkgname = rust-latest-git
+
