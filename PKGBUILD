@@ -1,7 +1,7 @@
 #Maintainer: Gharim Turen <gharim@turen.de>
 pkgname=evesetup
-pkgver=1456645
-pkgrel=4
+pkgver=1501045
+pkgrel=0
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 arch=(x86_64)
 url="https://forums.eveonline.com/t/eve-installing/71494"
@@ -105,8 +105,8 @@ package() {
 }
 
 sha256sums=('f49b404341e1dd48eaa2504c83f9ff07c9a4c11e1a109c67d04167dc70d65731'
-            '46f7e2f2a916ae96188afd038962d3669d15da786c05945ffccd77951f29d4f2'
-            '0da10efa271da16e09b6a02417d938a1be3cd5edb4d8b6d16333d2f4501771a4'
+            '42a63f594385b3ecb0272caa1819f64491a30725cb3c0e51dd5be6ad718a4585'
+            '28af82100ab289e1761af26f10aae55c5644a496f0493dd08796b8b016405175'
             '80fceef0e28c2291cd4ba3924410211edd188717be093ffc329d18697583bd21'
             'bf09c4bd0b2735eba5868e47ae49707f257ff8a3d86c9da7c0411e5c93694b69'
             'f8988be390204ce645ca37f43cdb8e395970f8d6dd36095acf08c5c7cf72833c'
@@ -116,7 +116,7 @@ sha256sums=('f49b404341e1dd48eaa2504c83f9ff07c9a4c11e1a109c67d04167dc70d65731'
             'af9e68d643f0482259393eb326ccfbfe88c3084ebb120bb4c299abf6f6f58576'
             '2520a9b19f2827fa2634ea2acae3a6f61e73aada1af0eb2029e95709f0c8927d'
             'dd21ced59bfd1d179cbce712abd6f2d607825bcc9dcac62d319ecaad51163aad'
-            '25ffef61a962630968c57298bbd9da6032a0c7f2bf21d4107949cb683ab322d8'
+            '5733c730adcaee8f93d5f659ed31135d327b4fe1ed0ee8d600a617a843aa4b56'
             '2c192fdc282fefafee5596b60bd1779668b611d386e2bf933eef51d39eac7a28'
             'f88c7c28582b6531a021b8fcece47c906f900c48edf453dc04c349f8671cf8a2'
             '47accd49b64d624c6a6dee42952f8627aaabdd315fad85ef037507745d393f1a'
@@ -126,4 +126,4 @@ sha256sums=('f49b404341e1dd48eaa2504c83f9ff07c9a4c11e1a109c67d04167dc70d65731'
             '7ae1c6324c4ad43ab3f18f5a3ceaa48b34ede5466b7a0b9351d018e8cef9bbd0'
             '1936061a14432ab2632ea3ff15d45350b59ac822985445f597a4a5db44a35ae6'
             'ca66a6113ce98152b85c8d847949f8c90ab9ba798e106bfc225d4ed3c2e2e3e2'
-            '6a9cf5480cdf9b4feaab295949afcf666565a523d92d3f61ecc5203492e75cfc')
+            '08b5dbb25c92ffe3c27e27a5353db7096b92a0a093c73e99e7fe08e2d4831ba0')
