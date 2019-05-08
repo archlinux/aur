@@ -3,7 +3,7 @@
 
 pkgname=certigo
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A utility to examine and validate certificates in a variety of formats'
 arch=('x86_64' 'i686')
 url='https://github.com/square/certigo'
@@ -15,7 +15,7 @@ sha256sums=('2a0e7291c921f9e662743183d0a0695d7b34efb9972cda7f80cf3f9a292bcda0')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
+  export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
   ./build
 }
 
