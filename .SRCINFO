@@ -1,0 +1,17 @@
+pkgbase = perl-packagemanager-virtual
+	pkgdesc = A moose role interface for package managers.
+	pkgver = 0.191250
+	pkgrel = 1
+	url = https://metacpan.org/release/PackageManager-Virtual
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-module-build-tiny>=0.034
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DO/DOUBLED/PackageManager-Virtual-0.191250.tar.gz
+	md5sums = e326de70098be521793f28afeca48db8
+	sha512sums = 49cd18a2922efdc69e3f3b12bd5d796eda0cc6e3a1c1f4d28e4e4497152001380f4a19029029932fc5c29a8b52f09426d49d735d53a8f2d63d2fe48137084ea3
+
+pkgname = perl-packagemanager-virtual
+
