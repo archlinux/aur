@@ -63,12 +63,12 @@ _rev_override="n"
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=40
+_minor=41
 _srcname=linux-${_major}
 _clr=${_major}.40-29
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2018"
 license=('GPL2')
@@ -340,7 +340,7 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '5d5c0dd3a642f16b331bcc5feffb84d8b6d2836097eba428643ce843d40ba1e1'
+            'e22ea2605d15ebb3285dfcae0174276467b9b14659a3b05487b024dab7ded051'
             'SKIP'
             '2a4438a66ed1a9b82be943d6d19366c006787ba5af302f425674ca6d8c928099'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
