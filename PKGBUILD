@@ -7,7 +7,7 @@
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
 pkgver=3.0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="An email, contacts and calendar server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://www.cyrusimap.org/"
@@ -15,9 +15,11 @@ license=('BSD')
 makedepends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
              'mariadb-libs' 'postgresql-libs' 'libnghttp2' 'brotli' 'shapelib'
              'libldap' 'libcap' 'net-snmp' 'xapian-core' 'perl' 'clamav'
-             'python-sphinx' 'perl-pod-pom-view-restructured')
+             'python-sphinx<2' 'perl-pod-pom-view-restructured')
 source=("https://www.cyrusimap.org/releases/${pkgbase}-${pkgver}.tar.gz"{,.sig}
-        "clamav0.101.1.patch"
+        "https://github.com/cyrusimap/cyrus-imapd/pull/2672.patch"
+        "2750.patch::https://github.com/cyrusimap/cyrus-imapd/pull/2750/commits/ad4d5fb85e1480158ee32c9b0d3d0baeac2c324a.patch"
+        "perl-libs.patch"
         "vzic-flags.patch"
         "imapd.conf.patch"
         "cyrus-imapd.service"
@@ -26,7 +28,9 @@ source=("https://www.cyrusimap.org/releases/${pkgbase}-${pkgver}.tar.gz"{,.sig}
 validpgpkeys=('5B55619A9D7040A9DEE2A2CB554F04FEB36378E0')
 sha512sums=('d1a65e957ad3bbbd70e4c8c699e226c17911c6f5815839694136b967a7067acaf4261c8aaad223ffb1e41d76ef78e9e7279a2805048de9b05939044ce17cb738'
             'SKIP'
-            '35566c3c220d9d4f6d54915792940451956815535f4277f381ded6215331932861e0743414dd26612a30bfe46c36c8b063686679694013580bdb4b3494ac9c04'
+            '0c7e738ae30b3e19a5b0ddba8c2358abc5c76e1edaea4e90f28e99955ae4b8907e2d12a21d8cf58248cfd8382031fca41b355496e98104bba0a947025eb41862'
+            'bc4df5a743689cf674d50f32ce04308a6ac9ee167f62fc25cf30d186f8e79523441062e5043f8eab422d8fd8f1c9b8a658d4b3ebe203a27795b793f477364a67'
+            '6c1cec2d2cecc000cfa0a95befba75e303a151c6552148c671ef3b054ae7cce457571e0c8d416bb0b2fc83f86d27d2e477ea0073b8fa8ea295f14f5165aae6d5'
             'ff1adb55abb059f0c022ae3e375c0a099278d69174bef712b85af40b00fa68a6d49604d09f80195a429ff842813e914557d7aff773231776cbbc5037164c180a'
             '0862ffc8c05208efd4d2fb50a6e3719ebc65fc2d72f8e6404235aa32cc44d8227056a17b78f2726e15ff8e38d473795f837c34bfbe89b694b2298c9baab9d5db'
             '738242e80cec2c25ae6a85a889cc8d35d7c2f43b2b4d64d74f99a230b21024f168a885f1e319aec1aab0e0599e41211478b99dc608a4ba036be90f8d7e23fd96'
@@ -36,8 +40,11 @@ sha512sums=('d1a65e957ad3bbbd70e4c8c699e226c17911c6f5815839694136b967a7067acaf42
 prepare() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
-  patch -Np1 < "${srcdir}/clamav0.101.1.patch"
+  patch -Np1 < "${srcdir}/2672.patch"
+  patch -Np1 < "${srcdir}/2750.patch"
+  patch -Np1 < "${srcdir}/perl-libs.patch"
   patch -Np1 < "${srcdir}/vzic-flags.patch"
+  autoreconf
 }
 
 build() {
