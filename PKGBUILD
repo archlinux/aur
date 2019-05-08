@@ -5,7 +5,7 @@
 export LG2=en
 
 pkgname=i2p-dev
-pkgver=0.9.38.9
+pkgver=0.9.40.0
 pkgrel=1
 pkgdesc="A distributed anonymous network (daily mtn->git sync)"
 url="https://geti2p.net"
@@ -21,15 +21,13 @@ backup=('opt/i2p/wrapper.config')
 install='i2p.install'
 options=(!strip)
 
-_tomcatver=9.0.17
 _gitname=i2p.i2p
 _commit=master
 
 source=("git+https://github.com/i2p/${_gitname}.git#commit=${_commit}"
-        "https://archive.apache.org/dist/tomcat/tomcat-9/v${_tomcatver}/bin/apache-tomcat-${_tomcatver}.tar.gz"
         'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
+
 sha256sums=('SKIP'
-            '6c8a8bccc2bee1b28b3a8da128db26f6e22a3546a6cd44e655c8e34157a215a6'
             'ff9942ca43715b5095b0118e306c8aec1af7c68c18e8959dba10d86eac8efbfd'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
             '72c0944cd2b04c747673a534475f2ec42c64d52fdda76714f1165c4655113de2'
@@ -49,12 +47,6 @@ prepare() {
         -e 's:javac.version=.*:javac.version=11:'
     sed -i {router,core}/java/build.xml \
         -e 's:1.7:11:'
-
-    sed -i build.xml \
-        -e "s:value=\"8.5.38\":value=\"${_tomcatver}\":"
-    cd apps/jetty
-    rm -rf apache-tomcat-8.5.38
-    ln -sf "$srcdir"/apache-tomcat-${_tomcatver} .
 }
 
 build_jbigi() {
