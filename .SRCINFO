@@ -1,0 +1,14 @@
+pkgbase = openscad-mcad-git
+	pkgdesc = OpenSCAD library containing several facilities easily construct mechanical objects
+	pkgver = r22.dec3fc3
+	pkgrel = 1
+	url = https://github.com/openscad/MCAD
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	depends = openscad
+	source = git+https://github.com/openscad/MCAD.git
+	sha512sums = SKIP
+
+pkgname = openscad-mcad-git
+
