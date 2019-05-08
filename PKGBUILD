@@ -2,7 +2,7 @@
 # Maintainer:  <godeater@gmail.com>
 pkgname=chezmoi
 pkgver=1.5.0
-pkgrel=9
+pkgrel=10
 epoch=
 pkgdesc="Multi-machine dotfile management system"
 arch=('i686' 'x86_64')
@@ -18,9 +18,9 @@ sha256sums=('a3058b6686d8282006e89611b6cd029f2137c21668cae76d52c20ce1419e07e2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  extraldflags=" -X github.com/twpayne/chezmoi/cmd.version=1.5.0 \
-  		   -X github.com/twpayne/chezmoi/cmd.commit=d98b524 \
-		   -X github.com/twpayne/chezmoi/cmd.date=20190503"
+  extraldflags=" -s -w -X github.com/twpayne/chezmoi/cmd.VersionStr=1.5.0 \
+  		   -X github.com/twpayne/chezmoi/cmd.Commit=d98b524 \
+		   -X github.com/twpayne/chezmoi/cmd.Date=20190503"
 
   go build \
      -gcflags "all=-trimpath=$PWD" \
