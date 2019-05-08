@@ -4,14 +4,14 @@
 pkgname=mumble-snapshot
 pkgver=1.3.0_rc1
 _dirname=1.3.0
-pkgrel=2
+pkgrel=3
 # use epoch since rc naming scheme won't be recogniced as new version
 epoch=1
 pkgdesc="A high quality voice chat program."
 arch=('i686' 'x86_64')
 url="https://www.mumble.info/"
 license=('BSD')
-depends=('qt5-svg' 'opus' 'speex' 'protobuf' 'hicolor-icon-theme' 'libspeechd' 'libpulse' 'jack')
+depends=('qt5-svg' 'opus' 'speex' 'protobuf' 'hicolor-icon-theme' 'libspeechd' 'libpulse')
 makedepends=('boost' 'qt5-tools' 'python' 'libsndfile' 'speech-dispatcher')
 optdepends=('espeak: speech synthesizer')
 provides=('mumble')
@@ -26,7 +26,7 @@ build() {
     cd $srcdir/mumble-${_dirname}
 
     qmake-qt5 main.pro \
-      CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-server no-embed-qt-translations no-update" \
+      CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-server no-embed-qt-translations no-update no-jackaudio" \
       DEFINES+="PLUGIN_PATH=/usr/lib/mumble"
 
     make release
