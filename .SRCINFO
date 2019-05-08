@@ -1,6 +1,6 @@
 pkgbase = git-duet
 	pkgdesc = Support for pairing with git
-	pkgver = 0.3.0+
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/git-duet/git-duet
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = git-duet
 	makedepends = go
 	depends = git
 	provides = git-duet
-	source = git+https://github.com/git-duet/git-duet.git
-	md5sums = SKIP
+	source = https://github.com/git-duet/git-duet/archive/0.7.0.tar.gz
+	sha256sums = 50927417ee5062ca9c6da29b1870e3bb8677943e3216a918beea46e0c7b9a9d0
 
 pkgname = git-duet
 
