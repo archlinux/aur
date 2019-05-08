@@ -7,7 +7,7 @@
 pkgbase=linux-lts-tomoyo
 _srcname=linux-4.19
 pkgver=4.19.41
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
