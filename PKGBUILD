@@ -14,7 +14,7 @@ _enginename=acestreamengine
 
 pkgname=acestream-engine-stable
 pkgver=3.1.16
-pkgrel=6
+pkgrel=7
 pkgdesc="P2P utility for multimedia live streaming and file transfer (stable version)"
 arch=("x86_64")
 url="http://acestream.org/"
@@ -35,7 +35,7 @@ install="$_pkgbasename.install"
 source=(
     "$_pkgbasename.service"
     "$pkgname-$pkgver.tar.gz::http://dl.acestream.org/linux/acestream_${pkgver}_ubuntu_${_ubuntuver}_x86_64.tar.gz"
-    "python2-m2crypto-0.24.0.tar.xz::https://archive.archlinux.org/packages/p/python2-m2crypto/python2-m2crypto-0.24.0-4-x86_64.pkg.tar.xz"
+    "python2-m2crypto-0.24.0-4-x86_64.pkg.tar.xz"
     "$_pkgbasename.desktop"
     "LICENSE"
 )
