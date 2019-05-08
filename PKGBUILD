@@ -3,7 +3,7 @@
 
 pkgbase='vte3-tilix'
 pkgname=("${pkgbase}" 'vte-tilix-common')
-pkgver=0.56.0
+pkgver=0.56.3
 pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora and Tilix patches'
 arch=('x86_64')
