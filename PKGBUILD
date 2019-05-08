@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-stella-git
-pkgver=214.b0b6361
+pkgver=216.a7acf22
 pkgrel=1
 pkgdesc="libretro implementation of Stella. (Atari 2600)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -11,8 +11,8 @@ groups=('libretro')
 depends=('zlib' 'glibc' 'libretro-core-info')
 makedepends=('git')
 
-_libname=stella_libretro
-_gitname=stella-libretro
+_libname=stella2014_libretro
+_gitname=stella2014-libretro
 source=("git+https://github.com/libretro/${_gitname}.git")
 sha256sums=('SKIP')
 
