@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/share/d9vk/setup_dxvk.sh $1 --symlink
