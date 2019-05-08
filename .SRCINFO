@@ -1,0 +1,20 @@
+pkgbase = d9vk-bin
+	pkgdesc = A d3d9 to vk layer based off DXVK's codebase. Mingw version
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://github.com/Joshua-Ashton/d9vk
+	arch = x86_64
+	license = zlib/libpng
+	depends = vulkan-icd-loader
+	depends = wine>=4.0rc1
+	depends = lib32-vulkan-icd-loader
+	depends = bash
+	provides = d9vk
+	conflicts = d9vk
+	source = https://github.com/Joshua-Ashton/d9vk/releases/download/0.10/d9vk-0.10.tar.gz
+	source = setup_d9vk
+	sha256sums = 9e50f2609aafaa7dd24c327f6af83c821c2259ca4967656029782faa71398ae2
+	sha256sums = 7147644664ef33d04f7b18683c47be95b5664c57cf6d63fdc019d915deebd37a
+
+pkgname = d9vk-bin
+
