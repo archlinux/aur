@@ -1,13 +1,13 @@
 # Maintainer: scan
 
 pkgname=gnome-shell-theme-black-maia-git
-pkgver=r16.0b0c328
+pkgver=r20.9fdcf83
 pkgrel=1
-pkgdesc="Black Maia GNOME Shell Theme for GNOME 3.28"
+pkgdesc="Black Maia GNOME Shell Theme for GNOME 3.32"
 arch=("any")
 url="https://github.com/bolimage/Black-Maia"
 license=("GPL")
-depends=("gnome-shell>3.28")
+depends=("gnome-shell>3.32")
 makedepends=("git")
 optdepends=("gnome-tweak-tool: A tool to customize advanced GNOME 3 options.")
 source=("black-maia-theme::git+https://github.com/bolimage/Black-Maia")
