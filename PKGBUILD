@@ -35,8 +35,9 @@ backup=('etc/tor/torrc'
 source=("git+https://git.torproject.org/tor.git#branch=${_branch:-master}"
         'torrc' 'nodes' 'bridge' 'transparent_proxy'
         'tor.logrotate' 'tor.service' 'tor.tmpfiles' 'tor.sysusers')
+
 sha256sums=('SKIP'
-            '5e40baff0e6cdc487793453ab06155c2974cc8bb20096db98be641fcceccd328'
+            'c264c79c352767ee3763b843f840e98ad992e04b4ffc189ef80524d919d4fccc'
             'eb82c6eaef6cd2e9451b4096f4ce23b3ee91fc408cdebd3280698cbe1a3b7ca1'
             '90a588c3c2dc7826172341453f76739e8f48df7b0c858adebd12e97f047bde26'
             '7fbb63e9411eee2176964449a3d6809d16e1120152c6ff201ecea1d1f97f102b'
