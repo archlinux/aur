@@ -1,7 +1,7 @@
 # Maintainer: Matthew McGinn <mamcgi@gmail.com>
 # Contributor: alicewww <almw@protonmail.com>
 pkgname=mullvad-vpn
-pkgver=2019.3
+pkgver=2019.4
 pkgrel=1
 pkgdesc="VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy"
 url="https://www.mullvad.net"
@@ -19,7 +19,7 @@ mullvad-vpn.desktop
 
 md5sums=('ed3a49275addbd5f2098a33bd605f1d3'
          '9628b4f93e72f5cca0a47087ae10b0fd'
-         'b5480033efddf483272688f3bcb61211')
+         'c43ae5246794f95f7124351472edecda')
 
 package() {
     # Install systemd service
