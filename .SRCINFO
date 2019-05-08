@@ -10,7 +10,7 @@ pkgbase = bspwmbar
 	depends = libxft
 	depends = fontconfig
 	source = https://github.com/odknt/bspwmbar/archive/v0.2.0.tar.gz
-	source = config.def.h
+	source = config.h
 	sha256sums = 0f81370e64ae2946dd585ae2e09150b174834a6238d0eb5365ec3ca40981cca2
 	sha256sums = SKIP
 

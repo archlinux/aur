@@ -8,7 +8,7 @@ license=('ISC')
 url='https://github.com/odknt/bspwmbar'
 depends=(bspwm alsa-lib libxft fontconfig)
 source=("https://github.com/odknt/bspwmbar/archive/v${pkgver}.tar.gz"
-        'config.def.h')
+        'config.h')
 sha256sums=('0f81370e64ae2946dd585ae2e09150b174834a6238d0eb5365ec3ca40981cca2'
             'SKIP')
 
