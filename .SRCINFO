@@ -11,9 +11,6 @@ pkgbase = lone_wolf-llvm-git
 	makedepends = libedit
 	makedepends = ncurses
 	makedepends = libxml2
-	makedepends = ocaml=4.07.1
-	makedepends = ocaml-ctypes
-	makedepends = ocaml-findlib
 	makedepends = python-sphinx
 	makedepends = python-recommonmark
 	source = llvm-project::git+https://github.com/llvm/llvm-project.git
@@ -41,12 +38,4 @@ pkgname = lone_wolf-llvm-libs-git
 	depends = ncurses
 	depends = libxml2
 	optdepends = llvm-libs: for LLVMgold linker
-
-pkgname = lone_wolf-ocaml-git
-	pkgdesc = OCaml bindings for LLVM
-	depends = lone_wolf-llvm-git=9.0.0_r315710.55dc751ef7a-1
-	depends = ocaml=4.07.1
-	depends = ocaml-ctypes
-	provides = llvm-ocaml=9.0.0_r315710.55dc751ef7a-1
-	conflicts = llvm-ocaml
 

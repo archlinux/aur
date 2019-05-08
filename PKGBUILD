@@ -15,7 +15,7 @@
 
 
 pkgbase=lone_wolf-llvm-git
-pkgname=('lone_wolf-llvm-git' 'lone_wolf-llvm-libs-git' 'lone_wolf-ocaml-git')
+pkgname=('lone_wolf-llvm-git' 'lone_wolf-llvm-libs-git')
 pkgver=9.0.0_r315710.55dc751ef7a
 pkgrel=1
 _ocaml_ver=4.07.1
@@ -23,7 +23,6 @@ arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
 makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
-             "ocaml=$_ocaml_ver" 'ocaml-ctypes' 'ocaml-findlib'
              'python-sphinx' 'python-recommonmark')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
                 'llvm-config.h')
@@ -71,11 +70,13 @@ build() {
         -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
         -DLLVM_BINUTILS_INCDIR=/usr/include \
         -DLLVM_VERSION_SUFFIX="" \
-        -DLLVM_APPEND_VC_REV=ON
+        -DLLVM_APPEND_VC_REV=ON \
+        -DLLVM_ENABLE_BINDINGS=OFF
+
     if [[ ! $NINJAFLAGS ]]; then
-        ninja all ocaml_doc
+        ninja 
     else
-        ninja "$NINJAFLAGS" all ocaml_doc
+        ninja "$NINJAFLAGS"
     fi
 }
 
@@ -110,11 +111,6 @@ package_lone_wolf-llvm-git() {
   # Remove files which conflict with llvm-libs
   rm "$pkgdir"/usr/lib/{LLVMgold,lib{LLVM,LTO}}.so
   
-  # OCaml bindings go to a separate package
-  rm -rf "$srcdir"/ocaml.{lib,doc}
-  mv "$pkgdir"/usr/lib/ocaml "$srcdir"/ocaml.lib
-  mv "$pkgdir"/usr/share/doc/llvm/ocaml-html "$srcdir"/ocaml.doc
-
   if [[ $CARCH == x86_64 ]]; then
     # Needed for multilib (https://bugs.archlinux.org/task/29951)
     # Header stub is taken from Fedora
@@ -139,18 +135,18 @@ package_lone_wolf-llvm-libs-git() {
     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-package_lone_wolf-ocaml-git() {
-  pkgdesc="OCaml bindings for LLVM"
-  depends=(lone_wolf-llvm-git=$pkgver-$pkgrel ocaml=$_ocaml_ver 'ocaml-ctypes')
-  conflicts=('llvm-ocaml')
-  provides=(llvm-ocaml=$pkgver-$pkgrel)
+#package_lone_wolf-ocaml-git() {
+#  pkgdesc="OCaml bindings for LLVM"
+#  depends=(lone_wolf-llvm-git=$pkgver-$pkgrel ocaml=$_ocaml_ver 'ocaml-ctypes')
+#  conflicts=('llvm-ocaml')
+#  provides=(llvm-ocaml=$pkgver-$pkgrel)
 
-  install -d "$pkgdir"/{usr/lib,usr/share/doc/$pkgname}
-  cp -a "$srcdir"/ocaml.lib "$pkgdir"/usr/lib/ocaml
-  cp -a "$srcdir"/ocaml.doc "$pkgdir"/usr/share/doc/$pkgname/html
+#  install -d "$pkgdir"/{usr/lib,usr/share/doc/$pkgname}
+#  cp -a "$srcdir"/ocaml.lib "$pkgdir"/usr/lib/ocaml
+#  cp -a "$srcdir"/ocaml.doc "$pkgdir"/usr/share/doc/$pkgname/html
 
-  install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT \
-    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-}
+#  install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT \
+#    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+#}
 
 # vim:set ts=2 sw=2 et:
