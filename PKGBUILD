@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=gridea
 pkgver=0.8.0
-pkgrel=4
+pkgrel=5
 pkgdesc="静态博客写作客户端"
 arch=('x86_64' 'i686')
 url="https://gridea.dev/"
@@ -14,7 +14,7 @@ sha256sums=('c5b3f4708d86f0f3e6e90996c44a56735e291891dd9341639e20b1667d657c6b')
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
     electronDist="\/usr\/lib\/electron"
-    sed -i "/asar: false,/c\asar: true,linux: {target: ['dir']}, electronDist: '$electronDist'," vue.config.js
+    sed -i "/asar: false,/c\asar: false,linux: {target: ['dir']}, electronDist: '$electronDist'," vue.config.js
     yarn
 }
 
@@ -26,7 +26,7 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 
-    install -Dm644 ./dist_electron/linux-unpacked/resources/app.asar "$pkgdir/usr/share/gridea/app.asar"
+    find ./dist_electron/linux-unpacked/resources/app -type f -exec install -Dm644 {} "$pkgdir/usr/share/gridea/app/{}" \;
 
     for size in 16 24 32 48 64 72 128 256; do
         target="$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/"
@@ -35,7 +35,7 @@ package() {
     done
 
     echo "#!/usr/bin/env sh
-exec electron /usr/share/gridea/app.asar" > "$srcdir/gridea.sh"
+exec electron /usr/share/gridea/app" > "$srcdir/gridea.sh"
 	install -Dm755 "$srcdir/gridea.sh" "$pkgdir/usr/bin/gridea"
 
 	echo "[Desktop Entry]
