@@ -2,8 +2,8 @@
 # Contributor: Patryk Kowalczyk < patryk at kowalczyk dot ws>
 
 pkgname=hivex
-pkgver=1.3.15
-pkgrel=3
+pkgver=1.3.18
+pkgrel=1
 pkgdesc="System for extracting the contents of Windows Registry."
 arch=("i686" "x86_64")
 url="http://libguestfs.org"
@@ -15,7 +15,7 @@ optdepends=("python2: for python bindings"
 	    "ocaml: for ocaml bindings")
 options=("!emptydirs" "!libtool")
 source=("http://libguestfs.org/download/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('7ba11dd842cf8dae9adeace6d3e58efc')
+md5sums=('8468074cdc6e870e8f6a2c831ce22a0d')
 
 build() {
     cd $pkgname-$pkgver
