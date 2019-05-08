@@ -7,9 +7,14 @@ url='https://rvgl.re-volt.io'
 arch=('x86_64')
 license=('custom')
 depends=('sdl2_image' 'openal' 'enet' 'libunistring')
-optdepends=('rvgl-dcpack: dreamcast version frontend, cars, rooftops track'
+optdepends=('rvgl-dcpack: dreamcast cars, rooftops track, box layout'
             'rvgl-soundtrack: community-made soundtrack'
-            'rvgl-soundtrack-orig: dreamcast version original soundtrack')
+            'rvgl-soundtrack-orig: dreamcast version original soundtrack'
+            'libsndfile: for uncompressed audio support'
+            'libvorbis: for OGG Vorbis support'
+            'flac: for FLAC support'
+            'mpg123: for MPEG support'
+            'fluidsynth: for SoundFont 2 support')
 source=("https://distribute.re-volt.io/packs/game_files.zip"
 	"https://distribute.re-volt.io/releases/rvgl_version.txt"
         "https://rvgl.re-volt.io/downloads/rvgl_${pkgver}a_linux.7z"
