@@ -26,7 +26,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   make prefix="$pkgdir/usr/" install
-  
+
   install -D COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
 
