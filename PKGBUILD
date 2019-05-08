@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=gpuvis-git
-pkgver=r1639.a138c1cf40c23830d49c
+pkgver=r1641.c927324c1296b5f50819
 pkgrel=1
 pkgdesc=""
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('MIT')
 source=("git+$url"
         'fix.diff')
 sha1sums=('SKIP'
-          '12ad046b5d470ce133e21993498949e48a192553')
+          '0011dcd305d7cb9d67d36d5329240e4d06a68484')
 
 pkgver() {
   cd "$srcdir"/gpuvis

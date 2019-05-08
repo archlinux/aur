@@ -1,5 +1,5 @@
 pkgbase = gpuvis-git
-	pkgver = r1639.a138c1cf40c23830d49c
+	pkgver = r1641.c927324c1296b5f50819
 	pkgrel = 1
 	url = https://github.com/mikesart/gpuvis
 	arch = x86_64
@@ -7,7 +7,7 @@ pkgbase = gpuvis-git
 	source = https://github.com/mikesart/gpuvis
 	source = fix.diff
 	sha1sums = SKIP
-	sha1sums = 12ad046b5d470ce133e21993498949e48a192553
+	sha1sums = 0011dcd305d7cb9d67d36d5329240e4d06a68484
 
 pkgname = gpuvis-git
 

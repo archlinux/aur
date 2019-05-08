@@ -1,16 +1,3 @@
-diff --git a/Makefile b/Makefile
-index d33da19f0f3c8e3a6d40..eff25631f4fe3764d38f 100644
---- a/Makefile
-+++ b/Makefile
-@@ -29,7 +29,7 @@ VERBOSE ?= 0
- COMPILER = $(shell $(CC) -v 2>&1 | grep -q "clang version" && echo clang || echo gcc)
- 
- SDL2FLAGS=$(shell sdl2-config --cflags)
--SDL2LIBS=$(shell sdl2-config --static-libs)
-+SDL2LIBS=$(shell sdl2-config --libs)
- 
- ifeq ($(USE_GTK3), 1)
- GTK3FLAGS=$(shell pkg-config --cflags gtk+-3.0) -DUSE_GTK3
 diff --git a/src/gpuvis_etl.cpp b/src/gpuvis_etl.cpp
 index 549c4f29d6aaa3cad99e..26d1ad9fdea6da5bed72 100644
 --- a/src/gpuvis_etl.cpp
@@ -34,15 +21,6 @@ index 549c4f29d6aaa3cad99e..26d1ad9fdea6da5bed72 100644
  // Parsing ETL files is only supported on windows
  // We heavily rely on the TDH windows library for the heavy lifting
  #ifdef _WIN32
-@@ -1001,7 +1009,7 @@ int read_etl_file( const char *file, StrPool &strpool, trace_info_t &trace_info,
- // Stub implementation for non-windows OSs
- int read_etl_file( const char *file, StrPool &strpool, trace_info_t &trace_info, EventCallback &cb )
- {
--    return -1
-+    return -1;
- }
- #endif
- 
 diff --git a/src/gpuvis_macros.h b/src/gpuvis_macros.h
 index 8efa70e19f7e68906832..416acc8a53a755412d9e 100644
 --- a/src/gpuvis_macros.h
