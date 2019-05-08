@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.60.1
+pkgver=2.60.2
 pkgrel=2
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy911/d199759b46a79782cc1b301649dec8a5"
@@ -17,7 +17,7 @@ optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-repor
             'libelf: gresource inspection tool')
 options=('!docs' '!emptydirs')
 license=(LGPL2.1)
-_commit=527022ae143c0ef154edaba449bedd430f382d86  # tags/2.60.1^0
+_commit=a3b5608170c0b4381d0217ea99325ec7fcecb7f6  # tags/2.60.2^0
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
         noisy-glib-compile-schemas.diff
         glib-compile-schemas.hook
@@ -63,9 +63,6 @@ package() {
 
   python -m compileall -d /usr/share/glib-2.0/codegen "$pkgdir/usr/share/glib-2.0/codegen"
   python -O -m compileall -d /usr/share/glib-2.0/codegen "$pkgdir/usr/share/glib-2.0/codegen"
-
-  # Remove installed tests
-  rm -fr "$pkgdir/usr/lib/installed-tests"
 
   # Split docs
   mv "$pkgdir/usr/share/gtk-doc" "$srcdir"
