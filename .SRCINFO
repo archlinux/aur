@@ -1,19 +1,14 @@
 pkgbase = python-pyviz_comms
 	pkgdesc = Bidirectional communication for the PyViz ecosystem
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyviz/pyviz_comms
 	arch = any
-	groups = bokeh-ecosystem
 	license = BSD
 	checkdepends = python-nose
 	checkdepends = flake8
 	makedepends = python-setuptools
 	makedepends = python-param
-	depends = python-bokeh
-	depends = python-cartopy
-	depends = python-holoviews
-	depends = python-numpy
 	source = https://github.com/pyviz/pyviz_comms/archive/v0.7.2.tar.gz
 	sha256sums = 24978f18895c1655364083a464d7327d6cc848ad67ffca40237bfaaa3d8de5c8
 
