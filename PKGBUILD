@@ -4,18 +4,13 @@ pkgver=2.7
 _short_pkgver=27
 _long_pkgver=2.7.0
 _deb_rebuild=2113
-pkgrel=1
+pkgrel=2
 pkgdesc='Plug-In for Citrix Receiver to support clear, crisp high-definition audio-video calls, particularly with Microsoft Skype® for Business.'
 arch=('i686' 'x86_64')
 _url='https://www.citrix.com/downloads/workspace-app/additional-client-software'
 url="${_url}/${pkgname}-${_short_pkgver}.html"
 license=('custom')
-depends=('icaclient' 'pulseaudio' 'xorg-xvinfo')
-if [[ "$CARCH" == 'x86_64' ]]; then
-    depends+=('lib32-libxv' 'lib32-libpulse')
-elif [[ "$CARCH" == 'i686' ]]; then
-    depends+=('libxv' 'libpulse')
-fi
+depends=('icaclient' 'libxv' 'libpulse' 'libsndfile')
 makedepends=('binutils' 'tar' 'xz' 'awk')
 install="${pkgname}.install"
 source_i686=("HDX_RealTime_Media_Engine_${pkgver}_for_Linux.zip::https:$(curl -L -silent "${_url}/${pkgname}-${_short_pkgver}.html#ctx-dl-eula" | awk -F'"' '/href=.*rel=.*Linux.zip/ { print $10 }')")
