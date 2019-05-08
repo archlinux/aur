@@ -11,8 +11,8 @@ pre_install() {
 }
 
 post_install() {
-    systemctl enable trezord.service
-    systemctl start trezord.service
+    systemctl daemon-reload
+    systemctl enable --now trezord.service
 }
 
 pre_upgrade() {
@@ -20,6 +20,7 @@ pre_upgrade() {
 }
 
 post_upgrade() {
+    systemctl daemon-reload
     systemctl start trezord.service
 }
 

@@ -2,8 +2,8 @@
 # Contributor: Sebastian Jug <seb@stianj.ug>
 
 pkgname=trezor-bridge-bin
-pkgver=2.0.25
-pkgrel=2
+pkgver=2.0.26
+pkgrel=1
 pkgdesc="Communication daemon for TREZOR"
 arch=('i686' 'x86_64')
 url="https://trezor.io/"
@@ -14,8 +14,8 @@ options=()
 install=$pkgname.install
 source_i686=("https://wallet.trezor.io/data/bridge/${pkgver}/trezor-bridge_${pkgver}_i386.deb")
 source_x86_64=("https://wallet.trezor.io/data/bridge/${pkgver}/trezor-bridge_${pkgver}_amd64.deb")
-sha256sums_i686=('e23356482a871339284b3e4675ff14e7e250c8f3c76e704f44e85cc4c40061ad')
-sha256sums_x86_64=('e3c8d16cae1570680267319096a5aa8a843f7bf15fc6eb6d109b97e755e3f99c')
+sha256sums_i686=('4928ca508eec302afc562ba2a4142c74d172b6baa942a6a05b34947a24bc5185')
+sha256sums_x86_64=('d5e7068eb196bfa6c4a68ba9523506339a563e773277f03189736d252161bbd7')
 
 package() {
     msg2 "Extracting the data..."
