@@ -2,8 +2,8 @@
 
 pkgname=dark-aurora-theme
 pkgver=20170525
-pkgrel=4
-pkgdesc="Dark Aurora Theme GNOME 3.20/3.22/3.24/3.26"
+pkgrel=5
+pkgdesc="Dark Aurora Theme GNOME 3.32"
 arch=('any')
 url="https://www.gnome-look.org/p/1176541"
 license=('GPL')
