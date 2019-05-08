@@ -1,0 +1,13 @@
+pkgbase = contemporary-sounds
+	pkgdesc = Contemporary Sounds
+	pkgver = 1.0
+	pkgrel = 0
+	url = http://vicr123.github.io/contemporary
+	arch = any
+	license = cc-by-sa-4.0
+	makedepends = git
+	source = contemporary-sounds-1.0::git+https://github.com/vicr123/contemporary-sounds.git
+	sha256sums = SKIP
+
+pkgname = contemporary-sounds
+
