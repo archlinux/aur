@@ -2,7 +2,7 @@
 
 _fnt_name=public-sans
 pkgname=ttf-${_fnt_name}
-pkgver=1.002
+pkgver=1.003
 pkgrel=1
 pkgdesc="A strong, neutral typeface for text or display."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://public-sans.digital.gov/"
 license=('custom:OFL')
 source=("$pkgname-$pkgver.zip::https://github.com/uswds/${_fnt_name}/releases/download/v${pkgver}/${_fnt_name}-v${pkgver}.zip"
         https://raw.githubusercontent.com/uswds/public-sans/master/ofl.txt)
-sha256sums=('4264e06bc686471f94107f63c17b6d9fe8a6d6c32ec80c6df01e58b0032f1b7c'
+sha256sums=('75aa2b3999af1eddfdf042f8a6e40eaa3a8a3eeab966287d06a0a973d9490a0b'
             'a24aca924da18c40798440bd9e97ef0a78868f7f7c5d1ca9c709a29a4e220087')
 
 package() {
