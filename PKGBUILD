@@ -6,7 +6,7 @@
 
 #  printf "'SKIP'%.0s\n" {1..43}
 pkgname=ossia-score-git
-pkgver=r7332.f037f9b63
+pkgver=r7371.7aabc965a
 pkgrel=1
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts (git master)"
 arch=('x86_64')
