@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=git-duet
-pkgver=0.3.0+
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Support for pairing with git"
 arch=('i686' 'x86_64')
@@ -14,13 +14,14 @@ license=('MIT')
 depends=('git')
 makedepends=('git' 'go')
 provides=('git-duet')
-source=('git+https://github.com/git-duet/git-duet.git')
-md5sums=('SKIP')
+source=("https://github.com/git-duet/git-duet/archive/${pkgver}.tar.gz")
+sha256sums=('50927417ee5062ca9c6da29b1870e3bb8677943e3216a918beea46e0c7b9a9d0')
 
 build() {
+  set -x
   repodir="$srcdir"/src/github.com/git-duet
   mkdir -p "$repodir"
-  mv "$srcdir"/$pkgname "$repodir"
+  mv "$srcdir/${pkgname}-${pkgver}" "${repodir}/${pkgname}"
   cd "$repodir"/$pkgname
   GOPATH="$srcdir" go get -v ./...
 }
