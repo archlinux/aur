@@ -95,7 +95,7 @@ build() {
 _package() {
   pkgdesc="The Linux LTS kernel with TOMOYO configuration"
   [ "${pkgbase}" = "linux" ] && groups=('base')
-  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
+  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7' 'tomoyo-tools-25')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=("${pkgbase}=${pkgver}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
