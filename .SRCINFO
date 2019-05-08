@@ -1,5 +1,5 @@
 pkgbase = aeskulap
-	pkgdesc = Medical image viewer and DICOM client. Compatible with parallel installation of the package 'dcmtk'.
+	pkgdesc = Medical image viewer and DICOM client
 	pkgver = 0.2.2.beta2.1.gce82f85
 	pkgrel = 2
 	url = http://www.nongnu.org/aeskulap

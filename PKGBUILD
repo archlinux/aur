@@ -1,10 +1,11 @@
-# Maintainer: Tomáš Mládek < tmladek {} inventati dt org >
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Tomáš Mládek < tmladek {} inventati dt org >
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=aeskulap
 pkgver=0.2.2.beta2.1.gce82f85
 pkgrel=2
-pkgdesc="Medical image viewer and DICOM client. Compatible with parallel installation of the package 'dcmtk'."
+pkgdesc="Medical image viewer and DICOM client"
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/aeskulap"
 license=('GPL')
