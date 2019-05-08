@@ -26,7 +26,7 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver/dist_electron/linux-unpacked/resources/app"
 
-    find \* -type f -exec install -Dm644 {} "$pkgdir/usr/share/gridea/app/{}" \;
+    find * -type f -exec install -Dm644 {} "$pkgdir/usr/share/gridea/app/{}" \;
 
     cd "$srcdir/$pkgname-$pkgver"
 
