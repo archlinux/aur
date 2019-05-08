@@ -1,14 +1,14 @@
 pkgbase = python-kafka
 	pkgdesc = Python client for Apache Kafka
-	pkgver = 1.4.3
+	pkgver = 1.4.6
 	pkgrel = 1
-	url = https://github.com/mikeboers/PyAV/tree/master
+	url = https://github.com/dpkp/kafka-python
 	arch = x86_64
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://github.com/dpkp/kafka-python/archive/1.4.3.tar.gz
-	sha256sums = 8b07844c62650d4843631492aa7348498958931dd89de294da598c7590484b52
+	source = https://github.com/dpkp/kafka-python/archive/1.4.6.tar.gz
+	sha256sums = 62d5910d0f9a33be85b5082599fbe3bb7a587205923704de81e2303fe838a5d5
 
 pkgname = python-kafka
 	depends = python
