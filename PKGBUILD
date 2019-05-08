@@ -3,8 +3,8 @@
 
 _gemname=travis
 pkgname=ruby-$_gemname
-pkgver=1.8.9
-pkgrel=4
+pkgver=1.8.10
+pkgrel=1
 pkgdesc='CLI and Ruby client library for Travis CI'
 arch=(any)
 url='https://github.com/travis-ci/travis.rb'
@@ -14,7 +14,7 @@ makedepends=('ruby-rdoc')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('fce5dfb8071629de172b8a91fad15b1d6fcc50af1ab1a41eaa1e5eb91042b90fd58e1be24779fb02972077af743ebd65183b2dff42ee47d48818f7ed2755980a')
+sha512sums=('ca8adfb2d1541e157d1fa19837ce6d7a75ce491e0a3402447642f9f3b1f0c19ec16344016ed494947e3fde4e838669e4e5ba48087baea3f097605bef700dde55')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
