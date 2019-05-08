@@ -1,7 +1,7 @@
 # Maintainer: Markus Kaiser <markus dot kaiser at in dot tum dot de>
 _pkgname=param
 pkgname=python-$_pkgname
-pkgver=1.7.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Declarative Python programming using Parameters"
 arch=("any")
@@ -9,8 +9,8 @@ url="https://ioam.github.io/param/"
 license=('BSD')
 depends=()
 options=(!emptydirs)
-source=('https://files.pythonhosted.org/packages/ec/8f/58da87aeb095886bfb0bb1901c256d9d9e50ad4fce68ed6280da21cebff5/param-1.7.0.tar.gz')
-sha256sums=('02307e39323ec7c01aa8874e6512e67e441037a1527196fe4f1c4b00f931cae7')
+source=('https://files.pythonhosted.org/packages/5e/d9/9e9d3c9b0cad8af40822527e55f8822808e3480b86488acdfe6d71f31a23/param-1.9.0.tar.gz')
+sha256sums=('e2036985ba10e117ffb3ad59ac91e718b74f4fe962b5620eae6673ec390550dd')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
