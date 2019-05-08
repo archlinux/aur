@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-git
-pkgver=20181207
+pkgver=20190508
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -13,9 +13,7 @@ makedepends=('autoconf' 'automake' 'binutils' 'git' 'libtool' 'm4' 'make' 'pkg-c
 license=('MIT')
 source=(git+https://github.com/bitcoin/bitcoin
         bitcoin.conf
-        bitcoin.logrotate
-        bitcoin.service
-        bitcoin-reindex.service
+        bitcoind.logrotate
         bitcoin-sysusers.conf
         bitcoin-core-git-01-systemd-sysusers.hook
         bitcoin-core-git-01-userdel.hook
@@ -23,19 +21,15 @@ source=(git+https://github.com/bitcoin/bitcoin
         bitcoin-core-git-02-rm-rf.hook)
 sha256sums=('SKIP'
             'b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35'
-            '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
-            'e56dc913b82097acdc20374a2ae1b08323af74ccbbf63c829d4d13c9cb63ad8d'
-            '4d5053ba94fa647abc6abe8b90f46d4c61d706de8fb0151f6aefed772adf317e'
+            '7bf4bdad419c1ee30b88c7e4190707c5ff250da8b23d68d5adf14043f8e2ac73'
             'f126b4824e43d9760ab2021460a37d859986f07e1ac9245ee4938e832739f73a'
             'c8636b95f7267c65da609bfde84cb70d7733126837e0b05b3219cb271beb634c'
             'fd51f57554bbe6df225c6773736d3941ac479e70f5573b3c373157e16a7f6484'
-            '51e683fc708ba4c17da93dd70a593c7b94ba5c2f58a431c04c1b0112b52221f6'
-            '35b34d87df5a58aca3c0ceb18fc31ed36c1493838cb9a3b9653f8b5bf64b2de2')
-backup=('etc/bitcoin/bitcoin.conf'
-        'etc/logrotate.d/bitcoin')
+            'ee5a24fe631e51df8b8314dbc5c7720ec12dbb6fcf7f834b1c811d85e0ee4795'
+            'c586e4931ab01f6b6a36a44d7c6eb29a509a91d81e3b0ea24a6e4f8065a1217b')
 provides=('bitcoin-cli' 'bitcoin-core' 'bitcoin-daemon' 'bitcoin-tx')
 conflicts=('bitcoin-cli' 'bitcoin-core' 'bitcoin-daemon' 'bitcoin-qt' 'bitcoin-tx')
-install=bitcoin.install
+install=bitcoind.install
 
 # half of available processing units or one if only one is available
 _nproc=$(($(nproc)/2))
@@ -49,7 +43,6 @@ pkgver() {
 build() {
   cd "${pkgname%%-*}"
 
-  msg2 'Building...'
   ./autogen.sh
   ./configure \
     --prefix=/usr \
@@ -68,55 +61,39 @@ build() {
 
 check() {
   cd "${pkgname%%-*}"
-
-  msg2 'Testing...'
   make -j$_nproc check
 }
 
 package() {
   cd "${pkgname%%-*}"
 
-  msg2 'Installing license...'
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%%-*}"
 
-  msg2 'Installing documentation...'
   install -dm 755 "$pkgdir/usr/share/doc/bitcoin"
-  for _doc in \
-    $(find doc -maxdepth 1 -type f -name "*.md" -printf '%f\n') \
-    release-notes; do
-      cp -dpr --no-preserve=ownership "doc/$_doc" \
-        "$pkgdir/usr/share/doc/bitcoin/$_doc"
+  for _doc in $(find doc -maxdepth 1 -type f -name "*.md" -printf '%f\n') release-notes; do
+      cp -dpr --no-preserve=ownership "doc/$_doc" "$pkgdir/usr/share/doc/bitcoin/$_doc"
   done
 
-  msg2 'Installing essential directories'
   install -dm 700 "$pkgdir/etc/bitcoin"
-  install -dm 755 "$pkgdir/srv/bitcoin"
 
-  msg2 'Installing bitcoin...'
   make DESTDIR="$pkgdir" install
 
-  msg2 'Installing bitcoin.conf...'
   install -Dm 600 "$srcdir/bitcoin.conf" -t "$pkgdir/etc/bitcoin"
+  cat "$srcdir/bitcoin/share/examples/bitcoin.conf" >>"$pkgdir/etc/bitcoin/bitcoin.conf"
 
-  msg2 'Installing bitcoin.service...'
-  install -Dm 644 "$srcdir/bitcoin.service" -t "$pkgdir/usr/lib/systemd/system"
-  install -Dm 644 "$srcdir/bitcoin-reindex.service" \
-    -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm 644 "$srcdir/bitcoin/contrib/init/bitcoind.service" -t "$pkgdir/usr/lib/systemd/system"
+  sed -i 's/StateDirectory/#StateDirectory/g' "$pkgdir/usr/lib/systemd/system/bitcoind.service"
+  sed 's|\-daemon|\-daemon \-reindex|;s|Description=.*|Description=Bitcoin daemon (reindex)|' "$srcdir/bitcoin/contrib/init/bitcoind.service" >"$pkgdir/usr/lib/systemd/system/bitcoind-reindex.service"
 
-  msg2 'Installing bitcoin-sysusers.conf...'
-  install -Dm 644 "$srcdir/bitcoin-sysusers.conf" \
-    "$pkgdir/usr/lib/sysusers.d/bitcoin.conf"
+  install -Dm 644 "$srcdir/bitcoin-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/bitcoin.conf"
 
-  msg2 'Installing bitcoin.logrotate...'
-  install -Dm 644 "$srcdir/bitcoin.logrotate" "$pkgdir/etc/logrotate.d/bitcoin"
+  install -Dm 644 "$srcdir/bitcoind.logrotate" "$pkgdir/etc/logrotate.d/bitcoin"
 
-  msg2 'Installing bash completion...'
   for _compl in bitcoin-cli bitcoin-tx bitcoind; do
     install -Dm 644 "contrib/${_compl}.bash-completion" \
       "$pkgdir/usr/share/bash-completion/completions/$_compl"
   done
 
-  # XXX: pacman hook on Remove event not firing
-  msg2 'Installing pacman hooks...'
+  # NB: pacman hook on Remove event not firing
   install -Dm 644 "$srcdir"/*.hook -t "$pkgdir/usr/share/libalpm/hooks"
 }

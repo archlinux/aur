@@ -1,0 +1,55 @@
+post_install() {
+  printf "\n%b\n" "$info"
+
+  # Persist an existing blockchain in the old datadir by symlinking it
+  if [ -f /srv/bitcoin/peers.dat ] && [ ! -d /var/lib/bitcoind ]; then
+    ln -s /srv/bitcoin /var/lib/bitcoind
+    printf "  Blockchain:    /srv/bitcoin\n\n"
+  else
+    # New installation: create data directory
+    mkdir -p -m 755 /var/lib/bitcoind
+    printf "  Blockchain:    /var/lib/bitcoind\n\n"
+  fi
+
+  # Warn if previous settings are present
+  [ -f /etc/bitcoin/bitcoin.conf.pacsave ] && note "before starting bitcoind you may have to merge /etc/bitcoin/bitcoin.conf.pacsave\n          into /etc/bitcoin/bitcoin.conf in order to keep your previous configuration.\n"
+}
+
+post_upgrade() {
+  post_install 
+}
+
+note() {
+  printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+read -d '' info <<'EOF'
+  Bitcoin Core
+  ____________
+
+  To start bitcoin-core:
+
+      # systemctl start bitcoind
+
+      [ to reindex: systemctl start bitcoind-reindex ]
+
+  To communicate with bitcoin-core as a normal user:
+
+      $ mkdir -p ~/.bitcoin
+      $ cat > ~/.bitcoin/bitcoin.conf <<'CFG'
+      rpcconnect=127.0.0.1
+      rpcport=8332
+      rpcuser=bitcoin
+      rpcpassword=secret
+      CFG
+
+      $ bitcoin-cli getmininginfo
+
+  Documentation: /usr/share/doc/bitcoin
+  Config:        /etc/bitcoin/bitcoin.conf
+EOF
