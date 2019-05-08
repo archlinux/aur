@@ -1,7 +1,7 @@
 # Maintainer: Alex Dewar <a.dewar@sussex.ac.uk>
 pkgname=genn
 pkgver=4.0.0_RC1
-pkgrel=3
+pkgrel=4
 pkgdesc="GeNN: GPU-enhanced neural networks (version 4)"
 arch=(x86_64)
 url="https://github.com/genn-team/genn"
@@ -42,7 +42,8 @@ package() {
 	cd genn-${pkgver//_/-}
 
 	# Install libs and headers
-	CUDA_PATH=/opt/cuda PREFIX="$pkgdir"/usr/ make cuda install
+	CUDA_PATH=/opt/cuda make cuda
+	PREFIX="$pkgdir"/usr/ make install
 
 	# Install documentation
 	mkdir -p "$pkgdir"/usr/share/genn/documentation
