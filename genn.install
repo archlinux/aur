@@ -1,0 +1,8 @@
+post_install() {
+	echo ======================================================
+	echo 		GeNN installed!
+	echo 		You may have to log out and log back in again so that the CUDA_PATH environment variable is set.
+	echo ======================================================
+
+	source /etc/profile.d/cuda_path.sh
+}
