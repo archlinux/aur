@@ -5,7 +5,6 @@ url='http://www.ros.org/wiki/pluginlib'
 
 pkgname='ros-melodic-pluginlib'
 pkgver='2.3.0'
-_pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -38,7 +37,7 @@ depends=(
 	tinyxml2
 )
 
-_dir="pluginlib-release-release-melodic-pluginlib"
+_dir="pluginlib-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/pluginlib/archive/pluginlib/${pkgver}.tar.gz")
 sha256sums=('8fede085c83d4b7f1fcde454f364e04cfc5680ab41ac7029f9bbaf53ff6e5a07')
 
