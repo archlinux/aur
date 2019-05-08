@@ -1,0 +1,16 @@
+pkgbase = hexedit0r
+	pkgdesc = personal fork of hexedit, a ncurses hexeditor
+	pkgver = 1.0.13.g9831044
+	pkgrel = 1
+	url = http://prigaux.chez.com/hexedit.html
+	arch = any
+	license = GPL2
+	makedepends = make
+	depends = glibc
+	depends = ncurses
+	conflicts = hexedit
+	source = git+https://github.com/rofl0r/hexedit0r
+	md5sums = SKIP
+
+pkgname = hexedit0r
+
