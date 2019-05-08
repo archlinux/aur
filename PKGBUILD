@@ -1,6 +1,6 @@
 # Maintainer: Alex Wilson <alex at cooperi dot net>
 pkgname=pivy
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Tools for using PIV smartcards/Yubikeys with ssh-agent and disk encryption"
 url="https://github.com/arekinath/pivy"
@@ -11,7 +11,7 @@ source=(
 arch=(x86 x86_64)
 depends=(libbsd pcsclite libedit)
 makedepends=()
-sha256sums=('a12eaf9dedc9f6a2fc1ac0a9404a0a40182cb6f85276530ccd23ba70f9325b4b'
+sha256sums=('8f426fab331534ea96f3b4eef3df5ce963c2a4de6906160943066b33698d2046'
             '1e3a9fada06c1c060011470ad0ff960de28f9a0515277d7336f7e09362517da6')
 
 prepare() {
