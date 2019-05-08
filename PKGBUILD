@@ -19,7 +19,7 @@
 
 pkgbase=lone_wolf-lib32-llvm-git
 pkgname=('lone_wolf-lib32-llvm-git' 'lone_wolf-lib32-llvm-libs-git')
-pkgver=9.0.0_r315711.5ab41a7a055
+pkgver=9.0.0_r315995.5b6dda33d12
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
@@ -71,7 +71,9 @@ build() {
         -DLLVM_ENABLE_DOXYGEN=OFF \
         -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
         -DLLVM_BINUTILS_INCDIR=/usr/include \
-        -DLLVM_VERSION_SUFFIX=""
+        -DLLVM_VERSION_SUFFIX="" \
+        -DLLVM_ENABLE_BINDINGS=OFF
+        
     if [[ ! $NINJAFLAGS ]]; then
         ninja all
     else
@@ -88,11 +90,12 @@ package_lone_wolf-lib32-llvm-git() {
     cd _build
     DESTDIR="$pkgdir" ninja install
 
-    # The runtime library goes into lib32-llvm-libs
-    mv "$pkgdir"/usr/lib32/lib{LLVM,LTO}*.so* "$srcdir"
-    # we want to coexist with stable llvm libs, so LLVMgold git has to go
-    rm "$pkgdir"/usr/lib32/LLVMgold.so
+    # Remove files which conflict with lib32-llvm-libs
+    rm "$pkgdir"/usr/lib32/{LLVMgold,lib{LLVM,LTO}}.so
 
+    # The runtime library goes into lib32-llvm-libs-git
+    mv "$pkgdir"/usr/lib32/lib{LLVM,LTO}*.so* "$srcdir"
+    
     mv "$pkgdir"/usr/bin/llvm-config "$pkgdir"/usr/lib32/llvm-config
     mv "$pkgdir"/usr/include/llvm/Config/llvm-config.h \
         "$pkgdir"/usr/lib32/llvm-config-32.h
