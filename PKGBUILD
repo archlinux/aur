@@ -2,13 +2,12 @@
 
 pkgname='python-pyct'
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Python packaging Common Tasks'
 arch=('any')
 url='https://github.com/pyviz/pyct'
 license=('BSD')
 makedepends=('python-setuptools' 'python-param')
-groups=('bokeh-ecosystem')
 depends=()
 optdepends=('python-pyaml')
 optdepends=('python-requests')
