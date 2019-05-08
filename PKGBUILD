@@ -49,10 +49,7 @@ build() {
   # unpack game zipfile
   msg "Found game package, unpacking..."
   unzip -u "${pkgpath}/${_gamepkg}" -d "${srcdir}" \
-        -x "RimWorld${_pkg_subver}Linux/Mods/Core/Languages/ChineseSimplified/*.txt" \
-           "RimWorld${_pkg_subver}Linux/Mods/Core/Languages/Russian/*RimWorld/*" \
-           "RimWorld${_pkg_subver}Linux/Mods/Core/Languages/Russian/*.txt" \
-           "RimWorld${_pkg_subver}Linux/Mods/Core/Languages/Polish/*.md"
+        -x "RimWorld${_pkg_subver}Linux/Mods/Core/Languages/Russian/*RimWorld/*"
 }
 
 package() {
