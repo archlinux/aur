@@ -4,7 +4,7 @@
 pkgname=mumble-snapshot
 pkgver=1.3.0_rc1
 _dirname=1.3.0
-pkgrel=1
+pkgrel=2
 # use epoch since rc naming scheme won't be recogniced as new version
 epoch=1
 pkgdesc="A high quality voice chat program."
