@@ -1,7 +1,7 @@
 pkgbase = pahole-git
 	pkgdesc = Various DWARF utils
-	pkgver = 1.12.r7.g70ef8c7
-	pkgrel = 2
+	pkgver = 1.13.r6.g568dae4
+	pkgrel = 1
 	url = http://git.kernel.org/?p=devel/pahole/pahole.git;a=summary
 	arch = i686
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = pahole-git
 	makedepends = cmake
 	makedepends = ninja
 	depends = elfutils
-	depends = python2
+	depends = python
 	provides = dwarves
 	provides = pahole
 	conflicts = dwarves
 	conflicts = pahole
 	source = pahole-git::git+https://kernel.googlesource.com/pub/scm/devel/pahole/pahole.git
-	source = file://0001-ostra-use-python2.patch
+	source = git+https://github.com/libbpf/libbpf
 	md5sums = SKIP
 	md5sums = SKIP
 

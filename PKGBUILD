@@ -2,25 +2,28 @@
 
 pkgname=pahole-git
 pkgdesc="Various DWARF utils"
-pkgver=1.12.r7.g70ef8c7
-pkgrel=2
+pkgver=1.13.r6.g568dae4
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://git.kernel.org/?p=devel/pahole/pahole.git;a=summary"
 license=('GPL2')
-depends=('elfutils' 'python2')
+depends=('elfutils' 'python')
 makedepends=('git' 'cmake' 'ninja')
 provides=('dwarves' 'pahole')
 conflicts=('dwarves' 'pahole')
 source=(
-  $pkgname'::git+https://kernel.googlesource.com/pub/scm/devel/pahole/pahole.git'
-  "file://0001-ostra-use-python2.patch"
+  $pkgname::'git+https://kernel.googlesource.com/pub/scm/devel/pahole/pahole.git'
+  'git+https://github.com/libbpf/libbpf'
 )
 md5sums=('SKIP' 'SKIP')
 
 prepare() {
-  cd "$srcdir/$pkgname"
-  patch -Np1 -i "$srcdir/0001-ostra-use-python2.patch"  
+  cd "$srcdir"
   mkdir -p build
+  cd "$srcdir/$pkgname"
+  git submodule init
+  git config submodule.libbpf.url "$srcdir/libbpf"
+  git submodule update
 }
 
 pkgver() {
@@ -29,13 +32,14 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$pkgname/build"
+  cd "$srcdir/build"
 
   cmake -G Ninja \
    -D CMAKE_BUILD_TYPE=Plain \
    -D CMAKE_INSTALL_PREFIX=/usr \
    -D LIB_INSTALL_DIR=/usr/lib \
-   ..
+   ../"$pkgname"
+
   ninja -v
 }
 
