@@ -1,11 +1,13 @@
 pkgbase = gpuvis-git
-	pkgver = r859.5b8f4bc
+	pkgver = r1639.a138c1cf40c23830d49c
 	pkgrel = 1
 	url = https://github.com/mikesart/gpuvis
 	arch = x86_64
 	license = MIT
 	source = https://github.com/mikesart/gpuvis
+	source = fix.diff
 	sha1sums = SKIP
+	sha1sums = 12ad046b5d470ce133e21993498949e48a192553
 
 pkgname = gpuvis-git
 
