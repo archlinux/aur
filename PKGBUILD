@@ -1,10 +1,11 @@
-# Maintainer: Johannes Löthberg <johannes@kyriasis.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
+# Contributor: Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: Sébastien Luttringer
 # Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Fabio Volpe <volpefabio@gmail.com>
 
-pkgbase=python-sphinx
-pkgname=('python-sphinx' 'python2-sphinx')
+pkgbase=python-sphinx1
+pkgname=('python-sphinx1' 'python2-sphinx1')
 pkgver=1.8.5
 pkgrel=1
 
@@ -91,8 +92,8 @@ build() {
 #  rm -r tests
 #}
 
-package_python-sphinx() {
-  pkgdesc='Python3 documentation generator'
+package_python-sphinx1() {
+  pkgdesc='Python3 documentation generator (version 1)'
   depends=(
     'python-setuptools'
     'python-jinja'
@@ -112,14 +113,17 @@ package_python-sphinx() {
   optdepends=('texlive-latexextra: for generation of PDF documentation'
               'imagemagick: ext.imageconverter')
 
+  provides=("python-sphinx=$pkgver")
+  conflicts=('python-sphinx')
+
   cd Sphinx-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
 
-  install -Dm644 "$srcdir"/Sphinx-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/python-sphinx/LICENSE
+  install -Dm644 "$srcdir"/Sphinx-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/python-sphinx1/LICENSE
 }
 
-package_python2-sphinx() {
-  pkgdesc='Python2 documentation generator'
+package_python2-sphinx1() {
+  pkgdesc='Python2 documentation generator (version 1)'
   depends=(
     'python2-setuptools'
     'python2-jinja'
@@ -140,10 +144,13 @@ package_python2-sphinx() {
   optdepends=('texlive-latexextra: for generation of PDF documentation'
               'imagemagick: ext.imageconverter')
 
+  provides=("python2-sphinx=$pkgver")
+  conflicts=('python2-sphinx')
+
   cd Sphinx-${pkgver}2
   python2 setup.py install --root="$pkgdir" --optimize=1
 
-  install -Dm644 "$srcdir"/Sphinx-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/python2-sphinx/LICENSE
+  install -Dm644 "$srcdir"/Sphinx-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/python2-sphinx1/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
