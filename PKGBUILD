@@ -24,9 +24,11 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-$pkgver/dist_electron/linux-unpacked/resources/app"
 
-    find ./dist_electron/linux-unpacked/resources/app -type f -exec install -Dm644 {} "$pkgdir/usr/share/gridea/app/{}" \;
+    find \* -type f -exec install -Dm644 {} "$pkgdir/usr/share/gridea/app/{}" \;
+
+    cd "$srcdir/$pkgname-$pkgver"
 
     for size in 16 24 32 48 64 72 128 256; do
         target="$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/"
