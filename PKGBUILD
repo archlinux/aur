@@ -1,7 +1,7 @@
 # Maintainer: Klotz <vanziegelstein@gmail.com>
 pkgname=baudrate
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to find the baudrate of a serial device"
 arch=('x86_64')
 url="https://code.google.com/archive/p/baudrate/"
@@ -20,7 +20,7 @@ package() {
 	install -d "$pkgdir/usr/share/licenses/$pkgname"    
 	install -d "$pkgdir/usr/bin"    
 
-	install -m755 "$srcdir/$pkgname-$pkgver/src/baudrate.py" "$pkgdir/usr/bin/baudrate.py"
+	install -m755 "$srcdir/$pkgname-$pkgver/src/baudrate.py" "$pkgdir/usr/bin/baudrate"
 	install -m644 "$srcdir/$pkgname-$pkgver/src/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 }

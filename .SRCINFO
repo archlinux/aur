@@ -1,7 +1,7 @@
 pkgbase = baudrate
 	pkgdesc = Tool to find the baudrate of a serial device
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.google.com/archive/p/baudrate/
 	arch = x86_64
 	license = MIT
