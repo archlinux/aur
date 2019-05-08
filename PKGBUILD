@@ -2,13 +2,13 @@
 
 pkgname='python-geoviews'
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, concise geographical visualization in Python'
 arch=('any')
 url='https://github.com/pyviz/geoviews'
 license=('BSD')
-makedepends=('python-setuptools' 'python-param')
-groups=('bokeh-ecosystem')
+makedepends=('python-setuptools'
+             'python-param')
 depends=('python-bokeh'
          'python-cartopy'
          'python-holoviews'

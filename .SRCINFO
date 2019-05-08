@@ -1,10 +1,9 @@
 pkgbase = python-geoviews
 	pkgdesc = Simple, concise geographical visualization in Python
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyviz/geoviews
 	arch = any
-	groups = bokeh-ecosystem
 	license = BSD
 	checkdepends = python-pytest
 	checkdepends = python-coveralls
