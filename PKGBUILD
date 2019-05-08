@@ -1,27 +1,26 @@
-# Maintainer: Vasket <vasket at  dismail dot de>
+# Maintainer: Spreagtha <spreagtha at  mykolab dot com>
+# Contributor: Vasket <vasket at  dismail dot de>
 
-pkgname="brig-git"
-_pkgname="brig"
-pkgver="develop"
-pkgrel="5"
-pkgdesc="File synchronization on top of ipfs with git like interface and web based UI -- development branch"
+pkgname="brig"
+pkgver="0.4.1"
+pkgrel="1"
+pkgdesc="File synchronization on top of ipfs with git like interface and web based UI"
 arch=(x86_64 i686 armv7h aarch64)
 license=("AGPLv3")
-url="https://github.com/sahib/${_pkgname}"
+url="https://github.com/sahib/${pkgname}"
 depends=(go)
-makedepends=(git)
 provides=("brig")
+conflicts=("brig-git")
 
-source=("git+https://github.com/sahib/${_pkgname}")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sahib/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=("SKIP")
 
 build() {
-    cd "${_pkgname}"
-    git checkout develop
-    GOBIN="${srcdir}/${_pkgname}" go run mage.go b
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    GOBIN="${srcdir}/${pkgname}-${pkgver}" go run mage.go b
 }
 
 package() {
-    cd "${_pkgname}"
-    install -Dm755 "${srcdir}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }

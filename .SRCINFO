@@ -1,18 +1,18 @@
-pkgbase = brig-git
-	pkgdesc = File synchronization on top of ipfs with git like interface and web based UI -- development branch
-	pkgver = develop
-	pkgrel = 5
+pkgbase = brig
+	pkgdesc = File synchronization on top of ipfs with git like interface and web based UI
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/sahib/brig
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	arch = aarch64
 	license = AGPLv3
-	makedepends = git
 	depends = go
 	provides = brig
-	source = git+https://github.com/sahib/brig
+	conflicts = brig-git
+	source = brig-0.4.1.tar.gz::https://github.com/sahib/brig/archive/v0.4.1.tar.gz
 	sha256sums = SKIP
 
-pkgname = brig-git
+pkgname = brig
 
