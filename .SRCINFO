@@ -1,14 +1,14 @@
 pkgbase = chezmoi
 	pkgdesc = Multi-machine dotfile management system
 	pkgver = 1.5.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/twpayne/chezmoi
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go-pie
 	depends = glibc
-	source = https://github.com/twpayne/chezmoi/archive/v1.4.2.tar.gz
+	source = https://github.com/twpayne/chezmoi/archive/v1.5.0.tar.gz
 	sha256sums = a3058b6686d8282006e89611b6cd029f2137c21668cae76d52c20ce1419e07e2
 
 pkgname = chezmoi

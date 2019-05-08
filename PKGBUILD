@@ -2,7 +2,7 @@
 # Maintainer:  <godeater@gmail.com>
 pkgname=chezmoi
 pkgver=1.5.0
-pkgrel=8
+pkgrel=9
 epoch=
 pkgdesc="Multi-machine dotfile management system"
 arch=('i686' 'x86_64')
