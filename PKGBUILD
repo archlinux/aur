@@ -1,14 +1,14 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 
 pkgname='solvespace-git'
-pkgver=r1210.13695be
+pkgver=r1304.bc3e09e
 pkgrel=1
 pkgdesc="SOLVESPACE is a parametric 3d CAD program."
 arch=('i686' 'x86_64')
 url='http://solvespace.com/'
 license=('GPL3')
 depends=('libpng' 'json-c' 'glew' 'gtkmm3' 'libspnav')
-# awwm moved away from fltk
+# aww, moved away from fltk
 makedepends=('git' 'cmake')
 provides=('solvespace')
 conflicts=('solvespace')
@@ -24,6 +24,8 @@ pkgver() {
 prepare() {
   cd "$pkgname"
   git submodule update --init extlib/libdxfrw
+  git submodule update --init extlib/q3d
+  git submodule update --init extlib/flatbuffers
   # uncomment if test fails
   #sed -i 's|request/ttf_text/test.cpp||' request/ttf_text/test.cpp
 }
