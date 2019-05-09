@@ -2,14 +2,13 @@
 
 _pkgbase=faudio
 _pkgname=lib32-${_pkgbase}
-_gitname=FAudio
 pkgname=${_pkgname}-git
-pkgver=r1121.3dd4e04
+pkgver=19.05.r13.g3dd4e04
 pkgrel=1
-pkgdesc="Accuracy-focused XAudio reimplementation for open platforms"
-arch=('x86_64')
-url='https://github.com/FNA-XNA/FAudio'
-license=('custom')
+pkgdesc="XAudio2 reimplementation"
+arch=(x86_64)
+url="https://github.com/FNA-XNA/FAudio/"
+license=('custom:zlib')
 provides=("${_pkgname}")
 depends=("${_pkgbase}" 'lib32-sdl2' 'lib32-ffmpeg')
 makedepends=('git' 'cmake')
@@ -17,44 +16,40 @@ source=('git+https://github.com/FNA-XNA/FAudio'
         'faudio.pc'
         'force-lib32-sdl2.patch')
 sha256sums=('SKIP'
-            '371d1dfdfa335a354f41376807848ba0cc448890d6da60d0b5c9478033b7e54c'
+            '10b0d2bd3a5e415971b36abf6bf6b853d7e3cd0dc316b6e4c773815a56b4a26f'
             '14762bf049e8de0675d297e174a6b4c31de65d543e738a1c400747aa155d57ae')
 
 pkgver() {
-  cd "$srcdir/${_gitname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd FAudio
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  mkdir -p build
+
+  cd FAudio
+  patch -p1 -i ../force-lib32-sdl2.patch
 }
 
 build() {
-  cd "$srcdir/${_gitname}"
+  export CC="gcc -m32 -mstackrealign"
+  export CXX="g++ -m32 -mstackrealign"
+  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  patch -p1 -i ../force-lib32-sdl2.patch
-
-  mkdir -p build
   cd build
-
-  export CFLAGS="${CFLAGS} -m32"
-
-  cmake .. \
+  cmake ../FAudio \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
     -DCMAKE_INSTALL_LIBDIR=lib32 \
-    -DCMAKE_INSTALL_INCLUDEDIR=include/FAudio \
     -DFFMPEG=ON \
     -DFFmpeg_LIBRARY_DIRS=/usr/lib32
-
   make
 }
 
 package() {
-  cd "$srcdir/${_gitname}/build"
+  DESTDIR="$pkgdir" make -C build install
+  rm -r "$pkgdir"/usr/include
 
-  make install
-
-  rm -r "${pkgdir}/usr/include"
-
-  mkdir -p "${pkgdir}/usr/share/licenses"
-  ln -s "${_pkgbase}" "${pkgdir}/usr/share/licenses/${_pkgname}"
-
-  install -D -m644 -t "${pkgdir}/usr/lib32/pkgconfig" ../../faudio.pc
+  install -Dm644 FAudio/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm644 faudio.pc "$pkgdir"/usr/lib32/pkgconfig/faudio.pc
 }
