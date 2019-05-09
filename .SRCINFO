@@ -1,6 +1,6 @@
 pkgbase = flowee-git
-	pkgdesc = Flowee the Hub
-	pkgver = 2cb30c054
+	pkgdesc = Flowee Bitcoin products
+	pkgver = 5b155600d
 	pkgrel = 1
 	url = https://flowee.org/
 	install = flowee.install

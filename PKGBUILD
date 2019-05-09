@@ -1,9 +1,9 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee-git
-pkgver=2cb30c054
+pkgver=5b155600d
 pkgrel=1
-pkgdesc="Flowee the Hub"
+pkgdesc="Flowee Bitcoin products"
 arch=('x86_64')
 url="https://flowee.org/"
 license=('GPL')
@@ -20,7 +20,7 @@ source=("git+https://gitlab.com/FloweeTheHub/thehub.git#branch=master"
 sha256sums=('SKIP'
     "aff02b3312c88113fe7316152c15f1545233dc8c2062ee8c36d2dbcad4a9f5bf"
     "bc14acf0d1b4064553756a1e81c0b943e842296f2a2af6442e480b846392e6bc"
-    "3ec85358d1629a3d41e55710646be6b6a0cda322175779934439432615beba3c")
+    "1e74675c7e27837847d5ba0a72fb73ff52f919be5b6e0e630a07735336fe015a")
 
 pkgver() {
   cd "$srcdir/thehub"
@@ -50,4 +50,6 @@ package() {
   install -Dm 664 "$srcdir/flowee.conf" -t "$pkgdir/etc/flowee"
   install -Dm 664 "$srcdir/logs.conf" -t "$pkgdir/etc/flowee"
   install -Dm 644 "$srcdir/thehub/support/thehub.service" -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm 644 "$srcdir/thehub/support/indexer.service" -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm 664 "$srcdir/thehub/support/indexer.conf" -t "$pkgdir/etc/flowee"
 }
