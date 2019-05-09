@@ -12,6 +12,7 @@ arch=(any)
 url='https://github.com/bshillingford/python-torchfile'
 license=(BSD3)
 makedepends=(
+  'git'
   'python-setuptools'
   'python2-setuptools'
 )
