@@ -1,0 +1,24 @@
+pkgbase = libevent-patched
+	pkgdesc = An event notification library
+	pkgver = 2.1.8
+	pkgrel = 2
+	url = https://libevent.org
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = BSD
+	makedepends = gcc
+	makedepends = make
+	depends = openssl
+	optdepends = python2: to use event_rpcgen.py
+	provides = libevent
+	conflicts = libevent
+	replaces = libevent
+	source = https://github.com/libevent/libevent/archive/release-2.1.8-stable.tar.gz
+	source = evhttp-afunix.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libevent-patched
+
