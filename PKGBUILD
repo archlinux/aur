@@ -1,7 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=terminus-terminal-bin
 _pkgname=terminus
-pkgver=1.0.71
+pkgver=1.0.77
 pkgrel=1
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("terminus-terminal")
 conflicts=("terminus-terminal")
 replaces=('terminus-terminal')
 source=("$url/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.deb")
-sha256sums=('a9e5c1254f954ddc865265196b25982450cfbe6607bb643353ad8c82a897ba7c')
+sha256sums=('1954a0971cd45f05fc9abbcd12a22b2d49e56ddadda416818d58dc30b2d4961c')
 
 
 package() {
