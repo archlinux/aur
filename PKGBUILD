@@ -1,7 +1,8 @@
 # Contributor: Figue <ffigue at gmail dot com>
 
 pkgname=abrowser-bin
-pkgver=66.0.3
+s_pkgname=${pkgname%-*}
+pkgver=66.0.4
 pkgrel=1
 pkgdesc="Binary version of Abrowser, safe and easy web browser from Mozilla"
 arch=('i686' 'x86_64')
@@ -11,16 +12,13 @@ depends=('gtk2' 'gtk3' 'gcc-libs' 'libidl2' 'mozilla-common' 'nss>=3.12.10' 'lib
          'libxrender' 'hunspell' 'startup-notification' 'mime-types' 'dbus-glib'
          'alsa-lib' 'libevent' 'sqlite3>=3.7.4' 'libnotify' 'desktop-file-utils'
          'libvpx' 'lcms' 'nspr>=4.8.8' 'libevent' 'libpng' 'cairo')
+makedepends=(curl)
 
-s_pkgname=abrowser
-build=build1
-ubuntu_ver=16.04.1
-trisquel_ver=8.0trisquel61
+_pkgver_x86_64=$(curl -s 'http://archive.trisquel.info/trisquel/pool/main/f/firefox/?C=M;O=D' | grep abrowser_$pkgver | cut -d+ -f2,3 | cut -d'"' -f1 | grep amd64 | head -1)
+_pkgver_i686=$(curl -s 'http://archive.trisquel.info/trisquel/pool/main/f/firefox/?C=M;O=D' | grep abrowser_$pkgver | cut -d+ -f2,3 | cut -d'"' -f1 | grep i386 | head -1)
 
-sha256sums_i686=('bf3cd8985d761793832e6232b9e0686f2f70bca631826728e55c1ac7c305f529')
-sha256sums_x86_64=('babe648c4a86f2808c8a3d44705ea5bdeb23346ece16f5ff927d8435addd635a')
-source_x86_64=("http://archive.trisquel.info/trisquel/pool/main/f/firefox/${s_pkgname}_${pkgver}+${build}-0ubuntu0.${ubuntu_ver}+${trisquel_ver}_amd64.deb")
-source_i686=("http://archive.trisquel.info/trisquel/pool/main/f/firefox/${s_pkgname}_${pkgver}+${build}-0ubuntu0.${ubuntu_ver}+${trisquel_ver}_i386.deb")
+source_x86_64=("http://archive.trisquel.info/trisquel/pool/main/f/firefox/${s_pkgname}_${pkgver}+${_pkgver_x86_64}")
+source_i686=("http://archive.trisquel.info/trisquel/pool/main/f/firefox/${s_pkgname}_${pkgver}+${_pkgver_i686}")
 
 package() {
   tar xJf ${srcdir}/data.tar.xz -C ${pkgdir}/
@@ -28,3 +26,6 @@ package() {
   rm -rv "${pkgdir}"/{etc/apport,etc/apparmor.d,usr/share/apport,usr/share/lintian}
 }
 
+
+sha256sums_i686=('87037ec5f6eabdce194123eef5384ba6d7b1059cb22b1ae73cd9d7991ba06291')
+sha256sums_x86_64=('dbde914ebd0f6ed1d782751be23e2e9ef1a178791cd954dd80ceb7c845d13ef2')
