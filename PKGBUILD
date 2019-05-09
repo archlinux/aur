@@ -1,17 +1,15 @@
 # Maintainer: Philipp 'TamCore' B. <philipp {at} tamcore {dot} eu>
 pkgname=keepass-de
-pkgver=2.40
+pkgver=2.42
 pkgrel=1
 pkgdesc="German locale for keepass"
+arch=('any')
+url="https://keepass.info/translations.html"
 license=('GPL2')
-depends=("keepass")
-makedepends=('unzip')
-url="http://keepass.info/translations.html"
-source=(https://downloads.sourceforge.net/keepass/KeePass-${pkgver}-German.zip)
-arch=(any)
-sha256sums=('c8ef4e0a369f73e9f990d63bb3743601d3a06578bec3c35c234629f78d8e9b03')
+depends=('keepass')
+source=("https://downloads.sourceforge.net/keepass/KeePass-${pkgver}-German.zip")
+sha256sums=('29ae440c7d0ed4c90896a15f1e2031509520499ad64003dcae77c640129c7f96')
 
 package(){
-   mkdir -p "${pkgdir}/usr/share/keepass/Languages"
-   install -m644 German.lngx "${pkgdir}/usr/share/keepass/Languages"
+   install -Dm644 German.lngx "${pkgdir}/usr/share/keepass/Languages/German.lngx"
 }
