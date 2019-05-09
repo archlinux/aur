@@ -1,14 +1,14 @@
 pkgbase = roccat-vulcan
 	pkgdesc = Linux RGB LED effect support for the Roccat Vulcan 100/120/121 Keyboard
 	pkgver = 0.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/X3n0m0rph59/roccat-vulcan
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = systemd-libs
-	makedepends = hidapi
-	makedepends = libevdev
+	depends = systemd-libs
+	depends = hidapi
+	depends = libevdev
 	source = git+https://github.com/X3n0m0rph59/roccat-vulcan
 	md5sums = SKIP
 
