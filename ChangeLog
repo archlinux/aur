@@ -1,3 +1,12 @@
+4.5.11 (2019-05-06 14:58:44)
+
+    Fixes an issue in the search feature where results in segments with no sections were not found.
+
+4.5.10 (2019-04-26 18:29:50)
+
+    Improves Swift 5 name demangling,
+    Now you can use Swift 5 in order to write Hopper plugins.
+
 4.5.9 (2019-04-03 17:04:45)
 
     Fixes an issue which prevented some cross references to be properly computed on iOS 12,
