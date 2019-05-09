@@ -20,7 +20,7 @@ source=(
 validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8) # Maxim Dounin <mdounin@mdounin.ru>
 sha256sums=('002d9f6154e331886a2dd4e6065863c9c1cf8291ae97a1255308572c02be9797'
             'SKIP'
-            '279e0d8a46d3b1521fd43b3f78bc1c08b263899142a7cc5058c1c0361a92c89c')
+            '1e81453942e5b0877de1f1f06c56ae82918ea9818255cb935bcb673c95a758a1')
 
 prepare() {
   cd "$srcdir/$_dirname"
