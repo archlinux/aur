@@ -1,6 +1,6 @@
 # Maintainer: Alastair Pharo <me at asph dot dev>
 pkgname=archlinux-nix-git
-pkgver=r14.b0ed00f
+pkgver=r23.53510eb
 pkgrel=1
 pkgdesc="A command-line tool for setting up Nix on Arch Linux"
 arch=('any')
