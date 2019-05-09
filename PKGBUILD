@@ -3,7 +3,7 @@
 pkgbase=vimix-kde-git
 _gitname=vimix-kde
 pkgname=('vimix-kde-git' 'kvantum-theme-vimix-git')
-pkgver=11.014d3a3
+pkgver=14.cbb1afd
 pkgrel=1
 pkgdesc="Vimix kde is a flat Design theme for KDE Plasma desktop"
 arch=('any')
@@ -31,9 +31,9 @@ package_vimix-kde-git() {
 	    cp -r "${_dir}" "${pkgdir}/"usr/share ;
     done
 	
-    for _theme in Vimix Vimix-Beryl Vimix-Doder Vimix-Ruby ; do
-        cp -r "${pkgdir}/"usr/share/plasma/desktoptheme/icons "${pkgdir}/"usr/share/plasma/desktoptheme/"${_theme}"/ ;
-        mv "${pkgdir}/"usr/share/color-schemes/"${_theme}"-Dark.colors "${pkgdir}/"usr/share/plasma/desktoptheme/"${_theme}"/ ;
+    for _theme in "" "-Doder" "-Beryl" "-Ruby" ; do
+        cp -r "${pkgdir}/"usr/share/plasma/desktoptheme/icons "${pkgdir}/"usr/share/plasma/desktoptheme/Vimix"${_theme}"/ ;
+        mv "${pkgdir}/"usr/share/color-schemes/Vimix-Dark"${_theme}".colors "${pkgdir}/"usr/share/plasma/desktoptheme/Vimix"${_theme}"/ ;
     done
     rm -rf "${pkgdir}/"usr/share/plasma/desktoptheme/icons
 }

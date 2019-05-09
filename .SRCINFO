@@ -1,6 +1,6 @@
 pkgbase = vimix-kde-git
 	pkgdesc = Vimix kde is a flat Design theme for KDE Plasma desktop
-	pkgver = 11.014d3a3
+	pkgver = 14.cbb1afd
 	pkgrel = 1
 	url = https://github.com/vinceliuice/vimix-kde
 	arch = any
