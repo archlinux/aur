@@ -15,6 +15,7 @@
 #define TITLE_MAXSZ 50
 #define WS_MAXSZ    5
 #define BAR_HEIGHT  24
+#define TRAY_ICONSZ 16
 #define BGCOLOR    0
 #define ALTFGCOLOR 1
 #define ALTBGCOLOR 8
@@ -61,6 +62,7 @@ const Module modules[] = {
 	{ volume,      NULL,           volume_ev },
 	{ memgraph,    NULL,           NULL },
 	{ cpugraph,    NULL,           NULL },
+	{ systray,     NULL,           NULL },
 };
 
 #endif
