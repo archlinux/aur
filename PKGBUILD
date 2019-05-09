@@ -3,7 +3,7 @@
 pkgname=d9vk-bin
 pkgver=0.10
 pkgrel=1
-pkgdesc="A d3d9 to vk layer based off DXVK's codebase. Mingw version"
+pkgdesc="A d3d9 to vk layer based off DXVK's codebase. Binary version"
 arch=('x86_64')
 url="https://github.com/Joshua-Ashton/d9vk"
 license=('zlib/libpng')
