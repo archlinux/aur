@@ -1,7 +1,7 @@
 pkgbase = python-msrest
 	pkgdesc = The runtime library for AutoRest generated Python clients.
 	pkgver = 0.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Azure/msrest-for-python
 	arch = any
 	license = MIT

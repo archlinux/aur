@@ -2,7 +2,7 @@
 # Contributor: Kelsey Maes <kelseymaes at outlook dot com>
 pkgname=python-msrest
 pkgver=0.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc='The runtime library for AutoRest generated Python clients.'
 arch=('any')
 url="https://github.com/Azure/msrest-for-python"
