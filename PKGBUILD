@@ -7,7 +7,7 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=coreutils-kondo
-pkgver=8.30
+pkgver=8.31
 pkgrel=1
 pkgdesc='The basic file, shell and text manipulation utilities of the GNU operating system, with extra joy.'
 arch=('x86_64')
@@ -20,8 +20,8 @@ depends=('glibc' 'acl' 'attr' 'gmp' 'libcap' 'openssl')
 source=("https://ftp.gnu.org/gnu/coreutils/coreutils-$pkgver.tar.xz"
         "0001-Marie-Kondo.patch"
   )
-md5sums=('ab06d68949758971fe744db66b572816'
-         'SKIP')
+md5sums=('0009a224d8e288e8ec406ef0161f9293'
+         '8a5cfc66b5036c6c2c6be875dbc8ce11')
 
 prepare() {
   cd coreutils-$pkgver
