@@ -1,0 +1,16 @@
+pkgbase = circuit_macros
+	pkgdesc = Tools for drawing electric circuits and other line diagrams
+	pkgver = 9.0
+	pkgrel = 1
+	url = https://ece.uwaterloo.ca/~aplevich/Circuit_macros/
+	arch = x86_64
+	license = LPPL
+	depends = m4
+	depends = dpic-git
+	source = https://ece.uwaterloo.ca/~aplevich/Circuit_macros/Circuit_macros9.0.tar.gz,
+	source = circuit_macros.sh
+	md5sums = e486f477199b6ff8a54de11a98c1e3c2
+	md5sums = 42ac62b2ac33150e2165a31e837ceb89
+
+pkgname = circuit_macros
+
