@@ -14,7 +14,7 @@
 # Contributor: Tomas Wilhelmsson <tomas.wilhelmsson@gmail.com>
 
 pkgname=lone_wolf-clang-git
-pkgver=9.0.0_r315711.5ab41a7a055
+pkgver=9.0.0_r316130.bd588dfd594
 pkgrel=1
 pkgdesc="C language family frontend for LLVM"
 arch=('x86_64')
@@ -49,7 +49,10 @@ pkgver() {
 }
 
 prepare() {
-  cd llvm-project/clang
+  cd llvm-project
+  # remove unneedede parts of sourcecode
+  rm -rf compiler-rt debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl
+  cd clang
   mv "$srcdir"/llvm-project/clang-tools-extra tools/extra
   sed -i "s/add_clang_executable/add_clang_tool/g" tools/extra/clangd/indexer/CMakeLists.txt
   patch -Np1 -i ../../enable-SSP-and-PIE-by-default.patch
@@ -65,6 +68,7 @@ build() {
     cmake "$srcdir"/llvm-project/clang/ -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DBUILD_SHARED_LIBS=ON \
         -DLLVM_LINK_LLVM_DYLIB=ON \
         -DLLVM_ENABLE_RTTI=ON \
@@ -75,7 +79,10 @@ build() {
         -DSPHINX_WARNINGS_AS_ERRORS=OFF \
         -DLLVM_EXTERNAL_LIT=/usr/bin/lit \
         -DLLVM_MAIN_SRC_DIR="$srcdir"/llvm-project/llvm \
-        -DLLVM_VERSION_SUFFIX=""
+        -DLLVM_VERSION_SUFFIX="" \
+        -DCMAKE_POLICY_DEFAULT_CMP0077=NEW
+
+
     if [[ ! $NINJAFLAGS ]]; then
         ninja
     else
