@@ -16,7 +16,7 @@
 
 pkgbase=lone_wolf-llvm-git
 pkgname=('lone_wolf-llvm-git' 'lone_wolf-llvm-libs-git')
-pkgver=9.0.0_r315710.55dc751ef7a
+pkgver=9.0.0_r316122.4a5793f7d07
 pkgrel=1
 _ocaml_ver=4.07.1
 arch=('x86_64')
@@ -45,6 +45,12 @@ pkgver() {
     echo "${_pkgver}"
 }
 
+prepare() {
+    cd llvm-project
+    # remove code parts not needed to build llvm itself
+    rm -rf clang clang-tools-extra compiler-rt debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl
+}
+
 build() {
     
     if [  -d _build ]; then
@@ -57,6 +63,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DLLVM_HOST_TRIPLE=$CHOST \
+        -DLLVM_TARGETS_TO_BUILD="AMDGPU;X86" \
         -DLLVM_BUILD_LLVM_DYLIB=ON \
         -DLLVM_LINK_LLVM_DYLIB=ON \
         -DLLVM_INSTALL_UTILS=ON \
@@ -105,7 +112,7 @@ package_lone_wolf-llvm-git() {
   rm -r "$pkgdir"/usr/share/doc/llvm/html/{_sources,.buildinfo}
 
   
-  # The runtime libraries go into llvm-lw-libs
+  # The runtime libraries go into a separate package
   mv -f "$pkgdir"/usr/lib/lib{LLVM-*.so,LTO.so.*} "$srcdir"
 
   # Remove files which conflict with llvm-libs
@@ -131,22 +138,7 @@ package_lone_wolf-llvm-libs-git() {
     "$srcdir"/lib{LLVM,LTO}*.so* \
     "$pkgdir"/usr/lib/
 
-    install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT \
-    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
-#package_lone_wolf-ocaml-git() {
-#  pkgdesc="OCaml bindings for LLVM"
-#  depends=(lone_wolf-llvm-git=$pkgver-$pkgrel ocaml=$_ocaml_ver 'ocaml-ctypes')
-#  conflicts=('llvm-ocaml')
-#  provides=(llvm-ocaml=$pkgver-$pkgrel)
-
-#  install -d "$pkgdir"/{usr/lib,usr/share/doc/$pkgname}
-#  cp -a "$srcdir"/ocaml.lib "$pkgdir"/usr/lib/ocaml
-#  cp -a "$srcdir"/ocaml.doc "$pkgdir"/usr/share/doc/$pkgname/html
-
-#  install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT \
-#    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-#}
 
 # vim:set ts=2 sw=2 et:

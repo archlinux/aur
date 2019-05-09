@@ -1,5 +1,5 @@
 pkgbase = lone_wolf-llvm-git
-	pkgver = 9.0.0_r315710.55dc751ef7a
+	pkgver = 9.0.0_r316122.4a5793f7d07
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -22,11 +22,11 @@ pkgbase = lone_wolf-llvm-git
 
 pkgname = lone_wolf-llvm-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies
-	depends = lone_wolf-llvm-libs-git=9.0.0_r315710.55dc751ef7a-1
+	depends = lone_wolf-llvm-libs-git=9.0.0_r316122.4a5793f7d07-1
 	depends = perl
 	optdepends = python-setuptools: for using lit (LLVM Integrated Tester)
-	provides = llvm=9.0.0_r315710.55dc751ef7a-1
-	provides = llvm-git=9.0.0_r315710.55dc751ef7a-1
+	provides = llvm=9.0.0_r316122.4a5793f7d07-1
+	provides = llvm-git=9.0.0_r316122.4a5793f7d07-1
 	conflicts = llvm
 
 pkgname = lone_wolf-llvm-libs-git
