@@ -2,7 +2,7 @@
 # Maintainer:  Matthew McGinn <mamcgi@gmail.com>
 
 pkgname=geeknote-improved-git
-pkgver=0.2a.r682.b541ef6
+pkgver=2.0.17.r833.21cbc2b
 pkgrel=1
 pkgdesc='Work with Evernote & Yinxiang from the command line. This fork has everything geeknote does and more for example the ability to upload documents. It also has much more active development.'
 arch=('any')
