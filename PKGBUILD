@@ -14,7 +14,7 @@
 # Contributor: Tomas Wilhelmsson <tomas.wilhelmsson@gmail.com>
 
 pkgname=lone_wolf-compiler-rt-git
-pkgver=9.0.0_r315711.5ab41a7a055
+pkgver=9.0.0_r316124.89009441094
 pkgrel=1
 pkgdesc="Compiler runtime libraries for clang"
 arch=('x86_64')
@@ -40,6 +40,12 @@ pkgver() {
              END { print "\n" }' \
              CMakeLists.txt)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
     echo "${_pkgver}"
+}
+
+prepare() {
+    cd llvm-project
+    # remove code parts not needed to build compiler-rt
+    rm -rf clang clang-tools-extra debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl
 }
 
 
