@@ -1,6 +1,6 @@
 # Maintainer: erk <valdemarerk at gmail dot com>
 pkgname=ttf-ibm-plex-git
-pkgver=1.0.1
+pkgver=1.4.1.r2.gdec2bc78
 pkgrel=1
 pkgdesc="IBM Plex"
 arch=('any')
@@ -9,15 +9,20 @@ license=('SIL Open Font License, Version 1.1')
 depends=('fontconfig' 'xorg-font-utils')
 makedepends=('git')
 
-source=("git://github.com/IBM/plex.git")
+source=("${pkgname}"::"git+https://github.com/IBM/plex.git")
 sha256sums=(SKIP)
+
+pkgver() {
+  cd "${pkgname}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF
     install -d ${pkgdir}/usr/share/licenses/${pkgname}
-    install -Dm644 ${srcdir}/plex/IBM-Plex-Mono/fonts/complete/ttf/*.ttf ${pkgdir}/usr/share/fonts/TTF
-    install -Dm644 ${srcdir}/plex/IBM-Plex-Sans-Condensed/fonts/complete/ttf/*.ttf ${pkgdir}/usr/share/fonts/TTF
-    install -Dm644 ${srcdir}/plex/IBM-Plex-Sans/fonts/complete/ttf/*.ttf ${pkgdir}/usr/share/fonts/TTF
-    install -Dm644 ${srcdir}/plex/IBM-Plex-Serif/fonts/complete/ttf/*.ttf ${pkgdir}/usr/share/fonts/TTF
-    install -Dm644 ${srcdir}/plex/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}
+    install -Dm644 ${srcdir}/${pkgname}/IBM-Plex-Mono/fonts/complete/ttf/*.ttf ${pkgdir}/usr/share/fonts/TTF
+    install -Dm644 ${srcdir}/${pkgname}/IBM-Plex-Sans-Condensed/fonts/complete/ttf/*.ttf ${pkgdir}/usr/share/fonts/TTF
+    install -Dm644 ${srcdir}/${pkgname}/IBM-Plex-Sans/fonts/complete/ttf/*.ttf ${pkgdir}/usr/share/fonts/TTF
+    install -Dm644 ${srcdir}/${pkgname}/IBM-Plex-Serif/fonts/complete/ttf/*.ttf ${pkgdir}/usr/share/fonts/TTF
+    install -Dm644 ${srcdir}/${pkgname}/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}
 }
