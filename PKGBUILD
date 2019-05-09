@@ -6,13 +6,14 @@
 pkgbase=python-visdom-git
 _pkgbase="visdom"
 pkgname=(python-visdom-git python2-visdom-git)
-pkgver=r209.2ef12d4
+pkgver=r260.caf4119
 pkgrel=1
 arch=(any)
 url='https://github.com/facebookresearch/visdom'
 pkgdesc='Visualization tool for Pytorch by Facebook'
 license=(CCPL:by-nc)
 makedepends=(
+  'git'
   'python-setuptools'
   'python2-setuptools'
 )
