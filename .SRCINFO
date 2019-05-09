@@ -1,7 +1,7 @@
 pkgbase = olive
 	pkgdesc = Free non-linear video editor
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.olivevideoeditor.org/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = olive
 	optdepends = frei0r-plugins
 	optdepends = olive-community-effects-git
 	source = 0.1.0.tar.gz::https://github.com/olive-editor/olive/archive/0.1.0.tar.gz
-	sha512sums = 25889ed40e7dc379eda99bde0c63192e24ef0c7a21b70f3005ecb713f15855727950fbc248160d67d3afe053bfc3222d24e5b6aa8232581b3e2758b3226c86d8
+	sha512sums = b79d84b17408f4ba62cc3c9782ef1281eb07c040ae3ee70d8cb0fd3788a68a6134528f5c10a79284b9276f33c8e66d42de80a17122465fd10e949f51fbb4d35c
 
 pkgname = olive
 
