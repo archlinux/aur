@@ -12,7 +12,6 @@ source=(kloud $pkgname-$pkgver.tar.gz::https://github.com/texxme/Kloud/archive/v
 build() {
     cd "$srcdir/Kloud-$pkgver-BETA"
     make all
-    sudo make install
 }
 
 package() {
