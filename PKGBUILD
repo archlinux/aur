@@ -22,5 +22,5 @@ package() {
     install -D -m644 "${srcdir}/Kloud-$pkgver-BETA/build/libs/kloud-${pkgver}-BETA-all.jar"     "${pkgdir}/usr/share/kloud/kloud-${pkgver}-BETA-all.jar"
 }
 
-sha1sums=('7b77aaa7344cfb42ac070535c1a67fe26b2ac18d'
+sha1sums=('778be42080f3dc4c15cd63568718addef2557bb3'
           'ec7409412e3eb48191d4672f276a8234f3635a3a')
