@@ -5,7 +5,7 @@
 # * Stephan Wienczny <stephan@wienczny.de>
 
 pkgname=dbeaver-ce
-pkgver=6.0.2
+pkgver=6.0.4
 pkgrel=1
 pkgdesc="An universal database tool for developers and database administrators. Community Edition"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ install=dbeaver-ce.install
 source=(dbeaver-ce.desktop dbeaver-ce.install)
 source_i686=("https://dbeaver.jkiss.org/files/${pkgver}/dbeaver-ce-${pkgver}-linux.gtk.x86.tar.gz"
              "https://dbeaver.io/files/${pkgver}/checksum/dbeaver-ce-${pkgver}-linux.gtk.x86.tar.gz.sha256")
-source_x86_64=("https://dbeaver.jkiss.org/files/${pkgver}/dbeaver-ce-${pkgver}-linux.gtk.x86_64.tar.gz"
+source_x86_64=("https://dbeaver.io/files/${pkgver}/dbeaver-ce-${pkgver}-linux.gtk.x86_64.tar.gz"
              "https://dbeaver.io/files/${pkgver}/checksum/dbeaver-ce-${pkgver}-linux.gtk.x86_64.tar.gz.sha256")
 sha256sums=('f1dd2cd13732d00a36d95218d59423689112b343b2212744f6c7b6893381ce78'
             '0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f')
