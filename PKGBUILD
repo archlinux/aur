@@ -4,7 +4,7 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-performance
-pkgver=3.32.1+11+g0539efc8d
+pkgver=3.32.1+15+g515016633
 pkgrel=1
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -21,7 +21,7 @@ groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver)
 conflicts=(gnome-shell)
 install="$pkgname.install"
-_commit=0539efc8df23909a5396194ca780613f21bb63d8 # tags/3.32.1^11
+_commit=51501663366e68de80d5dd4ae2ed3be617ee49f9 # tags/3.32.1^15
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
          https://github.com/endlessm/gnome-shell/commit/11ddabfb22aedb3c35abe06d2cf0205f223cca03.diff
