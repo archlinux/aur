@@ -11,13 +11,11 @@ source=(kloud $pkgname-$pkgver.tar.gz::https://github.com/texxme/Kloud/archive/v
 build() {
     cd "$srcdir/Kloud-$pkgver-BETA"
     make
-    sudo make install
 }
 
 package() {
     cd "$srcdir/Kloud-$pkgver-BETA"
-
-    install -D -m755 "${srcdir}/kloud"         "${pkgdir}/usr/bin/kloud"
+    sudo make install
 }
 
 sha1sums=('SKIP'
