@@ -10,6 +10,7 @@ pkgrel=1
 pkgdesc='The CUE Data Constraint Language'
 arch=('x86_64')
 url="https://github.com/cuelang/cue"
+makedepends=('go>=1.11')
 license=('Apache')
 source=("$pkgname"::'git+https://github.com/cuelang/cue.git')
 md5sums=('SKIP')
