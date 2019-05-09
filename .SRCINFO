@@ -1,6 +1,6 @@
 pkgbase = bspwmbar
 	pkgdesc = A lightweight status bar for bspwm
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/odknt/bspwmbar
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = bspwmbar
 	depends = alsa-lib
 	depends = libxft
 	depends = fontconfig
-	source = https://github.com/odknt/bspwmbar/archive/v0.3.1.tar.gz
+	source = https://github.com/odknt/bspwmbar/archive/v0.3.2.tar.gz
 	source = config.h
-	sha256sums = dcf60caf7e7eee1773defb716882b756741a0841bff2c7d3b057e2ec88bf244d
+	sha256sums = 7d58d50d1734784fef10770e346ca38732ab8641935a3767ec7c373af5757116
 	sha256sums = SKIP
 
 pkgname = bspwmbar
