@@ -1,9 +1,9 @@
 prefix=/usr
 libdir=${prefix}/lib
-includedir=${prefix}/include/FAudio
+includedir=${prefix}/include
 
 Name: faudio
-Description: Accuracy-focused XAudio reimplementation for open platforms
+Description: XAudio2 reimplementation
 Version:
 
 Libs: -L${libdir} -lFAudio
