@@ -6,12 +6,12 @@ pkgname=('faiss-git' 'python-faiss-git' 'python2-faiss-git')
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('BSD')
-pkgver=v1.5.1.r0.g7f5b22b
+pkgver=v1.5.1.r10.g5d1ed5b
 pkgrel=1
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git)
 sha256sums=('SKIP')
 depends=('blas' 'lapack')
-makedepends=('python' 'python2' 'python-numpy' 'python2-numpy' 'swig' 'python-setuptools' 'python2-setuptools')
+makedepends=('git' 'python' 'python2' 'python-numpy' 'python2-numpy' 'swig' 'python-setuptools' 'python2-setuptools')
 
 pkgver() {
   cd "${_pkgname}"
