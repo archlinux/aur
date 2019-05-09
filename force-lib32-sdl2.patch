@@ -1,12 +1,14 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 01da0b3..0ce4228 100644
+index bb2b6b3..db2afa9 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -135,7 +135,7 @@ if(FFMPEG)
+@@ -154,9 +154,7 @@ if(FFMPEG)
  endif(FFMPEG)
  
  # SDL2 Dependency
--find_package(SDL2 CONFIG)
+-if (NOT DEFINED SDL2_INCLUDE_DIRS AND NOT DEFINED SDL2_LIBRARIES)
+-	find_package(SDL2 CONFIG)
+-endif()
 +include(/usr/lib32/cmake/SDL2/SDL2Config.cmake)
  if (TARGET SDL2::SDL2)
  	message(STATUS "using TARGET SDL2::SDL2")

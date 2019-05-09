@@ -1,6 +1,6 @@
 pkgbase = lib32-faudio-git
 	pkgdesc = Accuracy-focused XAudio reimplementation for open platforms
-	pkgver = r1022.8ecb4ed
+	pkgver = r1121.3dd4e04
 	pkgrel = 1
 	url = https://github.com/FNA-XNA/FAudio
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = lib32-faudio-git
 	source = force-lib32-sdl2.patch
 	sha256sums = SKIP
 	sha256sums = 371d1dfdfa335a354f41376807848ba0cc448890d6da60d0b5c9478033b7e54c
-	sha256sums = 0eab2af80c54a96612aef920f53fd1b753b73f46a4f9cd0c0cf639201c5b8881
+	sha256sums = 14762bf049e8de0675d297e174a6b4c31de65d543e738a1c400747aa155d57ae
 
 pkgname = lib32-faudio-git
 
