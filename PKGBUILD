@@ -8,16 +8,20 @@ pkgdesc='Work with Evernote & Yinxiang from the command line. This fork has ever
 arch=('any')
 url='https://github.com/jeffkowalski/geeknote'
 license=('GPL')
-depends=('python2'
-         'evernote-sdk-python'
-         'python2-html2text'
-         'python2-sqlalchemy'
-         'python2-markdown2-git'
-         'python2-thrift'
-         'python2-beautifulsoup4'
-         'python2-oauth2'
-         'python2-lxml'
-         'python2-proxyenv-git')
+depends=(
+  'evernote-sdk-python'
+  'python2'
+  'python2-backports.ssl_match_hostname'
+  'python2-beautifulsoup4'
+  'python2-docker-pycreds'
+  'python2-html2text'
+  'python2-lxml'
+  'python2-markdown2-git'
+  'python2-oauth2'
+  'python2-proxyenv-git'
+  'python2-sqlalchemy'
+  'python2-thrift'
+)
 source=('git+https://github.com/jeffkowalski/geeknote.git')
 sha256sums=('SKIP')
 makedepends=('git' 'python2-setuptools')
