@@ -1,0 +1,2 @@
+#!/bin/sh
+sudo -u kloud java -jar /usr/share/kloud/kloud-*-all.jar $@
