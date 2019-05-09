@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec '/usr/bin/lua5.1' -e 'package.path="/usr/share/lua/5.1/?/init.lua;"..package.path; package.cpath="/usr/lib/lua/5.1/?.so;"..package.cpath' -e 'local k,l,_=pcall(require,"luarocks.loader") _=k and l.add_context("luacheck","scm-1")' '/usr/lib/luarocks/rocks-5.1/luacheck/scm-1/bin/luacheck' "$@"
+exec '/usr/bin/lua5.1' -e 'package.path="/usr/share/lua/5.1/?/init.lua;"..package.path; package.cpath="/usr/lib/lua/5.1/?.so;"..package.cpath' -e 'local k,l,_=pcall(require,"luarocks.loader") _=k and l.add_context("luacheck","scm-1")' '/usr/share/lua/5.1/luacheck/bin/luacheck' "$@"

@@ -1,19 +1,20 @@
 pkgbase = lua51-luacheck
 	pkgdesc = A simple static analyzer
-	pkgver = 0.21.2
-	pkgrel = 2
+	pkgver = 0.23.0
+	pkgrel = 1
 	url = https://github.com/mpeterv/luacheck
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = luarocks5.1
+	makedepends = luarocks
 	depends = lua51
 	depends = lua-filesystem
 	depends = lua51-filesystem
-	source = https://github.com/mpeterv/luacheck/archive/0.21.2.tar.gz
+	depends = lua5.1-argparse
+	source = https://github.com/mpeterv/luacheck/archive/0.23.0.tar.gz
 	source = luacheck
-	sha256sums = b1528bd73dc0da2c36dc3f93110a83362553546c2f5a354be0c0162149eb1abc
-	sha256sums = b75ff5098951e643061279780c4608049656149c76651d9dd78762e2cecd7584
+	sha256sums = b4edf3a7702519502696d4ac7372ed1bd6a82ded63bf81f2b1d7e9b37711be2b
+	sha256sums = a0f34e7fbe04ef598f03a8645eb8ac5f82c37e8c9fa6421ffffccde0f8e068b3
 
 pkgname = lua51-luacheck
 
