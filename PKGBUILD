@@ -4,7 +4,7 @@
 
 set -u
 pkgname='rush'
-pkgver='1.8'
+pkgver='1.9'
 pkgrel='1'
 pkgdesc='GNU Restricted User Shell'
 arch=('i686' 'x86_64')
@@ -17,11 +17,11 @@ _verwatch=("${url}download.html" "${pkgname}-\([0-9\.]\+\)\.tar.xz" 't')
 source=("http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz"
         'rush-1.7-glib-2.16-gets.patch')
 # md5 and sha1 are published by gnu
-md5sums=('50d8bb3c0a502f2c1f5b374046ff78de'
+md5sums=('271abbfdbf18fadd8dacd0b342ff413f'
          'dcd87b8bf9738796621030930384f97d')
-sha1sums=('e882f68d9004af608b7e5c430c367645aa3e3b75'
+sha1sums=('f1fd69ffb1025601f7bb5aaf7c4857e7e4827043'
           'adb33d34f04846734ec3457517b46fb7a73efa6f')
-sha256sums=('dd3b7bfb33570890086218aa049900a9b4d5a9e8d4878a1328e2aa88bb5793ee'
+sha256sums=('e42b6b8fbf0ef0c216aff9fecac8752e7cac322b7f149e4932f6b68435a5d598'
             '159dd2fc0fd4feec5d43cf7763a429b9c2da5c50597b157de9e5b376d9ff85a8')
 
 prepare() {
@@ -39,7 +39,7 @@ build() {
   set -u
   cd "${pkgname}-${pkgver}"
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  make -s -j "${_nproc}"
+  nice make -s -j "${_nproc}"
   set +u
 }
 
