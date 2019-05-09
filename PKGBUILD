@@ -1,22 +1,20 @@
 # Maintainer: SolarAquarion <shlomochoina@gmail.com>
 
 pkgname=lua51-luassert
-pkgver=1.7.10
-pkgrel=2
+pkgver=1.7.11
+pkgrel=1
 _rockname=luassert
-_rockrel=0
 pkgdesc="Assertion library for Lua"
 arch=('i686' 'x86_64')
 url="https://github.com/Olivine-Labs/luassert"
 license=('MIT')
-depends=('lua51-say' 'lua' 'lua51-filesystem')
-makedepends=('luarocks5.1')
+depends=('lua51-say' 'lua51' 'lua51-filesystem')
 conflicts=()
 source=("https://github.com/Olivine-Labs/luassert/archive/v${pkgver}.tar.gz")
-sha256sums=('f9f8347727c2a4aa8af30d88a0de0314f04cd681b60430e24f6ec0ed393e12e1')
+sha256sums=('6a8ed5b6af976d144d02c98e0d0814993e76a147c3066769fa5eb224311f98ef')
 
 package() {
   cd "$_rockname-$pkgver"
-  luarocks-5.1 --tree="$pkgdir/usr" install --deps-mode=none "${_rockname}-${pkgver}-${_rockrel}.rockspec"
-  find "$pkgdir/usr" -name manifest -delete
+  mkdir -p $pkgdir/usr/share/lua/5.1/luassert
+  cp -r src/* $pkgdir/usr/share/lua/5.1/luassert
 }
