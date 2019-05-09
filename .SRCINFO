@@ -1,6 +1,6 @@
 pkgbase = jfed
 	pkgdesc = jFed is a Java-based framework for testbed federation
-	pkgver = 5.9.0
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = http://jfed.iminds.be/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = jfed
 	depends = java-openjfx
 	options = !emptydirs
 	options = !strip
-	source = http://jfed.iminds.be/downloads/stable/installers/jFed_linux_5_9_0.deb
+	source = http://jfed.iminds.be/downloads/stable/installers/jFed_linux_6_1_0.deb
 	source = jFed-Experimenter.desktop
-	md5sums = 000b8be8998498bd992c7461dccd7423
+	md5sums = ba3b257429040249bf8aa0251b7cfa13
 	md5sums = 9e73fa7a04bf623897057e402f6ac5c6
 
 pkgname = jfed

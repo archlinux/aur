@@ -2,7 +2,7 @@
 
 pkgname=jfed
 _pkgname=jFed
-pkgver=5.9.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="jFed is a Java-based framework  for testbed federation"
 arch=('x86_64')
@@ -15,13 +15,14 @@ source=(
     "http://jfed.iminds.be/downloads/stable/installers/${_pkgname}_linux_${pkgver//./_}.deb"
     "jFed-Experimenter.desktop"
     )
-md5sums=('000b8be8998498bd992c7461dccd7423'
+md5sums=('ba3b257429040249bf8aa0251b7cfa13'
          '9e73fa7a04bf623897057e402f6ac5c6')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
   bsdtar -xf data.tar.gz -C "$pkgdir/"
   msg2 "Moving stuff in place..."
+  chmod 444 $pkgdir/opt/jFed/.install4j/i4jempty.ttf
 
   install -d $pkgdir/{usr/{bin,share/applications},opt}
   install -d $pkgdir/opt
