@@ -1,7 +1,7 @@
 pkgbase = python-pygmt
 	pkgdesc = Python interface to the Generic Mapping Tools C library
 	pkgver = 0.0.1a0_997b88c855c12ffacd2c4b911f3fa83244ce8d7b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.pygmt.org
 	arch = x86_64
 	license = 3-BSD
@@ -12,7 +12,7 @@ pkgbase = python-pygmt
 	depends = python-xarray
 	depends = python-netcdf4
 	depends = python-packaging
-	depends = gmt>=6.0.0
+	depends = gmt6
 	depends = gmt-coast
 	depends = gmt-dcw
 	source = https://github.com/GenericMappingTools/pygmt/archive/997b88c855c12ffacd2c4b911f3fa83244ce8d7b.tar.gz
