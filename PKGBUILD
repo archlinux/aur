@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=sccs
-pkgver=5.08
+pkgver=5.09
 pkgrel=1
 epoch=
 pkgdesc="The UNIX Source Code Control System actively maintained/enhanced."
@@ -22,9 +22,9 @@ changelog=
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2")
 noextract=()
 options=()
-md5sums=('4cebb77bb7c216fb8e2d7340daf7bf3e')
-sha1sums=('eb0da0771f70f72cf57c55b49207e3a5fb33295a')
-sha256sums=('5ea2898f25272e81f7725d9cd0c6c416bc9b1b3a765acb08855feaef8295692a')
+md5sums=('564efd2019ba7dd968ebebeeaae252e8')
+sha1sums=('5ca6cac3a44d517b016c948da308fd7934745dfe')
+sha256sums=('331bf09d1fb2ca01739e5f97cc46c6ef134661535f2ce541f90b5b9548be431b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
