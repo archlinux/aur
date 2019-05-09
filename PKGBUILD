@@ -9,28 +9,66 @@
 # Contributor: Antti "Tera" Oja <antti.bofh@gmail.com>
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
-pkgbase=mesa-git
-pkgname=('mesa-git')
+pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.1.0_devel.110690.80dc78407d0
+pkgver=19.2.0_devel.110857.8b3baa27440
 pkgrel=1
 arch=('x86_64')
-makedepends=('git' 'python-mako' 'llvm-git' 'clang-git' 'xorgproto'
+makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio' 'libxrandr'
-              'ocl-icd' 'vulkan-icd-loader' 'libgcrypt'  'wayland' 'wayland-protocols' 'meson')
+              'ocl-icd' 'vulkan-icd-loader' 'libgcrypt'  'wayland' 'wayland-protocols' 'meson' 'ninja')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libomxil-bellagio' 'llvm-libs-git' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'glslang')
+         'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'glslang')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-mesa' 'opengl-driver' 'opencl-driver')
+provides=(mesa=$pkgver-$pkgrel vulkan-intel=$pkgver-$pkgrel vulkan-radeon=$pkgver-$pkgrel libva-mesa-driver=$pkgver-$pkgrel mesa-vdpau=$pkgver-$pkgrel vulkan-driver=$pkgver-$pkgrel opencl-mesa=$pkgver-$pkgrel opengl-driver opencl-driver)
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau')
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
-        'LICENSE'
-)
+        'LICENSE')
+md5sums=('SKIP'
+         '5c65a0fe315dd347e09b1f2826a1df5a')
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
 
+# mesa_which_llvm is an evironment variable used to determine which llvm package tree is used to built mesa-git against
+# 1: lone_wolf-llvm-git (aur) Default value
+# 2: llvm-git (aur)
+# 3  llvm-svn (lordheavy unoffical repo)
+# 4  llvm (stable from extra)
+# 
+if [[ ! $mesa_which_llvm ]] ; then
+    mesa_which_llvm=1
+fi
+
+case $mesa_which_llvm in
+    1)
+        # aur lone_wolf-llvm-git
+        makedepends+=('lone_wolf-llvm-git' 'lone_wolf-clang-git')
+        depends+=('lone_wolf-llvm-libs-git')
+        ;;
+    2)
+        # aur llvm-git
+        makedepends+=('llvm-git' 'clang-git')
+        depends+=('llvm-libs-git')
+        ;;
+    3)
+        # mesa-git/llvm-svn (lordheavy unofficial repo)
+        makedepends+=('llvm-svn' 'clang-svn')
+        depends+=('llvm-libs-svn')
+        ;;
+    4)
+        # extra/llvm
+        makedepends+=(llvm=8.0.0 clang=8.0.0)
+        depends+=(llvm-libs=8.0.0)
+        ;;
+    *)
+esac
+        
+        
+        
+        
+        
 pkgver() {
     cd mesa
     read -r _ver <VERSION
@@ -74,16 +112,17 @@ build () {
        -D valgrind=false \
        -D vulkan-overlay-layer=true \
        -D tools=[]
+       
     meson configure _build
     if [[ ! $NINJAFLAGS ]]; then
-        ninja -C _build 
+        ninja  -C _build 
     else
         ninja  "$NINJAFLAGS" -C _build
     fi
 }
 
 
-package_mesa-git() {
+package() {
 
   DESTDIR="$pkgdir" ninja -C _build install
 
