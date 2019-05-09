@@ -1,7 +1,7 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=stikked
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="An advanced and beautiful pastebin written in PHP"
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('stikked-git')
 backup=('etc/webapps/stikked/stikked.php')
 install=$pkgname.install
 source=("stikked-$pkgver.zip::https://github.com/claudehohl/Stikked/zipball/$pkgver")
-sha1sums=('f9fdf9fe73baa5223577d4ab1f38a6efdb999ce5')
+sha1sums=('8e577d097071ee2384a6f16671423c8dc2038b49')
 
 package() {
   cd "$srcdir"/claudehohl-Stikked-*/htdocs
