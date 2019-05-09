@@ -2,7 +2,7 @@
 # Contributor: Torsten Wagner <tottiwagner@yahoo.de>
 
 pkgname=openscad-git
-pkgver=20180713
+pkgver=20190505
 pkgrel=1
 pkgdesc="The programmers solid 3D CAD modeller"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ build() {
   cp -ar "$srcdir/MCAD" libraries
   rm -f libraries/MCAD/*.py
   rm -rf libraries/MCAD/.git/
-  qmake-qt5 PREFIX="/usr" VERSION="$pkgver"
+  qmake-qt5 PREFIX="/usr" VERSION="$pkgver" CONFIG+=experimental
   make
   convert "icons/openscad.png" -resize 128x128\> "icons/openscad-128.png"
 }
