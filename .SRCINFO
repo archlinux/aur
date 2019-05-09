@@ -1,6 +1,6 @@
 pkgbase = 010editor
 	pkgdesc = Professional text and hex editing with Binary Templates technology
-	pkgver = 9.0.1
+	pkgver = 9.0.2
 	pkgrel = 1
 	url = https://www.sweetscape.com/010editor/
 	arch = i686
@@ -11,10 +11,10 @@ pkgbase = 010editor
 	depends = libpng
 	source = 010editor.desktop
 	sha256sums = e3398b117934840828a96cd33534fc9b9242ec96089c2f283add137975499766
-	source_i686 = https://www.sweetscape.com/download/010EditorLinux32Installer901.tar.gz
-	sha256sums_i686 = 6c413ce6396890fdb2c120dcbc2e57b9e3727354095bc167735f9f84b3604487
-	source_x86_64 = https://www.sweetscape.com/download/010EditorLinux64Installer901.tar.gz
-	sha256sums_x86_64 = a00221e1e586254027d215e5a16b9ef1caa05ab451b16487895af52397d49c40
+	source_i686 = https://www.sweetscape.com/download/010EditorLinux32Installer902.tar.gz
+	sha256sums_i686 = f7a7354e7eae57f87b68527530085af138f79c13e8d8d42b6a343cfe82ae0783
+	source_x86_64 = https://www.sweetscape.com/download/010EditorLinux64Installer902.tar.gz
+	sha256sums_x86_64 = 1f1773f101d50dcb0e62c11ed9fa483c735cc8c7a05f3dd673b25c60c1948c55
 
 pkgname = 010editor
 
