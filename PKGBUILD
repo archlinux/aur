@@ -3,8 +3,8 @@
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=aeskulap
-pkgver=0.2.2.beta2.1.gce82f85
-pkgrel=2
+pkgver=0.2.2.beta2.4.g26ad27a
+pkgrel=1
 pkgdesc="Medical image viewer and DICOM client"
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/aeskulap"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('libglademm' 'dconf' 'dcmtk363')
 makedepends=('git' 'intltool' 'perl-xml-parser' 'gconf')
 options=('!libtool' '!makeflags')
-source=("git+https://github.com/jenslody/$pkgname.git#commit=ce82f856868f7a3217fff714d0de5ee8b6cf3aa2") 
+source=("git+https://github.com/stefanhusmann/$pkgname.git#commit=26ad27a07ec116f9b4d35f3907c6f120bf107d61") 
 md5sums=('SKIP')
 
 pkgver() {
