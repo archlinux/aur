@@ -1,19 +1,28 @@
-# Maintainer: Xiang Gao <qasdfgtyuiop@gmail.com>
+# Maintainer: Victor <v1c70rp at gmail dot com>
+# Contributor: Xiang Gao <qasdfgtyuiop@gmail.com>
+
 pkgname=thrust
-pkgver=1.8.2
+pkgver=1.9.4
 pkgrel=1
+pkgdesc='A C++ parallel programming library which resembles the C++ Standard Library.'
 arch=('any')
-license=('APACHE')
-url="http://thrust.github.io/"
-pkgdesc="A parallel algorithms library which resembles the C++ Standard Template Library (STL)."
+url="https://github.com/thrust/$pkgname"
+license=('Apache')
 
-source=("https://github.com/thrust/thrust/releases/download/$pkgver/$pkgname-$pkgver.zip")
+optdepends=(
+  'cuda: for CUDA backend'
+  'openmp: for OMP backend'
+  'intel-tbb: for TBB backend'
+)
 
-sha256sums=('00925daee4d9505b7f33d0ed42ab0de0f9c68c4ffbe2a41e6d04452cdee77b2d')
-
-depends=('cuda')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/thrust/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('41931a7d73331fc39c6bea56d1eb8d4d8bbf7c73688979bbdab0e55772f538d1')
 
 package() {
-	install -d "${pkgdir}/usr/include"
-	cp -r "${srcdir}/$pkgname" "${pkgdir}/usr/include/$pkgname"
+  install -dm 755 "${pkgdir}/opt/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  cp -r ${pkgname} "${pkgdir}/opt/${pkgname}/"
+  cp -r examples "${pkgdir}/opt/${pkgname}/"
 }
+
+# vim: ft=sh ts=2 sw=2 et
