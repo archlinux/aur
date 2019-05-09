@@ -1,7 +1,7 @@
 pkgbase = lua51-luacheck
 	pkgdesc = A simple static analyzer
 	pkgver = 0.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mpeterv/luacheck
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lua51-luacheck
 	depends = lua51
 	depends = lua-filesystem
 	depends = lua51-filesystem
-	depends = lua5.1-argparse
+	depends = lua51-argparse
 	source = https://github.com/mpeterv/luacheck/archive/0.23.0.tar.gz
 	source = luacheck
 	sha256sums = b4edf3a7702519502696d4ac7372ed1bd6a82ded63bf81f2b1d7e9b37711be2b

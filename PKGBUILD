@@ -2,13 +2,13 @@
 
 pkgname=lua51-luacheck
 pkgver=0.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple static analyzer"
 arch=('i686' 'x86_64')
 url="https://github.com/mpeterv/luacheck"
 license=('MIT')
 makedepends=('luarocks')
-depends=('lua51' 'lua-filesystem' 'lua51-filesystem' 'lua5.1-argparse')
+depends=('lua51' 'lua-filesystem' 'lua51-filesystem' 'lua51-argparse')
 conflicts=()
 source=("https://github.com/mpeterv/luacheck/archive/${pkgver}.tar.gz"
         "luacheck")
