@@ -10,14 +10,14 @@ source=(kloud $pkgname-$pkgver.tar.gz::https://github.com/texxme/Kloud/archive/v
 
 build() {
     cd "$srcdir/Kloud-$pkgver-BETA"
-    make all
+    make
+    sudo make install
 }
 
 package() {
     cd "$srcdir/Kloud-$pkgver-BETA"
 
     install -D -m755 "${srcdir}/kloud"         "${pkgdir}/usr/bin/kloud"
-    install -D -m644 "${srcdir}/Kloud-$pkgver-BETA/build/libs/kloud-${pkgver}-BETA-all.jar"     "${pkgdir}/usr/share/kloud/kloud-${pkgver}-BETA-all.jar"
 }
 
 sha1sums=('SKIP'
