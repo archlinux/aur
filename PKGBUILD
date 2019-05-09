@@ -5,7 +5,7 @@
 
 # Maintainer: Kuklin István <kuklinistvan@zoho.com>
 pkgname=anki-official-binary-bundle
-pkgver=2.1.11
+pkgver=2.1.12
 pkgrel=1
 epoch=
 pkgdesc="The official binary shipped with the tested versions of the dependent libraries."
@@ -27,8 +27,11 @@ changelog=
 topdirname="anki-$pkgver-linux-amd64"
 source=("https://apps.ankiweb.net/downloads/current/${topdirname}.tar.bz2" "remove_xdg_cmds_from_makefile.patch" "prefix-fix.patch")
 noextract=()
-md5sums=('a1ef83b3f87bf9f3cf6712e6dc06eaf8' 'afe8bbf18d0b50e57c84208936382fe6'
- '7c90eebb0ac94923125d3f4d35e7b37d')
+md5sums=(
+    '5c0e65479907b178ce7a9cb7db5c8238'
+    'f0aa931cc56a39efa3cef0c2ddbaea78'
+    '2d79e7014d1242e04dc398415bfdd5d8'
+)
 validpgpkeys=()
 
 prepare() {
