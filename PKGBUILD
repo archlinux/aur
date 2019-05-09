@@ -1,6 +1,6 @@
 # Maintainer: Microoo <hu _AT_ m i c r o o o _DOT_ net>
 pkgname=substratumnode-git
-pkgver=0.4.4.r0.gb979a054
+pkgver=0.4.5.r0.g54baeac2
 pkgrel=1
 pkgdesc="SubstratumNode is the foundation of the decentralized SubstratumNetwork. SubstratumNodes work together to relay CORES packages and content on the network."
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
