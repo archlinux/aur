@@ -1,0 +1,14 @@
+pkgbase = lua51-argparse
+	pkgdesc = Feature-rich command line parser for Lua
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/mpeterv/argparse
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	depends = lua51
+	source = lua51-argparse-0.6.0.tar.gz::https://github.com/mpeterv/argparse/archive/0.6.0.tar.gz
+	md5sums = cf9def45bcdd007c7b1e2ed54c8dd583
+
+pkgname = lua51-argparse
+

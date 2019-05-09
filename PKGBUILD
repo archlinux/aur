@@ -1,0 +1,27 @@
+# Maintainer: Philipp Joram <mail at phijor dot me>
+# Maintainer: Solomon Choina <shlomochoina at gmail dot com>
+_lua_version=5.1
+_lua_name=argparse
+
+pkgname=lua51-${_lua_name}
+pkgver=0.6.0
+pkgrel=1
+pkgdesc="Feature-rich command line parser for Lua"
+arch=('i686' 'x86_64')
+url="https://github.com/mpeterv/argparse"
+license=('custom:MIT')
+depends=("lua51")
+source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/mpeterv/argparse/archive/${pkgver}.tar.gz")
+md5sums=('cf9def45bcdd007c7b1e2ed54c8dd583')
+
+package() {
+  cd "${srcdir}/${_lua_name}-$pkgver"
+  install -Dm644 src/argparse.lua \
+    "${pkgdir}/usr/share/lua/5.1/argparse.lua"
+
+  # license
+  install -Dm644 LICENSE \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+# vim:set ts=2 sw=2 et:
