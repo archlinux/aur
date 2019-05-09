@@ -1,13 +1,14 @@
 # Contributor: Benjamin Sick
 # Contributor: Rich Li <rich@dranek.com>
 
-pkgname=gmt
-pkghashver=6955525ec0502475b555cd4a2b5a71444ede0273
+pkgname=gmt6
+_pkgname=gmt
+pkghashver=587b28006fe1b0772fb2ded7bc7597815fba425f
 pkgver=6.0.0_${pkghashver}
 pkgrel=1
 pkgdesc="Generic Mapping Tools: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps."
 arch=(i686 x86_64)
-url="http://gmt.soest.hawaii.edu/"
+url="https://gmt.soest.hawaii.edu/"
 license=('GPL')
 makedepends=('cmake')
 depends=('gdal' 'fftw' 'lapack')
@@ -19,21 +20,21 @@ optdepends=(
     'gmt-dcw: digital chart of the world polygon map')
 conflicts=('gmt4')
 install='gmt.install'
-#source=("ftp://ftp.soest.hawaii.edu/gmt/${pkgname}-${pkgver}-src.tar.xz")
-#source=("ftp://ftp.star.nesdis.noaa.gov/pub/sod/lsa/gmt/${pkgname}-${pkgver}-src.tar.xz")
-#source=("ftp://ftp.iris.washington.edu/pub/gmt/${pkgname}-${pkgver}-src.tar.xz")
-#source=("ftp://ftp.iag.usp.br/pub/gmt/${pkgname}-${pkgver}-src.tar.xz")
-#source=("https://mirrors.ustc.edu.cn/gmt/${pkgname}-${pkgver}-src.tar.xz")
-source=("https://github.com/GenericMappingTools/${pkgname}/archive/${pkghashver}.tar.gz")
-md5sums=('8e7b84bb80aad7452f40c3e08cd38cb1')
+#source=("ftp://ftp.soest.hawaii.edu/gmt/${_pkgname}-${pkgver}-src.tar.xz")
+#source=("ftp://ftp.star.nesdis.noaa.gov/pub/sod/lsa/gmt/${_pkgname}-${pkgver}-src.tar.xz")
+#source=("ftp://ftp.iris.washington.edu/pub/gmt/${_pkgname}-${pkgver}-src.tar.xz")
+#source=("ftp://ftp.iag.usp.br/pub/gmt/${_pkgname}-${pkgver}-src.tar.xz")
+#source=("https://mirrors.ustc.edu.cn/gmt/${_pkgname}-${pkgver}-src.tar.xz")
+source=("https://github.com/GenericMappingTools/${_pkgname}/archive/${pkghashver}.tar.gz")
+md5sums=('71a72d584d9098f80f35923caa1659f8')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkghashver}"
+  cd "${srcdir}/${_pkgname}-${pkghashver}"
   rm -fr build && mkdir build
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkghashver}/build"
+  cd "${srcdir}/${_pkgname}-${pkghashver}/build"
   # -DLICENSE_RESTRICTED=off \
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DGSHHG_ROOT=/usr/share/gmt/coast \
@@ -49,7 +50,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkghashver}/build"
+  cd "${srcdir}/${_pkgname}-${pkghashver}/build"
   make "DESTDIR=${pkgdir}" install || return 1
 }
 
