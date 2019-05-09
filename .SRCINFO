@@ -1,14 +1,14 @@
 pkgbase = doctest
 	pkgdesc = The lightest feature rich C++ single header testing framework
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/onqtam/doctest
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	source = https://github.com/onqtam/doctest/archive/2.3.1.tar.gz
-	sha256sums = b3d3c6133874e3a8c8e319cab33167156b6b1d2ed1ddde08c2655193cdeb58a0
+	source = https://github.com/onqtam/doctest/archive/2.3.2.tar.gz
+	sha256sums = 0753aa9a7b957ab282e0f98be198de11584dc9086fbea9af51616ac09c6f0b9a
 
 pkgname = doctest
 
