@@ -5,15 +5,13 @@
 _pkgname=embree
 pkgver=2.17.7
 pkgname=${_pkgname}2
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of high-performance ray tracing kernels. Version 2"
 arch=('x86_64')
 url="https://embree.github.io/"
 license=('Apache')
 depends=('intel-tbb')
 makedepends=('cmake' 'ispc' 'freeglut' 'libxmu' 'openexr')
-provides=("embree-isa=${pkgver}" "$_pkgname=${pkgver}" )
-replaces=("embree-isa=${pkgver}" "$_pkgname<=${pkgver}" )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/embree/embree/archive/v${pkgver}.tar.gz")
 sha256sums=('c0694f287fa1fbb382aba3a895702e248d92f7e89c0e5f64aefee965482ec04c')
 
