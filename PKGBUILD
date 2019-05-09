@@ -6,7 +6,7 @@
 
 pkgname=lutris-git
 _pkgname=lutris
-pkgver=0.r22.gf7027377
+pkgver=0.5.2.1.r23.g2ceedf7d
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
