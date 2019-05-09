@@ -31,8 +31,8 @@ package() {
   cd "$pkgname"/src
 
   mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/lib/udev/rules.d/"
-  mkdir -p "$pkgdir/lib/systemd/user/"
+  mkdir -p "$pkgdir/usr/lib/udev/rules.d/"
+  mkdir -p "$pkgdir/usr/lib/systemd/user/"
     
   install -m 755 "roccat-vulcan" "$pkgdir/usr/bin/"
   install -m 644 "roccat-vulcan.service" "$pkgdir/lib/systemd/user/"
