@@ -13,6 +13,7 @@ pkgbase = d9vk-winelib-git
 	depends = vulkan-icd-loader
 	depends = wine>=4.0rc1
 	depends = lib32-vulkan-icd-loader
+	depends = bash
 	provides = d9vk
 	conflicts = d9vk
 	source = git+https://github.com/Joshua-Ashton/d9vk.git

@@ -7,7 +7,7 @@ pkgdesc="A d3d9 to vk layer based off DXVK's codebase. Winelib version"
 arch=('x86_64')
 url="https://github.com/Joshua-Ashton/d9vk"
 license=('zlib/libpng')
-depends=('vulkan-icd-loader' 'wine>=4.0rc1' 'lib32-vulkan-icd-loader')
+depends=('vulkan-icd-loader' 'wine>=4.0rc1' 'lib32-vulkan-icd-loader' 'bash')
 makedepends=('ninja' 'meson>=0.43' 'glslang' 'git' 'wine')
 provides=("d9vk")
 conflicts=("d9vk")
@@ -24,7 +24,7 @@ sha256sums=(
 
 pkgver() {
     cd d9vk
-    printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/m//g')"
 }
 
 prepare() {
