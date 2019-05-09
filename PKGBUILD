@@ -4,7 +4,7 @@
 # Contributer: blind
 
 pkgname=hyper
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 epoch=
 pkgdesc="A terminal built on web technologies"
@@ -33,7 +33,7 @@ source=(
     "Hyper.desktop"
 )
 noextract=()
-md5sums=('0bd387e58692f618d7c8f51ddc13389b'
+md5sums=('5039922cadeb24f7bd6b59693da4c929'
          'f3481e14cba331160339b3b5ab78872b'
          '74cb7ba38e37332aa8300e4b6ba9c61c')
 validpgpkeys=()

@@ -1,6 +1,6 @@
 pkgbase = hyper
 	pkgdesc = A terminal built on web technologies
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://hyper.is/
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = hyper
 	depends = gconf
 	conflicts = hyperterm
 	replaces = hyperterm
-	source = https://github.com/zeit/hyper/archive/3.0.0.tar.gz
+	source = https://github.com/zeit/hyper/archive/3.0.1.tar.gz
 	source = https://raw.githubusercontent.com/zeit/art/master/hyper/mark/Hyper-Mark-120@3x.png
 	source = Hyper.desktop
-	md5sums = 0bd387e58692f618d7c8f51ddc13389b
+	md5sums = 5039922cadeb24f7bd6b59693da4c929
 	md5sums = f3481e14cba331160339b3b5ab78872b
 	md5sums = 74cb7ba38e37332aa8300e4b6ba9c61c
 
