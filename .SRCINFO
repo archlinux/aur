@@ -9,7 +9,7 @@ pkgbase = kloud
 	depends = gradle
 	source = kloud
 	source = kloud-0.2.tar.gz::https://github.com/texxme/Kloud/archive/v0.2-BETA.tar.gz
-	sha1sums = 778be42080f3dc4c15cd63568718addef2557bb3
+	sha1sums = SKIP
 	sha1sums = ec7409412e3eb48191d4672f276a8234f3635a3a
 
 pkgname = kloud
