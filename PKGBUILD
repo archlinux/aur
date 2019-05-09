@@ -18,7 +18,7 @@ optdepends=(
     'python2-sphinx'
     'gmt-coast: coastlines'
     'gmt-dcw: digital chart of the world polygon map')
-conflicts=('gmt4')
+conflicts=('gmt4' 'gmt')
 install='gmt.install'
 #source=("ftp://ftp.soest.hawaii.edu/gmt/${_pkgname}-${pkgver}-src.tar.xz")
 #source=("ftp://ftp.star.nesdis.noaa.gov/pub/sod/lsa/gmt/${_pkgname}-${pkgver}-src.tar.xz")

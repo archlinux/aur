@@ -17,6 +17,7 @@ pkgbase = gmt6
 	optdepends = gmt-coast: coastlines
 	optdepends = gmt-dcw: digital chart of the world polygon map
 	conflicts = gmt4
+	conflicts = gmt
 	source = https://github.com/GenericMappingTools/gmt/archive/587b28006fe1b0772fb2ded7bc7597815fba425f.tar.gz
 	md5sums = 71a72d584d9098f80f35923caa1659f8
 
