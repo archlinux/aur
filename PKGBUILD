@@ -1,51 +1,51 @@
-pkgname=ccache-git
-pkgver=v3.2.4_110_g1cfdf73
+_pkgname=ccache
+pkgname=${_pkgname}-git
+pkgver=v3.7.1_14_g6e25ea2
 pkgrel=1
-pkgdesc="A compiler cache"
+pkgdesc="a fast compiler cache"
 arch=('i686' 'x86_64')
-url="http://ccache.samba.org/"
+url="https://ccache.dev"
 license=('GPL3')
 depends=('zlib')
 makedepends=('git' 'asciidoc')
-conflicts=('ccache')
-provides=('ccache')
-source=("git://git.samba.org/ccache.git")
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+source=("git+https://github.com/ccache/ccache.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/ccache
+  cd "${srcdir}/${_pkgname}"
   git describe | sed 's/[- ]/_/g'
 }
 
 build() {
-  cd ${srcdir}/ccache
+  cd ${srcdir}/${_pkgname}
   ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc
-
   make
   make docs
 }
 
 check() {
-  cd ${srcdir}/ccache
-  make test
+  cd ${srcdir}/${_pkgname}
+  make check
 }
 
 package() {
-  cd ${srcdir}/ccache
+  cd ${srcdir}/${_pkgname}
 
-  install -Dm 755 ccache ${pkgdir}/usr/bin/ccache
-  install -Dm 644 ccache.1 ${pkgdir}/usr/share/man/man1/ccache.1
+  install -Dm 755 ccache -t "${pkgdir}/usr/bin"
+  install -Dm 644 doc/ccache.1 -t "${pkgdir}/usr/share/man/man1"
+  install -Dm 644 doc/{AUTHORS,MANUAL,NEWS}.adoc README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -Dm 644 LICENSE.{adoc,html} -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 
-  install -d ${pkgdir}/usr/lib/ccache/bin
-  ln -sf /usr/bin/ccache ${pkgdir}/usr/lib/ccache/bin/cc 
-  ln -sf /usr/bin/ccache ${pkgdir}/usr/lib/ccache/bin/gcc
-  ln -sf /usr/bin/ccache ${pkgdir}/usr/lib/ccache/bin/g++
-  ln -sf /usr/bin/ccache ${pkgdir}/usr/lib/ccache/bin/cpp
-  ln -sf /usr/bin/ccache ${pkgdir}/usr/lib/ccache/bin/c++
-  ln -sf /usr/bin/ccache ${pkgdir}/usr/lib/ccache/bin/${CHOST}-cc
-  ln -sf /usr/bin/ccache ${pkgdir}/usr/lib/ccache/bin/${CHOST}-gcc
-  ln -sf /usr/bin/ccache ${pkgdir}/usr/lib/ccache/bin/${CHOST}-g++
-  ln -sf /usr/bin/ccache ${pkgdir}/usr/lib/ccache/bin/${CHOST}-cpp
-  ln -sf /usr/bin/ccache ${pkgdir}/usr/lib/ccache/bin/${CHOST}-c++
+  install -d "${pkgdir}/usr/lib/ccache/bin"
+  local _prog
+  for _prog in gcc g++ c++; do
+    ln -s /usr/bin/ccache "${pkgdir}/usr/lib/ccache/bin/$_prog"
+    ln -s /usr/bin/ccache "${pkgdir}/usr/lib/ccache/bin/${CHOST}-$_prog"
+  done
+  for _prog in cc clang clang++; do
+    ln -s /usr/bin/ccache "${pkgdir}/usr/lib/ccache/bin/$_prog"
+  done
 }
