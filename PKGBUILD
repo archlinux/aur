@@ -1,8 +1,8 @@
 #Maintainer: weearc <q19981121@163.com>
 pkgname=motrix
 _pkgname=Motrix
-pkgver=v1.3.7
-_pkgver=1.3.7
+pkgver=v1.3.8
+_pkgver=1.3.8
 pkgrel=1
 epoch=
 pkgdesc="elegent downloading tool frontend for aria2c,using vue(release version)"
@@ -33,7 +33,7 @@ noextract=()
 sha256sums=('1b799d1b1e280a27ff625cceb429b1e00c6691eb0256ded44f6a1a0310a899d4'
 	'1dc0dd1949e086aabf393a4f53fd290dce7bebdcfa958919f8673bdce9c9b57d'
 	'ec66063afe506835730f6ba4be55d4aa150b9b587a4d0246c307433fcae1a49d'
-	'454c2b2237f6a4d4a568eb0a75b0e887441d76a6c182ad04c9dfb35e8b81f3d9')
+	'340863d23dd6ce4eebcbbb9bb396ad497e2eab1bb7bf7d1b33ef501002154e93')
 validpgpkeys=()
 
 prepare() {
