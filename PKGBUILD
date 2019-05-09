@@ -11,7 +11,6 @@ pkgdesc='The CUE Data Constraint Language'
 arch=('x86_64')
 url="https://github.com/cuelang/cue"
 license=('Apache')
-depends=('glibc')
 source=("$pkgname"::'git+https://github.com/cuelang/cue.git')
 md5sums=('SKIP')
 

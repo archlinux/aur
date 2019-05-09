@@ -5,7 +5,6 @@ pkgbase = cuelang-cue-git
 	url = https://github.com/cuelang/cue
 	arch = x86_64
 	license = Apache
-	depends = glibc
 	source = cuelang-cue-git::git+https://github.com/cuelang/cue.git
 	md5sums = SKIP
 
