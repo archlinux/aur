@@ -1,19 +1,19 @@
 # Maintainer: otaj <jasek.ota@gmail.com>
-# If you want to set only one GPU target compute capability, set _GPU_TARGET, otherwise leave it commented out and it will build default targets (35, 52, 60 and 61)
+# If you want to set only one GPU target compute capability, set _GPU_TARGET, otherwise leave it commented out and it will build default targets (35, 52, 60 and 61). You can also set multiple targets separated by space (bash array)
 
-#_GPU_TARGET=61
+_GPU_TARGET="61"
 _pkgname=faiss
 pkgbase=faiss-cuda-git
 pkgname=('faiss-cuda-git' 'python-faiss-cuda-git' 'python2-faiss-cuda-git')
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('BSD')
-pkgver=v1.5.1.r0.g7f5b22b
+pkgver=v1.5.1.r10.g5d1ed5b
 pkgrel=1
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git)
 sha256sums=('SKIP')
 depends=('blas' 'lapack' 'cuda')
-makedepends=('python' 'python2' 'python-numpy' 'python2-numpy' 'swig' 'python-setuptools' 'python2-setuptools')
+makedepends=('git' 'python' 'python2' 'python-numpy' 'python2-numpy' 'swig' 'python-setuptools' 'python2-setuptools')
 
 
 pkgver() {
@@ -31,14 +31,18 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  _CONF_FLAGS="--prefix=/usr --with-cuda=/opt/cuda"
+  _CONF_FLAGS='--prefix=/usr --with-cuda=/opt/cuda'
   if ! [ -z "$_GPU_TARGET" ]
   then
-    _CONF_FLAGS="$_CONF_FLAGS --with-cuda-arch=-gencode=arch=compute_$_GPU_TARGET,code=sm_$_GPU_TARGET"
+    _CONF_FLAGS=$_CONF_FLAGS" --with-cuda-arch=\""
+    for _ARCH in ${_GPU_TARGET[@]} ; do
+      _CONF_FLAGS=$_CONF_FLAGS"-gencode=arch=compute_${_ARCH},code=sm_${_ARCH} "
+    done
+    _CONF_FLAGS=$_CONF_FLAGS'"'
   fi
-  ./configure $_CONF_FLAGS --with-python=python2
+  sh -c "./configure $_CONF_FLAGS --with-python=python2" # what an ugliness! I don't know how to do it better though
   mv makefile.inc makefile2.inc
-  ./configure $_CONF_FLAGS --with-python=python
+  sh -c "./configure $_CONF_FLAGS --with-python=python"
   make 			# build faiss
   make -C python  	# build python package
   make -C python2 	# build python2 package
