@@ -1,5 +1,5 @@
 pkgbase = lone_wolf-lib32-llvm-git
-	pkgver = 9.0.0_r315995.5b6dda33d12
+	pkgver = 9.0.0_r316130.bd588dfd594
 	pkgrel = 1
 	url = http://llvm.org/
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = lone_wolf-lib32-llvm-git
 
 pkgname = lone_wolf-lib32-llvm-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit)
-	depends = lone_wolf-lib32-llvm-libs-git=9.0.0_r315995.5b6dda33d12-1
+	depends = lone_wolf-lib32-llvm-libs-git=9.0.0_r316130.bd588dfd594-1
 	depends = lone_wolf-llvm-git
-	provides = lib32-llvm=9.0.0_r315995.5b6dda33d12-1
+	provides = lib32-llvm=9.0.0_r316130.bd588dfd594-1
 	conflicts = lib32-llvm
 
 pkgname = lone_wolf-lib32-llvm-libs-git

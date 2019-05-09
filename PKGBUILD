@@ -19,7 +19,7 @@
 
 pkgbase=lone_wolf-lib32-llvm-git
 pkgname=('lone_wolf-lib32-llvm-git' 'lone_wolf-lib32-llvm-libs-git')
-pkgver=9.0.0_r315995.5b6dda33d12
+pkgver=9.0.0_r316130.bd588dfd594
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
@@ -44,6 +44,12 @@ pkgver() {
     echo "${_pkgver}"
 }
 
+prepare() {
+    cd llvm-project
+    # remove code parts not needed to build llvm itself
+    rm -rf clang clang-tools-extra compiler-rt debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl
+}
+
 build() {
     if [  -d _build ]; then
         rm -rf _build
@@ -62,6 +68,7 @@ build() {
         -DLLVM_TARGET_ARCH:STRING=i686 \
         -DLLVM_HOST_TRIPLE=$CHOST \
         -DLLVM_DEFAULT_TARGET_TRIPLE="i686-pc-linux-gnu" \
+        -DLLVM_TARGETS_TO_BUILD="AMDGPU;X86" \
         -DLLVM_BUILD_LLVM_DYLIB=ON \
         -DLLVM_LINK_LLVM_DYLIB=ON \
         -DLLVM_ENABLE_RTTI=ON \
@@ -75,9 +82,9 @@ build() {
         -DLLVM_ENABLE_BINDINGS=OFF
         
     if [[ ! $NINJAFLAGS ]]; then
-        ninja all
+        ninja
     else
-        ninja "$NINJAFLAGS" all
+        ninja "$NINJAFLAGS"
     fi
 }
 
