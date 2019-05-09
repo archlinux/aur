@@ -4,12 +4,12 @@ _pkgbase=faudio-wrappers
 _gitname=FAudio
 pkgbase=${_pkgbase}-git
 pkgname=("${_pkgbase}-win32-git" "${_pkgbase}-win64-git")
-pkgver=r997.d8224a0
+pkgver=19.05.r13.g3dd4e04
 pkgrel=1
-pkgdesc="Accuracy-focused XAudio reimplementation for open platforms"
-arch=('i686' 'x86_64')
-url='https://github.com/FNA-XNA/FAudio'
-license=('custom')
+pkgdesc="XAudio2 reimplementation (Windows DLLs)"
+arch=(i686 x86_64)
+url="https://github.com/FNA-XNA/FAudio/"
+license=('custom:zlib')
 depends=('wine' 'winetricks')
 makedepends=('git' 'mingw-w64-gcc' 'mingw-w64-sdl2' 'mingw-w64-ffmpeg')
 source=('git+https://github.com/FNA-XNA/FAudio'
@@ -19,7 +19,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/${_gitname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 _build_faudio-wrappers() {
