@@ -3,8 +3,8 @@
 
 pkgname=libevent-patched
 pkgver=2.1.8
-pkgrel=2
-pkgdesc="An event notification library"
+pkgrel=3
+pkgdesc="An event notification library (with fix for Issue #807)"
 url="https://libevent.org"
 license=(BSD)
 arch=(i686 x86_64 armv6h armv7h)

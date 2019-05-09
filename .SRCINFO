@@ -1,7 +1,7 @@
 pkgbase = libevent-patched
-	pkgdesc = An event notification library
+	pkgdesc = An event notification library (with fix for Issue #807)
 	pkgver = 2.1.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://libevent.org
 	arch = i686
 	arch = x86_64
