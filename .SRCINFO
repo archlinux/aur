@@ -1,0 +1,13 @@
+pkgbase = cuelang-cue-git
+	pkgdesc = The CUE Data Constraint Language
+	pkgver = r157.ad10d9d
+	pkgrel = 1
+	url = https://github.com/cuelang/cue
+	arch = x86_64
+	license = Apache
+	depends = glibc
+	source = cuelang-cue-git::git+https://github.com/cuelang/cue.git
+	md5sums = SKIP
+
+pkgname = cuelang-cue-git
+
