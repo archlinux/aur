@@ -5,8 +5,7 @@
 
 pkgname=st-luke-git
 _pkgname=st-luke
-_pkgver=0.8.1
-pkgver=0.8.1.r1053
+pkgver=0.8.2.r1074.8c11915
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X'
 url='https://github.com/LukeSmithxyz/st.git'
@@ -19,12 +18,13 @@ makedepends=('ncurses' 'libxext' 'git')
 # include config.h and any patches you want to have applied here
 source=("${_pkgname}::git+$url")
 sha256sums=('SKIP')
-provides=("${_pkgname}" 'st')
-conflicts=("${_pkgname}" 'st')
+provides=('st')
+conflicts=('st')
 
 pkgver() {
   cd "${_pkgname}"
-  echo "$_pkgver.r$(git rev-list --count HEAD)"
+  _pkgver=$(awk '/VERSION/ {print $3}' config.mk|head -1)
+  echo "${_pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -34,13 +34,13 @@ prepare() {
 }
 
 build() {
-	cd "${_pkgname}"
-	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+  cd "${_pkgname}"
+  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-	cd "${_pkgname}"
-	make PREFIX=/usr DESTDIR="${pkgdir}" install
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  cd "${_pkgname}"
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }

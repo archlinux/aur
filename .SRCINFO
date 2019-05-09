@@ -1,6 +1,6 @@
 pkgbase = st-luke-git
 	pkgdesc = Simple virtual terminal emulator for X
-	pkgver = 0.8.1.r1053
+	pkgver = 0.8.2.r1074.8c11915
 	pkgrel = 1
 	url = https://github.com/LukeSmithxyz/st.git
 	arch = i686
@@ -10,9 +10,7 @@ pkgbase = st-luke-git
 	makedepends = libxext
 	makedepends = git
 	depends = libxft
-	provides = st-luke
 	provides = st
-	conflicts = st-luke
 	conflicts = st
 	options = zipman
 	source = st-luke::git+https://github.com/LukeSmithxyz/st.git
