@@ -7,7 +7,6 @@ arch=('x86_64')
 url="https://github.com/recp/cglm"
 license=('MIT')
 depends=('glibc')
-makedepends=('cmocka')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/recp/cglm/archive/v$pkgver.tar.gz")
 md5sums=('ce6287faff1cfcef661372c51122ea68')
 

@@ -5,7 +5,6 @@ pkgbase = cglm
 	url = https://github.com/recp/cglm
 	arch = x86_64
 	license = MIT
-	makedepends = cmocka
 	depends = glibc
 	source = cglm-0.5.4.tar.gz::https://github.com/recp/cglm/archive/v0.5.4.tar.gz
 	md5sums = ce6287faff1cfcef661372c51122ea68
