@@ -2,7 +2,7 @@
 # Maintainer: Christoph Haag <haagch+aur@frickel.club>
 
 pkgname=adriconf-git
-pkgver=r106.6a30d14
+pkgver=r169.0b3c97b
 pkgrel=1
 pkgdesc="Graphical configuration tool for the Direct Rendering Infrastructure"
 arch=('any')
@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-  cd adriconf-build
+  cd adriconf-build/adriconf
   #make install
   install -d "$pkgdir"/usr/bin
   install -m755 adriconf "$pkgdir"/usr/bin
