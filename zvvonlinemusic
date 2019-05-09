@@ -1,2 +1,2 @@
 #! /bin/sh
-sh -c 'cd /usr/share/ZVVOnlineMusic && python3 ZVVOnlineMusic.py'
+sh -c 'cd /usr/share/zvvonlinemusic && python3 zvvonlinemusic.py'

@@ -2,6 +2,6 @@
 Exec=zvvonlinemusic
 Type=Application
 Name=ZVVOnlineMusic
-Icon=/usr/share/ZVVOnlineMusic/icons/music.png
+Icon=zvvonlinemusic
 Categories=AudioVideo;Audio;Player;GTK;
 Name[en_US]=ZVVOnlineMusic
