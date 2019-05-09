@@ -1,7 +1,7 @@
 # Maintainer: architekton <architekton350@gmail.com>
 
 pkgname=aquatone
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A Tool for Domain Flyovers"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go' 'git')
 depends=('chromium')
 source=($pkgname-$pkgver.tar.gz::https://github.com/michenriksen/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('ca4965ba24b1bc6be14981b1946c45c7064d96c0e9a9c9b11b3a4fd699ef4c5e')
+sha256sums=('f24f0b6848b42474838fea88b8579ca301f4fde8b14062ba828b80c5cd6c3c65')
 
 prepare() {
   mkdir -p "gopath/src/github.com/michenriksen"
