@@ -2,7 +2,7 @@
 
 pkgname=firefox-nightly-hg
 _pkgname=firefox-nightly
-pkgver=r472550.9419be649eff
+pkgver=r473346.d9d0399a6baf
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
@@ -22,8 +22,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs !makeflags !strip)
 _repo=https://hg.mozilla.org/mozilla-central
-conflicts=('firefox')
-provides=('firefox')
+conflicts=('firefox-nightly' 'firefox-nightly-hg')
 source=("hg+$_repo"
         $_pkgname.desktop
         $_pkgname-symbolic.svg)
@@ -45,18 +44,11 @@ export CC=clang
 export CXX=clang++
 export MOZ_TELEMETRY_REPORTING=1
 export MOZ_REQUIRE_SIGNING=1
-mk_add_options AUTOCLOBBER=1
-mk_add_options MOZ_MAKE_FLAGS="-j5"
 ac_add_options --enable-application=browser
 ac_add_options --prefix=/usr
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
-ac_add_options --enable-alsa
-ac_add_options --enable-jack
-ac_add_options --enable-startup-notification
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
 ac_add_options --with-branding=browser/branding/nightly
 ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --enable-application=browser
@@ -128,17 +120,10 @@ END
   install -Dm644 ../$_pkgname.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
-  # Install a wrapper to avoid confusion about binary path
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
-#!/bin/sh
-exec /usr/lib/$_pkgname/firefox "\$@"
-END
-
-  # Replace duplicate binary with wrapper
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srf "$pkgdir/usr/bin/$_pkgname" \
-    "$pkgdir/usr/lib/$_pkgname/firefox-bin"
-}
+    # Replace duplicate binary with wrapper
+    # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
+    mv "$pkgdir/usr/bin/firefox" "$pkgdir/usr/bin/firefox-nightly"
+	}
 sha512sums=('SKIP'
             '04ff0a612a5e43bc6951abc0eb84df678e19d1f0233e49ef7e4559688ebce4fa51d1d3ee856ae926b0d0c89f512f223fc70446269b5049428d1c1d5c9abc2155'
             'ba7db9a7c95a051bcd84e4c09c802fc55ee3c0d1d06ec1b169b04e414259b75bbe92fe584aee41a1e3f71e71c160df8bedf5393449e5024110ed27dbc0579ea8')
