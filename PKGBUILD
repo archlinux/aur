@@ -33,7 +33,7 @@ build() {
   cd "${srcdir}/${clonefolder}"
   cmake ./ \
       -DCMAKE_INSTALL_PREFIX=/usr \
-      -OSGDB_LIBRARY_DEBUG=/usr/lib \
+      -OSGDB_LIBRARY_DEBUG=/usr/lib
   make
 }
 
