@@ -5,7 +5,7 @@
 pkgname=substance-painter
 pkgver=2019.1.0
 _build=3020
-pkgrel=2
+pkgrel=3
 pkgdesc="3D painting software allowing you to texture, render and share your work."
 arch=('x86_64')
 url='https://www.allegorithmic.com/products/substance-painter'
@@ -17,7 +17,7 @@ source=("https://download.allegorithmic.com/substance-painter/2019.x/Substance_P
         'substance-painter.desktop'
         'substance-painter')
 sha256sums=('6860d9e89e2c9c49c92706f068a1ca9073cb3d17a9e057de84c1bf9d1245453c'
-            '6744c1fbe8e9fb1fb91bd291e3ef8ac645bbfec1aa97915f440e6fbfebf4edbd'
+            'e79b4d09983f355433a16adee7c6b308d9a1824187965d399f33acc68a14f193'
             '5c939be430674e7d61217f4f137a9974ecd38b65a432bc4bab4c64f5f145b4fd'
             'e736a5e160be09cfe1588d349084e2f769815687db080b8c7b790e8751f185f1')
 validpgpkeys=()
