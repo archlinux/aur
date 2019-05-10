@@ -2,7 +2,7 @@
 
 pkgbase=domjudge
 pkgname=('domjudge-domserver' 'domjudge-docs' 'domjudge-judgehost' 'domjudge-submit')
-pkgver=7.0.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="an automated judge system to run programming contests"
 arch=("$CARCH")
@@ -21,7 +21,7 @@ source=(
         domjudge-judgehostd.service
         domjudge-judgehostd@.service
         domjudge-cgroup.service)
-sha256sums=('d794b313c622f16aca3e7bc2779b7b474ef271efff99546a5c309973e85c6dcf'
+sha256sums=('e17029235fee301aa438cc3607855619f2d06fc7c42963451c665be45514c2cc'
             'c0dfd31c0d19856df324057ffb4f81d50fe765c48026d419ceaea71864663532'
             '06faeeea3e3abda5a53a9ae150c6289cd49062c9a22129436640d11a9948eed5'
             '9ed301acc46bcc4de0ac38fc7fa9abe13912deb64ff549dd68ada54b9158f680'
