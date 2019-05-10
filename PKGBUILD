@@ -11,11 +11,11 @@ license=('BSD')
 depends=('bash')
 makedepends=('pandoc')
 optdepends=(
-  'imagemagick'
-  'libarchive'
-  'icoutils'
-  'innoextract'
-  'unzip'
+  'imagemagick: to convert images between formats'
+  'libarchive: to extract various archive formats'
+  'icoutils: to manipulate Windows icon files'
+  'innoextract: to extract some Windows installers'
+  'unzip: to extract some archives'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://framagit.org/vv221/play.it/-/archive/${pkgver}/play.it-${pkgver}.tar.gz")
 sha1sums=('b5a2dba4d61ea5b77e87714d3e862d48991facba')
