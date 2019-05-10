@@ -14,7 +14,7 @@ md5sums=('2ff93ba8eebeb71bfeb052e5ce09209a'
          'ee2065beedad9ac9a8bd53d63c8922a7')
 
 package() {
-    install -m 0755 "$srcdir/libsciter-gtk.so" -D -t "$pkgdir/lib"
+    install -m 0755 "$srcdir/libsciter-gtk.so" -D -t "$pkgdir/usr/lib"
     install -m 0755 "$srcdir/notes" -D "$pkgdir/usr/bin/sciter-notes"
     install -m 0644 "$srcdir/license.htm" -D -t "$pkgdir/usr/share/licenses/$pkgname"
 }
