@@ -1,4 +1,6 @@
 # Maintainer: Mopi <mopi@dotslashplay.it>
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+
 pkgname=play.it
 pkgver=2.11.2
 pkgrel=1
