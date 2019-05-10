@@ -1,18 +1,19 @@
 pkgbase = play.it
 	pkgdesc = Easy way to install games on Linux
-	pkgver = 2.11.1
-	pkgrel = 2
+	pkgver = 2.11.2
+	pkgrel = 1
 	url = https://wiki.dotslashplay.it
-	arch = i686
-	arch = x86_64
-	license = BSD 2
-	optdepends = imagemagick
-	optdepends = libarchive
-	optdepends = icoutils
-	optdepends = innoextract
-	optdepends = unzip
-	source = play.it-2.11.1.tar.gz::https://framagit.org/vv221/play.it/-/archive/2.11.1/play.it-2.11.1.tar.gz
-	sha1sums = b765d773dfc72d0e15b6d451cb6698241d7e1928
+	arch = any
+	license = BSD
+	makedepends = pandoc
+	depends = bash
+	optdepends = imagemagick: to convert images between formats
+	optdepends = libarchive: to extract various archive formats
+	optdepends = icoutils: to manipulate Windows icon files
+	optdepends = innoextract: to extract some Windows installers
+	optdepends = unzip: to extract some archives
+	source = play.it-2.11.2.tar.gz::https://framagit.org/vv221/play.it/-/archive/2.11.2/play.it-2.11.2.tar.gz
+	sha1sums = b5a2dba4d61ea5b77e87714d3e862d48991facba
 
 pkgname = play.it
 
