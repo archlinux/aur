@@ -1,0 +1,14 @@
+pkgbase = lua-strict
+	pkgdesc = Pure Lua library for detecting access to uninitialized variables
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/lua-stdlib/strict
+	arch = any
+	license = MIT
+	makedepends = ldoc
+	depends = lua
+	source = lua-strict-1.1.tar.gz::https://github.com/lua-stdlib/strict/archive/v1.1.tar.gz
+	sha512sums = f6a7028f51330122fd1ebf42b79d759380d7ee6f168f17b3915544b1045830b872e3f9235ffee29da9ac041b24e76f47f41997a502fa3115ec28186cb5a2c096
+
+pkgname = lua-strict
+
