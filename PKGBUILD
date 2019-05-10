@@ -7,7 +7,7 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=y
+_makenconfig=
 
 # Optionally select a sub architecture by number if building in a clean chroot
 # Leaving this entry blank will require user interaction during the build
@@ -59,8 +59,8 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-_srcver_tag_arch=5.0.13-arch1
-pkgver=${_srcver_tag_arch//-/.}
+_srcver_tag=5.0.15
+pkgver="${_srcver_tag}.arch1"
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/koverstreet/bcachefs"
@@ -105,9 +105,16 @@ _kernelname=${pkgbase#linux}
 prepare() {
     cd ${_reponame}
 
+    msg2 "Adding patches from Linux upstream kernel repository..."
+    git remote add upstream_stable https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
+    git pull --no-edit upstream_stable v${_srcver_tag}
+
     msg2 "Adding patches from Arch Linux kernel repository..."
     git remote add arch_stable https://git.archlinux.org/linux.git
-    git pull --no-edit arch_stable v${_srcver_tag_arch}
+    # git pull --no-edit arch_stable "v${_srcver_tag}-arch1"
+    git fetch arch_stable "v5.0.13-arch1"
+    git cherry-pick 1ce49fc24c97401dda96f916e0aec1be26e480a8
+    sed -i -e "s/^EXTRAVERSION =.*/EXTRAVERSION = -arch1/" Makefile
 
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching to enabled additional gcc CPU optimizatons..."
