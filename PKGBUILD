@@ -5,7 +5,7 @@ pkgbase=celestia-medium-redux
 pkgname=(ttf-celestia-medium-redux t1-celestia-medium-redux)
 _realname=CelestiaMediumRedux
 pkgver=1.55
-pkgrel=1
+pkgrel=2
 pkgdesc="A font collection based off on Generation B (used in My Little Pony: Friendship is MAgic), originally created by Purple Tinker, redux by Mattyhex"
 arch=("any")
 url="http://www.mattyhex.net/CMR/"
@@ -40,3 +40,4 @@ package_t1-celestia-medium-redux() {
 	cp "$srcdir/"*.ps "$pkgdir/usr/share/fonts/Type1"
 	cp "$srcdir/"*.afm "$pkgdir/usr/share/fonts/Type1"
 }
+

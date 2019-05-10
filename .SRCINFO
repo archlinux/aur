@@ -1,7 +1,7 @@
 pkgbase = celestia-medium-redux
 	pkgdesc = A font collection based off on Generation B (used in My Little Pony: Friendship is MAgic), originally created by Purple Tinker, redux by Mattyhex
 	pkgver = 1.55
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mattyhex.net/CMR/
 	arch = any
 	license = custom:Public Domain
