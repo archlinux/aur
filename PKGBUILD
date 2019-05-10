@@ -38,9 +38,9 @@ package() {
   mkdir -p "${pkgdir}"/usr/share/vim
   echo "set runtimepath+=/usr/share/vim/vimfiles" > "${pkgdir}"/usr/share/nvim/sysinit.vim
 
-  # Remove nvim-linux64.tar.gz
-  rm ../nvim-linux64.tar.gz
-  rm ../../nvim-linux64.tar.gz
+  # Remove nvim-linux64.tar.gz if it still exists, who knows?
+  rm -f ../nvim-linux64.tar.gz || true
+  rm -f ../../nvim-linux64.tar.gz || true
 }
 
 # vim:set sw=2 sts=2 et:
