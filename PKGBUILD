@@ -15,7 +15,7 @@ source=("https://cran.r-project.org/src/contrib/${_pkgname}_$pkgver.tar.gz")
 sha512sums=('aea5eeeb377f5abc8c07b8921b9df8081cf48356489ce5abe610f3f3f3a7caac76125bc56d05c17080bd571e22368551a632ca2383d3f05228c075de5f7fef3b')
 
 build(){
-    R CMD INSTALL $_pkgname-$pkgver.tar.gz -l "$srcdir"
+    R CMD INSTALL ${_pkgname}_$pkgver.tar.gz -l "$srcdir"
 }
 
 package() {
