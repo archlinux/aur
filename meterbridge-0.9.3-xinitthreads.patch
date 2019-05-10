@@ -1,0 +1,30 @@
+diff -Naur orig.meterbridge-0.9.3/configure.in meterbridge-0.9.3/configure.in
+--- orig.meterbridge-0.9.3/configure.in	2019-01-24 17:00:49.573488552 -0800
++++ meterbridge-0.9.3/configure.in	2019-01-24 17:01:49.105270619 -0800
+@@ -9,6 +9,7 @@
+ # Checks for libraries.
+ AC_CHECK_LIB([pthread], [pthread_self], , [AC_MSG_ERROR(You need libpthread installed)])
+ AC_CHECK_LIB([m], [sqrt], , [AC_MSG_ERROR(Can't find libm)])
++AC_CHECK_LIB([X11], [XInitThreads], , [AC_MSG_ERROR(You need Xlib instaled)])
+ 
+ # Checks for packages.
+ AM_PATH_SDL(1.2.0, , AC_MSG_ERROR([Requires SDL 1.2 or later]))
+diff -Naur orig.meterbridge-0.9.3/src/main.c meterbridge-0.9.3/src/main.c
+--- orig.meterbridge-0.9.3/src/main.c	2019-01-24 17:00:49.573488552 -0800
++++ meterbridge-0.9.3/src/main.c	2019-01-24 17:02:23.251050690 -0800
+@@ -10,6 +10,7 @@
+ #include <GL/gl.h>
+ #include <jack/jack.h>
+ #include <getopt.h>
++#include <X11/Xlib.h>
+ 
+ #include "config.h"
+ #include "main.h"
+@@ -68,6 +69,7 @@
+     meter_t meter_type = MET_PPM;
+     char window_name[256];
+     char *us_client_name = NULL;
++    XInitThreads();
+ 
+     num_meters = argc;
+     while ((opt = getopt(argc, argv, "t:r:c:n:g:h")) != -1) {
