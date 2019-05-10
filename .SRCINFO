@@ -1,6 +1,6 @@
 pkgbase = patroneo-git
 	pkgdesc = Easy Pattern Sequencer - Utilizing Jack Midi and the Non Session Manager
-	pkgver = v1.2.r0.gc6e43a9
+	pkgver = v1.2.r17.g41e842a
 	pkgrel = 1
 	url = https://laborejo.org/patroneo.git
 	arch = x86_64

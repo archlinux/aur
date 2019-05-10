@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster <milk on freenode>
 _pkgname=patroneo
 pkgname=${_pkgname}-git
-pkgver=v1.2.r0.gc6e43a9
+pkgver=v1.2.r17.g41e842a
 pkgrel=1
 pkgdesc="Easy Pattern Sequencer - Utilizing Jack Midi and the Non Session Manager"
 arch=(x86_64)
@@ -29,8 +29,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/patroneo"
-  git submodule update --init 
-  git submodule foreach git pull origin master
+  git submodule update --init --recursive 
   ./configure --prefix=/usr
 }
 
