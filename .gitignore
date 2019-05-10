@@ -1,6 +1,7 @@
-pkg/
-src/
-*.tgz
+*.tar.gz
 *.tar.xz
+*.tgz
 etcher/
+pkg/
 scripts/
+src/
