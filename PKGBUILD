@@ -6,7 +6,7 @@ pkgdesc="Easy way to install games on Linux"
 arch=('any')
 url="https://wiki.dotslashplay.it"
 license=('BSD')
-depends=()
+depends=('bash')
 makedepends=('pandoc')
 optdepends=(
   'imagemagick'
