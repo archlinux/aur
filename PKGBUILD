@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=a-git
-pkgver=r230.ab0e0e4
+pkgver=r378.6d1fd78
 pkgrel=1
 epoch=
 pkgdesc="A text editor inspired by the Sam and Acme text editors for the Plan 9 operating system."
