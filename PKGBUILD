@@ -1,8 +1,8 @@
 # Maintainer: Florent Thiéry <fthiery@gmail.com>
 
 pkgname=cockpit-minimal
-pkgver=189
-pkgrel=2
+pkgver=193
+pkgrel=1
 pkgdesc='A systemd web based user interface for Linux servers (minimal setup with system graphs, journalctl, storage, network, user accounts, systemd services and terminal)'
 arch=(i686 x86_64 armv6h armv7h)
 url='http://www.cockpit-project.org/'
@@ -19,8 +19,8 @@ source=(
     cockpit-pam
 )
 noextract=(cockpit-${pkgver}.tar.xz)
-sha1sums=('05329af1156fe1c42f70c137bf647451741184af'
-          '71ff0f4f5fc677b6f33bdfc72d6897912ea4e595'
+sha1sums=('8185745f3e0f0f19c69f4031f9fa06687e03953e'
+          '2838cdae3c5d604ac6144ecc1b35c15815ac7b08'
           '69b899b034e981cf217c2f8d61264caa2015c0e6')
 
 prepare() {
