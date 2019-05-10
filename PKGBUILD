@@ -2,7 +2,7 @@
 
 pkgname=ganglia
 pkgver=3.7.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A scalable distributed monitoring system for high-performance computing systems such as clusters and Grids."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://${pkgname}.sourceforge.net/"
@@ -40,16 +40,19 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  ./configure --prefix=/usr \
-              --sbindir=/usr/bin \
-              --libdir=/usr/lib \
-              --sysconfdir=/etc/ganglia \
-              --enable-gexec \
-              --enable-status \
-              --with-gmetad \
-              --with-riemann \
-              --with-python=/usr/bin/python2 \
-              --with-systemdsystemunitdir=/usr/lib/systemd/system
+  # Required to work around Sun RPC (ONC/RPC) library errors
+  LDFLAGS=-ltirpc \
+  CFLAGS=-I/usr/include/tirpc \
+    ./configure --prefix=/usr \
+                --sbindir=/usr/bin \
+                --libdir=/usr/lib \
+                --sysconfdir=/etc/ganglia \
+                --enable-gexec \
+                --enable-status \
+                --with-gmetad \
+                --with-riemann \
+                --with-python=/usr/bin/python2 \
+                --with-systemdsystemunitdir=/usr/lib/systemd/system
 
   make
 }
