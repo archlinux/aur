@@ -5,7 +5,7 @@ pkgdesc="Hardened allocator designed for modern systems."
 url="https://github.com/GrapheneOS/hardened_malloc"
 license=("MIT")
 makedepends=("git")
-arch=("i686" "x86_64")
+arch=("x86_64")
 pkgrel=1
 source=('git://github.com/GrapheneOS/hardened_malloc'
 		'preload.sh')
