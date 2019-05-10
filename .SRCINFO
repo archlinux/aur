@@ -1,7 +1,7 @@
 pkgbase = ganglia-minimal
 	pkgdesc = A version of the ganglia package without gmetad to reduce dependencies.
 	pkgver = 3.7.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ganglia.sourceforge.net/
 	install = ganglia.install
 	arch = i686

@@ -3,7 +3,7 @@
 pkgname=ganglia-minimal
 _pkgbase=${pkgname%%-minimal}
 pkgver=3.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A version of the ganglia package without gmetad to reduce dependencies."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://ganglia.sourceforge.net/"
@@ -36,14 +36,17 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgbase-$pkgver"
 
-  ./configure --prefix=/usr \
-              --sbindir=/usr/bin \
-              --libdir=/usr/lib \
-              --sysconfdir=/etc/ganglia \
-              --enable-gexec \
-              --enable-status \
-              --with-python=/usr/bin/python2 \
-              --with-systemdsystemunitdir=/usr/lib/systemd/system
+  # Required to work around Sun RPC (ONC/RPC) library errors
+  LDFLAGS=-ltirpc \
+  CFLAGS=-I/usr/include/tirpc \
+    ./configure --prefix=/usr \
+                --sbindir=/usr/bin \
+                --libdir=/usr/lib \
+                --sysconfdir=/etc/ganglia \
+                --enable-gexec \
+                --enable-status \
+                --with-python=/usr/bin/python2 \
+                --with-systemdsystemunitdir=/usr/lib/systemd/system
 
   make
 }
