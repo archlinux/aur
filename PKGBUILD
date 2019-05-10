@@ -38,7 +38,7 @@ depends=(
 )
 
 _dir="pluginlib-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/pluginlib/archive/pluginlib/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/pluginlib/archive/${pkgver}.tar.gz")
 sha256sums=('8fede085c83d4b7f1fcde454f364e04cfc5680ab41ac7029f9bbaf53ff6e5a07')
 
 build() {

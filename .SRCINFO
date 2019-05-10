@@ -19,7 +19,7 @@ pkgbase = ros-melodic-pluginlib
 	depends = ros-melodic-roslib
 	depends = boost
 	depends = tinyxml2
-	source = ros-melodic-pluginlib-2.3.0.tar.gz::https://github.com/ros/pluginlib/archive/pluginlib/2.3.0.tar.gz
+	source = ros-melodic-pluginlib-2.3.0.tar.gz::https://github.com/ros/pluginlib/archive/2.3.0.tar.gz
 	sha256sums = 8fede085c83d4b7f1fcde454f364e04cfc5680ab41ac7029f9bbaf53ff6e5a07
 
 pkgname = ros-melodic-pluginlib
