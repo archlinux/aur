@@ -4,7 +4,7 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-performance
-pkgver=3.32.1+15+g515016633
+pkgver=3.32.1+17+g92f1e88e0
 pkgrel=1
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -21,7 +21,7 @@ groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver)
 conflicts=(gnome-shell)
 install="$pkgname.install"
-_commit=51501663366e68de80d5dd4ae2ed3be617ee49f9 # tags/3.32.1^15
+_commit=92f1e88e06689632835b8e0a7dea910e3a24b1bf # tags/3.32.1^17
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
          https://github.com/endlessm/gnome-shell/commit/11ddabfb22aedb3c35abe06d2cf0205f223cca03.diff
@@ -52,10 +52,6 @@ prepare() {
   # Mild performance improvements on style changes
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/524
   # git cherry-pick -n fb04dafb^..94995e9c
-
-  # keyboard: Destroy old layout actors when regenerating keyboard groups
-  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/523
-  git cherry-pick -n ed999ce9
 
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
