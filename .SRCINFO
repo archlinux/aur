@@ -1,6 +1,6 @@
 pkgbase = autofirma
 	pkgdesc = Spanish Government digital signature client
-	pkgver = 1.6.2
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = http://firmaelectronica.gob.es
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = autofirma
 	depends = nss
 	depends = firefox
 	source = http://estaticos.redsara.es/comunes/autofirma/currentversion/AutoFirma_Linux.zip
-	md5sums = b60cf28417f65f7e1ec757158be4bfbb
-	sha512sums = 239feb7e4a27c802e850e9e8b701b793c86ca514905e98b228fd09b524f925d21e37bd5d580eecd89fd4c197ad3b7cec0b43b29079534f7729055ab25549cc2a
+	md5sums = e90a6068458f1580afc1d4bca02ebc7f
+	sha512sums = 826afd27d4b7d746beb243bd13093baaaf1890d81e0b13d8fd6798484d663d428cf5c7fc3163d098acd5e0b83b6b8cd4b7460bc2fdeee224223d16ca8bf1b76d
 
 pkgname = autofirma
 
