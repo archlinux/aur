@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=edwood-git
-pkgver=r233.a61b24b
+pkgver=r414.6b29b01
 pkgrel=1
 epoch=
 pkgdesc="Go version of Plan9 Acme Editor "
