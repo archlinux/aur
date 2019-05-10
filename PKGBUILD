@@ -1,15 +1,14 @@
 # Maintainer: Sol Bekic <s+aur at s-ol dot nu>
 
-_pkgver=1.0.0-b40
 pkgname=ossia-score-appimage
-pkgver=1.0.0b40
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="an interactive sequencer for the intermedia arts."
 arch=('x86_64')
 url="https://ossia.io/"
 license=('custom')
 depends=('glib2' 'qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-svg' 'qt5-websockets')
-source=("Score.AppImage::https://github.com/OSSIA/score/releases/download/v${_pkgver}/Score-v${_pkgver}-amd64.AppImage"
+source=("Score.AppImage::https://github.com/OSSIA/score/releases/download/v${pkgver}/Score-v${pkgver}-linux.AppImage"
         "ossia-score")
 md5sums=('c21b30e221d0e13f77f22c80584373af'
          'da517b82b443be8057ee4fbadb414e43')
