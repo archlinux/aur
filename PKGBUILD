@@ -1,7 +1,7 @@
 # Maintainer: Ludvig Holtze <ludvig dot holtze at protonmail dot com>
 
 pkgname=cbmem-git
-pkgver=1.1.f813b844862
+pkgver=latest
 pkgrel=1
 pkgdesc="A utility for reading from the CBMEM console on Coreboot systems"
 url="https://www.coreboot.org/Cbmem_console"
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/coreboot"
-	echo "1.1.$(git log -1 --format="%h")"
+	echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
