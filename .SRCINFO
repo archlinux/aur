@@ -1,0 +1,13 @@
+pkgbase = fbi-servefiles
+	pkgdesc = Simple Python script for serving local files to FBI's remote installer.
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://github.com/Steveice10/FBI/tree/master/servefiles
+	arch = any
+	license = MIT
+	depends = python
+	source = FBI-2.6.0.tar.gz::https://github.com/Steveice10/FBI/archive/2.6.0.tar.gz
+	sha256sums = 4948d4c53d754cc411b51edbf35c609ba514ae21d9d0e8f4b66a26d5c666be68
+
+pkgname = fbi-servefiles
+
