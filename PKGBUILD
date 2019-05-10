@@ -2,7 +2,7 @@
 # Contributor: Jan Holthuis <holthuis.jan@googlemail.com>
 
 pkgname=nzbget-git
-pkgver=21.0.r2304
+pkgver=21.0.r2306.bbfcf076
 pkgrel=1
 epoch=1
 pkgdesc="Download from Usenet using .nzb files"
@@ -26,18 +26,18 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$pkgname"
-  printf "%s.r%s" "$(curl -s https://raw.githubusercontent.com/nzbget/nzbget/develop/configure.ac | grep -oP '(?<=AC_INIT\(nzbget, )(\d+\.\d+)')" "$(git rev-list --count develop)"
+  printf "%s.r%s.%s" "$(git describe --tags | sed 's/v//')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
 
   ./configure --prefix=/usr --sbindir='/usr/bin' --enable-parcheck --with-tlslib=OpenSSL
   make
 }
 
 package() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
 
   make DESTDIR="$pkgdir/" install
 
