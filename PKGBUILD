@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Easy way to install games on Linux"
 arch=('any')
 url="https://wiki.dotslashplay.it"
-license=('BSD 2')
+license=('BSD')
 depends=()
 makedepends=('pandoc')
 optdepends=(
@@ -26,5 +26,6 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" prefix="/usr" bindir="/usr/bin" install
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
