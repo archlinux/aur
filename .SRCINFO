@@ -1,0 +1,26 @@
+pkgbase = scopes-hg
+	pkgdesc = Scopes is a retargetable programming language & infrastructure
+	pkgver = r1775+.c1e8ee6bd379+
+	pkgrel = 1
+	url = https://scopes.rocks
+	arch = x86_64
+	license = MIT
+	makedepends = mercurial
+	makedepends = llvm
+	makedepends = genie-git
+	makedepends = make
+	makedepends = cmake
+	makedepends = spirv-headers
+	depends = clang
+	depends = spirv-tools
+	provides = scopes
+	conflicts = scopes
+	source = hg+https://hg@bitbucket.org/duangle/scopes
+	source = SPIRV-Cross.tar.gz::https://github.com/KhronosGroup/SPIRV-Cross/archive/2019-04-26.tar.gz
+	source = system-wide-SPIRV-Tools.patch
+	md5sums = SKIP
+	md5sums = 844c06fc801d321e060fd761b56fc246
+	md5sums = cb97d62b263433cd5ee45cb3f3761a4d
+
+pkgname = scopes-hg
+
