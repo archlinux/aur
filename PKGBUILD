@@ -2,7 +2,7 @@
 
 pkgname=cockpit-minimal
 pkgver=189
-pkgrel=1
+pkgrel=2
 pkgdesc='A systemd web based user interface for Linux servers (minimal setup with system graphs, journalctl, storage, network, user accounts, systemd services and terminal)'
 arch=(i686 x86_64 armv6h armv7h)
 url='http://www.cockpit-project.org/'
@@ -42,7 +42,7 @@ package() {
   cd $pkgdir
 
   mkdir -p etc/pam.d
-  cp ../../cockpit-pam etc/pam.d/cockpit
+  cp ../../src/cockpit-pam etc/pam.d/cockpit
 
   rm usr/lib/firewalld/services/cockpit.xml  # owned by firewalld
   for d in docker kubernetes tuned kdump selinux ovirt pcp playground realmd sosreport subscriptions; do
