@@ -1,0 +1,5 @@
+pkg
+src
+*.pkg.tar.xz
+png_sec-git
+cmake_scripts
