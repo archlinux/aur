@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('xfce4-panel>=4.4' 'libwnck' 'gtkhotkey')
 makedepends=('git')
 install='xfce4-taskbar-plugin.install'
-source=(git://git.xfce.org/panel-plugins/${pkgname})
+source=(git://git.xfce.org/archive/${pkgname})
 sha512sums=('SKIP')
 
 pkgver() {

@@ -11,7 +11,7 @@ pkgbase = xfce4-taskbar-plugin
 	depends = xfce4-panel>=4.4
 	depends = libwnck
 	depends = gtkhotkey
-	source = git://git.xfce.org/panel-plugins/xfce4-taskbar-plugin
+	source = git://git.xfce.org/archive/xfce4-taskbar-plugin
 	sha512sums = SKIP
 
 pkgname = xfce4-taskbar-plugin
