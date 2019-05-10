@@ -12,17 +12,17 @@ depends=('bash')
 makedepends=('pandoc')
 optdepends=(
   'imagemagick'
- 	'libarchive'
-	'icoutils'
-	'innoextract'
-	'unzip'
+  'libarchive'
+  'icoutils'
+  'innoextract'
+  'unzip'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://framagit.org/vv221/play.it/-/archive/${pkgver}/play.it-${pkgver}.tar.gz")
 sha1sums=('b5a2dba4d61ea5b77e87714d3e862d48991facba')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-	make
+  make
 }
 
 package() {
