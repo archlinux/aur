@@ -1,7 +1,7 @@
 # Maintainer: Ludvig Holtze <ludvig dot holtze at protonmail dot com>
 
 pkgname=nvramtool-git
-pkgver=2.1.f813b844862
+pkgver=latest
 pkgrel=1
 pkgdesc="A utility for interfacing with CMOS/NVRAM on Coreboot systems"
 url="https://www.coreboot.org/Nvramtool"
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/coreboot"
-	echo "2.1.$(git log -1 --format="%h")"
+	echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
