@@ -3,17 +3,17 @@
 
 _pkgbasename=libcap
 pkgname=lib32-$_pkgbasename
-pkgver=2.26
+pkgver=2.27
 pkgrel=1
 pkgdesc="POSIX 1003.1e capabilities (32-bit)"
 arch=(x86_64)
-url="http://www.kernel.org/pub/linux/libs/security/linux-privs/"
+url="https://sites.google.com/site/fullycapable/"
 license=('GPL2')
 depends=('lib32-attr' $_pkgbasename)
 makedepends=('gcc-multilib' 'linux-api-headers')
 validpgpkeys=('38A644698C69787344E954CE29EE848AE2CCF3F4') # Andrew G. Morgan <morgan@kernel.org>
 source=(https://kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-$pkgver.tar.{xz,sign})
-md5sums=('968ac4d42a1a71754313527be2ab5df3'
+md5sums=('2e8f9fab32eb5ccb37969fe317fd17aa'
          'SKIP')
 
 prepare() {
