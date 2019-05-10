@@ -4,7 +4,7 @@
 pkgname=one-click-bing-wallpaper-git
 _name=BingWallpaper
 pkgver=r114.a8c2c27
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt-based program for setting newest Bing Wallpaper, just click the tray icon"
 arch=('i686' 'x86_64')
 url="https://github.com/ypingcn/BingWallpaper"
@@ -22,6 +22,7 @@ pkgver() {
 
 build() {
   cd "$srcdir"/"$_name" || exit 1
+  ./config.sh
   qmake OneClickBingWallpaper.pro
   make
 }
