@@ -1,0 +1,54 @@
+#! /bin/bash
+#  (GPL3+) Alberto Salvia Novella (es20490446e.wordpress.com)
+
+
+mainFunction () {
+	summary=$(summary "${1}")
+
+	updateInfoFile
+	publish "${summary}"
+}
+
+
+changeToThisProgramDir () {
+	cd "$( dirname "${BASH_SOURCE[0]}" )"
+}
+
+
+echoOnError () {
+	function="${1}"
+	command="${2}"
+    error=$(eval "${command}" 2>&1 >"/dev/null")
+
+    if [ ${?} -ne 0 ]; then
+        echo "${function}: ${error}" >&2
+        exit 1
+    fi
+}
+
+
+publish () {
+	summary="${1}"
+
+	echoOnError "publish: add" "git add ."
+	git commit --message="${summary}" 2>&1 >"/dev/null"
+	echoOnError "publish: push" "git push"
+}
+
+
+summary () {
+	summary="${1}"
+
+    if [ "${summary}" == "" ]; then
+        echo $(date "+%Y-%m-%d %s")
+    fi
+}
+
+
+updateInfoFile () {
+	echoOnError "updateInfoFile" "makepkg --printsrcinfo > .SRCINFO"
+}
+
+
+changeToThisProgramDir
+mainFunction ${@}
