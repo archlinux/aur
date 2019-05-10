@@ -3,7 +3,7 @@
 # Contributor: Felix Schindler <ftschindler at aur dot archlinux>
 
 pkgname=webmin
-pkgver=1.900
+pkgver=1.910
 pkgrel=1
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(x86_64)
@@ -120,7 +120,7 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
 'etc/webmin/xinetd/config' \
 'etc/logrotate.d/webmin' \
 'etc/pam.d/webmin' )
-source=(http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.tar.gz
+source=("webmin-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz"
         setup-pre.sh
         setup-post.sh
         webmin-config.tar.bz2
@@ -171,7 +171,7 @@ package() {
 }
 
 
-sha256sums=('f2f252b116ec3a063440b4efe77fe89996d8d743aa6857db013ae6a34be7c62d'
+sha256sums=('528e88b45e1ed580fd677d6be2a2ecdefe9f02dddaf1c60b06b69d4a71cfafcc'
             '3c27a52679607c73cdaa00c0735bea04cf66cf92ca4af6a7ac906eaed537b910'
             '21b24cbbf88593f9da727e8f36dea283c8765002a378b3d4e55e6332387c43c6'
             'd326da95233341ed0a6d51c6c28d9b47b5bbe8c1ae8e03e2578c24191dd14383'
