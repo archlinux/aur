@@ -7,6 +7,7 @@ arch=('i686' 'x86_64')
 url="https://wiki.dotslashplay.it"
 license=('BSD 2')
 depends=()
+makedepends=('pandoc')
 optdepends=(
   'imagemagick'
  	'libarchive'
