@@ -5,9 +5,9 @@
 
 pkgname=emby-server-beta
 pkgver=4.2.0.5
-pkgrel=1
-_ffmpeg_ver=2018_12_01
-_ffdetect_ver=4.0.2
+pkgrel=2
+_ffmpeg_ver=2019_04_09
+_ffdetect_ver=4.0.3
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('x86_64')
 url='https://emby.media'
@@ -24,6 +24,7 @@ depends=('alsa-lib'
          'libdrm'
          'libfreetype.so'
          'libjpeg-turbo'
+         'libmfx.so'
          'libpng'
          'libtheora'
          'libva-drm.so'
@@ -38,7 +39,7 @@ depends=('alsa-lib'
          'skia-sharp'
          'sqlite'
          'zvbi')
-makedepends=('ffnvcodec-headers'
+makedepends=('ffnvcodec-headers8.1'
              'nasm')
 provides=('emby-server')
 conflicts=('emby-server')
@@ -54,8 +55,8 @@ source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgve
 noextract=(license.docx)
 backup=('etc/conf.d/emby-server')
 sha256sums=('70420ff56627b98fae4d7c6b9a4df22efa5a8b078050f8f4176133d0438c0d0f'
-            '1129e1bfb7fc4090cdd6e055d57b0cd90c9881f0db8b9ceb80fdd145de4ffc71'
-            'c25eea4ace3824c7172e0b7cab57cc2baa459004680fed5fa645355205fe2c51'
+            'd2081fd92e92ee90561c91edbd28ccba4beb1d72bdd38cd94c338726020e2e62'
+            '85697071cb6412d244fc6dd76f3561b6a42d7556ef20f26a702542b58198f0c7'
             'e2185a5f4810726cb57fcc6d9bdbde1854069f08f163be58cb3cef1154b8e2a7'
             '5e3470f834808babe7d60b8d86f462e7945c3617499539e5af45eb55d7b87b23'
             '2e7f778fd47cad0670690beaab2453fde37c2a3e7d0e7b2ca83b2cbb66087b3c'
@@ -69,6 +70,8 @@ prepare() {
 
 build() {
   cd ffmpeg-${_ffmpeg_ver}
+
+  export PKG_CONFIG_PATH=/usr/lib/ffnvcodec8.1/pkgconfig
 
   ./configure \
     --disable-doc \
@@ -88,6 +91,7 @@ build() {
     --enable-libdrm \
     --enable-libfreetype \
     --enable-libfribidi \
+    --enable-libmfx \
     --enable-libmp3lame \
     --enable-libopus \
     --enable-libtheora \
