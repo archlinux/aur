@@ -1,8 +1,8 @@
 # Mainainer: bohoomil <@zoho.com>
-
+#Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=ttf-roboto-ibx
-pkgver=2.136
-pkgrel=3
+pkgver=2.138
+pkgrel=1
 pkgdesc="Modern sans-serif font family designed by Christian Robertson and introduced with Android Ice Cream Sandwich operating system. Basic, condensed and slab variants included."
 arch=('any')
 license=('Apache')
@@ -13,15 +13,14 @@ provides=('ttf-roboto')
 conflicts=('ttf-roboto' 'ttf-roboto-fontconfig' 'ttf-roboto-slab')
 # http://www.google.com/fonts
 # all scripts
-source=(https://github.com/google/roboto/releases/download/v$pkgver/roboto-hinted.zip
+source=(https://sources.archlinux.org/other/community/ttf-roboto/ttf-roboto-hinted-$pkgver.zip
         Roboto_Condensed.zip::https://fonts.google.com/download?family=Roboto%20Condensed
         Roboto_Slab.zip::https://fonts.google.com/download?family=Roboto%20Slab
         45-roboto.conf
         90-tt-roboto.conf)
-validgpgkeys=('A9244FB5E93F11F0E975337FAE6866C7962DDE58')
-sha1sums=('6ac3eb489359fae05a80411bdf12f22e064b1011'
-          '069321275f9e2afbbe2c9673e2c4a363d6159996'
-          'a63d1390fcdce3eba61679c0f16786ac64d4c0f3'
+sha1sums=('e9af9d939703226670a3371c69bb65006203064a'
+          '47d39aed2de585d57db015d54c596202b14babc0'
+          'be04a62bbeb98aafa2be5d54985d91bafbce055e'
           '8ff0fd3af47b4234cdb40746a29aa613fc8dc502'
           '05cffa42f1ac56bf5595afe2ab67e656555273fb')
 
@@ -31,8 +30,6 @@ package(){
 
   install -d -m755 "${pkgdir}"/usr/share/fonts/"${pkgname}"
   install -m644 *.ttf "${pkgdir}"/usr/share/fonts/"${pkgname}"
-  install -m644 roboto-hinted/*.ttf \
-    "${pkgdir}"/usr/share/fonts/"${pkgname}"
 
   install -D -m644 45-roboto.conf \
     "${pkgdir}"/etc/fonts/conf.avail/45-roboto.conf
