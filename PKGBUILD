@@ -20,9 +20,8 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
-    install -Dm644 $srcdir/$pkgname-$pkgver/README "$pkgdir/usr/share/doc/$pkgname/README"
-    install -Dm644 $srcdir/$pkgname-$pkgver/TODO "$pkgdir/usr/share/doc/$pkgname/TODO"
-    install -Dm644 $srcdir/$pkgname-$pkgver/tickr.desktop "$pkgdir/usr/share/applications/tickr.desktop"
-    install -Dm644 $srcdir/$pkgname-$pkgver/tickr-url-list "$pkgdir/usr/share/$pkgname/tickr-url-list"
-    install -Dm644 $srcdir/$pkgname-$pkgver/tickr.1 "$pkgdir/usr/share/man//man1/tickr.1"
+    install -Dm644 README TODO -t "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm644 tickr.desktop -t "$pkgdir/usr/share/applications"
+    install -Dm644 tickr-url-list -t "$pkgdir/usr/share/$pkgname"
+    install -Dm644 tickr.1 -t "$pkgdir/usr/share/man/man1"
 }
