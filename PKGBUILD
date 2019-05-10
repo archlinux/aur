@@ -1,19 +1,18 @@
-# Maintainer: Tarn Burton <twburton at gmail dot com>
+# Maintainer: Manuel Lladosa <$(base64 --decode <<<'bWFub2xvbGxyQHJpc2V1cC5uZXQK')>
+# Contributor: Tarn Burton <twburton at gmail dot com>
 pkgname='pioneer-git'
-pkgver=20180203.r31.g8600607e6
+pkgver=20190203.r153.gea0126494
 pkgrel=1
 pkgdesc="A game of lonely space adventure"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/pioneerspacesim/pioneer"
-license=('GPL')
+license=('GPL3')
 provides=('pioneer')
 conflicts=('pioneer-bin' 'pioneer')
 depends=('libsigc++' 'sdl2_image' 'freetype2' 'libvorbis' 'assimp' 'hicolor-icon-theme')
-makedepends=('naturaldocs')
-source=("$pkgname::git+https://github.com/pioneerspacesim/pioneer" 'pioneer.desktop')
-sha256sums=('SKIP'
-            '31cc3f86dbab4dea44fc61312cbba30dc6d267a3d844bbb866fd2156c29032ef')
-#install=pioneer.install
+makedepends=('naturaldocs' 'cmake')
+source=("$pkgname::git+https://github.com/pioneerspacesim/pioneer")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -22,25 +21,46 @@ pkgver() {
 
 build() {
   cd $pkgname
-  export PIONEER_DATA_DIR=/usr/share/pioneer
-  ./bootstrap
-  ./configure CXXFLAGS='-fPIC' --prefix=/usr
-  make
-  make codedoc
+
+  # Autotools support is dropped
+  # https://github.com/pioneerspacesim/pioneer/issues/4525#issuecomment-460067597
+  # Old autotools build
+  #  ./bootstrap
+  #  ./configure CXXFLAGS='-fPIC' --prefix=/usr
+  #  make
+  #  make codedoc
+
+  # New cmake build
+  ./bootstrap cmake -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+    -D PIONEER_DATA_DIR:PATH=/usr/share/pioneer/
+  make -C build
+
+  # When game is installed models don't get compiled
+  # As a workaround we recompile 'modelcompiler' using $srcdir/data directory
+  # instead of /usr/share/pioneer
+  # Later, we let the things as them was
+
+  ./bootstrap cmake -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+    -D PIONEER_DATA_DIR:PATH="data"
+  cd build ; mv modelcompiler modelcompiler.bak ; cd ..
+  make -C build modelcompiler
+  cd build ; mv modelcompiler.bak modelcompiler ; cd ..
+
+  ./bootstrap cmake -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+   -D PIONEER_DATA_DIR:PATH=/usr/share/pioneer/
+
+#  make codedoc (execute naturaldocs manually)
+  install -dm755 codedoc
+  naturaldocs -i ./src/ -i ./data/libs/ -xi ./src/data/ -o HTML codedoc/ -p ./nd/ -do -ro -s Default Local
+  # Remove references to $srcdir. A 'naturaldocs' bug?
+  grep -Rl "$(pwd)" codedoc/ | xargs sed -i "s#$(pwd)/##g"
 }
 
 package() {
   cd $pkgname
-  export PIONEER_DATA_DIR=/usr/share/pioneer
-  make DESTDIR="$pkgdir" install
-  install -Dm644 "$srcdir/pioneer.desktop" "$pkgdir/usr/share/applications/pioneer.desktop"
-  for icon in application-icon/pngs/*
-  do
-    if [[ $icon =~ pioneer-([0-9]+x[0-9]+).png ]]; then
-      install -Dm644 $icon "$pkgdir/usr/share/icons/hicolor/${BASH_REMATCH[1]}/apps/pioneer.png"
-    fi
-  done
-  install -Dm644 "application-icon/badge-enlarged-text.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/pioneer.svg"
-  mkdir -p "$pkgdir/usr/share/doc/pioneer"
+
+  make -C build DESTDIR="$pkgdir" install
+
+  install -dm755 "$pkgdir/usr/share/doc/pioneer"
   cp -R codedoc/* "$pkgdir/usr/share/doc/pioneer"
 }
