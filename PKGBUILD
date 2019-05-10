@@ -1,8 +1,8 @@
 # Maintainer: Roland Angerbauer <roland.angerbauer@gmail.com>
 
 pkgname=wine-x64
-pkgver=4.5
-pkgrel=2
+pkgver=4.7
+pkgrel=1
 
 # replacing rc with -rc
 # pkgver is not allowed to contain hyphens
@@ -10,8 +10,8 @@ _pkgbasever=${pkgver/rc/-rc}
 
 source=(https://dl.winehq.org/wine/source/4.x/wine-$_pkgbasever.tar.xz{,.sign}
         30-win32-aliases.conf)
-sha512sums=('261420efdf14595715cff5bb6a61223b0f2090b89dc05dca8c053a8a81abc3018715d41db50769a0f0488c658efc0742ac0f577b578e69eace70be4e463131dd'
-            'a298565baf55ed69267ef1b23af997621d01ef1f6a97fc8031c156a513662e24f5785253fcf592d51b88ddd166a87d30cb2e01560f0a420689ff6ccff4c4ccff'
+sha512sums=('cb768528db510f81d464b9c1bb48847162baaa86ef00dc7a418afdce38aa51262d150c14b3362fb40c93cc2e3633fc02b2916167f21af8a708eb393da6ba9163'
+            '5ab8ee632d5cddbcc36fe68b7cfa06c5d8f77670af5ac2ed9e6eedbe4390a14d461b5920e199dc35f55b25f184f71d7718a54a250dd10fa30ced65e3c1c0f4a6'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb')
 validpgpkeys=(DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
 
@@ -21,69 +21,73 @@ arch=(x86_64)
 options=(staticlibs)
 license=(LGPL)
 depends=(
+  libx11
   fontconfig      
   lcms2           
-  libxml2        
+  sdl2
+#  libxml2        
   libxcursor     
-  libxrandr       
-  libxdamage      
+  libjpeg
+  libxslt
+  libxrandr
+#  libxdamage      
   libxi           
-  gettext       
+#  gettext       
   freetype2       
-  glu             
-  libsm           
-  gcc-libs        
-  libpcap         
-  desktop-file-utils
+#  glu             
+#  libsm           
+#  gcc-libs        
+#  libpcap         
+#  desktop-file-utils
 )
 makedepends=(
-  autoconf
-  ncurses
-  bison
-  perl
-  flex
-  'gcc>=4.5.0-2'
-  giflib                
-  libpng               
-  gnutls                
-  libxinerama          
-  libxcomposite         
-  libxmu                
-  libxxf86vm            
-  libldap               
-  mpg123              
-  openal              
-  v4l-utils            
-  libpulse              
-  alsa-lib             
-  libxcomposite         
-  mesa                 
-  mesa-libgl            
-  opencl-icd-loader    
-  libxslt               
-  gst-plugins-base-libs 
+#  autoconf
+#  ncurses
+#  bison
+#  perl
+#  flex
+#  'gcc>=4.5.0-2'
+#  giflib                
+#  libpng               
+#  gnutls                
+#  libxinerama          
+#  libxcomposite         
+#  libxmu                
+#  libxxf86vm            
+#  libldap               
+#  mpg123              
+#  openal              
+#  v4l-utils            
+#  libpulse              
+#  alsa-lib             
+#  libxcomposite         
+#  mesa                 
+#  mesa-libgl            
+#  opencl-icd-loader    
+#  libxslt               
+#  gst-plugins-base-libs 
 )
 optdepends=(
-  giflib               
-  libpng               
-  libldap              
-  gnutls             
-  mpg123            
-  openal             
-  v4l-utils             
-  libpulse              
-  alsa-plugins         
-  alsa-lib              
-  libjpeg-turbo        
-  libxcomposite         
-  libxinerama           
-  ncurses              
-  opencl-icd-loader    
-  libxslt              
-  gst-plugins-base-libs 
-  cups
-  samba      
-  dosbox
+#  giflib               
+#  libpng               
+#  libldap              
+#  gnutls             
+#  mpg123            
+#  openal             
+#  v4l-utils             
+#  libpulse              
+#  alsa-plugins         
+#  alsa-lib              
+#  libjpeg-turbo        
+#  libxcomposite         
+#  libxinerama           
+#  ncurses              
+#  opencl-icd-loader    
+#  libxslt              
+#  gst-plugins-base-libs 
+#  cups
+#  samba      
+#  dosbox
 )
 makedepends=(${makedepends[@]} ${depends[@]})
 
@@ -108,13 +112,22 @@ build() {
     --prefix=/usr \
     --libdir=/usr/lib \
     --with-x \
-    --with-gstreamer \
+    --without-gstreamer \
     --without-capi \
     --without-hal \
     --without-vkd3d \
+    --without-vulkan \
     --without-opencl \
     --without-oss \
     --without-faudio \
+    --without-gsm \
+    --without-pulse \
+    --without-mpg123 \
+    --without-sane \
+    --without-gphoto \
+    --without-openal \
+    --without-cups \
+    --without-v4l2 \
     --enable-win64
 
   make
