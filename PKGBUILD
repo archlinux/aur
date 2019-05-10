@@ -3,9 +3,9 @@
 
 pkgname=nginx-mod-dav-ext
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 _dirname="nginx-dav-ext-module-$pkgver"
-_nginxver=1.14.2
+_nginxver=1.16.0
 
 pkgdesc='NGINX WebDAV missing commands support'
 arch=('x86_64')
