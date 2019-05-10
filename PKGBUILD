@@ -7,7 +7,7 @@
 # Maintainer: Andrey Vetrov <vetrov at mail dot ru>
 
 pkgname=connman-git
-pkgver=1.37.r19.gb1f27099
+pkgver=1.37.r28.ga719719e
 pkgrel=1
 pkgdesc="Intel's modular network connection manager. Git version."
 url="https://01.org/connman"
