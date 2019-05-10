@@ -6,7 +6,7 @@ _module="${_name}"
 _cmd="${_name}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="2.6.0"
+pkgver="2.6.1"
 pkgrel="1"
 pkgdesc="An awesome tool for web developers."
 arch=("any")
@@ -14,7 +14,7 @@ url="https://github.com/lepture/python-livereload"
 license=("BSD")
 makedepends=("python-setuptools" "python2-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('e632a6cd1d349155c1d7f13a65be873b38f43ef02961804a1bba8d817fa649a7')
+sha256sums=('89254f78d7529d7ea0a3417d224c34287ebfe266b05e67e51facaf82c27f0f66')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
