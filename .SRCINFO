@@ -1,0 +1,13 @@
+pkgbase = wasm-micro-runtime-git
+	pkgdesc = Standalone WebAssembly (WASM) runtime with small footprint
+	pkgver = r20.8425923c3f
+	pkgrel = 1
+	url = https://github.com/intel/wasm-micro-runtime
+	arch = x86_64
+	license = Apache
+	depends = gcc-libs
+	source = https://github.com/intel/wasm-micro-runtime
+	sha256sums = SKIP
+
+pkgname = wasm-micro-runtime-git
+
