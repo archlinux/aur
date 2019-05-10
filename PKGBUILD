@@ -2,7 +2,7 @@
 
 pkgname=tickr
 pkgver=0.6.4
-pkgrel=4
+pkgrel=5
 pkgdesc="GTK-based highly graphically-customizable Feed Ticker"
 arch=('i686' 'x86_64')
 url="http://www.open-tickr.net/"
