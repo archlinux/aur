@@ -1,16 +1,17 @@
 pkgbase = tttermwidget
-	pkgdesc = A terminal widget for Qt
-	pkgver = 0.6.0
-	pkgrel = 2
+	pkgdesc = Terminal widget used by theTerminal
+	pkgver = 1.0
+	pkgrel = 1
 	url = https://github.com/vicr123/tttermwidget
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = cmake
 	depends = qt5-base
 	depends = libsm
 	depends = libxkbcommon-x11
-	source = tttermwidget-0.6.0::git+https://github.com/vicr123/tttermwidget
+	depends = libutf8proc
+	depends = the-libs
+	source = tttermwidget-1.0::git+https://github.com/vicr123/tttermwidget
 	md5sums = SKIP
 
 pkgname = tttermwidget
