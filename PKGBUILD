@@ -24,11 +24,6 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  mkdir -p $pkgdir/usr/local/bin
-  cp -a play.it $pkgdir/usr/local/bin
-  mkdir -p $pkgdir/usr/local/share/games/play.it
-  cp -a play.it-2/lib/libplayit2.sh play.it-2/games/* $pkgdir/usr/local/share/games/play.it
-  mkdir -p "$pkgdir/usr/local/man/man6"
-
+  make DESTDIR="$pkgdir" install
 }
 
