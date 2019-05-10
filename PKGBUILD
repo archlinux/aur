@@ -1,19 +1,17 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
-# Moritz Bunkus <moritz@bunkus.org>
-
 pkgname='perl-data-page'
-pkgver='2.02'
-pkgrel='5'
+pkgver='2.03'
+pkgrel='1'
 pkgdesc="help when paging through sets of results"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-class-accessor-chained' 'perl-test-exception')
-url='http://search.cpan.org/dist/Data-Page'
-source=('http://search.cpan.org/CPAN/authors/id/L/LB/LBROCARD/Data-Page-2.02.tar.gz')
-md5sums=('57f9aed8a79687a2712adf7bf2f9cc4d')
-sha512sums=('22b5b8b80672bfd20a1552ee9d41e5150262eb37be6d903d67465be472d1802668ac898b9172b76fe2747f25ff9ad2025257b215f763f2ba5793abb46eb2343f')
+depends=('perl-class-accessor-chained')
+makedepends=('perl-test-exception')
+url='https://metacpan.org/pod/Data::Page'
+source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/Data-Page-${pkgver}.tar.gz")
+sha512sums=('5c0c411e8b03163b2b88b7ab6432def0ddcce48987e98868897e89d0220665537f23d9a56b6d544a5c6fb67f615a2db582764ebcaa612cb2a8906ba660fc3c59')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
