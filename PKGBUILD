@@ -2,7 +2,7 @@
 # Maintainer: Corey Hinshaw <coreyhinshaw(at)gmail(dot)com>
 
 pkgname=system76-driver
-pkgver=19.04.7
+pkgver=19.04.8
 pkgrel=1
 pkgdesc="System76 Driver provides drivers, restore, and regression support for System76 computers"
 arch=('any')
@@ -40,11 +40,11 @@ source=(
 	'cli.patch'
 	'wayland.patch')
 sha1sums=(
-  '17aec7a21a47259db49691ab6e23fe61ddd1202e'
+  'a873735f1b836404ec9ee4936a5a73b3495eb0a1'
   'ddc85f9b062eb89c2c6fef0c6d7c68a28f419760'
   '45b4601ed3d9d80a01d5179628b1502caa9d7e6f'
   '916e0eeda26e00bd0372c1ffc7c5368cda9d46a1'
-  'c3244a1fe8470b3e39f9a604bc40db235388893b')
+  'a64fdf31128e41f02a04b6960b64e2f1eee7fc02')
 
 
 build() {
