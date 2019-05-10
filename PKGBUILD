@@ -33,7 +33,8 @@ source=(
     # These files might require modifications to be up-to-date. If that is the
     # case, they will be updated in place and untracked temporarily.
     "CMakeLists.inj::https://git.archlinux.org/svntogit/community.git/plain/trunk/CMakeLists.inj?h=packages/telegram-desktop"
-    "tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop"
+    #"tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop"
+    "tdesktop_fixed.patch"
     "no-gtk2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/no-gtk2.patch?h=packages/telegram-desktop"
     "libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop"
     "demibold.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/demibold.patch?h=packages/telegram-desktop"
@@ -47,7 +48,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'f37f7827e10557d1e74b58b81eb0d17102e1c0f193d129e6e8edbbf7284f5867'
-            '088cbdb71bd96684cf8a60469ba3707b70ed4d606b96b7352f614ec674b9aa8d'
+            'cb8e40ce2a111cbe3da9f38a773a3c361fc36c00090490076de8497fe579f3e5'
             '95efc9cd84c2c26bddd832ef8c88637353ed9ba9d9068f183b7ee48ba25d1cc7'
             '4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d'
             '3f23161f8239893e82d2a4f655cb80523a558a4e7869a6683802c2f434b68bbf'
@@ -70,13 +71,13 @@ prepare() {
         ln -s $fixed ${fixed/_fixed/}
     done
 
-    patch -Np1 -i "$srcdir/tdesktop.patch"
-    patch -Np1 -i "$srcdir/no-gtk2.patch"
+    patch -Np1    -i "$srcdir/tdesktop.patch"
+    patch -Np1    -i "$srcdir/no-gtk2.patch"
     patch -R -Np1 -i "$srcdir/demibold.patch"
-    patch -Np1 -i "$srcdir/Use-system-wide-font.patch"
+    patch -Np1    -i "$srcdir/Use-system-wide-font.patch"
 
     cd "Telegram/ThirdParty/libtgvoip"
-    patch -Np1 -i "$srcdir/libtgvoip.patch"
+    patch -Np1    -i "$srcdir/libtgvoip.patch"
 }
 
 build() {
