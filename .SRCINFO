@@ -1,14 +1,14 @@
 pkgbase = nginx-mod-accesskey
 	pkgdesc = Accesskey module for NGINX
 	pkgver = 2.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Martchus/nginx-accesskey
 	arch = x86_64
 	license = unknown
-	depends = nginx=1.14.2
+	depends = nginx=1.16.0
 	depends = libutil-linux
-	source = https://nginx.org/download/nginx-1.14.2.tar.gz
-	source = https://nginx.org/download/nginx-1.14.2.tar.gz.asc
+	source = https://nginx.org/download/nginx-1.16.0.tar.gz
+	source = https://nginx.org/download/nginx-1.16.0.tar.gz.asc
 	source = nginx-mod-accesskey-2.0.5::https://github.com/Martchus/nginx-accesskey/archive/v2.0.5.tar.gz
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
 	sha256sums = 002d9f6154e331886a2dd4e6065863c9c1cf8291ae97a1255308572c02be9797
