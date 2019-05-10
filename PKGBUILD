@@ -1,7 +1,7 @@
 # Maintainer: Ludvig Holtze <ludvig dot holtze at protonmail dot com>
 
 pkgname=ectool-git
-pkgver=0.1.f813b844862
+pkgver=latest
 pkgrel=1
 pkgdesc="Dumps the RAM of a laptop's Embedded/Environmental Controller (EC)"
 url="https://www.coreboot.org/Ectool"
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/coreboot"
-	echo "0.1.$(git log -1 --format="%h")"
+	echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
