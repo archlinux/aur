@@ -10,7 +10,7 @@ arch=('any')
 url="https://x-stream.github.io/"
 license=('BSD')
 depends=('java-environment')
-makedepends=('maven' 'unzip')
+makedepends=('maven')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/x-stream/xstream/archive/${pkgname^^}_${pkgver//./_}.tar.gz")
 sha256sums=('eef0a6663e845960d1816fe020aad19f9da5216f99cd371ea7e13f6829261c8d')
 
