@@ -28,6 +28,7 @@ pkgbase = ros-melodic-roscpp
 	depends = ros-melodic-rosconsole
 	depends = ros-melodic-roscpp-serialization
 	depends = ros-melodic-message-runtime
+	conflicts = ros-melodic-roscpp-git
 	source = ros-melodic-roscpp-1.12.14.tar.gz::https://github.com/ros/ros_comm/archive/1.12.14.tar.gz
 	sha256sums = 239c225cc9b1613cc7f76daf73c182f991787b7cf601287cb6cc28957eeeec1d
 

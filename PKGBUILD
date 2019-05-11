@@ -46,6 +46,10 @@ depends=(
 	${ros_depends[@]}
 )
 
+conflicts=(
+	ros-melodic-roscpp-git
+)
+
 _dir="ros_comm-${pkgver}/clients/roscpp"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
 sha256sums=('239c225cc9b1613cc7f76daf73c182f991787b7cf601287cb6cc28957eeeec1d')
