@@ -3,10 +3,10 @@
 
 pkgbase=gridcoinresearch
 pkgname=(gridcoinresearch-qt gridcoinresearchd)
-pkgver=4.0.2.0
+pkgver=4.0.3.0
 pkgrel=1
 pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network"
-makedepends=('boost' 'qt5-charts' 'qt5-tools' 'qrencode' 'db' 'icoutils')
+makedepends=('boost' 'qt5-charts' 'qt5-tools' 'qrencode' 'db')
 
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://gridcoin.us"
@@ -14,11 +14,9 @@ license=('custom:gridcoin')
 
 _sourcename="Gridcoin-Research-$pkgver"
 
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/gridcoin/Gridcoin-Research/archive/$pkgver.tar.gz"
-        'gridcoinresearch-qt.desktop')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/gridcoin/Gridcoin-Research/archive/$pkgver.tar.gz")
 
-sha256sums=('0fec799578460924be4f417a0223d132645edf30f2223a88de6150001aa63e8d'
-            '1c547e531726d3172895683f9673379fc51639689989e49494aa0f40fc6cb053')
+sha256sums=('4da89e4d3dcdd38ed24a3402b73383e8412eaf59207428ceaa6918764e4f2f85')
 
 build() {
   cd "$srcdir/$_sourcename"
@@ -37,16 +35,9 @@ package_gridcoinresearch-qt() {
   cd "$srcdir/$_sourcename"
 
   install -Dm755 usr/bin/gridcoinresearch "$pkgdir/usr/bin/gridcoinresearch"
-  install -Dm644 "${srcdir}/gridcoinresearch-qt.desktop" "$pkgdir/usr/share/applications/gridcoinresearch-qt.desktop"
+  cp -r ${srcdir}/${_sourcename}/usr/share ${pkgdir}/share/
   install -Dm644 doc/gridcoinresearch.1 "$pkgdir/usr/share/man/man1/gridcoinresearch.1"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-
-  cd "$srcdir/$_sourcename/share/pixmaps"
-  icotool -x bitcoin16.ico -o bitcoin16.png
-  icotool -x bitcoin64.ico -o bitcoin64.png
-  for size in 16 32 64 128 256; do
-    install -D "bitcoin${size}.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/gridcoinresearch.png"
-  done
 }
 
 package_gridcoinresearchd() {
