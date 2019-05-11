@@ -7,7 +7,7 @@ pkgdesc="High performance lz77 based compressor"
 arch=('x86_64')
 url="https://sites.google.com/site/powturbo/home"
 license=('custom')
-source=("https://sites.google.com/site/powturbo/downloads/lzturbo.7z")
+source=("https://sites.google.com/site/powturbo/downloads/lzturbo.7z?attredirects=0")
 sha256sums=('c5212cf0dcdbb35ebce5e3126fe8ec53bfd7618744a36b14ce08fb26bdb73d55')
 
 
