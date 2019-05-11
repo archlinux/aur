@@ -16,7 +16,6 @@ pkgbase = basilisk
 	makedepends = autoconf2.13
 	depends = gtk2
 	depends = libxt
-	depends = startup-notification
 	depends = mime-types
 	depends = alsa-lib
 	depends = ffmpeg

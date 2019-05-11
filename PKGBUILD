@@ -5,9 +5,9 @@ pkgdesc="Standalone web browser forked from mozilla.org, UXP version"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.basilisk-browser.org"
-depends=(gtk2 libxt startup-notification mime-types alsa-lib ffmpeg
-         libvpx libevent nspr nss hunspell hyphen sqlite ttf-font icu
-         libpng libjpeg bzip2 zlib libffi cairo pixman sqlite)
+depends=(gtk2 libxt mime-types alsa-lib ffmpeg libvpx libevent
+         nspr nss hunspell hyphen sqlite ttf-font icu libpng libjpeg
+         bzip2 zlib libffi cairo pixman sqlite)
 makedepends=(unzip zip python2 yasm mesa gconf autoconf2.13)
 optdepends=('libnotify: Notification integration')
 options=(!emptydirs)
@@ -40,10 +40,10 @@ ac_add_options --with-pthreads
 
 ac_add_options --enable-default-toolkit=cairo-gtk2
 ac_add_options --enable-alsa
-ac_add_options --enable-startup-notification
 
 ac_add_options --disable-pulseaudio
 ac_add_options --disable-dbus
+ac_add_options --disable-startup-notification
 
 ac_add_options --with-system-ffi
 ac_add_options --with-system-bz2
