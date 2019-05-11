@@ -1,0 +1,16 @@
+pkgbase = trebleshot
+	pkgdesc = A multi-platform file-sharing tool
+	pkgver = 0.1.0_alpha2
+	pkgrel = 1
+	url = https://github.com/genonbeta/TrebleShot-Desktop
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = qt5-base
+	depends = kdnssd
+	optdepends = qt5-wayland: Wayland support
+	source = https://github.com/genonbeta/TrebleShot-Desktop/archive/0.1.0-alpha2.tar.gz
+	sha1sums = ad98267e0129279531222bf28a5a61c03db8afa1
+
+pkgname = trebleshot
+
