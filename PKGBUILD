@@ -1,14 +1,14 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
 pkgname=git-remote-hg-git
-pkgver=r282.765f9ae
+pkgver=r285.f050de1
 pkgrel=1
 epoch=2
 provides=("git-remote-hg")
 conflicts=("git-remote-hg")
 pkgdesc="Transparent bidirectional bridge between Git and Mercurial"
 arch=('any')
-url="https://github.com/felipec/git-remote-hg"
+url="https://github.com/mnauw/git-remote-hg"
 license=('GPL2')
 depends=('git' 'mercurial')
 makedepends=('asciidoc')
