@@ -1,4 +1,4 @@
-# Maintainer: Icarus Mitchellson <mumei AT airmail DOT cc>
+# Maintainer: <mumei AT airmail DOT cc>
 
 pkgname=grr.app
 _pkgname=Grr
