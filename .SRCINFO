@@ -1,0 +1,14 @@
+pkgbase = nerdtree-git-plugin
+	pkgdesc = A plugin of NERDTree showing git status flags
+	pkgver = 20190511_325a1298b0c9d8a4c61388a2f9956a534a9068cd
+	pkgrel = 1
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = vim-nerdtree
+	source = git+https://github.com/Xuyuanp/nerdtree-git-plugin.git#commit=325a1298b0c9d8a4c61388a2f9956a534a9068cd
+	sha512sums = SKIP
+
+pkgname = nerdtree-git-plugin
+
