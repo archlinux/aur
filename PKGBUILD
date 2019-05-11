@@ -17,7 +17,7 @@ prepare() {
 	7z x "$srcdir/$pkgname-$pkgver.AppImage"
 	echo "https://fontba.se/legal/terms" > "$srcdir/COPYRIGHT"
 
-	sed -i 's/Exec=AppRun/Exec=fontbase' fontbase.desktop
+	sed -i 's/Exec=AppRun/Exec=fontbase/' fontbase.desktop
 }
 
 package() {
