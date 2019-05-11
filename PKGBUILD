@@ -5,7 +5,6 @@ url='http://ros.org/wiki/rosgraph'
 
 pkgname='ros-melodic-rosgraph'
 pkgver='1.14.3'
-_pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -30,9 +29,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="ros_comm-release-release-melodic-rosgraph-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosgraph/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e17c523458f3ae9cd5f463da95034fa8cea78a17fffdf0f1d2921047b812205d')
+_dir="ros_comm-${pkgver}/tools/rosgraph"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
+sha256sums=('3e49bef96b8a0f9684e5c4f1736d171e9c8842a3979d5d3c6442b53698e8167f')
 
 build() {
 	# Use ROS environment variables.
