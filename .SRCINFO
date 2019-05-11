@@ -1,7 +1,7 @@
 pkgbase = vlc-nightly
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot
 	pkgver = 4.0.0v20190511
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nightlies.videolan.org/
 	arch = x86_64
 	license = LGPL2.1
@@ -94,7 +94,7 @@ pkgbase = vlc-nightly
 	depends = fontconfig
 	depends = libxml2
 	depends = gnutls
-	depends = libplacebo
+	depends = libplacebo-git
 	depends = wayland-protocols
 	depends = aribb24
 	optdepends = avahi: service discovery using bonjour protocol
