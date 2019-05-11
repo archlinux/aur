@@ -2,36 +2,26 @@
 # Contributor: smcdougall <simon at sjmcdougall dot com>
 
 pkgname=gnome-shell-extension-multi-monitors-add-on-git
-pkgver=20190511
+pkgver=r82.d72eb2d
 pkgrel=1
 pkgdesc="Updated for Gnome 3.32. Adds panels and thumbnails for additional monitors. Settings changes are applied in dynamic fashion, no restart needed."
 arch=('any')
 url="https://github.com/spin83/multi-monitors-add-on"
+source=("${pkgname}::git+https://github.com/spin83/multi-monitors-add-on.git#branch=master")
+md5sums=(SKIP)
 license=('GPL2')
 depends=('gnome-shell')
 makedepends=('git')
 groups=('gnome-shell-extensions')
 
-_gitroot="git://github.com/spin83/multi-monitors-add-on.git"
-_gitname="multi-monitors-add-on"
-
-build() {
-    cd "${srcdir}"
-    msg "Connecting to GIT server...."
-
-    if [ -d $_gitname ] ; then
-        cd $_gitname && git pull origin
-        msg "The local files are updated."
-    else
-        git clone $_gitroot $_gitname
-    fi
-
-    msg "GIT checkout done or server timeout"
+pkgver() {
+    cd "$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
     uuid="multi-monitors-add-on@spin83"
-    cd "${srcdir}/${_gitname}"
+    cd "${srcdir}/${pkgname}/"
 
     install -Dm644 "${uuid}/schemas/org.gnome.shell.extensions.multi-monitors-add-on.gschema.xml" \
       "${pkgdir}/usr/share/glib-2.0/schemas/org.gnome.shell.extensions.multi-monitors-add-on.gschema.xml"
@@ -41,6 +31,5 @@ package() {
     cp -a "${uuid}/" "${pkgdir}/usr/share/gnome-shell/extensions/"
     
     rm -rf "${pkgdir}/usr/share/gnome-shell/extensions/${uuid}/schemas"
-
 }
 
