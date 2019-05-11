@@ -1,5 +1,5 @@
 pkgname=electrum-ltc-git
-pkgver=3.3.3.1.git20190211.947fa82
+pkgver=3.3.5.1.git20190510.eed0e58
 pkgrel=1
 pkgdesc='Litecoin thin client'
 arch=(any)
@@ -23,6 +23,7 @@ depends=(desktop-file-utils
          python-qrcode
          python-scrypt
          python-websocket-client
+         python-websockets
          zbar)
 makedepends=(git python-requests)
 source=(git+https://github.com/pooler/electrum-ltc)
