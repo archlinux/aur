@@ -5,9 +5,8 @@ url='http://www.ros.org/wiki/bondcpp'
 
 pkgname='ros-melodic-bondcpp'
 pkgver='1.8.3'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -38,9 +37,13 @@ depends=(
 	util-linux
 )
 
-_dir="bond_core-release-release-melodic-bondcpp-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/bond_core-release/archive/release/melodic/bondcpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('617c5cf1ac30c5af9d02024bef3b9a010ff70fb3779220d77eb9e4863530c790')
+optdepends=(
+)
+
+
+_dir="bond_core-${pkgver}/bondcpp"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/bond_core/archive/${pkgver}.tar.gz")
+sha256sums=('9f2bd791abc0356f47235db7e2b042479e6a091cf2cd969d0918a8e0c76b632d')
 
 build() {
 	# Use ROS environment variables.
