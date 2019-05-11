@@ -3,10 +3,10 @@
 
 pkgname=nest
 pkgver=2.16.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simulator for spiking neural network models"
 arch=('x86_64')
-url="http://www.nest-simulator.org/"
+url="https://www.nest-simulator.org/"
 license=('GPL')
 depends=('gsl' 'libtool' 'python')
 makedepends=('cmake' 'cython')
