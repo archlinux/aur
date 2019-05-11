@@ -1,0 +1,21 @@
+pkgbase = libdbusaccess-git
+	pkgdesc = Access control over D-Bus
+	pkgver = 1.0.8.r0.gcf39757
+	pkgrel = 1
+	url = https://git.sailfishos.org/mer-core/libdbusaccess
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = make
+	makedepends = bison
+	makedepends = flex
+	depends = glib2
+	depends = dbus
+	provides = libdbusaccess
+	conflicts = libdbusaccess
+	source = libdbusaccess::git+https://git.sailfishos.org/mer-core/libdbusaccess.git
+	sha256sums = SKIP
+
+pkgname = libdbusaccess-git
+
