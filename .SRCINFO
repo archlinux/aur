@@ -1,0 +1,13 @@
+pkgbase = mod_pagespeed-bin
+	pkgdesc = Apache module for rewriting web pages to reduce latency and bandwidth.
+	pkgver = 1.13.35.2
+	pkgrel = 1
+	url = https://www.modpagespeed.com/
+	arch = x86_64
+	license = Apache
+	depends = apache
+	source = https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb
+	sha256sums = 14de0b868f4da98bdfdf9cd8e2c12e3abc2a93029168ea27bfb3eb5ea158e3a5
+
+pkgname = mod_pagespeed-bin
+
