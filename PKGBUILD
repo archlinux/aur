@@ -2,8 +2,8 @@
 # Contributor: carstene1ns <url/mail: arch carsten-teibes de>
 
 pkgname=trackma-git
-pkgver=0.8.1.r61.g1d0ae32
-pkgrel=1
+pkgver=0.8.1
+pkgrel=2
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 arch=('any')
 url="http://z411.github.io/trackma/"
@@ -40,6 +40,11 @@ replaces=('wmal-git')
 pkgver() {
   cd ${pkgname}
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
+}
+
+prepare() {
+  cd ${pkgname}
+  git submodule update --init
 }
 
 package() {
