@@ -1,6 +1,7 @@
-# Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
+# Previous Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=simbody
-pkgver=3.6
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="High-performance C++ multibody dynamics/physics library for simulating articulated biomechanical and mechanical systems like vehicles, robots, and the human skeleton."
 arch=('i686' 'x86_64')
@@ -12,30 +13,38 @@ makedepends=('cmake')
 provides=()
 conflicts=()
 
-_dir="${pkgname}-Simbody-${pkgver}"
 source=("https://github.com/simbody/${pkgname}/archive/Simbody-${pkgver}.tar.gz")
-sha256sums=('bafce4b32dda4e174700733da1cd4f5f77f490daa96b92ed64bb881b0a885aa8')
+sha256sums=('7716d6ea20b950e71e8535faa4353ac89716c03fd7a445dd802eb6a630796639')
+
+_buildtype="Release"
 
 build() {
-  # Create build directory
-  mkdir -p ${srcdir}/build && cd ${srcdir}/build
 
-  # Build project
-  # Note: CMAKE_INSTALL_LIBDIR is used to avoid the
-  # "/usr/lib64 exists in filesystem" error
-  cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib
-  make
+    msg "Starting CMake (build type: ${_buildtype})"
+
+    # Create a build directory
+    mkdir -p "${srcdir}/${pkgname}-Simbody-${pkgver}/build"
+    cd "${srcdir}/${pkgname}-Simbody-${pkgver}/build"
+
+    # Build project
+    cmake .. \
+        -DCMAKE_BUILD_TYPE="${_buildtype}" \
+        -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr"
+        #-DCMAKE_INSTALL_LIBDIR=lib
+
+    msg "Building the project"
+    make -j4
 }
 
-check() {
-  cd "${srcdir}/build"
-  make test
-}
+#check() {
+#    cd "${srcdir}/${pkgname}-Simbody-${pkgver}/build"
+#    make test
+#}
 
 package() {
-  cd "${srcdir}/build"
-  make DESTDIR="${pkgdir}/" install
+
+    cd "${srcdir}/${pkgname}-Simbody-${pkgver}/build"
+
+    msg "Installing files"
+    make DESTDIR="${pkgdir}/" install
 }
