@@ -1,7 +1,7 @@
 pkgbase = python2-numba
 	pkgdesc = NumPy aware dynamic Python compiler using LLVM
-	pkgver = 0.43.0
-	pkgrel = 2
+	pkgver = 0.43.1
+	pkgrel = 1
 	url = http://numba.pydata.org/
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = python2-numba
 	depends = python2-numpy>=1.10
 	depends = python2-funcsigs
 	depends = python2-singledispatch
-	source = https://github.com/numba/numba/archive/0.43.0.tar.gz
-	sha256sums = 037d2fd46318e94b7dd33deed0284f2a59571ba0439ec1f1e1394b7c9aee00f2
+	source = https://github.com/numba/numba/archive/0.43.1.tar.gz
+	sha256sums = 00d1050f0b6d0f7e347981fd0f1e53f0d9110c123177876fcb86d3d9acd06bb2
 
 pkgname = python2-numba
 
