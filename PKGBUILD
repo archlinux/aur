@@ -1,7 +1,7 @@
 # Maintainer: Robin Lange <robin dot langenc at gmail dot com>
 # Contributor: Robin Lange <robin dot langenc at gmail dot com>
 pkgname=optimus-manager-git
-pkgver=v0.8.r102.g2a678c8
+pkgver=0.8.r103.g7e88461
 pkgrel=1
 pkgdesc="Management utility to handle GPU switching for Optimus laptops (Git version)"
 arch=('any')
@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/optimus-manager/"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
  
 build() {
