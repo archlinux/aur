@@ -1,4 +1,4 @@
-# Maintainer: Icarus Mitchellson <mumei AT airmail DOT cc>
+# Maintainer: <mumei AT airmail DOT cc>
 
 pkgname=timemon.app
 _pkgname=TimeMon
