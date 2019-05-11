@@ -6,7 +6,7 @@ pkgname=(
   tlp-git
   tlp-rdw-git
 )
-pkgver=1.2.1.r22.5d2abde
+pkgver=1.2.2.r4.3c7b9f3
 pkgrel=1
 arch=(any)
 url=https://linrunner.de/en/tlp/tlp.html
@@ -32,10 +32,12 @@ package_tlp-git() {
     util-linux
   )
   optdepends=(
+    'acpi_call: ThinkPad battery functions, Sandy Bridge and newer'
     'bash-completion: Bash completion'
     'ethtool: Disable Wake On Lan'
     'lsb-release: Display LSB release version in tlp-stat'
     'smartmontools: Display S.M.A.R.T. data in tlp-stat'
+    'tp_smapi: ThinkPad battery functions'
     'x86_energy_perf_policy: Set energy versus performance policy on x86 processors'
   )
   provides=(tlp)
@@ -46,14 +48,14 @@ package_tlp-git() {
   )
   backup=(etc/default/tlp)
 
-  export TLP_SBIN=/usr/bin
-  export TLP_ULIB=/usr/lib/udev
-  export TLP_SYSD=/usr/lib/systemd/system
   export TLP_NO_INIT=1
-  export TLP_WITH_SYSTEMD=1
+  export TLP_SBIN=/usr/bin
+  export TLP_SYSD=/usr/lib/systemd/system
+  export TLP_ULIB=/usr/lib/udev
   export TLP_WITH_ELOGIND=0
+  export TLP_WITH_SYSTEMD=1
 
-  make DESTDIR="${pkgdir}" -C TLP install-tlp install-man
+  make DESTDIR="${pkgdir}" -C TLP install-tlp install-man-tlp
 }
 
 package_tlp-rdw-git() {
