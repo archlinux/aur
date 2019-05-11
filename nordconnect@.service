@@ -1,0 +1,10 @@
+[Unit]
+Description=Connect to a NordVPN server
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/nordconnect %I
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

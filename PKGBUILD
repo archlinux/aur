@@ -10,11 +10,14 @@ license=('GPL3')
 depends=('openvpn')
 optdepends=('nordselect: select the ideal server'
             'openvpn-update-systemd-resolved: use NordVPN DNS servers with systemd-resolved')
-source=(nordconnect)
-sha256sums=('fcbece552d66bc97073e6578e27417bdc95a89c7b768ee82c606c996c3998915')
+source=(nordconnect
+        nordconnect@.service)
+sha256sums=('907cd2e76802fd0e56b092e3af3803380e1045d42d354a84df0ca842ddf11862'
+            '6531f9d2ee64a788fe99e2be82da10fe70fecdcc7c0b614fa2dae6551ed53487')
 
 package() {
   install -Dm755 nordconnect "${pkgdir}/usr/bin/nordconnect"
+  install -Dm755 nordconnect@.service "${pkgdir}/usr/lib/systemd/user/nordconnect@.service"
 }
 
 # vim:set ts=2 sw=2 et:

@@ -29,5 +29,11 @@ $ nordconnect us123
 $ nordconnect $(nordselect us)
 ```
 
+### Systemd service
+nordconnect ships with a systemd service unit, taking a server argument. Start/enable it with:
+```
+systemctl --user start nordconnect@<server>.service
+```
+
 ## License
 This project is licensed under the [GNU General Public License version 3](https://opensource.org/licenses/GPL-3.0)
