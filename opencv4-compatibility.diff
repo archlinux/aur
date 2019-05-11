@@ -1,0 +1,178 @@
+--- src/scannerExtract-0.2.601/scannerExtract/CMakeLists.txt	2015-09-26 10:49:09.000000000 +0200
++++ opencv4/scannerExtract-0.2.601/scannerExtract/CMakeLists.txt	2019-05-06 21:10:06.827283655 +0200
+@@ -39,12 +39,14 @@
+ find_package (Qt5Network  REQUIRED)
+ find_package (Qt5Svg REQUIRED)
+ 
++#if (OPENCV2)
++#    find_package (OpenCV REQUIRED core imgproc highgui)
++#    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DOPENCV2")
++#else()
++#    find_package (OpenCV REQUIRED core imgproc imgcodecs)
++#endif()
++
++find_package (OpenCV REQUIRED)
+-if (OPENCV2)
+-    find_package (OpenCV REQUIRED core imgproc highgui)
+-    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DOPENCV2")
+-else()
+-    find_package (OpenCV REQUIRED core imgproc imgcodecs)
+-endif()
+ 
+ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+ 
+@@ -168,6 +170,10 @@
+       )
+ endif(WIN32)
+ 
++
++target_link_libraries( ${PROJECTNAME} ${OpenCV_LIBS} )
++
++
+ # add nice icon for Gnome and KDE and add to default programs for cameras
+ include ( ${CMAKE_CURRENT_LIST_DIR}/../CMakeModules/installDesktop.cmake )
+ #set(sizes "16x16" "22x22" "24x24" "36x36" "42x42" "72x72" "96x96" "32x32" "48x48" "64x64" "128x128" "80x80")
+--- src/scannerExtract-0.2.601/scannerExtract/copytargets.cpp	2015-09-26 10:48:58.000000000 +0200
++++ opencv4/scannerExtract-0.2.601/scannerExtract/copytargets.cpp	2019-05-06 22:10:38.220981451 +0200
+@@ -20,7 +20,7 @@
+ 
+ #include "copytargets.h"
+ 
++#include <opencv2/opencv.hpp>
+-#include <opencv/cv.h>
+ #ifndef OPENCV2
+ #include <opencv2/opencv.hpp>
+ #include <opencv2/imgcodecs.hpp>
+@@ -127,7 +127,7 @@
+ 
+         QMutexLocker l2(&memorySaveMutex);
+         cv::Mat src = cv::imread(file->source.canonicalFilePath().toLocal8Bit().data(),
++                                 cv::IMREAD_ANYDEPTH | cv::IMREAD_ANYCOLOR);
+-                                 CV_LOAD_IMAGE_ANYDEPTH | CV_LOAD_IMAGE_ANYCOLOR);
+         QDir targetDir (QDir::rootPath());
+         targetDir.mkpath(QFileInfo(_targetDir).absolutePath());
+ 
+@@ -168,7 +168,7 @@
+             cv::transpose(mapY, mapY);
+             ABORT_CURRENT_TEST(false);
+ 
++            cv::remap(src, out, mapX, mapY, cv::INTER_CUBIC);
+-            cv::remap(src, out, mapX, mapY, CV_INTER_CUBIC);
+             mapX.release();
+             mapY.release();
+             cv::flip(out, out, 0);
+--- src/scannerExtract-0.2.601/scannerExtract/imageboundary.h	2015-08-01 15:22:55.000000000 +0200
++++ opencv4/scannerExtract-0.2.601/scannerExtract/imageboundary.h	2019-05-06 21:12:06.477365957 +0200
+@@ -27,7 +27,7 @@
+ #include <memory>
+ #include <QDebug>
+ 
++#include <opencv2/opencv.hpp>
+-#include <opencv/cv.h>
+ 
+ class TargetImage;
+ 
+--- src/scannerExtract-0.2.601/scannerExtract/preloadsource.cpp	2015-09-24 11:07:45.000000000 +0200
++++ opencv4/scannerExtract-0.2.601/scannerExtract/preloadsource.cpp	2019-05-06 21:54:43.026639547 +0200
+@@ -27,7 +27,10 @@
+ #include <QtMath>
+ #include <QDateTime>
+ 
++//#include <opencv/cv.h>
++#include <opencv2/opencv.hpp>
++#include <opencv2/core/core.hpp>
++
+-#include <opencv/cv.h>
+ #ifndef OPENCV2
+ #include <opencv2/opencv.hpp>
+ #include <opencv2/imgcodecs.hpp>
+@@ -194,18 +197,18 @@
+     sumValues = 0;
+     numPixels = 0;
+ 
++    cv::Mat tmp = image;
+-    IplImage tmp = image;
+     assert(image.type() == CV_8U);
+ 
+     for (int i=0; i<4; i++)
+     {
+ 
++        cv::LineIterator iterator(tmp,pts[i],pts[(i+1)%4],4);
++        const int count = iterator.count;
+-        CvLineIterator iterator;
+-        const int count = cvInitLineIterator( &tmp, pts[i], pts[(i+1)%4], &iterator, 4);
+ 
+         for( int j = 0; j < count; j++ ){
+             sumValues += iterator.ptr[0];
++            iterator.operator++();
+-            CV_NEXT_LINE_POINT(iterator);
+         }
+         /* for float images:
+         cv::Point2f diff = pts[(i+1)%4] - pts[i];
+@@ -947,13 +950,13 @@
+ cv::Mat PreloadSource::loadAndShrink(const QString& filename)
+ {
+     cv::Mat image = cv::imread(filename.toLocal8Bit().data(),
++                               cv::IMREAD_ANYDEPTH | cv::IMREAD_ANYCOLOR);
+-                               CV_LOAD_IMAGE_ANYDEPTH | CV_LOAD_IMAGE_ANYCOLOR);
+ 
+     if (image.channels() == 1) {
++        cv::cvtColor(image, image, cv::COLOR_GRAY2BGR);
+-        cv::cvtColor(image, image, CV_GRAY2BGR);
+     }
+     if (image.channels() == 4) {
++        cv::cvtColor(image, image, cv::COLOR_BGRA2BGR);
+-        cv::cvtColor(image, image, CV_BGRA2BGR);
+     }
+ 
+     if (image.depth() == CV_16S
+@@ -1059,7 +1062,7 @@
+     cv::morphologyEx(overallMask, overallMask, cv::MORPH_OPEN, kernel);
+     cv::erode(overallMask, overallMask, kernel);
+ 
++    cv::threshold(overallMask, out, _threshold*levels, 1, cv::THRESH_BINARY);
+-    cv::threshold(overallMask, out, _threshold*levels, 1, CV_THRESH_BINARY);
+     out.convertTo(out, CV_8U);
+     ABORT_COMPUTATION()
+ 
+@@ -1073,8 +1076,8 @@
+     std::vector<cv::Vec4i> hierarchy;
+ 
+     cv::findContours( out, contours, hierarchy,
++                      cv::RETR_TREE , //CV_RETR_LIST,
++                      cv::CHAIN_APPROX_TC89_KCOS //CV_CHAIN_APPROX_NONE
+-                      CV_RETR_TREE , //CV_RETR_LIST,
+-                      CV_CHAIN_APPROX_TC89_KCOS //CV_CHAIN_APPROX_NONE
+                       );
+     ABORT_COMPUTATION()
+ 
+@@ -1357,7 +1360,7 @@
+             {
+                 // QImage has different rgb ordering
+                 cv::Mat tmp;
++                cv::cvtColor(loadedData, tmp, cv::COLOR_BGR2RGB);
+-                cv::cvtColor(loadedData, tmp, CV_BGR2RGB);
+ 
+                 sourceFile->imageOrig = QImage(tmp.data,
+                                                tmp.size().width,
+--- src/scannerExtract-0.2.601/scannerExtract/preloadsource.h	2015-08-07 18:37:35.000000000 +0200
++++ opencv4/scannerExtract-0.2.601/scannerExtract/preloadsource.h	2019-05-06 21:12:33.591462997 +0200
+@@ -28,7 +28,7 @@
+ #include <QPair>
+ #include <QVector>
+ 
++#include <opencv2/opencv.hpp>
+-#include <opencv/cv.h>
+ 
+ #include "sourcefile.h"
+ 
+--- src/scannerExtract-0.2.601/scannerExtract/sourcefile.h	2015-08-07 18:37:35.000000000 +0200
++++ opencv4/scannerExtract-0.2.601/scannerExtract/sourcefile.h	2019-05-06 21:11:13.885857298 +0200
+@@ -22,7 +22,7 @@
+ #define SOURCEFILE_H
+ 
+ #include <QFileInfo>
++#include <opencv2/opencv.hpp>
+-#include <opencv/cv.h>
+ 
+ #include "TargetImage.h"
