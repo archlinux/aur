@@ -1,0 +1,11 @@
+post_install() {
+	ln -sf '/opt/tutanota-desktop-linux/tutanota-desktop-linux.AppImage' '/usr/bin/tutanota-desktop-linux'
+}
+
+post_upgrade() {
+	post_install $1
+}
+
+post_remove() {
+	rm -f '/usr/bin/tutanota-desktop-linux'
+}
