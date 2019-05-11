@@ -1,0 +1,17 @@
+pkgbase = consul-git
+	pkgdesc = Consul is a distributed, highly available, and data center aware solution to connect and configure applications across dynamic, distributed infrastructure.
+	pkgver = v1.5.0_5_g5508fd164
+	pkgrel = 1
+	url = https://www.consul.io/
+	arch = x86_64
+	license = MPL2
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = consul
+	conflicts = consul
+	source = git+https://github.com/hashicorp/consul.git
+	sha256sums = SKIP
+
+pkgname = consul-git
+
