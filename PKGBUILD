@@ -1,7 +1,7 @@
 # Maintainer: Frank Vanderham <twelve_dot_eighty_at_gmail_dot_com>
 pkgname=pam_mount-git
 pkgver=2.16
-pkgrel=2
+pkgrel=3
 pkgdesc="A PAM module that can mount volumes for a user session"
 arch=('x86_64')
 url="http://pam-mount.sourceforge.net/"

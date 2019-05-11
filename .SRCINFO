@@ -1,7 +1,7 @@
 pkgbase = pam_mount-git
 	pkgdesc = A PAM module that can mount volumes for a user session
 	pkgver = 2.16
-	pkgrel = 1
+	pkgrel = 3
 	url = http://pam-mount.sourceforge.net/
 	arch = x86_64
 	license = GPL
