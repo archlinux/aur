@@ -3,7 +3,7 @@
 _commit="5d991eb808571ab463694ee1ec31b22c8b753c34" # v0.6.0
 pkgbase="python-jwcrypto"
 pkgname=("python-jwcrypto" "python2-jwcrypto")
-pkgver="0.6"
+pkgver=v0.6.0.r0.g5d991eb
 pkgrel=1
 pkgdesc="Python implementation of JWK, JWS, JWE specifications"
 arch=("any")
