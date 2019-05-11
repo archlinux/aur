@@ -16,8 +16,8 @@ pkgbase = irrlamb
 	depends = libjpeg-turbo
 	depends = libpng
 	depends = zlib
-	source = https://github.com/jazztickets/irrlamb/releases/download/v1.0.1/irrlamb-1.0.1r612-src.tar.gz
-	sha256sums = 743e42a6ef75181b9313d2b7d5a6ff93fbaa42ab31e2043726932f6e2a8dbbf2
+	source = https://github.com/jazztickets/irrlamb/releases/download/v1.0.1/irrlamb-1.0.1r613-src.tar.gz
+	sha256sums = 8bb7d49a41c57170f4104c64176f975986b99646752f29749a4a1dabd702750a
 
 pkgname = irrlamb
 
