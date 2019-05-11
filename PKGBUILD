@@ -1,22 +1,21 @@
 # Maintainer: Oliver Giles <web ohwg net>
 pkgname=laminar
-pkgver=0.6
-pkgrel=3
+pkgver=0.7
+pkgrel=1
 pkgdesc="Fast and lightweight Continuous Integration server"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://laminar.ohwg.net"
 license=('GPL3')
 groups=()
-depends=('capnproto>=0.7' 'sqlite' 'boost-libs')
-makedepends=('cmake' 'boost' 'rapidjson' 'websocketpp')
+depends=('capnproto>=0.7' 'sqlite')
+makedepends=('cmake' 'boost' 'rapidjson')
 options=('strip')
 source=("https://github.com/ohwgiles/laminar/archive/$pkgver.tar.gz")
 install=laminar.install
-md5sums=('0227ce523eef0605b10cbda30ad605d9')
+md5sums=('83f74d760917b29d5b7769c4b038237e')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
-	sed 's/-std=c++11/-std=c++14/' -i CMakeLists.txt
 }
 
 build() {
