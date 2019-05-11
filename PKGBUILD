@@ -12,7 +12,7 @@ _srcname=${pkgbase}
 _kernel_rel=5.1
 _branch=amd-staging-drm-next
 _kernelname=${pkgbase#linux}
-pkgver=5.1.810962.c9115f8904ee
+pkgver=5.1.811355.276cfd531ed6
 pkgrel=1
 arch=(x86_64)
 url='https://cgit.freedesktop.org/~agd5f/linux/'
@@ -26,7 +26,7 @@ source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            'a115b399bcb0b32317433a838c27efde1009a6d3a2feae49deed86df28fe8d2f'
+            '1745dfca6d7ec20c033c22fd14651552dfd8077dfdd388256a8728d61fcd2e36'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -66,7 +66,9 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules htmldocs
+#mainline: disabled for 5.1-rc5
+#make bzImage modules htmldocs
+  make bzImage modules
 }
 
 _package() {
@@ -217,17 +219,19 @@ _package-docs() {
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
-  msg2 "Removing doctrees..."
-  rm -r "$builddir/Documentation/output/.doctrees"
+  #mainline: disabled for 5.1-rc5
 
-  msg2 "Moving HTML docs..."
-  local src dst
-  while read -rd '' src; do
-    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    mkdir -p "${dst%/*}"
-    mv "$src" "$dst"
-    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  done < <(find "$builddir/Documentation/output" -type f -print0)
+  #msg2 "Removing doctrees..."
+  #rm -r "$builddir/Documentation/output/.doctrees"
+
+  #msg2 "Moving HTML docs..."
+  #local src dst
+  #while read -rd '' src; do
+    #dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+    #mkdir -p "${dst%/*}"
+    #mv "$src" "$dst"
+    #rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  #done < <(find "$builddir/Documentation/output" -type f -print0)
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
