@@ -18,6 +18,9 @@ depends=(
 	'python-pydbus'
 	'pygobject-devel'
 )
+optdepends=(
+	'youtube-dl: YouTube videos playback'
+)
 makedepends=(
 	'git'
 	'python-distribute'

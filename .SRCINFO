@@ -16,6 +16,7 @@ pkgbase = tuijam-git
 	depends = python-scrypt
 	depends = python-pydbus
 	depends = pygobject-devel
+	optdepends = youtube-dl: YouTube videos playback
 	provides = tuijam
 	conflicts = tuijam
 	source = git+https://github.com/cfangmeier/tuijam.git
