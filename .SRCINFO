@@ -1,0 +1,30 @@
+pkgbase = nymea-networkmanager-git
+	pkgdesc = This daemon allows to set up the wireless network using a Bluetooth LE connection.
+	pkgver = r51.03bff81
+	pkgrel = 1
+	url = https://github.com/guh/nymea-networkmanager
+	install = nymea-networkmanager.install
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = qt5-base
+	makedepends = qt5-connectivity
+	depends = qt5-base
+	depends = glibc
+	depends = gcc-libs
+	depends = qt5-connectivity
+	depends = gnupg
+	depends = bluez
+	depends = networkmanager
+	depends = pi-bluetooth
+	provides = nymea-networkmanager
+	conflicts = nymea-networkmanager
+	backup = etc/nymea/nymea-networkmanager.conf
+	source = git+https://github.com/guh/nymea-networkmanager.git
+	md5sums = SKIP
+
+pkgname = nymea-networkmanager-git
+
