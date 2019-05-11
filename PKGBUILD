@@ -1,15 +1,16 @@
-# Maintainer: Andrew Chen <andrew.chuanye.chen@gmail.com>
+# Maintainer: Erica Clawson <blargle.ragequit@gmail.com>
+# Contributor: Andrew Chen <andrew.chuanye.chen@gmail.com>
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=kdeplasma-applets-gmailfeed
 _pkgname=gmailfeed
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Plasma 5 plasmoid showing your Gmail feed."
 arch=('i686' 'x86_64')
 url="https://github.com/anthon38/gmailfeed"
 license=('GPL3')
-depends=('plasma-framework' 'hicolor-icon-theme' 'knotifications')
+depends=('plasma-framework' 'hicolor-icon-theme' 'knotifications' 'qt5-xmlpatterns')
 makedepends=('extra-cmake-modules')
 install=${pkgname}.install
 source=('https://github.com/anthon38/gmailfeed/archive/v1.1.tar.gz')
