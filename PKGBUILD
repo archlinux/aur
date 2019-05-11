@@ -1,7 +1,7 @@
 # Maintainer: Pawel Mosakowski <pawel at mosakowski dot net>
 pkgname=appgate-sdp
 conflicts=('appgate-sdp-headless')
-pkgver=4.2.1
+pkgver=4.2.2
 _download_pkgver=4.2
 pkgrel=1
 epoch=
@@ -31,6 +31,5 @@ package() {
     cp -v "$pkgdir/usr/share/doc/appgate/LICENSE.github" "$pkgdir/usr/share/licenses/appgate-sdp"
     cp -v "$pkgdir/usr/share/doc/appgate/LICENSES.chromium.html.bz2" "$pkgdir/usr/share/licenses/appgate-sdp"
 }
-
-md5sums=('7ecef2f9033ed09dec081084446deaee'
+md5sums=('cdc1ec9ce02f95a5d826f876d9e55bc5'
          '002644116e20b2d79fdb36b7677ab4cf')
