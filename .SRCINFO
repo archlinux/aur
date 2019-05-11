@@ -1,6 +1,6 @@
 pkgbase = libui-git
 	pkgdesc = A portable GUI library for C
-	pkgver = alpha4.1.r93.g751ce562
+	pkgver = alpha4.1.r314.g17486fd1
 	pkgrel = 1
 	url = https://github.com/andlabs/libui
 	arch = i686
@@ -9,6 +9,8 @@ pkgbase = libui-git
 	makedepends = make
 	makedepends = gcc
 	makedepends = cmake
+	makedepends = meson
+	makedepends = ninja
 	depends = gtk3
 	depends = libx11
 	depends = libxcb
