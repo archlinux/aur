@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  make
+  make KEEP_SYMBOLS=1 release pkgconfig
 }
 
 package() {
