@@ -12,7 +12,7 @@ optdepends=('nordselect: select the ideal server'
             'openvpn-update-systemd-resolved: use NordVPN DNS servers with systemd-resolved')
 source=(nordconnect
         nordconnect@.service)
-sha256sums=('907cd2e76802fd0e56b092e3af3803380e1045d42d354a84df0ca842ddf11862'
+sha256sums=('cd461bfe2b5ffbabb0510a5529e31157ae93f8d01a09ce4d1c271ad4b67033b8'
             '6531f9d2ee64a788fe99e2be82da10fe70fecdcc7c0b614fa2dae6551ed53487')
 
 package() {

@@ -1,8 +1,10 @@
 #!/usr/bin/env sh
 
+CACHE="${XDG_CACHE_HOME:-${HOME}/.cache}/nordconnect"
 CONFIG="${XDG_CONFIG_HOME:-${HOME}/.config}/nordconnect"
 CREDENTIALS="${CONFIG}/credentials"
 FILES_FOLDER="${CONFIG}/files"
+ZIP_FILE="${CACHE}/ovpn.zip"
 
 die() {
   echo "$@" >&2; exit 1
@@ -14,8 +16,13 @@ connect() {
 
   [ -f "$CREDENTIALS" ] || die "Please run ${0} --init before connecting for the first time."
 
-  CONFIG_FILE="${FILES_FOLDER}/ovpn_${PORT}/${SERVER}.nordvpn.com.${PORT}.ovpn"
-  [ -f "$CONFIG_FILE" ] || die "Server ${SERVER} not found, try running ${0} --update"
+  [ -d "$FILES_FOLDER" ] || mkdir -p "$FILES_FOLDER"
+  CONFIG_FILE="ovpn_${PORT}/${SERVER}.nordvpn.com.${PORT}.ovpn"
+
+  [ -f "${FILES_FOLDER}/${CONFIG_FILE}" ] || {
+    unzip -t "$ZIP_FILE" "$CONFIG_FILE" >/dev/null || update
+    unzip -oqu "$ZIP_FILE" "$CONFIG_FILE" -d "$FILES_FOLDER" || die "Server ${SERVER} on port ${PORT} not found."
+  }
 
   echo "Connecting to server ${SERVER} on port ${PORT}"
 
@@ -26,7 +33,7 @@ connect() {
   set -- \
     --redirect-gateway \
     --auth-retry nointeract \
-    --config "$CONFIG_FILE" \
+    --config "${FILES_FOLDER}/${CONFIG_FILE}" \
     --auth-user-pass "$CREDENTIALS" \
     --log "${LOGS_FOLDER}/openvpn.log" \
     --status "${LOGS_FOLDER}/status.log" \
@@ -62,8 +69,8 @@ init() {
 }
 
 update() {
-  CACHE="${HOME}/.cache/nordconnect"
   [ -d "$CACHE" ] || mkdir -p "$CACHE"
+  rm -- "$ZIP_FILE"
 
   # shamelessly stolen from winetricks
   case "$NORDCONNECT_DOWNLOADER" in
@@ -90,8 +97,6 @@ update() {
   DOWNLOADER_TIMEOUT=${NORDCONNECT_DOWNLOADER_TIMEOUT:-15}
 
   URL='https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip'
-  FILE=$(basename "$URL")
-  OUTPUT_FILE="${CACHE}/${FILE}"
 
   echo "Downloading ${URL}"
   case "$DOWNLOADER" in
@@ -100,18 +105,18 @@ update() {
         --connect-timeout="$DOWNLOADER_TIMEOUT" \
         --continue \
         --daemon=false \
-        --dir="$CACHE" \
+        --dir="$(dirname "$ZIP_FILE")" \
         --enable-rpc=false \
         --input-file='' \
         --max-connection-per-server=5 \
         --max-tries="$DOWNLOADER_RETRIES" \
-        --out="$FILE" \
+        --out="$(basename "$ZIP_FILE")" \
         --save-session='' \
         --stream-piece-selector=geom \
         "$URL";;
     wget)
       wget \
-        -O "$OUTPUT_FILE" \
+        -O "$ZIP_FILE" \
         -nd \
         -c \
         --read-timeout 300 \
@@ -123,23 +128,21 @@ update() {
       curl \
         --connect-timeout "$DOWNLOADER_TIMEOUT" \
         -L \
-        -o "$OUTPUT_FILE" \
+        -o "$ZIP_FILE" \
         -C - \
         --retry "$DOWNLOADER_RETRIES" \
         "$URL";;
     fetch)
       fetch \
         -T "$DOWNLOADER_TIMEOUT" \
-        -o "$OUTPUT_FILE" \
+        -o "$ZIP_FILE" \
         "$URL";;
     *) die 'Here be dragons';;
   esac || die "Could not download $URL!"
 
-  [ -d "$FILES_FOLDER" ] || mkdir -p "$FILES_FOLDER"
+  find "$FILES_FOLDER" -name "*.ovpn" -delete
 
-  echo "Extracting ${OUTPUT_FILE}"
-  unzip -oqu "$OUTPUT_FILE" -d "$FILES_FOLDER"
-  unset DOWNLOADER DOWNLOADER_RETRIES DOWNLOADER_TIMEOUT FILE CACHE OUTPUT_FILE URL
+  unset DOWNLOADER DOWNLOADER_RETRIES DOWNLOADER_TIMEOUT URL
 }
 
 usage() {
@@ -185,6 +188,6 @@ case "${ACTION:-usage}" in
   *) usage;;
 esac
 
-unset ACTION CONFIG CREDENTIALS FILES_FOLDER PORT SERVER TEMP
+unset ACTION CACHE CONFIG CREDENTIALS FILES_FOLDER PORT SERVER TEMP
 
 # vim:set ts=2 sw=2 et:
