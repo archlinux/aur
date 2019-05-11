@@ -1,5 +1,6 @@
 post_install() {
 	id kvmd-webterm &>/dev/null || useradd -r -m -c "Pi-KVM - Web terminal (ttyd)" -s /bin/bash kvmd-webterm
+	(groupmems -l -g kvmd | grep kvmd-webterm >/dev/null) || groupmems -g kvmd -a kvmd-webterm
 	(groupmems -l -g kvmd-webterm | grep kvmd-nginx >/dev/null) || groupmems -g kvmd-webterm -a kvmd-nginx
 }
 
