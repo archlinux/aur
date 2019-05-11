@@ -1,4 +1,5 @@
-#Maintainer: smcdougall <simon at sjmcdougall dot com>
+# Maintainer: lecyntho <tom dot wagner at campus dot tu minus berlin dot de>
+# Contributor: smcdougall <simon at sjmcdougall dot com>
 
 pkgname=gnome-shell-extension-multi-monitors-add-on-git
 pkgver=20190511
