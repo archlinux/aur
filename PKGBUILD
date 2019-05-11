@@ -1,6 +1,6 @@
 # Maintainer: tvoor <ftdabcde@gmail.com>
 pkgname=png_sec-git
-pkgver=0.1.1.8
+pkgver=0.1.1.9.a3b32c6
 pkgrel=1
 epoch=
 pkgdesc="tool to encrypt text and hide it in .png file"
@@ -14,7 +14,7 @@ checkdepends=()
 optdepends=()
 provides=()
 conflicts=()
-replaces=()
+replaces=('png_sec')
 backup=()
 options=()
 install=

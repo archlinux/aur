@@ -1,6 +1,6 @@
 pkgbase = png_sec-git
 	pkgdesc = tool to encrypt text and hide it in .png file
-	pkgver = 0.1.1.8
+	pkgver = 0.1.1.9.a3b32c6
 	pkgrel = 1
 	arch = any
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = png_sec-git
 	makedepends = git
 	depends = libgcrypt
 	depends = libpng
+	replaces = png_sec
 	source = png_sec-git::git+https://github.com/DOGINFOG/png_sec.git
 	source = git+https://github.com/DOGINFOG/cmake_scripts.git
 	validpgpkeys = C5C2DEE155D3872B8BA531226EEC3334E3C22821
