@@ -1,6 +1,6 @@
 # maintainer: youngunix <zagazaw2004 [at] gmail [dot] com>
 # submitter: youngunix <zagazaw2004 [at] gmail [dot] com>
-#----------------------------------------------------------
+#---------------------------------------------------------
 # Git original comments
 # Derived from PKGBUILD for Inox
 # Original Inox PKGBUILD authors:
