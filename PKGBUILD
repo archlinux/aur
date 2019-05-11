@@ -23,7 +23,7 @@ build() {
   cd "$srcdir/$_pkgname"
   mkdir build
   cd build
-  cmake -DBUILD_QWT=false -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DBUILD_QWT=false -DCMAKE_CXX_FLAGS=-DUPDATE_TYPE_PKGMAN -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 package() {
