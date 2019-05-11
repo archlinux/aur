@@ -1,0 +1,12 @@
+[Unit]
+Description=ACME client daemon
+Requires=network-online.target
+After=network.target network-online.target nss-lookup.target
+
+[Service]
+Type=forking
+PIDFile=/run/admed.pid
+ExecStart=/usr/bin/acmed --pid-file='/run/admed.pid' --log-syslog --log-level=warn
+
+[Install]
+WantedBy=multi-user.target
