@@ -12,12 +12,12 @@ connect() {
   PORT="$1"
   SERVER="$2"
 
-  echo "Connecting to server ${SERVER} on port ${PORT}"
-
   [ -f "$CREDENTIALS" ] || die "Please run ${0} --init before connecting for the first time."
 
   CONFIG_FILE="${FILES_FOLDER}/ovpn_${PORT}/${SERVER}.nordvpn.com.${PORT}.ovpn"
-  [ -f "$CONFIG_FILE" ] || update
+  [ -f "$CONFIG_FILE" ] || die "Server ${SERVER} not found, try running ${0} --update"
+
+  echo "Connecting to server ${SERVER} on port ${PORT}"
 
   LOGS_FOLDER="${CONFIG}/logs"
   [ -d "$LOGS_FOLDER" ] || mkdir -p "$LOGS_FOLDER"
@@ -133,7 +133,7 @@ update() {
         -o "$OUTPUT_FILE" \
         "$URL";;
     *) die 'Here be dragons';;
-  esac
+  esac || die "Could not download $URL!"
 
   [ -d "$FILES_FOLDER" ] || mkdir -p "$FILES_FOLDER"
 
