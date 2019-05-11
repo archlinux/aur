@@ -8,7 +8,7 @@ license=("GPL3")
 depends=("gcc-libs" "glibc" "libxcb")
 makedepends=("cmake" "git")
 
-source=("${pkgname}::git+git://github.com/tomKPZ/x-active-window-indicator.git")
+source=("git+https://github.com/tomKPZ/x-active-window-indicator.git")
 md5sums=("SKIP")
 
 pkgver() {

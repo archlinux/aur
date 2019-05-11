@@ -10,7 +10,7 @@ pkgbase = x-active-window-indicator
 	depends = gcc-libs
 	depends = glibc
 	depends = libxcb
-	source = x-active-window-indicator::git+git://github.com/tomKPZ/x-active-window-indicator.git
+	source = git+https://github.com/tomKPZ/x-active-window-indicator.git
 	md5sums = SKIP
 
 pkgname = x-active-window-indicator
