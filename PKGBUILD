@@ -4,7 +4,7 @@
 
 pkgbase="zfs-dkms-rc"
 pkgname=("zfs-dkms-rc" "zfs-utils-rc")
-_pkgver=0.8.0-rc3
+_pkgver=0.8.0-rc5
 _pkgver_base=${_pkgver%-*}
 pkgver=${_pkgver//-rc/.}
 pkgrel=1
@@ -16,7 +16,7 @@ source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_pkgver}/zfs-
         "zfs.bash-completion-r1"
         "zfs.initcpio.install"
         "zfs.initcpio.hook")
-sha256sums=('5c344d6ff876d4c5286d83745700127054858cea379d31741fe96589ac40baff'
+sha256sums=('c5dc91e3efb7555c6c1846cf89fd4cfb0952271a2900434e697f2b7397ce9b16'
             'b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540'
             '17114052aa20c528f022f7f1349971aa28810e2ed2c97871226b5679a91f7e77'
             '138964b43d7a282e1ed5f7fcf1f8dc9baa4f664655b628eeac1912a3017a787b')
@@ -40,7 +40,7 @@ build() {
 
 package_zfs-dkms-rc() {
     pkgdesc="Kernel modules for the Zettabyte File System -- release candidates"
-    depends=("zfs-utils-rc=${pkgver}-${pkgrel}" "dkms")
+    depends=("zfs-utils-rc=${pkgver}-${pkgrel}" "dkms" "lsb-release")
     provides=("zfs")
     conflicts=("zfs-git" "zfs-lts" "zfs-dkms")
 
