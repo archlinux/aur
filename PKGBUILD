@@ -1,7 +1,7 @@
 # Maintainer: Robin Lange <robin dot langenc at gmail dot com>
 # Contributor: Robin Lange <robin dot langenc at gmail dot com>
 pkgname=optimus-manager-git
-pkgver=r369.4f88859
+pkgver=v0.8.r102.g2a678c8
 pkgrel=1
 pkgdesc="Management utility to handle GPU switching for Optimus laptops (Git version)"
 arch=('any')
@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/optimus-manager/"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
  
 build() {
@@ -45,6 +45,8 @@ package() {
   install -Dm644 modules/optimus-manager.conf "$pkgdir/usr/lib/modprobe.d/optimus-manager.conf"
   install -Dm644 systemd/optimus-manager.service "$pkgdir/usr/lib/systemd/system/optimus-manager.service"
   install -Dm644 optimus-manager.conf "$pkgdir/usr/share/optimus-manager.conf"
+  
+  install -Dm644 systemd/logind/10-optimus-manager.conf "$pkgdir/usr/lib/systemd/logind.conf.d/10-optimus-manager.conf"
   
   install -Dm644 var/startup_mode "$pkgdir/var/lib/optimus-manager/startup_mode"
   install -Dm644 var/requested_mode "$pkgdir/var/lib/optimus-manager/requested_mode"
