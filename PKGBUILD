@@ -2,15 +2,15 @@
 # Contributor: Tarn Burton <twburton at gmail dot com>
 pkgname='pioneer-git'
 pkgver=20190203.r153.gea0126494
-pkgrel=1
+pkgrel=2
 pkgdesc="A game of lonely space adventure"
 arch=('x86_64')
 url="https://github.com/pioneerspacesim/pioneer"
 license=('GPL3')
 provides=('pioneer')
 conflicts=('pioneer-bin' 'pioneer')
-depends=('libsigc++' 'sdl2_image' 'freetype2' 'libvorbis' 'assimp' 'hicolor-icon-theme')
-makedepends=('naturaldocs' 'cmake')
+depends=('assimp' 'freetype2' 'hicolor-icon-theme' 'libsigc++' 'libvorbis' 'sdl2_image')
+makedepends=('cmake' 'naturaldocs' 'mesa' 'glu')
 source=("$pkgname::git+https://github.com/pioneerspacesim/pioneer")
 sha256sums=('SKIP')
 
@@ -40,14 +40,16 @@ build() {
   # instead of /usr/share/pioneer
   # Later, we let the things as them was
 
-  ./bootstrap cmake -D CMAKE_INSTALL_PREFIX:PATH=/usr \
-    -D PIONEER_DATA_DIR:PATH="data"
-  cd build ; mv modelcompiler modelcompiler.bak ; cd ..
-  make -C build modelcompiler
-  cd build ; mv modelcompiler.bak modelcompiler ; cd ..
+  if [ -d /usr/share/pioneer ]; then
+    ./bootstrap cmake -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+      -D PIONEER_DATA_DIR:PATH="data"
+    cd build ; mv modelcompiler modelcompiler.bak ; cd ..
+    make -C build modelcompiler
+    cd build ; mv modelcompiler.bak modelcompiler ; cd ..
 
-  ./bootstrap cmake -D CMAKE_INSTALL_PREFIX:PATH=/usr \
-   -D PIONEER_DATA_DIR:PATH=/usr/share/pioneer/
+    ./bootstrap cmake -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+     -D PIONEER_DATA_DIR:PATH=/usr/share/pioneer/
+  fi
 
 #  make codedoc (execute naturaldocs manually)
   install -dm755 codedoc
