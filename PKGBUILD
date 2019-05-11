@@ -1,12 +1,12 @@
 # Maintainer: Steven De Bondt <egnappah at gmail dot com>
 
 pkgbase=geoipdatabase_reloaded
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.9.2
+pkgrel=1
 arch=('x86_64')
 url="https://dev.maxmind.com/geoip/geoip2/geolite2/"
-license=('GPL2')
-makedepends=('python2')
+license=('Creative Commons Attribution-ShareAlike 4.0 International License')
+checkdepends=('python2' 'geoip')
 
 # We all love colors. Stop pretending you don't.
 BRED="\033[1;31m"
@@ -28,6 +28,16 @@ pkgver() {
 }
 
 prepare() {
+
+	echo -e "${BRED}This product includes GeoLite2 data created by MaxMind, available from https://www.maxmind.com${NOCOLOR}"
+        echo -e "${BGREEN}Got it?${NOCOLOR}"
+        sleep 1
+        echo -n "3.."
+        sleep 1
+        echo -n "2.."
+        sleep 1
+        echo "1.."
+        sleep 1
 
 	if [ "$(pacman -Q python2-pygeoip)" == "" ]; then
 	echo -e "${BYELLOW}Now installing a ${BRED}(missing in the arch repo??) ${BORANGE}package${BYELLOW} to parse the geoipfiles..."
