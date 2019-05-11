@@ -2,7 +2,7 @@
 
 pkgbase=geoipdatabase_reloaded
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://dev.maxmind.com/geoip/geoip2/geolite2/"
 license=('GPL2')
