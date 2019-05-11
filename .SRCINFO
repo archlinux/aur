@@ -1,6 +1,6 @@
 pkgbase = optimus-manager-git
 	pkgdesc = Management utility to handle GPU switching for Optimus laptops (Git version)
-	pkgver = 0.8.r103.g7e88461
+	pkgver = 0.8.r109.g8ccd6ca
 	pkgrel = 1
 	url = https://github.com/Askannz/optimus-manager
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = optimus-manager-git
 	makedepends = git
 	depends = python
 	depends = python-setuptools
+	depends = python-dbus
 	depends = mesa-demos
 	depends = xorg-xrandr
 	optdepends = bbswitch: alternative power switching method
