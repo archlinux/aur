@@ -2,14 +2,14 @@
 
 pkgname=nlohmann-json
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Header-only JSON library for Modern C++"
 url="https://github.com/nlohmann/json"
 license=('MIT')
-arch=('i686' 'x86_64')
+arch=('any') # check function needs a working compiler toolchain, but package really is arch independent 
 makedepends=('cmake')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/nlohmann/json/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('80c45b090e40bf3d7a7f2a6e9f36206d3ff710acfa8d8cc1f8c763bb3075e22e')
 
 build() {
     [[ -d nlohmann-json-build ]] || mkdir -p nlohmann-json-build
