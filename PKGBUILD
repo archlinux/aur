@@ -1,25 +1,28 @@
-# Maintainer: Jesse Bryan <jesse@winneon.moe>
+# Contributor: Jesse Bryan <jesse@winneon.moe>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=nototools-git
-pkgver=20180305.d97df1a
-pkgrel=2
+pkgver=20190319.9c4375f
+pkgrel=1
 pkgdesc="Noto fonts support tools and scripts plus web site generation"
-arch=("x86_64")
-license=("MIT")
+url=https://github.com/googlei18n/nototools
+arch=('any')
+license=('Apache')
 depends=(
     # official repositories:
-        "python2" "python2-fonttools" "python2-pillow" "cairo" "pango" "pygtk" "imagemagick" "harfbuzz"
+         'python-fonttools' 'python-pillow' 'cairo' 'pango' 'pygtk' 'imagemagick' 'harfbuzz'
     # AUR:
-        "python2-booleanoperations" "python2-defcon" "python2-pyclipper" "python2-ufolib"
+        'python-booleanoperations' 'python-defcon' 'python-pyclipper' 'python-ufolib'
 )
-source=("${pkgname}"::"git+https://github.com/googlei18n/nototools.git")
-sha256sums=("SKIP")
+source=("${pkgname}"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}/"
-    git log -1 --format="%cd.%h" --date=short | tr -d -
+  cd "${pkgname}/"
+  git log -1 --format="%cd.%h" --date=short | tr -d -
 }
 
 package() {
-    cd "${pkgname}/"
-    python2 setup.py install --root="${pkgdir}/"
+  cd "${pkgname}/"
+  python setup.py install --root="${pkgdir}/"
 }
