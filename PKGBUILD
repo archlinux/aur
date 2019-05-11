@@ -1,7 +1,7 @@
 # Maintainer: Pawel Mosakowski <pawel at mosakowski dot net>
 pkgname=appgate-sdp-headless
 conflicts=('appgate-sdp')
-pkgver=4.2.1
+pkgver=4.2.2
 _download_pkgver=4.2
 pkgrel=1
 pkgdesc="Software Defined Perimeter - headless client. Does not support 2FA."
@@ -45,5 +45,5 @@ package(){
     	cp -v "${pkgdir}/usr/share/doc/appgate-sdp-headless/copyright" "$LICENSE_DIR"
 }
 
-md5sums=('dae5932ecc0e8f80efdaf7bae9ea2f70'
+md5sums=('e33a92ae63f795667532cbe707b30a00'
          'b5946b4a978c39467714f58e04726491')
