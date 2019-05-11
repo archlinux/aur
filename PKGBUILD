@@ -9,7 +9,7 @@ pkgname=(
   "${_pkgname}server-gio-git"
 )
 pkgver=1.0.15.r0.gd0dbccb
-pkgrel=1
+pkgrel=2
 pkgdesc="D-Bus based logging"
 arch=('i686' 'x86_64')
 depends=('glib2' 'dbus' 'libglibutil' 'libdbusaccess')
@@ -70,8 +70,14 @@ package_libdbuslogserver-common-git() {
 _package_server() {
   cd "$srcdir/package"
 
-  ls "usr/lib" | grep '^libdbuslogserver-'"$1"'\.so' | while read lib; do
-    install -Dm755 "usr/lib/$lib" "$pkgdir/usr/lib/$lib"
+  # Install libraries
+  find "usr/lib" -maxdepth 1 -type f | grep '/libdbuslogserver-'"$1"'\.so' | while read lib; do
+    install -Dm755 "$lib" "$pkgdir/$lib"
+  done
+  
+  # Copy links
+  find "usr/lib" -maxdepth 1 -type l | grep '/libdbuslogserver-'"$1"'\.so' | while read lib; do
+    cp -d "$lib" "$pkgdir/$lib"
   done
   
   ls "usr/include/dbuslogserver/$1" | grep '\.h$' | while read header; do

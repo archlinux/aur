@@ -1,7 +1,7 @@
 pkgbase = libdbuslog-git
 	pkgdesc = D-Bus based logging
 	pkgver = 1.0.15.r0.gd0dbccb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sailfishos.org/mer-core/libdbuslog
 	arch = i686
 	arch = x86_64
