@@ -5,7 +5,7 @@
 
 # Maintainer: CarsonGraham <carson42g@gmail.com>
 pkgname=gumbocoin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 epoch=
 pkgdesc="The cli client"
