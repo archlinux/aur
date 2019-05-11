@@ -1,0 +1,17 @@
+pkgbase = x-active-window-indicator-git
+	pkgdesc = An X11 utility that signals the active window
+	pkgver = r103.0f2c386
+	pkgrel = 1
+	url = https://github.com/tomKPZ/x-active-window-indicator
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = libxcb
+	source = git+https://github.com/tomKPZ/x-active-window-indicator.git
+	md5sums = SKIP
+
+pkgname = x-active-window-indicator-git
+
