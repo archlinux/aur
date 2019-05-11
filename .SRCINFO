@@ -1,6 +1,6 @@
 pkgbase = mlbv
-	pkgdesc = Command-line interface to streaming MLB games (with MLB.tv subscription), game schedule and scores.
-	pkgver = 0.0.8
+	pkgdesc = Command-line interface to MLB game information, schedule, scores, and standings.
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://github.com/kmac/mlbv
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mlbv
 	depends = python-lxml
 	depends = python-dateutil
 	depends = streamlink
-	source = https://github.com/kmac/mlbv/archive/v0.0.8.tar.gz
-	md5sums = efbc11a457670c738a05d8604f62fe11
+	source = https://github.com/kmac/mlbv/archive/v0.0.11.tar.gz
+	md5sums = 96a6f9810ecd937a465dcbcf1f5504e2
 
 pkgname = mlbv
 
