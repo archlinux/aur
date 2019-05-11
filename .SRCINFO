@@ -1,7 +1,7 @@
 pkgbase = bomi-git
 	pkgdesc = Powerful and easy-to-use GUI multimedia player based on mpv (git version)
 	pkgver = 0.9.11.r39.g5f0cc0a7
-	pkgrel = 3
+	pkgrel = 4
 	url = http://bomi-player.github.io
 	arch = i686
 	arch = x86_64
@@ -44,9 +44,11 @@ pkgbase = bomi-git
 	source = git+https://github.com/d-s-x/bomi.git
 	source = add_sup_subext.patch
 	source = upgrade_waf.patch
+	source = qml_fix.patch
 	md5sums = SKIP
 	md5sums = dacb0df199eea0f6e3d5c037c8c5429d
 	md5sums = fbcd3b66086bb2f7c94c07c63c335fb3
+	md5sums = 154bd1a299aeb4ede9317c1ae8ac4a13
 
 pkgname = bomi-git
 
