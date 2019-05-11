@@ -4,6 +4,7 @@ _pkgname=service-tools
 pkgver=r54.48577a1
 pkgrel=1
 pkgdesc='A growing collection of convenient little tools to work with systemd services'
+provides=('service-tools')
 arch=('any')
 url="https://github.com/muesli/service-tools"
 license=('MIT')

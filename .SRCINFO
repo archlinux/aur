@@ -6,6 +6,7 @@ pkgbase = service-tools-git
 	arch = any
 	license = MIT
 	makedepends = go
+	provides = service-tools
 	source = git+https://github.com/muesli/service-tools
 	sha256sums = SKIP
 
