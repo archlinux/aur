@@ -1,7 +1,7 @@
 # Maintainer: Robert Kubosz <kubosz.robert@gmail.com>
 
 pkgname=python-uqbar
-pkgver=0.2.15
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Tools for building documentation with Sphinx, Graphviz and LaTeX'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
         'python-sphinx-autodoc-typehints'
         )
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=("292a8f10f5f7dbc33eb94b242640582dee069b8c8a19fcf70a728a8945161f90")
+sha256sums=('5598e79d32bc284405df1fd3b3fe976cdbd108d200cb0223450b614e25a51b0e')
 
 build() {
 	cd $srcdir/uqbar-$pkgver
