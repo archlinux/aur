@@ -1,7 +1,6 @@
 # Maintainer: danieltetraquark
 pkgname=service-tools-git
 _pkgname=service-tools
-pkgbase=service-tools
 pkgver=r54.48577a1
 pkgrel=1
 pkgdesc='A growing collection of convenient little tools to work with systemd services'
