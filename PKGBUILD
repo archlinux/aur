@@ -1,40 +1,53 @@
-# Maintainer: Ranieri Althoff <ranisalt at protonmail dot com>
-_gitname=catch2
-pkgname=$_gitname-git
-pkgver=v2.1.2.19.gcf4b7eea
+# Modifications to use source from git master
+# Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
+# Contributor: Ranieri Althoff <ranisalt at protonmail dot com>
+
+# Original Community Repo
+# Maintainer: Baptiste Jonglez <archlinux at bitsofnetworks dot org>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Bart Verhagen <barrie.verhagen at gmail dot com>
+
+pkgname=catch2-git
+pkgver=2.7.2.r25.gf1e14a11
 pkgrel=1
-pkgdesc="A modern, C++-native, header-only, test framework for unit-tests, TDD and BDD - using C++11, C++14, C++17 and later"
+pkgdesc="Modern, C++-native, header-only, test framework for unit-tests, TDD and BDD (developmental version)"
 arch=('any')
-url="https://github.com/catchorg/$_gitname"
-license=('boost')
-makedepends=(cmake make git)
-provides=("$_gitname")
-conflicts=("$_gitname")
-source=("$_gitname::git+https://github.com/catchorg/$_gitname.git")
+url="https://github.com/catchorg/catch2"
+license=('Boost')
+makedepends=('cmake' 'python' 'git') # python seems to be necessary for building tests (FS#60273)
+provides=(catch2)
+conflicts=(catch2)
+source=("git+https://github.com/catchorg/Catch2")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_gitname"
+  cd Catch2
 
-    echo "$(git describe --long --tags | tr - .)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
 }
 
 build() {
-    cd "$srcdir/$_gitname"
+  cd Catch2
 
-    cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DCMAKE_INSTALL_LIBDIR="lib" .
-    make
+  mkdir -p build
+  cd build
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCATCH_USE_VALGRIND=OFF \
+    -DCATCH_BUILD_EXAMPLES=OFF \
+    -DCATCH_ENABLE_COVERAGE=OFF \
+    -DCATCH_ENABLE_WERROR=OFF \
+    -DBUILD_TESTING=ON
+  make
 }
 
 check() {
-    cd "$srcdir/$_gitname"
-
-    cmake -DBUILD_TESTING=ON .
-    make test
+  cd Catch2/build
+  make test
 }
 
 package() {
-    cd "$srcdir/$_gitname"
-
-    make install
+  cd Catch2/build
+  make DESTDIR="$pkgdir" install
 }
