@@ -1,4 +1,4 @@
-pkgbase = service-tools-git
+pkgbase = service-tools
 	pkgdesc = A growing collection of convenient little tools to work with systemd services
 	pkgver = r54.48577a1
 	pkgrel = 1
