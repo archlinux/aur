@@ -5,9 +5,9 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=4.0.0v20190324
+pkgver=4.0.0v20190511
 _pkgver=4.0.0
-_snapshot_=20190324
+_snapshot_=20190511
 _snapver_=0231
 _suffix_=dev
 _nightly_=${_snapshot_}-${_snapver_}
@@ -127,8 +127,8 @@ prepare() {
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
 
-  # libplacebo 0.6 API
-  sed 's|pl_shader_alloc(tc->pl_ctx, NULL, 0, 0);|pl_shader_alloc(tc->pl_ctx, NULL, 0);|' -i modules/video_output/opengl/vout_helper.c
+  # libplacebo 12 API
+ sed 's|pl_shader_alloc(tc->pl_ctx, NULL, 0, 0);|pl_shader_alloc(tc->pl_ctx, NULL);|' -i modules/video_output/opengl/vout_helper.c
 }
 
 build() {
@@ -140,6 +140,8 @@ build() {
   export LUAC=/usr/bin/luac
   export LUA_LIBS="`pkg-config --libs lua`"
   export RCC=/usr/bin/rcc-qt5
+ # export CC=clang
+ # export CXX=clang++
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
@@ -234,9 +236,9 @@ build() {
               --enable-aribsub \
               \
               --libexecdir=/usr/lib \
-	      --disable-daala \
-	      --disable-fdkaac \
-	      --disable-decklink
+	            --disable-daala \
+	            --disable-fdkaac \
+	            --disable-decklink
   # note: removing --enable-daala for now because it is currently broken
   #       removing --enable-fdkaac for now because it is currently broken
   #       adding --disable-decklink because it is broken
@@ -263,7 +265,7 @@ package() {
   #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('9f465ae1c61f5cae057d3c103d64e79d953e1018ba3ebe8a8f805facd18c051b'
+sha256sums=('622e53bcf12de170ccb3b26b5d198236aa39a7c88c08aa9edb13af9d6d04ec10'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             '3e6bddbaed443e40036c494a0754aedd2f94fe41bfa3754855e16f7452a03cdf'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
