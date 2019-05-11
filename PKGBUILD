@@ -4,7 +4,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=libdart
 pkgver=6.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
 url="https://dartsim.github.io"
@@ -37,9 +37,11 @@ build() {
 	mkdir -p "${srcdir}/${_name}-${pkgver}/build"
 	cd "${srcdir}/${_name}-${pkgver}/build"
 
-	cmake .. \
+	cmake \
 		-DCMAKE_BUILD_TYPE="${_buildtype}" \
-		-DCMAKE_INSTALL_PREFIX="${pkgdir}/usr"
+		-DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_INSTALL_LIBDIR="lib" \
+    "${srcdir}/${_name}-${pkgver}"
 
 	msg "Building the project"
 	make -j4
@@ -58,4 +60,5 @@ package() {
 
 	msg "Installing files"
 	make DESTDIR="${pkgdir}/" install
+
 }
