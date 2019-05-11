@@ -1,0 +1,14 @@
+pkgbase = geoipdatabase_reloaded
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://dev.maxmind.com/geoip/geoip2/geolite2/
+	arch = x86_64
+	license = GPL2
+	makedepends = python2
+	source = http://nhameh.ovh/varia/python2-pygeoip-0.3.2-4-any.pkg.tar.xz
+	source = git+https://github.com/sherpya/geolite2legacy/
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = geoipdatabase_reloaded
+
