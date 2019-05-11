@@ -4,8 +4,7 @@ pkgdesc="ROS - roscpp is a C++ implementation of ROS."
 url='http://ros.org/wiki/roscpp'
 
 pkgname='ros-melodic-roscpp'
-pkgver='1.14.3'
-_pkgver_patch=0
+pkgver='1.12.14'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -47,9 +46,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="ros_comm-release-release-melodic-roscpp-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/roscpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('aafa1e50ff61f428b3cdf7158129b8b09b4bd7aae6aee553f6a5c8251eae1806')
+_dir="ros_comm-${pkgver}/clients/roscpp"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
+sha256sums=('239c225cc9b1613cc7f76daf73c182f991787b7cf601287cb6cc28957eeeec1d')
 
 build() {
 	# Use ROS environment variables.
@@ -62,6 +61,9 @@ build() {
 
 	# Fix Python2/Python3 conflicts.
 	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
+
+	#Workaround for boost signals
+	sed -i 's/signals//g' ${srcdir}/${_dir}/CMakeLists.txt
 
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
