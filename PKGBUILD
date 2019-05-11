@@ -1,6 +1,6 @@
 # Maintainer: Stephen R. Martin <stephensrmmartin at gmail dot com>
 _cranname=RInside
-_cranver=0.2.14
+_cranver=0.2.15
 pkgname=r-cran-rinside
 pkgver=${_cranver}
 pkgrel=1
