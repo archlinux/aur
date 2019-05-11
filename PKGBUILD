@@ -26,6 +26,8 @@ prepare() {
 }
 
 build() {
+  export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
+
   cd ${_pkgname}
   make dev
 }
