@@ -1,0 +1,44 @@
+running install
+running build
+running build_py
+creating build
+creating build/lib
+creating build/lib/td
+copying td/main.py -> build/lib/td
+copying td/__init__.py -> build/lib/td
+copying td/model.py -> build/lib/td
+copying td/logger.py -> build/lib/td
+running build_scripts
+creating build/scripts-3.7
+copying and adjusting scripts/td -> build/scripts-3.7
+changing mode of build/scripts-3.7/td from 644 to 755
+running install_lib
+creating /build/td/pkg/td/usr
+creating /build/td/pkg/td/usr/lib
+creating /build/td/pkg/td/usr/lib/python3.7
+creating /build/td/pkg/td/usr/lib/python3.7/site-packages
+creating /build/td/pkg/td/usr/lib/python3.7/site-packages/td
+copying build/lib/td/main.py -> /build/td/pkg/td/usr/lib/python3.7/site-packages/td
+copying build/lib/td/__init__.py -> /build/td/pkg/td/usr/lib/python3.7/site-packages/td
+copying build/lib/td/model.py -> /build/td/pkg/td/usr/lib/python3.7/site-packages/td
+copying build/lib/td/logger.py -> /build/td/pkg/td/usr/lib/python3.7/site-packages/td
+byte-compiling /build/td/pkg/td/usr/lib/python3.7/site-packages/td/main.py to main.cpython-37.pyc
+byte-compiling /build/td/pkg/td/usr/lib/python3.7/site-packages/td/__init__.py to __init__.cpython-37.pyc
+byte-compiling /build/td/pkg/td/usr/lib/python3.7/site-packages/td/model.py to model.cpython-37.pyc
+byte-compiling /build/td/pkg/td/usr/lib/python3.7/site-packages/td/logger.py to logger.cpython-37.pyc
+writing byte-compilation script '/tmp/tmp9nfl__m_.py'
+/usr/bin/python3 /tmp/tmp9nfl__m_.py
+removing /tmp/tmp9nfl__m_.py
+running install_egg_info
+running egg_info
+writing td.egg-info/PKG-INFO
+writing dependency_links to td.egg-info/dependency_links.txt
+writing top-level names to td.egg-info/top_level.txt
+reading manifest file 'td.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+writing manifest file 'td.egg-info/SOURCES.txt'
+Copying td.egg-info to /build/td/pkg/td/usr/lib/python3.7/site-packages/td-0.4-py3.7.egg-info
+running install_scripts
+creating /build/td/pkg/td/usr/bin
+copying build/scripts-3.7/td -> /build/td/pkg/td/usr/bin
+changing mode of /build/td/pkg/td/usr/bin/td to 755

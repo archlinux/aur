@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-distribute')
 provides=('td')
 options=(!emptydirs)
-source=("http://pypi.python.org/packages/source/t/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("https://pypi.python.org/packages/source/t/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('f9f2722f38c03ff608bb1263a500f406')
 
 package() {
