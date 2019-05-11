@@ -1,0 +1,9 @@
+image: archlinux/base
+
+check:
+  stage: test
+  before_script:
+    - pacman -Syu --noconfirm checkbashisms shellcheck
+  script:
+    - checkbashisms nordconnect
+    - shellcheck -s sh nordconnect
