@@ -49,4 +49,4 @@ package() {
 	mkdir "$pkgdir/opt/gumbocoin"
 	install "./cli/build/libs/cli-1.0-all.jar" "$pkgdir/opt/gumbocoin/gumbocoin.jar"
 }
-md5sums=('d3d495eb5c3288d1c7cd69880ce832a8')
+md5sums=('c2f0fd7c108c627fea17a07338757148')
