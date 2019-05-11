@@ -45,13 +45,14 @@ prepare() {
 	echo -e "${BYELLOW}Downloading the ${BGREEN}newest${BYELLOW} GeoIP CSV files from maxmind...${NOCOLOR}"
 	wget -P CSVzips/ https://geolite.maxmind.com/download/geoip/database/GeoLite2-City-CSV.zip
 	wget -P CSVzips/ https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
-	#wget -P CSVzips/ https://geolite.maxmind.com/download/geoip/database/GeoLite2-ASN-CSV.zip
+	wget -P CSVzips/ https://geolite.maxmind.com/download/geoip/database/GeoLite2-ASN-CSV.zip
 }
 
 build() {
 	echo -e "${BYELLOW}Now ${BGREEN}building${BYELLOW} the .DAT files for the geoip database.${NOCOLOR}"
 	python2 geolite2legacy/geolite2legacy.py -i CSVzips/GeoLite2-Country-CSV.zip -f geolite2legacy/geoname2fips.csv -o output/GeoIP.dat
 	python2 geolite2legacy/geolite2legacy.py -i CSVzips/GeoLite2-City-CSV.zip -f geolite2legacy/geoname2fips.csv -o output/GeoIPCity.dat
+	python2 geolite2legacy/geolite2legacy.py -i CSVzips/GeoLite2-ASN-CSV.zip -f geolite2legacy/geoname2fips.csv -o output/GeoIPASNum.dat
 }
 
 package() {
