@@ -45,7 +45,7 @@ depends=(
 )
 
 conflicts=(
-	ros-melodic-roscpp
+	'ros-melodic-roscpp'
 )
 
 _dir="ros_comm/clients/roscpp"
