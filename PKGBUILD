@@ -3,7 +3,7 @@
 
 pkgname=libwebsockets-patched
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C library for websocket clients and servers (with enabled AF_UNIX)"
 url="https://libwebsockets.org"
 license=(LGPL)
@@ -18,7 +18,7 @@ sha256sums=(db948be74c78fc13f1f1a55e76707d7baae3a1c8f62b625f639e8f2736298324)
 
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "libwebsockets-$pkgver"
 	mkdir build
 	cd build
 	cmake \
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-	cd "$pkgname-$pkgver/build"
+	cd "libwebsockets-$pkgver/build"
 	make DESTDIR="$pkgdir" install
 	cd ..
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

@@ -1,7 +1,7 @@
 pkgbase = libwebsockets-patched
 	pkgdesc = C library for websocket clients and servers (with enabled AF_UNIX)
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libwebsockets.org
 	arch = i686
 	arch = x86_64
