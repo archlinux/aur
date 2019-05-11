@@ -3,7 +3,7 @@
 # Contributor: Vlad M. <vlad@archlinux.net>
 
 pkgname=atlassian-confluence-lts
-pkgver=6.6.11
+pkgver=6.13.4
 pkgrel=1
 pkgdesc="Enterprise wiki (Enterprise Release)"
 url="https://www.atlassian.com/software/confluence"
@@ -18,7 +18,7 @@ install='confluence.install'
 source=("http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-$pkgver.tar.gz"
         'confluence.conf.d'
         'confluence.service')
-sha256sums=('46141d82f4455bfe181c2bdcef1b03919f26dede042df065faf5c9aa55741d6f'
+sha256sums=('6af32eb3c616656f55f97f8063014a11183b8d6a9d049000275416524456ef9a'
             'a6304ba13a8ab1e27761bd3be71d05d2c2e3d61ea308316f4a04723ea4b30fc1'
             'd51ad7cb3eb8a4d5553a26fd5567867345bb4ae9a10876fc2bee7b6ab8800824')
 
