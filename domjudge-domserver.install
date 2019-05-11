@@ -2,6 +2,12 @@ clear_cache(){
     rm -rf /var/lib/domjudge/webapp/var/cache/*
 }
 
+post_install(){
+	/etc/domserver/genadminpassword > /etc/domserver/initial_admin_password.secret
+	/etc/domserver/genrestapicredentials > /etc/domserver/restapi.secret
+	/etc/domserver/gendbpasswords > /etc/domserver/dbpasswords.secret
+}
+
 pre_remove(){
     clear_cache
 }

@@ -3,7 +3,7 @@
 pkgbase=domjudge
 pkgname=('domjudge-domserver' 'domjudge-docs' 'domjudge-judgehost' 'domjudge-submit')
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="an automated judge system to run programming contests"
 arch=("$CARCH")
 url="http://www.domjudge.org/"
@@ -74,9 +74,14 @@ package_domjudge-submit() {
 package_domjudge-domserver() {
     arch=('any')
     depends=('curl' 'php' 'php-gd' 'php-intl' 'unzip' 'zip' 'apache')
+    backup=('etc/domserver/apache.conf' 'etc/domserver/common-config.php' 'etc/domserver/dbpasswords.secret' 'etc/domserver/domjudge-fpm.conf' 'etc/domserver/domserver-config.php' 'etc/domserver/domserver-static.php' 'etc/domserver/import-forwardfeed.yaml' 'etc/domserver/initial_admin_password.secret' 'etc/domserver/nginx-conf' 'etc/domserver/nginx-conf-inner' 'etc/domserver/restapi.secret' 'etc/domserver/verdicts.php')
     install=domjudge-domserver.install
     cd "$srcdir/domjudge-$pkgver"
     make install-domserver DESTDIR="$pkgdir"/
+    # clear the password, we will run genadminpassword, genrestapicredentials, gendbpasswords when post_install
+    echo "" > "$pkgdir/etc/domserver/initial_admin_password.secret"
+    echo "" > "$pkgdir/etc/domserver/restapi.secret"
+    echo "" > "$pkgdir/etc/domserver/dbpasswords.secret"
     install -Dm 644 "$srcdir/domjudge-domserver.conf" "$pkgdir/usr/lib/sysusers.d/domjudge-domserver.conf"
 }
 
@@ -90,13 +95,19 @@ package_domjudge-docs() {
 package_domjudge-judgehost() {
     arch=("$CARCH")
     depends=('libcgroup' 'curl' 'php' 'unzip' 'zip' 'lsof')
+    backup=('etc/judgehost/common-config.php' 'etc/judgehost/judgehost-config.php' 'etc/judgehost/judgehost-static.php' 'etc/judgehost/restapi.secret' 'etc/judgehost/sudoers-domjudge' 'etc/judgehost/verdicts.php' 'usr/lib/judgehost/judge/chroot-startstop.sh')
+    install=domjudge-judgehost.install
     cd "$srcdir/domjudge-$pkgver"
     make install-judgehost DESTDIR="$pkgdir"/
+    # clear the password, we will run genrestapicredentials when post_install
+    echo "" > "$pkgdir/etc/judgehost/restapi.secret"
+    install -Dm 755 "$srcdir/domjudge-$pkgver/etc/genrestapicredentials" "$pkgdir/etc/judgehost/genrestapicredentials"
     install -Dm 644 "$srcdir/domjudge-judgehostd.service" "$pkgdir/usr/lib/systemd/system/domjudge-judgehostd.service"
     install -Dm 644 "$srcdir/domjudge-judgehostd@.service" "$pkgdir/usr/lib/systemd/system/domjudge-judgehostd@.service"
     install -Dm 644 "$srcdir/domjudge-cgroup.service" "$pkgdir/usr/lib/systemd/system/domjudge-cgroup.service"
     install -Dm 644 "$srcdir/domjudge-judgehost.conf" "$pkgdir/usr/lib/sysusers.d/domjudge-judgehost.conf"
     sed -i 's/512/domjudge/g' "$pkgdir/etc/judgehost/sudoers-domjudge"
     mkdir -p "$pkgdir/etc/sudoers.d"
+    chmod 750 "$pkgdir/etc/sudoers.d"
     ln -s "/etc/judgehost/sudoers-domjudge" "$pkgdir/etc/sudoers.d/domjudge"
 }

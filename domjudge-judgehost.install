@@ -1,0 +1,3 @@
+post_install(){
+	/etc/judgehost/genrestapicredentials > /etc/judgehost/restapi.secret
+}
