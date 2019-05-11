@@ -1,6 +1,6 @@
 pkgbase = gtimelog-collabora-git
 	pkgdesc = A time tracking application: Collabora repository.
-	pkgver = r336.9fa4920
+	pkgver = r337.a89bd65
 	pkgrel = 1
 	url = https://git.collabora.co.uk/cgit/gtimelog.git
 	arch = any
@@ -15,7 +15,9 @@ pkgbase = gtimelog-collabora-git
 	depends = python2-gnomekeyring
 	provides = gtimelog
 	source = gtimelog::git+https://gitlab.collabora.com/collabora/gtimelog.git
+	source = 0001-Fix-shebang-to-usr-bin-env-python2.patch
 	sha256sums = SKIP
+	sha256sums = 2e25cb2425efdd1dad70bec06090fcd629af170f2e001b70d1bab94f8732d680
 
 pkgname = gtimelog-collabora-git
 
