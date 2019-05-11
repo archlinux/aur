@@ -2,12 +2,12 @@
 pkgname=pyxtrlock-git
 _pkgname=pyxtrlock
 pkgver=r145.c8f55b9 
-pkgrel=1
+pkgrel=2
 pkgdesc="The X transparent screen lock rewritten in Python. Git version"
 arch=('any')
 url="https://github.com/leonnnn/pyxtrlock/"
 license=("GPLv3+")
-depends=("python" "python-xdg" "python-simplepam")
+depends=("python" "python-xdg" "python-simplepam-git")
 makedepends=("git" "python")
 source=("${pkgname%-*}::git+https://github.com/leonnnn/pyxtrlock.git")
 sha1sums=("SKIP")
