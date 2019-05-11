@@ -25,7 +25,7 @@ sha256sums=('SKIP')
 
 prepare(){
   mkdir -p build
-  cd "${_pkgsourcename}-${pkgver}"
+  cd "i3-kde"
 
   autoreconf -fvi
 }
