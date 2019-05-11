@@ -28,6 +28,7 @@ pkgbase = ros-melodic-roscpp-git
 	depends = ros-melodic-rosconsole
 	depends = ros-melodic-roscpp-serialization
 	depends = ros-melodic-message-runtime
+	provides = ros-melodic-roscpp
 	conflicts = ros-melodic-roscpp
 	source = git+https://github.com/ros/ros_comm.git
 	sha256sums = SKIP

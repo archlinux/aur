@@ -44,6 +44,10 @@ depends=(
 	${ros_depends[@]}
 )
 
+provides=(
+	'ros-melodic-roscpp'
+)
+
 conflicts=(
 	'ros-melodic-roscpp'
 )
